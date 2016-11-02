@@ -16,7 +16,8 @@
    ms.date="02/05/2016"
    ms.author="v-jeana; hascipio"/>
 
-# Seller Insights レポートの概要
+
+# <a name="understand-your-seller-insights-report"></a>Seller Insights レポートの概要
 
 **Seller Insights とは**
 
@@ -32,7 +33,7 @@
     - レポートは、顧客データを保護するため、パブリッシャーと Microsoft だけが知っているパスワードによってロックされています。
     - 該当月にどの提供品にも使用実績がない場合、レポートは送られません。
 
-## Seller Insights レポートの概要
+## <a name="understand-your-seller-insights-report"></a>Seller Insights レポートの概要
 
 
 **SKU およびライセンス タイプ別の注文数: [Marketplace 注文] タブ**
@@ -40,8 +41,8 @@
 ![readingreportbyorders][2]
 
 - スライサーを使用して各要素でレポートをフィルター処理できます。
-- グラフには、Azure ライセンス タイプごとの毎月の注文が示されます。各バーには、その月の注文合計が Azure ライセンス タイプ別に表示されます。
-- グラフに毎月の注文が SKU 別に表示されます。各バーには、すべての SKU の毎月の注文合計が SKU 別に表示されます。
+- グラフには、Azure ライセンス タイプごとの毎月の注文が示されます。 各バーには、その月の注文合計が Azure ライセンス タイプ別に表示されます。
+- グラフに毎月の注文が SKU 別に表示されます。 各バーには、すべての SKU の毎月の注文合計が SKU 別に表示されます。
 - グラフに、注文数の月ごとの傾向が Azure ライセンス タイプ別と Azure Marketplace ライセンス タイプ別に表示されます。
 - 円グラフには、注文数が Azure ライセンス タイプ別と Marketplace ライセンス タイプ別に表示されます。
 - 表には、Marketplace ライセンス タイプ別の月ごとの合計注文数、月ごとの合計、すべての月の総計が表示されます。
@@ -53,8 +54,8 @@
 
 - スライサーを使用して各要素でレポートをフィルター処理できます。
 - 正規化された VM の利用状況情報または処理されていない利用状況データのいずれかを選択する必要があります。
-- グラフには、Azure ライセンス タイプごとの毎月の利用状況が示されます。各バーには、その月の利用合計が Azure ライセンス タイプ別に表示されます。
-- グラフに毎月の利用状況が SKU 別に表示されます。各バーには、すべての SKU の毎月の利用合計が SKU 別に表示されます。
+- グラフには、Azure ライセンス タイプごとの毎月の利用状況が示されます。 各バーには、その月の利用合計が Azure ライセンス タイプ別に表示されます。
+- グラフに毎月の利用状況が SKU 別に表示されます。 各バーには、すべての SKU の毎月の利用合計が SKU 別に表示されます。
 - グラフには、利用状況の月ごとの傾向が Azure ライセンス タイプ別と Marketplace ライセンス タイプ別に表示されます。
 - 円グラフには、利用状況が Azure ライセンス タイプ別と Marketplace ライセンス タイプ別に表示されます。
 - 表には、Marketplace ライセンス タイプ別の月ごとの利用合計、月ごとの合計、すべての月の総計が表示されます。
@@ -83,30 +84,33 @@
 
 ![legal][1]
 
-法的免責事項を注意深くお読みください。質問や意見がある場合は、免責事項の下部にあるリンクをクリックすると、Marketplace のサポート ページに移動します。
+法的免責事項を注意深くお読みください。 質問や意見がある場合は、免責事項の下部にあるリンクをクリックすると、Marketplace のサポート ページに移動します。
 
-## パスワードのリマインダーを要求する
+## <a name="request-a-password-reminder"></a>パスワードのリマインダーを要求する
 
-https://publish.windowsazure.com/ に移動し、Microsoft アカウントの資格情報でサインインします。 ![passwordreminder][7]
+https://publish.windowsazure.com/ にアクセスし、Microsoft アカウントの資格情報でサインインします。
+![passwordreminder][7]
 
-**[公開元] タブを選択します。**
+**[公開元]** タブを選択します。 
 ![selectpublisherstab][8]
 
 
 URL で公開元 ID を探します。
-- この ID をパスワードとして使用して、Seller Insights の Excel ファイルを開きます。通知があるまで、これがパスワードとして使用されます。
-- ブックを読むときは Windows で MS Office 2013 を使うことをお勧めします。Microsoft Office for Mac を使うと問題があることが報告されています。
+- この ID をパスワードとして使用して、Seller Insights の Excel ファイルを開きます。
+通知があるまで、これがパスワードとして使用されます。
+- ブックを読むときは Windows で MS Office 2013 を使うことをお勧めします。  Microsoft Office for Mac を使うと問題があることが報告されています。
 
 ![publisherid][9]
 
 
-## 次のステップ  
+## <a name="next-steps"></a>次のステップ  
 レポートおよび Insights に関して質問がある場合は、サポート チームにお問い合わせください。
 
-1. サポート ページ (https://publish.windowsazure.com/) に移動します
+1. https://publish.windowsazure.com/ にあるサポート ページに移動します。
 2. **[問題の種類]** ボックスで、**[レポートおよびインサイト]** を選択します。
-3. **[カテゴリ]** ボックスで、**[レポートに関する質問]** を選択します
-4. **[要求の開始]** をクリックします。 ![sellerinsightsquestions][10]
+3. **[カテゴリ]** ボックスで、**[レポートに関する質問]** を選択します。
+4. **[要求の開始]**をクリックします。
+  ![sellerinsightsquestions][10]
 
 
 
@@ -121,4 +125,8 @@ URL で公開元 ID を探します。
 [9]: ./media/marketplace-publishing-report-seller-insights/publisherid.png
 [10]: ./media/marketplace-publishing-report-seller-insights/sellerinsightsquestions.png
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

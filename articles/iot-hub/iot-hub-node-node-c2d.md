@@ -1,11 +1,11 @@
 <properties
-	pageTitle="IoT Hub を使用したクラウドからデバイスへのメッセージの送信 | Microsoft Azure"
-	description="このチュートリアルに従って、Java を使用して Azure IoT Hub でクラウドからデバイスへのメッセージを送信する方法を学習します。"
-	services="iot-hub"
-	documentationCenter="nodejs"
-	authors="dominicbetts"
-	manager="timlt"
-	editor=""/>
+    pageTitle="IoT Hub を使用したクラウドからデバイスへのメッセージの送信 | Microsoft Azure"
+    description="このチュートリアルに従って、Java を使用して Azure IoT Hub でクラウドからデバイスへのメッセージを送信する方法を学習します。"
+    services="iot-hub"
+    documentationCenter="nodejs"
+    authors="dominicbetts"
+    manager="timlt"
+    editor=""/>
 
 <tags
      ms.service="iot-hub"
@@ -16,42 +16,43 @@
      ms.date="09/23/2016"
      ms.author="dobett"/>
 
-# チュートリアル: IoT Hub と Node.js でクラウドからデバイスへのメッセージを送信する方法
+
+# <a name="tutorial:-how-to-send-cloud-to-device-messages-with-iot-hub-and-node.js"></a>チュートリアル: IoT Hub と Node.js でクラウドからデバイスへのメッセージを送信する方法
 
 [AZURE.INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-## はじめに
+## <a name="introduction"></a>はじめに
 
-Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。「[IoT Hub の概要]」チュートリアルには、IoT Hub の作成方法、IoT Hub でデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレーション済みデバイスをコード化する方法が示されています。
+Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 「 [IoT Hub の概要] 」チュートリアルには、IoT Hub の作成方法、IoT Hub でデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレーション済みデバイスをコード化する方法が示されています。
 
-このチュートリアルは、[IoT Hub の概要]に関するページのチュートリアルに基づいて作成されており、次の方法について説明します。
+このチュートリアルは、[IoT Hub の概要]に関するページのチュートリアルに基づいて作成されており、 次の方法について説明します。
 
 - アプリケーションのクラウド バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
 - クラウドからデバイスへのメッセージをデバイスで受信する。
 - IoT Hub からデバイスに送信されたメッセージの配信確認 (*フィードバック*) を、アプリケーションのクラウド バックエンドから要求する。
 
-クラウドからデバイスへのメッセージの詳細については、「[IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」をご覧ください。
+クラウドからデバイスへのメッセージの詳細については、「[IoT Hub 開発者ガイド][IoT Hub 開発者ガイド - C2D]」をご覧ください。
 
 このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリケーションを実行します。
 
 * **SimulatedDevice**。「[IoT Hub の概要]」で作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
 * **SendCloudToDeviceMessage**。クラウドからデバイスへのメッセージを IoT Hub を介してシミュレートされたデバイスに送信し、その配信確認を受け取ります。
 
-> [AZURE.NOTE] IoT Hub には、Azure IoT device SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター]のページを参照してください。
+> [AZURE.NOTE] IoT Hub には、Azure IoT device SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。 このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、 [Azure IoT デベロッパー センター]のページを参照してください。
 
 このチュートリアルを完了するには、以下が必要です。
 
-+ Node.js バージョン 0.12.x 以降。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
++ Node.js バージョン 0.10.x 以降。
 
-+ アクティブな Azure アカウント。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、[Azure の無料試用版][lnk-free-trial]サイトを参照してください。
++ アクティブな Azure アカウント。 アカウントがない場合は、無料試用版アカウントを数分で作成することができます。 詳細については、[Azure の無料試用版][lnk-free-trial]のサイトをご覧ください。
 
-## シミュレーション済みデバイスでメッセージを受信する
+## <a name="receive-messages-on-the-simulated-device"></a>シミュレーション済みデバイスでメッセージを受信する
 
-このセクションでは、[IoT Hub の概要]に関するページで作成したシミュレーション済みデバイス アプリケーションを、クラウドからデバイスへのメッセージを IoT Hub から受信するように変更します。
+このセクションでは、 [IoT Hub の概要] に関するページで作成したシミュレーション済みデバイス アプリケーションを、クラウドからデバイスへのメッセージを IoT Hub から受信するように変更します。
 
 1. テキスト エディターを使用して SimulatedDevice.js ファイルを開きます。
 
-2. IoT Hub から送信されたメッセージを処理するように **connectCallback** 関数を変更します。この例では、メッセージが処理されたことを IoT Hub に通知するために、デバイスは必ず **complete** 関数を呼び出します。変更後の **connectCallback** 関数は次のようになります。
+2. IoT Hub から送信されたメッセージを処理するように **connectCallback** 関数を変更します。 この例では、メッセージが処理されたことを IoT Hub に通知するために、デバイスは必ず **complete** 関数を呼び出します。 変更後の **connectCallback** 関数は次のようになります。
 
     ```
     var connectCallback = function (err) {
@@ -75,13 +76,13 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     };
     ```
 
-    > [AZURE.NOTE] トランスポートとして AMQP の代わりに HTTP/1 を使用した場合、**DeviceClient** インスタンスが IoT Hub からのメッセージをチェックする頻度は低くなります (25 分に 1 回未満)。AMQP と HTTP/1 のサポートの相違点と、IoT Hub スロットルの詳細については、「[Azure IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」を参照してください。
+    > [AZURE.NOTE] トランスポートとして AMQP または MQTT の代わりに HTTP/1 を使用した場合、**DeviceClient** インスタンスが IoT Hub からのメッセージをチェックする頻度は低くなります (25 分に 1 回未満)。 AMQP、MQTT、HTTP/1 のサポートの相違点と、IoT Hub スロットルの詳細については、「[Azure IoT Hub 開発者ガイド][IoT Hub 開発者ガイド - C2D]」をご覧ください。
 
-## C2D メッセージを送信する
+## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
 
-このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する Node.js コンソール アプリを作成します。[IoT Hub の概要]のチュートリアルで追加したデバイスのデバイス ID が必要です。また、IoT Hub の接続文字列も必要です ([Azure Portal] で確認できます)。
+このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する Node.js コンソール アプリを作成します。 [IoT Hub の概要] のチュートリアルで追加したデバイスのデバイス ID が必要です。 また、IoT Hub の接続文字列も必要です ( [Azure Portal]で確認できます)。
 
-1. 空のフォルダーを **sendcloudtodevicemessage** という名前で作成します。コマンド プロンプトで次のコマンドを使用して、**sendcloudtodevicemessage** フォルダー内に package.json ファイルを作成します。次の既定値をすべてそのまま使用します。
+1. 空のフォルダーを **sendcloudtodevicemessage**という名前で作成します。 コマンド プロンプトで次のコマンドを使用して、 **sendcloudtodevicemessage** フォルダー内に package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
 
     ```
     npm init
@@ -104,7 +105,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     var Message = require('azure-iot-common').Message;
     ```
 
-5. 次のコードを **SendCloudToDeviceMessage.js** ファイルに追加します。接続文字列のプレースホルダーの値は、[IoT Hub の概要]のチュートリアルで作成した IoT Hub の接続文字列に置き換えてください。ターゲット デバイスのプレースホルダーを、次のように [IoT Hub の概要]のチュートリアルで追加したデバイスのデバイス ID に置き換えます。
+5. 次のコードを **SendCloudToDeviceMessage.js** ファイルに追加します。 接続文字列のプレースホルダーの値は、 [IoT Hub の概要] のチュートリアルで作成した IoT Hub の接続文字列に置き換えてください。 ターゲット デバイスのプレースホルダーを、次のように [IoT Hub の概要] のチュートリアルで追加したデバイスのデバイス ID に置き換えます。
 
     ```
     var connectionString = '{iot hub connection string}';
@@ -155,7 +156,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 7. **SendCloudToDeviceMessage.js** ファイルを保存して閉じます。
 
-## アプリケーションの実行
+## <a name="run-the-applications"></a>アプリケーションの実行
 
 これで、アプリケーションを実行する準備が整いました。
 
@@ -175,30 +176,33 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
     ![C2D コマンドを送信するアプリを実行する][img-send-command]
 
-    > [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。運用環境のコードでは、MSDN の記事「[Transient Fault Handling (一時的な障害の処理)]」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
+    > [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、MSDN の記事「 [Transient Fault Handling (一時的な障害の処理)]」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。
+このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。 
 
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT Suite] に関するドキュメントをご覧ください。
+IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、 [Azure IoT Suite]に関するドキュメントをご覧ください。
 
-IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド]をご覧ください。
+IoT Hub を使用したソリューションの開発に関する詳細については、 [IoT Hub 開発者ガイド]をご覧ください。
 
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-node-node-c2d/receivec2d.png
-[img-send-command]: media/iot-hub-node-node-c2d/sendc2d.png
+[img-send-command]:  media/iot-hub-node-node-c2d/sendc2d.png
 
 <!-- Links -->
 
 [IoT Hub の概要]: iot-hub-node-node-getstarted.md
-[IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
+[IoT Hub 開発者ガイド - C2D]: iot-hub-devguide-messaging.md
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
 [Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
-[Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Azure portal]: https://portal.azure.com
+[Transient Fault Handling (一時的な障害の処理) (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Azure Portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -13,11 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/27/2016"
+   ms.date="09/30/2016"
    ms.author="femila"/>
 
 
-# Azure Active Directory レポート ガイド
+
+# <a name="azure-active-directory-reporting-guide"></a>Azure Active Directory レポート ガイド
+
+> [AZURE.SELECTOR]
+- [Azure Portal](active-directory-reporting-azure-portal.md)
+- [Azure クラシック ポータル](active-directory-reporting-guide.md)
 
  - [Azure Active Directory レポート - プレビュー](active-directory-reporting-azure-portal.md)
  - [Azure AD Reporting API の概要](active-directory-reporting-api-getting-started.md)
@@ -29,4 +34,8 @@
  - [Azure Active Directory レポートの "Unknown Actor" イベント](active-directory-reporting-unknown-actor.md)
  - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Resource Manager テンプレートのチュートリアル | Microsoft Azure"
-   description="基本的な Azure IaaS アーキテクチャをプロビジョニングする Resource Manager テンプレートのステップ バイ ステップ チュートリアルです。"
+   pageTitle="Resource Manager Template Walkthrough | Microsoft Azure"
+   description="A step by step walkthrough of a resource manager template provisioning a basic Azure IaaS architecture."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="navalev"
-   manager=""
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -16,29 +16,30 @@
    ms.date="08/04/2016"
    ms.author="navale;tomfitz"/>
    
-# Resource Manager テンプレートのチュートリアル
 
-テンプレートを作成する際の最初の質問の 1 つは、"どのように始めたらよいですか?" というものです。たとえば、空のテンプレートから始めて、[テンプレートの作成](resource-group-authoring-templates.md#template-format)に関する記事で説明されている基本的な構造に従い、リソースと適切なパラメーターおよび変数を追加することができます。また、[クイックスタート ギャラリー](https://github.com/Azure/azure-quickstart-templates)を参照し、作成しようとしているシナリオに似たシナリオを探すことから始める方法もあります。複数のテンプレートをマージしたり、既存のテンプレートを編集して、独自のシナリオに適合させることもできます。
+# <a name="resource-manager-template-walkthrough"></a>Resource Manager template walkthrough
 
-一般的なインフラストラクチャを見てみましょう。
+One of the first questions when creating a template is "how to start?". One can start from a blank template, following the basic structure described in [Authoring Template article](resource-group-authoring-templates.md#template-format), and add the resources and appropriate parameters and variables. A good alternative would be to start by going through the [quickstart gallery](https://github.com/Azure/azure-quickstart-templates) and look for similar scenarios to the one you are trying to create. You can merge several templates or edit an existing one to suit your own specific scenario. 
 
-* 同じストレージ アカウントを使用する 2 つのバーチャル マシンは、同じ可用性セットおよび仮想ネットワークの同じサブネット上にあります。
-* 各仮想マシンの単一の NIC と VM IP アドレス。
-* ポート 80 の負荷分散規則が構成されたロード バランサー
+Let's take a look at a common infrastructure:
 
-![アーキテクチャ](./media/resource-group-overview/arm_arch.png)
+* Two virtual machines that use the same storage account, are in the same availability set, and on the same subnet of a virtual network.
+* A single NIC and VM IP address for each virtual machine.
+* A load balancer with a load balancing rule on port 80
 
-このトピックでは、このインフラストラクチャ用の Resource Manager テンプレートを作成する手順について説明します。作成する最終的なテンプレートは、[2 VMs in a Load Balancer and load balancing rules](https://azure.microsoft.com/documentation/templates/201-2-vms-loadbalancer-lbrules/) という名前のクイックスタート テンプレートに基づいています。
+![architecture](./media/resource-group-overview/arm_arch.png)
 
-しかし、すべてを一度に構築するのはたいへんなので、まずはストレージ アカウントを作成し、デプロイしましょう。ストレージ アカウントの作成をマスターした後、他のリソースを追加し、テンプレートを再デプロイして、インフラストラクチャを完成させます。
+This topic walks you through the steps of creating a Resource Manager template for that infrastructure. The final template you create is based on a Quickstart template called [2 VMs in a Load Balancer and load balancing rules](https://azure.microsoft.com/documentation/templates/201-2-vms-loadbalancer-lbrules/).
 
->[AZURE.NOTE] テンプレートを作成する際には、任意のエディターを使用できます。Visual Studio にはテンプレートの作成を簡略化するツールが用意されていますが、Visual Studio でこのチュートリアルを完了する必要はありません。Visual Studio を使用して Web アプリと SQL Database のデプロイを作成するチュートリアルについては、「[Visual Studio での Azure リソース グループの作成とデプロイ](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
+But, that's a lot to build all at once, so let's first create a storage account and deploy it. After you have mastered creating the storage account, you will add the other resources and re-deploy the template to complete the infrastructure.
 
-## Resource Manager テンプレートの作成
+>[AZURE.NOTE] You can use any type of editor when creating the template. Visual Studio provides tools that simplify template development, but you do not need Visual Studio to complete this tutorial. For a tutorial on using Visual Studio to create a Web App and SQL Database deployment, see [Creating and deploying Azure resource groups through Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). 
 
-このテンプレートは、デプロイするすべてのリソースを定義する JSON ファイルです。デプロイ中に指定されるパラメーター、他の値と式から構築される変数、デプロイからの出力を定義することもできます。
+## <a name="create-the-resource-manager-template"></a>Create the Resource Manager template
 
-まず、ごく簡単なテンプレートから始めましょう。
+The template is a JSON file that defines all of the resources you will deploy. It also permits you to define parameters that are specified during deployment, variables that constructed from other values and expressions, and outputs from the deployment. 
+
+Let's start with the simplest template:
 
 ```json
     {
@@ -51,10 +52,10 @@
     }
  ```
 
-このファイルを **azuredeploy.json** として保存します (テンプレートの名前は任意ですが、json ファイルである必要があります)。
+Save this file as **azuredeploy.json** (note that the template can have any name you want, just that it must be a json file).
 
-## ストレージ アカウントの作成
-次のように、**resources** セクションで、ストレージ アカウントを定義するオブジェクトを追加します。
+## <a name="create-a-storage-account"></a>Create a storage account
+Within the **resources** section, add an object that defines the storage account, as shown below. 
 
 ```json
 "resources": [
@@ -70,15 +71,15 @@
 ]
 ```
 
-これらのプロパティと値がどのようなものなのか、疑問に思われるかもしれません。**type**、**name**、**apiVersion**、**location** の各プロパティは、すべての種類のリソースで利用できる標準的な要素です。一般的な要素については、「[Resources](resource-group-authoring-templates.md#resources)」を参照してください。**name** はデプロイ中に渡されたパラメーター値に設定され、**location** はリソース グループによって使用されている場所に設定されます。**type** と **apiVersion** を決定する方法については、後のセクションで説明します。
+You may be wondering where these properties and values come from. The properties **type**, **name**, **apiVersion**, and **location** are standard elements that are available for all resource types. You can learn about the common elements at [Resources](resource-group-authoring-templates.md#resources). **name** is set to a parameter value that you pass in during deployment and **location** as the location used by the resource group. We'll look at how you determine **type** and **apiVersion** in the sections below.
 
-**properties** セクションには、特定のリソースの種類に固有のプロパティがすべて含まれます。このセクションで指定する値は、その種類のリソースを作成するための REST API の PUT 操作と正確に一致します。ストレージ アカウントを作成するときは、**accountType** を指定する必要があります。[ストレージ アカウントを作成するための REST API](https://msdn.microsoft.com/library/azure/mt163564.aspx) を見ると、REST 操作の properties セクションにも **accountType** プロパティが含まれていることがわかります。また、許可されている値も記載されています。この例では、アカウントの種類は **Standard\_LRS** に設定されていますが、その他の値を指定することも、ユーザーがアカウントの種類をパラメーターとして渡せるようにすることもできます。
+The **properties** section contains all of the properties that are unique to a particular resource type. The values you specify in this section exactly match the PUT operation in the REST API for creating that resource type. When creating a storage account, you must provide an **accountType**. Notice in the [REST API for creating a Storage account](https://msdn.microsoft.com/library/azure/mt163564.aspx) that the properties section of the REST operation also contains an **accountType** property, and the permitted values are documented. In this example, the account type is set to **Standard_LRS**, but you could specify some other value or permit users to pass in the account type as a parameter.
 
-ここでは、**parameters** セクションに戻って、ストレージ アカウントの名前を定義する方法を説明します。パラメーターの使用の詳細については、「[Parameters](resource-group-authoring-templates.md#parameters)」を参照してください。
+Now let's jump back to the **parameters** section, and see how you define the name of the storage account. You can learn more about the use of parameters at [Parameters](resource-group-authoring-templates.md#parameters). 
 
 ```json
 "parameters" : {
-	"storageAccountName": {
+    "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Storage Account Name"
@@ -86,17 +87,17 @@
     }
 }
 ```
-ここでは、ストレージ アカウントの名前を保持する文字列型のパラメーターを定義しました。このパラメーターの値は、テンプレートのデプロイ時に指定されます。
+Here you defined a parameter of type string that will hold the name of the storage account. The value for this parameter will be provided during template deployment.
 
-## テンプレートのデプロイ
-新しいストレージ アカウントを作成するための完全なテンプレートがあります。既に説明したように、テンプレートは **azuredeploy.json** ファイルに保存しました。
+## <a name="deploying-the-template"></a>Deploying the template
+We have a full template for creating a new storage account. As you recall, the template was saved in  **azuredeploy.json** file:
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters" : {
-	"storageAccountName": {
+    "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Storage Account Name"
@@ -117,7 +118,7 @@
 }
 ```
 
-[リソース デプロイの記事](resource-group-template-deploy.md)でわかるように、テンプレートをデプロイするには、さまざまな方法があります。Azure PowerShell を使用してテンプレートをデプロイするには、次のようにします。
+There are quite a few ways to deploy a template, as you can see in the [Resource Deployment article](resource-group-template-deploy.md). To deploy the template using Azure PowerShell, use:
 
 ```powershell
 # create a new resource group
@@ -127,7 +128,7 @@ New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West Europe"
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile azuredeploy.json
 ```
 
-また、Azure CLI を使用してテンプレートをデプロイするには、次のようにします。
+Or, to deploy the template using Azure CLI, use:
 
 ```
 azure group create -n ExampleResourceGroup -l "West Europe"
@@ -135,12 +136,12 @@ azure group create -n ExampleResourceGroup -l "West Europe"
 azure group deployment create -f azuredeploy.json -g ExampleResourceGroup -n ExampleDeployment
 ```
 
-これで、ストレージ アカウントの所有者になりました。
+You are now the proud owner of a storage account!
 
-次の手順では、このチュートリアルの冒頭で説明したアーキテクチャのデプロイに必要なすべてのリソースを追加します。これまで作業してきたテンプレートに、それらのリソースを追加します。
+The next steps will be to add all the resources required to deploy the architecture described in the start of this tutorial. You will add these resources in the same template you have been working on.
 
-## 可用性セット
-ストレージ アカウントの定義の後に、バーチャル マシンの可用性セットを追加します。この場合はその他のプロパティは必要ないため、その定義はかなりシンプルです。更新ドメイン数と障害ドメイン数の値を定義する場合、完全な properties セクションについては、[可用性セットを作成するための REST API](https://msdn.microsoft.com/library/azure/mt163607.aspx) を参照してください。
+## <a name="availability-set"></a>Availability Set
+After the definition for the storage account, add an availably set for the virtual machines. In this case, there are no additional properties required, so its definition is fairly simple. See the [REST API for creating an Availability Set](https://msdn.microsoft.com/library/azure/mt163607.aspx) for the full properties section, in case you want to define the update domain count and fault domain count values.
 
 ```json
 {
@@ -152,40 +153,40 @@ azure group deployment create -f azuredeploy.json -g ExampleResourceGroup -n Exa
 }
 ```
 
-ご覧のように、**name** は変数の値に設定されています。このテンプレートでは、何か所かで可用性セットの名前が必要です。その値を 1 回だけ定義し、複数の場所で使用すれば、テンプレートをより簡単に管理できます。
+Notice that the **name** is set to the value of a variable. For this template, the name of the availability set is needed in a few different places. You can more easily maintain your template by defining that value once and using it in multiple places.
 
-**type** に対して指定する値には、リソース プロバイダーとリソースの種類の両方が含まれます。可用性セットの場合、リソース プロバイダーは **Microsoft.Compute**、リソースの種類は **availabilitySets** です。使用可能なリソース プロバイダーの一覧を取得するには、次の PowerShell コマンドを実行してください。
+The value you specify for **type** contains both the resource provider and the resource type. For availability sets, the resource provider is **Microsoft.Compute** and the resource type is **availabilitySets**. You can get the list of available resource providers by running the following PowerShell command:
 
 ```powershell
     Get-AzureRmResourceProvider -ListAvailable
 ```
 
-Azure CLI を使用している場合は、次のコマンドを使用できます。
+Or, if you are using Azure CLI, you can run the following command:
 ```
     azure provider list
 ```
-このトピックでは、ストレージ アカウント、仮想マシン、仮想ネットワークと共に作成しているため、以下を操作します。
+Given that in this topic you are creating with storage accounts, virtual machines, and virtual networking, you will work with:
 
 - Microsoft.Storage
 - Microsoft.Compute
 - Microsoft.Network
 
-特定のプロバイダーのリソースの種類を表示するには、次の PowerShell コマンドを実行します。
+To see the resource types for a particular provider, run the following PowerShell command:
 
 ```powershell
     (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
 ```
 
-Azure CLI を使用している場合は、次のコマンドを実行すると、使用可能な種類が JSON 形式で返され、ファイルに保存されます。
+Or, for Azure CLI, the following command will return the available types in JSON format and save it to a file.
 
 ```
     azure provider show Microsoft.Compute --json > c:\temp.json
 ```
 
-**Microsoft.Compute** 内の種類の 1 つとして、**availabilitySets** が示されます。種類の完全な名前は **Microsoft.Compute/availabilitySets** です。テンプレート内のどのリソースについても、リソースの種類の名前を確認できます。
+You should see **availabilitySets** as one of the types within **Microsoft.Compute**. The full name of the type is **Microsoft.Compute/availabilitySets**. You can determine the resource type name for any of the resources in you template.
 
-## パブリック IP
-パブリック IP アドレスを定義します。設定するプロパティについては、[パブリック IP アドレスの REST API](https://msdn.microsoft.com/library/azure/mt163590.aspx) を参照してください。
+## <a name="public-ip"></a>Public IP
+Define a public IP address. Again, look at the [REST API for public IP addresses](https://msdn.microsoft.com/library/azure/mt163590.aspx) for the properties to set.
 
 ```json
 {
@@ -202,25 +203,25 @@ Azure CLI を使用している場合は、次のコマンドを実行すると�
 }
 ```
 
-割り当て方式は **Dynamic** に設定されていますが、必要な値に設定することも、パラメーター値を受け入れるように設定することもできます。ここでは、テンプレートのユーザーがドメイン名ラベルの値を渡せるようにしてあります。
+The allocation method is set to **Dynamic** but you could set it to the value you need or set it to accept a parameter value. You have enabled users of your template to pass in a value for the domain name label.
 
-次に、**apiVersion** の特定方法を確認しましょう。指定する値は、単純に、リソースの作成時に使用する REST API のバージョンに一致します。そのため、そのリソースの種類については、REST API のドキュメントで確認できます。特定の種類については、次の PowerShell コマンドを実行して確認することもできます。
+Now, let's look at how you determine the **apiVersion**. The value you specify simply matches the version of the REST API that you want to use when creating the resource. So, you can look at the REST API documentation for that resource type. Or, you can run the following PowerShell command for a particular type.
 
 ```powershell
     ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Network).ResourceTypes | Where-Object ResourceTypeName -eq publicIPAddresses).ApiVersions
 ```
-返される値は次のとおりです。
+Which returns the following values:
 
     2015-06-15
     2015-05-01-preview
     2014-12-01-preview
 
-Azure CLI で API バージョンを確認するには、前に示したのと同じ **azure provider show** コマンドを実行します。
+To see the API versions with Azure CLI, run the same **azure provider show** command shown previously.
 
-新しいテンプレートの作成時には、最新の API バージョンを採用してください。
+When creating a new template, pick the most recent API version.
 
-## 仮想ネットワークとサブネット
-1 つのサブネットを持つ仮想ネットワークを作成します。設定するすべてのプロパティについては、[仮想ネットワークの REST API](https://msdn.microsoft.com/library/azure/mt163661.aspx) を参照してください。
+## <a name="virtual-network-and-subnet"></a>Virtual network and subnet
+Create a virtual network with one subnet. Look at the [REST API for virtual networks](https://msdn.microsoft.com/library/azure/mt163661.aspx) for all the properties to set.
 
 ```json
 {
@@ -246,10 +247,10 @@ Azure CLI で API バージョンを確認するには、前に示したのと�
 }
 ```
 
-## Load Balancer
-次に、外部に接続するロード バランサーを作成します。このロード バランサーはパブリック IP アドレスを使用するため、**dependsOn** セクションでパブリック IP アドレスへの依存関係を宣言する必要があります。これは、パブリック IP アドレスのデプロイが終わるまでは、ロード バランサーはデプロイされないことを意味します。この依存関係を定義しないと、Resource Manager によってリソースが並列的にデプロイされ、まだ存在しないパブリック IP アドレスにロード バランサーが設定されることになるため、エラーが発生します。
+## <a name="load-balancer"></a>Load balancer
+Now you will create an external facing load balancer. Because this load balancer uses the public IP address, you must declare a dependency on the public IP address in the **dependsOn** section. This means the load balancer will not get deployed until the public IP address has finished deploying. Without defining this dependency, you will receive an error because Resource Manager will attempt to deploy the resources in parallel, and will try to set the load balancer to public IP address that doesn't exist yet. 
 
-このリソースの定義では、バックエンド アドレス プール、VM への RDP に対するいくつかの受信 NAT 規則、ポート 80 での TCP プローブに関する負荷分散規則も作成します。すべてのプロパティについては、[ロード バランサーの REST API](https://msdn.microsoft.com/library/azure/mt163574.aspx) を確認してください。
+You will also create a backend address pool, a couple of inbound NAT rules to RDP into the VMs, and a load balancing rule with a tcp probe on port 80 in this resource definition. Checkout the [REST API for load balancer](https://msdn.microsoft.com/library/azure/mt163574.aspx) for all the properties.
 
 ```json
 {
@@ -338,8 +339,9 @@ Azure CLI で API バージョンを確認するには、前に示したのと�
 }
 ```
 
-## ネットワーク インターフェイス
-2 つのネットワーク インターフェイス (VM ごとに 1 つずつ) を作成します。同じエントリをネットワーク インターフェイスごとに追加する必要はありません。[copyIndex() 関数](resource-group-create-multiple.md)を使ってコピー ループ (nicLoop と呼ばれます) を反復処理し、`numberOfInstances` 変数で定義された数だけネットワーク インターフェイスを作成できます。ネットワーク インターフェイスを作成するには、仮想ネットワークとロード バランサーが作成されている必要があります。仮想ネットワークの作成時に定義されたサブネットとロード バランサー ID を使用して、ロード バランサー アドレス プールと受信 NAT 規則を構成します。すべてのプロパティについては、[ネットワーク インターフェイスの REST API](https://msdn.microsoft.com/library/azure/mt163668.aspx) を参照してください。
+## <a name="network-interface"></a>Network interface
+You will create 2 network interfaces, one for each VM. Rather than having to include duplicate entries for the network interfaces, you can use the [copyIndex() function](resource-group-create-multiple.md) to iterate over the copy loop (referred to as nicLoop) and create the number network interfaces as defined in the `numberOfInstances` variables. The network interface depends on creation of the virtual network and the load balancer. It uses the subnet defined in the virtual network creation, and the load balancer id to configure the load balancer address pool and the inbound NAT rules.
+Look at the [REST API for network interfaces](https://msdn.microsoft.com/library/azure/mt163668.aspx) for all the properties.
 
 ```json
 {
@@ -381,10 +383,11 @@ Azure CLI で API バージョンを確認するには、前に示したのと�
 }
 ```
 
-## 仮想マシン
-[ネットワーク インターフェイス](#network-interface)の作成時と同じように、copyIndex() 関数を使って 2 つの仮想マシンを作成します。VM を作成するには、ストレージ アカウント、ネットワーク インターフェイス、可用性セットが必要です。この VM は、`storageProfile` プロパティで定義されているとおりに、Marketplace イメージから作成されます。また、イメージの発行者、プラン、SKU、バージョンを定義するために、`imageReference` が使用されます。最後に、VM の診断を有効にするために、診断プロファイルを構成します。
+## <a name="virtual-machine"></a>Virtual machine
+You will create 2 virtual machines, using copyIndex() function, as you did in creation of the [network interfaces](#network-interface).
+The VM creation depends on the storage account, network interface and availability set. This VM will be created from a marketplace image, as defined in the `storageProfile` property - `imageReference` is used to define the image publisher, offer, sku and version. Finally, a diagnostic profile is configured to enable diagnostics for the VM. 
 
-Marketplace イメージの該当するプロパティを見つけるには、[Linux 仮想マシン イメージの選択](./virtual-machines/virtual-machines-linux-cli-ps-findimage.md)または [Windows 仮想マシン イメージの選択](./virtual-machines/virtual-machines-windows-cli-ps-findimage.md)に関する記事に従ってください。
+To find the relevant properties for a marketplace image, follow the [select Linux virtual machine images](./virtual-machines/virtual-machines-linux-cli-ps-findimage.md) or [select Windows virtual machine images](./virtual-machines/virtual-machines-windows-cli-ps-findimage.md) articles.
 
 ```json
 {
@@ -445,13 +448,13 @@ Marketplace イメージの該当するプロパティを見つけるには、[L
 }
 ```
 
->[AZURE.NOTE] **サード パーティ ベンダー**によって発行されたイメージの場合は、`plan` という別のプロパティを指定する必要があります。クイックスタート ギャラリーの[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic)で例を確認できます。
+>[AZURE.NOTE] For images published by **3rd party vendors**, you will need to specify another property named `plan`. An example can be found in [this template](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic) from the quickstart gallery. 
 
-テンプレートの各種リソースの定義が完了しました。
+You have finished defining the resources for your template.
 
-## パラメーター
+## <a name="parameters"></a>Parameters
 
-parameters セクションでは、テンプレートのデプロイ時に指定できる値を定義します。デプロイ中に変更する必要があると思われる値のパラメーターのみを定義してください。デプロイ中に指定されない場合に使用されるパラメーターの既定値を指定できます。**imageSKU** パラメーターで示されているように、許可される値を定義することもできます。
+In the parameters section, define the values that can be specified when deploying the template. Only define parameters for values that you think should be varied during deployment. You can provide a default value for a parameter that is used if one is not provided during deployment. You can also define the allowed values as shown for the **imageSKU** parameter.
 
 ```json
 "parameters": {
@@ -550,9 +553,9 @@ parameters セクションでは、テンプレートのデプロイ時に指定
   }
 ```
 
-## 変数
+## <a name="variables"></a>Variables
 
-variables セクションでは、テンプレート内の複数の場所で使用される値のほか、他の式または変数から構築される値を定義できます。変数は、テンプレートの構文を簡略化するために、頻繁に使用されます。
+In the variables section, you can define values that are used in more than one place in your template, or values that are constructed from other expressions or variables. Variables are frequently used to simplify the syntax of your template.
 
 ```json
 "variables": {
@@ -569,14 +572,18 @@ variables セクションでは、テンプレート内の複数の場所で使�
   }
 ```
 
-これでテンプレートが完成しました。 完成したテンプレートを、[クイックスタート ギャラリー](https://github.com/Azure/azure-quickstart-templates)の [2 VMs with load balancer and load balancer rules template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules) にある完全なテンプレートと比較できます。作成したテンプレートは、異なるバージョン番号を使用するなど、いくらか異なる可能性があります。
+You have completed the template! You can compare your template against the full template in the [quickstart gallery](https://github.com/Azure/azure-quickstart-templates) under [2 VMs with load balancer and load balancer rules template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules). Your template might be slightly different based on using different version numbers. 
 
-ストレージ アカウントをデプロイしたときと同じコマンドを使用して、テンプレートを再デプロイできます。既に存在し、変更されていないリソースは、Resource Manager によって再作成がスキップされるため、再デプロイ前にストレージ アカウントを削除する必要はありません。
+You can re-deploy the template by using the same commands you used when deploying the storage account. You do not need to delete the storage account before re-deploying because Resource Manager will skip re-creating resources that already exist and have not changed.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [Azure Resource Manager Template Visualizer (ARMViz)](http://armviz.io/#/) は、ARM テンプレートを視覚化するための優れたツールです。テンプレートは大きくなり過ぎたため、json ファイルを読むだけでは理解しづらい場合があります。
-- テンプレートの構造の詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-- テンプレートをデプロイする方法の詳細については、「[Azure Resource Manager のテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)」を参照してください。
+- [Azure Resource Manager Template Visualizer (ARMViz)](http://armviz.io/#/) is a great tool to visualize ARM templates, as they might become too large to understand just from reading the json file.
+- To learn more about the structure of a template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
+- To learn about deploying a template, see [Deploy a Resource Group with Azure Resource Manager template](resource-group-template-deploy.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="Lakshmi1812"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,10 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/21/2016"
-   ms.author="lakshmir;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="lakshmir;barbkess"/>
 
-# Azure SQL Data Warehouse の復元 (PowerShell)
+
+# <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Azure SQL Data Warehouse の復元 (PowerShell)
 
 > [AZURE.SELECTOR]
 - [概要][]
@@ -26,17 +27,17 @@
 
 この記事では、PowerShell を使用して Azure SQL Data Warehouse を復元する方法について説明します。
 
-## 開始する前に
+## <a name="before-you-begin"></a>開始する前に
 
-**DTU 容量を確認します。** 各 SQL Data Warehouse は、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。SQL Data Warehouse を復元する前に、データベースの復元に必要な量の DTU クォータがSQL server に残っていることを確認してください。必要な DTU を計算する方法と DTU を要求する方法については、[DTU クォータの変更の要求][]に関するトピックをご覧ください。
+**DTU 容量を確認します。**  各 SQL Data Warehouse は、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。  SQL Data Warehouse を復元する前に、データベースの復元に必要な量の DTU クォータがSQL server に残っていることを確認してください。 必要な DTU を計算する方法と DTU を要求する方法については、 [DTU クォータの変更の要求][]に関するトピックをご覧ください。
 
-### PowerShell をインストールする
+### <a name="install-powershell"></a>PowerShell をインストールする
 
-SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0 以降をインストールする必要があります。**Get-Module -ListAvailable -Name AzureRM** を実行することで、バージョンを確認できます。最新バージョンは、[Microsoft Web プラットフォーム インストーラー][]からインストールできます。最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」を参照してください。
+SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0 以降をインストールする必要があります。  **Get-Module -ListAvailable -Name AzureRM**を実行することで、バージョンを確認できます。  最新バージョンは、[Microsoft Web プラットフォーム インストーラー][]からインストールできます。  最新バージョンのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法][]」を参照してください。
 
-## アクティブまたは一時停止中のデータベースを復元する
+## <a name="restore-an-active-or-paused-database"></a>アクティブまたは一時停止中のデータベースを復元する
 
-スナップショットからデータベースを復元するには、[Restore-AzureRmSqlDatabase][] PowerShell コマンドレットを使用します。
+スナップショットからデータベースを復元するには、 [Restore-AzureRmSqlDatabase][] PowerShell コマンドレットを使用します。
 
 1. Windows PowerShell を開きます。
 2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
@@ -78,12 +79,12 @@ $RestoredDatabase.status
 
 ```
 
->[AZURE.NOTE] 復元が完了したら、「[復旧後のデータベースの構成][]」の手順に従って、復旧されたデータベースを構成できます。
+>[AZURE.NOTE] 復元が完了したら、「 [復旧後のデータベースの構成][]」の手順に従って、復旧されたデータベースを構成できます。
 
 
-## 削除されたデータベースの復元
+## <a name="restore-a-deleted-database"></a>削除されたデータベースの復元
 
-削除済みデータベースを復元するには、[Restore-AzureRmSqlDatabase][] コマンドレットを使用します。
+削除済みデータベースを復元するには、 [Restore-AzureRmSqlDatabase][] コマンドレットを使用します。
 
 1. Windows PowerShell を開きます。
 2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
@@ -113,12 +114,12 @@ $RestoredDatabase = Restore-AzureRmSqlDatabase –FromDeletedDatabaseBackup –D
 $RestoredDatabase.status
 ```
 
->[AZURE.NOTE] 復元が完了したら、「[復旧後のデータベースの構成][]」の手順に従って、復旧されたデータベースを構成できます。
+>[AZURE.NOTE] 復元が完了したら、「 [復旧後のデータベースの構成][]」の手順に従って、復旧されたデータベースを構成できます。
 
 
-## Azure 地理的リージョンからの復元
+## <a name="restore-from-an-azure-geographical-region"></a>Azure 地理的リージョンからの復元
 
-データベースを復旧するには、[Restore-AzureRmSqlDatabase][] コマンドレットを使用します。
+データベースを復旧するには、 [Restore-AzureRmSqlDatabase][] コマンドレットを使用します。
 
 1. Windows PowerShell を開きます。
 2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
@@ -142,21 +143,21 @@ $GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGrou
 $GeoRestoredDatabase.status
 ```
 
->[AZURE.NOTE] 復元が完了した後にデータベースを構成する方法については、「[復旧後のデータベースの構成][]」を参照してください。
+>[AZURE.NOTE] 復元が完了した後にデータベースを構成する方法については、「 [復旧後のデータベースの構成][]」を参照してください。 
 
 
 ソース データベースの TDE が有効な場合、復旧したデータベースも TDE が有効になります。
 
 
-## 次のステップ
-Azure SQL Database の各エディションのビジネス継続性機能については、[Azure SQL Database のビジネス継続性の概要][]に関するページをご覧ください。
+## <a name="next-steps"></a>次のステップ
+Azure SQL Database の各エディションのビジネス継続性機能については、 [Azure SQL Database のビジネス継続性の概要][]に関するページをご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
 [Azure SQL Database のビジネス継続性の概要]: sql-database-business-continuity.md
 [DTU クォータの変更の要求]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
-[Configure your database after recovery]: ./sql-database-disaster-recovery.md#configure-your-database-after-recovery
+[復旧後のデータベースの構成]: ./sql-database-disaster-recovery.md#configure-your-database-after-recovery
 [Azure PowerShell のインストールおよび構成方法]: powershell-install-configure.md
 [概要]: ./sql-data-warehouse-restore-database-overview.md
 [ポータル]: ./sql-data-warehouse-restore-database-portal.md
@@ -168,7 +169,11 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 [Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
 
 <!--Other Web references-->
-[Azure Portal]: https://portal.azure.com/
+[Azure App Service で Java Web アプリ]: https://portal.azure.com/
 [Microsoft Web プラットフォーム インストーラー]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

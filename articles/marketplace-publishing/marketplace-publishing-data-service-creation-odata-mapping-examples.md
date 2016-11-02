@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Marketplace 用データ サービスの作成ガイド | Microsoft Azure"
-   description="Azure Marketplace で購入できるデータ サービスを作成、認定、デプロイする方法について詳しく説明します。"
+   pageTitle="Guide to creating a Data Service for the  Marketplace | Microsoft Azure"
+   description="Detailed instructions of how to create, certify and deploy a Data Service for purchase on the Azure Marketplace."
    services="marketplace-publishing"
    documentationCenter=""
    authors="HannibalSII"
-   manager=""
+   manager="hascipio"
    editor=""/>
 
    <tags
@@ -16,12 +16,13 @@
       ms.date="08/26/2016"
       ms.author="hascipio; avikova" />
 
-# CSDL を使用した既存の Web サービスの OData へのマッピングの例
 
->[AZURE.IMPORTANT] **現時点では、新しいデータ サービスの発行元はオンボードされなくなりました。一覧への新しいデータ サービスの追加は承認されません。** SaaS ビジネス アプリケーションを AppSource で発行する場合、詳細については[こちら](https://appsource.microsoft.com/partners)をご覧ください。IaaS アプリケーションまたは開発者サービスを Azure Marketplace で発行する場合、詳細については[こちら](https://azure.microsoft.com/marketplace/programs/certified/)をご覧ください。
+# <a name="examples-of-mapping-an-existing-web-service-to-odata-through-csdls"></a>Examples of mapping an existing web service to OData through CSDLs
 
-## 例： "POST" を使用して返される "生" データのための FunctionImport
-POST の生データを使用して、新しい従属要素を作成し、サーバーによって定義された URL (場所) を返したり、サーバーによって定義された URL で従属要素の一部を更新したりします。ここでは従属要素はストリームです。つまり、テキスト ファイルなどの非構造化データです。場所がないと、POST はべき等ではない状態になることに注意してください。
+>[AZURE.IMPORTANT] **At this time we are no longer onboarding any new Data Service publishers. New dataservices will not get approved for listing.** If you have a SaaS business application you would like to publish on AppSource you can find more information [here](https://appsource.microsoft.com/partners). If you have an IaaS applications or developer service you would like to publish on Azure Marketplace you can find more information [here](https://azure.microsoft.com/marketplace/programs/certified/).
+
+## <a name="example:-functionimport-for-"raw"-data-returned-using-"post""></a>Example: FunctionImport for "Raw" data returned using "POST"
+Use POST Raw data to create a new subordinate and return its server defined URL(location) or to update part of the subordinate at the server defined URL.  Where the subordinate is a stream, i.e. unstructured, ex. a text file.  Beware POST in not idempotent without a location.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="AddUsageEvent" ReturnType="Raw(text/plain)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri="http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -38,8 +39,8 @@ POST の生データを使用して、新しい従属要素を作成し、サー
         </d:Namespaces>
         </FunctionImport>
 
-## 例: "DELETE" を使用する FunctionImport
-DELETE を使用して、指定した URI を削除します。
+## <a name="example:-functionimport-using-"delete""></a>Example: FunctionImport using "DELETE"
+Use DELETE to remove a specified URI.
 
         <EntitySet Name="DeleteUsageFileEntitySet" EntityType="MyOffer.DeleteUsageFileEntity" />
         <FunctionImport Name="DeleteUsageFile" EntitySet="DeleteUsageFileEntitySet" ReturnType="Collection(MyOffer.DeleteUsageFileEntity)"  d:AllowedHttpMethods="DELETE" d:EncodeParameterValues="true” d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643" >
@@ -59,8 +60,8 @@ DELETE を使用して、指定した URI を削除します。
         <Property Name="boolean" Type="String" Nullable="true" d:Map="./boolean" />
         </EntityType>
 
-## 例: "POST" を使用する FunctionImport
-POST の生データを使用して、新しい従属要素を作成し、サーバーによって定義された URL (場所) を返したり、サーバーによって定義された URL で従属要素の一部を更新したりします。ここでは従属要素は構造化データです。場所がない場合、POST はべき等ではないことに注意してください。
+## <a name="example:-functionimport-using-"post""></a>Example: FunctionImport using "POST"
+Use POST Raw data to create a new subordinate and return its server defined URL(location) or to update part of the subordinate at the server defined URL.  Where the subordinate is a structure. Beware POST is not idempotent without a location.
 
         <EntitySet Name="CreateANewModelEntitySet2" EntityType=" MyOffer.CreateANewModelEntity2" />
         <FunctionImport Name="CreateModel" EntitySet="CreateANewModelEntitySet2" ReturnType="Collection(MyOffer.CreateANewModelEntity2)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -77,8 +78,8 @@ POST の生データを使用して、新しい従属要素を作成し、サー
         </d:Namespaces>
         </FunctionImport>
 
-## 例: "PUT" を使用する FunctionImport
-PUT を使用して、新しい従属要素を作成したり、サーバーによって定義された URL で従属要素全体を更新したりします。ここでは従属要素は構造化データであり、PUT はべき等であるため、複数回発生しても結果は同じ状態になります (x=5)。PUT は、指定したリソースの全内容と共に使用する必要があります。
+## <a name="example:-functionimport-using-"put""></a>Example: FunctionImport using "PUT"
+Use PUT to create a new subordinate or to update the entire subordinate at a server defined URL.  Where the subordinate is a structure, PUT is idempotent so multiple occurrences will result in the same state, i.e x=5.  Put should be used with the full content of the specified resource.
 
         <EntitySet Name="UpdateAnExistingModelEntitySet" EntityType="MyOffer.UpdateAnExistingModelEntity" />
         <FunctionImport Name="UpdateModel" EntitySet="UpdateAnExistingModelEntitySet" ReturnType="Collection(MyOffer.UpdateAnExistingModelEntity)" d:EncodeParameterValues="true" d:AllowedHttpMethods="PUT" d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -95,12 +96,12 @@ PUT を使用して、新しい従属要素を作成したり、サーバーに�
         </d:Namespaces>
         </FunctionImport>
         <EntityType Name="UpdateAnExistingModelEntity" d:Map="//string">
-        <Property Name="string" 	Type="String" Nullable="true" d:Map="./string" />
+        <Property Name="string"     Type="String" Nullable="true" d:Map="./string" />
         </EntityType>
 
 
-## 例： "PUT" を使用して返される "生" データのための FunctionImport
-PUT の生データを使用して、新しい従属要素を作成したり、サーバーによって定義された URL で従属要素全体を更新したりします。ここでは従属要素はストリームです。つまり、テキスト ファイルなどの非構造化データです。PUT はべき等であるため、複数回発生しても結果は同じ状態になります (x=5)。PUT は、指定したリソースの全内容と共に使用する必要があります。
+## <a name="example:-functionimport-for-"raw"-data-returned-using-"put""></a>Example: FunctionImport for "Raw" data returned using "PUT"
+Use PUT Raw data to create a new subordinate or to update the entire subordinate at a server defined URL.  Where the subordinate is a stream, i.e. unstructured, ex. a text file.  PUT is idempotent so multiple occurrences will result in the same state, i.e x=5.  Put should be used with the full content of the specified resource.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="CancelBuild” ReturnType="Raw(text/plain)" d:AllowedHttpMethods="PUT" d:EncodeParameterValues="true" d:BaseUri=” http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -118,8 +119,8 @@ PUT の生データを使用して、新しい従属要素を作成したり、�
         </FunctionImport>
 
 
-## 例： "GET" を使用して返される "生" データのための FunctionImport
-GET の生データを使用して、構造化されていない従属要素 (テキストなど) を返します。
+## <a name="example:-functionimport-for-"raw"-data-returned-using-"get""></a>Example: FunctionImport for "Raw" data returned using "GET"
+Use GET Raw data to return a subordinate that is unstructured, i.e. text.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="GetModelUsageFile" ReturnType="Raw(text/plain)" d:EncodeParameterValues="true" d:AllowedHttpMethods="GET" d:BaseUri="https://cmla.cloudapp.net/api2/model/builder/build?buildId={buildId}&amp;apiVersion={apiVersion}">
@@ -137,13 +138,13 @@ GET の生データを使用して、構造化されていない従属要素 (�
         </d:Namespaces>
         </FunctionImport>
 
-## 例: 返されたデータの "ページング" のための FunctionImport
-GET で取得したデータの RESTful なページングを実装します。既定のページングは、データ ページあたり 100 行に設定されています。
+## <a name="example:-functionimport-for-"paging"-through-returned-data"></a>Example: FunctionImport for "Paging" through returned data
+Use implement RESTful paging through your data with GET.  Default paging is set to 100 row per page of data.
 
         <EntitySet Name=”CropEntitySet" EntityType="MyOffer.CropEntity" />
-        <FunctionImport	Name="GetCropReport" EntitySet="CropEntitySet” ReturnType="Collection(MyOffer.CropEntity)" d:EmitSelfLink="false" d:EncodeParameterValues="true" d:Paging="SkipTake" d:MaxPageSize="100" d:BaseUri="http://api.mydata.org/Crop? report={report}&amp;series={series}&amp;start={$skip}&amp;size=100">
+        <FunctionImport Name="GetCropReport" EntitySet="CropEntitySet” ReturnType="Collection(MyOffer.CropEntity)" d:EmitSelfLink="false" d:EncodeParameterValues="true" d:Paging="SkipTake" d:MaxPageSize="100" d:BaseUri="http://api.mydata.org/Crop? report={report}&amp;series={series}&amp;start={$skip}&amp;size=100">
         <Parameter Name="report" Type="Int32" Mode="In" Nullable="false" d:SampleValues="4"  d:enum="1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19"  />
-        <Parameter Name="series"	Type="String"	Mode="In" Nullable="false" d:SampleValues="FARM" />
+        <Parameter Name="series"    Type="String"   Mode="In" Nullable="false" d:SampleValues="FARM" />
         <d:Headers>
         <d:Header d:Name="Content-Type" d:Value="text/xml;charset=UTF-8" />
         </d:Headers>
@@ -152,9 +153,13 @@ GET で取得したデータの RESTful なページングを実装します。�
         </d:Namespaces>
         </FunctionImport>
 
-## 関連項目
-- 全体的な OData マッピング プロセスと目的を理解したい場合は、この[データ サービスの OData マッピング](marketplace-publishing-data-service-creation-odata-mapping.md)に関する記事を読んで、定義、構造、手順を確認してください。
-- 特定のノードとそのパラメーターについて知りたい場合は、定義と説明、例、ユース ケースのコンテキストなどが記載された、この[データ サービスの OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)に関する記事をご覧ください。
-- データ サービスを Azure Marketplace に発行するための指定のパスに戻る場合は、この[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)をご覧ください。
+## <a name="see-also"></a>See Also
+- If you are interested in understanding the overall OData mapping process and purpose, read this article [Data Service OData Mapping](marketplace-publishing-data-service-creation-odata-mapping.md) to review definitions, structures, and instructions.
+- If you are interested in learning and understanding the specific nodes and their parameters, read this article [Data Service OData Mapping Nodes](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) for definitions and explanations, examples, and use case context.
+- To return to the prescribed path for publishing a Data Service to the Azure Marketplace, read this article [Data Service Publishing Guide](marketplace-publishing-data-service-creation.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -17,23 +17,24 @@
  ms.date="09/27/2016"
  ms.author="larryfr"/>
 
-#HDInsight で WebHCat (Templeton) から受信したエラーの説明と解決策
 
-WebHCat (旧称 Templeton) を使用して HDInsight を使用するときに、エラーが発生することがあります。このドキュメントでは、一般的なエラーのガイダンスとして、エラーが発生する理由と、そのエラーを解決策として考えられるものを説明します。
+#<a name="understand-and-resolve-errors-received-from-webhcat-(templeton,)-on-hdinsight"></a>HDInsight で WebHCat (Templeton) から受信したエラーの説明と解決策
 
-##WebHCat とは
+WebHCat (旧称 Templeton) を使用して HDInsight を使用するときに、エラーが発生することがあります。 このドキュメントでは、一般的なエラーのガイダンスとして、エラーが発生する理由と、そのエラーを解決策として考えられるものを説明します。
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) は、Hadoop のテーブルおよびストレージの管理層である [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) 用の REST API です。WebHCat は、HDInsight クラスターで既定で有効になっており、ジョブの送信、ジョブの状態の取得などの操作をクラスターにログインすることなく行うために、さまざまなツールで使用されます。
+##<a name="what-is-webhcat?"></a>WebHCat とは
 
-##構成の変更
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) は、[Hadoop](https://cwiki.apache.org/confluence/display/Hive/HCatalog) のテーブルおよびストレージの管理層である HCatalog 用の REST API です。 WebHCat は、HDInsight クラスターで既定で有効になっており、ジョブの送信、ジョブの状態の取得などの操作をクラスターにログインすることなく行うために、さまざまなツールで使用されます。
 
-> [AZURE.IMPORTANT] このドキュメントに示すエラーのいくつかは、構成されている最大値が超過したことが原因で発生します。解決策に値が変更可能であることが示されている場合は、次のどちらかの方法で値を変更する必要があります。
+##<a name="modifying-configuration"></a>構成の変更
 
-* **Windows** クラスターの場合: スクリプト アクションを使用して、クラスターの作成時に値を構成します。詳細については、[スクリプト アクションの開発](hdinsight-hadoop-script-actions.md)に関するページを参照してください。
+> [AZURE.IMPORTANT] このドキュメントに示すエラーのいくつかは、構成されている最大値が超過したことが原因で発生します。 解決策に値が変更可能であることが示されている場合は、次のどちらかの方法で値を変更する必要があります。
 
-* **Linux** クラスターの場合: Ambari (Web または REST API) を使用して値を変更します。詳細については、[Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
+* **Windows** クラスターの場合: スクリプト アクションを使用して、クラスターの作成時に値を構成します。 詳細については、 [スクリプト アクションの開発](hdinsight-hadoop-script-actions.md)に関するページを参照してください。
 
-###既定の構成
+* **Linux** クラスターの場合: Ambari (Web または REST API) を使用して値を変更します。 詳細については、 [Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)
+
+###<a name="default-configuration"></a>既定の構成
 
 WebHCat のパフォーマンスに影響を与えたり、超過したときにエラーが発生したりする既定の構成値を次に示します。
 
@@ -43,15 +44,15 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 | [templeton.exec.max-procs][max-procs] | 同時に処理できる要求の最大数 | 20 |
 | [mapreduce.jobhistory.max-age-ms][max-age-ms] | ジョブの履歴が保持される日数 | 7 日 |
 
-##要求が多すぎます
+##<a name="too-many-requests"></a>要求が多すぎます
 
 **HTTP 状態コード**: 429
 
 | 原因 | 解決策 |
 | ----- | ---------- |
-| WebHCat によって 1 分間に処理される同時要求の最大数を超過した (既定値は 20)。 | 最大同時要求数を超える数の要求を送信しないようにワークロードを減らすか、`templeton.exec.max-procs` を変更して同時要求の上限をより大きな値にします。詳細については、「[構成の変更](#modifying-configuration)」を参照してください。 |
+| WebHCat によって 1 分間に処理される同時要求の最大数を超過した (既定値は 20)。 | 最大同時要求数を超える数の要求を送信しないようにワークロードを減らすか、 `templeton.exec.max-procs`を変更して同時要求の上限をより大きな値にします。 詳細については、「 [構成の変更](#modifying-configuration) 」を参照してください。 |
 
-##Server unavailable
+##<a name="server-unavailable"></a>Server unavailable
 
 **HTTP 状態コード**: 503
 
@@ -59,25 +60,25 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 | ---------------- | ------------------- |
 | これは、通常、クラスターのプライマリ ヘッドノードとセカンダリ ヘッドノードの間のフェールオーバー中に発生します。 | 2 分待ってから操作をやり直してください。 |
 
-##Bad request Content: Could not find job
+##<a name="bad-request-content:-could-not-find-job"></a>Bad request Content: Could not find job
 
 **HTTP 状態コード**: 400
 
 | 原因 | 解決策 |
 | ---------------- | ------------------- |
-| ジョブ履歴クリーナーによってジョブの詳細がクリーンアップされた。 | ジョブ履歴の既定の保有期間は 7 日間です。これは、`mapreduce.jobhistory.max-age-ms` を変更することによって変更できます。詳細については、「[構成の変更](#modifying-configuration)」を参照してください。 |
+| ジョブ履歴クリーナーによってジョブの詳細がクリーンアップされた。 | ジョブ履歴の既定の保有期間は 7 日間です。 これは、 `mapreduce.jobhistory.max-age-ms`を変更することによって変更できます。 詳細については、「 [構成の変更](#modifying-configuration) 」を参照してください。 |
 | フェールオーバーによってジョブが強制終了した。 | 最大で 2 分間にわたってジョブの送信を再試行してください。 |
 | 無効なジョブ ID が使用された。 | ジョブ ID が正しいことを確認してください。 |
 
-##Bad gateway
+##<a name="bad-gateway"></a>Bad gateway
 
 **HTTP 状態コード**: 502
 
 | 原因 | 解決策 |
 | ---------------- | ------------------- |
 | WebHCat プロセス内で内部ガベージ コレクションが行われている。 | ガベージ コレクションが終了するまで待つか、または WebHCat サービスを再起動します。 |
-| ResourceManager サービスからの応答の待機中にタイムアウトが発生した。アクティブなアプリケーションの数が構成された最大値 (既定値は 10,000) に達した場合に発生することがあります。 | 現在実行中のジョブが完了するまで待つか、または `yarn.scheduler.capacity.maximum-applications` を変更して同時実行ジョブの制限値をより大きな値にします。詳細については、「[構成の変更](#modifying-configuration)」を参照してください。 |
-| `Fields` が `*` に設定されているときに、[GET/jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 呼び出しですべてのジョブを取得しようとした。 | *すべて*のジョブの詳細を取得する操作は実行しないでください。代わりに、`jobid` を使用して、特定のジョブ ID を超えるジョブの詳細を取得してください。または、`Fields` を使用しないでください。 |
+| ResourceManager サービスからの応答の待機中にタイムアウトが発生した。 アクティブなアプリケーションの数が構成された最大値 (既定値は 10,000) に達した場合に発生することがあります。 | 現在実行中のジョブが完了するまで待つか、または `yarn.scheduler.capacity.maximum-applications`を変更して同時実行ジョブの制限値をより大きな値にします。 詳細については、「 [構成の変更](#modifying-configuration) 」を参照してください。  |
+| `Fields` が `*` に設定されているときに、[GET/jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 呼び出しですべてのジョブを取得しようとした。 | *すべて*のジョブの詳細を取得する操作は実行しないでください。代わりに、`jobid` を使用して、特定のジョブ ID を超えるジョブの詳細を取得してください。 または、`Fields` を使用しないでください。 |
 | ヘッドノードのフェールオーバー中に WebHCat サービスがダウンした。 | 2 分待ってから操作をやり直してください。 |
 | WebHCat を通じて送信された 500 個を超えるジョブが保留中になっている。 | 現在保留中のジョブが完了するのを待ってから、次のジョブを送信します。 |
 
@@ -86,4 +87,8 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 [max-age-ms]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/ds_Hadoop/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml
  
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

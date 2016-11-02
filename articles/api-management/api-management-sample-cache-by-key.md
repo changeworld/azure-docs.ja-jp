@@ -1,31 +1,32 @@
 <properties
-	pageTitle="Azure API Management のカスタム キャッシュ"
-	description="Azure API Management のキーによって項目をキャッシュする方法を説明します。"
-	services="api-management"
-	documentationCenter=""
-	authors="darrelmiller"
-	manager=""
-	editor=""/>
+    pageTitle="Custom caching in Azure API Management"
+    description="Learn how to cache items by key in Azure API Management"
+    services="api-management"
+    documentationCenter=""
+    authors="darrelmiller"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="api-management"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/09/2016"
-	ms.author="darrmi"/>
+    ms.service="api-management"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="10/25/2016"
+    ms.author="darrmi"/>
 
-# Azure API Management のカスタム キャッシュ
-Azure API Management サービスは、リソース URL をキーとして使用する [HTTP 応答のキャッシュ](api-management-howto-cache.md)を標準でサポートしています。このキーは、要求ヘッダーで `vary-by` プロパティを使用して変更できます。この変更操作は、HTTP 応答全体 ("表現" とも呼ばれます) をキャッシュする際だけでなく、表現の一部をキャッシュする際にも役立つことがあります。新しい [cache-lookup-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) ポリシーと [cache-store-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) ポリシーを使用すると、ポリシー定義内からデータの任意の部分の格納と取得を実行できます。また、外部サービスからの応答をキャッシュできるようになるため、以前に導入された [send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) ポリシーに値を追加することもできます。
 
-## アーキテクチャ  
-API Management サービスでは、テナント単位の共有データ キャッシュが使用されるため、複数のユニットにスケールアップしても、同じキャッシュ データにアクセスできます。ただし、複数リージョンのデプロイを使用する場合、キャッシュはリージョンごとに独立しています。そのため、データの唯一の格納場所となるデータ ストアとしてキャッシュを扱わないようにしてください。データ ストアとして扱い、後で複数リージョンのデプロイを使用することにした場合、ユーザーが移動すると、キャッシュされたデータにアクセスできなくなる可能性があります。
+# <a name="custom-caching-in-azure-api-management"></a>Custom caching in Azure API Management
+Azure API Management service has built-in support for [HTTP response caching](api-management-howto-cache.md) using the resource URL as the key. The key can be modified by request headers using the `vary-by` properties. This is useful for caching entire HTTP responses (aka representations), but sometimes it is useful to just cache a portion of a representation. The new [cache-lookup-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) and [cache-store-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) policies provide the ability to store and retrieve arbitrary pieces of data from within policy definitions. This ability also adds value to the previously introduced [send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) policy because you can now cache responses from external services.
 
-## フラグメント キャッシュ
-特定するのにコストがかかるため手付かずのまま長期間放置されているデータが、返される応答の中に含まれている場合があります。例として、航空会社が飛行機の予約やフライト状況などの関連情報を提供するサービスを構築した場合を考えてみましょう。ユーザーが航空会社のポイント プログラムのメンバーである場合、ユーザーには現在の状態や累積マイレージ数に関する情報があります。これらのユーザー関連情報が別のシステムに格納されていて、その情報をフライト状況や予約についての応答の中に含めたい場合、フラグメント キャッシュと呼ばれるプロセスを使用して実現できます。ユーザー関連情報を挿入する位置を示す一種のトークンを使用して、プライマリ表現を配信元サーバーから返すことができます。
+## <a name="architecture"></a>Architecture  
+API Management service uses a shared per-tenant data cache so that, as you scale up to multiple units you will still get access to the same cached data. However, when working with a multi-region deployment there are independent caches within each of the regions. Due to this, it is important to not treat the cache as a data store, where it is the only source of some piece of information. If you did, and later decided to take advantage of the multi-region deployment, then customers with users that travel may lose access to that cached data.
 
-バックエンド API から返される JSON 応答は次のようになります。
+## <a name="fragment-caching"></a>Fragment caching
+There are certain cases where responses being returned contain some portion of data that is expensive to determine and yet remains fresh for a reasonable amount of time. As an example, consider a service built by an airline that provides information relating flight reservations, flight status, etc. If the user is a member of the airlines points program, they would also have information relating to their current status and mileage accumulated. This user-related information might be stored in a different system, but it may be desirable to include it in responses returned about flight status and reservations. This can be done using a process called fragment caching. The primary representation can be returned from the origin server using some kind of token to indicate where the user-related information is to be inserted. 
+
+Consider the following JSON response from a backend API.
 
 
     {
@@ -37,23 +38,23 @@ API Management サービスでは、テナント単位の共有データ キャ�
       "userprofile" : "$userprofile$"
     }  
 
-`/userprofile/{userid}` のセカンダリ リソースは次のようになります。
+And secondary resource at `/userprofile/{userid}` that looks like,
 
      { "username" : "Bob Smith", "Status" : "Gold" }
 
-応答に含める適切なユーザー情報を特定するには、エンド ユーザーを識別する必要があります。このしくみは、実装によって異なります。この例では、`JWT` トークンの `Subject` 要求を使用しています。
+In order to determine the appropriate user information to include, we need to identify who the end user is. This mechanism is implementation dependent. As an example, I am using the `Subject` claim of a `JWT` token. 
 
     <set-variable
       name="enduserid"
       value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
 
-この `enduserid` 値には、後で使用できるようにコンテキスト変数を格納しています。次の手順では、前の要求でユーザー情報が既に取得されてキャッシュに格納されているかどうかを特定します。そのために、`cache-lookup-value` ポリシーを使用します。
+We store this `enduserid` value in a context variable for later use. The next step is to determine if a previous request has already retrieved the user information and stored it in the cache. For this we use the `cache-lookup-value` policy.
 
-	  <cache-lookup-value
+      <cache-lookup-value
       key="@("userprofile-" + context.Variables["enduserid"])"
       variable-name="userprofile" />
 
-キー値に対応するエントリがキャッシュ内にない場合、`userprofile` コンテキスト変数は作成されません。`choose` 制御フロー ポリシーを使用して、検索が成功したかどうかを確認します。
+If there is no entry in the cache that corresponds to the key value, then no `userprofile` context variable will be created. We check the success of the lookup using the `choose` control flow policy.
 
     <choose>
         <when condition="@(!context.Variables.ContainsKey("userprofile"))">
@@ -62,9 +63,9 @@ API Management サービスでは、テナント単位の共有データ キャ�
     </choose>
 
 
-`userprofile` コンテキスト変数が存在しない場合、取得するための HTTP 要求を作成する必要があります。
+If the `userprofile` context variable doesn’t exist, then we are going to have to make an HTTP request to retrieve it.
 
-	<send-request
+    <send-request
       mode="new"
       response-variable-name="userprofileresponse"
       timeout="10"
@@ -75,174 +76,178 @@ API Management サービスでは、テナント単位の共有データ キャ�
           (string)context.Variables["enduserid"]).AbsoluteUri)
       </set-url>
       <set-method>GET</set-method>
-	</send-request>
+    </send-request>
 
-`enduserid` を使用して、ユーザー プロファイル リソースに対する URL を作成します。応答が返されたら、応答から本文テキストを取得し、コンテキスト変数に格納できます。
+We use the `enduserid` to construct the URL to the user profile resource. Once we have the response, we can pull the body text out of the response and store it back into a context variable.
 
     <set-variable
         name="userprofile"
         value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
 
-同じユーザーが別の要求を行ったときに、この HTTP 要求を再度作成しなくて済むように、キャッシュにユーザー プロファイルを格納できます。
+To avoid us having to make this HTTP request again, when the same user makes another request, we can store the user profile in the cache.
 
-	<cache-store-value
+    <cache-store-value
         key="@("userprofile-" + context.Variables["enduserid"])"
         value="@((string)context.Variables["userprofile"])" duration="100000" />
 
-最初の取得で使用したのと同じキーを使用してキャッシュに値を格納できます。値を格納する期間は、情報が変更される頻度と、古くなった情報をユーザーがどの程度許容できるかに基づいて決定する必要があります。
+We store the value in the cache using the exact same key that we originally attempted to retrieve it with. The duration that we choose to store the value should be based on how often the information changes and how tolerant users are to out of date information. 
 
-キャッシュからの取得はプロセス外のネットワーク要求であり、要求にかかる時間が数十ミリ秒増える可能性がある点に注意が必要です。ユーザー プロファイル情報を特定する際に、データベース クエリの実行や複数のバックエンドからの情報集計が必要になるために長い時間がかかる場合は、キャッシュから取得する方がメリットがあります。
+It is important to realize that retrieving from the cache is still an out-of-process, network request and potentially can still add tens of milliseconds to the request. The benefits come when determining the user profile information takes significantly longer than that due to needing to do database queries or aggregate information from multiple back-ends.
 
-プロセスの最後の手順では、返される応答をユーザー プロファイル情報で更新します。
+The final step in the process is to update the returned response with our user profile information.
 
     <!—Update response body with user profile-->
     <find-and-replace
         from='"$userprofile$"'
         to="@((string)context.Variables["userprofile"])" />
 
-ここでは、トークンに引用符を含め、置換が実行されなかった場合も、応答が引き続き有効な JSON となるようにしています。これは、主にデバッグを容易にするための措置です。
+I chose to include the quotation marks as part of the token so that even when the replace doesn’t occur, the response was still valid JSON. This was primarily to make debugging easier.
 
-ここまでのすべての手順を 1 つにすると、最終的には次のようなポリシーが完成します。
+Once you combine all these steps together, the end result is a policy that looks like the following one.
 
      <policies>
-    	<inbound>
-    		<!-- How you determine user identity is application dependent -->
-    		<set-variable
+        <inbound>
+            <!-- How you determine user identity is application dependent -->
+            <set-variable
               name="enduserid"
               value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
 
-    		<!--Look for userprofile for this user in the cache -->
-    		<cache-lookup-value
+            <!--Look for userprofile for this user in the cache -->
+            <cache-lookup-value
               key="@("userprofile-" + context.Variables["enduserid"])"
               variable-name="userprofile" />
 
-    		<!-- If we don’t find it in the cache, make a request for it and store it -->
-    		<choose>
-    			<when condition="@(!context.Variables.ContainsKey("userprofile"))">
-    				<!—Make HTTP request to get user profile -->
-    				<send-request
+            <!-- If we don’t find it in the cache, make a request for it and store it -->
+            <choose>
+                <when condition="@(!context.Variables.ContainsKey("userprofile"))">
+                    <!—Make HTTP request to get user profile -->
+                    <send-request
                       mode="new"
                       response-variable-name="userprofileresponse"
                       timeout="10"
                       ignore-error="true">
 
                        <!-- Build a URL that points to the profile for the current end-user -->
-    					<set-url>@(new Uri(new Uri("https://apimairlineapi.azurewebsites.net/UserProfile/"),(string)context.Variables["enduserid"]).AbsoluteUri)</set-url>
-    					<set-method>GET</set-method>
-    				</send-request>
+                        <set-url>@(new Uri(new Uri("https://apimairlineapi.azurewebsites.net/UserProfile/"),(string)context.Variables["enduserid"]).AbsoluteUri)</set-url>
+                        <set-method>GET</set-method>
+                    </send-request>
 
-    				<!—Store response body in context variable -->
-    				<set-variable
+                    <!—Store response body in context variable -->
+                    <set-variable
                       name="userprofile"
                       value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
 
-    				<!—Store result in cache -->
-    				<cache-store-value
+                    <!—Store result in cache -->
+                    <cache-store-value
                       key="@("userprofile-" + context.Variables["enduserid"])"
                       value="@((string)context.Variables["userprofile"])"
                       duration="100000" />
-    			</when>
-    		</choose>
-    		<base />
-    	</inbound>
-    	<outbound>
-    		<!—Update response body with user profile-->
-    		<find-and-replace
+                </when>
+            </choose>
+            <base />
+        </inbound>
+        <outbound>
+            <!—Update response body with user profile-->
+            <find-and-replace
                   from='"$userprofile$"'
                   to="@((string)context.Variables["userprofile"])" />
-    		<base />
-    	</outbound>
+            <base />
+        </outbound>
      </policies>
 
-このようなキャッシュ アプローチは、主に、1 つのページとして表示できるように HTML がサーバー側で構成されている Web サイトで使用されます。ただし、クライアントがクライアント側での HTTP キャッシュを実行できない API や、クライアントにその役割を負わせたくない場合にも役立ちます。
+This caching approach is primarily used in web sites where HTML is composed on the server side so that it can be rendered as a single page. However, it can also be useful in APIs where clients cannot do client side HTTP caching or it is desirable not to put that responsibility on the client.
 
-同種のフラグメント キャッシュは、Redis キャッシュ サーバーを使用してバックエンド Web サーバーで実行することもできます。ただし、キャッシュされたフラグメントがプライマリ応答とは別のバックエンドから取得される場合は、API Management サービスを使用して実施する方が便利です。
+This same kind of fragment caching can also be done on the backend web servers using a Redis caching server, however, using the API Management service to perform this work is useful when the cached fragments are coming from different back-ends than the primary responses.
 
-## 透過的なバージョン管理
-API の複数の実装バージョンを同時にサポートすることはよくあります。開発、テスト、運用など複数の環境をサポートするためであることもあれば、API コンシューマーが新しいバージョンに移行するための期間を設けて以前のバージョンの API をサポートする場合もあります。
+## <a name="transparent-versioning"></a>Transparent versioning
+It is common practice for multiple different implementation versions of an API to be supported at any one time. This is perhaps to support different environments, like dev, test, production, etc, or it may be to support older versions of the API to give time for API consumers to migrate to newer versions. 
 
-クライアントの開発者が URL を `/v1/customers` から `/v2/customers` に変更せずにこの状況に対処する方法の 1 つとして、使用したい API バージョンをコンシューマーのプロファイル データに格納し、適切なバックエンド URL を呼び出すというアプローチがあります。特定のクライアントを呼び出すための適切なバックエンド URL を調べるには、いくつかの構成データをクエリする必要があります。この構成データをキャッシュすることで、検索を実行する際のパフォーマンスの低下を最小限に抑えることができます。
+One approach to handling this instead of requiring client developers to change the URLs from `/v1/customers` to `/v2/customers` is to store in the consumer’s profile data which version of the API they currently wish to use and call the appropriate backend URL. In order to determine the correct backend URL to call for a particular client, it is necessary to query some configuration data. By caching this configuration data, we can minimize the performance penalty of doing this lookup.
 
-最初の手順では、目的のバージョンを構成するために使用される識別子を特定します。この例では、バージョンを製品のサブスクリプション キーに関連付けることにしました。
+The first step is to determine the identifier used to configure the desired version. In this example, I chose to associate the version to the product subscription key. 
 
-		<set-variable name="clientid" value="@(context.Subscription.Key)" />
+        <set-variable name="clientid" value="@(context.Subscription.Key)" />
 
-キャッシュの検索を実行し、目的のクライアント バージンが既に取得されているかどうかを確認します。
+We then do a cache lookup to see if we already have retrieved the desired client version.
 
-		<cache-lookup-value
+        <cache-lookup-value
         key="@("clientversion-" + context.Variables["clientid"])"
         variable-name="clientversion" />
 
-次に、キャッシュ内に見つからないかどうかを確認します。
+Then we check to see if we did not find it in the cache.
 
-	<choose>
-		<when condition="@(!context.Variables.ContainsKey("clientversion"))">
+    <choose>
+        <when condition="@(!context.Variables.ContainsKey("clientversion"))">
 
-見つからなかった場合は、取得します。
+If we didn’t then we go and retrieve it.
 
-	<send-request
+    <send-request
         mode="new"
         response-variable-name="clientconfiguresponse"
         timeout="10"
         ignore-error="true">
-        		<set-url>@(new Uri(new Uri(context.Api.ServiceUrl.ToString() + "api/ClientConfig/"),(string)context.Variables["clientid"]).AbsoluteUri)</set-url>
-        		<set-method>GET</set-method>
-	</send-request>
+                <set-url>@(new Uri(new Uri(context.Api.ServiceUrl.ToString() + "api/ClientConfig/"),(string)context.Variables["clientid"]).AbsoluteUri)</set-url>
+                <set-method>GET</set-method>
+    </send-request>
 
-応答から応答本文テキストを抽出します。
+Extract the response body text from the response.
 
     <set-variable
           name="clientversion"
           value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
 
-将来使用できるようにキャッシュに格納します。
+Store it back in the cache for future use.
 
     <cache-store-value
           key="@("clientversion-" + context.Variables["clientid"])"
           value="@((string)context.Variables["clientversion"])"
           duration="100000" />
 
-最後に、クライアントが必要とするサービスのバージョンを選択してバックエンド URL を更新します。
+And finally update the back-end URL to select the version of the service desired by the client.
 
-	<set-backend-service
+    <set-backend-service
           base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
 
-完成したポリシーは次のようになります。
+The completely policy is as follows.
 
-	 <inbound>
-		<base />
-		<set-variable name="clientid" value="@(context.Subscription.Key)" />
-		<cache-lookup-value key="@("clientversion-" + context.Variables["clientid"])" variable-name="clientversion" />
+     <inbound>
+        <base />
+        <set-variable name="clientid" value="@(context.Subscription.Key)" />
+        <cache-lookup-value key="@("clientversion-" + context.Variables["clientid"])" variable-name="clientversion" />
 
-		<!-- If we don’t find it in the cache, make a request for it and store it -->
-		<choose>
-			<when condition="@(!context.Variables.ContainsKey("clientversion"))">
-				<send-request mode="new" response-variable-name="clientconfiguresponse" timeout="10" ignore-error="true">
-					<set-url>@(new Uri(new Uri(context.Api.ServiceUrl.ToString() + "api/ClientConfig/"),(string)context.Variables["clientid"]).AbsoluteUri)</set-url>
-					<set-method>GET</set-method>
-				</send-request>
-				<!-- Store response body in context variable -->
-				<set-variable name="clientversion" value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
-				<!-- Store result in cache -->
-				<cache-store-value key="@("clientversion-" + context.Variables["clientid"])" value="@((string)context.Variables["clientversion"])" duration="100000" />
-			</when>
-		</choose>
-		<set-backend-service base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
-	</inbound>
+        <!-- If we don’t find it in the cache, make a request for it and store it -->
+        <choose>
+            <when condition="@(!context.Variables.ContainsKey("clientversion"))">
+                <send-request mode="new" response-variable-name="clientconfiguresponse" timeout="10" ignore-error="true">
+                    <set-url>@(new Uri(new Uri(context.Api.ServiceUrl.ToString() + "api/ClientConfig/"),(string)context.Variables["clientid"]).AbsoluteUri)</set-url>
+                    <set-method>GET</set-method>
+                </send-request>
+                <!-- Store response body in context variable -->
+                <set-variable name="clientversion" value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
+                <!-- Store result in cache -->
+                <cache-store-value key="@("clientversion-" + context.Variables["clientid"])" value="@((string)context.Variables["clientversion"])" duration="100000" />
+            </when>
+        </choose>
+        <set-backend-service base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
+    </inbound>
 
 
-クライアントを更新して再デプロイしなくても、クライアントがアクセスしているバックエンドのバージョンを API コンシューマーが透過的に制御できれば、さまざまな API バージョン管理の問題に効果的に対処できます。
+Enabling API consumers to transparently control which backend version is being accessed by clients without having to update and redeploy clients is a elegant solution that addresses many API versioning concerns.
 
-## テナントの分離
+## <a name="tenant-isolation"></a>Tenant Isolation
 
-大規模なマルチテナント デプロイの場合、企業によっては、バックエンド ハードウェアのデプロイごとにテナントのグループを個別に作成します。こうすることで、バックエンドでハードウェアの問題が発生した場合に、影響を受ける顧客の数を最小限に抑えられます。また、新しいソフトウェア バージョンを段階的にロールアウトすることもできます。理想としては、このバックエンド アーキテクチャは、API コンシューマーに対して透過的である必要があります。これは、透過的なバージョン管理で説明したのと同様の方法で実現できます。API キーごとに構成状態を使用してバックエンド URL を操作するという同じ手法がベースになるためです。
+In larger, multi-tenant deployments some companies create separate groups of tenants on distinct deployments of backend hardware. This minimizes the number of customers who are impacted by a hardware issue on the backend. It also enables new software versions to be rolled out in stages. Ideally this backend architecture should be transparent to API consumers. This can be achieved in a similar way to transparent versioning because it is based on the same technique of manipulating the backend URL using configuration state per API key.  
 
-サブスクリプション キーごとに API の推奨バージョンを返すのではなく、割り当てられたハードウェア グループにテナントを関連付ける識別子を返します。この識別子を使用して、適切なバックエンド URL を作成できます。
+Instead of returning a preferred version of the API for each subscription key, you would return an identifier that relates a tenant to the assigned hardware group. That identifier can be used to construct the appropriate backend URL.
 
-## まとめ
-Azure API Management のキャッシュを使用すると、あらゆる種類のデータを格納できるため、受信要求の処理方法に影響を与える可能性のある構成データに効率よくアクセスできます。また、データ フラグメントを格納し、バックエンド API から返された応答を補強することもできます。
+## <a name="summary"></a>Summary
+The freedom to use the Azure API management cache for storing any kind of data enables efficient access to configuration data that can affect the way an inbound request is processed. It can also be used to store data fragments that can augment responses, returned from a backend API.
 
-## 次のステップ
-ご意見ご感想をこのトピックの Disqus スレッドでお寄せください。上記のポリシーによって実現できる他のシナリオや、実現したいと思いながら現時点では難しいと感じているシナリオがありましたら、ぜひお聞かせください。
+## <a name="next-steps"></a>Next steps
+Please give us your feedback in the Disqus thread for this topic if there are other scenarios that these policies have enabled for you, or if there are scenarios you would like to achieve but do not feel are currently possible.
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

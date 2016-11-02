@@ -1,79 +1,85 @@
 <properties
-	pageTitle="Azure ポータルを使用した Azure Search サービスの作成 | Microsoft Azure | ホスト型クラウド検索サービス"
-	description="Azure ポータルを使用して Azure Search サービスをプロビジョニングする方法について説明します。"
-	services="search"
-	authors="ashmaka"
-	documentationCenter=""/>
+    pageTitle="Create an Azure Search service using the Azure Portal | Microsoft Azure | Hosted cloud search service"
+    description="Learn how to provision an Azure Search service using the Azure Portal."
+    services="search"
+    manager="jhubbard"
+    authors="ashmaka"
+    documentationCenter=""/>
 
 <tags
-	ms.service="search"
-	ms.devlang="NA"
-	ms.workload="search"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.date="08/29/2016"
-	ms.author="ashmaka"/>
+    ms.service="search"
+    ms.devlang="NA"
+    ms.workload="search"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.date="08/29/2016"
+    ms.author="ashmaka"/>
 
-# Azure ポータルを使用した Azure Search サービスの作成
 
-このガイドでは、[Azure ポータル](https://portal.azure.com/)を使用して Azure Search サービスを作成する (またはプロビジョニングする) プロセスについて説明します。
+# <a name="create-an-azure-search-service-using-the-azure-portal"></a>Create an Azure Search service using the Azure Portal
 
-このガイドでは、既に Azure サブスクリプションを持っており、Azure ポータルにログインできることを前提としています。
+This guide will walk you through the process of creating (or provisioning) an Azure Search service using the [Azure Portal](https://portal.azure.com/).
 
-## Azure ポータルで Azure Search を見つける
-1. [Azure ポータル](https://portal.azure.com/)にアクセスし、ログインします。
-1. 左上隅のプラス記号 ("+") をクリックします
-2. **[データ + ストレージ]** を選択します。
-3. **[Azure Search]** を選択します。
+This guide assumes that you already have an Azure Subscription and can log into the Azure Portal.
+
+## <a name="find-azure-search-in-the-azure-portal"></a>Find Azure Search in the Azure Portal
+1. Go to the [Azure Portal](https://portal.azure.com/) and log in.
+1. Click on the plus sign ("+") in the top left corner.
+2. Select **Data + Storage**.
+3. Select **Azure Search**.
 
 ![](./media/search-create-service-portal/find-search.png)
 
-## サービスのサービス名と URL エンドポイントを選択する
-1. サービス名は、検索サービスを管理して使用するために API 呼び出しを行う対象となる Azure Search サービスのエンドポイント URL の一部となります。
-2. **[URL]** フィールドにサービス名を入力します。サービス名:
-  * 小文字、数字、ダッシュ ("-") のみを含める必要があります
-  * 最初の 2 文字または最後の 1 文字にダッシュ ("-") を使用することはできません
-  * 連続するダッシュ ("-") を含めることはできません
-  * 2 ～ 60 文字の長さに制限されます
+## <a name="pick-a-service-name-and-url-endpoint-for-your-service"></a>Pick a service name and URL endpoint for your service
+1. Your service name will be part of your Azure Search service's endpoint URL against which you will make your API calls to manage and use the search service.
+2. Type your service name in the **URL** field. The service name:
+  * must only contain lowercase letters, digits or dashes ("-")
+  * cannot use a dash ("-") as the first 2 characters or last single character
+  * cannot contain consecutive dashes ("--")
+  * is limited between 2 and 60 characters in length
 
 
-## サービスを維持するサブスクリプションを選択する
-サブスクリプションが複数ある場合は、この Azure Search サービスを含めるサブスクリプションを選択できます。
+## <a name="select-a-subscription-where-you-will-keep-your-service"></a>Select a subscription where you will keep your service
+If you have more than one subscription, you can select which one will include this Azure Search service.
 
-## サービスのリソース グループを選択する
-新しいリソース グループを作成するか、または既存のリソース グループを選択します。リソース グループとは、一緒に使用される Azure サービスとリソースのコレクションです。たとえば、Azure Search を使用して SQL Database のインデックスを作成する場合、これら両方のサービスを同じリソース グループに含める必要があります。
+## <a name="select-a-resource-group-for-your-service"></a>Select a resource group for your service
+Create a new resource group or select an existing one. A resource group is a collection of Azure services and resources that are used together. For example, if you are using Azure Search to index a SQL database, then both of these services should be part of the same resource group.
 
-## サービスがホストされる場所を選択する
-Azure サービスとして Azure Search は、世界中のデータ センターでホストできます。地域によって[価格が異なることがある](https://azure.microsoft.com/pricing/details/search/)ことに注意してください。
+## <a name="select-the-location-where-your-service-will-be-hosted"></a>Select the location where your service will be hosted
+As an Azure service, Azure Search is available to be hosted in datacenters around the world. Please note that [prices can differ](https://azure.microsoft.com/pricing/details/search/) by geography.
 
-## 価格レベルを選択する
-[Azure Search は現在、Free、Basic、Standard の複数の価格レベルで提供されています](https://azure.microsoft.com/pricing/details/search/)。レベルごとに独自の[容量と制限](search-limits-quotas-capacity.md)があります。ガイダンスについては、[価格レベルまたは SKU の選択](search-sku-tier.md)に関する記事をご覧ください。
+## <a name="select-your-pricing-tier"></a>Select your pricing tier
+[Azure Search is currently offered in multiple pricing tiers](https://azure.microsoft.com/pricing/details/search/): Free, Basic, or Standard. Each tier has its own [capacity and limits](search-limits-quotas-capacity.md). See [Choose a pricing tier or SKU](search-sku-tier.md) for guidance.
 
-この例では、サービスに Standard レベルを選択しました。
+In this case, we have chosen the Standard tier for our service.
 
-## [作成] ボタンを選択して、サービスをプロビジョニングする
+## <a name="select-the-"create"-button-to-provision-your-service"></a>Select the "Create" button to provision your service
 
 ![](./media/search-create-service-portal/create-service.png)
 
-## サービスを拡張する
+## <a name="scale-your-service"></a>Scale your service
 
-サービスのプロビジョニングが完了したら、ニーズに合わせてサービスを拡張できます。Azure Search サービスに、Standard レベルを選択した場合、レプリカとパーティションの 2 つのディメンションでサービスを拡張できます。Basic レベルを選択した場合は、レプリカのみ追加できます。
+After your service is provisioned, you can scale it to meet your needs. If you have chosen the Standard tier for your Azure Search service, you can scale your service in two dimensions: replicas and partitions. If you have chosen the Basic tier, you can only add replicas.
 
-__パーティション__を使用すると、サービスでより多くのドキュメントを格納し、検索できます。
+*__Partitions__* allow your service to store and search through more documents.
 
-__レプリカ__を使用すると、サービスで負荷の高い検索クエリを処理できます。[サービスは、読み取り専用 SLA を実現するために 2 つのレプリカを必要とし、読み取り/書き込み SLA を実現するために 3 つのレプリカを必要とします](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
+*__Replicas__* allow your service to handle a higher load of search queries - [a service requires 2 replicas to achieve a read-only SLA and requires 3 replicas to achieve a read/write SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-1. Azure ポータルで Azure Search サービスの管理ブレードに移動します。
-2. **[設定]** ブレードで、**[スケール]** を選択します。
-3. レプリカまたはパーティションを追加して、サービスを拡張できます。
-  * 36 検索単位を超えてサービスを拡張することはできません。検索単位の総数は、レプリカとパーティションの積になります (レプリカ * パーティション = 合計検索単位)。
-  * Basic レベルを選択した場合、3 つのレプリカにのみ拡張できます。Basic サービスは、1 つのパーティションにバインドされます。
+1. Go to your Azure Search service's management blade in the Azure Portal.
+2. In the **Settings** blade, select **Scale**.
+3. You can scale your service by adding Replicas or Partitions.
+  * You cannot scale your service past 36 search units. Your total number of search units is the product of your replicas and partitions (Replicas * Partitions = Total Search Units).
+  * If you have chosen the Basic tier, you can only scale to 3 replicas. Basic services are bound to a single partition.
 
 ![](./media/search-create-service-portal/scale-service.png)
 
-## 次へ
-Azure Search サービスをプロビジョニングしたら、データをアップロードし、検索できるように、[Azure Search インデックスを定義する](search-what-is-an-index.md)ことができます。
+## <a name="next"></a>Next
+After provisioning an Azure Search service, you will be ready to [define an Azure Search index](search-what-is-an-index.md) so you can upload and search your data.
 
-クイック チュートリアルについては、「[ポータルから Azure Search を使用する](search-get-started-portal.md)」をご覧ください。
+See [Get started with Azure Search in the portal](search-get-started-portal.md) for a quick tutorial.
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

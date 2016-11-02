@@ -16,17 +16,18 @@ ms.workload="big-data"
 ms.date="09/27/2016"
 ms.author="larryfr"/>
 
-#HDInsight で Hive と Java UDF を使用する
 
-Hive は HDInsight でデータを処理する場合にきわめて有益ですが、より汎用的な言語が必要になる場合もあります。Hive では、さまざまなプログラミング言語を使用してユーザー定義関数 (UDF) を作成できます。このドキュメントでは、Hive から Java UDF を使用する方法を説明します。
+#<a name="use-a-java-udf-with-hive-in-hdinsight"></a>HDInsight で Hive と Java UDF を使用する
 
-## 必要条件
+Hive は HDInsight でデータを処理する場合にきわめて有益ですが、より汎用的な言語が必要になる場合もあります。 Hive では、さまざまなプログラミング言語を使用してユーザー定義関数 (UDF) を作成できます。 このドキュメントでは、Hive から Java UDF を使用する方法を説明します。
+
+## <a name="requirements"></a>必要条件
 
 * Azure サブスクリプション
 
 * HDInsight クラスター (Windows ベースまたは Linux ベース)
 
-    > [AZURE.NOTE] このドキュメントのほとんどの手順が、両方の種類のクラスターで機能します。ただし、コンパイル済みの UDF をクラスターにアップロードして実行するための手順は、Linux ベースのクラスター固有の内容です。Windows ベースのクラスターで使用できる情報へのリンクが提供されます。
+    > [AZURE.NOTE] このドキュメントのほとんどの手順が、両方の種類のクラスターで機能します。ただし、コンパイル済みの UDF をクラスターにアップロードして実行するための手順は、Linux ベースのクラスター固有の内容です。 Windows ベースのクラスターで使用できる情報へのリンクが提供されます。
 
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 7 以降 (または同等の OpenJDK など)
 
@@ -34,15 +35,15 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
 
 * テキスト エディターまたは Java IDE
 
-    > [AZURE.IMPORTANT] Linux ベースの HDInsight サーバーを使用している一方で、Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。エディターで LF と CRLF のどちらが使用されているかが不明な場合は、「[トラブルシューティング](#troubleshooting)」セクションで、ユーティリティを使用して HDInsight クラスターで CR 文字を削除する手順をご覧ください。
+    > [AZURE.IMPORTANT] Linux ベースの HDInsight サーバーを使用している一方で、Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。 エディターで LF と CRLF のどちらが使用されているかが不明な場合は、「 [トラブルシューティング](#troubleshooting) 」セクションで、ユーティリティを使用して HDInsight クラスターで CR 文字を削除する手順をご覧ください。
 
-## UDF のサンプルを作成する
+## <a name="create-an-example-udf"></a>UDF のサンプルを作成する
 
 1. コマンド ラインで、次の手順を使用して新しい Maven プロジェクトを作成します。
 
         mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
-    > [AZURE.NOTE] PowerShell を使用している場合は、パラメーターを引用符で囲む必要があります。たとえば、「`mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`」のように入力します。
+    > [AZURE.NOTE] PowerShell を使用している場合は、パラメーターを引用符で囲む必要があります。 たとえば、「 `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`」のように入力します。
 
     これによって、__exampleudf__ という名前の新しいディレクトリが作成されます。このディレクトリに Maven プロジェクトが格納されます。
 
@@ -65,9 +66,9 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
             </dependency>
         </dependencies>
 
-    これらのエントリは、HDInsight 3.3 および 3.4 のクラスターに含まれる Hadoop と Hive のバージョンを指定します。HDInsight に含まれる Hadoop と Hive のバージョンの情報は、[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)に関するドキュメントで確認できます。
+    これらのエントリは、HDInsight 3.3 および 3.4 のクラスターに含まれる Hadoop と Hive のバージョンを指定します。 HDInsight に含まれる Hadoop と Hive のバージョンの情報は、 [HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md) に関するドキュメントで確認できます。
 
-    ファイルの最後の `</project>` 行の前に `<build>` セクションを追加します。このセクションには、次の行が含まれる必要があります。
+    ファイルの最後の `</project>` 行の前に `<build>` セクションを追加します。 このセクションには、次の行が含まれる必要があります。
 
         <build>
             <plugins>
@@ -119,11 +120,11 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
             </plugins>
         </build>
     
-    これらのエントリは、プロジェクトのビルド方法を定義します。具体的に言うと、プロジェクトで使用する Java のバージョンと、クラスターにデプロイするための uberjar の構築方法です。
+    これらのエントリは、プロジェクトのビルド方法を定義します。 具体的に言うと、プロジェクトで使用する Java のバージョンと、クラスターにデプロイするための uberjar の構築方法です。
 
     変更を加えたら、ファイルを保存します。
 
-4. __exampleudf/src/main/java/com/microsoft/examples/App.java__ を __ExampleUDF.java__ に名前を変更して、このファイルをエディターで開きます。
+4. __exampleudf/src/main/java/com/microsoft/examples/App.java__ の名前を __ExampleUDF.java__ に変更して、このファイルをエディターで開きます。
 
 5. __ExampleUDF.java__ ファイルの内容を次のコードに置き換えて、ファイルを保存します。
 
@@ -152,21 +153,21 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
 
     こうすることで、文字列値を受け取って、その文字列の小文字のバージョンを返す UDF が実装されます。
 
-## UDF をビルドしてインストールする
+## <a name="build-and-install-the-udf"></a>UDF をビルドしてインストールする
 
 1. 次のコマンドを使用して、UDF をコンパイルしパッケージ化します。
 
         mvn compile package
 
-    これで、UDF がビルドされ、__exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar__ にパッケージ化されます。
+    これで、UDF がビルドされ、 __exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar__にパッケージ化されます。
 
 2. `scp` コマンドを使用して、ファイルを HDInsight クラスターにコピーします。
 
         scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
 
-    __myuser__ をクラスターの SSH ユーザー アカウントに置き換えます。__mycluster__ をクラスター名に置き換えます。SSH アカウントをセキュリティで保護するためにパスワードを使用している場合は、そのパスワードの入力を求められます。証明書を使用している場合は、`-i` パラメーターを使用して、秘密キー ファイルを指定することが必要な場合があります。
+    __myuser__ をクラスターの SSH ユーザー アカウントに置き換えます。 __mycluster__ をクラスター名に置き換えます。 SSH アカウントをセキュリティで保護するためにパスワードを使用している場合は、そのパスワードの入力を求められます。 証明書を使用している場合は、 `-i` パラメーターを使用して、秘密キー ファイルを指定することが必要な場合があります。
 
-3. SSH を使用したクラスターへの接続
+3. SSH を使用したクラスターへの接続 
 
         ssh myuser@mycluster-ssh.azurehdinsight.net
 
@@ -180,7 +181,7 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
 
         hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
 
-## Hive から UDF を使用する
+## <a name="use-the-udf-from-hive"></a>Hive から UDF を使用する
 
 1. SSH セッションから、次のコマンドを使用して Beelineクライアントを開始します。
 
@@ -197,7 +198,7 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
 
         SELECT tolower(deviceplatform) FROM hivesampletable LIMIT 10;
 
-    これによって、テーブルからデバイスのプラットフォーム (Android、Windows、iOS など) が選択され、その文字列が小文字に変換されて表示されます。出力は次のように表示されます。
+    これによって、テーブルからデバイスのプラットフォーム (Android、Windows、iOS など) が選択され、その文字列が小文字に変換されて表示されます。 出力は次のように表示されます。
 
         +----------+--+
         |   _c0    |
@@ -214,10 +215,14 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
         | android  |
         +----------+--+
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 Hive の他の使用方法について [HDInsight での Hive の使用](hdinsight-use-hive.md)を参照します。
 
-Hive のユーザー定義関数の詳細について、apache.org で Hive wiki の [Hive 演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)のセクションを参照します。
+Hive のユーザー定義関数の詳細について、apache.org で Hive wiki の [Hive 演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) のセクションを参照します。
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

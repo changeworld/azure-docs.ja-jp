@@ -12,24 +12,25 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/22/2016"
+   ms.date="10/11/2016"
    ms.author="alkohli" />
 
-# StorSimple のハードウェア コンポーネントの交換
 
-## Overview
+# <a name="storsimple-hardware-component-replacement"></a>StorSimple のハードウェア コンポーネントの交換
 
-ハードウェア コンポーネントの交換に関するチュートリアルでは、Microsoft Azure StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントと、それらのコンポーネントを取り外して交換するために必要な手順について説明します。この記事は安全性アイコンについて説明し、詳細なチュートリアルへの参照情報や、交換可能なコンポーネントの一覧を掲載しています。
+## <a name="overview"></a>Overview
+
+ハードウェア コンポーネントの交換に関するチュートリアルでは、Microsoft Azure StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントと、それらのコンポーネントを取り外して交換するために必要な手順について説明します。 この記事は安全性アイコンについて説明し、詳細なチュートリアルへの参照情報や、交換可能なコンポーネントの一覧を掲載しています。
 
 >[AZURE.IMPORTANT] StorSimple のコンポーネントを取り外して交換する前に、[安全性アイコンの表記規則](#safety-icon-conventions)とその他の[安全に関する注意事項](storsimple-safety.md)を必ず確認してください。
  
-### 安全性アイコンの表記規則
+### <a name="safety-icon-conventions"></a>安全性アイコンの表記規則
 
-次の表で、これらのチュートリアルで使用される安全性アイコンについて説明します。デバイスのコンポーネントを取り外して交換する手順を進めるときに、これらの安全性アイコンに細心の注意を払ってください。
+次の表で、これらのチュートリアルで使用される安全性アイコンについて説明します。 デバイスのコンポーネントを取り外して交換する手順を進めるときに、これらの安全性アイコンに細心の注意を払ってください。
 
 | アイコン | テキスト | 追加情報 |
 |:---- |:---- |:-----------|
-|![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png)| **危険!** | 回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。この記号の文字は、最も重大な状況の場合にのみ使用されます。|
+|![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png)| **危険!** | 回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。 この記号の文字は、最も重大な状況の場合にのみ使用されます。|
 |![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png)| **警告!** | 回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。|
 |![注意アイコン](./media/storsimple-hardware-component-replacement/Caution.png)| **注意!** |回避しなければ、軽度または中程度の負傷を招く可能性のある危険な状況を示します。|
 |![Notice icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png)| **注意事項:** | 重要だが、危険に関連するものではない情報を示します。|
@@ -39,29 +40,29 @@
 |![指示確認アイコン](./media/storsimple-hardware-component-replacement/ReadInstructions.png)|**最初にすべての指示を確認してください**| |
 |![危険情報アイコン](./media/storsimple-hardware-component-replacement/TipHazard.png)|**危険情報**| |
 
-### 開始する前に
+### <a name="before-you-begin"></a>開始する前に
 
-デバイスと、このチュートリアルで使用される安全性アイコンについての情報をよく理解してください。詳細については、「[StorSimple デバイスを安全にインストールして操作する](storsimple-safety.md)」を参照してください。StorSimple デバイスに触る前に、「[安全性に関する注意事項](storsimple-safety.md#handling-precautions)」を必ず確認してください。
+デバイスと、このチュートリアルで使用される安全性アイコンについての情報をよく理解してください。 詳細については、「 [StorSimple デバイスを安全にインストールして操作する](storsimple-safety.md) 」を参照してください。 StorSimple デバイスに触る前に、「 [安全性に関する注意事項](storsimple-safety.md#handling-precautions) 」を必ず確認してください。 
 
 コンポーネントを交換する前に、次の情報を考慮してください。
 
-![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png) ![Electrical Shock Icon](./media/storsimple-hardware-component-replacement/Electric.png) **警告!**
+![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png) ![Electrical Shock Icon](./media/storsimple-hardware-component-replacement/Electric.png) **警告!** 
 
 - StorSimple デバイスのコンポーネントに触るときは、静電気除去マットまたは帯電防止マットを使用して、身体の静電気を逃がしてください。
 
-- 回路に触れないでください。回路が露出してる可能性があるコンポーネントに触るときは、用意されているハンドルとガイドを使用してください。
+- 回路に触れないでください。 回路が露出してる可能性があるコンポーネントに触るときは、用意されているハンドルとガイドを使用してください。
 
-![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png) ![Notice Icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **注意事項:**
+![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png) ![Notice Icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **注意事項:**
 
-モジュールを交換するときは、**エンクロージャの後部に空のベイを絶対に残さないでください**。問題のある部分を取り外す前に、交換用モジュールまたは空のモジュールを用意してください。
+モジュールを交換するときは、 **エンクロージャの後部に空のベイを絶対に残さないでください**。 問題のある部分を取り外す前に、交換用モジュールまたは空のモジュールを用意してください。
 
-## ハードウェア コンポーネントの交換手順
+## <a name="hardware-component-replacement-procedures"></a>ハードウェア コンポーネントの交換手順
 
-StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは EBOD エンクロージャに収納されるさまざまなプラグイン モジュールで構成されています。8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。
+StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは EBOD エンクロージャに収納されるさまざまなプラグイン モジュールで構成されています。 8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。
 
-デバイスの主なハードウェア コンポーネントを次の表にまとめて示します。**交換手順**の欄に示されているリンクをクリックすると、関連付けられているチュートリアルに移動します。
+デバイスの主なハードウェア コンポーネントを次の表にまとめて示します。 **交換手順** の欄に示されているリンクをクリックすると、関連付けられているチュートリアルに移動します。
 
-|コンポーネント|台数|プラグイン モジュール?|交換手順
+|コンポーネント|# 台数|プラグイン モジュール?|交換手順
 |:---------|:--------|:--------------|:---------------------|
 | シャーシ|1|なし|[StorSimple デバイスのシャーシを交換する](storsimple-chassis-replacement.md) |
 |プライマリ コントローラー|2|はい| [StorSimple デバイスのコントローラー モジュールを交換する](storsimple-controller-replacement.md) |
@@ -71,18 +72,18 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 **表 1** 主エンクロージャ内のハードウェア コンポーネント
 
-主エンクロージャと EBOD エンクロージャは、I/O モジュールが異なります。また、PCM のワット数が異なります。主エンクロージャの PCM は 764 W です。これに対し、EBOD エンクロージャの PCM は 580 W です。主エンクロージャの PCM には、バックアップ バッテリ モジュールも含まれます。
+主エンクロージャと EBOD エンクロージャは、I/O モジュールが異なります。 また、PCM のワット数が異なります。 主エンクロージャの PCM は 764 W です。これに対し、EBOD エンクロージャの PCM は 580 W です。主エンクロージャの PCM には、バックアップ バッテリ モジュールも含まれます。
 
-|コンポーネント|台数|プラグイン モジュール?| 交換手順
+|コンポーネント|# 台数|プラグイン モジュール?| 交換手順
 |:---------|:--------|:--------------|:---------------------|
 |シャーシ|1|なし| [StorSimple デバイスのシャーシを交換する](storsimple-chassis-replacement.md) |
-|EBOD コントローラー|2|はい| [StorSimple デバイスの EBOD コントローラーを交換する](storsimple-EBOD-controller-replacement.md) |
+|EBOD コントローラー|2|はい| [StorSimple デバイスの EBOD コントローラーを交換する](storsimple-ebod-controller-replacement.md) |
 |580W 電源冷却モジュール (PCM)|2|はい| [StorSimple デバイスの電源冷却モジュールを交換する](storsimple-power-cooling-module-replacement.md) |
 |ディスク ドライブ|12|はい| [StorSimple デバイスのディスク ドライブを交換する](storsimple-disk-drive-replacement.md) |
 
 **表 2** EBOD エンクロージャ内のハードウェア コンポーネント
 
-デバイスのプラグイン モジュールは、次の前面図と背面図で強調表示されています。これらの図を使用して、さまざまなプラグイン モジュールの交換が必要になった場合に、その場所を判別できます。前面図はディスク ドライブを示し、EBOD エンクロージャと主エンクロージャの背面図はプラグイン モジュールを示しています。
+デバイスのプラグイン モジュールは、次の前面図と背面図で強調表示されています。 これらの図を使用して、さまざまなプラグイン モジュールの交換が必要になった場合に、その場所を判別できます。 前面図はディスク ドライブを示し、EBOD エンクロージャと主エンクロージャの背面図はプラグイン モジュールを示しています。
 
 ![デバイスのフロントプレーン (ディスク ドライブ付き)](./media/storsimple-hardware-component-replacement/IC741028.png)
 
@@ -92,13 +93,13 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 |:----|:----------|
 |0 ～ 11|ディスク ドライブ (合計 12 台)|
 
-主エンクロージャと EBOD エンクロージャの両方に、ドライブ キャリア モジュールがあります。シャーシには、3 x 4 の配列で 12 台の 3.5" ディスク ドライブが収納されます。
+主エンクロージャと EBOD エンクロージャの両方に、ドライブ キャリア モジュールがあります。 シャーシには、3 x 4 の配列で 12 台の 3.5" ディスク ドライブが収納されます。
 
 ![デバイスの主エンクロージャ モジュールのバックプレーン](./media/storsimple-hardware-component-replacement/IC740994.png)
 
 **図 2** 主エンクロージャの背面
 
-|ラベル|Description|
+|ラベル|説明|
 |:----|:----------|
 |1|PCM 0|
 |2|PCM 1|
@@ -109,14 +110,14 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 **図 3** EBOD エンクロージャの背面
 
-|ラベル|Description|
+|ラベル|説明|
 |:----|:----------|
 |1|PCM 0|
 |2|PCM 1|
 |3|EBOD コントローラー 0|
 |4|EBOD コントローラー 1|
 
-## 現場交換可能ユニット
+## <a name="field-replaceable-units"></a>現場交換可能ユニット
 
 StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を利用できます。
 
@@ -136,10 +137,14 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 
 - ラック取り付け用レール キット
 
-これらの交換ユニットの注文については、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。
+これらの交換ユニットの注文については、 [Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md) 。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
-StorSimple のハードウェア コンポーネントを交換する前に、すべての[安全に関する情報](storsimple-safety.md)を確認します。
+StorSimple のハードウェア コンポーネントを交換する前に、すべての [安全に関する情報](storsimple-safety.md) を確認します。
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

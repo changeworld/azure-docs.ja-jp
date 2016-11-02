@@ -13,10 +13,11 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="09/14/2016"
+    ms.date="10/04/2016"
     ms.author="sstein"/>
 
-# C&#x23; を使用したエラスティック データベース プールの作成
+
+# <a name="create-an-elastic-database-pool-with-c&#x23;"></a>C&#x23; を使用したエラスティック データベース プールの作成
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-elastic-pool-create-portal.md)
@@ -24,42 +25,40 @@
 - [C#](sql-database-elastic-pool-create-csharp.md)
 
 
-この記事では、C# と [Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) を使用して Azure SQL エラスティック データベース プールを作成する方法を説明します。スタンドアロンの SQL データベースを作成する場合には、「[C# を使用して SQL Database Library for .NET で SQL Database を作成する](sql-database-get-started-csharp.md)」を参照してください。
+この記事では、C# と [Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)を使用して Azure SQL エラスティック データベース プールを作成する方法を説明します。 スタンドアロンの SQL データベースを作成する場合には、「 [C# を使用して SQL Database Library for .NET で SQL Database を作成する](sql-database-get-started-csharp.md)」を参照してください。
 
-Azure SQL Database Library for .NET は、[リソース マネージャー ベースの SQL Database REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) をラップする [Azure リソース マネージャー](../resource-group-overview.md) ベースの API を提供します。
+Azure SQL Database Library for .NET は、[Resource Manager ベースの SQL Database REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) をラップする [Azure Resource Manager](../resource-group-overview.md) ベースの API を提供します。
 
-
-> [AZURE.NOTE] SQL Database Library for .NET は現在プレビュー段階にあります。
-
+>[AZURE.NOTE] SQL Database の新機能の多くは、[Azure Resource Manager デプロイメント モデル](../resource-group-overview.md)を使用している場合にのみサポートされます。そのため、常に最新の **Azure SQL Database Management Library for .NET ([ドキュメント](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))** を使用する必要があります。 以前の[クラシック デプロイメント モデル ベースのライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql)は互換性のためだけにサポートされているため、より新しい Resource Manager ベースのライブラリを使用することをお勧めします。
 
 この記事の手順を完了するには、次のものが必要です。
 
-- Azure サブスクリプション。Azure サブスクリプションがない場合は、このページの上部にある**無料アカウント**をクリックしてサブスクリプションを作成してから、この記事に戻って最後まで完了してください。
-- 見ることができます。Visual Studio の無償版については、[Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs)に関するページを参照してください。
+- Azure サブスクリプション。 Azure サブスクリプションがない場合は、このページの上部にある **無料アカウント** をクリックしてサブスクリプションを作成してから、この記事に戻って最後まで完了してください。
+- 見ることができます。 Visual Studio の無償版については、 [Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs) に関するページを参照してください。
 
 
-## コンソール アプリケーションの作成と必要なライブラリのインストール
+## <a name="create-a-console-app-and-install-the-required-libraries"></a>コンソール アプリケーションの作成と必要なライブラリのインストール
 
 1. Visual Studio を起動します。
-2. **[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします。
-3. C# **コンソール アプリケーション**を作成し、*SqlElasticPoolConsoleApp* という名前を付けます。
+2. **[ファイル]** > **[新規]** > **[プロジェクト]** の順にクリックします。
+3. C# **コンソール アプリケーション** を作成し、 *SqlElasticPoolConsoleApp*
 
 
-C# を使用して SQL データベースを作成するために、([パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console)を使用して) 必要な管理ライブラリを読み込みます。
+C# を使用して SQL データベースを作成するために、( [パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console)を使用して) 必要な管理ライブラリを読み込みます。
 
-1. **[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
-2. 「`Install-Package Microsoft.Azure.Management.Sql –Pre`」と入力して [Microsoft Azure SQL 管理ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)をインストールします。
-3. 「`Install-Package Microsoft.Azure.Management.ResourceManager –Pre`」と入力して [Microsoft Azure Resource Manager ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)をインストールします。
-4. 「`Install-Package Microsoft.Azure.Common.Authentication –Pre`」と入力して [Microsoft Azure 一般認証ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication)をインストールします。
-
-
-
-> [AZURE.NOTE] この記事の例では、各 API 要求の同期フォームを使用し、基になるサービスでの REST 呼び出しが完了するまでブロックします。非同期の手法も利用できます。
+1. **[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順にクリックします。
+2. 「 `Install-Package Microsoft.Azure.Management.Sql –Pre` 」と入力して [Microsoft Azure SQL 管理ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)をインストールします。
+3. 「 `Install-Package Microsoft.Azure.Management.ResourceManager –Pre` 」と入力して [Microsoft Azure Resource Manager ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)をインストールします。
+4. 「 `Install-Package Microsoft.Azure.Common.Authentication –Pre` 」と入力して [Microsoft Azure 一般認証ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication)をインストールします。 
 
 
-## SQL エラスティック データベース プールの作成 - C# の例
 
-次のサンプルでは、リソース グループ、サーバー、ファイアウォール規則、エラスティック プールを作成した後、そのプールに SQL データベースを作成します。「[リソースにアクセスするためのサービス プリンシパルの作成](#create-a-service-principal-to-access-resources)」を参照し、変数 `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` を取得してください。
+> [AZURE.NOTE] この記事の例では、各 API 要求の同期フォームを使用し、基になるサービスでの REST 呼び出しが完了するまでブロックします。 非同期の手法も利用できます。
+
+
+## <a name="create-a-sql-elastic-database-pool---c#-example"></a>SQL エラスティック データベース プールの作成 - C# の例
+
+次のサンプルでは、リソース グループ、サーバー、ファイアウォール規則、エラスティック プールを作成した後、そのプールに SQL データベースを作成します。 「[リソースにアクセスするためのサービス プリンシパルの作成](#create-a-service-principal-to-access-resources)」を参照し、変数 `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` を取得してください。
 
 **Program.cs** の内容を次のとおりに書き換え、実際のアプリの値で `{variables}` を更新します (`{}` は含めません)。
 
@@ -258,9 +257,9 @@ namespace SqlElasticPoolConsoleApp
 
 
 
-## リソースにアクセスするためのサービス プリンシパルの作成
+## <a name="create-a-service-principal-to-access-resources"></a>リソースにアクセスするためのサービス プリンシパルの作成
 
-次の PowerShell スクリプトを実行すると、Active Directory (AD) アプリケーションのほか、C# アプリの認証に必要なサービス プリンシパルが作成されます。このスクリプトによって、上記の C# のサンプルに必要な値が出力されます。詳細については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../resource-group-authenticate-service-principal.md)」を参照してください。
+次の PowerShell スクリプトを実行すると、Active Directory (AD) アプリケーションのほか、C# アプリの認証に必要なサービス プリンシパルが作成されます。 このスクリプトによって、上記の C# のサンプルに必要な値が出力されます。 詳細については、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../resource-group-authenticate-service-principal.md)」を参照してください。
 
    
     # Sign in to Azure.
@@ -304,15 +303,19 @@ namespace SqlElasticPoolConsoleApp
 
   
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 - [プールを管理する](sql-database-elastic-pool-manage-csharp.md)
 - [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブを使用すると、プール内にある任意の数のデータベースに対して T-SQL スクリプトを実行できます。
 - [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md): Elastic Database のツールを使用してスケールアウトを実施します。
 
-## その他のリソース
+## <a name="additional-resources"></a>その他のリソース
 
 - [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

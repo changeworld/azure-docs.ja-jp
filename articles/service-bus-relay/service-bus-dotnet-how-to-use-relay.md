@@ -1,69 +1,70 @@
 <properties
-	pageTitle=".NET で Service Bus Relay を使用する方法 | Microsoft Azure"
-	description="Azure Service Bus Relay サービスを使用して、別の場所にホストされた 2 つのアプリケーションに接続する方法について説明します。"
-	services="service-bus-relay"
-	documentationCenter=".net"
-	authors="sethmanheim"
-	manager="timlt"
-	editor=""/>
+    pageTitle=".NET で Service Bus Relay を使用する方法 | Microsoft Azure"
+    description="Azure Service Bus Relay サービスを使用して、別の場所にホストされた 2 つのアプリケーションに接続する方法について説明します。"
+    services="service-bus"
+    documentationCenter=".net"
+    authors="sethmanheim"
+    manager="timlt"
+    editor=""/>
 
 <tags
-	ms.service="service-bus-relay"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="sethm"/>
+    ms.service="service-bus"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="09/16/2016"
+    ms.author="sethm"/>
 
 
-# Azure Service Bus Relay サービスの使用方法
 
-この記事では、Service Bus Relay サービスの使用方法について説明します。サンプルは、C# で記述され、Windows Communication Foundation (WCF) API と Service Bus アセンブリに含まれている拡張機能を使用しています。Service Bus Relay の詳細については、「[Service Bus のリレー型メッセージング](service-bus-relay-overview.md)」の概要を参照してください。
+# <a name="how-to-use-the-azure-service-bus-relay-service"></a>Azure Service Bus Relay サービスの使用方法
 
-[AZURE.INCLUDE [アカウント作成メモ](../../includes/create-account-note.md)]
+この記事では、Service Bus Relay サービスの使用方法について説明します。 サンプルは、C# で記述され、Windows Communication Foundation (WCF) API と Service Bus アセンブリに含まれている拡張機能を使用しています。 Service Bus Relay の詳細については、「[Service Bus のリレー型メッセージング](service-bus-relay-overview.md)」の概要を参照してください。
 
-## Service Bus Relay とは
+[AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-[Service Bus *Relay* サービス](service-bus-relay-overview.md)を使用して、Azure データセンターと独自のオンプレミスのエンタープライズ環境の両方で動作するハイブリッド アプリケーションを構築できます。Service Bus Relay を使用することで、ファイアウォール接続を開放せず、または企業ネットワークのインフラストラクチャ内部を変更せずに、企業のエンタープライズ ネットワーク内部にある Windows Communication Foundation (WCF) サービスを安全にパブリック クラウドに公開することができます。
+## <a name="what-is-the-service-bus-relay?"></a>Service Bus Relay とは
+
+[Service Bus *Relay*](service-bus-relay-overview.md) サービスを使用して、Azure データセンターと独自のオンプレミスのエンタープライズ環境の両方で動作するハイブリッド アプリケーションを構築できます。 Service Bus Relay を使用することで、ファイアウォール接続を開放せず、または企業ネットワークのインフラストラクチャ内部を変更せずに、企業のエンタープライズ ネットワーク内部にある Windows Communication Foundation (WCF) サービスを安全にパブリック クラウドに公開することができます。
 
 ![リレーの概念](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
 
-Service Bus Relay を使用して、既存のエンタープライズ環境内の WCF サービスをホストできます。その後で、その WCF サービスに対する受信セッションと受信要求のリッスンを Azure 内で動作するService Bus にデリゲートできます。これにより、Azure で実行されるアプリケーション コードや、モバイル ワーカー環境またはエクストラネット パートナー環境に対して、これらのサービスを公開できます。Service Bus を使用すると、これらのサービスにアクセスできるユーザーを詳細なレベルで安全に制御できます。これは、既存のエンタープライズ ソリューションのデータとアプリケーション機能を公開してクラウドで活用するため、強力で安全な手段となります。
+Service Bus Relay を使用して、既存のエンタープライズ環境内の WCF サービスをホストできます。 その後で、その WCF サービスに対する受信セッションと受信要求のリッスンを Azure 内で動作するService Bus にデリゲートできます。 これにより、Azure で実行されるアプリケーション コードや、モバイル ワーカー環境またはエクストラネット パートナー環境に対して、これらのサービスを公開できます。 Service Bus を使用すると、これらのサービスにアクセスできるユーザーを詳細なレベルで安全に制御できます。 これは、既存のエンタープライズ ソリューションのデータとアプリケーション機能を公開してクラウドで活用するため、強力で安全な手段となります。
 
 この記事では、Service Bus Relay を使用して、2 者間の安全な対話を実現する TCP チャネル バインドを使用して公開される WCF Web サービスの作成方法を示します。
 
-## サービス名前空間の作成
+## <a name="create-a-service-namespace"></a>サービス名前空間の作成
 
-Azure で Service Bus Relay を使用するには、最初に名前空間を作成する必要があります。名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
+Azure で Service Bus Relay を使用するには、最初に名前空間を作成する必要があります。 名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
 サービス名前空間を作成するには:
 
 [AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## Service Bus NuGet パッケージの取得
+## <a name="get-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの取得
 
-[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。プロジェクトに NuGet パッケージをインストールするには、次のステップを行います。
+[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus) は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。 プロジェクトに NuGet パッケージをインストールするには、次のステップを行います。
 
-1.  ソリューション エクスプローラーで **[参照]** を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
-2.  "Service Bus" を検索して、**[Microsoft Azure Service Bus]** 項目を選択します。**[インストール]** をクリックし、インストールが完了したら、次のダイアログ ボックスを閉じます。
+1.  [ソリューション エクスプローラー] で、**[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
+2.  "Service Bus" を検索して、 **[Microsoft Azure Service Bus]** 項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、次のダイアログ ボックスを閉じます。
 
-	![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-13.png)
+    ![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-13.png)
 
-## Service Bus を使用して SOAP Web サービスを TCP で公開および使用する
+## <a name="use-service-bus-to-expose-and-consume-a-soap-web-service-with-tcp"></a>Service Bus を使用して SOAP Web サービスを TCP で公開および使用する
 
-既存の WCF SOAP Web サービスを外部で使用するために公開するには、サービスのバインドとアドレスに変更を加える必要があります。WCF サービスの設定や構成によっては、構成ファイルを変更したり、コードを変更したりする必要があります。WCF を使用すると同じサービス上で複数のネットワーク エンドポイントを持つことができるので、既存の内部エンドポイントを保持しながら、同時に外部アクセス用のService Bus エンドポイントも追加できます。
+既存の WCF SOAP Web サービスを外部で使用するために公開するには、サービスのバインドとアドレスに変更を加える必要があります。 WCF サービスの設定や構成によっては、構成ファイルを変更したり、コードを変更したりする必要があります。 WCF を使用すると同じサービス上で複数のネットワーク エンドポイントを持つことができるので、既存の内部エンドポイントを保持しながら、同時に外部アクセス用のService Bus エンドポイントも追加できます。
 
-このタスクでは、単純な WCF サービスを構築し、そのサービスに Service Bus リスナーを追加します。この演習はある程度 Visual Studio に習熟したユーザーを対象としているため、プロジェクトの作成手順の詳しい内容については説明していません。代わりに、コードに重点を置いています。
+このタスクでは、単純な WCF サービスを構築し、そのサービスに Service Bus リスナーを追加します。 この演習はある程度 Visual Studio に習熟したユーザーを対象としているため、プロジェクトの作成手順の詳しい内容については説明していません。 代わりに、コードに重点を置いています。
 
 これらの手順を開始する前に、次の手順を完了して環境を設定してください。
 
 1.  Visual Studio 内で、"Client" と "Service" という 2 つのプロジェクトを含むコンソール アプリケーションをソリューション内に作成します。
-2.  Microsoft Azure Service Bus NuGet パッケージを両方のプロジェクトに追加します。このパッケージによって、プロジェクトに必要なアセンブリ参照がすべて追加されます。
+2.  Microsoft Azure Service Bus NuGet パッケージを両方のプロジェクトに追加します。 このパッケージによって、プロジェクトに必要なアセンブリ参照がすべて追加されます。
 
-### サービスの作成方法
+### <a name="how-to-create-the-service"></a>サービスの作成方法
 
-最初に、サービス自体を作成します。すべての WCF サービスは、少なくとも次の 3 つの部分で構成されます。
+最初に、サービス自体を作成します。 すべての WCF サービスは、少なくとも次の 3 つの部分で構成されます。
 
 -   交換されるメッセージと呼び出される操作を指定するコントラクトの定義。
 -   そのコントラクトの実装。
@@ -71,7 +72,7 @@ Azure で Service Bus Relay を使用するには、最初に名前空間を作�
 
 このセクションでは、これらの各コンポーネントを処理するコード例を示します。
 
-このコントラクトでは、2 つの数値を足して結果を返す `AddNumbers` という 1 つの処理を定義します。`IProblemSolverChannel` インターフェイスは、クライアントでプロキシの有効期間を簡単に管理できるようにするインターフェイスです。このようなインターフェイスを作成することがベスト プラクティスと考えられます。このコントラクト定義を別のファイルに格納しておき、そのファイルを "Client" プロジェクトと "Service" プロジェクトの両方から参照できようにすることをお勧めしますが、コードを両方のプロジェクトにコピーしてもよいでしょう。
+このコントラクトでは、2 つの数値を足して結果を返す `AddNumbers` という 1 つの処理を定義します。 `IProblemSolverChannel` インターフェイスは、クライアントでプロキシの有効期間を簡単に管理できるようにするインターフェイスです。 このようなインターフェイスを作成することがベスト プラクティスと考えられます。 このコントラクト定義を別のファイルに格納しておき、そのファイルを "Client" プロジェクトと "Service" プロジェクトの両方から参照できようにすることをお勧めしますが、コードを両方のプロジェクトにコピーしてもよいでしょう。
 
 ```
 using System.ServiceModel;
@@ -98,9 +99,9 @@ class ProblemSolver : IProblemSolver
 }
 ```
 
-### サービス ホストをプログラムで構成する
+### <a name="configure-a-service-host-programmatically"></a>サービス ホストをプログラムで構成する
 
-コントラクトと実装が適切に記述されたので、次にサービスをホストします。ホスティングは [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/azure/system.servicemodel.servicehost.aspx) オブジェクトの内部で行い、サービスのインスタンスを管理し、メッセージをリッスンするエンドポイントをホストします。次のコードでは、サービスに通常のローカル エンドポイントと Service Bus エンドポイントの両方を構成して、内部エンドポイントと外部エンドポイントの外観を並べて指定しています。文字列 *namespace* は実際の名前空間の名前に置き換え、*yourKey* は前のセットアップ手順で取得した SAS キーに置き換えてください。
+コントラクトと実装が適切に記述されたので、次にサービスをホストします。 ホスティングは [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/azure/system.servicemodel.servicehost.aspx) オブジェクトの内部で行い、サービスのインスタンスを管理し、メッセージをリッスンするエンドポイントをホストします。 次のコードでは、サービスに通常のローカル エンドポイントと Service Bus エンドポイントの両方を構成して、内部エンドポイントと外部エンドポイントの外観を並べて指定しています。 文字列 *namespace* は実際の名前空間の名前に置き換え、*yourKey* は前のセットアップ手順で取得した SAS キーに置き換えてください。
 
 ```
 ServiceHost sh = new ServiceHost(typeof(ProblemSolver));
@@ -123,11 +124,11 @@ Console.ReadLine();
 sh.Close();
 ```
 
-この例では、同じコントラクト実装にある 2 つのエンドポイントを作成します。1 つはローカルで、もう 1 つは Service Bus を経由して提示されます。大きな違いはバインドです。ローカルには [NetTcpBinding](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx) を使用し、Service Bus エンドポイントとアドレスには [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx) を使用します。ローカル エンドポイントは、個々のポートを含むローカル ネットワーク アドレスを持ちます。Service Bus エンドポイントは、文字列 `sb`、使用する名前空間の名前、およびパス "solver" で構成されるエンドポイント アドレスを持ちます。 全体としては `sb://[serviceNamespace].servicebus.windows.net/solver` という URI になり、このサービス エンドポイントは完全修飾の外部 DNS 名を持つ Service Bus TCP エンドポイントとして識別されます。プレースホルダーを置き換えたコードを **Service** アプリケーションの `Main` 関数に配置すると、このサービスが実際に機能します。サービスで Service Bus を排他的にリッスンするには、ローカル エンドポイントの宣言を削除します。
+この例では、同じコントラクト実装にある 2 つのエンドポイントを作成します。 1 つはローカルで、もう 1 つは Service Bus を経由して提示されます。 大きな違いはバインドです。ローカルには [NetTcpBinding](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx) を使用し、Service Bus エンドポイントとアドレスには [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx) を使用します。 ローカル エンドポイントは、個々のポートを含むローカル ネットワーク アドレスを持ちます。 Service Bus エンドポイントは、文字列 `sb`、使用する名前空間の名前、およびパス "solver" で構成されるエンドポイント アドレスを持ちます。 全体としては `sb://[serviceNamespace].servicebus.windows.net/solver` という URI になり、このサービス エンドポイントは完全修飾の外部 DNS 名を持つ Service Bus TCP エンドポイントとして識別されます。 プレースホルダーを置き換えたコードを **Service** アプリケーションの `Main` 関数に配置すると、このサービスが実際に機能します。 サービスで Service Bus を排他的にリッスンするには、ローカル エンドポイントの宣言を削除します。
 
-### サービス ホストを App.config ファイルで構成する
+### <a name="configure-a-service-host-in-the-app.config-file"></a>サービス ホストを App.config ファイルで構成する
 
-App.config ファイルを使用してホストを構成することもできます。この場合にコードをホストするサービスは、次の例にあります。
+App.config ファイルを使用してホストを構成することもできます。 この場合にコードをホストするサービスは、次の例にあります。
 
 ```
 ServiceHost sh = new ServiceHost(typeof(ProblemSolver));
@@ -137,7 +138,8 @@ Console.ReadLine();
 sh.Close();
 ```
 
-エンドポイントの定義は App.config ファイルに移動します。NuGet パッケージによって定義の範囲が App.config ファイルに既に追加されています。この定義の範囲は Service Bus に必要な構成の拡張機能です。次の例 (先に示したコードと同じ) は **system.serviceModel** 要素のすぐ下に配置する必要があります。このコード例では、プロジェクト C# 名前空間の名前が **Service** であると想定しています。プレースホルダーを実際の Service Bus Service の名前空間と SAS キーに置き換えてください。
+エンドポイントの定義は App.config ファイルに移動します。 NuGet パッケージによって定義の範囲が App.config ファイルに既に追加されています。この定義の範囲は Service Bus に必要な構成の拡張機能です。 次の例 (先に示したコードと同じ) は **system.serviceModel** 要素のすぐ下に配置する必要があります。 このコード例では、プロジェクト C# 名前空間の名前が **Service** であると想定しています。
+プレースホルダーを実際の Service Bus Service の名前空間と SAS キーに置き換えてください。
 
 ```
 <services>
@@ -166,11 +168,11 @@ sh.Close();
 
 以上の変更を加えたサービスは、以前と同じように開始されます。2 つのアクティブなエンドポイントは、1 つはローカルに存在し、もう 1 つはクラウド内でリッスンします。
 
-### クライアントを作成する
+### <a name="create-the-client"></a>クライアントを作成する
 
-#### クライアントをプログラムで構成する
+#### <a name="configure-a-client-programmatically"></a>クライアントをプログラムで構成する
 
-サービスを使用するために、[ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx) オブジェクトを使用して WCF クライアントを作成できます。Service Bus は SAS を使用して実装されるトークン ベースのセキュリティ モデルを使用します。[TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。次の例では [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) メソッドを使用し、適切な SAS トークンの取得を処理します。名前とキーは、前のセクションで説明したようにポータルから取得されます。
+サービスを使用するために、[ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx) オブジェクトを使用して WCF クライアントを作成できます。 Service Bus は SAS を使用して実装されるトークン ベースのセキュリティ モデルを使用します。 [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。 次の例では [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) メソッドを使用し、適切な SAS トークンの取得を処理します。 名前とキーは、前のセクションで説明したようにポータルから取得されます。
 
 最初に、`IProblemSolver` コントラクト コードをサービスからクライアント プロジェクトに対して参照またはコピーします。
 
@@ -190,9 +192,9 @@ using (var ch = cf.CreateChannel())
 }
 ```
 
-これで、クライアントとサービスを構築して実行できます (先にサービスを実行します)。クライアントはサービスを呼び出し、**9** を出力します。クライアントとサーバーを別々のコンピューターで実行しても (ネットワークが異なっても)、通信は維持されます。クライアント コードは、クラウド上でもローカルでも実行できます。
+これで、クライアントとサービスを構築して実行できます (先にサービスを実行します)。クライアントはサービスを呼び出し、**9** を出力します。 クライアントとサーバーを別々のコンピューターで実行しても (ネットワークが異なっても)、通信は維持されます。 クライアント コードは、クラウド上でもローカルでも実行できます。
 
-#### App.config ファイルでクライアントを構成する
+#### <a name="configure-a-client-in-the-app.config-file"></a>App.config ファイルでクライアントを構成する
 
 次のコードは、App.config ファイルを使用してクライアントを構成する方法を示しています。
 
@@ -204,7 +206,7 @@ using (var ch = cf.CreateChannel())
 }
 ```
 
-エンドポイントの定義は App.config ファイルに移動します。次の例 (先に示したコードと同じ) は **system.serviceModel** 要素のすぐ下に配置する必要があります。前の例と同じように、プレースホルダーを実際の Service Bus の名前空間と SAS キーに置き換えてください。
+エンドポイントの定義は App.config ファイルに移動します。 次の例 (先に示したコードと同じ) は **system.serviceModel** 要素のすぐ下に配置する必要があります。 前の例と同じように、プレースホルダーを実際の Service Bus の名前空間と SAS キーに置き換えてください。
 
 ```
 <client>
@@ -226,16 +228,19 @@ using (var ch = cf.CreateChannel())
 </behaviors>
 ```
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 これで、Service Bus Relay サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 - [Service Bus のリレー型メッセージングの概要](service-bus-relay-overview.md)
-- [Azure Service Bus アーキテクチャの概要](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
+- [Azure Service Bus アーキテクチャの概要](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
 - Service Bus のサンプルを [Azure のサンプル][]からダウンロードするか、[Service Bus サンプルの概要][]を参照してください。
 
-  [Shared Access Signature Authentication with Service Bus]: ../service-bus/service-bus-shared-access-signature-authentication.md
+  [Service Bus による Shared Access Signature 認証]: ../service-bus-messaging/service-bus-shared-access-signature-authentication.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
-  [Service Bus サンプルの概要]: ../service-bus/service-bus-samples.md
+  [Service Bus サンプルの概要]: ../service-bus-messaging/service-bus-samples.md
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

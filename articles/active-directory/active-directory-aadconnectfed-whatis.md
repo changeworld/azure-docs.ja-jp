@@ -1,29 +1,30 @@
 <properties
-	pageTitle="Azure AD Connect とフェデレーション | Microsoft Azure"
-	description="このページは、Azure AD Connect を使用した AD FS の操作に関するすべてのドキュメントの中心となる場所です。"
-	services="active-directory"
-	documentationCenter=""
-	authors="anandyadavmsft"
-	manager="femila"
-	editor=""/>
+    pageTitle="Azure AD Connect とフェデレーション | Microsoft Azure"
+    description="このページは、Azure AD Connect を使用した AD FS の操作に関するすべてのドキュメントの中心となる場所です。"
+    services="active-directory"
+    documentationCenter=""
+    authors="anandyadavmsft"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/14/2016"
-	ms.author="anandy"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/14/2016"
+    ms.author="anandy"/>
 
 
-# Azure AD Connect とフェデレーション
 
-Azure AD Connect により、オンプレミスの AD FS と Azure AD でフェデレーションを構成できます。フェデレーション サインオンを設定すると、ユーザーは自分のオンプレミスのパスワードを使用して Azure AD ベースのサービスにサインオンすることができます。また、企業ネットワークにアクセスしているときはパスワードを再入力する必要はありません。AD FS を使用するフェデレーション オプションでは、新しい AD FS をデプロイすることも、Windows Server 2012 R2 ファームの既存の AD FS を指定することもできます。
+# <a name="azure-ad-connect-and-federation"></a>Azure AD Connect とフェデレーション
 
-このトピックは Azure AD Connect のフェデレーション関連機能に関する情報のホームであり、関連する他のすべてのトピックへのリンクを示します。Azure AD Connect へのリンクについては、「オンプレミス ID と Azure Active Directory の統合」を参照してください。
+Azure AD Connect により、オンプレミスの AD FS と Azure AD でフェデレーションを構成できます。 フェデレーション サインオンを設定すると、ユーザーは自分のオンプレミスのパスワードを使用して Azure AD ベースのサービスにサインオンすることができます。また、企業ネットワークにアクセスしているときはパスワードを再入力する必要はありません。 AD FS を使用するフェデレーション オプションでは、新しい AD FS をデプロイすることも、Windows Server 2012 R2 ファームの既存の AD FS を指定することもできます。
 
-## Azure AD Connect - フェデレーションに関するトピック
+このトピックは Azure AD Connect のフェデレーション関連機能に関する情報のホームであり、関連する他のすべてのトピックへのリンクを示します。 Azure AD Connect へのリンクについては、「オンプレミス ID と Azure Active Directory の統合」を参照してください。
+
+## <a name="azure-ad-connect---federation-topics"></a>Azure AD Connect - フェデレーションに関するトピック
 
 | トピック | 内容 |
 |:------|:-----------|
@@ -43,9 +44,14 @@ Azure AD Connect により、オンプレミスの AD FS と Azure AD でフェ�
 | [AD FS の要求規則の変更](active-directory-aadconnect-federation-management.md#modifying-ad-fs-claim-rules) | Azure AD Connect Sync 構成に対応する AD FS の要求規則の変更または追加 |
 
 
-## その他のリソース
+## <a name="additional-resources"></a>その他のリソース
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 * [Azure への AD FS のデプロイ](active-directory-aadconnect-azure-adfs.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

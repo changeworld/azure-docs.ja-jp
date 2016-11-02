@@ -1,10 +1,10 @@
 <properties
-   pageTitle="SQL Data Warehouse のテーブルの概要 | Microsoft Azure"
-   description="Azure SQL Data Warehouse テーブルの概要です。"
+   pageTitle="Overview of tables in SQL Data Warehouse | Microsoft Azure"
+   description="Getting started with Azure SQL Data Warehouse Tables."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sonyam"
-   manager="barbkess"
+   authors="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,80 +13,81 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/04/2016"
-   ms.author="sonyama;barbkess;jrj"/>
+   ms.date="10/31/2016"
+   ms.author="barbkess;jrj"/>
 
-# SQL Data Warehouse のテーブルの概要
+
+# <a name="overview-of-tables-in-sql-data-warehouse"></a>Overview of tables in SQL Data Warehouse
 
 > [AZURE.SELECTOR]
-- [概要][]
-- [データ型][]
-- [分散][]
+- [Overview][]
+- [Data Types][]
+- [Distribute][]
 - [Index][]
 - [Partition][]
-- [統計][]
-- [一時][]
+- [Statistics][]
+- [Temporary][]
 
-SQL Data Warehouse でテーブルを作成してみるのは簡単です。基本的な [CREATE TABLE][] 構文は、他のデータベースで既に馴染みのある一般的な構文に従います。テーブルを作成するには、単にテーブルと列に名前を付けて、各列のデータ型を定義するだけです。他のデータベースでテーブルを作成したことがある場合は、次のコードに見覚えがあると思います。
+Getting started with creating tables in SQL Data Warehouse is simple.  The basic [CREATE TABLE][] syntax follows the common syntax you are most likely already familiar with from working with other databases.  To create a table, you simply need to name your table, name your columns and define data types for each column.  If you've create tables in other databases, this should look very familiar to you.
 
 ```sql  
 CREATE TABLE Customers (FirstName VARCHAR(25), LastName VARCHAR(25))
  ``` 
 
-上の例では、FirstName と LastName の 2 つの列を持つ Customers という名前のテーブルが作成されます。各列は、データ型 VARCHAR(25) で定義されており、データは 25 文字に制限されます。テーブルなどの基本的な属性は、ほぼ他のデータベースと同じです。データ型は、列ごとに定義して、データの整合性を確保します。インデックスは、I/O を減らすことでパフォーマンスを向上させるために追加できます。パーティション分割は、データを変更する必要があるときに、パフォーマンスを向上させるために追加できます。
+The above example creates a table named Customers with two columns, FirstName and LastName.  Each column is defined with a data type of VARCHAR(25), which limits the data to 25 characters.  These fundamental attributes of a table, as well as others, are mostly the same as other databases.  Data types are defined for each column and ensure the integrity of your data.  Indexes can be added to improve performance by reducing I/O.  Partitioning can be added to improve performance when you need to modify data.
 
-SQL Data Warehouse のテーブルの[名前の変更][RENAME]は次のように実行します。
+[Renaming][RENAME] a SQL Data Warehouse table looks like this:
 
 ```sql  
 RENAME OBJECT Customer TO CustomerOrig; 
  ```
 
-## 分散テーブル
+## <a name="distributed-tables"></a>Distributed tables
 
-SQL Data Warehouse のような分散システムで新たに導入された基本的な属性が、**ディストリビューション列**です。ディストリビューション列は、その名前のとおりです。データをバックグラウンドで分散または分割する方法を決定する列のことです。ディストリビューション列を指定しないでテーブルを作成すると、テーブルは**ラウンド ロビン**を使用して自動的に分散されます。一部のシナリオではラウンド ロビン テーブルで十分ですが、ディストリビューション列を定義すると、クエリを実行するときのデータ移動を大幅に削減してパフォーマンスを最適化できます。ディストリビューション列を選択する方法の詳細については、[テーブルの分散][Distribute]に関するページを参照してください。
+A new fundamental attribute introduced by distributed systems like SQL Data Warehouse is the **distribution column**.  The distribution column is very much what it sounds like.  It is the column that determines how to distribute, or divide, your data behind the scenes.  When you create a table without specifying the distribution column, the table is automatically distributed using **round robin**.  While round robin tables can be sufficient in some scenarios, defining distribution columns can greatly reduce data movement during queries, thus optimizing performance.  See [Distributing a Table][Distribute] to learn more about how to select a distribution column.
 
-## テーブルのインデックス作成とパーティション分割
+## <a name="indexing-and-partitioning-tables"></a>Indexing and partitioning tables
 
-SQL Data Warehouse を使用するスキルが高くなり、パフォーマンスの最適化が必要になると、テーブル設計の詳細について学ぶ必要性が生じます。詳細については、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]に関する各記事を参照してください。
+As you become more advanced in using SQL Data Warehouse and want to optimize performance, you'll want to learn more about Table Design.  To learn more, see the articles on [Table Data Types][Data Types], [Distributing a Table][Distribute], [Indexing a Table][Index] and  [Partitioning a Table][Partition].
 
-## テーブルの統計
+## <a name="table-statistics"></a>Table statistics
 
-統計は、SQL Data Warehouse で最高のパフォーマンスを実現するために非常に重要です。Azure SQL Database で期待していたかもしれませんが、SQL Data Warehouse では統計はまだ自動的に作成および更新されないため、[統計][]に関する記事を読んでください。この記事は、クエリで最高のパフォーマンスを得るために読む必要がある最も重要な記事の 1 つです。
+Statistics are an extremely important to getting the best performance out of your SQL Data Warehouse.  Since SQL Data Warehouse does not yet automatically create and update statistics for you, like you may have come to expect in Azure SQL Database, reading our article on [Statistics][] might be one of the most important articles you read to ensure that you get the best performance from your queries.
 
-## 一時テーブル
+## <a name="temporary-tables"></a>Temporary tables
 
-一時テーブルは、ログオン時間中にのみ存在するテーブルであり、他のユーザーが表示することはできません。一時テーブルは、一時的な結果を他のユーザーが確認できないようにし、クリーンアップの必要性を減らすこともできる優れた手段です。一時テーブルはローカル ストレージも活用するため、一部の操作でパフォーマンスを向上させることができます。一時テーブルの詳細については、[一時テーブル][Temporary]に関する記事を参照してください。
+Temporary tables are tables which only exist for the duration of your logon and cannot be seen by other users.  Temporary tables can be a good way to prevent others from seeing temporary results and also reduce the need for cleanup.  Since temporary tables also utilize local storage, they can offer faster performance for some operations.  See the [Temporary Table][Temporary] articles for more details about temporary tables.
 
-## 外部テーブル
+## <a name="external-tables"></a>External tables
 
-外部テーブルは、PolyBase テーブルとも呼ばれ、SQL Data Warehouse からクエリを実行できますが、SQL Data Warehouse の外部のデータをポイントします。たとえば、Azure BLOB ストレージのファイルを指す外部テーブルを作成できます。外部テーブルを作成および照会する方法の詳細については、[PolyBase でのデータの読み込み][]に関するページを参照してください。
+External tables, also known as Polybase tables, are tables which can be queried from SQL Data Warehouse, but point to data external from SQL Data Warehouse.  For example, you can create an external table which points to files on Azure Blob Storage.  For more details on how to create and query an external table, see [Load data with Polybase][].  
 
-## サポートされていないテーブルの機能
+## <a name="unsupported-table-features"></a>Unsupported table features
 
-SQL Data Warehouse には、他のデータベースで提供されているのと同じテーブルの機能の多くが含まれますが、まだサポートされていない機能もあります。まだサポートされていないテーブル機能の一部を以下の一覧に示します。
+While SQL Data Warehouse contains many of the same table features offered by other databases, there are some features which are not yet supported.  Below is a list of some of the table features which are not yet supported.
 
-| サポートされていない機能 |
+| Unsupported features |
 | --- |
-|[IDENTITY プロパティ][] \([代理キーの回避策の割り当て][]に関するブログ記事を参照してください)|
-|PRIMARY KEY、FOREIGN KEY、UNIQUE、CHECK の各[テーブル制約][]|
-|[一意のインデックス][]|
-|[計算列][]|
-|[スパース列][]|
-|[ユーザー定義型][]|
-|[シーケンス][]|
-|[トリガー][]|
-|[インデックス付きビュー][]|
-|[シノニム][]|
+|[Identity Property][] (see [Assigning Surrogate Key Workaround][])|
+|Primary key, Foreign keys, Unique and Check [Table Constraints][]|
+|[Unique Indexes][]|
+|[Computed Columns][]|
+|[Sparse Columns][]|
+|[User-Defined Types][]|
+|[Sequence][]|
+|[Triggers][]|
+|[Indexed Views][]|
+|[Synonyms][]|
 
-## テーブル サイズのクエリ
+## <a name="table-size-queries"></a>Table size queries
 
-60 個のディストリビューションのそれぞれで各テーブルによって消費される領域と行を簡単に識別する方法の 1 つが、[DBCC PDW\_SHOWSPACEUSED][] です。
+One simple way to identify space and rows consumed by a table in each of the 60 distributions, is to use [DBCC PDW_SHOWSPACEUSED][].
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-ただし、DBCC コマンドを使用できるのは極めて限定的です。動的管理ビュー (DMV) を使用すると、クエリ結果を詳しく表示できるだけでなく、非常にきめ細かく制御することができます。まずこのビューを作成し、この記事やその他の記事にある多くのサンプルから参照します。
+However, using DBCC commands can be quite limiting.  Dynamic management views (DMVs) will allow you to see much more detail as well as give you much greater control over the query results.  Start by creating this view, which will be referred to by many of our examples in this and other articles.
 
 ```sql
 CREATE VIEW dbo.vTableSizes
@@ -200,9 +201,9 @@ FROM size
 ;
 ```
 
-### テーブル領域の概要
+### <a name="table-space-summary"></a>Table space summary
 
-次のクエリはテーブルごとに行と領域を返します。これは、最大規模のテーブルや、各テーブルがラウンド ロビンとハッシュ分散のどちらであるかを示す優れたクエリです。ハッシュ分散テーブルの場合、ディストリビューション列も示されます。ほとんどの場合、最大規模のテーブルは、クラスター化列ストア インデックスを持つハッシュ分散テーブルです。
+This query returns the rows and space by table.  It is a great query to see which tables are your largest tables and whether they are round robin or hash distributed.  For hash distributed tables it also shows the distribution column.  In most cases your largest tables should be hash distributed with a clustered columnstore index.
 
 ```sql
 SELECT 
@@ -210,7 +211,7 @@ SELECT
 ,    schema_name
 ,    table_name
 ,    distribution_policy_name
-,	  distribution_column
+,     distribution_column
 ,    index_type_desc
 ,    COUNT(distinct partition_nmbr) as nbr_partitions
 ,    SUM(row_count)                 as table_row_count
@@ -225,14 +226,14 @@ GROUP BY
 ,    schema_name
 ,    table_name
 ,    distribution_policy_name
-,	  distribution_column
+,     distribution_column
 ,    index_type_desc
 ORDER BY
     table_reserved_space_GB desc
 ;
 ```
 
-### ディストリビューションの種類別のテーブル領域
+### <a name="table-space-by-distribution-type"></a>Table space by distribution type
 
 ```sql
 SELECT 
@@ -247,7 +248,7 @@ GROUP BY distribution_policy_name
 ;
 ```
 
-### インデックスの種類別のテーブル領域
+### <a name="table-space-by-index-type"></a>Table space by index type
 
 ```sql
 SELECT 
@@ -262,7 +263,7 @@ GROUP BY index_type_desc
 ;
 ```
 
-### ディストリビューション領域の概要
+### <a name="distribution-space-summary"></a>Distribution space summary
 
 ```sql
 SELECT 
@@ -278,43 +279,43 @@ ORDER BY    distribution_id
 ;
 ```
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][Statistics]、[一時テーブル][Temporary]に関する各記事で詳細を確認します。[SQL Data Warehouse のベスト プラクティス][]に関する記事でベスト プラクティスの詳細を確認します。
+To learn more, see the articles on [Table Data Types][Data Types], [Distributing a Table][Distribute], [Indexing a Table][Index],  [Partitioning a Table][Partition], [Maintaining Table Statistics][Statistics] and [Temporary Tables][Temporary].  For more about best practices, see [SQL Data Warehouse Best Practices][].
 
 <!--Image references-->
 
 <!--Article references-->
-[概要]: ./sql-data-warehouse-tables-overview.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
 [Data Types]: ./sql-data-warehouse-tables-data-types.md
-[データ型]: ./sql-data-warehouse-tables-data-types.md
 [Distribute]: ./sql-data-warehouse-tables-distribute.md
-[分散]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
-[統計]: ./sql-data-warehouse-tables-statistics.md
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
-[一時]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
-[PolyBase でのデータの読み込み]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
+[Load data with Polybase]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
 
 <!--MSDN references-->
 [CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
 [RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
-[DBCC PDW\_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
-[IDENTITY プロパティ]: https://msdn.microsoft.com/library/ms186775.aspx
-[代理キーの回避策の割り当て]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/18/assigning-surrogate-key-to-dimension-tables-in-sql-dw-and-aps/
-[テーブル制約]: https://msdn.microsoft.com/library/ms188066.aspx
-[計算列]: https://msdn.microsoft.com/library/ms186241.aspx
-[スパース列]: https://msdn.microsoft.com/library/cc280604.aspx
-[ユーザー定義型]: https://msdn.microsoft.com/library/ms131694.aspx
-[シーケンス]: https://msdn.microsoft.com/library/ff878091.aspx
-[トリガー]: https://msdn.microsoft.com/library/ms189799.aspx
-[インデックス付きビュー]: https://msdn.microsoft.com/library/ms191432.aspx
-[シノニム]: https://msdn.microsoft.com/library/ms177544.aspx
-[一意のインデックス]: https://msdn.microsoft.com/library/ms188783.aspx
+[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
+[Identity Property]: https://msdn.microsoft.com/library/ms186775.aspx
+[Assigning Surrogate Key Workaround]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/18/assigning-surrogate-key-to-dimension-tables-in-sql-dw-and-aps/
+[Table Constraints]: https://msdn.microsoft.com/library/ms188066.aspx
+[Computed Columns]: https://msdn.microsoft.com/library/ms186241.aspx
+[Sparse Columns]: https://msdn.microsoft.com/library/cc280604.aspx
+[User-Defined Types]: https://msdn.microsoft.com/library/ms131694.aspx
+[Sequence]: https://msdn.microsoft.com/library/ff878091.aspx
+[Triggers]: https://msdn.microsoft.com/library/ms189799.aspx
+[Indexed Views]: https://msdn.microsoft.com/library/ms191432.aspx
+[Synonyms]: https://msdn.microsoft.com/library/ms177544.aspx
+[Unique Indexes]: https://msdn.microsoft.com/library/ms188783.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

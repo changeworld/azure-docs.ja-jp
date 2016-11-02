@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング | Microsoft Azure"
-    description="グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。"
+    pageTitle="Troubleshooting the Access Panel Extension for Internet Explorer | Microsoft Azure"
+    description="How to use group policy to deploy the Internet Explorer add-on for the My Apps portal."
     services="active-directory"
     documentationCenter=""
     authors="MarkusVi"
@@ -13,100 +13,105 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="08/16/2016"
+    ms.date="10/31/2016"
     ms.author="markvi"/>
 
-#Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング
 
-この記事は、次の問題をトラブルシューティングする際に役立ちます。
+#<a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Troubleshooting the Access Panel Extension for Internet Explorer
 
-- Internet Explorer を使用中にマイ アプリ ポータルからアプリにアクセスできない。
-- ソフトウェアをインストール済みでも "ソフトウェアをインストールしてください" というメッセージが表示される。
+This article will help you troubleshoot the following problems:
 
-管理者の方は、「[How to Deploy the Access Panel Extension for Internet Explorer using Group Policy ](active-directory-saas-ie-group-policy.md)」 (グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法) も参照してください。
+- You're unable to access your apps through the My Apps portal while using Internet Explorer.
+- You see the "Install Software" message even though you've already installed the software.
 
-##診断ツールの実行
+If you are an admin, see also: [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy](active-directory-saas-ie-group-policy.md)
 
-アクセス パネルの診断ツールをダウンロードし実行することで、アクセス パネル拡張機能のインストールに関する問題を診断することができます。
+##<a name="run-the-diagnostic-tool"></a>Run the Diagnostic Tool
 
-1. [ここをクリックして診断ツールをダウンロードします。](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
+You can diagnose installation problems with the Access Panel Extension by downloading and running the Access Panel diagnostic tool:
 
-2. ファイルを開いて **[すべて展開]** クリックします。
+1. [Click here to download the diagnostic tool.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
 
-	![Press Extract All](./media/active-directory-saas-ie-troubleshooting/extract1.png)
+2. Open the file, and press **Extract all** button.
 
-3. **[展開]** をクリックして続行します。
+    ![Press Extract All](./media/active-directory-saas-ie-troubleshooting/extract1.png)
 
-	![Press Extract](./media/active-directory-saas-ie-troubleshooting/extract2.png)
+3. Then press the **Extract** button to continue.
 
-4. **AccessPanelExtensionDiagnosticTool** という名前のファイルを右クリックし、**[プログラムから開く] > [Microsoft Windows Based Script Host]** の順にクリックしてツールを実行します。
+    ![Press Extract](./media/active-directory-saas-ie-troubleshooting/extract2.png)
 
-	![Open with > Microsoft Windows Based Script Host](./media/active-directory-saas-ie-troubleshooting/open_tool.png)
+4. To run the tool, right-click the file named **AccessPanelExtensionDiagnosticTool**, then select **Open with > Microsoft Windows Based Script Host**.
 
-5. インストールの問題点を示す次の診断ウィンドウが表示されます。
+    ![Open with > Microsoft Windows Based Script Host](./media/active-directory-saas-ie-troubleshooting/open_tool.png)
 
-	![A sample of the diagnostic window](./media/active-directory-saas-ie-troubleshooting/tool_preview.png)
+5. You will then see the following diagnostic window, which describes what might be wrong with your installation.
 
-6. **[はい]** をクリックして、見つかった問題をプログラムに修正させます。
+    ![A sample of the diagnostic window](./media/active-directory-saas-ie-troubleshooting/tool_preview.png)
 
-7. 変更内容を保存するために、すべての Internet Explorer ウィンドウを閉じてから再び Internet Explorer を開きます。<br />それでもアプリにアクセスできない場合は、下記の手順を試してください。
+6. Click "**YES**" to let the program fix the issues that have been found.
 
-##アクセス パネル拡張機能が有効になっていることを確認する
+7. To save these changes, close every Internet Explorer window, and then open Internet Explorer again.<br />If you still can't access your apps, try the steps below.
 
-Internet Explorer でアクセス パネル拡張機能が有効になっていることを確認するには:
+##<a name="check-that-the-access-panel-extension-is-enabled"></a>Check that the Access Panel Extension is enabled
 
-1. Internet Explorer で、ウィンドウの右上隅にある **[歯車]** アイコンをクリックします。次に、**[インターネット オプション]** を選択します。<br />(古いバージョンの Internet Explorer では、**[ツール] > [インターネット オプション]** の順にクリックします)。
+To verify that the Access Panel Extension is enabled in Internet Explorer:
 
-	![Go to Tools > Internet Options](./media/active-directory-saas-ie-troubleshooting/internetoptions.png)
+1. In Internet Explorer, click on the **Gear icon** on the top right corner of the window. Then select **Internet options**.<br />(In older versions of Internet Explorer you can find this under **Tools > Internet options**.
 
-2. **[プログラム]** タブをクリックして、**[アドオンの管理]** をクリックします。
+    ![Go to Tools > Internet Options](./media/active-directory-saas-ie-troubleshooting/internetoptions.png)
 
-	![Click Manage Add-Ons](./media/active-directory-saas-ie-troubleshooting/internetoptions_programs.png)
+2. Click on the **Programs** tab, then click on the **Manage add-ons** button.
 
-3. このダイアログで、**[アクセス パネル拡張機能]** を選択して **[有効にする]** ボタンをクリックします。
+    ![Click Manage Add-Ons](./media/active-directory-saas-ie-troubleshooting/internetoptions_programs.png)
 
-	![Click Enable](./media/active-directory-saas-ie-troubleshooting/enableaddon.png)
+3. In this dialog, select **Access Panel Extension** and then click the **Enable** button.
 
-4. 変更内容を保存するために、すべての Internet Explorer ウィンドウを閉じてから再び Internet Explorer を開きます。
+    ![Click Enable](./media/active-directory-saas-ie-troubleshooting/enableaddon.png)
 
-##InPrivate ブラウズで拡張機能を有効にする
+4. To save these changes, close every Internet Explorer window and then open Internet Explorer again.
 
-InPrivate ブラウズ モードを使用している場合:
+##<a name="enable-extensions-for-inprivate-browsing"></a>Enable Extensions for InPrivate Browsing
 
-1. Internet Explorer で、ウィンドウの右上隅にある **[歯車]** アイコンをクリックします。次に、**[インターネット オプション]** を選択します。<br />(古いバージョンの Internet Explorer では、**[ツール] > [インターネット オプション]** の順にクリックします)。
+If you are using the InPrivate Browsing mode:
 
-	![A sample of the diagnostic window](./media/active-directory-saas-ie-troubleshooting/inprivateoptions.png)
+1. In Internet Explorer, click on the **Gear icon** on the top right corner of the window. Then select **Internet options**.<br />(In older versions of Internet Explorer you can find this under **Tools > Internet options**.
 
-2. **[プライバシー]** タブに移動し、**[InPrivate ブラウズの開始時に、ツール バーと拡張機能を無効にする]** チェック ボックスを**オフにします**。</p>
+    ![A sample of the diagnostic window](./media/active-directory-saas-ie-troubleshooting/inprivateoptions.png)
 
-	![Uncheck Disable toolbars and extensions when InPrivate Browsing starts](./media/active-directory-saas-ie-troubleshooting/enabletoolbars.png)
+2. Go to the **Privacy** tab, then **uncheck** the checkbox labeled **Disable toolbars and extensions when InPrivate Browsing starts**</p>
 
-3. 変更内容を保存するために、すべての Internet Explorer ウィンドウを閉じてから再び Internet Explorer を開きます。
+    ![Uncheck Disable toolbars and extensions when InPrivate Browsing starts](./media/active-directory-saas-ie-troubleshooting/enabletoolbars.png)
 
-##アクセス パネル拡張機能のアンインストール
+3. To save these changes, close every Internet Explorer window and then open Internet Explorer again.
 
-コンピューターからアクセス パネル拡張機能をアンインストールするには:
+##<a name="uninstall-the-access-panel-extension"></a>Uninstall the Access Panel Extension
 
-1. キーボードの **Windows キー**を押して [スタート] メニューを開きます。メニューが開いているときに好きな文字を入力して、検索を行うことができます。「コントロール パネル」と入力して、**[コントロール パネル]** が検索結果に表示されたらそれを開きます。
+To uninstall the Access Panel extension from your computer:
 
-	![Search for Control Panel](./media/active-directory-saas-ie-troubleshooting/search_sm.png)
+1. On your keyboard, press the **Windows key** to open the Start menu. When the menu is open, you can type anything to do a search. Type "Control Panel" and then open the **Control Panel** when it appears in the search results.
 
-2. コントロール パネルの右上隅にある **[表示方法]** を、**[大きいアイコン]** に変更します。**[プログラムと機能]** を見つけてクリックします。
+    ![Search for Control Panel](./media/active-directory-saas-ie-troubleshooting/search_sm.png)
 
-	![Chang the view to show Large Icons](./media/active-directory-saas-ie-troubleshooting/control_panel.png)
+2. In the top right corner of the Control Panel, change the **View by** option to **Large icons**. Then find and click on the **Programs and Features** button.
 
-3. リストから **[アクセス パネル拡張機能]** を選択し、**[アンインストール]** をクリックします。
+    ![Chang the view to show Large Icons](./media/active-directory-saas-ie-troubleshooting/control_panel.png)
 
-	![Click Uninstall](./media/active-directory-saas-ie-troubleshooting/uninstall.png)
+3. From the list, select **Access Panel Extension**, and the click on the **Uninstall** button.
 
-4. 拡張機能をもう一度インストールして、問題が解決されたかどうかを確認することができます。
+    ![Click Uninstall](./media/active-directory-saas-ie-troubleshooting/uninstall.png)
 
-拡張機能のアンインストールで問題が発生する場合は、[Microsoft Fix It](https://go.microsoft.com/?linkid=9779673) ツールを使用して削除することも可能です。
+4. You can then try to install the extension again to see if the problem has been resolved.
 
-## 関連記事
+If you encounter issues uninstalling the extension, you can also remove it using the [Microsoft Fix It](https://go.microsoft.com/?linkid=9779673) tool.
+
+## <a name="related-articles"></a>Related Articles
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-- [グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)
+- [Application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md)
+- [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy](active-directory-saas-ie-group-policy.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

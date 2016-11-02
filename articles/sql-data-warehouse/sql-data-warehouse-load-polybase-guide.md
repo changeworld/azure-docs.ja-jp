@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Data Warehouse で PolyBase を使用するためのガイド | Microsoft Azure"
-   description="SQL Data Warehouse のシナリオで PolyBase を使用するためのガイドラインおよび推奨事項を説明します。"
+   pageTitle="Guide for using PolyBase in SQL Data Warehouse | Microsoft Azure"
+   description="Guidelines and recommendations for using PolyBase in SQL Data Warehouse scenarios."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="ckarst"
@@ -13,37 +13,38 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
-   ms.author="cakarst;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="cakarst;barbkess"/>
 
 
-# SQL Data Warehouse で PolyBase を使用するためのガイド
 
-このガイドでは、SQL Data Warehouse で PolyBase を使用するための実用的な情報を提供します。
+# <a name="guide-for-using-polybase-in-sql-data-warehouse"></a>Guide for using PolyBase in SQL Data Warehouse
 
-開始するには、「[PolyBase を使用したデータのロード][]」チュートリアルを参照してください。
+This guide gives practical information for using PolyBase in SQL Data Warehouse.
+
+To get started, see the [Load data with PolyBase][] tutorial.
 
 
-## ストレージ キーの交換
+## <a name="rotating-storage-keys"></a>Rotating storage keys
 
-セキュリティ上の理由で、BLOB ストレージへのアクセス キーの交換を検討する必要がある場合があります。
+From time to time you will want to change the access key to your blob storage for security reasons.
 
-このタスクを実行する最もスマートな方法として、"キーの交換" と呼ばれるプロセスがあります。BLOB ストレージ アカウントには 2 つのストレージ キーがあります。これらを切り替えることができます。
+The most elegant way to perform this task is to follow a process known as "rotating the keys". You may have noticed that you have two storage keys for your blob storage account. This is so that you can transition
 
-Azure ストレージ アカウント キーの交換は、次のシンプルな 3 つの手順から成るプロセスです
+Rotating your Azure storage account keys is a simple three step process
 
-1. セカンダリ ストレージ アクセス キーに基づいたセカンダリ データベース スコープの資格情報を作成します
-2. この新しい資格情報に基づいて 2 つ目の外部データ ソースを作成します
-3. 外部データ ソースを参照する外部テーブルを削除して、新しい外部テーブルを作成します
+1. Create second database scoped credential based on the secondary storage access key
+2. Create second external data source based off this new credential
+3. Drop and create the external table(s) pointing to the new external data source
 
-すべての外部テーブルを新しい外部データ ソースに移行したら、クリーンアップ作業を実行できます。
+When you have migrated all your external tables to the new external data source then you can perform the clean up tasks:
 
-1. 1 つ目の外部データ ソースを削除する
-2. プライマリ ストレージ アクセス キーに基づいた 1 つ目のデータベース スコープ資格情報を削除します
-3. Azure にログインし、次回に備えてプライマリ アクセス キーを再生成します
+1. Drop first external data source
+2. Drop first database scoped credential based on the primary storage access key
+3. Log into Azure and regenerate the primary access key ready for the next time
 
-## Azure BLOB ストレージ データのクエリ
-外部テーブルに対するクエリでは、リレーショナル テーブルであるかのように、単にテーブル名が使用されます。
+## <a name="query-azure-blob-storage-data"></a>Query Azure blob storage data
+Queries against external tables simply use the table name as though it was a relational table.
 
 ```sql
 -- Query Azure storage resident data via external table.
@@ -51,17 +52,17 @@ SELECT * FROM [ext].[CarSensor_Data]
 ;
 ```
 
-> [AZURE.NOTE] 外部テーブルに対するクエリが、*"クエリは中止されました。外部ソースの読み取り中に最大拒否しきい値に達しました"* というエラーで失敗する場合があります。これは、外部データに*ダーティ*なレコードが含まれていることを示します。データ レコードは、列の実際のデータの種類/数値が外部テーブルの列定義と一致しない場合、またはデータが指定された外部ファイルの形式に従っていない場合に「ダーティ」であるとみなされます。これを修正するには、外部テーブルと外部ファイルの形式の定義が正しいこと、および外部データがこれらの定義に従っていることを確認します。外部データ レコードのサブセットがダーティである場合は、CREATE EXTERNAL TABLE DDL の中で拒否オプションを使用することで、クエリでこれらのレコードを拒否することを選択できます。
+> [AZURE.NOTE] A query on an external table can fail with the error *"Query aborted-- the maximum reject threshold was reached while reading from an external source"*. This indicates that your external data contains *dirty* records. A data record is considered 'dirty' if the actual data types/number of columns do not match the column definitions of the external table or if the data doesn't conform to the specified external file format. To fix this, ensure that your external table and external file format definitions are correct and your external data conforms to these definitions. In case a subset of external data records are dirty, you can choose to reject these records for your queries by using the reject options in CREATE EXTERNAL TABLE DDL.
 
 
-## Azure BLOB ストレージからのデータのロード
-この例では、Azure BLOB ストレージから SQL Data Warehouse データベースにデータをロードします。
+## <a name="load-data-from-azure-blob-storage"></a>Load data from Azure blob storage
+This example loads data from Azure blob storage to SQL Data Warehouse database.
 
-データを直接格納すると、クエリのデータ転送に要する時間が削減されます。columnstore インデックスを使用してデータを格納すると、分析クエリに対するクエリのパフォーマンスが最大で 10 倍改善されます。
+Storing data directly removes the data transfer time for queries. Storing data with a columnstore index improves query performance for analysis queries by up to 10x.
 
-この例では、CREATE TABLE AS SELECT ステートメントを使用してデータをロードします。新しいテーブルは、クエリで指定された列を継承します。これは、外部テーブル定義からそれらの列のデータ型を継承します。
+This example uses the CREATE TABLE AS SELECT statement to load data. The new table inherits the columns named in the query. It inherits the data types of those columns from the external table definition.
 
-CREATE TABLE AS SELECT は、SQL Data Warehouse のすべてのコンピューティング ノードにデータを同時に読み込む高パフォーマンス Transact-SQL ステートメントです。元来、これは Analytics Platform System で超並列処理 (MPP) エンジン用に開発されたものですが、現在は SQL Data Warehouse で使用されています。
+CREATE TABLE AS SELECT is a highly performant Transact-SQL statement that loads the data in parallel to all the compute nodes of your SQL Data Warehouse.  It was originally developed for  the massively parallel processing (MPP) engine in Analytics Platform System and is now in SQL Data Warehouse.
 
 ```sql
 -- Load data from Azure blob storage to SQL Data Warehouse
@@ -70,7 +71,7 @@ CREATE TABLE [dbo].[Customer_Speed]
 WITH
 (   
     CLUSTERED COLUMNSTORE INDEX
-,	DISTRIBUTION = HASH([CarSensor_Data].[CustomerKey])
+,   DISTRIBUTION = HASH([CarSensor_Data].[CustomerKey])
 )
 AS
 SELECT *
@@ -78,11 +79,11 @@ FROM   [ext].[CarSensor_Data]
 ;
 ```
 
-「[CREATE TABLE AS SELECT (Transact-SQL)][]」を参照してください。
+See [CREATE TABLE AS SELECT (Transact-SQL)][].
 
-## 新しくロードしたデータの統計を作成する
+## <a name="create-statistics-on-newly-loaded-data"></a>Create Statistics on newly loaded data
 
-Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。統計の詳細については、開発トピック グループの[統計][]に関するトピックを参照してください。この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します。
+Azure SQL Data Warehouse does not yet support auto create or auto update statistics.  In order to get the best performance from your queries, it's important that statistics be created on all columns of all tables after the first load or any substantial changes occur in the data.  For a detailed explanation of statistics, see the [Statistics][] topic in the Develop group of topics.  Below is a quick example of how to create statistics on the tabled loaded in this example.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -92,10 +93,10 @@ create statistics [Speed] on [Customer_Speed] ([Speed]);
 create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 ```
 
-## Azure BLOB ストレージにデータをエクスポートする
-このセクションでは、SQL Data Warehouse から Azure BLOB ストレージにデータをエクスポートする方法を示します。この例では、すべてのコンピューティング ノードからデータを同時にエクスポートする高パフォーマンス Transact-SQL ステートメントである CREATE EXTERNAL TABLE AS SELECT を使用します。
+## <a name="export-data-to-azure-blob-storage"></a>Export data to Azure blob storage
+This section shows how to export data from SQL Data Warehouse to Azure blob storage. This example uses CREATE EXTERNAL TABLE AS SELECT which is a highly performant Transact-SQL statement to export the data in parallel from all the compute nodes.
 
-次の例では、dbo.Weblogs テーブルの列の定義とデータを使用して、外部テーブル Weblogs2014 を作成します。外部テーブルの定義は、SQL Data Warehouse に格納されます。また、SELECT ステートメントの結果は、データ ソースで指定された BLOB コンテナーにある "/archive/log2014/" ディレクトリにエクスポートされます。データは、指定されたテキスト ファイル形式でエクスポートされます。
+The following example creates an external table Weblogs2014 using column definitions and data from dbo.Weblogs table. The external table definition is stored in SQL Data Warehouse and the results of the SELECT statement are exported to the "/archive/log2014/" directory under the blob container specified by the data source. The data is exported in the specified text file format.
 
 ```sql
 CREATE EXTERNAL TABLE Weblogs2014 WITH
@@ -117,26 +118,26 @@ WHERE
 ```
 
 
-## PolyBase UTF-8 要件に対処する
-現在、PolyBase では、UTF-8 でエンコードされたデータ ファイルの読み込みをサポートしています。UTF-8 では ASCII と同じ文字エンコードを使用するため、PolyBase でも ASCII でエンコードされたデータの読み込みがサポートされています。ただし、PolyBase では、UTF-16 / Unicode または拡張 ASCII 文字などの文字エンコードはサポートされていません。拡張 ASCII には、ドイツ語によく見られるウムラウトなどのアクセント付きの文字が含まれています。
+## <a name="working-around-the-polybase-utf8-requirement"></a>Working around the PolyBase UTF-8 requirement
+At present PolyBase supports loading data files that have been UTF-8 encoded. As UTF-8 uses the same character encoding as ASCII PolyBase will also support loading data that is ASCII encoded. However, PolyBase does not support other character encoding such as UTF-16 / Unicode or extended ASCII characters. Extended ASCII includes characters with accents such as the umlaut which is common in German.
 
-この要件に対処するための最善の方法は、UTF-8 エンコードを書き換えることです。
+To work around this requirement the best answer is to re-write to UTF-8 encoding.
 
-これを行うには、いくつかの方法があります。Powershell を使用した 2 つの方法を以下に紹介します。
+There are several ways to do this. Below are two approaches using Powershell:
 
-### 小さいファイル向けの単純な例
+### <a name="simple-example-for-small-files"></a>Simple example for small files
 
-以下は、ファイルを作成する単純な 1 行の Powershell スクリプトです。
+Below is a simple one line Powershell script that creates the file.
 
 ```PowerShell
 Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name> -Encoding utf8
 ```
 
-これは、データを再エンコードする簡単な方法ですが、最も効率的であるとは言えません。以下の IO ストリーミングの例では、これよりも格段に速く同じ結果を得られます。
+However, whilst this is a simple way to re-encode the data it is by no means the most efficient. The io streaming example below is much, much faster and achieves the same result.
 
-### 大きいファイル向けの IO ストリーミングの例
+### <a name="io-streaming-example-for-larger-files"></a>IO Streaming example for larger files
 
-以下のコード サンプルはやや複雑ですが、ソースからターゲットにデータ行をストリームするため、はるかに効率的です。この方法は、大規模なファイル向けです。
+The code sample below is more complex but as it streams the rows of data from source to target it is much more efficient. Use this approach for larger files.
 
 ```PowerShell
 #Static variables
@@ -147,13 +148,13 @@ $ansi = [System.Text.Encoding]::Default
 $append = $False
 
 #Set source file path and file name
-$src = [System.IO.Path]::Combine("C:\input_file_path","input_file_name.txt")
+$src = [System.IO.Path]::Combine("C:\input_file_path\","input_file_name.txt")
 
 #Set source file encoding (using list above)
 $src_enc = $ansi
 
 #Set target file path and file name
-$tgt = [System.IO.Path]::Combine("C:\output_file_path","output_file_name.txt")
+$tgt = [System.IO.Path]::Combine("C:\output_file_path\","output_file_name.txt")
 
 #Set target file encoding (using list above)
 $tgt_enc = $utf8
@@ -172,16 +173,16 @@ $write.Close()
 $write.Dispose()
 ```
 
-## 次のステップ
-SQL Data Warehouse にデータを移行する方法の詳細については、「[データ移行の概要][]」を参照してください。
+## <a name="next-steps"></a>Next steps
+To learn more about moving data to SQL Data Warehouse, see the [data migration overview][].
 
 <!--Image references-->
 
 <!--Article references-->
 [Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
-[PolyBase を使用したデータのロード]: ./sql-data-warehouse-get-started-load-with-polybase.md
-[統計]: ./sql-data-warehouse-tables-statistics.md
-[データ移行の概要]: ./sql-data-warehouse-overview-migrate.md
+[Load data with PolyBase]: ./sql-data-warehouse-get-started-load-with-polybase.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[data migration overview]: ./sql-data-warehouse-overview-migrate.md
 
 <!--MSDN references-->
 [supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx
@@ -190,8 +191,7 @@ SQL Data Warehouse にデータを移行する方法の詳細については、�
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
 [CREATE EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935022.aspx
-[CREATE EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/dn935026).aspx
-[CREATE EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935021.aspx
+[CREATE EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/dn935026).aspx [CREATE EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935021.aspxx
 
 [DROP EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/library/mt146367.aspx
 [DROP EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/mt146379.aspx
@@ -206,4 +206,8 @@ SQL Data Warehouse にデータを移行する方法の詳細については、�
 
 <!-- External Links -->
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

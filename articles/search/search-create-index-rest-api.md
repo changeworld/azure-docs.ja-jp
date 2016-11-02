@@ -1,10 +1,10 @@
 <properties
-    pageTitle="REST API を使用した Azure Search インデックスの作成 | Microsoft Azure | ホスト型クラウド検索サービス"
-    description="Azure Search HTTP REST API を使用して、コードでインデックスを作成します。"
+    pageTitle="Create an Azure Search index using the REST API | Microsoft Azure | Hosted cloud search service"
+    description="Create an index in code using the Azure Search HTTP REST API."
     services="search"
     documentationCenter=""
     authors="ashmaka"
-    manager=""
+    manager="jhubbard"
     editor=""
     tags="azure-portal"/>
 
@@ -17,44 +17,45 @@
     ms.date="08/29/2016"
     ms.author="ashmaka"/>
 
-# REST API を使用した Azure Search インデックスの作成
+
+# <a name="create-an-azure-search-index-using-the-rest-api"></a>Create an Azure Search index using the REST API
 > [AZURE.SELECTOR]
-- [概要](search-what-is-an-index.md)
-- [ポータル](search-create-index-portal.md)
+- [Overview](search-what-is-an-index.md)
+- [Portal](search-create-index-portal.md)
 - [.NET](search-create-index-dotnet.md)
-- [REST ()](search-create-index-rest-api.md)
+- [REST](search-create-index-rest-api.md)
 
 
-この記事では、Azure Search REST API を使用して Azure Search の[インデックス](https://msdn.microsoft.com/library/azure/dn798941.aspx)を作成するプロセスについて説明します。
+This article will walk you through the process of creating an Azure Search [index](https://msdn.microsoft.com/library/azure/dn798941.aspx) using the Azure Search REST API.
 
-このガイドに従ってインデックスを作成する前に、既に [Azure Search サービスを作成済み](search-create-service-portal.md)です。
+Before following this guide and creating an index, you should have already [created an Azure Search service](search-create-service-portal.md).
 
-REST API を使用して Azure Search インデックスを作成するには、Azure Search サービスの URL エンドポイントに単一の HTTP POST 要求を発行します。インデックス定義は、適切な形式の JSON コンテンツとして要求本文に含まれます。
+To create an Azure Search index using the REST API, you will issue a single HTTP POST request to your Azure Search service's URL endpoint. Your index definition will be contained in the request body as well-formed JSON content.
 
 
-## I.Azure Search サービスの管理者 API キーの識別
-Azure Search サービスのプロビジョニングが完了すると、REST API を使用して、サービスの URL エンドポイントに対して HTTP 要求を発行できます。ただし、*すべて*の API 要求に、プロビジョニングした Search サービス用に生成された API キーを含める必要があります。有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
+## <a name="i.-identify-your-azure-search-service's-admin-api-key"></a>I. Identify your Azure Search service's admin api-key
+Now that you have provisioned an Azure Search service, you can issue HTTP requests against your service's URL endpoint using the REST API. However, *all* API requests must include the api-key that was generated for the Search service you provisioned. Having a valid key establishes trust, on a per request basis, between the application sending the request and the service that handles it.
 
-1. サービスの API キーを探すには、[Azure ポータル](https://portal.azure.com/)にログインする必要があります。
-2. Azure Search サービスのブレードに移動します。
-3. "キー" アイコンをクリックします。
+1. To find your service's api-keys you must log into the [Azure Portal](https://portal.azure.com/)
+2. Go to your Azure Search service's blade
+3. Click on the "Keys" icon
 
-サービスで*管理者キー*と*クエリ キー*を使用できるようになります。
+Your service will have *admin keys* and *query keys*.
 
- - プライマリおよびセカンダリ*管理者キー*は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。キーは 2 つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
- - *クエリ キー*はインデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。
+ - Your primary and secondary *admin keys* grant full rights to all operations, including the ability to manage the service, create and delete indexes, indexers, and data sources. There are two keys so that you can continue to use the secondary key if you decide to regenerate the primary key, and vice-versa.
+ - Your *query keys* grant read-only access to indexes and documents, and are typically distributed to client applications that issue search requests.
 
-インデックスを作成する目的では、プライマリ管理者キーとセカンダリ管理者キーのどちらかを使用できます。
+For the purposes of creating an index, you can use either your primary or secondary admin key.
 
-## II.適切な形式の JSON を使用した Azure Search インデックスの定義
-サービスに対する 1 つの HTTP POST 要求で、インデックスを作成します。HTTP POST 要求の本文には、Azure Search インデックスを定義する 1 つの JSON オブジェクトが含まれます。
+## <a name="ii.-define-your-azure-search-index-using-well-formed-json"></a>II. Define your Azure Search index using well-formed JSON
+A single HTTP POST request to your service will create your index. The body of your HTTP POST request will contain a single JSON object that defines your Azure Search index.
 
-1. この JSON オブジェクトの最初のプロパティは、インデックスの名前です。
-2. この JSON オブジェクトの 2 番目のプロパティは、`fields` という名前の JSON 配列で、インデックスのフィールドごとに個別の JSON オブジェクトを格納します。これらの各 JSON オブジェクトには、"name"、"type" などのフィールド属性ごとに複数の名前/値ペアが含まれます。
+1. The first property of this JSON object is the name of your index.
+2. The second property of this JSON object is a JSON array named `fields` that contains a separate JSON object for each field in your index. Each of these JSON objects contain multiple name/value pairs for each of the field attributes including "name," "type," etc.
 
-各フィールドには[適切な属性](https://msdn.microsoft.com/library/azure/dn798941.aspx)を割り当てる必要があるため、インデックスを設計する際は、検索のユーザー エクスペリエンスとビジネス ニーズに留意することが重要です。これらの属性では、どのフィールドにどの検索機能 (フィルター、ファセット、フルテキスト検索の並べ替えなど) が適用されるかを制御します。指定しない属性については、明確に無効にしない限り、既定では、対応する検索機能が有効になります。
+It is important that you keep your search user experience and business needs in mind when designing your index as each field must be assigned the [proper attributes](https://msdn.microsoft.com/library/azure/dn798941.aspx). These attributes control which search features (filtering, faceting, sorting full-text search, etc.) apply to which fields. For any attribute you do not specify, the default will be to enable the corresponding search feature unless you specifically disable it.
 
-この例では、インデックスに "hotels" という名前を付け、次のようにフィールドを定義しました。
+For our example, we've named our index "hotels" and defined our fields as follows:
 
 ```JSON
 {
@@ -76,18 +77,18 @@ Azure Search サービスのプロビジョニングが完了すると、REST AP
 }
 ```
 
-各フィールドのインデックスの属性は、アプリケーションでどのように使用されるかに応じて、慎重に選択しています。たとえば、`hotelId` は、ユーザーが知らないホテルについて検索する一意のキーです。そのため、`searchable` を `false` に設定してそのフィールドのフルテキスト検索を無効にします。これにより、インデックスの領域が節約されます。
+We have carefully chosen the index attributes for each field based on how we think they will be used in an application. For example, `hotelId` is a unique key that people searching for hotels likely won't know, so we disable full-text search for that field by setting `searchable` to `false`, which saves space in the index.
 
-インデックスの `Edm.String` 型のフィールドを 1 つだけ、"key" フィールドとして指定する必要があることに注意してください。
+Please note that exactly one field in your index of type `Edm.String` must be the designated as the 'key' field.
 
-上記のインデックス定義では、フランス語のテキストを格納することを目的としているため、`description_fr` フィールドにカスタム言語アナライザーを使用しています。言語アナライザーの詳細については、[MSDN の言語サポートのトピック](https://msdn.microsoft.com/library/azure/dn879793.aspx)と、対応する[ブログ記事](https://azure.microsoft.com/blog/language-support-in-azure-search/)を参照してください。
+The index definition above uses a custom language analyzer for the `description_fr` field because it is intended to store French text. See [the Language support topic on MSDN](https://msdn.microsoft.com/library/azure/dn879793.aspx) as well as the corresponding [blog post](https://azure.microsoft.com/blog/language-support-in-azure-search/) for more information about language analyzers.
 
-## III.HTTP 要求の発行
-1. インデックス定義を要求本文として使用して、Azure Search サービス エンドポイントの URL に HTTP POST 要求を発行します。URL では、ホスト名としてサービス名を使用し、クエリ文字列パラメーターとして適切な `api-version` を配置するようにしてください (このドキュメントが書かれた時点で最新の API バージョンは `2015-02-28` です)。
-2. 要求ヘッダーで、`Content-Type` を `application/json` として指定します。また、`api-key` ヘッダーでは、ステップ I で特定したサービスの管理者キーを指定する必要があります。
+## <a name="iii.-issue-the-http-request"></a>III. Issue the HTTP request
+1. Using your index definition as the request body, issue an HTTP POST request to your Azure Search service endpoint URL. In the URL, be sure to use your service name as the host name, and put the proper `api-version` as a query string parameter (the current API version is `2015-02-28` at the time of publishing this document).
+2. In the request headers, specify the `Content-Type` as `application/json`. You will also need to provide your service's admin key that you identified in Step I in the `api-key` header.
 
 
-独自のサービス名と API キーを指定して以下の要求を発行する必要があります。
+You will have to provide your own service name and api key to issue the request below:
 
 
     POST https://[service name].search.windows.net/indexes?api-version=2015-02-28
@@ -95,15 +96,19 @@ Azure Search サービスのプロビジョニングが完了すると、REST AP
     api-key: [api-key]
 
 
-要求が成功した場合は、状態コード 201 (Created) が表示されます。REST API を使用したインデックスの作成の詳細については、[MSDN](https://msdn.microsoft.com/library/azure/dn798941.aspx) の API リファレンスを参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「[HTTP status codes (Azure Search) (HTTP 状態コード (Azure Search))](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。
+For a successful request, you should see status code 201 (Created). For more information on creating an index via the REST API, please visit the API reference on [MSDN](https://msdn.microsoft.com/library/azure/dn798941.aspx). For more information on other HTTP status codes that could be returned in case of failure, see [HTTP status codes (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx).
 
-インデックスが不要になり、それを削除する場合は、HTTP DELETE 要求を発行するだけです。たとえば、"hotels" を削除する方法を次に示します。
+When you're done with an index and want to delete it, just issue an HTTP DELETE request. For example, this is how we would delete the "hotels" index:
 
     DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2015-02-28
     api-key: [api-key]
 
 
-## 次へ
-Azure Search インデックスを作成すると、データの検索を開始できるように[インデックスにコンテンツをアップロードする](search-what-is-data-import.md)準備が完了します。
+## <a name="next"></a>Next
+After creating an Azure Search index, you will be ready to [upload your content into the index](search-what-is-data-import.md) so you can start searching your data.
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

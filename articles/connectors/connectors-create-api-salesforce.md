@@ -1,10 +1,10 @@
 <properties
 pageTitle="Logic Apps での Salesforce コネクタの使用方法 | Microsoft Azure"
-description="Azure App Service を使用してロジック アプリを作成します。Salesforce コネクタは、Salesforce オブジェクトを操作するための API を提供します。"
-services="logic-apps"	
-documentationCenter=".net,nodejs,java" 	
-authors="msftman"	
-manager="erikre"	
+description="Azure App Service を使用してロジック アプリを作成します。 Salesforce コネクタは、Salesforce オブジェクトを操作するための API を提供します。"
+services="logic-apps"   
+documentationCenter=".net,nodejs,java"  
+authors="msftman"   
+manager="erikre"    
 editor=""
 tags="connectors" />
 
@@ -14,76 +14,77 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="07/22/2016"
+ms.date="10/05/2016"
 ms.author="deonhe"/>
 
-# Salesforce コネクタの使用
+
+# <a name="get-started-with-the-salesforce-connector"></a>Salesforce コネクタの使用
 
 Salesforce コネクタは、Salesforce オブジェクトを操作するための API を提供します。
 
-[任意のコネクタ](./apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。ロジック アプリの作成方法については、[こちら](../app-service-logic/app-service-logic-create-a-logic-app.md)をご覧ください。
+[任意のコネクタ](./apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)から始めることができます。
 
-## Salesforce コネクタに接続する
+## <a name="connect-to-salesforce-connector"></a>Salesforce コネクタに接続する
 
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成する必要があります。[接続](./connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの*接続*を作成する必要があります。 [接続](./connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。  
 
-### Salesforce コネクタへの接続を作成する
+### <a name="create-a-connection-to-salesforce-connector"></a>Salesforce コネクタへの接続を作成する
 
->[AZURE.INCLUDE [Salesforce コネクタへの接続を作成する手順](../../includes/connectors-create-api-salesforce.md)]
+>[AZURE.INCLUDE [Steps to create a connection to Salesforce Connector](../../includes/connectors-create-api-salesforce.md)]
 
-## Salesforce コネクタ トリガーを使用する
+## <a name="use-a-salesforce-connector-trigger"></a>Salesforce コネクタ トリガーを使用する
 
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。
 
->[AZURE.INCLUDE [Salesforce トリガーを作成する手順](../../includes/connectors-create-api-salesforce-trigger.md)]
+>[AZURE.INCLUDE [Steps to create a Salesforce trigger](../../includes/connectors-create-api-salesforce-trigger.md)]
 
-## Add a condition 
->[AZURE.INCLUDE [Salesforce 条件を作成する手順](../../includes/connectors-create-api-salesforce-condition.md)]
+## <a name="add-a-condition"></a>条件を追加する 
+>[AZURE.INCLUDE [Steps to create a Salesforce condition](../../includes/connectors-create-api-salesforce-condition.md)]
 
-## Salesforce コネクタ アクションを使用する
+## <a name="use-a-salesforce-connector-action"></a>Salesforce コネクタ アクションを使用する
 
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。
 
->[AZURE.INCLUDE [Salesforce アクションを作成する手順](../../includes/connectors-create-api-salesforce-action.md)]
+>[AZURE.INCLUDE [Steps to create a Salesforce action](../../includes/connectors-create-api-salesforce-action.md)]
 
-## 技術的な詳細
+## <a name="technical-details"></a>技術的な詳細
 
 ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
 
-## Salesforce コネクタ トリガー
+## <a name="salesforce-connector-triggers"></a>Salesforce コネクタ トリガー
 
-Salesforce コネクタには、次のトリガーがあります。
+Salesforce コネクタには、次のトリガーがあります。  
 
 |トリガー | 説明|
 |--- | ---|
-|[オブジェクトの作成時](connectors-create-api-salesforceconnector.md#when-an-object-is-created)|この操作では、オブジェクトが作成されたときにフローをトリガーします。|
-|[オブジェクトの変更時](connectors-create-api-salesforceconnector.md#when-an-object-is-modified)|この操作では、オブジェクトが変更されたときにフローをトリガーします。|
+|[オブジェクトの作成時](connectors-create-api-salesforce.md#when-an-object-is-created)|この操作では、オブジェクトが作成されたときにフローをトリガーします。|
+|[オブジェクトの変更時](connectors-create-api-salesforce.md#when-an-object-is-modified)|この操作では、オブジェクトが変更されたときにフローをトリガーします。|
 
 
-## Salesforce コネクタ アクション
+## <a name="salesforce-connector-actions"></a>Salesforce コネクタ アクション
 
 Salesforce コネクタには、次のアクションがあります。
 
 
-|アクション|説明|
+|[操作]|説明|
 |--- | ---|
-|[複数のオブジェクトを取得する](connectors-create-api-salesforceconnector.md#get-objects)|この操作では、"潜在顧客" のような特定の種類のオブジェクトを取得します。|
-|[オブジェクトを作成する](connectors-create-api-salesforceconnector.md#create-object)|この操作では、オブジェクトを作成します。|
-|[オブジェクトを取得する](connectors-create-api-salesforceconnector.md#get-object)|この操作では、オブジェクトを取得します。|
-|[オブジェクトを削除する](connectors-create-api-salesforceconnector.md#delete-object)|この操作では、オブジェクトを削除します。|
-|[オブジェクトを更新する](connectors-create-api-salesforceconnector.md#update-object)|この操作では、オブジェクトを更新します。|
-|[オブジェクトの種類を取得する](connectors-create-api-salesforceconnector.md#get-object-types)|この操作では、使用可能なオブジェクトの種類を一覧表示します。|
-### アクションの詳細
+|[オブジェクトの取得](connectors-create-api-salesforce.md#get-objects)|この操作では、"潜在顧客" のような特定の種類のオブジェクトを取得します。|
+|[オブジェクトの作成](connectors-create-api-salesforce.md#create-object)|この操作では、オブジェクトを作成します。|
+|[オブジェクトの取得](connectors-create-api-salesforce.md#get-object)|この操作では、オブジェクトを取得します。|
+|[オブジェクトの削除](connectors-create-api-salesforce.md#delete-object)|この操作では、オブジェクトを削除します。|
+|[オブジェクトの更新](connectors-create-api-salesforce.md#update-object)|この操作では、オブジェクトを更新します。|
+|[オブジェクトの種類の取得](connectors-create-api-salesforce.md#get-object-types)|この操作では、使用可能なオブジェクトの種類を一覧表示します。|
+### <a name="action-details"></a>アクションの詳細
 
 ここでは、このコネクタのアクションとトリガー、および応答について詳しく説明します。
 
 
 
-### 複数のオブジェクトを取得する
-この操作では、"潜在顧客" のような特定の種類のオブジェクトを取得します。
+### <a name="get-objects"></a>複数のオブジェクトを取得する
+この操作では、"潜在顧客" のような特定の種類のオブジェクトを取得します。 
 
 
-|プロパティ名| Displayname Settings|説明|
+|プロパティ名| Displayname Settings|Description|
 | ---|---|---|
 |table*|オブジェクトの種類|Salesforce オブジェクトの種類 (例: "潜在顧客")|
 |$filter|Filter Query (フィルター クエリ)|エントリ数を制限する ODATA filter クエリ|
@@ -93,7 +94,7 @@ Salesforce コネクタには、次のアクションがあります。
 
 * は、必須のプロパティを示します。
 
-#### 出力の詳細
+#### <a name="output-details"></a>出力の詳細
 
 ItemsList
 
@@ -105,18 +106,18 @@ ItemsList
 
 
 
-### オブジェクトを作成する
-この操作では、オブジェクトを作成します。
+### <a name="create-object"></a>オブジェクトを作成する
+この操作では、オブジェクトを作成します。 
 
 
-|プロパティ名| Displayname Settings|説明|
+|プロパティ名| Displayname Settings|Description|
 | ---|---|---|
 |table*|オブジェクトの種類|オブジェクトの種類 (例: "潜在顧客")|
 |item*|オブジェクト|作成するオブジェクト|
 
 * は、必須のプロパティを示します。
 
-#### 出力の詳細
+#### <a name="output-details"></a>出力の詳細
 
 項目
 
@@ -128,18 +129,18 @@ ItemsList
 
 
 
-### オブジェクトを取得する
-この操作では、オブジェクトを取得します。
+### <a name="get-object"></a>オブジェクトを取得する
+この操作では、オブジェクトを取得します。 
 
 
-|プロパティ名| Displayname Settings|説明|
+|プロパティ名| Displayname Settings|Description|
 | ---|---|---|
 |table*|オブジェクトの種類|Salesforce オブジェクトの種類 (例: "潜在顧客")|
 |id*|オブジェクト ID|取得するオブジェクトの識別子|
 
 * は、必須のプロパティを示します。
 
-#### 出力の詳細
+#### <a name="output-details"></a>出力の詳細
 
 項目
 
@@ -151,11 +152,11 @@ ItemsList
 
 
 
-### オブジェクトを削除する
-この操作では、オブジェクトを削除します。
+### <a name="delete-object"></a>オブジェクトを削除する
+この操作では、オブジェクトを削除します。 
 
 
-|プロパティ名| Displayname Settings|説明|
+|プロパティ名| Displayname Settings|Description|
 | ---|---|---|
 |table*|オブジェクトの種類|オブジェクトの種類 (例: "潜在顧客")|
 |id*|オブジェクト ID|削除するオブジェクトの識別子|
@@ -165,11 +166,11 @@ ItemsList
 
 
 
-### オブジェクトを更新する
-この操作では、オブジェクトを更新します。
+### <a name="update-object"></a>オブジェクトを更新する
+この操作では、オブジェクトを更新します。 
 
 
-|プロパティ名| Displayname Settings|説明|
+|プロパティ名| Displayname Settings|Description|
 | ---|---|---|
 |table*|オブジェクトの種類|オブジェクトの種類 (例: "潜在顧客")|
 |id*|オブジェクト ID|更新するオブジェクトの識別子|
@@ -177,7 +178,7 @@ ItemsList
 
 * は、必須のプロパティを示します。
 
-#### 出力の詳細
+#### <a name="output-details"></a>出力の詳細
 
 項目
 
@@ -189,11 +190,11 @@ ItemsList
 
 
 
-### オブジェクトの作成時
-この操作では、オブジェクトが作成されたときにフローをトリガーします。
+### <a name="when-an-object-is-created"></a>オブジェクトの作成時
+この操作では、オブジェクトが作成されたときにフローをトリガーします。 
 
 
-|プロパティ名| Displayname Settings|説明|
+|プロパティ名| Displayname Settings|Description|
 | ---|---|---|
 |table*|オブジェクトの種類|オブジェクトの種類 (例: "潜在顧客")|
 |$filter|Filter Query (フィルター クエリ)|エントリ数を制限する ODATA filter クエリ|
@@ -203,7 +204,7 @@ ItemsList
 
 * は、必須のプロパティを示します。
 
-#### 出力の詳細
+#### <a name="output-details"></a>出力の詳細
 
 ItemsList
 
@@ -215,11 +216,11 @@ ItemsList
 
 
 
-### オブジェクトの変更時
-この操作では、オブジェクトが変更されたときにフローをトリガーします。
+### <a name="when-an-object-is-modified"></a>オブジェクトの変更時
+この操作では、オブジェクトが変更されたときにフローをトリガーします。 
 
 
-|プロパティ名| Displayname Settings|説明|
+|プロパティ名| Displayname Settings|Description|
 | ---|---|---|
 |table*|オブジェクトの種類|オブジェクトの種類 (例: "潜在顧客")|
 |$filter|Filter Query (フィルター クエリ)|エントリ数を制限する ODATA filter クエリ|
@@ -229,7 +230,7 @@ ItemsList
 
 * は、必須のプロパティを示します。
 
-#### 出力の詳細
+#### <a name="output-details"></a>出力の詳細
 
 ItemsList
 
@@ -241,26 +242,26 @@ ItemsList
 
 
 
-### オブジェクトの種類を取得する
-この操作では、使用可能なオブジェクトの種類を一覧表示します。
+### <a name="get-object-types"></a>オブジェクトの種類を取得する
+この操作では、使用可能なオブジェクトの種類を一覧表示します。 
 
 
 この呼び出しには、パラメーターはありません
 
-#### 出力の詳細
+#### <a name="output-details"></a>出力の詳細
 
 TablesList
 
 
-| プロパティ名 | データ型 | 
+| プロパティ名 | データ型 |
 |---|---|
 |値|array|
 
 
 
-## HTTP 応答
+## <a name="http-responses"></a>HTTP 応答
 
-上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
+上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。 
 
 |名前|説明|
 |---|---|
@@ -270,7 +271,7 @@ TablesList
 |401|権限がありません|
 |403|許可されていません|
 |404|見つかりません|
-|500|内部サーバー エラー。不明なエラーが発生しました。|
+|500|内部サーバー エラー。 不明なエラーが発生しました。|
 |default|操作に失敗しました。|
 
 
@@ -278,7 +279,10 @@ TablesList
 
 
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!-----HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

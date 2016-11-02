@@ -1,42 +1,43 @@
 <properties 
-	pageTitle="メディア エンコーダー プレミアム ワークフローの形式とコーデック | Microsoft Azure" 
-	description="このトピックでは、メディア エンコーダー プレミアム ワークフローの形式とコーデックについて説明します。" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="juliako" 
-	manager="erik43" 
-	editor=""/>
+    pageTitle="メディア エンコーダー プレミアム ワークフローの形式とコーデック | Microsoft Azure" 
+    description="このトピックでは、メディア エンコーダー プレミアム ワークフローの形式とコーデックについて説明します。" 
+    services="media-services" 
+    documentationCenter="" 
+    authors="juliako" 
+    manager="erik43" 
+    editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/26/2016"    
-	ms.author="juliako;anilmur"/>
+    ms.service="media-services" 
+    ms.workload="media" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/26/2016"    
+    ms.author="juliako;anilmur"/>
 
-#メディア エンコーダー プレミアム ワークフローの形式とコーデック
+
+#<a name="media-encoder-premium-workflow-formats-and-codecs"></a>メディア エンコーダー プレミアム ワークフローの形式とコーデック
 
 
 >[AZURE.NOTE]プレミアム エンコーダーに関する質問がある場合は、mepd@microsoft.com まで電子メールでお送りください。
 >
->このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。
+>このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。 
 
-このドキュメントには、以前のパブリック プレビュー バージョンの**メディア エンコーダー プレミアム ワークフロー**でサポートされる入力ファイルおよび出力ファイルの形式とコーデックの一覧が含まれています。
+このドキュメントには、以前のパブリック プレビュー バージョンの **メディア エンコーダー プレミアム ワークフロー** でサポートされる入力ファイルおよび出力ファイルの形式とコーデックの一覧が含まれています。
 
 [Media Encoder Premium Worflow の入力の形式とコーデック](#input_formats)
 
 [Media Encoder Premium Worflow の出力の形式とコーデック](#output_formats)
 
-**メディア エンコーダー プレミアム ワークフロー**では、[この](#closed_captioning)セクションで説明されているクローズド キャプションがサポートされています。
+**メディア エンコーダー プレミアム ワークフロー** では、 [この](#closed_captioning) セクションで説明されているクローズド キャプションがサポートされています。 
 
 
-##<a id="input_formats"></a>メディア エンコーダー プレミアム ワークフローの入力の形式とコーデック
+##<a name="<a-id="input_formats"></a>media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>メディア エンコーダー プレミアム ワークフローの入力の形式とコーデック
 
 次のセクションに、このメディア プロセッサの入力としてサポートされたコーデックとファイル形式の一覧を示します。
 
-###入力コンテナー/ファイル形式
+###<a name="input-container/file-formats"></a>入力コンテナー/ファイル形式
 
 - Adobe® Flash® F4V
 - MXF/SMPTE 377M
@@ -47,7 +48,7 @@
 - Windows Media/ASF
 - AVI (非圧縮 8-bit/10-bit)
 
-###入力ビデオ コーデック
+###<a name="input-video-codecs"></a>入力ビデオ コーデック
 
 - AVC 8-bit/10-bit、最大 4:2:2 (AVCIntra を含む)
 - Avid DNxHD (MXF)
@@ -57,7 +58,7 @@
 - MPEG-1
 - Windows Media ビデオ/VC-1
 
-###入力オーディオ コーデック
+###<a name="input-audio-codecs"></a>入力オーディオ コーデック
 
 - AES (SMPTE 331M および 302M、AES3-2003)
 - Dolby® E
@@ -68,11 +69,11 @@
 - Windows Media オーディオ
 - WAV/PCM
  
-##<a id="output_format"></a>メディア エンコーダー プレミアム ワークフローの出力の形式とコーデック
+##<a name="<a-id="output_format"></a>media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>メディア エンコーダー プレミアム ワークフローの出力の形式とコーデック
 
 次のセクションに、このメディア プロセッサからの出力としてサポートされたコーデックとファイル形式の一覧を示します。
 
-###出力コンテナー/ファイル形式
+###<a name="output-container/file-formats"></a>出力コンテナー/ファイル形式
 
 - Adobe® Flash® F4V
 - MXF (OP1a、XDCAM および AS02)
@@ -82,10 +83,10 @@
 - Windows Media/ASF
 - AVI (非圧縮 8-bit/10-bit)
 - スムーズ ストリーミング ファイル形式 (PIFF 1.3)
-- MPEG TS
+- MPEG TS 
 
 
-###出力ビデオ コーデック
+###<a name="output-video-codecs"></a>出力ビデオ コーデック
 
 - AVC (H.264、8-bit、最大ハイ プロファイル、レベル 5.2、4K Ultra HD、AVC Intra)
 - Avid DNxHD (MXF)
@@ -95,7 +96,7 @@
 - Windows Media ビデオ/VC-1
 - JPEG サムネール作成
 
-###出力オーディオ コーデック
+###<a name="output-audio-codecs"></a>出力オーディオ コーデック
 
 - AES (SMPTE 331M および 302M、AES3-2003)
 - Dolby® Digital (AC3)
@@ -105,9 +106,9 @@
 - MP3 (MPEG-1 Audio Layer 3)
 - Windows Media オーディオ
 
-##<a id="closed_captioning"></a>クローズド キャプションのサポート
+##<a name="<a-id="closed_captioning"></a>support-for-closed-captioning"></a><a id="closed_captioning"></a>クローズド キャプションのサポート
 
-取り込み側時は、**メディア エンコーダー プレミアム ワークフロー**で次がサポートされます。
+取り込み側時は、 **メディア エンコーダー プレミアム ワークフロー** で次がサポートされます。
 
 1. SCC ファイル
 1. SMPTE-TT ファイル
@@ -125,17 +126,21 @@
 
 注: 上記の出力形式のすべてが、Azure Media Services のストリーミングを通じた配信でサポートされているわけではありません。
 
-##既知の問題
+##<a name="known-issues"></a>既知の問題
 
-入力ビデオにクローズド キャプションが含まれない場合でも、出力アセットには空の TTML ファイルが含まれます。
+入力ビデオにクローズド キャプションが含まれない場合でも、出力アセットには空の TTML ファイルが含まれます。 
 
 
-##Media Services のラーニング パス
+##<a name="media-services-learning-paths"></a>Media Services のラーニング パス
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##フィードバックの提供
+##<a name="provide-feedback"></a>フィードバックの提供
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

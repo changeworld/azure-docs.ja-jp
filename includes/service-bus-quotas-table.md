@@ -1,30 +1,33 @@
-次の表は、Service Bus メッセージングに固有のクォータ情報の一覧です。この表には Event Hubs の制限が含まれていますが、Event Hubs の詳細については、「[Event Hubs 料金](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。Service Bus の料金やその他のクォータについては、「[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)」の概要を参照してください。
+次の表は、Service Bus メッセージングに固有のクォータ情報の一覧です。 この表には Event Hubs の制限が含まれていますが、Event Hubs の詳細については、「 [Event Hubs 料金](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。 Service Bus の料金やその他のクォータについては、「 [Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/) 」の概要を参照してください。
 
 |クォータ名|スコープ|型|超過したときの動作|値|
 |---|---|---|---|---|
 | Azure サブスクリプションごとの名前空間の最大数|名前空間|静的|追加の名前空間に関する後続の要求はポータルで拒否されます。|100|
-|キュー/トピック サイズ|エンティティ|キューおよびトピック作成時に定義|受信メッセージが拒否され、呼び出し元のコードが例外を受け取ります。|1、2、3、4、または 5 GB<br /><br />[パーティション分割](service-bus-partitioning.md)が有効な場合、キュー/トピックの最大サイズは 80 GB です。|
-|名前空間の同時接続数|名前空間|静的|追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。REST 操作は、TCP 同時接続数に加算されません。|NetMessaging: 1,000<br /><br />AMQP: 5,000|
-|キュー/トピック/サブスクリプション エンティティの同時接続数|エンティティ|静的|追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。REST 操作は、TCP 同時接続数に加算されません。|名前空間ごとの同時接続数が上限です。|
-|キュー/トピック/サブスクリプション エンティティの同時受信要求数|エンティティ|静的|以後の受信要求が拒否され、呼び出し元のコードが例外を受け取ります。このクォータは、1 つのトピックのすべてのサブスクリプションの同時受信操作の合計数に適用されます。|5,000|
+|キュー/トピック サイズ|エンティティ|キューおよびトピック作成時に定義|受信メッセージが拒否され、呼び出し元のコードが例外を受け取ります。|1、2、3、4、または 5 GB。<br /><br /> [パーティション分割](service-bus-partitioning.md) が有効な場合、キュー/トピックの最大サイズは 80 GB です。|
+|名前空間の同時接続数|名前空間|静的|追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 REST 操作は、TCP 同時接続数に加算されません。|NetMessaging: 1,000<br /><br />AMQP: 5,000|
+|キュー/トピック/サブスクリプション エンティティの同時接続数|エンティティ|静的|追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 REST 操作は、TCP 同時接続数に加算されません。|名前空間ごとの同時接続数が上限です。|
+|キュー/トピック/サブスクリプション エンティティの同時受信要求数|エンティティ|静的|以後の受信要求が拒否され、呼び出し元のコードが例外を受け取ります。 このクォータは、1 つのトピックのすべてのサブスクリプションの同時受信操作の合計数に適用されます。|5,000|
 |リレーの同時リスナー数|エンティティ|静的|追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。|25|
 |同時リレー リスナー数|システム全体|静的|追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。|2,000|
-|サービス名前空間に含まれるすべてのリレー エンドポイントごとの同時リレー接続数|システム全体|静的|-|5,000|
+|あるサービス名前空間に含まれるリレー エンドポイント全部の同時リレー接続数|システム全体|静的|-|5,000|
 |サービス名前空間ごとのリレー エンドポイント数|システム全体|静的|-|10,000|
-|サービス名前空間ごとのトピック/キュー数|システム全体|静的|サービス名前空間での以降の新しいトピックまたはキューの作成要求は拒否されます。その結果、[Azure クラシック ポータル][]で構成されている場合は、エラー メッセージが生成されます。管理 API から呼び出される場合は、呼び出し元のコードが例外を受け取ります。|10,000<br /><br />1 つのサービス名前空間に含まれるトピックとキューの合計数は 10,000 以下にする必要があります。<br/>すべてのエンティティがパーティション分割されるため、これは Premium には適用されません。|
-|サービス名前空間ごとのパーティション分割されたトピック/キューの数|システム全体|静的|サービス名前空間での以降の新しいパーティション分割されたトピックまたはキューの作成要求は拒否されます。その結果、[Azure クラシック ポータル][]で構成されている場合は、エラー メッセージが生成されます。管理 API で呼び出される場合は、呼び出し元のコードが **QuotaExceededException** 例外を受け取ります。|Basic および Standard レベル - 100<br />Premium - 1,000<br/><br />パーティション分割された各キューまたはトピックは、名前空間ごとに 10,000 個のエンティティ クォータに加算されます。|
-|メッセージング エンティティ パスの最大サイズ: キューまたはトピック|エンティティ|静的|-|260 文字|
-|メッセージング エンティティ名の最大サイズ: 名前空間、サブスクリプション、サブスクリプション、サブスクリプション規則、Event Hubs|静的|-|50 文字|
+|サービスの名前空間あたりのトピック/キュー数|システム全体|静的|以後、サービス名前空間でのトピックまたはキューの新規作成要求が拒否されます。 その結果、([Azure Portal][] で構成されていれば) エラー メッセージが生成されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。|10,000<br /><br />サービス名前空間のトピックとキューの合計数は、10,000 以下にする必要があります。<br/>この制約は、エンティティがすべてパーティション分割される Premium には適用されません。|
+|サービス名前空間ごとのパーティション分割されたトピック/キュー数|システム全体|静的|以後、サービス名前空間でのパーティション分割されたトピックまたはキューの新規作成要求が拒否されます。 その結果、([Azure Portal][] で構成されていれば) エラー メッセージが生成されます。 管理 API から呼び出された場合は、呼び出し元のコードが **QuotaExceededException** 例外を受け取ります。|Basic レベルと Standard レベル: 100<br />Premium - 1,000<br/><br />パーティション分割された各キューまたはトピックは、名前空間あたり 10,000 エンティティのクォータに対してカウントされます。|
+|メッセージング エンティティのパスの最大サイズ: キューまたはトピック|エンティティ|静的|-|260 文字|
+|メッセージング エンティティ名の最大サイズ: 名前空間、サブスクリプション、サブスクリプション規則、またはイベント ハブ|エンティティ|静的|-|50 文字|
 |Event Hubs イベントの最大サイズ|システム全体|静的|-|256 KB|
-|キューのメッセージ サイズ/トピック/サブスクリプション エンティティ|システム全体|静的|これらのクォータを超過した受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。|最大メッセージ サイズ: 256 KB ([Standard レベル](../articles/service-bus/service-bus-premium-messaging.md)) /1 MB ([Premium レベル](../articles/service-bus/service-bus-premium-messaging.md))。<br /><br />**注:** 通常、システム オーバーヘッドによりこの制限は若干緩和されます。<br /><br />ヘッダーの最大サイズ: 64 KB<br /><br />プロパティ バッグ内のヘッダー プロパティの最大数: **バイト/int.MaxValue**<br /><br />プロパティ バッグ内のプロパティの最大サイズ: 明示的な制限はありません。ヘッダーの最大サイズによって制限されます。|
-|[NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx) と [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx) リレーのメッセージ サイズ|システム全体|静的|これらのクォータを超過した受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。|64 KB 
+|キュー/トピック/サブスクリプション エンティティのメッセージ サイズ|システム全体|静的|これらのサイズ クォータを超えるメッセージは受信が拒否され、呼び出し元のコードが例外を受け取ります。|メッセージの最大サイズ: 256 KB ([Standard レベル](../articles/service-bus/service-bus-premium-messaging.md))/1 MB ([Premium レベル](../articles/service-bus/service-bus-premium-messaging.md))。 <br /><br />**注** システム オーバーヘッドが存在するため、この上限は通常、これよりもやや低くなります。<br /><br />ヘッダーの最大サイズ: 64 KB<br /><br />プロパティ バッグ内のヘッダー プロパティの最大サイズ: **バイト/int.MaxValue**<br /><br />プロパティ バッグ内のプロパティの最大サイズ: 明示的な制限はありません。 ヘッダーの最大サイズによって制限されます。|
+|[NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx) と [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx) リレーのメッセージ サイズ|システム全体|静的|これらのサイズ クォータを超えるメッセージは受信が拒否され、呼び出し元のコードが例外を受け取ります。|64 KB
 |[HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx) と [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) リレーのメッセージ サイズ|システム全体|静的|-|無制限|
-|キュー/トピック/サブスクリプション エンティティのメッセージ プロパティ サイズ|システム全体|静的|**SerializationException** 例外が生成されます。|各プロパティのメッセージ プロパティの最大サイズは 32 K です。すべてのプロパティの合計サイズが 64 K を超えることはできません。これは [BrokeredMessage](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.aspx) のヘッダー全体に適用されます。これには、ユーザー プロパティとシステム プロパティ ([SequenceNumber](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.sequencenumber.aspx)、[Label](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.label.aspx)、[MessageId](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) など) の両方が含まれます。|
-|トピックごとのサブスクリプション数|システム全体|静的|トピックのサブスクリプションの追加作成に関する後続の要求が拒否されます。その結果、ポータルで構成されている場合は、エラー メッセージが表示されます。管理 API で呼び出される場合は、呼び出し元のコードが例外を受け取ります。|2,000|
-|トピックごとの SQL フィルター数|システム全体|静的|トピックのフィルターの以降の追加作成要求が拒否され、呼び出し元のコードが例外を受け取ります。|2,000|
-|トピックごとの相関フィルター数|システム全体|静的|トピックのフィルターの以降の追加作成要求が拒否され、呼び出し元のコードが例外を受け取ります。|100,000|
-|SQL フィルター/アクションのサイズ|システム全体|静的|以降の追加のフィルター作成要求が拒否され、呼び出し元のコードが例外を受け取ります。|フィルター条件の文字列の最大長: 1024 (1K)<br /><br />ルール アクションの文字列の最大長: 1024 (1K)<br /><br />ルール アクションごとの式の最大数: 32|
+|キュー/トピック/サブスクリプション エンティティのメッセージ プロパティ サイズ|システム全体|静的|**SerializationException** 例外が生成されます。|各プロパティのメッセージ プロパティの最大サイズは、32 K です。 すべてのプロパティの合計サイズが 64 K を超えることはできません。 これは、[BrokeredMessage](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.aspx) のヘッダー全体に適用されます。このヘッダーには、ユーザー プロパティとシステム プロパティ ([SequenceNumber](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.sequencenumber.aspx)、[Label](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.label.aspx)、[MessageId](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) など) の両方が含まれます。|
+|トピックごとのサブスクリプション数|システム全体|静的|以後、そのトピックに対するサブスクリプションの新規作成要求は拒否されます。 その結果、ポータルで構成されている場合は、エラー メッセージが表示されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。|2,000|
+|トピックごとの SQL フィルターの数|システム全体|静的|以後、そのトピックに追加のフィルターを作成する要求は拒否され、呼び出し元のコードが例外を受け取ります。|2,000|
+|トピックごとの関連付けフィルターの数|システム全体|静的|以後、そのトピックに追加のフィルターを作成する要求は拒否され、呼び出し元のコードが例外を受け取ります。|100,000|
+|SQL フィルター/アクションのサイズ|システム全体|静的|以後、追加のフィルターを作成する要求は拒否され、呼び出し元のコードが例外を受け取ります。|フィルター条件文字列の最大長: 1,024 (1 K)。<br /><br />規則アクション文字列の最大長: 1,024 (1 K)。<br /><br />規則アクションごとの式の最大数: 32。|
+|名前空間、キュー、トピックごとの [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 規則の数|エンティティ、名前空間|静的|以後、追加の規則を作成する要求は拒否され、呼び出し元のコードが例外を受け取ります。|規則の最大数: 12。 <br /><br /> Service Bus 名前空間に構成されている規則は、その名前空間内のすべてのキューおよびトピックに適用されます。
 
-[Azure クラシック ポータル]: http://manage.windowsazure.com
+[Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0803_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

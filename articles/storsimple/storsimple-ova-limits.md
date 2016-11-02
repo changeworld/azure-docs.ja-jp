@@ -12,18 +12,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/07/2016"
+   ms.date="10/05/2016"
    ms.author="alkohli" />
 
 
-# StorSimple Virtual Array の制限
 
-##Overview
+# <a name="storsimple-virtual-array-limits"></a>StorSimple Virtual Array の制限
 
-Microsoft Azure StorSimple Virtual Array を計画、デプロイ、および操作する際には、以下の制限事項を考慮してください。次の表で、仮想デバイスの制限について説明します。
+##<a name="overview"></a>Overview
 
-## StorSimple Virtual Array の制限 
+Microsoft Azure StorSimple Virtual Array を計画、デプロイ、および操作する際には、以下の制限事項を考慮してください。 次の表で、仮想デバイスの制限について説明します。
+
+## <a name="storsimple-virtual-array-limits"></a>StorSimple Virtual Array の制限 
 
 [AZURE.INCLUDE [storsimple-virtual-array-limits](../../includes/storsimple-virtual-array-limits.md)]
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

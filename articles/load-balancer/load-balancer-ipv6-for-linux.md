@@ -6,6 +6,7 @@
     authors="sdwheeler"
     manager="carmonm"
     editor=""
+    keywords="ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot"
 />
 <tags
     ms.service="load-balancer"
@@ -17,17 +18,18 @@
     ms.author="sewhee"
 />
 
-# Linux VM の DHCPv6 の設定
 
-Azure Marketplace の Linux 仮想マシン イメージの一部には、既定で構成された DHCPv6 がありません。IPv6 をサポートするには、使用している Linux OS のディストリビューションに合わせて DHCPv6 を構成する必要があります。DHCPv6 の構成方法は Linux のディストリビューションによって異なります。ディストリビューションによって使用するパッケージが異なるためです。
+# <a name="configuring-dhcpv6-for-linux-vms"></a>Linux VM の DHCPv6 の設定
 
->[AZURE.NOTE] Azure Marketplace の最近の SUSE Linux と CoreOS のイメージは DHCPv6 に対応するように事前構成されています。これらのイメージを使用するのに追加の変更は必要ありません。
+Azure Marketplace の Linux 仮想マシン イメージの一部には、既定で構成された DHCPv6 がありません。 IPv6 をサポートするには、使用している Linux OS のディストリビューションに合わせて DHCPv6 を構成する必要があります。 DHCPv6 の構成方法は Linux のディストリビューションによって異なります。ディストリビューションによって使用するパッケージが異なるためです。
+
+>[AZURE.NOTE] Azure Marketplace の最近の SUSE Linux と CoreOS のイメージは DHCPv6 に対応するように事前構成されています。 これらのイメージを使用するのに追加の変更は必要ありません。
 
 このドキュメントでは、DHCPv6 を有効にしてお使いの Linux 仮想マシンが IPv6 アドレスを取得できるようにする方法について説明します。
 
->[AZURE.WARNING] ネットワーク構成ファイルの編集が適切に行われないと、VM へのネットワーク アクセスが失われる恐れがあります。構成の変更は、運用環境以外のシステムでテストすることをお勧めします。この記事の手順は、Azure Marketplace 内の最新バージョンの Linux イメージでテストされています。詳細な手順については、Linux のバージョン別のマニュアルを参照してください。
+>[AZURE.WARNING] ネットワーク構成ファイルの編集が適切に行われないと、VM へのネットワーク アクセスが失われる恐れがあります。 構成の変更は、運用環境以外のシステムでテストすることをお勧めします。 この記事の手順は、Azure Marketplace 内の最新バージョンの Linux イメージでテストされています。 詳細な手順については、Linux のバージョン別のマニュアルを参照してください。
 
-## Ubuntu
+## <a name="ubuntu"></a>Ubuntu
 
 1. `/etc/dhcp/dhclient6.conf` ファイルを編集し、次の行を追加します。
 
@@ -35,8 +37,8 @@ Azure Marketplace の Linux 仮想マシン イメージの一部には、既定
 
 2. eth0 インターフェースのネットワーク構成を、次のように編集します。
 
-    * **Ubuntu 12.04 および 14.04** で、`/etc/network/interfaces.d/eth0.cfg` ファイルを編集する
-    * **Ubuntu 16.04** で、`/etc/network/interfaces.d/50-cloud-init.cfg` ファイルを編集する
+    * **Ubuntu 12.04 と 14.04`/etc/network/interfaces.d/eth0.cfg` で、** ファイルを編集する
+    * **Ubuntu 16.04`/etc/network/interfaces.d/50-cloud-init.cfg` で、** ファイルを編集する
 
     ```bash
     iface eth0 inet6 auto
@@ -50,7 +52,7 @@ Azure Marketplace の Linux 仮想マシン イメージの一部には、既定
     # sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## Debian
+## <a name="debian"></a>Debian
 
 1. `/etc/dhcp/dhclient6.conf` ファイルを編集し、次の行を追加します。
 
@@ -68,7 +70,7 @@ Azure Marketplace の Linux 仮想マシン イメージの一部には、既定
     # sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## RHEL/CentOS/Oracle Linux
+## <a name="rhel-/-centos-/-oracle-linux"></a>RHEL/CentOS/Oracle Linux
 
 1. `/etc/sysconfig/network` ファイルを編集し、次のパラメーターを追加します。
 
@@ -85,11 +87,11 @@ Azure Marketplace の Linux 仮想マシン イメージの一部には、既定
     # sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## SLES 11 と openSUSE 13
+## <a name="sles-11-&-opensuse-13"></a>SLES 11 と openSUSE 13
 
-Azure の最近の SLES と openSUSE のイメージは、DHCPv6 に対応するように事前構成されています。これらのイメージを使用するのに追加の変更は必要ありません。前のバージョンまたはカスタマイズされた SUSE イメージを基盤とする VM がある場合は、次の手順に従います。
+Azure の最近の SLES と openSUSE のイメージは、DHCPv6 に対応するように事前構成されています。 これらのイメージを使用するのに追加の変更は必要ありません。 前のバージョンまたはカスタマイズされた SUSE イメージを基盤とする VM がある場合は、次の手順に従います。
 
-1. 必要に応じて、`dhcp-client` パッケージをインストールします。
+1. 必要に応じて、 `dhcp-client` パッケージをインストールします。
 
     ```bash
     # sudo zypper install dhcp-client
@@ -105,9 +107,9 @@ Azure の最近の SLES と openSUSE のイメージは、DHCPv6 に対応する
     # sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## SLES 12 と openSUSE Leap
+## <a name="sles-12-and-opensuse-leap"></a>SLES 12 と openSUSE Leap
 
-Azure の最近の SLES と openSUSE のイメージは、DHCPv6 に対応するように事前構成されています。これらのイメージを使用するのに追加の変更は必要ありません。前のバージョンまたはカスタマイズされた SUSE イメージを基盤とする VM がある場合は、次の手順に従います。
+Azure の最近の SLES と openSUSE のイメージは、DHCPv6 に対応するように事前構成されています。 これらのイメージを使用するのに追加の変更は必要ありません。 前のバージョンまたはカスタマイズされた SUSE イメージを基盤とする VM がある場合は、次の手順に従います。
 
 1. `/etc/sysconfig/network/ifcfg-eth0` ファイルを編集し、このパラメーターを
 
@@ -117,7 +119,7 @@ Azure の最近の SLES と openSUSE のイメージは、DHCPv6 に対応する
 
         BOOTPROTO='dhcp'
 
-2. 次のパラメーターを `/etc/sysconfig/network/ifcfg-eth0` に追加します。
+2. 次のパラメーターを `/etc/sysconfig/network/ifcfg-eth0`に追加します。
 
         DHCLIENT6_MODE='managed'
 
@@ -127,11 +129,11 @@ Azure の最近の SLES と openSUSE のイメージは、DHCPv6 に対応する
     # sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## CoreOS
+## <a name="coreos"></a>CoreOS
 
-Azure の最近の CoreOS のイメージは、DHCPv6 に対応するように事前構成されています。これらのイメージを使用するのに追加の変更は必要ありません。前のバージョンまたはカスタマイズされた CoreOS イメージを基盤とする VM がある場合は、次の手順に従います。
+Azure の最近の CoreOS のイメージは、DHCPv6 に対応するように事前構成されています。 これらのイメージを使用するのに追加の変更は必要ありません。 前のバージョンまたはカスタマイズされた CoreOS イメージを基盤とする VM がある場合は、次の手順に従います。
 
-1. `/etc/systemd/network/10_dhcp.network` ファイルを編集します。
+1.  `/etc/systemd/network/10_dhcp.network`
 
         [Match]
         eth0
@@ -145,4 +147,8 @@ Azure の最近の CoreOS のイメージは、DHCPv6 に対応するように�
     # sudo systemctl restart systemd-networkd
     ```
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

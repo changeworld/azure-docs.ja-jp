@@ -1,309 +1,314 @@
 <properties
-	pageTitle="チュートリアル: Azure Active Directory と ImageRelay の統合 | Microsoft Azure"
-	description="Azure Active Directory と ImageRelay の間でシングル サインオンを構成する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with ImageRelay | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and ImageRelay."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/15/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/31/2016"
+    ms.author="jeedes"/>
 
 
-# チュートリアル: Azure Active Directory と ImageRelay の統合
 
-このチュートリアルの目的は、ImageRelay と Azure Active Directory (Azure AD) を統合する方法を説明することです。ImageRelay と Azure AD の統合には、次の利点があります。
+# <a name="tutorial-azure-active-directory-integration-with-imagerelay"></a>Tutorial: Azure Active Directory integration with ImageRelay
 
-- ImageRelay にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に ImageRelay にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
+The objective of this tutorial is to show you how to integrate ImageRelay with Azure Active Directory (Azure AD).  
+Integrating ImageRelay with Azure AD provides you with the following benefits:
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+- You can control in Azure AD who has access to ImageRelay
+- You can enable your users to automatically get signed-on to ImageRelay (single sign-on) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure classic portal
 
-## 前提条件
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-Azure AD と ImageRelay の統合を構成するには、次のものが必要です。
+## <a name="prerequisites"></a>Prerequisites
 
-- Azure AD サブスクリプション
-- ImageRelay でのシングル サインオンが有効なサブスクリプション
+To configure Azure AD integration with ImageRelay, you need the following items:
 
+- An Azure AD subscription
+- A ImageRelay single sign-on enabled subscription
 
-> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+To test the steps in this tutorial, you should follow these recommendations:
 
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
-## シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの ImageRelay の追加
+## <a name="scenario-description"></a>Scenario Description
+The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
+The scenario outlined in this tutorial consists of two main building blocks:
 
-2. Azure AD シングル サインオンの構成とテスト
+1. Adding ImageRelay from the gallery
 
+2. Configuring and testing Azure AD single sign-on
 
-## ギャラリーからの ImageRelay の追加
-Azure AD への ImageRelay の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に ImageRelay を追加する必要があります。
 
-**ギャラリーから ImageRelay を追加するには、次の手順に従います。**
+## <a name="adding-imagerelay-from-the-gallery"></a>Adding ImageRelay from the gallery
+To configure the integration of ImageRelay into Azure AD, you need to add ImageRelay from the gallery to your list of managed SaaS apps.
 
-1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+**To add ImageRelay from the gallery, perform the following steps:**
 
-	![Active Directory][1]
+1. In the Azure classic portal, on the left navigation pane, click **Active Directory**. 
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+    ![Active Directory][1]
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-	![アプリケーション][2]
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
 
-4. ページの下部にある **[追加]** をクリックします。
+    ![Applications][2]
 
-	![アプリケーション][3]
+4. Click **Add** at the bottom of the page.
 
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+    ![Applications][3]
 
-	![アプリケーション][4]
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-6. 検索ボックスに「**ImageRelay**」と入力します。
+    ![Applications][4]
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_01.png)
+6. In the search box, type **ImageRelay**.
 
-7. 結果ウィンドウで **[ImageRelay]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+    ![Creating an Azure AD test user](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_01.png)
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_02.png)
+7. In the results pane, select **ImageRelay**, and then click **Complete** to add the application.
 
-##  Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、ImageRelay で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+    ![Creating an Azure AD test user](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_02.png)
 
-シングル サインオンを機能させるには、Azure AD で ImageRelay の関連ユーザーを表すユーザー アカウントが必要です。言い換えると、Azure AD ユーザーと ImageRelay の関連ユーザーの間で、リンク関係が確立されている必要があります。このリンク関係は、Azure AD の **[ユーザー名]** の値を、ImageRelay の **[Username]** の値として割り当てることで確立されます。
+##  <a name="configuring-and-testing-azure-ad-single-signon"></a>Configuring and testing Azure AD single sign-on
+The objective of this section is to show you how to configure and test Azure AD single sign-on with ImageRelay based on a test user called "Britta Simon".
 
-ImageRelay で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+For single sign-on to work, Azure AD needs a user account that represents the related user in ImageRelay.  In other words, a link relationship between an Azure AD user and the related user in ImageRelay needs to be established.  
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in ImageRelay.
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD テスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD シングル サインオンをテストします。
-4. **[ImageRelay のテスト ユーザーの作成](#creating-a-userecho-test-user)** - ImageRelay で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+To configure and test Azure AD single sign-on with ImageRelay, you need to complete the following building blocks:
 
-### Azure AD シングル サインオンの構成
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Creating a ImageRelay test user](#creating-a-userecho-test-user)** - to have a counterpart of Britta Simon in ImageRelay that is linked to the Azure AD representation of her.
+5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
 
-このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、ImageRelay アプリケーションでシングル サインオンを構成することです。
+### <a name="configuring-azure-ad-single-signon"></a>Configuring Azure AD Single Sign-On
 
+The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your ImageRelay application.
 
-**ImageRelay で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **ImageRelay** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+**To configure Azure AD single sign-on with ImageRelay, perform the following steps:**
 
-     ![Configure Single Sign-On][6]
+1. In the Azure classic portal, on the **ImageRelay** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On** dialog.
 
-2. **[ユーザーの ImageRelay へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+     ![Configure Single Sign-On][6] 
 
-    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_03.png)
+2. On the **How would you like users to sign on to ImageRelay** page, select **Azure AD Single Sign-On**, and then click **Next**.
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_03.png) 
 
-     ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_04.png)
+3. On the **Configure App Settings** dialog page, perform the following steps:
 
-    a.**[サインオン URL]** ボックスに、ユーザーが ImageRelay アプリケーションへのサインオンに使用する URL を入力します (例: *https://fabrikam.ImageRelay.com/*)。
+     ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_04.png) 
 
-    b.**[次へ]** をクリックします。
+    a. In the **Sign On URL** textbox, type the URL used by your users to sign on to your ImageRelay application (for example: *https://fabrikam.ImageRelay.com/*).
 
-4. **[ImageRelay でのシングル サインオンの構成]** ページで、次の手順を実行します。
+    b. Click **Next**.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_05.png)
+4. On the **Configure single sign-on at ImageRelay** page, perform the following steps:
 
-    a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_05.png) 
 
-    b.**[次へ]** をクリックします。
+    a. Click **Download certificate**, and then save the file on your computer.
 
-5. 別のブラウザー ウィンドウで、管理者として ImageRelay 企業サイトにサインインします。
+    b. Click **Next**.
 
-1. 上部にあるツール バーで **[Users & Permissions (ユーザーとアクセス許可)]** ワークロードをクリックします。
+5. In another browser window, sign in to your ImageRelay company site as an administrator.
 
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_06.png)
+1. In the toolbar on the top, click the **Users & Permissions** workload.
 
-1. **[Create New Permission (新しいアクセス許可を作成)]** をクリックします。
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_08.png)
+1. Click **Create New Permission**.
 
-1. **[Single Sign On Settings (シングル サインオンの設定)]** ワークロードで、**[This Group can only sign-in via Single Sign On (このグループはシングル サインオンによるサインインのみ可能)]** チェック ボックスをオンにして **[Save (保存)]** をクリックします。
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_08.png) 
 
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_09.png)
+1. In the **Single Sign On Settings** workload, select the **This Group can only sign-in via Single Sign On** check box, and then click **Save**.
 
-1. **[Account Settings (アカウントの設定)]** に移動します。
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_10.png)
+1. Go to **Account Settings**.
 
-1. **[Single Sign On Settings (シングル サインオンの設定)]** ワークロードに移動します。
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_11.png)
+1. Go to the **Single Sign On Settings** workload.
 
-1. **[SAML Settings (SAML の設定)]** ダイアログで、次の手順を実行します。
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_11.png)
 
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_12.png)
+1. On the **SAML Settings** dialog, perform the following steps:
 
-	a.Azure クラシック ポータルで **[シングル サインオン サービス URL]** の値をコピーし、**[Login URL (ログイン URL)]** ボックスに貼り付けます。
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_12.png)
 
+    a. In the Azure classic portal, copy the **Single Sign-On Service URL**, and then paste it into the **Login URL** textbox.
 
-	b.Azure クラシック ポータルで **[シングル サインアウト サービス URL]** をコピーし、**[Logout URL (ログアウト URL)]** ボックスに貼り付けます。
 
-	c.**[Name Id Format (名前 ID 形式)]** として **[urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress]** を選択します。
+    b. In the Azure classic portal, copy the **Single Sign-Out Service URL**, and then paste it into the **Logout URL** textbox.
 
-	
-    d.**[Binding Options for Requests from the Service Provider (Image Relay) (サービス プロバイダー (Image Relay) からの要求のバインド オプション)]** として **[POST Binding (POST バインド)]** を選択します。
+    c. As **Name Id Format**, select **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**.
+
+    
+    d. As **Binding Options for Requests from the Service Provider (Image Relay)**, select **POST Binding**.
    
 
-	e.**[x.509 Certificate (x.509 証明書)]** の下にある **[Update Certificate (証明書の更新)]** をクリックします。
+    e. Under **x.509 Certificate**, click **Update Certificate**.
 
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_17.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_17.png)
 
-    f.ダウンロードした証明書をメモ帳で開き、その内容をコピーして、[x.509 Certificate (x.509 証明書)] ボックスに貼り付けます。
+    f. Open the downloaded certificate in notepad, copy the content, and then paste it into the x.509 Certificate textbox.
   
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_18.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_18.png)
 
-    g.**[Just-In-Time User Provisioning (Just-In-Time ユーザー プロビジョニング)]** セクションで、**[Enable Just-In-Time User Provisioning (Just-In-Time ユーザー プロビジョニングを有効にする)]** チェック ボックスをオンにします。
+    g. In **Just-In-Time User Provisioning** section, select the **Enable Just-In-Time User Provisioning**.
 
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_19.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_19.png)
 
-    h.シングル サインオンによるサインインのみを許可するアクセス許可グループを選択します (**[SSO Basic]** など)。
+    h. Select the permission group (for example, **SSO Basic**) which is allowed to sign in only through single sign-on.
 
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_20.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_20.png)
 
-    i.[**Save**] をクリックします。
+    i. Click **Save**.
 
-6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
+6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**.
 
     ![Azure AD Single Sign-On][10]
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+7. On the **Single sign-on confirmation** page, click **Complete**.
 
     ![Azure AD Single Sign-On][11]
 
 
-### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+The objective of this section is to create a test user in the Azure classic portal called Britta Simon.
 
-![Azure AD ユーザーの作成][20]
+![Create Azure AD User][20]
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+**To create a test user in Azure AD, perform the following steps:**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_09.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_09.png) 
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
+3. To display the list of users, in the menu on the top, click **Users**.
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_03.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_03.png) 
 
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_04.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_04.png) 
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+5. On the **Tell us about this user** dialog page, perform the following steps:
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_05.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_05.png) 
 
-    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. As Type Of User, select New user in your organization.
 
-    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. In the User Name **textbox**, type **BrittaSimon**.
 
-    c.**[次へ]** をクリックします。
+    c. Click **Next**.
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
+6.  On the **User Profile** dialog page, perform the following steps:
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_06.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_06.png) 
 
-    a.**[名]** ボックスに「**Britta**」と入力します。
+    a. In the **First Name** textbox, type **Britta**.  
 
-    b.**[姓]** ボックスに「**Simon**」と入力します。
+    b. In the **Last Name** textbox, type, **Simon**.
 
-    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. In the **Display Name** textbox, type **Britta Simon**.
 
-    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. In the **Role** list, select **User**.
 
-    e.**[次へ]** をクリックします。
+    e. Click **Next**.
 
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
+7. On the **Get temporary password** dialog page, click **create**.
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_07.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_07.png) 
 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
+8. On the **Get temporary password** dialog page, perform the following steps:
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_08.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_08.png) 
 
-    a.**[新しいパスワード]** の値を書き留めます。
+    a. Write down the value of the **New Password**.
 
-    b.**[完了]** をクリックします。
-
-
-
-### ImageRelay テスト ユーザーの作成
-
-このセクションの目的は、ImageRelay で Britta Simon というユーザーを作成することです。
-
-**ImageRelay で Britta Simon というユーザーを作成するには、次の手順に従います。**
-
-1. ImageRelay 企業サイトに管理者としてログインします。
-
-1. **[Users & Permissions (ユーザーとアクセス許可)]** に移動して **[Create SSO User (SSO ユーザーを作成)]** を選択します。
-
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_21.png)
-
-1. プロビジョニングするユーザーの **[Email (電子メール)]**、**[First Name (名)]**、**[Last Name (姓)]**、**[Company (会社名)]** を入力し、シングル サインオンのみでサインインできるアクセス許可グループ ([SSO Basic] など) を選択します。
-
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_22.png)
-
-1. **[作成]** をクリックします。
-
-### Azure AD テスト ユーザーの割り当て
-
-このセクションの目的は、Britta Simon に ImageRelay へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
-
-![ユーザーの割り当て][200]
-
-**ImageRelay に Britta Simon を割り当てるには、次の手順に従います。**
-
-1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-
-	![ユーザーの割り当て][201]
-
-2. アプリケーションの一覧で **[ImageRelay]** を選択します。
-
-	![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_23.png)
-
-1. 上部のメニューで **[ユーザー]** をクリックします。
-
-	![ユーザーの割り当て][203]
-
-1. ユーザーの一覧で **[Britta Simon]** を選択します。
-
-2. 下部にあるツール バーで **[割り当て]** をクリックします。
-
-	![ユーザーの割り当て][205]
+    b. Click **Complete**.   
 
 
-### シングル サインオンのテスト
 
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。アクセス パネルで [ImageRelay] タイルをクリックすると、自動的に ImageRelay アプリケーションにサインオンします。
+### <a name="creating-a-imagerelay-test-user"></a>Creating a ImageRelay test user
+
+The objective of this section is to create a user called Britta Simon in ImageRelay.
+
+**To create a user called Britta Simon in ImageRelay, perform the following steps:**
+
+1. Sign-on to your ImageRelay company site as an administrator.
+
+1. Go to **Users & Permissions**    and select **Create SSO User**.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_21.png) 
+
+1. Enter the **Email**, **First Name**, **Last Name** and **Company** of the user you want to provision and select the permission group (for example, SSO Basic ) which is the group that can sign in only through single sign-on.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_22.png) 
+
+1. Click **Create**.
+
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+
+The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to ImageRelay.
+
+![Assign User][200] 
+
+**To assign Britta Simon to ImageRelay, perform the following steps:**
+
+1. In the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+
+    ![Assign User][201] 
+
+2. In the applications list, select **ImageRelay**.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_23.png) 
+
+1. In the menu on the top, click **Users**.
+
+    ![Assign User][203] 
+
+1. In the Users list, select **Britta Simon**.
+
+2. In the toolbar on the bottom, click **Assign**.
+
+    ![Assign User][205]
 
 
-## その他のリソース
+### <a name="testing-single-signon"></a>Testing Single Sign-On
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
+When you click the ImageRelay tile in the Access Panel, you should get automatically signed-on to your ImageRelay application.
+
+
+## <a name="additional-resources"></a>Additional Resources
+
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -324,4 +329,8 @@ ImageRelay で Azure AD のシングル サインオンを構成してテスト�
 [204]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

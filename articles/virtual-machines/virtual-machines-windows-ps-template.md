@@ -1,218 +1,190 @@
 <properties
-	pageTitle="Resource Manager テンプレートでの VM の作成 | Microsoft Azure"
-	description="Resource Manager テンプレートと PowerShell を使用して、新しい Windows 仮想マシンを簡単に作成します。"
-	services="virtual-machines-windows"
-	documentationCenter=""
-	authors="davidmu1"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Resource Manager テンプレートでの VM の作成 | Microsoft Azure"
+    description="Resource Manager テンプレートと PowerShell を使用して、新しい Windows 仮想マシンを簡単に作成します。"
+    services="virtual-machines-windows"
+    documentationCenter=""
+    authors="davidmu1"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines-windows"
-	ms.workload="na"
-	ms.tgt_pltfrm="vm-windows"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/14/2016"
-	ms.author="davidmu"/>
+    ms.service="virtual-machines-windows"
+    ms.workload="na"
+    ms.tgt_pltfrm="vm-windows"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/06/2016"
+    ms.author="davidmu"/>
 
-# リソース マネージャー テンプレートで Windows 仮想マシンを作成する
 
-この記事では、Azure Resource Manager テンプレートを紹介し、PowerShell を使用してテンプレートをデプロイする方法を示します。このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに、Windows Server を実行する 1 つの仮想マシンをデプロイします。
+# <a name="create-a-windows-virtual-machine-with-a-resource-manager-template"></a>リソース マネージャー テンプレートで Windows 仮想マシンを作成する
+
+この記事では、Azure Resource Manager テンプレートを紹介し、PowerShell を使用してテンプレートをデプロイする方法を示します。 このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに、Windows Server を実行する 1 つの仮想マシンをデプロイします。
 
 この記事の手順を実行するには、約 20 分かかります。
 
-> [AZURE.IMPORTANT] VM を可用性セットの一部にする場合は、VM を作成するときにセットに追加する必要があります。作成後に VM を可用性セットに追加する方法は現在ありません。
+> [AZURE.IMPORTANT] VM を可用性セットの一部にする場合は、VM を作成するときにセットに追加する必要があります。 作成後に VM を可用性セットに追加する方法は現在ありません。
 
-## 手順 1: テンプレート ファイルの作成
+## <a name="step-1:-create-the-template-file"></a>手順 1: テンプレート ファイルの作成
 
-「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」にある情報を使用して、独自のテンプレートを作成できます。また、[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)から作成済みのテンプレートをデプロイすることもできます。
+「 [Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」にある情報を使用して、独自のテンプレートを作成できます。 また、 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)から作成済みのテンプレートをデプロイすることもできます。
 
-1. 任意のテキスト エディターを開き、この JSON 情報を、*VirtualMachineTemplate.json* という名前の新しいファイルにコピーします。
+1. 任意のテキスト エディターを開き、必要なスキーマ要素と必要な contentVersion 要素を追加します。
 
         {
           "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
+        }
+2. [パラメーター](../resource-group-authoring-templates.md#parameters)は必須ではありませんが、パラメーターを指定すると、テンプレートをデプロイする際に値を入力することができます。 contentVersion 要素の後に、parameters 要素とその子要素を追加します。
+
+        {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+          "contentVersion": "1.0.0.0",
           "parameters": {
-            "newStorageAccountName": {
-              "type": "string",
-              "metadata": {
-                "Description": "The name of the storage account where the VM disk is stored."
-              }
-            },
-            "adminUsername": {
-              "type": "string",
-              "metadata": {
-                "Description": "The name of the administrator account on the VM."
-              }
-            },
-            "adminPassword": {
-              "type": "securestring",
-              "metadata": {
-                "Description": "The administrator account password on the VM."
-              }
-            },
-            "dnsNameForPublicIP": {
-              "type": "string",
-              "metadata": {
-                "Description": "The name of the public IP address used to access the VM."
-              }
-            }
+            "adminUserName": { "type": "string" },
+            "adminPassword": { "type": "securestring" }
+          },
+        }
+
+3. [変数](../resource-group-authoring-templates.md#variables) をテンプレートで使用して、頻繁に変化する可能性がある値、またはパラメーター値の組み合わせから作成する必要のある値を指定できます。 parameters セクションの後に、variables 要素を追加します。
+
+        {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "adminUsername": { "type": "string" },
+            "adminPassword": { "type": "securestring" }
           },
           "variables": {
-            "location": "Central US",
-            "imagePublisher": "MicrosoftWindowsServer",
-            "imageOffer": "WindowsServer",
-            "windowsOSVersion": "2012-R2-Datacenter",
-            "OSDiskName": "osdisk1",
-            "nicName": "nc1",
-            "addressPrefix": "10.0.0.0/16",
-            "subnetName": "sn1",
-            "subnetPrefix": "10.0.0.0/24",
-            "storageAccountType": "Standard_LRS",
-            "publicIPAddressName": "ip1",
-            "publicIPAddressType": "Dynamic",
-            "vmStorageAccountContainerName": "vhds",
-            "vmName": "vm1",
-            "vmSize": "Standard_A0",
-            "virtualNetworkName": "vn1",
-            "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
-            "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
+            "vnetID":"[resourceId('Microsoft.Network/virtualNetworks','myvn1')]",
+            "subnetRef": "[concat(variables('vnetID'),'/subnets/mysn1')]"  
+          },
+        }
+        
+4. [リソース](../resource-group-authoring-templates.md#resources) を定義します。 variables セクションの後に、resources セクションを追加します。
+
+        {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "adminUsername": { "type": "string" },
+            "adminPassword": { "type": "securestring" }
+          },
+          "variables": {
+            "vnetID":"[resourceId('Microsoft.Network/virtualNetworks','myvn1')]",
+            "subnetRef": "[concat(variables('vnetID'),'/subnets/mysn1')]"
           },
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts",
-              "name": "[parameters('newStorageAccountName')]",
+              "name": "mystorage1",
               "apiVersion": "2015-06-15",
-              "location": "[variables('location')]",
-              "properties": {
-                "accountType": "[variables('storageAccountType')]"
-              }
+              "location": "[resourceGroup().location]",
+              "properties": { "accountType": "Standard_LRS" }
             },
             {
               "apiVersion": "2016-03-30",
               "type": "Microsoft.Network/publicIPAddresses",
-              "name": "[variables('publicIPAddressName')]",
-              "location": "[variables('location')]",
+              "name": "myip1",
+              "location": "[resourceGroup().location]",
               "properties": {
-                "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
-                "dnsSettings": {
-                  "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
-                }
+                "publicIPAllocationMethod": "Dynamic",
+                "dnsSettings": { "domainNameLabel": "mydns1" }
               }
             },
             {
               "apiVersion": "2016-03-30",
               "type": "Microsoft.Network/virtualNetworks",
-              "name": "[variables('virtualNetworkName')]",
-              "location": "[variables('location')]",
+              "name": "myvnet1",
+              "location": "[resourceGroup().location]",
               "properties": {
-                "addressSpace": {
-                  "addressPrefixes": [
-                    "[variables('addressPrefix')]"
-                  ]
-                },
-                "subnets": [
-                  {
-                    "name": "[variables('subnetName')]",
-                    "properties": {
-                      "addressPrefix": "[variables('subnetPrefix')]"
-                    }
-                  }
-                ]
+                "addressSpace": { "addressPrefixes": [ "10.0.0.0/16" ] },
+                "subnets": [ {
+                  "name": "mysn1",
+                  "properties": { "addressPrefix": "10.0.0.0/24" }
+                } ]
               }
             },
             {
               "apiVersion": "2016-03-30",
               "type": "Microsoft.Network/networkInterfaces",
-              "name": "[variables('nicName')]",
-              "location": "[variables('location')]",
+              "name": "mync1",
+              "location": "[resourceGroup().location]",
               "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-                "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+                "Microsoft.Network/publicIPAddresses/myip1",
+                "Microsoft.Network/virtualNetworks/myvn1"
               ],
               "properties": {
-                "ipConfigurations": [
-                  {
-                    "name": "ipconfig1",
-                    "properties": {
-                      "privateIPAllocationMethod": "Dynamic",
-                      "publicIPAddress": {
-                        "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
-                      },
-                      "subnet": {
-                        "id": "[variables('subnetRef')]"
-                      }
-                    }
+                "ipConfigurations": [ {
+                  "name": "ipconfig1",
+                  "properties": {
+                    "privateIPAllocationMethod": "Dynamic",
+                    "publicIPAddress": {
+                      "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'myip1')]"
+                    },
+                    "subnet": { "id": "[variables('subnetRef')]" }
                   }
-                ]
+                } ]
               }
             },
             {
               "apiVersion": "2016-03-30",
               "type": "Microsoft.Compute/virtualMachines",
-              "name": "[variables('vmName')]",
-              "location": "[variables('location')]",
+              "name": "myvm1",
+              "location": "[resourceGroup().location]",
               "dependsOn": [
-                "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]",
-                "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+                "Microsoft.Network/networkInterfaces/mync1",
+                "Microsoft.Storage/storageAccounts/mystorage1"
               ],
               "properties": {
-                "hardwareProfile": {
-                  "vmSize": "[variables('vmSize')]"
-                },
+                "hardwareProfile": { "vmSize": "Standard_A1" },
                 "osProfile": {
-                  "computername": "[variables('vmName')]",
+                  "computerName": "myvm1",
                   "adminUsername": "[parameters('adminUsername')]",
                   "adminPassword": "[parameters('adminPassword')]"
                 },
                 "storageProfile": {
                   "imageReference": {
-                    "publisher": "[variables('imagePublisher')]",
-                    "offer": "[variables('imageOffer')]",
-                    "sku" : "[variables('windowsOSVersion')]",
-                    "version":"latest"
+                    "publisher": "MicrosoftWindowsServer",
+                    "offer": "WindowsServer",
+                    "sku": "2012-R2-Datacenter",
+                    "version" : "latest"
                   },
-                  "osDisk" : {
-                    "name": "osdisk",
+                  "osDisk": {
+                    "name": "myosdisk1",
                     "vhd": {
-                      "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'.vhd')]"
+                      "uri": "https://mystorage1.blob.core.windows.net/vhds/myosdisk1.vhd"
                     },
                     "caching": "ReadWrite",
                     "createOption": "FromImage"
                   }
                 },
                 "networkProfile": {
-                  "networkInterfaces": [
-                    {
-                      "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
-                    }
-                  ]
+                  "networkInterfaces" : [ {
+                    "id": "[resourceId('Microsoft.Network/networkInterfaces','mync1')]"
+                  } ]
                 }
               }
-            }
-          ]
-        }
-        
-    >[AZURE.NOTE] この記事では、Windows Server オペレーティング システムのいずれかのバージョンを実行する仮想マシンを作成します。他のイメージの選択の詳細については、[Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](virtual-machines-linux-cli-ps-findimage.md)に関する記事をご覧ください。
-    
-2. テンプレート ファイルを保存します。
+            } ]
+          }
+          
+    >[AZURE.NOTE] この記事では、Windows Server オペレーティング システムのいずれかのバージョンを実行する仮想マシンを作成します。 他のイメージの選択の詳細については、 [Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](virtual-machines-linux-cli-ps-findimage.md)に関する記事をご覧ください。  
+            
+2. テンプレート ファイルを *VirtualMachineTemplate.json* として保存します。
 
-## 手順 2: パラメーター ファイルの作成
+## <a name="step-2:-create-the-parameters-file"></a>手順 2: パラメーター ファイルの作成
 
-テンプレートで定義されているリソース パラメーターの値を指定するには、値を含むパラメーター ファイルを作成し、テンプレートと共にリソース マネージャーに送信します。
+テンプレートで定義されているリソース パラメーターの値を指定するには、テンプレートがデプロイされるときに使用される値を含むパラメーター ファイルを作成します。
 
-1. テキスト エディターで、この JSON 情報を、*Parameters.json* という名前の新しいファイルにコピーします。
+1. テキスト エディターで、この JSON の内容を、*Parameters.json* という名前の新しいファイルにコピーします。
 
         {
           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
           "contentVersion": "1.0.0.0",
           "parameters": {
-            "newStorageAccountName": { "value": "mytestsa1" },
             "adminUserName": { "value": "mytestacct1" },
-            "adminPassword": { "value": "mytestpass1" },
-            "dnsNameForPublicIP": { "value": "mytestdns1" }
+            "adminPassword": { "value": "mytestpass1" }
           }
         }
 
@@ -220,23 +192,23 @@
 
 2. パラメーター ファイルを保存します。
 
-## 手順 3: Azure PowerShell のインストール
+## <a name="step-3:-install-azure-powershell"></a>手順 3: Azure PowerShell のインストール
 
-最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択し、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
+最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
-## 手順 4: リソース グループの作成
+## <a name="step-4:-create-a-resource-group"></a>手順 4: リソース グループの作成
 
-すべてのリソースをリソース グループにデプロイする必要があります。詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」をご覧ください。
+すべてのリソースを[リソース グループ](../resource-group-overview.md)にデプロイする必要があります。
 
 1. リソースを作成できる場所の一覧を取得します。
 
-	    Get-AzureRmLocation | sort DisplayName | Select DisplayName
+        Get-AzureRmLocation | sort DisplayName | Select DisplayName
 
-2. **$locName** の値を一覧の場所に置き換えます (例: **Central US** (米国中部))。変数を作成します。
+2. **$locName** の値を一覧の場所に置き換えます (例: **Central US** (米国中部))。 変数を作成します。
 
         $locName = "location name"
         
-3. **$rgName** の値を、新しいリソース グループの名前に置き換えます。変数とリソース グループを作成します。
+3. **$rgName** の値を、新しいリソース グループの名前に置き換えます。 変数とリソース グループを作成します。
 
         $rgName = "resource group name"
         New-AzureRmResourceGroup -Name $rgName -Location $locName
@@ -249,19 +221,15 @@
         Tags              :
         ResourceId        : /subscriptions/{subscription-id}/resourceGroups/myrg1
 
-### 手順 5: テンプレートとパラメーターを使用したリソースの作成
+## <a name="step-5:-create-the-resources-with-the-template-and-parameters"></a>手順 5: テンプレートとパラメーターを使用したリソースの作成
 
-1. **$deployName** の値をデプロイの名前に置き換えます。**$templatePath** の値をテンプレート ファイルのパスと名前に置き換えます。**$parameterFile** の値をパラメーター ファイルのパスと名前に置き換えます。変数を作成します。
+**$templateFile** の値をテンプレート ファイルのパスと名前に置き換えます。 **$parameterFile** の値をパラメーター ファイルのパスと名前に置き換えます。 変数を作成し、テンプレートをデプロイします。 
 
-        $deployName="deployment name"
-        $templatePath = "template path"
+        $templateFile = "template file"
         $parameterFile = "parameter file"
+        New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -TemplateFile $templateFile -TemplateParameterFile $parameterFile
 
-2. テンプレートをデプロイします。
-
-        New-AzureRmResourceGroupDeployment -ResourceGroupName "davidmurg6" -TemplateFile $templatePath -TemplateParameterFile $parameterFile
-
-    次のような結果が表示されます。
+    You will see something like this:
 
         DeploymentName    : VirtualMachineTemplate
         ResourceGroupName : myrg1
@@ -272,18 +240,20 @@
         Parameters        :
                             Name             Type                       Value
                             ===============  =========================  ==========
-                            newStorageAccountName  String                     mytestsa1
                             adminUsername    String                     mytestacct1
                             adminPassword    SecureString
-                            dnsNameForPublicIP  String                     mytestdns1
 
         Outputs           :
 
-    >[AZURE.NOTE] テンプレートとパラメーターを Azure ストレージ アカウントからデプロイすることもできます。詳細については、「[Azure Storage での Azure PowerShell の使用](../storage-powershell-guide-full.md)」をご覧ください。
+>[AZURE.NOTE] テンプレートとパラメーターを Azure ストレージ アカウントからデプロイすることもできます。 詳細については、「[Azure Storage での Azure PowerShell の使用](../storage/storage-powershell-guide-full.md)」をご覧ください。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
-- デプロイに問題がある場合は、[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)に関する記事をご覧ください。
-- [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関する記事で、作成した仮想マシンを管理する方法を確認します。
+- デプロイに問題がある場合は、次の手順として、「[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
+- 「[Resource Manager と PowerShell を使用した Azure Virtual Machines の管理](virtual-machines-windows-ps-manage.md)」で、作成した仮想マシンを管理する方法を確認します。
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+
