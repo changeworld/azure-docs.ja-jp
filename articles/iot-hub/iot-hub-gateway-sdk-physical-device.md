@@ -1,11 +1,11 @@
 <properties
-	pageTitle="Gateway SDK で実際のデバイスを使用する |Microsoft Azure"
-	description="Texas Instruments SensorTag を使用し、Intel Edison Compute Module で動作するゲートウェイを介して IoT Hub にデータを送信する Azure IoT Hub Gateway SDK チュートリアル"
-	services="iot-hub"
-	documentationCenter=""
-	authors="chipalost"
-	manager="timlt"
-	editor=""/>
+    pageTitle="Gateway SDK で実際のデバイスを使用する |Microsoft Azure"
+    description="Texas Instruments SensorTag を使用し、Intel Edison Compute Module で動作するゲートウェイを介して IoT Hub にデータを送信する Azure IoT Hub Gateway SDK チュートリアル"
+    services="iot-hub"
+    documentationCenter=""
+    authors="chipalost"
+    manager="timlt"
+    editor=""/>
 
 <tags
      ms.service="iot-hub"
@@ -17,7 +17,8 @@
      ms.author="andbuc"/>
 
 
-# IoT Gateway SDK (ベータ) - Linux を使用した実際のデバイスで D2C メッセージを送信する
+
+# <a name="iot-gateway-sdk-(beta)-–-send-device-to-cloud-messages-with-a-real-device-using-linux"></a>IoT Gateway SDK (ベータ) - Linux を使用した実際のデバイスで D2C メッセージを送信する
 
 この [Bluetooth 低エネルギー サンプル][lnk-ble-samplecode]のチュートリアルでは、[Microsoft Azure IoT Gateway SDK][lnk-sdk] を使用して、物理デバイスから IoT Hub に D2C テレメトリを転送する方法と、IoT Hub から物理デバイスにコマンドをルーティングする方法について説明します。
 
@@ -27,9 +28,9 @@
 
 * **ビルドおよび実行**: サンプルをビルドして実行するために必要な手順。
 
-## アーキテクチャ
+## <a name="architecture"></a>アーキテクチャ
 
-このチュートリアルでは、Linux が動作する Intel Edison Compute Module で IoT Gateway をビルドして実行する方法を示します。ゲートウェイのビルドには IoT Gateway SDK を使用します。サンプルでは、温度データを収集するために Texas Instruments SensorTag Bluetooth Low Energy (BLE) デバイスを使用します。
+このチュートリアルでは、Linux が動作する Intel Edison Compute Module で IoT Gateway をビルドして実行する方法を示します。 ゲートウェイのビルドには IoT Gateway SDK を使用します。 サンプルでは、温度データを収集するために Texas Instruments SensorTag Bluetooth Low Energy (BLE) デバイスを使用します。
 
 ゲートウェイを実行すると、次のような処理が行われます。
 
@@ -40,14 +41,14 @@
 
 ゲートウェイには、次のモジュールが含まれています。
 
-- *BLE モジュール*: BLE デバイスと接続し、デバイスから温度データを受信してデバイスにコマンドを送信します。
+- *BLE モジュール* : BLE デバイスと接続し、デバイスから温度データを受信してデバイスにコマンドを送信します。
 - *BLE クラウド対デバイス モジュール*: クラウドから送信される JSON メッセージを *BLE モジュール*用の BLE 命令に変換します。
-- * モジュール*: すべてのゲートウェイ メッセージをログに記録します。
-- *ID マッピング モジュール*: BLE デバイスの MAC アドレスと Azure IoT Hub デバイス ID の間で変換を行います。
-- *IoT Hub モジュール*: テレメトリ データを IoT Hub にアップロードし、IoT Hub からデバイス コマンドを受信します。
-- *BLE プリンター モジュール*: BLE デバイスからのテレメトリを解釈し、トラブルシューティングとデバッグに利用できるように、書式設定されたデータをコンソールに出力します。
+- *モジュール* : すべてのゲートウェイ メッセージをログに記録します。
+- *ID マッピング モジュール* : BLE デバイスの MAC アドレスと Azure IoT Hub デバイス ID の間で変換を行います。
+- *IoT Hub モジュール* : テレメトリ データを IoT Hub にアップロードし、IoT Hub からデバイス コマンドを受信します。
+- *BLE プリンター モジュール* : BLE デバイスからのテレメトリを解釈し、トラブルシューティングとデバッグに利用できるように、書式設定されたデータをコンソールに出力します。
 
-### Gateway を介したデータの流れ
+### <a name="how-data-flows-through-the-gateway"></a>Gateway を介したデータの流れ
 
 次のブロック図には、テレメトリをアップロードする際のデータ フロー パイプラインを示します。
 
@@ -57,7 +58,7 @@ BLE デバイスから IoT Hub に転送されるテレメトリ項目の処理�
 
 1. BLE デバイスが温度サンプルを生成し、Bluetooth 経由でゲートウェイの BLE モジュールに送信する。
 2. BLE モジュールがサンプルを受信し、デバイスの MAC アドレスと共にブローカーに発行する。
-3. ID マッピング モジュールがこのメッセージを取得し、内部テーブルを使用してデバイスの MAC アドレスを IoT Hub デバイス ID (デバイス ID とデバイス キー) に変換する。その後、温度サンプルのデータ、デバイスの MAC アドレス、デバイス ID、デバイス キーを含む新しいメッセージを発行する。
+3. ID マッピング モジュールがこのメッセージを取得し、内部テーブルを使用してデバイスの MAC アドレスを IoT Hub デバイス ID (デバイス ID とデバイス キー) に変換する。 その後、温度サンプルのデータ、デバイスの MAC アドレス、デバイス ID、デバイス キーを含む新しいメッセージを発行する。
 4. IoT Hub モジュールがこの (ID マッピング モジュールで生成された) 新しいメッセージを受信し、IoT Hub に発行する。
 5. ロガー モジュールがメッセージ バスから受信したすべてのメッセージをディスク ファイルに記録する。
 
@@ -67,59 +68,59 @@ BLE デバイスから IoT Hub に転送されるテレメトリ項目の処理�
 
 1. IoT Hub モジュールは IoT Hub に対して定期的に新しいコマンド メッセージのポーリングを行う。
 2. 新しいコマンド メッセージを受信すると、IoT Hub モジュールはそれをブローカーに発行する。
-3. ID マッピング モジュールがコマンド メッセージを取得し、内部テーブルを使用して IoT Hub デバイス ID をデバイスの MAC アドレスに変換する。その後、プロパティ マップ内にターゲット デバイスの MAC アドレスを含む新しいメッセージを発行する。
-4. BLE クラウド対デバイス モジュールは、このメッセージを受け取って、BLE モジュール用の適切な BLE 命令に変換する。その後、新しいメッセージを発行する。
+3. ID マッピング モジュールがコマンド メッセージを取得し、内部テーブルを使用して IoT Hub デバイス ID をデバイスの MAC アドレスに変換する。 その後、プロパティ マップ内にターゲット デバイスの MAC アドレスを含む新しいメッセージを発行する。
+4. BLE クラウド対デバイス モジュールは、このメッセージを受け取って、BLE モジュール用の適切な BLE 命令に変換する。 その後、新しいメッセージを発行する。
 5. BLE モジュールがこのメッセージを取得し、BLE デバイスと通信して I/O 命令を実行する。
 6. ロガー モジュールがメッセージ バスから受信したすべてのメッセージをディスク ファイルに記録する。
 
-## ハードウェアの準備
+## <a name="prepare-your-hardware"></a>ハードウェアの準備
 
 このチュートリアルでは、Intel Edison ボードに接続した [Texas Instruments SensorTag](http://www.ti.com/ww/en/wireless_connectivity/sensortag2015/index.html) デバイスを使用することを前提としています。
 
-### Edison ボードを設定する
+### <a name="set-up-the-edison-board"></a>Edison ボードを設定する
 
-チュートリアルを開始する前に、Edison デバイスをワイヤレス ネットワークに接続できることを確認する必要があります。Edison デバイスを設定するには、それをホスト コンピューターに接続する必要があります。Intel では、次の各オペレーティング システム向けにファースト ステップ ガイドを提供しています。
+チュートリアルを開始する前に、Edison デバイスをワイヤレス ネットワークに接続できることを確認する必要があります。 Edison デバイスを設定するには、それをホスト コンピューターに接続する必要があります。 Intel では、次の各オペレーティング システム向けにファースト ステップ ガイドを提供しています。
 
 - 「[Get Started with the Intel Edison Development Board on Windows 64-bit (Windows 64 ビットで Intel Edison Development Board を使用する)][lnk-setup-win64]」
 - 「[Get Started with the Intel Edison Development Board on Windows 32-bit (Windows 32 ビットで Intel Edison Development Board を使用する)][lnk-setup-win32]」
 - 「[Get Started with the Intel Edison Development Board on Mac OS X (Mac OS X で Intel Edison Development Board を使用する)][lnk-setup-osx]」
 - 「[Getting Started with the Intel® Edison Board on Linux (Linux で Intel® Edison Board を使用する)][lnk-setup-linux]」
 
-Edison デバイスを設定して使用方法を理解するには、これらの "ファースト ステップ" 記事で、現在のチュートリアルには不要な最後の手順「Choose IDE (IDE の選択)」を除くすべての手順を完了する必要があります。Edison の設定プロセスでは、次のような設定を行います。
+Edison デバイスを設定して使用方法を理解するには、これらの "ファースト ステップ" 記事で、現在のチュートリアルには不要な最後の手順「Choose IDE (IDE の選択)」を除くすべての手順を完了する必要があります。 Edison の設定プロセスでは、次のような設定を行います。
 
 - Edison に最新のファームウェアを書き込む。
 - ホストから Edison へのシリアル接続を確立する。
-- **configure\_edison** スクリプトを実行してパスワードを設定し、Edison 上で WiFi を有効にする。
+- **configure_edison** スクリプトを実行してパスワードを設定し、Edison 上で WiFi を有効にする。
 
-### Edison ボードから SensorTag デバイスへの接続を有効にする
+### <a name="enable-connectivity-to-the-sensortag-device-from-your-edison-board"></a>Edison ボードから SensorTag デバイスへの接続を有効にする
 
 サンプルを実行する前に、Edison ボードから SensorTag デバイスに接続できることを確認する必要があります。
 
 最初に、Edison から SensorTag デバイスに接続できることを確認する必要があります。
 
-1. Edison で Bluetooth のブロックを解除し、バージョン番号が **5.37** であることを確認します。
+1. Edison で Bluetooth のブロックを解除し、バージョン番号が **5.37**であることを確認します。
     
     ```
     rfkill unblock bluetooth
     bluetoothctl --version
     ```
 
-2. **bluetoothctl** コマンドを実行します。これで対話型の Bluetooth シェルが表示されます。
+2. **bluetoothctl** コマンドを実行します。 これで対話型の Bluetooth シェルが表示されます。 
 
-3. **power on** コマンドを入力して Bluetooth コントローラーの電源を入れます。次のような出力が表示されます。
+3. **power on** コマンドを入力して Bluetooth コントローラーの電源を入れます。 次のような出力が表示されます。
     
     ```
     [NEW] Controller 98:4F:EE:04:1F:DF edison [default]
     ```
 
-4. 対話型の Bluetooth シェルにいる間に、**scan on** コマンドを入力して Bluetooth デバイスをスキャンします。次のような出力が表示されます。
+4. 対話型の Bluetooth シェルにいる間に、 **scan on** コマンドを入力して Bluetooth デバイスをスキャンします。 次のような出力が表示されます。
     
     ```
     Discovery started
     [CHG] Controller 98:4F:EE:04:1F:DF Discovering: yes
     ```
 
-5. 小さいボタンを押して SensorTag デバイスを検出可能な状態にします (緑色の LED が点滅します)。Edison では次のように SensorTag デバイスが検出されます。
+5. 小さいボタンを押して SensorTag デバイスを検出可能な状態にします (緑色の LED が点滅します)。 Edison では次のように SensorTag デバイスが検出されます。
     
     ```
     [NEW] Device A0:E6:F8:B5:F6:00 CC2650 SensorTag
@@ -127,7 +128,7 @@ Edison デバイスを設定して使用方法を理解するには、これら�
     [CHG] Device A0:E6:F8:B5:F6:00 RSSI: -43
     ```
     
-    この例では、SensorTag デバイスの MAC アドレスが **A0:E6:F8:B5:F6:00** であることがわかります。
+    この例では、SensorTag デバイスの MAC アドレスが **A0:E6:F8:B5:F6:00**であることがわかります。
 
 6. **scan off** コマンドを入力してスキャンをオフにします。
     
@@ -136,7 +137,7 @@ Edison デバイスを設定して使用方法を理解するには、これら�
     Discovery stopped
     ```
 
-7. SensorTag デバイスの MAC アドレスを使用し、**connect <MAC address>** コマンドを入力してデバイスに接続します。次に示す出力サンプルは一部省略されている点に注意してください。
+7. SensorTag デバイスの MAC アドレスを使用し、**connect <MAC address>** コマンドを入力してデバイスに接続します。 次に示す出力サンプルは一部省略されている点に注意してください。
     
     ```
     Attempting to connect to A0:E6:F8:B5:F6:00
@@ -167,7 +168,7 @@ Edison デバイスを設定して使用方法を理解するには、これら�
 
 これで BLE Gateway サンプルを Edison デバイスで実行する準備が整いました。
 
-## BLE Gateway サンプルの実行
+## <a name="run-the-ble-gateway-sample"></a>BLE Gateway サンプルの実行
 
 BLE サンプルを Edison で実行するには、次の 3 つのタスクを完了する必要があります。
 
@@ -177,14 +178,14 @@ BLE サンプルを Edison で実行するには、次の 3 つのタスクを�
 
 この記事の執筆時点では、Gateway SDK でサポートされているのは、Linux で BLE モジュールを使用するゲートウェイのみです。
 
-### IoT Hub に 2 つのサンプル デバイスを構成する
+### <a name="configure-two-sample-devices-in-your-iot-hub"></a>IoT Hub に 2 つのサンプル デバイスを構成する
 
-- Azure サブスクリプションで [IoT Hub を作成][lnk-create-hub]します。このチュートリアルを実行するには、Hub の名前が必要です。Azure サブスクリプションがまだない場合は、[無料アカウント][lnk-free-trial]を取得できます。
-- **SensorTag\_01** という名前の 1 つのデバイスを IoT Hub に追加し、その ID とデバイス キーをメモしておきます。[Device Explorer または iothub-explorer][lnk-explorer-tools] ツールを使用すると、前の手順で作成した IoT Hub にこのデバイスを追加し、デバイスのキーを取得することができます。このデバイスは、ゲートウェイの構成時に SensorTag デバイスにマップします。
+- Azure サブスクリプションで [IoT Hub を作成][lnk-create-hub]します。このチュートリアルを実行するには、Hub の名前が必要です。 Azure サブスクリプションがまだない場合は、[無料アカウント][lnk-free-trial]を取得できます。
+- **SensorTag_01** という名前の 1 つのデバイスを IoT Hub に追加し、その ID とデバイス キーをメモしておきます。 [Device Explorer または iothub-explorer][lnk-explorer-tools] ツールを使用すると、前の手順で作成した IoT Hub にこのデバイスを追加し、デバイスのキーを取得することができます。 このデバイスは、ゲートウェイの構成時に SensorTag デバイスにマップします。
 
-### Edison デバイスで Gateway SDK をビルドする
+### <a name="build-the-gateway-sdk-on-your-edison-device"></a>Edison デバイスで Gateway SDK をビルドする
 
-Edison 上の **git** のバージョンでは、サブモジュールはサポートされていません。Gateway SDK のソース全体を Edison にダウンロードするには、次の 2 つの方法があります。
+Edison 上の **git** のバージョンでは、サブモジュールはサポートされていません。 Gateway SDK のソース全体を Edison にダウンロードするには、次の 2 つの方法があります。
 
 - 方法 1: [Microsoft Azure IoT Gateway SDK][lnk-sdk] リポジトリを Edison 上で複製し、各サブモジュールについては手動でリポジトリを複製する。
 - 方法 2: [Microsoft Azure IoT Gateway SDK][lnk-sdk] リポジトリを、**git** でサブモジュールがサポートされているデスクトップ デバイス上で複製し、サブモジュールを含む完全なリポジトリを Edison にコピーする。
@@ -196,7 +197,7 @@ git clone --recursive https://github.com/Azure/azure-iot-gateway-sdk.git
 git submodule update --init --recursive
 ```
 
-その後、ローカル リポジトリ全体を zip 形式で圧縮して 1 つのアーカイブ ファイルにしてから、Edison にコピーする必要があります。**Putty** に付属する **pscp** などのユーティリティを使用すると、アーカイブ ファイルを Edison にコピーできます。次に例を示します。
+その後、ローカル リポジトリ全体を zip 形式で圧縮して 1 つのアーカイブ ファイルにしてから、Edison にコピーする必要があります。 **Putty** に付属する **pscp** などのユーティリティを使用すると、アーカイブ ファイルを Edison にコピーできます。 次に例を示します。
 
 ```
 pscp .\gatewaysdk.zip root@192.168.0.45:/home/root
@@ -208,15 +209,15 @@ Gateway SDK リポジトリの完全なコピーを Edison 上に用意したら
 ./tools/build.sh
 ```
 
-### Edison デバイスで BLE サンプルを構成して実行する
+### <a name="configure-and-run-the-ble-sample-on-your-edison-device"></a>Edison デバイスで BLE サンプルを構成して実行する
 
-サンプルを起動して実行するには、ゲートウェイに関与しているモジュールをそれぞれ構成する必要があります。この構成は JSON ファイル形式で指定し、5 個の関連モジュールすべてを構成することが必要です。リポジトリ内には **gateway\_sample.json** という名前のサンプル JSON ファイルが用意されており、独自の構成ファイルを構築するための雛形として使用することができます。このファイルは、Gateway SDK リポジトリのローカル コピー内の **samples/ble\_gateway\_hl/src** フォルダーにあります。
+サンプルを起動して実行するには、ゲートウェイに関与しているモジュールをそれぞれ構成する必要があります。 この構成は JSON ファイル形式で指定し、5 個の関連モジュールすべてを構成することが必要です。 リポジトリ内には **gateway_sample.json** という名前のサンプル JSON ファイルが用意されており、独自の構成ファイルを構築するための雛形として使用することができます。 このファイルは、Gateway SDK リポジトリのローカル コピー内の **samples/ble_gateway_hl/src** フォルダーにあります。
 
-以降のセクションでは、この構成ファイルを BLE サンプル用に編集する方法を説明しており、Gateway SDK リポジトリが Edison デバイスの **/home/root/azure-iot-gateway-sdk/** フォルダーにあることを前提としています。リポジトリが他の場所にある場合は、パスを適宜修正する必要があります。
+以降のセクションでは、この構成ファイルを BLE サンプル用に編集する方法を説明しており、Gateway SDK リポジトリが Edison デバイスの **/home/root/azure-iot-gateway-sdk/** フォルダーにあることを前提としています。 リポジトリが他の場所にある場合は、パスを適宜修正する必要があります。
 
-#### ロガーの構成
+#### <a name="logger-configuration"></a>ロガーの構成
 
-ゲートウェイ リポジトリが **/home/root/azure-iot-gateway-sdk/** フォルダーにあると仮定し、ロガー モジュールを次のように構成します。
+ゲートウェイ リポジトリが **/home/root/azure-iot-gateway-sdk/**フォルダーにあると仮定し、ロガー モジュールを次のように構成します。
 
 ```json
 {
@@ -229,9 +230,9 @@ Gateway SDK リポジトリの完全なコピーを Edison 上に用意したら
 }
 ```
 
-#### BLE モジュールの構成
+#### <a name="ble-module-configuration"></a>BLE モジュールの構成
 
-BLE デバイスの構成サンプルでは、Texas Instruments SensorTag デバイスを BLE デバイスとして想定しています。GATT 周辺機器として動作する標準 BLE デバイスはすべて使用できますが、GATT 特性の ID とデータを更新することが必要になります (書き込み命令の場合)。SensorTag デバイスの MAC アドレスを次のように追加します。
+BLE デバイスの構成サンプルでは、Texas Instruments SensorTag デバイスを BLE デバイスとして想定しています。 GATT 周辺機器として動作する標準 BLE デバイスはすべて使用できますが、GATT 特性の ID とデータを更新することが必要になります (書き込み命令の場合)。 SensorTag デバイスの MAC アドレスを次のように追加します。 
 
 ```json
 {
@@ -285,9 +286,9 @@ BLE デバイスの構成サンプルでは、Texas Instruments SensorTag デバ
 }
 ```
 
-#### IoT Hub モジュール
+#### <a name="iot-hub-module"></a>IoT Hub モジュール
 
-IoT Hub の名前を追加します。サフィックス値は通常、**azure-devices.net** です。
+IoT Hub の名前を追加します。 サフィックス値は通常、 **azure-devices.net**です。
 
 ```json
 {
@@ -301,9 +302,9 @@ IoT Hub の名前を追加します。サフィックス値は通常、**azure-d
 }
 ```
 
-#### ID マッピング モジュールの構成
+#### <a name="identity-mapping-module-configuration"></a>ID マッピング モジュールの構成
 
-SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **SensorTag\_01** デバイスのデバイス ID およびキーを追加します。
+SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **SensorTag_01** デバイスのデバイス ID とキーを追加します。
 
 ```json
 {
@@ -319,7 +320,7 @@ SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **Sensor
 }
 ```
 
-#### BLE プリンター モジュールの構成
+#### <a name="ble-printer-module-configuration"></a>BLE プリンター モジュールの構成
 
 ```json
 {
@@ -329,7 +330,7 @@ SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **Sensor
 }
 ```
 
-#### ルーティング構成
+#### <a name="routing-configuration"></a>ルーティング構成
 
 次の構成は、次のことを保証します。
 - **Logger** モジュールがすべてのメッセージを受信し、それらを記録します。
@@ -349,7 +350,7 @@ SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **Sensor
   ]
 ```
 
-サンプルを実行するには、JSON 構成ファイルへのパスを渡して **ble\_gateway\_hl** バイナリを実行します。**gateway\_sample.json** ファイルを使用した場合、実行するコマンドは次のようになります。
+サンプルを実行するには、JSON 構成ファイルへのパスを渡して **ble_gateway_hl** バイナリを実行します。 **gateway_sample.json** ファイルを使用した場合、実行するコマンドは次のようになります。
 
 ```
 ./build/samples/ble_gateway_hl/ble_gateway_hl ./samples/ble_gateway_hl/src/gateway_sample.json
@@ -357,11 +358,11 @@ SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **Sensor
 
 このサンプルを実行する前に、SensorTag の小さいボタンを押して検出可能にすることが必要になる場合があります。
 
-サンプルを実行する際に [Device Explorer または iothub-explorer][lnk-explorer-tools] ツールを使用すると、ゲートウェイによって SensorTag デバイスから転送されるメッセージを監視することができます。
+サンプルを実行する際に [Device Explorer または iothub-explorer][lnk-explorer-tools] ツールを使用すると、ゲートウェイによって SensorTag デバイスから転送されるメッセージを監視できます。
 
-## C2D メッセージの送信
+## <a name="send-cloud-to-device-messages"></a>C2D メッセージの送信
 
-BLE モジュールでは、Azure IoT Hub からデバイスへの命令の送信もサポートしています。[Azure IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) または [IoT Hub Explorer](https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer) を使用して JSON メッセージを送信し、BLE ゲートウェイ モジュールから BLE デバイスに渡すことができます。たとえば、Texas Instruments SensorTag デバイスを使用する場合、次の JSON メッセージを IoT Hub からデバイスに送信できます。
+BLE モジュールでは、Azure IoT Hub からデバイスへの命令の送信もサポートしています。 [Azure IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) または [IoT Hub Explorer](https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer) を使用して JSON メッセージを送信し、BLE ゲートウェイ モジュールから BLE デバイスに渡すことができます。 たとえば、Texas Instruments SensorTag デバイスを使用する場合、次の JSON メッセージを IoT Hub からデバイスに送信できます。
 
 - すべての LED とブザーをリセットする (オフにする)
 
@@ -413,42 +414,35 @@ BLE モジュールでは、Azure IoT Hub からデバイスへの命令の送�
     }
     ```
 
-HTTP プロトコルを使用するデバイスで IoT Hub に接続する場合の既定の動作では、25 分ごとに新しいコマンドを確認します。そのため、複数のコマンドを個別に送信した場合、デバイスが各コマンドを受信するまでに 25 分の待機時間が発生します。
+HTTP プロトコルを使用するデバイスで IoT Hub に接続する場合の既定の動作では、25 分ごとに新しいコマンドを確認します。 そのため、複数のコマンドを個別に送信した場合、デバイスが各コマンドを受信するまでに 25 分の待機時間が発生します。
 
 > [AZURE.NOTE] ゲートウェイは起動時にも毎回新しいコマンドを確認するため、ゲートウェイを停止して起動することでコマンドを強制的に処理させることができます。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 Gateway SDK に関する理解をさらに深め、実際にコード例に触れてみたいという場合は、以下の開発者向けチュートリアルとリソースをご覧ください。
 
-- [ゲートウェイ デバイスの管理][lnk-manage-devices]
-- [Azure IoT Gateway SDK][lnk-gateway-sdk]
+- [Azure IoT Gateway SDK][lnk-sdk]
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-- [ソリューションの設計][lnk-design]
-- [開発者ガイド][lnk-devguide]
-- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
-- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
+- [開発者ガイド][lnk devguide]
 
 <!-- Links -->
 [lnk-ble-samplecode]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/ble_gateway_hl
-[lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
-[lnk-create-hub]: iot-hub-manage-through-portal.md
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-explorer-tools]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md
-[lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 [lnk-setup-win64]: https://software.intel.com/get-started-edison-windows
 [lnk-setup-win32]: https://software.intel.com/get-started-edison-windows-32
 [lnk-setup-osx]: https://software.intel.com/get-started-edison-osx
 [lnk-setup-linux]: https://software.intel.com/get-started-edison-linux
 [lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 
-[lnk-manage-devices]: iot-hub-gateway-sdk-device-management.md
 
-[lnk-design]: iot-hub-guidance.md
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-dmui]: iot-hub-device-management-ui-sample.md
-[lnk-portal]: iot-hub-manage-through-portal.md
+[lnk-create-hub]: iot-hub-create-through-portal.md 
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

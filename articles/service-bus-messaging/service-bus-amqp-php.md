@@ -1,57 +1,58 @@
 <properties 
     pageTitle="AMQP 1.0 での Service Bus と PHP | Microsoft Azure"
     description="AMQP で PHP から Service Bus を使用します。"
-    services="service-bus-messaging"
+    services="service-bus"
     documentationCenter="na"
     authors="sethmanheim"
     manager="timlt"
     editor="" /> 
 <tags 
-    ms.service="service-bus-messaging"
+    ms.service="service-bus"
     ms.devlang="na"
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="05/06/2016"
+    ms.date="09/29/2016"
     ms.author="sethm" />
 
-# AMQP 1.0 で PHP から Service Bus を使用する
+
+# <a name="using-service-bus-from-php-with-amqp-1.0"></a>AMQP 1.0 で PHP から Service Bus を使用する
 
 [AZURE.INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
 Proton-PHP は Proton-C にバインドされている PHP 言語です。つまり、Proton-PHP は、C で実装されているエンジンのラッパーとして実装されています。
 
-## Proton クライアント ライブラリをダウンロードする
+## <a name="downloading-the-proton-client-library"></a>Proton クライアント ライブラリをダウンロードする
 
-Proton-C および関連するバインド (PHP を含む) は、[http://qpid.apache.org/download.html](http://qpid.apache.org/download.html) からダウンロードできます。ソース コード形式のファイルがダウンロードされます。コードをビルドするには、ダウンロードしたパッケージに含まれる指示に従って操作してください。
+Proton-C および関連するバインド (PHP を含む) は、[http://qpid.apache.org/download.html](http://qpid.apache.org/download.html) からダウンロードできます。 ソース コード形式のファイルがダウンロードされます。 コードをビルドするには、ダウンロードしたパッケージに含まれる指示に従って操作してください。
 
-> [AZURE.IMPORTANT] このドキュメントの執筆時点で、Proton-C での SSL サポートは Linux オペレーティング システムでのみ提供されています。Azure Service Bus では SSL を使用する必要があるため、Proton-C (および言語バインド) は、現時点では Linux から Service Bus へのアクセスにのみ使用できます。Windows で Proton-C と SSL を使用できるようにするための作業が進行中です。更新情報を頻繁に確認してください。
+> [AZURE.IMPORTANT] このドキュメントの執筆時点で、Proton-C での SSL サポートは Linux オペレーティング システムでのみ提供されています。 Azure Service Bus では SSL を使用する必要があるため、Proton-C (および言語バインド) は、現時点では Linux から Service Bus へのアクセスにのみ使用できます。 Windows で Proton-C と SSL を使用できるようにするための作業が進行中です。更新情報を頻繁に確認してください。
 
-## PHP から Service Bus のキュー、トピック、サブスクリプションを使用する
+## <a name="working-with-service-bus-queues,-topics,-and-subscriptions-from-php"></a>PHP から Service Bus のキュー、トピック、サブスクリプションを使用する
 
 次のコードは、Service Bus メッセージング エンティティからメッセージを送受信する方法を示しています。
 
-### Proton-PHP を使用してメッセージを送信する
+### <a name="sending-messages-using-proton-php"></a>Proton-PHP を使用してメッセージを送信する
 
 次のコードは、Service Bus メッセージング エンティティにメッセージを送信する方法を示しています。
 
 ```
 $messenger = new Messenger();
 $message = new Message();
-$message->address = "amqps://[username]:[password]@[namespace].servicebus.windows.net/[entity]";
+$message->address = "amqps://[keyname]:[password]@[namespace].servicebus.windows.net/[entity]";
 
 $message->body = "This is a text string";
 $messenger->put($message);
 $messenger->send();
 ```
 
-### Proton-PHP を使用してメッセージを受信する
+### <a name="receiving-messages-using-proton-php"></a>Proton-PHP を使用してメッセージを受信する
 
 次のコードは、Service Bus メッセージング エンティティからメッセージを受信する方法を示しています。
 
 ```
 $messenger = new Messenger();
-$address = "amqps://[username]:[password]@[namespace].servicebus.windows.net/[entity]";
+$address = "amqps://[keyname]:[password]@[namespace].servicebus.windows.net/[entity]";
 $messenger->subscribe($address);
 
 $messenger->start();
@@ -66,13 +67,13 @@ if($messenger->incoming())
 $messenger->stop();
 ```
 
-## .NET と Proton-PHP 間のメッセージング
+## <a name="messaging-between-.net-and-proton-php"></a>.NET と Proton-PHP 間のメッセージング
 
-### Application properties
+### <a name="application-properties"></a>Application properties
 
-#### Proton-PHP から Service Bus .NET API へ
+#### <a name="protonphp-to-service-bus-.net-apis"></a>Proton-PHP から Service Bus .NET API へ
 
-Proton-PHP メッセージでサポートされるアプリケーションのプロパティの型は、**integer**、**double**、**Boolean**、**string**、**object** です。次の PHP コードは、これらのプロパティの型を使用してメッセージにプロパティを設定する方法を示しています。
+Proton-PHP メッセージでサポートされるアプリケーションのプロパティの型は、**integer**、**double**、**Boolean**、**string**、**object** です。 次の PHP コードは、これらのプロパティの型を使用してメッセージにプロパティを設定する方法を示しています。
 
 ```
 $message->properties["TestInt"] = 1;    
@@ -82,7 +83,7 @@ $message->properties["TestString"] = "Service Bus";
 $message->properties["TestObject"] = new UUID("1234123412341234");   
 ```
 
-Service Bus .NET API では、メッセージ アプリケーションのプロパティは [BrokeredMessage][] の **Properties** コレクションで伝達されます。次のコードは、PHP クライアントから受信したメッセージのアプリケーションのプロパティを読み取る方法を示しています。
+Service Bus .NET API では、メッセージ アプリケーションのプロパティは [BrokeredMessage][] の **Properties** コレクションで伝達されます。 次のコードは、PHP クライアントから受信したメッセージのアプリケーションのプロパティを読み取る方法を示しています。
 
 ```
 if (message.Properties.Keys.Count > 0)
@@ -108,15 +109,15 @@ Console.WriteLine();
 
 | PHP プロパティの型 | .NET プロパティの型 |
 |-------------------|--------------------|
-| integer | int |
-| double | double |
-| boolean | bool |
-| string | string |
-| オブジェクト | オブジェクト |
+| integer           | int                |
+| double            | double             |
+| boolean           | bool               |
+| string            | string             |
+| オブジェクト            | オブジェクト             |
 
-#### Service Bus .NET API から PHP へ
+#### <a name="service-bus-.net-apis-to-php"></a>Service Bus .NET API から PHP へ
 
-[BrokeredMessage][] 型でサポートされるアプリケーションのプロパティの型は、**byte**、**sbyte**、**char**、**short**、**ushort**、**int**、**uint**、**long**、**ulong**、**float**、**double**、**decimal**、**bool**、**Guid**、**string**、**Uri**、**DateTime**、**DateTimeOffset**、**TimeSpan** です。次の .NET コードは、これらのプロパティの各型を使用して [BrokeredMessage][] オブジェクトにプロパティを設定する方法を示しています。
+[BrokeredMessage][] 型でサポートされるアプリケーションのプロパティの型は、**byte**、**sbyte**、**char**、**short**、**ushort**、**int**、**uint**、**long**、**ulong**、**float**、**double**、**decimal**、**bool**、**Guid**、**string**、**Uri**、**DateTime**、**DateTimeOffset**、**TimeSpan** です。 次の .NET コードは、これらのプロパティの各型を使用して [BrokeredMessage][] オブジェクトにプロパティを設定する方法を示しています。
 
 ```
 message.Properties["TestByte"] = (byte)128;
@@ -154,71 +155,71 @@ if ($message->properties != null)
 
 次の表は、.NET プロパティの型と PHP プロパティの型の対応を示しています。
 
-| .NET プロパティの型 | PHP プロパティの型 | メモ |
+| .NET プロパティの型 | PHP プロパティの型 | メモ                                                                                                                                                               |
 |--------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte | integer | - |
-| sbyte | integer | - |
-| char | Char | Proton-PHP クラス |
-| short | integer | - |
-| ushort | integer | - |
-| int | integer | - |
-| uint | Integer | - |
-| long | integer | - |
-| ulong | integer | - |
-| float | double | - |
-| double | double | - |
-| decimal | string | 現在、Decimal は Proton でサポートされていません。 |
-| bool | boolean | - |
-| Guid | UUID | Proton-PHP クラス |
-| string | string | - |
-| DateTime | integer | - |
-| DateTimeOffset | DescribedType | AMQP 型にマップされる DateTimeOffset.UtcTicks:<type name="datetime-offset" class=restricted source="long"> <descriptor name="com.microsoft:datetime-offset" /></type> |
-| TimeSpan | DescribedType | AMQP 型にマップされる Timespan.Ticks:<type name="timespan" class=restricted source="long"> <descriptor name="com.microsoft:timespan" /></type> |
-| Uri | DescribedType | AMQP 型にマップされる Uri.AbsoluteUri:<type name="uri" class=restricted source="string"> <descriptor name="com.microsoft:uri" /></type> |
+| byte               | integer           | -                                                                                                                                                                     |
+| sbyte              | integer           | -                                                                                                                                                                     |
+| char               | Char              | Proton-PHP クラス                                                                                                                                                    |
+| short              | integer           | -                                                                                                                                                                     |
+| ushort             | integer           | -                                                                                                                                                                     |
+| int                | integer           | -                                                                                                                                                                     |
+| uint               | 整数           | -                                                                                                                                                                     |
+| long               | integer           | -                                                                                                                                                                     |
+| ulong              | integer           | -                                                                                                                                                                     |
+| float              | double            | -                                                                                                                                                                     |
+| double             | double            | -                                                                                                                                                                     |
+| Decimal            | string            | Proton では現在のところ、10 進法はサポートされていません。                                                                                                                     |
+| bool               | boolean           | -                                                                                                                                                                     |
+| Guid               | UUID              | Proton-PHP クラス                                                                                                                                                    |
+| string             | string            | -                                                                                                                                                                     |
+| DateTime           | integer           | -                                                                                                                                                                     |
+| Datetimeoffset     | DescribedType     | AMQP タイプにマッピングされている DateTimeOffset.UtcTicks:<type name="datetime-offset" class=restricted source="long"> <descriptor name="com.microsoft:datetime-offset" /></type> |
+| TimeSpan           | DescribedType     | AMQP タイプにマッピングされている Timespan.Ticks:<type name="timespan" class=restricted source="long"> <descriptor name="com.microsoft:timespan" /></type>                        |
+| Uri                | DescribedType     | AMQP 型にマッピングされている Uri.AbsoluteUri:<type name="uri" class=restricted source="string"> <descriptor name="com.microsoft:uri" /></type>                               |
 
-### 標準のプロパティ
+### <a name="standard-properties"></a>標準のプロパティ
 
 次の表は、Proton-PHP の標準のメッセージ プロパティと [BrokeredMessage][] の標準のメッセージ プロパティの対応を示します。
 
-| Proton-PHP | Service Bus .NET | メモ |
+| Proton-PHP           | Service Bus .NET         | メモ                                                    |
 |----------------------|--------------------------|----------------------------------------------------------|
-| Durable | 該当なし | Service Bus は、持続的なメッセージのみをサポートします。 |
-| 優先順位 | 該当なし | Service Bus は、単一のメッセージの優先度のみをサポートします。 |
-| Ttl | Message.TimeToLive | 変換、Proton-PHP TTL はミリ秒単位で定義されます。 |
-| first\_acquirer | - | - |
-| delivery\_count | - | - |
-| Id | Message.Id | - |
-| user\_id | - | - |
-| Address | Message.To | - |
-| Subject | Message.Label | - |
-| reply\_to | Message.ReplyTo | - |
-| correlation\_id | Message.CorrelationId | - |
-| content\_type | Message.ContentType | - |
-| content\_encoding | 該当なし | - |
-| expiry\_time | Message.ExpiresAtUTC | - |
-| creation\_time | 該当なし | - |
-| group\_id | Message.SessionId | - |
-| group\_sequence | - | - |
-| reply\_to\_group\_id | Message.ReplyToSessionId | - |
-| Format | 該当なし | -
+| Durable              | 該当なし                      | Service Bus は、持続的なメッセージのみをサポートします。          |
+| 優先順位             | 該当なし                      | Service Bus は、単一のメッセージの優先度のみをサポートします。 |
+| Ttl                  | Message.TimeToLive       | 変換、Proton-PHP TTL はミリ秒単位で定義されます。   |
+| first\_acquirer      | -                          | -                                                          |
+| delivery\_count      | -                          | -                                                          |
+| ID                   | Message.Id               | -                                                          |
+| user\_id             | -                          | -                                                          |
+| Address              | Message.To               | -                                                          |
+| [件名]              | Message.Label            | -                                                          |
+| reply\_to            | Message.ReplyTo          | -                                                          |
+| correlation\_id      | Message.CorrelationId    | -                                                          |
+| content\_type        | Message.ContentType      | -                                                          |
+| content\_encoding    | 該当なし                      | -                                                          |
+| expiry\_time         | Message.ExpiresAtUTC     | -                                                          |
+| creation\_time       | 該当なし                      | -                                                          |
+| group\_id            | Message.SessionId        | -                                                          |
+| group\_sequence      | -                          | -                                                          |
+| reply\_to\_group\_id | Message.ReplyToSessionId | -                                                          |
+| 形式               | 該当なし                      | -
 
-#### Service Bus .NET API から Proton-PHP へ
+#### <a name="service-bus-.net-apis-to-proton-php"></a>Service Bus .NET API から Proton-PHP へ
 
-| Service Bus .NET | Proton-PHP | メモ |
+| Service Bus .NET        | Proton-PHP                                             | メモ                                                  |
 |-------------------------|--------------------------------------------------------|--------------------------------------------------------|
-| ContentType | Message->content\_type | - |
-| CorrelationId | Message->correlation\_id | - |
-| EnqueuedTimeUtc | Message->annotations[x-opt-enqueued-time] | - |
-| Label | Message->subject | - |
-| MessageId | Message->id | - |
-| ReplyTo | Message->reply\_to | - |
-| ReplyToSessionId | Message->reply\_to\_group\_id | - |
-| ScheduledEnqueueTimeUtc | Message->annotations ["x-opt-scheduled-enqueue-time"] | - |
-| SessionId | Message->group\_id | - |
-| TimeToLive | Message->ttl | Conversion, Proton-PHP TTL is defined in milliseconds. |
-| To | Message->address | - |
+| ContentType             | Message-\>content\_type                                | -                                                        |
+| CorrelationId           | Message-\>correlation\_id                              | -                                                        |
+| EnqueuedTimeUtc         | Message-\>annotations[x-opt-enqueued-time]             | -                                                        |
+| ラベル                   | Message-\>subject                                      | -                                                        |
+| MessageId               | Message-\>id                                           | -                                                        |
+| ReplyTo                 | Message-\>reply\_to                                    | -                                                        |
+| ReplyToSessionId        | Message-\>reply\_to\_group\_id                         | -                                                        |
+| ScheduledEnqueueTimeUtc | Message-\>annotations ["x-opt-scheduled-enqueue-time"] | -                                                        |
+| SessionId               | Message-\>group\_id                                    | -                                                        |
+| TimeToLive              | Message-\>ttl                                          | 変換、Proton-PHP TTL はミリ秒単位で定義されます。 |
+| To                      | Message-\>address                                      | -                                                        |
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 さらに詳しい情報については、 次のリンク先を参照してください。
 
@@ -230,4 +231,8 @@ if ($message->properties != null)
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

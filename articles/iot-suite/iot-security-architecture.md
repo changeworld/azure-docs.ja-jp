@@ -17,9 +17,10 @@
  ms.date="08/02/2016"
  ms.author="yurid"/>
 
+
 [AZURE.INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 IoT ソリューションのセキュリティ保護の詳細については、[IoT デプロイのセキュリティ保護][lnk-security-deployment]に関するページをご覧ください。
 
@@ -33,4 +34,7 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 
 [lnk-security-deployment]: iot-suite-security-deployment.md
 
-<!---HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

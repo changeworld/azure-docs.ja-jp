@@ -1,53 +1,74 @@
 <properties
-	pageTitle="PowerShell を使用した Log Analytics ワークスペースの作成と構成 | Microsoft Azure"
-	description="Log Analytics は、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを使用します。Azure 診断によって生成された場合は、Azure Storage からマシンのデータを収集できます。"
-	services="log-analytics"
-	documentationCenter=""
-	authors="richrundmsft"
-	manager="jochan"
-	editor=""/>
+    pageTitle="PowerShell を使用した Log Analytics ワークスペースの作成と構成 | Microsoft Azure"
+    description="Log Analytics は、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを使用します。 Azure 診断によって生成された場合は、Azure Storage からマシンのデータを収集できます。"
+    services="log-analytics"
+    documentationCenter=""
+    authors="richrundmsft"
+    manager="jochan"
+    editor=""/>
 
 <tags
-	ms.service="log-analytics"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="powershell"
-	ms.topic="article"
-	ms.date="05/16/2016"
-	ms.author="richrund"/>
+    ms.service="log-analytics"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="powershell"
+    ms.topic="article"
+    ms.date="08/15/2016"
+    ms.author="richrund"/>
 
-# PowerShell を使用した Log Analytics の管理
 
-Log Analytics のさまざまな機能は、コマンド ラインまたはスクリプトから [Log Analytics の PowerShell コマンドレット](http://msdn.microsoft.com/library/mt188224.aspx)を使用して実行できます。PowerShell で実行できる作業の例を次に挙げます。
+# <a name="manage-log-analytics-using-powershell"></a>PowerShell を使用した Log Analytics の管理
+
+Log Analytics のさまざまな機能は、コマンド ラインまたはスクリプトから [Log Analytics の PowerShell コマンドレット](http://msdn.microsoft.com/library/mt188224.aspx) を使用して実行できます。  PowerShell で実行できる作業の例を次に挙げます。
 
 + ワークスペースの作成
 + ソリューションの追加と削除
 + 保存されている検索のインポートとエクスポート
++ コンピューター グループの作成
++ Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
++ Linux および Windows コンピューターからのパフォーマンス カウンターの収集
++ Linux コンピューターの syslog からのイベントの収集 
++ Windows イベント ログからのイベントの収集
++ カスタム イベント ログの収集
 + Azure 仮想マシンへの Log Analytics エージェントの追加
 + Azure 診断を使用して収集されたデータを Log Analytics でインデックスするための構成
 
-この記事の 2 つのコード サンプルで紹介しているのは、PowerShell から実行できる機能の一部です。その他の機能については、[Log Analytics の PowerShell コマンドレット リファレンス](http://msdn.microsoft.com/library/mt188224.aspx)を参照してください。
+
+この記事の 2 つのコード サンプルで紹介しているのは、PowerShell から実行できる機能の一部です。  その他の機能については、 [Log Analytics の PowerShell コマンドレット リファレンス](http://msdn.microsoft.com/library/mt188224.aspx) を参照してください。
 
 > [AZURE.NOTE] Log Analytics は以前、オペレーション インサイトと呼ばれていました。そのため、コマンドレットにはその旧称が使用されています。
 
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 
 Log Analytics ワークスペースで PowerShell を使用するには、次の条件を満たしている必要があります。
 
 + Azure サブスクリプション 
 + ご利用の Azure サブスクリプションに関連付けられた Azure Log Analytics ワークスペース
 
-OMS ワークスペースは作成済みであるが、Azure サブスクリプションへの関連付けが済んでいない場合は、Azure ポータルか OMS ポータルの中で関連付けを作成できます。または Get-AzureRMOperationalInsightsLinkTargets コマンドレットと New-AzureRMOperationalInsightsWorkspace コマンドレットを使用して関連付けを行うこともできます。
+OMS ワークスペースを作成してあっても、まだ Azure サブスクリプションに関連付けていない場合は、以下の方法でリンクを作成できます。
 
-## Log Analytics ワークスペースを作成してソリューションと保存した検索条件を追加する
++ Azure ポータルで次の操作を行います。
++ OMS ポータル 
++ Get-AzureRmOperationalInsightsLinkTargets および New-AzureRmOperationalInsightsWorkspace コマンドレットの使用。
+
+
+## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成と構成
 
 以下のサンプル スクリプトは、次の作業の方法を紹介したものです。
 
-1.	ワークスペースを作成する
-2.	利用可能なソリューションをリストする
-3.	ソリューションをワークスペースに追加する
-4.	保存した検索条件をインポートする
-5.	保存した検索条件をエクスポートする
+1.  ワークスペースの作成
+2.  利用可能なソリューションをリストする
+3.  ソリューションをワークスペースに追加する
+4.  保存した検索条件をインポートする
+5.  保存した検索条件をエクスポートする
+6.  コンピューター グループの作成
+7.  Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
+8.  Linux コンピューターからの Logical Disk パフォーマンス カウンター (% Used Inodes、Free Megabytes、% Used Space、Disk Transfers/sec、Disk Reads/sec、Disk Writes/sec) の収集
+9.  Linux コンピューターからの syslog イベントの収集
+10. Windows コンピューターのアプリケーション イベント ログからのエラーおよび警告のイベントの収集
+11. Windows コンピューターからの Memory Available Mbytes パフォーマンス カウンターの収集
+12. カスタム ログの収集 
+
 
 ```
 
@@ -70,11 +91,49 @@ $ExportedSearches = @"
     {        
         "Category":  "My Saved Searches",
         "DisplayName":  "Current Disk Queue Length",
-        "Query":  "Type=Perf ObjectName=LogicalDisk InstanceName="C:" CounterName="Current Disk Queue Length"",
+        "Query":  "Type=Perf ObjectName=LogicalDisk InstanceName=\"C:\" CounterName=\"Current Disk Queue Length\"",
         "Version":  1
     }
 ]
 "@ | ConvertFrom-Json
+
+# Custom Log to collect
+$CustomLog = @"
+{
+    "customLogName": "sampleCustomLog1", 
+    "description": "Example custom log datasource", 
+    "inputs": [
+        { 
+            "location": { 
+            "fileSystemLocations": { 
+                "windowsFileTypeLogPaths": [ "e:\\iis5\\*.log" ], 
+                "linuxFileTypeLogPaths": [ "/var/logs" ] 
+                } 
+            }, 
+        "recordDelimiter": { 
+            "regexDelimiter": { 
+                "pattern": "\\n", 
+                "matchIndex": 0, 
+                "matchIndexSpecified": true, 
+                "numberedGroup": null 
+                } 
+            } 
+        }
+    ], 
+    "extractions": [
+        { 
+            "extractionName": "TimeGenerated", 
+            "extractionType": "DateTime", 
+            "extractionProperties": { 
+                "dateTimeExtraction": { 
+                    "regex": null, 
+                    "joinStringRegex": null 
+                    } 
+                } 
+            }
+        ] 
+    }
+"@
 
 # Create the resource group if needed
 try {
@@ -90,8 +149,8 @@ New-AzureRmOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName
 Get-AzureRmOperationalInsightsIntelligencePacks -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Add solutions
-foreach ($soln in $Solutions) {
-    Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -IntelligencePackName $soln -Enabled $true
+foreach ($solution in $Solutions) {
+    Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -IntelligencePackName $solution -Enabled $true
 }
 
 #List enabled solutions
@@ -106,26 +165,55 @@ foreach ($search in $ExportedSearches) {
 # Export Saved Searches
 (Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName).Value.Properties | ConvertTo-Json 
 
+# Create Computer Group
+New-AzureRmOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId "My Web Servers" -DisplayName "Web Servers" -Category "My Saved Searches" -Query "Computer=""web*"" | distinct Computer" -Version 1
+
+# Enable IIS Log Collection using agent
+Enable-AzureRmOperationalInsightsIISLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
+
+# Linux Perf
+New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Logical Disk" -InstanceName "*"  -CounterNames @("% Used Inodes", "Free Megabytes", "% Used Space", "Disk Transfers/sec", "Disk Reads/sec", "Disk Reads/sec", "Disk Writes/sec") -IntervalSeconds 20  -Name "Example Linux Disk Performance Counters"
+Enable-AzureRmOperationalInsightsLinuxCustomLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
+
+# Linux Syslog
+New-AzureRmOperationalInsightsLinuxSyslogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -Facility "kern" -CollectEmergency -CollectAlert -CollectCritical -CollectError -CollectWarning -Name "Example kernal syslog collection"
+Enable-AzureRmOperationalInsightsLinuxSyslogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
+
+# Windows Event
+New-AzureRmOperationalInsightsWindowsEventDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -EventLogName "Application" -CollectErrors -CollectWarnings -Name "Example Application Event Log"
+
+# Windows Perf
+New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Memory" -InstanceName "*" -CounterName "Available MBytes" -IntervalSeconds 20 -Name "Example Windows Performance Counter"
+
+# Custom Logs
+New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
+
 ```
 
-## Azure 診断で収集されたデータのインデックスを作成するように Log Analytics を構成する 
+## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>Azure 診断で収集されたデータのインデックスを作成するように Log Analytics を構成する 
 
-エージェントを介さずに Azure のリソース (Web ロール、worker ロール、Service Fabric クラスター、ネットワーク セキュリティ グループ、Key Vault、Application Gateway など) を監視するためには、まずリソースの Azure 診断を有効にし、その出力先をストレージ アカウントに設定する必要があります。そのうえで、そのストレージ アカウントからログを収集するように Log Analytics を構成します。
+エージェントを介さずに Azure リソースを監視するには、リソースで Azure 診断を有効にし、ストレージ アカウントへの書き込みを構成する必要があります。 その後、ストレージ アカウントからログを収集するように Log Analytics を構成します。 上記の構成を行う必要があるリソースには、次のようなものがあります。
+
++ クラシック クラウド サービス (Web ロールと worker ロール)
++ Service Fabric クラスター
++ ネットワーク セキュリティ グループ
++ キー コンテナー 
++ アプリケーション ゲートウェイ
 
 PowerShell で特定の Azure サブスクリプションの Log Analytics ワークスペースにアクセスし、別の Azure サブスクリプションからログを収集するように構成することもできます。
 
 以下の例では、次のことを行っています。
 
-1.	既存のストレージ アカウントと Log Analytics でインデックスするデータの収集元とをリストする
-2.	ストレージ アカウントからデータを読み取るための新しい構成を作成する
-3.	新しく作成した構成に変更を加え、インデックスの作成対象となるデータの収集元を追加する
-4.	新しく作成した構成を削除する
+1.  既存のストレージ アカウントと Log Analytics でインデックスするデータの収集元とをリストする
+2.  ストレージ アカウントからデータを読み取るための構成を作成する
+3.  新しく作成した構成に変更を加え、インデックスの作成対象となるデータの収集元を追加する
+4.  新しく作成した構成を削除する
 
 ```
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable" 
 $workspace = (Get-AzureRmOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 
-# Update these two with the storage account resource id and the storage account key for the storage account you want to Log Analytics to  
+# Update these two lines with the storage account resource ID and the storage account key for the storage account you want to Log Analytics to  
 $storageId = "/subscriptions/ec11ca60-1234-491e-5678-0ea07feae25c/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
 $key = "abcd=="
 
@@ -143,8 +231,13 @@ Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Re
 
 ```
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
-- [Log Analytics の PowerShell コマンドレットを参照](http://msdn.microsoft.com/library/mt188224.aspx)し、Log Analytics を構成するための PowerShell の使い方について詳しく調べる。
+- [Log Analytics の PowerShell コマンドレットを参照](http://msdn.microsoft.com/library/mt188224.aspx) し、Log Analytics を構成するための PowerShell の使い方について詳しく調べる。
 
-<!---HONumber=AcomDC_0518_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

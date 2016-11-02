@@ -14,14 +14,16 @@
     ms.date="09/26/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と ScreenSteps の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-screensteps"></a>チュートリアル: Azure Active Directory と ScreenSteps の統合
   
-このチュートリアルの目的は、Azure と ScreenSteps の統合を示すことです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルの目的は、Azure と ScreenSteps の統合を示すことです。  
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   ScreenSteps テナント
   
-このチュートリアルを終了すると、ScreenSteps に割り当てた Azure AD ユーザーは、ScreenSteps 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを終了すると、ScreenSteps に割り当てた Azure AD ユーザーは、ScreenSteps 企業サイト (サービス プロバイダーが開始したサインオン) で、または「 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -30,142 +32,146 @@
 3.  ユーザー プロビジョニングの構成
 4.  ユーザーの割り当て
 
-![シナリオ](./media/active-directory-saas-screensteps-tutorial/IC778516.png "シナリオ")
-##ScreenSteps のアプリケーション統合の有効化
+![シナリオ](./media/active-directory-saas-screensteps-tutorial/IC778516.png "Scenario")
+##<a name="enabling-the-application-integration-for-screensteps"></a>ScreenSteps のアプリケーション統合の有効化
   
 このセクションでは、ScreenSteps のアプリケーション統合を有効にする方法を説明します。
 
-###ScreenSteps のアプリケーション統合を有効にするには、次の手順に従います。
+###<a name="to-enable-the-application-integration-for-screensteps,-perform-the-following-steps:"></a>ScreenSteps のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
 
-    ![Active Directory](./media/active-directory-saas-screensteps-tutorial/IC700993.png "Active Directory")
+    ![[Active Directory]](./media/active-directory-saas-screensteps-tutorial/IC700993.png "Active Directory")
 
 2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
 3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![アプリケーション](./media/active-directory-saas-screensteps-tutorial/IC700994.png "アプリケーション")
+    ![[アプリケーション]](./media/active-directory-saas-screensteps-tutorial/IC700994.png "Applications")
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![アプリケーションの追加](./media/active-directory-saas-screensteps-tutorial/IC749321.png "アプリケーションの追加")
+    ![[アプリケーションの追加]](./media/active-directory-saas-screensteps-tutorial/IC749321.png "Add application")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-screensteps-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-screensteps-tutorial/IC749322.png "Add an application from gallerry")
 
 6.  **検索ボックス**に、「**ScreenSteps**」と入力します。
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-screensteps-tutorial/IC778517.png "アプリケーション ギャラリー")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-screensteps-tutorial/IC778517.png "Application gallery")
 
 7.  結果ウィンドウで **[ScreenSteps]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![ScreenSteps](./media/active-directory-saas-screensteps-tutorial/IC778518.png "ScreenSteps")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>シングル サインオンの構成
   
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ScreenSteps で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure クラシック ポータルの **ScreenSteps** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **ScreenSteps** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778519.png "Configure single sign-on")
 
-2.  **[ユーザーの ScreenSteps へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  **[ユーザーの ScreenSteps へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778520.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページの **[ScreenSteps サインイン URL]** ボックスに、"*https://\<tenant-name>.ScreenSteps.com*" というパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、**[ScreenSteps サインイン URL]** ボックスに、"*https://\<テナント名\>.ScreenSteps.com*" のパターンを使用して URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-screensteps-tutorial/IC778521.png "アプリケーション URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-screensteps-tutorial/IC778521.png "Configure app URL")
 
-4.  **[ScreenSteps でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
+4.  **[ScreenSteps でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
 
     ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778522.png "Configure single sign-on")
 
 5.  別の Web ブラウザー ウィンドウで、ScreenSteps 企業サイトに管理者としてログインします。
 
-6.  **[Account Management]** をクリックします。
+6.  **[Account Management]**をクリックします。
 
-    ![アカウント管理](./media/active-directory-saas-screensteps-tutorial/IC778523.png "アカウント管理")
+    ![[Account Management]](./media/active-directory-saas-screensteps-tutorial/IC778523.png "Account management")
 
-7.  **[Remote Authentication]** をクリックします。
+7.  **[Remote Authentication]**をクリックします。
 
-    ![リモート認証](./media/active-directory-saas-screensteps-tutorial/IC778524.png "リモート認証")
+    ![[Remote Authentication]](./media/active-directory-saas-screensteps-tutorial/IC778524.png "Remote authentication")
 
-8.  **[Create authentication endpoint]** をクリックします。
+8.  **[Create authentication endpoint]**をクリックします。
 
-    ![リモート認証](./media/active-directory-saas-screensteps-tutorial/IC778525.png "リモート認証")
+    ![[Remote Authentication]](./media/active-directory-saas-screensteps-tutorial/IC778525.png "Remote authentication")
 
 9.  **[Create an Authentication Endpoint]** セクションで、次の手順に従います。
 
-    ![認証エンドポイントの作成](./media/active-directory-saas-screensteps-tutorial/IC778526.png "認証エンドポイントの作成")
+    ![[Create an Authentication Endpoint]](./media/active-directory-saas-screensteps-tutorial/IC778526.png "Create an authentication endpoint")
 
     1.  **[Title]** テキスト ボックスに、タイトルを入力します。
-    2.  **[Mode]** の一覧から **[SAML]** を選択します。
-    3.  **[作成]** をクリックします。
+    2.  **[Mode]** 一覧から **[SAML]** を選択します。
+    3.  **[作成]**をクリックします。
 
 10. **[Remote Authentication Endpoint]** セクションで、次の手順に従います。
 
-    ![リモート認証エンドポイント](./media/active-directory-saas-screensteps-tutorial/IC778527.png "リモート認証エンドポイント")
+    ![[Remote Authentication Endpoint]](./media/active-directory-saas-screensteps-tutorial/IC778527.png "Remote authentication endpoint")
 
-    1.  Azure クラシック ポータルの **[ScreenSteps でのシングル サインオンの構成]** ページで、**[リモート ログイン URL]** 値をコピーして、**[Remote Login URL]** ボックスに貼り付けます。
-    2.  Azure クラシック ポータルの **[ScreenSteps でのシングル サインオンの構成]** ページで、**[リモート ログアウト URL]** 値をコピーして、**[Remote Logout URL]** ボックスに貼り付けます。
-    3.  **[Choose a file]** をクリックし、ダウンロードした証明書をアップロードします。
-    4.  [**更新**] をクリックします。
+    1.  Azure クラシック ポータルの **[ScreenSteps でのシングル サインオンの構成]** ページで、**[リモート ログイン URL]** の値をコピーし、**[Remote Login URL]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルの **[ScreenSteps でのシングル サインオンの構成]** ページで、**[リモート ログアウト URL]** の値をコピーし、**[Remote Logout URL]** ボックスに貼り付けます。
+    3.  **[Choose a file]**をクリックし、ダウンロードした証明書をアップロードします。
+    4.  **[Update]**をクリックします。
 
 11. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778542.png "Configure single sign-on")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが **ScreenSteps** にログインできるようにするには、ユーザーを **ScreenSteps** にプロビジョニングする必要があります。**ScreenSteps** の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが **ScreenSteps** にログインできるようにするには、ユーザーを **ScreenSteps** にプロビジョニングする必要があります。  
+**ScreenSteps**の場合、プロビジョニングは手動で行います。
 
-###ユーザー アカウントを ScreenSteps にプロビジョニングするには、次の手順に従います。
+###<a name="to-provision-a-user-account-to-screensteps,-perform-the-following-steps:"></a>ユーザー アカウントを ScreenSteps にプロビジョニングするには、次の手順に従います。
 
 1.  **ScreenSteps** テナントにログインします。
 
-2.  **[Account Management]** をクリックします。
+2.  **[Account Management]**をクリックします。
 
-    ![アカウント管理](./media/active-directory-saas-screensteps-tutorial/IC778523.png "アカウント管理")
+    ![[Account Management]](./media/active-directory-saas-screensteps-tutorial/IC778523.png "Account management")
 
-3.  **[ユーザー]** をクリックします。
+3.  **[ユーザー]**をクリックします。
 
-    ![Users](./media/active-directory-saas-screensteps-tutorial/IC778544.png "Users")
+    ![[ユーザー]](./media/active-directory-saas-screensteps-tutorial/IC778544.png "Users")
 
-4.  **[Create a user]** をクリックします。
+4.  **[Create a user]**をクリックします。
 
-    ![すべてのユーザー](./media/active-directory-saas-screensteps-tutorial/IC778545.png "すべてのユーザー")
+    ![すべてのユーザー](./media/active-directory-saas-screensteps-tutorial/IC778545.png "All Users")
 
 5.  **[User Role]** の一覧からユーザーのロールを選択します。
 
-6.  [User Role] セクションで、プロビジョニングする有効な AAD アカウントの**姓**、**名**、**電子メール**、**ログイン**、**パスワード**、および**確認用パスワード**を該当するテキスト ボックスに入力します。
+6.  [User Role] セクションで、プロビジョニングする有効な AAD アカウントの**姓**、**名**、**電子メール**、**ログイン**、**パスワード**、**確認用パスワード**を該当するボックスに入力します。
 
-    ![新しいユーザー](./media/active-directory-saas-screensteps-tutorial/IC778546.png "新しいユーザー")
+    ![新しいユーザー](./media/active-directory-saas-screensteps-tutorial/IC778546.png "New user")
 
 7.  [Groups] セクションで、**[Authentication Group (SAML)]** を選択し、**[Create User]** をクリックします。
 
-    ![グループ](./media/active-directory-saas-screensteps-tutorial/IC778547.png "グループ")
+    ![グループ](./media/active-directory-saas-screensteps-tutorial/IC778547.png "Groups")
 
->[AZURE.NOTE]ScreenSteps から提供されている他の ScreenSteps ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE]ScreenSteps から提供されている他の ScreenSteps ユーザー アカウント作成ツールまたは  API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>ユーザーの割り当て
   
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###ユーザーを ScreenSteps に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-screensteps,-perform-the-following-steps:"></a>ユーザーを ScreenSteps に割り当てるには、次の手順に従います。
 
 1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **ScreenSteps** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![ユーザーの割り当て](./media/active-directory-saas-screensteps-tutorial/IC773094.png "ユーザーの割り当て")
+    ![[ユーザーの割り当て]](./media/active-directory-saas-screensteps-tutorial/IC773094.png "Assign users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
-    ![ユーザーの割り当て](./media/active-directory-saas-screensteps-tutorial/IC778548.png "ユーザーの割り当て")
+    ![[ユーザーの割り当て]](./media/active-directory-saas-screensteps-tutorial/IC778548.png "Assign users")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

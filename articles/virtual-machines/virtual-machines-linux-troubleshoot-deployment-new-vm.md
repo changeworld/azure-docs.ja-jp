@@ -17,15 +17,16 @@
   ms.date="09/09/2016"
   ms.author="cjiang"/>
 
-# Azure での新しい Linux 仮想マシンの作成に関する Resource Manager デプロイメントの問題のトラブルシューティング
+
+# <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Azure での新しい Linux 仮想マシンの作成に関する Resource Manager デプロイメントの問題のトラブルシューティング
 
 [AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## 監査ログの収集
+## <a name="collect-audit-logs"></a>監査ログの収集
 
-トラブルシューティングを開始するには、監査ログを収集して問題に関連するエラーを特定します。このプロセスの詳細については、次のリンクをご覧ください。
+トラブルシューティングを開始するには、監査ログを収集して問題に関連するエラーを特定します。 このプロセスの詳細については、次のリンクをご覧ください。
 
 [Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)
 
@@ -35,7 +36,7 @@
 
 [AZURE.INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**Y:** OS が一般化された Linux であり、一般化された設定でアップロード/キャプチャされた場合、エラーは発生しません。同様に、OS が特殊化された Linux であり、特殊化された設定でアップロード/キャプチャされた場合、エラーは発生しません。
+**Y:** OS が一般化された Linux であり、一般化された設定でアップロード/キャプチャされた場合、エラーは発生しません。 同様に、OS が特殊化された Linux であり、特殊化された設定でアップロード/キャプチャされた場合、エラーは発生しません。
 
 **アップロード エラー:**
 
@@ -45,19 +46,19 @@
 
 **解決策:**
 
-これらのエラーを解決するには、OS と同じ設定 (一般化/特殊化) を使用して、オンプレミスで使用可能な元の VHD をアップロードします。一般化された OS としてアップロードするには、まずプロビジョニング解除を必ず実行してください。
+これらのエラーを解決するには、OS と同じ設定 (一般化/特殊化) を使用して、オンプレミスで使用可能な元の VHD をアップロードします。 一般化された OS としてアップロードするには、まずプロビジョニング解除を必ず実行してください。
 
 **キャプチャ エラー:**
 
 **N<sup>3</sup>:** OS が一般化された Linux であり、特殊化された Linux としてキャプチャされた場合、一般化された Linux としてマークされた元の VM を使用できないため、プロビジョニング タイムアウト エラーが発生します。
 
-**N<sup>4</sup>:** OS が特殊化された Linux であり、一般化された Linux としてキャプチャされた場合、新しい VM は元のコンピューター名、ユーザー名、パスワードを使用して実行されるため、プロビジョニング エラー (プロビジョニング失敗) が発生します。また、元の VM は特殊化としてマークされているので使用できません。
+**N<sup>4</sup>:** OS が特殊化された Linux であり、一般化された Linux としてキャプチャされた場合、新しい VM は元のコンピューター名、ユーザー名、パスワードを使用して実行されるため、プロビジョニング エラー (プロビジョニング失敗) が発生します。 また、元の VM は特殊化としてマークされているので使用できません。
 
 **解決策:**
 
-これらのエラーを解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で[現在の VHD からイメージをキャプチャし直します](virtual-machines-linux-capture-image.md)。
+これらのエラーを解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で [現在の VHD からイメージをキャプチャし直します](virtual-machines-linux-capture-image.md) 。
 
-## 問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
+## <a name="issue:-custom/-gallery/-marketplace-image;-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
 このエラーは、新しい VM 要求が、要求されている VM サイズをサポートできないか、要求に対応するための使用可能な空き領域がないクラスターに固定されている場合に発生します。
 
 **原因 1:** クラスターが要求された VM サイズをサポートできない。
@@ -66,9 +67,10 @@
 
 - VM サイズを小さくして要求を再試行します。
 - 要求した VM のサイズを変更できない場合は、次の手順を実行します。
-  - 可用性セットのすべての VM を停止します。**[リソース グループ]**、*対象のリソース グループ*、**[リソース]**、*対象の可用性セット*、**[Virtual Machines]**、*対象の仮想マシン*、**[停止]** の順にクリックします。
+  - 可用性セットのすべての VM を停止します。
+  **[リソース グループ]** > *対象のリソース グループ* > **[リソース]** > *対象の可用性セット* > **[Virtual Machines]** > *対象の仮想マシン* > **[停止]** の順にクリックします。
   - すべての VM が停止したら、目的のサイズで新しい VM を作成します。
-  - 新しい VM を起動してから、停止している各 VM を選択し、**[起動]** をクリックします。
+  - 新しい VM を起動してから、停止している各 VM を選択し、 **[起動]**をクリックします。
 
 **原因 2:** クラスターに空きリソースがない。
 
@@ -79,7 +81,11 @@
   - 新しい VM を (同じリージョンの) 別の可用性セットに作成します。
   - 新しい VM を同じ仮想ネットワークに追加します。
 
-## 次のステップ
-Azure で停止していた Linux VM の再起動または既存の Linux VM のサイズ変更に問題が発生する場合は、「[Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング](virtual-machines-linux-restart-resize-error-troubleshooting.md)」を参照してください。
+## <a name="next-steps"></a>次のステップ
+Azure で停止していた Linux VM の再起動または既存の Linux VM のサイズ変更に問題が発生する場合は、「 [Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング](virtual-machines-linux-restart-resize-error-troubleshooting.md)」を参照してください。
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

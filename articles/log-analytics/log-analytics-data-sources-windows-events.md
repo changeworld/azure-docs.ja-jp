@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Log Analytics での Windows イベント ログ | Microsoft Azure"
-   description="Windows イベント ログは、Log Analytics で使用される最も一般的なデータ ソースの 1 つです。この記事では、Windows イベント ログの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
+   description="Windows イベント ログは、Log Analytics で使用される最も一般的なデータ ソースの 1 つです。  この記事では、Windows イベント ログの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
    services="log-analytics"
    documentationCenter=""
    authors="bwren"
@@ -12,53 +12,54 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/02/2016"
+   ms.date="10/18/2016"
    ms.author="bwren" />
 
-# Log Analytics での Windows イベント ログのデータ ソース
 
-Windows イベント ログは、Windows エージェントで使用される最も一般的な[データソース](log-analytics-data-sources.md)の 1 つです。Windows イベント ログは、ほとんどのアプリケーションで情報やエラーに関するログを記録するために使用されます。システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
+# <a name="windows-event-log-data-sources-in-log-analytics"></a>Log Analytics での Windows イベント ログのデータ ソース
 
-![Windows イベント](media/log-analytics-data-sources-windows-events/overview.png)
+Windows イベント ログは、Windows エージェントで使用される最も一般的な[データソース](log-analytics-data-sources.md)の 1 つです。Windows イベント ログは、ほとんどのアプリケーションで情報やエラーに関するログを記録するために使用されます。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
 
-## Windows イベント ログの構成
+![Windows イベント](media/log-analytics-data-sources-windows-events/overview.png)     
 
-Windows イベント ログは、[Log Analytics の [設定] の [データ] メニュー](log-analytics-data-sources.md/configuring-data-sources)から構成します。
+## <a name="configuring-windows-event-logs"></a>Windows イベント ログの構成
 
-Log Analytics は、設定で指定されている Windows イベント ログからのイベントのみを収集します。新しいログを追加するには、追加するログの名前を入力して **+** をクリックします。各ログについて、選択した重大度レベルのイベントのみが収集されます。各ログで収集する重大度レベルにチェックマークを入れます。イベントをフィルター処理するための追加条件を指定することはできません。
+Windows イベント ログは、[Log Analytics の [設定] の [データ] メニュー](log-analytics-data-sources.md#configuring-data-sources)から構成します。
+
+Log Analytics は、設定で指定されている Windows イベント ログからのイベントのみを収集します。  新しいログを追加するには、追加するログの名前を入力して **+**から構成します。  各ログについて、選択した重大度レベルのイベントのみが収集されます。  各ログで収集する重大度レベルにチェックマークを入れます。  イベントをフィルター処理するための追加条件を指定することはできません。
 
 ![Windows イベントの構成](media/log-analytics-data-sources-windows-events/configure.png)
 
 
-## データ収集
+## <a name="data-collection"></a>データ収集
 
-Log Analytics は、監視対象のイベントが作成された時点で、選択した重大度に一致するイベントをそのイベント ログから収集します。エージェントは、収集元の場所を各イベント ログに記録します。エージェントが一定時間オフラインになった場合、Log Analytics は中止した箇所からイベントの収集を再開します。オフラインの間に作成されたイベントも収集されます。
+Log Analytics は、監視対象のイベントが作成された時点で、選択した重大度に一致するイベントをそのイベント ログから収集します。  エージェントは、収集元の場所を各イベント ログに記録します。  エージェントが一定時間オフラインになった場合、Log Analytics は中止した箇所からイベントの収集を再開します。オフラインの間に作成されたイベントも収集されます。
 
 
-## Windows イベント レコードのプロパティ
+## <a name="windows-event-records-properties"></a>Windows イベント レコードのプロパティ
 
 Windows イベント レコードの型は **Event** になり、次の表に示すプロパティがあります。
 
 | プロパティ | 説明 |
 |:--|:--|
-| Computer | イベント収集元のコンピューターの名前。 |
-| EventCategory | イベントのカテゴリ。 |
-| EventData | 元の形式のすべてのイベント データ。 |
-| EventID | イベントの番号。 |
-| EventLevel | 数値形式で示すイベントの重大度。 |
-| EventLevelName | テキスト形式で示すイベントの重大度。 |
-| EventLog | イベント収集元のイベント ログの名前。 |
-| ParameterXml | XML 形式でのイベント パラメーターの値。 |
-| ManagementGroupName | SCOM エージェントの管理グループの名前。その他のエージェントの場合、これは AOI-<workspace ID> です |
+| Computer            | イベント収集元のコンピューターの名前。 |
+| EventCategory       | イベントのカテゴリ。 |
+| EventData           | 元の形式のすべてのイベント データ。 |
+| EventID             | イベントの番号。 |
+| EventLevel          | 数値形式で示すイベントの重大度。 |
+| EventLevelName      | テキスト形式で示すイベントの重大度。 |
+| EventLog            | イベント収集元のイベント ログの名前。 |
+| ParameterXml        | XML 形式でのイベント パラメーターの値。 |
+| ManagementGroupName | SCOM エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-<workspace ID> です |
 | RenderedDescription | イベントの説明とパラメーターの値 |
-| Source | イベントのソース。 |
-| SourceSystem | イベント収集元のエージェントの種類。<br> OpsManager – Windows エージェント、直接接続または SCOM <br> Linux – すべての Linux エージェント <br> AzureStorage – Azure 診断 |
-| TimeGenerated | イベントが Windows で作成された日付と時刻。 |
-| UserName | イベントのログを記録したアカウントのユーザー名。 |
+| Source              | イベントのソース。 |
+| SourceSystem  | イベント収集元のエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または SCOM <br>  Linux – すべての Linux エージェント  <br> AzureStorage – Azure 診断 |
+| TimeGenerated       | イベントが Windows で作成された日付と時刻。 |
+| UserName            | イベントのログを記録したアカウントのユーザー名。 |
 
 
 
-## Windows イベントのログ検索
+## <a name="log-searches-with-windows-events"></a>Windows イベントのログ検索
 
 次の表は、Windows イベント レコードを取得するログ検索のさまざまな例をまとめたものです。
 
@@ -69,11 +70,14 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 | Type=Event &#124; Measure count() by Source | ソース別の Windows イベントの数。 |
 | Type=Event EventLevelName=error &#124; Measure count() by Source | ソース別の Windows エラー イベントの数。 |
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
-- 分析のために別の[データ ソース](log-analytics-data-sources.md)を収集するように Log Analytics を構成します。
-- [ログ検索](log-analytics-log-searches.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。  
-- [カスタム フィールド](log-analytics-custom-fields.md)を使用し、イベント レコードを個別のフィールドに解析します。
-- お使いの Windows エージェントから[パフォーマンス カウンターの収集](log-analytics-data-sources-performance-counters.md)を構成します。
+- 分析のために別の [データ ソース](log-analytics-data-sources.md) を収集するように Log Analytics を構成します。
+- [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
+- [カスタム フィールド](log-analytics-custom-fields.md) を使用し、イベント レコードを個別のフィールドに解析します。
+- お使いの Windows エージェントから [パフォーマンス カウンターの収集](log-analytics-data-sources-performance-counters.md) を構成します。
 
-<!---HONumber=AcomDC_0504_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

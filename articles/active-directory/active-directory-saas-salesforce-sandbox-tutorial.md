@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Salesforce Sandbox の統合 | Microsoft Azure"
-    description="Azure Active Directory で Salesforce Sandbox を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Salesforce Sandbox | Microsoft Azure"
+    description="Learn how to use Salesforce Sandbox with Azure Active Directory to enable single sign-on, automated provisioning, and more!." 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -12,208 +12,215 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="08/12/2016" 
+    ms.date="10/28/2016" 
     ms.author="jeedes" />
 
 
-#チュートリアル: Azure Active Directory と Salesforce Sandbox の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=521878)をクリックしてください。
-  
-このチュートリアルでは、Azure と Salesforce Sandbox の統合について説明します。  
-Sandbox を使用すると、Salesforce 運用組織内のデータとアプリケーションを侵害することなく、多様な用途 (開発、テスト、トレーニングなど) ごとに別環境に組織の複数コピーを作成できます。  
-詳細については、「[サンドボックスの概要](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)」をご覧ください。
-  
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
--   有効な Azure サブスクリプション
--   Salesforce.com のサンドボックス
+#<a name="tutorial:-azure-active-directory-integration-with-salesforce-sandbox"></a>Tutorial: Azure Active Directory integration with Salesforce Sandbox
+>[AZURE.TIP]For feedback, click [here](http://go.microsoft.com/fwlink/?LinkId=521878).
   
-まだ Salesforce.com 内に有効なサンドボックスがない場合、Salesforce に連絡する必要があります。
+The objective of this tutorial is to show the integration of Azure and Salesforce Sandbox.  
+Sandboxes give you the ability to create multiple copies of your organization in separate environments for a variety of purposes, such as development, testing, and training, without compromising the data and applications in your Salesforce production organization.  
+For more details, see [Sandbox Overview](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial assumes that you already have the following items:
 
-1.  Salesforce Sandbox のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ドメインの有効化
-4.  ユーザー プロビジョニングの構成
-5.  ユーザーの割り当て
-
-![シナリオ](./media/active-directory-saas-salesforce-sandbox-tutorial/IC769571.png "シナリオ")
-##Salesforce Sandbox のアプリケーション統合の有効化
+-   A valid Azure subscription
+-   A sandbox in Salesforce.com
   
-このセクションでは、Salesforce Sandbox のアプリケーション統合を有効にする方法について説明します。
+If you don’t have a valid sandbox in Salesforce.com yet, you need to contact Salesforce.
+  
+The scenario outlined in this tutorial consists of the following building blocks:
 
-###Salesforce Sandbox のアプリケーション統合を有効にするには、次の手順に従います。
+1.  Enabling the application integration for Salesforce Sandbox
+2.  Configuring single sign-on
+3.  Enabling your domain
+4.  Configuring user provisioning
+5.  Assigning users
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+![Scenario](./media/active-directory-saas-salesforce-sandbox-tutorial/IC769571.png "Scenario")
+##<a name="enabling-the-application-integration-for-salesforce-sandbox"></a>Enabling the application integration for Salesforce Sandbox
+  
+The objective of this section is to outline how to enable the application integration for Salesforce sandbox.
+
+###<a name="to-enable-the-application-integration-for-salesforce-sandbox,-perform-the-following-steps:"></a>To enable the application integration for Salesforce sandbox, perform the following steps:
+
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-salesforce-sandbox-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-salesforce-sandbox-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-salesforce-sandbox-tutorial/IC700994.png "Applications")
 
-4.  **アプリケーション ギャラリー**を開くには、**[アプリケーションの追加]**、**[組織で使用するアプリケーションを追加]** の順にクリックします。
+4.  To open the **Application Gallery**, click **Add An App**, and then click **Add an application for my organization to use**.
 
-    ![どの操作を行いますか。](./media/active-directory-saas-salesforce-sandbox-tutorial/IC700995.png "どの操作を行いますか。")
+    ![What do you want to do?](./media/active-directory-saas-salesforce-sandbox-tutorial/IC700995.png "What do you want to do?")
 
-5.  **検索ボックス**に「**Salesforce Sandbox**」と入力します。
+5.  In the **search box**, type **Salesforce Sandbox**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-salesforce-sandbox-tutorial/IC710978.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-salesforce-sandbox-tutorial/IC710978.png "Application Gallery")
 
-6.  結果ウィンドウで **[Salesforce Sandbox]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+6.  In the results pane, select **Salesforce Sandbox**, and then click **Complete** to add the application.
 
     ![Salesforce Sandbox](./media/active-directory-saas-salesforce-sandbox-tutorial/IC746474.png "Salesforce Sandbox")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Salesforce に対する認証を行えるようにする方法について説明します。
+The objective of this section is to outline how to enable users to authenticate to Salesforce with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **Salesforce Sandbox** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Salesforce Sandbox** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On** dialog.
 
     ![Configure single sign-on](./media/active-directory-saas-salesforce-sandbox-tutorial/IC749323.png "Configure single sign-on")
 
-2.  **[ユーザーの Salesforce Sandbox へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Salesforce Sandbox** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Salesforce Sandbox](./media/active-directory-saas-salesforce-sandbox-tutorial/IC746479.png "Salesforce Sandbox")
 
-3.  **[アプリケーション URL の構成]** ページで、**[サインオン URL]** ボックスに、`http://company.my.salesforce.com` パターンの URL を入力し、**[次へ]** をクリックします。
+3.  On the **Configure App URL** page, in the **Sign On URL** textbox, type your URL using the following pattern `http://company.my.salesforce.com`, and then click **Next**.
 
-    ![アプリ URL の構成](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781022.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781022.png "Configure App URL")
 
-4. ディレクトリで別の Salesforce Sandbox インスタンスのシングル サイオンを既に構成している場合は、**[サインオン URL]** と同じ値を使用するように **[識別子]** も構成する必要があります。**[識別子]** フィールドは、ダイアログの **[アプリケーション URL の構成]** ページで **[詳細設定の表示]** チェック ボックスをオンにすることで表示できます。
+4. If you have already configured single sign-on for another Salesforce Sandbox instance in your directory, then you must also configure the **Identifier** to have the same value as the **Sign on URL**. The **Identifier** field can be found by checking the **Show advanced settings** checkbox on the **Configure App URL** page of the dialog.
 
-4.  **[Salesforce Sandbox でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
+4.  On the **Configure single sign-on at Salesforce Sandbox** page, click **Download certificate**, and then save the certificate file on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781023.png "Configure Single Sign-On")
 
-5.  別の Web ブラウザーのウィンドウで、Salesforce Sandbox 企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your Salesforce sandbox as an administrator.
 
-6.  上部のメニューで **[セットアップ]** をクリックします。
+6.  In the menu on the top, click **Setup**.
 
-    ![セットアップ](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781024.png "セットアップ")
+    ![Setup](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781024.png "Setup")
 
-7.  左側のナビゲーション ウィンドウで、**[セキュリティ コントロール]** をクリックし、**[シングル サインオンの設定]** をクリックします。
+7.  In the navigation pane on the left, click **Security Controls**, and then click **Single Sign-On Settings**.
 
-    ![シングル サインオンの設定](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781025.png "シングル サインオンの設定")
+    ![Single Sign-On Settings](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781025.png "Single Sign-On Settings")
 
-8.  [シングル サインオンの設定] セクションで、次の手順に従います。
+8.  On the Single Sign-On Settings section, perform the following steps:
 
-    ![シングル サインオンの設定](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781026.png "シングル サインオンの設定")
+    ![Single Sign-On Settings](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781026.png "Single Sign-On Settings")
 
-    a.**[SAML Enabled]** を選択します。
+    a.  Select **SAML Enabled**.
     
-    b.**[新規]** をクリックします。
+    b.  Click **New**.
 
-9.  [SAML シングル サインオンの設定] セクションで、次の手順に従います。
+9.  On the SAML Single Sign-On Settings section, perform the following steps:
 
-    ![SAML シングル サインオンの設定](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781027.png "SAML シングル サインオンの設定")
+    ![SAML Single Sign-On Settings](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781027.png "SAML Single Sign-On Settings")
 
-    a.[名前] ボックスに、構成の名前を入力します (例: *SPSSOWAAD\_Test*)。
+    a.  In the Name textbox, type the name of the configuration (e.g.: *SPSSOWAAD\_Test*).
     
-    b.Azure クラシック ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[発行者の URL]** の値をコピーし、**[発行者]** ボックスに貼り付けます。
+    b.  In the Azure classic portal, on the **Configure single sign-on at Salesforce Sandbox** dialogue page, copy the **Issuer URL** value, and then paste it into the **Issuer** textbox.
     
-    c.これがディレクトリに追加する最初の Salesforce Sandbox インスタンスの場合は、**[Entity Id (エンティティ ID)]** ボックスに「**https://test.salesforce.com**」と入力します。Salesforce Sandbox のインスタンスを既に追加している場合は、**[Entity Id (エンティティ ID)] に次の形式のサインオン URL** を**入力します**。`http://company.my.salesforce.com`
+    c.  In the **Entity Id** textbox, type **https://test.salesforce.com** if this is the first Salesforce Sandbox instance that you are adding to your directory. If you have already added an instance of Salesforce Sandbox, then for the **Entity ID** type in the **Sign On URL**, which should be in this format: `http://company.my.salesforce.com`
     
-    d.**[参照]** をクリックして、ダウンロードした証明書をアップロードします。
+    d.  Click **Browse** to upload the downloaded certificate.
     
-    e.**[SAML ID の種類]** では、**[アサーションには、ユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
+    e.  As **SAML Identity Type**, select **Assertion contains the Federation ID from the User object**.
     
-    f.**[SAML ID の場所]** では、**[ID は Subject ステートメントの NameIdentifier 要素にあります]** を選択します。
+    f.  As **SAML Identity Location**, select **Identity is in the NameIdentifier element of the Subject statement**.
     
-    g.Azure クラシック ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーし、**[ID プロバイダーのログイン URL]** ボックスに貼り付けます。
+    g.  In the Azure classic portal, on the **Configure single sign-on at Salesforce Sandbox** dialogue page, copy the **Remote Login URL** value, and then paste it into the **Identity Provider Login URL** textbox.
     
-    h.SFDC は SAML ログアウトをサポートしていません。回避策として、**[Identity Provider Logout URL (ID プロバイダー ログアウト URL)]** ボックスに「https://login.windows.net/common/wsfederation?wa=wsignout1.0」を貼り付けます。
+    h.  SFDC does not support SAML logout.  As a workaround, paste 'https://login.windows.net/common/wsfederation?wa=wsignout1.0' it into the **Identity Provider Logout URL** textbox.
     
-    i.**[サービス プロバイダーが開始した要求のバインド]** では、**[HTTP POST]** を選択します。
+    i.  As **Service Provider Initiated Request Binding**, select **HTTP POST**.
     
-    j.**[保存]** をクリックします。
+    j. Click **Save**.
 
-10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781028.png "Configure Single Sign-On")
 
-##ドメインの有効化
+##<a name="enabling-your-domain"></a>Enabling your domain
   
-このセクションでは、ドメインが既に作成されていることを前提としています。詳細については、「[ドメイン名の定義](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US)」をご覧ください。
+This section assumes that you already have created a domain.  
+For more details, see [Defining Your Domain Name](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US).
 
-###ドメインを有効にするには、次の手順に従います。
+###<a name="to-enable-your-domain,-perform-the-following-steps:"></a>To enable your domain, perform the following steps:
 
-1.  左側のナビゲーション ウィンドウで、**[ドメイン管理]** をクリックし、**[マイ ドメイン]** をクリックします。
+1.  In the left navigation pane, click **Domain Management**, and then click **My Domain.**
 
-    ![マイ ドメイン](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781029.png "マイ ドメイン")
+    ![My Domain](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781029.png "My Domain")
 
-    >[AZURE.NOTE]ドメインが正しく構成されていることを確認します。
+    >[AZURE.NOTE]Please make sure that your domain has been configured correctly.
 
-2.  **[Login Page Settings (ログイン ページ設定)]** セクションで、**[編集]** をクリックし、**[認証サービス]** で前のセクションの [SAML シングル サインオンの設定] の名前を選択して、最後に **[保存]** をクリックします。
+2.  In the **Login Page Settings** section, click **Edit**, then, as **Authentication Service**, select the name of the SAML Single Sign-On Setting from the previous section, and finally click **Save**.
 
-    ![マイ ドメイン](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781030.png "マイ ドメイン")
+    ![My Domain](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781030.png "My Domain")
   
-ドメインを構成するとすぐに、ユーザーはドメインの URL を使用して Salesforce Sandbox にログインできるようになります。URL の値を取得するには、前のセクションで作成した SSO プロファイルをクリックします。
-##ユーザー プロビジョニングの構成
+As soon as you have a domain configured, your users should use the domain URL to login to the Salesforce sandbox.  
+To get the value of the URL, click the SSO profile you have created in the previous section.
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-このセクションでは、Active Directory のユーザー アカウントのユーザー プロビジョニングを Salesforce Sandbox に対して有効にする方法について説明します。
+The objective of this section is to outline how to enable user provisioning of Active Directory user accounts to Salesforce Sandbox.
 
-###ユーザー プロビジョニングを構成するには、次の手順に従います。
+###<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
 
-1.  Salesforce のポータルの上部にあるナビゲーション バーで、自分の名前を選択し、ユーザー メニューを展開します。
+1.  In the Salesforce portal, in the top navigation bar, select your name to expand your user menu:
 
-    ![個人の設定](./media/active-directory-saas-salesforce-sandbox-tutorial/IC698773.png "個人の設定")
+    ![My Settings](./media/active-directory-saas-salesforce-sandbox-tutorial/IC698773.png "My Settings")
 
-2.  ユーザー メニューの **[個人の設定]** をクリックして、**[個人の設定]** ページを開きます。
+2.  From your user menu, select **My Settings** to open your **My Settings** page.
 
-3.  左側のウィンドウで、**[個人用]** をクリックして個人用セクションを展開し、**[個人のセキュリティ トークンのリセット]** をクリックします。
+3.  In the left pane, click **Personal** to expand the Personal section, and then click **Reset My Security Token**:
 
-    ![個人の設定](./media/active-directory-saas-salesforce-sandbox-tutorial/IC698774.png "個人の設定")
+    ![My Settings](./media/active-directory-saas-salesforce-sandbox-tutorial/IC698774.png "My Settings")
 
-4.  **[個人のセキュリティ トークンのリセット]** ページで、**[セキュリティ トークンのリセット]** をクリックして、Salesforce.com のセキュリティ トークンが記載された電子メールを要求します。
+4.  On the **Reset My Security Token** page, click **Reset Security Token** to request an email that contains your Salesforce.com security token.
 
-    ![新しいトークン](./media/active-directory-saas-salesforce-sandbox-tutorial/IC698776.png "新しいトークン")
+    ![New Token](./media/active-directory-saas-salesforce-sandbox-tutorial/IC698776.png "New Token")
 
-5.  メールの受信トレイに Salesforce.com から "**salesforce.com.com security confirmation**" という件名のメールが届いていることを確認します。
+5.  Check your email inbox for an email from Salesforce.com with “**salesforce.com.com security confirmation**” as subject.
 
-6.  そのメールを確認し、セキュリティ トークンの値をコピーします。
+6.  Review this email and copy the security token value.
 
-7.  Azure クラシック ポータルの **Salesforce Sandbox** アプリケーション統合ページで、**[ユーザー プロビジョニングの構成]** をクリックして **[ユーザー プロビジョニングの構成]** ダイアログを開きます。
+7.  In the Azure classic portal, on the **salesforce Sandbox** application integration page, click **Configure user provisioning** to open the **Configure User Provisioning** dialog.
 
-    ![ユーザー プロビジョニングの構成](./media/active-directory-saas-salesforce-sandbox-tutorial/IC769573.png "ユーザー プロビジョニングの構成")
+    ![Configure user provisioning](./media/active-directory-saas-salesforce-sandbox-tutorial/IC769573.png "Configure user provisioning")
 
-8.  **[自動ユーザー プロビジョニングを有効にするための Salesforce Sandbox の資格情報を入力してください]** ページで、以下の構成設定を入力します。
+8.  On the **Enter your Salesforce Sandbox credentials to enable automatic user provisioning** page, provide the following configuration settings:
 
     ![Salesforce Sandbox](./media/active-directory-saas-salesforce-sandbox-tutorial/IC746476.png "Salesforce Sandbox")
 
-    a.**[Salesforce Sandbox 管理ユーザー名]** ボックスに、Salesforce.com で**システム管理者**プロファイルが割り当てられている Salesforce Sandbox アカウント名を入力します。
+    a.  In the **Salesforce Sandbox Admin User Name** textbox, type a Salesforce sandbox account name that has the **System Administrator** profile in Salesforce.com assigned.
 
-    b.**[Salesforce Sandbox 管理者パスワード]** ボックスに、このアカウントのパスワードを入力します。
+    b.  In the **Salesforce Sandbox Admin Password** textbox, type the password for this account.
 
-    c.**[ユーザーのセキュリティ トークン]** ボックスに、セキュリティ トークンの値を貼り付けます。
+    c.  In the **User Security Token** textbox, paste the security token value.
 
-    d.**[検証]** をクリックして構成を確認します。
+    d.  Click **Validate** to verify your configuration.
 
-    e.**[次へ]** をクリックして、**[確認]** ページを開きます。
+    e.  Click the **Next** button to open the **Confirmation** page.
 
-9.  **[確認]** ページで **[完了]** をクリックして構成を保存します。
-##ユーザーの割り当て
+9.  On the **Confirmation** page, click **Complete** to save your configuration.
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Salesforce Sandbox に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-salesforce-sandbox,-perform-the-following-steps:"></a>To assign users to Salesforce Sandbox, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Salesforce Sandbox** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Salesforce Sandbox **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-salesforce-sandbox-tutorial/IC769574.png "ユーザーの割り当て")
+    ![Assign users](./media/active-directory-saas-salesforce-sandbox-tutorial/IC769574.png "Assign users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
-    ![はい](./media/active-directory-saas-salesforce-sandbox-tutorial/IC767830.png "Yes")
+    ![Yes](./media/active-directory-saas-salesforce-sandbox-tutorial/IC767830.png "Yes")
   
-10 分待ってから、アカウントが Salesforce Sandbox と同期できたことをご確認ください。
+You should now wait for 10 minutes and verify that the account has been synchronized to Salesforce Sandbox.
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

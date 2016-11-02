@@ -17,7 +17,8 @@
    ms.date="09/13/2016"
    ms.author="kundanap"/>
 
-# Linux VM 拡張機能の構成のサンプル
+
+# <a name="linux-vm-extension-configuration-samples"></a>Linux VM 拡張機能の構成のサンプル
 
 > [AZURE.SELECTOR]
 - [PowerShell - テンプレート](virtual-machines-windows-extensions-configuration-samples.md)
@@ -27,13 +28,13 @@
 
 この記事には、Linux VM に対して Azure VM 拡張機能を構成する際の構成のサンプルが記載されています。
 
-これらの拡張機能の詳細については、「[Azure VM 拡張機能とその機能](virtual-machines-windows-extensions-features.md)」を参照してください。
+これらの拡張機能の詳細については、「 [Azure VM 拡張機能とその機能](virtual-machines-windows-extensions-features.md)
 
-拡張機能テンプレートの作成の詳細については、「[拡張機能テンプレートの作成](virtual-machines-windows-extensions-authoring-templates.md)」を参照してください。
+拡張機能テンプレートの作成の詳細については、「 [拡張機能テンプレートの作成](virtual-machines-windows-extensions-authoring-templates.md)
 
 この記事では、一部の Linux 拡張機能について、予測される構成値の一覧を示します。
 
-## VM 拡張機能のサンプル テンプレート スニペット
+## <a name="sample-template-snippet-for-vm-extensions."></a>VM 拡張機能のサンプル テンプレート スニペット
 拡張機能をデプロイするためのテンプレート スニペットは次のようになります。
 
       {
@@ -54,7 +55,7 @@
       }
       }
 
-## VM スケール セットによる VM 拡張機能のサンプル テンプレート スニペット。
+## <a name="sample-template-snippet-for-vm-extensions-with-vm-scale-sets."></a>VM スケール セットによる VM 拡張機能のサンプル テンプレート スニペット。
 
           {
            "type":"Microsoft.Compute/virtualMachineScaleSets",
@@ -80,7 +81,7 @@
 
 以降では、Linux VM 拡張機能のサンプル構成を紹介します。
 
-### CloudLink SecureVM Agent
+### <a name="cloudlink-securevm-agent"></a>CloudLink SecureVM Agent
           {
             "publisher": "CloudLinkEMC.SecureVM",
             "type": "CloudLinkSecureVMLinuxAgent",
@@ -90,7 +91,7 @@
             }
           }
 
-### Linux 用 CustomScript 拡張機能
+### <a name="customscript-extension-for-linux."></a>Linux 用 CustomScript 拡張機能
     {
         "publisher": " Microsoft.Azure.Extensions",
         "type": "CustomScript",
@@ -105,7 +106,7 @@
     }
 
 
-### Datadog Agent
+### <a name="datadog-agent"></a>Datadog Agent
         {
           "publisher": "Datadog.Agent",
           "type": "DatadogLinuxAgent",
@@ -115,7 +116,7 @@
           }
         }
 
-### Chef Agent
+### <a name="chef-agent"></a>Chef Agent
         {
           "publisher": "Chef.Bootstrap.WindowsAzure",
           "type": "CentosChefClient|LinuxChefClient",
@@ -127,8 +128,8 @@
           }
         }
 
-### VM Access 拡張機能 (パスワード リセット)
-更新版のスキーマについては、[VMAccessForLinux のドキュメント](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)を参照してください。
+### <a name="vm-access-extension-(password-reset)"></a>VM Access 拡張機能 (パスワード リセット)
+更新版のスキーマについては、 [VMAccessForLinux のドキュメント](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
 
         {
           "publisher": "Microsoft.OSTCExtensions",
@@ -143,8 +144,8 @@
           }
         }
 
-### OS の修正プログラム
-更新版のスキーマについては、[OSPatching のドキュメント](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)を参照してください。
+### <a name="os-patching"></a>OS の修正プログラム
+更新版のスキーマについては、 [OSPatching のドキュメント](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)
 
         {
         "publisher": "Microsoft.OSTCExtensions",
@@ -168,8 +169,8 @@
         }
         }
 
-### Docker 拡張機能
-更新版のスキーマについては、[Docker 拡張機能のドキュメント](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)を参照してください。
+### <a name="docker-extension"></a>Docker 拡張機能
+更新版のスキーマについては、 [Docker 拡張機能のドキュメント](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)
 
         {
           "publisher": "Microsoft.Azure.Extensions ",
@@ -217,4 +218,8 @@
 
 [Linux VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

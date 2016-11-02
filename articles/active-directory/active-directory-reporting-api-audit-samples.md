@@ -16,29 +16,32 @@
     ms.date="09/28/2016"
     ms.author="dhanyahk;markvi"/>
 
-# Azure Active Directory レポートの監査 API の例
 
-このトピックは Azure Active Directory Reporting API に関するトピックのコレクションの一部です。Azure AD レポートは、コードまたは関連ツールを使用して監査データにアクセスできるようにする API を提供します。このトピックでは、**監査 API** のサンプル コードを提供します。
+# <a name="azure-active-directory-reporting-audit-api-samples"></a>Azure Active Directory レポートの監査 API の例
+
+このトピックは Azure Active Directory Reporting API に関するトピックのコレクションの一部です。  
+Azure AD レポートは、コードまたは関連ツールを使用して監査データにアクセスできるようにする API を提供します。
+このトピックでは、 **監査 API**のサンプル コードを提供します。
 
 参照:
 
-- 概念情報の詳細については、[監査ログ](active-directory-reporting-azure-portal.md#audit-logs)に関する記事
+- [監査ログ](active-directory-reporting-azure-portal.md#audit-logs) に関する記事
 
-- Reporting API の詳細については、「[Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)」。
+- [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md) 」。
 
-質問、問題点、またはフィードバックについては、[AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
+質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
 
 
-## 前提条件
-このトピックに掲載されているサンプルを使用するには、事前に、[Azure AD レポート API にアクセスするための前提条件](active-directory-reporting-api-prerequisites.md)を完了する必要があります。
+## <a name="prerequisites"></a>前提条件
+このトピックに掲載されているサンプルを使用するには、事前に、 [Azure AD レポート API にアクセスするための前提条件](active-directory-reporting-api-prerequisites.md)を完了する必要があります。  
   
 
-## 既知の問題
+## <a name="known-issue"></a>既知の問題
 
-EU リージョン内にテナントがある場合、アプリの認証は行われません。この問題が解決されるまでは、回避策として、ユーザー認証を使用して監査 API にアクセスしてください。
+EU リージョン内にテナントがある場合、アプリの認証は行われません。 この問題が解決されるまでは、回避策として、ユーザー認証を使用して監査 API にアクセスしてください。 
 
 
-## PowerShell スクリプト
+## <a name="powershell-script"></a>PowerShell スクリプト
     # This script will require registration of a Web Application in Azure Active Directory (see https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)
 
     # Constants
@@ -83,13 +86,13 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
     $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 
-### PowerShell スクリプトの実行
+### <a name="executing-the-powershell-script"></a>PowerShell スクリプトの実行
 スクリプトの編集が完了したら、実行して、監査ログ レポートから予期したデータが返されることを確認します。
 
-スクリプトからは、監査レポートの出力が JSON 形式で返されます。また、同じ出力内容を使って `audit.json` ファイルも作成されます。他のレポートからデータを返すようにスクリプトを変更してテストしたり、必要のない出力形式をコメント化したりできます。
+スクリプトからは、監査レポートの出力が JSON 形式で返されます。 また、同じ出力内容を使って `audit.json` ファイルも作成されます。 他のレポートからデータを返すようにスクリプトを変更してテストしたり、必要のない出力形式をコメント化したりできます。
 
 
-## Bash スクリプト
+## <a name="bash-script"></a>Bash スクリプト
 
     #!/bin/bash
 
@@ -118,58 +121,62 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
 
     echo $REPORT | ./jq-win64.exe -r '.value' | ./jq-win64.exe -r ".[]"
 
-## Python スクリプト
+## <a name="python-script"></a>Python スクリプト
 
-	# Author: Michael McLaughlin (michmcla@microsoft.com)
-	# Date: January 20, 2016
-	# This requires the Python Requests module: http://docs.python-requests.org
+    # Author: Michael McLaughlin (michmcla@microsoft.com)
+    # Date: January 20, 2016
+    # This requires the Python Requests module: http://docs.python-requests.org
 
-	import requests
-	import datetime
-	import sys
+    import requests
+    import datetime
+    import sys
 
-	client_id = 'your-application-client-id-here'
-	client_secret = 'your-application-client-secret-here'
-	login_url = 'https://login.windows.net/'
-	tenant_domain = 'your-directory-name-here.onmicrosoft.com'
+    client_id = 'your-application-client-id-here'
+    client_secret = 'your-application-client-secret-here'
+    login_url = 'https://login.windows.net/'
+    tenant_domain = 'your-directory-name-here.onmicrosoft.com'
 
-	# Get an OAuth access token
-	bodyvals = {'client_id': client_id,
-	            'client_secret': client_secret,
-	            'grant_type': 'client_credentials'}
+    # Get an OAuth access token
+    bodyvals = {'client_id': client_id,
+                'client_secret': client_secret,
+                'grant_type': 'client_credentials'}
 
-	request_url = login_url + tenant_domain + '/oauth2/token?api-version=1.0'
-	token_response = requests.post(request_url, data=bodyvals)
+    request_url = login_url + tenant_domain + '/oauth2/token?api-version=1.0'
+    token_response = requests.post(request_url, data=bodyvals)
 
-	access_token = token_response.json().get('access_token')
-	token_type = token_response.json().get('token_type')
+    access_token = token_response.json().get('access_token')
+    token_type = token_response.json().get('token_type')
 
-	if access_token is None or token_type is None:
-	    print "ERROR: Couldn't get access token"
-	    sys.exit(1)
+    if access_token is None or token_type is None:
+        print "ERROR: Couldn't get access token"
+        sys.exit(1)
 
-	# Use the access token to make the API request
-	yesterday = datetime.date.strftime(datetime.date.today() - datetime.timedelta(days=1), '%Y-%m-%d')
+    # Use the access token to make the API request
+    yesterday = datetime.date.strftime(datetime.date.today() - datetime.timedelta(days=1), '%Y-%m-%d')
 
-	header_params = {'Authorization': token_type + ' ' + access_token}
-	request_string = 'https://graph.windows.net/' + tenant_domain + 'activities/audit?api-version=beta&$filter=eventTime%20gt%20' + yesterday   
-	response = requests.get(request_string, headers = header_params)
+    header_params = {'Authorization': token_type + ' ' + access_token}
+    request_string = 'https://graph.windows.net/' + tenant_domain + 'activities/audit?api-version=beta&$filter=eventTime%20gt%20' + yesterday   
+    response = requests.get(request_string, headers = header_params)
 
-	if response.status_code is 200:
-	    print response.content
-	else:
-	    print 'ERROR: API request failed'
-
-
+    if response.status_code is 200:
+        print response.content
+    else:
+        print 'ERROR: API request failed'
 
 
 
-## 次のステップ
 
-- このトピックに掲載されているサンプルをカスタマイズしますか。 [Azure Active Directory 監査 API リファレンス](active-directory-reporting-api-audit-reference.md)を確認してください。
 
-- Azure Active Directory Reporting API の使用に関する網羅的な概要を参照するには、[Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)を参照してください。
+## <a name="next-steps"></a>次のステップ
 
-- Azure Active Directory のレポート作成に関する詳細については、「[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。
+- このトピックに掲載されているサンプルをカスタマイズしますか。 [Azure Active Directory 監査 API リファレンス](active-directory-reporting-api-audit-reference.md)を確認してください。 
 
-<!---HONumber=AcomDC_0928_2016-->
+- Azure Active Directory Reporting API の使用に関する網羅的な概要を参照するには、 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)を参照してください。
+
+- Azure Active Directory のレポート作成に関する詳細については、「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。  
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

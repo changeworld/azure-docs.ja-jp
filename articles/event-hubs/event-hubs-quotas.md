@@ -15,10 +15,14 @@
     ms.date="09/27/2016"
     ms.author="sethm" />
 
-# Event Hubs のクォータ
+
+# <a name="event-hubs-quotas"></a>Event Hubs のクォータ
 
 このセクションでは、Microsoft Azure Event Hubs の基本的なクォータと制限について一覧形式で説明しています。
 
-[AZURE.INCLUDE [service-bus-quotas-table](../../includes/event-hubs-limits.md)]
+[AZURE.INCLUDE [service-bus-quotas-table](../../includes/event-hubs-limits.md)] 
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

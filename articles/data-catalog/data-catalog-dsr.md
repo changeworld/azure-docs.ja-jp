@@ -3,7 +3,7 @@
    description="現在サポートされているデータ ソースの仕様。"
    services="data-catalog"
    documentationCenter=""
-   authors="trhabe"
+   authors="steelanddata"
    manager="jstrauss"
    editor=""
    tags=""/>
@@ -14,14 +14,15 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
    ms.date="09/15/2016"
-   ms.author="trhabe"/>
-
-# Azure Data Catalog でサポートされるデータ ソース
-
-Azure Data Catalog のユーザーは、ワンクリック登録ツールのパブリック API を使用して、または Data Catalog の Web ポータルに直接情報を手動で入力してメタデータを公開できます。以下の表は、現在カタログでサポートされているすべてのソースと、それぞれの公開機能をまとめたものです。また、各ソースを当社のポータルから「オープンイン」で起動できる外部ツールも一覧表示されています。記事の 2 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様があります。
+   ms.author="maroche"/>
 
 
-## サポートされるデータ ソースの一覧
+# <a name="azure-data-catalog-supported-data-sources"></a>Azure Data Catalog でサポートされるデータ ソース
+
+Azure Data Catalog のユーザーは、ワンクリック登録ツールのパブリック API を使用して、または Data Catalog の Web ポータルに直接情報を手動で入力してメタデータを公開できます。 以下の表は、現在カタログでサポートされているすべてのソースと、それぞれの公開機能をまとめたものです。  また、各ソースを当社のポータルから「オープンイン」で起動できる外部ツールも一覧表示されています。 記事の 2 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様があります。
+
+
+## <a name="list-of-supported-data-sources"></a>サポートされるデータ ソースの一覧
 
 <table>
 
@@ -37,7 +38,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Azure Data Lake Store のディレクトリ</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
@@ -46,7 +47,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Azure Data Lake Store のファイル</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
@@ -55,7 +56,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Azure Storage BLOB</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>PowerBI</font></td>
       <td><font size=2></font></td>
@@ -64,7 +65,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Azure Storage ディレクトリ</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>PowerBI</font></td>
       <td><font size=2></font></td>
@@ -73,7 +74,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Azure Storage Table</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td>
         <font size="2"></font>
@@ -86,7 +87,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>HDFS ディレクトリ</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
@@ -95,7 +96,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>HDFS ファイル</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
@@ -104,7 +105,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Hive テーブル</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
       <td><font size=2></font></td>
@@ -113,7 +114,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Hive ビュー</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
       <td><font size=2></font></td>
@@ -122,7 +123,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>MySQL テーブル</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel、PowerBI</font></td>
       <td><font size=2></font></td>
@@ -131,7 +132,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>MySQL ビュー</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel、PowerBI</font></td>
       <td><font size=2></font></td>
@@ -140,7 +141,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Oracle Database テーブル</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel、PowerBI</font></td>
       <td><font size=2></font></td>
@@ -149,7 +150,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Oracle Database ビュー</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel、PowerBI</font></td>
       <td><font size=2></font></td>
@@ -167,7 +168,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>SQL Data Warehouse テーブル</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel、PowerBI、SQL Server データ ツール</font></td>
       <td><font size=2></font></td>
@@ -176,7 +177,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>SQL Data Warehouse ビュー</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel、PowerBI、SQL Server データ ツール</font></td>
       <td><font size=2></font></td>
@@ -185,7 +186,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>SQL Server Analysis Services ディメンション</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel、PowerBI</font></td>
       <td><font size=2></font></td>
@@ -194,7 +195,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>SQL Server Analysis Services KPI</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel、PowerBI</font></td>
       <td><font size=2></font></td>
@@ -203,7 +204,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>SQL Server Analysis Services メジャー</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel、PowerBI</font></td>
       <td><font size=2></font></td>
@@ -212,7 +213,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>SQL Server Analysis Services テーブル</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel、PowerBI</font></td>
       <td><font size=2></font></td>
@@ -221,16 +222,16 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>SQL Server Reporting Services レポート</td>
       <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
-      <td>✓</td>
-      <td><font size=2>ブラウザー</font></td>
-      <td><font size=2>ネイティブ モードのサーバーのみ。SharePoint モードはサポートされていません。</font></td>
+      <td><font size=2>[ブラウザー] ボタンを</font></td>
+      <td><font size=2>ネイティブ モードのサーバーのみ。 SharePoint モードはサポートされていません。</font></td>
     </tr>
 
     <tr>
       <td>SQL Server テーブル</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel、PowerBI、SQL Server データ ツール</font></td>
       <td><font size=2></font></td>
@@ -239,7 +240,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>SQL Server ビュー</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel、PowerBI、SQL Server データ ツール</font></td>
       <td><font size=2></font></td>
@@ -248,7 +249,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Teradata テーブル</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
       <td><font size=2></font></td>
@@ -257,7 +258,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Teradata ビュー</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
       <td><font size=2></font></td>
@@ -266,7 +267,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>SAP Hana ビュー</td>
       <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓</td>
       <td><font size=2>PowerBI</font></td>
       <td><font size=2>計算ビューと分析ビューのみ。属性ビューはサポートされていません。</font></td>
@@ -409,16 +410,17 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
 
 </table>
 
-その他のソースのサポートが必要な場合は、[Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)を使用して機能のリクエストを送信してください。
+その他のソースのサポートが必要な場合は、 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)を使用して機能のリクエストを送信してください。
 
 
-<br> <br>
-## データ ソース参照の仕様
+<br>
+<br>
+## <a name="data-source-reference-specification"></a>データ ソース参照の仕様
 > [AZURE.NOTE] 以下の表の「DSL 構造体」列には、Azure Data Catalog に使用される "address" プロパティ バッグの接続プロパティのみが表示されます (つまり、"address" プロパティ バッグには、Azure Data Catalog が保持し、使用しないデータ ソースのその他の接続プロパティを含めることができます)。
 <table>
     <tr>
        <td><b>ソースの種類</b></td>
-       <td><b>資産の型</b></td>
+       <td><b>資産の種類</b></td>
        <td><b>オブジェクトの種類</b></td>
        <td><b>DSL 構造体<b></td>
     </tr>
@@ -427,10 +429,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>Data Lake</td>
       <td>
-        <font size=2> protocol: webhdfs
-            <br>authentication: {basic, oauth}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: webhdfs <br>authentication: {basic, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -438,62 +437,39 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>ディレクトリ、ファイル</td>
       <td>
-        <font size=2> protocol: webhdfs
-            <br>authentication: {basic, oauth}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: webhdfs <br>authentication: {basic, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
-      <td>Azure Storage</td>
+      <td>Azure Storage (Azure Storage)</td>
       <td>コンテナー</td>
       <td>コンテナー</td>
       <td>
-        <font size=2> protocol: azure-blobs
-            <br>authentication: {azure-access-key}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; domain
-            <br>&#160;&#160;&#160;&#160;&#160; account
-            <br>&#160;&#160;&#160;&#160;&#160; container </font>
+        <font size=2> protocol: azure-blobs <br>authentication: {azure-access-key} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ドメイン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウント <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コンテナー </font>
       </td>
     </tr>
     <tr>
-      <td>Azure Storage</td>
+      <td>Azure Storage (Azure Storage)</td>
       <td>テーブル</td>
       <td>BLOB、ディレクトリ</td>
       <td>
-        <font size=2> protocol: azure-blobs
-            <br>authentication: {azure-access-key}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; domain
-            <br>&#160;&#160;&#160;&#160;&#160; account
-            <br>&#160;&#160;&#160;&#160;&#160; container
-            <br>&#160;&#160;&#160;&#160;&#160; name</font>
+        <font size=2> protocol: azure-blobs <br>authentication: {azure-access-key} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ドメイン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウント <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コンテナー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名前 </font>
       </td>
     </tr>
     <tr>
-      <td>Azure Storage</td>
+      <td>Azure Storage (Azure Storage)</td>
       <td>コンテナー</td>
       <td>コンテナー</td>
       <td>
-        <font size=2> protocol: azure-tables
-            <br>authentication: {azure-access-key}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; domain
-            <br>&#160;&#160;&#160;&#160;&#160; account</font>
+        <font size=2> protocol: azure-tables <br>authentication: {azure-access-key} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ドメイン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウント </font>
       </td>
     </tr>
     <tr>
-      <td>Azure Storage</td>
+      <td>Azure Storage (Azure Storage)</td>
       <td>テーブル</td>
       <td>テーブル</td>
       <td>
-        <font size=2> protocol: azure-tables
-            <br>authentication: {azure-access-key}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; domain
-            <br>&#160;&#160;&#160;&#160;&#160; account
-            <br>&#160;&#160;&#160;&#160;&#160; name</font>
+        <font size=2> protocol: azure-tables <br>authentication: {azure-access-key} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ドメイン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウント <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名前 </font>
       </td>
     </tr>
     <tr>
@@ -501,10 +477,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>仮想クラスター</td>
       <td>
-        <font size=2> protocol: cosmos
-            <br>authentication: {basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: cosmos <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -512,10 +485,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>ストリーム、ストリーム セット、ビュー</td>
       <td>
-        <font size=2> protocol: cosmos
-            <br>authentication: {basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: cosmos <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -523,10 +493,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>サイト</td>
       <td>
-        <font size=2> protocol: http
-            <br>authentication: {none, basic, windows, oauth}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -534,10 +501,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>レポート</td>
       <td>レポート、ダッシュボード</td>
       <td>
-        <font size=2> protocol: http
-            <br>authentication: {none, basic, windows, oauth}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -545,11 +509,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: db2
-            <br>authentication: {basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database</font>
+        <font size=2> protocol: db2 <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -557,13 +517,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: db2
-            <br>authentication: {basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
-            <br>&#160;&#160;&#160;&#160;&#160; schema </font>
+        <font size=2> protocol: db2 <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ </font>
       </td>
     </tr>
     <tr>
@@ -571,10 +525,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>ファイル</td>
       <td>
-        <font size=2> protocol: file
-            <br>authentication: {none, basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; path</font>
+        <font size=2> protocol: file <br>authentication: {none, basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; パス </font>
       </td>
     </tr>
     <tr>
@@ -582,10 +533,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>ディレクトリ、ファイル</td>
       <td>
-        <font size=2> protocol: ftp
-            <br>authentication: {none, basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: ftp <br>authentication: {none, basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -593,10 +541,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>クラスター</td>
       <td>
-        <font size=2> protocol: webhdfs
-            <br>authentication: {basic, oauth}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: webhdfs <br>authentication: {basic, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -604,10 +549,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>ディレクトリ、ファイル</td>
       <td>
-        <font size=2> protocol: webhdfs
-            <br>authentication: {basic, oauth}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: webhdfs <br>authentication: {basic, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -615,13 +557,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: hive
-            <br>authentication: {hdinsight, basic, username, none}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>connectionProperties:
-            <br>&#160;&#160;&#160;&#160;&#160; serverProtocol: {hive2} </font>
+        <font size=2> protocol: hive <br>authentication: {hdinsight, basic, username, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>connectionProperties: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; serverProtocol: {hive2} </font>
       </td>
     </tr>
     <tr>
@@ -629,14 +565,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: hive
-            <br>authentication: {hdinsight, basic, username, none}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
-            <br>connectionProperties:
-            <br>&#160;&#160;&#160;&#160;&#160; serverProtocol: {hive2} </font>
+        <font size=2> protocol: hive <br>authentication: {hdinsight, basic, username, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>connectionProperties: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; serverProtocol: {hive2} </font>
       </td>
     </tr>
     <tr>
@@ -644,10 +573,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>サイト</td>
       <td>
-        <font size=2> protocol: http
-            <br>authentication: {none, basic, windows, oauth}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -655,10 +581,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>レポート</td>
       <td>レポート、ダッシュボード</td>
       <td>
-        <font size=2> protocol: http
-            <br>authentication: {none, basic, windows, oauth}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -666,10 +589,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>エンド ポイント、ファイル</td>
       <td>
-        <font size=2> protocol: http
-            <br>authentication: {none, basic, windows, oauth}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -677,11 +597,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: mysql
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database</font>
+        <font size=2> protocol: mysql <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -689,12 +605,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: mysql
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+        <font size=2> protocol: mysql <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -702,10 +613,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>エンティティ コンテナー</td>
       <td>
-        <font size=2> protocol: odata
-            <br>authentication: {none, basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: odata <br>authentication: {none, basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -713,11 +621,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>エンティティ セット、関数</td>
       <td>
-        <font size=2> protocol: odata
-            <br>authentication: {none, basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url
-            <br>&#160;&#160;&#160;&#160;&#160; resource</font>
+        <font size=2> protocol: odata <br>authentication: {none, basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; リソース </font>
       </td>
     </tr>
     <tr>
@@ -725,11 +629,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: oracle
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database</font>
+        <font size=2> protocol: oracle <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -737,13 +637,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: oracle
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; schema
-            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+        <font size=2> protocol: oracle <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -751,11 +645,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: postgresql
-            <br>authentication: {basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database</font>
+        <font size=2> protocol: postgresql <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -763,13 +653,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: postgresql
-            <br>authentication: {basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; schema
-            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+        <font size=2> protocol: postgresql <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -777,10 +661,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>サイト</td>
       <td>
-        <font size=2> protocol: http
-            <br>authentication: {none, basic, windows, oauth}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -788,10 +669,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>レポート</td>
       <td>レポート、ダッシュボード</td>
       <td>
-        <font size=2> protocol: http
-            <br>authentication: {none, basic, windows, oauth}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -799,10 +677,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>データのマッシュアップ</td>
       <td>
-        <font size=2> protocol: power-query
-            <br>authentication: {oauth}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: power-query <br>authentication: {oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -810,12 +685,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>オブジェクト</td>
       <td>
-        <font size=2> protocol: salesforce com
-            <br>authentication: {basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; loginServer
-            <br>&#160;&#160;&#160;&#160;&#160; class
-            <br>&#160;&#160;&#160;&#160;&#160; itemName </font>
+        <font size=2> protocol: salesforce com <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; loginServer <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; class <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itemName </font>
       </td>
     </tr>
     <tr>
@@ -823,10 +693,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>サーバー</td>
       <td>
-        <font size=2> protocol: sap hana sql
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server </font>
+        <font size=2> protocol: sap hana sql <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー </font>
       </td>
     </tr>
     <tr>
@@ -834,12 +701,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>表示</td>
       <td>
-        <font size=2> protocol: sap hana sql
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; schema
-            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+        <font size=2> protocol: sap hana sql <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -847,10 +709,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>一覧表示</td>
       <td>
-        <font size=2> protocol: sharepoint-list
-            <br>authentication: {basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+        <font size=2> protocol: sharepoint-list <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -858,13 +717,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コマンド</td>
       <td>ストアド プロシージャ</td>
       <td>
-        <font size=2> protocol: tds
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; schema
-            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -872,13 +725,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>TableValuedFunction</td>
       <td>テーブル値関数</td>
       <td>
-        <font size=2> protocol: tds
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; schema
-            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -886,11 +733,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: tds
-          <br>authentication: {protocol, windows}
-          <br>address:
-          <br>&#160;&#160;&#160;&#160;&#160; server
-          <br>&#160;&#160;&#160;&#160;&#160; database</font>
+        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -898,13 +741,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: tds
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; schema
-            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -912,13 +749,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コマンド</td>
       <td>ストアド プロシージャ</td>
       <td>
-        <font size=2> protocol: tds
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; schema
-            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -926,13 +757,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>TableValuedFunction</td>
       <td>テーブル値関数</td>
       <td>
-        <font size=2> protocol: tds
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; schema
-            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -940,11 +765,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: tds
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database</font>
+        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -952,13 +773,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: tds
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; schema
-            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -966,12 +781,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>モデル</td>
       <td>
-        <font size=2> protocol: analysis-services
-            <br>authentication: {windows, basic, anonymous, none}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; model </font>
+        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル </font>
       </td>
     </tr>
     <tr>
@@ -979,14 +789,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>KPI</td>
       <td>KPI</td>
       <td>
-        <font size=2> protocol: analysis-services
-            <br>authentication: {windows, basic, anonymous, none}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
-            <br>&#160;&#160;&#160;&#160;&#160; objectType: {KPI} </font>
+        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {KPI} </font>
       </td>
     </tr>
     <tr>
@@ -994,14 +797,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>Measure</td>
       <td>Measure</td>
       <td>
-        <font size=2> protocol: analysis-services
-            <br>authentication: {windows, basic, anonymous, none}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
-            <br>&#160;&#160;&#160;&#160;&#160; objectType: {Measure} </font>
+        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Measure} </font>
       </td>
     </tr>
     <tr>
@@ -1009,14 +805,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>Dimension</td>
       <td>
-        <font size=2> protocol: analysis-services
-            <br>authentication: {windows, basic, anonymous, none}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; object
-            <br>&#160;&#160;&#160;&#160;&#160; objectType: {Dimension} </font>
+        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Dimension} </font>
       </td>
     </tr>
     <tr>
@@ -1024,12 +813,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>モデル</td>
       <td>
-        <font size=2> protocol: analysis-services
-            <br>authentication: {windows, basic, anonymous, none}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; model </font>
+        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル </font>
       </td>
     </tr>
     <tr>
@@ -1037,14 +821,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>KPI</td>
       <td>KPI</td>
       <td>
-        <font size=2> protocol: analysis-services
-            <br>authentication: {windows, basic, anonymous, none}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
-            <br>&#160;&#160;&#160;&#160;&#160; objectType: {KPI} </font>
+        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {KPI} </font>
       </td>
     </tr>
     <tr>
@@ -1052,14 +829,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>Measure</td>
       <td>Measure</td>
       <td>
-        <font size=2> protocol: analysis-services
-            <br>authentication: {windows, basic, anonymous, none}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
-            <br>&#160;&#160;&#160;&#160;&#160; objectType: {Measure} </font>
+        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Measure} </font>
       </td>
     </tr>
     <tr>
@@ -1067,14 +837,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>テーブル</td>
       <td>
-        <font size=2> protocol: analysis-services
-            <br>authentication: {windows, basic, anonymous, none}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
-            <br>&#160;&#160;&#160;&#160;&#160; objectType: {Table} </font>
+        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Table} </font>
       </td>
     </tr>
     <tr>
@@ -1082,11 +845,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>サーバー</td>
       <td>
-        <font size=2> protocol: reporting services
-            <br>authentication: {windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; version: {ReportingService2010} </font>
+        <font size=2> protocol: reporting services <br>authentication: {windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version: {ReportingService2010} </font>
       </td>
     </tr>
     <tr>
@@ -1094,12 +853,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>レポート</td>
       <td>レポート</td>
       <td>
-        <font size=2> protocol: reporting services
-            <br>authentication: {windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; path
-            <br>&#160;&#160;&#160;&#160;&#160; version: {ReportingService2010} </font>
+        <font size=2> protocol: reporting services <br>authentication: {windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; パス <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version: {ReportingService2010} </font>
       </td>
     </tr>
     <tr>
@@ -1107,11 +861,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: teradata
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database</font>
+        <font size=2> protocol: teradata <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -1119,12 +869,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: teradata
-            <br>authentication: {protocol, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; server
-            <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+        <font size=2> protocol: teradata <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -1132,12 +877,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>コンテナー</td>
       <td>モデル</td>
       <td>
-        <font size="2"> protocol: mssql-mds
-          <br>authentication: {windows}
-          <br>address:
-          <br>&#160;&#160;&#160;&#160;&#160; url
-          <br>&#160;&#160;&#160;&#160;&#160; model
-          <br>&#160;&#160;&#160;&#160;&#160; version </font>
+        <font size="2"> protocol: mssql-mds <br>authentication: {windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バージョン </font>
       </td>
     </tr>
     <tr>
@@ -1145,25 +885,21 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>テーブル</td>
       <td>エンティティ</td>
       <td>
-        <font size="2"> protocol: mssql-mds
-          <br>authentication: {windows}
-          <br>address:
-          <br>&#160;&#160;&#160;&#160;&#160; url
-          <br>&#160;&#160;&#160;&#160;&#160; model
-          <br>&#160;&#160;&#160;&#160;&#160; version
-          <br>&#160;&#160;&#160;&#160;&#160; entity </font>
+        <font size="2"> protocol: mssql-mds <br>authentication: {windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バージョン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; エンティティ </font>
       </td>
     </tr>
     <tr>
       <td>その他 (上記以外)</td>
-      <td>*</td>
-      <td>*</td>
+      <td>\*</td>
+      <td>\*</td>
       <td>
-        <font size=2> protocol: generic-asset
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; assetId </font>
+        <font size=2> protocol: generic-asset <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assetId </font>
       </td>
     </tr>
 </table>
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

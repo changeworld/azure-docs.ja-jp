@@ -1,82 +1,83 @@
 <properties
-	pageTitle="デーブルの Stretch Database を有効にする | Microsoft Azure"
-	description="Stretch Database のテーブルを設定する方法について説明します。"
-	services="sql-server-stretch-database"
-	documentationCenter=""
-	authors="douglaslMS"
-	manager=""
-	editor=""/>
+    pageTitle="Enable Stretch Database for a table | Microsoft Azure"
+    description="Learn how to configure a table for Stretch Database."
+    services="sql-server-stretch-database"
+    documentationCenter=""
+    authors="douglaslMS"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-server-stretch-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/05/2016"
-	ms.author="douglasl"/>
+    ms.service="sql-server-stretch-database"
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/05/2016"
+    ms.author="douglasl"/>
 
-# テーブルの Stretch Database を有効にする
 
-Stretch Database のテーブルを設定するには、SQL Server Management Studio でテーブルの **[Stretch]、[有効化]** の順に選択し、**[Stretch テーブルを有効にする]** ウィザードを起動します。Transact-SQL を利用し、既存のテーブルで Stretch Database を有効にしたり、新しいテーブルを作成して Stretch Database を有効にしたりすることもできます。
+# <a name="enable-stretch-database-for-a-table"></a>Enable Stretch Database for a table
 
--   別個のテーブルにコールド データを格納する場合、テーブル全体を移行できます。
+To configure a table for Stretch Database, select **Stretch | Enable** for a table in SQL Server Management Studio to open the **Enable Table for Stretch** wizard. You can also use Transact\-SQL to enable Stretch Database on an existing table, or to create a new table with Stretch Database enabled.
 
--   テーブルにホット データとコールド データの両方が含まれている場合、移行する行を選択するフィルター関数を指定できます。
+-   If you store cold data in a separate table, you can migrate the entire table.
 
-**前提条件**。テーブルに **[Stretch]、[有効化]** を選択したとき、データベースの Stretch Database を有効にしていない場合、ウィザードにより Stretch Database のデータベースが最初に設定されます。このトピックの手順ではなく、「[[Enable Database for Stretch (Stretch Database を有効にする)] ウィザードを実行する方法の概要](sql-server-stretch-database-wizard.md)」の手順に従ってください。
+-   If your table contains both hot and cold data, you can specify a filter function to select the rows to migrate.
 
-**アクセス許可**。データベースまたはテーブルで Stretch Database を有効にするには、db\_owner アクセス許可が必要です。テーブルで Stretch Database を有効にするには、テーブルの ALTER アクセス許可も必要です。
+**Prerequisites**. If you select **Stretch | Enable** for a table, and you have not yet enabled Stretch Database for the database, the wizard first configures the database for Stretch Database. Follow the steps in [Get started by running the Enable Database for Stretch Wizard](sql-server-stretch-database-wizard.md) instead of the steps in this topic.
 
- >   [AZURE.NOTE] 後で Strech Database を無効にする場合、テーブルまたはデータベースの Stretch Database を無効にしても、リモート オブジェクトは削除されないことに注意してください。リモート テーブルまたはリモート データベースを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート オブジェクトを手動で削除するまで、Azure のコストが引き続き発生します。
+**Permissions**. Enabling Stretch Database on a database or a table requires db\_owner permissions. Enabling Stretch Database on  a table also requires ALTER permissions on the table.
+
+ >   [AZURE.NOTE] Later, if you disable Stretch Database, remember that disabling Stretch Database for a table or for a database does not delete the remote object. If you want to delete the remote table or the remote database, you have to drop it by using the Azure management portal. The remote objects continue to incur Azure costs until you delete them manually.
  
-## <a name="EnableWizardTable"></a>ウィザードを使用してテーブルで Stretch Database を有効にする
-**ウィザードを起動する**
+## <a name="<a-name="enablewizardtable"></a>use-the-wizard-to-enable-stretch-database-on-a-table"></a><a name="EnableWizardTable"></a>Use the wizard to enable Stretch Database on a table
+**Launch the wizard**
 
-1.  SQL Server Management Studio のオブジェクト エクスプローラーで、Stretch を有効にするテーブルを選択します。
+1.  In SQL Server Management Studio, in Object Explorer, select the table on which you want to enable Stretch.
 
-2.  右クリックして **[Stretch]** を選択し、**[有効化]** を選択してウィザードを起動します。
+2.  Right\-click and select **Stretch**, and then select **Enable** to launch the wizard.
 
-**はじめに**
+**Introduction**
 
-ウィザードの目的と前提条件を確認します。
+Review the purpose of the wizard and the prerequisites.
 
-**データベース テーブルを選択する**
+**Select database tables**
 
-有効にするテーブルが表示され、選択されていることを確認します。
+Confirm that the table you want to enable is displayed and selected.
 
-テーブル全体を移行することも、ウィザードで単純なフィルター関数を指定することもできます。別の種類のフィルター関数を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
+You can migrate an entire table or you can specify a simple filter function in the wizard. If you want to use a different type of filter function to select rows to migrate, do one of the following things.
 
--   ウィザードを終了して ALTER TABLE ステートメントを実行し、テーブルの Stretch を有効にしてフィルター関数を指定する。
+-   Exit the wizard and run the ALTER TABLE statement to enable Stretch for the table and to specify a filter function.
 
--   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、フィルター関数を指定します。必要な手順については、「[ウィザードの実行後にフィルター関数を追加する](sql-server-stretch-database-predicate-function.md#addafterwiz)」をご覧ください。
+-   Run the ALTER TABLE statement to specify a filter function after you exit the wizard. For the required steps, see [Add a filter function after running the Wizard](sql-server-stretch-database-predicate-function.md#addafterwiz).
 
-ALTER TABLE 構文については、このトピックの後の方で説明しています。
+The ALTER TABLE syntax is described later in this topic.
 
-**まとめ**
+**Summary**
 
-入力した値とウィザードで選択したオプションを確認します。**[完了]** を選択して、Stretch を有効にします。
+Review the values that you entered and the options that you selected in the wizard. Then select **Finish** to enable Stretch.
 
-**結果**
+**Results**
 
-結果を確認します。
+Review the results.
 
-## <a name="EnableTSQLTable"></a>Transact-SQL を使用してテーブルで Stretch Database を有効にする
-Transact-SQL を利用し、既存のテーブルで Stretch Database を有効にしたり、新しいテーブルを作成して Stretch Database を有効にしたりできます。
+## <a name="<a-name="enabletsqltable"></a>use-transact\-sql-to-enable-stretch-database-on-a-table"></a><a name="EnableTSQLTable"></a>Use Transact\-SQL to enable Stretch Database on a table
+You can enable Stretch Database for an existing table or create a new table with Stretch Database enabled by using Transact-SQL.
 
-### オプション
-CREATE TABLE または ALTER TABLE を実行し、テーブルで Stretch Database を有効にするとき、次のオプションを利用します。
+### <a name="options"></a>Options
+Use the following options when you run CREATE TABLE or ALTER TABLE to enable Stretch Database on a table.
 
--   テーブルにホット データとコールド データの両方が含まれている場合、`FILTER_PREDICATE = <function>` 句を使用して、移行する行を選択する関数を指定することもできます。述語では、インライン テーブル値関数を呼び出す必要があります。詳細については、[フィルター関数を使用した移行する行の選択](sql-server-stretch-database-predicate-function.md)に関する記事をご覧ください。フィルター関数を指定しない場合、テーブル全体が移行されます。
+-   Optionally, use the `FILTER_PREDICATE = <function>` clause to specify a function to select rows to migrate if the table contains both hot and cold data. The predicate must call an inline table\-valued function. For more info, see [Select rows to migrate by using a filter function](sql-server-stretch-database-predicate-function.md). If you don't specify a filter function, the entire table is migrated.
 
-    >   [AZURE.NOTE] 指定したフィルター関数のパフォーマンスが悪いと、データ移行のパフォーマンスも悪くなります。Stretch Database は CROSS APPLY 演算子を利用し、テーブルにフィルター関数を適用します。
+    >   [AZURE.NOTE] If you provide a filter function that performs poorly, data migration also performs poorly. Stretch Database applies the filter function to the table by using the CROSS APPLY operator.
 
--   データ移行をすぐに開始する場合は `MIGRATION_STATE = OUTBOUND` を指定し、データ移行の開始を先送りする場合は `MIGRATION_STATE = PAUSED` を指定します。
+-   Specify `MIGRATION_STATE = OUTBOUND` to start data migration immediately or  `MIGRATION_STATE = PAUSED` to postpone the start of data migration.
 
-### 既存テーブルの Stretch Database を有効にする
-既存テーブルを Stretch Database 用に設定するには、ALTER TABLE コマンドを実行します。
+### <a name="enable-stretch-database-for-an-existing-table"></a>Enable Stretch Database for an existing table
+To configure an existing table for Stretch Database, run the ALTER TABLE command.
 
-テーブル全体を移行し、データ移行をすぐに開始する例を次に示します。
+Here's an example that migrates the entire table and begins data migration immediately.
 
 ```tsql
 USE <Stretch-enabled database name>;
@@ -85,7 +86,7 @@ ALTER TABLE <table name>
     SET ( REMOTE_DATA_ARCHIVE = ON ( MIGRATION_STATE = OUTBOUND ) ) ;  
 GO
 ```
-`dbo.fn_stretchpredicate` インライン テーブル値関数で特定された行のみを移行し、データ移行を先送りする例を次に示します。フィルター関数の詳細については、[フィルター関数を使用した移行する行の選択](sql-server-stretch-database-predicate-function.md)に関する記事をご覧ください。
+Here's an example that migrates only the rows identified by the `dbo.fn_stretchpredicate` inline table\-valued function and postpones data migration. For more info about the filter function, see [Select rows to migrate by using a filter function](sql-server-stretch-database-predicate-function.md).
 
 ```tsql
 USE <Stretch-enabled database name>;
@@ -97,12 +98,12 @@ ALTER TABLE <table name>
  GO
 ```
 
-詳細については、「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」をご覧ください。
+For more info, see [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).
 
-### 新しいテーブルを作成し、Stretch Database を有効にする
-新しいテーブルを作成し、Stretch Database を有効にするには、CREATE TABLE コマンドを実行します。
+### <a name="create-a-new-table-with-stretch-database-enabled"></a>Create a new table with Stretch Database enabled
+To create a new table with Stretch Database enabled, run the CREATE TABLE command.
 
-テーブル全体を移行し、データ移行をすぐに開始する例を次に示します。
+Here's an example that migrates the entire table and begins data migration immediately.
 
 ```tsql
 USE <Stretch-enabled database name>;
@@ -113,7 +114,7 @@ CREATE TABLE <table name>
 GO
 ```
 
-`dbo.fn_stretchpredicate` インライン テーブル値関数で特定された行のみを移行し、データ移行を先送りする例を次に示します。フィルター関数の詳細については、[フィルター関数を使用した移行する行の選択](sql-server-stretch-database-predicate-function.md)に関する記事をご覧ください。
+Here's an example that migrates only the rows identified by the `dbo.fn_stretchpredicate` inline table\-valued function and postpones data migration. For more info about the filter function, see [Select rows to migrate by using a filter function](sql-server-stretch-database-predicate-function.md).
 
 ```tsql
 USE <Stretch-enabled database name>;
@@ -126,13 +127,17 @@ CREATE TABLE <table name>
 GO  
 ```
 
-詳細については、「[CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)」をご覧ください。
+For more info, see [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx).
 
 
-## 関連項目
+## <a name="see-also"></a>See also
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
 [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
- pageTitle="予測的なメンテナンスのチュートリアル | Microsoft Azure"
- description="Azure IoT の予測的なメンテナンスの構成済みソリューションのチュートリアルです。"
+ pageTitle="Predictive maintenance walkthrough | Microsoft Azure"
+ description="A walkthrough of the Azure IoT predictive maintenance preconfigured solution."
  services=""
  suite="iot-suite"
  documentationCenter=""
@@ -14,107 +14,108 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="08/17/2016"
+ ms.date="10/31/2016"
  ms.author="araguila"/>
 
-# 予測的なメンテナンスの構成済みソリューションのチュートリアル
 
-## はじめに
+# <a name="predictive-maintenance-preconfigured-solution-walkthrough"></a>Predictive maintenance preconfigured solution walkthrough
 
-IoT Suite の予測的なメンテナンスの構成済みソリューションは、障害が発生する可能性があるポイントを予測するビジネス シナリオに対応したエンド ツー エンド ソリューションです。この構成済みソリューションを使用すると、メンテナンスの最適化などのアクティビティを先手を打って実行できます。このソリューションは、[Azure Machine Learning][lnk_machine_learning] ワークスペースなどの主要な Azure IoT Suite サービスを組み合わせたものです。このワークスペースには、公開されているサンプル データ セットに基づいて航空機エンジンの残存耐用年数 (RUL) を予測する実験が含まれています。このソリューションでは、固有のビジネス要件を満たすソリューションを計画および実装するための開始地点として使用できる、IoT ビジネス シナリオが完全に実装されています。
+## <a name="introduction"></a>Introduction
 
-## 論理アーキテクチャ
+The IoT Suite predictive maintenance preconfigured solution is an end-to-end solution for a business scenario that predicts the point when failure is likely to occur. You can use this preconfigured solution proactively for activities such as optimizing maintenance. The solution combines key Azure IoT Suite services, including an [Azure Machine Learning][lnk_machine_learning] workspace. This workspace contains experiments, based on a public sample data set, to predict the Remaining Useful Life (RUL) of an aircraft engine. The solution fully implements the IoT business scenario as a starting point for you to plan and implement a solution that meets your own specific business requirements.
 
-次の図は、事前構成済みソリューションの論理コンポーネントの概要を示したものです。
+## <a name="logical-architecture"></a>Logical architecture
+
+The following diagram outlines the logical components of the preconfigured solution:
 
 ![][img-architecture]
 
-青色の項目は、構成済みのソリューションをプロビジョニングするために選択した場所に、プロビジョニングされている Azure サービスです。構成済みのソリューションは、米国東部、北ヨーロッパまたは東アジア リージョンのいずれかにプロビジョニングできます。
+The blue items are Azure services that are provisioned in the location you select when you provision the preconfigured solution. You can provision the preconfigured solution in either the East US, North Europe, or East Asia region.
 
-構成済みのソリューションをプロビジョニングするリージョンによっては、一部のリソースは利用できない場合があります。図のオレンジ色の項目は、選択したリージョンから最も近い利用可能なリージョン (米国中南部、西ヨーロッパや東南アジア) にプロビジョニングされている Azure サービスを示します。
+Some resources are not available in the regions where you provision the preconfigured solution. The orange items in the diagram represent the Azure services provisioned in the closest available region (South Central US, Europe West, or SouthEast Asia) given the selected region.
 
-緑色の項目は、シミュレートされている航空機エンジン デバイスです。これらのシミュレートされているデバイスの詳細については、次のセクションを参照してください。
+The green item is a simulated device that represents an aircraft engine. You can learn more about these simulated devices in the following section.
 
-灰色の項目は、*デバイスの管理*機能を実装しているコンポーネントを示します。予測的なメンテナンスの構成済みソリューションの現在のリリースでは、これらのリソースはプロビジョニングできません。デバイスの管理の詳細については、「[リモート監視事前構成済みソリューション][lnk-remote-monitoring]」を参照してください。
+The gray items represent components that implement *device administration* capabilities. The current release of the predictive maintenance preconfigured solution does not provision these resources. To learn more about device administration, refer to the [remote monitoring pre-configured solution][lnk-remote-monitoring].
 
-## シミュレートされたデバイス
+## <a name="simulated-devices"></a>Simulated devices
 
-構成済みのソリューションでは、航空機エンジン デバイスをシミュレーションしています。このソリューションでは、1 台の航空機にマッピングされる 2 つのエンジンをプロビジョニングしています。各エンジンは、4 種類のテレメトリを出力します。センサー 9、センサー 11、センサー 14、センサー 15 は、Machine Learning モデルがそのエンジンの残存耐用年数 (RUL) を計算するために必要なデータを提供します。シミュレートされたデバイスはそれぞれ、次のテレメトリ メッセージを IoT Hub に送信します。
+In the preconfigured solution, a simulated device represents an aircraft engine. The solution is provisioned with two engines that map to a single aircraft. Each engine emits four types of telemetry: Sensor 9, Sensor 11, Sensor 14, and Sensor 15 provide the data necessary for the Machine Learning model to calculate the Remaining Useful Life (RUL) for the engine. Each simulated device sends the following telemetry messages to IoT Hub:
 
-*サイクル数*。サイクルとは、2 ～ 10 時間以内に完了しているフライトを表します。フライト中、テレメトリ データは 30 分ごとにキャプチャされます。
+*Cycle count*. A cycle represents a completed flight of variable length between 2-10 hours in which telemetry data is captured every half hour during the flight.
 
-*テレメトリ*。エンジン属性を示すセンサーは 4 つあります。センサーは総称的に、センサー 9、センサー 11、センサー 14、およびセンサー 15 とラベル付けされています。これら 4 つのセンサーは、RUL 用に Machine Learning モデルから有用な結果を得るテレメトリを表します。このモデルは、実際のエンジンのセンサー データなど、公開されているデータ セットから作成されています。元のデータ セットからこのモデルを作成する方法の詳細については、「[Cortana Intelligence Gallery Predictive Maintenance Template (Cortana Intelligence ギャラリーの予測的なメンテナンス テンプレート)][lnk-cortana-analytics]」を参照してください。
+*Telemetry*. There are four sensors that represent engine attributes. The sensors are generically labeled Sensor 9, Sensor 11, Sensor 14, and Sensor 15. These 4 sensors represent telemetry sufficient to get useful results from the Machine Learning model for RUL. This model is created from a public data set that includes real engine sensor data. For more information on how the model was created from the original data set, see the [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics].
 
-シミュレートされたデバイスは、IoT Hub から送信された次のコマンドを処理できます。
+The simulated devices can handle the following commands sent from an IoT hub:
 
-| コマンド | Description |
+| Command | Description |
 |---------|-------------|
-| StartTelemetry | シミュレーションの状態を制御します。<br/>テレメトリを送信するデバイスを起動します。 |
-| StopTelemetry | シミュレーションの状態を制御します。<br/>テレメトリを送信するデバイスを終了します。 |
+| StartTelemetry | Controls the state of the simulation.<br/>Starts the device sending telemetry     |
+| StopTelemetry  | Controls the state of the simulation.<br/>Stops the device sending telemetry |
 
-IoT Hub は、デバイスのコマンドの受信確認を渡します。
+IoT Hub provides device command acknowledgment.
 
-## Azure Stream Analytics ジョブ
+## <a name="azure-stream-analytics-job"></a>Azure Stream Analytics job
 
-**ジョブ: テレメトリ**は、2 つのステートメントを使用して、デバイスのテレメトリの受信ストリームに対して動作します。1 つ目では、デバイスからのすべてのテレメトリを選択し、Web アプリで視覚化されるデータが格納される Blob Storage に送信します。2 つ目のステートメントは 2 分間のスライディング ウィンドウに渡る平均センサー値を計算し、このデータを Event Hub を介して**イベント プロセッサ**に送信します。
+**Job: Telemetry** operates on the incoming device telemetry stream using two statements. The first selects all telemetry from the devices and sends this data to blob storage from where it is visualized in the web app. The second statement computes average sensor values over a two-minute sliding window and sends this data through the Event hub to an **event processor**.
 
-## イベント プロセッサ
+## <a name="event-processor"></a>Event processor
 
-**イベント プロセッサ**は、完了したサイクルの平均センサー値を受け取ります。それらの値は、Machine Learning でトレーニングされたモデルを公開する API に渡され、エンジンの RUL が計算されます。
+The **event processor** takes the average sensor values for a completed cycle. It the passes those values to an API that exposes the Machine Learning trained model to calculate the RUL for an engine.
 
-## Azure Machine Learning
+## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-元のデータ セットからこのモデルを作成する方法の詳細については、「[Cortana Intelligence Gallery Predictive Maintenance Template (Cortana Intelligence ギャラリーの予測的なメンテナンス テンプレート)][lnk-cortana-analytics]」を参照してください。
+For more information on how the model was created from the original data set, see the [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics].
 
-## チュートリアルの開始
+## <a name="lets-start-walking"></a>Let's start walking
 
-このセクションでは、ソリューションのコンポーネントと想定されるユース ケースについて説明し、例を示します。
+This section walks you through the components of the solution, describes the intended use case, and provides examples.
 
-### 予測的なメンテナンスのダッシュボード
+### <a name="predictive-maintenance-dashboard"></a>Predictive Maintenance Dashboard
 
-Web アプリケーションのこのページでは、PowerBI JavaScript コントロールを使用して、以下を視覚化しています (「[PowerBI の視覚表現リポジトリ][lnk-powerbi]」を参照)。
+This page in the web application uses PowerBI JavaScript controls (see the [PowerBI-visuals repository][lnk-powerbi]) to visualize:
 
-- Blob Storage 内の Stream Analytics ジョブから出力されたデータ。
-- 各航空機エンジンの RUL とサイクル数。
+- The output data from the Stream Analytics jobs in blob storage.
+- The RUL and cycle count per aircraft engine.
 
-### クラウド ソリューションの動作を確認する
+### <a name="observing-the-behavior-of-the-cloud-solution"></a>Observing the behavior of the cloud solution
 
-Azure ポータルで、指定したソリューション名の付いたリソース グループに移動して、プロビジョニングされたリソースを確認します。
+In the Azure portal, navigate to the resource group with the solution name you chose to view your provisioned resources.
 
 ![][img-resource-group]
 
-構成済みのソリューションをプロビジョニングすると、Machine Learning ワークスペースへのリンクを含む電子メールを受信します。この Machine Learning ワークスペースには、**準備完了**の状態の場合、プロビジョニングしたソリューションの [azureiotsuite.com][lnk-azureiotsuite] ページから移動することも可能です。
+When you provision the preconfigured solution, you receive an email with a link to the Machine Learning workspace. You can also navigate to the Machine Learning workspace from the [azureiotsuite.com][lnk-azureiotsuite] page for your provisioned solution when it’s in the **Ready** state.
 
 ![][img-machine-learning]
 
-ソリューション ポータルでは、シミュレートされた 4 つのデバイスがサンプルにプロビジョニングされていることがわかります。2 機の航空機それぞれにエンジンが 2 つあり、エンジンごとにセンサーが 4 つあります。ソリューション ポータルに最初に移動すると、シミュレーションは停止します。
+In the solution portal, you can see that the sample is provisioned with four simulated devices to represent two aircraft with two engines per aircraft, each with four sensors. When you first navigate to the solution portal, the simulation is stopped.
 
 ![][img-simulation-stopped]
 
-**[シミュレーションの開始]** をクリックすると、シミュレーションが開始され、センサーの履歴、RUL、サイクル数、RUL 履歴がダッシュボードに入力されます。
+Click **Start simulation** to begin the simulation in which you see the sensor history, RUL, Cycles, and RUL history populate the dashboard.
 
 ![][img-simulation-running]
 
-RUL が (デモンストレーション用に選択した任意のしきい値である) 160 未満の場合、ソリューション ポータルには RUL の表示の横に警告記号が示され、航空機エンジンは黄色で強調表示されます。RUL 値は、全体的には一般的な下降傾向を示していますが、上下する傾向があることがわかります。この動きはさまざまな長さのサイクルとモデル精度が含まれていることの結果です。
+When RUL is less than 160 (an arbitrary threshold chosen for demonstration purposes), the solution portal displays a warning symbol next to the RUL display and highlights the aircraft engine in yellow. Notice how the RUL values have a general downward trend overall, but tend to bounce up and down. This behavior results from the varying cycle lengths and the model accuracy.
 
 ![][img-simulation-warning]
 
-148 サイクルの完全なシミュレーションの完了には約 35 分かかります。160 の RUL のしきい値には約 5 分で最初に達し、両エンジンがしきい値に達するのは、約 8 分後です。
+The full simulation takes around 35 minutes to complete 148 cycles. The 160 RUL threshold is met for the first time at around 5 minutes and both engines hit the threshold at around 8 minutes.
 
-148 サイクルの完全なデータセットのシミュレーションが実行され、最終的な RUL とサイクル数が出されます。
+The simulation runs through the complete dataset for 148 cycles and settles on final RUL and cycle values.
 
-シミュレーションは任意のポイントで停止できます。**[シミュレーションを開始する]** をクリックすると、データセットの先頭からのシミュレーションを再生できます。
+You can stop the simulation at any point, but clicking **Start Simulation** replays the simulation from the start of the dataset.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-これで予測的なメンテナンスの構成済みソリューションを実行しましたが、これを修正する場合は、「[事前構成済みソリューションのカスタマイズに関するガイダンス][lnk-customize]」を参照してください。
+Now you've run the predictive maintenance preconfigured solution you may want to modify it, see [Guidance on customizing preconfigured solutions][lnk-customize].
 
-TechNet のブログ投稿「[IoT Suite - Under The Hood - Predictive Maintenance (IoT スイート - 内部のしくみ - 予測的なメンテナンス)](http://social.technet.microsoft.com/wiki/contents/articles/33527.iot-suite-under-the-hood-predictive-maintenance.aspx)」では、予測的なメンテナンスの構成済みソリューションについて詳しく説明されています。
+The [IoT Suite - Under The Hood - Predictive Maintenance](http://social.technet.microsoft.com/wiki/contents/articles/33527.iot-suite-under-the-hood-predictive-maintenance.aspx) TechNet blog post provides additional detail about the predictive maintenance preconfigured solution.
 
-IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
+You can also explore some of the other features and capabilities of the IoT Suite preconfigured solutions:
 
-- [IoT スイートに関してよく寄せられる質問][lnk-faq]
-- [IoT の徹底的なセキュリティ][lnk-security-groundup]
+- [Frequently asked questions for IoT Suite][lnk-faq]
+- [IoT security from the ground up][lnk-security-groundup]
 
 
 [img-architecture]: media/iot-suite-predictive-walkthrough/architecture.png
@@ -133,4 +134,8 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

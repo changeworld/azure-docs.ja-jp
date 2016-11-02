@@ -16,18 +16,19 @@
     ms.date="08/31/2016"
     ms.author="sethm;shvija"/>
 
-# イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する
 
-この記事では、Azure Resource Manager テンプレートを使用し、イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を作成する方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+# <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する
 
-テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][]」を参照してください。
+この記事では、Azure Resource Manager テンプレートを使用し、イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を作成する方法について説明します。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-完全なテンプレートについては、GitHub にアクセスし、[イベント ハブとコンシューマー グループを作成するためのテンプレート][]をご覧ください。
+テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成][]」を参照してください。
+
+完全なテンプレートについては、GitHub にアクセスし、 [イベント ハブとコンシューマー グループを作成するためのテンプレート][] をご覧ください。
 
 >[AZURE.NOTE]
-最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][]」ギャラリーで "Event Hubs" を検索してください。
+>最新のテンプレートを確認する場合は、「 [Azure クイックスタート テンプレート][] 」ギャラリーで "Event Hubs" を検索してください。
 
-## デプロイの対象
+## <a name="what-will-you-deploy?"></a>デプロイの対象
 
 このテンプレートでデプロイされるのは、イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間です。
 
@@ -37,13 +38,13 @@
 
 [![Azure へのデプロイ](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
-## パラメーター
+## <a name="parameters"></a>パラメーター
 
-Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。常に同じ値に対してはパラメーターを定義しないでください。テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
+Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。 テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。 これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。 常に同じ値に対してはパラメーターを定義しないでください。 テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
 このテンプレートでは、次のパラメーターを定義します。
 
-### eventHubNamespaceName
+### <a name="eventhubnamespacename"></a>eventHubNamespaceName
 
 作成する Event Hubs 名前空間の名前。
 
@@ -53,7 +54,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 }
 ```
 
-### eventHubName
+### <a name="eventhubname"></a>eventHubName
 
 Event Hubs 名前空間に作成するイベント ハブの名前。
 
@@ -63,7 +64,7 @@ Event Hubs 名前空間に作成するイベント ハブの名前。
 }
 ```
 
-### eventHubConsumerGroupName
+### <a name="eventhubconsumergroupname"></a>eventHubConsumerGroupName
 
 イベント ハブに対して作成するコンシューマー グループの名前。
 
@@ -73,7 +74,7 @@ Event Hubs 名前空間に作成するイベント ハブの名前。
 }
 ```
 
-### apiVersion
+### <a name="apiversion"></a>apiVersion
 
 テンプレートの API バージョン。
 
@@ -83,9 +84,9 @@ Event Hubs 名前空間に作成するイベント ハブの名前。
 }
 ```
 
-## デプロイ対象のリソース
+## <a name="resources-to-deploy"></a>デプロイ対象のリソース
 
-イベント ハブとコンシューマー グループを含んだ、**EventHubs** タイプの名前空間を作成します。
+イベント ハブとコンシューマー グループを含んだ、 **EventHubs**タイプの名前空間を作成します。
 
 ```
 "resources":[  
@@ -128,34 +129,32 @@ Event Hubs 名前空間に作成するイベント ハブの名前。
    ],
 ```
 
-## デプロイを実行するコマンド
+## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
 
 [AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-## PowerShell
+## <a name="powershell"></a>PowerShell
 
 ```
-New-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-event-hubs-create-event-hub-and-consumer-group/azuredeploy.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-event-hubs-create-event-hub-and-consumer-group/azuredeploy.json
 ```
 
-## Azure CLI
+## <a name="azure-cli"></a>Azure CLI
 
 ```
 azure config mode arm
 
-azure group deployment create <my-resource-group> <my-deployment-name> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-event-hubs-create-event-hub-and-consumer-group/azuredeploy.json][]
+azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-event-hubs-create-event-hub-and-consumer-group/azuredeploy.json][]
 ```
 
-## 次のステップ
+[Azure Resource Manager のテンプレートの作成]: ../resource-group-authoring-templates.md
+[Azure クイックスタート テンプレート]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
+[Azure Resource Manager での Azure PowerShell の使用]: ../powershell-azure-resource-manager.md
+[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用]: ../xplat-cli-azure-resource-manager.md
+[イベント ハブとコンシューマー グループを作成するためのテンプレート]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/
 
-Azure Resource Manager を使ってリソースを作成、デプロイしたら、それらのリソースを管理する方法を次の記事で確認しましょう。
 
-- [Service Bus Explorer を使用した Event Hubs リソースの管理](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 
-  [Azure Resource Manager のテンプレートの作成]: ../resource-group-authoring-templates.md
-  [Azure クイックスタート テンプレート]: https://azure.microsoft.com/documentation/templates/?term=event+hubs
-  [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
-  [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
-  [イベント ハブとコンシューマー グループを作成するためのテンプレート]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/
+<!--HONumber=Oct16_HO2-->
 
-<!---HONumber=AcomDC_0907_2016-->
+

@@ -1,83 +1,88 @@
 <properties
-	pageTitle="Stretch Database の概要 | Microsoft Azure"
-	description="Stretch Database を使用して、透過的かつ安全にコールド データを Microsoft Azure クラウドに移行する方法について説明します。"
-	services="sql-server-stretch-database"
-	documentationCenter=""
-	authors="douglaslMS"
-	manager=""
-	editor=""/>
+    pageTitle="Stretch Database overview | Microsoft Azure"
+    description="Learn how Stretch Database migrates your cold data transparently and securely to the Microsoft Azure cloud."
+    services="sql-server-stretch-database"
+    documentationCenter=""
+    authors="douglaslMS"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-server-stretch-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="06/27/2016"
-	ms.author="douglasl"/>
+    ms.service="sql-server-stretch-database"
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="06/27/2016"
+    ms.author="douglasl"/>
 
-# Stretch Database の概要
 
-Stretch Database は、透過的かつ安全にコールド データを Microsoft Azure クラウドに移行します。
+# <a name="stretch-database-overview"></a>Stretch Database overview
 
-すぐに Stretch Database を開始する場合は、「[[Stretch Database を有効にする] ウィザードを実行する方法の概要](sql-server-stretch-database-wizard.md)」を参照してください。
+Stretch Database migrates your cold data transparently and securely to the Microsoft Azure cloud.
 
-## Stretch Database の利点
-Stretch Database には次の利点があります。
+If you just want to get started with Stretch Database right away, see [Get started by running the Enable Database for Stretch Wizard](sql-server-stretch-database-wizard.md).
 
-### コールド データ用に、コスト効果の高い可用性を提供
-SQL Server Stretch Database を使用して、ウォーム トランザクション データとコールド トランザクション データを SQL Server から Microsoft Azure に動的に拡張します。通常のコールド データ ストレージとは異なり、データは常にオンラインであり、クエリに使用できます。顧客の注文履歴のように大きなテーブルでも、高いコストをかけずに、データ リテンション期間のタイムラインを長くすることができます。スケーリングのコストが高いオンプレミス ストレージよりも、低コストの Azure をお勧めします。価格レベルを選択し、Azure ポータルで設定を構成することで、コストを管理します。必要に応じてスケールアップまたはスケールダウンします。詳細については、[SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)に関するページを参照してください。
+## <a name="what-are-the-benefits-of-stretch-database?"></a>What are the benefits of Stretch Database?
+Stretch Database provides the following benefits:
 
-### クエリまたはアプリケーションの変更を必要としない
-オンプレミスであるか、クラウドに拡張されているかにかかわらず、SQL Server データにシームレスにアクセスできます。管理者がデータを格納する場所を決定するポリシーを設定すると、SQL Server はバックグラウンドでデータ移行を処理します。テーブル全体が常にオンラインであり、クエリ可能です。また、Stretch Database は既存のクエリやアプリケーションを変更する必要がありません。データの場所は、アプリケーションに対して完全に透過的です。
+### <a name="provides-cost\-effective-availability-for-cold-data"></a>Provides cost\-effective availability for cold data
+Stretch warm and cold transactional data dynamically from SQL Server to Microsoft Azure with SQL Server Stretch Database. Unlike typical cold data storage, your data is always online and available to query. You can provide longer data retention timelines without breaking the bank for large tables like Customer Order History. Benefit from the low cost of Azure rather than scaling expensive, on\-premises storage. You choose the pricing tier and configure settings in the Azure Portal to maintain control over costs. Scale up or down as needed. Visit [SQL Server Stretch Database Pricing](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/) page for details.
 
-### オンプレミス データのメンテナンスを合理化
-オンプレミスのメンテナンスと、データ用のストレージを削減します。オンプレミス データのバックアップはより高速に実行され、保守期間内に完了します。データのクラウド部分のバックアップは自動的に実行されます。オンプレミス記憶域のニーズは大幅に軽減されます。Azure Storage は、オンプレミスの SSD に追加するよりも 80% 低いコストになる可能性があります。
+### <a name="doesn’t-require-changes-to-queries-or-applications"></a>Doesn’t require changes to queries or applications
+Access your SQL Server data seamlessly regardless of whether it’s on\-premises or stretched to the cloud.  You set the policy that determines where data is stored, and SQL Server handles the data movement in the background. The entire table is always online and queryable. And, Stretch Database doesn’t require any changes to existing queries or applications – the location of the data is completely transparent to the application.
 
-### 移行中もデータの保護を維持
-重要度の高いアプリケーションでも、クラウドに安全に拡張できるので安心です。SQL Server の Always Encrypted 機能によって、移動中のデータも暗号化できます。また、行レベルのセキュリティ (RLS) と他の高度な SQL Server セキュリティ機能も Stretch Database と連携してデータを保護できます。
+### <a name="streamlines-on\-premises-data-maintenance"></a>Streamlines on\-premises data maintenance
+Reduce on\-premises maintenance and storage for your data. Backups for your on\-premises data run faster and finish within the maintenance window. Backups for the cloud portion of your data run automatically. Your on\-premises storage needs are greatly reduced. Azure storage can be 80% less expensive than adding to on\-premises SSD.
 
-## Stretch Database の機能
-SQL Server インスタンス、データベース、少なくとも 1 つのテーブルで Stretch Database を有効にすると、コールド データの Azure への移行が自動的に開始されます。
+### <a name="keeps-your-data-secure-even-during-migration"></a>Keeps your data secure even during migration
+Enjoy peace of mind as you stretch your most important applications securely to the cloud. SQL Server’s Always Encrypted provides encryption for your data in motion. Row Level Security (RLS) and other advanced SQL Server security features also work with Stretch Database to protect your data.
 
--   別個のテーブルにコールド データを格納する場合、テーブル全体を移行できます。
+## <a name="what-does-stretch-database-do?"></a>What does Stretch Database do?
+After you enable Stretch Database for a SQL Server instance, a database, and at least one table, Stretch Database silently begins to migrate your cold data to Azure.
 
--   テーブルにホット データとコールド データの両方が含まれている場合、移行する行を選択するフィルター関数を指定できます。
+-   If you store cold data in a separate table, you can migrate the entire table.
 
-**既存のクエリとクライアント アプリを変更する必要はありません。** データの移行中も、ローカル データとリモート データの両方に対して、継続してシームレスにアクセスできます。リモート クエリの場合は短時間の遅延がありますが、コールド データにクエリするときにのみ、このような遅延が発生します。
+-   If your table contains both hot and cold data, you can specify a filter function to select the rows to migrate.
 
-Stretch Database では、移行中にエラーが発生しても、**データの損失が発生しません**。また、移行中に接続の問題が発生した場合でも、その問題に対応する再試行ロジックがあります。動的管理ビューには、移行の状態が表示されます。
+**You don't have to change existing queries and client apps.** You continue to have seamless access to both local and remote data, even during data migration. There is a small amount of latency for remote queries, but you only encounter this latency when you query the cold data.
 
-ローカル サーバー上の問題を解決する場合や、使用可能なネットワーク帯域幅を最大限にする場合は、**データ移行を一時停止することができます**。
+**Stretch Database ensures that no data is lost** if a failure occurs during migration. It also has retry logic to handle connection issues that may occur during migration. A dynamic management view provides the status of migration.
 
-![Stretch Database の概要][StretchOverviewImage1]
+**You can pause data migration** to troubleshoot problems on the local server or to maximize the available network bandwidth.
 
-## Stretch Database が適しているかどうか
-次のような意見がある場合、Stretch Database で要件を満たし、問題を解決できる可能性があります。
+![Stretch database overview][StretchOverviewImage1]
 
-|意思決定者の場合|データベース管理者の場合|
+## <a name="is-stretch-database-for-you?"></a>Is Stretch Database for you?
+If you can make the following statements, Stretch Database may help to meet your requirements and solve your problems.
+
+|If you're a decision maker|If you're a DBA|
 |------------------------------|-------------------|
-|トランザクション データを長期間保存する必要がある。|テーブルのサイズが大きくなり、管理が困難になっている。|
-|ときにはコールド データにクエリする必要がある。|ユーザーはコールド データへのアクセスを希望しているが、ほとんど使用することはない。|
-|古いアプリケーションを含め、更新する予定がないアプリケーションがある。|次々と記憶域を購入し、追加し続ける必要がある。|
-|記憶域にかかるコストを削減する方法を見つけたい。|SLA 内でこのように大きなテーブルをバックアップまたは復元することができない。|
+|I have to keep transactional data for a long time.|The size of my tables is getting out of control.|
+|Sometimes I have to query the cold data.|My users say that they want access to cold data, but they only rarely use it.|
+|I have apps, including older apps, that I don’t want to update.|I have to keep buying and adding more storage.|
+|I want to find a way to save money on storage.|I can’t backup or restore such large tables within the SLA.|
 
-## Stretch Database の候補となるデータベースとテーブルの種類
-Stretch Database は、大量のコールド データ (通常は少数のテーブルに格納されている) があるトランザクション データベースを対象としています。たとえば、10 億行を超えるテーブルなどがあります。
+## <a name="what-kind-of-databases-and-tables-are-candidates-for-stretch-database?"></a>What kind of databases and tables are candidates for Stretch Database?
+Stretch Database targets transactional databases with large amounts of cold data, typically stored in a small number of tables. These tables may contain more than a billion rows.
 
-SQL Server 2016 のテンポラル テーブルを使用している場合、Stretch Database を使用して、関連する履歴テーブルのすべてまたは一部をコスト効率のよい Azure の記憶域に移行します。詳細については、「[システム バージョン管理されたテンポラル テーブルの履歴データの保有期間管理](https://msdn.microsoft.com/library/mt637341.aspx)」を参照してください。
+If you use the temporal table feature of SQL Server 2016, use Stretch Database to migrate all or part of the associated history table to cost\-effective storage in Azure. For more info, see [Manage Retention of Historical Data in System-Versioned Temporal Tables](https://msdn.microsoft.com/library/mt637341.aspx).
 
-SQL Server 2016 Upgrade Advisor の 1 機能である Stretch Database Advisor を使用して、Stretch Database のデータベースとテーブルを特定します。詳細については、「[Stretch Database Advisor を実行して Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)」を参照してください。潜在的なブロックの問題の詳細については、「[Stretch Database のセキュリティ構成の制限とブロック問題](sql-server-stretch-database-limitations.md)」を参照してください。
+Use Stretch Database Advisor, a feature of SQL Server 2016 Upgrade Advisor, to identify databases and tables for Stretch Database. For more info, see [Identify databases and tables for Stretch Database](sql-server-stretch-database-identify-databases.md). To learn more about potential blocking issues, see [Limitations for Stretch Database](sql-server-stretch-database-limitations.md).
 
-## Stretch Database を試用する
-**AdventureWorks サンプル データベースで Stretch Database を試用することができます。** AdventureWorks サンプル データベースを入手するには、[こちら](https://www.microsoft.com/download/details.aspx?id=49502)から、少なくともデータベース ファイル、サンプル ファイル、スクリプト ファイルをダウンロードします。サンプル データベースを SQL Server 2016 のインスタンスに復元した後に、サンプル ファイルを解凍し、Stretch DB フォルダーの Stretch DB Samples ファイルを開きます。このファイルのスクリプトを実行して、Stretch Database を有効にする前後でデータに使用される空間を確認します。また、データ移行の進行状況を追跡し、データの移行中も移行後も、継続して既存のデータをクエリできること、新しいデータを挿入できることを確認します。
+## <a name="test-drive-stretch-database"></a>Test drive Stretch Database
+**Test drive Stretch Database with the AdventureWorks sample database.** To get the AdventureWorks sample database, download at least the database file and the samples and scripts file from [here](https://www.microsoft.com/download/details.aspx?id=49502). After you restore the sample database to an instance of SQL Server 2016, unzip the samples file and open the Stretch DB Samples file from the Stretch DB folder. Run the scripts in this file to check the space used by your data before and after you enable Stretch Database,  to track the progress of data migration, and to confirm that you can continue to query existing data and insert new data both during and after data migration.
 
-## 次のステップ
-**Stretch Database の候補となるデータベースとテーブルを特定します。** SQL Server 2016 Upgrade Advisor をダウンロードし、Stretch Database Advisor を実行して、Stretch Database の候補となるデータベースとテーブルを特定します。Stretch Database Advisor はブロック問題も特定します。詳細については、「[Stretch Database Advisor を実行して Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)」を参照してください。
+## <a name="next-step"></a>Next step
+**Identify databases and tables that are candidates for Stretch Database.** Download SQL Server 2016 Upgrade Advisor and run the Stretch Database Advisor to identify databases and tables that are candidates for Stretch Database. Stretch Database Advisor also identifies blocking issues. For more info, see [Identify databases and tables for Stretch Database](sql-server-stretch-database-identify-databases.md).
 
 <!--Image references-->
 [StretchOverviewImage1]: ./media/sql-server-stretch-database-overview/StretchDBOverview.png
 [StretchOverviewImage2]: ./media/sql-server-stretch-database-overview/StretchDBOverview1.png
 [StretchOverviewImage3]: ./media/sql-server-stretch-database-overview/StretchDBOverview2.png
 
-<!-------HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

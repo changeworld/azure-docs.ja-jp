@@ -1,25 +1,26 @@
 <properties
-	pageTitle="Machine Learning ワークスペースの管理 | Microsoft Azure"
-	description="Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します"
-	services="machine-learning"
-	documentationCenter=""
-	authors="garyericson"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Machine Learning ワークスペースの管理 | Microsoft Azure"
+    description="Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します"
+    services="machine-learning"
+    documentationCenter=""
+    authors="garyericson"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/06/2016"
-	ms.author="garye"/>
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/05/2016"
+    ms.author="garye"/>
 
 
-# Azure Machine Learning ワークスペースの管理
 
->[AZURE.NOTE] この記事の手順は、Azure Machine Learning の従来の Web サービスに関連しています。新しい Web サービスの管理方法の詳細については、「[新しい Machine Learning Web サービスの管理](machine-learning-manage-new-webservice.md)」を参照してください。
+# <a name="manage-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースの管理
+
+>[AZURE.NOTE] この記事の手順は、Azure Machine Learning のクラシック Web サービスに関連しています。 Machine Learning Web サービス ポータルでの Web サービスの管理については、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](machine-learning-manage-new-webservice.md)」をご覧ください。
 
 Azure クラシック ポータルを使用すると、Machine Learning ワークスペースで次の操作を管理できます。
 
@@ -30,70 +31,84 @@ Azure クラシック ポータルを使用すると、Machine Learning ワー�
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-また、[ダッシュボード] タブには、ワークスペースの使用状況の概要とワークスペース情報の要約が表示されます。
+また、[ダッシュボード] タブには、ワークスペースの使用状況の概要とワークスペース情報の要約が表示されます。  
 
-> [AZURE.TIP] Azure Machine Learning Studio の **[WEB サービス]** タブで、Machine Learning Web サービスを追加、更新、削除できます。
+> [AZURE.TIP] Azure Machine Learning Studio の **[Web サービス]** タブで、Machine Learning Web サービスを追加、更新、削除できます。
 
 ワークスペースを管理するには
 
-1.	Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、[Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
-2.	Microsoft Azure サービス パネルで、**[MACHINE LEARNING]** をクリックします。
-3.	管理するワークスペースをクリックします。
+1.  Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、[Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
+2.  Microsoft Azure サービス パネルで、 **[MACHINE LEARNING]**をクリックします。
+3.  管理するワークスペースをクリックします。
 
 ワークスペースのページには次の 3 つのタブがあります。
 
 - **[ダッシュボード]** - ワークスペースの使用状況と情報を表示します
 - **[構成]** - ワークスペースへのアクセスを管理します
-- **[WEB サービス]** - このワークスペースから公開されている Web サービスを管理できます
+- **[Web サービス]** - このワークスペースから公開されている Web サービスを管理できます
 
-
-## ワークスペースの使用方法を監視するには
+## <a name="to-monitor-how-the-workspace-is-being-used"></a>ワークスペースの使用方法を監視するには
 
 **[ダッシュボード]** タブをクリックします。
 
 ダッシュボードには、ワークスペースの全体的な使用状況と、ワークスペース情報の概要が表示されます。
 
-- **[コンピューティング]** グラフは、ワークスペースで使用されているコンピューティング リソースを表示します。ビューを変更して相対値または絶対値を表示したり、グラフに表示される期間を変更したりできます。
+- **[コンピューティング]** グラフは、ワークスペースで使用されているコンピューティング リソースを表示します。 ビューを変更して相対値または絶対値を表示したり、グラフに表示される期間を変更したりできます。
 - **[使用状況の概要]** は、ワークスペースで使用されている Azure ストレージを表示します。
 - **[概要]** は、ワークスペース情報や役に立つリンクを提供します。
 
-> [AZURE.NOTE] **[ML Studio にサインイン]** リンクは、現在サインイン中の Microsoft アカウントを使用して Machine Learning Studio を開きます。Azure クラシック ポータルへのサインインに使用する Microsoft アカウントでワークスペースを作成する場合は、ワークスペースを開く権限が自動的には付与されません。ワークスペースを開くには、ワークスペースの所有者として定義された Microsoft アカウントにサインインするか、所有者からワークスペースへの参加の招待を受け取る必要があります。
+> [AZURE.NOTE] **[ML Studio にサインイン]** リンクは、現在サインイン中の Microsoft アカウントを使用して Machine Learning Studio を開きます。 Azure クラシック ポータルへのサインインに使用する Microsoft アカウントでワークスペースを作成する場合は、ワークスペースを開く権限が自動的には付与されません。 ワークスペースを開くには、ワークスペースの所有者として定義された Microsoft アカウントにサインインするか、所有者からワークスペースへの参加の招待を受け取る必要があります。
 
 
-## ユーザーのアクセスを許可または一時停止するには ##
+## <a name="to-grant-or-suspend-access-for-users"></a>ユーザーのアクセスを許可または一時停止するには ##
 
 **[構成]** タブをクリックします。
 
 [構成] タブで次の操作を実行できます。
 
-- [拒否] をクリックして、Machine Learning ワークスペースへのアクセスを中断します。ユーザーは、Machine Learning Studio でワークスペースを開くことができなくなります。アクセスを復元するには、[許可] をクリックします。
+- [拒否] をクリックして、Machine Learning ワークスペースへのアクセスを中断します。 ユーザーは、Machine Learning Studio でワークスペースを開くことができなくなります。 アクセスを復元するには、[許可] をクリックします。
 
-Machine Learning Studio のワークスペースにアクセスできる追加アカウントを管理するには、[**ダッシュ ボード**] タブで [**ML Studio にサインイン**] をクリックします ([**ML Studio にサインイン**] については、上記注を参照してください)。Machine Learning Studio でワークスペースが開きます。ここで、**[設定]** タブの **[ユーザー]** をクリックします。**[INVITE MORE USERS]** をクリックしてユーザーにワークスペースへのアクセス権を付与するか、ユーザーを選択して **[削除]** をクリックします。
+Machine Learning Studio のワークスペースにアクセスできる追加アカウントを管理するには、**[ダッシュボード]** タブで **[ML Studio にサインイン]** をクリックします (**[ML Studio にサインイン]** については、上記の注を参照してください)。 Machine Learning Studio でワークスペースが開きます。 ここで、**[設定]** タブの **[ユーザー]** をクリックします。 **[その他のユーザーの招待]** をクリックしてユーザーにワークスペースへのアクセス権を付与するか、ユーザーを選択して **[削除]** をクリックします。
 
 
-## このワークスペースの Web サービスを管理するには
+## <a name="to-manage-web-services-in-this-workspace"></a>このワークスペースの Web サービスを管理するには
 
 **[Web サービス]** タブをクリックします。
 
-このワークスペースから発行された Web サービスの一覧が表示されます。Web サービスを管理するには、一覧で名前をクリックして Web サービス ページを開きます。
+このワークスペースから発行された Web サービスの一覧が表示されます。
+Web サービスを管理するには、一覧で名前をクリックして Web サービス ページを開きます。
 
 Web サービスには、1 つ以上のエンドポイントが定義されている場合があります。
 
-- "既定" のエンドポイントの他に追加のエンドポイントを定義できます。エンドポイントを追加するには、ページの下部にある **[エンドポイントの追加]** をクリックします。
+- "既定" のエンドポイントの他に追加のエンドポイントを定義できます。 エンドポイントを追加するには、ダッシュボードの下部にある **[Manage Endpoints (エンドポイントの管理)]** をクリックして Azure Machine Learning Web サービス ポータルを開きます。
 
-- エンドポイントを削除するには ("既定" のエンドポイントを削除することはできません)、エンドポイント行の名前以外の任意の場所をクリックし、ページの下部にある **[エンドポイントの削除]** をクリックします。Web サービスからエンドポイントが削除されます。
+- エンドポイントを削除するには ("既定" のエンドポイントを削除することはできません)、エンドポイント行の先頭にあるチェック ボックスをクリックし、**[削除]** をクリックします。 Web サービスからエンドポイントが削除されます。
 
     > [AZURE.NOTE] Web サービス エンドポイントの使用中にエンドポイントが削除された場合は、アプリケーションが次回サービスにアクセスを試みるとエラーが表示されます。
 
-Web サービス エンドポイントの名前をクリックして開きます。使用状況グラフに、Web サービス エンドポイントで使用されているコンピューティングと予測のリソースが表示されます。ビューを変更して相対値または絶対値を表示したり、グラフに表示される期間を変更したりできます。
+Web サービス エンドポイントの名前をクリックして開きます。 
 
-このページには、Web サービスの REST API を使用してエンドポイントにアクセスする必要がある情報も表示されます。詳細については、「[How to consume an Azure Machine Learning web service (Azure Machine Learning Web サービスを使用する方法)][consume]」をご覧ください。
+ダッシュボードから、一定期間の Web サービスの全体的な使用状況を表示できます。 使用状況グラフの右上の [期間] ドロップダウン メニューから表示する期間を選択することができます。 ダッシュボードには次の情報が表示されます。
 
-このページから Azure Marketplace に Web サービスを発行することもできます。詳細については、「[Azure Marketplace への Azure Machine Learning Web サービスの発行][marketplace]」をご覧ください。
+- **一定期間内の要求数** 選択した期間の要求数がステップのグラフで表示されます。 使用数が急増しているかどうかの判定に役立ちます。
+- **要求応答の要求数** 選択した期間にサービスが受信した要求応答の呼び出し合計数とそれらのうち失敗した数が表示されます。
+- **要求応答の平均計算時間** 受信した要求の実行に必要とされた平均時間が表示されます。
+- **バッチ要求数** 選択した期間にサービスが受信したバッチ要求の合計数とそれらのうち失敗した数が表示されます。
+- **ジョブの平均待機時間** 受信した要求の実行に必要とされた平均時間が表示されます。
+- **エラー数** Web サービスの呼び出し時に発生したエラーの集計数が表示されます。
+- **サービス コスト** サービスに関連付けられている課金プランの料金が表示されます。
 
-**[構成]** タブをクリックして説明を編集するか、Web サービスに使用できる現在の接続数を制御するか、診断トレースを設定します。
+[構成] ページでは、次のプロパティを更新できます。
 
-[consume]: machine-learning-consume-web-services.md
-[marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
+* **説明** Web サービスの説明を入力することができます。 [説明] は必須フィールドです。
+* **ログ記録** エンドポイントに関するエラー ログ記録を有効または無効にすることができます。 ログ記録の詳細については、「[Machine Learning Web サービスのログ記録の有効化](machine-learning-web-services-logging.md)」をご覧ください。
+* **サンプル データの有効化** 要求応答サービスのテストに使用できるサンプル データを提供することができます。 Machine Learning Studio で Web サービスを作成した場合は、サンプル データはモデルのトレーニングに使用したデータから取得されます。 サービスをプログラムで作成した場合は、データは JSON パッケージの一部として提供したサンプル データから取得されます。
 
-<!---HONumber=AcomDC_0914_2016-->
+[使用]: machine-learning-consume-web-services.md
+[Marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

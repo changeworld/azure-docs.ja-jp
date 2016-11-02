@@ -1,10 +1,10 @@
 <properties
-    pageTitle=".NET SDK を使用した Azure Search インデックスの作成 | Microsoft Azure | ホスト型クラウド検索サービス"
-    description="Azure Search .NET SDK を使用して、コードでインデックスを作成します。"
+    pageTitle="Create an Azure Search index using the .NET SDK | Microsoft Azure | Hosted cloud search service"
+    description="Create an index in code using the Azure Search .NET SDK."
     services="search"
     documentationCenter=""
     authors="brjohnstmsft"
-    manager=""
+    manager="jhubbard"
     editor=""
     tags="azure-portal"/>
 
@@ -17,39 +17,40 @@
     ms.date="08/29/2016"
     ms.author="brjohnst"/>
 
-# .NET SDK を使用した Azure Search インデックスの作成
+
+# <a name="create-an-azure-search-index-using-the-.net-sdk"></a>Create an Azure Search index using the .NET SDK
 > [AZURE.SELECTOR]
-- [概要](search-what-is-an-index.md)
-- [ポータル](search-create-index-portal.md)
+- [Overview](search-what-is-an-index.md)
+- [Portal](search-create-index-portal.md)
 - [.NET](search-create-index-dotnet.md)
-- [REST ()](search-create-index-rest-api.md)
+- [REST](search-create-index-rest-api.md)
 
 
-この記事では、[Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用して Azure Search の[インデックス](https://msdn.microsoft.com/library/azure/dn798941.aspx)を作成するプロセスについて説明します。
+This article will walk you through the process of creating an Azure Search [index](https://msdn.microsoft.com/library/azure/dn798941.aspx) using the [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx).
 
-このガイドに従ってインデックスを作成する前に、既に [Azure Search サービスを作成済み](search-create-service-portal.md)である必要があります。
+Before following this guide and creating an index, you should have already [created an Azure Search service](search-create-service-portal.md).
 
-この記事に記載されたすべてのサンプル コードは、C# で記述されていることにご注意ください。[GitHub](http://aka.ms/search-dotnet-howto) に完全なソース コードがあります。
+Note that all sample code in this article is written in C#. You can find the full source code [on GitHub](http://aka.ms/search-dotnet-howto).
 
-## I.Azure Search サービスの管理者 API キーの識別
-Azure Search サービスのプロビジョニングが完了すると、あと少しで、.NET SDK を使用して、サービス エンドポイントに対して要求を発行できます。まず、プロビジョニングした検索サービス用に生成された管理者 API キーの 1 つを取得する必要があります。.NET SDK は、サービスに対する要求ごとに、この API キーを送信します。有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
+## <a name="i.-identify-your-azure-search-service's-admin-api-key"></a>I. Identify your Azure Search service's admin api-key
+Now that you have provisioned an Azure Search service, you are almost ready to issue requests against your service endpoint using the .NET SDK. First, you will need to obtain one of the admin api-keys that was generated for the search service you provisioned. The .NET SDK will send this api-key on every request to your service. Having a valid key establishes trust, on a per request basis, between the application sending the request and the service that handles it.
 
-1. サービスの API キーを探すには、[Azure ポータル](https://portal.azure.com/)にログインする必要があります。
-2. Azure Search サービスのブレードに移動します。
-3. "キー" アイコンをクリックします。
+1. To find your service's api-keys you must log into the [Azure Portal](https://portal.azure.com/)
+2. Go to your Azure Search service's blade
+3. Click on the "Keys" icon
 
-サービスで*管理者キー*と*クエリ キー*を使用できるようになります。
+Your service will have *admin keys* and *query keys*.
 
-  - プライマリおよびセカンダリ*管理者キー*は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。キーは 2 つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
-  - *クエリ キー*はインデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。
+  - Your primary and secondary *admin keys* grant full rights to all operations, including the ability to manage the service, create and delete indexes, indexers, and data sources. There are two keys so that you can continue to use the secondary key if you decide to regenerate the primary key, and vice-versa.
+  - Your *query keys* grant read-only access to indexes and documents, and are typically distributed to client applications that issue search requests.
 
-インデックスを作成する目的では、プライマリ管理者キーとセカンダリ管理者キーのどちらかを使用できます。
+For the purposes of creating an index, you can use either your primary or secondary admin key.
 
 <a name="CreateSearchServiceClient"></a>
-## II.SearchServiceClient クラスのインスタンスの作成
-Azure Search .NET SDK を使い始めるには、`SearchServiceClient` クラスのインスタンスを作成する必要があります。このクラスにはいくつかのコンストラクターがあります。目的のコンストラクターは、パラメーターとして検索サービスの名前と `SearchCredentials` オブジェクトを使用します。`SearchCredentials` は API キーをラップします。
+## <a name="ii.-create-an-instance-of-the-searchserviceclient-class"></a>II. Create an instance of the SearchServiceClient class
+To start using the Azure Search .NET SDK, you will need to create an instance of the `SearchServiceClient` class. This class has several constructors. The one you want takes your search service name and a `SearchCredentials` object as parameters. `SearchCredentials` wraps your api-key.
 
-次のコードは、アプリケーションの構成ファイル (`app.config` または `web.config`) に格納されている検索サービスの名前と API キーの値を使用して新しい `SearchServiceClient` を作成します。
+The code below creates a new `SearchServiceClient` using values for the search service name and api-key that are stored in the application's config file (`app.config` or `web.config`):
 
 ```csharp
 string searchServiceName = ConfigurationManager.AppSettings["SearchServiceName"];
@@ -58,20 +59,20 @@ string adminApiKey = ConfigurationManager.AppSettings["SearchServiceAdminApiKey"
 SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
 ```
 
-`SearchServiceClient` には `Indexes` プロパティが含まれています。このプロパティは、Azure Search インデックスの作成、一覧表示、更新、または削除に必要なすべてのメソッドを提供します。
+`SearchServiceClient` has an `Indexes` property. This property provides all the methods you need to create, list, update, or delete Azure Search indexes.
 
-> [AZURE.NOTE] `SearchServiceClient` クラスは検索サービスへの接続を管理します。開いている接続の数が多くなりすぎないよう、可能であれば、アプリケーションで `SearchServiceClient` の単一のインスタンスを共有する必要があります。SearchServiceClient のメソッドはスレッド セーフなので、このような共有が可能です。
+> [AZURE.NOTE] The `SearchServiceClient` class manages connections to your search service. In order to avoid opening too many connections, you should try to share a single instance of `SearchServiceClient` in your application if possible. Its methods are thread-safe to enable such sharing.
 
 <a name="DefineIndex"></a>
-## III.`Index` クラスを使用した Azure Search インデックスの定義
-`Indexes.Create` メソッドに対する 1 回の呼び出しでインデックスが作成されます。このメソッドでは、Azure Search インデックスを定義する `Index` オブジェクトがパラメーターとして使用されます。次のように、`Index` オブジェクトを作成して初期化する必要があります。
+## <a name="iii.-define-your-azure-search-index-using-the-`index`-class"></a>III. Define your Azure Search index using the `Index` class
+A single call to the `Indexes.Create` method will create your index. This method takes as a parameter an `Index` object that defines your Azure Search index. You need to create an `Index` object and initialize it as follows:
 
-1. `Index` オブジェクトの `Name` プロパティをインデックスの名前に設定します。
-2. `Index` オブジェクトの `Fields` プロパティを `Field` オブジェクトの配列に設定します。それぞれの `Field` オブジェクトがインデックスのフィールドの動作を定義します。コンストラクターに対して、データ型 (または文字列フィールドのアナライザー) と共に、フィールドの名前を指定することができます。`IsSearchable` や `IsFilterable` など、他のプロパティを設定することもできます。
+1. Set the `Name` property of the `Index` object to the name of your index.
+2. Set the `Fields` property of the `Index` object to an array of `Field` objects. Each of the `Field` objects defines the behavior of a field in your index. You can provide the name of the field to the constructor, along with the data type (or analyzer for string fields). You can also set other properties like `IsSearchable`, `IsFilterable`, etc.
 
-各 `Field` には[適切なプロパティ](https://msdn.microsoft.com/library/azure/dn798941.aspx)を割り当てる必要があるため、インデックスを設計する際は、検索のユーザー エクスペリエンスとビジネス ニーズに留意することが重要です。これらのプロパティでは、どのフィールドにどの検索機能 (フィルター、ファセット、全文検索の並べ替えなど) が適用されるかを制御します。明示的に設定しないプロパティについては、明確に有効にしない限り、`Field` クラスの既定では、対応する検索機能が無効になります。
+It is important that you keep your search user experience and business needs in mind when designing your index as each `Field` must be assigned the [appropriate properties](https://msdn.microsoft.com/library/azure/dn798941.aspx). These properties control which search features (filtering, faceting, sorting full-text search, etc.) apply to which fields. For any property you do not explicitly set, the `Field` class defaults to disabling the corresponding search feature unless you specifically enable it.
 
-この例では、インデックスに "hotels" という名前を付け、次のようにフィールドを定義しました。
+For our example, we've named our index "hotels" and defined our fields as follows:
 
 ```csharp
 var definition = new Index()
@@ -95,32 +96,36 @@ var definition = new Index()
 };
 ```
 
-各 `Field` のプロパティの値は、アプリケーションでどのように使用されるかに応じて、慎重に選択されています。たとえば、ホテルについて検索するユーザーは `description` フィールドでのキーワードの一致に関心がある可能性が高いです。そのため、`IsSearchable` を `true` に設定してそのフィールドの全文検索を有効にします。
+We have carefully chosen the property values for each `Field` based on how we think they will be used in an application. For example, it is likely that people searching for hotels will be interested in keyword matches on the `description` field, so we enable full-text search for that field by setting `IsSearchable` to `true`.
 
-`IsKey` を `true` に設定して、インデックスの `DataType.String` 型のフィールドを 1 つだけ、key フィールドとして指定する必要があることにご注意ください (上記の例の `hotelId` を参照)。
+Please note that exactly one field in your index of type `DataType.String` must be the designated as the _key_ field by setting `IsKey` to `true` (see `hotelId` in the above example).
 
-上記のインデックス定義では、フランス語のテキストを格納することを目的としているため、`description_fr` フィールドにカスタム言語アナライザーを使用しています。言語アナライザーの詳細については、[MSDN の言語サポートのトピック](https://msdn.microsoft.com/library/azure/dn879793.aspx)と、対応する[ブログ記事](https://azure.microsoft.com/blog/language-support-in-azure-search/)を参照してください。
+The index definition above uses a custom language analyzer for the `description_fr` field because it is intended to store French text. See [the Language support topic on MSDN](https://msdn.microsoft.com/library/azure/dn879793.aspx) as well as the corresponding [blog post](https://azure.microsoft.com/blog/language-support-in-azure-search/) for more information about language analyzers.
 
-> [AZURE.NOTE]  コンストラクターで `AnalyzerName.FrLucene` を渡すことによって、`Field` は自動的に `DataType.String` 型になり、`IsSearchable` が `true` に設定されることにご注意ください。
+> [AZURE.NOTE]  Note that by passing `AnalyzerName.FrLucene` in the constructor, the `Field` will automatically be of type `DataType.String` and will have `IsSearchable` set to `true`.
 
-## IV.インデックスの作成
-`Index` オブジェクトが初期化されたので、`SearchServiceClient` オブジェクトで `Indexes.Create` を呼び出すだけでインデックスを作成できます。
+## <a name="iv.-create-the-index"></a>IV. Create the index
+Now that you have an initialized `Index` object, you can create the index simply by calling `Indexes.Create` on your `SearchServiceClient` object:
 
 ```csharp
 serviceClient.Indexes.Create(definition);
 ```
 
-要求が成功すると、メソッドは通常どおりに復帰します。無効なパラメーターなど、要求に問題がある場合、メソッドは `CloudException` をスローします。
+For a successful request, the method will return normally. If there is a problem with the request such as an invalid parameter, the method will throw `CloudException`.
 
-インデックスが不要になり、それを削除する場合は、`SearchServiceClient` で `Indexes.Delete` を呼び出すだけです。たとえば、"hotels" を削除する方法を次に示します。
+When you're done with an index and want to delete it, just call the `Indexes.Delete` method on your `SearchServiceClient`. For example, this is how we would delete the "hotels" index:
 
 ```csharp
 serviceClient.Indexes.Delete("hotels");
 ```
 
-> [AZURE.NOTE] この記事のコード例では、わかりやすくするため、Azure Search .NET SDK の同期メソッドを使用します。実際のアプリケーションでは、高い拡張性と応答性を維持するため、非同期メソッドを使用することをお勧めします。たとえば、上記の例では、`Create` と `Delete` の代わりに、`CreateAsync` と `DeleteAsync` を使用できます。
+> [AZURE.NOTE] The example code in this article uses the synchronous methods of the Azure Search .NET SDK for simplicity. We recommend that you use the asynchronous methods in your own applications to keep them scalable and responsive. For example, in the examples above you could use `CreateAsync` and `DeleteAsync` instead of `Create` and `Delete`.
 
-## 次へ
-Azure Search インデックスを作成すると、データの検索を開始できるように[インデックスにコンテンツをアップロードする](search-what-is-data-import.md)準備が完了します。
+## <a name="next"></a>Next
+After creating an Azure Search index, you will be ready to [upload your content into the index](search-what-is-data-import.md) so you can start searching your data.
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+
