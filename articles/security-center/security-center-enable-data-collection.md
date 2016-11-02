@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center のデータ収集を有効にする | Microsoft Azure"
-   description=" Azure Security Center のデータ収集を有効にする方法について説明します。"
+   pageTitle="Enable data collection in Azure Security Center | Microsoft Azure"
+   description=" Learn how to enable data collection in Azure Security Center. "
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -13,64 +13,71 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/29/2016"
+   ms.date="11/01/2016"
    ms.author="terrylan"/>
 
-# Azure Security Center のデータ収集を有効にする
 
-Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログなど、Azure 仮想マシンに関するさまざまなデータを収集、処理しています。最初に Security Center にアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。データ収集は有効にしておくことをお勧めしますが、Security Center のポリシーでデータ収集をオフにして、オプトアウトすることもできます ([データ収集の無効化](#disabling-data-collection)を参照)。データ収集を無効にすると、そのサブスクリプションのセキュリティ ポリシーでデータ収集を有効にするよう Security Center から提案されます。
+# <a name="enable-data-collection-in-azure-security-center"></a>Enable data collection in Azure Security Center
 
-> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+To help customers prevent, detect, and respond to threats, Azure Security Center collects and processes data about your Azure virtual machines, including configuration information, metadata, event logs, and more. When you first access Security Center, data collection is enabled on all virtual machines in your subscription. Data collection is recommended but you can opt-out by turning data collection off in the Security Center policy (see [Disabling data collection](#disabling-data-collection)). If you turn data collection off, Security Center will recommend that you turn on data collection in the security policy for that subscription.
 
-## 推奨事項の実装
+> [AZURE.NOTE] This document introduces the service by using an example deployment. This is not a step-by-step guide.
 
-1. **[セキュリティ センター]** ブレードの **[推奨事項]** タイルを選択します。**[推奨事項]** ブレードが表示されます。 ![[セキュリティ センター] ブレード][1]
+## <a name="implement-the-recommendation"></a>Implement the recommendation
 
-2. **[推奨事項]** ブレードの **[Enable data collection for subscriptions (サブスクリプションのデータ収集の有効化)]** を選択します。**[Turn on data collection (データ収集の有効化)]** ブレードが表示されます。 ![Recommendations blade][2]
+1. Select the **Recommendations** tile on the **Security Center** blade.  This opens the **Recommendations** blade.
+![Security Center blade][1]
 
-3. **[Turn on data collection (データ収集の有効化)]** ブレードで、該当するサブスクリプションを選択します。対応するサブスクリプションの **[セキュリティ ポリシー]** ブレードが表示されます。
+2. On the **Recommendations** blade, select **Enable data collection for subscriptions**.  This will open the **Turn on data collection** blade.
+![Recommendations blade][2]
 
-4. **[セキュリティ ポリシー]** ブレードで、**[データ収集]** の下の **[オン]** を選択すると、自動的にログが収集されます。また、データの収集をオンにすると、サブスクリプションの既存の VM と、サポートされる新しい VM のすべてで、監視拡張機能がプロビジョニングされるようになります。 ![Security policy blade][3]
+3. On the **Turn on data collection** blade, select your subscription. The **Security policy** blade for that subscription opens.
 
-5.	[**保存**] を選択します。
+4. On the **Security policy** blade, select **On** under **Data collection** to automatically collect logs. Turning on data collection will also provision the monitoring extension on all current and new supported VMs in the subscription.
+![Security policy blade][3]
 
-6.	**[Choose a storage account per region (リージョンごとにストレージ アカウントを選択)]** を選択します。実行している仮想マシンがある各リージョンに対し、これらの仮想マシンから収集されたデータが格納されているストレージ アカウントを選択します。リージョンごとにストレージ アカウントを選択しないと、自動的に作成されます。この例では、**[newstoracct]** を選択します。ストレージ アカウントは後から変更できます。変更する場合は、該当するサブスクリプションのセキュリティ ポリシーに戻り、別のストレージ アカウントを選択してください。 ![Choose a storage account][4]
+5.  Select **Save**.
 
-7.	**[OK]** を選択します。
+6.  Select **Choose a storage account per region**. For each region in which you have virtual machines running, you choose the storage account where data collected from those virtual machines is stored. If you do not choose a storage account for each region, it will be automatically created for you. In this example, we’ll choose **newstoracct**. You can change the storage account later by returning to the security policy for your subscription and choosing a different storage account.
+![Choose a storage account][4]
 
-> [AZURE.NOTE] データ収集を有効にして、最初にサブスクリプション レベルでストレージ アカウントを選択することをお勧めします。セキュリティ ポリシーは Azure サブスクリプション レベルとリソース グループ レベルで設定できますが、データ収集とストレージ アカウントの構成はサブスクリプション レベルでのみ発生します。
+7.  Select **OK**.
 
-## データ収集の有効化後
+> [AZURE.NOTE] We recommend that you turn on data collection and choose a storage account at the subscription level first. Security policies can be set at the Azure subscription level and resource group level but configuration of data collection and storage account occurs at the subscription level only.
 
-データ収集は、Azure Monitoring Agent と Azure セキュリティの監視拡張機能を使用して有効にします。Azure セキュリティの監視拡張機能は、さまざまなセキュリティ関連の構成をスキャンして、[Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) トレースに送信します。さらに、オペレーティング システムでは、イベント ログ エントリが作成されます。Azure Monitoring Agent は、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをストレージ アカウントにコピーします。またストレージ アカウントには、監視エージェントによってクラッシュ ダンプ ファイルがコピーされます。これは、セキュリティ ポリシーで構成したストレージ アカウントです。
+## <a name="after-data-collection-is-enabled"></a>After data collection is enabled
 
-## データ収集の無効化
+Data collection is enabled via the Azure Monitoring Agent and the Azure Security Monitoring extension. The Azure Security Monitoring extension scans for various security relevant configuration and sends it into [Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) traces. In addition, the operating system creates event log entries. The Azure Monitoring Agent reads event log entries and ETW traces and copies them to your storage account for analysis. The Monitoring Agent also copies crash dump files to your storage account. This is the storage account you configured in the security policy.
 
-データ収集はいつでも無効にすることができます。データ収集を無効にすると、Security Center によってインストールされていた監視エージェントが削除されます。データ収集を無効にするサブスクリプションを選択してください。
+## <a name="disabling-data-collection"></a>Disabling data collection
 
-> [AZURE.NOTE] セキュリティ ポリシーは Azure サブスクリプション レベルとリソース グループ レベルで設定できますが、データの収集をオフにするには、サブスクリプションを選択する必要があります。
+You can disable data collection at any time, which will remove any Monitoring Agents previous installed by Security Center.  You must select a subscription to turn data collection off.
 
-1.	**[セキュリティ センター]** ブレードに戻り、**[ポリシー]** タイルを選択します。**[セキュリティ ポリシー - サブスクリプションまたはリソース グループごとにポリシーを定義する]** ブレードが表示されます。![Select the policy tile][5]
+> [AZURE.NOTE] Security policies can be set at the Azure subscription level and resource group level but you must select a subscription to turn data collection off.
 
-2.	**[セキュリティ ポリシー - サブスクリプションまたはリソース グループごとにポリシーを定義する]** ブレードで、データ収集を無効にするサブスクリプションを選択します。 ![Select subscription to disable data collection][6]
+1.  Return to the **Security Center** blade and select the **Policy** tile. This opens the **Security policy-Define policy per subscription or resource group** blade.
+![Select the policy tile][5]
 
-3.	対応するサブスクリプションの **[セキュリティ ポリシー]** ブレードが表示されます。[データ収集] の下の **[オフ]** を選択します。
+2.  On the **Security policy-Define policy per subscription or resource group** blade, select the subscription that you wish to disable data collection.
+![Select subscription to disable data collection][6]
 
-4.	上部のリボンで **[保存]** を選択します。
+3.  The **Security policy** blade for that subscription opens.  Select **Off** under Data collection.
 
-5.	上部のリボンにある **[エージェントを削除]** を選択し、既存の仮想マシンからエージェントを削除します。
+4.  Select **Save** in the top ribbon.
 
-## 関連項目
+5.  Select **Delete agents** in the top ribbon to remove agents from existing virtual machines.
 
-この記事では、"データ収集の有効化" という Security Center の推奨事項を実践する方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
+## <a name="see-also"></a>See also
 
-- 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 -- Azure サブスクリプションとリソース グループに対するセキュリティ ポリシーの構成方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティ警告の管理および対応方法について説明しています。
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- 「[Azure セキュリティ センターのよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問を確認できます。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
+This article showed you how to implement the Security Center recommendation "Enable data collection.” To learn more about Security Center, see the following:
+
+- [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies for your Azure subscriptions and resource groups.
+- [Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.
+- [Security health monitoring in Azure Security Center](security-center-monitoring.md)--Learn how to monitor the health of your Azure resources.
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)--Learn how to manage and respond to security alerts.
+- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) -- Learn how to monitor the health status of your partner solutions.
+- [Azure Security Center FAQ](security-center-faq.md)--Find frequently asked questions about using the service.
+- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/)--Get the latest Azure security news and information.
 
 <!--Image references-->
 [1]: ./media/security-center-enable-data-collection/security-center-blade.png
@@ -80,4 +87,8 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
 [5]: ./media/security-center-enable-data-collection/policy.png
 [6]: ./media/security-center-enable-data-collection/disable-data-collection.png
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

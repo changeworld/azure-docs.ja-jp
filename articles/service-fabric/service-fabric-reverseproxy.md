@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Service Fabric リバース プロキシ | Microsoft Azure"
-   description="Service Fabric のリバース プロキシを使用して、クラスターの内外からマイクロサービスとの通信を行います。"
+   pageTitle="Service Fabric Reverse Proxy | Microsoft Azure"
+   description="Use Service Fabric's reverse proxy for communication to microservices from inside and outside the cluster"
    services="service-fabric"
    documentationCenter=".net"
-   authors="BharatNarasimman,vturecek"
+   authors="BharatNarasimman"
    manager="timlt"
    editor="vturecek"/>
 
@@ -13,124 +13,126 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="07/26/2016"
+   ms.date="10/04/2016"
    ms.author="vturecek"/>
 
-# Service Fabric リバース プロキシ
 
-Service Fabric リバース プロキシは、Service Fabric に組み込まれたリバース プロキシであり、Service Fabric クラスター内の、HTTP エンドポイントを公開するマイクロサービスのアドレス指定を可能にします。
+# <a name="service-fabric-reverse-proxy"></a>Service Fabric Reverse Proxy
 
-## マイクロサービス通信モデル
+The Service Fabric Reverse proxy is a reverse proxy built-into service fabric that allows addressing microservices in the service fabric cluster that expose HTTP endpoints.
 
-通常、Service Fabric のマイクロサービスは、クラスター内の VM のサブセットで実行され、さまざまな理由から VM 間で移動することができます。そのため、マイクロサービスのエンドポイントが動的に変更される可能性があります。マイクロサービスと通信するための標準的なパターンは、次の解決ループです。
+## <a name="microservices-communication-model"></a>Microservices communication model
 
-1. Naming Service によって最初にサービスの場所を解決します。
-2. サービスに接続します。
-3. 接続エラーの原因を特定し、必要に応じてサービスの場所を再解決します。
+Microservices in service fabric typically run on a subset of VM's in the cluster and can move from one VM to another for various reasons. So the endpoints for microservices can change dynamically. The typical pattern to communicate to the microservice is the resolve loop below,
 
-一般に、このプロセスでは、サービス解決および再試行ポリシーを実装する再試行ループにクライアント側の通信ライブラリをラップする必要があります。このトピックの詳細については、[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)に関する記事をご覧ください。
+1. Resolve the service location initially through the Naming Service.
+2. Connect to the service.
+3. Determine the cause of connection failures and re-resolve the service location when necessary.
 
-### SF リバース プロキシ経由での通信
-Service Fabric リバース プロキシは、クラスターのすべてのノードで実行されます。リバース プロキシはクライアントに代わってサービス解決プロセス全体を実行し、クライアント要求を転送します。そのため、クラスターで実行されているクライアントは、クライアント側の HTTP 通信ライブラリを使用するだけで、同じノードでローカルで実行されている SF リバース プロキシ経由でターゲット サービスと通信できます。
+This process generally involves wrapping client-side communication libraries in a retry loop that implements the service resolution and retry policies.
+For more information on this topic, see [communicating with services](service-fabric-connect-and-communicate-with-services.md).
 
-![内部通信][1]
+### <a name="communicating-via-sf-reverse-proxy"></a>Communicating via SF reverse proxy
+Service Fabric reverse proxy runs on all the nodes in the cluster. It performs the entire service resolution process on a client's behalf and then forwards the client request. So clients running on the cluster can just use any client-side HTTP communication libraries to talk to the target service via the SF reverse proxy running locally on the same node.
 
-## クラスターの外部からのマイクロサービスへの到達
-マイクロサービスの既定の外部通信モデルは**オプトイン**です。既定では、外部クライアントから各サービスに直接アクセスすることはできません。[Azure Load Balancer](../load-balancer/load-balancer-overview.md) は、マイクロサービスと外部クライアントの間のネットワーク境界であり、ネットワーク アドレス変換を実行して、外部要求を内部の **IP:port** エンドポイントに転送します。マイクロサービスのエンドポイントが外部クライアントに直接アクセスできるようにするには、クラスター内のサービスで使用される各ポートにトラフィックを転送するように Azure Load Balancer を構成しておく必要があります。さらに、ほとんどのマイクロサービス (特にステートフル マイクロサービス) はクラスターのすべてのノードに存在するわけではなく、フェールオーバーでノード間を移動する可能性があります。そのため、このような場合、Azure Load Balancer はトラフィックの転送先となるレプリカのターゲット ノードの場所を効率的に特定することができません。
+![Internal communication][1]
 
-### クラスター外部からの SF リバース プロキシ経由でのマイクロサービスへの到達
+## <a name="reaching-microservices-from-outside-the-cluster"></a>Reaching Microservices from outside the cluster
+The default external communication model for microservices is **opt-in**  where each service by default cannot be accessed directly from external clients. The [Azure Load Balancer](../load-balancer/load-balancer-overview.md) is a network boundary between microservices and external clients, that performs network address translation and forwards external requests to internal **IP:port** endpoints. In order to make a microservice's endpoint directly accessible to external clients, the Azure Load Balancer must first be configured to forward traffic to each port used by the service in the cluster. Furthermore, most microservices(esp. stateful microservices) dont live on all the nodes of the cluster and they can move between nodes on failover, so in such cases, the Azure Load Balancer cannot effectively determine the target node of the replicas are located to forward the traffic to.
 
-Azure Load Balancer で個々のサービスのポートを構成するのではなく、SF リバース プロキシ ポートだけを構成することができます。これにより、クラスターの外部のクライアントは、追加構成なしにリバース プロキシ経由でクラスター内のサービスに到達することができます。
+### <a name="reaching-microservices-via-the-sf-reverse-proxy-from-outside-the-cluster"></a>Reaching Microservices via the SF reverse proxy from outside the cluster
 
-![外部通信][0]
+Instead of configuring individual service's ports in the azure load balancer, just the SF Reverse proxy port can be configured in the Azure Load Balancer. This allows clients outside the cluster to reach services inside the cluster via the reverse proxy without an additional configurations.
 
->[AZURE.WARNING] ロード バランサーでリバース プロキシのポートを構成すると、クラスターの外部から、クラスター内の http エンドポイントを公開するすべてのマイクロサービスのアドレス指定が可能になります。
+![External communication][0]
+
+>[AZURE.WARNING] Configuring the reverse proxy's port on the load balancer, makes all the micro services in the cluster that expose a http endpoint, to be addressible from outside the cluster.
 
 
-## リバース プロキシ経由でサービスのアドレス指定を行うための URI 形式
+## <a name="uri-format-for-addressing-services-via-the-reverse-proxy"></a>URI format for addressing services via the reverse proxy
 
-リバース プロキシでは、次の URI 形式を使用して、受信要求の転送先となるサービス パーティションを特定します。
+The Reverse proxy uses a specific URI format to identify which service partition the incoming request should be forwarded to :
 
 ```
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&Timeout=<timeout_in_seconds>
 ```
 
- - **http (s):** HTTP または HTTPS トラフィックを受け入れるようにリバース プロキシを構成できます。HTTPS トラフィックが発生した場合、リバース プロキシで SSL 終了が発生します。リバース プロキシによってクラスター内のサービスに転送される要求は http 経由になります。
- - **Cluster FQDN| internal IP:** For external clients, the reverse proxy can be configured so that it is reachable through the cluster domain (e.g., mycluster.eastus.cloudapp.azure.com). By default the reverse proxy runs on every node, so for internal traffic it can be reached on localhost or on any internal node IP (e.g., 10.0.0.1).
- - **Port:** リバース プロキシに指定されているポート (例: 19008)。
- - **ServiceInstanceName:** "fabric:/" スキームなしでアクセスしようとしているサービスのデプロイ済み完全修飾サービス インスタンス名です。たとえば、*fabric:/myapp/myservice/* サービスにアクセスするには、*myapp/myservice* を使用します。
- - **Suffix path:** 接続先となるサービスの実際の URL パスです (例: *myapi/values/add/3*)。
- - **PartitionKey:** パーティション分割されたサービスの場合、アクセスするパーティションの計算済みのパーティション キーです。これはパーティション ID の GUID ではありません。シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
- - **PartitionKind:** サービス パーティション構成です。これには、"Int64Range" または "Named" を指定できます。シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
- - **Timeout:** クライアント要求の代わりに、リバース プロキシによって作成される、サービスに対する http 要求のタイムアウトを指定します。このパラメーターの既定値は 60 秒です。これは省略可能なパラメーターです。
+ - **http(s):** The reverse proxy can be configured to accept HTTP or HTTPS traffic. In case of HTTPS traffic, SSL termination occurs at the reverse proxy. Requests that are forwarded by the reverse proxy to services in the cluster are over http.
+ - **Cluster FQDN | internal IP:** For external clients, the reverse proxy can be configured so that it is reachable through the cluster domain (e.g., mycluster.eastus.cloudapp.azure.com). By default the reverse proxy runs on every node, so for internal traffic it can be reached on localhost or on any internal node IP (e.g., 10.0.0.1).
+ - **Port:** The port that has been specified for the reverse proxy. Eg: 19008.
+ - **ServiceInstanceName:** This is the fully-qualified deployed service instance name of the service you are trying to reach sans the "fabric:/" scheme. For example, to reach service *fabric:/myapp/myservice/*, you would use *myapp/myservice*.
+ - **Suffix path:** This is the actual URL path for the service that you want to connect to. For example, *myapi/values/add/3*
+ - **PartitionKey:** For a partitioned service, this is the computed partition key of the partition you want to reach. Note that this is *not* the partition ID GUID. This parameter is not required for services using the singleton partition scheme.
+ - **PartitionKind:** The service partition scheme. This can be 'Int64Range' or 'Named'. This parameter is not required for services using the singleton partition scheme.
+ - **Timeout:**  This specifies the timeout for the http request created by the reverse proxy to the service on behalf of the client request. The default value for this is 60 seconds. This is an optional parameter.
 
-### 使用例
+### <a name="example-usage"></a>Example usage
 
-次の URL で HTTP リスナーを開く **fabric:/MyApp/MyService** サービスを例にとってみましょう。
+As an example, let's take service **fabric:/MyApp/MyService** that opens an HTTP listener on the following URL:
 
 ```
-http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
+http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 ```
 
-リソースは次のとおりです。
+With the following resources:
 
  - `/index.html`
  - `/api/users/<userId>`
 
-サービスがシングルトン パーティション構成を使用している場合、*PartitionKey* および *PartitionKind* クエリ文字列パラメーターは不要であり、次のようにゲートウェイ経由でサービスにアクセスできます。
+If the service uses the singleton partitioning scheme, the *PartitionKey* and *PartitionKind* query string parameters are not required, and the service can be reached via the gateway as:
 
- - 外部: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService`
- - 内部: `http://localhost:19008/MyApp/MyService`
+ - Externally: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService`
+ - Internally: `http://localhost:19008/MyApp/MyService`
 
-サービスが Uniform Int64 パーティション構成を使用している場合、サービスのパーティションにアクセスするには、*PartitionKey* および *PartitionKind* クエリ文字列パラメーターを使用する必要があります。
+If the service uses the Uniform Int64 partitioning scheme, the *PartitionKey* and *PartitionKind* query string parameters must be used to reach a partition of the service:
 
- - 外部: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
- - 内部: `http://localhost:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+ - Externally: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+ - Internally: `http://localhost:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
-サービスによって公開されるリソースに到達するには、URL のサービス名の後にリソース パスを配置します。
+To reach the resources exposed by the service, simply place the resource path after the service name in the URL:
 
- - 外部: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
- - 内部: `http://localhost:19008/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
+ - Externally: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
+ - Internally: `http://localhost:19008/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
-ゲートウェイは、サービスの URL にこれらの要求を転送します。
+The gateway will then forward these requests to the service's URL:
 
- - `http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/index.html`
- - `http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
+ - `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/index.html`
+ - `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
-## ポートを共有するサービスの特別な処理
+## <a name="special-handling-for-portsharing-services"></a>Special handling for port-sharing services
 
-サービスに到達できない場合、Application Gateway はサービス アドレスの再解決を試み、要求を再試行します。クライアント コードで独自のサービス解決と解決ループを実装する必要がないため、これはゲートウェイの主な利点の 1 つです。
+The Application Gateway attempts to re-resolve a service address and retry the request when a service cannot be reached. This is one of the major benefits of the gateway, as client code does not need to implement its own service resolution and resolve loop.
 
-一般に、サービスに到達できないときは、サービス インスタンスまたはレプリカが通常のライフサイクルの一環として別のノードに移動していることを意味します。この場合、ゲートウェイは、エンドポイントが解決された元のアドレスではもう開いていないことを示すネットワーク接続エラーを受信する可能性があります。
+Generally when a service cannot be reached it means the service instance or replica has moved to a different node as part of its normal lifecycle. When this happens, the gateway may receive a network connection error indicating an endpoint is no longer open on the originally resolved address.
 
-ただし、レプリカまたはサービス インスタンスはホスト プロセスを共有することができます。また、次のような http.sys ベースの Web サーバーによってホストされているときには、ポートを共有している場合もあります。
+However, replicas or service instances can share a host process and may also share a port when hosted by an http.sys-based web server, including:
 
  - [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
  - [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
  - [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
-この状況では、Web サーバーはホスト プロセスで要求に応答することができますが、解決されたサービス インスタンスまたはレプリカがホストで使用できなくなっている可能性があります。この場合、ゲートウェイは Web サーバーから HTTP 404 応答を受信します。結果的に、HTTP 404 は次の 2 つの異なる意味を持つことになります。
+In this situation it is likely that the web server is available in the host process and responding to requests but the resolved service instance or replica is no longer available on the host. In this case, the gateway will receive an HTTP 404 response from the web server. As a result, an HTTP 404 has two distinct meanings:
 
- 1. サービス アドレスは正しいが、ユーザーから要求されたリソースが存在しない。
- 2. サービス アドレスが間違っており、ユーザーから要求されたリソースが、実際には別のノードに存在する可能性がある。
+ 1. The service address is correct, but the resource requested by the user does not exist.
+ 2. The service address is incorrect, and the resource requested by the user may actually exist on a different node.
 
-最初のケースでは、これはユーザー エラーと見なされる通常の HTTP 404 です。ただし、2 番目のケースでは、ユーザーは存在するリソースを要求しましたが、サービス自体が移動しているため、ゲートウェイがリソースを見つけることができませんでした。この場合、ゲートウェイはアドレスを再解決し、再試行する必要があります。
+In the first case, this is a normal HTTP 404, which is considered a user error. However, in the second case, the user has requested a resource that does exist, but the gateway was unable to locate it because the service itself has moved, in which case the gateway needs to re-resolve the address and try again.
 
-そのため、ゲートウェイにはこの2つのケースを区別する手段が必要です。この区別を行うには、サーバーからのヒントが必要になります。
+The gateway thus needs a way to distinguish between these two cases. In order to make that distinction, a hint from the server is required.
 
- - 既定では、Application Gateway はケース 2 を想定し、アドレスを再解決して要求の再発行を試みます。
- - Application Gateway にケース 1 であることを示すには、サービスが次の HTTP 応答ヘッダーを返す必要があります。
+ - By default, the Application Gateway assumes case #2 and attempts to re-resolve and re-issue the request.
+ - To indicate case #1 to the Application Gateway, the service should return the following HTTP response header:
 
 `X-ServiceFabric : ResourceNotFound`
 
-この HTTP 応答ヘッダーは、要求されたリソースが存在しないという通常の HTTP 404 の状況を示すので、ゲートウェイはサービス アドレスの再解決を試みなくなります。
+This HTTP response header indicates a normal HTTP 404 situation in which the requested resource does not exist, and the gateway will not attempt to re-resolve the service address.
 
-## セットアップと構成
-[Azure Resource Manager テンプレート](./service-fabric-cluster-creation-via-arm.md)によって、クラスターの Service Fabric リバース プロキシを有効にすることができます。
+## <a name="setup-and-configuration"></a>Setup and configuration
+The service fabric Reverse proxy can be enabled for the cluster via the [Azure Resource Manager template](./service-fabric-cluster-creation-via-arm.md).
 
-(サンプル テンプレートを使用するか、カスタムの Resource Manager テンプレートを作成して) デプロイするクラスター用テンプレートを用意したら、次の手順に従って、テンプレートでリバース プロキシを有効にすることができます。
+Once you have the template for the cluster that you want to deploy(either from the sample templates or by creating a custom resource manager template) the Reverse proxy can be enabled in the template by the following steps.
 
-1. テンプレートの [Parameters セクション](../resource-group-authoring-templates.md)で、リバース プロキシのポートを定義します。
+1. Define a port for the reverse proxy in the [Parameters section](../resource-group-authoring-templates.md) of the template.
 
     ```json
     "SFReverseProxyPort": {
@@ -141,7 +143,9 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         }
     },
     ```
-2. **クラスター**の [resources の type](../resource-group-authoring-templates.md) セクションで、nodeType オブジェクトごとにポートを指定します。
+2. Specify the port for each of the nodetype objects in the **Cluster** [Resource type section](../resource-group-authoring-templates.md)
+
+    For apiVersion's prior to '2016-09-01'  the port is identified by the parameter name ***httpApplicationGatewayEndpointPort***
 
     ```json
     {
@@ -161,7 +165,29 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         ...
     }
     ```
-3. Azure クラスターの外部からリバース プロキシのアドレス指定を行うには、手順 1. で指定したポートの **Azure Load Balancer 規則**を設定します。
+
+    For apiVersion's on or after '2016-09-01' the port is identified by the parameter name ***reverseProxyEndpointPort***
+
+    ```json
+    {
+        "apiVersion": "2016-09-01",
+        "type": "Microsoft.ServiceFabric/clusters",
+        "name": "[parameters('clusterName')]",
+        "location": "[parameters('clusterLocation')]",
+        ...
+       "nodeTypes": [
+          {
+           ...
+           "reverseProxyEndpointPort": "[parameters('SFReverseProxyPort')]",
+           ...
+          },
+        ...
+        ],
+        ...
+    }
+    ```
+
+3. To address the reverse proxy from outside the azure cluster, setup the **azure load balancer rules** for the port specified in step 1.
 
     ```json
     {
@@ -205,7 +231,9 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         ]
     }
     ```
-4. リバース プロキシのポートで SSL 証明書を構成するには、**クラスター**の [resources の type セクション](../resource-group-authoring-templates.md)で httpApplicationGatewayCertificate プロパティに証明書を追加します。
+4. To configure SSL certificates on the port for the Reverse proxy, add the certificate to the httpApplicationGatewayCertificate property in the **Cluster** [Resource type section](../resource-group-authoring-templates.md)
+
+    For apiVersion's prior to '2016-09-01'  the certificate is identified by the parameter name ***httpApplicationGatewayCertificate***
 
     ```json
     {
@@ -227,18 +255,44 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         }
     }
     ```
+    For apiVersion's on or after '2016-09-01'  the certificate is identified by the parameter name ***reverseProxyCertificate***
+    
+    ```json
+    {
+        "apiVersion": "2016-09-01",
+        "type": "Microsoft.ServiceFabric/clusters",
+        "name": "[parameters('clusterName')]",
+        "location": "[parameters('clusterLocation')]",
+        "dependsOn": [
+            "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
+        ],
+        "properties": {
+            ...
+            "reverseProxyCertificate": {
+                "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
+                "x509StoreName": "[parameters('sfReverseProxyCertificateStoreName')]"
+            },
+            ...
+            "clusterState": "Default",
+        }
+    }
+    ```
 
-## 次のステップ
- - [GitHub のサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount)で、サービス間の HTTP 通信の例を確認します。
+## <a name="next-steps"></a>Next steps
+ - See an example of HTTP communication between services in a [sample project on GitHUb](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount).
 
- - [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
+ - [Remote procedure calls with Reliable Services remoting](service-fabric-reliable-services-communication-remoting.md)
 
- - [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)
+ - [Web API that uses OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
 
- - [Reliable Services を使用した WCF 通信](service-fabric-reliable-services-communication-wcf.md)
+ - [WCF communication by using Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

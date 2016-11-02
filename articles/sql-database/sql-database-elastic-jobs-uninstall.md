@@ -1,67 +1,72 @@
 <properties 
-	pageTitle="エラスティック データベース ジョブ ツールのアンインストール方法" 
-	description="エラスティック データベース ジョブ ツールのアンインストール方法" 
-	services="sql-database" 
-	documentationCenter="" 
-	manager="jhubbard" 
-	authors="ddove" 
-	editor=""/>
+    pageTitle="How to uninstall elastic database jobs tool" 
+    description="How to uninstall the elastic database jobs tool" 
+    services="sql-database" 
+    documentationCenter="" 
+    manager="jhubbard" 
+    authors="ddove" 
+    editor=""/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="sql-database" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/27/2016" 
-	ms.author="ddove"/>
+    ms.service="sql-database" 
+    ms.workload="sql-database" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="10/24/2016" 
+    ms.author="ddove"/>
 
-#エラスティック データベース ジョブ コンポーネントのアンインストール
-**エラスティック データベース ジョブ** コンポーネントのアンインストールには、ポータルまたは PowerShell を使用できます。
 
-##Azure ポータルを使用してエラスティック データベース ジョブ コンポーネントをアンインストールする
+#<a name="uninstall-elastic-database-jobs-components"></a>Uninstall Elastic Database jobs components
+**Elastic Database jobs** components can be uninstalled using either the Portal or PowerShell.
 
-1. [Azure ポータル](https://portal.azure.com/) を開きます。
-2. **エラスティック データベース ジョブ** コンポーネントを含むサブスクリプション (つまりエラスティック データベース ジョブ コンポーネントをインストールしたサブスクリプション) に移動します。
-3. **[参照]** をクリックして、**[リソース グループ]** をクリックします。
-4. "\_\_ElasticDatabaseJob" という名前のリソース グループを選択します。
-5. リソース グループを削除します。
+##<a name="uninstall-elastic-database-jobs-components-using-the-azure-portal"></a>Uninstall Elastic Database jobs components using the Azure portal
 
-##PowerShell を使用してエラスティック データベース ジョブ コンポーネントをアンインストールする
+1. Open the [Azure portal](https://portal.azure.com/).
+2. Navigate to the subscription that contains **Elastic Database jobs** components, namely the subscription in which Elastic Database jobs components were installed.
+3. Click **Browse** and click **Resource groups**.
+4. Select the resource group named "__ElasticDatabaseJob".
+5. Delete the resource group.
 
-1.	Microsoft Azure PowerShell コマンド ウィンドウを開き、**cd tools** と入力して、Microsoft.Azure.SqlDatabase.Jobs.x.x.xxｘx.x フォルダー以下の tools サブディレクトリに移動します。
+##<a name="uninstall-elastic-database-jobs-components-using-powershell"></a>Uninstall  Elastic Database jobs components using PowerShell
 
-		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
+1.  Launch a Microsoft Azure PowerShell command window and navigate to the tools sub-directory under the Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x folder: Type **cd tools**.
 
-2.	.\\UninstallElasticDatabaseJobs.ps1 PowerShell スクリプトを実行します。
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\UninstallElasticDatabaseJobs.ps1
-		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\UninstallElasticDatabaseJobs.ps1
+2.  Execute the .\UninstallElasticDatabaseJobs.ps1 PowerShell script.
 
-または、単純に、コンポーネントのインストール時に使用された既定値があるという想定で、次のスクリプトを実行します。
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\UninstallElasticDatabaseJobs.ps1
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\UninstallElasticDatabaseJobs.ps1
 
-		$ResourceGroupName = "__ElasticDatabaseJob"
-		Switch-AzureMode AzureResourceManager
-		
-		$resourceGroup = Get-AzureResourceGroup -Name $ResourceGroupName
-		if(!$resourceGroup)
-		{
-		    Write-Host "The Azure Resource Group: $ResourceGroupName has already been deleted.  Elastic database job components are uninstalled."
-		    return
-		}
-		
-		Write-Host "Removing the Azure Resource Group: $ResourceGroupName.  This may take a few minutes.”
-		Remove-AzureResourceGroup -Name $ResourceGroupName -Force
-		Write-Host "Completed removing the Azure Resource Group: $ResourceGroupName.  Elastic database job compoennts are now uninstalled."
+Or simply, execute the following script, assuming default values where used on installation of the components:
 
-## 次のステップ
+        $ResourceGroupName = "__ElasticDatabaseJob"
+        Switch-AzureMode AzureResourceManager
+        
+        $resourceGroup = Get-AzureResourceGroup -Name $ResourceGroupName
+        if(!$resourceGroup)
+        {
+            Write-Host "The Azure Resource Group: $ResourceGroupName has already been deleted.  Elastic database job components are uninstalled."
+            return
+        }
+        
+        Write-Host "Removing the Azure Resource Group: $ResourceGroupName.  This may take a few minutes.”
+        Remove-AzureResourceGroup -Name $ResourceGroupName -Force
+        Write-Host "Completed removing the Azure Resource Group: $ResourceGroupName.  Elastic database job compoennts are now uninstalled."
 
-エラスティック データベース ジョブを再インストールする方法については、「[エラスティック データベース ジョブ コンポーネントのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。
+## <a name="next-steps"></a>Next steps
 
-エラスティック データベース ジョブの概要については、「[エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」を参照してください。
+To re-install Elastic Database jobs, see [Installing the Elastic Database job service](sql-database-elastic-jobs-service-installation.md)
+
+For an overview of Elastic Database jobs, see [Elastic Database jobs overview](sql-database-elastic-jobs-overview.md).
 
 <!--Image references-->
 
  
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

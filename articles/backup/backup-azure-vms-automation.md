@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager でデプロイされた VM のバックアップを PowerShell を使用してデプロイおよび管理する | Microsoft Azure"
-   description="PowerShell を使用して Azure で Resource Manager によりデプロイされた VM のバックアップをデプロイおよび管理する"
+   pageTitle="Deploy and manage backups for Resource Manager-deployed VMs using PowerShell | Microsoft Azure"
+   description="Use PowerShell to deploy and manage backups in Azure for Resource Manager-deployed VMs"
    services="backup"
    documentationCenter=""
    authors="markgalioto"
@@ -13,39 +13,41 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="storage-backup-recovery"
-   ms.date="08/03/2016"
+   ms.date="11/01/2016"
    ms.author="markgal; trinadhk"/>
 
-# Resource Manager でデプロイされた VM のバックアップを PowerShell を使用してデプロイおよび管理する
+
+# <a name="deploy-and-manage-backups-for-resource-managerdeployed-vms-using-powershell"></a>Deploy and manage backups for Resource Manager-deployed VMs using PowerShell
 
 > [AZURE.SELECTOR]
-- [リソース マネージャー](backup-azure-vms-automation.md)
-- [クラシック](backup-azure-vms-classic-automation.md)
+- [Resource Manager](backup-azure-vms-automation.md)
+- [Classic](backup-azure-vms-classic-automation.md)
 
-この記事では、Azure PowerShell コマンドレットを使用して Recovery Services コンテナーに Azure 仮想マシン (VM) をバックアップする方法と Recovery Services コンテナーから Azure 仮想マシンを回復する方法について説明します。Recovery Services コンテナーは、Azure Resource Manager のリソースであり、Azure Backup サービスと Azure Site Recovery サービスの両方でデータと資産を保護するために使用されます。Recovery Services コンテナーを使用すると、Azure Resource Manager でデプロイされた VM と同様に、Azure Service Manager でデプロイされた VM も保護できます。
+This article shows you how to use Azure PowerShell cmdlets to back up and recover an Azure virtual machine (VM) from a Recovery Services vault. A Recovery Services vault is an Azure Resource Manager resource and is used to protect data and assets in both Azure Backup and Azure Site Recovery services. You can use a Recovery Services vault to protect Azure Service Manager-deployed VMs, as well as Azure Resource Manager-deployed VMs.
 
->[AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。この記事では、Resource Manager モデルで作成された VM を対象とします。
+>[AZURE.NOTE] Azure has two deployment models for creating and working with resources: [Resource Manager and Classic](../resource-manager-deployment-model.md). This article is for use with VMs created using the Resource Manager model.
 
-PowerShell を使用した VM の保護および復旧ポイントからデータの復元について説明します。
+This article walks you through using PowerShell to protect a VM, and restore data from a recovery point.
 
-## 概念
+## <a name="concepts"></a>Concepts
 
-Azure Backup サービスに関する知識が十分でない場合は、「[Azure Backup とは](backup-introduction-to-azure-backup.md)」を参照してください。 開始する前に、Azure Backup を使用するのに必要な前提条件が満たされていることを確認し、現在の VM バックアップ ソリューションの制限事項を把握してください。
+If you are not familiar with the Azure Backup service, for an overview of the service, check out [What is Azure Backup?](backup-introduction-to-azure-backup.md) Before you start, ensure that you cover the essentials about the prerequisites needed to work with Azure Backup, and the limitations of the current VM backup solution.
 
-PowerShell を効果的に使用するには、オブジェクトの階層および開始地点を理解しておく必要があります。
+In order to use PowerShell effectively, it is necessary to understand the hierarchy of objects and from where to start.
 
-![Recovery Services オブジェクトの階層](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
+![Recovery Services object hierarchy](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-AzureRmRecoveryServicesBackup PowerShell コマンドレット リファレンスを確認するには、Azure ライブラリの「[Azure Backup - Recovery Services Cmdlets (Azure Backup - Recovery Services コマンドレット)](https://msdn.microsoft.com/library/mt723320.aspx)」を参照してください。AzureRmRecoveryServicesVault PowerShell コマンドレット リファレンスを確認するには、「[Azure Recovery Service Cmdlets (Azure Recovery Services コマンドレット)](https://msdn.microsoft.com/library/mt643905.aspx)」を参照してください。
+To view the AzureRmRecoveryServicesBackup PowerShell cmdlet reference, see the [Azure Backup - Recovery Services Cmdlets](https://msdn.microsoft.com/library/mt723320.aspx) in the Azure library.
+To view the AzureRmRecoveryServicesVault PowerShell cmdlet reference, see the [Azure Recovery Service Cmdlets](https://msdn.microsoft.com/library/mt643905.aspx).
 
 
-## セットアップと登録
+## <a name="setup-and-registration"></a>Setup and Registration
 
-開始するには
+To begin:
 
-1. [最新バージョンの PowerShell をダウンロードします](https://github.com/Azure/azure-powershell/releases) (バージョン 1.4.0 以降が必要)。
+1. [Download the latest version of PowerShell](https://github.com/Azure/azure-powershell/releases) (the minimum version required is : 1.4.0)
 
-2. 以下のコマンドを入力して、使用可能な Azure Backup の PowerShell コマンドレットを検索します。
+2. Find the Azure Backup PowerShell cmdlets available by typing the following command:
 
 ```
 PS C:\> Get-Command *azurermrecoveryservices*
@@ -82,49 +84,49 @@ Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      Az
 ```
 
 
-次のタスクは PowerShell を使用して自動化することができます。
+The following tasks can be automated with PowerShell:
 
-- Recovery Services コンテナーを作成する
-- Azure VM をバックアップまたは保護する
-- バックアップ ジョブをトリガーする
-- バックアップ ジョブを監視する
-- Azure VM の復元
+- Create a Recovery Services vault
+- Backup or protect Azure VMs
+- Trigger a backup job
+- Monitor a backup job
+- Restore an Azure VM
 
-## Recovery Services コンテナーの作成
+## <a name="create-a-recovery-services-vault"></a>Create a recovery services vault
 
-次の手順では、Recovery Services コンテナーの作成について説明します。Recovery Services コンテナーは Backup コンテナーとは異なります。
+The following steps lead you through creating a Recovery Services vault. A Recovery Services vault is different than a Backup vault.
 
-1. Azure Backup を初めて使用する場合、**[Register-AzureRMResourceProvider](https://msdn.microsoft.com/library/mt679020.aspx)** コマンドレットを使って Azure Recovery Services プロバイダーをサブスクリプションに登録する必要があります。
+1. If you are using Azure Backup for the first time, you must use the **[Register-AzureRMResourceProvider](https://msdn.microsoft.com/library/mt679020.aspx)** cmdlet to register the Azure Recovery Service provider with your subscription.
 
     ```
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-2. Recovery Services コンテナーは Resource Manager リソースであるため、リソース グループ内に配置する必要があります。既存のリソース グループを使用することも、**[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt678985.aspx)** コマンドレットを使って新しいリソース グループを作成することもできます。新しいリソース グループを作成する場合、リソース グループの名前と場所を指定します。
+2. The Recovery Services vault is an Resource Manager resource, so you need to place it within a resource group. You can use an existing resource group, or create a new resource group with the **[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt678985.aspx)** cmdlet. When creating a new resource group, specify the name and location for the resource group.  
 
     ```
     PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
     ```
 
-3. **[New-AzureRmRecoveryServicesVault](https://msdn.microsoft.com/library/mt643910.aspx)** コマンドレットを使用して新しいコンテナーを作成します。リソース グループに使用したのと同じコンテナーの場所を指定してください。
+3. Use the **[New-AzureRmRecoveryServicesVault](https://msdn.microsoft.com/library/mt643910.aspx)** cmdlet to create the new vault. Be sure to specify the same location for the vault as was used for the resource group.
 
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 
-4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/storage-redundancy.md#locally-redundant-storage) または [geo 冗長ストレージ (GRS)](../storage/storage-redundancy.md#geo-redundant-storage) を使用できます。次に示す例では、testVault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
+4. Specify the type of storage redundancy to use; you can use [Locally Redundant Storage (LRS)](../storage/storage-redundancy.md#locally-redundant-storage) or [Geo Redundant Storage (GRS)](../storage/storage-redundancy.md#geo-redundant-storage). The following example shows the -BackupStorageRedundancy option for testVault is set to GeoRedundant.
 
     ```
     PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testVault"
     PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
-    > [AZURE.TIP] Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。このため、Backup Recovery Services コンテナー オブジェクトを変数に格納すると便利です。
+    > [AZURE.TIP] Many Azure Backup cmdlets require the Recovery Services vault object as an input. For this reason, it is convenient to store the Backup Recovery Services vault object in a variable.
 
-## サブスクリプション内のコンテナーの表示
-**[Get-AzureRmRecoveryServicesVault](https://msdn.microsoft.com/library/mt643907.aspx)** を使用して、現在のサブスクリプション内のすべてのコンテナーを一覧表示します。このコマンドは、新しく作成したコンテナーを確認したり、サブスクリプション内の利用可能なコンテナーを確認したりするのに使用できます。
+## <a name="view-the-vaults-in-a-subscription"></a>View the vaults in a subscription
+Use **[Get-AzureRmRecoveryServicesVault](https://msdn.microsoft.com/library/mt643907.aspx)** to view the list of all vaults in the current subscription. You can use this command to check that a new  vault was created, or to see what vaults are available in the subscription.
 
-Get-AzureRmRecoveryServicesVault コマンドを実行すると、サブスクリプション内のすべてのコンテナーが一覧表示されます。
+Run the command, Get-AzureRmRecoveryServicesVault, and all vaults in the subscription are listed.
 
 ```
 PS C:\> Get-AzureRmRecoveryServicesVault
@@ -138,20 +140,20 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
 
-## Azure VM のバックアップ
-これで Recovery Services コンテナーが作成されました。このコンテナーを使用して仮想マシンを保護できます。ただし、保護を行う前に、コンテナーのコンテキストを設定し、保護ポリシーを確認する必要があります。コンテナーのコンテキストは、コンテナーで保護されるデータの種類を定義するものです。保護ポリシーは、バックアップ ジョブが実行される時間と各バックアップ スナップショットの保持期間を設定するためのスケジュールです。
+## <a name="backup-azure-vms"></a>Backup Azure VMs
+Now that you have created a recovery services vault, you can use it to protect a virtual machine. However before you apply the protection, you must set the vault context and you will want to verify the protection policy. Vault context defines the type of data that is protected in the vault. The protection policy is the schedule for when the backup job is run, and how long each backup snapshot is retained.
 
-VM に対する保護を有効にする前に、資格情報コンテナーのコンテキストを設定する必要があります。設定したコンテキストは、この後のすべてのコマンドレットに適用されます。
+Before enabling protection on a VM, you must set the vault context. The context is applied to all subsequent cmdlets.
 
 ```
 PS C:\> Get-AzureRmRecoveryServicesVault -Name testvault | Set-AzureRmRecoveryServicesVaultContext
 ```
 
-### 保護ポリシーの作成
+### <a name="create-a-protection-policy"></a>Create a protection policy
 
-新しい資格情報コンテナーを作成すると、これには既定のポリシーが付属します。このポリシーは、各日の指定した時間にバックアップ ジョブをトリガーします。既定のポリシーでは、バックアップ スナップショットは 30 日間保持されます。既定のポリシーを使用すると、VM を迅速に保護することができ、後で異なる詳細な内容にポリシーを編集することもできます。
+When you create a new vault, it comes with a default policy. This policy triggers a backup job each day at a specified time. Per the default policy, the backup snapshot is retained for 30 days. You can use the default policy to quickly protect your VM and edit the policy later with different details.
 
-**[Get-AzureRmRecoveryServicesBackupProtectionPolicy](https://msdn.microsoft.com/library/mt723300.aspx)** を使用して、コンテナーの使用可能なポリシーの一覧を表示します。
+Use **[Get-AzureRmRecoveryServicesBackupProtectionPolicy](https://msdn.microsoft.com/library/mt723300.aspx)** to view the available list of policies in the vault :
 
 ```
 PS C:\> Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType AzureVM
@@ -160,11 +162,11 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 PM
 ```
 
-> [AZURE.NOTE] PowerShell の BackupTime フィールドのタイムゾーンは UTC です。ただし、Azure ポータルにバックアップ時刻が表示されるとき、時刻はローカル タイムゾーンに調整されます。
+> [AZURE.NOTE] The timezone of the BackupTime field in PowerShell is UTC. However, when the backup time is shown in the Azure portal, the time is adjusted to your local timezone.
 
-バックアップ保護ポリシーは、少なくとも 1 つのアイテム保持ポリシーと関連付けられます。アイテム保持ポリシーには、Azure Backup で復旧ポイントを保持する期間が定義されています。既定のアイテム保持ポリシーを表示するには、**Get-AzureRmRecoveryServicesBackupRetentionPolicyObject** を使用します。同様に **Get-AzureRmRecoveryServicesBackupSchedulePolicyObject** を使用して、既定のスケジュール ポリシーを取得できます。スケジュール ポリシーとアイテム保持ポリシー オブジェクトは、**New-AzureRmRecoveryServicesBackupProtectionPolicy** コマンドレットの入力として使用されます。
+A backup protection policy is associated with at least one retention policy.  Retention policy defines how long a recovery point is kept with Azure Backup. Use **Get-AzureRmRecoveryServicesBackupRetentionPolicyObject** to view the default retention policy.  Similarly you can use **Get-AzureRmRecoveryServicesBackupSchedulePolicyObject** to obtain the default schedule policy. The schedule and retention policy objects are used as inputs to the **New-AzureRmRecoveryServicesBackupProtectionPolicy** cmdlet.
 
-バックアップ保護ポリシーには、アイテムのバックアップが実行されるタイミングと方法を定義します。New-AzureRmRecoveryServicesBackupProtectionPolicy コマンドレットは、バックアップ ポリシー情報を保持する PowerShell オブジェクトを作成します。バックアップ ポリシーは、Enable-AzureRmRecoveryServicesBackupProtection コマンドレットへの入力として使用されます。
+A backup protection policy defines when and how often the backup of an item is done. The New-AzureRmRecoveryServicesBackupProtectionPolicy cmdlet creates a PowerShell object that holds backup policy information. The backup policy is used as an input to the Enable-AzureRmRecoveryServicesBackupProtection cmdlet.
 
 ```
 PS C:\> $schPol = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -175,18 +177,18 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 ```
 
-### 保護を有効にする
+### <a name="enable-protection"></a>Enable protection
 
-保護を有効にするには、アイテムとポリシーの 2 つのオブジェクトが必要です。資格情報コンテナーでの保護を有効にするには両方のオブジェクトが必要です。ポリシーがコンテナーに関連付けられると、ポリシーのスケジュールで定義された時刻にバックアップのワークフローが開始されます。
+Enabling protection involves two objects - the item and the policy. Both objects are required to enable protection on the vault. Once the policy has been associated with the vault, the backup workflow is triggered at the time defined in the policy schedule.
 
-暗号化されていない ARM VM で保護を有効にする場合
+To enable the protection on non-encrypted ARM VMs
 
 ```
 PS C:\> $pol=Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 PS C:\> Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"
 ```
 
-暗号化された VM (BEK と KEK を使用して暗号化) で保護を有効にするには、Azure Backup サービスに許可を付与し、キーとシークレットをキー コンテナーから読み取る必要があります。
+To enable the protection on encrypted VMs[encrypted using BEK and KEK], you need to give permissions for Azure Backup service to read keys and secrets from key vault.
 
 ```
 PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'KeyVaultName' -ResourceGroupName 'RGNameOfKeyVault' -PermissionsToKeys backup,get,list -PermissionsToSecrets get,list -ServicePrincipalName 262044b1-e2ce-469f-a196-69ab7ada62d3
@@ -194,18 +196,18 @@ PS C:\> $pol=Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 PS C:\> Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"
 ```
 
-ASM ベースの VM の場合
+For ASM based VMs
 
 ```
 PS C:\>  $pol=Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 PS C:\>  Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V1VM" -ServiceName "ServiceName1"
 ```
 
-### 保護ポリシーの変更
+### <a name="modify-a-protection-policy"></a>Modify a protection policy
 
-ポリシーを変更する場合は、BackupSchedulePolicyObject または BackupRetentionPolicy オブジェクトを変更し、Set-AzureRmRecoveryServicesBackupProtectionPolicy を使用してポリシーを変更します。
+In order to modify the policy, modify the BackupSchedulePolicyObject or BackupRetentionPolicy object and modify the policy using Set-AzureRmRecoveryServicesBackupProtectionPolicy
 
-次の例では、保持期間を 365 に変更します。
+The following example changes the retention count to 365.
 
 ```
 PS C:\> $retPol = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
@@ -214,9 +216,9 @@ PS C:\> $pol= Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name NewPolicy
 PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy  $RetPol
 ```
 
-## 初回バックアップの実行
+## <a name="run-an-initial-backup"></a>Run an initial backup
 
-バックアップのスケジュールでは、アイテムの初回のバックアップ時に完全なバックアップをトリガーします。以後のバックアップでは、バックアップは増分コピーとなります。初回バックアップを強制的に特定の時刻に行うか、すぐに行う場合は、**[Backup-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723312.aspx)** コマンドレットを使用します。
+The backup schedule triggers a full back up on the initial back up for the item. On subsequent back ups, the back up is an incremental copy. If you want to force the initial backup to happen at a certain time or even immediately then use the **[Backup-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723312.aspx)** cmdlet:
 
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "V2VM"
@@ -227,13 +229,13 @@ WorkloadName     Operation            Status               StartTime            
 V2VM              Backup               InProgress            4/23/2016 5:00:30 PM                       cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
 ```
 
-> PowerShell の StartTime フィールドと EndTime フィールドのタイムゾーンは UTC です。ただし、Azure ポータルに時刻が表示されるとき、時刻はローカル タイムゾーンに調整されます。
+> [AZURE.NOTE: The timezone of the StartTime and EndTime fields in PowerShell is UTC. However, when the time is shown in the Azure portal, the time is adjusted to your local timezone.
 
-## バックアップ ジョブの監視
+## <a name="monitoring-a-backup-job"></a>Monitoring a backup job
 
-Azure Backup で長時間実行される多くの操作は、ジョブとしてモデル化されています。これにより、Azure ポータルを常に開いていなくても進捗を簡単に追跡できるようになります。
+Most long-running operations in Azure Backup are modelled as a job. This makes it easy to track progress without having to keep the Azure portal open at all times.
 
-進行中のジョブの最新の状態を取得するには、Get-AzureRmRecoveryservicesBackupJob コマンドレットを使用します。
+To get the latest status of an in-progress job, use the Get-AzureRmRecoveryservicesBackupJob cmdlet.
 
 ```
 PS C:\ > $joblist = Get-AzureRmRecoveryservicesBackupJob –Status InProgress
@@ -243,41 +245,41 @@ WorkloadName     Operation            Status               StartTime            
 V2VM             Backup               InProgress            4/23/2016 5:00:30 PM           cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
 ```
 
-完了確認のためにこれらのジョブをポーリングすると、不要な追加コードが発生します。そのため、代わりに **[Wait-AzureRmRecoveryServicesBackupJob](https://msdn.microsoft.com/library/mt723321.aspx)** コマンドレットを使用します。このコマンドレットは、ジョブが完了するまで、または指定したタイムアウト値に到達するまで、実行を一時停止します。
+Instead of polling these jobs for completion - which is unnecessary additional code - use the  **[Wait-AzureRmRecoveryServicesBackupJob](https://msdn.microsoft.com/library/mt723321.aspx)** cmdlet. This  cmdlet pauses the execution until either the job completes or the specified timeout value is reached.
 
 ```
 PS C:\> Wait-AzureRmRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200
 ```
 
-## Azure VM の復元
+## <a name="restore-an-azure-vm"></a>Restore an Azure VM
 
-VM の復元に Azure ポータルを使用した場合と PowerShell を使用した場合の間には決定的な違いがあります。PowerShell の場合、復旧ポイントからディスクと構成情報が作成されたら、復元操作は完了します。復元操作で仮想マシンは作成されません。ディスクから仮想マシンを作成する手順が示されます。しかし、VM を完全に復元するには、次の手順に従って作業する必要があります。
+There is a key difference between the restoring a VM using the Azure portal and restoring a VM using PowerShell. With PowerShell, the restore operation is complete once the disks and configuration information from the recovery point are created. The restore operation does not create a virtual machine. The instructions for creating the virtual machine from disks are provided. However, to fully restore a VM, you need to work through the following procedures:
 
-- VM の選択
-- 復元ポイントの選択
-- ディスクの復元
-- 保存されたディスクからの VM の作成
+- Select the VM
+- Choose a recovery point
+- Restore the disks
+- Create the VM from stored disks
 
-次の図には、RecoveryServicesVault から BackupRecoveryPoint までのオブジェクト階層が示されています。
+The graphic below shows the object hierarchy from the RecoveryServicesVault down to the BackupRecoveryPoint.
 
 ![Recovery Services object hierarchy showing BackupContainer](./media/backup-azure-vms-arm-automation/backuprecoverypoint-only.png)
 
-バックアップ データを復元するには、バックアップ項目と、復元する特定の時点のデータを保持する復旧ポイントを特定します。その後、**[Restore-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723316.aspx)** コマンドレットを使用して、コンテナーからお客様のアカウントにデータを復元します。
+In order to restore backup data, identify the backed-up item and the recovery point that holds the point-in-time data. Then use the **[Restore-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723316.aspx)** cmdlet to restore data from the vault to the customer's account.
 
-### VM の選択
+### <a name="select-the-vm"></a>Select the VM
 
-バックアップする正しいアイテムを特定する PowerShell オブジェクトを取得するには、資格情報コンテナー内のコンテナーから開始し、オブジェクト階層の上から下に進みます。VM を表すコンテナーを選択するには、**[Get-AzureRmRecoveryServicesBackupContainer](https://msdn.microsoft.com/library/mt723319.aspx)** コマンドレットを使用し、**[Get-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723305.aspx)** コマンドレットへのパイプとして使用します。
+To get the PowerShell object that identifies the right backup item, start from the container in the vault, and work your way down the object hierarchy. To select the container that represents the VM, use the **[Get-AzureRmRecoveryServicesBackupContainer](https://msdn.microsoft.com/library/mt723319.aspx)** cmdlet and pipe that to the **[Get-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723305.aspx)** cmdlet.
 
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType AzureVM –Status Registered -Name 'V2VM'
 PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem –Container $namedContainer  –WorkloadType "AzureVM"
 ```
 
-### 復元ポイントの選択
+### <a name="choose-a-recovery-point"></a>Choose a recovery point
 
-**[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://msdn.microsoft.com/library/mt723308.aspx)** コマンドレットを使用して、バックアップ項目のすべての復旧ポイントを一覧表示します。その後、復元に使用する復旧ポイントを選択します。使用する復旧ポイントがわからない場合、一覧にある最新の RecoveryPointType = AppConsistent ポイントを選択することをお勧めします。
+Use the **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://msdn.microsoft.com/library/mt723308.aspx)** cmdlet to list all the recovery points for the backup item. Then choose the recovery point to restore. If you are unsure which recovery point to use, it is a good practice to choose the most recent RecoveryPointType = AppConsistent point in the list.
 
-次のスクリプトでは、**$rp** 変数が、選択したバックアップ項目の復旧ポイントの配列になっています。この配列は時間の逆順で並べ替えられています。最新の復旧ポイントのインデックスは 0 です。標準の PowerShell 配列のインデックスを使用して、復旧ポイントを選択します。例: $rp[0] は、最新の復旧ポイントを選択します。
+In the following script, the variable, **$rp**, is an array of recovery points for the selected backup item. The array is sorted in reverse order of time with the latest recovery point at index 0. Use standard PowerShell array indexing to pick the recovery point. For example: $rp[0] will select the latest recovery point.
 
 ```
 PS C:\> $startDate = (Get-Date).AddDays(-7)
@@ -300,11 +302,11 @@ BackupManagementType        : AzureVM
 
 
 
-### ディスクの復元
+### <a name="restore-the-disks"></a>Restore the disks
 
-**[Restore-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723316.aspx)** コマンドレットを使用して、復旧ポイントまでバックアップ項目のデータと構成を復元します。復旧ポイントの特定が終わったら、その復旧ポイントを **-RecoveryPoint** パラメーターの値として使用します。前のコード例では、使用する復旧ポイントとして **$rp[0]** が選択されていました。次のコード例では、**$rp[0]** は、ディスクの復元に使用する復旧ポイントとして指定されています。
+Use the **[Restore-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723316.aspx)** cmdlet to restore data and configuration for a Backup item, to a recovery point. Once you have identified a recovery point use it as the value for the **-RecoveryPoint** parameter. In the previous example code, **$rp[0]** was chosen as the recovery point to use. In the sample code below, **$rp[0]** is specified as the recovery point to use for restoring to disk.
 
-ディスクと構成情報を復元するには
+To restore the disks and configuration information
 
 ```
 PS C:\> $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName DestAccount -StorageAccountResourceGroupName DestRG
@@ -314,20 +316,20 @@ WorkloadName     Operation          Status               StartTime              
 V2VM              Restore           InProgress           4/23/2016 5:00:30 PM                        cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
 ```
 
-復元ジョブが完了したら、**[Get-AzureRmRecoveryServicesBackupJobDetails](https://msdn.microsoft.com/library/mt723310.aspx)** コマンドレットを使用して復元操作の詳細を取得します。JobDetails プロパティには、VM を再構築するために必要な情報が含まれています。
+Once the Restore job has completed, use the **[Get-AzureRmRecoveryServicesBackupJobDetails](https://msdn.microsoft.com/library/mt723310.aspx)** cmdlet to get the details of the restore operation. The JobDetails property has the information needed to rebuild the VM.
 
 ```
 PS C:\> $restorejob = Get-AzureRmRecoveryServicesBackupJob -Job $restorejob
 PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails
 ```
 
-ディスクの復元後、VM の作成について説明した次のセクションに移動します。
+Once you restore the disks, go to the next section for information on creating the VM.
 
-### 復元されたディスクからの VM の作成
+### <a name="create-a-vm-from-restored-disks"></a>Create a VM from restored disks
 
-ディスクの復元が完了したら、次の手順を使用してディスクから仮想マシンを作成し、構成します。
+After you have restored the disks, use these steps to create and configure the virtual machine from disk.
 
-1. 復元されたディスクのプロパティに対し、ジョブの詳細を照会します。
+1. Query the restored disk properties for the job details.
 
     ```
     PS C:\> $properties = $details.properties
@@ -336,7 +338,7 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails
     PS C:\> $blobName = $properties["Config Blob Name"]
     ```
 
-2. Azure Storage コンテキストを設定し、JSON 構成ファイルを復元します。
+2. Set the Azure storage context and restore the JSON configuration file.
 
     ```
     PS C:\> Set-AzureRmCurrentStorageAccount -Name $storageaccountname -ResourceGroupName testvault
@@ -345,15 +347,15 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails
     PS C:\> $obj = ((Get-Content -Path $destination_path -Encoding Unicode)).TrimEnd([char]0x00) | ConvertFrom-Json
     ```
 
-3. JSON 構成ファイルを使用して VM 構成を作成します。
+3. Use the JSON configuration file to create the VM configuration.
 
     ```
   PS C:\> $vm = New-AzureRmVMConfig -VMSize $obj.HardwareProfile.VirtualMachineSize -VMName "testrestore"
     ```
 
-4. OS ディスクとデータ ディスクを接続します。
+4. Attach the OS disk and data disks.
 
-      暗号化されていない VM の場合
+      For non-encrypted VMs,
 
        ```
        PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -CreateOption “Attach”
@@ -362,8 +364,8 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails
        $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach
        }
        ```
-      暗号化されている VM の場合は、ディスクをアタッチする前に[キー コンテナーの情報](https://msdn.microsoft.com/library/dn868052.aspx)を指定する必要があります。
-      
+      For encrypted VMs, you need to specify [Key vault information](https://msdn.microsoft.com/library/dn868052.aspx) before you can attach disks.
+
       ```
       PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -DiskEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007" -DiskEncryptionKeyVaultId "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -KeyEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007" -KeyEncryptionKeyVaultId "subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -CreateOption "Attach" -Windows
       PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType foreach($dd in $obj.StorageProfile.DataDisks)
@@ -371,8 +373,8 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails
        $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach
        }
       ```
-      
-5. ネットワーク設定を設定します。
+
+5. Set the Network settings.
 
     ```
     PS C:\> $nicName="p1234"
@@ -382,15 +384,19 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails
     PS C:\> $vm=Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
     ```
 
-6. 仮想マシンを作成します。
+6. Create the virtual machine.
 
     ```
     PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType
     PS C:\> New-AzureRmVM -ResourceGroupName "test" -Location "WestUS" -VM $vm
     ```
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-PowerShell を使用して Azure リソースを操作する場合は、Windows Server の保護について記載されている、[Windows Server のバックアップのデプロイと管理](./backup-client-automation.md)に関する PowerShell の記事をご覧ください。[DPM のバックアップのデプロイと管理](./backup-dpm-automation.md)に関する PowerShell の記事で、DPM バックアップの管理について確認することもできます。両方の記事で、Resource Manager デプロイとクラシック デプロイの両方のモデルについて説明しています。
+If you prefer using PowerShell to engage with your Azure resources, check out the PowerShell article for protecting Windows Server, [Deploy and Manage Backup for Windows Server](./backup-client-automation.md). There is also a PowerShell article for managing DPM backups, [Deploy and Manage Backup for DPM](./backup-dpm-automation.md). Both of these articles have a version for Resource Manager deployments as well as Classic deployments.  
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric アプリケーション モデル | Microsoft Azure"
-   description="Service Fabric のアプリケーションとサービスをモデル化し、記述する方法。"
+   pageTitle="Service Fabric application model | Microsoft Azure"
+   description="How to model and describe applications and services in Service Fabric."
    services="service-fabric"
    documentationCenter=".net"
    authors="rwike77"
@@ -13,42 +13,43 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/10/2016"   
+   ms.date="10/29/2016"   
    ms.author="seanmck"/>
 
-# Service Fabric でのアプリケーションのモデル化
 
-この記事では、Azure Service Fabric アプリケーション モデルの概要を示します。また、マニフェストを使用したアプリケーションとサービスを定義する方法とアプリケーションをデプロイできるようパッケージ化する方法について説明します。
+# <a name="model-an-application-in-service-fabric"></a>Model an application in Service Fabric
 
-## アプリケーション モデルを理解する
+This article provides an overview of the Azure Service Fabric application model. It also describes how to define an application and service via manifest files and get the application packaged and ready for deployment.
 
-アプリケーションは、特定のまたは複数の関数を実行する構成サービスのコレクションです。サービスは完全なスタンドアロンの機能を実行し (他のサービスから独立して開始、実行できる)、コード、構成、データで構成されます。各サービスに対して、コードは実行可能ファイルのバイナリで構成され、構成は実行時に読み込まれるサービス設定で構成され、データはサービスが消費する任意の静的データで構成されます。この階層的なアプリケーション モデル内の各コンポーネントは、個別にバージョン管理されてアップグレードされます。
+## <a name="understand-the-application-model"></a>Understand the application model
 
-![Service Fabric のアプリケーション モデル][appmodel-diagram]
+An application is a collection of constituent services that perform a certain function or functions. A service performs a complete and standalone function (it can start and run independently of other services) and is composed of code, configuration, and data. For each service, code consists of the executable binaries, configuration consists of service settings that can be loaded at run time, and data consists of arbitrary static data to be consumed by the service. Each component in this hierarchical application model can be versioned and upgraded independently.
 
-
-アプリケーションの種類は、サービスの種類の集まりで構成されているアプリケーションの分類です。サービスの種類は、サービスを分類したものです。分類にはさまざまな設定と構成を含めることができますが、コア機能は変わりません。サービスのインスタンスは、同じサービスの種類の別のサービス構成のバリエーションです。
-
-アプリケーションのクラス (または "種類") とサービスは、アプリケーションをクラスターのイメージ ストアからインスタンス化する対象となるテンプレートである XML ファイル (アプリケーション マニフェストとサービス マニフェスト) を使用して記述されます。ServiceManifest.xml と ApplicationManifest.xml ファイルのスキーマ定義は、Service Fabric SDK およびツールと共に *C:\\Program Files\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd* にインストールされます。
-
-別のアプリケーション インスタンスのコードは、同じ Service Fabric ノードでホストされている場合でも個別のプロセスとして実行されます。さらに、各アプリケーション インスタンスのライフサイクルを個別に管理できます (つまりアップグレード)。次の図では、コード、構成、パッケージで構成されるサービスの種類で、アプリケーションの種類がどのように構成されるかを示しています。図を簡単にするために、`ServiceType4` のコード/構成/データ パッケージのみが表示されていますが、各サービス タイプにはそのようなパッケージ タイプの一部または全部が含まれます。
-
-![Service Fabric アプリケーションの種類とサービスの種類][cluster-imagestore-apptypes]
-
-2 つの異なるマニフェスト ファイル (サービス マニフェストとアプリケーション マニフェスト) はアプリケーションとサービスの記述に使用されます。サービス マニフェストとアプリケーション マニフェストについては次のセクションで詳しく説明します。
-
-クラスターにはアクティブな 1 つ以上のサービスの種類のインスタンスがある可能性があります。たとえば、ステートフル サービス インスタンスやレプリカの場合、クラスター内の別のノード上にあるレプリカ間で状態をレプリケートすることで高い信頼性を実現します。レプリカは基本的に、クラスター内の 1 つのノードが失敗した場合でも使用できるように、サービスの冗長性を実現します。[パーティション分割されたサービス](service-fabric-concepts-partitioning.md)は、クラスター内のノード間でその状態 (状態へのアクセス パターンも) をさらに分割します。
-
-次の図は、アプリケーションとサービス インスタンス、パーティション、レプリカ間のリレーションシップを示しています。
-
-![サービス内のパーティションとレプリカ][cluster-application-instances]
+![The Service Fabric application model][appmodel-diagram]
 
 
->[AZURE.TIP] http://&lt;yourclusteraddress&gt;:19080/Explorer で利用できる Service Fabric Explorer ツールを利用し、クラスターのアプリケーションのレイアウトを表示できます。詳細については、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」を参照してください。
+An application type is a categorization of an application and consists of a bundle of service types. A service type is a categorization of a service. The categorization can have different settings and configurations, but the core functionality remains the same. The instances of a service are the different service configuration variations of the same service type.  
 
-## サービスを記述する
+Classes (or "types") of applications and services are described through XML files (application manifests and service manifests) that are the templates against which applications can be instantiated from the cluster's image store. The schema definition for the ServiceManifest.xml and ApplicationManifest.xml file is installed with the Service Fabric SDK and tools to *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
 
-サービス マニフェストは、宣言によって、サービスの種類とバージョンを定義します。サービスの種類、ヘルスのプロパティ、負荷分散のメトリック、サービスのバイナリ、および構成ファイルなどのサービス メタデータを指定します。別の言い方をすれば、1 つ以上のサービスの種類をサポートするよう、サービス パッケージを構成するコード、構成、データのパッケージを記述します。次に、サービス マニフェストの単純な例を示します。
+The code for different application instances will run as separate processes even when hosted by the same Service Fabric node. Furthermore, the lifecycle of each application instance can be managed (i.e. upgraded) independently. The following diagram shows how application types are composed of service types, which in turn are composed of code, configuration, and packages. To simplify the diagram, only the code/config/data packages for `ServiceType4` are shown, though each service type would include some or all of those package types.
+
+![Service Fabric application types and service types][cluster-imagestore-apptypes]
+
+Two different manifest files are used to describe applications and services: the service manifest and application manifest. These are covered in detail in the ensuing sections.
+
+There can be one or more instances of a service type active in the cluster. For example, stateful service instances, or replicas, achieve high reliability by replicating state between replicas located on different nodes in the cluster. This replication essentially provides redundancy for the service to be available even if one node in a cluster fails. A [partitioned service](service-fabric-concepts-partitioning.md) further divides its state (and access patterns to that state) across nodes in the cluster.
+
+The following diagram shows the relationship between applications and service instances, partitions, and replicas.
+
+![Partitions and replicas within a service][cluster-application-instances]
+
+
+>[AZURE.TIP] You can view the layout of applications in a cluster using the Service Fabric Explorer tool available at http://&lt;yourclusteraddress&gt;:19080/Explorer. For more details, see [Visualizing your cluster with Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
+
+## <a name="describe-a-service"></a>Describe a service
+
+The service manifest declaratively defines the service type and version. It specifies service metadata such as service type, health properties, load-balancing metrics, service binaries, and configuration files.  Put another way, it describes the code, configuration, and data packages that compose a service package to support one or more service types. Here is a simple example service manifest:
 
 ~~~
 <?xml version="1.0" encoding="utf-8" ?>
@@ -74,15 +75,15 @@
 </ServiceManifest>
 ~~~
 
-**Version** 属性は構造化されていない文字列で、システムでは解析されません。これらは、アップグレード用の各コンポーネントのバージョン管理に使用されます。
+**Version** attributes are unstructured strings and not parsed by the system. These are used to version each component for upgrades.
 
-**ServiceTypes** はこのマニフェストで **CodePackages** でサポートされているサービスの種類を宣言します。これらのサービスの種類のいずれかに対してサービスがインスタンス化されると、このマニフェストで宣言されているすべてのコード パッケージは、エントリ ポイントを実行してアクティブ化されます。実行時に、サポートされているサービスの種類を登録するために、結果のプロセスが必要になります。サービスの種類は、コード パッケージ レベルではなく、マニフェスト レベルで宣言されることにご注意ください。したがって、複数のコード パッケージがあるとき、システムが宣言されたサービスの種類のいずれかを検索するときは常に、すべてアクティブ化されます。
+**ServiceTypes** declares what service types are supported by **CodePackages** in this manifest. When a service is instantiated against one of these service types, all code packages declared in this manifest are activated by running their entry points. The resulting processes are expected to register the supported service types at run time. Note that service types are declared at the manifest level and not the code package level. So when there are multiple code packages, they are all activated whenever the system looks for any one of the declared service types.
 
-**SetupEntryPoint** は、他のエントリポイントの前に、Service Fabric と同じ資格情報で実行する特権を持つエントリ ポイントです (通常は *LocalSystem* アカウント)。**EntryPoint** によって指定された実行可能ファイルは通常は実行時間の長いサービス ホストです。別々にセットアップされたエントリ ポイントの存在により、長期にわたって高い権限でサービス ホストを実行する必要がなくなります。**EntryPoint** で指定された実行可能ファイルは、**SetupEntryPoint** が正常に終了した後に実行されます。結果のプロセスは、終了またはクラッシュした場合に、監視されて再起動されます (**SetupEntryPoint** で再起動)。
+**SetupEntryPoint** is a privileged entry point that runs with the same credentials as Service Fabric (typically the *LocalSystem* account) before any other entry point. The executable specified by **EntryPoint** is typically the long-running service host. The presence of a separate setup entry point avoids having to run the service host with high privileges for extended periods of time. The executable specified by **EntryPoint** is run after **SetupEntryPoint** exits successfully. The resulting process is monitored and restarted (beginning again with **SetupEntryPoint**) if it ever terminates or crashes.
 
-**DataPackage** は、実行時にプロセスで消費される任意の静的データを含む **Name** 属性を使用して名前が付けられたフォルダーを宣言します。
+**DataPackage** declares a folder, named by the **Name** attribute, that contains arbitrary static data to be consumed by the process at run time.
 
-**ConfigPackage** は、*Settings.xml* ファイルを含む **Name** 属性を使用して名前が付けられたフォルダーを宣言します。このファイルには、実行時にプロセスが読み取ることができるユーザー定義のキー値ペアの設定のセクションが含まれています。アップグレード中に **ConfigPackage** の**バージョン**のみが変更された場合、実行中のプロセスは再起動されません。代わりに、コールバックは構成設定が変更されたことをプロセスに通知して、動的に再読み込みされるようにします。次に *Settings.xml* ファイルの一例を示します。
+**ConfigPackage** declares a folder, named by the **Name** attribute, that contains a *Settings.xml* file. This file contains sections of user-defined, key-value pair settings that the process can read back at run time. During an upgrade, if only the **ConfigPackage** **version** has changed, then the running process is not restarted. Instead, a callback notifies the process that configuration settings have changed so they can be reloaded dynamically. Here is an example *Settings.xml*  file:
 
 ~~~
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -93,7 +94,7 @@
 </Settings>
 ~~~
 
-> [AZURE.NOTE] サービス マニフェストには、複数のコード、構成、データのパッケージを含めることができます。それぞれを個別にバージョン管理できます。
+> [AZURE.NOTE] A service manifest can contain multiple code, configuration, and data packages. Each of those can be versioned independently.
 
 <!--
 For more information about other features supported by service manifests, refer to the following articles:
@@ -105,12 +106,12 @@ For more information about other features supported by service manifests, refer 
 *TODO: Configuration overrides
 -->
 
-## アプリケーションを記述する
+## <a name="describe-an-application"></a>Describe an application
 
 
-アプリケーション マニフェストは、宣言によって、アプリケーションの種類とバージョンについて記述します。安定した名前、パーティション分割スキーム、インスタンス数とレプリケーション係数、セキュリティと分離ポリシー、配置に関する制約、構成の上書き、構成サービスの種類などのサービス構成のメタデータを指定します。アプリケーションが置かれる負荷分散のドメインについても記述します。
+The application manifest declaratively describes the application type and version. It specifies service composition metadata such as stable names, partitioning scheme, instance count/replication factor, security/isolation policy, placement constraints, configuration overrides, and constituent service types. The load-balancing domains into which the application is placed are also described.
 
-そのため、アプリケーション マニフェストは、アプリケーション レベルで要素を記述し、1 つ以上のサービス マニフェストを参照してアプリケーションの種類を構成します。次に、アプリケーション マニフェストの単純な例を示します。
+Thus, an application manifest describes elements at the application level and references one or more service manifests to compose an application type. Here is a simple example application manifest:
 
 ~~~
 <?xml version="1.0" encoding="utf-8" ?>
@@ -133,15 +134,15 @@ For more information about other features supported by service manifests, refer 
 </ApplicationManifest>
 ~~~
 
-サービス マニフェストと同様に、**Version** 属性は構造化されていない文字列で、システムでは解析されません。これらは、アップグレード用の各コンポーネントのバージョン管理にも使用されます。
+Like service manifests, **Version** attributes are unstructured strings and are not parsed by the system. These are also used to version each component for upgrades.
 
-**ServiceManifestImport** には、このアプリケーションの種類を構成するサービス マニフェストへの参照が含まれています。インポートされたサービス マニフェストは、このアプリケーション内で有効なサービスの種類を決定します。
+**ServiceManifestImport** contains references to service manifests that compose this application type. Imported service manifests determine what service types are valid within this application type.
 
-**DefaultServices** は、アプリケーションがこのアプリケーションの種類に対してインスタンス化されるたびに自動的に作成されるサービス インスタンスを宣言します。既定のサービスは便利で、作成後はすべての面で通常のサービスと同様に動作します。アプリケーション インスタンスの他のサービスと共にアップグレードされ、削除することもできます。
+**DefaultServices** declares service instances that are automatically created whenever an application is instantiated against this application type. Default services are just a convenience and behave like normal services in every respect after they have been created. They are upgraded along with any other services in the application instance and can be removed as well.
 
-> [AZURE.NOTE] アプリケーション マニフェストには、複数のサービス マニフェストのインポートと既定のサービスを含めることができます。各サービス マニフェストのインポートは、個別にバージョン管理できます。
+> [AZURE.NOTE] An application manifest can contain multiple service manifest imports and default services. Each service manifest import can be versioned independently.
 
-個々の環境で異なるアプリケーションやサービスのパラメーターを維持する方法については、「[複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)」を参照してください。
+To learn how to maintain different application and service parameters for individual environments, see [Managing application parameters for multiple environments](service-fabric-manage-multiple-environment-app-configuration.md).
 
 <!--
 For more information about other features supported by application manifests, refer to the following articles:
@@ -151,11 +152,11 @@ For more information about other features supported by application manifests, re
 *TODO: Service Templates
 -->
 
-## アプリケーションをパッケージ化する
+## <a name="package-an-application"></a>Package an application
 
-### パッケージのレイアウト
+### <a name="package-layout"></a>Package layout
 
-アプリケーション マニフェスト、サービス マニフェスト、その他の必要なパッケージ ファイルを Service Fabric クラスターへのデプロイメント用の特定のレイアウトにまとめる必要があります。この記事のマニフェスト例は、次のディレクトリ構造でまとめる必要があります。
+The application manifest, service manifest(s), and other necessary package files must be organized in a specific layout for deployment into a Service Fabric cluster. The example manifests in this article would need to be organized in the following directory structure:
 
 ~~~
 PS D:\temp> tree /f .\MyApplicationType
@@ -176,29 +177,29 @@ D:\TEMP\MYAPPLICATIONTYPE
             init.dat
 ~~~
 
-フォルダーには、それぞれの対応する要素の **Name** 属性と一致する名前が付けられます。たとえば、**MyCodeA** と **MyCodeB** という名前の付いた 2 つのコード パッケージがサービス マニフェストに含まれている場合、各コード パッケージと同じ名前のフォルダにそれぞれのコード パッケージに必要なバイナリが含まれます。
+The folders are named to match the **Name** attributes of each corresponding element. For example, if the service manifest contained two code packages with the names **MyCodeA** and **MyCodeB**, then two folders with the same names would contain the necessary binaries for each code package.
 
-### SetupEntryPoint の使用
+### <a name="use-setupentrypoint"></a>Use SetupEntryPoint
 
-**SetupEntryPoint** を使用する際の一般的なシナリオは、サービス開始前に実行可能ファイルを実行する必要がある場合や、昇格した特権で操作を実行する必要がある場合になります。次に例を示します。
+Typical scenarios for using **SetupEntryPoint** are when you need to run an executable before the service starts or you need to perform an operation with elevated privileges. For example:
 
-- サービス実行可能ファイルが使用する可能性がある環境変数の設定と初期化などです。これは、Service Fabric のプログラミング モデルによって記述されの実行可能ファイルだけに限定されません。たとえば、npm.exe は node.js アプリケーションのデプロイに構成されているいくつかの環境変数が必要です。
+- Setting up and initializing environment variables that the service executable needs. This is not limited to only executables written via the Service Fabric programming models. For example, npm.exe needs some environment variables configured for deploying a node.js application.
 
-- セキュリティ証明書のインストールによるアクセス制御の設定
+- Setting up access control by installing security certificates.
 
-### Visual Studio を使用したパッケージ構築
+### <a name="build-a-package-by-using-visual-studio"></a>Build a package by using Visual Studio
 
-Visual Studio 2015 を使用して、アプリケーションを作成する場合、パッケージのコマンドを使用して、前述のレイアウトと一致するパッケージを自動的に作成できます。
+If you use Visual Studio 2015 to create your application, you can use the Package command to automatically create a package that matches the layout described above.
 
-パッケージを作成するには、次のように、ソリューション エクスプローラーでアプリケーション プロジェクトを右クリックして [パッケージ] コマンドを選択します。
+To create a package, right-click the application project in Solution Explorer and choose the Package command, as shown below:
 
-![Visual Studio でアプリケーションをパッケージングする][vs-package-command]
+![Packaging an application with Visual Studio][vs-package-command]
 
-パッケージ化が完了したら、[**出力**] ウィンドウにパッケージの場所が表示されます。アプリケーションを Visual Studio でデプロイまたはデバッグする場合、パッケージ化の手順は自動で行われることにご注意ください。
+When packaging is complete, you will find the location of the package in the **Output** window. Note that the packaging step occurs automatically when you deploy or debug your application in Visual Studio.
 
-### パッケージのテスト
+### <a name="test-the-package"></a>Test the package
 
-パッケージ構造を PowerShell の **Test-ServiceFabricApplicationPackage** コマンドを使用して、ローカルで検証することができます。このコマンドは、マニフェストの解析の問題がチェックし、すべての参照を検証します。このコマンドは、パッケージ内のディレクトリやファイルの構造的な正確性を検証するだけであることに注意してください。コードやデータ パッケージのコンテンツのいずれについても検証は行われず、それらがすべてそろっているかどうかは確認されません。
+You can verify the package structure locally through PowerShell by using the **Test-ServiceFabricApplicationPackage** command. This command will check for manifest parsing issues and verify all references. Note that this command only verifies the structural correctness of the directories and files in the package. It will not verify any of the code or data package contents beyond checking that all necessary files are present.
 
 ~~~
 PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
@@ -207,7 +208,7 @@ Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
 ~~~
 
-このエラーは、**SetupEntryPoint** サービス マニフェストで参照される *MySetup.bat* ファイルがコード パッケージに見つからないことを示しています。不足しているファイルを追加すると、アプリケーションの検証に合格します。
+This error shows that the *MySetup.bat* file referenced in the service manifest **SetupEntryPoint** is missing from the code package. After the missing file is added, the application verification passes:
 
 ~~~
 PS D:\temp> tree /f .\MyApplicationType
@@ -233,15 +234,15 @@ True
 PS D:\temp>
 ~~~
 
-アプリケーションが正しくパッケージ化されて検証に合格すると、デプロイメントの準備完了です。
+Once the application is packaged correctly and passes verification, then it's ready for deployment.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[アプリケーションのデプロイと削除][10]
+[Deploy and remove applications][10]
 
-[複数の環境のアプリケーション パラメーターを管理する][11]
+[Managing application parameters for multiple environments][11]
 
-[RunAs: 異なるセキュリティ アクセス許可での Service Fabric アプリケーションの実行][12]
+[RunAs: Running a Service Fabric application with different security permissions][12]
 
 <!--Image references-->
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
@@ -254,4 +255,8 @@ PS D:\temp>
 [11]: service-fabric-manage-multiple-environment-app-configuration.md
 [12]: service-fabric-application-runas-security.md
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

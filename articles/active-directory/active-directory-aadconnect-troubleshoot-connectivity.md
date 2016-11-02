@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/27/2016"
+    ms.date="11/01/2016"
     ms.author="billmath"/>
 
 
@@ -167,13 +167,13 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
 ### <a name="retrievedomains"></a>RetrieveDomains
 認証に成功しました。 Azure AD からドメイン情報を取得できませんでした。
 
-## <a name="troubleshooting-steps-for-previous-releases."></a>以前のリリース用のトラブルシューティング手順です。
+## <a name="troubleshooting-steps-for-previous-releases"></a>以前のリリース用のトラブルシューティング手順です。
 ビルド番号 1.1.105.0 (2016 年 2 月リリース) 以降のリリースでは、サインイン アシスタントが提供されなくなりました。 このセクションと構成は必要がなくなりますが、参照用に残されています。
 
 シングル サインイン アシスタントを機能させるには、winhttp を構成する必要があります。 これには、[**netsh**](active-directory-aadconnect-prerequisites.md#connectivity) を参照してください。使用します。  
 ![netsh](./media/active-directory-aadconnect-troubleshoot-connectivity/netsh.png)
 
-### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>サインイン アシスタントが正しく構成されていない
+### <a name="the-signin-assistant-has-not-been-correctly-configured"></a>サインイン アシスタントが正しく構成されていない
 このエラーは、サインイン アシスタントがプロキシに接続できないか、プロキシが要求を許可していない場合に表示されます。
 ![nonetsh](./media/active-directory-aadconnect-troubleshoot-connectivity/nonetsh.png)
 

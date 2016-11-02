@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center で OS バージョンを更新する | Microsoft Azure"
-   description="この記事では、";**OS バージョンの更新**"; という Azure Security Center の推奨事項を実装する方法について説明します。"
+   pageTitle="Update OS version in Azure Security Center | Microsoft Azure"
+   description="This article shows you how to implement the Azure Security Center recommendation **Update OS version**."
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -13,40 +13,46 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/29/2016"
+   ms.date="11/01/2016"
    ms.author="terrylan"/>
 
-# Azure Security Center で OS バージョンを更新する
 
-Azure Security Center では、クラウド サービス内の仮想マシン (VM) で使用しているオペレーティング システム (OS) の最新バージョンが提供されている場合、そのバージョンに更新するよう推奨されます。監視されるのは、運用スロットで実行されているクラウド サービスの Web ロールと worker ロールだけです。
+# <a name="update-os-version-in-azure-security-center"></a>Update OS version in Azure Security Center
 
-> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+For virtual machines (VMs) in cloud services, Azure Security Center will recommend that the operating system (OS) be updated if there is a more recent version available.  Only cloud services web and worker roles running in production slots are monitored.
 
-## 推奨事項の実装
+> [AZURE.NOTE] This document introduces the service by using an example deployment.  This is not a step-by-step guide.
 
-1. **[推奨事項]** ブレードで、**[Update OS version (OS バージョンの更新)]** を選択します。![OS バージョンの更新][1]
+## <a name="implement-the-recommendation"></a>Implement the recommendation
 
-2. これにより、**[Update OS version (OS バージョンの更新)]** ブレードが開きます。このブレードの手順に従い、OS バージョンを更新します。
+1. In the **Recommendations** blade, select **Update OS version**.
+![Update OS version][1]
 
-## 関連項目
+2. This opens the blade **Update OS version**. Follow the steps in this blade to update the OS version.
 
-この記事では、"OS バージョンの更新" という Security Center の推奨事項を実装する方法について説明しました。 クラウド サービス、およびクラウド サービスの OS バージョンの更新について詳しくは、以下の記事を参照してください。
+## <a name="see-also"></a>See also
 
-- [Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)
-- [クラウド サービスの更新方法](../cloud-services/cloud-services-update-azure-service.md)
-- [Cloud Services の構成方法](../cloud-services/cloud-services-how-to-configure-portal.md)
+This article showed you how to implement the Security Center recommendation "Update OS version." To learn more about cloud services and updating the OS version for a cloud service, see:
 
-セキュリティ センターの詳細については、次を参照してください。
+- [Cloud Services overview](../cloud-services/cloud-services-choose-me.md)
+- [How to update a cloud service](../cloud-services/cloud-services-update-azure-service.md)
+- [How to Configure Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md)
 
-- 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
-- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティの警告の管理と対応の方法について説明しています。
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
+To learn more about Security Center, see the following:
+
+- [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies for your Azure subscriptions and resource groups.
+- [Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.
+- [Security health monitoring in Azure Security Center](security-center-monitoring.md) -- Learn how to monitor the health of your Azure resources.
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
+- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) -- Learn how to monitor the health status of your partner solutions.
+- [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
+- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) -- Get the latest Azure security news and information.
 
 <!--Image references-->
 [1]: ./media/security-center-update-os-version/update-os-version.png
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+
