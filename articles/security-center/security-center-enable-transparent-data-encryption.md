@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Enable Transparent Data Encryption in Azure Security Center | Microsoft Azure"
-   description="This document shows you how to implement the Azure Security Center recommendation **Enable Transparent Data Encryption**."
+   pageTitle="Azure Security Center での Transparent Data Encryption の有効化 | Microsoft Azure"
+   description="このドキュメントでは、";Transparent Data Encryption を有効にする"; という Azure Security Center の推奨事項を実装する方法について説明します。"
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -13,57 +13,49 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/01/2016"
+   ms.date="07/29/2016"
    ms.author="terrylan"/>
 
+# Azure Security Center での Transparent Data Encryption の有効化
 
-# <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Enable Transparent Data Encryption in Azure Security Center
+Azure Security Center では、Transparent Data Encryption (TDE) がまだ有効になっていない場合に、SQL Database で TDE を有効にすることを勧めます。TDE によってデータが保護されます。データベース、関連するバックアップ、保存されているトランザクション ログ ファイルを暗号化することで、コンプライアンス要件を満たすことができます。アプリケーションに変更を加える必要はありません。詳細については、「[Azure SQL Database での Transparent Data Encryption](https://msdn.microsoft.com/library/dn948096)」をご覧ください。
 
-Azure Security Center will recommend that you enable Transparent Data Encryption (TDE) on SQL databases if TDE is not already enabled. TDE protects your data and helps you meet compliance requirements by encrypting your database, associated backups, and transaction log files at rest, without requiring changes to your application. To learn more see [Transparent Data Encryption with Azure SQL Database](https://msdn.microsoft.com/library/dn948096).
+この推奨事項は Azure SQL サービスにのみ適用されます。仮想マシンで実行されている SQL は含まれません。
 
-This recommendation applies to the Azure SQL service only; doesn't include SQL running on your virtual machines.
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
-> [AZURE.NOTE] This document introduces the service by using an example deployment.  This is not a step-by-step guide.
+## 推奨事項の実装
 
-## <a name="implement-the-recommendation"></a>Implement the recommendation
+1. **[推奨事項]** ブレードで、**[Transparent Data Encryption を有効にする]** を選択します。![Transparent Data Encryption の有効化][1]
 
-1. In the **Recommendations** blade, select **Enable Transparent Data Encryption**.
-![Enable Transparent Data Encryption][1]
+2. **[SQL データベースで Transparent Data Encryption を有効にする]** ブレードが開きます。TDE を有効にする SQL Database を選択します。![TDE を有効にする SQL DB の選択][2]
+3. **[Transparent Data Encryption]** ブレードで、[データ暗号化] の **[オン]** を選択し、ブレードの上部のリボンにある **[保存]** をクリックします。![TDE の有効化][3]
 
-2. This opens the **Enable Transparent Data Encryption on SQL databases** blade. Select a SQL database to enable TDE on.
-![Select SQL DB to enable TDE on][2]
-3. On the **Transparent data encryption** blade, select **ON** under Data encryption and select **Save** in the top ribbon of the blade.
-![Turn on TDE][3]
+  選択した SQL Database で TDE が有効になると、**[暗号化の状態]** が **[Encrypted (暗号化済み)]** に変わります。
 
-  Once TDE is enabled on the selected SQL database, the **Encryption status** will change to **Encrypted**.    
+  ![暗号化の状態][4]
 
-  ![Encryption status][4]
+## 関連項目
 
-## <a name="see-also"></a>See also
+この記事では、"Transparent Data Encryption を有効にする" という Security Center の推奨事項を実装する方法について説明しました。 SQL TDE の詳細については、次の記事をご覧ください。
 
-This article showed you how to implement the Security Center recommendation "Enable Transparent Data Encryption." To learn more about SQL TDE, see the following:
+- [Azure SQL Database での Transparent Data Encryption](https://msdn.microsoft.com/library/dn948096)
+- [Transparent Data Encryption (TDE) の概要](../sql-data-warehouse/sql-data-warehouse-encryption-tde.md)
 
-- [Transparent Data Encryption with Azure SQL Database](https://msdn.microsoft.com/library/dn948096)
-- [Get started with Transparent Data Encryption (TDE)](../sql-data-warehouse/sql-data-warehouse-encryption-tde.md)
+セキュリティ センターの詳細については、次を参照してください。
 
-To learn more about Security Center, see the following:
-
-- [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies for your Azure subscriptions and resource groups.
-- [Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.
-- [Security health monitoring in Azure Security Center](security-center-monitoring.md) -- Learn how to monitor the health of your Azure resources.
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
-- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) -- Learn how to monitor the health status of your partner solutions.
-- [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
-- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) -- Get the latest Azure security news and information.
+- [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+- [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
+- [Azure Security Center でのセキュリティ正常性の監視](security-center-monitoring.md) -- Azure リソースの正常性を監視する方法について説明しています。
+- [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) - セキュリティの警告の管理と対応の方法について説明しています。
+- [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- [Azure Security Center に関する FAQ](security-center-faq.md) -- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
 [1]: ./media/security-center-enable-tde-on-sql-databases/enable-tde.png
-[2]:./media/security-center-enable-tde-on-sql-databases/transparent-data-encryption-blade.png
+[2]: ./media/security-center-enable-tde-on-sql-databases/transparent-data-encryption-blade.png
 [3]: ./media/security-center-enable-tde-on-sql-databases/turn-on-tde.png
 [4]: ./media/security-center-enable-tde-on-sql-databases/encrypted.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

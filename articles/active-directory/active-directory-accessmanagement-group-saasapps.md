@@ -1,64 +1,59 @@
 
 <properties
-    pageTitle="Using a group to manage access to SaaS Applications | Microsoft Azure"
-    description="How to use groups in Azure Active Directory Premium or Basic to assign access to SaaS applications that are integrated with Azure Active Directory."
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="SaaS アプリケーションへのアクセスをグループで管理する | Microsoft Azure"
+	description="Azure Active Directory と連携する SaaS アプリケーションへのアクセス権を、Azure Active Directory Premium または Basic でグループを使用して割り当てる方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="11/01/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/10/2016"
+	ms.author="curtand"/>
 
 
+# SaaS アプリケーションへのアクセスをグループで管理する
 
-# <a name="using-a-group-to-manage-access-to-saas-applications"></a>Using a group to manage access to SaaS applications
+Azure Active Directory (Azure AD) の Azure AD Premium ライセンスまたは Azure AD Basic ライセンスでは、Azure AD と連携する SaaS アプリケーションへのアクセス権を、グループを使って割り当てることができます。たとえばマーケティング部門を対象に 5 つの SaaS アプリケーションを使用するためのアクセス権を割り当てる場合、同部門のユーザーから成るグループを作成したうえで、マーケティングで必要となる 5 つの SaaS アプリケーションにそのグループを割り当てます。このようにマーケティング部門のメンバーシップを一元的に管理することで時間を節約することが可能です。この場合アプリケーションに対するユーザーの割り当ては、そのユーザーがマーケティング グループのメンバーとして追加されたときに行われます。同様に、マーケティング グループからユーザーが削除されると、アプリケーションからもその割り当てが削除されます。
 
-Using Azure Active Directory (Azure AD) with an Azure AD Premium or Azure AD Basic license, you can use groups to assign access to a SaaS application that's integrated with Azure AD. For example, if you want to assign access for the marketing department to use five different SaaS applications, you can create a group that contains the users in the marketing department, and then assign that group to these five SaaS applications that are needed by the marketing department. This way you can save time by managing the membership of the marketing department in one place. Users then are assigned to the application when they are added as members of the marketing group, and have their assignments removed from the application when they are removed from the marketing group.
+この機能は、Azure AD アプリケーション ギャラリー内から追加できる多数のアプリケーションで利用することができます。
 
-This capability can be used with hundreds of applications that you can add from within the Azure AD Application Gallery.
+**SaaS アプリケーションに対してグループのアクセス権を割り当てるには**
 
-**To assign access for a group to a SaaS application**
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)の左側のナビゲーション バーで **[Active Directory]** を選択します。
 
-1. In the [Azure classic portal](https://manage.windowsazure.com), select **Active Directory** on the navigation bar on the left hand side.
+2. **[ディレクトリ]** タブを選択し、SaaS アプリケーションに対するグループのアクセス権を割り当てるディレクトリを開きます。
 
-2. Select the **Directory** tab, and then open the directory in which you want to assign access for a group to a SaaS application.
+3. **[アプリケーション]** タブを選択します。アプリケーション ギャラリーから追加したアプリケーションをクリックし、**[ユーザーとグループ]** タブをクリックします。
 
-3. Select the **Applications** tab. Select an application that you added from the Application Gallery, and then click  the **Users and Groups** tab.
+4. **[ユーザーとグループ]** タブで、アクセス権を割り当てるグループの名前を **[指定値で始まる]** フィールドに入力し、右上のチェック マークをオンにします。入力するのは、グループ名の先頭部分だけでかまいません。
 
-4. On the **Users and Groups** tab, in the **Starting with** field, enter the name of the group to which you want to assign access, and then select the check mark in the upper right. You only need to type the first part of a group's name.
+5. グループを選択し、**[アクセス権の割り当て]** ボタンをクリックします。確認メッセージが表示されたら、**[はい]** を選択します。現在、アプリケーションに対するグループ ベースの割り当てでは入れ子になったグループ メンバーシップはサポートされていません。
 
-5. Select the group, then then select the **Assign Access** button. Select **Yes** when you see the confirmation message. Nested group memberships are not supported for group-based assignment to applications at this time.
-
-6. You can also see which users are assigned to the application, either directly or by membership in a group. To do this, change the **Show dropdown from 'Groups'** to **'All Users'**. The list shows users in the directory and whether or not each user is assigned to the application. The list also shows whether the assigned users are assigned to the application directly (assignment type shown as 'Direct'), or by virtue of group membership (assignment type shown as 'Inherited.')
+6. アプリケーションに直接割り当てられているユーザーとグループのメンバーシップを通じて割り当てられているユーザーを表示することもできます。その場合は、[表示] ドロップ ダウンを **[グループ]** から **[すべてのユーザー]** に変更してください。ディレクトリ内のユーザーが一覧表示され、アプリケーションに割り当てられているかどうかがユーザーごとに表示されます。ユーザーがアプリケーションに直接割り当てられているのか ([割り当ての種類] = [直接])、グループのメンバーシップを通じて割り当てられているのか ([割り当ての種類] = [継承済み]) も、このリストで確認できます。
 
 
 > [AZURE.NOTE]
->You can see the Users and Groups tab only after you have enabled Azure AD Premium or Azure AD Basic.
+[ユーザーとグループ] タブが表示されるのは、Azure AD Premium または Azure AD Basic を有効にした場合のみです。
 
-##<a name="related-articles"></a>Related Articles
+##関連記事
 
-These articles provide additional information on Azure Active Directory.
+次の記事は、Azure Active Directory に関する追加情報を示します。
 
-* [Managing access to resources with Azure Active Directory groups](active-directory-manage-groups.md)
+* [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
 
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-* [Azure Active Directory cmdlets for configuring group settings](active-directory-accessmanagement-groups-settings-cmdlets.md)
+* [グループの設定を構成するための Azure Active Directory コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
 
-* [What is Azure Active Directory?](active-directory-whatis.md)
+* [Azure Active Directory とは](active-directory-whatis.md)
 
-* [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md)
+* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

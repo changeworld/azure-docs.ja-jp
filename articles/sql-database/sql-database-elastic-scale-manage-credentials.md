@@ -1,51 +1,50 @@
 <properties 
-    pageTitle="Managing credentials in the elastic database client library | Microsoft Azure" 
-    description="How to set the right level of credentials, admin to read-only, for elastic database apps" 
-    services="sql-database" 
-    documentationCenter="" 
-    manager="jhubbard" 
-    authors="ddove" 
-    editor=""/>
+	pageTitle="エラスティック データベース クライアント ライブラリの資格情報を管理する | Microsoft Azure" 
+	description="エラスティック データベース アプリの適切な資格情報のレベルを設定する方法 (管理者から読み取り専用)" 
+	services="sql-database" 
+	documentationCenter="" 
+	manager="jhubbard" 
+	authors="ddove" 
+	editor=""/>
 
 <tags 
-    ms.service="sql-database" 
-    ms.workload="sql-database" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/24/2016" 
-    ms.author="ddove"/>
+	ms.service="sql-database" 
+	ms.workload="sql-database" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="05/27/2016" 
+	ms.author="ddove"/>
 
+# Elastic Database クライアント ライブラリへのアクセスに使用する資格情報
 
-# <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Credentials used to access the Elastic Database client library
+[Elastic Database クライアント ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)では、3 種類の資格情報を使用して[シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)にアクセスします。必要に応じて、最低レベルのアクセスが可能な資格情報を使用します。
 
-The [Elastic Database client library](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) uses three different kinds  of credentials to access the [shard map manager](sql-database-elastic-scale-shard-map-management.md). Depending on the need, use the credential with  the lowest level of access possible.
+* **管理の資格情報**: シャード マップ マネージャーを作成または操作します。([用語集](sql-database-elastic-scale-glossary.md)を参照してください。) 
+* **アクセス資格情報**: 既存のシャード マップ マネージャーにアクセスして、シャードに関する情報を取得します。
+* **接続の資格情報**: シャードに接続します。 
 
-* **Management credentials**: for creating or manipulating a shard map manager. (See the [glossary](sql-database-elastic-scale-glossary.md).) 
-* **Access credentials**: to access an existing shard map manager to obtain information about shards.
-* **Connection credentials**: to connect to shards. 
-
-See also [Managing databases and logins in Azure SQL Database](sql-database-manage-logins.md). 
+「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」も参照してください。
  
-## <a name="about-management-credentials"></a>About management credentials
+## 管理資格情報について
 
-Management credentials are used to create a [**ShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) object for applications that manipulate shard maps. (For example, see [Adding a shard using Elastic Database tools](sql-database-elastic-scale-add-a-shard.md) and [Data dependent routing](sql-database-elastic-scale-data-dependent-routing.md)) The user of the elastic scale client library creates the SQL users and SQL logins and makes sure each is granted the read/write permissions on the global shard map database and all shard databases as well. These credentials are used to maintain the global shard map and the local shard maps when changes to the shard map are performed. For instance, use the management credentials to create the shard map manager object (using [**GetSqlShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx): 
+管理の資格情報は、シャード マップを操作するアプリケーションの [**ShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) オブジェクトを作成するときに使用されます。(例については、「[Elastic Database ツールを使用してシャードを追加する](sql-database-elastic-scale-add-a-shard.md)」および「[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください)。エラスティック スケール クライアント ライブラリのユーザーは、SQL ユーザーと SQL ログインを作成し、グローバル シャード マップ データベースとすべてのシャード データベースに対する読み取り/書き込みアクセス許可が各ユーザーに付与されていることを確認する必要があります。これらの資格情報は、シャード マップに変更を加えるときにグローバル シャード マップとローカル シャード マップを維持するために使用されます。たとえば、管理の資格情報を使用してシャード マップ マネージャー オブジェクトを作成します ([**GetSqlShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx) を使用)。
 
-    // Obtain a shard map manager. 
-    ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager( 
-            smmAdminConnectionString, 
-            ShardMapManagerLoadPolicy.Lazy 
-    ); 
+	// Obtain a shard map manager. 
+	ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager( 
+	        smmAdminConnectionString, 
+	        ShardMapManagerLoadPolicy.Lazy 
+	); 
 
-The variable **smmAdminConnectionString** is a connection string that contains the management credentials. The user ID and password provides read/write access to both shard map database and individual shards. The management connection string also includes the server name and database name to identify the global shard map database. Here is a typical connection string for that purpose:
+変数 **smmAdminConnectionString** は、管理資格情報を格納する接続文字列です。ユーザー ID とパスワードにより、シャード マップ データベースと個々のシャードの両方に対する読み取り/書き込みアクセスが提供されます。管理接続文字列には、グローバル シャード マップ データベースを識別するためのサーバー名とデータベース名も含まれます。この処理に使用する一般的な接続文字列を次に示します。
 
-     "Server=<yourserver>.database.windows.net;Database=<yourdatabase>;User ID=<yourmgmtusername>;Password=<yourmgmtpassword>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;” 
+	 "Server=<yourserver>.database.windows.net;Database=<yourdatabase>;User ID=<yourmgmtusername>;Password=<yourmgmtpassword>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;” 
 
-Do not use values in the form of "username@server"—instead just use the "username" value.  This is because credentials must work against both the shard map manager database and individual shards, which may be on different servers.
+値は "username@server" の形式では使用しないでください。代わりに "username" のみを使用します。これは、シャード マップ マネージャー データベースと個々のシャードの両方で資格情報を有効にする必要があり、それらが別々のサーバー上に存在する場合があるためです。
 
-## <a name="access-credentials"></a>Access credentials
+## 資格情報にアクセスする
   
-When creating a shard map manager in an application that does not administer shard maps, use credentials that have read-only permissions on the global shard map. The information retrieved from the global shard map under these credentials are used for [data-dependent routing](sql-database-elastic-scale-data-dependent-routing.md) and to populate the shard map cache on the client. The credentials are provided through the same call pattern to **GetSqlShardMapManager** as shown above: 
+シャード マップの管理用ではないアプリケーションでシャード マップ マネージャーを作成するときは、グローバル シャード マップに対する読み取り専用アクセス許可が与えられる資格情報を使用します。これらの資格情報の下でグローバル シャード マップから取得される情報は、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)の目的と、クライアント上のシャード マップ キャッシュを設定するために使用されます。資格情報は、上に示すように、**GetSqlShardMapManager** と同じ呼び出しパターンを通じて提供されます。
 
     // Obtain shard map manager. 
     ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager( 
@@ -53,33 +52,29 @@ When creating a shard map manager in an application that does not administer sha
             ShardMapManagerLoadPolicy.Lazy
     );  
 
-Note the use of the **smmReadOnlyConnectionString** to reflect the use of different credentials for this access on behalf of **non-admin** users: these credentials should not provide write permissions on the global shard map. 
+ここでは、**管理者以外**のユーザーのアクセス用に使用されるさまざまな資格情報を反映するために **smmReadOnlyConnectionString** を使用しています。これらの資格情報では、グローバル シャード マップに対する書き込みアクセス許可は提供されません。
 
-## <a name="connection-credentials"></a>Connection credentials 
+## 接続の資格情報 
 
-Additional credentials are needed when using the [**OpenConnectionForKey**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) method to access a shard associated with a sharding key. These credentials need to provide permissions for read-only access to the local shard map tables residing on the shard. This is needed to perform connection validation for data-dependent routing on the shard. This code snippet allows data access in the context of data dependent routing: 
+[**OpenConnectionForKey**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) メソッドを使用してシャーディング キーに関連付けられているシャードにアクセスするには、追加の資格情報が必要になります。これらの資格情報は、シャード上に存在するローカル シャード マップ テーブルへの読み取り専用アクセス許可を提供する必要があります。これは、シャード上でのデータ依存ルーティングのための接続検証を行う場合に必要になります。次のコード スニペットは、データ依存ルーティングのコンテキストでデータ アクセスを許可します。
  
-    using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>( 
-    targetWarehouse, smmUserConnectionString, ConnectionOptions.Validate)) 
+	using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>( 
+	targetWarehouse, smmUserConnectionString, ConnectionOptions.Validate)) 
 
-In this example, **smmUserConnectionString** holds the connection string for the user credentials. For Azure SQL DB, here is a typical connection string for user credentials: 
+この例の **smmUserConnectionString** は、ユーザー資格情報の接続文字列を保持します。Azure SQL DB に対するユーザー資格情報の一般的な接続文字列を次に示します。
 
-    "User ID=<yourusername>; Password=<youruserpassword>; Trusted_Connection=False; Encrypt=True; Connection Timeout=30;”  
+	"User ID=<yourusername>; Password=<youruserpassword>; Trusted_Connection=False; Encrypt=True; Connection Timeout=30;”  
 
-As with the admin credentials, do not values in the form of "username@server". Instead, just use "username".  Also note that the connection string does not contain a server name and database name. That is because the **OpenConnectionForKey** call will automatically direct the connection to the correct shard based on the key. Hence, the database name and server name are not provided. 
+管理の資格情報と同じように、値は "username@server" の形式では使用しないでください。代わりに "username" のみを使用します。接続文字列にはサーバー名とデータベース名が含まれていないことにも注意してください。これは、**OpenConnectionForKey** の呼び出しによって接続がキーに基づいた正しいシャードに自動的に転送されるためです。そのため、データベース名とサーバー名を指定しないでください。
 
-## <a name="see-also"></a>See also
-[Managing databases and logins in Azure SQL Database](sql-database-manage-logins.md)
+## 関連項目
+[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
 
-[Securing your SQL Database](sql-database-security.md)
+[SQL Database の保護](sql-database-security.md)
 
-[Getting started with Elastic Database jobs](sql-database-elastic-jobs-getting-started.md)
+[Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md)
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0601_2016-->

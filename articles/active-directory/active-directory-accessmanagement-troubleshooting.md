@@ -1,42 +1,37 @@
 
 <properties
-    pageTitle="Troubleshooting dynamic membership for groups | Microsoft Azure"
-    description="Troubleshooting tips for dynamic membership for groups in Azure AD."
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""
-    />
+	pageTitle="グループの動的メンバーシップのトラブルシューティング | Microsoft Azure"
+	description="Azure AD でのグループの動的メンバーシップ管理に関する問題について、トラブルシューティングのヒントを紹介します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""
+	/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="11/01/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/10/2016"
+	ms.author="curtand"/>
 
 
+# グループの動的メンバーシップのトラブルシューティング
 
-# <a name="troubleshooting-dynamic-memberships-for-groups"></a>Troubleshooting dynamic memberships for groups
+**グループに対するルールを構成しましたが、グループのメンバーシップが更新されません**<br/>**[ディレクトリの構成]** タブで **[委任されたグループ管理の有効化]** 設定が **[はい]** に設定されていることを確認してください。Azure Active Directory Premium ライセンスが割り当てられたユーザーとしてサインインした場合にのみ、この設定が表示されます。ルールに使用しているユーザー属性の値を確認し、そのルールを満たすユーザーが存在することを確認してください。
 
-**I configured a rule on a group but no memberships get updated in the group**<br/>Verify that the **Enable delegated group management** setting is set to **Yes** in the **Configure** tab. You will see this setting only if you are signed in as a user to whom an Azure Active Directory Premium license is assigned. Verify the values for user attributes on the rule: are there users that satisfy the rule?
+**ルールの設定を変更したのですが、そのルールの既存のメンバーが削除されてしまいました**<br/>これは正しい動作です。ルールを有効にしたり変更を加えたりするとグループの既存のメンバーは削除されます。ルールの評価から返されたユーザーは、グループのメンバーとして追加されます。
 
-**I configured a rule, but now the existing members of the rule are removed**<br/>This is expected behavior. Existing members of the group are removed when a rule is enabled or changed. The users returned from evaluation of the rule are added as members to the group.     
+**ルールを追加または変更してもすぐにはメンバーシップの変更を確認できません。なぜでしょうか。**<br/>メンバーシップの評価に特化した機能が、非同期のバックグラウンド プロセスで定期的に実行されます。プロセスにかかる時間は、ディレクトリ内のユーザー数と、ルールの結果として作成されるグループのサイズによって変わります。ユーザー数の少ないディレクトリであれば通常、グループ メンバーシップの変更が数分以内に反映されます。ディレクトリのユーザー数が多いと、変更が反映されるまでに 30 分以上かかる場合があります。
 
-**I don’t see membership changes instantly when I add or change a rule, why not?**<br/>Dedicated membership evaluation is done periodically in an asynchronous background process. How long the process takes is determined by the number of users in your directory and the size of the group created as a result of the rule. Typically, directories with small numbers of users will see the group membership changes in less than a few minutes. Directories with a large number of users can take 30 minutes or longer to populate.
+次の記事は、Azure Active Directory に関する追加情報を示します。
 
-These articles provide additional information on Azure Active Directory.
-
-* [Managing access to resources with Azure Active Directory groups](active-directory-manage-groups.md)
+* [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-* [What is Azure Active Directory?](active-directory-whatis.md)
-* [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md)
+* [Azure Active Directory とは](active-directory-whatis.md)
+* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

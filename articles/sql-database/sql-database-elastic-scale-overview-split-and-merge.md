@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Moving data between scaled-out cloud databases | Microsoft Azure" 
-    description="Explains how to manipulate shards and move data via a self-hosted service using elastic database APIs." 
+    pageTitle="スケールアウトされたクラウド データベース間のデータ移動 | Microsoft Azure" 
+    description="エラスティック データベース API を使用して、シャードを操作し、自己ホスト サービス経由でデータを移動する方法について説明します。" 
     services="sql-database" 
     documentationCenter="" 
     manager="jhubbard" 
@@ -12,84 +12,83 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="10/24/2016" 
+    ms.date="05/27/2016" 
     ms.author="ddove" />
 
+# スケールアウトされたクラウド データベース間のデータ移動
 
-# <a name="moving-data-between-scaledout-cloud-databases"></a>Moving data between scaled-out cloud databases
+お客様がサービスとしてのソフトウェアの開発者で、突然、アプリが多大な要求を受けた場合、その増加に対応する必要があります。そのため、データベース (シャード) を追加します。データの整合性を破壊することなく、新しいデータベースにデータを再分散する方法 **Split-Merge ツール**を使用して、データを制約付きデータベースから新しいデータベースに移動します。
 
-If you are a Software as a Service developer, and suddenly your app undergoes tremendous demand, you need to accommodate the growth. So you add more databases (shards). How do you redistribute the data to the new databases without disrupting the data integrity? Use the **split-merge tool** to move data from constrained databases to the new databases.  
+Split-Merge ツールは、Azure Web サービスとして実行されます。管理者または開発者は、ツールを使用して、シャードレット (シャードからのデータ) を異なるデータベース (シャード) 間で移動します。このツールは、シャード マップの管理を使用して、サービス メタデータ データベースを維持し、一貫したマッピングを保証します。
 
-The split-merge tool runs as an Azure web service. An administrator or developer uses the tool to move shardlets (data from a shard) between different databases (shards). The tool uses shard map management to maintain the service metadata database, and ensure consistent mappings.
+![概要][1]
 
-![Overview][1]
-
-## <a name="download"></a>Download
+## ダウンロード
 [Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 
-## <a name="documentation"></a>Documentation
-1. [Elastic database Split-Merge tool tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-* [Split-Merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md)
-* [Split-merge security considerations](sql-database-elastic-scale-split-merge-security-configuration.md)
-* [Shard map management](sql-database-elastic-scale-shard-map-management.md)
-* [Migrate existing databases to scale-out](sql-database-elastic-convert-to-use-elastic-tools.md)
-* [Elastic database tools](sql-database-elastic-scale-introduction.md)
-* [Elastic Database tools glossary](sql-database-elastic-scale-glossary.md)
+## ドキュメント
+1. [エラスティック データベース Split-Merge ツールに関するチュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
+* [Split-Merge セキュリティの構成](sql-database-elastic-scale-split-merge-security-configuration.md)
+* [Split-Merge セキュリティの構成](sql-database-elastic-scale-split-merge-security-configuration.md)
+* [シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)
+* [既存のデータベースを移行してスケールアウト](sql-database-elastic-convert-to-use-elastic-tools.md)
+* [エラスティック データベース ツール](sql-database-elastic-scale-introduction.md)
+* [エラスティック データベース ツールの用語集](sql-database-elastic-scale-glossary.md)
 
-## <a name="why-use-the-splitmerge-tool"></a>Why use the split-merge tool?
+## Split-Merge ツールを使用する理由
 
-**Flexibility**
+**柔軟性**
 
-Applications need to stretch flexibly beyond the limits of a single Azure SQL DB database. Use the tool to move data as needed to new databases while retaining integrity.
+アプリケーションは、単一の Azure SQL DB データベースの制限を超えて柔軟に拡張できる必要があります。ツールを使用して、整合性を維持したまま、新しいデータベースに必要なデータを移動します。
 
-**Split to grow** 
+**分割して増加**
 
-You need to increase overall capacity to handle explosive growth. To do so, create additional capacity by sharding the data and by distributing it across incrementally more databases until capacity needs are fulfilled. This is a prime example of the ‘split’ feature. 
+爆発的な増加を処理するには、全体的な容量を増やす必要があります。このためには、容量ニーズを満たすために、データをシャーディングし、データを分散するデータベースの数を段階的に増やすことによって追加の容量を確保します。"分割" 機能の典型的な例です。
 
-**Merge to shrink**
+**マージして縮小**
 
-Capacity needs shrink due to the seasonal nature of a business. The tool lets you scale down to fewer scale units when business slows. The ‘merge’ feature in the Elastic Scale split-merge Service covers this requirement. 
+容量は、ビジネスの季節的な性質によって縮小させる必要があります。このツールを使用すると、ビジネスの成長が鈍化したときに、より少ないスケール単位に縮小できます。Elastic Scale の Split-Merge サービスの "マージ" 機能を使用すると、この要件に対処できます。
 
-**Manage hotspots by moving shardlets**
+**シャードレットの移動によるホットスポットの管理**
 
-With multiple tenants per database, the allocation of shardlets to shards can lead to capacity bottlenecks on some shards. This requires re-allocating shardlets or moving busy shardlets to new or less utilized shards. 
+データベースごとに複数のテナントがある場合、シャードレットをシャードに割り当てることが、一部のシャードの容量ボトルネックにつながります。これには、シャードレットを再び割り当てたり、ビジー状態のシャードレットを新しいシャードや使用率の低いシャードに移動したりする操作が必要になります。
 
-## <a name="concepts-key-features"></a>Concepts & key features
+## 概念と主な機能
 
-**Customer-hosted services**
+**お客様側でホストされるサービス**
 
-The split-merge is delivered as a customer-hosted service. You must deploy and host the service in your Microsoft Azure subscription. The package you download from NuGet contains a configuration template to complete with the information for your specific deployment. See the [split-merge tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md) for details. Since the service runs in your Azure subscription, you can control and configure most security aspects of the service. The default template includes the options to configure SSL, certificate-based client authentication, encryption for stored credentials, DoS guarding and IP restrictions. You can find more information on the security aspects in the following document [split-merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
+Split-Merge は、お客様側でホストされるサービスとして提供されます。このサービスは、Microsoft Azure サブスクリプション内でデプロイし、ホストする必要があります。NuGet からダウンロードするパッケージには構成テンプレートが含まれていて、これに特定のデプロイの情報を入力します。詳細については、「[Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」を参照してください。このサービスは Azure サブスクリプション内で実行されるため、サービスのセキュリティに関するほとんどの側面を制御および構成できます。既定のテンプレートには、SSL、証明書ベースのクライアント認証、保存された資格情報の暗号化、DoS 対策、IP 制限を構成するためのオプションが含まれています。セキュリティの側面については、「[Elastic Scale のセキュリティの構成](sql-database-elastic-scale-split-merge-security-configuration.md)」を参照してください。
 
-The default deployed service runs with one worker and one web role. Each uses the A1 VM size in Azure Cloud Services. While you cannot modify these settings when deploying the package, you could change them after a successful deployment in the running cloud service, (through the Azure portal). Note that the worker role must not be configured for more than a single instance for technical reasons. 
+既定では、デプロイされたサービスは、1 つの worker ロールと 1 つの Web ロールを使用して実行されます。それぞれは、Azure Cloud Services の A1 VM サイズを使用します。これらの設定は、パッケージをデプロイするときに変更することはできませんが、実行中のクラウド サービスへのデプロイが成功した後に (Azure ポータルを通じて) 変更することができます。技術的な理由により、複数のインスタンスに worker ロールを構成しないでください。
 
-**Shard map integration**
+**シャード マップの統合**
 
-The split-merge service interacts with the shard map of the application. When using the split-merge service to split or merge ranges or to move shardlets between shards, the service automatically keeps the shard map up to date. To do so, the service connects to the shard map manager database of the application and maintains ranges and mappings as split/merge/move requests progress. This ensures that the shard map always presents an up-to-date view when split-merge operations are going on. Split, merge and shardlet movement operations are implemented by moving a batch of shardlets from the source shard to the target shard. During the shardlet movement operation the shardlets subject to the current batch are marked as offline in the shard map and are unavailable for data-dependent routing connections using the **OpenConnectionForKey** API. 
+Split-Merge サービスは、アプリケーションのシャード マップと対話します。Split-Merge サービスを使用して範囲を分割またはマージしたり、シャードレットをシャード間で移動したりするとき、サービスによってシャード マップが自動的に最新の状態に保たれます。これを実現するために、サービスは、アプリケーションのシャード マップ マネージャー データベースに接続し、分割/マージ/移動要求の進行に伴って範囲とマッピングを管理します。これにより、Split-Merge 操作が実行されているときにシャード マップが常に最新の状態を示すことが保証されます。分割、マージ、およびシャードレットの移動操作は、シャードレットのバッチをソース シャードからターゲット シャードに移動することによって実装されます。シャードレットの移動操作中、現在のバッチの対象のシャードレットは、シャード マップ内でオフラインとしてマークされ、**OpenConnectionForKey API** を使用したデータ依存ルーティング接続に使用できなくなります。
 
-**Consistent shardlet connections**
+**一貫性のあるシャードレットの接続**
 
-When data movement starts for a new batch of shardlets, any shard-map provided data-dependent routing connections to the shard storing the shardlet are killed and subsequent connections from the shard map APIs to the these shardlets are blocked while the data movement is in progress in order to avoid inconsistencies. Connections to other shardlets on the same shard will also get killed, but will succeed again immediately on retry. Once the batch is moved, the shardlets are marked online again for the target shard and the source data is removed from the source shard. The service goes through these steps for every batch until all shardlets have been moved. This will lead to several connection kill operations during the course of the complete split/merge/move operation.  
+シャードレットの新しいバッチのデータの移動が開始されると、シャードレットを格納しているシャードへの、シャード マップによって提供されるすべてのデータ依存ルーティング接続が強制終了されます。さらに不整合を回避するために、データの移動操作中は、シャード マップ API からのこれらのシャードレットへの後続の接続がブロックされます。同じシャード上の他のシャードレットへの接続も強制終了されますが、再試行すると成功します。バッチが移動されると、シャードレットがターゲット シャードに対して再びオンラインとしてマークされ、ソース データがソース シャードから削除されます。すべてのシャードレットが移動されるまで、すべてのバッチに対してこの手順が実行されます。これにより、完全な移動/分割/マージ操作の進行中に接続の強制終了操作が複数回実行されることになります。
 
-**Managing shardlet availability**
+**シャードレットの可用性の管理**
 
-Limiting the connection killing to the current batch of shardlets as discussed above restricts the scope of unavailability to one batch of shardlets at a time. This is preferred over an approach where the complete shard would remain offline for all its shardlets during the course of a split or merge operation. The size of a batch, defined as the number of distinct shardlets to move at a time, is a configuration parameter. It can be defined for each split and merge operation depending on the application’s availability and performance needs. Note that the range that is being locked in the shard map may be larger than the batch size specified. This is because the service picks the range size such that the actual number of sharding key values in the data approximately matches the batch size. This is important to remember in particular for sparsely populated sharding keys. 
+前述のように、接続の強制終了をシャードレットの現在のバッチに制限すると、使用不可能となるシャードレットのスコープが一度に 1 つのバッチに限定されます。これは、分割/マージ操作の進行中にすべてのシャードレットに対してシャード全体がオフラインになるような方法よりも好ましいアプローチです。一度に移動する個別のシャードレットの数として定義されるバッチのサイズは、1 つの構成パラメーターです。これは、アプリケーションの可用性とパフォーマンスのニーズに応じて分割/マージ操作ごとに定義できます。シャード マップでロックされている範囲は、指定されたバッチ サイズよりも大きくなる場合があります。これは、サービスによって、データ内のシャーディング キー値の実際の数がバッチ サイズとほぼ一致するように範囲のサイズが選択されるためです。これは、シャーディング キー値の数がスパースな場合に関して特に覚えておく必要があります。
 
-**Metadata storage**
+**メタデータのストレージ**
 
-The split-merge service uses a database to maintain its status and to keep logs during request processing. The user creates this database in their subscription and provides the connection string for it in the configuration file for the service deployment. Administrators from the user’s organization can also connect to this database to review request progress and to investigate detailed information regarding potential failures.
+Split-Merge サービスは、データベースを使用して、その状態を管理し、要求処理中のログを保持します。ユーザーは、サブスクリプションにこのデータベースを作成し、このデータベースの接続文字列をサービス デプロイの構成ファイルに指定します。ユーザーの組織の管理者も、要求の進行状況を確認したり、潜在的な障害に関する詳細な情報を調べたりするために、このデータベースに接続できます。
 
-**Sharding-awareness**
+**シャーディング対応**
 
-The split-merge service differentiates between (1) sharded tables, (2) reference tables, and (3) normal tables. The semantics of a split/merge/move operation depend on the type of the table used and are defined as follows: 
+Split-Merge サービスでは、(1) シャード化テーブル、(2) 参照テーブル、(3) 通常のテーブルが区別されます。移動/分割/マージ操作のセマンティクスは、使用されるテーブルの種類によって異なり、次のように定義されます。
 
-* **Sharded tables**: Split, merge, and move operations move shardlets from source to target shard. After successful completion of the overall request, those shardlets are no longer present on the source. Note that the target tables need to exist on the target shard and must not contain data in the target range prior to processing of the operation. 
+* **シャード化テーブル**: 移動/分割/マージ操作により、ソース シャードからターゲット シャードにシャードレットが移動されます。要求全体が正常に完了した後、これらのシャードレットはソース上に存在しません。ターゲット テーブルは、ターゲット シャード上に存在する必要があり、操作の処理の前にターゲット範囲にデータが含まれていてはいけません。 
 
-* **Reference tables**: For reference tables, the split, merge and move operations copy the data from the source to the target shard. Note, however, that no changes occur on the target shard for a given table if any row is already present in this table on the target. The table has to be empty for any reference table copy operation to get processed.
+* **参照テーブル**: 参照テーブルの場合、分割/マージ/移動操作により、ソース シャードからターゲット シャードにデータがコピーされます。ただし、ターゲット上のテーブルに行が存在する場合、このテーブルのターゲット シャード上で変更はしません。参照テーブルのコピー操作を処理するには、テーブルが空になっている必要があります。
 
-* **Other Tables**: Other tables can be present on either the source or the target of a split and merge operation. The split-merge service disregards these tables for any data movement or copy operations. Note, however, that they can interfere with these operations in case of constraints.
+* **その他のテーブル**: その他のテーブルは、分割/マージ操作のソースまたはターゲットのどちらかに存在することができます。Split-Merge サービスでは、すべてのデータの移動またはコピー操作に関してこれらのテーブルは無視されます。ただし、制約がある場合にこれらのテーブルが操作を妨げる可能性があることに注意してください。
 
-The information on reference vs. sharded tables is provided by the **SchemaInfo** APIs on the shard map. The following example illustrates the use of these APIs on a given shard map manager object smm: 
+参照テーブルとシャード化テーブルに関する情報は、シャード マップの **SchemaInfo API** によって提供されます。次の例では、特定のシャード マップ マネージャー オブジェクト smm でこれらの API を使用しています。
 
     // Create the schema annotations 
     SchemaInfo schemaInfo = new SchemaInfo(); 
@@ -105,84 +104,84 @@ The information on reference vs. sharded tables is provided by the **SchemaInfo*
     // Publish 
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo); 
 
-The tables ‘region’ and ‘nation’ are defined as reference tables and will be copied with split/merge/move operations. ‘customer’ and ‘orders’ in turn are defined as sharded tables. C_CUSTKEY and O_CUSTKEY serve as the sharding key. 
+'region' テーブルと 'nation' テーブルは参照テーブルとして定義されており、分割/マージ/移動の各操作によってコピーされます。一方、'customer' と 'orders' は共有テーブルとして定義されています。C\_CUSTKEY と O\_CUSTKEY は、シャーディング キーとして機能します。
 
-**Referential Integrity**
+**参照整合性**
 
-The split-merge service analyzes dependencies between tables and uses foreign key-primary key relationships to stage the operations for moving reference tables and shardlets. In general, reference tables are copied first in dependency order, then shardlets are copied in order of their dependencies within each batch. This is necessary so that FK-PK constraints on the target shard are honored as the new data arrives. 
+Split-Merge サービスは、テーブル間の依存関係を分析し、外部キーと主キーのリレーションシップを使用して、参照テーブルとシャードレットを移動する操作をステージングします。一般に、最初に参照テーブルが依存関係の順にコピーされ、次にシャードレットが各バッチ内での依存関係の順にコピーされます。これは、新しいデータが到着するときにターゲット シャード上の外部キーと主キーの制約が適用されるために必要な操作です。
 
-**Shard Map Consistency and Eventual Completion**
+**シャード マップの整合性と最終的な完了**
 
-In the presence of failures, the split-merge service resumes operations after any outage and aims to complete any in progress requests. However, there may be unrecoverable situations, e.g., when the target shard is lost or compromised beyond repair. Under those circumstances, some shardlets that were supposed to be moved may continue to reside on the source shard. The service ensures that shardlet mappings are only updated after the necessary data has been successfully copied to the target. Shardlets are only deleted on the source once all their data has been copied to the target and the corresponding mappings have been updated successfully. The deletion operation happens in the background while the range is already online on the target shard. The split-merge service always ensures correctness of the mappings stored in the shard map.
-
-
-## <a name="the-splitmerge-user-interface"></a>The split-merge user interface
-
-The split-merge service package includes a worker role and a web role. The web role is used to submit split-merge requests in an interactive way. The main components of the user interface are as follows:
-
--    Operation Type: The operation type is a radio button that controls the kind of operation performed by the service for this request. You can choose between the split, merge and move scenarios. You can also cancel a previously submitted operation. You can use split, merge and move requests for range shard maps. List shard maps only support move operations.
-
--    Shard Map: The next section of request parameters cover information about the shard map and the database hosting your shard map. In particular, you need to provide the name of the Azure SQL Database server and database hosting the shardmap, credentials to connect to the shard map database, and finally the name of the shard map. Currently, the operation only accepts a single set of credentials. These credentials need to have sufficient permissions to perform changes to the shard map as well as to the user data on the shards.
-
--    Source Range (split and merge): A split and merge operation processes a range using its low and high key. To specify an operation with an unbounded high key value, check the “High key is max” check box and leave the high key field empty. The range key values that you specify do not need to precisely match a mapping and its boundaries in your shard map. If you do not specify any range boundaries at all the service will infer the closest range for you automatically. You can use the GetMappings.ps1 PowerShell script to retrieve the current mappings in a given shard map.
-
--    Split Source Behavior (split): For split operations, define the point to split the source range. You do this by providing the sharding key where you want the split to occur. Use the radio button specify whether you want the lower part of the range (excluding the split key) to move, or whether you want the upper part to move (including the split key).
-
--    Source Shardlet (move): Move operations are different from split or merge operations as they do not require a range to describe the source. A source for move is simply identified by the sharding key value that you plan to move.
-
--    Target Shard (split): Once you have provided the information on the source of your split operation, you need to define where you want the data to be copied to by providing the Azure SQL Db server and database name for the target.
-
--    Target Range (merge): Merge operations move shardlets to an existing shard. You identify the existing shard by providing the range boundaries of the existing range that you want to merge with.
-
--    Batch Size: The batch size controls the number of shardlets that will go offline at a time during the data movement. This is an integer value where you can use smaller values when you are sensitive to long periods of downtime for shardlets. Larger values will increase the time that a given shardlet is offline but may improve performance.
-
--    Operation Id (Cancel): If you have an ongoing operation that is no longer needed, you can cancel the operation by providing its operation ID in this field. You can retrieve the operation ID from the request status table (see Section 8.1) or from the output in the web browser where you submitted the request.
+エラーの場合、Split-Merge サービスは停止後に操作を再開して、進行中の要求を完了しようとします。ただし、ターゲット シャードが失われた場合や、修復できないほど危害を受けている場合など、回復できない状況もあります。このような状況では、移動されたと考えられるシャードレットがソース シャード上に残されたままになる場合があります。このサービスでは、必要なデータがターゲットに正常にコピーされた後でのみシャードレット マッピングが更新されることが保証されます。ソース上のシャードレットは、すべてのデータがターゲットにコピーされ、対応するマッピングが正常に更新された後で削除されます。削除操作は、ターゲット シャード上で範囲が既にオンラインになっているときにバックグラウンドで実行されます。Split-Merge サービスでは、シャード マップに格納されているマッピングの正確性が常に保証されます。
 
 
-## <a name="requirements-and-limitations"></a>Requirements and Limitations 
+## Split-Merge のユーザー インターフェイス
 
-The current implementation of the split-merge service is subject to the following requirements and limitations: 
+Split-Merge サービス パッケージには、worker ロールと Web ロールが含まれます。Web ロールは、対話的に Split-Merge 要求を送信するために使用します。ユーザー インターフェイスの主要なコンポーネントは、次のとおりです。
 
-* The shards need to exist and be registered in the shard map before a split-merge operation on these shards can be performed. 
+-    操作の種類: オプション ボタンを使用して、この要求に対してサービスで実行される操作の種類を制御します。分割、マージ、および移動のシナリオから選択することができます。また、以前に送信した操作を取り消すこともできます。範囲シャード マップに分割/マージ/移動要求を使用できます。リスト シャード マップは、移動操作のみをサポートしています。
 
-* The service does not create tables or any other database objects automatically as part of its operations. This means that the schema for all sharded tables and reference tables need to exist on the target shard prior to any split/merge/move operation. Sharded tables in particular are required to be empty in the range where new shardlets are to be added by a split/merge/move operation. Otherwise, the operation will fail the initial consistency check on the target shard. Also note that reference data is only copied if the reference table is empty and that there are no consistency guarantees with regard to other concurrent write operations on the reference tables. We recommend this: when running split/merge operations, no other write operations make changes to the reference tables.
+-    シャード マップ: 要求パラメーターの次のセクションでは、シャード マップと、シャード マップをホストするデータベースに関する情報を指定します。具体的には、Azure SQL Database サーバーの名前、シャード マップをホストするデータベース、シャード マップ データベースに接続するための資格情報、および最後にシャード マップの名前を指定する必要があります。現時点では、1 つの資格情報のセットのみを指定できます。これらの資格情報には、シャード上のユーザー データだけでなく、シャード マップに対する変更を実行するための十分な権限が与えられている必要があります。
 
-* The service relies on row identity established by a unique index or key that includes the sharding key to improve performance and reliability for large shardlets. This allows the service to move data at an even finer granularity than just the sharding key value. This helps to reduce the maximum amount of log space and locks that are required during the operation. Consider creating a unique index or a primary key including the sharding key on a given table if you want to use that table with split/merge/move requests. For performance reasons, the sharding key should be the leading column in the key or the index.
+-    ソースの範囲 (分割/マージ): 分割とマージ操作は、低値キーと高値キーを使用して範囲を処理します。無制限の高値キーで操作を指定するには、「高キーは最大」チェックボックスをオンにして、高値キーフィールドを空のままにしておきます。指定する範囲のキー値はシャード マップ内のマッピングと境界に正確に一致する必要はありません。範囲の境界を全く指定しない場合は、サービスは自動的に最も近い範囲を推論します。GetMappings.ps1 PowerShell スクリプトを使用すると、特定のシャード マップの現在のマッピングを取得できます。
 
-* During the course of request processing, some shardlet data may be present both on the source and the target shard. This is necessary to protect against failures during the shardlet movement. The integration of split-merge with the shard map ensures that connections through the data dependent routing APIs using the **OpenConnectionForKey** method on the shard map do not see any inconsistent intermediate states. However, when connecting to the source or the target shards without using the **OpenConnectionForKey** method, inconsistent intermediate states might be visible when split/merge/move requests are going on. These connections may show partial or duplicate results depending on the timing or the shard underlying the connection. This limitation currently includes the connections made by Elastic Scale Multi-Shard-Queries.
+-    ソースの分割動作 (分割): 分割操作の場合は、ソースの範囲を分割するポイントを定義します。そのためには、分割操作を行うシャーディング キーを指定します。オプション ボタンを使用して、範囲の前半 (分割キーを除きます) と後半 (分割キーを含みます) のどちらを移動するかを指定します。
 
-* The metadata database for the split-merge service must not be shared between different roles. For example, a role of the split-merge service running in staging needs to point to a different metadata database than the production role.
+-    ソース シャードレット (移動): 移動操作は、ソースを示す範囲を必要としない点で、分割操作またはマージ操作とは異なります。移動対象のソースは、移動しようとしているシャーディング キーの値によって識別されます。
+
+-    ターゲット シャード (分割): 分割操作のソースに関する情報を指定した場合は、ターゲットの Azure SQL DB サーバーとデータベース名を指定してデータのコピー先を定義する必要があります。
+
+-    ターゲットの範囲 (マージ): マージ操作は、シャードレットを既存のシャードに移動します。マージする既存の範囲の範囲境界を指定して既存のシャードを識別します。
+
+-    バッチ サイズ: バッチ サイズは、データの移動中に一度にオフライン化されるシャードレットの数を制御します。バッチ サイズは整数値で指定します。シャードレットの長いダウンタイムを避けるには、小さな値を使用します。大きな値を指定すると、特定のシャードレットがオフラインになる時間が長くなりますが、パフォーマンスが向上する場合があります。
+
+-    操作 ID (キャンセル): 実行中の操作が不要になった場合は、対応するフィールドに操作 ID を指定することにより、操作を取り消すことができます。操作 ID は、要求状態テーブル (セクション 8.1 を参照) または要求を送信した Web ブラウザーの出力から取得できます。
+
+
+## 要件と制限 
+
+Split-Merge サービスの現在の実装には、次の要件と制限が適用されます。
+
+* シャードに対して Split-Merge 操作を実行する前に、シャードが存在し、シャード マップに登録されている必要があります。 
+
+* このサービスは、操作の一部としてテーブルやその他のデータベース オブジェクトを自動的に作成しません。これは、分割/マージ/移動操作を開始する前に、ターゲット シャード上にすべてのシャード化テーブルと参照テーブルのスキーマが存在している必要があることを意味します。特に、シャード化テーブルは、移動/分割/マージ操作で新しいシャードレットが追加される範囲内で空になっている必要があります。そうでないと、ターゲット シャードでの初期の整合性チェックで不合格になります。また、参照データは参照テーブルが空の場合にのみコピーされる点と、参照テーブルに対する他の同時書き込み操作に関して一貫性が保証されない点にも注意してください。分割/マージ操作を実行したときに、参照テーブルに変更を加える他の書き込み操作がないことを確認することをお勧めします。
+
+* サービスでは、大きなシャードレットのパフォーマンスと信頼性を向上させるために、シャーディング キーを含む一意のインデックスまたはキーで設定される行 ID に依存しています。これにより、単なるシャーディング キー値よりも細かな粒度でデータを移動できます。その結果、ログ領域と操作中に必要になるロックの量を削減できます。移動/分割/マージ要求でテーブルを使用する場合は、シャーディング キーを含む一意のインデックスまたは主キーをテーブルに作成することを検討してください。パフォーマンス上の理由により、シャーディング キーは、キーまたはインデックスの先頭の列である必要があります。
+
+* 要求の処理の過程で、一部のシャードレット データがソース シャードとターゲット シャードの両方に存在することがあります。これは、シャードレットの移動時のエラーから保護するために必要です。Split-Merge とシャード マップの統合により、シャード マップ上で **OpenConnectionForKey** メソッドを使用するデータ依存ルーティング API を介した接続において、中間状態の一貫性が失われることはありません。ただし、**OpenConnectionForKey** メソッドを使用せずにソース シャードまたはターゲット シャードに接続するときは、移動/分割/マージ要求の実行中に一貫性のない中間状態が発生する可能性があります。これらの接続では、タイミングや接続の基になるシャードによって、部分的な結果や重複する結果が生成される可能性があります。現在、この制限には、Elastic Scale マルチシャード クエリによって確立される接続が含まれます。
+
+* Split-Merge サービスのメタデータ データベースは、異なるロール間では共有できません。たとえば、ステージング環境で実行されている Split-Merge サービスのロールは、実稼働環境ロールとは異なるメタデータ データベースを指し示す必要があります。
  
 
-## <a name="billing"></a>Billing 
+## 課金 
 
-The split-merge service runs as a cloud service in your Microsoft Azure subscription. Therefore charges for cloud services apply to your instance of the service. Unless you frequently perform split/merge/move operations, we recommend you delete your split-merge cloud service. That saves costs for running or deployed cloud service instances. You can re-deploy and start your readily runnable configuration whenever you need to perform split or merge operations. 
+Split-Merge サービスは、Microsoft Azure サブスクリプションのクラウド サービスとして実行されます。そのため、クラウド サービスの料金がサービスのインスタンスに適用されます。移動/分割/マージ操作を頻繁に実行する場合を除き、Split-Merge クラウド サービスを削除することをお勧めします。こうすることで、実行中のまたはデプロイされたクラウド サービス インスタンスに対して発生するコストを削減できます。分割/マージの操作を実行する必要があるときはいつでも簡単に実行可能な構成を再デプロイして開始することができます。
  
-## <a name="monitoring"></a>Monitoring 
-### <a name="status-tables"></a>Status tables 
+## Monitoring 
+### 状態テーブル 
 
-The split-merge Service provides the **RequestStatus** table in the metadata store database for monitoring of completed and ongoing requests. The table lists a row for each split-merge request that has been submitted to this instance of the split-merge service. It gives the following information for each request:
+Split-Merge サービスでは、完了した要求と実行中の要求を監視するための **RequestStatus** テーブルがメタデータ ストア データベースに用意されています。このテーブルには、この Split-Merge サービスのインスタンスに送信されたそれぞれの Split-Merge 要求データが行として含まれます。それぞれの要求に対して、次の情報が含まれます。
 
-* **Timestamp**: The time and date when the request was started.
+* **タイムスタンプ**: 要求が開始されたときの日付と時刻。
 
-* **OperationId**: A GUID that uniquely identifies the request. This request can also be used to cancel the operation while it is still ongoing.
+* **OperationId**: 要求を一意に識別する GUID。この要求を使用して、まだ実行中の操作を取り消すこともできます。
 
-* **Status**: The current state of the request. For ongoing requests, it also lists the current phase in which the request is.
+* **ステータス**: 要求の現在の状態。実行中の要求に対しては、要求の現在のフェーズも表示されます。
 
-* **CancelRequest**: A flag that indicates whether the request has been cancelled.
+* **CancelRequest**: 要求が取り消されたかどうかを示すフラグ。
 
-* **Progress**: A percentage estimate of completion for the operation. A value of 50 indicates that the operation is approximately 50% complete.
+* **進行状況**: 推定される操作の進捗状況。値 50 は、操作が約 50% 完了していることを示します。
 
-* **Details**: An XML value that provides a more detailed progress report. The progress report is periodically updated as sets of rows are copied from source to target. In case of failures or exceptions, this column also includes more detailed information about the failure.
+* **詳細**: 詳細な進捗状況レポートを提供する XML 値。行のセットがソースからターゲットにコピーされるときに、進捗状況レポートが定期的に更新されます。エラーまたは例外が発生した場合、この列にはエラーに関するより詳細な情報も含まれます。
 
 
-### <a name="azure-diagnostics"></a>Azure Diagnostics
+### Azure 診断
 
-The split-merge service uses Azure Diagnostics based on Azure SDK 2.5 for monitoring and diagnostics. You control the diagnostics configuration as explained here: [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). The download package includes two diagnostics configurations – one for the web role and one for the worker role. These diagnostics configurations for the service follow the guidance from [Cloud Service Fundamentals in Microsoft Azure](https://code.msdn.microsoft.com/windowsazure/Cloud-Service-Fundamentals-4ca72649). It includes the definitions to log Performance Counters, IIS logs, Windows Event Logs, and split-merge application event logs. 
+Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure 診断を使用します。「[Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」で説明したように、診断構成を制御します。ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。サービスのこれらの診断構成は、「[Microsoft Azure のクラウド サービスの基礎](https://code.msdn.microsoft.com/windowsazure/Cloud-Service-Fundamentals-4ca72649)」のガイダンスに従っています。これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。
 
-## <a name="deploy-diagnostics"></a>Deploy Diagnostics 
+## 診断のデプロイ 
 
-To enable monitoring and diagnostics using the diagnostic configuration for the web and worker roles provided by the NuGet package, run the following commands using Azure PowerShell: 
+NuGet パッケージで提供される Web ロール用と worker ロール用の診断構成を使用して、監視と診断を有効にするには、Azure PowerShell を使用して次のコマンドを実行します。
 
     $storage_name = "<YourAzureStorageAccount>" 
     
@@ -204,43 +203,43 @@ To enable monitoring and diagnostics using the diagnostic configuration for the 
     
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker" 
 
-You can find more information on how to configure and deploy diagnostics settings here: [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). 
+診断設定を構成してデプロイする方法の詳細については、「[Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」を参照してください。
 
-## <a name="retrieve-diagnostics"></a>Retrieve diagnostics 
+## 診断の取得 
 
-You can easily access your diagnostics from the Visual Studio Server Explorer in the Azure part of the Server Explorer tree. Open a Visual Studio instance, and in the menu bar click View, and Server Explorer. Click the Azure icon to connect to your Azure subscription. Then navigate to Azure -> Storage -> <your storage account> -> Tables -> WADLogsTable. For more information, see [Browsing Storage Resources with Server Explorer](http://msdn.microsoft.com/library/azure/ff683677.aspx). 
+診断には、Visual Studio サーバー エクスプローラーのサーバー エクスプローラー ツリーの Azure の部分から簡単にアクセスできます。Visual Studio インスタンスを開き、メニュー バーで [ビュー]、[サーバー エクスプローラー] の順にクリックします。Azure のアイコンをクリックして Azure サブスクリプションに接続します。次に、Azure、[ストレージ]、[<your storage account>]、[テーブル]、[WADLogsTable] の順に移動します。詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)」を参照してください。
 
 ![WADLogsTable][2]
 
-The WADLogsTable highlighted in the figure above contains the detailed events from the split-merge service’s application log. Note that the default configuration of the downloaded package is geared towards a production deployment. Therefore the interval at which logs and counters are pulled from the service instances is large (5 minutes). For test and development, lower the interval by adjusting the diagnostics settings of the web or the worker role to your needs. Right-click on the role in the Visual Studio Server Explorer (see above) and then adjust the Transfer Period in the dialog for the Diagnostics configuration settings: 
+上の図で強調表示されている WADLogsTable には、Split-Merge サービスのアプリケーション ログからの詳細なイベントが含まれています。ダウンロードしたパッケージの既定の構成は、運用環境のデプロイを対象にしていることに注意してください。そのため、サービス インスタンスからログおよびカウンターが取得される間隔が長くなっています (5 分)。テストと開発用には、Web ロールまたは worker ロールの診断設定をニーズに合わせて調整して、間隔を短くすることができます。Visual Studio サーバー エクスプローラー (上図参照) でロールを右クリックし、[診断構成] ダイアログ ボックスで、[転送間隔] の値を調整します。
 
-![Configuration][3]
+![構成][3]
 
 
-## <a name="performance"></a>Performance
+## パフォーマンス
 
-In general, better performance is to be expected from the higher, more performant service tiers in Azure SQL Database. Higher IO, CPU and memory allocations for the higher service tiers benefit the bulk copy and delete operations that the split-merge service uses. For that reason, increase the service tier just for those databases for a defined, limited period of time.
+一般に、Azure SQL Database の上位のより高パフォーマンスのサービス階層ほど、より高いパフォーマンスを期待できます。上位のサービス階層で提供されるより優れた IO、CPU、およびメモリ割り当ては、Split-Merge サービスが使用する一括コピーおよび削除操作に役立ちます。そのため、定義された一定期間のデータベースに対してのみサービス階層を増やします。
 
-The service also performs validation queries as part of its normal operations. These validation queries check for unexpected presence of data in the target range and ensure that any split/merge/move operation starts from a consistent state. These queries all work over sharding key ranges defined by the scope of the operation and the batch size provided as part of the request definition. These queries perform best when an index is present that has the sharding key as the leading column. 
+サービスでは、検証クエリが通常の操作の一部としても実行されます。検証クエリは、ターゲット範囲に想定外のデータが存在していないことを確認して、すべての分割/マージ/移動操作が一貫性のある状態で開始されることを保証します。これらのクエリは、操作のスコープと要求の定義の一部として提供されたバッチ サイズによって定義されたシャーディング キー範囲に作用します。これらのクエリは、先頭の列にシャーディング キーを含むインデックスがあるときに最高のパフォーマンスを発揮します。
 
-In addition, a uniqueness property with the sharding key as the leading column will allow the service to use an optimized approach that limits resource consumption in terms of log space and memory. This uniqueness property is required to move large data sizes (typically above 1GB). 
+さらに、先頭の列にシャーディング キーを含む一意性プロパティにより、サービスは、ログ領域とメモリに関してリソースの消費を制限する最適化されたアプローチを使用できます。(一般的に 1 GB 以上の) 大きなサイズのデータを移動するには、この一意性プロパティが必要です。
 
-## <a name="how-to-upgrade"></a>How to upgrade
+## アップグレードする方法
 
-1. Follow the steps in [Deploy a split-merge service](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-2. Change your cloud service configuration file for your split-merge deployment to reflect the new configuration parameters. A new required parameter is the information about the certificate used for encryption. An easy way to do this is to compare the new configuration template file from the download against your existing configuration. Make sure you add the settings for “DataEncryptionPrimaryCertificateThumbprint” and “DataEncryptionPrimary” for both the web and the worker role.
-3. Before deploying the update to Azure, ensure that all currently running split-merge operations have finished. You can easily do this by querying the RequestStatus and PendingWorkflows tables in the split-merge metadata database for ongoing requests.
-4. Update your existing cloud service deployment for split-merge in your Azure subscription with the new package and your updated service configuration file.
+1. 「[Split-Merge サービスのデプロイ](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」の手順に従います。
+2. Split-Merge のデプロイ用のクラウド サービス構成ファイルを変更して、新しい構成パラメーターを反映します。新しい必須のパラメーターは、暗号化に使用される証明書に関する情報です。これを簡単に行うには、ダウンロードした新しい構成テンプレート ファイルを既存の構成と比較します。Web ロールと worker ロールの「DataEncryptionPrimaryCertificateThumbprint」と「DataEncryptionPrimary」に、必ず設定を追加するようにしてください。
+3. Azure に更新をデプロイする前に、現在実行中のすべての Split-Merge 操作が完了していることを確認します。これは、実行中の要求の Split-Merge メタデータのデータベースで RequestStatus と PendingWorkflows テーブルを照会することで簡単に行えます。
+4. 新しいパッケージと更新されたサービス構成ファイルで、Azure サブスクリプションの Split-Merge の既存のクラウド サービスのデプロイを更新します。
 
-You do not need to provision a new metadata database for split-merge to upgrade. The new version will automatically upgrade your existing metadata database to the new version. 
+アップグレードするために Split-Merge の新しいメタデータ データベースをプロビジョニングする必要はありません。新しいバージョンは、既存のメタデータ データベースを新しいバージョンに自動的にアップグレードします。
 
-## <a name="best-practices-troubleshooting"></a>Best practices & troubleshooting
+## ベスト プラクティスとトラブルシューティング
  
--    Define a test tenant and exercise your most important split/merge/move operations with the test tenant across several shards. Ensure that all metadata is defined correctly in your shard map and that the operations do not violate constraints or foreign keys.
--    Keep the test tenant data size above the maximum data size of your largest tenant to ensure you are not encountering data size related issues. This helps you assess an upper bound on the time it takes to move a single tenant around. 
--    Make sure that your schema allows deletions. The split-merge service requires the ability to remove data from the source shard once the data has been successfully copied to the target. For example, **delete triggers** can prevent the service from deleting the data on the source and may cause operations to fail.
--    The sharding key should be the leading column in your primary key or unique index definition. That ensures the best performance for the split or merge validation queries, and for the actual data movement and deletion operations which always operate on sharding key ranges.
--    Collocate your split-merge service in the region and data center where your databases reside. 
+-    テスト テナントを定義し、複数のシャードにまたがるテスト テナントで最も重要な分割/マージ/移動操作を実行します。すべてのメタデータが適切にシャード マップ内に定義され、操作が制約または外部キーに違反しないことを確認できます。
+-    データ サイズに関連する問題が発生するのを防ぐには、テスト テナントのデータのサイズを、最大のテナントの最大データ サイズよりも大きく保ちます。これは、1 つのテナントの移動にかかる時間の上限を評価する場合にも役立ちます。 
+-    スキーマで削除が許可されることを確認します。Split-Merge サービスを使用するには、データがターゲットに正常にコピーされた後でソース シャードからデータを削除できる必要があります。たとえば、**トリガーを削除する**と、サービスがソースのデータを削除できなくなり、操作が失敗することがあります。
+-    シャーディング キーが主キーまたは一意のインデックスの定義の先頭の列であることを確認します。これにより、分割/マージ検証クエリと、シャーディング キー範囲に常に作用する実際のデータの移動と削除操作の最善のパフォーマンスが保証されます。
+-    データベースが配置されているリージョンとデータ センターに Split-Merge サービスを併置します。 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -248,13 +247,9 @@ You do not need to provision a new metadata database for split-merge to upgrade.
 
 <!--Anchors-->
 <!--Image references-->
-[1]:./media/sql-database-elastic-scale-overview-split-and-merge/split-merge-overview.png
-[2]:./media/sql-database-elastic-scale-overview-split-and-merge/diagnostics.png
-[3]:./media/sql-database-elastic-scale-overview-split-and-merge/diagnostics-config.png
+[1]: ./media/sql-database-elastic-scale-overview-split-and-merge/split-merge-overview.png
+[2]: ./media/sql-database-elastic-scale-overview-split-and-merge/diagnostics.png
+[3]: ./media/sql-database-elastic-scale-overview-split-and-merge/diagnostics-config.png
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0601_2016-->

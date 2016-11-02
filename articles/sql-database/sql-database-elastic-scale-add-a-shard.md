@@ -1,32 +1,31 @@
 <properties 
-    pageTitle="Adding a shard using elastic database tools | Microsoft Azure" 
-    description="How to use Elastic Scale APIs to add new shards to a shard set." 
-    services="sql-database" 
-    documentationCenter="" 
-    manager="jhubbard" 
-    authors="ddove" 
-    editor=""/>
+	pageTitle="Elastic Database ツールを使用してシャードを追加する | Microsoft Azure" 
+	description="Elastic Scale API を使用して新しいシャードをシャード セットに追加する方法。" 
+	services="sql-database" 
+	documentationCenter="" 
+	manager="jhubbard" 
+	authors="ddove" 
+	editor=""/>
 
 <tags 
-    ms.service="sql-database" 
-    ms.workload="sql-database" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/24/2016" 
-    ms.author="ddove"/>
+	ms.service="sql-database" 
+	ms.workload="sql-database" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="05/27/2016" 
+	ms.author="ddove"/>
 
+# Elastic Database ツールを使用してシャードを追加する
 
-# <a name="adding-a-shard-using-elastic-database-tools"></a>Adding a shard using Elastic Database tools
+## 新しい範囲またはキー用のシャードを追加するには  
 
-## <a name="to-add-a-shard-for-a-new-range-or-key"></a>To add a shard for a new range or key  
+多くの場合、アプリケーションは、既に存在しているシャード マップに対し、新しいキーまたはキー範囲から期待されるデータを処理するために新しいシャードを単に追加する必要があります。たとえば、テナント ID によってシャード化されるアプリケーションの場合、新しいテナントに対して新しいシャードをプロビジョニングすることが必要になる場合があります。また、毎月シャード化されるデータの場合、新しい月が始まる前に新しいシャードをプロビジョニングすることが必要になる場合があります。
 
-Applications often need to simply add new shards to handle data that is expected from new keys or key ranges, for a shard map that already exists. For example, an application sharded by Tenant ID may need to provision a new shard for a new tenant, or data sharded monthly may need a new shard provisioned before the start of each new month. 
+キー値の新しい範囲が既に既存のマッピングの一部になっていない場合は、新しいシャードの追加と、そのシャードへの新しいキーまたは範囲の関連付けはとてもシンプルな作業です。
 
-If the new range of key values is not already part of an existing mapping, it is very simple to add the new shard and associate the new key or range to that shard. 
-
-### <a name="example-adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Example:  adding a shard and its range to an existing shard map
-This sample uses the [TryGetShard](https://msdn.microsoft.com/library/azure/dn823929.aspx) the [CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx), [CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn807221.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeShardMap`1.CreateRangeMapping(Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeMappingCreationInfo{`0})) methods, and creates an instance of the [ShardLocation](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.) class. In the sample below, a database named **sample_shard_2** and all necessary schema objects inside of it have been created to hold range [300, 400).  
+### 例: シャードとその範囲を既存のシャード マップに追加する
+このサンプルでは、[TryGetShard](https://msdn.microsoft.com/library/azure/dn823929.aspx)、[CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx)、[CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn807221.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeShardMap`1.CreateRangeMapping(Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeMappingCreationInfo{`0})) の各メソッドを使用して、[ShardLocation](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.) クラスのインスタンスを作成します。次の例では、範囲 [300, 400) を保持する、**sample\_shard\_2** という名前のデータベースと、その中の必要なすべてのスキーマ オブジェクトが作成されています。
 
     // sm is a RangeShardMap object.
     // Add a new shard to hold the range being added. 
@@ -42,14 +41,14 @@ This sample uses the [TryGetShard](https://msdn.microsoft.com/library/azure/dn82
                             (new Range<long>(300, 400), shard2, MappingStatus.Online)); 
 
 
-As an alternative, you can use Powershell to create a new Shard Map Manager. An example is available [here](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
-## <a name="to-add-a-shard-for-an-empty-part-of-an-existing-range"></a>To add a shard for an empty part of an existing range  
+別の方法として、Powershell を使用して新しいシャード マップ マネージャーを作成できます。[こちら](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)の例を利用できます。
+## 既存の範囲の空き部分用のシャードを追加するには  
 
-In some circumstances, you may have already mapped a range to a shard and partially filled it with data, but you now want upcoming data to be directed to a different shard. For example, you shard by day range and have already allocated 50 days to a shard, but on day 24, you want future data to land in a different shard. The elastic database [split-merge tool](sql-database-elastic-scale-overview-split-and-merge.md) can perform this operation, but if data movement is not necessary (for example, data for the range of days [25, 50), i.e., day 25 inclusive to 50 exclusive, does not yet exist) you can perform this entirely using the Shard Map Management APIs directly.
+状況によっては、シャードに対する範囲のマッピングを既に実行し、部分的にデータが入力されている場合がありますが、以降のデータを別のシャードに宛てることができます。たとえば、日単位で範囲のシャーディングを実行し、既に 50 日がシャードに割り当てられているが、24 日目に今後のデータを別のシャードに保存できます。エラスティック データベースの[分割/マージ](sql-database-elastic-scale-overview-split-and-merge.md) ツールでこの操作を実行できますが、データ移動が不要な場合 (たとえば [25、50) 日の範囲のデータはまだ存在していません。これは 25 日の分を含み 50 日の分を除くデータです) は、シャード マップ管理 API を直接使用することで操作全体を実行できます。
 
-### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newlyadded-shard"></a>Example: splitting a range and assigning the empty portion to a newly-added shard
+### 例: 範囲の分割と新しく追加したシャードへの空き部分の割り当て
 
-A database named “sample_shard_2” and all necessary schema objects inside of it have been created.  
+"sample\_shard\_2" という名前のデータベースと、その中のすべての必要なスキーマ オブジェクトが作成されています。
 
  
     // sm is a RangeShardMap object.
@@ -74,14 +73,10 @@ A database named “sample_shard_2” and all necessary schema objects inside of
     upd.Shard = shard2; 
     sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd)); 
 
-**Important**:  Use this technique only if you are certain that the range for the updated mapping is empty.  The methods above do not check data for the range being moved, so it is best to include checks in your code.  If rows exist in the range being moved, the actual data distribution will not match the updated shard map. Use the [split-merge tool](sql-database-elastic-scale-overview-split-and-merge.md) to perform the operation instead in these cases.  
+**重要**: この手法は、更新されるマッピング用の範囲が空であることが確実である場合のみ使用します。上記の方法では、移動される範囲のデータはチェックされないため、コード内にチェックを含めることが最善です。移動される範囲内に行が存在する場合、実際のデータ分布は更新されたシャード マップと一致しなくなります。このような場合は、[分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)を代わりに使用して操作を行ってください。
 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0601_2016-->
