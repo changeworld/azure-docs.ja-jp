@@ -18,7 +18,7 @@
 
 
 
-# <a name="iot-gateway-sdk-(beta)-–-send-device-to-cloud-messages-with-a-real-device-using-linux"></a>IoT Gateway SDK (ベータ) - Linux を使用した実際のデバイスで D2C メッセージを送信する
+# <a name="iot-gateway-sdk-beta-send-devicetocloud-messages-with-a-real-device-using-linux"></a>IoT Gateway SDK (ベータ) - Linux を使用した実際のデバイスで D2C メッセージを送信する
 
 この [Bluetooth 低エネルギー サンプル][lnk-ble-samplecode]のチュートリアルでは、[Microsoft Azure IoT Gateway SDK][lnk-sdk] を使用して、物理デバイスから IoT Hub に D2C テレメトリを転送する方法と、IoT Hub から物理デバイスにコマンドをルーティングする方法について説明します。
 
@@ -360,7 +360,7 @@ SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **Sensor
 
 サンプルを実行する際に [Device Explorer または iothub-explorer][lnk-explorer-tools] ツールを使用すると、ゲートウェイによって SensorTag デバイスから転送されるメッセージを監視できます。
 
-## <a name="send-cloud-to-device-messages"></a>C2D メッセージの送信
+## <a name="send-cloudtodevice-messages"></a>C2D メッセージの送信
 
 BLE モジュールでは、Azure IoT Hub からデバイスへの命令の送信もサポートしています。 [Azure IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) または [IoT Hub Explorer](https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer) を使用して JSON メッセージを送信し、BLE ゲートウェイ モジュールから BLE デバイスに渡すことができます。 たとえば、Texas Instruments SensorTag デバイスを使用する場合、次の JSON メッセージを IoT Hub からデバイスに送信できます。
 

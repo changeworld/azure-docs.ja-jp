@@ -17,7 +17,7 @@
     ms.author="jroth" />
 
 
-# <a name="automated-patching-for-sql-server-in-azure-virtual-machines-(classic)"></a>Azure Virtual Machines での SQL Server の自動修正 (クラシック)
+# <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Azure Virtual Machines での SQL Server の自動修正 (クラシック)
 
 > [AZURE.SELECTOR]
 - [リソース マネージャー](virtual-machines-windows-sql-automated-patching.md)

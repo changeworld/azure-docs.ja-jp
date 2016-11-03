@@ -1,143 +1,144 @@
 <properties 
-	pageTitle="Azure App Service での WordPress から Multisite への変換" 
-	description="Azure のギャラリーを使って作成された既存の WordPress Web アプリを取得し、WordPress Multisite に変換する方法を説明します。" 
-	services="app-service\web" 
-	documentationCenter="php" 
-	authors="rmcmurray" 
-	manager="wpickett" 
-	editor=""/>
+    pageTitle="Convert WordPress to Multisite in Azure App Service" 
+    description="Learn how to take an existing WordPress web app created through the gallery in Azure and convert it to WordPress Multisite" 
+    services="app-service\web" 
+    documentationCenter="php" 
+    authors="rmcmurray" 
+    manager="erikre" 
+    editor=""/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="PHP" 
-	ms.topic="article" 
-	ms.date="08/11/2016" 
-	ms.author="robmcm"/>
+    ms.service="app-service-web" 
+    ms.workload="web" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="PHP" 
+    ms.topic="article" 
+    ms.date="11/01/2016" 
+    ms.author="robmcm"/>
 
 
 
-# Azure App Service での WordPress から Multisite への変換
 
-## Overview
+# <a name="convert-wordpress-to-multisite-in-azure-app-service"></a>Convert WordPress to Multisite in Azure App Service
 
-*執筆者: [Ben Lobaugh][ben-lobaugh] \([Microsoft Open Technologies Inc.][ms-open-tech]*)
+## <a name="overview"></a>Overview
 
-このチュートリアルでは、Azure のギャラリーを使って作成された既存の WordPress Web アプリを取得し WordPress Multisite インストールに変換する方法を説明します。また、インストール内の各サブサイトにカスタム ドメインを割り当てる方法も説明します。
+*By [Ben Lobaugh][ben-lobaugh], [Microsoft Open Technologies Inc.][ms-open-tech]*
 
-ここでは、WordPress のインストールが既にあるものとします。ない場合は、「[Azure でギャラリーから WordPress Web サイトを作成する][website-from-gallery]」の説明に従ってください。
+In this tutorial, you will learn how to take an existing WordPress web app created through the gallery in Azure and convert it into a WordPress Multisite install. Additionally, you will learn how to assign a custom domain to each of the subsites within your install.
 
-既存の WordPress シングル サイト インストールから Multisite への変換は、通常はごく簡単で、ここでの初期手順の多くは [WordPress Codex][wordpress-codex-create-a-network] の「[Create A Network (ネットワークの作成)](http://codex.wordpress.org)」から引用したものです。
+It is assumed that you have an existing installation of WordPress. If you do not, please follow the guidance provided in [Create a WordPress web site from the gallery in Azure][website-from-gallery].
 
-それでは始めましょう。
+Converting an existing WordPress single site install to Multisite is generally fairly simple, and many of the initial steps here come straight from the [Create A Network][wordpress-codex-create-a-network] page on the [WordPress Codex](http://codex.wordpress.org).
 
-## Multisite の許可
+Let's get started.
 
-まず、`wp-config.php` ファイルの **WP\_ALLOW\_MULTISITE** 定数を使用して、Multisite を有効にする必要があります。Web アプリ ファイルを編集するには、2 つの方法があります。FTP を使用する方法と、Git を使用する方法です。どちらのセットアップ方法にも慣れていない場合は、以下のチュートリアルを参照してください。
+## <a name="allow-multisite"></a>Allow Multisite
 
-* [MySQL および FTP による PHP Web サイト][website-w-mysql-and-ftp-ftp-setup]
+You first need to enable Multisite through the `wp-config.php` file with the **WP\_ALLOW\_MULTISITE** constant. There are two methods to edit your web app files: the first is through FTP, and the second through Git. If you are unfamiliar with how to setup either of these methods, please refer to the following tutorials:
 
-* [MySQL および Git による PHP Web サイト][website-w-mysql-and-git-git-setup]
+* [PHP web site with MySQL and FTP][website-w-mysql-and-ftp-ftp-setup]
 
-任意のエディターで `wp-config.php` ファイルを開き、以下の行を `/* That's all, stop editing! Happy blogging. */` 行の上に追加します。
+* [PHP web site with MySQL and Git][website-w-mysql-and-git-git-setup]
 
-	/* Multisite */
+Open the `wp-config.php` file with the editor of your choosing and add the following above the `/* That's all, stop editing! Happy blogging. */` line.
 
-	define( 'WP_ALLOW_MULTISITE', true );
+    /* Multisite */
 
-必ずファイルを保存し、サーバーにアップロードし直してください。
+    define( 'WP_ALLOW_MULTISITE', true );
 
-## ネットワークのセットアップ
+Be sure to save the file and upload it back to the server!
 
-Web アプリの *wp-admin* 領域にログインし、**[ツール]** メニューに **[Network Setup]** という新しい項目があることを確認します。**[Network Setup]** をクリックし、ネットワークの詳細を入力します。
+## <a name="network-setup"></a>Network Setup
 
-![[Network Setup] 画面][wordpress-network-setup]
+Log in to the *wp-admin* area of your web app and you should see a new item under the **Tools** menu called **Network Setup**. Click **Network Setup** and fill in the details of your network.
 
-このチュートリアルでは、*Sub-directories* サイト スキーマを使用します。このスキーマは常に機能する必要があるためです。このチュートリアルの後の方では、各サブサイトのカスタム ドメインをセットアップします。ただし、[Azure ポータル](https://portal.azure.com)を通じてドメインをマップし、ワイルドカード DNS を適切にセットアップすると、サブドメイン インストールをセットアップすることができます。
+![Network Setup Screen][wordpress-network-setup]
 
-サブドメインのセットアップとサブディレクトリのセットアップの詳細については、WordPress Codex の「[Types of multisite network (マルチサイト ネットワークの種類)][wordpress-codex-types-of-networks]」を参照してください。
+This tutorial uses the *Sub-directories* site schema because it should always work, and we will be setting up custom domains for each subsite later in the tutorial. However, it should be possible to setup a subdomain install if you map a domain through the [Azure Portal](https://portal.azure.com) and setup wildcard DNS properly.
 
-## ネットワークの有効化
+For more information on sub-domain vs sub-directory setups see the [Types of multisite network][wordpress-codex-types-of-networks] article on the WordPress Codex.
 
-これで、ネットワークがデータベースで構成されましたが、ネットワーク機能を有効にするにはもう 1 つ手順が残っています。`wp-config.php` 設定の最終処理を行い、`web.config` が各サイトを適切にルーティングしていることを確認します。
+## <a name="enable-the-network"></a>Enable the Network
 
-
-*[ネットワーク セットアップ]* ページで **[インストール]** ボタンをクリックすると、`wp-config.php` ファイルと `web.config` ファイルが自動的に更新されます。ただし、これらのファイルを必ずチェックし、正常に更新されていることを確認してください。正常に更新されていない場合は、この画面に必要な更新が表示されます。ファイルを編集して保存します。
+The network is now configured in the database, but there is one remaining step to enable the network functionality. Finalize the `wp-config.php` settings and ensure `web.config` properly routes each site.
 
 
-これらの更新を行った後で、いったんログアウトしてから、この wp-admin ダッシュボードに再ログインする必要があります。
-
-この時点で、管理バーに **[My Sites]** というメニューが追加されています。このメニューを使用すると、**Network Admin** ダッシュボードを通じて新しいネットワークを管理できます。
-
-## カスタム ドメインの追加
-
-[WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] プラグインを利用すると、ネットワーク上のサイトにカスタム ドメインを簡単に追加できます。このプラグインを正常に機能させるには、ポータルとドメイン レジストラーで追加のセットアップを行う必要があります。
-
-## Web アプリへのドメイン マッピングの有効化
-
-**無料** [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) プラン モードでは Web Apps へのカスタム ドメインの追加はサポートされません。**Shared** モードまたは **Standard** モードに切り替える必要があります。これを行うには、次の手順を実行します。
-
-* Azure ポータルにログインして、自分の Web アプリに移動します。
-* **[設定]** で **[スケールアップ]** タブをクリックします。
-* **[全般]** で、*[Shared]* または *[Standard]* を選択します。
-* **[保存]** をクリックします。
-
-設定してある使用方法やその他の構成によっては、変更の確認と、Web アプリへの今後の課金の承認を求めるメッセージが表示される場合があります。
-
-新しい設定の処理には少し時間がかかるので、ドメインのセットアップを開始します。
-
-## ドメインの確認
-
-Azure Web Apps でドメインをサイトにマップするには、まず、ドメインをマップする権限が与えられていることを確認する必要があります。そのためには、新しい CNAME レコードを DNS エントリに追加します。
-
-* 自分のドメインの DNS マネージャーにログインします
-* 新しい CNAME *awverify* を作成します
-* *awverify* が *awverify.YOUR\_DOMAIN.azurewebsites.net* を指すようにします
-
-場合によっては、DNS の変更が完全に有効になるまで少し時間がかかります。以下の手順がすぐにはうまく動作しない場合は、しばらくしてからやり直してください。
-
-## Web アプリへのドメインの追加
-
-Azure ポータルを通じて Web アプリに戻り、**[設定]** をクリックし、**[Custom domains and SSL]** をクリックします。
-
-*SSL 設定*が表示されると、Web アプリに割り当てるすべてのドメインを入力するためのフィールドが表示されます。ドメインがこの一覧に表示されない場合、ドメイン DNS がどのようにセットアップされているかにかかわらず、そのドメインは WordPress 内でのマッピングに使用できません。
-
-![[カスタム ドメインの管理] ダイアログ][wordpress-manage-domains]
-
-ドメインをテキスト ボックスに入力すると、以前に作成した CNAME レコードが確認されます。DNS が完全に反映されていない場合は、赤いインジケーターが表示されます。成功した場合は、緑のチェック マークが表示されます。
-
-ダイアログの下部に表示される IP アドレスをメモしておきます。ドメインのための A レコードをセットアップするときに必要になります。
-
-## ドメイン A レコードのセットアップ
-
-ここまでの手順が成功すると、DNS A レコードを通じてドメインを自分の Azure Web アプリに割り当てられるようになります。
-
-ここで重要なのは、Azure Web Apps では CNAME と A レコードのどちらも許容されるものの、適切なドメイン マッピングを可能にするには A レコードを使う*必要*があるということです。Azure では、YOUR\_DOMAIN.azurewebsites.net で CNAME が作成されますが、CNAME は他の CNAME に転送することができません。
-
-DNS マネージャーに戻り、前の手順でメモした IP アドレスを指すように A レコードをセットアップします。
+After clicking the **Install** button on the *Network Setup* page, WordPress will attempt to update the `wp-config.php` and `web.config` files. However, you should always check the files to ensure the updates were successful. If not, this screen will present you with the necessary updates. Edit and save the files.
 
 
-## プラグインのインストールとセットアップ
+After making these updates you will need to log out and log back into the wp-admin dashboard.
 
-現在、WordPress Multisite には、カスタム ドメインをマップするための方法が組み込まれていません。ただし、[WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] というプラグインを使用すると、この機能を追加することができます。自分のサイトの Network Admin 部分にログインして、**WordPress MU Domain Mapping** プラグインをインストールします。
+There should now be an additional menu on the admin bar labeled **My Sites**. This menu allows you to control your new network through the **Network Admin** dashboard.
 
-プラグインをインストールおよびアクティブ化した後で、**[設定]** > **[Domain Mapping]** にアクセスし、プラグインを構成します。1 つ目のテキスト ボックス *[Server IP Address]* で、ドメインの A レコードのセットアップに使用した IP アドレスを入力します。必要に応じて *[Domain Options]* を設定し (通常は既定のままでよい)、**[Save]** をクリックします。
+## <a name="adding-custom-domains"></a>Adding custom domains
 
-## ドメインのマップ
+The [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] plugin makes it a breeze to add custom domains to any site in your network. In order for the plugin to operate properly, you need to do some additional setup on the Portal, and also at your domain registrar.
 
-ドメインのマップ対象のサイトの**ダッシュボード**にアクセスします。**[ツール]**、**[Domain Mapping]** の順にクリックし、テキスト ボックスに新しいドメインを入力して、**[Add]** をクリックします。
+## <a name="enable-domain-mapping-to-the-web-app"></a>Enable domain mapping to the web app
 
-既定では、新しいドメインは自動生成されたサイト ドメインに書き換えられます。すべてのトラフィックが新しいドメインに送信されるようにするには、保存する前に *[Primary domain for this blog]* チェック ボックスをオンにします。サイトに追加するドメインの数に制限はありませんが、プライマリにできるのは 1 つだけです。
+The **Free** [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) plan mode does not support adding custom domains to Web Apps. You will need to switch to **Shared** or **Standard** mode. To do this:
 
-## 繰り返し
+* Log in to the Azure Portal and locate your web app. 
+* Click on the **Scale up** tab in **Settings**.
+* Under **General**, select either *SHARED* or *STANDARD*
+* Click **Save**
 
-Azure Web Apps では、Web アプリに追加できるドメインの数に制限はありません。他のドメインを追加するには、各ドメインに対して「**ドメインの確認**」および「**ドメイン A レコードのセットアップ**」セクションの手順を繰り返します。
+You may receive a message asking you to verify the change and acknowledge your web app may now incur a cost, depending upon usage and the other configuration you set.
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+It takes a few seconds to process the new settings, so now is a good time to start setting up your domain.
 
-## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+## <a name="verify-your-domain"></a>Verify your domain
+
+Before Azure Web Apps will allow you to map a domain to the site, you first need to verify that you have the authorization to map the domain. To do so, you must add a new CNAME record to your DNS entry.
+
+* Log in to your domain's DNS manager
+* Create a new CNAME *awverify*
+* Point *awverify* to *awverify.YOUR_DOMAIN.azurewebsites.net*
+
+It may take some time for the DNS changes to go into full effect, so if the following steps do not work immediately, go make a cup of coffee, then come back and try again.
+
+## <a name="add-the-domain-to-the-web-app"></a>Add the domain to the web app
+
+Return to your web app through the Azure Portal, click **Settings**, and then click **Custom domains and SSL**.
+
+When the *SSL settings* are displayed, you will see the fields where you will input all the domains which you wish to assign to your web app. If a domain is not listed here, it will not be available for mapping inside WordPress, regardless of how the domain DNS is setup.
+
+![Manage custom domains dialog][wordpress-manage-domains]
+
+After typing your domain into the text box, Azure will verify the CNAME record you created previously. If the DNS has not fully propagated, a red indicator will show. If it was successful, you will see a green checkmark. 
+
+Take note of the IP Address listed at the bottom of the dialog. You will need this to setup the A record for your domain.
+
+## <a name="setup-the-domain-a-record"></a>Setup the domain A record
+
+If the other steps were successful, you may now assign the domain to your Azure web app through a DNS A record. 
+
+It is important to note here that Azure web apps accept both CNAME and A records, however you *must* use an A record to enable proper domain mapping. A CNAME cannot be forwarded to another CNAME, which is what Azure created for you with YOUR_DOMAIN.azurewebsites.net.
+
+Using the IP address from the previous step, return to your DNS manager and setup the A record to point to that IP.
+
+
+## <a name="install-and-setup-the-plugin"></a>Install and setup the plugin
+
+WordPress Multisite currently does not have a built-in method to map custom domains. However, there is a plugin called [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] that adds the functionality for you. Log in to the Network Admin portion of your site and install the **WordPress MU Domain Mapping** plugin.
+
+After installing and activating the plugin, visit **Settings** > **Domain Mapping** to configure the plugin. In the first textbox, *Server IP Address*, input the IP Address you used to setup the A record for the domain. Set any *Domain Options* you desire (the defaults are often fine) and click **Save**.
+
+## <a name="map-the-domain"></a>Map the domain
+
+Visit the **Dashboard** for the site you wish to map the domain to. Click on **Tools** > **Domain Mapping** and type the new domain into the textbox and click **Add**.
+
+By default, the new domain will be rewritten to the autogenerated site domain. If you want to have all traffic sent to the new domain, check the *Primary domain for this blog* box before saving. You can add an unlimited number of domains to a site, but  only one can be primary.
+
+## <a name="do-it-again"></a>Do it again
+
+Azure Web Apps allow you to add an unlimited number of domains to a web app. To add another domain you will need to execute the **Verify your domain** and **Setup the domain A record** sections for each domain.  
+
+>[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
+
+## <a name="whats-changed"></a>What's changed
+* For a guide to the change from Websites to App Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [ben-lobaugh]: http://ben.lobaugh.net
 [ms-open-tech]: http://msopentech.com
@@ -153,4 +154,8 @@ Azure Web Apps では、Web アプリに追加できるドメインの数に制�
 
  
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

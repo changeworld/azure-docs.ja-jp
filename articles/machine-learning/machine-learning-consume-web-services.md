@@ -42,7 +42,7 @@ For more information on how to manage Azure Machine Learning Web service endpoin
 
 Azure Machine Learning Web サービスの作成とデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする][公開]」をご覧ください。 Machine Learning の実験の作成とデプロイに関する詳しい手順については、「[Azure Machine Learning を使用した予測ソリューションの開発][チュートリアル]」をご覧ください。
 
-## <a name="request-response-service-(rrs)"></a>要求応答サービス (RRS)
+## <a name="requestresponse-service-rrs"></a>要求応答サービス (RRS)
 
 要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスであり、Azure Machine Learning Studio の実験で作成およびデプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。 このサービスを使用すると、使用側アプリケーションがリアルタイムでの応答を期待するシナリオに対応できます。
 
@@ -51,7 +51,7 @@ RRS は、1 行または複数行の入力パラメーターを受け取り、�
 RRS の例では、アプリケーションの信頼性を検証しています。 この例では、数百万のアプリケーションのインストールが予想されます。 アプリケーションの開始時に、関連する入力を使用して RRS サービスを呼び出します。 次にアプリケーションは、アプリケーションの実行を許可またはブロックするサービスからの検証応答を受信します。
 
 
-## <a name="batch-execution-service-(bes)"></a>バッチ実行サービス (BES)
+## <a name="batch-execution-service-bes"></a>バッチ実行サービス (BES)
 
 バッチ実行サービス (BES) は、データ レコードのバッチに対して、大量に非同期でスコアリングを処理するためのサービスです。 BES の入力には、blob、Azure のテーブル、SQL Azure、HDInsight (Hive クエリの結果など)、HTTP のソースなど、さまざまなソースからのレコードのバッチが含まれています。 BES の出力には、スコアの結果が含まれます。 結果は、Azure blob ストレージ内のファイルに出力し、記憶域のエンドポイントからのデータは、応答で返されます。
 
@@ -85,7 +85,7 @@ RRS と BES の両方の動作方法を示すために、Azure Web サービス�
 * **要求の URI** は **[Consume (使用)]** ページにあります 
 * 予想される API の**要求ヘッダー**、**応答ヘッダー**、および**本文**は **[Swagger API]** ページにあります
 
-### <a name="information-locations-in-machine-learning-studio-(classic-web-service-only)"></a>Machine Learning Studioでの情報の場所 (クラシック Web サービスのみ)
+### <a name="information-locations-in-machine-learning-studio-classic-web-service-only"></a>Machine Learning Studioでの情報の場所 (クラシック Web サービスのみ)
 
 必要な情報は 2 つの場所から入手できます。Machine Learning Studio または Azure Machine Learning Web サービス ポータルです。
 
@@ -408,7 +408,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
 
 次のサンプル コードでは、BES SDK を使用して Azure Machine Learning サービスに対してバッチ ジョブのサブミットおよび監視を行う方法を示します。 コメントには、設定と呼び出しに関する詳細が含まれています。
 
-#### <a name="**sample-code**"></a>**サンプル コード**
+#### <a name="sample-code"></a>**サンプル コード**
 
     // This code requires the Nuget package Microsoft.Azure.MachineLearning to be installed.
     // Instructions for doing this in Visual Studio:

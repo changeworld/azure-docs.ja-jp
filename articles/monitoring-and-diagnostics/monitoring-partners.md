@@ -75,7 +75,7 @@ OpsGenie は、Azure によって生成されたアラートのディスパッ�
 
 [ドキュメントを確認する。][pagerduty-doc]
 
-## <a name="splunk-add-on-for-microsoft-azure"></a>Microsoft Azure 用の Splunk アドオン
+## <a name="splunk-addon-for-microsoft-azure"></a>Microsoft Azure 用の Splunk アドオン
 Microsoft Azure 用の Splunk アドオンは、Microsoft Azure で実行されているインフラストラクチャおよび Web サイトの、重要な診断、パフォーマンス、監査、およびセキュリティ データを収集します。 
 
 パフォーマンスと診断情報の収集元は、Azure Storage Tables と Azure Storage Blobs です。 監査データの収集元は Azure Insights Events API です。 ネットワーク セキュリティ グループのデータの収集元は Azure Storage Blog です。 このアドオンには、事前に組み込まれたパネルがいくつか含まれています。 

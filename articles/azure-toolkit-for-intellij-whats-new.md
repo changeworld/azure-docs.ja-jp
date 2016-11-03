@@ -4,7 +4,7 @@
     services=""
     documentationCenter="java"
     authors="rmcmurray"
-    manager="wpickett"
+    manager="erikre"
     editor=""/>
 
 <tags
@@ -13,11 +13,11 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="08/26/2016" 
+    ms.date="11/01/2016" 
     ms.author="robmcm;asirveda;martinsawicki"/>
 
 
-# <a name="what's-new-in-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ の新機能
+# <a name="whats-new-in-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ の新機能
 
 ## <a name="azure-toolkit-for-intellij-releases"></a>Azure Toolkit for IntelliJ リリース
 
@@ -25,7 +25,7 @@
 
 > [AZURE.NOTE] Eclipse IDE 用の Azure Toolkit もあります。 詳細については、「 [Azure Toolkit for Eclipse]」をご覧ください。
 
-### <a name="august-26,-2016"></a>2016 年 8 月 26 日
+### <a name="august-26-2016"></a>2016 年 8 月 26 日
 
 Azure Toolkit for IntelliJ - August 2016 リリースでは、次の点が強化されています。
 
@@ -37,7 +37,7 @@ Azure Toolkit for IntelliJ - August 2016 リリースでは、次の点が強化
   - Azure Resource Manager を使用したストレージ アカウントの BLOB 管理をサポートします。これは、「クラシック」ストレージ アカウントを管理するための既存の機能を補完するものです。
 * **Microsoft JDBC Driver 6.0 for SQL Server**。 この更新は、Microsoft SQL Server (v6.0) の最新の JDBC ドライバーを組み込みます。このドライバーは、Java プロジェクトに簡単に追加できるライブラリとして含まれて、以前のバージョンから置き換わるようになりました。
 
-### <a name="june-29,-2016"></a>2016 年 6 月 29 日
+### <a name="june-29-2016"></a>2016 年 6 月 29 日
 
 Azure Toolkit for IntelliJ - June 2016 リリースでは、次の点が強化されています。
 
@@ -48,7 +48,7 @@ Azure Toolkit for IntelliJ - June 2016 リリースでは、次の点が強化�
 * **HDInsight ツールの統合**。 Azure の HDInsight ツールは、現在、Azure Toolkit for IntelliJ にバンドルされています。 詳細については、 [IntelliJ 用の HDInsight Tools プラグイン]に関するページを参照してください。
 * **Java Web アプリのリモート デバッグ**。 Azure Toolkit for IntelliJ には、現在、Azure App Service での Java Web アプリのリモート デバッグがサポートされています。
 
-### <a name="april-12,-2016"></a>2016 年 4 月 12 日
+### <a name="april-12-2016"></a>2016 年 4 月 12 日
 
 Azure Toolkit for IntelliJ - April 2016 リリースでは、次の点が強化されています。
 

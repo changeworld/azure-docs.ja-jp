@@ -18,7 +18,7 @@
     ms.author="jroth"/>
 
 
-# <a name="sql-server-agent-extension-for-sql-server-vms-(classic)"></a>SQL Server VM 用 SQL Server Agent 拡張機能 (クラシック)
+# <a name="sql-server-agent-extension-for-sql-server-vms-classic"></a>SQL Server VM 用 SQL Server Agent 拡張機能 (クラシック)
 
 > [AZURE.SELECTOR]
 - [リソース マネージャー](virtual-machines-windows-sql-server-agent-extension.md)
@@ -42,18 +42,18 @@ SQL Server IaaS Agent 拡張機能は、次の管理タスクをサポートし�
 
 VM で SQL Server IaaS Agent 拡張機能を使用するための要件:
 
-### <a name="operating-system:"></a>オペレーティング システム:
+### <a name="operating-system"></a>オペレーティング システム:
 
 - Windows Server 2012
 - Windows Server 2012 R2
 
-### <a name="sql-server-versions:"></a>SQL Server のバージョン:
+### <a name="sql-server-versions"></a>SQL Server のバージョン:
 
 - SQL Server 2012
 - SQL Server 2014
 - SQL Server 2016
 
-### <a name="azure-powershell:"></a>Azure PowerShell:
+### <a name="azure-powershell"></a>Azure PowerShell:
 
 [最新の Azure PowerShell コマンドをダウンロードして構成します](../powershell-install-configure.md)。
 

@@ -18,7 +18,7 @@
    ms.author="rclaus"/>
 
 
-# <a name="using-sap-on-windows-virtual-machines-(vms)"></a>Windows Virtual Machines (VM) における SAP の使用
+# <a name="using-sap-on-windows-virtual-machines-vms"></a>Windows Virtual Machines (VM) における SAP の使用
 
 [767598]:https://service.sap.com/sap/support/notes/767598
 [773830]:https://service.sap.com/sap/support/notes/773830
@@ -295,7 +295,7 @@ SAP NetWeaver | Windows、SUSE Linux Enterprise | SQL Server、Oracle DB2、SAP 
 
 [ガイドはこちら](virtual-machines-linux-sap-on-suse-quickstart.md)
 
-## <a name="deploying-sap-ides-ehp7-sp3-for-sap-erp-6.0-on-microsoft-azure"></a>Microsoft Azure での SAP ERP 6.0 向け SAP IDES EHP7 SP3 のデプロイ
+## <a name="deploying-sap-ides-ehp7-sp3-for-sap-erp-60-on-microsoft-azure"></a>Microsoft Azure での SAP ERP 6.0 向け SAP IDES EHP7 SP3 のデプロイ
 
 タイトル: Azure VM に SAP HANA を手動でインストールするためのクイック スタート ガイド
 
@@ -304,7 +304,7 @@ SAP NetWeaver | Windows、SUSE Linux Enterprise | SQL Server、Oracle DB2、SAP 
 更新日: 2016 年 9 月
 
 [ガイドはこちら](virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql.md)
-##  <a name="<a-name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>planning-and-implementation"></a><a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>計画と導入
+##  <a name="a-name3da0389e708b4e82b2a2e92f132df89caplanning-and-implementation"></a><a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>計画と導入
 
 タイトル: Windows 仮想マシン (VM) 上の SAP NetWeaver – 計画および実装ガイド
 
@@ -313,7 +313,7 @@ SAP NetWeaver | Windows、SUSE Linux Enterprise | SQL Server、Oracle DB2、SAP 
 更新日: 2016 年 8 月
 
 [ガイドはこちら][計画ガイド]
-## <a name="<a-name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>deployment"></a><a name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>デプロイ
+## <a name="a-name6aadadd276b546d88713e8d63630e955adeployment"></a><a name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>デプロイ
 
 タイトル: Windows 仮想マシン (VM) 上の SAP NetWeaver – デプロイメント ガイド
 
@@ -323,7 +323,7 @@ SAP NetWeaver | Windows、SUSE Linux Enterprise | SQL Server、Oracle DB2、SAP 
 
 [ガイドはこちら][デプロイ ガイド]
 
-## <a name="<a-name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>dbms-deployment-guide"></a><a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS デプロイ ガイド
+## <a name="a-name1343ffe180214ce6a08d3a1553a4db82adbms-deployment-guide"></a><a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS デプロイ ガイド
 
 タイトル: Windows 仮想マシン (VM) 上の SAP NetWeaver – DBMS デプロイメント ガイド
 
@@ -333,7 +333,7 @@ SAP NetWeaver | Windows、SUSE Linux Enterprise | SQL Server、Oracle DB2、SAP 
 
 [ガイドはこちら][dbms ガイド]
 
-## <a name="<a-name="63dab028-2c4f-4636-8f99-90bbb264eaba"></a>high-availability-deployment-guide"></a><a name="63dab028-2c4f-4636-8f99-90bbb264eaba"></a>高可用性デプロイメント ガイド
+## <a name="a-name63dab0282c4f46368f9990bbb264eabaahigh-availability-deployment-guide"></a><a name="63dab028-2c4f-4636-8f99-90bbb264eaba"></a>高可用性デプロイメント ガイド
 
 タイトル: Windows 仮想マシン (VM) 上の SAP NetWeaver - 高可用性ガイド
 

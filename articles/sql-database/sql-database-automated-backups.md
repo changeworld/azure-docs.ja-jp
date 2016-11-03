@@ -44,7 +44,7 @@ SQL Database は 5 分おきにローカル データベースをバックアッ
 
 <!--## What is <feature>?" -->
 
-## <a name="what-is-a-sql-database-backup?"></a>SQL Database バックアップとは何か。  
+## <a name="what-is-a-sql-database-backup"></a>SQL Database バックアップとは何か。  
 
 <!-- 
 First sentence begins with "The <feature> is ..." followed by a definition of the feature. Provide a 1-2 paragraph intro to explain what the feature is, how it works, and the importance of the feature for solving business problems.
@@ -68,15 +68,15 @@ SQL Database は [Azure Storage レプリケーション](../storage/storage-red
 >[AZURE.NOTE] Azure Storage の " *レプリケーション* " という用語は、ある場所から別の場所にファイルをコピーすることを表します。 SQL の " *データベース レプリケーション* " は、複数のセカンダリ データベースとプライマリ データベースとの同期を保つことを意味します。 
 
 
-## <a name="how-much-backup-storage-is-included-at-no-cost?"></a>無償のバックアップ ストレージはどのくらい含まれますか。
+## <a name="how-much-backup-storage-is-included-at-no-cost"></a>無償のバックアップ ストレージはどのくらい含まれますか。
 
 SQL Database は、バックアップ ストレージとして、プロビジョニングされている最大のデータベース ストレージの 200% までを追加のコストなしで提供します。 たとえば、プロビジョニングされたデータベース サイズが 250 GB の Standard データベース インスタンスの場合、500 GB のバックアップ ストレージを追加のコストなしで利用できます。 データベースのサイズがプロビジョニングされたバックアップ ストレージを超える場合は、Azure サポートに連絡してリテンション期間を短縮できます。 もう 1 つのオプションとして、標準の読み取りアクセス geo 冗長ストレージ (RA-GRS) の料金で課金される追加のバックアップ ストレージに対して料金を支払うこともできます。 
 
-## <a name="how-often-do-backups-happen?"></a>バックアップはどのくらいの頻度で行われますか。
+## <a name="how-often-do-backups-happen"></a>バックアップはどのくらいの頻度で行われますか。
 
 完全データベース バックアップが毎週作成され、差分データベース バックアップは 1 時間に 1 回作成されます。また、トランザクション ログのバックアップは 5 分間隔で実行されます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースの完全バックアップと[差分](https://msdn.microsoft.com/library/ms175526.aspx)バックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら決定されます。 
 
-## <a name="how-long-do-you-keep-my-backups?"></a>バックアップはどのくらいの期間保存されますか。
+## <a name="how-long-do-you-keep-my-backups"></a>バックアップはどのくらいの期間保存されますか。
 
 各 SQL Database バックアップには、データベースの[サービス レベル](sql-database-service-tiers.md)に基づくリテンション期間が指定されます。 データベースのリテンション期間:
 

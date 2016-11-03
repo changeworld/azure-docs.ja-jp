@@ -23,7 +23,7 @@
 
 This article gives an overview on how to use a CSDL to map an existing service to an OData compatible service. It explains how to create the mapping document (CSDL) that transforms the input request from the client via a service call and the output (data) back to the client via an OData compatible feed. Microsoft’s Azure Marketplace exposes services to the end-users by using the OData protocol. Services that are exposed by content providers (Data Owners) are exposed in a variety of forms, such as REST, SOAP, etc.
 
-## <a name="what-is-a-csdl-and-its-structure?"></a>What is a CSDL and its structure?
+## <a name="what-is-a-csdl-and-its-structure"></a>What is a CSDL and its structure?
 A CSDL (Conceptual Schema Definition Language) is a specification defining how to describe web service or database service in common XML verbiage to the Azure Marketplace.
 
 Simple overview of the **request flow:**
@@ -44,7 +44,7 @@ For background on Atom, Atom Pub, and the OData protocol upon which the Azure Ma
 
 Excerpt from above link:     *“The purpose of the Open Data protocol (hereafter referred to as OData) is to provide a REST-based protocol for CRUD-style operations (Create, Read, Update and Delete) against resources exposed as data services. A “data service” is an endpoint where there is data exposed from one or more “collections” each with zero or more “entries”, which consist of typed named-value pairs. OData is published by Microsoft under OASIS (Organization for the Advancement of Structured Information Standards) Standards so that anyone that wants to can build servers, clients or tools without royalties or restrictions.”*
 
-### <a name="three-critical-pieces-that-have-to-be-defined-by-the-csdl-are:"></a>Three Critical Pieces that have to be defined by the CSDL are:
+### <a name="three-critical-pieces-that-have-to-be-defined-by-the-csdl-are"></a>Three Critical Pieces that have to be defined by the CSDL are:
 
 - The **endpoint** of the Service Provider The Web Address (URI) of the Service
 - The **data parameters** being passed as input to the Service Provider The definitions of the parameters being sent to the Content Provider’s service down to the data type.
@@ -54,7 +54,7 @@ The following diagram shows an overview of the flow from where the client enters
 
   ![drawing](media/marketplace-publishing-data-service-creation-odata-mapping/figure-2.png)
 
-### <a name="steps:"></a>Steps:
+### <a name="steps"></a>Steps:
 
 1. Client sends request via Service call complete with Input Parameters defined in XML to the Azure Marketplace
 2. CSDL is used to validate the Service call.
@@ -68,13 +68,13 @@ The following diagram shows an overview of the flow from where the client enters
 
 An extension to the ATOM pub where each entry represents one row of a result set. The content part of the entry is enhanced to contain the values of the row – as key value pairs. More information is found here: [https://www.odata.org/documentation/odata-version-3-0/atom-format/](https://www.odata.org/documentation/odata-version-3-0/atom-format/)
 
-### <a name="csdl---conceptual-schema-definition-language"></a>CSDL - Conceptual Schema Definition Language
+### <a name="csdl-conceptual-schema-definition-language"></a>CSDL - Conceptual Schema Definition Language
 
 Allows defining functions (SPROCs) and entities that are exposed through a database. More information found here: [http://msdn.microsoft.com/library/bb399292.aspx](http://msdn.microsoft.com/library/bb399292.aspx)  
 
 > [AZURE.TIP] Click the **other versions** dropdown and select a version if you don’t see the article.
 
-### <a name="edm---entry-data-model"></a>EDM - Entry Data Model
+### <a name="edm-entry-data-model"></a>EDM - Entry Data Model
 - Overview: [http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx][OverviewLink] [OverviewLink]:http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx
 - Preview: [http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx][PreviewLink] [PreviewLink]:http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx
 - Data types: [http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx][DataTypesLink] [DataTypesLink]:http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx
@@ -121,7 +121,7 @@ Relating these as follows for a Data Service:
 - DELETE – Deletes data from the DB (Deletes a collection)
 - PUT – Update data into a DB (replace a collection or create one)
 
-## <a name="metadata/mapping-document"></a>Metadata/Mapping Document
+## <a name="metadatamapping-document"></a>Metadata/Mapping Document
 
 The metadata/mapping document is used to map a content provider’s existing web services so that it can be exposed as an OData web service by the Azure Marketplace system. It is based on CSDL and implements a few extensions to CSDL to accommodate the needs of REST based web services exposed through Azure Marketplace. The extensions are found in the [http://schemas.microsoft.com/dallas/2010/04](http://schemas.microsoft.com/dallas/2010/04) namespace.
 

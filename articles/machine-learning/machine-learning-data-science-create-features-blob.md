@@ -58,11 +58,11 @@
 
 これで、データを探索し、このデータセットでの特徴を生成する準備が整いました。
 
-##<a name="<a-name="blob-featuregen"></a>feature-generation"></a><a name="blob-featuregen"></a>特徴の生成
+##<a name="a-nameblobfeaturegenafeature-generation"></a><a name="blob-featuregen"></a>特徴の生成
 
 次の 2 つのセクションでは、Python スクリプトを使用して、インジケーター値を持つカテゴリ特徴を生成し、特徴をビン分割する方法について説明します。
 
-###<a name="<a-name="blob-countfeature"></a>indicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>
+###<a name="a-nameblobcountfeatureaindicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>
 
 カテゴリの特徴は、次のように作成できます。
 
@@ -85,7 +85,7 @@
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-###<a name="<a-name="blob-binningfeature"></a>binning-feature-generation"></a><a name="blob-binningfeature"></a>ビン分割特徴の生成
+###<a name="a-nameblobbinningfeatureabinning-feature-generation"></a><a name="blob-binningfeature"></a>ビン分割特徴の生成
 
 ビン分割特徴を生成するには、次のように進めます。
 
@@ -102,7 +102,7 @@
 
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)
 
-##<a name="<a-name="sql-featuregen"></a>writing-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Azure BLOB にデータを書き戻して Azure Machine Learning で使用する
+##<a name="a-namesqlfeaturegenawriting-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Azure BLOB にデータを書き戻して Azure Machine Learning で使用する
 
 データを探索して必要な特徴を作成したら、次の手順を使用して、Azure BLOB に (サンプリングまたは特徴を生成した) データをアップロードして Azure Machine Learning で使用します。Azure Machine Learning Studio でも、追加の特徴を作成できます。
 1. ローカル ファイルへのデータ フレームの書き込み

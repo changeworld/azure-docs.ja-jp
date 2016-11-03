@@ -17,7 +17,7 @@
  ms.author="juanpere"/>
 
 
-# <a name="tutorial:-how-to-do-a-firmware-update-(preview)"></a>ファームウェアの更新プログラムの実行方法 (プレビュー)
+# <a name="tutorial-how-to-do-a-firmware-update-preview"></a>ファームウェアの更新プログラムの実行方法 (プレビュー)
 
 ## <a name="introduction"></a>はじめに
 「[デバイス管理の開始][lnk-dm-getstarted]」チュートリアルでは、[デバイス ツイン メソッド][lnk-devtwin]と[クラウドからデバイス (C2D) メソッド ][lnk-c2dmethod]のプリミティブを使用してリモートでデバイスを再起動する方法を学習しました。 このチュートリアルでは、同じ IoT Hub プリミティブを使用して、エンド ツー エンドでシミュレートされたファームウェア更新を実行する方法を示します。  このパターンは、Intel Edison デバイス サンプルのファームウェア更新プログラムの実装で使用されます。

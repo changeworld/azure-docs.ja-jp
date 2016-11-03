@@ -32,7 +32,7 @@
 > Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 
 
-## <a name="how-to:-configure-monitoring-for-a-storage-account"></a>方法: ストレージ アカウントの監視の設定
+## <a name="how-to-configure-monitoring-for-a-storage-account"></a>方法: ストレージ アカウントの監視の設定
 
 1. [Azure ポータル](https://portal.azure.com)で、 **[ストレージ]**をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
@@ -63,7 +63,7 @@
 メトリックは、ストレージ アカウントの $MetricsTransactionsBlob、$MetricsTransactionsTable、$MetricsTransactionsQueue、$MetricsCapacityBlob という名前の 4 つのテーブルに保存されます。 詳細については、「 [Storage Analytics Metrics について](http://msdn.microsoft.com/library/azure/hh343258.aspx)」を参照してください。
 
 
-## <a name="how-to:-customize-the-dashboard-for-monitoring"></a>方法: ダッシュボードの監視用のカスタマイズ
+## <a name="how-to-customize-the-dashboard-for-monitoring"></a>方法: ダッシュボードの監視用のカスタマイズ
 
 ダッシュボードで、利用できる 9 個のメトリックから最大 6 個のメトリックを選択してメトリック チャートにプロットできます。 サービスごとに (BLOB、テーブル、およびキュー)、空き時間情報、成功のパーセンテージ、および要求数合計のメトリックが利用できます。 ダッシュボードで利用できるメトリックは、最少監視でも詳細監視でも同じです。
 
@@ -82,7 +82,7 @@
 4. メトリック チャートに表示する期間を変更するには、チャートの上部で 6 時間、24 時間、または 7 日を選択します。
 
 
-## <a name="how-to:-customize-the-monitor-page"></a>方法: [監視] ページのカスタマイズ
+## <a name="how-to-customize-the-monitor-page"></a>方法: [監視] ページのカスタマイズ
 
 **[監視]** ページでは、ストレージ アカウントのメトリックをすべて表示できます。
 
@@ -92,7 +92,7 @@
 
 以下の手順を使用して、 **[監視]** ページに表示されるメトリック チャートとテーブルに表示するストレージ メトリックを選択します。 この設定は、ストレージ アカウント監視データの収集、集計、および保存には影響しません。
 
-## <a name="how-to:-add-metrics-to-the-metrics-table"></a>How to: メトリック テーブルへのメトリックの追加
+## <a name="how-to-add-metrics-to-the-metrics-table"></a>How to: メトリック テーブルへのメトリックの追加
 
 
 1. [Azure ポータル](https://portal.azure.com)で、 **[Storage]**をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
@@ -129,7 +129,7 @@
 
     ![DeleteMetric](./media/storage-monitor-storage-account/Storage_DeleteMetric.png)
 
-## <a name="how-to:-customize-the-metrics-chart-on-the-monitor-page"></a>方法: [監視] ページのメトリック チャートのカスタマイズ
+## <a name="how-to-customize-the-metrics-chart-on-the-monitor-page"></a>方法: [監視] ページのメトリック チャートのカスタマイズ
 
 1. ストレージ アカウントの **[監視]** ページで、メトリック チャートにプロットするメトリックをメトリック テーブルで最大 6 個選択します。 メトリックを選択するには、メトリックの左側にあるチェック ボックスをオンにします。 チャートからメトリックを削除するには、チェック ボックスをオフにします。
 
@@ -139,7 +139,7 @@
 
 
 
-## <a name="how-to:-configure-logging"></a>方法: ログの構成
+## <a name="how-to-configure-logging"></a>方法: ログの構成
 
 ストレージ アカウントで利用できるストレージ サービス (BLOB、テーブル、およびキュー) ごとに、読み取り要求、書き込み要求、および削除要求の診断ログを保存でき、サービスごとにデータ保有ポリシーを設定できます。
 

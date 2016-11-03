@@ -1,10 +1,10 @@
 <properties
-    pageTitle="Azure サービス エンドポイント"
-    description="Azure Toolkit for Eclipse での Azure サービス エンドポイントの設定について説明します。"
+    pageTitle="Azure Service Endpoints"
+    description="Describes the Azure Service Endpoint settings in the Azure Toolkit for Eclipse."
     services=""
     documentationCenter="java"
     authors="rmcmurray"
-    manager="wpickett"
+    manager="erikre"
     editor=""/>
 
 <tags
@@ -13,53 +13,58 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="08/11/2016" 
+    ms.date="11/01/2016" 
     ms.author="robmcm"/>
 
-<!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/dn268600.aspx -->
 
-# Azure サービス エンドポイント #
+# <a name="azure-service-endpoints"></a>Azure Service Endpoints
 
-Azure サービス エンドポイントは、アプリケーションがどこにデプロイされて管理されるかを決定します (グローバル Azure プラットフォーム、中国の 21Vianet が運営する Azure、プライベート Azure プラットフォームのいずれか)。 **[サービス エンドポイント]** ダイアログで、使用するサービス エンドポイントを指定できます。**[サービスエンド ポイント]** ダイアログを開くには、Eclipse で **[Window]**、**[Preferences]** の順にクリックし、**[Azure]** を展開し、**[Service Endpoints]** をクリックします。**[Active Set]** フィールドを設定することで、現在のワークスペース内の Azure プロジェクトで使用される Azure サービス エンドポイントが決まります。
+Azure service endpoints determine whether your application is deployed to and managed by the global Azure platform, Azure operated by 21Vianet in China, or a private Azure platform. The **Service Endpoints** dialog allows you to specify which service endpoints you want to use. To open the **Service Endpoints** dialog, within Eclipse, click **Window**, click **Preferences**, expand **Azure**, and then click **Service Endpoints**. Setting the **Active Set** field determines which Azure service endpoints will be used for the Azure projects in your current workspace.
 
-**[Service Endpoints]** ダイアログを次に示します。
+The following shows the **Service Endpoints** dialog.
 
 ![][ic719493]
 
-## サービス エンドポイントを設定するには ##
+## <a name="to-set-the-service-endpoints"></a>To set the service endpoints
 
-**[Service Endpoints]** ダイアログで、次のいずれかを行います。
+In the **Service Endpoints** dialog, take one of the following actions:
 
-* グローバル Azure プラットフォームを使用する場合は、**[Active Set]** ドロップダウン リストから **[windowsazure.com]** を選択し、**[OK]** をクリックします。
-* 中国の 21Vianet が運営する Azure を使用する場合は、**[Active Set]** ドロップダウン リストから **[windowsazure.cn (China)]** を選択し、**[OK]** をクリックします。
-* プライベート Azure プラットフォームを使用する場合:
-    1. **[編集]** をクリックします。
-    2. **[Service Endpoints]** ダイアログを閉じて基本設定ファイルを開くことを通知するダイアログ ボックスが表示されます。**[OK]** をクリックします。
-    3. Preferencesets.xml ファイルに、新しい `preferenceset` 要素を作成します。この新しい要素の `name`、`blob`、`management`、`portalURL`、および `publishsettings` 属性を作成し、各属性にプライベート Azure プラットフォームに該当する値を追加します。既存の `preferenceset` 要素に指定されている値をテンプレートとして使用できます。**注**: `blob` 属性で使用する値には、URL に "blob" というテキストを含める必要があります。
-    4. preferencesets.xml を保存して閉じます。
-    5. **[Service Endpoints]** ダイアログを再度開きます。
-    6. **[Active Set]** ドロップダウン リストから、作成したアクティブ セットを選択し、**[OK]** をクリックします。
-    7. プライベート Azure プラットフォームの `preferenceset` 要素をを作成した後は、**[Services Endpoint]** ダイアログの **[Edit]** ボタンをクリックすることで、要素に割り当てられている値を変更できます。必要であれば、複数のプライベート Azure プラットフォームの `preferenceset` 要素を作成することもできます。
+* If you want to use the global Azure platform, from the **Active Set** dropdown list, select **windowsazure.com** and click **OK**.
+* If you want to use Azure operated by 21Vianet in China, from the **Active Set** dropdown list, select **windowsazure.cn (China)** and click **OK**.
+* If you want to use a private Azure platform:
+    1. Click **Edit**.
+    2. A dialog box opens, informing you that the **Service Endpoints** dialog will be closed, and the preference sets file will be opened. Click **OK**.
+    3. In the preferencesets.xml file, create a new `preferenceset` element. For this new element, create `name`, `blob`, `management`, `portalURL` and `publishsettings` attributes, and add values for them that correspond to your private Azure platform. You can use the values provided for the existing `preferenceset` elements as templates. **Note**: The value used for the `blob` attribute must contain the text "blob" in the URL.
+    4. Save and close preferencesets.xml.
+    5. Reopen the **Service Endpoints** dialog.
+    6. From the **Active Set** dropdown list, select the active set that you created and click **OK**.
+    7. Once you've created your private Azure platform `preferenceset` element, you can change the values assigned to it by clicking the **Edit** button in the **Services Endpoint** dialog. You can also create multiple private Azure platform `preferenceset` elements, if you desire.
 
-## 関連項目 ##
+## <a name="see-also"></a>See Also
 
 [Azure Toolkit for Eclipse][]
 
-[Azure Toolkit for Eclipse のインストール][]
+[Installing the Azure Toolkit for Eclipse][] 
 
-[Azure 向け Hello World アプリケーションを Eclipse で作成する][]
+[Creating a Hello World Application for Azure in Eclipse][]
 
-Java での Azure の使用方法の詳細については、「[Azure Java Developer Center][]」を参照してください。
+For more information about using Azure with Java, see the [Azure Java Developer Center][].
 
 <!-- URL List -->
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure 向け Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 
 [ic719493]: ./media/azure-toolkit-for-eclipse-azure-service-endpoints/ic719493.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/dn268600.aspx -->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

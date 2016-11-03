@@ -17,7 +17,7 @@
     ms.author="jroth" />
 
 
-# <a name="automated-backup-for-sql-server-in-azure-virtual-machines-(classic)"></a>Azure Virtual Machines での SQL Server の自動バックアップ (クラシック)
+# <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Azure Virtual Machines での SQL Server の自動バックアップ (クラシック)
 
 > [AZURE.SELECTOR]
 - [リソース マネージャー](virtual-machines-windows-sql-automated-backup.md)

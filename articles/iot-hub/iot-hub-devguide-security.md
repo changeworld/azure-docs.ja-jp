@@ -100,7 +100,7 @@ SASL PLAIN を AMQP で使用する場合、IoT Hub に接続するクライア�
 *  ゲートウェイは、通常多くのデバイスの代理として接続しています。 SASL PLAIN を使用する場合、IoT Hub に接続するデバイスごとに、個別の TCP 接続を作成する必要があります。 このシナリオにより、電源とネットワーク リソースの消費量が大幅に増大し、各デバイスの接続の待機時間が増加します。
 * 各トークンの有効期限が切れた後に、再接続に使用するリソースの量が増加すると、リソースが限られたデバイスには悪影響が出ます。
 
-## <a name="scope-hub-level-credentials"></a>ハブレベルの資格情報のスコープ
+## <a name="scope-hublevel-credentials"></a>ハブレベルの資格情報のスコープ
 
 制限付きのリソース URI を持つトークンを作成することにより、ハブレベルのセキュリティ ポリシーのスコープを指定できます。 たとえば、デバイスからの D2C メッセージを送信するエンドポイントは **/devices/{deviceId}/messages/events**になります。 また、**DeviceConnect** アクセス許可を持つハブレベルの共有アクセス ポリシーを使用して、resourceURI が **/devices/{deviceId}** であるトークンに署名することもできます。 この方法により、デバイスの **deviceId** の代わりにメッセージを送信するためにのみ使用できるトークンが作成されます。
 
@@ -280,7 +280,7 @@ IoT Hub では、[X.509 証明書][lnk-x509]を使用して IoT Hub でデバイ
 
     SharedAccessSignature sr=myhub.azure-devices.net%2fdevices&sig=JdyscqTpXdEJs49elIUCcohw2DlFDR3zfH5KqGJo4r4%3D&se=1456973447&skn=registryRead
 
-## <a name="supported-x.509-certificates"></a>サポートされている X.509 証明書
+## <a name="supported-x509-certificates"></a>サポートされている X.509 証明書
 
 任意の X.509 証明書を使用して IoT Hub でデバイスを認証することができます。 次のトピックがあります。
 
@@ -292,11 +292,11 @@ IoT Hub では、[X.509 証明書][lnk-x509]を使用して IoT Hub でデバイ
 
 デバイスは X.509 証明書またはセキュリティ トークンのいずれかを使用できますが、両方一緒に使用することはできません。
 
-### <a name="register-an-x.509-client-certificate-for-a-device"></a>デバイスの X.509 クライアント証明書を登録する
+### <a name="register-an-x509-client-certificate-for-a-device"></a>デバイスの X.509 クライアント証明書を登録する
 
 [C# 用 Azure IoT サービス SDK][lnk-service-sdk] (バージョン 1.0.8+) では、認証の際に X.509 クライアント証明書を使用するデバイスの登録をサポートします。 デバイスのインポート/エクスポートなどの他の API でも X.509 クライアント証明書をサポートします。
 
-### <a name="c\#-support"></a>C\# のサポート
+### <a name="c-support"></a>C\# のサポート
 
 **RegistryManager** クラスでは、プログラムでデバイスを登録する方法が用意されています。 具体的には、**AddDeviceAsync** メソッドと **UpdateDeviceAsync** メソッドを使用することで、ユーザーは IoT Hub デバイス ID レジストリにデバイスを登録して更新できます。 これら 2 つのメソッドは、入力として **Device** インスタンスを取ります。 **Device** クラスには **Authentication** プロパティが含まれています。これにより、ユーザーはプライマリとセカンダリの X.509 証明書拇印を指定することができます。 拇印は、X.509 証明書の SHA-1 ハッシュ (DER バイナリ エンコードを使用して格納) を表します。 ユーザーは、プライマリ拇印、セカンダリ拇印、またはその両方を指定することができます。 証明書のロールオーバー シナリオを処理するために、プライマリ拇印とセカンダリ拇印がサポートされています。
 
@@ -319,11 +319,11 @@ RegistryManager registryManager = RegistryManager.CreateFromConnectionString(dev
 await registryManager.AddDeviceAsync(device);
 ```
 
-### <a name="use-an-x.509-client-certificate-during-runtime-operations"></a>ランタイム操作中に X.509 クライアント証明書を使用する
+### <a name="use-an-x509-client-certificate-during-runtime-operations"></a>ランタイム操作中に X.509 クライアント証明書を使用する
 
 [.NET 用 Azure IoT device SDK][lnk-service-sdk] (バージョン 1.0.11+) では、X.509 クライアント証明書の使用をサポートします。
 
-### <a name="c\#-support"></a>C\# のサポート
+### <a name="c-support"></a>C\# のサポート
 
 **DeviceAuthenticationWithX509Certifcate** クラスでは、X.509 クライアント証明書を使用した  **DeviceClient** インスタンスの作成をサポートします。
 

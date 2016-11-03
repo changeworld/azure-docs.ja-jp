@@ -18,7 +18,7 @@
 
 
 
-# <a name="iot-gateway-sdk-(beta)-–-send-device-to-cloud-messages-with-a-simulated-device-using-windows"></a>IoT Gateway SDK (ベータ) - Windows を使用してシミュレートされたデバイスでデバイスからクラウドへのメッセージを送信する
+# <a name="iot-gateway-sdk-beta-send-devicetocloud-messages-with-a-simulated-device-using-windows"></a>IoT Gateway SDK (ベータ) - Windows を使用してシミュレートされたデバイスでデバイスからクラウドへのメッセージを送信する
 
 [AZURE.INCLUDE [iot-hub-gateway-sdk-simulated-selector](../../includes/iot-hub-gateway-sdk-simulated-selector.md)]
 
