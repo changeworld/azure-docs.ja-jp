@@ -369,7 +369,7 @@ SAP NetWeaver | Windows、SUSE Linux Enterprise | SQL Server、Oracle DB2、SAP 
 
 更新日: 2016 年 8 月
 
-[ガイドはこちら][計画ガイド]
+[ガイドはこちら][planning-guide]
 ## <a name="a-name6aadadd276b546d88713e8d63630e955adeployment"></a><a name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>デプロイ
 
 タイトル: Windows 仮想マシン (VM) 上の SAP NetWeaver – デプロイメント ガイド
@@ -378,7 +378,7 @@ SAP NetWeaver | Windows、SUSE Linux Enterprise | SQL Server、Oracle DB2、SAP 
 
 更新日: 2016 年 8 月
 
-[ガイドはこちら][デプロイ ガイド]
+[ガイドはこちら][deployment-guide]
 
 ## <a name="a-name1343ffe180214ce6a08d3a1553a4db82adbms-deployment-guide"></a><a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS デプロイ ガイド
 
@@ -388,7 +388,7 @@ SAP NetWeaver | Windows、SUSE Linux Enterprise | SQL Server、Oracle DB2、SAP 
 
 更新日: 2016 年 8 月
 
-[ガイドはこちら][dbms ガイド]
+[ガイドはこちら][dbms-guide]
 
 ## <a name="a-name63dab0282c4f46368f9990bbb264eabaahigh-availability-deployment-guide"></a><a name="63dab028-2c4f-4636-8f99-90bbb264eaba"></a>高可用性デプロイメント ガイド
 
@@ -398,10 +398,10 @@ SAP NetWeaver | Windows、SUSE Linux Enterprise | SQL Server、Oracle DB2、SAP 
 
 更新日: 2016 年 8 月
 
-[[ガイドはこちら]][[ha ガイド]]
+[[ガイドはこちら]][[ha-guide]]
 
 
 
-<!---HONumber=Oct16_HO2-->
+<!-.--HONumber=Oct16_HO2-->
 
 
