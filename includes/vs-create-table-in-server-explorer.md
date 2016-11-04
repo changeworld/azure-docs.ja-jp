@@ -7,9 +7,6 @@ Visual Studio の**サーバー エクスプ ローラー**を使用すると、
 3. **[テーブル]** ノードを選択して、コンテキスト メニューから **[テーブルの作成]** を選択します。
 4. テーブルの名前を入力し、**[OK]**を選択します。   
 
-
-
-
 [Image1]: ./media/vs-storage-getting-started-tables-include/vs-storage-create-tables-in-Server-Explorer.png
 
 <!---HONumber=Oct15_HO3-->

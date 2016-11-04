@@ -1,31 +1,28 @@
-<properties
-   pageTitle="ロジック アプリ障害の診断 | Microsoft Azure"
-   description="ロジック アプリのエラー発生箇所を理解するための一般的な手法"
-   services="logic-apps"
-   documentationCenter=".net,nodejs,java"
-   authors="jeffhollan"
-   manager="erikre"
-   editor=""/>
+---
+title: ロジック アプリ障害の診断 | Microsoft Docs
+description: ロジック アプリのエラー発生箇所を理解するための一般的な手法
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: jeffhollan
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="05/18/2016"
-   ms.author="jehollan"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 05/18/2016
+ms.author: jehollan
 
+---
 # ロジック アプリの障害の診断
-
 Azure App Service のロジック アプリの機能でエラーや障害が発生した場合、障害の発生源を確認できる方法がいくつかあります。
 
 ## Azure ポータル ツール
-
 Azure ポータルには、各段階で各ロジック アプリを診断するためのツールがあります。
 
 ### トリガー履歴
-
 各ロジック アプリには少なくとも 1 つのトリガーがあります。アプリが起動されない場合は、まずトリガー履歴で詳細を確認します。トリガー履歴にはロジック アプリのメイン ブレードからアクセスできます。
 
 ![トリガー履歴の検索][1]
@@ -39,11 +36,9 @@ Azure ポータルには、各段階で各ロジック アプリを診断する�
 * **失敗**。エラーが発生しました。
 
 #### トリガーを手動で開始する
-
 メイン ブレードの **[トリガーの選択]** ボタンをクリックすると、(次回の試行を待たずに) 利用できるトリガーをすぐに確認できます。たとえば、Dropbox トリガーでこのリンクをクリックすると、新しいファイルに関するポーリングを Dropbox に実行するワークフローがすぐに開始されます。
 
 ### 実行履歴
-
 起動され、実行されたすべてのトリガーが表示されます。実行の情報には、メイン ブレードからアクセスできます。メイン ブレードには、ワークフローの実行中に何が発生したかについて確認するのに役立つ、多くの情報が含まれます。
 
 ![実行履歴の検索][2]
@@ -58,25 +53,22 @@ Azure ポータルには、各段階で各ロジック アプリを診断する�
 実行履歴を調べるときに、詳細を確認できます。
 
 #### トリガー出力
-
 トリガー 出力には、トリガーから受け取ったデータが表示されます。すべてのプロパティが予期したとおりに返されるかどうかを確認できます。
 
->[AZURE.NOTE] 不明なコンテンツが表示される場合に、ロジック アプリ機能による[さまざまなコンテンツ タイプの処理](app-service-logic-content-type.md)方法を理解するために役立つことがあります。
+> [!NOTE]
+> 不明なコンテンツが表示される場合に、ロジック アプリ機能による[さまざまなコンテンツ タイプの処理](app-service-logic-content-type.md)方法を理解するために役立つことがあります。
+> 
+> 
 
 ![トリガーの出力例][3]
 
 #### アクションの入力と出力
-
 アクションが受け取った入力と出力の詳細にアクセスできます。これは出力の大きさと形を理解するために役立ちます。エラー メッセージが生成されていれば、それも確認できます。
 
 ![アクションの入力と出力][4]
 
 ## ワークフロー ランタイムのデバッグ
-
 入力、出力、実行のトリガーを監視するだけでなく、デバッグに役立つ手順をワークフローに追加すると便利な場合があります。ワークフローに手順として追加できる強力なツールの 1 つが [RequestBin](http://requestb.in) です。RequestBin を使用して、HTTP 要求の大きさ、形、書式を正確に特定する目的で、HTTP 要求インスペクターを設定できます。新しい RequestBin を作成し、URL をロジック アプリの HTTP POST アクションに貼り付けることができます。本文にはあらゆるコンテンツ (式や別の手順の出力など) を指定し、テストできます。ロジック アプリの実行後、RequestBin を更新し、ロジック アプリ エンジンから生成されたとき、要求がどのように書式設定されたかを確認できます。
-
-
-
 
 <!-- image references -->
 [1]: ./media/app-service-logic-diagnosing-failures/triggerHistory.PNG

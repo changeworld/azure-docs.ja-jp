@@ -1,23 +1,22 @@
-<properties
-	pageTitle="C 用 Azure IoT デバイス SDK – シリアライザー | Microsoft Azure"
-	description="C 用 Azure IoT device SDK に含まれているシリアライザー ライブラリの使用について説明します"
-	services="iot-hub"
-	documentationCenter=""
-	authors="olivierbloch"
-	manager="timlt"
-	editor=""/>
+---
+title: C 用 Azure IoT デバイス SDK – シリアライザー | Microsoft Docs
+description: C 用 Azure IoT device SDK に含まれているシリアライザー ライブラリの使用について説明します
+services: iot-hub
+documentationcenter: ''
+author: olivierbloch
+manager: timlt
+editor: ''
 
-<tags
-     ms.service="iot-hub"
-     ms.devlang="cpp"
-     ms.topic="article"
-     ms.tgt_pltfrm="na"
-     ms.workload="na"
-     ms.date="09/06/2016"
-     ms.author="obloch"/>
+ms.service: iot-hub
+ms.devlang: cpp
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/06/2016
+ms.author: obloch
 
+---
 # C 用 Microsoft Azure IoT device SDK – シリアライザーの詳細
-
 本シリーズの[最初の記事](iot-hub-device-sdk-c-intro.md)では、**C 用 Azure IoT デバイス SDK** を紹介しました。それに続く記事では、[**IoTHubClient**](iot-hub-device-sdk-c-iothubclient.md) について詳しく説明しました。今回の記事では、残りのコンポーネントである**シリアライザー** ライブラリについて詳しく説明し、SDK の対応範囲をすべて説明します。
 
 入門記事では、**シリアライザー** ライブラリを使用して、IoT Hub にイベントを送信し、IoT Hub からメッセージを受信する方法について説明しました。この記事では、**シリアライザー** マクロ言語によるデータのモデル化方法を詳細に説明することで、さらにその内容を深めていきます。また、ライブラリがメッセージをシリアル化する方法 (場合によっては、シリアル化の動作を制御する方法) についても詳しく説明します。また、作成するモデルのサイズを決定するいくつかの変更可能なパラメーターについても説明します。
@@ -29,7 +28,6 @@
 [Microsoft Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks) GitHub リポジトリでは **C 用 Azure IoT device SDK** が入手でき、[C API リファレンス](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html)のページでは API の詳細を確認できます。
 
 ## モデリング言語
-
 このシリーズの[入門記事](iot-hub-device-sdk-c-intro.md)では、**simplesample\_amqp** アプリケーションで提供された例を使用して、**C 用 Azure IoT デバイス SDK** のモデリング言語を紹介しました。
 
 ```
@@ -54,28 +52,30 @@ END_NAMESPACE(WeatherStation);
 
 このサンプルで示していないのは、SDK がサポートする追加のデータ型です。これについては、次に説明します。
 
-> [AZURE.NOTE] デバイスが IoT Hub に送信するデータは、IoT Hub では*イベント*と呼ばれ、モデリング言語では*データ* (**WITH\_DATA** を使用して定義) と呼ばれます。同じように、デバイスに送信するデータは、IoT Hub では*メッセージ*と呼ばれ、モデリング言語では*アクション* (**WITH\_ACTION** を使用して定義) と呼ばれます。この記事では、これらの用語が区別されずに使われる場合があります。
+> [!NOTE]
+> デバイスが IoT Hub に送信するデータは、IoT Hub では*イベント*と呼ばれ、モデリング言語では*データ* (**WITH\_DATA** を使用して定義) と呼ばれます。同じように、デバイスに送信するデータは、IoT Hub では*メッセージ*と呼ばれ、モデリング言語では*アクション* (**WITH\_ACTION** を使用して定義) と呼ばれます。この記事では、これらの用語が区別されずに使われる場合があります。
+> 
+> 
 
 ### サポートされているデータ型
-
 次のデータの型は、**シリアライザー** ライブラリを使用して作成されたモデルでサポートされます。
 
 | 型 | Description |
-|-------------------------|----------------------------------------|
-| double | 倍精度浮動小数点数 |
-| int | 32 ビット整数 |
-| float | 単精度浮動小数点数 |
-| long | 長整数 |
-| int8\_t | 8 ビット整数 |
-| int16\_t | 16 ビット整数型 |
-| int32\_t | 32 ビット整数 |
-| int64\_t | 64 ビット整数 |
-| bool | boolean |
-| ascii\_char\_ptr | ASCII 文字列 |
-| EDM\_DATE\_TIME\_OFFSET | 日時オフセット |
-| EDM\_GUID | GUID |
-| EDM\_BINARY | バイナリ |
-| DECLARE\_STRUCT | 複合データ型 |
+| --- | --- |
+| double |倍精度浮動小数点数 |
+| int |32 ビット整数 |
+| float |単精度浮動小数点数 |
+| long |長整数 |
+| int8\_t |8 ビット整数 |
+| int16\_t |16 ビット整数型 |
+| int32\_t |32 ビット整数 |
+| int64\_t |64 ビット整数 |
+| bool |boolean |
+| ascii\_char\_ptr |ASCII 文字列 |
+| EDM\_DATE\_TIME\_OFFSET |日時オフセット |
+| EDM\_GUID |GUID |
+| EDM\_BINARY |バイナリ |
+| DECLARE\_STRUCT |複合データ型 |
 
 最後のデータ型から説明していきます。**DECLARE\_STRUCT** を使用すると、複合データ型を定義できます。複合データ型とは、その他のプリミティブ型をグループ化したものです。これらのグループ化により、次のようなモデルを定義できます。
 
@@ -140,27 +140,27 @@ SendAsync(iotHubClientHandle, (const void*)&(testModel->Test));
 ```
 void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent)
 {
-	unsigned char* destination;
-	size_t destinationSize;
-	if (SERIALIZE(&destination, &destinationSize, *(const unsigned char*)dataEvent) ==
-	{
-		// null terminate the string
-		char* destinationAsString = (char*)malloc(destinationSize + 1);
-		if (destinationAsString != NULL)
-		{
-			memcpy(destinationAsString, destination, destinationSize);
-			destinationAsString[destinationSize] = '\0';
-			IOTHUB_MESSAGE_HANDLE messageHandle = IoTHubMessage_CreateFromString(destinationAsString);
-			if (messageHandle != NULL)
-			{
-				IoTHubClient_SendEventAsync(iotHubClientHandle, messageHandle, sendCallback, (void*)0);
+    unsigned char* destination;
+    size_t destinationSize;
+    if (SERIALIZE(&destination, &destinationSize, *(const unsigned char*)dataEvent) ==
+    {
+        // null terminate the string
+        char* destinationAsString = (char*)malloc(destinationSize + 1);
+        if (destinationAsString != NULL)
+        {
+            memcpy(destinationAsString, destination, destinationSize);
+            destinationAsString[destinationSize] = '\0';
+            IOTHUB_MESSAGE_HANDLE messageHandle = IoTHubMessage_CreateFromString(destinationAsString);
+            if (messageHandle != NULL)
+            {
+                IoTHubClient_SendEventAsync(iotHubClientHandle, messageHandle, sendCallback, (void*)0);
 
-				IoTHubMessage_Destroy(messageHandle);
-			}
-			free(destinationAsString);
-		}
-		free(destination);
-	}
+                IoTHubMessage_Destroy(messageHandle);
+            }
+            free(destinationAsString);
+        }
+        free(destination);
+    }
 }
 ```
 
@@ -171,16 +171,16 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
 ```
 EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
 {
-	struct tm newTime;
-	gmtime_s(&newTime, &time);
-	EDM_DATE_TIME_OFFSET dateTimeOffset;
-	dateTimeOffset.dateTime = newTime;
-	dateTimeOffset.fractionalSecond = 0;
-	dateTimeOffset.hasFractionalSecond = 0;
-	dateTimeOffset.hasTimeZone = 0;
-	dateTimeOffset.timeZoneHour = 0;
-	dateTimeOffset.timeZoneMinute = 0;
-	return dateTimeOffset;
+    struct tm newTime;
+    gmtime_s(&newTime, &time);
+    EDM_DATE_TIME_OFFSET dateTimeOffset;
+    dateTimeOffset.dateTime = newTime;
+    dateTimeOffset.fractionalSecond = 0;
+    dateTimeOffset.hasFractionalSecond = 0;
+    dateTimeOffset.hasTimeZone = 0;
+    dateTimeOffset.timeZoneHour = 0;
+    dateTimeOffset.timeZoneMinute = 0;
+    return dateTimeOffset;
 }
 ```
 
@@ -197,7 +197,6 @@ EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
 この情報を使用して、複合型など、サポートするデータ型の範囲が含まれるモデルを定義できます (複合型の中に別の複合型を含めることもできます)。ただし、上の例によって生成されたシリアル化された JSON は、重要なポイントを提起します。それは、**シリアライザー** ライブラリを使用したデータの送信*方法*によって、JSON の形式が決定されるということです。このポイントについては、次で説明します。
 
 ## シリアル化の詳細
-
 前のセクションでは、**シリアライザー** ライブラリによって生成される出力の例を紹介しました。このセクションでは、ライブラリがデータをシリアル化する方法およびシリアル化 API を使用してその動作を制御する方法について説明します。
 
 シリアル化に関する説明を進めるために、サーモスタットに基づく新しいモデルを使用します。最初に、扱うシナリオの背景について説明します。
@@ -207,7 +206,6 @@ EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
 このシナリオでは、2 つの異なる方法でデータをモデル化し、シリアル化された出力に対するモデル化の影響について説明します。
 
 ### モデル 1
-
 ここでは、前のシナリオをサポートするモデルの最初のバージョンを示します。
 
 ```
@@ -300,7 +298,6 @@ IoT Hub に送信されるシリアル化された形式は、次のようにな
 今度は、別の構造体を使用して同じデータが含まれるように、モデルを変更します。
 
 ### モデル 2
-
 上のモデルに代わる、この別のモデルについて考えてみます。
 
 ```
@@ -444,7 +441,6 @@ Temperature、Humidity、Time の値が設定されていると仮定すると�
 どちらのアプローチも正しいとか、間違っているとかということはありません。**シリアライザー** ライブラリのしくみに注意し、ニーズに最適なモデリング アプローチを選択します。
 
 ## メッセージの処理
-
 これまで、この記事では IoT Hub への送信についてのみ説明し、メッセージの受信については取り上げてきませんでした。その理由は、メッセージの受信について理解する必要がある内容は[以前の記事](iot-hub-device-sdk-c-intro.md)でほとんど説明されているためです。メッセージを処理するには、メッセージのコールバック関数を登録するということを、その記事から思い出してください。
 
 ```
@@ -529,7 +525,6 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 このセクションでは、**シリアライザー** ライブラリを使用してイベントを送信し、メッセージを受信する場合に把握する必要がある内容をすべて説明しました。次に進む前に、モデルの大きさを制御する、構成可能ないくつかのパラメーターについて説明します。
 
 ## マクロの構成
-
 **シリアライザー** ライブラリを使用する場合に、注意が必要な SDK の重要部分は azure-c-shared-utility ライブラリで参照できます。再帰オプションを使用して GitHub から Azure-iot-sdk リポジトリを複製している場合、この共有ユーティリティ ライブラリがここに表示されます:
 
 ```
@@ -560,9 +555,8 @@ azure-c-shared-utility\\macro\_utils\_h\_generator.
 
 これらの値は、SDK に含まれている既定のパラメーターです。各パラメーターには、次のような意味があります。
 
--   nMacroParameters – 1 つの DECLARE\_MODEL マクロ定義に使用できるパラメーターの数を制御します。
-
--   nArithmetic – モデルで使用できるメンバーの合計数を制御します。
+* nMacroParameters – 1 つの DECLARE\_MODEL マクロ定義に使用できるパラメーターの数を制御します。
+* nArithmetic – モデルで使用できるメンバーの合計数を制御します。
 
 これらのパラメーターは、モデルの規模を制御するため重要です。たとえば、次のモデルの定義について考えてみます。
 
@@ -589,6 +583,8 @@ WITH_DATA(int, MyData)
 その後、Visual Studio ソリューションに次のプロジェクトを追加します。
 
 > .\\c\\serializer\\build\\windows\\serializer.vcxproj
+> 
+> 
 
 完了すると、ソリューションは次のようになります。
 
@@ -601,37 +597,29 @@ WITH_DATA(int, MyData)
 ここまでで、**シリアライザー** ライブラリを使用したコードの記述方法について、知っておくべきすべてのことを説明しました。説明を終える前に、疑問となりそうな以前の記事のいくつかのトピックについて、もう一度説明します。
 
 ## 下位レベルの API
-
 この記事で詳しく説明したサンプル アプリケーションは、**simplesample\_amqp** です。このサンプルでは、上位レベル ("LL" 以外) の API を使用してイベントを送信し、メッセージを受信します。これらの API を使用する場合、バックグラウンド スレッドが実行され、イベントの送信とメッセージの受信の両方を処理します。ただし、下位レベル (LL) API を使用してこのバックグラウンド スレッドを排除し、イベントの送信またはクラウドからのメッセージの受信のタイミングを明示的に制御できます。
 
 [前回の記事](iot-hub-device-sdk-c-iothubclient.md)の説明のとおり、以下のように、上位 API で構成される一連の関数があります。
 
--   IoTHubClient\_CreateFromConnectionString
-
--   IoTHubClient\_SendEventAsync
-
--   IoTHubClient\_SetMessageCallback
-
--   IoTHubClient\_Destroy
+* IoTHubClient\_CreateFromConnectionString
+* IoTHubClient\_SendEventAsync
+* IoTHubClient\_SetMessageCallback
+* IoTHubClient\_Destroy
 
 これらの API は、**simplesample\_amqp** で示されます。
 
 下位レベル API に類似したセットもあります。
 
--   IoTHubClient\_LL\_CreateFromConnectionString
-
--   IoTHubClient\_LL\_SendEventAsync
-
--   IoTHubClient\_LL\_SetMessageCallback
-
--   IoTHubClient\_LL\_Destroy
+* IoTHubClient\_LL\_CreateFromConnectionString
+* IoTHubClient\_LL\_SendEventAsync
+* IoTHubClient\_LL\_SetMessageCallback
+* IoTHubClient\_LL\_Destroy
 
 下位レベル API が、以前の記事での説明とまったく同じ動作をすることに注意してください。イベントの送信とメッセージの受信を処理するバックグラウンド スレッドが必要な場合、最初の API のセットを使用できます。データの送信と IoT Hub からのデータの受信のタイミングを明示的に制御する場合は、2 番目の API のセットを使用します。どちらの API のセットも**シリアライザー** ライブラリを使用して同じように正しく動作します。
 
 **シリアライザー** ライブラリと一緒に下位レベル API を使用する方法の例については、**simplesample\_http** アプリケーションを参照してください。
 
 ## 関連トピック
-
 これ以外に、もう一度説明する必要があるトピックとして、プロパティの処理、代替デバイスの資格情報の使用、および構成オプションがあります。これらは、すべて[前回の記事](iot-hub-device-sdk-c-iothubclient.md)で説明したトピックです。要点は、これらの機能はすべて、**シリアライザー ライブラリ**を使用する場合でも、**IoTHubClient** ライブラリの場合と同じ動作をするということです。たとえば、プロパティをモデルのイベントにアタッチする場合、前に説明した方法と同じように、**IoTHubMessage\_Properties** と **Map**\_**AddorUpdate** を使用します。
 
 ```
@@ -663,20 +651,18 @@ serializer_deinit();
 それ以外の場合、上に示したその他の機能はすべて、**シリアライザー** ライブラリの場合でも **IoTHubClient** ライブラリの場合と同じように動作します。これらのいずれかのトピックの詳細については、このシリーズの[前回の記事](iot-hub-device-sdk-c-iothubclient.md)を参照してください。
 
 ## 次のステップ
-
 この記事では、**C 用 Azure IoT device SDK** に含まれている**シリアライザー** ライブラリの独自の側面について詳しく説明しました。説明した情報により、モデルを使用してイベントを送信したり、IoT Hub からメッセージを受信したりする方法についての理解が深まります。
 
 また、この記事は、**C 用 Azure IoT device SDK** を使用したアプリケーションの開発方法に関する 3 部構成のシリーズの最終回でもあります。この記事を読むことで、API の概要だけでなく、API のしくみについて理解するための十分な情報を得ることができます。追加情報として、ここで取り上げなかった SDK のサンプルがいくつかあります。さらに、詳細を知るために役立つリソースとして、[SDK ドキュメント](https://github.com/Azure/azure-iot-sdks)も参照してください。
-
 
 IoT Hub の開発に関する詳細については、[IoT Hub SDK][lnk-sdks] を参照してください
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-- [ソリューションの設計][lnk-design]
-- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
-- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
-- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
+* [ソリューションの設計][lnk-design]
+* [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+* [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+* [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
 
 [lnk-sdks]: iot-hub-sdks-summary.md
 

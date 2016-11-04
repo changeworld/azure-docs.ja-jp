@@ -1,21 +1,23 @@
-<properties
-	pageTitle="開発者分析用 Visual Studio 拡張機能のリリース ノート"
-	description="開発者分析用 Visual Studio ツールの更新内容。"
-	services="application-insights"
-    documentationCenter=""
-	authors="acearun"
-	manager="douge"/>
-<tags
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/09/2016"
-	ms.author="acearun"/>
+---
+title: 開発者分析用 Visual Studio 拡張機能のリリース ノート
+description: 開発者分析用 Visual Studio ツールの更新内容。
+services: application-insights
+documentationcenter: ''
+author: acearun
+manager: douge
 
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 06/09/2016
+ms.author: acearun
+
+---
 # Developer Analytics Tools のリリース ノート
 新機能: Visual Studio での Application Insights と HockeyApp の分析
+
 ## Version 7.0
 ### Visual Studio Application Insights の傾向
 Visual Studio Application Insights は、時間経過に伴うアプリの動作を分析するための Visual Studio の新しいツールです。このツールを起動するには、**[Application Insights]** ツール バー ボタンまたは Application Insights の [検索] ウィンドウから **[テレメトリの傾向を調べる]** を選択します。または、**[表示]** メニューの **[その他のウィンドウ]** をクリックし、**[Application Insights の傾向]** をクリックします。5 つの一般的なクエリから 1 つ選択して開始します。テレメトリの種類、時間範囲、およびその他のプロパティに基づき、さまざまなデータセットを分析できます。データ内の異常を見つけるには、**[ビューの種類]** ボックスの一覧からいずれかの異常オプションを選択します。ウィンドウの下部にあるフィルター オプションを使用すると、テレメトリの特定の部分に対象を絞り込みやすくなります。
@@ -52,6 +54,7 @@ Visual Studio に HockeyApp シナリオを導入することになりました�
 ベータ版配布を使用すると、初期バージョンのアプリを HockeyApp にアップロードし、一部の顧客やテスターに配布することができます。ベータ版配布に HockeyApp のクラッシュ コレクションとユーザー フィードバック機能を組み合わせることで、アプリに関する重要な情報を本格的なリリースの前に収集することができます。その情報を基にアプリの問題を解決しておけば、後で低い評価が下されたり否定的なフィードバックが寄せられたりするなどの問題を回避するか、最小限に抑えることができます。
 
 Visual Studio からベータ版配布用にビルドをアップロードする方法は簡単です。ここではその方法について説明します。
+
 ### ユニバーサル Windows アプリ
 ユニバーサル Windows アプリ プロジェクト ノードのコンテキスト メニューには、ビルドを HockeyApp にアップロードするオプションが追加されました。
 
@@ -91,6 +94,7 @@ Windows フォーム プロジェクト ノードのコンテキスト メニュ
 その他のフローはユニバーサル Windows アプリと同様です。ビルドを選択し、リリース オプションを選択して、リリース ノートを追加し、アップロードして、HockeyApp ポータルで管理します。
 
 このように操作は簡単です。ぜひ試してご意見をお聞かせください。
+
 ## バージョン 4.3
 ### ローカル デバッグ セッションからのテレメトリの検索
 このリリースでは、Visual Studio デバッグ セッションで生成された Application Insights Telemetry を検索できるようになりました。従来、検索を利用できるのは、Application Insights にアプリを登録した場合に限られていました。今後は、Application Insights SDK がインストールされていれば、アプリでローカルのテレメトリを検索することができます。
@@ -99,9 +103,9 @@ ASP.NET アプリケーションと Application Insights SDK がある場合は�
 
 1. アプリケーションをデバッグします。
 2. 次のいずれかの方法で [Application Insights の検索] を開きます。
-	- **[表示]** メニューの **[その他のウィンドウ]** をクリックし、**[Application Insights の検索]** をクリックします。
-	- **[Application Insights]** ツール バー ボタンをクリックします。
-	- ソリューション エクスプ ローラーで、**[ApplicationInsights.config]** を展開し、**[デバッグ セッションのテレメトリの検索]** をクリックします。
+   * **[表示]** メニューの **[その他のウィンドウ]** をクリックし、**[Application Insights の検索]** をクリックします。
+   * **[Application Insights]** ツール バー ボタンをクリックします。
+   * ソリューション エクスプ ローラーで、**[ApplicationInsights.config]** を展開し、**[デバッグ セッションのテレメトリの検索]** をクリックします。
 3. Application Insights にサインアップしていない場合、[検索] ウィンドウはデバッグ セッションのテレメトリ モードで開きます。
 4. ローカルのテレメトリを表示するには、**[検索]** アイコンをクリックします。
 
@@ -109,8 +113,10 @@ ASP.NET アプリケーションと Application Insights SDK がある場合は�
 
 ## バージョン 4.2
 このリリースでは、イベントのコンテキストでのデータ検索を容易にする機能、複数のデータ イベントからコードに移動する機能、およびログ データを Application Insights に送信するための非常に簡単なエクスペリエンスが追加されました。この拡張機能は毎月更新されます。ご意見や機能に関するご要望がありましたら、aidevtools@microsoft.com までお寄せください。
+
 ### クリックレスのログ記録
 既に NLog、log4net、System.Diagnostics.Tracing を使用している場合、必要なトレースを自分ですべて Application Insights に移動する必要はありません。このリリースでは、標準的な構成機能に Application Insights ログ アダプターを統合しました。前述のいずれかのログ記録フレームワークが既に構成されている場合の取得方法を次のセクションで説明します。**Application Insights が既に追加されている場合: **
+
 1. プロジェクト ノードを右クリックし、**[Application Insights]** をクリックして、**[Application Insights の構成]** をクリックします。構成ウィンドウで、正しいアダプターを追加するオプションが設定されていることを確認します。
 2. または、ソリューションをビルドするときに、画面右上に表示されるポップアップ ウィンドウの **[構成]** をクリックします。
 
@@ -165,26 +171,22 @@ Application Insights の検索ウィンドウの外観が改善され、アプ�
 ![Publish complete notification](./media/app-insights-release-notes-vsix/publishtoast.png)
 
 ## Version 4.0
-
 ### Visual Studio 内から Application Insights データを検索
 Application Insights ポータルでの検索機能と同じように、Visual Studio 内からイベントの種類やプロパティ値、テキストをフィルターで抽出して検索し、そのうえで個々のイベントを調査することができます。
 
 ![Search window](./media/app-insights-release-notes-vsix/search.png)
 
 ### ローカル コンピューターからのデータを診断ツールで表示
-
 Visual Studio の [診断ツール] ページで、ローカルにあるテレメトリや他のデバッグ データを表示できます。ASP.NET 4.5 のみサポートされます。
 
 ![Diagnostic Tools page](./media/app-insights-release-notes-vsix/diagtools.png)
 
 ### Azure にサインインすることなくプロジェクトに SDK を追加
-
 **[新しいプロジェクト]** ダイアログまたはプロジェクトのコンテキスト メニューで Application Insights パッケージをプロジェクトに追加する際、Azure にサインインする必要がなくなりました。サインインした場合は、以前と同じように、SDK がインストールされ、ポータルにテレメトリを送信するように構成されます。サインインしない場合は、SDK がプロジェクトに追加され、診断ハブ用にテレメトリが生成されます。これは、後で必要に応じて構成できます。
 
 ![[新しいプロジェクト] ダイアログ](./media/app-insights-release-notes-vsix/newproject.png)
 
 ### デバイスのサポート
-
 *Connect();* 2015 において、Microsoft は、モバイル デバイス向けのアプリ開発を支援する機能として HockeyApp を[発表](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/)しました。HockeyApp は、テスト担当者へのベータ版ビルドの配布、アプリのすべてのクラッシュの収集と分析、およびお客様からのフィードバックの直接収集を支援します。HockeyApp は、iOS、Android、Windows や、Xamarin、Cordova、Unity のようなクロスプラットフォーム ソリューションなど、あらゆるプラットフォームのアプリに対応しています。
 
 Application Insights 拡張機能の今後のリリースでは、HockeyApp と Visual Studio の連携をさらに進化させる予定です。現時点では、NuGet 参照を追加するだけで HockeyApp を開始できます。詳細については、[ドキュメント](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone)をご覧ください。

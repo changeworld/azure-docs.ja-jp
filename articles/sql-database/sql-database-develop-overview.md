@@ -1,22 +1,21 @@
-<properties
-	pageTitle="SQL Database の開発の概要 | Microsoft Azure"
-	description="SQL Database に接続するアプリケーションで使用できる接続ライブラリとベスト プラクティスについて説明します。"
-	services="sql-database"
-	documentationCenter=""
-	authors="annemill"
-	manager="jhubbard"
-	editor="genemi"/>
+---
+title: SQL Database の開発の概要 | Microsoft Docs
+description: SQL Database に接続するアプリケーションで使用できる接続ライブラリとベスト プラクティスについて説明します。
+services: sql-database
+documentationcenter: ''
+author: annemill
+manager: jhubbard
+editor: genemi
 
+ms.service: sql-database
+ms.workload: data-management
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/17/2016
+ms.author: annemill
 
-<tags
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/17/2016"
-	ms.author="annemill"/>
-
+---
 # SQL Database の開発: 概要
 この記事では、Azure SQL Database に接続するコードを記述するときの基本的な考慮事項について説明します。
 
@@ -64,7 +63,6 @@ Elastic Scale は、スケール アウト (およびスケール イン) のプ
 * [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 
 ## 次のステップ
-
 [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
 
 <!---HONumber=AcomDC_0817_2016-->

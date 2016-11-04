@@ -1,44 +1,44 @@
-<properties
-   pageTitle="Azure App Service のロジック アプリでの BizTalk XPath Extractor の使用 | Microsoft Azure"
-   description="BizTalk XPath Extractor"
-   services="logic-apps"
-   documentationCenter=".net,nodejs,java"
-   authors="rajram"
-   manager="erikre"
-   editor=""/>
+---
+title: Azure App Service のロジック アプリでの BizTalk XPath Extractor の使用 | Microsoft Docs
+description: BizTalk XPath Extractor
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: rajram
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="04/20/2016"
-   ms.author="rajram"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 04/20/2016
+ms.author: rajram
 
+---
 # BizTalk XPath Extractor
-
-[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
-
+[!INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 BizTalk XPath Extract コネクタは、指定された XPath に基づいて XML コンテンツからデータを検索して抽出します。
 
 ## BizTalk XPath Extractor の使用
 1. BizTalk XPath Extractor を使用するには、まず、BizTalk XPath Extractor API アプリのインスタンスを作成する必要があります。これは、ロジック アプリを作成するときにインラインで、または Azure Marketplace から BizTalk XPath Extractor API アプリを選択することによって、行うことができます。
-
-	>[AZURE.NOTE] BizTalk Xpath Extractor に関連付けられた構成設定はありません。
+   
+   > [!NOTE]
+   > BizTalk Xpath Extractor に関連付けられた構成設定はありません。
+   > 
+   > 
 2. [新しいロジック アプリを作成します]。作成したロジック アプリの中で [トリガーとアクション] を開くことで Logic Apps デザイナーを開き、フローを構成します。
 3. デザイナーの右側のウィンドウに、フローを構成するために使用できる API Apps が表示されます。"BizTalk XPath Extractor" を検索します。これを選択すると、フローに Xpath Extractor が追加され、そのインスタンスがプロビジョニングされます。
 4. プロビジョニングが終わると、デザイナーに BizTalk XPath Extractor API アプリに関連付けられたアクションが表示されます。
-	![BizTalk XPath Extractor のアクション選択][1]
-
+    ![BizTalk XPath Extractor のアクション選択][1]
 5. [XPath を使用して抽出] を選択します。[XPath を使用して抽出] は、指定された入力 XML で入力 XPath 式を評価します。
-	![BizTalk XPath Extractor の入力][2]
-
-	パラメーター|型|パラメーターの説明
----|---|---
-XPath|string|XMl 内部のクエリ パスです。
-入力 XML|string|入力 XML の内容。
+    ![BizTalk XPath Extractor の入力][2]
+   
+   | パラメーター | 型 | パラメーターの説明 |
+   | --- | --- | --- |
+   | XPath |string |XMl 内部のクエリ パスです。 |
+   | 入力 XML |string |入力 XML の内容。 |
 
 アクションは文字列として出力を返します (結果)。結果には、XML 内部のクエリ パスの値が含まれています。
 

@@ -1,28 +1,26 @@
-<properties
-   pageTitle="テンプレートを使用した Windows VM のカスタム スクリプト | Microsoft Azure"
-   description="カスタム スクリプト拡張機能と Resource Manager テンプレートを使用して Windows VM 構成タスクを自動化する"
-   services="virtual-machines-windows"
-   documentationCenter=""
-   authors="kundanap"
-   manager="timlt"
-   editor=""
-   tags="azure-resource-manager"/>
+---
+title: テンプレートを使用した Windows VM のカスタム スクリプト | Microsoft Docs
+description: カスタム スクリプト拡張機能と Resource Manager テンプレートを使用して Windows VM 構成タスクを自動化する
+services: virtual-machines-windows
+documentationcenter: ''
+author: kundanap
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-   ms.service="virtual-machines-windows"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows"
-   ms.workload="infrastructure-services"
-   ms.date="03/29/2016"
-   ms.author="kundanap"/>
+ms.service: virtual-machines-windows
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure-services
+ms.date: 03/29/2016
+ms.author: kundanap
 
+---
 # Azure Resource Manager テンプレートでの Windows VM のカスタム スクリプト拡張機能の使用
-
-[AZURE.INCLUDE [virtual-machines-common-extensions-customscript](../../includes/virtual-machines-common-extensions-customscript.md)]
+[!INCLUDE [virtual-machines-common-extensions-customscript](../../includes/virtual-machines-common-extensions-customscript.md)]
 
 ## Windows VM のテンプレートの例
-
 テンプレートの Resource セクションで、次のリソースを定義します。
 
        {
@@ -52,7 +50,6 @@
 スクリプトの URL とパラメーターを公開しない場合は、スクリプトの URL を **private** に設定します。スクリプトの URL が **private** に設定されている場合には、保護された設定としてストレージ アカウント名とキーを送信しないとアクセスできません。また、バージョン 1.7 以降のカスタム スクリプト拡張機能では、保護された設定としてスクリプト パラメーターを指定することもできます。
 
 ## 保護された設定を持つ Windows VM テンプレートの例
-
         {
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",

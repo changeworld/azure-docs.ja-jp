@@ -1,65 +1,56 @@
-<properties 
-   pageTitle="Azure モバイル エンゲージメント関連のトラブルシューティング ガイド- APIs" 
-   description="Azure Mobile Engagement 関連のトラブルシューティング ガイド - API" 
-   services="mobile-engagement" 
-   documentationCenter="" 
-   authors="piyushjo" 
-   manager="dwrede" 
-   editor=""/>
+---
+title: Azure モバイル エンゲージメント関連のトラブルシューティング ガイド- APIs
+description: Azure Mobile Engagement 関連のトラブルシューティング ガイド - API
+services: mobile-engagement
+documentationcenter: ''
+author: piyushjo
+manager: dwrede
+editor: ''
 
-<tags
-   ms.service="mobile-engagement"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="mobile-multiple"
-   ms.workload="mobile" 
-   ms.date="08/19/2016"
-   ms.author="piyushjo"/>
+ms.service: mobile-engagement
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: mobile-multiple
+ms.workload: mobile
+ms.date: 08/19/2016
+ms.author: piyushjo
 
+---
 # API の問題のトラブルシューティング ガイド
-
 次に説明するのは、管理者が、API を使用して Azure モバイル エンゲージメントを操作する方法に関して発生する可能性のある問題です。
 
 ## 構文の問題
-
 ### 問題
-- 構文エラーは API を使用して (または予期しない動作によって) 発生します。
+* 構文エラーは API を使用して (または予期しない動作によって) 発生します。
 
 ### 原因
-
-- 構文の問題:
-    - 使用している特定の API の構文を調べて、オプションを使用できることをご確認ください。
-    - API の使用方法に関する一般的な問題は、リーチ API とプッシュ API を混同することです (多くのタスクは、プッシュ API の代わりにリーチ API を使用して実行する必要があります)。
-    - もう 1 つの SDK の統合と API の使用方法に関する一般的な問題は、SDK キーと API キーを混同することです。
-    - API に接続するスクリプトは、少なくとも 10 分ごとにデータを送信する必要があります。これを行わないと、接続はタイムアウトします (特に、データを待機している監視 API では一般的です)。タイムアウトを回避するために、スクリプトは 10 分ごとに XMPP ping を送信してサーバーとのセッションを維持します。
+* 構文の問題:
+  * 使用している特定の API の構文を調べて、オプションを使用できることをご確認ください。
+  * API の使用方法に関する一般的な問題は、リーチ API とプッシュ API を混同することです (多くのタスクは、プッシュ API の代わりにリーチ API を使用して実行する必要があります)。
+  * もう 1 つの SDK の統合と API の使用方法に関する一般的な問題は、SDK キーと API キーを混同することです。
+  * API に接続するスクリプトは、少なくとも 10 分ごとにデータを送信する必要があります。これを行わないと、接続はタイムアウトします (特に、データを待機している監視 API では一般的です)。タイムアウトを回避するために、スクリプトは 10 分ごとに XMPP ping を送信してサーバーとのセッションを維持します。
 
 ### 関連項目
- 
-- [API ドキュメント][Link 4]
-- [XMPP プロトコル情報](http://xmpp.org/extensions/xep-0199.html)
- 
+* [API ドキュメント][Link 4]
+* [XMPP プロトコル情報](http://xmpp.org/extensions/xep-0199.html)
+
 ## Azure モバイル エンゲージメント UI で使用できるアクションと同じアクションを、API を使用して実行できません
-
 ### 問題
-- Azure モバイル エンゲージメント UI から実行するアクションは、関連する Azure モバイル エンゲージメント API では機能しません。
+* Azure モバイル エンゲージメント UI から実行するアクションは、関連する Azure モバイル エンゲージメント API では機能しません。
 
 ### 原因
-
-- Azure モバイル エンゲージメント UI から同じアクションを実行できることを確認すると、Azure モバイル エンゲージメントのこの機能と SDK が正しく統合されていることが分かります。
+* Azure モバイル エンゲージメント UI から同じアクションを実行できることを確認すると、Azure モバイル エンゲージメントのこの機能と SDK が正しく統合されていることが分かります。
 
 ### 関連項目
- 
-- [UI ドキュメント][Link 1]
- 
-## エラー メッセージ
+* [UI ドキュメント][Link 1]
 
+## エラー メッセージ
 ### 問題
-- エラー コードは、実行時またはログ中に表示される API を使用します。
+* エラー コードは、実行時またはログ中に表示される API を使用します。
 
 ### 原因
-
-- 次に、参照と事前のトラブルシューティングのために、一般的な API 状態コード番号の一覧を示します。
-
+* 次に、参照と事前のトラブルシューティングのために、一般的な API 状態コード番号の一覧を示します。
+  
         200        Success.
         200        Account updated: device registered, associated, updated, or removed from the current account.
         200        Returns a list of projects as a JSON object or an authentication token generated and returned in the response’s body.
@@ -81,23 +72,19 @@
         504        The server was not able to handle your request in a reasonable time (if you make multiple calls to an API very quickly, try to make one call at a time and spread the calls out over time).
 
 ### 関連項目
+* [API ドキュメント - 特定の API に関する詳細なエラー情報][Link 4]
 
-- [API ドキュメント - 特定の API に関する詳細なエラー情報][Link 4]
- 
 ## サイレント障害
-
 ### 問題
-- API のアクションは、実行時またはログ中にエラー メッセージが表示されずに失敗します。
+* API のアクションは、実行時またはログ中にエラー メッセージが表示されずに失敗します。
 
 ### 原因
-
-- 正しく統合されていない場合は、Azure モバイル エンゲージメント UI の多くの項目が無効になりますが、API からエラー メッセージが表示されません。実行していることを確認するには、UI から同じ機能をテストしてください。
-- Azure モバイル エンゲージメントと、使用する Azure モバイル エンゲージメントの多くの高度な機能を、事前に別の手順で SDK を使用して個別にアプリと統合する必要があります。
+* 正しく統合されていない場合は、Azure モバイル エンゲージメント UI の多くの項目が無効になりますが、API からエラー メッセージが表示されません。実行していることを確認するには、UI から同じ機能をテストしてください。
+* Azure モバイル エンゲージメントと、使用する Azure モバイル エンゲージメントの多くの高度な機能を、事前に別の手順で SDK を使用して個別にアプリと統合する必要があります。
 
 ### 関連項目
+* [トラブルシューティング ガイド - SDK][Link 25]
 
-- [トラブルシューティング ガイド - SDK][Link 25]
- 
 <!--Link references-->
 [Link 1]: mobile-engagement-user-interface.md
 [Link 2]: mobile-engagement-troubleshooting-guide.md
@@ -128,6 +115,6 @@
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
- 
+
 
 <!---HONumber=AcomDC_0824_2016-->

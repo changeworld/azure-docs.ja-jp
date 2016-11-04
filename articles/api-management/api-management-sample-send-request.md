@@ -1,24 +1,22 @@
-<properties
-	pageTitle="HTTP 要求を生成するための API Management サービスの使用"
-	description="API で外部サービスを呼び出すための API Management での要求と応答ポリシーの使用方法について説明します。"
-	services="api-management"
-	documentationCenter=""
-	authors="darrelmiller"
-	manager=""
-	editor=""/>
+---
+title: HTTP 要求を生成するための API Management サービスの使用
+description: API で外部サービスを呼び出すための API Management での要求と応答ポリシーの使用方法について説明します。
+services: api-management
+documentationcenter: ''
+author: darrelmiller
+manager: ''
+editor: ''
 
-<tags
-	ms.service="api-management"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/09/2016"
-	ms.author="darrmi"/>
+ms.service: api-management
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/09/2016
+ms.author: darrmi
 
-
+---
 # Azure API Management サービスからの外部サービスの使用
-
 Azure API Management サービスに含まれるポリシーでは、着信要求、送信応答、および基本的な構成情報のみを使用した有用なさまざまな処理を実行できます。一方、API Management ポリシーでは外部サービスと通信することもできるため、さらに可能性が広がります。
 
 [Azure Event Hub サービスでログ記録、監視および分析](api-management-log-to-eventhub-sample.md)をする際の通信の方法については、既に学習しています。この記事では、外部の任意の HTTP ベースのサービスと通信するポリシーのデモを行います。これらのポリシーは、リモート イベントをトリガーしたり、元の要求と応答を何らかの方法で操作する情報を取得したりする場合に使用できます。
@@ -130,17 +128,17 @@ API Management の主な機能には、バックエンド リソースの保護�
       </send-request>
 
       <choose>
-  			<!-- Check active property in response -->
-  			<when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">
-  				<!-- Return 401 Unauthorized with http-problem payload -->
-  				<return-response response-variable-name="existing response variable">
-  					<set-status code="401" reason="Unauthorized" />
-  					<set-header name="WWW-Authenticate" exists-action="override">
-  						<value>Bearer error="invalid_token"</value>
-  					</set-header>
-  				</return-response>
-  			</when>
-  		</choose>
+              <!-- Check active property in response -->
+              <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">
+                  <!-- Return 401 Unauthorized with http-problem payload -->
+                  <return-response response-variable-name="existing response variable">
+                      <set-status code="401" reason="Unauthorized" />
+                      <set-header name="WWW-Authenticate" exists-action="override">
+                          <value>Bearer error="invalid_token"</value>
+                      </set-header>
+                  </return-response>
+              </when>
+          </choose>
       <base />
     </inbound>
 
@@ -149,7 +147,7 @@ API Management の主な機能には、バックエンド リソースの保護�
 ## 応答の構成
 `send-request` ポリシーを使用すると、前述の例のようにバックエンド システムにプライマリ要求を拡張できるほか、バックエンド呼び出しに完全に置き換わるものとして使用することができます。このテクニックを使用すると、複数の異なるシステムからまとめた複合リソースを簡単に作成できます。
 
-### ダッシュボードの構築   
+### ダッシュボードの構築
 ダッシュボードを動かすためなど、複数のバックエンド システムに存在する情報を公開したい場合があります。KPI はすべて異なるバックエンドから得られますが、それらに直接アクセスできないようにし、1 つの要求で、すべての情報を取得できるようになると都合がよい場合があります。一部のバックエンド情報は、細分化したり、好ましくない部分は削除したりする必要があるでしょう。 その複合リソースをキャッシュできると、パフォーマンスが悪いメトリックの変化を確認するためにユーザーはよく F5 キーを打つため、バックエンドに対する負荷を軽減できるでしょう。
 
 ### リソースのフェイク
@@ -192,7 +190,6 @@ API Management の主な機能には、バックエンド リソースの保護�
 これらの要求は、不適切にも連続して実行されます。今後のリリースでは、これらのすべての要求が並列実行される `wait` という新しいポリシーが導入されます。
 
 ### 応答
-
 複合応答を構築するには、[return-response](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) ポリシーを使用します。`set-body` 要素では式を使用して、すべてのコンポーネント表現がプロパティとして埋め込まれた、新しい `JObject` を構築できます。
 
     <return-response response-variable-name="existing response variable">
@@ -212,7 +209,7 @@ API Management の主な機能には、バックエンド リソースの保護�
 完全なポリシーは以下のようになります。
 
     <policies>
-    	<inbound>
+        <inbound>
 
       <set-variable name="fromDate" value="@(context.Request.Url.Query["fromDate"].Last())">
       <set-variable name="toDate" value="@(context.Request.Url.Query["toDate"].Last())">
@@ -250,13 +247,13 @@ API Management の主な機能には、バックエンド リソースの保護�
                           ).ToString())
           </set-body>
         </return-response>
-    	</inbound>
-    	<backend>
-    		<base />
-    	</backend>
-    	<outbound>
-    		<base />
-    	</outbound>
+        </inbound>
+        <backend>
+            <base />
+        </backend>
+        <outbound>
+            <base />
+        </outbound>
     </policies>
 
 データは 1 時間経過したものでも、ユーザーに価値ある情報を十分に伝える効果があるものであると理解しているため、プレースホルダー操作の構成で、ダッシュボード リソースを最低 1 時間キャッシュするよう構成できます。
@@ -267,6 +264,8 @@ Azure API Management サービスには、HTTP トラフィックに選択的に
 ## これらのポリシーの概要に関するビデオ
 この記事で説明した [send-one-way-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest)、[send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest)、[return-response](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) の各ポリシーの詳細については、次のビデオをご覧ください。
 
-> [AZURE.VIDEO send-request-and-return-response-policies]
+> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Send-Request-and-Return-Response-Policies/player]
+> 
+> 
 
 <!---HONumber=AcomDC_0810_2016-->

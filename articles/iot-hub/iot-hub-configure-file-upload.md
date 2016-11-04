@@ -1,26 +1,23 @@
-<properties
-     pageTitle="Use the Azure portal to configure file upload | Microsoft Azure"
-     description="An overview of how to configure file upload using the Azure portal"
-     services="iot-hub"
-     documentationCenter=""
-     authors="dominicbetts"
-     manager="timlt"
-     editor=""/>
+---
+title: Use the Azure portal to configure file upload | Microsoft Docs
+description: An overview of how to configure file upload using the Azure portal
+services: iot-hub
+documentationcenter: ''
+author: dominicbetts
+manager: timlt
+editor: ''
 
-<tags
-     ms.service="iot-hub"
-     ms.devlang="na"
-     ms.topic="article"
-     ms.tgt_pltfrm="na"
-     ms.workload="na"
-     ms.date="09/30/2016"
-     ms.author="dobett"/>
+ms.service: iot-hub
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/30/2016
+ms.author: dobett
 
-
+---
 # <a name="configure-file-uploads-using-the-azure-portal"></a>Configure file uploads using the Azure portal
-
 ## <a name="file-upload"></a>File upload
-
 To use the [file upload functionality in IoT Hub][lnk-upload], you must first associate an Azure Storage account with your hub. Select the **File upload** settings to display a list of file upload properties for the IoT hub that is being modified.
 
 ![][13]
@@ -40,25 +37,23 @@ To use the [file upload functionality in IoT Hub][lnk-upload], you must first as
 ![][15]
 
 ## <a name="next-steps"></a>Next steps
-
 For more information about the file upload capabilities of IoT Hub, see [Upload files from a device][lnk-upload] in the developer guide.
 
 Follow these links to learn more about managing Azure IoT Hub:
 
-- [Bulk manage IoT devices][lnk-bulk]
-- [Usage metrics][lnk-metrics]
-- [Operations monitoring][lnk-monitor]
+* [Bulk manage IoT devices][lnk-bulk]
+* [Usage metrics][lnk-metrics]
+* [Operations monitoring][lnk-monitor]
 
 To further explore the capabilities of IoT Hub, see:
 
-- [Developer guide][lnk-devguide]
-- [Simulating a device with the Gateway SDK][lnk-gateway]
-- [Secure your IoT solution from the ground up][lnk-securing]
+* [Developer guide][lnk-devguide]
+* [Simulating a device with the Gateway SDK][lnk-gateway]
+* [Secure your IoT solution from the ground up][lnk-securing]
 
-
-  [13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png
-  [14]: ./media/iot-hub-configure-file-upload/file-upload-container-selection.png
-  [15]: ./media/iot-hub-configure-file-upload/file-upload-selected-container.png
+[13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png
+[14]: ./media/iot-hub-configure-file-upload/file-upload-container-selection.png
+[15]: ./media/iot-hub-configure-file-upload/file-upload-selected-container.png
 
 [lnk-upload]: iot-hub-devguide-file-upload.md
 

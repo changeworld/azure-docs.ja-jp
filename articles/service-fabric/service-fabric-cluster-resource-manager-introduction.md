@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Service Fabric クラスター リソース マネージャーの概要 | Microsoft Azure"
-   description="Service Fabric クラスター リソース マネージャーについての概要。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Service Fabric クラスター リソース マネージャーの概要 | Microsoft Docs
+description: Service Fabric クラスター リソース マネージャーについての概要。
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Service Fabric クラスター リソース マネージャーの概要
 従来、IT システムまたは一連のサービスの管理では、いくつかの物理または仮想マシンをそれらの特定のサービスまたはシステム専用に使用しました。多くの主要なサービスは "Web" 層と "データ" 層または "ストレージ" 層に分かれ、普通はそれ以外にキャッシュなどのいくつかの特殊なコンポーネントがあります。他には要求が出入りするメッセージング層を持つアプリケーションの種類があり、メッセージングの一部として必要な分析や変換のための処理層に接続されています。ワークロードの各種類には 1 個の専用マシンが使用されます。データベースには 2 個の専用マシンが使用され、Web サーバーには数個が使用されます。特定の種類のワークロードがそのワークロード用のマシンの能力を超えた場合は、そのワークロード用に構成されたマシンの数を増やすか、または何台かを大型のマシンに置き換えます。簡単です。マシンで障害が発生した場合、マシンが復元されるまで、アプリケーションのその部分の処理能力が低下します。まだ (楽しくはないにしても) 十分に簡単です。
 
@@ -49,11 +49,11 @@ Service Fabric クラスターでのオーケストレーターのジョブは�
 これらの方法の中には興味深いものもありますが、Service Fabric クラスター リソース マネージャーはネットワーク ロード バランサーやキャッシュとはまったく異なるものです。ネットワーク ロード バランサーがトラフィックをサービスが実行されている場所に移動することによってフロントエンドのバランスをとるのに対し、Service Fabric クラスター リソース マネージャーはまったく異なる方法を使用します。基本的には、Service Fabric は (トラフィックや負荷がそれに続くと想定して) *サービス*をそれが最も意味のある場所に移動します。たとえば、割り当てられているサービスがすぐにはあまりやることがない、または削除されたか別の場所に移動されたために現在コールド状態になっているノードなどです。または、別の例として、クラスター リソース マネージャーが、アップグレードされようとしているマシンや、実行されているサービスによる使用量の急増により過負荷状態になっているマシンからサービスを離す場合もあります。クラスター リソース マネージャーはサービスを移動させる役割を担う (ネットワーク トラフィックをサービスが既に実行している場所に提供しない) ため、ネットワーク ロード バランサーでの確認対象となるものと比較して大幅に異なる機能セットを含み、クラスター内のハードウェア リソースを適切に使用できるようにするまったく異なる方法を採用します。
 
 ## 次のステップ
-- クラスター リソース マネージャーのアーキテクチャと情報フローについては、[この記事](service-fabric-cluster-resource-manager-architecture.md)を参照してください。
-- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
-- サービスの構成に利用できるその他のオプションの詳細については、[サービスの構成の詳細に関する記事](service-fabric-cluster-resource-manager-configure-services.md)にある、その他のクラスター リソース マネージャーのトピックを参照してください。
-- メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
-- クラスター リソース マネージャーは Service Fabric の管理機能と連動します。その統合の詳細については、[この記事](service-fabric-cluster-resource-manager-management-integration.md)を参照してください。
-- クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、[負荷分散](service-fabric-cluster-resource-manager-balancing.md)に関する記事を参照してください。
+* クラスター リソース マネージャーのアーキテクチャと情報フローについては、[この記事](service-fabric-cluster-resource-manager-architecture.md)を参照してください。
+* クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
+* サービスの構成に利用できるその他のオプションの詳細については、[サービスの構成の詳細に関する記事](service-fabric-cluster-resource-manager-configure-services.md)にある、その他のクラスター リソース マネージャーのトピックを参照してください。
+* メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
+* クラスター リソース マネージャーは Service Fabric の管理機能と連動します。その統合の詳細については、[この記事](service-fabric-cluster-resource-manager-management-integration.md)を参照してください。
+* クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、[負荷分散](service-fabric-cluster-resource-manager-balancing.md)に関する記事を参照してください。
 
 <!---HONumber=AcomDC_0824_2016-->

@@ -1,21 +1,21 @@
-<properties
-   pageTitle="SQL Data Warehouse | Microsoft Azure でラベルを使用して、クエリをインストルメント化"
-   description="ソリューション開発のための Azure SQL Data Warehouse でのラベルを使用してクエリのインストルメント化に関するヒント。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: SQL Data Warehouse | Microsoft Docs
+description: ソリューション開発のための Azure SQL Data Warehouse でのラベルを使用してクエリのインストルメント化に関するヒント。
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/14/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/14/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # SQL Data Warehouse で、ラベルを使用してクエリをインストルメント化
 SQL Data Warehouse は、クエリ ラベルと呼ばれる概念をサポートします。難解な領域に入る前に、1 つの例を説明しましょう。
 
@@ -39,11 +39,13 @@ WHERE   r.[label] = 'My Query Label'
 ;
 ```
 
-> [AZURE.NOTE] クエリをする際に、語句のラベルに角かっこまたは二重引用符で囲むことが必要です。ラベルは予約語ですが、区切られていない場合、エラーが発生します。
-
+> [!NOTE]
+> クエリをする際に、語句のラベルに角かっこまたは二重引用符で囲むことが必要です。ラベルは予約語ですが、区切られていない場合、エラーが発生します。
+> 
+> 
 
 ## 次のステップ
-開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
+開発のその他のヒントについては、[開発の概要][開発の概要]に関するページをご覧ください。
 
 <!--Image references-->
 

@@ -1,33 +1,29 @@
-<properties 
-	pageTitle="Application Insights を使用した Java トレース ログの探索" 
-	description="Application Insights を使用して Log4J または Logback のトレースを検索します" 
-	services="application-insights" 
-    documentationCenter="java"
-	authors="alancameronwills" 
-	manager="douge"/>
+---
+title: Application Insights を使用した Java トレース ログの探索
+description: Application Insights を使用して Log4J または Logback のトレースを検索します
+services: application-insights
+documentationcenter: java
+author: alancameronwills
+manager: douge
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/12/2016" 
-	ms.author="awills"/>
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 07/12/2016
+ms.author: awills
 
+---
 # Application Insights を使用した Java トレース ログの探索
-
 トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
 
 [Application Insights SDK for Java][java] をインストールしていない場合はインストールします。
 
-
 ## プロジェクトへのログ ライブラリの追加
-
 *プロジェクトに適した方法を選択してください。*
 
 #### Maven を使用している場合:
-
 プロジェクトが既に Maven を使用してビルドする設定になっている場合は、pom.xml ファイルに次のいずれかのコード スニペットをマージします。
 
 次に、バイナリがダウンロードされるように、プロジェクトの依存関係を更新します。
@@ -63,7 +59,6 @@
     </dependencies>
 
 #### Gradle を使用している場合:
-
 プロジェクトが既に Gradle を使用してビルドする設定になっている場合は、次のいずれかの行を build.gradle ファイルの `dependencies` グループに追加します。
 
 次に、バイナリがダウンロードされるように、プロジェクトの依存関係を更新します。
@@ -81,20 +76,15 @@
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '1.0.+'
 
 #### それ以外の場合:
-
 適切なアペンダーをダウンロードして展開し、適切なライブラリをプロジェクトに追加します。
 
-
-ロガー | ダウンロード | ライブラリ
-----|----|----
-Logback|[Logback アペンダーを含む SDK](https://aka.ms/xt62a4)|applicationinsights-logging-logback
-Log4J v2.0|[Log4J v2 アペンダーを含む SDK](https://aka.ms/qypznq)|applicationinsights-logging-log4j2 
-Log4j v1.2|[Log4J v1.2 アペンダーを含む SDK](https://aka.ms/ky9cbo)|applicationinsights-logging-log4j1\_2 
-
-
+| ロガー | ダウンロード | ライブラリ |
+| --- | --- | --- |
+| Logback |[Logback アペンダーを含む SDK](https://aka.ms/xt62a4) |applicationinsights-logging-logback |
+| Log4J v2.0 |[Log4J v2 アペンダーを含む SDK](https://aka.ms/qypznq) |applicationinsights-logging-log4j2 |
+| Log4j v1.2 |[Log4J v1.2 アペンダーを含む SDK](https://aka.ms/ky9cbo) |applicationinsights-logging-log4j1\_2 |
 
 ## ログ フレームワークへのアペンダーの追加
-
 トレースの取得を開始するには、適切なコード スニペットを Log4J または Logback の構成ファイルに追加します。
 
 *Logback*
@@ -108,7 +98,6 @@ Log4j v1.2|[Log4J v1.2 アペンダーを含む SDK](https://aka.ms/ky9cbo)|appl
 
 
 *Log4J v2.0*
-
 
     <Configuration packages="com.microsoft.applicationinsights.Log4j">
       <Appenders>
@@ -135,13 +124,11 @@ Log4j v1.2|[Log4J v1.2 アペンダーを含む SDK](https://aka.ms/ky9cbo)|appl
 Application Insights のアペンダーは、上記のコード サンプルに示されているように、構成済みの任意のロガーによって参照でき、必ずしもルート ロガーを使用する必要はありません。
 
 ## Application Insights ポータルでのトレースの探索
-
 これで、Application Insights にトレースを送信するようにプロジェクトが構成されました。これらのトレースは、Application Insights ポータルの [[検索]][diagnostic] ブレードで表示および検索できます。
 
 ![Application Insights ポータルで [検索] を開きます](./media/app-insights-java-trace-logs/10-diagnostics.png)
 
 ## 次のステップ
-
 [診断検索][diagnostic]
 
 <!--Link references-->
@@ -149,6 +136,6 @@ Application Insights のアペンダーは、上記のコード サンプルに�
 [diagnostic]: app-insights-diagnostic-search.md
 [java]: app-insights-java-get-started.md
 
- 
+
 
 <!---HONumber=AcomDC_0817_2016-->

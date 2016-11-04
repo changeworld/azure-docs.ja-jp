@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="音声と SMS に Twilio を使用する方法 (Java) | Microsoft Azure" 
-	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは Java で記述されています。" 
-	services="" 
-	documentationCenter="java" 
-	authors="devinrader" 
-	manager="twilio" 
-	editor="mollybos"/>
+---
+title: 音声と SMS に Twilio を使用する方法 (Java) | Microsoft Docs
+description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは Java で記述されています。
+services: ''
+documentationcenter: java
+author: devinrader
+manager: twilio
+editor: mollybos
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="11/25/2014" 
-	ms.author="microsofthelp@twilio.com"/>
+ms.service: multiple
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: Java
+ms.topic: article
+ms.date: 11/25/2014
+ms.author: microsofthelp@twilio.com
 
+---
 # Java で音声および SMS 機能に Twilio を使用する方法
-
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「[次のステップ](#NextSteps)」を参照してください。
 
 ## <a id="WhatIs"></a>Twilio とは
@@ -144,14 +143,14 @@ Java Server Page (JSP) ソース ファイルの場合:
 
     // Send an SMS message.
     MessageFactory messageFactory = account.getMessageFactory();
-    
+
     List<NameValuePair> params = new ArrayList<NameValuePair>();
     params.add(new BasicNameValuePair("To", "+14159352345")); // Replace with a valid phone number for your account.
     params.add(new BasicNameValuePair("From", "+14158141829")); // Replace with a valid phone number for your account.
     params.add(new BasicNameValuePair("Body", "Where's Wallace?"));
-    
+
     Message sms = messageFactory.create(params);
-        
+
 **SmsFactory.create** メソッドに渡されるパラメーターの詳細については、[http://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms] を参照してください。
 
 ## <a id="howto_provide_twiml_responses"></a>方法: 独自の Web サイトから TwiML 応答を返す
@@ -167,7 +166,6 @@ Twilio から提供される URL を使用する代わりに、HTTP 応答を返
     </Response>
 
 次の JSP ページでは、複数の言葉と間合いのポーズを含む TwiML 応答が返され、Twilio API バージョンと Azure ロール名に関する情報が読み上げられます。
-
 
     <%@ page contentType="text/xml" %>
     <Response> 

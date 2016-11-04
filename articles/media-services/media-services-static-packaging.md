@@ -1,57 +1,59 @@
-<properties 
-    pageTitle="Azure Media Packager を使用して静的パッケージ タスクを実行する | Microsoft Azure" 
-    description="このトピックでは、Azure Media Packager で実行されるさまざまなタスクについて説明します。" 
-    services="media-services" 
-    documentationCenter="" 
-    authors="Juliako" 
-    manager="erikre" 
-    editor=""/>
+---
+title: Azure Media Packager を使用して静的パッケージ タスクを実行する | Microsoft Docs
+description: このトピックでは、Azure Media Packager で実行されるさまざまなタスクについて説明します。
+services: media-services
+documentationcenter: ''
+author: Juliako
+manager: erikre
+editor: ''
 
-<tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="dotnet" 
-    ms.topic="article" 
-    ms.date="09/26/2016"    
-    ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: juliako
 
-
-
+---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media Packager を使用して静的パッケージ タスクを実行する
-
->[AZURE.NOTE]Microsoft Azure Media Packager と Microsoft Azure Media Encryptor の有効期限が 2017 年 3 月 1 日まで延長されました。 有効期限までに、これらのプロセッサの機能が Media Encoder Standard (MES) に追加されます。 お客様には、ジョブを MES に送信するワークフローを移行する方法について手順を説明します。 また、形式の変換機能と暗号化機能は、動的パッケージと動的暗号化で引き続き使用できます。
+> [!NOTE]
+> Microsoft Azure Media Packager と Microsoft Azure Media Encryptor の有効期限が 2017 年 3 月 1 日まで延長されました。 有効期限までに、これらのプロセッサの機能が Media Encoder Standard (MES) に追加されます。 お客様には、ジョブを MES に送信するワークフローを移行する方法について手順を説明します。 また、形式の変換機能と暗号化機能は、動的パッケージと動的暗号化で引き続き使用できます。
+> 
+> 
 
 ## <a name="overview"></a>概要
-
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。 デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客のデバイスでうまく表示したりできない可能性があります。 エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。 エンコードしたビデオは、さまざまなファイル コンテナーに配置できます。 エンコードしたビデオをコンテナーに配置するプロセスは、パッケージと呼ばれます。 たとえば、MP4 ファイルがある場合、Azure Media Packager を使用して Smooth Streaming または HLS コンテンツに変換できます。 
 
 Media Services は、動的パッケージと静的パッケージをサポートしています。 静的パッケージを使用する場合は、顧客に必要な各形式でコンテンツのコピーを作成する必要があります。 動的パッケージを使用する場合、必要な操作は、一連のアダプティブ ビットレート MP4 または Smooth Streaming ファイルを含むアセットの作成のみです。 そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
->[AZURE.NOTE] [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用することが推奨されます。
+> [!NOTE]
+> [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用することが推奨されます。
+> 
+> 
 
 ただし、静的パッケージが必要なシナリオもあります。 
 
-- 外部エンコーダー (サード パーティのエンコーダーなど) を使用してエンコードされたアダプティブ ビットレート MP4 を検証する
+* 外部エンコーダー (サード パーティのエンコーダーなど) を使用してエンコードされたアダプティブ ビットレート MP4 を検証する
 
 静的パッケージを使用して、次のタスクを実行することもできます。 ただし、動的暗号化を使用することが推奨されます。
 
-- 静的暗号化を使用して PlayReady で Smooth および MPEG DASH を保護する
-- 静的暗号化を使用して AES-128 で HLSv3 を保護する
-- 静的暗号化を使用して PlayReady で HLSv3 を保護する
-
+* 静的暗号化を使用して PlayReady で Smooth および MPEG DASH を保護する
+* 静的暗号化を使用して AES-128 で HLSv3 を保護する
+* 静的暗号化を使用して PlayReady で HLSv3 を保護する
 
 ## <a name="validating-adaptive-bitrate-mp4s-encoded-with-external-encoders"></a>外部エンコーダーを使用してエンコードされたアダプティブ ビットレート MP4 を検証する
-
 Media Services のエンコーダーでエンコードされていない一連のアダプティブ ビットレート (マルチビットレート) MP4 ファイルを使用する場合は、ファイルを検証してから次の処理に進む必要があります。 Media Services Packager では、MP4 ファイルのセットを含む資産が検証し、資産を Smooth Streaming  または HLS にパッケージ化できるかどうかを確認することができます。 検証タスクに失敗すると、タスクを処理しているジョブはエラーで完了します。 検証タスクのプリセットが定義された XML については、「 [Azure Media Packager のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973635.aspx) 」を参照してください。
 
->[AZURE.NOTE]実行時の問題を回避するには、Media Encoder Standard を使用して生成するか、Media Services Packager を使用してコンテンツを検証します。 オンデマンド ストリーミング サーバーで実行時にソース ファイルを解析できない場合、HTTP 1.1 エラー “415 Unsupported Media Type” を受け取ります。 サーバーで繰り返しソース ファイルを解析できない場合、オンデマンド ストリーミング サーバーのパフォーマンスに影響があり、他の要求の処理に使用できる帯域幅が減る可能性があります。 Azure Media Services には、オンデマンド ストリーミング サービスに関するサービス レベル アグリーメント (SLA) が用意されています。ただし、サーバーが上記のように誤用されている場合、この SLA は適用されません。
+> [!NOTE]
+> 実行時の問題を回避するには、Media Encoder Standard を使用して生成するか、Media Services Packager を使用してコンテンツを検証します。 オンデマンド ストリーミング サーバーで実行時にソース ファイルを解析できない場合、HTTP 1.1 エラー “415 Unsupported Media Type” を受け取ります。 サーバーで繰り返しソース ファイルを解析できない場合、オンデマンド ストリーミング サーバーのパフォーマンスに影響があり、他の要求の処理に使用できる帯域幅が減る可能性があります。 Azure Media Services には、オンデマンド ストリーミング サービスに関するサービス レベル アグリーメント (SLA) が用意されています。ただし、サーバーが上記のように誤用されている場合、この SLA は適用されません。
+> 
+> 
 
 このセクションでは、検証タスクの処理方法について説明します。 また、JobStatus.Error で完了したジョブの状態とエラー メッセージを確認する方法についても説明します。
 
 Media Services Packager を使用して MP4 ファイルを検証するには、独自のマニフェスト (.ism) ファイルを作成し、ソース ファイルと共に Media Services アカウントにアップロードする必要があります。 Media Encoder Standard で生成された .ism ファイルのサンプルを次に示します。 ファイル名の大文字と小文字は区別されます。 また、.ism ファイルのテキストは UTF-8 エンコード形式にする必要があります。
 
-    
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
     <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
       <head>
@@ -74,7 +76,7 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
 アダプティブ ビットレート MP4 を設定すると、動的パッケージを利用できます。 Dynamic Packaging を使用すると、さらにパッケージ化せずに、指定したプロトコルでストリームを配信できます。 詳細については、「 [動的パッケージ](media-services-dynamic-packaging-overview.md)」を参照してください。
 
 次のコード サンプルでは、Azure Media Services .NET SDK Extensions を使用します。  入力 MP4 ファイルと .ism ファイルがあるフォルダーを指すようにコードを更新します。 これは、MediaPackager_ValidateTask.xml ファイルがある場所でもあります。 この XML ファイルは、「 [Azure Media Packager のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973635.aspx) 」トピックで定義されています。
-    
+
     using Microsoft.WindowsAzure.MediaServices.Client;
     using System;
     using System.Collections.Generic;
@@ -85,31 +87,31 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
     using System.Threading;
     using System.Threading.Tasks;
     using System.Xml.Linq;
-    
+
     namespace MediaServicesStaticPackaging
     {
         class Program
         {
             private static readonly string _mediaFiles =
                 Path.GetFullPath(@"../..\Media");
-    
+
             // The MultibitrateMP4Files folder should also
             // contain the .ism manifest file.
             private static readonly string _multibitrateMP4s =
                 Path.Combine(_mediaFiles, @"MultibitrateMP4Files");
-    
+
             // XML Configruation files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations";
-    
+
             private static MediaServicesCredentials _cachedCredentials = null;
             private static CloudMediaContext _context = null;
-    
+
             // Media Services account information.
             private static readonly string _mediaServicesAccountName =
                 ConfigurationManager.AppSettings["MediaServicesAccountName"];
             private static readonly string _mediaServicesAccountKey =
                 ConfigurationManager.AppSettings["MediaServicesAccountKey"];
-    
+
             static void Main(string[] args)
             {
                 // Create and cache the Media Services credentials in a static class variable.
@@ -118,7 +120,7 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
                                 _mediaServicesAccountKey);
                 // Use the cached credentials to create CloudMediaContext.
                 _context = new CloudMediaContext(_cachedCredentials);
-    
+
                 // Ingest a set of multibitrate MP4s.
                 //
                 // Use the SDK extension method to create a new asset by 
@@ -130,18 +132,18 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
                     {
                         Console.WriteLine("Uploading '{0}' - Progress: {1:0.##}%", af.Name, p.Progress);
                     });
-    
+
                 // Use Azure Media Packager to validate the files.
                 IAsset validatedMP4s =
                     ValidateMultibitrateMP4s(multibitrateMP4sAsset);
-    
+
                 // Publish the asset.
                 _context.Locators.Create(
                     LocatorType.OnDemandOrigin,
                     validatedMP4s,
                     AccessPermissions.Read,
                     TimeSpan.FromDays(30));
-    
+
                                      // Get the streaming URLs.
                 Console.WriteLine("Smooth Streaming URL:");
                 Console.WriteLine(validatedMP4s.GetSmoothStreamingUri().ToString());
@@ -150,40 +152,40 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
                 Console.WriteLine("HLS URL:");
                 Console.WriteLine(validatedMP4s.GetHlsUri().ToString());
             }
-    
+
             public static IAsset ValidateMultibitrateMP4s(IAsset multibitrateMP4sAsset)
             {
                 // Set .ism as a primary file 
                 // in a multibitrate MP4 set.
                 SetISMFileAsPrimary(multibitrateMP4sAsset);
-    
+
                 // Create a new job.
                 IJob job = _context.Jobs.Create("MP4 validation and converstion to Smooth Stream job.");
-    
+
                 // Read the task configuration data into a string. 
                 string configMp4Validation = File.ReadAllText(Path.Combine(
                         _configurationXMLFiles,
                         "MediaPackager_ValidateTask.xml"));
-    
+
                 // Get the SDK extension method to  get a reference to the Azure Media Packager.
                 IMediaProcessor processor = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.WindowsAzureMediaPackager);
-    
+
                 // Create a task with the conversion details, using the configuration data. 
                 ITask task = job.Tasks.AddNew("Mp4 Validation Task",
                     processor,
                     configMp4Validation,
                     TaskOptions.None);
-    
+
                 // Specify the input asset to be validated.
                 task.InputAssets.Add(multibitrateMP4sAsset);
-    
+
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted). 
                 task.OutputAssets.AddNew("Validated output asset",
                         AssetCreationOptions.None);
-    
+
                 // Submit the job and wait until it is completed.
                 job.Submit();
                 job = job.StartExecutionProgressTask(
@@ -193,7 +195,7 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
                         Console.WriteLine("Job progress: {0:0.##}%", j.GetOverallProgress());
                     },
                     CancellationToken.None).Result;
-              
+
                 // If the validation task fails and job completes with JobState.Error,
                 // display the error message and throw an exception.
                 if (job.State == JobState.Error)
@@ -201,7 +203,7 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
                     Console.WriteLine("  Job ID: " + job.Id);
                     Console.WriteLine("  Name: " + job.Name);
                     Console.WriteLine("  State: " + job.State);
-    
+
                     foreach (var jobTask in job.Tasks)
                     {
                         Console.WriteLine("  Task Id: " + jobTask.Id);
@@ -213,7 +215,7 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
                         {
                             foreach (var errordetail in jobTask.ErrorDetails)
                             {
-    
+
                                 Console.WriteLine("  Error Message:" + errordetail.Message);
                                 Console.WriteLine("  Error Code:" + errordetail.Code);
                             }
@@ -221,16 +223,16 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
                     }
                     throw new Exception("The specified multi-bitrate MP4 set is not valid.");
                 }
-    
-    
+
+
                 return job.OutputMediaAssets[0];
             }
-    
+
             static void SetISMFileAsPrimary(IAsset asset)
             {
                 var ismAssetFiles = asset.AssetFiles.ToList().
                     Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).ToArray();
-    
+
                 // The following code assigns the first .ism file as the primary file in the asset.
                 // An asset should have one .ism file.  
                 ismAssetFiles.First().IsPrimary = true;
@@ -240,15 +242,16 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
     }
 
 ## <a name="using-static-encryption-to-protect-your-smooth-and-mpeg-dash-with-playready"></a>静的暗号化を使用して PlayReady で Smooth および MPEG DASH を保護する
-
 PlayReady でコンテンツを保護する場合、 [動的暗号化](media-services-protect-with-drm.md) (推奨されるオプション) または 静的暗号化 (このセクションで説明します) を選択できます。
 
 このセクションの例では、中間ファイル (ここでは MP4) をアダプティブ ビットレート MP4 ファイルにエンコードします。 次に、MP4 を Smooth Streaming にパッケージ化してから、PlayReady で Smooth Streaming を暗号化します。 その結果、Smooth Streaming または MPEG DASH をストリーミングできるようになります。
 
 Media Services では、Microsoft PlayReady ライセンスの配信サービスが提供されるようになりました。 この記事の例で、Media Services PlayReady ライセンス配信サービスを構成する方法について説明します (以下のコードに定義されている ConfigureLicenseDeliveryService メソッドを参照してください)。 Media Services PlayReady ライセンス配信サービスの詳細については、「 [PlayReady 動的暗号化とライセンス提供サービスの使用](media-services-protect-with-drm.md)」を参照してください。
 
->[AZURE.NOTE]PlayReady で暗号化された MPEG DASH を配信するには、useSencBox と adjustSubSamples の各プロパティ (「 [Azure Media Encryptor 用のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973610.aspx) 」トピックを参照) を true に設定して、CENC オプションを使用するようにします。  
-
+> [!NOTE]
+> PlayReady で暗号化された MPEG DASH を配信するには、useSencBox と adjustSubSamples の各プロパティ (「 [Azure Media Encryptor 用のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973610.aspx) 」トピックを参照) を true に設定して、CENC オプションを使用するようにします。  
+> 
+> 
 
 入力 MP4 ファイルがあるフォルダーを指すように、次のコードを更新します。
 
@@ -268,31 +271,31 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
     using System.Xml.Linq;
     using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
     using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
-    
+
     namespace PlayReadyStaticEncryptAndKeyDeliverySvc
     {
         class Program
         {
-           
+
             private static readonly string _mediaFiles =
                 Path.GetFullPath(@"../..\Media");
-    
+
             private static readonly string _singleMP4File =
                 Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
-    
+
             // XML Configruation files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
-    
-    
+
+
             private static MediaServicesCredentials _cachedCredentials = null;
             private static CloudMediaContext _context = null;
-    
+
             // Media Services account information.
             private static readonly string _mediaServicesAccountName =
                 ConfigurationManager.AppSettings["MediaServiceAccountName"];
             private static readonly string _mediaServicesAccountKey =
                 ConfigurationManager.AppSettings["MediaServiceAccountKey"];
-    
+
             static void Main(string[] args)
             {
                 // Create and cache the Media Services credentials in a static class variable.
@@ -301,16 +304,16 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                                 _mediaServicesAccountKey);
                 // Use the cached credentials to create CloudMediaContext.
                 _context = new CloudMediaContext(_cachedCredentials);
-    
+
                 // Encoding and encrypting assets //////////////////////
                 // Load a single MP4 file.
                 IAsset asset = IngestSingleMP4File(_singleMP4File, AssetCreationOptions.None);
-    
+
                 // Encode an MP4 file to a set of multibitrate MP4s.
                 // Then, package a set of MP4s to clear Smooth Streaming.
                 IAsset clearSmoothStreamAsset =
                     ConvertMP4ToMultibitrateMP4sToSmoothStreaming(asset);
-    
+
                 // Create a common encryption content key that is used 
                 // a) to set the key values in the MediaEncryptor_PlayReadyProtection.xml file
                 //    that is used for encryption.
@@ -318,41 +321,41 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 //
                 Guid keyId;
                 byte[] contentKey;
-    
+
                 IContentKey key = CreateCommonEncryptionKey(out keyId, out contentKey);
-    
+
                 // The content key authorization policy must be configured by you 
                 // and met by the client in order for the PlayReady license
                 // to be delivered to the client. 
                 // In this example the Media Services PlayReady license delivery service is used.
                 ConfigureLicenseDeliveryService(key);
-    
+
                 // Get the Media Services PlayReady license delivery URL.
                 // This URL will be assigned to the licenseAcquisitionUrl property 
                 // of the MediaEncryptor_PlayReadyProtection.xml file.
                 Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
-    
+
                 // Update the MediaEncryptor_PlayReadyProtection.xml file with the key and URL info.
                 UpdatePlayReadyConfigurationXMLFile(keyId, contentKey, acquisitionUrl);
-    
-    
+
+
                 // Encrypt your clear Smooth Streaming to Smooth Streaming with PlayReady.
                 IAsset outputAsset = CreateSmoothStreamEncryptedWithPlayReady(clearSmoothStreamAsset);
-    
-    
+
+
                 // You can use the http://smf.cloudapp.net/healthmonitor player 
                 // to test the smoothStreamURL URL.
                 string smoothStreamURL = outputAsset.GetSmoothStreamingUri().ToString();
                 Console.WriteLine("Smooth Streaming URL:");
                 Console.WriteLine(smoothStreamURL);
-    
+
                 // You can use the http://dashif.org/reference/players/javascript/ player 
                 // to test the dashURL URL.
                 string dashURL = outputAsset.GetMpegDashUri().ToString();
                 Console.WriteLine("MPEG DASH URL:");
                 Console.WriteLine(dashURL);
             }
-    
+
             /// <summary>
             /// Creates a job with 2 tasks: 
             /// 1 task - encodes a single MP4 to multibitrate MP4s,
@@ -363,12 +366,12 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             {
                 // Create a new job.
                 IJob job = _context.Jobs.Create("Convert MP4 to Smooth Streaming.");
-    
+
                 // Add task 1 - Encode single MP4 into multibitrate MP4s.
                 IAsset MP4sAsset = EncodeMP4IntoMultibitrateMP4sTask(job, asset);
                 // Add task 2 - Package a multibitrate MP4 set to Clear Smooth Stream.
                 IAsset packagedAsset = PackageMP4ToSmoothStreamingTask(job, MP4sAsset);
-    
+
                 // Submit the job and wait until it is completed.
                 job.Submit();
                 job = job.StartExecutionProgressTask(
@@ -378,11 +381,11 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                         Console.WriteLine("Job progress: {0:0.##}%", j.GetOverallProgress());
                     },
                     CancellationToken.None).Result;
-    
+
                 // Get the output asset that contains the Smooth Streaming asset.
                 return job.OutputMediaAssets[1];
             }
-    
+
             /// <summary>
             /// Encrypts Smooth Stream with PlayReady.
             /// Then creates a Smooth Streaming Url.
@@ -393,11 +396,11 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             {
                 // Create a job.
                 IJob job = _context.Jobs.Create("Encrypt to PlayReady Smooth Streaming.");
-    
+
                 // Add task 1 - Encrypt Smooth Streaming with PlayReady 
                 IAsset encryptedSmoothAsset =
                     EncryptSmoothStreamWithPlayReadyTask(job, clearSmoothStreamAsset);
-    
+
                 // Submit the job and wait until it is completed.
                 job.Submit();
                 job = job.StartExecutionProgressTask(
@@ -407,17 +410,17 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                         Console.WriteLine("Job progress: {0:0.##}%", j.GetOverallProgress());
                     },
                     CancellationToken.None).Result;
-    
+
                 // The OutputMediaAssets[0] contains the desired asset.
                 _context.Locators.Create(
                     LocatorType.OnDemandOrigin,
                     job.OutputMediaAssets[0],
                     AccessPermissions.Read,
                     TimeSpan.FromDays(30));
-    
+
                 return job.OutputMediaAssets[0];
             }
-    
+
             /// <summary>
             /// Create a common encryption content key that is used 
             /// to set the key values in the MediaEncryptor_PlayReadyProtection.xml file
@@ -430,16 +433,16 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             {
                 keyId = Guid.NewGuid();
                 contentKey = GetRandomBuffer(16);
-    
+
                 IContentKey key = _context.ContentKeys.Create(
                                         keyId,
                                         contentKey,
                                         "ContentKey",
                                         ContentKeyType.CommonEncryption);
-    
+
                 return key;
             }
-    
+
             /// <summary>
             /// Update your configuration .xml file dynamically.
             /// </summary>
@@ -447,12 +450,12 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             {
                 string xmlFileName = Path.Combine(_configurationXMLFiles,
                                             @"MediaEncryptor_PlayReadyProtection.xml");
-    
+
                 XNamespace xmlns = "http://schemas.microsoft.com/iis/media/v4/TM/TaskDefinition#";
-    
+
                 // Prepare the encryption task template
                 XDocument doc = XDocument.Load(xmlFileName);
-    
+
                 var licenseAcquisitionUrlEl = doc
                         .Descendants(xmlns + "property")
                         .Where(p => p.Attribute("name").Value == "licenseAcquisitionUrl")
@@ -465,20 +468,20 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                         .Descendants(xmlns + "property")
                         .Where(p => p.Attribute("name").Value == "keyId")
                         .FirstOrDefault();
-    
+
                 // Update the "value" property.
                 if (licenseAcquisitionUrlEl != null)
                     licenseAcquisitionUrlEl.Attribute("value").SetValue(licenseAcquisitionUrl.ToString());
-    
+
                 if (contentKeyEl != null)
                     contentKeyEl.Attribute("value").SetValue(Convert.ToBase64String(keyValue));
-    
+
                 if (keyIdEl != null)
                     keyIdEl.Attribute("value").SetValue(keyId);
-    
+
                 doc.Save(xmlFileName);
             }
-    
+
             /// <summary>
             /// Uploads a single file.
             /// </summary>
@@ -507,10 +510,10 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                     {
                         Console.WriteLine("Uploading '{0}' - Progress: {1:0.##}%", af.Name, p.Progress);
                     });
-    
+
                 return asset;
             }
-    
+
             /// <summary>
             /// Creates a task to encode to Adaptive Bitrate. 
             /// Adds the new task to a job.
@@ -523,24 +526,24 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 // Get the SDK extension method to  get a reference to the Media Encoder Standard.
                 IMediaProcessor encoder = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.MediaEncoderStandard);
-    
+
                 ITask adpativeBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
                    encoder,
                    "H264 Multiple Bitrate 720p",
                    TaskOptions.None);
-    
+
                 // Specify the input Asset
                 adpativeBitrateTask.InputAssets.Add(asset);
-    
+
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted).
                 IAsset abrAsset = adpativeBitrateTask.OutputAssets.AddNew("Multibitrate MP4s",
                                         AssetCreationOptions.None);
-    
+
                 return abrAsset;
             }
-    
+
             /// <summary>
             /// Creates a task to convert the MP4 file(s) to a Smooth Streaming asset.
             /// Adds the new task to a job.
@@ -553,32 +556,32 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 // Get the SDK extension method to  get a reference to the Azure Media Packager.
                 IMediaProcessor packager = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.WindowsAzureMediaPackager);
-    
+
                 // Azure Media Packager does not accept string presets, so load xml configuration
                 string smoothConfig = File.ReadAllText(Path.Combine(
                             _configurationXMLFiles,
                             "MediaPackager_MP4toSmooth.xml"));
-    
+
                 // Create a new Task to convert adaptive bitrate to Smooth Streaming.
                 ITask smoothStreamingTask = job.Tasks.AddNew("MP4 to Smooth Task",
                    packager,
                    smoothConfig,
                    TaskOptions.None);
-    
+
                 // Specify the input Asset, which is the output Asset from the first task
                 smoothStreamingTask.InputAssets.Add(asset);
-    
+
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted).
                 IAsset smoothOutputAsset =
                     smoothStreamingTask.OutputAssets.AddNew("Clear Smooth Stream",
                         AssetCreationOptions.None);
-    
+
                 return smoothOutputAsset;
             }
-    
-    
+
+
             /// <summary>
             /// Creates a task to encrypt Smooth Streaming with PlayReady.
             /// Note: To deliver DASH, make sure to set the useSencBox and adjustSubSamples 
@@ -593,7 +596,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 // Get the SDK extension method to  get a reference to the Azure Media Encryptor.
                 IMediaProcessor playreadyProcessor = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.WindowsAzureMediaEncryptor);
-    
+
                 // Read the configuration XML.
                 //
                 // Note that the configuration defined in MediaEncryptor_PlayReadyProtection.xml
@@ -603,23 +606,23 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 //
                 string configPlayReady = File.ReadAllText(Path.Combine(_configurationXMLFiles,
                                             @"MediaEncryptor_PlayReadyProtection.xml"));
-    
+
                 ITask playreadyTask = job.Tasks.AddNew("My PlayReady Task",
                    playreadyProcessor,
                    configPlayReady,
                    TaskOptions.ProtectedConfiguration);
-    
+
                 playreadyTask.InputAssets.Add(asset);
-    
+
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.CommonEncryptionProtected.
                 IAsset playreadyAsset = playreadyTask.OutputAssets.AddNew(
                                                 "PlayReady Smooth Streaming",
                                                 AssetCreationOptions.CommonEncryptionProtected);
-    
+
                 return playreadyAsset;
             }
-    
+
             /// <summary>
             /// Configures authorization policy for the content key. 
             /// </summary>
@@ -628,7 +631,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             {
                 // Create ContentKeyAuthorizationPolicy with Open restrictions 
                 // and create authorization policy          
-    
+
                 List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
                 {
                     new ContentKeyAuthorizationPolicyRestriction 
@@ -638,66 +641,68 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                         Requirements = null
                     }
                 };
-    
+
                 // Configure PlayReady license template.
                 string newLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
-    
+
                 IContentKeyAuthorizationPolicyOption policyOption =
                     _context.ContentKeyAuthorizationPolicyOptions.Create("",
                         ContentKeyDeliveryType.PlayReadyLicense,
                             restrictions, newLicenseTemplate);
-    
+
                 IContentKeyAuthorizationPolicy contentKeyAuthorizationPolicy = _context.
                             ContentKeyAuthorizationPolicies.
                             CreateAsync("Deliver Common Content Key with no restrictions").
                             Result;
-    
-    
+
+
                 contentKeyAuthorizationPolicy.Options.Add(policyOption);
-    
+
                 // Associate the content key authorization policy with the content key.
                 contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
                 contentKey = contentKey.UpdateAsync().Result;
             }
-    
+
             static private string ConfigurePlayReadyLicenseTemplate()
             {
                 // The following code configures PlayReady License Template using .NET classes
                 // and returns the XML string.
-    
+
                 PlayReadyLicenseResponseTemplate responseTemplate = new PlayReadyLicenseResponseTemplate();
                 PlayReadyLicenseTemplate licenseTemplate = new PlayReadyLicenseTemplate();
-    
+
                 responseTemplate.LicenseTemplates.Add(licenseTemplate);
-    
+
                 return MediaServicesLicenseTemplateSerializer.Serialize(responseTemplate);
             }
-    
+
             static private byte[] GetRandomBuffer(int length)
             {
                 var returnValue = new byte[length];
-    
+
                 using (var rng =
                     new System.Security.Cryptography.RNGCryptoServiceProvider())
                 {
                     rng.GetBytes(returnValue);
                 }
-    
+
                 return returnValue;
             }
         }
     }
 
 ## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>静的暗号化を使用して AES-128 で HLSv3 を保護する
-
 AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨されるオプション) と静的暗号化 (このセクションの説明を参照) のどちらかを選択できます。 動的暗号化を使用する場合は、「 [AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」を参照してください。
 
->[AZURE.NOTE]コンテンツを HLS に変換するには、まずコンテンツを Smooth Streaming に変換/エンコードする必要があります。
->また、AES で HLS を暗号化するには、MediaPackager_SmoothToHLS.xml ファイルで次のプロパティを設定します。暗号化プロパティを true に設定し、キー値を設定し、認証/承認サーバーを指すように keyuri 値を設定するようにします。
-Media Services でキー ファイルが作成され、資産コンテナーに配置されます。 /asset-containerguid/*.key ファイルは、サーバーにコピーし (または独自のキー ファイルを作成し)、*.key ファイルを資産コンテナーから削除する" 必要があります。
+> [!NOTE]
+> コンテンツを HLS に変換するには、まずコンテンツを Smooth Streaming に変換/エンコードする必要があります。
+> また、AES で HLS を暗号化するには、MediaPackager_SmoothToHLS.xml ファイルで次のプロパティを設定します。暗号化プロパティを true に設定し、キー値を設定し、認証/承認サーバーを指すように keyuri 値を設定するようにします。
+> Media Services でキー ファイルが作成され、資産コンテナーに配置されます。 /asset-containerguid/*.key ファイルは、サーバーにコピーし (または独自のキー ファイルを作成し)、*.key ファイルを資産コンテナーから削除する" 必要があります。
+> 
+> 
 
 このセクションの例では、中間ファイル (ここでは MP4) をマルチビットレート MP4 ファイルにエンコードし、MP4 を Smooth Streaming にパッケージ化します。 また、Smooth Streaming は、Advanced Encryption Standard (AES) 128 ビット ストリーム暗号化で暗号化された HTTP Live Streaming (HLS) にパッケージ化されます。 入力 MP4 ファイルがあるフォルダーを指すように、次のコードを更新します。 また、MediaPackager_MP4ToSmooth.xml と MediaPackager_SmoothToHLS.xml 構成ファイルがある場所も示すように更新します。 これらのファイルの定義については、「 [Azure Media Packager のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973635.aspx) 」トピックを参照してください。
-    
+
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -708,7 +713,7 @@ Media Services でキー ファイルが作成され、資産コンテナーに�
     using System.Threading.Tasks;
     using Microsoft.WindowsAzure.MediaServices.Client;
     using System.Xml.Linq;
-    
+
     namespace MediaServicesContentProtection
     {
         class Program
@@ -716,25 +721,25 @@ Media Services でキー ファイルが作成され、資産コンテナーに�
             // Paths to support files (within the above base path). You can use 
             // the provided sample media files from the "SupportFiles" folder, or 
             // provide paths to your own media files below to run these samples.
-    
+
             private static readonly string _mediaFiles =
                 Path.GetFullPath(@"../..\Media");
-            
+
             private static readonly string _singleMP4File =
                 Path.Combine(_mediaFiles, @"SingleMP4\BigBuckBunny.mp4");
-    
+
             // XML Configruation files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
-    
+
             private static MediaServicesCredentials _cachedCredentials = null;
             private static CloudMediaContext _context = null;
-    
+
             // Media Services account information.
             private static readonly string _mediaServicesAccountName = 
                 ConfigurationManager.AppSettings["MediaServiceAccountName"];
             private static readonly string _mediaServicesAccountKey = 
                 ConfigurationManager.AppSettings["MediaServiceAccountKey"];
-    
+
             static void Main(string[] args)
             {
                 // Create and cache the Media Services credentials in a static class variable.
@@ -743,27 +748,27 @@ Media Services でキー ファイルが作成され、資産コンテナーに�
                                 _mediaServicesAccountKey);
                 // Use the cached credentials to create CloudMediaContext.
                 _context = new CloudMediaContext(_cachedCredentials);
-    
+
                 // Encoding and encrypting assets //////////////////////
-    
+
                 // Load an MP4 file.
                 IAsset asset = IngestSingleMP4File(_singleMP4File, AssetCreationOptions.None);
-    
+
                 // Encode an MP4 file to a set of multibitrate MP4s.
                 // Then, package a set of MP4s to clear Smooth Streaming.
                 IAsset clearSmoothStreamAsset = ConvertMP4ToMultibitrateMP4sToSmoothStreaming(asset);
-    
+
                 // Create HLS encrypted with AES.
                 IAsset HLSEncryptedWithAESAsset = CreateHLSEncryptedWithAES(clearSmoothStreamAsset);
-    
+
                 // You can use the following player to test the HLS with AES stream.
                 // http://apps.microsoft.com/windows/app/3ivx-hls-player/f79ce7d0-2993-4658-bc4e-83dc182a0614 
                 string hlsWithAESURL = HLSEncryptedWithAESAsset.GetHlsUri().ToString();
                 Console.WriteLine("HLS with AES URL:");
                 Console.WriteLine(hlsWithAESURL);
             }
-    
-    
+
+
             /// <summary>
             /// Creates a job with 2 tasks: 
             /// 1 task - encodes a single MP4 to multibitrate MP4s,
@@ -774,12 +779,12 @@ Media Services でキー ファイルが作成され、資産コンテナーに�
             {
                 // Create a new job.
                 IJob job = _context.Jobs.Create("Convert MP4 to Smooth Streaming.");
-    
+
                 // Add task 1 - Encode single MP4 into multibitrate MP4s.
                 IAsset MP4sAsset = EncodeSingleMP4IntoMultibitrateMP4sTask(job, asset);
                 // Add task 2 - Package a multibitrate MP4 set to Clear Smooth Streaming.
                 IAsset packagedAsset = PackageMP4ToSmoothStreamingTask(job, MP4sAsset);
-    
+
                 // Submit the job and wait until it is completed.
                 job.Submit();
                 job = job.StartExecutionProgressTask(
@@ -789,11 +794,11 @@ Media Services でキー ファイルが作成され、資産コンテナーに�
                         Console.WriteLine("Job progress: {0:0.##}%", j.GetOverallProgress());
                     },
                     CancellationToken.None).Result;
-    
+
                 // Get the output asset that contains Smooth Streaming.
                 return job.OutputMediaAssets[1];
             }
-    
+
             /// <summary>
             /// Encrypts an HLS with AES-128.
             /// </summary>
@@ -802,10 +807,10 @@ Media Services でキー ファイルが作成され、資産コンテナーに�
             public static IAsset CreateHLSEncryptedWithAES(IAsset clearSmoothStreamAsset)
             {
                 IJob job = _context.Jobs.Create("Encrypt to HLS with AES.");
-    
+
                 // Add task 1 - Package clear Smooth Streaming to HLS with AES.
                 PackageSmoothStreamToHLS(job, clearSmoothStreamAsset);
-    
+
                 // Submit the job and wait until it is completed.
                 job.Submit();
                 job = job.StartExecutionProgressTask(
@@ -815,17 +820,17 @@ Media Services でキー ファイルが作成され、資産コンテナーに�
                         Console.WriteLine("Job progress: {0:0.##}%", j.GetOverallProgress());
                     },
                     CancellationToken.None).Result;
-    
+
                 // The OutputMediaAssets[0] contains the desired asset.
                 _context.Locators.Create(
                     LocatorType.OnDemandOrigin,
                     job.OutputMediaAssets[0],
                     AccessPermissions.Read,
                     TimeSpan.FromDays(30));
-    
+
                 return job.OutputMediaAssets[0];
             }
-    
+
             /// <summary>
             /// Uploads a single file.
             /// </summary>
@@ -854,10 +859,10 @@ Media Services でキー ファイルが作成され、資産コンテナーに�
                     {
                         Console.WriteLine("Uploading '{0}' - Progress: {1:0.##}%", af.Name, p.Progress);
                     });
-     
+
                 return asset;
             }
-    
+
             /// <summary>
             /// Creates a task to encode to Adaptive Bitrate. 
             /// Adds the new task to a job.
@@ -870,24 +875,24 @@ Media Services でキー ファイルが作成され、資産コンテナーに�
                 // Get the SDK extension method to  get a reference to the Media Encoder Standard.
                 IMediaProcessor encoder = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.MediaEncoderStandard);
-    
+
                 ITask adpativeBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
                    encoder,
                    "H264 Multiple Bitrate 720p",
                    TaskOptions.None);
-    
+
                 // Specify the input Asset
                 adpativeBitrateTask.InputAssets.Add(asset);
-    
+
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted).
                 IAsset abrAsset = adpativeBitrateTask.OutputAssets.AddNew("Multibitrate MP4s", 
                                         AssetCreationOptions.None);
-    
+
                 return abrAsset;
             }
-    
+
             /// <summary>
             /// Creates a task to convert the MP4 file(s) to a Smooth Streaming asset.
             /// Adds the new task to a job.
@@ -900,31 +905,31 @@ Media Services でキー ファイルが作成され、資産コンテナーに�
                 // Get the SDK extension method to  get a reference to the Azure Media Packager.
                 IMediaProcessor packager = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.WindowsAzureMediaPackager);
-    
+
                 // Azure Media Packager does not accept string presets, so load xml configuration
                 string smoothConfig = File.ReadAllText(Path.Combine(
                             _configurationXMLFiles, 
                             "MediaPackager_MP4toSmooth.xml"));
-    
+
                 // Create a new Task to convert adaptive bitrate to Smooth Streaming.
                 ITask smoothStreamingTask = job.Tasks.AddNew("MP4 to Smooth Task",
                    packager,
                    smoothConfig,
                    TaskOptions.None);
-    
+
                 // Specify the input Asset, which is the output Asset from the first task
                 smoothStreamingTask.InputAssets.Add(asset);
-    
+
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted).
                 IAsset smoothOutputAsset = 
                     smoothStreamingTask.OutputAssets.AddNew("Clear Smooth Streaming", 
                         AssetCreationOptions.None);
-    
+
                 return smoothOutputAsset;
             }
-    
+
             /// <summary>
             /// Converts Smooth Streaming to HLS.
             /// </summary>
@@ -936,7 +941,7 @@ Media Services でキー ファイルが作成され、資産コンテナーに�
                 // Get the SDK extension method to  get a reference to the Azure Media Packager.
                 IMediaProcessor processor = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.WindowsAzureMediaPackager);
-    
+
                 // Read the configuration data into a string. 
                 // For the HLS to get encrypted with AES make sure to set the
                 // encrypt configuration property to true.
@@ -947,38 +952,40 @@ Media Services でキー ファイルが作成され、資産コンテナーに�
                 //    Delete *.key from the asset container.
                 //
                 string configuration = File.ReadAllText(Path.Combine(_configurationXMLFiles, @"MediaPackager_SmoothToHLS.xml"));
-    
+
                 // Create a task with the encoding details, using a configuration file.
                 ITask task = job.Tasks.AddNew("My Smooth Streaming to HLS Task",
                    processor,
                    configuration,
                    TaskOptions.ProtectedConfiguration);
-    
+
                 // Specify the input asset to be encoded.
                 task.InputAssets.Add(smoothStreamAsset);
-    
+
                 // Add an output asset to contain the results of the job. 
                 IAsset outputAsset = 
                     task.OutputAssets.AddNew("HLS asset", AssetCreationOptions.None);
-    
-    
+
+
                 return outputAsset;
             }
         }
     }
 
 ## <a name="using-static-encryption-to-protect-hlsv3-with-playready"></a>静的暗号化を使用して PlayReady で HLSv3 を保護する
-
 PlayReady でコンテンツを保護する場合、 [動的暗号化](media-services-protect-with-drm.md) (推奨されるオプション) または 静的暗号化 (このセクションで説明します) を選択できます。
 
->[AZURE.NOTE] PlayReady を使用してコンテンツを保護するには、まずコンテンツを Smooth Streaming 形式に変換/エンコードする必要があります。
+> [!NOTE]
+> PlayReady を使用してコンテンツを保護するには、まずコンテンツを Smooth Streaming 形式に変換/エンコードする必要があります。
+> 
+> 
 
 このセクションの例では、中間ファイル (ここでは MP4) をマルチビットレート MP4 ファイルにエンコードします。 次に、MP4 を Smooth Streaming にパッケージ化し、PlayReady で Smooth Streaming を暗号化します。 PlayReady で暗号化された HTTP Live Streaming (HLS) を生成するには、PlayReady Smooth Streaming 資産を HLS にパッケージ化する必要があります。 このトピックでは、これらすべての手順を実行する方法について説明します。
 
 Media Services では、Microsoft PlayReady ライセンスの配信サービスが提供されるようになりました。 この記事の例で、Media Services PlayReady ライセンス配信サービスを構成する方法について説明します (以下のコードに定義されている **ConfigureLicenseDeliveryService** メソッドを参照してください)。 
 
 入力 MP4 ファイルがあるフォルダーを指すように、次のコードを更新します。 また、MediaPackager_MP4ToSmooth.xml、MediaPackager_SmoothToHLS.xml、および MediaEncryptor_PlayReadyProtection.xml のファイルがある場所を指すように更新します。 MediaPackager_MP4ToSmooth.xml と MediaPackager_SmoothToHLS.xml については、「[Azure Media Packager のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973635.aspx)」で定義されています。また、MediaEncryptor_PlayReadyProtection.xml については、「[Azure Media Encryptor のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973610.aspx)」トピックを参照してください。
-    
+
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -991,7 +998,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
     using System.Xml.Linq;
     using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
     using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
-    
+
     namespace MediaServicesContentProtection
     {
         class Program
@@ -999,26 +1006,26 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             // Paths to support files (within the above base path). You can use 
             // the provided sample media files from the "SupportFiles" folder, or 
             // provide paths to your own media files below to run these samples.
-    
+
             private static readonly string _mediaFiles =
                 Path.GetFullPath(@"../..\Media");
-    
+
             private static readonly string _singleMP4File =
                 Path.Combine(_mediaFiles, @"SingleMP4\BigBuckBunny.mp4");
-    
+
             // XML Configruation files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
-    
-    
+
+
             private static MediaServicesCredentials _cachedCredentials = null;
             private static CloudMediaContext _context = null;
-    
+
             // Media Services account information.
             private static readonly string _mediaServicesAccountName =
                 ConfigurationManager.AppSettings["MediaServiceAccountName"];
             private static readonly string _mediaServicesAccountKey =
                 ConfigurationManager.AppSettings["MediaServiceAccountKey"];
-    
+
             static void Main(string[] args)
             {
                 // Create and cache the Media Services credentials in a static class variable.
@@ -1027,14 +1034,14 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                                 _mediaServicesAccountKey);
                 // Used the chached credentials to create CloudMediaContext.
                 _context = new CloudMediaContext(_cachedCredentials);
-    
+
                 // Load an MP4 file.
                 IAsset asset = IngestSingleMP4File(_singleMP4File, AssetCreationOptions.None);
-    
+
                 // Encode an MP4 file to a set of multibitrate MP4s.
                 // Then, package a set of MP4s to clear Smooth Streaming.
                 IAsset clearSmoothStreamAsset = ConvertMP4ToMultibitrateMP4sToSmoothStreaming(asset);
-    
+
                 // Create a common encryption content key that is used 
                 // a) to set the key values in the MediaEncryptor_PlayReadyProtection.xml file
                 //    that is used for encryption.
@@ -1042,23 +1049,23 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 //
                 Guid keyId;
                 byte[] contentKey;
-    
+
                 IContentKey key = CreateCommonEncryptionKey(out keyId, out contentKey);
-    
+
                 // The content key authorization policy must be configured by you 
                 // and met by the client in order for the PlayReady license
                 // to be delivered to the client. 
                 // In this example the Media Services PlayReady license delivery service is used.
                 ConfigureLicenseDeliveryService(key);
-    
+
                 // Get the Media Services PlayReady license delivery URL.
                 // This URL will be assigned to the licenseAcquisitionUrl property 
                 // of the MediaEncryptor_PlayReadyProtection.xml file.
                 Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
-    
+
                 // Update the MediaEncryptor_PlayReadyProtection.xml file with the key and URL info.
                 UpdatePlayReadyConfigurationXMLFile(keyId, contentKey, acquisitionUrl);
-    
+
                 // Create HLS encrypted with PlayReady.
                 IAsset playReadyHLSAsset = CreateHLSEncryptedWithPlayReady(clearSmoothStreamAsset);
                 //
@@ -1066,7 +1073,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 Console.WriteLine("HLS with PlayReady URL:");
                 Console.WriteLine(hlsWithPlayReadyURL);
             }
-    
+
             /// <summary>
             /// Creates a job with 2 tasks: 
             /// 1 task - encodes a single MP4 to multibitrate MP4s,
@@ -1077,12 +1084,12 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             {
                 // Create a new job.
                 IJob job = _context.Jobs.Create("Convert MP4 to Smooth Streaming.");
-    
+
                 // Add task 1 - Encode single MP4 into multibitrate MP4s.
                 IAsset MP4sAsset = EncodeSingleMP4IntoMultibitrateMP4sTask(job, asset);
                 // Add task 2 - Package a multibitrate MP4 set to Clear Smooth Streaming.
                 IAsset packagedAsset = PackageMP4ToSmoothStreamingTask(job, MP4sAsset);
-    
+
                 // Submit the job and wait until it is completed.
                 job.Submit();
                 job = job.StartExecutionProgressTask(
@@ -1092,11 +1099,11 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                         Console.WriteLine("Job progress: {0:0.##}%", j.GetOverallProgress());
                     },
                     CancellationToken.None).Result;
-    
+
                 // Get the output asset that contains Smooth Streaming.
                 return job.OutputMediaAssets[1];
             }
-    
+
             /// <summary>
             /// Create a common encryption content key that is used 
             /// to set the key values in the MediaEncryptor_PlayReadyProtection.xml file
@@ -1109,16 +1116,16 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             {
                 keyId = Guid.NewGuid();
                 contentKey = GetRandomBuffer(16);
-    
+
                 IContentKey key = _context.ContentKeys.Create(
                                         keyId,
                                         contentKey,
                                         "ContentKey",
                                         ContentKeyType.CommonEncryption);
-    
+
                 return key;
             }
-    
+
             /// <summary>
             /// Update your configuration .xml file dynamically.
             /// </summary>
@@ -1126,12 +1133,12 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             {
                 string xmlFileName = Path.Combine(_configurationXMLFiles,
                                             @"MediaEncryptor_PlayReadyProtection.xml");
-    
+
                 XNamespace xmlns = "http://schemas.microsoft.com/iis/media/v4/TM/TaskDefinition#";
-    
+
                 // Prepare the encryption task template
                 XDocument doc = XDocument.Load(xmlFileName);
-    
+
                 var licenseAcquisitionUrlEl = doc
                         .Descendants(xmlns + "property")
                         .Where(p => p.Attribute("name").Value == "licenseAcquisitionUrl")
@@ -1144,20 +1151,20 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                         .Descendants(xmlns + "property")
                         .Where(p => p.Attribute("name").Value == "keyId")
                         .FirstOrDefault();
-    
+
                 // Update the "value" property.
                 if (licenseAcquisitionUrlEl != null)
                     licenseAcquisitionUrlEl.Attribute("value").SetValue(licenseAcquisitionUrl.ToString());
-    
+
                 if (contentKeyEl != null)
                     contentKeyEl.Attribute("value").SetValue(Convert.ToBase64String(keyValue));
-    
+
                 if (keyIdEl != null)
                     keyIdEl.Attribute("value").SetValue(keyId);
-    
+
                 doc.Save(xmlFileName);
             }
-    
+
             /// <summary>
             // Encrypts clear Smooth Streaming to Smooth Streaming with PlayReady.
             // Then, packages the PlayReady Smooth Streaming to HLS with PlayReady.
@@ -1167,14 +1174,14 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             public static IAsset CreateHLSEncryptedWithPlayReady(IAsset clearSmoothStreamAsset)
             {
                 IJob job = _context.Jobs.Create("Encrypt to HLS with PlayReady.");
-    
+
                 // Add task 1 - Encrypt Smooth Streaming with PlayReady 
                 IAsset encryptedSmoothAsset =
                     EncryptSmoothStreamWithPlayReadyTask(job, clearSmoothStreamAsset);
-    
+
                 // Add task 2 - Package to HLS with PlayReady.
                 PackageSmoothStreamToHLS(job, encryptedSmoothAsset);
-    
+
                 // Submit the job and wait until it is completed.
                 job.Submit();
                 job = job.StartExecutionProgressTask(
@@ -1184,7 +1191,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                         Console.WriteLine("Job progress: {0:0.##}%", j.GetOverallProgress());
                     },
                     CancellationToken.None).Result;
-    
+
                 // Since we had two tasks, the OutputMediaAssets[1]
                 // contains the desired asset.
                 _context.Locators.Create(
@@ -1192,10 +1199,10 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                     job.OutputMediaAssets[1],
                     AccessPermissions.Read,
                     TimeSpan.FromDays(30));
-    
+
                 return job.OutputMediaAssets[1];
             }
-    
+
             /// <summary>
             /// Uploads a single file.
             /// </summary>
@@ -1224,10 +1231,10 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                     {
                         Console.WriteLine("Uploading '{0}' - Progress: {1:0.##}%", af.Name, p.Progress);
                     });
-    
-    
+
+
                 return asset;
-    
+
             }
             /// <summary>
             /// Creates a task to encode to Adaptive Bitrate. 
@@ -1241,24 +1248,24 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 // Get the SDK extension method to  get a reference to the Media Encoder Standard.
                 IMediaProcessor encoder = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.MediaEncoderStandard);
-    
+
                 ITask adpativeBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
                    encoder,
                    "H264 Multiple Bitrate 720p",
                    TaskOptions.None);
-    
+
                 // Specify the input Asset
                 adpativeBitrateTask.InputAssets.Add(asset);
-    
+
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted).
                 IAsset abrAsset = adpativeBitrateTask.OutputAssets.AddNew("Multibitrate MP4s",
                                         AssetCreationOptions.None);
-    
+
                 return abrAsset;
             }
-    
+
             /// <summary>
             /// Creates a task to convert the MP4 file(s) to a Smooth Streaming asset.
             /// Adds the new task to a job.
@@ -1271,32 +1278,32 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 // Get the SDK extension method to  get a reference to the Azure Media Packager.
                 IMediaProcessor packager = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.WindowsAzureMediaPackager);
-    
+
                 // Azure Media Packager does not accept string presets, so load xml configuration
                 string smoothConfig = File.ReadAllText(Path.Combine(
                             _configurationXMLFiles,
                             "MediaPackager_MP4toSmooth.xml"));
-    
+
                 // Create a new Task to convert adaptive bitrate to Smooth Streaming.
                 ITask smoothStreamingTask = job.Tasks.AddNew("MP4 to Smooth Task",
                    packager,
                    smoothConfig,
                    TaskOptions.None);
-    
+
                 // Specify the input Asset, which is the output Asset from the first task
                 smoothStreamingTask.InputAssets.Add(asset);
-    
+
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted).
                 IAsset smoothOutputAsset =
                     smoothStreamingTask.OutputAssets.AddNew("Clear Smooth Streaming",
                         AssetCreationOptions.None);
-    
+
                 return smoothOutputAsset;
             }
-    
-    
+
+
             /// <summary>
             /// Converts Smooth Stream to HLS.
             /// </summary>
@@ -1308,30 +1315,30 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 // Get the SDK extension method to  get a reference to the Azure Media Packager.
                 IMediaProcessor processor = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.WindowsAzureMediaPackager);
-    
+
                 // Read the configuration data into a string. 
                 //
                 string configuration = File.ReadAllText(
                             Path.Combine(_configurationXMLFiles,
                                         @"MediaPackager_SmoothToHLS.xml"));
-    
+
                 // Create a task with the encoding details, using a configuration file.
                 ITask task = job.Tasks.AddNew("My Smooth to HLS Task",
                    processor,
                    configuration,
                    TaskOptions.ProtectedConfiguration);
-    
+
                 // Specify the input asset to be encoded.
                 task.InputAssets.Add(smoothStreamAsset);
-    
+
                 // Add an output asset to contain the results of the job. 
                 IAsset outputAsset =
                     task.OutputAssets.AddNew("HLS asset", AssetCreationOptions.None);
-    
-    
+
+
                 return outputAsset;
             }
-    
+
             /// <summary>
             /// Creates a task to encrypt Smooth Streaming with PlayReady.
             /// Note: Do deliver DASH, make sure to set the useSencBox and adjustSubSamples 
@@ -1345,7 +1352,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 // Get the SDK extension method to  get a reference to the Azure Media Encryptor.
                 IMediaProcessor playreadyProcessor = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.WindowsAzureMediaEncryptor);
-    
+
                 // Read the configuration XML.
                 //
                 // Note that the configuration defined in MediaEncryptor_PlayReadyProtection.xml
@@ -1355,25 +1362,25 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 //
                 string configPlayReady = File.ReadAllText(Path.Combine(_configurationXMLFiles,
                                             @"MediaEncryptor_PlayReadyProtection.xml"));
-    
+
                 ITask playreadyTask = job.Tasks.AddNew("My PlayReady Task",
                    playreadyProcessor,
                    configPlayReady,
                    TaskOptions.ProtectedConfiguration);
-    
+
                 playreadyTask.InputAssets.Add(asset);
-    
+
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.CommonEncryptionProtected.
                 IAsset playreadyAsset = playreadyTask.OutputAssets.AddNew(
                                                 "PlayReady Smooth Streaming",
                                                 AssetCreationOptions.CommonEncryptionProtected);
-    
-    
+
+
                 return playreadyAsset;
             }
-    
-    
+
+
             /// <summary>
             /// Configures authorization policy for the content key. 
             /// </summary>
@@ -1382,7 +1389,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             {
                 // Create ContentKeyAuthorizationPolicy with Open restrictions 
                 // and create authorization policy          
-    
+
                 List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
                 {
                     new ContentKeyAuthorizationPolicyRestriction 
@@ -1392,65 +1399,61 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                         Requirements = null
                     }
                 };
-    
+
                 // Configure PlayReady license template.
                 string newLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
-    
+
                 IContentKeyAuthorizationPolicyOption policyOption =
                     _context.ContentKeyAuthorizationPolicyOptions.Create("",
                         ContentKeyDeliveryType.PlayReadyLicense,
                             restrictions, newLicenseTemplate);
-    
+
                 IContentKeyAuthorizationPolicy contentKeyAuthorizationPolicy = _context.
                             ContentKeyAuthorizationPolicies.
                             CreateAsync("Deliver Common Content Key with no restrictions").
                             Result;
-    
-    
+
+
                 contentKeyAuthorizationPolicy.Options.Add(policyOption);
-    
+
                 // Associate the content key authorization policy with the content key.
                 contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
                 contentKey = contentKey.UpdateAsync().Result;
             }
-    
+
             static private string ConfigurePlayReadyLicenseTemplate()
             {
                 // The following code configures PlayReady License Template using .NET classes
                 // and returns the XML string.
-    
+
                 PlayReadyLicenseResponseTemplate responseTemplate = new PlayReadyLicenseResponseTemplate();
                 PlayReadyLicenseTemplate licenseTemplate = new PlayReadyLicenseTemplate();
-    
+
                 responseTemplate.LicenseTemplates.Add(licenseTemplate);
-    
+
                 return MediaServicesLicenseTemplateSerializer.Serialize(responseTemplate);
             }
             static private byte[] GetRandomBuffer(int length)
             {
                 var returnValue = new byte[length];
-    
+
                 using (var rng =
                     new System.Security.Cryptography.RNGCryptoServiceProvider())
                 {
                     rng.GetBytes(returnValue);
                 }
-    
+
                 return returnValue;
             }
-    
+
         }
     }
 
-##<a name="media-services-learning-paths"></a>Media Services のラーニング パス
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
-##<a name="provide-feedback"></a>フィードバックの提供
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
+## <a name="provide-feedback"></a>フィードバックの提供
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,24 +1,23 @@
-<properties 
-	pageTitle="App Service 環境からバックエンド リソースへの安全な接続" 
-	description="App Service 環境からバックエンド リソースに安全に接続する方法について説明します。" 
-	services="app-service" 
-	documentationCenter="" 
-	authors="ccompy" 
-	manager="wpickett" 
-	editor=""/>
+---
+title: App Service 環境からバックエンド リソースへの安全な接続
+description: App Service 環境からバックエンド リソースに安全に接続する方法について説明します。
+services: app-service
+documentationcenter: ''
+author: ccompy
+manager: wpickett
+editor: ''
 
-<tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/11/2016" 
-	ms.author="stefsch"/>
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/11/2016
+ms.author: stefsch
 
-# App Service 環境からバックエンド リソースへの安全な接続 #
-
-## 概要 ##
+---
+# App Service 環境からバックエンド リソースへの安全な接続
+## 概要
 App Service 環境は常に Azure Resource Manager 仮想ネットワーク**または**クラシック デプロイ モデル[仮想ネットワーク][virtualnetwork]の**いずれか**に作成されるため、仮想ネットワーク経由でのみ、App Service 環境から他のバックエンド リソースへの送信接続を行うことができます。また、2016 年 6 月に行われた直近の変更で、パブリック アドレス範囲または RFC1918 アドレス空間 (つまりプライベート アドレス) のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました。
 
 たとえば、ポート 1433 がロックされている仮想マシンのクラスターで実行されている SQL Server がある場合があります。このエンドポイントは、同じ仮想ネットワークの他のリソースからのアクセスを許可する目的のみで使用されることがあります。
@@ -29,9 +28,9 @@ App Service 環境は常に Azure Resource Manager 仮想ネットワーク**ま
 
 App Service 環境から仮想ネットワーク内のエンドポイントへの送信トラフィックには、注意すべき点が 1 つあります。App Service 環境から、App Service 環境と**同じ**サブネットにある仮想マシンのエンドポイントに到達することはできません。App Service 環境が、App Service 環境専用として予約されているサブネットにデプロイされていれば、通常、これは問題にはなりません。
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## 発信接続と DNS の要件 ##
+## 発信接続と DNS の要件
 App Service Environment が正常に機能するためには、さまざまなエンドポイントへの発信アクセスが必要となります。[ExpressRoute を使用した環境のネットワーク構成](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity)の記事の「必要なネットワーク接続」というセクションに、App Service Environment で使用されるすべての外部エンドポイントが掲載されています。
 
 App Service 環境では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャが必要です。何らかの理由で、App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。ポータルの App Service 環境管理ブレードの上部にある [再起動] アイコンを使用して、ローリングする環境の再起動をトリガーすると、新しい DNS 構成が自動的に選択されます。
@@ -45,14 +44,10 @@ SQL Server の構成には一般的に、ポート 1433 でリッスンしてい
 
 このエンドポイントへのトラフィックを制限する方法は 2 つあります。
 
-
-- [ネットワーク アクセス制御リスト][NetworkAccessControlLists] \(ネットワーク ACL)
-
-- [ネットワーク セキュリティ グループ][NetworkSecurityGroups]
-
+* [ネットワーク アクセス制御リスト][NetworkAccessControlLists] \(ネットワーク ACL)
+* [ネットワーク セキュリティ グループ][NetworkSecurityGroups]
 
 ## ネットワーク ACL でのアクセスの制限
-
 ポート 1433 は、ネットワーク アクセス制御リストを使用して保護できます。次の例は、仮想ネットワーク内から送信されたクライアント アドレスをホワイトリストに登録し、その他のすべてのクライアントへのアクセスをブロックします。
 
 ![ネットワーク アクセス制御リストの例][NetworkAccessControlListExample]
@@ -79,11 +74,10 @@ VNet 間の内部トラフィックのみにアクセスを制限すると、ネ
 次の例では、ネットワーク セキュリティ グループを、このグループを含むサブネットに適用します。
 
     Get-AzureNetworkSecurityGroup -Name "testNSGExample" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-1'
-    
+
 最終的に、VNet 内部のアクセスを許可し、外部アクセスをブロックするセキュリティの規則の組み合わせになります。
 
 ![既定のネットワーク セキュリティ グループ][DefaultNetworkSecurityRules]
-
 
 ## 使用の開始
 App Service 環境に関するすべての記事と作業方法は [App Service 環境の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
@@ -94,10 +88,9 @@ App Service 環境への着信トラフィックを制御する方法の詳細�
 
 Azure App Service プラットフォームの詳細については、[Azure App Service][AzureAppService] に関するページを参照してください。
 
-[AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
+[!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
-[AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
- 
+[!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/

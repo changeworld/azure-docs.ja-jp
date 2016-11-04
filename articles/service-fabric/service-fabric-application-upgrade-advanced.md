@@ -1,32 +1,32 @@
-<properties
-   pageTitle="アプリケーションのアップグレード: 高度なトピック | Microsoft Azure"
-   description="この記事では、Service Fabric アプリケーションのアップグレードに関連する高度なトピックについて説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="mani-ramaswamy"
-   manager="timlt"
-   editor=""/>
+---
+title: 'アプリケーションのアップグレード: 高度なトピック | Microsoft Docs'
+description: この記事では、Service Fabric アプリケーションのアップグレードに関連する高度なトピックについて説明します。
+services: service-fabric
+documentationcenter: .net
+author: mani-ramaswamy
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/14/2016"
-   ms.author="subramar"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/14/2016
+ms.author: subramar
 
+---
 # Service Fabric アプリケーションのアップグレード: 高度なトピック
-
 ## アプリケーション アップグレード中のサービスの追加と削除
-
 既にデプロイされているアプリケーションに新しいサービスを追加し、アップグレードとして発行した場合、その新しいサービスは、デプロイされているアプリケーションに追加されます。このようなアップグレードは、アプリケーションに含まれていたどのサービスにも影響を及ぼしません。ただし新しいサービスを有効にするには、追加したサービスのインスタンスを (`New-ServiceFabricService` コマンドレットを使用して) 開始する必要があります。
 
 アップグレードの一環として、サービスをアプリケーションから削除することもできます。ただし、アップグレードに進む前に、削除するサービスの現在のサービスすべてを (`Remove-ServiceFabricService` コマンドレットを使用して) 停止しておく必要があります。
 
 ## 手動アップグレード モード
-
-> [AZURE.NOTE]  アップグレード時にエラーが発生するか中断された場合にのみ、管理対象外手動モードを検討してください。管理対象モードは、Service Fabric アプリケーションの推奨されるアップグレード モードです。
+> [!NOTE]
+> アップグレード時にエラーが発生するか中断された場合にのみ、管理対象外手動モードを検討してください。管理対象モードは、Service Fabric アプリケーションの推奨されるアップグレード モードです。
+> 
+> 
 
 Azure Service Fabric には、開発と運用環境のクラスターをサポートする複数のアップグレード モードが用意されます。選択するデプロイメント オプションは、環境によって異なる場合があります。
 
@@ -40,7 +40,6 @@ Azure Service Fabric には、開発と運用環境のクラスターをサポ�
 **手動** -- 現在の UD でアプリケーションのアップグレードを停止し、アップグレード モードを管理対象外手動に変更します。管理者は、**MoveNextApplicationUpgradeDomainAsync** を手動で呼び出して、アップグレードを続行したり、新しいアップグレードを開始することでロールバックをトリガーしたりします。アップグレードが、手動モードに入ると、新しいアップグレードが開始されるまでは手動モードのままになります。**GetApplicationUpgradeProgressAsync** コマンドは、FABRIC\_APPLICATION\_UPGRADE\_STATE\_ROLLING\_FORWARD\_PENDING を返します。
 
 ## 差分のパッケージを使用したアップグレード
-
 Service Fabric アプリケーションは、完全な自己完結型のアプリケーション パッケージで、プロビジョニングすることでアップグレードできます。更新済みのアプリケーション ファイル、更新済みのアプリケーション マニフェスト、サービス マニフェスト ファイルのみを含む差分のパッケージを使用してアプリケーションをアップグレードすることもできます。
 
 完全なアプリケーション パッケージには、Service Fabric の起動と実行に必要なすべてのファイルが含まれます。差分のパッケージには、最後のプロビジョニングと現在のアップグレード間で変更されたファイル、完全なアプリケーション マニフェスト、サービス マニフェスト ファイルのみが含まれます。ビルドのレイアウトで見つからないアプリケーション マニフェストやサービス マニフェストの参照については、イメージ ストア内で検索されます。
@@ -50,7 +49,6 @@ Service Fabric アプリケーションは、完全な自己完結型のアプ�
 差分のパッケージの使用は次のような場合に適しています。
 
 * 差分のパッケージは、複数のサービス マニフェスト ファイルや複数のコード パッケージ、構成パッケージ、データ パッケージを参照する大規模なアプリケーション パッケージがある場合に適しています。
-
 * 差分のパッケージは、アプリケーションのビルド プロセスから直接、ビルドのレイアウトを生成する、デプロイメント システムがあるときに適しています。この場合、コードは変更されていませんが、新しくビルドされたアセンブリはさまざまなチェックサムを取得します。完全なアプリケーション パッケージを使用すると、すべてのコード パッケージのバージョンを更新する必要があります。差分のパッケージを使用すると、変更されたファイルとバージョンが変更されているマニフェスト ファイルのみが提供されます。
 
 Visual Studio を使ってアプリケーションをアップグレードすると、差分パッケージが自動的に発行されます。差分パッケージを手動で作成するには、アプリケーション マニフェストとサービス マニフェストを更新する必要がありますが、最終アプリケーション パッケージには、変更のあったパッケージだけを追加します。
@@ -58,25 +56,25 @@ Visual Studio を使ってアプリケーションをアップグレードする
 たとえば、次のようなアプリケーションがあるとします (理解しやすいようバージョン番号を単純化しています)。
 
 ```text
-app1       	1.0.0
-  service1 	1.0.0
-    code   	1.0.0
-    config 	1.0.0
-  service2 	1.0.0
-    code   	1.0.0
-    config 	1.0.0
+app1           1.0.0
+  service1     1.0.0
+    code       1.0.0
+    config     1.0.0
+  service2     1.0.0
+    code       1.0.0
+    config     1.0.0
 ```
 
 ここで、PowerShell から差分パッケージを使用して、service1 のコード パッケージのみを更新すると仮定しましょう。更新後のアプリケーションのフォルダー構造は、次のようになります。
 
 ```text
-app1       	2.0.0      <-- new version
-  service1 	2.0.0      <-- new version
-    code   	2.0.0      <-- new version
-    config 	1.0.0
-  service2 	1.0.0
-    code   	1.0.0
-    config 	1.0.0
+app1           2.0.0      <-- new version
+  service1     2.0.0      <-- new version
+    code       2.0.0      <-- new version
+    config     1.0.0
+  service2     1.0.0
+    code       1.0.0
+    config     1.0.0
 ```
 
 このケースでは、アプリケーション マニフェストを 2.0.0 に更新したうえで、service1 のサービス マニフェストに、コード パッケージの更新内容を反映することになります。アプリケーション パッケージのフォルダー構造は、次のようになります。
@@ -88,7 +86,6 @@ app1/
 ```
 
 ## 次のステップ
-
 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md)に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
 [PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md)に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。
@@ -98,6 +95,5 @@ app1/
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)の方法を学ぶことで、アプリケーションのアップグレードに互換性を持たせます。
 
 「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
- 
 
 <!---HONumber=AcomDC_0921_2016-->

@@ -1,25 +1,26 @@
 
-<properties 
-    pageTitle="Azure RemoteApp で使用されるネットワーク帯域幅を推定する | Microsoft Azure"
-	description="Azure RemoteApp コレクションとアプリのネットワーク帯域幅要件について説明します。"
-	services="remoteapp"
-	documentationCenter="" 
-	authors="lizap" 
-	manager="mbaldwin" />
+---
+title: Azure RemoteApp で使用されるネットワーク帯域幅を推定する | Microsoft Docs
+description: Azure RemoteApp コレクションとアプリのネットワーク帯域幅要件について説明します。
+services: remoteapp
+documentationcenter: ''
+author: lizap
+manager: mbaldwin
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/15/2016" 
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-# Azure RemoteApp で使用されるネットワーク帯域幅を推定する 
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+---
+# Azure RemoteApp で使用されるネットワーク帯域幅を推定する
+> [!IMPORTANT]
+> Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> 
+> 
 
 Azure RemoteApp では、リモート デスクトップ プロトコル (RDP) を使用して、Azure クラウドで実行するアプリケーションとユーザーの間で通信を行います。この記事では、このネットワーク使用量を推定する場合の基本的なガイドラインについて説明します。このガイドラインは Azure RemoteApp ユーザーごとのネットワーク使用帯域幅の評価にも役立つ場合があります。
 
@@ -29,13 +30,11 @@ Azure RemoteApp では、リモート デスクトップ プロトコル (RDP) �
 
 考慮すべき要素、基本的な推奨事項、推定の際に考慮に入れなかった項目の詳細について、以下の記事をご覧ください。
 
-- [ネットワーク帯域幅とエクスペリエンスの質はどのような関係にあるのか](remoteapp-bandwidthexperience.md)
-- [Testing your network bandwidth usage with some common scenarios (一般的なシナリオでのネットワークの使用帯域幅をテストする)](remoteapp-bandwidthtests.md)
-- [テストする時間やスキルがない場合のクイック ガイドライン](remoteapp-bandwidthguidelines.md)
-
+* [ネットワーク帯域幅とエクスペリエンスの質はどのような関係にあるのか](remoteapp-bandwidthexperience.md)
+* [Testing your network bandwidth usage with some common scenarios (一般的なシナリオでのネットワークの使用帯域幅をテストする)](remoteapp-bandwidthtests.md)
+* [テストする時間やスキルがない場合のクイック ガイドライン](remoteapp-bandwidthguidelines.md)
 
 ## 考慮に入れていない項目
-
 紹介しているテストと全般的な推奨事項を確認する際は、考慮されなかった項目がいくつかあることをご了承ください。たとえば、アップロードとダウンロードの帯域幅の非対称性によってもたらされるユーザー エクスペリエンスの複雑さがあります。大部分の Wi-Fi ネットワークの非対称性は、パフォーマンスとユーザー エクスペリエンスに対する認識にさらに影響を与えます。対話型のシナリオでは、ダウンストリームのトラフィックはアップストリームよりも優先度が低い場合があり、損失するビデオ フレーム数やオーディオ フレーム数が増えるので、ストリーミングに対するユーザーの認識に影響を与えます。独自の試験を実施して、固有のユース ケースやネットワークには何が適しているかを把握できます。
 
 デバイス リダイレクトに言及していますが、ストレージ、プリンター、スキャナー、Web カメラ、その他の USB デバイスなど、接続されているデバイスで発生するネットワーク トラフィックの帯域幅への影響については考慮しませんでした。通常、これらのデバイスにより、帯域幅のニーズが一時的に急上昇しますが、タスクが完了すれば影響はなくなります。たび重なる場合は、帯域幅のニーズが非常に顕著になることがあります。

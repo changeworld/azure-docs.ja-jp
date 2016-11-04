@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Cloud Services と管理証明書 | Microsoft Azure" 
-	description="Microsoft Azure で証明書を作成し、使用する方法を学習します。" 
-	services="cloud-services" 
-	documentationCenter=".net" 
-	authors="Thraka" 
-	manager="timlt" 
-	editor=""/>
+---
+title: Cloud Services と管理証明書 | Microsoft Docs
+description: Microsoft Azure で証明書を作成し、使用する方法を学習します。
+services: cloud-services
+documentationcenter: .net
+author: Thraka
+manager: timlt
+editor: ''
 
-<tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/05/2016"
-	ms.author="adegeo"/>
+ms.service: cloud-services
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/05/2016
+ms.author: adegeo
 
+---
 # Azure Cloud Services の証明書の概要
 証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、 および管理 API の認証に使用されます (ARM ではなく Azure クラシック ポータルを使用している場合は、[管理証明書](#what-are-management-certificates))。このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成する](#create)方法、および Azure に[デプロイ](#deploy)する方法について説明します。
 
@@ -33,15 +33,18 @@ Azure クラシック ポータルまたはサービス管理 API を使用し�
 ## 管理証明書とは何でしょうか。
 管理証明書を使用すると、Azure クラシックによって提供されるサービス管理 API を使用して認証できます。多くのプログラムとツール (Visual Studio や Azure SDK など) でこれらの証明書を使用して、さまざまな Azure サービスの構成とデプロイメントを自動化します。これらはクラウド サービスには実際には関連がありません。
 
->[AZURE.WARNING] ご注意ください。 これらの種類の証明書を使用して認証する場合、関連付けられているサブスクリプションを管理できます。
+> [!WARNING]
+> ご注意ください。 これらの種類の証明書を使用して認証する場合、関連付けられているサブスクリプションを管理できます。
+> 
+> 
 
 ### 制限事項
 各サブスクリプションでは、管理証明書の数は 100 個までに制限されています。また、特定のサービス管理者のユーザー ID の下にあるすべてのサブスクリプションでも、管理証明書の数は 100 個までに制限されています。アカウント管理者のユーザー ID が既に 100 の管理証明書の追加に使用されていて、さらに証明書が必要な場合は、証明書を追加する共同管理者を追加できます。
 
 100 を超える証明書を追加する前に既存の証明書を再利用できるかどうかをご確認ください。共同管理者を使用すると、証明書の管理プロセスが不必要に複雑になる場合があります。
 
-
 <a name="create"></a>
+
 ## 新しい自己署名証明書を作成する
 次の設定に準拠していれば、使用可能な任意のツールを使用して自己署名証明書を作成することができます。
 
@@ -56,19 +59,19 @@ Azure クラシック ポータルまたはサービス管理 API を使用し�
 Windows で証明書を作成する簡単な方法として、`makecert.exe` ユーティリティを使用する方法と IIS を使用する方法の 2 つがあります。
 
 ### Makecert.exe
-
 このユーティリティは廃止されたため、ここに記載されなくなりました。詳細については、[こちらの MSDN 記事](https://msdn.microsoft.com/library/windows/desktop/aa386968)を参照してください。
 
 ### PowerShell
-
 ```powershell
 $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My"
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
 
->[AZURE.NOTE] ドメインではなく IP アドレスを持つ証明書を使用する場合は、-DnsName パラメーターで IP アドレスを使用します。
-
+> [!NOTE]
+> ドメインではなく IP アドレスを持つ証明書を使用する場合は、-DnsName パラメーターで IP アドレスを使用します。
+> 
+> 
 
 この[証明書を管理ポータルで](../azure-api-management-certs.md)使用する場合は、**.cer** ファイルにエクスポートしてください。
 
@@ -77,7 +80,6 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ```
 
 ### インターネット インフォメーション サービス (IIS)
-
 インターネット上には、IIS を使用した実行方法について説明する多くのページがあります。[ここ](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html)では、わかりやすく説明しているページを紹介します。
 
 ### Java
@@ -87,11 +89,13 @@ Java を使用して[証明書を作成](../app-service-web/java-create-azure-we
 [この](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)記事では、SSH で証明書を作成する方法について説明します。
 
 ## 次のステップ
-
 [Azure クラシック ポータル にサービス証明書をアップロードします](cloud-services-configure-ssl-certificate.md)(または [Azure ポータル](cloud-services-configure-ssl-certificate-portal.md))。
 
 [管理 API 証明書](../azure-api-management-certs.md)を Azure クラシック ポータルにアップロードします。
 
->[AZURE.NOTE] Azure ポータルは、API へのアクセスに管理証明書を使用しないで、代わりにユーザー アカウントを使用します。
+> [!NOTE]
+> Azure ポータルは、API へのアクセスに管理証明書を使用しないで、代わりにユーザー アカウントを使用します。
+> 
+> 
 
 <!---HONumber=AcomDC_0914_2016-->

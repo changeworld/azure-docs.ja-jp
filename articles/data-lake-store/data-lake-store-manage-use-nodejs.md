@@ -1,60 +1,56 @@
-<properties 
-   pageTitle="Azure SDK for Node.js を使用して Azure Data Lake Store を管理する | Microsoft Azure"
-   description="Data Lake Store アカウントとファイル システムを管理する方法について説明します。" 
-   services="data-lake-store" 
-   documentationCenter="" 
-   authors="nitinme" 
-   manager="jhubbard" 
-   editor="cgronlun"/>
- 
-<tags
-   ms.service="data-lake-store"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data" 
-   ms.date="09/13/2016"
-   ms.author="nitinme"/>
+---
+title: Azure SDK for Node.js を使用して Azure Data Lake Store を管理する | Microsoft Docs
+description: Data Lake Store アカウントとファイル システムを管理する方法について説明します。
+services: data-lake-store
+documentationcenter: ''
+author: nitinme
+manager: jhubbard
+editor: cgronlun
 
+ms.service: data-lake-store
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 09/13/2016
+ms.author: nitinme
+
+---
 # Azure SDK for Node.js を使用して Azure Data Lake Store を管理する
-
-> [AZURE.SELECTOR]
-- [ポータル](data-lake-store-get-started-portal.md)
-- [PowerShell](data-lake-store-get-started-powershell.md)
-- [.NET SDK](data-lake-store-get-started-net-sdk.md)
-- [Java SDK](data-lake-store-get-started-java-sdk.md)
-- [REST API](data-lake-store-get-started-rest-api.md)
-- [Azure CLI](data-lake-store-get-started-cli.md)
-- [Node.JS](data-lake-store-manage-use-nodejs.md)
-
+> [!div class="op_single_selector"]
+> * [ポータル](data-lake-store-get-started-portal.md)
+> * [PowerShell](data-lake-store-get-started-powershell.md)
+> * [.NET SDK](data-lake-store-get-started-net-sdk.md)
+> * [Java SDK](data-lake-store-get-started-java-sdk.md)
+> * [REST API](data-lake-store-get-started-rest-api.md)
+> * [Azure CLI](data-lake-store-get-started-cli.md)
+> * [Node.JS](data-lake-store-manage-use-nodejs.md)
+> 
+> 
 
 Azure SDK for Node.js を使用して、Azure Data Lake Store アカウントとファイル システムの操作を管理できます。
 
 現時点では、以下がサポートされています。
 
-  *  **Node.js のバージョン: 0.10.0 以降**
-  *  **アカウント用の REST API のバージョン: 2015-10-01-preview**
-  *  **ファイルシステム用の REST API のバージョン: 2015-10-01-preview**
+* **Node.js のバージョン: 0.10.0 以降**
+* **アカウント用の REST API のバージョン: 2015-10-01-preview**
+* **ファイルシステム用の REST API のバージョン: 2015-10-01-preview**
 
-##前提条件
-
+## 前提条件
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+* **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 ## Features (機能)
-
-- アカウント管理: 作成、取得、一覧表示、更新、および削除。
-- ファイル システムの管理: 作成、取得、アップロード、追加、ダウンロード、読み取り、削除、一覧表示。
+* アカウント管理: 作成、取得、一覧表示、更新、および削除。
+* ファイル システムの管理: 作成、取得、アップロード、追加、ダウンロード、読み取り、削除、一覧表示。
 
 ## インストール方法
-
 ```bash
 npm install azure-arm-datalake-store
 ```
 
 ## Azure Active Directory を使用して認証する
-
  ```javascript
  var msrestAzure = require('ms-rest-azure');
  //user authentication
@@ -64,7 +60,6 @@ npm install azure-arm-datalake-store
  ```
 
 ## Data Lake Analytics クライアントを作成する
-
 ```javascript
 var adlsManagement = require("azure-arm-datalake-store");
 var acccountClient = new adlsManagement.DataLakeStoreAccountClient(credentials, "your-subscription-id");
@@ -72,7 +67,6 @@ var filesystemClient = new adlsManagement.DataLakeStoreFileSystemClient(credenti
 ```
 
 ## Data Lake Store アカウントを作成する
-
 ```javascript
 var util = require('util');
 var resourceGroupName = 'testrg';
@@ -128,7 +122,6 @@ filesystemClient.fileSystem.listFileStatus(accountName, fileToCreate, options, f
 ```
 
 ## ファイルとフォルダーの一覧を取得する
-
 ```javascript
 var util = require('util');
 var accountName = 'testadlsacct';
@@ -143,8 +136,7 @@ filesystemClient.fileSystem.listFileStatus(accountName, pathToEnumerate, functio
 ```
 
 ## 関連項目
-
-- [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
-- [Microsoft Azure SDK for Node.js - Data Lake Analytics の管理](https://www.npmjs.com/package/azure-arm-datalake-analytics)
+* [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
+* [Microsoft Azure SDK for Node.js - Data Lake Analytics の管理](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 
 <!---HONumber=AcomDC_0914_2016-->

@@ -1,28 +1,30 @@
-<properties
-	pageTitle="PowerApps Enterprise への Excel API の追加 | Microsoft Azure"
-	description="組織の App Service 環境での新しい Excel API の作成または構成"
-	services=""
-    suite="powerapps"
-	documentationCenter="" 
-	authors="rajeshramabathiran"
-	manager="erikre"
-	editor=""/>
+---
+title: PowerApps Enterprise への Excel API の追加 | Microsoft Docs
+description: 組織の App Service 環境での新しい Excel API の作成または構成
+services: ''
+suite: powerapps
+documentationcenter: ''
+author: rajeshramabathiran
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="powerapps"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na" 
-   ms.date="05/02/2016"
-   ms.author="litran"/>
+ms.service: powerapps
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/02/2016
+ms.author: litran
 
+---
 # PowerApps Enterprise で新しい Excel API を作成する
-
-> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> [!IMPORTANT]
+> このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
 > 
-> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページをご覧ください。  
-> - PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事をご覧ください。 
+> * PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページをご覧ください。  
+> * PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事をご覧ください。 
+> 
+> 
 
 <!--Archived
 Add the Excel API to your organization's (tenant) app service environment. 
@@ -30,7 +32,7 @@ Add the Excel API to your organization's (tenant) app service environment.
 ## Create the API in the Azure portal
 
 1. In the [Azure portal](https://portal.azure.com/), sign-in with your work account. For example, sign-in with *yourUserName*@*YourCompany*.com. When you do this, you are automatically signed in to your company subscription.
- 
+
 2. Select **Browse** in the task bar:  
 ![][4]
 
@@ -44,7 +46,7 @@ Add the Excel API to your organization's (tenant) app service environment.
 ![Add API][2]
 
 6. Enter a descriptive **name** for your API.  
-	
+
 7. In **Source**, select **Available APIs** to select the pre-built APIs, and then select **Excel**:  
 ![select Excel api][3]
 

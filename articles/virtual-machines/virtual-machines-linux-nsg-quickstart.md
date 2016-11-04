@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Linux 仮想マシンへのポートの開放 |Microsoft Azure"
-   description="Azure Resource Manager デプロイメント モデルと Azure CLI を使用して、Linux VM へのポートを開き、エンドポイントを作成する方法について説明します。"
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""/>
+---
+title: Linux 仮想マシンへのポートの開放 | Microsoft Docs
+description: Azure Resource Manager デプロイメント モデルと Azure CLI を使用して、Linux VM へのポートを開き、エンドポイントを作成する方法について説明します。
+services: virtual-machines-linux
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure-services"
-   ms.date="08/08/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 08/08/2016
+ms.author: iainfou
 
+---
 # Azure での Linux VM へのポートの開放
 サブネットまたは仮想マシン (VM) ネットワーク インターフェイスでネットワーク フィルターを作成して、Azure で VM へのポートを開くか、エンドポイントを作成します。着信および発信の両方のトラフィックを制御するこれらのフィルターを、トラフィックを受信するリソースに接続されているネットワーク セキュリティ グループに配置します。ポート 80 での Web トラフィックの一般的な例を使用して説明します。
 
@@ -57,8 +57,8 @@ azure network vnet subnet set --resource-group TestRG --name TestSubnet --networ
 ## 次のステップ
 この例では、HTTP トラフィックを許可する単純な規則を作成します。より精密な環境の作成については、次の記事で確認できます。
 
-- [Azure リソース マネージャーの概要](../resource-group-overview.md)
-- [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
-- [ロード バランサーのための Azure Resource Manager の概要](../load-balancer2 /load-balancer-arm.md)
+* [Azure リソース マネージャーの概要](../resource-group-overview.md)
+* [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
+* [ロード バランサーのための Azure Resource Manager の概要](../load-balancer/load-balancer-arm.md)
 
 <!---HONumber=AcomDC_0907_2016-->

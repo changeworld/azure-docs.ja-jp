@@ -1,37 +1,32 @@
-<properties
-    pageTitle="App Service Mobile Apps の管理されたクライアント ライブラリの操作 (Windows | Xamarin) | Microsoft Azure"
-    description="Windows と Xamarin アプリで Azure App Service Mobile Apps 向け .NET クライアントを使用する方法について説明します。"
-    services="app-service\mobile"
-    documentationCenter=""
-    authors="adrianhall"
-    manager="erikre"
-    editor=""/>
+---
+title: App Service Mobile Apps の管理されたクライアント ライブラリの操作 (Windows | Microsoft Docs
+description: Windows と Xamarin アプリで Azure App Service Mobile Apps 向け .NET クライアントを使用する方法について説明します。
+services: app-service\mobile
+documentationcenter: ''
+author: adrianhall
+manager: erikre
+editor: ''
 
-<tags
-    ms.service="app-service-mobile"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-multiple"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="10/01/2016"
-    ms.author="adrianha"/>
+ms.service: app-service-mobile
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-multiple
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 10/01/2016
+ms.author: adrianha
 
-
+---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
+[!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-[AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-##<a name="overview"></a>Overview
-
+## <a name="overview"></a>Overview
 このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。 Mobile Apps を初めて使用する場合は、まず、[Azure Mobile Apps のクイックスタート][1] チュートリアルを完了することを検討してください。 このガイドでは、クライアント側の管理された SDK に重点を置いています。 Mobile Apps 用のサーバー側 SDK の詳細については、[.NET Server SDK][2] または [Node.js Server SDK][3] に関するドキュメントを参照してください。
 
 ## <a name="reference-documentation"></a>リファレンス ドキュメント
-
 クライアント SDK のリファレンス ドキュメントについては、「[Azure Mobile Apps .NET クライアント リファレンス][4]」を参照してください。
 GitHub リポジトリの「[Azure Samples (Azure サンプル)][5]」にも、いくつかのクライアント サンプルがあります。
 
 ## <a name="supported-platforms"></a>サポートされているプラットフォーム
-
 .NET プラットフォームでは、次のプラットフォームをサポートしています。
 
 * API 19 ～ 24 (KitKat から Nougat) 対応 Xamarin Android リリース
@@ -42,8 +37,7 @@ GitHub リポジトリの「[Azure Samples (Azure サンプル)][5]」にも、�
 
 "サーバーフロー" の認証では、UI の表示に WebView を使用します。  デバイスで WebView UI を表示できない場合は、他の認証方法が必要になります。  そのため、この SDK は腕時計型デバイスのような制限付きデバイスには適していません。
 
-##<a name="<a-name="setup"></a>setup-and-prerequisites"></a><a name="setup"></a>セットアップと前提条件
-
+## <a name="<a-name="setup"></a>setup-and-prerequisites"></a><a name="setup"></a>セットアップと前提条件
 テーブルを少なくとも 1 つ含むモバイル アプリ バックエンド プロジェクトを既に作成して発行してあるものとします。  このトピックで使用するコードでは、テーブルの名前は `TodoItem` であり、`Id`、`Text`、`Complete` の各列が含まれています。 このテーブルは、「Azure Mobile Apps クイックスタート」で作成したものと同じテーブルです。
 
 C# での対応する型指定されたクライアント側の型は次のクラスです。
@@ -63,24 +57,20 @@ C# での対応する型指定されたクライアント側の型は次のク�
 
 Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]をご覧ください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 **Azure ポータル** で [Easy Tables]設定を使用することもできます。
 
-###<a name="how-to:-install-the-managed-client-sdk-package"></a>方法: 管理されたクライアント SDK パッケージをインストールする
-
+### <a name="how-to:-install-the-managed-client-sdk-package"></a>方法: 管理されたクライアント SDK パッケージをインストールする
 [NuGet][9] から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
 
-+ **Visual Studio** でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、**[インストール]** をクリックします。
-
-+ **Xamarin Studio** でプロジェクトを右クリックし、**[Add (追加)]**、 > **[Add NuGet Packages (NuGet パッケージの追加)]** の順にクリックします。`Microsoft.Azure.Mobile.Client ` パッケージを見つけ、**[Add Package (パッケージの追加)]** をクリックします。
+* **Visual Studio** でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、**[インストール]** をクリックします。
+* **Xamarin Studio** でプロジェクトを右クリックし、**[Add (追加)]**、 > **[Add NuGet Packages (NuGet パッケージの追加)]** の順にクリックします。`Microsoft.Azure.Mobile.Client ` パッケージを見つけ、**[Add Package (パッケージの追加)]** をクリックします。
 
 メイン アクティビティ ファイルに、次の **using** ステートメントを必ず追加してください。
 
     using Microsoft.WindowsAzure.MobileServices;
 
-###<a name="<a-name="symbolsource"></a>how-to:-work-with-debug-symbols-in-visual-studio"></a><a name="symbolsource"></a>方法: Visual Studio でデバッグ シンボルを使用する
-
+### <a name="<a-name="symbolsource"></a>how-to:-work-with-debug-symbols-in-visual-studio"></a><a name="symbolsource"></a>方法: Visual Studio でデバッグ シンボルを使用する
 Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource][10] で入手できます。  SymbolSource を Visual Studio と統合する場合は、[SymbolSource の説明][11]をご覧ください。
 
-##<a name="<a-name="create-client"></a>create-the-mobile-apps-client"></a><a name="create-client"></a>Mobile Apps クライアントの作成
-
+## <a name="<a-name="create-client"></a>create-the-mobile-apps-client"></a><a name="create-client"></a>Mobile Apps クライアントの作成
 次のコードでは、モバイル アプリ バックエンドへのアクセスに使用する [MobileServiceClient][12] オブジェクトを作成します。
 
     var client = new MobileServiceClient("MOBILE_APP_URL");
@@ -88,7 +78,6 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource][10] �
 上記のコードで、`MOBILE_APP_URL` をモバイル アプリ バックエンドの URL に置き換えます。この URL は、[Azure ポータル]のモバイル アプリ バックエンドのブレードで確認できます。 MobileServiceClient オブジェクトはシングルトンである必要があります。
 
 ## <a name="work-with-tables"></a>テーブルの操作
-
 以下のセクションでは、レコードを検索し、取得する方法や、テーブル内のデータを変更する方法について詳しく説明します。  次のトピックについて説明します。
 
 * [テーブル参照を作成する](#instantiating)
@@ -106,8 +95,7 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource][10] �
 * [Windows ユーザー インターフェイスへのバインド](#binding)
 * [ページ サイズを変更する](#pagesize)
 
-###<a name="<a-name="instantiating"></a>how-to:-create-a-table-reference"></a><a name="instantiating"></a>方法: テーブル参照を作成する
-
+### <a name="<a-name="instantiating"></a>how-to:-create-a-table-reference"></a><a name="instantiating"></a>方法: テーブル参照を作成する
 バックエンド テーブルのデータへのアクセスまたはデータの変更を行うすべてのコードで、 `MobileServiceTable` オブジェクトに対して関数を呼び出します。 次のように、 [GetTable] メソッドを呼び出して、テーブルへの参照を取得します。
 
     IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
@@ -119,20 +107,21 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource][10] �
 
 型指定されていないクエリでは、基になる OData クエリ文字列を指定する必要があります。
 
-###<a name="<a-name="querying"></a>how-to:-query-data-from-your-mobile-app"></a><a name="querying"></a>方法: Mobile App のデータを照会する
-
+### <a name="<a-name="querying"></a>how-to:-query-data-from-your-mobile-app"></a><a name="querying"></a>方法: Mobile App のデータを照会する
 このセクションでは、モバイル アプリ バックエンドにクエリを発行する方法について説明します。これには次の機能が含まれます。
 
-- [返されるデータをフィルター処理する](#filtering)
-- [返されるデータを並べ替える](#sorting)
-- [ページにデータを返す](#paging)
-- [特定の列を選択する](#selecting)
-- [ID でデータを検索する](#lookingup)
+* [返されるデータをフィルター処理する](#filtering)
+* [返されるデータを並べ替える](#sorting)
+* [ページにデータを返す](#paging)
+* [特定の列を選択する](#selecting)
+* [ID でデータを検索する](#lookingup)
 
->[AZURE.NOTE] すべての行が返されるのを防ぐために、サーバー側で設定されたページ サイズが適用されます。  ページングは、大きなデータ セットの既定の要求がサービスに悪影響を与えるのを防ぎます。  50 行を超える行を返すには、「ページにデータを返す」で説明するように、`Skip` メソッドと `Take` メソッドを使用します。
+> [!NOTE]
+> すべての行が返されるのを防ぐために、サーバー側で設定されたページ サイズが適用されます。  ページングは、大きなデータ セットの既定の要求がサービスに悪影響を与えるのを防ぎます。  50 行を超える行を返すには、「ページにデータを返す」で説明するように、`Skip` メソッドと `Take` メソッドを使用します。
+> 
+> 
 
-###<a name="<a-name="filtering"></a>how-to:-filter-returned-data"></a><a name="filtering"></a>方法: 返されるデータをフィルター処理する
-
+### <a name="<a-name="filtering"></a>how-to:-filter-returned-data"></a><a name="filtering"></a>方法: 返されるデータをフィルター処理する
 次のコードは、クエリに `Where` 句を含めることによってデータをフィルター処理する方法を示しています。 このコードは、`Complete` プロパティが `false` に等しい `todoTable` からすべての項目を返します。 [where] 関数は、テーブルに対するクエリに行のフィルタリング述語を適用します。
 
     // This query filters out completed TodoItems and items without a timestamp.
@@ -185,8 +174,7 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource][10] �
 
 Server SDK のサポート対象については、 [OData v3 のドキュメント]をご覧ください。
 
-###<a name="<a-name="sorting"></a>how-to:-sort-returned-data"></a><a name="sorting"></a>方法: 返されるデータを並べ替える
-
+### <a name="<a-name="sorting"></a>how-to:-sort-returned-data"></a><a name="sorting"></a>方法: 返されるデータを並べ替える
 次のコードは、クエリに [OrderBy] 関数または [OrderByDescending] 関数を含めることによってデータを並べ替える方法を示しています。 次のコードは、`todoTable` から、`Text` フィールドの値に基づいて昇順に並べ替えられた項目を返します。
 
     // Sort items in ascending order by Text field
@@ -199,8 +187,7 @@ Server SDK のサポート対象については、 [OData v3 のドキュメン�
                     .OrderByDescending(todoItem => todoItem.Text)
     List<TodoItem> items = await query.ToListAsync();
 
-###<a name="<a-name="paging"></a>how-to:-return-data-in-pages"></a><a name="paging"></a>方法: ページにデータを返す
-
+### <a name="<a-name="paging"></a>how-to:-return-data-in-pages"></a><a name="paging"></a>方法: ページにデータを返す
 既定では、バックエンドは最初の 50 行のみを返します。 [Take] メソッドを呼び出すことによって、返される行の数を増やすことができます。 [Skip] メソッドと共に `Take` を使用して、クエリによって返されるデータセット全体のうち特定の "ページ" を要求します。 次のクエリを実行すると、テーブルの最初の上位 3 つの項目が返されます。
 
     // Define a filtered query that returns the top 3 items.
@@ -216,18 +203,20 @@ Server SDK のサポート対象については、 [OData v3 のドキュメン�
                     .Take(3);
     List<TodoItem> items = await query.ToListAsync();
 
-[IncludeTotalCount] メソッドは、指定された paging/limit 句を無視して、返された " _すべて_ " のレコードの総数を要求します。
+[IncludeTotalCount] メソッドは、指定された paging/limit 句を無視して、返された " *すべて* " のレコードの総数を要求します。
 
     query = query.IncludeTotalCount();
 
 実際のアプリケーションでは、ページャー コントロールまたは同等の UI と共に前の例と同様のクエリを使用して、ページ間を移動することができます。
 
->[AZURE.NOTE] また、モバイル アプリ バックエンドの 50 行の制限を無効にするには、[EnableQueryAttribute] をパブリック GET メソッドに適用し、ページング動作を指定する必要があります。 次のコードをメソッドに適用すると、返される最大行数が 1000 行に設定されます。
->
->    [EnableQuery(MaxTop=1000)]
+> [!NOTE]
+> また、モバイル アプリ バックエンドの 50 行の制限を無効にするには、[EnableQueryAttribute] をパブリック GET メソッドに適用し、ページング動作を指定する必要があります。 次のコードをメソッドに適用すると、返される最大行数が 1000 行に設定されます。
+> 
+> [EnableQuery(MaxTop=1000)]
+> 
+> 
 
 ### <a name="<a-name="selecting"></a>how-to:-select-specific-columns"></a><a name="selecting"></a>方法: 特定の列を選択する
-
 クエリに [Select] 句を追加することで、結果に含める一連のプロパティを指定できます。 たとえば、次のコードでは、1 つのフィールドだけを選択する方法と、複数のフィールドを選択し、フォーマットする方法も示しています。
 
     // Select one field -- just the Text
@@ -252,14 +241,12 @@ Server SDK のサポート対象については、 [OData v3 のドキュメン�
     List<string> items = await query.ToListAsync();
 
 ### <a name="<a-name="lookingup"></a>how-to:-look-up-data-by-id"></a><a name="lookingup"></a>方法: ID でデータを検索する
-
 [LookupAsync] 関数を使用すると、特定の ID でデータベースのオブジェクトを検索できます。
 
     // This query filters out the item with the ID of 37BBF396-11F0-4B39-85C8-B319C729AF6D
     TodoItem item = await todoTable.LookupAsync("37BBF396-11F0-4B39-85C8-B319C729AF6D");
 
 ### <a name="<a-name="untypedqueries"></a>how-to:-execute-untyped-queries"></a><a name="untypedqueries"></a>方法: 型指定されていないクエリを実行する
-
 型指定されていないテーブル オブジェクトを使用してクエリを実行するときは、次の例のように [ReadAsync]を呼び出して、OData クエリ文字列を明示的に指定する必要があります。
 
     // Lookup untyped data using OData
@@ -268,7 +255,6 @@ Server SDK のサポート対象については、 [OData v3 のドキュメン�
 プロパティ バッグのように使用できる JSON 値が返されます。 JToken と Newtonsoft Json.NET の詳細については、 [Json.NET] サイトをご覧ください。
 
 ### <a name="<a-name="inserting"></a>how-to:-insert-data-into-a-mobile-app-backend"></a><a name="inserting"></a>方法: モバイル アプリ バックエンドにデータを挿入する
-
 クライアントのすべての型には、**Id** という名前のメンバーが含まれる必要があります。その既定値は文字列です。 この **Id** は、オフライン同期で CRUD 操作を実行するために必要となります。 次のコードは、[InsertAsync] メソッドを使用してテーブルに新しい行を挿入する方法を示しています。 パラメーターには、挿入するデータが .NET オブジェクトとして含まれます。
 
     await todoTable.InsertAsync(todoItem);
@@ -292,7 +278,6 @@ Server SDK のサポート対象については、 [OData v3 のドキュメン�
     var inserted = await table.InsertAsync(jo);
 
 ### <a name="working-with-id-values"></a>ID 値の操作
-
 Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値をサポートしています。 文字列値により、アプリケーションで電子メール アドレスやユーザー名などのカスタム値を ID に使用することが可能になります。  文字列 ID には、次のような利点があります。
 
 * ID は、データベースとのラウンド トリップを行わずに生成されます。
@@ -304,8 +289,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
     JObject jo = new JObject();
     jo.Add("id", Guid.NewGuid().ToString("N"));
 
-###<a name="<a-name="modifying"></a>how-to:-modify-data-in-a-mobile-app-backend"></a><a name="modifying"></a>方法: モバイル アプリ バックエンドのデータを変更する
-
+### <a name="<a-name="modifying"></a>how-to:-modify-data-in-a-mobile-app-backend"></a><a name="modifying"></a>方法: モバイル アプリ バックエンドのデータを変更する
 次のコードは、 [UpdateAsync] メソッドを使用して、同じ ID を持つ既存のレコードを新しい情報で更新する方法を示しています。 パラメーターには、更新するデータが .NET オブジェクトとして含まれます。
 
     await todoTable.UpdateAsync(todoItem);
@@ -320,8 +304,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 
 更新を行うときは、 `id` フィールドを指定する必要があります。 バックエンドでは、 `id` フィールドを使用して更新する行を識別します。 `id` フィールドは、`InsertAsync` 呼び出しの結果から取得できます。 `id` 値を指定せずに項目を更新しようとすると、`ArgumentException` が発生します。
 
-###<a name="<a-name="deleting"></a>how-to:-delete-data-in-a-mobile-app-backend"></a><a name="deleting"></a>方法: モバイル アプリ バックエンドのデータを削除する
-
+### <a name="<a-name="deleting"></a>how-to:-delete-data-in-a-mobile-app-backend"></a><a name="deleting"></a>方法: モバイル アプリ バックエンドのデータを削除する
 次のコードは、 [DeleteAsync] メソッドを使用して既存のインスタンスを削除する方法を示しています。 インスタンスは、`todoItem` に設定した `id` フィールドで識別されます。
 
     await todoTable.DeleteAsync(todoItem);
@@ -334,8 +317,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 
 削除要求を行うときは、ID を指定する必要があります。 それ以外のプロパティは、サービスに渡されないか、またはサービスで無視されます。 通常、`DeleteAsync` の呼び出しの結果は `null` です。 渡す ID は、 `InsertAsync` の呼び出しの結果から取得できます。 `id` フィールドを指定せずに項目を削除しようとすると、`MobileServiceInvalidOperationException` がスローされます。
 
-###<a name="<a-name="optimisticconcurrency"></a>how-to:-use-optimistic-concurrency-for-conflict-resolution"></a><a name="optimisticconcurrency"></a>方法: 競合の解決にオプティミスティック同時実行制御を使用する
-
+### <a name="<a-name="optimisticconcurrency"></a>how-to:-use-optimistic-concurrency-for-conflict-resolution"></a><a name="optimisticconcurrency"></a>方法: 競合の解決にオプティミスティック同時実行制御を使用する
 複数のクライアントが同じ項目に対して同時に変更を書き込む場合があります。 競合を検出しない場合、最後に行われた書き込みによってそれ以前の更新がすべて上書きされます。 **オプティミスティック同時実行制御** では、それぞれのトランザクションがコミットでき、そのためリソース ロックが一切使用されないことを前提としています。  オプティミスティック同時実行制御ではトランザクションをコミットする前に、他のトランザクションがそのデータを変更していないことを確認します。 データが変更されている場合、トランザクションのコミットはロール バックされます。
 
 Mobile Apps はオプティミスティック同時実行制御をサポートしており、モバイル アプリ バックエンドで各テーブルに定義されている `version` システム プロパティ列を使用して各項目の変更を追跡します。 レコードが更新されるたびに、Mobile Apps はそのレコードの `version` プロパティを新しい値に設定します。 各更新要求の際に、要求に含まれているレコードの `version` プロパティが、サーバー上のレコードの同じプロパティと比較されます。 要求で渡されたバージョンがバックエンドと一致しない場合、クライアント ライブラリは `MobileServicePreconditionFailedException<T>` 例外を生成します。 例外に含まれている型は、レコードのサーバー側のバージョンを含んでいるバックエンドのレコードです。 アプリケーションはこの情報を使用して、バックエンドからの正しい `version` 値で更新要求をもう一度実行して変更をコミットするかどうかを判断できます。
@@ -421,8 +403,7 @@ Mobile Apps はオプティミスティック同時実行制御をサポート�
 
 詳細については、「 [Azure モバイル アプリでのオフライン データ同期] 」をご覧ください。
 
-###<a name="<a-name="binding"></a>how-to:-bind-mobile-apps-data-to-a-windows-user-interface"></a><a name="binding"></a>方法: Mobile Apps のデータを Windows ユーザー インターフェイスにバインドする
-
+### <a name="<a-name="binding"></a>how-to:-bind-mobile-apps-data-to-a-windows-user-interface"></a><a name="binding"></a>方法: Mobile Apps のデータを Windows ユーザー インターフェイスにバインドする
 このセクションでは、Windows アプリで UI 要素を使用して、返されたデータ オブジェクトを表示する方法について説明します。  次のコード例では、不完全な項目のクエリによってリストのソースにバインドします。 [MobileServiceCollection] は、Mobile Apps 対応のバインディング コレクションを作成します。
 
     // This query filters out completed TodoItems.
@@ -454,8 +435,7 @@ Windows Phone 8 と "Silverlight" アプリで新しいコレクションを使�
 
 テーブルに多くのフィールドが存在するときに、コントロールにその一部だけを表示する必要があるとします。 UI に表示する特定の列を選択するときは、前述の「[特定の列を選択する](#selecting)」のガイダンスを参考にしてください。
 
-###<a name="<a-name="pagesize"></a>change-the-page-size"></a><a name="pagesize"></a>ページ サイズの変更
-
+### <a name="<a-name="pagesize"></a>change-the-page-size"></a><a name="pagesize"></a>ページ サイズの変更
 Azure Mobile Apps は、既定で要求ごとに最大 50 個の項目を返します。  クライアントとサーバーの両方で最大ページ サイズを増やすことで、ページング サイズを変更できます。  要求されたページ サイズを増やすには、`PullAsync()` の使用時に `PullOptions` を指定します。
 
     PullOptions pullOptions = new PullOptions
@@ -465,18 +445,15 @@ Azure Mobile Apps は、既定で要求ごとに最大 50 個の項目を返し�
 
 サーバー内で `PageSize` に 100 以上の値を設定した場合は、要求で最大 100 個の項目が返されます。
 
-##<a name="<a-name="#offlinesync"></a>work-with-offline-tables"></a><a name="#offlinesync"></a>オフライン テーブルの操作
-
+## <a name="<a-name="#offlinesync"></a>work-with-offline-tables"></a><a name="#offlinesync"></a>オフライン テーブルの操作
 オフライン テーブルは、ローカル SQLite ストア データを使用して、オフラインのときに使用するためのデータを格納します。  テーブル操作はすべて、リモート サーバー ストアではなく、ローカル SQLite ストアに対して実行されます。  オフライン テーブルを作成するには、まずプロジェクトを準備します。
 
 1. Visual Studio で、ソリューション、**[ソリューションの NuGet パッケージの管理...]** の順に右クリックし、ソリューション内のすべてのプロジェクトの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを探してインストールします。
-
 2. (省略可能) Windows デバイスをサポートする場合、次の SQLite ランタイム パッケージのいずれかをインストールします。
-
-    * **Windows 8.1 Runtime: **[SQLite for Windows 8.1][3] をインストールします。
-    * **Windows Phone 8.1: **[SQLite for Windows Phone 8.1][4] をインストールします。
-    * **ユニバーサル Windows プラットフォーム: **[ユニバーサル Windows プラットフォーム用 SQLite][5] をインストールします。
-
+   
+   * **Windows 8.1 Runtime: **[SQLite for Windows 8.1][3] をインストールします。
+   * **Windows Phone 8.1: **[SQLite for Windows Phone 8.1][4] をインストールします。
+   * **ユニバーサル Windows プラットフォーム: **[ユニバーサル Windows プラットフォーム用 SQLite][5] をインストールします。
 3. (省略可能)。 Windows デバイスで、**[参照]**、 > **[参照の追加]** の順に右クリックします。**Windows** フォルダー、**[拡張機能]** の順に展開してから、**Visual C++ 2013 Runtime for Windows** SDK と共に適切な **SQLite for Windows** SDK を有効にします。
     Windows プラットフォームによって SQLite SDK の名前はわずかに異なります。
 
@@ -499,8 +476,7 @@ Azure Mobile Apps は、既定で要求ごとに最大 50 個の項目を返し�
 
 オフライン テーブルを使用する際に、認証は必要ありません。  認証が必要になるのは、バックエンド サービスと通信するときのみです。
 
-###<a name="<a-name="syncoffline"></a>syncing-an-offline-table"></a><a name="syncoffline"></a>オフライン テーブルの同期
-
+### <a name="<a-name="syncoffline"></a>syncing-an-offline-table"></a><a name="syncoffline"></a>オフライン テーブルの同期
 既定では、オフライン テーブルはバックエンドと同期されません。  同期は、2 つの部分に分割されます。  新しい項目のダウンロードから個別に変更をプッシュできます。  典型的な同期メソッドを次に示します。
 
     public async Task SyncAsync()
@@ -553,8 +529,7 @@ Azure Mobile Apps は、既定で要求ごとに最大 50 個の項目を返し�
 
 競合の処理は、`PullAsync()` メソッドで行われます。  オンライン テーブルと同じ方法で競合を処理することができます。  競合が発生するのは、挿入、更新、または削除のときではなく、`PullAsync()` が呼び出されたときです。 複数の競合が発生した場合、競合は単一の MobileServicePushFailedException にバンドルされます。  エラーは個別に処理します。
 
-##<a name="<a-name="#customapi"></a>work-with-a-custom-api"></a><a name="#customapi"></a>カスタム API の使用
-
+## <a name="<a-name="#customapi"></a>work-with-a-custom-api"></a><a name="#customapi"></a>カスタム API の使用
 カスタム API を使用してカスタム エンドポイントを定義することにより、insert、update、delete、read のいずれの操作にも関連しないサーバー機能を公開することができます。 カスタム API を使用することによって、HTTP メッセージ ヘッダーの読み取りや設定、JSON 以外のメッセージ本文形式の定義など、メッセージングをより柔軟に制御することができます。
 
 クライアントで [InvokeApiAsync] メソッドのいずれかを呼び出して、カスタム API を呼び出します。 たとえば、次のコード行は、バックエンドの **completeAll** API に POST 要求を送信します。
@@ -563,140 +538,143 @@ Azure Mobile Apps は、既定で要求ごとに最大 50 個の項目を返し�
 
 この形式は型指定されたメソッド呼び出しであり、**MarkAllResult** の戻り値の型が定義されている必要があります。 型指定および型指定のないメソッドの両方がサポートされます。
 
-##<a name="<a-name="authentication"></a>authenticate-users"></a><a name="authentication"></a>ユーザーの認証
-
+## <a name="<a-name="authentication"></a>authenticate-users"></a><a name="authentication"></a>ユーザーの認証
 Mobile Apps は、Facebook、Google、Microsoft アカウント、Twitter、Azure Active Directory などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。 さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。 詳細については、チュートリアル「 [アプリへの認証の追加]」を参照してください。
 
 _クライアント側管理フロー_と_サーバー側管理フロー_の 2 つの認証フローがサポートされています。 サーバー側管理フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント側管理フローでは、プロバイダー固有とデバイス固有の SDK を利用することから、デバイス固有の機能との統合がさらに進みます。
 
->[AZURE.NOTE] 運用環境のアプリでは、クライアント側管理フローをお勧めします。
+> [!NOTE]
+> 運用環境のアプリでは、クライアント側管理フローをお勧めします。
+> 
+> 
 
 認証を設定するには、1 つ以上の ID プロバイダーにアプリを登録する必要があります。  ID プロバイダーは、アプリのクライアント ID とクライアント シークレットを生成します。  これらの値は、Azure App Service の認証/承認を有効にするためにバックエンドで設定されます。  詳細については、 [アプリケーションへの認証の追加]のチュートリアルの手順を参照してください。
 
 このセクションでは、次のトピックについて説明します。
 
-+ [クライアント側管理認証](#clientflow)
-+ [サーバー側管理認証](#serverflow)
-+ [認証トークンをキャッシュする](#caching)
+* [クライアント側管理認証](#clientflow)
+* [サーバー側管理認証](#serverflow)
+* [認証トークンをキャッシュする](#caching)
 
-###<a name="<a-name="clientflow"></a>client-managed-authentication"></a><a name="clientflow"></a>クライアント側管理認証
-
+### <a name="<a-name="clientflow"></a>client-managed-authentication"></a><a name="clientflow"></a>クライアント側管理認証
 アプリ側から自主的に ID プロバイダーにアクセスし、取得したトークンをバックエンドへのログイン時に渡すことができます。 このクライアント フローでは、ユーザーにシングル サインオン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。 ID プロバイダー SDK を使用すると、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、クライアント フローの認証はサーバー フローを使用する方法よりも推奨されます。
 
 クライアント フローの認証パターンとして、次の例が提供されています。
 
-+ [Active Directory Authentication Library](#adal)
-+ [Facebook と Google](#client-facebook)
-+ [Live SDK](#client-livesdk)
+* [Active Directory Authentication Library](#adal)
+* [Facebook と Google](#client-facebook)
+* [Live SDK](#client-livesdk)
 
 #### <a name="<a-name="adal"></a>authenticate-users-with-the-active-directory-authentication-library"></a><a name="adal"></a>Active Directory Authentication Library を使用したユーザーの認証
-
 Active Directory Authentication Library (ADAL) を使うと、クライアントから Azure Active Directory 認証を使用してユーザー認証を開始できます。
 
 1. 「[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法]」のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
 2. Visual Studio または Xamarin Studio でプロジェクトを開き、 `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet パッケージへの参照を追加します。 検索時に、プレリリース版を含めます。
 3. ご使用のプラットフォームに応じて、以下のコードをアプリケーションに追加します。 それぞれで、次の置換を行います。
+   
+   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.windows.net/contoso.onmicrosoft.com のようになります。 この値は、[Azure クラシック ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
+   * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
+   * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
+   * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 この値は、*https://contoso.azurewebsites.net/.auth/login/done* のようにする必要があります。
+     
+     各プラットフォームに必要なコードは次のとおりです。
+     
+     **Windows:**
+     
+       private MobileServiceUser user;
+       private async Task AuthenticateAsync()
+       {
+     
+           string authority = "INSERT-AUTHORITY-HERE";
+           string resourceId = "INSERT-RESOURCE-ID-HERE";
+           string clientId = "INSERT-CLIENT-ID-HERE";
+           string redirectUri = "INSERT-REDIRECT-URI-HERE";
+           while (user == null)
+           {
+               string message;
+               try
+               {
+                   AuthenticationContext ac = new AuthenticationContext(authority);
+                   AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
+                       new Uri(redirectUri), new PlatformParameters(PromptBehavior.Auto, false) );
+                   JObject payload = new JObject();
+                   payload["access_token"] = ar.AccessToken;
+                   user = await App.MobileService.LoginAsync(
+                       MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
+                   message = string.Format("You are now logged in - {0}", user.UserId);
+               }
+               catch (InvalidOperationException)
+               {
+                   message = "You must log in. Login Required";
+               }
+               var dialog = new MessageDialog(message);
+               dialog.Commands.Add(new UICommand("OK"));
+               await dialog.ShowAsync();
+           }
+       }
+     
+     **Xamarin.iOS**
+     
+       private MobileServiceUser user;
+       private async Task AuthenticateAsync(UIViewController view)
+       {
+     
+           string authority = "INSERT-AUTHORITY-HERE";
+           string resourceId = "INSERT-RESOURCE-ID-HERE";
+           string clientId = "INSERT-CLIENT-ID-HERE";
+           string redirectUri = "INSERT-REDIRECT-URI-HERE";
+           try
+           {
+               AuthenticationContext ac = new AuthenticationContext(authority);
+               AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
+                   new Uri(redirectUri), new PlatformParameters(view));
+               JObject payload = new JObject();
+               payload["access_token"] = ar.AccessToken;
+               user = await client.LoginAsync(
+                   MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
+           }
+           catch (Exception ex)
+           {
+               Console.Error.WriteLine(@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
+           }
+       }
+     
+     **Xamarin.Android**
+     
+       private MobileServiceUser user;
+       private async Task AuthenticateAsync()
+       {
+     
+           string authority = "INSERT-AUTHORITY-HERE";
+           string resourceId = "INSERT-RESOURCE-ID-HERE";
+           string clientId = "INSERT-CLIENT-ID-HERE";
+           string redirectUri = "INSERT-REDIRECT-URI-HERE";
+           try
+           {
+               AuthenticationContext ac = new AuthenticationContext(authority);
+               AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
+                   new Uri(redirectUri), new PlatformParameters(this));
+               JObject payload = new JObject();
+               payload["access_token"] = ar.AccessToken;
+               user = await client.LoginAsync(
+                   MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
+           }
+           catch (Exception ex)
+           {
+               AlertDialog.Builder builder = new AlertDialog.Builder(this);
+               builder.SetMessage(ex.Message);
+               builder.SetTitle("You must log in. Login Required");
+               builder.Create().Show();
+           }
+       }
+       protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+       {
+     
+           base.OnActivityResult(requestCode, resultCode, data);
+           AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
+       }
 
-    * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.windows.net/contoso.onmicrosoft.com のようになります。 この値は、[Azure クラシック ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
-    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
-    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
-    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの _/.auth/login/done_ エンドポイントに置き換えます。 この値は、_https://contoso.azurewebsites.net/.auth/login/done_ のようにする必要があります。
-
-    各プラットフォームに必要なコードは次のとおりです。
-
-    **Windows:**
-
-        private MobileServiceUser user;
-        private async Task AuthenticateAsync()
-        {
-            string authority = "INSERT-AUTHORITY-HERE";
-            string resourceId = "INSERT-RESOURCE-ID-HERE";
-            string clientId = "INSERT-CLIENT-ID-HERE";
-            string redirectUri = "INSERT-REDIRECT-URI-HERE";
-            while (user == null)
-            {
-                string message;
-                try
-                {
-                    AuthenticationContext ac = new AuthenticationContext(authority);
-                    AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
-                        new Uri(redirectUri), new PlatformParameters(PromptBehavior.Auto, false) );
-                    JObject payload = new JObject();
-                    payload["access_token"] = ar.AccessToken;
-                    user = await App.MobileService.LoginAsync(
-                        MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
-                    message = string.Format("You are now logged in - {0}", user.UserId);
-                }
-                catch (InvalidOperationException)
-                {
-                    message = "You must log in. Login Required";
-                }
-                var dialog = new MessageDialog(message);
-                dialog.Commands.Add(new UICommand("OK"));
-                await dialog.ShowAsync();
-            }
-        }
-
-    **Xamarin.iOS**
-
-        private MobileServiceUser user;
-        private async Task AuthenticateAsync(UIViewController view)
-        {
-            string authority = "INSERT-AUTHORITY-HERE";
-            string resourceId = "INSERT-RESOURCE-ID-HERE";
-            string clientId = "INSERT-CLIENT-ID-HERE";
-            string redirectUri = "INSERT-REDIRECT-URI-HERE";
-            try
-            {
-                AuthenticationContext ac = new AuthenticationContext(authority);
-                AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
-                    new Uri(redirectUri), new PlatformParameters(view));
-                JObject payload = new JObject();
-                payload["access_token"] = ar.AccessToken;
-                user = await client.LoginAsync(
-                    MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine(@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
-            }
-        }
-
-    **Xamarin.Android**
-
-        private MobileServiceUser user;
-        private async Task AuthenticateAsync()
-        {
-            string authority = "INSERT-AUTHORITY-HERE";
-            string resourceId = "INSERT-RESOURCE-ID-HERE";
-            string clientId = "INSERT-CLIENT-ID-HERE";
-            string redirectUri = "INSERT-REDIRECT-URI-HERE";
-            try
-            {
-                AuthenticationContext ac = new AuthenticationContext(authority);
-                AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
-                    new Uri(redirectUri), new PlatformParameters(this));
-                JObject payload = new JObject();
-                payload["access_token"] = ar.AccessToken;
-                user = await client.LoginAsync(
-                    MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
-            }
-            catch (Exception ex)
-            {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.SetMessage(ex.Message);
-                builder.SetTitle("You must log in. Login Required");
-                builder.Create().Show();
-            }
-        }
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-        {
-            base.OnActivityResult(requestCode, resultCode, data);
-            AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
-        }
-
-####<a name="<a-name="client-facebook"></a>single-sign-on-using-a-token-from-facebook-or-google"></a><a name="client-facebook"></a>Facebook または Google から取得したトークンを使用したシングル サインオン
-
+#### <a name="<a-name="client-facebook"></a>single-sign-on-using-a-token-from-facebook-or-google"></a><a name="client-facebook"></a>Facebook または Google から取得したトークンを使用したシングル サインオン
 この Facebook や Google のスニペットに示すようにクライアント フローを使用できます。
 
     var token = new JObject();
@@ -728,8 +706,7 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
         }
     }
 
-####<a name="<a-name="client-livesdk"></a>single-sign-in-using-microsoft-account-with-the-live-sdk"></a><a name="client-livesdk"></a>Microsoft アカウントと Live SDK を使用したシングル サインイン
-
+#### <a name="<a-name="client-livesdk"></a>single-sign-in-using-microsoft-account-with-the-live-sdk"></a><a name="client-livesdk"></a>Microsoft アカウントと Live SDK を使用したシングル サインイン
 ユーザーを認証するには、Microsoft アカウント デベロッパー センターでアプリを登録する必要があります。 モバイル アプリ バックエンドで登録の詳細を構成します。 Microsoft アカウント登録を作成し、それを モバイル アプリ バックエンドに接続するには、 [Microsoft アカウント ログインを使用するためのアプリの登録]の手順を完了します。 Windows ストア と Windows Phone 8/Silverlight の両方のバージョンのアプリがある場合は、Windows ストア バージョンを最初に登録します。
 
 次のコードでは Live SDK を使用して認証し、返されたトークンを利用して Mobile App バックエンドにサインインします。
@@ -783,8 +760,7 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
 
 詳細については、 [Windows Live SDK] のドキュメントをご覧ください。
 
-###<a name="<a-name="serverflow"></a>server-managed-authentication"></a><a name="serverflow"></a>サーバー側管理認証
-
+### <a name="<a-name="serverflow"></a>server-managed-authentication"></a><a name="serverflow"></a>サーバー側管理認証
 ID プロバイダーを登録したら、プロバイダーの [MobileServiceAuthenticationProvider] 値を指定して、[MobileServiceClient] で [LoginAsync] メソッドを呼び出します。 たとえば、次のコードは、Facebook を使用してサーバー フローのサインインを開始します。
 
     private MobileServiceUser user;
@@ -815,8 +791,7 @@ Facebook 以外の ID プロバイダーを使用している場合は、[Mobile
 
 サーバー フローでは、Azure App Service は、選択したプロバイダーのサインイン ページを表示することで OAuth 認証フローを管理します。  ID プロバイダーから制御が戻ったら、Azure App Service は App Service 認証トークンを生成します。 [LoginAsync] メソッドは [MobileServiceUser] を返します。これにより、認証されたユーザーの [UserId] と、JSON Web トークン (JWT) としての [MobileServiceAuthenticationToken] が提供されます。 このトークンをキャッシュし、有効期限が切れるまで再利用できます。 詳細については、「[認証トークンをキャッシュする](#caching)」を参照してください。
 
-###<a name="<a-name="caching"></a>caching-the-authentication-token"></a><a name="caching"></a>認証トークンをキャッシュする
-
+### <a name="<a-name="caching"></a>caching-the-authentication-token"></a><a name="caching"></a>認証トークンをキャッシュする
 最初の認証に成功した後、プロバイダーからの認証トークンを保存することによって、ログイン メソッドの呼び出しを回避できる場合があります。  Windows ストア アプリと UWP アプリでは、正常にサインインした後、次のように [PasswordVault] を使用して現在の認証トークンをキャッシュできます。
 
     await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
@@ -857,16 +832,14 @@ Xamarin アプリでは、 [Xamarin.Auth] API を使用して、 **Account** オ
     // Authenticate using the access token.
     await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 
-##<a name="<a-name="pushnotifications"></a>push-notifications"></a><a name="pushnotifications"></a>プッシュ通知
-
+## <a name="<a-name="pushnotifications"></a>push-notifications"></a><a name="pushnotifications"></a>プッシュ通知
 以下のトピックでは、プッシュ通知について説明します。
 
 * [プッシュ通知に登録する](#register-for-push)
 * [Windows ストアのパッケージ SID を取得する](#package-sid)
 * [クロスプラットフォームのテンプレートで登録する](#register-xplat)
 
-###<a name="<a-name="register-for-push"></a>how-to:-register-for-push-notifications"></a><a name="register-for-push"></a>方法: プッシュ通知に登録する
-
+### <a name="<a-name="register-for-push"></a>how-to:-register-for-push-notifications"></a><a name="register-for-push"></a>方法: プッシュ通知に登録する
 Mobile Apps クライアントでは、Azure Notification Hubs によるプッシュ通知に登録できます。 登録する場合、プラットフォーム固有のプッシュ通知サービス (PNS) からハンドルを取得します。 この値は、登録を作成するときに、任意のタグと一緒に指定します。 次のコードは、Windows Notification Service (WNS) によるプッシュ通知用の Windows アプリを登録します。
 
     private async void InitNotificationsAsync()
@@ -883,8 +856,7 @@ WNS に対するプッシュを行う場合は、[Windows ストア パッケー
 クライアントからのタグ要求はサポートされていません。  タグ要求は、通告なく登録から削除されます。
 タグと共にデバイスを登録したい場合は、Notification Hubs API を使用するカスタム API を作成し、登録を代行させます。  `RegisterNativeAsync()` メソッドの代わりに、[カスタム API を呼び出します](#customapi)。
 
-###<a name="<a-name="package-sid"></a>how-to:-obtain-a-windows-store-package-sid"></a><a name="package-sid"></a>方法: Windows ストアのパッケージ SID を取得する
-
+### <a name="<a-name="package-sid"></a>how-to:-obtain-a-windows-store-package-sid"></a><a name="package-sid"></a>方法: Windows ストアのパッケージ SID を取得する
 Windows ストア アプリでプッシュ通知を有効にするには、パッケージ SID が必要です。  パッケージ SID を受け取るには、Windows ストアにアプリケーションを登録します。
 
 この値を取得するには:
@@ -895,15 +867,14 @@ Windows ストア アプリでプッシュ通知を有効にするには、パ�
 4. Microsoft アカウントを使用して [Windows デベロッパー センター] にログインします。 **[マイ アプリ]**で、作成したアプリ登録をクリックします。
 5. **[アプリ管理]**、 > **[アプリ ID]** の順にクリックし、下にスクロールして **[パッケージ SID]** を探します。
 
-多くの場合、パッケージ SID は URI として処理されます。その場合、スキームとして _ms-app://_ を使用する必要があります。 この値をプレフィックスとして連結して形成されたパッケージ SID のバージョンをメモしておきます。
+多くの場合、パッケージ SID は URI として処理されます。その場合、スキームとして *ms-app://* を使用する必要があります。 この値をプレフィックスとして連結して形成されたパッケージ SID のバージョンをメモしておきます。
 
 Xamarin アプリでは、iOS または Android プラットフォームで実行されているアプリを登録できる追加のコードが必要です。 詳細については、ご使用のプラットフォームに関するトピックをご覧ください。
 
 * [Xamarin.Android](app-service-mobile-xamarin-android-get-started-push.md#add-push)
 * [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started-push.md#add-push)
 
-###<a name="<a-name="register-xplat"></a>how-to:-register-push-templates-to-send-cross-platform-notifications"></a><a name="register-xplat"></a>方法: プッシュ テンプレートを登録してクロス プラットフォーム通知を送信する
-
+### <a name="<a-name="register-xplat"></a>how-to:-register-push-templates-to-send-cross-platform-notifications"></a><a name="register-xplat"></a>方法: プッシュ テンプレートを登録してクロス プラットフォーム通知を送信する
 テンプレートを登録するには、次のようにテンプレートで `RegisterAsync()` メソッドを使用します。
 
         JObject templates = myTemplates();
@@ -940,10 +911,8 @@ Xamarin アプリでは、iOS または Android プラットフォームで実�
 
 これらの登録済みテンプレートを使用して通知を送信する方法については、 [Notification Hubs API]に関するページをご覧ください。
 
-##<a name="<a-name="misc"></a>miscellaneous-topics"></a><a name="misc"></a>その他のトピック
-
-###<a name="<a-name="errors"></a>how-to:-handle-errors"></a><a name="errors"></a>方法: エラーを処理する
-
+## <a name="<a-name="misc"></a>miscellaneous-topics"></a><a name="misc"></a>その他のトピック
+### <a name="<a-name="errors"></a>how-to:-handle-errors"></a><a name="errors"></a>方法: エラーを処理する
 バックエンドでエラーが発生すると、クライアント SDK が `MobileServiceInvalidOperationException`を生成します。  次の例では、バックエンドによって返される例外を処理する方法を示します。
 
     private async void InsertTodoItem(TodoItem todoItem)
@@ -963,8 +932,7 @@ Xamarin アプリでは、iOS または Android プラットフォームで実�
 
 エラー状況を処理する別の例については、 [Mobile Apps ファイル サンプル]で確認できます。 [LoggingHandler] の例では、ログ記録代理ハンドラー (下記参照) を使用して、バックエンドに対する要求を記録します。
 
-###<a name="<a-name="headers"></a>how-to:-customize-request-headers"></a><a name="headers"></a>方法: 要求ヘッダーをカスタマイズする
-
+### <a name="<a-name="headers"></a>how-to:-customize-request-headers"></a><a name="headers"></a>方法: 要求ヘッダーをカスタマイズする
 特定のアプリケーション シナリオをサポートするには、モバイル アプリ バックエンドとの通信をカスタマイズすることが必要な場合があります。 たとえば、すべての送信要求にカスタム ヘッダーを追加したり、応答のステータス コードを変更したりすることが必要な場合がります。 次の例のように、カスタムの [DelegatingHandler]を使用できます。
 
     public async Task CallClientWithHandler()

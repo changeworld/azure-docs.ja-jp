@@ -1,24 +1,22 @@
-<properties
-	pageTitle="Machine Learning Studio におけるサンプル データセットの使用 | Microsoft Azure"
-	description="ML Studio に含まれるサンプル モデルで使用されるデータセットの説明です。実験には、これらのサンプル データセットを使用できます。"
-	services="machine-learning"
-	documentationCenter=""
-	authors="garyericson"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: Machine Learning Studio におけるサンプル データセットの使用 | Microsoft Docs
+description: ML Studio に含まれるサンプル モデルで使用されるデータセットの説明です。実験には、これらのサンプル データセットを使用できます。
+services: machine-learning
+documentationcenter: ''
+author: garyericson
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="garye"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/16/2016
+ms.author: garye
 
-
+---
 # Azure Machine Learning Studio におけるサンプル データセットの使用
-
 [top]: #machine-learning-sample-datasets
 
 Azure Machine Learning で新しいワークスペースを作成する場合、既定でさまざまなサンプルのデータセットと実験が含まれています。こうしたサンプル データセットの多くは、[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)のサンプル モデルで使用されています。その他にも Machine Learning で使用するさまざまな種類のデータの例が含まれています。
@@ -27,15 +25,13 @@ Azure Machine Learning で新しいワークスペースを作成する場合、
 
 ML Studio で新しい実験を開くか作成する場合、サンプル データセットの残りは、実験キャンバスの左側にあるモジュール パレットの **[保存されたデータセット]** に一覧表示されます。実験キャンバスにこれらのデータセットのいずれかをドラッグすると、独自の実験で使用できます。
 
-
 <!--
 For a list of sample experiments available in ML Studio, see [Machine Learning Sample Experiments][sample-experiments].
 
 [sample-experiments]: machine-learning-sample-experiments.md
 -->
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 <table>
 

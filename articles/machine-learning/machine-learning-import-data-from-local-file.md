@@ -1,33 +1,28 @@
-<properties
-	pageTitle="ローカル ファイルのデータを Machine Learning Studio にインポートする | Microsoft Azure"
-	description="ローカル ファイルのトレーニング データを Azure Machine Learning Studio にインポートする方法。"
-	keywords="データのインポート、データ形式、データ型、データ ソース、トレーニング データ"
-	services="machine-learning"
-	documentationCenter=""
-	authors="garyericson"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: ローカル ファイルのデータを Machine Learning Studio にインポートする | Microsoft Docs
+description: ローカル ファイルのトレーニング データを Azure Machine Learning Studio にインポートする方法。
+keywords: データのインポート、データ形式、データ型、データ ソース、トレーニング データ
+services: machine-learning
+documentationcenter: ''
+author: garyericson
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="garye;bradsev" />
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/16/2016
+ms.author: garye;bradsev
 
-
+---
 # ローカル ファイルのトレーニング データを Azure Machine Learning Studio にインポートする
-
-[AZURE.INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
-
+[!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
 
 独自のデータを Machine Learning Studio で使用するために、事前にローカル ハード ドライブからデータ ファイルをアップロードして、データセット モジュールをワークスペースで作成できます。
 
-
 ## ローカル ファイルからデータをインポートする
-
 次の手順に従って、ローカルのハード ドライブからデータをインポートできます。
 
 1. Machine Learning Studio ウィンドウの下部で、**[+新規]** をクリックします。

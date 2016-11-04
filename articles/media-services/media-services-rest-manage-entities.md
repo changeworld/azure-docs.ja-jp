@@ -1,46 +1,47 @@
 
-<properties 
-    pageTitle="REST API を使用した Media Services エンティティの管理 | Microsoft Azure" 
-    description="REST API を使用して Media Services エンティティを管理する方法について説明します。" 
-    authors="juliako" 
-    manager="dwrede" 
-    editor="" 
-    services="media-services" 
-    documentationCenter=""/>
+---
+title: REST API を使用した Media Services エンティティの管理 | Microsoft Docs
+description: REST API を使用して Media Services エンティティを管理する方法について説明します。
+author: juliako
+manager: dwrede
+editor: ''
+services: media-services
+documentationcenter: ''
 
-<tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/26/2016" 
-    ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: juliako
 
-
-#<a name="managing-media-services-entities-with-rest-api"></a>REST API を使用した Media Services エンティティの管理
-
-> [AZURE.SELECTOR]
-- [REST ()](media-services-rest-manage-entities.md)
-- [.NET](media-services-dotnet-manage-entities.md)
+---
+# <a name="managing-media-services-entities-with-rest-api"></a>REST API を使用した Media Services エンティティの管理
+> [!div class="op_single_selector"]
+> * [REST ()](media-services-rest-manage-entities.md)
+> * [.NET](media-services-dotnet-manage-entities.md)
+> 
+> 
 
 Microsoft Azure Media Services は、OData v3 上に構築された REST ベースのサービスです。 このため、他の OData サービスで行うのとほとんど同じ方法で、エンティティの追加、照会、更新、削除を行うことができます。 該当する場合には例外が呼び出されます。 OData の詳細については、 [Open Data Protocol に関するドキュメント](http://www.odata.org/documentation/)を参照してください。
 
-- エンティティの追加 
-- エンティティの照会 
-- 大規模なコレクションのエンティティの列挙
-- エンティティの更新 
-- エンティティの削除 
+* エンティティの追加 
+* エンティティの照会 
+* 大規模なコレクションのエンティティの列挙
+* エンティティの更新 
+* エンティティの削除 
 
->[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
->
->Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
+> [!NOTE]
+> Media Services REST API を使用する場合は、次のことに考慮します。
+> 
+> Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
+> 
+> Https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
+> 
+> 
 
->Https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
-
-
-##<a name="adding-entities"></a>エンティティの追加
-
+## <a name="adding-entities"></a>エンティティの追加
 Media Services のすべてのエンティティは、POST HTTP 要求によって Assets などのエンティティ セットに追加されます。
 
 次の例に、AccessPolicy を作成する方法を示します。
@@ -55,12 +56,11 @@ Media Services のすべてのエンティティは、POST HTTP 要求によっ�
     Host: media.windows.net
     Content-Length: 74
     Expect: 100-continue
-    
+
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
- 
-##<a name="querying-entities"></a>エンティティの照会
 
+## <a name="querying-entities"></a>エンティティの照会
 エンティティの照会と一覧化は単純であり、GET HTTP 要求と、オプションで OData 操作を行うだけですみます。
 次の例では、すべての MediaProcessor エンティティの一覧を取得します。
 
@@ -115,10 +115,12 @@ Media Services のすべてのエンティティは、POST HTTP 要求によっ�
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
->[AZURE.NOTE]Media Services では、LINQ に関する考慮事項で説明したサポートされていない LINQ メソッドと同様に、$expand 操作もサポートされていません (WCF Data Services)。
+> [!NOTE]
+> Media Services では、LINQ に関する考慮事項で説明したサポートされていない LINQ メソッドと同様に、$expand 操作もサポートされていません (WCF Data Services)。
+> 
+> 
 
-##<a name="enumerating-through-large-collections-of-entities"></a>大規模なコレクションのエンティティの列挙
-
+## <a name="enumerating-through-large-collections-of-entities"></a>大規模なコレクションのエンティティの列挙
 パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 大規模なコレクションのエンティティを列挙するには、**skip** と **top** を使用します。 
 
 次の例は、**skip** と **top** を使用して、最初の 2000 個のジョブをスキップし、次の 1000 個のジョブを取得する方法を示しています。  
@@ -132,8 +134,7 @@ Media Services のすべてのエンティティは、POST HTTP 要求によっ�
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
-##<a name="updating-entities"></a>エンティティの更新
-
+## <a name="updating-entities"></a>エンティティの更新
 エンティティの種類とその状態に応じて、PATCH 要求、PUT 要求、または MERGE HTTP 要求を使用してエンティティのプロパティを更新することができます。 これらの操作の詳細については、「 [PATCH/PUT/MERGE](https://msdn.microsoft.com/library/dd541276.aspx)」を参照してください。
 
 次のコード例では、Asset エンティティの Name プロパティを更新する方法を示します。
@@ -148,11 +149,10 @@ Media Services のすべてのエンティティは、POST HTTP 要求によっ�
     Host: media.windows.net
     Content-Length: 21
     Expect: 100-continue
-    
+
     {"Name" : "NewName" }
 
-##<a name="deleting-entities"></a>エンティティの削除
-
+## <a name="deleting-entities"></a>エンティティの削除
 Media Services のエンティティは、DELETE HTTP 要求を使用して削除できます。 エンティティによっては、エンティティを削除する順序が重要になる場合があります。 たとえば、Asset などのエンティティでは、特定の Asset を削除する前に、その Asset を参照するすべてのロケーターを取り消す (または削除する) 必要があります。
 
 次の例では、BLOB ストレージへのファイルのアップロードに使用したロケーターを削除する方法を示します。
@@ -169,15 +169,11 @@ Media Services のエンティティは、DELETE HTTP 要求を使用して削�
 
 
 
-##<a name="media-services-learning-paths"></a>Media Services のラーニング パス
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
-##<a name="provide-feedback"></a>フィードバックの提供
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
+## <a name="provide-feedback"></a>フィードバックの提供
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 <!--HONumber=Oct16_HO2-->
 

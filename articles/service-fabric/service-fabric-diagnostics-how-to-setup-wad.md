@@ -1,28 +1,27 @@
-<properties
-   pageTitle="Azure 診断でログを収集する方法 | Microsoft Azure"
-   description="この記事では、Azure で実行されている Service Fabric クラスターのログを収集するように Azure 診断を設定する方法について説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="ms-toddabel"
-   manager="timlt"
-   editor=""/>
+---
+title: Azure 診断でログを収集する方法 | Microsoft Docs
+description: この記事では、Azure で実行されている Service Fabric クラスターのログを収集するように Azure 診断を設定する方法について説明します。
+services: service-fabric
+documentationcenter: .net
+author: ms-toddabel
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/28/2016"
-   ms.author="toddabel"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/28/2016
+ms.author: toddabel
 
-
-
+---
 # <a name="collect-logs-by-using-azure-diagnostics"></a>Azure 診断でログを収集する方法
-
-> [AZURE.SELECTOR]
-- [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
-- [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
+> [!div class="op_single_selector"]
+> * [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
+> * [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
+> 
+> 
 
 Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。 1 か所でログを収集すると、クラスター内の問題と、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決に役立ちます。
 
@@ -37,14 +36,12 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 * [Azure Resource Manager クライアント](https://github.com/projectkudu/ARMClient)
 * [Azure Resource Manager テンプレート](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
 
-
 ## <a name="log-sources-that-you-might-want-to-collect"></a>収集することができるログ ソース
-- **Service Fabric ログ:** プラットフォームから標準の Windows イベント トレーシング (ETW) と EventSource チャネルに対して生成されます。 次のような種類のログがあります。
-  - 操作イベント: Service Fabric プラットフォームで実行される操作のログです。 たとえば、アプリケーションとサービスの作成、ノードの状態変化、アップグレード情報などです。
-  - [Reliable Actors プログラミング モデル イベント](service-fabric-reliable-actors-diagnostics.md)
-  - [Reliable Services プログラミング モデル イベント](service-fabric-reliable-services-diagnostics.md)
-- **アプリケーション イベント**: サービス コードから生成され、Visual Studio テンプレートで指定された EventSource ヘルパー クラスを使用して出力されるイベントです。 アプリケーションからログを出力する方法については、「[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)」を参照してください。
-
+* **Service Fabric ログ:** プラットフォームから標準の Windows イベント トレーシング (ETW) と EventSource チャネルに対して生成されます。 次のような種類のログがあります。
+  * 操作イベント: Service Fabric プラットフォームで実行される操作のログです。 たとえば、アプリケーションとサービスの作成、ノードの状態変化、アップグレード情報などです。
+  * [Reliable Actors プログラミング モデル イベント](service-fabric-reliable-actors-diagnostics.md)
+  * [Reliable Services プログラミング モデル イベント](service-fabric-reliable-services-diagnostics.md)
+* **アプリケーション イベント**: サービス コードから生成され、Visual Studio テンプレートで指定された EventSource ヘルパー クラスを使用して出力されるイベントです。 アプリケーションからログを出力する方法については、「[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)」を参照してください。
 
 ## <a name="deploy-the-diagnostics-extension"></a>診断拡張機能のデプロイ
 ログ収集の最初の手順は、Service Fabric クラスター内の各 VM に診断拡張機能をデプロイすることです。 診断拡張機能を使用すると、各 VM のログが収集され、指定したストレージ アカウントにアップロードされます。 手順は、Azure Portal と Azure Resource Manager のどちらを使用するかに応じて少し変わります。 手順は、デプロイがクラスター作成の一環であるか、または既に存在しているクラスターに関するものであるかによっても変わります。 各シナリオの手順を見てみましょう。
@@ -77,7 +74,6 @@ Azure サポート チームは、サポート要求を解決するためにサ�
 2. 新しい構成を反映するように内容を変更します。
 3. PowerShell を起動し、内容を展開したフォルダーに移動します。
 4. **deploy.ps1** を実行し、サブスクリプション ID、リソース グループ名 (構成を更新するために同じ名前を使用します)、および一意のデプロイ名を入力します。
-
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-by-using-azure-resource-manager"></a>Azure リソース マネージャー を使用してクラスター作成の一環で診断拡張機能をデプロイする
 Resource Manager を使用してクラスターを作成するには、診断の構成 JSON を完全なクラスターの Resource Manager テンプレートに追加してから、クラスターを作成します。 ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。 このサンプルは、Azure サンプル ギャラリーの「 [Five-node cluster with Diagnostics Resource Manager template sample](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)」で参照できます。
@@ -193,7 +189,6 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
 
 前述のように template.json ファイルを変更したら、Resource Manager テンプレートを再発行します。 テンプレートのエクスポート後、deploy.ps1 ファイルを実行すると、テンプレートが再発行されます。 デプロイ後、**ProvisioningState** が **Succeeded** になっていることを確認します。
 
-
 ## <a name="update-diagnostics-to-collect-and-upload-logs-from-new-eventsource-channels"></a>新しい EventSource チャネルのログを収集およびアップロードするように診断を更新する
 デプロイする予定の新しいアプリケーションを示す新しい EventSource チャネルのログを収集するように診断を更新するには、既存のクラスターに対する診断の設定に関する[前述のセクション](#deploywadarm)と同じ手順を実行してください。
 
@@ -216,12 +211,9 @@ template.json ファイル内の `EtwEventSourceProviderConfiguration` セクシ
 ## <a name="next-steps"></a>次のステップ
 問題を解決する際に確認する必要があるイベントの詳細については、[Reliable Actors](service-fabric-reliable-actors-diagnostics.md) と [Reliable Services](service-fabric-reliable-services-diagnostics.md) で生成される診断イベントを参照してください。
 
-
 ## <a name="related-articles"></a>関連記事
 * [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
 * [Log Analytics の Service Fabric ソリューション](../log-analytics/log-analytics-service-fabric.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

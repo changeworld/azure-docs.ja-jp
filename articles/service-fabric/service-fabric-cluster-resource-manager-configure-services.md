@@ -1,22 +1,21 @@
-<properties
-   pageTitle="Service Fabric クラスター リソース マネージャーでサービスを構成する | Microsoft Azure"
-   description="メトリック、配置の制約、およびその他の配置ポリシーを指定することによる Service Fabric サービスの記述。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Service Fabric クラスター リソース マネージャーでサービスを構成する | Microsoft Docs
+description: メトリック、配置の制約、およびその他の配置ポリシーを指定することによる Service Fabric サービスの記述。
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
-
+---
 # Service Fabric サービスのためにクラスター リソース マネージャー設定を構成する
 Service Fabric クラスター リソース マネージャーを使用すると、すべての名前付きサービスを個別に制御するルールを非常にきめ細かく制御できます。各名前付きサービス インスタンスでは、クラスターでの割り当て方法に関するルールを指定でき、報告を受ける必要があるメトリックのセットを、そのサービスにとってのメトリックの重要性も含めて定義できます。一般に、サービスの構成は 3 つの異なるタスクに分かれます。
 
@@ -36,11 +35,11 @@ Service Fabric クラスター リソース マネージャーを使用すると
 地理的に分散しているクラスターや、他のやや特殊なシナリオにおいて主に使用される、他の種類の配置ルールがあります。これらは、相関関係またはポリシーによって構成されます。このようなルールを使用するシナリオは多くありませんが、完全を期すために説明しておきます。
 
 ## 次のステップ
-- メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
-- アフィニティは、サービスに構成できるモードの 1 つです。一般的ではありませんが、必要な場合、[こちら](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)で詳細を確認できます。
-- さまざまな配置ルールをサービスで構成し、追加のシナリオに対処できます。さまざまな配置ルールの詳細は[ここ](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)にあります。
-- 最初から開始して、[Service Fabric クラスター リソース マネージャーの概要を確認するにはこちらを参照してください](service-fabric-cluster-resource-manager-introduction.md)。
-- クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、[負荷分散](service-fabric-cluster-resource-manager-balancing.md)に関する記事を参照してください。
-- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
+* メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
+* アフィニティは、サービスに構成できるモードの 1 つです。一般的ではありませんが、必要な場合、[こちら](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)で詳細を確認できます。
+* さまざまな配置ルールをサービスで構成し、追加のシナリオに対処できます。さまざまな配置ルールの詳細は[ここ](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)にあります。
+* 最初から開始して、[Service Fabric クラスター リソース マネージャーの概要を確認するにはこちらを参照してください](service-fabric-cluster-resource-manager-introduction.md)。
+* クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、[負荷分散](service-fabric-cluster-resource-manager-balancing.md)に関する記事を参照してください。
+* クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
 
 <!---HONumber=AcomDC_0824_2016-->

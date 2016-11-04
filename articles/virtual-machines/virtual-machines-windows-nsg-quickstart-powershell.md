@@ -1,23 +1,23 @@
-<properties
-   pageTitle="PowerShell を使用した VM へのポートの開放 | Microsoft Azure"
-   description="Azure Resource Manager デプロイメント モデルと Azure PowerShell を使用して、Windows VM へのポートを開き、エンドポイントを作成する方法について説明します。"
-   services="virtual-machines-windows"
-   documentationCenter=""
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""/>
+---
+title: PowerShell を使用した VM へのポートの開放 | Microsoft Docs
+description: Azure Resource Manager デプロイメント モデルと Azure PowerShell を使用して、Windows VM へのポートを開き、エンドポイントを作成する方法について説明します。
+services: virtual-machines-windows
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-windows"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows"
-   ms.workload="infrastructure-services"
-   ms.date="08/08/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-windows
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure-services
+ms.date: 08/08/2016
+ms.author: iainfou
 
+---
 # PowerShell を使用した Azure の VM へのポートの開放
-[AZURE.INCLUDE [virtual-machines-common-nsg-quickstart](../../includes/virtual-machines-common-nsg-quickstart.md)]
+[!INCLUDE [virtual-machines-common-nsg-quickstart](../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## クイック コマンド
 ネットワーク セキュリティ グループと ACL 規則を作成するには、[最新バージョンの Azure PowerShell がインストールされている](../powershell-install-configure.md)必要があります。[これらの手順は、Azure Portal を使用して実行](virtual-machines-windows-nsg-quickstart-portal.md)することもできます。
@@ -68,8 +68,8 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 ## 次のステップ
 この例では、HTTP トラフィックを許可する単純な規則を作成します。より精密な環境の作成については、次の記事で確認できます。
 
-- [Azure リソース マネージャーの概要](../resource-group-overview.md)
-- [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
-- [ロード バランサー用の Azure Resource Manager の概要](../load-balancer/load-balancer-arm.md)
+* [Azure リソース マネージャーの概要](../resource-group-overview.md)
+* [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
+* [ロード バランサー用の Azure Resource Manager の概要](../load-balancer/load-balancer-arm.md)
 
 <!---HONumber=AcomDC_0907_2016-->

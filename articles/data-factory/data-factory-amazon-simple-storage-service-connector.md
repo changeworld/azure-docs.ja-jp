@@ -1,24 +1,22 @@
-<properties 
-    pageTitle="Data Factory を使用した Amazon Simple Storage Service からのデータの移動 | Microsoft Azure" 
-    description="Azure Data Factory を使用した Amazon Simple Storage Service (S3) からのデータの移動方法について説明します。" 
-    services="data-factory" 
-    documentationCenter="" 
-    authors="linda33wj" 
-    manager="jhubbard" 
-    editor="monicar"/>
+---
+title: Data Factory を使用した Amazon Simple Storage Service からのデータの移動 | Microsoft Docs
+description: Azure Data Factory を使用した Amazon Simple Storage Service (S3) からのデータの移動方法について説明します。
+services: data-factory
+documentationcenter: ''
+author: linda33wj
+manager: jhubbard
+editor: monicar
 
-<tags 
-    ms.service="data-factory" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/25/2016" 
-    ms.author="jingwang"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/25/2016
+ms.author: jingwang
 
-
+---
 # <a name="move-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータの移動
-
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Amazon Simple Storage Service (S3) と他のデータ ストアとの間でデータを移動する方法について説明します。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、データ移動の一般概要とコピー アクティビティでサポートされるソース/シンク データ ストアの一覧について紹介しています。  
 
 データ ファクトリは、他のデータ ストアから Amazon S3 へのデータの移動ではなく、Amazon S3 から他のデータ ストアへのデータの移動のみをサポートします。
@@ -30,14 +28,14 @@ Amazon S3 からデータをコピーするパイプラインを作成する最�
 
 ## <a name="sample:-copy-data-from-amazon-s3-to-azure-blob"></a>サンプル: Amazon S3 から Azure BLOB にデータをコピーする
 このサンプルは、Amazon S3 から Azure BLOB ストレージにデータをコピーする方法を示します。 Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores) コピーすることもできます。  
- 
+
 このサンプルでは、次の Data Factory のエンティティがあります。
 
-- [AwsAccessKey](#linked-service-properties)型のリンクされたサービス。
-- [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)型のリンクされたサービス。
-- [AmazonS3](#dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-- [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-- [FileSystemSource](#copy-activity-type-properties) および [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
+* [AwsAccessKey](#linked-service-properties)型のリンクされたサービス。
+* [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)型のリンクされたサービス。
+* [AmazonS3](#dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+* [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+* [FileSystemSource](#copy-activity-type-properties) および [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプル データでは、1 時間おきに Amazon S3 から Azure BLOB にデータがコピーされます。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。 
 
@@ -155,7 +153,7 @@ Amazon S3 からデータをコピーするパイプラインを作成する最�
 **コピー アクティビティのあるパイプライン**
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **FileSystemSource** に設定され、**sink** 型が **BlobSink** に設定されています。 
-    
+
     {
         "name": "CopyAmazonS3ToBlob",
         "properties": {
@@ -203,34 +201,33 @@ Amazon S3 からデータをコピーするパイプラインを作成する最�
 
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
-
 次の表は、Amazon S3 (**AwsAccessKey**) のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
-| -------- | ----------- | -------- | ------- |  
-| accessKeyID | シークレット アクセス キーの ID。 | string | はい |
-| secretAccessKey | シークレット アクセス キー自体。 | 暗号化された秘密文字列 | はい | 
-
+| --- | --- | --- | --- |
+| accessKeyID |シークレット アクセス キーの ID。 |string |はい |
+| secretAccessKey |シークレット アクセス キー自体。 |暗号化された秘密文字列 |はい |
 
 ## <a name="dataset-type-properties"></a>データセットの type プロパティ
-
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **AmazonS3** 型のデータセットの typeProperties セクション (Amazon S3 データセットを含む) には次のプロパティがあります。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
-| -------- | ----------- | -------- | ------ | 
-| bucketName | S3 バケットの名前。 | string | はい |
-| key | S3 オブジェクト キー。 | string | なし | 
-| prefix | S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 キーが空の場合にのみ適用されます。 | string | なし | 
-| version | S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 | string | なし |  
-| BlobSink の format | 次のファイル形式がサポートされます: **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」、および「[ParquetFormat の指定](#specifying-parquetformat)」を参照してください。 ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。| なし
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。 現時点では、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていません。 詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。  | なし |
+| --- | --- | --- | --- |
+| bucketName |S3 バケットの名前。 |string |はい |
+| key |S3 オブジェクト キー。 |string |なし |
+| prefix |S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 キーが空の場合にのみ適用されます。 |string |なし |
+| version |S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |string |なし |
+| BlobSink の format |次のファイル形式がサポートされます: **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」、および「[ParquetFormat の指定](#specifying-parquetformat)」を参照してください。 ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。 |なし | |
+| compression |データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。 現時点では、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていません。 詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 |なし | |
 
-> [AZURE.NOTE] bucketName をキーの組み合わせによって S3 オブジェクトの場所が指定されます。バケットは S3 オブジェクトのルート コンテナーであり、キーは、S3 オブジェクトへの完全パスです。
+> [!NOTE]
+> bucketName をキーの組み合わせによって S3 オブジェクトの場所が指定されます。バケットは S3 オブジェクトのルート コンテナーであり、キーは、S3 オブジェクトへの完全パスです。
+> 
+> 
 
 ### <a name="sample-dataset-with-prefix"></a>プレフィックスを持つサンプル データセット
-
     {
         "name": "dataset-s3",
         "properties": {
@@ -252,7 +249,6 @@ Amazon S3 からデータをコピーするパイプラインを作成する最�
     }
 
 ### <a name="sample-data-set-(with-version)"></a>サンプル データセット (バージョンあり)
-
     {
         "name": "dataset-s3",
         "properties": {
@@ -276,7 +272,6 @@ Amazon S3 からデータをコピーするパイプラインを作成する最�
 
 
 ### <a name="dynamic-paths-for-s3"></a>S3 の動的パス
-
 このサンプルでは、Amazon S3 データセット内のキーおよび bucketName プロパティの固定値を使用します。 
 
     "key": "testFolder/test.orc",
@@ -289,13 +284,11 @@ Amazon S3 からデータをコピーするパイプラインを作成する最�
 
 同じことを、Amazon S3 データセットの prefix プロパティにも行うことができます。 サポートされる関数と変数の一覧については、「 [Data Factory の関数およびシステム変数](data-factory-functions-variables.md) 」を参照してください。 
 
+[!INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]
 
-[AZURE.INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]
-[AZURE.INCLUDE [data-factory-compression](../../includes/data-factory-compression.md)]
-
+[!INCLUDE [data-factory-compression](../../includes/data-factory-compression.md)]
 
 ## <a name="copy-activity-type-properties"></a>コピー アクティビティの type プロパティ
-
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。 
 
 一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
@@ -303,22 +296,22 @@ Amazon S3 からデータをコピーするパイプラインを作成する最�
 コピー アクティビティのソースの種類が **FileSystemSource** (Amazon S3を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
-| -------- | ----------- | -------------- | -------- | 
-| recursive | ディレクトリで S3 オブジェクトを再帰的に一覧表示するかどうかを指定します。 | true または false | なし | 
+| --- | --- | --- | --- |
+| recursive |ディレクトリで S3 オブジェクトを再帰的に一覧表示するかどうかを指定します。 |true または false |なし |
 
-[AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
+[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
-[AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-[AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
+[!INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-## <a name="performance-and-tuning"></a>パフォーマンスとチューニング  
+## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。 
-- [コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) を参照してください。 
 
+* [コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) を参照してください。 
 
 <!--HONumber=Oct16_HO2-->
 

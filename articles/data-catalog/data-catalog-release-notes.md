@@ -1,65 +1,56 @@
-<properties
-   pageTitle="Azure Data Catalog リリース ノート | Microsoft Azure"
-   description="Azure Data Catalog のリリース ノートです。"
-   services="data-catalog"
-   documentationCenter=""
-   authors="steelanddata"
-   manager="NA"
-   editor=""
-   tags=""/>
-<tags
-   ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="09/21/2016"
-   ms.author="maroche"/>
+---
+title: Azure Data Catalog リリース ノート | Microsoft Docs
+description: Azure Data Catalog のリリース ノートです。
+services: data-catalog
+documentationcenter: ''
+author: steelanddata
+manager: NA
+editor: ''
+tags: ''
 
+ms.service: data-catalog
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-catalog
+ms.date: 09/21/2016
+ms.author: maroche
+
+---
 # Azure Data Catalog リリース ノート
-
 ## Azure Data Catalog の 2015 年 11 月 20 日リリースのノート
-
 ### Power BI Desktop でデータ ソースを開く
-
 **Azure Data Catalog** ポータルから [Power BI Desktop で開く] オプションを使用したときに、Power BI Desktop アプリケーションで次の 2 つの問題のどちらかが発生することがあります。
 
-- [ドキュメントを表示できません] というタイトルのダイアログ ボックスが表示される
-- Power BI Desktop アプリケーションは開くが、ファイルが表示されない
+* [ドキュメントを表示できません] というタイトルのダイアログ ボックスが表示される
+* Power BI Desktop アプリケーションは開くが、ファイルが表示されない
 
 どちらの状況でも、[PowerBI.com](https://powerbi.com) から Power BI Desktop の最新バージョンをインストールすることで問題を解決できます。
 
 ## Azure Data Catalog の 2015 年 11 月 13 日リリースのノート
-
 ### Teradata への登録と接続
-
 Teradata データ ソースに接続する場合は、使用するソフトウェアのビット (32 ビットまたは 64 ビット) と一致する適切な Teradata ODBC ドライバーをインストールする必要があります。
 
 この ADC のリリース日の時点では、最新の [Windows 用の Teradata ODBC ドライバー (バージョン 15.10)](http://downloads.teradata.com/download/connectivity/odbc-driver/windows) は Office 2013 に対応しますが、Office 2016 には対応していません。
 
 ## Azure Data Catalog の 2015 年 7 月 13 日リリースのノート
-
 ### Oracle Database への登録と接続
-
 Oracle Database データ ソースに接続する場合、ユーザーは、使用しているソフトウェアのビット (32 ビットか 64 ビット) に一致する正しい Oracle ドライバーをインストールしている必要があります。
 
--	32 ビット Windows を実行するコンピューター上の Oracle データ ソースを登録する場合は、32 ビット Oracle ドライバーを使用します。
--	64 ビット Windows を実行するコンピューター上の Oracle データ ソースを登録する場合は、64 ビット Oracle ドライバーを使用します。
--	64 ビット Windows に含まれる 32 ビット バージョンの Microsoft Office を実行するコンピューター上の Excel を使用して、Oracle データ ソースに接続する場合、32 ビット Oracle ドライバーを使用します。
--	64 ビット バージョンの Microsoft Office を実行するコンピューター上の Excel を使用して、Oracle データ ソースに接続する場合、64 ビット Oracle ドライバーを使用します。
+* 32 ビット Windows を実行するコンピューター上の Oracle データ ソースを登録する場合は、32 ビット Oracle ドライバーを使用します。
+* 64 ビット Windows を実行するコンピューター上の Oracle データ ソースを登録する場合は、64 ビット Oracle ドライバーを使用します。
+* 64 ビット Windows に含まれる 32 ビット バージョンの Microsoft Office を実行するコンピューター上の Excel を使用して、Oracle データ ソースに接続する場合、32 ビット Oracle ドライバーを使用します。
+* 64 ビット バージョンの Microsoft Office を実行するコンピューター上の Excel を使用して、Oracle データ ソースに接続する場合、64 ビット Oracle ドライバーを使用します。
 
 ### SQL Server Reporting Services への登録と接続
-
 現在、SQL Server Reporting Services (SSRS) データ ソースのサポートは、ネイティブ モード サーバーのみに制限されます。SSRS の SharePoint モードでのサポートは、今後のリリースで追加される予定です。
 
 ### Excel でのデータ資産のオープン
-
 **Azure Data Catalog ポータル**から Microsoft Excel でデータ資産を開くと、**[Microsoft Excel のセキュリティに関する通知]** ダイアログ ボックスにメッセージが表示されることがあります。これは標準の予想される動作であり、ユーザーは、[**有効にする**] を選択して続行できます。
 
 詳細については、「[不審な Web サイトへのリンクやそうしたサイトからのファイルについてのセキュリティの警告を有効または無効にする](https://support.office.com/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE)」を参照してください。
 
 ### プロキシおよびポリシーの構成とデータ ソースの登録
-
 ユーザーは、Azure Data Catalog ポータルにログオンできる状況が発生することがありますが、データ ソース登録ツールにログオンしようとすると、ログオンを妨げるエラー メッセージが表示されます。
 
 この問題の動作には 2 つの可能性のある原因があります。
@@ -72,14 +63,13 @@ Oracle Database データ ソースに接続する場合、ユーザーは、使
 
 **原因 2: ネットワーク プロキシの構成**。企業ネットワークでプロキシ サーバーを使用している場合、登録ツールが、プロキシ経由で Azure Active Directory に接続できないことがあります。ユーザーは、ツールの構成ファイルを編集し、このセクションをファイルに追加して、登録ツールが確実に接続できるようにします。
 
-
-	  <system.net>
-	    <defaultProxy useDefaultCredentials="true" enabled="true">
-	      <proxy usesystemdefault="True"
-	                      proxyaddress="http://<your corporate network proxy url>"
-	                      bypassonlocal="True"/>
-	    </defaultProxy>
-	  </system.net>
+      <system.net>
+        <defaultProxy useDefaultCredentials="true" enabled="true">
+          <proxy usesystemdefault="True"
+                          proxyaddress="http://<your corporate network proxy url>"
+                          bypassonlocal="True"/>
+        </defaultProxy>
+      </system.net>
 
 
 RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。

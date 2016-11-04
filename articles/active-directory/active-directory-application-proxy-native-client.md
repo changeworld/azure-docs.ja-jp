@@ -1,23 +1,22 @@
-<properties
-	pageTitle="プロキシ アプリケーションでネイティブ クライアント アプリケーションの発行を有効にする方法 | Microsoft Azure"
-	description="ネイティブ クライアント アプリケーションが Azure AD Application Proxy Connector と通信して、オンプレミス アプリケーションに対して安全なリモート アクセスを提供する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+---
+title: プロキシ アプリケーションでネイティブ クライアント アプリケーションの発行を有効にする方法 | Microsoft Docs
+description: ネイティブ クライアント アプリケーションが Azure AD Application Proxy Connector と通信して、オンプレミス アプリケーションに対して安全なリモート アクセスを提供する方法について説明します。
+services: active-directory
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/22/2016"
-	ms.author="kgremban"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/22/2016
+ms.author: kgremban
 
+---
 # ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
-
 Azure Active Directory アプリケーション プロキシは、SharePoint、Outlook Web Access、カスタムの基幹業務アプリケーションなどのブラウザー アプリケーションを公開するために幅広く使用されています。また、デバイスにインストールされる点が Web アプリとは異なるネイティブ クライアント アプリケーションを発行する際にも使用できます。この場合、標準の Authorize HTTP ヘッダーで送信された Azure AD 発行トークンをサポートしている必要があります。
 
 ![エンド ユーザー、Azure Active Directory、および発行済みアプリケーション間の関係](./media/active-directory-application-proxy-native-client/richclientflow.png)
@@ -25,11 +24,9 @@ Azure Active Directory アプリケーション プロキシは、SharePoint、O
 このようなアプリケーションを発行するために推奨される方法は、すべての認証ハッスルに対応し、多様なクライアント環境をサポートする Azure AD 認証ライブラリを使用することです。アプリケーション プロキシは、[ネイティブ アプリケーションから Web API のシナリオ](active-directory-authentication-scenarios.md#native-application-to-web-api)に適しています。その手順は次のとおりです。
 
 ## 手順 1: アプリケーションの発行
-
 他のアプリケーションと同様にプロキシ アプリケーションを発行し、ユーザーを割り当てて Premium または Basic ライセンスを付与します。詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)」を参照してください。
 
 ## 手順 2: アプリケーションの構成
-
 ネイティブ アプリケーションを次のように構成します。
 
 1. Azure クラシック ポータルにサインインします。
@@ -42,7 +39,6 @@ Azure Active Directory アプリケーション プロキシは、SharePoint、O
 アプリケーションが追加されると、アプリケーションのクイック スタート ページが表示されます。
 
 ## 手順 3: 他のアプリケーションに対するアクセスの許可
-
 ディレクトリ内の他のアプリケーションに公開するネイティブ アプリケーションを有効にします。
 
 1. 上部のメニューから **[アプリケーション]** をクリックし、新しいネイティブ アプリケーションを選択して、**[構成]** をクリックします。
@@ -51,39 +47,36 @@ Azure Active Directory アプリケーション プロキシは、SharePoint、O
 ![[他のアプリケーションに対するアクセス許可] のスクリーンショット - アプリケーションの追加](./media/active-directory-application-proxy-native-client/delegate_native_app.png)
 
 ## 手順 4: Active Directory 認証ライブラリの編集
-
 Active Directory Authentication Library (ADAL) の認証コンテキストのネイティブ アプリケーション コードを編集して、次の情報を含めます。
 
-		// Acquire Access Token from AAD for Proxy Application
-		AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<TenantId>");
-		AuthenticationResult result = authContext.AcquireToken("< Frontend Url of Proxy App >",
+        // Acquire Access Token from AAD for Proxy Application
+        AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<TenantId>");
+        AuthenticationResult result = authContext.AcquireToken("< Frontend Url of Proxy App >",
                                                         "< Client Id of the Native app>",
                                                         new Uri("< Redirect Uri of the Native App>"),
                                                         PromptBehavior.Never);
 
-		//Use the Access Token to access the Proxy Application
-		HttpClient httpClient = new HttpClient();
-		httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-		HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >");
+        //Use the Access Token to access the Proxy Application
+        HttpClient httpClient = new HttpClient();
+        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
+        HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >");
 
 変数は次のように置き換えてください。
 
-- **TenantId** は、アプリケーションの **[構成]** ページの URL (“/Directory/” の直後) に表示される GUID です。
-- **Frontend URL** は、プロキシ アプリケーションで入力したフロント エンド URL です。プロキシ アプリケーションの **[構成]** ページに表示されます。
-- ネイティブ アプリケーションの **Client Id** は、ネイティブ アプリケーションの **[構成]** ページに表示されます。
-- **ネイティブ アプリケーションの Redirect URI** は、ネイティブ アプリケーションの **[構成]** ページに表示されます。
+* **TenantId** は、アプリケーションの **[構成]** ページの URL (“/Directory/” の直後) に表示される GUID です。
+* **Frontend URL** は、プロキシ アプリケーションで入力したフロント エンド URL です。プロキシ アプリケーションの **[構成]** ページに表示されます。
+* ネイティブ アプリケーションの **Client Id** は、ネイティブ アプリケーションの **[構成]** ページに表示されます。
+* **ネイティブ アプリケーションの Redirect URI** は、ネイティブ アプリケーションの **[構成]** ページに表示されます。
 
 ![新しいネイティブ アプリケーションの構成ページのスクリーン ショット](./media/active-directory-application-proxy-native-client/new_native_app.png)
 
 ネイティブ アプリケーション フローの詳細については、「[ネイティブ アプリケーション対 Web API](active-directory-authentication-scenarios.md#native-application-to-web-api)」をご覧ください。
 
-
 ## 関連項目
-
-- [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
-- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
-- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
-- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
+* [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
+* [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
+* [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
+* [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
 
 最新のニュースと更新情報については、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 

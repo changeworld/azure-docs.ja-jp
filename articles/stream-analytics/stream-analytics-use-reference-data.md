@@ -1,28 +1,26 @@
-<properties
-	pageTitle="Stream Analytics で参照データとルックアップ テーブルを使用する | Microsoft Azure"
-	description="Stream Analytics クリエで参照データを使用する"
-	keywords="ルックアップ テーブル、参照データ"
-	services="stream-analytics"
-	documentationCenter=""
-	authors="jeffstokes72"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: Stream Analytics で参照データとルックアップ テーブルを使用する | Microsoft Docs
+description: Stream Analytics クリエで参照データを使用する
+keywords: ルックアップ テーブル、参照データ
+services: stream-analytics
+documentationcenter: ''
+author: jeffstokes72
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="stream-analytics"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="data-services"
-	ms.date="09/26/2016"
-	ms.author="jeffstok"/>
+ms.service: stream-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: data-services
+ms.date: 09/26/2016
+ms.author: jeffstok
 
+---
 # Stream Analytics の入力ストリームでの参照データまたはルックアップ テーブルの使用
-
 参照データ (別名、ルックアップテーブル) は、静的または本来はあまり変更されない有限のデータ セットです。参照の実行やデータ ストリームとの相互の関連付けに使用されます。Azure Stream Analytics のジョブで参照データを使用するには、一般的にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。Stream Analytics は参照データのストレージ層として Azure BLOB ストレージを使用し、Azure Data Factory を使用して参照データを Azure BLOB ストレージに変換、コピー、またはその両方を実行して、[任意の数のクラウド ベースとオンプレミスのデータ ストア](../data-factory/data-factory-data-movement-activities.md)から、参照データとして使用することができます。参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。シーケンス内の最後の BLOB で指定された日付/時刻より**新しい**日付/時刻を使用してシーケンスの末尾に追加することがサポートされている**だけ**です。
 
 ## 参照データの構成
-
 参照データを構成するには、まず、タイプが**参照データ**の入力を作成する必要があります。次の表では、参照データ入力とその説明を作成するときに指定する必要がある各プロパティについて説明します。
 
 <table>
@@ -71,25 +69,25 @@
 </table>
 
 ## スケジュールに従った参照データの生成
-
 参照データが変更頻度の低いデータセットである場合、参照データの更新をサポートするには、{date} および {time} 置換トークンを使用する入力構成でパス パターンを指定します。Stream Analytics はこのパス パターンに基づいて、更新された参照データ定義を取得します。たとえば、日付形式が "**YYYY-MM-DD**" で、時刻形式が "**HH:mm**" の `sample/{date}/{time}/products.csv` は、更新された BLOB `sample/2015-04-16/17:30/products.csv` を UTC タイム ゾーンの 2015 年 4 月 16 日の午後 5 時 30 分に回収するように Stream Analytics に指示します。
 
-> [AZURE.NOTE] 現在、Stream Analytics のジョブは、コンピューター時間が、BLOB の名前でエンコードされた時刻まで進んだ場合にのみ、BLOB の更新を検索します。たとえば、ジョブは、`sample/2015-04-16/17:30/products.csv` を、できるだけ早く、ただし、2015 年 4 月 16 日 UTC タイム ゾーンの午後 5 時 30 分以降に検索します。ファイルのエンコードされた時刻が、検出された最新時刻よりも前の場合、そのファイルは*決して*検索されません。
+> [!NOTE]
+> 現在、Stream Analytics のジョブは、コンピューター時間が、BLOB の名前でエンコードされた時刻まで進んだ場合にのみ、BLOB の更新を検索します。たとえば、ジョブは、`sample/2015-04-16/17:30/products.csv` を、できるだけ早く、ただし、2015 年 4 月 16 日 UTC タイム ゾーンの午後 5 時 30 分以降に検索します。ファイルのエンコードされた時刻が、検出された最新時刻よりも前の場合、そのファイルは*決して*検索されません。
 > 
 > たとえば、ジョブによって BLOB `sample/2015-04-16/17:30/products.csv` が検索されると、エンコードされた日付が 2015 年 4 月 16 日午後 5 時 30 分より前のファイルはすべて無視されます。したがって、到着が遅れた `sample/2015-04-16/17:25/products.csv` BLOB が同じコンテナーに作成されると、その BLOB はジョブでは使用されません。
 > 
 > 同様に、`sample/2015-04-16/17:30/products.csv` が 2015 年 4 月 16 日午後 10 時 03 分にのみ生成され、同じコンテナーに前の日付の BLOB が存在しない場合、2015 年 4 月 16 日午後 10 時 03分以降はこのファイルを使用し、その時点までは前の参照データを使用します。
 > 
 > これに対する例外は、ジョブが時間をさかのぼってデータを再処理する必要がある場合、またはジョブが最初に開始される場合です。開始時点で、ジョブは、指定されたジョブ開始時刻より前に生成された最新の BLOB を探します。これにより、ジョブの開始時に、**空ではない**参照データ セットが必ず存在するようになります。見つからない場合は、ジョブによって次の診断が表示されます: `Initializing input without a valid reference data blob for UTC time <start time>`。
-
+> 
+> 
 
 [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) を使用して Stream Analytics で必要な更新された BLOB を作成するタスクを調整し、参照データ定義を更新することができます。Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。Data Factory は、[クラウド ベースとオンプレミスの多数のデータ ストアへの接続](../data-factory/data-factory-data-movement-activities.md)、および指定された定期的なスケジュールに基づく簡単なデータの移動をサポートします。事前に定義されたスケジュールで更新される Stream Analytics の参照データを生成するために Data Factory パイプラインを設定する方法の詳細とステップ バイ ステップのガイダンスについては、この [GitHub のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs)を確認してください。
 
-## 参照データの更新に関するヒント ##
-
+## 参照データの更新に関するヒント
 1. 参照データの BLOB を上書きしても、Stream Analytics は BLOB の再読み込みを行いません。場合によっては、その上書きが原因でジョブが失敗することがあります。参照データを変更する場合は、ジョブ入力に定義されているのと同じコンテナーおよびパス パターンを使用して新しい BLOB を追加するという方法、およびシーケンス内の最後の BLOB で指定されている日付/時刻より**新しい**日付/時刻を使用するという方法をお勧めします。
-2.	参照データの BLOB の並び替えは、BLOB の “最終変更” 時刻では行われません。{date} および {time} の置換文字を使用して BLOB 名に指定されている時刻と日付によってのみ行われます。
-3.	場合によって、ジョブは時間をさかのぼる必要があります。したがって、参照データの BLOB は変更することも削除することもできません。
+2. 参照データの BLOB の並び替えは、BLOB の “最終変更” 時刻では行われません。{date} および {time} の置換文字を使用して BLOB 名に指定されている時刻と日付によってのみ行われます。
+3. 場合によって、ジョブは時間をさかのぼる必要があります。したがって、参照データの BLOB は変更することも削除することもできません。
 
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
@@ -97,10 +95,10 @@
 ## 次のステップ
 モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。このサービスの詳細については、以下の情報をご覧ください。
 
-- [Azure Stream Analytics の使用](stream-analytics-get-started.md)
-- [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-- [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-- [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

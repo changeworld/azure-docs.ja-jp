@@ -1,21 +1,21 @@
-<properties 
-    pageTitle="Elastic Database ツールの用語集 | Microsoft Azure" 
-    description="エラスティック データベース ツールで使用される用語の説明" 
-    services="sql-database" 
-    documentationCenter="" 
-    manager="jhubbard" 
-    authors="ddove" 
-    editor=""/>
+---
+title: Elastic Database ツールの用語集 | Microsoft Docs
+description: エラスティック データベース ツールで使用される用語の説明
+services: sql-database
+documentationcenter: ''
+manager: jhubbard
+author: ddove
+editor: ''
 
-<tags 
-    ms.service="sql-database" 
-    ms.workload="sql-database" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="05/27/2016" 
-    ms.author="ddove"/>
+ms.service: sql-database
+ms.workload: sql-database
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 05/27/2016
+ms.author: ddove
 
+---
 # Elastic Database ツールの用語集
 Azure SQL Database の機能である [Elastic Database ツール](sql-database-elastic-scale-introduction.md)に関する用語の定義を次に示します。このツールは、[シャード マップ](sql-database-elastic-scale-shard-map-management.md)の管理に使用するものであり、[クライアント ライブラリ](sql-database-elastic-database-client-library.md)、[分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[クエリ](sql-database-elastic-query-overview.md)が含まれます。
 
@@ -65,9 +65,7 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 
 ![マッピング][2]
 
-
-##動詞
-
+## 動詞
 **水平スケーリング**: シャード マップに対するシャードの追加や削除を行ってシャードのコレクションをスケール アウト (またはスケール イン) する操作 (下図参照)。
 
 ![水平および垂直方向のスケーリング][3]
@@ -82,12 +80,12 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 
 **垂直スケーリング**: 個々のシャードのパフォーマンス レベルをスケール アップ (またはダウン) する操作。たとえば、シャードを Standard から Premium に変更 (結果、コンピューティング リソースが増大)。
 
-[AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+[!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-scale-glossary/glossary.png
 [2]: ./media/sql-database-elastic-scale-glossary/mappings.png
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
- 
+
 
 <!---HONumber=AcomDC_0601_2016-->

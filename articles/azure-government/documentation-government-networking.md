@@ -1,26 +1,24 @@
-<properties
-	pageTitle="Azure Government のドキュメント | Microsoft Azure"
-	description="Azure Government へのプライベート接続に関する機能比較と指針について取り上げます。"
-	services="Azure-Government"
-	cloud="gov" 
-	documentationCenter=""
-	authors="ryansoc"
-	manager="zakramer"
-	editor=""/>
+---
+title: Azure Government のドキュメント | Microsoft Docs
+description: Azure Government へのプライベート接続に関する機能比較と指針について取り上げます。
+services: Azure-Government
+cloud: gov
+documentationcenter: ''
+author: ryansoc
+manager: zakramer
+editor: ''
 
-<tags
-	ms.service="multiple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="azure-government"
-	ms.date="08/25/2016"
-	ms.author="ryansoc"/>
+ms.service: multiple
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: azure-government
+ms.date: 08/25/2016
+ms.author: ryansoc
 
-#  Azure Government のネットワーク
-
-##  ExpressRoute (プライベート接続)
-
+---
+# Azure Government のネットワーク
+## ExpressRoute (プライベート接続)
 Azure Government へのプライベート ネットワーク接続には、VPN (一般的な組織のサイト間接続) を使用する方法と ExpressRoute を使用する方法とがあります。
 
 Azure ExpressRoute は、Azure Government データセンターとオンプレミス インフラストラクチャの間やコロケーション環境内でプライベート接続を確保するために使用されます。ExpressRoute 接続はパブリック インターネットを経由しないので、一般的なインターネット接続と比べて信頼性が高く、高速で、待ち時間も短くなります。オンプレミスのシステムと Azure の間のデータ転送に ExpressRoute 接続を使用することで、コスト上の大きなメリットが得られます。

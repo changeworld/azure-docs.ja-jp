@@ -1,42 +1,38 @@
-<properties
-	pageTitle="Jupyter/IPython Notebook を作成する | Microsoft Azure"
-	description="Azure でクラシック デプロイ モデルを使用して作成した Linux 仮想マシンに Jupyter/IPython Notebook をデプロイする方法について説明します。"
-	services="virtual-machines-linux"
-	documentationCenter="python"
-	authors="crwilcox"
-	manager="wpickett"
-	editor=""
-	tags="azure-service-management,azure-resource-manager"/>
+---
+title: Jupyter/IPython Notebook を作成する | Microsoft Docs
+description: Azure でクラシック デプロイ モデルを使用して作成した Linux 仮想マシンに Jupyter/IPython Notebook をデプロイする方法について説明します。
+services: virtual-machines-linux
+documentationcenter: python
+author: crwilcox
+manager: wpickett
+editor: ''
+tags: azure-service-management,azure-resource-manager
 
-<tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="python"
-	ms.topic="article"
-	ms.date="11/10/2015"
-	ms.author="crwilcox"/>
+ms.service: virtual-machines-linux
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-linux
+ms.devlang: python
+ms.topic: article
+ms.date: 11/10/2015
+ms.author: crwilcox
 
+---
 # Azure での Jupyter Notebook
-
 [Jupyter プロジェクト](http://jupyter.org) (旧 [IPython プロジェクト](http://ipython.org)) は、コードの実行と計算ドキュメントのライブ作成を組み合わせた強力な対話型シェルを使用する科学計算用ツールのコレクションを提供します。作成されるノートブック ファイルには、任意のテキスト、数式、入力コード、結果、グラフィックス、ビデオ、その他の種類のメディアなど、最新の Web ブラウザーで表示できるデータを含めることができます。Python を初めて利用し、対話形式の環境で楽しく Python を学習する場合でも、本格的な並列計算や技術計算をする場合でも、Jupyter Notebook はお勧めの選択肢です。
 
 ![スクリーンショット](./media/virtual-machines-linux-jupyter-notebook/ipy-notebook-spectral.png)SciPy パッケージと Matplotlib パッケージを使用した録音の構造分析。
-
 
 ## Jupyter を利用する 2 つの方法: Azure Notebook またはカスタム デプロイ
 Azure には、[Jupyter の使用をすぐに開始する](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)ために使用できるサービスが用意されています。Azure Notebook サービスを使用すると、Web でアクセスできる Jupyter のインターフェイスにアクセスして、スケーラブルなコンピューティング リソース、Jupyter のすべての機能、および多数のライブラリを簡単に利用できます。インストールはサービスによって処理されるため、ユーザーは、自分で構成や管理を実行することなく、これらのリソースにアクセスできます。
 
 Notebook サービスが自分のシナリオに合っていない場合でも、この記事を読み進めてください。仮想マシン (VM) を使用して Jupyter Notebook を Microsoft Azure にデプロイする方法の説明があります。
 
-[AZURE.INCLUDE [create-account-and-vms-note](../../includes/create-account-and-vms-note.md)]
+[!INCLUDE [create-account-and-vms-note](../../includes/create-account-and-vms-note.md)]
 
 ## Azure での VM の作成と構成
-
 最初の手順は Azure で動作する仮想マシン (VM) を作成することです。この VM は、クラウド内の完全なオペレーティング システムであり、Jupyter Notebook を実行するために使用されます。Azure では Linux と Windows のどちらの仮想マシンも実行できます。ここでは両方の仮想マシン上での Jupyter のセットアップについて説明します。
 
 ### Linux VM を作成し、Jupyter 用のポートを開く
-
 [ここ][portal-vm-linux]に記載されている手順に従って、*Ubuntu* ディストリビューションの仮想マシンを作成します。このチュートリアルでは、Ubuntu Server 14.04 LTS を使用します。ユーザー名は *azureuser* を想定しています。
 
 仮想マシンをデプロイした後、ネットワーク セキュリティ グループに関するセキュリティ規則を開く必要があります。Azure ポータルから **[ネットワーク セキュリティ グループ]** に移動し、VM に対応するセキュリティ グループのタブを開きます。次の設定の受信セキュリティ規則を追加する必要があります。プロトコル: **TCP**、ソース (パブリック) ポート: **\*** 、および宛先 (プライベート) ポート: **9999**。
@@ -46,7 +42,6 @@ Notebook サービスが自分のシナリオに合っていない場合でも�
 ネットワーク セキュリティ グループの表示中に、**[ネットワーク インターフェイス]** をクリックして、**[パブリック IP アドレス]** を書き留めます。これは、次の手順で VM に接続するために必要です。
 
 ## VM への必要なソフトウェアのインストール
-
 VM で Jupyter Notebook を実行するには、まず Jupyter とそれに依存するソフトウェアをインストールする必要があります。ssh と、VM の作成時に選択したユーザー名とパスワードを使用して、Linux VM に接続します。このチュートリアルでは、PuTTY を使用して Windows から接続します。
 
 ### Ubuntu への Jupyter のインストール
@@ -58,19 +53,19 @@ VM で Jupyter Notebook を実行するには、まず Jupyter とそれに依�
   <th>Python 2.7</th>
   <tr>
     <td>
-		<a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86_64.sh'>64 ビット</href>
-	</td>
+        <a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86_64.sh'>64 ビット</href>
+    </td>
     <td>
-		<a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-2.3.0-Linux-x86_64.sh'>64 ビット</href>
-	</td>
+        <a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-2.3.0-Linux-x86_64.sh'>64 ビット</href>
+    </td>
   </tr>
   <tr>
     <td>
-		<a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86.sh'>32 ビット</href>
-	</td>
+        <a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86.sh'>32 ビット</href>
+    </td>
     <td>
-		<a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-2.3.0-Linux-x86.sh'>32 ビット</href>
-	</td>  
+        <a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-2.3.0-Linux-x86.sh'>32 ビット</href>
+    </td>  
   </tr>
 </table>
 
@@ -78,24 +73,23 @@ VM で Jupyter Notebook を実行するには、まず Jupyter とそれに依�
 #### Ubuntu への Anaconda3 2.3.0 64 ビット版のインストール
 例として、Anaconda を Ubuntu にインストールする方法を次に示します。
 
-	# install anaconda
-	cd ~
-	mkdir -p anaconda
-	cd anaconda/
-	curl -O https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86_64.sh
-	sudo bash Anaconda3-2.3.0-Linux-x86_64.sh -b -f -p /anaconda3
+    # install anaconda
+    cd ~
+    mkdir -p anaconda
+    cd anaconda/
+    curl -O https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86_64.sh
+    sudo bash Anaconda3-2.3.0-Linux-x86_64.sh -b -f -p /anaconda3
 
-	# clean up home directory
-	cd ..
-	rm -rf anaconda/
+    # clean up home directory
+    cd ..
+    rm -rf anaconda/
 
-	# Update Jupyter to the latest install and generate its config file
-	sudo /anaconda3/bin/conda install jupyter -y
-	/anaconda3/bin/jupyter-notebook --generate-config
+    # Update Jupyter to the latest install and generate its config file
+    sudo /anaconda3/bin/conda install jupyter -y
+    /anaconda3/bin/jupyter-notebook --generate-config
 
 
 ![スクリーンショット](./media/virtual-machines-linux-jupyter-notebook/anaconda-install.png)
-
 
 ### Jupyter の構成と SSL の使用
 インストールした後、Jupyter 用の構成ファイルをセットアップする必要があります。Jupyter の構成で問題が発生した場合は、[Notebook サーバーを実行するための Jupyter ドキュメント](http://jupyter-notebook.readthedocs.org/en/latest/public_server.html)を参照してください。
@@ -139,7 +133,6 @@ Linux で次のコマンドを使用します。
     c.NotebookApp.open_browser = False
 
 ### Jupyter Notebook を実行する
-
 この時点で、Jupyter Notebook を開始する準備が整いました。Jupyter Notebook を実行するには、ノートブックを保存するディレクトリに移動し、次のコマンドを使用して Jupyter Notebook サーバーを起動します。
 
     /anaconda3/bin/jupyter-notebook
@@ -151,7 +144,6 @@ Linux で次のコマンドを使用します。
 ![スクリーンショット](./media/virtual-machines-linux-jupyter-notebook/jupyter-tree-view.png)
 
 ### Jupyter Notebook の使用
-
 **[New]** ボタンをクリックすると、次のオープニング ページが表示されます。
 
 ![スクリーンショット](./media/virtual-machines-linux-jupyter-notebook/jupyter-untitled-notebook.png)
@@ -159,7 +151,6 @@ Linux で次のコマンドを使用します。
 `In []:` プロンプトがある領域に適切な Python コードを入力します。`Shift-Enter` キーを押すか、[実行] アイコン (ツール バーにある右向き三角形) をクリックすると、ここに入力したコードが実行されます。
 
 ## 強力なパラダイム: リッチ メディアを含んだリアルタイムなコンピューティング ドキュメント
-
 ノートブック自体は、Python とワード プロセッサを使用したことがあるユーザーにとっては違和感のないドキュメントです。これは、Python とワード プロセッサの両方の特徴を持っているためです。ノートブックでは、Python コードのブロックを実行できます。また、ツール バーのドロップダウン メニューでセルの形式を [Code] から [Markdown] に変更して、メモなどのテキストを保存することもできます。
 
 Jupyter はワード プロセッサよりも優れています。Jupyter では、計算処理とリッチ メディア (テキスト、グラフィックス、ビデオなど、最新の Web ブラウザーで表示できるほぼすべてのデータ) を混在させることができます。テキスト、コード、ビデオなどを混在させることができます。
@@ -171,26 +162,19 @@ Python に関連する多数の優れた科学技術計算用ライブラリを�
 最新の Web の機能とリアルタイムな計算処理を混在させるというパラダイムは、多くの可能性を示すものです。このパラダイムは、クラウドに適した理想的なパラダイムです。Notebook の用途には次のようなものがあります。
 
 * 問題に対する調査作業を記録するためのコンピューティング スクラッチパッドとして使用。
-
 * "リアルタイムな" コンピューティング フォームまたはハードコピーの形式 (HTML や PDF) で、同僚と作業結果を共有するために使用。
-
 * 計算処理を含んだライブ教材の配布や提示のために使用。これにより、生徒はすぐに実際のコードを試行したり、変更したり、あるいは対話形式で再実行したりすることができます。
-
 * 直ちに再現したり、検証したり、他のユーザーが拡張したりできる方法で調査結果を示す "実行可能な用紙" を提供するために使用。
-
 * コラボレーション コンピューティング用のプラットフォームとして使用。複数のユーザーが 同じ Notebook サーバーにログインして、ライブのコンピューティング セッションを共有できます。
 
-
-IPython のソース コード [リポジトリ][]にアクセスすると、ノートブックのサンプルが保存されているディレクトリ全体を確認できます。これらのサンプルをダウンロードして、ユーザー独自の Azure Jupyter VM で試用することができます。このサイトから `.ipynb` ファイルをダウンロードし、それらのファイルをユーザーのノートブックに関する Azure VM のダッシュボードにアップロードしてください (直接 VM にダウンロードしてもかまいません)。
+IPython のソース コード [リポジトリ][リポジトリ]にアクセスすると、ノートブックのサンプルが保存されているディレクトリ全体を確認できます。これらのサンプルをダウンロードして、ユーザー独自の Azure Jupyter VM で試用することができます。このサイトから `.ipynb` ファイルをダウンロードし、それらのファイルをユーザーのノートブックに関する Azure VM のダッシュボードにアップロードしてください (直接 VM にダウンロードしてもかまいません)。
 
 ## まとめ
-
 Jupyter Notebook には、Azure 上で Python エコシステムの機能に対話的にアクセスするための強力なインターフェイスが用意されています。このインターフェイスは幅広い用途 (簡単な調査、Python の学習、データの分析と表示、シミュレーション、並列コンピューティングなど) に対応しています。作成される Notebook のドキュメントには実行された計算処理の完全な記録が含まれており、このドキュメントは他の Jupyter ユーザーと共有できます。Jupyter Notebook はローカル アプリケーションとして使用できますが、Azure でのクラウドのデプロイに最適です。
 
-Jupyter の主要機能は、[Python Tools for Visual Studio][] \(PTVS) を介して Visual Studio 内部で使用することもできます。PTVS は、Microsoft が提供する無料のオープン ソース プラグインです。このプラグインによって、Visual Studio を Python の高度な開発環境として利用することができます。この開発環境には、IntelliSense を備えた高度なエディター、デバッグ、プロファイル、並列コンピューティング統合の機能が含まれています。
+Jupyter の主要機能は、[Python Tools for Visual Studio][Python Tools for Visual Studio] \(PTVS) を介して Visual Studio 内部で使用することもできます。PTVS は、Microsoft が提供する無料のオープン ソース プラグインです。このプラグインによって、Visual Studio を Python の高度な開発環境として利用することができます。この開発環境には、IntelliSense を備えた高度なエディター、デバッグ、プロファイル、並列コンピューティング統合の機能が含まれています。
 
 ## 次のステップ
-
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
 [portal-vm-linux]: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-tutorial-portal-rm/

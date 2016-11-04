@@ -1,29 +1,27 @@
-<properties 
-    pageTitle="Service Bus のキュー、トピック、サブスクリプション | Microsoft Azure"
-    description="Service Bus メッセージング エンティティの概要です。"
-    services="service-bus"
-    documentationCenter="na"
-    authors="sethmanheim"
-    manager="timlt"
-    editor="" />
-<tags 
-    ms.service="service-bus"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="na"
-    ms.date="10/14/2016"
-    ms.author="sethm" />
+---
+title: Service Bus のキュー、トピック、サブスクリプション | Microsoft Docs
+description: Service Bus メッセージング エンティティの概要です。
+services: service-bus
+documentationcenter: na
+author: sethmanheim
+manager: timlt
+editor: ''
 
+ms.service: service-bus
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 10/14/2016
+ms.author: sethm
 
+---
 # <a name="service-bus-queues,-topics,-and-subscriptions"></a>Service Bus のキュー、トピック、サブスクリプション
-
 Microsoft Azure Service Bus は、信頼性の高いメッセージ キュー機能や永続的なパブリッシュ/サブスクライブ メッセージング機能など、クラウドベースのメッセージ指向ミドルウェアの一連のテクノロジをサポートしています。 このような仲介型メッセージング機能は、分離されたメッセージング機能と考えることができます。これは、Service Bus メッセージング ファブリックを使用するパブリッシュ/サブスクライブ、一時的な切り離し、負荷分散のシナリオをサポートします。 分離型通信には、クライアントとサーバーを必要に応じて接続し、非同期に操作を実行できるなど多数の利点があります。
 
 Service Bus のブローカー メッセージング機能の中核を形成するメッセージング エンティティは、キュー、トピック/サブスクリプション、ルール/アクション、ルール/アクションです。
 
 ## <a name="queues"></a>キュー
-
 キューでは、コンシューマーが競合している場合のメッセージ配信に先入先出法 (FIFO) を使用します。 つまり、通常、メッセージは、キューに追加された順番で受信され、処理されると予想されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。 キューを使用する主な利点は、アプリケーション コンポーネントの "一時的な切り離し" を達成することです。 言い換えると、メッセージはキューに永続的に格納されるため、プロデューサー (送信者) とコンシューマー (受信者) が同時にメッセージを送受信する必要はありません。 さらに、プロデューサーは、メッセージの処理と送信を続ける場合、メッセージ コンシューマーからの応答を待つ必要がありません。
 
 関連する利点として "負荷平準化" があります。これにより、プロデューサーとコンシューマーは異なるレートでメッセージを送受信できます。 多くのアプリケーションでは、システム負荷が時間の経過とともに変化しますが、各作業単位に必要な処理時間は通常一定に保たれます。 仲介のメッセージ プロデューサーとコンシューマーでキューを使用する場合、コンシューマー側アプリケーションに必要なのは、ピーク時の負荷ではなく平均的な負荷を処理できるようにプロビジョニングしておくことだけです。 キューの深さは、受信の負荷の変化に応じて増減します。 このため、アプリケーション負荷への対応に必要なインフラストラクチャに関して直接費用を節約できます。 負荷の増大に合わせて、キューからの読み取りのためにワーカー プロセスを追加できます。 各メッセージは、ワーカー プロセスの中の 1 つのプロセスによって処理されます。 さらに、このプルベースの負荷分散では、各ワーカー コンピューターがそれぞれ独自の最大レートでメッセージをプルするため、それらのコンピューターの処理能力が異なる場合であっても使用を最適化できます。 このパターンは、"競合コンシューマー" パターンと呼ばれることもあります。
@@ -83,7 +81,6 @@ while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 0, secon
 メッセージを作成してキューとの間で送受信する方法の詳細と実際の例については、[「Service Bus ブローカー メッセージング .NET チュートリアル」](service-bus-brokered-tutorial-dotnet.md)を参照してください。
 
 ## <a name="topics-and-subscriptions"></a>トピックとサブスクリプション
-
 各メッセージが 1 つのコンシューマーによって処理されるキューとは異なり、"*トピック*" と "*サブスクリプション*" では、"*パブリッシュ/サブスクライブ*" パターンを使用した 1 対多形式の通信が行われます。 パブリッシュされた各メッセージは、これは非常に多くの受信者を対象とする場合に便利であり、トピックに登録している各サブスクリプションで使用できます。 メッセージは、トピックに送信された後、サブスクリプションごとに設定できるフィルター規則に基づいて、関連付けられている 1 つ以上のサブスクリプションに配信されます。 サブスクリプションでは、追加のフィルターを使用して、受信するメッセージを限定できます。 メッセージは、キューに送信される場合と同じようにトピックに送信されますが、トピックからメッセージを直接受信することはありません。 代わりに、メッセージはサブスクリプションから受信します。 トピック サブスクリプションは、トピックに送信されたメッセージのコピーを受け取る仮想キューのようなものです。 メッセージは、キューから受信する場合と同じ方法でサブスクリプションから受信します。
 
 比較として、キューのメッセージ送信機能はそのままトピックに相当し、メッセージ受信機能はサブスクリプションに相当します。 特に、これは、サブスクリプションでは、競合コンシューマー、一時的な切り離し、負荷平滑化、負荷分散など、キューに関してこのセクションで既に説明したのと同じパターンがサポートされることを意味します。
@@ -144,7 +141,6 @@ while ((message = auditSubscriptionClient.Receive(TimeSpan.FromSeconds(5))) != n
 ```
 
 ### <a name="rules-and-actions"></a>ルールとアクション
-
 多くのシナリオでは、特性のあるメッセージは、異なる方法で処理する必要があります。 これを実現するために、目的のプロパティを持つメッセージを検索し、該当するプロパティに特定の変更を行うようにサブスクリプションを構成できます。 Service Bus のサブスクリプションには、トピックに送信されたすべてのメッセージが表示されますが、仮想サブスクリプション キューにコピーできるのは、これらのメッセージの一部のみです。 これを行うには、サブスクリプション フィルターを使用します。 このような変更は、"*フィルター アクション*" と呼ばれます。 サブスクリプションを作成する場合、メッセージのシステム プロパティ (**Label** など) とカスタム アプリケーション プロパティ (**StoreName** など) の両方で機能するフィルター式を指定できます。この場合、SQL フィルター式は省略可能です。SQL フィルター式を指定しない場合は、サブスクリプションで定義されている任意のフィルター アクションが、そのサブスクリプションのすべてのメッセージに対して実行されます。
 
 前の例を使用して、**Store1** からの受信メッセージだけを取り出すようにフィルターするには、Dashboard サブスクリプションを次のように作成します。
@@ -158,17 +154,13 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 使用可能なフィルター値の詳細については、[SqlFilter](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx) クラスと [SqlRuleAction](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlruleaction.aspx) クラスのドキュメントを参照してください。 また、[「ブローカー メッセージング: 高度なフィルター」](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)と [トピック フィルター](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters) に関するページのサンプルも参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-
 Service Bus のブローカー メッセージング エンティティの使用の詳細と例については、次の高度なトピックを参照してください。
 
-- [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-- [Service Bus ブローカー メッセージングに関する .NET チュートリアル](service-bus-brokered-tutorial-dotnet.md)
-- [Service Bus ブローカー メッセージングの REST チュートリアル](service-bus-brokered-tutorial-rest.md)
-- [トピック フィルターのサンプル](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)
-- [ブローカー メッセージング: 高度なフィルターのサンプル](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
-
-
-
+* [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
+* [Service Bus ブローカー メッセージングに関する .NET チュートリアル](service-bus-brokered-tutorial-dotnet.md)
+* [Service Bus ブローカー メッセージングの REST チュートリアル](service-bus-brokered-tutorial-rest.md)
+* [トピック フィルターのサンプル](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)
+* [ブローカー メッセージング: 高度なフィルターのサンプル](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 
 <!--HONumber=Oct16_HO2-->
 

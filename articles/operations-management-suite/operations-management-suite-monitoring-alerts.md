@@ -1,23 +1,22 @@
-<properties 
-   pageTitle="Microsoft 監視製品のアラート管理 | Microsoft Azure"
-   description="アラートには、管理者の注意が必要な問題が示されます。  この記事では、System Center Operations Manager (SCOM) と Log Analytics におけるアラートの作成と管理の方法の違いについて説明し、ハイブリッド アラート管理戦略で 2 つの製品を活用するためのベスト プラクティスを紹介します。" 
-   services="operations-management-suite"
-   documentationCenter=""
-   authors="bwren"
-   manager="jwhit"
-   editor="tysonn" />
-<tags 
-   ms.service="operations-management-suite"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="09/06/2016"
-   ms.author="bwren" />
+---
+title: Microsoft 監視製品のアラート管理 | Microsoft Docs
+description: アラートには、管理者の注意が必要な問題が示されます。  この記事では、System Center Operations Manager (SCOM) と Log Analytics におけるアラートの作成と管理の方法の違いについて説明し、ハイブリッド アラート管理戦略で 2 つの製品を活用するためのベスト プラクティスを紹介します。
+services: operations-management-suite
+documentationcenter: ''
+author: bwren
+manager: jwhit
+editor: tysonn
 
+ms.service: operations-management-suite
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 09/06/2016
+ms.author: bwren
 
-# <a name="managing-alerts-with-microsoft-monitoring"></a>Microsoft の監視製品を使用したアラートの管理 
-
+---
+# <a name="managing-alerts-with-microsoft-monitoring"></a>Microsoft の監視製品を使用したアラートの管理
 アラートには、管理者の注意が必要な問題が示されます。  System Center Operations Manager (SCOM) と、Operations Management Suite (OMS) の Log Analytics は、アラートの生成方法、アラートの管理と分析の方法、重要な問題が検出された場合の通知方法に明確な相違点があります。
 
 ## <a name="alerts-in-operations-manager"></a>Operations Manager のアラート
@@ -59,7 +58,7 @@ SCOM アラートはオペレーション コンソールでしか変更でき�
 
 ## <a name="alert-remediation"></a>アラートによる修復
 [修復](http://technet.microsoft.com/library/mt614775.aspx) とは、アラートによって特定された問題を自動的に修正する試みを指します。
-  
+
 SCOM を使用すると、モニターが異常な状態になったことに呼応して診断と復元を実行できます。  これは、モニターによるアラートの生成と同時に行われます。  診断と復元は、通常、エージェントで実行されるスクリプトとして実装されます。  診断では、検出された問題の詳細情報を収集しようとするのに対して、復元では、問題の解決を試みます。
 
 Log Analytics では、Log Analytics アラートに呼応して、[Azure Automation Runbook](https://azure.microsoft.com/documentation/services/automation/) を開始するか、webhook を呼び出すことができます。  Runbook には、PowerShell で実装される複雑なロジックを含めることができます。  このスクリプトは Azure で実行され、Azure のリソースやクラウドで提供される外部リソースにアクセスできます。  Azure Automation には、ローカル データセンター内のサーバーで Runbook を実行する機能がありますが、現時点では、Log Analytics のアラートに呼応して Runbook を開始する場合はこの機能を使用できません。
@@ -69,9 +68,7 @@ SCOM の復元と OMS の Runbook はどちらにも PowerShell スクリプト�
 Log Analytics のデータ ソースとして SCOM を使用する場合は、OMS リポジトリに格納されている SCOM アラートを取得するログ クエリを使用して Log Analytics アラートを作成できます。  これにより、SCOM アラートに呼応して Azure Automation Runbook を実行できます。  Runbook は Azure で実行されるため、オンプレミスの問題を復元するための実行可能な戦略としては使用できません。
 
 ## <a name="next-steps"></a>次のステップ
-
-- [System Center Operations Manager (SCOM) のアラート](https://technet.microsoft.com/library/hh212913.aspx)に関するページで詳細を確認してください。
-
+* [System Center Operations Manager (SCOM) のアラート](https://technet.microsoft.com/library/hh212913.aspx)に関するページで詳細を確認してください。
 
 <!--HONumber=Oct16_HO2-->
 

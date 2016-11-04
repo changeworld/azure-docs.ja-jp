@@ -1,30 +1,29 @@
-<properties
-	pageTitle="Azure App Service のベスト プラクティス"
-	description="Azure App Service のベスト プラクティスとトラブルシューティングについて説明します。"
-	services="app-service"
-	documentationCenter=""
-	authors="dariagrigoriu"
-	manager="wpickett"
-	editor="mollybos"/>
+---
+title: Azure App Service のベスト プラクティス
+description: Azure App Service のベスト プラクティスとトラブルシューティングについて説明します。
+services: app-service
+documentationcenter: ''
+author: dariagrigoriu
+manager: wpickett
+editor: mollybos
 
-<tags
-	ms.service="app-service"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/30/2016"
-	ms.author="dariagrigoriu"/>
-    
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/30/2016
+ms.author: dariagrigoriu
+
+---
 # Azure App Service のベスト プラクティス
-
 この記事では、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) を使用するためのベスト プラクティスを概説します。
 
 ## <a name="colocation"></a>コロケーション
 Web アプリやデータベースなど、ソリューションを構成する Azure リソースを別々のリージョンに配置すると、次のような影響が考えられます。
 
-*  リソース間の通信における待機時間の増大
-*  リージョン間の送信データ転送にかかる料金。[Azure の料金](https://azure.microsoft.com/pricing/details/data-transfers)に関するページを参照してください。
+* リソース間の通信における待機時間の増大
+* リージョン間の送信データ転送にかかる料金。[Azure の料金](https://azure.microsoft.com/pricing/details/data-transfers)に関するページを参照してください。
 
 Web アプリ、データベース、コンテンツやデータを保持するためのストレージ アカウントなど、ソリューションを構成する Azure リソースは、同じリージョンに配置すること (コロケーション) をお勧めします。リソースを作成する場合は、それらを必ず同じ Azure リージョン内に配置してください。ただし、特定のビジネスまたは設計上の理由で難しい場合はその限りでありません。Premium App Service プラン アプリで現在使用できる [App Service の複製機能](app-service-web-app-cloning-portal.md)を利用すれば、App Service アプリをデータベースと同じリージョンに移動することができます。
 

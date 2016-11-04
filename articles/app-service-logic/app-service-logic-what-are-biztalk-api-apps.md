@@ -1,26 +1,23 @@
-<properties 
-    pageTitle="コネクタと BizTalk API Apps とは" 
-    description="API Apps、コネクタ、および BizTalk API Apps について説明します。" 
-    services="logic-apps" 
-    documentationCenter="" 
-    authors="MandiOhlinger" 
-    manager="erikre" 
-    editor=""/>
+---
+title: コネクタと BizTalk API Apps とは
+description: API Apps、コネクタ、および BizTalk API Apps について説明します。
+services: logic-apps
+documentationcenter: ''
+author: MandiOhlinger
+manager: erikre
+editor: ''
 
-<tags 
-    ms.service="logic-apps" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="09/01/2016" 
-    ms.author="mandia"/>
+ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 09/01/2016
+ms.author: mandia
 
-
+---
 # <a name="what-are-connectors-and-biztalk-api-apps"></a>コネクタと BizTalk API Apps とは
-
-[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
-
+[!INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 *コネクタ* は、接続に焦点を絞った API アプリの一種です。 他の API アプリと同様に、コネクタは Web アプリ、モバイル アプリ、およびロジック アプリから使用されます。 コネクタは、既存のサービスとの接続を容易にし、認証の管理、監視、分析などに役立ちます。
 
@@ -34,8 +31,7 @@
 
 [App Service の料金](https://azure.microsoft.com/pricing/details/app-service/) に関するページでは、これらのサービス レベルについて説明し、各レベルに含まれる機能を表にして示しています。 次のセクションでは、BizTalk API アプリとコネクタのさまざまなカテゴリについて説明します。
 
-
-## <a name="hybrid-connectors"></a>ハイブリッド コネクタ 
+## <a name="hybrid-connectors"></a>ハイブリッド コネクタ
 ハイブリッド コネクタによって、企業と [DB2](app-service-logic-connector-db2.md)、[Informix](app-service-logic-connector-informix.md)、WebSphere MQ の接続まで、対応範囲が広がります。 
 
 その他のリソース: [企業間コネクタと API Apps](app-service-logic-b2b-connectors.md)  
@@ -43,15 +39,11 @@
 [取引先契約を作成する](app-service-logic-create-a-trading-partner-agreement.md)  
 [B2B メッセージを追跡する](app-service-logic-track-b2b-messages.md)  
 
-
 ## <a name="rules"></a>ルール
 ビジネス ルールには、ビジネス プロセスを制御するポリシーと意思決定がカプセル化されます。 通常、ルールは動的で、ビジネス プランや規則などのさまざまな理由により、時間の経過と共に変化します。 [BizTalk ルール](app-service-logic-use-biztalk-rules.md) では、アプリケーション コードからこれらのポリシーを分離して、より簡単かつ迅速にプロセスを変更できるようにします。
 
 ## <a name="connector-and-api-app-list"></a>コネクタと API のアプリの一覧
 Standard コネクタ、BizTalk EAI、Premium コネクタなどの各カテゴリに含まれるコネクタと API Apps の完全な一覧については、 [コネクタと API Apps の一覧](app-service-logic-connectors-list.md) を参照してください。
- 
-
-
 
 <!--HONumber=Oct16_HO2-->
 

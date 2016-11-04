@@ -1,23 +1,22 @@
-<properties
-   pageTitle="SQL Data Warehouse のストアド プロシージャ | Microsoft Azure"
-   description="ソリューション開発のための Azure SQL Data Warehouse でのストアド プロシージャの実装に関するヒント。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: SQL Data Warehouse のストアド プロシージャ | Microsoft Docs
+description: ソリューション開発のための Azure SQL Data Warehouse でのストアド プロシージャの実装に関するヒント。
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/30/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/30/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # SQL Data Warehouse のストアド プロシージャ
-
 SQL Data Warehouse では、SQL Server の Transact-SQL 機能の多くをサポートしています。さらに重要なのは、ソリューションのパフォーマンスを最大限にするために活用できる、スケールアウト専用の機能が用意されていることです。
 
 ただし、SQL Data Warehouse のスケールとパフォーマンスを維持するために、動作が異なる機能もあれば、サポートされていない機能もあります。
@@ -42,6 +41,7 @@ SQL Data Warehouse では、最大 8 レベルの入れ子をサポートしま�
 EXEC prc_nesting
 ```
 ストアド プロシージャから別の EXEC の呼び出しも行う場合、入れ子レベルは 2 に増えます。
+
 ```sql
 CREATE PROCEDURE prc_nesting
 AS
@@ -50,6 +50,7 @@ GO
 EXEC prc_nesting
 ```
 次に 2 つ目の手順で何らかの動的 SQL を実行すると、入れ子レベルは 3 に増えます。
+
 ```sql
 CREATE PROCEDURE prc_nesting_2
 AS
@@ -66,25 +67,24 @@ SQL Data Warehouse では、INSERT ステートメントでストアド プロ�
 この実行方法の例については、[一時テーブル]に関する記事をご覧ください。
 
 ## 制限事項
-
 SQL Data Warehouse で実装されていない Transact-SQL ストアド プロシージャの側面がいくつかあります。
 
 次に例を示します。
 
-- 一時ストアド プロシージャ
-- 番号付きストアド プロシージャ
-- 拡張ストアド プロシージャ
-- CLR ストアド プロシージャ
-- 暗号化オプション
-- レプリケーション オプション
-- テーブル値パラメーター
-- 読み取り専用パラメーター
-- 既定のパラメーター
-- 実行コンテキスト
-- return ステートメント
+* 一時ストアド プロシージャ
+* 番号付きストアド プロシージャ
+* 拡張ストアド プロシージャ
+* CLR ストアド プロシージャ
+* 暗号化オプション
+* レプリケーション オプション
+* テーブル値パラメーター
+* 読み取り専用パラメーター
+* 既定のパラメーター
+* 実行コンテキスト
+* return ステートメント
 
 ## 次のステップ
-開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
+開発のその他のヒントについては、[開発の概要][開発の概要]に関するページをご覧ください。
 
 <!--Image references-->
 

@@ -1,30 +1,32 @@
-<properties 
-    pageTitle="How to use Notification Hubs with Python" 
-    description="Learn how to use Azure Notification Hubs from a Python back-end." 
-    services="notification-hubs" 
-    documentationCenter="" 
-    authors="ysxu"
-    manager="erikre" 
-    editor=""/>
+---
+title: How to use Notification Hubs with Python
+description: Learn how to use Azure Notification Hubs from a Python back-end.
+services: notification-hubs
+documentationcenter: ''
+author: ysxu
+manager: erikre
+editor: ''
 
-<tags 
-    ms.service="notification-hubs" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="python" 
-    ms.devlang="php" 
-    ms.topic="article" 
-    ms.date="06/29/2016" 
-    ms.author="yuaxu"/>
+ms.service: notification-hubs
+ms.workload: mobile
+ms.tgt_pltfrm: python
+ms.devlang: php
+ms.topic: article
+ms.date: 06/29/2016
+ms.author: yuaxu
 
-
+---
 # <a name="how-to-use-notification-hubs-from-python"></a>How to use Notification Hubs from Python
-[AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
-        
+[!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
+
 You can access all Notification Hubs features from a Java/PHP/Python/Ruby back-end using the Notification Hub REST interface as described in the MSDN topic [Notification Hubs REST APIs](http://msdn.microsoft.com/library/dn223264.aspx).
 
-> [AZURE.NOTE] This is a sample reference implementation for implementing the notification sends in Python and is not the officially supported Notifications Hub Python SDK.
->
+> [!NOTE]
+> This is a sample reference implementation for implementing the notification sends in Python and is not the officially supported Notifications Hub Python SDK.
+> 
 > This sample is written using Python 3.4.
+> 
+> 
 
 In this topic we show how to:
 
@@ -34,7 +36,10 @@ In this topic we show how to:
 
 You can follow the [Get started tutorial](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) for your mobile platform of choice, implementing the back-end portion in Python.
 
-> [AZURE.NOTE] The scope of the sample is only limited to send notifications and it doesn't do any registration management.
+> [!NOTE]
+> The scope of the sample is only limited to send notifications and it doesn't do any registration management.
+> 
+> 
 
 ## <a name="client-interface"></a>Client interface
 The main client interface can provide the same methods that are available in the [.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx). This will allow you to directly translate all the tutorials and samples currently available on this site, and contributed by the community on the internet.
@@ -45,12 +50,12 @@ For example, to create a client:
 
     isDebug = True
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
-    
+
 To send a Windows toast notification:
-    
+
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello world!</text></binding></visual></toast>"""
     hub.send_windows_notification(wns_payload)
-    
+
 ## <a name="implementation"></a>Implementation
 If you did not already, please follow our [Get started tutorial] up to the last section where you have to implement the back-end.
 
@@ -61,22 +66,21 @@ All the details to implement a full REST wrapper can be found on [MSDN](http://m
 3. Send a notification using HTTP REST API
 
 ### <a name="parse-the-connection-string"></a>Parse the connection string
-
 Here is the main class implementing the client, whose constructor parses the connection string:
 
     class NotificationHub:
         API_VERSION = "?api-version=2013-10"
         DEBUG_SEND = "&test"
-    
+
         def __init__(self, connection_string=None, hub_name=None, debug=0):
             self.HubName = hub_name
             self.Debug = debug
-    
+
             # Parse connection string
             parts = connection_string.split(';')
             if len(parts) != 3:
                 raise Exception("Invalid ConnectionString.")
-    
+
             for part in parts:
                 if part.startswith('Endpoint'):
                     self.Endpoint = 'https' + part[11:]
@@ -127,10 +131,10 @@ First, let use define a class representing a notification.
                 raise Exception(
                     "Invalid Notification format. " +
                     "Must be one of the following - 'template', 'apple', 'gcm', 'windows', 'windowsphone', 'adm', 'baidu'")
-    
+
             self.format = notification_format
             self.payload = payload
-    
+
             # array with keynames for headers
             # Note: Some headers are mandatory: Windows: X-WNS-Type, WindowsPhone: X-NotificationType
             # Note: For Apple you can set Expiry with header: ServiceBusNotification-ApnsExpiry
@@ -258,7 +262,7 @@ Enabling debug property while initializing the Notification Hub will write out d
 
 The Notification Hub Send request HTTP URL gets appended with a "test" querystring as a result. 
 
-##<a name="<a-name="complete-tutorial"></a>complete-the-tutorial"></a><a name="complete-tutorial"></a>Complete the tutorial
+## <a name="<a-name="complete-tutorial"></a>complete-the-tutorial"></a><a name="complete-tutorial"></a>Complete the tutorial
 Now you can complete the Get Started tutorial by sending the notification from a Python back-end.
 
 Initialize your Notification Hubs client (substitute the connection string and hub name as instructed in the [Get started tutorial]):
@@ -268,16 +272,13 @@ Initialize your Notification Hubs client (substitute the connection string and h
 Then add the send code depending on your target mobile platform. This sample also adds higher level methods to enable sending notifications based on the platform e.g. send_windows_notification for windows; send_apple_notification (for apple) etc. 
 
 ### <a name="windows-store-and-windows-phone-8.1-(non-silverlight)"></a>Windows Store and Windows Phone 8.1 (non-Silverlight)
-
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Test</text></binding></visual></toast>"""
     hub.send_windows_notification(wns_payload)
 
 ### <a name="windows-phone-8.0-and-8.1-silverlight"></a>Windows Phone 8.0 and 8.1 Silverlight
-
     hub.send_mpns_notification(toast)
 
 ### <a name="ios"></a>iOS
-
     alert_payload = {
         'data':
             {
@@ -316,22 +317,19 @@ Then add the send code depending on your target mobile platform. This sample als
 Running your Python code should produce a notification appearing on your target device.
 
 ## <a name="examples:"></a>Examples:
-
 ### <a name="enabling-debug-property"></a>Enabling debug property
 When you enable debug flag while initializing the NotificationHub then you will see detailed HTTP request and response dump as well as NotificationOutcome like the following where you can understand what HTTP headers are passed in the request and what HTTP response was received from the Notification Hub:     ![][1]
 
 You will see detailed Notification Hub result e.g. 
 
-- when the message is successfully sent to the Push Notification Service. 
-    
+* when the message is successfully sent to the Push Notification Service. 
+  
         <Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
-
-- If there were no targets found for any push notification then you are likely going to see the following in the response (which indicates that there were no registrations found to deliver the notification probably because the registrations had some mismatched tags)
-
+* If there were no targets found for any push notification then you are likely going to see the following in the response (which indicates that there were no registrations found to deliver the notification probably because the registrations had some mismatched tags)
+  
         '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
 
-### <a name="broadcast-toast-notification-to-windows"></a>Broadcast toast notification to Windows 
-
+### <a name="broadcast-toast-notification-to-windows"></a>Broadcast toast notification to Windows
 Notice the headers that get sent out when you are sending a broadcast toast notification to Windows client. 
 
     hub.send_windows_notification(wns_payload)
@@ -339,7 +337,6 @@ Notice the headers that get sent out when you are sending a broadcast toast noti
 ![][2]
 
 ### <a name="send-notification-specifying-a-tag-(or-tag-expression)"></a>Send notification specifying a tag (or tag expression)
-
 Notice the Tags HTTP header which gets added to the HTTP request (in the example below, we are sending the notification only to registrations with 'sports' payload)
 
     hub.send_windows_notification(wns_payload, "sports")
@@ -347,30 +344,27 @@ Notice the Tags HTTP header which gets added to the HTTP request (in the example
 ![][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>Send notification specifying multiple tags
-
 Notice how the Tags HTTP header changes when multiple tags are sent. 
-    
+
     tags = {'sports', 'politics'}
     hub.send_windows_notification(wns_payload, tags)
 
 ![][4]
 
 ### <a name="templated-notification"></a>Templated notification
-
 Notice that the Format HTTP header changes and the payload body is sent as part of the HTTP request body:
 
 **Client side - registered template**
 
         var template =
                         @"<toast><visual><binding template=""ToastText01""><text id=""1"">$(greeting_en)</text></binding></visual></toast>";
-            
+
 **Server side - sending the payload**
-        
+
         template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
         hub.send_template_notification(template_payload)
 
 ![][5]
-
 
 ## <a name="next-steps"></a>Next Steps
 In this topic we showed how to create a simple Python REST client for Notification Hubs. From here you can:
@@ -391,7 +385,7 @@ In this topic we showed how to create a simple Python REST client for Notificati
 [3]: ./media/notification-hubs-python-backend-how-to/SendWithOneTag.png
 [4]: ./media/notification-hubs-python-backend-how-to/SendWithMultipleTags.png
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
- 
+
 
 
 

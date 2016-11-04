@@ -1,32 +1,29 @@
-<properties 
-pageTitle="Microsoft Azure での SAP ERP 6.0 向け SAP IDES EHP7 SP3 のデプロイ | Microsoft Azure" 
-description="Microsoft Azure での SAP ERP 6.0 向け SAP IDES EHP7 SP3 のデプロイ" 
-services="virtual-machines-windows" 
-documentationCenter="" 
-authors="hermanndms" 
-manager="timlt" 
-editor="" 
-tags="azure-resource-manager" 
-keywords=""/>
-<tags  
-ms.service="virtual-machines-windows" 
-ms.devlang="na" 
-ms.topic="article" 
-ms.tgt_pltfrm="vm-windows" 
-ms.workload="infrastructure-services" 
-ms.date="09/16/2016" 
-ms.author="hermannd"/>
+---
+title: Microsoft Azure での SAP ERP 6.0 向け SAP IDES EHP7 SP3 のデプロイ | Microsoft Docs
+description: Microsoft Azure での SAP ERP 6.0 向け SAP IDES EHP7 SP3 のデプロイ
+services: virtual-machines-windows
+documentationcenter: ''
+author: hermanndms
+manager: timlt
+editor: ''
+tags: azure-resource-manager
+keywords: ''
 
+ms.service: virtual-machines-windows
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure-services
+ms.date: 09/16/2016
+ms.author: hermannd
 
-# Microsoft Azure での SAP ERP 6.0 向け SAP IDES EHP7 SP3 のデプロイ 
-
+---
+# Microsoft Azure での SAP ERP 6.0 向け SAP IDES EHP7 SP3 のデプロイ
 この記事では、SAP Cloud Appliance Library 3.0 を使用して、SQL Server および Windows OS で実行される SAP IDES を Microsoft Azure にデプロイする方法について説明します。スクリーン ショットでは、その手順を示します。リストにある他のソリューションのデプロイも、同様のプロセスで行うことができます。必要なのは別のソリューションを選択することだけです。
 
 SAP Cloud Appliance Library (SAP CAL) の作業は[ここ](https://cal.sap.com/)から開始できます。新しい [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience) のブログもご覧ください。
 
-
 次の各スクリーンショットで、Microsoft Azure に SAP IDES をデプロイする手順を順を追って示します。他のソリューションでもプロセスは同じです。
-
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic1.jpg)
 

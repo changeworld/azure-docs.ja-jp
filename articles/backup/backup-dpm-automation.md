@@ -1,33 +1,32 @@
-<properties
-	pageTitle="Microsoft Azure Backup - PowerShell を使用した DPM バックアップのデプロイと管理| Microsoft Azure"
-	description="PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明"
-	services="backup"
-	documentationCenter=""
-	authors="NKolli1"
-	manager="shreeshd"
-	editor=""/>
+---
+title: Microsoft Azure Backup - PowerShell を使用した DPM バックアップのデプロイと管理| Microsoft Docs
+description: PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明
+services: backup
+documentationcenter: ''
+author: NKolli1
+manager: shreeshd
+editor: ''
 
-<tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2016"
-	ms.author="jimpark; anuragm;trinadhk;markgal"/>
+ms.service: backup
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/01/2016
+ms.author: jimpark; anuragm;trinadhk;markgal
 
-
+---
 # PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
-
-> [AZURE.SELECTOR]
-- [ARM](backup-dpm-automation.md)
-- [クラシック](backup-dpm-automation-classic.md)
+> [!div class="op_single_selector"]
+> * [ARM](backup-dpm-automation.md)
+> * [クラシック](backup-dpm-automation-classic.md)
+> 
+> 
 
 この記事では、PowerShell を使用して、DPM サーバー上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
 
 ## PowerShell 環境のセットアップ
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 PowerShell を使用して Data Protection Manager から Azure へのバックアップを管理する前に、PowerShell の環境が整っている必要があります。PowerShell セッションの開始時に、必ず次のコマンドレットを実行して適切なモジュールをインポートし、DPM コマンドレットを適切に参照できるようにしてください。
 
@@ -56,44 +55,41 @@ PS C:\> Switch-AzureMode AzureResourceManager
 
 PowerShell を使用して次のセットアップおよび登録タスクを自動化できます。
 
-- Recovery Services コンテナーを作成する
-- Microsoft Azure Backup エージェントのインストール
-- Microsoft Azure Backup サービスへの登録
-- ネットワークの設定
-- 暗号化の設定
+* Recovery Services コンテナーを作成する
+* Microsoft Azure Backup エージェントのインストール
+* Microsoft Azure Backup サービスへの登録
+* ネットワークの設定
+* 暗号化の設定
 
 ## Recovery Services コンテナーの作成
-
 次の手順では、Recovery Services コンテナーの作成について説明します。Recovery Services コンテナーは Backup コンテナーとは異なります。
 
 1. Azure Backup を初めて使用する場合、**Register-AzureRMResourceProvider** コマンドレットを使って Azure Recovery Services プロバイダーをサブスクリプションに登録する必要があります。
-
+   
     ```
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-
 2. Recovery Services コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。新しいリソース グループを作成する場合、リソース グループの名前と場所を指定します。
-
+   
     ```
     PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
     ```
-
 3. **New-AzureRmRecoveryServicesVault** コマンドレットを使用して新しいコンテナーを作成します。リソース グループに使用したのと同じコンテナーの場所を指定してください。
-
+   
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
-
 4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/storage-redundancy.md#locally-redundant-storage) または [geo 冗長ストレージ (GRS)](../storage/storage-redundancy.md#geo-redundant-storage) を使用できます。次に示す例では、testVault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
-
-    > [AZURE.TIP] Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。このため、Backup Recovery Services コンテナー オブジェクトを変数に格納すると便利です。
-
+   
+   > [!TIP]
+   > Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。このため、Backup Recovery Services コンテナー オブジェクトを変数に格納すると便利です。
+   > 
+   > 
+   
     ```
     PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testVault"
     PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
-
-
 
 ## サブスクリプション内のコンテナーの表示
 **Get-AzureRmRecoveryServicesVault** を使用して、現在のサブスクリプション内のすべてのコンテナーを一覧表示します。このコマンドは、新しく作成したコンテナーを確認したり、サブスクリプション内の利用可能なコンテナーを確認したりするのに使用できます。
@@ -137,20 +133,19 @@ PS C:\> MARSAgentInstaller.exe /?
 利用可能なオプションは、次のとおりです。
 
 | オプション | 詳細 | 既定値 |
-| ---- | ----- | ----- |
-| /q | サイレント インストール | - |
-| /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent |
-| /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
-| /m | Microsoft Update のオプトイン | - |
-| /nu | インストールの完了後に更新プログラムを確認しない | - |
-| /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - |
-| /ph | プロキシ ホストのアドレス | - |
-| /po | プロキシ ホストのポート番号 | - |
-| /pu | プロキシ ホストのユーザー名 | - |
-| /pw | プロキシ パスワード | - |
+| --- | --- | --- |
+| /q |サイレント インストール |- |
+| /p:"location" |Microsoft Azure Backup エージェントのインストール フォルダーへのパス |C:\\Program Files\\Microsoft Azure Recovery Services Agent |
+| /s:"location" |Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス |C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
+| /m |Microsoft Update のオプトイン |- |
+| /nu |インストールの完了後に更新プログラムを確認しない |- |
+| /d |Microsoft Azure Recovery Services エージェントをアンインストールする |- |
+| /ph |プロキシ ホストのアドレス |- |
+| /po |プロキシ ホストのポート番号 |- |
+| /pu |プロキシ ホストのユーザー名 |- |
+| /pw |プロキシ パスワード |- |
 
 ## Recovery Services コンテナーへの DPM の登録
-
 Recovery Services コンテナーを作成したら、最新のエージェントとコンテナーの資格情報をダウンロードし、C:\\Downloads のような便利な場所に保管します。
 
 ```
@@ -207,7 +202,6 @@ PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -Subscrip
 
 上の例では、ステージング領域は PowerShell オブジェクト ```$setting``` の *C:\\StagingArea* に設定されます。指定したフォルダーが既に存在することを確認します。存在しない場合は、サブスクリプション設定の最終コミットが失敗します。
 
-
 ### 暗号化の設定
 データの機密性を保護するために、Microsoft Azure Backup に送信されるバックアップ データは暗号化されます。暗号化パスフレーズは、復元時にデータの暗号化を解除するための "パスワード" になります。設定したら、この情報をセキュリティで保護された安全な場所に保管することが重要です。
 
@@ -219,7 +213,10 @@ PS C:\> $Passphrase = ConvertTo-SecureString -string "passphrase123456789" -AsPl
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -EncryptionPassphrase $Passphrase
 ```
 
-> [AZURE.IMPORTANT] 設定したら、パスフレーズ情報をセキュリティで保護された安全な場所に保管してください。このパスフレーズがないと、Azure からデータを復元できません。
+> [!IMPORTANT]
+> 設定したら、パスフレーズ情報をセキュリティで保護された安全な場所に保管してください。このパスフレーズがないと、Azure からデータを復元できません。
+> 
+> 
 
 この時点で、必要な変更はすべて ```$setting``` オブジェクトに行われています。変更を忘れずにコミットします。
 
@@ -338,9 +335,10 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 ## バックアップ ポイントの表示
 データソースのすべての回復ポイントの一覧を取得するには、[Get DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) コマンドレットを使用します。この例の内容:
-- 配列 ```$PG``` に格納される DPM サーバーのすべての PG を取得します。
-- ```$PG[0]``` に対応するデータソースを取得します。
-- データソースのすべての回復ポイントを取得します。
+
+* 配列 ```$PG``` に格納される DPM サーバーのすべての PG を取得します。
+* ```$PG[0]``` に対応するデータソースを取得します。
+* データソースのすべての回復ポイントを取得します。
 
 ```
 PS C:\> $PG = Get-DPMProtectionGroup –DPMServerName "TestingServer"
@@ -353,9 +351,9 @@ PS C:\> $RecoveryPoints = Get-DPMRecoverypoint -Datasource $DS[0] -Online
 
 次の例では、バックアップ ポイントと回復対象を組み合わせて、Hyper-V 仮想マシンを Microsoft Azure Backup から復元する方法を示します。この例には次が含まれています。
 
-- [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) コマンドレットを使用した回復オプションの作成。
-- ```Get-DPMRecoveryPoint``` コマンドレットを使用したバックアップ ポイントの配列の取得。
-- 復元元のバックアップ ポイントの選択。
+* [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) コマンドレットを使用した回復オプションの作成。
+* ```Get-DPMRecoveryPoint``` コマンドレットを使用したバックアップ ポイントの配列の取得。
+* 復元元のバックアップ ポイントの選択。
 
 ```
 PS C:\> $RecoveryOption = New-DPMRecoveryOption -HyperVDatasource -TargetServer "HVDCenter02" -RecoveryLocation AlternateHyperVServer -RecoveryType Recover -TargetLocation “C:\VMRecovery”
@@ -370,7 +368,6 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 使用されているコマンドは、任意のデータソースの種類に合わせて簡単に拡張できます。
 
 ## 次のステップ
-
-- Azure Backup と DPM の詳細については、[DPM バックアップの概要](backup-azure-dpm-introduction.md)に関するページを参照してください。
+* Azure Backup と DPM の詳細については、[DPM バックアップの概要](backup-azure-dpm-introduction.md)に関するページを参照してください。
 
 <!---HONumber=AcomDC_0907_2016-->

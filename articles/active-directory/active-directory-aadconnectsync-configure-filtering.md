@@ -1,35 +1,37 @@
-<properties
-	pageTitle="Azure AD Connect Sync: フィルター処理の構成 | Microsoft Azure"
-	description="Azure AD Connect Sync でフィルター処理を構成する方法を説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="andkjell"
-	manager="femila"
-	editor=""/>
+---
+title: 'Azure AD Connect Sync: フィルター処理の構成 | Microsoft Docs'
+description: Azure AD Connect Sync でフィルター処理を構成する方法を説明します。
+services: active-directory
+documentationcenter: ''
+author: andkjell
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/13/2016"
-	ms.author="andkjell;markvi"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/13/2016
+ms.author: andkjell;markvi
 
-
+---
 # Azure AD Connect Sync: フィルター処理の構成
 オンプレミスのディレクトリからどのオブジェクトを Azure AD に反映するかは、フィルター処理で制御できます。既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。通常は、この構成を推奨します。Office 365 のワークロード (Exchange Online、Skype for Business など) を使っているエンド ユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
 
 場合によっては、既定の構成に変更を加えなければならないこともあります。次に例をいくつか示します。
 
-- [マルチ Azure AD ディレクトリ トポロジ](active-directory-aadconnect-topologies.md#each-object-only-once-in-an-azure-ad-directory)の使用を計画しています。そのうえでフィルターを適用し、特定の Azure AD ディレクトリに対してどのオブジェクトを同期させるかを制御する必要があります。
-- Azure または Office 365 を試験運用しており、Azure AD に存在するユーザーの一部だけが必要な場合、小規模な試験では、完全なグローバル アドレス一覧がなくても機能を検証することができます。
-- サービス アカウントなど、Azure AD には個人用以外のアカウントが多数存在します。
-- コンプライアンス上の理由から、オンプレミスのユーザー アカウントは一切削除できないので単に無効にします。一方、Azure AD には、アクティブなアカウントだけが必要になります。
+* [マルチ Azure AD ディレクトリ トポロジ](active-directory-aadconnect-topologies.md#each-object-only-once-in-an-azure-ad-directory)の使用を計画しています。そのうえでフィルターを適用し、特定の Azure AD ディレクトリに対してどのオブジェクトを同期させるかを制御する必要があります。
+* Azure または Office 365 を試験運用しており、Azure AD に存在するユーザーの一部だけが必要な場合、小規模な試験では、完全なグローバル アドレス一覧がなくても機能を検証することができます。
+* サービス アカウントなど、Azure AD には個人用以外のアカウントが多数存在します。
+* コンプライアンス上の理由から、オンプレミスのユーザー アカウントは一切削除できないので単に無効にします。一方、Azure AD には、アクティブなアカウントだけが必要になります。
 
 この記事では、各種フィルター処理方法の構成について説明します。
 
-> [AZURE.IMPORTANT]公式に文書化されているアクションを除き、Microsoft は Azure AD Connect Sync の変更や操作をサポートしません。そのようなアクションを実行すると、Azure AD Connect Sync の状態に一貫性が失われたり、サポート対象外の状態になったりすることがあります。その結果、Microsoft はそのようなデプロイを技術的にサポートできなくなります。
+> [!IMPORTANT]
+> 公式に文書化されているアクションを除き、Microsoft は Azure AD Connect Sync の変更や操作をサポートしません。そのようなアクションを実行すると、Azure AD Connect Sync の状態に一貫性が失われたり、サポート対象外の状態になったりすることがあります。その結果、Microsoft はそのようなデプロイを技術的にサポートできなくなります。
+> 
+> 
 
 ## 基本事項と注意事項
 Azure AD Connect Sync では、いつでもフィルター処理を有効にできます。最初に既定の構成でディレクトリ同期を実行した後、フィルター処理を構成した場合、フィルター処理により除外されるオブジェクトは、Azure AD に対する同期の対象外になります。この変更により、以前同期されてからフィルター処理された Azure AD のオブジェクトは、すべて Azure AD から削除されます。
@@ -69,13 +71,10 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 ## フィルター処理オプション
 ディレクトリ同期ツールには、次のフィルター処理構成タイプが適用できます。
 
-- [**グループ ベース**](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups): 単一のグループに基づくフィルター処理は、インストール ウィザードを使用して、初回インストール時にのみ構成できます。このトピックでは詳しい説明を省略します。
-
-- [**ドメイン ベース**](#domain-based-filtering): どのドメインを Azure AD に同期させるかを選択できます。また、Azure AD Connect Sync をインストールした後でオンプレミス インフラストラクチャに変更を加えた場合、同期エンジンの構成でドメインを追加または削除することができます。
-
-- [**組織単位ベース**](#organizational-unitbased-filtering): Azure AD との間で同期させる OU を選択できます。選択された OU 内のすべてのオブジェクト タイプが対象となります。
-
-- [**属性ベース**](#attribute-based-filtering): オブジェクトの属性値に基づいてオブジェクトをフィルター処理できます。オブジェクトの種類ごとに異なるフィルターを使用することもできます。
+* [**グループ ベース**](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups): 単一のグループに基づくフィルター処理は、インストール ウィザードを使用して、初回インストール時にのみ構成できます。このトピックでは詳しい説明を省略します。
+* [**ドメイン ベース**](#domain-based-filtering): どのドメインを Azure AD に同期させるかを選択できます。また、Azure AD Connect Sync をインストールした後でオンプレミス インフラストラクチャに変更を加えた場合、同期エンジンの構成でドメインを追加または削除することができます。
+* [**組織単位ベース**](#organizational-unitbased-filtering): Azure AD との間で同期させる OU を選択できます。選択された OU 内のすべてのオブジェクト タイプが対象となります。
+* [**属性ベース**](#attribute-based-filtering): オブジェクトの属性値に基づいてオブジェクトをフィルター処理できます。オブジェクトの種類ごとに異なるフィルターを使用することもできます。
 
 フィルター処理のオプションは、同時に複数使用することができます。たとえば、OU ベースのフィルター処理で特定の OU 内のオブジェクトのみを対象にしたうえで、属性ベースのフィルター処理を併用してオブジェクトをさらに絞り込むことができます。複数のフィルター処理方法を使用した場合、それらのフィルターが論理積で組み合わされます。
 
@@ -88,9 +87,9 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 
 ドメイン ベースのフィルター処理構成は、次の手順から成ります。
 
-- 同期の対象とする[ドメインを選択](#select-domains-to-be-synchronized)します。
-- 追加または削除された各ドメインについて、[実行プロファイル](#update-run-profiles)を調整します。
-- [変更の適用と検証](#apply-and-verify-changes)を行います。
+* 同期の対象とする[ドメインを選択](#select-domains-to-be-synchronized)します。
+* 追加または削除された各ドメインについて、[実行プロファイル](#update-run-profiles)を調整します。
+* [変更の適用と検証](#apply-and-verify-changes)を行います。
 
 ### 同期するドメインの選択
 **ドメイン フィルターを設定するには、次の手順を実行します。**
@@ -110,11 +109,11 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 
 次のプロファイルを調整する必要があります。
 
-- フル インポート
-- 完全同期
-- 差分インポート
-- 差分同期
-- エクスポート
+* フル インポート
+* 完全同期
+* 差分インポート
+* 差分同期
+* エクスポート
 
 5 つのプロファイルのそれぞれについて、**追加対象**のドメインごとに次の手順を実行します。
 
@@ -132,7 +131,7 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 
 **[実行プロファイルの構成]** ダイアログ ボックスを閉じるには、**[OK]** をクリックします。
 
-- 構成を完了するには、[変更を適用して検証](#apply-and-verify-changes)します。
+* 構成を完了するには、[変更を適用して検証](#apply-and-verify-changes)します。
 
 ## 組織単位ベースのフィルター処理
 OU ベースのフィルター処理を変更する場合は、インストール ウィザードを実行して、[ドメインと OU のフィルター処理](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)を変更することをお勧めします。インストール ウィザードは、このトピックに記載されているすべてのタスクを自動化します。
@@ -147,10 +146,10 @@ OU ベースのフィルター処理を変更する場合は、インストー�
 4. **[ディレクトリ パーティションの構成]** をクリックし、構成するドメインを選択して、**[コンテナー]** をクリックします。
 5. 資格情報を求められたら、オンプレミスの Active Directory に対する読み取りアクセス権を持った資格情報を指定します。ダイアログ ボックスにあらかじめ設定されているユーザーでなくてもかまいません。
 6. **[コンテナーの選択]** ダイアログ ボックスで、クラウド ディレクトリと同期しない OU の選択を解除し、**[OK]** をクリックします。![OU](./media/active-directory-aadconnectsync-configure-filtering/ou.png)
-  - Windows 10 コンピューターを Azure AD と正しく同期させるには、**[コンピューター]** コンテナーを選択する必要があります。ドメインに参加しているコンピューターが他の OU に置かれている場合、それらが選択されていることを確認してください。
-  - 信頼関係のある複数のフォレストが存在する場合、**[ForeignSecurityPrincipals]** コンテナーを選択する必要があります。このコンテナーにより、フォレスト間のセキュリティ グループのメンバーシップが解決されます。
-  - デバイスの書き戻し機能を有効にした場合は、**[RegisteredDevices]** の OU を選択する必要があります。別の書き戻し機能 (グループの書き戻しなど) を使用する場合は、それらの場所が選択されていることを確認してください。
-  - Users、iNetOrgPersons、Groups、Contacts、Computers の置かれている OU が他にあれば選択します。この図では、いずれも ManagedObjects OU に存在します。
+   * Windows 10 コンピューターを Azure AD と正しく同期させるには、**[コンピューター]** コンテナーを選択する必要があります。ドメインに参加しているコンピューターが他の OU に置かれている場合、それらが選択されていることを確認してください。
+   * 信頼関係のある複数のフォレストが存在する場合、**[ForeignSecurityPrincipals]** コンテナーを選択する必要があります。このコンテナーにより、フォレスト間のセキュリティ グループのメンバーシップが解決されます。
+   * デバイスの書き戻し機能を有効にした場合は、**[RegisteredDevices]** の OU を選択する必要があります。別の書き戻し機能 (グループの書き戻しなど) を使用する場合は、それらの場所が選択されていることを確認してください。
+   * Users、iNetOrgPersons、Groups、Contacts、Computers の置かれている OU が他にあれば選択します。この図では、いずれも ManagedObjects OU に存在します。
 7. 完了したら、**[OK]** をクリックして **[プロパティ]** ダイアログを閉じます。
 8. 構成を完了するには、[変更を適用して検証](#apply-and-verify-changes)します。
 
@@ -198,9 +197,8 @@ OU ベースのフィルター処理を変更する場合は、インストー�
 5. **[スコープ フィルター]** で、**[グループの追加]** をクリックし、**[句の追加]** をクリックして、属性で **[department]** を選択します。演算子を **EQUAL** に設定し、[値] ボックスに「**Sales**」という値を入力します。**[次へ]** をクリックします。![Inbound 5 のスコープ](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)
 6. **[参加]** 規則は空のままにして、**[次へ]** をクリックします。
 7. **[変換の追加]** をクリックして、**[FlowType]** を **[Constant]** に設定し、[ターゲット属性] で **[cloudFiltered]** を選択して、[ソース] ボックスに「**False**」と入力します。**[追加]** をクリックして規則を保存します。![Inbound 6 の変換](./media/active-directory-aadconnectsync-configure-filtering/inbound6.png) これは特殊なケースですが、cloudFiltered を明示的に False に設定します。
-
-	次に、包括的な同期規則を作成する必要があります。
-
+   
+    次に、包括的な同期規則を作成する必要があります。
 8. わかりやすい名前を規則に付けます ("*AD からの受信 – 包括的なユーザーのフィルター*" など)。適切なフォレストを選択し、**[接続されているシステム オブジェクトのタイプ]** として **[ユーザー]** を、**[メタバース オブジェクトの種類]** として **[人]** を選択します。**[リンクの種類]** で **[結合]** を選択し、[優先順位] に、別の同期規則で現在使用されていない値 (600 など) を入力します。優先順位の値は、先ほどの同期規則よりも大きく (優先順位を低く) しました。後で別の部門を同期する必要が生じることも考えられるので、値の間隔は、フィルター処理の同期規則を追加できるよう、ある程度余裕を持たせています。**[次へ]** をクリックします。![Inbound 7 の説明](./media/active-directory-aadconnectsync-configure-filtering/inbound7.png)
 9. **[スコープ フィルター]** は空のままにして、**[次へ]** をクリックします。フィルターを空にした場合、すべてのオブジェクトに規則が適用されます。
 10. **[参加]** 規則は空のままにして、**[次へ]** をクリックします。

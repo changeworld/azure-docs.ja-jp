@@ -1,25 +1,23 @@
-<properties
-   pageTitle="Logic Apps での BizTalk JSON エンコーダー コネクタの使用 | Microsoft Azure App Service "
-   description="BizTalk JSON エンコーダー コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-   services="logic-apps"
-   documentationCenter=".net,nodejs,java"
-   authors="rajeshramabathiran"
-   manager="erikre"
-   editor=""/>
+---
+title: Logic Apps での BizTalk JSON エンコーダー コネクタの使用 | Microsoft Docs
+description: BizTalk JSON エンコーダー コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: rajeshramabathiran
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="04/20/2016"
-   ms.author="rajram"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 04/20/2016
+ms.author: rajram
 
-# BizTalk JSON エンコーダーの使用開始とロジック アプリへの追加 
-
-[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
-
+---
+# BizTalk JSON エンコーダーの使用開始とロジック アプリへの追加
+[!INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 BizTalk JSON エンコード/デコード コネクタは、JSON データと XML データの間でアプリを相互運用するのに役立ちます。JSON インスタンスを指定して XML に変換したり、その逆方向に変換したりできます。
 
@@ -32,34 +30,35 @@ BizTalk JSON エンコーダー を使用するには、まず、BizTalk JSON En
 [ロジック アプリの作成]に関するページの手順に従います。BizTalk JSON エンコーダーは、アクションとして使用できます。トリガーはありません。
 
 ### アクション
-- 右側のウィンドウの [BizTalk JSON エンコーダー] をクリックします。
+* 右側のウィンドウの [BizTalk JSON エンコーダー] をクリックします。
+  
+    ![アクションの設定][3]
+* -> (右矢印) をクリックします。
+  
+    ![アクションの一覧][4]
+* BizTalk JSON エンコーダーは、2 つの操作をサポートします。*[Xml から JSON へ]* を選択する
+  
+    ![Xml 入力から JSON 入力への変換][5]
+* アクションの入力を設定して構成します。
+  
+    ![エンコードおよび送信の構成][6]
 
-	![アクションの設定][3]
-- -> (右矢印) をクリックします。
-
-	![アクションの一覧][4]
-- BizTalk JSON エンコーダーは、2 つの操作をサポートします。*[Xml から JSON へ]* を選択する
-
-	![Xml 入力から JSON 入力への変換][5]
-- アクションの入力を設定して構成します。
-
-	![エンコードおよび送信の構成][6]
-
-パラメーター|型|パラメーターの説明
----|---|---
-Input Xml|オブジェクト|入力 XML のコンテンツ
-Remove Outer Envelope|文字列|XML コンテンツからルート ノードを削除するために設定されるフラグ
+| パラメーター | 型 | パラメーターの説明 |
+| --- | --- | --- |
+| Input Xml |オブジェクト |入力 XML のコンテンツ |
+| Remove Outer Envelope |文字列 |XML コンテンツからルート ノードを削除するために設定されるフラグ |
 
 アクションは、入力コンテンツを JSON 表記で返します。
 
 ## コネクタでできること
 これでコネクタが作成されたため、ロジック アプリを使用してこのコネクタをビジネス フローに追加することができます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> [!NOTE]
+> Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> 
+> 
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
-
- 
 
 <!--References -->
 [1]: app-service-logic-connector-tpm

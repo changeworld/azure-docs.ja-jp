@@ -1,34 +1,34 @@
-<properties
-    pageTitle="Powershell を使用した Windows VM の作成 | Microsoft Azure"
-    description="Azure PowerShell とクラシック デプロイ モデルを使用して Windows 仮想マシンを作成します。"
-    services="virtual-machines-windows"
-    documentationCenter=""
-    authors="cynthn"
-    manager="timlt"
-    editor=""
-    tags="azure-service-management"/>
+---
+title: Powershell を使用した Windows VM の作成 | Microsoft Docs
+description: Azure PowerShell とクラシック デプロイ モデルを使用して Windows 仮想マシンを作成します。
+services: virtual-machines-windows
+documentationcenter: ''
+author: cynthn
+manager: timlt
+editor: ''
+tags: azure-service-management
 
-<tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/27/2016"
-    ms.author="cynthn"/>
+ms.service: virtual-machines-windows
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-windows
+ms.devlang: na
+ms.topic: article
+ms.date: 09/27/2016
+ms.author: cynthn
 
-
-# <a name="create-a-windows-virtual-machine-with-powershell-and-the-classic-deployment-model"></a>PowerShell とクラシック デプロイメント モデルを使用した Windows 仮想マシンの作成 
-
-> [AZURE.SELECTOR]
-- [Azure クラシック ポータル - Windows](virtual-machines-windows-classic-tutorial.md)
-- [PowerShell - Windows](virtual-machines-windows-classic-create-powershell.md)
+---
+# <a name="create-a-windows-virtual-machine-with-powershell-and-the-classic-deployment-model"></a>PowerShell とクラシック デプロイメント モデルを使用した Windows 仮想マシンの作成
+> [!div class="op_single_selector"]
+> * [Azure クラシック ポータル - Windows](virtual-machines-windows-classic-tutorial.md)
+> * [PowerShell - Windows](virtual-machines-windows-classic-create-powershell.md)
+> 
+> 
 
 <br>
 
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)][Resource Manager モデルを使用してこれらの手順を実行する](virtual-machines-windows-ps-create.md)方法について説明します。
-
+[Resource Manager モデルを使用してこれらの手順を実行する](virtual-machines-windows-ps-create.md)方法について説明します。
 
 以下の手順では、構成ブロック手法を使用して、Azure PowerShell コマンド セットをカスタマイズする方法を示します。このコマンド セットでは、Windows ベースの Azure 仮想マシンを作成および事前構成します。 このプロセスを使用すると、新しい Windows ベースの仮想マシンのコマンド セットを迅速に作成して既存のデプロイメントを拡張することや、複数のコマンド セットを作成してカスタムの開発とテスト環境または IT プロの環境をすばやく構築することもできます。
 
@@ -37,14 +37,12 @@
 まだ完了していない場合は、 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md) に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。 次に、Windows PowerShell コマンド プロンプトを開きます。
 
 ## <a name="step-1:-add-your-account"></a>手順 1: アカウントを追加する
-
 1. PowerShell プロンプトで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。 
 2. お使いの Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、 **[続行]**をクリックします。 
 3. アカウントのパスワードを入力します。 
 4. **[サインイン]**をクリックします。
 
 ## <a name="step-2:-set-your-subscription-and-storage-account"></a>手順 2. サブスクリプションとストレージ アカウントを設定する
-
 Windows PowerShell コマンド プロンプトで次のコマンドを実行して、Azure サブスクリプションとストレージ アカウントを設定します。 引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
     $subscr="<subscription name>"
@@ -55,17 +53,16 @@ Windows PowerShell コマンド プロンプトで次のコマンドを実行し
 **Get-AzureSubscription** コマンドで出力される SubscriptionName プロパティで正しいサブスクリプション名を取得できます。 **Select-AzureSubscription** コマンドの実行後、**Get-AzureStorageAccount** コマンドを実行して出力される Label プロパティで正しいストレージ アカウント名を取得できます。
 
 ## <a name="step-3:-determine-the-imagefamily"></a>手順 3. ImageFamily を特定する
-
 次に、作成する Azure 仮想マシンに対応する特定のイメージで使用するために、ImageFamily または Label の値を特定する必要があります。 このコマンドで、利用可能な ImageFamily 値の一覧を取得できます。
 
     Get-AzureVMImage | select ImageFamily -Unique
 
 Windows ベースのコンピューターで使用する ImageFamily 値の例は次のとおりです。
 
-- Windows Server 2012 R2 Datacenter
-- Windows Server 2008 R2 SP1
-- Windows Server 2016 Technical Preview 4
-- SQL Server 2012 SP1 Enterprise on Windows Server 2012
+* Windows Server 2012 R2 Datacenter
+* Windows Server 2008 R2 SP1
+* Windows Server 2016 Technical Preview 4
+* SQL Server 2012 SP1 Enterprise on Windows Server 2012
 
 目的のイメージが見つかったら、任意のテキスト エディターの最新インスタンスまたは PowerShell Integrated Scripting Environment (ISE) を開きます。 新しいテキスト ファイルまたは PowerShell ISE に次のコードをコピーし、ImageFamily 値を置き換えます。
 
@@ -82,7 +79,6 @@ Windows ベースのコンピューターで使用する ImageFamily 値の例�
     $image = Get-AzureVMImage | where { $_.Label -eq $label } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 
 ## <a name="step-4:-build-your-command-set"></a>手順 4. コマンド セットを構築する
-
 残りのコマンド セットを構築します。具体的には、下の該当するブロック セットを新しいテキスト ファイルまたは ISE にコピーし、変数の値を入力した後、< および > を削除します。 この記事の末尾にある 2 つの [例](#examples) を、最終結果のアイデアとしてご覧ください。
 
 この 2 つのコマンド ブロックのいずれかを選択することからコマンド セットを開始します (必須)。
@@ -102,7 +98,10 @@ Windows ベースのコンピューターで使用する ImageFamily 値の例�
 
 D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳細については、「 [Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
 
->[AZURE.NOTE] ソフトウェア アシュアランス付きのマイクロソフト エンタープライズ契約をしていて、Windows Server [Hybrid Use Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/) を利用する予定の場合、一般的なユース ケースでは、**- LicenseType** パラメーターを **New-AzureVMConfig** コマンドレットに追加することで、値 **Windows_Server** を渡します。  アップロードしたイメージを使用していることを確認します。ギャラリーの標準イメージと Hybrid Use Benefit は併用できません。
+> [!NOTE]
+> ソフトウェア アシュアランス付きのマイクロソフト エンタープライズ契約をしていて、Windows Server [Hybrid Use Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/) を利用する予定の場合、一般的なユース ケースでは、**- LicenseType** パラメーターを **New-AzureVMConfig** コマンドレットに追加することで、値 **Windows_Server** を渡します。  アップロードしたイメージを使用していることを確認します。ギャラリーの標準イメージと Hybrid Use Benefit は併用できません。
+> 
+> 
 
 スタンドアロンの Windows コンピューターの場合は、必要に応じて、ローカル管理者のアカウントとパスワードを指定します。
 
@@ -170,31 +169,28 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
     New-AzureVM –ServiceName $svcname -VMs $vm1 -VNetName $vnetname
 
 ## <a name="step-5:-run-your-command-set"></a>手順 5. コマンド セットを実行する
-
 手順 4. でテキスト エディターまたは PowerShell ISE を使用して作成した、複数のコマンド ブロックで構成される Azure PowerShell コマンド セットを確認します。 必要なすべての変数が指定され、それらの値がすべて正しいことを確認します。 さらに、< と > がすべて削除されていることも確認します。
 
 テキスト エディターを使用している場合は、コマンド セットをクリップボードにコピーしてから、開いている Windows PowerShell コマンド プロンプトを右クリックします。 この操作により、コマンド セットが一連の PowerShell コマンドとして実行され、Azure 仮想マシンが作成されます。 または、PowerShell ISE でコマンド セットを実行します。
 
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
-- このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
-- Azure クラシック ポータルの **[Automation]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
+* このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
+* Azure クラシック ポータルの **[Automation]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
 
 ## <a name="<a-id="examples"></a>examples"></a><a id="examples"></a>例
-
 次に、Windows ベースの Azure Virtual Machines を作成するために、前の手順を使用して Azure PowerShell コマンド セットを構築する例を 2 つ示します。
 
 ### <a name="example-1"></a>例 1
-
 次の条件で Active Directory ドメイン コントローラーに最初の仮想マシンを作成する PowerShell コマンド セットが必要な場合。
 
-- Windows Server 2012 R2 Datacenter イメージを使用する。
-- 名前は AZDC1。
-- スタンドアロン コンピューターである。
-- 20 GB の追加データ ディスク容量。
-- 静的 IP アドレスは 192.168.244.4。
-- AZDatacenter 仮想ネットワークの BackEnd サブネットに属している。
-- Azure-TailspinToys クラウド サービスに属している。
+* Windows Server 2012 R2 Datacenter イメージを使用する。
+* 名前は AZDC1。
+* スタンドアロン コンピューターである。
+* 20 GB の追加データ ディスク容量。
+* 静的 IP アドレスは 192.168.244.4。
+* AZDatacenter 仮想ネットワークの BackEnd サブネットに属している。
+* Azure-TailspinToys クラウド サービスに属している。
 
 この仮想マシンを作成するための対応する Azure PowerShell コマンド セットは次のとおりです。読みやすくするために各ブロックの間に空白行を入れてあります。
 
@@ -222,15 +218,14 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
     New-AzureVM –ServiceName $svcname -VMs $vm1 -VNetName $vnetname
 
 ### <a name="example-2"></a>例 2
-
 次の条件で基幹業務サーバー用に仮想マシンを作成する PowerShell コマンド セットが必要な場合。
 
-- Windows Server 2012 R2 Datacenter イメージを使用する。
-- 名前は LOB1。
-- corp.contoso.com ドメインのメンバーである。
-- 200 GB の追加データ ディスク容量。
-- AZDatacenter 仮想ネットワークの FrontEnd サブネットに属している。
-- Azure-TailspinToys クラウド サービスに属している。
+* Windows Server 2012 R2 Datacenter イメージを使用する。
+* 名前は LOB1。
+* corp.contoso.com ドメインのメンバーである。
+* 200 GB の追加データ ディスク容量。
+* AZDatacenter 仮想ネットワークの FrontEnd サブネットに属している。
+* Azure-TailspinToys クラウド サービスに属している。
 
 この仮想マシンを作成するための対応する Azure PowerShell コマンド セットは次のとおりです。
 
@@ -260,14 +255,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 
 ## <a name="next-steps"></a>次のステップ
-
 127 GB より大きい OS ディスクが必要な場合は、 [OS ドライブを展開](virtual-machines-windows-expand-os-disk.md)することができます。
-
-
-
-
-
-
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,32 +1,27 @@
-<properties 
-	pageTitle="Twilio から通話する方法 (.NET) | Microsoft Azure" 
-	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは .NET で記述されています。" 
-	services="" 
-	documentationCenter=".net" 
-	authors="devinrader" 
-	manager="timlt" 
-	editor=""/>
+---
+title: Twilio から通話する方法 (.NET) | Microsoft Docs
+description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは .NET で記述されています。
+services: ''
+documentationcenter: .net
+author: devinrader
+manager: timlt
+editor: ''
 
-<tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="05/04/2016" 
-	ms.author="microsofthelp@twilio.com"/>
+ms.service: cloud-services
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 05/04/2016
+ms.author: microsofthelp@twilio.com
 
-
-
-
+---
 # Azure の Web ロールで Twilio を使用して通話する方法
-
 このガイドでは、Azure でホストされる Web ページから Twilio を使用して通話する方法を説明します。次のスクリーンショットに示すように、作成されたアプリケーションは通話に関する値の入力をユーザーに求めます。
 
 ![Twilio および ASP.NET を使用した Azure 通話フォーム][twilio_dotnet_basic_form]
 
 ## <a name="twilio-prereqs"></a>前提条件
-
 このトピックでコードを使用するためには次の操作を行う必要があります。
 
 1. Twilio アカウントと認証トークンを取得します。Twilio を利用するには、[https://www.twilio.com/try-twilio][try_twilio] でサインアップします。[http://www.twilio.com/pricing][twilio_pricing] で価格を検討できます。Twilio から提供される API の詳細については、[http://www.twilio.com/voice/api][twilio_api] を参照してください。
@@ -35,15 +30,14 @@
 Azure での基本的な Web ロールの作成について詳しく理解している必要があります。
 
 ## <a name="howtocreateform"></a>方法: 通話用の Web フォームの作成
-
 <a id="use_nuget"></a>Twilio ライブラリを Web ロール プロジェクトに追加するには
 
-1.  Visual Studio でソリューションを開きます。
-2.  **[参照]** を右クリックします。
-3.  **[NuGet パッケージの管理]** をクリックします。
-4.  **[オンライン]** をクリックします。
-5.  [オンライン検索] ボックスに、「*twilio*」と入力します。
-6.  Twilio パッケージで **[インストール]** をクリックします。
+1. Visual Studio でソリューションを開きます。
+2. **[参照]** を右クリックします。
+3. **[NuGet パッケージの管理]** をクリックします。
+4. **[オンライン]** をクリックします。
+5. [オンライン検索] ボックスに、「*twilio*」と入力します。
+6. Twilio パッケージで **[インストール]** をクリックします。
 
 次のコードは、通話するためのユーザー データを取得する Web フォームの作成方法を示しています。この例では、**TwilioCloud** という名前の ASP.NET Web ロールが作成されます。
 
@@ -163,7 +157,7 @@ Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示す�
 * また、Twilio に関するセキュリティ ガイドライン [https://www.twilio.com/docs/security][twilio_docs_security] も参照してください。
 * Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] を参照してください。
 
-##<a name="seealso"></a>関連項目
+## <a name="seealso"></a>関連項目
 * [Azure から音声および SMS 機能に Twilio を使用する方法](twilio-dotnet-how-to-use-for-voice-sms.md)
 
 [twilio_pricing]: http://www.twilio.com/pricing

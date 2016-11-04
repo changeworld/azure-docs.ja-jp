@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="新しいスキーマ バージョン 2015-08-01-preview" 
-	description="最新バージョンのロジック アプリの JSON 定義を記述する方法について説明します。" 
-	authors="stepsic-microsoft-com" 
-	manager="dwrede" 
-	editor="" 
-	services="logic-apps" 
-	documentationCenter=""/>
+---
+title: 新しいスキーマ バージョン 2015-08-01-preview
+description: 最新バージョンのロジック アプリの JSON 定義を記述する方法について説明します。
+author: stepsic-microsoft-com
+manager: dwrede
+editor: ''
+services: logic-apps
+documentationcenter: ''
 
-<tags
-	ms.service="logic-apps"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/31/2016"
-	ms.author="stepsic"/>
-	
+ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 05/31/2016
+ms.author: stepsic
+
+---
 # 新しいスキーマ バージョン 2015-08-01-preview
-
 ロジック アプリの新しいバージョンのスキーマと API には、ロジック アプリの信頼性と使いやすさを向上させる複数の機能強化が行われています。主な相違点は次の 4 つです。
 
 1. アクションの種類 **APIApp** が更新され、新しいアクションの種類 **APIConnection** になりました。
@@ -26,15 +25,14 @@
 4. 子ワークフローの呼び出しに新しいスキーマを使用します。
 
 ## 1\.API 接続への移行
-
 最大の変更は、API を使用するために、Azure サブスクリプションに API アプリをデプロイする必要がなくなった点です。API は、次の 2 とおりの方法で使用できます。
+
 * マネージ API
 * カスタム Web API
 
 これらの API は、管理モデルとホスティング モデルが異なることから、それぞれの処理方法も若干異なります。このモデルのメリットの 1 つは、リソース グループにデプロイされたリソース以外にも、リソースを使用できるようになったことです。
 
 ### マネージ API
-
 Microsoft は、Office 365、Salesforce、Twitter、FTP などの数多くの API をユーザーに代わって管理しています。このようなマネージ API には、Bing 翻訳のようにそのまま使用できる API もあれば、構成が必要な API もあります。このような構成は*接続*と呼ばれています。
 
 たとえば、Office 365 を使用するときは、Office 365 のサインイン トークンを含む接続を作成する必要があります。このトークンは、ロジック アプリでいつでも Office 365 API を呼び出すことができるように、セキュリティで保護された状態で保存と更新が行われます。また、SQL サーバーや FTP サーバーに接続する場合は、接続文字列を含む接続を作成する必要があります。
@@ -80,121 +78,119 @@ PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/p
 
 さらに以下の本体を追加します。
 
-
 ```
 {
   "properties": {
     "api": {
       "id": "/subscriptions/{subid}/providers/Microsoft.Web/managedApis/azureblob"
     },
-	"parameterValues" : {
-		"accountName" : "{The name of the storage account -- the set of parameters is different for each API}"
-	}
+    "parameterValues" : {
+        "accountName" : "{The name of the storage account -- the set of parameters is different for each API}"
+    }
   },
   "location" : "{Logic app's location}"
 }
 ```
 
 ### Azure Resource Manager テンプレートでマネージ API をデプロイする
-
 作成するアプリケーションに対話型サインインが必要ない場合、そのアプリケーション全体を ARM テンプレートで作成できます。サインインが必要な場合は、ARM テンプレートですべて設定できますが、さらにポータルにアクセスして接続を承認する必要があります。
 
 ```
-	"resources": [{
-		"apiVersion": "2015-08-01-preview",
-		"name": "azureblob",
-		"type": "Microsoft.Web/connections",
-		"location": "[resourceGroup().location]",
-		"properties": {
-			"api": {
-				"id": "[concat(subscription().id,'/providers/Microsoft.Web/locations/westus/managedApis/azureblob')]"
-			},
-			"parameterValues": {
-				"accountName": "[parameters('storageAccountName')]",
-				"accessKey": "[parameters('storageAccountKey')]"
-			}
-		}
-	}, {
-		"type": "Microsoft.Logic/workflows",
-		"apiVersion": "2015-08-01-preview",
-		"name": "[parameters('logicAppName')]",
-		"location": "[resourceGroup().location]",
-		"dependsOn": [
-			"[resourceId('Microsoft.Web/connections', 'azureblob')]"
-		],
-		"properties": {
-			"sku": {
-				"name": "[parameters('sku')]",
-				"plan": {
-					"id": "[concat(resourceGroup().id, '/providers/Microsoft.Web/serverfarms/',parameters('svcPlanName'))]"
-				}
-			},
-			"definition": {
-				"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
-				"actions": {
-					"Create_file": {
-						"type": "apiconnection",
-						"inputs": {
-							"host": {
-								"api": {
-									"runtimeUrl": "https://logic-apis-westus.azure-apim.net/apim/azureblob"
-								},
-								"connection": {
-									"name": "@parameters('$connections')['azureblob']['connectionId']"
-								}
-							},
-							"method": "post",
-							"queries": {
-								"folderPath": "[concat('/',parameters('containerName'))]",
-								"name": "helloworld.txt"
-							},
-							"body": "@decodeDataUri('data:,Hello+world!')",
-							"path": "/datasets/default/files"
-						},
-						"conditions": []
-					}
-				},
-				"contentVersion": "1.0.0.0",
-				"outputs": {},
-				"parameters": {
-					"$connections": {
-						"defaultValue": {},
-						"type": "Object"
-					}
-				},
-				"triggers": {
-					"recurrence": {
-						"type": "Recurrence",
-						"recurrence": {
-							"frequency": "Day",
-							"interval": 1
-						}
-					}
-				}
-			},
-			"parameters": {
-				"$connections": {
-					"value": {
-						"azureblob": {
-							"connectionId": "[concat(resourceGroup().id,'/providers/Microsoft.Web/connections/azureblob')]",
-							"connectionName": "azureblob",
-							"id": "[concat(subscription().id,'/providers/Microsoft.Web/locations/westus/managedApis/azureblob')]"
-						}
+    "resources": [{
+        "apiVersion": "2015-08-01-preview",
+        "name": "azureblob",
+        "type": "Microsoft.Web/connections",
+        "location": "[resourceGroup().location]",
+        "properties": {
+            "api": {
+                "id": "[concat(subscription().id,'/providers/Microsoft.Web/locations/westus/managedApis/azureblob')]"
+            },
+            "parameterValues": {
+                "accountName": "[parameters('storageAccountName')]",
+                "accessKey": "[parameters('storageAccountKey')]"
+            }
+        }
+    }, {
+        "type": "Microsoft.Logic/workflows",
+        "apiVersion": "2015-08-01-preview",
+        "name": "[parameters('logicAppName')]",
+        "location": "[resourceGroup().location]",
+        "dependsOn": [
+            "[resourceId('Microsoft.Web/connections', 'azureblob')]"
+        ],
+        "properties": {
+            "sku": {
+                "name": "[parameters('sku')]",
+                "plan": {
+                    "id": "[concat(resourceGroup().id, '/providers/Microsoft.Web/serverfarms/',parameters('svcPlanName'))]"
+                }
+            },
+            "definition": {
+                "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
+                "actions": {
+                    "Create_file": {
+                        "type": "apiconnection",
+                        "inputs": {
+                            "host": {
+                                "api": {
+                                    "runtimeUrl": "https://logic-apis-westus.azure-apim.net/apim/azureblob"
+                                },
+                                "connection": {
+                                    "name": "@parameters('$connections')['azureblob']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "queries": {
+                                "folderPath": "[concat('/',parameters('containerName'))]",
+                                "name": "helloworld.txt"
+                            },
+                            "body": "@decodeDataUri('data:,Hello+world!')",
+                            "path": "/datasets/default/files"
+                        },
+                        "conditions": []
+                    }
+                },
+                "contentVersion": "1.0.0.0",
+                "outputs": {},
+                "parameters": {
+                    "$connections": {
+                        "defaultValue": {},
+                        "type": "Object"
+                    }
+                },
+                "triggers": {
+                    "recurrence": {
+                        "type": "Recurrence",
+                        "recurrence": {
+                            "frequency": "Day",
+                            "interval": 1
+                        }
+                    }
+                }
+            },
+            "parameters": {
+                "$connections": {
+                    "value": {
+                        "azureblob": {
+                            "connectionId": "[concat(resourceGroup().id,'/providers/Microsoft.Web/connections/azureblob')]",
+                            "connectionName": "azureblob",
+                            "id": "[concat(subscription().id,'/providers/Microsoft.Web/locations/westus/managedApis/azureblob')]"
+                        }
 
-					}
-				}
-			}
-		}
-	}]
+                    }
+                }
+            }
+        }
+    }]
 ```
 
 この例では、接続が、リソース グループ内に存在するごく普通のリソースであることがわかります。これらの接続は、ユーザーのサブスクリプション内で利用可能なマネージ API を参照しています。
 
 ### カスタム Web API
-
 独自の API (特に、Microsoft によって管理されていない API) を使用している場合、それを呼び出すには組み込みの **HTTP** アクションを使用する必要があります。最適なユーザー エクスペリエンスを確保するためには、API の swagger エンドポイントを公開する必要があります。これにより、ロジック アプリ デザイナーでは API の入出力を表示できるようになります。swagger がないと、デザイナーでは入出力を不透明な JSON オブジェクトとしてしか表示できません。
 
 新しい `metadata.apiDefinitionUrl` プロパティを次の例に示します。
+
 ```
 {
    "actions": {
@@ -215,7 +211,6 @@ PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/p
 Web API を **App Service** でホストした場合、デザイナーで利用可能なアクションの一覧にその Web API が自動的に表示されます。ホストしていない場合は、URL 内に直接貼り付ける必要があります。swagger エンドポイントは、ロジック アプリ デザイナー内で使用できるように、認証しない必要があります (ただし、Swagger でサポートされているいずれかの方法で API 自体をセキュリティで保護することはできます)。
 
 ### 既にデプロイ済みの API アプリを 2015-08-01-preview で使用する
-
 API アプリを事前にデプロイしてある場合、**HTTP** アクションによってそのアプリを呼び出すことができます。
 
 たとえば、Dropbox を使用してファイルを一覧表示する場合、**2014-12-01-preview** のスキーマ バージョン定義の内容は次のようになっていることがあります。
@@ -289,18 +284,17 @@ API アプリを事前にデプロイしてある場合、**HTTP** アクショ�
 これらのプロパティを 1 つずつ説明します。
 
 | アクション プロパティ | 説明 |
-| --------------- | -----------  |
-| `type` | `APIapp` の代わりに `Http` を使用します |
-| `metadata.apiDefinitionUrl` | ロジック アプリ デザイナーでこのアクションを使用する場合は、メタデータ エンドポイントを含める必要があります。次の内容で構成されています: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
-| `inputs.uri` | 次の内容で構成されています: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
-| `inputs.method` | 常に `POST` |
-| `inputs.body` | API アプリのパラメーターと同じです | 
-| `inputs.authentication` | API アプリの認証と同じです |
+| --- | --- |
+| `type` |`APIapp` の代わりに `Http` を使用します |
+| `metadata.apiDefinitionUrl` |ロジック アプリ デザイナーでこのアクションを使用する場合は、メタデータ エンドポイントを含める必要があります。次の内容で構成されています: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
+| `inputs.uri` |次の内容で構成されています: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
+| `inputs.method` |常に `POST` |
+| `inputs.body` |API アプリのパラメーターと同じです |
+| `inputs.authentication` |API アプリの認証と同じです |
 
 この方法は、API アプリのアクションすべてに対して有効です。ただし、このような以前の API アプリはもうサポートされていないため、前述した 2 つの方法のいずれか (マネージ API、またはカスタム Web API のホスト) に移行する必要があります。
 
 ## 2\.Repeat から Foreach への名前変更
-
 以前のスキーマ バージョンについては、**Repeat** が理解しづらく、実際には for each ループであることを正しく把握できないというフィードバックがお客様から数多く寄せられました。その結果、名前を **Foreach** に変更しました。次に例を示します。
 
 ```
@@ -416,13 +410,12 @@ API アプリを事前にデプロイしてある場合、**HTTP** アクショ�
 
 このような変更により、`@repeatItem()`、`@repeatBody()`、および `@repeatOutputs()` 関数が削除されています。
 
-## 3\.ネイティブ HTTP リスナー 
+## 3\.ネイティブ HTTP リスナー
 現在、HTTP リスナーは組み込みの機能になっているため、HTTP リスナー API アプリをデプロイする必要はなくなりました。ロジック アプリのエンドポイントを呼び出し可能にする方法の詳細については、[こちら](app-service-logic-http-endpoint.md)を参照してください。
 
 この変更によって `@accessKeys()` 関数が削除され、代わりにエンドポイントの取得用として (必要な場合)、`@listCallbackURL()` 関数が用意されています。また、現在はロジック アプリに少なくとも 1 つのトリガーを定義する必要があります。ワークフローに対して `/run` を実行する場合は、`manual`、`apiConnectionWebhook`、`httpWebhook` のいずれかのトリガーが必要になります。
 
 ## 4\.子ワークフローの呼び出し
-
 これまで、子ワークフローを呼び出すには、そのワークフローでアクセス トークンを取得し、呼び出し元とするロジック アプリの定義内にそのトークンを貼り付ける必要がありました。新しいスキーマ バージョンを使用すると、ロジック アプリ エンジンにより、子ワークフローに対して実行時に SAS が自動生成されます。つまり、定義内にシークレットを貼り付ける必要はありません。たとえば次のようになります。
 
 ```
@@ -454,7 +447,6 @@ API アプリを事前にデプロイしてある場合、**HTTP** アクショ�
 最後に、子ワークフローに対して必要な変更があります。これまでは子ワークフローを直接呼び出すことができましたが、今後は、親から呼び出すためにワークフロー内にトリガー エンドポイントを定義する必要があります。つまり、通常は **manual** 型のトリガーを追加して、それを親の定義内で使用することになります。`host` プロパティには特別に `triggerName` が含まれていることに注意してください。これは、どのトリガーを呼び出すかを常に指定する必要があるためです。
 
 ## その他の変更点
-
 ### 新しい queries プロパティ
 現時点では、すべての種類のアクションで **queries** という新しい入力がサポートされています。これは構造化オブジェクトにすることが可能で、文字列を手動で組み合わせる必要がありません。
 

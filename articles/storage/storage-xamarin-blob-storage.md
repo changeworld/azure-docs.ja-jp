@@ -1,36 +1,32 @@
-<properties
-    pageTitle="Xamarin から BLOB ストレージを使用する方法 | Microsoft Azure"
-    description="Azure Storage Client Library for Xamarin を利用すれば、開発者は iOS、Android、Windows Store アプリをネイティブ ユーザー インターフェイスで作成できます。 このチュートリアルでは、Xamarin を利用し、Azure BLOB ストレージを使用するアプリケーションを作成する方法を紹介します。"
-    services="storage"
-    documentationCenter="xamarin"
-    authors="micurd"
-    manager="jahogg"
-    editor="tysonn"/>
+---
+title: Xamarin から BLOB ストレージを使用する方法 | Microsoft Docs
+description: Azure Storage Client Library for Xamarin を利用すれば、開発者は iOS、Android、Windows Store アプリをネイティブ ユーザー インターフェイスで作成できます。 このチュートリアルでは、Xamarin を利用し、Azure BLOB ストレージを使用するアプリケーションを作成する方法を紹介します。
+services: storage
+documentationcenter: xamarin
+author: micurd
+manager: jahogg
+editor: tysonn
 
-<tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/08/2016"
-    ms.author="micurd"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/08/2016
+ms.author: micurd
 
-
+---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Xamarin から BLOB ストレージを使用する方法
-
-[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+[!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 ## <a name="overview"></a>Overview
-
 Xamarin を利用すれば、開発者は共有 C# コードベースを利用して iOS、Android、Windows Store アプリをネイティブ ユーザー インターフェイスで作成できます。 このチュートリアルでは、Xamarin アプリケーションで Azure BLOB ストレージを使用する方法を紹介します。 コードの説明に入る前に Azure Storage について学習するには、「 [Microsoft Azure Storage の概要](storage-introduction.md)」を参照してください。
 
-[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-[AZURE.INCLUDE [storage-mobile-authentication-guidance](../../includes/storage-mobile-authentication-guidance.md)]
+[!INCLUDE [storage-mobile-authentication-guidance](../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="create-a-new-xamarin-application"></a>新しい Xamarin アプリケーションの作成
-
 最初に、Android、iOS、および Windows を対象とするアプリケーションを作成します。 このアプリケーションは、コンテナーを作成し、そのコンテナーに BLOB をアップロードします。 ここでは Windows で Visual Studio を使用しますが、Mac OS 上で Xamarin Studio を使ってアプリケーションを作成するときも、同じ操作を適用することができます。
 
 次の手順でアプリケーションを作成します。
@@ -42,10 +38,12 @@ Xamarin を利用すれば、開発者は共有 C# コードベースを利用�
 
 これで、ボタンをクリックすることでカウンターをインクリメントできるアプリケーションが作成されます。
 
-> [AZURE.NOTE] Xamarin 用 Azure Storage クライアント ライブラリは、現在次のプロジェクトの種類をサポートしています。Native Shared、Xamarin.Forms Shared、Xamarin.Android、Xamarin.iOS。
+> [!NOTE]
+> Xamarin 用 Azure Storage クライアント ライブラリは、現在次のプロジェクトの種類をサポートしています。Native Shared、Xamarin.Forms Shared、Xamarin.Android、Xamarin.iOS。
+> 
+> 
 
 ## <a name="create-container-and-upload-blob"></a>コンテナーの作成および BLOB のアップロード
-
 次に、コンテナーを作成して、そのコンテナーに BLOB をアップロードするためのコードをいくつか、共有クラス `MyClass.cs` に追加します。 `MyClass.cs` は次のようになります。
 
     using Microsoft.WindowsAzure.Storage;
@@ -86,7 +84,6 @@ Xamarin を利用すれば、開発者は共有 C# コードベースを利用�
 "Your_account_name_here" と "your_account_key_here" は、実際のアカウント名とアカウント キーに置き換えます。 この共有クラスは、iOS、Android、および Windows Phone アプリケーションで使用できます。 `MyClass.createContainerAndUpload()` を各プロジェクトに追加するだけです。 次に例を示します。
 
 ### <a name="xamarinapp.droid->-mainactivity.cs"></a>XamarinApp.Droid > MainActivity.cs
-
     using Android.App;
     using Android.Widget;
     using Android.OS;
@@ -119,7 +116,6 @@ Xamarin を利用すれば、開発者は共有 C# コードベースを利用�
     }
 
 ### <a name="xamarinapp.ios->-viewcontroller.cs"></a>XamarinApp.iOS > ViewController.cs
-
     using System;
     using UIKit;
 
@@ -155,7 +151,6 @@ Xamarin を利用すれば、開発者は共有 C# コードベースを利用�
     }
 
 ### <a name="xamarinapp.winphone->-mainpage.xaml->-mainpage.xaml.cs"></a>XamarinApp.WinPhone > MainPage.xaml > MainPage.xaml.cs
-
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Navigation;
 
@@ -203,22 +198,19 @@ Xamarin を利用すれば、開発者は共有 C# コードベースを利用�
 
 
 ## <a name="run-the-application"></a>アプリケーションの実行
-
 これで、このアプリケーションを、Android または Windows Phone エミュレーターで実行できます。 iOS エミュレーターで、このアプリケーションを実行することもできますが、それには Mac が必要です。 これを行う具体的な手順については、 [Mac への Visual Studio の接続](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
 
 アプリケーションを実行すると、コンテナー `mycontainer` がストレージ アカウントに作成されます。 これには、テキスト `Hello, world!` が示された BLOB `myblob` が含まれています。 これを確認するには、 [Microsoft Azure ストレージ エクスプ ローラー](http://storageexplorer.com/)を使用します。
 
 ## <a name="next-steps"></a>次のステップ
-
 ここでは、Azure Storage を使用する Xamarin に、クロス プラットフォーム アプリケーションを作成する方法について説明しました。 このチュートリアルは、特に Blob Storage の 1 つのシナリオに焦点を合わせています。 ただし、Blob Storage だけでなく、Table Storage、File Storage、および Queue Storage を使用すると、さらに多くの作業を行うことができます。 詳細については、次の記事を確認してください。
-- [.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)
-- [.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)
-- [.NET を使用して Azure Queue Storage を使用する](storage-dotnet-how-to-use-queues.md)
-- [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 
-[AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
+* [.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)
+* [.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)
+* [.NET を使用して Azure Queue Storage を使用する](storage-dotnet-how-to-use-queues.md)
+* [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 
-
+[!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 <!--HONumber=Oct16_HO2-->
 

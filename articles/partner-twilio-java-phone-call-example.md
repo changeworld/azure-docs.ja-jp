@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="Twilio から通話する方法 (Java) | Microsoft Azure" 
-	description="Azure 上の Java アプリケーションで Twilio を使用して Web ページから通話する方法について説明します。" 
-	services="" 
-	documentationCenter="java" 
-	authors="devinrader" 
-	manager="twilio" 
-	editor="mollybos"/>
+---
+title: Twilio から通話する方法 (Java) | Microsoft Docs
+description: Azure 上の Java アプリケーションで Twilio を使用して Web ページから通話する方法について説明します。
+services: ''
+documentationcenter: java
+author: devinrader
+manager: twilio
+editor: mollybos
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="11/25/2014" 
-	ms.author="microsofthelp@twilio.com"/>
+ms.service: multiple
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: Java
+ms.topic: article
+ms.date: 11/25/2014
+ms.author: microsofthelp@twilio.com
 
-# Azure 上の Java アプリケーションで Twilio を使用して通話する方法 
-
+---
+# Azure 上の Java アプリケーションで Twilio を使用して通話する方法
 次の例では、Azure でホストされる Java Web ページから Twilio を使用して通話する方法を示しています。次のスクリーン ショットに示すように、作成されたアプリケーションは通話に関する値の入力をユーザーに求めます。
 
 ![Twilio および Java を使用した Azure 通話フォーム][twilio_java]
@@ -33,7 +32,6 @@
 さらに、[Azure Toolkit for Eclipse を使用して Hello World アプリケーションを作成する方法に関するトピック][azure_java_eclipse_hello_world]にある情報に精通すること、または、Eclipse を使用していない場合は、Azure 上の Java アプリケーションをホストする別の手法に精通することを強くお勧めします。
 
 ## 通話用の Web フォームの作成
-
 次のコードは、通話するためのユーザー データを取得する Web フォームの作成方法を示しています。この例では、**TwilioCloud** という名前の新しい動的 Web プロジェクトを作成し、**callform.jsp** を JSP ファイルとして追加しました。
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -99,7 +97,7 @@
          // of the placeholders shown here.
          String accountSID = "your_twilio_account";
          String authToken = "your_twilio_authentication_token";
-     
+
          // Instantiate an instance of the Twilio client.     
          TwilioRestClient client;
          client = new TwilioRestClient(accountSID, authToken);
@@ -109,37 +107,37 @@
 
          // Display the client endpoint. 
          out.println("<p>Using Twilio endpoint " + client.getEndpoint() + ".</p>");
-     
+
          // Display the API version.
          String APIVERSION = TwilioRestClient.DEFAULT_VERSION;
          out.println("<p>Twilio client API version is " + APIVERSION + ".</p>");
-    
+
          // Retrieve the values entered by the user.
          String callTo = request.getParameter("callTo");  
          // The Outgoing Caller ID, used for the From parameter,
          // must have previously been verified with Twilio.
          String callFrom = request.getParameter("callFrom");
          String userText = request.getParameter("callText");
-     
+
          // Replace spaces in the user's text with '%20', 
          // to make the text suitable for a URL.
          userText = userText.replace(" ", "%20");
-     
+
          // Create a URL using the Twilio message and the user-entered text.
          String Url="http://twimlets.com/message";
          Url = Url + "?Message%5B0%5D=" + userText;
-     
+
          // Display the message URL.
          out.println("<p>");
          out.println("The URL is " + Url);
          out.println("</p>");
-    
+
          // Place the call From, To and URL values into a hash map. 
          HashMap<String, String> params = new HashMap<String, String>();
          params.put("From", callFrom);
          params.put("To", callTo);
          params.put("Url", Url);
-     
+
          CallFactory callFactory = account.getCallFactory();
          Call call = callFactory.create(params);
          out.println("<p>Call status: " + call.getStatus()  + "</p>"); 

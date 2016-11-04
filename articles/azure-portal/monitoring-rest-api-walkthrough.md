@@ -1,21 +1,21 @@
-<properties
-	pageTitle="Azure 監視 REST API のチュートリアル | Microsoft Azure"
-	description="要求を認証し、Azure 監視 REST API を使用する方法。"
-	authors="mcollier, rboucher"
-	manager=""
-	editor=""
-	services="monitoring-and-diagnostics"
-	documentationCenter="monitoring-and-diagnostics"/>
+---
+title: Azure 監視 REST API のチュートリアル | Microsoft Docs
+description: 要求を認証し、Azure 監視 REST API を使用する方法。
+author: mcollier
+manager: ''
+editor: ''
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
 
-<tags
-	ms.service="monitoring-and-diagnostics"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/27/2016"
-	ms.author="mcollier"/>
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/27/2016
+ms.author: mcollier
 
+---
 # Azure 監視 REST API のチュートリアル
 この記事では、コードが [Microsoft Azure Monitor REST API リファレンス](https://msdn.microsoft.com/library/azure/dn931943.aspx)を使用できるように、認証を実行する方法について説明します。
 
@@ -24,7 +24,6 @@ Azure Monitor API では、使用可能な既定のメトリック定義 (CPU �
 Monitor API では、さまざまなメトリック データ ポイントを処理するだけでなく、この記事で示すように、アラート ルールの一覧表示、アクティビティ ログの表示などを行うこともできます。使用可能な操作の一覧については、[Microsoft Azure Monitor REST API リファレンス](https://msdn.microsoft.com/library/azure/dn931943.aspx)を参照してください。
 
 ## Azure Monitor 要求の認証
-
 まず、要求を認証します。
 
 Azure Monitor API に対して実行されるすべてのタスクが、Azure Resource Manager 認証モデルを使用します。したがって、すべての要求を Azure Active Directory (Azure AD) で認証する必要があります。クライアント アプリケーションを認証する 1 つの方法が、Azure AD サービス プリンシパルを作成し、認証 (JWT) トークンを取得することです。次のサンプル スクリプトは、PowerShell を使用して、Azure AD サービス プリンシパルを作成しています。さらに詳細なチュートリアルについては、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../resource-group-authenticate-service-principal.md#authenticate-service-principal-with-password—powershell)」のドキュメントを参照してください。[Azure ポータルを使用してサービス プリンシパルを作成](../resource-group-create-service-principal-portal.md)することもできます。
@@ -69,7 +68,7 @@ $authUrl = "https://login.windows.net/${tenantId}"
 
 $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]$authUrl
 $cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($clientId, $pwd)
- 
+
 $result = $AuthContext.AcquireToken("https://management.core.windows.net/", $cred)
 
 # Build an array of HTTP header values 
@@ -83,12 +82,13 @@ $authHeader = @{
 認証の設定手順が完了すると、Azure Monitor REST API に対してクエリを実行できます。便利なクエリは次の 2 つです。
 
 1. リソースのメトリック定義を一覧表示する
-
 2. メトリック値を取得する
 
-
 ## メトリック定義の取得
->[AZURE.NOTE] Azure Monitor REST API を使用してメトリック定義を取得するには、"2016-03-01" API バージョンを使用します。
+> [!NOTE]
+> Azure Monitor REST API を使用してメトリック定義を取得するには、"2016-03-01" API バージョンを使用します。
+> 
+> 
 
 ```PowerShell
 $apiVersion = "2016-03-01"
@@ -108,11 +108,14 @@ Azure ロジック アプリの場合、メトリック定義は次のスクリ�
 ## メトリック値の取得
 使用可能なメトリック定義がわかったら、関連するメトリック値を取得できます。任意のフィルター処理要求に対してメトリックの名前 "value" ("localizedValue" ではありません) を使用します。たとえば、"CpuTime" と "Requests" メトリック データ ポイントを取得します。フィルターが指定されていない場合は、既定のメトリックが返されます。
 
->[AZURE.NOTE] Azure Monitor REST API を使用してメトリック値を取得するには、"2016-06-01" API バージョンを使用します。
+> [!NOTE]
+> Azure Monitor REST API を使用してメトリック値を取得するには、"2016-06-01" API バージョンを使用します。
+> 
+> 
 
 **メソッド**: GET
 
-**要求 URI**: https://management.azure.com/subscriptions/_{subscription-id}_/resourceGroups/_{resource-group-name}_/providers/_{resource-provider-namespace}_/_{resource-type}_/_{resource-name}_/providers/microsoft.insights/metrics?$filter=_{filter}_&api-version=_{apiVersion}_
+**要求 URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*
 
 たとえば、特定の時間範囲と 1 時間の時間グレインに対して RunsSucceeded メトリック データ ポイントを取得する場合、要求は次のようになります。
 
@@ -146,16 +149,11 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourc
 PowerShell を使用する (前述) 代わりに、Windwos コンピューターで [ARMClient](https://github.com/projectkudu/ARMClient) を使用することもできます。ARMClient では、Azure AD 認証 (および結果の JWT トークン) が自動的に処理されます。次の手順は、ARMClient を使用してメトリック データを取得する方法を簡単に示しています。
 
 1. [Chocolatey](https://chocolatey.org/) と [ARMClient](https://github.com/projectkudu/ARMClient) をインストールします。
-
-2. ターミナル ウィンドウで、「_armclient.exe login_」と入力します。これにより Azure にログインするよう求められます。
-
-3. 「_armclient GET [your\_resource\_id]/providers/microsoft.insights/metricdefinitions?api-version=2016-03-01_」と入力します
-
-4. 「_armclient GET [your\_resource\_id]/providers/microsoft.insights/metrics?api-version=2016-06-01_」と入力します
-
+2. ターミナル ウィンドウで、「*armclient.exe login*」と入力します。これにより Azure にログインするよう求められます。
+3. 「*armclient GET [your\_resource\_id]/providers/microsoft.insights/metricdefinitions?api-version=2016-03-01*」と入力します
+4. 「*armclient GET [your\_resource\_id]/providers/microsoft.insights/metrics?api-version=2016-06-01*」と入力します
 
 ![Alt "ARMClient を使用して Azure 監視 REST API を操作"](./media/monitoring-rest-api-walkthrough/armclient_metricdefinitions.png)
-
 
 ## リソース ID の取得
 REST API を使用すると、使用可能なメトリック定義、粒度、および関連する値について理解しやすくなります。この情報は、[Azure 管理ライブラリ](https://msdn.microsoft.com/library/azure/mt417623.aspx)を使用するときに役立ちます。
@@ -166,20 +164,13 @@ REST API を使用すると、使用可能なメトリック定義、粒度、�
 
 次の一覧は、さまざまな Azure リソースのリソース ID 形式の例をいくつか示しています。
 
-* **IoT Hub** - /subscriptions/_{subscription-id}_/resourceGroups/_{resource-group-name}_/providers/Microsoft.Devices/IotHubs/_{iot-hub-name}_
-
-* **Elastic SQL Pool** - /subscriptions/_{subscription-id}_/resourceGroups/_{resource-group-name}_/providers/Microsoft.Sql/servers/_{pool-db}_/elasticpools/_{sql-pool-name}_
-
-* **SQL Database (v12)** - /subscriptions/_{subscription-id}_/resourceGroups/_{resource-group-name}_/providers/Microsoft.Sql/servers/_{server-name}_/databases/_{database-name}_
-
-* **Service Bus** - /subscriptions/_{subscription-id}_/resourceGroups/_{resource-group-name}_/providers/Microsoft.ServiceBus/_{namespace}_/_{servicebus-name}_
-
-* **VM スケール セット** - /subscriptions/_{subscription-id}_/resourceGroups/_{resource-group-name}_/providers/Microsoft.Compute/virtualMachineScaleSets/_{vm-name}_
-
-* **VM** - /subscriptions/_{subscription-id}_/resourceGroups/_{resource-group-name}_/providers/Microsoft.Compute/virtualMachines/_{vm-name}_
-
-* **Event Hubs** - /subscriptions/_{subscription-id}_/resourceGroups/_{resource-group-name}_/providers/Microsoft.EventHub/namespaces/_{eventhub-namespace}_
-
+* **IoT Hub** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
+* **Elastic SQL Pool** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{pool-db}*/elasticpools/*{sql-pool-name}*
+* **SQL Database (v12)** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{server-name}*/databases/*{database-name}*
+* **Service Bus** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.ServiceBus/*{namespace}*/*{servicebus-name}*
+* **VM スケール セット** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachineScaleSets/*{vm-name}*
+* **VM** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachines/*{vm-name}*
+* **Event Hubs** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.EventHub/namespaces/*{eventhub-namespace}*
 
 他にもリソース ID を取得する方法はあります。Azure リソース エクスプローラーを使用する、Azure ポータル、PowerShell、Azure CLI で目的のリソースを表示する、などの方法です。
 
@@ -196,12 +187,12 @@ Azure ポータルからリソース ID を取得することもできます。�
 ### Azure PowerShell
 リソース ID は、Azure PowerShell コマンドレットを使用して取得することもできます。たとえば Azure Web アプリのリソース ID を取得するには、次のスクリーンショットのように、Get-AzureRmWebApp コマンドレットを実行します。
 
-![Alt "PowerShell 取得したリソース ID"](./media\monitoring-rest-api-walkthrough\resourceid_powershell.png)
+![Alt "PowerShell 取得したリソース ID"](./media\\monitoring-rest-api-walkthrough\\resourceid_powershell.png)
 
 ### Azure CLI
 Azure CLI を使用してリソース ID を取得するには、次のスクリーンショットのように、"-json" オプションを指定して "azure webapp show" コマンドを実行します。
 
-![Alt "PowerShell 取得したリソース ID"](./media\monitoring-rest-api-walkthrough\resourceid_azurecli.png)
+![Alt "PowerShell 取得したリソース ID"](./media\\monitoring-rest-api-walkthrough\\resourceid_azurecli.png)
 
 ## アクティビティ ログ データの取得
 メトリック定義と関連する値を処理するだけでなく、Azure リソースに関連するその他の興味深い洞察を取得することもできです。たとえば、[アクティビティ ログ](https://msdn.microsoft.com/library/azure/dn931934.aspx) データにクエリを実行できます。次の例は、Azure Monitor REST API を使用して、Azure サブスクリプションの特定の日付範囲にあるアクティビティ ログ データにクエリを実行しています。
@@ -217,8 +208,8 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/provide
 ```
 
 ## 次のステップ
-* [監視の概要](monitoring-overview.md)に関するページを確認します。
-* [Azure Monitor のサポートされるメトリック](monitoring-supported-metrics.md)を表示します。
+* [監視の概要](../monitoring-and-diagnostics/monitoring-overview.md)に関するページを確認します。
+* [Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)を表示します。
 * [Microsoft Azure Monitor REST API リファレンス](https://msdn.microsoft.com/library/azure/dn931943.aspx)を確認します。
 * [Azure 管理ライブラリ](https://msdn.microsoft.com/library/azure/mt417623.aspx)を確認します。
 

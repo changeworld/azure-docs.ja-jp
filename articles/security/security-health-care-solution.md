@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Azure を使用して安全な医療ソリューションを設計するための実用ガイド | Microsoft Azure"
-   description=" この記事では、Azure サービスおよび機能を構成および使用して医療ソリューションのセキュリティを向上させる方法について説明します。"
-   services="security"
-   documentationCenter="na"
-   authors="TomShinder"
-   manager="MBaldwin"
-   editor="TomSh"/>
+---
+title: Azure を使用して安全な医療ソリューションを設計するための実用ガイド | Microsoft Docs
+description: " この記事では、Azure サービスおよび機能を構成および使用して医療ソリューションのセキュリティを向上させる方法について説明します。"
+services: security
+documentationcenter: na
+author: TomShinder
+manager: MBaldwin
+editor: TomSh
 
-<tags
-   ms.service="security"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/06/2016"
-   ms.author="terrylan"/>
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/06/2016
+ms.author: terrylan
 
+---
 # Azure を使用して安全な医療ソリューションを設計するための実用ガイド
-
 Azure への移行を検討している医療業界のスタートアップ、システム インテグレーター (SI)、独立系ソフトウェア ベンダー (ISV)、および医療機関からは、コンプライアンス義務を果たすセキュリティ制御を組み込むうえで役に立つガイダンスが求められています。
 
 要件に基づいて構成できる Azure サービスおよび機能を使用してソリューションのセキュリティを強化する方法を理解するには、『[A Practical Guide to DESIGNING SECURE HEALTH SOLUTIONS Using Microsoft Azure (Microsoft Azure を使用して安全な医療ソリューションを設計するための実用ガイド)](https://aka.ms/azureindustrysecurity)』が役立ちます。その内容は、大きく次の 3 つのセクションに分かれています。

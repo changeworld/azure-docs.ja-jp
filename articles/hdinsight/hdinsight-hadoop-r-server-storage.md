@@ -1,70 +1,64 @@
 
-<properties
-   pageTitle="HDInsight の R Server (プレビュー) の Azure Storage オプション | Microsoft Azure"
-   description="HDInsight の R Server (プレビュー) でユーザーが利用できるさまざまなストレージ オプションについて説明します。"
-   services="HDInsight"
-   documentationCenter=""
-   authors="jeffstokes72"
-   manager="jhubbard"
-   editor="cgronlun"
-/>
+---
+title: HDInsight の R Server (プレビュー) の Azure Storage オプション | Microsoft Docs
+description: HDInsight の R Server (プレビュー) でユーザーが利用できるさまざまなストレージ オプションについて説明します。
+services: HDInsight
+documentationcenter: ''
+author: jeffstokes72
+manager: jhubbard
+editor: cgronlun
 
-<tags
-   ms.service="HDInsight"
-   ms.devlang="R"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="data-services"
-   ms.date="09/01/2016"
-   ms.author="jeffstok"
-/>
+ms.service: HDInsight
+ms.devlang: R
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: data-services
+ms.date: 09/01/2016
+ms.author: jeffstok
 
+---
 # HDInsight の R Server (プレビュー) の Azure Storage オプション
-
 HDInsight の Microsoft R Server (プレビュー) は、データ、コード、分析の結果オブジェクトなどを保持するための手段として、Azure BLOB と [Azure Data Lake ストレージ](https://azure.microsoft.com/services/data-lake-store/)の両方にアクセスできます。
 
 HDInsight で Hadoop クラスターを作成するときに、Azure ストレージ アカウントを指定します。そのアカウントの特定の Blob Storage コンテナーが、作成したクラスターのファイル システム (Hadoop 分散ファイル システムなど) を保持します。パフォーマンス上の理由から、HDInsight クラスターは、指定したプライマリ ストレージ アカウントと同じデータ センターに作成されます。詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md "HDInsight での Azure BLOB ストレージの使用")」をご覧ください。
 
-
 ## 複数の Azure BLOB ストレージ アカウントの使用
-
 必要に応じて、HDI クラスターを持つ複数の Azure ストレージ アカウントまたはコンテナーにアクセスすることができます。そのためには、クラスターの作成時に UI で追加のストレージ アカウントを指定し、次の手順に従ってそのストレージ アカウントを R で使用する必要があります。
 
-1.	**storage1** というストレージ アカウント名で、**container1** という名前の既定のコンテナーを持つ HDInsight クラスターを作成します。
+1. **storage1** というストレージ アカウント名で、**container1** という名前の既定のコンテナーを持つ HDInsight クラスターを作成します。
 2. **storage2** という名前の追加のストレージ アカウントを指定します。
 3. mycsv.csv ファイルを /share ディレクトリにコピーし、このファイルに対して分析を実行します。
-
+   
     ````
     hadoop fs –mkdir /share
     hadoop fs –copyFromLocal myscsv.scv /share  
     ````
-
-3.	R コードで、名前ノードを **default** に設定し、処理対象のディレクトリとファイルを設定します。
-
-    ````
-    myNameNode <- "default"
-    myPort <- 0
-    ````
-
-  データの場所:
-
-    bigDataDirRoot <- "/share"  
-
-  Spark コンピューティング コンテキストの定義:
-
-    mySparkCluster <- RxSpark(consoleOutput=TRUE)
-
-  コンピューティング コンテキストの設定:
-
-    rxSetComputeContext(mySparkCluster)
-
-  Hadoop 分散ファイル システム (HDFS) ファイル システムの定義:
-
-    hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
-
-  分析する HDFS 内の入力ファイルの指定:
-
-    inputFile <-file.path(bigDataDirRoot,"mycsv.csv")
+4. R コードで、名前ノードを **default** に設定し、処理対象のディレクトリとファイルを設定します。
+   
+   ````
+   myNameNode <- "default"
+   myPort <- 0
+   ````
+   
+   データの場所:
+   
+   bigDataDirRoot <- "/share"  
+   
+   Spark コンピューティング コンテキストの定義:
+   
+   mySparkCluster <- RxSpark(consoleOutput=TRUE)
+   
+   コンピューティング コンテキストの設定:
+   
+   rxSetComputeContext(mySparkCluster)
+   
+   Hadoop 分散ファイル システム (HDFS) ファイル システムの定義:
+   
+   hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
+   
+   分析する HDFS 内の入力ファイルの指定:
+   
+   inputFile <-file.path(bigDataDirRoot,"mycsv.csv")
 
 ディレクトリとファイルの参照はすべて、ストレージ アカウント wasbs://container1@storage1.blob.core.windows.net を指しています。これは、HDInsight クラスターに関連付けられる**既定のストレージ アカウント**です。
 
@@ -104,11 +98,9 @@ R コードで、名前ノード参照が **storage2** ストレージ アカウ
     hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
 ## Azure Data Lake Store の使用
-
 HDInsight アカウントで Data Lake Store を使用するには、使用する各 Azure Data Lake Store にクラスター アクセスを付与する必要があります。(前の手順で説明した) セカンダリ ストレージ アカウントと同様に、ストアを R スクリプトで使用します。
 
 ## Azure Data Lake Store へのクラスター アクセスの追加
-
 HDInsight クラスターに関連付けられている Azure Active Directory (Azure AD) サービス プリンシパルを使用して、Data Lake Store にアクセスします。
 
 ### サービス プリンシパルを追加するには
@@ -120,7 +112,6 @@ HDInsight クラスターに関連付けられている Azure Active Directory (
 Data Lake Store へのアクセスを後から追加するには、Azure ポータルで Data Lake Store を開いて、**[データ エクスプローラー]**、**[アクセス]** の順に移動します。サービス プリンシパルを作成して "rkadl11" Data Lake Store に関連付ける方法を示すダイアログ ボックスの例を次に示します。
 
 ![Create Data Lake store Service Principle 1](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp1.png)
-
 
 ![Create Data Lake store Service Principle 2](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp2.png)
 
@@ -175,19 +166,16 @@ hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 ````
 
 ## エッジ ノードでの Azure Files の使用
-
 エッジ ノードでの使用に適した [Azure Files](../storage/storage-how-to-use-files-linux.md "Azure Files") というデータ ストレージ オプションもあります。Azure Files を使用すると、Azure Storage ファイル共有を Linux ファイル システムにマウントできます。これは、HDFS ではなくエッジ ノード上でネイティブ ファイル システムを使用する方がよい場合に、後で必要となる可能性があるデータ ファイル、R スクリプト、結果オブジェクトを格納するのに便利です。
 
 Azure Files の大きな利点は、サポートされている OS (Windows や Linux など) を使用している任意のシステムで、ファイル共有をマウントして使用できることです。たとえば、チーム内のメンバーが所有する他の HDInsight クラスターや、Azure VM、オンプレミスのシステムでも使用できます。
 
-
 ## 次のステップ
-
 ここでは、SSH セッションから R コンソールを使用する方法と、R Server を含む新しい HDInsight クラスターを作成する方法の基本を説明しました。HDInsight で R Server を使用する他の方法については、次のリンクを参照してください。
 
-- [概要: HDInsight の R Server](hdinsight-hadoop-r-server-overview.md)
-- [Hadoop での R Server の使用開始](hdinsight-hadoop-r-server-get-started.md)
-- [HDInsight Premium への RStudio Server の追加](hdinsight-hadoop-r-server-install-r-studio.md)
-- [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
+* [概要: HDInsight の R Server](hdinsight-hadoop-r-server-overview.md)
+* [Hadoop での R Server の使用開始](hdinsight-hadoop-r-server-get-started.md)
+* [HDInsight Premium への RStudio Server の追加](hdinsight-hadoop-r-server-install-r-studio.md)
+* [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
 
 <!---HONumber=AcomDC_0921_2016-->

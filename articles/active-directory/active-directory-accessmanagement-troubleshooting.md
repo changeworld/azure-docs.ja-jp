@@ -1,26 +1,23 @@
 
-<properties
-	pageTitle="グループの動的メンバーシップのトラブルシューティング | Microsoft Azure"
-	description="Azure AD でのグループの動的メンバーシップ管理に関する問題について、トラブルシューティングのヒントを紹介します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="curtand"
-	manager="femila"
-	editor=""
-	/>
+---
+title: グループの動的メンバーシップのトラブルシューティング | Microsoft Docs
+description: Azure AD でのグループの動的メンバーシップ管理に関する問題について、トラブルシューティングのヒントを紹介します。
+services: active-directory
+documentationcenter: ''
+author: curtand
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/10/2016"
-	ms.author="curtand"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/10/2016
+ms.author: curtand
 
-
+---
 # グループの動的メンバーシップのトラブルシューティング
-
 **グループに対するルールを構成しましたが、グループのメンバーシップが更新されません**<br/>**[ディレクトリの構成]** タブで **[委任されたグループ管理の有効化]** 設定が **[はい]** に設定されていることを確認してください。Azure Active Directory Premium ライセンスが割り当てられたユーザーとしてサインインした場合にのみ、この設定が表示されます。ルールに使用しているユーザー属性の値を確認し、そのルールを満たすユーザーが存在することを確認してください。
 
 **ルールの設定を変更したのですが、そのルールの既存のメンバーが削除されてしまいました**<br/>これは正しい動作です。ルールを有効にしたり変更を加えたりするとグループの既存のメンバーは削除されます。ルールの評価から返されたユーザーは、グループのメンバーとして追加されます。

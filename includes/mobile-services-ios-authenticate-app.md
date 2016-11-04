@@ -1,4 +1,4 @@
-* **QSTodoListViewController.m** を開き、次のメソッドを追加します。Facebook を ID プロバイダーとして使用しない場合は、_facebook_ を _microsoftaccount_、_twitter_、_google_、_windowsazureactivedirectory_ のいずれかに変更します。
+* **QSTodoListViewController.m** を開き、次のメソッドを追加します。Facebook を ID プロバイダーとして使用しない場合は、*facebook* を *microsoftaccount*、*twitter*、*google*、*windowsazureactivedirectory* のいずれかに変更します。
 
 ```
         - (void) loginAndGetData

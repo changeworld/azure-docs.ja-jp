@@ -1,29 +1,29 @@
-<properties
-   pageTitle="Azure Service Fabric クラスター リソース マネージャーでクラスターの均衡をとる | Microsoft Azure"
-   description="Service Fabric クラスター リソース マネージャーを使用してクラスターの均衡をとる方法について説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Azure Service Fabric クラスター リソース マネージャーでクラスターの均衡をとる | Microsoft Docs
+description: Service Fabric クラスター リソース マネージャーを使用してクラスターの均衡をとる方法について説明します。
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Service Fabric クラスターの均衡をとる
 Service Fabric クラスター Resource Manager は、動的な負荷をレポートしたり、クラスター内の変更に応答したり、制約違反を修正したり、必要に応じてクラスターの再調整を行ったりしますが、これらはどのくらいの頻度で実行され、何によってトリガーされるのでしょうか。 これには、いくつかのコントロールが関係します。
 
 均衡化に関する最初のコントロールは、一連のタイマーです。これらのタイマーによって、クラスター Resource Manager がクラスターの状態について対応する必要のある事柄を確認する頻度が制御されます。3 つの異なる作業のカテゴリがあり、それぞれに対応する独自のタイマーがあります。次に例を示します。
 
-1.	配置: この段階では、不足している任意のステートフル レプリカまたはステートレスなインスタンスの配置が処理されます。これは、新しいサービスと、失敗し再作成する必要のあるステートフルなレプリカやステートレスなインスタンスの処理の両方に対応します。レプリカまたはインスタンスの削除も、ここで処理もされます。
-2.	制約チェック: この段階では、システム内のさまざまな配置の制約 (ルール) 違反の確認および修正が行われます。ルールとは、たとえば、ノードに過剰な負荷がかかっていないこと、およびサービスを配置する上での制約が満たされている (これについては後述します) ことを確認することです。
-3.	分散: この段階では、さまざまなメトリックの構成済みの望ましい均衡レベルを基準に、先を見越しての再調整が必要であるかが確認され、必要な場合、クラスターをより均衡にする編成が検出されます。
+1. 配置: この段階では、不足している任意のステートフル レプリカまたはステートレスなインスタンスの配置が処理されます。これは、新しいサービスと、失敗し再作成する必要のあるステートフルなレプリカやステートレスなインスタンスの処理の両方に対応します。レプリカまたはインスタンスの削除も、ここで処理もされます。
+2. 制約チェック: この段階では、システム内のさまざまな配置の制約 (ルール) 違反の確認および修正が行われます。ルールとは、たとえば、ノードに過剰な負荷がかかっていないこと、およびサービスを配置する上での制約が満たされている (これについては後述します) ことを確認することです。
+3. 分散: この段階では、さまざまなメトリックの構成済みの望ましい均衡レベルを基準に、先を見越しての再調整が必要であるかが確認され、必要な場合、クラスターをより均衡にする編成が検出されます。
 
 ## クラスター リソース マネージャーの手順とタイマーを構成する
 クラスター Resource Manager が行うことのできる、これらの異なる修正はいずれも、その頻度を制御する別々のタイマーによって管理されています。たとえば、1 時間ごとにクラスターに新しいサービスのワークロードを配置し、数秒ごとに定期的に均衡の状態を確認することのみしたい場合、その動作を構成できます。それぞれのタイマーが作動したとき、タスクがスケジュールされます。既定では、Resource Manager は 1/10 秒ごとにその状態をスキャンして更新を適用し (ノードがダウンしていることを検知するなど、前回のスキャン以降に発生したすべての変更をバッチ処理します)、1 秒ごとに配置および制約チェック フラグを設定し、5 秒ごとに均衡化フラグを設定します。
@@ -104,10 +104,9 @@ ClusterManifest.xml
 ![同時にサービスの均衡をとる][Image5]
 
 ## 次のステップ
-- メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
-- 移動コストは、特定のサービスが他のサービスよりも高額になっていることをクラスター リソース マネージャーに警告する信号の 1 つです。移動コストの詳細については、[この記事](service-fabric-cluster-resource-manager-movement-cost.md)を参照してください。
-- クラスター リソース マネージャーにはスロットルがいくつかあります。クラスターのチャーン (激しい動き) を落ち着かせるようにスロットルを構成できます。通常は必要ありませんが、必要であれば、[ここ](service-fabric-cluster-resource-manager-advanced-throttling.md)で詳細を確認できます。
-
+* メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
+* 移動コストは、特定のサービスが他のサービスよりも高額になっていることをクラスター リソース マネージャーに警告する信号の 1 つです。移動コストの詳細については、[この記事](service-fabric-cluster-resource-manager-movement-cost.md)を参照してください。
+* クラスター リソース マネージャーにはスロットルがいくつかあります。クラスターのチャーン (激しい動き) を落ち着かせるようにスロットルを構成できます。通常は必要ありませんが、必要であれば、[ここ](service-fabric-cluster-resource-manager-advanced-throttling.md)で詳細を確認できます。
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

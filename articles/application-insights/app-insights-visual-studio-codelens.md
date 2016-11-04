@@ -1,36 +1,39 @@
-<properties 
-	pageTitle="Visual Studio の CodeLens における Application Insights テレメトリ | Microsoft Azure" 
-	description="Visual Studio の CodeLens を使用して Application Insights の要求と例外のテレメトリにすばやくアクセスします。" 
-	services="application-insights" 
-    documentationCenter=".net"
-	authors="numberbycolors" 
-	manager="douge"/>
+---
+title: Visual Studio の CodeLens における Application Insights テレメトリ | Microsoft Docs
+description: Visual Studio の CodeLens を使用して Application Insights の要求と例外のテレメトリにすばやくアクセスします。
+services: application-insights
+documentationcenter: .net
+author: numberbycolors
+manager: douge
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/30/2016" 
-	ms.author="daviste"/>
-	
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/30/2016
+ms.author: daviste
+
+---
 # Visual Studio の CodeLens における Application Insights テレメトリ
-
 Web アプリのコード内のメソッドには、実行時の例外と要求の応答時間に関するテレメトリを注釈として付けることができます。[Visual Studio Application Insights](app-insights-overview.md) をアプリケーションにインストールすると、Visual Studio [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) にテレメトリが表示されます。CodeLens は、各関数の上部に表示される注記で、その関数を参照している場所の数や関数を最後に変更したユーザーなどの有用な情報が表示されます。
 
 ![CodeLens](./media/app-insights-visual-studio-codelens/codelens-overview.png)
 
-> [AZURE.NOTE] CodeLens の Application Insights は、Visual Studio 2015 Update 3 以降または [Developer Analytics Tools 拡張機能](https://visualstudiogallery.msdn.microsoft.com/82367b81-3f97-4de1-bbf1-eaf52ddc635a)の最新バージョンで利用できます。CodeLens は、Visual Studio の Enterprise Edition および Professional Edition で利用できます。
+> [!NOTE]
+> CodeLens の Application Insights は、Visual Studio 2015 Update 3 以降または [Developer Analytics Tools 拡張機能](https://visualstudiogallery.msdn.microsoft.com/82367b81-3f97-4de1-bbf1-eaf52ddc635a)の最新バージョンで利用できます。CodeLens は、Visual Studio の Enterprise Edition および Professional Edition で利用できます。
+> 
+> 
 
 ## Application Insights データの検索場所
-
 Application Insights テレメトリは、Web アプリケーションのパブリック要求メソッドの CodeLens インジケーターで探します。CodeLens インジケーターは、C# および Visual Basic コード内のメソッドやその他の宣言の上に表示されます。メソッドに Application Insights データを利用できる場合は、要求と例外のインジケーターが表示されます (例: "100 requests, 1% failed (100 件の要求、1% 失敗)" または "10 exceptions (10 件の例外)")。 CodeLens インジケーターをクリックすると、詳細が表示されます。
 
-> [AZURE.TIP] Application Insights の要求インジケーターと例外インジケーターは、他の CodeLens インジケーターが表示された後に読み込まれますが、さらに数秒かかる場合があります。
+> [!TIP]
+> Application Insights の要求インジケーターと例外インジケーターは、他の CodeLens インジケーターが表示された後に読み込まれますが、さらに数秒かかる場合があります。
+> 
+> 
 
 ## CodeLens における例外
-
 ![TBD](./media/app-insights-visual-studio-codelens/codelens-exceptions.png)
 
 例外 CodeLens インジケーターは、このメソッドから提供された要求の処理中に、過去 24 時間にアプリケーションで最も頻繁に発生した 15 の例外の発生回数を表示します。
@@ -44,12 +47,15 @@ Application Insights テレメトリは、Web アプリケーションのパブ�
 * 過去 24 時間に発生したすべての例外を照会するには、**[このアプリのすべての例外を表示する]** を選択します。
 * 過去 24 時間に発生したすべての例外に関する傾向の視覚化を表示するには、**[例外の傾向を調べる]** を選択します。
 
-> [AZURE.TIP] CodeLens で "0 exceptions (0 件の例外)" と表示されても、例外が発生していることがわかっている場合は、CodeLens で適切な Application Insights リソースが選択されていることを確認してください。他のリソースを選択するには、ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights]、[テレメトリのソースを選択]** の順に選択します。CodeLens は、過去 24 時間にアプリケーションで最も頻繁に発生している 15 の例外のみについて表示されるため、発生頻度が 16 番目以降の例外については "0 exceptions (0 件の例外)" と表示されます。 ASP.NET ビューからの例外は、そのビューを生成したコントローラー メソッドに表示されない場合があります。
-
-> [AZURE.TIP] CodeLens に "? exceptions (? 件の例外)" と表示される場合は、Azure アカウントを Visual Studio に関連付ける必要があります。または、Azure アカウントの資格情報が期限切れになっている可能性があります。どちらの場合も、[? exceptions (? 件の例外)] をクリックし、**[アカウントの追加]** を選択して資格情報を入力します。
+> [!TIP]
+> CodeLens で "0 exceptions (0 件の例外)" と表示されても、例外が発生していることがわかっている場合は、CodeLens で適切な Application Insights リソースが選択されていることを確認してください。他のリソースを選択するには、ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights]、[テレメトリのソースを選択]** の順に選択します。CodeLens は、過去 24 時間にアプリケーションで最も頻繁に発生している 15 の例外のみについて表示されるため、発生頻度が 16 番目以降の例外については "0 exceptions (0 件の例外)" と表示されます。 ASP.NET ビューからの例外は、そのビューを生成したコントローラー メソッドに表示されない場合があります。
+> 
+> [!TIP]
+> CodeLens に "? exceptions (? 件の例外)" と表示される場合は、Azure アカウントを Visual Studio に関連付ける必要があります。または、Azure アカウントの資格情報が期限切れになっている可能性があります。どちらの場合も、[? exceptions (? 件の例外)] をクリックし、**[アカウントの追加]** を選択して資格情報を入力します。
+> 
+> 
 
 ## CodeLens における要求
-
 ![TBD](./media/app-insights-visual-studio-codelens/codelens-requests.png)
 
 要求 CodeLens インジケーターは、過去 24 時間にメソッドによって処理された HTTP 要求の数と、これらの要求が失敗した割合を示します。
@@ -63,11 +69,10 @@ Application Insights テレメトリは、Web アプリケーションのパブ�
 * CodeLens の詳細ビューの左上隅で Application Insights リソースの名前を選択して、CodeLens データのソースとなるリソースを変更します。
 
 ## <a name="next"></a>次のステップ
-
-||
-|---|---
-|**[Visual Studio での Application Insights の操作](app-insights-visual-studio.md)**<br/>テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。いずれも Visual Studio で行うことができます。 |![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/app-insights-visual-studio-trends/34.png)
-|**[データの追加](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。ログ記録フレームワークからのトレースを統合します。カスタム テレメトリを記述します。 | ![Visual studio](./media/app-insights-visual-studio-trends/64.png)
-|**[Application Insights ポータルの操作](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-visual-studio-trends/62.png)
+|  |  |
+| --- | --- |
+| **[Visual Studio での Application Insights の操作](app-insights-visual-studio.md)**<br/>テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。いずれも Visual Studio で行うことができます。 |![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/app-insights-visual-studio-trends/34.png) |
+| **[データの追加](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。ログ記録フレームワークからのトレースを統合します。カスタム テレメトリを記述します。 |![Visual studio](./media/app-insights-visual-studio-trends/64.png) |
+| **[Application Insights ポータルの操作](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-visual-studio-trends/62.png) |
 
 <!---HONumber=AcomDC_0907_2016-->

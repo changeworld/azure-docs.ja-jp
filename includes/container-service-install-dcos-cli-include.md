@@ -1,24 +1,27 @@
-<properties
-   pageTitle="DC/OS CLI のインストール |Microsoft Azure"
-   description="DC/OS CLI をインストールします。"
-   services="container-service"
-   documentationCenter=""
-   authors="rgardler"
-   manager="timlt"
-   editor=""
-   tags="acs, azure-container-service"
-   keywords="コンテナー, マクロサービス, DC/OS, Azure"/>
+---
+title: DC/OS CLI のインストール | Microsoft Docs
+description: DC/OS CLI をインストールします。
+services: container-service
+documentationcenter: ''
+author: rgardler
+manager: timlt
+editor: ''
+tags: acs, azure-container-service
+keywords: コンテナー, マクロサービス, DC/OS, Azure
 
-<tags
-   ms.service="container-service"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="05/10/2016"
-   ms.author="rogardle"/>
+ms.service: container-service
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/10/2016
+ms.author: rogardle
 
->[AZURE.NOTE] これは、DC/OS ベースの ACS クラスターを操作することを目的としています。Swarm ベースの ACS クラスターには、行う必要はありません。
+---
+> [!NOTE]
+> これは、DC/OS ベースの ACS クラスターを操作することを目的としています。Swarm ベースの ACS クラスターには、行う必要はありません。
+> 
+> 
 
 まず、[DC/OS ベースの ACS クラスターに接続](../articles/container-service/container-service-connect.md)します。この作業を終了したら、次のコマンドを使用して、クライアント コンピューターに DC/OS CLI をインストールできます。
 

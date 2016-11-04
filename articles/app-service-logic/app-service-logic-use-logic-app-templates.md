@@ -1,31 +1,28 @@
-<properties
- pageTitle="ロジック アプリ テンプレート | Microsoft Azure"
- description="事前に作成されているロジック アプリ テンプレートを使用して開始する方法について説明します"
- authors="kevinlam1"
- manager="dwrede"
- editor=""
- services="app-service\logic"
- documentationCenter=""/>
+---
+title: ロジック アプリ テンプレート | Microsoft Docs
+description: 事前に作成されているロジック アプリ テンプレートを使用して開始する方法について説明します
+author: kevinlam1
+manager: dwrede
+editor: ''
+services: app-service\logic
+documentationcenter: ''
 
-<tags
-	ms.service="app-service-logic"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2016"
-	ms.author="klam"/>
+ms.service: app-service-logic
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/24/2016
+ms.author: klam
 
+---
 # ロジック アプリ テンプレート
-
 ## ロジック アプリ テンプレートとは
-
 ロジック アプリ テンプレートは、あらかじめ作成されたロジック アプリで、これを使用すると独自のワークフローの作成をすばやく開始できます。
 
 これらのテンプレートは、ロジック アプリを使用して構築できるさまざまなパターンを見つけるのに適した方法です。これらのテンプレートは、そのまま使用することも、自分のシナリオに合わせて変更することもできます。
 
 ## 使用可能なテンプレートの概要
-
 ロジック アプリ プラットフォームでは、現在、使用可能な多くのテンプレートが発行されています。一部のカテゴリの例と、そのカテゴリで使用されるコネクタの種類を次に示します。
 
 ### エンタープライズ クラウド テンプレート
@@ -43,8 +40,7 @@ VETER (検証、抽出、変換、強化、ルーティング) パイプライ�
 ### コンシューマー クラウド テンプレート
 Twitter、Slack、電子メールなどのソーシャル メディア サービスと統合し、最終的にソーシャル メディア マーケティング戦略を強化できるシンプルなテンプレートです。これには、従来繰り返しタスクに費やしていた時間を節約することで生産性の向上に役立つ、クラウドのコピーなどのテンプレートも含まれます。
 
-## テンプレートを使用したロジック アプリの作成方法 
-
+## テンプレートを使用したロジック アプリの作成方法
 ロジック アプリ テンプレートの使用を開始するには、ロジック アプリ デザイナーに移動します。既存のロジック アプリを開いてデザイナーを起動すると、ロジック アプリは自動的にデザイナー ビューに読み込まれます。一方、新しいロジック アプリを作成する場合は、次の画面が表示されます。![](../../includes/media/app-service-logic-templates/template7.png)
 
 この画面で、空のロジック アプリを使用するか、あらかじめ作成されているテンプレートを使用するかを選択できます。テンプレートのいずれかを選択すると、追加情報が表示されます。この例では、"*新しいファイルが Dropbox に作成されたときにそのファイルを OneDrive にコピーする*" テンプレートを使用します。![](../../includes/media/app-service-logic-templates/template2.png)
@@ -58,7 +54,6 @@ Twitter、Slack、電子メールなどのソーシャル メディア サービ
 テンプレート ビューアーに戻る場合は、上部のナビゲーション バーの *[テンプレート]* ボタンを選択します。テンプレート ビューアーに戻ると、保存されていない作業は失われます。テンプレート ビューアーに戻る前に、このことを通知する警告メッセージが表示されます。![](../../includes/media/app-service-logic-templates/template5.png)
 
 ## テンプレートから作成したロジック アプリをデプロイする方法
-
 テンプレートを読み込んで必要な変更を行ったら、左上隅にある [保存] ボタンをクリックします。これにより、ロジック アプリが保存され、発行されます。![](../../includes/media/app-service-logic-templates/template6.png)
 
 既存のロジック アプリ テンプレートにさらに手順を追加する方法や一般的な編集を行う方法の詳細については、[ロジック アプリの作成](app-service-logic-create-a-logic-app.md)に関するページを参照してください。

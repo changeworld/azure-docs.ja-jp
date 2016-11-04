@@ -1,22 +1,21 @@
-<properties
-   pageTitle="Reliable Actors のタイマーとアラーム | Microsoft Azure"
-   description="Service Fabric Reliable Actors のタイマーとアラームの概要"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="vturecek"
-   manager="timlt"
-   editor="amanbha"/>
+---
+title: Reliable Actors のタイマーとアラーム | Microsoft Docs
+description: Service Fabric Reliable Actors のタイマーとアラームの概要
+services: service-fabric
+documentationcenter: .net
+author: vturecek
+manager: timlt
+editor: amanbha
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="07/06/2016"
-   ms.author="vturecek"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 07/06/2016
+ms.author: vturecek
 
-
+---
 # アクターのタイマーとアラーム
 アクターは、タイマーまたはアラームを登録することで、自身の定期的な作業をスケジュールできます。ここでは、タイマーとアラームの使用方法と、これらの違いについて説明します。
 
@@ -119,10 +118,10 @@ Task reminderUnregistration = UnregisterReminder(reminder);
 上記の例のように、 `UnregisterReminder` メソッドは、`IActorReminder` インターフェイスを受け入れます。アクターの基本クラスは、アラーム名で渡すことで、`IActorReminder` インターフェイスを取得できる `GetReminder` メソッドをサポートします。これにより、アクターが `RegisterReminder` メソッドの呼び出しから返された `IActorReminder` インターフェイスを永続化する必要がなくなるため便利です。
 
 ## 次のステップ
- - [アクター イベント](service-fabric-reliable-actors-events.md)
- - [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
- - [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
- - [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [コード サンプル](https://github.com/Azure/servicefabric-samples)
+* [アクター イベント](service-fabric-reliable-actors-events.md)
+* [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
+* [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
+* [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [コード サンプル](https://github.com/Azure/servicefabric-samples)
 
 <!---HONumber=AcomDC_0713_2016-->

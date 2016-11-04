@@ -1,37 +1,35 @@
-<properties
-	pageTitle="PowerShell を使用した Service Fabric アプリケーション管理の自動化 | Microsoft Azure"
-	description="PowerShell を使用して、Service Fabric アプリケーションをデプロイ、アップグレード、テスト、および削除します。"
-	services="service-fabric"
-	documentationCenter=".net"
-	authors="rwike77"
-	manager="timlt"
-	editor=""/>
+---
+title: PowerShell を使用した Service Fabric アプリケーション管理の自動化 | Microsoft Docs
+description: PowerShell を使用して、Service Fabric アプリケーションをデプロイ、アップグレード、テスト、および削除します。
+services: service-fabric
+documentationcenter: .net
+author: rwike77
+manager: timlt
+editor: ''
 
-<tags
-	ms.service="service-fabric"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="08/25/2016"
-	ms.author="ryanwi"/>
+ms.service: service-fabric
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 08/25/2016
+ms.author: ryanwi
 
+---
 # PowerShell を使用したアプリケーション ライフサイクルの自動化
-
 [Service Fabric アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)のさまざまな要素を自動化することができます。この記事では、PowerShell を使用して、Azure Service Fabric アプリケーションのデプロイ、アップグレード、削除、およびテストの一般的なタスクを自動化する方法を説明します。アプリ管理用のマネージ API と HTTP API も利用できます。詳細については、[アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)に関するページを参照してください。
 
 ## 前提条件
 この記事に記載されているタスクを進めていく前に、次の作業を行ってください。
 
-+ 「[Service Fabric の技術概要](service-fabric-technical-overview.md)」に記載されている Service Fabric の概念を理解する。
-+ [ランタイム、SDK、およびツールをインストールする。](service-fabric-get-started.md)これによって、**ServiceFabric** PowerShell モジュールもインストールされます。
-+ [PowerShell スクリプトの実行を有効化する](service-fabric-get-started.md#enable-powershell-script-execution)。
-+ ローカル クラスターを開始する。管理者として新しい PowerShell ウィンドウを起動し、SDK フォルダー `& "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"` からクラスターのセットアップ スクリプトを実行します。
-+ この記事の PowerShell コマンドを実行する前に、[**Connect-ServiceFabricCluster**](https://msdn.microsoft.com/library/azure/mt125938.aspx): `Connect-ServiceFabricCluster localhost:19000` を使用して、ローカル Service Fabric クラスターに接続する。
-+ 下記のタスクを実行するうえで必要となる、デプロイ用の v1 アプリケーション パッケージと、アップグレード用の v2 アプリケーション パッケージを用意する。[**WordCount** サンプル アプリケーション](http://aka.ms/servicefabricsamples) をダウンロードします (「Getting Started Samples」にあります)。Visual Studio でアプリケーションをビルドしてパッケージ化します (ソリューション エクスプローラーで **WordCount** を右クリックし、**[パッケージ]** を選択します)。`C:\ServiceFabricSamples\Services\WordCount\WordCount\pkg\Debug` 内の v1 パッケージを `C:\Temp\WordCount` にコピーします。`C:\Temp\WordCount` を `C:\Temp\WordCountV2` にコピーし、アップグレード用の v2 アプリケーション パッケージを作成します。テキスト エディターで `C:\Temp\WordCountV2\ApplicationManifest.xml` を開きます。**ApplicationManifest** 要素の **ApplicationTypeVersion** 属性を "1.0.0" から "2.0.0" に変更して、アプリケーションのバージョン番号を更新します。変更された ApplicationManifest.xml ファイルを保存します。
+* 「[Service Fabric の技術概要](service-fabric-technical-overview.md)」に記載されている Service Fabric の概念を理解する。
+* [ランタイム、SDK、およびツールをインストールする。](service-fabric-get-started.md)これによって、**ServiceFabric** PowerShell モジュールもインストールされます。
+* [PowerShell スクリプトの実行を有効化する](service-fabric-get-started.md#enable-powershell-script-execution)。
+* ローカル クラスターを開始する。管理者として新しい PowerShell ウィンドウを起動し、SDK フォルダー `& "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"` からクラスターのセットアップ スクリプトを実行します。
+* この記事の PowerShell コマンドを実行する前に、[**Connect-ServiceFabricCluster**](https://msdn.microsoft.com/library/azure/mt125938.aspx): `Connect-ServiceFabricCluster localhost:19000` を使用して、ローカル Service Fabric クラスターに接続する。
+* 下記のタスクを実行するうえで必要となる、デプロイ用の v1 アプリケーション パッケージと、アップグレード用の v2 アプリケーション パッケージを用意する。[**WordCount** サンプル アプリケーション](http://aka.ms/servicefabricsamples) をダウンロードします (「Getting Started Samples」にあります)。Visual Studio でアプリケーションをビルドしてパッケージ化します (ソリューション エクスプローラーで **WordCount** を右クリックし、**[パッケージ]** を選択します)。`C:\ServiceFabricSamples\Services\WordCount\WordCount\pkg\Debug` 内の v1 パッケージを `C:\Temp\WordCount` にコピーします。`C:\Temp\WordCount` を `C:\Temp\WordCountV2` にコピーし、アップグレード用の v2 アプリケーション パッケージを作成します。テキスト エディターで `C:\Temp\WordCountV2\ApplicationManifest.xml` を開きます。**ApplicationManifest** 要素の **ApplicationTypeVersion** 属性を "1.0.0" から "2.0.0" に変更して、アプリケーションのバージョン番号を更新します。変更された ApplicationManifest.xml ファイルを保存します。
 
 ## タスク: Service Fabric アプリケーションのデプロイ
-
 アプリケーションをビルドしてパッケージ化 (またはアプリケーション パッケージをダウンロード) したら、ローカル Service Fabric クラスターにアプリケーションをデプロイできます。デプロイには、アプリケーション パッケージのアップロード、アプリケーションの種類の登録、アプリケーション インスタンスの作成が含まれます。クラスターに新しいアプリケーションをデプロイするには、このセクションの手順を使用します。
 
 ### 手順 1: アプリケーション パッケージのアップロード
@@ -110,7 +108,6 @@ Get-ServiceFabricApplicationUpgrade fabric:/WordCount
 数分で、[Get ServiceFabricApplicationUpgrade](https://msdn.microsoft.com/library/azure/mt125988.aspx) コマンドレットにより、すべてのアップグレード ドメインがアップグレードされた (完了した) ことが示されます。
 
 ## タスク: Service Fabric アプリケーションのテスト
-
 高品質なサービスのコードを記述するには、開発者は信頼性の低いインフラストラクチャの障害を誘発してサービスの安定性をテストできる必要があります。Service Fabric を使用すると、開発者は、混乱とフェールオーバーのテスト シナリオを使用して、障害アクションを誘発し、障害のある状態でサービスをテストできます。追加情報については、「[Testability の概要](service-fabric-testability-overview.md)」を参照してください。
 
 ### 手順 1: 混乱テスト シナリオの実行

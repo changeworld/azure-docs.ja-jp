@@ -1,20 +1,21 @@
-<properties
-    pageTitle="Azure AD Connect 同期: 既定の構成について | Microsoft Azure"
-    description="この記事では、Azure AD Connect 同期の既定の構成について説明します。"
-    services="active-directory"
-    documentationCenter=""
-    authors="andkjell"
-    manager="femila"
-    editor=""/>
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-	ms.topic="article"
-    ms.date="09/01/2016"
-    ms.author="andkjell"/>
+---
+title: 'Azure AD Connect 同期: 既定の構成について | Microsoft Docs'
+description: この記事では、Azure AD Connect 同期の既定の構成について説明します。
+services: active-directory
+documentationcenter: ''
+author: andkjell
+manager: femila
+editor: ''
 
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/01/2016
+ms.author: andkjell
+
+---
 # Azure AD Connect Sync: 既定の構成について
 この記事では、既定の構成ルールについて説明します。規則とそれが構成に与える影響について記載されています。また、Azure AD Connect 同期の既定の構成についても説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
 
@@ -28,72 +29,72 @@
 
 ユーザー オブジェクトは次の要件を満たさないと同期されません。
 
-- sourceAnchor が含まれている必要があります。
-- オブジェクトを Azure AD で作成した後に sourceAnchor を変更することはできません。オンプレミスで値が変更された場合、sourceAnchor が前の値に戻るまでオブジェクトは同期を停止します。
-- accountEnabled (userAccountControl) 属性が入力されている必要があります。オンプレミスの Active Directory があれば、この属性は常に存在し、入力されています。
+* sourceAnchor が含まれている必要があります。
+* オブジェクトを Azure AD で作成した後に sourceAnchor を変更することはできません。オンプレミスで値が変更された場合、sourceAnchor が前の値に戻るまでオブジェクトは同期を停止します。
+* accountEnabled (userAccountControl) 属性が入力されている必要があります。オンプレミスの Active Directory があれば、この属性は常に存在し、入力されています。
 
 次のユーザー オブジェクトは Azure AD に同期**されません**。
 
-- `IsPresent([isCriticalSystemObject])`組み込み管理者アカウントなど、Active Directory の既定のオブジェクトの多くは同期されません。
-- `IsPresent([sAMAccountName]) = False`sAMAccountName 属性のないユーザー オブジェクトは同期されません。このような局面は、現実的には NT4 からアップグレードされたドメインでのみ発生します。
-- `Left([sAMAccountName], 4) = "AAD_"`、`Left([sAMAccountName], 5) = "MSOL_"`。Azure AD Connect 同期と以前のバージョンで使用されるサービス アカウントは同期しないでください。
-- Exchange Online で機能しない Exchange アカウントは同期しないでください。
-    - `[sAMAccountName] = "SUPPORT_388945a0"`
-    - `Left([mailNickname], 14) = "SystemMailbox{"`
-    - `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`
-    - `(Left([sAMAccountName], 4) = "CAS_" && (InStr([sAMAccountName], "}")> 0))`
-- Exchange Online で機能しないオブジェクトは同期しないでください。`CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))` このビットマスク (&H21C07000) で次のオブジェクトが除外されます。
-    - メール対応のパブリック フォルダー
-    - システム アテンダント メールボックス
-    - メールボックス データベース メールボックス (システム メールボックス)
-    - ユニバーサル セキュリティ グループ (ユーザーには適用されませんが、旧システムのために存在します)
-    - 非ユニバーサル グループ (ユーザーには適用されませんが、旧システムのために存在します)
-    - メールボックス プラン
-    - 探索メールボックス
-- `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`レプリケーション対象オブジェクトは同期しないでください。
+* `IsPresent([isCriticalSystemObject])`組み込み管理者アカウントなど、Active Directory の既定のオブジェクトの多くは同期されません。
+* `IsPresent([sAMAccountName]) = False`sAMAccountName 属性のないユーザー オブジェクトは同期されません。このような局面は、現実的には NT4 からアップグレードされたドメインでのみ発生します。
+* `Left([sAMAccountName], 4) = "AAD_"`、`Left([sAMAccountName], 5) = "MSOL_"`。Azure AD Connect 同期と以前のバージョンで使用されるサービス アカウントは同期しないでください。
+* Exchange Online で機能しない Exchange アカウントは同期しないでください。
+  * `[sAMAccountName] = "SUPPORT_388945a0"`
+  * `Left([mailNickname], 14) = "SystemMailbox{"`
+  * `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`
+  * `(Left([sAMAccountName], 4) = "CAS_" && (InStr([sAMAccountName], "}")> 0))`
+* Exchange Online で機能しないオブジェクトは同期しないでください。`CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))` このビットマスク (&H21C07000) で次のオブジェクトが除外されます。
+  * メール対応のパブリック フォルダー
+  * システム アテンダント メールボックス
+  * メールボックス データベース メールボックス (システム メールボックス)
+  * ユニバーサル セキュリティ グループ (ユーザーには適用されませんが、旧システムのために存在します)
+  * 非ユニバーサル グループ (ユーザーには適用されませんが、旧システムのために存在します)
+  * メールボックス プラン
+  * 探索メールボックス
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`レプリケーション対象オブジェクトは同期しないでください。
 
 次の属性ルールが適用されます。
 
-- `sourceAnchor <- IIF([msExchRecipientTypeDetails]=2,NULL,..)`sourceAnchor 属性は、リンクされているメールボックスから提供されません。リンクされているメールボックスが見つかった場合、後で実際のアカウントが結合されるものと想定されています。
-- Exchange 関連属性は、属性 **mailNickName** に値が含まれる場合にのみ同期されます。
-- 複数のフォレストが存在するとき、属性は次の順序で利用されます。
-    1. サインイン関連の属性 (userPrincipalName など) はアカウントが有効になっているフォレストから提供されます。
-    2. Exchange GAL (グローバル アドレス一覧) で見つかる属性は Exchange Mailbox のあるフォレストから提供されます。
-    3. メールボックスが見つからない場合、これらの属性はあらゆるフォレストから取得できます。
-    4. Exchange 関連の属性 (GAL で表示されない技術属性) は、`mailNickname ISNOTNULL` の条件を満たすフォレストから提供されます。
-    5. 以上の規則のいずれかを満たすフォレストが複数存在する場合、コネクタ (フォレスト) の作成順序 (日付/時刻) を利用し、属性を提供するフォレストが決定されます。
+* `sourceAnchor <- IIF([msExchRecipientTypeDetails]=2,NULL,..)`sourceAnchor 属性は、リンクされているメールボックスから提供されません。リンクされているメールボックスが見つかった場合、後で実際のアカウントが結合されるものと想定されています。
+* Exchange 関連属性は、属性 **mailNickName** に値が含まれる場合にのみ同期されます。
+* 複数のフォレストが存在するとき、属性は次の順序で利用されます。
+  1. サインイン関連の属性 (userPrincipalName など) はアカウントが有効になっているフォレストから提供されます。
+  2. Exchange GAL (グローバル アドレス一覧) で見つかる属性は Exchange Mailbox のあるフォレストから提供されます。
+  3. メールボックスが見つからない場合、これらの属性はあらゆるフォレストから取得できます。
+  4. Exchange 関連の属性 (GAL で表示されない技術属性) は、`mailNickname ISNOTNULL` の条件を満たすフォレストから提供されます。
+  5. 以上の規則のいずれかを満たすフォレストが複数存在する場合、コネクタ (フォレスト) の作成順序 (日付/時刻) を利用し、属性を提供するフォレストが決定されます。
 
 ### 連絡先の既定のルール
 連絡先オブジェクトは次の要件を満たさないと同期されません。
 
-- 連絡先はメール対応である必要があります。次のルールで検証されます。
-    - `IsPresent([proxyAddresses]) = True)`proxyAddresses 属性に入力する必要があります。
-    - プライマリ電子メール アドレスは proxyAddresses 属性とメール属性のいずれかにあります。@ が存在することで、コンテンツが電子メールであることが確認されます。これら 2 つの規則のいずれかを評価した結果、True になる必要があります。
-        - `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`"SMTP:" が含まれるエントリはありますか。エントリがある場合、文字列に @ は含まれますか。
-        - `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`メール属性は入力されますか。入力される場合、文字列に @ は含まれますか。
+* 連絡先はメール対応である必要があります。次のルールで検証されます。
+  * `IsPresent([proxyAddresses]) = True)`proxyAddresses 属性に入力する必要があります。
+  * プライマリ電子メール アドレスは proxyAddresses 属性とメール属性のいずれかにあります。@ が存在することで、コンテンツが電子メールであることが確認されます。これら 2 つの規則のいずれかを評価した結果、True になる必要があります。
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`"SMTP:" が含まれるエントリはありますか。エントリがある場合、文字列に @ は含まれますか。
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`メール属性は入力されますか。入力される場合、文字列に @ は含まれますか。
 
 次の連絡先オブジェクトは Azure AD に同期**されません**。
 
-- `IsPresent([isCriticalSystemObject])`クリティカルとしてマークされている連絡先オブジェクトは同期されないようにします。既定の構成を含むオブジェクトにはなりません。
-- `((InStr([displayName], "(MSOL)") > 0) && (CBool([msExchHideFromAddressLists])))`
-- `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`これらのオブジェクトは Exchange Online では動作しません。
-- `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`レプリケーション対象オブジェクトは同期しないでください。
+* `IsPresent([isCriticalSystemObject])`クリティカルとしてマークされている連絡先オブジェクトは同期されないようにします。既定の構成を含むオブジェクトにはなりません。
+* `((InStr([displayName], "(MSOL)") > 0) && (CBool([msExchHideFromAddressLists])))`
+* `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`これらのオブジェクトは Exchange Online では動作しません。
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`レプリケーション対象オブジェクトは同期しないでください。
 
 ### グループの既定のルール
 グループ オブジェクトは次の要件を満たさないと同期されません。
 
-- メンバーは 50,000 以下にする必要があります。この数は、オンプレミス グループのメンバー数です。
-    - 最初に同期を開始する前にこの数を超えるメンバーが含まれている場合、グループは同期されません。
-    - 最初に作成したときからメンバーの数が増え、50,000 に到達すると、再び 50,000 以下になるまで同期は停止します。
-    - 注記: 50,000 というメンバー数は Azure AD からも強制されます。この規則を変更または削除した場合でも、メンバー数の多いグループを同期することはできません。
-- グループが**配布グループ**の場合、メール対応にする必要もあります。このルールの強制については、「[連絡先の既定のルール](#contact-out-of-box-rules)」を参照してください。
+* メンバーは 50,000 以下にする必要があります。この数は、オンプレミス グループのメンバー数です。
+  * 最初に同期を開始する前にこの数を超えるメンバーが含まれている場合、グループは同期されません。
+  * 最初に作成したときからメンバーの数が増え、50,000 に到達すると、再び 50,000 以下になるまで同期は停止します。
+  * 注記: 50,000 というメンバー数は Azure AD からも強制されます。この規則を変更または削除した場合でも、メンバー数の多いグループを同期することはできません。
+* グループが**配布グループ**の場合、メール対応にする必要もあります。このルールの強制については、「[連絡先の既定のルール](#contact-out-of-box-rules)」を参照してください。
 
 次のグループ オブジェクトは Azure AD に同期**されません**。
 
-- `IsPresent([isCriticalSystemObject])`組み込み管理者グループなど、Active Directory の既定のオブジェクトの多くは同期されません。
-- `[sAMAccountName] = "MSOL_AD_Sync_RichCoexistence"`DirSync で使用される旧グループ。
-- `BitAnd([msExchRecipientTypeDetails],&amp;H40000000)`ロール グループ。
-- `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`レプリケーション対象オブジェクトは同期しないでください。
+* `IsPresent([isCriticalSystemObject])`組み込み管理者グループなど、Active Directory の既定のオブジェクトの多くは同期されません。
+* `[sAMAccountName] = "MSOL_AD_Sync_RichCoexistence"`DirSync で使用される旧グループ。
+* `BitAnd([msExchRecipientTypeDetails],&amp;H40000000)`ロール グループ。
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`レプリケーション対象オブジェクトは同期しないでください。
 
 ### ForeignSecurityPrincipal の既定のルール
 FSP はメタバースの「あらゆる」 (*) オブジェクトに参加します。この結合は、現実的にはユーザーとセキュリティ グループのみで発生します。この構成により、フォレスト間のメンバーシップが解決され、Azure AD に正しく表示されます。
@@ -101,7 +102,7 @@ FSP はメタバースの「あらゆる」 (*) オブジェクトに参加し�
 ### コンピューターの既定のルール
 コンピューター オブジェクトは次の要件を満たさないと同期されません。
 
-- `userCertificate ISNOTNULL`Windows 10 コンピューターでのみこの属性が入力されます。この属性に値があるすべてのコンピューター オブジェクトが同期されます。
+* `userCertificate ISNOTNULL`Windows 10 コンピューターでのみこの属性が入力されます。この属性に値があるすべてのコンピューター オブジェクトが同期されます。
 
 ## 既定のルールのシナリオを理解する
 この例では、1 つのアカウント フォレスト (A)、1 つのリソース フォレスト (R)、1 つの Azure AD ディレクトリが含まれるデプロイを使用します。
@@ -112,9 +113,9 @@ FSP はメタバースの「あらゆる」 (*) オブジェクトに参加し�
 
 この既定の構成での目標は次のとおりです。
 
-- サインインに関連した属性を、有効なアカウントが存在するフォレストから同期する。
-- GAL (グローバル アドレス一覧) で見つかる属性を、メールボックスを持つフォレストから同期する。メールボックスが見つからない場合は、他のフォレストが使用されます。
-- リンクされたメールボックスが見つかった場合、Azure AD にエクスポートされるオブジェクトのリンクされた有効なアカウントが見つかる。
+* サインインに関連した属性を、有効なアカウントが存在するフォレストから同期する。
+* GAL (グローバル アドレス一覧) で見つかる属性を、メールボックスを持つフォレストから同期する。メールボックスが見つからない場合は、他のフォレストが使用されます。
+* リンクされたメールボックスが見つかった場合、Azure AD にエクスポートされるオブジェクトのリンクされた有効なアカウントが見つかる。
 
 ### 同期規則エディター
 この構成は、同期規則エディター (SRE) ツールを使用して表示および変更できます。また、[スタート] メニューには、このツールのショートカットもあります。
@@ -180,9 +181,9 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 変換の種類には、定数、直接、式があります。
 
-- 定数フローは常に、ハードコーディングされた値をフローします。上に挙げたケースでは、**accountEnabled** という名前のメタバース属性に対して常に値 **True** が設定されます。
-- 直接フローは常に、ソースの属性の値をそのままターゲット属性にフローします。
-- 3 番目のフローの種類は式で、より高度な構成が可能です。
+* 定数フローは常に、ハードコーディングされた値をフローします。上に挙げたケースでは、**accountEnabled** という名前のメタバース属性に対して常に値 **True** が設定されます。
+* 直接フローは常に、ソースの属性の値をそのままターゲット属性にフローします。
+* 3 番目のフローの種類は式で、より高度な構成が可能です。
 
 式の言語は VBA (Visual Basic for Applications) で、Microsoft Office または VBScript の経験があるユーザーであれば形式がわかります。属性は、[attributeName] のように角かっこで囲みます。属性名および関数名では、大文字と小文字が区別されます。同期規則エディターが式を評価し、式が無効な場合は警告を表示します。すべての式は、関数が入れ子になって 1 行で表されます。この構成言語の強力な機能を、次の pwdLastSet のフローで示しています。追加のコメントも挿入されています。
 
@@ -210,25 +211,24 @@ NULL
 ### まとめ
 ここまでの同期規則に関する説明で、構成がさまざまな同期規則でどのように動作するかを十分理解できるようになりました。ユーザー、メタバースに影響する属性に注目すると、規則は次の順序で適用されます。
 
-名前 | コメント
-:------------- | :-------------
-AD からの受信 - ユーザー結合 | コネクタ スペース オブジェクトをメタバースと結合するための規則。
-AD からの受信 - ユーザー アカウント有効 | Azure AD と Office 365 にサインインするために必要な属性。これらの属性は有効なアカウントから取得します。
-AD からの受信 - Exchange からのユーザー共通 | グローバル アドレス一覧で見つかった属性。ユーザーのメールボックスが見つかったフォレストのデータ品質が最も優れていると想定しています。
-AD からの受信 - ユーザー共通 | グローバル アドレス一覧で見つかった属性。メールボックスが見つからなかった場合、それ以外の結合済みオブジェクトが属性値に影響する可能性があります。
-AD からの受信 - ユーザー Exchange | Exchange が検出された場合にのみ存在します。インフラストラクチャの Exchange 属性がすべてフローされます。
-AD からの受信 - ユーザー Lync | Lync が検出された場合にのみ存在します。インフラストラクチャの Lync 属性がすべてフローされます。
+| 名前 | コメント |
+|:--- |:--- |
+| AD からの受信 - ユーザー結合 |コネクタ スペース オブジェクトをメタバースと結合するための規則。 |
+| AD からの受信 - ユーザー アカウント有効 |Azure AD と Office 365 にサインインするために必要な属性。これらの属性は有効なアカウントから取得します。 |
+| AD からの受信 - Exchange からのユーザー共通 |グローバル アドレス一覧で見つかった属性。ユーザーのメールボックスが見つかったフォレストのデータ品質が最も優れていると想定しています。 |
+| AD からの受信 - ユーザー共通 |グローバル アドレス一覧で見つかった属性。メールボックスが見つからなかった場合、それ以外の結合済みオブジェクトが属性値に影響する可能性があります。 |
+| AD からの受信 - ユーザー Exchange |Exchange が検出された場合にのみ存在します。インフラストラクチャの Exchange 属性がすべてフローされます。 |
+| AD からの受信 - ユーザー Lync |Lync が検出された場合にのみ存在します。インフラストラクチャの Lync 属性がすべてフローされます。 |
 
 ## 次のステップ
-
-- この構成モデルについて詳しくは、「[Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
-- 式言語について詳しくは、「[宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
-- 既定の構成の動作についてさらに詳しく知りたい場合には、「[ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md)」をご覧ください。
-- 宣言型のプロビジョニングを使用して現実に即した変更を実施する方法については、「[既定の構成を変更する方法](active-directory-aadconnectsync-change-the-configuration.md)」をご覧ください。
+* この構成モデルについて詳しくは、「[Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
+* 式言語について詳しくは、「[宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
+* 既定の構成の動作についてさらに詳しく知りたい場合には、「[ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md)」をご覧ください。
+* 宣言型のプロビジョニングを使用して現実に即した変更を実施する方法については、「[既定の構成を変更する方法](active-directory-aadconnectsync-change-the-configuration.md)」をご覧ください。
 
 **概要トピック**
 
-- [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
-- [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+* [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
+* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
 <!---HONumber=AcomDC_0907_2016-->

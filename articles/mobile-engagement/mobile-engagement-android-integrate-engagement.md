@@ -1,175 +1,184 @@
-<properties
-	pageTitle="Azure Mobile Engagement Android SDK の統合"
-	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="dwrede"
-	editor="" />
+---
+title: Azure Mobile Engagement Android SDK の統合
+description: Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について
+services: mobile-engagement
+documentationcenter: mobile
+author: piyushjo
+manager: dwrede
+editor: ''
 
-<tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-android"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="08/19/2016"
-	ms.author="piyushjo" />
+ms.service: mobile-engagement
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-android
+ms.devlang: Java
+ms.topic: article
+ms.date: 08/19/2016
+ms.author: piyushjo
 
-#Engagement を Android に統合する方法
-
-> [AZURE.SELECTOR]
-- [Windows ユニバーサル](mobile-engagement-windows-store-integrate-engagement.md)
-- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
-- [iOS](mobile-engagement-ios-integrate-engagement.md)
-- [Android](mobile-engagement-android-integrate-engagement.md)
+---
+# Engagement を Android に統合する方法
+> [!div class="op_single_selector"]
+> * [Windows ユニバーサル](mobile-engagement-windows-store-integrate-engagement.md)
+> * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
+> * [iOS](mobile-engagement-ios-integrate-engagement.md)
+> * [Android](mobile-engagement-android-integrate-engagement.md)
+> 
+> 
 
 この手順では、Engagement の分析機能と監視機能を Android アプリでアクティブ化するための最も簡単な方法について説明します。
 
-> [AZURE.IMPORTANT] Android SDK の最小の API レベルは 10 以降 (Android 2.3.3 以降) である必要があります。
+> [!IMPORTANT]
+> Android SDK の最小の API レベルは 10 以降 (Android 2.3.3 以降) である必要があります。
+> 
+> 
 
 ユーザー、セッション、アクティビティ、クラッシュ、および技術に関するすべての統計をコンピューティングするために必要なログ レポートをアクティブ化するには、以下の手順で十分です。イベント、エラー、ジョブなどの他の統計情報をコンピューティングするのに必要なログのレポートについては、これらの統計がアプリケーションに依存しているので、エンゲージメント API を使用して手動で実行する必要があります ([Android で高度な Mobile Engagement タグ付け API を使用する方法を参照](mobile-engagement-android-use-engagement-api.md))。
 
-##Android プロジェクトに Engagement SDK とサービスを埋め込む
-
+## Android プロジェクトに Engagement SDK とサービスを埋め込む
 Android SDK を[こちら](https://aka.ms/vq9mfn)からダウンロードします。`mobile-engagement-VERSION.jar` を選択して、Andorid プロジェクトの `libs` フォルダーに配置します (libs フォルダーが存在しない場合は作成します)。
 
-> [AZURE.IMPORTANT]
-アプリケーション パッケージを ProGuard でビルドする場合は、いくつかのクラスを保持する必要があります。次の構成スニペットを使うことができます。
->
->
-			-keep public class * extends android.os.IInterface
-			-keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
-			<methods>;
-		 	}
+> [!IMPORTANT]
+> アプリケーション パッケージを ProGuard でビルドする場合は、いくつかのクラスを保持する必要があります。次の構成スニペットを使うことができます。
+> 
+> -keep public class * extends android.os.IInterface
+> -keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
+> 
+> <methods>;
+> }
+> 
+> 
 
 ランチャー アクティビティ内で次のメソッドを呼び出すことで、Engagement の接続文字列を指定します。
 
-			EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
-			engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
-			EngagementAgent.getInstance(this).init(engagementConfiguration);
+            EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
+            engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
+            EngagementAgent.getInstance(this).init(engagementConfiguration);
 
 アプリケーションの接続文字列が Azure ポータルに表示されます。
 
--   次の Android のアクセス権限が不足している場合は (`<application>` タグの前に) 追加します。
+* 次の Android のアクセス権限が不足している場合は (`<application>` タグの前に) 追加します。
+  
+          <uses-permission android:name="android.permission.INTERNET"/>
+          <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+* 次のセクションを (`<application>` タグと `</application>` タグの間に) 追加します。
+  
+          <service
+            android:name="com.microsoft.azure.engagement.service.EngagementService"
+            android:exported="false"
+            android:label="<Your application name>Service"
+            android:process=":Engagement"/>
+* `<Your application name>` を自分のアプリケーションの名前に変更します。
 
-			<uses-permission android:name="android.permission.INTERNET"/>
-			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
--   次のセクションを (`<application>` タグと `</application>` タグの間に) 追加します。
-
-			<service
-			  android:name="com.microsoft.azure.engagement.service.EngagementService"
-			  android:exported="false"
-			  android:label="<Your application name>Service"
-			  android:process=":Engagement"/>
-
--   `<Your application name>` を自分のアプリケーションの名前に変更します。
-
-> [AZURE.TIP] `android:label` 属性を使って、エンド ユーザーの電話の "実行中のサービス" 画面に表示される Engagement サービスの名前を選択することができます。この属性には `"<Your application name>Service"` を設定することをお勧めします (例: `"AcmeFunGameService"`)。
+> [!TIP]
+> `android:label` 属性を使って、エンド ユーザーの電話の "実行中のサービス" 画面に表示される Engagement サービスの名前を選択することができます。この属性には `"<Your application name>Service"` を設定することをお勧めします (例: `"AcmeFunGameService"`)。
+> 
+> 
 
 `android:process` 属性を指定すると、Engagement サービスが独自のプロセスで実行されることが保証されます (Engagement をアプリケーションと同じプロセス内で実行すると、メイン/UI スレッドの反応が遅くなる可能性があります)。
 
-> [AZURE.NOTE] `Application.onCreate()` に配置したすべてのコードとその他のアプリケーション コールバックは、Engagement サービスを含むすべてのアプリケーションのプロセスで実行されます。望ましくない副作用が発生する可能性があります (Engagement のプロセス内の不要なメモリとスレッドの割り当て、重複するブロードキャストの受信側またはサービスなど)。
+> [!NOTE]
+> `Application.onCreate()` に配置したすべてのコードとその他のアプリケーション コールバックは、Engagement サービスを含むすべてのアプリケーションのプロセスで実行されます。望ましくない副作用が発生する可能性があります (Engagement のプロセス内の不要なメモリとスレッドの割り当て、重複するブロードキャストの受信側またはサービスなど)。
+> 
+> 
 
 `Application.onCreate()` をオーバーライドする場合は、次のコード スニペットを `Application.onCreate()` 関数の先頭に追加することをお勧めします。
 
-			 public void onCreate()
-			 {
-			   if (EngagementAgentUtils.isInDedicatedEngagementProcess(this))
-			     return;
+             public void onCreate()
+             {
+               if (EngagementAgentUtils.isInDedicatedEngagementProcess(this))
+                 return;
 
-			   ... Your code...
-			 }
+               ... Your code...
+             }
 
 同じことを `Application.onTerminate()`、`Application.onLowMemory()`、`Application.onConfigurationChanged(...)` に対しても行うことができます。
 
 `EngagementApplication` を `Application` の代わりに拡張することもできます。コールバック `Application.onCreate()` は、プロセス チェックを実行し、現在のプロセスが Engagement サービスをホストするプロセスでない場合のみ `Application.onApplicationProcessCreate()` を呼び出します。
 
-##基本的なレポート
-
+## 基本的なレポート
 ### 推奨される方法: `Activity` クラスをオーバーロードします
-
 ユーザー、セッション、アクティビティ、クラッシュ、および技術に関する統計をコンピューティングするために Engagement が必要とするすべてのログ レポートをアクティブ化するには、すべての `*Activity` サブ クラスが対応する `Engagement*Activity` クラスから継承されるようにする必要があります (例: レガシー アクティビティが `ListActivity` を拡張している場合は、`EngagementListActivity` も拡張します)。
 
 **エンゲージメントを使用しない場合:**
 
-			package com.company.myapp;
+            package com.company.myapp;
 
-			import android.app.Activity;
-			import android.os.Bundle;
+            import android.app.Activity;
+            import android.os.Bundle;
 
-			public class MyApp extends Activity
-			{
-			  @Override
-			  public void onCreate(Bundle savedInstanceState)
-			  {
-			    super.onCreate(savedInstanceState);
-			    setContentView(R.layout.main);
-			  }
-			}
+            public class MyApp extends Activity
+            {
+              @Override
+              public void onCreate(Bundle savedInstanceState)
+              {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.main);
+              }
+            }
 
 **エンゲージメントを使用する場合:**
 
-			package com.company.myapp;
+            package com.company.myapp;
 
-			import com.microsoft.azure.engagement.activity.EngagementActivity;
-			import android.os.Bundle;
+            import com.microsoft.azure.engagement.activity.EngagementActivity;
+            import android.os.Bundle;
 
-			public class MyApp extends EngagementActivity
-			{
-			  @Override
-			  public void onCreate(Bundle savedInstanceState)
-			  {
-			    super.onCreate(savedInstanceState);
-			    setContentView(R.layout.main);
-			  }
-			}
+            public class MyApp extends EngagementActivity
+            {
+              @Override
+              public void onCreate(Bundle savedInstanceState)
+              {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.main);
+              }
+            }
 
-> [AZURE.IMPORTANT] `EngagementListActivity` または `EngagementExpandableListActivity` を使う場合は、`requestWindowFeature(...);` に対するすべての呼び出しが `super.onCreate(...);` に対する呼び出しの前に行われることを確認します。それ以外の場合、クラッシュが発生します。
+> [!IMPORTANT]
+> `EngagementListActivity` または `EngagementExpandableListActivity` を使う場合は、`requestWindowFeature(...);` に対するすべての呼び出しが `super.onCreate(...);` に対する呼び出しの前に行われることを確認します。それ以外の場合、クラッシュが発生します。
+> 
+> 
 
 これらのクラスは `src` フォルダーで見つけることができ、プロジェクトにコピーできます。クラスは **JavaDoc** にも用意されています。
 
 ### 別の方法: `startActivity()` と `endActivity()` を手動で呼び出す
-
 `Activity` クラスをオーバーロードできない、またはそうしたくない場合は、代わりに `EngagementAgent` のメソッドを直接呼び出すことによって、アクティビティの開始と終了を実行できます。
 
-> [AZURE.IMPORTANT] Android SDK は、アプリケーションが閉じられる場合でも `endActivity()` メソッドを呼び出すことはありません (Android では、アプリケーションは実際には閉じられることはありません)。このため、*すべて*のアクティビティの `onResume` コールバック内で `startActivity()` メソッドを呼び出し、*すべて*のアクティビティの `onPause()` コールバック内で `endActivity()` メソッドを呼び出すことを*強く*お勧めします。これは、セッションがリークしないことを保証する唯一の方法です。セッションがリークした場合、(セッションが保留中である限り、サービスが接続されたままになるため)、Engagement サービスが Engagement バックエンドから切断されることはありません。
+> [!IMPORTANT]
+> Android SDK は、アプリケーションが閉じられる場合でも `endActivity()` メソッドを呼び出すことはありません (Android では、アプリケーションは実際には閉じられることはありません)。このため、*すべて*のアクティビティの `onResume` コールバック内で `startActivity()` メソッドを呼び出し、*すべて*のアクティビティの `onPause()` コールバック内で `endActivity()` メソッドを呼び出すことを*強く*お勧めします。これは、セッションがリークしないことを保証する唯一の方法です。セッションがリークした場合、(セッションが保留中である限り、サービスが接続されたままになるため)、Engagement サービスが Engagement バックエンドから切断されることはありません。
+> 
+> 
 
 たとえば次のようになります。
 
-			public class MyActivity extends Some3rdPartyActivity
-			{
-			  @Override
-			  protected void onResume()
-			  {
-			    super.onResume();
-			    String activityNameOnEngagement = EngagementAgentUtils.buildEngagementActivityName(getClass()); // Uses short class name and removes "Activity" at the end.
-			    EngagementAgent.getInstance(this).startActivity(this, activityNameOnEngagement, null);
-			  }
+            public class MyActivity extends Some3rdPartyActivity
+            {
+              @Override
+              protected void onResume()
+              {
+                super.onResume();
+                String activityNameOnEngagement = EngagementAgentUtils.buildEngagementActivityName(getClass()); // Uses short class name and removes "Activity" at the end.
+                EngagementAgent.getInstance(this).startActivity(this, activityNameOnEngagement, null);
+              }
 
-			  @Override
-			  protected void onPause()
-			  {
-			    super.onPause();
-			    EngagementAgent.getInstance(this).endActivity();
-			  }
-			}
+              @Override
+              protected void onPause()
+              {
+                super.onPause();
+                EngagementAgent.getInstance(this).endActivity();
+              }
+            }
 
 この例は、`EngagementActivity` クラスとそのバリアントによく似ています。ソース コードは `src` フォルダーに提供されています。
 
-##テスト
-
+## テスト
 エミュレーターまたはデバイスでモバイル アプリを実行し、このアプリによって [監視] タブにセッションが登録されることを確認して、統合を検証してください。
 
 この後のセクションはオプションです。
 
-##場所レポート
-
+## 場所レポート
 場所を報告する場合は、数行の構成行を (`<application>` タグと `</application>` タグの間に) 追加する必要があります。
 
 ### 遅延エリアの場所レポート
-
 大まかなエリアの位置報告では、デバイスに関連付けられた国、リージョン、地域をレポートできます。このタイプの場所レポートでは、セル ID または WIFI に基づいたネットワークの場所のみを使用します。デバイス エリアがセッションごとに最大 1 回レポートされます。GPS を使用しないため、このタイプの場所レポートでは、まったくとは言わないまでも、電力消費量にほとんど影響がありません。
 
 報告されたエリアを基に、ユーザー、セッション、イベント、エラーに関する地理的な統計をコンピューティングします。また、リーチ キャンペーンの条件としても使用されます。
@@ -183,12 +192,11 @@ Android SDK を[こちら](https://aka.ms/vq9mfn)からダウンロードしま�
 
 さらに、次のアクセス権限が不足している場合は追加する必要があります。
 
-			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 あるいは、アプリケーションで ``ACCESS_FINE_LOCATION`` を使用している場合、引き続きそれを利用できます。
 
 ### リアル タイム場所レポート
-
 リアル タイム場所レポートでは、デバイスに関連付けられた緯度と経度をレポートできます。既定では、このタイプの場所レポートでは (セル ID または WIFI に基づいた) ネットワークの場所のみが使用されます。レポートは、アプリケーションを前景で実行した場合 (セッション中) にのみアクティブになります。
 
 リアル タイム場所レポートは、統計のコンピューティングに使用することは*できません*。その唯一の目的は、リーチ キャンペーンでリアルタイム ジオフェンシング <Reach-Audience-geofencing> 基準の利用を可能にすることです。
@@ -202,12 +210,11 @@ Android SDK を[こちら](https://aka.ms/vq9mfn)からダウンロードしま�
 
 さらに、次のアクセス権限が不足している場合は追加する必要があります。
 
-			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 あるいは、アプリケーションで ``ACCESS_FINE_LOCATION`` を使用している場合、引き続きそれを利用できます。
 
 #### GPS ベースのレポート
-
 既定では、リアル タイム場所レポートでは、ネットワーク ベースの場所のみを使用します。GPS ベースの場所 (正確性が格段に優れています) を使用できるようにするには、構成オブジェクトを使用します。
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -218,10 +225,9 @@ Android SDK を[こちら](https://aka.ms/vq9mfn)からダウンロードしま�
 
 さらに、次のアクセス権限が不足している場合は追加する必要があります。
 
-			<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
 #### 背景レポート
-
 既定では、リアル タイム場所レポートは、アプリケーションを前景で実行した場合 (セッション中) にのみアクティブになります。バックグラウンドでのレポートも有効にするには、構成オブジェクトを使用します。
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -230,23 +236,25 @@ Android SDK を[こちら](https://aka.ms/vq9mfn)からダウンロードしま�
     engagementConfiguration.setBackgroundRealtimeLocationReport(true);
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-> [AZURE.NOTE] アプリケーションを背景で実行した場合、GPS を有効にしても、ネットワーク ベースの場所のみがレポートされます。
+> [!NOTE]
+> アプリケーションを背景で実行した場合、GPS を有効にしても、ネットワーク ベースの場所のみがレポートされます。
+> 
+> 
 
 バックグラウンド ロケーション レポートは、ユーザーがデバイスを再起動すると停止します。以下を追加することで、起動時に自動的に再開されるように設定できます。
 
-			<receiver android:name="com.microsoft.azure.engagement.EngagementLocationBootReceiver"
-			   android:exported="false">
-			   <intent-filter>
-			      <action android:name="android.intent.action.BOOT_COMPLETED" />
-			   </intent-filter>
-			</receiver>
+            <receiver android:name="com.microsoft.azure.engagement.EngagementLocationBootReceiver"
+               android:exported="false">
+               <intent-filter>
+                  <action android:name="android.intent.action.BOOT_COMPLETED" />
+               </intent-filter>
+            </receiver>
 
 さらに、次のアクセス権限が不足している場合は追加する必要があります。
 
-			<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
 ### Android M アクセス許可
-
 Android M より、一部のアクセス許可が実行時に管理され、ユーザーの承認を必要とします。
 
 Android API レベル 23 が対象の場合、新しいアプリのインストールでは既定で実行時のアクセス許可がオフになります。それ以外の場合、既定でオンになります。
@@ -255,9 +263,9 @@ Android API レベル 23 が対象の場合、新しいアプリのインスト�
 
 Mobile Engagement の場合、次のアクセス許可で実行時に承認が必要になります。
 
-- `ACCESS_COARSE_LOCATION`
-- `ACCESS_FINE_LOCATION`
-- `WRITE_EXTERNAL_STORAGE` (この場合、Android API レベル 23 を対象とするときのみ)
+* `ACCESS_COARSE_LOCATION`
+* `ACCESS_FINE_LOCATION`
+* `WRITE_EXTERNAL_STORAGE` (この場合、Android API レベル 23 を対象とするときのみ)
 
 外部ストレージはリーチの大きい画像機能でのみ使用されます。このアクセス許可をユーザーに求めることが混乱を招くようであれば、Mobile Engagement のためにのみ使用した場合、このアクセス許可を削除できます。ただし、大きい画像機能を無効にする必要があります。
 
@@ -302,47 +310,39 @@ Mobile Engagement の場合、次のアクセス許可で実行時に承認が�
         getEngagementAgent().refreshPermissions();
     }
 
-##詳細な報告
-
+## 詳細な報告
 オプションとして、アプリケーション固有のイベント、エラー、ジョブをレポートする必要がある場合は、`EngagementAgent` クラスのメソッドを通じて Engagement API を使用します。このクラスのオブジェクトは、`EngagementAgent.getInstance()` 静的メソッドを呼び出すことで取得できます。
 
 Engagement API では、Engagement の高度な機能をすべて利用できます。詳細は「Engagement API を Android で使用する方法」にあります(`EngagementAgent` クラスの技術文書にもあります)。
 
-##高度な構成 (AndroidManifest.xml 内)
-
+## 高度な構成 (AndroidManifest.xml 内)
 ### ウェイク ロック
-
 WIFI を使っているとき、または画面がオフのときにに統計がリアルタイムで送信されることを保証する場合は、次のオプションのアクセス権限を追加します。
 
-			<uses-permission android:name="android.permission.WAKE_LOCK"/>
+            <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
 ### クラッシュ レポート
-
 クラッシュ レポートを無効にする場合は、以下を (`<application>` タグと `</application>` タグの間) に追加します。
 
-			<meta-data android:name="engagement:reportCrash" android:value="false"/>
+            <meta-data android:name="engagement:reportCrash" android:value="false"/>
 
 ### バーストのしきい値
-
 既定では、エンゲージメント サービスはログをリアルタイムで報告します。アプリケーションがログを送信する回数が非常に多い場合は、ログをバッファーに格納して、一定時間ごとにまとめて報告することをお勧めします (これは "バースト モード" と呼ばれます) 。これを行うには、以下を (`<application>` タグと `</application>` タグの間に) 追加します。
 
-			<meta-data android:name="engagement:burstThreshold" android:value="{interval between too bursts (in milliseconds)}"/>
+            <meta-data android:name="engagement:burstThreshold" android:value="{interval between too bursts (in milliseconds)}"/>
 
 バースト モードではわずかにバッテリーの寿命が延びますが、エンゲージメントの監視に影響を与えます。すべてのセッションとジョブの実行時間は、バーストのしきい値に丸められます (つまり、バーストのしきい値よりも短いセッションとジョブは、認識されない場合があります)。バーストのしきい値は、30000 (30 秒) よりも長くしないことをお勧めします。
 
 ### セッションのタイムアウト
-
 既定では、セッションは最後のアクティビティが終了した後、10 秒経過した時点で終了します (アクティビティの終了は、通常は、[ホーム] または [戻る] キーを押す、電話をアイドル状態に設定する、または他のアプリケーションに移動することで発生します)。これは、ユーザーがアプリケーションを終了した後、非常に短時間で戻ってくるたびにセッションが分割されることを避けるためです (このユーザーの行動は、画像の選択や通知の確認などを行うときに発生する可能性があります)。このパラメーターを変更することができます。これを行うには、以下を (`<application>` タグと `</application>` タグの間に) 追加します。
 
-			<meta-data android:name="engagement:sessionTimeout" android:value="{session timeout (in milliseconds)}"/>
+            <meta-data android:name="engagement:sessionTimeout" android:value="{session timeout (in milliseconds)}"/>
 
-##ログ レポートの無効化
-
+## ログ レポートの無効化
 ### メソッド呼び出しを使用した場合
-
 Engagement でログの送信を停止したい場合は、以下を呼び出します。
 
-			EngagementAgent.getInstance(context).setEnabled(false);
+            EngagementAgent.getInstance(context).setEnabled(false);
 
 この呼び出しは永続的であり、共有設定ファイルを使います。
 
@@ -351,35 +351,34 @@ Engagement でログの送信を停止したい場合は、以下を呼び出し
 ログ レポートは、同じ関数を `true` でもう一度呼び出すことによって有効にすることができます。
 
 ### 独自の `PreferenceActivity` での統合
-
 上記の関数を呼び出す代わりに、その設定を既存の `PreferenceActivity` の中に直接統合することもできます。
 
 `AndroidManifest.xml` ファイル内の設定ファイルを (目的のモードで) `application meta-data` と共に使うように Engagement を構成できます。
 
--   `engagement:agent:settings:name` キーを使って、共有設定ファイルの名前を定義します。
--   `engagement:agent:settings:mode` キーを使って、共有設定ファイルのモードを定義します。`PreferenceActivity` と同じモードを使う必要があります。モードは数値として渡す必要があります。コード内で定数フラグの組み合わせを使っている場合は、合計値を確認します。
+* `engagement:agent:settings:name` キーを使って、共有設定ファイルの名前を定義します。
+* `engagement:agent:settings:mode` キーを使って、共有設定ファイルのモードを定義します。`PreferenceActivity` と同じモードを使う必要があります。モードは数値として渡す必要があります。コード内で定数フラグの組み合わせを使っている場合は、合計値を確認します。
 
 Engagement では、この設定を管理するために設定ファイル内で常に `engagement:key` ブール キーを使います。
 
 次の `AndroidManifest.xml` の例は、既定値を示しています。
 
-			<application>
-			    [...]
-			    <meta-data
-			      android:name="engagement:agent:settings:name"
-			      android:value="engagement.agent" />
-			    <meta-data
-			      android:name="engagement:agent:settings:mode"
-			      android:value="0" />
+            <application>
+                [...]
+                <meta-data
+                  android:name="engagement:agent:settings:name"
+                  android:value="engagement.agent" />
+                <meta-data
+                  android:name="engagement:agent:settings:mode"
+                  android:value="0" />
 
 次のような `CheckBoxPreference` を設定レイアウトに追加できます。
 
-			<CheckBoxPreference
-			  android:key="engagement:enabled"
-			  android:defaultValue="true"
-			  android:title="Use Engagement"
-			  android:summaryOn="Engagement is enabled."
-			  android:summaryOff="Engagement is disabled." />
+            <CheckBoxPreference
+              android:key="engagement:enabled"
+              android:defaultValue="true"
+              android:title="Use Engagement"
+              android:summaryOn="Engagement is enabled."
+              android:summaryOff="Engagement is disabled." />
 
 <!-- URLs. -->
 [Device API]: http://go.microsoft.com/?linkid=9876094

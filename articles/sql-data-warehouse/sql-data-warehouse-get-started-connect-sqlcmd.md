@@ -1,43 +1,43 @@
-<properties
-   pageTitle="Azure SQL Data Warehouse に対するクエリ (sqlcmd) | Microsoft Azure"
-   description="sqlcmd コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に対してクエリを実行します。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="sonyam"
-   manager="barbkess"
-   editor=""/>
+---
+title: Azure SQL Data Warehouse に対するクエリ (sqlcmd) | Microsoft Docs
+description: sqlcmd コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に対してクエリを実行します。
+services: sql-data-warehouse
+documentationcenter: NA
+author: sonyam
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="09/06/2016"
-   ms.author="barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 09/06/2016
+ms.author: barbkess;sonyama
 
+---
 # Azure SQL Data Warehouse に対するクエリ (sqlcmd)
+> [!div class="op_single_selector"]
+> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+> * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+> * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+> 
+> 
 
-> [AZURE.SELECTOR]
-- [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-- [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
-- [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
-
-このチュートリアルでは、[sqlcmd][] コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に対してクエリを実行します。
+このチュートリアルでは、[sqlcmd][sqlcmd] コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に対してクエリを実行します。
 
 ## 1\.接続
+[sqlcmd][sqlcmd] の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて SQL Data Warehouse データベースの接続文字列を入力します。接続文字列では、次のパラメーターが必要になります。
 
-[sqlcmd][] の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて SQL Data Warehouse データベースの接続文字列を入力します。接続文字列では、次のパラメーターが必要になります。
-
-+ **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します
-+ **データベース (-d):** データベース名。
-+ **引用符で囲まれた ID の有効化 (-I):** SQL Data Warehouse インスタンスに接続するには、引用符で囲まれた ID を有効にする必要があります。
+* **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します
+* **データベース (-d):** データベース名。
+* **引用符で囲まれた ID の有効化 (-I):** SQL Data Warehouse インスタンスに接続するには、引用符で囲まれた ID を有効にする必要があります。
 
 SQL Server 認証を使用するには、ユーザー名とパスワードのパラメーターを追加する必要があります。
 
-+ **ユーザー (-U):** サーバーのユーザー。`<`User`>` の形式で指定します
-+ **パスワード (-P):** ユーザーに関連付けられているパスワード。
+* **ユーザー (-U):** サーバーのユーザー。`<`User`>` の形式で指定します
+* **パスワード (-P):** ユーザーに関連付けられているパスワード。
 
 たとえば、接続文字列は次のようになります。
 
@@ -47,7 +47,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 
 Azure Active Directory 統合認証を使用するには、Azure Active Directory パラメーターを追加する必要があります。
 
-+ **Azure Active Directory Authentication (-G):** Azure Active Directory を認証に使用します。
+* **Azure Active Directory Authentication (-G):** Azure Active Directory を認証に使用します。
 
 たとえば、接続文字列は次のようになります。
 
@@ -55,10 +55,12 @@ Azure Active Directory 統合認証を使用するには、Azure Active Director
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 ```
 
-> [AZURE.NOTE] Active Directory を使用して認証を行うには、[Azure Active Directory 認証を有効にする](sql-data-warehouse-authentication.md)必要があります。
+> [!NOTE]
+> Active Directory を使用して認証を行うには、[Azure Active Directory 認証を有効にする](sql-data-warehouse-authentication.md)必要があります。
+> 
+> 
 
 ## 手順 2.クエリ
-
 接続後、インスタンスに対してサポートされているすべての Transact-SQL ステートメントを発行できます。この例では、クエリは対話モードで送信されます。
 
 ```sql
@@ -79,7 +81,6 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## 次のステップ
-
 sqlcmd で使用可能なオプションの詳細については、[sqlcmd に関するドキュメント][sqlcmd]を参照してください。
 
 <!--Image references-->

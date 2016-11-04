@@ -3,7 +3,6 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 テンプレートに含まれるそれぞれのパラメーターについて説明します。
 
 ### gatewayName
-
 ゲートウェイの名前。API アプリは、このゲートウェイに登録されます。
 
     "gatewayName": {
@@ -11,15 +10,13 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
     }
 
 ### apiAppName
-
 作成する API アプリの名前。名前は、8 文字以上 50 文字以下で指定する必要があります。
-    
+
     "apiAppName": {
       "type": "string"
     }
 
 ### apiAppSecret
-
 API アプリのシークレット。この値は、base64 でエンコードされた文字列である必要があります。これは、64 文字のランダムな文字列で、整数と文字の小文字のみで構成される必要があります。
 
     "apiAppSecret": {
@@ -27,7 +24,6 @@ API アプリのシークレット。この値は、base64 でエンコードさ
     }
 
 ### location
-
 新しい API アプリの場所。PowerShell コマンドや、`Get-AzureLocation`Azure CLI コマンド`azure location list`を実行して、有効な場所を取得できます。
 
     "location": {

@@ -1,50 +1,45 @@
-<properties 
-	pageTitle="Stream Analytics の操作ログとサービス ログを使用したデバッグ | Microsoft Azure" 
-	description="Stream Analytics 操作ログの使用方法" 
-	keywords="サービス ログ"
-	services="stream-analytics" 
-	documentationCenter="" 
-	authors="jeffstokes72" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+---
+title: Stream Analytics の操作ログとサービス ログを使用したデバッグ | Microsoft Docs
+description: Stream Analytics 操作ログの使用方法
+keywords: サービス ログ
+services: stream-analytics
+documentationcenter: ''
+author: jeffstokes72
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-	ms.service="stream-analytics" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.workload="data-services" 
-	ms.date="09/26/2016" 
-	ms.author="jeffstok"/>
+ms.service: stream-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: data-services
+ms.date: 09/26/2016
+ms.author: jeffstok
 
+---
 # サービスと操作ログを使用した Stream Analytics ジョブのデバッグ
-
 すべての Azure サービスでは、管理操作に関連する詳細を記録するために操作ログ メッセージがユーザーに提供されます。Azure Stream Analytics では、ジョブの状態、ジョブの進行状況、エラー メッセージを表示して入力から、処理、出力までのジョブの進行を追跡するなど、この情報をデバッグ目的に使用できます。
 
 ## Azure 管理ポータルでの操作ログの検出
-
 操作ログには 2 つの方法でアクセスできます。
 
-- Stream Analytics ジョブのダッシュボード
-- Azure クラシック ポータルの管理サービス
+* Stream Analytics ジョブのダッシュボード
+* Azure クラシック ポータルの管理サービス
 
 ## Stream Analytics ジョブのダッシュボード
-
 Stream Analytics ジョブの対応するログへのリンクが、ジョブの [ダッシュボード] タブに表示されます。そのリンクをクリックすると、その特定のジョブの最新のログが表示されるようにフィルターが設定されます。
 
   ![管理サービス ログの選択](./media/stream-analytics-operation-logs/01-stream-analytics-operation-logs.png)
 
 ## 管理サービス
-
 Azure クラシック ポータルで Stream Analytics および他のサービスの操作ログに手動で移動するには、次の手順に従います。
 
-1.	[Azure クラシック ポータル](https://manage.windowsazure.com)で **[管理サービス]** をクリックします。
-2.	**[種類]** で **[Stream Analytics]** を選択し、**[サービス名]** でジョブの名前を選択します。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[管理サービス]** をクリックします。
+2. **[種類]** で **[Stream Analytics]** を選択し、**[サービス名]** でジョブの名前を選択します。
+   
+   ![Stream Analytics の選択](./media/stream-analytics-operation-logs/02-stream-analytics-operation-logs.png)
 
-  ![Stream Analytics の選択](./media/stream-analytics-operation-logs/02-stream-analytics-operation-logs.png)
-
-## Azure Portal での監査ログの検出 ##
-
+## Azure Portal での監査ログの検出
 Azure Portal で Stream Analytics ジョブの操作ログを見つけるには、**[参照]** をクリックし、**[監査ログ]** を選択します。
 
   ![Azure portal Select Stream Analytics](./media/stream-analytics-operation-logs/06-stream-analytics-operation-logs.png)
@@ -54,7 +49,6 @@ Azure Portal で Stream Analytics ジョブの操作ログを見つけるには�
   ![Azure portal Select Stream Analytics](./media/stream-analytics-operation-logs/07-stream-analytics-operation-logs.png)
 
 ## ログ詳細の取得
-
 時間範囲と状態でフィルター処理して、ジョブのログを表示できます。
 
 Microsoft Azure 管理ポータルで、選択したイベントについての詳細を表示するには、ウィンドウの下部にある **[詳細]** ボタンをクリックします。
@@ -70,7 +64,6 @@ Azure Portal で、ログ エントリをクリックするとその中に詳細
   ![Azure portal Select Details](./media/stream-analytics-operation-logs/09-stream-analytics-operation-logs.png)
 
 ## 失敗したジョブのデバッグ
-
 Microsoft Azure 管理ポータルで [検索] アイコンをクリックし、「failed」と入力します。エラーが発生したすべてのログの結果が表示されます。
 
   ![失敗したジョブのデバッグ](./media/stream-analytics-operation-logs/04-stream-analytics-operation-logs.png)
@@ -89,11 +82,10 @@ Azure Portal で、メッセージのレベルでフィルタリングして **[
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
-
-- [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-- [Azure Stream Analytics の使用](stream-analytics-get-started.md)
-- [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-- [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-- [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics の概要](stream-analytics-introduction.md)
+* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!---HONumber=AcomDC_0928_2016-->

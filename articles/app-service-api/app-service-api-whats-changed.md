@@ -1,23 +1,22 @@
-<properties
-	pageTitle="App Service API Apps - 変更内容 | Microsoft Azure"
-	description="Azure App Service の API Apps の新機能について説明します。"
-	services="app-service\api"
-	documentationCenter=".net"
-	authors="mohitsriv"
-	manager="wpickett"
-	editor="tdykstra"/>
+---
+title: App Service API Apps - 変更内容 | Microsoft Docs
+description: Azure App Service の API Apps の新機能について説明します。
+services: app-service\api
+documentationcenter: .net
+author: mohitsriv
+manager: wpickett
+editor: tdykstra
 
-<tags
-	ms.service="app-service-api"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/29/2016"
-	ms.author="rachelap"/>
+ms.service: app-service-api
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/29/2016
+ms.author: rachelap
 
+---
 # App Service API Apps - 変更内容
-
 2015 年 11 月の Connect() イベントで、Azure App Service に対する複数の機能強化の内容が[発表](https://azure.microsoft.com/blog/azure-app-service-updates-november-2015/)されました。この機能強化では、Mobile および Web Apps との適合性の向上、コンセプト カウントの抑制、デプロイおよび実行時のパフォーマンスの向上を実現するために基礎となる変更が API Apps に加えられました。2015 年 11 月 30 日以降、Microsoft Azure 管理ポータルまたは最新のツールを使用して作成する新しい API アプリでは、これらの変更が反映されます。この記事では、これらの変更内容について説明するほか、既存のアプリを再デプロイして、強化された機能を利用する方法を説明します。
 
 ## 機能の変更
@@ -32,12 +31,12 @@ API Apps、Mobile Services/Apps、および Web Apps の既存の設定不要の
 
 API シナリオの場合は、関連の新機能が複数あります。
 
-- クライアント コードでセッション トークンの AAD トークンを交換することなしに、**Azure Active Directory を直接使用するためのサポート**: クライアントはベアラー トークンの仕様に従って Authorization ヘッダーに AAD トークンを含めるだけで構いません。これはまた、クライアントまたはサーバー側で App Service 固有の SDK が必要ないことを意味します。
-- **サービス間または "内部" アクセス**: デーモン プロセスまたは、インターフェイスのない API へのアクセスを必要とする他の何らかのクライアントを使用している場合は、AAD サービス プリンシパルを使用してトークンを要求し、それをアプリケーションでの認証のために App Service に渡すことができます。
-- **承認を遅延**: 多くのアプリケーションには、アプリケーションの部分ごとにさまざまなアクセス制限があります。おそらく、公開したい API もあればサインインを求める API もあるでしょう。元の認証/承認の機能は、オール オア ナッシングで、すべてのサイトでログインを必要としています。このオプションはまだ存在しますが、別の方法として、App Service でユーザーを認証した後、アプリケーション コードで、アクセスを許可するかどうか決定を下すことができます。
- 
+* クライアント コードでセッション トークンの AAD トークンを交換することなしに、**Azure Active Directory を直接使用するためのサポート**: クライアントはベアラー トークンの仕様に従って Authorization ヘッダーに AAD トークンを含めるだけで構いません。これはまた、クライアントまたはサーバー側で App Service 固有の SDK が必要ないことを意味します。
+* **サービス間または "内部" アクセス**: デーモン プロセスまたは、インターフェイスのない API へのアクセスを必要とする他の何らかのクライアントを使用している場合は、AAD サービス プリンシパルを使用してトークンを要求し、それをアプリケーションでの認証のために App Service に渡すことができます。
+* **承認を遅延**: 多くのアプリケーションには、アプリケーションの部分ごとにさまざまなアクセス制限があります。おそらく、公開したい API もあればサインインを求める API もあるでしょう。元の認証/承認の機能は、オール オア ナッシングで、すべてのサイトでログインを必要としています。このオプションはまだ存在しますが、別の方法として、App Service でユーザーを認証した後、アプリケーション コードで、アクセスを許可するかどうか決定を下すことができます。
+
 新しい認証機能の詳細については、「[Azure App Service での API Apps の認証と承認](app-service-api-authentication.md)」を参照してください。既存の API アプリを以前の API アプリ モデルから新しいモデルに移行する方法については、この記事の「[既存の API アプリを移行する](#migrating-existing-api-apps)」を参照してください。
- 
+
 ### CORS
 CORS の構成には従来、**MS\_CrossDomainOrigins** のコンマ区切りのアプリ設定が使われていましたが、現在では、そのためのブレードが Azure 管理ポータルに存在します。あるいは、リソース マネージャーのツール (Azure PowerShell、CLI、[リソース エクスプローラー](https://resources.azure.com/)など) を使用して CORS を構成することもできます。**&lt;site name&gt;/web** リソースの **Microsoft.Web/sites/config** リソース タイプに対して **cors** プロパティを設定します。次に例を示します。
 
@@ -67,7 +66,6 @@ Web、Mobile、および API Apps にわたって API 定義ブレードを使�
 リソース グループ内のすべてのリソースを参照すると、前のプレビュー機能を備えた既存の API アプリ (または Logic Apps で作成した Marketplace API アプリ) が引き続き Logic Apps デザイナーに表示されます。
 
 ## Visual Studio
-
 ほとんどの Web Apps ツールは、同じ基になる **Microsoft.Web/sites** リソース タイプを共有するため、新しい API アプリと連携して動作します。ただし、Azure Visual Studio ツールは 2.8.1 以降のバージョンにアップグレードする必要があります。API に固有の機能が多数公開されているからです。[Azure のダウンロード ページ](https://azure.microsoft.com/downloads/)から SDK をダウンロードします。
 
 App Service の種類の合理化により、発行も **[発行] の [Microsoft Azure App Service]** の下で統合されています。
@@ -86,17 +84,17 @@ SDK 2.8.1 の詳細については、発表に関する[ブログ投稿](https:/
 
 1. 空の API アプリを作成します。そのためには、ポータルで [新規]、[API アプリ] の順に操作するか、Visual Studio の発行を使用するか、または Resource Manager ツールを使用します。リソース マネージャーのツールまたはテンプレートを使用する場合は、**Microsoft.Web/sites** リソース タイプで **kind** 値を **api** に設定し、管理ポータル内のクイックスタートおよび設定を API シナリオ向けにします。
 2. App Service でサポートされている任意のデプロイ メカニズムを使用して、接続し、プロジェクトを空の API アプリにデプロイします。詳細については、「[Azure App Service のデプロイに関するドキュメント](../app-service-web/web-sites-deploy.md)」を参照してください。
-  
+
 ### 認証
 App Service 認証サービスでは、以前の API Apps モデルで使用されていたのと同じ機能をサポートします。セッション トークンを使用し、SDK を必要とする場合は、次のクライアント SDK とサーバー SDK を使用します。
 
-- クライアント: [Azure モバイル クライアント SDK](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)
-- サーバー: [Microsoft Azure Mobile App .NET 認証拡張機能](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/)
+* クライアント: [Azure モバイル クライアント SDK](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)
+* サーバー: [Microsoft Azure Mobile App .NET 認証拡張機能](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/)
 
 App Service のアルファ版 SDK については、次の SDK が廃止になりました。
 
-- クライアント: [Microsoft Azure AppService SDK](http://www.nuget.org/packages/Microsoft.Azure.AppService)
-- サーバー: [Microsoft.Azure.AppService.ApiApps.Service](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service)
+* クライアント: [Microsoft Azure AppService SDK](http://www.nuget.org/packages/Microsoft.Azure.AppService)
+* サーバー: [Microsoft.Azure.AppService.ApiApps.Service](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service)
 
 ただし、特に、Azure Active Directory では、AAD トークンを直接使用する場合、App Service 固有の SDK は必要ありません。
 
@@ -112,14 +110,12 @@ App Service のアルファ版 SDK については、次の SDK が廃止にな�
 4. デプロイ時に、すべての API アプリ (およびクライアント) のアプリ設定を他の API アプリのエンドポイントに設定します。これはテンプレートのデプロイで実行可能であり、API Apps で URL を制御できるようになります。
 
 ## API Apps と Logic Apps の併用
-
 新しい API Apps モデルは、[Logic Apps スキーマ バージョン 2015-08-01](../app-service-logic/app-service-logic-schema-2015-08-01.md) とうまく連動します。
 
 ## 次のステップ
-
 詳細については、[API Apps のドキュメント セクション](https://azure.microsoft.com/documentation/services/app-service/api/)の記事を参照してください。これらの記事は更新され、API Apps の新しいモデルを反映しています。さらに、移行に関する詳細またはガイダンスについては、次のフォーラムを参照してください。
 
-- [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureAPIApps)
-- [スタック オーバーフロー](http://stackoverflow.com/questions/tagged/azure-api-apps)
+* [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureAPIApps)
+* [スタック オーバーフロー](http://stackoverflow.com/questions/tagged/azure-api-apps)
 
 <!---HONumber=AcomDC_0713_2016-->

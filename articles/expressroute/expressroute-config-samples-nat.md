@@ -1,56 +1,55 @@
-<properties
-   pageTitle="ExpressRoute の顧客のルーター構成のサンプル |Microsoft Azure"
-   description="このページでは、Cisco と Juniper のルーターのルーター構成のサンプルを示します。"
-   documentationCenter="na"
-   services="expressroute"
-   authors="cherylmc"
-   manager="carmonm"
-   editor="" />
-<tags
-   ms.service="expressroute"
-   ms.devlang="na"
-   ms.topic="article" 
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="10/10/2016"
-   ms.author="cherylmc"/>
+---
+title: ExpressRoute の顧客のルーター構成のサンプル | Microsoft Docs
+description: このページでは、Cisco と Juniper のルーターのルーター構成のサンプルを示します。
+documentationcenter: na
+services: expressroute
+author: cherylmc
+manager: carmonm
+editor: ''
 
+ms.service: expressroute
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 10/10/2016
+ms.author: cherylmc
 
+---
 # <a name="router-configuration-samples-to-setup-and-manage-nat"></a>NAT をセットアップして管理するためのルーター構成のサンプル
-
 このページでは、Cisco ASA と Juniper SRX シリーズ ルーターの NAT 構成のサンプルを示します。 これらはガイダンスとしてのみ使用することを目的としたサンプルであり、現状のまま使用することはできません。 ベンダーと協力して、ネットワークに適した構成を考えてください。 
 
->[AZURE.IMPORTANT] このページのサンプルは、ガイダンスとしてのみ使用することを目的としています。 ベンダーの販売/技術チームおよび自社のネットワーク チームと協力して、ニーズに対応する適切な構成を考える必要があります。 Microsoft では、このページに示す構成に関連する問題には対応できません。 サポートの問題については、デバイス ベンダーに問い合わせる必要があります。
+> [!IMPORTANT]
+> このページのサンプルは、ガイダンスとしてのみ使用することを目的としています。 ベンダーの販売/技術チームおよび自社のネットワーク チームと協力して、ニーズに対応する適切な構成を考える必要があります。 Microsoft では、このページに示す構成に関連する問題には対応できません。 サポートの問題については、デバイス ベンダーに問い合わせる必要があります。
+> 
+> 
 
 次のルーター構成のサンプルは、Azure パブリック ピアリングと Microsoft ピアリングに適用されます。 Azure プライベート ピアリングの NAT は構成しないでください。 詳細については、「[ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」および「[ExpressRoute NAT の要件](expressroute-nat.md)」を参照してください。
 
 **注:** インターネットと ExpressRoute への接続には個別の NAT IP プールを使用する必要があります。 インターネットと ExpressRoute で同じ NAT IP プールを使用すると、非対称ルーティングになり、接続が失われます。
 
 ## <a name="cisco-asa-firewalls"></a>Cisco ASA ファイアウォール
-
 ### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>顧客ネットワークから Microsoft へのトラフィックのための PAT 構成
-
     object network MSFT-PAT
       range <SNAT-START-IP> <SNAT-END-IP>
-    
-    
+
+
     object-group network MSFT-Range
       network-object <IP> <Subnet_Mask>
-    
+
     object-group network on-prem-range-1
       network-object <IP> <Subnet-Mask>
-    
+
     object-group network on-prem-range-2
       network-object <IP> <Subnet-Mask>
-    
+
     object-group network on-prem
       network-object object on-prem-range-1
       network-object object on-prem-range-2
-    
+
     nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
 
 ### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>Microsoft から顧客ネットワークへのトラフィックのための PAT 構成
-
 #### <a name="interfaces-and-direction:"></a>インターフェイスと方向:
     Source Interface (where the traffic enters the ASA): inside
     Destination Interface (where the traffic exits the ASA): outside
@@ -70,7 +69,7 @@ NAT プール:
 
     object-group network MSFT-Network-1
         network-object <MSFT-IP> <Subnet-Mask>
-    
+
     object-group network MSFT-PAT-Networks
         network-object object MSFT-Network-1
 
@@ -79,10 +78,8 @@ NAT コマンド:
     nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
 
 
-## <a name="juniper-srx-series-routers"></a>Juniper SRX シリーズ ルーター 
-
+## <a name="juniper-srx-series-routers"></a>Juniper SRX シリーズ ルーター
 ### <a name="1.-create-redundant-ethernet-interfaces-for-the-cluster"></a>1.クラスターの冗長イーサネット インターフェイスの作成
-
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -115,17 +112,14 @@ NAT コマンド:
 
 
 ### <a name="2.-create-two-security-zones"></a>2.2 つのセキュリティ ゾーンの作成
-
- - 内部ネットワークには信頼ゾーンを作成し、エッジ ルーターに接続する外部ネットワークには非信頼ゾーンを作成します。
- - 適切なインターフェイスをゾーンに割り当てます。
- - インターフェイス上のサービスを許可します。
-
+* 内部ネットワークには信頼ゾーンを作成し、エッジ ルーターに接続する外部ネットワークには非信頼ゾーンを作成します。
+* 適切なインターフェイスをゾーンに割り当てます。
+* インターフェイス上のサービスを許可します。
 
     security {      zones {          security-zone Trust {              host-inbound-traffic {                  system-services {                      ping;                  }                  protocols {                      bgp;                  }              }              interfaces {                  reth0.100;              }          }          security-zone Untrust {              host-inbound-traffic {                  system-services {                      ping;                  }                  protocols {                      bgp;                  }              }              interfaces {                  reth1.100;              }          }      }  }
 
 
 ### <a name="3.-create-security-policies-between-zones"></a>3.ゾーン間のセキュリティ ポリシーの作成
- 
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -157,71 +151,68 @@ NAT コマンド:
 
 
 ### <a name="4.-configure-nat-policies"></a>4.NAT ポリシーの構成
- - 2 つの NAT プールを作成します。 1 つは Microsoft に送信される NAT トラフィックに使用され、もう 1 つは Microsoft から顧客への NAT トラフィックに使用されます。
- - それぞれのトラフィックの NAT 規則の作成
-
-        security {
-            nat {
-                source {
-                    pool SNAT-To-ExpressRoute {
-                        routing-instance {
-                            External-ExpressRoute;
-                        }
-                        address {
-                            <NAT-IP-address/Subnet-mask>;
-                        }
-                    }
-                    pool SNAT-From-ExpressRoute {
-                        routing-instance {
-                            Internal;
-                        }
-                        address {
-                            <NAT-IP-address/Subnet-mask>;
-                        }
-                    }
-                    rule-set Outbound_NAT {
-                        from routing-instance Internal;
-                        to routing-instance External-ExpressRoute;
-                        rule SNAT-Out {
-                            match {
-                                source-address 0.0.0.0/0;
-                            }
-                            then {
-                                source-nat {
-                                    pool {
-                                        SNAT-To-ExpressRoute;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    rule-set Inbound-NAT {
-                        from routing-instance External-ExpressRoute;
-                        to routing-instance Internal;
-                        rule SNAT-In {
-                            match {
-                                source-address 0.0.0.0/0;
-                            }
-                            then {
-                                source-nat {
-                                    pool {
-                                        SNAT-From-ExpressRoute;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
+* 2 つの NAT プールを作成します。 1 つは Microsoft に送信される NAT トラフィックに使用され、もう 1 つは Microsoft から顧客への NAT トラフィックに使用されます。
+* それぞれのトラフィックの NAT 規則の作成
+  
+       security {
+           nat {
+               source {
+                   pool SNAT-To-ExpressRoute {
+                       routing-instance {
+                           External-ExpressRoute;
+                       }
+                       address {
+                           <NAT-IP-address/Subnet-mask>;
+                       }
+                   }
+                   pool SNAT-From-ExpressRoute {
+                       routing-instance {
+                           Internal;
+                       }
+                       address {
+                           <NAT-IP-address/Subnet-mask>;
+                       }
+                   }
+                   rule-set Outbound_NAT {
+                       from routing-instance Internal;
+                       to routing-instance External-ExpressRoute;
+                       rule SNAT-Out {
+                           match {
+                               source-address 0.0.0.0/0;
+                           }
+                           then {
+                               source-nat {
+                                   pool {
+                                       SNAT-To-ExpressRoute;
+                                   }
+                               }
+                           }
+                       }
+                   }
+                   rule-set Inbound-NAT {
+                       from routing-instance External-ExpressRoute;
+                       to routing-instance Internal;
+                       rule SNAT-In {
+                           match {
+                               source-address 0.0.0.0/0;
+                           }
+                           then {
+                               source-nat {
+                                   pool {
+                                       SNAT-From-ExpressRoute;
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       }
 
 ### <a name="5.-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5.各方向でプレフィックスを選択してアドバタイズする BGP の構成
-
 [ルーティング構成のサンプル ](expressroute-config-samples-routing.md) に関するページのサンプルを参照してください。
 
 ### <a name="6.-create-policies"></a>6.ポリシーの作成
-
     routing-options {
                   autonomous-system <Customer-ASN>;
     }
@@ -317,10 +308,7 @@ NAT コマンド:
     }
 
 ## <a name="next-steps"></a>次のステップ
-
 詳細については、 [ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

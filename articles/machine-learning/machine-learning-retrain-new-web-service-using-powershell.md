@@ -1,28 +1,25 @@
-<properties
-    pageTitle="Machine Learning Management PowerShell コマンドレットを使用した新しい Web サービスの再トレーニング | Microsoft Azure"
-    description="Azure Machine Learning で Machine Learning Management PowerShell コマンドレットを使用してプログラムによるモデルの再トレーニングをしてWeb サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。"
-    services="machine-learning"
-    documentationCenter=""
-    authors="vDonGlover"
-    manager="raymondlaghaeian"
-    editor=""/>
+---
+title: Machine Learning Management PowerShell コマンドレットを使用した新しい Web サービスの再トレーニング | Microsoft Docs
+description: Azure Machine Learning で Machine Learning Management PowerShell コマンドレットを使用してプログラムによるモデルの再トレーニングをしてWeb サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
+services: machine-learning
+documentationcenter: ''
+author: vDonGlover
+manager: raymondlaghaeian
+editor: ''
 
-<tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/27/2016"
-    ms.author="v-donglo"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/27/2016
+ms.author: v-donglo
 
-
+---
 # <a name="retrain-a-new-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>Machine Learning Management PowerShell コマンドレットを使用した新しい Web サービスの再トレーニング
-
 新しい Web サービスを再トレーニングする場合は、新しいトレーニング済みのモデルを参照するよう予測 Web サービス定義を更新します。  
 
 ## <a name="prerequisites"></a>前提条件
-
 「プログラムによる Machine Learning のモデルの再トレーニング」に示されているようにトレーニング実験と予測実験が設定されているものとします。 トレーニング実験および予測実験の作成方法については、「[Retrain Machine Learning models programmatically (プログラムによる Machine Learning のモデルの再トレーニング)](machine-learning-retrain-models-programmatically.md)」をご覧ください。
 
 このプロセスでは、Azure Machine Learning コマンドレットがインストールされていることが必要です。 Machine Learning コマンドレットのインストール方法については、MSDN の [Azure Machine Learning コマンドレット](https://msdn.microsoft.com/library/azure/mt767952.aspx) リファレンスをご覧ください。
@@ -34,19 +31,17 @@
 
 これを実行する手順は次のとおりです。
 
-1.  Azure Resource Manager アカウントにサインインします。
-2.  Web サービス定義を取得します。
-3.  Web サービス定義を JSON としてエクスポートします。
-4.  JSON で ilearner BLOB への参照を更新します。
-5.  JSON を Web サービス定義にインポートします。
-6.  Web サービスを新しい Web サービス定義で更新します。
+1. Azure Resource Manager アカウントにサインインします。
+2. Web サービス定義を取得します。
+3. Web サービス定義を JSON としてエクスポートします。
+4. JSON で ilearner BLOB への参照を更新します。
+5. JSON を Web サービス定義にインポートします。
+6. Web サービスを新しい Web サービス定義で更新します。
 
 ## <a name="sign-in-to-your-azure-resource-manager-account"></a>Azure Resource Manager アカウントへのサインイン
-
 最初に [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを使用して、PowerShell 環境から Azure アカウントにサインインする必要があります。
 
 ## <a name="get-the-web-service-definition"></a>Web サービス定義を取得します。
-
 [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを呼び出して Web サービスを取得します。 Web サービス定義は Web サービスのトレーニング済みのモデルの内部的な表現であり、直接変更できるものではありません。 (トレーニング実験ではなく) 予測実験の Web サービス定義を取得してください。
 
     $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
@@ -66,13 +61,11 @@
 
 
 ## <a name="export-the-web-service-definition-as-json"></a>Web サービス定義を JSON としてエクスポートします。
-
 新しいトレーニング済みモデルを使用するようにトレーニング済みモデルの定義を変更するには、最初にこれを [Export-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767935.aspx) コマンドレットを使用して、JSON フォーマット ファイルにインポートする必要があります。
 
     Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
 ## <a name="update-the-reference-to-the-ilearner-blob-in-the-json."></a>JSON で ilearner BLOB への参照を更新します。
-
 資産で、[<トレーニング済みモデル>] を見つけ、ilearner BLOB の URI で *locationInfo* の *uri* の値を更新します。 URI は BES 再トレーニング呼び出しの出力からの *BaseLocation* と *RelativeLocation* を組み合わせて作成します。
 
      "asset3": {
@@ -89,26 +82,21 @@
       },
 
 ## <a name="import-the-json-into-a-web-service-definition"></a>JSON を Web サービス定義にインポートします。
-
 [Import-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) コマンドレットを使用して、変更された JSON ファイルを予測実験の更新に使用できる Web サービス定義に変換します。
 
     $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 
 ## <a name="update-the-web-service-with-new-web-service-definition"></a>Web サービスを新しい Web サービス定義で更新します。
-
 最後に、 [Update-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) コマンドレットを使用して、予測実験を更新します。
 
     Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'  -ServiceUpdates $wsd
 
 ## <a name="summary"></a>概要
-
 Machine Learning PowerShell 管理コマンドレットを使用して、予測 Web サービスのトレーニング済みモデルを更新すると、次のようなシナリオを有効にできます。
 
 * 新しいデータでの定期的なモデルの再トレーニング。
 * 自身のデータでモデルを再トレーニングすることを目標としている顧客へのモデルの配布。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

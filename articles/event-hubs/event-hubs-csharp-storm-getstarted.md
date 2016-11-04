@@ -1,28 +1,25 @@
-<properties
-    pageTitle="C# および Apache Storm での Event Hubs の使用 | Microsoft Azure"
-    description="このチュートリアルでは、C# でイベントを送信し、Apache Storm クラスターでそれを受信するするための Azure Event Hubs の使用方法について説明します。"
-    services="event-hubs"
-    documentationCenter=""
-    authors="jtaubensee"
-    manager="timlt"
-    editor=""/>
+---
+title: C# および Apache Storm での Event Hubs の使用 | Microsoft Docs
+description: このチュートリアルでは、C# でイベントを送信し、Apache Storm クラスターでそれを受信するするための Azure Event Hubs の使用方法について説明します。
+services: event-hubs
+documentationcenter: ''
+author: jtaubensee
+manager: timlt
+editor: ''
 
-<tags
-    ms.service="event-hubs"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article" 
-    ms.date="09/06/2016"
-    ms.author="jotaub;sethm"/>
+ms.service: event-hubs
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/06/2016
+ms.author: jotaub;sethm
 
-
+---
 # <a name="get-started-with-event-hubs"></a>Event Hubs の使用
-
-[AZURE.INCLUDE [service-bus-selector-get-started](../../includes/service-bus-selector-get-started.md)]
+[!INCLUDE [service-bus-selector-get-started](../../includes/service-bus-selector-get-started.md)]
 
 ## <a name="introduction"></a>はじめに
-
 Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。 Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して転送と格納できます。
 
 詳細については、「 [Event Hubs の概要]」を参照してください。
@@ -31,35 +28,29 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 このチュートリアルを完了するには、以下が必要になります。
 
-+ [Microsoft Visual Studio](http://visualstudio.com)
+* [Microsoft Visual Studio](http://visualstudio.com)
+* [Maven](http://maven.apache.org/)を実行するように構成された Java 開発環境。 このチュートリアルでは、 [Eclipse](https://www.eclipse.org/)
+* アクティブな Azure アカウント。 <br/>アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」をご覧ください。
 
-+ [Maven](http://maven.apache.org/)を実行するように構成された Java 開発環境。 このチュートリアルでは、 [Eclipse](https://www.eclipse.org/)
+[!INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
-+ アクティブな Azure アカウント。 <br/>アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」をご覧ください。
+[!INCLUDE [service-bus-event-hubs-get-started-send-csharp](../../includes/service-bus-event-hubs-get-started-send-csharp.md)]
 
-[AZURE.INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
-
-[AZURE.INCLUDE [service-bus-event-hubs-get-started-send-csharp](../../includes/service-bus-event-hubs-get-started-send-csharp.md)]
-
-
-[AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-storm](../../includes/service-bus-event-hubs-get-started-receive-storm.md)]
+[!INCLUDE [service-bus-event-hubs-get-started-receive-storm](../../includes/service-bus-event-hubs-get-started-receive-storm.md)]
 
 ## <a name="run-the-applications"></a>アプリケーションの実行
-
 これで、アプリケーションを実行する準備が整いました。
 
-1.  Eclipse で **LogTopology** クラスを実行し、すべてのパーティションの受信側が起動するまで待機します。
-
-2.  **Sender** プロジェクトを実行し、コンソール ウィンドウで **Enter** キーを押して、受信側ウィンドウに表示されるイベントを確認します。
-
-    ![][22]
+1. Eclipse で **LogTopology** クラスを実行し、すべてのパーティションの受信側が起動するまで待機します。
+2. **Sender** プロジェクトを実行し、コンソール ウィンドウで **Enter** キーを押して、受信側ウィンドウに表示されるイベントを確認します。
+   
+   ![][22]
 
 ## <a name="next-steps"></a>次のステップ
-
 Event Hub を作成し、データを送受信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
-- [Event Hub を使用する完全なサンプル アプリケーション][]
-- [Event Hubs でイベント処理の拡張][] サンプル
+* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]
+* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張] サンプル
 
 <!-- Images. -->
 [22]: ./media/event-hubs-csharp-storm-getstarted/receive-storm1.png
@@ -69,7 +60,7 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [Event Hubs の概要]: event-hubs-overview.md
 [Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
- 
+
 
 
 <!--HONumber=Oct16_HO2-->

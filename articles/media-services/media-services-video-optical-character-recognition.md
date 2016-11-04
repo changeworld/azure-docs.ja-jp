@@ -1,26 +1,23 @@
-<properties
-    pageTitle="Azure Media Analytics を使用して、ビデオ ファイル内のテキスト コンテンツをデジタル テキストに変換する | Microsoft Azure"
-    description="Azure Media Analytics OCR (光学式文字認識) では、ビデオ ファイル内のテキスト コンテンツを編集かつ検索可能なデジタル テキストに変換できます。  これにより、メディアのビデオ信号から有意なメタデータを自動的に抽出することができます。"
-    services="media-services"
-    documentationCenter=""
-    authors="juliako"
-    manager="erikre"
-    editor=""/>
+---
+title: Azure Media Analytics を使用して、ビデオ ファイル内のテキスト コンテンツをデジタル テキストに変換する | Microsoft Docs
+description: Azure Media Analytics OCR (光学式文字認識) では、ビデオ ファイル内のテキスト コンテンツを編集かつ検索可能なデジタル テキストに変換できます。  これにより、メディアのビデオ信号から有意なメタデータを自動的に抽出することができます。
+services: media-services
+documentationcenter: ''
+author: juliako
+manager: erikre
+editor: ''
 
-<tags
-    ms.service="media-services"
-    ms.workload="media"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="09/26/2016"   
-    ms.author="juliako"/>
- 
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: juliako
 
-#<a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Media Analytics を使用して、ビデオ ファイル内のテキスト コンテンツをデジタル テキストに変換する 
-
-##<a name="overview"></a>Overview
-
+---
+# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Media Analytics を使用して、ビデオ ファイル内のテキスト コンテンツをデジタル テキストに変換する
+## <a name="overview"></a>Overview
 ビデオ ファイルからテキスト コンテンツを抽出し、編集かつ検索可能なデジタル テキストを生成する必要がある場合は、Azure Media Analytics OCR (光学式文字認識) を使用する必要があります。 この Azure メディア プロセッサは、ビデオ ファイル内のテキスト コンテンツを検出し、テキスト ファイルを生成して使用できるようにします。 OCR を使用すると、メディアのビデオ信号から有意なメタデータを自動的に抽出できます。
 
 検索エンジンと組み合わせれば、テキストを使って簡単にメディアにインデックスを作成できるため、コンテンツがさらに探しやすくなります。 これは、ビデオ記録やスライドショー プレゼンテーションの画面キャプチなど、テキスト情報の多いビデオでは非常に便利です。Azure OCR メディア プロセッサは、デジタル テキスト用に最適化されています。
@@ -29,25 +26,21 @@
 
 このトピックでは、  **Azure Media OCR** の詳細と、Media Services SDK for .NET での使用方法について説明します。 追加情報と例については、 [こちらのブログ](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/)をご覧ください。
 
-##<a name="ocr-input-files"></a>OCR 入力ファイル
-
+## <a name="ocr-input-files"></a>OCR 入力ファイル
 ビデオ ファイルです。 現在サポートされている形式は MP4、MOV、WMV です。
 
-##<a name="task-configuration"></a>タスクの構成 
-
+## <a name="task-configuration"></a>タスクの構成
 タスクの構成 (プリセット) です。 **Azure Media OCR**でタスクを作成するときは、JSON または XML を使用して、構成プリセットを指定する必要があります。 
 
-###<a name="attribute-descriptions"></a>属性の説明
+### <a name="attribute-descriptions"></a>属性の説明
+| 属性名 | Description |
+| --- | --- |
+| 言語 |(省略可能) 検索対象テキストの言語です。 次のいずれかを指定します: AutoDetect (既定)、Arabic、ChineseSimplified、ChineseTraditional、Czech、Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。 |
+| TextOrientation |(省略可能) 検索対象テキストの向きです。  "Left" は、すべての文字の上部が左を指していることを意味します。  既定のテキスト (書籍など) は "Up"、つまり上を指しています。  次のいずれかを指定します: AutoDetect (既定)、Up、Right、Down、Left。 |
+| TimeInterval |(省略可能) サンプリング レートです。  既定値は、毎 0.5 秒です。<br/>JSON 形式 – HH:mm:ss.SSS (既定値 00:00:00.500)<br/>XML 形式 – W3C XSD プリミティブ期間 (既定値 PT0.5) |
+| DetectRegions |(省略可能)テキストを検出するビデオ フレーム内の領域を指定する DetectRegion オブジェクトの配列。<br/>DetectRegion オブジェクトは、次の 4 つの整数値で構成されます。<br/>Left: 左余白からのピクセル<br/>Top: 上余白からのピクセル<br/>Width: 領域の幅 (ピクセル)<br/>Height: 領域の高さ (ピクセル) |
 
-属性名|Description
----|---
-言語|(省略可能) 検索対象テキストの言語です。 次のいずれかを指定します: AutoDetect (既定)、Arabic、ChineseSimplified、ChineseTraditional、Czech、Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。
-TextOrientation|(省略可能) 検索対象テキストの向きです。  "Left" は、すべての文字の上部が左を指していることを意味します。  既定のテキスト (書籍など) は "Up"、つまり上を指しています。  次のいずれかを指定します: AutoDetect (既定)、Up、Right、Down、Left。
-TimeInterval|(省略可能) サンプリング レートです。  既定値は、毎 0.5 秒です。<br/>JSON 形式 – HH:mm:ss.SSS (既定値 00:00:00.500)<br/>XML 形式 – W3C XSD プリミティブ期間 (既定値 PT0.5)
-DetectRegions|(省略可能)テキストを検出するビデオ フレーム内の領域を指定する DetectRegion オブジェクトの配列。<br/>DetectRegion オブジェクトは、次の 4 つの整数値で構成されます。<br/>Left: 左余白からのピクセル<br/>Top: 上余白からのピクセル<br/>Width: 領域の幅 (ピクセル)<br/>Height: 領域の高さ (ピクセル)
-
-####<a name="json-preset-example"></a>JSON プリセットの例
-        
+#### <a name="json-preset-example"></a>JSON プリセットの例
     {
         'Version':'1.0', 
         'Options': 
@@ -63,8 +56,7 @@ DetectRegions|(省略可能)テキストを検出するビデオ フレーム内
         }
     }
 
-####<a name="xml-preset-example"></a>XML プリセットの例
-
+#### <a name="xml-preset-example"></a>XML プリセットの例
     <?xml version=""1.0"" encoding=""utf-16""?>
     <VideoOcrPreset xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" Version=""1.0"" xmlns=""http://www.windowsazure.com/media/encoding/Preset/2014/03"">
       <Options>
@@ -82,36 +74,33 @@ DetectRegions|(省略可能)テキストを検出するビデオ フレーム内
       </Options>
     </VideoOcrPreset>
 
-##<a name="ocr-output-files"></a>OCR 出力ファイル
-
+## <a name="ocr-output-files"></a>OCR 出力ファイル
 OCR メディア プロセッサの出力は、JSON ファイルです。
 
-###<a name="elements-of-the-output-json-file"></a>出力 JSON ファイルの要素
-
+### <a name="elements-of-the-output-json-file"></a>出力 JSON ファイルの要素
 ビデオ OCR 出力は、ビデオで検出された文字のデータを、時間に基づいてセグメント化して提供します。  分析中、言語、向きなどの属性を使用することで、興味のある単語に正確に焦点を合わせることができます。 
 
 出力には、次の属性が含まれています。
 
-要素|Description
----|---
-タイムスケール|ビデオの 1 秒あたりの "ティック数"
-Offset|タイムスタンプの時間オフセット。 Video API のバージョン 1.0 では、これは常に 0 になります。
-Framerate|ビデオの 1 秒あたりのフレーム数
-width|ビデオの幅 (ピクセル単位)
-height|ビデオの高さ (ピクセル単位)
-Fragments|ビデオの時間ベースのチャンクの配列。メタデータはこのチャンク配列単位で分割されます
-start|"ティック" 内のフラグメントの開始時刻
-duration|"ティック" 内のフラグメントの長さ
-interval|指定したフラグメント内の各イベントの間隔
-events|リージョンを含む配列
-region|検出された単語または語句を表すオブジェクト
-言語|リージョン内で検出されたテキストの言語
-orientation|リージョン内で検出されたテキストの向き
-lines|リージョン内で検出されたラインの配列
-text|実際のテキスト
+| 要素 | Description |
+| --- | --- |
+| タイムスケール |ビデオの 1 秒あたりの "ティック数" |
+| Offset |タイムスタンプの時間オフセット。 Video API のバージョン 1.0 では、これは常に 0 になります。 |
+| Framerate |ビデオの 1 秒あたりのフレーム数 |
+| width |ビデオの幅 (ピクセル単位) |
+| height |ビデオの高さ (ピクセル単位) |
+| Fragments |ビデオの時間ベースのチャンクの配列。メタデータはこのチャンク配列単位で分割されます |
+| start |"ティック" 内のフラグメントの開始時刻 |
+| duration |"ティック" 内のフラグメントの長さ |
+| interval |指定したフラグメント内の各イベントの間隔 |
+| events |リージョンを含む配列 |
+| region |検出された単語または語句を表すオブジェクト |
+| 言語 |リージョン内で検出されたテキストの言語 |
+| orientation |リージョン内で検出されたテキストの向き |
+| lines |リージョン内で検出されたラインの配列 |
+| text |実際のテキスト |
 
-###<a name="json-output-example"></a>JSON 出力の例
-
+### <a name="json-output-example"></a>JSON 出力の例
 次の出力例には、一般的なビデオ情報とビデオ フラグメントがいくつか含まれています。 ビデオ フラグメントごとに、OCR MP によって検出されたすべてのリージョンと、言語およびそのテキストの向きが示されています。 また、リージョンには、そのリージョン内のすべての単語ラインと、ラインのテキスト、ラインの位置、およびこのラインのすべての単語情報 (単語のコンテンツ、位置、信頼度) も含まれます。 例を次に示します。この例には、コメントをいくつかインラインで挿入してあります。
 
     {
@@ -168,13 +157,12 @@ text|実際のテキスト
     }
 
 ## <a name="sample-code"></a>コード サンプル
-
 このプログラムでは次の方法を示します。
 
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
-1. OCR 構成/プリセット ファイルを使用して、ジョブを作成します。
-1. 出力 JSON ファイルをダウンロードします。 
-         
+2. OCR 構成/プリセット ファイルを使用して、ジョブを作成します。
+3. 出力 JSON ファイルをダウンロードします。 
+   
         using System;
         using System.Configuration;
         using System.IO;
@@ -182,7 +170,7 @@ text|実際のテキスト
         using Microsoft.WindowsAzure.MediaServices.Client;
         using System.Threading;
         using System.Threading.Tasks;
-        
+   
         namespace OCR
         {
             class Program
@@ -192,70 +180,70 @@ text|実際のテキスト
                     ConfigurationManager.AppSettings["MediaServicesAccountName"];
                 private static readonly string _mediaServicesAccountKey =
                     ConfigurationManager.AppSettings["MediaServicesAccountKey"];
-        
+   
                 // Field for service context.
                 private static CloudMediaContext _context = null;
                 private static MediaServicesCredentials _cachedCredentials = null;
-        
+   
                 static void Main(string[] args)
                 {
-        
+   
                     // Create and cache the Media Services credentials in a static class variable.
                     _cachedCredentials = new MediaServicesCredentials(
                                     _mediaServicesAccountName,
                                     _mediaServicesAccountKey);
                     // Used the cached credentials to create CloudMediaContext.
                     _context = new CloudMediaContext(_cachedCredentials);
-        
+   
                     // Run the OCR job.
                     var asset = RunOCRJob(@"C:\supportFiles\OCR\presentation.mp4",
                                                 @"C:\supportFiles\OCR\config.json");
-        
+   
                     // Download the job output asset.
                     DownloadAsset(asset, @"C:\supportFiles\OCR\Output");
                 }
-        
+   
                 static IAsset RunOCRJob(string inputMediaFilePath, string configurationFile)
                 {
                     // Create an asset and upload the input media file to storage.
                     IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
                         "My OCR Input Asset",
                         AssetCreationOptions.None);
-        
+   
                     // Declare a new job.
                     IJob job = _context.Jobs.Create("My OCR Job");
-        
+   
                     // Get a reference to Azure Media OCR.
                     string MediaProcessorName = "Azure Media OCR";
-        
+   
                     var processor = GetLatestMediaProcessorByName(MediaProcessorName);
-        
+   
                     // Read configuration from the specified file.
                     string configuration = File.ReadAllText(configurationFile);
-        
+   
                     // Create a task with the encoding details, using a string preset.
                     ITask task = job.Tasks.AddNew("My OCR Task",
                         processor,
                         configuration,
                         TaskOptions.None);
-        
+   
                     // Specify the input asset.
                     task.InputAssets.Add(asset);
-        
+   
                     // Add an output asset to contain the results of the job.
                     task.OutputAssets.AddNew("My OCR Output Asset", AssetCreationOptions.None);
-        
+   
                     // Use the following event handler to check job progress.  
                     job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
-        
+   
                     // Launch the job.
                     job.Submit();
-        
+   
                     // Check job execution and wait for job to finish.
                     Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
-        
+   
                     progressJobTask.Wait();
-        
+   
                     // If job state is Error, the event handling
                     // method for job progress should log errors.  Here we check
                     // for error state and exit if needed.
@@ -267,20 +255,20 @@ text|実際のテキスト
                                                         error.Message));
                         return null;
                     }
-        
+   
                     return job.OutputMediaAssets[0];
                 }
-        
+   
                 static IAsset CreateAssetAndUploadSingleFile(string filePath, string assetName, AssetCreationOptions options)
                 {
                     IAsset asset = _context.Assets.Create(assetName, options);
-        
+   
                     var assetFile = asset.AssetFiles.Create(Path.GetFileName(filePath));
                     assetFile.Upload(filePath);
-        
+   
                     return asset;
                 }
-        
+   
                 static void DownloadAsset(IAsset asset, string outputDirectory)
                 {
                     foreach (IAssetFile file in asset.AssetFiles)
@@ -288,7 +276,7 @@ text|実際のテキスト
                         file.Download(Path.Combine(outputDirectory, file.Name));
                     }
                 }
-        
+   
                 static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
                 {
                     var processor = _context.MediaProcessors
@@ -296,20 +284,20 @@ text|実際のテキスト
                         .ToList()
                         .OrderBy(p => new Version(p.Version))
                         .LastOrDefault();
-        
+   
                     if (processor == null)
                         throw new ArgumentException(string.Format("Unknown media processor",
                                                                    mediaProcessorName));
-        
+   
                     return processor;
                 }
-        
+   
                 static private void StateChanged(object sender, JobStateChangedEventArgs e)
                 {
                     Console.WriteLine("Job state changed event:");
                     Console.WriteLine("  Previous state: " + e.PreviousState);
                     Console.WriteLine("  Current state: " + e.CurrentState);
-        
+   
                     switch (e.CurrentState)
                     {
                         case JobState.Finished:
@@ -334,24 +322,18 @@ text|実際のテキスト
                             break;
                     }
                 }
-        
+   
             }
         }
 
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="media-services-learning-paths"></a>Media Services のラーニング パス
+## <a name="provide-feedback"></a>フィードバックの提供
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
-##<a name="provide-feedback"></a>フィードバックの提供
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-##<a name="related-links"></a>関連リンク
-
+## <a name="related-links"></a>関連リンク
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

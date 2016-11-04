@@ -1,43 +1,43 @@
-<properties
-	pageTitle="DocumentDB のグローバル データベース レプリケーション | Microsoft Azure"
-	description="Azure ポータルを使用して DocumentDB アカウントのグローバル レプリケーションを管理する方法について説明します。"
-	services="documentdb"
-    keywords="グローバル データベース, レプリケーション"
-	documentationCenter=""
-	authors="mimig1"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: DocumentDB のグローバル データベース レプリケーション | Microsoft Docs
+description: Azure ポータルを使用して DocumentDB アカウントのグローバル レプリケーションを管理する方法について説明します。
+services: documentdb
+keywords: グローバル データベース, レプリケーション
+documentationcenter: ''
+author: mimig1
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="documentdb"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2016"
-	ms.author="mimig"/>
+ms.service: documentdb
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/26/2016
+ms.author: mimig
 
+---
 # Azure ポータルを使用して DocumentDB グローバル データベース レプリケーションを実行する方法
-
 Azure DocumentDB のグローバルなデータの可用性を確保するために、Azure ポータルを使用して、複数のリージョンのデータをレプリケートする方法について説明します。
 
 DocumentDB におけるグローバル データベース レプリケーションの動作の詳細については、「[DocumentDB を使用したデータのグローバル分散](documentdb-distribute-data-globally.md)」を参照してください。グローバル データベース レプリケーションをプログラムで実行する方法については、「[複数リージョンの DocumentDB アカウント使用した開発](documentdb-developing-with-multiple-regions.md)」を参照してください。
 
-> [AZURE.NOTE] DocumentDB データベースのグローバル配布は、広く利用可能な機能であり、新しく作成した DocumentDB アカウントで自動的に有効になります。弊社は既存のすべてのアカウントでグローバル分散が有効になるように取り組んでいます。ただし当面は、ご使用のアカウントでグローバル分散の有効化を希望される場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)いただければすぐに有効にいたします。
+> [!NOTE]
+> DocumentDB データベースのグローバル配布は、広く利用可能な機能であり、新しく作成した DocumentDB アカウントで自動的に有効になります。弊社は既存のすべてのアカウントでグローバル分散が有効になるように取り組んでいます。ただし当面は、ご使用のアカウントでグローバル分散の有効化を希望される場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)いただければすぐに有効にいたします。
+> 
+> 
 
 ## <a id="addregion"></a>グローバル データベース リージョンを追加する
-
 DocumentDB は、ほとんどの [Azure リージョン][azureregions]で利用できます。データベース アカウントの既定の一貫性レベルを選択すると、選択した既定の一貫性レベルとグローバル配信の必要性に応じて、1 つまたは複数のリージョンを関連付けることができます。
 
 1. [Azure ポータル](https://portal.azure.com/)で、ジャンプバーの **[DocumentDB アカウント]** をクリックします。
 2. **[DocumentDB アカウント]** ブレードで、変更するデータベース アカウントを選択します。
 3. アカウントのブレードで、メニューから **[リージョンの追加/削除]** をクリックします。
 4. **[リージョンの追加/削除]** ブレードで、追加または削除するリージョンを選択した後、**[OK]** をクリックします。リージョンを追加するには費用が必要になります。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)や「[DocumentDB を使用したデータのグローバル分散](documentdb-distribute-data-globally.md)」の記事を参照してください。
-
+   
     ![地図でリージョンをクリックして、リージョンを追加又は削除する][1]
 
 ### グローバル データベース リージョンの選択
-
 複数のリージョンを構成する場合、「[ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン][bcdr]」に記載されているリージョン ペアに基づいてリージョンを選択することをお勧めします。
 
 具体的には、複数のリージョンを構成する場合、ペアになっているリージョンの各列から同じ数のリージョンを選択してください (+/-1 が奇数/偶数に対応します)。たとえば、米国の 4 か所のリージョンにデプロイする場合は、左側の列から 2 か所、右側の列から 2 か所の米国リージョンを選択します。この場合、適切なリージョン セットは米国西部、米国東部、米国中北部、および米国中南部となります。
@@ -59,7 +59,6 @@ While all regions associated with your DocumentDB database account can serve rea
 -->
 
 ## <a id="next"></a>次のステップ
-
 「[DocumentDB の一貫性レベル](documentdb-consistency-levels.md)」を読んで、グローバルにレプリケートされたアカウントの整合性を管理する方法について確認します。
 
 DocumentDB におけるグローバル データベース レプリケーションの動作の詳細については、「[DocumentDB を使用したデータのグローバル分散](documentdb-distribute-data-globally.md)」を参照してください。複数のリージョンでのデータのレプリケーションをプログラムで実行する方法については、「[複数リージョンの DocumentDB アカウント使用した開発](documentdb-developing-with-multiple-regions.md)」を参照してください。

@@ -1,193 +1,185 @@
-<properties 
-	pageTitle="Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする" 
-	description="静的 TCP ポートを使用するオンプレミスのリソースと Azure App Service の Web アプリケーションの間の接続を作成します。" 
-	services="app-service" 
-	documentationCenter="" 
-	authors="cephalin" 
-	manager="wpickett" 
-	editor="mollybos"/>
+---
+title: Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする
+description: 静的 TCP ポートを使用するオンプレミスのリソースと Azure App Service の Web アプリケーションの間の接続を作成します。
+services: app-service
+documentationcenter: ''
+author: cephalin
+manager: wpickett
+editor: mollybos
 
-<tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/03/2016" 
-	ms.author="cephalin"/>
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 02/03/2016
+ms.author: cephalin
 
-#Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする
-
+---
+# Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする
 SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービスなど、静的 TCP ポートを使用するすべてのオンプレミス リソースに、Azure App Service アプリを接続できます。ここでは、App Service とオンプレミスの SQL Server データベース間のハイブリッド接続の作成方法を示します。
 
-> [AZURE.NOTE] ハイブリッド接続機能の Web Apps 部分は、[Azure ポータル](https://portal.azure.com)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
+> [!NOTE]
+> ハイブリッド接続機能の Web Apps 部分は、[Azure ポータル](https://portal.azure.com)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
 > 
 > このコンテンツは、Azure App Service の Mobile Apps にも適用されます。
+> 
+> 
 
 ## 前提条件
-- Azure サブスクリプション。無料サブスクリプションについては、「[1 か月間無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。 
- 
-	Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+* Azure サブスクリプション。無料サブスクリプションについては、「[1 か月間無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。 
+  
+    Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+* ハイブリッド接続でオンプレミスの SQL Server または SQL Server Express のデータベースを使用するには、TCP/IP が静的ポートで有効になっている必要があります。SQL Server は静的ポート 1433 を使用するため、SQL Server で既定のインスタンスを使用することをお勧めします。ハイブリッド接続で使用するための SQL Server Express のインストールと構成については、「[ハイブリッド接続を使用して Azure の Web サイトから内部設置型の SQL Server に接続する](http://go.microsoft.com/fwlink/?LinkID=397979)」をご覧ください。
+* 後でこの記事で説明するオンプレミスの Hybrid Connection Manager のエージェントをインストールするコンピューターの条件は次のとおりです。
+  
+  * ポート 5671 で Azure に接続できること
+  * オンプレミスのリソースの *hostname*:*portnumber* に到達できること 
 
-- ハイブリッド接続でオンプレミスの SQL Server または SQL Server Express のデータベースを使用するには、TCP/IP が静的ポートで有効になっている必要があります。SQL Server は静的ポート 1433 を使用するため、SQL Server で既定のインスタンスを使用することをお勧めします。ハイブリッド接続で使用するための SQL Server Express のインストールと構成については、「[ハイブリッド接続を使用して Azure の Web サイトから内部設置型の SQL Server に接続する](http://go.microsoft.com/fwlink/?LinkID=397979)」をご覧ください。
+> [!NOTE]
+> この記事の手順では、オンプレミスのハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
+> 
+> 
 
-- 後でこの記事で説明するオンプレミスの Hybrid Connection Manager のエージェントをインストールするコンピューターの条件は次のとおりです。
-
-	- ポート 5671 で Azure に接続できること
-	- オンプレミスのリソースの *hostname*:*portnumber* に到達できること 
-
-> [AZURE.NOTE] この記事の手順では、オンプレミスのハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
-
-
-## Azure ポータルで Web アプリを作成する ##
-
-> [AZURE.NOTE] このチュートリアルで使用する Web アプリやモバイル アプリ バックエンドを Azure ポータルで既に作成している場合は、この手順をスキップし、「[ハイブリッド接続および BizTalk サービスを作成する](#CreateHC)」から開始してください。
+## Azure ポータルで Web アプリを作成する
+> [!NOTE]
+> このチュートリアルで使用する Web アプリやモバイル アプリ バックエンドを Azure ポータルで既に作成している場合は、この手順をスキップし、「[ハイブリッド接続および BizTalk サービスを作成する](#CreateHC)」から開始してください。
+> 
+> 
 
 1. [Azure ポータル](https://portal.azure.com)の左上隅の **[新規]** > **[Web + モバイル]** > **[Web アプリ]** をクリックします。
-	
-	![新しい Web アプリ][NewWebsite]
-	
+   
+    ![新しい Web アプリ][NewWebsite]
 2. **[Web アプリ]** ブレードで、URL を入力し、**[作成]** をクリックします。
-	
-	![Web サイト名][WebsiteCreationBlade]
-	
+   
+    ![Web サイト名][WebsiteCreationBlade]
 3. しばらくすると、Web アプリケーションが作成され、Web アプリケーションのブレードが表示されます。ブレードは縦方向にスクロールできるダッシュボードで、サイトを管理することができます。
-	
-	![Web サイト実行][WebSiteRunningBlade]
-	
+   
+    ![Web サイト実行][WebSiteRunningBlade]
 4. サイトがライブかどうかを確認するには、**[参照]** アイコンをクリックして、既定のページを表示します。
-	
-	![[参照] をクリックして Web アプリを確認する][Browse]
-	
-	![既定の Web アプリ ページ][DefaultWebSitePage]
-	
+   
+    ![[参照] をクリックして Web アプリを確認する][Browse]
+   
+    ![既定の Web アプリ ページ][DefaultWebSitePage]
+
 次に、Web アプリケーションに対するハイブリッド接続と BizTalk サービスを作成します。
 
 <a name="CreateHC"></a>
-## ハイブリッド接続および BizTalk サービスを作成する ##
 
+## ハイブリッド接続および BizTalk サービスを作成する
 1. Web アプリ ブレードで、**[すべての設定]**、**[ネットワーク]**、**[ハイブリッド接続エンドポイントを構成する]** の順にクリックします。
-	
-	![ハイブリッド接続][CreateHCHCIcon]
-	
+   
+    ![ハイブリッド接続][CreateHCHCIcon]
 2. ハイブリッド接続ブレードで、**[追加]** をクリックします。
-	
-	<!-- ![Add a hybrid connnection][CreateHCAddHC]
-	-->
-	
+   
+    <!-- ![Add a hybrid connnection][CreateHCAddHC]
+    -->
 3. **[ハイブリッド接続の追加]** ブレードが開きます。これは最初のハイブリッド接続であるため、**[新しいハイブリッド接続]** があらかじめ選択され、**[ハイブリッド接続の作成]** ブレードが開きます。
-	
-	![ハイブリッド接続の作成][TwinCreateHCBlades]
-	
-	**[ハイブリッド接続の作成] ブレード** で、次の手順を実行します。
-	- **[名前]** に、接続の名前を入力します。
-	- **[ホスト名]** に、リソースをホストする内部設置型のコンピューターの名前を入力します。
-	- **[ポート]** には、内部設置型のリソースが使用するポート番号 (SQL Server の既定のインスタンスの場合は 1433) を入力します。
-	- **[BizTalk サービス]** をクリックします。
-
-
+   
+    ![ハイブリッド接続の作成][TwinCreateHCBlades]
+   
+    **[ハイブリッド接続の作成] ブレード** で、次の手順を実行します。
+   
+   * **[名前]** に、接続の名前を入力します。
+   * **[ホスト名]** に、リソースをホストする内部設置型のコンピューターの名前を入力します。
+   * **[ポート]** には、内部設置型のリソースが使用するポート番号 (SQL Server の既定のインスタンスの場合は 1433) を入力します。
+   * **[BizTalk サービス]** をクリックします。
 4. **[BizTalk サービスの作成]** ブレードが開きます。BizTalk サービスの名前を入力し、**[OK]** をクリックします。
-	
-	![BizTalk サービスの作成][CreateHCCreateBTS]
-	
-	**[BizTalk サービスの作成]** ブレードが閉じ、**[ハイブリッド接続の作成]** ブレードに戻ります。
-	
+   
+    ![BizTalk サービスの作成][CreateHCCreateBTS]
+   
+    **[BizTalk サービスの作成]** ブレードが閉じ、**[ハイブリッド接続の作成]** ブレードに戻ります。
 5. [ハイブリッド接続の作成] ブレードで、**[OK]** をクリックします。
-	
-	![[OK] をクリック][CreateBTScomplete]
-	
+   
+    ![[OK] をクリック][CreateBTScomplete]
 6. 処理が完了すると、ポータルの通知領域に接続の作成が完了したことが通知されます。
-	<!--- TODO
-	
-	Everything fails at this step. I can't create a BizTalk service in the dogfood portal. I switch to the classic portal
-	(full portal) and created the BizTalk service but it doesn't seem to let you connnect them - When you finish the
-	Create hybrid conn step, you get the following error
-	Failed to create hybrid connection RelecIoudHC. The 
-	resource type could not be found in the namespace 
-	'Microsoft.BizTaIkServices for api version 2014-06-01'.
-	
-	The error indicates it couldn't find the type, not the instance.
-	![Success notification][CreateHCSuccessNotification]
-	-->
+   
+    <!--- TODO
+   
+    Everything fails at this step. I can't create a BizTalk service in the dogfood portal. I switch to the classic portal
+    (full portal) and created the BizTalk service but it doesn't seem to let you connnect them - When you finish the
+    Create hybrid conn step, you get the following error
+    Failed to create hybrid connection RelecIoudHC. The 
+    resource type could not be found in the namespace 
+    'Microsoft.BizTaIkServices for api version 2014-06-01'.
+   
+    The error indicates it couldn't find the type, not the instance.
+    ![Success notification][CreateHCSuccessNotification]
+    -->
 7. Web アプリのブレードの **[ハイブリッド接続]** アイコンは、ハイブリッド接続が 1 つ作成されたことを示しています。
-	
-	![1 つのハイブリッド接続が作成された][CreateHCOneConnectionCreated]
-	
+   
+    ![1 つのハイブリッド接続が作成された][CreateHCOneConnectionCreated]
+
 これで、クラウド ハイブリッド接続のインフラストラクチャの重要な部分が完了しました。次に、対応するオンプレミスの部分を作成します。
 
 <a name="InstallHCM"></a>
-## オンプレミス ハイブリッド接続マネージャーをインストールして接続を完了する ##
 
+## オンプレミス ハイブリッド接続マネージャーをインストールして接続を完了する
 1. Web アプリのブレードで、**[すべての設定]**、**[ネットワーク]**、**[ハイブリッド接続エンドポイントを構成する]** の順にクリックします。 
-	
-	![ハイブリッド接続アイコン][HCIcon]
-	
+   
+    ![ハイブリッド接続アイコン][HCIcon]
 2. **[ハイブリッド接続]** ブレードで、最近追加されたエンドポイントの **[状態]** 列に **[未接続]** と表示されています。接続をクリックして構成します。
-	
-	![未接続][NotConnected]
-	
-	ハイブリッド接続ブレードが開きます。
-	
-	![NotConnectedBlade][NotConnectedBlade]
-	
+   
+    ![未接続][NotConnected]
+   
+    ハイブリッド接続ブレードが開きます。
+   
+    ![NotConnectedBlade][NotConnectedBlade]
 3. ブレードで、**[リスナーのセットアップ]** をクリックします。
-	
-	![[リスナーのセットアップ] をクリック][ClickListenerSetup]
-	
+   
+    ![[リスナーのセットアップ] をクリック][ClickListenerSetup]
 4. **[ハイブリッド接続のプロパティ]** ブレードが開きます。**オンプレミスの Hybrid Connection Manager** で、**[インストールするにはここをクリックします]** をクリックします。
-	
-	![ここをクリックしてインストール][ClickToInstallHCM]
-	
+   
+    ![ここをクリックしてインストール][ClickToInstallHCM]
 5. [アプリケーションの実行 - セキュリティの警告] ダイアログで、**[実行]** を選択します。
-	
-	![[実行] を選択して続行][ApplicationRunWarning]
-	
-6.	**[ユーザー アカウント制御]** ダイアログで、**[はい]** を選択します。
-	
-	![[はい] を選択][UAC]
-	
+   
+    ![[実行] を選択して続行][ApplicationRunWarning]
+6. **[ユーザー アカウント制御]** ダイアログで、**[はい]** を選択します。
+   
+   ![[はい] を選択][UAC]
 7. Hybrid Connection Manager がダウンロードされ、インストールされます。
-	
-	![インストール中][HCMInstalling]
-	
+   
+    ![インストール中][HCMInstalling]
 8. インストールが完了したら、**[閉じる]** をクリックします。
-	
-	![[閉じる] をクリックしてください][HCMInstallComplete]
-	
-	**[ハイブリッド接続]** ブレードで、**[状態]** 列に **[接続]** と表示されています。
-	
-	![接続されている状態][HCStatusConnected]
+   
+    ![[閉じる] をクリックしてください][HCMInstallComplete]
+   
+    **[ハイブリッド接続]** ブレードで、**[状態]** 列に **[接続]** と表示されています。
+   
+    ![接続されている状態][HCStatusConnected]
 
 これで、ハイブリッド接続のインフラストラクチャが完成しました。この接続を使用するハイブリッド アプリケーションを作成できます。
 
->[AZURE.NOTE]以下のセクションでは、Mobile Apps .NET バックエンド プロジェクトでハイブリッド接続を使用する方法を説明します。
+> [!NOTE]
+> 以下のセクションでは、Mobile Apps .NET バックエンド プロジェクトでハイブリッド接続を使用する方法を説明します。
+> 
+> 
 
 ## SQL Server データベースに接続する Mobile Apps .NET バックエンド プロジェクトを構成する
-
 App Service では、Mobile Apps .NET バックエンド プロジェクトは、追加の Mobile Apps SDK をインストールし初期化した ASP.NET Web アプリにすぎません。Web アプリを Mobile Apps バックエンドとして使用するには、[Mobile Apps .NET バックエンド SDK をダウンロードして初期化する](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#install-sdk)必要があります。
 
 Mobile Apps については、オンプレミスのデータベースの接続文字列を定義し、この接続を使用するようにバックエンドを変更する必要もあります。
 
 1. Visual Studio のソリューション エクスプローラーで、Mobile Apps .NET バックエンドの Web.config ファイルを開き、 **connectionStrings** セクションを探し、次のような新しい SqlClient エントリを追加します。このエントリはオンプレミスの SQL Server データベースを指しています。
-
-	    <add name="OnPremisesDBConnection"
+   
+        <add name="OnPremisesDBConnection"
          connectionString="Data Source=OnPremisesServer,1433;
          Initial Catalog=OnPremisesDB;
          User ID=HybridConnectionLogin;
          Password=<**secure_password**>;
          MultipleActiveResultSets=True"
          providerName="System.Data.SqlClient" />
-
-	文字列内の `<**secure_password**>` は、*HybridConnectionLogin* 用に作成したパスワードに置き換えます。
-
-3. Visual Studio で **[保存]** をクリックして、Web.config ファイルを保存します。
-
-	> [AZURE.NOTE]この接続設定は、ローカル コンピューターで実行されるときに使用されます。Azure で実行される場合、この設定は、ポータルで定義された接続設定によってオーバーライドされます。
-
-4. **Models** フォルダーを展開し、*Context.cs* で終わるデータ モデル ファイルを開きます。
-
-6. **DbContext** を、値 `OnPremisesDBConnection` をベース **DbContext** コンストラクターに渡すように変更します。次のスニペットに似ています。
-
+   
+    文字列内の `<**secure_password**>` は、*HybridConnectionLogin* 用に作成したパスワードに置き換えます。
+2. Visual Studio で **[保存]** をクリックして、Web.config ファイルを保存します。
+   
+   > [!NOTE]
+   > この接続設定は、ローカル コンピューターで実行されるときに使用されます。Azure で実行される場合、この設定は、ポータルで定義された接続設定によってオーバーライドされます。
+   > 
+   > 
+3. **Models** フォルダーを展開し、*Context.cs* で終わるデータ モデル ファイルを開きます。
+4. **DbContext** を、値 `OnPremisesDBConnection` をベース **DbContext** コンストラクターに渡すように変更します。次のスニペットに似ています。
+   
         public class hybridService1Context : DbContext
         {
             public hybridService1Context()
@@ -195,32 +187,28 @@ Mobile Apps については、オンプレミスのデータベースの接続�
             {
             }
         }
-
-	これで、サービスは、SQL Server データベースへの新しい接続を使用するようになります。
+   
+    これで、サービスは、SQL Server データベースへの新しい接続を使用するようになります。
 
 ## オンプレミスの接続文字列を使用するようにモバイル アプリ バックエンドを更新する
-
 次に、この新しい接続文字列用のアプリ設定を追加して、Azure から使用できるようにする必要があります。
 
 1. [Azure ポータル](https://portal.azure.com)に戻り、モバイル アプリ用の Web アプリ バックエンド コードで、**[すべての設定]**、**[アプリケーション設定]** の順にクリックします。
-
-3. **[Web アプリの設定]** ブレードで、下にスクロールして **[接続文字列]** を表示し、`OnPremisesDBConnection` という名前の `Server=OnPremisesServer,1433;Database=OnPremisesDB;User ID=HybridConnectionsLogin;Password=<**secure_password**>` などの値が指定された新しい **SQL Server** 接続文字列を追加します。
-
-	`<**secure_password**>` を、オンプレミスのデータベースのセキュリティ保護されたパスワードに置き換えます。
-
-	![オンプレミスのデータベースの接続文字列](./media/web-sites-hybrid-connection-get-started/set-sql-server-database-connection.png)
-
-2. [**保存**] をクリックして、今作成したハイブリッド接続と接続文字列を保存します。
+2. **[Web アプリの設定]** ブレードで、下にスクロールして **[接続文字列]** を表示し、`OnPremisesDBConnection` という名前の `Server=OnPremisesServer,1433;Database=OnPremisesDB;User ID=HybridConnectionsLogin;Password=<**secure_password**>` などの値が指定された新しい **SQL Server** 接続文字列を追加します。
+   
+    `<**secure_password**>` を、オンプレミスのデータベースのセキュリティ保護されたパスワードに置き換えます。
+   
+    ![オンプレミスのデータベースの接続文字列](./media/web-sites-hybrid-connection-get-started/set-sql-server-database-connection.png)
+3. [**保存**] をクリックして、今作成したハイブリッド接続と接続文字列を保存します。
 
 この時点で、サーバー プロジェクトを再発行し、既存の Mobile Apps クライアントで新しい接続をテストできます。データは、ハイブリッド接続を使用して、オンプレミスのデータベースから読み込まれ、このデータベースに書き込まれます。
 
 <a name="NextSteps"></a>
-## 次のステップ ##
 
-- ハイブリッド接続を使用する ASP.NET Web アプリケーションの作成の詳細については、「[Connect to an on-premises SQL Server from an Azure web site using Hybrid Connections (ハイブリッド接続を使用して Azure の Web サイトからオンプレミスの SQL Server に接続する)](http://go.microsoft.com/fwlink/?LinkID=397979)」を参照してください。 
+## 次のステップ
+* ハイブリッド接続を使用する ASP.NET Web アプリケーションの作成の詳細については、「[Connect to an on-premises SQL Server from an Azure web site using Hybrid Connections (ハイブリッド接続を使用して Azure の Web サイトからオンプレミスの SQL Server に接続する)](http://go.microsoft.com/fwlink/?LinkID=397979)」を参照してください。 
 
 ### その他のリソース
-
 [ハイブリッド接続の概要](http://go.microsoft.com/fwlink/p/?LinkID=397274)
 
 [Josh Twist introduces hybrid connections (Josh Twist によるハイブリッド接続の紹介) (Channel 9 のビデオ)](http://channel9.msdn.com/Shows/Azure-Friday/Josh-Twist-introduces-hybrid-connections)
@@ -260,6 +248,6 @@ Mobile Apps については、オンプレミスのデータベースの接続�
 [HCMInstalling]: ./media/web-sites-hybrid-connection-get-started/D08HCMInstalling.png
 [HCMInstallComplete]: ./media/web-sites-hybrid-connection-get-started/D09HCMInstallComplete.png
 [HCStatusConnected]: ./media/web-sites-hybrid-connection-get-started/D10HCStatusConnected.png
- 
+
 
 <!---HONumber=AcomDC_0518_2016-->

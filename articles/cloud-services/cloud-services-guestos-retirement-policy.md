@@ -1,21 +1,21 @@
-<properties 
-   pageTitle="Azure ゲスト OS のサポートと提供終了のポリシーのガイド | Microsoft Azure" 
-   description="Cloud Services で使用される Azure ゲスト OS について Microsoft がサポートする内容について説明します。" 
-   services="cloud-services" 
-   documentationCenter="na" 
-   authors="yuemlu" 
-   manager="timlt" 
-   editor=""/>
+---
+title: Azure ゲスト OS のサポートと提供終了のポリシーのガイド | Microsoft Docs
+description: Cloud Services で使用される Azure ゲスト OS について Microsoft がサポートする内容について説明します。
+services: cloud-services
+documentationcenter: na
+author: yuemlu
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="cloud-services"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="tbd" 
-   ms.date="04/19/2016"
-   ms.author="yuemlu"/>
+ms.service: cloud-services
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: tbd
+ms.date: 04/19/2016
+ms.author: yuemlu
 
+---
 # Azure ゲスト OS のサポートと提供終了のポリシー
 このページの情報は、Cloud Services の worker ロールと Web ロール (PaaS) Azure ゲスト オペレーティング システム ([ゲスト OS](cloud-services-guestos-update-matrix.md)) に関連しています。このページの情報は、Virtual Machines (IaaS) には適用されません。
 
@@ -29,17 +29,12 @@ Microsoft では、[ゲスト OS のサポート ポリシー](http://support.mi
 
 ときには 3 つ以上のファミリやリリースがサポートされる場合もあります。ゲスト OS のサポートに関する公式の情報については、[Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)を参照してください。
 
-
-## ゲスト OS ファミリまたはバージョンの提供が終了するタイミング 
-
-
+## ゲスト OS ファミリまたはバージョンの提供が終了するタイミング
 Windows Server オペレーティング システムの新しい製品バージョンがリリースされてからしばらくすると、新しいゲスト OS **ファミリ**が導入されます。新しいゲスト OS ファミリが導入されるたびに、最も古いゲスト OS ファミリが提供終了になります。
 
 新しいゲスト OS **バージョン**は、最新の MSRC 更新プログラムを組み込むようにほぼ毎月導入されます。月単位の定期的な更新により、ゲスト OS バージョンは通常、リリースから 60 日後に無効になります。この結果、各ファミリで少なくとも 2 つのバージョンのゲスト OS が使用できる状態が維持されます。
 
-### ゲスト OS ファミリの提供終了処理中のプロセス 
-
-
+### ゲスト OS ファミリの提供終了処理中のプロセス
 提供終了が公表されると、古いファミリがサービスから公式に削除される前に、12 か月間の "移行" の期間が設けられます。この移行期間は、Microsoft の判断で延長される場合があります。更新は、[Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)に投稿されます。
 
 移行期間が 6 か月目になると、段階的な提供終了のプロセスが開始されます。この期間中、以下のような処理が行われます。
@@ -50,9 +45,7 @@ Windows Server オペレーティング システムの新しい製品バージ�
 
 Microsoft は、"有効期限" と呼ばれる移行期間の最終日まで、最新の MSRC 更新プログラムが組み込まれた新しいゲスト OS バージョンを導入し続けます。最終日の時点で、まだ実行されている Cloud Services は、Azure SLA ではサポートされなくなります。Microsoft の判断により、その日以降にサービスを強制的にアップグレード、削除、または停止する場合があります。
 
-
-
-### ゲスト OS バージョンの提供終了処理中のプロセス 
+### ゲスト OS バージョンの提供終了処理中のプロセス
 ゲスト OS が自動的に更新されるように設定している場合は、ゲスト OS バージョンについて考慮する必要はありません。常に最新のゲスト OS バージョンを使用できます。
 
 ゲスト OS バージョンは毎月リリースされます。定期的なリリースの頻度により、各バージョンには固定された有効期間があります。
@@ -63,18 +56,11 @@ Microsoft は、"有効期限" と呼ばれる移行期間の最終日まで、�
 
 顧客が容易に移行できるように、これらの期間は Microsoft の判断で延長される場合があります。変更は、[Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)に反映されます。
 
-
-
-### 提供終了処理中の通知 
-
+### 提供終了処理中の通知
 * **ファミリの提供終了** <br>ブログ投稿と Azure クラシック ポータルを使用して通知されます。提供終了になったゲスト OS ファミリをまだ使用しているお客様に対しては、割り当てられたサービス管理者への直接の連絡 (メール、ポータル メッセージ、電話) による通知が行われます。すべての変更が、このページと、このページの冒頭に示されている RSS フィードに投稿されます。 
-
-
 * **バージョンの提供終了** <br>すべての変更が、このページと、このページの冒頭に示されている RSS フィードに投稿されます。リリース日、無効になる日、有効期限も含まれます。無効になったゲスト OS バージョンまたはファミリで実行中のデプロイがある場合、サービス管理者はメールを受け取ります。これらのメールのタイミングは変わる場合があります。通常は、無効になる日の少なくとも 1 か月前ですが、このタイミングは正式な SLA ではありません。
 
-
 ## よく寄せられる質問
-
 **移行の影響を軽減するにはどうすればよいですか。**
 
 最新のゲスト OS ファミリを使用して Cloud Services を設計する必要があります。
@@ -86,7 +72,7 @@ Microsoft は、"有効期限" と呼ばれる移行期間の最終日まで、�
 **Web アプリケーションで OS との緊密な統合が必要な場合はどうすればよいでしょうか。**
 
 Web アプリケーションのアーキテクチャが、基になるオペレーティング システムに深く依存する場合は、[スタートアップ タスク](cloud-services-startup-tasks.md) のような機能や、将来的に存在する可能性がある他の拡張メカニズムなど、プラットフォームでサポートされる機能を使用します。または、[Azure Virtual Machines](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS: Infrastructure as a Service) を使用することもできます。この場合、ユーザーが基になるオペレーティング システムの管理を担当します。
- 
+
 ## 次のステップ
 最新の[ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
 

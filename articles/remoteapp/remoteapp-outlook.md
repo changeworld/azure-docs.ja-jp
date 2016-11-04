@@ -1,25 +1,25 @@
-<properties
-    pageTitle="Azure RemoteApp で Outlook を使用する | Microsoft Azure" 
-    description="Azure RemoteApp で Outlook を構成し、使用する方法について説明する | Microsoft Azure"
-    services="remoteapp"
-    documentationCenter=""
-    authors="pavithir"
-    manager="mbaldwin" />
+---
+title: Azure RemoteApp で Outlook を使用する | Microsoft Docs
+description: Azure RemoteApp で Outlook を構成し、使用する方法について説明する | Microsoft Azure
+services: remoteapp
+documentationcenter: ''
+author: pavithir
+manager: mbaldwin
 
-<tags
-    ms.service="remoteapp"
-    ms.workload="compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.date="08/15/2016"
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-
+---
 # <a name="using-microsoft-outlook-in-azure-remoteapp"></a>Azure RemoteApp で Microsoft Outlook を使用する
-
-> [AZURE.IMPORTANT]
+> [!IMPORTANT]
 > Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> 
+> 
 
 Azure RemoteApp は Microsoft Outlook O365 をサポートします。 [Azure RemoteApp における Office の動作](remoteapp-officesubscription.md)について参照してください。 Azure RemoteApp で使用するとき、Outlook にはいくつかの推奨設定があります。
 
@@ -32,8 +32,6 @@ Azure RemoteApp は Microsoft Outlook O365 をサポートします。 [Azure Re
 
 ## <a name="search"></a>Search
 Azure RemoteApp では、Outlook 内での検索利用に制限があります。 Azure RemoteApp はプールされた VM を利用し、ユーザー セッションに対応します。 検索インデックス作成はマシン ID に基づきます。このマシン ID は VM ごとに異なります。 Azure RemoteApp にログインするたびに、ユーザーを新しい VM に向けることができます。 つまり、ローカル検索を有効にすると、マシン ID が変わるたびに (ユーザーが別の VM にいるとき) インデクサーが実行されます。 .OST ファイルのサイズによっては、インデクサーが完了し、他のアプリに必要なリソースを使い果たすまで時間がかかることがあります。 検索が遅くなるだけでなく、結果が得られないこともあります。 オンライン モード アカウント プロファイルを使用すればこれを回避できますが、ローカル キャッシュが存在しないために全体的なパフォーマンスが低下する可能性があります (キャッシュ モードとオンライン モードの違いについては、前述のリンクを参照してください)。 残念ながら、Outlook 2013 では、インデックス付きまたはローカルの検索は無効にできず、オンライン検索は既定で有効にできません。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

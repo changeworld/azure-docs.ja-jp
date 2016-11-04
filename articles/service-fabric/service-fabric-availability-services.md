@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Service Fabric サービスの可用性 | Microsoft Azure"
-   description="障害の検出、フェールオーバー、サービスの回復について説明します"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="appi101"
-   manager="timlt"
-   editor=""/>
+---
+title: Service Fabric サービスの可用性 | Microsoft Docs
+description: 障害の検出、フェールオーバー、サービスの回復について説明します
+services: service-fabric
+documentationcenter: .net
+author: appi101
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/10/2016"
-   ms.author="aprameyr"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/10/2016
+ms.author: aprameyr
 
+---
 # Service Fabric サービスの可用性
 Azure Service Fabric サービスには、ステートレスなものとステートフルなものがあります。この記事では、障害発生時に Service Fabric がサービスの可用性を維持する方法の概要を示します。
 
@@ -38,16 +38,16 @@ Azure Service Fabric サービスには、ステートレスなものとステ�
 ### レプリカ ロール
 レプリカのロールは、そのレプリカによって管理されている状態のライフサイクルを管理するために使用されます。ロールがプライマリになっているレプリカは、読み取り要求を処理します。また、状態を更新し、レプリカ セット内のアクティブ セカンダリに変更内容をレプリケートして、書き込み要求も処理します。アクティブ セカンダリのロールは、プライマリ レプリカがレプリケートした状態の変更を受信し、その状態のビューを更新することです。
 
->[AZURE.NOTE] [Reliable Actors フレームワーク](service-fabric-reliable-actors-introduction.md)など、抽象度の高いプログラミング モデルの場合、開発者がレプリカ ロールの概念を意識することはありません。
+> [!NOTE]
+> [Reliable Actors フレームワーク](service-fabric-reliable-actors-introduction.md)など、抽象度の高いプログラミング モデルの場合、開発者がレプリカ ロールの概念を意識することはありません。
+> 
+> 
 
 ## 次のステップ
-
 Service Fabric の概念の詳細については、次を参照してください。
 
-- [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
-
-- [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
-
-- [状態の定義と管理](service-fabric-concepts-state.md)
+* [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
+* [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
+* [状態の定義と管理](service-fabric-concepts-state.md)
 
 <!---HONumber=AcomDC_0810_2016-->

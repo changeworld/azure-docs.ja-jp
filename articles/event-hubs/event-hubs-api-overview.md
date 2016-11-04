@@ -1,32 +1,30 @@
-<properties 
-    pageTitle="Azure Event Hubs API の概要 | Microsoft Azure"
-    description="主要な Event Hubs .NET クライアント API のまとめ。"
-    services="event-hubs"
-    documentationCenter="na"
-    authors="sethmanheim"
-    manager="timlt"
-    editor="" />
-<tags 
-    ms.service="event-hubs"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="na"
-    ms.date="08/16/2016"
-    ms.author="sethm" />
+---
+title: Azure Event Hubs API の概要 | Microsoft Docs
+description: 主要な Event Hubs .NET クライアント API のまとめ。
+services: event-hubs
+documentationcenter: na
+author: sethmanheim
+manager: timlt
+editor: ''
 
+ms.service: event-hubs
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/16/2016
+ms.author: sethm
+
+---
 # Event Hubs API 概要
-
 この記事は主要な Event Hubs .NET クライアント API についてまとめてあります。2 つのカテゴリがあります。管理 API とランタイム API です。ランタイム API はメッセージの送受信に必要なすべての操作で構成されています。管理操作では、エンティティを作成、更新、削除することで Event Hubs エンティティの状態を管理できます。
 
 監視シナリオは管理とランタイムの両方にまたがります。.NET API に関する詳細なリファレンス ドキュメントについては、「[Service Bus .NET](https://msdn.microsoft.com/library/azure/mt419900.aspx)」と「[EventProcessorHost API](https://msdn.microsoft.com/library/azure/mt445521.aspx)」リファレンスを参照してください。
 
 ## 管理 API
-
 次の管理操作を実行するには、Event Hubs 名前空間の**管理**権限が必要になります。
 
 ### 作成
-
 ```
 // Create the Event Hub
 EventHubDescription ehd = new EventHubDescription(eventHubName);
@@ -35,7 +33,6 @@ namespaceManager.CreateEventHubAsync(ehd).Wait();
 ```
 
 ### 更新
-
 ```
 EventHubDescription ehd = await namespaceManager.GetEventHubAsync(eventHubName);
 
@@ -48,22 +45,18 @@ namespaceManager.UpdateEventHubAsync(ehd).Wait();
 ```
 
 ### 削除
-
 ```
 namespaceManager.DeleteEventHubAsync("Event Hub name").Wait();
 ```
 
 ## ランタイム API
-
 ### 発行元の作成
-
 ```
 // EventHubClient model (uses implicit factory instance, so all links on same connection)
 EventHubClient eventHubClient = EventHubClient.Create("Event Hub name");
 ```
 
 ### メッセージの発行
-
 ```
 // Create the device/temperature metric
 MetricEvent info = new MetricEvent() { DeviceId = random.Next(SampleManager.NumDevices), Temperature = random.Next(100) };
@@ -82,7 +75,6 @@ await client.SendAsync(data);
 ```
 
 ### コンシューマーの作成
-
 ```
 // Create the Event Hubs client
 EventHubClient eventHubClient = EventHubClient.Create(EventHubName);
@@ -95,26 +87,24 @@ EventHubReceiver consumer = await defaultConsumerGroup.CreateReceiverAsync(shard
 
 // From one day ago
 EventHubReceiver consumer = await defaultConsumerGroup.CreateReceiverAsync(shardId: index, startingDateTimeUtc:DateTime.Now.AddDays(-1));
-                        
+
 // From specific offset, -1 means oldest
 EventHubReceiver consumer = await defaultConsumerGroup.CreateReceiverAsync(shardId: index,startingOffset:-1); 
 ```
 
 ### メッセージの使用
-
 ```
 var message = await consumer.ReceiveAsync();
 
 // Provide a serializer
 var info = message.GetBody<Type>(Serializer)
-                                    
+
 // Get a byte[]
 var info = message.GetBytes(); 
 msg = UnicodeEncoding.UTF8.GetString(info);
 ```
 
 ## イベント プロセッサ ホスト API
-
 これらの API は、利用可能な worker にシャードを分散することによって、利用不可になる可能性がある worker プロセスに回復性を与えます。
 
 ```
@@ -158,7 +148,7 @@ public class SimpleEventProcessor : IEventProcessor
         {
             Process messages here
         }
-        
+
         // Checkpoint when appropriate
         await context.CheckpointAsync();
 
@@ -176,17 +166,16 @@ public class SimpleEventProcessor : IEventProcessor
 ```
 
 ## 次のステップ
-
 Event Hubs シナリオに関する詳細については、次のリンク先を参照してください。
 
-- [Azure Event Hubs とは](event-hubs-what-is-event-hubs.md)
-- [Event Hubs の概要](event-hubs-overview.md)
-- [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
-- [Event Hubs コード サンプル](http://code.msdn.microsoft.com/site/search?query=event hub&f[0].Value=event hubs&f[0].Type=SearchText&ac=5)
+* [Azure Event Hubs とは](event-hubs-what-is-event-hubs.md)
+* [Event Hubs の概要](event-hubs-overview.md)
+* [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
+* [Event Hubs コード サンプル](http://code.msdn.microsoft.com/site/search?query=event hub&f\[0\].Value=event hubs&f\[0\].Type=SearchText&ac=5)
 
 .NET API リファレンスはここにあります。
 
-- [Service Bus と Event Hubs の .NET API リファレンス](https://msdn.microsoft.com/library/azure/mt419900.aspx)
-- [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/azure/mt445521.aspx)
+* [Service Bus と Event Hubs の .NET API リファレンス](https://msdn.microsoft.com/library/azure/mt419900.aspx)
+* [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/azure/mt445521.aspx)
 
 <!---HONumber=AcomDC_0817_2016-->

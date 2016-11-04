@@ -11,15 +11,12 @@ articles/sql-database/sql-database-get-started-tutorial.md
 
 -->
 ## サブスクリプションでの Azure ポータルへの接続
-
 Microsoft Azure への既存のサブスクリプションがある場合は、次の手順に従って Azure ポータルに接続します。Microsoft Azure アカウントがまだない場合は、次のいずれかのリンク先でアカウントを入手し、次の手順に従って Azure ポータルに接続します。
 
 1. 任意のブラウザーを開き、http://portal.azure.com/ で [Azure ポータル](https://portal.azure.com/)に接続します。
-
-1. http://portal.azure.com/ で [Azure ポータル](https://portal.azure.com/)にログインします。
-
-2. サインイン ページが表示されたら、サブスクリプションの資格情報を入力します。
-
+2. http://portal.azure.com/ で [Azure ポータル](https://portal.azure.com/)にログインします。
+3. サインイン ページが表示されたら、サブスクリプションの資格情報を入力します。
+   
    ![login][1]
 
 <!-- Image references. -->

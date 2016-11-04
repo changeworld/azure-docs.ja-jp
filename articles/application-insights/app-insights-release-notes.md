@@ -1,23 +1,21 @@
-<properties 
-	pageTitle="Application Insights のリリース ノート" 
-	description="最新の更新プログラム。" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="alancameronwills" 
-	manager="douge"/>
+---
+title: Application Insights のリリース ノート
+description: 最新の更新プログラム。
+services: application-insights
+documentationcenter: ''
+author: alancameronwills
+manager: douge
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="01/28/2016" 
-	ms.author="awills"/>
- 
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 01/28/2016
+ms.author: awills
+
+---
 # SDK リリース ノート - Application Insights
-
-
 リリース ノートと SDK の更新手順の詳細を以下に示します。
 
 * [ASP.NET Web サーバー SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)

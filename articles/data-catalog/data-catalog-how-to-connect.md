@@ -1,24 +1,23 @@
-<properties
-   pageTitle="データ ソースへの接続方法 | Microsoft Azure"
-   description="Azure Data Catalog で検出されたデータ ソースへの接続方法を説明する操作方法に関する記事"
-   services="data-catalog"
-   documentationCenter=""
-   authors="steelanddata"
-   manager="NA"
-   editor=""
-   tags=""/>
-<tags
-   ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="09/15/2016"
-   ms.author="maroche"/>
+---
+title: データ ソースへの接続方法 | Microsoft Docs
+description: Azure Data Catalog で検出されたデータ ソースへの接続方法を説明する操作方法に関する記事
+services: data-catalog
+documentationcenter: ''
+author: steelanddata
+manager: NA
+editor: ''
+tags: ''
 
+ms.service: data-catalog
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-catalog
+ms.date: 09/15/2016
+ms.author: maroche
 
+---
 # データ ソースへの接続方法
-
 ## はじめに
 **Microsoft Azure Data Catalog** は、完全に管理されたクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。つまり、**Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。このシナリオの主な特徴はデータを使用することです。ユーザーがデータ ソースを検出しその目的を理解したら、次の手順としてデータ ソースに接続し、データを使用します。
 
@@ -39,12 +38,12 @@ Azure Data Catalog ポータルでデータ ソースの [開く] メニュー�
 
 | 開くアプリケーション | ファイル拡張子/プロトコル | サポートされているアプリケーションのバージョン |
 | --- | --- | --- |
-| Excel | .odc | Excel 2010 以降 |
-| Excel (上位 1000) | .odc | Excel 2010 以降 |
-| Power Query | .xlsx | Excel 2016、Power Query for Excel アドインがインストールされている Excel 2010 または Excel 2013
-| Power BI Desktop | .pbix | Power BI Desktop (2016 年 7 月以降) |
-| SQL Server Data Tools | vsweb:// | SQL Server ツールがインストールされている Visual Studio 2013 Update 4 以降 |
-| レポート マネージャー | http:// | [SQL Server Reporting Services のブラウザーの要件](https://technet.microsoft.com/ja-JP/library/ms156511.aspx)に関するページを参照してください。 |
+| Excel |.odc |Excel 2010 以降 |
+| Excel (上位 1000) |.odc |Excel 2010 以降 |
+| Power Query |.xlsx |Excel 2016、Power Query for Excel アドインがインストールされている Excel 2010 または Excel 2013 |
+| Power BI Desktop |.pbix |Power BI Desktop (2016 年 7 月以降) |
+| SQL Server Data Tools |vsweb:// |SQL Server ツールがインストールされている Visual Studio 2013 Update 4 以降 |
+| レポート マネージャー |http:// |[SQL Server Reporting Services のブラウザーの要件](https://technet.microsoft.com/ja-JP/library/ms156511.aspx)に関するページを参照してください。 |
 
 ## データ、ツール
 メニューで使用できるオプションは、現在選択されているデータ資産の種類によって異なります。もちろん、使用可能なツールがすべて「開く」メニューに表示されるわけではありませんが、それでも任意のクライアント ツールを使用してデータ ソースに簡単に接続できます。**Azure Data Catalog** ポータルでデータ資産を選択すると、プロパティ ペインに完全な場所が表示されます。
@@ -60,10 +59,10 @@ Azure Data Catalog ポータルでデータ ソースの [開く] メニュー�
 
  ![アクセスの要求に関する指示が含まれた接続情報](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
-##概要
+## 概要
 **Azure Data Catalog** にデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされ、データの探索が可能になります。データ ソースが登録され探索されると、ユーザーは **Azure Data Catalog** ポータルの [開く] メニューから、または適切なデータ ツールを使用してデータソースに接続できるようになります。
 
 ## 関連項目
-- データ ソースに接続する方法の詳細な手順については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」チュートリアルをご覧ください。
+* データ ソースに接続する方法の詳細な手順については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」チュートリアルをご覧ください。
 
 <!---HONumber=AcomDC_0921_2016-->

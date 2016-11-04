@@ -1,75 +1,69 @@
-<properties
-   pageTitle="HDInsight での Python MapReduce ジョブの開発 | Microsoft Azure"
-   description="Linux ベースの HDInsight クラスターで Python MapReduce ジョブを作成、実行する方法を説明します。"
-   services="hdinsight"
-   documentationCenter=""
-   authors="Blackmist"
-   manager="jhubbard"
-   editor="cgronlun"
-    tags="azure-portal"/>
+---
+title: HDInsight での Python MapReduce ジョブの開発 | Microsoft Docs
+description: Linux ベースの HDInsight クラスターで Python MapReduce ジョブを作成、実行する方法を説明します。
+services: hdinsight
+documentationcenter: ''
+author: Blackmist
+manager: jhubbard
+editor: cgronlun
+tags: azure-portal
 
-<tags
-   ms.service="hdinsight"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data"
-   ms.date="10/11/2016"
-   ms.author="larryfr"/>
+ms.service: hdinsight
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 10/11/2016
+ms.author: larryfr
 
-
-#<a name="develop-python-streaming-programs-for-hdinsight"></a>HDInsight 用 Python ストリーミング プログラムの開発
-
+---
+# <a name="develop-python-streaming-programs-for-hdinsight"></a>HDInsight 用 Python ストリーミング プログラムの開発
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語の map 関数と reduce 関数を記述することができます。 この記事では、Python を使用して、MapReduce 操作を実行する方法を説明します。
 
-> [AZURE.NOTE] このドキュメントの Python コードは Windows ベースの HDInsight クラスターで使用できますが、ドキュメント内の手順は Linux ベースのクラスターに固有のものです。
+> [!NOTE]
+> このドキュメントの Python コードは Windows ベースの HDInsight クラスターで使用できますが、ドキュメント内の手順は Linux ベースのクラスターに固有のものです。
+> 
+> 
 
 この記事は、 [Python での Hadoop MapReduce プログラムの記述](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/)に関するページの Michael Noll が公開する情報および例に基づいています。
 
-##<a name="prerequisites"></a>前提条件
-
+## <a name="prerequisites"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * HDInsight クラスターでの Linux ベースの Hadoop
-
 * テキスト エディター
-
-    > [AZURE.IMPORTANT] テキスト エディターでは、行の終わりとして LF を使用する必要があります。 CRLF を使用する場合、これは Linux ベースの HDInsight クラスターで MapReduce ジョブを実行するときにエラーが発生します。 不明な場合は、「 [MapReduce の実行](#run-mapreduce) 」セクションにある省略可能な手順を使用して、CRLF を LF に変換します。
-
+  
+  > [!IMPORTANT]
+  > テキスト エディターでは、行の終わりとして LF を使用する必要があります。 CRLF を使用する場合、これは Linux ベースの HDInsight クラスターで MapReduce ジョブを実行するときにエラーが発生します。 不明な場合は、「 [MapReduce の実行](#run-mapreduce) 」セクションにある省略可能な手順を使用して、CRLF を LF に変換します。
+  > 
+  > 
 * Windows クライアントとして PuTTY および PSCP これらのユーティリティは「<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY のダウンロード ページ</a>」から入手できます。
 
-##<a name="word-count"></a>文字数
-
+## <a name="word-count"></a>文字数
 この例では、マッパーとレジューサを使用して、基本的な文字カウントを実装します。 マッパーは文をいくつかの単語に分割し、レジューサは単語数や回数を合計して出力を生成します。
 
 次のフローチャートは、map および reduce のフェーズで実際に何が実行されるかを示しています。
 
 ![MapReduce の図](./media/hdinsight-hadoop-streaming-python/HDI.WordCountDiagram.png)
 
-##<a name="why-python?"></a>Python について
-
+## <a name="why-python?"></a>Python について
 Python は、多くの他の言語より少ないコード行で概念を表現できる高度な汎用プログラム言語です。 迅速なアプリケーションに最適な構造、動的型付けのほか、その洗練された構文といった特徴のため、データ サイエンティストの間で、近年、プロトタイプ言語として一般的になりつつあります。
 
 Python はすべての HDInsight クラスターにインストールされています。
 
-##<a name="streaming-mapreduce"></a>MapReduce ストリーミング
-
+## <a name="streaming-mapreduce"></a>MapReduce ストリーミング
 Hadoop では、ジョブで使用される map および reduce のロジックを含むファイルを指定できます。 map および reduce ロジックに固有の要件は次のとおりです。
 
 * **Input**: map および reduce コンポーネントは STDIN から入力データを読み取る必要があります。
-
 * **Output**: map および reduce コンポーネントは STDOUT に出力データを書き込む必要があります。
-
 * **Data format**:使用および生成されるデータは、タブ文字で区切られたキーと値のペアである必要があります。
 
 Python では、STDIN からの読み取りに **sys** モジュールを、STDOUT への印刷に **print** を使用して、これらの要件を簡単に処理できます。 その他、キーと値の間にタブ (`\t`) 文字を使用してデータを簡単に書式設定できます。
 
-##<a name="create-the-mapper-and-reducer"></a>マッパーとリデューサーの作成
-
+## <a name="create-the-mapper-and-reducer"></a>マッパーとリデューサーの作成
 マッパーとレジューサは単なるテキスト ファイルで、この場合 **mapper.py** と **reducer.py** であるため、各ファイルで何が実行されるかは明白です。 これらは、好みのエディターを使用して作成できます。
 
-###<a name="mapper.py"></a>Mapper.py
-
+### <a name="mapper.py"></a>Mapper.py
 **mapper.py** という名前の新しいファイルを作成し、内容として以下のコードを使用します。
 
     #!/usr/bin/env python
@@ -98,8 +92,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 コードが読み取られ、解読されるまでしばらく待ちます。
 
-###<a name="reducer.py"></a>reducer.py
-
+### <a name="reducer.py"></a>reducer.py
 **reducer.py** という名前の新しいファイルを作成し、内容として以下のコードを使用します。
 
     #!/usr/bin/env python
@@ -137,8 +130,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
     if __name__ == "__main__":
         main()
 
-##<a name="upload-the-files"></a>ファイルのアップロード
-
+## <a name="upload-the-files"></a>ファイルのアップロード
 **mapper.py** と **reducer.py** はその実行前に、いずれもクラスターのヘッド ノードにある必要があります。 これらをアップロードする最も簡単な方法は **scp** を使用することです (Windows クライアントを使用する場合は **pscp**)。
 
 クライアントで、**mapper.py** および **reducer.py** と同じディレクトリで、次のコマンドを使用します。 **username** を SSH ユーザーに置き換え、**clustername** をクラスターの名前に置き換えます。
@@ -147,40 +139,41 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 これにより、ファイルがローカル システムからヘッド ノードにコピーされます。
 
-> [AZURE.NOTE] SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。 SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。例`scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`:
+> [!NOTE]
+> SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。 SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。例`scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`:
+> 
+> 
 
-##<a name="run-mapreduce"></a>MapReduce の実行
-
+## <a name="run-mapreduce"></a>MapReduce の実行
 1. SSH を使用したクラスターへの接続:
-
+   
         ssh username@clustername-ssh.azurehdinsight.net
-
-    > [AZURE.NOTE] SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。 SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。例`ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`:
-
+   
+   > [!NOTE]
+   > SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。 SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。例`ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`:
+   > 
+   > 
 2. (省略可能) ファイルを作成するときに、行の終わりとして CRLF を使用するテキスト エディターを使用した場合、またはエディターが使用する行の終わりがわからない場合、次のコマンドを使用して、mapper.py と reducer.py の CRLF を LF に変換します。
-
+   
         perl -pi -e 's/\r\n/\n/g' mappery.py
         perl -pi -e 's/\r\n/\n/g' reducer.py
-
-2. MapReduce ジョブを開始するには次のコマンドを使用します。
-
+3. MapReduce ジョブを開始するには次のコマンドを使用します。
+   
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasbs:///example/data/gutenberg/davinci.txt -output wasbs:///example/wordcountout
-
+   
     このコマンドには次のようなものがあります。
-
-    * **hadoop-streaming.jar**: MapReduce 操作のストリーミングを実行するときに使用します。 Hadoop と指定した外部 MapReduce コードとの橋渡しを務めます。
-
-    * **-files**: 指定されたファイルがこの MapReduce ジョブに必要なこと、また、すべてのワーカー ノードにコピーする必要があることを Hadoop に伝えます。
-
-    * **-mapper**: マッパーとして使用するファイルを Hadoop に伝えます。
-
-    * **-reducer**: レジューサとして使用するファイルを Hadoop に伝えます。
-
-    * **-input**: 文字数をカウントする入力ファイル
-
-    * **-output**: 出力の書き込み先のディレクトリ
-
-        > [AZURE.NOTE] このディレクトリはジョブによって作成されます。
+   
+   * **hadoop-streaming.jar**: MapReduce 操作のストリーミングを実行するときに使用します。 Hadoop と指定した外部 MapReduce コードとの橋渡しを務めます。
+   * **-files**: 指定されたファイルがこの MapReduce ジョブに必要なこと、また、すべてのワーカー ノードにコピーする必要があることを Hadoop に伝えます。
+   * **-mapper**: マッパーとして使用するファイルを Hadoop に伝えます。
+   * **-reducer**: レジューサとして使用するファイルを Hadoop に伝えます。
+   * **-input**: 文字数をカウントする入力ファイル
+   * **-output**: 出力の書き込み先のディレクトリ
+     
+     > [!NOTE]
+     > このディレクトリはジョブによって作成されます。
+     > 
+     > 
 
 ジョブの開始時に一連の **INFO** ステートメントに続いて、**map** および **reduce** 操作がパーセンテージで表示されます。
 
@@ -190,8 +183,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 完了すると、ジョブに関するステータス情報が返されます。
 
-##<a name="view-the-output"></a>出力を表示する
-
+## <a name="view-the-output"></a>出力を表示する
 ジョブが完了したら、次のコマンドを使用して出力を表示します。
 
     hdfs dfs -text /example/wordcountout/part-00000
@@ -205,15 +197,12 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
     wrinkles        2
     wrinkling       2
 
-##<a name="next-steps"></a>次のステップ
-
+## <a name="next-steps"></a>次のステップ
 これで、HDInsight でストリーミング MapRedcue ジョブを使用する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

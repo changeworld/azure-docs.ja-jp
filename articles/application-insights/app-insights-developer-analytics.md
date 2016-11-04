@@ -1,22 +1,21 @@
-<properties
-	pageTitle="開発者分析"
-	description="Visual Studio、Application Insights、HockeyApp を使用した DevOps"
-	authors="alancameronwills"
-	services="application-insights"
-    documentationCenter=""
-	manager="douge"/>
+---
+title: 開発者分析
+description: Visual Studio、Application Insights、HockeyApp を使用した DevOps
+author: alancameronwills
+services: application-insights
+documentationcenter: ''
+manager: douge
 
-<tags
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article" 
-	ms.date="05/18/2016"
-	ms.author="awills"/>
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 05/18/2016
+ms.author: awills
 
+---
 # Application Insights と HockeyApp による開発者分析
-
 *Application Insights はプレビュー段階です。*
 
 多くのプロジェクトでは、迅速な [DevOps](https://en.wikipedia.org/wiki/DevOps) サイクルを展開しています。アプリケーションを作成して配布し、そのパフォーマンスやユーザーの操作に関するフィードバックを入手した後、その知識を利用して将来の開発サイクルの計画を立てます。
@@ -34,7 +33,6 @@
 具体的な例については、複数のクライアント コンポーネントとサーバー コンポーネントを使用した[興味深い事例](http://aka.ms/mydrivingdocs)があります。
 
 ## DevOps サイクル
-
 Visual Studio と開発者分析ツールによって、十分に統合された devOps エクスペリエンスが実現します。たとえば、Web アプリケーション (Java、Node.js、または ASP.NET) の典型的なサイクルを次に示します。
 
 ![Web app devops cycle](./media/app-insights-developer-analytics/040.png)
@@ -46,9 +44,7 @@ Visual Studio と開発者分析ツールによって、十分に統合された
 * 次の開発サイクルには、ライブ テレメトリの分析から通知されます。
 
 ### デバイス アプリとデスクトップ アプリ
-
 デバイス アプリとデスクトップ アプリでは、サイクルの配布部分が若干異なります。これは、アップロード先のサーバーが 1 つや 2 つではないためです。代わりに、ビルドと単体テストが成功すると、[HockeyApp へのアップロードをトリガー](https://support.hockeyapp.net/kb/third-party-bug-trackers-services-and-webhooks/how-to-use-hockeyapp-with-visual-studio-team-services-vsts-or-team-foundation-server-tfs)できます。HockeyApp は、テスト ユーザーのチーム (または必要に応じて一般ユーザー) への配布を管理します。
-
 
 ![Device devops cycle](./media/app-insights-developer-analytics/030.png)
 
@@ -60,26 +56,20 @@ Visual Studio と開発者分析ツールによって、十分に統合された
 
 繰り返しますが、入手したフィードバックを考慮して将来の開発計画を立てるように devOps サイクルは作成されています。
 
-
 ## 開発者分析の設定
-
 モバイル、Web、デスクトップを問わず、アプリケーションの各コンポーネントでは、基本的に手順は同じです。多くの種類のアプリでは、これらの手順の一部が Visual Studio によって自動的に実行されます。
 
 1. 適切な SDK をアプリに追加します。デバイス アプリの場合は HockeyApp、Web サービスの場合は Application Insights です。それぞれ、プラットフォーム応じていくつかのバリエーションがあります (デスクトップ アプリではどちらの SDK も使用できますが、HockeyApp をお勧めします)。
 2. 使用した SDK に応じて、Application Insights または HockeyApp ポータルにアプリを登録します。ここには、ライブ アプリによる分析が表示されます。構成したインストルメンテーション キーまたは ID をアプリに取り込むと、SDK ではテレメトリの送信先が認識されます。
 3. カスタム コード (必要な場合) を追加して、イベントやメトリックをログに記録します。これは、診断やパフォーマンスまたは使用状況の分析に役立ちます。多数の監視機能が組み込まれているため、最初のサイクルではこれは必要ありません。
-3. デバイス アプリの場合:
- * デバッグ ビルドを HockeyApp にアップロードします。そこから、テスト ユーザーのチームに配布できます。それ以降、ビルドをアップロードするたびに、チームに通知されます。
- * 継続的なビルド サービスを設定する際は、プラグインの手順を使用して HockeyApp にアップロードするリリース定義を作成します。
+4. デバイス アプリの場合:
+   * デバッグ ビルドを HockeyApp にアップロードします。そこから、テスト ユーザーのチームに配布できます。それ以降、ビルドをアップロードするたびに、チームに通知されます。
+   * 継続的なビルド サービスを設定する際は、プラグインの手順を使用して HockeyApp にアップロードするリリース定義を作成します。
 
 ### HockeyApp テレメトリの分析とエクスポート
-
 [ブリッジを設定](app-insights-hockeyapp-bridge-app.md)すると、Application Insights の Analytics 機能と連続エクスポート機能を使用して HockeyApp のカスタムおよびログ テレメトリを調査することができます。
 
-
-
 ## 次のステップ
- 
 アプリの種類ごとの詳細な手順については、以下のリンク先を参照してください。
 
 * [ASP.NET Web アプリ](app-insights-asp-net.md)

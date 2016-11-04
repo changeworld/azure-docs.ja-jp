@@ -1,28 +1,25 @@
-<properties 
-	pageTitle="API エンドポイントのスケーリング | Microsoft Azure" 
-	description="Azure Machine Learning で Web サービス エンドポイントのスケーリングを行う" 
-	services="machine-learning"
-	documentationCenter="" 
-	authors="hiteshmadan" 
-	manager="padou" 
-	editor=""/>
+---
+title: API エンドポイントのスケーリング | Microsoft Docs
+description: Azure Machine Learning で Web サービス エンドポイントのスケーリングを行う
+services: machine-learning
+documentationcenter: ''
+author: hiteshmadan
+manager: padou
+editor: ''
 
-<tags
-	ms.service="machine-learning"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="tbd" 
-	ms.date="05/25/2016"
-	ms.author="himad"/>
+ms.service: machine-learning
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: tbd
+ms.date: 05/25/2016
+ms.author: himad
 
-
+---
 # API エンドポイントのスケーリング
-
 Azure Machine Learning の Web サービス エンドポイントでは、スロットル レベルが選択可能であり、エンドポイントが使用するレートに合わせることができます。
 
 エンドポイントでのスロットルの量を制御するには、Azure クラシック ポータルのスライダーを使用して、同時呼び出しの最大数を 20 ～ 200 の範囲で設定します。
-
 
 同期 API は通常、短い待機時間が望まれる状況で使用されます。ここでの待機時間とは、API が 1 つの要求を完了するのにかかる時間を指し、ネットワークの遅延に影響しないものです。たとえば待機時間が 50 ms の API があるとします。スロットル レベル "高" で同時呼び出しの最大数が 20 件のときに使用可能な容量をすべて使用するには、この API を 1 秒あたり 20 × 1000 / 50 = 400 回呼び出す必要があります。さらに増やして、同時呼び出しの最大数 200 件にすると、API を 1 秒あたり 4,000 回呼び出すことができ、この場合の待機時間は 50 ms と想定されます。
 
@@ -38,13 +35,7 @@ Azure Machine Learning の Web サービス エンドポイントでは、スロ
 2. [Machine Learning] タブに移動します。
 3. ワークスペースをクリックします。
 4. エンドポイントが含まれる Web サービスに移動します。![Web サービスに移動する](./media/machine-learning-scaling-endpoints/figure-1.png)
-
 5. エンドポイントをクリックした後、[構成] タブをクリックします。![エンドポイントの構成に移動する](./media/machine-learning-scaling-webservice/machlearn-2.png)
-
-
 6. スライダーを変更して同時呼び出しのレベルを上げ、[保存] をクリックします。
-
-
- 
 
 <!---HONumber=AcomDC_0622_2016-->

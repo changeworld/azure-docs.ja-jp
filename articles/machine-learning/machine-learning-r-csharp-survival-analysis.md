@@ -1,116 +1,113 @@
-<properties 
-	pageTitle="Azure Machine Learning による生存分析 | Microsoft Azure" 
-	description="生存分析イベントの発生確率" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="zhangya" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+---
+title: Azure Machine Learning による生存分析 | Microsoft Docs
+description: 生存分析イベントの発生確率
+services: machine-learning
+documentationcenter: ''
+author: zhangya
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/21/2016" 
-	ms.author="zhangya"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/21/2016
+ms.author: zhangya
 
-
-#生存分析 
-
+---
+# 生存分析
 多くのシナリオでは、主な評価結果は、関心のあるイベントまでの時間です。つまり、"このイベントはいつ発生するか" という質問に回答します。例として、データが、関心のあるイベント (疾病再発、博士号の取得、ブレーキ パッドの故障など) が発生するまでの経過時間 (日数、年数、マイレージなど) を示している場合を考えてみます。データの各インスタンスは、特定のオブジェクト (患者、学生、車など) を表します。
 
-
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 この [Web サービス](https://datamarket.azure.com/dataset/aml_labs/survivalanalysis)は、"オブジェクト x に対して n (時間) までに関心のあるイベントが発生する確率はどのくらいでしょうか" という質問に回答します。 生存分析モデルを提供することによって、この Web サービスによりユーザーはデータを入力してモデルをトレーニングし、テストすることができます。実験の主要なテーマは、関心のあるイベントが発生するまでの経過時間の長さをモデル化することです。
 
->この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
+> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
+> 
+> 
 
-##Web サービスの使用
-
+## Web サービスの使用
 次の表には、Web サービスの入力データ スキーマが表示されます。6 種類の情報 (トレーニング データ、テスト データ、関心のある時間、"time" ディメンションのインデックス、"event" ディメンションのインデックス、変数の種類 (連続または要因)) を入力する必要があります。トレーニング データは、文字列 (行はコンマで、列はセミコロンで区切ります) で表します。データの特徴の数は自由です。入力文字列内のすべての要素を数値にする必要があります。トレーニング データでは、"time" ディメンションは、学習の開始位置 (患者が薬物治療プログラムを受け取る、学生が博士号の勉強を開始する、車の運転を開始するなど) から、関心のあるイベント (患者が再び薬物使用に戻る、学生が博士号を取得する、車のブレーキ パッドが故障するなど) が発生するまでに経過した時間の単位数 (日数、年数、マイレージなど) を示します。"event" ディメンションでは、学習の最後に関心のあるイベントが発生するかどうかを示します。"event = 1" という値は、"time" ディメンションによって示された時点に関心のあるイベントが発生するという意味です。"event = 0" は、関心のあるイベントが、"time" ディメンションが示している時点では発生していないということです。
 
-- trainingdata - 文字列行はコンマで区切り、列はセミコロンで区切ります。各行には、"time" ディメンション、"event" ディメンション、および予測変数が含まれます。
-- testingdata - 特定のオブジェクトに対する予測変数が含まれている 1 行のデータ。
-- time\_of\_interest - 関心 n の経過時間
-- index\_time - "time" ディメンション (1 から始まる) の列インデックス
-- index\_event - "event" ディメンション (1 から始まる) の列インデックス
-- variable\_types - 区切り記号としてセミコロンを使用した文字列。0 は連続変数を表し、1 は要因変数を表します。
-
+* trainingdata - 文字列行はコンマで区切り、列はセミコロンで区切ります。各行には、"time" ディメンション、"event" ディメンション、および予測変数が含まれます。
+* testingdata - 特定のオブジェクトに対する予測変数が含まれている 1 行のデータ。
+* time\_of\_interest - 関心 n の経過時間
+* index\_time - "time" ディメンション (1 から始まる) の列インデックス
+* index\_event - "event" ディメンション (1 から始まる) の列インデックス
+* variable\_types - 区切り記号としてセミコロンを使用した文字列。0 は連続変数を表し、1 は要因変数を表します。
 
 出力は、特定の時間にイベントが発生する確率です。
 
->Azure Marketplace でホストされているこのサービスは、OData サービスです。これらは、POST や GET メソッドによって呼び出すことができます。
+> Azure Marketplace でホストされているこのサービスは、OData サービスです。これらは、POST や GET メソッドによって呼び出すことができます。
+> 
+> 
 
 自動でサービスを使用するための複数の方法があります ([ここ](http://microsoftazuremachinelearning.azurewebsites.net/SurvivalAnalysis.aspx)にアプリケーション例があります)。
 
-###Web サービスを使用する C# コードを開始します。
-	public class Input
-	{
-	        public string trainingdata;
-	        public string testingdata;
-	        public string timeofinterest;
-	        public string indextime;
-	        public string indexevent;
-	        public string variabletypes;
-	}
+### Web サービスを使用する C# コードを開始します。
+    public class Input
+    {
+            public string trainingdata;
+            public string testingdata;
+            public string timeofinterest;
+            public string indextime;
+            public string indexevent;
+            public string variabletypes;
+    }
 
     public AuthenticationHeaderValue CreateBasicHeader(string username, string password)
     {
-	        byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(username + ":" + password);
-	        return new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-	}
-	
-	void Main()
-	{
-	        var input = new Input() { trainingdata = TextBox1.Text, testingdata = TextBox2.Text, timeofinterest = TextBox3.Text, indextime = TextBox4.Text, indexevent = TextBox5.Text, variabletypes = TextBox6.Text };
-	        var json = JsonConvert.SerializeObject(input);
-	        var acitionUri = "PutAPIURLHere,e.g.https://api.datamarket.azure.com/..../v1/Score";
-	        var httpClient = new HttpClient();
-	
-	        httpClient.DefaultRequestHeaders.Authorization = CreateBasicHeader("PutEmailAddressHere", "ChangeToAPIKey");
-	        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-	
-	        var response = httpClient.PostAsync(acitionUri, new StringContent(json));
-	        var result = response.Result.Content;
-		    var scoreResult = result.ReadAsStringAsync().Result;
-	}
+            byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(username + ":" + password);
+            return new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+    }
+
+    void Main()
+    {
+            var input = new Input() { trainingdata = TextBox1.Text, testingdata = TextBox2.Text, timeofinterest = TextBox3.Text, indextime = TextBox4.Text, indexevent = TextBox5.Text, variabletypes = TextBox6.Text };
+            var json = JsonConvert.SerializeObject(input);
+            var acitionUri = "PutAPIURLHere,e.g.https://api.datamarket.azure.com/..../v1/Score";
+            var httpClient = new HttpClient();
+
+            httpClient.DefaultRequestHeaders.Authorization = CreateBasicHeader("PutEmailAddressHere", "ChangeToAPIKey");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response = httpClient.PostAsync(acitionUri, new StringContent(json));
+            var result = response.Result.Content;
+            var scoreResult = result.ReadAsStringAsync().Result;
+    }
 
 
 
 
 このテストの解釈を次に示します。データの目標は、次の 2 つの治療プログラムのいずれかを受け取った患者が薬物使用に戻るまでの経過時間をモデル化することです。Web サービスの出力から、次を読み取ります: 患者の年齢は 35 歳、これまで 2 回薬物治療を受け、長期的な宿泊型の治療プログラムを採用しています。そして、ヘロインとコカインの両方について、この患者が 500 日以内に薬物使用に戻る確率は 95.64% です。
 
-##Web サービスの作成
-
->この Web サービスは、Azure Machine Learning を使用して作成されました。無料評価版の場合、実験を作成して [Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) もご覧ください。Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
+## Web サービスの作成
+> この Web サービスは、Azure Machine Learning を使用して作成されました。無料評価版の場合、実験を作成して [Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) もご覧ください。Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
+> 
+> 
 
 Azure Machine Learning 内で、新しい空白の実験が作成され、ワークスペース上に 2 つの [R スクリプトの実行][execute-r-script]を取得しました。データ スキーマは、Web サービス用の入力データ スキーマを定義する、単純な [R スクリプトの実行][execute-r-script]で作成されました。このモジュールは、主要な作業を行う 2 つ目の [R スクリプトの実行][execute-r-script]モジュールにリンクされます。このモジュールは、データの前処理、モデル構築、および予測を実行します。データの前処理手順で、長い文字列で表された入力データが変換され、データ フレームに変換されます。モデル構築手順では、生存分析を実施するため、外部の R パッケージ "survival\_2.37 7.zip" が最初にインストールされます。一連のデータ処理タスクの後に "coxph" 関数が実行されます。生存分析のための "coxph" 関数の詳細については、R のドキュメントを参照してください。予測手順では、"surfit" 関数でトレーニング済みのモデルにテスト インスタンスが入力され、このテストのインスタンスの生存曲線が "curve" 変数として生成されます。最後に、関心のある時間の確率が取得されます。
 
-###実験フロー:
-
+### 実験フロー:
 ![実験フロー][1]
 
-####モジュール 1:
-
+#### モジュール 1:
     #Data schema with example data (replaced with data from web service)
     trainingdata="53;1;29;0;0;3,79;1;34;0;1;2,45;1;27;0;1;1,37;1;24;0;1;1,122;1;30;0;1;1,655;0;41;0;0;1,166;1;30;0;0;3,227;1;29;0;0;3,805;0;30;0;0;1,104;1;24;0;0;1,90;1;32;0;0;1,373;1;26;0;0;1,70;1;36;0;0;1”
     testingdata="35;2;1;1"
     time_of_interest="500"
     index_time="1"
     index_event="2"
-    
+
     # 0 - continuous; 1 -  factor
     variable_types="0;0;1;1"
 
     sampleInput=data.frame(trainingdata,testingdata,time_of_interest,index_time,index_event,variable_types)
 
     maml.mapOutputPort("sampleInput"); #send data to output port
-	
-####モジュール 2:
 
+#### モジュール 2:
     #Read data from input port
     data <- maml.mapInputPort(1) 
     colnames(data) <- c("trainingdata","testingdata","time_of_interest","index_time","index_event","variable_types")
@@ -193,11 +190,10 @@ Azure Machine Learning 内で、新しい空白の実験が作成され、ワー
 
 
 
-##制限事項
-
+## 制限事項
 この Web サービスでは、特徴変数として数値変数 (列) のみを使用できます。"event" 列には 0 または 1 の値のみを指定できます。"time" 列は、正の整数である必要があります。
 
-##FAQ
+## FAQ
 Web サービスの使用や、Azure Marketplace への発行に関するよく寄せられる質問については、[ここ](machine-learning-marketplace-faq.md)をご覧ください。
 
 [1]: ./media/machine-learning-r-csharp-survival-analysis/survive_img2.png
@@ -205,6 +201,6 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
- 
+
 
 <!---HONumber=AcomDC_0921_2016-->

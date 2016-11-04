@@ -1,37 +1,38 @@
-<properties
-	pageTitle="Azure Notification Hubs と Bing の空間データを使用したジオフェンス型プッシュ通知 | Microsoft Azure"
-	description="このチュートリアルでは、Azure Notification Hubs と Bing の空間データを使用して所在に応じたプッシュ通知を行う方法について説明します。"
-	services="notification-hubs"
-	documentationCenter="windows"
-    keywords="プッシュ通知,プッシュ通知"
-	authors="dend"
-	manager="yuaxu"
-	editor="dend"/>
+---
+title: Azure Notification Hubs と Bing の空間データを使用したジオフェンス型プッシュ通知 | Microsoft Docs
+description: このチュートリアルでは、Azure Notification Hubs と Bing の空間データを使用して所在に応じたプッシュ通知を行う方法について説明します。
+services: notification-hubs
+documentationcenter: windows
+keywords: プッシュ通知,プッシュ通知
+author: dend
+manager: yuaxu
+editor: dend
 
-<tags
-	ms.service="notification-hubs"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-windows-phone"
-	ms.devlang="dotnet"
-	ms.topic="hero-article"
-	ms.date="05/31/2016"
-	ms.author="dendeli"/>
-    
+ms.service: notification-hubs
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-windows-phone
+ms.devlang: dotnet
+ms.topic: hero-article
+ms.date: 05/31/2016
+ms.author: dendeli
+
+---
 # Azure Notification Hubs と Bing の空間データを使用したジオフェンス型プッシュ通知
- 
- > [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02)を参照してください。
+> [!NOTE]
+> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02)を参照してください。
+> 
+> 
 
 このチュートリアルでは、ユニバーサル Windows プラットフォーム アプリケーション内からの利用を前提に、Azure Notification Hubs と Bing の空間データを使用して、所在に応じたプッシュ通知を行う方法について説明します。
 
-##前提条件
+## 前提条件
 まず、前提条件として以下のソフトウェアとサービスがすべて揃っていることを確認してください。
 
 * [Visual Studio 2015 Update 1](https://www.visualstudio.com/ja-JP/downloads/download-visual-studio-vs.aspx) 以降 ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409) も使用可)。 
 * 最新バージョンの [Azure SDK](https://azure.microsoft.com/downloads/)。 
 * [Bing マップ デベロッパー センター アカウント](https://www.bingmapsportal.com/)。アカウントの作成は無料です。作成したアカウントは Microsoft アカウントに関連付けることができます。 
 
-##Getting Started (概要)
-
+## Getting Started (概要)
 最初にプロジェクトを作成しましょう。Visual Studio で、**[空白のアプリ (ユニバーサル Windows)]** タイプの新しいプロジェクトを起動します。
 
 ![](./media/notification-hubs-geofence/notification-hubs-create-blank-app.png)
@@ -39,17 +40,16 @@
 プロジェクトを作成したら、アプリ自体のテスト ハーネスが必要です。ジオフェンス インフラストラクチャを構成するさまざまな要素を設定していきましょう。ここでは Bing サービスを使用するので、そのパブリック REST API エンドポイントを介して、特定の位置の領域を照会することができます。
 
     http://spatial.virtualearth.net/REST/v1/data/
-    
+
 これを利用するには、次のパラメーターを指定する必要があります。
 
 * **データ ソース ID** と**データ ソース名** – Bing マップ API では、さまざまなメタデータの集合体 (位置、企業の営業時間など) がデータ ソースに格納されます。詳細については、こちらを参照してください。 
 * **エンティティ名** – 通知の基準点として使用するエンティティです。 
 * **Bing マップ API キー** – これは、先ほど Bing デベロッパー センター アカウントを作成したときに取得したキーです。
- 
+
 では、上に挙げた各要素の設定について詳しく見ていきます。
 
-##データ ソースの設定
-
+## データ ソースの設定
 データ ソースの設定は、Bing マップ デベロッパー センターで行うことができます。最上部のナビゲーション バーにある **[データ ソース]** をクリックし、**[データ ソースの管理]** を選択します。
 
 ![](./media/notification-hubs-geofence/bing-maps-manage-data.png)
@@ -63,14 +63,17 @@
     Bing Spatial Data Services, 1.0, TestBoundaries
     EntityID(Edm.String,primaryKey)|Name(Edm.String)|Longitude(Edm.Double)|Latitude(Edm.Double)|Boundary(Edm.Geography)
     1|SanFranciscoPier|||POLYGON ((-122.389825 37.776598,-122.389438 37.773087,-122.381885 37.771849,-122.382186 37.777022,-122.389825 37.776598))
-    
+
 このコードは、次のエンティティを表しています。
 
 ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 
 単に上の文字列をコピーして新しいファイルに貼り付け、**NotificationHubsGeofence.pipe** という名前で保存して、Bing デベロッパー センターにアップロードしてください。
 
->[AZURE.NOTE]**[マスター キー]** に、**[クエリ キー]** とは異なる新しいキーを指定するよう求められる場合があります。ダッシュボードで新しいキーを作成して、データ ソースのアップロード ページを更新してください。
+> [!NOTE]
+> **[マスター キー]** に、**[クエリ キー]** とは異なる新しいキーを指定するよう求められる場合があります。ダッシュボードで新しいキーを作成して、データ ソースのアップロード ページを更新してください。
+> 
+> 
 
 データ ファイルをアップロードしたら、データ ソースを発行する必要があります。
 
@@ -100,8 +103,7 @@
 
 ![](./media/notification-hubs-geofence/bing-maps-nores.png)
 
-##UWP アプリケーションの設定
-
+## UWP アプリケーションの設定
 データ ソースの準備が整ったら、先ほど立ち上げた UWP アプリケーションの作業に進みます。
 
 まず、アプリケーションに対して位置情報サービスを有効にする必要があります。そのためには、**ソリューション エクスプローラー**で `Package.appxmanifest` ファイルをダブルクリックします。
@@ -198,8 +200,7 @@ UWP アプリでユーザーの位置情報を取得する方法について詳�
         });
     }
 
-##バックエンドの設定
-
+## バックエンドの設定
 [GitHub から .NET バックエンド サンプル](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers)をダウンロードします。ダウンロードが完了したら、`NotifyUsers` フォルダーを開き、`NotifyUsers.sln` ファイルを開きます。
 
 `AppBackend` プロジェクトを**スタートアップ プロジェクト**として設定し、起動します。
@@ -275,7 +276,10 @@ UWP アプリでユーザーの位置情報を取得する方法について詳�
         }
     }
 
->[AZURE.NOTE] API エンドポイントは必ず、先ほど Bing デベロッパー センターから取得したクエリ URL に置き換えてください (API キーも同様)。
+> [!NOTE]
+> API エンドポイントは必ず、先ほど Bing デベロッパー センターから取得したクエリ URL に置き換えてください (API キーも同様)。
+> 
+> 
 
 クエリに対する結果が存在する場合、指定した地点がジオフェンスの境界範囲内に存在することを意味します。つまり、戻り値は `true` となります。結果が存在しない場合、その地点は、照会した枠の外にあるということです。この場合、戻り値は `false` となります。
 
@@ -302,8 +306,7 @@ UWP アプリでユーザーの位置情報を取得する方法について詳�
 
 これで、指定した地点が境界の範囲内に存在するときにだけ通知が送信されます。
 
-##UWP アプリでのプッシュ通知のテスト
-
+## UWP アプリでのプッシュ通知のテスト
 いよいよ、UWP アプリに戻って通知のテストを実行します。`LocationHelper` クラスに、`SendLocationToBackend` という新しい関数を作成します。
 
     public static async Task SendLocationToBackend(string pns, string userTag, string message, string latitude, string longitude)
@@ -325,7 +328,10 @@ UWP アプリでユーザーの位置情報を取得する方法について詳�
         }
     }
 
->[AZURE.NOTE] `POST_URL` は、前のセクションで作成したデプロイ済みの Web アプリケーションのアドレスに置き換えてください。差し当たりローカルで実行してもかまいませんが、パブリック バージョンをデプロイするときには、外部のプロバイダーでホストする必要があります。
+> [!NOTE]
+> `POST_URL` は、前のセクションで作成したデプロイ済みの Web アプリケーションのアドレスに置き換えてください。差し当たりローカルで実行してもかまいませんが、パブリック バージョンをデプロイするときには、外部のプロバイダーでホストする必要があります。
+> 
+> 
 
 ここで、プッシュ通知に使用する UWP アプリを登録しましょう。Visual Studio で **[プロジェクト]**、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。
 
@@ -370,8 +376,7 @@ UWP アプリでユーザーの位置情報を取得する方法について詳�
 
 ![](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-##次の手順
-
+## 次の手順
 通常、このソリューションを本番環境で使用するためには、以上の手順に加え、2 つの作業が必要となります。
 
 第一に、ジオフェンスを動的に変更するためのしくみが必要です。既存のデータ ソース内に新しい境界をアップロードできるように、Bing API に関して追加作業が必要となります。この点について詳しくは、[Bing 空間データ サービス API のドキュメント](https://msdn.microsoft.com/library/ff701734.aspx)をご覧ください。

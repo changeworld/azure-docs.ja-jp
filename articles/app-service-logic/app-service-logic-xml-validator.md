@@ -1,24 +1,23 @@
-<properties
-   pageTitle="Azure App Service のロジック アプリでの BizTalk XML Validator の使用 | Microsoft Azure"
-   description="ロジック アプリ内で BizTalk XML Validator を使用してスキーマを検証します"
-   services="logic-apps"
-   documentationCenter=".net,nodejs,java"
-   authors="rajram"
-   manager="erikre"
-   editor=""/>
+---
+title: Azure App Service のロジック アプリでの BizTalk XML Validator の使用 | Microsoft Docs
+description: ロジック アプリ内で BizTalk XML Validator を使用してスキーマを検証します
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: rajram
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="04/20/2016"
-   ms.author="rajram"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 04/20/2016
+ms.author: rajram
 
+---
 # BizTalk XML 検証
-
-[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
+[!INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 アプリで BizTalk XML Validator コネクタを使用し、定義済みの XML スキーマと照らして XML データを検証します。既存のスキーマを使用することも、フラット ファイルのインスタンス、JSON のインスタンス、または既存のコネクタに基づいてスキーマを生成することもできます。
 
@@ -38,24 +37,21 @@ API アプリ ブレードでは、*[スキーマ]* を選択してスキーマ�
 
 ![BizTalk XML Validator のスキーマ][3]
 
-
 ### デザイン画面での BizTalk Flat File Encoder の使用
 構成が終わったら、*[->]* をクリックし、アクションの一覧からアクションを選択できます。
 
 ![BizTalk XML Validator のアクション リスト][4]
 
 #### XML を検証する
-
 XML 検証アクションは、特定の XML の入力を、構成済みのスキーマに照らして検証します。
 
 ![BizTalk XML Validator の XML の検証][5]
 
-パラメーター|型|パラメーターの説明
----|---|---
-入力 XML|文字列|検証する入力 XML
+| パラメーター | 型 | パラメーターの説明 |
+| --- | --- | --- |
+| 入力 XML |文字列 |検証する入力 XML |
 
 アクションは出力をオブジェクトとして返します。出力には、XML Validator からの応答を表すモデルが含まれます。これは、結果、スキーマ名、ルート ノード、およびエラーの説明で構成されます。
-
 
 <!-- References -->
 [1]: ./media/app-service-logic-xml-validator/XmlValidator.ClickToConfigure.PNG

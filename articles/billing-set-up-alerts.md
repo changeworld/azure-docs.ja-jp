@@ -1,31 +1,28 @@
-<properties
-	pageTitle="Microsoft Azure サブスクリプションの課金アラートの設定 | Microsoft Azure"
-	description="予想外の課金を回避するために Azure の請求に関する通知を設定する方法について説明します。"
-	services=""
-	documentationCenter=""
-	authors="vikdesai"
-	manager="msmbaldwin"
-	editor=""
-	tags="billing"
-	/>
+---
+title: Microsoft Azure サブスクリプションの課金アラートの設定 | Microsoft Docs
+description: 予想外の課金を回避するために Azure の請求に関する通知を設定する方法について説明します。
+services: ''
+documentationcenter: ''
+author: vikdesai
+manager: msmbaldwin
+editor: ''
+tags: billing
 
-<tags
-	ms.service="billing"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/18/2016"
-	ms.author="vikdesai"/>
+ms.service: billing
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/18/2016
+ms.author: vikdesai
 
+---
 # Microsoft Azure サブスクリプションの課金アラートの設定
-
 Azure サブスクリプションにかかる月額料金に懸念がありますか。 Azure サブスクリプションのアカウント管理者の場合、Azure 課金アラート サービスを使用して、Azure アカウントの課金アクティビティを監視、管理するのに役立つ、カスタマイズされた課金アラートを作成できます。
 
 このサービスはプレビュー サービスのため、最初にサインアップする必要があります。この機能を有効にするため、Azure アカウント管理ポータルの [[プレビュー機能]](https://account.windowsazure.com/PreviewFeatures) ページにアクセスします。
 
 ## アラートのしきい値と電子メールの受信者を設定する
-
 サブスクリプションで課金サービスが有効になったという確認メールを受信したら、アカウント ポータルの [[サブスクリプション] ページ](https://account.windowsazure.com/Subscriptions)を開きます。監視するサブスクリプションをクリックし、**[アラート]** をクリックします。
 
 ![][Image1]
@@ -41,7 +38,6 @@ Azure サブスクリプションにかかる月額料金に懸念がありま�
 Azure は、任意の電子メール アドレスをサポートしていますが、電子メール アドレスが有効であるかは確認されないため、入力ミスがないようダブルチェックしてください。
 
 ## アラートを確認する
-
 アラートを設定した後、アカウント センターで一覧表示され、設定可能な残数も表示されます。それぞれのアラートに対し、送信された日付と時刻、アラートが請求合計または通貨クレジットであるか、設定した制限が表示されます。日付と時刻形式は 24 時間協定世界時 (UTC) で、日付は yyyy-mm-dd の形式です。アラートを編集するには、リストのアラートのプラス記号をクリックします。アラートを削除するには、ごみ箱アイコンをクリックします。
 
 [Image1]: ./media/azure-billing-set-up-alerts/billingalert1.png

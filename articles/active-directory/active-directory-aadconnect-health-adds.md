@@ -1,22 +1,22 @@
 
-<properties
-	pageTitle="AD DS での Azure AD Connect Health の使用 | Microsoft Azure"
-	description="Azure AD を監視する方法を説明する Azure AD Connect Health のページです。"
-	services="active-directory"
-	documentationCenter=""
-	authors="arluca"
-	manager="samueld"
-	editor="curtand"/>
+---
+title: AD DS での Azure AD Connect Health の使用 | Microsoft Docs
+description: Azure AD を監視する方法を説明する Azure AD Connect Health のページです。
+services: active-directory
+documentationcenter: ''
+author: arluca
+manager: samueld
+editor: curtand
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="09/30/2016"
-	ms.author="arluca"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 09/30/2016
+ms.author: arluca
 
+---
 # AD DS での Azure AD Connect Health の使用
 次のドキュメントは、Azure AD Connect Health を使用した Active Directory ドメイン サービスの監視について記述しています。AD DS のサポートされているバージョンは、Windows Server 2008 R2、Windows Server 2012、および Windows Server 2012 R2 です。
 
@@ -51,7 +51,6 @@ Azure AD Connect Health for AD DS 内の [アラート] セクションには、
 あらかじめ既定で選択されているパフォーマンス カウンターは 4 つですが、[フィルター] コマンドをクリックし、必要なパフォーマンス カウンターを選択 (または選択解除) することで、表示対象のパフォーマンス カウンターを変更することができます。また、パフォーマンス カウンター グラフをダブルクリックすると、新しいブレードが開かれ、監視対象となっている各ドメイン コントローラーのデータ ポイントが表示されます。
 
 ## 関連リンク
-
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Azure AD Connect Health エージェントのインストール](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)

@@ -1,37 +1,37 @@
-<properties 
-    pageTitle="Hive アクティビティ" 
-    description="Azure データ ファクトリで Hive アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Hive クエリを実行する方法について説明します。" 
-    services="data-factory" 
-    documentationCenter="" 
-    authors="sharonlo101" 
-    manager="jhubbard" 
-    editor="monicar"/>
+---
+title: Hive アクティビティ
+description: Azure データ ファクトリで Hive アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Hive クエリを実行する方法について説明します。
+services: data-factory
+documentationcenter: ''
+author: sharonlo101
+manager: jhubbard
+editor: monicar
 
-<tags 
-    ms.service="data-factory" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/11/2016" 
-    ms.author="shlo"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/11/2016
+ms.author: shlo
 
-
+---
 # <a name="hive-activity"></a>Hive アクティビティ
-> [AZURE.SELECTOR]
-[Hive](data-factory-hive-activity.md)  
-[Pig](data-factory-pig-activity.md)  
-[MapReduce](data-factory-map-reduce.md)  
-[Hadoop Streaming](data-factory-hadoop-streaming-activity.md)
-[Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
-[ストアド プロシージャ](data-factory-stored-proc-activity.md)
-[Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-[.NET カスタム](data-factory-use-custom-activities.md)
+> [!div class="op_single_selector"]
+> [Hive](data-factory-hive-activity.md)  
+> [Pig](data-factory-pig-activity.md)  
+> [MapReduce](data-factory-map-reduce.md)  
+> [Hadoop Streaming](data-factory-hadoop-streaming-activity.md)
+> [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
+> [ストアド プロシージャ](data-factory-stored-proc-activity.md)
+> [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
+> [.NET カスタム](data-factory-use-custom-activities.md)
+> 
+> 
 
 Data Factory [パイプライン](data-factory-create-pipelines.md) の HDInsight Hive アクティビティでは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) または [オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) の Windows/Linux ベースの HDInsight クラスターで Hive クエリを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 
 ## <a name="syntax"></a>構文
-
     {
         "name": "Hive Activity",
         "description": "description",
@@ -59,23 +59,21 @@ Data Factory [パイプライン](data-factory-create-pipelines.md) の HDInsigh
           "interval": 1
         }
     }
-    
-## <a name="syntax-details"></a>構文の詳細
 
-プロパティ | 説明 | 必須
--------- | ----------- | --------
-name | アクティビティの名前 | はい
-説明 | アクティビティの用途を説明するテキストです。 | なし
-type | HDinsightHive | はい
-inputs | Hive アクティビティによって使用される入力 | なし
-outputs | Hive アクティビティによって生成される出力 | はい 
-linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 | はい 
-script (スクリプト) | Hive スクリプトをインラインに指定します | なし
-スクリプトのパス | Hive スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 | なし 
-defines | 'hiveconf' を使用して Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します  | なし
+## <a name="syntax-details"></a>構文の詳細
+| プロパティ | 説明 | 必須 |
+| --- | --- | --- |
+| name |アクティビティの名前 |はい |
+| 説明 |アクティビティの用途を説明するテキストです。 |なし |
+| type |HDinsightHive |はい |
+| inputs |Hive アクティビティによって使用される入力 |なし |
+| outputs |Hive アクティビティによって生成される出力 |はい |
+| linkedServiceName |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |はい |
+| script (スクリプト) |Hive スクリプトをインラインに指定します |なし |
+| スクリプトのパス |Hive スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |なし |
+| defines |'hiveconf' を使用して Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |なし |
 
 ## <a name="example"></a>例
-
 ゲームのログ分析の例について考えてみましょう。ここでは、お客様の会社が発売したゲームをユーザーがプレイした時間を特定します。 
 
 次のログはゲーム ログのサンプルです。コンマ (`,`) で区切られていて、ProfileID、SessionStart、Duration、SrcIPAddress、GameType の各フィールドが含まれています。
@@ -97,14 +95,14 @@ defines | 'hiveconf' を使用して Hive スクリプト内で参照するキ�
         SrcIPAddress    string, 
         GameType        string
     ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION 'wasb://adfwalkthrough@<storageaccount>.blob.core.windows.net/samplein/'; 
-    
+
     DROP TABLE IF EXISTS HiveSampleOut; 
     CREATE EXTERNAL TABLE HiveSampleOut 
     (   
         ProfileID   string, 
         Duration    int
     ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION 'wasb://adfwalkthrough@<storageaccount>.blob.core.windows.net/sampleout/';
-    
+
     INSERT OVERWRITE TABLE HiveSampleOut
     Select 
         ProfileID,
@@ -117,52 +115,53 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
 2. [リンクされたサービス](data-factory-azure-blob-connector.md) を作成し、データをホストする Azure BLOB ストレージへの接続を構成します。 このリンクされたサービスを "StorageLinkedService" と呼ぶことにしましょう。
 3. 入力と出力のデータを指定する [データセット](data-factory-create-datasets.md) を作成します。 入力データセットは "HiveSampleIn"、出力データセットは "HiveSampleOut" と呼ぶことにしましょう。
 4. 上記の手順 2. で構成した Azure Blob Storage にファイルとして Hive クエリをコピーします。 データをホストするストレージがこのクエリ ファイルをホストするものと異なる場合には、別の Azure Storage のリンクされたサービスを作成し、アクティビティでこのリンクされたサービスを参照します。 **scriptPath ** を使用して Hive クエリ ファイルへのパスを指定し、**scriptLinkedService** を使用して、このスクリプト ファイルを含む Azure Storage を指定します。 
+   
+   > [!NOTE]
+   > また、**script** プロパティを使用して、アクティビティ定義で Hive スクリプトをインライン化することもできます。 JSON ドキュメント内のスクリプトのすべての特殊文字をエスケープする必要があり、デバッグの問題を引き起こすことがあるため、この方法はお勧めできません。 手順 4. の使用をお勧めします。
+   > 
+   > 
+5. HDInsightHive アクティビティでパイプラインを作成します。 このアクティビティはデータの処理や変換を行います。
+   
+       {
+         "name": "HiveActivitySamplePipeline",
+         "properties": {
+           "activities": [
+             {
+               "name": "HiveActivitySample",
+               "type": "HDInsightHive",
+               "inputs": [
+                 {
+                   "name": "HiveSampleIn"
+                 }
+               ],
+               "outputs": [
+                 {
+                   "name": "HiveSampleOut"
+                 }
+               ],
+               "linkedServiceName": "HDInsightLinkedService",
+               "typeproperties": {
+                 "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
+                 "scriptLinkedService": "StorageLinkedService"
+               },
+               "scheduler": {
+                   "frequency": "Hour",
+                   "interval": 1
+               }
+             }
+           ]
+         }
+       }
+6. パイプラインをデプロイします。 詳細については、 [パイプラインの作成](data-factory-create-pipelines.md) に関する記事を参照してください。 
+7. データ ファクトリの監視と管理のビューを使用して、パイプラインを監視します。 詳細については、 [Data Factory パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md) に関する記事を参照してください。 
 
-    > [AZURE.NOTE] また、**script** プロパティを使用して、アクティビティ定義で Hive スクリプトをインライン化することもできます。 JSON ドキュメント内のスクリプトのすべての特殊文字をエスケープする必要があり、デバッグの問題を引き起こすことがあるため、この方法はお勧めできません。 手順 4. の使用をお勧めします。
-5.  HDInsightHive アクティビティでパイプラインを作成します。 このアクティビティはデータの処理や変換を行います。
-
-        {
-          "name": "HiveActivitySamplePipeline",
-          "properties": {
-            "activities": [
-              {
-                "name": "HiveActivitySample",
-                "type": "HDInsightHive",
-                "inputs": [
-                  {
-                    "name": "HiveSampleIn"
-                  }
-                ],
-                "outputs": [
-                  {
-                    "name": "HiveSampleOut"
-                  }
-                ],
-                "linkedServiceName": "HDInsightLinkedService",
-                "typeproperties": {
-                  "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
-                  "scriptLinkedService": "StorageLinkedService"
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                }
-              }
-            ]
-          }
-        }
-
-6.  パイプラインをデプロイします。 詳細については、 [パイプラインの作成](data-factory-create-pipelines.md) に関する記事を参照してください。 
-7.  データ ファクトリの監視と管理のビューを使用して、パイプラインを監視します。 詳細については、 [Data Factory パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md) に関する記事を参照してください。 
-
-
-## <a name="specifying-parameters-for-a-hive-script"></a>Hive スクリプトのパラメーターの指定  
+## <a name="specifying-parameters-for-a-hive-script"></a>Hive スクリプトのパラメーターの指定
 ゲームのログが Azure BLOB ストレージに毎日取り込まれ、日付と時刻で分割されたフォルダーに格納される例を考えてみましょう。 Hive スクリプトをパラメーター化し、実行時に入力フォルダーの場所を動的に渡し、さらに、日付と時刻で分割された出力も生成する必要があるとします。
 
 パラメーター化された Hive スクリプトを使用するには、次の手順に従います。
 
-- **defines**でパラメーターを定義します。
-
+* **defines**でパラメーターを定義します。
+  
         {
             "name": "HiveActivitySamplePipeline",
             "properties": {
@@ -197,9 +196,8 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
             ]
           }
         }
-
-- Hive スクリプトでは、 **${hiveconf:parameterName}**を使用してパラメーターを参照します。 
-
+* Hive スクリプトでは、 **${hiveconf:parameterName}**を使用してパラメーターを参照します。 
+  
         DROP TABLE IF EXISTS HiveSampleIn; 
         CREATE EXTERNAL TABLE HiveSampleIn 
         (
@@ -209,38 +207,26 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
             SrcIPAddress    string, 
             GameType    string
         ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:Input}'; 
-        
+  
         DROP TABLE IF EXISTS HiveSampleOut; 
         CREATE EXTERNAL TABLE HiveSampleOut 
         (
             ProfileID   string, 
             Duration    int
         ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:Output}';
-        
+  
         INSERT OVERWRITE TABLE HiveSampleOut
         Select 
             ProfileID,
             SUM(Duration)
         FROM HiveSampleIn Group by ProfileID
 
-
 ## <a name="see-also"></a>関連項目
-- [Pig アクティビティ](data-factory-pig-activity.md)
-- [MapReduce アクティビティ](data-factory-map-reduce.md)
-- [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
-- [Spark プログラムを呼び出す](data-factory-spark.md)
-- [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
-
-
-
-
-
-
-
-
-
-
-
+* [Pig アクティビティ](data-factory-pig-activity.md)
+* [MapReduce アクティビティ](data-factory-map-reduce.md)
+* [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
+* [Spark プログラムを呼び出す](data-factory-spark.md)
+* [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,26 +1,25 @@
 
 
-<properties
-   pageTitle="Azure Application Gateway の正常性監視の概要 | Microsoft Azure"
-   description="Azure Application Gateway の監視機能の概要"
-   services="application-gateway"
-   documentationCenter="na"
-   authors="georgewallace"
-   manager="carmonm"
-   editor=""
-   tags="azure-resource-manager"
-/>
-<tags  
-   ms.service="application-gateway"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="08/29/2016"
-   ms.author="gwallace" />
+---
+title: Azure Application Gateway の正常性監視の概要 | Microsoft Docs
+description: Azure Application Gateway の監視機能の概要
+services: application-gateway
+documentationcenter: na
+author: georgewallace
+manager: carmonm
+editor: ''
+tags: azure-resource-manager
 
+ms.service: application-gateway
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 08/29/2016
+ms.author: gwallace
+
+---
 # Application Gateway による正常性監視の概要
-
 既定では、Azure Application Gateway はバック エンド プールにあるすべてのリソースの状態を監視して、異常とみなしたリソースをプールから自動的に削除します。Application Gateway は異常なインスタンスを継続的に監視し、このインスタンスが利用可能になり正常性プローブに応答するようになると、正常バック エンド プールに戻します。
 
 ![application gateway probe example][1]
@@ -28,7 +27,6 @@
 既定の正常性プローブによる監視を行うだけでなく、アプリケーションの要件に合わせて正常性プローブをカスタマイズすることもできます。この記事では、既定とカスタムの両方の正常性プローブについて説明します。
 
 ## 既定の正常性プローブ
-
 カスタム プローブ構成を設定しない場合、アプリケーション ゲートウェイにより既定の正常性プローブが自動で構成されます。監視は、バックエンド プールに構成済みの IP アドレスに対して HTTP 要求を行うことで実行されます。
 
 たとえば、バックエンド サーバー A、B、C を使用して ポート 80 で HTTP ネットワーク トラフィックを受信するように、アプリケーション ゲートウェイを構成したとします。既定の正常性監視では、30 秒ごとにこれら 3 つのサーバーに対して HTTP 応答が正常であるかどうかがテストされます。正常な HTTP 応答の[状態コード](https://msdn.microsoft.com/library/aa287675.aspx) は、200 から 399 の間です。
@@ -36,34 +34,30 @@
 サーバー A に対する既定のプローブ チェックが失敗した場合、アプリケーション ゲートウェイはサーバー A をバックエンド プールから削除するため、ネットワーク トラフィックがこのサーバーに送られなくなります。既定のプローブは、削除後もサーバー A を 30 秒ごとにチェックし続けます。サーバー A は、既定の正常性プローブからの要求に正常に応答するようになるとバックエンド プールに「正常」として戻され、このサーバーへのトラフィックの送信が再開されます。
 
 ### 既定の正常性プローブの設定
-
-|プローブのプロパティ | 値 | Description|
-|---|---|---|
-| プローブの URL| http://127.0.0.1:\<port>/ | URL パス |
-| 間隔 | 30 | プローブの間隔 (秒) |
-| タイムアウト | 30 | プローブのタイムアウト (秒) |
-| 異常のしきい値 | 3 | プローブの再試行回数。プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
+| プローブのプロパティ | 値 | Description |
+| --- | --- | --- |
+| プローブの URL |http://127.0.0.1:\<port>/ |URL パス |
+| 間隔 |30 |プローブの間隔 (秒) |
+| タイムアウト |30 |プローブのタイムアウト (秒) |
+| 異常のしきい値 |3 |プローブの再試行回数。プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
 
 既定のプローブは、正常性を判断する際に http://127.0.0.1:\<port> のみをチェックします。カスタム URL をチェックするように正常性プローブを構成するか、その他の設定を変更する必要がある場合は、以下の手順に従ってカスタム プローブを使用する必要があります。
 
 ## カスタムの正常性プローブ
-
 カスタム プローブを使用すると、正常性監視をより細かく制御できます。カスタム プローブを使用する場合、プローブの間隔、テスト対象の URL とパス、バックエンド プール インスタンスを「異常」とマークするまでの応答の失敗回数を構成することができます。
 
 ### カスタムの正常性プローブの設定
-
-|プローブのプロパティ| Description|
-|---|---|
-| Name | プローブの名前。この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
-| プロトコル | プローブを送信するために使用するプロトコル。有効なプロトコルは、HTTP または HTTPS です。 |
-| Host | プローブを送信するホスト名。 |
-| パス | プローブの相対パス。パスは、先頭が '/' である必要があります。プローブの送信先は <protocol>://<host>:<port><path> になります。 |
-| 間隔 | プローブの間隔 (秒)。2 つの連続するプローブの時間間隔。|
-| タイムアウト | プローブのタイムアウト (秒)。プローブは、このタイムアウト期間内に正常な応答を受信しない場合に「失敗」とマークされます。 |
-| 異常のしきい値 | プローブの再試行回数。プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
+| プローブのプロパティ | Description |
+| --- | --- |
+| Name |プローブの名前。この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
+| プロトコル |プローブを送信するために使用するプロトコル。有効なプロトコルは、HTTP または HTTPS です。 |
+| Host |プローブを送信するホスト名。 |
+| パス |プローブの相対パス。パスは、先頭が '/' である必要があります。プローブの送信先は <protocol>://<host>:<port><path> になります。 |
+| 間隔 |プローブの間隔 (秒)。2 つの連続するプローブの時間間隔。 |
+| タイムアウト |プローブのタイムアウト (秒)。プローブは、このタイムアウト期間内に正常な応答を受信しない場合に「失敗」とマークされます。 |
+| 異常のしきい値 |プローブの再試行回数。プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
 
 ## 次のステップ
-
 Application Gateway による正常性監視について学習した後は、Azure Portal で[カスタム正常性プローブ](application-gateway-create-probe-portal.md)を構成するか、または PowerShell と Azure Resource Manager デプロイメント モデルを使用して[カスタム正常性プローブ](application-gateway-create-probe-ps.md)を構成できます。
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png

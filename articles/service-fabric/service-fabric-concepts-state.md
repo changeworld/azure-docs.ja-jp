@@ -1,21 +1,21 @@
-<properties
-   pageTitle="状態の定義と管理 | Microsoft Azure"
-   description="Service Fabric でサービスの状態を定義し管理する方法"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="appi101"
-   manager="timlt"
-   editor=""/>
+---
+title: 状態の定義と管理 | Microsoft Docs
+description: Service Fabric でサービスの状態を定義し管理する方法
+services: service-fabric
+documentationcenter: .net
+author: appi101
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/10/2016"
-   ms.author="aprameyr"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/10/2016
+ms.author: aprameyr
 
+---
 # サービスの状態
 **サービスの状態** とは、サービスが機能するために必要とするデータのことです。これには、サービスが機能するために読み取りや書き込みをする、データ構造および変数が含まれます。
 
@@ -31,13 +31,10 @@ Azure Service Fabric の場合、前者のサービスはステートレス サ�
 状態は、このコードを操作するコードと同じ場所に配置することもできます。Service Fabric のステートフル サービスは、このモデルを使用して構築されます。Service Fabric は、可用性が高く、障害発生時のフォールト トレランスの高い状態を実現するインフラストラクチャを提供します。
 
 ## 次のステップ
-
 Service Fabric の概念の詳細については、次を参照してください。
 
-- [Service Fabric サービスの可用性](service-fabric-availability-services.md)
-
-- [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
-
-- [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
+* [Service Fabric サービスの可用性](service-fabric-availability-services.md)
+* [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
+* [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
 
 <!---HONumber=AcomDC_0810_2016-->

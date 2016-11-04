@@ -1,27 +1,28 @@
-<properties
-   pageTitle="Recovery Services コンテナーに関する FAQ | Microsoft Azure"
-   description="このバージョンの FAQ は、Azure Backup サービスのパブリック プレビュー リリースをサポートしています。バックアップ エージェント、バックアップと保持、復元、セキュリティと Azure Backup ソリューションに関する一般的な質問に対する回答。"
-   services="backup"
-   documentationCenter=""
-   authors="markgalioto"
-   manager="jwhit"
-   editor=""
-   keywords="バックアップ ソリューション、バックアップ サービス"/>
+---
+title: Recovery Services コンテナーに関する FAQ | Microsoft Docs
+description: このバージョンの FAQ は、Azure Backup サービスのパブリック プレビュー リリースをサポートしています。バックアップ エージェント、バックアップと保持、復元、セキュリティと Azure Backup ソリューションに関する一般的な質問に対する回答。
+services: backup
+documentationcenter: ''
+author: markgalioto
+manager: jwhit
+editor: ''
+keywords: バックアップ ソリューション、バックアップ サービス
 
-<tags
-   ms.service="backup"
-   ms.workload="storage-backup-recovery"
-	 ms.tgt_pltfrm="na"
-	 ms.devlang="na"
-	 ms.topic="get-started-article"
-	 ms.date="08/21/2016"
-	 ms.author="trinadhk; markgal; jimpark;"/>
+ms.service: backup
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/21/2016
+ms.author: trinadhk; markgal; jimpark;
 
+---
 # Recovery Services コンテナー - FAQ
-
-> [AZURE.SELECTOR]
-- [クラシック モードでの Backup に関する FAQ](backup-azure-backup-faq.md)
-- [Resource Manager モードでの Backup に関する FAQ](backup-azure-backup-ibiza-faq.md)
+> [!div class="op_single_selector"]
+> * [クラシック モードでの Backup に関する FAQ](backup-azure-backup-faq.md)
+> * [Resource Manager モードでの Backup に関する FAQ](backup-azure-backup-ibiza-faq.md)
+> 
+> 
 
 この記事では、Recovery Services コンテナーに固有の情報を提供すると共に、[Azure Backup に関する FAQ](backup-azure-backup-faq.md) を補足します。Azure Backup FAQ は、Azure Backup サービスに関する質問と回答の完全なセットを提供します。
 

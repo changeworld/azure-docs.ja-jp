@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Azure AD Connect: 設計概念 |Microsoft Azure"
-   description="このトピックでは、特定の実装設計の各領域について詳しく説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="billmath"
-   manager="femila"
-   editor=""/>
+---
+title: 'Azure AD Connect: 設計概念 | Microsoft Docs'
+description: このトピックでは、特定の実装設計の各領域について詳しく説明します。
+services: active-directory
+documentationcenter: ''
+author: billmath
+manager: femila
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.custom = "azure-ad-connect"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="Identity"
-   ms.date="09/13/2016"
-   ms.author="billmath"/>
+ms.service: active-directory
+ms.custom: azure-ad-connect
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: Identity
+ms.date: 09/13/2016
+ms.author: billmath
 
-
+---
 # <a name="azure-ad-connect:-design-concepts"></a>Azure AD Connect: 設計概念
 このトピックの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 ここでは特定の領域について詳しく説明しますが、これらの概念については、他のトピックでも簡単に説明しています。
 
@@ -28,23 +27,23 @@ sourceAnchor 属性は、 *オブジェクトの有効期間中に変更でき�
 
 この属性は、次のシナリオで使用されます。
 
-- 新しい同期エンジン サーバーを構築する場合、または障害復旧シナリオの後に再構築する場合、この属性によって、Azure AD 内の既存のオブジェクトがオンプレミスのオブジェクトとリンクされます。
-- クラウド専用の ID から同期 ID モデルに移行する場合、この属性によって、Azure AD 内の既存のオブジェクトとオンプレミスのオブジェクトを "完全一致" させることができます。
-- フェデレーションを使用する場合は、ユーザーを一意に識別するために、要求でこの属性と共に **userPrincipalName** を使用します。
+* 新しい同期エンジン サーバーを構築する場合、または障害復旧シナリオの後に再構築する場合、この属性によって、Azure AD 内の既存のオブジェクトがオンプレミスのオブジェクトとリンクされます。
+* クラウド専用の ID から同期 ID モデルに移行する場合、この属性によって、Azure AD 内の既存のオブジェクトとオンプレミスのオブジェクトを "完全一致" させることができます。
+* フェデレーションを使用する場合は、ユーザーを一意に識別するために、要求でこの属性と共に **userPrincipalName** を使用します。
 
 ユーザーに関連するのは sourceAnchor であることから、このトピックではこの属性のみについて説明します。 すべてのオブジェクトの種類に同じ規則が適用されますが、通常この問題が関係するのはユーザーのみです。
 
 ### <a name="selecting-a-good-sourceanchor-attribute"></a>適切な sourceAnchor 属性の選択
 属性の値は、次の規則に従う必要があります。
 
-- 60 文字未満であること
-    - a ～ z、A ～ Z、0 ～ 9 のいずれでもない文字はエンコードされ、3 文字としてカウントされます。
-- 次の特殊文字が含まれていないこと: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
-- グローバルに一意であること
-- 文字列、整数、バイナリのいずれかであること
-- ユーザーの名前に基づかないこと (変更されるため)
-- 大文字と小文字の区別がないこと、および大文字と小文字で異なる可能性がある値は避けること
-- オブジェクトの作成時に割り当てること
+* 60 文字未満であること
+  * a ～ z、A ～ Z、0 ～ 9 のいずれでもない文字はエンコードされ、3 文字としてカウントされます。
+* 次の特殊文字が含まれていないこと: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
+* グローバルに一意であること
+* 文字列、整数、バイナリのいずれかであること
+* ユーザーの名前に基づかないこと (変更されるため)
+* 大文字と小文字の区別がないこと、および大文字と小文字で異なる可能性がある値は避けること
+* オブジェクトの作成時に割り当てること
 
 選択された sourceAnchor が文字列型でない場合、Azure AD Connect では、特殊文字が表示されないように、属性値に対して Base64Encode を実行します。 ADFS とは別のフェデレーション サーバーを使用する場合、そのサーバーでも属性に対して Base64Encode を実行できることを確認してください。
 
@@ -63,9 +62,9 @@ Azure AD でオブジェクトを作成して、ID を同期した後に、sourc
 
 このような理由から、Azure AD Connect には次の制限が適用されます。
 
-- sourceAnchor 属性を設定できるのは、初回インストール時のみです。 インストール ウィザードを再実行すると、このオプションは読み取り専用になります。 この設定を変更する必要がある場合は、アンインストールして再インストールする必要があります。
-- 別の Azure AD Connect サーバーをインストールする場合は、前に使用したのと同じ sourceAnchor 属性を選択する必要があります。 以前に DirSync を使用していて Azure AD Connect に移行する場合は、**objectGUID** を使用する必要があります。これは、DirSync で使用される属性です。
-- Azure AD へのオブジェクトのエクスポート後に sourceAnchor の値を変更すると、Azure AD Connect Sync からエラーがスローされます。問題を解決してソース ディレクトリで sourceAnchor を元に戻すまでは、そのオブジェクトをそれ以上変更できなくなります。
+* sourceAnchor 属性を設定できるのは、初回インストール時のみです。 インストール ウィザードを再実行すると、このオプションは読み取り専用になります。 この設定を変更する必要がある場合は、アンインストールして再インストールする必要があります。
+* 別の Azure AD Connect サーバーをインストールする場合は、前に使用したのと同じ sourceAnchor 属性を選択する必要があります。 以前に DirSync を使用していて Azure AD Connect に移行する場合は、**objectGUID** を使用する必要があります。これは、DirSync で使用される属性です。
+* Azure AD へのオブジェクトのエクスポート後に sourceAnchor の値を変更すると、Azure AD Connect Sync からエラーがスローされます。問題を解決してソース ディレクトリで sourceAnchor を元に戻すまでは、そのオブジェクトをそれ以上変更できなくなります。
 
 ## <a name="azure-ad-sign-in"></a>Azure AD のサインイン
 オンプレミス ディレクトリを Azure AD に統合する場合、同期の設定がユーザーの認証方法に与える影響について理解することが重要です。 Azure AD では、userPrincipalName (UPN) がユーザーの認証に使用されます。 ただし、ユーザーを同期する場合は、userPrincipalName の値として使用される属性を慎重に選択する必要があります。
@@ -73,8 +72,8 @@ Azure AD でオブジェクトを作成して、ID を同期した後に、sourc
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>userPrincipalName の属性を選択する
 Azure で使用する UPN の値を指定するための属性を選択する場合、次のことを確認する必要があります。
 
-- 属性値が UPN の構文 (RFC 822) に準拠していること (つまり、 username@domain
-- 値のサフィックスが、Azure AD で確認済みのカスタム ドメインのいずれかに一致すること
+* 属性値が UPN の構文 (RFC 822) に準拠していること (つまり、 username@domain
+* 値のサフィックスが、Azure AD で確認済みのカスタム ドメインのいずれかに一致すること
 
 簡単設定では、属性の値として userPrincipalName が想定されます。 Azure にサインインする必要のあるユーザーの値が userPrincipalName 属性に含まれていない場合は、 **カスタム インストール**を行う必要があります。
 
@@ -92,8 +91,6 @@ John は、contoso.com に属するユーザーです。 Azure AD ディレク�
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

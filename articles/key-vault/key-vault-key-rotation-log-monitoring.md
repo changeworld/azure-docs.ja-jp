@@ -1,32 +1,33 @@
-<properties
-	pageTitle="エンド ツー エンドのキー ローテーションと監査で Key Vault を設定する方法 | Microsoft Azure"
-	description="キー ローテーションとキー コンテナー ログの監視による設定について説明します"
-	services="key-vault"
-	documentationCenter=""
-	authors="swgriffith"
-	manager=""
-	tags=""/>
+---
+title: エンド ツー エンドのキー ローテーションと監査で Key Vault を設定する方法 | Microsoft Docs
+description: キー ローテーションとキー コンテナー ログの監視による設定について説明します
+services: key-vault
+documentationcenter: ''
+author: swgriffith
+manager: ''
+tags: ''
 
-<tags
-	ms.service="key-vault"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/05/2016"
-	ms.author="jodehavi;stgriffi"/>
-#エンド ツー エンドのキー ローテーションと監査で Key Vault を設定する方法
+ms.service: key-vault
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/05/2016
+ms.author: jodehavi;stgriffi
 
-##はじめに
-
+---
+# エンド ツー エンドのキー ローテーションと監査で Key Vault を設定する方法
+## はじめに
 Azure Key Vault を作成したら、そのコンテナーを使って、キーとシークレットを保存できます。アプリケーションでキーやシークレットを保持する必要がなくなりました。キーやシークレットは、必要に応じてキー コンテナーに要求します。これによりアプリケーションの動作に影響を与えずにキーとシークレットを更新できるため、キーおよびシークレット管理の動作を取り巻く可能性の幅が広がります。
 
 この記事では、Azure Key Vault を使ってシークレット (ここでは、アプリケーションがアクセスする Azure Storage アカウント キー) を格納する例について説明します。また、そのストレージ アカウント キーのスケジュールされたローテーションの実装も紹介します。最後に、キー コンテナー監査ログを監視し、予期しない要求が行われたときにアラートを生成する方法のデモを見ていきます。
 
-> [AZURE.NOTE] このチュートリアルの目的は、Azure Key Vault の初期設定について詳しく説明することではありません。詳細については、「[Azure Key Vault の概要](key-vault-get-started.md)」をご覧ください。また、クロスプラットフォーム コマンドライン インターフェイスの手順については、[対応するチュートリアル](key-vault-manage-with-cli.md)をご覧ください。
+> [!NOTE]
+> このチュートリアルの目的は、Azure Key Vault の初期設定について詳しく説明することではありません。詳細については、「[Azure Key Vault の概要](key-vault-get-started.md)」をご覧ください。また、クロスプラットフォーム コマンドライン インターフェイスの手順については、[対応するチュートリアル](key-vault-manage-with-cli.md)をご覧ください。
+> 
+> 
 
-##KeyVault の設定
-
+## KeyVault の設定
 アプリケーションが Azure Key Vault からシークレットを取得できるようにするには、最初にシークレットを作成し、それをコンテナーにアップロードする必要があります。次に示すように、これは PowerShell を使用して簡単に行うことができます。
 
 Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。
@@ -68,11 +69,13 @@ Set-AzureKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $
 Get-AzureKeyVaultSecret –VaultName <vaultName>
 ```
 
-##アプリケーションの設定
-
+## アプリケーションの設定
 これでシークレットを格納できました。次は、コードを使って、そのシークレットを取得して使用します。これに必要な手順はいくつかありますが、最も重要なのは、アプリケーションを Azure Active Directory に登録し、Azure Key Vault にアプリケーション情報を指定して、Azure Key Vault がアプリケーションからの要求を許可できるようにすることです。
 
-> [AZURE.NOTE] アプリケーションは、Key Vault と同じ Azure Active Directory テナントに作成する必要があります。
+> [!NOTE]
+> アプリケーションは、Key Vault と同じ Azure Active Directory テナントに作成する必要があります。
+> 
+> 
 
 最初に、Azure Active Directory の [アプリケーション] タブを開きます
 
@@ -142,7 +145,7 @@ using Microsoft.Azure.KeyVault;
 ```
 
 次に、メソッド呼び出しを追加して Key Vault を呼び出し、シークレットを取得します。このメソッドでは、前の手順で保存したシークレットの URI を提供します。上記で作成した Utils クラスから GetToken メソッドを使用している点に注意してください。
-    
+
 ```csharp
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
 
@@ -151,8 +154,7 @@ var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 
 アプリケーションを実行するときに、Azure Active Directory への認証を行い、Azure Key Vault からシークレット値を取得しているはずです。
 
-##Azure Automation を使用したキー ローテーション
-
+## Azure Automation を使用したキー ローテーション
 Azure Key Vault シークレットとして格納する値のローテーション戦略は、さまざまな方法で実装できます。シークレットのローテーションは、手動プロセスの一環として行ったり、API 呼び出しを利用してプログラムによって実行したりできます。また、自動化スクリプトを使うこともできます。この記事では、Azure PowerShell と Azure Automation を組み合わせて使用して、Azure Storage アカウントのアクセス キーを変更し、その新しいキーでキー コンテナーを更新します。
 
 Azure Automation でキー コンテナーのシークレット値を設定できるようにするには、Azure Automation インスタンスを確立したときに作成された、"AzureRunAsConnection" という接続のクライアント ID を取得する必要があります。この ID を取得するには、Azure Automation インスタンスから [アセット] を選択します。そこで [接続]、[AzureRunAsConnection] サービス プリンシパルの順に選択し、"アプリケーション ID" をメモします。
@@ -161,14 +163,17 @@ Azure Automation でキー コンテナーのシークレット値を設定で�
 
 [アセット] ウィンドウで [モジュール] も選択します。モジュールでは、[ギャラリー] を選択し、次の各モジュールの更新バージョンを検索して、インポートします。
 
-	Azure
-	Azure.Storage	
-	AzureRM.Profile
-	AzureRM.KeyVault
-	AzureRM.Automation
-	AzureRM.Storage
-	
-> [AZURE.NOTE] この記事が書かれた時点では、以下のスクリプトで更新が必要なのは上記のモジュールだけです。自動化ジョブが失敗した場合は、必要なモジュールとその依存関係がすべてインポートされていることを確認してください。
+    Azure
+    Azure.Storage    
+    AzureRM.Profile
+    AzureRM.KeyVault
+    AzureRM.Automation
+    AzureRM.Storage
+
+> [!NOTE]
+> この記事が書かれた時点では、以下のスクリプトで更新が必要なのは上記のモジュールだけです。自動化ジョブが失敗した場合は、必要なモジュールとその依存関係がすべてインポートされていることを確認してください。
+> 
+> 
 
 Azure Automation 接続のアプリケーション ID を取得したら、このアプリケーションにコンテナー内のシークレットを更新するアクセス権があることを、Azure Key Vault に通知する必要があります。これを行うには、次の PowerShell コマンドを使用します。
 
@@ -225,8 +230,7 @@ $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -Secre
 
 エディター ペインで [テスト ウィンドウ] を選択して、スクリプトをテストします。エラーなしでスクリプトが実行されると、[Publish (発行)] オプションを選択できます。その後、Runbook 構成ウィンドウに戻って、Runbook のスケジュールを適用できます。
 
-##Key Vault 監査のパイプライン
-
+## Key Vault 監査のパイプライン
 Azure Key Vault を設定するときに、監査をオンにして、Key Vault へのアクセス要求のログを収集できます。これらのログは、指定された Azure Storage アカウントに保存され、抽出、監視、および分析することができます。ここでは、Azure Functions、Azure Logic Apps、および Key Vault の監査ログを利用してパイプラインを作成し、Web アプリのアプリ ID と一致するアプリがコンテナーからシークレットを取得したときに、電子メールを送信するシナリオを見ていきます。
 
 最初に、Key Vault へのログオンを有効にする必要があります。これを行うには、次の PowerShell コマンドを使用します (詳細については、[こちら](key-vault-logging.md)をご覧ください)。
@@ -239,7 +243,10 @@ Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id
 
 ログオンを有効にすると、監査ログによって、指定されたストレージ アカウントへの収集が開始されます。こうしたログには、いつ、だれが、どのような方法で Key Vault にアクセスしたかに関するイベントが含まれます。
 
-> [AZURE.NOTE] Key Vault の操作を行ってからログ情報にアクセスできるようになるまでの時間は最大で 10 分です。ほとんどの場合は、これよりも早く確認できます。
+> [!NOTE]
+> Key Vault の操作を行ってからログ情報にアクセスできるようになるまでの時間は最大で 10 分です。ほとんどの場合は、これよりも早く確認できます。
+> 
+> 
 
 次は、[Azure Service Bus キューを作成](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)します。ここにキー コンテナーの監査ログがプッシュされます。キューに入れられたログは、Logic App が取得して、処理を実行します。Service Bus は比較的簡単に作成できます。簡単な作成手順を次に示します。
 
@@ -366,15 +373,18 @@ static string GetContainerSasUri(CloudBlockBlob blob)
     return blob.Uri + sasBlobToken;
 }
 ```
-> [AZURE.NOTE] 上記のコードの変数を、Key Vault ログが書き込まれたストレージ アカウント、以前に作成した Service Bus、およびキー コンテナーのストレージ ログへの特定のパスを指すように置き換えます。
+> [!NOTE]
+> 上記のコードの変数を、Key Vault ログが書き込まれたストレージ アカウント、以前に作成した Service Bus、およびキー コンテナーのストレージ ログへの特定のパスを指すように置き換えます。
+> 
+> 
 
-関数は Key Vault ログが書き込まれたストレージ アカウントから最新のログ ファイルを取得します。その後、そのファイルから最新のイベントを取得して、Service Bus キューにプッシュします。1 つのファイルに複数のイベントが (たとえば 1 時間以上にわたって) 保持されている可能性があるため、_sync.txt_ ファイルを作成します。関数はこのファイルも参照して、取得された最後のイベントのタイム スタンプを確認します。これにより、同じイベントが複数回プッシュされなくなります。この _sync.txt_ ファイルには、最後に発生したイベントのタイムスタンプのみが含まれます。ログは、読み込まれたときに、タイムスタンプに基づいて正しく並べ替える必要があります。
+関数は Key Vault ログが書き込まれたストレージ アカウントから最新のログ ファイルを取得します。その後、そのファイルから最新のイベントを取得して、Service Bus キューにプッシュします。1 つのファイルに複数のイベントが (たとえば 1 時間以上にわたって) 保持されている可能性があるため、*sync.txt* ファイルを作成します。関数はこのファイルも参照して、取得された最後のイベントのタイム スタンプを確認します。これにより、同じイベントが複数回プッシュされなくなります。この *sync.txt* ファイルには、最後に発生したイベントのタイムスタンプのみが含まれます。ログは、読み込まれたときに、タイムスタンプに基づいて正しく並べ替える必要があります。
 
 この関数では、Azure Functions ですぐには使用できない追加ライブラリをいくつか参照します。ライブラリを追加するには、Azure Functions で、nuget を使用してそのライブラリをプルするがあります。[ファイルを表示] オプションを選択します
 
 ![[ファイルの表示] オプション](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
 
-次に、以下のコンテンツが含まれる _project.json_ という新しいファイルを追加します。
+次に、以下のコンテンツが含まれる *project.json* という新しいファイルを追加します。
 
 ```json
     {
@@ -390,16 +400,15 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 ```
 "保存" すると、Azure Functions によって必要なバイナリがダウンロードされます。
 
-**[統合]** タブに切り替えて、関数内で使用するタイマー パラメーターにわかりやすい名前を付けます。上記のコードでは、タイマーは _myTimer_ と呼ばれます。[CRON 式](../app-service-web/web-sites-create-web-jobs.md#CreateScheduledCRON) を次のように指定します: 0 ***** (1 分ごとに関数を実行するタイマーの場合)。
+**[統合]** タブに切り替えて、関数内で使用するタイマー パラメーターにわかりやすい名前を付けます。上記のコードでは、タイマーは *myTimer* と呼ばれます。[CRON 式](../app-service-web/web-sites-create-web-jobs.md#CreateScheduledCRON) を次のように指定します: 0 ***** (1 分ごとに関数を実行するタイマーの場合)。
 
-同じ **[統合]** タブで、種類が _Azure Blob Storage_ になる入力を追加します。これは _sync.txt_ ファイルを指します。このファイルには、関数によって参照される最後のイベントのタイムスタンプが含まれます。これは関数内でパラメーター名によって使用できます。上記のコードの Azure Blob Storage 入力では、パラメーター名は _inputBlob_ です。_sync.txt_ ファイルが存在するストレージ アカウント (同じまたは異なるストレージ アカウントの場合があります) を選択し、パス フィールドに、ファイルが存在するパスを {container-name}/path/to/sync.txt の形式で指定します。
+同じ **[統合]** タブで、種類が *Azure Blob Storage* になる入力を追加します。これは *sync.txt* ファイルを指します。このファイルには、関数によって参照される最後のイベントのタイムスタンプが含まれます。これは関数内でパラメーター名によって使用できます。上記のコードの Azure Blob Storage 入力では、パラメーター名は *inputBlob* です。*sync.txt* ファイルが存在するストレージ アカウント (同じまたは異なるストレージ アカウントの場合があります) を選択し、パス フィールドに、ファイルが存在するパスを {container-name}/path/to/sync.txt の形式で指定します。
 
-種類が _Azure Blob Storage_ になる出力を追加します。これも、入力で定義した _sync.txt_ ファイルを指します。これは、参照される最後のイベントのタイムスタンプを書き込むときに、関数によって使用されます。上記のコードでは、このパラメーターは _outputBlob_ と呼ばれます。
+種類が *Azure Blob Storage* になる出力を追加します。これも、入力で定義した *sync.txt* ファイルを指します。これは、参照される最後のイベントのタイムスタンプを書き込むときに、関数によって使用されます。上記のコードでは、このパラメーターは *outputBlob* と呼ばれます。
 
 これで関数の準備ができました。**[開発]** タブに切り替えて、コードを "保存" します。出力ウィンドウでコンパイル エラーがないかどうかを確認し、エラーがある場合は修正します。コンパイルできる場合、コードは現在実行されており、1 分ごとに Key Vault ログが確認され、新しいイベントすべてが定義済み Service Bus キューにプッシュされます。関数がトリガーされるたびに、ログ情報がログ ウィンドウに書き出されることがわかります。
 
-###Azure Logic App
-
+### Azure Logic App
 次に、Azure Logic App を作成する必要があります。このアプリは、関数が Service Bus キューにプッシュするイベントを取得し、コンテンツを解析して、一致する条件に基づいて電子メールを送信します。
 
 [新規]、[Logic App] の順に移動し、[Logic App を作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。

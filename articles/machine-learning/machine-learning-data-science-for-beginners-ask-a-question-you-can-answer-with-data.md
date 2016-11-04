@@ -1,44 +1,42 @@
-<properties
-   pageTitle="データで回答できる質問をする - 質問の考案 | Microsoft Azure"
-   description="初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの質問を考案する方法について説明します。分類の質問と回帰の質問の比較も含まれます。"
-   keywords="質問の選択,データ サイエンスの質問,質問の考案,質問の考案,回帰の質問,分類の質問,シャープな質問"
-   services="machine-learning"
-   documentationCenter="na"
-   authors="brohrer-ms"
-   manager="jhubbard"
-   editor="cjgronlund"/>
+---
+title: データで回答できる質問をする - 質問の考案 | Microsoft Docs
+description: 初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの質問を考案する方法について説明します。分類の質問と回帰の質問の比較も含まれます。
+keywords: 質問の選択,データ サイエンスの質問,質問の考案,質問の考案,回帰の質問,分類の質問,シャープな質問
+services: machine-learning
+documentationcenter: na
+author: brohrer-ms
+manager: jhubbard
+editor: cjgronlund
 
-<tags
-   ms.service="machine-learning"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/15/2016"
-   ms.author="cgronlun;brohrer;garye"/>
+ms.service: machine-learning
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/15/2016
+ms.author: cgronlun;brohrer;garye
 
+---
 # データで回答できる質問をする
-
 ## ビデオ 3: 初心者向けデータ サイエンス シリーズ
-
 初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの質問を考案する方法について説明します。このビデオには、分類アルゴリズムと回帰アルゴリズムの質問の比較が含まれます。
 
 このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
 
-> [AZURE.VIDEO data-science-for-beginners-ask-a-question-you-can-answer-with-data]
+> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
+> 
+> 
 
 ## このシリーズの他のビデオ
-
 *"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
 
-  * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
-  * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
-  * ビデオ 3: データで回答できる質問をする
-  * ビデオ 4: [単純なモデルで回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
-  * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
+* ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
+* ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
+* ビデオ 3: データで回答できる質問をする
+* ビデオ 4: [単純なモデルで回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
+* ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## トランスクリプト: データで回答できる質問をする
-
 "初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。
 
 このビデオでは、データで回答できる質問を考えるためのヒントが得られます。
@@ -46,7 +44,6 @@
 このシリーズの前の 2 本のビデオ、「データ サイエンスが回答できる 5 つの質問」と「データ サイエンス用のデータの準備はお済みですか?」を視聴すると、このビデオをより効果的に活用できます。
 
 ## シャープな質問をする
-
 これまで、データ サイエンスが、名前 (カテゴリまたはラベルとも呼ばれます) と数値を使用して質問に対する回答を予測するプロセスであることを説明してきました。ただし、どのような質問でも可能なわけではありません。"*シャープな質問*" である必要があります。
 
 あいまいな質問には、名前や数値で答える必要がないからです。シャープな質問であることが必須です。
@@ -58,7 +55,6 @@
 "私の株の売却価格は来週どうなりますか" のようなシャープな質問をした場合、ランプの精は具体的な回答を返して売却価格を予測せざるを得ません。
 
 ## 回答の例: ターゲット データ
-
 質問を考えたら、データの中に回答の例が用意されているかどうかを確認します。
 
 質問が "私の株の売却価格は来週どうなりますか" の場合、データに株価の履歴が含まれている必要があります。
@@ -72,7 +68,6 @@
 ターゲット データを取得していない場合は、取得する必要があります。ターゲットなしで質問に回答することはできません。
 
 ## 質問を考え直す
-
 質問を言い換えてみることで、より意味のある結果が得られることがあります。
 
 "これはデータ ポイント A かデータ ポイント B か" という質問では、何かのカテゴリ (または名前やラベル) を予測します。この質問に回答するには、*"分類アルゴリズム"* を使用します。
@@ -95,10 +90,8 @@
 
 Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" の他のビデオも必ずご覧ください。
 
-
 ## 次のステップ
-
-  * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
-  * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
+* [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
+* [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
 <!---HONumber=AcomDC_0914_2016-->

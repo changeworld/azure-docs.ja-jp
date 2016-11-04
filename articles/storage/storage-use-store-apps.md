@@ -1,38 +1,32 @@
-<properties
-    pageTitle="Windows ストア アプリでの Azure ストレージの使用 | Microsoft Azure"
-    description="Azure BLOB、Queue、Table、または File ストレージを使用する Windows ストア アプリを作成する方法について説明します。"
-    services="storage"
-    documentationCenter=""
-    authors="tamram"
-    manager="carmonm"
-    editor="tysonn"/>
+---
+title: Windows ストア アプリでの Azure ストレージの使用 | Microsoft Docs
+description: Azure BLOB、Queue、Table、または File ストレージを使用する Windows ストア アプリを作成する方法について説明します。
+services: storage
+documentationcenter: ''
+author: tamram
+manager: carmonm
+editor: tysonn
 
-<tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="mobile-windows-store"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="10/18/2016"
-    ms.author="tamram"/>
-    
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: mobile-windows-store
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 10/18/2016
+ms.author: tamram
 
+---
 # <a name="how-to-use-azure-storage-in-windows-store-apps"></a>Windows ストア アプリでの Azure Storage の使用方法
-
 ## <a name="overview"></a>Overview
-
 このガイドでは、Azure ストレージを利用する Windows ストア アプリケーションの開発に着手する方法を紹介します。
 
 ## <a name="download-required-tools"></a>必要なツールのダウンロード
-
-- [Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx) では、Windows ストア アプリケーションのビルド、デバッグ、ローカライズ、パッケージ化、展開を簡単に実行できます。 Visual Studio 2012 以降が必要です。
-- [Windows ランタイム用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage) は、Azure Storage を操作するためのクラス ライブラリを提供します。
-- [Windows ストア アプリケーション用 WCF Data Services ツール](http://www.microsoft.com/download/details.aspx?id=30714) は、Visual Studio の [サービス参照の追加] 機能を拡張し、Windows ストア アプリケーション用のクライアント側 OData サポートを追加します。
+* [Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx) では、Windows ストア アプリケーションのビルド、デバッグ、ローカライズ、パッケージ化、展開を簡単に実行できます。 Visual Studio 2012 以降が必要です。
+* [Windows ランタイム用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage) は、Azure Storage を操作するためのクラス ライブラリを提供します。
+* [Windows ストア アプリケーション用 WCF Data Services ツール](http://www.microsoft.com/download/details.aspx?id=30714) は、Visual Studio の [サービス参照の追加] 機能を拡張し、Windows ストア アプリケーション用のクライアント側 OData サポートを追加します。
 
 ## <a name="develop-apps"></a>アプリケーションの開発
-
 ### <a name="getting-ready"></a>開発の準備
-
 Visual Studio 2012 以降で、新しい Windows ストア アプリケーション プロジェクトを作成します。
 
 ![store-apps-storage-vs-project][store-apps-storage-vs-project]
@@ -42,7 +36,6 @@ Visual Studio 2012 以降で、新しい Windows ストア アプリケーショ
 ![store-apps-storage-choose-library][store-apps-storage-choose-library]
 
 ### <a name="using-the-library-with-the-blob-and-queue-services"></a>BLOB およびキュー サービスでのライブラリの使用
-
 この時点で、アプリケーションは、Azure BLOB およびキュー サービスを呼び出すことができる状態になっています。 Azure ストレージの型を直接参照できるようにするために、次の **using** ステートメントを追加します。
 
     using Microsoft.WindowsAzure.Storage;
@@ -61,7 +54,6 @@ Visual Studio 2012 以降で、新しい Windows ストア アプリケーショ
 アプリケーションをビルドし、実行します。 ボタンをクリックすると、 *container1* というコンテナーがアカウントに存在するかどうかがチェックされ、存在しない場合は作成されます。
 
 ### <a name="using-the-library-with-the-table-service"></a>ライブラリとテーブル サービスの使用
-
 Azure Table サービスとの通信に使用される型は、Windows ストア アプリケーション ライブラリ用の WCF Data Services に依存します。 ここでは、Package Manager Console を使用して、必要な WCF ライブラリへの参照を追加します。
 
 ![store-apps-storage-package-manager][store-apps-storage-package-manager]
@@ -83,8 +75,6 @@ WCF Data Services NuGet パッケージを参照したら、ボタンの **Click
 このコードで、" *table1* " というテーブルがアカウントに存在するかどうかがチェックされ、存在しない場合は作成されます。
 
 ダウンロードした同じパッケージに含まれている Microsoft.WindowsAzure.Storage.Table.dll への参照を追加することもできます。 このライブラリには、リフレクション ベースのシリアル化や汎用クエリなどの追加機能が含まれます。 ただし、このライブラリは JavaScript をサポートしていないことに注意してください。
-
-
 
 [store-apps-storage-vs-project]: ./media/storage-use-store-apps/store-apps-storage-vs-project.png
 [store-apps-storage-choose-library]: ./media/storage-use-store-apps/store-apps-storage-choose-library.png

@@ -1,33 +1,32 @@
-<properties
-	pageTitle="Azure AD v2.0 AngularJS の概要 | Microsoft Azure"
-	description="ユーザーのサインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する Angular JS シングル ページ アプリを構築する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="dstrockis"
-	manager="mbaldwin"
-	editor=""/>
+---
+title: Azure AD v2.0 AngularJS の概要 | Microsoft Docs
+description: ユーザーのサインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する Angular JS シングル ページ アプリを構築する方法について説明します。
+services: active-directory
+documentationcenter: ''
+author: dstrockis
+manager: mbaldwin
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="javascript"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="dastrock"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: javascript
+ms.topic: article
+ms.date: 09/16/2016
+ms.author: dastrock
 
-
+---
 # AngularJS シングル ページ アプリへのサインインの追加 - NodeJS
-
 この記事では、Microsoft が提供するアカウントでのサインインを、Azure Active Directory v2.0 エンドポイントを使用して AngularJS アプリに追加します。v2.0 エンドポイントを使用すると、アプリで単一の統合を実行し、個人アカウントと職場/学校アカウントの両方でユーザーを認証できます。
 
 このサンプルは、タスクをバックエンドの REST API に格納する簡単な To-Do List シングル ページ アプリであり、NodeJS で記述され、Azure AD の OAuth ベアラー トークンを使用して保護されています。AngularJS アプリは、オープン ソースの JavaScript 認証ライブラリ [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js) を使用して、サインイン プロセス全体を処理し、REST API を呼び出すためのトークンを取得します。[Microsoft Graph](https://graph.microsoft.com) や Azure リソース マネージャー API などの他の REST API に対する認証にも、同じパターンを適用できます。
 
-> [AZURE.NOTE]
-	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
+> [!NOTE]
+> Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
+> 
+> 
 
 ## ダウンロード
-
 始めるには、[node.js](https://nodejs.org) をダウンロードしてインストールする必要があります。その後は、スケルトン アプリを複製または[ダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS/archive/skeleton.zip)できます。
 
 ```
@@ -41,17 +40,17 @@ git clone https://github.com/AzureADSamples/SinglePageApp-AngularJS-NodeJS.git
 ```
 
 ## アプリを登録します
-
 最初に、[アプリ登録ポータル](https://apps.dev.microsoft.com)でアプリを作成するか、または[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
-- アプリの **Web** プラットフォームを追加します。
-- 適切な**リダイレクト URI** を入力します。このサンプルの既定値は `http://localhost:8080` です。
-- **[暗黙的フローを許可する]** チェック ボックスはオンのままにします。
+* アプリの **Web** プラットフォームを追加します。
+* 適切な**リダイレクト URI** を入力します。このサンプルの既定値は `http://localhost:8080` です。
+* **[暗黙的フローを許可する]** チェック ボックスはオンのままにします。
 
 アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
 
 ## adal.js をインストールする
 まず、ダウンロードしたプロジェクトに移動し、adal.js をインストールします。[bower](http://bower.io/) をインストールしてある場合は、次のコマンドを実行するだけで済みます。依存関係のバージョンの不一致がある場合は、高い方のバージョンを選択します。
+
 ```
 bower install adal-angular#experimental
 ```
@@ -72,7 +71,6 @@ bower install adal-angular#experimental
 ```
 
 ## REST API を設定する
-
 設定では、バックエンドの REST API が動作するようにします。コマンド プロンプトで次のコマンドを実行して必要なパッケージをすべてインストールします (プロジェクトの最上位ディレクトリで実行してください)。
 
 ```
@@ -83,11 +81,11 @@ npm install
 
 ```js
 exports.creds = {
-     
+
      // TODO: Replace this value with the Application ID from the registration portal
      audience: '<Your-application-id>',
-	 
-	 ...
+
+     ...
 }
 ```
 
@@ -116,19 +114,19 @@ angular.module('todoApp', ['ngRoute','AdalAngular'])
 ...
 
 adalProvider.init({
-        
+
         // Use this value for the public instance of Azure AD
         instance: 'https://login.microsoftonline.com/', 
-        
+
         // The 'common' endpoint is used for multi-tenant applications like this one
         tenant: 'common',
-        
+
         // Your application id from the registration portal
         clientId: '<Your-application-id>',
-        
+
         // If you're using IE, uncommment this line - the default HTML5 sessionStorage does not work for localhost.
         //cacheLocation: 'localStorage',
-         
+
     }, $httpProvider);
 ```
 
@@ -157,16 +155,16 @@ angular.module('todoApp')
 // Load adal.js the same way for use in controllers and views   
 .controller('homeCtrl', ['$scope', 'adalAuthenticationService','$location', function ($scope, adalService, $location) {
     $scope.login = function () {
-        
+
         // Redirect the user to sign in
         adalService.login();
-        
+
     };
     $scope.logout = function () {
-        
+
         // Redirect the user to log out    
         adalService.logOut();
-    
+
     };
 ...
 ```
@@ -237,12 +235,11 @@ node server.js
 
 v2.0 エンドポイントについての学習を続けるには、[v2.0 開発者ガイド](active-directory-appmodel-v2-overview.md)に戻ってください。その他のリソースについては、以下を参照してください。
 
-- [GitHub の Azure 用サンプル >>](https://github.com/Azure-Samples)
-- [Stack Overflow の Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
-- [Azure.com](https://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
+* [GitHub の Azure 用サンプル >>](https://github.com/Azure-Samples)
+* [Stack Overflow の Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Azure.com](https://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
 
 ## Microsoft 製品のセキュリティ更新プログラムの取得
-
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
 
 <!---HONumber=AcomDC_0921_2016-->

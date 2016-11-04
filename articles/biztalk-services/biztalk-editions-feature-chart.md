@@ -1,29 +1,25 @@
-<properties
-	pageTitle="BizTalk Services のエディションに含まれる機能の詳細情報 | Microsoft Azure"
-	description="BizTalk Services のエディション (Free、Developer、Basic、Standard、および Premium) の機能を比較します。MABS、WABS。"
-	services="biztalk-services"
-	documentationCenter=""
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""/>
+---
+title: BizTalk Services のエディションに含まれる機能の詳細情報 | Microsoft Docs
+description: BizTalk Services のエディション (Free、Developer、Basic、Standard、および Premium) の機能を比較します。MABS、WABS。
+services: biztalk-services
+documentationcenter: ''
+author: MandiOhlinger
+manager: erikre
+editor: ''
 
-<tags
-	ms.service="biztalk-services"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/15/2016"
-	ms.author="mandia"/>
+ms.service: biztalk-services
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/15/2016
+ms.author: mandia
 
-
+---
 # BizTalk Services: エディション チャート
-
 Azure BizTalk Services には複数のエディションがあります。この記事では、シナリオとビジネス ニーズに合ったエディションを決定する方法について説明します。
 
-
 ## 各エディションを比較する
-
 **Free (プレビュー)**
 
 ハイブリッド接続を作成して管理できます。ハイブリッド接続は、Azure Web サイトとオンプレミスのシステム (たとえば SQL Server) を簡単に接続する方法です。
@@ -43,7 +39,6 @@ Basic エディションのすべての機能が含まれており、ハイブ�
 **Premium**
 
 Standard エディションのすべての機能が含まれており、ハイブリッド接続、EAI ブリッジ、EDI 契約、BizTalk Adapter Pack 接続の数が増えています。さらに、アーカイブと高可用性の機能も含まれており、サービス レベル アグリーメント (SLA) に基づくスケールも可能です。
-
 
 ## エディションのチャート
 次の表に、エディション間の違いを示します。
@@ -201,20 +196,21 @@ NRR (Non-repudiation of Receipt) と追跡されたメッセージのダウン�
 </tr>
 </table>
 
-> [AZURE.NOTE] ハードウェアの障害に対する復元性の場合、高可用性は 1 つの BizTalk ユニット内に複数の VM を備えていることを意味します。
-
+> [!NOTE]
+> ハードウェアの障害に対する復元性の場合、高可用性は 1 つの BizTalk ユニット内に複数の VM を備えていることを意味します。
+> 
+> 
 
 ## FAQ
-
 #### BizTalk ユニットとは何ですか。
 「ユニット」は、Azure BizTalk Services デプロイのアトミックなレベルです。各エディションには、計算能力とメモリが異なるユニットが用意されています。たとえば、Basic ユニットは Developer ユニットより計算能力が高く、Standard ユニットは Basic ユニットより計算能力が高くなります。BizTalk Service のスケールを変更する場合は、ユニット単位で行います。
 
 #### BizTalk Services と Azure BizTalk VM の違いは何ですか。
 BizTalk Services は、クラウドでの統合ソリューションの構築のために真のサービスとしてのプラットフォーム (PaaS) を提供します。PaaS モデルでは、完全にアプリケーション ロジックに集中し、次のようなインフラストラクチャ管理はすべて Microsoft に任せることができます。
 
-- 仮想マシンの管理やパッチ適用の必要がありません。
-- 可用性は Microsoft により確保されます。
-- Azure ポータルを通じて容量の増減を要求するだけで、スケールをオンデマンドで管理できます。
+* 仮想マシンの管理やパッチ適用の必要がありません。
+* 可用性は Microsoft により確保されます。
+* Azure ポータルを通じて容量の増減を要求するだけで、スケールをオンデマンドで管理できます。
 
 Azure Virtual Machines 上の BizTalk Server は、サービスとしてのインフラストラクチャ (IaaS) アーキテクチャを提供します。仮想マシンの作成と構成はオンプレミス環境とまったく同じようにできるので、コードを変更しなくても既存のアプリケーションをクラウドで実行しやすくなります。IaaS では、仮想マシンの構成、仮想マシンの管理 (ソフトウェアや OS 修正プログラムなどのインストール)、および高可用性のためのアプリケーションの設計は、依然としてユーザーの責任です。
 
@@ -224,39 +220,32 @@ Azure Virtual Machines 上の BizTalk Server は、サービスとしてのイ�
 BizTalk Adapter サービスは、Azure BizTalk サービスで使用されます。BizTalk Adapter サービスでは、オンプレミスの基幹業務 (LOB) システムへの接続を目的として BizTalk Adapter Pack が使用されます。ハイブリッド接続は、Azure アプリケーション (Azure App Service と Azure Mobile Services 内の Web Apps 機能など) をオンプレミスのリソースに接続するための簡単で便利な方法を提供します。
 
 #### 「ユニットあたりのハイブリッド接続データ転送量 (GB)」とはどのような意味ですか。 単位は分/時間/日/週/月のいずれですか。 制限に達するとどうなりますか。
-
 ユニットあたりのハイブリッド接続コストは、BizTalk Services のエディションによって異なります。つまり、コストは転送するデータの量で決まります。たとえば、毎日 10 GB のデータを転送する方が、毎日 100 GB を転送するより低コストです。具体的なコストを調べるには、BizTalk Services 用の[料金計算ツール](https://azure.microsoft.com/pricing/calculator/?scenario=full)を使用してください。通常、制限は 1 日単位で適用されます。制限を超えた場合、超過分には GB あたり $1 の料金がかかります。
 
 #### BizTalk Services で契約を作成すると、ブリッジの数が 1 つではなく 2 つ増えるのはなぜですか。
-
 各契約は、送信側の通信ブリッジと受信側の通信ブリッジの 2 つの異なるブリッジで構成されます。
 
-####  ブリッジ数または契約数のクォータの上限に達した場合はどうなりますか。
-
+#### ブリッジ数または契約数のクォータの上限に達した場合はどうなりますか。
 新しいブリッジをデプロイしたり、新しい契約を作成したりすることができなくなります。さらにデプロイするには、BizTalk サービスのユニット数をスケールアップするか、上位のエディションにアップグレードする必要があります。
 
 #### BizTalk Services の 1 つのレベルから別のレベルに移行するにはどのようにしますか。
-
 Free エディションは、別のレベルに移行 ("スケールアップ") することはできません。また、バックアップして別のレベルに復元することもできません。別のレベルが必要な場合は、新しいレベルを使用して BizTalk サービスを新規作成してください。ハイブリッド接続など、Free エディションを使用して作成されたアーティファクトがある場合は、新しい BizTalk サービスで再度作成する必要があります。
 
 他のエディションでは、バックアップと復元を使用して、レベル間でアーティファクトを移行できます。たとえば、Standard レベルでアーティファクトをバックアップし、Premium レベルに復元できます。[BizTalk Services のバックアップと復元](biztalk-backup-restore.md)に関するページに、サポートされている移行パスと、バックアップされるアーティファクトの一覧が記載されています。ハイブリッド接続はバックアップされないので注意してください。バックアップして新しいレベルに復元した後で、もう一度ハイブリッド接続を作成してください。
 
-
 #### BizTalk Adapter サービスはサービスに含まれていますか。 ソフトウェアはどのようにして取得しますか。
-
 はい、BizTalk Adapter Pack 付きの BizTalk Adapter サービスは、Azure BizTalk Services SDK の[ダウンロード](http://www.microsoft.com/download/details.aspx?id=39087)に含まれています。
 
 ## 次のステップ
-
 Azure BizTalk Services を Azure ポータルで作成するには、[BizTalk Services の Azure ポータルを使用したプロビジョニング](biztalk-provision-services.md)に関するページに進んでください。アプリケーションの作成を開始するには、[Azure BizTalk Services ](http://go.microsoft.com/fwlink/p/?LinkID=235197) に関するページを参照してください。
 
 ## その他のリソース
-- [BizTalk Services: Azure ポータルを使用した BizTalk Services のプロビジョニング](biztalk-provision-services.md)<br/>
-- [BizTalk Services: プロビジョニングの状態のチャート](biztalk-service-state-chart.md)<br/>
-- [BizTalk Services : [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)<br/>
-- [BizTalk Services: バックアップと復元](biztalk-backup-restore.md)<br/>
-- [BizTalk Services: 調整](biztalk-throttling-thresholds.md)<br/>
-- [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
-- [BizTalk Services SDK 使用開始](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [BizTalk Services: Azure ポータルを使用した BizTalk Services のプロビジョニング](biztalk-provision-services.md)<br/>
+* [BizTalk Services: プロビジョニングの状態のチャート](biztalk-service-state-chart.md)<br/>
+* [BizTalk Services : [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+* [BizTalk Services: バックアップと復元](biztalk-backup-restore.md)<br/>
+* [BizTalk Services: 調整](biztalk-throttling-thresholds.md)<br/>
+* [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
+* [BizTalk Services SDK 使用開始](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 
 <!---HONumber=AcomDC_0817_2016-->

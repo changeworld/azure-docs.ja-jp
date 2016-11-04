@@ -1,5 +1,5 @@
 ### 前提条件
-- [Yammer](https://www.yammer.com/) アカウント 
+* [Yammer](https://www.yammer.com/) アカウント 
 
 ロジック アプリで Yammer アカウントを使用するには、Yammer アカウントに接続するロジック アプリを承認する必要があります。幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
@@ -9,3 +9,4 @@
 2. これまでに Yammer への接続を作成していない場合は、Yammer の資格情報を指定するよう求められます。この資格情報を使用して、接続するロジック アプリの承認と、Yammer アカウントのデータへのアクセスが行われます。 ![](./media/connectors-create-api-yammer/yammer-2.png)
 3. Yammer のユーザー名とパスワードを入力して、ロジック アプリを承認します。 ![](./media/connectors-create-api-yammer/yammer-3.png)   
 4. 接続が作成され、ロジック アプリで他の手順を実行できるようになります。 ![](./media/connectors-create-api-yammer/yammer-4.png)   
+

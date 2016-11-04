@@ -1,27 +1,27 @@
-<properties
-	pageTitle="PowerApps Enterprise の説明と、使用を開始する方法 | Microsoft Azure"
-	description="PowerApps Enterprise の使用を開始し、アプリ サービス環境を作成する"
-	services=""
-    suite="powerapps"
-	documentationCenter=""
-	authors="linhtranms"
-	manager="dwrede"
-	editor=""/>
+---
+title: PowerApps Enterprise の説明と、使用を開始する方法 | Microsoft Docs
+description: PowerApps Enterprise の使用を開始し、アプリ サービス環境を作成する
+services: ''
+suite: powerapps
+documentationcenter: ''
+author: linhtranms
+manager: dwrede
+editor: ''
 
-<tags
-   ms.service="powerapps"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="05/04/2016"
-   ms.author="litran"/>
+ms.service: powerapps
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/04/2016
+ms.author: litran
 
+---
 # Microsoft PowerApps Enterprise とは?
-
-> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
-
-
+> [!IMPORTANT]
+> このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> 
+> 
 
 [1]: ./media/powerapps-get-started-azure-portal/browseall.png
 [2]: ./media/powerapps-get-started-azure-portal/allresources.png

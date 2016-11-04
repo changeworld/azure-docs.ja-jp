@@ -1,22 +1,21 @@
-<properties
-    pageTitle="Azure AD Connect: 次のステップと Azure AD Connect の管理方法 | Microsoft Azure"
-    description="Azure AD Connect の既定の構成と運用タスクを拡張する方法について説明します。"
-    services="active-directory"
-    documentationCenter=""
-    authors="billmath"
-    manager="femila"
-    editor="curtand"/>
+---
+title: 'Azure AD Connect: 次のステップと Azure AD Connect の管理方法 | Microsoft Docs'
+description: Azure AD Connect の既定の構成と運用タスクを拡張する方法について説明します。
+services: active-directory
+documentationcenter: ''
+author: billmath
+manager: femila
+editor: curtand
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/08/2016"
-    ms.author="billmath"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/08/2016
+ms.author: billmath
 
-
+---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>次のステップと Azure AD Connect の管理方法
 組織のニーズや要件を満たすように Azure Active Directory Connect をカスタマイズするための高度な運用に関するトピックを次に示します。  
 
@@ -24,11 +23,10 @@
 既定では、インストールを行ったユーザーとローカルの Administrators グループのメンバーのみが、インストールされている同期エンジンを管理できます。 同期エンジンにアクセスして管理できるその他のユーザーを追加するには、ローカル サーバーで ADSyncAdmins というグループを見つけ、そのグループにユーザーを追加します。
 
 ## <a name="assigning-licenses-to-azure-ad-premium-and-enterprise-mobility-users"></a>Azure AD Premium および Enterprise Mobility のユーザーにライセンスを割り当てる
-
 ユーザーがクラウドに同期されたため、Office 365 などのクラウド アプリを利用できるように、そのユーザーにライセンスを割り当てる必要があります。
 
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Azure AD Premium または Enterprise Mobility Suite のライセンスを割り当てるには
---------------------------------------------------------------------------------
+- - -
 1. Azure ポータルに管理者としてサインインします。
 2. 左側で、 **[Active Directory]**を選択します。
 3. [Active Directory] ページで、有効にするユーザーが存在するディレクトリをダブルクリックします。
@@ -36,12 +34,11 @@
 5. [ライセンス] ページで、[Active Directory Premium] または [Enterprise Mobility Suite] を選択し、 **[割り当て]**をクリックします。
 6. ダイアログ ボックスで、ライセンスを割り当てるユーザーを選択し、チェック マーク アイコンをクリックして変更を保存します。
 
-
 ## <a name="verifying-the-scheduled-synchronization-task"></a>スケジュールされた同期タスクを確認する
 同期の状態を確認する場合は、Azure ポータルで確認します。
 
 ### <a name="to-verify-the-scheduled-synchronization-task"></a>スケジュールされた同期タスクを確認するには
---------------------------------------------------------------------------------
+- - -
 1. Azure ポータルに管理者としてサインインします。
 2. 左側で、 **[Active Directory]**を選択します。
 3. [Active Directory] ページで、有効にするユーザーが存在するディレクトリをダブルクリックします。
@@ -57,7 +54,6 @@
 
 Azure AD Connect 同期: スケジューラの詳細については、「 [Azure AD Connect スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)
 
-
 ## <a name="additional-tasks-available-in-azure-ad-connect"></a>Azure AD Connect で利用可能なその他のタスク
 Azure AD Connect の初回インストール後は、Azure AD Connect のスタート ページまたはデスクトップのショートカットから、いつでもウィザードを再び起動できます。  再度ウィザードを実行すると、追加のタスクの形式で新しいオプションがいくつか表示されます。  
 
@@ -65,17 +61,14 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 
 ![参加ルール](./media/active-directory-aadconnect-whats-next/addtasks.png)
 
-
-その他のタスク | Description
-------------- | ------------- |
-選択したシナリオを表示する  |現在の Azure AD Connect のソリューションを表示できます。  これには、全般設定、同期されたディレクトリ、同期設定などが含まれます。
-[同期オプションのカスタマイズ] | 構成への Active Directory フォレストの追加、ユーザー、グループ、デバイス、パスワード ライトバックなどの同期オプションの有効化など、現在の構成を変更できます。
-ステージング モードを有効にする |  これを使用すると、後で同期される情報をステージングできますが、Azure AD または Active Directory には何もエクスポートされません。  事前に同期をプレビューすることができます。
+| その他のタスク | Description |
+| --- | --- |
+| 選択したシナリオを表示する |現在の Azure AD Connect のソリューションを表示できます。  これには、全般設定、同期されたディレクトリ、同期設定などが含まれます。 |
+| [同期オプションのカスタマイズ] |構成への Active Directory フォレストの追加、ユーザー、グループ、デバイス、パスワード ライトバックなどの同期オプションの有効化など、現在の構成を変更できます。 |
+| ステージング モードを有効にする |これを使用すると、後で同期される情報をステージングできますが、Azure AD または Active Directory には何もエクスポートされません。  事前に同期をプレビューすることができます。 |
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

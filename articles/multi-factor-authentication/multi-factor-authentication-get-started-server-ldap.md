@@ -1,35 +1,27 @@
-<properties 
-	pageTitle="LDAP 認証と Azure Multi-Factor Authentication Server"
-	description="LDAP 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtand"/>
+---
+title: LDAP 認証と Azure Multi-Factor Authentication Server
+description: LDAP 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtand
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # LDAP 認証と Azure Multi-Factor Authentication Server
-
-
 既定では、Azure Multi-Factor Authentication Server は、Active Directory からユーザーをインポートするか同期するように構成されます。ただし、ADAM ディレクトリや特定の Active Directory ドメイン コントローラーなどの別の LDAP ディレクトリにバインドするように構成できます。LDAP 経由でディレクトリに接続するように構成した場合は、認証を実行する LDAP プロキシとして機能するように Azure Multi-Factor Authentication Server を構成できます。LDAP バインドは、RADIUS ターゲットとして使用する、IIS 認証使用時にユーザーを事前認証する、または Azure Multi-Factor Authentication ユーザー ポータルでのプライマリ認証のために使用することもできます。
 
 Azure Multi-Factor Authentication を LDAP プロキシとして使用する場合、多要素認証を追加するために、Azure Multi-Factor Authentication Server が LDAP クライアント (VPN アプライアンス、アプリケーションなど) と LDAP ディレクトリ サーバーの間に挿入されます。Azure Multi-Factor Authentication を機能させるには、クライアント サーバーと LDAP ディレクトリの両方と通信するように Azure Multi-Factor Authentication Server を構成する必要があります。この構成の中で、Azure Multi-Factor Authentication Server は、クライアント サーバーとアプリケーションから LDAP 要求を受け取り、プライマリ資格情報を検証するためにターゲット LDAP ディレクトリ サーバーに要求を転送します。LDAP ディレクトリからの応答でプライマリ資格情報が有効であることが示された場合、Azure Multi-Factor Authentication は第 2 要素認証を実行し、応答を LDAP クライアントに送信します。認証全体は、LDAP サーバーへの認証と多要素認証の両方が成功した場合にのみ成功します。
 
-
-
-
-
 ## LDAP 認証の構成
-
-
 LDAP 認証を構成するには、Azure Multi-Factor Authentication Server を Windows サーバーにインストールします。次の手順に従います。
 
 1. Azure Multi-Factor Authentication Server 内で、左側のメニューの [LDAP 認証] アイコンをクリックします。
@@ -54,13 +46,11 @@ LDAP 認証を構成するには、Azure Multi-Factor Authentication Server を 
 20. [OK] ボタンをクリックします。
 21. [会社の設定] アイコンをクリックし、[ユーザー名の解決] タブを選択します。ドメインに参加しているサーバーから Active Directory に接続する場合は、[Windows セキュリティ識別子 (SID) をユーザー名の照合に使用する] ラジオ ボタンをオンのままにすることができます。それ以外の場合は、[LDAP 一意識別子の属性をユーザー名の照合に使用する] ラジオ ボタンをオンにします。これを選択した場合、Azure Multi-Factor Authentication Server は、各ユーザー名を LDAP ディレクトリ内の一意識別子に解決しようとします。[ディレクトリ統合] の [属性] タブに定義されたユーザー名の各属性に対して LDAP 検索が実行されます。ユーザーが認証されると、ユーザー名が LDAP ディレクトリ内の一意識別子に解決され、その一意識別子が Azure Multi-Factor Authentication データ ファイル内のユーザーと照合するために使用されます。これにより、大文字と小文字を区別せず、ユーザー名の形式 (長短) を問わない比較が可能になります。Azure Multi-Factor Authentication Server の構成はこれで完了です。これで、Server は、構成されたポートで構成されたクライアントからの LDAP アクセス要求をリッスンし、認証用に LDAP ディレクトリにこれらの要求を委任するように設定されました。
 
-
 ## LDAP クライアントの構成
-
 LDAP クライアントを構成するには、次のガイドラインに従います。
 
-- アプライアンス、サーバー、またはアプリケーションのLDAP を経由した Azure Multi-Factor Authentication Server での認証は、あたかも LDAP ディレクトリで行われるかのように構成します。サーバー名または IP アドレスを Azure Multi-Factor Authentication Server のサーバー名または IP アドレスにすること以外は、LDAP ディレクトリに直接接続するために通常使用するものと同じ設定を使用する必要があります。
-- LDAP タイムアウトは、LDAP ディレクトリでユーザーの資格情報を検証し、第 2 要素認証を実行し、応答を受け取って LDAP アクセス要求に応答する時間があるように、30 ～ 60 秒に構成します。
-- LDAPS を使用する場合、LDAP クエリを行うアプライアンスまたはサーバーは、Azure Multi-Factor Authentication Server にインストールされている SSL 証明書を信頼する必要があります。
+* アプライアンス、サーバー、またはアプリケーションのLDAP を経由した Azure Multi-Factor Authentication Server での認証は、あたかも LDAP ディレクトリで行われるかのように構成します。サーバー名または IP アドレスを Azure Multi-Factor Authentication Server のサーバー名または IP アドレスにすること以外は、LDAP ディレクトリに直接接続するために通常使用するものと同じ設定を使用する必要があります。
+* LDAP タイムアウトは、LDAP ディレクトリでユーザーの資格情報を検証し、第 2 要素認証を実行し、応答を受け取って LDAP アクセス要求に応答する時間があるように、30 ～ 60 秒に構成します。
+* LDAPS を使用する場合、LDAP クエリを行うアプライアンスまたはサーバーは、Azure Multi-Factor Authentication Server にインストールされている SSL 証明書を信頼する必要があります。
 
 <!---HONumber=AcomDC_0921_2016-->

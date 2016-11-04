@@ -1,44 +1,42 @@
-<properties 
-	pageTitle="Azure Machine Learning でアルゴリズムを最適化するためにパラメーターを選択する方法 | Microsoft Azure" 
-	description="Azure Machine Learning でアルゴリズムに最適なパラメーター セットを選択する方法について説明します。" 
-	services="machine-learning"
-	documentationCenter="" 
-	authors="bradsev" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+---
+title: Azure Machine Learning でアルゴリズムを最適化するためにパラメーターを選択する方法 | Microsoft Docs
+description: Azure Machine Learning でアルゴリズムに最適なパラメーター セットを選択する方法について説明します。
+services: machine-learning
+documentationcenter: ''
+author: bradsev
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/12/2016" 
-	ms.author="bradsev" />
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/12/2016
+ms.author: bradsev
 
-
+---
 # Azure Machine Learning でアルゴリズムを最適化するためにパラメーターを選択する方法
-
 このトピックでは、Azure Machine Learning でアルゴリズムの正しいハイパーパラメーター セットを選択する方法について説明します。ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。トレーニングしたモデルの有効性は、選択したモデル パラメーターによって決まります。パラメーターの最適なセットを見つけるプロセスのことを、モデルの選択といいます。
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 モデルの選択を行うにはさまざまな方法があります。Machine Learning で最も広く使用されているモデルの選択方法の 1 つはクロス検証です。これは、Azure Machine Learning の既定のモデル選択メカニズムになっています。Azure Machine Learning では R と Python の両方がサポートされているため、R または Python を使用して独自のモデル選択メカニズムをいつでも実装できます。
 
 最適なパラメーター セットを見つけるプロセスには、次の 4 つの手順があります。
 
-1.	**パラメーター空間を定義する**: アルゴリズムについて、検討の対象にする正確なパラメーター値をまず決定します。
-2.	**クロス検証の設定を定義する**: データセットについて、クロス検証のフォールドを選択する方法を決定する必要があります。
-3.	**メトリックを定義する**: その後、パラメーターの最適なセットを判別するために使用するメトリックを決定します。たとえば、確度、二乗平均平方根の誤差、精度、再現率、f スコアなどがあります。
-4.	**トレーニング、評価、および比較を行う**: パラメーター値の一意の組み合わせごとにクロス検証を実行し、ユーザーが定義した誤差メトリックに基づいて最適な実行モデルを選択します。
+1. **パラメーター空間を定義する**: アルゴリズムについて、検討の対象にする正確なパラメーター値をまず決定します。
+2. **クロス検証の設定を定義する**: データセットについて、クロス検証のフォールドを選択する方法を決定する必要があります。
+3. **メトリックを定義する**: その後、パラメーターの最適なセットを判別するために使用するメトリックを決定します。たとえば、確度、二乗平均平方根の誤差、精度、再現率、f スコアなどがあります。
+4. **トレーニング、評価、および比較を行う**: パラメーター値の一意の組み合わせごとにクロス検証を実行し、ユーザーが定義した誤差メトリックに基づいて最適な実行モデルを選択します。
 
 このあと紹介する実験は、Azure Machine Learning でこのプロセスを実施する方法を示しています。
 
 ![Image1](./media/machine-learning-algorithm-parameters-optimize/fig1.png)
- 
+
 ## パラメーター空間を定義する
 パラメーターのセットは、モデルの初期化ステップで定義できます。すべての Machine Learning アルゴリズムのパラメーター ウィンドウには 2 つのトレーナー モードがあります。**[1 つのパラメーター]** と **[パラメーター範囲]** です。ここでは、**[パラメーター範囲]** モードを選択する必要があります (図 1)。すると、各パラメーターに複数の値を入力できるようになり、テキスト ボックスにコンマ区切り値を入力できます。別の方法として、**[範囲ビルダーを使用]** を使用すると、グリッドの最大ポイントと最小ポイント、および生成するポイントの合計数を定義できます。既定では、パラメーターの値は線形スケールで生成されます。しかし、**[対数スケール]** チェック ボックスをオンにすると、値が対数スケールで生成されます (つまり、隣接するポイントの差ではなく比率が一定になります)。整数パラメーターの場合は、ハイフン "-" で範囲を定義できます。たとえば、"1-10" は 1 ～ 10 (1 と 10 を含む) のすべての整数を意味するパラメーターのセットになります。混合モードもサポートされています。たとえば、"1-10, 20, 50" という指定です。この場合は、1-10 の整数に加えて、20 と 50 もパラメーター セットに追加されます。
-  
+
 ![Image2](./media/machine-learning-algorithm-parameters-optimize/fig2.png) ![Image3](./media/machine-learning-algorithm-parameters-optimize/fig3.png)
 
 ## クロス検証のフォールドを定義する
@@ -46,13 +44,12 @@
 
 ![image4](./media/machine-learning-algorithm-parameters-optimize/fig4.png)
 
-
 ## メトリックを定義する:
 [調整モデル ハイパーパラメーター][tune-model-hyperparameters] モジュールは、特定のアルゴリズムおよびデータセットに対してパラメーターの最適なセットを経験的に選択するためのサポートを提供します。このモジュールのプロパティ ウィンドウには、モデルのトレーニングに関連した情報のほかに、最適なパラメーター セットを決定するために使用するメトリックが含まれています。また、分類アルゴリズムと回帰アルゴリズムに関する 2 つの異なるドロップダウン リストがあります。検討しているアルゴリズムが分類アルゴリズムの場合は回帰のメトリックが無視され、その逆も同じです。この例では、**[確度]** をメトリックとして選択しています。
- 
+
 ![image5](./media/machine-learning-algorithm-parameters-optimize/fig5.png)
 
-## トレーニング、評価、および比較を行う  
+## トレーニング、評価、および比較を行う
 同じ[調整モデル ハイパーパラメーター][tune-model-hyperparameters] モジュールで、パラメーターのセットに対応するすべてのモデルをトレーニングし、さまざまなメトリックを評価した後、選択されたメトリックに基づいて最適なトレーニング済みのモデルを出力します。このモジュールには、次の 2 つの必須の入力があります。
 
 * トレーニングを受けていない学習モデル
@@ -61,13 +58,12 @@
 このモジュールには、省略可能なデータセット入力もあります。ここでは、必須のデータセット入力に対してデータセットをフォールド情報と一緒に接続します。データセットにフォールド情報を割り当てない場合は、既定で 10 フォールドのクロス検証が自動的に実行されます。フォールドを割り当てずに、オプションのデータセット ポートに検証データセットを提供した場合は、トレーニング テスト モードが選択されます。このモードでは、最初のデータセットがパラメーターの組み合わせごとにモデルのトレーニングに使用されます。次に検証データセットでモデルの評価が実行されます。モジュールの左側の出力ポートは、パラメーター値の関数としての異なるメトリックを示しています。右側の出力ポートからは、選択されたメトリック (ここでは確度) に従って選択された最適なモデルに対応するトレーニング済みのモデルを使用できます。
 
 ![image6](./media/machine-learning-algorithm-parameters-optimize/fig6a.png) ![image7](./media/machine-learning-algorithm-parameters-optimize/fig6b.png)
- 
-右側の出力ポートを視覚化すると、選択された正確なパラメーターを確認できます。このモデルは、トレーニング済みのモデルとして保存した後、テスト セットのスコア付けや、運用可能な Web サービスとして使用できます。
 
+右側の出力ポートを視覚化すると、選択された正確なパラメーターを確認できます。このモデルは、トレーニング済みのモデルとして保存した後、テスト セットのスコア付けや、運用可能な Web サービスとして使用できます。
 
 <!-- Module References -->
 [partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
 [tune-model-hyperparameters]: https://msdn.microsoft.com/library/azure/038d91b6-c2f2-42a1-9215-1f2c20ed1b40/
- 
+
 
 <!---HONumber=AcomDC_0914_2016-->

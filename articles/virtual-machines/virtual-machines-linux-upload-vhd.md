@@ -1,25 +1,23 @@
-<properties
-    pageTitle="カスタム Linux イメージの作成とアップロード | Microsoft Azure"
-    description="Resource Manager デプロイメント モデルを使用して、仮想ハード ディスク (VHD) とカスタム Linux イメージを作成し、Azure にアップロードします。"
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="iainfoulds"
-    manager="timlt"
-    editor="tysonn"
-    tags="azure-resource-manager"/>
+---
+title: カスタム Linux イメージの作成とアップロード | Microsoft Docs
+description: Resource Manager デプロイメント モデルを使用して、仮想ハード ディスク (VHD) とカスタム Linux イメージを作成し、Azure にアップロードします。
+services: virtual-machines-linux
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: tysonn
+tags: azure-resource-manager
 
-<tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/10/2016"
-    ms.author="iainfou"/>
+ms.service: virtual-machines-linux
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-linux
+ms.devlang: na
+ms.topic: article
+ms.date: 10/10/2016
+ms.author: iainfou
 
-
+---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image"></a>カスタム ディスク イメージをアップロードして Linux VM を作成する
-
 この記事では、Resource Manager デプロイメント モデルを使用して仮想ハード ディスク (VHD) を Azure にアップロードし、そのカスタム イメージから Linux VM を作成する方法について説明します。 この機能によって、要件に合った Linux ディストリビューションをインストールして構成し、その VHD を使用して Azure 仮想マシン (VM) をすばやく作成することができます。
 
 ## <a name="quick-commands"></a>クイック コマンド
@@ -78,15 +76,18 @@ azure vm create myVM -l "WestUS" --resource-group myResourceGroup \
 ## <a name="requirements"></a>必要条件
 次の手順を完了するには、以下が必要です。
 
-- **.vhd ファイルにインストールされている Linux オペレーティング システム** - [動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md) (または[動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-generic.md)を参照してください) を VHD 形式で仮想ディスクにインストールします。 VM と VHD を作成するツールはいくつかあります。
-    - [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) または [KVM](http://www.linux-kvm.org/page/RunningKVM) をインストールして構成します。その際、イメージ形式として VHD を使用します。 必要であれば `qemu-img convert` を使用して[イメージを変換](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)できます。
-    - [Windows 10 上](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install)または [Windows Server 2012/2012 R2 上](https://technet.microsoft.com/library/hh846766.aspx)の Hyper-V を使用することもできます。
+* **.vhd ファイルにインストールされている Linux オペレーティング システム** - [動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md) (または[動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-generic.md)を参照してください) を VHD 形式で仮想ディスクにインストールします。 VM と VHD を作成するツールはいくつかあります。
+  * [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) または [KVM](http://www.linux-kvm.org/page/RunningKVM) をインストールして構成します。その際、イメージ形式として VHD を使用します。 必要であれば `qemu-img convert` を使用して[イメージを変換](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)できます。
+  * [Windows 10 上](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install)または [Windows Server 2012/2012 R2 上](https://technet.microsoft.com/library/hh846766.aspx)の Hyper-V を使用することもできます。
 
-> [AZURE.NOTE] 新しい VHDX 形式は、Azure ではサポートされていません。 VM を作成するときに、形式として VHD を指定します。 必要であれば、[`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) または [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) の PowerShell コマンドレットを使用して VHDX ディスクを VHD に変換できます。 Azure では動的 VHD のアップロードはサポートしないため、そのようなディスクは、アップロードする前に静的 VHD に変換する必要があります。 Azure へのアップロード プロセス中、動的ディスクの変換には、 [Azure VHD Utilities for GO (GO 用の Azure VHD Utilities)](https://github.com/Microsoft/azure-vhd-utils-for-go) などのツールを使用できます。
+> [!NOTE]
+> 新しい VHDX 形式は、Azure ではサポートされていません。 VM を作成するときに、形式として VHD を指定します。 必要であれば、[`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) または [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) の PowerShell コマンドレットを使用して VHDX ディスクを VHD に変換できます。 Azure では動的 VHD のアップロードはサポートしないため、そのようなディスクは、アップロードする前に静的 VHD に変換する必要があります。 Azure へのアップロード プロセス中、動的ディスクの変換には、 [Azure VHD Utilities for GO (GO 用の Azure VHD Utilities)](https://github.com/Microsoft/azure-vhd-utils-for-go) などのツールを使用できます。
+> 
+> 
 
-- カスタム イメージから作成する VM は、イメージ自体と同じストレージ アカウント内に存在する必要があります。
-    - ストレージ アカウントと、カスタム イメージおよび作成した VM の両方を保持するコンテナーを作成します。
-    - VM をすべて作成したら、イメージを安全に削除することができます。
+* カスタム イメージから作成する VM は、イメージ自体と同じストレージ アカウント内に存在する必要があります。
+  * ストレージ アカウントと、カスタム イメージおよび作成した VM の両方を保持するコンテナーを作成します。
+  * VM をすべて作成したら、イメージを安全に削除することができます。
 
 [Azure CLI](../xplat-cli-install.md) でログインし、Resource Manager モードを使用していることを確認します。
 
@@ -96,24 +97,25 @@ azure config mode arm
 
 次の例では、パラメーター名を独自の値を置き換えます。 パラメーター名の例には、`myResourceGroup`、`mystorageaccount`、および `myimages` が含まれています。
 
-
 <a id="prepimage"> </a>
-## <a name="prepare-the-image-to-be-uploaded"></a>アップロードするイメージを準備する
 
+## <a name="prepare-the-image-to-be-uploaded"></a>アップロードするイメージを準備する
 Azure は、さまざまな Linux ディストリビューションをサポートしています (「 [Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md)」を参照してください)。 次の記事では、Azure でサポートされる以下のさまざまな Linux ディストリビューションを準備する方法について説明します。
 
-- **[CentOS ベースのディストリビューション](virtual-machines-linux-create-upload-centos.md)**
-- **[Debian Linux](virtual-machines-linux-debian-create-upload-vhd.md)**
-- **[Oracle Linux](virtual-machines-linux-oracle-create-upload-vhd.md)**
-- **[Red Hat Enterprise Linux](virtual-machines-linux-redhat-create-upload-vhd.md)**
-- **[SLES と openSUSE](virtual-machines-linux-suse-create-upload-vhd.md)**
-- **[Ubuntu](virtual-machines-linux-create-upload-ubuntu.md)**
-- **[その他 - 動作保証外のディストリビューション](virtual-machines-linux-create-upload-generic.md)**
+* **[CentOS ベースのディストリビューション](virtual-machines-linux-create-upload-centos.md)**
+* **[Debian Linux](virtual-machines-linux-debian-create-upload-vhd.md)**
+* **[Oracle Linux](virtual-machines-linux-oracle-create-upload-vhd.md)**
+* **[Red Hat Enterprise Linux](virtual-machines-linux-redhat-create-upload-vhd.md)**
+* **[SLES と openSUSE](virtual-machines-linux-suse-create-upload-vhd.md)**
+* **[Ubuntu](virtual-machines-linux-create-upload-ubuntu.md)**
+* **[その他 - 動作保証外のディストリビューション](virtual-machines-linux-create-upload-generic.md)**
 
 Azure で Linux イメージを準備する際のその他のヒントについては、**[Linux のインストールに関する注記](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes)**をご覧ください。
 
-> [AZURE.NOTE] [Azure プラットフォームの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) は、動作保証済みディストリビューションのいずれか 1 つを、「[Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md)」の "サポートされているバージョン" で指定されている構成で使用した場合にのみ、Linux を実行する VM に適用されます。
-
+> [!NOTE]
+> [Azure プラットフォームの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) は、動作保証済みディストリビューションのいずれか 1 つを、「[Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md)」の "サポートされているバージョン" で指定されている構成で使用した場合にのみ、Linux を実行する VM に適用されます。
+> 
+> 
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 リソース グループは、仮想ネットワークやストレージ記憶域など、仮想マシンをサポートするすべての Azure リソースを論理的にまとめます。 Azure リソース グループの詳細については [こちら](../resource-group-overview.md)をご覧ください。 カスタム ディスク イメージをアップロードして VM を作成する前に、まずリソース グループを作成する必要があります。 
@@ -180,7 +182,6 @@ azure storage blob upload --blobtype page --account-name mystorageaccount \
 ## <a name="create-vm-from-custom-image"></a>カスタム イメージから VM を作成する
 カスタム ディスク イメージから VM を作成する場合は、ディスク イメージの URI を指定します。 宛先のストレージ アカウントは、カスタム ディスク イメージが保存されているストレージ アカウントと必ず一致させます。 Azure CLI または Resource Manager JSON テンプレートを使用して VM を作成することができます。
 
-
 ### <a name="create-a-vm-using-the-azure-cli"></a>Azure CLI を使用して VM を作成する
 `--image-urn` パラメーターを `azure vm create` コマンドで指定して、カスタム ディスク イメージをポイントします。 `--storage-account-name` は、カスタム ディスク イメージが保存されているストレージ アカウントと必ず一致させます。 カスタム ディスク イメージと同じコンテナーを VM の格納先として使用する必要はありません。 カスタム ディスク イメージをアップロードする前に、前の手順と同じ方法で追加のコンテナーを必要なだけ作成しておいてください。
 
@@ -234,7 +235,6 @@ azure group deployment create --resource-group myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 カスタム仮想ディスクを準備してアップロードしたら、 [Resource Manager とテンプレートの使用](../resource-group-overview.md)について学習しましょう。 必要であれば、新しい VM に [データ ディスクを追加](virtual-machines-linux-add-disk.md) することもできます。 VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず [ポートとエンドポイント](virtual-machines-linux-nsg-quickstart.md)を開放してください。
-
 
 <!--HONumber=Oct16_HO2-->
 

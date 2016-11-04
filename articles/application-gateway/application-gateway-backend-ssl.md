@@ -1,25 +1,23 @@
-<properties
-   pageTitle="Application Gateway での SSL ポリシーとエンド ツー エンド SSL の有効化 | Microsoft Azure"
-   description="このページでは、Application Gateway によるエンドツーエンド SSL のサポートの概要を示します。"
-   documentationCenter="na"
-   services="application-gateway"
-   authors="amsriva"
-   manager="rossort"
-   editor="amsriva"/>
-<tags
-   ms.service="application-gateway"
-   ms.devlang="na"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="09/26/2016"
-   ms.author="amsriva"/>
+---
+title: Application Gateway での SSL ポリシーとエンド ツー エンド SSL の有効化 | Microsoft Docs
+description: このページでは、Application Gateway によるエンドツーエンド SSL のサポートの概要を示します。
+documentationcenter: na
+services: application-gateway
+author: amsriva
+manager: rossort
+editor: amsriva
 
+ms.service: application-gateway
+ms.devlang: na
+ms.topic: hero-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 09/26/2016
+ms.author: amsriva
 
+---
 # <a name="enabling-ssl-policy-and-end-to-end-ssl-on-application-gateway"></a>Application Gateway での SSL ポリシーとエンド ツー エンド SSL の有効化
-
 ## <a name="overview"></a>Overview
-
 アプリケーション ゲートウェイは、ゲートウェイの SSL ターミネーションをサポートします。通常、トラフィックは、その後、暗号化されないままバックエンド サーバーに渡されます。 これにより、Web サーバーは、負荷の大きい暗号化/復号化のオーバーヘッドから開放されます。 ただし、暗号化されていない通信をバックエンド サーバーで受け入れていない顧客もいます。 セキュリティとコンプライアンスの要件や、セキュリティで保護された接続以外はアプリケーションで受け入れられないことが、この原因であると考えられます。 このようなアプリケーションのために、アプリケーション ゲートウェイでは、現在、エンド ツー エンド SSL 暗号化がサポートされています。
 
 エンド ツー エンド SSL により、暗号化されたバックエンドに機密データを安全に送信しながら、Cookie のアフィニティ、URL ベースのルーティング、サイトに基づくルーティングのサポート、X-Forwarded-* ヘッダーを挿入する機能など、アプリケーション ゲートウェイが提供するレイヤー 7 の負荷分散機能の利点を役立てることができます。
@@ -31,11 +29,9 @@
 この例では、https://contoso.com に対する要求は、HTTP 経由で ContosoServerPool にルーティングでき、https://fabrikam.com に対する要求は、エンド ツー エンド SSL を使用して HTTPS 経由で FabrikamServerPool にルーティングされます。
 
 ## <a name="end-to-end-ssl-and-white-listing-of-certificates"></a>エンド ツー エンド SSL と証明書のホワイト リスト
-
 アプリケーション ゲートウェイ は、既知のバックエンド インスタンスのみと通信します。これらのインスタンスでは、アプリケーション ゲートウェイに関する証明書がホワイトリスト登録されています。 証明書のホワイトリスト登録を有効にするには、バックエンド サーバーの証明書の公開キーを アプリケーション ゲートウェイにアップロードする必要があります。 ホワイトリスト登録された既知のバックエンドへの接続のみが許可され、それ以外ではゲートウェイ エラーが発生します。 自己署名証明書はテストのみを目的とするため、運用環境のワークロードで使用することはお勧めできません。 このような証明書も、使用する前に、上記の説明のように アプリケーション ゲートウェイでホワイトリスト登録する必要があります。
 
 ## <a name="application-gateway-ssl-policy"></a>Application Gateway の SSL ポリシー
-
 アプリケーション ゲートウェイは、ユーザーが構成できる SSL ネゴシエーション ポリシーもサポートします。このポリシーを使用すると、顧客はアプリケーション ゲートウェイで SSL 接続をより詳細に制御できます。
 
 1. SSL 2.0 および 3.0 は、すべての Application Gateway に対して強制的に無効になります。 これらはまったく構成できません。
@@ -43,10 +39,7 @@
 3. SSL ポリシーが定義されていない場合は、3 つすべて (TLSv1_0、TLSv1_1、TLSv1_2) が有効になります。
 
 ## <a name="next-steps"></a>次のステップ
-
 エンド ツー エンド SSL と SSL ポリシーについて学習したので、 [アプリケーション ゲートウェイでのエンド ツー エンド SSL の有効化](application-gateway-end-to-end-ssl-powershell.md) に進んで、暗号化された形式でバックエンドにトラフィックを送信する機能を持つアプリケーション ゲートウェイを作成します。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

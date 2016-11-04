@@ -1,40 +1,39 @@
 
-<properties
-   pageTitle="Azure の仮想ネットワーク ピアリング | Microsoft Azure"
-   description="Azure の VNET ピアリングについて説明します。"
-   services="virtual-network"
-   documentationCenter="na"
-   authors="NarayanAnnamalai"
-   manager="jefco"
-   editor="tysonn" />
-<tags
-   ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/28/2016"
-   ms.author="narayan" />
+---
+title: Azure の仮想ネットワーク ピアリング | Microsoft Docs
+description: Azure の VNET ピアリングについて説明します。
+services: virtual-network
+documentationcenter: na
+author: NarayanAnnamalai
+manager: jefco
+editor: tysonn
 
+ms.service: virtual-network
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 07/28/2016
+ms.author: narayan
+
+---
 # VNET ピアリング
-
 VNET ピアリングとは、同じリージョンに存在する 2 つの仮想ネットワークを Azure のバックボーン ネットワークを介して接続する機構です。ピアリングされた 2 つの仮想ネットワークは、あらゆる接続において、見かけ上 1 つのネットワークとして機能します。これらの仮想ネットワークはあくまで個別のリソースとして管理されますが、そこに存在する仮想マシンは互いに、プライベート IP アドレスを使用して直接通信を行うことができます。
 
 ピアリングされた仮想ネットワークに存在する仮想マシン間のトラフィックは Azure インフラストラクチャを介し、同一仮想ネットワーク内の VM 間のトラフィックと同じようにルーティングされます。以下、VNET ピアリングを使う利点をいくつか挙げます。
 
-- 異なる仮想ネットワーク内のリソース間で、待機時間の短い広帯域幅の接続が可能である。
-- ネットワーク アプライアンスや VPN ゲートウェイなどのリソースを、ピアリングされた VNET のトランジット ポイントとして使用できる。
-- Azure Resource Manager モデルを使用した仮想ネットワークとクラシック デプロイメント モデルを使用した仮想ネットワークとを接続し、その 2 つの仮想ネットワーク内のリソース間でフル接続を実現できる。
+* 異なる仮想ネットワーク内のリソース間で、待機時間の短い広帯域幅の接続が可能である。
+* ネットワーク アプライアンスや VPN ゲートウェイなどのリソースを、ピアリングされた VNET のトランジット ポイントとして使用できる。
+* Azure Resource Manager モデルを使用した仮想ネットワークとクラシック デプロイメント モデルを使用した仮想ネットワークとを接続し、その 2 つの仮想ネットワーク内のリソース間でフル接続を実現できる。
 
 VNET ピアリングの要件と主な特徴は次のとおりです。
 
-- ピアリングする 2 つの仮想ネットワークは、同じ Azure リージョンにあることが必要です。
-- IP アドレス空間に重複のある仮想ネットワークどうしをピアリングすることはできません。
-- VNET ピアリングは、あくまで 2 つの仮想ネットワーク間の関係です。そこから派生した推移的な関係は存在しません。たとえば仮想ネットワーク A が仮想ネットワーク B とピアリングされ、仮想ネットワーク B が仮想ネットワーク C とピアリングされているからといって、仮想ネットワーク A が仮想ネットワーク C とピアリングされていることにはなりません。
-- ピアリングは 2 つの異なるサブスクリプションの仮想ネットワーク間で確立できますが、そのためには、両方のサブスクリプションの特権ユーザーがピアリングを承認しており、サブスクリプションが同じ Active Directory テナントに関連付けられていることが必要となります。
-- ピアリングは、Resource Manager デプロイメント モデルを使用した仮想ネットワークどうしか、Resource Manager デプロイメント モデルを使用した仮想ネットワークとクラシック デプロイメント モデルを使用した仮想ネットワークとの間で行うことができます。一方、クラシック デプロイメント モデルを使用した仮想ネットワークどうしをピアリングすることはできません。
-- ピアリングされた仮想ネットワーク内の仮想マシンどうしで行われる通信には帯域幅上の特別な制限はありませんが、VM サイズに基づく帯域幅の上限は依然として適用されます。
-
+* ピアリングする 2 つの仮想ネットワークは、同じ Azure リージョンにあることが必要です。
+* IP アドレス空間に重複のある仮想ネットワークどうしをピアリングすることはできません。
+* VNET ピアリングは、あくまで 2 つの仮想ネットワーク間の関係です。そこから派生した推移的な関係は存在しません。たとえば仮想ネットワーク A が仮想ネットワーク B とピアリングされ、仮想ネットワーク B が仮想ネットワーク C とピアリングされているからといって、仮想ネットワーク A が仮想ネットワーク C とピアリングされていることにはなりません。
+* ピアリングは 2 つの異なるサブスクリプションの仮想ネットワーク間で確立できますが、そのためには、両方のサブスクリプションの特権ユーザーがピアリングを承認しており、サブスクリプションが同じ Active Directory テナントに関連付けられていることが必要となります。
+* ピアリングは、Resource Manager デプロイメント モデルを使用した仮想ネットワークどうしか、Resource Manager デプロイメント モデルを使用した仮想ネットワークとクラシック デプロイメント モデルを使用した仮想ネットワークとの間で行うことができます。一方、クラシック デプロイメント モデルを使用した仮想ネットワークどうしをピアリングすることはできません。
+* ピアリングされた仮想ネットワーク内の仮想マシンどうしで行われる通信には帯域幅上の特別な制限はありませんが、VM サイズに基づく帯域幅の上限は依然として適用されます。
 
 ![Basic VNET peering](./media/virtual-networks-peering-overview/figure01.png)
 
@@ -82,10 +81,9 @@ VNET に対するピアリング操作は、管理者権限を持つユーザー
 ## 価格
 評価期間中は VNET ピアリングに料金は発生しません。リリース後は、ピアリングを利用するイグレス トラフィックとエグレス トラフィックに少額の料金が発生します。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/virtual-network)を参照してください。
 
-
 ## 次のステップ
-- [仮想ネットワーク間のピアリングをセットアップします](virtual-networks-create-vnetpeering-arm-portal.md)。
-- [NSG](virtual-networks-nsg.md) について。
-- [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)について確認します。
+* [仮想ネットワーク間のピアリングをセットアップします](virtual-networks-create-vnetpeering-arm-portal.md)。
+* [NSG](virtual-networks-nsg.md) について。
+* [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)について確認します。
 
 <!---HONumber=AcomDC_0928_2016-->

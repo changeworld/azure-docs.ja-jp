@@ -1,21 +1,22 @@
-<properties
-   pageTitle="Azure Automation のセキュリティ | Microsoft Azure"
-   description="この記事では、Azure Automation の Automation アカウントで使用できる Automation のセキュリティとさまざまな認証方法の概要を説明します。"
-   services="automation"
-   documentationCenter=""
-   authors="MGoedtel"
-   manager="jwhit"
-   editor="tysonn"
-   keywords="Automation のセキュリティ, セキュリティで保護された Automation" />
-<tags
-   ms.service="automation"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/29/2016"
-   ms.author="magoedte" />
+---
+title: Azure Automation のセキュリティ | Microsoft Docs
+description: この記事では、Azure Automation の Automation アカウントで使用できる Automation のセキュリティとさまざまな認証方法の概要を説明します。
+services: automation
+documentationcenter: ''
+author: MGoedtel
+manager: jwhit
+editor: tysonn
+keywords: Automation のセキュリティ, セキュリティで保護された Automation
 
+ms.service: automation
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 07/29/2016
+ms.author: magoedte
+
+---
 # Azure Automation のセキュリティ
 Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、Amazon Web Services (AWS) などの他のクラウド プロバイダーのリソースに対するタスクを自動化できます。Runbook が必要な操作を実行するためには、操作対象のリソースに安全に、サブスクリプション内で必要な最低限の権限だけでアクセスするための、アクセス許可が必要です。この記事では、Azure Automation でサポートされるさまざまな認証シナリオについて説明し、管理する必要のある環境に基づいて開始する方法を示します。
 
@@ -24,29 +25,31 @@ Azure Automation を初めて開始するときに、少なくとも 1 つの Au
 
 各 Automation アカウントの Automation リソースは単一の Azure リージョンと関連付けられていますが、Automation アカウントではあらゆるリージョンのリソースを管理できます。異なるリージョンで Automation アカウントを作成する主な理由としては、特定のリージョンに分離しなければならないデータやリソースを必要とするポリシーがある場合が挙げられます。
 
->[AZURE.NOTE]Azure ポータルで作成した Automation アカウントおよび各アカウントに含まれるリソースには、Azure クラシック ポータルでアクセスすることはできません。これらのアカウントとリソースを Windows PowerShell で管理するには、[Azure リソース マネージャー] モジュールを使用する必要があります。
+> [!NOTE]
+> Azure ポータルで作成した Automation アカウントおよび各アカウントに含まれるリソースには、Azure クラシック ポータルでアクセスすることはできません。これらのアカウントとリソースを Windows PowerShell で管理するには、[Azure リソース マネージャー] モジュールを使用する必要があります。
+> 
+> 
 
 Azure Automation で Azure Resource Manager と Azure コマンドレットを使用してリソースに対して実行するすべてのタスクは、Azure Active Directory の組織 ID 資格情報に基づく認証を使用して、Azure に対する認証を行う必要があります。Azure サービス管理モードではもともと証明書ベースの認証方法が使用されていましたが、セットアップが複雑でした。Azure AD による Azure の認証は 2014 年に導入されましたが、これは、認証アカウントの構成処理を簡単にするだけでなく、Azure Resource Manager リソースまたはクラシック リソースの両方で使用できる単一のユーザー アカウントによる Azure の非対話形式の認証機能をサポートするためでもありました。
 
 現在、Azure ポータルで新しい Automation アカウントを作成すると、次のものが自動的に作成されます。
 
--  Azure Active Directory の新しいサービス プリンシパルと証明書を作成し、ロールベースのアクセス制御 (RBAC) の Contributor ロールを割り当てる実行アカウント。この Contributor ロールは、Runbook を使用した Resource Manager のリソースの管理に使用されます。
--  クラシック実行アカウント。Azure サービス管理リソースまたはクラシック リソースを Runbook で管理する際に使用する管理証明書をアップロードすることで作成されます。
+* Azure Active Directory の新しいサービス プリンシパルと証明書を作成し、ロールベースのアクセス制御 (RBAC) の Contributor ロールを割り当てる実行アカウント。この Contributor ロールは、Runbook を使用した Resource Manager のリソースの管理に使用されます。
+* クラシック実行アカウント。Azure サービス管理リソースまたはクラシック リソースを Runbook で管理する際に使用する管理証明書をアップロードすることで作成されます。
 
-ロール ベースのアクセス制御は、Azure AD ユーザー アカウントおよび実行アカウントに対して許可されたアクションを付与し、そのサービス プリンシパルを認証するために、Azure Resource Manager で使用できます。Automation アクセス許可を管理するためのモデルの開発に役立つ詳細については、「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」を参照してください。
+ロール ベースのアクセス制御は、Azure AD ユーザー アカウントおよび実行アカウントに対して許可されたアクションを付与し、そのサービス プリンシパルを認証するために、Azure Resource Manager で使用できます。Automation アクセス許可を管理するためのモデルの開発に役立つ詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。
 
 データセンター内の Hybrid Runbook Worker で、または AWS のコンピューティング サービスに対して実行されている Runbook は、Runbook が Azure のリソースを認証するために通常使用される方法と同じものを使用することはできません。これは、これらのリソースは Azure の外部で実行しており、そのため、ローカルにアクセスするリソースに対する認証を行うには Automation で定義されている個別のセキュリティ資格情報を必要とするためです。
 
 ## 認証方法
-
 次の表は、Azure Automation によってサポートされる各環境のさまざまな認証方法と、Runbook 用の認証のセットアップ方法に関する記事をまとめたものです。
 
-メソッド | 環境 | 記事
-----------|----------|----------
-Azure AD ユーザー アカウント | Azure リソース マネージャーと Azure サービス管理 | [Authenticate Runbooks with Azure AD User account (Azure AD ユーザー アカウントでの Runbook の認証)](../automation/automation-sec-configure-aduser-account.md)
-Azure 実行アカウント | Azure リソース マネージャー | [Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)
-Azure クラシック実行アカウント | Azure サービス管理 | [Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)
-Windows 認証 | オンプレミスのデータセンター | [Azure Automation の Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md)
-AWS 資格情報 | Amazon Web Services | [Authenticate Runbooks with Amazon Web Services (AWS) (Amazon Web Services (AWS) での Runbook の認証)](../automation/automation-sec-configure-aws-account.md)
+| メソッド | 環境 | 記事 |
+| --- | --- | --- |
+| Azure AD ユーザー アカウント |Azure リソース マネージャーと Azure サービス管理 |[Authenticate Runbooks with Azure AD User account (Azure AD ユーザー アカウントでの Runbook の認証)](automation-sec-configure-aduser-account.md) |
+| Azure 実行アカウント |Azure リソース マネージャー |[Azure 実行アカウントを使用した Runbook の認証](automation-sec-configure-azure-runas-account.md) |
+| Azure クラシック実行アカウント |Azure サービス管理 |[Azure 実行アカウントを使用した Runbook の認証](automation-sec-configure-azure-runas-account.md) |
+| Windows 認証 |オンプレミスのデータセンター |[Azure Automation の Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) |
+| AWS 資格情報 |Amazon Web Services |[Authenticate Runbooks with Amazon Web Services (AWS) (Amazon Web Services (AWS) での Runbook の認証)](automation-sec-configure-aws-account.md) |
 
 <!---HONumber=AcomDC_0803_2016-->

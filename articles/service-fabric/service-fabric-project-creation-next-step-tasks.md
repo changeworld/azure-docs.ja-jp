@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Service Fabric プロジェクトの作成の次の手順 | Microsoft Azure"
-   description="この記事には、Service Fabric の中心的な開発タスク セットへのリンクが含まれています"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="seanmck"
-   manager="timlt"
-   editor=""/>
+---
+title: Service Fabric プロジェクトの作成の次の手順 | Microsoft Docs
+description: この記事には、Service Fabric の中心的な開発タスク セットへのリンクが含まれています
+services: service-fabric
+documentationcenter: .net
+author: seanmck
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotNet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="07/08/2016"
-   ms.author="seanmck"/>
+ms.service: service-fabric
+ms.devlang: dotNet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 07/08/2016
+ms.author: seanmck
 
+---
 # Service Fabric アプリケーションと次の手順
 Azure Service Fabric アプリケーションが作成されました。この記事では、プロジェクトの構成と潜在的な次の手順について説明します。
 
@@ -25,15 +25,11 @@ Azure Service Fabric アプリケーションが作成されました。この�
 ### アプリケーション プロジェクト
 アプリケーション プロジェクトは次で構成されます。
 
-- アプリケーションを構成するサービスへの一連の参照。
-
-- クラスター エンドポイントや既定でデプロイメントのアップグレードを実行するかどうかなど、異なる環境で作業するための設定を管理する 2 つの発行プロファイル (ローカルとクラウド)。
-
-- サービス用に作成するパーティション数などの環境に固有のアプリケーション構成を維持するために使用する (ローカルとクラウドの) 2 つのアプリケーション パラメーター ファイル。
-
-- コマンドラインまたは自動化された継続的インテグレーションおよびデプロイ パイプラインの一環としての、アプリケーションをデプロイするために使用するデプロイ スクリプト。
-
-- アプリケーションを説明するアプリケーション マニフェスト。マニフェストは、ApplicationPackageRoot フォルダーにあります。
+* アプリケーションを構成するサービスへの一連の参照。
+* クラスター エンドポイントや既定でデプロイメントのアップグレードを実行するかどうかなど、異なる環境で作業するための設定を管理する 2 つの発行プロファイル (ローカルとクラウド)。
+* サービス用に作成するパーティション数などの環境に固有のアプリケーション構成を維持するために使用する (ローカルとクラウドの) 2 つのアプリケーション パラメーター ファイル。
+* コマンドラインまたは自動化された継続的インテグレーションおよびデプロイ パイプラインの一環としての、アプリケーションをデプロイするために使用するデプロイ スクリプト。
+* アプリケーションを説明するアプリケーション マニフェスト。マニフェストは、ApplicationPackageRoot フォルダーにあります。
 
 ### ステートレス サービス
 新しいステートレス サービスを追加すると、Visual Studio は `StatelessService` から継承した型を含むソリューションにサービス プロジェクトを追加します。サービスは、カウンター内のローカル変数をインクリメントします。
@@ -50,7 +46,6 @@ Azure Service Fabric アプリケーションが作成されました。この�
 ステートレス Web API プロジェクトでは、外部クライアントに対してアプリケーションを開くときに使用できる基本的な Web サービスを提供します。プロジェクトの構造の詳細については、「[はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)」をご覧ください。
 
 ### ASP.NET Core
-
 Service Fabric SDK には、スタンドアロン ASP.NET Core プロジェクトで利用できるのと同じ ASP.NET Core テンプレート セット (空、[Web API][aspnet-webapi]、[Web アプリケーション][aspnet-webapp]) が用意されています。
 
 ## 次のステップ
@@ -58,7 +53,6 @@ Service Fabric SDK には、スタンドアロン ASP.NET Core プロジェク�
 Service Fabric SDK には、開発およびテスト用のローカル クラスターが用意されています。Azure でのクラスターの作成については、[Azure ポータルからの Service Fabric クラスターのセットアップ][create-cluster-in-portal]に関する記事を参照してください。
 
 ### パーティ クラスターを使用した Azure へのデプロイの無料試行
-
 独自のクラスターを設定せずに Azure でのアプリケーションのデプロイと管理を試してみる場合は、無料の[パーティ クラスター サービス](http://aka.ms/tryservicefabric)を使用できます。
 
 ### Azure へのアプリケーションの発行
@@ -72,7 +66,6 @@ Service Fabric では、アプリケーションにおいて、独立したサ�
 
 ### Visual Studio Team Services を使用した継続的な統合の構成
 Service Fabric アプリケーション向けに継続的な統合プロセスを設定する方法については、「[Visual Studio Team Services を使用した継続的な統合の構成][ci-with-vso]」を参照してください。
-
 
 <!-- Links -->
 [add-web-frontend]: service-fabric-add-a-web-frontend.md

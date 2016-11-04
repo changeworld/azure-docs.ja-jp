@@ -1,28 +1,27 @@
-<properties
-   pageTitle="Service Fabric サービスの拡張性 | Microsoft Azure"
-   description="Service Fabric サービスの拡張方法を説明する"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="appi101"
-   manager="timlt"
-   editor=""/>
+---
+title: Service Fabric サービスの拡張性 | Microsoft Docs
+description: Service Fabric サービスの拡張方法を説明する
+services: service-fabric
+documentationcenter: .net
+author: appi101
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/10/2016"
-   ms.author="aprameyr"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/10/2016
+ms.author: aprameyr
 
+---
 # Service Fabric アプリケーションのスケーリング
 Azure Service Fabric により、クラスターのすべてのノードのサービス、パーティション、およびレプリカの負荷分散を実施することにより、スケーラブルなアプリケーションを簡単に構築できます。これにより、リソースを最大限活用できます。
 
 Service Fabric アプリケーションの高い拡張性は、次の 2 つの方法で実現できます。
 
 1. パーティション レベルでのスケーリング
-
 2. サービス名レベルでのスケーリング
 
 ## パーティション レベルでのスケーリング
@@ -46,18 +45,14 @@ Service Fabric では、個々 のサービスを複数の小さいパーティ�
 
 ただし、この方法は、Service Fabric の知識の範囲外にあるアプリケーション固有の名前付け情報を使用するクライアントに基づきます。
 
-- *名前付けの規則を使用する*: 2013 年のアプリケーション運用時に、fabric:/app/service2013 という 1 つのサービスを作成します。2013 年の第 2 四半期に近づくと、fabric:/app/service2014 という別のサービスを作成します。これらの両方のサービスは、同じサービス型です。この方法では、クライアントは、年に基づいて適切なサービス名を構築するロジックを使用する必要があります。
-
-- *検索サービスを使用する*: 別のパターンでは、必要なキーに対してサービス名を提供できるようにするセカンダリ参照サービスを提供します。新しいサービス インスタンスは、参照サービスによって作成できます。参照サービス自体では、アプリケーション データは保持せず、作成するサービス名についてのデータのみ保持します。そのため、上記の年ベースの例では、クライアントは最初に参照サービスに問い合わせて、特定の年のデータを処理するサービスの名前を確認し、次にそのサービス名を使用して、実際の操作を実行します。最初の参照の結果は、キャッシュすることができます。
+* *名前付けの規則を使用する*: 2013 年のアプリケーション運用時に、fabric:/app/service2013 という 1 つのサービスを作成します。2013 年の第 2 四半期に近づくと、fabric:/app/service2014 という別のサービスを作成します。これらの両方のサービスは、同じサービス型です。この方法では、クライアントは、年に基づいて適切なサービス名を構築するロジックを使用する必要があります。
+* *検索サービスを使用する*: 別のパターンでは、必要なキーに対してサービス名を提供できるようにするセカンダリ参照サービスを提供します。新しいサービス インスタンスは、参照サービスによって作成できます。参照サービス自体では、アプリケーション データは保持せず、作成するサービス名についてのデータのみ保持します。そのため、上記の年ベースの例では、クライアントは最初に参照サービスに問い合わせて、特定の年のデータを処理するサービスの名前を確認し、次にそのサービス名を使用して、実際の操作を実行します。最初の参照の結果は、キャッシュすることができます。
 
 ## 次のステップ
-
 Service Fabric の概念の詳細については、次を参照してください。
 
-- [Service Fabric サービスの可用性](service-fabric-availability-services.md)
-
-- [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
-
-- [状態の定義と管理](service-fabric-concepts-state.md)
+* [Service Fabric サービスの可用性](service-fabric-availability-services.md)
+* [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
+* [状態の定義と管理](service-fabric-concepts-state.md)
 
 <!---HONumber=AcomDC_0810_2016-->

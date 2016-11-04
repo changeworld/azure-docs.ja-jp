@@ -1,34 +1,30 @@
-<properties 
-	pageTitle="Azure Marketplace に Machine Learning Web service の公開と使用に関する FAQ | Microsoft Azure" 
-	description="よく寄せられる質問" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="bharaths" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+---
+title: Azure Marketplace に Machine Learning Web service の公開と使用に関する FAQ | Microsoft Docs
+description: よく寄せられる質問
+services: machine-learning
+documentationcenter: ''
+author: bharaths
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/11/2016" 
-	ms.author="bharaths"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/11/2016
+ms.author: bharaths
 
-#Azure Marketplace での Machine Learning アプリケーションの公開と使用に関する FAQ
-
-##Marketplace から使用する場合
-
-
+---
+# Azure Marketplace での Machine Learning アプリケーションの公開と使用に関する FAQ
+## Marketplace から使用する場合
 **1.Web サービスの入力を入力した後に、なぜ次のエラー メッセージが表示されるのですか。**
 
 **要求がバックエンドでタイムアウトかエラーになっています。チームでは現在この問題を調査中です。ご不便をおかけして申し訳ありません。(500)**
 
 入力パラメーターが特定の Web サービスの所定の形式に準拠していない可能性があります。入力パラメーターの正しい形式およびこの Web サービスの制限事項については、対応するドキュメントのリンクを参照してください。
 
-
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 **2.[このデータセットの参照] ページに表示されている Web サービスの API リンクをコピーして、別のブラウザー ウィンドウかタブに貼り付けた場合、結果にアクセスするにはどのような資格情報が必要で、結果はどのように表示されるでしょうか。**
 
@@ -44,9 +40,7 @@ Marketplace の **[このデータセットの参照]** ページで Web サー�
 
 これは、Azure クラシック ポータルの Marketplace の既知の問題です。チームではこの問題を解決するために作業中です。
 
-
-##Marketplace の Azure Machine Learning からの発行に関する質問
-
+## Marketplace の Azure Machine Learning からの発行に関する質問
 **1.ロゴ、イメージのトランザクション数が Web サービスに対して更新されないのはなぜでしょうか。**
 
 ロゴとイメージは公開ポータルでキャッシュされ、ポータルで新しいロゴとイメージに更新されるまで最大 10 日間かかる場合があります。
@@ -69,12 +63,6 @@ Azure Machine Learning Web サービスに直接接続するときと、これ�
 
 **6.データ発行者になる方法や、発行時に発生した問題について質問がある場合は、どこに問い合わせればよいでしょうか。**
 
-詳細については、<datamarketbd@microsoft.com> のAzure Marketplace チームにお問い合わせください。
-
-
-
-
-
- 
+詳細については、<mailto:datamarketbd@microsoft.com> のAzure Marketplace チームにお問い合わせください。
 
 <!---HONumber=AcomDC_0914_2016-->

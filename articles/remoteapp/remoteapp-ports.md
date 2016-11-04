@@ -1,51 +1,49 @@
 
-<properties
-    pageTitle="顧客の Virtual Network にデプロイした Azure RemoteApp 向けにホワイトリスト登録する必要があるポートと URL の一覧 | Microsoft Azure"
-    description="Azure RemoteApp を介した通信用に構成する必要があるポートと URL について説明します。"
-    services="remoteapp"
-	documentationCenter=""
-    authors="mghosh1616"
-    manager="mbaldwin" />
+---
+title: 顧客の Virtual Network にデプロイした Azure RemoteApp 向けにホワイトリスト登録する必要があるポートと URL の一覧 | Microsoft Docs
+description: Azure RemoteApp を介した通信用に構成する必要があるポートと URL について説明します。
+services: remoteapp
+documentationcenter: ''
+author: mghosh1616
+manager: mbaldwin
 
-<tags
-    ms.service="remoteapp"
-    ms.workload="compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/15/2016"
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-
-
-# 顧客の Virtual Network にデプロイした Azure RemoteApp にアクセスを許可する必要があるポートと URL の一覧 
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+---
+# 顧客の Virtual Network にデプロイした Azure RemoteApp にアクセスを許可する必要があるポートと URL の一覧
+> [!IMPORTANT]
+> Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> 
+> 
 
 以下の要件は、Azure RemoteApp のクラウドまたはハイブリッド コレクションを仮想ネットワーク (VNET) にデプロイしている場合に適用されます。仮想ネットワークの詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」をご覧ください。Azure RemoteApp 用に選択した仮想ネットワーク リソースへのトラフィックを制限するネットワーク セキュリティ グループ (NSG) を作成した場合は、仮想ネットワークのセキュリティ ポリシーで次のエンドポイントと URL へのアクセスが許可されていることを確認してください。ネットワーク セキュリティ グループの詳細については、「[ネットワーク セキュリティ グループについて」をご覧ください。 (NSG) について](../virtual-network/virtual-networks-nsg.md)」を参照してください。
 
-##  Azure RemoteApp サブネットがアクセスする必要があるエンドポイントと URL: 
-*	*.servicebus.windows.net
-*	 *. servicebus.net
-*	 https://*.remoteapp.windwsazure.com
-*	 https://www.remoteapp.windowsazure.com
-*	 https://*remoteapp.windowsazure.com
-*	 https://*.core.windows.net
-*	 送信: TCP: 443、TCP: 10101-10175
-*	 オプション – UDP: 10201-10275
- 
-## Azure RemoteApp クライアントがアクセスする必要があるエンドポイントと URL: 
+## Azure RemoteApp サブネットがアクセスする必要があるエンドポイントと URL:
+* *.servicebus.windows.net
+* *. servicebus.net
+* https://*.remoteapp.windwsazure.com
+* https://www.remoteapp.windowsazure.com
+* https://*remoteapp.windowsazure.com
+* https://*.core.windows.net
+* 送信: TCP: 443、TCP: 10101-10175
+* オプション – UDP: 10201-10275
 
+## Azure RemoteApp クライアントがアクセスする必要があるエンドポイントと URL:
 クライアントとは、Azure RemoteApp コレクションにデプロイされたアプリに接続する際に使用するデスクトップやデバイスなどのことです。
 
--  https://telemetry.remoteapp.windowsazure.com
--  https://*.remoteapp.windowsazure.com (オプションの UDP ポートはこのアドレスで使用)
--  https://login.windows.net
--  https://login.microsoftonline.com
--  https://www.remoteapp.windowsazure.com
--  https://*.core.windows.net
--  送信: TCP: 443
--  オプション - UDP: 3391
+* https://telemetry.remoteapp.windowsazure.com
+* https://*.remoteapp.windowsazure.com (オプションの UDP ポートはこのアドレスで使用)
+* https://login.windows.net
+* https://login.microsoftonline.com
+* https://www.remoteapp.windowsazure.com
+* https://*.core.windows.net
+* 送信: TCP: 443
+* オプション - UDP: 3391
 
 <!---HONumber=AcomDC_0817_2016-->

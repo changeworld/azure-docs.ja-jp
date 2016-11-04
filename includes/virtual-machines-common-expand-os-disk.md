@@ -1,54 +1,55 @@
 ## 概要
 [Azure Marketplace](https://azure.microsoft.com/marketplace/) からイメージをデプロイすることによってリソース グループに新しい仮想マシン (VM) を作成するとき、既定の OS ドライブは 127 GB です。VM にデータ ディスクを追加でき (数は選択されている SKU に依存)、アプリケーションおよび CPU 多用ワークロードはこれらの追加ディスクにインストールすることが推奨されますが、次のような特定のシナリオをサポートするために OS ドライブの拡張が必要になることがあります。
 
-1.  OS ドライブにコンポーネントをインストールするレガシ アプリケーションをサポートする場合。
-2.  オンプレミスから OS ドライブの大きい物理 PC または仮想マシンを移行する場合。
+1. OS ドライブにコンポーネントをインストールするレガシ アプリケーションをサポートする場合。
+2. オンプレミスから OS ドライブの大きい物理 PC または仮想マシンを移行する場合。
 
->[AZURE.IMPORTANT]Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデルです。この記事では、リソース マネージャー モデルの使用について説明します。最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
+> [!IMPORTANT]
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデルです。この記事では、リソース マネージャー モデルの使用について説明します。最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
+> 
+> 
 
 ## OS ドライブのサイズ変更
 この記事では、[Azure Powershell](../articles/powershell-install-configure.md) のリソース マネージャー モジュールを使用して、OS ドライブのサイズを変更します。管理者モードで Powershell ISE または Powershell ウィンドウを開き、次の手順に従います。
 
-1.  リソース管理モードで Microsoft Azure アカウントにサインインし、次のようにサブスクリプションを選択します。
-
-    ```Powershell
-    Login-AzureRmAccount
-    Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
-    ```
-
-2.  リソース グループ名と VM 名を次のように設定します。
-
-    ```Powershell
-    $rgName = 'my-resource-group-name'
-    $vmName = 'my-vm-name'
-    ```
-
-3.  次のように、VM への参照を取得します。
-
-    ```Powershell
-    $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-    ```
-
+1. リソース管理モードで Microsoft Azure アカウントにサインインし、次のようにサブスクリプションを選択します。
+   
+   ```Powershell
+   Login-AzureRmAccount
+   Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
+   ```
+2. リソース グループ名と VM 名を次のように設定します。
+   
+   ```Powershell
+   $rgName = 'my-resource-group-name'
+   $vmName = 'my-vm-name'
+   ```
+3. 次のように、VM への参照を取得します。
+   
+   ```Powershell
+   $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+   ```
 4. 次のように、ディスクのサイズを変更する前に VM を停止します。
-
+   
     ```Powershell
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
     ```
-
-5.  次に、 OS ディスクのサイズを目的の値に設定し、VM を更新します。
-
-    ```Powershell
-    $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
-    Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
-    ```
-
-    >[AZURE.WARNING]新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。許可される最大値は、1,023 GB です。
-
-6.  VM の更新には数秒かかる可能性があります。コマンドの実行が完了した後、VM を再起動します。
-
-    ```Powershell
-    Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-    ```
+5. 次に、 OS ディスクのサイズを目的の値に設定し、VM を更新します。
+   
+   ```Powershell
+   $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
+   Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
+   ```
+   
+   > [!WARNING]
+   > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。許可される最大値は、1,023 GB です。
+   > 
+   > 
+6. VM の更新には数秒かかる可能性があります。コマンドの実行が完了した後、VM を再起動します。
+   
+   ```Powershell
+   Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+   ```
 
 これで終了です。 VM に RDP で接続し、[コンピューターの管理] \(または [ディスクの管理]) を開いて、新しく割り当てた領域を使用してドライブを拡張します。
 

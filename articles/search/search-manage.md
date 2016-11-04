@@ -1,34 +1,35 @@
-<properties 
-    pageTitle="Azure Portal での Azure Search のサービス管理" 
-    description="Azure Portal を使用して、Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します。" 
-    services="search" 
-    documentationCenter="" 
-    authors="HeidiSteen" 
-    manager="jhubbard" 
-    editor=""
-    tags="azure-portal"/>
+---
+title: Azure Portal での Azure Search のサービス管理
+description: Azure Portal を使用して、Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します。
+services: search
+documentationcenter: ''
+author: HeidiSteen
+manager: jhubbard
+editor: ''
+tags: azure-portal
 
-<tags 
-    ms.service="search" 
-    ms.devlang="rest-api" 
-    ms.workload="search" 
-    ms.topic="article" 
-    ms.tgt_pltfrm="na" 
-    ms.date="10/17/2016" 
-    ms.author="heidist"/>
+ms.service: search
+ms.devlang: rest-api
+ms.workload: search
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.date: 10/17/2016
+ms.author: heidist
 
-
+---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure Portal での Azure Search のサービス管理
-> [AZURE.SELECTOR]
-- [ポータル](search-manage.md)
-- [PowerShell](search-manage-powershell.md)
-- [REST API](search-get-started-management-api.md)
+> [!div class="op_single_selector"]
+> * [ポータル](search-manage.md)
+> * [PowerShell](search-manage-powershell.md)
+> * [REST API](search-get-started-management-api.md)
+> 
+> 
 
 Azure Search は、高度な検索エクスペリエンスをカスタムアプリに組み込むために使用される、完全に管理されたクラウドベースの検索サービスです。 この記事では、既にプロビジョニング済みの検索サービスに対して *Azure Portal* で実行できる " [サービス管理](https://portal.azure.com) " タスクについて説明します。 *Service administration* " は軽量設計で、次のタスクに限定されています。
 
-- サービスへの読み取り/書き込みアクセスに使用される " *API キー* " を管理およびセキュリティ保護する。
-- パーティションとレプリカの割り当てを変更することにより、サービスの容量を調整する。
-- リソース使用量をサービス レベルの上限と比較して監視する。
+* サービスへの読み取り/書き込みアクセスに使用される " *API キー* " を管理およびセキュリティ保護する。
+* パーティションとレプリカの割り当てを変更することにより、サービスの容量を調整する。
+* リソース使用量をサービス レベルの上限と比較して監視する。
 
 **この記事で扱わない内容** 
 
@@ -39,8 +40,8 @@ Azure Search は、高度な検索エクスペリエンスをカスタムアプ�
 Azure Search には、障害復旧またはバックアップと復元のためのソリューションは組み込まれていません。 サービスにオブジェクトとデータをプッシュするお客様に対しては、インデックスの作成と読み込みのためのソース コードが、誤ってインデックスを削除した場合の事実上の復元オプションとなります。 障害復旧に関しては、お客様は、別の地域のデータセンターに追加のサービスを配置して冗長性を実現することを選択できます。 詳細については、「 [Performance and optimization in Azure Search](search-performance-optimization.md)」(Azure Search のパフォーマンスと最適化) をご覧ください。
 
 <a id="admin-rights"></a>
-## <a name="administrator-rights-in-azure-search"></a>Azure Search の管理者権限
 
+## <a name="administrator-rights-in-azure-search"></a>Azure Search の管理者権限
 サービス自体のプロビジョニングまたは使用停止は、Azure サブスクリプションの管理者または共同管理者が実行できます。
 
 サービス内では、サービスの URL および管理者 API キーにアクセスできるすべてのユーザーがサービスへの読み取り/書き込みアクセス権を持ち、 [RBAC で定義されたロール](#rbac)によって実装されるのと同等の、サーバー オブジェクト (API キー、インデックス、インデクサー、データ ソース、スケジュールなど) およびロール割り当ての追加、削除、変更権限を与えられます。
@@ -48,27 +49,27 @@ Azure Search には、障害復旧またはバックアップと復元のため�
 Azure Search に対するすべてのユーザー操作は、サービスへの読み取り/書き込みアクセス (管理者権限) か、またはサービスへの読み取り専用アクセス (クエリ権限) のいずれかのモードに分類されます。 詳細については、「 [API キーを管理する](#manage-keys)」をご覧ください。
 
 <a id="sys-info"></a>
-## <a name="logging-in-azure-search-and-system-information"></a>Azure Search でのログ記録とシステム情報
 
+## <a name="logging-in-azure-search-and-system-information"></a>Azure Search でのログ記録とシステム情報
 Azure Search は、ポータルまたはプログラム インターフェイスを通じて個々のサービスのログ ファイルを公開しません。 Basic レベル以上では、サービス レベル アグリーメント (SLA) に従って、すべての Azure Search サービスが 99.9% の可用性を実現するようにマイクロソフトによって監視されます。 サービスの速度が低下した場合や、要求のスループットが SLA のしきい値を下回った場合は、サポート チームが利用可能なログ ファイルを確認して問題に対処します。
 
 サービスに関する一般的な情報は、以下の方法で入手できます。
 
-- ポータルのサービス ダッシュボードで、プロパティ、およびステータス メッセージを確認する。
-- [PowerShell](search-manage-powershell.md) または[管理 REST API](https://msdn.microsoft.com/library/azure/dn832684.aspx) を使用して[サービスのプロパティを取得](https://msdn.microsoft.com/library/azure/dn832694.aspx)するか、インデックス リソース使用率のステータスを確認する。
-- 既に説明したように、 [検索トラフィックの分析](search-traffic-analytics.md)を使用する。
+* ポータルのサービス ダッシュボードで、プロパティ、およびステータス メッセージを確認する。
+* [PowerShell](search-manage-powershell.md) または[管理 REST API](https://msdn.microsoft.com/library/azure/dn832684.aspx) を使用して[サービスのプロパティを取得](https://msdn.microsoft.com/library/azure/dn832694.aspx)するか、インデックス リソース使用率のステータスを確認する。
+* 既に説明したように、 [検索トラフィックの分析](search-traffic-analytics.md)を使用する。
 
 <a id="manage-keys"></a>
-## <a name="manage-the-api-keys"></a>API キーを管理する
 
+## <a name="manage-the-api-keys"></a>API キーを管理する
 Search サービスへのすべての HTTP 要求には、対象のサービス用に生成された API キーが必要です。 この API キーは、その Search サービス エンドポイントへのアクセスを認証するための唯一のメカニズムです。 
 
 API キーは、ランダムに生成された数字と文字から成る文字列です。 これはサービスによって排他的に生成されます。 このキーは [RBAC アクセス許可](#rbac)を通じて削除または読み取りが可能ですが、生成されたキーをユーザー定義の文字列で上書きすることはできません (具体的には、日常的に使用しているパスワードがある場合、API キーの代わりにユーザー定義のパスワードを使用することはできません)。 
 
 検索サービスへのアクセスには 2 種類のキーが使用されます。
 
-+   管理 (サービスに対するすべての読み取り/書き込み操作に有効)
-+   クエリ (インデックスに対するクエリなどの読み取り専用操作に有効)
+* 管理 (サービスに対するすべての読み取り/書き込み操作に有効)
+* クエリ (インデックスに対するクエリなどの読み取り専用操作に有効)
 
 管理 API キーは、サービスのプロビジョニング時に作成されます。 2 つの管理キーがあり、区別するために "*プライマリ*" と "*セカンダリ*" と呼ばれますが、これらは実際には交換可能です。 各サービスが 2 つの管理キーを持つため、サービスにアクセスしたままで一方のキーをロールオーバーできます。 どちらの管理キーも再生成できますが、管理キーの合計数は追加できません。 Search サービスごとに最大 2 個の管理キーがあります。
 
@@ -79,24 +80,23 @@ API キーを取得または再生成するには、サービス ダッシュボ
  ![][9]
 
 <a id="rbac"></a>
-## <a name="set-rbac-roles-on-administrative-access-for-azure-search"></a>Azure Search の管理アクセスの RBAC ロールを設定する
 
+## <a name="set-rbac-roles-on-administrative-access-for-azure-search"></a>Azure Search の管理アクセスの RBAC ロールを設定する
 Azure では、ポータルまたはリソース マネージャー API で管理するすべてのサービスに対して、 [グローバルなロールベースの承認モデル](../active-directory/role-based-access-control-configure.md) を用意しています。 所有者、共同作成者、および閲覧者のロールによって、各ロールに割り当てられる Active Directory のユーザー、グループ、およびセキュリティ プリンシパルに対するサービス管理レベルが決まります。 
 
 Azure Search の場合、RBAC のアクセス許可によって次の管理タスクが決まります。
 
-役割|タスク
----|---
-所有者|API キー、インデックス、インデクサー、インデクサー データ ソース、インデクサー スケジュールなど、サービス上のサービスやオブジェクトを作成または削除します。<p>カウントとストレージ サイズなど、サービスの状態を表示します。<p>ロール メンバーシップを追加または削除します (所有者のみがロール メンバーシップを管理できます)。<p>サブスクリプション管理者とサービス所有者には、所有者ロールに自動メンバーシップがあります。
-共同作成者|RBAC ロール管理を除き、アクセス レベルは所有者と同じです。 たとえば、共同作成者は `api-key`を再生成できますが、ロール メンバーシップは変更できません。
-閲覧者|サービスの状態とクエリのキーを表示します。 このロールのメンバーは、サービス構成の変更ができず、管理キーの表示もできません。
+| 役割 | タスク |
+| --- | --- |
+| 所有者 |API キー、インデックス、インデクサー、インデクサー データ ソース、インデクサー スケジュールなど、サービス上のサービスやオブジェクトを作成または削除します。<p>カウントとストレージ サイズなど、サービスの状態を表示します。<p>ロール メンバーシップを追加または削除します (所有者のみがロール メンバーシップを管理できます)。<p>サブスクリプション管理者とサービス所有者には、所有者ロールに自動メンバーシップがあります。 |
+| 共同作成者 |RBAC ロール管理を除き、アクセス レベルは所有者と同じです。 たとえば、共同作成者は `api-key`を再生成できますが、ロール メンバーシップは変更できません。 |
+| 閲覧者 |サービスの状態とクエリのキーを表示します。 このロールのメンバーは、サービス構成の変更ができず、管理キーの表示もできません。 |
 
 ロールは、サービス エンドポイントへのアクセス権を付与しないことに注意してください。 インデックスの管理、インデックスの作成、検索データのクエリなど、検索サービスの操作は、ロールではなく API キーによって制御されます。 詳細については、「 [What is Role-based access control](../active-directory/role-based-access-control-what-is.md)」(ロールベースのアクセス制御とは) の「Authorization for management versus data operations」(管理用の承認とデータ操作) をご覧ください。
 
-
 <a id="secure-keys"></a>
-## <a name="secure-the-api-keys"></a>API キーをセキュリティ保護する
 
+## <a name="secure-the-api-keys"></a>API キーをセキュリティ保護する
 キーのセキュリティは、ポータルまたはリソース マネージャーのインターフェイス (PowerShell またはコマンドライン インターフェイス) でアクセスを制限することによって確保されます。 前述のように、サブスクリプションの管理者はすべての API キーを表示および再生成できます。 用心のために、ロールの割り当てを調べて、管理キーへのアクセス権を持つユーザーを確認してください。
 
 1. サービスのダッシュボードで、[アクセス] アイコンをクリックして [ユーザー] ブレードを開きます。
@@ -107,21 +107,23 @@ Azure Search の場合、RBAC のアクセス許可によって次の管理タ�
 アクセス許可を表示するもう 1 つの方法は、[ユーザー] ブレードで **[ロール]** をクリックすることです。 これにより、使用可能なロールと、各ロールに割り当てられているユーザーまたはグループの数が表示されます。
 
 <a id="sub-5"></a>
-## <a name="monitor-resource-usage"></a>リソース使用量を監視する
 
+## <a name="monitor-resource-usage"></a>リソース使用量を監視する
 ダッシュボードでは、リソース監視が、サービス ダッシュボードに表示される情報と、サービスのクエリで取得できるいくつかのメトリックに限定されます。 サービス ダッシュボードの [使用] セクションで、パーティション リソース レベルが自分のアプリケーションに適しているかどうかをすばやく決定できます。
 
 Search Service API を使用して、ドキュメントとインデックスの数を取得できます。 価格レベルに基づいて、これらの数に関連付けられたハードウェアの制限があります。 詳細については、 [Search サービスの制限](search-limits-quotas-capacity.md)に関する記事をご覧ください。 
 
-+   [インデックス統計の取得](http://msdn.microsoft.com/library/dn798942.aspx)
-+   [ドキュメントのカウント](http://msdn.microsoft.com/library/dn798924.aspx)
+* [インデックス統計の取得](http://msdn.microsoft.com/library/dn798942.aspx)
+* [ドキュメントのカウント](http://msdn.microsoft.com/library/dn798924.aspx)
 
-> [AZURE.NOTE] キャッシング動作により、一時的に制限を超える場合があります。 たとえば、共有サービスの使用時に、ドキュメント数がハードウェアの制限である 10,000 個を超える場合があります。 この超過は一時的であり、次の制限強制チェックで検出されます。 
-
+> [!NOTE]
+> キャッシング動作により、一時的に制限を超える場合があります。 たとえば、共有サービスの使用時に、ドキュメント数がハードウェアの制限である 10,000 個を超える場合があります。 この超過は一時的であり、次の制限強制チェックで検出されます。 
+> 
+> 
 
 <a id="scale"></a>
-## <a name="scale-up-or-down"></a>拡大または縮小
 
+## <a name="scale-up-or-down"></a>拡大または縮小
 すべての検索サービスは、最小限の 1 つのレプリカと 1 つのパーティションで開始されます。 [Basic または Standard の価格レベル](search-limits-quotas-capacity.md)を使用して専用リソースにサインアップした場合は、サービス ダッシュボードの **[規模の設定]** タイルをクリックして、サービスで使用するパーティションとレプリカの数を調整できます。
 
 いずれかのリソースで容量を追加すると、サービスで自動的に使用されます。 それ以外のアクションは必要ありませんが、新しいリソースの影響が現れるまでわずかに遅延が発生します。 追加のリソースのプロビジョニングには 15 分以上かかる場合があります。
@@ -129,7 +131,6 @@ Search Service API を使用して、ドキュメントとインデックスの�
  ![][10]
 
 ### <a name="add-replicas"></a>レプリカの追加
-
 1 秒あたりのクエリ (QPS) の増加や高可用性の実現は、レプリカの追加により達成できます。 各レプリカにはインデックスのコピーが 1 つあるため、レプリカを 1 つ追加することは、サービス クエリ要求の処理に使用できるインデックスを 1 つ追加することです。 高可用性を実現するには少なくとも 3 つのレプリカが必要です (詳細については、「 [Capacity Planning](search-capacity-planning.md) 」(容量計画) をご覧ください。
 
 より多くのレプリカを持つ検索サービスでは、より多くのインデックスに対してクエリ要求を負荷分散できます。 特定のクエリの数量のレベルで、要求のサービスで利用できるインデックスのコピーが多いほど、クエリ スループットはより高速になります。 クエリの遅延が発生した場合は、追加のレプリカをオンラインにすることでパフォーマンスへの良い影響を期待できます。
@@ -137,19 +138,16 @@ Search Service API を使用して、ドキュメントとインデックスの�
 レプリカを追加するとクエリのスループットは向上しますが、サービスにレプリカを追加することにより厳密に 2 倍や 3 倍になるわけではありません。 すべての検索アプリケーションは、クエリ パフォーマンスに影響を与える外部要因の影響を受けます。 クエリの応答時間を変動させる 2 つの要因として、複雑なクエリおよびネットワークの遅延があります。
 
 ### <a name="add-partitions"></a>パーティションの追加
-
 ほとんどのサービス アプリケーションには、パーティション数ではなくレプリカ数の増加への固有のニーズがあります。 ドキュメント数を増やす必要がある場合、Standard サービスにサインアップしていればパーティションを追加できます。 Basic レベルでは、パーティションは追加できません。
 
 Standard レベルでは、パーティションが 12 の倍数単位 (具体的には、1、2、3、4、6、12) で追加されます。 これは、シャーディングのアーティファクトです。 インデックスは 12 個のシャードで作成され、これらはすべて 1 個のパーティションまたは均等に 2、3、4、6、12 個のパーティションに格納されます (パーティションごとに 1 つのシャード)。
 
 ### <a name="remove-replicas"></a>レプリカの削除
-
 クエリの数量が多い期間の後 (たとえば、休日のセールの終了後) には、ほとんどの場合、検索クエリの負荷が正常化したらレプリカを減らします。
 
 そのためには、レプリカ スライダーを少ない数の方に動かします。 それ以外の手順は必要ありません。 レプリカの数を減らすと、データ センター内の仮想マシンが解放されます。 クエリとデータ インジェストの操作は、以前よりも少ない数の VM で実行されます。 最小数は 1 つのレプリカです。
 
 ### <a name="remove-partitions"></a>パーティションの削除
-
 追加の手順を必要としないレプリカの削除に比べ、削除できる量よりも多くのストレージを使用している場合の手順は少し複雑です。 たとえば、3 つのパーティションを使用しているソリューションでは、パーティションを 1 つまたは 2 つに減らすと、新しいストレージが必要な量よりも少ない場合はエラーが生成されます。 ご推察のとおり、その場合はインデックスまたは関連付けられたインデックス内のドキュメントを削減して領域を解放するか、現在の構成を維持するかを選択できます。
 
 特定のパーティションにどのインデックス シャードが格納されているかを検出する方法はありません。 各パーティションで約 25 GB のストレージが提供されるため、現在のパーティションの数で対応できるサイズまでストレージを削減する必要があります。 1 つのパーティションに戻す場合は、12 個のシャードをすべて収める必要があります。
@@ -157,22 +155,23 @@ Standard レベルでは、パーティションが 12 の倍数単位 (具体�
 将来の計画を立てるには、ストレージをチェックして (「 [Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))](http://msdn.microsoft.com/library/dn798942.aspx)」を使用) 実際にどのくらい使用したかを確認します。 
 
 <a id="advanced-deployment"></a>
-## <a name="best-practices-on-scale-and-deployment-(video)"></a>スケールとデプロイメントに関するベスト プラクティス (ビデオ)
 
+## <a name="best-practices-on-scale-and-deployment-(video)"></a>スケールとデプロイメントに関するベスト プラクティス (ビデオ)
 この 30 分間のビデオでは、地理的に分散したワークロードを含む、高度なデプロイメント シナリオのベスト プラクティスを確認します。 同じ点を説明したヘルプ ページとして、「 [Performance and optimization in Azure Search](search-performance-optimization.md) 」(Azure Search のパフォーマンスと最適化) もご覧ください。
 
-> [AZURE.VIDEO azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications]
+> [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
+> 
+> 
 
 <a id="next-steps"></a>
-## <a name="next-steps"></a>次のステップ
 
+## <a name="next-steps"></a>次のステップ
 サービス管理に関係する各種の操作を理解したら、サービス管理のためのさまざまなアプローチを検討します。
 
-- [PowerShell](search-manage-powershell.md)
-- [管理 REST API](search-get-started-management-api.md)
+* [PowerShell](search-manage-powershell.md)
+* [管理 REST API](search-get-started-management-api.md)
 
 また、 [パフォーマンスと最適化に関する記事](search-performance-optimization.md)をまだ読んでいない場合は一読し、さらに必要に応じて前のセクションで示したビデオを視聴して、推奨されているテクニックの詳細とデモを確認してください。
-
 
 <!--Image references-->
 [7]: ./media/search-manage/rbac-icon.png
@@ -181,7 +180,7 @@ Standard レベルでは、パーティションが 12 の倍数単位 (具体�
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png
 
 
- 
+
 
 
 

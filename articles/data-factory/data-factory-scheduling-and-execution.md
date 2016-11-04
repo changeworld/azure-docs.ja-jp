@@ -1,34 +1,32 @@
-<properties
-    pageTitle="Data Factory を使用したスケジュール設定と実行 | Microsoft Azure"
-    description="Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。"
-    services="data-factory"
-    documentationCenter=""
-    authors="spelluru"
-    manager="jhubbard"
-    editor="monicar"/>
+---
+title: Data Factory を使用したスケジュール設定と実行 | Microsoft Docs
+description: Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。
+services: data-factory
+documentationcenter: ''
+author: spelluru
+manager: jhubbard
+editor: monicar
 
-<tags
-    ms.service="data-factory"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/22/2016"
-    ms.author="spelluru"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/22/2016
+ms.author: spelluru
 
-
+---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory のスケジュール設定と実行
 この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 この記事は、Data Factory アプリケーション モデルの概念の基本事項 (アクティビティ、パイプライン、リンクされたサービス、データセットなど) を理解していることを前提としています。 Azure Data Factory の基本的な概念については、次の記事を参照してください。
 
-- [Data Factory の概要](data-factory-introduction.md)
-- [パイプライン](data-factory-create-pipelines.md)
-- [データセット](data-factory-create-datasets.md) 
+* [Data Factory の概要](data-factory-introduction.md)
+* [パイプライン](data-factory-create-pipelines.md)
+* [データセット](data-factory-create-datasets.md) 
 
 ## <a name="schedule-an-activity"></a>アクティビティのスケジュール
-
 アクティビティ JSON の scheduler セクションでは、アクティビティの定期的なスケジュールを指定できます。 たとえば、次のように毎時間実行されるアクティビティをスケジュールできます。
 
     "scheduler": {
@@ -47,7 +45,6 @@
 アクティビティに対して **scheduler** プロパティを指定できますが、このプロパティは**省略できます**。 プロパティを指定する場合は、出力データセットの定義と指定するパターンとを一致させる必要があります。 現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。
 
 ## <a name="time-series-datasets-and-data-slices"></a>時系列のデータセットとデータ スライス
-
 時系列データは、連続するシーケンスのデータ ポイントです。通常、一定の間隔で行われる連続的な測定値で構成されます。 時系列データの一般的な例として、センサー データ、アプリケーション テレメトリ データなどがあります。
 
 Data Factory を使用すると、アクティビティ実行で時系列データを一括処理できます。 通常、入力データを受信してから、出力データを生成する必要がある定期的なパターンがあります。 このパターンは、次のようにデータセットの **availability** を指定してモデル化します。
@@ -70,7 +67,6 @@ Data Factory を使用すると、アクティビティ実行で時系列デー�
 availability セクションで使用できるさまざまなプロパティの詳細については、 [データセットの作成](data-factory-create-datasets.md)に関する記事をご覧ください。
 
 ## <a name="move-data-from-sql-database-to-blob-storage"></a>SQL Database から BLOB ストレージにデータを移動する
-
 Azure SQL Database テーブルのデータを Azure Blob Storage に 1 時間ごとにコピーするパイプラインを作成して、データを一括処理しましょう。
 
 **入力: Azure SQL Database データセット**
@@ -154,8 +150,6 @@ availability セクションで **Frequency** は **Hour**、**interval** は **
 
 availability セクションで **Frequency** は **Hour**、**interval** は **1** に設定されています。
 
-
-
 **アクティビティ: コピー アクティビティ**
 
     {
@@ -208,23 +202,24 @@ availability セクションで **Frequency** は **Hour**、**interval** は **
 
 パイプラインをデプロイすると、Azure BLOB が次のように設定されます。
 
--   データが含まれている mypath/2015/1/1/8/Data.&lt;Guid&gt;.txt ファイル
-
-            10002345,334,2,2015-01-01 08:24:00.3130000
-            10002345,347,15,2015-01-01 08:24:00.6570000
-            10991568,2,7,2015-01-01 08:56:34.5300000
-
-    > [AZURE.NOTE] &lt;Guid&gt; は実際の GUID に置き換えられます。 ファイル名の例: Data.bcde1348-7620-4f93-bb89-0eed3455890b.txt
--   データが含まれている mypath/2015/1/1/9/Data.&lt;Guid&gt;.txt ファイル
-
-            10002345,334,1,2015-01-01 09:13:00.3900000
-            24379245,569,23,2015-01-01 09:25:00.3130000
-            16777799,21,115,2015-01-01 09:47:34.3130000
--   データが含まれていない mypath/2015/1/1/10/Data.&lt;Guid&gt;.txt ファイル
-
+* データが含まれている mypath/2015/1/1/8/Data.&lt;Guid&gt;.txt ファイル
+  
+          10002345,334,2,2015-01-01 08:24:00.3130000
+          10002345,347,15,2015-01-01 08:24:00.6570000
+          10991568,2,7,2015-01-01 08:56:34.5300000
+  
+  > [!NOTE]
+  > &lt;Guid&gt; は実際の GUID に置き換えられます。 ファイル名の例: Data.bcde1348-7620-4f93-bb89-0eed3455890b.txt
+  > 
+  > 
+* データが含まれている mypath/2015/1/1/9/Data.&lt;Guid&gt;.txt ファイル
+  
+          10002345,334,1,2015-01-01 09:13:00.3900000
+          24379245,569,23,2015-01-01 09:25:00.3130000
+          16777799,21,115,2015-01-01 09:47:34.3130000
+* データが含まれていない mypath/2015/1/1/10/Data.&lt;Guid&gt;.txt ファイル
 
 ## <a name="active-period-for-pipeline"></a>パイプラインの有効期間
-
 [パイプラインの作成](data-factory-create-pipelines.md)に関する記事で、**start** プロパティと **end** プロパティを設定して指定する、パイプラインのアクティブな期間の概念を紹介しました。
 
 パイプラインの過去のアクティブな期間の開始日を設定できます。 Data Factory によって過去のすべてのデータ スライスが自動的に計算 (バック フィル) され、処理が開始されます。
@@ -232,7 +227,7 @@ availability セクションで **Frequency** は **Hour**、**interval** は **
 ## <a name="parallel-processing-of-data-slices"></a>データ スライスの並列処理
 アクティビティ JSON のポリシー セクションに **concurrency** プロパティを設定することで、バックフィルされたデータ スライスが並列実行されるように構成できます。 このプロパティの詳細については、 [パイプラインの作成に関するトピック](data-factory-create-pipelines.md)を参照してください。
 
-## <a name="rerun-a-failed-data-slice"></a>失敗したデータ スライスを再実行する 
+## <a name="rerun-a-failed-data-slice"></a>失敗したデータ スライスを再実行する
 わかりやすい画面でスライスの実行を監視できます。 詳細については、[Azure Portal の各ブレードを使用したパイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)に関する記事、または[監視と管理用のアプリ](data-factory-monitor-manage-app.md)に関する記事を参照してください。
 
 2 つのアクティビティがある次の例について考えてみます。 Activity1 では、出力としてスライスを含む時系列データセットが生成されます。この出力は、Activity2 で入力として使用され、最終的な出力の時系列データセットが生成されます。
@@ -252,8 +247,8 @@ Data Factory の監視および管理ツールを使用すると、失敗した�
 
 たとえば、次の場合を考えてみましょう。
 
-1.  パイプライン P1 には、外部入力データセット D1 を必要とし、出力データセット D2 を生成するアクティビティ A1 があります。
-2.  パイプライン P2 には、データセット D2 からの入力を必要とし、出力データセット D3 を生成するアクティビティ A2 があります。
+1. パイプライン P1 には、外部入力データセット D1 を必要とし、出力データセット D2 を生成するアクティビティ A1 があります。
+2. パイプライン P2 には、データセット D2 からの入力を必要とし、出力データセット D3 を生成するアクティビティ A2 があります。
 
 このシナリオでは、アクティビティ A1 と A2 は異なるパイプラインにあります。 外部データが使用可能なときにアクティビティ A1 が実行され、スケジュールされた可用性の頻度に達します。 D2 のスケジュールされたスライスが使用可能になると、アクティビティ A2 が実行され、スケジュールされた可用性の頻度に達します。 データセット D2 のスライスのいずれかでエラーが発生した場合、スライスが使用可能になるまで、そのスライスに対して A2 は実行されません。
 
@@ -452,17 +447,13 @@ Inputs: Dataset3、Dataset2。 出力: Dataset4。
 
 この例では、2 つの入力データセットが、2 番目のコピー アクティビティに対して指定されています。 複数の入力を指定すると、データのコピーに使用されるのは最初の入力データセットのみで、他のデータセットは依存関係として使用されます。 CopyActivity2 は、次の条件が満たされた場合にのみ開始されます。
 
-- CopyActivity1 が正常に完了していて、Dataset2 を使用できる。 データを Dataset4 にコピーするときに、このデータセットは使用されません。 これは、CopyActivity2 のスケジュールの依存関係としてのみ機能します。   
-- Dataset3 を使用できる。 このデータセットは、コピー先にコピーされるデータを表します。  
-
-
+* CopyActivity1 が正常に完了していて、Dataset2 を使用できる。 データを Dataset4 にコピーするときに、このデータセットは使用されません。 これは、CopyActivity2 のスケジュールの依存関係としてのみ機能します。   
+* Dataset3 を使用できる。 このデータセットは、コピー先にコピーされるデータを表します。  
 
 ## <a name="model-datasets-with-different-frequencies"></a>頻度が異なるデータセットのモデル化
-
 各サンプルでは、入力および出力データセットとアクティビティ スケジュール ウィンドウの頻度は同じでした。 シナリオによっては、1 つまたは複数の入力の頻度とは異なる頻度で出力を生成できる必要があります。 Data Factory は、このようなシナリオのモデル化をサポートしています。
 
 ### <a name="sample-1:-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>サンプル 1: 毎時取得できる入力データの出力レポートを 1 日に 1 回生成する
-
 センサーからの入力測定データを Azure BLOB Strage で 1 時間ごとに使用できるシナリオについて考えてみます。 Data Factory の [Hive アクティビティ](data-factory-hive-activity.md)を使用して、1 日の平均値、最大値、最小値など、統計情報を含む日次集計レポートを生成します。
 
 Data Factory を使用して、このシナリオをモデル化する方法を次に示します。
@@ -498,7 +489,6 @@ Data Factory を使用して、このシナリオをモデル化する方法を�
 **出力データセット**
 
 毎日、その日のフォルダーに出力ファイルが 1 つ作成されます。 出力の availability は **Day** に設定されています (frequency: Day、interval: 1)。
-
 
     {
       "name": "AzureBlobOutput",
@@ -578,9 +568,7 @@ Data Factory を使用して、このシナリオをモデル化する方法を�
 
 毎日の出力スライスは、入力データセットの 24 時間のスライスに依存しています。 Data Factory では、生成する出力スライスと同じ期間に属する入力データ スライスを特定して、これらの依存関係を自動的に計算します。 24 個の入力スライスのいずれかを使用できない場合、Data Factory では入力スライスの準備が完了するまで待機してから、毎日のアクティビティ実行を開始します。
 
-
 ### <a name="sample-2:-specify-dependency-with-expressions-and-data-factory-functions"></a>サンプル 2: 式と Data Factory の関数を使用して依存関係を指定する
-
 別のシナリオについて考えてみましょう。 2 つの入力データセットを処理する Hive アクティビティがあるとします。 一方のデータセットには毎日新しいデータが入力されますが、もう片方のデータセットでは 1 週間ごとに新しいデータを取得します。 これら 2 つの入力を結合して、毎日 1 つの出力を生成してみましょう。
 
 出力データ スライスの期間に合わせることで処理対象の入力スライスを Data Factory で自動的に特定するという単純な方法では、こうした操作を行うことはできません。
@@ -725,12 +713,10 @@ Hive アクティビティは 2 つの入力を受け取り、出力スライス
     }
 
 
-## <a name="data-factory-functions-and-system-variables"></a>Data Factory の関数およびシステム変数   
-
+## <a name="data-factory-functions-and-system-variables"></a>Data Factory の関数およびシステム変数
 Data Factory でサポートされている関数とシステム変数の一覧については、 [Data Factory の関数とシステム変数](data-factory-functions-variables.md) に関する記事をご覧ください。
 
 ## <a name="data-dependency-deep-dive"></a>データ依存関係の詳細情報
-
 アクティビティ実行でデータセット スライスを生成するために、Data Factory では、次の *依存関係モデル* を使用して、アクティビティで使用されるデータセットとアクティビティで生成されるデータセット間の関係を特定します。
 
 出力データセット スライスの生成に必要な入力データセットの時間範囲は、 *依存関係期間*と呼ばれます。
@@ -751,7 +737,6 @@ Data Factory でサポートされている関数とシステム変数の一覧�
 また、サンプルに示すように、入力の 1 つは毎週、出力スライスは毎日生成されるという独自のマッピングを依存関係期間に指定することもできます。
 
 ## <a name="data-dependency-and-validation"></a>データの依存関係と検証
-
 スライス実行を使用する前に、スライス実行で生成されるデータを検証する方法を指定した検証ポリシーをデータセットに定義することができます。 詳細については、 [データセットの作成](data-factory-create-datasets.md) を参照してください。
 
 この例では、スライスの実行が完了すると、出力スライスの状態は、サブジェクト状態が **Validation** の **Waiting** に変わります。 スライスの検証が完了すると、スライスの状態は **Ready**に変わります。
@@ -761,7 +746,6 @@ Data Factory でサポートされている関数とシステム変数の一覧�
 [パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md) に関する記事で説明されています。
 
 ## <a name="external-data"></a>外部データ
-
 データセットを external としてマークすることで (次の JSON スニペットを参照)、Data Factory で生成されたデータセットではないことを示すことができます。 この場合、データセット ポリシーに、データセットの検証と再試行ポリシーを記述するパラメーター セットを追加できます。 すべてのプロパティの説明については、 [パイプラインの作成](data-factory-create-pipelines.md) に関する記事をご覧ください。
 
 Data Factory で生成されるデータセットと同様に、外部データのデータ スライスを準備してから、依存スライスを生成する必要があります。
@@ -834,12 +818,10 @@ Data Factory で生成されるデータセットと同様に、外部データ�
 
 以下の点に注意してください。
 
-- パイプラインの**開始**時刻と**終了**時刻は指定しません。
-- Data Factory で値が使用されない場合でも、入力データセットと出力データセットの**abailability** (**freqeuncy** と **interval**) は指定します。  
-- ダイアグラム ビューには、1 回限りのパイプラインは表示されません。 この動作は仕様です。
-- 1 回限りのパイプラインを更新することはできません。 1 回限りのパイプラインを複製して名前を変更し、プロパティを更新してデプロイすることで別のパイプラインを作成することができます。
-
-
+* パイプラインの**開始**時刻と**終了**時刻は指定しません。
+* Data Factory で値が使用されない場合でも、入力データセットと出力データセットの**abailability** (**freqeuncy** と **interval**) は指定します。  
+* ダイアグラム ビューには、1 回限りのパイプラインは表示されません。 この動作は仕様です。
+* 1 回限りのパイプラインを更新することはできません。 1 回限りのパイプラインを複製して名前を変更し、プロパティを更新してデプロイすることで別のパイプラインを作成することができます。
 
 <!--HONumber=Oct16_HO2-->
 

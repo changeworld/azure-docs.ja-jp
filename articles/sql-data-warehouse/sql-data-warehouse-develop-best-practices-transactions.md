@@ -1,56 +1,54 @@
-<properties
-   pageTitle="Optimizing transactions for SQL Data Warehouse | Microsoft Azure"
-   description="Best Practice guidance on writing efficient transaction updates in Azure SQL Data Warehouse"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="jhubbard"
-   editor=""/>
+---
+title: Optimizing transactions for SQL Data Warehouse | Microsoft Docs
+description: Best Practice guidance on writing efficient transaction updates in Azure SQL Data Warehouse
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: jhubbard
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="10/31/2016"
-   ms.author="jrj;barbkess"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 10/31/2016
+ms.author: jrj;barbkess
 
-
+---
 # <a name="optimizing-transactions-for-sql-data-warehouse"></a>Optimizing transactions for SQL Data Warehouse
-
 This article explains how to optimize the performance of your transactional code while minimizing risk for long rollbacks.
 
 ## <a name="transactions-and-logging"></a>Transactions and logging
-
 Transactions are an important component of a relational database engine. SQL Data Warehouse uses transactions during data modification. These transactions can be explicit or implicit. Single `INSERT`, `UPDATE` and `DELETE` statements are all examples of implicit transactions. Explicit transactions are written explicitly by a developer using `BEGIN TRAN`, `COMMIT TRAN` or `ROLLBACK TRAN` and are typically used when multiple modification statements need to be tied together in a single atomic unit. 
 
 Azure SQL Data Warehouse commits changes to the database using transaction logs. Each distribution has its own transaction log. Transaction log writes are automatic. There is no configuration required. However, whilst this process guarantees the write it does introduce an overhead in the system. You can minimize this impact by writing transactionally efficient code. Transactionally efficient code broadly falls into two categories.
 
-- Leverage minimal logging constructs where possible
-- Process data using scoped batches to avoid singular long running transactions
-- Adopt a partition switching pattern for large modifications to a given partition
+* Leverage minimal logging constructs where possible
+* Process data using scoped batches to avoid singular long running transactions
+* Adopt a partition switching pattern for large modifications to a given partition
 
 ## <a name="minimal-vs-full-logging"></a>Minimal vs. full logging
-
 Unlike fully logged operations, which use the transaction log to keep track of every row change, minimally logged operations keep track of extent allocations and meta-data changes only. Therefore, minimal logging involves logging only the information that is required to rollback the transaction in the event of a failure or an explicit request (`ROLLBACK TRAN`). As much less information is tracked in the transaction log, a minimally logged operation performs better than a similarly sized fully logged operation. Furthermore, because fewer writes go the transaction log, a much smaller amount of log data is generated and so is more I/O efficient.
 
 The transaction safety limits only apply to fully logged operations.
 
->[AZURE.NOTE] Minimally logged operations can participate in explicit transactions. As all changes in allocation structures are tracked, it is possible to roll back minimally logged operations. It is important to understand that the change is "minimally" logged it is not un-logged.
+> [!NOTE]
+> Minimally logged operations can participate in explicit transactions. As all changes in allocation structures are tracked, it is possible to roll back minimally logged operations. It is important to understand that the change is "minimally" logged it is not un-logged.
+> 
+> 
 
 ## <a name="minimally-logged-operations"></a>Minimally logged operations
-
 The following operations are capable of being minimally logged:
 
-- CREATE TABLE AS SELECT ([CTAS][])
-- INSERT..SELECT
-- CREATE INDEX
-- ALTER INDEX REBUILD
-- DROP INDEX
-- TRUNCATE TABLE
-- DROP TABLE
-- ALTER TABLE SWITCH PARTITION
+* CREATE TABLE AS SELECT ([CTAS][CTAS])
+* INSERT..SELECT
+* CREATE INDEX
+* ALTER INDEX REBUILD
+* DROP INDEX
+* TRUNCATE TABLE
+* DROP TABLE
+* ALTER TABLE SWITCH PARTITION
 
 <!--
 - MERGE
@@ -58,30 +56,34 @@ The following operations are capable of being minimally logged:
 - SELECT..INTO
 -->
 
->[AZURE.NOTE] Internal data movement operations (such as `BROADCAST` and `SHUFFLE`) are not affected by the transaction safety limit.
+> [!NOTE]
+> Internal data movement operations (such as `BROADCAST` and `SHUFFLE`) are not affected by the transaction safety limit.
+> 
+> 
 
 ## <a name="minimal-logging-with-bulk-load"></a>Minimal logging with bulk load
-
 `CTAS` and `INSERT...SELECT` are both bulk load operations. However, both are influenced by the target table definition and depend on the load scenario. Below is a table that explains if your bulk operation will be fully or minimally logged:  
 
-| Primary Index               | Load Scenario                                            | Logging Mode |
-| --------------------------- | -------------------------------------------------------- | ------------ |
-| Heap                        | Any                                                      | **Minimal**  |
-| Clustered Index             | Empty target table                                       | **Minimal**  |
-| Clustered Index             | Loaded rows do not overlap with existing pages in target | **Minimal**  |
-| Clustered Index             | Loaded rows overlap with existing pages in target        | Full         |
-| Clustered Columnstore Index | Batch size >= 102,400 per partition aligned distribution | **Minimal**  |
-| Clustered Columnstore Index | Batch size < 102,400 per partition aligned distribution  | Full         |
+| Primary Index | Load Scenario | Logging Mode |
+| --- | --- | --- |
+| Heap |Any |**Minimal** |
+| Clustered Index |Empty target table |**Minimal** |
+| Clustered Index |Loaded rows do not overlap with existing pages in target |**Minimal** |
+| Clustered Index |Loaded rows overlap with existing pages in target |Full |
+| Clustered Columnstore Index |Batch size >= 102,400 per partition aligned distribution |**Minimal** |
+| Clustered Columnstore Index |Batch size < 102,400 per partition aligned distribution |Full |
 
 It is worth noting that any writes to update secondary or non-clustered indexes will always be fully logged operations.
 
-> [AZURE.IMPORTANT] SQL Data Warehouse has 60 distributions. Therefore, assuming all rows are evenly distributed and landing in a single partition, your batch will need to contain 6,144,000 rows or larger to be minimally logged when writing to a Clustered Columnstore Index. If the table is partitioned and the rows being inserted span partition boundaries, then you will need 6,144,000 rows per partition boundary assuming even data distribution. Each partition in each distribution must independently exceed the 102,400 row threshold for the insert to be minimally logged into the distribution.
+> [!IMPORTANT]
+> SQL Data Warehouse has 60 distributions. Therefore, assuming all rows are evenly distributed and landing in a single partition, your batch will need to contain 6,144,000 rows or larger to be minimally logged when writing to a Clustered Columnstore Index. If the table is partitioned and the rows being inserted span partition boundaries, then you will need 6,144,000 rows per partition boundary assuming even data distribution. Each partition in each distribution must independently exceed the 102,400 row threshold for the insert to be minimally logged into the distribution.
+> 
+> 
 
 Loading data into a non-empty table with a clustered index can often contain a mixture of fully logged and minimally logged rows. A clustered index is a balanced tree (b-tree) of pages. If the page being written to already contains rows from another transaction, then these writes will be fully logged. However, if the page is empty then the write to that page will be minimally logged.
 
 ## <a name="optimizing-deletes"></a>Optimizing deletes
-
-`DELETE` is a fully logged operation.  If you need to delete a large amount of data in a table or a partition, it often makes more sense to `SELECT` the data you wish to keep, which can be run as a minimally logged operation.  To accomplish this, create a new table with [CTAS][].  Once created, use [RENAME][] to swap out your old table with the newly created table.
+`DELETE` is a fully logged operation.  If you need to delete a large amount of data in a table or a partition, it often makes more sense to `SELECT` the data you wish to keep, which can be run as a minimally logged operation.  To accomplish this, create a new table with [CTAS][CTAS].  Once created, use [RENAME][RENAME] to swap out your old table with the newly created table.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -112,8 +114,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Optimizing updates
-
-`UPDATE` is a fully logged operation.  If you need to update a large number of rows in a table or a partition it can often be far more efficient to use a minimally logged operation such as [CTAS][] to do so.
+`UPDATE` is a fully logged operation.  If you need to update a large number of rows in a table or a partition it can often be far more efficient to use a minimally logged operation such as [CTAS][CTAS] to do so.
 
 In the example below a full table update has been converted to a `CTAS` so that minimal logging is possible.
 
@@ -173,13 +174,16 @@ RENAME OBJECT [dbo].[FactInternetSales_u] TO [FactInternetSales];
 DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
-> [AZURE.NOTE] Re-creating large tables can benefit from using SQL Data Warehouse workload management features. For more details please refer to the workload management section in the [concurrency][] article.
+> [!NOTE]
+> Re-creating large tables can benefit from using SQL Data Warehouse workload management features. For more details please refer to the workload management section in the [concurrency][concurrency] article.
+> 
+> 
 
 ## <a name="optimizing-with-partition-switching"></a>Optimizing with partition switching
-
-When faced with large scale modifications inside a [table partition][], then a partition switching pattern makes a lot of sense. If the data modification is significant and spans multiple partitions, then simply iterating over the partitions achieves the same result.
+When faced with large scale modifications inside a [table partition][table partition], then a partition switching pattern makes a lot of sense. If the data modification is significant and spans multiple partitions, then simply iterating over the partitions achieves the same result.
 
 The steps to perform a partition switch are as follows:
+
 1. Create an empty out partition
 2. Perform the 'update' as a CTAS
 3. Switch out the existing data to the out table
@@ -338,7 +342,6 @@ DROP TABLE #ptn_data
 ```
 
 ## <a name="minimize-logging-with-small-batches"></a>Minimize logging with small batches
-
 For large data modification operations, it may make sense to divide the operation into chunks or batches to scope the unit of work.
 
 A working example is provided below. The batch size has been set to a trivial number to highlight the technique. In reality the batch size would be significantly larger. 
@@ -400,19 +403,20 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Pause and scaling guidance
-
 Azure SQL Data Warehouse lets you pause, resume and scale your data warehouse on demand. When you pause or scale your SQL Data Warehouse it is important to understand that any in-flight transactions are terminated immediately; causing any open transactions to be rolled back. If your workload had issued a long running and incomplete data modification prior to the pause or scale operation, then this work will need to be undone. This may impact the time it takes to pause or scale your Azure SQL Data Warehouse database. 
 
-> [AZURE.IMPORTANT] Both `UPDATE` and `DELETE` are fully logged operations and so these undo/redo operations can take significantly longer than equivalent minimally logged operations. 
+> [!IMPORTANT]
+> Both `UPDATE` and `DELETE` are fully logged operations and so these undo/redo operations can take significantly longer than equivalent minimally logged operations. 
+> 
+> 
 
 The best scenario is to let in flight data modification transactions complete prior to pausing or scaling SQL Data Warehouse. However, this may not always be practical. To mitigate the risk of a long rollback, consider one of the following options:
 
-- Re-write long running operations using [CTAS][]
-- Break the operation down into chunks; operating on a subset of the rows
+* Re-write long running operations using [CTAS][CTAS]
+* Break the operation down into chunks; operating on a subset of the rows
 
 ## <a name="next-steps"></a>Next steps
-
-See [Transactions in SQL Data Warehouse][] to learn more about isolation levels and transactional limits.  For an overview of other Best Practices, see [SQL Data Warehouse Best Practices][].
+See [Transactions in SQL Data Warehouse][Transactions in SQL Data Warehouse] to learn more about isolation levels and transactional limits.  For an overview of other Best Practices, see [SQL Data Warehouse Best Practices][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 

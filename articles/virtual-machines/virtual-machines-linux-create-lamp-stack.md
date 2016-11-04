@@ -1,29 +1,28 @@
-<properties
-	pageTitle="Linux 仮想マシンへの LAMP のデプロイ | Microsoft Azure"
-	description="Linux VM に LAMP スタックをインストールする方法を説明します。"
-	services="virtual-machines-linux"
-	documentationCenter="virtual-machines"
-	authors="jluk"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+---
+title: Linux 仮想マシンへの LAMP のデプロイ | Microsoft Docs
+description: Linux VM に LAMP スタックをインストールする方法を説明します。
+services: virtual-machines-linux
+documentationcenter: virtual-machines
+author: jluk
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.date="06/07/2016"
-	ms.author="jluk"/>
+ms.service: virtual-machines-linux
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-linux
+ms.devlang: NA
+ms.topic: article
+ms.date: 06/07/2016
+ms.author: jluk
 
+---
 # Azure への LAMP スタックのデプロイ
 この記事では、Apache Web サーバー、MySQL、および PHP (LAMP スタック) を Azure にデプロイする方法について説明します。Azure アカウント ([無料試用版を入手してください](https://azure.microsoft.com/pricing/free-trial/)) と、[Azure アカウントに接続している](../xplat-cli-connect.md) [Azure CLI](../xplat-cli-install.md) が必要になります。
 
 この記事で取り上げる LAMP のインストール方法は 2 つあります。
 
 ## クイック コマンドの概要
-
 1) 新しい VM に LAMP をデプロイする
 
 ```
@@ -40,7 +39,6 @@ user@ubuntu$ sudo apt-get install apache2 mysql-server php5 php5-mysql
 ```
 
 ## 新しい VM に LAMP をデプロイするチュートリアル
-
 まず、VM が含まれる新しい[リソース グループ](../resource-group-overview.md)を作成します。
 
     $ azure group create uniqueResourceGroup westus
@@ -97,21 +95,19 @@ VM 自体を作成するには、[GitHub のこちら](https://github.com/Azure/
 これで、LAMP が既にインストールされている Linux VM が作成されました。必要に応じて、「LAMP が正常にインストールされていることを確認する」に移動してインストールを確認できます。
 
 ## LAMP を既存の VM にデプロイするチュートリアル
-
-Linux VM の作成についてサポートが必要な場合は、Linux VM を作成する方法を[こちら](./virtual-machines-linux-quick-create-cli.md)に移動して確認します。次に、Linux VM に SSH で接続する必要があります。SSH キーの作成についてサポートが必要な場合は、Linux または Mac で SSH キーを作成する方法を[こちら](./virtual-machines-linux-mac-create-ssh-keys.md)に移動して確認します。SSH キーが既にある場合は、先に進み、`ssh username@uniqueDNS` を使用して Linux VM に SSH で接続します。
+Linux VM の作成についてサポートが必要な場合は、Linux VM を作成する方法を[こちら](virtual-machines-linux-quick-create-cli.md)に移動して確認します。次に、Linux VM に SSH で接続する必要があります。SSH キーの作成についてサポートが必要な場合は、Linux または Mac で SSH キーを作成する方法を[こちら](virtual-machines-linux-mac-create-ssh-keys.md)に移動して確認します。SSH キーが既にある場合は、先に進み、`ssh username@uniqueDNS` を使用して Linux VM に SSH で接続します。
 
 Linux VM では作業しているため、Debian ベースのディストリビューションに LAMP スタックをインストールする方法について説明します。Linux ディストリビューションによって、コマンドが微妙に異なる場合があります。
 
 #### Debian または Ubuntu へのインストール
-
 次のパッケージをインストールする必要があります: `apache2`、`mysql-server`、`php5`、および `php5-mysql`。これらのパッケージは、直接取得するか、Tasksel を使用することでインストールできます。両方のオプションの手順を以下に示します。インストールする前に、パッケージの一覧をダウンロードして更新する必要があります。
 
     user@ubuntu$ sudo apt-get update
-    
+
 ##### 個々のパッケージ
 apt-get の使用
 
-	user@ubuntu$ sudo apt-get install apache2 mysql-server php5 php5-mysql
+    user@ubuntu$ sudo apt-get install apache2 mysql-server php5 php5-mysql
 
 ##### Tasksel の使用
 または、Tasksel をダウンロードすることができます。これは、複数の関連パッケージを一連のタスクとしてシステムにインストールするための、Debian/Ubuntu ツールです。
@@ -125,11 +121,10 @@ apt-get の使用
 
 パッケージとして利用可能な他の PHP 拡張機能を表示するには、下記のコマンドを実行します。
 
-	user@ubuntu$ apt-cache search php5
+    user@ubuntu$ apt-cache search php5
 
 
 #### info.php ドキュメントを作成する
-
 コマンドラインに `apache2 -v`、`mysql -v`、または `php -v` を入力して、使用している Apache、MySQL、PHP のバージョンを確認できるようになりました。
 
 さらにテストしたい場合は、簡単な PHP 情報ページを作成して、ブラウザーで表示できます。Nano テキスト エディターで次のコマンドを使用して新しいファイルを作成します。
@@ -149,7 +144,6 @@ GNU Nano テキスト エディターに次の行を追加します。
     user@ubuntu$ sudo service apache2 restart
 
 ## LAMPが正常にインストールされていることを確認する
-
 http://youruniqueDNS/info.php に移動して、作成した PHP 情報ページをブラウザーでチェックできます。次のように表示されます。
 
 ![][2]
@@ -161,10 +155,9 @@ http://youruniqueDNS/ に移動して Apache2 Ubuntu の既定のページを表
 これで、Azure VM 上に LAMP スタックを設定できました。
 
 ## 次のステップ
-
 LAMP スタックで Ubuntu のドキュメントを確認します。
 
-- [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
+* [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
 
 [1]: ./media/virtual-machines-linux-deploy-lamp-stack/configmysqlpassword-small.png
 [2]: ./media/virtual-machines-linux-deploy-lamp-stack/phpsuccesspage.png

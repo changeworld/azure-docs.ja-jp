@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Log Analytics のアラート REST API"
-   description="Log Analytics のアラート REST API は、Operations Management Suite (OMS) でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。"
-   services="log-analytics"
-   documentationCenter=""
-   authors="bwren"
-   manager="jwhit"
-   editor="tysonn" />
-<tags
-   ms.service="log-analytics"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="10/18/2016"
-   ms.author="bwren" />
+---
+title: Log Analytics のアラート REST API
+description: Log Analytics のアラート REST API は、Operations Management Suite (OMS) でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
+services: log-analytics
+documentationcenter: ''
+author: bwren
+manager: jwhit
+editor: tysonn
 
+ms.service: log-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 10/18/2016
+ms.author: bwren
 
+---
 # <a name="log-analytics-alert-rest-api"></a>Log Analytics のアラート REST API
-
 Log Analytics のアラート REST API は、Operations Management Suite (OMS) でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
 
 Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager REST API を使用してアクセスできます。 このドキュメントでは、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンド ライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を使用して PowerShell コマンド ラインから API にアクセスする例を示します。 Log Analytics 検索 API には、ARMClient や PowerShell を使用する以外にもさまざまな方法でアクセスできます。 これらのツールを使用すると、RESTful な Azure Resource Manager API を使用して OMS のワークスペースにアクセスし、その中で検索コマンドを実行できます。 API の検索結果は JSON 形式で出力されるため、検索結果をプログラムによりさまざまな方法で使用できます。
@@ -29,11 +28,11 @@ Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager 
 保存した検索条件には、1 つ以上のスケジュールを設定できます。 スケジュールは、検索を実行する頻度と、条件を識別する時間間隔を定義します。
 スケジュールには、次の表に示したプロパティがあります。
 
-| プロパティ  | 説明 |
-|:--|:--|
-| 間隔 | 検索を実行する頻度。 分単位で指定します。 |
-| QueryTimeSpan | 条件を評価する時間間隔。 [Interval] の値以上にする必要があります。 分単位で指定します。 |
-| バージョン | 使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
+| プロパティ | 説明 |
+|:--- |:--- |
+| 間隔 |検索を実行する頻度。 分単位で指定します。 |
+| QueryTimeSpan |条件を評価する時間間隔。 [Interval] の値以上にする必要があります。 分単位で指定します。 |
+| バージョン |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
 
 たとえば、[Interval] を 15 分、[QueryTimeSpan] を 30 分に設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、条件が 30 分間にわたって真に評価されるとアラートがトリガーされます。
 
@@ -81,10 +80,10 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
 すべてのアクションには、次の表に示したプロパティがあります。  後で説明するように、アラートの種類によって異なる追加のプロパティもあります。
 
 | プロパティ | 説明 |
-|:--|:--|
-| 型 | アクションの種類。  現在使用可能な値は、[Alert] と [Webhook] です。 |
-| 名前 | アラートの表示名。 |
-| バージョン | 使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
+|:--- |:--- |
+| 型 |アクションの種類。  現在使用可能な値は、[Alert] と [Webhook] です。 |
+| 名前 |アラートの表示名。 |
+| バージョン |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
 
 ### <a name="retrieving-actions"></a>アクションの取得
 Get メソッドを使用して、スケジュールのすべてのアクションを取得します。
@@ -111,10 +110,10 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 スケジュールには、アラート アクションを 1 つだけ指定する必要があります。  アラート アクションには、次の表に示したセクションが 1 つ以上含まれています。  それぞれについて、以下で詳しく説明します。
 
 | セクション | 説明 |
-|:--|:--|
-| しきい値 | アクションがいつ実行されるかの条件。 |  
-| EmailNotification | 複数の受信者にメールを送信します。 |
-| 修復 | 識別された問題を解決するための Runbook を Azure Automation で開始します。 |
+|:--- |:--- |
+| しきい値 |アクションがいつ実行されるかの条件。 |
+| EmailNotification |複数の受信者にメールを送信します。 |
+| 修復 |識別された問題を解決するための Runbook を Azure Automation で開始します。 |
 
 #### <a name="thresholds"></a>しきい値
 アラート アクションには、しきい値を 1 つだけ指定する必要があります。  保存した検索条件の結果が、その検索に関連付けられているアクションのしきい値に一致すると、そのアクションの他のすべてのプロセスが実行されます。  また、アクションにしきい値だけを含めて、しきい値を含まない他の種類のアクションと共に使用することもできます。
@@ -122,9 +121,9 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 しきい値には、次の表に示したプロパティがあります。
 
 | プロパティ | 説明 |
-|:--|:--|
-| 演算子 | しきい値の比較演算子。 <br> gt = より大きい <br>  lt = より小さい |
-| 値 | しきい値の値。 |
+|:--- |:--- |
+| 演算子 |しきい値の比較演算子。 <br> gt = より大きい <br>  lt = より小さい |
+| 値 |しきい値の値。 |
 
 たとえば、[Interval] を 15 分、[QueryTimeSpan] を 30 分に設定し、しきい値を 10 より大きく設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、30 分間にわたって作成された 10 個のイベントが返されたときに、アラートがトリガーされます。
 
@@ -155,10 +154,10 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 電子メール通知は、1 人以上の受信者にメールを送信します。  電子メール通知には、次の表に示したプロパティがあります。
 
 | プロパティ | 説明 |
-|:--|:--|
-| Recipients | メール アドレスの一覧。 |
-| [件名] | メールの件名。 |
-| 添付ファイル | 添付ファイルは現在サポートされていないため、値は常に "None" になります。 |
+|:--- |:--- |
+| Recipients |メール アドレスの一覧。 |
+| [件名] |メールの件名。 |
+| 添付ファイル |添付ファイルは現在サポートされていないため、値は常に "None" になります。 |
 
 しきい値を含む電子メール通知に対する応答の例を次に示します。  
 
@@ -197,10 +196,10 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 修復には、次の表に示したプロパティがあります。
 
 | プロパティ | 説明 |
-|:--|:--|
-| RunbookName | Runbook の名前。 これは、OMS ワークスペースの Automation ソリューションで構成されたオートメーション アカウントの発行済み Runbook と一致する必要があります。 |
-| WebhookUri | Webhook の URI。
-| Expiry | Webhook の有効期限の日付と時刻。  Webhook に有効期限がない場合は、任意の有効な将来の日付を設定できます。 |
+|:--- |:--- |
+| RunbookName |Runbook の名前。 これは、OMS ワークスペースの Automation ソリューションで構成されたオートメーション アカウントの発行済み Runbook と一致する必要があります。 |
+| WebhookUri |Webhook の URI。 |
+| Expiry |Webhook の有効期限の日付と時刻。  Webhook に有効期限がない場合は、任意の有効な将来の日付を設定できます。 |
 
 しきい値を含む修復アクションに対する応答の例を次に示します。
 
@@ -254,9 +253,9 @@ Webhook アクションにはしきい値はありませんが、その代わり
 Webhook アクションには、次の表に示したプロパティがあります。
 
 | プロパティ | 説明 |
-|:--|:--|
-| WebhookUri | メールの件名。 |
-| CustomPayload | Webhook に送信するカスタム ペイロード。  形式は、Webhook で想定される内容によって異なります。 |
+|:--- |:--- |
+| WebhookUri |メールの件名。 |
+| CustomPayload |Webhook に送信するカスタム ペイロード。  形式は、Webhook で想定される内容によって異なります。 |
 
 Webhook アクションとしきい値を含む関連アラート アクションに対する応答の例を次に示します。
 
@@ -305,10 +304,7 @@ Webhook アクションとしきい値を含む関連アラート アクショ�
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mywebhookaction?api-version=2015-03-20 $webhookAction
 
 ## <a name="next-steps"></a>次のステップ
-
-- Log Analytics で [ログ検索を実行するための REST API](log-analytics-log-search-api.md) を使用します。
-
-
+* Log Analytics で [ログ検索を実行するための REST API](log-analytics-log-search-api.md) を使用します。
 
 <!--HONumber=Oct16_HO2-->
 

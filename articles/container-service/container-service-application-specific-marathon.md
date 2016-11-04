@@ -1,25 +1,24 @@
-<properties
-   pageTitle="アプリケーションまたはユーザー固有の Marathon サービス | Microsoft Azure"
-   description="アプリケーションまたはユーザー固有の Marathon サービスの作成"
-   services="container-service"
-   documentationCenter=""
-   authors="rgardler"
-   manager="timlt"
-   editor=""
-   tags="acs, azure-container-service"
-   keywords="コンテナー, Marathon, マイクロサービス, DC/OS, Azure"/>
+---
+title: アプリケーションまたはユーザー固有の Marathon サービス | Microsoft Docs
+description: アプリケーションまたはユーザー固有の Marathon サービスの作成
+services: container-service
+documentationcenter: ''
+author: rgardler
+manager: timlt
+editor: ''
+tags: acs, azure-container-service
+keywords: コンテナー, Marathon, マイクロサービス, DC/OS, Azure
 
-<tags
-   ms.service="container-service"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="04/12/2016"
-   ms.author="rogardle"/>
+ms.service: container-service
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 04/12/2016
+ms.author: rogardle
 
+---
 # アプリケーションまたはユーザー固有の Marathon サービスの作成
-
 Azure コンテナー サービスは、Apache Mesos と Marathon が事前構成されている、一連のマスター サーバーを提供します。これらはクラスター上のアプリケーションを調整するために使用できますが、この目的のためにはマスター サーバーを使用しないことをお勧めします。たとえば、Marathon の構成を調整するには、マスター サーバー自体にログインし、変更を行う必要があります。そのため、標準的なマスター サーバーとは少し異なる特殊なものになりやすく、個別に注意して管理する必要があります。さらに、あるチームで必要とされる構成が、別のチームにとっては最適な構成でない場合もあります。
 
 この記事では、アプリケーションまたはユーザー固有の Marathon サービスを追加する方法について説明します。
@@ -27,13 +26,11 @@ Azure コンテナー サービスは、Apache Mesos と Marathon が事前構�
 このサービスは単一のユーザーまたはチームに属するため、好きな方法で自由に構成できます。また、Azure コンテナー サービスは、サービスの実行が続行されるようにします。サービスで障害が発生すると、Azure コンテナー サービスが自動的にサービスを再開します。ほとんどの場合、ダウンタイムがあったことにさえ気付きません。
 
 ## 前提条件
-
 orchestrator の種類が DC/OS の [Azure コンテナー サービスのインスタンスをデプロイ](container-service-deployment.md)し、[クライアントがクラスターに接続](container-service-connect.md)できるようにします。また、次の手順を実行します。
 
-[AZURE.INCLUDE [DC/OS CLI をインストールします。](../../includes/container-service-install-dcos-cli-include.md)]
+[!INCLUDE [DC/OS CLI をインストールします。](../../includes/container-service-install-dcos-cli-include.md)]
 
 ## アプリケーションまたはユーザー固有の Marathon サービスの作成
-
 最初に、作成するアプリケーション サービスの名前を定義する JSON 構成ファイルを作成します。ここでは、フレームワーク名として `marathon-alice` を使用します。`marathon-alice.json` のような名前でファイルを保存します。
 
 ```json
@@ -49,7 +46,6 @@ dcos package install --options=marathon-alice.json marathon
 これで、実行されている `marathon-alice` サービスが、DC/OS UI のサービス タブに表示されます。直接アクセスする場合、UI は `http://<hostname>/service/marathon-alice/` です。
 
 ## サービスにアクセスするための DC/OS CLI の設定
-
 必要に応じて、この新しいサービスにアクセスするように DC/OS CLI を構成することができます。そのためには、次のように、`marathon-alice` インスタンスを指すように `marathon.url` プロパティを設定します。
 
 ```bash

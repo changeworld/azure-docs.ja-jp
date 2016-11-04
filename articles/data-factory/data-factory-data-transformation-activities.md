@@ -1,41 +1,44 @@
-<properties 
-    pageTitle="データの変換: データの処理と変換 | Microsoft Azure" 
-    description="Azure Data Factory で Hadoop、Machine Learning、または Azure Data Lake Analytics を使用してデータを変換または処理する方法について説明します。" 
-    keywords="データの変換, データの処理, データ変換, 変換アクティビティ"
-    services="data-factory" 
-    documentationCenter="" 
-    authors="sharonlo101" 
-    manager="jhubbard" 
-    editor="monicar"/>
+---
+title: 'データの変換: データの処理と変換 | Microsoft Docs'
+description: Azure Data Factory で Hadoop、Machine Learning、または Azure Data Lake Analytics を使用してデータを変換または処理する方法について説明します。
+keywords: データの変換, データの処理, データ変換, 変換アクティビティ
+services: data-factory
+documentationcenter: ''
+author: sharonlo101
+manager: jhubbard
+editor: monicar
 
-<tags 
-    ms.service="data-factory" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/23/2016" 
-    ms.author="shlo"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/23/2016
+ms.author: shlo
 
-
+---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
-> [AZURE.SELECTOR]
-[Hive](data-factory-hive-activity.md)  
-[Pig](data-factory-pig-activity.md)  
-[MapReduce](data-factory-map-reduce.md)  
-[Hadoop Streaming](data-factory-hadoop-streaming-activity.md)
-[Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
-[ストアド プロシージャ](data-factory-stored-proc-activity.md)
-[Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-[.NET カスタム](data-factory-use-custom-activities.md)
-   
+> [!div class="op_single_selector"]
+> [Hive](data-factory-hive-activity.md)  
+> [Pig](data-factory-pig-activity.md)  
+> [MapReduce](data-factory-map-reduce.md)  
+> [Hadoop Streaming](data-factory-hadoop-streaming-activity.md)
+> [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
+> [ストアド プロシージャ](data-factory-stored-proc-activity.md)
+> [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
+> [.NET カスタム](data-factory-use-custom-activities.md)
+> 
+> 
 
-## <a name="overview"></a>Overview 
+## <a name="overview"></a>Overview
 この記事では、Azure Data Factory でのデータ変換アクティビティについて説明します。このアクティビティにより、生データを変換および処理することで、予測や把握が容易になります。 変換アクティビティは、Azure HDInsight クラスターや Azure Batch などのコンピューティング環境で実行されます。 各変換アクティビティの詳細情報に関する記事へのリンクが提供されています。
- 
+
 Data Factory は、次のデータ変換アクティビティをサポートしています。これらのアクティビティは、個別または他のアクティビティと連結した状態で[パイプライン](data-factory-create-pipelines.md)に追加できます。
 
-> [AZURE.NOTE] 具体的な手順を示すチュートリアルについては、 [Hive 変換を使用するパイプラインを作成する](data-factory-build-your-first-pipeline.md) 記事を参照してください。  
+> [!NOTE]
+> 具体的な手順を示すチュートリアルについては、 [Hive 変換を使用するパイプラインを作成する](data-factory-build-your-first-pipeline.md) 記事を参照してください。  
+> 
+> 
 
 ## <a name="hdinsight-hive-activity"></a>HDInsight Hive アクティビティ
 Data Factory パイプラインの HDInsight Hive アクティビティでは、独自またはオンデマンドの Windows/Linux ベースの HDInsight クラスターで Hive クエリを実行します。 このアクティビティの詳細については、記事「 [Hive アクティビティ](data-factory-hive-activity.md) 」を参照してください。 
@@ -77,24 +80,19 @@ Data Factory でサポートされていない方法でデータを変換する�
 
 Data Factory でサポートされているコンピューティング サービスの詳細については、記事「 [コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md) 」を参照してください。 
 
-
 ## <a name="summary"></a>概要
 Azure Data Factory では、次のデータ変換アクティビティと、アクティビティのためのコンピューティング環境をサポートしています。 変換アクティビティは、個別または他のアクティビティと連結した状態でパイプラインに追加できます。
 
-データ変換アクティビティ |  Compute 環境 
-:----------------------- | :--------------------
-[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] 
-[Pig](data-factory-pig-activity.md) | HDInsight [Hadoop]  
-[MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop]  
-[Hadoop ストリーミング](data-factory-hadoop-streaming-activity.md) | HDInsight [Hadoop]
-[Machine Learning アクティビティ: バッチ実行とリソース更新](data-factory-azure-ml-batch-execution-activity.md) | Azure VM 
-[ストアド プロシージャ](data-factory-stored-proc-activity.md) | Azure SQL、Azure SQL Data Warehouse、または SQL Server |
-[Data Lake Analytics U-SQL](data-factory-usql-activity.md) | Azure Data Lake Analytics 
-[DotNet](data-factory-use-custom-activities.md) | HDInsight [Hadoop] または Azure Batch
-   
-
-
-
+| データ変換アクティビティ | Compute 環境 |
+|:--- |:--- |
+| [Hive](data-factory-hive-activity.md) |HDInsight [Hadoop] |
+| [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
+| [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
+| [Hadoop ストリーミング](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
+| [Machine Learning アクティビティ: バッチ実行とリソース更新](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
+| [ストアド プロシージャ](data-factory-stored-proc-activity.md) |Azure SQL、Azure SQL Data Warehouse、または SQL Server |
+| [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
+| [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] または Azure Batch |
 
 <!--HONumber=Oct16_HO2-->
 

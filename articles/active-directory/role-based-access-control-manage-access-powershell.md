@@ -1,39 +1,37 @@
-<properties
-	pageTitle="Azure PowerShell を使用したロールベースの Access Control (RBAC) の管理 | Microsoft Azure"
-	description="Azure PowerShell を使用して RBAC を管理する方法 (ロールの表示、ロールの割り当て、ロール割り当ての削除など)。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+---
+title: Azure PowerShell を使用したロールベースの Access Control (RBAC) の管理 | Microsoft Docs
+description: Azure PowerShell を使用して RBAC を管理する方法 (ロールの表示、ロールの割り当て、ロール割り当ての削除など)。
+services: active-directory
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="07/22/2016"
-	ms.author="kgremban"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 07/22/2016
+ms.author: kgremban
 
+---
 # Azure PowerShell を使用したロールベースのアクセス制御の管理
-
-> [AZURE.SELECTOR]
-- [PowerShell](role-based-access-control-manage-access-powershell.md)
-- [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
-- [REST API](role-based-access-control-manage-access-rest.md)
-
+> [!div class="op_single_selector"]
+> * [PowerShell](role-based-access-control-manage-access-powershell.md)
+> * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
+> * [REST API](role-based-access-control-manage-access-rest.md)
+> 
+> 
 
 Azure ポータルと Azure リソース管理 API のロールベースの Access Control (RBAC) を使用すると、サブスクリプションへのアクセスを詳細に管理できます。この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
 
 PowerShell を使って RBAC を管理するには、以下を用意しておく必要があります。
 
-- Azure PowerShell バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](../powershell-install-configure.md)」をご覧ください。
-
-- Azure Resource Manager コマンドレット。PowerShell で [Azure Resource Manager コマンドレット](https://msdn.microsoft.com/library/mt125356.aspx)をインストールします。
+* Azure PowerShell バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](../powershell-install-configure.md)」をご覧ください。
+* Azure Resource Manager コマンドレット。PowerShell で [Azure Resource Manager コマンドレット](https://msdn.microsoft.com/library/mt125356.aspx)をインストールします。
 
 ## ロールの一覧表示
-
 ### 使用可能なすべてのロールの表示
 割り当てることができる RBAC のロールを表示したり、アクセス権が付与されている操作を調べたりするには、`Get-AzureRmRoleDefinition` を使用します。
 
@@ -57,7 +55,7 @@ Get-AzureRmRoleDefinition Contributor | FL Actions, NotActions
 ## アクセスできるユーザーの確認
 RBAC のアクセス権の割り当てを表示するには、`Get-AzureRmRoleAssignment` を使用します。
 
-###	特定のスコープでのロールの割り当ての表示
+### 特定のスコープでのロールの割り当ての表示
 指定したサブスクリプション、リソース グループ、またはリソースに対するすべてのアクセス権の割り当てを表示できます。たとえば、リソース グループのすべてのアクティブな割り当てを表示するには、`Get-AzureRmRoleAssignment -ResourceGroupName <resource group name>` を使用します。
 
 ```
@@ -180,7 +178,6 @@ Set-AzureRmRoleDefinition -Role $role)
 ![RBAC PowerShell - Set-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-2.png)
 
 ## カスタム ロールの削除
-
 カスタム ロールを削除するには、`Remove-AzureRmRoleDefinition` コマンドを使用します。
 
 次の例では、*仮想マシン オペレーター* カスタム ロールが削除されます。
@@ -209,7 +206,7 @@ Get-AzureRmRoleDefinition | FT Name, IsCustom
 ![RBAC PowerShell - Get-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/5-get-azurermroledefinition2.png)
 
 ## 関連項目
-- [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md) 
-[AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+* [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md) 
+  [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
 <!---HONumber=AcomDC_0810_2016-->

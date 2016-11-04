@@ -1,35 +1,34 @@
-<properties
-   pageTitle="Resource Manager での Azure ポータルを使用した内部ロード バランサーの作成の概要 | Microsoft Azure"
-   description="Azure ポータルを使用して Resource Manager で内部ロード バランサーを作成する方法について説明します"
-   services="load-balancer"
-   documentationCenter="na"
-   authors="sdwheeler"
-   manager="carmonm"
-   editor=""
-   tags="azure-service-management"
-/>
-<tags
-   ms.service="load-balancer"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="08/31/2016"
-   ms.author="sewhee" />
+---
+title: Resource Manager での Azure ポータルを使用した内部ロード バランサーの作成の概要 | Microsoft Docs
+description: Azure ポータルを使用して Resource Manager で内部ロード バランサーを作成する方法について説明します
+services: load-balancer
+documentationcenter: na
+author: sdwheeler
+manager: carmonm
+editor: ''
+tags: azure-service-management
 
+ms.service: load-balancer
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 08/31/2016
+ms.author: sewhee
+
+---
 # Azure ポータルでの内部ロード バランサーの作成の概要
+[!INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]
 
-[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]
+[!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-[AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
+[!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](load-balancer-get-started-ilb-classic-ps.md)
+[classic deployment model](load-balancer-get-started-ilb-classic-ps.md)
 
-[AZURE.INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
-
+[!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
 ## Azure ポータルを使用した内部ロード バランサーの作成の概要
-
 Azure ポータルから内部ロード バランサーを作成するには、次の手順に従います。
 
 1. ブラウザーから [Azure ポータル](http://portal.azure.com)に移動します。必要であれば Azure アカウントでサインインします。
@@ -37,30 +36,31 @@ Azure ポータルから内部ロード バランサーを作成するには、�
 3. **[ロード バランサーの作成]** ブレードで、ロード バランサーの **名前** を入力します。
 4. **[スキーム]** の **[内部]** をクリックします。
 5. **[仮想ネットワーク]** をクリックし、ロード バランサーを作成する仮想ネットワークを選択します。
-
-    >[AZURE.NOTE] 使用する仮想ネットワークが表示されない場合は、ロード バランサーに使用する **[場所]** を確認し、それに従って変更します。
-
+   
+   > [!NOTE]
+   > 使用する仮想ネットワークが表示されない場合は、ロード バランサーに使用する **[場所]** を確認し、それに従って変更します。
+   > 
+   > 
 6. **[サブネット]** をクリックし、ロード バランサーを作成するサブネットを選択します。
 7. **[IP アドレスの割り当て]** で、ロード バランサーの IP アドレスを固定 (静的) にするかどうかに応じて、**[動的]** または **[静的]** をクリックします。
-
-    >[AZURE.NOTE] 静的 IP アドレスの使用を選択した場合は、ロード バランサーのアドレスを指定する必要があります。
-
+   
+   > [!NOTE]
+   > 静的 IP アドレスの使用を選択した場合は、ロード バランサーのアドレスを指定する必要があります。
+   > 
+   > 
 8. **[リソース グループ]** で、ロード バランサーの新しいリソース グループの名前を指定するか、または **[既存のものを選択]** をクリックして既存のリソース グループを選択します。
 9. **[作成]** をクリックします。
 
 ## 負荷分散規則の構成
-
 ロード バランサーを作成した後は、ロード バランサーのリソースに移動して構成します。負荷分散規則を構成する前に、バックエンド アドレス プールとプローブを構成する必要があります。
 
 ### 手順 1: バックエンド プールを構成する
-
 1. Azure ポータルで、**[参照]**、**[ロード バランサー]** の順にクリックし、上で作成したロード バランサーをクリックします。
 2. **[設定]** ブレードで **[バックエンド プール]** をクリックします。
 3. [**バックエンド アドレス プール**] ブレードで、[**追加**] をクリックします。
 4. **[バックエンド プールの追加]** ブレードで、バックエンド プールの **名前** を入力して、**[OK]** をクリックします。
 
 ### 手順 2: プローブを構成する
-
 1. Azure ポータルで、**[参照]**、**[ロード バランサー]** の順にクリックし、上で作成したロード バランサーをクリックします。
 2. **[設定]** ブレードで **[プローブ]** をクリックします。
 3. **[プローブ]** ブレードで **[追加]** をクリックします。
@@ -73,7 +73,6 @@ Azure ポータルから内部ロード バランサーを作成するには、�
 10. **[OK]** をクリックしてプローブを作成します。
 
 ### 手順 3: 負荷分散規則を構成する
-
 1. Azure ポータルで、**[参照]**、**[ロード バランサー]** の順にクリックし、上で作成したロード バランサーをクリックします。
 2. **[設定]** ブレードで、**[負荷分散規則]** をクリックします。
 3. **[負荷分散規則]** ブレードで、**[追加]** をクリックします。
@@ -88,7 +87,6 @@ Azure ポータルから内部ロード バランサーを作成するには、�
 12. **[OK]** をクリックします。
 
 ## 次のステップ
-
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)

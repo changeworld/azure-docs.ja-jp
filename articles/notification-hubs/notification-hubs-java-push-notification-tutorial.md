@@ -1,44 +1,41 @@
-<properties 
-    pageTitle="How to use Notification Hubs with Java" 
-    description="Learn how to use Azure Notification Hubs from a Java back-end." 
-    services="notification-hubs" 
-    documentationCenter="" 
-    authors="ysxu" 
-    manager="erikre" 
-    editor=""/>
+---
+title: How to use Notification Hubs with Java
+description: Learn how to use Azure Notification Hubs from a Java back-end.
+services: notification-hubs
+documentationcenter: ''
+author: ysxu
+manager: erikre
+editor: ''
 
-<tags 
-    ms.service="notification-hubs" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="java" 
-    ms.devlang="java" 
-    ms.topic="article" 
-    ms.date="06/29/2016" 
-    ms.author="yuaxu"/>
+ms.service: notification-hubs
+ms.workload: mobile
+ms.tgt_pltfrm: java
+ms.devlang: java
+ms.topic: article
+ms.date: 06/29/2016
+ms.author: yuaxu
 
-
+---
 # <a name="how-to-use-notification-hubs-from-java"></a>How to use Notification Hubs from Java
-[AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
-        
+[!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
+
 This topic describes the key features of the new fully supported official Azure Notification Hub Java SDK. This is an open source project and you can view the entire SDK code at [Java SDK]. 
 
 In general, you can access all Notification Hubs features from a Java/PHP/Python/Ruby back-end using the Notification Hub REST interface as described in the MSDN topic [Notification Hubs REST APIs](http://msdn.microsoft.com/library/dn223264.aspx). This Java SDK provides a thin wrapper over these REST interfaces in Java. 
 
 The SDK supports currently:
 
-- CRUD on Notification Hubs 
-- CRUD on Registrations
-- Installation Management
-- Import/Export Registrations
-- Regular Sends
-- Scheduled Sends
-- Async operations via Java NIO
-- Supported platforms: APNS (iOS), GCM (Android), WNS (Windows Store apps), MPNS(Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android without Google services) 
+* CRUD on Notification Hubs 
+* CRUD on Registrations
+* Installation Management
+* Import/Export Registrations
+* Regular Sends
+* Scheduled Sends
+* Async operations via Java NIO
+* Supported platforms: APNS (iOS), GCM (Android), WNS (Windows Store apps), MPNS(Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android without Google services) 
 
 ## <a name="sdk-usage"></a>SDK Usage
-
 ### <a name="compile-and-build"></a>Compile and build
-
 Use [Maven]
 
 To build:
@@ -46,34 +43,32 @@ To build:
     mvn package
 
 ## <a name="code"></a>Code
-
 ### <a name="notification-hub-cruds"></a>Notification Hub CRUDs
-
 **Create a NamespaceManager:**
-    
+
     NamespaceManager namespaceManager = new NamespaceManager("connection string")
 
 **Create Notification Hub:**
-    
+
     NotificationHubDescription hub = new NotificationHubDescription("hubname");
     hub.setWindowsCredential(new WindowsCredential("sid","key"));
     hub = namespaceManager.createNotificationHub(hub);
-    
+
  OR
 
     hub = new NotificationHub("connection string", "hubname");
 
 **Get Notification Hub:**
-    
+
     hub = namespaceManager.getNotificationHub("hubname");
 
 **Update Notification Hub:**
-    
+
     hub.setMpnsCredential(new MpnsCredential("mpnscert", "mpnskey"));
     hub = namespaceManager.updateNotificationHub(hub);
 
 **Delete Notification Hub:**
-    
+
     namespaceManager.deleteNotificationHub("hubname");
 
 ### <a name="registration-cruds"></a>Registration CRUDs
@@ -112,30 +107,27 @@ Removes duplicates due to any lost responses if storing registration ids on the 
     hub.upsertRegistration(reg);
 
 **Update registrations:**
-    
+
     hub.updateRegistration(reg);
 
 **Delete registrations:**
-    
+
     hub.deleteRegistration(regid);
 
 **Query registrations:**
 
-*   **Get single registration:**
-    
-        hub.getRegistration(regid);
-    
-*   **Get all registrations in hub:**
-    
-        hub.getRegistrations();
-    
-*   **Get registrations with tag:**
-    
-        hub.getRegistrationsByTag("myTag");
-    
-*   **Get registrations by channel:**
-    
-        hub.getRegistrationsByChannel("devicetoken");
+* **Get single registration:**
+  
+      hub.getRegistration(regid);
+* **Get all registrations in hub:**
+  
+      hub.getRegistrations();
+* **Get registrations with tag:**
+  
+      hub.getRegistrationsByTag("myTag");
+* **Get registrations by channel:**
+  
+      hub.getRegistrationsByChannel("devicetoken");
 
 All collection queries support $top and continuation tokens.
 
@@ -180,7 +172,6 @@ For one of several templates:
     hub.sendNotification(n, "InstallationId:{installation-id} && tag-for-template1");
 
 ### <a name="schedule-notifications-(available-for-standard-tier)"></a>Schedule Notifications (available for STANDARD Tier)
-
 The same as regular send but with one additional parameter - scheduledTime which says when notification should be delivered. Service accepts any point of time between now + 5 minutes and now + 7 days.
 
 **Schedule a Windows native notification:**
@@ -224,29 +215,26 @@ Sometimes it is required to perform bulk operation against registrations. Usuall
 
 **URI with SAS signature:** This is the URL of some blob file or blob container plus set of parameters like permissions and expiration time plus signature of all these things made using account's SAS key. Azure Storage Java SDK has rich capabilities including creation of such kind of URIs. As simple alternative you can take a look at ImportExportE2E test class (from the github location) which has very basic and compact implementation of signing algorithm.
 
-###<a name="send-notifications"></a>Send Notifications
+### <a name="send-notifications"></a>Send Notifications
 The Notification object is simply a body with headers, some utility methods help in building the native and template notifications objects.
 
 * **Windows Store and Windows Phone 8.1 (non-Silverlight)**
-
+  
         String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
         Notification n = Notification.createWindowsNotification(toast);
         hub.sendNotification(n);
-
 * **iOS**
-
+  
         String alert = "{\"aps\":{\"alert\":\"Hello from Java!\"}}";
         Notification n = Notification.createAppleNotification(alert);
         hub.sendNotification(n);
-
 * **Android**
-
+  
         String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
         Notification n = Notification.createGcmNotification(message);
         hub.sendNotification(n);
-
 * **Windows Phone 8.0 and 8.1 Silverlight**
-
+  
         String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
                     "<wp:Notification xmlns:wp=\"WPNotification\">" +
                        "<wp:Toast>" +
@@ -255,26 +243,22 @@ The Notification object is simply a body with headers, some utility methods help
                     "</wp:Notification>";
         Notification n = Notification.createMpnsNotification(toast);
         hub.sendNotification(n);
-
 * **Kindle Fire**
-
+  
         String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
         Notification n = Notification.createAdmNotification(message);
         hub.sendNotification(n);
-
 * **Send to Tags**
-
+  
         Set<String> tags = new HashSet<String>();
         tags.add("boo");
         tags.add("foo");
         hub.sendNotification(n, tags);
-
 * **Send to tag expression**       
-
+  
         hub.sendNotification(n, "foo && ! bar");
-
 * **Send template notification**
-
+  
         Map<String, String> prop =  new HashMap<String, String>();
         prop.put("prop1", "v1");
         prop.put("prop2", "v2");
@@ -283,16 +267,16 @@ The Notification object is simply a body with headers, some utility methods help
 
 Running your Java code should now produce a notification appearing on your target device.
 
-##<a name="<a-name="next-steps"></a>next-steps"></a><a name="next-steps"></a>Next Steps
+## <a name="<a-name="next-steps"></a>next-steps"></a><a name="next-steps"></a>Next Steps
 In this topic we showed how to create a simple Java REST client for Notification Hubs. From here you can:
 
 * Download the full [Java SDK], which contains the entire SDK code. 
 * Play with the samples:
-    - [Get Started with Notification Hubs]
-    - [Send breaking news]
-    - [Send localized breaking news]
-    - [Send notifications to authenticated users]
-    - [Send cross-platform notifications to authenticated users]
+  * [Get Started with Notification Hubs]
+  * [Send breaking news]
+  * [Send localized breaking news]
+  * [Send notifications to authenticated users]
+  * [Send cross-platform notifications to authenticated users]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
 [Get started tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
@@ -302,7 +286,7 @@ In this topic we showed how to create a simple Java REST client for Notification
 [Send notifications to authenticated users]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users/
 [Send cross-platform notifications to authenticated users]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users-xplat-mobile-services/
 [Maven]: http://maven.apache.org/
- 
+
 
 
 

@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Microsoft Virtual Academy の Azure セキュリティ関連コース | Microsoft Azure"
-   description="この記事には、Microsoft Virtual Academy から、Azure のセキュリティ関連のコースを精選して集めてあります。Microsoft Virtual Academy は、開発者、IT およびデータの専門家、学生が最新テクノロジを学習し、スキルを身に付け、キャリアを積めるように支援する、無料のオンライン トレーニングを提供します。"
-   services="security"
-   documentationCenter="na"
-   authors="TomShinder"
-   manager="MBaldwin"
-   editor="TomSh"/>
+---
+title: Microsoft Virtual Academy の Azure セキュリティ関連コース | Microsoft Docs
+description: この記事には、Microsoft Virtual Academy から、Azure のセキュリティ関連のコースを精選して集めてあります。Microsoft Virtual Academy は、開発者、IT およびデータの専門家、学生が最新テクノロジを学習し、スキルを身に付け、キャリアを積めるように支援する、無料のオンライン トレーニングを提供します。
+services: security
+documentationcenter: na
+author: TomShinder
+manager: MBaldwin
+editor: TomSh
 
-<tags
-   ms.service="security"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/09/2016"
-   ms.author="terrylan"/>
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/09/2016
+ms.author: terrylan
 
+---
 # Microsoft Virtual Academy の Azure セキュリティ関連コース
-
 Microsoft Virtual Academy は、開発者、IT およびデータの専門家、学生が最新テクノロジを学習し、スキルを身に付け、キャリアを積めるように支援する、無料のオンライン トレーニングを提供します。
 
 このページには、Azure のセキュリティ関連のコースを精選して集めてあります。利用できるすべてのコースを参照するには、[Microsoft Virtual Academy](https://mva.microsoft.com/) にアクセスしてください。

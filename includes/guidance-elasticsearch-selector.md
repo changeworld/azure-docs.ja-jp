@@ -1,8 +1,10 @@
-> [AZURE.SELECTOR]
-- [General guidance][1]
-- [Data ingestion guidance][2]
-- [JMeter guidance][4]
-- [Considerations for JMeter][5]
+> [!div class="op_single_selector"]
+> * [General guidance][1]
+> * [Data ingestion guidance][2]
+> * [JMeter guidance][4]
+> * [Considerations for JMeter][5]
+> 
+> 
 
 [1]: ../articles/guidance/guidance-elasticsearch.md
 [2]: ../articles/guidance/guidance-elasticsearch-data-ingestion.md

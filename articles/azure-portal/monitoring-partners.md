@@ -1,29 +1,28 @@
-<properties
-	pageTitle="Azure Monitor パートナーとの統合 | Microsoft Azure"
-	description="Azure Monitor のパートナーと、そのパートナーとの統合に関するドキュメントにアクセスする方法について説明します。"
-	authors="johnkemnetz"
-	manager="rboucher"
-	editor=""
-	services="monitoring-and-diagnostics"
-	documentationCenter="monitoring-and-diagnostics"/>
+---
+title: Azure Monitor パートナーとの統合 | Microsoft Docs
+description: Azure Monitor のパートナーと、そのパートナーとの統合に関するドキュメントにアクセスする方法について説明します。
+author: johnkemnetz
+manager: rboucher
+editor: ''
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
 
-<tags
-	ms.service="monitoring-and-diagnostics"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/26/2016"
-	ms.author="johnkem"/>
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: johnkem
 
+---
 # Azure Monitor パートナーとの統合
-
-|パートナー|||
-|-----------|-----------|-----------|
-| [![パートナーのロゴ][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![パートナーのロゴ][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![パートナーのロゴ][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
-| [![パートナーのロゴ][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] | [![パートナーのロゴ][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] | [![パートナーのロゴ][datadog-logo]<br/>**DataDog**][datadog-anchor] |
-| [![パートナーのロゴ][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] | [![パートナーのロゴ][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] | [![パートナーのロゴ][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] |
-| [![パートナーのロゴ][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] | [![パートナーのロゴ][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![パートナーのロゴ][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] |
+| パートナー |  |  |
+| --- | --- | --- |
+| [![パートナーのロゴ][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] |[![パートナーのロゴ][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] |[![パートナーのロゴ][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
+| [![パートナーのロゴ][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] |[![パートナーのロゴ][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] |[![パートナーのロゴ][datadog-logo]<br/>**DataDog**][datadog-anchor] |
+| [![パートナーのロゴ][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] |[![パートナーのロゴ][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] |[![パートナーのロゴ][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] |
+| [![パートナーのロゴ][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |[![パートナーのロゴ][splunk-logo]<br/>**Splunk**][splunk-anchor] |[![パートナーのロゴ][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] |
 
 ## Alert Logic Log Manager
 Alert Logic Log Manager は、セキュリティの分析と保持の目的で、VM、アプリケーション、Azure プラットフォームのログを収集します。これには、Azure Insights API による Azure 監査ログが含まれます。この情報を使って、不正を検出し、コンプライアンス要件に対応します。
@@ -59,7 +58,6 @@ Dynatrace OneAgent は、対応する Azure 拡張機能メカニズムによっ
 [ドキュメントを確認する。][dynatrace-doc]
 
 ## NewRelic
-
 [詳細情報。][newrelic-doc]
 
 ## OpsGenie
@@ -80,12 +78,11 @@ Microsoft Azure 用の Splunk アドオンは、Microsoft Azure で実行され�
 [ドキュメントを確認する。][splunk-doc]
 
 ## Sumo Logic
-
 [詳細情報。][sumologic-doc]
 
 ## 次のステップ
-- [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../resource-group-audit.md)
-- [Azure アクティビティ ログを Event Hubs にストリーミングする](./monitoring-stream-activity-logs-event-hubs.md)
+* [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../resource-group-audit.md)
+* [Azure アクティビティ ログを Event Hubs にストリーミングする](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
 
 <!--Connectors Documentation-->
 [alertlogic-anchor]: #alertlogic-log-manager "AlertLogic"

@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="Enterprise Integration Pack の概要 | Microsoft Azure App Service | Microsoft Azure" 
-	description="Enterprise Integration Pack の機能を使用することにより、Microsoft Azure App Service を使ってビジネス プロセスと統合シナリオを実現できます。" 
-	services="logic-apps" 
-	documentationCenter=".net,nodejs,java"
-	authors="msftman" 
-	manager="erikre" 
-	editor="cgronlun"/>
+---
+title: Enterprise Integration Pack の概要 | Microsoft Docs
+description: Enterprise Integration Pack の機能を使用することにより、Microsoft Azure App Service を使ってビジネス プロセスと統合シナリオを実現できます。
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: msftman
+manager: erikre
+editor: cgronlun
 
-<tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2016" 
-	ms.author="deonhe"/>
+ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/08/2016
+ms.author: deonhe
 
+---
 # XML 変換での Enterprise Integration
-
 ## 概要
 Enterprise Integration Transform コネクタは、データをある形式から別の形式に変換します。たとえば、受信メッセージに YearMonthDay 形式で現在の日付が含まれていたとします。この日付を、変換を使用して MonthDayYear 形式に変更できます。
 
@@ -32,18 +31,21 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas) を�
 
 **変換を使用する手順は次のとおりです**。
 
-### 前提条件 
+### 前提条件
 プレビューでは、次のことを行う必要があります。
 
--  [Azure Functions コンテナーを作成する](https://ms.portal.azure.com/#create/Microsoft.FunctionApp "Azure Functions コンテナーを作成する")
--  [Azure Functions コンテナーに関数を追加する](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-transform-function%2Fazuredeploy.json "このテンプレートは、webhook ベースの C# Azure 関数を作成します。これは、ロジック アプリの統合シナリオで使用する変換機能を備えています。")
--  統合アカウントを作成してマップを追加する
+* [Azure Functions コンテナーを作成する](https://ms.portal.azure.com/#create/Microsoft.FunctionApp "Azure Functions コンテナーを作成する")
+* [Azure Functions コンテナーに関数を追加する](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-transform-function%2Fazuredeploy.json "このテンプレートは、webhook ベースの C# Azure 関数を作成します。これは、ロジック アプリの統合シナリオで使用する変換機能を備えています。")
+* 統合アカウントを作成してマップを追加する
 
->[AZURE.TIP] Azure Functions コンテナーと Azure 関数の名前をメモしておいてください。次の手順で必要になります。
+> [!TIP]
+> Azure Functions コンテナーと Azure 関数の名前をメモしておいてください。次の手順で必要になります。
+> 
+> 
 
 前提条件が整ったら、ロジック アプリの作成を開始します。
 
-1. ロジック アプリを作成し、マップを含む[統合アカウントにリンクします](./app-service-logic-enterprise-integration-accounts.md "ロジック アプリへの統合アカウントの関連付けについての詳細情報")。
+1. ロジック アプリを作成し、マップを含む[統合アカウントにリンクします](app-service-logic-enterprise-integration-accounts.md "ロジック アプリへの統合アカウントの関連付けについての詳細情報")。
 2. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求を受信したとき)]** トリガーを追加します。![](./media/app-service-logic-enterprise-integration-transforms/transform-1.png)
 3. まず **[アクションの追加]** を選択し、**[Transform XML (XML 変換)]** アクションを追加します。![](./media/app-service-logic-enterprise-integration-transforms/transform-2.png)
 4. 検索ボックスに「*transform*」と入力し、すべてのアクションから使用するアクションだけをフィルター処理します。![](./media/app-service-logic-enterprise-integration-transforms/transform-3.png)
@@ -59,19 +61,16 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas) を�
 これで、HTTP エンドポイントに要求を送信して、変換をテストすることができます。
 
 ## 機能とユース ケース
-
-- マップで作成される変換は、あるドキュメントから別のドキュメントに名前と住所をコピーするなど、単純な内容になります。または、設定不要なマップ操作を使用して、より複雑な変換を作成することができます。
-- 文字列、日時の関数などの複合的なマップ操作や関数をすぐに使用できます。
-- スキーマ間でデータを直接コピーできます。SDK に含まれるマッパーを使用すれば、この操作は送信元スキーマ内の要素から送信先スキーマの対応する部分に線を引くくらい簡単です。
-- マップを作成するときには、作成したすべてのリレーションシップやリンクを示すマップがグラフィカルに表示されます。
-- [マップのテスト] 機能を使用してサンプル XML メッセージを追加します。クリックするだけで、作成したマップをテストして、生成された出力を参照できます。
-- 既存のマップをアップロードできます。
-- XML 形式のサポートが含まれます。
-
+* マップで作成される変換は、あるドキュメントから別のドキュメントに名前と住所をコピーするなど、単純な内容になります。または、設定不要なマップ操作を使用して、より複雑な変換を作成することができます。
+* 文字列、日時の関数などの複合的なマップ操作や関数をすぐに使用できます。
+* スキーマ間でデータを直接コピーできます。SDK に含まれるマッパーを使用すれば、この操作は送信元スキーマ内の要素から送信先スキーマの対応する部分に線を引くくらい簡単です。
+* マップを作成するときには、作成したすべてのリレーションシップやリンクを示すマップがグラフィカルに表示されます。
+* [マップのテスト] 機能を使用してサンプル XML メッセージを追加します。クリックするだけで、作成したマップをテストして、生成された出力を参照できます。
+* 既存のマップをアップロードできます。
+* XML 形式のサポートが含まれます。
 
 ## 詳細情報
-- [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
-- [マップについての詳細情報](./app-service-logic-enterprise-integration-maps.md "Enterprise Integration のマップについての詳細情報")
- 
+* [Enterprise Integration Pack についての詳細情報](app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
+* [マップについての詳細情報](app-service-logic-enterprise-integration-maps.md "Enterprise Integration のマップについての詳細情報")
 
 <!---HONumber=AcomDC_0803_2016-->

@@ -1,24 +1,23 @@
-<properties
-	pageTitle="スループット向上のための Stream Analytics ジョブのスケーリング | Microsoft Azure"
-	description="Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。"
-	keywords="データ ストリーミング、ストリーミング データ処理、分析のチューニング"
-	services="stream-analytics"
-	documentationCenter=""
-	authors="jeffstokes72"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: スループット向上のための Stream Analytics ジョブのスケーリング | Microsoft Docs
+description: Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。
+keywords: データ ストリーミング、ストリーミング データ処理、分析のチューニング
+services: stream-analytics
+documentationcenter: ''
+author: jeffstokes72
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="stream-analytics"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="data-services"
-	ms.date="09/26/2016"
-	ms.author="jeffstok"/>
+ms.service: stream-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: data-services
+ms.date: 09/26/2016
+ms.author: jeffstok
 
+---
 # ストリーム データ処理スループット向上のための Azure Stream Analytics ジョブのスケーリング
-
 Stream Analytics の分析ジョブをチューニングし、*ストリーミング ユニット*を計算する方法と、Stream Analytics ジョブをスケールするために入力パーティションの構成、分析クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。
 
 ## Stream Analytics ジョブの構成について教えてください。
@@ -40,14 +39,14 @@ Stream Analytics のジョブ定義は、入力、クエリ、および出力で
 ## 驚異的並列ジョブ
 驚異的並列ジョブは、Azure Stream Analytics において最もスケーラブルなシナリオです。入力の 1 つのパーティションを、出力の 1 つのパーティションに対するクエリの 1 つのインスタンスに接続します。この並列性を実現するには、次の条件を満たす必要があります。
 
-1.  クエリのロジックが同じクエリ インスタンスによって処理される同じキーに依存する場合、イベントが入力の同じパーティションに送られるようにする必要があります。Event Hubs の場合、これは、イベント データが **PartitionKey** セットを持つ必要があること、またはパーティション分割された送信側を使用できることを意味します。BLOB の場合、これはイベントが同じパーティション フォルダーに送信されることを意味します。クエリのロジックで、同じキーが同じクエリ インスタンスによって処理される必要ない場合は、この要件を無視できます。この要件の例は、単純な選択/プロジェクト/フィルター クエリです。
-2.	データが入力側で必要なレイアウトになっている場合、クエリがパーティション分割されている必要があります。そのためには、すべてのステップで **Partition By** を使用する必要があります。複数のステップが許可されますが、そのすべてが同じキーによってパーティション分割されている必要があります。他に注意する必要があることとして、現時点では、完全な並列ジョブにするにはパーティション キーを **PartitionId** に設定する必要があります。
-3.	現在、パーティション分割された出力をサポートしているのは Event Hubs と BLOB だけです。Event Hubs 出力の場合は、**PartitionKey** フィールドを **PartitionId** に構成する必要があります。BLOB の場合は、何もする必要はありません。
-4.	もう 1 つ注意すべきことは、入力パーティションの数が出力パーティションの数と一致している必要があります。現在は BLOB 出力はパーティションをサポートしていませんが、アップストリーム クエリのパーティション方式を継承するため問題ありません。完全な並列ジョブを許可するパーティション値の例:
-	1.	8 Event Hubs 入力パーティションと 8 Event Hubs 出力パーティション
-	2.	8 Event Hubs 入力パーティションと BLOB 出力
-	3.	8 BLOB 入力パーティションと BLOB 出力
-	4.	8 BLOB 入力パーティションと 8 Event Hubs 出力パーティション
+1. クエリのロジックが同じクエリ インスタンスによって処理される同じキーに依存する場合、イベントが入力の同じパーティションに送られるようにする必要があります。Event Hubs の場合、これは、イベント データが **PartitionKey** セットを持つ必要があること、またはパーティション分割された送信側を使用できることを意味します。BLOB の場合、これはイベントが同じパーティション フォルダーに送信されることを意味します。クエリのロジックで、同じキーが同じクエリ インスタンスによって処理される必要ない場合は、この要件を無視できます。この要件の例は、単純な選択/プロジェクト/フィルター クエリです。
+2. データが入力側で必要なレイアウトになっている場合、クエリがパーティション分割されている必要があります。そのためには、すべてのステップで **Partition By** を使用する必要があります。複数のステップが許可されますが、そのすべてが同じキーによってパーティション分割されている必要があります。他に注意する必要があることとして、現時点では、完全な並列ジョブにするにはパーティション キーを **PartitionId** に設定する必要があります。
+3. 現在、パーティション分割された出力をサポートしているのは Event Hubs と BLOB だけです。Event Hubs 出力の場合は、**PartitionKey** フィールドを **PartitionId** に構成する必要があります。BLOB の場合は、何もする必要はありません。
+4. もう 1 つ注意すべきことは、入力パーティションの数が出力パーティションの数と一致している必要があります。現在は BLOB 出力はパーティションをサポートしていませんが、アップストリーム クエリのパーティション方式を継承するため問題ありません。完全な並列ジョブを許可するパーティション値の例:
+   1. 8 Event Hubs 入力パーティションと 8 Event Hubs 出力パーティション
+   2. 8 Event Hubs 入力パーティションと BLOB 出力
+   3. 8 BLOB 入力パーティションと BLOB 出力
+   4. 8 BLOB 入力パーティションと 8 Event Hubs 出力パーティション
 
 驚異的並列であるシナリオの例を次に示します。
 
@@ -73,7 +72,7 @@ Stream Analytics のジョブ定義は、入力、クエリ、および出力で
 
 このクエリはグループ化キーがあるので、同じキーを同じクエリ インスタンスで処理する必要があります。つまり、パーティション分割された方法でイベントを Event Hubs に送信する必要があります。どのキーが重要なのでしょうか。 **PartitionId** はジョブ ロジック概念であり、実際に考慮すべきキーは **TollBoothId** です。つまり、Event Hubs に送信するイベント データの **PartitionKey** を、イベントの **TollBoothId** になるように設定する必要があります。クエリの **PartitionId** に **Partition By** があるので問題ありません。出力については、BLOB であるため、**PartitionKey** の構成について心配する必要はありません。要件 4 については、これは BLOB なので、心配する必要はありません。このトポロジは驚異的並列です。
 
-### グループ化キーが含まれる複数ステップのクエリ ###
+### グループ化キーが含まれる複数ステップのクエリ
 入力 – 8 パーティションのEvent Hubs、出力 – 8 パーティションの Event Hubs
 
 **クエリ:**
@@ -83,17 +82,15 @@ Stream Analytics のジョブ定義は、入力、クエリ、および出力で
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
     )
-    
+
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
 このクエリはグループ化キーがあるので、同じキーを同じクエリ インスタンスで処理する必要があります。前のクエリと同じ戦略を使用できます。クエリには複数のステップがあります。各ステップの **PartitionId** に **Partition By** があるので、 問題ありません。出力については、先述のように **PartitionKey** を **PartitionId** に設定する必要があり、入力と同じ数のパーティションがあります。このトポロジは驚異的並列です。
 
-
 ## 驚異的並列ではないシナリオの例
-
-### パーティション数の不一致 ###
+### パーティション数の不一致
 入力 – 8 パーティションのEvent Hubs、出力 – 32 パーティションの Event Hubs
 
 入力パーティションと出力パーティションの数が異なるので、この場合はクエリが何かは関係ありません。
@@ -113,11 +110,11 @@ Stream Analytics のジョブ定義は、入力、クエリ、および出力で
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
     )
-    
+
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1 Partition By TollBoothId
     GROUP BY TumblingWindow(minute, 3), TollBoothId
-    
+
 ご覧のように、2 番目のステップは **TollBoothId** をパーティション キーとして使用しています。これは 1 番目のステップと異なるので、シャッフルを行う必要があります。
 
 驚異的並列トポロジを実現できて最大スケールになる可能性のある Stream Analytics ジョブの例と反例があります。これらのどのプロファイルにも当てはまらないジョブについては、将来の更新で、他の標準的 Stream Analytics シナリオの最大限のスケーリングについて詳しく説明します。
@@ -130,32 +127,33 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 ### クエリでのステップ
 1 つのクエリに 1 つ以上のステップを含めることができます。各ステップは、**WITH** キーワードを使用して定義されたサブクエリです。**WITH** キーワードの外にあるクエリだけが、ステップとしてカウントされます (例: 次のクエリの **SELECT** ステートメント)。
 
-	WITH Step1 AS (
-		SELECT COUNT(*) AS Count, TollBoothId
-		FROM Input1 Partition By PartitionId
-		GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-	)
+    WITH Step1 AS (
+        SELECT COUNT(*) AS Count, TollBoothId
+        FROM Input1 Partition By PartitionId
+        GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+    )
 
-	SELECT SUM(Count) AS Count, TollBoothId
-	FROM Step1
-	GROUP BY TumblingWindow(minute,3), TollBoothId
+    SELECT SUM(Count) AS Count, TollBoothId
+    FROM Step1
+    GROUP BY TumblingWindow(minute,3), TollBoothId
 
 上のクエリのステップは 2 つです。
 
-> [AZURE.NOTE] このサンプル クエリについては、記事の後半で説明します。
+> [!NOTE]
+> このサンプル クエリについては、記事の後半で説明します。
+> 
+> 
 
 ### ステップをパーティション分割する
-
 ステップをパーティション分割するには、次の条件を満たす必要があります。
 
-- 入力ソースはパーティション分割する。詳細については、「[Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」を参照してください。
-- クエリの **SELECT** ステートメントは、パーティション分割された入力ソースから読み取る。
-- ステップ内のクエリに **Partition By** 句を含める。
+* 入力ソースはパーティション分割する。詳細については、「[Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」を参照してください。
+* クエリの **SELECT** ステートメントは、パーティション分割された入力ソースから読み取る。
+* ステップ内のクエリに **Partition By** 句を含める。
 
 クエリがパーティション分割されている場合、入力イベントは処理されて個々のパーティション グループに集計され、そのグループごとに出力イベントが生成されます。結合された集計が望ましい場合は、パーティション分割されていない 2 つ目のステップを集計用に作成する必要があります。
 
 ### ジョブのストリーミング ユニットの最大数を計算する
-
 Stream Analytics ジョブのパーティション分割されていないステップは、最大 6 個のストリーミング ユニットにスケールアップできます。ストリーミング ユニットを追加するには、ステップをパーティション分割する必要があります。各パーティションには 6 個のストリーミング ユニットを設定できます。
 
 <table border="1">
@@ -201,37 +199,38 @@ Stream Analytics ジョブのパーティション分割されていないステ
 ### スケールの例
 次のクエリは、3 つのブースがある高速道路の料金所を 3 分間に通過する車の台数を計算します。このクエリを最大 6 個のストリーミング ユニットにスケールアップできます。
 
-	SELECT COUNT(*) AS Count, TollBoothId
-	FROM Input1
-	GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+    SELECT COUNT(*) AS Count, TollBoothId
+    FROM Input1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
 クエリに使用するストリーミング ユニットを増やすには、入力データ ストリームとクエリの両方をパーティション分割する必要があります。データ ストリームのパーティションが 3 つに設定されている場合、変更を加えた次のクエリを最大 18 個のストリーミング ユニットにスケールアップできます。
 
-	SELECT COUNT(*) AS Count, TollBoothId
-	FROM Input1 Partition By PartitionId
-	GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+    SELECT COUNT(*) AS Count, TollBoothId
+    FROM Input1 Partition By PartitionId
+    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
 クエリがパーティション分割されている場合、入力イベントは処理されて個々のパーティション グループに集計されます。出力イベントは、それぞれのグループに対しても生成されます。**Group-by** フィールドが入力データ ストリームのパーティション キーでない場合、パーティション分割を実行すると予期しない結果になることがあります。たとえば、前のサンプル クエリの **TollBoothId** フィールドは Input1 のパーティション キーではありません。TollBooth 1 のデータは、複数のパーティションに分散できます。
 
 Input1 の各パーティションは Stream Analytics によって個別に処理され、同じタンブリング ウィンドウで同じ料金所の複数の通過台数レコードが作成されます。入力パーティション キーを変更できない場合は、パーティション分割されていないステップを追加することで、この問題を解決できます。たとえば次のようにします。
 
-	WITH Step1 AS (
-		SELECT COUNT(*) AS Count, TollBoothId
-		FROM Input1 Partition By PartitionId
-		GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-	)
+    WITH Step1 AS (
+        SELECT COUNT(*) AS Count, TollBoothId
+        FROM Input1 Partition By PartitionId
+        GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+    )
 
-	SELECT SUM(Count) AS Count, TollBoothId
-	FROM Step1
-	GROUP BY TumblingWindow(minute, 3), TollBoothId
+    SELECT SUM(Count) AS Count, TollBoothId
+    FROM Step1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId
 
 このクエリは 24 個のストリーミング ユニットにスケールできます。
 
->[AZURE.NOTE] 2 つのストリームを結合している場合は、結合を実行した列のパーティション キーでストリームがパーティション分割され、両方のストリームに同じ数のパーティションが作成されていることを確認してください。
-
+> [!NOTE]
+> 2 つのストリームを結合している場合は、結合を実行した列のパーティション キーでストリームがパーティション分割され、両方のストリームに同じ数のパーティションが作成されていることを確認してください。
+> 
+> 
 
 ## Stream Analytics ジョブのパーティションを構成する
-
 **ジョブのストリーミング ユニットを調整するには**
 
 1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
@@ -246,7 +245,6 @@ Azure ポータルの [設定] からスケールの設定にアクセスでき�
 ![Azure ポータルでの Stream Analytics ジョブの構成][img.stream.analytics.preview.portal.settings.scale]
 
 ## ジョブのパフォーマンスを監視する
-
 管理ポータルを使用して、ジョブのスループット (イベント数/秒) を追跡できます。
 
 ![Azure Stream Analytics のジョブの監視][img.stream.analytics.monitor.job]
@@ -254,8 +252,6 @@ Azure ポータルの [設定] からスケールの設定にアクセスでき�
 ワークロードのスループット予測 (イベント数/秒) を計算します。スループットが予測よりも小さい場合、入力パーティションのチューニングとクエリのチューニングを実行し、ジョブにストリーミング ユニットを追加してください。
 
 ## スケールごとの Stream Analytics のスループット - Raspberry Pi のシナリオ
-
-
 複数のストリーミング ユニット間での処理スループットを考察する標準的なシナリオで、Stream Analytics ジョブがどのようにスケールするかを理解するために、ここでセンサー データ (クライアント) を Event Hub に送信し、そのデータを処理して、別の Event Hub に出力としてアラートまたは統計を送信するというテストをします。
 
 クライアントは Stream Analytics 向けの合成されたセンサー データを JSON 形式で Event Hubs に送信し、ASA からのデータ出力も JSON 形式とします。サンプル データは次のようになります。
@@ -265,11 +261,11 @@ Azure ポータルの [設定] からスケールの設定にアクセスでき�
 クエリ: "電灯がオフになった場合にアラートを送信する"
 
     SELECT AVG(lght),
-	 “LightOff” as AlertText
-	FROM input TIMESTAMP
-	BY devicetime
-	 WHERE
-		lght< 0.05 GROUP BY TumblingWindow(second, 1)
+     “LightOff” as AlertText
+    FROM input TIMESTAMP
+    BY devicetime
+     WHERE
+        lght< 0.05 GROUP BY TumblingWindow(second, 1)
 
 スループットの測定: このコンテキストではスループットは、固定時間内 (10 分間) で Stream Analytics が処理した入力データの量です。入力データの最適な処理スループットを実現するために、入力データ ストリームとクエリの両方をパーティション分割する必要があります。さらに、入力イベントの処理数を測定するために、**COUNT()** をクエリに含める必要があります。ジョブが単に着信する入力イベントを待機しているだけとならないように、入力 Event Hub の各パーティションには、十分な入力データ (約 300 MB) が事前に読み込まれています。
 
@@ -321,14 +317,11 @@ Azure ポータルの [設定] からスケールの設定にアクセスでき�
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
-
 ## 次のステップ
-
-- [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-- [Azure Stream Analytics の使用](stream-analytics-get-started.md)
-- [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-- [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Azure Stream Analytics の概要](stream-analytics-introduction.md)
+* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->
 
@@ -348,6 +341,6 @@ Azure ポータルの [設定] からスケールの設定にアクセスでき�
 [stream.analytics.get.started]: stream-analytics-get-started.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
- 
+
 
 <!---HONumber=AcomDC_0928_2016-->

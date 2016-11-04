@@ -1,39 +1,37 @@
-<properties
-    pageTitle="Log Analytics ビュー デザイナー | Microsoft Azure"
-    description="Log Analytics のビュー デザイナーを使用すると、OMS コンソールで、OMS リポジトリのデータをさまざまに視覚化するカスタム ビューを作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。"
-    services="log-analytics"
-    documentationCenter=""
-    authors="bwren"
-    manager="jwhit"
-    editor=""/>
+---
+title: Log Analytics ビュー デザイナー | Microsoft Docs
+description: Log Analytics のビュー デザイナーを使用すると、OMS コンソールで、OMS リポジトリのデータをさまざまに視覚化するカスタム ビューを作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
+services: log-analytics
+documentationcenter: ''
+author: bwren
+manager: jwhit
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/27/2016"
-    ms.author="bwren"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/27/2016
+ms.author: bwren
 
-
+---
 # <a name="log-analytics-view-designer"></a>Log Analytics ビュー デザイナー
 Log Analytics のビュー デザイナーを使用すると、OMS コンソールで、OMS リポジトリのデータをさまざまに視覚化したカスタム ビューを作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
 
 ビュー デザイナーについてはこの他に次の記事があります。
 
-- [タイル リファレンス](log-analytics-view-designer-tiles.md) - カスタム ビューで使用できるタイルごとの設定のリファレンス。 
-- [視覚化パーツ リファレンス](log-analytics-view-designer-parts.md) - カスタム ビューで使用できるタイルごとの設定のリファレンス。 
-
+* [タイル リファレンス](log-analytics-view-designer-tiles.md) - カスタム ビューで使用できるタイルごとの設定のリファレンス。 
+* [視覚化パーツ リファレンス](log-analytics-view-designer-parts.md) - カスタム ビューで使用できるタイルごとの設定のリファレンス。 
 
 ## <a name="concepts"></a>概念
 ビュー デザイナーで作成されるビューには、次の表に示す要素が含まれます。
 
 | パーツ | 説明 |
-|:--|:--|
-| タイル | Log Analytics のメインの概要ダッシュボードに表示されます。  カスタム ビューに含まれる情報を視覚的にまとめたものを表示します。  タイルの種類に応じて、OMS リポジトリ内のレコードが視覚化されて表示されます。  タイルをクリックすると、カスタム ビューが開きます。 |
-| カスタム ビュー | タイルをクリックすると表示されます。  1 つまたは複数の視覚化パーツが含まれます。 |
-| 視覚化パーツ | 1 つまたは複数の[ログ検索](log-analytics-log-searches.md)に基づく OMS リポジトリ内のデータの視覚化。  ほとんどのパーツには、高レベルの視覚化を提供するヘッダーと上位の結果の一覧が含まれています。  パーツの種類に応じて、OMS リポジトリ内のレコードが視覚化されて表示されます。  詳細レコードを提供するログ検索を実行するには、パーツの要素をクリックします。 |
+|:--- |:--- |
+| タイル |Log Analytics のメインの概要ダッシュボードに表示されます。  カスタム ビューに含まれる情報を視覚的にまとめたものを表示します。  タイルの種類に応じて、OMS リポジトリ内のレコードが視覚化されて表示されます。  タイルをクリックすると、カスタム ビューが開きます。 |
+| カスタム ビュー |タイルをクリックすると表示されます。  1 つまたは複数の視覚化パーツが含まれます。 |
+| 視覚化パーツ |1 つまたは複数の[ログ検索](log-analytics-log-searches.md)に基づく OMS リポジトリ内のデータの視覚化。  ほとんどのパーツには、高レベルの視覚化を提供するヘッダーと上位の結果の一覧が含まれています。  パーツの種類に応じて、OMS リポジトリ内のレコードが視覚化されて表示されます。  詳細レコードを提供するログ検索を実行するには、パーツの要素をクリックします。 |
 
 ![ビュー デザイナーの概要](media/log-analytics-view-designer/overview.png)
 
@@ -43,7 +41,6 @@ Log Analytics のビュー デザイナーを使用すると、OMS コンソー�
 ![プレビューの有効化](media/log-analytics-view-designer/preview.png)
 
 ## <a name="creating-and-editing-views"></a>ビューの作成と編集
-
 ### <a name="create-a-new-view"></a>新しいビューを作成する
 OMS のメイン ダッシュボードでビュー デザイナー タイルをクリックして、**ビュー デザイナー**で新しいビューを開きます。
 
@@ -91,13 +88,9 @@ OMS のメイン ダッシュボードでビュー デザイナー タイルを�
 ### <a name="rearrange-visualization-parts"></a>視覚化パーツの順序を変更する
 ビューには、1 列の視覚化パーツのみが含まれています。  パーツをクリックし、新しい場所にドラッグすることで、既存のパーツの順序を変更します。
 
-
 ## <a name="next-steps"></a>次のステップ
-
-- [タイル](log-analytics-view-designer-tiles.md)をカスタム ビューに追加します。
-- [視覚化パーツ](log-analytics-view-designer-parts.md)をカスタム ビューに追加します。
-
-
+* [タイル](log-analytics-view-designer-tiles.md)をカスタム ビューに追加します。
+* [視覚化パーツ](log-analytics-view-designer-parts.md)をカスタム ビューに追加します。
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,24 +1,23 @@
-<properties 
-    pageTitle="How to use Notification Hubs with PHP" 
-    description="Learn how to use Azure Notification Hubs from a PHP back-end." 
-    services="notification-hubs" 
-    documentationCenter="" 
-    authors="ysxu" 
-    manager="dwrede" 
-    editor=""/>
+---
+title: How to use Notification Hubs with PHP
+description: Learn how to use Azure Notification Hubs from a PHP back-end.
+services: notification-hubs
+documentationcenter: ''
+author: ysxu
+manager: dwrede
+editor: ''
 
-<tags 
-    ms.service="notification-hubs" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="php" 
-    ms.devlang="php" 
-    ms.topic="article" 
-    ms.date="06/07/2016" 
-    ms.author="yuaxu"/>
+ms.service: notification-hubs
+ms.workload: mobile
+ms.tgt_pltfrm: php
+ms.devlang: php
+ms.topic: article
+ms.date: 06/07/2016
+ms.author: yuaxu
 
-
+---
 # <a name="how-to-use-notification-hubs-from-php"></a>How to use Notification Hubs from PHP
-[AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
+[!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
 You can access all Notification Hubs features from a Java/PHP/Ruby back-end using the Notification Hub REST interface as described in the MSDN topic [Notification Hubs REST APIs](http://msdn.microsoft.com/library/dn223264.aspx).
 
@@ -37,7 +36,7 @@ For example, to create a client:
     $hub = new NotificationHub("connection string", "hubname"); 
 
 To send an iOS native notification:
-    
+
     $notification = new Notification("apple", '{"aps":{"alert": "Hello!"}}');
     $hub->sendNotification($notification, null);
 
@@ -52,29 +51,28 @@ All the details to implement a full REST wrapper can be found on [MSDN](http://m
 3. Perform the HTTP call
 
 ### <a name="parse-the-connection-string"></a>Parse the connection string
-
 Here is the main class implementing the client, whose constructor that parses the connection string:
 
     class NotificationHub {
         const API_VERSION = "?api-version=2013-10";
-    
+
         private $endpoint;
         private $hubPath;
         private $sasKeyName;
         private $sasKeyValue;
-    
+
         function __construct($connectionString, $hubPath) {
             $this->hubPath = $hubPath;
-    
+
             $this->parseConnectionString($connectionString);
         }
-    
+
         private function parseConnectionString($connectionString) {
             $parts = explode(";", $connectionString);
             if (sizeof($parts) != 3) {
                 throw new Exception("Error parsing connection string: " . $connectionString);
             }
-    
+
             foreach ($parts as $part) {
                 if (strpos($part, "Endpoint") === 0) {
                     $this->endpoint = "https" . substr($part, 11);
@@ -114,17 +112,17 @@ First, let us define a class representing a notification.
     class Notification {
         public $format;
         public $payload;
-    
+
         # array with keynames for headers
         # Note: Some headers are mandatory: Windows: X-WNS-Type, WindowsPhone: X-NotificationType
         # Note: For Apple you can set Expiry with header: ServiceBusNotification-ApnsExpiry in W3C DTF, YYYY-MM-DDThh:mmTZD (for example, 1997-07-16T19:20+01:00).
         public $headers;
-    
+
         function __construct($format, $payload) {
             if (!in_array($format, ["template", "apple", "windows", "gcm", "windowsphone"])) {
                 throw new Exception('Invalid format: ' . $format);
             }
-    
+
             $this->format = $format;
             $this->payload = $payload;
         }
@@ -169,7 +167,7 @@ Armed with this class, we can now write the send notification methods inside of 
         if (is_array($notification->headers)) {
             $headers = array_merge($headers, $notification->headers);
         }
-        
+
         curl_setopt_array($ch, array(
             CURLOPT_POST => TRUE,
             CURLOPT_RETURNTRANSFER => TRUE,
@@ -195,7 +193,7 @@ Armed with this class, we can now write the send notification methods inside of 
 
 The above methods send an HTTP POST request to the /messages endpoint of your notification hub, with the correct body and headers to send the notification.
 
-##<a name="<a-name="complete-tutorial"></a>complete-the-tutorial"></a><a name="complete-tutorial"></a>Complete the tutorial
+## <a name="<a-name="complete-tutorial"></a>complete-the-tutorial"></a><a name="complete-tutorial"></a>Complete the tutorial
 Now you can complete the Get Started tutorial by sending the notification from a PHP back-end.
 
 Initialize your Notification Hubs client (substitute the connection string and hub name as instructed in the [Get started tutorial]):
@@ -205,14 +203,12 @@ Initialize your Notification Hubs client (substitute the connection string and h
 Then add the send code depending on your target mobile platform.
 
 ### <a name="windows-store-and-windows-phone-8.1-(non-silverlight)"></a>Windows Store and Windows Phone 8.1 (non-Silverlight)
-
     $toast = '<toast><visual><binding template="ToastText01"><text id="1">Hello from PHP!</text></binding></visual></toast>';
     $notification = new Notification("windows", $toast);
     $notification->headers[] = 'X-WNS-Type: wns/toast';
     $hub->sendNotification($notification, null);
 
 ### <a name="ios"></a>iOS
-
     $alert = '{"aps":{"alert":"Hello from PHP!"}}';
     $notification = new Notification("apple", $alert);
     $hub->sendNotification($notification, null);
@@ -223,7 +219,6 @@ Then add the send code depending on your target mobile platform.
     $hub->sendNotification($notification, null);
 
 ### <a name="windows-phone-8.0-and-8.1-silverlight"></a>Windows Phone 8.0 and 8.1 Silverlight
-
     $toast = '<?xml version="1.0" encoding="utf-8"?>' .
                 '<wp:Notification xmlns:wp="WPNotification">' .
                    '<wp:Toast>' .
@@ -243,7 +238,6 @@ Then add the send code depending on your target mobile platform.
 
 Running your PHP code should produce now a notification appearing on your target device.
 
-
 ## <a name="next-steps"></a>Next Steps
 In this topic we showed how to create a simple Java REST client for Notification Hubs. From here you can:
 
@@ -255,7 +249,7 @@ For more information, see also the [PHP Developer Center](/develop/php/).
 
 [PHP REST wrapper sample]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Get started tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
- 
+
 
 
 

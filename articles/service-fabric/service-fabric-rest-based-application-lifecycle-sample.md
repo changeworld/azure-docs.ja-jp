@@ -1,23 +1,22 @@
-<properties
-   pageTitle="REST ベース アプリケーション ライフサイクルのサンプル | Microsoft Azure"
-   description="Service Fabric REST インターフェイスを使用してアプリケーションのライフサイクルを表示する Microsoft Azure Service Fabric サンプル。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="rwike77"
-   manager="timlt"
-   editor=""/>
+---
+title: REST ベース アプリケーション ライフサイクルのサンプル | Microsoft Docs
+description: Service Fabric REST インターフェイスを使用してアプリケーションのライフサイクルを表示する Microsoft Azure Service Fabric サンプル。
+services: service-fabric
+documentationcenter: .net
+author: rwike77
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="rest-api"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/25/2016"
-   ms.author="ryanwi"/>
+ms.service: service-fabric
+ms.devlang: rest-api
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/25/2016
+ms.author: ryanwi
 
+---
 # REST ベース アプリケーション ライフサイクルのサンプル
-
 このサンプルでは、REST API 呼び出しを通して Service Fabric アプリケーションのライフサイクルを示します。Service Fabric アプリケーションのライフサイクルの詳細については、「[Service Fabric アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)」を参照してください。
 
 このサンプルでは次のことを実行しています。
@@ -37,15 +36,13 @@
 * WordCount サンプルの 1.0.0 バージョンをプロビジョニング解除します。
 * アプリケーションの種類の一覧を表示します。一覧に WordCount は含まれていません。
 
-
 ## 前提条件
-
 このサンプルでは [WordCount サンプル](http://aka.ms/servicefabricsamples) (**入門**サンプル内に収録) を使用します。最初に WordCount サンプルをビルドした後、2 つのアプリケーション パッケージをイメージ ストアにコピーする必要があります。
 
-|フォルダー|Description|
-|------|-----------|
-|WordCount|WordCount サンプル アプリケーション。**ApplicationManifest.xml** には **ApplicationTypeVersion="1.0.0"** が含まれています。|
-|WordCountUpgrade|WordCount サンプル アプリケーション。ApplicationManifest.xml ファイルを **ApplicationTypeVersion="1.1.0"** に変更し、アプリケーションのアップグレードを実行できるようにします。|
+| フォルダー | Description |
+| --- | --- |
+| WordCount |WordCount サンプル アプリケーション。**ApplicationManifest.xml** には **ApplicationTypeVersion="1.0.0"** が含まれています。 |
+| WordCountUpgrade |WordCount サンプル アプリケーション。ApplicationManifest.xml ファイルを **ApplicationTypeVersion="1.1.0"** に変更し、アプリケーションのアップグレードを実行できるようにします。 |
 
 アプリケーション パッケージを作成し、作成したパッケージをイメージ ストアにコピーする方法は、次のとおりです。
 
@@ -74,7 +71,6 @@ Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $applicationPathUpg
 PowerShell スクリプトが終了すると、このアプリケーションを実行できるようになります。
 
 ## 例
-
 以下のサンプルは、Service Fabric アプリケーションのライフサイクルを示しています。
 
 ```csharp
@@ -706,7 +702,6 @@ namespace ServiceFabricRestCaller
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
-
 [Service Fabric アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)
 
 <!---HONumber=AcomDC_0831_2016-->

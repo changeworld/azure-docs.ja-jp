@@ -1,27 +1,28 @@
-<properties
-   pageTitle="Windows VM 拡張機能のサンプル構成 | Microsoft Azure"
-   description="拡張機能を使用したテンプレート作成のサンプル構成"
-   services="virtual-machines-windows"
-   documentationCenter=""
-   authors="kundanap"
-   manager="timlt"
-   editor=""
-   tags="azure-resource-manager"/>
+---
+title: Windows VM 拡張機能のサンプル構成 | Microsoft Docs
+description: 拡張機能を使用したテンプレート作成のサンプル構成
+services: virtual-machines-windows
+documentationcenter: ''
+author: kundanap
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-   ms.service="virtual-machines-windows"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows"
-   ms.workload="infrastructure-services"
-   ms.date="03/29/2016"
-   ms.author="kundanap"/>
+ms.service: virtual-machines-windows
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure-services
+ms.date: 03/29/2016
+ms.author: kundanap
 
+---
 # Azure Windows VM 拡張機能の構成サンプル
-
-> [AZURE.SELECTOR]
-- [PowerShell - テンプレート](virtual-machines-windows-extensions-configuration-samples.md)
-- [CLI - テンプレート](virtual-machines-linux-extensions-configuration-samples.md)
+> [!div class="op_single_selector"]
+> * [PowerShell - テンプレート](virtual-machines-windows-extensions-configuration-samples.md)
+> * [CLI - テンプレート](virtual-machines-linux-extensions-configuration-samples.md)
+> 
+> 
 
 <br>
 
@@ -55,7 +56,6 @@
       }
 
 ## VM スケール セットによる VM 拡張機能のサンプル テンプレート スニペット。
-
     {
      "type":"Microsoft.Compute/virtualMachineScaleSets",
     ....
@@ -100,14 +100,12 @@
       }
 
 #### パラメーターの説明:
-
-- fileUris: 拡張機能によって VM にダウンロードされるファイルの URL のコンマ区切りリスト。何も指定しない場合、ファイルはダウンロードされません。ファイルが Azure Storage にある場合、fileURLs はプライベートとしてマークされ、これらのファイルにアクセスするために、対応する storageAccountName と storageAccountKey がプライベート パラメーターとして渡されます。
-- commandToExecute: [必須パラメーター]: 拡張機能によって実行されるコマンド。
-- storageAccountName: [省略可能なパラメーター]: fileURLs がプライベートとしてマークされている場合は、fileURLs にアクセスするためのストレージ アカウント名。
-- storageAccountKey: [省略可能なパラメーター]: fileURLs がプライベートとしてマークされている場合は、fileURLs にアクセスするためのストレージ アカウント キー。
+* fileUris: 拡張機能によって VM にダウンロードされるファイルの URL のコンマ区切りリスト。何も指定しない場合、ファイルはダウンロードされません。ファイルが Azure Storage にある場合、fileURLs はプライベートとしてマークされ、これらのファイルにアクセスするために、対応する storageAccountName と storageAccountKey がプライベート パラメーターとして渡されます。
+* commandToExecute: [必須パラメーター]: 拡張機能によって実行されるコマンド。
+* storageAccountName: [省略可能なパラメーター]: fileURLs がプライベートとしてマークされている場合は、fileURLs にアクセスするためのストレージ アカウント名。
+* storageAccountKey: [省略可能なパラメーター]: fileURLs がプライベートとしてマークされている場合は、fileURLs にアクセスするためのストレージ アカウント キー。
 
 ### CustomScript 拡張機能 1.7
-
 パラメーターの説明については、CustomScript バージョン 1.4 を参照してください。バージョン 1.7 では、スクリプト パラメーター (commandToExecute) を protectedSettings として送信する機能がサポートされるようになりました。その場合、パラメーターは送信前に暗号化されます。"commandToExecute" パラメーターは、settings または protectedSettings で指定できますが、両方に指定することはできません。
 
         {
@@ -128,7 +126,6 @@
         }
 
 ### VMAccess 拡張機能
-
       {
           "publisher": "Microsoft.Compute",
           "type": "VMAccessAgent",
@@ -340,14 +337,13 @@
           }
 
 ### Azure 診断
-
 診断を構成する方法の詳細については、「[Azure 診断の拡張機能](virtual-machines-windows-extensions-diagnostics-template.md)」を参照してください。
 
           {
             "publisher": "Microsoft.Azure.Diagnostics",
             "type": "IaaSDiagnostics",
             "typeHandlerVersion": "1.5",
-			"autoUpgradeMinorVersion": true,
+            "autoUpgradeMinorVersion": true,
             "settings": {
               "xmlCfg": "[base64(variables('wadcfgx'))]",
               "storageAccount": "[parameters('diagnosticsStorageAccount')]"

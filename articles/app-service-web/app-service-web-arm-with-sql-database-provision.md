@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="SQL Database を使用する Web アプリをプロビジョニングする" 
-	description="SQL Database を含む Web アプリをデプロイするには、Azure リソース マネージャー テンプレートを使用します。" 
-	services="app-service" 
-	documentationCenter="" 
-	authors="cephalin" 
-	manager="wpickett" 
-	editor=""/>
+---
+title: SQL Database を使用する Web アプリをプロビジョニングする
+description: SQL Database を含む Web アプリをデプロイするには、Azure リソース マネージャー テンプレートを使用します。
+services: app-service
+documentationcenter: ''
+author: cephalin
+manager: wpickett
+editor: ''
 
-<tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/27/2016" 
-	ms.author="cephalin"/>
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 04/27/2016
+ms.author: cephalin
 
+---
 # Web アプリと SQL Database をプロビジョニングする
-
 このトピックでは、Web アプリと SQL Database をデプロイする Azure リソース マネージャー テンプレートを作成する方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
@@ -26,29 +25,26 @@
 
 完全なテンプレートについては、「[Web App With SQL Database template (SQL Database を使用する Web アプリ用のテンプレート)](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json)」を参照してください。
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## デプロイ対象
-
 このテンプレートでは、以下をデプロイします。
 
-- Web アプリ
-- SQL Database サーバー
-- SQL Database
-- AutoScale 設定
-- アラート ルール
-- App Insights
+* Web アプリ
+* SQL Database サーバー
+* SQL Database
+* AutoScale 設定
+* アラート ルール
+* App Insights
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
 [![Azure へのデプロイ](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
 
 ## 指定するパラメーター
-
-[AZURE.INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
+[!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 ### administratorLogin
-
 データベース サーバー管理者で使用するアカウントの名前。
 
     "administratorLogin": {
@@ -56,7 +52,6 @@
     }
 
 ### administratorLoginPassword
-
 データベース サーバー管理者で使用するパスワード。
 
     "administratorLoginPassword": {
@@ -64,7 +59,6 @@
     }
 
 ### databaseName
-
 作成する新しいデータベースの名前。
 
     "databaseName": {
@@ -73,7 +67,6 @@
     }
 
 ### collation
-
 文字の適切な使用を制御するために使用するデータベース照合。
 
     "collation": {
@@ -82,7 +75,6 @@
     }
 
 ### edition
-
 作成するデータベースの種類。
 
     "edition": {
@@ -99,7 +91,6 @@
     }
 
 ### maxSizeBytes
-
 データベースの最大サイズ (バイト単位)。
 
     "maxSizeBytes": {
@@ -108,7 +99,6 @@
     }
 
 ### requestedServiceObjectiveName
-
 エディションのパフォーマンス レベルに対応する名前。
 
     "requestedServiceObjectiveName": {
@@ -129,7 +119,6 @@
     }
 
 ## 名前用の変数
-
 このテンプレートには、テンプレートで使用される名前を作成する変数が含まれています。この変数値は、**uniqueString** 関数を使用してリソース グループ ID から名前を生成します。
 
     "variables": {
@@ -140,9 +129,7 @@
 
 
 ## デプロイ対象のリソース
-
 ### SQL Server と Database
-
 新しい SQL Server とデータベースを作成します。サーバーの名前を **serverName** パラメーターに、場所を **serverLocation** パラメーターに指定します。新しいサーバーを作成するときは、データベース サーバー管理者のログイン名とパスワードを指定する必要があります。
 
     {
@@ -192,11 +179,9 @@
       ]
     },
 
-[AZURE.INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
-
+[!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
 ### Web アプリ
-
     {
       "apiVersion": "2015-08-01",
       "name": "[variables('webSiteName')]",
@@ -233,7 +218,6 @@
 
 
 ### Autoscale
-
     {
       "apiVersion": "2014-04-01",
       "name": "[concat(variables('hostingPlanName'), '-', resourceGroup().name)]",
@@ -302,8 +286,7 @@
     },
 
 
-### ステータス コード 403 と 500 用のアラート ルール、高い CPU 使用率、および HTTP キューの長さ 
-
+### ステータス コード 403 と 500 用のアラート ルール、高い CPU 使用率、および HTTP キューの長さ
     {
       "apiVersion": "2014-04-01",
       "name": "[concat('ServerErrors ', variables('webSiteName'))]",
@@ -440,9 +423,8 @@
         }
       }
     },
-    
-### App Insights
 
+### App Insights
     {
       "apiVersion": "2014-04-01",
       "name": "[concat('AppInsights', variables('webSiteName'))]",
@@ -461,18 +443,15 @@
     }
 
 ## デプロイを実行するコマンド
-
-[AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
+[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### PowerShell
-
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
 ### Azure CLI
-
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
 
- 
+
 
 <!---HONumber=AcomDC_0810_2016-->

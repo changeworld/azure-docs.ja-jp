@@ -1,34 +1,33 @@
-<properties
-	pageTitle="PowerShell を使用した Azure CDN の管理 | Microsoft Azure"
-	description="Azure PowerShell コマンドレットを使用して、Azure CDN を管理する方法について説明します。"
-	services="cdn"
-	documentationCenter=""
-	authors="camsoper"
-	manager="erikre"
-	editor=""/>
+---
+title: PowerShell を使用した Azure CDN の管理 | Microsoft Docs
+description: Azure PowerShell コマンドレットを使用して、Azure CDN を管理する方法について説明します。
+services: cdn
+documentationcenter: ''
+author: camsoper
+manager: erikre
+editor: ''
 
-<tags
-	ms.service="cdn"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/17/2016"
-	ms.author="casoper"/>
+ms.service: cdn
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/17/2016
+ms.author: casoper
 
-
+---
 # PowerShell を使用した Azure CDN の管理
-
 PowerShell により、Azure CDN プロファイルとエンドポイントを柔軟に管理することができます。この PowerShell は対話的に使用することも、スクリプトを記述して、管理タスクを自動化することもできます。このチュートリアルでは、Azure CDN のプロファイルとエンドポイントを管理するために、PowerShell で実行できる一般的なタスクをいくつか紹介します。
 
 ## 前提条件
-
 PowerShell を使用して Azure CDN のプロファイルとエンドポイントを管理するには、Azure PowerShell モジュールをインストールする必要があります。`Login-AzureRmAccount` コマンドレットを使用して Azure PowerShell をインストールし、Azure に接続する方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
->[AZURE.IMPORTANT] Azure PowerShell コマンドレットを実行する前に、`Login-AzureRmAccount` でログインする必要があります。
+> [!IMPORTANT]
+> Azure PowerShell コマンドレットを実行する前に、`Login-AzureRmAccount` でログインする必要があります。
+> 
+> 
 
 ## Azure CDN コマンドレットの一覧表示
-
 Azure CDN コマンドレットの一覧を表示するには、`Get-Command` コマンドレットを使用します。
 
 ```text
@@ -59,7 +58,6 @@ Cmdlet          Unpublish-AzureRmCdnEndpointContent                2.0.0      Az
 ```
 
 ## ヘルプの表示
-
 ヘルプを表示するには、このコマンドレットのいずれかで `Get-Help` コマンドレットを使用します。`Get-Help` を実行すると、利用状況と構文のほか、必要に応じて例を表示することができます。
 
 ```text
@@ -91,7 +89,6 @@ REMARKS
 ```
 
 ## 既存の Azure CDN プロファイルを一覧表示
-
 パラメーターを指定せずに `Get-AzureRmCdnProfile` コマンドレットを実行すると、既存の CDN プロファイルすべてを取得できます。
 
 ```powershell
@@ -114,10 +111,12 @@ Get-AzureRmCdnProfile | Where-Object { $_.Sku.Name -eq "StandardVerizon" }
 Get-AzureRmCdnProfile -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
 ```
 
->[AZURE.TIP] 複数のリソース グループがある場合は、それぞれのグループに同じ名前の CDN プロファイルが存在する可能性があります。`ResourceGroupName` パラメーターを省略すると、名前が一致するすべてのプロファイルが返されます。
+> [!TIP]
+> 複数のリソース グループがある場合は、それぞれのグループに同じ名前の CDN プロファイルが存在する可能性があります。`ResourceGroupName` パラメーターを省略すると、名前が一致するすべてのプロファイルが返されます。
+> 
+> 
 
 ## 既存の CDN エンドポイントの一覧表示
-
 `Get-AzureRmCdnEndpoint` では、エンドポイントを個別に取得することも、プロファイルのすべてのエンドポイントを取得することもできます。
 
 ```powershell
@@ -135,7 +134,6 @@ Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint | Where-Object { $_.ResourceState
 ```
 
 ## CDN プロファイルとエンドポイントの作成
-
 `New-AzureRmCdnProfile` および `New-AzureRmCdnEndpoint` は、CDN プロファイルとエンドポイントを作成するときに使用します。
 
 ```powershell
@@ -151,7 +149,6 @@ New-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -Sku
 ```
 
 ## エンドポイント名の可用性の確認
-
 `Get-AzureRmCdnEndpointNameAvailability` は、エンドポイント名を使用できるかどうかを示すオブジェクトを返します。
 
 ```powershell
@@ -164,10 +161,12 @@ Else { Write-Host "No, that endpoint name is not available." }
 ```
 
 ## カスタム ドメインの追加
-
 `New-AzureRmCdnCustomDomain` は、カスタム ドメイン名を既存のエンドポイントに追加します。
 
->[AZURE.IMPORTANT] 「[Content Delivery Network (CDN) エンドポイントにカスタム ドメインをマップする方法](./cdn-map-content-to-custom-domain.md)」の説明に従って、DNS プロバイダーで CNAME を設定する必要があります。エンドポイントを変更する前に、`Test-AzureRmCdnCustomDomain` を使用してマッピングをテストできます。
+> [!IMPORTANT]
+> 「[Content Delivery Network (CDN) エンドポイントにカスタム ドメインをマップする方法](cdn-map-content-to-custom-domain.md)」の説明に従って、DNS プロバイダーで CNAME を設定する必要があります。エンドポイントを変更する前に、`Test-AzureRmCdnCustomDomain` を使用してマッピングをテストできます。
+> 
+> 
 
 ```powershell
 # Get an existing endpoint
@@ -181,7 +180,6 @@ If($result.CustomDomainValidated){ New-AzureRmCdnCustomDomain -CustomDomainName 
 ```
 
 ## エンドポイントの変更
-
 `Set-AzureRmCdnEndpoint` で既存のエンドポイントを変更します。
 
 ```powershell
@@ -197,7 +195,6 @@ Set-AzureRmCdnEndpoint -CdnEndpoint $endpoint
 ```
 
 ## CDN 資産の消去/事前読み込み
-
 `Unpublish-AzureRmCdnEndpointContent` は、キャッシュされた資産を消去します。また、`Publish-AzureRmCdnEndpointContent` は、サポートされているエンドポイントで、資産を事前に読み込みます。
 
 ```powershell
@@ -226,7 +223,6 @@ Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint | Start-AzureRmCdnEndpoint
 ```
 
 ## CDN リソースの削除
-
 `Remove-AzureRmCdnProfile` および `Remove-AzureRmCdnEndpoint` を使用すると、プロファイルとエンドポイントを削除できます。
 
 ```powershell
@@ -241,9 +237,8 @@ Remove-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG
 ```
 
 ## 次のステップ
+[.NET](cdn-app-dev-net.md) または [Node.js](cdn-app-dev-node.md) を使用して Azure CDN を自動化する方法について学習します。
 
-[.NET](./cdn-app-dev-net.md) または [Node.js](./cdn-app-dev-node.md) を使用して Azure CDN を自動化する方法について学習します。
-
-CDN 機能の詳細については、[CDN の概要](./cdn-overview.md)に関するページをご覧ください。
+CDN 機能の詳細については、[CDN の概要](cdn-overview.md)に関するページをご覧ください。
 
 <!---HONumber=AcomDC_0817_2016-->

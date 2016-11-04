@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Channel 9 で配信中の Azure セキュリティに関するビデオ |Microsoft Azure"
-   description="この記事では、Channel 9 の Azure セキュリティに関するプレゼンテーションを精選した一覧を示します。Channel 9 は、製品を使用するユーザーと製品を提供する側の人たちを結び付けるコミュニティです。"
-   services="security"
-   documentationCenter="na"
-   authors="TomShinder"
-   manager="MBaldwin"
-   editor="TomSh"/>
+---
+title: Channel 9 で配信中の Azure セキュリティに関するビデオ | Microsoft Docs
+description: この記事では、Channel 9 の Azure セキュリティに関するプレゼンテーションを精選した一覧を示します。Channel 9 は、製品を使用するユーザーと製品を提供する側の人たちを結び付けるコミュニティです。
+services: security
+documentationcenter: na
+author: TomShinder
+manager: MBaldwin
+editor: TomSh
 
-<tags
-   ms.service="security"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/09/2016"
-   ms.author="terrylan"/>
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/09/2016
+ms.author: terrylan
 
+---
 # Channel 9 で配信中の Azure セキュリティに関するビデオ
-
 [Channel 9](https://channel9.msdn.com/) は製品を提供する側とお客様を結び付けるコミュニティです。
 
 彼らはソフトウェアにすばらしい未来があると考え、それを楽しみにしています。Channel 9 は、継続的な対話に参加するためのコミュニティです。
@@ -46,9 +45,9 @@ Azure 仮想マシン インスタンス上の SQL Server データベースを�
 
 このビデオの対象範囲:
 
-- 暗号化と SQL Server について理解する
-- データ保護 API、マスター キー、証明書について理解する
-- SQL コマンドを使用して、マスター キーと証明書を作成し、データベースを暗号化する
+* 暗号化と SQL Server について理解する
+* データ保護 API、マスター キー、証明書について理解する
+* SQL コマンドを使用して、マスター キーと証明書を作成し、データベースを暗号化する
 
 [How to set security in DevTest Labs (DevTest Labs でのセキュリティの設定方法)](https://channel9.msdn.com/Blogs/Windows-Azure/How-to-set-security-in-your-DevTest-Lab)
 
@@ -66,11 +65,11 @@ Azure 仮想ネットワークでのネットワーク セキュリティ グル
 
 Azure Active Directory (AD) の Privileged Identity Management は、特権 ID と、特権 ID によるリソースへのアクセスを検出、制限、および監視することができるプレミアム機能です。必要に応じて、オンデマンドのジャスト イン タイム管理アクセスも適用されます。内容は次のとおりです。
 
-- Office 365 のワークロード固有の管理ロールに対する保護の管理
-- 特権ロールのアクティブ化用の Azure Multi-Factor Authentication(MFA) の構成
-- テナント セキュリティ体制の測定と強化
-- セキュリティの問題の監視と修正
-- 定期的な再認定ワークフローのための、特権ロールに留まる必要があるユーザーの確認
+* Office 365 のワークロード固有の管理ロールに対する保護の管理
+* 特権ロールのアクティブ化用の Azure Multi-Factor Authentication(MFA) の構成
+* テナント セキュリティ体制の測定と強化
+* セキュリティの問題の監視と修正
+* 定期的な再認定ワークフローのための、特権ロールに留まる必要があるユーザーの確認
 
 [Azure Key Vault with Amit Bapat (Amit Bapat による Azure Key Vault)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Key-Vault-with-Amit-Bapat)
 

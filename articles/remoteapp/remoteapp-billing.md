@@ -1,27 +1,26 @@
 
-<properties
-    pageTitle="Azure RemoteApp の課金の変更 | Microsoft Azure"
-    description="Azure RemoteApp の課金を停止する方法について説明します。"
-    services="remoteapp"
-    documentationCenter=""
-    authors="lizap"
-    manager="mbaldwin" />
+---
+title: Azure RemoteApp の課金の変更 | Microsoft Docs
+description: Azure RemoteApp の課金を停止する方法について説明します。
+services: remoteapp
+documentationcenter: ''
+author: lizap
+manager: mbaldwin
 
-<tags
-    ms.service="remoteapp"
-    ms.workload="compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/15/2016"
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-
-
+---
 # Azure RemoteApp の課金を停止する方法
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> [!IMPORTANT]
+> Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> 
+> 
 
 Azure RemoteApp コレクションがある限り、ユーザーを割り当てていなくても、RemoteApp に対して課金されます。この課金を停止するには、すべてのコレクションを削除します。
 

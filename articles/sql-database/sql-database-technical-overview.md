@@ -1,29 +1,30 @@
-<properties
-	pageTitle="SQL Database とは SQL Database の概要 | Microsoft Azure"
-	description="SQL Database の概要: クラウド内の Microsoft のリレーショナル データベース管理システム (RDBMS) の技術の詳細と機能について説明します。"
-	keywords="sql の概要,sql の紹介,sql database とは"
-	services="sql-database"
-	documentationCenter=""
-	authors="shontnew"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: SQL Database とは SQL Database の概要 | Microsoft Docs
+description: 'SQL Database の概要: クラウド内の Microsoft のリレーショナル データベース管理システム (RDBMS) の技術の詳細と機能について説明します。'
+keywords: sql の概要,sql の紹介,sql database とは
+services: sql-database
+documentationcenter: ''
+author: shontnew
+manager: jhubbard
+editor: cgronlun
 
-<tags
-   ms.service="sql-database"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="data-management"
-   ms.date="08/16/2016"
-   ms.author="shkurhek"/>
+ms.service: sql-database
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: data-management
+ms.date: 08/16/2016
+ms.author: shkurhek
 
+---
 # SQL Database とは SQL Database の概要
-
 SQL Database は、ミッション クリティカルな機能を備えた、市場をリードする Microsoft SQL Server エンジンに基づくクラウド内のリレーショナル データベース サービスです。SQL Database は、予測可能なパフォーマンス、ダウンタイムなしの拡張性、ビジネス継続性、データ保護を提供し、いずれの場合も管理をほとんど必要としません。仮想マシンとインフラストラクチャの管理に煩わされることなく、迅速なアプリケーション開発および製品化に要する時間の短縮化に専念することができます。SQL Database は、[SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) エンジンを基礎としているため、既存の SQL Server ツール、ライブラリ、および API をサポートしています。したがって、クラウドへの移行およびクラウドへの拡張が簡単です。
 
 この記事では、パフォーマンス、スケーラビリティ、および管理容易性に関連する、SQL Database の中心概念および機能について紹介し、詳細を参照するためのリンクも提供します。先に進む準備ができたら、[最初の SQL Database の作成](sql-database-get-started.md)または[エラスティック データベース プールの作成](sql-database-elastic-pool-create-portal.md)を数分で実行できます。さらに詳しく知りたい場合は、この 30 分間のビデオをご覧ください。
 
-> [AZURE.VIDEO azurecon-2015-get-started-with-azure-sql-database]
+> [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON326/player]
+> 
+> 
 
 ## ダウンタイムなしでのパフォーマンスの調整とスケール
 SQL Database は、Basic、Standard、Premium の *サービス階層* で使用できます。各サービス階層では、軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、[さまざまなレベルのパフォーマンスと機能](sql-database-service-tiers.md)を提供しています。最初のアプリケーションを月数ドルで小規模データベースにビルドし、やがてアプリケーションが世界中に急速に広まってきたら、アプリケーションやお客様にダウンタイムを発生させずに、いつでも手動またはプログラムで[サービス層を変更](sql-database-scale-up.md)することができます。
@@ -37,11 +38,9 @@ SQL Database は、Basic、Standard、Premium の *サービス階層* で使用
 しかし、データベースとデータベース プールの相対的なパフォーマンスはどのようにして比較できますか? パフォーマンスの高低を調整するとき、何に基づいて右クリックでストップをかけますか? 答えは、単一のデータベースの場合はデータベース トランザクション ユニット (DTU)、エラスティック データベースとデータベース プールの場合はエラスティック DTU (eDTU) です。詳細については、「[SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md)」を参照してください。
 
 ## アプリケーションとビジネスの継続的な稼働
-
 Microsoft が管理するデータ センターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% のサービス レベル アグリーメント [(SLA)](http://azure.microsoft.com/support/legal/sla/) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。すべての SQL Database で、組み込みのデータ保護やフォールト トレランスを利用できます。これらは、本来なら自身で設計、購入、構築、および管理する必要があります。それでも、ビジネスの要求に応じて、災害やエラーなどが発生した場合にアプリケーションおよびビジネスが迅速に回復するように、追加の保護レイヤーを必要とする場合があります。SQL Database では、サービス階層ごとに、異なる機能メニューが用意されており、それを使用すると、稼働させてその状態を維持することができます。ポイントインタイム リストアを使用すると、データベースを 35 日間分遡って以前の状態に戻すことができます。さらに、データベースをホストしているデータ センターで障害が発生した場合は、別のリージョンにあるデータベース レプリカにフェールオーバーことができます。あるいは、レプリカを使用して、アップグレードまたは異なる地域への再配置を行うことができます。
 
 ![SQL Database Geo-Replication](./media/sql-database-technical-overview/azure_sqldb_map.png)
-
 
 それぞれのサービス階層で使用できるさまざまなビジネス継続性機能の詳細については、「[ビジネス継続性](sql-database-business-continuity.md)」をご覧ください。
 
@@ -51,11 +50,11 @@ SQL サーバーには、アクセスの制限、データの保護、および�
 ## 次のステップ
 ここでは、SQL Database の概要を紹介し、"SQL Database とは何か" という問いに対する答えを示したので、次のステップに進むことができます。
 
-- 単一データベースとエラスティック データベースのコストの比較と計算ツールについては、[価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
-- [エラスティック プール](sql-database-elastic-pool.md)について学習します。
-- [最初のデータベースを作成する](sql-database-get-started.md)ことによって作業を開始します。
-- [SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)
-- 初めてのアプリを C#、Java、Node.js、PHP、Python、Ruby で作成します。「[SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
-- 「[Azure SQL Database サービスに関するすべてのトピック](sql-database-index-all-articles.md)」のタイトルと説明のインデックスを確認します。
+* 単一データベースとエラスティック データベースのコストの比較と計算ツールについては、[価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
+* [エラスティック プール](sql-database-elastic-pool.md)について学習します。
+* [最初のデータベースを作成する](sql-database-get-started.md)ことによって作業を開始します。
+* [SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)
+* 初めてのアプリを C#、Java、Node.js、PHP、Python、Ruby で作成します。「[SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
+* 「[Azure SQL Database サービスに関するすべてのトピック](sql-database-index-all-articles.md)」のタイトルと説明のインデックスを確認します。
 
 <!---HONumber=AcomDC_0817_2016-->

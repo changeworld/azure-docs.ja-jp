@@ -1,7 +1,7 @@
-リソース|既定の制限|上限
----|---|---
-クラウド サービスあたりの[仮想マシン数](../articles/virtual-machines/virtual-machines-linux-about.md) <sup>1</sup>|50|50
-クラウド サービスあたりの入力エンドポイント数 <sup>2</sup>|150|150
+| リソース | 既定の制限 | 上限 |
+| --- | --- | --- |
+| クラウド サービスあたりの[仮想マシン数](../articles/virtual-machines/virtual-machines-linux-about.md) <sup>1</sup> |50 |50 |
+| クラウド サービスあたりの入力エンドポイント数 <sup>2</sup> |150 |150 |
 
 <sup>1</sup>サービス管理 (リソース マネージャーではなく) で作成された仮想マシンは自動的にクラウド サービスに格納されます。より多くの仮想マシンをそのクラウド サービスに追加することで、負荷分散と可用性を実現できます。「[Virtual Machines を Virtual Network または Cloud Service と接続する方法](../articles/virtual-machines/virtual-machines-linux-classic-connect-vms.md)」を参照してください。
 

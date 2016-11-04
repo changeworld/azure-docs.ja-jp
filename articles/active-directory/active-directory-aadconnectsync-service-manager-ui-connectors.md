@@ -1,46 +1,44 @@
-<properties
-	pageTitle="Azure AD Connect 同期: Synchronization Service Manager UI | Microsoft Azure"
-	description="Azure AD Connect の Synchronization Service Manager の [コネクタ] タブについて"
-	services="active-directory"
-	documentationCenter=""
-	authors="andkjell"
-	manager="femila"
-	editor=""/>
+---
+title: 'Azure AD Connect 同期: Synchronization Service Manager UI | Microsoft Docs'
+description: Azure AD Connect の Synchronization Service Manager の [コネクタ] タブについて
+services: active-directory
+documentationcenter: ''
+author: andkjell
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/07/2016"
-	ms.author="andkjell"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/07/2016
+ms.author: andkjell
 
-
+---
 # Azure AD Connect 同期: Synchronization Service Manager
-
-[操作](active-directory-aadconnectsync-service-manager-ui-operations.md) | [コネクタ](active-directory-aadconnectsync-service-manager-ui-connectors.md) | [メタバース デザイナー](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md) | [メタバース検索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)
---- | --- | --- | ---
+| [操作](active-directory-aadconnectsync-service-manager-ui-operations.md) | [コネクタ](active-directory-aadconnectsync-service-manager-ui-connectors.md) | [メタバース デザイナー](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md) | [メタバース検索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md) |
+| --- | --- | --- | --- |
+|  | | | |
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectors.png)
 
 [コネクタ] タブを利用し、同期エンジンが接続されているすべてのシステムを管理します。
 
 ## コネクタのアクション
-
-アクション | コメント
---- | ---
-作成 | 使用しないでください。その他の AD フォレストに接続するには、インストール ウィザードを使用します。
-プロパティ | ドメインと OU フィルター処理に使用されます。
-[削除](#delete) | コネクタ スペースのデータを削除するか、フォレストへの接続を削除するために使用されます。
-[実行プロファイルの構成](#configure-run-profiles) | ドメイン フィルター処理を除き、ここで構成するものはありません。このアクションは、既に構成されている実行プロファイルを確認する場合に使用します。
-実行 | プロファイルの 1 回限りの実行を開始するために使用されます。
-停止 | 現在プロファイルを実行しているコネクタを停止します。
-コネクタのエクスポート | 使用しないでください。
-コネクタのインポート | 使用しないでください。
-コネクタの更新 | 使用しないでください。
-スキーマの更新 | キャッシュされたスキーマを更新します。このアクション代わりに、インストール ウィザードのオプションを使用することをお勧めします。インストール ウィザードのオプションであれば、同期規則も更新されます。
-[コネクタ スペースの検索](#search-connector-space) | オブジェクトを検索し、[オブジェクトとそのデータをシステム全体でフォローする](#follow-an-object-and-its-data-through-the-system)ために使用されます。
+| アクション | コメント |
+| --- | --- |
+| 作成 |使用しないでください。その他の AD フォレストに接続するには、インストール ウィザードを使用します。 |
+| プロパティ |ドメインと OU フィルター処理に使用されます。 |
+| [削除](#delete) |コネクタ スペースのデータを削除するか、フォレストへの接続を削除するために使用されます。 |
+| [実行プロファイルの構成](#configure-run-profiles) |ドメイン フィルター処理を除き、ここで構成するものはありません。このアクションは、既に構成されている実行プロファイルを確認する場合に使用します。 |
+| 実行 |プロファイルの 1 回限りの実行を開始するために使用されます。 |
+| 停止 |現在プロファイルを実行しているコネクタを停止します。 |
+| コネクタのエクスポート |使用しないでください。 |
+| コネクタのインポート |使用しないでください。 |
+| コネクタの更新 |使用しないでください。 |
+| スキーマの更新 |キャッシュされたスキーマを更新します。このアクション代わりに、インストール ウィザードのオプションを使用することをお勧めします。インストール ウィザードのオプションであれば、同期規則も更新されます。 |
+| [コネクタ スペースの検索](#search-connector-space) |オブジェクトを検索し、[オブジェクトとそのデータをシステム全体でフォローする](#follow-an-object-and-its-data-through-the-system)ために使用されます。 |
 
 ### 削除
 削除アクションには次の 2 つがあります。

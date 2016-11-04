@@ -1,28 +1,25 @@
-<properties 
-	pageTitle="Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法 | Microsoft Azure" 
-	description="Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法について説明します。" 
-	services="api-management" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="erikre" 
-	editor=""/>
+---
+title: Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法 | Microsoft Docs
+description: Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法について説明します。
+services: api-management
+documentationcenter: ''
+author: steved0x
+manager: erikre
+editor: ''
 
-<tags 
-	ms.service="api-management" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/09/2016" 
-	ms.author="sdanie"/>
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/09/2016
+ms.author: sdanie
 
-
+---
 # Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法
-
 Azure API Management には、管理者が[管理者ポータルの外観をカスタマイズ](api-management-customize-portal.md)したり、ページそのものの内容を構成するテンプレート セットを使用して開発者ポータルのページの内容をカスタマイズしたりできる多様なカスタマイズ機能が用意されています。[DotLiquid](http://dotliquidmarkup.org/) 構文と、用意されているローカライズされた文字列リソース、アイコン、およびページ コントロールのセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。
 
 ## 開発者ポータル テンプレートの概要
-
 開発者ポータル テンプレートは、API Management サービス インスタンスの管理者によって、管理者ポータルで管理されます。開発者ポータル テンプレートを管理するには、Azure クラシック ポータルで API Management サービス インスタンスに移動し、**[参照]** をクリックします。
 
 ![開発者ポータル][api-management-browse]
@@ -59,68 +56,67 @@ Azure API Management には、管理者が[管理者ポータルの外観をカ�
 
 前の例には、次の例に示す**テンプレート データ** ウィンドウに表示されたデータから取得され、開発者ポータルに表示される 2 つの製品があります。
 
-	{
-		"Paging": {
-			"Page": 1,
-			"PageSize": 10,
-			"TotalItemCount": 2,
-			"ShowAll": false,
-			"PageCount": 1
-		},
-		"Filtering": {
-			"Pattern": null,
-			"Placeholder": "Search products"
-		},
-		"Products": [
-			{
-				"Id": "56ec64c380ed850042060001",
-				"Title": "Starter",
-				"Description": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",
-				"Terms": "",
-				"ProductState": 1,
-				"AllowMultipleSubscriptions": false,
-				"MultipleSubscriptionsCount": 1
-			},
-			{
-				"Id": "56ec64c380ed850042060002",
-				"Title": "Unlimited",
-				"Description": "Subscribers have completely unlimited access to the API. Administrator approval is required.",
-				"Terms": null,
-				"ProductState": 1,
-				"AllowMultipleSubscriptions": false,
-				"MultipleSubscriptionsCount": 1
-			}
-		]
-	}
+    {
+        "Paging": {
+            "Page": 1,
+            "PageSize": 10,
+            "TotalItemCount": 2,
+            "ShowAll": false,
+            "PageCount": 1
+        },
+        "Filtering": {
+            "Pattern": null,
+            "Placeholder": "Search products"
+        },
+        "Products": [
+            {
+                "Id": "56ec64c380ed850042060001",
+                "Title": "Starter",
+                "Description": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",
+                "Terms": "",
+                "ProductState": 1,
+                "AllowMultipleSubscriptions": false,
+                "MultipleSubscriptionsCount": 1
+            },
+            {
+                "Id": "56ec64c380ed850042060002",
+                "Title": "Unlimited",
+                "Description": "Subscribers have completely unlimited access to the API. Administrator approval is required.",
+                "Terms": null,
+                "ProductState": 1,
+                "AllowMultipleSubscriptions": false,
+                "MultipleSubscriptionsCount": 1
+            }
+        ]
+    }
 
 **製品リスト** テンプレートのマークアップは、製品のコレクションを反復処理して各製品の情報とリンクを表示することによってデータを処理して、目的の出力を提供します。マークアップの `<search-control>` 要素と `<page-control>` 要素に注目してください。これらは、ページでの検索コントロールとページング コントロールの表示を制御します。`ProductsStrings|PageTitleProducts` は、ページの `h2` ヘッダー テキストを含むローカライズされた文字列参照です。開発者ポータル テンプレートで使用できる文字列リソース、ページ コントロール、およびアイコンの一覧については、[API Management 開発者ポータル テンプレート リファレンスに関するページ](https://msdn.microsoft.com/library/azure/mt697540.aspx)を参照してください。
 
-	<search-control></search-control>
-	<div class="row">
-	    <div class="col-md-9">
-	        <h2>{% localized "ProductsStrings|PageTitleProducts" %}</h2>
-	    </div>
-	</div>
-	<div class="row">
-	    <div class="col-md-12">
-		{% if products.size > 0 %}
-		<ul class="list-unstyled">
-		{% for product in products %}
-			<li>
-				<h3><a href="/products/{{product.id}}">{{product.title}}</a></h3>
-				{{product.description}}
-			</li>	
-		{% endfor %}
-		</ul>
-		<paging-control></paging-control>
-		{% else %}
-		{% localized "CommonResources|NoItemsToDisplay" %}
-		{% endif %}
-		</div>
-	</div>
+    <search-control></search-control>
+    <div class="row">
+        <div class="col-md-9">
+            <h2>{% localized "ProductsStrings|PageTitleProducts" %}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        {% if products.size > 0 %}
+        <ul class="list-unstyled">
+        {% for product in products %}
+            <li>
+                <h3><a href="/products/{{product.id}}">{{product.title}}</a></h3>
+                {{product.description}}
+            </li>    
+        {% endfor %}
+        </ul>
+        <paging-control></paging-control>
+        {% else %}
+        {% localized "CommonResources|NoItemsToDisplay" %}
+        {% endif %}
+        </div>
+    </div>
 
 ## テンプレートを保存するには
-
 テンプレートを保存するには、テンプレート エディターで [保存] をクリックします。
 
 ![テンプレートを保存する][api-management-save-template]
@@ -128,7 +124,6 @@ Azure API Management には、管理者が[管理者ポータルの外観をカ�
 保存された変更は、発行されるまで、開発者ポータルに反映されません。
 
 ## テンプレートを発行するには
-
 保存したテンプレートは、個別に発行することもすべてをまとめて発行することもできます。個々のテンプレートを発行するには、テンプレート エディターで [発行] をクリックします。
 
 ![テンプレートを発行する][api-management-publish-template]
@@ -148,7 +143,6 @@ Azure API Management には、管理者が[管理者ポータルの外観をカ�
 新しく発行されたテンプレートは、開発者ポータルですぐに有効になります。
 
 ## テンプレートを前のバージョンに戻すには
-
 テンプレートを前に発行したバージョンに戻すには、テンプレート エディターで [戻す] をクリックします。
 
 ![テンプレートを元に戻す][api-management-revert-template]
@@ -160,7 +154,6 @@ Azure API Management には、管理者が[管理者ポータルの外観をカ�
 元に戻す操作が完了すると、前に発行したバージョンのテンプレートが開発者ポータルで有効になります。
 
 ## テンプレートを既定のバージョンに復元するには
-
 テンプレートを既定のバージョンに復元する操作は、2 段階のプロセスです。まずテンプレートを復元し、その後復元したバージョンを発行する必要があります。
 
 1 つのテンプレートを既定のバージョンに復元するには、テンプレート エディターで [復元] をクリックします。
@@ -178,15 +171,14 @@ Azure API Management には、管理者が[管理者ポータルの外観をカ�
 その後、復元したテンプレートを、「[テンプレートを発行するには](#to-publish-a-template)」の手順に従って、個別にまたはまとめて発行する必要があります。
 
 ## 開発者ポータル テンプレート リファレンス
-
 開発者ポータル テンプレート、文字列リソース、アイコン、およびページ コントロールのリファレンス情報については、[API Management 開発者ポータル テンプレート リファレンスに関するページ](https://msdn.microsoft.com/library/azure/mt697540.aspx)を参照してください。
 
 ## ビデオの概要を見る
-
 テンプレートを使用して、開発者ポータルの API ページと操作ページにディスカッション ボードと評価を追加する方法については、次のビデオをご覧ください。
 
-> [AZURE.VIDEO adding-developer-portal-functionality-using-templates-in-azure-api-management]
-
+> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Adding-Developer-Portal-functionality-using-Templates-in-Azure-API-Management/player]
+> 
+> 
 
 [api-management-customize-menu]: ./media/api-management-developer-portal-templates/api-management-customize-menu.png
 [api-management-templates-menu]: ./media/api-management-developer-portal-templates/api-management-templates-menu.png

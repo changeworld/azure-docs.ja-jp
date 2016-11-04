@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Azure Data Factory から Spark プログラムを呼び出す" 
-	description="MapReduce アクティビティを使用して Azure Data Factory から Spark プログラムを呼び出す方法について説明します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
-	editor="monicar"/>
+---
+title: Azure Data Factory から Spark プログラムを呼び出す
+description: MapReduce アクティビティを使用して Azure Data Factory から Spark プログラムを呼び出す方法について説明します。
+services: data-factory
+documentationcenter: ''
+author: spelluru
+manager: jhubbard
+editor: monicar
 
-<tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/25/2016" 
-	ms.author="spelluru"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/25/2016
+ms.author: spelluru
 
+---
 # Data Factory から Spark プログラムを起動する
 ## はじめに
 Data Factory パイプラインで MapReduce アクティビティを使用して、HDInsight Spark クラスターで Spark プログラムを実行することができます。この記事を読む前に、アクティビティの使用の詳細について、[MapReduce アクティビティ](data-factory-map-reduce.md)に関する記事をご覧ください。
@@ -34,17 +34,18 @@ Data Factory パイプラインで MapReduce アクティビティを使用し�
 
 MapReduce アクティビティは、Azure ストレージの **adflibs** コンテナーの **com.adf.sparklauncher.jar** を呼び出すように構成されています (StorageLinkedService.json で指定)。このプログラムのソース コードは Spark-ADF/src/main/java/com/adf/ フォルダーにあり、spark-submit を呼び出して Spark ジョブを実行します。
 
-> [AZURE.IMPORTANT] 
-サンプルを使用する前に、[README.TXT](https://github.com/Azure/Azure-DataFactory/blob/master/Samples/Spark/README.txt) に目を通して、最新情報と追加情報を確認してください。
->  
+> [!IMPORTANT]
+> サンプルを使用する前に、[README.TXT](https://github.com/Azure/Azure-DataFactory/blob/master/Samples/Spark/README.txt) に目を通して、最新情報と追加情報を確認してください。
+> 
 > MapReduce アクティビティを使用して Spark プログラムを呼び出すには、この方法で独自の HDInsight Spark クラスターを使用します。オンデマンド HDInsight クラスターの使用は、サポートされていません。
-
+> 
+> 
 
 ## 関連項目
-- [Hive アクティビティ](data-factory-hive-activity.md)
-- [Pig アクティビティ](data-factory-pig-activity.md)
-- [MapReduce アクティビティ](data-factory-map-reduce.md)
-- [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
-- [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [Hive アクティビティ](data-factory-hive-activity.md)
+* [Pig アクティビティ](data-factory-pig-activity.md)
+* [MapReduce アクティビティ](data-factory-map-reduce.md)
+* [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
+* [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
 <!---HONumber=AcomDC_0831_2016-->

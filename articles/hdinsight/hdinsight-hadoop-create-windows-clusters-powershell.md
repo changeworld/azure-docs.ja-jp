@@ -1,45 +1,39 @@
-<properties
-   pageTitle="Azure PowerShell を使用した HDInsight での Windows ベースの Hadoop クラスターの作成| Microsoft Azure"
-   	description="Azure PowerShell を使用して Azure HDInsight のクラスターを作成する方法について説明します。"
-   services="hdinsight"
-   documentationCenter=""
-   tags="azure-portal"
-   authors="mumian"
-   manager="jhubbard"
-   editor="cgronlun"/>
+---
+title: Azure PowerShell を使用した HDInsight での Windows ベースの Hadoop クラスターの作成| Microsoft Docs
+description: Azure PowerShell を使用して Azure HDInsight のクラスターを作成する方法について説明します。
+services: hdinsight
+documentationcenter: ''
+tags: azure-portal
+author: mumian
+manager: jhubbard
+editor: cgronlun
 
-<tags
-   ms.service="hdinsight"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data"
-   ms.date="08/10/2016"
-   ms.author="jgao"/>
+ms.service: hdinsight
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 08/10/2016
+ms.author: jgao
 
+---
 # Azure PowerShell を使用した HDInsight での Windows ベースの Hadoop クラスターの作成
-
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
+[!INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
 Azure PowerShell を使用して HDInsight クラスターを作成する方法について説明します。Azure PowerShell は、Windows PowerShell を使用して Azure を管理するためのコマンドレットを提供するモジュールです。その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「[クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
 
-
-##前提条件:
-
-[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+## 前提条件:
+[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 この記事の手順を開始する前に、次の項目を用意する必要があります。
 
-- として機能します。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- Azure PowerShell。
-
-    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
-
-
+* として機能します。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* Azure PowerShell。
+  
+    [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 ## クラスターの作成
 Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できる強力なスクリプティング環境です。このセクションでは、Azure PowerShell を使用して HDInsight クラスターを作成する方法について説明します。ワークステーションを構成して HDInsight Windows Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。HDInsight で Azure PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」をご覧ください。HDInsight Windows PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn858087.aspx)」を参照してください。
-
 
 Azure PowerShell を使用して HDInsight クラスターを作成するには、以下の手順が必要です。
 
@@ -131,25 +125,19 @@ Azure PowerShell を使用して HDInsight クラスターを作成するには�
     Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName 
 
 ## ARM テンプレートを使用したクラスターの作成
-
 Azure PowerShell を使用して、HDInsight クラスターを作成する ARM テンプレートをデプロイすることができます。「[Azure PowerShell を使用してテンプレートを呼び出す](hdinsight-hadoop-create-windows-clusters-arm-templates.md#call-templates-using-powershell)」を参照してください。
 
-##クラスターのカスタマイズ
+## クラスターのカスタマイズ
+* 「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell)」を参照してください。
+* 「[スクリプト アクションを使用して Windows ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)」を参照してください。
 
-- 「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell)」を参照してください。
-- 「[スクリプト アクションを使用して Windows ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)」を参照してください。
-
-
-##次のステップ
+## 次のステップ
 この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
 * [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md) - HDInsight クラスターの使用方法について説明しています。
 * [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md) - プログラムを使用して HDInsight にジョブを送信する方法について説明しています。
 * [PowerShell を使用した HDInsight の Hadoop クラスターの管理](hdinsight-administer-use-powershell.md) - HDInsight で Azure PowerShell を使用する方法について説明しています。
 * [HDInsight][hdinsight-sdk-documentation] - HDInsight SDK について説明しています。
-
-
-
 
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-preview-portal]: https://manage.windowsazure.com

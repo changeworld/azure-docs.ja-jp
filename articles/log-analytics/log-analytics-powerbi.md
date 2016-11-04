@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Log Analytics データを Power BI にエクスポートする | Microsoft Azure"
-   description="Power BI は、さまざまなデータのセットの分析のために豊富な視覚エフェクトとレポートを提供するマイクロソフトのクラウド ベースのビジネス分析サービスです。  Log Analytics は、その視覚エフェクトと分析ツールを活用できるように、OMS リポジトリから Power BI へのデータを継続的にエクスポートできます。  この記事では、一定の間隔で Power BI に自動的にエクスポートする Log Analytics でのクエリの構成方法について説明します。"
-   services="log-analytics"
-   documentationCenter=""
-   authors="bwren"
-   manager="jwhit"
-   editor="tysonn" />
-<tags
-   ms.service="log-analytics"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="10/18/2016"
-   ms.author="bwren" />
+---
+title: Log Analytics データを Power BI にエクスポートする | Microsoft Docs
+description: Power BI は、さまざまなデータのセットの分析のために豊富な視覚エフェクトとレポートを提供するマイクロソフトのクラウド ベースのビジネス分析サービスです。  Log Analytics は、その視覚エフェクトと分析ツールを活用できるように、OMS リポジトリから Power BI へのデータを継続的にエクスポートできます。  この記事では、一定の間隔で Power BI に自動的にエクスポートする Log Analytics でのクエリの構成方法について説明します。
+services: log-analytics
+documentationcenter: ''
+author: bwren
+manager: jwhit
+editor: tysonn
 
+ms.service: log-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 10/18/2016
+ms.author: bwren
 
+---
 # <a name="export-log-analytics-data-to-power-bi"></a>Log Analytics データを Power BI にエクスポートする
-
 [Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) は、さまざまなデータのセットの分析のために豊富な視覚エフェクトとレポートを提供するマイクロソフトのクラウド ベースのビジネス分析サービスです。  Log Analytics は、その視覚エフェクトと分析ツールを活用できるように、OMS リポジトリから Power BI へのデータを自動的にエクスポートできます。
 
 Log Analytics で Power BI を構成する場合は、Power BI の対応するデータセットに結果をエクスポートするログ クエリを作成します。  クエリとエクスポートは、Log Analytics によって収集された最新データでデータセットを保持することを定義するスケジュール上で自動的に実行を続けます。
@@ -25,15 +24,16 @@ Log Analytics で Power BI を構成する場合は、Power BI の対応する�
 ![Power BI への Log Analytics](media/log-analytics-powerbi/overview.png)
 
 ## <a name="power-bi-schedules"></a>Power BI スケジュール
-
 *Power BI スケジュール* には、OMS リポジトリから Power BI の対応するデータセットにデータのセットをエクスポートするログ検索と、この検索を実行してデータセットを最新のまま保持する頻度を定義するスケジュールが含まれます。
 
 データセットのフィールドは、ログ検索によって返されるレコードのプロパティと一致します。  検索によってさまざまな種類のレコードが返される場合、データセットには、含まれているレコードの各種類のプロパティがすべて含まれます。  
 
-> [AZURE.NOTE] [Measure](log-analytics-search-reference.md#measure)などのコマンドで任意の統合を実行するのではなく、生データを返すログ検索クエリを使用することをお勧めします。  生データから Power BI での集計と計算を実行できます。
+> [!NOTE]
+> [Measure](log-analytics-search-reference.md#measure)などのコマンドで任意の統合を実行するのではなく、生データを返すログ検索クエリを使用することをお勧めします。  生データから Power BI での集計と計算を実行できます。
+> 
+> 
 
 ## <a name="connecting-oms-workspace-to-power-bi"></a>OMS ワークスペースを Power BI に接続する
-
 Log Analytics から Power BI にエクスポートする前に、次の手順に従って、OMS ワークスペースを Power BI アカウントに接続する必要があります。  
 
 1. OMS コンソールで **[設定]** タイルをクリックします。
@@ -42,7 +42,6 @@ Log Analytics から Power BI にエクスポートする前に、次の手順�
 4. Power BI アカウントの資格情報を入力します。
 
 ## <a name="create-a-power-bi-schedule"></a>Power BI スケジュールの作成
-
 次の手順に従って、データセットごとに Power BI スケジュールを作成します。
 
 1. OMS コンソールで **[Log Search]** (ログの検索) タイルをクリックします。
@@ -51,14 +50,13 @@ Log Analytics から Power BI にエクスポートする前に、次の手順�
 4. 次の表にある情報を入力して、 **[保存]**をクリックします。
 
 | プロパティ | Description |
-|:--|:--|
-| 名前 | Power BI スケジュールの一覧を表示するときにスケジュールを識別する名前。 |
-| 保存する検索条件 | 実行するログ検索。  現在のクエリを選択するか、またはドロップダウン ボックスから既存の保存された検索を選択します。 |
-| スケジュール | 保存された検索を実行して Power BI データセットにエクスポートする頻度。  値は 15 分～ 24 時間の範囲で指定する必要があります。 |
-| データセット名 | Power BI のデータセットの名前。  存在しない場合は作成し、存在する場合は更新します。 |
+|:--- |:--- |
+| 名前 |Power BI スケジュールの一覧を表示するときにスケジュールを識別する名前。 |
+| 保存する検索条件 |実行するログ検索。  現在のクエリを選択するか、またはドロップダウン ボックスから既存の保存された検索を選択します。 |
+| スケジュール |保存された検索を実行して Power BI データセットにエクスポートする頻度。  値は 15 分～ 24 時間の範囲で指定する必要があります。 |
+| データセット名 |Power BI のデータセットの名前。  存在しない場合は作成し、存在する場合は更新します。 |
 
 ## <a name="viewing-and-removing-power-bi-schedules"></a>Power BI スケジュールの表示と削除
-
 次の手順で既存の Power BI スケジュールの一覧を表示します。
 
 1. OMS コンソールで **[設定]** タイルをクリックします。
@@ -113,11 +111,8 @@ Log Analytics から Power BI にエクスポートする前に、次の手順�
 ![Power BI レポート](media/log-analytics-powerbi/walkthrough-report.png)
 
 ## <a name="next-steps"></a>次のステップ
-
-- [ログ検索](log-analytics-log-searches.md) について学習し、Power BI にエクスポートできるクエリを作成します。
-- [Power BI](http://powerbi.microsoft.com) について詳しく学習し、Log Analytics のエクスポートに基づく視覚エフェクトを作成します。
-
-
+* [ログ検索](log-analytics-log-searches.md) について学習し、Power BI にエクスポートできるクエリを作成します。
+* [Power BI](http://powerbi.microsoft.com) について詳しく学習し、Log Analytics のエクスポートに基づく視覚エフェクトを作成します。
 
 <!--HONumber=Oct16_HO2-->
 

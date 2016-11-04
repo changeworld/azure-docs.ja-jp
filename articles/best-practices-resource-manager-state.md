@@ -1,30 +1,27 @@
-<properties
-	pageTitle="Resource Manager テンプレートでの状態の処理 | Microsoft Azure"
-	description="複合オブジェクトを使用して Azure リソース マネージャー テンプレートやリンクされたテンプレートと状態データを共有する推奨方法を示します。"
-	services="azure-resource-manager"
-	documentationCenter=""
-	authors="tfitzmac"
-	manager="timlt"
-	editor="tysonn"/>
+---
+title: Resource Manager テンプレートでの状態の処理 | Microsoft Docs
+description: 複合オブジェクトを使用して Azure リソース マネージャー テンプレートやリンクされたテンプレートと状態データを共有する推奨方法を示します。
+services: azure-resource-manager
+documentationcenter: ''
+author: tfitzmac
+manager: timlt
+editor: tysonn
 
-<tags
-	ms.service="azure-resource-manager"
-	ms.workload="multiple"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/12/2016"
-	ms.author="tomfitz"/>
+ms.service: azure-resource-manager
+ms.workload: multiple
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/12/2016
+ms.author: tomfitz
 
+---
 # Azure リソース マネージャーのテンプレートでの状態の共有
-
 このトピックでは、テンプレート内で状態を管理して共有するためのベスト プラクティスを説明します。このトピックで使用するパラメーターと変数は、デプロイ要件を適切に整理するために定義できる種類のオブジェクトの例を示しています。これらの例から、使用環境で意味のあるプロパティ値を使用する独自のオブジェクトを実装できます。
 
 このトピックは大型のホワイト ペーパーの一部です。ペーパーの完全版を参照するには、[World Class ARM Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf) をダウンロードしてください。
 
-
 ## 標準の構成設定を指定する
-
 高い柔軟性と多様性に対応したテンプレートというのは、決して一般的ではありません。一般的なパターンはむしろ既製の構成を選べるようにすることであり、事実、T シャツのような標準的なサイズ区分 (サンドボックス、S、M、L など) が多く使われています。コミュニティ エディション、エンタープライズ エディションなど製品の提供形態も、T シャツのサイズと同様の区分といえます。また、MapReduce、NoSQL など、テクノロジのワークロードに基づく構成で大中小を決める場合もあります。
 
 複合オブジェクトを使用すると、データのコレクションを格納する変数 ("プロパティ バッグ" と呼ばれます) を作成し、そのデータを使用して、テンプレートでのリソースの宣言をしやすくすることができます。このアプローチの特徴は、さまざまなサイズの構成を顧客向けにあらかじめ用意しておき、良質な既製の構成を提供できることです。既製の構成が用意されていなければ、エンド カスタマー自身がクラスターの規模を決め、プラットフォーム リソースの制約を加味しながら、ストレージ アカウントや各種リソースの分割サイズを計算しなければなりません (クラスター サイズとリソースの制約のため)。顧客の利便性を高めることとは別に、既製の構成の数は少ない方がサポートしやすく、密集度も高めやすくなります。
@@ -166,21 +163,20 @@
     }
 
 ## 状態をテンプレートに渡す
-
 デプロイ中に直接指定するパラメーターを使用して、状態をテンプレートに共有します。
 
 次の表では、テンプレートで一般的に使用されるパラメーターを一覧にしています。
 
-名前 | 値 | 説明
----- | ----- | -----------
-location | Azure リージョンの制約付き一覧の文字列 | リソースがデプロイされる場所です。
-storageAccountNamePrefix | String | VM のディスクが配置されるストレージ アカウントの一意の DNS 名
-domainName | String | パブリックにアクセスできる jumpbox VM のドメイン名。形式は次のとおりです。**{domainName}.{location}.cloudapp.com**。例: **mydomainname.westus.cloudapp.azure.com**
-adminUsername | String | VM のユーザー名
-adminPassword | String | VM のパスワード
-tshirtSize | 提供される T シャツ サイズの制約付き一覧の文字列 | プロビジョニングする名前付きのスケール ユニットのサイズ。たとえば、"Small"、"Medium"、"Large"
-virtualNetworkName | String | コンシューマーが使用する仮想ネットワークの名前。
-enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の jumpbox を有効にするかどうかを識別するパラメーター。値: "enabled"、"disabled"
+| 名前 | 値 | 説明 |
+| --- | --- | --- |
+| location |Azure リージョンの制約付き一覧の文字列 |リソースがデプロイされる場所です。 |
+| storageAccountNamePrefix |String |VM のディスクが配置されるストレージ アカウントの一意の DNS 名 |
+| domainName |String |パブリックにアクセスできる jumpbox VM のドメイン名。形式は次のとおりです。**{domainName}.{location}.cloudapp.com**。例: **mydomainname.westus.cloudapp.azure.com** |
+| adminUsername |String |VM のユーザー名 |
+| adminPassword |String |VM のパスワード |
+| tshirtSize |提供される T シャツ サイズの制約付き一覧の文字列 |プロビジョニングする名前付きのスケール ユニットのサイズ。たとえば、"Small"、"Medium"、"Large" |
+| virtualNetworkName |String |コンシューマーが使用する仮想ネットワークの名前。 |
+| enableJumpbox |制約付き一覧の文字列 (enabled/disabled) |環境の jumpbox を有効にするかどうかを識別するパラメーター。値: "enabled"、"disabled" |
 
 前のセクションで使用した **tshirtSize** パラメータは、次のように定義されます。
 
@@ -201,11 +197,9 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 
 
 ## リンクされたテンプレートに状態を渡す
-
 リンクされたテンプレートへの接続時には、多くの場合、静的変数と生成された変数を組み合わせて使用します。
 
 ### 静的変数
-
 静的変数は、URL など、基本の値を指定するためによく使用されます。このような基本の値は、テンプレート全体で使用されます。
 
 次のテンプレートの抜粋では、`templateBaseUrl` により、GitHub におけるテンプレートのルートの場所を指定します。その次の行では、基本 URL と共有リソース テンプレートの既知の名前を連結する新しい変数 `sharedTemplateUrl` を作成します。その下では、複合オブジェクト変数を使用して、T シャツ サイズを格納します。ここで、基本 URL が `vmTemplate` プロパティに格納されている既知の構成テンプレートの場所に連結されます。
@@ -232,15 +226,12 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
     }
 
 ### 生成された変数
-
 静的変数に加えて、いくつかの変数が動的に生成されます。このセクションでは、生成された変数の一般的な種類を明確にします。
 
 #### tshirtSize
-
 上記の例で、生成されたこの変数について説明しています。
 
 #### networkSettings
-
 容量、機能、またはエンド ツー エンドのスコープを持つソリューション テンプレートでは、リンクされたテンプレートは通常、ネットワーク上に存在するリソースを作成します。わかりやすい方法の 1 つとして、複合オブジェクトを使用して、ネットワークの設定を格納し、リンクされたテンプレートに渡すことが挙げられます。
 
 以下にネットワーク設定をやり取りする例を示します。
@@ -263,7 +254,6 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
     }
 
 #### availabilitySettings
-
 リンクされたテンプレートで作成されたリソースは、多くの場合、可用性セットに配置されます。次の例では、可用性セット名と共に、使用する障害ドメインと更新ドメインの数も指定しています。
 
     "availabilitySetSettings": {
@@ -275,7 +265,6 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 複数の可用性セット (たとえば、あるセットをマスター ノード用に、別のセットをデータ ノード用に使用) が必要な場合、名前をプレフィックスとして使用して、複数の可用性セットを指定するか、前に示した、特定の T シャツ サイズの変数を作成するモデルに従います。
 
 #### storageSettings
-
 多くの場合、ストレージの詳細は、リンクされたテンプレートと共有されます。次の例では、*storageSettings* オブジェクトは、ストレージ アカウント名とコンテナー名の詳細を提供します。
 
     "storageSettings": {
@@ -285,7 +274,6 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
     }
 
 #### osSettings
-
 リンクされたテンプレートを使用すると、場合によっては、異なる既知の構成の種類における、さまざまなノードの種類に対して、オペレーティング システムの設定を渡す必要があります。複合オブジェクトを使用すると、オペレーティング システムの情報を簡単に格納し、共有できます。また、複数のオペレーティング システムを選択してデプロイすることも容易になります。
 
 次の例では、*osSettings* のオブジェクトを示しています。
@@ -300,7 +288,6 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
     }
 
 #### machineSettings
-
 生成された変数である *machineSettings* は、新しい VM を作成するための中核となる変数を組み合わせた複合オブジェクトです。以下のように、管理者のユーザー名とパスワード、VM 名のプレフィックス、オペレーティング システム イメージの参照が含まれています。
 
     "machineSettings": {
@@ -318,7 +305,6 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 *osImageReference* が、メイン テンプレートで定義された *osSettings* 変数から値を取得することに注意してください。つまり、VM のオペレーティング システムを簡単に変更できます。全体的に、またはテンプレートのコンシューマーの設定に基づいて変更できます。
 
 #### vmScripts
-
 *vmScripts* オブジェクトには、VM インスタンスでダウンロードして実行するスクリプトの詳細が含まれています。これには、外部の参照や内部の参照などが含まれています。外部の参照には、インフラストラクチャが含まれます。内部の参照には、インストールされているソフトウェアと構成が含まれます。
 
 *scriptsToDownload* プロパティを使用して、VM にダウンロードするスクリプトを一覧表示します。
@@ -341,7 +327,6 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 
 
 ## テンプレートから状態を返す
-
 テンプレートにデータを渡すだけでなく、呼び出し元のテンプレートにデータを返して共有することもできます。リンクされているテンプレートの **outputs** セクションで、ソース テンプレートで使用可能なキー/値ペアを指定できます。
 
 次の例は、リンクされているテンプレートで生成されたプライベート IP アドレスを渡す方法を示します。
@@ -364,11 +349,10 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
         "value": "[reference('master-node').outputs.masterip.value]",
         "type": "string"
       }
-     
+
 リンクされたテンプレートの出力のセクションを使用して仮想マシンのデータ ディスクを取得する例については、「[仮想マシン用の複数のデータ ディスクの作成](resource-group-create-multiple.md#creating-multiple-data-disks-for-a-virtual-machine)」を参照してください。
 
 ## 仮想マシンの認証設定を定義する
-
 上記の構成設定と同様のパターンで、仮想マシンの認証設定を指定することができます。認証の種類を渡すためのパラメーターを作成します。
 
     "parameters": {
@@ -423,7 +407,7 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 
 
 ## 次のステップ
-- テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-- テンプレートで使用できる関数については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」を参照してください。
+* テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+* テンプレートで使用できる関数については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」を参照してください。
 
 <!---HONumber=AcomDC_0713_2016-->

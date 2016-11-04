@@ -1,34 +1,33 @@
-<properties
-	pageTitle="Data Factory コピー ウィザード | Microsoft Azure"
-	description="Data Factory コピー ウィザードを使用して、サポートされるデータ ソースからシンクにデータをコピーする方法を説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
-	editor="monicar"/>
+---
+title: Data Factory コピー ウィザード | Microsoft Docs
+description: Data Factory コピー ウィザードを使用して、サポートされるデータ ソースからシンクにデータをコピーする方法を説明します。
+services: data-factory
+documentationcenter: ''
+author: spelluru
+manager: jhubbard
+editor: monicar
 
-<tags
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/27/2016"
-	ms.author="spelluru"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/27/2016
+ms.author: spelluru
 
+---
 # Data Factory コピー ウィザード
 Azure Data Factory コピー ウィザードでは、リンクされたサービス、データセット、パイプラインの JSON 定義を作成しなくても、サポートされているソースからコピー先にデータをコピーするパイプラインを作成できます。コピー ウィザードを起動するには、Data Factory のホーム ページで **[データをコピー]** タイルをクリックします。
 
 ![コピー ウィザード](./media/data-factory-copy-wizard/copy-data-wizard.png)
 
 ## Features (機能)
-
 ### データをコピーするための直観的でシームレスなウィザード
 このウィザードでは、次の簡単な手順で数分以内にソースからコピー先にデータを簡単に移動できます。
 
-1.	ソースを選択します。
-2.	コピー先を選択します。
-3.	設定を構成します。
+1. ソースを選択します。
+2. コピー先を選択します。
+3. 設定を構成します。
 
 ![データ ソースの選択](./media/data-factory-copy-wizard/select-data-source-page.png)
 
@@ -63,10 +62,10 @@ Azure Data Factory コピー ウィザードでは、リンクされたサービ
 
 次の形式の入力フォルダーがあるとします。
 
-	2016/03/01/01
-	2016/03/01/02
-	2016/03/01/03
-	...
+    2016/03/01/01
+    2016/03/01/02
+    2016/03/01/03
+    ...
 
 **[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、**[選択]** をクリックします。テキスト ボックスに "**2016/03/01/02**" と表示されます。ここで、**2016** を **{year}**、**03** を **{month}**、**01** を **{day}**、**02** を **{hour}** にそれぞれ置き換え、Tab キーを押します。この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
 

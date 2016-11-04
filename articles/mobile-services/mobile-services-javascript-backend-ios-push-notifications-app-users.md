@@ -1,39 +1,38 @@
-<properties
-	pageTitle="iOS の認証されたユーザーへのプッシュ通知の送信 (JavaScript バックエンド)"
-	description="特定のユーザーにプッシュ通知を送信する方法について説明します。"
-	services="mobile-services,notification-hubs"
-	documentationCenter="ios"
-	authors="krisragh"
-	manager="dwrede"
-	editor=""/>
+---
+title: iOS の認証されたユーザーへのプッシュ通知の送信 (JavaScript バックエンド)
+description: 特定のユーザーにプッシュ通知を送信する方法について説明します。
+services: mobile-services,notification-hubs
+documentationcenter: ios
+author: krisragh
+manager: dwrede
+editor: ''
 
+ms.service: mobile-services
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-ios
+ms.devlang: objective-c
+ms.topic: article
+ms.date: 07/21/2016
+ms.author: krisragh
 
-<tags
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-ios"
-	ms.devlang="objective-c"
-	ms.topic="article"
-	ms.date="07/21/2016"
-	ms.author="krisragh"/>
-
+---
 # 認証されたユーザーへのプッシュ通知の送信
-
-[AZURE.INCLUDE [mobile-services-selector-push-users](../../includes/mobile-services-selector-push-users.md)]
+[!INCLUDE [mobile-services-selector-push-users](../../includes/mobile-services-selector-push-users.md)]
 
 &nbsp;
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[!INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
 > このトピックの Mobile Apps バージョンについては、「[How to: Send push notifications to an authenticated user using tags (タグを利用し、認証されたユーザーにプッシュ通知を送信する方法)](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#push-user)」を参照してください。
+> 
+> 
 
 このトピックでは、iOS 上の認証されたユーザーにプッシュ通知を送信する方法を説明します。このチュートリアルを開始する前に、まず、「[認証の使用]」 と 「[プッシュ通知の使用]」を実行してください。
 
 このチュートリアルでは、まずユーザーに認証を受けるように求める必要があります。次にプッシュ通知用の通知ハブに登録します。さらに、認証されたユーザーのみに通知が送信されるようにサーバー スクリプトを更新します。
 
-
-##<a name="register"></a>登録に認証が必要となるようにサービスを更新する
-
-[AZURE.INCLUDE [mobile-services-javascript-backend-push-notifications-app-users](../../includes/mobile-services-javascript-backend-push-notifications-app-users.md)]
+## <a name="register"></a>登録に認証が必要となるようにサービスを更新する
+[!INCLUDE [mobile-services-javascript-backend-push-notifications-app-users](../../includes/mobile-services-javascript-backend-push-notifications-app-users.md)]
 
 `insert` 関数を次のコードに置き換え、[**保存**] をクリックします。次の insert スクリプトでは、ユーザー ID タグを使用して、ログインしたユーザーからのすべての iOS アプリケーション登録にプッシュ通知を送信します。
 
@@ -54,15 +53,11 @@ function insert(item, user, request) {
 }
 ```
 
-##<a name="update-app"></a>登録の前にログインするようにアプリケーションを更新する
+## <a name="update-app"></a>登録の前にログインするようにアプリケーションを更新する
+[!INCLUDE [mobile-services-ios-push-notifications-app-users-login](../../includes/mobile-services-ios-push-notifications-app-users-login.md)]
 
-[AZURE.INCLUDE [mobile-services-ios-push-notifications-app-users-login](../../includes/mobile-services-ios-push-notifications-app-users-login.md)]
-
-##<a name="test"></a>アプリケーションをテストする
-
-[AZURE.INCLUDE [mobile-services-ios-push-notifications-app-users-test-app](../../includes/mobile-services-ios-push-notifications-app-users-test-app.md)]
-
-
+## <a name="test"></a>アプリケーションをテストする
+[!INCLUDE [mobile-services-ios-push-notifications-app-users-test-app](../../includes/mobile-services-ios-push-notifications-app-users-test-app.md)]
 
 <!-- Anchors. -->
 [Updating the service to require authentication for registration]: #register

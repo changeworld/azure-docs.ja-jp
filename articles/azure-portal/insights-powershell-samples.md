@@ -1,35 +1,31 @@
-<properties
-	pageTitle="Azure Insights: Azure Insights の PowerShell クイック スタート サンプル | Microsoft Azure"
-	description="Azure Insights の PowerShell クイック スタート サンプル コマンドを使用すると、Azure Insights の監視機能にすばやくアクセスできます。"
-	authors="kamathashwin"
-	manager=""
-	editor=""
-	services="monitoring-and-diagnostics"
-	documentationCenter="monitoring-and-diagnostics"/>
+---
+title: 'Azure Insights: Azure Insights の PowerShell クイック スタート サンプル | Microsoft Docs'
+description: Azure Insights の PowerShell クイック スタート サンプル コマンドを使用すると、Azure Insights の監視機能にすばやくアクセスできます。
+author: kamathashwin
+manager: ''
+editor: ''
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
 
-<tags
-	ms.service="monitoring-and-diagnostics"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/30/2016"
-	ms.author="ashwink"/>
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/30/2016
+ms.author: ashwink
 
+---
 # Azure Insights の PowerShell クイック スタート サンプル
-
 この記事では、Azure Insights の監視機能にすばやくアクセスできる PowerShell のサンプル コマンドを紹介します。Azure Insights では、AutoScale Cloud Services、Virtual Machines、Web Apps を使用できます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも可能です。
 
 ## PowerShell のセットアップ
 コンピューターで実行するために PowerShell をセットアップします (まだセットアップしていない場合)。詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。
 
 ## この記事の例
-
 この記事の各例は、Azure Insights コマンドレットの使用方法を示しています。「[Azure Insights Cmdlets (Azure Insights コマンドレット)](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx)」で、Azure Insights (監視) PowerShell コマンドレットのすべてのリストを確認することもできます。
 
-
 ## サインインとサブスクリプションの使用
-
 まず、Azure サブスクリプションにログインします。
 
 ```
@@ -90,7 +86,10 @@ Get-AzureRmLog -MaxEvents 1000
 
 `Get-AzureRmLog` は、他にも多くのパラメーターをサポートしています。詳細については、`Get-AzureRmLog` のリファレンスをご覧ください。
 
->[AZURE.NOTE] `Get-AzureRmLog` は、15 日間の履歴のみを提供します。**-MaxEvents** パラメーターを使用すると、15 日間を超えて最後の N 件のイベントを照会できます。15 日より前のイベントにアクセスするには、REST API または SDK (SDK を使用した C# のサンプル) を使用します。**StartTime** を指定しない場合、既定値は **EndTime** から 1 時間引いた値になります。**EndTime** を指定しない場合、既定値は現在の時刻です。時刻はすべて UTC 形式です。
+> [!NOTE]
+> `Get-AzureRmLog` は、15 日間の履歴のみを提供します。**-MaxEvents** パラメーターを使用すると、15 日間を超えて最後の N 件のイベントを照会できます。15 日より前のイベントにアクセスするには、REST API または SDK (SDK を使用した C# のサンプル) を使用します。**StartTime** を指定しない場合、既定値は **EndTime** から 1 時間引いた値になります。**EndTime** を指定しない場合、既定値は現在の時刻です。時刻はすべて UTC 形式です。
+> 
+> 
 
 ## アラートの履歴の取得
 すべてのアラート イベントを表示するには、次の例を使用して Azure Resource Manager (ARM) のログを照会します。
@@ -106,7 +105,6 @@ Get-AzureRmAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/provide
 ```
 
 `Get-AzureRmAlertHistory` コマンドレットは、さまざまなパラメーターをサポートしています。詳細については、「[Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx)」をご覧ください。
-
 
 ## アラート ルールに関する情報の取得
 以下のコマンドは、いずれも "montest" という名前のリソース グループに影響を及ぼします。
@@ -141,20 +139,19 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 ### メトリックのアラート ルール
 メトリックを使用するアラートを作成する際に使用されるパラメーターと値を次の表に示します。
 
-
-|パラメーター|値|
-|---|---|
-|名前|	simpletestdiskwrite|
-|このアラート ルールの場所|	米国東部|
-|ResourceGroup|	montest|
-|TargetResourceId|	/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig|
-|作成されたアラートの MetricName|	\\PhysicalDisk(\_Total)\\Disk Writes/sec。正確なメトリック名を取得する方法については、後述の `Get-MetricDefinitions` コマンドレットをご覧ください。|
-|operator|	GreaterThan|
-|しきい値 (このメトリックの場合、数/秒)|	1|
-|WindowSize (hh:mm:ss 形式)|	00:05:00|
-|アグリゲーター (メトリックの統計。この例では Average を使用)|	平均|
-|カスタム電子メール (文字列配列)|'foo@example.com','bar@example.com'|
-|所有者、共同作成者、および閲覧者への電子メールの送信|	-SendToServiceOwners|
+| パラメーター | 値 |
+| --- | --- |
+| 名前 |simpletestdiskwrite |
+| このアラート ルールの場所 |米国東部 |
+| ResourceGroup |montest |
+| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
+| 作成されたアラートの MetricName |\\PhysicalDisk(\_Total)\\Disk Writes/sec。正確なメトリック名を取得する方法については、後述の `Get-MetricDefinitions` コマンドレットをご覧ください。 |
+| operator |GreaterThan |
+| しきい値 (このメトリックの場合、数/秒) |1 |
+| WindowSize (hh:mm:ss 形式) |00:05:00 |
+| アグリゲーター (メトリックの統計。この例では Average を使用) |平均 |
+| カスタム電子メール (文字列配列) |'foo@example.com','bar@example.com' |
+| 所有者、共同作成者、および閲覧者への電子メールの送信 |-SendToServiceOwners |
 
 Email アクションを作成する
 
@@ -183,8 +180,10 @@ Get-AzureRmAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 Add アラート コマンドレットは、指定されたプロパティのアラート ルールが既に存在する場合に、そのルールの更新も実行します。アラート ルールを無効にするには、**-DisableRule** パラメーターを含めます。
 
 ### 監査ログ イベントのアラート
-
->[AZURE.NOTE] この機能はプレビュー段階にあります。
+> [!NOTE]
+> この機能はプレビュー段階にあります。
+> 
+> 
 
 このシナリオでは、リソース グループ *abhingrgtest123* において、ユーザーのサブスクリプションで Web サイトが正常に開始されたときに電子メールを送信します。
 
@@ -229,7 +228,6 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 
 `Get-AzureRmMetricDefinition` で使用できるオプションの詳細な一覧については、「[Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)」を参照してください。
 
-
 ## 自動スケール設定の作成と管理
 Web Apps、VM、Cloud Services、VM Scale Set などのリソースは、そのリソース用に構成された自動スケール設定を 1 つだけ使用できます。ただし、各自動スケール設定では複数のプロファイルを使用できます。たとえば、パフォーマンス ベースのスケール プロファイルを使用し、2 つ目のプロファイルとしてスケジュール ベースのプロファイルを使用できます。各プロファイルには、複数のルールを構成できます。自動スケールの詳細については、[アプリケーションの自動スケールの方法](../cloud-services/cloud-services-how-to-scale.md)に関する記事を参照してください。
 
@@ -246,7 +244,7 @@ Web Apps、VM、Cloud Services、VM Scale Set などのリソースは、その�
 
 ```
 $rule1 = New-AzureRmAutoscaleRule -MetricName "\Processor(_Total)\% Processor Time" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 0.01 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionScaleType ChangeCount -ScaleActionValue 1
-```		
+```        
 
 次に、インスタンス数を減らしてスケールインするルールを作成します。
 
@@ -318,26 +316,22 @@ Remove-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## 監査ログのログ プロファイルの管理
-
 *ログ プロファイル*を作成し、監査ログのデータをストレージ アカウントにエクスポートできます。また、ストレージ アカウントのデータ保持期間を構成できます。必要に応じて、データをイベント ハブにストリーミングすることもできます。この機能は現在プレビュー段階にあり、サブスクリプションごとに作成できるログ プロファイルは 1 つに限られます。現在のサブスクリプションで以下のコマンドレットを使用して、ログ プロファイルを作成し、管理できます。また、特定のサブスクリプションを選択することもできます。PowerShell では現在のサブスクリプションが既定で使用されますが、`Set-AzureRmContext` を使用してサブスクリプションをいつでも変更できます。そのサブスクリプション内の任意のストレージ アカウントまたはイベント ハブにデータをルーティングするように監査ログを構成できます。データは、JSON 形式で BLOB ファイルとして書き込まれます。
 
 ### ログ プロファイルの取得
 既存のログ プロファイルを取得するには、`Get-AzureRmLogProfile` コマンドレットを使用します。
 
 ### データ リテンション期間を指定しないログ プロファイルの追加
-
 ```
 Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia
 ```
 
 ### ログ プロファイルの削除
-
 ```
 Remove-AzureRmLogProfile -name my_log_profile_s1
 ```
 
 ### データ リテンション期間を指定したログ プロファイルの追加
-
 データを保持する日数を正の整数で指定して、**-RetentionInDays** プロパティを指定できます。
 
 ```
@@ -355,7 +349,6 @@ Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s
 Azure Network Security Groups、Software Load Balancers、Key Vault、Azure Search Services、Logic Apps など、多数の Azure サービスで追加のログとテレメトリが提供されます。Azure ストレージ アカウントにデータを保存するようにこれらのサービスを構成できます。この操作はリソース レベルでのみ実行できます。ストレージ アカウントは、診断設定が構成されているターゲット リソースと同じリージョンに存在する必要があります。
 
 ### 診断設定の取得
-
 ```
 Get-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp
 ```

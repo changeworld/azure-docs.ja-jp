@@ -1,62 +1,57 @@
-<properties
-   pageTitle="データ サイエンス用のデータの準備はお済みですか? データの評価 | Microsoft Azure"
-   description="データ サイエンス用にデータを準備するための 4 つの条件について説明します。初心者向けデータ サイエンス ビデオ 2 では、基本的なデータの評価を支援する具体的な例を説明しています。"
-   keywords="データの評価,関連性のあるデータ,データの評価,データの準備,データの条件,データの準備"
-   services="machine-learning"
-   documentationCenter="na"
-   authors="brohrer-ms"
-   manager="jhubbard"
-   editor="cjgronlund"/>
+---
+title: データ サイエンス用のデータの準備はお済みですか? データの評価 | Microsoft Docs
+description: データ サイエンス用にデータを準備するための 4 つの条件について説明します。初心者向けデータ サイエンス ビデオ 2 では、基本的なデータの評価を支援する具体的な例を説明しています。
+keywords: データの評価,関連性のあるデータ,データの評価,データの準備,データの条件,データの準備
+services: machine-learning
+documentationcenter: na
+author: brohrer-ms
+manager: jhubbard
+editor: cjgronlund
 
-<tags
-   ms.service="machine-learning"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/15/2016"
-   ms.author="cgronlun;brohrer;garye"/>
+ms.service: machine-learning
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/15/2016
+ms.author: cgronlun;brohrer;garye
 
-
+---
 # データ サイエンス用のデータの準備はお済みですか?
-
 ## ビデオ 2: 初心者向けデータ サイエンス シリーズ
-
 データを評価して、データ サイエンスに備えるための基本的な条件を満たしていることを確認する方法について説明します。
 
 このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
 
-> [AZURE.VIDEO data-science-for-beginners-series-is-your-data-ready-for-data-science]
+> [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/9/player]
+> 
+> 
 
 ## このシリーズの他のビデオ
-
 *"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
 
-  * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
-  * ビデオ 2: データ サイエンス用のデータの準備はお済みですか?
-  * ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
-  * ビデオ 4: [単純なモデルで回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
-  * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
+* ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
+* ビデオ 2: データ サイエンス用のデータの準備はお済みですか?
+* ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+* ビデオ 4: [単純なモデルで回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
+* ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## トランスクリプト: データ サイエンス用のデータの準備はお済みですか?
-
 "初心者向けデータ サイエンス" シリーズの 2 番目のビデオである「データ サイエンス用のデータの準備はお済みですか?」へようこそ。
 
 データ サイエンスから必要な回答を得るには、高品質の原材料を提供して操作できるようにする必要があります。ピザを作るのと同じで、最初の材料が良いほど最終的な製品も良くなります。
 
 ## データの条件
-
 データ サイエンスの場合は、いくつかの材料をまとめる必要があります。
 
 必要なデータの条件は次のとおりです。
 
-  *	関連性がある
-  *	接続中
-  *	正確である
-  *	操作できるだけの十分な量がある
+* 関連性がある
+* 接続中
+* 正確である
+* 操作できるだけの十分な量がある
 
 ## データに関連性がありますか?
-
 最初の材料として、関連性のあるデータが必要です。
 
 ![関連性のあるデータと関連性のないデータの比較 - データの評価](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-relevant-and-irrelevant-data.png)
@@ -68,7 +63,6 @@
 次は右側の表をご覧ください。今度は、各個人の体重を測定し、彼らの飲み物の数をカウントしました。各行の数値は相互に関連しています。体重と飲んだマルガリータの数を伝えれば、血中アルコール濃度を推測できるでしょう。
 
 ## データは連続していますか?
-
 次の材料は、連続しているデータです。
 
 ![連続しているデータと連続していないデータの比較 - データの条件、データの準備](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-connected-vs-disconnected-data.png)
@@ -82,7 +76,6 @@
 一方、右側の表は、すべて揃っている、連続したデータの例です。
 
 ## データは正確ですか?
-
 次に必要な材料が正確さです。ここに、矢で撃ちたくなるような的が 4 つあります。
 
 ![正確なデータと不正確なデータの比較 - データの条件](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-inaccurate-vs-accurate-data.png)
@@ -94,7 +87,6 @@
 次に左上のターゲットについて考えてみましょう。ここで、矢は近くに集まり、緊密なグループになっています。これは明瞭ですが、中心が的の中心から外れているため正確ではありません。当然、左下にある的の矢印は、不正確であり不明瞭でもあります。この射手はもっと練習が必要ですね。
 
 ## 使用するデータは十分ありますか?
-
 最後の4 番目の材料は、十分なデータが必要であるということです。
 
 ![分析用のデータは十分ありますか? データの評価](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-barely-enough-data.png)
@@ -111,12 +103,8 @@
 
 Microsoft Azure Machine Learning の *"初心者向けデータ サイエンス"* の他の 4 本のビデオも必ずご覧ください。
 
-
-
-
 ## 次のステップ
-
-  * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
-  * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
+* [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
+* [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
 <!---HONumber=AcomDC_0914_2016-->

@@ -1,59 +1,54 @@
 
 
-<properties
-    pageTitle="Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースの作成と構成を行う | Microsoft Azure"
-    description="Azure Resource Manager テンプレートを使用して、Log Analytics ワークスペースの作成と構成を実行できます。"
-    services="log-analytics"
-    documentationCenter=""
-    authors="richrundmsft"
-    manager="jochan"
-    editor=""/>
+---
+title: Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースの作成と構成を行う | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用して、Log Analytics ワークスペースの作成と構成を実行できます。
+services: log-analytics
+documentationcenter: ''
+author: richrundmsft
+manager: jochan
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="json"
-    ms.topic="article"
-    ms.date="08/25/2016"
-    ms.author="richrund"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: json
+ms.topic: article
+ms.date: 08/25/2016
+ms.author: richrund
 
-
+---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics を管理する
+[Azure Resource Manager テンプレート](../resource-group-authoring-templates.md) を使用して、Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
 
-[Azure Resource Manager テンプレート] (../azure-resource-manager/resource-group-authoring-templates.md) を使用して、Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
-
-+ ワークスペースの作成
-+ ソリューションの追加
-+ 保存された検索の作成
-+ コンピューター グループの作成
-+ Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
-+ Linux および Windows コンピューターからのパフォーマンス カウンターの収集
-+ Linux コンピューターの syslog からのイベントの収集 
-+ Windows イベント ログからのイベントの収集
-+ カスタム イベント ログの収集
-+ Azure 仮想マシンへの Log Analytics エージェントの追加
-+ Azure 診断を使用して収集されたデータを Log Analytics でインデックスするための構成
-
+* ワークスペースの作成
+* ソリューションの追加
+* 保存された検索の作成
+* コンピューター グループの作成
+* Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
+* Linux および Windows コンピューターからのパフォーマンス カウンターの収集
+* Linux コンピューターの syslog からのイベントの収集 
+* Windows イベント ログからのイベントの収集
+* カスタム イベント ログの収集
+* Azure 仮想マシンへの Log Analytics エージェントの追加
+* Azure 診断を使用して収集されたデータを Log Analytics でインデックスするための構成
 
 この記事のコード サンプルで紹介しているのは、テンプレートから実行できる構成の一部です。
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics ワークスペースを作成して構成する
-
 次のサンプル テンプレートは、以下のタスクの実行方法を示しています。
 
-1.  ワークスペースの作成
-2.  ソリューションのワークスペースへの追加
-3.  保存された検索の作成
-4.  コンピューター グループの作成
-5.  Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
-6.  Linux コンピューターからの Logical Disk パフォーマンス カウンター (% Used Inodes、Free Megabytes、% Used Space、Disk Transfers/sec、Disk Reads/sec、Disk Writes/sec) の収集
-7.  Linux コンピューターからの syslog イベントの収集
-8.  Windows コンピューターのアプリケーション イベント ログからのエラーおよび警告のイベントの収集
-9.  Windows コンピューターからの Memory Available Mbytes パフォーマンス カウンターの収集
+1. ワークスペースの作成
+2. ソリューションのワークスペースへの追加
+3. 保存された検索の作成
+4. コンピューター グループの作成
+5. Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
+6. Linux コンピューターからの Logical Disk パフォーマンス カウンター (% Used Inodes、Free Megabytes、% Used Space、Disk Transfers/sec、Disk Reads/sec、Disk Writes/sec) の収集
+7. Linux コンピューターからの syslog イベントの収集
+8. Windows コンピューターのアプリケーション イベント ログからのエラーおよび警告のイベントの収集
+9. Windows コンピューターからの Memory Available Mbytes パフォーマンス カウンターの収集
 10. カスタム ログの収集 
 11. Azure 診断によってストレージ アカウントに書き込まれた IIS ログとWindows イベント ログの収集
-
 
 ```
 {
@@ -420,7 +415,6 @@
 
 ```
 ### <a name="deploying-the-sample-template"></a>サンプル テンプレートのデプロイ
-
 上記のサンプル テンプレートをデプロイするには:
 
 1. 付属のサンプルをファイルに保存します (例: `azuredeploy.json`)。 
@@ -428,11 +422,9 @@
 3. PowerShell またはコマンド ラインを使用して、テンプレートをデプロイします。
 
 #### <a name="powershell"></a>PowerShell
-
 `New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json`
 
 #### <a name="command-line"></a>コマンド ライン
-
 ```
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
@@ -440,26 +432,18 @@ azure group deployment create <my-resource-group> <my-deployment-name> --Templat
 
 
 ## <a name="example-resource-manager-templates"></a>Azure Resource Manager のサンプル テンプレート
-
 Azure クイックスタート テンプレート ギャラリーに、Log Analytics 用のさまざまなテンプレートが用意されています。
 
-+ [Windows を実行中の仮想マシンを Log Analytics VM 拡張機能付きでデプロイする](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
-+ [Linux を実行中の仮想マシンを Log Analytics VM 拡張機能付きでデプロイする](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
-+ [Azure Site Recovery を既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
-+ [Azure Web Apps を既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-+ [SQL Azure を既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
-+ [Service Fabric クラスターをデプロイし、既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
-+ [Service Fabric クラスターをデプロイし、Log Analytics ワークスペースを作成して監視する](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
-
+* [Windows を実行中の仮想マシンを Log Analytics VM 拡張機能付きでデプロイする](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
+* [Linux を実行中の仮想マシンを Log Analytics VM 拡張機能付きでデプロイする](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
+* [Azure Site Recovery を既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
+* [Azure Web Apps を既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
+* [SQL Azure を既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
+* [Service Fabric クラスターをデプロイし、既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
+* [Service Fabric クラスターをデプロイし、Log Analytics ワークスペースを作成して監視する](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
 
 ## <a name="next-steps"></a>次のステップ
-
-+ [Resource Manager テンプレートを使用してエージェントと Azure VM にデプロイする](log-analytics-azure-vm-extension.md)
-
-
-
-
-
+* [Resource Manager テンプレートを使用してエージェントと Azure VM にデプロイする](log-analytics-azure-vm-extension.md)
 
 <!--HONumber=Oct16_HO2-->
 

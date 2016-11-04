@@ -1,50 +1,47 @@
-<properties
-   pageTitle="単純なモデルで回答を予測する - 回帰モデル | Microsoft Azure"
-   description="初心者向けデータ サイエン ビデオ 4 で、単純なモデルを作成してダイヤモンドの価格を予測する方法基本的な線形回帰とターゲット データが含まれます。"                                  
-   keywords="モデルを作成する,単純なモデル,単純なデータ モデル,価格の予測,単純な回帰モデル"
-   services="machine-learning"
-   documentationCenter="na"
-   authors="brohrer-ms"
-   manager="jhubbard"
-   editor="cjgronlund"/>
+---
+title: 単純なモデルで回答を予測する - 回帰モデル | Microsoft Docs
+description: 初心者向けデータ サイエン ビデオ 4 で、単純なモデルを作成してダイヤモンドの価格を予測する方法基本的な線形回帰とターゲット データが含まれます。
+keywords: モデルを作成する,単純なモデル,単純なデータ モデル,価格の予測,単純な回帰モデル
+services: machine-learning
+documentationcenter: na
+author: brohrer-ms
+manager: jhubbard
+editor: cjgronlund
 
-<tags
-   ms.service="machine-learning"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/15/2016"
-   ms.author="cgronlun;brohrer;garye"/>
+ms.service: machine-learning
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/15/2016
+ms.author: cgronlun;brohrer;garye
 
+---
 # 単純なモデルで回答を予測する
-
 ## ビデオ 4: 初心者向けデータ サイエンス シリーズ
-
 初心者向けデータ サイエン ビデオ 4 では、単純なモデルを作成してダイヤモンドの価格を予測する方法について説明します。ターゲット データを使用して回帰モデルを引き出します。
 
 このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
 
-> [AZURE.VIDEO data-science-for-beginners-series-predict-an-answer-with-a-simple-model]
+> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player]
+> 
+> 
 
 ## このシリーズの他のビデオ
-
 *"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
 
-  * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
-  * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
-  * ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
-  * ビデオ 4: 単純なモデルで回答を予測する
-  * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
+* ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
+* ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
+* ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+* ビデオ 4: 単純なモデルで回答を予測する
+* ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## トランスクリプト: 単純なモデルで回答を予測する
-
 "初心者向けデータ サイエンス" シリーズの 4 番目のビデオへようこそ。ここでは、単純なモデルを作成して予測を行います。
 
 *"モデル"* とは、データについての単純化されたストーリーです。何が言いたいかを説明します。
 
 ## 関連性があり、正確で、連続している、十分なデータを収集する
-
 私がダイヤモンドを購入しようとしているとします。1.35 カラットのダイヤモンドが付いた祖母の指輪があり、その料金を知りたいと思っています。メモ帳とペンを持って宝石店に行き、ケース内のすべてのダイヤモンドの価格と重さ (カラット単位) を書き留めます。最初のダイヤモンドは、1.01 カラットで 7,366 ドルです。
 
 店内の他のすべてのダイヤモンドに対してこれを行います。
@@ -61,13 +58,11 @@
 * さらに、ご覧のとおり、質問に回答するのに**十分な**データがあります。
 
 ## シャープな質問をする
-
 ここで、"1.35 カラットのダイヤモンドを購入するにはいくらかかりますか" とシャープに質問します。
 
 作成したリストには 1.35 カラットのダイヤモンドはありません。そこで、残りのデータを使用して、質問に対する回答を得ます。
 
 ## 既存のデータをプロットする
-
 最初に、重さを図に表すために水平方向の数直線を描きます。これを軸と呼びます。重さの範囲は 0 ～ 2 であるため、この範囲を網羅する線を引き、0.5 カラットごとに目盛りを描きます。
 
 次に、価格を記録するために垂直方向の軸を描いて、水平方向の重さの軸につなげます。これはドル単位で記録します。座標軸のセットができました。
@@ -83,7 +78,6 @@
 ![散布図](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/scatter-plot.png)
 
 ## データ ポイントからモデルを描く
-
 ここで点を見ながら目を細めると、点の集まりがぼんやりとした太い線に見えてきます。マーカーを使って、これを通る直線を描画できます。
 
 直線を描画することで、"モデル" が作成されました。これは、現実の世界を把握し、極度に単純化されたマンガ版を作成したと考えてください。マンガは正しくありません。直線はすべてのデータ ポイントを通っているわけではありません。ただし、この簡略化は便利です。
@@ -95,7 +89,6 @@
 *"どの程度か"* という質問に回答しようとしているため、これを *"回帰"* と呼びます。また、直線を使用しているため、これは *"線形回帰"* です。
 
 ## モデルを使用して回答を見つける
-
 では、作成したモデルに "1.35 カラットのダイヤモンドの価格はいくらですか" と質問します。
 
 この質問に回答するには、1.35 カラットに見当を付けて垂直方向に直線を描画します。モデルの線と交差する位置で、水平方向の線をドルの軸に対して見当を付けます。ちょうど 10,000 に当たります。できました! これが答えです。1.35 カラットのダイヤモンドは約 10,000 ドルします。
@@ -103,7 +96,6 @@
 ![モデル上で回答を見つける](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
 ## 信頼区間を作成する
-
 この予測がどの程度の精度なのかという疑問を抱くのは当然です。1.35 カラットのダイヤモンドが 10,000 ドルに非常に近いのか、はるかに高いのか (または安いのか) を知っておくと便利です。この答えを出すには、ほとんどの点を囲むように回帰直線の周りに枠を描画してみましょう。この枠は *"信頼区間"* と呼ばれます。「価格はこの枠内に収まる」ということをかなりの自信を持って言うことができます。その理由は、過去のほとんどの価格がその中に収まっているからです。1.35 カラットの直線が枠の上端および下端と交差する点から水平な直線を 2 本描画できます。
 
 ![信頼区間](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
@@ -111,7 +103,6 @@
 これで信頼区間について言及できるようになりました。1.35 カラットのダイヤモンドの価格は約 10,000 ドルであると自信を持って言うことができます。ただし、下限として 8,000 ドル、上限として 12,000 ドルになる可能性があります。
 
 ## 数学やコンピューターなしで実行できる
-
 データ サイエンティストが有料で行うことを、ここでは描画のみで実行しました。
 
 * データで回答できる質問をする
@@ -134,11 +125,8 @@
 
 Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" の他のビデオも必ずご覧ください。
 
-
-
 ## 次のステップ
-
-  * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
-  * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
+* [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
+* [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
 <!---HONumber=AcomDC_0914_2016-->

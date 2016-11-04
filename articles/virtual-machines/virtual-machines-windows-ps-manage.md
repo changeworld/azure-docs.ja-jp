@@ -1,39 +1,35 @@
-<properties
-	pageTitle="Resource Manager と PowerShell を使用した VM の管理 |Microsoft Azure"
-	description="Azure Resource Manager と PowerShell を使用して仮想マシンを管理します。"
-	services="virtual-machines-windows"
-	documentationCenter=""
-	authors="davidmu1"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+---
+title: Resource Manager と PowerShell を使用した VM の管理 | Microsoft Docs
+description: Azure Resource Manager と PowerShell を使用して仮想マシンを管理します。
+services: virtual-machines-windows
+documentationcenter: ''
+author: davidmu1
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-	ms.service="virtual-machines-windows"
-	ms.workload="na"
-	ms.tgt_pltfrm="vm-windows"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/07/2016"
-	ms.author="davidmu"/>
+ms.service: virtual-machines-windows
+ms.workload: na
+ms.tgt_pltfrm: vm-windows
+ms.devlang: na
+ms.topic: article
+ms.date: 06/07/2016
+ms.author: davidmu
 
+---
 # Resource Manager と PowerShell を使用した Azure Virtual Machines の管理
-
 ## Azure PowerShell をインストールするには
- 
 最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択し、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 ## 変数の設定
-
 この記事のすべてのコマンドでは、仮想マシンがあるリソース グループの名前と、管理する仮想マシンの名前が必要です。**$rgName** の値を、仮想マシンが含まれているリソース グループの名前に置き換えます。**$vmName** の値を、VM の名前に置き換えます。変数を作成します。
 
     $rgName = "resource-group-name"
     $vmName = "VM-name"
 
 ## 仮想マシンに関する情報の表示
-
 仮想マシンの情報を取得します。
-  
+
     Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 
 次のような結果が返されます。
@@ -105,7 +101,6 @@
                                 rg1/providers/Microsoft.Network/networkInterfaces/nc1}
 
 ## 仮想マシンの起動
-
 仮想マシンを開始します。
 
     Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
@@ -117,7 +112,6 @@
                               True          OK  OK
 
 ## 仮想マシンの停止
-
 仮想マシンを停止します。
 
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
@@ -127,7 +121,7 @@
     Virtual machine stopping operation
     This cmdlet will stop the specified virtual machine. Do you want to continue?
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
-        
+
 仮想マシンを停止するには、「**Y**」と入力します。
 
 数分後、次のような結果が返されます。
@@ -137,7 +131,6 @@
                               True          OK  OK
 
 ## 仮想マシンの再起動
-
 仮想マシンを再起動します。
 
     Restart-AzureRmVM -ResourceGroupName $rgName -Name $vmName
@@ -149,12 +142,14 @@
                               True          OK  OK
 
 ## 仮想マシンの削除
-
 仮想マシンを削除します。
 
     Remove-AzureRmVM -ResourceGroupName $rgName –Name $vmName
 
-> [AZURE.NOTE] **-Force** パラメーターを使用して確認プロンプトをスキップできます。
+> [!NOTE]
+> **-Force** パラメーターを使用して確認プロンプトをスキップできます。
+> 
+> 
 
 -Force パラメーターを使用していない場合は、次のように確認が求められます。
 
@@ -169,24 +164,22 @@
                               True          OK  OK
 
 ## 仮想マシンのサイズ変更
-
 この例では、仮想マシンのサイズを更新する方法を示します。
-        
+
     $vmSize = "Standard_A1"
     $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
     $vm.HardwareProfile.vmSize = $vmSize
     Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
-    
+
 次のような結果が返されます。
 
     RequestId  IsSuccessStatusCode  StatusCode  ReasonPhrase
     ---------  -------------------  ----------  ------------
                               True          OK  OK
-                              
+
 仮想マシンに使用できるサイズの一覧は、「[Azure の仮想マシンのサイズ](virtual-machines-windows-sizes.md)」をご覧ください。
 
 ## データ ディスクを仮想マシンに追加する
-
 この例では、既存の仮想マシンにデータ ディスクを追加する方法を示します。
 
     $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
@@ -219,7 +212,6 @@
     }
 
 ## 次のステップ
-
 デプロイに問題がある場合は、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」をご覧ください。
 
 <!---HONumber=AcomDC_0907_2016-->

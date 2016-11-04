@@ -1,21 +1,21 @@
-<properties
-   pageTitle="ExpressRoute ルーティングの最適化 | Microsoft Azure"
-   description="このページでは、Microsoft とユーザー (企業) のネットワークとを接続する ExpressRoute 回線がユーザー側に複数存在する場合のルーティングを最適化する方法について詳しく説明します。"
-   documentationCenter="na"
-   services="expressroute"
-   authors="charwen"
-   manager="carmonm"
-   editor=""/>
-<tags
-   ms.service="expressroute"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="10/10/2016"
-   ms.author="charwen"/>
+---
+title: ExpressRoute ルーティングの最適化 | Microsoft Docs
+description: このページでは、Microsoft とユーザー (企業) のネットワークとを接続する ExpressRoute 回線がユーザー側に複数存在する場合のルーティングを最適化する方法について詳しく説明します。
+documentationcenter: na
+services: expressroute
+author: charwen
+manager: carmonm
+editor: ''
 
+ms.service: expressroute
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 10/10/2016
+ms.author: charwen
 
+---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute ルーティングの最適化
 ExpressRoute 回線が複数あるとき、Microsoft への接続経路は複数存在します。 その結果、期待したルーティングが行われない、つまりトラフィックが貴社のネットワークから Microsoft に到達するまでの経路と、Microsoft から貴社のネットワークに到達するまでの経路が、想定よりも長くなってしまう可能性があります。 ネットワーク パスが長くなるほど、遅延は大きくなります。 遅延は、アプリケーションのパフォーマンスとユーザー エクスペリエンスに直接影響します。 この記事では、該当する問題について例示すると共に、標準のルーティング技術を使ってルーティングを最適化する方法を説明します。
 
@@ -39,13 +39,17 @@ ExpressRoute 回線が複数あるとき、Microsoft への接続経路は複数
 
 もう 1 つの解決策は、引き続き両方の ExpressRoute 回線で 2 つのプレフィックスをアドバタイズしたうえで、どのプレフィックスがどちらのオフィスに近いか、という手掛かりを Microsoft に知らせる方法です。 BGP の AS Path プリペンドがサポートされているため、プレフィックスの AS Path を構成することでルーティングを制御することができます。 この例では、172.2.0.0/31 の AS PATH を、米国東部では意図的に長くすることが考えられます。そうすることで、このプレフィックスに向かうトラフィックでは、米国西部の ExpressRoute 回線が優先されます (このプレフィックスに対する経路は米国西部の方が短いと Microsoft のネットワークが判断します)。 米国西部でも同様に、172.2.0.2/31 の AS PATH を意図的に長くし、米国東部の ExpressRoute 回線が優先されるようにします。 これで両方のオフィスのルーティングが最適化されます。 このように設計すれば、いずれかの ExpressRoute 回線で障害が発生しても、Exchange Online は、もう 1 つの ExpressRoute 回線および WAN を介して引き続き貴社オフィスに到達することができます。 
 
->[AZURE.IMPORTANT] Microsoft ピア設定では、受信したプレフィックスの AS PATH からプライベート AS 番号が削除されます。 Microsoft ピア設定のルーティングを制御するには、AS PATH にパブリック AS 番号を付加する必要があります。
+> [!IMPORTANT]
+> Microsoft ピア設定では、受信したプレフィックスの AS PATH からプライベート AS 番号が削除されます。 Microsoft ピア設定のルーティングを制御するには、AS PATH にパブリック AS 番号を付加する必要があります。
+> 
+> 
 
 ![](./media/expressroute-optimize-routing/expressroute-case2-solution.png)
 
->[AZURE.IMPORTANT] この記事の例は Microsoft ピアリングとパブリック ピアリングのものですが、プライベート ピアリングでも同じ機能がサポートされます。 また、AS PATH プリペンドは単一の ExpressRoute 回線内で機能し、プライマリ パスとセカンダリ パスの選択に影響します。
-
-
+> [!IMPORTANT]
+> この記事の例は Microsoft ピアリングとパブリック ピアリングのものですが、プライベート ピアリングでも同じ機能がサポートされます。 また、AS PATH プリペンドは単一の ExpressRoute 回線内で機能し、プライマリ パスとセカンダリ パスの選択に影響します。
+> 
+> 
 
 <!--HONumber=Oct16_HO2-->
 

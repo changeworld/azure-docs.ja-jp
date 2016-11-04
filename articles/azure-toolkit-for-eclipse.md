@@ -1,33 +1,34 @@
-<properties
-	pageTitle="Azure Toolkit for Eclipse | Microsoft Azure"
-	description="Azure Toolkit for Eclipse の概要について説明します。"
-	services=""
-	documentationCenter="java"
-	authors="rmcmurray"
-	manager="wpickett"
-	editor=""/>
+---
+title: Azure Toolkit for Eclipse | Microsoft Docs
+description: Azure Toolkit for Eclipse の概要について説明します。
+services: ''
+documentationcenter: java
+author: rmcmurray
+manager: wpickett
+editor: ''
 
-<tags
-	ms.service="multiple"
-	ms.workload="na"
-	ms.tgt_pltfrm="multiple"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="09/20/2016" 
-	ms.author="robmcm;asirveda"/>
+ms.service: multiple
+ms.workload: na
+ms.tgt_pltfrm: multiple
+ms.devlang: Java
+ms.topic: article
+ms.date: 09/20/2016
+ms.author: robmcm;asirveda
 
+---
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694271.aspx -->
 
 # Azure Toolkit for Eclipse
-
 Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリケーションを簡単に作成、開発、テスト、またデプロイできるテンプレートと機能を提供します。これはオープン ソース プロジェクトであり、そのソース コードは、プロジェクト サイトから MIT License で入手できます。URL は次のとおりです。
 
 * <https://github.com/microsoft/azure-tools-for-java>
 
-> [AZURE.NOTE] IntelliJ IDE 用の Azure Toolkit もあります。詳細については、「[Azure Toolkit for IntelliJ]」をご覧ください。
+> [!NOTE]
+> IntelliJ IDE 用の Azure Toolkit もあります。詳細については、「[Azure Toolkit for IntelliJ]」をご覧ください。
+> 
+> 
 
 ## Azure Toolkit for Eclipse の概要
-
 次の記事では、Azure Toolkit for Eclipse の使用方法について説明します。
 
 * [Azure Toolkit for Eclipse の新機能]
@@ -36,7 +37,6 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 * [Eclipse で Azure 用の Hello World Web アプリを作成する]
 
 ## Azure プロジェクト設定の構成
-
 次の記事では、Azure Toolkit for Eclipse を使用して Azure プロジェクトの設定を構成する方法について説明します。
 
 * [Azure プロジェクトのプロパティ]
@@ -47,7 +47,6 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 * [Azure デプロイ用にリモート アクセスを Eclipse で有効にする方法]
 
 ## Azure Toolkit for Eclipse の使用
-
 次の記事では、Azure Toolkit for Eclipse を使用して Azure 機能を Java プロジェクトに追加する方法について説明します。
 
 * [Java 用 Azure ライブラリ パッケージの Javadoc コンテンツの Eclipse での表示]
@@ -57,17 +56,16 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 * [Eclipse 用の HDInsight Tools プラグインを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する][HDInsight Tools Plugin for Eclipse]
 
 ## 関連項目
-
 Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
 
-- *Azure Toolkit for Eclipse (この記事)*
-  - [Azure Toolkit for Eclipse のインストール]
-  - [Eclipse で Azure 用の Hello World Web アプリを作成する]
-  - [Azure Toolkit for Eclipse の新機能]
-- [Azure Toolkit for IntelliJ]
-  - [Azure Toolkit for IntelliJ のインストール]
-  - [IntelliJ で Azure 用の Hello World Web アプリを作成する]
-  - [Azure Toolkit for IntelliJ の新機能]
+* *Azure Toolkit for Eclipse (この記事)*
+  * [Azure Toolkit for Eclipse のインストール]
+  * [Eclipse で Azure 用の Hello World Web アプリを作成する]
+  * [Azure Toolkit for Eclipse の新機能]
+* [Azure Toolkit for IntelliJ]
+  * [Azure Toolkit for IntelliJ のインストール]
+  * [IntelliJ で Azure 用の Hello World Web アプリを作成する]
+  * [Azure Toolkit for IntelliJ の新機能]
 
 Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
 

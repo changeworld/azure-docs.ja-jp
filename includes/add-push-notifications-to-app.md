@@ -1,6 +1,5 @@
 
 ## <a id="add-push"></a>アプリケーションへのプッシュ通知の追加
-
 * QSAppDelegate.m で、iOS SDK および QSTodoService.h をインポートします。
 
 ```

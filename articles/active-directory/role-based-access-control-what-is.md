@@ -1,23 +1,22 @@
-<properties
-	pageTitle="ロールベースの Access Control | Microsoft Azure"
-	description="Azure ポータルで Azure のロールベースのアクセス制御を使用したアクセス管理を開始します。ロールの割り当てを使用して、ディレクトリ内でアクセス許可を割り当てます。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+---
+title: ロールベースの Access Control | Microsoft Docs
+description: Azure ポータルで Azure のロールベースのアクセス制御を使用したアクセス管理を開始します。ロールの割り当てを使用して、ディレクトリ内でアクセス許可を割り当てます。
+services: active-directory
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="08/03/2016"
-	ms.author="kgremban"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 08/03/2016
+ms.author: kgremban
 
+---
 # Azure ポータルでのアクセス管理の概要
-
 セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。アクセス許可が少なすぎると、従業員は業務を効率的に遂行できなくなる可能性があります。Azure のロールベースの Access Control (RBAC) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
 
 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。たとえば、RBAC を使用して、ある従業員にはサブスクリプションで仮想マシンを管理できるようにし、他の従業員にも同じサブスクリプション内で SQL データベースを管理できるようにします。
@@ -34,23 +33,23 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 ## 組み込みのロール
 Azure RBAC には、すべてのリソースの種類に適用される 3 つの基本的なロールがあります。
 
-- **所有者**は、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。
-- **作成協力者**は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。
-- **閲覧者**は、既存の Azure リソースを表示できます。
+* **所有者**は、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。
+* **作成協力者**は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。
+* **閲覧者**は、既存の Azure リソースを表示できます。
 
 残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。たとえば、仮想マシンの作成協力者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。その一方で、仮想マシンが接続する仮想ネットワークまたはサブネットへのアクセス権は付与されません。
 
 「[RBAC: 組み込みのロール](role-based-access-built-in-roles.md)」に、Azure で使用できる RBAC ロールが記載されています。各組み込みロールによってユーザーに付与される操作とスコープが説明されています。制御を強化するために独自のロールを定義する場合は、[Azure RBAC でカスタム ロール](role-based-access-control-custom-roles.md)を作成する方法を参照してください。
 
 ## リソース階層とアクセス権の継承
-- Azure 内の各**サブスクリプション**は、1 つのディレクトリのみに属しています。
-- 各**リソース グループ**は、1 つのサブスクリプションのみに属しています。
-- 各**リソース**は、1 つのリソース グループのみに属しています。
+* Azure 内の各**サブスクリプション**は、1 つのディレクトリのみに属しています。
+* 各**リソース グループ**は、1 つのサブスクリプションのみに属しています。
+* 各**リソース**は、1 つのリソース グループのみに属しています。
 
 親スコープで付与されたアクセス権は、子スコープに継承されます。For example:
 
-- 閲覧者ロールをサブスクリプション スコープで Azure AD グループに割り当てると、そのグループのメンバーは、サブスクリプション内のすべてのリソース グループとすべてのリソースを表示できるようになります。
-- 作成協力者ロールをリソース グループ スコープでアプリケーションに割り当てると、そのアプリケーションでは、そのリソース グループ内のすべてのタイプのリソースを管理できるようになりますが、サブスクリプション内の他のリソース グループは管理できません。
+* 閲覧者ロールをサブスクリプション スコープで Azure AD グループに割り当てると、そのグループのメンバーは、サブスクリプション内のすべてのリソース グループとすべてのリソースを表示できるようになります。
+* 作成協力者ロールをリソース グループ スコープでアプリケーションに割り当てると、そのアプリケーションでは、そのリソース グループ内のすべてのタイプのリソースを管理できるようになりますが、サブスクリプション内の他のリソース グループは管理できません。
 
 ## Azure RBAC と従来のサブスクリプションの管理者の比較
 従来のサブスクリプションの管理者と共同管理者には、Azure サブスクリプションへのフル アクセス権があります。リソースの管理には、[Azure ポータル](https://portal.azure.com)と Azure Resource Manager API の組み合わせ、または [Azure クラシック ポータル](https://manage.windowsazure.com)と Azure クラシック デプロイメント モデルの組み合わせを使用できます。RBAC モデルで、従来の管理者は、サブスクリプション スコープで所有者ロールを割り当てられます。
@@ -61,8 +60,8 @@ Azure RBAC は Azure ポータルと新しい Azure Resource Manager API の組�
 Azure RBAC は、Azure ポータルと Azure Resource Manager API での Azure リソースの管理操作のみに対応しています。Azure リソースのデータ レベルの操作の中には、許可されていないものもあります。たとえば、同じユーザーにストレージ アカウントを管理することを承認できますが、ストレージ アカウントでの BLOB またはテーブルの操作を許可することはできません。同様に、SQL データベースは管理できますが、その中のテーブルは管理できません。
 
 ## 次のステップ
-- [Azure ポータルでのロールベースの Access Control](role-based-access-control-configure.md) の基礎を確認する
-- [RBAC の組み込みロール](role-based-access-built-in-roles.md)を確認する
-- 独自の [Azure RBAC カスタム ロール](role-based-access-control-custom-roles.md)を定義する
+* [Azure ポータルでのロールベースの Access Control](role-based-access-control-configure.md) の基礎を確認する
+* [RBAC の組み込みロール](role-based-access-built-in-roles.md)を確認する
+* 独自の [Azure RBAC カスタム ロール](role-based-access-control-custom-roles.md)を定義する
 
 <!---HONumber=AcomDC_0810_2016-->

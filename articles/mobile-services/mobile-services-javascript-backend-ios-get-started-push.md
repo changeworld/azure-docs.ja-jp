@@ -1,47 +1,47 @@
-<properties
-	pageTitle="アプリ (iOS) へのプッシュ通知の追加 | JavaScript バックエンド"
-	description="Azure Mobile Services を使用して iOS アプリにプッシュ通知を送信する方法について説明します。"
-	services="mobile-services,notification-hubs"
-	documentationCenter="ios"
-	manager="dwrede"
-	editor=""
-	authors="krisragh"/>
+---
+title: アプリ (iOS) へのプッシュ通知の追加 | Microsoft Docs
+description: Azure Mobile Services を使用して iOS アプリにプッシュ通知を送信する方法について説明します。
+services: mobile-services,notification-hubs
+documentationcenter: ios
+manager: dwrede
+editor: ''
+author: krisragh
 
-<tags
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="ios"
-	ms.devlang="objective-c"
-	ms.topic="article"
-	ms.date="07/21/2016"
-	ms.author="krisragh"/>
+ms.service: mobile-services
+ms.workload: mobile
+ms.tgt_pltfrm: ios
+ms.devlang: objective-c
+ms.topic: article
+ms.date: 07/21/2016
+ms.author: krisragh
 
+---
 # iOS アプリと JavaScript バックエンドにプッシュ通知を追加する
-
-[AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
+[!INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
 &nbsp;
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[!INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
 > このトピックの Mobile Apps バージョンについては、「[iOS アプリへのプッシュ通知の追加](../app-service-mobile/app-service-mobile-ios-get-started-push.md)」を参照してください。
+> 
+> 
 
 このトピックでは、[クイックスタート プロジェクト](mobile-services-ios-get-started.md)にプッシュ通知を追加して、レコードが挿入されるたびにモバイル サービスがプッシュ通知を送信できるようにします。先に[Mobile Services の使用]を完了しておく必要があります。
 
-> [AZURE.NOTE]  [iOS シミュレーターはプッシュ通知をサポートしない](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)ため、物理的な iOS デバイスを使用する必要があります。さらに、有料の[Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)にサインアップする必要があります。
+> [!NOTE]
+> [iOS シミュレーターはプッシュ通知をサポートしない](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)ため、物理的な iOS デバイスを使用する必要があります。さらに、有料の[Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)にサインアップする必要があります。
+> 
+> 
 
-[AZURE.INCLUDE [Apple プッシュ通知を有効にする](../../includes/enable-apple-push-notifications.md)]
-
+[!INCLUDE [Apple プッシュ通知を有効にする](../../includes/enable-apple-push-notifications.md)]
 
 ## <a id="configure"></a>プッシュ通知を送信するように Azure を構成する
-
-[AZURE.INCLUDE [Azure Mobile Services でプッシュ通知を構成する](../../includes/mobile-services-apns-configure-push.md)]
+[!INCLUDE [Azure Mobile Services でプッシュ通知を構成する](../../includes/mobile-services-apns-configure-push.md)]
 
 ## <a id="update-scripts"></a>プッシュ通知を送信するようにバックエンド スクリプトを更新する
-
 * [Azure クラシック ポータル]で、**[データ]** タブ、**[TodoItem]** の順にクリックします。**[TodoItem]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。**TodoItem** テーブルで挿入が発生したときに呼び出される関数が表示されます。
-
 * insert 関数を次のコードに置き換え、[**保存**] をクリックします。これで、新しい挿入スクリプトが登録されます。このスクリプトは [apns オブジェクト]を使用して、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。このスクリプトでは、プッシュ通知を受け取るためにアプリケーションを閉じる時間を与えるために通知の送信を遅らせています。
-
 
 ```
         function insert(item, user, request) {
@@ -59,10 +59,9 @@
         }
 ```
 
-[AZURE.INCLUDE [プッシュ通知をアプリに追加する](../../includes/add-push-notifications-to-app.md)]
+[!INCLUDE [プッシュ通知をアプリに追加する](../../includes/add-push-notifications-to-app.md)]
 
-[AZURE.INCLUDE [アプリでプッシュ通知をテストする](../../includes/test-push-notifications-in-app.md)]
-
+[!INCLUDE [アプリでプッシュ通知をテストする](../../includes/test-push-notifications-in-app.md)]
 
 <!-- Anchors. -->
 

@@ -1,29 +1,25 @@
-<properties
-    pageTitle="Azure AD フェデレーション メタデータ |Microsoft Azure"
-    description="この記事では、Azure Active Directory が Azure Active Directory トークンを受け入れるサービスに対して発行するフェデレーション メタデータ ドキュメントについて説明します。"
-    services="active-directory"
-    documentationCenter=".net"
-    authors="priyamohanram"
-    manager="mbaldwin"
-    editor=""/>
+---
+title: Azure AD フェデレーション メタデータ | Microsoft Docs
+description: この記事では、Azure Active Directory が Azure Active Directory トークンを受け入れるサービスに対して発行するフェデレーション メタデータ ドキュメントについて説明します。
+services: active-directory
+documentationcenter: .net
+author: priyamohanram
+manager: mbaldwin
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/03/2016"
-    ms.author="priyamo"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/03/2016
+ms.author: priyamo
 
-
-
+---
 # <a name="federation-metadata"></a>フェデレーション メタデータ
-
 Azure Active Directory (Azure AD) は、Azure AD が発行するセキュリティ トークンを受け入れるように構成されているサービスのフェデレーション メタデータ ドキュメントを発行します。 フェデレーション メタデータ ドキュメントの形式は、「[Web Services Federation Language (WS-Federation) Version 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html)」で説明されています。これは、[OASIS SAML (Security Assertion Markup Language) v2.0 のメタデータ](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf)の拡張です。
 
 ## <a name="tenant-specific-and-tenant-independent-metadata-endpoints"></a>テナント固有およびテナント独立のメタデータ エンドポイント
-
 Azure AD は、テナント固有のエンドポイントとテナント独立のエンドポイントを発行します。
 
 テナント固有のエンドポイントは、特定のテナント用に設計されています。 テナント固有のフェデレーション メタデータには、テナント固有の発行者とエンドポイントの情報など、テナントに関する情報が含まれます。 単一のテナントにアクセスを制限するアプリケーションでは、テナント固有のエンドポイントを使用します。
@@ -31,24 +27,21 @@ Azure AD は、テナント固有のエンドポイントとテナント独立�
 テナント独立のエンドポイントは、すべての Azure AD テナントに共通する情報を提供します。 この情報は、 *login.microsoftonline.com* でホストされているテナントに適用され、テナント全体で共有されます。 マルチテナント アプリケーションの場合は、特定のテナントに関連付けられていないため、テナント独立のエンドポイントをお勧めします。
 
 ## <a name="federation-metadata-endpoints"></a>フェデレーション メタデータ エンドポイント
-
 Azure AD は、フェデレーション メタデータを `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`で発行します。
 
 **テナント固有のエンドポイント**の場合、`TenantDomainName` に次の種類のいずれかを指定できます。
 
-- `contoso.onmicrosoft.com`など、Azure AD のテナントの登録済みのドメイン名。
-- `72f988bf-86f1-41af-91ab-2d7cd011db45`など、ドメインの変更できないテナント ID。
+* `contoso.onmicrosoft.com`など、Azure AD のテナントの登録済みのドメイン名。
+* `72f988bf-86f1-41af-91ab-2d7cd011db45`など、ドメインの変更できないテナント ID。
 
 **テナント独立のエンドポイントの場合**、`TenantDomainName` は `common` です。 このドキュメントでは、login.microsoftonline.com でホストされているすべての Azure AD テナントに共通するフェデレーション メタデータの要素のみを示します。
 
 たとえば、テナント固有のエンドポイントは、 `https:// login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`にすることができます。 テナント独立のエンドポイントは [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)です。 ブラウザーにこの URL を入力することで、フェデレーション メタデータ ドキュメントを表示できます。
 
 ## <a name="contents-of-federation-metadata"></a>フェデレーション メタデータの内容
-
 次のセクションでは、Azure AD によって発行されたトークンを使用するサービスに必要な情報を提供します。
 
 ### <a name="entity-id"></a>エンティティ ID
-
 `EntityDescriptor` 要素は `EntityID` 属性を含みます。 `EntityID` 属性の値は発行者、つまり、トークンを発行した Security Token Service (STS) を表します。 トークンを受信したときに、発行者を検証することが重要です。
 
 次のメタデータは、`EntityID` 要素を含む、サンプルのテナント固有の `EntityDescriptor` 要素を示しています。
@@ -71,7 +64,6 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>トークン署名証明書
-
 サービスが Azure AD テナントによって発行されたトークンを受信するとき、トークンの署名は、フェデレーション メタデータ ドキュメントで発行された署名キーによって、検証される必要があります。 フェデレーション メタデータには、テナントでトークンの署名に使用される証明書の公開部分が含まれています。 証明書の未加工のバイト数は、 `KeyDescriptor` 要素にあります。 トークン署名証明書が署名で有効なのは、`use` 属性の値が `signing` の場合だけです。
 
 Azure AD によって発行されたフェデレーション メタデータ ドキュメントには、Azure AD によって署名証明書の更新が準備されているときなどに、複数の署名キーが含まれている可能性があります。 フェデレーション メタデータ ドキュメントに複数の証明書が含まれている場合、トークンを検証するサービスは、ドキュメント内のすべての証明書をサポートする必要があります。
@@ -110,7 +102,6 @@ SAML に固有のセクションで、WS-Federation メタデータ リーダー
 テナント固有の証明書とテナント独立の証明書の形式には、違いはありません。
 
 ### <a name="ws-federation-endpoint-url"></a>WS-Federation エンドポイントの URL
-
 フェデレーション メタデータには、WS-Federation プロトコルで Azure AD がシングル サインインおよびシングル サインアウトに使用する URL が含まれています。 このエンドポイントは `PassiveRequestorEndpoint` 要素にあります。
 
 次のメタデータは、テナント固有のエンドポイントに対するサンプルの `PassiveRequestorEndpoint` 要素を示しています。
@@ -137,7 +128,6 @@ https://login.microsoftonline.com/common/wsfed
 ```
 
 ### <a name="saml-protocol-endpoint-url"></a>SAML プロトコル エンドポイントの URL
-
 フェデレーション メタデータには、SAML 2.0 プロトコルで Azure AD がシングル サインインおよびシングル サインアウトに使用する URL が含まれています。 これらのエンドポイントは、 `IDPSSODescriptor` 要素にあります。
 
 サインイン URL とサインアウト URL は、`SingleSignOnService` 要素と `SingleLogoutService` 要素にあります。

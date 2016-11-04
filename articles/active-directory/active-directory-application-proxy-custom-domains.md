@@ -1,27 +1,25 @@
-<properties
-	pageTitle="Azure AD アプリケーション プロキシでのカスタム ドメインの使用 | Microsoft Azure"
-	description="Azure AD アプリケーション プロキシでカスタム ドメインを使用する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+---
+title: Azure AD アプリケーション プロキシでのカスタム ドメインの使用 | Microsoft Docs
+description: Azure AD アプリケーション プロキシでカスタム ドメインを使用する方法について説明します。
+services: active-directory
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/22/2016"
-	ms.author="kgremban"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/22/2016
+ms.author: kgremban
 
+---
 # Azure AD アプリケーション プロキシでのカスタム ドメインの使用
-
 既定のドメインを使用すると、アプリケーションにアクセスするための内部 URL と外部 URL として同じ URL を設定できるため、ユーザーはアプリケーションにどこからアクセスするかに関係なく、覚えておく必要がある URL が 1 つだけで済みます。また、アプリケーションのアクセス パネルに作成するショートカットも 1 つで済みます。Azure AD アプリケーション プロキシによって提供される既定のドメインを使用する場合、独自のドメインを有効にするために必要な追加の構成はありません。カスタム ドメインを使用する場合は、アプリケーション プロキシがドメインを認識し、証明書を検証できるようにするために必要な操作がいくつかあります。
 
 ## カスタム ドメインの選択
-
 1. 「[アプリケーション プロキシを使用したアプリケーションの発行](active-directory-application-proxy-publish.md)」の手順に従って、アプリケーションを発行します。
 2. アプリケーションの一覧にアプリケーションが表示されたら、アプリケーションを選択し、**[構成]** をクリックします。
 3. **[外部 URL]** にカスタム ドメインを入力します。
@@ -29,7 +27,6 @@
 5. 内部アクセスと外部アクセスに同じ URL を使用し、ユーザーのアプリケーション一覧でアプリケーションへの単一のショートカットを使用できるようにするために、内部 URL をアプリケーションにルーティングする DNS レコードを必ず追加します。
 
 ## カスタム ドメインの使用についてよく寄せられる質問
-
 Q: 既にアップロードされている証明書は、もう一度アップロードしなくても選択できますか。 A: 以前にアップロードされた証明書は、アプリケーションに自動的にバインドされており、アプリケーションのホスト名と一致する証明書が必ず 1 つ存在します。
 
 Q: 証明書を追加するにはどうすればよいですか。また、エクスポートされた証明書はどのような形式でアップロードすればよいですか。 A: 証明書は、アプリケーションの構成ページからアップロードします。証明書は PFX ファイルにする必要があります。
@@ -56,13 +53,11 @@ Q: 自己署名証明書は使用できますか。 A: はい。自己署名証�
 
 Q: テナントのすべての証明書が表示される場所はありますか。 A: これは、現在のバージョンではサポートされていません。
 
-
 ## 関連項目
-
-- [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
-- [シングル サインオンの有効化](active-directory-application-proxy-sso-using-kcd.md)
-- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
-- [Azure AD にカスタム ドメイン名を追加する](active-directory-add-domain.md)
+* [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
+* [シングル サインオンの有効化](active-directory-application-proxy-sso-using-kcd.md)
+* [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
+* [Azure AD にカスタム ドメイン名を追加する](active-directory-add-domain.md)
 
 最新のニュースと更新情報については、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 

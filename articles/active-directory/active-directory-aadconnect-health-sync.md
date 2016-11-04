@@ -1,22 +1,22 @@
 
-<properties
-	pageTitle="同期での Azure AD Connect Health の使用 | Microsoft Azure"
-	description="Azure AD Connect 同期を監視する方法を説明する Azure AD Connect Health のページです。"
-	services="active-directory"
-	documentationCenter=""
-	authors="billmath"
-	manager="femila"
-	editor="curtand"/>
+---
+title: 同期での Azure AD Connect Health の使用 | Microsoft Docs
+description: Azure AD Connect 同期を監視する方法を説明する Azure AD Connect Health のページです。
+services: active-directory
+documentationcenter: ''
+author: billmath
+manager: femila
+editor: curtand
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/08/2016"
-	ms.author="billmath"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/08/2016
+ms.author: billmath
 
+---
 # Azure AD Connect Health for Sync の使用
 次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「[AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)」を参照してください。また、Azure AD Connect Health での Active Directory ドメイン サービスの監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
 
@@ -43,8 +43,8 @@ Azure AD Connect で既定の構成が使用されていない場合 (たとえ�
 ## 同期に関する洞察
 最新バージョンの Azure AD Connect Health for Sync には、次の新機能が追加されています。
 
-- 同期処理の遅延
-- オブジェクト変更傾向
+* 同期処理の遅延
+* オブジェクト変更傾向
 
 ### 同期の遅延
 この機能は、コネクタの同期処理 (インポート、エクスポートなど) に伴う遅延の傾向をグラフィカルに表示します。処理の遅延をすばやく簡単に把握できることに加え (変更が大量に発生している場合などに有効)、待機時間が異常に長く調査が必要なケースを検出することができます。
@@ -59,7 +59,6 @@ Azure AD Connect で既定の構成が使用されていない場合 (たとえ�
 ![Sync Latency](./media/active-directory-aadconnect-health-sync/syncobjectchanges.png)
 
 ## 関連リンク
-
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Azure AD Connect Health エージェントのインストール](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)

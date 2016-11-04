@@ -1,32 +1,28 @@
-<properties
-    pageTitle="Azure Search で複合データ型をモデル化する方法 | Microsoft Azure Search"
-    description="階層または入れ子になったデータ構造は、フラット化された行セットとコレクション データ型を使用して、Azure Search インデックスでモデル化できます。"
-    services="search"
-    documentationCenter=""
-	authors="LiamCa"
-	manager="pablocas"
-	editor=""
-    tags="complex data types; compound data types; aggregate data types"
-/>
+---
+title: Azure Search で複合データ型をモデル化する方法 | Microsoft Docs
+description: 階層または入れ子になったデータ構造は、フラット化された行セットとコレクション データ型を使用して、Azure Search インデックスでモデル化できます。
+services: search
+documentationcenter: ''
+author: LiamCa
+manager: pablocas
+editor: ''
+tags: complex data types; compound data types; aggregate data types
 
-<tags
-    ms.service="search"
-    ms.devlang="na"
-    ms.workload="search"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.date="09/07/2016"
-    ms.author="liamca"
-/>
+ms.service: search
+ms.devlang: na
+ms.workload: search
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.date: 09/07/2016
+ms.author: liamca
 
+---
 # Azure Search で複合データ型をモデル化する方法
-
 Azure Search インデックスの設定に使用する外部データセットの中には、下部構造が階層または入れ子となっているために、表形式の行セットに適切に分解できないものが存在します。このような構造の例として、単一の顧客に複数の住所と電話番号が含まれるケース、単一の SKU に複数の色とサイズが含まれるケース、1 冊の書籍に複数の著者が存在するケースなどが挙げられます。モデル化の際に使う用語では、このような構造を "*複合データ型*"、"*コンパウンド データ型*"、"*コンポジット データ型*"、"*集合体データ型*" などの用語で呼ぶことがあります。
 
 複合データ型は Azure Search でネイティブにサポートされているわけではありませんが、実証済みの回避策では、データ構造をフラット化し、次に**コレクション** データ型を使用するという 2 段階のプロセスを用いることで、データの内部構造を再構築できます。この記事で説明されている手法により、コンテンツの検索、ファセット化、フィルター処理、並べ替えが可能になります。
 
 ## 複合データ構造の例
-
 通常、対象となるデータは、一連の JSON ドキュメントまたは XML ドキュメント、または DocumentDB のような NoSQL ストア内のアイテムとして存在します。構造的に、このような問題は、検索やフィルター処理を行う必要のある子アイテムが複数存在することに起因しています。回避策を説明する出発点として、次の JSON ドキュメントをご覧ください。このドキュメントは、例として一連の連絡先の一覧を示しています。
 
 ~~~~~
@@ -65,19 +61,19 @@ Azure Search インデックスの設定に使用する外部データセット�
 
 "id"、"name"、"company" というフィールドは、Azure Search インデックス内のフィールドとして一対一の関係で簡単にマップできますが、"locations" フィールドには場所の配列が含まれており、その中には場所の ID と説明の両方が含まれています。Azure Search には、これをサポートするデータ型が存在しないため、Azure Search でこれをモデル化するには別の方法が必要になります。
 
-> [AZURE.NOTE] この手法は、Kirk Evans によるブログの投稿「[Indexing DocumentDB with Azure Search (Azure Search で DocumentDB をインデックス化する方法)](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/)」でも説明されています。この手法は "データのフラット化" と呼ばれ、`locationsID` および `locationsDescription` と呼ばれるフィールドを使用します。これらのフィールドは両方とも[コレクション](https://msdn.microsoft.com/library/azure/dn798938.aspx) (または文字列の配列) です。
+> [!NOTE]
+> この手法は、Kirk Evans によるブログの投稿「[Indexing DocumentDB with Azure Search (Azure Search で DocumentDB をインデックス化する方法)](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/)」でも説明されています。この手法は "データのフラット化" と呼ばれ、`locationsID` および `locationsDescription` と呼ばれるフィールドを使用します。これらのフィールドは両方とも[コレクション](https://msdn.microsoft.com/library/azure/dn798938.aspx) (または文字列の配列) です。
+> 
+> 
 
 ## パート 1: 個々のフィールドに配列をフラット化する
-
 このデータセットを格納する Azure Search インデックスを作成するには、入れ子になった下部構造のそれぞれに対応するフィールドを作成します。ここでの下部構造とは、[コレクション](https://msdn.microsoft.com/library/azure/dn798938.aspx) データ型 (または文字列の配列) である `locationsID` と `locationsDescription` を指します。これらのフィールドでは、John Smith の `locationsID` フィールドに値 "1" と "2" のインデックスを作成し、Jen Campbell の `locationsID` フィールドに値 "3" と "4" のインデックスを作成します。
 
 Azure Search では、データは次のように表示されます。
 
 ![sample data, 2 rows](./media/search-howto-complex-data-types/sample-data.png)
 
-
 ## パート 2: インデックス定義にコレクションのフィールドを追加する
-
 インデックス スキーマでは、フィールド定義は次の例のようになります。
 
 ~~~~
@@ -96,7 +92,6 @@ var index = new Index()
 ~~~~
 
 ## 検索動作を検証し、必要に応じてインデックスを拡張する
-
 インデックスの作成とデータの読み込みが完了したら、ソリューションをテストして、データセットに対する検索クエリの実行を検証できるようになります。各**コレクション** フィールドは、**検索**、**フィルター処理**、**ファセット化**が可能である必要があります。次のようなクエリを実行できるようになります。
 
 * "Adventureworks Headquarters" で働く人をすべて検索する。
@@ -128,21 +123,15 @@ var index = new Index()
 * "Home Office" で働き、かつ場所の ID が "4" である人を検索する。
 
 ## 制限事項
-
 この手法は多くのシナリオで役立ちますが、すべての場合に適用できるわけではありません。For example:
 
 1. 複合データ型に静的な一連のフィールドがなく、すべての指定可能な型を 1 つのフィールドにマップすることができない場合。
 2. 入れ子になったオブジェクトを更新する際に、Azure Search インデックスで何を更新する必要があるのかを正確に判断するための追加作業が必要になる場合。
 
 ## サンプル コード
-
 Azure Search に複合 JSON データセットのインデックスを作成し、このデータセットに対してさまざまなクエリを実行する方法の例については、こちらの [GitHub リポジトリ](https://github.com/liamca/AzureSearchComplexTypes)を参照してください。
 
 ## 次のステップ
-
 Azure Search UserVoice ページで、[複合データ型のネイティブ サポートに関する投票を行ってください](https://feedback.azure.com/forums/263029-azure-search)。機能の実装に関する要望がほかにもある場合は、入力をお願いします。Twitter で @liamca 宛てに直接ご連絡いただいてもかまいません。
-
-
- 
 
 <!---HONumber=AcomDC_0914_2016-->

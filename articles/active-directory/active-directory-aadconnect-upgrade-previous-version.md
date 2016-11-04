@@ -1,36 +1,35 @@
-<properties
-   pageTitle="Azure AD Connect: 旧バージョンからアップグレードする | Microsoft Azure"
-   description="インプレース アップグレードやスウィング移行など、Azure Active Directory Connect を最新リリースにアップグレードするさまざまな方法について説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="AndKjell"
-   manager="femila"
-   editor=""/>
+---
+title: 'Azure AD Connect: 旧バージョンからアップグレードする | Microsoft Docs'
+description: インプレース アップグレードやスウィング移行など、Azure Active Directory Connect を最新リリースにアップグレードするさまざまな方法について説明します。
+services: active-directory
+documentationcenter: ''
+author: AndKjell
+manager: femila
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="Identity"
-   ms.date="06/27/2016"
-   ms.author="billmath"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: Identity
+ms.date: 06/27/2016
+ms.author: billmath
 
-
+---
 # <a name="azure-ad-connect:-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする
 このトピックでは、Azure AD Connect のインストールを最新リリースにアップグレードするさまざまな方法について説明します。 Azure AD Connect を常に最新リリースにしておくことをお勧めします。
 
-DirSync からアップグレードする場合は、代わりに [Azure AD 同期ツール (DirSync) からのアップグレード](./aad-connect/active-directory-aadconnect-dirsync-upgrade-get-started.md)を参照してください。
+DirSync からアップグレードする場合は、代わりに [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)を参照してください。
 
 Azure AD Connect のアップグレードには複数の方法があります。
 
-メソッド | Description
---- | ---
-[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md) | 高速インストールのユーザーの場合、これは最も簡単な方法です。
-[インプレース アップグレード](#in-place-upgrade) | サーバーが 1 台だけの場合は、同じサーバーでインストールをインプレース アップグレードします。
-[スウィング移行](#swing-migration) | 2 台のサーバーを用意し、一方に新しいリリースを準備して、アクティブなサーバーを変更します。
+| メソッド | Description |
+| --- | --- |
+| [自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md) |高速インストールのユーザーの場合、これは最も簡単な方法です。 |
+| [インプレース アップグレード](#in-place-upgrade) |サーバーが 1 台だけの場合は、同じサーバーでインストールをインプレース アップグレードします。 |
+| [スウィング移行](#swing-migration) |2 台のサーバーを用意し、一方に新しいリリースを準備して、アクティブなサーバーを変更します。 |
 
-必要なアクセス許可については、[アップグレードに必要なアクセス許可](./aad-connect/active-directory-aadconnect-accounts-permissions.md#upgrade)を参照してください。
+必要なアクセス許可については、[アップグレードに必要なアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)を参照してください。
 
 ## <a name="in-place-upgrade"></a>インプレース アップグレード
 インプレース アップグレードは、Azure AD Sync または Azure AD Connect からの移動に使用できます。 DirSync または FIM + Azure AD コネクタのソリューションには使用できません。
@@ -52,10 +51,9 @@ Azure AD Connect のアップグレードには複数の方法があります。
 
 注: 3 台または 4 台のサーバーでこの方法を行うのが好まれる場合があります。 ステージング サーバーでアップグレードが行われるため、その間は [障害復旧](active-directory-aadconnectsync-operations.md#disaster-recovery)用のバックアップ サーバーがありません。 最大 4 台のサーバーを使用すると、新しいバージョンにアップグレードされた新しいプライマリ/スタンバイ サーバーのセットを準備でき、引き継ぎ用のステージング サーバーを常に確保できます。
 
-以下の手順は、Azure AD Sync または FIM + Azure AD コネクタのソリューションからの移行にも使用できます。 この手順は DirSync には使用できませんが、DirSync 用の手順が組み込まれた同じスウィング移行 (並列デプロイとも呼ばれます) 方法が、[Azure Active Directory 同期 (DirSync) のアップグレード](./aad-connect/active-directory-aadconnect-dirsync-upgrade-get-started.md)に関するページで説明されています。
+以下の手順は、Azure AD Sync または FIM + Azure AD コネクタのソリューションからの移行にも使用できます。 この手順は DirSync には使用できませんが、DirSync 用の手順が組み込まれた同じスウィング移行 (並列デプロイとも呼ばれます) 方法が、[Azure Active Directory 同期 (DirSync) のアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)に関するページで説明されています。
 
 ### <a name="swing-migration-steps"></a>スウィング移行の手順
-
 1. 両方のサーバーで Azure AD Connect を使用する場合は、アップグレードを開始する前に、アクティブ サーバーとステージング サーバーがどちらも同じバージョンを使用していることを確認します。 同じバージョンを使用することで、後で違いを比較しやすくなります。 Azure AD Sync からアップグレードする場合、2 つのサーバーのバージョンは異なるものになります。
 2. カスタム構成を行っていて、ステージング サーバーにはそれが含まれない場合は、後の「 [カスタム構成をアクティブ サーバーからステージング サーバーに移動する](#move-custom-configuration-from-active-to-staging-server)」の手順に従ってください。
 3. Azure AD Connect の以前のリリースからアップグレードする場合は、ステージング サーバーを最新のバージョンにアップグレードします。 Azure AD Sync から移行する場合は、ステージング サーバーに Azure AD Connect をインストールします。
@@ -71,24 +69,22 @@ Azure AD Connect のアップグレードには複数の方法があります。
 
 両方のサーバーで同じように構成されていることを確認する必要がある項目は次のとおりです。
 
-- 同じフォレストへの接続。
-- ドメインと OU のすべてのフィルター処理。
-- 同じオプション機能 (パスワード同期やパスワード ライトバックなど)。
+* 同じフォレストへの接続。
+* ドメインと OU のすべてのフィルター処理。
+* 同じオプション機能 (パスワード同期やパスワード ライトバックなど)。
 
 **同期規則の移動**  
 カスタム同期規則を移動するには次のようにします。
 
 1. アクティブ サーバーで **同期規則エディター** を開きます。
 2. カスタム規則を選択します。 **[エクスポート]** をクリックします。 メモ帳ウィンドウが表示されます。 一時ファイルを拡張子 PS1 で保存します。これにより、PowerShell スクリプトになります。 ps1 ファイルをステージング サーバーにコピーします。
-![同期規則のエクスポート](./media/active-directory-aadconnect-upgrade-previous-version/exportrule.png)
+   ![同期規則のエクスポート](./media/active-directory-aadconnect-upgrade-previous-version/exportrule.png)
 3. コネクタの GUID は、ステージング サーバーでは異なります。 GUID を取得するには、**同期規則エディター**を開始し、同じ接続先システムを表す既定の規則のいずれかを選択して、**[エクスポート]** をクリックします。 PS1 ファイルの GUID を、ステージング サーバーから取得した GUID に置き換えます。
 4. PowerShell プロンプトで、PS1 ファイルを実行します。 これにより、ステージング サーバーにカスタム同期規則が作成されます。
 5. 複数のカスタム規則がある場合は、すべてのカスタム規則について繰り返します。
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

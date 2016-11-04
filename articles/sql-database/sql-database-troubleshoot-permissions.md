@@ -1,46 +1,44 @@
-<properties
-	pageTitle="管理者パスワードのリセットなどの管理者タスクの実行方法 | Microsoft Azure"
-	description="SQL Database で一般的な管理者タスクを実行する方法について説明します。たとえば、管理者パスワードのリセット、アクセスの許可と削除などです。"
-	services="sql-database"
-	documentationCenter=""
-	authors="v-shysun"
-	manager="felixwu"
-	editor=""
-	keywords="管理者パスワードのリセット"/>
+---
+title: 管理者パスワードのリセットなどの管理者タスクの実行方法 | Microsoft Docs
+description: SQL Database で一般的な管理者タスクを実行する方法について説明します。たとえば、管理者パスワードのリセット、アクセスの許可と削除などです。
+services: sql-database
+documentationcenter: ''
+author: v-shysun
+manager: felixwu
+editor: ''
+keywords: 管理者パスワードのリセット
 
-<tags
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/13/2016"
-	ms.author="v-shysun"/>
+ms.service: sql-database
+ms.workload: data-management
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/13/2016
+ms.author: v-shysun
 
+---
 # Azure SQL Database で管理者パスワードのリセットなどの一般的な管理タスクを実行する方法
 Azure SQL Database へのアクセスの付与および削除を行う簡単な手順については、このトピックをご覧ください。より包括的な情報については、次を参照してください。
 
-- [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
-- [SQL Database の保護](sql-database-security.md)
-- [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
+* [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
+* [SQL Database の保護](sql-database-security.md)
+* [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
 
-
-[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+[!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## 論理サーバーの管理者パスワードをリセットするには
-
-- [Azure ポータル](https://portal.azure.com)で **[SQL Server]** をクリックし、一覧からサーバーを選択して、**[パスワードのリセット]** をクリックします。
+* [Azure ポータル](https://portal.azure.com)で **[SQL Server]** をクリックし、一覧からサーバーを選択して、**[パスワードのリセット]** をクリックします。
 
 ## 権限のある IP アドレスのみがサーバーへのアクセスを許可されるようにするには
-- 「[方法: ファイアウォール設定を構成する (SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+* 「[方法: ファイアウォール設定を構成する (SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 ## ユーザー データベースに包含データベース ユーザーを作成するには
-- [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) ステートメントを使用し、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」をご覧ください。
+* [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) ステートメントを使用し、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」をご覧ください。
 
 ## Azure Active Directory を使用して包含データベース ユーザーを認証するには
-- 「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」をご覧ください。
+* 「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」をご覧ください。
 
 ## 仮想マスター データベースで高い特権を持つユーザーの追加ログインを作成するには
-- [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) ステートメントを使用し、[Azure SQL Database でのデータベースとログインの管理](sql-database-manage-logins.md)に関するページのログイン管理セクションで詳細を確認してください。
+* [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) ステートメントを使用し、[Azure SQL Database でのデータベースとログインの管理](sql-database-manage-logins.md)に関するページのログイン管理セクションで詳細を確認してください。
 
 <!---HONumber=AcomDC_0914_2016-->

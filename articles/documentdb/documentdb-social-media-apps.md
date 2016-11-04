@@ -1,25 +1,23 @@
-<properties 
-    pageTitle="DocumentDB の設計パターン: ソーシャル メディア アプリ | Microsoft Azure" 
-    description="DocumentDB のストレージの柔軟性と他の Azure サービスを活用したソーシャル ネットワークの設計パターンについて説明します。" 
-    keywords="ソーシャル メディア アプリ"
-    services="documentdb" 
-    authors="ealsur" 
-    manager="jhubbard" 
-    editor="" 
-    documentationCenter=""/>
+---
+title: 'DocumentDB の設計パターン: ソーシャル メディア アプリ | Microsoft Docs'
+description: DocumentDB のストレージの柔軟性と他の Azure サービスを活用したソーシャル ネットワークの設計パターンについて説明します。
+keywords: ソーシャル メディア アプリ
+services: documentdb
+author: ealsur
+manager: jhubbard
+editor: ''
+documentationcenter: ''
 
-<tags 
-    ms.service="documentdb" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/27/2016" 
-    ms.author="mimig"/>
+ms.service: documentdb
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/27/2016
+ms.author: mimig
 
-
+---
 # <a name="going-social-with-documentdb"></a>DocumentDB によるソーシャル化
-
 大規模に相互接続された社会で生きていると、日々の生活の中で **ソーシャル ネットワーク**に参加することになります。 ソーシャル ネットワークを使用して、友人や同僚、家族と交流し、共通の関心を持つ人々と情熱を分かち合うこともあります。
 
 エンジニアや開発者は、これらのネットワークがデータをどのように保存し、相互接続しているのか疑問に思っているかもしれません。また、特定のニッチ市場向けの新しいソーシャル ネットワークの構築や設計を任されている場合もあるでしょう。 そこで、"このすべてのデータはどのように保存されているのか" という大きな疑問が生じます。
@@ -41,7 +39,6 @@
 コンテンツを提供するために、こうした多数の結合を使用する何千ものクエリを解決できるだけの能力を備えた巨大な SQL インスタンスを使用することもできますが、実際のところ、よりシンプルなソリューションが存在するのに、そのようなインスタンスをわざわざ使用する必要があるでしょうか。
 
 ## <a name="the-nosql-road"></a>NoSQL への道
-
 [Azure で実行](http://neo4j.com/developer/guide-cloud-deployment/#_windows_azure) できる特殊なグラフ データベースがありますが、これらは安価ではなく、IaaS サービス (サービスとしてのインフラストラクチャ、主に Virtual Machines) とメンテナンスを必要とします。 この記事では、Azure の NoSQL データベースである [DocumentDB](https://azure.microsoft.com/services/documentdb/)で実行され、ほとんどのシナリオに対応できる低コストのソリューションに照準を合わせます。 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) のアプローチの採用、JSON 形式でのデータの保存、[非正規化](https://en.wikipedia.org/wiki/Denormalization)の適用により、これまで複雑であった投稿を次のような 1 つの[ドキュメント](https://en.wikipedia.org/wiki/Document-oriented_database)に変換できます。
 
     {
@@ -135,7 +132,6 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
 さらに、フォロワーの実際のグラフは、単純な "A-follows-B" のようなグラフの保存と取得を可能にする [拡張機能](https://github.com/richorama/AzureStorageExtensions#azuregraphstore) を使用して、Azure Storage テーブルに保存することができます。 この方法では、正確なフォロワー リストを必要なときに取得するプロセスを Azure Storage テーブルに委任できますが、簡単な数値の検索には引き続き DocumentDB を使用します。
 
 ## <a name="the-“ladder”-pattern-and-data-duplication"></a>"ラダー (梯子)" パターンとデータの重複
-
 投稿を参照する JSON ドキュメントでお気付きかと思いますが、同じユーザーが何度も出現します。 皆さんの推測どおり、この非正規化を考慮すると、これはユーザーを表す情報が複数の場所に存在する可能性があることを意味します。
 
 クエリの高速化を可能するために、データの重複が発生しています。 この副作用による問題は、何らかの操作によってユーザーのデータが変更された場合に、そのユーザーがこれまでに実行したすべてのアクティビティを見つけ、そのすべてを更新する必要があることです。 あまり現実的ではなさそうですよね。
@@ -157,7 +153,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
         "totalPoints":100,
         "totalPosts":24
     }
-    
+
 この情報を調べることで、重要な情報とそうでない情報をすぐに見つけることができるため、次のように "ラダー" を作成できます。
 
 ![ラダー パターンの図](./media/documentdb-social-media-apps/social-media-apps-ladder.png)
@@ -194,19 +190,17 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
 チャンクのいずれかの属性が影響を受ける編集が発生しても、インデックス付き属性を参照するクエリ (SELECT * FROM posts p WHERE p.createdBy.id == “edited_user_id”) を使用し、チャンクを更新することで、影響を受けたドキュメントを簡単に見つけることができます。
 
 ## <a name="the-search-box"></a>検索ボックス
-
 ユーザーは、幸いにも大量のコンテンツを生成します。 コンテンツのストリームに直接存在しない可能性のあるコンテンツを検索して見つける機能を提供できる必要があります。作成者をフォローするのではなく、6 か月前に行われた古い投稿を見つけようとしているだけだからです。
 
 Azure DocumentDB を使用しているので、 [Azure Search](https://azure.microsoft.com/services/search/) を使用して、(検索プロセスと UI 以外の) コードを 1 行も入力せずに検索エンジンを数分で簡単に実装できます。
 
 これが非常に簡単なのはなぜでしょうか。
 
-Azure Search は、いわゆる[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を実装しています。インデクサーは、データ リポジトリにフックを設定し、インデックス内のオブジェクトを自動的に追加、更新、または削除するバックグラウンド プロセスです。 [Azure SQL Database インデクサー](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure BLOB インデクサー](../search/search-howto-indexing-azure-blob-storage.md)、[Azure DocumentDB インデクサー](../documentdb/documentdb-search-indexer.md)がサポートされています。 DocumentDB と Azure Search は、どちらも JSON 形式で情報を保存するので、DocumentDB から Azure Search への情報の移行は簡単です。[インデックスを作成](../search/search-create-index-portal.md)し、ドキュメントからインデックス付けする属性をマップするだけで済むため、わずか数分で終わります (データのサイズによって異なります)。クラウド インフラストラクチャの優れたサービスとしての検索ソリューションにより、すべてのコンテンツを検索対象にすることができます。 
+Azure Search は、いわゆる[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を実装しています。インデクサーは、データ リポジトリにフックを設定し、インデックス内のオブジェクトを自動的に追加、更新、または削除するバックグラウンド プロセスです。 [Azure SQL Database インデクサー](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure BLOB インデクサー](../search/search-howto-indexing-azure-blob-storage.md)、[Azure DocumentDB インデクサー](documentdb-search-indexer.md)がサポートされています。 DocumentDB と Azure Search は、どちらも JSON 形式で情報を保存するので、DocumentDB から Azure Search への情報の移行は簡単です。[インデックスを作成](../search/search-create-index-portal.md)し、ドキュメントからインデックス付けする属性をマップするだけで済むため、わずか数分で終わります (データのサイズによって異なります)。クラウド インフラストラクチャの優れたサービスとしての検索ソリューションにより、すべてのコンテンツを検索対象にすることができます。 
 
 Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検索のためのヒッチハイカー ガイド)](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)」をご覧ください。
 
 ## <a name="the-underlying-knowledge"></a>基礎となる知識
-
 日々増加し続けるすべてのコンテンツを保存した後に、"ユーザーからのこのすべての情報ストリームを使って何ができるのか" を考えていることに気付くかもしれません。
 
 答えは簡単です。情報ストリームを活用し、情報ストリームから学ぶのです。
@@ -215,14 +209,13 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 
 人を夢中にさせるような話なので、シンプルなデータベースやファイルからこれらのパターンや情報を抽出するには、数理科学の博士号が必要と思っておられるでしょう。しかし、それは違います。
 
-[Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx) に含まれる [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) は、完全に管理されたクラウド サービスです。このサービスを利用することで、シンプルなドラッグ アンド ドロップ インターフェイスでのアルゴリズムを使用したワークフローの作成や、[R](https://en.wikipedia.org/wiki/R_(programming_language)) での独自のアルゴリズムのコーディング、構築済みのすぐに使える API ([Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[Content Moderator](https://www.microsoft.com/moderator)、[Recommendations](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2) など) の使用が可能になります。
+[Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx) に含まれる [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) は、完全に管理されたクラウド サービスです。このサービスを利用することで、シンプルなドラッグ アンド ドロップ インターフェイスでのアルゴリズムを使用したワークフローの作成や、[R](https://en.wikipedia.org/wiki/R_\(programming_language\)) での独自のアルゴリズムのコーディング、構築済みのすぐに使える API ([Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[Content Moderator](https://www.microsoft.com/moderator)、[Recommendations](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2) など) の使用が可能になります。
 
 これらの Machine Learning シナリオは、さまざまなソースからの情報を取り込むために [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) を使用し、その情報の処理と Azure Machine Learning で処理できる出力の生成に [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) を使用することで実現できます。
 
 利用できる別のオプションとして、[Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) を使用したユーザーのコンテンツの分析があります。ユーザーが何を書いているかを [Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api) で分析してコンテンツを深く理解できるだけではなく、望ましくないコンテンツや成人向けのコンテンツを [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) で検出することもできます。 Cognitive Services には、Machine Learning の知識を必要とせずに使用できる独創的なソリューションがたくさん含まれています。
 
 ## <a name="conclusion"></a>まとめ
-
 この記事では、低コストのサービスを使用して Azure で完全なソーシャル ネットワークを構築し、多層ストレージ ソリューションと "ラダー" と呼ばれるデータ分散の使用を促進することによって優れた結果をもたらす代替手段を明らかにすることを試みています。
 
 ![ソーシャル ネットワーキングでの Azure サービス間の対話を示すダイアグラム](./media/documentdb-social-media-apps/social-media-apps-azure-solution.png)
@@ -230,12 +223,9 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 実際には、この種のシナリオに対応する特効薬はありません。優れたソーシャル アプリケーションを提供する Azure DocumentDB の速度と自由度、Azure Search のような最高クラスの検索ソリューションの背後にあるインテリジェンス、言語に依存しないアプリケーションではなく、強力なバックグラウンド プロセスをホストする Azure App Services の柔軟性、大量のデータを保存する拡張可能な Azure Storage と Azure SQL Database、プロセスにフィードバックを提供することができ、適切なコンテンツを適切なユーザーに提供するうえで役立つ知識とインテリジェンスを生み出す Azure Machine Learning の分析力など、優れたサービスの組み合わせによって生まれる相乗効果により、優れた体験を構築することが可能になります。
 
 ## <a name="next-steps"></a>次のステップ
-
 データのモデル化の詳細については、「 [DocumentDB のデータのモデル化](documentdb-modeling-data.md) 」をご覧ください。 DocumentDB の他のユース ケースに関心がある場合は、「 [DocumentDB の一般的なユース ケース](documentdb-use-cases.md)」をご覧ください。
 
 または、 [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)に従って、DocumentDB の詳細を確認してください。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

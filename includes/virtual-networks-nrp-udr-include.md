@@ -3,59 +3,56 @@
 
 ルート テーブルには次のプロパティが含まれています。
 
-|プロパティ|説明|サンプルの値|
-|---|---|---|
-|**routes**|ルート テーブル内のユーザー定義ルートのコレクション|[ユーザー定義のルート](#User-defined-routes)を参照|
-|**サブネット**|ルート テーブルが適用されるサブネットのコレクション|[サブネット](#Subnets)を参照|
-
+| プロパティ | 説明 | サンプルの値 |
+| --- | --- | --- |
+| **routes** |ルート テーブル内のユーザー定義ルートのコレクション |[ユーザー定義のルート](#User-defined-routes)を参照 |
+| **サブネット** |ルート テーブルが適用されるサブネットのコレクション |[サブネット](#Subnets)を参照 |
 
 ### ユーザー定義のルート
 宛先アドレスに基づいてトラフィックの送信先を指定する UDR を作成できます。ルートは、ネットワーク パケットの宛先アドレスに基づく既定のゲートウェイ定義として考えることができます。
 
 UDR には、次のプロパティが含まれています。
 
-|プロパティ|説明|サンプルの値|
-|---|---|---|
-|**addressPrefix**|アドレスのプレフィックス、または宛先の完全な IP アドレス|192\.168.1.0/24, 192.168.1.101|
-|**nextHopType**|トラフィックの送信先となるデバイスの種類|VirtualAppliance、VPN Gateway、インターネット|
-|**nextHopIpAddress**|次のホップ先の IP アドレス|192\.168.1.4|
-
+| プロパティ | 説明 | サンプルの値 |
+| --- | --- | --- |
+| **addressPrefix** |アドレスのプレフィックス、または宛先の完全な IP アドレス |192\.168.1.0/24, 192.168.1.101 |
+| **nextHopType** |トラフィックの送信先となるデバイスの種類 |VirtualAppliance、VPN Gateway、インターネット |
+| **nextHopIpAddress** |次のホップ先の IP アドレス |192\.168.1.4 |
 
 JSON 形式のサンプル ルート テーブル
 
-	{
-	    "name": "UDR-BackEnd",
-	    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd",
-	    "etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
-	    "type": "Microsoft.Network/routeTables",
-	    "location": "westus",
-	    "properties": {
-	        "provisioningState": "Succeeded",
-	        "routes": [
-	            {
-	                "name": "RouteToFrontEnd",
-	                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd/routes/RouteToFrontEnd",
-	                "etag": "W/"v"",
-	                "properties": {
-	                    "provisioningState": "Succeeded",
-	                    "addressPrefix": "192.168.1.0/24",
-	                    "nextHopType": "VirtualAppliance",
-	                    "nextHopIpAddress": "192.168.0.4"
-	                }
-	            }
-	        ],
-	        "subnets": [
-	            {
-	                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd"
-	            }
-	        ]
-	    }
-	}
+    {
+        "name": "UDR-BackEnd",
+        "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd",
+        "etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
+        "type": "Microsoft.Network/routeTables",
+        "location": "westus",
+        "properties": {
+            "provisioningState": "Succeeded",
+            "routes": [
+                {
+                    "name": "RouteToFrontEnd",
+                    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd/routes/RouteToFrontEnd",
+                    "etag": "W/"v"",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "addressPrefix": "192.168.1.0/24",
+                        "nextHopType": "VirtualAppliance",
+                        "nextHopIpAddress": "192.168.0.4"
+                    }
+                }
+            ],
+            "subnets": [
+                {
+                    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd"
+                }
+            ]
+        }
+    }
 
 ### その他のリソース
-
-- [UDR](../articles/virtual-network/virtual-networks-udr-overview.md) の詳細を確認します。
-- ルート テーブルに関しては、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt502549.aspx)を確認してください。
-- ユーザー定義ルート (UDR) に関しては、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt502539.aspx)を確認してください。
+* [UDR](../articles/virtual-network/virtual-networks-udr-overview.md) の詳細を確認します。
+* ルート テーブルに関しては、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt502549.aspx)を確認してください。
+* ユーザー定義ルート (UDR) に関しては、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt502539.aspx)を確認してください。
 
 <!---HONumber=AcomDC_0323_2016-->

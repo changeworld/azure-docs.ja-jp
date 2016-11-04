@@ -1,25 +1,22 @@
-<properties
-    pageTitle="Service Bus Relay の概要 | Microsoft Azure"
-    description="Service Bus Relay の概要"
-    services="service-bus"
-    documentationCenter=".net"
-    authors="sethmanheim"
-    manager="timlt"
-    editor=""/>
+---
+title: Service Bus Relay の概要 | Microsoft Docs
+description: Service Bus Relay の概要
+services: service-bus
+documentationcenter: .net
+author: sethmanheim
+manager: timlt
+editor: ''
 
-<tags
-    ms.service="service-bus"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="multiple"
-    ms.topic="get-started-article"
-    ms.date="09/01/2016"
-    ms.author="sethm"/>
+ms.service: service-bus
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: multiple
+ms.topic: get-started-article
+ms.date: 09/01/2016
+ms.author: sethm
 
-
-
+---
 # <a name="overview-of-service-bus-relay"></a>Service Bus Relay の概要
-
 Service Bus の主なコンポーネントは、一元管理された (ただし高度に負荷分散された) "*リレー*" サービスです。Azure データセンターと独自のオンプレミス エンタープライズ環境の両方で実行可能なハイブリッド アプリケーションを構築できます。  Service Bus Relay では、多様なトランスポート プロトコルと Web サービス標準がサポートされています。 サポートされる標準には、SOAP、WS-*、REST などがあります。 ハイブリッド アプリケーションにリレー サービスを使用すると、ファイアウォール接続を開放せず、または企業ネットワークのインフラストラクチャ内部を変更せずに、企業のエンタープライズ ネットワーク内部にある Windows Communication Foundation (WCF) サービスを安全にパブリック クラウドに公開することができます。 
 
 ![リレーの概念](./media/service-bus-relay-overview/sb-relay-01.png)
@@ -31,14 +28,10 @@ Service Bus の主なコンポーネントは、一元管理された (ただし
 オンプレミス サービスとリレー サービス間の接続を開始するには、一連の WCF "リレー" バインディングを使用します。 バックグラウンドで、リレー バインディングは、新しいトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。 
 
 ## <a name="next-steps"></a>次のステップ
-
 Service Bus Relay の詳細については、次のトピックを参照してください。
 
-- [Azure Service Bus アーキテクチャの概要](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
-- [Service Bus Relay サービスの使用方法](service-bus-dotnet-how-to-use-relay.md)
-
- 
-
+* [Azure Service Bus アーキテクチャの概要](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
+* [Service Bus Relay サービスの使用方法](service-bus-dotnet-how-to-use-relay.md)
 
 <!--HONumber=Oct16_HO2-->
 

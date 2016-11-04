@@ -1,33 +1,30 @@
-<properties
-   pageTitle="Azure Portal のダッシュボード | Microsoft Azure"
-   description="この記事では、Azure Portal でダッシュボードを作成して編集する方法について説明します。"
-   services="azure-portal"
-   documentationCenter=""
-   authors="sewatson"
-   manager="timlt"
-   editor="tysonn"/>
+---
+title: Azure Portal のダッシュボード | Microsoft Docs
+description: この記事では、Azure Portal でダッシュボードを作成して編集する方法について説明します。
+services: azure-portal
+documentationcenter: ''
+author: sewatson
+manager: timlt
+editor: tysonn
 
-<tags
-   ms.service="multiple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="na"
-   ms.date="09/06/2016"
-   ms.author="sewatson"/>
+ms.service: multiple
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 09/06/2016
+ms.author: sewatson
 
+---
 # Azure Portal でのダッシュボードの作成と共有
-
 ダッシュボードを複数作成し、ご自分の Azure サブスクリプションにアクセスできる他のユーザーと共有することができます。この投稿では、ダッシュボードの作成、編集、発行のほか、ダッシュボードへのアクセスの管理に関する基本について説明します。
 
 ## ダッシュボードとブレードをカスタマイズする
-
 数か月前にダッシュボードが導入されて以来、ブレードのカスタマイズが減り続ける一方で、ダッシュボードのカスタマイズが急激に増加しています。使用状況に関するこの顕著な傾向から、ブレードよりもダッシュボードのカスタマイズの方が好まれていることがわかります。この傾向に対応するために、Microsoft はブレードをカスタマイズする機能を削除し、ダッシュボード機能の強化に専念することにしました。ブレードをカスタマイズしている場合、そのカスタマイズは間もなく削除されます。そのカスタマイズを保持するには、カスタマイズされたタイルをダッシュボードにピン留めします。タイルを右クリックし、次の画像に示すように **[ダッシュボードにピン留めする]** を選択してください。
 
 ![save customized tile](./media/azure-portal-dashboards/save-customization.png)
 
 ## ダッシュボードを作成する
-
 ダッシュボードを作成するには、現在のダッシュボードの名前の隣にある **[新しいダッシュボード]** ボタンを選択します。
 
 ![create dashboard](./media/azure-portal-dashboards/new-dashboard.png)
@@ -43,7 +40,6 @@
 ![add markdown](./media/azure-portal-dashboards/add-markdown.png)
 
 ## ダッシュボードを編集する
-
 ダッシュボードの作成後、タイル ギャラリーのタイルまたはブレードのタイル表示をピン留めできます。リソース グループの表示をピン留めしてみましょう。項目の参照中にピン留めすることも、リソース グループのブレードからピン留めすることもできます。どちらの方法でも、リソース グループのタイル表示がピン留めされます。
 
 ![pin to dashboard](./media/azure-portal-dashboards/pin-to-dashboard.png)
@@ -57,7 +53,7 @@
 […] の上にカーソルを合わせて選択するか、タイルを右クリックして、そのタイルのコンテキストに応じたコマンドをすべて表示できます。既定では、次の 2 つの項目があります。
 
 1. **[ダッシュボードへのピン留めを外す]** – ダッシュボードからタイルが削除されます。
-2.	**[カスタマイズ]** – カスタマイズ モードに切り替わります。
+2. **[カスタマイズ]** – カスタマイズ モードに切り替わります。
 
 ![customize tile](./media/azure-portal-dashboards/customize-tile.png)
 
@@ -76,7 +72,6 @@
 ダッシュボードのカスタマイズが完了したら、**[カスタマイズを完了しました]** を選択してカスタマイズ モードを終了します。または、右クリックしてコンテキスト メニューで **[カスタマイズを完了しました]** を選択します。
 
 ## ダッシュボードを発行してアクセス制御を管理する
-
 作成したダッシュボードは既定ではプライベートです。つまり、自分だけがこのダッシュボードを見ることができます。他のユーザーもこのダッシュボードを表示できるようにするには、ダッシュボードの他のコマンドと共に表示されている **[共有]** ボタンを使用します。
 
 ![share dashboard](./media/azure-portal-dashboards/share-dashboard.png)
@@ -98,8 +93,7 @@ Azure サブスクリプションがあり、チームのメンバーに、サ�
 ![manage access control](./media/azure-portal-dashboards/manage-access.png)
 
 ## 次のステップ
-
-- リソースの管理については、「[ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
-- リソースのデプロイについては、「[Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ](../resource-group-template-deploy-portal.md)」を参照してください。
+* リソースの管理については、「[ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
+* リソースのデプロイについては、「[Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ](../resource-group-template-deploy-portal.md)」を参照してください。
 
 <!---HONumber=AcomDC_0907_2016-->

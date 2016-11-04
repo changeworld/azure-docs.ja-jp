@@ -1,35 +1,33 @@
-<properties
-   pageTitle="Linux Azure 診断でログを収集する方法 | Microsoft Azure"
-   description="この記事では、Azure で実行されている Service Fabric Linux クラスターのログを収集するように Azure 診断を設定する方法について説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="mani-ramaswamy"
-   manager="timlt"
-   editor=""/>
+---
+title: Linux Azure 診断でログを収集する方法 | Microsoft Docs
+description: この記事では、Azure で実行されている Service Fabric Linux クラスターのログを収集するように Azure 診断を設定する方法について説明します。
+services: service-fabric
+documentationcenter: .net
+author: mani-ramaswamy
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotNet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/28/2016"
-   ms.author="subramar"/>
+ms.service: service-fabric
+ms.devlang: dotNet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/28/2016
+ms.author: subramar
 
-
-
+---
 # <a name="collect-logs-by-using-azure-diagnostics"></a>Azure 診断でログを収集する方法
-
-> [AZURE.SELECTOR]
-- [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
-- [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
+> [!div class="op_single_selector"]
+> * [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
+> * [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
+> 
+> 
 
 Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。 1 か所にログを収集すると、サービス、アプリケーション、またはクラスター自体のどこに問題があるかに関係なく、問題の分析と解決が簡単になります。 ログのアップロードと収集には、ログを Azure Storage にアップロードする Azure 診断拡張機能を使用する方法があります。 ストレージからイベントを読み取って、 [Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品または他のログ解析ソリューションに配置できます。
 
 ## <a name="log-sources-that-you-might-want-to-collect"></a>収集することができるログ ソース
-- **Service Fabric のログ**: [LTTng](http://lttng.org) を使用してプラットフォームによって出力され、ストレージ アカウントにアップロードされます。 ログには、プラットフォームから出力される操作イベントまたは実行時イベントが含まれます。 これらのログは、クラスター マニフェストで指定された場所に保存されます。 (ストレージ アカウントの詳細を取得するには、タグ **AzureTableWinFabETWQueryable** を検索し、**StoreConnectionString** を探してください。)
-- **アプリケーション イベント:** サービス コードから出力されます。 テキスト ベースのログ ファイルを書き込む任意のログ記録ソリューションを使用できます (たとえば、LTTng)。 詳細については、アプリケーションでトレースを実行する方法を LTTng に関するドキュメントで参照してください。  
-
+* **Service Fabric のログ**: [LTTng](http://lttng.org) を使用してプラットフォームによって出力され、ストレージ アカウントにアップロードされます。 ログには、プラットフォームから出力される操作イベントまたは実行時イベントが含まれます。 これらのログは、クラスター マニフェストで指定された場所に保存されます。 (ストレージ アカウントの詳細を取得するには、タグ **AzureTableWinFabETWQueryable** を検索し、**StoreConnectionString** を探してください。)
+* **アプリケーション イベント:** サービス コードから出力されます。 テキスト ベースのログ ファイルを書き込む任意のログ記録ソリューションを使用できます (たとえば、LTTng)。 詳細については、アプリケーションでトレースを実行する方法を LTTng に関するドキュメントで参照してください。  
 
 ## <a name="deploy-the-diagnostics-extension"></a>診断拡張機能のデプロイ
 ログ収集の最初の手順は、Service Fabric クラスター内の各 VM に診断拡張機能をデプロイすることです。 診断拡張機能を使用すると、各 VM のログが収集され、指定したストレージ アカウントにアップロードされます。 手順は、Azure Portal と Azure Resource Manager のどちらを使用するかに応じて変わります。
@@ -44,11 +42,8 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 
 この構成を完了すると、指定されたログ ファイルが LAD エージェントによって監視されます。 新しい行がファイルに追加されるたびに、指定したストレージに送信される syslog エントリが作成されます。
 
-
 ## <a name="next-steps"></a>次のステップ
 問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](http://lttng.org/docs)と [LAD の使用](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md)に関するページを参照してください。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

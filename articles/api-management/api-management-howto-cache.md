@@ -1,38 +1,41 @@
-<properties
-	pageTitle="キャッシュを追加して Azure API Management のパフォーマンスを向上させる | Microsoft Azure"
-	description="API Management のサービスの呼び出しで、遅延、帯域幅の消費、Web サービスの負荷を改善させる方法について説明します。"
-	services="api-management"
-	documentationCenter=""
-	authors="steved0x"
-	manager="erikre"
-	editor=""/>
+---
+title: キャッシュを追加して Azure API Management のパフォーマンスを向上させる | Microsoft Docs
+description: API Management のサービスの呼び出しで、遅延、帯域幅の消費、Web サービスの負荷を改善させる方法について説明します。
+services: api-management
+documentationcenter: ''
+author: steved0x
+manager: erikre
+editor: ''
 
-<tags
-	ms.service="api-management"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/24/2016"
-	ms.author="sdanie"/>
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/24/2016
+ms.author: sdanie
 
+---
 # キャッシュを追加して Azure API Management のパフォーマンスを向上させる
-
 API Management では、応答のキャッシュ用に操作を構成できます。応答のキャッシュを行うと、API の遅延、帯域幅の消費、頻繁に変更されないデータの Web サービスの負荷が大幅に小さくなります。
 
 このガイドでは、API の応答のキャッシュを追加して、サンプルの Echo API 操作のポリシーを構成する方法を示します。その後は、開発者ポータルで操作を呼び出してキャッシュの動作を確認することができます。
 
->[AZURE.NOTE] ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「[Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
+> [!NOTE]
+> ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「[Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
+> 
+> 
 
 ## 前提条件
-
-このガイドの手順を実行するには、API Management サービスのインスタンスに API と成果物を構成しておく必要があります。まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
+このガイドの手順を実行するには、API Management サービスのインスタンスに API と成果物を構成しておく必要があります。まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][Azure API Management の使用]」チュートリアルの「[API Management インスタンスの作成][API Management インスタンスの作成]」を参照してください。
 
 ## <a name="configure-caching"> </a>キャッシュ用の操作の構成
-
 このステップでは、サンプル Echo API の **GET Resource (cached)** 操作のキャッシュ設定を確認します。
 
->[AZURE.NOTE] それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。詳細については、「[Azure API Management の使用][]」を参照してください。
+> [!NOTE]
+> それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。詳細については、「[Azure API Management の使用][Azure API Management の使用]」を参照してください。
+> 
+> 
 
 最初に、ご利用の API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
@@ -59,7 +62,6 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 この例のキャッシュ構成を使用した場合、**GET Resource (cached)** 操作への最初の要求に対し、バックエンド サービスから応答が返されます。この応答は、キャッシュに格納され、指定されたヘッダーとクエリ文字列パラメーターによってキー付けされます。パラメーターが一致する後続の操作の呼び出しに対しては、キャッシュの有効期間が超過するまで、キャッシュに格納された応答が返されます。
 
 ## <a name="caching-policies"> </a>キャッシュ ポリシーの確認
-
 このステップでは、サンプル Echo API の **GET Resource (cached)** 操作のキャッシュ設定を確認します。
 
 **[キャッシュ]** タブで操作に対してキャッシュ設定を構成すると、操作に対してキャッシュ ポリシーが追加されます。これらのポリシーは、ポリシー エディターで表示および編集できます。
@@ -74,25 +76,27 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 この操作のポリシー定義には、前のステップで **[キャッシュ]** タブを使用して確認したキャッシュ構成を定義するポリシーが含まれています。
 
-	<policies>
-		<inbound>
-			<base />
-			<cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
-				<vary-by-header>Accept</vary-by-header>
-				<vary-by-header>Accept-Charset</vary-by-header>
-			</cache-lookup>
-			<rewrite-uri template="/resource" />
-		</inbound>
-		<outbound>
-			<base />
-			<cache-store caching-mode="cache-on" duration="3600" />
-		</outbound>
-	</policies>
+    <policies>
+        <inbound>
+            <base />
+            <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
+                <vary-by-header>Accept</vary-by-header>
+                <vary-by-header>Accept-Charset</vary-by-header>
+            </cache-lookup>
+            <rewrite-uri template="/resource" />
+        </inbound>
+        <outbound>
+            <base />
+            <cache-store caching-mode="cache-on" duration="3600" />
+        </outbound>
+    </policies>
 
->[AZURE.NOTE] ポリシー エディターでキャッシュ ポリシーに加えた変更は、操作の **[キャッシュ]** タブに反映されます (また、その逆の操作を行った場合も同様に変更が反映されます)。
+> [!NOTE]
+> ポリシー エディターでキャッシュ ポリシーに加えた変更は、操作の **[キャッシュ]** タブに反映されます (また、その逆の操作を行った場合も同様に変更が反映されます)。
+> 
+> 
 
 ## <a name="test-operation"> </a>操作の呼び出しとキャッシュのテスト
-
 キャッシュの動作を確認するには、開発者ポータルから操作を呼び出します。右上のメニューで、**[開発者ポータル]** をクリックします。
 
 ![開発者ポータル][api-management-developer-portal-menu]
@@ -101,7 +105,9 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 ![Echo API][api-management-apis-echo-api]
 
->アカウントに対して構成されている (またはアカウントから見える) API が 1 つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
+> アカウントに対して構成されている (またはアカウントから見える) API が 1 つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
+> 
+> 
 
 **[GET Resource (cached)]** 操作を選択し、**[コンソールを開く]** をクリックします。
 
@@ -128,9 +134,8 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 応答内の **sampleheader** の値が **value2** になっていることに注目してください。操作の結果はクエリ文字列によってキー付けされているため、以前のキャッシュに格納された応答は返されません。
 
 ## <a name="next-steps"> </a>次のステップ
-
--	キャッシュ ポリシーの詳細については、「[Azure API Management ポリシー リファレンス][]」の「[キャッシュ ポリシー][]」を参照してください。
--	ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「[Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
+* キャッシュ ポリシーの詳細については、「[Azure API Management ポリシー リファレンス][Azure API Management ポリシー リファレンス]」の「[キャッシュ ポリシー][キャッシュ ポリシー]」を参照してください。
+* ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「[Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

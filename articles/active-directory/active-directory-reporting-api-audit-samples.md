@@ -1,45 +1,38 @@
-<properties
-    pageTitle="Azure Active Directory レポートの監査 API の例 | Microsoft Azure"
-    description="Azure Active Directory Reporting API の概要について説明します。"
-    services="active-directory"
-    documentationCenter=""
-    authors="dhanyahk"
-    manager="femila"
-    editor=""/>
+---
+title: Azure Active Directory レポートの監査 API の例 | Microsoft Docs
+description: Azure Active Directory Reporting API の概要について説明します。
+services: active-directory
+documentationcenter: ''
+author: dhanyahk
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="identity"
-    ms.date="09/28/2016"
-    ms.author="dhanyahk;markvi"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/28/2016
+ms.author: dhanyahk;markvi
 
-
+---
 # <a name="azure-active-directory-reporting-audit-api-samples"></a>Azure Active Directory レポートの監査 API の例
-
 このトピックは Azure Active Directory Reporting API に関するトピックのコレクションの一部です。  
 Azure AD レポートは、コードまたは関連ツールを使用して監査データにアクセスできるようにする API を提供します。
 このトピックでは、 **監査 API**のサンプル コードを提供します。
 
 参照:
 
-- [監査ログ](active-directory-reporting-azure-portal.md#audit-logs) に関する記事
-
-- [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md) 」。
+* [監査ログ](active-directory-reporting-azure-portal.md#audit-logs) に関する記事
+* [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md) 」。
 
 質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
 
-
 ## <a name="prerequisites"></a>前提条件
 このトピックに掲載されているサンプルを使用するには、事前に、 [Azure AD レポート API にアクセスするための前提条件](active-directory-reporting-api-prerequisites.md)を完了する必要があります。  
-  
 
 ## <a name="known-issue"></a>既知の問題
-
 EU リージョン内にテナントがある場合、アプリの認証は行われません。 この問題が解決されるまでは、回避策として、ユーザー認証を使用して監査 API にアクセスしてください。 
-
 
 ## <a name="powershell-script"></a>PowerShell スクリプト
     # This script will require registration of a Web Application in Azure Active Directory (see https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)
@@ -71,7 +64,7 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
             foreach ($event in ($myReport.Content | ConvertFrom-Json).value) {
                 Write-Output ($event | ConvertTo-Json)
             }
-        
+
             # save the query page to an output file
             Write-Output "Save the output to a file audit$i.json"
             $myReport.Content | Out-File -FilePath audit$i.json -Force
@@ -91,9 +84,7 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
 
 スクリプトからは、監査レポートの出力が JSON 形式で返されます。 また、同じ出力内容を使って `audit.json` ファイルも作成されます。 他のレポートからデータを返すようにスクリプトを変更してテストしたり、必要のない出力形式をコメント化したりできます。
 
-
 ## <a name="bash-script"></a>Bash スクリプト
-
     #!/bin/bash
 
     # Author: Ken Hoff (kenhoff@microsoft.com)
@@ -122,7 +113,6 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
     echo $REPORT | ./jq-win64.exe -r '.value' | ./jq-win64.exe -r ".[]"
 
 ## <a name="python-script"></a>Python スクリプト
-
     # Author: Michael McLaughlin (michmcla@microsoft.com)
     # Date: January 20, 2016
     # This requires the Python Requests module: http://docs.python-requests.org
@@ -168,14 +158,9 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
 
 
 ## <a name="next-steps"></a>次のステップ
-
-- このトピックに掲載されているサンプルをカスタマイズしますか。 [Azure Active Directory 監査 API リファレンス](active-directory-reporting-api-audit-reference.md)を確認してください。 
-
-- Azure Active Directory Reporting API の使用に関する網羅的な概要を参照するには、 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)を参照してください。
-
-- Azure Active Directory のレポート作成に関する詳細については、「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。  
-
-
+* このトピックに掲載されているサンプルをカスタマイズしますか。 [Azure Active Directory 監査 API リファレンス](active-directory-reporting-api-audit-reference.md)を確認してください。 
+* Azure Active Directory Reporting API の使用に関する網羅的な概要を参照するには、 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)を参照してください。
+* Azure Active Directory のレポート作成に関する詳細については、「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。  
 
 <!--HONumber=Oct16_HO2-->
 

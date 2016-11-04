@@ -1,40 +1,37 @@
-<properties
-   pageTitle="Linux VM の RM デプロイメントのトラブルシューティング | Microsoft Azure"
-   description="Azure で新しい Linux 仮想マシンを作成するときに発生する Resource Manager デプロイメントの問題のトラブルシューティング"
-   services="virtual-machines-linux, azure-resource-manager"
-   documentationCenter=""
-   authors="JiangChen79"
-   manager="felixwu"
-   editor=""
-   tags="top-support-issue, azure-resource-manager"/>
+---
+title: Linux VM の RM デプロイメントのトラブルシューティング | Microsoft Docs
+description: Azure で新しい Linux 仮想マシンを作成するときに発生する Resource Manager デプロイメントの問題のトラブルシューティング
+services: virtual-machines-linux, azure-resource-manager
+documentationcenter: ''
+author: JiangChen79
+manager: felixwu
+editor: ''
+tags: top-support-issue, azure-resource-manager
 
-<tags
-  ms.service="virtual-machines-linux"
-  ms.workload="na"
-  ms.tgt_pltfrm="vm-linux"
-  ms.devlang="na"
-  ms.topic="article"
-  ms.date="09/09/2016"
-  ms.author="cjiang"/>
+ms.service: virtual-machines-linux
+ms.workload: na
+ms.tgt_pltfrm: vm-linux
+ms.devlang: na
+ms.topic: article
+ms.date: 09/09/2016
+ms.author: cjiang
 
-
+---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Azure での新しい Linux 仮想マシンの作成に関する Resource Manager デプロイメントの問題のトラブルシューティング
+[!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
-[AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
-
-[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+[!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="collect-audit-logs"></a>監査ログの収集
-
 トラブルシューティングを開始するには、監査ログを収集して問題に関連するエラーを特定します。 このプロセスの詳細については、次のリンクをご覧ください。
 
 [Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)
 
 [リソース マネージャーの監査操作](../resource-group-audit.md)
 
-[AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
+[!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
-[AZURE.INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
+[!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
 **Y:** OS が一般化された Linux であり、一般化された設定でアップロード/キャプチャされた場合、エラーは発生しません。 同様に、OS が特殊化された Linux であり、特殊化された設定でアップロード/キャプチャされた場合、エラーは発生しません。
 
@@ -65,26 +62,24 @@
 
 **解決策 1:**
 
-- VM サイズを小さくして要求を再試行します。
-- 要求した VM のサイズを変更できない場合は、次の手順を実行します。
-  - 可用性セットのすべての VM を停止します。
-  **[リソース グループ]** > *対象のリソース グループ* > **[リソース]** > *対象の可用性セット* > **[Virtual Machines]** > *対象の仮想マシン* > **[停止]** の順にクリックします。
-  - すべての VM が停止したら、目的のサイズで新しい VM を作成します。
-  - 新しい VM を起動してから、停止している各 VM を選択し、 **[起動]**をクリックします。
+* VM サイズを小さくして要求を再試行します。
+* 要求した VM のサイズを変更できない場合は、次の手順を実行します。
+  * 可用性セットのすべての VM を停止します。
+    **[リソース グループ]** > *対象のリソース グループ* > **[リソース]** > *対象の可用性セット* > **[Virtual Machines]** > *対象の仮想マシン* > **[停止]** の順にクリックします。
+  * すべての VM が停止したら、目的のサイズで新しい VM を作成します。
+  * 新しい VM を起動してから、停止している各 VM を選択し、 **[起動]**をクリックします。
 
 **原因 2:** クラスターに空きリソースがない。
 
 **解決策 2:**
 
-- 後で要求を再試行します。
-- 新しい VM を別の可用性セットに含めることができる場合
-  - 新しい VM を (同じリージョンの) 別の可用性セットに作成します。
-  - 新しい VM を同じ仮想ネットワークに追加します。
+* 後で要求を再試行します。
+* 新しい VM を別の可用性セットに含めることができる場合
+  * 新しい VM を (同じリージョンの) 別の可用性セットに作成します。
+  * 新しい VM を同じ仮想ネットワークに追加します。
 
 ## <a name="next-steps"></a>次のステップ
 Azure で停止していた Linux VM の再起動または既存の Linux VM のサイズ変更に問題が発生する場合は、「 [Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング](virtual-machines-linux-restart-resize-error-troubleshooting.md)」を参照してください。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

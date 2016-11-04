@@ -1,37 +1,37 @@
-<properties 
-   pageTitle="Azure モバイル エンゲージメント ユーザー インターフェイス - ダッシュ ボード" 
-   description="Azure モバイル エンゲージメントを使用し、アプリケーションに関するデータのグラフを表示し、操作する方法を説明します。" 
-   services="mobile-engagement" 
-   documentationCenter="" 
-   authors="piyushjo" 
-   manager="dwrede" 
-   editor=""/>
+---
+title: Azure モバイル エンゲージメント ユーザー インターフェイス - ダッシュ ボード
+description: Azure モバイル エンゲージメントを使用し、アプリケーションに関するデータのグラフを表示し、操作する方法を説明します。
+services: mobile-engagement
+documentationcenter: ''
+author: piyushjo
+manager: dwrede
+editor: ''
 
-<tags
-   ms.service="mobile-engagement"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="mobile-multiple"
-   ms.workload="mobile" 
-   ms.date="08/19/2016"
-   ms.author="piyushjo"/>
+ms.service: mobile-engagement
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: mobile-multiple
+ms.workload: mobile
+ms.date: 08/19/2016
+ms.author: piyushjo
 
+---
 # アプリケーションに関するデータのグラフを表示し、操作する方法
 UI の [ダッシュボード] セクションは、[分析] セクションで検索する代わりに必要な正確な情報を提供するため、顧客はカスタマイズされたグラフを作成して時間を最大限に生かすことができます。ダッシュボードは、さまざまなバージョンのアプリケーションに対して、一定期間 (時間 / 日 / 週 / 月 / カスタマイズ) のアプリケーションの傾向とアクティブ ユーザー数を示します。表示される傾向は過去 7 日間に基づいています。
 
 ### 関連項目
--  [トラブルシューティング ガイド - 分析][Link 21]
+* [トラブルシューティング ガイド - 分析][Link 21]
 
 ## ダッシュボード
-- 空のダッシュボードにグラフを追加するには、ダッシュボード上に表示したい UI の [分析] セクションにある任意のグラフのギア メニューから、[Send to dashboard (ダッシュボードに送信)] アクションを選択します。
- 
+* 空のダッシュボードにグラフを追加するには、ダッシュボード上に表示したい UI の [分析] セクションにある任意のグラフのギア メニューから、[Send to dashboard (ダッシュボードに送信)] アクションを選択します。
+
 ## + (ダッシュボードを追加する)
-- 「+」のリボン メニュー項目を使用して、リボン メニューに表示される新しいダッシュボードを作成できます。
- 
+* 「+」のリボン メニュー項目を使用して、リボン メニューに表示される新しいダッシュボードを作成できます。
+
 ## ギア メニュー
-- ダッシュボードのギア メニューを使用して、ダッシュボードの削除、名前変更、共有、スケジュール (メールの受信) を行うことができます。スケジュール オプションを使用して、カスタム ダッシュボードをメールで受信するようにスケジュールを定義できます。メールの受信は、毎日、毎週、または毎月にスケジュールできます。さらに、時間、曜日、日付を選択できます。メール アドレスとタイム ゾーンは、UI の [マイ アカウント] セクションで構成した設定に基づいています。
- 
- ![dashboard1][34]
+* ダッシュボードのギア メニューを使用して、ダッシュボードの削除、名前変更、共有、スケジュール (メールの受信) を行うことができます。スケジュール オプションを使用して、カスタム ダッシュボードをメールで受信するようにスケジュールを定義できます。メールの受信は、毎日、毎週、または毎月にスケジュールできます。さらに、時間、曜日、日付を選択できます。メール アドレスとタイム ゾーンは、UI の [マイ アカウント] セクションで構成した設定に基づいています。
+  
+  ![dashboard1][34]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -127,6 +127,6 @@ UI の [ダッシュボード] セクションは、[分析] セクションで�
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
- 
+
 
 <!---HONumber=AcomDC_0824_2016-->

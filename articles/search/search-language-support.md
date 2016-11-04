@@ -1,50 +1,52 @@
-<properties
-   pageTitle="Azure Search でドキュメントのインデックスを複数の言語で作成する | Microsoft Azure | ホスト型クラウド検索サービス"
-   description=" Azure Search では 56 の言語がサポートされており、Lucene の言語アナライザーや Microsoft の自然言語処理テクノロジが利用されています。"
-   services="search"
-   documentationCenter=""
-   authors="yahnoosh"
-   manager="pablocas"
-   editor=""/>
+---
+title: Azure Search でドキュメントのインデックスを複数の言語で作成する | Microsoft Docs
+description: " Azure Search では 56 の言語がサポートされており、Lucene の言語アナライザーや Microsoft の自然言語処理テクノロジが利用されています。"
+services: search
+documentationcenter: ''
+author: yahnoosh
+manager: pablocas
+editor: ''
 
-<tags
-   ms.service="search"
-   ms.devlang="na"
-   ms.workload="search"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.date="07/14/2016"
-   ms.author="jlembicz"/>
+ms.service: search
+ms.devlang: na
+ms.workload: search
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.date: 07/14/2016
+ms.author: jlembicz
 
+---
 # Azure Search でドキュメントのインデックスを複数の言語で作成する
-> [AZURE.SELECTOR]
-- [ポータル](search-language-support.md)
-- [REST ()](https://msdn.microsoft.com/library/azure/dn879793.aspx)
-- [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
+> [!div class="op_single_selector"]
+> * [ポータル](search-language-support.md)
+> * [REST ()](https://msdn.microsoft.com/library/azure/dn879793.aspx)
+> * [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
+> 
+> 
 
 インデックス定義内で検索可能フィールドにプロパティを 1 つ設定するのと同じくらい簡単に、言語アナライザーの機能を最大限に引き出すことができます。この手順はポータルで実行できるようになりました。
 
 ユーザーがインデックス スキーマを定義できる、Azure ポータルの Azure Search 用のブレードのスクリーンショットを以下に示します。ユーザーは、このブレードからすべてのフィールドを作成し、各フィールドのアナライザー プロパティを設定できます。
 
-> [AZURE.IMPORTANT] 新しいインデックスを一から作成する場合や既存のインデックスに新しいフィールドを追加する場合と同様、フィールドの定義中に設定できる言語アナライザーは 1 つだけです。フィールドの作成中に、アナライザーを含むすべての属性を完全に指定するようにしてください。変更を保存すると、属性を編集したり、アナライザーの種類を変更したりできなくなります。
+> [!IMPORTANT]
+> 新しいインデックスを一から作成する場合や既存のインデックスに新しいフィールドを追加する場合と同様、フィールドの定義中に設定できる言語アナライザーは 1 つだけです。フィールドの作成中に、アナライザーを含むすべての属性を完全に指定するようにしてください。変更を保存すると、属性を編集したり、アナライザーの種類を変更したりできなくなります。
+> 
+> 
 
 ## 新しいフィールド定義を定義する
-
 1. [Azure ポータル](https://portal.azure.com)にサインインし、検索サービスのサービス ブレードを開きます。
 2. サービス ダッシュボードの上部にあるコマンド バーの **[インデックスの追加]** をクリックして新しいインデックスを開始するか、既存のインデックスを開いて、既存のインデックスに追加する新しいフィールドでアナライザーを設定します。
 3. [フィールド] ブレードが表示され、言語アナライザーの選択に使用する [アナライザー] タブなど、インデックスのスキーマを定義するためのオプションが表示されます。
 4. [フィールド] ブレードで、フィールドの定義を開始します。名前の指定、データ型の選択、および属性の設定を行い、フルテキスト検索可能、検索結果で取得可能、ファセット ナビゲーション構造で使用可能、並べ替え可能などとしてフィールドにマークします。
 5. 次のフィールドに移動する前に、**[アナライザー]** タブを開きます。
 
-   
 ![][1] *アナライザーを選択するには、[フィールド] ブレードの [アナライザー] タブをクリックする*
 
 ## アナライザーを選択する
-
-6. 定義するフィールドが見つかるまでスクロールします。
-7. 検索可能としてフィールドをマークしていない場合は、ここでチェック ボックスをオンにし、フィールドを**検索可能**としてマークします。
-8. [アナライザー] 領域をクリックすると、使用可能なアナライザーの一覧が表示されます。
-9. 使用するアナライザーを選択します。
+1. 定義するフィールドが見つかるまでスクロールします。
+2. 検索可能としてフィールドをマークしていない場合は、ここでチェック ボックスをオンにし、フィールドを**検索可能**としてマークします。
+3. [アナライザー] 領域をクリックすると、使用可能なアナライザーの一覧が表示されます。
+4. 使用するアナライザーを選択します。
 
 ![][2] *フィールドごとにサポートされているアナライザーを 1 つ選択する*
 

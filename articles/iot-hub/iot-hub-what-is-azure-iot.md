@@ -1,31 +1,30 @@
-<properties
- pageTitle="モノのインターネット用の Azure ソリューション | Microsoft Azure"
- description="サンプル ソリューション アーキテクチャや、それが、Azure IoT Hub、デバイス SDK、および構成済みソリューションとどのように関連するかなど、Azure での IoT の概要。"
- services="iot-hub"
- documentationCenter=""
- authors="dominicbetts"
- manager="timlt"
- editor=""/>
+---
+title: モノのインターネット用の Azure ソリューション | Microsoft Docs
+description: サンプル ソリューション アーキテクチャや、それが、Azure IoT Hub、デバイス SDK、および構成済みソリューションとどのように関連するかなど、Azure での IoT の概要。
+services: iot-hub
+documentationcenter: ''
+author: dominicbetts
+manager: timlt
+editor: ''
 
-<tags
- ms.service="iot-hub"
- ms.devlang="na"
- ms.topic="get-started-article"
- ms.tgt_pltfrm="na"
- ms.workload="na"
- ms.date="10/05/2016"
- ms.author="dobett"/>
+ms.service: iot-hub
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 10/05/2016
+ms.author: dobett
 
-[AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
+---
+[!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## 次のステップ
-
 Azure IoT Hub は、アプリケーション バックエンドと何百万ものデバイスとの間に信頼性のある保護された双方向通信を確立できるサービスです。これによりアプリケーション バックエンドから次のことを実行できるようになります。
 
-- デバイスから大量のテレメトリを受信する。
-- デバイスからストリーム イベント プロセッサにデータをルーティングする。
-- デバイスからアップロードされたファイルを受信する。
-- クラウドからデバイスへのコマンドを特定のデバイスに送信する。
+* デバイスから大量のテレメトリを受信する。
+* デバイスからストリーム イベント プロセッサにデータをルーティングする。
+* デバイスからアップロードされたファイルを受信する。
+* クラウドからデバイスへのコマンドを特定のデバイスに送信する。
 
 IoT Hub を使用して、独自のソリューション バックエンドを実装できます。さらに、IoT Hub には、デバイスと、デバイスのセキュリティ資格情報と、デバイスがハブに接続するための権限とをプロビジョニングするために使用するデバイス ID レジストリが含まれています。IoT Hub の詳細については、「[Azure IoT Hub とは][lnk-iot-hub]」を参照してください。
 

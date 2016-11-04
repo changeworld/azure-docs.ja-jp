@@ -1,24 +1,22 @@
-<properties
-    pageTitle="Log Analytics での Active Directory のレプリケーションの状態のソリューション | Microsoft Azure"
-    description="Active Directory レプリケーションの状態ソリューション パックは、レプリケーションの失敗がないか Active Directory 環境を定期的に監視し、その結果を OMS ダッシュボードにレポートします。"
-    services="log-analytics"
-    documentationCenter=""
-    authors="bandersmsft"
-    manager="jwhit"
-    editor=""/>
+---
+title: Log Analytics での Active Directory のレプリケーションの状態のソリューション | Microsoft Docs
+description: Active Directory レプリケーションの状態ソリューション パックは、レプリケーションの失敗がないか Active Directory 環境を定期的に監視し、その結果を OMS ダッシュボードにレポートします。
+services: log-analytics
+documentationcenter: ''
+author: bandersmsft
+manager: jwhit
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/10/2016"
-    ms.author="banders"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/10/2016
+ms.author: banders
 
-
+---
 # <a name="active-directory-replication-status-solution-in-log-analytics"></a>Log Analytics での Active Directory のレプリケーションの状態ソリューション
-
 Active Directory は、エンタープライズ IT 環境の重要なコンポーネントです。 各ドメイン コントローラーには、高い可用性とパフォーマンスを保証するために、Active Directory データベースのコピーが保持されています。 ドメイン コントローラーは、エンタープライズ全体に変更を反映するために、相互にレプリケートを行います。 このレプリケーション処理で失敗すると、エンタープライズ全体でさまざまな問題が発生します。
 
 AD レプリケーションの状態ソリューション パックは、レプリケーションの失敗を Active Directory 環境で定期的に監視し、その結果を OMS ダッシュボードにレポートします。
@@ -26,31 +24,32 @@ AD レプリケーションの状態ソリューション パックは、レプ�
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
-- 評価されるドメインのメンバーであるドメイン コントローラーか、AD レプリケーションのデータを OMS に送信するように構成されているメンバー サーバーに、エージェントをインストールする必要があります。 Windows コンピューターを OMS に接続する方法の詳細については、「 [Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agents.md)」を参照してください。 ドメイン コントローラーが既に OMS に接続されている既存の System Center Operations Manager 環境の一部である場合、「 [Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」を参照してください。
-- Active Directory のレプリケーションの状態を OMS ワークスペースに追加するには、「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」で説明されている手順に従います。  さらに手動で構成する必要はありません。
-
+* 評価されるドメインのメンバーであるドメイン コントローラーか、AD レプリケーションのデータを OMS に送信するように構成されているメンバー サーバーに、エージェントをインストールする必要があります。 Windows コンピューターを OMS に接続する方法の詳細については、「 [Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agents.md)」を参照してください。 ドメイン コントローラーが既に OMS に接続されている既存の System Center Operations Manager 環境の一部である場合、「 [Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」を参照してください。
+* Active Directory のレプリケーションの状態を OMS ワークスペースに追加するには、「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」で説明されている手順に従います。  さらに手動で構成する必要はありません。
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD レプリケーションの状態データの収集に関する詳細
-
 次の表は、AD レプリケーションの状態のデータの収集手段と、データの収集方法に関する各種情報をまとめたものです。
 
 | プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
-|---|---|---|---|---|---|---|
-|Windows|![あり](./media/log-analytics-ad-replication-status/oms-bullet-green.png)|![あり](./media/log-analytics-ad-replication-status/oms-bullet-green.png)|![なし](./media/log-analytics-ad-replication-status/oms-bullet-red.png)|![いいえ](./media/log-analytics-ad-replication-status/oms-bullet-red.png)|![あり](./media/log-analytics-ad-replication-status/oms-bullet-green.png)| 5 日ごと|
-
+| --- | --- | --- | --- | --- | --- | --- |
+| Windows |![あり](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |![あり](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |![なし](./media/log-analytics-ad-replication-status/oms-bullet-red.png) |![いいえ](./media/log-analytics-ad-replication-status/oms-bullet-red.png) |![あり](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |5 日ごと |
 
 ## <a name="optionally,-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>ドメイン コントローラー以外からの AD データの OMS への送信をオプションで有効にする
 いずれのドメイン コントローラーも直接 OMS に接続しない場合、ドメイン内の OMS に接続されている他の任意のコンピューターを使用し、それに AD レプリケーションの状態ソリューション パック用にデータを送信させることができます。
 
 ### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>ドメイン コントローラー以外から AD データを OMS に送信するには
-1.  コンピューターが、AD レプリケーションの状態ソリューションを使用して監視するドメインのメンバーであることを確認します。
-2.  まだ接続されていない場合は、[Windows コンピューターを OMS に接続する](log-analytics-windows-agents.md)か、[既存の Operations Manager 環境を使用してそれを OMS に接続します](log-analytics-om-agents.md)。
-3.  そのコンピューターで、次のレジストリ キーを設定します。
-    - キー: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
-    - 値: **IsTarge**
-    - 値のデータ: **true**
-
-    >[AZURE.NOTE]これらの変更は、Microsoft Monitoring Agent サービス (HealthService.exe) を再起動するまで反映されません。
+1. コンピューターが、AD レプリケーションの状態ソリューションを使用して監視するドメインのメンバーであることを確認します。
+2. まだ接続されていない場合は、[Windows コンピューターを OMS に接続する](log-analytics-windows-agents.md)か、[既存の Operations Manager 環境を使用してそれを OMS に接続します](log-analytics-om-agents.md)。
+3. そのコンピューターで、次のレジストリ キーを設定します。
+   
+   * キー: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
+   * 値: **IsTarge**
+   * 値のデータ: **true**
+   
+   > [!NOTE]
+   > これらの変更は、Microsoft Monitoring Agent サービス (HealthService.exe) を再起動するまで反映されません。
+   > 
+   > 
 
 ## <a name="understanding-replication-errors"></a>レプリケーションの問題を理解する
 AD レプリケーションの状態データが OMS に送信されたら、OMS ダッシュボードには現在のレプリケーション エラー数を示す、次のようなタイルが表示されます。  
@@ -60,7 +59,6 @@ AD レプリケーションの状態データが OMS に送信されたら、OMS
 
 タイルをクリックすると、エラーの詳細をさらに表示できます。
 ![AD レプリケーションの状態ダッシュボード](./media/log-analytics-ad-replication-status/oms-ad-replication-dash.png)
-
 
 ### <a name="destination-server-status-and-source-server-status"></a>移行先サーバーと移行元サーバーの状態
 これらのブレードでは、レプリケーション エラーが発生している移行先サーバーと移行元サーバーの状態を示しています。 各ドメイン コントローラー名の後には、そのドメイン コントローラーで発生したレプリケーション エラーの数があります。
@@ -93,7 +91,10 @@ AD レプリケーションの状態データが OMS に送信されたら、OMS
 
 前述のとおり、AD レプリケーションの状態ソリューションのダッシュボード タイルには、廃棄 (tombstone) の有効期間の 75% を経過した、環境内の *重大な* レプリケーション エラーが示されています (これには、TSL の 100% を超えるエラーも含みます)。 この数字は 0 に維持できるよう努めてください。
 
->[AZURE.NOTE] 廃棄 (tombstone) の有効期間のすべてのパーセンテージの計算は、Active Directory フォレストの実際の廃棄 (tombstone) の有効期限に基づいています。したがって廃棄 (tombstone) の有効期間の値をカスタマイズしている場合でも、それらのパーセンテージは正確であると信頼できます。
+> [!NOTE]
+> 廃棄 (tombstone) の有効期間のすべてのパーセンテージの計算は、Active Directory フォレストの実際の廃棄 (tombstone) の有効期限に基づいています。したがって廃棄 (tombstone) の有効期間の値をカスタマイズしている場合でも、それらのパーセンテージは正確であると信頼できます。
+> 
+> 
 
 ### <a name="ad-replication-status-details"></a>AD レプリケーションの状態の詳細
 一覧のいずれかの任意の項目をクリックすると、ログ検索にその詳細を表示できます。 その項目に関連するエラーのみが表示されるよう、結果はフィルター処理されます。 たとえば、[ **移行先サーバーの状態 (ADDC02)**] 下の最初のドメイン コントローラーをクリックすると、移行先サーバーであるそのドメイン コントローラーのエラーがフィルター処理された検索結果が表示されます。
@@ -143,12 +144,8 @@ AD レプリケーションの状態ソリューション パックでデータ�
 
 ドメイン コントローラーを OMS または SCOM に直接接続しない場合は、「 [ドメイン コントローラー以外から AD データを OMS に送信するには](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)」を参照してください。
 
-
 ## <a name="next-steps"></a>次のステップ
-
-- Active Directory のレプリケーション状態の詳細データを参照するには、「 [Log Analytics におけるログの検索](log-analytics-log-searches.md) 」を使用してください。
-
-
+* Active Directory のレプリケーション状態の詳細データを参照するには、「 [Log Analytics におけるログの検索](log-analytics-log-searches.md) 」を使用してください。
 
 <!--HONumber=Oct16_HO2-->
 

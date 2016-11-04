@@ -1,25 +1,28 @@
-<properties
-   pageTitle="Linux VM での複数 NIC の構成 | Microsoft Azure"
-   description="Azure CLI または Resource Manager テンプレートを使用して、複数の NIC を持つ VM を作成する方法について説明します。"
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""/>
+---
+title: Linux VM での複数 NIC の構成 | Microsoft Docs
+description: Azure CLI または Resource Manager テンプレートを使用して、複数の NIC を持つ VM を作成する方法について説明します。
+services: virtual-machines-linux
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure"
-   ms.date="08/02/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 08/02/2016
+ms.author: iainfou
 
+---
 # 複数 NIC を持つ VM の作成
 Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。この記事では、複数の NIC を持つ VM を作成するためのクイック コマンドを紹介します。独自の Bash スクリプト内に複数の NIC を作成する方法など、詳しくは、[複数 NIC の VM のデプロイ](../virtual-network/virtual-network-deploy-multinic-arm-cli.md)に関する記事を参照してください。[VM のサイズ](virtual-machines-linux-sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
 
->[AZURE.WARNING] VM の作成時に複数の NIC をアタッチする必要があります。既存の VM に NIC を追加することはできません。[元の仮想ディスクに基づいて新しい VM を作成](virtual-machines-linux-copy-vm.md)し、VM をデプロイするときに複数の NIC を作成できます。
+> [!WARNING]
+> VM の作成時に複数の NIC をアタッチする必要があります。既存の VM に NIC を追加することはできません。[元の仮想ディスクに基づいて新しい VM を作成](virtual-machines-linux-copy-vm.md)し、VM をデプロイするときに複数の NIC を作成できます。
+> 
+> 
 
 ## クイック コマンド
 [Azure CLI](../xplat-cli-install.md) でログインし、Resource Manager モードを使用していることを確認します (`azure config mode arm`)。

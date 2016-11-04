@@ -1,27 +1,25 @@
-<properties
-   pageTitle="Azure Active Directory にアプリケーションを追加する方法。"
-   description="この記事では、アプリケーションを Azure Active Directory のインスタンスに追加する方法について説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="shoatman"
-   manager="kbrint"
-   editor=""/>
+---
+title: Azure Active Directory にアプリケーションを追加する方法。
+description: この記事では、アプリケーションを Azure Active Directory のインスタンスに追加する方法について説明します。
+services: active-directory
+documentationcenter: ''
+author: shoatman
+manager: kbrint
+editor: ''
 
-   <tags
-      ms.service="active-directory"
-      ms.devlang="na"
-      ms.topic="article"
-      ms.tgt_pltfrm="na"
-      ms.workload="identity"
-      ms.date="02/09/2016"
-      ms.author="shoatman"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 02/09/2016
+ms.author: shoatman
 
+---
 # アプリケーションを Azure AD に追加する方法と理由
-
 Azure Active Directory のインスタンスでアプリケーションの一覧を表示したときに最初に理解しにくいことの 1 つは、アプリケーションの元の場所と追加された理由を理解することです。この記事では、ディレクトリでのアプリケーションの表現方法と、アプリケーションがディレクトリに追加された方法を理解するのに役立つコンテキストについて説明します。
 
 ## Azure AD がアプリケーションに提供するサービス
-
 アプリケーションは、Azure AD が提供するサービスを利用するために Azure AD に追加されます。次のようなサービスがあります。
 
 * アプリの認証と承認
@@ -33,7 +31,6 @@ Azure Active Directory のインスタンスでアプリケーションの一覧
 * アプリケーションの発行とプロキシ。プライベート ネットワークからインターネットにアプリを発行します。
 
 ## ディレクトリでのアプリケーションの表現方法
-
 Azure AD では、アプリケーションはアプリケーション オブジェクトとサービス プリンシパル オブジェクトという 2 つのオブジェクトを使用して表されます。アプリケーション オブジェクトは 1 つで、"home"/"owner" または "publishing" ディレクトリにおいて登録されます。サービス プリンシパル オブジェクトは 1 つ以上あり、アプリケーションが動作するすべてのディレクトリを表します。
 
 アプリケーション オブジェクトでは Azure AD に対してアプリが記述されており (マルチテナント サービス)、以下のものを含むことができます (*注*: この一覧がすべてではありません)。
@@ -52,16 +49,15 @@ Azure AD では、アプリケーションはアプリケーション オブジ�
 * アプリ ID プロパティを介してアプリケーション オブジェクトを逆参照します
 * ローカル ユーザーとグループ アプリ ロールの割り当てを記録します
 * ローカル ユーザーとアプリに許可された管理アクセス許可を記録します
-    * 例: 特定のユーザーの電子メールにアクセスするためのアプリに対するアクセス許可
+  * 例: 特定のユーザーの電子メールにアクセスするためのアプリに対するアクセス許可
 * 条件付きアクセス ポリシーを含むローカル ポリシーを記録します
 * アプリのローカル代替ローカル設定を記録します
-    * 要求変換ルール
-    * 属性マッピング (ユーザーのプロビジョニング)
-    * テナント固有のアプリ ロール (アプリがカスタム ロールをサポートする場合)
-    * 名前/ロゴ
+  * 要求変換ルール
+  * 属性マッピング (ユーザーのプロビジョニング)
+  * テナント固有のアプリ ロール (アプリがカスタム ロールをサポートする場合)
+  * 名前/ロゴ
 
 ### ディレクトリ間のアプリケーション オブジェクトとサービス プリンシパルの関係を示した図
-
 ![アプリケーション オブジェクトおよびサービス プリンシパルが Azure AD インスタンスに存在する方法を示す図。][apps_service_principals_directory]
 
 上の図を見るとわかるように、マイクロソフトはアプリケーションを発行するために使用する 2 つのディレクトリを内部的に保持しています (左側)。
@@ -78,35 +74,32 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
 * Azure AD アプリケーション プロキシを使用して発行したアプリ
 
 ### いくつかの注意事項と例外
-
 * すべてのサービス プリンシパルがアプリケーション オブジェクトを逆参照するわけではありません。どういうことでしょうか。 Azure AD が最初に構築された時点では、アプリケーションに提供されるサービスははるかに限定的であり、サービス プリンシパルはアプリ ID を確立するのに十分でした。元のサービス プリンシパルは、Windows Server Active Directory サービス アカウントとよく似ていました。このため、現在でも、先にアプリケーション オブジェクトを作成せずに、Azure AD PowerShell を使用してサービス プリンシパルを作成できます。Graph API では、サービス プリンシパルを作成する前に、アプリケーション オブジェクトが必要です。
 * 現在、このような情報の中にはプログラムによって公開されていないものがあります。次の情報は UI でのみ使用できます。
-    * 要求変換ルール
-    * 属性マッピング (ユーザーのプロビジョニング)
+  * 要求変換ルール
+  * 属性マッピング (ユーザーのプロビジョニング)
 * サービス プリンシパル オブジェクトおよびアプリケーション オブジェクトの詳細については、Azure AD Graph REST API のリファレンス ドキュメントを参照してください。*ヒント*: Azure AD Graph API のドキュメントは、現在手に入る Azure AD に関するスキーマ参照に最も近いものです。  
-    * [アプリケーション](https://msdn.microsoft.com/library/azure/dn151677.aspx)
-    * [サービス プリンシパル](https://msdn.microsoft.com/library/azure/dn194452.aspx)
-
+  * [アプリケーション](https://msdn.microsoft.com/library/azure/dn151677.aspx)
+  * [サービス プリンシパル](https://msdn.microsoft.com/library/azure/dn194452.aspx)
 
 ## Azure AD インスタンスへのアプリの追加方法
 Azure AD にアプリを追加するにはさまざまな方法があります。
 
 * [Azure Active Directory アプリ ギャラリー](https://azure.microsoft.com/updates/azure-active-directory-over-1000-apps/)からアプリを追加します
 * Azure Active Directory に統合されているサードパーティのアプリにサインアップ/サインインします (例: [Smartsheet](https://app.smartsheet.com/b/home)、[DocuSign](https://www.docusign.net/member/MemberLogin.aspx))
-    * サインアップ/サインインの間に、ユーザーには、アプリに対してプロファイルにアクセスするためのアクセス許可および他のアクセス許可を与えることが求められます。最初のユーザーがそれに同意した時点で、アプリを表すサービス プリンシパルがディレクトリに追加されます。
+  * サインアップ/サインインの間に、ユーザーには、アプリに対してプロファイルにアクセスするためのアクセス許可および他のアクセス許可を与えることが求められます。最初のユーザーがそれに同意した時点で、アプリを表すサービス プリンシパルがディレクトリに追加されます。
 * [Office 365](http://products.office.com/) などの Microsoft オンライン サービスにサインアップ/サインインします
-    * Office 365 をサブスクライブするか、または試用を開始すると、Office 365 に関連するすべての機能を提供するために使用されるさまざまなサービスを表す 1 つまたは複数のサービス プリンシパルがディレクトリに作成されます。
-    * SharePoint などの一部の Office 365 サービスは、ワークフローを含むコンポーネント間で安全に通信できるように、実行中にサービス プリンシパルを作成します。
+  * Office 365 をサブスクライブするか、または試用を開始すると、Office 365 に関連するすべての機能を提供するために使用されるさまざまなサービスを表す 1 つまたは複数のサービス プリンシパルがディレクトリに作成されます。
+  * SharePoint などの一部の Office 365 サービスは、ワークフローを含むコンポーネント間で安全に通信できるように、実行中にサービス プリンシパルを作成します。
 * Azure 管理ポータルで開発中のアプリを追加します (https://msdn.microsoft.com/library/azure/dn132599.aspx を参照)
 * Visual Studio を使用して開発中のアプリを追加します。以下を参照してください。
-    * [ASP.Net の認証方法](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)
-    * [接続されたサービス](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
+  * [ASP.Net の認証方法](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)
+  * [接続されたサービス](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 * [Azure AD アプリケーション プロキシ](https://msdn.microsoft.com/library/azure/dn768219.aspx)を使用するためにアプリを追加します
 * SAML またはパスワード SSO を使用するシングル サインオンにアプリを接続します
 * Azure でのさまざまな開発者エクスペリエンスや、デベロッパー センターでの API エクスプローラー エクスペリエンスなど、その他多数
 
 ## Azure AD インスタンスにアプリケーションを追加する権限のあるユーザー
-
 グローバル管理者のみが以下のことを実行できます。
 
 * Azure AD アプリ ギャラリー (事前に統合されたサード パーティのアプリ) からアプリを追加します
@@ -129,10 +122,8 @@ Azure AD にアプリを追加するにはさまざまな方法があります�
 
 ![統合されたアプリの設定を構成するための UI のスクリーンショット][app_settings]
 
-
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
-
 Azure AD にアプリケーションを追加する方法およびアプリ用にサービスを構成する方法の詳細について学習します。
 
 * 開発者: [Azure Active Directory にアプリケーションを統合する方法を学習します](https://msdn.microsoft.com/library/azure/dn151122.aspx)
@@ -143,8 +134,7 @@ Azure AD にアプリケーションを追加する方法およびアプリ用�
 * IT プロフェッショナル: [Azure Active Directory アプリケーション プロキシを使用してアプリを発行する方法について学習します](https://msdn.microsoft.com/library/azure/dn768219.aspx)
 
 ## 関連項目
-
-- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
 <!--Image references-->
 [apps_service_principals_directory]: media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg

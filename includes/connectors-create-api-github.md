@@ -1,5 +1,5 @@
 ### 前提条件
-- [GitHub](http://GitHub.com) アカウント 
+* [GitHub](http://GitHub.com) アカウント 
 
 ロジック アプリで GitHub アカウントを使用するには、GitHub アカウントに接続するロジック アプリを承認する必要があります。幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
@@ -10,3 +10,4 @@
 3. GitHub のユーザー名とパスワードを入力して、ロジック アプリを承認します。 ![](./media/connectors-create-api-github/github-3.png)   
 4. 操作の目的を確認します。 ![](./media/connectors-create-api-github/github-4.png)   
 5. ポータルで接続が作成されたことを確認します。これで、ロジック アプリを作成し、GitHub を使用することができます。 ![](./media/connectors-create-api-github/github-5.png)   
+

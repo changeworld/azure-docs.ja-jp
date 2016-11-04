@@ -1,38 +1,35 @@
-<properties 
-	pageTitle="Azure Machine Learning でモデルのパフォーマンスを評価する方法 | Microsoft Azure" 
-	description="Azure Machine Learning でモデルのパフォーマンスを評価する方法を説明します。" 
-	services="machine-learning"
-	documentationCenter="" 
-	authors="garyericson" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+---
+title: Azure Machine Learning でモデルのパフォーマンスを評価する方法 | Microsoft Docs
+description: Azure Machine Learning でモデルのパフォーマンスを評価する方法を説明します。
+services: machine-learning
+documentationcenter: ''
+author: garyericson
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/19/2016" 
-	ms.author="bradsev;garye" />
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/19/2016
+ms.author: bradsev;garye
 
-
+---
 # Azure Machine Learning でモデルのパフォーマンスを評価する方法
-
 このトピックでは、Azure Machine Learning Studio でモデルのパフォーマンスを評価する方法を紹介し、このタスクで使用できるメトリックについて簡単に説明します。以下の 3 種類の学習のシナリオを取り上げます。
 
 * 回帰
 * 二項分類
 * 多クラス分類
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 モデルのパフォーマンスの評価は、データ サイエンス プロセスの重要な段階の 1 つです。その評価は、トレーニングしたモデルによるデータセットのスコア付け (予測) がどれほど成功したかを示す指標になります。
 
 Azure Machine Learning では、[[モデルの評価]][evaluate-model] と [[モデルのクロス検証]][cross-validate-model] という 2 つのおもな機械学習モジュールによってモデルの評価を行えます。これらのモジュールを使用すれば、機械学習と統計情報でよく使用されるさまざまなメトリックの観点からモデルのパフォーマンスを確認できます。
 
-##評価とクロス検証##
+## 評価とクロス検証
 評価とクロス検証は、モデルのパフォーマンスを測定する標準的な方法です。どちらの場合も評価メトリックが生成されるので、そのメトリックを確認したり、他のモデルと比較したりできます。
 
 [[モデルの評価]][evaluate-model] では、スコア付けされたデータセットが入力として 1 つ必要になります (2 つのモデルのパフォーマンスを比較する場合は 2 つ必要です)。つまり、結果を評価する前に、[[モデルのトレーニング]][train-model] モジュールでモデルのトレーニングを実行し、[[モデルのスコア付け]][score-model] モジュールでデータセットの予測を作成しておく必要があります。この評価は、スコア付けされたラベル/確率と実際のラベルに基づいて行われます。これらはすべて、[[モデルのスコア付け]][score-model] モジュールから出力されます。
@@ -41,37 +38,36 @@ Azure Machine Learning では、[[モデルの評価]][evaluate-model] と [[モ
 
 以下の各セクションでは、シンプルな回帰モデルと分類モデルを作成し、[[モデルの評価]][evaluate-model] モジュールと [[モデルのクロス検証]][cross-validate-model] モジュールを使用してそれぞれのパフォーマンスを評価します。
 
-##回帰モデルの評価##
+## 回帰モデルの評価
 自動車の大きさや馬力やエンジンの仕様などに基づいて価格を予測するとします。これは、ターゲット変数 (*価格*) が連続数値になる典型的な回帰問題です。自動車のさまざまな特徴の値に基づいて価格を予測するシンプルな線形回帰モデルを作成できます。この回帰モデルを使用して、トレーニングで使用したのと同じデータセットのスコア付けを行うことができます。すべての自動車の価格を予測したら、その予測と実際の価格の差異の平均値に基づいてモデルのパフォーマンスを評価できます。その一例として、Azure Machine Learning Studio の **[保存されたデータセット]** セクションにある*自動車価格データ (生データ) データセット*を使用します。
- 
-###実験の作成###
+
+### 実験の作成
 Azure Machine Learning Studio で以下のモジュールをワークスペースに追加します。
 
-- 自動車価格データ (生データ)
-- [線形回帰][linear-regression]
-- [モデルのトレーニング][train-model]
-- [モデルのスコア付け][score-model]
-- [モデルの評価][evaluate-model]
-
+* 自動車価格データ (生データ)
+* [線形回帰][linear-regression]
+* [モデルのトレーニング][train-model]
+* [モデルのスコア付け][score-model]
+* [モデルの評価][evaluate-model]
 
 図 1 のようにポートを接続し、[[モデルのトレーニング]][train-model] モジュールのラベル列を *price* に設定します。
- 
+
 ![回帰モデルの評価](media/machine-learning-evaluate-model-performance/1.png)
 
 図 1.回帰モデルの評価。
 
-###評価結果の確認###
+### 評価結果の確認
 実験を実行したら、[[モデルの評価]][evaluate-model] モジュールの出力ポートをクリックし、*[視覚化]* を選択して評価結果を確認できます。回帰モデルで使用できる評価メトリックは: *平均絶対誤差*、*二乗平均絶対誤差*、*相対絶対誤差*、*相対二乗誤差*、*決定係数*です。
 
 ここでは、予測の値と実際の値の差異のことを「誤差」といいます。予測の値と実際の値の差が負の値になることもあるので、通常は、この差の絶対値または 2 乗が計算され、すべての事例の誤差が全体でどれほどの大きさになっているかを確認します。誤差のメトリックでは、実際の値に対する予測の値の平均偏差に基づいて回帰モデルの予測パフォーマンスを測定します。誤差の値が小さければ小さいほど、モデルの予測が正確だということになります。全体の誤差のメトリックが 0 であれば、そのモデルはデータに完璧に適合しています。
 
 決定係数 (R 2 乗) も、モデルとデータがどれほど適合しているかを測定するための標準的な方法です。これは、モデルで説明される変動の比率として解釈できます。この場合は、比率が高いほど良く、1 は完璧に適合している状態です。
- 
+
 ![線形回帰の評価メトリック](media/machine-learning-evaluate-model-performance/2.png)
 
 図 2.線形回帰の評価メトリック。
 
-###クロス検証の使用###
+### クロス検証の使用
 前述のとおり、[[モデルのクロス検証]][cross-validate-model] モジュールを使用すれば、トレーニング/スコア付け/評価の反復処理を自動的に実行できます。この場合に必要なのは、データセット、トレーニングしていないモデル、および [[モデルのクロス検証]][cross-validate-model] モジュールのみです (下の図をご覧ください)。[モデルのクロス検証][cross-validate-model]モジュールのプロパティで、ラベル列を *price* に設定する必要があります。
 
 ![回帰モデルのクロス検証](media/machine-learning-evaluate-model-performance/3.png)
@@ -79,22 +75,22 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 図 3:回帰モデルのクロス検証。
 
 実験を実行したら、[[モデルのクロス検証]][cross-validate-model] モジュールの該当する出力ポートをクリックして、評価結果を確認できます。それぞれの反復処理 (分割処理) の詳細と、各メトリックの結果の平均値が表示されます (図 4)。
- 
+
 ![回帰モデルのクロス検証の結果](media/machine-learning-evaluate-model-performance/4.png)
 
 図 4:回帰モデルのクロス検証の結果。
 
-##二項分類モデルの評価##
+## 二項分類モデルの評価
 二項分類のシナリオでは、ターゲット変数には 2 つの選択肢しかありません。たとえば、{0, 1}、{偽, 真}、{負, 正} などです。ここで、成人の従業員の人口統計データや雇用データが含まれているデータセットに基づいて収入のレベルを予測するために、二項変数 {“<=50K”, “>50K”} を使うと想定しましょう。つまり、年収が 5 万ドル以下の層とその他の層に分類します。回帰のシナリオの場合と同じく、モデルのトレーニング、データのスコア付け、結果の評価を行います。おもな違いは、Azure Machine Learning が計算して出力するメトリックの選択です。この収入レベルの予測シナリオでは、[Adult](http://archive.ics.uci.edu/ml/datasets/Adult) データセットを使用して Azure Machine Learning の実験を作成し、よく使われている二項分類モデルである 2 クラスのロジスティック回帰モデルのパフォーマンスを評価します。
 
-###実験の作成###
+### 実験の作成
 Azure Machine Learning Studio で以下のモジュールをワークスペースに追加します。
 
-- 米国国勢調査局提供の、成人収入に関する二項分類データセット
-- [2 クラスのロジスティック回帰][two-class-logistic-regression]
-- [モデルのトレーニング][train-model]
-- [モデルのスコア付け][score-model]
-- [モデルの評価][evaluate-model]
+* 米国国勢調査局提供の、成人収入に関する二項分類データセット
+* [2 クラスのロジスティック回帰][two-class-logistic-regression]
+* [モデルのトレーニング][train-model]
+* [モデルのスコア付け][score-model]
+* [モデルの評価][evaluate-model]
 
 図 5 のようにポートを接続し、[[モデルのトレーニング]][train-model] モジュールのラベル列を *income* に設定します。
 
@@ -102,7 +98,7 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 
 図 5:二項分類モデルの評価。
 
-###評価結果の確認###
+### 評価結果の確認
 実験を実行したら、[[モデルの評価]][evaluate-model] モジュールの出力ポートをクリックし、*[視覚化]* を選択して評価結果を確認できます (図 7)。二項分類モデルで使用できる評価メトリックは、*精度*、*正確度*、*再現率*、*F1 スコア*、*AUC* です。さらに、このモジュールは、真陽性、偽陰性、偽陽性、真陰性の数を示す混同行列と *ROC*、*正確度/再現性*、*リフト*の曲線を出力します。
 
 精度とは、簡単に言えば正しく分類された事例の比率です。分類モデルを評価するときは通常、精度のメトリックに最初に注目します。しかし、テスト データのバランスが悪く大半が片方のクラスに属する場合や、片方のクラスのパフォーマンスにおもに関心がある場合は、精度だけで分類モデルのパフォーマンスを評価することはできません。たとえば、収入レベルの分類シナリオで、99% が年収 5 万ドル以下の層に属するデータをテストしているとしましょう。どの事例についても、「<=50K」の層を予測すれば 0.99 の精度を達成できます。この分類モデルのパフォーマンスは非常に高いように思えるかもしれませんが、実際のところ、高収入の人たち (1%) を正確に分類することはできません。
@@ -121,9 +117,9 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 
 さらに、**受信者操作特性 (ROC)** 曲線とそれに対応する**曲線下面積 (AUC)** 値で真陽性率と偽陽性率の対比を確認できます。この曲線が左上隅に近ければ近いほど、分類モデルのパフォーマンスは良好です (つまり、真陽性率が高く、偽陽性率が低くなります)。ほぼ当てずっぽうのような予測をする傾向の強い分類モデルでは、プロットの対角線に近い曲線になります。
 
-###クロス検証の使用###
+### クロス検証の使用
 回帰の場合と同じく、クロス検証を使用して、データの各サブセットのトレーニング/スコア付け/評価を自動的に反復実行できます。また、[[モデルのクロス検証]][cross-validate-model] モジュールでは、トレーニングしていないロジスティック回帰モデルとデータセットを使用できます。[[モデルのクロス検証]][cross-validate-model] モジュールのプロパティで、ラベル列を *income* に設定する必要があります。実験を実行して、[[モデルのクロス検証]][cross-validate-model] モジュールの該当する出力ポートをクリックすれば、各分割処理の二項分類メトリック値とそれぞれの平均偏差と標準偏差を確認できます。
- 
+
 ![二項分類モデルのクロス検証](media/machine-learning-evaluate-model-performance/8.png)
 
 図 8:二項分類モデルのクロス検証。
@@ -132,18 +128,18 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 
 図 9:二項分類モデルのクロス検証の結果。
 
-##多クラス分類モデルの評価##
+## 多クラス分類モデルの評価
 この実験では、3 種類のあやめの事例が含まれている有名な [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "あやめ") データセットを使います。事例ごとに 4 つの特徴値 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。前の実験では、同じデータセットを使ってモデルのトレーニングとテストを行いました。今回は、[[データの分割]][split] モジュールを使ってデータのサブセットを 2 つ作成し、最初のサブセットでトレーニングを行い、2 つ目のセブセットでスコア付けと評価を行います。Iris データセットは [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) で公開されており、[[データのインポート]][import-data] モジュールを使ってダウンロードできます。
 
-###実験の作成###
+### 実験の作成
 Azure Machine Learning Studio で以下のモジュールをワークスペースに追加します。
 
-- [データのインポート][import-data]
-- [多クラス決定フォレスト][multiclass-decision-forest]
-- [データの分割][split]
-- [モデルのトレーニング][train-model]
-- [モデルのスコア付け][score-model]
-- [モデルの評価][evaluate-model]
+* [データのインポート][import-data]
+* [多クラス決定フォレスト][multiclass-decision-forest]
+* [データの分割][split]
+* [モデルのトレーニング][train-model]
+* [モデルのスコア付け][score-model]
+* [モデルの評価][evaluate-model]
 
 図 10 のようにポートを接続します。
 
@@ -152,30 +148,28 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 [[データのインポート]][import-data] モジュールをクリックして、*データ ソース* プロパティを *HTTP 経由で Web URL* に設定し、*URL* を http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data に設定します。
 
 [[データの分割]][split] モジュールでトレーニングに使用する事例の割合を設定します (0.7 など)。
- 
+
 ![多クラス分類モデルの評価](media/machine-learning-evaluate-model-performance/10.png)
 
 図 10:多クラス分類モデルの評価
 
-###評価結果の確認###
+### 評価結果の確認
 実験を実行し、[モデルの評価][evaluate-model]の出力ポートをクリックします。この場合は、評価結果が混同行列の形式で表示されます。この行列で、3 つのクラスすべての実際の事例と予測の事例を確認できます。
- 
+
 ![多クラス分類の評価結果](media/machine-learning-evaluate-model-performance/11.png)
 
 図 11:多クラス分類の評価結果。
 
-###クロス検証の使用###
+### クロス検証の使用
 前述のとおり、[[モデルのクロス検証]][cross-validate-model] モジュールを使用すれば、トレーニング/スコア付け/評価の反復処理を自動的に実行できます。データセット、トレーニングしていないモデル、[[モデルのクロス検証]][cross-validate-model] モジュールが必要です (下の図を参照)。この場合も、[[モデルのクロス検証]][cross-validate-model] モジュールのラベル列を設定しなければなりません (この場合は列のインデックスを 5 にします)。実験を実行して、[[モデルのクロス検証]][cross-validate-model] の該当する出力ポートをクリックすれば、各分割処理のメトリック値に加え、平均偏差と標準偏差も確認できます。この場合に表示されるメトリックは、二項分類の例で取り上げたメトリックと同じです。ただし、多クラス分類では、真陽性/陰性、偽陽性/陰性の計算がクラスごとに行われ、正のクラスまたは負のクラスの全体の値はありません。たとえば、Iris-setosa クラスの精度や再現率を計算する場合は、それが正のクラスで他のすべてが負のクラスであるという前提で処理が行われます。
- 
+
 ![多クラス分類モデルのクロス検証](media/machine-learning-evaluate-model-performance/12.png)
 
 図 12.多クラス分類モデルのクロス検証。
 
-
 ![多クラス分類モデルのクロス検証の結果](media/machine-learning-evaluate-model-performance/13.png)
 
 図 13.多クラス分類モデルのクロス検証の結果。
-
 
 <!-- Module References -->
 [cross-validate-model]: https://msdn.microsoft.com/library/azure/75fb875d-6b86-4d46-8bcc-74261ade5826/
@@ -187,6 +181,6 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-logistic-regression]: https://msdn.microsoft.com/library/azure/b0fd7660-eeed-43c5-9487-20d9cc79ed5d/
- 
+
 
 <!---HONumber=AcomDC_0914_2016-->

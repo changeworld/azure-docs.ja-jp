@@ -1,23 +1,21 @@
-<properties
-    pageTitle="Azure AD Connect Sync: 技術的概念 | Microsoft Azure"
-    description="Azure AD Connect Sync の技術的概念について説明します。"
-    services="active-directory"
-    documentationCenter=""
-    authors="MarkusVi"
-    manager="femila"
-    editor=""/>
+---
+title: 'Azure AD Connect Sync: 技術的概念 | Microsoft Docs'
+description: Azure AD Connect Sync の技術的概念について説明します。
+services: active-directory
+documentationcenter: ''
+author: MarkusVi
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/10/2016"
-    ms.author="markusvi;andkjell"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/10/2016
+ms.author: markusvi;andkjell
 
-
-
+---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect Sync: 技術的概念
 この記事は、 [アーキテクチャの理解](active-directory-aadconnectsync-technical-concepts.md)に関するトピックの概要です。
 
@@ -29,14 +27,13 @@ Azure Active Directory Sync Services は、MIIS、ILM、FIM を基盤とし、�
 
 以下のセクションでは、FIM 同期サービスの次の側面についてさらに詳しく説明します。
 
-- コネクタ
-- 属性フロー
-- コネクタ スペース
-- メタバース
-- プロビジョニング
+* コネクタ
+* 属性フロー
+* コネクタ スペース
+* メタバース
+* プロビジョニング
 
 ## <a name="connector"></a>コネクタ
-
 接続されたディレクトリとの通信に使用されるコード モジュールをコネクタと呼びます (以前の管理エージェント (MA) に相当)。
 
 コネクタは、Azure AD Connect Sync を実行しているコンピューターにインストールされます。
@@ -49,7 +46,6 @@ Azure Active Directory Sync Services は、MIIS、ILM、FIM を基盤とし、�
 インポートとエクスポートは、スケジュール時にのみ実行されます。接続されているデータ ソースに変更が自動的に反映されることはないため、システム内で発生する変更から分離することができます。 さらに、ほとんどすべてのデータ ソースに接続する独自のコネクタを開発することもできます。
 
 ## <a name="attribute-flow"></a>属性フロー
-
 メタバースは、隣接するコネクタ スペースからのすべての結合された ID の統合ビューです。 上図では、属性フローの受信フローと送信フローは矢印付きの線で示されています。 属性フローとは、あるシステムのデータを別のシステムにコピーまたは転送するプロセスであり、すべての属性フロー (受信または送信) です。
 
 属性フローは、同期 (完全または差分) 操作の実行がスケジュールされているときに、コネクタ スペースとメタバースの間で双方向に生じます。
@@ -57,18 +53,15 @@ Azure Active Directory Sync Services は、MIIS、ILM、FIM を基盤とし、�
 属性フローは、これらの同期の実行時にのみ生じます。 属性フローは同期ルールで定義されます。 インバウンド (上の図の ISR) またはアウトバウンド (上の図の OSR) があります。
 
 ## <a name="connected-system"></a>接続先システム
-
 接続先システム (接続先ディレクトリとも呼ばれます) は、Azure AD Connect Sync が接続しているリモート システムを参照し、ID データの読み取りと書き込みを行います。
 
 ## <a name="connector-space"></a>コネクタ スペース
-
 接続された各データ ソースは、コネクタ スペース内のフィルター処理されたオブジェクトと属性のサブセットとして表されます。
 これにより、同期サービスでは、オブジェクトを同期するときに、リモート システムに通信しなくてもローカルで操作を実行できるようになり、インポートとエクスポートのやり取りのみに制限します。
 
 データ ソースとコネクタに変更の一覧を提供する機能 (差分インポート) がある場合は、直近のポーリング サイクル以降の変更のみが交換されるので、運用効率が大幅に向上します。 コネクタ スペースでは、コネクタでのインポートとエクスポートのスケジュール設定を必要とすることにより、接続されたデータ ソースに変更が自動的に反映されないようにします。 この分離機能の追加により、次回更新のテスト、プレビュー、確認時にも安心感を得られます。
 
 ## <a name="metaverse"></a>メタバース
-
 メタバースは、隣接するコネクタ スペースからのすべての結合された ID の統合ビューです。
 
 ID が一緒にリンクされ、インポート フローのマッピングを介してさまざまな属性に権限が割り当てられると、中央のメタバース オブジェクトでは、複数のシステムからの情報集計が始まります。 このオブジェクト属性フローから、マッピングによって送信システムに情報が伝えられます。
@@ -81,7 +74,6 @@ ID が一緒にリンクされ、インポート フローのマッピングを�
 リンクが確立すると、この評価が再び発生することはなく、リモート接続されたデータ ソースとメタバースの間に通常の属性フローが発生します。
 
 ## <a name="provisioning"></a>プロビジョニング
-
 権限のあるソースによってメタバースに新しいオブジェクトが伝えられると、ダウンストリームの接続されたデータ ソースを表す別のコネクタに新しいコネクタ スペース オブジェクトを作成できます。
 
 これにより、本質的にリンクが確立され、属性フローで双方向の流れが可能になります。
@@ -89,7 +81,6 @@ ID が一緒にリンクされ、インポート フローのマッピングを�
 新しいコネクタ スペース オブジェクトを作成する必要があるとルールによって判断された場合は常に、それをプロビジョニングと呼びます。 ただし、この操作はコネクタ スペース内でのみ行われるため、エクスポートが実行されるまでは、接続されたデータ ソースに引き継がれません。
 
 ## <a name="additional-resources"></a>その他のリソース
-
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 

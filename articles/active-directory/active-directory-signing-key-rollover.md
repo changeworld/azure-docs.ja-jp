@@ -1,27 +1,25 @@
-<properties
-	pageTitle="Azure AD の署名キーのロールオーバー | Microsoft Azure"
-	description="この記事では、Azure Active Directory の署名キーのロール オーバーのベスト プラクティスについて説明します"
-	services="active-directory"
-	documentationCenter=".net"
-	authors="gsacavdm"
-	manager="krassk"
-	editor=""/>
+---
+title: Azure AD の署名キーのロールオーバー | Microsoft Docs
+description: この記事では、Azure Active Directory の署名キーのロール オーバーのベスト プラクティスについて説明します
+services: active-directory
+documentationcenter: .net
+author: gsacavdm
+manager: krassk
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/18/2016"
-	ms.author="gsacavdm"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/18/2016
+ms.author: gsacavdm
 
+---
 # Azure Active Directory の署名キーのロールオーバー
-
 このトピックでは、Azure Active Directory (Azure AD) でセキュリティ トークンに署名するために使用される公開キーについて説明します。これらのキーは定期的にロールオーバー (交換) されるほか、緊急時にはその場ですぐロールオーバーすることもできます。Azure AD を使用するすべてのアプリケーションには、プログラムからキーのロールオーバー プロセスを処理できる機能、または定期的な手動ロールオーバー プロセスを確立できる機能が必要です。ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
 
 ## Azure AD での署名キーの概要
-
 Azure AD では、業界標準に基づいて構築された公開キー暗号化を使って、キーと、キーを使用するアプリケーションの間の信頼を確立しています。具体的には、次のように機能します。Azure AD は、公開キーと秘密キーの組み合わせから構成される署名キーを使用します。認証に Azure AD を使用するアプリケーションにユーザーが署名すると、Azure AD はユーザーに関する情報を含むセキュリティ トークンを作成します。このトークンは、Azure AD によって秘密キーを使って署名されてから、アプリケーションに送り返されます。トークンが有効であり、実際に Azure AD から発行されたことを確認するには、アプリケーションは、テナントの [OpenID Connect Discovery ドキュメント](http://openid.net/specs/openid-connect-discovery-1_0.html)または SAML/WS-Fed の[フェデレーション メタデータ ドキュメント](active-directory-federation-metadata.md)に含まれる Azure AD によって公開された公開キーを使用して、トークンの署名を検証する必要があります。
 
 Azure AD の署名キーは、セキュリティ上の理由から定期的に交換されるほか、緊急時にはその場ですぐにロールオーバーすることもできます。Azure AD を組み込むすべてのアプリケーションは、発生頻度に関係なくキーのロールオーバー イベントを処理できるようになっている必要があります。このロジックを備えていないアプリケーションが期限切れのキーを使ってトークンの署名の検証を試みると、サインイン要求が失敗します。
@@ -29,7 +27,6 @@ Azure AD の署名キーは、セキュリティ上の理由から定期的に�
 OpenID Connect Discovery ドキュメントとフェデレーション メタデータ ドキュメントには、利用できる有効なキーが常に複数存在します。1 つのキーがすぐにロールされて別のキーに置き換えられる可能性があるので、アプリケーションは、このドキュメントで指定されているどのキーでも使用できるようになっている必要があります。
 
 ## アプリケーションに影響が波及するかどうかの評価とその対処法
-
 キー ロールオーバーへのアプリケーション側の対応は、アプリケーションの種類や使用されている ID プロトコル、ライブラリなどさまざまな要因によって異なります。以下の各セクションでは、ごく一般的なアプリケーションにおけるキー ロールオーバーへの影響の有無を評価し、キーの自動ロールオーバーまたは手動更新に対応するようにアプリケーションを更新するうえでの指針を取り上げています。
 
 * [リソースにアクセスするネイティブ クライアント アプリケーション](#nativeclient)
@@ -51,72 +48,66 @@ OpenID Connect Discovery ドキュメントとフェデレーション メタデ
 * アプリケーション プロキシ経由で発行されたオンプレミスのアプリケーションでは、キーの署名について配慮する必要はありません。
 
 ### <a name="nativeclient"></a>リソースにアクセスするネイティブ クライアント アプリケーション
-
 リソース (つまり、Microsoft Graph、KeyVault、Outlook API、その他の Microsoft API) にアクセスするだけのアプリケーションは、通常、トークンを取得してリソース所有者に渡すだけです。アプリケーションでリソースを保護しない場合は、トークンを調べることはないため、トークンへの適切な署名は必要はありません。
 
 デスクトップかモバイルかを問わず、ネイティブ クライアント アプリケーションはこのカテゴリに分類され、ロールオーバーの影響を受けません。
 
 ### <a name="webclient"></a>リソースにアクセスする Web アプリケーション/API
-
 リソース (つまり、Microsoft Graph、KeyVault、Outlook API、その他の Microsoft API) にアクセスするだけのアプリケーションは、通常、トークンを取得してリソース所有者に渡すだけです。アプリケーションでリソースを保護しない場合は、トークンを調べることはないため、トークンへの適切な署名は必要はありません。
 
 アプリ専用のフロー (クライアント資格情報/クライアント証明書) を使用する Web アプリケーションと Web API はこのカテゴリに分類され、ロールオーバーの影響を受けません。
 
 ### <a name="appservices"></a>Azure App Service を使用して構築された、リソースを保護する Web アプリケーション/API
-
 Azure App Service の認証/承認 (EasyAuth) 機能には、キーのロールオーバーを自動的に処理するうえで必要なロジックがあります。
 
 ### <a name="owin"></a>.NET OWIN OpenID Connect、WS-Fed、WindowsAzureActiveDirectoryBearerAuthentication のいずれかのミドルウェアを使用し、リソースを保護する Web アプリケーション/API
-
 アプリケーションで .NET OWIN OpenID Connect、WS-Fed、WindowsAzureActiveDirectoryBearerAuthentication のいずれかのミドルウェアを使用している場合、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。
 
 それらがアプリケーションで使用されているかどうかは、アプリケーションの Startup.cs または Startup.Auth.cs から次のスニペットを探すことで確認できます。
 
 ```
 app.UseOpenIdConnectAuthentication(
-	 new OpenIdConnectAuthenticationOptions
-	 {
-		 // ...
-	 });
+     new OpenIdConnectAuthenticationOptions
+     {
+         // ...
+     });
 ```
 ```
 app.UseWsFederationAuthentication(
     new WsFederationAuthenticationOptions
     {
-	 // ...
- 	});
+     // ...
+     });
 ```
 ```
  app.UseWindowsAzureActiveDirectoryBearerAuthentication(
-	 new WindowsAzureActiveDirectoryBearerAuthenticationOptions
-	 {
-	 // ...
-	 });
+     new WindowsAzureActiveDirectoryBearerAuthenticationOptions
+     {
+     // ...
+     });
 ```
 
 ### <a name="owincore"></a>.NET Core OpenID Connect と JwtBearerAuthentication のいずれかのミドルウェアを使用し、リソースを保護する Web アプリケーション/API
-
 アプリケーションで .NET Core OWIN OpenID Connect と JwtBearerAuthentication のいずれかのミドルウェアを使用している場合、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。
 
 それらがアプリケーションで使用されているかどうかは、アプリケーションの Startup.cs または Startup.Auth.cs から次のスニペットを探すことで確認できます。
 
 ```
 app.UseOpenIdConnectAuthentication(
-	 new OpenIdConnectAuthenticationOptions
-	 {
-		 // ...
-	 });
+     new OpenIdConnectAuthenticationOptions
+     {
+         // ...
+     });
 ```
 ```
 app.UseJwtBearerAuthentication(
     new JwtBearerAuthenticationOptions
     {
-	 // ...
- 	});
+     // ...
+     });
 ```
 
 ### <a name="passport"></a>Node.js passport-azure-ad モジュールを使用し、リソースを保護する Web アプリケーション/API
-
 アプリケーションで Node.js passport-ad モジュールを使用している場合、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。
 
 アプリケーションで passport-ad が使用されているかどうかは、アプリケーションの app.js から次のスニペットを探すことで確認できます。
@@ -125,18 +116,16 @@ app.UseJwtBearerAuthentication(
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
 passport.use(new OIDCStrategy({
-	//...
+    //...
 ));
 ```
 
 ### <a name="vs2015"></a>Visual Studio 2015 を使用して作成された、リソースを保護する Web アプリケーション/API
-
 アプリケーションが Visual Studio 2015 の Web アプリケーション テンプレートを使用して作成されており、**[認証の変更]** メニューで **[会社用および学校用のアカウント]** を選択した場合は、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。このロジックは OpenID Connect Discovery ドキュメントからキーを取得してキャッシュし、定期的にそれらを更新するもので、OWIN OpenID Connect ミドルウェアに組み込まれています。
 
 認証を手動でソリューションに追加した場合は、キーのロールオーバーに対応するうえで必要なロジックがアプリケーションに備わっていない可能性があります。必要なロジックを独自に作成するか、[その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された Web アプリケーション/API](#other) に関するセクションの手順に従ってください。
 
 ### <a name="vs2013"></a>Visual Studio 2013 を使用して作成された、リソースを保護する Web アプリケーション
-
 アプリケーションが Visual Studio 2013 の Web アプリケーション テンプレートを使用して作成されており、**[認証の変更]** メニューで **[組織アカウント]** を選択した場合、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。このロジックにより、プロジェクトに関連付けられた 2 つのデータベース テーブルに組織の一意識別子と署名キー情報が保存されます。このデータベースの接続文字列は、プロジェクトの Web.config ファイル内に格納されています。
 
 認証を手動でソリューションに追加した場合は、キーのロールオーバーに対応するうえで必要なロジックがアプリケーションに備わっていない可能性があります。必要なロジックを独自に作成するか、[その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された Web アプリケーション/API](#other) に関するセクションの手順に従ってください。
@@ -152,7 +141,6 @@ passport.use(new OIDCStrategy({
 7. **[サーバー エクスプローラー]** に戻り、**IssuingAuthorityKeys** テーブルと **Tenants** テーブルの値を確認します。テーブルにはフェデレーション メタデータ ドキュメントから自動的に適切な情報が入力されています。
 
 ### <a name="vs2013"></a>Visual Studio 2013 を使用して作成された、リソースを保護する Web API
-
 Visual Studio 2013 で Web API テンプレートを使用して Web API を作成し、**[認証の変更]** メニューで **[組織アカウント]** を選択した場合、アプリケーションには既に必要なロジックが含まれています。
 
 手動で認証を構成する場合は、以下の手順に従って、自動的にキー情報を更新するように Web API を構成する方法を確認してください。
@@ -248,61 +236,57 @@ namespace JWTValidation
 ```
 
 ### <a name="vs2012"></a>Visual Studio 2012 を使用して作成された、リソースを保護する Web アプリケーション
-
 アプリケーションが Visual Studio 2012 で作成されている場合、通常、アプリケーションは ID およびアクセス ツールを使用して構成されています。また、通常は[発行者名レジストリの検証 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) が使用されています。VINR の役割は、信頼済みの ID プロバイダー (Azure AD) に関する情報、およびプロバイダーが発行するトークンを検証するために使用されるキーに関する情報を維持することです。また、VINR を使用すると、ディレクトリに関連付けられている最新のフェデレーション メタデータ ドキュメントをダウンロードし、構成が期限切れになっているかどうかを確認し、必要に応じて新しいキーでアプリケーションを更新することにより、Web.config ファイルに保存されているキー情報を自動的に更新することが容易になります。
 
 Microsoft から提供されたコード サンプルまたはチュートリアルのいずれかを使用してアプリケーションを作成した場合、キーのロールオーバー ロジックは既にプロジェクトに含まれています。以下に示すコードがプロジェクト内に存在していることを確認できます。アプリケーションにこのロジックが含まれていない場合は、以下の手順を実行してロジックを追加し、正常に機能することを確認してください。
 
 1. **[ソリューション エクスプローラー]** で、適切なプロジェクトの **System.IdentityModel** アセンブリへの参照を追加します。
 2. **Global.asax.cs** ファイルを開き、次の using ディレクティブを追加します。
-```
-using System.Configuration;
-using System.IdentityModel.Tokens;
-```
+   ```
+   using System.Configuration;
+   using System.IdentityModel.Tokens;
+   ```
 3. 次のメソッドを **Global.asax.cs** ファイルに追加します。
-```
-protected void RefreshValidationSettings()
-{
+   ```
+   protected void RefreshValidationSettings()
+   {
     string configPath = AppDomain.CurrentDomain.BaseDirectory + "\" + "Web.config";
     string metadataAddress =
                   ConfigurationManager.AppSettings["ida:FederationMetadataLocation"];
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
-}
-```
+   }
+   ```
 4. 次に示すように、**Global.asax.cs** 内の **Application\_Start()** メソッドで **RefreshValidationSettings()** メソッドを呼び出します。
-```
-protected void Application_Start()
-{
+   ```
+   protected void Application_Start()
+   {
     AreaRegistration.RegisterAllAreas();
     ...
     RefreshValidationSettings();
-}
-```
+   }
+   ```
 
 この手順を実行すると、アプリケーションの Web.config は、最新のキーなど、フェデレーション メタデータ ドキュメントの最新情報で更新されます。この更新は、IIS のアプリケーション プールがリサイクルされるたびに行われます。IIS の既定では、アプリケーションは 29 時間ごとにリサイクルされます。
 
 キーのロールオーバー ロジックが機能していることを確認するには、次の手順に従います。
 
 1. アプリケーションで上記のコードが使用されていることを確認したら、**Web.config** ファイルを開き、**<issuerNameRegistry>** ブロックに移動して、以下の行を見つけます。
-```
-<issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
+   ```
+   <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
           <keys>
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
-```
+   ```
 2. **<add thumbprint="">** 設定で、どれか 1 文字を別の文字に置き換えて拇印の値を変更します。**Web.config** ファイルを保存します。
-
 3. アプリケーションをビルドし、実行します。サインイン プロセスを完了できる場合、アプリケーションではディレクトリのフェデレーション メタデータ ドキュメントから必要な情報をダウンロードすることによってキーが正しく更新されています。サインインで問題が発生する場合は、[Azure AD を使用した Web アプリケーションへのサインオンの追加](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect)に関するトピックを読むか、コード サンプル ([Multi-Tenant Cloud Application for Azure Active Directory (Azure Active Directory 向けのマルチテナント クラウド アプリケーション)](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)) をダウンロードして調べることによって、アプリケーションの変更が正しいことを確認します。
 
-
 ### <a name="vs2010"></a>Visual Studio 2008/2010 および .NET 3.5 用 Windows Identity Foundation (WIF) v1.0 で作成された、リソースを保護する Web アプリケーション
-
 WIF v1.0 でアプリケーションを作成した場合、新しいキーを使用するようにアプリケーションの構成を自動的に更新するメカニズムは用意されていません。
 
-- "*最も簡単な方法*" は、WIF SDK に含まれている FedUtil ツールを使用することです。このツールでは、最新のメタデータ ドキュメントを取得し、構成を更新できます。
-- System 名前空間に最新バージョンの WIF が含まれている .NET 4.5 にアプリケーションを更新する。その後、[発行者名レジストリの検証 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) を使用して、アプリケーションの構成の自動更新を実行できます。
-- このガイダンスの末尾にある手順に従って、手動ロールオーバーを実行します。
+* "*最も簡単な方法*" は、WIF SDK に含まれている FedUtil ツールを使用することです。このツールでは、最新のメタデータ ドキュメントを取得し、構成を更新できます。
+* System 名前空間に最新バージョンの WIF が含まれている .NET 4.5 にアプリケーションを更新する。その後、[発行者名レジストリの検証 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) を使用して、アプリケーションの構成の自動更新を実行できます。
+* このガイダンスの末尾にある手順に従って、手動ロールオーバーを実行します。
 
 FedUtil を使用して構成を更新する手順は、次のようになります。
 
@@ -312,17 +296,14 @@ FedUtil を使用して構成を更新する手順は、次のようになりま
 4. **[完了]** をクリックして更新プロセスを完了します。
 
 ### <a name="other"></a>その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された、リソースを保護する Web アプリケーション/API
-
 その他何らかのライブラリを使用している場合またはサポートされているプロトコルを手動で実装した場合、OpenID Connect Discovery ドキュメントまたはフェデレーション メタデータ ドキュメントから確実にキーが取得されるようそのライブラリまたは実装内容を再確認する必要があります。この点はたとえば、自分が記述したコードやライブラリのコードから、OpenID のディスカバリー ドキュメントまたはフェデレーション メタデータ ドキュメントの呼び出しを検索することによって確認できます。
 
 キーがどこかに格納されている場合、またはアプリケーション内でハードコーディングされている場合は、キーを手動で取得し、このガイダンスの末尾にある手順に従って手動ロールオーバーを実行することで、適宜キーを更新できます。今後 Azure AD のロールオーバー頻度が高まったり、予定されていない緊急のロールオーバーが発生したりした場合の中断やオーバーヘッドを避けるために、この記事に書かれているいずれかの手法を使用して**自動ロールオーバーをアプリケーションでサポートするよう強くお勧めします**。
 
 ## アプリケーションをテストして、影響を受けるかどうかを判別する
-
 [この GitHub リポジトリ](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)からスクリプトをダウンロードし、指示に従って、アプリケーションで自動キー ロールオーバーがサポートされているかどうかを検証できます。
 
 ## アプリケーションで自動ロールオーバーがサポートされていない場合に手動ロールオーバーを実行する方法
-
 アプリケーションで自動ロールオーバーがサポートされて**いない**場合、Azure AD の署名キーを定期的に監視し、適宜手動ロールオーバーを実行するプロセスを確立する必要があります。[こちらの GitHub リポジトリ](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)には、これを実行する方法についてのスクリプトと手順が含まれています。
 
 <!---HONumber=AcomDC_0921_2016-->

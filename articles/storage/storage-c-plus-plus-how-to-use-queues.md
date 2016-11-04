@@ -1,47 +1,49 @@
-<properties
-    pageTitle="Queue ストレージを使用する方法 (C++) | Microsoft Azure"
-    description="Azure で Queue ストレージ サービスを使用する方法について説明します。 サンプルは C++ で記述されています。"
-    services="storage"
-    documentationCenter=".net"
-    authors="dineshmurthy"
-    manager="jahogg"
-    editor="tysonn"/>
+---
+title: Queue ストレージを使用する方法 (C++) | Microsoft Docs
+description: Azure で Queue ストレージ サービスを使用する方法について説明します。 サンプルは C++ で記述されています。
+services: storage
+documentationcenter: .net
+author: dineshmurthy
+manager: jahogg
+editor: tysonn
 
-<tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/18/2016"
-    ms.author="dineshm"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/18/2016
+ms.author: dineshm
 
+---
+# <a name="how-to-use-queue-storage-from-c++"></a>C++ から Queue ストレージを使用する方法
+[!INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
 
-# <a name="how-to-use-queue-storage-from-c++"></a>C++ から Queue ストレージを使用する方法  
-
-[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
-<br/>
-[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
+[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Overview
 このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは C++ で記述され、 [C++ 用 Azure ストレージ クライアント ライブラリ](http://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。 キュー メッセージの**挿入**、**ピーク**、**取得**、**削除**と、**キューの作成と削除**の各シナリオについて説明します。
 
->[AZURE.NOTE] このガイドは、C++ 用 Azure ストレージ クライアント ライブラリ 1.0.0 以上のバージョンを対象としています。 推奨されるバージョンはストレージ クライアント ライブラリ 2.2.0 です。これは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](http://github.com/Azure/azure-storage-cpp/) 経由で入手できます。
+> [!NOTE]
+> このガイドは、C++ 用 Azure ストレージ クライアント ライブラリ 1.0.0 以上のバージョンを対象としています。 推奨されるバージョンはストレージ クライアント ライブラリ 2.2.0 です。これは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](http://github.com/Azure/azure-storage-cpp/) 経由で入手できます。
+> 
+> 
 
-[AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
-[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+[!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
-## <a name="create-a-c++-application"></a>C++ アプリケーションの作成  
+[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+
+## <a name="create-a-c++-application"></a>C++ アプリケーションの作成
 このガイドでは、C++ アプリケーション内で実行できるストレージ機能を使用します。
 
 そのためには、C++ 用 Azure ストレージ クライアント ライブラリをインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。
 
 C++ 用 Azure ストレージ クライアント ライブラリをインストールする場合、次の方法を使用できます。
 
--   **Linux:**[C++ 用 Azure ストレージ クライアント ライブラリの README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) ページに記載されている手順に従います。
--   **Windows:** Visual Studio で、**[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。 [NuGet パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) に次のコマンドを入力し、 **Enter**キーを押します。
-
-        Install-Package wastorage
+* **Linux:**[C++ 用 Azure ストレージ クライアント ライブラリの README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) ページに記載されている手順に従います。
+* **Windows:** Visual Studio で、**[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。 [NuGet パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) に次のコマンドを入力し、 **Enter**キーを押します。
+  
+      Install-Package wastorage
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Queue ストレージにアクセスするようにアプリケーションを構成する
 Azure Storage API を使用してキューにアクセスする C++ ファイルの先頭には、次の include ステートメントを追加します。  
@@ -50,7 +52,6 @@ Azure Storage API を使用してキューにアクセスする C++ ファイル
     #include "was/queue.h"
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage 接続文字列の設定
-
 Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。 クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、[Azure Portal](https://portal.azure.com) に表示されるストレージ アカウントの名前とストレージ アクセス キーを使用します。 ストレージ アカウントとストレージ アクセス キーの詳細については、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」を参照してください。 この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。  
 
     // Define the connection-string with your values.
@@ -231,17 +232,13 @@ Azure ストレージ エミュレーターを起動するには、**[スター�
     queue.delete_queue_if_exists();  
 
 ## <a name="next-steps"></a>次のステップ
-
 これで、Queue ストレージの基本を学習できました。Azure Storage の詳細については、次のリンク先を参照してください。
 
--   [C++ から BLOB ストレージを使用する方法](storage-c-plus-plus-how-to-use-blobs.md)
--   [C++ から Table ストレージを使用する方法](storage-c-plus-plus-how-to-use-tables.md)
--   [C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)
--   [C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
--   [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
-
-
-
+* [C++ から BLOB ストレージを使用する方法](storage-c-plus-plus-how-to-use-blobs.md)
+* [C++ から Table ストレージを使用する方法](storage-c-plus-plus-how-to-use-tables.md)
+* [C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)
+* [C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
+* [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
 <!--HONumber=Oct16_HO2-->
 

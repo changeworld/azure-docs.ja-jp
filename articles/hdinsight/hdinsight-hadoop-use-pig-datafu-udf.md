@@ -1,70 +1,71 @@
-<properties
-pageTitle="HDInsight の Pig で DataFu を使用する"
-description="DataFu は、Hadoop で使用するライブラリのコレクションです。HDInsight クラスターの Pig で DataFu を使用する方法について説明します。"
-services="hdinsight"
-documentationCenter=""
-authors="Blackmist"
-manager="jhubbard"
-editor="cgronlun"/>
+---
+title: HDInsight の Pig で DataFu を使用する
+description: DataFu は、Hadoop で使用するライブラリのコレクションです。HDInsight クラスターの Pig で DataFu を使用する方法について説明します。
+services: hdinsight
+documentationcenter: ''
+author: Blackmist
+manager: jhubbard
+editor: cgronlun
 
-<tags
-ms.service="hdinsight"
-ms.devlang="na"
-ms.topic="article"
-ms.tgt_pltfrm="na"
-ms.workload="big-data"
-ms.date="08/23/2016"
-ms.author="larryfr"/>
+ms.service: hdinsight
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 08/23/2016
+ms.author: larryfr
 
-#HDInsight の Pig で DataFu を使用する
-
+---
+# HDInsight の Pig で DataFu を使用する
 DataFu は、Hadoop で使用するオープン ソース ライブラリのコレクションです。このドキュメントでは、HDInsight クラスターで DataFu を使用する方法、および Pig で DataFu ユーザー定義関数 (UDF) を使用する方法を説明します。
 
-##前提条件
-
+## 前提条件
 * Azure サブスクリプション。
-
 * Azure HDInsight クラスター (Linux または Windows ベース)
-
 * [HDInsight での Pig の使用](hdinsight-use-pig.md)に関する基礎知識
 
-##Linux ベースの HDInsight に DataFu をインストールする
-
-> [AZURE.NOTE] DataFu は、Linux ベースのクラスター バージョン 3.3 以降と、Windows ベースのクラスター上にインストールされています。3.3 より前の Linux ベースのクラスターにはインストールされていません。
->
+## Linux ベースの HDInsight に DataFu をインストールする
+> [!NOTE]
+> DataFu は、Linux ベースのクラスター バージョン 3.3 以降と、Windows ベースのクラスター上にインストールされています。3.3 より前の Linux ベースのクラスターにはインストールされていません。
+> 
 > Linux ベースのクラスター バージョン 3.3 以降、または Windows ベースのクラスターを使用している場合は、このセクションを省略できます。
+> 
+> 
 
 DataFu は、Maven リポジトリからダウンロードしてインストールできます。HDInsight クラスターに DataFu を追加するには、次の手順を使用します。
 
 1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。HDInsight での SSH の使用方法の詳細については、次のいずれかのドキュメントを参照してください。
-
-    * [Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-    * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-    
+   
+   * [Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+   * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 2. 次のコマンドを使用して wget ユーティリティで DataFu jar ファイルをダウンロードするか、またはリンクをコピーしてブラウザーに貼り付けてダウンロードを開始します。
-
+   
         wget http://central.maven.org/maven2/com/linkedin/datafu/datafu/1.2.0/datafu-1.2.0.jar
-
 3. 次に、HDInsight クラスターの既定のストレージにファイルをアップロードします。これにより、クラスターのすべてのノードでファイルを使用できるようになり、クラスターを削除して再作成してもファイルはストレージに残っています。
-
+   
         hdfs dfs -put datafu-1.2.0.jar /example/jars
-    
-    > [AZURE.NOTE] 上の例では jar を `wasbs:///example/jars` に格納しています。このディレクトリはクラスターのストレージに既に存在しています。HDInsight クラスター ストレージのどこでも使用できます。
+   
+   > [!NOTE]
+   > 上の例では jar を `wasbs:///example/jars` に格納しています。このディレクトリはクラスターのストレージに既に存在しています。HDInsight クラスター ストレージのどこでも使用できます。
+   > 
+   > 
 
-##Pig で DataFu を使用する
-
+## Pig で DataFu を使用する
 読者は HDInsight での Pig の使用に慣れていることが前提なので、このセクションの手順では Pig Latin ステートメントのみを示し、クラスターでそれを使用する方法の手順は示しません。HDInsight で Pig を使用する方法の詳細については、[HDInsight での Pig の使用](hdinsight-use-pig.md)に関するページをご覧ください。
 
-> [AZURE.IMPORTANT] Linux ベースの HDInsight クラスター上の Pig から DataFu を使用する場合は、最初に、次の Pig Latin ステートメントを使用して jar ファイルを登録する必要があります。
->
+> [!IMPORTANT]
+> Linux ベースの HDInsight クラスター上の Pig から DataFu を使用する場合は、最初に、次の Pig Latin ステートメントを使用して jar ファイルを登録する必要があります。
+> 
 > ```register wasbs:///example/jars/datafu-1.2.0.jar```
->
+> 
 > Windows ベースの HDInsight クラスターでは、DataFu は既定で登録されます。
+> 
+> 
 
 通常は、DataFu の関数にエイリアスを定義します。次に例を示します。
 
     DEFINE SHA datafu.pig.hash.SHA();
-    
+
 これは、SHA ハッシュ関数に対して `SHA` というエイリアスを定義します。その後は、Pig Latin スクリプトでこれを使用して、入力データのハッシュを生成できます。たとえば、次の例では入力データ内の名前をハッシュ値に置き換えています。
 
     raw = LOAD '/data/raw/' USING PigStorage(',') AS  
@@ -87,7 +88,7 @@ DataFu は、Maven リポジトリからダウンロードしてインストー�
     Eva Makay,8,9,2
     Shi Liao,4,6,0
     Tjasa Zemljaric,0,2,5
-    
+
 次のような出力が生成されます。
 
     (c1a743b0f34d349cfc2ce00ef98369bdc3dba1565fec92b4159a9cd5de186347,5,9,1)
@@ -101,12 +102,10 @@ DataFu は、Maven リポジトリからダウンロードしてインストー�
     (fa9c436469096ff1bd297e182831f460501b826272ae97e921f5f6e3f54747e8,4,6,0)
     (bc22db7c238b86c37af79a62c78f61a304b35143f6087eb99c34040325865654,0,2,5)
 
-##次のステップ
-
+## 次のステップ
 DataFu または Pig の詳細については、次のドキュメントを参照してください。
 
 * [Apache DataFu Pig ガイド](http://datafu.incubator.apache.org/docs/datafu/guide.html)。
-
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
 <!---HONumber=AcomDC_0914_2016-->

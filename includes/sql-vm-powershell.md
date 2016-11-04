@@ -1,10 +1,11 @@
 
 ## <a name="start-your-powershell-session"></a>PowerShell セッションの開始
-
 まず、最新の [Azure PowerShell](http://msdn.microsoft.com/library/mt619274.aspx) をインストールして実行する必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](../articles/powershell-install-configure.md)」をご覧ください。
 
-
->[AZURE.NOTE] このトピックの例では、[Azure Resource Manager デプロイメント モデル](../articles/resource-group-overview.md)を使用するため、例では [Azure Resource Manager コマンドレット](http://msdn.microsoft.com/library/azure/mt125356.aspx)を使用します。 
+> [!NOTE]
+> このトピックの例では、[Azure Resource Manager デプロイメント モデル](../articles/resource-group-overview.md)を使用するため、例では [Azure Resource Manager コマンドレット](http://msdn.microsoft.com/library/azure/mt125356.aspx)を使用します。 
+> 
+> 
 
 [**Add-AzureRmAccount**](http://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを実行すると、資格情報を入力するサインイン画面が表示されます。 Azure ポータルにサインインするときと同じ資格情報を使用してください。
 

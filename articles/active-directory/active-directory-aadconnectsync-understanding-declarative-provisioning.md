@@ -1,23 +1,21 @@
-<properties
-    pageTitle="Azure AD Connect 同期: 宣言型のプロビジョニングについて | Microsoft Azure"
-    description="Azure AD Connect における宣言型のプロビジョニングの構成モデルについて説明します。"
-    services="active-directory"
-    documentationCenter=""
-    authors="andkjell"
-    manager="femila"
-    editor=""/>
+---
+title: 'Azure AD Connect 同期: 宣言型のプロビジョニングについて | Microsoft Docs'
+description: Azure AD Connect における宣言型のプロビジョニングの構成モデルについて説明します。
+services: active-directory
+documentationcenter: ''
+author: andkjell
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/29/2016"
-    ms.author="billmath"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/29/2016
+ms.author: billmath
 
-
-
+---
 # <a name="azure-ad-connect-sync:-understanding-declarative-provisioning"></a>Azure AD Connect 同期: 宣言型のプロビジョニングについて
 このトピックでは、Azure AD Connect の構成モデルについて説明します。 このモデルは宣言型のプロビジョニングと呼ばれ、構成の変更を簡単に実行することができます。 このトピックで説明する多くの内容は高度であるため、ほとんどの顧客シナリオで必要ありません。
 
@@ -30,12 +28,12 @@
 
 ![Sync pipeline](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/pipeline.png)  
 
-- Source (ソース): ソース オブジェクト
-- [Scope (スコープ)](#scope): スコープ内のすべての同期規則を特定
-- [Join (結合)](#join): コネクタ スペースとメタバースの間の関係を決定
-- [Transform (変換)](#transform): 属性の変換とフローの方法を計算
-- [Precedence (優先順位)](#precedence): 属性のコントリビューションの競合を解決
-- Target (ターゲット): ターゲット オブジェクト
+* Source (ソース): ソース オブジェクト
+* [Scope (スコープ)](#scope): スコープ内のすべての同期規則を特定
+* [Join (結合)](#join): コネクタ スペースとメタバースの間の関係を決定
+* [Transform (変換)](#transform): 属性の変換とフローの方法を計算
+* [Precedence (優先順位)](#precedence): 属性のコントリビューションの競合を解決
+* Target (ターゲット): ターゲット オブジェクト
 
 ## <a name="scope"></a>Scope (スコープ)
 スコープ モジュールはオブジェクトを評価し、スコープ内にあり、処理に含める必要のある規則を決定します。 オブジェクトの属性値に応じて、各種同期規則がスコープ内にあるかどうか評価されます。 たとえば、Exchange のメールボックスを持たない無効なユーザーには、メールボックスを持つ有効なユーザーとは異なる規則が適用されます。  
@@ -48,18 +46,18 @@
 
 スコープ モジュールでは、次の演算がサポートされています。
 
-操作 | Description
---- | ---
-EQUAL、NOTEQUAL | 値が属性内の値と等しいかどうかを評価する文字列の比較。 複数値の属性については、ISIN と ISNOTIN を参照してください。
-LESSTHAN、LESSTHAN_OR_EQUAL | 値が属性内の値未満であるかどうかを評価する文字列の比較。
-CONTAINS、NOTCONTAINS | 値が属性内の値の中で見つかるかどうかを評価する文字列の比較。
-STARTSWITH、NOTSTARTSWITH | 値が属性内の値の先頭にあるかどうかを評価する文字列の比較。
-ENDSWITH、NOTENDSWITH | 値が属性内の値の末尾にあるかどうかを評価する文字列の比較。
-GREATERTHAN、GREATERTHAN_OR_EQUAL | 値が属性内の値より大きいかどうかを評価する文字列の比較。
-ISNULL、ISNOTNULL | オブジェクトに属性が存在しないかどうかを評価します。 属性が存在しない場合は null となり、規則はスコープに含まれます。
-ISIN、ISNOTIN | 定義されている属性に値が存在するかどうかを評価します。 この演算は EQUAL と NOTEQUAL の複数値バージョンです。 属性は複数値の属性であることが想定され、値がいずれかの属性値内に見つかる場合、規則はスコープに含まれます。
-ISBITSET、ISNOTBITSET | 特定のビットが設定されているかどうかを評価します。 たとえば、userAccountControl 内のビットを評価して、ユーザーが有効であるか無効であるかを確認するために使用できます。
-ISMEMBEROF、ISNOTMEMBEROF | この値には、コネクタ スペース内のグループに対する DN が含まれている必要があります。 オブジェクトが指定されたグループのメンバーである場合、規則はスコープに含まれます。
+| 操作 | Description |
+| --- | --- |
+| EQUAL、NOTEQUAL |値が属性内の値と等しいかどうかを評価する文字列の比較。 複数値の属性については、ISIN と ISNOTIN を参照してください。 |
+| LESSTHAN、LESSTHAN_OR_EQUAL |値が属性内の値未満であるかどうかを評価する文字列の比較。 |
+| CONTAINS、NOTCONTAINS |値が属性内の値の中で見つかるかどうかを評価する文字列の比較。 |
+| STARTSWITH、NOTSTARTSWITH |値が属性内の値の先頭にあるかどうかを評価する文字列の比較。 |
+| ENDSWITH、NOTENDSWITH |値が属性内の値の末尾にあるかどうかを評価する文字列の比較。 |
+| GREATERTHAN、GREATERTHAN_OR_EQUAL |値が属性内の値より大きいかどうかを評価する文字列の比較。 |
+| ISNULL、ISNOTNULL |オブジェクトに属性が存在しないかどうかを評価します。 属性が存在しない場合は null となり、規則はスコープに含まれます。 |
+| ISIN、ISNOTIN |定義されている属性に値が存在するかどうかを評価します。 この演算は EQUAL と NOTEQUAL の複数値バージョンです。 属性は複数値の属性であることが想定され、値がいずれかの属性値内に見つかる場合、規則はスコープに含まれます。 |
+| ISBITSET、ISNOTBITSET |特定のビットが設定されているかどうかを評価します。 たとえば、userAccountControl 内のビットを評価して、ユーザーが有効であるか無効であるかを確認するために使用できます。 |
+| ISMEMBEROF、ISNOTMEMBEROF |この値には、コネクタ スペース内のグループに対する DN が含まれている必要があります。 オブジェクトが指定されたグループのメンバーである場合、規則はスコープに含まれます。 |
 
 ## <a name="join"></a>Join (結合)
 同期パイプライン内の結合モジュールは、ソース内のオブジェクトとターゲット内のオブジェクトの関係を特定するためのものです。 受信規則では、この関係は、メタバース内のオブジェクトに対する関係を見つけるためのコネクタ スペース内のオブジェクトです。  
@@ -147,22 +145,19 @@ ImportedValue 関数は、属性名を角かっこではなく引用符で囲む
 ![Multiple objects joined to the same mv object](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple2.png)  
 
 ## <a name="next-steps"></a>次のステップ
-
-- 式言語について詳しくは、「 [宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
-- 宣言型のプロビジョニングをすぐに使用する方法については、「 [既定の構成について](active-directory-aadconnectsync-understanding-default-configuration.md)」をご覧ください。
-- 宣言型のプロビジョニングを使用して現実に即した変更を実施する方法については、「 [既定の構成を変更する方法](active-directory-aadconnectsync-change-the-configuration.md)」をご覧ください。
-- ユーザーと連絡先がどのように連携して動作するのかについてさらに詳しく知りたい場合には、「 [ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md)」をご覧ください。
+* 式言語について詳しくは、「 [宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
+* 宣言型のプロビジョニングをすぐに使用する方法については、「 [既定の構成について](active-directory-aadconnectsync-understanding-default-configuration.md)」をご覧ください。
+* 宣言型のプロビジョニングを使用して現実に即した変更を実施する方法については、「 [既定の構成を変更する方法](active-directory-aadconnectsync-change-the-configuration.md)」をご覧ください。
+* ユーザーと連絡先がどのように連携して動作するのかについてさらに詳しく知りたい場合には、「 [ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md)」をご覧ください。
 
 **概要トピック**
 
-- [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
-- [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+* [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
+* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
 **参照トピック**
 
-- [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md)
-
-
+* [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md)
 
 <!--HONumber=Oct16_HO2-->
 

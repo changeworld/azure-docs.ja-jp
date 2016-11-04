@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Azure セキュリティの概要 | Microsoft Azure"
-   description="Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。"
-   services="security"
-   documentationCenter="na"
-   authors="TomShinder"
-   manager="MBaldwin"
-   editor="TomSh"/>
+---
+title: Azure セキュリティの概要 | Microsoft Docs
+description: Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。
+services: security
+documentationcenter: na
+author: TomShinder
+manager: MBaldwin
+editor: TomSh
 
-<tags
-   ms.service="security"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/09/2016"
-   ms.author="terrylan"/>
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/09/2016
+ms.author: terrylan
 
+---
 # Azure セキュリティの概要
-
 Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、[Microsoft Trust Center (セキュリティ センター)](https://www.microsoft.com/TrustCenter/default.aspx) にアクセスしてください。
 
 セキュリティはクラウドの最優先の課題であり、Azure セキュリティについての正確でタイムリーな情報を得ることがどれだけ重要かを、私たちは認識しています。アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、さまざまなセキュリティ ツールや機能を活用できることです。これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。
@@ -31,18 +30,21 @@ Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure �
 
 Azure セキュリティ情報サイトは、現在、次のカテゴリに対応しています。
 
-- リソース
-- ネットワークのセキュリティ
-- ストレージのセキュリティ
-- 仮想マシンのセキュリティ
-- エンドポイント保護
-- セキュリティの管理と監視
-- ID 管理
-- PaaS サービス
-- 業界に固有
-- アーキテクチャ
+* リソース
+* ネットワークのセキュリティ
+* ストレージのセキュリティ
+* 仮想マシンのセキュリティ
+* エンドポイント保護
+* セキュリティの管理と監視
+* ID 管理
+* PaaS サービス
+* 業界に固有
+* アーキテクチャ
 
-> [AZURE.NOTE] Azure セキュリティ情報サイトのすべての記事は、ページの左側のナビゲーションに表示されます。すべての記事を表示するには、カテゴリの一覧の下部にある **[詳細を表示]** をクリックまたはタップします。
+> [!NOTE]
+> Azure セキュリティ情報サイトのすべての記事は、ページの左側のナビゲーションに表示されます。すべての記事を表示するには、カテゴリの一覧の下部にある **[詳細を表示]** をクリックまたはタップします。
+> 
+> 
 
 ご意見をお寄せください。 追加してほしいカテゴリがある場合は、お知らせください。 既存のカテゴリに追加してほしい記事がある場合も、お知らせください。 下のコメント セクションを使用するか、[azsecinfosite@microsoft.com](mailto:azsecinfosite@microsoft.com) までご連絡ください。ご意見を今後の計画に組み込むようにいたします。
 

@@ -1,24 +1,23 @@
-<properties
-	pageTitle="Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする"
-	description="MySQL にデータを保存する PHP Web アプリを作成し、Azure への Git デプロイを使用する方法を説明するチュートリアル。"
-	services="app-service\web"
-	documentationCenter="php"
-	authors="rmcmurray"
-	manager="wpickett"
-	editor=""
-	tags="mysql"/>
+---
+title: Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
+description: MySQL にデータを保存する PHP Web アプリを作成し、Azure への Git デプロイを使用する方法を説明するチュートリアル。
+services: app-service\web
+documentationcenter: php
+author: rmcmurray
+manager: wpickett
+editor: ''
+tags: mysql
 
-<tags
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="PHP"
-	ms.topic="article"
-	ms.date="08/11/2016"
-	ms.author="robmcm"/>
+ms.service: app-service-web
+ms.workload: web
+ms.tgt_pltfrm: na
+ms.devlang: PHP
+ms.topic: article
+ms.date: 08/11/2016
+ms.author: robmcm
 
+---
 # Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
-
 このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、Git を使用してそれを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、および [Git][install-git] を使用します。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
 
 学習内容:
@@ -32,67 +31,51 @@
 ![Azure の PHP Web サイト][running-app]
 
 ## 開発環境を設定する
-
 このチュートリアルは、コンピューターに [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、および [Git][install-git] がインストールされていることを前提としています。
 
 <a id="create-web-site-and-set-up-git"></a>
-## Web アプリの作成と Git 発行の設定
 
+## Web アプリの作成と Git 発行の設定
 Web アプリと MySQL データベースを作成するには、次のステップに従います。
 
 1. [Azure ポータル][management-portal]にログインします。
 2. **[次へ]** アイコンをクリックします。
-
 3. **[Marketplace]** の横の **[すべて表示]** をクリック します。
-
 4. **[Web + モバイル]** をクリックし、**[Web アプリ + MySQL]** をクリックします。**[作成]** をクリックします。
-
-4. リソース グループの有効な名前を入力します。
-
+5. リソース グループの有効な名前を入力します。
+   
     ![リソース グループ名の設定][resource-group]
-
-5. 新しい Web アプリについての値を入力します。
-
+6. 新しい Web アプリについての値を入力します。
+   
     ![Web アプリの作成][new-web-app]
-
-6. 法律条項への同意も含めて、新しいデータベースについての値を入力します。
-
-	![新しい MySQL データベースの作成][new-mysql-db]
-
-7. Web アプリが作成されると、新しい Web アプリのブレードが表示されます。
-
-7. **[設定]** で **[継続的なデプロイメント]** をクリックして、_[必要な設定の構成]_ をクリックします。
-
-	![Git 発行の設定][setup-publishing]
-
-8. ソース コード用の **[ローカル Git リポジトリ]** を選択します。
-
-    ![Git リポジトリの設定][setup-repository]
-
-
-9. Git 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください(Git リポジトリを設定したことがある場合は、この手順をスキップできます)。
-
-	![発行資格情報の作成][credentials]
-
+7. 法律条項への同意も含めて、新しいデータベースについての値を入力します。
+   
+    ![新しい MySQL データベースの作成][new-mysql-db]
+8. Web アプリが作成されると、新しい Web アプリのブレードが表示されます。
+9. **[設定]** で **[継続的なデプロイメント]** をクリックして、*[必要な設定の構成]* をクリックします。
+   
+    ![Git 発行の設定][setup-publishing]
+10. ソース コード用の **[ローカル Git リポジトリ]** を選択します。
+    
+     ![Git リポジトリの設定][setup-repository]
+11. Git 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください(Git リポジトリを設定したことがある場合は、この手順をスキップできます)。
+    
+     ![発行資格情報の作成][credentials]
 
 ## MySQL のリモート接続情報の取得
-
 Web Apps で実行されている MySQL データベースに接続するには、接続情報が必要になります。MySQL の接続情報を取得するには、次の手順に従います。
 
 1. リソース グループで、データベースをクリックします。
-
-	![データベースの選択][select-database]
-
+   
+    ![データベースの選択][select-database]
 2. データベースの **[設定]** で、**[プロパティ]** を選択します。
-
+   
     ![プロパティの選択][select-properties]
-
-2. `Database`、`Host`、`User Id`、`Password` の各値をメモします。
-
+3. `Database`、`Host`、`User Id`、`Password` の各値をメモします。
+   
     ![プロパティへの注記][note-properties]
 
 ## アプリケーションの作成とローカル テスト
-
 Web アプリを作成したので、アプリケーションをローカルで作成し、それをテストした後にデプロイすることができます。
 
 Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は MySQL データベースに保存されます。アプリケーションを構成するファイルは 1 つです (下にあるコードをコピーし、貼り付けて使用できます)。
@@ -102,184 +85,174 @@ Registration アプリケーションは、名前と電子メール アドレス
 アプリケーションを作成してローカルで実行するには、次の手順に従います。ここに示す手順は、ローカル コンピューターに PHP、MySQL コマンド ライン ツール (MySQL の一部) がセットアップされており、[MySQL 用 PDO 拡張機能][pdo-mysql]が有効になっていることを前提としています。
 
 1. 先ほどメモしておいた `Data Source`、`User Id`、`Password`、`Database` の各値を使用して、リモートの MySQL サーバーに接続します。
-
-		mysql -h{Data Source] -u[User Id] -p[Password] -D[Database]
-
+   
+        mysql -h{Data Source] -u[User Id] -p[Password] -D[Database]
 2. MySQL コマンド プロンプトが表示されます。
-
-		mysql>
-
+   
+        mysql>
 3. 次の `CREATE TABLE` コマンドを貼り付けます。これにより、データベース内に `registration_tbl` テーブルが作成されます。
-
-		CREATE TABLE registration_tbl(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), name VARCHAR(30), email VARCHAR(30), date DATE);
-
+   
+        CREATE TABLE registration_tbl(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), name VARCHAR(30), email VARCHAR(30), date DATE);
 4. ローカル アプリケーション フォルダーのルートに **index.php** ファイルを作成します。
-
 5. テキスト エディターまたは IDE で **index.php** ファイルを開き、次のコードを追加します。`//TODO:` コメントの箇所を必要に応じて変更します。
 
+        <html>
+        <head>
+        <Title>Registration Form</Title>
+        <style type="text/css">
+            body { background-color: #fff; border-top: solid 10px #000;
+                color: #333; font-size: .85em; margin: 20; padding: 20;
+                font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+            }
+            h1, h2, h3,{ color: #000; margin-bottom: 0; padding-bottom: 0; }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.75em; }
+            h3 { font-size: 1.2em; }
+            table { margin-top: 0.75em; }
+            th { font-size: 1.2em; text-align: left; border: none; padding-left: 0; }
+            td { padding: 0.25em 2em 0.25em 0em; border: 0 none; }
+        </style>
+        </head>
+        <body>
+        <h1>Register here!</h1>
+        <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
+        <form method="post" action="index.php" enctype="multipart/form-data" >
+              Name  <input type="text" name="name" id="name"/></br>
+              Email <input type="text" name="email" id="email"/></br>
+              <input type="submit" name="submit" value="Submit" />
+        </form>
+        <?php
+            // DB connection info
+            //TODO: Update the values for $host, $user, $pwd, and $db
+            //using the values you retrieved earlier from the Azure Portal.
+            $host = "value of Data Source";
+            $user = "value of User Id";
+            $pwd = "value of Password";
+            $db = "value of Database";
+            // Connect to database.
+            try {
+                $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+                $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+            }
+            catch(Exception $e){
+                die(var_dump($e));
+            }
+            // Insert registration info
+            if(!empty($_POST)) {
+            try {
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $date = date("Y-m-d");
+                // Insert data
+                $sql_insert = "INSERT INTO registration_tbl (name, email, date)
+                           VALUES (?,?,?)";
+                $stmt = $conn->prepare($sql_insert);
+                $stmt->bindValue(1, $name);
+                $stmt->bindValue(2, $email);
+                $stmt->bindValue(3, $date);
+                $stmt->execute();
+            }
+            catch(Exception $e) {
+                die(var_dump($e));
+            }
+            echo "<h3>Your're registered!</h3>";
+            }
+            // Retrieve data
+            $sql_select = "SELECT * FROM registration_tbl";
+            $stmt = $conn->query($sql_select);
+            $registrants = $stmt->fetchAll();
+            if(count($registrants) > 0) {
+                echo "<h2>People who are registered:</h2>";
+                echo "<table>";
+                echo "<tr><th>Name</th>";
+                echo "<th>Email</th>";
+                echo "<th>Date</th></tr>";
+                foreach($registrants as $registrant) {
+                    echo "<tr><td>".$registrant['name']."</td>";
+                    echo "<td>".$registrant['email']."</td>";
+                    echo "<td>".$registrant['date']."</td></tr>";
+                }
+                 echo "</table>";
+            } else {
+                echo "<h3>No one is currently registered.</h3>";
+            }
+        ?>
+        </body>
+        </html>
 
-		<html>
-		<head>
-		<Title>Registration Form</Title>
-		<style type="text/css">
-			body { background-color: #fff; border-top: solid 10px #000;
-			    color: #333; font-size: .85em; margin: 20; padding: 20;
-			    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-			}
-			h1, h2, h3,{ color: #000; margin-bottom: 0; padding-bottom: 0; }
-			h1 { font-size: 2em; }
-			h2 { font-size: 1.75em; }
-			h3 { font-size: 1.2em; }
-			table { margin-top: 0.75em; }
-			th { font-size: 1.2em; text-align: left; border: none; padding-left: 0; }
-			td { padding: 0.25em 2em 0.25em 0em; border: 0 none; }
-		</style>
-		</head>
-		<body>
-		<h1>Register here!</h1>
-		<p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
-		<form method="post" action="index.php" enctype="multipart/form-data" >
-		      Name  <input type="text" name="name" id="name"/></br>
-		      Email <input type="text" name="email" id="email"/></br>
-		      <input type="submit" name="submit" value="Submit" />
-		</form>
-		<?php
-			// DB connection info
-			//TODO: Update the values for $host, $user, $pwd, and $db
-			//using the values you retrieved earlier from the Azure Portal.
-			$host = "value of Data Source";
-			$user = "value of User Id";
-			$pwd = "value of Password";
-			$db = "value of Database";
-			// Connect to database.
-			try {
-				$conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
-				$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-			}
-			catch(Exception $e){
-				die(var_dump($e));
-			}
-			// Insert registration info
-			if(!empty($_POST)) {
-			try {
-				$name = $_POST['name'];
-				$email = $_POST['email'];
-				$date = date("Y-m-d");
-				// Insert data
-				$sql_insert = "INSERT INTO registration_tbl (name, email, date)
-						   VALUES (?,?,?)";
-				$stmt = $conn->prepare($sql_insert);
-				$stmt->bindValue(1, $name);
-				$stmt->bindValue(2, $email);
-				$stmt->bindValue(3, $date);
-				$stmt->execute();
-			}
-			catch(Exception $e) {
-				die(var_dump($e));
-			}
-			echo "<h3>Your're registered!</h3>";
-			}
-			// Retrieve data
-			$sql_select = "SELECT * FROM registration_tbl";
-			$stmt = $conn->query($sql_select);
-			$registrants = $stmt->fetchAll();
-			if(count($registrants) > 0) {
-				echo "<h2>People who are registered:</h2>";
-				echo "<table>";
-				echo "<tr><th>Name</th>";
-				echo "<th>Email</th>";
-				echo "<th>Date</th></tr>";
-				foreach($registrants as $registrant) {
-					echo "<tr><td>".$registrant['name']."</td>";
-					echo "<td>".$registrant['email']."</td>";
-					echo "<td>".$registrant['date']."</td></tr>";
-		    	}
-		 		echo "</table>";
-			} else {
-				echo "<h3>No one is currently registered.</h3>";
-			}
-		?>
-		</body>
-		</html>
-
-4.  ターミナルで、アプリケーション フォルダーに移動し、次のコマンドを入力します。
-
-		php -S localhost:8000
+1. ターミナルで、アプリケーション フォルダーに移動し、次のコマンドを入力します。
+   
+       php -S localhost:8000
 
 これで、**http://localhost:8000/** に移動してアプリケーションをテストできるようになりました。
 
-
 ## アプリケーションの発行
-
 アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Web Apps に発行できます。ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
 
-> [AZURE.NOTE]
-これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後で Azure ポータルに示された手順と同じです。
+> [!NOTE]
+> これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後で Azure ポータルに示された手順と同じです。
+> 
+> 
 
 1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、Azure ポータルの Web アプリ プロパティに移動します。
-
-1. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
-
-		git init
-		git add .
-		git commit -m "initial commit"
-		git remote add azure [URL for remote repository]
-		git push azure master
-
-	先ほど作成したパスワードを入力するように求められます。
-
-	![Git 経由による Azure への初期プッシュ][git-initial-push]
-
-2. アプリケーションの使用を開始できるように、**http://[sitename].azurewebsites.net/index.php** に移動します (この情報はアカウント ダッシュボードに保存されます)。
-
-	![Azure の PHP Web サイト][running-app]
+2. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
+   
+        git init
+        git add .
+        git commit -m "initial commit"
+        git remote add azure [URL for remote repository]
+        git push azure master
+   
+    先ほど作成したパスワードを入力するように求められます。
+   
+    ![Git 経由による Azure への初期プッシュ][git-initial-push]
+3. アプリケーションの使用を開始できるように、**http://[sitename].azurewebsites.net/index.php** に移動します (この情報はアカウント ダッシュボードに保存されます)。
+   
+    ![Azure の PHP Web サイト][running-app]
 
 アプリケーションを発行した後、アプリケーションへの変更を開始し、Git を使用してその変更を発行することもできます。
 
 ## アプリケーションへの変更の発行
-
 アプリケーションへの変更を発行するには、次のステップに従います。
 
 1. ローカルでアプリケーションへの変更を行います。
 2. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリのルート ディレクトリに変更して、次のコマンドを実行します。
-
-		git add .
-		git commit -m "comment describing changes"
-		git push azure master
-
-	先ほど作成したパスワードを入力するように求められます。
-
-	![サイト変更の Git 経由による Azure へのプッシュ][git-change-push]
-
+   
+        git add .
+        git commit -m "comment describing changes"
+        git push azure master
+   
+    先ほど作成したパスワードを入力するように求められます。
+   
+    ![サイト変更の Git 経由による Azure へのプッシュ][git-change-push]
 3. アプリケーションとその変更内容を確認できるように、**http://[sitename].azurewebsites.net/index.php** に移動します。
+   
+    ![Azure の PHP Web サイト][running-app]
 
-	![Azure の PHP Web サイト][running-app]
-
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> [!NOTE]
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> 
+> 
 
 <a name="composer"></a>
-## Composer 拡張機能を使用した Composer 自動化の有効化
 
+## Composer 拡張機能を使用した Composer 自動化の有効化
 既定では、PHP プロジェクトに composer.json があっても、App Service の git デプロイ プロセスで処理されません。`git push` で composer.json の処理を有効にするには、Composer 拡張機能を有効にします。
 
 1. [Azure ポータル][management-portal]の PHP Web アプリのブレードで、**[ツール]**、**[拡張機能]** の順にクリックします。
-
+   
     ![Composer Extension Settings][composer-extension-settings]
-
 2. **[追加]**、**[Composer]** の順にクリックします。
-
+   
     ![Composer Extension Add][composer-extension-add]
-    
 3. **[OK]** をクリックして法律条項に同意します。もう一度 **[OK]** をクリックすると、拡張機能が追加されます。
-
+   
     これで、**[インストールされている拡張機能]** ブレードに Composer 拡張機能が表示されるようになります。![Composer Extension View][composer-extension-view]
-    
 4. 前のセクションと同様に、`git add`、`git commit`、`git push` を実行します。composer.json で定義されている依存関係が Composer によってインストールされていることを確認できます。
-
+   
     ![Composer Extension Success][composer-extension-success]
 
 ## 次のステップ
-
 詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
 
 <!-- URL List -->

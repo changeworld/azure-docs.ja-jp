@@ -1,23 +1,22 @@
-<properties
-	pageTitle="予測メンテナンスのアーキテクチャ | Microsoft Azure"
-	description="航空宇宙、公益事業、輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence Solution Template のアーキテクチャの図"
-	services="cortana-analytics"
-	documentationCenter=""
-	authors="garyericson"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: 予測メンテナンスのアーキテクチャ | Microsoft Docs
+description: 航空宇宙、公益事業、輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence Solution Template のアーキテクチャの図
+services: cortana-analytics
+documentationcenter: ''
+author: garyericson
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="cortana-analytics"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/19/2016"
-	ms.author="garye" />
+ms.service: cortana-analytics
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/19/2016
+ms.author: garye
 
+---
 # 航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template のアーキテクチャ
-
 次の図に、[予測メンテナンスのための Cortana Intelligence Solution Template](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1) のアーキテクチャの概要を示します。
 
 フル サイズ版の図をダウンロードできます: [アーキテクチャの図: 予測メンテナンスのための Solution Template](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)。

@@ -1,41 +1,30 @@
-<properties 
-	pageTitle="RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server"
-	description="これは、RADIUS を使用してリモート デスクトップ (RD) ゲートウェイと Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtand"/>
+---
+title: RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server
+description: これは、RADIUS を使用してリモート デスクトップ (RD) ゲートウェイと Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtand
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/15/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/15/2016
+ms.author: kgremban
 
+---
 # RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server
-
 多くの場合、リモート デスクトップ ゲートウェイは、ローカルの NPS を使用してユーザーを認証します。このドキュメントでは、リモート デスクトップ ゲートウェイから RADIUS 要求を (ローカルの NPS を通じて) Multi-Factor Authentication Server にルーティングする方法について説明します。
 
 Multi-Factor Authentication Server は別個のサーバーにインストールする必要があります。これにより、RADIUS 要求を NPS に戻してリモート デスクトップ ゲートウェイ サーバーに送信します。NPS でユーザー名とパスワードが検証されると、Multi-Factor Authentication Server に応答が返され、ゲートウェイに結果を返す前に認証の 2 つ目の要素が実行されます。
 
-
-
-
-
 ## RD ゲートウェイの構成
-
 RD ゲートウェイは、RADIUS 認証を Azure Multi-Factor Authentication Server に送信するように構成する必要があります。RD ゲートウェイがインストールおよび構成されて動作を開始したら、RD ゲートウェイのプロパティに移動します。[RD CAP ストア] タブに移動し、NPS を実行するローカル サーバーではなく、NPS を実行する中央サーバーを使用するように変更します。RADIUS サーバーとして 1 つ以上の Azure Multi-Factor Authentication Server を追加し、共有シークレットを各サーバーに指定します。
 
-
-
-
-
 ## NPS の構成
-
 RD ゲートウェイは、NPS を使用して Azure Multi-Factor Authentication に RADIUS 要求を送信します。RD ゲートウェイが多要素認証が完了する前にタイムアウトしないように、タイムアウトするまでの時間を変更する必要があります。NPS を構成するには、次の手順に従います。
 
 1. NPS で、左の列にある [RADIUS クライアント] と [RADIUS サーバー] のメニューを展開し、[リモート RADIUS サーバー グループ] をクリックします。TS ゲートウェイ サーバー グループのプロパティに移動します。表示される RADIUS サーバーを編集し、[負荷分散] タブに移動します。[要求が破棄されたとみなされる応答待ち時間 (秒数)] と [サーバーが利用不可能とみなされる要求間隔 (秒数)] を 30 ～ 60 秒にします。[認証/アカウント] タブをクリックし、指定されている RADIUS ポートと、Multi-Factor Authentication Server がリッスンするポートが一致していることを確認します。
@@ -44,12 +33,7 @@ RD ゲートウェイは、NPS を使用して Azure Multi-Factor Authentication
 4. このポリシーをコピーして新しいポリシーを作成します。新しいポリシーに、クライアントのフレンドリ名を、手順 2 の Azure Multi-Factor Authentication Server の RADIUS クライアントに設定したフレンドリ名と一致させる条件を追加します。認証プロバイダーをローカル コンピューターに変更します。このポリシーは、RADIUS 要求を Azure Multi-Factor Authentication Server から受信した際に、RADIUS 要求を Multi-Factor Authentication Server に戻してループ状態にするのではなく、ローカルで認証が行われるようにします。ループ状態を回避するのには、Multi-Factor Authentication Server に要求を転送する元のポリシーの上にこの新しいポリシーを配置する必要があります。
 
 ## Azure Multi-Factor Authentication の構成
-
-
---------------------------------------------------------------------------------
-
-
-
+- - -
 Azure Multi-Factor Authentication Server は、RD ゲートウェイと NPS 間の RADIUS プロキシとして構成されます。これは、RD ゲートウェイ サーバーとは別個のドメインに参加しているサーバーにインストールする必要があります。Azure Multi-Factor Authentication Server を構成するには、次の手順に従います。
 
 1. Azure Multi-Factor Authentication Server を開き、[RADIUS 認証] アイコンをクリックします。[RADIUS 認証を有効にする] チェック ボックスをオンにします。

@@ -1,4 +1,4 @@
-log/
+
 obj/
 _site/
 .optemp/
@@ -10,3 +10,4 @@ _themes.VS.Modern/
 
 AzureMigration.ps1
 .migrationtemp
+

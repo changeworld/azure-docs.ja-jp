@@ -1,29 +1,28 @@
-<properties
-    pageTitle="Resource Manager テンプレートを使用して診断設定を自動的に有効にする | Microsoft Azure"
-    description="Resource Manager テンプレートを使用して、診断ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできるようにするための診断設定を作成する方法について説明します。"
-    authors="johnkemnetz"
-    manager="rboucher"
-    editor=""
-    services="monitoring-and-diagnostics"
-    documentationCenter="monitoring-and-diagnostics"/>
+---
+title: Resource Manager テンプレートを使用して診断設定を自動的に有効にする | Microsoft Docs
+description: Resource Manager テンプレートを使用して、診断ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできるようにするための診断設定を作成する方法について説明します。
+author: johnkemnetz
+manager: rboucher
+editor: ''
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
 
-<tags
-    ms.service="monitoring-and-diagnostics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/26/2016"
-    ms.author="johnkem"/>
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: johnkem
 
-
+---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してリソースの作成時に診断設定を自動的に有効にする
 この記事では、 [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md) を使用して、リソースの作成時にリソースの診断設定を構成する方法について説明します。 これにより、リソースの作成時に、診断ログとメトリックの Event Hubs へのストリーミング、ストレージ アカウントへのアーカイブ、または Log Analytics への送信を自動的に開始できます。
 
 Resource Manager テンプレートを使用して診断ログを有効にする方法は、リソースの種類によって異なります。
 
-- **非コンピューティング** リソース (ネットワーク セキュリティ グループ、Logic Apps、Automation など) では、 [こちらの記事で説明する診断設定](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)を使用します。
-- **コンピューティング** (WAD/LAD ベースの) リソースでは、 [こちらの記事で説明する WAD/LAD 構成ファイル](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)を使用します。
+* **非コンピューティング** リソース (ネットワーク セキュリティ グループ、Logic Apps、Automation など) では、 [こちらの記事で説明する診断設定](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)を使用します。
+* **コンピューティング** (WAD/LAD ベースの) リソースでは、 [こちらの記事で説明する WAD/LAD 構成ファイル](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)を使用します。
 
 この記事では、いずれかの方法を使用して診断を構成する方法について説明します。
 
@@ -38,7 +37,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 非コンピューティング リソースの場合、次の 2 つの手順を実行する必要があります。
 
 1. (ストレージ アカウントへの診断ログのアーカイブ、Event Hubs へのログのストリーミング、Log Analytics へのログの送信を有効にするために) パラメーター BLOB に、ストレージ アカウント名、Service Bus 規則 ID、OMS Log Analytics ワークスペース ID のパラメーターを追加します。
-
+   
     ```json
     "storageAccountName": {
       "type": "string",
@@ -60,7 +59,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
     }
     ```
 2. 診断ログを有効にするリソースのリソース配列に、 `[resource namespace]/providers/diagnosticSettings`型のリソースを追加します。
-
+   
     ```json
     "resources": [
       {
@@ -181,16 +180,16 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 2. パラメーターとしてストレージ アカウントおよびイベント ハブを指定します。
 3. すべての XML 文字を正しくエスケープして、WADCfg XML ファイルの内容を XMLCfg プロパティに追加します。
 
-> [AZURE.WARNING] この最後の手順は理解するのが難しい場合があります。 [こちらの記事](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md#diagnostics-configuration-variables) をご覧ください。
+> [!WARNING]
+> この最後の手順は理解するのが難しい場合があります。 [こちらの記事](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md#diagnostics-configuration-variables) をご覧ください。
+> 
+> 
 
 このプロセス全体とサンプルについては、 [こちらのドキュメント](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)をご覧ください。
 
-
 ## <a name="next-steps"></a>次のステップ
-- [Azure 診断ログの詳細を確認する](./monitoring-overview-of-diagnostic-logs.md)
-- [Azure 診断ログを Event Hubs にストリーミングする](./monitoring-stream-diagnostic-logs-to-event-hubs.md)
-
-
+* [Azure 診断ログの詳細を確認する](monitoring-overview-of-diagnostic-logs.md)
+* [Azure 診断ログを Event Hubs にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 
 <!--HONumber=Oct16_HO2-->
 

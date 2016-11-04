@@ -1,7 +1,7 @@
 
 ディスクの詳細については、「[Azure の仮想マシンのディスクについて](http://go.microsoft.com/fwlink/p/?LinkId=403697)」を参照してください。
 
-##<a id="cliattachempty"></a>方法: 空のディスクの接続
+## <a id="cliattachempty"></a>方法: 空のディスクの接続
 空のディスクを接続すると、データ ディスクを簡単に追加できます。新しい空のディスクを接続するには、次のコマンドを実行します。
 
     vm disk attach-new <vm-name> <size-in-gb> [blob-url]

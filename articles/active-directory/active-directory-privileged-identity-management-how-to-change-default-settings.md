@@ -1,27 +1,25 @@
-<properties
-   pageTitle="ロールのアクティブ化の設定を管理する方法 |Microsoft Azure"
-   description="Azure Active Directory Privileged Identity Management 拡張機能で特権 ID の既定の設定を変更する方法について説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="kgremban"
-   manager="femila"
-   editor=""/>
+---
+title: ロールのアクティブ化の設定を管理する方法 | Microsoft Docs
+description: Azure Active Directory Privileged Identity Management 拡張機能で特権 ID の既定の設定を変更する方法について説明します。
+services: active-directory
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="06/30/2016"
-   ms.author="kgremban"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 06/30/2016
+ms.author: kgremban
 
+---
 # Azure AD Privileged Identity Management のロールのアクティブ化設定を管理する方法
-
 特権ロール管理者は、ロール候補の割り当てをアクティブ化しているユーザーの操作性を変更するなど、組織の Azure AD Privileged Identity Management (PIM) をカスタマイズできます。
 
 ## ロールのアクティブ化の設定を管理する
-
 1. [Azure ポータル](https://portal.azure.com)に移動し、ダッシュボードから **Azure AD Privileged Identity Management** アプリを選択します。
 2. **[特権ロールの管理]**、**[設定]**、**[特権ロール]** の順に選択します。
 3. 設定を管理するロールを選択します。
@@ -36,28 +34,27 @@
 
 **多要素認証**: ユーザーに対して、ロールのアクティブ化で MFA を使用した ID 確認を必須とするかどうかを選択できます。ユーザーがこの確認を行う必要があるのはセッションごとに 1 回だけです。ロールのアクティブ化のたびに確認を行う必要はありません。MFA を有効化する場合は次の 2 点に留意してください。
 
-- 電子メール アドレスの Microsoft アカウント (一般には @outlook.com ですが、例外もあります) を持つユーザーは、Azure MFA に登録できません。Microsoft アカウントを持つユーザーにロールを割り当てるには、ユーザーを永続的な管理者にするか、そのロールの MFA を無効化する必要があります。
-
-- Azure AD および Office365 の高い特権ロールでは、MFA は無効化できません。これは、こうしたロールを慎重に保護する必要があるために設けられている安全機能です。
-
-    - アプリケーション管理者
-    - アプリケーション プロキシ サーバー管理者
-    - 課金管理者
-    - コンプライアンス管理者
-    - CRM サービス管理者
-    - カスタマー ロックボックスのアクセス承認者
-    - ディレクトリ ライター
-    - Exchange 管理者
-    - グローバル管理者
-    - Intune サービス管理者
-    - メールボックス管理者
-    - パートナー レベル 1 のサポート
-    - パートナー レベル 2 のサポート
-    - 特権ロール管理者
-    - セキュリティ管理者
-    - SharePoint 管理者
-    - Skype for Business 管理者
-    - ユーザー アカウント管理者
+* 電子メール アドレスの Microsoft アカウント (一般には @outlook.com ですが、例外もあります) を持つユーザーは、Azure MFA に登録できません。Microsoft アカウントを持つユーザーにロールを割り当てるには、ユーザーを永続的な管理者にするか、そのロールの MFA を無効化する必要があります。
+* Azure AD および Office365 の高い特権ロールでは、MFA は無効化できません。これは、こうしたロールを慎重に保護する必要があるために設けられている安全機能です。
+  
+  * アプリケーション管理者
+  * アプリケーション プロキシ サーバー管理者
+  * 課金管理者
+  * コンプライアンス管理者
+  * CRM サービス管理者
+  * カスタマー ロックボックスのアクセス承認者
+  * ディレクトリ ライター
+  * Exchange 管理者
+  * グローバル管理者
+  * Intune サービス管理者
+  * メールボックス管理者
+  * パートナー レベル 1 のサポート
+  * パートナー レベル 2 のサポート
+  * 特権ロール管理者
+  * セキュリティ管理者
+  * SharePoint 管理者
+  * Skype for Business 管理者
+  * ユーザー アカウント管理者
 
 PIM での MFA の使用に関する詳細は、「[MFA を要求する方法](active-directory-privileged-identity-management-how-to-require-mfa.md)」を参照してください。
 
@@ -65,6 +62,6 @@ PIM での MFA の使用に関する詳細は、「[MFA を要求する方法](a
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
-[AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
+[!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
 <!---HONumber=AcomDC_0907_2016-->

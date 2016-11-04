@@ -1,27 +1,25 @@
-<properties
-   pageTitle="Application Insights を使用したクラウド サービスのトラブルシューティング | Microsoft Azure"
-   description="Application Insights を使用して Azure 診断データを処理することで、クラウド サービスの問題をトラブルシューティングする方法について説明します。"
-   services="cloud-services"
-   documentationCenter=".net"
-   authors="sbtron"
-   manager="timlt"
-   editor="tysonn" />
-<tags
-   ms.service="cloud-services"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="12/15/2015"
-   ms.author="saurabh" />
+---
+title: Application Insights を使用したクラウド サービスのトラブルシューティング | Microsoft Docs
+description: Application Insights を使用して Azure 診断データを処理することで、クラウド サービスの問題をトラブルシューティングする方法について説明します。
+services: cloud-services
+documentationcenter: .net
+author: sbtron
+manager: timlt
+editor: tysonn
 
+ms.service: cloud-services
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 12/15/2015
+ms.author: saurabh
 
+---
 # Application Insights を使用したクラウド サービスのトラブルシューティング
-
 [Azure SDK 2.8](https://azure.microsoft.com/downloads/) と Azure 診断の拡張機能 1.5 を使用して、クラウド サービスの Azure 診断データを Application Insights に直接送信できるようになりました。アプリケーション ログ、Windows イベント ログ、ETW ログ、パフォーマンス カウンターなど、Azure 診断によって収集されるさまざまな種類のログを Application Insights に送信し、Application Insights ポータル UI で視覚化できます。Application Insights SDK と共に使用すると、Azure 診断のシステムやインフラストラクチャ レベルのデータだけでなくアプリケーションから取得したメトリックとログの洞察を得ることができます。
 
 ## Application Insights にデータを送信するための Azure 診断の構成
-
 Azure 診断データを Application Insights に送信するには、次の手順に従ってクラウド サービス プロジェクトをセットアップします。
 
 1) Visual Studio のソリューション エクスプローラーで、ロールを右クリックし、**[プロパティ]** を選択して、ロール デザイナーを開きます。
@@ -51,24 +49,22 @@ Azure 診断テレメトリは、クラウド サービス用に構成された 
 
 Azure 診断のさまざまなログの種類と Application Insights の概念は次のように対応しています。
 
--  パフォーマンス カウンターは、Application Insights でカスタム メトリックとして表示されます。
--  Windows イベント ログは、Application Insights でトレースとカスタム イベントとして表示されます。
--  アプリケーション ログ、ETW ログ、診断インフラストラクチャ ログは、Application Insights でトレースとして表示されます。
+* パフォーマンス カウンターは、Application Insights でカスタム メトリックとして表示されます。
+* Windows イベント ログは、Application Insights でトレースとカスタム イベントとして表示されます。
+* アプリケーション ログ、ETW ログ、診断インフラストラクチャ ログは、Application Insights でトレースとして表示されます。
 
 Application Insights で Azure 診断データを表示するには:
 
-- [メトリックス エクスプローラー](../application-insights/app-insights-metrics-explorer.md)を使用して、任意のカスタム パフォーマンス カウンターや、さまざまな種類の Windows イベント ログのイベントの数を視覚化します。
+* [メトリックス エクスプローラー](../application-insights/app-insights-metrics-explorer.md)を使用して、任意のカスタム パフォーマンス カウンターや、さまざまな種類の Windows イベント ログのイベントの数を視覚化します。
 
 ![メトリックス エクスプローラーのカスタム メトリックス][5]
 
-- [検索](../application-insights/app-insights-diagnostic-search.md)を使用して、Azure 診断によって送信されるさまざまなトレース ログを検索します。たとえば、ロールでハンドルされない例外が発生して、ロールがクラッシュし、リサイクルされた場合、*Windows イベント ログ*の*アプリケーション* チャネルにその情報が表示されます。検索機能を使用して、Windows イベント ログのエラーを確認し、例外のスタック トレース全体を取得することで、問題の根本原因を発見できます。
+* [検索](../application-insights/app-insights-diagnostic-search.md)を使用して、Azure 診断によって送信されるさまざまなトレース ログを検索します。たとえば、ロールでハンドルされない例外が発生して、ロールがクラッシュし、リサイクルされた場合、*Windows イベント ログ*の*アプリケーション* チャネルにその情報が表示されます。検索機能を使用して、Windows イベント ログのエラーを確認し、例外のスタック トレース全体を取得することで、問題の根本原因を発見できます。
 
 ![トレースの選択][6]
 
 ## 次のステップ
-
-- [クラウド サービスに Application Insights SDK を追加](../application-insights/app-insights-cloudservices.md)して、アプリケーションから要求、例外、依存関係、および任意のカスタム テレメトリに関するデータを送信します。Azure 診断データと組み合わせることで、同じ Application Insight リソース内のすべてのアプリケーションとシステムを包括的に確認できます。  
-
+* [クラウド サービスに Application Insights SDK を追加](../application-insights/app-insights-cloudservices.md)して、アプリケーションから要求、例外、依存関係、および任意のカスタム テレメトリに関するデータを送信します。Azure 診断データと組み合わせることで、同じ Application Insight リソース内のすべてのアプリケーションとシステムを包括的に確認できます。  
 
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/solution-explorer-properties.png

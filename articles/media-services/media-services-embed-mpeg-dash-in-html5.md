@@ -1,47 +1,40 @@
-<properties 
-    pageTitle="DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み | Microsoft Azure" 
-    description="このトピックでは、DASH.js を使用した HTML5 アプリケーションに MPEG-DASH アダプティブ ストリーミング ビデオを埋め込む方法を説明します。" 
-    authors="Juliako" 
-    manager="erikre" 
-    editor="" 
-    services="media-services" 
-    documentationCenter=""/>
+---
+title: DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み | Microsoft Docs
+description: このトピックでは、DASH.js を使用した HTML5 アプリケーションに MPEG-DASH アダプティブ ストリーミング ビデオを埋め込む方法を説明します。
+author: Juliako
+manager: erikre
+editor: ''
+services: media-services
+documentationcenter: ''
 
-<tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/26/2016" 
-    ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: juliako
 
-
-
-#<a name="embedding-a-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dash.js"></a>DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み
-
-##<a name="overview"></a>Overview
-
+---
+# <a name="embedding-a-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dash.js"></a>DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み
+## <a name="overview"></a>Overview
 MPEG DASH は、高品質なアダプティブ ビデオ ストリーミング出力を配信する必要があるユーザーに多くのメリットを提供するビデオ コンテンツのアダプティブ ストリーミングの ISO 標準です。 MPEG DASH では、ネットワークが混雑すると自動的にビデオ ストリームが低解像度に変更されます。 これにより、プレーヤーが次に再生する数秒分をダウンロードする間 (バッファリング)、視聴者に「一時停止された」状態のビデオが表示される可能性が減少します。 ネットワークの混雑が緩和されると、ビデオ プレーヤーは高品質ストリームに戻ります。 この機能は必要な帯域幅に対応するもので、結果的にビデオの開始時間が高速化されます。 つまり、最初の数秒は高速にダウンロードされる低品質のセグメントで再生され、十分なコンテンツがバッファリングされると、より高い品質にステップアップします。
 
 Dash.js は JavaScript で記述された、オープン ソースの MPEG-DASH ビデオ プレーヤーです。 ビデオ再生機能を必要とするアプリケーションで自由に再使用できる、堅牢なクロスプラットフォーム プレイヤーを提供することが目的です。 W3C Media Source Extensions (MSE) をサポートするどのブラウザーでも MPEG-DASH を再生できるようになります。現在では Chrome、Microsoft Edge、IE11 がこれに該当します (他のブラウザーも今後 MSE に対応する予定です)。 DASH.js の詳細については、「jGitHub dash.js リポジトリ」をご覧ください。
 
-
-##<a name="creating-a-browser-based-streaming-video-player"></a>ブラウザー ベースのストリーミング ビデオ プレーヤーの作成
-
+## <a name="creating-a-browser-based-streaming-video-player"></a>ブラウザー ベースのストリーミング ビデオ プレーヤーの作成
 再生、一時停止、巻き戻しなどのコントロールを備えたビデオ プレーヤーを表示するシンプルな Web ページを作成するには:
 
 1. HTML ページを作成します
-1. ビデオ タグを追加します
-1. Dash.js プレーヤーを追加します
-1. プレイヤーを初期化します
-1. CSS スタイルを追加します
-1. MSE を実装するブラウザーに結果を表示します
+2. ビデオ タグを追加します
+3. Dash.js プレーヤーを追加します
+4. プレイヤーを初期化します
+5. CSS スタイルを追加します
+6. MSE を実装するブラウザーに結果を表示します
 
 プレーヤーの初期化は、数行の JavaScript コードで実行できます。 dash.js を使用すると、ブラウザー ベースのアプリケーションに MPEG-DASH ビデオを簡単に埋め込むことができます。
 
-##<a name="creating-the-html-page"></a>HTML ページの作成
-
+## <a name="creating-the-html-page"></a>HTML ページの作成
 最初の手順では、**ビデオ** 要素を含む標準の HTML ページを作成し、以下の例のようにこのファイルを basicplayer.html に保存します。
 
     <!DOCTYPE html>
@@ -53,8 +46,7 @@ Dash.js は JavaScript で記述された、オープン ソースの MPEG-DASH 
       </body>
     </html>
 
-##<a name="adding-the-dash.js-player"></a>DASH.js プレーヤーの追加
-
+## <a name="adding-the-dash.js-player"></a>DASH.js プレーヤーの追加
 dash.js リファレンス実装をアプリケーションに追加するには、dash.js プロジェクトの 1.0 リリースから dash.all.js ファイルを入手する必要があります。 このファイルはアプリケーションの JavaScript フォルダーに保存します。 このファイルは、必要なすべての dash.js コードを 1 つのファイルにまとめることのできる便利なファイルです。 dash.js リポジトリを参照すると、個別のファイルやテスト コードなどさまざまな情報が見つかりますが、dash.js の使用のみが目的であれば、必要になるのは dash.all.js ファイルのみです。
 
 dash.js プレーヤーをアプリケーションを追加するには、basicPlayer.html のヘッド セクションにスクリプト タグを追加します。
@@ -88,7 +80,7 @@ MediaPlayer に MPD ファイルの URL を渡して、再生予定のビデオ�
     <body onload="setupVideo()">
 
 最後に、CSS を使用してビデオ要素のサイズを設定します。 アダプティブ ストリーミング環境では、ネットワークの状況に応じて再生するビデオのサイズが変化するため、この操作は特に重要です。 以下の簡単なデモでは、次の CSS をページのヘッド セクションに追加して、ビデオ要素を利用可能なブラウザー ウィンドウの 80% に設定します。
-    
+
     <style>
     video {
       width: 80%;
@@ -96,26 +88,19 @@ MediaPlayer に MPD ファイルの URL を渡して、再生予定のビデオ�
     }
     </style>
 
-##<a name="playing-a-video"></a>ビデオの再生
-
+## <a name="playing-a-video"></a>ビデオの再生
 ビデオを再生するには、basicPlayback.html ファイルでブラウザーをポイントし、表示されるビデオ プレーヤーで再生をクリックします。
 
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="media-services-learning-paths"></a>Media Services のラーニング パス
+## <a name="provide-feedback"></a>フィードバックの提供
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
-##<a name="provide-feedback"></a>フィードバックの提供
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-##<a name="see-also"></a>関連項目
-
+## <a name="see-also"></a>関連項目
 [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
 
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js) 
-
-
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,33 +1,28 @@
-<properties 
-	pageTitle="コンピューティング エミュレーターでのクラウド サービスのローカルなプロファイル | Microsoft Azure" 
-	services="cloud-services"
-	description="Visual Studio プロファイラーを使用して、クラウド サービスのパフォーマンスの問題を調査します。" 
-	documentationCenter=""
-	authors="TomArcher" 
-	manager="douge" 
-	editor=""
-	tags="" 
-	/>
+---
+title: コンピューティング エミュレーターでのクラウド サービスのローカルなプロファイル | Microsoft Docs
+services: cloud-services
+description: Visual Studio プロファイラーを使用して、クラウド サービスのパフォーマンスの問題を調査します。
+documentationcenter: ''
+author: TomArcher
+manager: douge
+editor: ''
+tags: ''
 
-<tags 
-	ms.service="cloud-services" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="07/30/2016" 
-	ms.author="tarcher"/>
+ms.service: cloud-services
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: multiple
+ms.topic: article
+ms.date: 07/30/2016
+ms.author: tarcher
 
+---
 # Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト
-
 クラウド サービスのパフォーマンスのテストには、さまざまなツールや手法を使用できます。Azure にクラウド サービスを発行するときは、[Azure アプリケーションのプロファイル][1]に関するページで説明されているように、Visual Studio によってプロファイル データを収集してローカルで分析できます。また、[Azure でのパフォーマンス カウンターの使用][2]に関するページで説明されているように、診断機能を使用してさまざまなパフォーマンス カウンターを追跡することもできます。アプリケーションをクラウドにデプロイする前に、コンピューティング エミュレーターでローカルにプロファイルすることもできます。
 
 この記事では、エミュレーターでローカルに実行できるプロファイル手法である CPU サンプリングについて説明します。CPU サンプリングは、あまり侵入的でないプロファイル手法です。プロファイラーは、指定されたサンプリング間隔でコール スタックのスナップショットを取得します。データはある期間にわたって収集され、レポートに示されます。このプロファイル手法では、コンピューティング処理が集中するアプリケーションで大部分の CPU 処理が行われる箇所が示されます。これによって、アプリケーションが多くの時間を費やしている "ホット パス" に焦点を合わせる機会が与えられます。
 
-
-
 ## 1: Visual Studio をプロファイル向けに構成する
-
 まず、プロファイル時に有用な Visual Studio の構成オプションがいくつかあります。プロファイル レポートを理解しやすくするために、アプリケーションのシンボル (.pdb ファイル) およびシステム ライブラリのシンボルが必要です。使用可能なシンボル サーバーを参照していることを確認してください。確認するには、Visual Studio の **[ツール]** メニューで、**[オプション]**、**[デバッグ]**、**[シンボル]** の順に選択します。Microsoft シンボル サーバーが **[シンボル ファイル (.pdb) の場所]** の下に表示されていることを確認します。その他のシンボル ファイルについては、http://referencesource.microsoft.com/symbols を参照してください。
 
 ![Symbol options][4]
@@ -42,19 +37,19 @@
 
 例として、時間がかかり明白なパフォーマンス問題を示すコードをプロジェクトに追加してください。たとえば、worker ロール プロジェクトに次のコードを追加します。
 
-	public class Concatenator
-	{
-	    public static string Concatenate(int number)
-	    {
-	        int count;
-	        string s = "";
-	        for (count = 0; count < number; count++)
-	        {
-	            s += "\n" + count.ToString();
-	        }
-	        return s;
-	    }
-	}
+    public class Concatenator
+    {
+        public static string Concatenate(int number)
+        {
+            int count;
+            string s = "";
+            for (count = 0; count < number; count++)
+            {
+                s += "\n" + count.ToString();
+            }
+            return s;
+        }
+    }
 
 worker ロールの RoleEntryPoint から派生したクラスの RunAsync メソッドからこのコードを呼び出します(同期実行されるメソッドに関する警告は無視してください)。
 
@@ -71,7 +66,6 @@ worker ロールの RoleEntryPoint から派生したクラスの RunAsync メ�
 ソリューション構成を **[リリース]** に設定して、デバッグ (Ctrl + F5 キー) を行わずに、クラウド サービスをローカルでビルドして実行します。これによって、アプリケーションをローカルに実行するためにすべてのファイルとフォルダーが作成され、すべてのエミュレーターが起動されます。コンピューティング エミュレーター UI をタスク バーから起動して、worker ロールが実行していることを確認します。
 
 ## 2: プロセスにアタッチする
-
 アプリケーションを Visual Studio 2010 IDE から起動してプロファイルするのではなく、実行中のプロセスにプロファイラーをアタッチする必要があります。
 
 プロファイラーをプロセスにアタッチするには、**[分析]** メニューで **[プロファイラー]**、**[アタッチ/デタッチ]** の順に選択します。
@@ -86,9 +80,9 @@ worker ロールの場合は、WaWorkerHost.exe プロセスを見つけます�
 
  WaIISHost.exe にアタッチすることで Web ロールにアタッチすることもできます。アプリケーション内に複数の worker ロールがある場合は、processID を使用してそれらを区別する必要があります。Process オブジェクトにアクセスすることで、プログラムで processID を照会できます。たとえば、ロール内の RoleEntryPoint から派生したクラスの Run メソッドに次のコードを追加すると、コンピューティング エミュレーター UI でログを調べて、接続しているプロセスを知ることができます。
 
-	var process = System.Diagnostics.Process.GetCurrentProcess();
-	var message = String.Format("Process ID: {0}", process.Id);
-	Trace.WriteLine(message, "Information");
+    var process = System.Diagnostics.Process.GetCurrentProcess();
+    var message = String.Format("Process ID: {0}", process.Id);
+    Trace.WriteLine(message, "Information");
 
 ログを表示するには、コンピューティング エミュレーター UI を起動します。
 
@@ -105,13 +99,11 @@ worker ロールの場合は、WaWorkerHost.exe プロセスを見つけます�
 ![Stop Profiling option][10]
 
 ## 3: パフォーマンス レポートを表示する
-
 アプリケーションのパフォーマンス レポートが表示されます。
 
 この時点で、プロファイラーは実行を停止し、.vsp ファイルにデータを保存し、そのデータの分析を示すレポートを表示します。
 
 ![Profiler report][11]
-
 
 [ホット パス] に "String.wstrcpy" が表示されている場合は、[マイ コードのみ] をクリックして、ユーザー コードだけを表示するようにビューを変更します。"String.Concat" が表示されている場合は、[すべてのコードの表示] を押してみてください。
 
@@ -124,19 +116,18 @@ Concatenate メソッドと String.Concat が実行時間の大部分を占め�
 ![Performance warnings][14]
 
 ## 4: 変更を加えてパフォーマンスを比較する
-
 コードを変更する前後でパフォーマンスを比較することもできます。実行中のプロセスを停止します。コードを編集して、文字列連結操作を StringBuilder の使用に置き換えます。
 
-	public static string Concatenate(int number)
-	{
-	    int count;
-	    System.Text.StringBuilder builder = new System.Text.StringBuilder("");
-	    for (count = 0; count < number; count++)
-	    {
-	         builder.Append("\n" + count.ToString());
-	    }
-	    return builder.ToString();
-	}
+    public static string Concatenate(int number)
+    {
+        int count;
+        System.Text.StringBuilder builder = new System.Text.StringBuilder("");
+        for (count = 0; count < number; count++)
+        {
+             builder.Append("\n" + count.ToString());
+        }
+        return builder.ToString();
+    }
 
 パフォーマンス測定用にもう一度実行し、パフォーマンスを比較します。パフォーマンス エクスプローラーで、2 回の実行が同じセッションにある場合は、両方のレポートを選択し、ショートカット メニューを開いて **[パフォーマンス レポートの比較]** を選択します。別のパフォーマンス セッション内の実行と比較する場合は、**[分析]** メニューを開いて **[パフォーマンス レポートの比較]** を選択します。表示されるダイアログ ボックスで、両方のファイルを指定します。
 
@@ -149,24 +140,15 @@ Concatenate メソッドと String.Concat が実行時間の大部分を占め�
 ご利用ありがとうございます。 プロファイラーの使用を開始しました。
 
 ## トラブルシューティング
-
-- リリース ビルドをプロファイルしていることを確認し、デバッグを行わずに起動します。
-
-- [プロファイラー] メニューで [アタッチ/デタッチ] オプションが有効になっていない場合は、パフォーマンス ウィザードを実行します。
-
-- コンピューティング エミュレーター UI を使用して、アプリケーションの状態を表示します。
-
-- エミュレーターでのアプリケーションの起動や、プロファイラーのアタッチに問題がある場合は、コンピューティング エミュレーターをシャットダウンし、再起動します。これで問題が解決しない場合は、コンピューターを再起動してみてください。コンピューティング エミュレーターを使用して、実行中のデプロイメントを中断および削除すると、この問題が発生することがあります。
-
-- コマンド ラインからいずれかのプロファイル コマンドを使用した場合は (特にグローバル設定)、VSPerfClrEnv /globaloff が呼び出され、VsPerfMon.exe がシャットダウンされたことを確認します。
-
-- サンプリング時にメッセージ "PRF0025: データは収集されませんでした" が表示された場合は、アタッチ先のプロセスに CPU 活動があることをチェックします。コンピューティング作業を行っていないアプリケーションは、サンプリング データを生成しないことがあります。また、サンプリングが行われる前にプロセスが終了した可能性もあります。プロファイル中のロールの Run メソッドが終了していないことをチェックします。
+* リリース ビルドをプロファイルしていることを確認し、デバッグを行わずに起動します。
+* [プロファイラー] メニューで [アタッチ/デタッチ] オプションが有効になっていない場合は、パフォーマンス ウィザードを実行します。
+* コンピューティング エミュレーター UI を使用して、アプリケーションの状態を表示します。
+* エミュレーターでのアプリケーションの起動や、プロファイラーのアタッチに問題がある場合は、コンピューティング エミュレーターをシャットダウンし、再起動します。これで問題が解決しない場合は、コンピューターを再起動してみてください。コンピューティング エミュレーターを使用して、実行中のデプロイメントを中断および削除すると、この問題が発生することがあります。
+* コマンド ラインからいずれかのプロファイル コマンドを使用した場合は (特にグローバル設定)、VSPerfClrEnv /globaloff が呼び出され、VsPerfMon.exe がシャットダウンされたことを確認します。
+* サンプリング時にメッセージ "PRF0025: データは収集されませんでした" が表示された場合は、アタッチ先のプロセスに CPU 活動があることをチェックします。コンピューティング作業を行っていないアプリケーションは、サンプリング データを生成しないことがあります。また、サンプリングが行われる前にプロセスが終了した可能性もあります。プロファイル中のロールの Run メソッドが終了していないことをチェックします。
 
 ## 次のステップ
-
 Visual Studio プロファイラーでは、エミュレーター内の Azure バイナリのインストルメント化はサポートされていませんが、メモリの割り当てをテストする場合は、プロファイル時にこのオプションを選択できます。また、スレッドがロックの競合のために時間を浪費しているかどうかの判断に役立つ同時実行プロファイルを選択することも、アプリケーションの層間 (最も多いのはデータ層と worker ロールの間) で相互作用するときのパフォーマンス問題の追跡に役立つ階層の相互作用のプロファイルを選択することもできます。アプリケーションが生成するデータベース クエリを表示し、プロファイル データを使用してデータベースの使用を強化することができます。階層の相互作用プロファイルの詳細については、ブログ記事「[Visual Studio Team System 2010 での階層の相互作用プロファイラーの使用に関するチュートリアル][3]」を参照してください。
-
-
 
 [1]: http://msdn.microsoft.com/library/azure/hh369930.aspx
 [2]: http://msdn.microsoft.com/library/azure/hh411542.aspx
@@ -184,6 +166,6 @@ Visual Studio プロファイラーでは、エミュレーター内の Azure �
 [15]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally013.png
 [16]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally012.png
 [17]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
- 
+
 
 <!---HONumber=AcomDC_0803_2016-->

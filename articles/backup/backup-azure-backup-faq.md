@@ -1,52 +1,52 @@
-<properties
-   pageTitle="Azure Backup の FAQ | Microsoft Azure"
-   description="バックアップ サービス、バックアップ エージェント、バックアップと保持、復元、セキュリティに関してよく寄せられる質問と、バックアップや障害復旧に関するその他の一般的な質問に対する回答。"
-   services="backup"
-   documentationCenter=""
-   authors="markgalioto"
-   manager="jwhit"
-   editor=""
-   keywords="バックアップと障害復旧; バックアップ サービス"/>
+---
+title: Azure Backup の FAQ | Microsoft Docs
+description: バックアップ サービス、バックアップ エージェント、バックアップと保持、復元、セキュリティに関してよく寄せられる質問と、バックアップや障害復旧に関するその他の一般的な質問に対する回答。
+services: backup
+documentationcenter: ''
+author: markgalioto
+manager: jwhit
+editor: ''
+keywords: バックアップと障害復旧; バックアップ サービス
 
-<tags
-   ms.service="backup"
-   ms.workload="storage-backup-recovery"
-	 ms.tgt_pltfrm="na"
-	 ms.devlang="na"
-	 ms.topic="get-started-article"
-	 ms.date="08/29/2016"
-	 ms.author="trinadhk; giridham; arunak; markgal; jimpark;"/>
+ms.service: backup
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/29/2016
+ms.author: trinadhk; giridham; arunak; markgal; jimpark;
 
+---
 # Azure Backup サービス - FAQ
-
-> [AZURE.SELECTOR]
-- [クラシック モードでの Backup に関する FAQ](backup-azure-backup-faq.md)
-- [Resource Manager モードでの Backup に関する FAQ](backup-azure-backup-ibiza-faq.md)
+> [!div class="op_single_selector"]
+> * [クラシック モードでの Backup に関する FAQ](backup-azure-backup-faq.md)
+> * [Resource Manager モードでの Backup に関する FAQ](backup-azure-backup-ibiza-faq.md)
+> 
+> 
 
 この記事は、Azure Backup サービスに関してよく寄せられる質問 (およびそれぞれに対する回答) を一覧にしたものです。Azure コミュニティでは質問に対して短時間で回答が寄せられています。この記事には、コミュニティで頻繁に寄せられる質問を追加しています。一般的に、質問への回答ではリファレンスやサポート情報が提供されています。この記事や関連の記事の「DISQUS」セクションでも Azure Backup について質問できます。また、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
-
 
 ## どのようなオペレーティング システムが Azure Backup を使用した Azure へのバックアップでサポートされていますか。<br/>
 Azure Backup では、Azure Backup Server および SCDPM を使用したファイル フォルダー バックアップとアプリケーション バックアップ向けに、以下の一覧に示すオペレーティング システムがサポートされています。
 
 | オペレーティング システム | Platform | SKU |
-| :------------- |-------------| :-----|
-| Windows 8 と最新 SP | 64 ビット | Enterprise、Pro |
-| Windows 7 と最新 SP | 64 ビット | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter |
-| Windows 8.1 と最新 SP | 64 ビット | Enterprise、Pro |
-| Windows 10 | 64 ビット | Enterprise、Pro、Home |
-|Windows Server 2012 R2 と最新 SP|	64 ビット|	Standard、Datacenter、Foundation|
-|Windows Server 2012 と最新 SP|	64 ビット|	Datacenter、Foundation、Standard|
-|Windows Storage Server 2012 R2 と最新 SP |64 ビット|	Standard、Workgroup|
-|Windows Storage Server 2012 と最新 SP |64 ビット |Standard、Workgroup
-|Windows Server 2012 R2 と最新 SP |64 ビット|	Essential|
-|Windows Server 2008 R2 SP1 |64 ビット|	Standard、Enterprise、Datacenter、Foundation|
-|Windows Server 2008 SP2 |64 ビット|	Standard、Enterprise、Datacenter、Foundation|
+|:--- | --- |:--- |
+| Windows 8 と最新 SP |64 ビット |Enterprise、Pro |
+| Windows 7 と最新 SP |64 ビット |Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter |
+| Windows 8.1 と最新 SP |64 ビット |Enterprise、Pro |
+| Windows 10 |64 ビット |Enterprise、Pro、Home |
+| Windows Server 2012 R2 と最新 SP |64 ビット |Standard、Datacenter、Foundation |
+| Windows Server 2012 と最新 SP |64 ビット |Datacenter、Foundation、Standard |
+| Windows Storage Server 2012 R2 と最新 SP |64 ビット |Standard、Workgroup |
+| Windows Storage Server 2012 と最新 SP |64 ビット |Standard、Workgroup |
+| Windows Server 2012 R2 と最新 SP |64 ビット |Essential |
+| Windows Server 2008 R2 SP1 |64 ビット |Standard、Enterprise、Datacenter、Foundation |
+| Windows Server 2008 SP2 |64 ビット |Standard、Enterprise、Datacenter、Foundation |
 
 Azure VM バックアップのサポート
 
-- **Linux**: Azure Backup は、[Azure で承認されている一連のディストリビューション](../virtual-machines/virtual-machines-linux-endorsed-distros.md)をサポートしています (Core OS Linux を除く)。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。
-- **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
+* **Linux**: Azure Backup は、[Azure で承認されている一連のディストリビューション](../virtual-machines/virtual-machines-linux-endorsed-distros.md)をサポートしています (Core OS Linux を除く)。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。
+* **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
 
 ## 最新の Azure Backup エージェントはどこでダウンロードできますか。<br/>
 Windows Server、System Center DPM、または Windows クライアントをバックアップするための最新のエージェントは、[こちら](http://aka.ms/azurebackup_agent)からダウンロードできます。仮想マシンをバックアップする場合は、VM エージェントを使用してください (適切な拡張機能が自動的にインストールされます)。VM エージェントは、Azure ギャラリーから作成された仮想マシン内に既に存在しています。
@@ -72,26 +72,26 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 ## ファイルとフォルダーのバックアップ元として、どのような種類のドライブを使用できますか。<br/>
 次の一連のドライブやボリュームはバックアップできません。
 
-- リムーバブル メディア: バックアップ項目のソースを使用するには、固定のドライブとして認識される必要があります。
-- 読み取り専用ボリューム: ボリューム シャドウ コピー サービス (VSS) が機能するには、ボリュームが書き込み可能である必要があります。
-- オフライン ボリューム: VSS が機能するには、ボリュームがオンラインである必要があります。
-- ネットワーク共有: オンライン バックアップを使用してバックアップするボリュームは、サーバーに対してローカルである必要があります。
-- Bitlocker で保護されているボリューム: バックアップを行う前に、ボリュームのロックを解除する必要があります。
-- ファイル システムの識別: このバージョンのオンライン バックアップ サービスでサポートされているファイル システムは NTFS だけです。
+* リムーバブル メディア: バックアップ項目のソースを使用するには、固定のドライブとして認識される必要があります。
+* 読み取り専用ボリューム: ボリューム シャドウ コピー サービス (VSS) が機能するには、ボリュームが書き込み可能である必要があります。
+* オフライン ボリューム: VSS が機能するには、ボリュームがオンラインである必要があります。
+* ネットワーク共有: オンライン バックアップを使用してバックアップするボリュームは、サーバーに対してローカルである必要があります。
+* Bitlocker で保護されているボリューム: バックアップを行う前に、ボリュームのロックを解除する必要があります。
+* ファイル システムの識別: このバージョンのオンライン バックアップ サービスでサポートされているファイル システムは NTFS だけです。
 
 ## サーバーからバックアップできるのはどのような種類のファイルとフォルダーですか。<br/>
 次の種類がサポートされています。
 
-- 暗号化
-- 圧縮
-- スパース
-- 圧縮 + スパース
-- ハード リンク: サポートされていません。スキップされます。
-- 再解析ポイント: サポートされていません。スキップされます。
-- 暗号化 + 圧縮: サポートされていません。スキップされます。
-- 暗号化 + スパース: サポートされていません。スキップされます。
-- 圧縮されたストリーム: サポートされていません。スキップされます。
-- スパース ストリーム: サポートされていません。スキップされます。
+* 暗号化
+* 圧縮
+* スパース
+* 圧縮 + スパース
+* ハード リンク: サポートされていません。スキップされます。
+* 再解析ポイント: サポートされていません。スキップされます。
+* 暗号化 + 圧縮: サポートされていません。スキップされます。
+* 暗号化 + スパース: サポートされていません。スキップされます。
+* 圧縮されたストリーム: サポートされていません。スキップされます。
+* スパース ストリーム: サポートされていません。スキップされます。
 
 ## キャッシュ フォルダーの最小サイズ要件を教えてください。<br/>
 キャッシュ フォルダーのサイズによって、バックアップするデータ量が決まります。キャッシュ フォルダーは、データの格納に必要なスペースの 5% に設定する必要があります。
@@ -116,13 +116,13 @@ Azure VM バックアップの場合、ジョブが取り消されると転送�
 ## どのようなファイアウォール ルールを Azure Backup 向けに構成する必要がありますか。<br/>
 オンプレミスから Azure に転送されるデータとワークロードから Azure に転送されるデータをシームレスに保護できるように、次の URL との通信を許可するようにファイアウォールを設定することをお勧めします。
 
-- www.msftncsi.com
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+* www.msftncsi.com
+* *.Microsoft.com
+* *.WindowsAzure.com
+* *.microsoftonline.com
+* *.windows.net
 
-##VM 拡張機能を使用して Azure Backup サービスで既にバックアップされている Azure VM に Azure Backup エージェントをインストールすることはできますか。<br/>
+## VM 拡張機能を使用して Azure Backup サービスで既にバックアップされている Azure VM に Azure Backup エージェントをインストールすることはできますか。<br/>
 そして、Azure Backup では、VM 拡張機能を使用している Azure VM には VM レベルのバックアップを提供します。ゲスト Windows OS に Azure Backup エージェントをインストールすると、そのゲスト OS 上のファイルとフォルダーを保護できます。
 
 ## Azure VM に Azure Backup エージェントをインストールし、Azure VM で提供される一時ストレージ上のファイルとフォルダーをバックアップすることはできますか。<br/>
@@ -131,10 +131,10 @@ Azure VM バックアップの場合、ジョブが取り消されると転送�
 ## ファイルとフォルダーを保護するために Azure Backup エージェントをインストールしました。Azure に転送するオンプレミスのアプリケーション/VM ワークロードを保護するために、SCDPM をインストールして Azure Backup エージェントと連携させることはできますか。<br/>
 Azure Backup を SCDPM と共に使用する場合は、先に SCDPM をインストールしてから、Azure Backup エージェントをインストールすることをお勧めします。これにより、Azure Backup エージェントと SCDPM のシームレスな統合が可能になり、Azure に転送するファイルやフォルダー、アプリケーション ワークロード、VM を、SCDPM の管理コンソールから直接保護できるようになります。上記の目的で Azure Backup エージェントの後に SCDPM をインストールする方法は推奨されておらず、サポートも適用されません。
 
-## Azure Backup エージェントを使用する Azure Backup ポリシーの一部として指定できるファイル パスの長さはどれくらいですか。<br/>  
+## Azure Backup エージェントを使用する Azure Backup ポリシーの一部として指定できるファイル パスの長さはどれくらいですか。<br/>
 Azure Backup エージェントでは NTFS が使用されています。[ファイル パスの長さの指定は、Windows API による制限を受けます](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths)。バックアップするファイルのファイル パスの長が Windows API で指定された長さを超える場合は、バックアップ ファイルの親フォルダーまたはディスク ドライブをバックアップするよう選択できます。
 
-## Azure Backup エージェントを使用する Azure Backup ポリシーのファイル パスには、どのような文字を使用できますか。<br>  
+## Azure Backup エージェントを使用する Azure Backup ポリシーのファイル パスには、どのような文字を使用できますか。<br>
  Azure Backup エージェントでは NTFS が使用されています。そのため、ファイルの指定では [NTFS でサポートされている文字](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions)を使用できます。
 
 ## Azure Backup Server を使用して、物理サーバーのベア メタル回復 (BMR) バックアップを作成できますか。<br/>
@@ -146,23 +146,23 @@ Azure Backup エージェントでは NTFS が使用されています。[ファ
 ## バックアップされる各データ ソースのサイズに制限はありますか。<br/>
 コンテナー レベルでバックアップできるデータ量に制限はありませんが、Azure Backup ではデータ ソースの最大サイズに制限が課されます (これらの制限は、実際には非常に高く設定されています)。2015 年 8 月時点における、サポートされているオペレーティング システム別のデータ ソースの最大サイズは次のとおりです。
 
-|No. |	オペレーティング システム |	データ ソースの最大サイズ |
-| :-------------: |:-------------| :-----|
-|1| Windows Server 2012 またはそれ以降| 54,400 GB|
-|2| Windows 8 またはそれ以降| 54,400 GB|
-|3| Windows Server 2008、Windows Server 2008 R2 | 1,700 GB|
-|4| Windows 7 | 1,700 GB|
+| No. | オペレーティング システム | データ ソースの最大サイズ |
+|:---:|:--- |:--- |
+| 1 |Windows Server 2012 またはそれ以降 |54,400 GB |
+| 2 |Windows 8 またはそれ以降 |54,400 GB |
+| 3 |Windows Server 2008、Windows Server 2008 R2 |1,700 GB |
+| 4 |Windows 7 |1,700 GB |
 
 次の表では、各データ ソースのサイズが決定される方法について説明しています。
 
-|	データソース |	詳細 |
-| :-------------: |:-------------|
-|ボリューム |サーバーまたはクライアント コンピューターの 1 つのボリュームからバックアップされるデータの量|
-|Hyper-V 仮想マシン | バックアップ対象の仮想マシンのすべての VHD のデータの合計|
-|Microsoft SQL Server データベース | バックアップ対象の 1 つの SQL データベースのサイズ |
-|Microsoft SharePoint |バックアップ対象の SharePoint ファーム内のコンテンツと構成データベースの合計|
-|Microsoft Exchange |バックアップ対象の Exchange サーバー内のすべての Exchange データベースの合計|
-|BMR/システム状態 |バックアップ対象のコンピューターの BMR またはシステム状態の個々のコピー|
+| データソース | 詳細 |
+|:---:|:--- |
+| ボリューム |サーバーまたはクライアント コンピューターの 1 つのボリュームからバックアップされるデータの量 |
+| Hyper-V 仮想マシン |バックアップ対象の仮想マシンのすべての VHD のデータの合計 |
+| Microsoft SQL Server データベース |バックアップ対象の 1 つの SQL データベースのサイズ |
+| Microsoft SharePoint |バックアップ対象の SharePoint ファーム内のコンテンツと構成データベースの合計 |
+| Microsoft Exchange |バックアップ対象の Exchange サーバー内のすべての Exchange データベースの合計 |
+| BMR/システム状態 |バックアップ対象のコンピューターの BMR またはシステム状態の個々のコピー |
 
 ## 1 日にバックアップ ジョブをスケジュール設定できる回数に制限はありますか。<br/>
 はい。Windows Server または Windows クライアントでは、1 日に最大 3 回バックアップ ジョブを実行できます。System Center DPM では、1 日に最大 2 回バックアップ ジョブを実行できます。IaaS VM では、1 日に 1 回バックアップ ジョブを実行できます。
@@ -197,7 +197,7 @@ Azure Backup エージェントでは NTFS が使用されています。[ファ
  Azure Backup エージェント、SCDPM、または Azure Backup Server からバックアップしたすべてのデータは、圧縮および暗号化されてから転送されます。圧縮と暗号化が適用されると、バックアップ コンテナー内のデータは 30 ～ 40% 小さくなります。
 
 ## Backup サービスによって使用される帯域幅の量を調整する方法はありますか。<br/>
- はい。帯域幅の調整には、Backup エージェントの **[プロパティの変更]** オプションを使用します。帯域幅の量と、帯域幅を使用する時間を調整できます。詳細については、[ネットワーク調整](../backup-configure-vault.md#enable-network-throttling)に関するページを参照してください。
+ はい。帯域幅の調整には、Backup エージェントの **[プロパティの変更]** オプションを使用します。帯域幅の量と、帯域幅を使用する時間を調整できます。詳細については、[ネットワーク調整](backup-configure-vault.md#enable-network-throttling)に関するページを参照してください。
 
 ## バックアップする必要のあるデータ量に対してインターネット帯域幅が限られています。大容量のネットワーク パイプで特定の場所にデータを移動し、そのデータを Azure にプッシュする方法はありますか。<br/>
 標準的なオンライン バックアップ プロセスを使用して Azure にデータをバックアップできます。または、Azure Import/Export サービスを使用して Azure の Blob Storage にデータを転送できます。Azure Storage にバックアップ データを格納する方法は他にはありません。Azure Backup で Azure Import/Export サービスを使用する方法については、[オフライン バックアップのワークフロー](backup-azure-backup-import-export.md)に関する記事を参照してください。
@@ -222,39 +222,38 @@ Azure Backup からの回復の数に制限はありません。
 
 ## Azure Backup エージェント用に指定されたキャッシュの場所を変更する方法を教えてください。<br/>
  キャッシュの場所を変更するには、以下に箇条書きで示した作業を上から順に行ってください。
-- 管理者特権でのコマンド プロンプトで次のコマンドを実行して Backup エンジンを停止します。
 
+* 管理者特権でのコマンド プロンプトで次のコマンドを実行して Backup エンジンを停止します。
+  
   ```PS C:\> Net stop obengine```
+* ファイルを移動するのではなく、空き容量に余裕のある別のドライブにキャッシュ領域フォルダーをコピーします。元のキャッシュ領域は、バックアップが新しいキャッシュ領域で正常に動作していることを確認した後で削除できます。
+* 次のレジストリ エントリを、新しいキャッシュ領域のフォルダーへのパスで更新します。<br/>
 
-- ファイルを移動するのではなく、空き容量に余裕のある別のドライブにキャッシュ領域フォルダーをコピーします。元のキャッシュ領域は、バックアップが新しいキャッシュ領域で正常に動作していることを確認した後で削除できます。
+| レジストリ パス | レジストリ キー | 値 |
+| --- | --- | --- |
+| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
+| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
 
-- 次のレジストリ エントリを、新しいキャッシュ領域のフォルダーへのパスで更新します。<br/>
-
-|レジストリ パス | レジストリ キー | 値 |
-| ------ | ------- | ------|
-| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` | ScratchLocation | *新しいキャッシュ フォルダーの場所* |
-| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` | ScratchLocation | *新しいキャッシュ フォルダーの場所* |
-
-- 管理者特権でのコマンド プロンプトで次のコマンドを実行して Backup エンジンを再起動します。
-
+* 管理者特権でのコマンド プロンプトで次のコマンドを実行して Backup エンジンを再起動します。
+  
   ```PS C:\> Net start obengine```
-
+  
   バックアップが新しいキャッシュ場所に正常に作成されたら、元のキャッシュ フォルダーを削除できます。
 
 ## 適切に動作させるためには、Azure Backup エージェントのキャッシュ フォルダーをどこに設定すればよいですか。<br/>
 次の場所へのキャッシュ フォルダーの設定はお勧めしません。
 
-- ネットワーク共有またはリムーバブル メディア: キャッシュ フォルダーは、オンライン バックアップを使用したバックアップが必要なサーバーに対してローカルにする必要があります。ネットワーク上の場所や USB ドライブなどのリムーバブル メディアはサポートされていません。
-- オフライン ボリューム: キャッシュ フォルダーは、Azure Backup エージェントを使用したバックアップのために、オンラインにしておく必要があります。
+* ネットワーク共有またはリムーバブル メディア: キャッシュ フォルダーは、オンライン バックアップを使用したバックアップが必要なサーバーに対してローカルにする必要があります。ネットワーク上の場所や USB ドライブなどのリムーバブル メディアはサポートされていません。
+* オフライン ボリューム: キャッシュ フォルダーは、Azure Backup エージェントを使用したバックアップのために、オンラインにしておく必要があります。
 
 ## キャッシュ フォルダーの属性としてサポートされていないものはありますか。<br/>
  キャッシュ フォルダーでは、次の各属性またはそれらの組み合わせはサポートされていません。
 
-- 暗号化
-- 重複除去
-- 圧縮
-- スパース
-- 再解析ポイント
+* 暗号化
+* 重複除去
+* 圧縮
+* スパース
+* 再解析ポイント
 
 Azure Backup エージェントを適切に動作させるために、キャッシュ フォルダーとメタデータ VHD の両方が上記の属性を持たないように設定することをお勧めします。
 

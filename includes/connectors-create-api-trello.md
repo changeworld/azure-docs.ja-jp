@@ -1,5 +1,5 @@
 ### 前提条件
-- [Trello](http://trello.com) アカウント 
+* [Trello](http://trello.com) アカウント 
 
 ロジック アプリで Trello アカウントを使用するには、Trello アカウントに接続するロジック アプリを承認する必要があります。幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
@@ -10,3 +10,4 @@
 3. Trello への接続を許可します。 ![](./media/connectors-create-api-trello/trello-3.png)   
 4. Trello のユーザー名とパスワードを入力して、ロジック アプリを承認します。 ![](./media/connectors-create-api-trello/trello-4.png)  
 5. 接続が作成され、ロジック アプリで他の手順を実行できるようになります。 ![](./media/connectors-create-api-trello/trello-5.png)
+

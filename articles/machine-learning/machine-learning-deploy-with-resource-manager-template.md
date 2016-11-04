@@ -1,22 +1,22 @@
-<properties
-	pageTitle="Azure Resource Manager テンプレートを使用した Machine Learning ワークスペースのデプロイ | Microsoft Azure"
-	description="Azure Resource Manager テンプレートを使用して Azure Machine Learning ワークスペースをデプロイする方法"
-	services="machine-learning"
-	documentationCenter=""
-	authors="ahgyger"
-	manager="haining"
-	editor="garye"/>
+---
+title: Azure Resource Manager テンプレートを使用した Machine Learning ワークスペースのデプロイ | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用して Azure Machine Learning ワークスペースをデプロイする方法
+services: machine-learning
+documentationcenter: ''
+author: ahgyger
+manager: haining
+editor: garye
 
-<tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/23/2016"
-	ms.author="ahgyger"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/23/2016
+ms.author: ahgyger
+
+---
 # Azure Resource Manager を使用した Machine Learning ワークスペースのデプロイ
-
 ## はじめに
 Azure Resource Manager デプロイ テンプレートは、検証および再試行メカニズムで相互接続されたコンポーネントをデプロイできるように、スケーラブルな方法を提供し、時間を節約します。Azure Machine Learning ワークスペースを設定するには、たとえば、Azure ストレージ アカウントを構成してから、ワークスペースをデプロイする必要があります。この作業を何百ものワークスペースに対して手動で行うことを想像してください。代わりに Azure Resource Manager テンプレートを使用すれば、もっと簡単に Azure Machine Learning ワークスペースとそのすべての依存関係をデプロイできます。この記事では、このプロセスを順を追って説明します。Azure Resource Manager の概要については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」をご覧ください。
 
@@ -132,11 +132,11 @@ Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |
 ```
 ワークスペースをプロビジョニングしたら、[Azure Machine Learning の PowerShell モジュール](http://aka.ms/amlps)を使用して、Azure Machine Learning Studio タスクを自動化することもできます。
 
-## 次のステップ 
+## 次のステップ
 * [Azure Resource Manager テンプレートの作成](../resource-group-authoring-templates.md)について確認します。
 * [Azure クイックスタート テンプレート リポジトリ](https://github.com/Azure/azure-quickstart-templates)を確認します。
 * [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39) のビデオを見ます。
- 
+
 <!--Image references-->
 [1]: ../media/machine-learning-deploy-with-resource-manager-template/azuresubscription.png
 [2]: ../media/machine-learning-deploy-with-resource-manager-template/resourcegroupprovisioning.png

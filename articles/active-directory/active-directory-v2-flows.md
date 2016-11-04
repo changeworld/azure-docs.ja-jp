@@ -1,34 +1,35 @@
-<properties
-    pageTitle="v2.0 エンドポイントの種類 | Microsoft Azure"
-    description="Azure AD v2.0 エンドポイントでサポートされているアプリの種類とシナリオ。"
-    services="active-directory"
-    documentationCenter=""
-    authors="dstrockis"
-    manager="mbaldwin"
-    editor=""/>
+---
+title: v2.0 エンドポイントの種類 | Microsoft Docs
+description: Azure AD v2.0 エンドポイントでサポートされているアプリの種類とシナリオ。
+services: active-directory
+documentationcenter: ''
+author: dstrockis
+manager: mbaldwin
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/30/2016"
-    ms.author="dastrock"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/30/2016
+ms.author: dastrock
 
-
+---
 # <a name="types-of-apps-for-the-v2.0-endpoint"></a>v2.0 エンドポイントのアプリの種類
 v2.0 エンドポイントは、さまざまなモダン アプリ アーキテクチャ向けの認証をサポートしています。そのいずれも、業界標準のプロトコルである [OAuth 2.0](active-directory-v2-protocols.md#oauth2-authorization-code-flow) と [OpenID Connect](active-directory-v2-protocols.md#openid-connect-sign-in-flow) のどちらか一方または両方に基づいています。  このドキュメントでは、利用する言語やプラットフォームを問わず、作成できるアプリの種類について簡単に説明します。  このドキュメントは、[コードを詳しく確認する](active-directory-appmodel-v2-overview.md#getting-started)前に、大まかなシナリオを理解するのに役立ちます。
 
-> [AZURE.NOTE]
-    Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。  v2.0 エンドポイントを使用する必要があるかどうかを判断するには、 [v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
+> [!NOTE]
+> Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。  v2.0 エンドポイントを使用する必要があるかどうかを判断するには、 [v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
+> 
+> 
 
 ## <a name="the-basics"></a>基本
 v2.0 エンドポイントを使うアプリは、すべて [apps.dev.microsoft.com](https://apps.dev.microsoft.com)で登録する必要があります。  アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
-- アプリを一意に識別する **アプリケーション ID** 。
-- 応答をアプリにリダイレクトして戻すために使用できる **リダイレクト URI** 。
-- その他シナリオに応じた値。  詳細については、 [アプリの登録](active-directory-v2-app-registration.md)方法を参照してください。
+* アプリを一意に識別する **アプリケーション ID** 。
+* 応答をアプリにリダイレクトして戻すために使用できる **リダイレクト URI** 。
+* その他シナリオに応じた値。  詳細については、 [アプリの登録](active-directory-v2-app-registration.md)方法を参照してください。
 
 登録済みのアプリは、Azure Active Directory v2.0 エンドポイントに要求を送ることによって、Azure AD と通信します。  これらの要求の詳細に対処するオープン ソース フレームワークとライブラリをご用意しています。これらのエンドポイントへの要求を作成して、自分で認証ロジックを実装してもかまいません。
 
@@ -89,7 +90,6 @@ authorization_code と refresh_token についてのほか、access_tokens の�
 
 OAuth2 access_token で Web API をセキュリティ保護する方法については、[使用の開始セクション](active-directory-appmodel-v2-overview.md#getting-started)で Web API コード サンプルを確認してください。
 
-
 ## <a name="mobile-and-native-apps"></a>モバイル アプリとネイティブ アプリ
 多くの場合、モバイル アプリやデスクトップ アプリなど、デバイスにインストールされているアプリは、データを格納し、ユーザーの代わりにさまざまな処理を実行するバックエンド サービスや Web API にアクセスする必要があります。  これらのアプリは、 [OAuth 2.0 承認コード フロー](active-directory-v2-protocols-oauth-code.md)を使ってバックエンド サービスにサインインと承認を追加します。  
 
@@ -122,8 +122,6 @@ OAuth2 access_token で Web API をセキュリティ保護する方法につい
 v2.0 エンドポイントによって保護された Web API から、同じように保護された別の下流の Web API を呼び出す手法は、多くのアーキテクチャで使われています。  このシナリオは、バックエンドの Web API から Microsoft Online サービス (Office 365、Graph API など) を呼び出すネイティブ クライアントでよく見られます。
 
 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 Jwt Bearer Credential Grant ( [On-Behalf-Of フロー](active-directory-v2-protocols.md#oauth2-on-behalf-of-flow)) を使用してサポートできます。  しかし現時点では v2.0 エンドポイントに On-Behalf-Of フローが実装されていません。  一般提供版 Azure AD サービスにおけるこのフローの動作については、 [GitHub の On-Behalf-Of コード サンプル](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)を参照してください。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,34 +1,33 @@
 
-<properties
-   pageTitle="Azure CLI を使用した完全な Linux 環境の作成 | Microsoft Azure"
-   description="Azure CLI を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。"
-   services="virtual-machines-linux"
-   documentationCenter="virtual-machines"
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""
-   tags="azure-resource-manager"/>
+---
+title: Azure CLI を使用した完全な Linux 環境の作成 | Microsoft Docs
+description: Azure CLI を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。
+services: virtual-machines-linux
+documentationcenter: virtual-machines
+author: iainfoulds
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure"
-   ms.date="08/23/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 08/23/2016
+ms.author: iainfou
 
+---
 # Azure CLI を使用して、完全な Linux 環境を作成する
-
 この記事では、開発と単純なコンピューティングに役立つ VM のペアを含む単純なネットワークとロード バランサーを構築します。ここでは、インターネット上のどこからでも接続できる、2 台のセキュリティで保護された実用的な Linux VM を構築するまで、各コマンドの説明を交えながらプロセスについて説明します。この記事を理解すると、より複雑なネットワークや環境に進むことができます。
 
 その過程で、Resource Manager デプロイメント モデルによって提供される依存関係階層とその性能についても説明します。システムがどのように構築されているかをいったん理解すると、[Azure Resource Manager テンプレート](../resource-group-authoring-templates.md) を使用して、より短時間でシステムを再構築することができます。環境の各部分がどのように組み合わさっているかがわかると、それらを自動化するためのテンプレートの作成はより簡単になります。
 
 環境には以下を含みます。
 
-- 可用性セット内の 2 つの VM
-- ポート 80 の負荷分散規則が構成されたロード バランサー
-- 不要なトラフィックからVM を保護するネットワーク セキュリティ グループ ルール (NSG)
+* 可用性セット内の 2 つの VM
+* ポート 80 の負荷分散規則が構成されたロード バランサー
+* 不要なトラフィックからVM を保護するネットワーク セキュリティ グループ ルール (NSG)
 
 ![基本的な環境の概要](./media/virtual-machines-linux-create-cli-complete/environment_overview.png)
 
@@ -74,7 +73,6 @@ azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.
 ```
 
 JSON パーサーを使用して、仮想ネットワークとサブネットを確認します。
-
 
 ```bash
 azure network vnet show TestRG TestVNet --json | jq '.'
@@ -240,7 +238,6 @@ azure resource export TestRG
 次の手順では、環境を構築する際に各コマンドがどのように機能するかについて説明します。これらの概念は、開発または実稼働用のカスタム環境を作成するのに役立ちます。
 
 ## リソース グループの作成とデプロイ先の選択
-
 Azure リソース グループは、リソース デプロイの論理的な管理を可能にする構成情報とメタデータを含む論理的なデプロイ エンティティです。
 
 ```bash
@@ -264,7 +261,6 @@ info:    group create command OK
 ```
 
 ## ストレージ アカウントの作成
-
 VM ディスクと追加するその他のデータ ディスク用のストレージ アカウントが必要になります。リソース グループを作成したら、そのほぼ直後にストレージ アカウントを作成します。
 
 ここでは、`azure storage account create` コマンドを使用し、アカウントの場所、アカウントを制御するリソース グループ、必要なストレージ サポートの種類を渡します。
@@ -370,7 +366,6 @@ info:    storage container list command OK
 ```
 
 ## 仮想ネットワークとサブネットの作成
-
 次に、VM をインストールできるように、Azure で実行中の仮想ネットワークとサブネットを作成する必要があります。
 
 ```bash
@@ -499,7 +494,6 @@ azure network vnet show TestRG TestVNet --json | jq '.'
 ```
 
 ## パブリック IP アドレス (PIP) の作成
-
 パブリック IP アドレス (PIP) を作成して、ロード バランサーに割り当てます。`azure network public-ip create` コマンドを使用して、インターネットから VM に接続できます。既定のアドレスは動的であるため、`-d testsubdomain` オプションを使用して、**cloudapp.azure.com** ドメインに名前付き DNS エントリを作成します。
 
 ```bash
@@ -784,7 +778,6 @@ info:    network lb rule create command OK
 ```
 
 ## ロード バランサーの正常性プローブの作成
-
 正常性プローブは、ロード バランサーの背後にある VM を定期的にチェックして、それらが定義されているとおりに動作し、要求に応答していることを確認します。動作していない場合は、運用から削除され、ユーザーがそれらに転送されないようにします。間隔およびタイムアウト値と共に、正常性プローブのカスタム チェックを定義できます。正常性プローブの詳細については、[Load Balancer のプローブ](../load-balancer/load-balancer-custom-probe-overview.md)に関するページをご覧ください。
 
 ```bash
@@ -941,7 +934,6 @@ azure network lb show -g TestRG -n TestLB --json | jq '.'
 ```
 
 ## Linux VM で使用する NIC の作成
-
  ルールを適用するため、NIC はプログラムで使用できます。複数でも可能になります。次の `azure network nic create` コマンドでは、NIC をロード バックエンド IP プールに接続し、SSH トラフィックを許可する NAT 規則を関連付けています。これを行うには、`<GUID>` の代わりに、Azure サブスクリプションのサブスクリプション ID を指定する必要があります。
 
 ```bash
@@ -1034,7 +1026,6 @@ azure network nic create -g TestRG -n LB-NIC2 -l westeurope --subnet-vnet-name T
 ```
 
 ## ネットワーク セキュリティ グループと規則の作成
-
 ここで、NSG と、NIC へのアクセスを統制する受信規則を作成します。
 
 ```bash
@@ -1053,10 +1044,12 @@ azure network nsg rule create --protocol tcp --direction inbound --priority 1001
     --destination-port-range 80 --access allow -g TestRG -a TestNSG -n HTTPRule
 ```
 
-> [AZURE.NOTE] 受信規則は、受信ネットワーク接続のフィルターです。この例では、NSG を VM の仮想 NIC にバインドします。これは、ポート 22 へのすべての要求が VM の NIC に渡されることを意味します。この受信規則は、エンドポイントではなく、ネットワーク接続に関するルールであり、つまり従来の配置でのことです。ポートを開くには、`--source-port-range` のセットを ' *' (既定値) にして、**任意の** 要求ポートから受信要求を受け入れる必要があります。ポートは、通常動的です。
+> [!NOTE]
+> 受信規則は、受信ネットワーク接続のフィルターです。この例では、NSG を VM の仮想 NIC にバインドします。これは、ポート 22 へのすべての要求が VM の NIC に渡されることを意味します。この受信規則は、エンドポイントではなく、ネットワーク接続に関するルールであり、つまり従来の配置でのことです。ポートを開くには、`--source-port-range` のセットを ' *' (既定値) にして、**任意の** 要求ポートから受信要求を受け入れる必要があります。ポートは、通常動的です。
+> 
+> 
 
 ## NIC へのバインド
-
 NSG を NIC にバインドします。
 
 ```bash
@@ -1078,18 +1071,17 @@ azure availset create -g TestRG -n TestAvailSet -l westeurope
 
 アップグレード ドメインは、仮想マシンと、同時に再起動できる基礎となる物理ハードウェアのグループを示しています。計画済みメンテナンス中、アップグレード ドメインの再起動は順次ではない場合がありますが、一度に再起動されるアップグレードは 1 つのみです。また、VM を可用性サイトに配置すると、Azure は自動的に VM をアップグレード ドメイン間で分散します。
 
-詳細については、「[VMの可用性管理](./virtual-machines-linux-manage-availability.md)」を参照してください。
+詳細については、「[VMの可用性管理](virtual-machines-linux-manage-availability.md)」を参照してください。
 
 ## Linux VM の作成
-
 これまでの手順で、インターネットにアクセス可能な VM をサポートするためのストレージおよびネットワーク リソースを作成しました。ここでは、その VM を作成し、パスワードのない SSH キーを使用してそれらをセキュリティで保護します。この場合は、最新の LTS に基づいて Ubuntu VM を作成します。[Azure での仮想マシン イメージの検索](virtual-machines-linux-cli-ps-findimage.md)に関するページで説明されているように、`azure vm image list` を使用してそのイメージの情報を見つけます。
 
 コマンド `azure vm image list westeurope canonical | grep LTS` を使用してイメージを選択します。この例では、`canonical:UbuntuServer:16.04.0-LTS:16.04.201608150` を使用します。最後のフィールドでは、今後常に直近に構築されたように `latest` を渡します(使用する文字列は `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150` です)。
 
 この次の手順は、Linux または Mac で **ssh-keygen -t rsa -b 2048** を使用して SSH RSA の公開キーと秘密キーのペアを既に作成した経験があるユーザーであればだれでもよく知っています。`~/.ssh` ディレクトリに証明書キーのペアがない場合、作成することができます。
 
-- 自動的に `azure vm create --generate-ssh-keys` オプションを使用します。
-- 手動では[自分で作成する手順](virtual-machines-linux-mac-create-ssh-keys.md)を使用します。
+* 自動的に `azure vm create --generate-ssh-keys` オプションを使用します。
+* 手動では[自分で作成する手順](virtual-machines-linux-mac-create-ssh-keys.md)を使用します。
 
 また、VM を作成した後、SSH 接続を認証するのに--管理パスワード方法を使用できます。この方法は通常安全性が低いです。
 
@@ -1269,7 +1261,6 @@ azure group deployment create -f TestRG.json -g NewRGFromTemplate
 [テンプレートからデプロイする方法に関する詳細](../resource-group-template-deploy-cli.md) をご確認ください。段階的な環境の更新、パラメーター ファイルの使用、単一の保存場所からテンプレートにアクセスする方法を確認してください。
 
 ## 次のステップ
-
 これで、複数のネットワーク コンポーネントと VM の操作を開始する準備が整いました。ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。
 
 <!---HONumber=AcomDC_0914_2016-->

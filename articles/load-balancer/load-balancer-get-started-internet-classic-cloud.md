@@ -1,43 +1,42 @@
-<properties 
-   pageTitle="インターネットに接続するクラシック デプロイ モデルのロード バランサー (クラウド サービス用) の作成の開始 | Microsoft Azure"
-   description="インターネットに接続するクラシック デプロイ モデルのロード バランサー (クラウド サービス用) を作成する方法について説明します"
-   services="load-balancer"
-   documentationCenter="na"
-   authors="sdwheeler"
-   manager="carmonm"
-   editor=""
-   tags="azure-service-management"
-/>
-<tags  
-   ms.service="load-balancer"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="03/17/2016"
-   ms.author="sewhee" />
+---
+title: インターネットに接続するクラシック デプロイ モデルのロード バランサー (クラウド サービス用) の作成の開始 | Microsoft Docs
+description: インターネットに接続するクラシック デプロイ モデルのロード バランサー (クラウド サービス用) を作成する方法について説明します
+services: load-balancer
+documentationcenter: na
+author: sdwheeler
+manager: carmonm
+editor: ''
+tags: azure-service-management
 
+ms.service: load-balancer
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 03/17/2016
+ms.author: sewhee
+
+---
 # インターネットに接続するロード バランサー (クラウド サービス用) の作成の開始
+[!INCLUDE [load-balancer-get-started-internet-classic-selectors-include.md](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
 
-[AZURE.INCLUDE [load-balancer-get-started-internet-classic-selectors-include.md](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
+[!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[AZURE.INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
+[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] この記事では、クラシック デプロイメント モデルについて説明します。[Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-cli.md)についても説明します。
+この記事では、クラシック デプロイメント モデルについて説明します。[Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-cli.md)についても説明します。
 
 クラウド サービスはロード バランサーで自動的に構成され、サービス モデルを使用してカスタマイズできます。
 
 ## サービス定義ファイルを使用してロード バランサーを作成します。
- 
 Azure SDK for .NET 2.5 を使用してクラウド サービスを更新できます。クラウド サービスのエンドポイントの設定は、[servicedefinition](https://msdn.microsoft.com/library/azure/gg557553.aspx).csdef で行われます。
 
 次の例は、クラウド デプロイメントの servicedefinition.csdef ファイルを構成する方法を示しています。
 
 クラウド デプロイメントによって生成された .csdef ファイルのスニペット内を確認すると、外部エンドポイントがポート 10000、10001、10002 の HTTP ポートを使用するように構成されていることがわかります。
 
-
-	<ServiceDefinition name=“Tenant“>
-   	<WorkerRole name=“FERole” vmsize=“Small“>
+    <ServiceDefinition name=“Tenant“>
+       <WorkerRole name=“FERole” vmsize=“Small“>
     <Endpoints>
         <InputEndpoint name=“FE_External_Http” protocol=“http” port=“10000“ />
         <InputEndpoint name=“FE_External_Tcp“  protocol=“tcp“  port=“10001“ />
@@ -52,20 +51,18 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
         </InstanceInputEndpoint>
         <InternalEndpoint name=“FE_InternalEP_Tcp” protocol=“tcp“ />
     </Endpoints>
-  	</WorkerRole>
-	</ServiceDefinition>
+      </WorkerRole>
+    </ServiceDefinition>
 
 
 
 
 ## クラウド サービスのロード バランサーの正常性状態を確認する
-
-
 次に、正常性プローブの例を示します。
 
-	 	<LoadBalancerProbes>
-    	<LoadBalancerProbe name=“MyProbe” protocol=“http” path=“Probe.aspx” intervalInSeconds=“5” timeoutInSeconds=“100“ />
- 	 	</LoadBalancerProbes>
+         <LoadBalancerProbes>
+        <LoadBalancerProbe name=“MyProbe” protocol=“http” path=“Probe.aspx” intervalInSeconds=“5” timeoutInSeconds=“100“ />
+          </LoadBalancerProbes>
 
 ロード バランサーは、エンドポイントの情報とプローブの情報を結合して、サービスの正常性のクエリに使用する URL を http://{DIP of VM}:80/Probe.aspx という形式で作成します。
 
@@ -76,7 +73,6 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 詳細については、[正常性プローブ](https://msdn.microsoft.com/library/azure/jj151530.aspx)のサービス定義スキーマをご確認ください。
 
 ## 次のステップ
-
 [内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
 
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)

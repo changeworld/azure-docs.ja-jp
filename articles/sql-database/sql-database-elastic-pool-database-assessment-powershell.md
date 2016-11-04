@@ -1,46 +1,45 @@
-<properties
-    pageTitle="プールに適した 1 つのデータベースを特定する PowerShell スクリプト | Microsoft Azure"
-    description="弾力性データベース プールは、弾力性データベースのグループで共有される使用可能なリソースのコレクションです。 このドキュメントでは、データベースのグループに対して、エラスティック データベース プールを使用することが適切であるか評価する PowerShell スクリプトについて説明します。"
-    services="sql-database"
-    documentationCenter=""
-    authors="stevestein"
-    manager="jhubbard"
-    editor=""/>
+---
+title: プールに適した 1 つのデータベースを特定する PowerShell スクリプト | Microsoft Docs
+description: 弾力性データベース プールは、弾力性データベースのグループで共有される使用可能なリソースのコレクションです。 このドキュメントでは、データベースのグループに対して、エラスティック データベース プールを使用することが適切であるか評価する PowerShell スクリプトについて説明します。
+services: sql-database
+documentationcenter: ''
+author: stevestein
+manager: jhubbard
+editor: ''
 
-<tags
-    ms.service="sql-database"
-    ms.devlang="NA"
-    ms.date="09/28/2016"
-    ms.author="sstein"
-    ms.workload="data-management"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"/>
+ms.service: sql-database
+ms.devlang: NA
+ms.date: 09/28/2016
+ms.author: sstein
+ms.workload: data-management
+ms.topic: article
+ms.tgt_pltfrm: NA
 
-
+---
 # <a name="powershell-script-for-identifying-databases-suitable-for-an-elastic-database-pool"></a>エラスティック データベース プールに適したデータベースを識別する PowerShell スクリプト
-
 この記事では、SQL Database サーバーのユーザー データベースの合計 eDTU 値を評価するため PowerShell スクリプトのサンプルを示します。 スクリプトは実行中にデータを収集します。一般的な運用環境のワークロードの場合、少なくとも 1 日間スクリプトを実行することをお勧めします。 理想的には、データベースに対する典型的なワークロードがある期間、スクリプトを実行します。 データベースの通常の使用とピーク時の使用を表すデータを記録できるだけの十分な時間を取り、スクリプトを実行します。 1 週間またはさらに長期間スクリプトを実行すると、より正確な推計が得られる可能性が高くなります。
 
 このスクリプトは、プールがサポートされている v12 サーバーへの移行に関連して v11 サーバー上のデータベースを評価するときに便利です。 v12 サーバーの場合、SQL Database には、履歴の使用状況テレメトリを分析し、よりコスト効率が高くなるプールを推奨する組み込みインテリジェンスがあります。 詳細については、「[エラスティック データベース プールの監視、管理およびサイズ設定](sql-database-elastic-pool-manage-portal.md)」を参照してください。
 
-> [AZURE.IMPORTANT] スクリプトの実行中は、PowerShell ウィンドウを開いたままにします。 スクリプトの実行期間が目的の時間に達するまで、PowerShell ウィンドウは閉じないでください。 
+> [!IMPORTANT]
+> スクリプトの実行中は、PowerShell ウィンドウを開いたままにします。 スクリプトの実行期間が目的の時間に達するまで、PowerShell ウィンドウは閉じないでください。 
+> 
+> 
 
-## <a name="prerequisites"></a>前提条件 
-
+## <a name="prerequisites"></a>前提条件
 スクリプトの実行前に、次をインストールしてください。
 
-- 最新の Azure PowerShell。 詳細については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
-- [SQL Server 2014 Feature Pack](https://www.microsoft.com/download/details.aspx?id=42295)。
+* 最新の Azure PowerShell。 詳細については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+* [SQL Server 2014 Feature Pack](https://www.microsoft.com/download/details.aspx?id=42295)。
 
 ## <a name="script-details"></a>スクリプトの詳細
-
 スクリプトは、ローカル コンピューターまたはクラウド上の VM から実行できます。 ローカル コンピューターから実行する場合、スクリプトは、ターゲット データベースからデータをダウンロードする必要があるためデータ送信費用が発生する可能性があります。 次に、ターゲット データベースの数と、スクリプトの実行期間に基づくデータ量の評価を示します。 Azure のデータ転送コストの詳細については、「[Data Transfers (データ転送) の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)」を参照してください。
-       
- -     1 データベース 1 時間あたり = 38 KB
- -     1 データベース 1 日あたり = 900 KB
- -     1 データベース 1 週間あたり = 6 MB
- -     100 データベース 1 日あたり = 90 MB
- -     500 データベース 1 週間あたり = 3 GB
+
+* 1 データベース 1 時間あたり = 38 KB
+* 1 データベース 1 日あたり = 900 KB
+* 1 データベース 1 週間あたり = 6 MB
+* 100 データベース 1 日あたり = 90 MB
+* 500 データベース 1 週間あたり = 3 GB
 
 このスクリプトは、次のデータベースの情報をコンパイルしません。
 
@@ -54,16 +53,14 @@
 スクリプトには、ターゲット サーバー (エラスティック データベース プールの候補) に接続するための <*データベース名*>**.database.windows.net** などのような完全なサーバー名の資格情報を指定する必要があります。 スクリプトでは一度に複数のサーバーを分析できません。
 
 初期パラメーター値のセットの送信後には、Azure アカウントにログオンするように求められます。 これは出力データベース サーバーではなくターゲット サーバーにログオンするためのものです。
-    
+
 スクリプトの実行時、次の警告が示された場合は無視してかまいません。
 
-- 警告: Switch-AzureMode コマンドレットは廃止予定です。
-- 警告: SQL Server サービスの情報を取得できませんでした。 'Microsoft.Azure.Commands.Sql.dll' 上の WMI に接続しようとすると、「RPC サーバーを利用できません。」というエラーで失敗します。
+* 警告: Switch-AzureMode コマンドレットは廃止予定です。
+* 警告: SQL Server サービスの情報を取得できませんでした。 'Microsoft.Azure.Commands.Sql.dll' 上の WMI に接続しようとすると、「RPC サーバーを利用できません。」というエラーで失敗します。
 
 スクリプトが完了すると、ターゲット サーバー内のすべての候補データベースを格納するために、プールに必要な推定 eDTU 数が出力されます。 この推定 eDTU をプールの作成と構成に使用できます。 プールが作成され、プールにデータベースを移動した後には、数日間厳密に監視する必要があります。また、必要に応じてプール eDTU 構成を調整します。 「[エラスティック データベース プールの監視、管理およびサイズ設定](sql-database-elastic-pool-manage-portal.md)」を参照してください。
 
-
-    
 ```
 param (
 [Parameter(Mandatory=$true)][string]$AzureSubscriptionName, # Azure Subscription name - can be found on the Azure portal: https://portal.azure.com/
@@ -270,7 +267,7 @@ $data = Invoke-Sqlcmd -ServerInstance $outputServerName -Database $outputdatabas
 $data | %{'{0}' -f $_[0]}
 }
 ```
-        
+
 
 
 

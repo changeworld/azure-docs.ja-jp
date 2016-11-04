@@ -1,25 +1,26 @@
-<properties
-   pageTitle="Azure RemoteApp での OneDrive for Business の使用 | Microsoft Azure"
-   description="Azure RemoteApp で OneDrive for Business を使用する方法について説明します。"
-   services="remoteapp"
-   documentationCenter=""
-   authors="pavithir"
-   manager="mbaldwin"
-   editor=""/>
+---
+title: Azure RemoteApp での OneDrive for Business の使用 | Microsoft Docs
+description: Azure RemoteApp で OneDrive for Business を使用する方法について説明します。
+services: remoteapp
+documentationcenter: ''
+author: pavithir
+manager: mbaldwin
+editor: ''
 
-<tags
-   ms.service="remoteapp"
-   ms.devlang="na"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="compute"
-   ms.date="08/15/2016"
-   ms.author="elizapo"/>
+ms.service: remoteapp
+ms.devlang: na
+ms.topic: hero-article
+ms.tgt_pltfrm: na
+ms.workload: compute
+ms.date: 08/15/2016
+ms.author: elizapo
 
+---
 # OneDrive for Business と Azure RemoteApp
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> [!IMPORTANT]
+> Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> 
+> 
 
 Azure RemoteApp では OneDrive for Business 同期エージェントがサポートされません。
 

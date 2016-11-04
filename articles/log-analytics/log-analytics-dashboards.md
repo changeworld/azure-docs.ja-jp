@@ -1,44 +1,39 @@
-<properties
-    pageTitle="Log Analytics でのカスタム ダッシュボードの作成| Microsoft Azure"
-    description="このガイドでは、環境をわかりやすく表示できるように、Log Analytics ダッシュボードが保存済みのすべてのログ検索を視覚化するしくみについて説明します。"
-    services="log-analytics"
-    documentationCenter=""
-    authors="bandersmsft"
-    manager="jwhit"
-    editor=""/>
+---
+title: Log Analytics でのカスタム ダッシュボードの作成| Microsoft Docs
+description: このガイドでは、環境をわかりやすく表示できるように、Log Analytics ダッシュボードが保存済みのすべてのログ検索を視覚化するしくみについて説明します。
+services: log-analytics
+documentationcenter: ''
+author: bandersmsft
+manager: jwhit
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/10/2016"
-    ms.author="banders"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/10/2016
+ms.author: banders
 
-
+---
 # <a name="create-a-custom-dashboard-in-log-analytics"></a>Log Analytics でのカスタム ダッシュボードの作成
-
 このガイドでは、環境をわかりやすく表示できるように、Log Analytics ダッシュボードが保存済みのすべてのログ検索を視覚化するしくみについて説明します。
 
 ![サンプルのダッシュ ボード](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)
 
 OMS ポータルで作成するカスタム ダッシュボードはすべて、OMS Mobile App でも利用できます。 アプリの詳細については、以下のページを参照してください。
 
-- [Microsoft ストアの OMS モバイル アプリ](http://www.windowsphone.com/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865)
-- [Apple iTunes の OMS モバイル アプリ](https://itunes.apple.com/app/microsoft-operations-management/id1042424859?mt=8)
+* [Microsoft ストアの OMS モバイル アプリ](http://www.windowsphone.com/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865)
+* [Apple iTunes の OMS モバイル アプリ](https://itunes.apple.com/app/microsoft-operations-management/id1042424859?mt=8)
 
 ![モバイル ダッシュボード](./media/log-analytics-dashboards/oms-search-mobile.png)
 
 ## <a name="how-do-i-create-my-dashboard?"></a>ダッシュ ボードの作成方法。
-
 まず OMS の概要ページに移動します。 左側に **[マイ ダッシュボード]** タイルが表示されます。 クリックしてダッシュボードへドリルダウンします。
 
 ![概要](./media/log-analytics-dashboards/oms-dashboards-overview.png)
 
-
 ## <a name="adding-a-tile"></a>タイルの追加
-
 ダッシュ ボードでは、タイルは、保存済みのログ検索が提供します。 OMS には事前に作成された保存済みの多くのログ検索が付属しているので、すぐに開始できます。 以降の手順で基本的な使い方を説明します。
 
 [マイ ダッシュボード] ビューの **[カスタマイズ]** をクリックしてカスタマイズ モードにします。
@@ -53,23 +48,21 @@ OMS ポータルで作成するカスタム ダッシュボードはすべて、
 
 ![タイル 2 の追加](./media/log-analytics-dashboards/oms-dashboards-pictorial03.png)
 
-
 ## <a name="edit-a-tile"></a>タイルを編集する
-
 [マイ ダッシュボード] ビューの **[カスタマイズ]** をクリックしてカスタマイズ モードにします。 編集するタイルをクリックします。 右側のパネルで編集し、オプションを選択します。
 
 ![タイルの編集](./media/log-analytics-dashboards/oms-dashboards-pictorial04.png)
 
 ![タイルの編集](./media/log-analytics-dashboards/oms-dashboards-pictorial05.png)
 
-### <a name="tile-visualizations#"></a>タイルの視覚化#
+### <a name="tile-visualizations#"></a>タイルの視覚化
 タイルの視覚化は、次の 3 種類から選択できます。
 
-|グラフの種類|実行内容|
-|---|---|
-|![横棒グラフ](./media/log-analytics-dashboards/oms-dashboards-bar-chart.png)|保存済みのログ検索の結果のタイムラインを棒グラフとして表示します。または、ログ検索の結果がフィールドごとに集計されているかどうかに応じて、フィールドごとに結果の一覧を表示します。
-|![メトリック](./media/log-analytics-dashboards/oms-dashboards-metric.png)|ログ検索結果の合計ヒット数を数値としてタイルに表示します。 メトリックのタイルでは、しきい値に達したときに、タイルを強調表示するしきい値を設定することができます。|
-|![line](./media/log-analytics-dashboards/oms-dashboards-line.png)|保存されたログ検索結果のヒット数のタイムラインを折れ線グラフとして表示します。|
+| グラフの種類 | 実行内容 |
+| --- | --- |
+| ![横棒グラフ](./media/log-analytics-dashboards/oms-dashboards-bar-chart.png) |保存済みのログ検索の結果のタイムラインを棒グラフとして表示します。または、ログ検索の結果がフィールドごとに集計されているかどうかに応じて、フィールドごとに結果の一覧を表示します。 |
+| ![メトリック](./media/log-analytics-dashboards/oms-dashboards-metric.png) |ログ検索結果の合計ヒット数を数値としてタイルに表示します。 メトリックのタイルでは、しきい値に達したときに、タイルを強調表示するしきい値を設定することができます。 |
+| ![line](./media/log-analytics-dashboards/oms-dashboards-line.png) |保存されたログ検索結果のヒット数のタイムラインを折れ線グラフとして表示します。 |
 
 ### <a name="threshold"></a>しきい値
 メトリックの視覚エフェクトを使用して、タイルのしきい値を作成できます。 タイルにしきい値の値を作成するを選択します。 値が選択したしきい値未満、または以上の場合に強調表示するかどうかを選択し、しきい値を設定します。
@@ -85,10 +78,7 @@ OMS ポータルで作成するカスタム ダッシュボードはすべて、
 ![タイルの削除](./media/log-analytics-dashboards/oms-dashboards-remove-tile.png)
 
 ## <a name="next-steps"></a>次のステップ
-
-- Log Analytics で[アラート](log-analytics-alerts.md)を作成して、通知を生成し、問題を修正します。
-
-
+* Log Analytics で[アラート](log-analytics-alerts.md)を作成して、通知を生成し、問題を修正します。
 
 <!--HONumber=Oct16_HO2-->
 

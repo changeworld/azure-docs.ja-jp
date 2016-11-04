@@ -1,27 +1,28 @@
-<properties
-   pageTitle="SQL Data Warehouse のビュー | Microsoft Azure"
-   description="ソリューション開発のための、Azure SQL Data Warehouse での Transact-SQL ビューの使用に関するヒント。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: SQL Data Warehouse のビュー | Microsoft Docs
+description: ソリューション開発のための、Azure SQL Data Warehouse での Transact-SQL ビューの使用に関するヒント。
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="07/01/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 07/01/2016
+ms.author: jrj;barbkess;sonyama
 
-
+---
 # SQL Data Warehouse のビュー
-
 SQL Data Warehouse では、ビューが特に役立ちます。ビューをさまざまな方法で使用して、ソリューションの品質を向上させることができます。この記事では、ビューによってソリューションを強化する方法の例をいくつか取り上げます。また、考慮する必要がある制限事項についても説明します。
 
-> [AZURE.NOTE] この記事では `CREATE VIEW` の構文は説明していません。参考情報については、MSDN の [CREATE VIEW][] に関するページをご覧ください。
+> [!NOTE]
+> この記事では `CREATE VIEW` の構文は説明していません。参考情報については、MSDN の [CREATE VIEW][CREATE VIEW] に関するページをご覧ください。
+> 
+> 
 
 ## アーキテクチャの抽象化
 一般的なアプリケーション パターンでは、データを読み込みながら、CREATE TABLE AS SELECT (CTAS) を使用し、その後にオブジェクトの名前変更パターンを使用してテーブルを再作成します。
@@ -54,15 +55,14 @@ RENAME OBJECT DimDate_New TO DimDate;
 ## 制限事項
 SQL Data Warehouse のビューはメタデータ専用です。そのため、次のオプションは使用できません。
 
-- 	スキーマ バインド オプションはありません
-- 	ビューでベース テーブルを更新することはできません
-- 	一時テーブルでビューを作成することはできません
-- 	EXPAND / NOEXPAND ヒントはサポートされていません
-- 	SQL Data Warehouse のインデックス付きビューはありません
-
+* スキーマ バインド オプションはありません
+* ビューでベース テーブルを更新することはできません
+* 一時テーブルでビューを作成することはできません
+* EXPAND / NOEXPAND ヒントはサポートされていません
+* SQL Data Warehouse のインデックス付きビューはありません
 
 ## 次のステップ
-開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][]に関するページをご覧ください。`CREATE VIEW` 構文については、[CREATE VIEW][] に関するページをご覧ください。
+開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse の開発の概要]に関するページをご覧ください。`CREATE VIEW` 構文については、[CREATE VIEW][CREATE VIEW] に関するページをご覧ください。
 
 <!--Image references-->
 

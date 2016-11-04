@@ -1,24 +1,22 @@
-<properties
-    pageTitle="Azure AD Connect:  FAQ | Microsoft Azure"
-    description="このページでは、Azure AD Connect についてよく寄せられる質問を紹介します。"
-    services="active-directory"
-    documentationCenter=""
-    authors="billmath"
-    manager="femila"
-    editor="curtand"/>
+---
+title: 'Azure AD Connect:  FAQ | Microsoft Docs'
+description: このページでは、Azure AD Connect についてよく寄せられる質問を紹介します。
+services: active-directory
+documentationcenter: ''
+author: billmath
+manager: femila
+editor: curtand
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/08/2016"
-    ms.author="billmath"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/08/2016
+ms.author: billmath
 
-
+---
 # <a name="azure-ad-connect-faq"></a>Azure AD Connect の FAQ
-
 ## <a name="general-installation"></a>一般的なインストール
 **Q: Azure AD のグローバル管理者が 2FA を有効化している場合、インストールを実行できますか。**  
  2016 年 2 月以降のビルドでは、これがサポートされています。
@@ -59,8 +57,8 @@
 **Q: Azure AD の UPN (userPrincipalName) 属性がオンプレミスの UPN と一致しません。なぜでしょうか。**  
  次の記事を参照してください。
 
-- [Office 365、Azure、Intune におけるユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://support.microsoft.com/en-us/kb/2523192)
-- [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://support.microsoft.com/en-us/kb/2669550)
+* [Office 365、Azure、Intune におけるユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://support.microsoft.com/en-us/kb/2523192)
+* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://support.microsoft.com/en-us/kb/2669550)
 
 また、「 [Azure AD Connect 同期サービスの機能](active-directory-aadconnectsyncservice-features.md)」に記載された手順に従って、同期エンジンによる userPrincipalName の更新が許可されるように Azure AD を構成することもできます。
 
@@ -76,17 +74,15 @@
 
 [Microsoft サポート技術情報 (KB) の検索](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
 
-- Azure AD Connect のサポートに関する一般的な破損時補償の技術的な解決策について、Microsoft サポート技術情報 (KB) を検索してください。
+* Azure AD Connect のサポートに関する一般的な破損時補償の技術的な解決策について、Microsoft サポート技術情報 (KB) を検索してください。
 
 [Microsoft Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
 
-- このコミュニティで技術的な質問と回答を検索して参照したり、 [こちら](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)をクリックして独自の質問を行ったりできます。
+* このコミュニティで技術的な質問と回答を検索して参照したり、 [こちら](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)をクリックして独自の質問を行ったりできます。
 
 [Azure AD Connect のカスタマー サポート](https://manage.windowsazure.com/?getsupport=true)
 
-- このリンクを使用して、Azure ポータルからサポートを受けることができます。
-
-
+* このリンクを使用して、Azure ポータルからサポートを受けることができます。
 
 <!--HONumber=Oct16_HO2-->
 

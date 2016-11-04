@@ -1,29 +1,29 @@
-<properties
-   pageTitle="SQL Data Warehouse | Microsoft Azure での Group By オプション"
-   description="ソリューション開発のための Azure SQL Data Warehouse での Group By オプションの実装に関するヒント。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: SQL Data Warehouse | Microsoft Docs
+description: ソリューション開発のための Azure SQL Data Warehouse での Group By オプションの実装に関するヒント。
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/14/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/14/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # SQL Data Warehouse の Group By オプション
-
-[GROUP BY][] 句は、行のサマリー セットにデータを集計するのに使用します。 また、機能を拡張するオプションもありますが、Azure SQL Data Warehouse で直接サポートされていないので、対処する必要があります。
+[GROUP BY][GROUP BY] 句は、行のサマリー セットにデータを集計するのに使用します。 また、機能を拡張するオプションもありますが、Azure SQL Data Warehouse で直接サポートされていないので、対処する必要があります。
 
 オプションは次のとおりです。
-- GROUP BY with ROLLUP
-- GROUPING SETS
-- GROUP BY with CUBE
+
+* GROUP BY with ROLLUP
+* GROUPING SETS
+* GROUP BY with CUBE
 
 ## Rollup および Grouping Sets オプション
 ここで最も簡単なオプションは、`UNION ALL` を使用して、明示的な構文に頼る代わりに、ロールアップを実行します。結果はまったく同じです。
@@ -44,9 +44,10 @@ GROUP BY ROLLUP (
 ```
 
 ROLLUP を使用して、次の集計を要求しました。
-- 国とリージョン
-- 国
-- 総計
+
+* 国とリージョン
+* 国
+* 総計
 
 これを置き換えるには、`UNION ALL` を使用して、同じ結果を返すために明示的に必要な集計を指定します。
 
@@ -175,9 +176,8 @@ ORDER BY 1,2,3
 
 コードをセクションに分割し、ループ構造を生成することによって、コードの管理と保守が容易になります。
 
-
 ## 次のステップ
-開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
+開発のその他のヒントについては、[開発の概要][開発の概要]に関するページをご覧ください。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png

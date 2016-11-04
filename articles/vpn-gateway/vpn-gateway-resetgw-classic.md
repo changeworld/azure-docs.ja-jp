@@ -1,26 +1,23 @@
-<properties
-   pageTitle="Azure VPN Gateway のリセット | Microsoft Azure"
-   description="この記事では、Azure VPN Gateway をリセットする方法を紹介します。 この記事は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方の VPN ゲートウェイに適用されます。"
-   services="vpn-gateway"
-   documentationCenter="na"
-   authors="cherylmc"
-   manager="carmonm"
-   editor=""
-   tags="azure-resource-manager,azure-service-management"/>
+---
+title: Azure VPN Gateway のリセット | Microsoft Docs
+description: この記事では、Azure VPN Gateway をリセットする方法を紹介します。 この記事は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方の VPN ゲートウェイに適用されます。
+services: vpn-gateway
+documentationcenter: na
+author: cherylmc
+manager: carmonm
+editor: ''
+tags: azure-resource-manager,azure-service-management
 
-<tags
-   ms.service="vpn-gateway"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="09/23/2016"
-   ms.author="cherylmc"/>
+ms.service: vpn-gateway
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 09/23/2016
+ms.author: cherylmc
 
-
+---
 # <a name="reset-an-azure-vpn-gateway-using-powershell"></a>PowerShell を使用して Azure VPN Gateway をリセットする
-
-
 この記事では、PowerShell のコマンドレットを使用して、Azure VPN Gateway をリセットする方法を紹介します。 これらの手順は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方が対象となります。
 
 サイト間 VPN トンネルのクロスプレミス VPN 接続が失われた場合、Azure VPN Gateway をリセットすることによって解決できる場合があります。 この状況では、オンプレミスの VPN デバイスがすべて正しく機能していても、Azure VPN Gateway との間で IPsec トンネルを確立することができません。 
@@ -34,26 +31,23 @@
 2 回再起動してもクロスプレミス接続の問題が解消しない場合は、Azure ポータルからサポート リクエストを作成してください。
 
 ## <a name="before-you-begin"></a>開始する前に
-
 ゲートウェイをリセットする前に、個々の IPsec サイト間 (S2S) VPN トンネルについて、以下に挙げた主な項目を確認してください。 いずれか 1 つの項目でも不備があると、S2S VPN トンネルの接続が失われます。 オンプレミスの VPN ゲートウェイと Azure VPN Gateway に使用されている構成を確認して修正すれば、そのゲートウェイ上で正常に機能している他の接続に対して無駄な再起動や中断を行わずに済みます。
 
 ゲートウェイをリセットする前に以下の項目をご確認ください。
 
-- Azure とオンプレミスの両方の VPN ポリシーに、Azure VPN Gateway とオンプレミスの VPN ゲートウェイのインターネット IP アドレス (VIP) がどちらも正しく構成されていること。
-- Azure の VPN ゲートウェイとオンプレミスの VPN ゲートウェイが同じ事前共有キーを持っていること。
-- 暗号化、ハッシュ アルゴリズム、PFS (Perfect Forward Secrecy) など特定の IPsec/IKE 構成を適用する場合、Azure の VPN ゲートウェイとオンプレミスの VPN ゲートウェイとに、必ず同じ構成を適用すること。
+* Azure とオンプレミスの両方の VPN ポリシーに、Azure VPN Gateway とオンプレミスの VPN ゲートウェイのインターネット IP アドレス (VIP) がどちらも正しく構成されていること。
+* Azure の VPN ゲートウェイとオンプレミスの VPN ゲートウェイが同じ事前共有キーを持っていること。
+* 暗号化、ハッシュ アルゴリズム、PFS (Perfect Forward Secrecy) など特定の IPsec/IKE 構成を適用する場合、Azure の VPN ゲートウェイとオンプレミスの VPN ゲートウェイとに、必ず同じ構成を適用すること。
 
 ## <a name="reset-a-vpn-gateway-using-the-resource-management-deployment-model"></a>Resource Manager デプロイメント モデルを使用して VPN ゲートウェイをリセットする
-
 ゲートウェイをリセットするための PowerShell Resource Manager コマンドレットは、 `Reset-AzureRmVirtualNetworkGateway`です。 次の例では、リソース グループ "TestRG1" の Azure VPN ゲートウェイ "VNet1GW" をリセットします。
 
     $gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroup TestRG1
     Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
 
 ## <a name="reset-a-vpn-gateway-using-the-classic-deployment-model"></a>従来のデプロイモデルを使用して VPN ゲートウェイをリセットする
-
 Azure VPN Gateway をリセットするための PowerShell コマンドレットは `Reset-AzureVNetGateway`です。 次の例では、"ContosoVNet" という仮想ネットワークの Azure VPN Gateway をリセットしています。
- 
+
     Reset-AzureVNetGateway –VnetName “ContosoVNet” 
 
 結果は次のとおりです。
@@ -67,16 +61,7 @@ Azure VPN Gateway をリセットするための PowerShell コマンドレッ�
 
 
 ## <a name="next-steps"></a>次のステップ
-    
 詳細は、[PowerShell Service Management コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/mt617104.aspx)と [PowerShell Resource Manager コマンドレット リファレンス](http://go.microsoft.com/fwlink/?LinkId=828732)をご覧ください。
-
-
-
-
-
-
-
-
 
 <!--HONumber=Oct16_HO2-->
 

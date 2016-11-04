@@ -1,68 +1,52 @@
-<properties
-    pageTitle="Azure Active Directory サインイン アクティビティ レポート API リファレンス | Microsoft Azure"
-    description="Azure Active Directory サインイン アクティビティ レポート API のリファレンス"
-    services="active-directory"
-    documentationCenter=""
-    authors="dhanyahk"
-    manager="femila"
-    editor=""/>
+---
+title: Azure Active Directory サインイン アクティビティ レポート API リファレンス | Microsoft Docs
+description: Azure Active Directory サインイン アクティビティ レポート API のリファレンス
+services: active-directory
+documentationcenter: ''
+author: dhanyahk
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="identity"
-    ms.date="09/25/2016"
-    ms.author="dhanyahk;markvi"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/25/2016
+ms.author: dhanyahk;markvi
 
-
+---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Azure Active Directory サインイン アクティビティ レポート API リファレンス
-
-
 このトピックは Azure Active Directory Reporting API に関するトピックのコレクションの一部です。  
 Azure AD レポートは、コードまたは関連ツールを使用してサインイン アクティビティ レポート データにアクセスできるようにする API を提供します。
 このトピックでは、 **サインイン アクティビティ レポート API**に関する参照情報について説明します。
 
 参照:
 
-- [サインイン アクティビティ](active-directory-reporting-azure-portal.md#sign-in-activities) に関する記事
-- [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md) 」。
+* [サインイン アクティビティ](active-directory-reporting-azure-portal.md#sign-in-activities) に関する記事
+* [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md) 」。
 
 質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
 
-
-
 ## <a name="who-can-access-the-api-data?"></a>誰が API データにアクセスできますか。
-
-- セキュリティ管理者またはセキュリティ リーダーの役割のユーザー
-
-- グローバル管理者
-
-- API へのアクセスを承認するすべてのアプリ (アプリの承認は、グローバル管理者のアクセス許可に基づいてのみ設定できます)
-
-
+* セキュリティ管理者またはセキュリティ リーダーの役割のユーザー
+* グローバル管理者
+* API へのアクセスを承認するすべてのアプリ (アプリの承認は、グローバル管理者のアクセス許可に基づいてのみ設定できます)
 
 ## <a name="prerequisites"></a>前提条件
-
 Reporting API を使用してこのレポートにアクセスするには、次が必要です。
 
-- [Azure Active Directory Premium P1 または P2 エディション](active-directory-editions.md)
+* [Azure Active Directory Premium P1 または P2 エディション](active-directory-editions.md)
+* 「 [Azure AD Reporting API にアクセスするための前提条件](active-directory-reporting-api-prerequisites.md)」の完了。 
 
-- 「 [Azure AD Reporting API にアクセスするための前提条件](active-directory-reporting-api-prerequisites.md)」の完了。 
-
-
-##<a name="accessing-the-api"></a>API へのアクセス
-
+## <a name="accessing-the-api"></a>API へのアクセス
 この API にアクセスするには、 [Graph Explorer](https://graphexplorer2.cloudapp.net) またはプログラム (例: PowerShell) を使用します。 PowerShell に AAD Graph REST 呼び出しで使用される OData フィルターの構文を正しく解釈させるには、バックティック (別名: グレーブ アクセント) 文字を使用して、$ 文字を “エスケープ” する必要があります。 バックティック文字は、 [PowerShell のエスケープ文字](https://technet.microsoft.com/library/hh847755.aspx)として機能し、PowerShell に $ 文字をリテラルに解釈させ、PowerShell 変数名 (例: $filter) と混同させないようにすることができます。
 
 このトピックでは、Graph Explorer に焦点を当てます。 PowerShell の例については、 「 [PowerShell スクリプト](active-directory-reporting-api-sign-in-activity-samples.md#powershell-script)」を参照してください。
 
-
 ## <a name="api-endpoint"></a>API エンドポイント
-
 次のベース URI を使用して、この API にアクセスできます。  
-    
+
     https://graph.windows.net/contoso.com/activities/signinEvents?api-version=beta  
 
 
@@ -76,44 +60,34 @@ Reporting API を使用してこのレポートにアクセスするには、次
 
 
 ## <a name="supported-filters"></a>サポートされているフィルター
-
 フィルターの形式で API 呼び出しによって返されるレコードの数を絞り込むことができます。  
 サインイン API 関連データについては、次のフィルターがサポートされています。
 
-- **$top = \<返されるレコードの数\>** - 返されるレコードの数を制限します。 これは負荷の高い操作です。 数千のオブジェクトを取得する場合、このフィルターを使用する必要はりません。  
-- **$filter = \<フィルター ステートメント\>** - サポートされているフィルター フィールドに基づいて、重要なレコードの種類を指定します。
-
-
+* **$top = \<返されるレコードの数\>** - 返されるレコードの数を制限します。 これは負荷の高い操作です。 数千のオブジェクトを取得する場合、このフィルターを使用する必要はりません。  
+* **$filter = \<フィルター ステートメント\>** - サポートされているフィルター フィールドに基づいて、重要なレコードの種類を指定します。
 
 ## <a name="supported-filter-fields-and-operators"></a>サポートされているフィルター フィールドと演算子
-
 重要なレコードの種類を指定するには、次のフィルター フィールドの 1 つまたは組み合わせのいずれかを含めることができるフィルター ステートメントを構築します。
 
-- [signinDateTime](#signindatetime) - 日付または日付範囲を定義します。
+* [signinDateTime](#signindatetime) - 日付または日付範囲を定義します。
+* [userId](#userid) - 特定のユーザー ベースのユーザーの ID を定義します。
+* [userPrincipalName](#userprincipalname) - 特定のユーザー ベースのユーザーのユーザー プリンシパル名 (UPN) を定義します。
+* [appId](#appid) - 特定のアプリ ベースのアプリの ID を定義します。
+* [appDisplayName](#appdisplayname) - 特定のアプリ ベースのアプリの表示名を定義します。
+* [loginStatus](#loginStatus) - ログインの状態 (成功/失敗) を定義します。
 
-- [userId](#userid) - 特定のユーザー ベースのユーザーの ID を定義します。
-
-- [userPrincipalName](#userprincipalname) - 特定のユーザー ベースのユーザーのユーザー プリンシパル名 (UPN) を定義します。
-
-- [appId](#appid) - 特定のアプリ ベースのアプリの ID を定義します。
-
-- [appDisplayName](#appdisplayname) - 特定のアプリ ベースのアプリの表示名を定義します。
-
-- [loginStatus](#loginStatus) - ログインの状態 (成功/失敗) を定義します。
-
-
-> [AZURE.NOTE] Graph Explorer を使用する場合は、フィルター フィールドの各文字について大文字と小文字を正しく使用する必要があります。
-
+> [!NOTE]
+> Graph Explorer を使用する場合は、フィルター フィールドの各文字について大文字と小文字を正しく使用する必要があります。
+> 
+> 
 
 返されるデータのスコープを絞り込むには、サポートされているフィルターとフィルター フィールドの組み合わせを構築します。 たとえば、次のステートメントは、2016 年 7 月 1 日～ 2016 年 7 月 6日 の間で上位 10 個のレコードを返します。
 
     https://graph.windows.net/contoso.com/activities/signinEvents?api-version=beta&$top=10&$filter=signinDateTime+ge+2016-07-01T17:05:21Z+and+signinDateTime+le+2016-07-07T00:00:00Z
 
 
-----------
-
+- - -
 ### <a name="signindatetime"></a>signinDateTime
-
 **サポートされている演算子**: eq、ge、le、gt、lt
 
 **例**:
@@ -133,11 +107,8 @@ Reporting API を使用してこのレポートにアクセスするには、次
 
 datetime パラメーターは UTC 形式にする必要があります。 
 
-
-----------
-
+- - -
 ### <a name="userid"></a>userId
-
 **サポートされている演算子**: eq
 
 **例**:
@@ -148,12 +119,8 @@ datetime パラメーターは UTC 形式にする必要があります。
 
 userId の値は文字列の値です。
 
-
-
-----------
-
+- - -
 ### <a name="userprincipalname"></a>userPrincipalName
-
 **サポートされている演算子**: eq
 
 **例**:
@@ -165,10 +132,8 @@ userId の値は文字列の値です。
 
 userPrincipalName の値は文字列の値です。
 
-----------
-
+- - -
 ### <a name="appid"></a>appId
-
 **サポートされている演算子**: eq
 
 **例**:
@@ -181,11 +146,8 @@ userPrincipalName の値は文字列の値です。
 
 appId の値は文字列の値です。
 
-----------
-
-
+- - -
 ### <a name="appdisplayname"></a>appDisplayName
-
 **サポートされている演算子**: eq
 
 **例**:
@@ -197,10 +159,8 @@ appId の値は文字列の値です。
 
 appDisplayName の値は文字列の値です。
 
-----------
-
+- - -
 ### <a name="loginstatus"></a>loginStatus
-
 **サポートされている演算子**: eq
 
 **例**:
@@ -212,16 +172,10 @@ appDisplayName の値は文字列の値です。
 
 loginStatus には 2 つのオプション (0 - 成功、1 - 失敗) があります。
 
-----------
-
-
-
+- - -
 ## <a name="next-steps"></a>次のステップ
-
-- フィルター処理されたサインイン アクティビティの例を参照しますか。 「 [Azure Active Directory サインイン アクティビティ レポート API のサンプル](active-directory-reporting-api-sign-in-activity-samples.md)」を確認してください。
-
-- Azure AD Reporting API の詳細を確認しますか。 「 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)」を参照してください。
-
+* フィルター処理されたサインイン アクティビティの例を参照しますか。 「 [Azure Active Directory サインイン アクティビティ レポート API のサンプル](active-directory-reporting-api-sign-in-activity-samples.md)」を確認してください。
+* Azure AD Reporting API の詳細を確認しますか。 「 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)」を参照してください。
 
 <!--HONumber=Oct16_HO2-->
 

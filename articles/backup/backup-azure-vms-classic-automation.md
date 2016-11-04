@@ -1,36 +1,37 @@
-<properties
-	pageTitle="PowerShell を使用した Azure VM のバックアップのデプロイおよび管理 | Microsoft Azure"
-	description="PowerShell を使用して Microsoft Azure Backup をデプロイおよび管理する手順の説明"
-	services="backup"
-	documentationCenter=""
-	authors="markgalioto"
-	manager="cfreeman"
-	editor=""/>
+---
+title: PowerShell を使用した Azure VM のバックアップのデプロイおよび管理 | Microsoft Docs
+description: PowerShell を使用して Microsoft Azure Backup をデプロイおよび管理する手順の説明
+services: backup
+documentationcenter: ''
+author: markgalioto
+manager: cfreeman
+editor: ''
 
-<tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/08/2016"
-	ms.author="markgal;trinadhk;jimpark" />
+ms.service: backup
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/08/2016
+ms.author: markgal;trinadhk;jimpark
 
-
+---
 # PowerShell を使用した Azure VM のバックアップのデプロイおよび管理
-
-> [AZURE.SELECTOR]
-- [リソース マネージャー](backup-azure-vms-automation.md)
-- [クラシック](backup-azure-vms-classic-automation.md)
+> [!div class="op_single_selector"]
+> * [リソース マネージャー](backup-azure-vms-automation.md)
+> * [クラシック](backup-azure-vms-classic-automation.md)
+> 
+> 
 
 この記事では、Azure の VM をバックアップおよび回復するために Azure PowerShell を使用する方法を示します。Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。Resource Manager デプロイメント モデルとクラシック デプロイメント モデルです。この記事では、クラシック デプロイ モデルの使用方法について説明します。最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 ## 概念
-
-
 この記事では、仮想マシンのバックアップに使用する PowerShell コマンドレットに特有の情報を提供します。Azure VM の保護に関する概要については、「[Azure における VM バックアップ インフラストラクチャの計画を立てる](backup-azure-vms-introduction.md)」を参照してください。
 
-> [AZURE.NOTE] 開始する前に、Azure Backup を使用するうえで必要な[前提条件](backup-azure-vms-prepare.md)を確認し、現在の VM バックアップ ソリューションの[制限事項](backup-azure-vms-prepare.md#limitations)を把握してください。
+> [!NOTE]
+> 開始する前に、Azure Backup を使用するうえで必要な[前提条件](backup-azure-vms-prepare.md)を確認し、現在の VM バックアップ ソリューションの[制限事項](backup-azure-vms-prepare.md#limitations)を把握してください。
+> 
+> 
 
 PowerShell を効果的に使用できるように、オブジェクトの階層と開始地点を理解しておいてください。
 
@@ -38,12 +39,10 @@ PowerShell を効果的に使用できるように、オブジェクトの階層
 
 2 つの最も重要なフローは、VM の保護の有効化と、復旧ポイントからのデータの復元です。この記事は、これらの 2 つのシナリオを実現するために、PowerShell コマンドレットの操作に熟達することを目的としています。
 
-
 ## セットアップと登録
 開始するには
 
 1. [最新の PowerShell](https://github.com/Azure/azure-powershell/releases) (1.0.0 以降のバージョンが必要) をダウンロードします。
-
 2. 以下のコマンドを入力して、使用可能な Azure Backup の PowerShell コマンドレットを検索します。
 
 ```
@@ -79,12 +78,14 @@ Cmdlet          Wait-AzureRmBackupJob                              1.0.1      Az
 
 PowerShell を使用して次のセットアップおよび登録タスクを自動化できます。
 
-- バックアップ資格情報コンテナーの作成
-- Microsoft Azure Backup サービスを使用した VM の登録
+* バックアップ資格情報コンテナーの作成
+* Microsoft Azure Backup サービスを使用した VM の登録
 
 ### バックアップ資格情報コンテナーの作成
-
-> [AZURE.WARNING] 顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。これは、Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
+> [!WARNING]
+> 顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。これは、Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
+> 
+> 
 
 **New-AzureRmBackupVault** コマンドレットを使用すると、新しいバックアップ コンテナーを作成できます。バックアップ コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
 
@@ -95,8 +96,10 @@ PS C:\> $backupvault = New-AzureRmBackupVault –ResourceGroupName “test-rg”
 
 **Get-AzureRmBackupVault** コマンドレットを使用して、特定のサブスクリプション内のすべてのバックアップ コンテナーの一覧を取得できます。
 
-> [AZURE.NOTE] バックアップ コンテナー オブジェクトは変数に格納すると便利です。コンテナー オブジェクトは、多くの Azure Backup コマンドレットの入力に必要です。
-
+> [!NOTE]
+> バックアップ コンテナー オブジェクトは変数に格納すると便利です。コンテナー オブジェクトは、多くの Azure Backup コマンドレットの入力に必要です。
+> 
+> 
 
 ### VM の登録
 Azure Backup のバックアップを構成するには、まず Azure Backup コンテナーにコンピューターまたは VM を登録します。**Register-AzureRmBackupContainer** コマンドレットは、Azure IaaS 仮想マシンの入力情報を受け取り、指定のコンテナーへの登録を行います。登録操作は、Azure virtual machine とバックアップ コンテナーを関連付け、VM をバックアップのライフサイクルを通じて追跡します。
@@ -108,7 +111,6 @@ PS C:\> $registerjob = Register-AzureRmBackupContainer -Vault $backupvault -Name
 ```
 
 ## Azure VM のバックアップ
-
 ### 保護ポリシーの作成
 VM のバックアップを開始する際、新しい保護ポリシーを作成する必要はありません。コンテナーには、後ですぐに正しい詳細に編集できる、保護をすぐに有効にするために使用できる '既定のポリシー' が含まれます。**Get-AzureRmBackupProtectionPolicy** コマンドレットを使用すると、コンテナーにあるポリシーの一覧を取得することができます。
 
@@ -120,7 +122,10 @@ Name                      Type               ScheduleType       BackupTime
 DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:00 AM
 ```
 
-> [AZURE.NOTE] PowerShell の BackupTime フィールドのタイムゾーンは UTC です。ただし、Azure ポータルでバックアップ時刻が表示されるときには、UTC オフセットとローカル システムに合わせてタイムゾーンが調整されます。
+> [!NOTE]
+> PowerShell の BackupTime フィールドのタイムゾーンは UTC です。ただし、Azure ポータルでバックアップ時刻が表示されるときには、UTC オフセットとローカル システムに合わせてタイムゾーンが調整されます。
+> 
+> 
 
 バックアップ ポリシーは、少なくとも 1 つのアイテム保持ポリシーと関連付けられています。アイテム保持ポリシーには、Azure Backup で復旧ポイントを保持する期間が定義されています。**New-AzureRmBackupRetentionPolicy** コマンドレットは、アイテム保持ポリシー情報を保持する PowerShell オブジェクトを作成します。これらのアイテム保持ポリシー オブジェクトは、*New-AzureRmBackupProtectionPolicy* コマンドレットへの入力として使用されるか、*Enable-AzureRmBackupProtection* コマンドレットで直接使用されます。
 
@@ -155,7 +160,10 @@ WorkloadName    Operation       Status          StartTime              EndTime
 testvm          Backup          InProgress      01-Sep-15 12:24:01 PM  01-Jan-01 12:00:00 AM
 ```
 
-> [AZURE.NOTE] PowerShell で表示される StartTime フィールドと EndTime フィールドのタイムゾーンは UTC です。ただし、Azure ポータルで同様の情報が表示されるときには、ローカル システム クロックに合わせてタイムゾーンが調整されます。
+> [!NOTE]
+> PowerShell で表示される StartTime フィールドと EndTime フィールドのタイムゾーンは UTC です。ただし、Azure ポータルで同様の情報が表示されるときには、ローカル システム クロックに合わせてタイムゾーンが調整されます。
+> 
+> 
 
 ### バックアップ ジョブの監視
 Azure Backup で長時間実行される多くの操作は、ジョブとしてモデル化されています。これにより、Azure ポータルを常に開いていなくても進捗を簡単に追跡できるようになります。
@@ -179,11 +187,9 @@ PS C:\> Wait-AzureRmBackupJob -Job $joblist[0] -Timeout 43200
 
 
 ## Azure VM の復元
-
 バックアップ データを復元するには、バックアップ項目と復元する特定の時点のデータを保持する復元ポイントを特定する必要があります。この情報は、コンテナーからお客様のアカウントにデータの復元を開始するために、Restore-AzureRmBackupItem コマンドレットに提供されます。
 
 ### VM の選択
-
 バックアップする正しい項目を特定する PowerShell オブジェクトを取得するには、コンテナー内のコンテナーから開始し、次いでオブジェクト階層の上から下に進みます。VM を表すコンテナーを選択するには、**Get-AzureRmBackupContainer** コマンドレットを使用し、**Get-AzureRmBackupItem** コマンドレットへのパイプとして使用します。
 
 ```
@@ -191,7 +197,6 @@ PS C:\> $backupitem = Get-AzureRmBackupContainer -Vault $backupvault -Type Azure
 ```
 
 ### 復元ポイントの選択
-
 これで **Get-AzureRmBackupRecoveryPoint** コマンドレットを使用して、バックアップ アイテムのすべての復元ポイントを一覧表示し、復元する復元ポイントを選択できます。通常、ユーザーはこのリスト内の最新の *AppConsistent* ポイントを選択します。
 
 ```
@@ -206,10 +211,12 @@ RecoveryPointId    RecoveryPointType  RecoveryPointTime      ContainerName
 ```$rp``` 変数は、選択したバックアップ アイテムの復旧ポイントの配列であり、時間の逆順に並べ替えられています。つまり、最新の復旧ポイントがインデックス 0 の位置になります。標準の PowerShell 配列のインデックスを使用して、復旧ポイントを選択します。例: ```$rp[0]``` は、最新の復旧ポイントを選択します。
 
 ### データの復元
-
 Azure ポータルと Azure PowerShell を使用して実行する復元処理には決定的な違いがあります。Powershell では、復元操作は、復元ポイントからディスクと構成情報を復元すると停止します。仮想マシンは作成されません。
 
-> [AZURE.WARNING] Restore-AzureRmBackupItem では、VM は作成されません。指定したストレージ アカウントにディスクを復元するのみです。これは、Azure ポータルの動作とは異なります。
+> [!WARNING]
+> Restore-AzureRmBackupItem では、VM は作成されません。指定したストレージ アカウントにディスクを復元するのみです。これは、Azure ポータルの動作とは異なります。
+> 
+> 
 
 ```
 PS C:\> $restorejob = Restore-AzureRmBackupItem -StorageAccountName "DestAccount" -RecoveryPoint $rp[0]
@@ -228,7 +235,6 @@ PS C:\> $details = Get-AzureRmBackupJobDetails -Job $restorejob
 ```
 
 ### VM の構築
-
 復元したディスクから VM を構築するには、古い Azure サービス管理 PowerShell コマンドレット、新しい Azure Resource Manager テンプレート、または Azure ポータルを使用して実行できます。Azure サービス管理コマンドレットを使用して、これを実行する簡単な例を示します。
 
 ```
@@ -256,17 +262,17 @@ $obj = [xml](((Get-Content -Path $destination_path -Encoding UniCode)).TrimEnd([
 
  if (!($dds -eq $null))
  {
-	 foreach($d in $dds.DataVirtualHardDisk)
- 	 {
-		 $lun = 0
-		 if(!($d.Lun -eq $null))
-		 {
-	 		 $lun = $d.Lun
-		 }
-		 $name = "panbhadataDisk" + $lun
+     foreach($d in $dds.DataVirtualHardDisk)
+      {
+         $lun = 0
+         if(!($d.Lun -eq $null))
+         {
+              $lun = $d.Lun
+         }
+         $name = "panbhadataDisk" + $lun
      Add-AzureDisk -DiskName $name -MediaLocation $d.MediaLink
      $vm | Add-AzureDataDisk -Import -DiskName $name -LUN $lun
-	}
+    }
 }
 
 New-AzureVM -ServiceName "panbhasample" -Location "SouthEast Asia" -VM $vm
@@ -274,14 +280,12 @@ New-AzureVM -ServiceName "panbhasample" -Location "SouthEast Asia" -VM $vm
 
 復元したディスクから VM を構築する方法の詳細については、次のコマンドレットに関する説明を参照してください。
 
-- [Add-AzureDisk](https://msdn.microsoft.com/library/azure/dn495252.aspx)
-- [New-AzureVMConfig](https://msdn.microsoft.com/library/azure/dn495159.aspx)
-- [New-AzureVM](https://msdn.microsoft.com/library/azure/dn495254.aspx)
+* [Add-AzureDisk](https://msdn.microsoft.com/library/azure/dn495252.aspx)
+* [New-AzureVMConfig](https://msdn.microsoft.com/library/azure/dn495159.aspx)
+* [New-AzureVM](https://msdn.microsoft.com/library/azure/dn495254.aspx)
 
 ## コード サンプル
-
 ### 1\.ジョブのサブタスクの完了状態の取得
-
 個々のサブタスクの完了状態を追跡するには、**Get-AzureRmBackupJobDetails** コマンドレットを使用します。
 
 ```
@@ -295,7 +299,6 @@ Transfer data to Backup vault                               InProgress
 ```
 
 ### 手順 2.バックアップ ジョブの日次/週次レポートの作成
-
 通常、管理者は過去 24 時間に実行されたバックアップ ジョブと、それらのバックアップ ジョブの状態を知りたいと考えています。また、転送されたデータの量によって、管理者は毎月のデータ使用量を推定できます。次のスクリプトは、Azure Backup サービスから生データを取得し、PowerShell コンソールに情報を表示します。
 
 ```
@@ -342,7 +345,6 @@ $DAILYBACKUPSTATS | Out-GridView
 このレポート出力にグラフ作成機能を追加する場合は、TechNet ブログ投稿「[Charting with PowerShell (PowerShell でのグラフ作成)](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx)」をご覧ください。
 
 ## 次のステップ
-
-PowerShell を使用して Azure リソースを操作する場合は、Windows Server の保護について記載されている、[Windows Server のバックアップのデプロイと管理](./backup-client-automation-classic.md)に関する PowerShell の記事をご覧ください。[DPM のバックアップのデプロイと管理](./backup-dpm-automation-classic.md)に関する PowerShell の記事で、DPM バックアップの管理について確認することもできます。両方の記事で、Resource Manager デプロイメントとクラシック デプロイメントの両方のモデルについて説明しています。
+PowerShell を使用して Azure リソースを操作する場合は、Windows Server の保護について記載されている、[Windows Server のバックアップのデプロイと管理](backup-client-automation-classic.md)に関する PowerShell の記事をご覧ください。[DPM のバックアップのデプロイと管理](backup-dpm-automation-classic.md)に関する PowerShell の記事で、DPM バックアップの管理について確認することもできます。両方の記事で、Resource Manager デプロイメントとクラシック デプロイメントの両方のモデルについて説明しています。
 
 <!---HONumber=AcomDC_0810_2016-->

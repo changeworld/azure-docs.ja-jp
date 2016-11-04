@@ -1,39 +1,41 @@
-<properties
-   pageTitle="Docker マシンを利用し、Azure で Docker ホストを作成する | Microsoft Azure"
-   description="Docker マシンを利用し、Azure で Docker ホストを作成する方法について説明します。"
-   services="azure-container-service"
-   documentationCenter="na"
-   authors="mlearned"
-   manager="douge"
-   editor="" />
-<tags
-   ms.service="multiple"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="multiple"
-   ms.date="06/08/2016"
-   ms.author="mlearned" />
+---
+title: Docker マシンを利用し、Azure で Docker ホストを作成する | Microsoft Docs
+description: Docker マシンを利用し、Azure で Docker ホストを作成する方法について説明します。
+services: azure-container-service
+documentationcenter: na
+author: mlearned
+manager: douge
+editor: ''
 
+ms.service: multiple
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: multiple
+ms.date: 06/08/2016
+ms.author: mlearned
+
+---
 # Docker マシンを利用し、Azure で Docker ホストを作成する
-
 [Docker](https://www.docker.com/) コンテナーを実行するには、Docker デーモンを実行しているホスト VM が必要です。このトピックでは、[docker-machine](https://docs.docker.com/machine/) コマンドを使用して、Docker デーモンで構成され、Azure で実行される新しい Linux VM を作成する方法について説明します。
 
 **注:**
-- *この記事は docker-machine バージョン 0.7.0 以上に依存します*
-- *Windows コンテナーは今後の docker-machine でサポートされる予定です*
+
+* *この記事は docker-machine バージョン 0.7.0 以上に依存します*
+* *Windows コンテナーは今後の docker-machine でサポートされる予定です*
 
 ## Docker マシンで VM を作成する
-
 `azure` ドライバーを使用する `docker-machine create` コマンドを使用して、Azure に Docker ホスト VM を作成します。
 
 Azure ドライバーにはサブスクリプション ID が必要になります。[Azure CLI](xplat-cli-install.md) または [Azure Portal](https://portal.azure.com) を使用して、Azure サブスクリプションを取得することができます。
 
 **Azure ポータルの使用**
-- 左側のナビゲーション ページからサブスクリプションを選択し、サブスクリプション ID をコピーします。
+
+* 左側のナビゲーション ページからサブスクリプションを選択し、サブスクリプション ID をコピーします。
 
 **Azure CLI の使用**
-- 「```azure account list```」と入力し、サブスクリプション ID をコピーします。
+
+* 「```azure account list```」と入力し、サブスクリプション ID をコピーします。
 
 「`docker-machine create --driver azure`」と入力し、オプションとその既定値を表示します。[Docker の Azure ドライバー ドキュメント](https://docs.docker.com/machine/drivers/azure/)で詳細を確認することもできます。
 
@@ -45,14 +47,13 @@ docker-machine create -d azure --azure-subscription-id <Your AZURE_SUBSCRIPTION_
 
 ## docker-machine で Docker ホストを選択する
 ホストの docker-machine に入力が行われていると、docker コマンドを実行する際に既定のホストを設定することができます。
-##PowerShell の使用
 
+## PowerShell の使用
 ```powershell
 docker-machine env MyDockerHost | Invoke-Expression 
 ```
 
-##Bash の使用
-
+## Bash の使用
 ```bash
 eval $(docker-machine env MyDockerHost)
 ```
@@ -65,7 +66,6 @@ docker info
 ```
 
 ## コンテナーを実行する
-
 ホストを構成すると、単純な Web サーバーを実行して、ホストが正しく構成されているかどうかをテストすることができます。ここでは標準の nginx イメージを使用し、ポート 80 で待機することと、ホスト VM の再起動時にコンテナーも再起動することを指定します (`--restart=always`)。
 
 ```bash
@@ -87,7 +87,6 @@ Status: Downloaded newer image for nginx:latest
 ```
 
 ## コンテナーをテストする
-
 `docker ps` を利用し、実行中のコンテナーを調べます。
 
 ```bash
@@ -104,7 +103,7 @@ PS C:\> docker-machine ip MyDockerHost
 
 ![実行中の ngnix コンテナー](./media/vs-azure-tools-docker-machine-azure-config/nginxsuccess.png)
 
-##概要
+## 概要
 docker-machine を使用して、個々の Docker ホストの検証のために Azure に Docker ホストを簡単にプロビジョニングできます。コンテナーの運用ホスティングについては、「[Azure Container Service の概要](http://aka.ms/AzureContainerService)」を参照してください。
 
 Visual Studio を使用した .NET Core アプリケーションの開発については、「[Docker Tools for Visual Studio (Visual Studio 用 Docker ツール)](http://aka.ms/DockerToolsForVS)」を参照してください。

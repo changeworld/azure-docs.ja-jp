@@ -1,28 +1,32 @@
-<properties
-	pageTitle="Xamarin.Android 向け Mobile Services の使用 | Microsoft Azure"
-	writer="craigd"
-	description="Azure Mobile Services を Xamarin.Android アプリで使用する方法について説明します。"
-	documentationCenter="xamarin"
-	authors="lindydonna"
-	manager="dwrede"
-	editor=""
-	services="mobile-services"/>
+---
+title: Xamarin.Android 向け Mobile Services の使用 | Microsoft Docs
+writer: craigd
+description: Azure Mobile Services を Xamarin.Android アプリで使用する方法について説明します。
+documentationcenter: xamarin
+author: lindydonna
+manager: dwrede
+editor: ''
+services: mobile-services
 
-<tags
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-xamarin-android"
-	ms.devlang="dotnet"
-	ms.topic="hero-article"
-	ms.date="07/21/2016"
-	ms.author="donnam"/>
+ms.service: mobile-services
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-xamarin-android
+ms.devlang: dotnet
+ms.topic: hero-article
+ms.date: 07/21/2016
+ms.author: donnam
 
+---
 # <a name="getting-started"></a>Mobile Services の使用
+[!INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)] &nbsp;
+&nbsp;
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[!INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
 > このトピックの Mobile Apps バージョンについては、「[Xamarin.Android アプリの作成](../app-service-mobile/app-service-mobile-xamarin-android-get-started.md)」を参照してください。
+> 
+> 
 
 このチュートリアルでは、Azure Mobile Services を使用して Xamarin.Android アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。
 
@@ -30,7 +34,9 @@
 
 ビデオ: "Getting Started with Xamarin and Azure Mobile Services" (Xamarin と Azure モバイル サービスの使用)。Xamarin のデベロッパー エバンジェリスト Craig Dunn 氏 (再生時間: 10 分 05 秒)
 
-> [AZURE.VIDEO getting-started-with-xamarin-and-mobile-services]
+> [!VIDEO https://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Getting-Started-with-Xamarin-and-Windows-Azure-Mobile-Services/player]
+> 
+> 
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
@@ -40,75 +46,69 @@
 
 ダウンロードしたクイック スタート プロジェクトには、Xamarin.Android 向けの Azure Mobile Services コンポーネントが含まれています。このプロジェクトではバージョン 4.2 以降の Android をターゲットにしていますが、Mobile Services SDK ではバージョン 2.2 以降があれば問題ありません。
 
-> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5)を参照してください。
+> [!IMPORTANT]
+> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5)を参照してください。
+> 
+> 
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
-
-[AZURE.INCLUDE [mobile-services-create-new-service](../../includes/mobile-services-create-new-service.md)]
+[!INCLUDE [mobile-services-create-new-service](../../includes/mobile-services-create-new-service.md)]
 
 ## 新しい Xamarin.Android アプリを作成する
-
 モバイル サービスを作成したら、Azure クラシック ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリを変更して、モバイル サービスに接続することができます。
 
 ここでは、モバイル サービスに接続された新しい Xamarin.Android アプリを作成します。
 
-1.  [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
-
+1. [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **\[Xamarin.Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
-
-	![][6]
-
-	これにより、モバイル サービスに接続された Xamarin.Android アプリケーションを作成するための簡単な 3 つの手順が表示されます。
-
-	![][7]
-
+   
+    ![][6]
+   
+    これにより、モバイル サービスに接続された Xamarin.Android アプリケーションを作成するための簡単な 3 つの手順が表示されます。
+   
+    ![][7]
 3. **[TodoItem テーブルを作成する]** をクリックして、アプリケーション データを格納するテーブルを作成します。
-
 4. **[アプリをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。
-
-	これにより、モバイル サービスに接続する、_To do list_ サンプル アプリケーションのプロジェクトがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
+   
+    これにより、モバイル サービスに接続する、*To do list* サンプル アプリケーションのプロジェクトがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
 ## Android アプリを実行する
-
 このチュートリアルの最後に、新しいアプリケーションをビルドして実行します。
 
 1. 圧縮されたプロジェクト ファイルの保存場所を参照し、ファイルをコンピューター上に展開します。
-
 2. Xamarin Studio または Visual Studio で、**[File]**、**[Open]** の順にクリックし、サンプル ファイルを展開した場所を参照します。**XamarinTodoQuickStart.Android.sln** を選択して開きます。
-
 3. **[Run]** ボタンを押してプロジェクトをビルドし、アプリケーションを開始します。エミュレーターまたは接続されている USB デバイスを選択するよう求めるメッセージが表示されます。
-
-	> [AZURE.NOTE] プロジェクトを Android エミュレーターで実行できるようにするには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
-
-4. アプリケーションで、意味のあるテキスト (たとえば、「_チュートリアルの完了_」) を入力し、**[Add]** をクリックします。
-
-	![][10]
-
-	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
-
-	> [AZURE.NOTE]
-   	モバイル サービスにアクセスして ToDoActivity.cs C# ファイルにあるデータをクエリおよび挿入するコードを確認できます。
-
-6. [Azure クラシック ポータル]に戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
-
-	![][11]
-
-	これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
-
-	![][12]
+   
+   > [!NOTE]
+   > プロジェクトを Android エミュレーターで実行できるようにするには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
+   > 
+   > 
+4. アプリケーションで、意味のあるテキスト (たとえば、「*チュートリアルの完了*」) を入力し、**[Add]** をクリックします。
+   
+    ![][10]
+   
+    これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
+   
+   > [!NOTE]
+   > モバイル サービスにアクセスして ToDoActivity.cs C# ファイルにあるデータをクエリおよび挿入するコードを確認できます。
+   > 
+   > 
+5. [Azure クラシック ポータル]に戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
+   
+    ![][11]
+   
+    これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
+   
+    ![][12]
 
 ## <a name="next-steps"> </a>次のステップ
 クイック スタートはこれで完了です。Mobile Services で重要になるこれ以外の作業については、以下のトピックを参照してください。
 
 * [オフライン データの同期の使用] クイックスタートでオフライン データの同期を使用して、アプリの応答性と信頼性を高める方法について説明します。
-
 * [認証の使用] ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
-
 * [プッシュ通知の使用] アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-
-
-[AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
+[!INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
 [Getting started with Mobile Services]: #getting-started

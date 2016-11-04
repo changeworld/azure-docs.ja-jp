@@ -1,34 +1,35 @@
-<properties writer="kathydav" editor="tysonn" manager="timlt" />
+---
+writer: kathydav
+editor: tysonn
+manager: timlt
 
+{}
+
+---
 仮想マシンに接続されたデータ ディスクが不要になった場合、そのディスクは簡単に切断できます。そうすれば、ディスクは仮想マシンから削除されますが、ストレージからは削除されません。
 
 再びディスク上の既存のデータを使用する場合は、同じ仮想マシンや別の仮想マシンに再接続できます。
 
-> [AZURE.NOTE] オペレーティング システム ディスクをデタッチするには、最初に仮想マシンを削除する必要があります。
-
+> [!NOTE]
+> オペレーティング システム ディスクをデタッチするには、最初に仮想マシンを削除する必要があります。
+> 
+> 
 
 ## ディスクの特定
-
 ディスク名がわからない場合や、切断前にディスク名を確認する場合は、以下の手順に従ってください。
 
-
 1. [Azure クラシック ポータル](http://manage.windowsazure.com)にサインインします。
-
 2. **[Virtual Machines]**、仮想マシンの名前、**[ダッシュボード]** の順にクリックします。
-
 3. **[ディスク]** の表に、接続されているすべてのディスクの名前と種類が列挙されます。たとえば、次の画面には、仮想マシンのほか、オペレーティング システム (OS) ディスクとデータ ディスクが 1 つずつ示されています。
-
-	![Find data disk](./media/howto-detach-disk-windows-linux/FindDataDisks.png)
-
+   
+    ![Find data disk](./media/howto-detach-disk-windows-linux/FindDataDisks.png)
 
 ## ディスクの切断
-
 1. **[Virtual Machines]** をクリックし、切断するデータ ディスクのある仮想マシンをクリックして、**[ダッシュボード]** をクリックします。
-
 2. コマンド バーの **[ディスクの切断]** をクリックします。
-
 3. データ ディスクを選択し、チェック マークをクリックして切断します。
-
-	![Detach disk details](./media/howto-detach-disk-windows-linux/DetachDiskDetails.png)
+   
+    ![Detach disk details](./media/howto-detach-disk-windows-linux/DetachDiskDetails.png)
 
 ディスクはストレージに残りますが、仮想マシンからは切断されています。
+

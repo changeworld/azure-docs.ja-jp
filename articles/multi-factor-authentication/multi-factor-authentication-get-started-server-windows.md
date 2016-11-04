@@ -1,42 +1,34 @@
-<properties 
-	pageTitle="Windows 認証と Azure Multi-Factor Authentication Server"
-	description="これは、Windows 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtand"/>
+---
+title: Windows 認証と Azure Multi-Factor Authentication Server
+description: これは、Windows 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtand
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # Windows 認証と Azure Multi-Factor Authentication Server
-
 Windows 認証セクションでは、管理者が 1 つ以上のアプリケーションで Windows 認証を有効にして構成できます。Windows 認証を設定する前に考慮する必要がある点の一覧を次に示します。
 
--  ターミナル サービスで Azure Multi-Factor Authentication を有効にするには再起動が必要です。
--  [Multi-Factor Authentication のユーザー照合が必要] ボックスがオンになっており、ユーザーがユーザー一覧にいない場合、再起動後にマシンにログインできません。
--  信頼できる IP は、アプリケーションが認証付きのクライアント IP を提供できるかどうかに依存します。現在はターミナル サービスのみがサポートされます。
+* ターミナル サービスで Azure Multi-Factor Authentication を有効にするには再起動が必要です。
+* [Multi-Factor Authentication のユーザー照合が必要] ボックスがオンになっており、ユーザーがユーザー一覧にいない場合、再起動後にマシンにログインできません。
+* 信頼できる IP は、アプリケーションが認証付きのクライアント IP を提供できるかどうかに依存します。現在はターミナル サービスのみがサポートされます。
 
-
-
-
-
-
-
->[AZURE.NOTE]この機能は Windows Server 2012 R2 上のターミナル サービスのセキュリティを保護しません。
-
-
-
+> [!NOTE]
+> この機能は Windows Server 2012 R2 上のターミナル サービスのセキュリティを保護しません。
+> 
+> 
 
 ## Windows 認証を使用してアプリケーションを保護するには、次の手順に従います。
-
 1. Azure Multi-Factor Authentication Server で、[Windows 認証] アイコン ![Windows 認証](./media/multi-factor-authentication-get-started-server-windows/windowsauth.png) をクリックします。
 2. [Windows 認証を有効にする] チェック ボックスをオンにします。既定では、このボックスはオフになっています。
 3. [アプリケーション] タブでは、管理者が Windows 認証を使用する 1 つ以上のアプリケーションを構成できます。

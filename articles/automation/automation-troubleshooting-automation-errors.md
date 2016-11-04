@@ -1,30 +1,28 @@
-<properties
-   pageTitle="Azure Automation のエラー処理 | Microsoft Azure"
-   description="この記事では、Azure Automation の一般的なエラーをトラブルシューティングして修正するための基本的なエラー処理手順について説明します。"
-   services="automation"
-   documentationCenter=""
-   authors="mgoedtel"
-   manager="stevenka"
-   editor="tysonn"
-   tags="top-support-issue"
-   keywords="Automation エラー, エラー処理"/>
-<tags
-   ms.service="automation"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/06/2016"
-   ms.author="sngun; v-reagie"/>
+---
+title: Azure Automation のエラー処理 | Microsoft Docs
+description: この記事では、Azure Automation の一般的なエラーをトラブルシューティングして修正するための基本的なエラー処理手順について説明します。
+services: automation
+documentationcenter: ''
+author: mgoedtel
+manager: stevenka
+editor: tysonn
+tags: top-support-issue
+keywords: Automation エラー, エラー処理
 
+ms.service: automation
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 07/06/2016
+ms.author: sngun; v-reagie
+
+---
 # Azure Automation の一般的なエラーを処理するためのヒント
-
 この記事では、Azure Automation を使用する際に発生する一般的なエラーについて説明し、実行できるエラー処理手順を提案します。
 
-## Azure Automation Runbook の使用時に発生する認証エラーをトラブルシューティングする  
-
+## Azure Automation Runbook の使用時に発生する認証エラーをトラブルシューティングする
 ### シナリオ: Azure アカウントにサインインできない
-
 **エラー:**
 Add-AzureAccount コマンドレットまたは Login-AzureRmAccount コマンドレットの使用時に「Unknown\_user\_type: Unknown User Type (未知のユーザー タイプ)」というエラーが発生します。
 
@@ -35,20 +33,16 @@ Add-AzureAccount コマンドレットまたは Login-AzureRmAccount コマン�
 次の手順で原因を突き止めます。
 
 1. Azure に接続するために使用する Automation 資格情報資産名で、**@** 文字などの特殊文字が使用されていないことを確認します。
-
 2. ローカル PowerShell ISE エディターで、Azure Automation に保存されているユーザー名とパスワードを使用できることを確認します。その際、PowerShell ISE で次のコマンドレットを実行します。
-
+   
         $Cred = Get-Credential  
         #Using Azure Service Management   
         Add-AzureAccount –Credential $Cred  
         #Using Azure Resource Manager  
         Login-AzureRmAccount –Credential $Cred
-
 3. ローカルで認証に失敗した場合、Azure Active Directory 資格情報が正しく設定されていないことになります。Azure Active Directory アカウントを正しく設定する方法については、「[Authenticating to Azure using Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)」 (Azure Active Directory を使用して Azure を認証する) というブログ投稿を参照してください。
 
-
 ### シナリオ: Azure サブスクリプションが見つかりません
-
 **エラー:**
 Select-AzureSubscription コマンドレットまたは Select-AzureRmSubscription コマンドレットの使用時に「The subscription named ``<subscription name>`` cannot be found (<サブスクリプション名> という名前のサブスクリプションが見つかりません)」というエラーが発生します。
 
@@ -59,14 +53,12 @@ Select-AzureSubscription コマンドレットまたは Select-AzureRmSubscripti
 Azure で正しく認証され、選択しようとしているサブスクリプションにアクセスできることを次の手順で確認します。  
 
 1. **Select-AzureSubscription**コマンドレットを実行する前に **Add-AzureAccount** を実行していることを確認します。
-
 2. それでもエラー メッセージが表示される場合は、**Add-AzureAccount** コマンドレットの後ろに **Get-AzureSubscription** コマンドレットを追加するというコードの変更を行った後、そのコードを実行します。Get-AzureSubscription の出力にサブスクリプション詳細が含まれることを確認します。
-    * 出力にサブスクリプション詳細が含まれない場合、サブスクリプションが初期化されていません。
-    * 出力にサブスクリプション詳細が含まれる場合は、**Select-AzureSubscription** コマンドレットで正しいサブスクリプション名または ID を使用していることを確認します。
-
+   
+   * 出力にサブスクリプション詳細が含まれない場合、サブスクリプションが初期化されていません。
+   * 出力にサブスクリプション詳細が含まれる場合は、**Select-AzureSubscription** コマンドレットで正しいサブスクリプション名または ID を使用していることを確認します。
 
 ### シナリオ: 多要素認証が有効になっているために Azure に対する認証が失敗した
-
 **エラー:**
 Azure のユーザー名とパスワードで Azure に対して認証するとき、「Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is required (強力な認証記録 (確認) が必要です)」というエラーが発生します。
 
@@ -74,13 +66,10 @@ Azure のユーザー名とパスワードで Azure に対して認証すると�
 Azure アカウントに多要素認証を設定している場合、Azure に対する認証に Azure Active Directory ユーザーを使うことはできません。代わりに、証明書またはサービス プリンシパルを利用して Azure に対して認証する必要があります。
 
 **トラブルシューティングのヒント:**
-Azure Service Management コマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](./resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](./resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
-
+Azure Service Management コマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
 
 ## Runbook の使用時に発生する一般的なエラーをトラブルシューティングする
-
 ### シナリオ: 逆シリアル化されたオブジェクトであるため、Runbook が失敗する
-
 **エラー:**
 Runbook が失敗し、「Cannot bind parameter ``<ParameterName>``.Cannot convert the ``<ParameterType>`` value of type Deserialized ``<ParameterType>`` to type ``<ParameterType>`` (パラメーター <パラメーター名> をバインドできません。逆シリアル化型 <パラメーター型> の値 <パラメーター値> を型 <パラメーター型> に変換できません)」というエラーが発生します。
 
@@ -92,12 +81,9 @@ Runbook が PowerShell ワークフローの場合、ワークフローが中断
 
 1. コマンドレット間で複雑なオブジェクトをパイプ処理する場合、これらのコマンドレットを InlineScript でラップします。
 2. オブジェクト全体を渡すのではなく、複雑なオブジェクトから、必要な名前または値を渡します。
-
 3. PowerShell ワークフロー Runbook ではなく PowerShell Runbook を使用します。
 
-
 ### シナリオ: 割り当てられたクォータを超えているために Runbook ジョブが失敗した
-
 **エラー:**
 Runbook ジョブが失敗し、「The quota for the monthly total job run time has been reached for this subscription (このサブスクリプションの毎月の合計ジョブ実行時間のクォータに到達しました)」というエラーが発生します。
 
@@ -112,9 +98,7 @@ Runbook ジョブが失敗し、「The quota for the monthly total job run time 
 3. **[設定]**、**[価格レベルと使用状況]**、**[価格レベル]** の順に選択します。
 4. **[価格レベルの選択]** ブレードで、**[Basic]** を選択します。
 
-
 ### シナリオ: Runbook の実行時にコマンドレットが認識されない
-
 **エラー:**
 Runbook ジョブが失敗し、「``<cmdlet name>``: The term ``<cmdlet name>`` is not recognized as the name of a cmdlet, function, script file, or operable program (<コマンドレット名> という用語はコマンドレット、関数、スクリプト ファイル、操作可能プログラムとして認識されません)」というエラーが発生します。
 
@@ -124,56 +108,40 @@ Runbook ジョブが失敗し、「``<cmdlet name>``: The term ``<cmdlet name>``
 **トラブルシューティングのヒント:**
 次の解決策のいずれでもこの問題は解決されます。
 
-- コマンドレット名を正しく入力していることを確認します。
-
-- Automation アカウントにコマンドレットが存在し、競合がないことを確認します。コマンドレットの存在を確認するには、Runbook を編集モードで開き、ライブラリで見つけるコマンドレットを検索し、**Get-Command ``<CommandName>``** を実行します。コマンドレットがアカウントで利用できることと他のコマンドレットや Runbook と名前が競合しないことを確認したら、それをキャンバスに追加し、Runbook に設定されている有効なパラメーターを使用していることを確認します。
-
-- 名前が競合し、コマンドレットが 2 つの異なるモジュールで利用できる場合、コマンドレットの完全修飾名を利用することで解決できます。たとえば、**ModuleName\\CmdletName** を使用できます。
-
-- ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュール/コマンドレットがハイブリッド worker をホストしているコンピューターにインストールされていることを確認します。
-
+* コマンドレット名を正しく入力していることを確認します。
+* Automation アカウントにコマンドレットが存在し、競合がないことを確認します。コマンドレットの存在を確認するには、Runbook を編集モードで開き、ライブラリで見つけるコマンドレットを検索し、**Get-Command ``<CommandName>``** を実行します。コマンドレットがアカウントで利用できることと他のコマンドレットや Runbook と名前が競合しないことを確認したら、それをキャンバスに追加し、Runbook に設定されている有効なパラメーターを使用していることを確認します。
+* 名前が競合し、コマンドレットが 2 つの異なるモジュールで利用できる場合、コマンドレットの完全修飾名を利用することで解決できます。たとえば、**ModuleName\\CmdletName** を使用できます。
+* ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュール/コマンドレットがハイブリッド worker をホストしているコンピューターにインストールされていることを確認します。
 
 ### シナリオ: Runbook を長時間実行するといつも次の例外で失敗する: ジョブは同じチェックポイントから繰り返し削除されたため、実行を継続できません。
-
 **エラーの理由:**
 これは Azure Automation 内のプロセスの "フェア シェア" 監視のための設計による動作です。3 時間以上実行している Runbook は自動的に中断されます。ただし、返されるエラー メッセージでは "次" のオプションは提供されません。さまざまな理由から Runbook は中断されることがあります。ほとんどの場合、中断はエラーのために発生します。たとえば、Runbook のキャッチされない例外、ネットワーク障害、Runbook を実行している Runbook Worker でのクラッシュなどはすべて、Runbook が中断する原因になり、再開時には最後のチェックポイントから開始します。
 
 **トラブルシューティングのヒント:**
 この問題を回避するための解決策では、ワークフローでのチェックポイントを使用します。詳細については、「[PowerShell ワークフローについての説明](automation-powershell-workflow.md#Checkpoints)」を参照してください。"フェア シェア" およびチェックポイントの詳細については、ブログ記事「[Using Checkpoints in Runbooks](https://azure.microsoft.com/ja-JP/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/)」 (Runbook でのチェックポイントの使用) を参照してください。
 
-
 ## モジュールのインポート時の共通エラーをトラブルシューティングする
-
 ### シナリオ: モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない
-
 **エラー:**
 モジュールがインポートに失敗するか、成功してもコマンドレットが抽出されません。
 
 **エラーの理由:**
 モジュールが正常に Azure Automation にインポートできない一般的な理由には次が考えられます。
 
-- 構造が Automation で必要とされる構造と一致しません。
-
-- Automation アカウントにデプロイされていない別のモジュールにモジュールが依存しています。
-
-- モジュールのフォルダーにその依存関係がありません。
-
-- モジュールのアップロードに **New-AzureRmAutomationModule** コマンドレットを使用していますが、完全なストレージ パスを与えていないか、公共でアクセスできる URL でモジュールを読み込んでいません。
+* 構造が Automation で必要とされる構造と一致しません。
+* Automation アカウントにデプロイされていない別のモジュールにモジュールが依存しています。
+* モジュールのフォルダーにその依存関係がありません。
+* モジュールのアップロードに **New-AzureRmAutomationModule** コマンドレットを使用していますが、完全なストレージ パスを与えていないか、公共でアクセスできる URL でモジュールを読み込んでいません。
 
 **トラブルシューティングのヒント:**  
 次の解決策のいずれでもこの問題は解決されます。  
 
-- モジュールの形式が次のようになっていることを確認します。ModuleName.Zip **->** モジュール名またはバージョン番号 **->** (ModuleName.psm1、ModuleName.psd1)
+* モジュールの形式が次のようになっていることを確認します。ModuleName.Zip **->** モジュール名またはバージョン番号 **->** (ModuleName.psm1、ModuleName.psd1)
+* .psd1 ファイルを開き、モジュールに依存関係があるかどうかを確認します。依存関係がある場合、それらのモジュールを Automation アカウントにアップロードします。
+* 参照される .dll がモジュール フォルダーにあることを確認します。
 
-- .psd1 ファイルを開き、モジュールに依存関係があるかどうかを確認します。依存関係がある場合、それらのモジュールを Automation アカウントにアップロードします。
-
-- 参照される .dll がモジュール フォルダーにあることを確認します。
-
-
-## Desired State Configuration (DSC) の使用時に発生する一般的なエラーをトラブルシューティングする  
-
+## Desired State Configuration (DSC) の使用時に発生する一般的なエラーをトラブルシューティングする
 ### シナリオ: ノードが "失敗" 状態になり、"見つかりませんでした" というエラーが表示される
-
 **エラー:**
 ノードが **Failed** 状態になり、「The attempt to get the action from server https://``<url>``//accounts/``<account-id>``/Nodes(AgentId=``<agent-id>``)/GetDscAction failed because a valid configuration ``<guid> cannot be found (サーバー <url> <アカウント ID> <エージェント ID> <guid> が見つからないため、サーバーからアクションを取得する試みが失敗しました)」というエラーが発生します。
 
@@ -182,15 +150,13 @@ Runbook ジョブが失敗し、「``<cmdlet name>``: The term ``<cmdlet name>``
 
 **トラブルシューティングのヒント:**  
 
-- ノードに "構成名" ではなく、"ノード構成名" が割り当てられていることを確認してください。
-
-- ノード構成は、Azure ポータルまたは PowerShell コマンドレットを使用してノードに割り当てることができます。
-    - Azure ポータルを使用してノードにノード構成を割り当てるには、**[DSC ノード]** ブレードを開き、ノードを選択し、**[ノード構成の割り当て]** ボタンをクリックします。
-    - PowerShell コマンドレットを使用してノードにノード構成を割り当てるには、**Set-AzureRmAutomationDscNode** コマンドレットを使用します。
-
+* ノードに "構成名" ではなく、"ノード構成名" が割り当てられていることを確認してください。
+* ノード構成は、Azure ポータルまたは PowerShell コマンドレットを使用してノードに割り当てることができます。
+  
+  * Azure ポータルを使用してノードにノード構成を割り当てるには、**[DSC ノード]** ブレードを開き、ノードを選択し、**[ノード構成の割り当て]** ボタンをクリックします。
+  * PowerShell コマンドレットを使用してノードにノード構成を割り当てるには、**Set-AzureRmAutomationDscNode** コマンドレットを使用します。
 
 ### シナリオ: 構成のコンパイルを実行しても、ノード構成 (MOF ファイル) が生成されなかった
-
 **エラー:**
 DSC のコンパイル ジョブが中断され、「Compilation completed successfully, but no node configuration .mofs were generated (コンパイルは正常に完了しましたが、ノード構成 .mof は生成されませんでした)」というエラーが表示されます。
 
@@ -200,12 +166,10 @@ DSC 構成の **Node** キーワードに続く式の評価結果が $null の�
 **トラブルシューティングのヒント:**  
 次の解決策のいずれでもこの問題は解決されます。  
 
-- 構成定義内の **Node** キーワードに続く式の評価結果が $null になっていないことを確認します。
-- 構成のコンパイル時に ConfigurationData を渡す場合は、[ConfigurationData](automation-dsc-compile.md#configurationdata) から、構成に必要な期待値を渡すようにしてください。
-
+* 構成定義内の **Node** キーワードに続く式の評価結果が $null になっていないことを確認します。
+* 構成のコンパイル時に ConfigurationData を渡す場合は、[ConfigurationData](automation-dsc-compile.md#configurationdata) から、構成に必要な期待値を渡すようにしてください。
 
 ### シナリオ: DSC ノードのレポートが "処理中" の状態で停止する
-
 **エラー:**
 DSC エージェントによって、「No instance found with given property values. (指定されたプロパティ値のインスタンスが見つかりません)」と出力されます。
 
@@ -215,9 +179,7 @@ WMF のバージョンをアップグレードした結果、WMI が破損して
 **トラブルシューティングのヒント:**
 この問題を解決するには、[DSC の既知の問題と制限](https://msdn.microsoft.com/powershell/wmf/limitation_dsc)に関するブログ投稿にある手順に従ってください。
 
-
 ### シナリオ: DSC 構成で資格情報が使用できない
-
 **エラー:**
 DSC コンパイル ジョブが中断され、「System.InvalidOperationException error processing property 'Credential' of type ``<some resource name>``: Converting and storing an encrypted password as plaintext is allowed only if PSDscAllowPlainTextPassword is set to true (<リソース名> の 'Credential' プロパティの処理中に System.InvalidOperationException エラーが発生しました。暗号化されたパスワードを変換してプレーン テキストとして格納することが許可されるのは、PSDscAllowPlainTextPassword が true に設定されている場合だけです)」というエラーが表示されます。
 
@@ -225,19 +187,15 @@ DSC コンパイル ジョブが中断され、「System.InvalidOperationExcepti
 構成に資格情報を使用したが、ノード構成ごとに **PSDscAllowPlainTextPassword** を true に設定するための適切な **ConfigurationData** を指定していませんでした。
 
 **トラブルシューティングのヒント:**  
-- 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。詳細については、[Azure Automation DSC の資産](automation-dsc-compile.md#assets)に関するページをご覧ください。
 
+* 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。詳細については、[Azure Automation DSC の資産](automation-dsc-compile.md#assets)に関するページをご覧ください。
 
 ## 次のステップ
-
 上記のトラブルシューティング手順に従ったが、この記事の何らかの点でさらにサポートが必要な場合、次の手段をご利用ください。
 
-- Azure エキスパートに支援を要請する。[MSDN の Azure フォーラムまたは Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)に問題を投稿してください。
-
-- Azure サポート インシデントを送信する。[Azure サポート サイト](https://azure.microsoft.com/support/options/) にアクセスし、**[テクニカル/課金サポート]** の **[サポートの要求]** をクリックしてください。
-
-- Azure Automation Runbook ソリューションや統合モジュールを探している場合は、[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)にスクリプトの要求を投稿することができます。
-
-- Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](https://feedback.azure.com/forums/34192--general-feedback) にお寄せください。
+* Azure エキスパートに支援を要請する。[MSDN の Azure フォーラムまたは Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)に問題を投稿してください。
+* Azure サポート インシデントを送信する。[Azure サポート サイト](https://azure.microsoft.com/support/options/) にアクセスし、**[テクニカル/課金サポート]** の **[サポートの要求]** をクリックしてください。
+* Azure Automation Runbook ソリューションや統合モジュールを探している場合は、[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)にスクリプトの要求を投稿することができます。
+* Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](https://feedback.azure.com/forums/34192--general-feedback) にお寄せください。
 
 <!---HONumber=AcomDC_0713_2016-->

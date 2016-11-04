@@ -1,30 +1,31 @@
 
-<properties
-	pageTitle="複数のレコメンデーションの一括取得: Machine Learning Recommendations API | Microsoft Azure"
-	description="Azure Machine Learning Recommendations - 複数のレコメンデーションの一括取得"
-	services="cognitive-services"
-	documentationCenter=""
-	authors="luiscabrer"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: '複数のレコメンデーションの一括取得: Machine Learning Recommendations API | Microsoft Docs'
+description: Azure Machine Learning Recommendations - 複数のレコメンデーションの一括取得
+services: cognitive-services
+documentationcenter: ''
+author: luiscabrer
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="cognitive-services"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/17/2016"
-	ms.author="luisca"/>
+ms.service: cognitive-services
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/17/2016
+ms.author: luisca
 
+---
 # 複数のレコメンデーションの一括取得
-
->[AZURE.NOTE] 複数のレコメンデーションを一括で取得することは、レコメンデーションを 1 件ずつ取得するよりも難易度の高い作業です。1 つの要求でレコメンデーションを取得する方法に関する推奨事項については、API を確認してください。
-
+> [!NOTE]
+> 複数のレコメンデーションを一括で取得することは、レコメンデーションを 1 件ずつ取得するよりも難易度の高い作業です。1 つの要求でレコメンデーションを取得する方法に関する推奨事項については、API を確認してください。
+> 
 > [Item-to-Item レコメンデーション](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3d4)<br> [User-to-Item レコメンデーション](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3dd)
->
+> 
 > バッチ スコアリングが正しく機能するのは、2016 年 7 月 21 日より後に作成されたビルドだけです。
-
+> 
+> 
 
 複数のアイテムのレコメンデーションを一度に取得しなければならない場合があります。たとえば何かの都合で、レコメンデーションのキャッシュを作成したり、取得するレコメンデーションの種類に関する分析を行ったりするときです。
 
@@ -32,16 +33,15 @@
 
 その具体的な手順は次のとおりです。
 
-1.	Azure Storage コンテナーを作成します (まだ存在しない場合)。
-2.	個々のレコメンデーション要求を記述した入力ファイルを Azure BLOB ストレージにアップロードします。
-3.	スコアリング バッチ ジョブを開始します。
-4.	非同期操作の完了を待機します。
-5.	操作が完了したら、BLOB ストレージから結果を収集します。
+1. Azure Storage コンテナーを作成します (まだ存在しない場合)。
+2. 個々のレコメンデーション要求を記述した入力ファイルを Azure BLOB ストレージにアップロードします。
+3. スコアリング バッチ ジョブを開始します。
+4. 非同期操作の完了を待機します。
+5. 操作が完了したら、BLOB ストレージから結果を収集します。
 
 以上の各手順を個別に見ていきましょう。
 
 ## Storage コンテナーを作成する (まだ存在しない場合)
-
 [Azure ポータル](https://portal.azure.com)に移動し、ストレージ アカウントをお持ちでない場合は新しいストレージ アカウントを作成します。そのためには、**[新規]**、**[データ** + **ストレージ]**、**[ストレージ アカウント]** の順に移動します。
 
 ストレージ アカウントの準備が整ったら、バッチ実行の入力と出力の保存場所となる BLOB コンテナーを作成する必要があります。
@@ -68,7 +68,6 @@
 ご覧のように、このファイルは JSON 形式になっています。個々の要求には、レコメンデーション要求を送信するうえで必要な情報が記述されています。満たすべき要求に関して同様の JSON ファイルを作成し、先ほど Blob Storage に作成したコンテナーにそれをコピーします。
 
 ## バッチ ジョブを開始する
-
 次の手順は、新しいバッチ ジョブの送信です。詳細については、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/)を確認してください。
 
 入力ファイルや出力ファイル、エラー ファイルの保存先は、API の要求本文で定義する必要があります。また、それらの場所にアクセスするために必要な資格情報も定義する必要があります。加えてバッチ全体に適用するいくつかのパラメーターを指定する必要があります (要求するレコメンデーションの種類、使用するモデル/ビルド、1 回の呼び出しで取得する結果の件数など)。
@@ -106,18 +105,14 @@
 
 注意すべき重要な点がいくつかあります。
 
--	現在 **authenticationType** は必ず **PublicOrSas** に設定する必要があります。
-
--	Blob Storage アカウントからの読み取りと Blob Storage アカウントへの書き込みを Recommendations API に許可するためには、Shared Access Signature (SAS) トークンを取得する必要があります。SAS トークンを生成する方法の詳細については、[Recommendations API](../storage/storage-dotnet-shared-access-signature-part-1.md) に関するページを参照してください。
-
--	現在サポートされている **apiName** は **ItemRecommend** のみです。アイテムとアイテムの結び付きに基づく Item-to-Item レコメンデーションに使用されます。バッチ処理では現在、User-to-Item レコメンデーションはサポートされていません。
+* 現在 **authenticationType** は必ず **PublicOrSas** に設定する必要があります。
+* Blob Storage アカウントからの読み取りと Blob Storage アカウントへの書き込みを Recommendations API に許可するためには、Shared Access Signature (SAS) トークンを取得する必要があります。SAS トークンを生成する方法の詳細については、[Recommendations API](../storage/storage-dotnet-shared-access-signature-part-1.md) に関するページを参照してください。
+* 現在サポートされている **apiName** は **ItemRecommend** のみです。アイテムとアイテムの結び付きに基づく Item-to-Item レコメンデーションに使用されます。バッチ処理では現在、User-to-Item レコメンデーションはサポートされていません。
 
 ## 非同期操作が終了するまで待機します。
-
 バッチ操作を開始すると、その操作を追跡するうえで必要な情報を伝える Operation-Location ヘッダーが応答で返されます。バッチ操作の追跡には、ビルド操作を追跡するときと同様、[Retrieve Operation Status API](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3da) を使用します。
 
 ## 結果を取得する
-
 操作が完了したら (エラーが発生しなかった場合)、出力 Blob Storage から結果を収集することができます。
 
 出力は、次の例のようになります。簡潔にするために、この例では 2 つの要求のみから成るバッチの結果を示しています。
@@ -194,8 +189,7 @@
 
 
 ## 制限事項について
-
--	一度に呼び出すことのできるバッチ ジョブは各サブスクリプションにつき 1 つだけです。
--	バッチ ジョブの入力ファイルは 2 MB 以下にする必要があります。
+* 一度に呼び出すことのできるバッチ ジョブは各サブスクリプションにつき 1 つだけです。
+* バッチ ジョブの入力ファイルは 2 MB 以下にする必要があります。
 
 <!---HONumber=AcomDC_0914_2016-->

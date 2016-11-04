@@ -1,33 +1,32 @@
-<properties 
-	pageTitle="Azure Active Directory と Visual Studio 接続済みサービスの概要 (MVC プロジェクト) | Microsoft Azure" 
-	description="Visual Studio 接続済みサービスを使用して Azure Active Directory を接続または作成した後に、MVC プロジェクトで Azure AD の使用を開始する方法について説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="TomArcher" 
-	manager="douge" 
-	editor=""/>
-  
-<tags 
-	ms.service="active-directory" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/15/2016" 
-	ms.author="tarcher"/>
+---
+title: Azure Active Directory と Visual Studio 接続済みサービスの概要 (MVC プロジェクト) | Microsoft Docs
+description: Visual Studio 接続済みサービスを使用して Azure Active Directory を接続または作成した後に、MVC プロジェクトで Azure AD の使用を開始する方法について説明します。
+services: active-directory
+documentationcenter: ''
+author: TomArcher
+manager: douge
+editor: ''
 
+ms.service: active-directory
+ms.workload: web
+ms.tgt_pltfrm: vs-getting-started
+ms.devlang: na
+ms.topic: article
+ms.date: 08/15/2016
+ms.author: tarcher
+
+---
 # Azure Active Directory と Visual Studio 接続済みサービスの概要 (MVC プロジェクト)
+> [!div class="op_single_selector"]
+> * [作業の開始](vs-active-directory-dotnet-getting-started.md)
+> * [変更内容](vs-active-directory-dotnet-what-happened.md)
+> 
+> 
 
-> [AZURE.SELECTOR]
-> - [作業の開始](vs-active-directory-dotnet-getting-started.md)
-> - [変更内容](vs-active-directory-dotnet-what-happened.md)
- 
-##コントローラーへのアクセスに対して認証を要求する 
-
+## コントローラーへのアクセスに対して認証を要求する
 プロジェクトに含まれるすべてのコントローラーには、**Authorize** 属性が設定されています。この属性により、ユーザーがこれらのコントローラーにアクセスする際に認証が求められます。これらのコントローラーに匿名でアクセスできるようにするには、コントローラーからこの属性を削除します。より細かなレベルでアクセス許可を設定するには、コントローラー クラスではなく、認証を必要とするそれぞれのメソッドに対してこの属性を割り当てます。
- 
-##SignIn/SignOut コントロールを追加する 
 
+## SignIn/SignOut コントロールを追加する
 ビューに SignIn/SignOut コントロールを追加するには、**\_LoginPartial.cshtml** 部分ビューを使用してこの機能をいずれかのビューに追加します。この機能を標準 **\_Layout.cshtml** ビューに追加した例を次に示します。(div class="navbar-collapse collapse" の最後の要素にご注目ください):
 
 <pre>

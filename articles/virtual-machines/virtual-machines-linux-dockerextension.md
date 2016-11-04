@@ -1,41 +1,37 @@
-<properties
-   pageTitle="Azure での Docker VM 拡張機能について | Microsoft Azure"
-   description="Docker VM 拡張機能を使用して、Azure で Docker 環境をすばやく安全にデプロイする方法を説明します。"
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""/>
+---
+title: Azure での Docker VM 拡張機能について | Microsoft Docs
+description: Docker VM 拡張機能を使用して、Azure で Docker 環境をすばやく安全にデプロイする方法を説明します。
+services: virtual-machines-linux
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure"
-   ms.date="10/10/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 10/10/2016
+ms.author: iainfou
 
-
+---
 # <a name="using-the-docker-vm-extension-to-deploy-your-environment"></a>Docker VM 拡張機能を使用した環境のデプロイ
-
 Docker は一般的なコンテナー管理およびイメージング プラットフォームで、Linux (および Windows) 上のコンテナーを簡単に操作できます。 Azure を使用すると、ニーズに合ったいくつかの方法で Docker を柔軟にデプロイできます。
 
-- アプリのプロトタイプを迅速に作成する場合、 [Docker マシン Azure ドライバーを使用](./virtual-machines-linux-docker-machine.md) して、Azure 内で Docker ホストをデプロイできます。
-- テンプレート ベースのデプロイでは、Azure 仮想マシンの Docker VM 拡張機能を使用します。 この方法では、Azure Resource Manager テンプレートのデプロイと統合することができ、ロール ベースのアクセス、診断、デプロイ後の構成など、関連するあらゆるメリットが得られます。
-- Docker VM 拡張機能では、Docker Compose もサポートしています。 Docker Compose は、宣言型 YAML ファイルを使用して、開発者が構築したアプリケーションを環境全体で有効にして、一貫性のあるデプロイを生成します。
-- Swarm が提供する追加のスケジュール設定および管理ツールを使用する実稼働レベルのスケーラブルなデプロイを実行するために、 [Azure コンテナー サービスに完全な Docker Swarm クラスターをデプロイ](../container-service/container-service-deployment.md) することもできます。
+* アプリのプロトタイプを迅速に作成する場合、 [Docker マシン Azure ドライバーを使用](virtual-machines-linux-docker-machine.md) して、Azure 内で Docker ホストをデプロイできます。
+* テンプレート ベースのデプロイでは、Azure 仮想マシンの Docker VM 拡張機能を使用します。 この方法では、Azure Resource Manager テンプレートのデプロイと統合することができ、ロール ベースのアクセス、診断、デプロイ後の構成など、関連するあらゆるメリットが得られます。
+* Docker VM 拡張機能では、Docker Compose もサポートしています。 Docker Compose は、宣言型 YAML ファイルを使用して、開発者が構築したアプリケーションを環境全体で有効にして、一貫性のあるデプロイを生成します。
+* Swarm が提供する追加のスケジュール設定および管理ツールを使用する実稼働レベルのスケーラブルなデプロイを実行するために、 [Azure コンテナー サービスに完全な Docker Swarm クラスターをデプロイ](../container-service/container-service-deployment.md) することもできます。
 
 この記事では、Resource Manager テンプレートを使用して、実稼働レベルの定義されたカスタム環境で Docker VM 拡張機能をデプロイする方法を説明します。
 
 ## <a name="azure-docker-vm-extension-for-template-deployments"></a>テンプレートのデプロイ用 Azure Docker VM 拡張機能
-
 Azure Docker VM 拡張機能では、Linux 仮想マシンで Docker デーモン、Docker クライアント、Docker Compose をインストールして構成します。 この拡張機能は、Docker Compose を使用してコンテナー アプリケーションを定義し、デプロイするためにも使用します。 Docker マシンの使用や Docker ホストの自作について制御を強化することができるので、堅牢性に優れた開発者環境や運用環境に適しています。
 
 Azure Resource Manager を使用すると、環境の全体構造を定義するテンプレートを作成してデプロイすることができます。 テンプレートを使用すると、Docker ホスト、ストレージ、ロール ベースのアクセス制御 (RBAC)、診断などを定義できます。そのメリットについて詳しくは、[Resource Manager](../resource-group-overview.md) およびテンプレートに関する記事をご覧ください。 Resource Manager テンプレートを使用すると、将来必要に応じてデプロイを再現することもできます。
 
 ## <a name="deploy-a-template-with-the-docker-vm-extension:"></a>Docker VM 拡張機能を使用したテンプレートのデプロイ:
-
 それでは、既存のクイック スタート テンプレートを使用して、Docker VM 拡張機能がインストールされた Ubuntu VM をデプロイしてみましょう。 テンプレートは、「[Simple deployment of an Ubuntu VM with Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)」(Docker を使用した Ubuntu VM の簡単なデプロイ) で確認できます。 また、Resource Manager モードの[最新の Azure CLI](../xplat-cli-install.md) (`azure config mode arm`) も必要です。
 
 新しいリソース グループ (ここでは `myDockerResourceGroup`) の名前とテンプレート URI を指定して、Azure CLI を使ってテンプレートをデプロイします。
@@ -106,7 +102,6 @@ info:    vm show command OK
 
 出力の末尾付近にある `FQDN` は、指定したドメイン名と選択した場所に基づく完全修飾ドメイン名を示しています。 この FQDN は、後の手順で VM に SSH 接続する際に使用するものです。
 
-
 ## <a name="deploy-your-first-nginx-container"></a>最初の nginx コンテナーのデプロイ
 デプロイが完了したら、デプロイ時に指定した DNS 名を使用して、SSH で新しい Docker ホストに接続します。
 
@@ -148,7 +143,6 @@ b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute 
 Docker デーモン TCP ポートやセキュリティを構成したり、Docker Compose を使ってコンテナーをデプロイすることができます。 詳細については、 [Docker GitHub プロジェクト用の Azure 仮想マシン拡張機能](https://github.com/Azure/azure-docker-extension/)に関するページを参照してください。
 
 ## <a name="docker-vm-extension-json-template-reference"></a>Docker VM 拡張機能の JSON テンプレート リファレンス
-
 この例では、クイック スタート テンプレートを使用しました。 独自の Resource Manager テンプレートを使用して Azure Docker VM 拡張機能をデプロイするには、次の JSON を追加します。
 
 ```
@@ -174,15 +168,12 @@ Docker デーモン TCP ポートやセキュリティを構成したり、Docke
 Resource Manager テンプレートの使用方法の詳細については、「 [Azure Resource Manager の概要](../resource-group-overview.md)
 
 ## <a name="next-steps"></a>次のステップ
-
 さまざまなデプロイのオプションの詳細な手順をご確認ください。
 
-1. [Docker マシンと Azure ドライバーを使用する](./virtual-machines-linux-docker-machine.md)  
-2. [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](./virtual-machines-linux-classic-cli-use-docker.md)  
+1. [Docker マシンと Azure ドライバーを使用する](virtual-machines-linux-docker-machine.md)  
+2. [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](virtual-machines-linux-classic-cli-use-docker.md)  
 3. [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する](virtual-machines-linux-docker-compose-quickstart.md)
-3. [Azure コンテナー サービス クラスターのデプロイ](../container-service/container-service-deployment.md)
-
-
+4. [Azure コンテナー サービス クラスターのデプロイ](../container-service/container-service-deployment.md)
 
 <!--HONumber=Oct16_HO2-->
 

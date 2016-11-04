@@ -1,105 +1,85 @@
-<properties
-    pageTitle="Unity Roll a Ball tutorial"
-    description="Steps to create the classic Unity Roll a Ball game which is a pre-requisite for all Mobile Engagement Unity tutorials"
-    services="mobile-engagement"
-    documentationCenter="mobile"
-    authors="piyushjo"
-    manager="erikre"
-    editor="" />
+---
+title: Unity Roll a Ball tutorial
+description: Steps to create the classic Unity Roll a Ball game which is a pre-requisite for all Mobile Engagement Unity tutorials
+services: mobile-engagement
+documentationcenter: mobile
+author: piyushjo
+manager: erikre
+editor: ''
 
-<tags
-    ms.service="mobile-engagement"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="08/19/2016"
-    ms.author="piyushjo" />
+ms.service: mobile-engagement
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 08/19/2016
+ms.author: piyushjo
 
-
-#<a name="<a-id="unity-roll-a-ball"></a>create-unity-roll-a-ball-game"></a><a id="unity-roll-a-ball"></a>Create Unity Roll a Ball game
-
+---
+# <a name="<a-id="unity-roll-a-ball"></a>create-unity-roll-a-ball-game"></a><a id="unity-roll-a-ball"></a>Create Unity Roll a Ball game
 This tutorial walks through the main steps for a slightly modified [Unity Roll a Ball tutorial](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial). This sample game consists of a spherical 'player' object which is controlled by the app user and the objective of the game is to 'collect' collectible objects by colliding the player object with these collectible objects. This assumes basic familiarity with Unity editor environment. If you run into any issues then you should refer to the full tutorial. 
 
 ### <a name="setting-up-the-game"></a>Setting up the game
 The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/set-up?playlist=17141)
 
 1. Open **Unity Editor** and click **New**. 
-    
+   
     ![][51] 
-    
 2. Provide a **Project name** & **Location**, select **3D** and click **Create project**.
-    
+   
     ![][52]
-
 3. Save the default scene just created as part of the new project as with the name **MiniGame** within a new **\_Scenes** folder under **Assets** folder:
-    
+   
     ![][53]
-
 4. Create a **3D Object -> Plane** as the playing field and rename this plane object as **Ground**
-
+   
     ![][1]
-
 5. Reset the transform component for this **Ground** object so that it is at the Origin. 
-
+   
     ![][3]
-
 6. Uncheck **Show Grid** from **Gizmos menu** for the **Ground** object.
-
+   
     ![][4]
-
 7. Update the **Scale** component for the **Ground** object to be [X = 2,Y = 1, Z = 2]. 
-
+   
     ![][5]
-
 8. Add a new **3D Object -> Sphere** to the project and rename this sphere object as **Player**. 
-
+   
     ![][6]
-
 9. Select the **Player** object and click **Reset Transform** similar to the Plane object. 
-
 10. Update **Transform -> Position -> Y Coordinate** component for the Player Y as 0.5.  
-
+    
     ![][7]
-
 11. Create a new folder called **Materials** in the project where we will create the material to color the player. 
-
 12. Create a new **Material** called **Background** in this folder. 
-
+    
     ![][8]
-
 13. Update the color of the material by updating the **Albedo** property of it. You can select the RGB values of [0,32,64]. 
-
+    
     ![][9]
-
 14. Drag this material into the scene view to apply color to the **Ground** object. 
-
+    
     ![][10]
-
-17. Finally update the **Transform -> Rotation -> Y** to 60 on the Directional Light object for clarity. 
-
+15. Finally update the **Transform -> Rotation -> Y** to 60 on the Directional Light object for clarity. 
+    
     ![][12]
 
 ### <a name="moving-the-player"></a>Moving the player
 The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-player?playlist=17141)
 
 1. Add a **RigidBody** component to the **Player** object. 
-
+   
     ![][13]
-
 2. Create a new folder called **Scripts** in the Project. 
-
 3. Click **Add Component-> New Script -> C# Script**. Name it **PlayerController**, and click **Create and Add**. This will create and attach a script to the Player object.  
-
+   
     ![][14]
-
-5. Move this script under the **Scripts** folder in the project. 
-
-6. Open the script for editing in your favorite script editor, update the script code with the following code and save it. 
-
+4. Move this script under the **Scripts** folder in the project. 
+5. Open the script for editing in your favorite script editor, update the script code with the following code and save it. 
+   
         using UnityEngine;
         using System.Collections;
-        
+   
         public class PlayerController : MonoBehaviour 
         {
             public float speed;
@@ -116,161 +96,140 @@ The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorial
                 rb.AddForce (movement * speed);
             }
         }
-    
-8. Note that the script above uses a **Speed** property. In the Unity editor, update the speed property to 10.  
-
+6. Note that the script above uses a **Speed** property. In the Unity editor, update the speed property to 10.  
+   
     ![][15]
-
-9. Hit **Play** in the Unity Editor. Now you should be able to control the ball using the keyboard and it should rotate and move around. 
+7. Hit **Play** in the Unity Editor. Now you should be able to control the ball using the keyboard and it should rotate and move around. 
 
 ### <a name="moving-the-camera"></a>Moving the camera
 The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-camera?playlist=17141) and will tie the **Main Camera** to the **Player** object. 
 
 1. Update the **Transform.Position** to be X = 0,  Y = 10.5, Z=-10.  
 2. Update the **Transform.Rotation** to be X = 45, Y = 0, Z = 0.  
-
+   
     ![][16]
-
-2. Add a new script called **CameraController** to the **MainCamera** and move it under the Scripts folder. 
-
+3. Add a new script called **CameraController** to the **MainCamera** and move it under the Scripts folder. 
+   
     ![][17]
-
-3. Open up the script for editing and add the following code in it:
-
+4. Open up the script for editing and add the following code in it:
+   
         using UnityEngine;
         using System.Collections;
-        
+   
         public class CameraController : MonoBehaviour {
-        
+   
             public GameObject player;
-        
+   
             private Vector3 offset;
-        
+   
             void Start ()
             {
                 offset = transform.position - player.transform.position;
             }
-            
+   
             void LateUpdate ()
             {
                 transform.position = player.transform.position + offset;
             }
         }
-    
 5. In Unity environment - drag the Player variable into the Player slot for the Main Camera object so that the two are associated with one another. 
-
+   
     ![][18]
-
 6. Now if you hit Play in the Unity editor and rotate the Player Ball object then you will see the Camera following it in the movement.  
 
 ### <a name="setting-up-the-play-area"></a>Setting up the Play area
 The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/setting-up-the-play-area?playlist=17141). We will create the Walls surrounding the Ground so that the Player Ball object doesn't drop off the play area in its movement. 
 
 1. Click **Create -> Create Empty -> Game Object** and name it **Walls**
-
+   
     ![][19]
-
 2. Under this Walls object - create a new **3D Object -> Cube** and name it "West wall". 
-
+   
     ![][20]
-
 3. Update the **Transform -> Position** and **Transform -> Scale** for this West Wall object. 
-
+   
     ![][21]
-
 4. Duplicate the West wall to create an **East wall** with the updated transform position and scale. 
-
+   
     ![][22]
-
 5. Duplicate the East wall to create a **North wall** with the updated transform position & scale. 
-
+   
     ![][23]
-
 6. Duplicate the North wall and create a **South wall** with the updated transform position & scale. 
-
+   
     ![][24]
 
 ### <a name="creating-collectible-objects"></a>Creating Collectible objects
 The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/creating-collectables?playlist=17141). We will create some attractive looking objects which will form the set of collectible objects which the Player Ball object needs to 'collect' by colliding with them. 
 
 1. Create a new **3D Cube object** and name it Pickup. 
-
 2. Adjust the **Transform -> Rotation** & **Transform -> Scale** of the Pickup object. 
-
+   
     ![][25]
-
 3. Create and attach a **new C# Script** called **Rotator** to the Pickup object. Make sure to put the script under the Scripts folder. 
-
+   
     ![][26]
-
 4. Open this script for editing and update it to be the following: 
-
+   
         using UnityEngine;
         using System.Collections;
-        
+   
         public class Rotator : MonoBehaviour {
-        
+   
             void Update () 
             {
                 transform.Rotate (new Vector3 (15, 30, 45) * Time.deltaTime);
             }
         }
-
 5. Now hit the Play mode in the Unity Editor and your Pickup object show be rotating on its axis.
-
 6. Create a new folder called **Prefabs** 
-
+   
     ![][27]
-
 7. Drag the **Pickup** object and put it in the Prefabs folder.
-
+   
     ![][28]
-
 8. Create a new **Empty Game object** called **Pickups**. Reset its position to origin and then drag the Pickup object under this game object.  
-
+   
     ![][29]
-
 9. Duplicate the **Pickup** object and spread it on the **Ground** object around the **Player** object by updating the **Transform.Position's X & Z** values appropriately. 
-
+   
     ![][30]
-
 10. Create a **new material** called **Pickup** and update it to be Red in color by updating the **Albedo property** similar to what we did for updating the Ground object. 
-
+    
     ![][31]
-
 11. Apply the material to all the 4 pickup objects.
-
+    
     ![][32]
 
 ### <a name="collecting-the-pickup-objects"></a>Collecting the Pickup objects
 The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/collecting-pick-up-objects?playlist=17141). We will update the Player so that it is able to 'collect' the pickup objects by colliding with them. 
 
 1. Open up the **PlayerController** script attached to the Player object for editing and update it to the following:  
-
+   
         using UnityEngine;
         using System.Collections;
-        
+   
         public class PlayerController : MonoBehaviour {
-        
+   
             public float speed;
-        
+   
             private Rigidbody rb;
-        
+   
             void Start ()
             {
                 rb = GetComponent<Rigidbody>();
             }
-        
+   
             void FixedUpdate ()
             {
                 float moveHorizontal = Input.GetAxis ("Horizontal");
                 float moveVertical = Input.GetAxis ("Vertical");
-        
+   
                 Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-        
+   
                 rb.AddForce (movement * speed);
             }
-        
+   
             void OnTriggerEnter(Collider other) 
             {
                 if (other.gameObject.CompareTag ("Pick Up"))
@@ -279,29 +238,23 @@ The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorial
                 }
             }
         }
-
 2. Create a new **Tag** called **Pick Up** (it must match what is in the script)  
-
+   
     ![][33]
-    
+   
     ![][34]
-
 3. Apply this **Tag** to the Prefab Pickup object. 
-
+   
     ![][35]
-
 4. Enable **IsTrigger** checkbox for the Prefab object.
-
+   
     ![][36]
-
 5. Add a Rigid body to Pickup Prefab object. For performance optimization we will update the static collider that we used to a Dynamic collider. 
-
+   
     ![][37]
-  
 6. Finally check the **IsKinematic** property for the prefab object. 
-
+   
     ![][38]
-
 7. Hit **Play** in the Unity editor and you will be able to play this **Roll a Ball** game by moving the Player object using your keyboard keys for direction input. 
 
 ### <a name="updating-the-game-for-mobile-play"></a>Updating the game for mobile play
@@ -362,18 +315,18 @@ This tutorial concludes a basic game creation with Unity and you can deploy this
 [52]: ./media/mobile-engagement-unity-roll-a-ball/new-project-properties.png
 [53]: ./media/mobile-engagement-unity-roll-a-ball/save-scene.png
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

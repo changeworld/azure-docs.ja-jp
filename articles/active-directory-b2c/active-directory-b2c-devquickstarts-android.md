@@ -1,26 +1,40 @@
-<properties
-	pageTitle="Azure Active Directory B2C: Android アプリケーションから Web API を呼び出す | Microsoft Azure"
-	description="この記事では、OAuth 2.0 ベアラー トークンを使用して Node.js Web API を呼び出す Android の ";To-Do List"; アプリを作成する方法について説明します。Android アプリと Web API は、どちらも Azure Active Directory B2C を使用してユーザー ID を管理し、ユーザーを認証します。"
-	services="active-directory-b2c"
-	documentationCenter="android"
-	authors="brandwe"
-	manager="msmbaldwin"
-	editor=""/>
+---
+title: 'Azure Active Directory B2C: Android アプリケーションから Web API を呼び出す | Microsoft Docs'
+description: 'この記事では、OAuth 2.0 ベアラー トークンを使用して Node.js Web API を呼び出す Android の '
+;to-do: ''
+list";: ''
+アプリを作成する方法について説明します。android: ''
+アプリと: ''
+web: ''
+api: ''
+は、どちらも: ''
+azure: ''
+active: ''
+directory: ''
+b2c: ''
+を使用してユーザー: ''
+id: ''
+を管理し、ユーザーを認証します。": ''
+services: active-directory-b2c
+documentationcenter: android
+author: brandwe
+manager: msmbaldwin
+editor: ''
 
-<tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="mobile-android"
-	ms.devlang="java"
-	ms.topic="article"
-	ms.date="07/22/2016"
-	ms.author="brandwe"/>
+ms.service: active-directory-b2c
+ms.workload: identity
+ms.tgt_pltfrm: mobile-android
+ms.devlang: java
+ms.topic: article
+ms.date: 07/22/2016
+ms.author: brandwe
 
+---
 # Azure AD B2C: Android アプリケーションから Web API を呼び出す
-
-> [AZURE.WARNING] このチュートリアルには、重要な更新をいくつか加える必要があり、特に B2C 用の ADAL Android の使用についての記述は削除する必要があります。Android アプリで Azure AD B2C を使用する方法について、最新版の手順の公開を来週に予定しているため、それまでお待ちいただくことをお勧めします。ただし、単にいろいろな方法を試したいという場合でしたら、このまま以下の記事にお進みください。
-
-
+> [!WARNING]
+> このチュートリアルには、重要な更新をいくつか加える必要があり、特に B2C 用の ADAL Android の使用についての記述は削除する必要があります。Android アプリで Azure AD B2C を使用する方法について、最新版の手順の公開を来週に予定しているため、それまでお待ちいただくことをお勧めします。ただし、単にいろいろな方法を試したいという場合でしたら、このまま以下の記事にお進みください。
+> 
+> 
 
 Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順で Android アプリや Web API に追加できます。この記事では、OAuth 2.0 ベアラー トークンを使用して Node.js Web API を呼び出す Android の "To-Do List" アプリを作成する方法を示します。Android アプリと Web API は、どちらも Azure AD B2C を使用してユーザー ID を管理し、ユーザーを認証します。
 
@@ -28,77 +42,77 @@ Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサ
 
 保護されたリソースにアクセスする必要がある Android クライアントに対しては、Azure AD は Active Directory 認証ライブラリ (ADAL) を提供します。ADAL の唯一の目的は、アプリがアクセス トークンを容易に取得できるようにすることです。それがどれほど簡単であるかを示すために、このガイドで、次を実行する Android To-Do List アプリケーションを作成します。
 
-- [OAuth 2.0 認証プロトコル](https://msdn.microsoft.com/library/azure/dn645545.aspx)を使用して To-Do List API を呼び出すためのアクセス トークンを取得します。
-- ユーザーの To-Do List を取得します。
-- ユーザーをサインアウトします。
+* [OAuth 2.0 認証プロトコル](https://msdn.microsoft.com/library/azure/dn645545.aspx)を使用して To-Do List API を呼び出すためのアクセス トークンを取得します。
+* ユーザーの To-Do List を取得します。
+* ユーザーをサインアウトします。
 
-> [AZURE.NOTE] この記事では、Azure AD B2C を使用してサインイン、サインアップ、プロファイルの管理を実装する方法については説明しません。ユーザーが認証された後の Web API の呼び出し方法を中心に説明します。まだ Azure AD B2C の基本を理解していない場合は、[.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)で学習してください。
+> [!NOTE]
+> この記事では、Azure AD B2C を使用してサインイン、サインアップ、プロファイルの管理を実装する方法については説明しません。ユーザーが認証された後の Web API の呼び出し方法を中心に説明します。まだ Azure AD B2C の基本を理解していない場合は、[.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)で学習してください。
+> 
+> 
 
 ## Azure AD B2C ディレクトリの取得
-
 Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリを作成](active-directory-b2c-get-started.md)してください。
 
 ## アプリケーションの作成
-
 次に、B2C ディレクトリにアプリを作成する必要があります。これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。ここでは、アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、アプリと Web API が 1 つの論理アプリを構成するためです。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従います。次を行ってください。
 
-- アプリケーションに **Web アプリ**または **Web API** を含めます。
-- **[応答 URL]** に「`urn:ietf:wg:oauth:2.0:oob`」と入力します。これはこのサンプル コードで使用する既定の URL です。
-- アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。この情報は後で必要になります。この値は、使用する前に [XML エスケープ](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape)する必要があることに注意してください。
-- アプリに割り当てられた**アプリケーション ID** をコピーしておきます。この情報も後で必要になります。
+* アプリケーションに **Web アプリ**または **Web API** を含めます。
+* **[応答 URL]** に「`urn:ietf:wg:oauth:2.0:oob`」と入力します。これはこのサンプル コードで使用する既定の URL です。
+* アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。この情報は後で必要になります。この値は、使用する前に [XML エスケープ](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape)する必要があることに注意してください。
+* アプリに割り当てられた**アプリケーション ID** をコピーしておきます。この情報も後で必要になります。
 
-[AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
+[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## ポリシーの作成
-
-[AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
+[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 Azure AD B2C では、すべてのユーザー エクスペリエンスが[ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。このアプリには、3 つの ID エクスペリエンス (サインアップ、サインイン、および Facebook を使用したサインイン) が含まれています。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
 
-- サインアップ ポリシーで、**表示名**と他のサインアップ属性を選択します。
-- すべてのポリシーで、アプリケーション要求として**表示名**と**オブジェクト ID** を選択します。その他のクレームも選択できます。
-- ポリシーの作成後、各ポリシーの**名前**をコピーしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名は後で必要になります。
+* サインアップ ポリシーで、**表示名**と他のサインアップ属性を選択します。
+* すべてのポリシーで、アプリケーション要求として**表示名**と**オブジェクト ID** を選択します。その他のクレームも選択できます。
+* ポリシーの作成後、各ポリシーの**名前**をコピーしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名は後で必要になります。
 
-[AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
+[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 3 つのポリシーを作成した後は、いつでもアプリをビルドできます。
 
 この記事では、作成したポリシーの使用方法については説明しません。ポリシーが Azure AD B2C でどのように機能するかを学習する場合は、「[Azure AD B2C プレビュー: .NET Web アプリケーションを構築する](active-directory-b2c-devquickstarts-web-dotnet.md)」から始めてください。
 
 ## コードのダウンロード
-
 このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android) で管理されています。[スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android/archive/skeleton.zip)し、手順に従ってサンプルを構築できます。スケルトンを複製することもできます。
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-Android.git
 ```
 
-> [AZURE.NOTE] **このチュートリアルを完了するには、スケルトンをダウンロードする必要があります。** 完全に機能する Android アプリケーションを実装するのは複雑な作業であるため、スケルトンには、チュートリアルを完了した後で実行される UX コードが含まれています。これは、開発者の時間を短縮するための手段です。UX コードは、B2C を Android アプリケーションに追加する方法のトピックと完全には連動していません。
+> [!NOTE]
+> **このチュートリアルを完了するには、スケルトンをダウンロードする必要があります。** 完全に機能する Android アプリケーションを実装するのは複雑な作業であるため、スケルトンには、チュートリアルを完了した後で実行される UX コードが含まれています。これは、開発者の時間を短縮するための手段です。UX コードは、B2C を Android アプリケーションに追加する方法のトピックと完全には連動していません。
+> 
+> 
 
 また、完成済みのアプリも、[.zip ファイルとして入手する](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android/archive/complete.zip)か、同じリポジトリの `complete` ブランチで入手できます。
 
 Maven を使用して構築するために、最上位レベルで `pom.xml` を使用することができます。
 
-  1. [「Setting up maven environment for Android (Android の Maven 環境のセットアップ)」の「Prerequisites (前提条件)」](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android)の手順に従います。
-  2. SDK 21 でエミュレーターをセットアップします。
-  3. リポジトリを複製したルート フォルダーに移動します。
-  4. コマンド `mvn clean install` を実行します。
-  5. ディレクトリをクイック スタート サンプル `cd samples\hello` に変更します。
-  6. コマンド `mvn android:deploy android:run` を実行します。
+1. [「Setting up maven environment for Android (Android の Maven 環境のセットアップ)」の「Prerequisites (前提条件)」](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android)の手順に従います。
+2. SDK 21 でエミュレーターをセットアップします。
+3. リポジトリを複製したルート フォルダーに移動します。
+4. コマンド `mvn clean install` を実行します。
+5. ディレクトリをクイック スタート サンプル `cd samples\hello` に変更します。
+6. コマンド `mvn android:deploy android:run` を実行します。
 
 アプリが起動します。テスト ユーザー資格情報を入力して試行します。
 
 Android Archive (AAR) パッケージに加え、Java Archive (JAR) パッケージも送信されます。
 
 ## Android ADAL をダウンロードして Android Studio ワークスペースに追加する
-
 Android プロジェクトでこのライブラリを使用する方法にはオプションがあります。
 
 * ソース コードを使用してライブラリを Eclipse にインポートし、アプリケーションにリンクできます。
 * Android Studio を使用する場合は、AAR パッケージ形式を使用し、バイナリを参照します。
 
 ### オプション 1: Gradle 経由のバイナリ (推奨)
-
 Maven 中央リポジトリからバイナリを取得できます。AAR パッケージは、次のようにして Android Studio でプロジェクトに含めることができます (例: `build.gradle`)。
 
 ```gradle
@@ -120,7 +134,6 @@ dependencies {
 ```
 
 ### オプション 2. Maven 経由の AAR
-
 Eclipse で `pom.xml` プラグインを使用する場合、`m2e` ファイルで次のように依存関係を指定できます。
 
 ```xml
@@ -133,7 +146,6 @@ Eclipse で `pom.xml` プラグインを使用する場合、`m2e` ファイル�
 ```
 
 ### オプション 3: Git 経由のソース (最終手段として)
-
 SDK のソース コードを Git 経由で取得するには、次のように入力します。
 
     git clone git@github.com:AzureAD/azure-activedirectory-library-for-android.git
@@ -142,7 +154,6 @@ SDK のソース コードを Git 経由で取得するには、次のように�
 ブランチの**収束**を利用します。
 
 ## 構成ファイルを設定する
-
 先ほど B2C ポータルでセットアップした構成を使用し、Android プロジェクトを構成します。
 
 `helpes/Constants.java` を開き、次のように値を入力します。
@@ -188,18 +199,20 @@ public class Constants {
 
 
 ```
-- `SCOPES`: ユーザーのサインイン時にサーバーから要求し、サーバーに渡すスコープ。B2C プレビューでは、`client_id` を渡します。ただし、これは今後、`read scopes` に変更される予定です。このドキュメントはその時点で更新されます。
-- `ADDITIONAL_SCOPES`: アプリケーションで使用できるその他のスコープ。将来的に使用されることが見込まれています。
-- `CLIENT_ID`: ポータルから取得したアプリケーション ID。
-- `REDIRECT_URL`: トークンが戻されるリダイレクト先。
-- `EXTRA_QP`: URL エンコード形式でサーバーに渡す追加のパラメーター。
-- `FB_POLICY`: 呼び出すポリシー。このチュートリアルで最も重要な部分です。
-- `EMAIL_SIGNIN_POLICY`: 呼び出すポリシー。このチュートリアルで最も重要な部分です。
-- `EMAIL_SIGNUP_POLICY`: 呼び出すポリシー。このチュートリアルで最も重要な部分です。
+* `SCOPES`: ユーザーのサインイン時にサーバーから要求し、サーバーに渡すスコープ。B2C プレビューでは、`client_id` を渡します。ただし、これは今後、`read scopes` に変更される予定です。このドキュメントはその時点で更新されます。
+* `ADDITIONAL_SCOPES`: アプリケーションで使用できるその他のスコープ。将来的に使用されることが見込まれています。
+* `CLIENT_ID`: ポータルから取得したアプリケーション ID。
+* `REDIRECT_URL`: トークンが戻されるリダイレクト先。
+* `EXTRA_QP`: URL エンコード形式でサーバーに渡す追加のパラメーター。
+* `FB_POLICY`: 呼び出すポリシー。このチュートリアルで最も重要な部分です。
+* `EMAIL_SIGNIN_POLICY`: 呼び出すポリシー。このチュートリアルで最も重要な部分です。
+* `EMAIL_SIGNUP_POLICY`: 呼び出すポリシー。このチュートリアルで最も重要な部分です。
 
 ## プロジェクトに Android ADAL への参照を追加する
-
-> [AZURE.NOTE]	ADAL for Android は、インテント ベースのモデルを使用して認証を呼び出します。インテントは、アプリの橋渡し的役割を果たします。このサンプル全体とすべての ADAL for Android では、インテントを管理し、インテントの間で情報を渡す方法に重点が置かれています。
+> [!NOTE]
+> ADAL for Android は、インテント ベースのモデルを使用して認証を呼び出します。インテントは、アプリの橋渡し的役割を果たします。このサンプル全体とすべての ADAL for Android では、インテントを管理し、インテントの間で情報を渡す方法に重点が置かれています。
+> 
+> 
 
 最初に、使用するインテントを含む、アプリケーションのレイアウトを Android に伝えます。これらのインテントについては、このチュートリアルの後半で詳しく説明します。
 
@@ -262,14 +275,13 @@ public class Constants {
 
 ご覧のように、5 つのアクティビティを定義します。これらすべてを使用します。
 
-- `AuthenticationActivity`: これは ADAL からのアクティビティであり、サインイン Web ビューを提供します。
-- `LoginActivity`: サインイン ポリシーと各ポリシーのボタンを表示します。
-- `SettingsActivity`: これを使用して、実行時にアプリ設定を変更します。
-- `AddTaskActivity`: これを使用して、Azure AD で保護されている REST API にタスクを追加します。
-- `ToDoActivity`: これはタスクを表示するメイン アクティビティです。
+* `AuthenticationActivity`: これは ADAL からのアクティビティであり、サインイン Web ビューを提供します。
+* `LoginActivity`: サインイン ポリシーと各ポリシーのボタンを表示します。
+* `SettingsActivity`: これを使用して、実行時にアプリ設定を変更します。
+* `AddTaskActivity`: これを使用して、Azure AD で保護されている REST API にタスクを追加します。
+* `ToDoActivity`: これはタスクを表示するメイン アクティビティです。
 
 ## サインイン アクティビティを作成する
-
 メイン アクティビティを作成し、それを `LoginActivity` と呼ぶことにしましょう。
 
 `LoginActivity.java` という名前でファイルを作成します。
@@ -358,7 +370,6 @@ public class LoginActivity extends Activity {
 これで (トークンが必要なときに ADAL を呼び出す) `ToDoActivity` インテントを呼び出すボタンが作成されました。その際、参照と追加パラメーターとしてアクティビティを利用します。この追加パラメーターは、`intent.putExtra()` メソッドで渡します。`Constants.java` で指定したものを使用して、`"thePolicy"` を定義します。これで認証時に呼び出すポリシーがインテントに伝えられます。
 
 ## 設定アクティビティを作成する
-
 これは設定 UI の内容を作成するアクティビティです。
 
 単純な CRUD (create, read, update, and delete/作成、読み取り、更新と削除) 操作のために `SettingsActivity.java` という名前のファイルを作成します。
@@ -383,17 +394,17 @@ import com.microsoft.aad.taskapplication.helpers.Constants;
  */
 public class SettingsActivity extends Activity {
 
-	//private CheckBox checkboxAskBroker, checkboxCheckBroker;
+    //private CheckBox checkboxAskBroker, checkboxCheckBroker;
     private Switch fullScreenSwitch;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_settings);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
 
         loadSettings();
-//		checkboxAskBroker = (CheckBox) findViewById(R.id.askInstall);
-//		checkboxCheckBroker = (CheckBox) findViewById(R.id.useBroker);
+//        checkboxAskBroker = (CheckBox) findViewById(R.id.askInstall);
+//        checkboxCheckBroker = (CheckBox) findViewById(R.id.useBroker);
 
         Button save = (Button) findViewById(R.id.settingsSave);
 
@@ -441,7 +452,7 @@ public class SettingsActivity extends Activity {
         });
 
 
-	}
+    }
 
     private void loadSettings() {
         TextView textView = (TextView)findViewById(R.id.authority);
@@ -469,18 +480,17 @@ public class SettingsActivity extends Activity {
         fullScreenSwitch.setChecked(Constants.FULL_SCREEN);
     }
 
-	private void saveSettings(String key, boolean value) {
-		SharedPreferences prefs = SettingsActivity.this.getSharedPreferences(
-				Constants.SHARED_PREFERENCE_NAME, Activity.MODE_PRIVATE);
-		Editor prefsEditor = prefs.edit();
-		prefsEditor.putBoolean(key, value);
-		prefsEditor.commit();
-	}
+    private void saveSettings(String key, boolean value) {
+        SharedPreferences prefs = SettingsActivity.this.getSharedPreferences(
+                Constants.SHARED_PREFERENCE_NAME, Activity.MODE_PRIVATE);
+        Editor prefsEditor = prefs.edit();
+        prefsEditor.putBoolean(key, value);
+        prefsEditor.commit();
+    }
 }
 ```
 
 ## タスク追加アクティビティを作成する
-
 このアクティビティを使用し、REST API エンドポイントにタスクを追加できます。
 
 `AddTaskActivity.java` という名前のファイルを作成し、次を記述します。
@@ -531,7 +541,6 @@ public class AddTaskActivity extends Activity {
 ```
 
 ## To Do リスト アクティビティを作成します。
-
 これは最も重要なアクティビティです。これを利用してポリシーのトークンを Azure AD から取得し、そのトークンを利用してタスク REST API サーバーを呼び出すことができます。
 
 `ToDoActivity.java` という名前のファイルを作成し、次を記述します。(呼び出しについては後で説明します。)
@@ -726,22 +735,28 @@ public class ToDoActivity extends Activity {
 
 パラメーターの説明:
 
-  - `SCOPES`: 必須。要求しようとしているアクセスのスコープ。B2C プレビューの時点では `client_id` と同じですが、将来変更される予定です。
-  - `POLICY`: ユーザーを認証するときのポリシー。
-  - `CLIENT_ID`: 必須。Azure AD ポータルからのパラメーター。
-  - `redirectUri`: パッケージ名として設定可能。`acquireToken` 呼び出しの場合は、必須ではありません。
-  - `getUserInfo()`: ユーザーがキャッシュに入っているかどうかを調べる方法。このパラメーターはまた、ユーザーが見つからない場合やユーザーのアクセス トークンが無効になっている場合にユーザーに指示を促す方法も表します。このメソッドはこのガイドの後半で記述します。
-  - `PromptBehavior.always`: キャッシュと Cookie をスキップするための資格情報の入力を要求できます。
-  - `Callback`: 承認コードがトークンと交換された後に呼び出されます。アクセス トークン、有効期限、ID トークン情報が含まれるオブジェクト `AuthenticationResult` が含まれます。
+* `SCOPES`: 必須。要求しようとしているアクセスのスコープ。B2C プレビューの時点では `client_id` と同じですが、将来変更される予定です。
+* `POLICY`: ユーザーを認証するときのポリシー。
+* `CLIENT_ID`: 必須。Azure AD ポータルからのパラメーター。
+* `redirectUri`: パッケージ名として設定可能。`acquireToken` 呼び出しの場合は、必須ではありません。
+* `getUserInfo()`: ユーザーがキャッシュに入っているかどうかを調べる方法。このパラメーターはまた、ユーザーが見つからない場合やユーザーのアクセス トークンが無効になっている場合にユーザーに指示を促す方法も表します。このメソッドはこのガイドの後半で記述します。
+* `PromptBehavior.always`: キャッシュと Cookie をスキップするための資格情報の入力を要求できます。
+* `Callback`: 承認コードがトークンと交換された後に呼び出されます。アクセス トークン、有効期限、ID トークン情報が含まれるオブジェクト `AuthenticationResult` が含まれます。
 
-> [AZURE.NOTE]	Microsoft Intune のポータル サイト アプリでは、ブローカー コンポーネントを提供しています。そのアプリがユーザーのデバイスにインストールされている可能性があります。このアプリは、デバイス上のすべてのアプリケーションでシングル サインオン (SSO) アクセスを提供します。開発者は Intune を考慮に入れる必要があります。ADAL for Android は、Authenticator で作成されたユーザー アカウントが 1 つ存在する場合、ブローカー アカウントを使用します。ブローカーを使用するには、開発者がブローカー用に特殊な `redirectUri` を登録する必要があります。`redirectUri` の形式は msauth://packagename/Base64UrlencodedSignature になります。スクリプト `brokerRedirectPrint.ps1` か API 呼び出し `mContext.getBrokerRedirectUri()` を使用して、アプリの `redirectUri` を取得できます。署名は、Google Play ストアからの署名証明書に関連付けられています。
+> [!NOTE]
+> Microsoft Intune のポータル サイト アプリでは、ブローカー コンポーネントを提供しています。そのアプリがユーザーのデバイスにインストールされている可能性があります。このアプリは、デバイス上のすべてのアプリケーションでシングル サインオン (SSO) アクセスを提供します。開発者は Intune を考慮に入れる必要があります。ADAL for Android は、Authenticator で作成されたユーザー アカウントが 1 つ存在する場合、ブローカー アカウントを使用します。ブローカーを使用するには、開発者がブローカー用に特殊な `redirectUri` を登録する必要があります。`redirectUri` の形式は msauth://packagename/Base64UrlencodedSignature になります。スクリプト `brokerRedirectPrint.ps1` か API 呼び出し `mContext.getBrokerRedirectUri()` を使用して、アプリの `redirectUri` を取得できます。署名は、Google Play ストアからの署名証明書に関連付けられています。
+> 
+> 
 
  次のように指定してブローカー ユーザーをスキップできます。
 
     ```java
      AuthenticationSettings.Instance.setSkipBroker(true);
     ```
-> [AZURE.NOTE] この B2C クイック スタートを簡潔にする目的で、サンプル コードではローカーをスキップしています。
+> [!NOTE]
+> この B2C クイック スタートを簡潔にする目的で、サンプル コードではローカーをスキップしています。
+> 
+> 
 
 次に、タスク API の認証呼び出し中にトークンだけを取得するヘルパー メソッドを作成します。
 
@@ -776,7 +791,6 @@ public class ToDoActivity extends Activity {
 
 ```
 ## ユーザー ID を返すメソッドを作成する
-
 ADAL for Android は、`UserIdentifier` オブジェクトの形式でユーザーを表します。これはユーザーを管理します。このオブジェクトを使用し、同じユーザーが呼び出しで使用されているかどうかを確認できます。この情報を使用することで、サーバーを新しく呼び出す代わりに、キャッシュを利用できます。これを簡単にするために、`UserIdentifier` を返す `getUserInfo()` メソッドを作成しました。これは `acquireToken()` で使用できます。キャッシュで `UserIdentifier` の ID を返す `getUniqueId()` メソッドも作成しました。
 
 ```
@@ -799,7 +813,6 @@ ADAL for Android は、`UserIdentifier` オブジェクトの形式でユーザ�
 ```
 
 ### ヘルパー メソッドを記述する
-
 次に、Cookie を消去し、`AuthenticationCallback` を提供するヘルパー メソッドをいくつか記述します。これらのメソッドはサンプル目的のみで使用され、`ToDo` アクティビティの呼び出し時に Cookie が消去されている状態にします。
 
 同じ `ToDoActivity.java` という名前のファイルで、次を記述します。
@@ -824,7 +837,6 @@ ADAL for Android は、`UserIdentifier` オブジェクトの形式でユーザ�
 ```   
 
 ## タスク API を呼び出す
-
 アクティビティでトークンを受け取る用意ができたら、タスク サーバーにアクセスする API を記述します。
 
 `getTasks` により、サーバー内のタスクを表す配列が与えられます。
@@ -874,7 +886,6 @@ ADAL for Android は、`UserIdentifier` オブジェクトの形式でユーザ�
 このコードが機能するためには、他にもいくつかのメソッドが必要になります。次にこれらを記述します。
 
 ### エンドポイント URL ジェネレーターを作成する
-
 接続先となるエンドポイント URL を生成する必要があります。同じクラス ファイルでこの処理を行います。
 
 **同じ `ToDoActivity.java` という名前のファイル**で、次を記述します。
@@ -896,7 +907,6 @@ ADAL for Android は、`UserIdentifier` オブジェクトの形式でユーザ�
 次のセクションで説明するコードで要求にアクセス トークンを追加します。
 
 ## UX メソッドを作成する
-
 Android でアプリを動作させるためには、いくつかのコールバックを処理する必要があります。それは `createAndShowDialog` と `onResume()` です。以前に Android コードを記述した経験があれば、これはなじみのある措置です。
 
 同じ `ToDoActivity.java` という名前のファイルで、次を記述します。
@@ -949,7 +959,6 @@ Android でアプリを動作させるためには、いくつかのコールバ
 コンパイル可能な `ToDoActivity.java` ファイルが完成しました。この時点で、プロジェクト全体もコンパイルできます。
 
 ## サンプル アプリを実行する
-
 最後に、構築したアプリを Android Studio または Eclipse で実行します。アプリにサインアップするか、サインインします。サインインしたユーザーのタスクを作成します。サインアウトし、別のユーザーとしてもう一度サインインし、そのユーザーのタスクを作成します。
 
 API でタスクがユーザーごとに保存されたことを確認します。これは API が受信したアクセス トークンからユーザーID を抽出したためです。
@@ -958,17 +967,13 @@ API でタスクがユーザーごとに保存されたことを確認します�
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-Android```
 
-
 ## 重要な情報
-
-
 ### 暗号化
-
 ADAL は、既定では `SharedPreferences` のトークンとストアを暗号化します。`StorageHelper` クラスを参照して、詳細を確認できます。Android には、秘密キーのセキュリティ保護された記憶域として **AndroidKeyStore for 4.3(API18)** が導入されています。ADAL はこの API18 以降を使用します。下位バージョンの SDK に ADAL を使用する場合は、`AuthenticationSettings.INSTANCE.setSecretKey` で秘密キーを提供する必要があります。
 
 ### Web ビューのセッション Cookie
-
 Android Web ビューは、アプリを閉じた後、セッションの Cookie をクリアしません。これは次のサンプル コードで処理できます。
+
 ```
 CookieSyncManager.createInstance(getApplicationContext());
 CookieManager cookieManager = CookieManager.getInstance();

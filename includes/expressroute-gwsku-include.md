@@ -2,11 +2,14 @@
 
 ExpressRoute の仮想ネットワーク ゲートウェイでは、次の SKU を使用できます。 
 
-- Standard
-- HighPerformance
-- UltraPerformance
+* Standard
+* HighPerformance
+* UltraPerformance
 
->[AZURE.IMPORTANT] 現在、ExpressRoute UltraPerformance ゲートウェイは、米国中西部と米国中央部で利用可能であり、シカゴとダラスにある ExpressRoute 回線にリンクさせることができます。 その他の Azure リージョンと ExpressRoute の場所は、今後数週間で利用可能になります。 
+> [!IMPORTANT]
+> 現在、ExpressRoute UltraPerformance ゲートウェイは、米国中西部と米国中央部で利用可能であり、シカゴとダラスにある ExpressRoute 回線にリンクさせることができます。 その他の Azure リージョンと ExpressRoute の場所は、今後数週間で利用可能になります。 
+> 
+> 
 
 <!--HONumber=Oct16_HO2-->
 

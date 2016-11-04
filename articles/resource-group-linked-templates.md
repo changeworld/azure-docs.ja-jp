@@ -1,29 +1,27 @@
-<properties
-   pageTitle="Resource Manager でのリンクされたテンプレート | Microsoft Azure"
-   description="Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。"
-   services="azure-resource-manager"
-   documentationCenter="na"
-   authors="tfitzmac"
-   manager="timlt"
-   editor="tysonn"/>
+---
+title: Resource Manager でのリンクされたテンプレート | Microsoft Docs
+description: Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。
+services: azure-resource-manager
+documentationcenter: na
+author: tfitzmac
+manager: timlt
+editor: tysonn
 
-<tags
-   ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/02/2016"
-   ms.author="tomfitz"/>
+ms.service: azure-resource-manager
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/02/2016
+ms.author: tomfitz
 
+---
 # Azure リソース マネージャーでのリンクされたテンプレートの使用
-
 1 つの Azure Resource Manager テンプレート内から別のテンプレートにリンクして、対象となる、目的に特化した一連のテンプレートにデプロイを分解することができます。アプリケーションを複数のコード クラスに分解する場合と同様に、分解すると、テスト、再利用、読みやすさの面でメリットがあります。
 
 メイン テンプレートからリンクされたテンプレートにパラメーターを渡すことができます。それらのパラメーターは、呼び出し元のテンプレートによって公開されているパラメーターまたは変数に直接マップできます。リンクされたテンプレートからソース テンプレートに出力変数を渡すこともできます。そのため、テンプレート間で双方向のデータ交換を行うことができます。
 
 ## テンプレートへのリンク
-
 2 つのテンプレート間のリンクを作成するには、リンク先のテンプレートを指すデプロイ リソースをメイン テンプレート内に追加します。**templateLink** プロパティを、リンク先のテンプレートの URI に設定します。リンクされたテンプレートのパラメーター値を指定するには、テンプレート内で値を直接指定するか、パラメーター ファイルにリンクします。次の例では、**parameters** プロパティを使用して、パラメーター値を直接指定しています。
 
     "resources": [ 
@@ -76,7 +74,6 @@ Resource Manager サービスは、リンクされたテンプレートにアク
 トークンがセキュリティで保護された文字列として渡された場合でも、SAS トークンを含むリンクされたテンプレートの URI が、リソース グループのデプロイ操作にログ記録されます。公開を制限するには、トークンの有効期限を設定します。
 
 ## パラメーター ファイルへのリンク
-
 次の例では、 **parametersLink** プロパティを使用して、パラメーター ファイルにリンク付けしています。
 
     "resources": [ 
@@ -101,7 +98,6 @@ Resource Manager サービスは、リンクされたテンプレートにアク
 リンクされたパラメーター ファイルの URI 値はローカル ファイルにすることはできず、**http** または **https** のいずれかを含む必要があります。パラメーター ファイルは SAS トークンを使ったアクセスに制限することができます。
 
 ## 変数を使用したテンプレートのリンク
-
 前の例では、URL の値をハード コーディングしてテンプレートをリンクする方法について説明しました。この方法は簡単なテンプレートには適していますが、モジュール構造の大規模な一連のテンプレートを使用する場合にはあまり適していません。その場合は、メイン テンプレートのベース URL を格納する静的変数を作成し、リンクされたテンプレートの URL をそのベース URL から動的に作成することができます。この方法の利点としては、テンプレートを簡単に移動したり、フォークしたりできることが挙げられます。メイン テンプレート内の静的変数を変更するだけで、正しい URI が、メイン テンプレートから、分解されたテンプレート全体に渡されます。
 
 次の例では、ベース URL を使用して、リンクされたテンプレート (**sharedTemplateUrl** と **vmTemplate**) の 2 つの URL を作成する方法を示しています。
@@ -132,7 +128,6 @@ Resource Manager サービスは、リンクされたテンプレートにアク
     }
 
 ## テンプレートへの条件付きリンク
-
 リンクされたテンプレートの URI の構築に使用されるパラメーター値を渡すことによって、別のテンプレートにリンクすることができます。この方法は、どのリンクされたテンプレートを使用するかをデプロイ中に指定する必要がある場合に適しています。たとえば、既存のストレージ アカウント用に 1 つのテンプレートと、新しいストレージ アカウント用にもう 1 つのテンプレートを指定できます。
 
 次の例では、ストレージ アカウント名のパラメーターと、ストレージ アカウントが新規か既存かを指定するためのパラメーターを示しています。
@@ -233,7 +228,6 @@ URI は、**existingStorageAccount.json** または **newStorageAccount.json** �
     }
 
 ## 完全な例
-
 次のサンプル テンプレートは、この記事で取り上げている概念を説明するために、リンクされたテンプレートの簡略化した配置を示しています。パブリック アクセスを無効にした状態で、テンプレートがストレージ アカウント内の同じコンテナーに追加されていることを前提としています。リンクされたテンプレートは **outputs** セクションのメイン テンプレートに値を渡します。
 
 **parent.json** ファイルの構成は次のとおりです。
@@ -269,19 +263,19 @@ URI は、**existingStorageAccount.json** または **newStorageAccount.json** �
 **helloworld.json** ファイルの構成は次のとおりです。
 
     {
-	  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-	  "contentVersion": "1.0.0.0",
-	  "parameters": {},
-	  "variables": {},
-	  "resources": [],
-	  "outputs": {
-		"result": {
-			"value": "Hello World",
-			"type" : "string"
-		}
-	  }
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {
+        "result": {
+            "value": "Hello World",
+            "type" : "string"
+        }
+      }
     }
-    
+
 PowerShell では、コンテナーのトークンを取得し、以下を使用してテンプレートをデプロイします。
 
     Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -297,7 +291,7 @@ Azure CLI では、コンテナーのトークンを取得し、次のコード�
 パラメーターとして SAS トークンを指定するように求められます。トークンの前に **?** を付ける必要があります。
 
 ## 次のステップ
-- リソースのデプロイの順序の定義については、「[Azure Resource Manager テンプレートでの依存関係の定義](resource-group-define-dependencies.md)」を参照してください。
-- リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
+* リソースのデプロイの順序の定義については、「[Azure Resource Manager テンプレートでの依存関係の定義](resource-group-define-dependencies.md)」を参照してください。
+* リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 
 <!---HONumber=AcomDC_0907_2016-->

@@ -1,24 +1,22 @@
-4. API アプリのゲートウェイ ブレードに移動します。
-
-	![[ゲートウェイ] をクリック](./media/app-service-api-gateway-config-auth/gateway.png)
-
-7. **[ゲートウェイ]** ブレードで、**[設定]**、**[ID]** の順にクリックします。
-
-	![[設定] のクリック](./media/app-service-api-gateway-config-auth/clicksettingsingateway.png)
-
-	![[ID] をクリック](./media/app-service-api-gateway-config-auth/clickidentity.png)
-
-	**[ID]** ブレードからは、Azure Active Directory や他のさまざまなプロバイダーを使用して認証を構成する別のブレードに移動することができます。
-
-	![[ID] ブレード](./media/app-service-api-gateway-config-auth/identityblade.png)
-  
+1. API アプリのゲートウェイ ブレードに移動します。
+   
+    ![[ゲートウェイ] をクリック](./media/app-service-api-gateway-config-auth/gateway.png)
+2. **[ゲートウェイ]** ブレードで、**[設定]**、**[ID]** の順にクリックします。
+   
+    ![[設定] のクリック](./media/app-service-api-gateway-config-auth/clicksettingsingateway.png)
+   
+    ![[ID] をクリック](./media/app-service-api-gateway-config-auth/clickidentity.png)
+   
+    **[ID]** ブレードからは、Azure Active Directory や他のさまざまなプロバイダーを使用して認証を構成する別のブレードに移動することができます。
+   
+    ![[ID] ブレード](./media/app-service-api-gateway-config-auth/identityblade.png)
 3. 使用する ID プロバイダーを選択し、該当する記事の手順に従って、API アプリをそのプロバイダーで構成します。これらの記事はモバイル アプリ向けに書かれていますが、API アプリでも手順は同じです。一部の手順では、Azure ポータルを使用する必要があります。
-
- - [Microsoft アカウント](../articles/app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md)
- - [Facebook ログイン](../articles/app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md)
- - [Twitter ログイン](../articles/app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md)
- - [Google ログイン](../articles/app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md)
- - [Azure Active Directory](../articles/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)
+   
+   * [Microsoft アカウント](../articles/app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md)
+   * [Facebook ログイン](../articles/app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md)
+   * [Twitter ログイン](../articles/app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md)
+   * [Google ログイン](../articles/app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md)
+   * [Azure Active Directory](../articles/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)
 
 たとえば、次のスクリーン ショットは、Azure Active Directory の認証を設定した後の Azure ポータルのページと Azure プレビュー ポータルのブレードを示しています。
 

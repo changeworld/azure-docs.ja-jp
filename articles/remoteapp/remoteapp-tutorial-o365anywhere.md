@@ -1,33 +1,32 @@
-<properties
-   pageTitle="Azure RemoteApp を使用して、どのデバイスでも同じ Office 365 のエクスペリエンスを得るには | Microsoft Azure"
-   description="Azure RemoteApp を使用して、ユーザーと任意の Office 365 アプリを共有する方法について説明します。"
-   services="remoteapp"
-   documentationCenter=""
-   authors="guscatalano"
-   manager="mbaldwin"
-   editor=""/>
+---
+title: Azure RemoteApp を使用して、どのデバイスでも同じ Office 365 のエクスペリエンスを得るには | Microsoft Docs
+description: Azure RemoteApp を使用して、ユーザーと任意の Office 365 アプリを共有する方法について説明します。
+services: remoteapp
+documentationcenter: ''
+author: guscatalano
+manager: mbaldwin
+editor: ''
 
-<tags
-   ms.service="remoteapp"
-   ms.devlang="na"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="compute"
-   ms.date="08/15/2016"
-   ms.author="guscatal;elizapo"/>
+ms.service: remoteapp
+ms.devlang: na
+ms.topic: hero-article
+ms.tgt_pltfrm: na
+ms.workload: compute
+ms.date: 08/15/2016
+ms.author: guscatal;elizapo
 
-
+---
 # Azure RemoteApp を使用して、どのデバイスでも同じ Office 365 のエクスペリエンスを得るには
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> [!IMPORTANT]
+> Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> 
+> 
 
 この記事では、会社内の任意のデバイスで Office 365 をデプロイする方法を説明します。ユーザーには、Android、Apple、Windows のいずれからでも、同じ機能と UI 操作が提供されます。
 
 これは、Azure RemoteApp を使用し、ユーザーが接続できる Azure のスケーラブルな仮想マシンで Office 365 をホストすることにより実現されます。この仮想マシンのセットを "クラウド コレクション" と呼びます。
 
 ## Create a cloud collection (クラウド コレクションを作成する)
-
 まず、Azure アカウントを作成してから、左側にあるリンクをクリックして **RemoteApp** に移動します。![Azure ポータルでの Azure RemoteApp の表示](./media/remoteapp-tutorial-o365anywhere/1-menu.png)
 
 次に、下部にある **[新規]** をクリックし、コレクションを "簡易作成" します。名前、リージョン、サブスクリプション、プラン、提供されている "Office Proffesional 2013" イメージを指定します。 ![[作成] ダイアログ](./media/remoteapp-tutorial-o365anywhere/2-quickcreate.png)
@@ -45,7 +44,6 @@ Azure RemoteApp の提供は終了しました。詳細については、[お知
 それでは、Office 365 への接続を試してみましょう。
 
 ## Office 365 への接続
-
 [https://www.remoteapp.windowsazure.com/](https://www.remoteapp.windowsazure.com/) に移動します。下へスクロールして **[クライアントのダウンロード]** をクリックし、使用中のデバイスに Azure RemoteApp クライアントをインストールします。次のスクリーンショットは、Windows の場合です。
 
 アプリケーションが開始されると、Microsoft アカウント (以前の "Live ID") でサインインするように求められます。ここでは、Azure アカウントと同じアカウントを使用してください。サインインすると、新しい招待に関する通知が表示されます。これをクリックすると、次のようなリストが表示されます。Azure アカウント所有者の電子メールと一致する招待を承諾してください。

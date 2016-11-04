@@ -1,21 +1,21 @@
-<properties
-   pageTitle="アクターによる診断および監視 |Microsoft Azure"
-   description="この記事では、出力されるイベントおよびパフォーマンス カウンターを含め、Service Fabric の Reliable Actors ランタイムの診断およびパフォーマンス監視機能について説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="abhishekram"
-   manager="timlt"
-   editor="vturecek"/>
+---
+title: アクターによる診断および監視 | Microsoft Docs
+description: この記事では、出力されるイベントおよびパフォーマンス カウンターを含め、Service Fabric の Reliable Actors ランタイムの診断およびパフォーマンス監視機能について説明します。
+services: service-fabric
+documentationcenter: .net
+author: abhishekram
+manager: timlt
+editor: vturecek
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="07/05/2016"
-   ms.author="abhisram"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 07/05/2016
+ms.author: abhisram
 
+---
 # Reliable Actors の診断とパフォーマンス監視
 Reliable Actors ランタイムは、[EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントおよび[パフォーマンス カウンター](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)を出力します。これらは、ランタイムがどのように動作するかを示し、トラブルシューティングとパフォーマンス監視に役立ちます。
 
@@ -27,20 +27,20 @@ EventSource イベントの収集または表示に役立つツールとテク�
 ### キーワード
 Reliable Actors EventSource に属しているすべてのイベントは、1 つまたは複数のキーワードに関連付けられます。これにより、収集されたイベントをフィルター処理できます。次のキーワードのビットが定義されています。
 
-|Bit|説明|
-|---|---|
-|0x1|Fabric アクター ランタイムの操作を要約する重要なイベントのセット。|
-|0x2|アクター メソッドの呼び出しを記述するイベントのセット。詳細については、[アクターに関する入門のトピック](service-fabric-reliable-actors-introduction.md#actors)を参照してください。|
-|0x4|アクター状態に関連するイベントのセット。詳細については、[アクターの状態管理](service-fabric-reliable-actors-state-management.md)に関するページをご覧ください。|
-|0x8|アクターでのターンベースの同時実行に関連するイベントのセット。詳細については、[同時実行](service-fabric-reliable-actors-introduction.md#concurrency)に関するトピックを参照してください。|
+| Bit | 説明 |
+| --- | --- |
+| 0x1 |Fabric アクター ランタイムの操作を要約する重要なイベントのセット。 |
+| 0x2 |アクター メソッドの呼び出しを記述するイベントのセット。詳細については、[アクターに関する入門のトピック](service-fabric-reliable-actors-introduction.md#actors)を参照してください。 |
+| 0x4 |アクター状態に関連するイベントのセット。詳細については、[アクターの状態管理](service-fabric-reliable-actors-state-management.md)に関するページをご覧ください。 |
+| 0x8 |アクターでのターンベースの同時実行に関連するイベントのセット。詳細については、[同時実行](service-fabric-reliable-actors-introduction.md#concurrency)に関するトピックを参照してください。 |
 
 ## パフォーマンス カウンター
 Reliable Actors ランタイムは、次のパフォーマンス カウンター カテゴリを定義します。
 
-|カテゴリ|説明|
-|---|---|
-|Service Fabric アクター|アクター状態の保存にかかる時間など、Azure Service Fabric アクターに固有のカウンター。|
-|Service Fabric アクター メソッド|アクター メソッドが呼び出される頻度など、Service Fabric アクターによって実装されたメソッドに固有のカウンター。|
+| カテゴリ | 説明 |
+| --- | --- |
+| Service Fabric アクター |アクター状態の保存にかかる時間など、Azure Service Fabric アクターに固有のカウンター。 |
+| Service Fabric アクター メソッド |アクター メソッドが呼び出される頻度など、Service Fabric アクターによって実装されたメソッドに固有のカウンター。 |
 
 上記の各カテゴリには、1 つまたは複数のカウンターがあります。
 
@@ -84,89 +84,88 @@ Reliable Actors ランタイムは、次のパフォーマンス カウンター
 上記の例で、`ivoicemailboxactor.leavemessageasync` はメソッド名、`2` はランタイムの内部使用のために生成される 32 ビットの ID、`89383d32-e57e-4a9b-a6ad-57c6792aa521` は Service Fabric パーティション ID の文字列表現、`635650083804480486` はランタイムの内部使用のために生成される 64 ビットの ID です。
 
 ## イベントとパフォーマンス カウンターの一覧
-
 ### アクター メソッド イベントとパフォーマンス カウンター
 Reliable Actors ランタイムは、[アクター メソッド](service-fabric-reliable-actors-introduction.md#actors)に関連する次のイベントを出力します。
 
-|イベント名|イベント ID|Level|キーワード|説明|
-|---|---|---|---|---|
-|ActorMethodStart|7|詳細|0x2|アクター ランタイムがアクター メソッドを呼び出そうとしています。|
-|ActorMethodStop|8|詳細|0x2|アクター メソッドが実行を完了しました。つまり、アクター メソッドに対するランタイムの非同期呼び出しが返され、アクター メソッドによって返されたタスクが完了しました。|
-|ActorMethodThrewException|9|警告|0x3|アクター メソッドに対するランタイムの非同期呼び出し中、またはアクター メソッドによって返されたタスクの実行中に、アクター メソッドの実行中の例外がスローされました。このイベントは、調査を必要とするアクター コードの何らかのエラーを示します。|
+| イベント名 | イベント ID | Level | キーワード | 説明 |
+| --- | --- | --- | --- | --- |
+| ActorMethodStart |7 |詳細 |0x2 |アクター ランタイムがアクター メソッドを呼び出そうとしています。 |
+| ActorMethodStop |8 |詳細 |0x2 |アクター メソッドが実行を完了しました。つまり、アクター メソッドに対するランタイムの非同期呼び出しが返され、アクター メソッドによって返されたタスクが完了しました。 |
+| ActorMethodThrewException |9 |警告 |0x3 |アクター メソッドに対するランタイムの非同期呼び出し中、またはアクター メソッドによって返されたタスクの実行中に、アクター メソッドの実行中の例外がスローされました。このイベントは、調査を必要とするアクター コードの何らかのエラーを示します。 |
 
 Reliable Actors ランタイムは、アクター メソッドの実行に関連する次のパフォーマンス カウンターを発行します。
 
-|カテゴリ名|カウンター名|説明|
-|---|---|---|
-|Service Fabric アクター メソッド|呼び出し/秒|1 秒あたりにアクター サービス メソッドが呼び出される回数|
-|Service Fabric アクター メソッド|呼び出しあたりの平均時間 (ミリ秒)|アクター サービス メソッドの実行にかかった時間 (ミリ秒単位)|
-|Service Fabric アクター メソッド|スローされた例外の数/秒|1 秒あたりにアクター サービス メソッドが例外をスローした回数|
+| カテゴリ名 | カウンター名 | 説明 |
+| --- | --- | --- |
+| Service Fabric アクター メソッド |呼び出し/秒 |1 秒あたりにアクター サービス メソッドが呼び出される回数 |
+| Service Fabric アクター メソッド |呼び出しあたりの平均時間 (ミリ秒) |アクター サービス メソッドの実行にかかった時間 (ミリ秒単位) |
+| Service Fabric アクター メソッド |スローされた例外の数/秒 |1 秒あたりにアクター サービス メソッドが例外をスローした回数 |
 
 ### 同時実行イベントとパフォーマンス カウンター
 Reliable Actors ランタイムは、[同時実行](service-fabric-reliable-actors-introduction.md#concurrency)に関連する次のイベントを出力します。
 
-|イベント名|イベント ID|Level|キーワード|説明|
-|---|---|---|---|---|
-|ActorMethodCallsWaitingForLock|12|詳細|0x8|このイベントは、アクター内の新しい各ターンの開始時に記述されます。ターンベースの同時実行を強制するアクターごとのロックを取得するために待機している、保留中のアクター呼び出しの数が含まれています。|
+| イベント名 | イベント ID | Level | キーワード | 説明 |
+| --- | --- | --- | --- | --- |
+| ActorMethodCallsWaitingForLock |12 |詳細 |0x8 |このイベントは、アクター内の新しい各ターンの開始時に記述されます。ターンベースの同時実行を強制するアクターごとのロックを取得するために待機している、保留中のアクター呼び出しの数が含まれています。 |
 
 Reliable Actors ランタイムは、同時実行に関連する次のパフォーマンス カウンターを発行します。
 
-|カテゴリ名|カウンター名|説明|
-|---|---|---|
-|Service Fabric アクター|アクター ロックを待機しているアクター呼び出しの数|ターンベースの同時実行を強制するアクターごとのロックを取得するために待機している、保留中のアクター呼び出しの数。|
-|Service Fabric アクター|ロック待機あたりの平均時間 (ミリ秒)|ターンベースの同時実行を強制するアクターごとのロックの取得にかかった時間 (ミリ秒単位)|
-|Service Fabric アクター|アクター ロック保持の平均時間 (ミリ秒)|アクターごとのロックが保持される時間 (ミリ秒単位)|
+| カテゴリ名 | カウンター名 | 説明 |
+| --- | --- | --- |
+| Service Fabric アクター |アクター ロックを待機しているアクター呼び出しの数 |ターンベースの同時実行を強制するアクターごとのロックを取得するために待機している、保留中のアクター呼び出しの数。 |
+| Service Fabric アクター |ロック待機あたりの平均時間 (ミリ秒) |ターンベースの同時実行を強制するアクターごとのロックの取得にかかった時間 (ミリ秒単位) |
+| Service Fabric アクター |アクター ロック保持の平均時間 (ミリ秒) |アクターごとのロックが保持される時間 (ミリ秒単位) |
 
 ### アクター状態管理イベントとパフォーマンス カウンター
 Reliable Actors ランタイムは、[アクター状態管理](service-fabric-reliable-actors-state-management.md)に関連する次のイベントを出力します。
 
-|イベント名|イベント ID|Level|キーワード|説明|
-|---|---|---|---|---|
-|ActorSaveStateStart|10|詳細|0x4|アクター ランタイムが、アクター状態を保存しようとしています。|
-|ActorSaveStateStop|11|詳細|0x4|アクター ランタイムが、アクター状態の保存を完了しました。|
+| イベント名 | イベント ID | Level | キーワード | 説明 |
+| --- | --- | --- | --- | --- |
+| ActorSaveStateStart |10 |詳細 |0x4 |アクター ランタイムが、アクター状態を保存しようとしています。 |
+| ActorSaveStateStop |11 |詳細 |0x4 |アクター ランタイムが、アクター状態の保存を完了しました。 |
 
 Reliable Actors ランタイムは、アクター状態管理に関連する次のパフォーマンス カウンターを発行します。
 
-|カテゴリ名|カウンター名|説明|
-|---|---|---|
-|Service Fabric アクター|状態保存操作あたりの平均時間 (ミリ秒)|アクター状態の保存にかかった時間 (ミリ秒単位)|
-|Service Fabric アクター|状態読み込み操作あたりの平均時間 (ミリ秒)|アクター状態の読み込みにかかった時間 (ミリ秒単位)|
+| カテゴリ名 | カウンター名 | 説明 |
+| --- | --- | --- |
+| Service Fabric アクター |状態保存操作あたりの平均時間 (ミリ秒) |アクター状態の保存にかかった時間 (ミリ秒単位) |
+| Service Fabric アクター |状態読み込み操作あたりの平均時間 (ミリ秒) |アクター状態の読み込みにかかった時間 (ミリ秒単位) |
 
 ### アクター レプリカに関連するイベント
 Reliable Actors ランタイムは、[アクター レプリカ](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-stateful-actors)に関連する次のイベントを出力します。
 
-|イベント名|イベント ID|Level|キーワード|説明|
-|---|---|---|---|---|
-|ReplicaChangeRoleToPrimary|1|情報|0x1|アクター レプリカのロールがプライマリに変わりました。これは、このパーティションのアクターが、このレプリカ内で作成されることを意味します。|
-|ReplicaChangeRoleFromPrimary|2|情報|0x1|アクター レプリカのロールがプライマリ以外に変わりました。これは、このパーティションのアクターが、このレプリカ内で作成されなくなったことを意味します。このレプリカ内で既に作成されているアクターに、新しい要求は配信されません。アクターは、処理中のすべての要求が完了したら破棄されます。|
+| イベント名 | イベント ID | Level | キーワード | 説明 |
+| --- | --- | --- | --- | --- |
+| ReplicaChangeRoleToPrimary |1 |情報 |0x1 |アクター レプリカのロールがプライマリに変わりました。これは、このパーティションのアクターが、このレプリカ内で作成されることを意味します。 |
+| ReplicaChangeRoleFromPrimary |2 |情報 |0x1 |アクター レプリカのロールがプライマリ以外に変わりました。これは、このパーティションのアクターが、このレプリカ内で作成されなくなったことを意味します。このレプリカ内で既に作成されているアクターに、新しい要求は配信されません。アクターは、処理中のすべての要求が完了したら破棄されます。 |
 
 ### アクターのアクティブ化イベントと非アクティブ化イベントおよびパフォーマンス カウンター
 Reliable Actors ランタイムは、[アクターのアクティブ化と非アクティブ化](service-fabric-reliable-actors-lifecycle.md)に関連する次のイベントを出力します。
 
-|イベント名|イベント ID|Level|キーワード|説明|
-|---|---|---|---|---|
-|ActorActivated|5|情報|0x1|アクターがアクティブ化されました。|
-|ActorDeactivated|6|情報|0x1|アクターが非アクティブ化されました。|
+| イベント名 | イベント ID | Level | キーワード | 説明 |
+| --- | --- | --- | --- | --- |
+| ActorActivated |5 |情報 |0x1 |アクターがアクティブ化されました。 |
+| ActorDeactivated |6 |情報 |0x1 |アクターが非アクティブ化されました。 |
 
 Reliable Actors ランタイムは、アクターのアクティブ化と非アクティブ化に関連する次のパフォーマンス カウンターを発行します。
 
-|カテゴリ名|カウンター名|説明|
-|---|---|---|
-|Service Fabric アクター|OnActivateAsync の平均時間 (ミリ秒)|OnActivateAsync メソッドの実行にかかった時間 (ミリ秒単位)|
+| カテゴリ名 | カウンター名 | 説明 |
+| --- | --- | --- |
+| Service Fabric アクター |OnActivateAsync の平均時間 (ミリ秒) |OnActivateAsync メソッドの実行にかかった時間 (ミリ秒単位) |
 
 ### アクター要求処理のパフォーマンス カウンター
 クライアントがアクター プロキシ オブジェクト経由でメソッドを呼び出すと、要求メッセージがネットワーク経由でアクター サービスに送信されます。サービスは要求メッセージを処理し、クライアントに応答を送り返します。Reliable Actors ランタイムは、アクター要求処理に関連する次のパフォーマンス カウンターを発行します。
 
-|カテゴリ名|カウンター名|説明|
-|---|---|---|
-|Service Fabric アクター|未処理の要求の数|サービスで処理中の要求の数|
-|Service Fabric アクター|要求あたりの平均時間 (ミリ秒)|サービスで要求の処理にかかった時間 (ミリ秒単位)|
-|Service Fabric アクター|要求の逆シリアル化の平均時間 (ミリ秒)|サービスで受信されたときに、アクターの要求メッセージの逆シリアル化にかかった時間 (ミリ秒単位)|
-|Service Fabric アクター|応答のシリアル化の平均時間 (ミリ秒)|クライアントに応答を送信する前に、サービスでアクターの応答メッセージをシリアル化するのにかかった時間 (ミリ秒単位)|
+| カテゴリ名 | カウンター名 | 説明 |
+| --- | --- | --- |
+| Service Fabric アクター |未処理の要求の数 |サービスで処理中の要求の数 |
+| Service Fabric アクター |要求あたりの平均時間 (ミリ秒) |サービスで要求の処理にかかった時間 (ミリ秒単位) |
+| Service Fabric アクター |要求の逆シリアル化の平均時間 (ミリ秒) |サービスで受信されたときに、アクターの要求メッセージの逆シリアル化にかかった時間 (ミリ秒単位) |
+| Service Fabric アクター |応答のシリアル化の平均時間 (ミリ秒) |クライアントに応答を送信する前に、サービスでアクターの応答メッセージをシリアル化するのにかかった時間 (ミリ秒単位) |
 
 ## 次のステップ
- - [Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
- - [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [コード サンプル](https://github.com/Azure/servicefabric-samples)
+* [Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
+* [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [コード サンプル](https://github.com/Azure/servicefabric-samples)
 
 <!---HONumber=AcomDC_0706_2016-->

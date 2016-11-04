@@ -1,29 +1,25 @@
-<properties
-    pageTitle="Azure Site Recovery を使用した Hyper-V レプリケーション | Microsoft Azure"
-    description="この記事を使用すると、Azure Site Recovery を正常にインストール、構成、管理するのに役立つ技術的な概念を理解できます。"
-    services="site-recovery"
-    documentationCenter=""
-    authors="Rajani-Janaki-Ram"
-    manager="mkjain"
-    editor=""/>
+---
+title: Azure Site Recovery を使用した Hyper-V レプリケーション | Microsoft Docs
+description: この記事を使用すると、Azure Site Recovery を正常にインストール、構成、管理するのに役立つ技術的な概念を理解できます。
+services: site-recovery
+documentationcenter: ''
+author: Rajani-Janaki-Ram
+manager: mkjain
+editor: ''
 
-<tags
-    ms.service="site-recovery"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="storage-backup-recovery"
-    ms.date="09/12/2016"
-    ms.author="rajanaki"/>  
+ms.service: site-recovery
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: storage-backup-recovery
+ms.date: 09/12/2016
+ms.author: rajanaki
 
-
-
+---
 # <a name="hyper-v-replication-with-azure-site-recovery"></a>Azure Site Recovery での Hyper-V レプリケーション
-
 この記事では、Azure Site Recovery を使用した Hyper-V サイトまたは System Center Virtual Machine Manager (VMM) サイトと Azure の間の保護を正常に構成および管理するのに役立つ、技術的な概念について説明します。
 
 ## <a name="setting-up-the-source-environment-for-replication-between-on-premises-and-azure"></a>オンプレミスと Azure の間のレプリケーションに使用するソース環境のセットアップ
-
 オンプレミスと Azure との間で障害復旧をセットアップする際は必ず、その作業の一環として Azure Site Recovery プロバイダーをダウンロードし、VMM サーバーにインストールしてください。 個々の Hyper-V ホストには、Azure Recovery Services エージェントをインストールします。
 
 ![VMM site deployment for replication between on-premises and Azure](media/site-recovery-understanding-site-to-azure-protection/image00.png)
@@ -31,7 +27,6 @@
 Hyper-V によって管理されるインフラストラクチャにソース環境をセットアップする作業は、VMM によって管理されたインフラストラクチャにソース環境をセットアップする作業と似ています。 唯一の違いは、プロバイダーとエージェントのインストール先が Hyper-V ホスト自体であるという点です。 VMM 環境では、プロバイダーが VMM サーバーに、エージェントが Hyper-V ホストにインストールされます (Azure にレプリケーションする場合)。
 
 ## <a name="workflows"></a>ワークフロー
-
 ### <a name="enable-protection"></a>保護を有効にする
 Azure Portal またはオンプレミスから仮想マシンの保護を実行すると、" **保護を有効にする** " という名前の Site Recovery ジョブが開始されます。 このジョブは、 **[ジョブ]** タブで監視できます。
 
@@ -48,8 +43,8 @@ Azure Portal またはオンプレミスから仮想マシンの保護を実行�
 
 初期レプリケーションが完了すると、 **仮想マシンでの保護の最終処理** ジョブにより、ネットワークとレプリケーション後の設定が構成されます。 初期レプリケーションの進行中に次の処理が実行されます。
 
-- ディスクへのすべての変更が追跡されます。 
-- スナップショットと Hyper-V Replica Log (HRL) ファイル用のディスク記憶域が別途消費されます。
+* ディスクへのすべての変更が追跡されます。 
+* スナップショットと Hyper-V Replica Log (HRL) ファイル用のディスク記憶域が別途消費されます。
 
 初期レプリケーションが完了すると、Hyper-V VM スナップショットが削除されます。 この削除により、初期レプリケーションの後に行われたデータの変更が親ディスクにマージされます。
 
@@ -60,7 +55,7 @@ Hyper-V レプリカ レプリケーション トラッカーは、Hyper-V レ�
 
 レプリケーション用に構成された各ディスクには、関連付けられた HRL ファイルがあります。 このログは、初期レプリケーションの完了後、顧客のストレージ アカウントに送信されます。 ログが Azure に送信される間、プライマリでの変更は同じディレクトリ内の別のログ ファイルで追跡されます。
 
-[仮想マシンのレプリケーションの正常性の監視](./site-recovery-monitoring-and-troubleshooting.md#monitor-replication-health-for-virtual-machine)に関するセクションで説明されているように、初期レプリケーションまたは差分レプリケーション中の VM のレプリケーションの正常性は VM ビューで監視できます。  
+[仮想マシンのレプリケーションの正常性の監視](site-recovery-monitoring-and-troubleshooting.md#monitor-replication-health-for-virtual-machine)に関するセクションで説明されているように、初期レプリケーションまたは差分レプリケーション中の VM のレプリケーションの正常性は VM ビューで監視できます。  
 
 ### <a name="resynchronization"></a>再同期
 差分レプリケーションが失敗し、完全な初期レプリケーションのコストがネットワーク帯域幅または時間の面で高くなる場合、仮想マシンは再同期の対象としてマークが付きます。 たとえば、HRL ファイルのサイズが合計ディスク サイズの 50% まで増大すると、仮想マシンは再同期の対象としてマークが付きます。 再同期では、ソースとターゲットの仮想マシン ディスクのチェックサムを計算して差分のみを送信することで、ネットワーク経由で送信されるデータの量が最小限に抑えられます。
@@ -76,22 +71,18 @@ Hyper-V レプリカ レプリケーション トラッカーは、Hyper-V レ�
 ### <a name="retry-logic"></a>再試行ロジック
 レプリケーション エラーが発生した場合に備えて、組み込みの再試行ロジックがあります。 このロジックは、次の 2 つのカテゴリに分類できます。
 
-| カテゴリ                  | シナリオ                                    |
-|---------------------------|----------------------------------------------|
-| 回復不可能なエラー     | 再試行は行われません。 仮想マシンのレプリケーションの状態が **[重大]** と表示され、管理者による操作が必要になります。 たとえば、次のようになります。 <ul><li>壊れた VHD チェーン</li><li>レプリカ仮想マシンについて無効な状態</li><li>ネットワーク認証エラー</li><li>認証エラー</li><li>仮想マシンが見つからない (スタンドアロン Hyper-V サーバーの場合)</li></ul>|
-| 回復可能なエラー         | レプリケーションを実行するたびに、指数関数的バックオフを使用した間隔で再試行が行われます。指数関数的バックオフでは、最初の試行が開始された後、再試行の間隔が指数関数的に長くなります (1、2、4、8、10 分)。 エラーが解決しない場合は、30 分ごとに再試行してください。 たとえば、次のようになります。 <ul><li>ネットワーク エラー</li><li>ディスク領域不足</li><li>メモリ不足状態</li></ul>|
+| カテゴリ | シナリオ |
+| --- | --- |
+| 回復不可能なエラー |再試行は行われません。 仮想マシンのレプリケーションの状態が **[重大]** と表示され、管理者による操作が必要になります。 たとえば、次のようになります。 <ul><li>壊れた VHD チェーン</li><li>レプリカ仮想マシンについて無効な状態</li><li>ネットワーク認証エラー</li><li>認証エラー</li><li>仮想マシンが見つからない (スタンドアロン Hyper-V サーバーの場合)</li></ul> |
+| 回復可能なエラー |レプリケーションを実行するたびに、指数関数的バックオフを使用した間隔で再試行が行われます。指数関数的バックオフでは、最初の試行が開始された後、再試行の間隔が指数関数的に長くなります (1、2、4、8、10 分)。 エラーが解決しない場合は、30 分ごとに再試行してください。 たとえば、次のようになります。 <ul><li>ネットワーク エラー</li><li>ディスク領域不足</li><li>メモリ不足状態</li></ul> |
 
 ## <a name="hyper-v-virtual-machine-protection-and-recovery-life-cycle"></a>Hyper-V 仮想マシンの保護と回復のライフ サイクル
-
 ![Hyper-V 仮想マシンの保護と回復のライフ サイクル](media/site-recovery-understanding-site-to-azure-protection/image05.png)
 
 ## <a name="other-references"></a>その他のリファレンス
-
-- [VMware、VMM、Hyper-V、および物理サイトの監視とトラブルシューティング](./site-recovery-monitoring-and-troubleshooting.md)
-- [Microsoft サポートを得る](./site-recovery-monitoring-and-troubleshooting.md#reaching-out-for-microsoft-support)
-- [Azure Site Recovery の一般的なエラーとその解決策](./site-recovery-monitoring-and-troubleshooting.md#common-asr-errors-and-their-resolutions)
-
-
+* [VMware、VMM、Hyper-V、および物理サイトの監視とトラブルシューティング](site-recovery-monitoring-and-troubleshooting.md)
+* [Microsoft サポートを得る](site-recovery-monitoring-and-troubleshooting.md#reaching-out-for-microsoft-support)
+* [Azure Site Recovery の一般的なエラーとその解決策](site-recovery-monitoring-and-troubleshooting.md#common-asr-errors-and-their-resolutions)
 
 <!--HONumber=Oct16_HO2-->
 

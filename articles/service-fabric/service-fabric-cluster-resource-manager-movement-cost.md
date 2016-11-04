@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Service Fabric クラスター リソース マネージャー：移動コスト | Microsoft Azure"
-   description="Service Fabric サービスの移動コストの概要"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Service Fabric クラスター リソース マネージャー：移動コスト | Microsoft Docs
+description: Service Fabric サービスの移動コストの概要
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # クラスター リソース マネージャーの選定に影響を与えるサービス移動コスト
 クラスターに対して行う変更とソリューションのスコアを決定するときに考慮すべき重要な要因は、そのソリューションを実現するための全体的なコストです。
 
@@ -40,13 +40,13 @@ MoveCost には、Zero、Low、Medium、High の 4 つのレベルがありま�
 
 移動コストは、同等のバランスを最も簡単に維持したまま全体的な中断が最小限になるソリューションを見つけるのに役立ちます。サービスのコストの概念はさまざまなものに関係する可能性がありますが、移動コストの計算に関わる最も一般的な要素は次のとおりです。
 
-- サービスが移動する必要のある状態またはデータの量。
-- クライアント切断のコスト。通常、プライマリ レプリカを移動するコストは、セカンダリ レプリカの移動コストより高くなります。
-- 実行中の操作を中断するコスト。一部のデータ ストア レベル操作またはクライアント コールの応答で実行される操作にはコストがかかるため、特定の時点以降では、必要でなければ処理を中止しない方が適切です。そのため、操作の実行中はコストを高くして、サービスのレプリカまたはインスタンスが移動される可能性を低くし、操作が完了したら元に戻します。
+* サービスが移動する必要のある状態またはデータの量。
+* クライアント切断のコスト。通常、プライマリ レプリカを移動するコストは、セカンダリ レプリカの移動コストより高くなります。
+* 実行中の操作を中断するコスト。一部のデータ ストア レベル操作またはクライアント コールの応答で実行される操作にはコストがかかるため、特定の時点以降では、必要でなければ処理を中止しない方が適切です。そのため、操作の実行中はコストを高くして、サービスのレプリカまたはインスタンスが移動される可能性を低くし、操作が完了したら元に戻します。
 
 ## 次のステップ
-- Service Fabric クラスター リソース マネージャーは、メトリックを使用して、クラスターの利用量と容量を管理します。メトリックの詳細とその構成方法については、「[Service Fabric のリソース使用量と負荷をメトリックで管理する](service-fabric-cluster-resource-manager-metrics.md)」を参照してください。
-- クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、「[Service Fabric クラスターの均衡をとる](service-fabric-cluster-resource-manager-balancing.md)」を参照してください。
+* Service Fabric クラスター リソース マネージャーは、メトリックを使用して、クラスターの利用量と容量を管理します。メトリックの詳細とその構成方法については、「[Service Fabric のリソース使用量と負荷をメトリックで管理する](service-fabric-cluster-resource-manager-metrics.md)」を参照してください。
+* クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、「[Service Fabric クラスターの均衡をとる](service-fabric-cluster-resource-manager-balancing.md)」を参照してください。
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png
 

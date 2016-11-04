@@ -1,35 +1,32 @@
-<properties
-    pageTitle="Azure App Service Mobile Apps で Cordova アプリを作成する | Microsoft Azure"
-    description="Apache Cordova 開発向けの Azure モバイル アプリ バックエンドの使用を開始するには、このチュートリアルに従ってください。"
-    services="app-service\mobile"
-    documentationCenter="javascript"
-    authors="adrianhall"
-    manager="erikre"
-    editor=""
-    tags=""
-    keywords="cordova,javascript,モバイル,クライアント" />
+---
+title: Azure App Service Mobile Apps で Cordova アプリを作成する | Microsoft Docs
+description: Apache Cordova 開発向けの Azure モバイル アプリ バックエンドの使用を開始するには、このチュートリアルに従ってください。
+services: app-service\mobile
+documentationcenter: javascript
+author: adrianhall
+manager: erikre
+editor: ''
+tags: ''
+keywords: cordova,javascript,モバイル,クライアント
 
-<tags
-    ms.service="app-service-mobile"
-    ms.workload="na"
-    ms.tgt_pltfrm="mobile-html"
-    ms.devlang="javascript"
-    ms.topic="hero-article"
-    ms.date="10/01/2016"
-    ms.author="adrianha"/>
+ms.service: app-service-mobile
+ms.workload: na
+ms.tgt_pltfrm: mobile-html
+ms.devlang: javascript
+ms.topic: hero-article
+ms.date: 10/01/2016
+ms.author: adrianha
 
-#Apache Cordova アプリの作成
-
-[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
+---
+# Apache Cordova アプリの作成
+[!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## Overview
-
-このチュートリアルでは、Azure モバイル アプリ バックエンドを使用してクラウドベースのバックエンド サービスを Apache Cordova モバイル アプリに追加する方法を説明します。新しいモバイル アプリ バックエンドと、アプリのデータを Azure に格納する簡単な _Todo list_ Apache Cordova アプリの両方を作成します。
+このチュートリアルでは、Azure モバイル アプリ バックエンドを使用してクラウドベースのバックエンド サービスを Apache Cordova モバイル アプリに追加する方法を説明します。新しいモバイル アプリ バックエンドと、アプリのデータを Azure に格納する簡単な *Todo list* Apache Cordova アプリの両方を作成します。
 
 このチュートリアルは、Azure App Service での Mobile Apps 機能の使用に関する他のすべての Apache Cordova チュートリアルを実行する前に完了しておく必要があります。
 
 ## 前提条件
-
 このチュートリアルを完了するには、以下が必要です。
 
 * [Visual Studio Community 2015] 以降のバージョンがインストールされた PC
@@ -39,21 +36,17 @@
 Visual Studio をバイパスし、Apache Cordova のコマンド ラインを直接使用することもできます。これは、Mac コンピューターでチュートリアルを完成させるときに便利です。コマンドラインを使用する Apache Cordova クライアント アプリケーションのコンパイルは、このチュートリアルでは説明しません。
 
 ## 新しい Azure モバイル アプリ バックエンドを作成する
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
+[!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
 [同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-1-Create-an-Azure-Mobile-App)
 
 ## サーバー プロジェクトの構成
-
-[AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
+[!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## Apache Cordova アプリのダウンロードと実行
-
-[AZURE.INCLUDE [app-service-mobile-cordova-run-app](../../includes/app-service-mobile-cordova-run-app.md)]
+[!INCLUDE [app-service-mobile-cordova-run-app](../../includes/app-service-mobile-cordova-run-app.md)]
 
 ## 次のステップ
-
 これでこのクイック スタート チュートリアルは終了です。次のいずれかのチュートリアルに進んでください。
 
 * Apache Cordova アプリに[認証を追加する]

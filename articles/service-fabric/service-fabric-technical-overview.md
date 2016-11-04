@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Service Fabric の用語の概要 | Microsoft Azure"
-   description="Service Fabric の用語の概要です。重要な用語の概念と、ドキュメントの他の部分で使用される用語について説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="rwike77"
-   manager="timlt"
-   editor="chackdan;subramar"/>
+---
+title: Service Fabric の用語の概要 | Microsoft Docs
+description: Service Fabric の用語の概要です。重要な用語の概念と、ドキュメントの他の部分で使用される用語について説明します。
+services: service-fabric
+documentationcenter: .net
+author: rwike77
+manager: timlt
+editor: chackdan;subramar
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/25/2016"
-   ms.author="ryanwi"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/25/2016
+ms.author: ryanwi
 
+---
 # Service Fabric の用語の概要
-
 Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。このトピックでは、Service Fabric 関連ドキュメントで用いられる言葉の意味を理解するうえで参考となるように、Service Fabric で用いられる用語について詳しく説明します。
 
 ## インフラストラクチャの概念
@@ -40,9 +39,8 @@ Service Fabric は、拡張性と信頼性に優れたマイクロサービス�
 
 サービスには、次の 2 種類があります。
 
-- **ステートレス:** サービスの永続的な状態を外部ストレージ サービス (Azure Storage、Azure SQL Database、Azure DocumentDB など) に保存する場合はステートレス サービスを使用します。永続的なストレージがサービスにまったく存在しない場合は、ステートレス サービスを使用します。たとえば電卓サービスに値を渡すと、それらの値を使って計算が実行され、結果が返されます。
-
-- **ステートフル: **Service Fabric の Reliable Collection や Reliable Actors のプログラミング モデルを介してサービスの状態を管理する場合は、ステートフル サービスを使用します。名前付きサービスを作成するときに (拡張性を得るために) 状態を分散させるパーティションの数を指定します。さらに、状態をノード間でレプリケートさせる回数を指定します。それぞれの名前付きサービスは、1 つのプライマリ レプリカと複数のセカンダリ レプリカを持ちます。名前付きサービスの状態は、プライマリ レプリカに書き込むことで変更します。その後、状態を同期させるために Service Fabric がその状態をすべてのセカンダリ レプリカにレプリケートします。Service Fabric は、プライマリ レプリカの障害を自動的に検出し、既存のセカンダリ レプリカをプライマリ レプリカに昇格させます。その後、Service Fabric は、新しいセカンダリ レプリカを作成します。
+* **ステートレス:** サービスの永続的な状態を外部ストレージ サービス (Azure Storage、Azure SQL Database、Azure DocumentDB など) に保存する場合はステートレス サービスを使用します。永続的なストレージがサービスにまったく存在しない場合は、ステートレス サービスを使用します。たとえば電卓サービスに値を渡すと、それらの値を使って計算が実行され、結果が返されます。
+* **ステートフル: **Service Fabric の Reliable Collection や Reliable Actors のプログラミング モデルを介してサービスの状態を管理する場合は、ステートフル サービスを使用します。名前付きサービスを作成するときに (拡張性を得るために) 状態を分散させるパーティションの数を指定します。さらに、状態をノード間でレプリケートさせる回数を指定します。それぞれの名前付きサービスは、1 つのプライマリ レプリカと複数のセカンダリ レプリカを持ちます。名前付きサービスの状態は、プライマリ レプリカに書き込むことで変更します。その後、状態を同期させるために Service Fabric がその状態をすべてのセカンダリ レプリカにレプリケートします。Service Fabric は、プライマリ レプリカの障害を自動的に検出し、既存のセカンダリ レプリカをプライマリ レプリカに昇格させます。その後、Service Fabric は、新しいセカンダリ レプリカを作成します。
 
 **サービス パッケージ**: サービスの種類を定義した `ServiceManifest.xml` ファイルが格納されるディスク上のディレクトリ。このファイルは、特定の種類のサービスに必要なコード、静的データ、構成パッケージを参照します。サービス パッケージ ディレクトリ内のファイルは、アプリケーションの種類を定義した `ApplicationManifest.xml` ファイルから参照されます。たとえばサービス パッケージは、データベース サービスを構成するコードや静的データ、構成パッケージを参照します。
 
@@ -50,9 +48,8 @@ Service Fabric は、拡張性と信頼性に優れたマイクロサービス�
 
 **コード パッケージ**: 特定の種類のサービスで使用される実行可能ファイル (通常、EXE/DLL ファイル) が格納されるディスク上のディレクトリ。コード パッケージ ディレクトリ内のファイルは、サービスの種類を定義した `ServiceManifest.xml` ファイルから参照されます。名前付きサービスの作成時に、名前付きサービスを実行するために選択された 1 つまたは複数のノードにコード パッケージがコピーされます。その後、コードが実行を開始します。コード パッケージの実行可能ファイルには次の 2 種類があります。
 
-- **ゲスト実行可能ファイル**: ホスト オペレーティング システム (Windows または Linux) 上において単体で動作する実行可能ファイル。つまりこれらの実行可能ファイルは、Service Fabric のランタイム ファイルと連動したりそれらのファイルを参照したりすることはせず、Service Fabric のプログラミング モデルを一切使用しません。これらの実行可能ファイルは、エンドポイント検出用のネーム サービスなどの Service Fabric の一部の機能を使用できません。ゲスト実行可能ファイルは、各サービス インスタンスに固有のロード メトリックを報告できません。
-
-- **サービス ホスト実行可能ファイル**: Service Fabric のランタイム ファイルと連動して Service Fabric の機能を有効にすることによって、Service Fabric のプログラミング モデルを使用する実行可能ファイルです。たとえば名前付きサービスのインスタンスが、Service Fabric のネーム サービスにエンドポイントを登録できるほか、負荷のメトリックを報告することもできます。
+* **ゲスト実行可能ファイル**: ホスト オペレーティング システム (Windows または Linux) 上において単体で動作する実行可能ファイル。つまりこれらの実行可能ファイルは、Service Fabric のランタイム ファイルと連動したりそれらのファイルを参照したりすることはせず、Service Fabric のプログラミング モデルを一切使用しません。これらの実行可能ファイルは、エンドポイント検出用のネーム サービスなどの Service Fabric の一部の機能を使用できません。ゲスト実行可能ファイルは、各サービス インスタンスに固有のロード メトリックを報告できません。
+* **サービス ホスト実行可能ファイル**: Service Fabric のランタイム ファイルと連動して Service Fabric の機能を有効にすることによって、Service Fabric のプログラミング モデルを使用する実行可能ファイルです。たとえば名前付きサービスのインスタンスが、Service Fabric のネーム サービスにエンドポイントを登録できるほか、負荷のメトリックを報告することもできます。
 
 **データ パッケージ**: 特定の種類のサービスで使用される読み取り専用の静的なデータ ファイル (通常、写真、サウンド、ビデオ ファイル) が格納されるディスク上のディレクトリ。データ パッケージ ディレクトリ内のファイルは、サービスの種類を定義した `ServiceManifest.xml` ファイルから参照されます。名前付きサービスの作成時に、名前付きサービスを実行するために選択された 1 つまたは複数のノードにデータ パッケージがコピーされます。コードが実行を開始し、データ ファイルにアクセスできるようになります。
 
@@ -86,8 +83,8 @@ Service Fabric のサービスを構築するにあたっては、次の .NET Fr
 ## 次のステップ
 Service Fabric の詳細については、以下の情報を参照してください。
 
-- [Service Fabric の概要](service-fabric-overview.md)
-- [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
-- [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
+* [Service Fabric の概要](service-fabric-overview.md)
+* [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
+* [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
 
 <!---HONumber=AcomDC_0831_2016-->

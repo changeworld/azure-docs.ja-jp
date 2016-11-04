@@ -1,29 +1,28 @@
-<properties
-	 pageTitle="Azure サポート要求を作成する方法 | Microsoft Azure"
-	 description="Azure サポート要求を作成する方法"
-	 services="Azure Supportability"
-	 documentationCenter=""
-	 authors="ganganarayanan"
-	 manager="scotthit"
-	 editor=""/>
+---
+title: Azure サポート要求を作成する方法 | Microsoft Docs
+description: Azure サポート要求を作成する方法
+services: Azure Supportability
+documentationcenter: ''
+author: ganganarayanan
+manager: scotthit
+editor: ''
 
-<tags
-	 ms.service="azure-supportability"
-	 ms.workload="na"
-	 ms.tgt_pltfrm="na"
-	 ms.devlang="na"
-	 ms.topic="article"
-	 ms.date="07/25/2016"
-	 ms.author="gangan"/>
+ms.service: azure-supportability
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/25/2016
+ms.author: gangan
 
+---
 # Azure サポート要求を作成する方法
-
 ## まとめ
 Azure ユーザーは Azure ポータル、[https://portal.azure.com](https://portal.azure.com) でサポート要求を作成し、管理できます。お客様からいただいたご意見とご要望に基づき、サポート要求のシステムを改善しました。大きな目標として次の 3 つに取り組んでいます。
 
-- **合理化**: クリックとブレードを減らし、サポート要求の送信プロセスを簡素化しました。
-- **統合**: Azure リソースの問題を解決するとき、コンテキストを切り替えなくてもそのリソースのサポート要求を簡単に送信できるようにします。
-- **効率的**: 問題を効率的に解決するためにサポート エンジニアが必要とする重要な情報を集めします。
+* **合理化**: クリックとブレードを減らし、サポート要求の送信プロセスを簡素化しました。
+* **統合**: Azure リソースの問題を解決するとき、コンテキストを切り替えなくてもそのリソースのサポート要求を簡単に送信できるようにします。
+* **効率的**: 問題を効率的に解決するためにサポート エンジニアが必要とする重要な情報を集めします。
 
 ## 使用の開始
 サポート要求は、上部にあるナビゲーション メニューから、あるいはリソース ブレードから直接、作成できます。
@@ -43,7 +42,10 @@ Azure ユーザーは Azure ポータル、[https://portal.azure.com](https://po
 
 ![[基本] ブレード](./media/how-to-create-azure-support-request/Basics.png)
 
->[AZURE.NOTE] Azure は、サブスクリプション管理 (請求、割り当て調整、アカウント振り替えなど) に無制限のサポートを提供します。技術的なサポートについては、サポート プランが必要になります。[サポート プランについて詳しく見る](https://azure.microsoft.com/support/plans)。
+> [!NOTE]
+> Azure は、サブスクリプション管理 (請求、割り当て調整、アカウント振り替えなど) に無制限のサポートを提供します。技術的なサポートについては、サポート プランが必要になります。[サポート プランについて詳しく見る](https://azure.microsoft.com/support/plans)。
+> 
+> 
 
 ## 問題点
 ウィザードの 2 番目の手順で、問題に関する追加情報を集めます。この手順で正確な情報を提供することで、最も適したサポート エンジニアに問題を送り、可能な限り速やかに診断を開始できます。
@@ -75,7 +77,10 @@ Azure ユーザーは Azure ポータル、[https://portal.azure.com](https://po
 
 タイルをクリックすると、重大度の一覧が表示されます。登録したサポート要求に割り当てることができます。
 
->[AZURE.NOTE] 最高重大度はサポート プランごとに異なります。[サポート プランについて詳しく見る](https://azure.microsoft.com/support/plans)。
+> [!NOTE]
+> 最高重大度はサポート プランごとに異なります。[サポート プランについて詳しく見る](https://azure.microsoft.com/support/plans)。
+> 
+> 
 
 ![VID-2](./media/how-to-create-azure-support-request/VID-2.png)
 

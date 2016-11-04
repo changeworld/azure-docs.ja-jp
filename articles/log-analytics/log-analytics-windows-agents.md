@@ -1,30 +1,30 @@
-<properties
-    pageTitle="Windows コンピューターを Log Analytics に接続する | Microsoft Azure"
-    description="この記事では、Microsoft Monitoring Agent (MMA) のカスタマイズされたバージョンを使用して、オンプレミスのインフラストラクチャ内の Windows コンピューターを OMS に直接接続する手順について説明します。"
-    services="log-analytics"
-    documentationCenter=""
-    authors="bandersmsft"
-    manager="jwhit"
-    editor=""/>
+---
+title: Windows コンピューターを Log Analytics に接続する | Microsoft Docs
+description: この記事では、Microsoft Monitoring Agent (MMA) のカスタマイズされたバージョンを使用して、オンプレミスのインフラストラクチャ内の Windows コンピューターを OMS に直接接続する手順について説明します。
+services: log-analytics
+documentationcenter: ''
+author: bandersmsft
+manager: jwhit
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/11/2016"
-    ms.author="banders"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/11/2016
+ms.author: banders
 
-
-
+---
 # <a name="connect-windows-computers-to-log-analytics"></a>Windows コンピューターを Log Analytics に接続する
-
 この記事では、Microsoft Monitoring Agent (MMA) のカスタマイズされたバージョンを使用して、オンプレミスのインフラストラクチャ内の Windows コンピューターを OMS ワークスペースに直接接続する手順について説明します。 OMS に追加するすべてのコンピューターに対してエージェントをインストールおよび接続して、それらのエージェントが OMS にデータを送信し、OMS ポータルにそのデータを表示し対処できるようにする必要があります。 各エージェントは、複数のワークスペースにレポートすることができます。
 
 エージェントのインストールには、セットアップ コマンド ラインを使用するか、Azure Automation の Desired State Configuration (DSC) を使用します。  
 
->[AZURE.NOTE] Azure で実行されている仮想マシンの場合、[仮想マシン拡張機能](log-analytics-azure-vm-extension.md)を使用してインストールを簡略化できます。
+> [!NOTE]
+> Azure で実行されている仮想マシンの場合、[仮想マシン拡張機能](log-analytics-azure-vm-extension.md)を使用してインストールを簡略化できます。
+> 
+> 
 
 コンピューターがインターネットに接続されている場合、エージェントはインターネットへの接続を介して OMS にデータを送信します。 インターネットに接続されていないコンピューターの場合は、プロキシまたは OMS Log Analytics フォワーダーを使用できます。
 
@@ -38,15 +38,14 @@ OMS への Windows コンピューターの接続は、次の 3 つの手順を�
 
 ![oms-direct-agent-diagram](./media/log-analytics-windows-agents/oms-direct-agent-diagram.png)
 
-
 ## <a name="system-requirements-and-required-configuration"></a>システム要件と必要な構成
 エージェントをインストールまたはデプロイする前に、次の詳細を検証して、要件が満たされていることを確認してください。
 
-- OMS MMA は、Windows Server 2008 SP 1 以上または Windows 7 SP1 以上を搭載したコンピューターにのみインストールできます。
-- OMS サブスクリプションが必要です。  詳細については、「 [Get started with Log Analytics (Log Analytics の概要)](log-analytics-get-started.md)」を参照してください。
-- 各 Windows コンピューターは、HTTPS でインターネットに接続できる必要があります。 インターネット接続には、直接接続、プロキシを経由した接続、OMS Log Analytics フォワーダーを介した接続を使用できます。
-- OMS MMA は、スタンドアロン コンピューター、サーバー、および仮想マシンにインストールできます。 Azure でホストされる仮想マシンを OMS に接続する場合は、「[Azure 仮想マシンを Log Analytics に接続する](log-analytics-azure-vm-extension.md)」を参照してください。
-- エージェントは、TCP ポート 443 を使用してさまざまなリソースに対応する必要があります。 詳細については、「 [Configure proxy and firewall settings in Log Analytics (Log Analytics のプロキシとファイアウォールの設定を構成する)](log-analytics-proxy-firewall.md)」を参照してください。
+* OMS MMA は、Windows Server 2008 SP 1 以上または Windows 7 SP1 以上を搭載したコンピューターにのみインストールできます。
+* OMS サブスクリプションが必要です。  詳細については、「 [Get started with Log Analytics (Log Analytics の概要)](log-analytics-get-started.md)」を参照してください。
+* 各 Windows コンピューターは、HTTPS でインターネットに接続できる必要があります。 インターネット接続には、直接接続、プロキシを経由した接続、OMS Log Analytics フォワーダーを介した接続を使用できます。
+* OMS MMA は、スタンドアロン コンピューター、サーバー、および仮想マシンにインストールできます。 Azure でホストされる仮想マシンを OMS に接続する場合は、「[Azure 仮想マシンを Log Analytics に接続する](log-analytics-azure-vm-extension.md)」を参照してください。
+* エージェントは、TCP ポート 443 を使用してさまざまなリソースに対応する必要があります。 詳細については、「 [Configure proxy and firewall settings in Log Analytics (Log Analytics のプロキシとファイアウォールの設定を構成する)](log-analytics-proxy-firewall.md)」を参照してください。
 
 ## <a name="download-the-agent-setup-file-from-oms"></a>OMS からエージェントのセットアップ ファイルをダウンロードする
 1. OMS ポータルにある **[概要]** ページで、**[設定]** タイルをクリックします。  上部の **[接続されたソース]** タブをクリックします。  
@@ -62,20 +61,23 @@ OMS への Windows コンピューターの接続は、次の 3 つの手順を�
 3. [ライセンス条項] ページの記述内容を確認し、 **[同意する]**をクリックします。
 4. [インストール先フォルダー] ページで、既定のインストール フォルダーを変更するか、そのまま使用して、 **[次へ]**をクリックします。
 5. [エージェントのセットアップ オプション] ページでは、Azure Log Analytics (OMS) または Operations Manager へのエージェントの接続を選択できます。後でエージェントを構成する場合は、空白にしておいてかまいません。 ページの下部にある **[次へ]**」を参照してください。   
-    - Azure Log Analytics (OMS) への接続を選択した場合は、前の手順でメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー (主キー)** を貼り付けて、**[次へ]** をクリックします。  
-        ![ワークスペース ID と主キーの貼り付け](./media/log-analytics-windows-agents/connect-workspace.png)
-    - Operations Manager への接続を選択した場合は、**管理グループ名**、**管理サーバー**名、および**管理サーバー ポート**を入力して、**[次へ]** をクリックします。 [エージェント アクション アカウント] ページで、ローカル システム アカウントまたはローカル ドメイン アカウントのいずれかを選択し、 **[次へ]**をクリックします。  
-        ![管理グループの構成](./media/log-analytics-windows-agents/oms-mma-om-setup01.png)![エージェント アクション アカウント](./media/log-analytics-windows-agents/oms-mma-om-setup02.png)
-
+   
+   * Azure Log Analytics (OMS) への接続を選択した場合は、前の手順でメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー (主キー)** を貼り付けて、**[次へ]** をクリックします。  
+       ![ワークスペース ID と主キーの貼り付け](./media/log-analytics-windows-agents/connect-workspace.png)
+   * Operations Manager への接続を選択した場合は、**管理グループ名**、**管理サーバー**名、および**管理サーバー ポート**を入力して、**[次へ]** をクリックします。 [エージェント アクション アカウント] ページで、ローカル システム アカウントまたはローカル ドメイン アカウントのいずれかを選択し、 **[次へ]**をクリックします。  
+       ![管理グループの構成](./media/log-analytics-windows-agents/oms-mma-om-setup01.png)![エージェント アクション アカウント](./media/log-analytics-windows-agents/oms-mma-om-setup02.png)
 6. [インストールの準備完了] ページで、設定内容を確認し、 **[インストール]**をクリックします。
 7. [構成は正常に終了しました] ページで **[完了]**をクリックします。
 8. 完了すると、**コントロール パネル**に **Microsoft Monitoring Agent** が表示されます。 そこでは構成を検証して、エージェントが Operational Insights (OMS) に接続されていることを確認できます。 OMS に接続されると、エージェントにより **Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました**
 
 ## <a name="install-the-agent-using-the-command-line"></a>コマンド ラインを使用してエージェントをインストールする
-- コマンド ラインを使用してエージェントをインストールする場合は、次の例を変更してから使用してください。
-
-    >[AZURE.NOTE] エージェントをアップグレードするには、Log Analytics スクリプト API を使用する必要があります。 次のセクションを参照してエージェントをアップグレードしてください。
-
+* コマンド ラインを使用してエージェントをインストールする場合は、次の例を変更してから使用してください。
+  
+  > [!NOTE]
+  > エージェントをアップグレードするには、Log Analytics スクリプト API を使用する必要があります。 次のセクションを参照してエージェントをアップグレードしてください。
+  > 
+  > 
+  
     ```
     MMASetup-AMD64.exe /Q:A /R:N /C:"setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1"
     ```
@@ -89,17 +91,22 @@ $mma.AddCloudWorkspace($workspaceId, $workspaceKey)
 $mma.ReloadConfiguration()
 ```
 
->[AZURE.NOTE] 従来、コマンド ラインまたはスクリプトを使用してエージェントをインストールまたは構成する場合には `EnableAzureOperationalInsights` が使用されていましたが、現在は `AddCloudWorkspace` に置き換えられています。
+> [!NOTE]
+> 従来、コマンド ラインまたはスクリプトを使用してエージェントをインストールまたは構成する場合には `EnableAzureOperationalInsights` が使用されていましたが、現在は `AddCloudWorkspace` に置き換えられています。
+> 
+> 
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Azure Automation の DSC を使用してエージェントをインストールする
-
->[AZURE.NOTE] この手順とサンプル スクリプトでは、既存のエージェントはアップグレードされません。
+> [!NOTE]
+> この手順とサンプル スクリプトでは、既存のエージェントはアップグレードされません。
+> 
+> 
 
 1. [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) から xPSDesiredStateConfiguration DSC Module を Azure Automation にインポートします。  
-2.  *OPSINSIGHTS_WS_ID* と *OPSINSIGHTS_WS_KEY* に対して Azure Automation 変数アセットを作成します。 *OPSINSIGHTS_WS_ID* を OMS Log Analytics ワークスペース ID に設定し、*OPSINSIGHTS_WS_KEY* をワークスペースの主キーに設定します。
-3.  次のスクリプトを使用し、MMAgent.ps1 として保存します。
-4.  Azure Automation の DSC を使用してエージェントをインストールする場合は、次の例を変更してから使用してください。 Azure Automation インターフェイスまたはコマンドレットを使用して、Azure Automation に MMAgent.ps1 をインポートします。
-5.  構成にノードを割り当てます。 15 分以内に、ノードはその構成を確認し、MMA がノードにプッシュされます。
+2. *OPSINSIGHTS_WS_ID* と *OPSINSIGHTS_WS_KEY* に対して Azure Automation 変数アセットを作成します。 *OPSINSIGHTS_WS_ID* を OMS Log Analytics ワークスペース ID に設定し、*OPSINSIGHTS_WS_KEY* をワークスペースの主キーに設定します。
+3. 次のスクリプトを使用し、MMAgent.ps1 として保存します。
+4. Azure Automation の DSC を使用してエージェントをインストールする場合は、次の例を変更してから使用してください。 Azure Automation インターフェイスまたはコマンドレットを使用して、Azure Automation に MMAgent.ps1 をインポートします。
+5. 構成にノードを割り当てます。 15 分以内に、ノードはその構成を確認し、MMA がノードにプッシュされます。
 
 ```
 Configuration MMAgent
@@ -150,32 +157,28 @@ Configuration MMAgent
 
 エージェントで管理されているコンピューターからデータが収集されると、OMS で監視されているコンピューターの数が OMS ポータルの **[設定]** の **[接続されたソース]** タブに **[接続されたサーバー]** として表示されます。
 
-
 ## <a name="to-disable-an-agent"></a>エージェントを無効にするには
 1. エージェントをインストールした後、 **コントロール パネル**を開きます。
 2. Microsoft Monitoring Agent を開いてから、 **[Azure Log Analytics (OMS)]** タブをクリックします。
 3. ワークスペースを選択し、 **[削除]**をクリックします。 他のすべてのワークスペースについて、この手順を繰り返します。
 
-
 ## <a name="optionally,-configure-agents-to-report-to-an-operations-manager-management-group"></a>必要に応じて、Operations Manager 管理グループへの報告を行うようエージェントを構成します。
-
 IT インフラストラクチャ内で Operations Manager を使用する場合は、Operations Manager エージェントとして MMA エージェントを使用することもできます。
 
 ### <a name="to-configure-mma-agents-to-report-to-an-operations-manager-management-group"></a>Operations Manager 管理グループに報告するように MMA エージェントを構成するには
-1.  エージェントのインストール先であるコンピューターで、 **コントロール パネル**を開きます。
-2.  **Microsoft Monitoring Agent** を開いてから、**[Operations Manager]** タブをクリックします。
-    ![[Microsoft Monitoring Agent Operations Manager] タブ](./media/log-analytics-windows-agents/om-mg01.png)
-3.  Operations Manager サーバーが Active Directory と統合されている場合は、 **[管理グループの割り当てを AD DS から自動的に更新する]**をクリックします。
-4.  **[追加]** をクリックして、**[管理グループを追加する]** ダイアログ ボックスを開きます。  
-    ![Microsoft Monitoring Agent で管理グループを追加する](./media/log-analytics-windows-agents/oms-mma-om02.png)
-5.  **[管理グループ名]** ボックスに、管理グループの名前を入力します。
-6.  **[プライマリ管理サーバー]** ボックスに、プライマリ管理サーバーのコンピューター名を入力します。
-7.  **[管理サーバー ポート]** ボックスに、TCP ポート番号を入力します。
-8.  **[エージェント アクション アカウント]**で、ローカル システム アカウントまたはローカル ドメイン アカウントのいずれかを選択します。
-9.  **[OK]** をクリックして **[管理グループを追加する]** ダイアログ ボックスを閉じ、さらに **[OK]** をクリックして **[Microsoft Monitoring Agent のプロパティ]** ダイアログ ボックスを閉じます。
+1. エージェントのインストール先であるコンピューターで、 **コントロール パネル**を開きます。
+2. **Microsoft Monitoring Agent** を開いてから、**[Operations Manager]** タブをクリックします。
+   ![[Microsoft Monitoring Agent Operations Manager] タブ](./media/log-analytics-windows-agents/om-mg01.png)
+3. Operations Manager サーバーが Active Directory と統合されている場合は、 **[管理グループの割り当てを AD DS から自動的に更新する]**をクリックします。
+4. **[追加]** をクリックして、**[管理グループを追加する]** ダイアログ ボックスを開きます。  
+   ![Microsoft Monitoring Agent で管理グループを追加する](./media/log-analytics-windows-agents/oms-mma-om02.png)
+5. **[管理グループ名]** ボックスに、管理グループの名前を入力します。
+6. **[プライマリ管理サーバー]** ボックスに、プライマリ管理サーバーのコンピューター名を入力します。
+7. **[管理サーバー ポート]** ボックスに、TCP ポート番号を入力します。
+8. **[エージェント アクション アカウント]**で、ローカル システム アカウントまたはローカル ドメイン アカウントのいずれかを選択します。
+9. **[OK]** をクリックして **[管理グループを追加する]** ダイアログ ボックスを閉じ、さらに **[OK]** をクリックして **[Microsoft Monitoring Agent のプロパティ]** ダイアログ ボックスを閉じます。
 
 ## <a name="optionally,-configure-agents-to-use-the-oms-log-analytics-forwarder"></a>必要に応じて、OMS Log Analytics フォワーダーを使用するようにエージェントを構成します。
-
 インターネットに接続されていないサーバーまたはクライアントがある場合は、OMS Log Analytics フォワーダーを使用することで、該当するサーバーまたはクライアントから OMS にデータを送信することができます。  フォワーダーを使用した場合、エージェントからのデータはすべて、インターネットにアクセスできる単一のサーバーを介して送信されます。 フォワーダーは、エージェントから OMS にデータを直接転送し、転送するデータについては分析を行いません。
 
 セットアップや構成などのフォワーダーの詳細については、「 [OMS Log Analytics Forwarder (OMS Log Analytics フォワーダー)](https://blogs.technet.microsoft.com/msoms/2016/03/17/oms-log-analytics-forwarder) 」を参照してください。
@@ -186,11 +189,8 @@ IT インフラストラクチャ内で Operations Manager を使用する場合
 インターネットへのアクセスを制限しているプロキシ サーバーまたはファイアウォールが環境内に存在する場合、エージェントが OMS サービスと通信できるようにするには、「 [Log Analytics のプロキシ設定とファイアウォール設定の構成](log-analytics-proxy-firewall.md) 」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-
-- [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md) 」を参照してください。
-- [Configure proxy and firewall settings in Log Analytics (Log Analytics のプロキシとファイアウォールの設定を構成する) (Log Analytics のプロキシとファイアウォールの設定を構成する)](log-analytics-proxy-firewall.md) 」を参照してください。
-
-
+* [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md) 」を参照してください。
+* [Configure proxy and firewall settings in Log Analytics (Log Analytics のプロキシとファイアウォールの設定を構成する) (Log Analytics のプロキシとファイアウォールの設定を構成する)](log-analytics-proxy-firewall.md) 」を参照してください。
 
 <!--HONumber=Oct16_HO2-->
 

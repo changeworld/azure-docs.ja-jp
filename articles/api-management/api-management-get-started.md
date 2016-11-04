@@ -1,29 +1,26 @@
-<properties
-	pageTitle="Azure API Management での最初の API の管理 | Microsoft Azure"
-	description="API の作成方法、操作の追加方法、API Management の基本操作について説明します。"
-	services="api-management"
-	documentationCenter=""
-	authors="steved0x"
-	manager="erikre"
-	editor=""/>
+---
+title: Azure API Management での最初の API の管理 | Microsoft Docs
+description: API の作成方法、操作の追加方法、API Management の基本操作について説明します。
+services: api-management
+documentationcenter: ''
+author: steved0x
+manager: erikre
+editor: ''
 
-<tags
-	ms.service="api-management"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="08/24/2016"
-	ms.author="sdanie"/>
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 08/24/2016
+ms.author: sdanie
 
+---
 # Azure API Management での最初の API の管理
-
 ## <a name="overview"> </a>概要
-
 このガイドでは、Azure API Management の基本的な使用方法を簡単に説明し、実際に API を呼び出します。
 
 ## <a name="concepts"> </a>Azure API Management とは
-
 Azure API Management を任意のバックエンドで実行し、それに基づいて本格的な API プログラムを起動できます。
 
 一般的なシナリオは、次のとおりです。
@@ -32,36 +29,37 @@ Azure API Management を任意のバックエンドで実行し、それに基�
 * **ISV パートナー エコシステムを可能にする**。開発者ポータルを通したパートナーとの迅速な協力の提供と、パートナーによる使用の準備が整っていない内部実装から切り離された API ファサードの構築によって、これを行います。
 * **内部 API プログラムを実行する**。組織が可用性と API に対する最新の変更を伝達するための一元的な場所の提供と、組織アカウントに基づいたアクセスの制限によって、これを行います。そのすべてが、API ゲートウェイとバックエンドの間のセキュリティ保護されたチャネルに基づいて実行されます。
 
-
 システムは、次のコンポーネントで構成されます。
 
 * **API ゲートウェイ**。これは次の機能を持つエンドポイントです。
+  
   * API 呼び出しを受け入れ、バックエンドにルーティングします。
   * API キー、JWT トークン、証明書、その他の資格情報を検証します。
   * 使用量クォータとレート制限を適用します
   * コードを変更せずにその場で API を変換します。
   * セットアップ時にバックエンドの応答をキャッシュします。
   * 分析目的で呼び出しメタデータを記録します。
-
 * **パブリッシャー ポータル**は、API プログラムをセットアップする管理インターフェイスです。このインターフェイスを使用して、次の操作を行います。
-	* API スキーマを定義またはインポートします。
-	* API を製品にパッケージします。
-	* API のクォータや変換などのポリシーを設定します。
-	* 分析から洞察を得ます。
-	* ユーザーを管理します。
-
+  
+  * API スキーマを定義またはインポートします。
+  * API を製品にパッケージします。
+  * API のクォータや変換などのポリシーを設定します。
+  * 分析から洞察を得ます。
+  * ユーザーを管理します。
 * **開発者ポータル**は、開発者用のメイン Web として機能し、次の操作を実行できます。
-	* API のドキュメントを読みます。
-	* 対話型コンソールを使用して API を試します。
-	* API キーを取得するために、アカウントを作成してサブスクライブします。
-	* 自分自身の使用に関する分析にアクセスします。
-
+  
+  * API のドキュメントを読みます。
+  * 対話型コンソールを使用して API を試します。
+  * API キーを取得するために、アカウントを作成してサブスクライブします。
+  * 自分自身の使用に関する分析にアクセスします。
 
 ## <a name="create-service-instance"> </a>API Management インスタンスの作成
+> [!NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][Azure の無料試用版サイト]を参照してください。
+> 
+> 
 
->[AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][]を参照してください。
-
-API Management を使用するにあたって最初に行うことは、サービス インスタンスの作成です。[Azure クラシック ポータル][]にサインインし、**[新規]**、**[App Services]**、**[API Management]**、**[作成]** の順にクリックします。
+API Management を使用するにあたって最初に行うことは、サービス インスタンスの作成です。[Azure クラシック ポータル][Azure クラシック ポータル]にサインインし、**[新規]**、**[App Services]**、**[API Management]**、**[作成]** の順にクリックします。
 
 ![API Management の新しいインスタンス][api-management-create-instance-menu]
 
@@ -73,13 +71,19 @@ API Management を使用するにあたって最初に行うことは、サー�
 
 **[組織名]** フィールドに「**Contoso Ltd.**」と入力し、**[管理者の電子メール]** フィールドに電子メール アドレスを入力します。
 
->[AZURE.NOTE] API Management システムからの通知には、この電子メール アドレスが使用されます。詳細については、「[Azure API Management で通知と電子メール テンプレートを構成する方法][]」を参照してください。
+> [!NOTE]
+> API Management システムからの通知には、この電子メール アドレスが使用されます。詳細については、「[Azure API Management で通知と電子メール テンプレートを構成する方法][Azure API Management で通知と電子メール テンプレートを構成する方法]」を参照してください。
+> 
+> 
 
 ![新しい API Management サービス][api-management-create-instance-step2]
 
 API Management サービス インスタンスは、Developer、Standard、Premium の 3 つのレベルで利用できます。既定では、新しい API Management サービス インスタンスは、Developer レベルで作成されます。Standard レベルまたは Premium レベルを選択するには、**[詳細設定]** チェック ボックスをオンにし、次の画面で希望のレベルを選択します。
 
->[AZURE.NOTE] Developer レベルは、高可用性が重要ではない、開発、テスト、パイロット API プログラムのためのレベルです。Standard レベルと Premium レベルでは、より多くのトラフィックを処理するために予約ユニット数を拡張できます。Standard レベルと Premium レベルでは、最も高い処理能力とパフォーマンスを備えた、API Management サービスが提供されます。このチュートリアルは、どのレベルを使用しても完了できます。API Management レベルの詳細については、「[API Management の価格][]」をご覧ください。
+> [!NOTE]
+> Developer レベルは、高可用性が重要ではない、開発、テスト、パイロット API プログラムのためのレベルです。Standard レベルと Premium レベルでは、より多くのトラフィックを処理するために予約ユニット数を拡張できます。Standard レベルと Premium レベルでは、最も高い処理能力とパフォーマンスを備えた、API Management サービスが提供されます。このチュートリアルは、どのレベルを使用しても完了できます。API Management レベルの詳細については、「[API Management の価格][API Management の価格]」をご覧ください。
+> 
+> 
 
 チェック ボックスをクリックすると、サービス インスタンスが作成されます。
 
@@ -88,12 +92,14 @@ API Management サービス インスタンスは、Developer、Standard、Premi
 サービス インスタンスが作成されたら、次は、API の作成またはインポートを行います。
 
 ## <a name="create-api"> </a>API のインポート
-
 API は、クライアント アプリケーションから呼び出すことのできる一連の操作で構成されます。API の操作は、既存の Web サービスに引き渡されます。
 
 API は、手動で作成して操作を追加することも、インポートすることもできます。このチュートリアルでは、Microsoft によって提供され、Azure でホストされる、サンプル電卓 Web サービスの API をインポートします。
 
->[AZURE.NOTE] API を作成して手動で操作を追加する方法については、「[API を作成する方法](api-management-howto-create-apis.md)」と「[API に操作を追加する方法](api-management-howto-add-operations.md)」をご覧ください。
+> [!NOTE]
+> API を作成して手動で操作を追加する方法については、「[API を作成する方法](api-management-howto-create-apis.md)」と「[API に操作を追加する方法](api-management-howto-add-operations.md)」をご覧ください。
+> 
+> 
 
 API の構成は、Azure クラシック ポータルから発行者ポータルにアクセスして行います。発行者ポータルにアクセスするには、API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。
 
@@ -112,7 +118,10 @@ API の構成は、Azure クラシック ポータルから発行者ポータル
 
 ![新しい API を追加する][api-management-import-new-api]
 
->[AZURE.NOTE] **API Management** は現在、インポート用にバージョン 1.2 と 2.0 両方の Swagger ドキュメントをサポートしています。[Swagger 2.0 の仕様](http://swagger.io/specification)で `host`、`basePath`、および `schemes` プロパティがオプションである旨が示されていても、Swagger 2.0 ドキュメントに**必ず**これらのプロパティを含めるようにしてください。そうしないとインポートが行われません。
+> [!NOTE]
+> **API Management** は現在、インポート用にバージョン 1.2 と 2.0 両方の Swagger ドキュメントをサポートしています。[Swagger 2.0 の仕様](http://swagger.io/specification)で `host`、`basePath`、および `schemes` プロパティがオプションである旨が示されていても、Swagger 2.0 ドキュメントに**必ず**これらのプロパティを含めるようにしてください。そうしないとインポートが行われません。
+> 
+> 
 
 API がインポートされると、API の概要ページがパブリッシャー ポータルに表示されます。
 
@@ -122,15 +131,14 @@ API セクションにはいくつかのタブがあります。**[概要]** タ
 
 すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。
 
--	**スターター**
--	**無制限**
+* **スターター**
+* **無制限**
 
 このチュートリアルでは、API がインポートされたときに Basic Calculator API がスターター製品に追加されました。
 
 API を呼び出すためには、その API へのアクセスを提供する成果物を開発者が事前にサブスクライブする必要があります。開発者は、開発者ポータルで成果物にサブスクライブすることができます。また管理者がパブリッシャー ポータルで、開発者を成果物にサブスクライブすることもできます。このチュートリアルで先ほど API Management インスタンスを作成したので、管理者になっています。既定で、既にすべての製品にサブスクライブしていることになります。
 
 ## <a name="call-operation"></a>開発者ポータルから操作を呼び出す
-
 開発者ポータルには、API の操作を見てテストするための便利な環境が用意されており、操作を直接呼び出すことができます。このチュートリアルの手順では、Basic Calculator API の **2 つの整数を追加する**操作を呼び出します。パブリッシャー ポータルの右上にあるメニューから **[開発者ポータル]** をクリックします。
 
 ![開発者ポータル][api-management-developer-portal-menu]
@@ -154,7 +162,6 @@ API および操作とともにサンプルの説明とパラメーターがイ�
 ![応答][api-management-invoke-get-response]
 
 ## <a name="view-analytics"> </a>分析結果の表示
-
 Basic Calculator の分析結果を表示するには、開発者ポータルの右上にあるメニューから **[管理]** を選択してパブリッシャー ポータルに戻ります。
 
 ![管理][api-management-manage-menu]
@@ -165,7 +172,10 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 
 **Basic Calculator** のグラフの上にマウス ポインターを合わせると、指定された期間での API の使用量について特定のメトリックが表示されます。
 
->[AZURE.NOTE] グラフに線が表示されない場合は、開発者ポータルに戻って API を数回呼び出し、少し経ってから、再度ダッシュボードに切り替えてください。
+> [!NOTE]
+> グラフに線が表示されない場合は、開発者ポータルに戻って API を数回呼び出し、少し経ってから、再度ダッシュボードに切り替えてください。
+> 
+> 
 
 **[詳細の表示]** をクリックすると、表示されたメトリックの拡大版を含む、API の概要ページが表示されます。
 
@@ -179,14 +189,13 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 
 **[分析]** セクションには、次の 4 つのタブがあります。
 
--	**[概略]** には、全体的な使用量と正常性のメトリックのほか、開発者、成果物、API、操作それぞれのトップが表示されます。
--	**[使用量]** には、API 呼び出しと帯域幅の詳しい状況 (地理的情報を含む) が表示されます。
--	**[正常性]** には、ステータス コード、キャッシュの成功率、応答時間、API とサービスの応答時間が表示されます。
--	**[アクティビティ]** には、開発者、成果物、API、操作ごとの特定のアクティビティを詳しく分析したレポートが表示されます。
+* **[概略]** には、全体的な使用量と正常性のメトリックのほか、開発者、成果物、API、操作それぞれのトップが表示されます。
+* **[使用量]** には、API 呼び出しと帯域幅の詳しい状況 (地理的情報を含む) が表示されます。
+* **[正常性]** には、ステータス コード、キャッシュの成功率、応答時間、API とサービスの応答時間が表示されます。
+* **[アクティビティ]** には、開発者、成果物、API、操作ごとの特定のアクティビティを詳しく分析したレポートが表示されます。
 
 ## <a name="next-steps"> </a>次のステップ
-
-- [レート制限で API を保護する](api-management-howto-product-with-rules.md)方法について学習します。
+* [レート制限で API を保護する](api-management-howto-product-with-rules.md)方法について学習します。
 
 [Azure の無料試用版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 

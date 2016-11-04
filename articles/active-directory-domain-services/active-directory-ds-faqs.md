@@ -1,32 +1,28 @@
-<properties
-    pageTitle="FAQ - Azure Active Directory Domain Services | Microsoft Azure"
-    description="Azure Active Directory ドメイン サービスについてよく寄せられる質問"
-    services="active-directory-ds"
-    documentationCenter=""
-    authors="mahesh-unnikrishnan"
-    manager="stevenpo"
-    editor="curtand"/>
+---
+title: FAQ - Azure Active Directory Domain Services | Microsoft Docs
+description: Azure Active Directory ドメイン サービスについてよく寄せられる質問
+services: active-directory-ds
+documentationcenter: ''
+author: mahesh-unnikrishnan
+manager: stevenpo
+editor: curtand
 
-<tags
-    ms.service="active-directory-ds"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/07/2016"
-    ms.author="maheshu"/>
+ms.service: active-directory-ds
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/07/2016
+ms.author: maheshu
 
-
+---
 # <a name="azure-active-directory-domain-services:-frequently-asked-questions-(faqs)"></a>Azure Active Directory Domain Services: よく寄せられる質問 (FAQ)
-
 このページでは、Azure Active Directory Domain Services に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
 
 ### <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 Azure AD Domain Services を構成または管理する際に生じる一般的な問題の解決策については、「 [トラブルシューティング ガイド](active-directory-ds-troubleshooting.md) 」を参照してください。
 
-
 ### <a name="configuration"></a>構成
-
 #### <a name="can-i-create-multiple-domains-for-a-single-azure-ad-directory?"></a>1 つの Azure AD ディレクトリに対して複数のドメインを作成することはできますか。
 いいえ。 1 つの Azure AD ディレクトリに対して Azure AD Domain Services によって対応されるドメインは 1 つだけ作成できます。  
 
@@ -43,7 +39,6 @@ PowerShell/Azure AD Domain Services の自動デプロイは、現時点では�
 いいえ。 管理対象ドメインは Azure AD Domain Services によって提供されるドメインです。 このドメインに対してドメイン コントローラーをプロビジョニング、構成、または管理する必要はありません。これらの管理作業は Microsoft によるサービスとして提供されます。 そのため、管理対象ドメインに追加のドメイン コント ローラー (読み取り/書き込みも読み取り専用も) を追加することはできません。
 
 ### <a name="administration-and-operations"></a>管理と操作
-
 #### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop?"></a>リモート デスクトップを使用して管理対象ドメインのドメイン コントローラーに接続できますか。
 いいえ。 管理対象ドメインのドメイン コントローラーにリモート デスクトップで接続する権限はありません。 "AAD DC 管理者" グループのメンバーは、Active Directory 管理センター (ADAC) や AD PowerShell などの AD 管理ツールで管理対象ドメインを管理できます。 これらのツールは、"リモート サーバー管理ツール" 機能を使用して、管理対象ドメインに参加している Windows サーバーにインストールされます。
 
@@ -63,7 +58,6 @@ PowerShell/Azure AD Domain Services の自動デプロイは、現時点では�
 はい。 "AAD DC 管理者" グループに属するユーザーには、管理対象ドメインの DNS レコードを変更できるよう "DNS 管理者" 特権が付与されています。 これらのユーザーは、管理対象ドメインに参加している Windows Server を実行しているコンピューター上で DNS マネージャー コンソールを使用して、DNS を管理できます。 DNS マネージャー コンソールを使用するには、"リモート サーバー管理ツール" オプション機能の一部である "DNS サーバー ツール" をサーバーにインストールします。 [DNS の管理、監視、およびトラブルシューティングを行うためのユーティリティ](https://technet.microsoft.com/library/cc753579.aspx) の詳細については、TechNet をご覧ください。
 
 ### <a name="billing-and-availability"></a>課金と可用性
-
 #### <a name="is-azure-ad-domain-services-a-paid-service?"></a>Azure AD Domain Services は有料のサービスですか。
 はい。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/active-directory-ds/)を参照してください。
 
@@ -75,8 +69,6 @@ PowerShell/Azure AD Domain Services の自動デプロイは、現時点では�
 
 #### <a name="what-azure-regions-is-the-service-available-in?"></a>このサービスは、どの Azure のリージョンで利用できますか。
 Azure AD Domain Services を利用できる Azure のリージョンの一覧については、 [リージョンに関するページ](active-directory-ds-regions.md) を参照してください。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

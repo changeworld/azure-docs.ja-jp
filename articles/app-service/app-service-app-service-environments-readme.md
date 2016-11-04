@@ -1,30 +1,29 @@
-<properties 
-	pageTitle="App Service 環境 | Microsoft Azure" 
-	description="Azure App Service Environment とは App Service Environment の概要" 
-	keywords="azure app service environment, 仮想ネットワーク, ネットワークの保護"
-	services="app-service" 
-	documentationCenter="" 
-	authors="yochay" 
-	manager="wpickett" 
-	editor=""/>
+---
+title: App Service 環境 | Microsoft Docs
+description: Azure App Service Environment とは App Service Environment の概要
+keywords: azure app service environment, 仮想ネットワーク, ネットワークの保護
+services: app-service
+documentationcenter: ''
+author: yochay
+manager: wpickett
+editor: ''
 
-<tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/15/2016" 
-	ms.author="stefsch"/>
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/15/2016
+ms.author: stefsch
 
+---
 # App Service 環境のドキュメント
-
 App Service 環境は、Azure App Service アプリを高スケールで安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の [Premium][PremiumTier] サービス プラン オプションです。App Service 環境には、[Web Apps][WebApps]、[Mobile Apps][MobileApps]、[API Apps][APIApps] が含まれています。
 
 App Service 環境は、以下を必要とするアプリケーション ワークロードに最適です。
 
-- 高スケール
-- 分離およびセキュリティで保護されたネットワーク アクセス
+* 高スケール
+* 分離およびセキュリティで保護されたネットワーク アクセス
 
 顧客は、複数の App Service 環境を 1 つの Azure リージョン内に作成することも、複数の Azure リージョンにわたって作成することもできます。そのため、App Service 環境は、高 RPS のワークロードをサポートするステートレス アプリケーション層の水平方向のスケーリングに最適です。
 
@@ -41,14 +40,14 @@ App Service 環境は、単一の顧客のアプリケーションだけを実�
 * [ネットワークのセキュリティとアーキテクチャ](../app-service-web/app-service-app-service-environment-network-architecture-overview.md)
 
 ## 方法
-
-[AZURE.INCLUDE [app-service-blueprint-app-service-environment](../../includes/app-service-blueprint-app-service-environment.md)]
-
+[!INCLUDE [app-service-blueprint-app-service-environment](../../includes/app-service-blueprint-app-service-environment.md)]
 
 ## ビデオ
-[AZURE.VIDEO azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps]
+[!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON325/player]
 
-[AZURE.VIDEO microsoft-ignite-2015-running-enterprise-web-and-mobile-apps-on-azure-app-service]
+
+[!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3715/player]
+
 
 
 <!-- LINKS -->

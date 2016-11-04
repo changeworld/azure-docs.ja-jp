@@ -1,45 +1,42 @@
 
-2. TodoItem クラス定義を次のコードで置き換えます。 
-
-	    public class TodoItem
-	    {
-	        public string Id { get; set; }
-	
-	        [Newtonsoft.Json.JsonProperty(PropertyName = "text")]  
-	        public string Text { get; set; }
-	
-	        [Newtonsoft.Json.JsonProperty(PropertyName = "complete")]  
-	        public bool Complete { get; set; }
-	    }
-	
-	**JsonPropertyAttribute** は、クライアント型のプロパティ名と基になるデータ テーブル内の列名との間のマッピングを定義するために使用します。
-
-	>[AZURE.NOTE]ユニバーサル Windows アプリ プロジェクトでは、TodoItem クラスは共有する DataModel フォルダーにある別のコード ファイルで定義されます。
-
-1. MainPage.cs ファイルで、次の using ステートメントを追加またはコメント解除します。
-
-		using Microsoft.WindowsAzure.MobileServices;
-
-
-4. 既存の items コレクションを定義する行をコメントアウトするか削除します。その後、コメントを解除するか、次の行を追加して、_&lt;yourClient&gt;_ を、モバイル サービスにプロジェクトを接続したとき App.xaml.cs ファイルに追加された `MobileServiceClient` フィールドで置き換えます。
-
-		private MobileServiceCollection<TodoItem, TodoItem> items;
-		private IMobileServiceTable<TodoItem> todoTable = 
-		    App.<yourClient>.GetTable<TodoItem>();
-		  
-	このコードは、モバイル サービス対応のバインディング コレクション (items) とデータベース テーブルのプロキシ クラス (todoTable) を作成します。
-
-
+1. TodoItem クラス定義を次のコードで置き換えます。 
+   
+        public class TodoItem
+        {
+            public string Id { get; set; }
+   
+            [Newtonsoft.Json.JsonProperty(PropertyName = "text")]  
+            public string Text { get; set; }
+   
+            [Newtonsoft.Json.JsonProperty(PropertyName = "complete")]  
+            public bool Complete { get; set; }
+        }
+   
+    **JsonPropertyAttribute** は、クライアント型のプロパティ名と基になるデータ テーブル内の列名との間のマッピングを定義するために使用します。
+   
+   > [!NOTE]
+   > ユニバーサル Windows アプリ プロジェクトでは、TodoItem クラスは共有する DataModel フォルダーにある別のコード ファイルで定義されます。
+   > 
+   > 
+2. MainPage.cs ファイルで、次の using ステートメントを追加またはコメント解除します。
+   
+        using Microsoft.WindowsAzure.MobileServices;
+3. 既存の items コレクションを定義する行をコメントアウトするか削除します。その後、コメントを解除するか、次の行を追加して、*&lt;yourClient&gt;* を、モバイル サービスにプロジェクトを接続したとき App.xaml.cs ファイルに追加された `MobileServiceClient` フィールドで置き換えます。
+   
+        private MobileServiceCollection<TodoItem, TodoItem> items;
+        private IMobileServiceTable<TodoItem> todoTable = 
+            App.<yourClient>.GetTable<TodoItem>();
+   
+    このコードは、モバイル サービス対応のバインディング コレクション (items) とデータベース テーブルのプロキシ クラス (todoTable) を作成します。
 4. **InsertTodoItem** メソッド内で、**TodoItem.Id** プロパティを設定するコード行を削除し、**async** 修飾子をメソッドに追加して、次のコード行をコメント解除します。
+   
+        await todoTable.InsertAsync(todoItem);
 
-		await todoTable.InsertAsync(todoItem);
+    このコードでは、新しい項目をテーブルに挿入します。
 
-
-	このコードでは、新しい項目をテーブルに挿入します。
-
-5. **RefreshTodoItems** メソッドを次のコードで置き換えます。
-
-		private async void RefreshTodoItems()
+1. **RefreshTodoItems** メソッドを次のコードで置き換えます。
+   
+        private async void RefreshTodoItems()
         {
             MobileServiceInvalidOperationException exception = null;
             try
@@ -61,14 +58,13 @@
                 this.ButtonSave.IsEnabled = true;
             }    
         }
-
-	これにより、`todoTable` にある項目のコレクションへのバインディングが設定されます。これには、モバイル サービスから返された **TodoItem** オブジェクトがすべて含まれます。クエリの実行に問題がある場合、エラーを示すメッセージ ボックスが表示されます。
-
-6. **UpdateCheckedTodoItem** メソッド内で、**async** 修飾子をメソッドに追加して、次のコード行をコメント解除します。
-
-		await todoTable.UpdateAsync(item);
-
-	これにより、項目の更新がモバイル サービスに送信されます。
+   
+    これにより、`todoTable` にある項目のコレクションへのバインディングが設定されます。これには、モバイル サービスから返された **TodoItem** オブジェクトがすべて含まれます。クエリの実行に問題がある場合、エラーを示すメッセージ ボックスが表示されます。
+2. **UpdateCheckedTodoItem** メソッド内で、**async** 修飾子をメソッドに追加して、次のコード行をコメント解除します。
+   
+        await todoTable.UpdateAsync(item);
+   
+    これにより、項目の更新がモバイル サービスに送信されます。
 
 バックエンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、モバイル サービスに対してアプリケーションをテストします。
 

@@ -1,34 +1,30 @@
-<properties 
-pageTitle="Azure VM での S/4 HANA または BW/4 HANA のデプロイ | Microsoft Azure" 
-description="Azure VM での S/4 HANA または BW/4 HANA のデプロイ" 
-services="virtual-machines-linux" 
-documentationCenter="" 
-authors="hermanndms" 
-manager="timlt" 
-editor="" 
-tags="azure-resource-manager" 
-  keywords=""/> 
-<tags 
-  ms.service="virtual-machines-linux" 
-  ms.devlang="na" 
-  ms.topic="article" 
-  ms.tgt_pltfrm="vm-linux" 
-  ms.workload="infrastructure-services" 
-  ms.date="09/15/2016" 
-  ms.author="hermannd"/> 
+---
+title: Azure VM での S/4 HANA または BW/4 HANA のデプロイ | Microsoft Docs
+description: Azure VM での S/4 HANA または BW/4 HANA のデプロイ
+services: virtual-machines-linux
+documentationcenter: ''
+author: hermanndms
+manager: timlt
+editor: ''
+tags: azure-resource-manager
+keywords: ''
 
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 09/15/2016
+ms.author: hermannd
 
-
-# <a name="deploying-s/4-hana-or-bw/4-hana-on-microsoft-azure"></a>Microsoft Azure での S/4 HANA または BW/4 HANA のデプロイ 
-
+---
+# <a name="deploying-s/4-hana-or-bw/4-hana-on-microsoft-azure"></a>Microsoft Azure での S/4 HANA または BW/4 HANA のデプロイ
 この記事では、SAP Cloud Appliance Library 3.0 を使用して Microsoft Azure で S/4 HANA をデプロイする方法について説明します。
 スクリーン ショットでは、その手順を示します。 他の SAP HANA ベースのソリューション (BW/4 HANA など) のデプロイも同様のプロセスで機能します。 必要なのは別のソリューションを選択することだけです。
 
 SAP Cloud Appliance Library (SAP CAL) の作業は [ここ](https://cal.sap.com/)から開始できます。 新しい [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience)のブログもご覧ください。 
 
-
 次のスクリーンショットに、Microsoft Azure で S/4 HANA をデプロイする手順を示します。 BW/4 HANA などの他のソリューションでもプロセスは同じです。
-
 
 ![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic-1b.jpg)
 
@@ -92,15 +88,6 @@ Azure ポータルで、SAP CAL で指定したのと同じインスタンス名
 ![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic15.jpg)
 
 別のオプションとして、クライアント Windows VM にログインして、事前構成された SAP GUI などを起動することもできます。
-
-
-
-
-
-
-
-
-
 
 <!--HONumber=Oct16_HO2-->
 

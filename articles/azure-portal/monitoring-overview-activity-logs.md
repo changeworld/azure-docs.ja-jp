@@ -1,45 +1,45 @@
-<properties
-	pageTitle="Azure アクティビティ ログの概要 | Microsoft Azure"
-	description="Azure アクティビティ ログの概要と、Azure アクティビティ ログを使用して Azure サブスクリプション内で発生するイベントを理解する方法について説明します。"
-	authors="johnkemnetz"
-	manager="rboucher"
-	editor=""
-	services="monitoring-and-diagnostics"
-	documentationCenter="monitoring-and-diagnostics"/>
+---
+title: Azure アクティビティ ログの概要 | Microsoft Docs
+description: Azure アクティビティ ログの概要と、Azure アクティビティ ログを使用して Azure サブスクリプション内で発生するイベントを理解する方法について説明します。
+author: johnkemnetz
+manager: rboucher
+editor: ''
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
 
-<tags
-	ms.service="monitoring-and-diagnostics"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/17/2016"
-	ms.author="johnkem"/>
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/17/2016
+ms.author: johnkem
 
+---
 # Azure アクティビティ ログの概要
 **Azure アクティビティ ログ**では、サブスクリプションのリソースに対して実行された操作に関する洞察が得られます。アクティビティ ログではサブスクリプションのコントロール プレーン イベントが報告されるため、以前は "監査ログ" または "操作ログ" と呼ばれていました。アクティビティ ログを使用すると、サブスクリプションのリソースに対して実行された書き込み (PUT、POST、DELETE) 操作の "内容、実行者、実行時刻" を確認できるだけでなく、その操作と他の関連プロパティの状態も把握できます。アクティビティ ログには、読み取り (GET) 操作は含まれません。
 
-アクティビティ ログは、リソースによって出力されるログである [診断ログ](./monitoring-overview-of-diagnostic-logs.md)とは異なります。アクティビティ ログでは、そのリソースに対する操作ではなく、そのリソースの特定の操作に関するデータが提供されます。
+アクティビティ ログは、リソースによって出力されるログである [診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)とは異なります。アクティビティ ログでは、そのリソースに対する操作ではなく、そのリソースの特定の操作に関するデータが提供されます。
 
 Azure ポータル、CLI、PowerShell コマンドレット、Insights REST API を使用して、アクティビティ ログからイベントを取得できます。
 
 ## アクティビティ ログで実行できること
 アクティビティ ログでは次のことを実行できます。
 
-- **Azure ポータル**でアクティビティ ログを照会して表示する。
-- REST API、PowerShell コマンドレット、または CLI を使用してアクティビティ ログを照会する。
-- [アクティビティ ログ イベントをトリガーする電子メール アラートまたは Webhook アラートを作成する。](./insights-auditlog-to-webhook-email.md)
-- [アーカイブや手動での検査に使用するためにアクティビティ ログを**ストレージ アカウント**に保存する](./monitoring-archive-activity-log.md)。**ログ プロファイル**を使用して、リテンション期間 (日数) を指定できます。
-- [**PowerBI コンテンツ パック**](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-azure-audit-logs/)を使用して、アクティビティ ログを PowerBI で分析する。
-- サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[アクティビティ ログを **Event Hubs** にストリーミング](./monitoring-stream-activity-logs-event-hubs.md)する。
+* **Azure ポータル**でアクティビティ ログを照会して表示する。
+* REST API、PowerShell コマンドレット、または CLI を使用してアクティビティ ログを照会する。
+* [アクティビティ ログ イベントをトリガーする電子メール アラートまたは Webhook アラートを作成する。](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
+* [アーカイブや手動での検査に使用するためにアクティビティ ログを**ストレージ アカウント**に保存する](../monitoring-and-diagnostics/monitoring-archive-activity-log.md)。**ログ プロファイル**を使用して、リテンション期間 (日数) を指定できます。
+* [**PowerBI コンテンツ パック**](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-azure-audit-logs/)を使用して、アクティビティ ログを PowerBI で分析する。
+* サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[アクティビティ ログを **Event Hubs** にストリーミング](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)する。
 
 ## ログ プロファイルを使用したアクティビティ ログのエクスポート
 **ログ プロファイル**は、アクティビティ ログをエクスポートする方法を制御します。ログ プロファイルを使用して、以下を構成できます。
 
-- アクティビティ ログの送信先 (ストレージ アカウントまたは Event Hubs)
-- 送信するイベント カテゴリ (Write、Delete、Action など)
-- エクスポートするリージョン (場所)
-- アクティビティ ログをストレージ アカウントに保持する期間。リテンション期間が 0 日の場合、ログは永続的に保持されます。それ以外の場合、値は 1 ～ 2,147,483,647 の範囲の任意の日数にすることができます。保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
+* アクティビティ ログの送信先 (ストレージ アカウントまたは Event Hubs)
+* 送信するイベント カテゴリ (Write、Delete、Action など)
+* エクスポートするリージョン (場所)
+* アクティビティ ログをストレージ アカウントに保持する期間。リテンション期間が 0 日の場合、ログは永続的に保持されます。それ以外の場合、値は 1 ～ 2,147,483,647 の範囲の任意の日数にすることができます。保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
 
 これらの設定は、ポータルの [アクティビティ ログ] ブレードの [エクスポート] オプションを使用して構成することも、[REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell コマンドレット、または CLI を使用してプログラムによって構成することもできます。1 つのサブスクリプションで使用できるログ プロファイルは 1 つだけです。
 
@@ -47,13 +47,13 @@ Azure ポータル、CLI、PowerShell コマンドレット、Insights REST API 
 Azure ポータルの [エクスポート] オプションを使用して、アクティビティ ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできます。
 
 1. ポータルの左側のメニューを使用して、**[アクティビティ ログ]** ブレードに移動します。
-
+   
     ![ポータルの [アクティビティ ログ] に移動](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
 2. ブレードの上部にある **[エクスポート]** ボタンをクリックします。
-
+   
     ![ポータルの [エクスポート] ボタン](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
 3. 表示されるブレードで、イベントをエクスポートするリージョン、イベントの保存先となるストレージ アカウント (およびイベントをストレージに保持する日数。0 日にすると、ログはいつまでも保持されます)、イベントをストリーミングするための Event Hubs を作成する Service Bus 名前空間を選択できます。
-
+   
     ![[Export Activity Log (アクティビティ ログのエクスポート)] ブレード](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
 4. **[保存]** をクリックして設定を保存します。設定はサブスクリプションにすぐに適用されます。
 
@@ -69,13 +69,13 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 ```
 
 | プロパティ | 必須 | Description |
-|------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 名前 | はい | ログ プロファイルの名前。 |
-| StorageAccountId | なし | アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
-| serviceBusRuleId | なし | Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
-| 場所 | はい | アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
-| RetentionInDays | はい | イベントを保持する日数。1 ～2,147,483,647 の範囲。値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
-| カテゴリ | なし | 収集するイベント カテゴリのコンマ区切りリスト。指定できる値は、Write、Delete、Action です。 |
+| --- | --- | --- |
+| 名前 |はい |ログ プロファイルの名前。 |
+| StorageAccountId |なし |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
+| serviceBusRuleId |なし |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
+| 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
+| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
+| カテゴリ |なし |収集するイベント カテゴリのコンマ区切りリスト。指定できる値は、Write、Delete、Action です。 |
 
 #### ログ プロファイルの削除
 ```
@@ -98,13 +98,13 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 ```
 
 | プロパティ | 必須 | Description |
-|------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| name | はい | ログ プロファイルの名前。 |
-| storageId | なし | アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
-| serviceBusRuleId | なし | Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
-| 場所 | はい | アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
-| retentionInDays | はい | イベントを保持する日数。1 ～2,147,483,647 の範囲。値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
-| categories | なし | 収集するイベント カテゴリのコンマ区切りリスト。指定できる値は、Write、Delete、Action です。 |
+| --- | --- | --- |
+| name |はい |ログ プロファイルの名前。 |
+| storageId |なし |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
+| serviceBusRuleId |なし |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
+| 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
+| retentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
+| categories |なし |収集するイベント カテゴリのコンマ区切りリスト。指定できる値は、Write、Delete、Action です。 |
 
 #### ログ プロファイルの削除
 ```
@@ -196,31 +196,31 @@ azure insights logprofile delete --name my_log_profile
 ```
 
 | 要素名 | Description |
-|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| authorization | イベントの RBAC プロパティの BLOB。通常は、"action"、"role"、"scope" の各プロパティが含まれます。 |
-| caller | 操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの電子メール アドレス。 |
-| channels | 値として、"Admin" または "Operation" を指定します。 |
-| correlationId | 通常は文字列形式の GUID。correlationId を共有するイベントは、同じ uber アクションに属します。 |
-| description | イベントを説明する静的テキスト。 |
-| eventDataId | イベントの一意の識別子。 |
-| eventSource | このイベントを生成した Azure サービスまたはインフラストラクチャの名前。 |
-| httpRequest | Http 要求を記述する BLOB。通常、“clientRequestId”、“clientIpAddress”、“method” (HTTP メソッド、たとえば PUT) が含まれます。 |
-| level | イベントのレベル。次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
-| resourceGroupName | 影響を受けるリソースのリソース グループの名前。 |
-| resourceProviderName | 影響を受けるリソースのリソース プロバイダーの名前。 |
-| resourceUri | 影響を受けるリソースのリソース ID。 |
-| operationId | 単一の操作に対応する複数のイベント間で共有される GUID。 |
-| operationName | 操作の名前。 |
-| プロパティ | イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
-| status | 操作の状態を説明する文字列。一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
-| subStatus | 通常は対応する REST 呼び出しの HTTP 状態コードですが、副状態を示す他の文字列が含まれる場合もあります。たとえば、OK (HTTP Status Code: 200)、Created (HTTP Status Code: 201)、Accepted (HTTP Status Code: 202)、No Content (HTTP Status Code: 204)、Bad Request (HTTP Status Code: 400)、Not Found (HTTP Status Code: 404)、Conflict (HTTP Status Code: 409)、Internal Server Error (HTTP Status Code: 500)、Service Unavailable (HTTP Status Code: 503)、Gateway Timeout (HTTP Status Code: 504) などの一般的な値が含まれる場合があります。 |
-| eventTimestamp | イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
-| submissionTimestamp | イベントがクエリで使用できるようになったときのタイムスタンプ。 |
-| subscriptionId | Azure サブスクリプション ID。 |
-| nextLink | 結果セットが複数の応答に分けられているときに、次の結果セットを取得するための継続トークン。通常、この要素は、200 個以上のレコードがある場合に含まれます。 |
+| --- | --- |
+| authorization |イベントの RBAC プロパティの BLOB。通常は、"action"、"role"、"scope" の各プロパティが含まれます。 |
+| caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの電子メール アドレス。 |
+| channels |値として、"Admin" または "Operation" を指定します。 |
+| correlationId |通常は文字列形式の GUID。correlationId を共有するイベントは、同じ uber アクションに属します。 |
+| description |イベントを説明する静的テキスト。 |
+| eventDataId |イベントの一意の識別子。 |
+| eventSource |このイベントを生成した Azure サービスまたはインフラストラクチャの名前。 |
+| httpRequest |Http 要求を記述する BLOB。通常、“clientRequestId”、“clientIpAddress”、“method” (HTTP メソッド、たとえば PUT) が含まれます。 |
+| level |イベントのレベル。次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
+| resourceGroupName |影響を受けるリソースのリソース グループの名前。 |
+| resourceProviderName |影響を受けるリソースのリソース プロバイダーの名前。 |
+| resourceUri |影響を受けるリソースのリソース ID。 |
+| operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
+| operationName |操作の名前。 |
+| プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
+| status |操作の状態を説明する文字列。一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
+| subStatus |通常は対応する REST 呼び出しの HTTP 状態コードですが、副状態を示す他の文字列が含まれる場合もあります。たとえば、OK (HTTP Status Code: 200)、Created (HTTP Status Code: 201)、Accepted (HTTP Status Code: 202)、No Content (HTTP Status Code: 204)、Bad Request (HTTP Status Code: 400)、Not Found (HTTP Status Code: 404)、Conflict (HTTP Status Code: 409)、Internal Server Error (HTTP Status Code: 500)、Service Unavailable (HTTP Status Code: 503)、Gateway Timeout (HTTP Status Code: 504) などの一般的な値が含まれる場合があります。 |
+| eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
+| submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
+| subscriptionId |Azure サブスクリプション ID。 |
+| nextLink |結果セットが複数の応答に分けられているときに、次の結果セットを取得するための継続トークン。通常、この要素は、200 個以上のレコードがある場合に含まれます。 |
 
 ## 次のステップ
-- [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../resource-group-audit.md)
-- [Azure アクティビティ ログを Event Hubs にストリーミングする](./monitoring-stream-activity-logs-event-hubs.md)
+* [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../resource-group-audit.md)
+* [Azure アクティビティ ログを Event Hubs にストリーミングする](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
 
 <!---HONumber=AcomDC_0907_2016-->

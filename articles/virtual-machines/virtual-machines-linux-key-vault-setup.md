@@ -1,25 +1,26 @@
-<properties
-	pageTitle="Azure Resource Manager の仮想マシンに Key Vault を設定する | Microsoft Azure"
-	description="Azure Resource Manager の仮想マシンと共に使用するために Key Vault を設定する方法"
-	services="virtual-machines-linux"
-	documentationCenter=""
-	authors="singhkays"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+---
+title: Azure Resource Manager の仮想マシンに Key Vault を設定する | Microsoft Docs
+description: Azure Resource Manager の仮想マシンと共に使用するために Key Vault を設定する方法
+services: virtual-machines-linux
+documentationcenter: ''
+author: singhkays
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/31/2016"
-	ms.author="singhkay"/>
+ms.service: virtual-machines-linux
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-linux
+ms.devlang: na
+ms.topic: article
+ms.date: 05/31/2016
+ms.author: singhkay
 
+---
 # Azure Resource Manager の仮想マシンの Key Vault を設定する
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル
+クラシック デプロイ モデル
 
 Azure Resource Manager スタックでは、Key Vault のリソース プロバイダーにより提供されるリソースとしてシークレット/証明書がモデル化されます。Azure Key Vault の詳細については、「[Azure Key Vault とは](../key-vault/key-vault-whatis.md)」をご覧ください。
 
@@ -30,12 +31,12 @@ Key Vault を Azure Resource Manager 仮想マシンと共に使用するには�
 
 CLI の場合、デプロイ ポリシーを割り当てる前に、Key Vault を作成する必要があります。この処理には、次のコマンドを使用できます。
 
-	azure keyvault set-policy ContosoKeyVault –enabled-for-deployment true
+    azure keyvault set-policy ContosoKeyVault –enabled-for-deployment true
 
 ## テンプレートを使用して Key Vault を設定する
 テンプレートを使用する場合、Key Vault リソースの `enabledForDeployment` プロパティを `true` に設定する必要があります。
 
-	{
+    {
       "type": "Microsoft.KeyVault/vaults",
       "name": "ContosoKeyVault",
       "apiVersion": "2015-06-01",

@@ -1,10 +1,9 @@
-##Azure Toolkit for Eclipse
-
+## Azure Toolkit for Eclipse
 前提条件:
 
 1. Windows 7、Windows 8、Windows 10、Windows Server 2008、または Windows Server 2012。
 2. 「[Azure Toolkit for Eclipse の新機能]」の一覧にある Macintosh または Linux オペレーティング システム。
-2. Eclipse Indigo 以降。
+3. Eclipse Indigo 以降。
 
 インストール手順:
 

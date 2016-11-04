@@ -1,32 +1,30 @@
-<properties 
-	pageTitle="Azure Machine Learning でモデルをデバッグする | Microsoft Azure" 
-	description="Azure Machine Learning でモデルをデバッグする方法について説明します。" 
-	services="machine-learning"
-	documentationCenter="" 
-	authors="garyericson" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+---
+title: Azure Machine Learning でモデルをデバッグする | Microsoft Docs
+description: Azure Machine Learning でモデルをデバッグする方法について説明します。
+services: machine-learning
+documentationcenter: ''
+author: garyericson
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/09/2016" 
-	ms.author="bradsev;garye" />
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/09/2016
+ms.author: bradsev;garye
 
+---
 # Azure Machine Learning でモデルをデバッグする
-
 この記事では、Microsoft Azure Machine Learning でモデルをデバッグする方法について説明します。具体的には、モデルを実行したときに次の 2 つの障害シナリオが発生する場合の潜在的な理由について取り上げます。
 
 * [[モデルのトレーニング]][train-model] モジュールからエラーがスローされる
 * [[モデルのスコア付け]][score-model] モジュールから生成される結果が間違っている
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## [モデルのトレーニング] モジュールからエラーがスローされる
-
 ![Image1](./media/machine-learning-debug-models/train_model-1.png)
 
 [[モデルのトレーニング]][train-model] モジュールでは、次の 2 つを入力する必要があります。
@@ -37,14 +35,10 @@
 このモジュールは、次のような場合にエラーをスローします。
 
 1. [ラベル] 列が正しく指定されていない。これは、ラベルとして複数の列が選択されている場合か、正しくない列のインデックスが選択されている場合のいずれかです。たとえば、25 列だけ格納されている入力データセットに対して列インデックス 30 を使用した場合は、2 番目のケースが当てはまります。
-
 2. データセットに [特徴] 列が含まれていない。たとえば、入力データセットに列が 1 つだけ含まれていて、その列が [ラベル] 列とマークされていれば、モデルの作成に使用する特徴がないことになります。この場合は、[[モデルのトレーニング]][train-model] モジュールからエラーがスローされます。
-
 3. 入力データセット ([特徴] または [ラベル]) の値として無限の値が含まれている。
 
-
 ## [モデルのスコア付け] モジュールから正しい結果が生成されない
-
 ![Image2](./media/machine-learning-debug-models/train_test-2.png)
 
 教師あり学習の場合の一般的なトレーニング/テスト グラフでは、[[データの分割]][split] モジュールを使用して元のデータセットを 2 つの部分に分割します。つまり、モデルのトレーニングのために使用する部分と、トレーニング済みのモデルをトレーニングに使用しなかったデータに対して実行した場合の適合度のスコア付けのために予約されている部分に分割します。その後、トレーニング済みのモデルを使用してテスト データにスコアを付け、その結果を評価してモデルの確度を判定します。
@@ -62,11 +56,10 @@
 4. [[モデルのスコア付け]][score-model] モジュールは、スコア付け用のデータセット内で欠落値を持つ行や、いずれかの特徴について無限の値を含む行に対しては出力を生成しません。
 5. [[モデルのスコア付け]][score-model] モジュールは、スコア付け用のデータセットのすべての行に対して同一の出力を生成することがあります。これが発生するのは、たとえば、デシジョン フォレストを使用して分類を行おうとする場合に、リーフ ノードあたりのサンプルの最低数が、利用可能なトレーニング例の数より多い場合です。
 
-
 <!-- Module References -->
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
- 
+
 
 <!---HONumber=AcomDC_0914_2016-->

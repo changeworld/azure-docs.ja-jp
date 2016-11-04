@@ -1,24 +1,22 @@
-<properties
-	pageTitle="Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法 |Microsoft Azure"
-	description="Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。"
-	services="key-vault"
-	documentationCenter=""
-	authors="adamglick"
-	manager="mbaldwin"
-	editor=""/>
+---
+title: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法 | Microsoft Docs
+description: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。
+services: key-vault
+documentationcenter: ''
+author: adamglick
+manager: mbaldwin
+editor: ''
 
-<tags
-	ms.service="key-vault"
-	ms.workload="key-vault"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2016"
-	ms.author="sumedhb;aglick"/>
+ms.service: key-vault
+ms.workload: key-vault
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/26/2016
+ms.author: sumedhb;aglick
 
-
+---
 # Azure Key Vault の可用性と冗長性
-
 Azure Key Vault には複数層の冗長性が備わっています。そのため、サービスの個々のコンポーネントで障害が発生した場合でも、アプリケーションでは引き続きキーとシークレットを使用することができます。
 
 Key Vault のコンテンツは、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。これにより、キーとシークレットの高い持続性が保たれます。
@@ -31,19 +29,19 @@ Azure リージョン全体が使用できない場合がまれにあります�
 
 * リージョン フェールオーバーの場合、サービスのフェールオーバーには数分かかることがあります。その間に行われた要求は、フェールオーバーが完了するまで失敗する可能性があります。
 * フェールオーバーが完了すると、Key Vault は___読み取り専用___モードになります。このモードでサポートされる要求は次のとおりです。
- * Key Vault のリスト
- * Key Vault のプロパティの取得
- * シークレットのリスト
- * シークレットの取得
- * キーのリスト
- * キー (のプロパティ) の取得
- * encrypt
- * 復号化
- * ラップ
- * ラップ解除
- * 確認
- * 署名
- * backup
+  * Key Vault のリスト
+  * Key Vault のプロパティの取得
+  * シークレットのリスト
+  * シークレットの取得
+  * キーのリスト
+  * キー (のプロパティ) の取得
+  * encrypt
+  * 復号化
+  * ラップ
+  * ラップ解除
+  * 確認
+  * 署名
+  * backup
 * フェールオーバーがフェールバックされると、すべての種類の要求 (つまり、読み取り___および___書き込み要求) が可能になります。
 
 <!---HONumber=AcomDC_0831_2016-->

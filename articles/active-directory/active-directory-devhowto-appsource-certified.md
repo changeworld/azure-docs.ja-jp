@@ -1,24 +1,22 @@
-<properties
-   pageTitle="Azure Active Directory の AppSource 認定を取得する方法 | Microsoft Azure"
-   description="Azure Active Directory の AppSource 認定を取得する方法について説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="skwan"
-   manager="mbaldwin"
-   editor=""/>
+---
+title: Azure Active Directory の AppSource 認定を取得する方法 | Microsoft Docs
+description: Azure Active Directory の AppSource 認定を取得する方法について説明します。
+services: active-directory
+documentationcenter: ''
+author: skwan
+manager: mbaldwin
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="09/22/2016"
-   ms.author="skwan;bryanla"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/22/2016
+ms.author: skwan;bryanla
 
-
-#<a name="how-to-get-appsource-certified-for-azure-active-directory-(ad)"></a>Azure Active Directory (AD) の AppSource 認定を取得する方法 
-
+---
+# <a name="how-to-get-appsource-certified-for-azure-active-directory-(ad)"></a>Azure Active Directory (AD) の AppSource 認定を取得する方法
 Azure AD の AppSource 認定を取得するには、アプリケーションで OpenID Connect、OAuth 2.0、または SAML 2.0 プロトコルを使用して、Azure AD にマルチテナント サインイン パターンを実装する必要があります。 
 
 Azure AD サインインまたはマルチテナント アプリケーションの開発に慣れていない場合は、次の手順に従ってください。

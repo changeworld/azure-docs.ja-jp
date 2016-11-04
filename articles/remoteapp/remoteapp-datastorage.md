@@ -1,26 +1,26 @@
 
-<properties
-    pageTitle="カスタム イメージに Azure RemoteApp の機密データを格納しない | Microsoft Azure"
-    description="Azure RemoteApp のカスタム イメージにデータを格納するためのガイドラインについて説明します。"
-    services="remoteapp"
-    documentationCenter=""
-    authors="lizap"
-    manager="mbaldwin" />
+---
+title: カスタム イメージに Azure RemoteApp の機密データを格納しない | Microsoft Docs
+description: Azure RemoteApp のカスタム イメージにデータを格納するためのガイドラインについて説明します。
+services: remoteapp
+documentationcenter: ''
+author: lizap
+manager: mbaldwin
 
-<tags
-    ms.service="remoteapp"
-    ms.workload="compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/15/2016"
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-
+---
 # カスタム イメージに機密データを格納しない
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> [!IMPORTANT]
+> Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> 
+> 
 
 Azure RemoteApp で独自のアプリケーションをホストする場合、最初の手順はカスタム イメージの作成です。ここではカスタム イメージを使用して VM インスタンスを作成し、ユーザーにアプリを提供します。カスタム イメージには、SQL データベース、人事ファイル、QuickBooks 会社ファイルなどの特殊なデータ ファイルなど、失っても構わないアプリケーション データ、機密ではないデータなどのみが含まれます。すべての機密データは、ファイル サーバー、別の Azure VM、または SQL Azure 上の Azure RemoteApp とは別の場所に配置する必要があります。イメージは、データ ソースに接続してデータを提示するアプリケーションをホストする作業のみを行います。詳細については、「[Azure RemoteApp イメージの要件](remoteapp-imagereqs.md)」を参照してください。
 
@@ -30,19 +30,19 @@ Azure RemoteApp で独自のアプリケーションをホストする場合、�
 
 イメージ内に格納しない方がよいデータの例:
 
-- アクセスするユーザーの共有データ
-- SQL DB または QuickBooks DB
-- D:\\ 内のすべてのデータ
+* アクセスするユーザーの共有データ
+* SQL DB または QuickBooks DB
+* D:\\ 内のすべてのデータ
 
 すべてのユーザーの UPD にコピーする既定のプロファイル内に配置できるデータの例:
 
-- ユーザーごとの構成ファイル
-- ユーザーが UPD に保存する必要があるスクリプト
+* ユーザーごとの構成ファイル
+* ユーザーが UPD に保存する必要があるスクリプト
 
 重要なポイント:
 
-- カスタム イメージの作成時には、機密データをイメージに格納しないでください。データが失われる可能性があります。
-- 機密データは、常に別のファイル サーバー、別の Azure VM、クラウドに格納し、Azure RemoteApp 内のアプリケーションをホストする VM インスタンスとは常に別に格納することをお勧めします。
-- ユーザー データはユーザー プロファイル ディスク (UPD) に保存され、維持されます
+* カスタム イメージの作成時には、機密データをイメージに格納しないでください。データが失われる可能性があります。
+* 機密データは、常に別のファイル サーバー、別の Azure VM、クラウドに格納し、Azure RemoteApp 内のアプリケーションをホストする VM インスタンスとは常に別に格納することをお勧めします。
+* ユーザー データはユーザー プロファイル ディスク (UPD) に保存され、維持されます
 
 <!---HONumber=AcomDC_0817_2016-->

@@ -1,22 +1,21 @@
-<properties
-   pageTitle="Service Fabric アプリケーションとサービス セキュリティ ポリシーの概要 | Microsoft Azure"
-   description="アプリケーションが開始前に特権アクションを実行する必要がある SetupEntry ポイントを含む Service Fabric アプリケーションをシステムおよびローカル セキュリティ アカウントで実行する方法の概要"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="msfussell"
-   manager="timlt"
-   editor=""/>
+---
+title: Service Fabric アプリケーションとサービス セキュリティ ポリシーの概要 | Microsoft Docs
+description: アプリケーションが開始前に特権アクションを実行する必要がある SetupEntry ポイントを含む Service Fabric アプリケーションをシステムおよびローカル セキュリティ アカウントで実行する方法の概要
+services: service-fabric
+documentationcenter: .net
+author: msfussell
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/22/2016"
-   ms.author="mfussell"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/22/2016
+ms.author: mfussell
 
-
+---
 # <a name="configure-security-policies-for-your-application"></a>アプリケーションのセキュリティ ポリシーの構成
 Azure Service Fabric では、別のユーザー アカウントを使用してクラスターで実行しているアプリケーションをセキュリティで保護できます。 また、そのユーザー アカウントでデプロイするときにアプリケーションによって使用されるファイル、ディレクトリ、証明書などのリソースも保護されます。 これにより、実行中のアプリケーションは、共有のホスト環境にある場合でも、互いから保護されます。 
 
@@ -27,7 +26,6 @@ Azure Service Fabric では、別のユーザー アカウントを使用して�
 ユーザー グループを定義して作成し、ユーザーをそのグループに追加してまとめて管理できます。 これは、異なるサービス エントリ ポイントに対して複数のユーザーが存在し、グループ レベルで使用できる特定の共通の特権が必要な場合に便利です。
 
 ## <a name="configure-the-policy-for-service-setupentrypoint"></a>SetupEntryPoint サービスのポリシーを構成する
-
 [アプリケーション モデル](service-fabric-application-model.md) で説明したように、 **SetupEntryPoint** は、他のエントリポイントの前に、Service Fabric と同じ資格情報で実行する特権を持つエントリ ポイントです (通常は *NetworkService* アカウント)。 通常、 **EntryPoint** で指定された実行可能ファイルは、実行時間の長いサービス ホストで別々のセットアップのエントリ ポイントを持つことで、長時間にわたって高い権限でサービス ホスト実行可能ファイルを実行することを回避できます。 **EntryPoint** で指定された実行可能ファイルは、**SetupEntryPoint** が正常に終了した後に実行されます。 結果のプロセスは、終了またはクラッシュした場合に、監視されて再起動されます ( **SetupEntryPoint**で再起動)。
 
 サービスの SetupEntryPoint とメイン EntryPoint を示す簡単なサービス マニフェストの例を次に示します。
@@ -57,7 +55,6 @@ Azure Service Fabric では、別のユーザー アカウントを使用して�
 ~~~
 
 ### <a name="configure-the-policy-using-a-local-account"></a>ローカル アカウントを使用してポリシーを構成する
-
 サービスにセットアップ エントリ ポイントを構成した後は、サービスの実行に使用するセキュリティ アクセス許可をアプリケーション マニフェストで変更できます。 次の例では、管理者ユーザー アカウントの特権で実行するようにサービスを構成する方法を示します。
 
 ~~~
@@ -117,7 +114,7 @@ MyValue
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ~~~
 
-###  <a name="configure-the-policy-using-local-system-accounts"></a>ローカル システム アカウントを使用してポリシーを構成する
+### <a name="configure-the-policy-using-local-system-accounts"></a>ローカル システム アカウントを使用してポリシーを構成する
 多くの場合、上述のように管理者アカウントではなく、ローカル システム アカウントを使用して起動スクリプトを実行することが推奨されます。 管理者として RunAs ポリシーを実行すると、マシンでユーザー アクセス制御 (UAC) が既定で有効になっているため、通常はうまく動作しません。 このような場合、 **ローカル ユーザーを管理者グループに追加するのではなく、SetupEntryPoint を LocalSystem として実行することが推奨されます**。 次の例では、LocalSystem として実行するように SetupEntryPoint を設定します。
 
 ~~~
@@ -138,9 +135,8 @@ C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 </ApplicationManifest>
 ~~~
 
-##  <a name="launch-powershell-commands-from-a-setupentrypoint"></a>SetupEntryPoint から PowerShell コマンドを起動する
+## <a name="launch-powershell-commands-from-a-setupentrypoint"></a>SetupEntryPoint から PowerShell コマンドを起動する
 **SetupEntryPoint** ポイントから PowerShell を実行するには、PowerShell ファイルを指し示すバッチ ファイルで **PowerShell.exe** を実行します。 最初に、PowerShell ファイル ( **MySetup.ps1**など) をサービス プロジェクトに追加します。 このファイルがサービス パッケージにも含まれるように、 *[新しい場合はコピーする]* プロパティを忘れずに設定します。 次の例では、システム環境変数 **TestVariable**を設定する PowerShell ファイル MySetup.ps1 を起動するバッチ ファイルを示します。
-
 
 PowerShell ファイルを起動するための MySetup.bat。
 
@@ -191,7 +187,7 @@ Echo "Test console redirection which writes to the application log folder on the
 
 **自分のスクリプトをデバッグしたら、すぐにこのコンソール リダイレクト ポリシーを削除してください**
 
-## <a name="configure-policy-for-service-code-packages"></a>サービス コード パッケージのポリシーを構成する 
+## <a name="configure-policy-for-service-code-packages"></a>サービス コード パッケージのポリシーを構成する
 前の手順では、SetupEntryPoint に RunAs ポリシーを適用する方法を説明しました。 ここでは、サービス ポリシーとして適用できる別のプリンシパルを作成する方法をもう少し詳しく説明します。
 
 ### <a name="create-local-user-groups"></a>ローカル ユーザー グループの作成
@@ -365,7 +361,6 @@ HTTPS エンドポイントの場合、クライアントに返す証明書の�
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次のステップ
-
 * [アプリケーション モデルを理解する](service-fabric-application-model.md)
 * [サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)
 * [アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)

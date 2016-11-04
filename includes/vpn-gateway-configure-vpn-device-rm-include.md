@@ -3,7 +3,7 @@ VPN デバイスを構成するには、オンプレミス VPN デバイスを�
 
 PowerShell を使用して仮想ネットワーク ゲートウェイのパブリック IP アドレスを検索するには、次のサンプルを使用します。
 
-	Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
+    Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
 
 仮想ネットワーク ゲートウェイのパブリック IP アドレスは、Azure ポータルを使用して表示することもできます。**仮想ネットワーク ゲートウェイ**に移動し、ゲートウェイの名前をクリックします。
 

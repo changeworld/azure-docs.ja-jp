@@ -1,37 +1,41 @@
-<properties
-	pageTitle="REST を使用して App Service アプリのバックアップと復元を実行する"
-	description="RESTful API 呼び出しを使用して、Azure App Service でアプリのバックアップと復元を行う方法について説明します。"
-	services="app-service"
-	documentationCenter=""
-	authors="NKing92"
-	manager="wpickett"
-    editor="" />
+---
+title: REST を使用して App Service アプリのバックアップと復元を実行する
+description: RESTful API 呼び出しを使用して、Azure App Service でアプリのバックアップと復元を行う方法について説明します。
+services: app-service
+documentationcenter: ''
+author: NKing92
+manager: wpickett
+editor: ''
 
-<tags
-	ms.service="app-service"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/10/2016"
-	ms.author="nicking"/>
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/10/2016
+ms.author: nicking
+
+---
 # REST を使用して App Service アプリのバックアップと復元を実行する
-
-> [AZURE.SELECTOR]
-- [PowerShell](../app-service/app-service-powershell-backup.md)
-- [REST API](websites-csm-backup.md)
+> [!div class="op_single_selector"]
+> * [PowerShell](../app-service/app-service-powershell-backup.md)
+> * [REST API](websites-csm-backup.md)
+> 
+> 
 
 [App Service アプリ](https://azure.microsoft.com/services/app-service/web/)は Azure Storage に BLOB としてバックアップできます。バックアップには、アプリのデータベースを含めることもできます。アプリが誤って削除された場合、あるいは以前のバージョンに戻す必要がある場合、前のバックアップから復元できます。バックアップは必要に応じていつでも実行できます。あるいは、適切な間隔でバックアップのスケジュールを作成できます。
 
 この記事では、RESTful API 要求を使用してアプリのバックアップと復元を実行する方法について説明します。Azure ポータルでアプリのバックアップを視覚的に作成し、管理する場合は、「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください。
 
 <a name="gettingstarted"></a>
+
 ## Getting Started (概要)
 REST 要求を送信するには、アプリの**名前**、**リソース グループ**、**サブスクリプション ID** を把握しておく必要があります。この情報は、[Azure ポータル](https://portal.azure.com)の **[App Service]** ブレードでアプリをクリックすると確認できます。この記事の例では、Web サイト **backuprestoreapiexamples.azurewebsites.net** を構成します。これは Default-Web-WestUS リソース グループに保存され、ID 00001111-2222-3333-4444-555566667777 のサブスクリプションで実行されます。
 
 ![サンプル Web サイト情報][SampleWebsiteInformation]
 
 <a name="backup-restore-rest-api"></a>
+
 ## REST API のバックアップと復元
 REST API を利用してアプリをバックアップし、復元する方法の例をこれからいくつか取り上げます。それぞれの例に、URL と HTTP の要求本文が含まれます。サンプル URL には、{subscription-id} のように、中かっこで閉じられたプレースホルダーが含まれます。このプレースホルダーをアプリの対応する情報に置き換えます。参照のために、サンプル URL の各プレースホルダーの説明を記載します。
 
@@ -43,6 +47,7 @@ REST API を利用してアプリをバックアップし、復元する方法�
 HTTP 要求に追加できる任意のパラメーターを含む、API の完全ドキュメントについては、[Azure リソース エクスプローラー](https://resources.azure.com/)を参照してください。
 
 <a name="backup-on-demand"></a>
+
 ## アプリのオンデマンド バックアップ
 アプリをすぐにバックアップするには、**POST** 要求を **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backup/** に送信します。
 
@@ -96,9 +101,13 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
->[AZURE.NOTE] エラー メッセージは HTTP 応答のログ プロパティにあります。
+> [!NOTE]
+> エラー メッセージは HTTP 応答のログ プロパティにあります。
+> 
+> 
 
 <a name="schedule-automatic-backups"></a>
+
 ## 自動バックアップのスケジュールを作成する
 アプリは、オンデマンド バックアップするだけでなく、バックアップのスケジュールを作成し、自動実行することもできます。
 
@@ -137,6 +146,7 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 Microsoft のサンプル サイトの URL は **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/config/backup/list** です。
 
 <a name="get-backup-status"></a>
+
 ## バックアップのステータスを取得する
 アプリの規模によっては、バックアップの完了に時間がかかる場合があります。バックアップは失敗したり、タイムアウトになったり、部分的に成功したりすることもあります。すべてのアプリのバックアップの状態を確認するには、**GET** 要求を URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups** に送信します。
 
@@ -179,6 +189,7 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 * 9 – Deleted: バックアップは削除されました。
 
 <a name="restore-app"></a>
+
 ## アプリをバックアップから復元する
 アプリが削除された場合、または以前のバージョンにアプリを戻す場合は、バックアップからアプリを復元できます。復元を呼び出すには、**POST** 要求を URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}/restore** に送信します。
 
@@ -207,12 +218,14 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 バックアップを復元するとき、既存のアプリを上書きするのではなく、新しいアプリを作成した方が便利な場合があります。その場合は、作成する新しいアプリを指すように要求 URL を変更し、JSON の **overwrite** プロパティを **false** に変更します。
 
 <a name="delete-app-backup"></a>
+
 ## アプリのバックアップを削除する
 バックアップを削除する場合、**DELETE** 要求を URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}** に送信します。
 
 Microsoft のサンプル Web サイトを利用した URL は次のようになります。 **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1**
 
 <a name="manage-sas-url"></a>
+
 ## バックアップの SAS URL を管理する
 Azure App Service は、バックアップの作成時に指定された SAS URL を利用して、Azure Storage からバックアップを削除しようとします。この SAS URL が無効になっている場合、REST API でバックアップを削除することはできません。ただし、**POST** 要求を URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}/list** に送信し、バックアップに関連付けられている SAS URL を更新できます。
 
@@ -229,7 +242,10 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
->[AZURE.NOTE] セキュリティ上の理由から、特定のバックアップの GET 要求を送信するとき、バックアップに関連付けられている SAS URL は返されません。バックアップに関連付けられている SAS URL を表示する場合、POST 要求を上記と同じ URL に送信します。空の JSON オブジェクトを要求本文に追加します。サーバーからの応答には、SAS URL を含む、そのバックアップのすべての情報が含まれます。
+> [!NOTE]
+> セキュリティ上の理由から、特定のバックアップの GET 要求を送信するとき、バックアップに関連付けられている SAS URL は返されません。バックアップに関連付けられている SAS URL を表示する場合、POST 要求を上記と同じ URL に送信します。空の JSON オブジェクトを要求本文に追加します。サーバーからの応答には、SAS URL を含む、そのバックアップのすべての情報が含まれます。
+> 
+> 
 
 <!-- IMAGES -->
 [SampleWebsiteInformation]: ./media/websites-csm-backup/01siteconfig.png

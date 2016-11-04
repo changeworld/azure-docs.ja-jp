@@ -1,46 +1,49 @@
-<properties
-   pageTitle="Service Fabric とコンテナーのデプロイ | Microsoft Azure"
-   description="Service Fabric と、コンテナーを使用してマイクロサービス アプリケーションをデプロイする方法。 この記事では、Service Fabric が提供するコンテナー用の機能と、クラスターにコンテナー イメージをデプロイする方法について説明しています。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="msfussell"
-   manager=""
-   editor=""/>
+---
+title: Service Fabric とコンテナーのデプロイ | Microsoft Docs
+description: Service Fabric と、コンテナーを使用してマイクロサービス アプリケーションをデプロイする方法。 この記事では、Service Fabric が提供するコンテナー用の機能と、クラスターにコンテナー イメージをデプロイする方法について説明しています。
+services: service-fabric
+documentationcenter: .net
+author: msfussell
+manager: ''
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/25/2016"
-   ms.author="msfussell"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/25/2016
+ms.author: msfussell
 
-
+---
 # <a name="preview:-deploy-a-container-to-service-fabric"></a>プレビュー: Service Fabric へのコンテナーのデプロイ
-
->[AZURE.NOTE] この機能は Linux 向けのプレビューの段階にあり、現時点で Windows Server では使用できません。 Windows Server 向けのプレビューは、Windows Server 2016 GA の後に行われる Service Fabric の次回のリリースで提供され、それ以降のリリースでサポートされます。
+> [!NOTE]
+> この機能は Linux 向けのプレビューの段階にあり、現時点で Windows Server では使用できません。 Windows Server 向けのプレビューは、Windows Server 2016 GA の後に行われる Service Fabric の次回のリリースで提供され、それ以降のリリースでサポートされます。
+> 
+> 
 
 Service Fabric には、コンテナー化されたマイクロサービスで構成されたアプリケーションの構築に役立つ、いくつかのコンテナー機能が用意されています。 これをコンテナー化されたサービスといいます。 機能は次のとおりです。
 
-- コンテナー イメージのデプロイとアクティブ化
-- リソース ガバナンス
-- リポジトリの認証
-- コンテナー ポートからホスト ポートへのマッピング
-- コンテナー間での検出と通信
-- 環境変数の構成と設定の機能
+* コンテナー イメージのデプロイとアクティブ化
+* リソース ガバナンス
+* リポジトリの認証
+* コンテナー ポートからホスト ポートへのマッピング
+* コンテナー間での検出と通信
+* 環境変数の構成と設定の機能
 
 ここで、コンテナー化されたサービスをパッケージ化してアプリケーションに組み込むための各機能を順番に見ていきます。
 
 ## <a name="packaging-a-container"></a>コンテナーのパッケージ化
-
 コンテナーをパッケージ化する際は、Visual Studio プロジェクト テンプレートを使用するか、それとも [アプリケーション パッケージを手動で作成](#manually)するかを選択できます。 Visual Studio を使用すると、アプリケーション パッケージの構造とマニフェスト ファイルは新しいプロジェクト ウィザードによって作成されます。
 
 ## <a name="using-visual-studio-to-package-an-existing-executable"></a>Visual Studio を使用した既存の実行可能ファイルのパッケージ化
-
->[AZURE.NOTE] Visual Studio ツール SDK の今後のリリースでは、ゲスト実行可能ファイルを追加する現在の方法と同様のやり方で、アプリケーションにコンテナーを追加することができるようになります。 詳細については、「 [Service Fabric へのゲスト実行可能ファイルのデプロイ](service-fabric-deploy-existing-app.md) 」を参照してください。 現時点では、以下の説明に従って、手動でパッケージ化を行う必要があります。
+> [!NOTE]
+> Visual Studio ツール SDK の今後のリリースでは、ゲスト実行可能ファイルを追加する現在の方法と同様のやり方で、アプリケーションにコンテナーを追加することができるようになります。 詳細については、「 [Service Fabric へのゲスト実行可能ファイルのデプロイ](service-fabric-deploy-existing-app.md) 」を参照してください。 現時点では、以下の説明に従って、手動でパッケージ化を行う必要があります。
+> 
+> 
 
 <a id="manually"></a>
+
 ## <a name="manually-packaging-and-deploying-container"></a>手動でのパッケージ化とコンテナーのデプロイ
 コンテナー化されたサービスを手動でパッケージ化するプロセスは、次の手順に基づいています。
 
@@ -68,14 +71,16 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 ## <a name="resource-governance"></a>リソース ガバナンス
 リソース ガバナンスは、コンテナー機能の 1 つです。コンテナーがホスト上で使用できるリソースを制限します。 アプリケーション マニフェストで指定された `ResourceGovernancePolicy` は、サービス コード パッケージのリソース制限を宣言する機能を提供します。 次の事項に関して、リソース制限を設定できます。
 
-- メモリ
-- MemorySwap
-- CpuShares (CPU の相対的な重み)
-- MemoryReservationInMB  
-- BlkioWeight (BlockIO の相対的な重み) 
+* メモリ
+* MemorySwap
+* CpuShares (CPU の相対的な重み)
+* MemoryReservationInMB  
+* BlkioWeight (BlockIO の相対的な重み) 
 
->[AZURE.NOTE] 今後のリリースで、IOPS、読み取り/書き込み BPS などの特定のブロック IO 制限の指定がサポートされる予定です。
-
+> [!NOTE]
+> 今後のリリースで、IOPS、読み取り/書き込み BPS などの特定のブロック IO 制限の指定がサポートされる予定です。
+> 
+> 
 
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
@@ -89,7 +94,6 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 ## <a name="repository-authentication"></a>リポジトリの認証
 コンテナーをダウンロードするには、コンテナー リポジトリにログイン資格情報を提供する必要がある場合があります。 " *アプリケーション* " マニフェストで指定されたログイン資格情報は、イメージ リポジトリからコンテナー イメージをダウンロードする際に必要なログイン情報または SSH キーを指定するのに使用されます。  次の例は、 *TestUser* というアカウントと、クリア テキストのパスワードを示しています。 これは推奨 **されません** 。
 
-
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
         <Policies>
@@ -102,7 +106,6 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 パスワードは、マシンにデプロイされた証明書を使用して暗号化できます (暗号化する必要があります)。
 
 次の例は、*TestUser* というアカウントと、*MyCert* という証明書を使用して暗号化されたパスワードを示しています。 `Invoke-ServiceFabricEncryptText` Powershell コマンドを使用して、パスワードのシークレット暗号化テキストを作成できます。 作成方法の詳細については、「 [Service Fabric アプリケーションでのシークレットの管理](service-fabric-application-secret-management.md) 」を参照してください。 パスワードの暗号化を解除するための証明書の秘密キーは、ローカル コンピューターにアウトオブバンド方式でデプロイされる必要があります (Azure では Resource Manager を使用します)。 これで、Service Fabric がサービス パッケージをマシンにデプロイする際に、シークレットの暗号化の解除と、アカウント名およびこれらの資格情報を使用したコンテナー リポジトリによる認証を行えるようになります。
-
 
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
@@ -118,7 +121,6 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 
 ## <a name="container-port-to-host-port-mapping"></a>コンテナー ポートからホスト ポートへのマッピング
 アプリケーション マニフェストで `PortBinding` を指定することで、コンテナーとの通信に使用されるホスト ポートを構成できます。 このポートのバインドでは、サービスがコンテナー内部でリッスンしているポートをホスト上のポートにマップします。
-
 
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
@@ -184,7 +186,6 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 
 ## <a name="complete-examples-for-application-and-service-manifest"></a>アプリケーション マニフェストとサービス マニフェストのすべてのコード例
 次のコードは、コンテナー機能を示すアプリケーション マニフェストの例です。
-
 
     <ApplicationManifest ApplicationTypeName="SimpleContainerApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <Description>A simple service container application</Description>

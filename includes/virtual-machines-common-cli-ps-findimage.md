@@ -1,8 +1,10 @@
 
 
 ## Azure CLI
-
-> [AZURE.NOTE] この記事では、最新バージョンの Azure CLI または Azure PowerShell を使用して、仮想マシン イメージをナビゲートして選択する方法について説明します。前提条件として、リソース マネージャー モードに変更しておく必要があります。Azure CLI を使用している場合、次のように入力してこのモードに入ります`azure config mode arm`。
+> [!NOTE]
+> この記事では、最新バージョンの Azure CLI または Azure PowerShell を使用して、仮想マシン イメージをナビゲートして選択する方法について説明します。前提条件として、リソース マネージャー モードに変更しておく必要があります。Azure CLI を使用している場合、次のように入力してこのモードに入ります`azure config mode arm`。
+> 
+> 
 
 `azure vm quick-create` と共に使用するため、またはリソース グループのテンプレート ファイルを作成するための、イメージを検索する簡単で素早い方法は、`azure vm image list` コマンドを呼び出して、場所、発行元名 (大文字と小文字は区別されません)、およびプラン (プランを知っている場合) を渡すことです。たとえば、次のリストは、"Canonical" が "UbuntuServer" プランの発行元であることを知っている場合の短い例にすぎません。多数のリストは非常に長くなります。
 
@@ -115,14 +117,16 @@
 これで、使用するイメージを正確に選択できます。検出した URN 情報を使用して仮想マシンを素早く作成する方法や、その URN 情報のあるテンプレートを使用する方法については、「[Azure リソース マネージャーでの Azure CLI for Mac, Linux, and Windows の使用](../articles/xplat-cli-azure-resource-manager.md)」をご覧ください。
 
 ## PowerShell
-
-> [AZURE.NOTE] [最新の Azure PowerShell](../articles/powershell-install-configure.md) をインストールして構成します。バージョン 1.0 より前の Azure PowerShell を使用する場合でも以下のコマンドを使用できますが、初めに `Switch-AzureMode AzureResourceManager` を実行する必要があります。
+> [!NOTE]
+> [最新の Azure PowerShell](../articles/powershell-install-configure.md) をインストールして構成します。バージョン 1.0 より前の Azure PowerShell を使用する場合でも以下のコマンドを使用できますが、初めに `Switch-AzureMode AzureResourceManager` を実行する必要があります。
+> 
+> 
 
 Azure リソース マネージャーを使用して新しい仮想マシンを作成するとき、場合によっては、以下のイメージ プロパティの組み合わせによりイメージを指定する必要があります。
 
-- 発行元
-- プラン
-- SKU
+* 発行元
+* プラン
+* SKU
 
 たとえば、これらの値は、`Set-AzureRMVMSourceImage` PowerShell コマンドレットや、作成する仮想マシンの種類を指定する必要のあるリソース グループ テンプレート ファイルで必要となります。
 
@@ -131,7 +135,6 @@ Azure リソース マネージャーを使用して新しい仮想マシンを�
 1. イメージの発行元を一覧表示する。
 2. 指定された発行元について、そのプランを一覧表示する。
 3. 指定されたプランについて、その SKU を一覧表示する。
-
 
 最初に、次のコマンドを使用して発行元を一覧表示します。
 
@@ -205,7 +208,6 @@ Windows-Server-Technical-Preview
 ```
 
 この一覧から選択した SKU の名前をコピーすれば、`Set-AzureRMVMSourceImage` PowerShell コマンドレットやリソース グループ テンプレートに必要なすべての情報が得られます。
-
 
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png

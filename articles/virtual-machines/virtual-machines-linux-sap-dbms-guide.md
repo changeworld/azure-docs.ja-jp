@@ -1,24 +1,24 @@
-<properties
-   pageTitle="Linux 仮想マシン (VM) への SAP NetWeaver の導入 – DBMS デプロイ ガイド | Microsoft Azure"
-   description="Linux 仮想マシン (VM) 上の SAP NetWeaver – DBMS デプロイ ガイド"
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="MSSedusch"
-   manager="timlt"
-   editor=""
-   tags="azure-resource-manager"
-   keywords=""/>
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure-services"
-   ms.date="08/18/2016"
-   ms.author="sedusch"/>
+---
+title: Linux 仮想マシン (VM) への SAP NetWeaver の導入 – DBMS デプロイ ガイド | Microsoft Docs
+description: Linux 仮想マシン (VM) 上の SAP NetWeaver – DBMS デプロイ ガイド
+services: virtual-machines-linux
+documentationcenter: ''
+author: MSSedusch
+manager: timlt
+editor: ''
+tags: azure-resource-manager
+keywords: ''
 
+ms.service: virtual-machines-linux
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 08/18/2016
+ms.author: sedusch
+
+---
 # Azure Virtual Machines (VM) 上の SAP NetWeaver – DBMS デプロイ ガイド
-
 [767598]: https://service.sap.com/sap/support/notes/767598
 [773830]: https://service.sap.com/sap/support/notes/773830
 [826037]: https://service.sap.com/sap/support/notes/826037
@@ -296,13 +296,15 @@
 [xplat-cli]: ../xplat-cli-install.md
 [xplat-cli-azure-resource-manager]: ../xplat-cli-azure-resource-manager.md
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
+
+クラシック デプロイメント モデル。
 
 このガイドは Microsoft Azure への SAP ソフトウェアの実装およびデプロイに関するドキュメントの一部です。このガイドを読む前に、[計画および実装ガイド][planning-guide]をお読みください。このドキュメントでは、Azure のサービスとしてのインフラストラクチャ (IaaS) 機能を使用して Microsoft Azure Virtual Machines (VM) 上の SAP とさまざまなリレーショナル データベース管理システム (RDBMS) および関連製品を組み合わせてデプロイする方法について説明します。
 
 特定のプラットフォームに SAP ソフトウェアをインストールしてデプロイするときの主要なリソースである SAP インストール ドキュメントと SAP Notes を補足する内容となっています。
 
-[AZURE.INCLUDE [windows-warning](../../includes/virtual-machines-linux-sap-warning.md)]
+[!INCLUDE [windows-warning](../../includes/virtual-machines-linux-sap-warning.md)]
 
 ## 一般的な考慮事項
 この章では、Azure VM で SAP 関連 DBMS システムを実行する場合の考慮事項について説明します。この章では、特定の DBMS システムについてはほとんど言及していません。特定の DBMS システムについては、このホワイト ペーパーの後の章で説明します。
@@ -320,7 +322,10 @@
 * クラウドのみのデプロイ: Azure サブスクリプションが、サイト間接続または ExpressRoute 接続経由でオンプレミス ネットワーク インフラストラクチャに接続されていないデプロイです。この種のデプロイメントは、共通の Azure ドキュメントでもクラウドのみのデプロイメントとして説明されています。この方法でデプロイされた仮想マシンは、インターネットと、Azure 内の VM に割り当てられたパブリック インターネット エンドポイントを経由してアクセスされます。オンプレミスの Active Directory (AD) と DNS は、これらのタイプのデプロイメントでは Azure に拡張されません。そのため、VM はオンプレミスの Active Directory の一部にはなりません。注: このドキュメントで言う「クラウドのみのデプロイメント」とは、Active Directory の拡張機能や、オンプレミスからパブリック クラウドへの名前解決を使用せず、Azure 内だけで実行されている完全な SAP ランドスケープのことを指します。クラウドのみの構成は、Azure 上でホストされている SAP システムとオンプレミスにあるリソースとの間に、SAP STMS またはその他のオンプレミスのリソースを使用する必要がある、運用 SAP のシステムや構成用にはサポートされていません。
 * クロスプレミス: オンプレミスのデータ センターと Azure との間に、サイト間、マルチサイトまたは ExpressRoute 接続を使用した Azure サブスクリプションに、VM をデプロイするシナリオのことを指します。この種のデプロイメントは、共通の Azure ドキュメントでもクロスプレミス シナリオとして説明されています。この接続の目的は、オンプレミスのドメイン、オンプレミスの Active Directory およびオンプレミスの DNS を、Azure 内に拡張することです。オンプレミスのランドスケープが、サブスクリプションの Azure 資産に拡張されます。この拡張により。VM はオンプレミス ドメインの一部になることができます。オンプレミス ドメインのドメイン ユーザーはこのサーバーにアクセスできます。また、その VM のサービス (DBMS サービスなど) を実行できます。オンプレミスにデプロイした VM 間、および Azure にデプロイした VM 間の通信および名前解決は可能です。これが Azure 上に SAP 資産をデプロイする場合の最も一般的なシナリオだと思われます。詳細については、[こちら][vpn-gateway-cross-premises-options]と[こちら][vpn-gateway-site-to-site-create]の記事をご覧ください。
 
-> [AZURE.NOTE] SAP システムを実行する Azure Virtual Machines がオンプレミス ドメインのメンバーである SAP システムのクロスプレミス デプロイは、運用 SAP システムの場合にサポートされます。クロスプレミス構成では、Azure に SAP ランドスケープの一部または全部をデプロイする場合にサポートされます。Azure で完全な SAP ランドスケープを実行する場合でも、これらの VM をオンプレミス ドメインと ADS の一部に含める必要があります。ハイブリッド IT シナリオについて記載した以前のバージョンのドキュメントでは、「ハイブリッド」という用語はオンプレミスと Azure 間のクロスプレミス接続が存在するという事実に基づいていると説明しました。このケースでは、「ハイブリッド」とは Azure の VM がオンプレミス Active Directory の一部であることも意味します。
+> [!NOTE]
+> SAP システムを実行する Azure Virtual Machines がオンプレミス ドメインのメンバーである SAP システムのクロスプレミス デプロイは、運用 SAP システムの場合にサポートされます。クロスプレミス構成では、Azure に SAP ランドスケープの一部または全部をデプロイする場合にサポートされます。Azure で完全な SAP ランドスケープを実行する場合でも、これらの VM をオンプレミス ドメインと ADS の一部に含める必要があります。ハイブリッド IT シナリオについて記載した以前のバージョンのドキュメントでは、「ハイブリッド」という用語はオンプレミスと Azure 間のクロスプレミス接続が存在するという事実に基づいていると説明しました。このケースでは、「ハイブリッド」とは Azure の VM がオンプレミス Active Directory の一部であることも意味します。
+> 
+> 
 
 一部の Microsoft ドキュメントでは、クロスプレミス シナリオ、特に DBMS HA 構成の場合に少し異なる記述をしています。SAP 関連ドキュメントでは、クロスプレミス シナリオは単にサイト間またはプライベート (ExpressRoute) 接続になるようにすることを表し、SAP ランドスケープがオンプレミスと Azure 間で分散するという事実を表します。
 
@@ -333,25 +338,28 @@ Azure での SAP デプロイのトピックを記載した次のガイドが提
 
 次の SAP Notes は、SAP on Azure のトピックに関連します。
 
-| Note 番号 | タイトル
-|------------|--------
-| [1928533] | SAP Applications on Azure: Supported Products and Azure VM types (Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類)
-| [2015553] | SAP on Microsoft Azure: Support Prerequisites (Microsoft Azure 上の SAP: サポートの前提条件)
-| [1999351] | Troubleshooting Enhanced Azure Monitoring for SAP (強化された Azure Monitoring for SAP のトラブルシューティング)
-| [2178632] | Key Monitoring Metrics for SAP on Microsoft Azure (Microsoft Azure 上の SAP 用の主要な監視メトリック)
-| [1409604] | Virtualization on Windows: Enhanced Monitoring (Windows での仮想化: 拡張された監視機能)
-| [2191498] | SAP on Linux with Azure: Enhanced Monitoring (Azure を使用した Linux 上の SAP: 拡張された監視機能)
-| [2039619] | SAP Applications on Microsoft Azure using the Oracle Database: Supported Products and Versions (Oracle データベースを使用した Microsoft Azure 上の SAP アプリケーション: サポートされている製品とバージョン)
-| [2233094] | DB6: SAP Applications on Azure Using IBM DB2 for Linux, UNIX, and Windows - Additional Information (DB6: Linux、UNIX、および Windows 向けの IBM DB2 を使用した Azure 上の SAP アプリケーション - 追加情報)
-| [2243692] | Linux on Microsoft Azure (IaaS) VM: SAP license issues (Microsoft Azure (IaaS) VM 上の Linux: SAP ライセンスの問題)
-| [1984787] | SUSE LINUX Enterprise Server 12: Installation notes (SUSE Linux Enterprise Server 12: インストールに関する注意事項)
-| [2002167] | Red Hat Enterprise Linux 7.x: Installation and Upgrade (Red Hat Enterprise Linux 7.x: インストールおよびアップグレード)
+| Note 番号 | タイトル |
+| --- | --- |
+| [1928533] |SAP Applications on Azure: Supported Products and Azure VM types (Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類) |
+| [2015553] |SAP on Microsoft Azure: Support Prerequisites (Microsoft Azure 上の SAP: サポートの前提条件) |
+| [1999351] |Troubleshooting Enhanced Azure Monitoring for SAP (強化された Azure Monitoring for SAP のトラブルシューティング) |
+| [2178632] |Key Monitoring Metrics for SAP on Microsoft Azure (Microsoft Azure 上の SAP 用の主要な監視メトリック) |
+| [1409604] |Virtualization on Windows: Enhanced Monitoring (Windows での仮想化: 拡張された監視機能) |
+| [2191498] |SAP on Linux with Azure: Enhanced Monitoring (Azure を使用した Linux 上の SAP: 拡張された監視機能) |
+| [2039619] |SAP Applications on Microsoft Azure using the Oracle Database: Supported Products and Versions (Oracle データベースを使用した Microsoft Azure 上の SAP アプリケーション: サポートされている製品とバージョン) |
+| [2233094] |DB6: SAP Applications on Azure Using IBM DB2 for Linux, UNIX, and Windows - Additional Information (DB6: Linux、UNIX、および Windows 向けの IBM DB2 を使用した Azure 上の SAP アプリケーション - 追加情報) |
+| [2243692] |Linux on Microsoft Azure (IaaS) VM: SAP license issues (Microsoft Azure (IaaS) VM 上の Linux: SAP ライセンスの問題) |
+| [1984787] |SUSE LINUX Enterprise Server 12: Installation notes (SUSE Linux Enterprise Server 12: インストールに関する注意事項) |
+| [2002167] |Red Hat Enterprise Linux 7.x: Installation and Upgrade (Red Hat Enterprise Linux 7.x: インストールおよびアップグレード) |
 
 Linux に関するすべての SAP ノートが記載された、[SCN Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) も参照してください。
 
 Microsoft Azure のアーキテクチャと Microsoft Azure Virtual Machines のデプロイおよび操作方法に関する実用的な知識が必要です。詳細については、こちら (<https://azure.microsoft.com/documentation/>) を参照してください。
- 
-> [AZURE.NOTE] Microsoft Azure Platform で提供する、サービスとしての Microsoft Azure Platform (PaaS) については説明**しません**。このホワイト ペーパーでは、オンプレミス環境でデータベース管理システム (DBMS) を実行するのとまったく同じように Microsoft Azure Virtual Machines (IaaS) の DBMS を実行する方法について説明します。これらの 2 つの製品のデータベース機能は非常に異なっているため、混同しないでください。関連項目: <https://azure.microsoft.com/services/sql-database/>
+
+> [!NOTE]
+> Microsoft Azure Platform で提供する、サービスとしての Microsoft Azure Platform (PaaS) については説明**しません**。このホワイト ペーパーでは、オンプレミス環境でデータベース管理システム (DBMS) を実行するのとまったく同じように Microsoft Azure Virtual Machines (IaaS) の DBMS を実行する方法について説明します。これらの 2 つの製品のデータベース機能は非常に異なっているため、混同しないでください。関連項目: <https://azure.microsoft.com/services/sql-database/>
+> 
+> 
 
 現在説明している IaaS については、一般的に、Windows、Linux、および DBMS のインストールと構成はオンプレミスに設置する仮想マシンまたはベア メタル マシンと本質的には同じです。ただし、IaaS を利用する場合、アーキテクチャおよびシステム管理の実装の決定については異なる部分があります。このドキュメントの目的は、IaaS を使用する場合に知っておくべき特定のアーキテクチャおよびシステム管理の相違について説明することです。
 
@@ -377,25 +385,25 @@ Azure Standard または Premium Storage の使用状況 (DS シリーズまた�
 * VHD ごとのデータ スループット。
 * VM サイズに対して追加できる VHD の数。
 * VM が提供できるストレージの全体的なスループット。
- 
+
 Azure は、VHD ドライブごとに IOPS クォータを適用します。Azure Standard Storage と Premium Storage でホストされている VHD の場合、これらのクォータは異なります。また、この 2 つのストレージ タイプの I/O 待機時間は非常に異なり、Premium Storage のほうが優れた I/O 待機時間になります。各 VM タイプでは接続できる VHD の数に限りがあります。別の制限として、Azure Premium Storage を利用できるのは特定の VM タイプのみです。つまり、特定の VM タイプを決定する場合、CPU とメモリの要件だけではなく、一般的に VHD の数または Premium Storage ディスクの種類によって拡張される IOPS、待機時間、ディスクのスループット要件によっても左右される場合があります。特に Premium Storage では各 VHD で実現するべき IOPS とスループットの値によって VHD のサイズも決まる場合があります。
 
 全体の IOPS レート、マウントされる VHD の数、VM のサイズはすべて相互に関連があるため、SAP システムの Azure の構成はオンプレミス デプロイとは異なる場合があります。LUN ごとの IOPS 制限は、通常、オンプレミス デプロイでは設定可能です。Azure Storage では、これらの制限は固定であるか、または Premium Storage のディスク タイプに依存します。そのため、オンプレミス デプロイの場合、お客様のデータベース サーバーの構成では、SAP および DBMS などの特殊な実行可能ファイル用に多数の異なるボリュームを使用したり、一時的なデータベースまたはテーブル スペース用に特別なボリュームを使用したりしています。このようなオンプレミス システムを Azure に移行すると、実行可能ファイルまたはデータベース用の VHD が無駄になり、IOPS がさほど大きくならないか、またはまったく実現できなくなって、潜在的な IOPS 帯域幅が無駄になる可能性があります。そのため、Azure VM では、可能であれば DBMS および SAP の実行可能ファイルを OS ディスクにインストールすることをお勧めしています。
 
 データベース ファイルとログ ファイルの配置、使用する Azure Storage タイプは IOPS、待機時間、およびスループットの要件によって定義する必要があります。トランザクション ログ向けに十分な IOPS を確保するためには、トランザクション ログ ファイル用の複数の VHD を使用するか、大容量の Premium Storage ディスクを使用する必要がある場合があります。このような場合、トランザクション ログを含む VHD でソフトウェア RAID (Windows の場合は Windows 記憶域プール、Linux の場合は MDADM および LVM (Logical Volume Manager) など) を構築することになるでしょう。
 
-___
-
+- - -
 > ![Windows][Logo_Windows] Windows
->
+> 
 > Azure VM の D:\\ ドライブは、Azure コンピューティング ノード上のいくつかのローカル ディスクによってサポートされる非永続ドライブです。非永続であるということは、VM が再起動されると、D:\\ ドライブ上のコンテンツに加えられた変更が失われることを意味します。「変更」とは、保存されたファイル、作成されたディレクトリ、インストールされたアプリケーションなどのことです。
->
+> 
 > ![Linux][Logo_Linux] Linux
->
+> 
 > Linux Azure VM は、Azure コンピューティング ノード上のローカル ディスクによってサポートされる非永続ドライブである /mnt/resource ドライブを自動的にマウントします。非永続であるということは、VM が再起動されると、/mnt/resource ドライブ上のコンテンツに加えられた変更が失われることを意味します。変更とは、保存されたファイル、作成されたディレクトリ、インストールされたアプリケーションなどのことです。
+> 
+> 
 
-___
-
+- - -
 Azure VM シリーズに依存しますが、コンピューティング ノード上のローカル ディスクはさまざまなパフォーマンスを示します。パフォーマンスは次のように分類できます。
 
 * A0 ～ A7: パフォーマンスが非常に制限されている。Windows ページ ファイルを超えるものは使用できない
@@ -409,7 +417,7 @@ Azure VM シリーズに依存しますが、コンピューティング ノー�
 
 ### <a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>VM と VHD のキャッシング
 ポータルを通じてこれらのディスク/VHD を作成する場合、またはアップロードした VHD を VM にマウントする場合、Azure ストレージに配置されたこれらの VHD と VM 間の I/O トラフィックをキャッシュするかどうかを選択できます。Azure Standard および Premium Storage は、この種類のキャッシュに 2 つのテクノロジを使用します。どちらの場合でも、キャッシュ自体は VM の一時ディスク (Windows は D:\\、 Linux は /mnt/resource) を使用して、同じドライブにディスク バックアップされます。
- 
+
 Azure Standard Storage で可能なキャッシュの種類は次のとおりです。
 
 * キャッシュなし
@@ -429,30 +437,28 @@ Azure Premium Storage の推奨事項は、SAP データベースの**データ 
 既に説明したように、構成可能な VHD の数にわたってデータベース ファイルに必要な IOPS 数と、VHD または Premium Storage ディスクあたりに Azure VM が提供する最大 IOPS のバランスを取る必要があります。VHD にかかる IOPS 負荷に対処する最も簡単な方法は、異なる VHD 間でソフトウェア RAID を作成することです。ソフトウェア RAID から分割した LUN に SAP DBMS のデータ ファイルの数を設定します。3 つの Premium Storage ディスクのうち 2 つは、Standard Storage に基づく VHD よりも高い IOPS クォータを提供するため、要件に応じて、Premium Storage の使用を検討する必要があるかもしれません。それだけでなく、Azure Premium Storage では I/O 待機時間が大幅に短縮されます。
 
 同じことがさまざまな DBMS システムのトランザクション ログにも当てはまります。ファイルが多数ある場合、DBMS システムは一度に 1 つのファイルにしか書き込まないため、単に Tlog ファイルを追加するだけでは役に立ちません。単一の Standard Storage ベースの VHD が提供するよりも高い IOPS レートが必要な場合は、複数の Standard Storage VHD にわたってストライピングすることができます。また、IOPS レートがより高い大容量の Premium Storage ディスク タイプを使用しても、トランザクション ログへの書き込み I/O の待機時間が短くなります。
- 
+
 Azure デプロイでソフトウェア RAID を使用するとよい状況は次のとおりです。
 
 * トランザクション ログ/Redo ログで Azure が単一の VHD に提供する IOPS よりも高い IOPS が必要な場合。上記のように、この場合はソフトウェア RAID を使用して複数の VHD にまたがる LUN を作成することにより解決できます。
 * SAP データベースのさまざまなデータ ファイルにわたる I/O ワークロードの配分が不均一である場合。このような場合、1 つのデータ ファイルが頻繁にクォータに達するようになるでしょう。逆に、別のデータ ファイルは単一 VHD の IOPS クォータにまったく達してない。このような場合、簡単な解決策はソフトウェア RAID を使用して複数の VHD にまたがる LUN を 1 つ作成することです。
 * データ ファイルごと正確な I/O ワークロードが不明で、DBMS に対する全体的な IOPS ワークロードのみ大まかにわかっている場合。最も簡単なのは、ソフトウェア RAID を利用して 1 つの LUN を作成することです。この LUN の背後にある複数の VHD のクォータの合計は、既知の IOPS レートを満たす必要があります。
 
-___
-
+- - -
 > ![Windows][Logo_Windows] Windows
->
+> 
 > Windows Server 2012 以降の記憶域スペースは、それより前の Windows バージョンの Windows ストライピングよりも効率的であるため、これを使用することを推奨します。オペレーティング システムとして Windows Server 2012 を使用する場合、PowerShell コマンドによって、Windows 記憶域プールと記憶域スペースを作成する必要があることに注意してください。PowerShell コマンドについては、<https://technet.microsoft.com/library/jj851254.aspx> を参照してください。
-
 > 
 > ![Linux][Logo_Linux] Linux
->
+> 
 > Linux でのソフトウェア RAID の構築がサポートされているのは、MDADM および LVM (論理ボリューム マネージャー) のみです。詳細については、次の記事を参照してください。
->
+> 
 > * [Linux でのソフトウェア RAID の構成][virtual-machines-linux-configure-raid] \(MDADM の場合)
 > * [Azure で Linux VM の LVM を構成する][virtual-machines-linux-configure-lvm]
+> 
+> 
 
-
-___
-
+- - -
 一般に Azure Premium Storage と連携させることができる VM シリーズを利用するための考慮事項は次のとおりです。
 
 * SAN/NAS デバイスで提供する I/O 待機時間に近い値が必要な場合。
@@ -474,22 +480,25 @@ Azure Storage のローカル レプリケーション (ローカル冗長) は�
 * **ゾーン冗長ストレージ (ZRS)**: この場合、同じ Azure リージョンに 3 つのデータ レプリカが残ります。[計画ガイド][planning-guide]の[この][planning-guide-3.1]章で説明したように、Azure リージョンは近接する場所にあるデータ センターの数になります。LRS の場合、レプリカが、1 つの Azure リージョンを構成するさまざまなデータ センターに分散されます。
 
 詳細については、[こちら][storage-redundancy]で確認できます。
- 
-> [AZURE.NOTE] DBMS デプロイメントの場合、Geo 冗長ストレージを使用することは推奨されていません
->
+
+> [!NOTE]
+> DBMS デプロイメントの場合、Geo 冗長ストレージを使用することは推奨されていません
+> 
 > Azure Storage の Geo レプリケーションは非同期です。ロック ステップでは、1 つの VM にマウントされている個々 の VHD のレプリケーションは同期されません。したがって、これは異なる VHD に分散されている、または複数の VHD をベースとしたソフトウェア RAID に導入されている DBMS ファイルをレプリケートする場合には適していません。DBMS ソフトウェアでは、永続的なディスク ストレージがさまざまな LUN と基盤になるディスク/VHD/スピンドルにわたって正確に同期されている必要があります。DBMS ソフトウェアは IO 書き込み活動のシーケンスにさまざまなメカニズムを使用します。DBMS は書き込みが数ミリ秒でもずれると、そのレプリケーションの対象となるディスク ストレージが破損していることを報告します。したがって、Geo レプリケーションされた複数の VHD にまたがるデータベースを使ったデータベース構成にする場合、このようなレプリケーションはデータベースの提供する手段や機能を使用して実行する必要があります。Azure Storage の Geo レプリケーションを利用してこのジョブを実行しないようにしてください。
->
+> 
 > この問題は、システム例でシンプルに説明できます。SAP システムを、DBMS のデータ ファイルを含む 8 つの VHD と、トランザクション ログ ファイルを含む 1 つの VHD にアップロードしたと仮定します。これらの 9 つの VHD にはそれぞれ、DBMS にしたがった一定の方法で書き込まれたデータがあります。このデータが書き込まれるのがデータ ファイルなのかトランザクション ログ ファイルなのかは関係ありません。
->
+> 
 > データを適切に Geo レプリケーションして、一貫性のあるデータベースのイメージを維持するために、9 つすべての VHD のコンテンツを、9 つの異なる VHD に対して実行された I/O 操作の正確な順序で Geo レプリケーションする必要があります。ただし、Azure Storage の Geo レプリケーションでは、VHD 間の依存関係を宣言することができません。つまり、Microsoft Azure Storage の Geo レプリケーションでは、これらの 9 つの異なる VHD のコンテンツが相互に関連しており、9 つすべての VHD 間で発生した I/O 操作の順序でレプリケートする場合にのみデータの変更が一貫性のある状態になるという事実を認識できないことを意味します。
->
+> 
 > このシナリオの Geo レプリケーションされたイメージは、一貫性のあるデータベース イメージを提供しない可能性が高いだけでなく、Geo 冗長ストレージでパフォーマンスの低下が発生してパフォーマンスに深刻な影響を与える可能性があります。要約すると、DBMS タイプのワークロードではこの種類のストレージ冗長オプションを使用しないでください。
- 
+> 
+> 
+
 #### Azure Virtual Machines サービスのストレージ アカウントへの VHD のマッピング
 Azure ストレージ アカウントは、管理の構成要素であるだけでなく、制限事項の対象です。ただし、制限事項は、対象となるのが Azure Standard Storage アカウントであるか Azure Premium Storage アカウントであるかどうかによって異なります。正確な機能と制限事項は[こちら][storage-scalability-targets]に記載されています。
- 
+
 Azure Standard Storage は、ストレージ アカウントあたりの IOPS の制限がありますので注意してください (この[記事][storage-scalability-targets]の「合計要求レート」と記載された行)。また、最初は Azure サブスクリプションあたりのストレージ アカウントが 100 に制限されています (2015 年 7 月現在)。そのため、Azure Standard Storage を使用する場合は複数のストレージ アカウント間で VM の IOPS のバランスを取ることをお勧めします。可能であれば、1 つの VM で 1 つのストレージ アカウントを使用するのが理想的です。したがって、Azure Standard Storage でホストされている各 VHD がそのクォータ制限に達する可能性がある DBMS デプロイメントについては、Azure Standard Storage を使用する Azure ストレージ アカウントあたり 30 ～ 40 の VHD のみデプロイする必要があります。一方、Azure Premium Storage を利用し、大容量のデータベース ボリュームを格納すると、IOPS の観点から見て好ましいでしょう。ただし、Azure Premium Storage アカウントは、Azure Standard Storage アカウントよりもデータ ボリュームを制限を厳しくすることが可能な方法です。その結果、データ ボリュームの制限に達しない範囲で、Azure Premium Storage アカウント内の VHD の上限数までしかデプロイできません。最後に、IOPS および容量の機能が制限されている「仮想 SAN」としての Azure ストレージ アカウントを考えてみましょう。その結果、オンプレミス デプロイメントと同様に、異なる「仮想 SAN デバイス」または Azure ストレージ アカウントにまたがるさまざまな SAP システムの VHD のレイアウトを定義するというタスクは残ります。
- 
+
 Azure Standard Storage の場合、可能であれば、異なるストレージ アカウントからストレージを 1 つの VM に提示しないでください。
 
 DS シリーズまたは GS シリーズの Azure VM を使用すると、Azure Standard Storage アカウントと Premium Storage アカウントから VHD をマウントすることが可能です。このような異種混在のストレージを使用できるとすると、VHD でサポートする Standard Storage にバックアップを書き込み、DBMS のデータ ファイルとログ ファイルを Premium Storage に持つというユースケースが思い浮かびます。
@@ -499,7 +508,7 @@ DS シリーズまたは GS シリーズの Azure VM を使用すると、Azure 
 オンプレミスの SAN デバイスと同様に、共有では、最終的に Azure ストレージ アカウント上のボトルネックを検出するために何らかの監視が必要です。Azure Monitoring Extension for SAP と Azure ポータルを使用すると、ビジー状態の Azure ストレージ アカウント検出することができるため、最適な IO パフォーマンスを提供できます。このような状況が検出された場合、ビジー状態の VM を別の Azure ストレージ アカウントに移動することが推奨されます。SAP ホスト管理機能をアクティブ化する方法については、[デプロイ ガイド][deployment-guide]を参照してください。
 
 Azure Standard Storage と Azure Standard Storage アカウントに関するベスト プラクティスを要約した別の記事はこちら (<https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx>) を参照してください。
- 
+
 #### デプロイされた DBMS VM の Azure Standard Storage から Azure Premium Storage への移動
 デプロイされた VM を Azure Standard Storage から Azure Premium Storage に移動したいというお客様に遭遇することが多々あります。データを物理的に移動させないかぎり、これは実現できません。これを行うには、いくつかの方法があります。
 
@@ -518,7 +527,7 @@ Microsoft またはサード パーティが提供するイメージを Azure Ma
 OS または DBMS のバージョンに関連する固有のパッチ要件により、Azure Marketplace で提供されるイメージは、ニーズに適さない場合があります。そのため、後で繰り返しデプロイできる、独自の「プライベート」OS/DBMS の VM イメージを使用して VM を作成しなければならない場合があります。複製のためにこのような「プライベート」イメージを準備するには、オンプレミス VM でオペレーティング システムを一般化する必要があります。VM を一般化する方法の詳細については、「[デプロイ ガイド][deployment-guide]」を参照してください。
 
 使用しているオンプレミス VM (特に 2 層システム) に SAP コンテンツを既にインストールしている場合、SAP Software Provisioning Manager でサポートされているインスタンス名の変更手順に従って、Azure VM のデプロイ後に SAP システムの設定を調整できます (SAP ノート [1619720])。インストールしていない場合は、Azure VM のデプロイ後に SAP ソフトウェアをインストールできます。
- 
+
 SAP アプリケーションによって使用されるデータベース コンテンツ以降は、SAP インストールで新しくコンテンツを生成するか、DBMS データベース バックアップを含む VHD または Microsoft Azure ストレージに直接バックアップする DBMS の機能を利用して、Azure にコンテンツをインポートできます。この場合、DBMS のデータ ファイルとログ ファイルを含む VHD をオンプレミスで準備し、それをディスクとして Azure にインポートすることもできます。ただし、オンプレミスから Azure にロードした DBMS のデータの転送は、VHD ディスクで行われ、このディスクはオンプレミスで準備する必要があります。
 
 #### 汎用化されていないディスクを使用してオンプレミスから Microsoft Azure に VM を移動する
@@ -540,6 +549,7 @@ DBMS デプロイメントの高可用性構成 (使用する個別の DBMS HA �
 
 * VM を同じ Azure Virtual Network に追加します (<https://azure.microsoft.com/documentation/services/virtual-network/>)。
 * HA 構成の VM も同じサブネットにある必要があります。クラウドのみのデプロイでは、異なるサブネット間で名前解決できません。IP 解決のみが機能します。クロスプレミス デプロイメントのサイト間または ExpressRoute 接続を使用して、少なくとも 1 つのサブネットを持つネットワークが既に確立されています。名前解決は、オンプレミス AD ポリシーおよびネットワーク インフラストラクチャに従って行われます。
+
 [コメント]: <> (ARM でも真かどうか MSSedusch TODO テスト)
 
 #### IP アドレス
@@ -553,20 +563,25 @@ DBMS デプロイメントの高可用性構成 (使用する個別の DBMS HA �
 * 例外は、[こちら][virtual-networks-reserved-private-ip]で説明しているように、ネットワーク インターフェイスに静的 IP アドレスを割り当てる場合です。
 * このような場合、ネットワーク インターフェイスが削除されない限り、IP アドレスは固定です。
 
-> [AZURE.IMPORTANT] デプロイメント全体をシンプルで管理可能に保つための明確な推奨事項は、関連する異なる VM 間で名前解決が機能する方法で、Azure 内の DBMS HA または DR 構成と連携する VM をセットアップすることです。
- 
+> [!IMPORTANT]
+> デプロイメント全体をシンプルで管理可能に保つための明確な推奨事項は、関連する異なる VM 間で名前解決が機能する方法で、Azure 内の DBMS HA または DR 構成と連携する VM をセットアップすることです。
+> 
+> 
+
 ## ホスト監視のデプロイ
 Azure Virtual Machines での SAP アプリケーションを実稼働環境で使用する場合、SAP には Azure Virtual Machines を実行する物理ホストからホスト監視データを取得する機能が必要です。SAPOSCOL および SAP HostAgent でこの機能を有効にする、特定の SAP HostAgent パッチ レベルが必要になります。正確なパッチ レベルは SAP Note [1409604] に記載されています。
 
 ホストのデータを SAPOSCOL および SAPHostAgent に配信するコンポーネントのデプロイと、それらのコンポーネントのライフ サイクル管理に関する詳細については、[デプロイ ガイド][deployment-guide]を参照してください。
 
 ## <a name="3264829e-075e-4d25-966e-a49dad878737"></a>Microsoft SQL Server の特記事項
-
 ### SQL Server IaaS
 Microsoft Azure 以降では、Windows Server プラットフォームに組み込まれた既存の SQL Server アプリケーションを Azure Virtual Machines に簡単に移行できます。Virtual Machine の SQL Server では、さまざまなエンタープライズ アプリケーションを Microsoft Azure に簡単に移行できるため、これらのアプリケーションのデプロイメント、管理、およびメンテナンスの総所有コストを削減することができます。Azure Virtual Machine の SQL Server では、管理者および開発者はオンプレミスで提供されているものと同じ開発ツールや管理ツールを引き続き使用できます。
 
-> [AZURE.IMPORTANT] Microsoft Azure Platform で提供する、サービスとしての Microsoft Azure Platform である Microsoft Azure SQL Database については説明しません。このホワイト ペーパーでは、SQL Server 製品の実行について説明します。これは Azure Virtual Machines でのオンプレミス デプロイメントとして知られており、Azure のサービスとしてのインフラストラクチャ機能を使用します。これらの 2 つの製品のデータベース機能は異なっているため、混同しないでください。関連項目: <https://azure.microsoft.com/services/sql-database/>
- 
+> [!IMPORTANT]
+> Microsoft Azure Platform で提供する、サービスとしての Microsoft Azure Platform である Microsoft Azure SQL Database については説明しません。このホワイト ペーパーでは、SQL Server 製品の実行について説明します。これは Azure Virtual Machines でのオンプレミス デプロイメントとして知られており、Azure のサービスとしてのインフラストラクチャ機能を使用します。これらの 2 つの製品のデータベース機能は異なっているため、混同しないでください。関連項目: <https://azure.microsoft.com/services/sql-database/>
+> 
+> 
+
 先に進む前に、[こちらの][virtual-machines-sql-server-infrastructure-services]ドキュメントを確認することを強くお勧めします。
 
 以降のセクションでは、上記のリンクにあるドキュメントの一部の情報を集約して説明しています。SAP に関する特記事項についても説明し、いくつかの概念についてはさらに詳しく説明します。ただし、SQL Server に特化したドキュメントを読み取る前に、上記のドキュメントに目を通すことを強くお勧めします。
@@ -579,9 +594,8 @@ Microsoft Azure 以降では、Windows Server プラットフォームに組み�
 * **SQL パフォーマンス**: Microsoft Azure がホストする Virtual Machines は、その他のパブリック クラウド仮想化製品と比べて極めて良好に機能しますが、個々の結果は異なる場合があります。この[記事][virtual-machines-sql-server-performance-best-practices]を確認してください。
 * **Azure Marketplace からのイメージの使用**: 新しい Microsoft Azure VM をデプロイする最も早い方法は、Azure Marketplace からのイメージを使用することです。Azure Marketplace には、SQL Server を含むイメージがあります。SQL Server がすでにインストールされているイメージは、SAP NetWeaver アプリケーション用にすぐに使用することができません。その理由は、それらのイメージ内に既定の SQL Server 照合順序がインストールされており、SAP NetWeaver システムで必要な照合順序がインストールされていないためです。このようなイメージを使用するには、「[Microsoft Azure Marketplace の SQL Server イメージの使用][dbms-guide-5.6]」の章に記載されている手順を確認してください。
 * 詳細については、「[料金の詳細」](https://azure.microsoft.com/pricing/)を参照してください。「[SQL Server 2012 ライセンス ガイド](https://download.microsoft.com/download/7/3/C/73CAD4E0-D0B5-4BE5-AB49-D5B886A5AE00/SQL_Server_2012_Licensing_Reference_Guide.pdf)」と「[SQL Server 2014 ライセンス ガイド](https://download.microsoft.com/download/B/4/E/B4E604D9-9D38-4BBA-A927-56E4C872E41C/SQL_Server_2014_Licensing_Guide.pdf)」も、重要なリソースです。
- 
-### Azure VM で SAP 関連 SQL Server をインストールするための SQL Server 構成ガイドライン
 
+### Azure VM で SAP 関連 SQL Server をインストールするための SQL Server 構成ガイドライン
 #### SAP 関連 SQL Server のデプロイメントの VM/VHD 構造に関する推奨事項
 一般的な説明に従って、SQL Server 実行可能ファイルには VM のベース VHD (ドライブ c:) のシステム ドライブに配置またはインストールされている必要があります。通常、SAP NetWeaver ワークロードでは、ほとんどの SQL Server システム データベースを高レベルでは使用しません。そのため、SQL Server のシステム データベース (master、msdb、および model) も C:\\ ドライブに残すことができます。例外は tempdb です。一部の SAP ERP とすべての BW ワークロードでは、大量のデータ ボリュームまたは I/O 操作ボリュームが必要になる場合があり、元の VM に収まりません。このようなシステムでは、次の手順を実行する必要があります。
 
@@ -589,11 +603,11 @@ Microsoft Azure 以降では、Windows Server プラットフォームに組み�
 * SAP ユーザー データベースのデータ ファイルを含むその他の論理ドライブごとに、別の tempdb データ ファイルを追加します。
 * ユーザー データベースのログ ファイルが格納されている論理ドライブに tempdb ログ ファイルを追加します。
 * コンピューティング ノードの **ローカル SSD を使用する VM タイプ専用**に、tempdb データとログ ファイルが D:\\ ドライブに配置される場合があります。ただし、複数の tempdb データ ファイルを使用することが推奨される場合があります。D:\\ ドライブのボリュームは VM タイプに応じて異なることに注意してください。
- 
+
 これらの構成によって、tempdb はシステム ドライブが提供するよりも多くの領域を使用ができます。適切な tempdb のサイズを決定するために、オンプレミスで実行している既存のシステムの tempdb のサイズを確認します。さらに、このような構成によって、システム ドライブでは提供できない tempdb に対する IOPS 値が可能になります。ここでも、オンプレミスで実行しているシステムは、tempdb に必要な IOPS 値が得られるように、tempdb に対する I/O 負荷を監視する目的で使用できます。
 
 SQL Server と SAP データベースを実行し、D:\\ ドライブに tempdb データと tempdb ログ ファイルを配置する VM 構成は次のようになります。
- 
+
 ![Reference Configuration of Azure IaaS VM for SAP (SAP 用 Azure IaaS VM のリファレンス構成)][dbms-guide-figure-300]
 
 D:\\ ドライブは VM タイプによってサイズが異なることに注意してください。Tempdb のサイズ要件によりますが、D:\\ ドライブが小さすぎる場合、SAP データベースのデータ ファイルとログ ファイルと tempdb のデータ ファイルとログ ファイルを組み合わせる必要があるかもしれません。
@@ -602,10 +616,10 @@ D:\\ ドライブは VM タイプによってサイズが異なることに注�
 SQL Server の場合、SQL Server のデータ ファイルとログ ファイルを含む VHD の NTFS ブロック サイズは 64K にする必要があります。D:\\ ドライブをフォーマットする必要はありません。このドライブはフォーマット済みのものです。
 
 データベースの復元または作成によってデータ ファイルの初期化が実行され、ファイルの内容が消去されないことをことを確認するために、SQL Server サービスが実行されているユーザー コンテキストが特定の権限を持っていることを確認する必要があります。通常、Windows 管理者グループのユーザーは、これらのアクセス権限を持っています。Windows 管理者以外のユーザーのユーザー コンテキストで SQL Server サービスが実行されている場合は、[ボリュームの保守タスクを実行] ユーザー権限をそのユーザーに割り当てる必要があります。このマイクロソフト サポート技術情報の記事 (<https://support.microsoft.com/kb/2574695>) で詳細を参照してください。
- 
+
 #### データベースの圧縮の影響
 I/O 帯域幅が制限要因になる構成では、IOPS を削減するすべての手段が Azure のような IaaS シナリオで実行できるワークロードを拡大するのに役立つ場合があります。そのため、まだしていない場合、SAP と Microsoft は、既存のデータベースを Azure にアップロードする前に SQL Server のページ圧縮を適用すること強くお勧めします。
- 
+
 Azure にアップロードする前にデータベースの圧縮を実行するための推奨事項は、次の 2 つの理由によるものです。
 
 * アップロードするデータの量が少なくなります。
@@ -613,16 +627,17 @@ Azure にアップロードする前にデータベースの圧縮を実行す�
 * 比較的小さなサイズのデータベースでは、ディスク割り当てのコストが少なくなる可能性があります。
 
 データベースの圧縮は、オンプレミスと同様に Azure Virtual Machines でも動作します。既存の SAP SQL Server データベースを圧縮する方法の詳細については、こちら (<https://blogs.msdn.com/b/saponsqlserver/archive/2010/10/08/compressing-an-sap-database-using-report-msscompress.aspx>) を確認してください。
-  
+
 ### SQL Server 2014: Azure Blog Storage にデータベース ファイルを直接格納する
 SQL Server 2014 では、Azure Blob ストアの周囲に VHD の「ラッパー」を用意しなくても、Azure Blob ストアに直接データベース ファイルを格納することができます。特に、Standard Azure Storage またはそれより小さい VM タイプを使用すると、小さい VM タイプでマウントできる VHD の数の制限が適用されることで IOPS が制限されるという問題を解消できます。これは、ユーザー データベースに対するもので、SQL Server のシステム データベースに対しては機能しません。また、SQL Server のデータ ファイルとログ ファイルに対しても機能します。VHD に「ラッピング」するのではなく、このような方法で SAP SQL Server データベースをデプロイする場合は次の点に留意してください。
 
 * 使用するストレージ アカウントは、SQL Server が実行されている VM をデプロイするために使用したストレージ アカウントと同じ Azure リージョン内にある必要があります。
 * 前述の、別の Azure ストレージ アカウントに VHD を分散させることについての考慮事項がこのデプロイメントの場合も適用されます。Azure ストレージ アカウントの制限に対する I/O 操作数を意味します。
+
 [コメント]: <> (MSSedusch TODO、ただしこれはネットワーク帯域幅を使うものでストレージ帯域幅ではないと思いませんか。)
 
 このタイプのデプロイに関する詳細は、こちら (<https://msdn.microsoft.com/library/dn385720.aspx>) に記載されています。
- 
+
 Azure Premium Storage 上に直接 SQL Server データ ファイルを格納するためには、最低でも、こちら (<https://support.microsoft.com/kb/3063054>) で説明されている SQL Server 2014 修正プログラムのリリースを用意しておく必要があります。Azure Standard Storage 上に SQL Server データ ファイルを保存する機能は、SQL Server 2014 の製品版で機能します。ただし、非常に似た更新プログラムには、Azure Blob Storage を直接使用できるようにする別の一連の修正プログラムが含まれており、SQL Server データ ファイルとバックアップの信頼性を高めることができます。そのため、一般的に、それらの更新プログラムを使用することをお勧めします。
 
 ### SQL Server 2014 のバッファー プール拡張機能
@@ -632,14 +647,14 @@ SQL Server 2014 には、バッファー プール拡張と呼ばれる新しい
 Azure に SQL Server をデプロイする場合、バックアップ方法を確認する必要があります。実稼働システムでない場合でも、SQL Server でホストされている SAP データベースを定期的にバックアップする必要があります。Azure Storage には 3 つのイメージを保持するため、ストレージの障害から復旧するという点ではバックアップの重要度は低くなりました。適切なバックアップと復旧の計画を維持するための主な理由は、ポイントイン タイム復旧機能を提供することにより、論理エラーや人的エラーから復旧できる可能性が高くなるためです。したがって、目標は、特定の時点までデータベースを復元するためにバックアップを使用するか、既存のデータベースをコピーして別のシステムに配置するために Azure のバックアップを使用するかのいずれかです。たとえば、バックアップを復元すると、同じシステムの 3 層システムのセットアップを 2 層 SAP 構成から転送できます。
 
 SQL Server を Azure Storage にバックアップする方法は 3 つあります。
- 
+
 1. SQL Server 2012 CU4 以降では、ネイティブでデータベースを URL にバックアップします。詳細については、ブログ「[SQL Server 2014 の新機能 – パート 5 – バックアップ/復元の機能強化](https://blogs.msdn.com/b/saponsqlserver/archive/2014/02/15/new-functionality-in-sql-server-2014-part-5-backup-restore-enhancements.aspx)」に記載されています。「[SQL Server 2012 SP1 CU4 以降][dbms-guide-5.5.1]」の章を参照してください。
-1. SQL 2012 CU4 より前の SQL Server リリースでは、リダイレクト機能を使用して VHD にバックアップし、構成されている Azure Storage の場所に基本的に書き込みストリームを移行できます。「[SQL Server 2012 SP1 CU3 以前のリリース][dbms-guide-5.5.2]」の章を参照してください。
-1. 最後の方法は、従来の SQL Server バックアップを実行するために、VHD ディスク デバイス上で disk コマンドを実行することです。これはオンプレミス デプロイメントのパターンとまったく同じであり、このドキュメントで詳細については説明しません。
+2. SQL 2012 CU4 より前の SQL Server リリースでは、リダイレクト機能を使用して VHD にバックアップし、構成されている Azure Storage の場所に基本的に書き込みストリームを移行できます。「[SQL Server 2012 SP1 CU3 以前のリリース][dbms-guide-5.5.2]」の章を参照してください。
+3. 最後の方法は、従来の SQL Server バックアップを実行するために、VHD ディスク デバイス上で disk コマンドを実行することです。これはオンプレミス デプロイメントのパターンとまったく同じであり、このドキュメントで詳細については説明しません。
 
 #### <a name="0fef0e79-d3fe-4ae2-85af-73666a6f7268"></a>SQL Server 2012 SP1 CU4 以降
 この機能では、Azure BLOB Storage に直接バックアップできます。この方法を使わない場合は、VHD と IOPS の容量を消費するその他の Azure VHD にバックアップする必要があります。この概念は基本的に次のようになります。
- 
+
  ![Microsoft Azure Storage BLOB への SQL Server 2012 バックアップの使用][dbms-guide-figure-400]
 
 この場合の利点は、SQL Server のバックアップを格納するために VHD を消費する必要がないことです。割り当てらる VHD が少なくて済むため、データ ファイルとログ ファイルに VHD の IOPS の帯域幅全体を使用できます。こちら (<https://msdn.microsoft.com/library/dn435916.aspx#limitations>) の記事の「制限事項」セクションに記載されているように、バックアップの最大サイズは最大 1 TB に制限されていることに注意してください。SQL Server バックアップの圧縮を使用していても、バックアップ サイズが 1 TB を超えると、このドキュメントの「[SQL Server 2012 SP1 CU3 以前のリリース][dbms-guide-5.5.2]」の章に記載されている機能を使用する必要があります。
@@ -647,13 +662,13 @@ SQL Server を Azure Storage にバックアップする方法は 3 つありま
 Azure Blob ストアに対してバックアップからデータベースを復元する場合について記載されている[関連ドキュメント](https://msdn.microsoft.com/library/dn449492.aspx)では、バックアップが 25 GB を超える場合、Azure BLOB ストアから直接復元しないことを推奨しています。この記事の推奨事項は、パフォーマンスに関する考慮事項のみに基づくもので、機能上の制限事項によるものではありません。そのため、ケースごとにさまざまな条件が適用される場合があります。
 
 このタイプのバックアップをセットアップして活用する方法については、[こちらの](https://msdn.microsoft.com/library/dn466438.aspx)チュートリアルで確認できます。
- 
+
 一連の手順の例については、[こちら](https://msdn.microsoft.com/library/dn435916.aspx)を参照してください。
 
 バックアップの自動化においては、バックアップごとに BLOB の名前が違うかどうかを確認することが最も重要です。そうしないと上書きされ、復元チェーンが壊れます。
- 
+
 3 つの異なるバックアップ タイプを混同しないようにするため、バックアップに使用するストレージ アカウントの下に別のコンテナーを作成することをお勧めします。このコンテナーは VM ごと、または VM とバックアップ タイプごとに作成できます。スキーマは次のようになります。
- 
+
  ![Microsoft Azure Storage BLOB への SQL Server 2012 バックアップの使用 – 別のストレージ アカウントにある別のコンテナー][dbms-guide-figure-500]
 
 上記の例では、VM がデプロイされているストレージ アカウントと同じストレージ アカウントにはバックアップが実行されません。バックアップ専用の新しいストレージ アカウントがあるものとします。そのストレージ アカウント内で、バックアップ タイプと VM 名の組み合わせに対して作成された別のコンテナーが存在するとします。このようにセグメント化することで、異なる VM のバックアップの管理が簡単になります。
@@ -662,24 +677,24 @@ Azure Blob ストアに対してバックアップからデータベースを復
 
 #### <a name="f9071eff-9d72-4f47-9da4-1852d782087b"></a>SQL Server 2012 SP1 CU3 以前のリリース
 まず、Azure Storage に対して直接バックアップを実行するためにとるべき最初の手順は、[こちら](https://www.microsoft.com/download/details.aspx?id=40740)の KBA 記事にリンクされている msi をダウンロードすることです。
- 
+
 x64 インストール ファイルとドキュメントをダウンロードします。このファイルは「Microsoft SQL Server Backup to Microsoft Azure Tool」というプログラムをインストールします。製品のドキュメントをよく読んでください。ツールは、基本的に次のように動作します。
 
 * SQL Server 側から、SQL Server バックアップの保存場所が定義されている (このために D:\\ ドライブを使用しないでください)。
 * このツールを使用すると、さまざまな Azure ストレージ コンテナーにさまざまなタイプのバックアップを指示するために使用できるルールを定義できます。
 * ルールが設定されると、このツールは VHD またはディスクの 1 つへのバックアップの書き込みストリームを、既に定義されている Azure Storage の場所にリダイレクトします。
 * このツールは SQL Serverバックアップ用に定義された VHD またはディスクに数 KB ほどの小さなサイズのスタブ ファイルを残します。**このファイルは Azure Storage から再び復元するために必要ですので、ストレージのこの場所に残しておく必要があります。**
-	* スタブ ファイルが失われた場合 (スタブ ファイルを含んでいるストレージ メディアの損失など)、Microsoft Azure ストレージ アカウントへのバックアップ オプションを選択していれば、そのスタブ ファイルが置かれたストレージ コンテナーからスタブ ファイルをダウンロードし、Microsoft Azure Storage を通してスタブ ファイルを復旧することができます。その後、ツールの検出先および同じコンテナーへのアップロード先として構成されているローカル コンピューター上のフォルダーにスタブ ファイルを配置する必要があります。元のルールで暗号化が使用されていた場合は、同じ暗号化パスワードを使用する必要があります。
+  * スタブ ファイルが失われた場合 (スタブ ファイルを含んでいるストレージ メディアの損失など)、Microsoft Azure ストレージ アカウントへのバックアップ オプションを選択していれば、そのスタブ ファイルが置かれたストレージ コンテナーからスタブ ファイルをダウンロードし、Microsoft Azure Storage を通してスタブ ファイルを復旧することができます。その後、ツールの検出先および同じコンテナーへのアップロード先として構成されているローカル コンピューター上のフォルダーにスタブ ファイルを配置する必要があります。元のルールで暗号化が使用されていた場合は、同じ暗号化パスワードを使用する必要があります。
 
 つまり、SQL Server の新しいリリースに対する上記のスキーマは、Azure Storage の場所に直接指示することができない SQL Server のリリースに対しても同様に設置することができるということを意味します。
- 
+
 この方法は、Azure Storage に対するバックアップをネイティブでサポートする新しい SQL Server リリースでは使用しないでください。例外は、Azure へのネイティブ バックアップの制限事項によって Azure へのネイティブ バックアップの実行がブロックされる場合です。
 
 #### SQL Server データベースのバックアップに関するその他の方法
 データベースをバックアップするその他の方法は、バックアップを格納するために使用する VM に追加の VHD を接続することです。このような場合は、VHD の容量がいっぱいでないことを確認する必要があります。いっぱいである場合、VHD のマウントを解除し、VHD をいわば「アーカイブ」して、新しい空の VHD で置き換える必要があります。そうする場合は、これらの VHD を、データベース ファイルが含まれる VHD とは別の Azure ストレージ アカウントに保持することも可能です。
 
 もう 1 つの方法は、多くの VHD を接続できる大容量の VM を使用することです。例: 32 個の VHD を持つ D14 の場合。記憶域スペースを使用して、さまざまな DBMS サーバー向けのバックアップ先として、使用する共有を作成できる柔軟な環境を構築します。
- 
+
 [こちら](https://blogs.msdn.com/b/sqlcat/archive/2015/02/26/large-sql-server-database-backup-on-an-azure-vm-and-archiving.aspx)にもベスト プラクティスがいくつか記載されています。
 
 #### バックアップと復元のパフォーマンスに関する考慮事項
@@ -691,7 +706,7 @@ x64 インストール ファイルとドキュメントをダウンロードし
 * VM のサイズが小さいほど、Azure Storage との読み取りおよび書き取りにおけるストレージのスループットのクォータは小さくなる。バックアップが Azure Blob に直接格納されるかどうかや、VHD に格納された後で再び Azure Blob に格納されるかどうかに依存する。
 
 より新しいリリースでは、バックアップ ターゲットとして Microsoft Azure Storage BLOB を使用する場合、特定のバックアップごとに指定できる URL 対象は 1 つだけに制限されています。
- 
+
 ただし、以前のリリースで「Microsoft SQL Server Backup to Microsoft Azure Tool」を使用する場合は、1 つ以上のファイル ターゲットを定義できます。1 つ以上のターゲットがある場合、バックアップをスケールでき、バックアップのスループットが高くなります。つまり、Azure ストレージ アカウントにも複数のファイルができることになります。Microsoft のテストでは、複数のファイルの送信先を使用すると、SQL Server 2012 SP1 CU4 から実装されたバックアップ拡張機能によって達成できるスループットを確実に達成できます。また、Azure へのネイティブ バックアップと同様に 1 TB の制限も回避できます。
 
 ただし、スループットもバックアップに使用する Azure ストレージ アカウントの場所によって左右されることを忘れないでください。VM が実行されているリージョンとは別のリージョンにストレージ アカウントを配置するというアイデアもあるかもしれません。たとえば、西ヨーロッパで VM 構成を実行するけれども、バックアップに使用するストレージ アカウントは北ヨーロッパに配置するとします。これはバックアップのスループットに確実に影響を与えますし、ターゲットのストレージと VM が同じ地域のデータ センターで実行される場合では可能だと思われる 150 MB/秒のスループットを達成できそうにありません。
@@ -722,7 +737,7 @@ Azure Marketplace での SQL Server イメージは SAP NetWeaver アプリケ�
 * 「管理者」として Windows コマンド ウィンドウを開きます。
 * ディレクトリを C:\\Program Files\\Microsoft SQL Server\\110\\Setup Bootstrap\\SQLServer2012 に変更します。
 * 次のコマンドを実行します。Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name` /SQLCOLLATION=SQL\_Latin1\_General\_Cp850\_BIN2
-	* `<local_admin_account_name`> は、ギャラリーを使って最初に VM をデプロイするときに管理者アカウントとして定義されたアカウントです。
+  * `<local_admin_account_name`> は、ギャラリーを使って最初に VM をデプロイするときに管理者アカウントとして定義されたアカウントです。
 
 処理にかかるのは、わずか数分間です。この手順で正しい結果が得られるかどうかを確認するために、次の手順を実行してください。
 
@@ -732,7 +747,7 @@ Azure Marketplace での SQL Server イメージは SAP NetWeaver アプリケ�
 
 結果が、次のように表示されます。
 
-	Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
+    Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
 
 正しい結果でない場合は、SAP のデプロイを中止し、setup コマンドが期待通りに動作しなかった原因を調査します。上記以外の SQL Server コード ページを持つ SQL Server インスタンスへの SAP NetWeaver アプリケーションのデプロイは、サポートされて**いません**。
 
@@ -746,7 +761,7 @@ Azure Marketplace での SQL Server イメージは SAP NetWeaver アプリケ�
 高可用性 (HA) のメソッドの 1 つは、SQL Server ログ配布です。HA 構成に参加している VM で名前解決を行えているのであれば、何も問題はなく、Azure でのセットアップはオンプレミスのセットアップとなんら変わりません。IP 解決のみに依存することはお勧めしません。ログ配布のセットアップとログ配布の指針については、このドキュメントを参照してください。
 
 <https://technet.microsoft.com/library/ms187103.aspx>
- 
+
 高可用性を確実に実現するために、Azure 可用性セット内のログ配布構成などの中にある VM をデプロイする必要があります。
 
 #### データベース ミラーリング
@@ -766,6 +781,7 @@ AlwaysOn は SAP オンプレミスでサポートされており (SAP Note [177
 * 可用性グループ リスナーの使用は、Windows Server 2012 または Windows Server 2012 R2 を VM のゲスト OS として使用する場合にのみ可能です。Windows Server 2012 の場合、この更新プログラム (<https://support.microsoft.com/kb/2854082>) が適用されていることを確認する必要があります。
 * Windows Server 2008 R2 の場合、この更新プログラムは存在せず、AlwaysOn は、接続文字列にフェールオーバー パートナーを指定するというデータベース ミラーリングと同じ方法で使用する必要があります (SAP default.pfl パラメーター dbs/mss/server によって実行 – SAP Note[965908] 参照)。
 * 可用性グループ リスナーを使用する場合、データベースの VM を専用のロード バランサーに接続する必要があります。クラウドのみのデプロイで名前解決するためには、SAP システムのすべての VM (アプリケーション サーバー、DBMS サーバー、(A)SCS サーバー) が同じ仮想ネットワーク内にあるか、または、解決済みの SQL Server VM の VM 名を取得するために SAP アプリケーション レイヤーから etc\\host ファイルをメンテナンスする必要があります。両方の VM が意図せずシャットダウンされた場合に、Azure に新しい IP アドレスが割り当てられるのを回避するため、AlwaysOn 構成の VM のネットワーク インターフェイスに静的 IP アドレスを割り当てる必要があります (静的 IP アドレスの定義は [この][virtual-networks-reserved-private-ip]記事に記載) 
+
 [コメント]: <> (古いブログ) 
 [コメント]: <> (<https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx>、<https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx>)
 * Azure の現在の機能では、クラスター名にクラスターが作成されたノードと同じ IP アドレスを割り当てるため、WSFC クラスター構成を構築してそのクラスターに特定の IP アドレスを割り当てる必要がある場合、特別な手順が必要です。つまり、クラスターに別の IP アドレスを割り当てるためには手動の手順を実行する必要があります。
@@ -783,6 +799,7 @@ AlwaysOn は SAP オンプレミスでサポートされており (SAP Note [177
 [コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>)
 
 異なる Azure リージョンにも、SQL Server AlwaysOn 可用性グループをデプロイすることができます。この機能は Azure Vnet 間接続 ([詳細][virtual-networks-configure-vnet-to-vnet-connection]) を利用します。
+
 [コメント]: <> (TODO 古いブログ) 
 [コメント]: <> (このようなシナリオでの SQL Server AlwaysOn 可用性グループのセットアップについてはこちらに記載されています: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>)
 
@@ -797,28 +814,28 @@ Azure ストレージがコンテンツを保護しているという事実を�
 
 データベース ミラーリングと比較して、AlwaysOn の複雑なセットアップを行う場合と AlwaysOn のメリットの釣り合いをとる必要があります。これらの利点は、次のようになります。
 
-*	読み取り可能なセカンダリ レプリカ
-*	セカンダリ レプリカからのバックアップ
-*	スケーラビリティの向上
-*	複数のセカンダリ レプリカ
+* 読み取り可能なセカンダリ レプリカ
+* セカンダリ レプリカからのバックアップ
+* スケーラビリティの向上
+* 複数のセカンダリ レプリカ
 
 ### <a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>Azure での一般的な SAP 用 SQL Server の概要
 このガイドには多くの推奨事項が記載されているため、Azure デプロイを計画する前に 2 回以上読むことをお勧めします。ただし、一般的な Azure 固有のポイントでの、一般的な DBMS 上位 10 個に従ってください。
 
 [コメント]: <> (2.3 何と比較してスループットが向上するのでしょうか。 1 つの VHD ですか。)
 1. Azure で多くのメリットのある SQL Server 2014 のように、最新の DBMS リリースを使用します。SQL Server では、これは Azure ストレージに対するバックアップ機能を含む、SQL Server 2012 SP1 CU4 です。ただし、SAP と組み合わせる場合は、少なくとも SQL Server 2014 SP1 CU1 または SQL Server 2012 SP2 と最新の CU をお勧めします。
-1. データ ファイルのレイアウトと Azure の制限事項のバランスをとるために、Azure での SAP システム ランドスケープを慎重に計画します。
-	* しないはあるが、多数の VHD がだけで、必要な IOPS を取得できることを確認します。
-	* IOPS は Azure ストレージ アカウントごとに制限され、ストレージ アカウントは各 Azure サブスクリプション内に制限されることに注意してください ([詳細][azure-subscription-service-limits])。
-	* 高いスループットを実現する必要がある場合、VHD 間のストライピングのみです。
-1. ソフトウェアをインストールしない。または、すべてのファイルを D:\\ ドライブに永続的に置く。このドライブは非永続的で、すべてのものが Windows の再起動時に失われるため。
-1. Azure Standard Storage の Azure VHD キャッシュを使用しない。
-1. Azure ストレージ アカウントの Geo レプリケーションを使用しない。DBMS ワークロードにローカル冗長を使用する。
-1. DBMS ベンダーの HA/DR ソリューションを使用して、データベースのデータをレプリケートする。
-1. 常に名前解決を使用して、IP アドレスに依存しないようにする。
-1. 考えられる最高のデータベースの圧縮を使用する。SQL Server の場合、これはページの圧縮。
-1. Azure Marketplace の SQL Server イメージを使用するよう注意してください。いずれかの SQL Server を使用する場合は、SAP NetWeaver システムをインストールする前にインスタンスの照合順序を変更する必要があります。
-1. [デプロイ ガイド][deployment-guide]の説明に従い、SAP Host Monitoring for Azure をインストールして構成します。
+2. データ ファイルのレイアウトと Azure の制限事項のバランスをとるために、Azure での SAP システム ランドスケープを慎重に計画します。
+   * しないはあるが、多数の VHD がだけで、必要な IOPS を取得できることを確認します。
+   * IOPS は Azure ストレージ アカウントごとに制限され、ストレージ アカウントは各 Azure サブスクリプション内に制限されることに注意してください ([詳細][azure-subscription-service-limits])。
+   * 高いスループットを実現する必要がある場合、VHD 間のストライピングのみです。
+3. ソフトウェアをインストールしない。または、すべてのファイルを D:\\ ドライブに永続的に置く。このドライブは非永続的で、すべてのものが Windows の再起動時に失われるため。
+4. Azure Standard Storage の Azure VHD キャッシュを使用しない。
+5. Azure ストレージ アカウントの Geo レプリケーションを使用しない。DBMS ワークロードにローカル冗長を使用する。
+6. DBMS ベンダーの HA/DR ソリューションを使用して、データベースのデータをレプリケートする。
+7. 常に名前解決を使用して、IP アドレスに依存しないようにする。
+8. 考えられる最高のデータベースの圧縮を使用する。SQL Server の場合、これはページの圧縮。
+9. Azure Marketplace の SQL Server イメージを使用するよう注意してください。いずれかの SQL Server を使用する場合は、SAP NetWeaver システムをインストールする前にインスタンスの照合順序を変更する必要があります。
+10. [デプロイ ガイド][deployment-guide]の説明に従い、SAP Host Monitoring for Azure をインストールして構成します。
 
 ## Windows 上の SAP ASE の仕様
 Microsoft Azure 以降では、既存の SAP ASE アプリケーションを Azure Virtual Machines に簡単に移行できます。Virtual Machine の SAP ASE では、さまざまなエンタープライズ アプリケーションを Microsoft Azure に簡単に移行できるため、これらのアプリケーションのデプロイメント、管理、およびメンテナンスの総所有コストを削減することができます。Azure Virtual Machine の SAP ASE では、管理者および開発者はオンプレミスで提供されているものと同じ開発ツールや管理ツールを引き続き使用できます。
@@ -829,23 +846,22 @@ Microsoft Azure がホストするVirtual Machines は、その他のパブリ�
 
 ステートメントと Azure Storage、SAP VM の展開、SAP Monitoring の使用方法に関する推奨事項は、このドキュメントの最初の 4 つの章で説明したように SAP アプリケーションと共に SAP ASE の展開に適用されます。
 
-### SAP ASE バージョンのサポート 
+### SAP ASE バージョンのサポート
 SAP は SAP Business Suite 製品と合わせて使用するために SAP ASE バージョン 16.0 を現在サポートしています。SAP ASE サーバー、SAP ASE サーバー、または SAP Business Suite 製品と共に使用する JDBC と ODBC ドライバーのすべての更新プログラムは、SAP Service Marketplace (<https://support.sap.com/swdc>) を通じてのみ提供されます。
 
 オンプレミス インストールの場合、Sybase の web サイトから直接 SAP ASE サーバー、または、JDBC、および ODBC ドライバーの更新プログラムをダウンロードしないでください。オンプレミスと Azure Virtual Machines で SAP Business Suite 製品と合わせて使用するようサポートされている修正プログラムの詳細については、次の SAP ノートを参照してください。
 
 * [1590719]
 * [1973241]
- 
+
 SAP ASE で SAP Business Suite を実行する場合の一般的な情報については、[SCN](https://scn.sap.com/community/ase) に記載されています。
 
 ### Azure VM で SAP 関連 SAP ASE をインストールするための SAP ASE 構成ガイドライン
-
 #### SAP ASE のデプロイの構造
 一般的な説明に従って、SAP ASE 実行可能ファイルには VM のベース VHD (ドライブ c:) のシステム ドライブに配置またはインストールされている必要があります。通常、SAP NetWeaver ワークロードは大部分の SAP ASE システムおよびツールのデータベースをほとんど活用していません。データベース システムおよびツール データベース (master、model、saptools、sybmgmtdb、sybsystemdb) は、C:\\ ドライブにも残すことができます。
 
 例外は、すべての作業テーブルと SAP ASE で作成された一時テーブルを含む一時データベースです。この場合、SAP ERP ワークロードおよびすべての BW ワークロードでは、元の VM のベース VHD (c: ドライブ) に収まらない大量のデータまたは I/O 操作ボリュームのいずれかが必要になる場合があります。
- 
+
 SAPInst/SWPM システムをインストールするために使用するバージョンによっては、次のデータベースが含まれる場合があります。
 
 * SAP ASE をインストールするときに作成された 1 つの SAP ASE tempdb
@@ -880,28 +896,36 @@ I/O 帯域幅が制限要因になる構成では、IOPS を削減するすべ�
 オンプレミス システムと同様に、DBACockpit の Webdynpro 実装で使用されるすべての SAP NetWeaver 機能を有効にするために、いくつかの手順が必要です。Webdynpros の使用を有効にし、必要なものを生成するには、SAP Note [1245200] に従ってください。上記の注意事項の手順に従うときは、http および https 接続に使用するポートとインターネット通信マネージャー (icm) を構成します。Http の既定の設定は次のようになります。
 
 > icm/server\_port\_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
->
+> 
 > icm/server\_port\_1 = PROT=HTTPS,PORT=443$$,PROCTIMEOUT=600,TIMEOUT=600
+> 
+> 
 
 トランザクション DBACockpit で生成されたリンクは次のようになります。
 
 > https://`<fullyqualifiedhostname`>:44300/sap/bc/webdynpro/sap/dba\_cockpit
 > 
 > http://`<fullyqualifiedhostname`>:8000/sap/bc/webdynpro/sap/dba\_cockpit
+> 
+> 
 
 SAP システムをホストする Azure Virtual Machine がサイト間、マルチサイト、または ExpressRoute (クロスプレミス デプロイ) によって接続されているかどうかや、その方法によっては、DBACockpit を開こうとしているコンピューターで解決できる完全修飾ホスト名を ICM が使用していることを確認する必要があります。プロファイルのパラメーターに応じて ICM が完全修飾ホスト名を判定する方法、必要な場合に icm/host\_name\_full に明示的にパラメーターを設定する方法については、SAP Note [773830] を参照してください。
 
 オンプレミスと Azure 間のクロスプレミス接続を使用しないクラウドのみのシナリオで VM をデプロイした場合は、パブリック IP アドレスと、domainlabel を定義する必要があります。VM のパブリック DNS 名の形式は、次のようになります。
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
+> 
+> 
 
 DNS 名の詳細については、[こちら][virtual-machines-azurerm-versus-azuresm]を参照してください。
 
 SAP プロファイル パラメーター icm/host\_name\_full を Azure VM のリンクの DNS 名に設定すると、リンクは次のようになる場合があります。
 
 > https://mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
-
+> 
 > http://mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
+> 
+> 
 
 この場合、次のことを行う必要があります。
 
@@ -954,7 +978,6 @@ Azure でのデータベースのバックアップと復元はオンプレミ�
 ボリュームを複数のマウントされた VHD でストライピングは、このガイドの前半で取り上げられてきました。SAP ASE ダンプ構成内の複数のディレクトリの使用については、[Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp) でダンプ構成を作成するために使用される sp\_config\_dump ストアド プロシージャに関するドキュメントを参照してください。
 
 ### Azure VM を使用した障害復旧
-
 #### SAP Sybase Replication Server を使用したデータのレプリケーション
 SAP Sybase Replication Server (SRS) によって、SAP ASE はデータベース トランザクションを離れた場所に非同期的に転送するウォーム スタンバイ ソリューションを提供します。
 
@@ -963,7 +986,6 @@ SRS のインストールと動作は、Azure Virtual Machine サービスでホ
 SAP Replication Server を経由する ASE HADR は、将来のリリースで予定されています。使用可能になるとすぐに、Microsoft Azure プラットフォーム用にテストされ、リリースされます。
 
 ## Linux 上の SAP ASE の仕様
-
 Microsoft Azure 以降では、既存の SAP ASE アプリケーションを Azure Virtual Machines に簡単に移行できます。Virtual Machine の SAP ASE では、さまざまなエンタープライズ アプリケーションを Microsoft Azure に簡単に移行できるため、これらのアプリケーションのデプロイメント、管理、およびメンテナンスの総所有コストを削減することができます。Azure Virtual Machine の SAP ASE では、管理者および開発者はオンプレミスで提供されているものと同じ開発ツールや管理ツールを引き続き使用できます。
 
 Azure VM をデプロイする場合、<https://azure.microsoft.com/support/legal/sla> を参照して、正式な SLA を理解しておくことが重要です。
@@ -977,23 +999,22 @@ SAP のサイズ設定情報と SAP 認定 VM SKU の一覧は、SAP Note [19285
 * [2134316]
 * [1941500]
 
-### SAP ASE バージョンのサポート 
+### SAP ASE バージョンのサポート
 SAP は SAP Business Suite 製品と合わせて使用するために SAP ASE バージョン 16.0 を現在サポートしています。SAP ASE サーバー、SAP ASE サーバー、または SAP Business Suite 製品と共に使用する JDBC と ODBC ドライバーのすべての更新プログラムは、SAP Service Marketplace (<https://support.sap.com/swdc>) を通じてのみ提供されます。
 
 オンプレミス インストールの場合、Sybase の web サイトから直接 SAP ASE サーバー、または、JDBC、および ODBC ドライバーの更新プログラムをダウンロードしないでください。オンプレミスと Azure Virtual Machines で SAP Business Suite 製品と合わせて使用するようサポートされている修正プログラムの詳細については、次の SAP ノートを参照してください。
 
 * [1590719]
 * [1973241]
- 
+
 SAP ASE で SAP Business Suite を実行する場合の一般的な情報については、[SCN](https://scn.sap.com/community/ase) に記載されています。
 
 ### Azure VM で SAP 関連 SAP ASE をインストールするための SAP ASE 構成ガイドライン
-
 #### SAP ASE のデプロイの構造
 一般的な説明に従って、SAP ASE 実行可能ファイルには VM のルート ファイル システム (/sybase:) に配置またはインストールされている必要があります。通常、SAP NetWeaver ワークロードは大部分の SAP ASE システムおよびツールのデータベースをほとんど活用していません。データベース システムおよびツール データベース (master、model、saptools、sybmgmtdb、sybsystemdb) はルート ファイル システム上にも残すことができます。
 
 例外は、すべての作業テーブルと SAP ASE で作成された一時テーブルを含む一時データベースです。この場合、SAP ERP ワークロードおよびすべての BW ワークロードでは、元の VM の OS ディスクに収まらない大量のデータまたは I/O 操作ボリュームのいずれかが必要になる場合があります。
- 
+
 SAPInst/SWPM システムをインストールするために使用するバージョンによっては、次のデータベースが含まれる場合があります。
 
 * SAP ASE をインストールするときに作成された 1 つの SAP ASE tempdb
@@ -1006,7 +1027,7 @@ SAPInst/SWPM システムをインストールするために使用するバー�
 
 * 最初の tempdb ディレクトリを SAP データベースの最初のファイル システムに移動します。
 * SAP データベースのファイルシステム  
-ディレクトリを含む VHD のそれぞれに tempdb のディレクトリを追加します。
+  ディレクトリを含む VHD のそれぞれに tempdb のディレクトリを追加します。
 
 この構成によって、tempdb はシステム ドライブが提供するよりも多くの領域を使用できます。参照として、オンプレミスで実行している既存のシステムで tempdb ディレクトリのサイズを確認します。または、このような構成によって、システム ドライブでは提供できない tempdb に対する IOPS 値が可能になります。繰り返しますが、オンプレミスで実行されているシステムを、tempdb に対する I/O ワークロードの監視に使用できます。
 
@@ -1029,20 +1050,26 @@ I/O 帯域幅が制限要因になる構成では、IOPS を削減するすべ�
 オンプレミス システムと同様に、DBACockpit の Webdynpro 実装で使用されるすべての SAP NetWeaver 機能を有効にするために、いくつかの手順が必要です。Webdynpros の使用を有効にし、必要なものを生成するには、SAP Note [1245200] に従ってください。上記の注意事項の手順に従うときは、http および https 接続に使用するポートとインターネット通信マネージャー (icm) を構成します。Http の既定の設定は次のようになります。
 
 > icm/server\_port\_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
->
+> 
 > icm/server\_port\_1 = PROT=HTTPS,PORT=443$$,PROCTIMEOUT=600,TIMEOUT=600
+> 
+> 
 
 トランザクション DBACockpit で生成されたリンクは次のようになります。
 
 > https://`<fullyqualifiedhostname`>:44300/sap/bc/webdynpro/sap/dba\_cockpit
 > 
 > http://`<fullyqualifiedhostname`>:8000/sap/bc/webdynpro/sap/dba\_cockpit
+> 
+> 
 
 SAP システムをホストする Azure Virtual Machine がサイト間、マルチサイト、または ExpressRoute (クロスプレミス デプロイ) によって接続されているかどうかや、その方法によっては、DBACockpit を開こうとしているコンピューターで解決できる完全修飾ホスト名を ICM が使用していることを確認する必要があります。プロファイルのパラメーターに応じて ICM が完全修飾ホスト名を判定する方法、必要な場合に icm/host\_name\_full に明示的にパラメーターを設定する方法については、SAP Note [773830] を参照してください。
 
 オンプレミスと Azure 間のクロスプレミス接続を使用しないクラウドのみのシナリオで VM をデプロイした場合は、パブリック IP アドレスと、domainlabel を定義する必要があります。VM のパブリック DNS 名の形式は、次のようになります。
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
+> 
+> 
 
 DNS 名の詳細については、[こちら][virtual-machines-azurerm-versus-azuresm]を参照してください。
 
@@ -1051,6 +1078,8 @@ SAP プロファイル パラメーター icm/host\_name\_full を Azure VM の�
 > https://mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > http://mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
+> 
+> 
 
 この場合、次のことを行う必要があります。
 
@@ -1103,7 +1132,6 @@ Azure でのデータベースのバックアップと復元はオンプレミ�
 ボリュームを複数のマウントされた VHD でストライピングは、このガイドの前半で取り上げられてきました。SAP ASE ダンプ構成内の複数のディレクトリの使用については、[Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp) でダンプ構成を作成するために使用される sp\_config\_dump ストアド プロシージャに関するドキュメントを参照してください。
 
 ### Azure VM を使用した障害復旧
-
 #### SAP Sybase Replication Server を使用したデータのレプリケーション
 SAP Sybase Replication Server (SRS) によって、SAP ASE はデータベース トランザクションを離れた場所に非同期的に転送するウォーム スタンバイ ソリューションを提供します。
 
@@ -1122,13 +1150,12 @@ Azure Virtual Machines で SAP on Oracle を実行するためにサポートさ
 Oracle で SAP Business Suite を実行する場合の一般的な情報については、SCN (<https://scn.sap.com/community/oracle>) に記載されています。
 
 ### Azure VM で SAP をインストールするための Oracle 構成ガイドライン
-
 #### ストレージの構成
 NTFS でフォーマットされたディスクを使用した単一インスタンスの Oracle のみサポートされています。すべてのデータベース ファイルは、VHD ディスクに基づく NTFS ファイル システムに保存する必要があります。これらの VHD は、Azure VM にマウントされ、Azure ページ BLOB Storage に基づいています(<https://msdn.microsoft.com/library/azure/ee691964.aspx>)。あらゆる種類のネットワーク ドライブまたは Azure ファイルサービスのようなリモート共有:
- 
+
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
- 
+
 は Oracle データベースのファイルではサポートされて**いません**。
 
 Azure VHD を使用して Azure ページ BLOB Storage の章では、このドキュメントで作成された説明に基づいて [VM とVHD のキャッシュ][dbms-guide-2.1] と [Microsoft Azure Storage][dbms-guide-2.3] Oracle データベースでの展開に適用します。
@@ -1152,7 +1179,6 @@ Azure VHD を使用して Azure ページ BLOB Storage の章では、このド�
 このドキュメントの最初の 3 つの章で説明したように、Oracle Database を使用した VM のデプロイについては Azure 可用性セットまたは SAP の監視などその他のすべての一般的なトピックが適用されます。
 
 ## Windows 上の SAP MaxDB データベースの詳細
-
 ### SAP MaxDB バージョンのサポート
 SAP は Azure で SAP NetWeaver ベースの製品を使用するために SAP MaxDB バージョン 7.9 を現在サポートしています。SAP MaxDB サーバー、または SAP NetWeaver ベースの製品と共に使用する JDBC と ODBC ドライバーのすべての更新プログラムは、SAP Service Marketplace (<https://support.sap.com/swdc>) を通じてのみ提供されます。SAP MaxDB で SAP NetWeaver を実行する場合の一般的な情報については、こちら (<https://scn.sap.com/community/maxdb>) に記載されています。
 
@@ -1166,13 +1192,15 @@ Microsoft Windows オペレーティング システムの最新バージョン�
 
 ### 提供されている SAP MaxDB ドキュメント
 次の SAP Note [767598] に、SAP MaxDB ドキュメントの最新の一覧が記載されています。
-	
-### Azure VM で SAP をインストールするための SAP MaxDB 構成ガイドライン
 
+### Azure VM で SAP をインストールするための SAP MaxDB 構成ガイドライン
 #### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>ストレージの構成
 SAP MaxDB 向けの Azure Storage のベスト プラクティスについては、「[RDBMS デプロイの構造][dbms-guide-2]」章に記載されている一般的な推奨事項に従ってください。
 
-> [AZURE.IMPORTANT] 他のデータベースと同様に、SAP MaxDB にはデータとログ ファイルもあります。ただし、SAP MaxDB 用語では正しい用語は「ボリューム」(「ファイル」ではない) です。たとえば、SAP MaxDB のデータ ボリュームとログ ボリュームがあります。OS ディスクのボリュームとこれらを混同しないでください。
+> [!IMPORTANT]
+> 他のデータベースと同様に、SAP MaxDB にはデータとログ ファイルもあります。ただし、SAP MaxDB 用語では正しい用語は「ボリューム」(「ファイル」ではない) です。たとえば、SAP MaxDB のデータ ボリュームとログ ボリュームがあります。OS ディスクのボリュームとこれらを混同しないでください。
+> 
+> 
 
 要するに、次のことを行う必要があります。
 
@@ -1202,9 +1230,9 @@ Azure でのデータベースのバックアップと復元はオンプレミ�
 * 専用の個別のボリュームのバックアップ
 * 複数のマウントされた VHD をストライプディスク ボリューム上で IOPS のスループットを向上させるために、バックアップ ターゲット ボリュームをストライピング
 * 別の専用の論理ディスクのデバイスを持たせる
-    * SAP MaxDB バックアップ ボリューム (ファイル)
-    * SAP MaxDB データ ボリューム (ファイル)
-    * SAP MaxDB ログ ボリューム (ファイル)
+  * SAP MaxDB バックアップ ボリューム (ファイル)
+  * SAP MaxDB データ ボリューム (ファイル)
+  * SAP MaxDB ログ ボリューム (ファイル)
 
 ボリュームを複数のマウントされた VHD でストライピングする方法は、このドキュメントの前半の「[ソフトウェア RAID][dbms-guide-2.2]」の章で取り上げられてきました。
 
@@ -1216,7 +1244,6 @@ Azure でのデータベースのバックアップと復元はオンプレミ�
 * [1173395]
 
 ## Windows 上の SAP liveCache の詳細
-
 ### SAP liveCache バージョンのサポート
 Azure Virtual Machines でサポートされている SAP liveCache の最小バージョンは **liveCache 7.9.08.31** と **LCA ビルド 25** を含む **SAP LC/LCAPPS 10.0 SP 25** で、**EhP 2 for SAP SCM 7.0** 以降向けにリリースされています。
 
@@ -1229,7 +1256,6 @@ Azure での SAP liveCache DBMS 向けにサポートされている Microsoft W
 Microsoft Windows オペレーティング システムの最新バージョンである Microsoft Windows 2012 R2 を使用することをお勧めします。
 
 ### Azure VM で SAP をインストールするための SAP liveCache 構成ガイドライン
-
 #### 推奨される Azure VM の種類
 SAP liveCache は膨大な計算を実行するアプリケーションであるため、RAM と CPU の量と速度よって、SAP liveCache のパフォーマンスんに大きな影響があります。
 
@@ -1244,7 +1270,7 @@ SAP liveCache は SAP MaxDB テクノロジをベースとしているため、�
 
 #### liveCache 専用の Azure VM
 SAP liveCache は、計算能力を集中的に使用するため、実稼働で使用する場合は、専用の Azure Virtual Machine をデプロイすることを強くお勧めします。
- 
+
 ![実稼働ユース ケースでの liveCache 専用 Azure VM][dbms-guide-figure-700]
 
 #### バックアップと復元
@@ -1276,15 +1302,14 @@ Azure での SAP コンテンツ サーバー向けにサポートされてい�
 最新バージョンの Microsoft Windows (ドキュメント執筆時点では **Windows Server 2012 R2**) を使用することを強くお勧めします。
 
 ### Azure VM で SAP をインストールするための SAP コンテンツ サーバー構成ガイドライン
-
-#### ストレージの構成 
+#### ストレージの構成
 SAP MaxDB データベースのファイルを格納するように SAP コンテンツ サーバーを構成する場合、「[ストレージの構成][dbms-guide-8.4.1]」の章で SAP MaxDB について説明したすべての Azure Storage のベスト プラクティスの推奨事項が SAP コンテンツ サーバーに対しても有効です。
 
 ファイル システムのファイルを格納するように SAP コンテンツ サーバーを構成する場合、専用の論理ドライブを使用することをお勧めします。記憶域スペースを使用することで、「[ソフトウェア RAID][dbms-guide-2.2]」の章で説明したように、論理ディスク サイズと IOPS スループットを向上させることができます。
 
 #### SAP コンテンツ サーバーの場所
 SAP コンテンツ サーバーは、SAP システムがデプロイされたときと同じ Azure リージョンと Azure VNET にデプロイする必要があります。専用の Azure VM または SAP システムが実行されているのと同じ VM に SAP コンテンツ サーバー コンポーネントを展開するかどうかを自由に決めることができます。
- 
+
 ![SAP コンテンツ サーバー専用 Azure VM][dbms-guide-figure-800]
 
 #### SAP キャッシュ サーバーの場所
@@ -1293,10 +1318,10 @@ SAP キャッシュ サーバーは、(キャッシュされた) ドキュメン
 そのため、次の 2 つの選択肢があります。
 
 1. **クライアントがバックエンド SAP システム** バックエンド SAP システムが SAP コンテンツ サーバーにアクセスするように構成されている場合、その SAP システムがクライアントです。SAP システムと SAP コンテンツ サーバーの両方が、同じ Azure リージョン (同じ Azure データ センター) にデプロイされます。2 つは互いに物理的に近くに設置されます。そのため、専用の SAP キャッシュ サーバーを用意する必要はありません。SAP UI クライアント (SAP の GUI または Web ブラウザー) が SAP システムに直接アクセスし、SAP システムは SAP コンテンツ サーバーからドキュメントを取得します。
-1. **クライアントがオンプレミス Web ブラウザー** SAP コンテンツ サーバーは、Web ブラウザーから直接アクセスするように構成できます。この場合は、オンプレミスで実行されている Web ブラウザーが SAP コンテンツ サーバーのクライアントです。オンプレミス データ センターと Azure データ センターは、物理的に別の場所 (理想的には、相互に近接) に配置されます。オンプレミス データ センターは、Azure のサイト間 VPN または ExpressRoute を使用して Azure に接続されます。どちらのオプションでも、Azure へのセキュリティで保護された VPN ネットワーク接続を提供しますが、サイト間のネットワーク接続はオンプレミス データ センターと Azure データ センター間のネットワーク帯域幅と待機時間の SLA を提供しません。ドキュメントへのアクセスを高速化するために、次のいずれかの操作を行うことができます。
-    1. オンプレミス Web ブラウザーに近いオンプレミスに SAP キャッシュ サーバーを設置する ([この][dbms-guide-900-sap-cache-server-on-premises] 図のオプション)
-    1. オンプレミス データ センターと Azure データ センター間の高速で低待機時間の専用のネットワーク接続を提供する Azure ExpressRoute を構成します。
- 
+2. **クライアントがオンプレミス Web ブラウザー** SAP コンテンツ サーバーは、Web ブラウザーから直接アクセスするように構成できます。この場合は、オンプレミスで実行されている Web ブラウザーが SAP コンテンツ サーバーのクライアントです。オンプレミス データ センターと Azure データ センターは、物理的に別の場所 (理想的には、相互に近接) に配置されます。オンプレミス データ センターは、Azure のサイト間 VPN または ExpressRoute を使用して Azure に接続されます。どちらのオプションでも、Azure へのセキュリティで保護された VPN ネットワーク接続を提供しますが、サイト間のネットワーク接続はオンプレミス データ センターと Azure データ センター間のネットワーク帯域幅と待機時間の SLA を提供しません。ドキュメントへのアクセスを高速化するために、次のいずれかの操作を行うことができます。
+   1. オンプレミス Web ブラウザーに近いオンプレミスに SAP キャッシュ サーバーを設置する ([この][dbms-guide-900-sap-cache-server-on-premises] 図のオプション)
+   2. オンプレミス データ センターと Azure データ センター間の高速で低待機時間の専用のネットワーク接続を提供する Azure ExpressRoute を構成します。
+
 ![オンプレミス SAP キャッシュ サーバーをインストールするオプション][dbms-guide-figure-900] <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
 #### バックアップと復元
@@ -1321,13 +1346,12 @@ Microsoft Azure Virtual Machine サービスにおける SAP on IBM DB2 for LUW 
 サポートされる SAP 製品と Azure VM の種類については、SAP Note [1928533] を参照してください。
 
 ### Azure VM で SAP をインストールするための IBM DB2 for Linux, UNIX, and Windows 構成ガイドライン
-
 #### ストレージの構成
 すべてのデータベース ファイルは、VHD ディスクに基づく NTFS ファイル システムに保存する必要があります。これらの VHD は、Azure VM にマウントされ、Azure ページ BLOB Storage に基づいています (<https://msdn.microsoft.com/library/azure/ee691964.aspx>)。あらゆる種類のネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は次のデータベース ファイルをサポートして**いません**。
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
- 
+
 Azure ページ BLOB Storage に基づいて Azure VHD を使用する場合、このドキュメントの「[RDBMS デプロイの構造][dbms-guide-2]」の章の説明が、IBM DB2 for LUW データベースでのデプロイにも適用されます。
 
 ドキュメント前半の全般的な部分で説明したように、Azure VHD の IOPS スループットにクォータが存在します。正確なクォータは使用する VM タイプによって異なります。VM タイプとそのクォータの一覧は、[こちら][virtual-machines-sizes]に記載されています。
@@ -1377,7 +1401,6 @@ Microsoft Azure Virtual Machine サービスにおける SAP on IBM DB2 for LUW 
 サポートされる SAP 製品と Azure VM の種類については、SAP Note [1928533] を参照してください。
 
 ### Azure VM で SAP をインストールするための IBM DB2 for Linux, UNIX, and Windows 構成ガイドライン
-
 #### ストレージの構成
 すべてのデータベース ファイルは、VHD ディスクに基づくファイル システムに保存する必要があります。これらの VHD は、Azure VM にマウントされ、Azure ページ BLOB Storage に基づいています (<https://msdn.microsoft.com/library/azure/ee691964.aspx>)。あらゆる種類のネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は次のデータベース ファイルをサポートして**いません**。
 

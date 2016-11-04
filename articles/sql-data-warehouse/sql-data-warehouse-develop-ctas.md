@@ -1,26 +1,25 @@
-<properties
-   pageTitle="SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) | Microsoft Azure"
-   description="ソリューションの開発のために、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) ステートメントでコーディングする際のヒントです。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) | Microsoft Docs
+description: ソリューションの開発のために、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) ステートメントでコーディングする際のヒントです。
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/14/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/14/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS)
 Create table as select (`CTAS`) は利用可能な最重要 T-SQL 機能のうちの 1 つです。これは SELECT ステートメントの出力に基づいて新しいテーブルを作成する完全に並列化された操作です。 `CTAS` はテーブルのコピーを最も簡単かつすばやく作成する方法です。これを `SELECT..INTO` の高機能バージョンであると見なすことができます。このドキュメントには `CTAS` の例とベスト プラクティスの両方が記載されています。
 
 ## CTAS を使用したテーブルのコピー
-
 `CTAS` の最も一般的な用途の 1 つは、DDL を変更できるようにテーブルのコピーを作成することです。たとえば、最初に `ROUND_ROBIN` として作成したテーブルを、列の分散テーブルに変更する場合は、`CTAS` を使用して分散列を変更します。また、`CTAS` を使用すると、パーティション分割、インデックス作成、列の型を変更することもできます。
 
 たとえば、`CREATE TABLE` で分散列が指定されなかったので、分散された `ROUND_ROBIN` の既定の分散タイプを使用して、このテーブルを作成したとします。
@@ -28,29 +27,29 @@ Create table as select (`CTAS`) は利用可能な最重要 T-SQL 機能のう�
 ```sql
 CREATE TABLE FactInternetSales
 (
-	ProductKey int NOT NULL,
-	OrderDateKey int NOT NULL,
-	DueDateKey int NOT NULL,
-	ShipDateKey int NOT NULL,
-	CustomerKey int NOT NULL,
-	PromotionKey int NOT NULL,
-	CurrencyKey int NOT NULL,
-	SalesTerritoryKey int NOT NULL,
-	SalesOrderNumber nvarchar(20) NOT NULL,
-	SalesOrderLineNumber tinyint NOT NULL,
-	RevisionNumber tinyint NOT NULL,
-	OrderQuantity smallint NOT NULL,
-	UnitPrice money NOT NULL,
-	ExtendedAmount money NOT NULL,
-	UnitPriceDiscountPct float NOT NULL,
-	DiscountAmount float NOT NULL,
-	ProductStandardCost money NOT NULL,
-	TotalProductCost money NOT NULL,
-	SalesAmount money NOT NULL,
-	TaxAmt money NOT NULL,
-	Freight money NOT NULL,
-	CarrierTrackingNumber nvarchar(25),
-	CustomerPONumber nvarchar(25)
+    ProductKey int NOT NULL,
+    OrderDateKey int NOT NULL,
+    DueDateKey int NOT NULL,
+    ShipDateKey int NOT NULL,
+    CustomerKey int NOT NULL,
+    PromotionKey int NOT NULL,
+    CurrencyKey int NOT NULL,
+    SalesTerritoryKey int NOT NULL,
+    SalesOrderNumber nvarchar(20) NOT NULL,
+    SalesOrderLineNumber tinyint NOT NULL,
+    RevisionNumber tinyint NOT NULL,
+    OrderQuantity smallint NOT NULL,
+    UnitPrice money NOT NULL,
+    ExtendedAmount money NOT NULL,
+    UnitPriceDiscountPct float NOT NULL,
+    DiscountAmount float NOT NULL,
+    ProductStandardCost money NOT NULL,
+    TotalProductCost money NOT NULL,
+    SalesAmount money NOT NULL,
+    TaxAmt money NOT NULL,
+    Freight money NOT NULL,
+    CarrierTrackingNumber nvarchar(25),
+    CustomerPONumber nvarchar(25)
 );
 ```
 
@@ -84,19 +83,23 @@ RENAME OBJECT FactInternetSales_new TO FactInternetSales;
 DROP TABLE FactInternetSales_old;
 ```
 
-> [AZURE.NOTE] Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。統計の詳細については、開発トピック グループの「[統計][]」トピックを参照してください。
+> [!NOTE]
+> Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。統計の詳細については、開発トピック グループの「[統計][統計]」トピックを参照してください。
+> 
+> 
 
 ## CTAS を使用したサポートされていない機能の回避
-
 `CTAS` を使用して、下記のサポートされていない多くの機能を回避することもできます。この機能は、ユーザーのコードに対応できるというだけでなく、SQL Data Warehouse 上でより高速に実行されるという効果があります。これは、完全に並列化された設計により可能になりました。CTAS で対処できるシナリオは次のとおりです。
 
-- SELECT..INTO
-- ANSI JOINS を使用した UPDATE
-- ANSI JOIN を使用した DELETE
-- MERGE ステートメント
+* SELECT..INTO
+* ANSI JOINS を使用した UPDATE
+* ANSI JOIN を使用した DELETE
+* MERGE ステートメント
 
-> [AZURE.NOTE] 「まず最初に CTAS」を検討しましょう。`CTAS` を使用して問題を解決できると思われる場合は、たとえ追加データを結果的に書き込むことになったとしても、それが一般的に最善の対処方法です。
->
+> [!NOTE]
+> 「まず最初に CTAS」を検討しましょう。`CTAS` を使用して問題を解決できると思われる場合は、たとえ追加データを結果的に書き込むことになったとしても、それが一般的に最善の対処方法です。
+> 
+> 
 
 ## SELECT..INTO
 `SELECT..INTO` は、ソリューション内で頻繁に使用される場合があります。
@@ -123,23 +126,25 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-> [AZURE.NOTE] CTAS では、現在、分散列を指定する必要があります。分散列の変更を意図していない場合に、基のテーブルと同じ分散列を選択すると、この方法によってデータ移動が回避されることから、`CTAS` が最速で実行されます。パフォーマンスが問題ではない小さいテーブルを作成する場合は、`ROUND_ROBIN` を指定して分散列の決定を回避できます。
+> [!NOTE]
+> CTAS では、現在、分散列を指定する必要があります。分散列の変更を意図していない場合に、基のテーブルと同じ分散列を選択すると、この方法によってデータ移動が回避されることから、`CTAS` が最速で実行されます。パフォーマンスが問題ではない小さいテーブルを作成する場合は、`ROUND_ROBIN` を指定して分散列の決定を回避できます。
+> 
+> 
 
 ## UPDATE ステートメントの代わりに使用する ANSI JOIN
-
 UPDATE または DELETE を実行するための ANSI JOIN 構文を使用して、2 つ以上のテーブルを結合するのは、複雑な更新方法だと思われるかもしれません。
 
 このテーブルを更新しなければならない状況だと想定します。
 
 ```sql
 CREATE TABLE [dbo].[AnnualCategorySales]
-(	[EnglishProductCategoryName]	NVARCHAR(50)	NOT NULL
-,	[CalendarYear]					SMALLINT		NOT NULL
-,	[TotalSalesAmount]				MONEY			NOT NULL
+(    [EnglishProductCategoryName]    NVARCHAR(50)    NOT NULL
+,    [CalendarYear]                    SMALLINT        NOT NULL
+,    [TotalSalesAmount]                MONEY            NOT NULL
 )
 WITH
 (
-	DISTRIBUTION = ROUND_ROBIN
+    DISTRIBUTION = ROUND_ROBIN
 )
 ;
 ```
@@ -147,25 +152,25 @@ WITH
 元のクエリは次のようだったとします。
 
 ```sql
-UPDATE	acs
-SET		[TotalSalesAmount] = [fis].[TotalSalesAmount]
-FROM	[dbo].[AnnualCategorySales] 	AS acs
-JOIN	(
-		SELECT	[EnglishProductCategoryName]
-		,		[CalendarYear]
-		,		SUM([SalesAmount])				AS [TotalSalesAmount]
-		FROM	[dbo].[FactInternetSales]		AS s
-		JOIN	[dbo].[DimDate]					AS d	ON s.[OrderDateKey]				= d.[DateKey]
-		JOIN	[dbo].[DimProduct]				AS p	ON s.[ProductKey]				= p.[ProductKey]
-		JOIN	[dbo].[DimProductSubCategory]	AS u	ON p.[ProductSubcategoryKey]	= u.[ProductSubcategoryKey]
-		JOIN	[dbo].[DimProductCategory]		AS c	ON u.[ProductCategoryKey]		= c.[ProductCategoryKey]
-		WHERE 	[CalendarYear] = 2004
-		GROUP BY
-				[EnglishProductCategoryName]
-		,		[CalendarYear]
-		) AS fis
-ON	[acs].[EnglishProductCategoryName]	= [fis].[EnglishProductCategoryName]
-AND	[acs].[CalendarYear]				= [fis].[CalendarYear]
+UPDATE    acs
+SET        [TotalSalesAmount] = [fis].[TotalSalesAmount]
+FROM    [dbo].[AnnualCategorySales]     AS acs
+JOIN    (
+        SELECT    [EnglishProductCategoryName]
+        ,        [CalendarYear]
+        ,        SUM([SalesAmount])                AS [TotalSalesAmount]
+        FROM    [dbo].[FactInternetSales]        AS s
+        JOIN    [dbo].[DimDate]                    AS d    ON s.[OrderDateKey]                = d.[DateKey]
+        JOIN    [dbo].[DimProduct]                AS p    ON s.[ProductKey]                = p.[ProductKey]
+        JOIN    [dbo].[DimProductSubCategory]    AS u    ON p.[ProductSubcategoryKey]    = u.[ProductSubcategoryKey]
+        JOIN    [dbo].[DimProductCategory]        AS c    ON u.[ProductCategoryKey]        = c.[ProductCategoryKey]
+        WHERE     [CalendarYear] = 2004
+        GROUP BY
+                [EnglishProductCategoryName]
+        ,        [CalendarYear]
+        ) AS fis
+ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
+AND    [acs].[CalendarYear]                = [fis].[CalendarYear]
 ;
 ```
 
@@ -178,18 +183,18 @@ SQL Data Warehouse では、`UPDATE` ステートメントの `FROM` 句で ANSI
 CREATE TABLE CTAS_acs
 WITH (DISTRIBUTION = ROUND_ROBIN)
 AS
-SELECT	ISNULL(CAST([EnglishProductCategoryName] AS NVARCHAR(50)),0)	AS [EnglishProductCategoryName]
-,		ISNULL(CAST([CalendarYear] AS SMALLINT),0) 						AS [CalendarYear]
-,		ISNULL(CAST(SUM([SalesAmount]) AS MONEY),0)						AS [TotalSalesAmount]
-FROM	[dbo].[FactInternetSales]		AS s
-JOIN	[dbo].[DimDate]					AS d	ON s.[OrderDateKey]				= d.[DateKey]
-JOIN	[dbo].[DimProduct]				AS p	ON s.[ProductKey]				= p.[ProductKey]
-JOIN	[dbo].[DimProductSubCategory]	AS u	ON p.[ProductSubcategoryKey]	= u.[ProductSubcategoryKey]
-JOIN	[dbo].[DimProductCategory]		AS c	ON u.[ProductCategoryKey]		= c.[ProductCategoryKey]
-WHERE 	[CalendarYear] = 2004
+SELECT    ISNULL(CAST([EnglishProductCategoryName] AS NVARCHAR(50)),0)    AS [EnglishProductCategoryName]
+,        ISNULL(CAST([CalendarYear] AS SMALLINT),0)                         AS [CalendarYear]
+,        ISNULL(CAST(SUM([SalesAmount]) AS MONEY),0)                        AS [TotalSalesAmount]
+FROM    [dbo].[FactInternetSales]        AS s
+JOIN    [dbo].[DimDate]                    AS d    ON s.[OrderDateKey]                = d.[DateKey]
+JOIN    [dbo].[DimProduct]                AS p    ON s.[ProductKey]                = p.[ProductKey]
+JOIN    [dbo].[DimProductSubCategory]    AS u    ON p.[ProductSubcategoryKey]    = u.[ProductSubcategoryKey]
+JOIN    [dbo].[DimProductCategory]        AS c    ON u.[ProductCategoryKey]        = c.[ProductCategoryKey]
+WHERE     [CalendarYear] = 2004
 GROUP BY
-		[EnglishProductCategoryName]
-,		[CalendarYear]
+        [EnglishProductCategoryName]
+,        [CalendarYear]
 ;
 
 -- Use an implicit join to perform the update
@@ -265,7 +270,6 @@ RENAME OBJECT dbo.[DimpProduct_upsert]  TO [DimProduct];
 ```
 
 ## CTAS での推奨事項: 明示的にデータ型および出力の null 値の許容を示す
-
 コードを移行するときに、このようなコーディング パターンが見られる場合があります。
 
 ```sql
@@ -335,12 +339,16 @@ SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 ```
 
 以下の点に注意してください。
-- CAST または CONVERT を使用することができます
-- ISNULL は、COALESCE ではなく NULLability を強制するために使用されます
-- ISNULL は最も外側の関数です
-- ISNULL の 2 つ目の部分は定数 (つまり 0) です
 
-> [AZURE.NOTE] Null 値の許容を正しく設定するには、`COALESCE` ではなくて `ISNULL` を使用することが重要です。`COALESCE` は決定的関数ではありませんので、式の結果は必ず null を許容します。`ISNULL` は異なります。ISNULL は確定的な関数です。そのため、`ISNULL` 関数の 2 番目の部分が定数またはリテラルの場合、結果の値は NOT NULL になります。
+* CAST または CONVERT を使用することができます
+* ISNULL は、COALESCE ではなく NULLability を強制するために使用されます
+* ISNULL は最も外側の関数です
+* ISNULL の 2 つ目の部分は定数 (つまり 0) です
+
+> [!NOTE]
+> Null 値の許容を正しく設定するには、`COALESCE` ではなくて `ISNULL` を使用することが重要です。`COALESCE` は決定的関数ではありませんので、式の結果は必ず null を許容します。`ISNULL` は異なります。ISNULL は確定的な関数です。そのため、`ISNULL` 関数の 2 番目の部分が定数またはリテラルの場合、結果の値は NOT NULL になります。
+> 
+> 
 
 このヒントは、計算の整合性を確保する上で役立つだけではありません。テーブル パーティションの切り替えでも重要になります。このテーブルが、ファクトとして定義されていると考えてください。
 
@@ -416,10 +424,10 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 そのため、CTAS では、型の一貫性と null 値の許容プロパティを保持することが、エンジニアリング上のベスト プラクティスだということがわかります。計算の整合性を維持するのに役立つほか、パーティションの切り替えも確実に実行できるからです。
 
-[CTAS][] の使用方法に関する詳細については、MSDN を参照してください。これは、Azure SQL Data Warehouse で最も重要なステートメントの 1 つです。よく理解しておいてください。
+[CTAS][CTAS] の使用方法に関する詳細については、MSDN を参照してください。これは、Azure SQL Data Warehouse で最も重要なステートメントの 1 つです。よく理解しておいてください。
 
 ## 次のステップ
-開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
+開発のその他のヒントについては、[開発の概要][開発の概要]に関するページをご覧ください。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-develop-ctas/ctas-results.png

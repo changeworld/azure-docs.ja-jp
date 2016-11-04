@@ -1,26 +1,27 @@
-<properties
-   pageTitle="新規または既存の Application Gateway における Web アプリケーション ファイアウォールの構成 | Microsoft Azure"
-   description="この記事では、既存または新規のアプリケーション ゲートウェイで Web アプリケーション ファイアウォールの使用を開始する方法について説明します。"
-   documentationCenter="na"
-   services="application-gateway"
-   authors="georgewallace"
-   manager="carmonm"
-   editor="tysonn"/>
-<tags
-   ms.service="application-gateway"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="09/26/2016"
-   ms.author="gwallace"/>
+---
+title: 新規または既存の Application Gateway における Web アプリケーション ファイアウォールの構成 | Microsoft Docs
+description: この記事では、既存または新規のアプリケーション ゲートウェイで Web アプリケーション ファイアウォールの使用を開始する方法について説明します。
+documentationcenter: na
+services: application-gateway
+author: georgewallace
+manager: carmonm
+editor: tysonn
 
+ms.service: application-gateway
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 09/26/2016
+ms.author: gwallace
 
+---
 # <a name="configure-web-application-firewall-on-a-new-or-existing-application-gateway"></a>新規または既存の Application Gateway における Web アプリケーション ファイアウォールの構成
-
-> [AZURE.SELECTOR]
-- [Azure ポータル](application-gateway-web-application-firewall-portal.md)
-- [Azure Resource Manager の PowerShell](application-gateway-web-application-firewall-powershell.md)
+> [!div class="op_single_selector"]
+> * [Azure ポータル](application-gateway-web-application-firewall-portal.md)
+> * [Azure Resource Manager の PowerShell](application-gateway-web-application-firewall-powershell.md)
+> 
+> 
 
 Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。 サポートされている機能の完全な一覧については、「Application Gateway の概要」を参照してください。
 
@@ -31,7 +32,6 @@ Azure Application Gateway の Web アプリケーション ファイアウォー
 ![シナリオのイメージ][scenario]
 
 ## <a name="waf-configuration-differences"></a>WAF の構成上の相違点
-
 [PowerShell を使用した Application Gateway の作成](application-gateway-create-gateway-arm.md)に関するページをお読みであれば、アプリケーション ゲートウェイを作成するときに構成する SKU の設定はご存じのとおりです。 WAF には、アプリケーション ゲートウェイで SKU を構成するときに定義する追加の設定があります。 アプリケーション ゲートウェイ自体に加える変更はありません。
 
 **SKU** -WAF が追加されていない通常のアプリケーション ゲートウェイでは、**Standard\_Small**、**Standard\_Medium**、および **Standard\_Large** の各サイズがサポートされています。 WAF を導入すると、2 つの SKU、**WAF\_Medium** と **WAF\_Large** が追加されます。 小規模なアプリケーション ゲートウェイでは、WAF はサポートされていません。
@@ -41,36 +41,30 @@ Azure Application Gateway の Web アプリケーション ファイアウォー
 **モード** - WAF のモードです。 使用できる値は **Detection** と **Prevention**です。 WAF を検出モードで設定すると、すべての脅威がログ ファイルに記録されます。 防止モードでは、検出モードと同様にイベントがログに記録されますが、攻撃者はアプリケーション ゲートウェイから "403 許可されていません" 応答を受信します。
 
 ## <a name="add-web-application-firewall-to-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイに Web アプリケーション ファイアウォールを追加する
-
 Azure PowerShell の最新バージョンを使用していることを確認します。 詳細については、 [Resource Manager での Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページを参照してください。
 
 ### <a name="step-1"></a>手順 1
-
 Azure アカウントにログインします。
 
     Login-AzureRmAccount
 
 ### <a name="step-2"></a>手順 2.
-
 このシナリオで使用するサブスクリプションを選択します。
 
     Select-AzureRmSubscription -SubscriptionName "<Subscription name>"
 
 ### <a name="step-3"></a>手順 3.
-
 Web アプリケーション ファイアウォールを追加するゲートウェイを取得します。
 
     $gw = Get-AzureRmApplicationGateway -Name "AdatumGateway" -ResourceGroupName "MyResourceGroup"
 
 
 ### <a name="step-4"></a>手順 4.
-
 Web アプリケーション ファイアウォール SKU を構成します。 利用可能なサイズは、**WAF\_Large** と **WAF\_Medium** です。 Web アプリケーションを使用するとき、層を **WAF**にする必要があります。
 
     $gw | Set-AzureRmApplicationGatewaySku -Name WAF_Large -Tier WAF
 
 ### <a name="step-5"></a>手順 5.
-
 次の例で定義しているように、WAF の設定を構成します。
 
 **WafMode** の設定に利用できる値は、"Prevention" と "Detection"です。
@@ -78,7 +72,6 @@ Web アプリケーション ファイアウォール SKU を構成します。 
     $config = Add-AzureRmApplicationGatewayWafConfig -Enabled $true -WafMode "Prevention" -ApplicationGateway $gw
 
 ### <a name="step-6"></a>手順 6.
-
 前の手順で定義した設定でアプリケーション ゲートウェイを更新します。
 
     Set-AzureRmApplicationGateway -ApplicationGateway $gw
@@ -86,13 +79,11 @@ Web アプリケーション ファイアウォール SKU を構成します。 
 このコマンドを実行すると、Web アプリケーション ファイアウォールによってアプリケーション ゲートウェイが更新されます。 [Application Gateway の診断](application-gateway-diagnostics.md) に関する記事を参照して、アプリケーション ゲートウェイのログを表示する方法について理解することをお勧めします。 WAF のセキュリティの性質により、ログを定期的に確認して Web アプリケーションのセキュリティ状況を把握する必要があります。
 
 ## <a name="create-an-application-gateway-with-web-application-firewall"></a>Web アプリケーション ファイアウォールのある Application Gateway を作成する
-
 次の手順では、Web アプリケーション ファイアウォールのある Application Gateway を作成するプロセスを最初から最後まで実行します。
 
 Azure PowerShell の最新バージョンを使用していることを確認します。 詳細については、 [Resource Manager での Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページを参照してください。
 
 ### <a name="step-1"></a>手順 1
-
 Azure へのログイン
 
     Login-AzureRmAccount
@@ -100,19 +91,16 @@ Azure へのログイン
 資格情報を使用して認証を行うように求めるメッセージが表示されます。
 
 ### <a name="step-2"></a>手順 2.
-
 アカウントのサブスクリプションを確認します。
 
     Get-AzureRmSubscription
 
 ### <a name="step-3"></a>手順 3.
-
 使用する Azure サブスクリプションを選択します。
 
     Select-AzureRmsubscription -SubscriptionName "<Subscription name>"
 
 ### <a name="step-4"></a>手順 4.
-
 リソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
 
     New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
@@ -121,30 +109,32 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 前の例では、"appgw-RG" という名前のリソース グループと "West US" という名前の場所を作成しました。
 
->[AZURE.NOTE] アプリケーション ゲートウェイのカスタム プローブを構成する必要がある場合は、 [PowerShell を使用したカスタム プローブとアプリケーション ゲートウェイの作成](application-gateway-create-probe-ps.md)に関するページを参照してください。 詳細については、 [カスタム プローブと正常性監視](application-gateway-probe-overview.md) に関するページを参照してください。
+> [!NOTE]
+> アプリケーション ゲートウェイのカスタム プローブを構成する必要がある場合は、 [PowerShell を使用したカスタム プローブとアプリケーション ゲートウェイの作成](application-gateway-create-probe-ps.md)に関するページを参照してください。 詳細については、 [カスタム プローブと正常性監視](application-gateway-probe-overview.md) に関するページを参照してください。
+> 
+> 
 
 ### <a name="step-5"></a>手順 5.
-
 Application Gateway 自体に使用するサブネットのアドレス範囲を割り当てます。
 
     $gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
 
-> [AZURE.NOTE] アプリケーションのサブネットには、少なくとも 28 個のマスク ビットが必要です。 これによって、Application Gateway インスタンスのサブネットに 10 個の使用可能なアドレスが残ります。 これより小さいサブネットには、今後アプリケーション ゲートウェイのインスタンスを追加することができません。
+> [!NOTE]
+> アプリケーションのサブネットには、少なくとも 28 個のマスク ビットが必要です。 これによって、Application Gateway インスタンスのサブネットに 10 個の使用可能なアドレスが残ります。 これより小さいサブネットには、今後アプリケーション ゲートウェイのインスタンスを追加することができません。
+> 
+> 
 
 ### <a name="step-6"></a>手順 6.
-
 バックエンド アドレス プールに使用するアドレス範囲を割り当てます。
 
     $nicSubnet = New-AzureRmVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
 
 ### <a name="step-7"></a>手順 7.
-
  [リソース グループの作成](#create-the-resource-group)
 
     $vnet = New-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
 
 ### <a name="step-8"></a>手順 8.
-
 次の手順で、使用する仮想ネットワーク リソースとサブネットのリソースを取得します。
 
     $vnet = Get-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
@@ -152,15 +142,16 @@ Application Gateway 自体に使用するサブネットのアドレス範囲を
     $nicSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appsubnet' -VirtualNetwork $vnet
 
 ### <a name="step-9"></a>手順 9.
-
 アプリケーション ゲートウェイに使用するパブリック IP リソースを作成します。 このパブリック IP アドレスは、以降の手順のいずれかで使用します。
 
     $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name 'appgwpip' -Location "West US" -AllocationMethod Dynamic
 
-> [AZURE.IMPORTANT] Application Gateway では、ドメイン ラベルを定義して作成したパブリック IP アドレスを使用できません。 動的に作成されるドメイン ラベルを持つパブリック IP アドレスのみがサポートされています。 アプリケーション ゲートウェイにわかりやすい DNS 名を付ける必要がある場合は、CNAME レコードをエイリアスとして使用することをお勧めします。
+> [!IMPORTANT]
+> Application Gateway では、ドメイン ラベルを定義して作成したパブリック IP アドレスを使用できません。 動的に作成されるドメイン ラベルを持つパブリック IP アドレスのみがサポートされています。 アプリケーション ゲートウェイにわかりやすい DNS 名を付ける必要がある場合は、CNAME レコードをエイリアスとして使用することをお勧めします。
+> 
+> 
 
 ### <a name="step-10"></a>手順 10.
-
 アプリケーション ゲートウェイを作成する前に、すべての構成項目を設定する必要があります。 次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
 
 アプリケーション ゲートウェイの IP 構成を作成します。これにより、Application Gateway で使用するサブネットが構成されます。 Application Gateway が起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。 各インスタンスが IP アドレスを 1 つ取得することに注意してください。
@@ -168,65 +159,57 @@ Application Gateway 自体に使用するサブネットのアドレス範囲を
     $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
 
 ### <a name="step-11"></a>手順 11.
-
 バックエンド Web サーバーの IP アドレスを使用してバックエンド IP アドレス プールを構成します。 これらの IP アドレスは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスです。 独自のアプリケーションの IP アドレス エンドポイントを追加するには、次の IP アドレスを置き換えます。
 
     $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
 
 ### <a name="step-12"></a>手順 12.
-
 アプリケーション ゲートウェイのバックエンドの http 設定を構成します。 前の手順でアップロードした証明書を http 設定に割り当てます。
 
     $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
 
 ### <a name="step-13"></a>手順 13.
-
 パブリック IP エンドポイント用のフロントエンド IP ポートを構成します。 このポートは、エンド ユーザーが接続するポートです。
 
     $fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
 
 ### <a name="step-14"></a>手順 14.
-
 フロントエンドの IP 構成を作成します。この設定によって、アプリケーション ゲートウェイのフロントエンドにプライベート IP アドレスまたはパブリック IP アドレスがマッピングされます。 次の手順で、フロントエンドの IP 構成と前の手順のパブリック IP アドレスを関連付けます。
 
     $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
 
 ### <a name="step-15"></a>手順 15.
-
 アプリケーション ゲートウェイの HTTP リスナーを作成します。 使用するフロントエンド IP 構成、ポート、および SSL 証明書を割り当てます。
 
     $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SslCertificate $cert
 
 ### <a name="step-16"></a>手順 16.
-
 ロード バランサーの動作を構成するロード バランサーのルーティング規則を作成します。 この例では、基本的なラウンド ロビン規則を作成します。
 
     $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
-   
-### <a name="step-17"></a>手順 17.
 
+### <a name="step-17"></a>手順 17.
 アプリケーション ゲートウェイのインスタンスのサイズを構成します。
 
     $sku = New-AzureRmApplicationGatewaySku -Name WAF_Medium -Tier WAF -Capacity 2
 
->[AZURE.NOTE]  **WAF\_Medium** と **WAF\_Large** から選択できます。WAF を使用するときの層は常に **WAF** です。 Capacity に指定できるのは、1 から 10 までの任意の数です。
+> [!NOTE]
+> **WAF\_Medium** と **WAF\_Large** から選択できます。WAF を使用するときの層は常に **WAF** です。 Capacity に指定できるのは、1 から 10 までの任意の数です。
+> 
+> 
 
 ### <a name="step-18"></a>手順 18.
-
 WAF のモードを構成します。指定できる値は **Prevention** と **Detection** です。
 
     $config = New-AzureRmApplicationGatewayWafConfig -Enabled $true -WafMode "Prevention"
 
 ### <a name="step-19"></a>手順 19.
-
 前の手順の構成項目をすべて使用して、アプリケーション ゲートウェイを作成します。 この例では、アプリケーション ゲートウェイは "appgwtest" という名前です。
 
     $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -WafConfig $config
 
 ## <a name="next-steps"></a>次のステップ
-
  [Application Gateway の診断](application-gateway-diagnostics.md)
-
 
 [scenario]: ./media/application-gateway-web-application-firewall-powershell/scenario.png
 

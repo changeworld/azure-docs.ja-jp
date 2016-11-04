@@ -1,29 +1,25 @@
-<properties 
-	pageTitle="Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成 | Microsoft Azure" 
-	description="Media Services .NET SDK を利用し、コンテンツ キー承認ポリシーを構成する方法について説明します。" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="Mingfeiy" 
-	manager="erikre" 
-	editor=""/>
+---
+title: Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成 | Microsoft Docs
+description: Media Services .NET SDK を利用し、コンテンツ キー承認ポリシーを構成する方法について説明します。
+services: media-services
+documentationcenter: ''
+author: Mingfeiy
+manager: erikre
+editor: ''
 
-<tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/15/2016"
-	ms.author="juliako;mingfeiy"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/15/2016
+ms.author: juliako;mingfeiy
 
-
-
+---
 # 動的暗号化: コンテンツ キー承認ポリシーを構成する
+[!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
-[AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
-
-##Overview
-
+## Overview
 Microsoft Azure Media Services を使用すると、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) または [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) で保護された MPEG DASH、Smooth Streaming、HTTP ライブ ストリーミング (HLS) のストリームを配信できます。AMS では、Widevine DRM で暗号化された DASH ストリームを配信することもできます。PlayReady と Widevine はいずれも共通暗号化 (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。
 
 Media Services では、クライアントが暗号化されたコンテンツを再生するために AES キーまたは PlayReady/Widevine ライセンスを取得できる**キー/ライセンス配信サービス**も提供します。
@@ -44,21 +40,17 @@ Media Services では、Secure Token Services は提供されません。トー�
 
 [Azure ACS を使用してトークンを発行する](http://mingfeiy.com/acs-with-key-services)。
 
-###いくつかの考慮事項が適用されます。
+### いくつかの考慮事項が適用されます。
+* 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
+* 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
+* **AssetCreationOptions.StorageEncrypted** オプションを使用して、資産をアップロードしてエンコードします。
+* 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
+* キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
+* 資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
+* 現在、HDS ストリーミング形式およびプログレッシブ ダウンロードは暗号化できません。
 
-- 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
-- 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
-- **AssetCreationOptions.StorageEncrypted** オプションを使用して、資産をアップロードしてエンコードします。
-- 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
-- キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
-- 資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
-- 現在、HDS ストリーミング形式およびプログレッシブ ダウンロードは暗号化できません。
-
-
-##AES-128 動的暗号化
-
-###オープン制限
-
+## AES-128 動的暗号化
+### オープン制限
 オープン制限とは、キーを要求するすべてのユーザーに、システムがキーを提供することを意味します。この制限は、テストに便利です。
 
 次の例では、オープン承認ポリシーを作成し、それをコンテンツ キーに追加します。
@@ -66,281 +58,275 @@ Media Services では、Secure Token Services は提供されません。トー�
 static public void AddOpenAuthorizationPolicy(IContentKey contentKey) { // Create ContentKeyAuthorizationPolicy with Open restrictions // and create authorization policy IContentKeyAuthorizationPolicy policy = \_context.ContentKeyAuthorizationPolicies.CreateAsync("Open Authorization Policy").Result;
 
 List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>();
-	
-	    ContentKeyAuthorizationPolicyRestriction restriction =
-	        new ContentKeyAuthorizationPolicyRestriction
-	        {
-	            Name = "HLS Open Authorization Policy",
-	            KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
-	            Requirements = null // no requirements needed for HLS
-	        };
-	
-	    restrictions.Add(restriction);
-	
-	    IContentKeyAuthorizationPolicyOption policyOption =
-	        _context.ContentKeyAuthorizationPolicyOptions.Create(
-	        "policy", 
-	        ContentKeyDeliveryType.BaselineHttp, 
-	        restrictions, 
-	        "");
-	
-	    policy.Options.Add(policyOption);
-	
-	    // Add ContentKeyAutorizationPolicy to ContentKey
-	    contentKey.AuthorizationPolicyId = policy.Id;
-	    IContentKey updatedKey = contentKey.UpdateAsync().Result;
-	    Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
-	}
+
+        ContentKeyAuthorizationPolicyRestriction restriction =
+            new ContentKeyAuthorizationPolicyRestriction
+            {
+                Name = "HLS Open Authorization Policy",
+                KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
+                Requirements = null // no requirements needed for HLS
+            };
+
+        restrictions.Add(restriction);
+
+        IContentKeyAuthorizationPolicyOption policyOption =
+            _context.ContentKeyAuthorizationPolicyOptions.Create(
+            "policy", 
+            ContentKeyDeliveryType.BaselineHttp, 
+            restrictions, 
+            "");
+
+        policy.Options.Add(policyOption);
+
+        // Add ContentKeyAutorizationPolicy to ContentKey
+        contentKey.AuthorizationPolicyId = policy.Id;
+        IContentKey updatedKey = contentKey.UpdateAsync().Result;
+        Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
+    }
 
 
-###トークン制限
-
+### トークン制限
 このセクションでは、コンテンツ キー承認ポリシーを作成し、それをコンテンツ キーに関連付ける方法について説明します。承認ポリシーには、ユーザーがキーを受け取ることを承認されているかどうかを判断するために、承認要求が満たす必要がある内容について記載されています (トークンの署名に使用されたキーが「検証キー」リストに含まれているなど)。
 
 トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。トークン制限の構成 XML は、次の XML スキーマに準拠する必要があります。
 
-####<a id="schema"></a>トークン制限スキーマ
-	
-	<?xml version="1.0" encoding="utf-8"?>
-	<xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	  <xs:complexType name="TokenClaim">
-	    <xs:sequence>
-	      <xs:element name="ClaimType" nillable="true" type="xs:string" />
-	      <xs:element minOccurs="0" name="ClaimValue" nillable="true" type="xs:string" />
-	    </xs:sequence>
-	  </xs:complexType>
-	  <xs:element name="TokenClaim" nillable="true" type="tns:TokenClaim" />
-	  <xs:complexType name="TokenRestrictionTemplate">
-	    <xs:sequence>
-	      <xs:element minOccurs="0" name="AlternateVerificationKeys" nillable="true" type="tns:ArrayOfTokenVerificationKey" />
-	      <xs:element name="Audience" nillable="true" type="xs:anyURI" />
-	      <xs:element name="Issuer" nillable="true" type="xs:anyURI" />
-	      <xs:element name="PrimaryVerificationKey" nillable="true" type="tns:TokenVerificationKey" />
-	      <xs:element minOccurs="0" name="RequiredClaims" nillable="true" type="tns:ArrayOfTokenClaim" />
-	    </xs:sequence>
-	  </xs:complexType>
-	  <xs:element name="TokenRestrictionTemplate" nillable="true" type="tns:TokenRestrictionTemplate" />
-	  <xs:complexType name="ArrayOfTokenVerificationKey">
-	    <xs:sequence>
-	      <xs:element minOccurs="0" maxOccurs="unbounded" name="TokenVerificationKey" nillable="true" type="tns:TokenVerificationKey" />
-	    </xs:sequence>
-	  </xs:complexType>
-	  <xs:element name="ArrayOfTokenVerificationKey" nillable="true" type="tns:ArrayOfTokenVerificationKey" />
-	  <xs:complexType name="TokenVerificationKey">
-	    <xs:sequence />
-	  </xs:complexType>
-	  <xs:element name="TokenVerificationKey" nillable="true" type="tns:TokenVerificationKey" />
-	  <xs:complexType name="ArrayOfTokenClaim">
-	    <xs:sequence>
-	      <xs:element minOccurs="0" maxOccurs="unbounded" name="TokenClaim" nillable="true" type="tns:TokenClaim" />
-	    </xs:sequence>
-	  </xs:complexType>
-	  <xs:element name="ArrayOfTokenClaim" nillable="true" type="tns:ArrayOfTokenClaim" />
-	  <xs:complexType name="SymmetricVerificationKey">
-	    <xs:complexContent mixed="false">
-	      <xs:extension base="tns:TokenVerificationKey">
-	        <xs:sequence>
-	          <xs:element name="KeyValue" nillable="true" type="xs:base64Binary" />
-	        </xs:sequence>
-	      </xs:extension>
-	    </xs:complexContent>
-	  </xs:complexType>
-	  <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
-	</xs:schema>
+#### <a id="schema"></a>トークン制限スキーマ
+    <?xml version="1.0" encoding="utf-8"?>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="TokenClaim">
+        <xs:sequence>
+          <xs:element name="ClaimType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClaimValue" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TokenClaim" nillable="true" type="tns:TokenClaim" />
+      <xs:complexType name="TokenRestrictionTemplate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AlternateVerificationKeys" nillable="true" type="tns:ArrayOfTokenVerificationKey" />
+          <xs:element name="Audience" nillable="true" type="xs:anyURI" />
+          <xs:element name="Issuer" nillable="true" type="xs:anyURI" />
+          <xs:element name="PrimaryVerificationKey" nillable="true" type="tns:TokenVerificationKey" />
+          <xs:element minOccurs="0" name="RequiredClaims" nillable="true" type="tns:ArrayOfTokenClaim" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TokenRestrictionTemplate" nillable="true" type="tns:TokenRestrictionTemplate" />
+      <xs:complexType name="ArrayOfTokenVerificationKey">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="TokenVerificationKey" nillable="true" type="tns:TokenVerificationKey" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfTokenVerificationKey" nillable="true" type="tns:ArrayOfTokenVerificationKey" />
+      <xs:complexType name="TokenVerificationKey">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:element name="TokenVerificationKey" nillable="true" type="tns:TokenVerificationKey" />
+      <xs:complexType name="ArrayOfTokenClaim">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="TokenClaim" nillable="true" type="tns:TokenClaim" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfTokenClaim" nillable="true" type="tns:ArrayOfTokenClaim" />
+      <xs:complexType name="SymmetricVerificationKey">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:TokenVerificationKey">
+            <xs:sequence>
+              <xs:element name="KeyValue" nillable="true" type="xs:base64Binary" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
+    </xs:schema>
 
 **トークン**制限ポリシーを構成するときは、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。**プライマリ検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行するセキュリティ トークン サービスです。**対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的か、トークンがアクセスを承認するリソースが記述されます。Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
 **Media Services SDK for .NET** を使用する場合、**TokenRestrictionTemplate** クラスを使用して制限トークンを生成できます。次の例では、トークン制限を含む承認ポリシーを作成します。この例では、クライアントが署名キー (VerificationKey)、トークン発行者、必要な要求を含むトークンを提示する必要があります。
-	
-	public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
-	{
-	    string tokenTemplateString = GenerateTokenRequirements();
-	
-	    IContentKeyAuthorizationPolicy policy = _context.
-	                            ContentKeyAuthorizationPolicies.
-	                            CreateAsync("HLS token restricted authorization policy").Result;
-	
-	    List<ContentKeyAuthorizationPolicyRestriction> restrictions =
-	            new List<ContentKeyAuthorizationPolicyRestriction>();
-	
-	    ContentKeyAuthorizationPolicyRestriction restriction =
-	            new ContentKeyAuthorizationPolicyRestriction
-	            {
-	                Name = "Token Authorization Policy",
-	                KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
-	                Requirements = tokenTemplateString
-	            };
-	
-	    restrictions.Add(restriction);
-	
-	    //You could have multiple options 
-	    IContentKeyAuthorizationPolicyOption policyOption =
-	        _context.ContentKeyAuthorizationPolicyOptions.Create(
-	            "Token option for HLS",
-	            ContentKeyDeliveryType.BaselineHttp,
-	            restrictions,
-	            null  // no key delivery data is needed for HLS
-	            );
-	
-	    policy.Options.Add(policyOption);
-	
-	    // Add ContentKeyAutorizationPolicy to ContentKey
-	    contentKey.AuthorizationPolicyId = policy.Id;
-	    IContentKey updatedKey = contentKey.UpdateAsync().Result;
-	    Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
-	
-	    return tokenTemplateString;
-	}
-	
-	static private string GenerateTokenRequirements()
-	{
-	    TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
-	
-	    template.PrimaryVerificationKey = new SymmetricVerificationKey();
-	    template.AlternateVerificationKeys.Add(new SymmetricVerificationKey());
+
+    public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
+    {
+        string tokenTemplateString = GenerateTokenRequirements();
+
+        IContentKeyAuthorizationPolicy policy = _context.
+                                ContentKeyAuthorizationPolicies.
+                                CreateAsync("HLS token restricted authorization policy").Result;
+
+        List<ContentKeyAuthorizationPolicyRestriction> restrictions =
+                new List<ContentKeyAuthorizationPolicyRestriction>();
+
+        ContentKeyAuthorizationPolicyRestriction restriction =
+                new ContentKeyAuthorizationPolicyRestriction
+                {
+                    Name = "Token Authorization Policy",
+                    KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
+                    Requirements = tokenTemplateString
+                };
+
+        restrictions.Add(restriction);
+
+        //You could have multiple options 
+        IContentKeyAuthorizationPolicyOption policyOption =
+            _context.ContentKeyAuthorizationPolicyOptions.Create(
+                "Token option for HLS",
+                ContentKeyDeliveryType.BaselineHttp,
+                restrictions,
+                null  // no key delivery data is needed for HLS
+                );
+
+        policy.Options.Add(policyOption);
+
+        // Add ContentKeyAutorizationPolicy to ContentKey
+        contentKey.AuthorizationPolicyId = policy.Id;
+        IContentKey updatedKey = contentKey.UpdateAsync().Result;
+        Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
+
+        return tokenTemplateString;
+    }
+
+    static private string GenerateTokenRequirements()
+    {
+        TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+
+        template.PrimaryVerificationKey = new SymmetricVerificationKey();
+        template.AlternateVerificationKeys.Add(new SymmetricVerificationKey());
             template.Audience = _sampleAudience.ToString();
             template.Issuer = _sampleIssuer.ToString();
-	
-	    template.RequiredClaims.Add(TokenClaim.ContentKeyIdentifierClaim);
-	
-	    return TokenRestrictionTemplateSerializer.Serialize(template);
-	}
 
-####<a id="test"></a>テスト トークン
+        template.RequiredClaims.Add(TokenClaim.ContentKeyIdentifierClaim);
 
+        return TokenRestrictionTemplateSerializer.Serialize(template);
+    }
+
+#### <a id="test"></a>テスト トークン
 キー承認ポリシーに使用されたトークン制限に基づいてテスト トークンを取得するには、次の処理を行います。
-	
-	// Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
-	// back into a TokenRestrictionTemplate class instance.
-	TokenRestrictionTemplate tokenTemplate =
-	    TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
-	
-	// Generate a test token based on the the data in the given TokenRestrictionTemplate.
-	// Note, you need to pass the key id Guid because we specified 
-	// TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
-	Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
-	
-	//The GenerateTestToken method returns the token without the word “Bearer” in front
-	//so you have to add it in front of the token string. 
-	string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey);
-	Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
-	Console.WriteLine();
+
+    // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
+    // back into a TokenRestrictionTemplate class instance.
+    TokenRestrictionTemplate tokenTemplate =
+        TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
+
+    // Generate a test token based on the the data in the given TokenRestrictionTemplate.
+    // Note, you need to pass the key id Guid because we specified 
+    // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
+    Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
+
+    //The GenerateTestToken method returns the token without the word “Bearer” in front
+    //so you have to add it in front of the token string. 
+    string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey);
+    Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+    Console.WriteLine();
 
 
-##PlayReady 動的暗号化 
-
+## PlayReady 動的暗号化
 Media Services により、ユーザーが保護されたコンテンツを再生する際に、PlayReady DRM ランタイムに適用される権限と制限を構成できます。
 
 PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の 1 つとして、[PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。Media Services SDK for .NET では、**PlayReadyLicenseResponseTemplate** クラスと **PlayReadyLicenseTemplate** クラスを利用して、PlayReady ライセンス テンプレートを定義できます。
 
 [トピック](media-services-protect-with-drm.md)では、**PlayReady** と **Widevine** を使用してコンテンツを暗号化する方法を説明しています。
 
-###オープン制限
-	
+### オープン制限
 オープン制限とは、キーを要求するすべてのユーザーに、システムがキーを提供することを意味します。この制限は、テストに便利です。
 
 次の例では、オープン承認ポリシーを作成し、それをコンテンツ キーに追加します。
 
-	static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
-	{
-	
-	    // Create ContentKeyAuthorizationPolicy with Open restrictions 
-	    // and create authorization policy          
-	
-	    List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
-	    {
-	        new ContentKeyAuthorizationPolicyRestriction 
-	        { 
-	            Name = "Open", 
-	            KeyRestrictionType = (int)ContentKeyRestrictionType.Open, 
-	            Requirements = null
-	        }
-	    };
-	
-	    // Configure PlayReady license template.
-	    string newLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
-	
-	    IContentKeyAuthorizationPolicyOption policyOption =
-	        _context.ContentKeyAuthorizationPolicyOptions.Create("",
-	            ContentKeyDeliveryType.PlayReadyLicense,
-	                restrictions, newLicenseTemplate);
-	
-	    IContentKeyAuthorizationPolicy contentKeyAuthorizationPolicy = _context.
-	                ContentKeyAuthorizationPolicies.
-	                CreateAsync("Deliver Common Content Key with no restrictions").
-	                Result;
-	
-	
-	    contentKeyAuthorizationPolicy.Options.Add(policyOption);
-	
-	    // Associate the content key authorization policy with the content key.
-	    contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
-	    contentKey = contentKey.UpdateAsync().Result;
-	}
+    static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
+    {
 
-###トークン制限
+        // Create ContentKeyAuthorizationPolicy with Open restrictions 
+        // and create authorization policy          
 
+        List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
+        {
+            new ContentKeyAuthorizationPolicyRestriction 
+            { 
+                Name = "Open", 
+                KeyRestrictionType = (int)ContentKeyRestrictionType.Open, 
+                Requirements = null
+            }
+        };
+
+        // Configure PlayReady license template.
+        string newLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
+
+        IContentKeyAuthorizationPolicyOption policyOption =
+            _context.ContentKeyAuthorizationPolicyOptions.Create("",
+                ContentKeyDeliveryType.PlayReadyLicense,
+                    restrictions, newLicenseTemplate);
+
+        IContentKeyAuthorizationPolicy contentKeyAuthorizationPolicy = _context.
+                    ContentKeyAuthorizationPolicies.
+                    CreateAsync("Deliver Common Content Key with no restrictions").
+                    Result;
+
+
+        contentKeyAuthorizationPolicy.Options.Add(policyOption);
+
+        // Associate the content key authorization policy with the content key.
+        contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
+        contentKey = contentKey.UpdateAsync().Result;
+    }
+
+### トークン制限
 トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。トークン制限の構成 XML は、[この](#schema)セクションで表示される XML スキーマに一致する必要があります。
-	
-	public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
-	{
-	    string tokenTemplateString = GenerateTokenRequirements();
-	
-	    IContentKeyAuthorizationPolicy policy = _context.
-	                            ContentKeyAuthorizationPolicies.
-	                            CreateAsync("HLS token restricted authorization policy").Result;
-	
-	    List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
-	    {
-	        new ContentKeyAuthorizationPolicyRestriction 
-	        { 
-	            Name = "Token Authorization Policy", 
-	            KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
-	            Requirements = tokenTemplateString, 
-	        }
-	    };
-	
-	    // Configure PlayReady license template.
-	    string newLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
-	
-	    IContentKeyAuthorizationPolicyOption policyOption =
-	        _context.ContentKeyAuthorizationPolicyOptions.Create("Token option",
-	            ContentKeyDeliveryType.PlayReadyLicense,
-	                restrictions, newLicenseTemplate);
-	
-	    IContentKeyAuthorizationPolicy contentKeyAuthorizationPolicy = _context.
-	                ContentKeyAuthorizationPolicies.
-	                CreateAsync("Deliver Common Content Key with no restrictions").
-	                Result;
-	            
-	    policy.Options.Add(policyOption);
-	
-	    // Add ContentKeyAutorizationPolicy to ContentKey
-	    contentKeyAuthorizationPolicy.Options.Add(policyOption);
-	
-	    // Associate the content key authorization policy with the content key
-	    contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
-	    contentKey = contentKey.UpdateAsync().Result;
-	
-	    return tokenTemplateString;
-	}
-	
-	static private string GenerateTokenRequirements()
-	{
-	
-	    TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
-	
-	    template.PrimaryVerificationKey = new SymmetricVerificationKey();
-	    template.AlternateVerificationKeys.Add(new SymmetricVerificationKey());
+
+    public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
+    {
+        string tokenTemplateString = GenerateTokenRequirements();
+
+        IContentKeyAuthorizationPolicy policy = _context.
+                                ContentKeyAuthorizationPolicies.
+                                CreateAsync("HLS token restricted authorization policy").Result;
+
+        List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
+        {
+            new ContentKeyAuthorizationPolicyRestriction 
+            { 
+                Name = "Token Authorization Policy", 
+                KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
+                Requirements = tokenTemplateString, 
+            }
+        };
+
+        // Configure PlayReady license template.
+        string newLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
+
+        IContentKeyAuthorizationPolicyOption policyOption =
+            _context.ContentKeyAuthorizationPolicyOptions.Create("Token option",
+                ContentKeyDeliveryType.PlayReadyLicense,
+                    restrictions, newLicenseTemplate);
+
+        IContentKeyAuthorizationPolicy contentKeyAuthorizationPolicy = _context.
+                    ContentKeyAuthorizationPolicies.
+                    CreateAsync("Deliver Common Content Key with no restrictions").
+                    Result;
+
+        policy.Options.Add(policyOption);
+
+        // Add ContentKeyAutorizationPolicy to ContentKey
+        contentKeyAuthorizationPolicy.Options.Add(policyOption);
+
+        // Associate the content key authorization policy with the content key
+        contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
+        contentKey = contentKey.UpdateAsync().Result;
+
+        return tokenTemplateString;
+    }
+
+    static private string GenerateTokenRequirements()
+    {
+
+        TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+
+        template.PrimaryVerificationKey = new SymmetricVerificationKey();
+        template.AlternateVerificationKeys.Add(new SymmetricVerificationKey());
             template.Audience = _sampleAudience.ToString();
             template.Issuer = _sampleIssuer.ToString();
-	
-	
-	    template.RequiredClaims.Add(TokenClaim.ContentKeyIdentifierClaim);
-	
-	    return TokenRestrictionTemplateSerializer.Serialize(template);
-	} 
-	
+
+
+        template.RequiredClaims.Add(TokenClaim.ContentKeyIdentifierClaim);
+
+        return TokenRestrictionTemplateSerializer.Serialize(template);
+    } 
+
     static private string ConfigurePlayReadyLicenseTemplate()
     {
         // The following code configures PlayReady License Template using .NET classes
@@ -359,7 +345,7 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
         //Configure whether the license is persistent (saved in persistent storage on the client) 
         //or non-persistent (only held in memory while the player is using the license).  
         licenseTemplate.LicenseType = PlayReadyLicenseType.Nonpersistent;
-       
+
         // AllowTestDevices controls whether test devices can use the license or not.  
         // If true, the MinimumSecurityLevel property of the license
         // is set to 150.  If false (the default), the MinimumSecurityLevel property of the license is set to 2000.
@@ -391,10 +377,8 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 キー承認ポリシーに使用されたトークン制限に基づいてテスト トークンを取得するには、[こちら](#test)のセクションをご覧ください。
 
-##<a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
-
-###<a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
-
+## <a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
+### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
     public enum ContentKeyRestrictionType
     {
         Open = 0,
@@ -402,8 +386,7 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
         IPRestricted = 2,
     }
 
-###<a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
-
+### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
     public enum ContentKeyDeliveryType
     {
       None = 0,
@@ -412,8 +395,7 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
       Widevine = 3
     }
 
-###<a id="TokenType"></a>TokenType
-
+### <a id="TokenType"></a>TokenType
     public enum TokenType
     {
         Undefined = 0,
@@ -423,16 +405,13 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 
 
-##Media Services のラーニング パス
+## Media Services のラーニング パス
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+## フィードバックの提供
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-##フィードバックの提供
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-##次のステップ
+## 次のステップ
 これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、「[アセットの配信ポリシーの構成方法](media-services-dotnet-configure-asset-delivery-policy.md)」トピックにお進みください。
- 
 
 <!---HONumber=AcomDC_0921_2016-->

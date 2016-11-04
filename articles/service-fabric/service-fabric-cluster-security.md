@@ -1,30 +1,29 @@
-<properties
-   pageTitle="Service Fabric クラスターをセキュリティで保護する | Microsoft Azure"
-   description="Service Fabric クラスターのためのセキュリティ シナリオと、これらのシナリオの実装に使用されるテクノロジについて説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="ChackDan"
-   manager="timlt"
-   editor=""/>
+---
+title: Service Fabric クラスターをセキュリティで保護する | Microsoft Docs
+description: Service Fabric クラスターのためのセキュリティ シナリオと、これらのシナリオの実装に使用されるテクノロジについて説明します。
+services: service-fabric
+documentationcenter: .net
+author: ChackDan
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/19/2016"
-   ms.author="chackdan"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/19/2016
+ms.author: chackdan
 
+---
 # Service Fabric クラスターのセキュリティに関するシナリオ
-
 Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。クラスターは、特に運用ワークロードが実行されている場合などに、許可なくユーザーがクラスターに接続するのを防ぐために常にセキュリティで保護する必要があります。セキュリティ保護されていないクラスターを作成することはできますが、これを行うと、パブリック インターネットへの管理エンドポイントを公開している場合、すべての匿名ユーザーがこのクラスターに接続できるようになります。
 
 この記事では、Azure またはスタンドアロンで実行されるクラスターのセキュリティに関するシナリオと、そのようなシナリオを実装するために使用するさまざまなテクノロジの概要を示します。クラスターのセキュリティに関するシナリオは次のとおりです。
 
-- ノード間のセキュリティ
-- クライアントとノードの間のセキュリティ
-- ロール ベースのアクセス制御 (RBAC)
+* ノード間のセキュリティ
+* クライアントとノードの間のセキュリティ
+* ロール ベースのアクセス制御 (RBAC)
 
 ## ノード間のセキュリティ
 クラスター内の VM やマシンの間の通信をセキュリティで保護します。これにより、クラスターへの参加が許可されているコンピューターのみが、クラスター内でホストされているアプリケーションとサービスに参加できます。
@@ -32,6 +31,7 @@ Azure Service Fabric クラスターは、ユーザーが所有するリソー�
 ![ノード間通信の図][Node-to-Node]
 
 Azure で実行するクラスターまたは Windows で実行するスタンドアロン クラスターには、[証明書セキュリティ](https://msdn.microsoft.com/library/ff649801.aspx)または [Windows セキュリティ](https://msdn.microsoft.com/library/ff649396.aspx) (Windows Server マシンの場合) を利用できます。
+
 ### ノード間の証明書セキュリティ
 Service Fabric では、クラスターを作成するときにノード タイプの構成で指定した X.509 サーバー証明書を使用します。これらの証明書の概要とその入手または作成方法はこの記事の最後に記載されています。
 
@@ -75,18 +75,16 @@ Azure クラスターについては、クライアントの認証に AAD セキ
 
 クラスターの作成時に、管理者ロールとユーザー クライアント ロールを指定して、それぞれに個別の ID (証明書、AAD など) を設定します。既定のアクセス制御の設定と、既定の設定を変更する方法の詳細については、「[ロール ベースのアクセス制御 (Service Fabric クライアント用)](service-fabric-cluster-security-roles.md)」を参照してください。
 
-
 ## X.509 証明書と Service Fabric
 一般的に、X.509 デジタル証明書は、クライアントとサーバーの認証、暗号化、メッセージのデジタル署名に使用されています。これらの証明書の詳細については、「[証明書の使用](http://msdn.microsoft.com/library/ms731899.aspx)」を参照してください。
 
 次のような、考慮すべき重要な点がいくつかあります。
 
-- 運用環境のワークロードを実行しているクラスターに使用する証明書は、正しく構成された Windows Server 証明書サービスを使用して作成するか、認定済みの[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) から取得する必要があります。
-- 運用環境では、MakeCert.exe などのツールで作成した一時証明書またはテスト証明書を使用しないでください。
-- 自己署名入りの証明書は使用できますが、運用環境のクラスターではなく、テスト環境のクラスターにのみ使用してください。
+* 運用環境のワークロードを実行しているクラスターに使用する証明書は、正しく構成された Windows Server 証明書サービスを使用して作成するか、認定済みの[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) から取得する必要があります。
+* 運用環境では、MakeCert.exe などのツールで作成した一時証明書またはテスト証明書を使用しないでください。
+* 自己署名入りの証明書は使用できますが、運用環境のクラスターではなく、テスト環境のクラスターにのみ使用してください。
 
 ### サーバー X.509 証明書
-
 サーバー証明書の主な作業は、クライアントに対するサーバー (ノード) の認証とサーバー (ノード) に対するサーバー (ノード) の認証です。クライアントまたはノードがノードを認証するときに行う初期チェックの 1 つは、サブジェクト フィールドの共通名の値を確認することです。この共通名、または証明書のサブジェクト代替名の 1 つが、使用可能な共通名の一覧に存在する必要があります。
 
 「[セキュリティで保護された LDAP 証明書にサブジェクトの別名を追加する方法](http://support.microsoft.com/kb/931351)」という記事では、サブジェクト代替名 (SAN) で証明書を生成する方法について説明しています。
@@ -96,16 +94,17 @@ Azure クラスターについては、クライアントの認証に AAD セキ
 証明書の目的フィールド値には、"サーバー認証" や "クライアント認証" などの適切な値を含めるようにしてください。
 
 ### クライアント X.509 証明書
-
 通常、クライアント証明書はサードパーティの証明機関から発行されません。通常、現在のユーザーの所在地の個人用ストアには、ルート機関が配置した "クライアント認証" 用のクライアント証明書が含まれています。相互認証が必要な場合、クライアントはこのような証明書を使用できます。
 
->[AZURE.NOTE] Service Fabric クラスター上のすべての管理操作には、サーバー証明書が必要です。クライアント証明書は管理に利用できません。
+> [!NOTE]
+> Service Fabric クラスター上のすべての管理操作には、サーバー証明書が必要です。クライアント証明書は管理に利用できません。
+> 
+> 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 
 ## 次のステップ
-
 この記事では、クラスターのセキュリティに関する概念的な情報について説明します。次に、[Azure でクラスターを作成します。Resource Manager テンプレート](service-fabric-cluster-creation-via-arm.md)または [Azure ポータル](service-fabric-cluster-creation-via-portal.md)を使用します。
 
 <!--Image references-->

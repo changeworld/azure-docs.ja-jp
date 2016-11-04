@@ -1,35 +1,32 @@
-<properties 
-	pageTitle="DocumentDB データベース質問 - よく寄せられる質問 | Microsoft Azure" 
-	description="JSON 用の NoSQL ドキュメント データベース サービスである Azure DocumentDB に関してよく寄せられる質問に対する回答を示します。容量、パフォーマンス レベル、およびスケーリングに関するデータベース質問に回答します。" 
-	keywords="データベース質問, よく寄せられる質問, documentdb, azure, Microsoft azure"
-	services="documentdb" 
-	authors="mimig1" 
-	manager="jhubbard" 
-	editor="monicar" 
-	documentationCenter=""/>
+---
+title: DocumentDB データベース質問 - よく寄せられる質問 | Microsoft Docs
+description: JSON 用の NoSQL ドキュメント データベース サービスである Azure DocumentDB に関してよく寄せられる質問に対する回答を示します。容量、パフォーマンス レベル、およびスケーリングに関するデータベース質問に回答します。
+keywords: データベース質問, よく寄せられる質問, documentdb, azure, Microsoft azure
+services: documentdb
+author: mimig1
+manager: jhubbard
+editor: monicar
+documentationcenter: ''
 
-<tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/01/2016" 
-	ms.author="mimig"/>
+ms.service: documentdb
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/01/2016
+ms.author: mimig
 
-
-#DocumentDB に関してよく寄せられる質問
-
+---
+# DocumentDB に関してよく寄せられる質問
 ## Microsoft Azure DocumentDB の基礎に関するデータベース質問
-
-### Microsoft Azure DocumentDB とは 
+### Microsoft Azure DocumentDB とは
 Microsoft Azure DocumentDB は、超高速かつ世界規模の NoSQL ドキュメント データベースを提供する、サービスとしてのデータベースです。Microsoft Azure の強力な機能と守備範囲に支えられた管理プラットフォームを通じて、スキーマフリーのデータに対して高度なクエリを実行できるほか、構成可能で信頼性の高いパフォーマンスや、迅速な開発が実現できます。DocumentDB は、予測可能なスループット、高い可用性、遅延時間の短縮、およびスキーマフリー データ モデルが重要な要件となる、Web、モバイル、ゲーム、IoT の各アプリケーションに適したソリューションです。DocumentDB では、ネイティブ JSON データ モデルでスキーマの柔軟性と豊富なインデックス作成機能が提供され、統合 JavaScript でマルチドキュメント トランザクションがサポートされます。
-  
+
 データベース質問および回答の詳細と、このサービスのデプロイおよび使用の手順については、[DocumentDB ドキュメント ページ](https://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
 
 ### DocumentDB はどのような種類のデータベースですか?
 DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント指向のデータベースです。DocumentDB では、高度な DocumentDB [SQL クエリ文法](documentdb-sql-query.md)で照会できる入れ子になった自立的データ構造がサポートされます。DocumentDB では、[ストアド プロシージャ、トリガー、およびユーザー定義関数](documentdb-programming.md)を使用して、サーバー側 JavaScript のトランザクション処理を高いパフォーマンスで実行できます。また、開発者によって調整可能な一貫性レベルを、関連付けられた[パフォーマンス レベル](documentdb-performance-levels.md)と共にサポートします。
- 
+
 ### DocumentDB データベースはリレーショナル データベース (RDBMS) のようなテーブルを保持しますか?
 いいえ、DocumentDB は JSON ドキュメントのコレクション内にデータを格納します。DocumentDB のリソースの詳細については、「[DocumentDB のリソース モデルと概念](documentdb-resources.md)」を参照してください。DocumentDB のような NoSQL ソリューションとリレーショナル ソリューションの相違点の詳細については、「[NoSQL 対 SQL](documentdb-nosql-vs-sql.md)」を参照してください。
 
@@ -39,7 +36,7 @@ DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント
 ### DocumentDB は ACID トランザクションをサポートしますか?
 はい、DocumentDB では、JavaScript ストアド プロシージャおよびトリガーとして表現されるクロスドキュメント トランザクションをサポートします。トランザクションは、各コレクション内の単一のパーティションを対象とし、他の同時実行されるコードおよびユーザー要求から完全に分離された ACID セマンティクスで実行されます。JavaScript アプリケーション コードのサーバー側実行により例外がスローされた場合は、トランザクション全体がロールバックされます。トランザクションの詳細については、「[プログラム データベース トランザクション](documentdb-programming.md#database-program-transactions)」を参照してください。
 
-### DocumentDB の一般的な使用事例にはどのようなものがありますか?  
+### DocumentDB の一般的な使用事例にはどのようなものがありますか?
 DocumentDB は、自動スケール、予測可能なパフォーマンス、ミリ秒レベルの高速な応答時間、およびスキーマフリー データに対してクエリを実行できることが重要である新しい Web アプリケーション、モバイル アプリケーション、ゲーム、IoT アプリケーションに適しています。DocumentDB は、迅速な開発に役立ち、アプリケーション データ モデルの継続的な反復をサポートします。ユーザーが生成したコンテンツとデータを管理するアプリケーションは、[DocumentDB の一般的な使用事例](documentdb-use-cases.md)です。
 
 ### DocumentDB では、予測可能なパフォーマンスをどのようにして実現していますか?
@@ -50,10 +47,10 @@ DocumentDB の各コレクションを予約する際は、1 秒あたりのス�
 ### DocumentDB HIPAA は準拠していますか?
 はい、DocumentDB は HIPAA は準拠しています。HIPAA は、個別に識別できる医療情報の使用、開示、および保護するための要件を確立しています。詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/ja-JP/TrustCenter/Compliance/HIPAA)を参照してください。
 
-### DocumentDB のストレージ制限とは何ですか? 
+### DocumentDB のストレージ制限とは何ですか?
 DocumentDB でコレクションが格納できる合計データ量には、理論上の制限はありません。1 つのコレクション内に 250 GB を超えるデータを格納する必要がある場合は、[サポートに連絡して](documentdb-increase-limits.md)、アカウント クォータの増加を依頼してください。
 
-### DocumentDB のスループット制限とは何ですか? 
+### DocumentDB のスループット制限とは何ですか?
 十分な数のパーティション キーにワークロードをほぼ均等に分散できる場合は、DocumentDB でコレクションがサポートできるスループットの合計量には、理論上の制限はありません。1 つのコレクションまたはアカウントあたり 250,000 要求ユニット/秒を超える場合は、[サポートに連絡して](documentdb-increase-limits.md)、アカウント クォータの増加を依頼してください。
 
 ### Microsoft Azure DocumentDB の料金はいくらですか?
@@ -66,7 +63,6 @@ Azure を初めて使用する場合は、30 日間使用できる [Azure 無料
 ヘルプが必要な場合は、[Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb) または [Azure DocumentDB MSDN デベロッパー フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)を利用するか、または [DocumentDB エンジニアリング チームとの 1 対 1 のチャット](http://www.askdocdb.com/)をスケジュールしてください。DocumentDB の最新のニュースと機能については、[Twitter](https://twitter.com/DocumentDB) をフォローしてください。
 
 ## Microsoft Azure DocumentDB のセットアップ
-
 ### どのようにして Microsoft Azure DocumentDB にサインアップしますか?
 Microsoft Azure DocumentDB は、[Azure ポータル][azure-portal]で利用可能です。最初に、Microsoft Azure サブスクリプションにサインアップする必要があります。Microsoft Azure サブスクリプションにサインアップした後、DocumentDB アカウントを Azure サブスクリプションに追加できます。DocumentDB アカウントの追加方法については、「[DocumentDB データベース アカウントの作成](documentdb-create-account.md)」を参照してください。
 
@@ -85,7 +81,6 @@ Microsoft Azure DocumentDB は、[Azure ポータル][azure-portal]で利用可�
 [DocumentDB SDK](documentdb-sdk-dotnet.md) または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用して、ユーザーおよびアクセス許可を作成できます。
 
 ## Microsoft Azure DocumentDB に対する開発についてのデータベース質問
-
 ### どのようにして DocumentDB に対する開発を開始しますか?
 .NET、Python、Node.js、JavaScript、および Java では、[SDK](documentdb-sdk-dotnet.md) が利用可能です。開発者は、[RESTful HTTP API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を利用して、さまざまなプラットフォームおよび言語から DocumentDB リソースとやり取りすることもできます。
 
@@ -105,12 +100,12 @@ DocumentDB では、HTTP エンティティ タグ (または ETag) によるオ
 ### どのようにして DocumentDB のトランザクションを実行しますか?
 DocumentDB では、JavaScript ストアド プロシージャおよびトリガーを介して、統合された言語のトランザクションがサポートされます。スクリプト内のすべてのデータベース操作は、単一パーティション コレクションの場合はコレクションを対象として、スナップショット分離下で実行されます。コレクションがパーティション分割されている場合は、コレクション内の同じパーティション キー値を持つドキュメントを対象として実行されます。ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。JavaScript がエラーをスローした場合、トランザクションはロールバックされます。詳細については、「[DocumentDB server-side programming](documentdb-programming.md)」(DocumentDB のサーバー側プログラミング) を参照してください。
 
-### どのようにして DocumentDB にドキュメントを一括挿入しますか? 
+### どのようにして DocumentDB にドキュメントを一括挿入しますか?
 DocumentDB にドキュメントを一括挿入するには 3 つの方法があります。
 
-- データ移行ツール。「[DocumentDB にデータをインポートする](documentdb-import-data.md)」を参照してください。
-- Azure ポータルの Document Explorer。「[Document Explorer を使用したドキュメントの一括追加](documentdb-view-json-document-explorer.md#BulkAdd)」を参照してください。
-- ストアド プロシージャ。「[DocumentDB のサーバー側プログラミング](documentdb-programming.md)」を参照してください。
+* データ移行ツール。「[DocumentDB にデータをインポートする](documentdb-import-data.md)」を参照してください。
+* Azure ポータルの Document Explorer。「[Document Explorer を使用したドキュメントの一括追加](documentdb-view-json-document-explorer.md#BulkAdd)」を参照してください。
+* ストアド プロシージャ。「[DocumentDB のサーバー側プログラミング](documentdb-programming.md)」を参照してください。
 
 ### DocumentDB はリソース リンク キャッシュをサポートしますか?
 はい、DocumentDB は RESTful サービスであるため、リソース リンクは不変であり、キャッシュできます。DocumentDB クライアントは、ドキュメントやコレクションなどリソースの読み取りに対して "If-None-Match" ヘッダーを指定でき、サーバー バージョンが変更された場合のみローカル コピーを更新できます。
@@ -118,9 +113,8 @@ DocumentDB にドキュメントを一括挿入するには 3 つの方法があ
 ### DocumentDB のローカル インスタンスは使用できますか?
 現在、DocumentDB のローカル インスタンスは使用できません。[フィードバック フォーラム](https://feedback.azure.com/forums/263030-documentdb/suggestions/6328798-standalone-local-instance)では、ローカル エミュレーターについて状況の追跡と投票ができます。
 
-
 [azure-portal]: https://portal.azure.com
 [query]: documentdb-sql-query.md
- 
+
 
 <!---HONumber=AcomDC_0706_2016-->

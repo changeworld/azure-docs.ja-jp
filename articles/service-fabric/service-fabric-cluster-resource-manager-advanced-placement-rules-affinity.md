@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Service Fabric クラスター リソース マネージャー - アフィニティ | Microsoft Azure"
-   description="Service Fabric サービスのアフィニティ設定の概要"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Service Fabric クラスター リソース マネージャー - アフィニティ | Microsoft Docs
+description: Service Fabric サービスのアフィニティ設定の概要
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Service Fabric でアフィニティを構成し、使用する
-
 アフィニティは主に、大規模なモノリシック アプリケーションをクラウドとマイクロサービスの世界に移行しやすくするために提供されるコントロールです。特定のケースでは、アフィニティをサービスのパフォーマンスを向上させるための正当な最適化として使用できますが、副作用が伴う場合があります。
 
 たとえば、大規模なアプリや、マイクロサービスでの使用を想定していないアプリを Service Fabric に移行するとしましょう。実際、このような状況は多く、これまでに複数の顧客 (内部、外部とも) が経験してきました。まずは、アプリ全体を環境に移行し、パッケージ化して実行するところから始めます。次に、すべてが相互に通信する小規模なサービスにアプリを分解します。
@@ -25,8 +24,8 @@
 ここで、困ったことが起こります。“困ったこと” は、通常、次のいずれかに分類されます。
 
 1. モノリシック アプリのコンポーネント X とコンポーネント Y の間にドキュメントに未記載の依存関係があることが判明したが、これらを複数のサービスに分解したばかりです。これらは現在、クラスター内の個々のノードで実行されているため壊れてしまいました。
-2.	通信は (ローカルの名前付きパイプ | 共有メモリー | ディスク上のファイル) を介して行われるが、処理スピードを速めるため、個別に更新できるようにしたい。ハードの依存関係は後で削除します。
-3.	すべて問題ないが、これら 2 つのコンポーネント間の通信が非常に多いこと、またパフォーマンスに影響しやすいことが判明しました。別々のサービスに分解すると、アプリケーション パフォーマンス全体が低下し、また待機時間が増大しました。その結果、アプリケーション全体で要件を満たせなくなりました。
+2. 通信は (ローカルの名前付きパイプ | 共有メモリー | ディスク上のファイル) を介して行われるが、処理スピードを速めるため、個別に更新できるようにしたい。ハードの依存関係は後で削除します。
+3. すべて問題ないが、これら 2 つのコンポーネント間の通信が非常に多いこと、またパフォーマンスに影響しやすいことが判明しました。別々のサービスに分解すると、アプリケーション パフォーマンス全体が低下し、また待機時間が増大しました。その結果、アプリケーション全体で要件を満たせなくなりました。
 
 これらのケースでは、リファクタリング作業を断念することや、モノリシックに戻すことは望ましくありません。しかし、あたかもローカルであると感じられるようにする必要があると考えています。サービスとして自然に動作するようにコンポーネントを再設計するか、可能な場合、他の何らかの方法でパフォーマンス予測値を解決できるまで、この問題は解決されません。
 
@@ -62,8 +61,8 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 アフィニティについて注目すべき最後の点は、親がパーティション分割されている場合、アフィニティの関係がサポートされないということです。これは、最終的にはサポートされる可能性がありますが、今のところ許可されていません。
 
 ## 次のステップ
-- サービスの構成に利用できるその他のオプションの詳細については、「[サービスの構成について学習する](service-fabric-cluster-resource-manager-configure-services.md)」にあるその他のクラスター リソース マネージャーに関するトピックを参照してください。
-- サービスを少数のマシンに制限してサービスのコレクションの負荷を集約する場合など、アフィニティを使おうとする理由の多くは、アプリケーション グループによってより強力にサポートされます。詳しくは、「[アプリケーション グループ](service-fabric-cluster-resource-manager-application-groups.md)」を参照してください。
+* サービスの構成に利用できるその他のオプションの詳細については、「[サービスの構成について学習する](service-fabric-cluster-resource-manager-configure-services.md)」にあるその他のクラスター リソース マネージャーに関するトピックを参照してください。
+* サービスを少数のマシンに制限してサービスのコレクションの負荷を集約する場合など、アフィニティを使おうとする理由の多くは、アプリケーション グループによってより強力にサポートされます。詳しくは、「[アプリケーション グループ](service-fabric-cluster-resource-manager-application-groups.md)」を参照してください。
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png

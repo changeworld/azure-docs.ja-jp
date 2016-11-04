@@ -1,39 +1,35 @@
-<properties
-   pageTitle="Datadog を使用した Azure コンテナー サービス クラスターの監視 | Microsoft Azure"
-   description="Datadog を使用して Azure コンテナー サービス クラスターを監視します。DC/OS の Web UI を使用して、クラスターに Datadog エージェントをデプロイします。"
-   services="container-service"
-   documentationCenter=""
-   authors="rbitia"
-   manager="timlt"
-   editor=""
-   tags="acs, azure-container-service"
-   keywords="コンテナー, DC/OS, Docker Swarm, Azure"/>
+---
+title: Datadog を使用した Azure コンテナー サービス クラスターの監視 | Microsoft Docs
+description: Datadog を使用して Azure コンテナー サービス クラスターを監視します。DC/OS の Web UI を使用して、クラスターに Datadog エージェントをデプロイします。
+services: container-service
+documentationcenter: ''
+author: rbitia
+manager: timlt
+editor: ''
+tags: acs, azure-container-service
+keywords: コンテナー, DC/OS, Docker Swarm, Azure
 
-<tags
-   ms.service="container-service"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure"   
-   ms.date="07/28/2016"
-   ms.author="t-ribhat"/>
+ms.service: container-service
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure
+ms.date: 07/28/2016
+ms.author: t-ribhat
 
+---
 # Datadog を使用した Azure コンテナー サービス クラスターの監視
-
 この記事では、Azure コンテナー サービス クラスター内のすべてのエージェント ノードに Datadog エージェントをデプロイする方法について説明します。この構成を行うには、Datadog のアカウントが必要です。
 
-## 前提条件 
-
+## 前提条件
 Azure コンテナー サービスによって構成されたクラスターを[デプロイ](container-service-deployment.md)して[接続](container-service-connect.md)してください。[Marathon UI](container-service-mesos-marathon-ui.md) の詳細を確認してください。[http://datadoghq.com](http://datadoghq.com) にアクセスし、Datadog アカウントをセットアップしてください。
 
-## Datadog 
-
+## Datadog
 Datadog は監視サービスです。Azure コンテナー サービス クラスター内のコンテナーから監視データを収集することができます。Datadog には、コンテナー内の特定のメトリックを表示できる Docker 統合ダッシュボードがあります。コンテナーから収集されたメトリックは、CPU、メモリ、ネットワーク、I/O 別に整理されます。メトリックは Datadog によってコンテナーとイメージに分割されます。CPU 使用率の UI の例を以下に示します。
 
 ![Datadog UI](./media/container-service-monitoring/datadog4.png)
 
 ## Marathon を使用した Datadog デプロイメントの構成
-
 以下の手順は、Marathon を使用して Datadog アプリケーションを構成し、クラスターにデプロイする方法を示しています。
 
 [http://localhost:80/](http://localhost:80/) で DC/OS の UI にアクセスします。DC/OS の UI が表示されたら、左下にある [Universe (ユニバース)] に移動し、[Datadog] を検索して、[Install (インストール)] をクリックします。

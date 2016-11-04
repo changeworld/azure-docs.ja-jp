@@ -1,35 +1,34 @@
-<properties
-pageTitle="PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする"
-description="PowerShell で Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法"
-services="cloud-services"
-documentationCenter=""
-authors="thraka"
-manager="timlt"
-editor=""/>
-<tags
-ms.service="cloud-services"
-ms.workload="tbd"
-ms.tgt_pltfrm="na"
-ms.devlang="na"
-ms.topic="article"
-ms.date="08/05/2016"
-ms.author="adegeo"/>
+---
+title: PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
+description: PowerShell で Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法
+services: cloud-services
+documentationcenter: ''
+author: thraka
+manager: timlt
+editor: ''
 
+ms.service: cloud-services
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/05/2016
+ms.author: adegeo
+
+---
 # PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
-
->[AZURE.SELECTOR]
-- [Azure クラシック ポータル](cloud-services-role-enable-remote-desktop.md)
-- [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
-- [Visual Studio](../vs-azure-tools-remote-desktop-roles.md)
-
+> [!div class="op_single_selector"]
+> * [Azure クラシック ポータル](cloud-services-role-enable-remote-desktop.md)
+> * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+> * [Visual Studio](../vs-azure-tools-remote-desktop-roles.md)
+> 
+> 
 
 リモート デスクトップを使用して、Azure で実行されているロールのデスクトップにアクセスできます。リモート デスクトップ接続を使用すると、アプリケーションの実行中にそのアプリケーションの問題のトラブルシューティングや診断を行うことができます。
 
 この記事では、PowerShell を使用して、クラウド サービスのロールでリモート デスクトップを有効にする方法について説明します。この記事で求められる前提条件については、[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)に関するページを参照してください。PowerShell では、リモート デスクトップ拡張機能を使用するため、アプリケーションのデプロイ後にリモート デスクトップを有効化できます。
 
-
 ## PowerShell からリモート デスクトップを構成する
-
 [Set-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495117.aspx) コマンドレットを使用すると、クラウド サービス デプロイの指定したロールまたはすべてのロールでリモート デスクトップを有効にすることができます。このコマンドレットでは、PSCredential オブジェクトを受け入れる *Credential* パラメーターを使用してリモート デスクトップ ユーザーのユーザー名とパスワードを指定できます。
 
 PowerShell を対話形式で使用している場合は、[Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) コマンドレットを呼び出すことで、PSCredential オブジェクトを簡単に設定できます。
@@ -48,7 +47,10 @@ PowerShell は自動化のシナリオで役立つため、ユーザー操作を
 ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-SecureString | Set-Content "password.txt"
 ```
 
->[AZURE.IMPORTANT] パスワードを設定するときは、[複雑さの要件](https://technet.microsoft.com/library/cc786468.aspx)を満たしていることを確認してください。
+> [!IMPORTANT]
+> パスワードを設定するときは、[複雑さの要件](https://technet.microsoft.com/library/cc786468.aspx)を満たしていることを確認してください。
+> 
+> 
 
 セキュリティで保護されたパスワード ファイルから資格情報オブジェクトを作成するには、ファイルの内容を読み取り、[ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx) を使用して、セキュリティで保護された文字列にもう一度変換する必要があります。
 
@@ -67,7 +69,6 @@ Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $cr
 また、必要に応じて、リモート デスクトップを有効にするデプロイ スロットおよびロールを指定することもできます。これらのパラメーターが指定されていない場合、コマンドレットは**運用環境**のデプロイ スロットに含まれるすべてのロールでリモート デスクトップを有効にします。
 
 リモート デスクトップ拡張機能は、デプロイに関連付けられています。サービスの新しいデプロイを作成した場合は、そのデプロイでリモート デスクトップを有効にする必要があります。常にリモート デスクトップを有効にしておく必要がある場合は、PowerShell スクリプトをデプロイのワークフローに統合することを検討してください。
-
 
 ## ロール インスタンスへのリモート デスクトップ接続
 クラウド サービスの特定のロール インスタンスにリモート デスクトップ接続するには、[Get-AzureRemoteDesktopFile](https://msdn.microsoft.com/library/azure/dn495261.aspx) コマンドレットを使用します。*LocalPath* パラメーターを使用すると、RDP ファイルをローカルにダウンロードできます。*Launch* パラメーターを使用して、クラウド サービスのロール インスタンスにアクセスするための [リモート デスクトップ接続] ダイアログを直接起動することもできます。
@@ -93,14 +94,14 @@ Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallConfiguration
 ```
 
->[AZURE.NOTE] 拡張機能の構成を完全に削除するには、**UninstallConfiguration** パラメーターを使用して *Remove* コマンドレットを呼び出す必要があります。
->
->**UninstallConfiguration** パラメーターを使用すると、サービスに適用されている拡張機能の構成がアンインストールされます。拡張機能の構成は、いずれもサービスの構成に関連付けられています。**UninstallConfiguration** を使用せずに *Remove* コマンドレットを呼び出すと、拡張機能の構成から<mark>デプロイ</mark>との関連付けが解除されるため、実質的には拡張機能が削除されることになります。ただし、拡張機能の構成は、サービスに関連付けられたままになります。
-
-
+> [!NOTE]
+> 拡張機能の構成を完全に削除するには、**UninstallConfiguration** パラメーターを使用して *Remove* コマンドレットを呼び出す必要があります。
+> 
+> **UninstallConfiguration** パラメーターを使用すると、サービスに適用されている拡張機能の構成がアンインストールされます。拡張機能の構成は、いずれもサービスの構成に関連付けられています。**UninstallConfiguration** を使用せずに *Remove* コマンドレットを呼び出すと、拡張機能の構成から<mark>デプロイ</mark>との関連付けが解除されるため、実質的には拡張機能が削除されることになります。ただし、拡張機能の構成は、サービスに関連付けられたままになります。
+> 
+> 
 
 ## その他のリソース
-
 [Cloud Services の構成方法](cloud-services-how-to-configure.md)
 
 <!---HONumber=AcomDC_0810_2016-->

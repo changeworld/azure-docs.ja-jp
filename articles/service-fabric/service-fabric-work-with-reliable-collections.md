@@ -1,23 +1,22 @@
-<properties
-    pageTitle="Reliable Collection での作業 | Microsoft Azure"
-    description="Reliable Collection で作業するためのベスト プラクティスについて説明します。"
-    services="service-fabric"
-    documentationCenter=".net"
-    authors="JeffreyRichter"
-    manager="timlt"
-    editor="" />
+---
+title: Reliable Collection での作業 | Microsoft Docs
+description: Reliable Collection で作業するためのベスト プラクティスについて説明します。
+services: service-fabric
+documentationcenter: .net
+author: JeffreyRichter
+manager: timlt
+editor: ''
 
-<tags
-    ms.service="multiple"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="multiple"
-    ms.date="03/28/2016"
-    ms.author="jeffreyr" />
+ms.service: multiple
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: multiple
+ms.date: 03/28/2016
+ms.author: jeffreyr
 
+---
 # Reliable Collection での作業
-
 Service Fabric は、Reliable Collection を使用して .NET 開発者が利用できるステートフルなプログラミング モデルを提供します。具体的には、Service Fabric は Reliable Dictionary と Reliable Queue のクラスを提供します。これらのクラスを使用すると、状態がパーティション分割され (拡張性のため)、レプリケートされ (可用性のため)、パーティション内でトランザクションが行われます (ACID セマンティックのため)。Reliable Dictionary オブジェクトの一般的な使い方と、実際の動作を見てみましょう。
 
 ~~~
@@ -44,11 +43,11 @@ catch (TimeoutException) {
 ~~~
 
 Reliable Dictionary オブジェクト (取り消しができない ClearAsync を除く) に対するすべての操作で、ITransaction オブジェクトが必要です。このオブジェクトは 1 つのパーティション内の Reliable Dictionary や Reliable Queue オブジェクトに対して試みているすべての変更に関連付けられています。ITransaction オブジェクトを取得するには、そのパーティションの StateManager の CreateTransaction メソッドを呼び出します。
- 
+
 上記のコードでは、ITransaction オブジェクトは、Reliable Dictionary の AddAsync メソッドに渡されます。内部的には、キーを受け付けるディクショナリのメソッドは、そのキーに関連付けられている読み取り/書き込みロックを受け取ります。メソッドがキーの値を変更する場合、メソッドはキーの書き込みロックを受け取り、メソッドがキーの値を読み取るだけである場合は、キーの読み取りロックを受け取ります。AddAsync はキーの値を新しく渡された値に変更するため、キーの書き込みロックを受け取ります。そのため、2 つ (またはそれ以上) のスレッドが同じキーを使用して同時に値を追加しようとすると、1 つのスレッドで書き込みロックを取得し、もう 1 つのスレッドがブロックします。既定では、メソッドはロックの取得のため最大 4 秒間ブロックします。4 秒後に、メソッドは、TimeoutException をスローします。メソッドのオーバー ロードが存在する場合は、必要に応じて明示的なタイムアウト値を渡すことができます。
- 
+
 通常は、TimeoutException に応答するコードを記述します。このコードは、TimeoutException を取得して操作全体を (上記のコードのように) やり直します。今回の単純なコードでは、毎回 100 ミリ秒を渡す Task.Delay を呼び出しています。しかし、実際には、ある種の指数バックオフ遅延を代わりに使用する方がいい場合もあります。
- 
+
 ロックが取得されると、AddAsync はキーと値のオブジェクト参照を ITransaction オブジェクトに関連付けられた内部一時ディクショナリに追加します。これは、read-your-own-writes セマンティクスを提供するためです。つまり、AddAsync を呼び出した後で TryGetValueAsync を (同じ ITransaction オブジェクトを使用して) 呼び出すと、トランザクションをまだコミットしていなくても値を返します。次に、AddAsync はキーと値のオブジェクトをバイト配列にシリアル化し、そのバイト配列をローカル ノードのログ ファイルに追加します。最後に、AddAsync はすべてのセカンダリ レプリカに同じキー/値の情報が含まれるように、バイト配列を送信します。キー/値の情報がログ ファイルに書き込まれていても、関連付けられているトランザクションがコミットされるまではその情報がディクショナリの一部と見なされません。
 
 上記のコードでは、CommitAsync への呼び出しによって、トランザクションのすべての操作がコミットされます。具体的には、ローカル ノードのログ ファイルにコミットの情報が追加され、さらにコミット レコードがすべてのセカンダリ レプリカに送信されます。レプリカのクォーラム (大多数) が応答すると、すべてのデータ変更が永続的と見なされ、ITransaction オブジェクトによって操作されたキーに関連付けられたすべてのロックがリリースされるため、他のスレッド/トランザクションで同じキーとその値を操作できるようになります。
@@ -102,8 +101,8 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ~~~
 
-やはり、標準の .NET ディクショナリの場合、上記のコードは問題なく動作します。開発者がキーを使って値を検索するという一般的なパターンです。値が存在する場合、開発者はプロパティの値を変更します。しかし、Reliable Collection の場合、このコードによって先ほどと同じ問題が発生します。__オブジェクトを Reliable Collection に指定した後は、変更してはいけません。__
- 
+やはり、標準の .NET ディクショナリの場合、上記のコードは問題なく動作します。開発者がキーを使って値を検索するという一般的なパターンです。値が存在する場合、開発者はプロパティの値を変更します。しかし、Reliable Collection の場合、このコードによって先ほどと同じ問題が発生します。**オブジェクトを Reliable Collection に指定した後は、変更してはいけません。**
+
 Reliable Collection で値を更新する正しい方法は、既存の値への参照を取得して、これにより参照されるオブジェクトを変更不可と見なすことです。次に、元のオブジェクトの正確なコピーである新しいオブジェクトを作成します。これで、この新しいオブジェクトの状態を変更し、新しいオブジェクトをコレクションに書き込むことができます。オブジェクトはバイト配列にシリアル化され、ローカル ファイルに追加され、レプリカに送信されます。変更をコミットすると、メモリ内オブジェクト、ローカル ファイル、すべてのレプリカの状態が同じになります。これで問題なしです。
 
 次のコードは、Reliable Collection の値を更新する正しい方法を示しています。
@@ -133,7 +132,6 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 ~~~
 
 ## 変更不可のデータ型を定義してプログラマ エラーを防ぐ
-
 変更不可と見なすオブジェクトの状態を変更するコードを誤って生成してしまった場合にエラーを報告するコンパイラがあると便利です。しかし、C# コンパイラには、このような機能はありません。プログラマのバグが発生する可能性を避けるため、Reliable Collection で使用する型を変更不可の型として定義することを強くお勧めします。つまり、核となる値の型 (Int32、UInt64 のような数値型、DateTime、Guid、TimeSpan など) に従うということです。もちろん、文字列を使用することもできます。コレクション プロパティをシリアル化/逆シリアル化すると、パフォーマンスへの影響が頻繁に発生するので、コレクション プロパティは避けることが賢明です。ただし、コレクション プロパティを使用する場合は、.NET の変更不可コレクション ライブラリ (System.Collections.Immutable) を使用することを強くお勧めします。このライブラリは http://nuget.org からダウンロードすることができます。クラスをシールして、なるべくフィールドを読み取り専用にすることもお勧めします。
 
 下記の UserInfo 型は、前述の推奨事項を利用して変更不可の型を定義する方法を示しています。
@@ -143,7 +141,7 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 // If you don’t seal, you must ensure that any derived classes are also immutable
 public sealed class UserInfo {
    private static readonly IEnumerable<ItemId> NoBids = ImmutableList<ItemId>.Empty;
- 
+
    public UserInfo(String email, IEnumerable<ItemId> itemsBidding = null) {
       Email = email;
       ItemsBidding = (itemsBidding == null) ? NoBids : itemsBidding.ToImmutableList();
@@ -154,10 +152,10 @@ public sealed class UserInfo {
       // Convert the deserialized collection to an immutable collection
       ItemsBidding = ItemsBidding.ToImmutableList();
    }
- 
+
    [DataMember]
    public readonly String Email;
- 
+
    // Ideally, this would be a readonly field but it can't be because OnDeserialized 
    // has to set it. So instead, the getter is public and the setter is private.
    [DataMember]
@@ -187,13 +185,15 @@ public struct ItemId {
 ~~~
 
 ## スキーマのバージョン管理 (アップグレード)
-
 Reliable Collection は、内部で .NET の DataContractSerializer を使用してオブジェクトをシリアル化します。シリアル化されたオブジェクトは、プライマリ レプリカのローカル ディスクに対して永続化し、セカンダリ レプリカにも転送されます。サービスが高度になると、サービスが必要とするデータ (スキーマ) の種類を変更したくなる場合があります。データのバージョン管理は十分に注意して行う必要があります。何よりも、古いデータを常に逆シリアル化できるようにする必要があります。具体的には、逆シリアル化コードが無限の下位互換性を持っている必要があります。つまり、バージョン 333 のサービス コードが、5 年前のバージョン 1 のサービス コードによる Reliable Collection のデータを操作できる必要があります。
 
 さらに、アップグレード ドメインのサービス コードは一度に 1 つアップグレードされます。そのため、アップグレード中は、バージョンが異なる 2 つのサービス コードが同時に実行されます。古いバージョンのサービス コードでは新しいスキーマを処理できない場合があるため、新しいバージョンのサービス コードで新しいスキーマを使用することは避けてください。可能であれば、サービスのバージョンが 1 バージョンごとに上位互換するように設計する必要があります。つまり、V1 のサービス コードが明らかに処理しないスキーマ要素を単純に無視できるようにする必要があります。ただし、明らかに理解できないデータはすべて保存して、ディクショナリのキーまたは値を更新する際に単純に書き戻せるようにする必要があります。
 
->[AZURE.WARNING] キーのスキーマは変更できますが、キーのハッシュ コードと等号アルゴリズムは変更できないようにしてください。これらのいずれかのアルゴリズムの動作を変更すると、以後 Reliable Dictionary 内のキーを検索することができなくなります。
-  
+> [!WARNING]
+> キーのスキーマは変更できますが、キーのハッシュ コードと等号アルゴリズムは変更できないようにしてください。これらのいずれかのアルゴリズムの動作を変更すると、以後 Reliable Dictionary 内のキーを検索することができなくなります。
+> 
+> 
+
 または、いわゆる 2 段階アップグレードを実行することができます。2 段階アップグレードでは、V1 から V2 にサービスをアップグレードします。V2 には新しいスキーマの変更を処理できるコードが含まれていますが、このコードは実行しません。V2 コードが V1 のデータを読み取ると、V1 に対する操作を行い、V1 のデータを書き込みます。次に、すべてのアップグレード ドメインでアップグレードが完了したら、アップグレードが完了したことを実行中の V2 のインスタンスに何らかの方法で通知できます。(1 つの通知方法として、構成のアップグレードのロールアウトがあります。これにより 2 段階アップグレードが行われます。) これで、V2 のインスタンスが V1 のデータを読み取り、V2 のデータに変換し、処理を行って、V2 のデータとして書き出すことができます。他のインスタンスが V2 のデータを読み取るときに、変換の必要はありません。インスタンスは操作を行い、V2 のデータを書き出すだけです。
 
 ## 次のステップ

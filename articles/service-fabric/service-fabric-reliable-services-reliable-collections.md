@@ -1,66 +1,68 @@
-<properties
-   pageTitle="Reliable Collection | Microsoft Azure"
-   description="Service Fabric ステートフル サービスは、可用性と拡張性が高く、待機時間が短いクラウド アプリケーションの作成を可能にする Reliable Collection を提供します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="mcoskun"
-   manager="timlt"
-   editor="masnider,vturecek"/>
+---
+title: Reliable Collection | Microsoft Docs
+description: Service Fabric ステートフル サービスは、可用性と拡張性が高く、待機時間が短いクラウド アプリケーションの作成を可能にする Reliable Collection を提供します。
+services: service-fabric
+documentationcenter: .net
+author: mcoskun
+manager: timlt
+editor: masnider,vturecek
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="required"
-   ms.date="07/28/2016"
-   ms.author="mcoskun"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: required
+ms.date: 07/28/2016
+ms.author: mcoskun
 
+---
 # Azure Service Fabric ステートフル サービスの Reliable Collection の概要
-
 Reliable Collection では、高可用性でスケーラブルな、待機時間が短いクラウド アプリケーションを、単一のコンピューターのアプリケーションを作成しているかのように作成できます。**Microsoft.ServiceFabric.Data.Collections** 名前空間のクラスは、状態の可用性を自動的に高める、すぐに使用可能な一連のコレクションを提供します。開発者は Reliable Collection API に対してプログラミングするだけで、Reliable Collection によって、レプリケートされたローカルの状態が管理されます。
 
 Reliable Collection とその他の高可用性テクノロジ (Redis、Azure Table サービス、Azure Queue サービスなど) の主な違いは、状態をローカルでサービス インスタンスに格納したまま、高い可用性を実現している点です。これは、次のことを意味します。
 
-- すべての読み取りはローカルで実行されるため、待機時間が短くスループットが高い読み取りになります。
-- すべての書き込みでネットワーク IO 回数が最小に抑えられるため、待機時間が短くスループットが高い書き込みになります。
+* すべての読み取りはローカルで実行されるため、待機時間が短くスループットが高い読み取りになります。
+* すべての書き込みでネットワーク IO 回数が最小に抑えられるため、待機時間が短くスループットが高い書き込みになります。
 
 ![コレクションの進化のイメージです。](media/service-fabric-reliable-services-reliable-collections/ReliableCollectionsEvolution.png)
 
 Reliable Collection は **System.Collections** クラスが自然に進化したものだと考えられます。つまり、開発者の作業を複雑にせずに、クラウド アプリケーションや複数コンピューター アプリケーション向けに設計された一連の新しいコレクションです。そのため Reliable Collection は
 
-- レプリケートされる: 状態の変更がレプリケートされるため、高可用性を実現できる。
-- 永続化される: データがディスクに永続化されるため、大規模な障害 (例: データセンターの電源障害) が発生しても影響を受けない。
-- 非同期: API は非同期であるため、IO の実行時にスレッドがブロックされない。
-- トランザクション: API ではトランザクションの抽象化が使用できるため、サービス内で複数の Reliable Collection を簡単に管理できる。
+* レプリケートされる: 状態の変更がレプリケートされるため、高可用性を実現できる。
+* 永続化される: データがディスクに永続化されるため、大規模な障害 (例: データセンターの電源障害) が発生しても影響を受けない。
+* 非同期: API は非同期であるため、IO の実行時にスレッドがブロックされない。
+* トランザクション: API ではトランザクションの抽象化が使用できるため、サービス内で複数の Reliable Collection を簡単に管理できる。
 
 Reliable Collection では追加設定なしで強力な整合性が保証されるため、アプリケーションの状態を判断するのが簡単です。強力な整合性は、プライマリ レプリカを含むレプリカのマジョリティ クォーラムにトランザクション全体が適用された後にのみ、トランザクション コミットが完了するようにすることで実現されています。弱い整合性を実現するには、非同期コミットが戻る前に、アプリケーションがクライアントや要求元に確認応答できます。
 
 Reliable Collection API は同時実行コレクション API (**System.Collections.Concurrent** 名前空間内にあります) が進化したものです。
 
-- 非同期: 同時実行コレクションとは異なり、操作がレプリケートおよび永続化されるため、タスクを返します。
-- out パラメーターを使用しない: `ConditionalValue<T>` を使用して out パラメーターではなく、ブール値および値を返します。`ConditionalValue<T>` は `Nullable<T>` に似ていますが、構造体にするには「T」は必要ありません。
-- トランザクション: トランザクション オブジェクトを使用することで、トランザクション内で複数の Reliable Collection に対してユーザーがグループ操作を実行できます。
+* 非同期: 同時実行コレクションとは異なり、操作がレプリケートおよび永続化されるため、タスクを返します。
+* out パラメーターを使用しない: `ConditionalValue<T>` を使用して out パラメーターではなく、ブール値および値を返します。`ConditionalValue<T>` は `Nullable<T>` に似ていますが、構造体にするには「T」は必要ありません。
+* トランザクション: トランザクション オブジェクトを使用することで、トランザクション内で複数の Reliable Collection に対してユーザーがグループ操作を実行できます。
 
 現在、**Microsoft.ServiceFabric.Data.Collections** には次の 2 つのコレクションが含まれています。
 
-- [Reliable Dictionary](https://msdn.microsoft.com/library/azure/dn971511.aspx): レプリケートされた、トランザクションに使用する非同期のキーと値のペアのコレクションです。**ConcurrentDictionary** と同様に、キーと値のいずれにも任意の型を使用できます。
-- [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx): レプリケートされた、トランザクションに使用する非同期の厳密な先入れ先出し型 (FIFO) のキューです。**ConcurrentQueue** と同様に、値には任意の型を使用できます。
+* [Reliable Dictionary](https://msdn.microsoft.com/library/azure/dn971511.aspx): レプリケートされた、トランザクションに使用する非同期のキーと値のペアのコレクションです。**ConcurrentDictionary** と同様に、キーと値のいずれにも任意の型を使用できます。
+* [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx): レプリケートされた、トランザクションに使用する非同期の厳密な先入れ先出し型 (FIFO) のキューです。**ConcurrentQueue** と同様に、値には任意の型を使用できます。
 
 ## 分離レベル
 分離レベルは、トランザクションを他のトランザクションによって行われた変更から分離する必要がある度合を定義します。Reliable Collection では、次の 2 つの分離レベルがサポートされています。
 
-- **反復可能読み取り**: 他のトランザクションによって変更されたがまだコミットされていないデータをステートメントから読み取ることができないように指定するほか、現在のトランザクションが完了するまで、現在のトランザクションで読み取られたデータをその他のトランザクションが変更できないように指定します。詳細については、[https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx) をご覧ください。
-- **スナップショット**: トランザクションの任意のステートメントによって読み取られたデータが、トランザクションの開始時に存在していたデータとトランザクション上の整合性を持つように指定します。トランザクションで認識されるのは、トランザクション開始前にコミットされたデータ変更のみです。現在のトランザクションの開始後に他のトランザクションによって行われたデータ変更は、現在のトランザクションで実行されているステートメントには認識されません。それはつまり、トランザクションの開始時に存在していたコミット済みデータのスナップショットを、トランザクション内のステートメントが取得しているかのように機能するということです。スナップショットは、Reliable Collection 間で一貫しています。詳細については、[https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx) を参照してください。
+* **反復可能読み取り**: 他のトランザクションによって変更されたがまだコミットされていないデータをステートメントから読み取ることができないように指定するほか、現在のトランザクションが完了するまで、現在のトランザクションで読み取られたデータをその他のトランザクションが変更できないように指定します。詳細については、[https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx) をご覧ください。
+* **スナップショット**: トランザクションの任意のステートメントによって読み取られたデータが、トランザクションの開始時に存在していたデータとトランザクション上の整合性を持つように指定します。トランザクションで認識されるのは、トランザクション開始前にコミットされたデータ変更のみです。現在のトランザクションの開始後に他のトランザクションによって行われたデータ変更は、現在のトランザクションで実行されているステートメントには認識されません。それはつまり、トランザクションの開始時に存在していたコミット済みデータのスナップショットを、トランザクション内のステートメントが取得しているかのように機能するということです。スナップショットは、Reliable Collection 間で一貫しています。詳細については、[https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx) を参照してください。
 
 Reliable Collection では、トランザクション作成時の操作とレプリカのロールに合わせて、特定の読み取り操作用の分離レベルが自動的に選択されます。以下の表に、Reliable Dictionary と Reliable Queue の各操作の分離レベルの既定値を示します。
 
 | 操作\\ロール | プライマリ | セカンダリ |
-| --------------------- | :--------------- | :--------------- |
-| 1 つのエンティティの読み取り | 反復可能読み取り | スナップショット |
-| 列挙\\カウント | スナップショット | スナップショット |
+| --- |:--- |:--- |
+| 1 つのエンティティの読み取り |反復可能読み取り |スナップショット |
+| 列挙\\カウント |スナップショット |スナップショット |
 
->[AZURE.NOTE] 1 つのエンティティ操作の一般的な例としては、`IReliableDictionary.TryGetValueAsync` や `IReliableQueue.TryPeekAsync` があります。
+> [!NOTE]
+> 1 つのエンティティ操作の一般的な例としては、`IReliableDictionary.TryGetValueAsync` や `IReliableQueue.TryPeekAsync` があります。
+> 
+> 
 
 Reliable Dictionary と Reliable Queue では、Read Your Writes がサポートされます。つまり、トランザクション内でのすべての書き込みは、同じトランザクションで行われる次の読み取りによって認識されるということです。
 
@@ -74,10 +76,10 @@ Reliable Dictionary では、1 つのエンティティ操作のすべてに対�
 次に示すのは、ロックの互換性対応表です。
 
 | 要求\\許可 | なし | 共有 | 更新 | 排他的 |
-| ----------------- | :----------- | :----------- | :---------- | :----------- |
-| 共有 | 競合なし | 競合なし | 競合 | 競合 |
-| 更新 | 競合なし | 競合なし | 競合 | 競合 |
-| 排他的 | 競合なし | 競合 | 競合 | 競合 |
+| --- |:--- |:--- |:--- |:--- |
+| 共有 |競合なし |競合なし |競合 |競合 |
+| 更新 |競合なし |競合なし |競合 |競合 |
+| 排他的 |競合なし |競合 |競合 |競合 |
 
 デッドロック検出のために、Reliable Collection API のタイムアウト引数が使用されることに注意してください。たとえば、2 つのトランザクション (T1 と T2) が K1 を読み取って更新しようとしているとします。いずれも共有ロックを取得することになるため、両方にデッドロックが発生する可能性があります。この場合、一方または両方の操作がタイムアウトになります。
 
@@ -90,38 +92,39 @@ Reliable State Manager および Reliable Collection は、ログとチェック
 
 次に、有限のディスクのシナリオを見ていきましょう。ログ レコードが蓄積すると、Reliable State Manager が使用するディスク領域が不足します。そのような不足が発生する前に、Reliable State Manager は、ログを切り捨てて新しいレコードを格納する領域を確保する必要があります。このとき Reliable State Manager は、メモリ内の状態をチェックポイントとしてディスクに記録するように Reliable Collection に要求します。その時点までの状態を永続化するのは Reliable Collection の役目です。Reliable Collection がチェックポイントを完了すると、Reliable State Manager はログを切り捨ててディスク領域を解放できます。このようにして、レプリカの再起動が必要な場合、Reliable Collection はチェックポイントされた状態を回復し、Reliable State Manager はチェックポイント以降に実行された状態の変更すべてを回復して再生します。
 
->[AZURE.NOTE] チェックポイントには、一般的なケースでの復旧のパフォーマンスが向上するというメリットもあります。これは、チェックポイントには最新バージョンのみが含まれるためです。
+> [!NOTE]
+> チェックポイントには、一般的なケースでの復旧のパフォーマンスが向上するというメリットもあります。これは、チェックポイントには最新バージョンのみが含まれるためです。
+> 
+> 
 
 ## 推奨事項
-
-- 読み取り操作 (`TryPeekAsync` や `TryGetValueAsync` など) によって返されるカスタム型のオブジェクトを変更しないでください。Reliable Collection は、同時実行コレクションのように、コピーではなくオブジェクトへの参照を返すからです。
-- 返されたカスタム型のオブジェクトは、変更する前に詳細コピーしてください。構造体型と組み込み型は値渡しであるため、詳細コピーを実行する必要はありません。
-- タイムアウトに `TimeSpan.MaxValue` を使用しないでください。タイムアウトはデッドロックの検出に使用してください。
-- コミット、中止、または破棄された後に、トランザクションを使用しないでください。
-- 作成済みのトランザクション スコープの外部で、列挙型を使用しないでください。
-- デッドロックを引き起こす可能性があるため、別のトランザクションの `using` ステートメント内にトランザクションを作成しないでください。
-- `IComparable<TKey>` の実装が正しいことを確認してください。システムでは、チェックポイントを結合するため、これについての依存関係を取得します。
-- ある種のデッドロックを防ぐために、更新目的で項目を読み取る場合は更新ロックを使用してください。
-- 障害復旧を行うには、バックアップと復元の機能の使用を検討します。
-- 1 つのエンティティ操作と複数のエンティティ操作 (例: `GetCountAsync`、`CreateEnumerableAsync`) は分離レベルが異なるため、同じトランザクション内に混在させないでください。
+* 読み取り操作 (`TryPeekAsync` や `TryGetValueAsync` など) によって返されるカスタム型のオブジェクトを変更しないでください。Reliable Collection は、同時実行コレクションのように、コピーではなくオブジェクトへの参照を返すからです。
+* 返されたカスタム型のオブジェクトは、変更する前に詳細コピーしてください。構造体型と組み込み型は値渡しであるため、詳細コピーを実行する必要はありません。
+* タイムアウトに `TimeSpan.MaxValue` を使用しないでください。タイムアウトはデッドロックの検出に使用してください。
+* コミット、中止、または破棄された後に、トランザクションを使用しないでください。
+* 作成済みのトランザクション スコープの外部で、列挙型を使用しないでください。
+* デッドロックを引き起こす可能性があるため、別のトランザクションの `using` ステートメント内にトランザクションを作成しないでください。
+* `IComparable<TKey>` の実装が正しいことを確認してください。システムでは、チェックポイントを結合するため、これについての依存関係を取得します。
+* ある種のデッドロックを防ぐために、更新目的で項目を読み取る場合は更新ロックを使用してください。
+* 障害復旧を行うには、バックアップと復元の機能の使用を検討します。
+* 1 つのエンティティ操作と複数のエンティティ操作 (例: `GetCountAsync`、`CreateEnumerableAsync`) は分離レベルが異なるため、同じトランザクション内に混在させないでください。
 
 次の点に注意してください。
 
-- すべての Reliable Collection API の既定のタイムアウトは 4 秒です。ほとんどの場合において、ユーザーがこれをオーバーライドすることはお勧めしません。
-- すべての Reliable Collection API で、既定のキャンセル トークンは `CancellationToken.None` です。
-- Reliable Dictionary のキー タイプ パラメーター (*TKey*) では、`GetHashCode()` と `Equals()` が正しく実装されている必要があります。キーは不変である必要があります。
-- Reliable Collection で高可用性を実現するには、各サービスに少なくとも 1 つのターゲットと、最低 3 台で構成されるレプリカ セットが必要です。
-- セカンダリの読み取り操作では、クォーラムのコミットをしていないバージョンを読み取ることがあります。つまり、1 つのセカンダリから読み取られるデータのバージョンが、誤って進められる可能性があります。もちろん、プライマリからの読み取りは常に安定しており、誤って進められることはありません。
+* すべての Reliable Collection API の既定のタイムアウトは 4 秒です。ほとんどの場合において、ユーザーがこれをオーバーライドすることはお勧めしません。
+* すべての Reliable Collection API で、既定のキャンセル トークンは `CancellationToken.None` です。
+* Reliable Dictionary のキー タイプ パラメーター (*TKey*) では、`GetHashCode()` と `Equals()` が正しく実装されている必要があります。キーは不変である必要があります。
+* Reliable Collection で高可用性を実現するには、各サービスに少なくとも 1 つのターゲットと、最低 3 台で構成されるレプリカ セットが必要です。
+* セカンダリの読み取り操作では、クォーラムのコミットをしていないバージョンを読み取ることがあります。つまり、1 つのセカンダリから読み取られるデータのバージョンが、誤って進められる可能性があります。もちろん、プライマリからの読み取りは常に安定しており、誤って進められることはありません。
 
 ## 次のステップ
-
-- [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
-- [Reliable Collection での作業](service-fabric-work-with-reliable-collections.md)
-- [Reliable Services の通知](service-fabric-reliable-services-notifications.md)
-- [Reliable Service のバックアップと復元 (障害復旧)](service-fabric-reliable-services-backup-restore.md)
-- [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
-- [Service Fabric Web API サービスの概要](service-fabric-reliable-services-communication-webapi.md)
-- [Reliable Service プログラミング モデルの詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
-- [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
+* [Reliable Collection での作業](service-fabric-work-with-reliable-collections.md)
+* [Reliable Services の通知](service-fabric-reliable-services-notifications.md)
+* [Reliable Service のバックアップと復元 (障害復旧)](service-fabric-reliable-services-backup-restore.md)
+* [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
+* [Service Fabric Web API サービスの概要](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Service プログラミング モデルの詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
+* [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 
 <!---HONumber=AcomDC_0803_2016-->

@@ -1,30 +1,31 @@
-<properties
-   pageTitle="Azure PowerShell を使用した仮想マシンの管理 | Microsoft Azure"
-   description="仮想マシンの管理タスクを自動化するのに使用できるコマンドについて説明します。"
-   services="virtual-machines-windows"
-   documentationCenter="windows"
-   authors="singhkays"
-   manager="timlt"
-   editor=""
-   tags="azure-service-management"/>
+---
+title: Azure PowerShell を使用した仮想マシンの管理 | Microsoft Docs
+description: 仮想マシンの管理タスクを自動化するのに使用できるコマンドについて説明します。
+services: virtual-machines-windows
+documentationcenter: windows
+author: singhkays
+manager: timlt
+editor: ''
+tags: azure-service-management
 
-   <tags
-   ms.service="virtual-machines-windows"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows"
-   ms.workload="infrastructure-services"
-   ms.date="07/01/2016"
-   ms.author="kasing"/>
+ms.service: virtual-machines-windows
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure-services
+ms.date: 07/01/2016
+ms.author: kasing
 
+---
 # Azure PowerShell を使用した仮想マシンの管理
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 Azure PowerShell コマンドレットを使用すると、VM を管理するために日常的に行う多くのタスクを自動化できます。この記事では、比較的単純なタスクにはコマンド例を示し、より複雑なタスクには、コマンドが記載されている記事へのリンクを示します。
 
->[AZURE.NOTE] まだ Azure PowerShell をインストール、構成していない場合は、[「Azure PowerShell のインストールおよび構成方法」](../powershell-install-configure.md)の記事に手順が記載されています。
+> [!NOTE]
+> まだ Azure PowerShell をインストール、構成していない場合は、[「Azure PowerShell のインストールおよび構成方法」](../powershell-install-configure.md)の記事に手順が記載されています。
+> 
+> 
 
 ## サンプル コマンドを使用する方法
 コマンド内のテキストの一部を、使用する環境に適した別のテキストに置き換える必要があります。< および > 記号は置き換える必要があるテキストであることを示しています。テキストを置き換える場合、記号は削除し、引用符はそのままの位置に残します。
@@ -41,27 +42,30 @@ VM に関する情報を取得するには、このコマンドを実行し、�
     $vm = Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 ## Windows ベースの VM へのログオン
-
 次の各コマンドを実行します。
 
->[AZURE.NOTE] 仮想マシンとクラウド サービス名は、**Get-azurevm** コマンドの表示から取得できます。
->
-	$svcName = "<cloud service name>"
-	$vmName = "<virtual machine name>"
-	$localPath = "<drive and folder location to store the downloaded RDP file, example: c:\temp >"
-	$localFile = $localPath + "" + $vmname + ".rdp"
-	Get-AzureRemoteDesktopFile -ServiceName $svcName -Name $vmName -LocalPath $localFile -Launch
+> [!NOTE]
+> 仮想マシンとクラウド サービス名は、**Get-azurevm** コマンドの表示から取得できます。
+> 
+> $svcName = "<cloud service name>"
+> $vmName = "<virtual machine name>"
+> $localPath = "<drive and folder location to store the downloaded RDP file, example: c:\temp >"
+> $localFile = $localPath + "" + $vmname + ".rdp"
+> Get-AzureRemoteDesktopFile -ServiceName $svcName -Name $vmName -LocalPath $localFile -Launch
+> 
+> 
 
 ## VM の停止
-
 次のコマンドを実行します。
 
     Stop-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
->[AZURE.IMPORTANT] このパラメーターは、VM がクラウド サービス内の最後の VM である場合に、そのクラウド サービスの仮想 IP (VIP) を保持するために使用します。<br><br> StayProvisioned パラメーターを使用する場合は、その VM に対して引き続き課金されます。
+> [!IMPORTANT]
+> このパラメーターは、VM がクラウド サービス内の最後の VM である場合に、そのクラウド サービスの仮想 IP (VIP) を保持するために使用します。<br><br> StayProvisioned パラメーターを使用する場合は、その VM に対して引き続き課金されます。
+> 
+> 
 
 ## VM の起動
-
 次のコマンドを実行します。
 
     Start-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
@@ -87,12 +91,11 @@ BLOB ストレージにある既存の .vhd ファイルからデータ ディ�
               Update-AzureVM
 
 ## Windows ベースの VM の作成
-
 Azure で Windows ベースの仮想マシンを新たに作成するには、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成し、事前構成する](virtual-machines-windows-classic-create-powershell.md)」をご覧ください。このトピックでは、次の項目を事前構成することができる Windows ベースの VM を作成するための Azure PowerShell コマンド セットを作成する手順を説明します。
 
-- Active Directory ドメイン メンバーシップ。
-- 追加のディスク。
-- 既存の負荷分散セットのメンバーとしての設定。
-- 静的 IP アドレス。
+* Active Directory ドメイン メンバーシップ。
+* 追加のディスク。
+* 既存の負荷分散セットのメンバーとしての設定。
+* 静的 IP アドレス。
 
 <!---HONumber=AcomDC_0817_2016-->

@@ -1,43 +1,41 @@
-<properties
-	pageTitle="アプリ (iOS) へのプッシュ通知の追加 | .NET バックエンド"
-	description="Azure Mobile Services を使用して iOS アプリにプッシュ通知を送信する方法について説明します。"
-	services="mobile-services,notification-hubs"
-	documentationCenter="ios"
-	manager="dwrede"
-	editor=""
-	authors="krisragh"/>
+---
+title: アプリ (iOS) へのプッシュ通知の追加 | Microsoft Docs
+description: Azure Mobile Services を使用して iOS アプリにプッシュ通知を送信する方法について説明します。
+services: mobile-services,notification-hubs
+documentationcenter: ios
+manager: dwrede
+editor: ''
+author: krisragh
 
-<tags
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="ios"
-	ms.devlang="objective-c"
-	ms.topic="article"
-	ms.date="07/21/2016"
-	ms.author="krisragh"/>
+ms.service: mobile-services
+ms.workload: mobile
+ms.tgt_pltfrm: ios
+ms.devlang: objective-c
+ms.topic: article
+ms.date: 07/21/2016
+ms.author: krisragh
 
-
+---
 # iOS アプリおよび .NET バックエンドにプッシュ通知を追加する　
-
-[AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
+[!INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
 &nbsp;
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[!INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
 > このトピックの Mobile Apps バージョンについては、「[iOS アプリへのプッシュ通知の追加](../app-service-mobile/app-service-mobile-ios-get-started-push.md)」を参照してください。
+> 
+> 
 
 このトピックでは、[クイックスタート プロジェクト](mobile-services-dotnet-backend-ios-get-started.md)にプッシュ通知を追加して、レコードが挿入されるたびにモバイル サービスがプッシュ通知を送信できるようにします。先に [Mobile Services の使用]を完了しておく必要があります。
 
-[AZURE.INCLUDE [Apple プッシュ通知を有効にする](../../includes/enable-apple-push-notifications.md)]
+[!INCLUDE [Apple プッシュ通知を有効にする](../../includes/enable-apple-push-notifications.md)]
 
 ## <a id="configure"></a>プッシュ通知を送信するように Azure を構成する
+[!INCLUDE [Azure Mobile Services でプッシュ通知を構成する](../../includes/mobile-services-apns-configure-push.md)]
 
-[AZURE.INCLUDE [Azure Mobile Services でプッシュ通知を構成する](../../includes/mobile-services-apns-configure-push.md)]
-
-##<a id="update-server"></a>プッシュ通知を送信するようにバックエンド コードを更新する
-
+## <a id="update-server"></a>プッシュ通知を送信するようにバックエンド コードを更新する
 * Visual Studio プロジェクトを開き、**Controllers** フォルダー > **TodoItemController.cs** > `PostTodoItem` メソッドの順に選択します 。このメソッドを次のコードで置き換えます。Todo 項目が挿入されると、このコードはプッシュ通知を項目のテキストと共に送信します。エラーがある場合、コードによってエラー ログ エントリが追加され、このエントリはポータルの [ログ] セクションに表示されます。
-
 
 ```
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
@@ -59,13 +57,12 @@
         }
 ```
 
-##<a name="publish-the-service"></a>モバイル サービスを Azure に発行する
+## <a name="publish-the-service"></a>モバイル サービスを Azure に発行する
+[!INCLUDE [mobile-services-dotnet-backend-publish-service](../../includes/mobile-services-dotnet-backend-publish-service.md)]
 
-[AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../../includes/mobile-services-dotnet-backend-publish-service.md)]
+[!INCLUDE [プッシュ通知をアプリに追加する](../../includes/add-push-notifications-to-app.md)]
 
-[AZURE.INCLUDE [プッシュ通知をアプリに追加する](../../includes/add-push-notifications-to-app.md)]
-
-[AZURE.INCLUDE [アプリでプッシュ通知をテストする](../../includes/test-push-notifications-in-app.md)]
+[!INCLUDE [アプリでプッシュ通知をテストする](../../includes/test-push-notifications-in-app.md)]
 
 <!-- Anchors.  -->
 [Generate the certificate signing request]: #certificates

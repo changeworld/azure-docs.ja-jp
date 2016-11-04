@@ -1,28 +1,27 @@
-<properties
-	pageTitle="Azure MFA での連絡方法として会社電話を使用する"
-	description="このページは、Azure MFA の主要な連絡方法として会社電話を使用する方法を示します。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+---
+title: Azure MFA での連絡方法として会社電話を使用する
+description: このページは、Azure MFA の主要な連絡方法として会社電話を使用する方法を示します。
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtland
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # Azure Multi-Factor Authentication での連絡方法として会社電話を使用する
-
 主要な連絡方法として会社電話を使用する場合は、この記事を使用できます。通話の連絡方法として会社電話を使用できるよう多要素認証を設定する方法について説明します。
 
 ## 連絡方法として会社電話を使用するには
-
 <ol>
+
 <li>ドロップダウン リストから [会社電話] 選択します。</li>
 
 <center>![Setup](./media/multi-factor-authentication-end-user-first-time-office-phone/office.png)</center>

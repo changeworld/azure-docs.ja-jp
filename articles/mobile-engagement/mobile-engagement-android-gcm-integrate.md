@@ -1,44 +1,44 @@
-<properties
-    pageTitle="Azure Mobile Engagement Android SDK の統合"
-    description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
-    services="mobile-engagement"
-    documentationCenter="mobile"
-    authors="piyushjo"
-    manager="erikre"
-    editor="" />
+---
+title: Azure Mobile Engagement Android SDK の統合
+description: Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について
+services: mobile-engagement
+documentationcenter: mobile
+author: piyushjo
+manager: erikre
+editor: ''
 
-<tags
-    ms.service="mobile-engagement"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-android"
-    ms.devlang="Java"
-    ms.topic="article"
-    ms.date="10/10/2016"
-    ms.author="piyushjo" />
+ms.service: mobile-engagement
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-android
+ms.devlang: Java
+ms.topic: article
+ms.date: 10/10/2016
+ms.author: piyushjo
 
-
-#<a name="how-to-integrate-gcm-with-mobile-engagement"></a>GCM を Mobile Engagement に統合する方法
-
-> [AZURE.IMPORTANT] このガイドの手順を実行する前に、「Engagement を Android に統合する方法」のドキュメントの統合手順を実行する必要があります。
->
+---
+# <a name="how-to-integrate-gcm-with-mobile-engagement"></a>GCM を Mobile Engagement に統合する方法
+> [!IMPORTANT]
+> このガイドの手順を実行する前に、「Engagement を Android に統合する方法」のドキュメントの統合手順を実行する必要があります。
+> 
 > このドキュメントは、既に Reach モジュールを統合してあり、Google Play デバイスのプッシュを計画する場合にのみ役立ちます。 アプリケーションに Reach キャンペーンを統合するには、Engagement Reach を Android に統合する方法に関するドキュメントを先にお読みください。
+> 
+> 
 
-##<a name="introduction"></a>はじめに
-
+## <a name="introduction"></a>はじめに
 GCM を統合すると、アプリケーションをプッシュできます。
 
 SDK にプッシュされた GCM ペイロードのデータ オブジェクトには常に `azme` キーが含まれています。 そのため、アプリケーションで別の目的で GCM を使用する場合、そのキーに基づいてプッシュをフィルター処理できます。
 
-> [AZURE.IMPORTANT] Android 2.2 以降を実行中のデバイスで、Google Play がインストールされ、Google バックグラウンド接続が有効になっているデバイスのみを GCM でプッシュできます。ただし、このコードはサポートされていないデバイスで安全に統合できます (インテントのみを使用します)。
+> [!IMPORTANT]
+> Android 2.2 以降を実行中のデバイスで、Google Play がインストールされ、Google バックグラウンド接続が有効になっているデバイスのみを GCM でプッシュできます。ただし、このコードはサポートされていないデバイスで安全に統合できます (インテントのみを使用します)。
+> 
+> 
 
-##<a name="create-a-google-cloud-messaging-project-with-api-key"></a>API キーを使用して Google Cloud Messaging プロジェクトを作成する
+## <a name="create-a-google-cloud-messaging-project-with-api-key"></a>API キーを使用して Google Cloud Messaging プロジェクトを作成する
+[!INCLUDE [mobile-engagement-enable-Google-cloud-messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]
 
-[AZURE.INCLUDE [mobile-engagement-enable-Google-cloud-messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]
-
-##<a name="sdk-integration"></a>SDK の統合
-
+## <a name="sdk-integration"></a>SDK の統合
 ### <a name="managing-device-registrations"></a>デバイス登録の管理
-
 各デバイスは Google サーバーに登録コマンドを送信する必要があります。そうしないと、デバイスに接続できません。
 
 デバイスは、GCM 通知の登録を解除することもできます (アプリケーションをアンインストールすると、デバイスは自動的に登録解除されます)。
@@ -51,7 +51,6 @@ SDK にプッシュされた GCM ペイロードのデータ オブジェクト�
             <meta-data android:name="engagement:gcm:sender" android:value="<Your Google Project Number>\n" />
 
 ### <a name="communicate-registration-id-to-the-engagement-push-service-and-receive-notifications"></a>登録 ID を Engagement Push サービスに伝達し、通知を受信する
-
 デバイスの登録 ID を Engagement Push サービスに伝達し、その通知を受信するためには、以下を `AndroidManifest.xml` ファイルの `<application/>` タグ内に追加します (これはデバイス登録を自分で管理する場合にも実行します)。
 
             <receiver android:name="com.microsoft.azure.engagement.gcm.EngagementGCMEnabler"
@@ -75,8 +74,7 @@ SDK にプッシュされた GCM ペイロードのデータ オブジェクト�
             <uses-permission android:name="<your_package_name>.permission.C2D_MESSAGE" />
             <permission android:name="<your_package_name>.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 
-##<a name="grant-mobile-engagement-access-to-your-gcm-api-key"></a>Mobile Engagement に GCM API キーへのアクセス権限を付与する
-
+## <a name="grant-mobile-engagement-access-to-your-gcm-api-key"></a>Mobile Engagement に GCM API キーへのアクセス権限を付与する
 [このガイド](mobile-engagement-android-get-started.md#grant-mobile-engagement-access-to-your-gcm-api-key) に従って、Mobile Engagement に GCM API キーへのアクセス権限を付与します。
 
 [Google Play SDK]:https://developers.google.com/cloud-messaging/android/start

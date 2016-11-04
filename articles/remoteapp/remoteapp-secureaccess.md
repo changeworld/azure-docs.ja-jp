@@ -1,25 +1,26 @@
 
-<properties 
-    pageTitle="Azure RemoteApp とその先にあるリソースへのアクセスのセキュリティ保護 | Microsoft Azure"
-	description="Azure Active Directory で条件付きアクセスを使用して、Azure RemoteApp へのアクセスをセキュリティで保護する方法について説明します。"
-	services="remoteapp"
-	documentationCenter="" 
-	authors="piotrci" 
-	manager="mbaldwin" />
+---
+title: Azure RemoteApp とその先にあるリソースへのアクセスのセキュリティ保護 | Microsoft Docs
+description: Azure Active Directory で条件付きアクセスを使用して、Azure RemoteApp へのアクセスをセキュリティで保護する方法について説明します。
+services: remoteapp
+documentationcenter: ''
+author: piotrci
+manager: mbaldwin
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/15/2016" 
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/15/2016
+ms.author: elizapo
 
+---
 # Azure RemoteApp とその先にあるリソースへのアクセスのセキュリティ保護
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> [!IMPORTANT]
+> Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> 
+> 
 
 この記事では、管理者が、エンド ユーザーから始まりセキュリティで保護されたリソース (SQL Database や他のアプリケーション バックエンドなど) で終わる、Azure RemoteApp 経由のセキュリティで保護されたアクセス チャネルをセットアップする方法の概要を示します。その目的は、必要な条件を満たす許可ユーザーのみがリモート アプリケーションにアクセスできるようにすることと、セキュリティで保護されたバックエンドに制御された Azure RemoteApp 環境からのみアクセスできるようにし、他の場所からはアクセスできないようにすることです。
 
@@ -36,8 +37,8 @@ Azure RemoteApp の提供は終了しました。詳細については、[お知
 
 Azure RemoteApp へのアクセスを制御するために Azure AD アカウントを使用すると、次の 2 つのことが実現できます。
 
-1.	発行されたアプリケーションと、それらのアプリケーションの接続先となるバックエンドにアクセスできるユーザーを常に把握する。
-2.	ユーザー アカウントの作成と削除、パスワード ポリシーの設定、多要素認証の使用などができるように、基になる Azure AD を制御する。
+1. 発行されたアプリケーションと、それらのアプリケーションの接続先となるバックエンドにアクセスできるユーザーを常に把握する。
+2. ユーザー アカウントの作成と削除、パスワード ポリシーの設定、多要素認証の使用などができるように、基になる Azure AD を制御する。
 
 ## コレクションにはどのようにアクセスしますか? また、どこからアクセスしますか?
 一般的に、管理者は Azure RemoteApp など、インターネットに接続されたパブリック環境へのアクセスに関するポリシーを定義します。たとえば、管理者は、企業ネットワーク外部からその環境にアクセスするユーザーは多要素認証 (MFA) を使用してアクセスしなければならない (または完全にブロックする) ようにします。
@@ -47,29 +48,25 @@ Azure RemoteApp 管理者は、Azure AD Premium で使用可能な機能を用�
 ### Azure RemoteApp に対する条件付きアクセスの設定方法
 ここでは、ユーザーが企業ネットワークの外部にいる場合、Azure RemoteApp 管理者は環境へのアクセスをブロックするシナリオ例について説明します。
 
->[AZURE.NOTE] Azure AD が Premium レベルにアップグレード済みで、1 つ以上の Azure RemoteApp コレクションを作成済みであることを前提とします。
+> [!NOTE]
+> Azure AD が Premium レベルにアップグレード済みで、1 つ以上の Azure RemoteApp コレクションを作成済みであることを前提とします。
+> 
+> 
 
-1.	Azure ポータルで、**[Active Directory]** タブをクリックします。次に、構成するディレクトリをクリックします。
-
-	注: 条件付きアクセスは、Azure RemoteApp ではなく、ご使用のディレクトリのプロパティであるため、すべての構成はディレクトリ レベルで行われます。これは、変更を加えるにはディレクトリ管理者でなければならないことも意味します。
-
-2.	**[アプリケーション]** をクリックしてから、**[Microsoft Azure RemoteApp]** をクリックして条件付きアクセスを設定します。ディレクトリ内の "サービスとしてのソフトウェア" アプリケーションごとに個別に条件付きアクセスを設定できることに注意してください。 ![Azure RemoteApp に対する条件付きアクセスの設定](./media/remoteapp-secureaccess/ra-conditionalaccessscreen.png)
- 
-
-3.	**[構成]** タブで、**[アクセス規則を有効にする]** を [オン] に設定します。 ![Azure RemoteApp のアクセス規則を有効にする](./media/remoteapp-secureaccess/ra-enableaccessrules.png)
- 
-
-4.	ここで、さまざまな規則を構成し、適用するユーザーを選択できます。
-
-	1. **[作業中でない場合、アクセスをブロック]** を選択し、指定したネットワーク環境外からのユーザーによる Azure RemoteApp へのアクセスを完全に防ぎます。
-	2. 下にあるオプションをクリックし、"信頼されたネットワーク" を構成する IP アドレス範囲を定義します。それ以外のものはすべて拒否されます。
-
-5.	指定した範囲外の IP アドレスから Azure RemoteApp クライアントを起動して、構成をテストします。Azure AD の資格情報でサインインした後、次のようなメッセージが表示されます。
+1. Azure ポータルで、**[Active Directory]** タブをクリックします。次に、構成するディレクトリをクリックします。
+   
+   注: 条件付きアクセスは、Azure RemoteApp ではなく、ご使用のディレクトリのプロパティであるため、すべての構成はディレクトリ レベルで行われます。これは、変更を加えるにはディレクトリ管理者でなければならないことも意味します。
+2. **[アプリケーション]** をクリックしてから、**[Microsoft Azure RemoteApp]** をクリックして条件付きアクセスを設定します。ディレクトリ内の "サービスとしてのソフトウェア" アプリケーションごとに個別に条件付きアクセスを設定できることに注意してください。 ![Azure RemoteApp に対する条件付きアクセスの設定](./media/remoteapp-secureaccess/ra-conditionalaccessscreen.png)
+3. **[構成]** タブで、**[アクセス規則を有効にする]** を [オン] に設定します。 ![Azure RemoteApp のアクセス規則を有効にする](./media/remoteapp-secureaccess/ra-enableaccessrules.png)
+4. ここで、さまざまな規則を構成し、適用するユーザーを選択できます。
+   
+   1. **[作業中でない場合、アクセスをブロック]** を選択し、指定したネットワーク環境外からのユーザーによる Azure RemoteApp へのアクセスを完全に防ぎます。
+   2. 下にあるオプションをクリックし、"信頼されたネットワーク" を構成する IP アドレス範囲を定義します。それ以外のものはすべて拒否されます。
+5. 指定した範囲外の IP アドレスから Azure RemoteApp クライアントを起動して、構成をテストします。Azure AD の資格情報でサインインした後、次のようなメッセージが表示されます。
 
 ![Azure RemoteApp へのアクセス拒否](./media/remoteapp-secureaccess/ra-accessdenied.png)
- 
 
-### 将来の条件付きアクセスの機能 
+### 将来の条件付きアクセスの機能
 Azure Active Directory チームは、条件付きアクセスの新機能に取り組んでいます。管理者は、ネットワークの場所ベースの規則のほかに、新しい種類の規則を作成できるようになります。パブリック プレビューの新機能は間もなく利用可能になります。
 
 ### Azure RemoteApp へのアクセスの監視方法
@@ -77,16 +74,13 @@ Azure Active Directory チームは、条件付きアクセスの新機能に取
 
 たとえば、Azure RemoteApp にアクセスしたユーザーの名前、アクセスの回数および時刻を確認できます。
 
-1.	Azure ポータルで、**[Active Directory]** をクリックしてから使用するディレクトリをクリックします。
+1. Azure ポータルで、**[Active Directory]** をクリックしてから使用するディレクトリをクリックします。
+2. **[レポート]** タブに移動します。
+3. レポートの一覧から、**[統合アプリケーション]** の **[アプリケーションの使用状況]** を選択します。
+   
+   Azure RemoteApp の集計された統計がいくつか表示されます。 ![集計された Azure RemoteApp アクセスの統計](./media/remoteapp-secureaccess/ra-accessstats.png)
+4. アプリケーションをクリックして、Azure RemoteApp にアクセスしているユーザーに関する情報を表示します。 ![Azure RemoteApp のユーザー アクセスの統計](./media/remoteapp-secureaccess/ra-userstats.png)
 
-2.	**[レポート]** タブに移動します。
-
-3.	レポートの一覧から、**[統合アプリケーション]** の **[アプリケーションの使用状況]** を選択します。
-
-	Azure RemoteApp の集計された統計がいくつか表示されます。 ![集計された Azure RemoteApp アクセスの統計](./media/remoteapp-secureaccess/ra-accessstats.png)
- 
-5.	アプリケーションをクリックして、Azure RemoteApp にアクセスしているユーザーに関する情報を表示します。 ![Azure RemoteApp のユーザー アクセスの統計](./media/remoteapp-secureaccess/ra-userstats.png)
- 
 ### まとめ
 Azure Active Directory Premium では、Azure RemoteApp (および Azure AD を介して使用可能な他のサービスとしてのソフトウェア アプリケーション) に対するアクセス規則を設定できます。現時点では、規則はネットワークの場所ベースのポリシーに制限されていますが、将来的には、エンタープライズ管理の他の部分に拡張されます。
 
@@ -101,10 +95,9 @@ Azure RemoteApp デプロイメントの一般的なシナリオは、リモー�
 
 Azure RemoteApp では、ユーザーが独自の VNET を指定できる以下の 2 種類のコレクション デプロイメントがサポートされています。
 
--	ドメイン不参加: アプリケーションから、VNET 内の他のリソースを見通すことができます。たとえば、これを使用して、SQL 認証を使用する SQL Database にアプリケーションを接続することができます (アプリケーションがデータベースに対して直接ユーザーを認証)。
+* ドメイン不参加: アプリケーションから、VNET 内の他のリソースを見通すことができます。たとえば、これを使用して、SQL 認証を使用する SQL Database にアプリケーションを接続することができます (アプリケーションがデータベースに対して直接ユーザーを認証)。
+* ドメイン参加: Azure RemoteApp で使用される仮想マシンは、VNET 内のドメイン コント ローラーに参加しています。これは、アプリケーションがバックエンド リソースにアクセスするために、Windows ドメイン コントローラーに対して認証する必要がある場合に便利です。 ![Azure RemoteApp のドメイン参加コレクション](./media/remoteapp-secureaccess/ra-domainjoined.png)
 
--	ドメイン参加: Azure RemoteApp で使用される仮想マシンは、VNET 内のドメイン コント ローラーに参加しています。これは、アプリケーションがバックエンド リソースにアクセスするために、Windows ドメイン コントローラーに対して認証する必要がある場合に便利です。 ![Azure RemoteApp のドメイン参加コレクション](./media/remoteapp-secureaccess/ra-domainjoined.png)
- 
 ### Azure とオンプレミス環境間のセキュリティで保護された接続を作成する方法
 Azure とオンプレミス環境を接続するためのいくつかの構成オプションがあります。ここでは、オプションの概要を示します。
 

@@ -1,23 +1,22 @@
-<properties
-	pageTitle="チュートリアル: Entity Framework と行レベル セキュリティによるマルチテナント データベースを持つ Web アプリの構築"
-	description="Entity Framework と行レベル セキュリティを使用して、マルチテナント SQL データベース バックエンドを持つ ASP.NET MVC 5 Web アプリを開発する方法について説明します。"
-  metaKeywords="azure asp.net mvc entity framework multi tenant row level security rls sql database"
-	services="app-service\web"
-	documentationCenter=".net"
-	manager="jeffreyg"
-  authors="tmullaney"/>
+---
+title: 'チュートリアル: Entity Framework と行レベル セキュリティによるマルチテナント データベースを持つ Web アプリの構築'
+description: Entity Framework と行レベル セキュリティを使用して、マルチテナント SQL データベース バックエンドを持つ ASP.NET MVC 5 Web アプリを開発する方法について説明します。
+metakeywords: azure asp.net mvc entity framework multi tenant row level security rls sql database
+services: app-service\web
+documentationcenter: .net
+manager: jeffreyg
+author: tmullaney
 
-<tags
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="04/25/2016"
-	ms.author="thmullan"/>
+ms.service: app-service-web
+ms.workload: web
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 04/25/2016
+ms.author: thmullan
 
+---
 # チュートリアル: Entity Framework と行レベル セキュリティによるマルチテナント データベースを持つ Web アプリの構築
-
 このチュートリアルでは、Entity Framework と[行レベル セキュリティ](https://msdn.microsoft.com/library/dn765131.aspx)を使用して、"[共有データベース、共有スキーマ](https://msdn.microsoft.com/library/aa479086.aspx)" テナント モデルのマルチテナント Web アプリを構築する方法を説明します。このモデルでは、1 つのデータベースに多くのテナントのデータが含まれていて、各テーブルの各行は "テナント ID" に関連付けられています。 Azure SQL Database の新しい機能である行レベル セキュリティ (RLS) は、各テナントが他のテナントのデータにアクセスできないようにするために使用されます。そうするには、アプリケーションに 1 つの小さな変更を行うだけで済みます。データベース内のテナント アクセス ロジックを一元化することで、RLS はアプリケーション コードを簡略化し、テナント間での偶発的なデータ漏洩のリスクを軽減します。
 
 「[認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」の簡単な Contact Manager アプリケーションから始めましょう。この状態では、アプリケーションはすべてのユーザー (テナント) にすべての連絡先の表示を許可します。
@@ -27,15 +26,14 @@
 これを少し変更するだけで、マルチテナントのサポートを追加し、ユーザーが自分に属している連絡先だけを表示できるようにすることができます。
 
 ## 手順 1: アプリケーションにインターセプター クラスを追加し、SESSION\_CONTEXT を設定する
-
 アプリケーションに 1 つの変更を行う必要があります。アプリケーションのすべてのユーザーが同じ接続文字列 (つまり、同じ SQL ログイン) を使用してデータベースに接続するため、現在、RLS ポリシーには、どのユーザーをフィルター処理する必要があるかを判断する方法がありません。この方法は、効率的な接続プーリングができるため、Web アプリケーションでは非常に一般的です。しかし、データベース内の現在のアプリケーション ユーザーを識別するための別の方法が必要になります。解決方法は、アプリケーションでクエリの実行前に、接続を開いた後すぐに現在の UserId のキーと値のペアを [SESSION\_CONTEXT](https://msdn.microsoft.com/library/mt590806) に設定することです。SESSION\_CONTEXT はセッション スコープのキー/値ストアであり、これに格納されている UserId を RLS ポリシーが使用して、現在のユーザーを識別します。
 
 Entity Framework (EF) 6 の新機能である[インターセプター](https://msdn.microsoft.com/data/dn469464.aspx) (特に [DbConnectionInterceptor](https://msdn.microsoft.com/library/system.data.entity.infrastructure.interception.idbconnectioninterceptor)) を追加し、EF が接続を開いたときに T-SQL ステートメントを実行して、SESSION\_CONTEXT の現在の UserId を自動的に設定するようにします。
 
-1.	Visual Studio で ContactManager プロジェクトを開きます。
-2.	ソリューション エクスプローラーで Models フォルダーを右クリックし、[追加]、[クラス] の順に選択します。
-3.	新しいクラスの名前を "SessionContextInterceptor.cs" にして、[追加] をクリックします。
-4.	SessionContextInterceptor.cs の内容を次のコードに置き換えます。
+1. Visual Studio で ContactManager プロジェクトを開きます。
+2. ソリューション エクスプローラーで Models フォルダーを右クリックし、[追加]、[クラス] の順に選択します。
+3. 新しいクラスの名前を "SessionContextInterceptor.cs" にして、[追加] をクリックします。
+4. SessionContextInterceptor.cs の内容を次のコードに置き換えます。
 
 ```
 using System;
@@ -53,7 +51,7 @@ namespace ContactManager.Models
     {
         public void Opened(DbConnection connection, DbConnectionInterceptionContext interceptionContext)
         {
-        	// Set SESSION_CONTEXT to current UserId whenever EF opens a connection
+            // Set SESSION_CONTEXT to current UserId whenever EF opens a connection
             try
             {
                 var userId = System.Web.HttpContext.Current.User.Identity.GetUserId();
@@ -73,7 +71,7 @@ namespace ContactManager.Models
                 // If no user is logged in, leave SESSION_CONTEXT null (all rows will be filtered)
             }
         }
-        
+
         public void Opening(DbConnection connection, DbConnectionInterceptionContext interceptionContext)
         {
         }
@@ -180,7 +178,6 @@ namespace ContactManager.Models
 必要なアプリケーションの変更は、これだけです。アプリケーションをビルドして発行します。
 
 ## 手順 2: データベース スキーマに UserId 列を追加する
-
 次に、各行をユーザー (テナント) に関連付けるために、Contacts テーブルに UserId 列を追加する必要があります。データベースで直接スキーマを変更するため、このフィールドを EF データ モデルに含める必要はありません。
 
 SQL Server Management Studio または Visual Studio を使用してデータベースに直接接続し、以下の T-SQL を実行します。
@@ -210,7 +207,6 @@ WHERE ContactId IN (1, 2, 5)
 ```
 
 ## 手順 3: データベースに行レベル セキュリティ ポリシーを作成する
-
 最後の手順は、SESSION\_CONTEXT の UserId を使用して、クエリから返される結果を自動的にフィルター処理するセキュリティ ポリシーを作成することです。
 
 まだデータベースに接続している場合は、次の T-SQL を実行します。
@@ -220,16 +216,16 @@ CREATE SCHEMA Security
 go
 
 CREATE FUNCTION Security.userAccessPredicate(@UserId nvarchar(128))
-	RETURNS TABLE
-	WITH SCHEMABINDING
+    RETURNS TABLE
+    WITH SCHEMABINDING
 AS
-	RETURN SELECT 1 AS accessResult
-	WHERE @UserId = CAST(SESSION_CONTEXT(N'UserId') AS nvarchar(128))
+    RETURN SELECT 1 AS accessResult
+    WHERE @UserId = CAST(SESSION_CONTEXT(N'UserId') AS nvarchar(128))
 go
 
 CREATE SECURITY POLICY Security.userSecurityPolicy
-	ADD FILTER PREDICATE Security.userAccessPredicate(UserId) ON dbo.Contacts,
-	ADD BLOCK PREDICATE Security.userAccessPredicate(UserId) ON dbo.Contacts
+    ADD FILTER PREDICATE Security.userAccessPredicate(UserId) ON dbo.Contacts,
+    ADD BLOCK PREDICATE Security.userAccessPredicate(UserId) ON dbo.Contacts
 go
 
 ```
@@ -243,7 +239,6 @@ go
 このことをさらに検証するために、新しいユーザーを登録してみます。新しいユーザーには連絡先が割り当てられていないため、連絡先が表示されません。ユーザーが新しい連絡先を作成すると、それがユーザーに割り当てられ、そのユーザーだけに表示されるようになります。
 
 ## 次のステップ
-
 これで完了です。 単純な Contact Manager Web アプリが、各ユーザーが独自の連絡先リストを持つマルチテナントのアプリに変わりました。行レベル セキュリティを使用することで、アプリケーション コードにテナント アクセス ロジックを強制するような複雑な処理を避けることができました。この透過性により、アプリケーションは実際のビジネスの問題に集中することができ、アプリケーションのコードベースの拡大に伴ってデータを誤って漏えいするリスクも軽減できます。
 
 このチュートリアルでは、RLS でできることのほんの一部に触れただけです。たとえば、より洗練されたきめ細かいアクセス ロジックを利用したり、SESSION\_CONTEXT に現在の UserId 以外のものを格納したりすることもできます。また、スケール アウト データ層でマルチテナント シャードをサポートするために、[RLS をエラスティック データベース ツール クライアント ライブラリと統合する](../sql-database/sql-database-elastic-tools-multi-tenant-row-level-security.md)こともできます。

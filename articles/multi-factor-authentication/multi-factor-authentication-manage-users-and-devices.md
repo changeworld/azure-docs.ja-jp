@@ -1,46 +1,34 @@
-<properties 
-	pageTitle="Azure Multi-Factor Authentication レポート"
-	description="ここでは、追加のセキュリティ確認を強制するなど、ユーザー設定を変更する方法について説明します。"
-	documentationCenter=""
-	services="multi-factor-authentication"
-	authors="kgremban"
-	manager="femila"
-	editor="curtand"/>
+---
+title: Azure Multi-Factor Authentication レポート
+description: ここでは、追加のセキュリティ確認を強制するなど、ユーザー設定を変更する方法について説明します。
+documentationcenter: ''
+services: multi-factor-authentication
+author: kgremban
+manager: femila
+editor: curtand
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # クラウドでの Azure Multi-factor Authentication によるユーザー設定の管理
-
 管理者は、ユーザーとデバイスに関する次の設定を管理できます。
 
-- [選択したユーザーについて連絡方法の再指定を必須にする](#require-selected-users-to-provide-contact-methods-again)
-- [ユーザーの既存のアプリ パスワードを削除する](#delete-users-existing-app-passwords)
-- [ユーザーのすべての停止中のデバイスで MFA を復元する](#restore-mfa-on-all-suspended-devices-for-a-user)
-
-
-
-
-
+* [選択したユーザーについて連絡方法の再指定を必須にする](#require-selected-users-to-provide-contact-methods-again)
+* [ユーザーの既存のアプリ パスワードを削除する](#delete-users-existing-app-passwords)
+* [ユーザーのすべての停止中のデバイスで MFA を復元する](#restore-mfa-on-all-suspended-devices-for-a-user)
 
 これは、コンピューターまたはデバイスが紛失または盗難にあった場合や、ユーザーのアクセスを削除する必要がある場合に便利です。
 
-
 ## 選択したユーザーについて連絡方法の再指定を必須にする
-
 この設定は、ユーザーのサインイン時に、もう一度登録プロセスを完了することを強制します。ブラウザー以外のアプリは、ユーザーがアプリ パスワードを持っている場合に引き続き動作しますので注意してください。ユーザー アプリ パスワードを削除するには、**[選択したユーザーが生成したすべての既存のアプリ パスワードを削除する]** を選択することもできます。
 
 ### 連絡方法をもう一度提供するようユーザーに要求する方法
-
-
-
-
 1. Azure クラシック ポータルにサインインします。
 2. 左側の [Active Directory] をクリックします。
 3. [ディレクトリ] の下で、連絡方法の再提供を必要とするユーザーのディレクトリをクリックします。
@@ -49,15 +37,13 @@
 6. 管理するユーザーを見つけ、その名前の横にあるチェック ボックスをオンにします。上部でビューを変更することが必要になる場合があります。
 7. これにより、右側に **[ユーザー設定の管理]** リンクが表示されます。このボタンをクリックします。
 8. **[選択したユーザーについて連絡方法の再指定を必須にする]** チェック ボックスをオンにします。![連絡方法を提供する](./media/multi-factor-authentication-manage-users-and-devices/reproofup.png)
-10. [保存] をクリックします。
-11. [閉じる] をクリックします。
+9. [保存] をクリックします。
+10. [閉じる] をクリックします。
 
 ## ユーザーの既存のアプリ パスワードを削除する
-
 ユーザーが作成したすべてのアプリ パスワードを削除します。これらのアプリ パスワードに関連付けられているブラウザー以外のアプリは、新しいアプリ パスワードが作成されるまで機能しなくなります。
 
 ### ユーザーの既存のアプリ パスワードを削除する方法
-
 1. Azure クラシック ポータルにサインインします。
 2. 左側の [Active Directory] をクリックします。
 3. [ディレクトリ] の下で、アプリ パスワードを削除するユーザーのディレクトリをクリックします。
@@ -66,15 +52,13 @@
 6. 管理するユーザーを見つけ、その名前の横にあるチェック ボックスをオンにします。上部でビューを変更することが必要になる場合があります。
 7. これにより、右側に **[ユーザー設定の管理]** リンクが表示されます。このボタンをクリックします。
 8. **[選択したユーザーが生成したすべての既存のアプリケーション パスワードを削除する]** チェック ボックスをオンにします。![アプリ パスワードを削除する](./media/multi-factor-authentication-manage-users-and-devices/deleteapppasswords.png)
-10. [保存] をクリックします。
+9. [保存] をクリックします。
 10. [閉じる] をクリックします。
 
 ## ユーザーの記憶されたすべてのデバイスで MFA を復元する
-
 管理者は、ユーザーのデバイスやブラウザーで Multi-Factor Authentication を復元することができます。これを実行すると、ユーザーのすべてのデバイスとブラウザーから MFA の記憶が削除されるので、ユーザーは次回サインインするときに MFA を使用する必要があります。
 
 ### ユーザーの中断されたすべてのデバイスで MFA を復元する方法
-
 1. Azure クラシック ポータルにサインインします。
 2. 左側の [Active Directory] をクリックします。
 3. [ディレクトリ] の下で、MFA を復元するユーザーのディレクトリをクリックします。

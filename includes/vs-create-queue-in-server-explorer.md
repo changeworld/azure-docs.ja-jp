@@ -7,7 +7,6 @@ Visual Studio の**サーバー エクスプローラー**を使用すると、A
 3. **[キュー]** ノードを選択して、コンテキスト メニューから **[キューの作成]** を選択します。
 4. キューの名前を入力し、**[OK]**を選択します。   
 
-
 [Image1]: ./media/vs-create-queue-in-server-explorer/vs-storage-queues-create-in-server-explorer.png
 
 <!---HONumber=Oct15_HO3-->

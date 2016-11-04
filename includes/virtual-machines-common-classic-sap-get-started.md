@@ -1,6 +1,5 @@
 
 ## 計画と導入
-
 タイトル: Azure Virtual Machines への SAP NetWeaver の導入 – 計画/導入ガイド
 
 概要: SAP NetWeaver を Azure Virtual Machines で実行することを検討している方は、まずこのホワイト ペーパーをお読みください。既にあるまたは導入を予定している SAP NetWeaver ベースのシステムを Azure Virtual Machines 環境にデプロイできるかどうかを評価するうえで参考になります。SAP NetWeaver のデプロイに伴うさまざまなシナリオのほか、Azure に固有の SAP 構成も取り上げています。このホワイト ペーパーには、ハイブリッド SAP ランドスケープを運用するために SAP/Azure 側で必要となる構成情報が詳細に説明されています。SAP NetWeaver ベースのシステムの高可用性を IaaS で確保するために講じることのできる対策についても触れています。
@@ -8,6 +7,7 @@
 更新日: 2015 年 8 月
 
 [このガイドを今すぐダウンロードする](http://go.microsoft.com/fwlink/?LinkId=397963)
+
 ## デプロイ
 タイトル: Azure Virtual Machines への SAP NetWeaver の導入 – デプロイ ガイド
 
@@ -27,7 +27,6 @@
 [このガイドを今すぐダウンロードする](http://go.microsoft.com/fwlink/?LinkId=397965)
 
 ## Azure における SAP NetWeaver
-
 タイトル: SAP NetWeaver - Azure ベースの障害復旧ソリューションの構築
 
 概要: このドキュメントでは、Azure ベースの障害復旧ソリューションを SAP NetWeaver 向けに構築するための手順を説明します。ここで取り上げているソリューションは、Hyper-V を基盤とする仮想化されたオンプレミス環境で SAP ランドスケープが実行されていることを前提としています。その構成要素の Azure Site Recovery (ASR) サービスがこのドキュメントの第 1 部で紹介されています。第 2 部では、SAP NetWeaver ベースのランドスケープについて具体的に説明しています。SAP NetWeaver アプリケーション インスタンスと SAP Central Services に、ASR を組み合わせて使用することの可能性について触れています。第 2 部で主に取り上げているテーマは、Windows Server フェールオーバー クラスター構成で保護された SAP Central Services への ASR の活用です。

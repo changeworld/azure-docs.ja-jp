@@ -9,8 +9,6 @@ Latest Freshness check:  2015-09-04 , GeneMi.
 
 
 ### 接続文字列をセキュリティで保護するための構成ファイルの例
-
-
 接続文字列をリテラルとして C# コード内に配置することは得策ではありません。接続文字列は構成ファイル内に配置することをお勧めします。再コンパイルなしでいつでも文字列を編集できます。
 
 コンパイル済みの C# プログラムの名前が **ConsoleApplication1.exe** であり、この .exe ファイルが **bin\\debug** ディレクトリに存在するとします。
@@ -21,42 +19,37 @@ Latest Freshness check:  2015-09-04 , GeneMi.
 
 次のプレースホルダーを実際の名前に編集する必要があります。
 
-- {your\_serverName\_here} (サーバー名）
-- {your\_databaseName\_here} (データベース名)
+* {your\_serverName\_here} (サーバー名）
+* {your\_databaseName\_here} (データベース名)
 
+        <?xml version="1.0" encoding="utf-8" ?>
+        <configuration>
+            <startup> 
+                <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+            </startup>
 
+            <connectionStrings>
+                <clear />
+                <add name="ConnectionString4NoUserIDNoPassword"
+                providerName="System.Data.ProviderName"
 
-		<?xml version="1.0" encoding="utf-8" ?>
-		<configuration>
-		    <startup> 
-		        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
-		    </startup>
-		
-		    <connectionStrings>
-		        <clear />
-		        <add name="ConnectionString4NoUserIDNoPassword"
-		        providerName="System.Data.ProviderName"
-		
-		        connectionString=
-				"Server=tcp:{your_serverName_here}.database.windows.net,1433;
-				Database={your_databaseName_here};
-				Connection Timeout=30;
-				Encrypt=True;
-				TrustServerCertificate=False;" />
-		    </connectionStrings>
-		</configuration>
+                connectionString=
+                "Server=tcp:{your_serverName_here}.database.windows.net,1433;
+                Database={your_databaseName_here};
+                Connection Timeout=30;
+                Encrypt=True;
+                TrustServerCertificate=False;" />
+            </connectionStrings>
+        </configuration>
 
 
 
 この説明では、次の 2 つのパラメーターを省略することを選択しました。
 
-- User ID={your\_userName\_here}; (ユーザー名)
-- Password={your\_password\_here}; (パスワード)
-
+* User ID={your\_userName\_here}; (ユーザー名)
+* Password={your\_password\_here}; (パスワード)
 
 これらを含めることもできますが、これらの値はユーザーによるキーボード入力をプログラムで取得したほうがよい場合があります。一概には言えません。
-
-
 
 <!--
 These three includes/ files are a sequenced set, but you can pick and choose:

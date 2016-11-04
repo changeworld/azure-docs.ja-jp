@@ -1,7 +1,5 @@
 1. Android Studio のツールバーのアイコンをクリックするか、またはメニューから **[Tools]**、**[Android]** -> **[SDK Manager]** を順にクリックすることによって、Android SDK Manager を開きます。**スタンドアロン SDK Manager の起動**リンクをクリックします。
-
 2. プロジェクトで使用するバージョンの Android SDK を見つけて開きます。**Google API** がインストールされていない場合、**[Install packages...]** をクリックします。
-
 3. Android Studio で **[File]**、**[Project Structure]** の順に選択します。**[Notifications]** をクリックし、**[Google Cloud Messaging]** を選択して **[OK]** をクリックします。
 
 <!--

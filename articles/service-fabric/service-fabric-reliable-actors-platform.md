@@ -1,48 +1,44 @@
-<properties
-   pageTitle="Service Fabric の高信頼アクター | Microsoft Azure"
-   description="Reliable Actors と Reliable Services の階層的な関係と、Reliable Actors による Service Fabric プラットフォームの機能の使用方法について説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="vturecek"
-   manager="timlt"
-   editor="amanbha"/>
+---
+title: Service Fabric の高信頼アクター | Microsoft Docs
+description: Reliable Actors と Reliable Services の階層的な関係と、Reliable Actors による Service Fabric プラットフォームの機能の使用方法について説明します。
+services: service-fabric
+documentationcenter: .net
+author: vturecek
+manager: timlt
+editor: amanbha
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="07/06/2016"
-   ms.author="vturecek"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 07/06/2016
+ms.author: vturecek
 
+---
 # 高信頼アクターの Service Fabric プラットフォームの使用方法
-
 この記事では、Reliable Actors による Service Fabric プラットフォームの使用方法について説明します。Reliable Actors は、*アクター サービス*と呼ばれるステートフル リライアブル サービスの実装にホストされるフレームワークで実行されます。アクター サービスには、アクターのライフサイクルとメッセージ ディスパッチを管理するうえで必要なコンポーネントがすべて含まれています。
 
- - アクター ランタイムはライフサイクルとガベージ コレクションを管理し、シングルスレッドのアクセスを強制します。
- - アクター サービス リモート処理リスナーはアクターに対するリモート アクセス呼び出しを受け取り、ディスパッチャに送信して、適切なアクター インスタンスにルーティングします。
- - アクター状態プロバイダーは各種状態プロバイダー (Reliable Collections 状態プロバイダーなど) をラップし、アクターの状態管理のためのアダプターを提供します。
+* アクター ランタイムはライフサイクルとガベージ コレクションを管理し、シングルスレッドのアクセスを強制します。
+* アクター サービス リモート処理リスナーはアクターに対するリモート アクセス呼び出しを受け取り、ディスパッチャに送信して、適切なアクター インスタンスにルーティングします。
+* アクター状態プロバイダーは各種状態プロバイダー (Reliable Collections 状態プロバイダーなど) をラップし、アクターの状態管理のためのアダプターを提供します。
 
 これらのコンポーネントで Reliable Actors フレームワークが構成されます。
 
 ## サービスのレイヤー
-
 アクター サービス自体はリライアブル サービスであるため、Reliable Services の[アプリケーション モデル](service-fabric-application-model.md)、ライフサイクル、[パッケージング](service-fabric-application-model.md#package-an-application)、[デプロイ](service-fabric-deploy-remove-applications.md#deploy-an-application)、アップグレード、スケールの概念は、いずれもアクター サービスに当てはまります。
 
 ![Actor Service layering][1]
 
 上記の図は、Service Fabric アプリケーション フレームワークとユーザー コードの関係を示しています。青色の要素は Reliable Services アプリケーション フレームワークを表しています。また、オレンジ色の要素は Reliable Actors フレームワークを表し、緑色の要素はユーザー コードを表しています。
 
-
 Reliable Services では、サービスは `StatefulService` クラスを継承します。これは、`StatefulServiceBase` (ステートレス サービスの場合は `StatelessService`) から派生したものです 。Reliable Actors では、アクターが実行されるアクター パターンを実装する `StatefulServiceBase` クラスの別の実装であるアクター サービスを使用します。アクター サービス自体は `StatefulServiceBase` の実装にすぎないため、`StatefulService` を継承したときと同様に、`ActorService` から派生した独自のサービスを記述し、サービスレベルの機能を実装できます。次にその例を示します。
 
- - サービスのバックアップと復元。
- - すべてのアクターで共有される機能 (サーキット ブレーカーなど)。
- - 個別のアクターだけでなく、アクター サービス自体でのリモート処理プロシージャの呼び出し。
+* サービスのバックアップと復元。
+* すべてのアクターで共有される機能 (サーキット ブレーカーなど)。
+* 個別のアクターだけでなく、アクター サービス自体でのリモート処理プロシージャの呼び出し。
 
 ### アクター サービスの使用
-
 アクター インスタンスは、それが実行されるアクター サービスにアクセスできます。アクター インスタンスは、アクター サービスを通じて、パーティション ID、サービス名、アプリケーション名、その他 Service Fabric プラットフォームに固有の情報を含むサービス コンテキストをプログラムで取得できます。
 
 ```csharp
@@ -86,12 +82,9 @@ static class Program
 ```
 
 ### アクター サービスのメソッド
-
 アクター サービスは `IActorService` を実装し、それが `IService` を実装します。これは、Reliable Services リモート処理によって使用されるインターフェイスであり、サービス メソッドでのリモート プロシージャ呼び出しを可能にします。これには、サービスのリモート処理によってリモートで呼び出すことのできるサービスレベルのメソッドが含まれます。
 
-
 #### アクターの列挙
-
 アクター サービスにより、クライアントは、サービスによってホストされるアクターのメタデータを列挙できます。アクター サービスはパーティション分割されたステートフル サービスであるため、列挙はパーティションごとに実行されます。各パーティションには多数のアクターが含まれる可能性があるため、列挙はページングされた結果のセットとして返されます。ページはすべてのページが読み取られるまでループされます。次の例は、アクター サービスの 1 つのパーティションに含まれるすべてのアクティブ アクターのリストを作成する方法を示しています。
 
 ```csharp
@@ -104,7 +97,7 @@ List<ActorInformation> activeActors = new List<ActorInformation>();
 do
 {
     PagedResult<ActorInformation> page = await actorServiceProxy.GetActorsAsync(continuationToken, cancellationToken);
-                
+
     activeActors.AddRange(page.Items.Where(x => x.IsActive));
 
     continuationToken = page.ContinuationToken;
@@ -113,7 +106,6 @@ while (continuationToken != null);
 ```
 
 #### アクターの削除
-
 アクター サービスは、アクターを削除する機能も提供します。
 
 ```csharp
@@ -121,14 +113,13 @@ ActorId actorToDelete = new ActorId(id);
 
 IActorService myActorServiceProxy = ActorServiceProxy.Create(
     new Uri("fabric:/MyApp/MyService"), actorToDelete);
-            
+
 await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
 ```
 
 アクターとその状態の削除の詳細については、[アクターのライフサイクルに関するドキュメント](service-fabric-reliable-actors-lifecycle.md)を参照してください。
 
 ### カスタム アクター サービス
-
 アクター登録ラムダを使えば、`ActorService` から派生する独自のカスタム アクター サービス (独自のサービスレベルの機能を実装できる) を登録することもできます。そのためには、`ActorService` を継承するサービス クラスを記述します。カスタム アクター サービスは、`ActorService` からすべてのアクター ランタイム機能を継承します。カスタム アクター サービスを使えば、独自のサービス メソッドを実装できます。
 
 ```csharp
@@ -156,7 +147,6 @@ static class Program
 
 
 #### アクターのバックアップと復元の実装
-
  次の例のカスタム アクター サービスは、既に `ActorService` に存在するリモート処理リスナーを活用して、アクター データをバックアップするメソッドを公開しています。
 
 ```csharp
@@ -175,7 +165,7 @@ class MyActorService : ActorService, IMyActorService
     {
         return this.BackupAsync(new BackupDescription(PerformBackupAsync));
     }
-    
+
     private async Task<bool> PerformBackupAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
     {
         try
@@ -202,27 +192,23 @@ await myActorServiceProxy.BackupActorsAsync();
 
 
 ## アプリケーション モデル
-
 アクター サービスは Reliable Services であるため、アプリケーション モデルは同じです。ただし、アクター フレームワーク ビルド ツールによって、アプリケーション モデル ファイルの多くが自動的に生成されます。
 
 ### サービス マニフェスト
- 
 アクター サービスの ServiceManifest.xml の内容は、アクター フレームワーク ビルド ツールによって自動的に生成されます。次のトピックがあります。
 
- - アクター サービスの種類。種類の名前は、アクター プロジェクトの名前に基づいて生成されます。アクターの永続化属性に応じて、HasPersistedState フラグも設定されます。
- - コード パッケージ。
- - 構成パッケージ。
- - リソースとエンドポイント
+* アクター サービスの種類。種類の名前は、アクター プロジェクトの名前に基づいて生成されます。アクターの永続化属性に応じて、HasPersistedState フラグも設定されます。
+* コード パッケージ。
+* 構成パッケージ。
+* リソースとエンドポイント
 
 ### アプリケーション マニフェスト
-
 アクター フレームワーク ビルド ツールによって、アクター サービスの既定のサービス定義が自動的に作成されます。また、ビルド ツールによって既定のサービス プロパティが設定されます。
 
- - レプリカ セットの数は、アクターの永続化属性によって決まります。アクターの永続化属性が変更されるたびに、それに応じて既定のサービス定義のレプリカ セットの数がリセットされます。
- - パーティション構成と範囲は Uniform Int64 とフル Int64 キー範囲に設定されます。
+* レプリカ セットの数は、アクターの永続化属性によって決まります。アクターの永続化属性が変更されるたびに、それに応じて既定のサービス定義のレプリカ セットの数がリセットされます。
+* パーティション構成と範囲は Uniform Int64 とフル Int64 キー範囲に設定されます。
 
 ## アクターの Service Fabric のパーティションの概念
-
 アクター サービスはパーティション分割されたステートフル サービスです。アクター サービスの各パーティションには、アクターのセットが含まれています。サービス パーティションは、Service Fabric の複数のノードに自動的に分散されます。そのため、アクター インスタンスが分散されることになります。
 
 ![Actor partitioning and distribution][5]
@@ -230,7 +216,6 @@ await myActorServiceProxy.BackupActorsAsync();
 Reliable Services は、さまざまなパーティション構成とパーティション キー範囲で作成できます。アクター サービスは、Int64 パーティション構成とフル Int64 キー範囲でアクターをパーティションにマップします。
 
 ### アクター ID
-
 サービスで作成される各アクターには、`ActorId` クラスで表される一意の ID が関連付けられます。`ActorId` は、ランダム ID を生成することにより、サービス パーティション間での均一なアクターの分散に使用できるあいまいな ID 値です。
 
 ```csharp
@@ -248,12 +233,11 @@ ActorProxy.Create<IMyActor>(new ActorId(1234));
 GUID と文字列を使用した場合、値は Int64 にハッシュされます。ただし、Int64 を `ActorId` に明示的に指定した場合は、Int64 はハッシュされることなくパーティションに直接マップされます。これを使用して、アクターを配置するパーティションを制御できます。
 
 ## 次のステップ
- - [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
- - [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
- - [アクターの API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
+* [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
+* [アクターの API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 
- 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png
 [2]: ./media/service-fabric-reliable-actors-platform/app-deployment-scripts.png

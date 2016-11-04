@@ -1,31 +1,28 @@
-<properties 
-	pageTitle="ゲーム アプリでの Azure Mobile Engagement の実装"
-	description="Azure Mobile Engagement を実装するためのゲーム アプリのシナリオ" 
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo"
-	manager="dwrede"
-	editor=""/>
+---
+title: ゲーム アプリでの Azure Mobile Engagement の実装
+description: Azure Mobile Engagement を実装するためのゲーム アプリのシナリオ
+services: mobile-engagement
+documentationcenter: mobile
+author: piyushjo
+manager: dwrede
+editor: ''
 
-<tags
-	ms.service="mobile-engagement"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="mobile-multiple"
-	ms.workload="mobile" 
-	ms.date="08/19/2016"
-	ms.author="piyushjo"/>
+ms.service: mobile-engagement
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: mobile-multiple
+ms.workload: mobile
+ms.date: 08/19/2016
+ms.author: piyushjo
 
-#ゲーム アプリで Mobile Engagement を実装する
-
+---
+# ゲーム アプリで Mobile Engagement を実装する
 ## Overview
-
 ゲームのスタートアップが、新しい釣りベースのロールプレイング/戦略ゲーム アプリを立ち上げました。このゲームは発売から 6 か月が経過しています。ゲームは大成功し、数百万ものダウンロードがあり、他のスタートアップのゲーム アプリと比べ、リテンション期間が非常に長くなっています。四半期ごとのレビュー会議で、関係者はユーザー 1 人あたりの平均収益 (ARPU) を向上させる必要があることに同意しました。特別プランとしてゲーム内のプレミアム パッケージが提供されています。このゲーム パックにより、ユーザーはゲームで使用する釣り糸やルアーなどの道具の外観や性能をアップグレードできるようになります。しかし、パッケージの売上は非常に低いです。そこで、分析ツールを使用してカスタマー エクスペリエンスを分析し、セグメント化を細分化して売上を向上させるエンゲージメント プログラムを開発することにしました。
 
 「[Azure Mobile Engagement - 概要とベスト プラクティス](mobile-engagement-getting-started-best-practices.md)」に基づき、エンゲージメント戦略を構築します。
 
-##目標と KPI
-
+## 目標と KPI
 ゲームの主要な関係者で顔合わせをします。全員が、プレミアム パッケージの売上を 15% 上げるという 1 つの大きな目標に合意しています。この目標の進捗を測定して推進するため、次のようなビジネスの主要業績評価指標 (KPI) を作成します。
 
 * このパッケージが購入されているのは、ゲームのどのレベルか。
@@ -51,7 +48,6 @@ IT チームからの推奨事項に基づき、次の質問に答えるため�
 モバイル製品マネージャーが、必要なデータと、それがプレイブックのどこにあるかを KPI ごとに指定します。
 
 ## エンゲージメント プログラムおよび統合
-
 プログラムの責任者であるモバイル プロジェクト ディレクターは、高度なエンゲージメント プログラムを構築する前に、ユーザーがいつどのように製品を消費するかについて深く理解しておく必要があります。
 
 3 か月後、モバイル プロジェクト ディレクターは、アプリ内のプッシュ通知による売上を強化するための十分なデータを収集しました。次のことがわかりました。

@@ -1,21 +1,21 @@
-<properties
-pageTitle="Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト | Microsoft Azure"
-description="Azure Active Directory におけるアプリケーション オブジェクトとサービス プリンシパル オブジェクトのリレーションシップについての説明"
-documentationCenter="dev-center-name"
-authors="bryanla"
-manager="mbaldwin"
-services="active-directory"
-editor=""/>
+---
+title: Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト | Microsoft Docs
+description: Azure Active Directory におけるアプリケーション オブジェクトとサービス プリンシパル オブジェクトのリレーションシップについての説明
+documentationcenter: dev-center-name
+author: bryanla
+manager: mbaldwin
+services: active-directory
+editor: ''
 
-<tags
-ms.service="active-directory"
-ms.devlang="na"
-ms.topic="article"
-ms.tgt_pltfrm="na"
-ms.workload="identity"
-ms.date="08/10/2016"
-ms.author="bryanla;mbaldwin"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 08/10/2016
+ms.author: bryanla;mbaldwin
 
+---
 # Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト
 Azure Active Directory (AD) "アプリケーション" についての記事を読むと、著者がアプリケーションと呼んでいるものが正確には何を指しているのか、わかりにくい場合があります。この記事の目的は、Azure AD アプリケーションの統合について概念的な側面と具体的な側面を定義し、[マルチテナント アプリケーション](active-directory-dev-glossary.md#multi-tenant-application)に対する登録および同意の例を示すことにより、不明確な部分をよりわかりやすくすることです。
 
@@ -35,14 +35,17 @@ Azure AD アプリケーションは、その唯一のアプリケーション �
 
 サービス プリンシパル オブジェクトは、アプリケーションのインスタンスの使用方法を表す必要のある各テナントに必須であり、これによって、それらのテナントからユーザー アカウントが所有するリソースに安全にアクセスできます。シングルテナント アプリケーションは、サービス プリンシパルが 1 つのみ (ホーム テナント内に) 存在します。また、マルチテナント [Web アプリケーション](active-directory-dev-glossary.md#web-client)は各テナントにサービス プリンシパルがあります。そのテナントからの管理者やユーザーにはリソースにアクセスできるように同意が与えられています。同意を得た後、サービス プリンシパル オブジェクトは将来の承認要求のために参照されることになります。
 
-> [AZURE.NOTE] アプリケーション オブジェクトに加えたすべての変更は、アプリケーションのホーム テナント (アプリケーションが登録されたテナント) にだけ存在するサービス プリンシパル オブジェクトにも反映されます。マルチテナント アプリケーションの場合は、コンシューマー テナントでアクセス権を削除し、もう一度アクセス権を付与するまで、そのコンシューマー テナントのサービス プリンシパル オブジェクトにアプリケーション オブジェクトへの変更が反映されることはありません。
+> [!NOTE]
+> アプリケーション オブジェクトに加えたすべての変更は、アプリケーションのホーム テナント (アプリケーションが登録されたテナント) にだけ存在するサービス プリンシパル オブジェクトにも反映されます。マルチテナント アプリケーションの場合は、コンシューマー テナントでアクセス権を削除し、もう一度アクセス権を付与するまで、そのコンシューマー テナントのサービス プリンシパル オブジェクトにアプリケーション オブジェクトへの変更が反映されることはありません。
+> 
+> 
 
 ## 例
 次の図は、**HR アプリ**という名前のサンプル マルチテナント アプリケーションを基に、アプリケーションのアプリケーション オブジェクトと、対応するサービス プリンシパル オブジェクトの間のリレーションシップを表しています。このシナリオには、次の 3 つの Azure AD テナントがあります。
 
-- **Adatum** - **HR アプリ**を開発した会社が使用するテナント
-- **Contoso** - **HR アプリ**のコンシューマーである、Contoso という組織が使用するテナント
-- **Fabrikam** - Contoso と同じく **HR アプリ**のコンシューマーである、Fabrikam という組織が使用するテナント
+* **Adatum** - **HR アプリ**を開発した会社が使用するテナント
+* **Contoso** - **HR アプリ**のコンシューマーである、Contoso という組織が使用するテナント
+* **Fabrikam** - Contoso と同じく **HR アプリ**のコンシューマーである、Fabrikam という組織が使用するテナント
 
 ![Relationship between an application object and a service principal object](./media/active-directory-application-objects/application-objects-relationship.png)
 
@@ -56,8 +59,6 @@ Azure AD アプリケーションは、その唯一のアプリケーション �
 Azure AD Graph API を通じて、その OData [Application エンティティ][AAD-Graph-App-Entity]によって表される、アプリケーションのアプリケーション オブジェクトにアクセスできます。
 
 Azure AD Graph API を通じて、その OData [ServicePrincipal エンティティ][AAD-Graph-Sp-Entity]によって表される、アプリケーションのサービス プリンシパル オブジェクトにアクセスできます。
-
-
 
 <!--Image references-->
 

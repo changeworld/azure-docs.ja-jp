@@ -1,45 +1,40 @@
-<properties
-    pageTitle="Deploy a web app using MSDeploy with hostname and ssl certificate"
-    description="Use an Azure Resource Manager template to deploy a web app using MSDeploy and setting up custom hostname and a SSL certificate"
-    services="app-service\web"
-    manager="erikre"
-    documentationCenter=""
-    authors="jodehavi"
-    />
+---
+title: Deploy a web app using MSDeploy with hostname and ssl certificate
+description: Use an Azure Resource Manager template to deploy a web app using MSDeploy and setting up custom hostname and a SSL certificate
+services: app-service\web
+manager: erikre
+documentationcenter: ''
+author: jodehavi
 
-<tags
-    ms.service="app-service-web"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="05/31/2016"
-    ms.author="john.dehavilland"/>
+ms.service: app-service-web
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 05/31/2016
+ms.author: john.dehavilland
 
-
+---
 # <a name="deploy-a-web-app-with-msdeploy,-custom-hostname-and-ssl-certificate"></a>Deploy a web app with MSDeploy, custom hostname and SSL certificate
-
 This guide walks through creating an end-to-end deployment for an Azure Web App, leveraging MSDeploy as well as adding a custom hostname and an SSL certificate to the ARM template.
 
 For more information about creating templates, see [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md).
 
-###<a name="create-sample-application"></a>Create Sample Application
-
+### <a name="create-sample-application"></a>Create Sample Application
 You will be deploying an ASP.NET web application. The first step is to create a simple web application (or you could choose to use an existing one - in which case you can skip this step).
 
-Open Visual Studio 2015 and choose File > New Project. On the dialog that appears choose Web > ASP.NET Web Application. Under Templates choose Web and choose the MVC template. Select _Change authentication type_ to _No Authentication_. This is just to make the sample application as simple as possible.
+Open Visual Studio 2015 and choose File > New Project. On the dialog that appears choose Web > ASP.NET Web Application. Under Templates choose Web and choose the MVC template. Select *Change authentication type* to *No Authentication*. This is just to make the sample application as simple as possible.
 
 At this point you will have a basic ASP.Net web app ready to use as part of your deployment process.
 
-###<a name="create-msdeploy-package"></a>Create MSDeploy package
-
+### <a name="create-msdeploy-package"></a>Create MSDeploy package
 Next step is to create the package to deploy the web app to Azure. To do this, save your project and then run the following from the command line:
 
     msbuild yourwebapp.csproj /t:Package /p:PackageLocation="path\to\package.zip"
 
 This will create a zipped package under the PackageLocation folder. The application is now ready to be deployed, which you can now build out an Azure Resource Manager template to do that.
 
-###<a name="create-arm-template"></a>Create ARM Template
+### <a name="create-arm-template"></a>Create ARM Template
 First, let's start with a basic ARM template that will create a web application and a hosting plan (note that parameters and variables are not shown for brevity).
 
     {
@@ -163,8 +158,7 @@ You could then pass this as a parameter to your ARM deployment template.
 
 At this point the ARM template is ready.
 
-###<a name="deploy-template"></a>Deploy Template
-
+### <a name="deploy-template"></a>Deploy Template
 The final steps are to piece this all together into a full end-to-end deployment. To make deployment easier you can leverage the **Deploy-AzureResourceGroup.ps1** PowerShell script that is added when you create an Azure Resource Group project in Visual Studio to help with uploading of any artifacts required in the template. It requires you to have created a storage account you want to use ahead of time. For this example, I created a shared storage account for the package.zip to be uploaded. The script will leverage AzCopy to upload the package to the storage account. You pass in your artifact folder location and the script will automatically upload all files within that directory to the named storage container. After calling Deploy-AzureResourceGroup.ps1 you have to then update the SSL bindings to map the custom hostname with your SSL certificate.
 
 The following PowerShell shows the complete deployment calling the Deploy-AzureResourceGroup.ps1:
@@ -198,8 +192,6 @@ The following PowerShell shows the complete deployment calling the Deploy-AzureR
     Set-AzureRmResource -ApiVersion 2014-11-01 -Name nameofwebsite -ResourceGroupName $rgName -ResourceType Microsoft.Web/sites -PropertyObject $props
 
 At this point your application should have been deployed and you should be able to browse to it via https://www.yourcustomdomain.com
-
-
 
 <!--HONumber=Oct16_HO2-->
 

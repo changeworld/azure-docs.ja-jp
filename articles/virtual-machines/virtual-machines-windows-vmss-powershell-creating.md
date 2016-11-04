@@ -1,24 +1,23 @@
-<properties
-	pageTitle="PowerShell コマンドレットを使用した仮想マシン スケール セットの作成 | Microsoft Azure"
-	description="Azure PowerShell コマンドレットを使用した初めての Azure 仮想マシン スケール セットの作成と管理の概要です。"
-	services="virtual-machines-windows"
-	documentationCenter=""
-	authors="danielsollondon"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+---
+title: PowerShell コマンドレットを使用した仮想マシン スケール セットの作成 | Microsoft Docs
+description: Azure PowerShell コマンドレットを使用した初めての Azure 仮想マシン スケール セットの作成と管理の概要です。
+services: virtual-machines-windows
+documentationcenter: ''
+author: danielsollondon
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-	ms.service="virtual-machines-windows"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="03/30/2016"
-	ms.author="danielsollondon"/>
+ms.service: virtual-machines-windows
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/30/2016
+ms.author: danielsollondon
 
+---
 # PowerShell コマンドレットを使用した仮想マシン スケール セットの作成
-
 ここでは、仮想マシン スケール セット (VMSS) を作成する方法の例を示します。関連付けられているすべてのネットワークとストレージと共に、3 ノードの VMSS を作成します。
 
 ## 最初の手順
@@ -27,9 +26,7 @@
 VMSS 関連のコマンドレットを検索するには、検索文字列 *VMSS* を使います。
 
 ## VMSS の作成
-
 ##### リソース グループの作成
-
 ```
 $loc = 'westus';
 $rgname = 'mynewrgwu';
@@ -37,7 +34,6 @@ $rgname = 'mynewrgwu';
 ```
 
 ##### ストレージ アカウントの作成
-
 ストレージ アカウントの種類と名前を設定します。
 
 ```
@@ -49,16 +45,13 @@ $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stonam
 ```
 
 #### ネットワークの作成 (VNET とサブネット)
-
 ##### サブネットの指定
-
 ```
 $subnetName = 'websubnet'
   $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
 ```
 
 ##### VNET の指定
-
 ```
 $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
 $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
@@ -68,7 +61,6 @@ $subnetId = $vnet.Subnets[0].Id;
 ```
 
 ##### 外部アクセスを許可するパブリック IP リソースの作成
-
 これは Load Balancer にバインドされます。
 
 ```
@@ -77,7 +69,6 @@ $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName
 ```
 
 ##### Load Balancer の作成と構成
-
 ```
 $frontendName = 'fe' + $rgname
 $backendAddressPoolName = 'bepool' + $rgname
@@ -141,7 +132,6 @@ $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
 ```
 
 ##### VMSS の構成と作成
-
 このインフラストラクチャの例では、VMSS 全体で Web トラフィックを分散、スケールするための設定方法を示していますが、ここで指定された VM イメージには Web サービスがインストールされていないことに注意してください。
 
 ```

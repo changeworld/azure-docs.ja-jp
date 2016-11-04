@@ -1,25 +1,22 @@
-<properties
-   pageTitle="CLI を使用した Service Fabric クラスターの対話操作 | Microsoft Azure"
-   description="Azure CLI を使用して Service Fabric クラスターの対話操作を実行する方法"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="mani-ramaswamy"
-   manager="timlt"
-   editor=""/>
+---
+title: CLI を使用した Service Fabric クラスターの対話操作 | Microsoft Docs
+description: Azure CLI を使用して Service Fabric クラスターの対話操作を実行する方法
+services: service-fabric
+documentationcenter: .net
+author: mani-ramaswamy
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotNet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/24/2016"
-   ms.author="subramar"/>
+ms.service: service-fabric
+ms.devlang: dotNet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/24/2016
+ms.author: subramar
 
-
-
+---
 # <a name="using-the-azure-cli-to-interact-with-a-service-fabric-cluster"></a>Azure CLI を使用した Service Fabric クラスターの対話操作
-
 Linux 上で Azure CLI を使用して、Linux マシンから Service Fabric クラスターの対話操作を実行できます。
 
 まず、次のコマンドを使用して、Git リポジトリから CLI の最新バージョンを入手し、自分のパスでセットアップします。
@@ -82,39 +79,35 @@ Azure Portal を使用して作成した Linux Service Fabric クラスターの
 
 **注意:** これらのクラスターはセキュリティで保護されていないため、クラスター マニフェストにパブリック IP アドレスを追加すると、ワンボックスを開いている可能性があります。
 
-
-
 ## <a name="using-the-azure-cli-to-connect-to-a-service-fabric-cluster"></a>Azure CLI を使用した Service Fabric クラスターへの接続
-
 セキュリティで保護されたクラスターに接続する方法を以下の Azure CLI コマンドで説明します。 証明書の詳細は、クラスター ノード上の証明書と一致する必要があります。
 
 ```
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert
 ```
- 
+
 ご使用の証明書に証明機関 (CA) が含まれている場合は、次の例のように --ca-cert-path パラメーターを追加する必要があります。 
 
 ```
  azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 
 ```
 複数の CA がある場合は、区切り記号としてコンマを使用します。
- 
+
 証明書の共通名が接続エンドポイントと一致しない場合は、次のコマンドに示すように、 `--strict-ssl` パラメーターを使用して検証を回避することができます。 
 
 ```
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl false 
 ```
- 
+
 CA 検証を省略したい場合は、次のコマンドに示すように、--reject-unauthorized パラメーターを追加します。 
 
 ```
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized false 
 ```
- 
+
 接続後、他の CLI コマンドを実行してクラスターの対話操作を実行することができます。 
 
 ## <a name="deploying-your-service-fabric-application"></a>Service Fabric アプリケーションのデプロイ
-
 Service Fabric アプリケーションをコピー、登録、起動するには、次のコマンドを実行します。
 
 ```
@@ -125,7 +118,6 @@ azure servicefabric application create [applicationName] [applicationTypeName] [
 
 
 ## <a name="upgrading-your-application"></a>アプリケーションのアップグレード
-
 このプロセスは、 [Windows のプロセス](service-fabric-application-upgrade-tutorial-powershell.md)に似ています。
 
 プロジェクトのルート ディレクトリから、アプリケーションをビルド、コピー、登録、作成します。 アプリケーション インスタンスが fabric:/MySFApp という名前で、種類が MySFApp の場合、コマンドは次のようになります。
@@ -154,9 +146,7 @@ azure servicefabric application create [applicationName] [applicationTypeName] [
 SFX を使用してアプリケーションのアップグレードを監視できるようになりました。 数分で、アプリケーションが更新されました。  更新されたアプリケーションをエラーで試し、Service Fabric の自動ロールバック機能を確認することもできます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-
 ### <a name="copying-of-the-application-package-does-not-succeed"></a>アプリケーション パッケージのコピーが失敗する
-
 `openssh` がインストールされているかどうかを確認してください。 既定では、Ubuntu Desktop にこれがインストールされていません。 次のコマンドを使用してインストールします。
 
 ```
@@ -182,12 +172,8 @@ SFX を使用してアプリケーションのアップグレードを監視で�
 ```
 (パスワードとは対照的に) SSH 認証のキーの使用はまだサポートされていません (プラットフォームではパッケージのコピーに SSH を使用しているため)。そのため、代わりにパスワード認証を使用してください。
 
-
 ## <a name="next-steps"></a>次のステップ
-
 開発環境を設定し、Linux クラスターに Service Fabric アプリケーションをデプロイします。
-
-
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,63 +1,61 @@
-<properties
-   pageTitle="Operations Management Suite のセキュリティと監査ソリューションでのセキュリティの警告に対する監視と応答 | Microsoft Azure"
-   description="このドキュメントでは、OMS のセキュリティと監査で提供される脅威インテリジェンス オプションを使用した、セキュリティ警告に対する監視と対応に役立つ情報を提供します。"
-   services="operations-management-suite"
-   documentationCenter="na"
-   authors="YuriDio"
-   manager="swadhwa"
-   editor=""/>
+---
+title: Operations Management Suite のセキュリティと監査ソリューションでのセキュリティの警告に対する監視と応答 | Microsoft Docs
+description: このドキュメントでは、OMS のセキュリティと監査で提供される脅威インテリジェンス オプションを使用した、セキュリティ警告に対する監視と対応に役立つ情報を提供します。
+services: operations-management-suite
+documentationcenter: na
+author: YuriDio
+manager: swadhwa
+editor: ''
 
-<tags
-   ms.service="operations-management-suite"
-   ms.topic="article" 
-   ms.devlang="na"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/02/2016"
-   ms.author="yurid"/>
+ms.service: operations-management-suite
+ms.topic: article
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/02/2016
+ms.author: yurid
 
-
+---
 # <a name="monitoring-and-responding-to-security-alerts-in-operations-management-suite-security-and-audit-solution"></a>Operations Management Suite のセキュリティと監査ソリューションでのセキュリティの警告に対する監視と対応
-
 このドキュメントでは、OMS のセキュリティと監査で提供される脅威インテリジェンス オプションを使用した、セキュリティ警告に対する監視と対応に役立つ情報を提供します。
 
 ## <a name="what-is-oms?"></a>OMS とは
-
 Microsoft Operations Management Suite (OMS) は、Microsoft のクラウド ベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 OMS の詳細については、[Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx) に関する記事をご覧ください。
 
 ## <a name="threat-intelligence"></a>脅威インテリジェンス
-
 ユーザーがネットワークへの広範なアクセス手段を持ち、さまざまなデバイスを使用して企業のデータに接続するエンタープライズ環境では、リソースを能動的に監視し、セキュリティ インシデントにすばやく対応できることが必要になります。 一部のサイバーセキュリティの脅威は、従来型のセキュリティの技術的制御で特定できる警告や疑わしいアクティビティを引き起こさないこともあるため、セキュリティ ライフサイクルの観点から考えた場合、これは特に重要です。 
 
 IT 管理者は、OMS のセキュリティと監査で利用できる **[Threat Intelligence]** (脅威インテリジェンス) オプションを利用することで、たとえば特定のコンピューターが [ボットネット](https://www.microsoft.com/security/sir/story/default.aspx#!botnetsection)の一部であるかどうかを確認するなど、環境に対するセキュリティの脅威を特定することができます。 コンピューターをひそかにコマンド アンド コントロール サーバーに接続するマルウェアが攻撃者によって不正にインストールされた場合、そのコンピューターはボットネットのノードになる可能性があります。 また、 [ダークネット](https://www.microsoft.com/security/sir/story/default.aspx#!botnetsection_honeypots_darkents)のようなアンダーグラウンド通信チャネルに由来する潜在的な脅威を特定することもできます。 
 
 この脅威インテリジェンスを構築するために、OMS のセキュリティと監査では Microsoft 内部の複数のソースからのデータを使用しています。 OMS のセキュリティと監査では、このデータを活用して環境に対する潜在的な脅威を特定します。
 
-[Threat Intelligence] (脅威インテリジェンス) ウィンドウは、次に示す 3 つの主要なオプションで構成されています。
-- Servers with outbound malicious traffic (悪意のある送信トラフィックを持つサーバー)
-- Detected threats types (検出された脅威の種類)
-- 脅威インテリジェンス マップ
+[Threat Intelligence](脅威インテリジェンス.md) ウィンドウは、次に示す 3 つの主要なオプションで構成されています。
 
-> [AZURE.NOTE] これらのオプションすべての概要については、「 [Operations Management Suite のセキュリティと監査ソリューションの概要](oms-security-getting-started.md)」を参照してください。
+* Servers with outbound malicious traffic (悪意のある送信トラフィックを持つサーバー)
+* Detected threats types (検出された脅威の種類)
+* 脅威インテリジェンス マップ
+
+> [!NOTE]
+> これらのオプションすべての概要については、「 [Operations Management Suite のセキュリティと監査ソリューションの概要](oms-security-getting-started.md)」を参照してください。
+> 
+> 
 
 ### <a name="responding-to-security-alerts"></a>セキュリティの警告への対応
-
 [セキュリティ インシデント対応](https://technet.microsoft.com/library/cc512623.aspx) プロセスの手順の 1 つは、システムの侵害の重要度を特定することです。 このフェーズでは、次のタスクを実行する必要があります。
 
-- 攻撃の性質を特定する。
-- 攻撃の発生ポイントを特定する。
-- 攻撃の目的を特定する。 その攻撃が、特定の情報を取得するために自分の組織に向けられたものか、それともランダムなものかを特定します。
-- 侵害されているシステムを特定する。
-- アクセスされているファイルを特定してそのファイルの機密度を判定する。
+* 攻撃の性質を特定する。
+* 攻撃の発生ポイントを特定する。
+* 攻撃の目的を特定する。 その攻撃が、特定の情報を取得するために自分の組織に向けられたものか、それともランダムなものかを特定します。
+* 侵害されているシステムを特定する。
+* アクセスされているファイルを特定してそのファイルの機密度を判定する。
 
 OMS のセキュリティと監査ソリューションの **[Threat Intelligence]** (脅威インテリジェンス) の情報を、これらのタスクに活用できます。 この **[Threat Intelligence]** (脅威インテリジェンス) オプションにアクセスするには、次の手順に従います。
 
 1. **Microsoft Operations Management Suite** のメイン ダッシュボードで、**[セキュリティおよび監査]** タイルをクリックします。
-
+   
     ![[Security and Audit]](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig1.png)
-
 2. **[Security and Audit]** (セキュリティおよび監査) ダッシュボードの右側に、次のような **[Threat Intelligence]** (脅威インテリジェンス) オプションが表示されます。
-
+   
     ![Threat intel](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig2-ga.png)
 
 これら 3 つのタイルには、現在の脅威についての概要が表示されます。 **[Servers with outbound malicious traffic]** (悪意のある送信トラフィックを持つサーバー) では、監視しているコンピューター (ネットワークの内部または外部) の中に、インターネットに対して悪意のあるトラフィックを送信しているコンピューターがないかどうかを確認できます。 
@@ -77,14 +75,11 @@ OMS のセキュリティと監査ソリューションの **[Threat Intelligenc
 ![threat intel map](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig5.png)
 
 ## <a name="see-also"></a>関連項目
-
 このドキュメントでは、OMS のセキュリティと監査ソリューションの **[Threat Intelligence]** (脅威インテリジェンス) オプションを使用してセキュリティの警告に対応する方法について説明しました。 OMS セキュリティの詳細については、次の記事を参照してください。
 
-- [Operations Management Suite (OMS) overview (Operations Management Suite (OMS) の概要)](operations-management-suite-overview.md)
-- [Operations Management Suite のセキュリティと監査ソリューションの概要](oms-security-getting-started.md)
-- [Operations Management Suite のセキュリティと監査ソリューションでのリソースの監視](oms-security-monitoring-resources.md)
-
-
+* [Operations Management Suite (OMS) overview (Operations Management Suite (OMS) の概要)](operations-management-suite-overview.md)
+* [Operations Management Suite のセキュリティと監査ソリューションの概要](oms-security-getting-started.md)
+* [Operations Management Suite のセキュリティと監査ソリューションでのリソースの監視](oms-security-monitoring-resources.md)
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,37 +1,33 @@
-<properties
-   pageTitle="仮想マシン拡張機能でアプリケーションのデプロイを自動化する | Microsoft Azure"
-   description="Azure Virtual Machines DotNet Core チュートリアル"
-   services="virtual-machines-linux"
-   documentationCenter="virtual-machines"
-   authors="neilpeterson"
-   manager="timlt"
-   editor="tysonn"
-   tags="azure-service-management"/>
+---
+title: 仮想マシン拡張機能でアプリケーションのデプロイを自動化する | Microsoft Docs
+description: Azure Virtual Machines DotNet Core チュートリアル
+services: virtual-machines-linux
+documentationcenter: virtual-machines
+author: neilpeterson
+manager: timlt
+editor: tysonn
+tags: azure-service-management
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure"
-   ms.date="09/21/2016"
-   ms.author="nepeters"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 09/21/2016
+ms.author: nepeters
 
-
+---
 # <a name="application-deployment-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使ったアプリケーションのデプロイ
-
 すべての Azure インフラストラクチャの要件を特定し、デプロイ テンプレートに変換したら、実際のアプリケーションのデプロイに対処する必要があります。 ここでは、アプリケーションのデプロイは、実際のアプリケーション バイナリを Azure リソースにインストールすることを指します。 ミュージック ストア サンプルでは、.Net Core、NGINX、および Supervisor を各仮想マシンにインストールして構成する必要があります。 ミュージック ストアのバイナリを仮想マシンにインストールし、ミュージック ストア データベースを事前に作成する必要があります。
 
 このドキュメントでは、仮想マシン拡張機能で Azure 仮想マシンへのアプリケーションのデプロイと構成を自動化する方法について説明します。 すべての依存関係と固有の構成に焦点を当てます。 最善の結果を得るために、ソリューションのインスタンスを Azure サブスクリプションに事前にデプロイし、Azure Resource Manager テンプレートを手元に用意して取り組んでください。 完全なテンプレートは、こちら ( [Ubuntu のミュージック ストア デプロイ](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)) にあります。
 
 ## <a name="configuration-script"></a>構成スクリプト
-
 仮想マシン拡張機能は、仮想マシンに対して実行される特殊なプログラムで、構成を自動化します。 拡張機能は、ウイルス対策、ログの構成、Docker の構成など、特定のさまざまな目的に使うことができます。 カスタム スクリプト拡張機能を使うと、仮想マシンに対して任意のスクリプトを実行できます。 ミュージック ストア サンプルでは、カスタム スクリプト拡張機能によって、Ubuntu 仮想マシンが構成され、ミュージック ストア アプリケーションがインストールされます。
 
 Azure Resource Manager テンプレートで仮想マシン拡張機能を宣言する方法を説明する前に、実行されるスクリプトを確認します。 このスクリプトでは、ミュージック ストア アプリケーションをホストする Ubuntu 仮想マシンを構成します。 スクリプトを実行すると、必要なソフトウェアがすべてインストールされ、ソース管理からミュージック ストア アプリケーションがインストールされ、データベースが準備されます。 
 
 Linux で .Net Core アプリケーションをホストする方法について詳しくは、「 [Publish to a Linux Production Environment (Linux 運用環境への発行)](https://docs.asp.net/en/latest/publishing/linuxproduction.html)」をご覧ください。 
-
 
 ```none
 #!/bin/bash
@@ -74,7 +70,6 @@ sudo service supervisor start
 ```
 
 ## <a name="vm-script-extension"></a>VM スクリプト拡張機能
-
 VM 拡張機能をビルド時に仮想マシンに対して実行するには、拡張機能リソースを Azure Resource Manager テンプレートに含めます。 拡張機能を追加するには、Visual Studio のリソースの追加ウィザードを使うか、有効な JSON をテンプレートに挿入します。 スクリプト拡張機能リソースは仮想マシン リソース内に入れ子になっています。これは、次の例で確認できます。
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [VM スクリプト拡張機能](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L359)) をご覧ください。 
@@ -110,15 +105,12 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 }
 ```
 
-カスタム スクリプト拡張機能の使用について詳しくは、 [Resource Manager テンプレートでのカスタム スクリプト拡張機能](./virtual-machines-linux-extensions-customscript.md)に関する記事をご覧ください。
+カスタム スクリプト拡張機能の使用について詳しくは、 [Resource Manager テンプレートでのカスタム スクリプト拡張機能](virtual-machines-linux-extensions-customscript.md)に関する記事をご覧ください。
 
 ## <a name="next-step"></a>次のステップ
-
 <hr>
 
 [その他の Azure Resource Manager テンプレートを確認する](https://github.com/Azure/azure-quickstart-templates)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

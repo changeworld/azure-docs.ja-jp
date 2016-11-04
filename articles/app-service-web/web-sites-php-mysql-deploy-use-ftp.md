@@ -1,74 +1,63 @@
-<properties 
-    pageTitle="Create a PHP-MySQL web app in Azure App Service and deploy using FTP" 
-    description="A tutorial that demonstrates how to create a PHP web app that stores data in MySQL and use FTP deployment to Azure." 
-    services="app-service\web" 
-    documentationCenter="php" 
-    authors="rmcmurray" 
-    manager="erikre" 
-    editor=""/>
+---
+title: Create a PHP-MySQL web app in Azure App Service and deploy using FTP
+description: A tutorial that demonstrates how to create a PHP web app that stores data in MySQL and use FTP deployment to Azure.
+services: app-service\web
+documentationcenter: php
+author: rmcmurray
+manager: erikre
+editor: ''
 
-<tags 
-    ms.service="app-service-web" 
-    ms.workload="web" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="PHP" 
-    ms.topic="article" 
-    ms.date="11/01/2016" 
-    ms.author="robmcm"/>
+ms.service: app-service-web
+ms.workload: web
+ms.tgt_pltfrm: na
+ms.devlang: PHP
+ms.topic: article
+ms.date: 11/01/2016
+ms.author: robmcm
 
-
-
-#<a name="create-a-phpmysql-web-app-in-azure-app-service-and-deploy-using-ftp"></a>Create a PHP-MySQL web app in Azure App Service and deploy using FTP
-
+---
+# <a name="create-a-phpmysql-web-app-in-azure-app-service-and-deploy-using-ftp"></a>Create a PHP-MySQL web app in Azure App Service and deploy using FTP
 This tutorial shows you how to create a PHP-MySQL web app and how to deploy it using FTP. This tutorial assumes you have [PHP][install-php], [MySQL][install-mysql], a web server, and an FTP client installed on your computer. The instructions in this tutorial can be followed on any operating system, including Windows, Mac, and  Linux. Upon completing this guide, you will have a PHP/MySQL web app running in Azure.
- 
+
 You will learn:
 
 * How to create a web app and a MySQL database using the Azure Portal. Because PHP is enabled in Web Apps by default, nothing special is required to run your PHP code.
 * How to publish your application to Azure using FTP.
- 
+
 By following this tutorial, you will build a simple registration web app in PHP. The application will be hosted in a Web App. A screenshot of the completed application is below:
 
 ![Azure PHP Web Site][running-app]
 
->[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required, no commitments. 
+> [!NOTE]
+> If you want to get started with Azure App Service before signing up for an account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required, no commitments. 
+> 
+> 
 
-
-##<a name="create-a-web-app-and-set-up-ftp-publishing"></a>Create a web app and set up FTP publishing
-
+## <a name="create-a-web-app-and-set-up-ftp-publishing"></a>Create a web app and set up FTP publishing
 Follow these steps to create a web app and a MySQL database:
 
 1. Login to the [Azure Portal][management-portal].
 2. Click the **+ New** icon on the top left of the Azure Portal.
-
+   
     ![Create New Azure Web Site][new-website]
-
 3. In the search type **Web app + MySQL** and click on **Web app + MySQL**.
-
+   
     ![Custom Create a new Web Site][custom-create]
-
 4. Click **Create**. Enter a unique app service name, a valid name for the resource group and a new service plan.
-
+   
     ![Set resource group name][resource-group]
-
-
-6. Enter values for your new database, including agreeing to the legal terms.
-
+5. Enter values for your new database, including agreeing to the legal terms.
+   
     ![Create new MySQL database][new-mysql-db]
-    
-7. When the web app has been created, you will see the new app service blade.
-
-
-6. Click on **Settings** > **Deployment credentials**. 
-
+6. When the web app has been created, you will see the new app service blade.
+7. Click on **Settings** > **Deployment credentials**. 
+   
     ![Set deployment credentials][set-deployment-credentials]
-
-7. To enable FTP publishing, you must provide a user name and password. Save the credentials and make a note of the user name and password you create.
-
+8. To enable FTP publishing, you must provide a user name and password. Save the credentials and make a note of the user name and password you create.
+   
     ![Create publishing credentials][portal-ftp-username-password]
 
-##<a name="build-and-test-your-app-locally"></a>Build and test your app locally
-
+## <a name="build-and-test-your-app-locally"></a>Build and test your app locally
 The Registration application is a simple PHP application that allows you to register for an event by providing your name and email address. Information about previous registrants is displayed in a table. Registration information is stored in a MySQL database. The app consists of two files:
 
 * **index.php**: Displays a form for registration and a table containing registrant information.
@@ -77,13 +66,11 @@ The Registration application is a simple PHP application that allows you to regi
 To build and run the app locally, follow the steps below. Note that these steps assume you have PHP, MySQL, and a web server set up on your local machine, and that you have enabled the [PDO extension for MySQL][pdo-mysql].
 
 1. Create a MySQL database called `registration`. You can do this from the MySQL command prompt with this command:
-
+   
         mysql> create database registration;
-
 2. In your web server's root directory, create a folder called `registration` and create two files in it - one called `createtable.php` and one called `index.php`.
-
 3. Open the `createtable.php` file in a text editor or IDE and add the code below. This code will be used to create the `registration_tbl` table in the `registration` database.
-
+   
         <?php
         // DB connection info
         $host = "localhost";
@@ -106,14 +93,14 @@ To build and run the app locally, follow the steps below. Note that these steps 
         }
         echo "<h3>Table created.</h3>";
         ?>
-
-    > [AZURE.NOTE] 
-    > You will need to update the values for <code>$user</code> and <code>$pwd</code> with your local MySQL user name and password.
-
+   
+   > [!NOTE]
+   > You will need to update the values for <code>$user</code> and <code>$pwd</code> with your local MySQL user name and password.
+   > 
+   > 
 4. Open a web browser and browse to [http://localhost/registration/createtable.php][localhost-createtable]. This will create the `registration_tbl` table in the database.
-
 5. Open the **index.php** file in a text editor or IDE and add the basic HTML and CSS code for the page (the PHP code will be added in later steps).
-
+   
         <html>
         <head>
         <Title>Registration Form</Title>
@@ -140,13 +127,12 @@ To build and run the app locally, follow the steps below. Note that these steps 
               <input type="submit" name="submit" value="Submit" />
         </form>
         <?php
-
+   
         ?>
         </body>
         </html>
-
 6. Within the PHP tags, add PHP code for connecting to the database.
-
+   
         // DB connection info
         $host = "localhost";
         $user = "user name";
@@ -160,12 +146,13 @@ To build and run the app locally, follow the steps below. Note that these steps 
         catch(Exception $e){
             die(var_dump($e));
         }
-
-    > [AZURE.NOTE]
-    > Again, you will need to update the values for <code>$user</code> and <code>$pwd</code> with your local MySQL user name and password.
-
+   
+   > [!NOTE]
+   > Again, you will need to update the values for <code>$user</code> and <code>$pwd</code> with your local MySQL user name and password.
+   > 
+   > 
 7. Following the database connection code, add code for inserting registration information into the database.
-
+   
         if(!empty($_POST)) {
         try {
             $name = $_POST['name'];
@@ -185,9 +172,8 @@ To build and run the app locally, follow the steps below. Note that these steps 
         }
         echo "<h3>Your're registered!</h3>";
         }
-
 8. Finally, following the code above, add code for retrieving data from the database.
-
+   
         $sql_select = "SELECT * FROM registration_tbl";
         $stmt = $conn->query($sql_select);
         $registrants = $stmt->fetchAll(); 
@@ -209,42 +195,34 @@ To build and run the app locally, follow the steps below. Note that these steps 
 
 You can now browse to [http://localhost/registration/index.php][localhost-index] to test the app.
 
-##<a name="get-mysql-and-ftp-connection-information"></a>Get MySQL and FTP connection information
-
+## <a name="get-mysql-and-ftp-connection-information"></a>Get MySQL and FTP connection information
 To connect to the MySQL database that is running in Web Apps, your will need the connection information. To get MySQL connection information, follow these steps:
 
 1. From the app service web app blade click on the resource group link:
-
+   
     ![Select Resource Group][select-resourcegroup]
-
-1. From your resource group, click the database:
-
+2. From your resource group, click the database:
+   
     ![Select database][select-database]
-
-2. From the database summary, select **Settings** > **Properties**.
-
+3. From the database summary, select **Settings** > **Properties**.
+   
     ![Select properties][select-properties]
-    
-2. Make note of the values for `Database`, `Host`, `User Id`, and `Password`.
-
+4. Make note of the values for `Database`, `Host`, `User Id`, and `Password`.
+   
     ![Note properties][note-properties]
-
-3. From your web app, click the **Download publish profile** link at the bottom right corner of the page:
-
+5. From your web app, click the **Download publish profile** link at the bottom right corner of the page:
+   
     ![Download publish profile][download-publish-profile]
-
-4. Open the `.publishsettings` file in an XML editor. 
-
-3. Find the `<publishProfile >` element with `publishMethod="FTP"` that looks similar to this:
-
+6. Open the `.publishsettings` file in an XML editor. 
+7. Find the `<publishProfile >` element with `publishMethod="FTP"` that looks similar to this:
+   
         <publishProfile publishMethod="FTP" publishUrl="ftp://[mysite].azurewebsites.net/site/wwwroot" ftpPassiveMode="True" userName="[username]" userPWD="[password]" destinationAppUrl="http://[name].antdf0.antares-test.windows-int.net" 
             ...
         </publishProfile>
-    
+
 Make note of the `publishUrl`, `userName`, and `userPWD` attributes.
 
-##<a name="publish-your-app"></a>Publish your app
-
+## <a name="publish-your-app"></a>Publish your app
 After you have tested your app locally, you can publish it to your web app using FTP. However, you first need to update the database connection information in the application. Using the database connection information you obtained earlier (in the **Get MySQL and FTP connection information** section), update the following information in **both** the `createdatabase.php` and `index.php` files with the appropriate values:
 
     // DB connection info
@@ -256,19 +234,15 @@ After you have tested your app locally, you can publish it to your web app using
 Now you are ready to publish your app using FTP.
 
 1. Open your FTP client of choice.
-
 2. Enter the *host name portion* from the `publishUrl` attribute you noted above into your FTP client.
-
 3. Enter the `userName` and `userPWD` attributes you noted above unchanged into your FTP client.
-
 4. Establish a connection.
 
 After you have connected you will be able to upload and download files as needed. Be sure that you are uploading files to the root directory, which is `/site/wwwroot`.
 
 After uploading both `index.php` and `createtable.php`, browse to **http://[site name].azurewebsites.net/createtable.php** to create the MySQL table for the application, then browse to **http://[site name].azurewebsites.net/index.php** to begin using the application.
- 
-## <a name="next-steps"></a>Next steps
 
+## <a name="next-steps"></a>Next steps
 For more information, see the [PHP Developer Center](/develop/php/).
 
 [install-php]: http://www.php.net/manual/en/install.php
@@ -294,7 +268,7 @@ For more information, see the [PHP Developer Center](/develop/php/).
 [connection-string-info]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/connection_string_info.png
 [management-portal]: https://portal.azure.com
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
- 
+
 
 
 

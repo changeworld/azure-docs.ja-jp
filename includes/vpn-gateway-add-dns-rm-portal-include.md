@@ -4,7 +4,7 @@
 2. **[DNS サーバー]** ページの **[DNS サーバー]** で、**[カスタム DNS]** を選択します。
 3. **[プライマリ DNS サーバー]** フィールドで、名前解決に使用する DNS サーバー名の IP アドレスを入力します。
 4. ブレードの上部の **[保存]** をクリックして構成内容を保存します。
-
-	![カスタム DNS](./media/vpn-gateway-add-dns-rm-portal/customdns400.png)
+   
+    ![カスタム DNS](./media/vpn-gateway-add-dns-rm-portal/customdns400.png)
 
 <!---HONumber=AcomDC_0406_2016-->

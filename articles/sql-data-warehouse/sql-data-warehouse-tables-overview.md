@@ -1,34 +1,34 @@
-<properties
-   pageTitle="Overview of tables in SQL Data Warehouse | Microsoft Azure"
-   description="Getting started with Azure SQL Data Warehouse Tables."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="barbkess"
-   manager="jhubbard"
-   editor=""/>
+---
+title: Overview of tables in SQL Data Warehouse | Microsoft Docs
+description: Getting started with Azure SQL Data Warehouse Tables.
+services: sql-data-warehouse
+documentationcenter: NA
+author: barbkess
+manager: jhubbard
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="10/31/2016"
-   ms.author="barbkess;jrj"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 10/31/2016
+ms.author: barbkess;jrj
 
-
+---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>Overview of tables in SQL Data Warehouse
+> [!div class="op_single_selector"]
+> * [Overview][Overview]
+> * [Data Types][Data Types]
+> * [Distribute][Distribute]
+> * [Index][Index]
+> * [Partition][Partition]
+> * [Statistics][Statistics]
+> * [Temporary][Temporary]
+> 
+> 
 
-> [AZURE.SELECTOR]
-- [Overview][]
-- [Data Types][]
-- [Distribute][]
-- [Index][]
-- [Partition][]
-- [Statistics][]
-- [Temporary][]
-
-Getting started with creating tables in SQL Data Warehouse is simple.  The basic [CREATE TABLE][] syntax follows the common syntax you are most likely already familiar with from working with other databases.  To create a table, you simply need to name your table, name your columns and define data types for each column.  If you've create tables in other databases, this should look very familiar to you.
+Getting started with creating tables in SQL Data Warehouse is simple.  The basic [CREATE TABLE][CREATE TABLE] syntax follows the common syntax you are most likely already familiar with from working with other databases.  To create a table, you simply need to name your table, name your columns and define data types for each column.  If you've create tables in other databases, this should look very familiar to you.
 
 ```sql  
 CREATE TABLE Customers (FirstName VARCHAR(25), LastName VARCHAR(25))
@@ -43,45 +43,38 @@ RENAME OBJECT Customer TO CustomerOrig;
  ```
 
 ## <a name="distributed-tables"></a>Distributed tables
-
 A new fundamental attribute introduced by distributed systems like SQL Data Warehouse is the **distribution column**.  The distribution column is very much what it sounds like.  It is the column that determines how to distribute, or divide, your data behind the scenes.  When you create a table without specifying the distribution column, the table is automatically distributed using **round robin**.  While round robin tables can be sufficient in some scenarios, defining distribution columns can greatly reduce data movement during queries, thus optimizing performance.  See [Distributing a Table][Distribute] to learn more about how to select a distribution column.
 
 ## <a name="indexing-and-partitioning-tables"></a>Indexing and partitioning tables
-
 As you become more advanced in using SQL Data Warehouse and want to optimize performance, you'll want to learn more about Table Design.  To learn more, see the articles on [Table Data Types][Data Types], [Distributing a Table][Distribute], [Indexing a Table][Index] and  [Partitioning a Table][Partition].
 
 ## <a name="table-statistics"></a>Table statistics
-
-Statistics are an extremely important to getting the best performance out of your SQL Data Warehouse.  Since SQL Data Warehouse does not yet automatically create and update statistics for you, like you may have come to expect in Azure SQL Database, reading our article on [Statistics][] might be one of the most important articles you read to ensure that you get the best performance from your queries.
+Statistics are an extremely important to getting the best performance out of your SQL Data Warehouse.  Since SQL Data Warehouse does not yet automatically create and update statistics for you, like you may have come to expect in Azure SQL Database, reading our article on [Statistics][Statistics] might be one of the most important articles you read to ensure that you get the best performance from your queries.
 
 ## <a name="temporary-tables"></a>Temporary tables
-
 Temporary tables are tables which only exist for the duration of your logon and cannot be seen by other users.  Temporary tables can be a good way to prevent others from seeing temporary results and also reduce the need for cleanup.  Since temporary tables also utilize local storage, they can offer faster performance for some operations.  See the [Temporary Table][Temporary] articles for more details about temporary tables.
 
 ## <a name="external-tables"></a>External tables
-
-External tables, also known as Polybase tables, are tables which can be queried from SQL Data Warehouse, but point to data external from SQL Data Warehouse.  For example, you can create an external table which points to files on Azure Blob Storage.  For more details on how to create and query an external table, see [Load data with Polybase][].  
+External tables, also known as Polybase tables, are tables which can be queried from SQL Data Warehouse, but point to data external from SQL Data Warehouse.  For example, you can create an external table which points to files on Azure Blob Storage.  For more details on how to create and query an external table, see [Load data with Polybase][Load data with Polybase].  
 
 ## <a name="unsupported-table-features"></a>Unsupported table features
-
 While SQL Data Warehouse contains many of the same table features offered by other databases, there are some features which are not yet supported.  Below is a list of some of the table features which are not yet supported.
 
 | Unsupported features |
 | --- |
-|[Identity Property][] (see [Assigning Surrogate Key Workaround][])|
-|Primary key, Foreign keys, Unique and Check [Table Constraints][]|
-|[Unique Indexes][]|
-|[Computed Columns][]|
-|[Sparse Columns][]|
-|[User-Defined Types][]|
-|[Sequence][]|
-|[Triggers][]|
-|[Indexed Views][]|
-|[Synonyms][]|
+| [Identity Property][Identity Property] (see [Assigning Surrogate Key Workaround][Assigning Surrogate Key Workaround]) |
+| Primary key, Foreign keys, Unique and Check [Table Constraints][Table Constraints] |
+| [Unique Indexes][Unique Indexes] |
+| [Computed Columns][Computed Columns] |
+| [Sparse Columns][Sparse Columns] |
+| [User-Defined Types][User-Defined Types] |
+| [Sequence][Sequence] |
+| [Triggers][Triggers] |
+| [Indexed Views][Indexed Views] |
+| [Synonyms][Synonyms] |
 
 ## <a name="table-size-queries"></a>Table size queries
-
-One simple way to identify space and rows consumed by a table in each of the 60 distributions, is to use [DBCC PDW_SHOWSPACEUSED][].
+One simple way to identify space and rows consumed by a table in each of the 60 distributions, is to use [DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED].
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
@@ -202,7 +195,6 @@ FROM size
 ```
 
 ### <a name="table-space-summary"></a>Table space summary
-
 This query returns the rows and space by table.  It is a great query to see which tables are your largest tables and whether they are round robin or hash distributed.  For hash distributed tables it also shows the distribution column.  In most cases your largest tables should be hash distributed with a clustered columnstore index.
 
 ```sql
@@ -234,7 +226,6 @@ ORDER BY
 ```
 
 ### <a name="table-space-by-distribution-type"></a>Table space by distribution type
-
 ```sql
 SELECT 
      distribution_policy_name
@@ -249,7 +240,6 @@ GROUP BY distribution_policy_name
 ```
 
 ### <a name="table-space-by-index-type"></a>Table space by index type
-
 ```sql
 SELECT 
      index_type_desc
@@ -264,7 +254,6 @@ GROUP BY index_type_desc
 ```
 
 ### <a name="distribution-space-summary"></a>Distribution space summary
-
 ```sql
 SELECT 
     distribution_id
@@ -280,8 +269,7 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>Next steps
-
-To learn more, see the articles on [Table Data Types][Data Types], [Distributing a Table][Distribute], [Indexing a Table][Index],  [Partitioning a Table][Partition], [Maintaining Table Statistics][Statistics] and [Temporary Tables][Temporary].  For more about best practices, see [SQL Data Warehouse Best Practices][].
+To learn more, see the articles on [Table Data Types][Data Types], [Distributing a Table][Distribute], [Indexing a Table][Index],  [Partitioning a Table][Partition], [Maintaining Table Statistics][Statistics] and [Temporary Tables][Temporary].  For more about best practices, see [SQL Data Warehouse Best Practices][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 

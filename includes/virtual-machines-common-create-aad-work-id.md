@@ -1,12 +1,14 @@
 
 <br>
 
-> [AZURE.NOTE] 管理者からユーザー名とパスワードが提供されている場合は、既に職場または学校の ID を持っている可能性があります (*組織 ID* とも呼ばれます)。その場合、いつでも Azure アカウントの使用を開始して、アカウントが必要な Azure リソースにアクセスできます。これらのリソースを使用できない場合は、この記事をもう一度ご確認ください。詳細については、「[サインインで使用できるアカウント](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SignInAccounts)」、「[Azure サブスクリプションと Azure AD との関係](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir)」をご覧ください。
+> [!NOTE]
+> 管理者からユーザー名とパスワードが提供されている場合は、既に職場または学校の ID を持っている可能性があります (*組織 ID* とも呼ばれます)。その場合、いつでも Azure アカウントの使用を開始して、アカウントが必要な Azure リソースにアクセスできます。これらのリソースを使用できない場合は、この記事をもう一度ご確認ください。詳細については、「[サインインで使用できるアカウント](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SignInAccounts)」、「[Azure サブスクリプションと Azure AD との関係](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir)」をご覧ください。
+> 
+> 
 
 手順は簡単です。Azure クラシック ポータルで署名済み ID を見つけて、既定の Azure Active Directory ドメインを検出し、Azure 共同管理者として新しいユーザーを追加する必要があります。
 
 ## Azure クラシック ポータルで既定のディレクトリを見つける
-
 まず、個人の Microsoft アカウント ID で [Azure クラシック ポータル](https://manage.windowsazure.com)にログインします。ログインしたら、左側の青色のパネルを下にスクロールし、**[ACTIVE DIRECTORY]** をクリックします。
 
 ![Azure Active Directory](./media/virtual-machines-common-create-aad-work-id/azureactivedirectorywidget.png)
@@ -26,7 +28,6 @@
 ここでは、Azure アカウントが作成されると、onmicrosoft.com のサブドメインとして使用する個人 ID のハッシュ値 (文字列から生成される数字) である個人の既定ドメインが Azure Active Directory によって作成されたことが確認できるはずです。このドメインを使用して、新しいユーザーを追加することになります。
 
 ## 既定のドメインで新しいユーザーを作成する
-
 **[ユーザー]** をクリックし、自分の個人アカウントを探します。**[ソース]** 列を確認すると **Microsoft アカウント**であることがわかります。ユーザーを既定の onmicrosoft.com Azure Active Directory ドメインで作成します。
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultdirectoryuserslisting.png)
@@ -58,7 +59,6 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
 ![](./media/virtual-machines-common-create-aad-work-id/emailreceivedfromnewusercreation.png)
 
 ## サブスクリプションに Azure 共同管理者の権限を追加する
-
 今度は、新しいユーザーが管理ポータルにサインインできるように、サブスクリプションの共同管理者として新しいユーザーを追加する必要があります。そのためには、左下のパネルで [**設定**] をクリックします。
 
 ![](./media/virtual-machines-common-create-aad-work-id/thesettingswidget.png)
@@ -72,7 +72,6 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
 ![](./media/virtual-machines-common-create-aad-work-id/newuseraddedascoadministrator.png)
 
 ## 新しいユーザーとしてログインしてパスワードを変更する
-
 作成した新しいユーザーとしてログインします。
 
 ![](./media/virtual-machines-common-create-aad-work-id/signinginwithnewuser.png)
@@ -85,9 +84,7 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
 
 ![](./media/virtual-machines-common-create-aad-work-id/successtourdialog.png)
 
-
 ## 次のステップ
-
 新しい Azure Active Directory の ID で [Azure リソース グループ テンプレート](../articles/xplat-cli-azure-resource-manager.md)を使用できます。
 
     azure login

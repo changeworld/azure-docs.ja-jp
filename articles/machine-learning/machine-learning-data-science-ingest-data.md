@@ -1,26 +1,25 @@
-<properties 
-	pageTitle="分析用のストレージ環境にデータを読み込む | Microsoft Azure" 
-	description="Azure Blob ストレージとの間のデータの移動" 
-	services="machine-learning,storage" 
-	documentationCenter="" 
-	authors="bradsev" 
-	manager="jhubbard" 
-	editor="cgronlun" />
+---
+title: 分析用のストレージ環境にデータを読み込む | Microsoft Docs
+description: Azure Blob ストレージとの間のデータの移動
+services: machine-learning,storage
+documentationcenter: ''
+author: bradsev
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/19/2016" 
-	ms.author="bradsev" />
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/19/2016
+ms.author: bradsev
 
+---
 # 分析用のストレージ環境にデータを読み込む
-
 Team Data Science Process では、さまざまなストレージ環境に取り込まれるデータまたは読み込まれるデータを、プロセスの各段階において最も適切な方法で処理または分析する必要があります。処理に通常使用されるデータの取り込み先として、Azure Blob Storage、SQL Azure データベース、Azure VM 上の SQL Server、HDInsight (Hadoop)、Azure Machine Learning などがあります。
 
-[AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
+[!INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
 この**メニュー**は、データを保存および処理するこれらのターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
 

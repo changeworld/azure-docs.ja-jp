@@ -1,6 +1,6 @@
 <a name="tellmecs"></a>
-## Cloud Services の概要
 
+## Cloud Services の概要
 Cloud Services は、サービスとしてのプラットフォーム (PaaS) の 1 つの例です。このテクノロジは、[App Service](../articles/app-service-web/app-service-web-overview.md) と同様に、スケーラブルで、信頼性が高く、低運用コストの方法でアプリケーションをサポートするように設計されています。App Service と同様に、Cloud Services も VM 上でホストされています。しかし、VM に対してより多くのコントロールが可能です。独自のソフトウェアを Cloud Services の VM にインストールして、リモートで操作できます。
 
 ![cs\_diagram](./media/cloud-services-choose-me-content/diagram.png)

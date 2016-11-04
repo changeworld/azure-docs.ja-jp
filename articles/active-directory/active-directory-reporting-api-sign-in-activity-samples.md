@@ -1,42 +1,37 @@
-<properties
-    pageTitle="Azure Active Directory サインイン アクティビティ レポート API のサンプル | Microsoft Azure"
-    description="Azure Active Directory Reporting API の概要について説明します。"
-    services="active-directory"
-    documentationCenter=""
-    authors="dhanyahk"
-    manager="femila"
-    editor=""/>
+---
+title: Azure Active Directory サインイン アクティビティ レポート API のサンプル | Microsoft Docs
+description: Azure Active Directory Reporting API の概要について説明します。
+services: active-directory
+documentationcenter: ''
+author: dhanyahk
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="identity"
-    ms.date="09/25/2016"
-    ms.author="dhanyahk;markvi"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/25/2016
+ms.author: dhanyahk;markvi
 
-
+---
 # <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Azure Active Directory サインイン アクティビティ レポート API のサンプル
-
 このトピックは Azure Active Directory Reporting API に関するトピックのコレクションの一部です。  
 Azure AD レポートは、コードまたは関連ツールを使用してサインイン アクティビティ データにアクセスできるようにする API を提供します。  
 このトピックでは、 **サインイン アクティビティ API**のサンプル コードを提供します。
 
 参照:
 
-- [監査ログ](active-directory-reporting-azure-portal.md#audit-logs)に関する記事
-- [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md) 」。
+* [監査ログ](active-directory-reporting-azure-portal.md#audit-logs)に関する記事
+* [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md) 」。
 
 質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
-
 
 ## <a name="prerequisites"></a>前提条件
 このトピックに掲載されているサンプルを使用するには、事前に、 [Azure AD レポート API にアクセスするための前提条件](active-directory-reporting-api-prerequisites.md)を完了する必要があります。  
 
-
-##<a name="powershell-script"></a>PowerShell スクリプト
-
+## <a name="powershell-script"></a>PowerShell スクリプト
     # This script will require the Web Application and permissions setup in Azure Active Directory
     $ClientID       = "<clientId>"             # Should be a ~35 character string insert your info here
     $ClientSecret   = "<clientSecret>"         # Should be a ~44 character string insert your info here
@@ -58,9 +53,9 @@ Azure AD レポートは、コードまたは関連ツールを使用してサ�
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
 
     $url = "https://graph.windows.net/$tenantdomain/activities/signinEvents?api-version=beta&`$filter=signinDateTime ge $7daysago"
-    
+
     $i=0
-    
+
     Do{
         Write-Output "Fetching data using Uri: $url"
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
@@ -72,7 +67,7 @@ Azure AD レポートは、コードまたは関連ツールを使用してサ�
     } while($url -ne $null)
 
     } else {
-    
+
         Write-Host "ERROR: No Access Token"
     }
 
@@ -84,16 +79,10 @@ Azure AD レポートは、コードまたは関連ツールを使用してサ�
 
 スクリプトからは、サインイン レポートの出力が JSON 形式で返されます。 また、同じ出力内容を使って `SigninActivities.json` ファイルも作成されます。 他のレポートからデータを返すようにスクリプトを変更してテストしたり、必要のない出力形式をコメント化したりできます。
 
-
-
 ## <a name="next-steps"></a>次のステップ
-
-- このトピックに掲載されているサンプルをカスタマイズしますか。 [Azure Active Directory サインイン アクティビティ レポート API リファレンス](active-directory-reporting-api-sign-in-activity-reference.md)を確認してください。 
-
-- Azure Active Directory Reporting API の使用に関する網羅的な概要を参照するには、 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)を参照してください。
-
-- Azure Active Directory のレポート作成に関する詳細については、「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。  
-
+* このトピックに掲載されているサンプルをカスタマイズしますか。 [Azure Active Directory サインイン アクティビティ レポート API リファレンス](active-directory-reporting-api-sign-in-activity-reference.md)を確認してください。 
+* Azure Active Directory Reporting API の使用に関する網羅的な概要を参照するには、 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)を参照してください。
+* Azure Active Directory のレポート作成に関する詳細については、「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。  
 
 <!--HONumber=Oct16_HO2-->
 

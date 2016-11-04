@@ -1,23 +1,22 @@
-<properties
-	pageTitle="Resource Manager テンプレートでのメトリック アラートの作成 | Microsoft Azure"
-	description="Resource Manager テンプレートを使用してメトリック アラートを作成し、電子メールまたは webhook で通知を受信する方法について説明します。"
-	authors="johnkemnetz"
-	manager="rboucher"
-	editor=""
-	services="monitoring-and-diagnostics"
-	documentationCenter="monitoring-and-diagnostics"/>
+---
+title: Resource Manager テンプレートでのメトリック アラートの作成 | Microsoft Docs
+description: Resource Manager テンプレートを使用してメトリック アラートを作成し、電子メールまたは webhook で通知を受信する方法について説明します。
+author: johnkemnetz
+manager: rboucher
+editor: ''
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
 
-<tags
-	ms.service="monitoring-and-diagnostics"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/26/2016"
-	ms.author="johnkem"/>
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: johnkem
 
+---
 # Resource Manager テンプレートでのメトリック アラートの作成
-
 この記事では、[Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使用して Azure メトリック アラートを構成する方法について説明します。これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。
 
 基本的な手順は次のとおりです。
@@ -28,7 +27,6 @@
 ここでは、Resource Manager テンプレートを作成して 1 つのアラートを作成する方法を説明してから、他のリソースを作成しながらアラートを作成する方法を説明します。
 
 ## メトリック アラートの Resource Manager テンプレート
-
 Resource Manager テンプレートを使用してアラートを作成するには、`Microsoft.Insights/alertRules` 型のリソースを作成し、関連するすべてのプロパティを入力します。アラート ルールを作成するテンプレートを以下に示します。
 
 ```json
@@ -179,7 +177,6 @@ Resource Manager テンプレートを使用してアラートを作成するに
 アラート ルールのスキーマとプロパティについては、[こちらをご覧ください](https://msdn.microsoft.com/library/azure/dn933805.aspx)。
 
 ## アラートが設定されたリソースの Resource Manager テンプレート
-
 Resource Manager テンプレートのアラートは、多くの場合、リソースを作成しながらアラートを作成するときに役に立ちます。たとえば、仮想マシンをデプロイするたびに "CPU % > 80" ルールを設定する必要があるとします。これを行うには、VM テンプレートのリソース配列にリソースとしてアラート ルールを追加し、`dependsOn` プロパティを使用して依存関係を VM リソース ID に追加します。次の例は、Windows VM を作成し、CPU 使用率が 80% を超えたときにサブスクリプション管理者に通知するアラートを追加しています。
 
 ```json
@@ -400,7 +397,7 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 ```
 
 ## 次のステップ
-- [アラートの詳細を確認します](./insights-receive-alert-notifications.md)
-- Resource Manager テンプレートに[診断の設定を追加](./monitoring-enable-diagnostic-logs-using-template.md)します
+* [アラートの詳細を確認します](insights-receive-alert-notifications.md)
+* Resource Manager テンプレートに[診断の設定を追加](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md)します
 
 <!---HONumber=AcomDC_0928_2016-->

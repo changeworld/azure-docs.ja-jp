@@ -1,56 +1,64 @@
-<properties
-   pageTitle="Azure Security Center での Transparent Data Encryption の有効化 | Microsoft Azure"
-   description="このドキュメントでは、";Transparent Data Encryption を有効にする"; という Azure Security Center の推奨事項を実装する方法について説明します。"
-   services="security-center"
-   documentationCenter="na"
-   authors="TerryLanfear"
-   manager="MBaldwin"
-   editor=""/>
+---
+title: Azure Security Center での Transparent Data Encryption の有効化 | Microsoft Docs
+description: このドキュメントでは、
+;transparent: ''
+data: ''
+encryption: ''
+を有効にする";: ''
+という: ''
+azure: ''
+security: ''
+center: ''
+の推奨事項を実装する方法について説明します。": ''
+services: security-center
+documentationcenter: na
+author: TerryLanfear
+manager: MBaldwin
+editor: ''
 
-<tags
-   ms.service="security-center"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/29/2016"
-   ms.author="terrylan"/>
+ms.service: security-center
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/29/2016
+ms.author: terrylan
 
+---
 # Azure Security Center での Transparent Data Encryption の有効化
-
 Azure Security Center では、Transparent Data Encryption (TDE) がまだ有効になっていない場合に、SQL Database で TDE を有効にすることを勧めます。TDE によってデータが保護されます。データベース、関連するバックアップ、保存されているトランザクション ログ ファイルを暗号化することで、コンプライアンス要件を満たすことができます。アプリケーションに変更を加える必要はありません。詳細については、「[Azure SQL Database での Transparent Data Encryption](https://msdn.microsoft.com/library/dn948096)」をご覧ください。
 
 この推奨事項は Azure SQL サービスにのみ適用されます。仮想マシンで実行されている SQL は含まれません。
 
-> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+> [!NOTE]
+> このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+> 
+> 
 
 ## 推奨事項の実装
-
 1. **[推奨事項]** ブレードで、**[Transparent Data Encryption を有効にする]** を選択します。![Transparent Data Encryption の有効化][1]
-
 2. **[SQL データベースで Transparent Data Encryption を有効にする]** ブレードが開きます。TDE を有効にする SQL Database を選択します。![TDE を有効にする SQL DB の選択][2]
 3. **[Transparent Data Encryption]** ブレードで、[データ暗号化] の **[オン]** を選択し、ブレードの上部のリボンにある **[保存]** をクリックします。![TDE の有効化][3]
-
-  選択した SQL Database で TDE が有効になると、**[暗号化の状態]** が **[Encrypted (暗号化済み)]** に変わります。
-
-  ![暗号化の状態][4]
+   
+   選択した SQL Database で TDE が有効になると、**[暗号化の状態]** が **[Encrypted (暗号化済み)]** に変わります。
+   
+   ![暗号化の状態][4]
 
 ## 関連項目
-
 この記事では、"Transparent Data Encryption を有効にする" という Security Center の推奨事項を実装する方法について説明しました。 SQL TDE の詳細については、次の記事をご覧ください。
 
-- [Azure SQL Database での Transparent Data Encryption](https://msdn.microsoft.com/library/dn948096)
-- [Transparent Data Encryption (TDE) の概要](../sql-data-warehouse/sql-data-warehouse-encryption-tde.md)
+* [Azure SQL Database での Transparent Data Encryption](https://msdn.microsoft.com/library/dn948096)
+* [Transparent Data Encryption (TDE) の概要](../sql-data-warehouse/sql-data-warehouse-encryption-tde.md)
 
 セキュリティ センターの詳細については、次を参照してください。
 
-- [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-- [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-- [Azure Security Center でのセキュリティ正常性の監視](security-center-monitoring.md) -- Azure リソースの正常性を監視する方法について説明しています。
-- [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) - セキュリティの警告の管理と対応の方法について説明しています。
-- [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- [Azure Security Center に関する FAQ](security-center-faq.md) -- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
+* [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+* [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
+* [Azure Security Center でのセキュリティ正常性の監視](security-center-monitoring.md) -- Azure リソースの正常性を監視する方法について説明しています。
+* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) - セキュリティの警告の管理と対応の方法について説明しています。
+* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+* [Azure Security Center に関する FAQ](security-center-faq.md) -- このサービスの使用に関してよく寄せられる質問が記載されています。
+* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
 [1]: ./media/security-center-enable-tde-on-sql-databases/enable-tde.png

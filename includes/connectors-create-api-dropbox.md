@@ -1,5 +1,5 @@
 ### 前提条件
-- [Dropbox](https://www.Dropbox.com/) アカウント 
+* [Dropbox](https://www.Dropbox.com/) アカウント 
 
 ロジック アプリで Dropbox アカウントを使用するには、Dropbox アカウントに接続するロジック アプリを承認する必要があります。幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
@@ -10,3 +10,4 @@
 3. Dropbox のユーザー名とパスワードを入力して、ロジック アプリを承認します。 ![Dropbox 手順 3](./media/connectors-create-api-dropbox/dropbox-3.png)   
 4. Dropbox アカウントを使用するロジック アプリを承認します。 ![Dropbox 手順 4](./media/connectors-create-api-dropbox/dropbox-4.png)
 5. 接続が作成され、ロジック アプリで他の手順を実行できるようになります。 ![Dropbox 手順 5](./media/connectors-create-api-dropbox/dropbox-5.png)   
+

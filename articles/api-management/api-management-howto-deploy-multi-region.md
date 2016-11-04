@@ -1,36 +1,39 @@
-<properties
-	pageTitle="複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法"
-	description="複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法について説明します。" 
-	services="api-management"
-	documentationCenter=""
-	authors="steved0x"
-	manager="erikre"
-	editor=""/>
+---
+title: 複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
+description: 複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法について説明します。
+services: api-management
+documentationcenter: ''
+author: steved0x
+manager: erikre
+editor: ''
 
-<tags
-	ms.service="api-management"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/09/2016"
-	ms.author="sdanie"/>
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/09/2016
+ms.author: sdanie
 
+---
 # 複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
-
 API Management では複数リージョンのデプロイメントがサポートされており、API パブリッシャーは 1 つの API Management サービスを任意の数の Azure リージョンに分散できます。これにより、地理的に分散した API コンシューマーによって認識される要求待ち時間が短くなり、1 つのリージョンがオフラインになった場合でもサービスの可用性を向上できます。
 
-API Management サービスが最初に作成されたとき、サービスには 1 つの[ユニット][]のみが含まれ、1 つの Azure リージョンに配置されます。このリージョンがプライマリ リージョンに指定されます。リージョンは Azure クラシック ポータルで簡単に追加できます。各リージョンには API Management のゲートウェイ サーバーがデプロイされており、呼び出しのトラフィックは最も近いゲートウェイにルーティングされます。リージョンがオフラインになった場合、トラフィックは自動的に次に最も近いゲートウェイにリダイレクトされます。
+API Management サービスが最初に作成されたとき、サービスには 1 つの[ユニット][ユニット]のみが含まれ、1 つの Azure リージョンに配置されます。このリージョンがプライマリ リージョンに指定されます。リージョンは Azure クラシック ポータルで簡単に追加できます。各リージョンには API Management のゲートウェイ サーバーがデプロイされており、呼び出しのトラフィックは最も近いゲートウェイにルーティングされます。リージョンがオフラインになった場合、トラフィックは自動的に次に最も近いゲートウェイにリダイレクトされます。
 
-> [AZURE.IMPORTANT] 複数リージョンのデプロイメントは、**[Premium][]** レベルでのみ提供されます。
+> [!IMPORTANT]
+> 複数リージョンのデプロイメントは、**[Premium][Premium]** レベルでのみ提供されます。
+> 
+> 
 
 ## <a name="add-region"> </a>新しいリージョンに API Management サービス インスタンスをデプロイする
-
 最初に、ご利用の API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
->まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
+> まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][Azure API Management の使用]」チュートリアルの「[API Management インスタンスの作成][API Management インスタンスの作成]」を参照してください。
+> 
+> 
 
 API Management サービス インスタンスの Azure クラシック ポータルで **[スケール]** タブに移動します。
 
@@ -47,7 +50,6 @@ API Management サービス インスタンスの Azure クラシック ポー�
 必要なリージョンとユニット数を構成したら、**[保存]** をクリックします。
 
 ## <a name="remove-region"> </a>リージョンから API Management サービス インスタンスを削除する
-
 リージョンから API Management サービス インスタンスを削除するには、API Management サービス インスタンスの Azure クラシック ポータルで **[スケール]** タブに移動します。
 
 ![[スケール] タブ][api-management-scale-service]
@@ -57,7 +59,6 @@ API Management サービス インスタンスの Azure クラシック ポー�
 ![リージョンの削除][api-management-remove-region]
 
 目的のリージョンが削除されたら、**[保存]** をクリックします。
-
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
 

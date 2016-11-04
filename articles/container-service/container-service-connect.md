@@ -1,34 +1,33 @@
-<properties
-   pageTitle="Azure コンテナー サービス クラスターに接続する | Microsoft Azure"
-   description="SSH トンネルを利用して Azure コンテナー サービス クラスターに接続します。"
-   services="container-service"
-   documentationCenter=""
-   authors="rgardler"
-   manager="timlt"
-   editor=""
-   tags="acs, azure-container-service"
-   keywords="Docker, コンテナー, マクロサービス, DC/OS, Azure"/>
+---
+title: Azure コンテナー サービス クラスターに接続する | Microsoft Docs
+description: SSH トンネルを利用して Azure コンテナー サービス クラスターに接続します。
+services: container-service
+documentationcenter: ''
+author: rgardler
+manager: timlt
+editor: ''
+tags: acs, azure-container-service
+keywords: Docker, コンテナー, マクロサービス, DC/OS, Azure
 
-<tags
-   ms.service="container-service"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/13/2016"
-   ms.author="rogardle"/>
+ms.service: container-service
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/13/2016
+ms.author: rogardle
 
-
+---
 # Azure コンテナー サービス クラスターに接続する
-
 Azure コンテナー サービスによってデプロイされている DC/OS クラスターと Docker Swarm クラスターは、REST エンドポイントを公開しています。ただし、これらのエンドポイントは外部には開放されていません。これらのエンドポイントを扱うためには、Secure Shell (SSH) トンネルを作成する必要があります。SSH トンネルが確立されると、クラスター エンドポイントに対してコマンドを実行し、独自のシステムでブラウザー経由でクラスター UI を表示できます。このドキュメントでは、Linux、OS X、Windows から SSH トンネルを作成する手順を紹介します。
 
->[AZURE.NOTE] SSH セッションは、クラスター管理システムとの間で作成することができます。ただし、これは推奨されません。管理システムで直接作業すると、構成を意図せず変更してしまうおそれがあります。
+> [!NOTE]
+> SSH セッションは、クラスター管理システムとの間で作成することができます。ただし、これは推奨されません。管理システムで直接作業すると、構成を意図せず変更してしまうおそれがあります。
+> 
+> 
 
 ## Linux または OS X での SSH トンネルの作成
-
 Linux または OS X で SSH トンネルを作成するにはまず、負荷分散されたマスターのパブリック DNS 名を特定する必要があります。そのためには、リソース グループを展開して各リソースを表示します。マスターのパブリック IP アドレスを見つけ、選択します。パブリック IP アドレスに関する情報を含むブレードが開きます。このブレードに DNS 名が表示されています。後で使用するためにこの名前を保存します。 <br />
-
 
 ![Public DNS name](media/pubdns.png)
 
@@ -40,9 +39,10 @@ Linux または OS X で SSH トンネルを作成するにはまず、負荷分
 ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
 ```
 > SSH 接続ポートは、標準の 22 ではなく 2200 です。
+> 
+> 
 
 ## DC/OS トンネル
-
 DC/OS 関連のエンドポイントへのトンネルを開くには、次のようなコマンドを実行します。
 
 ```bash
@@ -51,14 +51,13 @@ sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.az
 
 これで DC/OS 関連のエンドポイントに次の場所でアクセスできます。
 
-- DC/OS: `http://localhost/`
-- Marathon: `http://localhost/marathon`
-- Mesos: `http://localhost/mesos`
+* DC/OS: `http://localhost/`
+* Marathon: `http://localhost/marathon`
+* Mesos: `http://localhost/mesos`
 
 同様に、各アプリケーションの REST API にはこのトンネルを経由して到達できます。
 
 ## Swarm トンネル
-
 Swarm エンドポイントへのトンネルを開くには、次のようなコマンドを実行します。
 
 ```bash
@@ -72,7 +71,6 @@ export DOCKER_HOST=:2375
 ```
 
 ## Windows の SSH トンネルの作成
-
 Windows では、さまざまな方法で SSH トンネルを作成できます。このドキュメントでは、PuTTY を使った方法について説明します。
 
 Windows システムに PuTTY をダウンロードし、実行します。
@@ -86,12 +84,16 @@ Windows システムに PuTTY をダウンロードし、実行します。
 ![PuTTY configuration 2](media/putty2.png)
 
 **[Tunnels (トンネル)]** を選択し、次のように転送ポートを構成します。
-- **[接続元ポート]** には、DC/OS の場合は 80、Swarm の場合は 2375 を指定します。
-- **[ターゲット]** には、DC/OS の場合は localhost:80、Swarm の場合は localhost:2375 を指定します。
+
+* **[接続元ポート]** には、DC/OS の場合は 80、Swarm の場合は 2375 を指定します。
+* **[ターゲット]** には、DC/OS の場合は localhost:80、Swarm の場合は localhost:2375 を指定します。
 
 次の例は DC/OS で構成されていますが、Docker Swarm でも同様です。
 
->[AZURE.NOTE] このトンネルの作成時にはポート 80 を使用しないでください。
+> [!NOTE]
+> このトンネルの作成時にはポート 80 を使用しないでください。
+> 
+> 
 
 ![PuTTY configuration 3](media/putty3.png)
 
@@ -101,17 +103,16 @@ Windows システムに PuTTY をダウンロードし、実行します。
 
 DC/OS のトンネルを構成したら、関連するエンドポイントに次のアドレスでアクセスできます。
 
-- DC/OS: `http://localhost/`
-- Marathon: `http://localhost/marathon`
-- Mesos: `http://localhost/mesos`
+* DC/OS: `http://localhost/`
+* Marathon: `http://localhost/marathon`
+* Mesos: `http://localhost/mesos`
 
 Docker Swarm のトンネルを構成したら、Docker CLI から Swarm クラスターにアクセスできます。最初に `DOCKER_HOST` という名前の Windows 環境変数を値 ` :2375` で構成する必要があります。
 
 ## 次のステップ
-
 コンテナーをデプロイし、DC/OS または Swarm で管理します。
 
-- [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
-- [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
+* [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
+* [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
 
 <!---HONumber=AcomDC_0914_2016-->

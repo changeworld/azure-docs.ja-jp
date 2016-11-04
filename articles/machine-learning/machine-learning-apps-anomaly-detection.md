@@ -1,35 +1,29 @@
-<properties 
-    pageTitle="Machine Learning アプリケーション: 異常検出サービス | Microsoft Azure" 
-    description="異常検出 API は、Microsoft Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。" 
-    services="machine-learning" 
-    documentationCenter="" 
-    authors="alokkirpal" 
-    manager="jhubbard"
-    editor="cgronlun" /> 
+---
+title: 'Machine Learning アプリケーション: 異常検出サービス | Microsoft Docs'
+description: 異常検出 API は、Microsoft Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。
+services: machine-learning
+documentationcenter: ''
+author: alokkirpal
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-    ms.service="machine-learning" 
-    ms.devlang="na" 
-    ms.topic="reference" 
-    ms.tgt_pltfrm="na" 
-    ms.workload="multiple" 
-    ms.date="10/11/2016" 
-    ms.author="alokkirpal"/>
+ms.service: machine-learning
+ms.devlang: na
+ms.topic: reference
+ms.tgt_pltfrm: na
+ms.workload: multiple
+ms.date: 10/11/2016
+ms.author: alokkirpal
 
-
-
-# <a name="machine-learning-anomaly-detection-service#"></a>Machine Learning 異常検出サービス#
-
-##<a name="overview"></a>概要
-
+---
+# <a name="machine-learning-anomaly-detection-service#"></a>Machine Learning 異常検出サービス
+## <a name="overview"></a>概要
 [異常検出 API](https://datamarket.azure.com/dataset/aml_labs/anomalydetection) は、Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。 
 
 この API で時系列データから検出できる異常パターンのタイプは次のとおりです。
 
 * **正と負の値の傾向**: たとえば、コンピューティングのメモリ使用量を監視する場合、上昇傾向が関心の対象となります。メモリ使用量の上昇はメモリ リークの兆候であるためです。
-
 * **値のダイナミック レンジの変化**: たとえば、サービスによってスローされる例外を監視する場合、値のダイナミック レンジの変化は、クラウド サービスの正常性が不安定になっていることを示す可能性があります。
-
 * **スパイクと DIP**: たとえば、サービスへのログインの失敗の数や、電子商取引サイトのチェックアウトの数を監視している場合、スパイクや DIP は異常な動作を示している可能性があります。
 
 こうした Machine Learning を使用した検出は、時間の経過に伴う値の変化を追跡し、異常が記録されたときの値の継続的な変化を報告します。 これらはアドホックなしきい値の調整を必要とせず、スコアを使用して誤検知率を制御できます。 異常検出 API は、一定時間 KPI を追跡することによるサービスの監視、各種メトリック (検索回数、クリック数など) に基づく使用状況の監視、各種カウンター (メモリ、CPU、ファイル読み取りなど) を一定時間追跡することによるパフォーマンスの監視など、さまざまなシナリオで役に立ちます。
@@ -37,35 +31,33 @@
 異常検出に関して、すぐに使い始めることのできる便利なツールが付属しています。 
 
 * たとえば目的のデータに関して異常検出 API から得られた結果は、 [Web アプリケーション](http://anomalydetection-aml.azurewebsites.net/) を使用して評価し、視覚化することができます。 
-
 * また [サンプル コード](http://adresultparser.codeplex.com/) では、C# プログラムから API にアクセスして結果を解析する方法が紹介されています。
 
->[AZURE.NOTE]
->[この API](https://datamarket.azure.com/dataset/aml_labs/anomalydetection) を利用した **IT Anomaly Insights ソリューション**をお試しください
->
->このエンド ツー エンド ソリューションを Azure サブスクリプションに展開するには、<a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**ここから始めてください >**</a>
+> [!NOTE]
+> [この API](https://datamarket.azure.com/dataset/aml_labs/anomalydetection) を利用した **IT Anomaly Insights ソリューション**をお試しください
+> 
+> このエンド ツー エンド ソリューションを Azure サブスクリプションに展開するには、<a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**ここから始めてください >**</a>
+> 
+> 
 
-
-##<a name="api-definition"></a>API の定義
-
+## <a name="api-definition"></a>API の定義
 サービスは、REST ベースの API を HTTPS 経由で提供しますが、これは Web アプリケーションやモバイル アプリケーション、R、Python、Excel などを含むさまざまな方法で使用できます。このサービスに対する時系列データを REST API 呼び出しによって送信することができ、前述の 3 つの異常の種類の組み合わせを実行します。 サービスは Azure Machine Learning プラットフォーム上で動作し、ビジネス ニーズに合わせてサイズをシームレスに調整し、SLA を提供しています。
 
-###<a name="headers"></a>ヘッダー
+### <a name="headers"></a>ヘッダー
 要求には次のような正しいヘッダーを必ず追加します。
 
     Authorization: Basic <creds>
     Accept: application/json
-               
+
     Where <creds> = ConvertToBase64(“AccountKey:” + yourActualAccountKey);  
 
 アカウントのアカウント キーは [Azure データ マーケット](https://datamarket.azure.com/account/keys)で確認できます。 
 
-###<a name="score-api"></a>スコア API
-
+### <a name="score-api"></a>スコア API
 スコア API は、季節に依存しない時系列データに対する異常検出に使用します。 この API は、データに対してさまざまな異常検出機能を実行し、その異常スコアを返します。 以下の図は、スコア API で検出できる異常の例です。 この時系列には、2 つの明確なレベルの変化と 3 つのスパイクがあります。 赤い点はレベルの変化が検出された時を示し、黒い点は検出されたスパイクを示しています。
 
 ![スコア API][1]
-    
+
 **URL**
 
     https://api.datamarket.azure.com/data.ashx/aml_labs/anomalydetection/v2/Score 
@@ -103,8 +95,7 @@
       }"
     }
 
-###<a name="scorewithseasonality-api"></a>ScoreWithSeasonality API
-
+### <a name="scorewithseasonality-api"></a>ScoreWithSeasonality API
 ScoreWithSeasonality API は、季節的なパターンを含んだ時系列データの異常検出に使用します。 この API は、季節的なパターンからの逸脱を検出する目的で利用できます。  
 
 次の図は、季節的な時系列データから検出された異常の例です。 この時系列データには、1 つのスパイク (1 つ目の黒い点) と 2 つのディップ (2 つ目の黒い点と一番端にある黒い点)、1 つのレベルの変化 (赤い点) があります。 時系列の中央にあるディップとレベルの変化はどちらも、時系列から季節的な要因を取り除いた後でしか識別できないことに注意してください。
@@ -155,8 +146,7 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
         }"
     }
 
-###<a name="detectors"></a>検出機能
-
+### <a name="detectors"></a>検出機能
 異常検出 API がサポートしている検出機能 (ディテクター) は大きく 3 つのカテゴリに分けられます。 検出機能ごとの具体的な入力パラメーターと出力について詳しくは、次の表を参照してください。
 
 |検出機能のカテゴリ|検出機能|Description|入力パラメーター|出力
@@ -168,27 +158,26 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 |レベル変化検出機能|一方向レベル変化検出機能|設定されている感度に従って、上向きのレベルの変化を検出します。|*upleveldetector.sensitivity:* 検出機能スコアのしきい値 (既定値: 3.25、妥当な範囲は 3.25 ～ 5、値が大きいほど感度が低下)|PScore: 上向きのレベルの変化に関する異常スコアを表す浮動小数点数|
 ||双方向レベル変化検出機能|設定されている感度に従って、上向きと下向きの両方のレベルの変化を検出します。|*bileveldetector.sensitivity:* 検出機能スコアのしきい値 (既定値: 3.25、妥当な範囲は 3.25 ～ 5、値が大きいほど感度が低下)|RPScore: 上向きと下向きのレベルの変化に関する異常スコアを表す浮動小数点数
 
-###<a name="parameters"></a>パラメーター
-
+### <a name="parameters"></a>パラメーター
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
 
-|入力パラメーター|Description|既定の設定|型|有効範囲|推奨範囲|
-|---|---|---|---|---|---|
-|preprocess.aggregationInterval|入力時系列の集計間隔 (秒単位)|0 (集計は実行されません)|integer|集計をスキップする場合は 0、それ以外の場合は 0 より大きい値|5 分 ～ 1 日 (時系列に依存)
-|preprocess.aggregationFunc|指定の AggregationInterval でデータを集計するための関数|mean|enumerated|mean、sum、length|該当なし|
-|preprocess.replaceMissing|欠損データの補完に使用する値|lkv (last known value)|enumerated|zero、lkv、mean|該当なし|
-|detectors.historyWindow|異常スコアの計算に使用された履歴 (データ ポイントの数)|500|integer|10 ～ 2000|時系列に依存|
-|upleveldetector.sensitivity|上方レベル変化検出機能の感度 |3.25|double|なし|3.25 ～ 5 (値が小さいほど感度が高い)|
-|bileveldetector.sensitivity|双方向のレベル変化検出機能の感度 |3.25|double|なし|3.25 ～ 5 (値が小さいほど感度が高い)|
-|trenddetector.sensitivity|正傾向検出機能に使用する感度 |3.25|double|なし|3.25 ～ 5 (値が小さいほど感度が高い)|
-|tspikedetector.sensitivity |T スパイク検出機能の感度|3|integer|1 ～ 10|3 ～ 5 (値が小さいほど感度が高い)|
-|zspikedetector.sensitivity |Z スパイク検出機能の感度|3|integer|1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い)|
-|seasonality.enable|季節性分析を実行するかどうか|true|boolean|true、false|時系列に依存|
-|seasonality.numSeasonality |検出する周期的サイクルの最大数|1|integer|1、2|1 ～ 2|
-|seasonality.transform |異常検出を適用する前に季節的傾向要因を取り除くかどうか|deseason|enumerated|none、deseason、deseasontrend|該当なし|
-|postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数|0|integer|0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定|該当なし|
+| 入力パラメーター | Description | 既定の設定 | 型 | 有効範囲 | 推奨範囲 |
+| --- | --- | --- | --- | --- | --- |
+| preprocess.aggregationInterval |入力時系列の集計間隔 (秒単位) |0 (集計は実行されません) |integer |集計をスキップする場合は 0、それ以外の場合は 0 より大きい値 |5 分 ～ 1 日 (時系列に依存) |
+| preprocess.aggregationFunc |指定の AggregationInterval でデータを集計するための関数 |mean |enumerated |mean、sum、length |該当なし |
+| preprocess.replaceMissing |欠損データの補完に使用する値 |lkv (last known value) |enumerated |zero、lkv、mean |該当なし |
+| detectors.historyWindow |異常スコアの計算に使用された履歴 (データ ポイントの数) |500 |integer |10 ～ 2000 |時系列に依存 |
+| upleveldetector.sensitivity |上方レベル変化検出機能の感度 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
+| bileveldetector.sensitivity |双方向のレベル変化検出機能の感度 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
+| trenddetector.sensitivity |正傾向検出機能に使用する感度 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
+| tspikedetector.sensitivity |T スパイク検出機能の感度 |3 |integer |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
+| zspikedetector.sensitivity |Z スパイク検出機能の感度 |3 |integer |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
+| seasonality.enable |季節性分析を実行するかどうか |true |boolean |true、false |時系列に依存 |
+| seasonality.numSeasonality |検出する周期的サイクルの最大数 |1 |integer |1、2 |1 ～ 2 |
+| seasonality.transform |異常検出を適用する前に季節的傾向要因を取り除くかどうか |deseason |enumerated |none、deseason、deseasontrend |該当なし |
+| postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |integer |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |該当なし |
 
-###<a name="output"></a>出力
+### <a name="output"></a>出力
 この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。 以下の表は、API からの出力の一覧です。 
 
 |出力
@@ -206,16 +195,14 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 |TScore|正傾向に関する異常スコアを表す浮動小数点数|
 |TAlert|正傾向に異常が存在するかどうかを、入力された感度に基づいて示す 1/0 値|
 
-
 この出力は、[単純なパーサー](https://adresultparser.codeplex.com/)を使って解析できます。このパーサーには、API に接続して出力結果を解析する方法を示したサンプル コードが含まれています。 検出された異常は、ダッシュボードでの視覚化や専門家への提出によって是正措置を講じることができるほか、チケット システムに統合することができます。
-
 
 [1]: ./media/machine-learning-apps-anomaly-detection/anomaly-detection-score.png
 [2]: ./media/machine-learning-apps-anomaly-detection/anomaly-detection-seasonal.png
 
- 
 
- 
+
+
 
 
 

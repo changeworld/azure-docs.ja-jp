@@ -1,28 +1,30 @@
-<properties
-	pageTitle="PowerApps 用 API の開発 | Microsoft Azure"
-	description="PowerApps 用カスタム API の構築または作成"
-	services=""
-    suite="powerapps"
-	documentationCenter="" 
-	authors="rajram"
-	manager="erikre"
-	editor=""/>
+---
+title: PowerApps 用 API の開発 | Microsoft Docs
+description: PowerApps 用カスタム API の構築または作成
+services: ''
+suite: powerapps
+documentationcenter: ''
+author: rajram
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="powerapps"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na" 
-   ms.date="05/02/2016"
-   ms.author="rajram"/>
+ms.service: powerapps
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/02/2016
+ms.author: rajram
 
+---
 # PowerApps 用 API の開発
-
-> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> [!IMPORTANT]
+> このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
 > 
-> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページをご覧ください。  
-> - PowerApps のカスタム API の詳細については、「[What are Custom APIs (カスタム API とは)](https://powerapps.microsoft.com/tutorials/register-custom-api/)」をご覧ください。 
+> * PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページをご覧ください。  
+> * PowerApps のカスタム API の詳細については、「[What are Custom APIs (カスタム API とは)](https://powerapps.microsoft.com/tutorials/register-custom-api/)」をご覧ください。 
+> 
+> 
 
 <!--Archived
 You can create or develop your own API that can be used within PowerApps. The steps include:
@@ -66,7 +68,7 @@ If an operation is marked as "important", the Logic Flow client is expected to h
 
 ##### x-ms-trigger
 Defines whether this operation can be used as a trigger in the Logic Flow. Options include:
-	
+
 - none (default): The operation cannot be used as a trigger.
 - single: This operation can also be used as a trigger.
 - batched: This operation can be used as a trigger.  In addition, this operation responds with a JSON  'array' of objects, and the Logic Flow fires a trigger for each item in the array.
@@ -76,7 +78,7 @@ Defines whether this operation can be used as a trigger in the Logic Flow. Optio
 This is a hint to the Logic Flow designer that the API provides a list of dynamically allowed values for this parameter. The Logic Flow designer can invoke an operation as defined by the value of this field, and extract the possible values from the result.  The Logic Flow designer can then display these values as options to the end user.  
 
 The value is an object that contains the following properties:
-	
+
 - operationId: A string that matches the operationId for the operation that is invoked
 - parameters: An object whose properties define the parameters required for the operation
 - value-collection: A path string that evaluates to an array of objects in the response payload

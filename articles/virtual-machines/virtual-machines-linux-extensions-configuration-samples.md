@@ -1,28 +1,28 @@
-<properties
-   pageTitle="Linux VM 拡張機能のサンプル構成 | Microsoft Azure"
-   description="拡張機能を使用したテンプレート作成のサンプル構成 (Linux VM 向け)"
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="kundanap"
-   manager="timlt"
-   editor=""
-   tags="azure-resource-manager"/>
+---
+title: Linux VM 拡張機能のサンプル構成 | Microsoft Docs
+description: 拡張機能を使用したテンプレート作成のサンプル構成 (Linux VM 向け)
+services: virtual-machines-linux
+documentationcenter: ''
+author: kundanap
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure-services"
-   ms.date="09/13/2016"
-   ms.author="kundanap"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 09/13/2016
+ms.author: kundanap
 
-
+---
 # <a name="linux-vm-extension-configuration-samples"></a>Linux VM 拡張機能の構成のサンプル
-
-> [AZURE.SELECTOR]
-- [PowerShell - テンプレート](virtual-machines-windows-extensions-configuration-samples.md)
-- [CLI - テンプレート](virtual-machines-linux-extensions-configuration-samples.md)
+> [!div class="op_single_selector"]
+> * [PowerShell - テンプレート](virtual-machines-windows-extensions-configuration-samples.md)
+> * [CLI - テンプレート](virtual-machines-linux-extensions-configuration-samples.md)
+> 
+> 
 
 <br>
 
@@ -56,7 +56,6 @@
       }
 
 ## <a name="sample-template-snippet-for-vm-extensions-with-vm-scale-sets."></a>VM スケール セットによる VM 拡張機能のサンプル テンプレート スニペット。
-
           {
            "type":"Microsoft.Compute/virtualMachineScaleSets",
           ....
@@ -217,8 +216,6 @@
 拡張機能を使用して Linux VM を作成するための完全な VM テンプレートについては、次を参照してください。
 
 [Linux VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

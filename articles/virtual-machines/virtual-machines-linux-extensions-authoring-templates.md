@@ -1,25 +1,24 @@
-<properties
-   pageTitle="Linux VM の拡張機能を使用したテンプレートの作成 |Microsoft Azure"
-   description="Linux VM の拡張機能を使用した Azure Resource Manager テンプレートの作成について説明します。"
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="kundanap"
-   manager="timlt"
-   editor=""
-   tags="azure-resource-manager"/>
+---
+title: Linux VM の拡張機能を使用したテンプレートの作成 | Microsoft Docs
+description: Linux VM の拡張機能を使用した Azure Resource Manager テンプレートの作成について説明します。
+services: virtual-machines-linux
+documentationcenter: ''
+author: kundanap
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure-services"
-   ms.date="03/29/2016"
-   ms.author="kundanap"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 03/29/2016
+ms.author: kundanap
 
+---
 # Linux VM 拡張機能を使用した Azure Resource Manager テンプレートの作成
-
-[AZURE.INCLUDE [virtual-machines-common-extensions-authoring-templates](../../includes/virtual-machines-common-extensions-authoring-templates.md)]
+[!INCLUDE [virtual-machines-common-extensions-authoring-templates](../../includes/virtual-machines-common-extensions-authoring-templates.md)]
 
 Azure CLI から次のコマンドを実行します。
 
@@ -33,10 +32,12 @@ Azure CLI から次のコマンドを実行します。
 
 これら 3 つのプロパティはそれぞれ、前述のテンプレート スニペットに含まれる "publisher"、"type"、"typeHandlerVersion" に対応しています。
 
->[AZURE.NOTE]常に拡張機能の最新バージョンを使用して最新機能を取得することをお勧めします。
+> [!NOTE]
+> 常に拡張機能の最新バージョンを使用して最新機能を取得することをお勧めします。
+> 
+> 
 
 ## 拡張機能構成パラメーターのスキーマの識別
-
 拡張機能のテンプレートを作成する次の手順では、構成パラメーターを指定するための形式を特定します。それぞれの拡張機能では、独自のパラメーター セットがサポートされています。
 
 Linux 拡張機能のサンプル構成については、[Linux 拡張機能のサンプル](virtual-machines-linux-extensions-configuration-samples.md)に関するドキュメントをクリックして参照してください。

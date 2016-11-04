@@ -1,28 +1,24 @@
-<properties
-    pageTitle="Frequently asked questions for Azure Stack | Microsoft Azure"
-    description="Azure Stack frequently asked questions."
-    services="azure-stack"
-    documentationCenter=""
-    authors="HeathL17"
-    manager="byronr"
-    editor=""/>
+---
+title: Frequently asked questions for Azure Stack | Microsoft Docs
+description: Azure Stack frequently asked questions.
+services: azure-stack
+documentationcenter: ''
+author: HeathL17
+manager: byronr
+editor: ''
 
-<tags
-    ms.service="azure-stack"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/26/2016"
-    ms.author="helaw"/>
+ms.service: azure-stack
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: helaw
 
-
+---
 # <a name="frequently-asked-questions-for-azure-stack"></a>Frequently asked questions for Azure Stack
-
 ## <a name="deployment"></a>Deployment
-
 ### <a name="do-i-need-to-format-my-data-disks-before-starting-or-restarting-an-installation?"></a>Do I need to format my data disks before starting or restarting an installation?
-
 Disks should just be in raw format. However, if your Azure Stack installation fails for some reason and you start over by re-installing the operating system and you get an error saying not enough disks, remember to check if the old storage pool is still presented and delete. To do this do the following:
 
 1. Open Server Manager.
@@ -47,38 +43,27 @@ if ($pools -ne $null) {
 ```
 
 ### <a name="can-i-use-all-ssd-disks-for-the-storage-pool-in-the-poc-installation?"></a>Can I use all SSD disks for the storage pool in the POC installation?
-
 Per the “hardware” section of the requirements page in the documentation, this is not supported in this release and will be improved in a future release.
 
 ### <a name="can-i-use-nvme-data-disks-for-the-microsoft-azure-stack-poc?"></a>Can I use NVMe data disks for the Microsoft Azure Stack POC?
-
 While Storage Spaces Direct supports NVMe disks, with Azure Stack Technical Preview 2 we are only supporting a subset of the possible drive types and combinations possible for Storage Spaces Direct. 
 
 More specifically, the deployment script does not support NVMe based on the way bus types are discovered. While it is possible to edit the deployment script to make it run, keep in mind we would recommend using the disks/bus types combinations that have been tested for this release.
 
 ## <a name="tenant"></a>Tenant
-
 ### <a name="can-i-deploy-my-own-images-as-a-tenant?"></a>Can I deploy my own images as a tenant?
-
 Yes, just like in Azure, a tenant can upload images in Azure Stack, in addition to using the images from the service administrator. For an overview, see the [Adding a VM Image](azure-stack-add-vm-image.md). 
 
 ## <a name="testing"></a>Testing
-
 ### <a name="can-i-use-nested-virtualization-to-test-the-microsoft-azure-stack-poc?"></a>Can I use Nested Virtualization to test the Microsoft Azure Stack POC?
-
 It is possible to deploy Microsoft Azure Stack POC TP2 leveraging Nested Virtualization and, just like some of our customers, we’ve also experimented Azure Stack deployments with it. We understand it’s also a way to work around some of the hardware requirements. Please note however that Nested Virtualization is a recently introduced feature and as is documented here is known to have potential performance and stability issues. Additionally, the networking layer in Azure Stack is more complex than a flat network and when you start introducing MAC spoofing and other layers in addition to potential performance impact at the storage layer it becomes complex. In other words, we are definitely open to hear about your feedback and experience leveraging Nested Virtualization with Azure Stack, but remember this is not one of the configurations we’ve thoroughly tested or are fully supporting with this release.
 
 ## <a name="virtual-machines"></a>Virtual machines
-
 ### <a name="does-azure-stack-support-dynamic-disks-for-virtual-machines?"></a>Does Azure Stack support dynamic disks for virtual machines?
-
 Azure Stack does not support dynamic disks.
 
 ## <a name="next-steps"></a>Next steps
-
 [Troubleshooting](azure-stack-troubleshooting.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

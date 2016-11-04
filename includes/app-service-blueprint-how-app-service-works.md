@@ -11,7 +11,6 @@
 * [Azure App Service 開発スタックのサポート](/blog/windows-azure-websites-development-stacks-support/)
 
 ## ビデオ
-
 * [Azure App Service のアーキテクチャ](/documentation/videos/why-azure-web-sites-plus-architecture/)
 
 <!---HONumber=AcomDC_0224_2016-->

@@ -1,53 +1,54 @@
-<properties
-    pageTitle="Data Factory Azure Copy Wizard | Microsoft Azure"
-    description="Learn about how to use the Data Factory Azure Copy Wizard to copy data from supported data sources to sinks."
-    services="data-factory"
-    documentationCenter=""
-    authors="spelluru"
-    manager="jhubbard"
-    editor="monicar"/>
+---
+title: Data Factory Azure Copy Wizard | Microsoft Docs
+description: Learn about how to use the Data Factory Azure Copy Wizard to copy data from supported data sources to sinks.
+services: data-factory
+documentationcenter: ''
+author: spelluru
+manager: jhubbard
+editor: monicar
 
-<tags
-    ms.service="data-factory"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/03/2016"
-    ms.author="spelluru"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/03/2016
+ms.author: spelluru
 
-
+---
 # <a name="azure-data-factory---copy-wizard"></a>Azure Data Factory - Copy Wizard
 The Azure Data Factory Copy Wizard is to ease the process of ingesting data, which is usually a first step in an end-to-end data integration scenario. When going through the Azure Data Factory Copy Wizard, you do not need to understand any JSON definitions for linked services, datasets, and pipelines. However, after you complete all the steps in the wizard, the wizard automatically creates a pipeline to copy data from the selected data source to the selected destination. In addition, the Copy Wizard helps you to validate the data being ingested at the time of authoring, which saves much of your time, especially when you are ingesting data for the first time from the data source. To start the Copy Wizard, click the **Copy data** tile on the home page of your data factory.
 
 ![Copy Wizard](./media/data-factory-copy-wizard/copy-data-wizard.png)
-
 
 ## <a name="an-intuitive-wizard-for-copying-data"></a>An intuitive wizard for copying data
 This wizard allows you to easily move data from a wide variety of sources to destinations in minutes. After going through the wizard, a pipeline with a copy activity is automatically created for you along with dependent Data Factory entities (linked services and datasets). No additional steps are required to create the pipeline.   
 
 ![Select data source](./media/data-factory-copy-wizard/select-data-source-page.png)
 
-> [AZURE.NOTE] See [Copy Wizard tutorial](data-factory-copy-data-wizard-tutorial.md) article for step-by-step instructions to create a sample pipeline to copy data from an Azure blob to an Azure SQL Database table. 
+> [!NOTE]
+> See [Copy Wizard tutorial](data-factory-copy-data-wizard-tutorial.md) article for step-by-step instructions to create a sample pipeline to copy data from an Azure blob to an Azure SQL Database table. 
+> 
+> 
 
 The wizard is designed with big data in mind from the start. It is simple and efficient to author Data Factory pipelines that move hundreds of folders, files, or tables using the Copy Data wizard. The wizard supports the following three features: Automatic data preview, schema capture and mapping, and filtering data. 
 
-## <a name="automatic-data-preview"></a>Automatic data preview 
+## <a name="automatic-data-preview"></a>Automatic data preview
 The copy wizard allows you to review part of the data from the selected data source for you to validate whether the data it is the right data you want to copy. In addition, if the source data is in a text file, the copy wizard parses the text file to learn row and column delimiters, and schema automatically. 
 
 ![File format settings](./media/data-factory-copy-wizard/file-format-settings.png)
 
-## <a name="schema-capture-and-mapping"></a>Schema capture and mapping 
+## <a name="schema-capture-and-mapping"></a>Schema capture and mapping
 The schema of input data may not match the schema of output data in some cases. In this scenario, you need to map columns from the source schema to columns from the destination schema. 
 
 The copy wizard automatically maps columns in the source schema to columns in the destination schema. You can override the mappings by using the drop-down lists (or) specify whether a column needs to be skipped while copying the data.   
 
 ![Schema mapping](./media/data-factory-copy-wizard/schema-mapping.png)
 
-## <a name="filtering-data"></a>Filtering data  
+## <a name="filtering-data"></a>Filtering data
 The wizard allows you to filter source data to select only the data that needs to be copied to the destination/sink data store. Filtering reduces the volume of the data to be copied to the sink data store and therefore enhances the throughput of the copy operation. It provides a flexible way to filter data in a relational database by using SQL query language (or) files in an Azure blob folder by using [Data Factory functions and variables](data-factory-functions-variables.md).   
 
-### <a name="filtering-of-data-in-a-database"></a>Filtering of data in a database  
+### <a name="filtering-of-data-in-a-database"></a>Filtering of data in a database
 In the example, the SQL query uses the `Text.Format` function and `WindowStart` variable. 
 
 ![Validate expressions](./media/data-factory-copy-wizard/validate-expressions.png)
@@ -70,7 +71,6 @@ As shown in the following screenshot, you can also use a **custom** variable and
 
 ![Using custom variable](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
-
 ## <a name="support-for-diverse-data-and-object-types"></a>Support for diverse data and object types
 By using the Copy Wizard, you can efficiently move hundreds of folders, files, or tables.
 
@@ -83,11 +83,8 @@ A one-time copy operation enables data movement from a source to a destination o
 
 ![Scheduling properties](./media/data-factory-copy-wizard/scheduling-properties.png)
 
-
 ## <a name="next-steps"></a>Next steps
 For a quick walkthrough of using the Data Factory Copy Wizard to create a pipeline with Copy Activity, see [Tutorial: Create a pipeline using the Copy Wizard](data-factory-copy-data-wizard-tutorial.md).
-
-
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,28 +1,25 @@
-<properties
-    pageTitle="OAuth2.0 を使用した Azure AD のサービス間の認証 | Microsoft Azure"
-    description="この記事では、HTTP メッセージを使用して、OAuth2.0 クライアント資格情報付与フローを使用するサービス間の認証を実装する方法について説明します。"
-    services="active-directory"
-    documentationCenter=".net"
-    authors="priyamohanram"
-    manager="mbaldwin"
-    editor=""/>
+---
+title: OAuth2.0 を使用した Azure AD のサービス間の認証 | Microsoft Docs
+description: この記事では、HTTP メッセージを使用して、OAuth2.0 クライアント資格情報付与フローを使用するサービス間の認証を実装する方法について説明します。
+services: active-directory
+documentationcenter: .net
+author: priyamohanram
+manager: mbaldwin
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/03/2016"
-    ms.author="priyamo"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/03/2016
+ms.author: priyamo
 
-
+---
 # <a name="service-to-service-calls-using-client-credentials"></a>クライアント資格情報を使用したサービス間の呼び出し
-
 OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (" *機密性の高いクライアント*") が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することが許可されます。 このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。
 
 ## <a name="client-credentials-grant-flow-diagram"></a>クライアント資格情報付与フローの図
-
 次の図に、Azure Active Directory (Azure AD) でのクライアント資格情報付与フローのしくみを示します。
 
 ![OAuth2.0 Client Credentials Grant Flow](media/active-directory-protocols-oauth-service-to-service/active-directory-protocols-oauth-client-credentials-grant-flow.jpg)
@@ -33,11 +30,9 @@ OAuth 2.0 クライアント資格情報付与フローでは、Web サービス
 4. セキュリティで保護されたリソースから Web アプリケーションにデータが返されます。
 
 ## <a name="register-the-services-in-azure-ad"></a>Azure AD にサービスを登録する
-
 Azure Active Directory (Azure AD) に呼び出し元のサービスと受信側のサービスの両方を登録します。 詳細については、 [アプリケーションの追加、更新、削除](active-directory-integrating-applications.md#BKMK_Native)
 
 ## <a name="request-an-access-token"></a>アクセス トークンを要求する
-
 アクセス トークンを要求するには、テナントに固有の Azure AD エンドポイントへの HTTP POST を使用します。
 
 ```
@@ -45,18 +40,16 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ```
 
 ## <a name="service-to-service-access-token-request"></a>サービス間のアクセス トークン要求
-
 サービス間のアクセス トークン要求には、次のパラメーターが含まれています。
 
-| パラメーター | | 説明 |
-|-----------|------|------------|
-| response_type | 必須 | 要求された応答のタイプを指定します。 クライアント資格情報付与フローでは、値は **client_credentials** である必要があります。|
-| client_id | 必須 | 呼び出し元の Web サービスの Azure AD クライアント ID を指定します。 呼び出し元アプリケーションのクライアント ID を調べるには、Azure 管理ポータルで、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。|
-| client_secret | 必須 |  呼び出し元の Web サービスに対して Azure AD に登録されているキーを入力します。 キーを作成するには、Azure 管理ポータルで、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。 |
-| resource | 必須 | 受信側の Web サービスのアプリケーション ID URI を入力します。 アプリケーション ID URI を調べるには、Azure 管理ポータルで、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。 |
+| パラメーター |  | 説明 |
+| --- | --- | --- |
+| response_type |必須 |要求された応答のタイプを指定します。 クライアント資格情報付与フローでは、値は **client_credentials** である必要があります。 |
+| client_id |必須 |呼び出し元の Web サービスの Azure AD クライアント ID を指定します。 呼び出し元アプリケーションのクライアント ID を調べるには、Azure 管理ポータルで、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。 |
+| client_secret |必須 |呼び出し元の Web サービスに対して Azure AD に登録されているキーを入力します。 キーを作成するには、Azure 管理ポータルで、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。 |
+| resource |必須 |受信側の Web サービスのアプリケーション ID URI を入力します。 アプリケーション ID URI を調べるには、Azure 管理ポータルで、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。 |
 
 ## <a name="example"></a>例
-
 次の HTTP POST は、https://service.contoso.com/ Web サービスのアクセス トークンを要求します。 `client_id` は、アクセス トークンを要求する Web サービスを識別します。
 
 ```
@@ -68,19 +61,17 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ```
 
 ## <a name="service-to-service-access-token-response"></a>サービス間のアクセス トークン応答
-
 成功応答には、JSON OAuth 2.0 応答と共に次のパラメーターが含まれています。
 
-| パラメーター   | Description |
-|-------------|-------------|
-|access_token |要求されたアクセス トークン。 呼び出し元の Web サービスは、このトークンを使用して受信側の Web サービスに対する認証処理を行うことができます。 |
-|access_type  | トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「 [OAuth2.0 Authorization Framework: Bearer Token Usage (OAuth2.0 承認フレームワーク: ベアラー トークンの使用について)](http://www.rfc-editor.org/rfc/rfc6750.txt)」(RFC 6750) を参照してください。
-|expires_in   | アクセス トークンの有効期間 (秒)。|
-|expires_on   |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
-|resource     | 受信側の Web サービスのアプリケーション ID URI。 |
+| パラメーター | Description |
+| --- | --- |
+| access_token |要求されたアクセス トークン。 呼び出し元の Web サービスは、このトークンを使用して受信側の Web サービスに対する認証処理を行うことができます。 |
+| access_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「 [OAuth2.0 Authorization Framework: Bearer Token Usage (OAuth2.0 承認フレームワーク: ベアラー トークンの使用について)](http://www.rfc-editor.org/rfc/rfc6750.txt)」(RFC 6750) を参照してください。 |
+| expires_in |アクセス トークンの有効期間 (秒)。 |
+| expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
+| resource |受信側の Web サービスのアプリケーション ID URI。 |
 
 ## <a name="example"></a>例
-
 次の例に、Web サービスへのアクセス トークン要求に対する成功応答を示します。
 
 ```
@@ -94,10 +85,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ```
 
 ## <a name="see-also"></a>関連項目
-
 * [Azure AD での OAuth 2.0](active-directory-protocols-oauth-code.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

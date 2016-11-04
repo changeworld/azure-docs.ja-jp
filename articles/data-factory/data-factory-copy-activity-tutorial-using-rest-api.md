@@ -1,73 +1,77 @@
-<properties 
-    pageTitle="チュートリアル: コピー アクティビティがあるパイプラインを REST API で作成する | Microsoft Azure" 
-    description="このチュートリアルでは、REST API を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。" 
-    services="data-factory" 
-    documentationCenter="" 
-    authors="spelluru" 
-    manager="jhubbard" 
-    editor="monicar"/>
+---
+title: 'チュートリアル: コピー アクティビティがあるパイプラインを REST API で作成する | Microsoft Docs'
+description: このチュートリアルでは、REST API を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。
+services: data-factory
+documentationcenter: ''
+author: spelluru
+manager: jhubbard
+editor: monicar
 
-<tags 
-    ms.service="data-factory" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="09/16/2016" 
-    ms.author="spelluru"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 09/16/2016
+ms.author: spelluru
 
-
+---
 # <a name="tutorial:-create-a-pipeline-with-copy-activity-using-rest-api"></a>チュートリアル: コピー アクティビティがあるパイプラインを REST API で作成する
-> [AZURE.SELECTOR]
-- [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-- [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-- [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-- [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-
+> [!div class="op_single_selector"]
+> * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
+> * [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
+> * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+> 
+> 
 
 このチュートリアルでは、REST API を使用して Azure Data Factory を作成および監視する方法について説明しています。 データ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。
 
-> [AZURE.NOTE] 
+> [!NOTE]
 > この記事では、すべての Data Factory REST API を取り上げているわけではありません。 Data Factory REST API に関する包括的なドキュメントについては、 [Data Factory REST API リファレンス](https://msdn.microsoft.com/library/azure/dn906738.aspx) を参照してください。
-  
+> 
+> 
 
 ## <a name="prerequisites"></a>前提条件
-
-- 「 [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
-- コンピューターに [Curl](https://curl.haxx.se/dlwiz/) をインストールします。 データ ファクトリを作成するには、Curl ツールと REST コマンドを使用します。 
-- [この記事](../resource-group-create-service-principal-portal.md) の手順に従って、次の操作を行います。 
-    1. Azure Active Directory に、 **ADFCopyTutorialApp** という名前の Web アプリケーションを作成します。
-    2. **クライアント ID** と**秘密キー**を取得します。 
-    3. **テナント ID**を取得します。 
-    4. **ADFCopyTutorialApp** アプリケーションを **Data Factory 共同作成者**ロールに割り当てます。  
-- [Azure PowerShell](../powershell-install-configure.md)をインストールします。  
-- **PowerShell** を起動し、次のコマンドを実行します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
-    1. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
-    
-            Login-AzureRmAccount   
-    2. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
-
-            Get-AzureRmSubscription 
-    3. 次のコマンドを実行して、使用するサブスクリプションを選択します。 **&lt;NameOfAzureSubscription**&gt; を自分の Azure サブスクリプションの名前で置き換えます。 
-
-            Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
-    1. PowerShell で次のコマンドを実行して、 **ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。  
-
-            New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
-
-        リソース グループが既に存在する場合は、それを更新するか (Y) そのまま保持するか (N) を指定します。 
-
-        このチュートリアルの一部の手順は、ADFTutorialResourceGroup という名前のリソース グループを使用することを前提としています。 異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループの名前を使用する必要があります。
+* 「 [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
+* コンピューターに [Curl](https://curl.haxx.se/dlwiz/) をインストールします。 データ ファクトリを作成するには、Curl ツールと REST コマンドを使用します。 
+* [この記事](../resource-group-create-service-principal-portal.md) の手順に従って、次の操作を行います。 
+  1. Azure Active Directory に、 **ADFCopyTutorialApp** という名前の Web アプリケーションを作成します。
+  2. **クライアント ID** と**秘密キー**を取得します。 
+  3. **テナント ID**を取得します。 
+  4. **ADFCopyTutorialApp** アプリケーションを **Data Factory 共同作成者**ロールに割り当てます。  
+* [Azure PowerShell](../powershell-install-configure.md)をインストールします。  
+* **PowerShell** を起動し、次のコマンドを実行します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
   
+  1. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
+     
+          Login-AzureRmAccount   
+  2. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
+     
+          Get-AzureRmSubscription 
+  3. 次のコマンドを実行して、使用するサブスクリプションを選択します。 **&lt;NameOfAzureSubscription**&gt; を自分の Azure サブスクリプションの名前で置き換えます。 
+     
+          Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+  4. PowerShell で次のコマンドを実行して、 **ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。  
+     
+          New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+     
+      リソース グループが既に存在する場合は、それを更新するか (Y) そのまま保持するか (N) を指定します。 
+     
+      このチュートリアルの一部の手順は、ADFTutorialResourceGroup という名前のリソース グループを使用することを前提としています。 異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループの名前を使用する必要があります。
+
 ## <a name="create-json-definitions"></a>JSON 定義の作成
 curl.exe があるフォルダーに、以下の JSON ファイルを作成します。 
 
-### <a name="datafactory.json"></a>datafactory.json 
-> [AZURE.IMPORTANT] 名前はグローバルに一意である必要があります。一意の名前にするために、ADFCopyTutorialDF にプレフィックス/サフィックスを付けることができます。 
+### <a name="datafactory.json"></a>datafactory.json
+> [!IMPORTANT]
+> 名前はグローバルに一意である必要があります。一意の名前にするために、ADFCopyTutorialDF にプレフィックス/サフィックスを付けることができます。 
+> 
+> 
 
     {  
         "name": "ADFCopyTutorialDF",  
@@ -75,7 +79,10 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
     }  
 
 ### <a name="azurestoragelinkedservice.json"></a>azurestoragelinkedservice.json
-> [AZURE.IMPORTANT] **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+> [!IMPORTANT]
+> **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+> 
+> 
 
     {
         "name": "AzureStorageLinkedService",
@@ -88,7 +95,10 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
     }
 
 ### <a name="azuersqllinkedservice.json"></a>azuersqllinkedservice.json
-> [AZURE.IMPORTANT] **servername**、**databasename**、**username**、**password** を、Azure SQL サーバーの名前、SQL データベースの名前、ユーザー アカウント、アカウントのパスワードに置き換えます。  
+> [!IMPORTANT]
+> **servername**、**databasename**、**username**、**password** を、Azure SQL サーバーの名前、SQL データベースの名前、ユーザー アカウント、アカウントのパスワードに置き換えます。  
+> 
+> 
 
     {
         "name": "AzureSqlLinkedService",
@@ -103,7 +113,6 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 
 ### <a name="inputdataset.json"></a>inputdataset.json
-
     {
       "name": "AzureBlobInput",
       "properties": {
@@ -139,12 +148,12 @@ JSON 定義では **AzureBlobInput** という名前のデータセットを定�
 
  以下の点に注意してください。 
 
-- データセットの **type** は **AzureBlob** に設定されています。
-- **linkedServiceName** は **AzureStorageLinkedService** に設定されています。 
-- **folderPath** は **adftutorial** コンテナーに設定され、**fileName** は **emp.txt** に設定されています。  
-- format の **type** は **TextFormat** に設定されています。
-- テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。 
-- **availability** が **hourly** に設定されています (frequency は hour、interval は 1 に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 
+* データセットの **type** は **AzureBlob** に設定されています。
+* **linkedServiceName** は **AzureStorageLinkedService** に設定されています。 
+* **folderPath** は **adftutorial** コンテナーに設定され、**fileName** は **emp.txt** に設定されています。  
+* format の **type** は **TextFormat** に設定されています。
+* テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。 
+* **availability** が **hourly** に設定されています (frequency は hour、interval は 1 に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 
 
 入力データセット用に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。 JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
 
@@ -164,7 +173,6 @@ JSON 定義では **AzureBlobInput** という名前のデータセットを定�
 
 
 ### <a name="outputdataset.json"></a>outputdataset.json
-    
     {
       "name": "AzureSqlOutput",
       "properties": {
@@ -195,14 +203,13 @@ JSON 定義では **AzureSqlOutput** という名前のデータセットを定�
 
 以下の点に注意してください。 
 
-- データセットの **type** は **AzureSQLTable** に設定されています。
-- **linkedServiceName** は **AzureSqlLinkedService** に設定されています。
-- **tablename** は **emp** に設定されています。
-- データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
-- **availability** は **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
+* データセットの **type** は **AzureSQLTable** に設定されています。
+* **linkedServiceName** は **AzureSqlLinkedService** に設定されています。
+* **tablename** は **emp** に設定されています。
+* データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
+* **availability** は **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 
 ### <a name="pipeline.json"></a>pipeline.json
-
     {
       "name": "ADFTutorialPipeline",
       "properties": {
@@ -248,9 +255,9 @@ JSON 定義では **AzureSqlOutput** という名前のデータセットを定�
 
 以下の点に注意してください。
 
-- activities セクションに、**type** が **CopyActivity** に設定されたアクティビティが 1 つだけあります。
-- アクティビティの入力は **AzureBlobInput** に設定され、アクティビティの出力は **AzureSqlOutput** に設定されています。
-- **transformation** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。
+* activities セクションに、**type** が **CopyActivity** に設定されたアクティビティが 1 つだけあります。
+* アクティビティの入力は **AzureBlobInput** に設定され、アクティビティの出力は **AzureSqlOutput** に設定されています。
+* **transformation** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。
 
 **start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。 日付の部分のみを指定し、時刻の部分をスキップすることもできます。 たとえば、"2015-02-03" と "2015-02-03T00:00:00Z" は同じです。
 
@@ -259,14 +266,19 @@ start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/w
 **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。
 
 この例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
-    
-> [AZURE.NOTE] 前の例で使用した JSON プロパティの詳細については、「 [パイプラインのしくみ](data-factory-create-pipelines.md#anatomy-of-a-pipeline) 」を参照してください。
+
+> [!NOTE]
+> 前の例で使用した JSON プロパティの詳細については、「 [パイプラインのしくみ](data-factory-create-pipelines.md#anatomy-of-a-pipeline) 」を参照してください。
+> 
+> 
 
 ## <a name="set-global-variables"></a>グローバル変数の設定
-
 Azure PowerShell で、値を独自の値に置き換えて、以下のコマンドを実行します。
 
-> [AZURE.IMPORTANT] クライアント ID、クライアント シークレット、テナント ID、サブスクリプション ID を取得する手順については、「 [前提条件](#prerequisites) 」セクションを参照してください。   
+> [!IMPORTANT]
+> クライアント ID、クライアント シークレット、テナント ID、サブスクリプション ID を取得する手順については、「 [前提条件](#prerequisites) 」セクションを参照してください。   
+> 
+> 
 
     $client_id = "<client ID of application in AAD>"
     $client_secret = "<client key of application in AAD>"
@@ -276,51 +288,51 @@ Azure PowerShell で、値を独自の値に置き換えて、以下のコマン
     $rg = "ADFTutorialResourceGroup"
     $adf = "ADFCopyTutorialDF"
 
-## <a name="authenticate-with-aad"></a>AAD での認証 
+## <a name="authenticate-with-aad"></a>AAD での認証
 Azure Active Directory (AAD) で認証するには、次のコマンドを実行します。 
 
     $cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
     $responseToken = Invoke-Command -scriptblock $cmd;
     $accessToken = (ConvertFrom-Json $responseToken).access_token;
-    
+
     (ConvertFrom-Json $responseToken) 
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
-
 この手順では、**ADFCopyTutorialDF** という名前の Azure データ ファクトリを作成します。 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 たとえば、コピー元データ ストアからコピー先データ ストアにデータをコピーするコピー アクティビティや、 Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティなどを含めることができます。 以下のコマンドを実行して、データ ファクトリを作成します。 
 
 1. コマンドを **cmd**という名前の変数に割り当てます。 
-
+   
     ここで指定するデータ ファクトリの名前 (ADFCopyTutorialDF) が、 **datafactory.json**で指定した名前と一致することを確認します。 
-
+   
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/ADFCopyTutorialDF?api-version=2015-10-01};
 2. **Invoke-Command**を使用して、コマンドを実行します。
-
+   
         $results = Invoke-Command -scriptblock $cmd;
 3. 結果を表示します。 データ ファクトリが正常に作成された場合は、**results** にデータ ファクトリの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。  
-
+   
         Write-Host $results
 
 以下の点に注意してください。
- 
-- Azure Data Factory の名前はグローバルに一意にする必要があります。 results に **"データ ファクトリ名 "ADFCopyTutorialDF" は利用できません"**というエラーが表示される場合は、次の手順に従います。  
-    1. **datafactory.json** ファイルで名前を変更します (たとえば、yournameADFCopyTutorialDF)。
-    2. **$cmd** 変数に値が割り当てられる最初のコマンドで、ADFCopyTutorialDF を新しい名前に置き換え、コマンドを実行します。 
-    3. REST API を呼び出す次の 2 つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。 
-    
-    Data Factory アーティファクトの名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。
-- Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
-- データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
-- "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。 
 
-    - Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。 
-        
-            Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+* Azure Data Factory の名前はグローバルに一意にする必要があります。 results に **"データ ファクトリ名 "ADFCopyTutorialDF" は利用できません"**というエラーが表示される場合は、次の手順に従います。  
+  
+  1. **datafactory.json** ファイルで名前を変更します (たとえば、yournameADFCopyTutorialDF)。
+  2. **$cmd** 変数に値が割り当てられる最初のコマンドで、ADFCopyTutorialDF を新しい名前に置き換え、コマンドを実行します。 
+  3. REST API を呼び出す次の 2 つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。 
+     
+     Data Factory アーティファクトの名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。
+* Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
+* データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
+* "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。 
+  
+  * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。 
     
-        Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。 
+          Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
     
-            Get-AzureRmResourceProvider
-    - Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com) にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
+      Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。 
+    
+          Get-AzureRmResourceProvider
+  * Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com) にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
 
 パイプラインを作成する前に、まず、Data Factory エンティティをいくつか作成する必要があります。 最初に、ソース データ ストアや保存先データ ストアを自分のデータ ストアにリンクするリンクされたサービスを作成します。 次に、リンクされたデータ ストア内のデータを表す入力データセットと出力データセットを定義します。 最後に、これらのデータセットを使用するアクティビティを含むパイプラインを作成します。
 
@@ -333,52 +345,48 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 この手順では、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このチュートリアルでは、Azure ストレージ アカウントを使用して、入力データを格納します。 
 
 1. コマンドを **cmd**という名前の変数に割り当てます。 
-
+   
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@azurestoragelinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
 2. **Invoke-Command**を使用して、コマンドを実行します。
- 
+   
         $results = Invoke-Command -scriptblock $cmd;
 3. 結果を表示します。 リンクされたサービスが正常に作成された場合は、**results** に、リンクされたサービスの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
-  
+   
         Write-Host $results
 
 ### <a name="create-azure-sql-linked-service"></a>Azure SQL のリンクされたサービスの作成
 この手順では、Azure SQL データベースをデータ ファクトリにリンクします。 このチュートリアルでは、同じ Azure SQL データベースを使用して、出力データを格納します。
 
 1. コマンドを **cmd**という名前の変数に割り当てます。 
-
+   
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azuresqllinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureSqlLinkedService?api-version=2015-10-01};
 2. **Invoke-Command**を使用して、コマンドを実行します。
- 
+   
         $results = Invoke-Command -scriptblock $cmd;
 3. 結果を表示します。 リンクされたサービスが正常に作成された場合は、**results** に、リンクされたサービスの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
-  
+   
         Write-Host $results
 
 ## <a name="create-datasets"></a>データセットを作成する
-
 前の手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL データベースを **ADFCopyTutorialDF** というデータ ファクトリにリンクしました。 この手順では、次の手順で作成するパイプラインのコピー アクティビティ用に入力データと出力データを表すデータセットを作成します。 
 
 このチュートリアルの入力データセットは、AzureStorageLinkedService がポイントする Azure Storage 内の BLOB コンテナーを参照します。 出力データセットは、AzureSqlLinkedService がポイントする Azure SQL Database 内の SQL テーブルを参照します。  
 
 ### <a name="prepare-azure-blob-storage-and-azure-sql-database-for-the-tutorial"></a>Azure Blob Storage と Azure SQL Database をチュートリアル用に準備する
 このチュートリアルで使用する Azure BLOB ストレージと Azure SQL Database を準備するには、次の手順を実行します。 
- 
+
 * **AzureStorageLinkedService** がポイントする Azure Blob Storage 内に **adftutorial** という名前の BLOB コンテナーを作成します。 
 * **emp.txt** という名前のテキスト ファイルを作成し、BLOB として **adftutorial** コンテナーにアップロードします。 
 * **AzureSqlLinkedService** がポイントする Azure SQL データベース内に **emp** という名前のテーブルを作成します。
 
-
 1. メモ帳を起動し、次のテキストを貼り付け、**emp.txt** という名前でハード ドライブの **C:\ADFGetStartedPSH** フォルダーに保存します。 
-
+   
         John, Doe
         Jane, Doe
-                
 2. [Azure Storage エクスプローラー](https://azurestorageexplorer.codeplex.com/)などのツールを使用して **adftutorial** コンテナーを作成し、このコンテナーに **emp.txt** ファイルをアップロードします。
-
+   
     ![Azure ストレージ エクスプローラー](media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png)
 3. 次の SQL スクリプトを使用して、 **emp** テーブルを Azure SQL Database に作成します。  
-
 
         CREATE TABLE dbo.emp 
         (
@@ -393,44 +401,44 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
     SQL Server 2014 がコンピューターにインストールされている場合は、記事「[SQL Server Management Studio を使用した Azure SQL Database の管理][sql-management-studio]」にある手順 2. の SQL Database に接続する方法に従い、Azure SQL サーバーに接続して SQL スクリプトを実行します。
 
     クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。 Azure SQL サーバーのファイアウォールを構成する手順については、 [こちらの記事](../sql-database/sql-database-configure-firewall-settings.md) を参照してください。
-        
-### <a name="create-input-dataset"></a>入力データセットの作成 
+
+### <a name="create-input-dataset"></a>入力データセットの作成
 この手順では、リンクされたサービス **AzureStorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **AzureBlobInput** という名前のデータセットを作成します。 この BLOB コンテナー (**adftutorial**) には、**emp.txt** ファイルの入力データが含まれています。 
 
 1. コマンドを **cmd**という名前の変数に割り当てます。 
-
+   
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
 2. **Invoke-Command**を使用して、コマンドを実行します。
-
+   
         $results = Invoke-Command -scriptblock $cmd;
 3. 結果を表示します。 データセットが正常に作成された場合は、**results** にデータセットの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
-  
+   
         Write-Host $results
 
 ### <a name="create-output-dataset"></a>出力データセットの作成
 この手順では、 **AzureSqlOutput**という名前の出力テーブルを作成します。 このデータセットは、**AzureSqlLinkedService** で表される Azure SQL データベース内の SQL テーブル (**emp**) をポイントします。 パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。 
 
 1. コマンドを **cmd**という名前の変数に割り当てます。
- 
+   
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureSqlOutput?api-version=2015-10-01};
 2. **Invoke-Command**を使用して、コマンドを実行します。
-
+   
         $results = Invoke-Command -scriptblock $cmd;
 3. 結果を表示します。 データセットが正常に作成された場合は、**results** にデータセットの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
-  
+   
         Write-Host $results 
 
 ## <a name="create-pipeline"></a>パイプラインの作成
 この手順では、**AzureBlobInput** を入力、**AzureSqlOutput** を出力として使用する**コピー アクティビティ**を持つパイプラインを作成します。
 
 1. コマンドを **cmd**という名前の変数に割り当てます。
- 
+   
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
 2. **Invoke-Command**を使用して、コマンドを実行します。
-
+   
         $results = Invoke-Command -scriptblock $cmd;
 3. 結果を表示します。 データセットが正常に作成された場合は、**results** にデータセットの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。  
-
+   
         Write-Host $results
 
 **お疲れさまでした。**  Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを持つ Azure データ ファクトリが正常に作成されました。
@@ -455,27 +463,24 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 
 スライスごとに、ソース ファイルのデータの 2 つの行が、Azure SQL データベースの emp テーブルにコピーされます。 そのため、すべてのスライスが正常に処理されると (Ready 状態になると)、emp テーブルに 24 個の新しいレコードが表示されます。 
 
-
 ## <a name="summary"></a>まとめ
 このチュートリアルでは、REST API を使用して Azure データ ファクトリを作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。 以下は、このチュートリアルで実行した手順の概要です。  
 
-1.  Azure **データ ファクトリ**を作成しました。
-2.  次の **リンクされたサービス**を作成しました。
-    1. 入力データを保持する Azure ストレージ アカウントをリンクするための、Azure Storage のリンクされたサービス。    
-    2. 出力データを保持する Azure SQL データベースをリンクするための、Azure SQL のリンクされたサービス。 
-3.  パイプラインの入力データと出力データを記述する **データセット**を作成しました。
-4.  ソースとして BlobSource、シンクとして SqlSink を持つコピー アクティビティを含む **パイプライン** を作成しました。 
+1. Azure **データ ファクトリ**を作成しました。
+2. 次の **リンクされたサービス**を作成しました。
+   1. 入力データを保持する Azure ストレージ アカウントをリンクするための、Azure Storage のリンクされたサービス。    
+   2. 出力データを保持する Azure SQL データベースをリンクするための、Azure SQL のリンクされたサービス。 
+3. パイプラインの入力データと出力データを記述する **データセット**を作成しました。
+4. ソースとして BlobSource、シンクとして SqlSink を持つコピー アクティビティを含む **パイプライン** を作成しました。 
 
 ## <a name="see-also"></a>関連項目
 | トピック | 説明 |
-| :---- | :---- |
-| [データ移動アクティビティ](data-factory-data-movement-activities.md) | この記事には、このチュートリアルで使用したコピー アクティビティの詳細な情報が記載されています。 |
-| [スケジュールと実行](data-factory-scheduling-and-execution.md) | この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
-| [パイプライン](data-factory-create-pipelines.md) | この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
-| [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
-| [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
-
-
+|:--- |:--- |
+| [データ移動アクティビティ](data-factory-data-movement-activities.md) |この記事には、このチュートリアルで使用したコピー アクティビティの詳細な情報が記載されています。 |
+| [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
+| [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
+| [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
+| [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) |この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
 
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
@@ -492,7 +497,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 [image-data-factory-get-started-storage-explorer]: ./media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png
 
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
- 
+
 
 
 <!--HONumber=Oct16_HO2-->

@@ -1,24 +1,22 @@
-<properties
-	pageTitle="Azure Storage での Azure PowerShell の使用 | Microsoft Azure"
-	description="Azure Storage 用の Azure PowerShell コマンドレットを使用して、ストレージ アカウントの作成と管理、BLOB、テーブル、キュー、およびファイルの操作、ストレージ分析の構成と照会、共有アクセス署名の作成を行う方法について説明します。"
-	services="storage"
-	documentationCenter="na"
-	authors="robinsh"
-	manager="carmonm"/>
+---
+title: Azure Storage での Azure PowerShell の使用 | Microsoft Docs
+description: Azure Storage 用の Azure PowerShell コマンドレットを使用して、ストレージ アカウントの作成と管理、BLOB、テーブル、キュー、およびファイルの操作、ストレージ分析の構成と照会、共有アクセス署名の作成を行う方法について説明します。
+services: storage
+documentationcenter: na
+author: robinsh
+manager: carmonm
 
-<tags
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/03/2016"
-	ms.author="micurd;robinsh"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/03/2016
+ms.author: micurd;robinsh
 
+---
 # Azure Storage での Azure PowerShell の使用
-
 ## Overview
-
 Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。タスクベースのコマンドライン シェルとスクリプト言語であり、システム管理に特化して設計されています。PowerShell を使用すると、Azure サービスやアプリケーションの管理を容易に制御して自動化できます。たとえば、このコマンドレットを使用して、[Azure ポータル](https://portal.azure.com)で実行できるタスクと同じタスクを実行できます。
 
 このガイドでは、[Azure Storage 用コマンドレット](https://msdn.microsoft.com/library/azure/mt269418.aspx)を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。
@@ -27,9 +25,7 @@ Azure PowerShell は、Windows PowerShell から Azure を管理するコマン�
 
 このガイドの最初のセクションでは、Azure Storage と PowerShell について簡単に説明します。詳細と手順については、「[Azure Storage で Azure PowerShell を使用するための前提条件](#prerequisites-for-using-azure-powershell-with-azure-storage)」から開始してください。
 
-
 ## 5 分で始める、Azure Storage と PowerShell の使用
-
 このセクションでは、PowerShell から Azure Storage にアクセスする方法を 5 分で説明します。
 
 **Azure を初めて使用する場合:** Microsoft Azure サブスクリプションと、そのサブスクリプションに関連付けられた Microsoft アカウントを入手してください。Azure の購入オプションの詳細については、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページ、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)に関するページ、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/) (MSDN、Microsoft Partner Network、BizSpark、その他の Microsoft プログラムのメンバー向け) に関するページをご覧ください。
@@ -38,100 +34,95 @@ Azure サブスクリプションの詳細については、「[Azure Active Dir
 
 **Microsoft Azure アカウントとサブスクリプションを作成済みである場合:**
 
-1.	[Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409) をダウンロードしてインストールします。
-2.	Windows PowerShell Integrated Scripting Environment (ISE) の起動: ローカル コンピューターで、**[スタート]** メニューを表示します。「**管理ツール**」と入力し、クリックして実行します。**[管理ツール]** ウィンドウで、**[Windows PowerShell ISE]** を右クリックし、**[管理者として実行]** をクリックします。
-3.	**Windows PowerShell ISE** で、**[ファイル]**、**[新規作成]** の順にクリックし、新しいスクリプト ファイルを作成します。
-4.	ここでは、Azure Storage にアクセスするための基本的な PowerShell コマンドを示すシンプルなスクリプトを取り上げます。このスクリプトでは、Azure アカウントをローカルの PowerShell 環境に追加するための Azure アカウント資格情報が最初に求められます。次に、既定の Azure サブスクリプションが設定され、Azure で新しいストレージ アカウントが作成されます。さらに、この新しいストレージ アカウントで新しいコンテナーが作成され、既存の画像ファイル (BLOB) がこのコンテナーにアップロードされます。このスクリプトにより、コンテナー内のすべての BLOB がリストされると、ローカル コンピューターに新しい格納先ディレクトリが作成され、画像ファイルがダウンロードされます。
-5.	次のコードのセクションで、**#begin** と **#end** の間のスクリプトを選択します。Ctrl キーを押しながら C キーを押し、クリップボードにコピーします。
-
-    	#begin
-    	# Update with the name of your subscription.
-    	$SubscriptionName = "YourSubscriptionName"
-
-    	# Give a name to your new storage account. It must be lowercase!
-    	$StorageAccountName = "yourstorageaccountname"
-
-    	# Choose "West US" as an example.
-    	$Location = "West US"
-
-    	# Give a name to your new container.
-    	$ContainerName = "imagecontainer"
-
-    	# Have an image file and a source directory in your local computer.
-    	$ImageToUpload = "C:\Images\HelloWorld.png"
-
-    	# A destination directory in your local computer.
-    	$DestinationFolder = "C:\DownloadImages"
-
-    	# Add your Azure account to the local PowerShell environment.
-    	Add-AzureAccount
-
-    	# Set a default Azure subscription.
-    	Select-AzureSubscription -SubscriptionName $SubscriptionName –Default
-
-    	# Create a new storage account.
-    	New-AzureStorageAccount –StorageAccountName $StorageAccountName -Location $Location
-
-    	# Set a default storage account.
-    	Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
-
-    	# Create a new container.
-    	New-AzureStorageContainer -Name $ContainerName -Permission Off
-
-    	# Upload a blob into a container.
-    	Set-AzureStorageBlobContent -Container $ContainerName -File $ImageToUpload
-
-    	# List all blobs in a container.
-    	Get-AzureStorageBlob -Container $ContainerName
-
-    	# Download blobs from the container:
-    	# Get a reference to a list of all blobs in a container.
-    	$blobs = Get-AzureStorageBlob -Container $ContainerName
-
-    	# Create the destination directory.
-    	New-Item -Path $DestinationFolder -ItemType Directory -Force  
-
-    	# Download blobs into the local destination directory.
-    	$blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
-    	#end
-
-5.	**Windows PowerShell ISE** で、Ctrl キーを押しながら V キーを押してスクリプトを貼り付けます。**[ファイル]**、**[保存]** の順にクリックします。**[名前を付けて保存]** ダイアログ ウィンドウで、スクリプト ファイルの名前を "mystoragescript" などとして入力します。**[保存]** をクリックします。
-
-6.	ここで、構成設定に基づいてスクリプト変数を更新する必要があります。たとえば、**$SubscriptionName** 変数を自分のサブスクリプションで更新する必要があります。その他の変数は、スクリプトで指定されたままにすることも、必要に応じて更新することも可能です。
-
-	- **$SubscriptionName:** この変数は、自分のサブスクリプション名で更新する必要があります。次の 3 つの方法のいずれかに従って、サブスクリプションの名前を確認します。
-
-		a.**Windows PowerShell ISE** で、**[ファイル]**、**[新規作成]** の順にクリックし、新しいスクリプト ファイルを作成します。次のスクリプトを新しいスクリプト ファイルにコピーし、**[デバッグ]**、**[実行/続行]** の順にクリックします。次のスクリプトでは、Azure アカウントをローカルの PowerShell 環境に追加するための Azure アカウント資格情報が最初に求められ、次に、ローカルの PowerShell セッション接続されているすべてのサブスクリプションが表示されます。このチュートリアルに従って作業する際に使用するサブスクリプションの名前を書き留めます。
-
-			Add-AzureAccount
-				Get-AzureSubscription | Format-Table SubscriptionName, IsDefault, IsCurrent, CurrentStorageAccountName
-
-		b.[Azure ポータル](https://portal.azure.com)でサブスクリプション名を検索してコピーするには、左側の [ハブ] メニューで **[サブスクリプション]** をクリックします。このガイドのスクリプトを実行する際に使用するサブスクリプションの名前をコピーします。
-
-		![Azure ポータル][Image2]
-
-		c.[Azure クラシック ポータル](https://manage.windowsazure.com/)でサブスクリプション名を検索してコピーするには、スクロール ダウンしてポータルの左側にある **[設定]** をクリックします。**[サブスクリプション]** をクリックすると、お客様のサブスクリプションの一覧が表示されます。このガイドで取り上げられているスクリプトを実行する際に使用するサブスクリプションの名前をコピーします。
-
-		![Azure クラシック ポータル][Image1]
-
-	- **$StorageAccountName:** スクリプトの所定の名前を使用するか、ストレージ アカウントの新しい名前を入力します。**重要:** ストレージ アカウントの名前は、Azure 上で一意である必要があります。また、小文字にする必要もあります。
-
-	- **$Location:** スクリプトの所定の "West US" を使用するか、その他の Azure の場所 (East US、North Europe など) を選択します。
-
-	- **$ContainerName:** スクリプトの所定の名前を使用するか、コンテナーの新しい名前を入力します。
-
-	- **$ImageToUpload:** ローカル コンピューター上の画像へのパスを入力します。たとえば、"C:\\Images\\HelloWorld.png" などです。
-
-	- **$DestinationFolder:** Azure Storage からダウンロードしたファイルを格納するローカル ディレクトリへのパスを入力します。たとえば、"C:\\DownloadImages" などです。
-
-7.	"mystoragescript.ps1" ファイル内のスクリプト変数を更新したら、**[ファイル]**、**[保存]** の順にクリックします。次に、**[デバッグ]** をクリックし、**[実行/続行]** をクリックするか **F5** キーを押してスクリプトを実行します。
+1. [Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409) をダウンロードしてインストールします。
+2. Windows PowerShell Integrated Scripting Environment (ISE) の起動: ローカル コンピューターで、**[スタート]** メニューを表示します。「**管理ツール**」と入力し、クリックして実行します。**[管理ツール]** ウィンドウで、**[Windows PowerShell ISE]** を右クリックし、**[管理者として実行]** をクリックします。
+3. **Windows PowerShell ISE** で、**[ファイル]**、**[新規作成]** の順にクリックし、新しいスクリプト ファイルを作成します。
+4. ここでは、Azure Storage にアクセスするための基本的な PowerShell コマンドを示すシンプルなスクリプトを取り上げます。このスクリプトでは、Azure アカウントをローカルの PowerShell 環境に追加するための Azure アカウント資格情報が最初に求められます。次に、既定の Azure サブスクリプションが設定され、Azure で新しいストレージ アカウントが作成されます。さらに、この新しいストレージ アカウントで新しいコンテナーが作成され、既存の画像ファイル (BLOB) がこのコンテナーにアップロードされます。このスクリプトにより、コンテナー内のすべての BLOB がリストされると、ローカル コンピューターに新しい格納先ディレクトリが作成され、画像ファイルがダウンロードされます。
+5. 次のコードのセクションで、**#begin** と **#end** の間のスクリプトを選択します。Ctrl キーを押しながら C キーを押し、クリップボードにコピーします。
+   
+   # begin
+   # Update with the name of your subscription.
+     $SubscriptionName = "YourSubscriptionName"
+   
+   # Give a name to your new storage account. It must be lowercase!
+     $StorageAccountName = "yourstorageaccountname"
+   
+   # Choose "West US" as an example.
+     $Location = "West US"
+   
+   # Give a name to your new container.
+     $ContainerName = "imagecontainer"
+   
+   # Have an image file and a source directory in your local computer.
+     $ImageToUpload = "C:\Images\HelloWorld.png"
+   
+   # A destination directory in your local computer.
+     $DestinationFolder = "C:\DownloadImages"
+   
+   # Add your Azure account to the local PowerShell environment.
+     Add-AzureAccount
+   
+   # Set a default Azure subscription.
+     Select-AzureSubscription -SubscriptionName $SubscriptionName –Default
+   
+   # Create a new storage account.
+     New-AzureStorageAccount –StorageAccountName $StorageAccountName -Location $Location
+   
+   # Set a default storage account.
+     Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
+   
+   # Create a new container.
+     New-AzureStorageContainer -Name $ContainerName -Permission Off
+   
+   # Upload a blob into a container.
+     Set-AzureStorageBlobContent -Container $ContainerName -File $ImageToUpload
+   
+   # List all blobs in a container.
+     Get-AzureStorageBlob -Container $ContainerName
+   
+   # Download blobs from the container:
+   # Get a reference to a list of all blobs in a container.
+     $blobs = Get-AzureStorageBlob -Container $ContainerName
+   
+   # Create the destination directory.
+     New-Item -Path $DestinationFolder -ItemType Directory -Force  
+   
+   # Download blobs into the local destination directory.
+     $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
+   
+   # end
+6. **Windows PowerShell ISE** で、Ctrl キーを押しながら V キーを押してスクリプトを貼り付けます。**[ファイル]**、**[保存]** の順にクリックします。**[名前を付けて保存]** ダイアログ ウィンドウで、スクリプト ファイルの名前を "mystoragescript" などとして入力します。**[保存]** をクリックします。
+7. ここで、構成設定に基づいてスクリプト変数を更新する必要があります。たとえば、**$SubscriptionName** 変数を自分のサブスクリプションで更新する必要があります。その他の変数は、スクリプトで指定されたままにすることも、必要に応じて更新することも可能です。
+   
+   * **$SubscriptionName:** この変数は、自分のサブスクリプション名で更新する必要があります。次の 3 つの方法のいずれかに従って、サブスクリプションの名前を確認します。
+     
+     a.**Windows PowerShell ISE** で、**[ファイル]**、**[新規作成]** の順にクリックし、新しいスクリプト ファイルを作成します。次のスクリプトを新しいスクリプト ファイルにコピーし、**[デバッグ]**、**[実行/続行]** の順にクリックします。次のスクリプトでは、Azure アカウントをローカルの PowerShell 環境に追加するための Azure アカウント資格情報が最初に求められ、次に、ローカルの PowerShell セッション接続されているすべてのサブスクリプションが表示されます。このチュートリアルに従って作業する際に使用するサブスクリプションの名前を書き留めます。
+     
+         Add-AzureAccount
+             Get-AzureSubscription | Format-Table SubscriptionName, IsDefault, IsCurrent, CurrentStorageAccountName
+     
+     b.[Azure ポータル](https://portal.azure.com)でサブスクリプション名を検索してコピーするには、左側の [ハブ] メニューで **[サブスクリプション]** をクリックします。このガイドのスクリプトを実行する際に使用するサブスクリプションの名前をコピーします。
+     
+     ![Azure ポータル][Image2]
+     
+     c.[Azure クラシック ポータル](https://manage.windowsazure.com/)でサブスクリプション名を検索してコピーするには、スクロール ダウンしてポータルの左側にある **[設定]** をクリックします。**[サブスクリプション]** をクリックすると、お客様のサブスクリプションの一覧が表示されます。このガイドで取り上げられているスクリプトを実行する際に使用するサブスクリプションの名前をコピーします。
+     
+     ![Azure クラシック ポータル][Image1]
+   * **$StorageAccountName:** スクリプトの所定の名前を使用するか、ストレージ アカウントの新しい名前を入力します。**重要:** ストレージ アカウントの名前は、Azure 上で一意である必要があります。また、小文字にする必要もあります。
+   * **$Location:** スクリプトの所定の "West US" を使用するか、その他の Azure の場所 (East US、North Europe など) を選択します。
+   * **$ContainerName:** スクリプトの所定の名前を使用するか、コンテナーの新しい名前を入力します。
+   * **$ImageToUpload:** ローカル コンピューター上の画像へのパスを入力します。たとえば、"C:\\Images\\HelloWorld.png" などです。
+   * **$DestinationFolder:** Azure Storage からダウンロードしたファイルを格納するローカル ディレクトリへのパスを入力します。たとえば、"C:\\DownloadImages" などです。
+8. "mystoragescript.ps1" ファイル内のスクリプト変数を更新したら、**[ファイル]**、**[保存]** の順にクリックします。次に、**[デバッグ]** をクリックし、**[実行/続行]** をクリックするか **F5** キーを押してスクリプトを実行します。
 
 スクリプトを実行すると、ダウンロードした画像ファイルを格納するローカルの格納先フォルダーの準備が整います。次のスクリーンショットは、この出力の例を示しています。
 
 ![BLOB をダウンロードする][Image3]
 
-
-> [AZURE.NOTE] 「5 分で始める、Azure Storage と PowerShell の使用」のセクションでは、Azure Storage で Azure PowerShell を使用する方法について簡単に説明しました。詳細と手順については、以下のセクションを参照することをお勧めします。
+> [!NOTE]
+> 「5 分で始める、Azure Storage と PowerShell の使用」のセクションでは、Azure Storage で Azure PowerShell を使用する方法について簡単に説明しました。詳細と手順については、以下のセクションを参照することをお勧めします。
+> 
+> 
 
 ## Azure Storage で Azure PowerShell を使用するための前提条件
 このガイドで取り上げている PowerShell コマンドレットを実行するには、既に説明したように Azure サブスクリプションとアカウントが必要です。
@@ -141,64 +132,58 @@ Azure PowerShell は、Windows PowerShell から Azure を管理するコマン�
 コマンドレットは、標準の Windows PowerShell コンソールまたは Windows PowerShell Integrated Scripting Environment (ISE) から実行できます。たとえば、**Windows PowerShell ISE** を開くには、[スタート] メニューで、「管理ツール」と入力し、クリックして実行します。[管理ツール] ウィンドウで、[Windows PowerShell ISE] を右クリックし、[管理者として実行] をクリックします。
 
 ## Azure でストレージ アカウントを管理する方法
-
 ### 既定の Azure サブスクリプションを設定する方法
 Azure PowerShell を使用して Azure Storage を管理するには、Azure Active Directory 認証または証明書ベースの認証を使用して、Azure でのクライアント環境を認証する必要があります。詳細については、[Azure PowerShell のインストールと構成方法](../powershell-install-configure.md)に関するページを参照してください。このガイドでは、Azure Active Directory 認証を使用します。
 
-1.	Windows PowerShell ISE で、次のコマンドを入力し、Azure アカウントをローカルの PowerShell 環境に追加します。
-
-    `Add-AzureAccount`
-
-2.	[Microsoft Azure へのサインイン] ウィンドウで、アカウントに関連付けられた電子メール アドレスとパスワードを入力します。Azure により資格情報が認証および保存され、ウィンドウが閉じます。
-
-3.	次のコマンドを実行し、ローカルの PowerShell 環境内の Azure アカウントを表示して、自分のアカウントが含まれていることを確認します。
-
-	`Get-AzureAccount`
-
-4.	次のコマンドレットを実行し、ローカルの PowerShell セッションに接続されているすべてのサブスクリプションを表示して、自分のサブスクリプションが含まれていることを確認します。
-
-	`Get-AzureSubscription | Format-Table SubscriptionName, IsDefault, IsCurrent, CurrentStorageAccountName`
-
-5.	既定の Azure サブスクリプションを設定するには、Select-AzureSubscription コマンドレットを実行します。
-
-	    $SubscriptionName = 'Your subscription Name'
-    	Select-AzureSubscription -SubscriptionName $SubscriptionName –Default
-
-6.	Get-AzureSubscription コマンドレットを実行することで、既定のサブスクリプションの名前を確認します。
-
-	`Get-AzureSubscription -Default`
-
-7.	Azure Storage に使用できるすべての PowerShell コマンドレットを確認するには、次を実行します。
-
-	`Get-Command -Module Azure -Noun *Storage*`
+1. Windows PowerShell ISE で、次のコマンドを入力し、Azure アカウントをローカルの PowerShell 環境に追加します。
+   
+   `Add-AzureAccount`
+2. [Microsoft Azure へのサインイン] ウィンドウで、アカウントに関連付けられた電子メール アドレスとパスワードを入力します。Azure により資格情報が認証および保存され、ウィンドウが閉じます。
+3. 次のコマンドを実行し、ローカルの PowerShell 環境内の Azure アカウントを表示して、自分のアカウントが含まれていることを確認します。
+   
+   `Get-AzureAccount`
+4. 次のコマンドレットを実行し、ローカルの PowerShell セッションに接続されているすべてのサブスクリプションを表示して、自分のサブスクリプションが含まれていることを確認します。
+   
+   `Get-AzureSubscription | Format-Table SubscriptionName, IsDefault, IsCurrent, CurrentStorageAccountName`
+5. 既定の Azure サブスクリプションを設定するには、Select-AzureSubscription コマンドレットを実行します。
+   
+     $SubscriptionName = 'Your subscription Name'
+     Select-AzureSubscription -SubscriptionName $SubscriptionName –Default
+6. Get-AzureSubscription コマンドレットを実行することで、既定のサブスクリプションの名前を確認します。
+   
+   `Get-AzureSubscription -Default`
+7. Azure Storage に使用できるすべての PowerShell コマンドレットを確認するには、次を実行します。
+   
+   `Get-Command -Module Azure -Noun *Storage*`
 
 ### 新しい Azure ストレージ アカウントを作成する方法
 Azure Storage を使用するには、ストレージ アカウントが必要です。コンピューターを構成してサブスクリプションに接続できるようにすると、新しい Azure ストレージ アカウントを作成できます。
 
-1.	Get-AzureLocation コマンドレットを実行し、使用できるデータセンターの場所をすべて見つけます。
+1. Get-AzureLocation コマンドレットを実行し、使用できるデータセンターの場所をすべて見つけます。
+   
+   `Get-AzureLocation | Format-Table -Property Name, AvailableServices, StorageAccountTypes`
+2. New-AzureStorageAccount コマンドレットを実行し、新しいストレージ アカウントを作成します。次の例では、"West US" というデータセンターに新しいストレージ アカウントを作成します。
+   
+     $location = "West US"
+     $StorageAccountName = "yourstorageaccount"
+     New-AzureStorageAccount –StorageAccountName $StorageAccountName -Location $location
 
-    `Get-AzureLocation | Format-Table -Property Name, AvailableServices, StorageAccountTypes`
-
-2.	New-AzureStorageAccount コマンドレットを実行し、新しいストレージ アカウントを作成します。次の例では、"West US" というデータセンターに新しいストレージ アカウントを作成します。
-
-    	$location = "West US"
-	    $StorageAccountName = "yourstorageaccount"
-	    New-AzureStorageAccount –StorageAccountName $StorageAccountName -Location $location
-
-> [AZURE.IMPORTANT] ストレージ アカウントの名前は Azure 内で一意であり、小文字でなければなりません。名前付け規則と制限の詳細については、[Azure ストレージ アカウントの概要](storage-create-storage-account.md)に関するページと「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](http://msdn.microsoft.com/library/azure/dd135715.aspx)」を参照してください。
+> [!IMPORTANT]
+> ストレージ アカウントの名前は Azure 内で一意であり、小文字でなければなりません。名前付け規則と制限の詳細については、[Azure ストレージ アカウントの概要](storage-create-storage-account.md)に関するページと「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](http://msdn.microsoft.com/library/azure/dd135715.aspx)」を参照してください。
+> 
+> 
 
 ### 既定の Azure ストレージ アカウントを設定する方法
 サブスクリプションで複数のストレージ アカウントを持つことができます。それらのいずれかのアカウントを選択し、同じ PowerShell セッションのすべてのストレージ コマンドに対する既定のストレージ アカウントとして設定できます。そうすることにより、ストレージ コンテキストを明示的に指定しなくても、Azure PowerShell ストレージ コマンドを実行できます。
 
-1.	サブスクリプションの既定のストレージ アカウントを設定するために、Set-AzureSubscription コマンドレットを実行します。
-
-		$SubscriptionName = "Your subscription name"
-     	$StorageAccountName = "yourstorageaccount"  
-    	Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
-
-2.	次に、Get-AzureSubscription コマンドレットを実行し、ストレージ アカウントが既定のサブスクリプション アカウントに関連付けられていることを確認します。このコマンドは、現在のサブスクリプションにおけるサブスクリプション プロパティを返します。これには、現在のストレージ アカウントが含まれます。
-
-	    Get-AzureSubscription –Current
+1. サブスクリプションの既定のストレージ アカウントを設定するために、Set-AzureSubscription コマンドレットを実行します。
+   
+     $SubscriptionName = "Your subscription name"
+      $StorageAccountName = "yourstorageaccount"  
+     Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
+2. 次に、Get-AzureSubscription コマンドレットを実行し、ストレージ アカウントが既定のサブスクリプション アカウントに関連付けられていることを確認します。このコマンドは、現在のサブスクリプションにおけるサブスクリプション プロパティを返します。これには、現在のストレージ アカウントが含まれます。
+   
+     Get-AzureSubscription –Current
 
 ### サブスクリプション内のすべての Azure ストレージ アカウントをリストする方法
 Azure サブスクリプションごとに最大 100 個のストレージ アカウントを作成できます。制限に関する最新情報については、[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)に関するページを参照してください。
@@ -212,46 +197,42 @@ Azure ストレージ コンテキストは、ストレージ資格情報をカ�
 
 次の 3 つの方法のいずれかを使用してストレージ コンテキストを作成します。
 
-- [Get-AzureStorageKey](http://msdn.microsoft.com/library/azure/dn495235.aspx) コマンドレットを実行し、Azure ストレージ アカウントのプライマリ ストレージ アクセス キーを確認します。次に、[New-AzureStorageContext](http://msdn.microsoft.com/library/azure/dn806380.aspx) コマンドレットを呼び出し、ストレージ コンテキストを作成します。
-
-    	$StorageAccountName = "yourstorageaccount"
-    	$StorageAccountKey = Get-AzureStorageKey -StorageAccountName $StorageAccountName
-    	$Ctx = New-AzureStorageContext $StorageAccountName -StorageAccountKey $StorageAccountKey.Primary
-
-
-- Azure ストレージ コンテナーの Shared Access Signature トークンを生成し、これを使用してストレージ コンテキストを作成します。
-
-    	$sasToken = New-AzureStorageContainerSASToken -Container abc -Permission rl
-    	$Ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -SasToken $sasToken
-
-	詳細については、「[New-AzureStorageContainerSASToken](http://msdn.microsoft.com/library/azure/dn806416.aspx)」と「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
-
-- 場合によっては、新しいストレージ コンテキストの作成時にサービスのエンドポイントを指定することもあります。これは、BLOB サービスでストレージ アカウントのカスタム ドメイン名を登録した場合に必要になることがあります。または、アクセスしているストレージ リソースに対して Shared Access Signature を使用します。次に示すように、接続文字列でサービスのエンドポイントを設定し、このエンドポイントを使用して新しいストレージ コンテキストを作成します。
-
-    	$ConnectionString = "DefaultEndpointsProtocol=http;BlobEndpoint=<blobEndpoint>;QueueEndpoint=<QueueEndpoint>;TableEndpoint=<TableEndpoint>;AccountName=<AccountName>;AccountKey=<AccountKey>"
-    	$Ctx = New-AzureStorageContext -ConnectionString $ConnectionString
+* [Get-AzureStorageKey](http://msdn.microsoft.com/library/azure/dn495235.aspx) コマンドレットを実行し、Azure ストレージ アカウントのプライマリ ストレージ アクセス キーを確認します。次に、[New-AzureStorageContext](http://msdn.microsoft.com/library/azure/dn806380.aspx) コマンドレットを呼び出し、ストレージ コンテキストを作成します。
+  
+        $StorageAccountName = "yourstorageaccount"
+        $StorageAccountKey = Get-AzureStorageKey -StorageAccountName $StorageAccountName
+        $Ctx = New-AzureStorageContext $StorageAccountName -StorageAccountKey $StorageAccountKey.Primary
+* Azure ストレージ コンテナーの Shared Access Signature トークンを生成し、これを使用してストレージ コンテキストを作成します。
+  
+        $sasToken = New-AzureStorageContainerSASToken -Container abc -Permission rl
+        $Ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -SasToken $sasToken
+  
+    詳細については、「[New-AzureStorageContainerSASToken](http://msdn.microsoft.com/library/azure/dn806416.aspx)」と「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+* 場合によっては、新しいストレージ コンテキストの作成時にサービスのエンドポイントを指定することもあります。これは、BLOB サービスでストレージ アカウントのカスタム ドメイン名を登録した場合に必要になることがあります。または、アクセスしているストレージ リソースに対して Shared Access Signature を使用します。次に示すように、接続文字列でサービスのエンドポイントを設定し、このエンドポイントを使用して新しいストレージ コンテキストを作成します。
+  
+        $ConnectionString = "DefaultEndpointsProtocol=http;BlobEndpoint=<blobEndpoint>;QueueEndpoint=<QueueEndpoint>;TableEndpoint=<TableEndpoint>;AccountName=<AccountName>;AccountKey=<AccountKey>"
+        $Ctx = New-AzureStorageContext -ConnectionString $ConnectionString
 
 ストレージ接続文字列を構成する方法の詳細については、[接続文字列の構成](storage-configure-connection-string.md)に関するページを参照してください。
 
 これで、コンピューターを設定できました。また、Azure PowerShell を使用してサブスクリプションとストレージ アカウントを管理する方法を確認できました。次のセクションでは、Azure BLOB と BLOB スナップショットを管理する方法について説明します。
 
 ### Azure Storage キーを取得および再生成する方法
-
 Azure Storage アカウントには 2 つのアカウント キーがあります。次のコマンドレットを使用すると、ご自身のキーを取得できます。
 
-	Get-AzureStorageKey -StorageAccountName "yourstorageaccount"
+    Get-AzureStorageKey -StorageAccountName "yourstorageaccount"
 
 特定のキーを取得するには、次のコマンドレットを使用します。有効な値は Primary と Secondary です。
 
-	(Get-AzureStorageKey -StorageAccountName $StorageAccountName).Primary
+    (Get-AzureStorageKey -StorageAccountName $StorageAccountName).Primary
 
-	(Get-AzureStorageKey -StorageAccountName $StorageAccountName).Secondary
+    (Get-AzureStorageKey -StorageAccountName $StorageAccountName).Secondary
 
 キーを再生成するには、次のコマンドレットを使用します。-KeyType の有効な値は "Primary" と "Secondary" です
 
-	New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Primary”
+    New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Primary”
 
-	New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Secondary”
+    New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Secondary”
 
 ## Azure BLOB の管理方法
 Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。このセクションでは、Azure BLOB Storage サービスの概念について理解しているユーザーを対象としています。詳細については、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」と「[BLOB サービスの概念](http://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
@@ -262,7 +243,10 @@ Azure Storage のすべての BLOB はコンテナーに格納する必要があ
     $StorageContainerName = "yourcontainername"
     New-AzureStorageContainer -Name $StorageContainerName -Permission Off
 
-> [AZURE.NOTE] **Off**、**BLOB**、**Container** という 3 つのレベルの匿名読み取りアクセスがあります。BLOB に対する匿名アクセスを許可しない場合は、Permission パラメーターを **Off** に設定します。既定では、新しいコンテナーはプライベートであり、アカウント所有者のみがアクセスできます。BLOB リソースに対する匿名パブリック読み取りアクセスを許可するが、コンテナー メタデータまたはコンテナー内の BLOB の一覧に対するアクセスは許可しない場合は、Permission パラメーターを **BLOB** に設定します。BLOB リソース、コンテナー メタデータ、コンテナー内の BLOB の一覧に対する完全パブリック読み取りアクセスを許可する場合は、Permission パラメーターを **Container** に設定します。詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
+> [!NOTE]
+> **Off**、**BLOB**、**Container** という 3 つのレベルの匿名読み取りアクセスがあります。BLOB に対する匿名アクセスを許可しない場合は、Permission パラメーターを **Off** に設定します。既定では、新しいコンテナーはプライベートであり、アカウント所有者のみがアクセスできます。BLOB リソースに対する匿名パブリック読み取りアクセスを許可するが、コンテナー メタデータまたはコンテナー内の BLOB の一覧に対するアクセスは許可しない場合は、Permission パラメーターを **BLOB** に設定します。BLOB リソース、コンテナー メタデータ、コンテナー内の BLOB の一覧に対する完全パブリック読み取りアクセスを許可する場合は、Permission パラメーターを **Container** に設定します。詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
+> 
+> 
 
 ### BLOB をコンテナーにアップロードする方法
 Azure Blob Storage では、ブロック BLOB とページ BLOB がサポートされています。詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
@@ -429,8 +413,8 @@ Azure Table Storage サービスは NoSQL データストアであり、これ�
 #### テーブル エンティティを追加する方法
 テーブルにエンティティを追加するには、まず、エンティティのプロパティを定義するオブジェクトを作成します。1 個のエンティティは、最大 255 個のプロパティを含むことができます。これには、**PartitionKey**、**RowKey**、**Timestamp** の 3 個のシステム プロパティも含まれます。**PartitionKey** と **RowKey** の値を挿入または更新することはユーザーが担当します。一方、サーバーは **Timestamp** の値を管理します。この値は変更できません。**PartitionKey** と **RowKey** が組み合わさって、テーブル内の各エンティティを一意に識別します。
 
--	**PartitionKey**: エンティティが格納されるパーティションを決定します。
--	**RowKey**: パーティション内のエンティティを一意に識別します。
+* **PartitionKey**: エンティティが格納されるパーティションを決定します。
+* **RowKey**: パーティション内のエンティティを一意に識別します。
 
 1 個のエンティティに対して最大 252 個のカスタム プロパティを定義できます。詳細については、「[Table サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
 
@@ -623,14 +607,14 @@ PowerShell を使用してストレージ ログを有効にする方法とロ�
 ## Shared Access Signature (SAS) や格納されているアクセス ポリシーの選択を管理する方法
 共有アクセス署名は、Azure Storage を使用するあらゆるアプリケーションのセキュリティ モデルの重要な部分となります。アカウント キーを知らせずに、ストレージ アカウントへの制限付きアクセス許可をクライアントに付与する場合に便利です。既定では、ストレージ アカウントの所有者のみがそのアカウントを使って BLOB、テーブル、キューなどにアクセスできます。サービスやアプリケーションで、アクセス キーを共有せずに他のクライアントでそれらのリソースを使えるようにするには、次の 3 つの方法があります。
 
-- 匿名ユーザーにコンテナーや BLOB への読み込みアクセスを許可するようにコンテナーのアクセス許可を設定します。これはテーブルやキューでは許可されません。
-- Shared Access Signature を使用して、特定の期間のコンテナー、BLOB、キュー、テーブルへの制限付きアクセス権を付与します。
-- 保存されたアクセス ポリシーを使用して、コンテナー、BLOB、キュー、テーブルに対する共有アクセス署名の制御を追加します。保存されたアクセス ポリシーによって、開始時刻、有効期限、署名の許可の変更や、署名が発行された後の取り消しが行えるようになります。
+* 匿名ユーザーにコンテナーや BLOB への読み込みアクセスを許可するようにコンテナーのアクセス許可を設定します。これはテーブルやキューでは許可されません。
+* Shared Access Signature を使用して、特定の期間のコンテナー、BLOB、キュー、テーブルへの制限付きアクセス権を付与します。
+* 保存されたアクセス ポリシーを使用して、コンテナー、BLOB、キュー、テーブルに対する共有アクセス署名の制御を追加します。保存されたアクセス ポリシーによって、開始時刻、有効期限、署名の許可の変更や、署名が発行された後の取り消しが行えるようになります。
 
 Shared Access Signature の形式は、次の 2 つのいずれかです。
 
-- **アドホック SAS**: アドホック SAS を作成すると、開始時刻、有効期限、SAS へのアクセス許可がすべて、SAS URI で指定されます。この種類の SAS は、コンテナー、BLOB、テーブル、キューで作成できます。これは取り消しできません。
-- **保存されているアクセス ポリシーのある SAS:** 保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、またはキュー) で定義されており、これを使用して、1 つ以上の共有アクセス署名のコンテナーを管理できます。保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。この種類の SAS は、取り消しできません。
+* **アドホック SAS**: アドホック SAS を作成すると、開始時刻、有効期限、SAS へのアクセス許可がすべて、SAS URI で指定されます。この種類の SAS は、コンテナー、BLOB、テーブル、キューで作成できます。これは取り消しできません。
+* **保存されているアクセス ポリシーのある SAS:** 保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、またはキュー) で定義されており、これを使用して、1 つ以上の共有アクセス署名のコンテナーを管理できます。保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。この種類の SAS は、取り消しできません。
 
 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」と「[コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
 
@@ -670,43 +654,39 @@ New-AzureStorageTableStoredAccessPolicy コマンドレットを使用して新�
 
 AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関連付けられたストレージ コンテキストを作成する必要があります。次の手順に従って開始します。
 
-1.	[Get-AzureEnvironment](https://msdn.microsoft.com/library/azure/dn790368.aspx) コマンドレットを実行し、使用できる Azure 環境を確認します。
-
-    `Get-AzureEnvironment`
-
-2.	Azure China のアカウントを Windows PowerShell に追加します。
-
-    `Add-AzureAccount –Environment AzureChinaCloud`
-
-3.	AzureChinaCloud アカウントのストレージ コンテキストを作成します。
-
-    	$Ctx = New-AzureStorageContext -StorageAccountName $AccountName -StorageAccountKey $AccountKey> -Environment AzureChinaCloud
+1. [Get-AzureEnvironment](https://msdn.microsoft.com/library/azure/dn790368.aspx) コマンドレットを実行し、使用できる Azure 環境を確認します。
+   
+   `Get-AzureEnvironment`
+2. Azure China のアカウントを Windows PowerShell に追加します。
+   
+   `Add-AzureAccount –Environment AzureChinaCloud`
+3. AzureChinaCloud アカウントのストレージ コンテキストを作成します。
+   
+     $Ctx = New-AzureStorageContext -StorageAccountName $AccountName -StorageAccountKey $AccountKey> -Environment AzureChinaCloud
 
 [U.S.Azure Government](https://azure.microsoft.com/features/gov/) で Azure Storage を使用するには、新しい環境を定義し、その環境で新しいストレージ コンテキストを作成する必要があります。
 
-1.	[Get-AzureEnvironment](https://msdn.microsoft.com/library/azure/dn790368.aspx) コマンドレットを実行し、使用できる Azure 環境を確認します。
-
-    `Get-AzureEnvironment`
-
-2.	Azure 米国政府のアカウントを Windows PowerShell に追加します。
-
-    `Add-AzureAccount –Environment AzureUSGovernment`
-
-3.	AzureUSGovernment アカウントのストレージ コンテキストを作成します。
-
-    	$Ctx = New-AzureStorageContext -StorageAccountName $AccountName -StorageAccountKey $AccountKey> -Environment AzureUSGovernment
+1. [Get-AzureEnvironment](https://msdn.microsoft.com/library/azure/dn790368.aspx) コマンドレットを実行し、使用できる Azure 環境を確認します。
+   
+   `Get-AzureEnvironment`
+2. Azure 米国政府のアカウントを Windows PowerShell に追加します。
+   
+   `Add-AzureAccount –Environment AzureUSGovernment`
+3. AzureUSGovernment アカウントのストレージ コンテキストを作成します。
+   
+     $Ctx = New-AzureStorageContext -StorageAccountName $AccountName -StorageAccountKey $AccountKey> -Environment AzureUSGovernment
 
 詳細については、次を参照してください。
 
-- [Microsoft Azure Government 開発者向けガイド](../azure-government-developer-guide.md)
-- [Azure in China アプリケーションに関する開発者用メモ](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+* [Microsoft Azure Government 開発者向けガイド](../azure-government-developer-guide.md)
+* [Azure in China アプリケーションに関する開発者用メモ](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 
 ## 次のステップ
 このガイドでは、Azure PowerShell を使用して Azure Storage を管理する方法を確認しました。詳細についての関連記事とリソースがあります。
 
-- [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
-- [Azure Storage の PowerShell コマンドレット](http://msdn.microsoft.com/library/azure/dn806401.aspx)
-- [Windows PowerShell リファレンス](https://msdn.microsoft.com/library/ms714469.aspx)
+* [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Storage の PowerShell コマンドレット](http://msdn.microsoft.com/library/azure/dn806401.aspx)
+* [Windows PowerShell リファレンス](https://msdn.microsoft.com/library/ms714469.aspx)
 
 [Image1]: ./media/storage-powershell-guide-full/Subscription_currentportal.png
 [Image2]: ./media/storage-powershell-guide-full/Subscription_Previewportal.png

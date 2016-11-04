@@ -1,38 +1,41 @@
-<properties 
-	pageTitle="Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法" 
-	description="API Management で OAuth 2.0 を使用してユーザーを承認する方法について説明します。" 
-	services="api-management" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="erikre" 
-	editor=""/>
+---
+title: Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
+description: API Management で OAuth 2.0 を使用してユーザーを承認する方法について説明します。
+services: api-management
+documentationcenter: ''
+author: steved0x
+manager: erikre
+editor: ''
 
-<tags 
-	ms.service="api-management" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2016" 
-	ms.author="sdanie"/>
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/24/2016
+ms.author: sdanie
 
+---
 # Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
-
 多くの API では、[OAuth 2.0](http://oauth.net/2/) がサポートされています。OAuth 2.0 を使用すると、API をセキュリティで保護して、有効なユーザーのみにアクセスが許可されること、および有効なユーザーが許可されたリソースのみにアクセスできることを保証できます。Azure API Management では、対話型の開発者コンソールでそのような API を使用できるようにするために、OAuth 2.0 に対応する API を使用するサービス インスタンスを構成できます。
 
 ## <a name="prerequisites"> </a>前提条件
-
 このガイドでは、開発者アカウントに OAuth 2.0 認証を使用するように API Management サービス インスタンスを構成する方法を説明していますが、OAuth 2.0 プロバイダーを構成する方法は説明していません。手順は似ていて、API Management サービス インスタンスでの OAuth 2.0 の構成に使用される情報は同じですが、各 OAuth 2.0 プロバイダーの構成は異なっています。このトピックは、Azure Active Directory を OAuth 2.0 プロバイダーとして使用する例を示しています。
 
->[AZURE.NOTE] Azure Active Directory を使用して OAuth 2.0 を構成する方法について詳しくは、[WebApp-GraphAPI-DotNet][] のサンプルを参照してください。
+> [!NOTE]
+> Azure Active Directory を使用して OAuth 2.0 を構成する方法について詳しくは、[WebApp-GraphAPI-DotNet][WebApp-GraphAPI-DotNet] のサンプルを参照してください。
+> 
+> 
 
 ## <a name="step1"> </a>API Management で OAuth 2.0 認証サーバーを構成する
-
 最初に、ご利用の API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
->[AZURE.NOTE] まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
+> [!NOTE]
+> まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][Azure API Management の使用]」チュートリアルの「[API Management インスタンスの作成][API Management インスタンスの作成]」を参照してください。
+> 
+> 
 
 左側の **[API Management]** メニューで **[セキュリティ]** をクリックし、**[OAuth 2.0]** をクリックしてから、**[認証サーバーの追加 (Add authorization server)]** をクリックします。
 
@@ -44,7 +47,10 @@
 
 **[名前]** フィールドと **[説明]** フィールドに、名前とオプションの説明を入力します。
 
->[AZURE.NOTE] これらのフィールドは、OAuth 2.0 認証サーバーを現在の API Management サービス インスタンス内で識別するために使用されるもので、それらの値が OAuth 2.0 サーバーによって自動入力されることはありません。
+> [!NOTE]
+> これらのフィールドは、OAuth 2.0 認証サーバーを現在の API Management サービス インスタンス内で識別するために使用されるもので、それらの値が OAuth 2.0 サーバーによって自動入力されることはありません。
+> 
+> 
 
 **[クライアント登録ページ URL (Client registration page URL)]** を入力します。このページでは、ユーザーがアカウントを作成して管理できます。このページは使用される OAuth 2.0 プロバイダーによって異なります。**[クライアント登録ページ URL]** では、ユーザーによるアカウント管理をサポートする OAuth 2.0 プロバイダーについて、ユーザーが自身のアカウントを作成および構成するために使用できるページを指定します。この機能を OAuth 2.0 プロバイダーがサポートしている場合でも、組織によってはこの機能を構成または使用していない場合があります。OAuth 2.0 プロバイダーでユーザーによるアカウント管理が構成されていない場合は、会社の URL、`https://placeholder.contoso.com` のような URL などのプレースホルダー URL を入力してください。
 
@@ -81,7 +87,6 @@ Azure Active Directory OAuth 2.0 サーバーでは、**[トークン エンド�
 このフォームが完了したら、**[保存]** をクリックして API Management OAuth 2.0 認証サーバーの構成を保存します。サーバーの構成が保存された後、次のセクションで説明されているように、この構成を使用するように API を構成できます。
 
 ## <a name="step2"> </a>OAuth 2.0 ユーザー認証を使用するように API を構成する
-
 左側の **[API Management]** メニューで **[API]** をクリックし、必要な API の名前をクリックし、**[セキュリティ]** をクリックしてから、**[OAuth 2.0]** のボックスにチェックマークを入れます。
 
 ![ユーザー認証][api-management-user-authorization]
@@ -91,7 +96,6 @@ Azure Active Directory OAuth 2.0 サーバーでは、**[トークン エンド�
 ![ユーザー認証][api-management-user-authorization-save]
 
 ## <a name="step3"> </a>開発者ポータルで OAuth 2.0 ユーザー認証をテストする
-
 OAuth 2.0 認証サーバーを構成して、そのサーバーを使用するように API を構成した後、開発者ポータルに移動して API を呼び出すことにより、そのサーバーをテストできます。右上のメニューで、**[開発者ポータル]** をクリックします。
 
 ![開発者ポータル][api-management-developer-portal-menu]
@@ -100,7 +104,10 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 
 ![Echo API][api-management-apis-echo-api]
 
->[AZURE.NOTE] アカウントに対して構成されている (またはアカウントから見える) API が 1 つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
+> [!NOTE]
+> アカウントに対して構成されている (またはアカウントから見える) API が 1 つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
+> 
+> 
 
 **[GET Resource]** 操作を選択し、**[コンソールを開く]** をクリックして、ドロップダウンで **[認証コード]** を選択します。
 
@@ -108,7 +115,10 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 
 **[認証コード]** が選択されると、OAuth 2.0 プロバイダーのサインイン フォームがあるポップアップ ウィンドウが表示されます。この例では、サインイン フォームは Azure Active Directory によって提供されています。
 
->[AZURE.NOTE] ポップアップが無効になっている場合は、それを有効にするように伝えるプロンプトがブラウザーによって出されます。ポップアップを有効にした後に、再び **[認証コード]** を選択すると、サインイン フォームが表示されます。
+> [!NOTE]
+> ポップアップが無効になっている場合は、それを有効にするように伝えるプロンプトがブラウザーによって出されます。ポップアップを有効にした後に、再び **[認証コード]** を選択すると、サインイン フォームが表示されます。
+> 
+> 
 
 ![サインイン][api-management-oauth2-signin]
 
@@ -119,10 +129,11 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 これで、残りのパラメーター用に必要な値を構成して、要求を送信できます。
 
 ## 次のステップ
-
 OAuth 2.0 と API Management の詳細については、次のビデオとこの[記事](api-management-howto-protect-backend-with-aad.md)をご覧ください。
 
-> [AZURE.VIDEO protecting-web-api-backend-with-azure-active-directory-and-api-management]
+> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Protecting-Web-API-Backend-with-Azure-Active-Directory-and-API-Management/player]
+> 
+> 
 
 [api-management-management-console]: ./media/api-management-howto-oauth2/api-management-management-console.png
 [api-management-oauth2]: ./media/api-management-howto-oauth2/api-management-oauth2.png

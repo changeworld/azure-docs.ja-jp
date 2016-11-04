@@ -1,39 +1,34 @@
-<properties
-    pageTitle="Python から Table ストレージを使用する方法 | Microsoft Azure"
-    description="NoSQL データ ストアの Azure Table Storage を使用して、構造化データをクラウドに格納します。"
-    services="storage"
-    documentationCenter="python"
-    authors="tamram"
-    manager="carmonm"
-    editor="tysonn"/>
+---
+title: Python から Table ストレージを使用する方法 | Microsoft Docs
+description: NoSQL データ ストアの Azure Table Storage を使用して、構造化データをクラウドに格納します。
+services: storage
+documentationcenter: python
+author: tamram
+manager: carmonm
+editor: tysonn
 
-<tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="python"
-    ms.topic="article"
-    ms.date="10/18/2016"
-    ms.author="tamram"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: python
+ms.topic: article
+ms.date: 10/18/2016
+ms.author: tamram
 
-
-
+---
 # <a name="how-to-use-table-storage-from-python"></a>Python から Table ストレージを使用する方法
+[!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-<br/>
-[AZURE.INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Overview
-
 このガイドでは、Azure Table ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Python で作成され、 [Microsoft Azure Storage SDK for Python]を使用しています。 紹介するシナリオは、テーブルのエンティティの挿入とクエリ実行のほか、テーブルの作成と削除などがあります。
 
-[AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-table"></a>テーブルを作成する
-
 **TableService** オブジェクトを使用して、テーブル サービスを操作できます。 次のコードでは、 **TableService** オブジェクトを作成します。 プログラムを使用して Azure Storage にアクセスするすべての Python ファイルの先頭付近に、コードを追加します。
 
     from azure.storage.table import TableService, Entity
@@ -45,7 +40,6 @@
     table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
-
 エンティティを追加するには、最初に、エンティティのプロパティ名と値を定義するディクショナリまたはエンティティを作成します。 すべてのエンティティについて、**PartitionKey** と **RowKey** を指定する必要があることにご注意ください。 これらは、エンティティの一意の識別子になります。 これらの値を使用してクエリすると、他のプロパティをクエリするよりもはるかに高速に実行されます。 システムでは **PartitionKey** が使用されて多くのストレージ ノードにテーブル エンティティが自動的に配布されます。
 **PartitionKey** が同じエンティティは同じノードに格納されます。 **RowKey** は、エンティティが属するパーティション内のエンティティの一意の ID です。
 
@@ -64,7 +58,6 @@
     table_service.insert_entity('tasktable', task)
 
 ## <a name="update-an-entity"></a>エンティティを更新する
-
 次のコードは、既存のエンティティの以前のバージョンを更新されたバージョンに置き換える方法を示しています。
 
     task = {'PartitionKey': 'tasksSeattle', 'RowKey': '1', 'description' : 'Take out the garbage', 'priority' : 250}
@@ -80,7 +73,6 @@
     table_service.insert_or_replace_entity('tasktable', 'tasksSeattle', '1', task, content_type='application/atom+xml')
 
 ## <a name="change-a-group-of-entities"></a>エンティティのグループを変更する
-
 状況によって、複数の操作をバッチとして送信し、サーバーによるアトミック処理を行うことが合理的である場合があります。 このような処理を実行するには、 **TableBatch** クラスを使用します。 バッチを送信するときは、**commit\_batch** を呼び出します。 バッチでエンティティを変更するには、すべてのエンティティが同じパーティションに含まれている必要があります。 次の例では、2 つのエンティティをバッチでまとめて追加します。
 
     from azure.storage.table import TableBatch
@@ -102,7 +94,6 @@
 
 
 ## <a name="query-for-an-entity"></a>エンティティを照会する
-
 テーブル内のエンティティを照会するには、**get\_entity** メソッドを使用して、**PartitionKey** と **RowKey** を渡します。
 
     task = table_service.get_entity('tasktable', 'tasksSeattle', '1')
@@ -110,7 +101,6 @@
     print(task.priority)
 
 ## <a name="query-a-set-of-entities"></a>エンティティのセットを照会する
-
 次の例では、 **PartitionKey**に基づいて、Seattle 内のすべてのタスクを検索します。
 
     tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'")
@@ -119,7 +109,6 @@
         print(task.priority)
 
 ## <a name="query-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを照会する
-
 テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。
 *プロジェクション*と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。 **select** パラメーターを使用して、クライアントに提供するプロパティの名前を渡します。
 
@@ -132,25 +121,22 @@
         print(task.description)
 
 ## <a name="delete-an-entity"></a>エンティティを削除する
-
 パーティション キーと行キーを使用してエンティティを削除できます。
 
     table_service.delete_entity('tasktable', 'tasksSeattle', '1')
 
 ## <a name="delete-a-table"></a>テーブルを削除する
-
 次のコードは、ストレージ アカウントからテーブルを削除します。
 
     table_service.delete_table('tasktable')
 
 ## <a name="next-steps"></a>次のステップ
-
 これで、Table Storage の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-- [Python デベロッパー センター](/develop/python/)
-- [Azure Storage Services REST API (Azure Storage サービスの REST API)](http://msdn.microsoft.com/library/azure/dd179355)
-- [Azure Storage チーム ブログ]
-- [Microsoft Azure Storage SDK for Python]
+* [Python デベロッパー センター](/develop/python/)
+* [Azure Storage Services REST API (Azure Storage サービスの REST API)](http://msdn.microsoft.com/library/azure/dd179355)
+* [Azure Storage チーム ブログ]
+* [Microsoft Azure Storage SDK for Python]
 
 [Azure Storage Team blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python

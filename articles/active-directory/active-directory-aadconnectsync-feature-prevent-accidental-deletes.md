@@ -1,21 +1,23 @@
-<properties
-   pageTitle="Azure AD Connect sync: 誤って削除されないように保護する | Microsoft Azure"
-   description="このトピックでは、Azure AD Connect の ";誤って削除されないように保護する"; 機能について説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="AndKjell"
-   manager="femila"
-   editor=""/>
+---
+title: 'Azure AD Connect sync: 誤って削除されないように保護する | Microsoft Docs'
+description: 'このトピックでは、Azure AD Connect の '
+;誤って削除されないように保護する";: ''
+機能について説明します。": ''
+services: active-directory
+documentationcenter: ''
+author: AndKjell
+manager: femila
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="09/01/2016"
-   ms.author="andkjell"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/01/2016
+ms.author: andkjell
 
+---
 # Azure AD Connect Sync: 誤って削除されないように保護する
 このトピックでは、Azure AD Connect の "誤って削除されないように保護する" 機能について説明します。
 
@@ -23,9 +25,9 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 
 たとえば、次のような大量の削除を行う状況でこの機能が作用します。
 
-- [OU](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) 全体または[ドメイン](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)全体を除外していた[フィルター処理](active-directory-aadconnectsync-configure-filtering.md)に変更を加えた場合。
-- OU 内のすべてのオブジェクトを削除した場合。
-- OU の名前を変更したことでその OU 内のすべてのオブジェクトが同期の対象外と見なされる場合。
+* [OU](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) 全体または[ドメイン](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)全体を除外していた[フィルター処理](active-directory-aadconnectsync-configure-filtering.md)に変更を加えた場合。
+* OU 内のすべてのオブジェクトを削除した場合。
+* OU の名前を変更したことでその OU 内のすべてのオブジェクトが同期の対象外と見なされる場合。
 
 500 オブジェクトという既定値は PowerShell と `Enable-ADSyncExportDeletionThreshold` で変更できます。組織の規模に合わせてこの値を構成する必要があります。同期スケジューラは 30 分おきに実行されるので、この値は 30 分以内に確認される削除数になります。
 
@@ -34,6 +36,8 @@ Azure AD にエクスポートするようにステージングされた削除�
 ![Prevent Accidental deletes email](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/email.png)
 
 > *(技術担当者) 様。(時刻) に、ID 同期サービスは、削除の数が、(組織名) に対して構成されている削除のしきい値を超えたことを検出しました。この ID 同期の実行で、合計 (数) 個のオブジェクトが削除のために送信されました。これは、構成されている削除のしきい値である (数) 個のオブジェクトに達しているか、それを超えています。続行する前に、これらの削除を処理してよいかどうかを確認する必要があります。この電子メール メッセージに記載されているエラーの詳細情報については、「誤って削除されないように保護する」を参照してください。*
+> 
+> 
 
 また、**Synchronization Service Manager** UI でエクスポート プロファイルのステータスが `stopped-deletion-threshold-exceeded` となっていることを確認できます。![誤って削除されないように保護する Sync Service Manager UI](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/syncservicemanager.png)
 
@@ -54,10 +58,9 @@ Azure AD にエクスポートするようにステージングされた削除�
 3. 保護を再度有効にするには、PowerShell コマンドレットの `Enable-ADSyncExportDeletionThreshold` を実行します。
 
 ## 次のステップ
-
 **概要トピック**
 
-- [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
-- [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+* [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
+* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
 <!---HONumber=AcomDC_0907_2016-->

@@ -1,38 +1,32 @@
-<properties
-    pageTitle="PowerShell で Service Bus と Event Hubs リソースを管理する | Microsoft Azure"
-    description="PowerShell で Service Bus と Event Hubs リソースを作成し、管理する"
-    services="service-bus,event-hubs"
-    documentationCenter=".NET"
-    authors="sethmanheim"
-    manager="timlt"
-    editor=""/>
+---
+title: PowerShell で Service Bus と Event Hubs リソースを管理する | Microsoft Docs
+description: PowerShell で Service Bus と Event Hubs リソースを作成し、管理する
+services: service-bus,event-hubs
+documentationcenter: .NET
+author: sethmanheim
+manager: timlt
+editor: ''
 
-<tags
-    ms.service="service-bus"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="na"
-    ms.date="10/04/2016"
-    ms.author="sethm"/>
+ms.service: service-bus
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 10/04/2016
+ms.author: sethm
 
-
+---
 # <a name="use-powershell-to-manage-service-bus-and-event-hubs-resources"></a>PowerShell で Service Bus と Event Hubs リソースを管理する
-
 Microsoft Azure PowerShell は、Azure サービスのデプロイメントと管理を制御し自動化するために使用できるスクリプティング環境です。 この記事では、PowerShell を使用して、名前空間、キュー、Event Hubs などの Service Bus エンティティをローカルの Azure PowerShell コンソールを使用し、プロビジョニングして管理する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
-
 開始する前に、次の条件が必要です。
 
-- Azure サブスクリプション。 Azure はサブスクリプション方式のプラットフォームです。 サブスクリプションの入手方法の詳細については、[購入オプション][]、[メンバー プラン][]、または[無料アカウント][]に関するページを参照してください。
-
-- Azure PowerShell を搭載するコンピューター 手順については、[Azure PowerShell のインストールと構成に関するページ][]をご覧ください。
-
-- PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
+* Azure サブスクリプション。 Azure はサブスクリプション方式のプラットフォームです。 サブスクリプションの入手方法の詳細については、[購入オプション][購入オプション]、[メンバー プラン][メンバー プラン]、または[無料アカウント][無料アカウント]に関するページを参照してください。
+* Azure PowerShell を搭載するコンピューター 手順については、[Azure PowerShell のインストールと構成に関するページ][]をご覧ください。
+* PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
 
 ## <a name="include-a-reference-to-the-.net-assembly-for-service-bus"></a>Service Bus 用の .NET アセンブリへの参照を含む
-
 Service Bus の管理で利用できる PowerShell コマンドレットの数は限定されています。 既存のコマンドレットを使用しないエンティティをプロビジョニングするには、[Service Bus NuGet パッケージ]を参照し、PowerShell 内から Service Bus の .NET クライアントを使用できます。
 
 まず、このスクリプトが NuGet パッケージでインストールされる **Microsoft.ServiceBus.dll** アセンブリを見つけることができるかどうかを確認します。 柔軟性を持たせるために、スクリプトでは次のステップを実行します。
@@ -66,14 +60,13 @@ catch [System.Exception]
 ```
 
 ## <a name="provision-a-service-bus-namespace"></a>Service Bus 名前空間のプロビジョニング
-
-Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-AzureSBNamespace][] と [New-AzureSBNamespace][] の 2 つのコマンドレットが使用できます。
+Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-AzureSBNamespace][Get-AzureSBNamespace] と [New-AzureSBNamespace][New-AzureSBNamespace] の 2 つのコマンドレットが使用できます。
 
 この例では、スクリプトでローカル変数 `$Namespace` と `$Location` を作成します。
 
-- `$Namespace` は操作する Service Bus 名前空間の名前です。
-- `$Location` は名前空間をプロビジョニングするデータセンターを識別します。
-- `$CurrentNamespace` では取得 (または作成) する参照名前空間を保存します。
+* `$Namespace` は操作する Service Bus 名前空間の名前です。
+* `$Location` は名前空間をプロビジョニングするデータセンターを識別します。
+* `$CurrentNamespace` では取得 (または作成) する参照名前空間を保存します。
 
 実際のスクリプトでは `$Namespace` と `$Location` はパラメーターとして渡すことができます。
 
@@ -82,15 +75,15 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 1. 指定される Service Bus の名前空間を取得しようとします。
 2. 名前空間が見つかると、記述されているものを報告します。
 3. 名前空間が見つからない場合、名前空間を作成し、新しく作成した名前空間を取得します。
-
+   
     ``` powershell
-
+   
     $Namespace = "MyServiceBusNS"
     $Location = "West US"
-
+   
     # Query to see if the namespace currently exists
     $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
-
+   
     # Check if the namespace already exists or needs to be created
     if ($CurrentNamespace)
     {
@@ -105,8 +98,8 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
         Write-Host "The [$Namespace] namespace in the [$Location] region has been successfully created."
     }
     ```
-その他の Service Bus エンティティをプロビジョニングするには、SDK から `NamespaceManager` オブジェクトのインスタンスを作成します。 [Get-AzureSBAuthorizationRule][] コマンドレットを使用して接続文字列を指定するために使用する承認規則を取得できます。 この例では、`NamespaceManager` インスタンスへの参照は `$NamespaceManager` 変数に保存されます。 スクリプトでは、後ほど `$NamespaceManager` を使用して別のエンティティをプロビジョニングします。
-
+   その他の Service Bus エンティティをプロビジョニングするには、SDK から `NamespaceManager` オブジェクトのインスタンスを作成します。 [Get-AzureSBAuthorizationRule][Get-AzureSBAuthorizationRule] コマンドレットを使用して接続文字列を指定するために使用する承認規則を取得できます。 この例では、`NamespaceManager` インスタンスへの参照は `$NamespaceManager` 変数に保存されます。 スクリプトでは、後ほど `$NamespaceManager` を使用して別のエンティティをプロビジョニングします。
+   
     ``` powershell
     $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
     # Create the NamespaceManager object to create the Event Hub
@@ -116,25 +109,23 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
     ```
 
 ## <a name="provisioning-other-service-bus-entities"></a>その他の Service Bus エンティティのプロビジョニング
-
-キュー、トピック、Event Hubs などのエンティティをプロビジョニングするには、[.NET API for Service Bus][] を使用できます。 その他のエンティティを含むより詳細な例は、この記事の最後をご覧ください。
+キュー、トピック、Event Hubs などのエンティティをプロビジョニングするには、[.NET API for Service Bus][.NET API for Service Bus] を使用できます。 その他のエンティティを含むより詳細な例は、この記事の最後をご覧ください。
 
 ### <a name="create-an-event-hub"></a>Event Hub を作成する
-
 スクリプトのこの部分ではさらに 4 つのローカル変数を作成します。 こうした変数は、 `EventHubDescription` オブジェクトのインスタンス化に使用されます。 スクリプトでは次を実行します。
 
 1. `NamespaceManager` オブジェクトを使用して、`$Path` により識別される Event Hub が存在するかどうかを最初に確認します。
 2. 存在しない場合は`EventHubDescription` を作成して `NamespaceManager` クラスの `CreateEventHubIfNotExists` メソッドに渡します。
 3. Event Hub が利用できるようになったことを確認したら、`ConsumerGroupDescription` と `NamespaceManager` を使いコンシューマー グループを作成します。
-
+   
     ``` powershell
-
+   
     $Path  = "MyEventHub"
     $PartitionCount = 12
     $MessageRetentionInDays = 7
     $UserMetadata = $null
     $ConsumerGroupName = "MyConsumerGroup"
-
+   
     # Check if the Event Hub already exists
     if ($NamespaceManager.EventHubExists($Path))
     {
@@ -151,7 +142,7 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
         $NamespaceManager.CreateEventHubIfNotExists($EventHubDescription);
         Write-Output "The [$Path] event hub in the [$Namespace] namespace has been successfully created."
     }
-
+   
     # Create the consumer group if it doesn't exist
     Write-Output "Creating the consumer group [$ConsumerGroupName] for the [$Path] event hub..."
     $ConsumerGroupDescription = New-Object -TypeName Microsoft.ServiceBus.Messaging.ConsumerGroupDescription -ArgumentList $Path, $ConsumerGroupName
@@ -161,7 +152,6 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
     ```
 
 ### <a name="create-a-queue"></a>キューを作成する
-
 キューまたはトピックを作成するには、前のセクションと同様に、名前空間の確認を実行します。
 
     if ($NamespaceManager.QueueExists($Path))
@@ -212,7 +202,6 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
     }
 
 ### <a name="create-a-topic"></a>トピックを作成する
-
     if ($NamespaceManager.TopicExists($Path))
     {
         Write-Output "The [$Path] topic already exists in the [$Namespace] namespace."
@@ -253,17 +242,16 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
     }
 
 ## <a name="next-steps"></a>次のステップ
-
 この記事では、PowerShell を使用した Service Bus エンティティのプロビジョニングにおける基本的なワークフローを説明しました。 Service Bus のメッセージング エンティティを管理するために使用できる PowerShell コマンドレットの数に制限がありますが、Microsoft.ServiceBus.dll アセンブリを参照することで .NET クライアント ライブラリを使用して実行できるほぼすべての操作が、PowerShell スクリプトでも実行できます。
 
 次のブログの投稿に詳しい例が掲載されています。
 
-- [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-- [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+* [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
 既製のスクリプトも次のページからダウンロードできます。
 
-- [Service Bus PowerShell Scripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
+* [Service Bus PowerShell Scripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->
 

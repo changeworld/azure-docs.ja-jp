@@ -1,33 +1,31 @@
-<properties
-	pageTitle="Azure Machine Learning Studio でテキスト分析モデルを作成する | Microsoft Azure"
-	description="テキストの前処理、N グラム、または特徴ハッシュ用のモジュールを使って Azure Machine Learning Studio でテキスト分析モデルを作成する方法"
-	services="machine-learning"
-	documentationCenter=""
-	authors="rastala"
-	manager="jhubbard"
-	editor=""/>
+---
+title: Azure Machine Learning Studio でテキスト分析モデルを作成する | Microsoft Docs
+description: テキストの前処理、N グラム、または特徴ハッシュ用のモジュールを使って Azure Machine Learning Studio でテキスト分析モデルを作成する方法
+services: machine-learning
+documentationcenter: ''
+author: rastala
+manager: jhubbard
+editor: ''
 
-<tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/06/2016"
-	ms.author="roastala" />
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/06/2016
+ms.author: roastala
 
-
-#Azure Machine Learning Studio でテキスト分析モデルを作成する
-
+---
+# Azure Machine Learning Studio でテキスト分析モデルを作成する
 Azure Machine Learning を使用して、テキスト分析モデルを構築し、運用可能な状態にすることができます。こうしたモデルは、たとえば、ドキュメントの分類やセンチメント分析の問題を解決するのに役立ちます。
 
 通常のテキスト分析の実験では、次の作業を行います。
 
- 1. テキスト データセットのクリーニングと前処理
- 2. 前処理されたテキストからの数値特徴ベクトルの抽出
- 3. 分類モデルまたは回帰モデルのトレーニング
- 4. モデルのスコア付けと検証
- 5. 運用環境へのモデルのデプロイ
+1. テキスト データセットのクリーニングと前処理
+2. 前処理されたテキストからの数値特徴ベクトルの抽出
+3. 分類モデルまたは回帰モデルのトレーニング
+4. モデルのスコア付けと検証
+5. 運用環境へのモデルのデプロイ
 
 このチュートリアルでは、Amazon の書評のデータセットを使用したセンチメント分析モデルを使ってこれらの手順について説明します (John Blitzer、Mark Dredze、Fernando Pereira による次の研究論文を参照してください: 「Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification (伝記、ボリウッド、ラジオカセットレコーダ、ミキサー: 感想の分類に対する領域適応)」、コンピューター言語学会 (ACL)、2007 年)。 このデータセットは、レビュー スコア (1-2 または 4-5) と自由形式のテキストから構成されています。目標は、レビュー スコアが低 (1-2) であるか高 (4-5) であるかを予測することです。
 
@@ -38,7 +36,6 @@ Cortana Intelligence Gallery で、このチュートリアルで取り上げた
 [Predict Book Reviews - Predictive Experiment (書評の予測 - 予測実験)](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
 ## 手順 1: テキスト データセットの前処理とクリーニング
-
 実験ではまず、レビュー スコアを低と高のカテゴリーに分類し、問題を 2 クラス分類として形式化します。[Edit Metadata (メタデータの編集)](https://msdn.microsoft.com/library/azure/dn905986.aspx) モジュールと[Group Categorical Values (カテゴリ値のグループ化)](https://msdn.microsoft.com/library/azure/dn906014.aspx) モジュールを使用します。
 
 ![ラベルの作成](./media/machine-learning-text-analytics-module-tutorial/create-label.png)
@@ -52,7 +49,6 @@ Cortana Intelligence Gallery で、このチュートリアルで取り上げた
 前処理が完了したら、データをトレーニング セットとテスト セットに分割します。
 
 ## 手順 2: 前処理されたテキストからの数値特徴ベクトルの抽出
-
 通常、テキスト データのモデルを構築するには、自由形式のテキストを数値特徴ベクトルに変換する必要があります。この例では、[Extract N-Gram Features from Text (テキストからの N グラム特徴の抽出)](https://msdn.microsoft.com/library/azure/mt762916.aspx) モジュールを使って、テキスト データをそのような形式に変換します。このモジュールは空白文字で区切られた単語の列を受け取り、データセット中に出現する単語 (単語の N グラム) の辞書を計算します。次に、レコードごとの各単語 (N グラム) の出現回数をカウントし、そのカウントから特徴ベクトルを作成します。このチュートリアルでは、特徴ベクトルに単一の単語と後続の 2 つの単語の組み合わせが含まれるように、N グラムのサイズを 2 に設定します。
 
 ![N グラムの抽出](./media/machine-learning-text-analytics-module-tutorial/extract-ngrams.png)
@@ -66,7 +62,6 @@ N グラムのカウントに、TF*IDF (単語の出現頻度と逆文書頻度�
 N グラム特徴抽出に代わる方法として、Feature Hashing (特徴ハッシュ) モジュールを利用できます。ただし、[特徴ハッシュ](https://msdn.microsoft.com/library/azure/dn906018.aspx)には、特徴選択機能や TF*IDF の重み付け機能は組み込まれていない点に注意してください。
 
 ## 手順 3: 分類または回帰モデルのトレーニング
-
 テキストが数値の特徴列に変換されました。データセットにはまだ前の段階からの文字列があるため、データセット内の列選択を使ってこれらを除外します。
 
 その後、[2 クラスのロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905994.aspx)を使ってターゲット、つまりレビュー スコアの高低を予測します。この時点で、テキスト分析の問題は、通常の分類問題に変換されています。Azure Machine Learning で使用できるツールを使って、モデルを改良できます。たとえば、実験の精度を確認するために異なる分類器を試したり、ハイパーパラメーター チューニングを使用して精度を向上させたりすることができます。
@@ -74,13 +69,11 @@ N グラム特徴抽出に代わる方法として、Feature Hashing (特徴ハ�
 ![トレーニングとスコア付け](./media/machine-learning-text-analytics-module-tutorial/scoring-text.png)
 
 ## 手順 4: モデルのスコア付けと検証
-
 トレーニング済みのモデルを検証するにはどうすればよいでしょうか。 ここでは、テスト データセットに対してスコアを付けて、精度を評価します。ただし、モデルでは、トレーニング データセットから N グラムのボキャブラリとそれらの重みを学習しています。したがって、テスト データから特徴を抽出するときには、ボキャブラリを新しく作成するのではなく、これらのボキャブラリと重みを使用する必要があります。このため、実験のスコア付けブランチに Extract N-Gram Features (N グラム特徴の抽出モジュール) を追加して、トレーニング ブランチから出力ボキャブラリを接続し、ボキャブラリのモードを読み取り専用に設定します。また頻度による N グラムのフィルタリングを、最小値を 1 インスタンス、最大値を 100% に設定することで無効にし、特徴選択をオフにします。
 
 テスト データのテキスト列が数値の特徴列に変換された後で、トレーニング ブランチなどにある前の段階からの文字列を除外します。次に、Score Model (モデルのスコア付け) モジュールを使用して予測を行い、Evaluate Model (モデルの評価) モジュールを使用して精度を評価します。
 
 ## 手順 5: 運用環境へのモデルのデプロイ
-
 これで、モデルを運用環境にデプロイする準備がほぼ整いました。モデルは Web サービスとしてデプロイされると、自由形式のテキスト文字列を入力として受け取り、"高" または "低" の予測を返します。 学習した N グラム ボキャブラリを使用してテキストを特徴に変換し、トレーニング済みのロジスティック回帰モデルを使用してそれらの特徴から予測を行います。
 
 予測実験をセットアップするために、最初に N グラム ボキャブラリをデータセットとして保存し、実験のトレーニング ブランチからトレーニング済みのロジスティック回帰モデルを保存します。次に、[名前を付けて保存] で実験を保存し、予測実験の実験グラフを作成します。実験から Split Data (データの分割) モジュールとトレーニング ブランチを削除します。次に、以前に保存した N グラム ボキャブラリとモデルを、それぞれ Extract N-Gram Features (N グラム特徴の抽出) モジュールと Score Model (モデルのスコア付け) モジュールに接続します。Evaluate Model (モデルの評価) モジュールも削除します。
@@ -92,7 +85,6 @@ N グラム特徴抽出に代わる方法として、Feature Hashing (特徴ハ�
 これで、Web サービスとして発行し、要求応答またはバッチ実行 API を使用して呼び出すことができる実験が完成しました。
 
 ## 次のステップ
-
 [MSDN ドキュメント](https://msdn.microsoft.com/library/azure/dn905886.aspx)でテキスト分析モジュールの詳細を確認してください。
 
 <!---HONumber=AcomDC_0914_2016-->

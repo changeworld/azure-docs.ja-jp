@@ -1,21 +1,21 @@
-<properties
-	pageTitle="アプリ登録ポータルのヘルプ トピック | Microsoft Azure"
-	description="Microsoft アプリ登録ポータルの各種機能の説明。"
-	services="active-directory"
-	documentationCenter=""
-	authors="dstrockis"
-	manager="mbaldwin"
-	editor=""/>
+---
+title: アプリ登録ポータルのヘルプ トピック | Microsoft Docs
+description: Microsoft アプリ登録ポータルの各種機能の説明。
+services: active-directory
+documentationcenter: ''
+author: dstrockis
+manager: mbaldwin
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="dastrock"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/16/2016
+ms.author: dastrock
 
+---
 # アプリ登録のリファレンス
 このドキュメントでは、Microsoft アプリ登録ポータル ([https://apps.dev.microsoft.com](https://apps.dev.microsoft.com)) の各種機能のコンテキストと説明を提供します。
 

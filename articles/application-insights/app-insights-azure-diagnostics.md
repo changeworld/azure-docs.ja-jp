@@ -1,22 +1,21 @@
-<properties
-    pageTitle="Azure 診断ログを Application Insights に送信する"
-    description="Application Insights ポータルに送信される Azure Cloud Services診断ログの詳細を構成します。"
-    services="application-insights"
-    documentationCenter=".net"
-    authors="sbtron"
-    manager="douge"/>
+---
+title: Azure 診断ログを Application Insights に送信する
+description: Application Insights ポータルに送信される Azure Cloud Services診断ログの詳細を構成します。
+services: application-insights
+documentationcenter: .net
+author: sbtron
+manager: douge
 
-<tags
-    ms.service="application-insights"
-    ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-    ms.devlang="na"
-    ms.topic="article"
-	ms.date="11/17/2015"
-    ms.author="awills"/>
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 11/17/2015
+ms.author: awills
 
+---
 # Application Insights に対する Azure 診断ログの構成
-
 Microsoft Azure で Cloud Services プロジェクトまたは仮想マシンをセットアップするときに、[Azure は診断ログを生成できます](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)。これを Application Insights に送信し、Application Insights SDK によってアプリ内から送信された診断および使用テレメトリと共に分析できます。Azure のログには、開始、停止、クラッシュ、パフォーマンス カウンターなど、アプリの管理でのイベントが含まれます。また、ログにはアプリでの System.Diagnostics.Trace の呼び出しも含まれます。
 
 この記事では、診断キャプチャの構成について詳しく説明します。
@@ -24,14 +23,11 @@ Microsoft Azure で Cloud Services プロジェクトまたは仮想マシンを
 Azure SDK 2.8 を Visual Studio にインストールする必要があります。
 
 ## Application Insights リソースを取得する
-
 最善の結果を得るには、[Application Insights SDK を Cloud Services アプリの各ロールに追加する](app-insights-cloudservices.md)か、または [VM 内で実行する任意のアプリに追加](app-insights-overview.md)します。そうすれば、診断データを送信して同じ Application Insights リソースを分析および表示できます。
 
 または、SDK を使用したくない場合は (アプリがすでに活動中の場合など)、Azureポータルで[新しい Application Insights リソースを作成する](app-insights-create-new-resource.md)こともできます。アプリケーションの種類として **Azure 診断**を選択します。
 
-
 ## Azure 診断を Application Insights に送信する
-
 アプリ プロジェクトを更新できる場合は、Visual Studio で各ロールを選択し、[プロパティ] を選択して、[構成] タブで **[診断を Application Insights に送信する]** をオンにします。
 
 アプリがまだ活動中の場合は、Visual Studio のサーバー エクスプローラーまたは Cloud Services エクスプローラーを使用して、アプリのプロパティを開きます。**[診断を Application Insights に送信する]** をオンにします。
@@ -41,13 +37,11 @@ Azure SDK 2.8 を Visual Studio にインストールする必要があります
 [Cloud Services アプリ用の Application Insights の設定の詳細についてはこちらを参照してください](app-insights-cloudservices.md)。
 
 ## Azure 診断アダプターを構成する
-
 ここでは、Application Insights に送信するログの部分を選択する方法を説明します。既定では、Microsoft Azure イベント、パフォーマンス カウンター、アプリから System.Diagnostics.Trace のトレース呼び出しなど、すべてのデータが送信されます。
 
 Azure 診断のデータは、Azure Storage のテーブルに格納されます。ただし、Azure 診断の拡張機能 1.5 以降を使用する場合、その構成に "シンク" と "チャネル" を構成することで、すべてのデータまたはデータのサブセットを Application Insights にパイプすることもできます。
 
 ### シンクとして Application Insights を構成する
-
 ロールのプロパティを使用して "データを Application Insights に送信する" ように設定した場合、Azure SDK (2.8 以降) は `<SinksConfig>` 要素をロールのパブリックな [Azure 診断構成ファイル](https://msdn.microsoft.com/library/azure/dn782207.aspx)に追加します。
 
 `<SinksConfig>` では、Azure 診断データを送信できる追加シンクを定義します。`SinksConfig` の例を次に示します。
@@ -71,7 +65,6 @@ Azure 診断のデータは、Azure Storage のテーブルに格納されます
 `Channels` では、シンクに送信されるデータを定義します。チャネルはフィルターのように動作します。`loglevel` 属性では、チャネルが送信するログ レベルを指定できます。使用できる値は `{Verbose, Information, Warning, Error, Critical}` です。
 
 ### データをシンクに送信する
-
 DiagnosticMonitorConfiguration ノードにシンク属性を追加することで、Application Insights シンクにデータを送信します。シンク要素を各ノードに追加すると、そのノードとその下にあるすべてのノードから収集したデータが指定したシンクに送信されるように指定されます。
 
 たとえば、Azure SDK によって作成される既定値では、すべての Azure 診断データが送信されます。
@@ -141,7 +134,6 @@ Application Insights にすべてのエラー (`DiagnosticMonitorConfiguration` 
 * Azure 診断の拡張機能によって収集される BLOB データは Application Insights に送信できません。たとえば、Directories ノードの下で指定されたデータです。クラッシュ ダンプの場合、実際のクラッシュ ダンプは Blob Storage に送信され、Application Insights にはクラッシュ ダンプが生成されたという通知のみが送信されます。
 
 ## 関連トピック
-
 * [Application Insights で Azure Cloud Services を監視する](app-insights-cloudservices.md)
 * [PowerShell を使用した Application Insights への Azure 診断の送信](app-insights-powershell-azure-diagnostics.md)
 * [Azure 診断構成ファイル](https://msdn.microsoft.com/library/azure/dn782207.aspx)

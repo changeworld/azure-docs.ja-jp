@@ -1,6 +1,5 @@
 
 ## リソース
-
 * [Web ジョブ リソースの完全な一覧](../articles/app-service-web/websites-webjobs-resources.md)
 * [Azure Web ジョブ SDK の使用](../articles/app-service-web/websites-dotnet-webjobs-sdk-get-started.md)
 * [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
@@ -18,7 +17,6 @@
 * [Web ジョブのリモート デバッグ](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebugwj)
 
 ## ビデオ
-
 * [Web ジョブと Web ジョブ SDK](http://channel9.msdn.com/Shows/Cloud+Cover/Episode-153-WebJobs-with-Pranav-Rastogi?utm_source=dlvr.it&utm_medium=twitter)
 * [Channel 9 の Azure Web ジョブ ビデオ シリーズ](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 * [Visual Studio 向けの Web ジョブ ツールの概要](http://channel9.msdn.com/Shows/Web+Camps+TV/Introducing-WebJobs-Tooling-for-Visual-Studio-with-Brady-Gaster)

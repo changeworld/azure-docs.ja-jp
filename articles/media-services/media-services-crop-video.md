@@ -1,24 +1,22 @@
-<properties
-    pageTitle="ビデオをトリミングする方法 | Microsoft Azure"
-    description="この記事では、Media Encoder Standard でビデオをトリミングする方法について説明します。"
-    services="media-services"
-    documentationCenter=""
-    authors="anilmur"
-    manager="erikre"
-    editor=""/>
+---
+title: ビデオをトリミングする方法 | Microsoft Docs
+description: この記事では、Media Encoder Standard でビデオをトリミングする方法について説明します。
+services: media-services
+documentationcenter: ''
+author: anilmur
+manager: erikre
+editor: ''
 
-<tags
-    ms.service="media-services"
-    ms.workload="media"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="09/26/2016"  
-    ms.author="anilmur;juliako;"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: anilmur;juliako;
 
-
+---
 # <a name="crop-videos-with-media-encoder-standard"></a>Media Encoder Standard を使用してビデオをトリミングする
-
 Media Encoder Standard (MES) をすると、入力ビデオをトリミングできます。 トリミングは、ビデオ フレーム内で四角形のウィンドウを選択して、そのウィンドウ内のピクセルだけをエンコードするプロセスです。 次の図は、そのプロセスを示しています。
 
 ![ビデオをトリミングする](./media/media-services-crop-video/media-services-crop-video01.png)
@@ -30,18 +28,15 @@ MES でのトリミングは前処理段階であるため、エンコード プ
 [次](media-services-advanced-encoding-with-mes.md#encoding_with_dotnet) のトピックは、MES でエンコード ジョブを作成する方法、およびエンコード タスクに対してカスタム プリセットを指定する方法を示しています。 
 
 ## <a name="creating-a-custom-preset"></a>カスタム プリセットの作成
-
 図で示した例:
 
 1. 元の入力は 1920 x 1080 です
-1. この入力フレームの中央部分をトリミングして、1440 x 1080 に出力する必要があります
-1. つまり、X オフセットは (1920 – 1440) ÷ 2 = 240 で、Y オフセットはゼロです
-1. トリミングする四角形の幅さと高さはそれぞれ 1440 と 1080 です
-1. エンコード段階で求められるのは、解像度が 1440 x 1080、960 x 720、480 x 360 の 3 つの層を作成することです
+2. この入力フレームの中央部分をトリミングして、1440 x 1080 に出力する必要があります
+3. つまり、X オフセットは (1920 – 1440) ÷ 2 = 240 で、Y オフセットはゼロです
+4. トリミングする四角形の幅さと高さはそれぞれ 1440 と 1080 です
+5. エンコード段階で求められるのは、解像度が 1440 x 1080、960 x 720、480 x 360 の 3 つの層を作成することです
 
-###<a name="json-preset"></a>JSON プリセット
-
-
+### <a name="json-preset"></a>JSON プリセット
     {
       "Version": 1.0,
       "Sources": [
@@ -126,28 +121,23 @@ MES でのトリミングは前処理段階であるため、エンコード プ
     }
 
 
-##<a name="restrictions-on-cropping"></a>トリミングに関する制限事項
-
+## <a name="restrictions-on-cropping"></a>トリミングに関する制限事項
 トリミングは手動で行います。 入力ビデオでさまざまな編集を行うには、適切な編集ツールに読み込む必要があります。そのツールを使用して、目的のフレームを選択したり、カーソルを配置して、四角形をトリミングするためのオフセットや、その特定のビデオ用に調整されたエンコード プリセットを決定したりできます。この機能の目的は、入力ビデオの黒いレターボックス/ピラーボックスの自動検出、枠線削除などを有効にすることではありません。
 
 トリミング機能には次の制限が適用されます。 これが満たされない場合、エンコード タスクが失敗したり、予期しない出力が生成されたりすることがあります。
 
 1. トリミングする四角形の座標とサイズは入力ビデオ内に収まっている必要あります
-1. 前述のように、エンコード設定の幅と高さは、トリミングされたビデオに対応していなければなりません
-1. トリミングは横モードでキャプチャされたビデオに適用されます (つまり、垂直方向、つまり縦モードのスマートフォンで録画されたビデオには適用されません)
-1. 正方形ピクセルでキャプチャされたプログレッシブ ビデオに最適です
+2. 前述のように、エンコード設定の幅と高さは、トリミングされたビデオに対応していなければなりません
+3. トリミングは横モードでキャプチャされたビデオに適用されます (つまり、垂直方向、つまり縦モードのスマートフォンで録画されたビデオには適用されません)
+4. 正方形ピクセルでキャプチャされたプログレッシブ ビデオに最適です
 
-##<a name="provide-feedback"></a>フィードバックの提供
+## <a name="provide-feedback"></a>フィードバックの提供
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-##<a name="next-step"></a>次のステップ
- 
+## <a name="next-step"></a>次のステップ
 Azure Media Services のラーニング パスをご覧ください。AMS で提供される優れた機能の学習に役立ちます。  
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
-
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 <!--HONumber=Oct16_HO2-->
 

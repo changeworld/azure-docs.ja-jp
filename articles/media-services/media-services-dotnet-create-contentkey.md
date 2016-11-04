@@ -1,28 +1,27 @@
-<properties 
-    pageTitle=".NET を使用したコンテンツ キーの作成" 
-    description="アセットに安全にアクセスできる ContentKey を作成する方法について学習します。" 
-    services="media-services" 
-    documentationCenter="" 
-    authors="Juliako" 
-    manager="erikre" 
-    editor=""/>
+---
+title: .NET を使用したコンテンツ キーの作成
+description: アセットに安全にアクセスできる ContentKey を作成する方法について学習します。
+services: media-services
+documentationcenter: ''
+author: Juliako
+manager: erikre
+editor: ''
 
-<tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/26/2016"
-    ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: juliako
 
-
-
-#<a name="create-contentkeys-with-.net"></a>.NET を使用したコンテンツ キーの作成
-
-> [AZURE.SELECTOR]
-- [REST ()](media-services-rest-create-contentkey.md)
-- [.NET](media-services-dotnet-create-contentkey.md)
+---
+# <a name="create-contentkeys-with-.net"></a>.NET を使用したコンテンツ キーの作成
+> [!div class="op_single_selector"]
+> * [REST ()](media-services-rest-create-contentkey.md)
+> * [.NET](media-services-dotnet-create-contentkey.md)
+> 
+> 
 
 Media Services では、暗号化されたアセットを作成して送信できます。 **ContentKey** により、**アセット**に安全にアクセスすることができます。 
 
@@ -32,10 +31,12 @@ Media Services では、暗号化されたアセットを作成して送信で�
 
 暗号化されたアセットには、 **ContentKey**を関連付ける必要があります。 この記事では、コンテンツ キーの作成方法について説明します。
 
->[AZURE.NOTE] Media Services .NET SDK を使用して新しい **StorageEncrypted** のアセットを作成する場合、**ContentKey** が自動的に作成され、アセットにリンクします。
+> [!NOTE]
+> Media Services .NET SDK を使用して新しい **StorageEncrypted** のアセットを作成する場合、**ContentKey** が自動的に作成され、アセットにリンクします。
+> 
+> 
 
-##<a name="contentkeytype"></a>ContentKeyType
-
+## <a name="contentkeytype"></a>ContentKeyType
 コンテンツ キーの作成時には、タイプを設定する必要があります。 次のいずれかの値を選択します。 
 
     public enum ContentKeyType
@@ -62,8 +63,7 @@ Media Services では、暗号化されたアセットを作成して送信で�
         EnvelopeEncryption = 4
     }
 
-##<a name="<a-id="envelope_contentkey"></a>create-envelope-type-contentkey"></a><a id="envelope_contentkey"></a>エンベロープ タイプの ContentKey の作成
-
+## <a name="<a-id="envelope_contentkey"></a>create-envelope-type-contentkey"></a><a id="envelope_contentkey"></a>エンベロープ タイプの ContentKey の作成
 次のコード スニペットでは、エンベロープ暗号化タイプのコンテンツ キーを作成します。 その後、キーを指定されたアセットに関連付けます。
 
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
@@ -100,8 +100,7 @@ Media Services では、暗号化されたアセットを作成して送信で�
 
 
 
-##<a name="<a-id="common_contentkey"></a>create-common-type-contentkey"></a><a id="common_contentkey"></a>共通タイプの ContentKey の作成    
-
+## <a name="<a-id="common_contentkey"></a>create-common-type-contentkey"></a><a id="common_contentkey"></a>共通タイプの ContentKey の作成
 次のコード スニペットでは、共通暗号化タイプのコンテンツ キーを作成します。 その後、キーを指定されたアセットに関連付けます。
 
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)
@@ -139,15 +138,11 @@ Media Services では、暗号化されたアセットを作成して送信で�
     IContentKey key = CreateCommonTypeContentKey(encryptedsset); 
 
 
-##<a name="media-services-learning-paths"></a>Media Services のラーニング パス
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
-##<a name="provide-feedback"></a>フィードバックの提供
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
+## <a name="provide-feedback"></a>フィードバックの提供
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 <!--HONumber=Oct16_HO2-->
 

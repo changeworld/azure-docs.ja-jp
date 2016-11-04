@@ -1,5 +1,4 @@
-﻿Application Insights - 詳細情報
-
+Application Insights - 詳細情報
 
 <table width="100%"><tr valign="top"><td>
 

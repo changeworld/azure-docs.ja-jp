@@ -1,30 +1,28 @@
-<properties
-    pageTitle="分析プラットフォーム: Apache Storm と Stream Analytics の比較 |Microsoft Azure"
-    description="Apache Storm と Stream Analytics を比較して、クラウドの分析プラットフォームを選択する際の指針を示します。 機能と違いについて説明します。"
-    keywords="分析プラットフォーム、クラウド分析プラットフォーム、storm との比較"
-    services="stream-analytics"
-    documentationCenter=""
-    authors="jeffstokes72"
-    manager="jhubbard"
-    editor="cgronlun"/>
+---
+title: '分析プラットフォーム: Apache Storm と Stream Analytics の比較 | Microsoft Docs'
+description: Apache Storm と Stream Analytics を比較して、クラウドの分析プラットフォームを選択する際の指針を示します。 機能と違いについて説明します。
+keywords: 分析プラットフォーム、クラウド分析プラットフォーム、storm との比較
+services: stream-analytics
+documentationcenter: ''
+author: jeffstokes72
+manager: jhubbard
+editor: cgronlun
 
-<tags
-    ms.service="stream-analytics"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="big-data"
-    ms.date="09/26/2016"
-    ms.author="jeffstok"/>
+ms.service: stream-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 09/26/2016
+ms.author: jeffstok
 
-
+---
 # <a name="help-choosing-a-streaming-analytics-platform:-apache-storm-comparison-to-azure-stream-analytics"></a>Stream Analytics プラットフォームの選択: Apache Storm と Azure Stream Analytics との比較
-
 以下では、Apache Storm と Azure Stream Analytics を比較して、クラウドの分析プラットフォームを選択する際の指針を示します。 また、実際のビジネス事例に適したソリューションを選択できるように、Azure HDInsight の管理されたサービスとして Stream Analytics と Apache Storm が持つ価値提案について説明します。
 
 どちらの分析プラットフォームにも PaaS ソリューションのメリットがありますが、2 つのプラットフォームを区別する主な機能がいくつかあります。 2 つのサービスの機能と制限を一覧にまとめました。この一覧を参照して、目標を達成するために必要なソリューションを選択してください。
 
-## <a name="storm-comparison-to-stream-analytics:-general-features"></a>Storm と Stream Analytics の比較: 全般的な機能 ##
+## <a name="storm-comparison-to-stream-analytics:-general-features"></a>Storm と Stream Analytics の比較: 全般的な機能
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>

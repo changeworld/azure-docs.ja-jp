@@ -1,30 +1,26 @@
-<properties
-	pageTitle="Azure Insights: Azure Insights CLI クイック スタート サンプル | Microsoft Azure"
-	description="Azure Insights の監視機能にアクセスするのに役立つ CLI コマンドのサンプルを紹介しています。Azure Insights は、Microsoft Azure サービスです。Azure Insights では、AutoScale Cloud Services、Virtual Machines、Web Apps を使用できます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも可能です。"
-	authors="kamathashwin"
-	manager=""
-	editor=""
-	services="monitoring-and-diagnostics"
-	documentationCenter="monitoring-and-diagnostics"/>
+---
+title: 'Azure Insights: Azure Insights CLI クイック スタート サンプル | Microsoft Docs'
+description: Azure Insights の監視機能にアクセスするのに役立つ CLI コマンドのサンプルを紹介しています。Azure Insights は、Microsoft Azure サービスです。Azure Insights では、AutoScale Cloud Services、Virtual Machines、Web Apps を使用できます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも可能です。
+author: kamathashwin
+manager: ''
+editor: ''
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
 
-<tags
-	ms.service="monitoring-and-diagnostics"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/08/2016"
-	ms.author="ashwink"/>
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/08/2016
+ms.author: ashwink
 
+---
 # Azure Insights クロスプラットフォーム CLI のクイック スタート サンプル
-
 この記事では、Azure Insights の監視機能にアクセスするために役立つコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。Azure Insights では、AutoScale Cloud Services、Virtual Machines、Web Apps を使用できます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも可能です。
 
-
 ## 前提条件
-
 Azure CLI をまだインストールしていない場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」を参照してください。Azure CLI を使い慣れていない場合、その詳細について、「[Azure Resource Manager での、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」を確認してください。
-
 
 Windows で、[Node.js Web サイト](https://nodejs.org/)から npm をインストールします。インストールが完了したら、管理者特権で CMD.exe を使用し、npm のインストール フォルダーから次を実行します。
 
@@ -39,7 +35,6 @@ azure help
 ```
 
 ## Azure へのログイン
-
 まず、Azure アカウントにログインします。
 
 ```
@@ -73,7 +68,6 @@ azure insights
 ```
 
 ## サブスクリプションの監査ログの表示
-
 監査ログの一覧を表示するには、次のコマンドを実行します。
 
 ```
@@ -108,14 +102,12 @@ azure insights logs list --resourceProvider "Microsoft.Web" --caller "myname@com
 このセクションの情報を使用すると、アラートを操作できます。
 
 ### リソース グループのアラート ルールの取得
-
 ```
 azure insights alerts rule list abhingrgtest123
 azure insights alerts rule list abhingrgtest123 --ruleName andy0323
 ```
 
 ### メトリックのアラート ルールの作成
-
 ```
 azure insights alerts actions email create --customEmails foo@microsoft.com
 azure insights alerts actions webhook create https://someuri.com
@@ -123,19 +115,16 @@ azure insights alerts rule metric set andy0323 eastus abhingrgtest123 PT5M Great
 ```
 
 ### ログのアラート ルールの作成
-
 ```
 azure insights alerts rule log set ruleName eastus resourceGroupName someOperationName
 ```
 
 ### Web テストのアラート ルールの作成
-
 ```
 azure insights alerts rule webtest set leowebtestr1-webtestr1 eastus Default-Web-WestUS PT5M 1 GSMT_AvRaw /subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/webtests/leowebtestr1-webtestr1
 ```
 
 ### アラート ルールの削除
-
 ```
 azure insights alerts rule delete abhingrgtest123 andy0323
 ```
@@ -144,7 +133,6 @@ azure insights alerts rule delete abhingrgtest123 andy0323
 このセクションの情報を使用すると、ログ プロファイルを操作できます。
 
 ### ログ プロファイルの取得
-
 ```
 azure insights logprofile list
 azure insights logprofile get -n default
@@ -152,25 +140,21 @@ azure insights logprofile get -n default
 
 
 ### 保有期間を指定しないログ プロファイルの追加
-
 ```
 azure insights logprofile add --name default --storageId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 --locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia
 ```
 
 ### ログ プロファイルの削除
-
 ```
 azure insights logprofile delete --name default
 ```
 
 ### 保有期間を指定したログ プロファイルの追加
-
 ```
 azure insights logprofile add --name default --storageId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 --locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia --retentionInDays 90
 ```
 
 ### 保有期間とイベント ハブを指定したログ プロファイルの追加
-
 ```
 azure insights logprofile add --name default --storageId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 --serviceBusRuleId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/testshoeboxeastus/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia --retentionInDays 90
 ```
@@ -180,19 +164,16 @@ azure insights logprofile add --name default --storageId /subscriptions/1a66ce04
 このセクションの情報を使用すると、診断設定を操作できます。
 
 ### 診断設定の取得
-
 ```
 azure insights diagnostic get --resourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andyrg/providers/Microsoft.Logic/workflows/andy0315logicapp
 ```
 
 ### 診断設定の無効化
-
 ```
 azure insights diagnostic set --resourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andyrg/providers/Microsoft.Logic/workflows/andy0315logicapp --storageId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/shibanitesting --enabled false
 ```
 
 ### 保有期間を指定しない診断設定の有効化
-
 ```
 azure insights diagnostic set --resourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andyrg/providers/Microsoft.Logic/workflows/andy0315logicapp --storageId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/shibanitesting --enabled true
 ```
@@ -202,20 +183,17 @@ azure insights diagnostic set --resourceId /subscriptions/df602c9c-7aa0-407d-a6f
 このセクションの情報を使用すると、自動スケール設定を操作できます。これらの例を変更する必要があります。
 
 ### リソース グループの自動スケール設定の取得
-
 ```
 azure insights autoscale setting list montest2
 ```
 
 ### 名前によるリソース グループの自動スケール設定の取得
-
 ```
 azure insights autoscale setting list montest2 -n setting2
 ```
 
 
 ### 自動スケール設定の設定
-
 ```
 azure insights autoscale setting set montest2 -n setting2 --settingSpec
 ```

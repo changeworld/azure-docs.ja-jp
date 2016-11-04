@@ -1,29 +1,27 @@
-<properties
-    pageTitle="Azure Active Directory によるアプリケーションのセルフ サービス アクセスと委任管理 | Microsoft Azure"
-    description="この記事では、Azure Active Directory でアプリケーションのセルフ サービス アクセスと委任管理を有効にする方法について説明します。"
-    services="active-directory"
-    documentationCenter=""
-    authors="asmalser-msft"
-    manager="femila"
-    editor=""/>
+---
+title: Azure Active Directory によるアプリケーションのセルフ サービス アクセスと委任管理 | Microsoft Docs
+description: この記事では、Azure Active Directory でアプリケーションのセルフ サービス アクセスと委任管理を有効にする方法について説明します。
+services: active-directory
+documentationcenter: ''
+author: asmalser-msft
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="02/09/2016"
-    ms.author="asmalser"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 02/09/2016
+ms.author: asmalser
 
-
-#<a name="self-service-application-access-and-delegated-management-with-azure-active-directory"></a>Azure Active Directory によるアプリケーションのセルフ サービス アクセスと委任管理
-
+---
+# <a name="self-service-application-access-and-delegated-management-with-azure-active-directory"></a>Azure Active Directory によるアプリケーションのセルフ サービス アクセスと委任管理
 エンドユーザーに対してセルフ サービス機能を有効にすることは、エンタープライズ IT の一般的なシナリオです。 数多くのユーザーやアプリケーションが存在しており、アクセス許可を決定するための情報に最も通じている人物がディレクトリ管理者であるとは限りません。 多くの場合、アプリケーションにアクセスできるユーザーを決定するのに最適な人物は、チーム リーダーまたはその他の代理管理者です。 しかし、結局のところ、アプリを使用するのはユーザーであり、自分の仕事をできるようにするために何が必要かはユーザーが知っています。
 
 アプリケーションのセルフ サービス アクセスは、ディレクトリ管理者に次のことを許可する [Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/) の機能です。
 
-*  [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
+* [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
 * どのアプリケーションへのアクセスをユーザーが申請できるかを設定する
 * アプリケーションへのアクセスをユーザーが自分で割り当てるために承認が必要かどうかを設定する
 * 誰が申請を承認し、各アプリケーションへのアクセスを管理するかを設定する
@@ -34,9 +32,7 @@
 * 省略可能な承認ワークフローの構成など、エンドユーザーに対してアプリケーションのセルフ サービス アクセスを構成する 
 * 組織内の最も適切な人物に特定のアプリケーションへのアクセス管理を委任し、これらの人物に対して、Azure AD アクセス パネルを使用してアクセス申請を承認したり、選択したユーザーにアクセスを直接割り当てたり、パスワードに基づくシングル サインオンが構成されている場合にアプリケーション アクセスの資格情報を設定する (オプション) ことを許可する
 
-
-##<a name="configuring-self-service-application-access"></a>アプリケーションのセルフ サービス アクセスの構成
-
+## <a name="configuring-self-service-application-access"></a>アプリケーションのセルフ サービス アクセスの構成
 アプリケーションのセルフ サービス アクセスを有効にし、どのアプリケーションをエンドユーザーが追加または申請できるかを構成するには、次の手順に従います。
 
 **1:**[Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
@@ -71,40 +67,33 @@
 
 **13:** 電子メールにより、承認者は、Azure AD アクセス パネルにサインインして申請を承認するように指示されます。 申請が承認される (また、定義したすべての特別なプロセスが承認者によって実行される) と、ユーザーに対して **[アプリケーション]** タブの下にアプリケーションが表示され、ここでアプリケーションにサインインできます。
 
-##<a name="delegated-application-access-management"></a>委任されたアプリケーション アクセス管理
-
+## <a name="delegated-application-access-management"></a>委任されたアプリケーション アクセス管理
 アプリケーション アクセス承認者には、対象のアプリケーションへのアクセスを承認または拒否するのが最も適切な、組織内の任意のユーザーを指定できます。 このユーザーは、アプリへのアクセスを許可する前にアカウント プロビジョニング、ライセンス管理、または組織が要求するその他のビジネス プロセスを行うことができます。
- 
+
 上記で説明したアプリケーションのセルフ サービス アクセスを構成する際には、割り当てられた任意のアプリケーション承認者に対して、Azure AD アクセス パネルに追加の **[アプリケーションの管理]** タイルが表示されます。このタイルには、その承認者がアクセス管理者となっているアプリケーションが表示されます。 アプリをクリックすると、いくつかのオプションを含む画面が表示されます。
 
 ![][2]
 
-###<a name="approve-requests"></a>申請の承認
-
+### <a name="approve-requests"></a>申請の承認
 **[申請の承認]** タイルでは、承認者が、そのアプリに固有のすべての保留中の承認を確認できます。これは [承認] タブにリダイレクトされ、ここで申請を確認または拒否できます。 申請が作成されるたびに、承認者は作業を指示する自動電子メールも受信します。
 
-###<a name="add-users"></a>ユーザーの追加
-
+### <a name="add-users"></a>ユーザーの追加
 **[ユーザーの追加]** タイルでは、承認者が、選択したユーザーに対してアプリケーションへのアクセス権を直接付与できます。 このタイルをクリックすると、承認者に対して、ディレクトリ内のユーザーを表示および検索するためのダイアログ ボックスが表示されます。 ユーザーを追加すると、これらのユーザーの Azure AD アクセス パネルまたは Office 365 にアプリケーションが表示されます。 ユーザーがサインインするために、アプリで手動のユーザー プロビジョニング プロセスが要求される場合、承認者はアクセスを割り当てる前にこのプロセスを実行する必要があります。  
 
-###<a name="manage-users"></a>ユーザーの管理
-
+### <a name="manage-users"></a>ユーザーの管理
 **[ユーザーの管理]** タイルでは、承認者が、アプリケーションへのアクセス権を持つユーザーを直接更新または削除できます。 
 
-###<a name="configure-password-sso-credentials-(if-applicable)"></a>パスワード SSO 資格情報の構成 (該当する場合)
-
+### <a name="configure-password-sso-credentials-(if-applicable)"></a>パスワード SSO 資格情報の構成 (該当する場合)
 **[構成]** タイルは、アプリケーションがパスワードに基づくシングル サインオンを使用するように IT 管理者によって構成されており、管理者が、前述のようにパスワード SSO 資格情報を設定する権限を承認者に付与した場合にのみ表示されます。 このタイルを選択すると、承認者に対して、割り当てたユーザーに資格情報を伝達する方法に関するいくつかのオプションが表示されます。
 
 ![][3]
 
 * **ユーザーは自分のパスワードでサインインする** – このモードでは、割り当てられたユーザーはアプリケーション用のユーザー名とパスワードを認識しており、アプリケーションへの初回のサインイン時にそれらを入力するように求められます。 これは、 [ユーザーが資格情報を管理する](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)パスワード SSO ケースに対応しています。
-
 * **管理者が管理している別のアカウントでユーザーは自動的にサインインする** – このモードでは、割り当てられたユーザーは、アプリケーションへのサインイン時にアプリ固有の資格情報を入力または認識することを求められません。 代わりに承認者が、 **[ユーザーの追加]** タイルを使用してアクセスを割り当てた後、各ユーザーに対して資格情報を設定します。 ユーザーがアクセス パネルまたは Office 365 内でアプリケーションをクリックすると、承認者によって設定された資格情報を使用して自動的にサインインされます。 これは、 [管理者が資格情報を管理する](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)パスワード SSO ケースに対応しています。
-
 * **管理者が管理する単一のアカウントでユーザーは自動的にサインインする** - これは特殊なケースであり、割り当てられたすべてのユーザーに対して、単一の共有アカウントを使用してアクセス権を付与する必要がある場合に適切です。 この最も一般的なユース ケースは、組織に単一の「会社」アカウントがあり、複数のユーザーがそのアカウントを更新する必要がある場合の、ソーシャル メディア アプリケーションです。 これは、 [管理者が資格情報を管理する](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)パスワード SSO ケースにも対応しています。 ただし、このオプションを選択すると、承認者は単一の共有アカウントに対してユーザー名とパスワードの入力を求められます。 入力の完了後、割り当てられたすべてのユーザーは、Azure AD アクセス パネルまたは Office 365 内でアプリケーションをクリックすると、このアカウントを使用してサインインされます。
 
-##<a name="additional-resources"></a>その他のリソース
-- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+## <a name="additional-resources"></a>その他のリソース
+* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-self-service-application-access/ssaa_admin.PNG

@@ -1,24 +1,23 @@
-<properties
-	pageTitle="コピー アクティビティを使用したデータの移動 | Microsoft Azure"
-	description="Data Factory パイプラインでのデータの移動 (クラウド ストア間、およびオンプレミスのストアとクラウド ストアの間でのデータ移行) について説明します。コピー アクティビティの使用。"
-	keywords="データのコピー, データの移動, データの移行, データ転送"
-	services="data-factory"
-	documentationCenter=""
-	authors="linda33wj"
-	manager="jhubbard"
-	editor="monicar"/>
+---
+title: コピー アクティビティを使用したデータの移動 | Microsoft Docs
+description: Data Factory パイプラインでのデータの移動 (クラウド ストア間、およびオンプレミスのストアとクラウド ストアの間でのデータ移行) について説明します。コピー アクティビティの使用。
+keywords: データのコピー, データの移動, データの移行, データ転送
+services: data-factory
+documentationcenter: ''
+author: linda33wj
+manager: jhubbard
+editor: monicar
 
-<tags
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/22/2016"
-	ms.author="jingwang"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/22/2016
+ms.author: jingwang
 
+---
 # コピー アクティビティを使用したデータの移動
-
 ## Overview
 Azure Data Factory では、コピー アクティビティを使用して、さまざまな形式のデータを、オンプレミスやクラウドの各種データ ソースから Azure にコピーできます。コピーしたデータは、高度な変換や分析を実行できます。また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
 
@@ -28,19 +27,21 @@ Azure Data Factory では、コピー アクティビティを使用して、さ
 
 まず、2 つのクラウド データ ストアの間、およびオンプレミスのデータ ストアとクラウド データ ストアの間でデータの移行がどのように行われるかについて説明します。
 
-> [AZURE.NOTE] アクティビティ全般については、[パイプラインとアクティビティの概要](data-factory-create-pipelines.md)に関するページをご覧ください。
+> [!NOTE]
+> アクティビティ全般については、[パイプラインとアクティビティの概要](data-factory-create-pipelines.md)に関するページをご覧ください。
+> 
+> 
 
 ### 2 つのクラウド データ ストア間でのデータのコピー
 ソース データ ストアとシンク データ ストアの両方がクラウドにある場合、コピー アクティビティは、次の段階を経てデータをソースからシンクにコピーします。コピー アクティビティを実行するサービスが行う処理を次に示します。
 
 1. ソース データ ストアからデータを読み取る。
 2. シリアル化/逆シリアル化、圧縮/圧縮解除、列マッピング、型変換を実行する。この操作は、入力データセット、出力データセット、およびコピー アクティビティの構成に基づいて実行されます。
-3.	コピー先データ ストアにデータを書き込む。
+3. コピー先データ ストアにデータを書き込む。
 
 このサービスでは、データ移動の実行に適したリージョンが自動的に選択されます。選択されるのは、通常、シンク データ ストアに最も近いリージョンです。
 
 ![クラウド間のコピー](./media/data-factory-data-movement-activities/cloud-to-cloud.png)
-
 
 ### オンプレミス データ ストアとクラウド データ ストア間でのデータのコピー
 オンプレミス データ ストアと、クラウド データ ストアの間でデータを安全に移動するには、Data Management Gateway を、オンプレミスのコンピューターにインストールする必要があります。Data Management Gateway は、ハイブリッド データの移動と処理を可能にするエージェントです。この Data Management Gateway は、データ ストア自体と同じコンピューター、またはデータ ストアにアクセスできる別のコンピューターにインストールできます。
@@ -54,7 +55,7 @@ Azure Data Factory では、コピー アクティビティを使用して、さ
 Data Management Gateway を使用すると、Azure IaaS 仮想マシン (VM) でホストされている、サポートされるデータ ストア間でデータを移動することもできます。この場合、Data Management Gateway は、データ ストア自体と同じ VM、またはデータ ストアにアクセスできる別の VM にインストールできます。
 
 ## サポートされるデータ ストアと形式
-[AZURE.INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
 コピー アクティビティでサポートされていないデータ ストアとの間でデータを移動する必要がある場合は、データのコピーと移動に独自のロジックを使用した、Data Factory の**カスタム アクティビティ**を使用します。カスタム アクティビティの作成と使用の詳細については、「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md)」をご覧ください。
 
@@ -63,11 +64,9 @@ Data Management Gateway を使用すると、Azure IaaS 仮想マシン (VM) で
 
 また、コピー アクティビティでは、テキスト、Avro、ORC、Parquet、JSON など、指定した形式でファイルの読み取りと書き込みを実行します。コピー アクティビティの例をいくつか示します。
 
--	Azure BLOB からテキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
--	オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB に Avro 形式で書き込む。
--	Azure SQL Database のデータをコピーし、オンプレミスの HDFS に ORC 形式で書き込む。
-
-
+* Azure BLOB からテキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
+* オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB に Avro 形式で書き込む。
+* Azure SQL Database のデータをコピーし、オンプレミスの HDFS に ORC 形式で書き込む。
 
 ## <a name="global"></a>グローバルに使用できるデータの移動
 Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リージョンでのみ使用できます。ただし、コピー アクティビティを実行するサービスは、以下のリージョンと場所でグローバルに使用できます。グローバルに使用できるトポロジでは効率的なデータ移動が保証されます。このデータ移動では、通常、リージョンをまたがるホップが回避されます。リージョンにおける Data Factory とデータ移動の提供状況については、「[リージョン別のサービス](https://azure.microsoft.com/regions/#services)」をご覧ください。
@@ -75,31 +74,33 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 ### クラウド データ ストア間でのデータのコピー
 ソース データとシンク データが両方ともクラウドにある場合、Data Factory は同じ地域内で対象シンクに最も近いリージョンにあるサービスのデプロイメントを使用して、データを移動します。リージョンのマッピングについては、以下の表をご覧ください。
 
-コピー先データ ストアのリージョン | データ移動に使用するリージョン
-:----------------------------------- | :----------------------------
-米国東部 | 米国東部
-米国東部 2 | 米国東部 2
-米国西部 | 米国西部
-米国西部 2 | 米国西部
-米国中央部 | 米国中央部
-米国中西部 | 米国中央部
-米国中北部 | 米国中北部
-米国中南部 | 米国中南部
-北ヨーロッパ | 北ヨーロッパ
-西ヨーロッパ | 西ヨーロッパ
-東南アジア | 東南アジア
-東アジア | 東南アジア
-東日本 | 東日本
-西日本 | 東日本
-ブラジル南部 | ブラジル南部
-オーストラリア東部 | オーストラリア東部
-オーストラリア南東部 | オーストラリア南東部
-インド中部 | インド中部
-インド南部 | インド中部
-インド西部 | インド中部
+| コピー先データ ストアのリージョン | データ移動に使用するリージョン |
+|:--- |:--- |
+| 米国東部 |米国東部 |
+| 米国東部 2 |米国東部 2 |
+| 米国西部 |米国西部 |
+| 米国西部 2 |米国西部 |
+| 米国中央部 |米国中央部 |
+| 米国中西部 |米国中央部 |
+| 米国中北部 |米国中北部 |
+| 米国中南部 |米国中南部 |
+| 北ヨーロッパ |北ヨーロッパ |
+| 西ヨーロッパ |西ヨーロッパ |
+| 東南アジア |東南アジア |
+| 東アジア |東南アジア |
+| 東日本 |東日本 |
+| 西日本 |東日本 |
+| ブラジル南部 |ブラジル南部 |
+| オーストラリア東部 |オーストラリア東部 |
+| オーストラリア南東部 |オーストラリア南東部 |
+| インド中部 |インド中部 |
+| インド南部 |インド中部 |
+| インド西部 |インド中部 |
 
-
-> [AZURE.NOTE] コピー先データ ストアのリージョンが前のリストにない場合、代わりのリージョンには移動せず、コピー アクティビティは失敗します。
+> [!NOTE]
+> コピー先データ ストアのリージョンが前のリストにない場合、代わりのリージョンには移動せず、コピー アクティビティは失敗します。
+> 
+> 
 
 ### オンプレミス データ ストアとクラウド データ ストア間でのデータのコピー
 データがオンプレミス (または Azure 仮想マシン/IaaS) のストアとクラウド ストアの間でコピーされる場合は、[Data Management Gateway](data-factory-data-management-gateway.md) が、オンプレミスのコンピューターまたは仮想マシンでデータ移動を実行します。データは、[ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)機能を使用しない限り、クラウド上のサービスを経由しません。この場合、データはシンク データ ストアに書き込まれる前に、ステージング Azure BLOB ストレージを経由します。
@@ -119,46 +120,46 @@ JSON プロパティ (名前、説明、入力テーブル、出力テーブル�
 
 JSON 定義のサンプルを次に示します。
 
-	{
-	  "name": "ADFTutorialPipeline",
-	  "properties": {
-	    "description": "Copy data from Azure blob to Azure SQL table",
-	    "activities": [
-	      {
-	        "name": "CopyFromBlobToSQL",
-	        "type": "Copy",
-	        "inputs": [
-	          {
-	            "name": "InputBlobTable"
-	          }
-	        ],
-	        "outputs": [
-	          {
-	            "name": "OutputSQLTable"
-	          }
-	        ],
-	        "typeProperties": {
-	          "source": {
-	            "type": "BlobSource"
-	          },
-	          "sink": {
-	            "type": "SqlSink",
-	            "writeBatchSize": 10000,
-	            "writeBatchTimeout": "60:00:00"
-	          }
-	        },
-	        "Policy": {
-	          "concurrency": 1,
-	          "executionPriorityOrder": "NewestFirst",
-	          "retry": 0,
-	          "timeout": "01:00:00"
-	        }
-	      }
-	    ],
-	    "start": "2016-07-12T00:00:00Z",
-	    "end": "2016-07-13T00:00:00Z"
-	  }
-	}
+    {
+      "name": "ADFTutorialPipeline",
+      "properties": {
+        "description": "Copy data from Azure blob to Azure SQL table",
+        "activities": [
+          {
+            "name": "CopyFromBlobToSQL",
+            "type": "Copy",
+            "inputs": [
+              {
+                "name": "InputBlobTable"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "OutputSQLTable"
+              }
+            ],
+            "typeProperties": {
+              "source": {
+                "type": "BlobSource"
+              },
+              "sink": {
+                "type": "SqlSink",
+                "writeBatchSize": 10000,
+                "writeBatchTimeout": "60:00:00"
+              }
+            },
+            "Policy": {
+              "concurrency": 1,
+              "executionPriorityOrder": "NewestFirst",
+              "retry": 0,
+              "timeout": "01:00:00"
+            }
+          }
+        ],
+        "start": "2016-07-12T00:00:00Z",
+        "end": "2016-07-13T00:00:00Z"
+      }
+    }
 
 出力データセットで定義されているスケジュールに従って、アクティビティが実行されるタイミングが決まります (たとえば、frequency を **day**、interval を **1** に設定すると、**日単位**で実行されます)。コピー アクティビティでは、入力データセット (**ソース**) から出力データセット (**シンク**) にデータがコピーされます。
 
@@ -178,9 +179,8 @@ Data Factory でのスケジュール設定と実行のしくみに関する詳�
 
 データ ストアのネイティブ型システムから .NET 型へのマッピングは、該当するデータ ストアの記事を参照してください ([サポートされるデータ ストア](#supported-data-stores)の表に示されているリンクをクリックしてください)。このマッピングを使用して、テーブル作成時に適切な型を決定でき、コピー アクティビティによって適切な変換が実行されます。
 
-
 ## 次のステップ
-- コピー アクティビティの詳細については、「[Azure Blob Storage から Azure SQL Database にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
-- オンプレミスのデータ ストアからクラウド データ ストアへのデータの移動については、[オンプレミスのデータ ストアからクラウド データ ストアへのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関するページをご覧ください。
+* コピー アクティビティの詳細については、「[Azure Blob Storage から Azure SQL Database にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
+* オンプレミスのデータ ストアからクラウド データ ストアへのデータの移動については、[オンプレミスのデータ ストアからクラウド データ ストアへのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関するページをご覧ください。
 
 <!---HONumber=AcomDC_0928_2016-->

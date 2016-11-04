@@ -1,31 +1,30 @@
-<properties
-   pageTitle="DocumentDB を使用したデータのグローバル分散 | Microsoft Azure"
-   description="完全に管理された NoSQL データベース サービスである Azure DocumentDB のグローバル データベースを使用した、地球規模の geo レプリケーション、フェールオーバー、データ復旧について説明します。"
-   services="documentdb"
-   documentationCenter=""
-   authors="kiratp"
-   manager="jhubbard"
-   editor=""/>
+---
+title: DocumentDB を使用したデータのグローバル分散 | Microsoft Docs
+description: 完全に管理された NoSQL データベース サービスである Azure DocumentDB のグローバル データベースを使用した、地球規模の geo レプリケーション、フェールオーバー、データ復旧について説明します。
+services: documentdb
+documentationcenter: ''
+author: kiratp
+manager: jhubbard
+editor: ''
 
-<tags
-   ms.service="documentdb"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/15/2016"
-   ms.author="kipandya"/>
-   
-   
+ms.service: documentdb
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/15/2016
+ms.author: kipandya
+
+---
 # DocumentDB を使用したデータのグローバル分散
-
-> [AZURE.NOTE] DocumentDB データベースのグローバル配布は、広く利用可能な機能であり、新しく作成した DocumentDB アカウントで自動的に有効になります。弊社は既存のすべてのアカウントでグローバル配布が有効になるように取り組んでいます。ただし当面は、ご使用のアカウントでグローバル配布の有効化を希望される場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)いただければすぐに有効にいたします。
+> [!NOTE]
+> DocumentDB データベースのグローバル配布は、広く利用可能な機能であり、新しく作成した DocumentDB アカウントで自動的に有効になります。弊社は既存のすべてのアカウントでグローバル配布が有効になるように取り組んでいます。ただし当面は、ご使用のアカウントでグローバル配布の有効化を希望される場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)いただければすぐに有効にいたします。
+> 
+> 
 
 Azure DocumentDB は、グローバルに分散された数百万のデバイスで構成される IoT アプリケーションのほか、世界中のユーザーに対して高い応答性を実現するインターネット規模のアプリケーションのニーズを満たすように設計されています。これらのデータベース システムには、明確に定義されたデータの一貫性と可用性を保証すると共に、複数の地理的リージョンからアプリケーションのデータに短い待機時間でアクセスできるようにするという課題があります。グローバルに分散したデータベース システムとして、DocumentDB はデータのグローバル分散を容易にします。そのために、対応する保証と共に一貫性、可用性、パフォーマンスの間の明確なトレードオフを提供する、完全に管理された複数リージョンのデータベース アカウントが用意されています。DocumentDB データベース アカウントには、高可用性、10 ミリ秒未満の遅延、複数の[明確に定義された整合性レベル][consistency]、マルチホーム API による透過的な地域フェールオーバー、世界規模でスループットとストレージを柔軟にスケールする機能が備わっています。
 
-  
 ## 複数リージョンのアカウントの構成
-
 [Azure ポータル](documentdb-portal-global-replication.md)を使えば、1 分足らずで DocumentDB アカウントを構成して世界規模にスケールすることができます。必要なのは、サポートされている複数の明確に定義された一貫性レベルから適切な一貫性レベルを選択し、対象のデータベース アカウントに任意の数の Azure リージョンを関連付けることだけです。DocumentDB の一貫性レベルでは、特定の一貫性の保証とパフォーマンスの間の明確なトレードオフが提供されます。
 
 ![DocumentDB offers multiple, well defined (relaxed) consistency models to choose from][1]
@@ -34,11 +33,8 @@ DocumentDB には明確に定義された (緩やかな) 一貫性モデルが�
 
 適切な一貫性レベルは、アプリケーションに必要なデータの一貫性の保証に応じて選択します。DocumentDB によって、指定したすべてのリージョン間でデータが自動的にレプリケートされます。また、データベース アカウントに関して選択した一貫性が保証されます。
 
-
-## 複数リージョンのフェールオーバーの使用 
-
+## 複数リージョンのフェールオーバーの使用
 Azure DocumentDB には複数の Azure リージョン間でデータベース アカウントを透過的にフェールオーバーする機能があります。新しい[マルチホーム API][developingwithmultipleregions] によって、アプリが継続して論理エンドポイントを使用でき、フェールオーバーによって中断されないことが保証されます。フェールオーバーの制御は自身で行います。アプリケーション、インフラストラクチャ、サービス、またはリージョンの (実際またはシミュレーション上の) 障害など、考えられるさまざまな障害状態のいずれかが発生した場合にデータベース アカウントを変更できる柔軟性が確保されています。DocumentDB でリージョンの障害が発生した場合、サービスによってデータベース アカウントが透過的にフェールオーバーされ、アプリケーションは可用性を損なわれることなく引き続きデータにアクセスします。DocumentDB は [99\.99% の可用性 SLA][sla] を提供しますが、[プログラム][arm]と Azure ポータルの両方で、リージョンの障害をシミュレートしてアプリケーションのエンド ツー エンドの可用性プロパティをテストできます。
-
 
 ## 世界規模のスケーリング
 DocumentDB を利用すると、対象のデータベース アカウントに関連付けられているすべてのリージョン間でグローバルに、あらゆる規模で DocumentDB コレクションごとに独立してスループットをプロビジョニングし、ストレージを使用できます。DocumentDB コレクションは自動的にグローバルに分散され、データベース アカウントに関連付けられたすべてのリージョン間で管理されます。データベース アカウント内のコレクションは、[DocumentDB サービスが利用できる][serviceregions]任意の Azure リージョン間で分散できます。
@@ -51,13 +47,10 @@ DocumentDB では、読み取りについては 10 ミリ秒未満、書き込�
 
 最後に、DocumentDB は完全に[スキーマに依存しない][vldb]ため、複数のデータセンター間のスキーマまたはセカンダリ インデックスの管理/更新について心配する必要がありません。アプリケーションとデータ モデルの開発を進めながら、[SQL クエリ][sqlqueries]は引き続き使用できます。
 
-
-## グローバル分散の有効化 
-
+## グローバル分散の有効化
 DocumentDB データベース アカウントに関連付ける Azure リージョンを 1 つにするか複数にするかによって、データをローカルに分散するかグローバルに分散するかを決定できます。データベース アカウントに対するリージョンの追加や削除は、いつでも行うことができます。ポータルを使用してグローバル分散を有効にするには、「[How to perform DocumentDB global database replication using the Azure portal (Azure ポータルを使用して DocumentDB グローバル データベース レプリケーションを実行する方法)](documentdb-portal-global-replication.md)」を参照してください。プログラムを使用してグローバル分散を有効にするには、「[複数リージョンの DocumentDB アカウントを使用した開発](documentdb-developing-with-multiple-regions.md)」を参照してください。
 
 ## 次のステップ
-
 DocumentDB を使用したデータのグローバル分散の詳細については、次の記事を参照してください。
 
 * [コレクションのスループットとストレージのプロビジョニング][throughputandstorage]

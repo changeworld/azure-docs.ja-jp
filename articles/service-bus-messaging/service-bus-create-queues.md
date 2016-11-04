@@ -1,23 +1,22 @@
-<properties 
-    pageTitle="Service Bus キューを使用するアプリケーションを作成する | Microsoft Azure"
-    description="Service Bus を使用する簡単なキュー ベースのアプリケーションを作成する方法。"
-    services="service-bus"
-    documentationCenter="na"
-    authors="sethmanheim"
-    manager="timlt"
-    editor="" />
-<tags 
-    ms.service="service-bus"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="na"
-    ms.date="10/03/2016"
-    ms.author="sethm" />
+---
+title: Service Bus キューを使用するアプリケーションを作成する | Microsoft Docs
+description: Service Bus を使用する簡単なキュー ベースのアプリケーションを作成する方法。
+services: service-bus
+documentationcenter: na
+author: sethmanheim
+manager: timlt
+editor: ''
 
+ms.service: service-bus
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 10/03/2016
+ms.author: sethm
 
+---
 # <a name="create-applications-that-use-service-bus-queues"></a>Service Bus キューを使用するアプリケーションを作成する
-
 このトピックでは、Service Bus キューについて説明し、Service Bus を使用する簡単なキュー ベースのアプリケーションを作成する方法を示します。
 
 個々 の販売時点管理 (POS) 端末から売上データを在庫管理システムにルーティングし、在庫管理システムではそのデータを使用して在庫を補充する時期を決定する、小売業界のシナリオについて検討します。 このソリューションでは、次の図に示すように、端末と在庫管理システムの間の通信に Service Bus メッセージングを使用します。
@@ -27,48 +26,38 @@
 各 POS 端末は、**DataCollectionQueue** にメッセージを送信することによって、売上データを報告します。 これらのメッセージは、在庫管理システムによって取り出されるまでこのキューに残っています。 POS 端末は処理を続行するために在庫管理システムからの応答を待機する必要がないため、このパターンは*非同期メッセージング*と呼ばれることがよくあります。
 
 ## <a name="why-queuing?"></a>キューを使用する理由
-
 このアプリケーションを設定するために必要なコードを見る前に、POS 端末が在庫管理システムと直接 (同期的に) 対話するのではなく、キューをこのシナリオで使用することの利点について検討します。
 
 ### <a name="temporal-decoupling"></a>一時的な結合の解除
-
 非同期メッセージング パターンでは、プロデューサーとコンシューマーが同時にオンラインになっている必要はありません。 このメッセージング インフラストラクチャは、コンシューマーがメッセージを受信する準備ができるまで、メッセージを確実に格納します。 つまり、分散型アプリケーションのコンポーネントをメンテナンスやコンポーネント クラッシュの場合でもシステム全体に影響を与えずに自動的に切断できます。 さらに、コンシューマー アプリケーションがオンラインになっている必要がある時間は、1 日のうち一定の時間だけで済みます。 たとえば、この小売業のシナリオでは、在庫管理システムは営業時間の終了後にオンラインになるだけで済むかもしれません。
 
 ### <a name="load-leveling"></a>負荷平準化
-
 多くのアプリケーションでは、システム負荷が時間の経過とともに変化しますが、各作業単位に必要な処理時間は 通常一定に保たれます。 メッセージ プロデューサーとメッセージ コンシューマーの間をキューで仲介することは、コンシューマー側アプリケーション (worker) はピーク時ではなく平均時の負荷に対応できるようにプロビジョニングすればいいということを意味します。 キューの深さは、受信する負荷の変化に合わせて増減します。 このため、アプリケーション負荷への対応に必要なインフラストラクチャに関して直接費用を節約できます。
 
 ![Service Bus キューの画像 2](./media/service-bus-create-queues/IC657162.gif)
 
 ### <a name="load-balancing"></a>負荷分散
-
 負荷の増大に合わせて、worker キューからの読み取りのために worker プロセスを追加できます。 各メッセージは、ワーカー プロセスの中の 1 つのプロセスによって処理されます。 さらに、このプルベースの負荷分散では、各 worker コンピューターがそれぞれ独自の最大レートでメッセージをプルするため、それらのコンピューターの処理能力が異なる場合であっても使用を最適化できます。 このパターンは、競合コンシューマー パターンと 呼ばれることもあります。
 
 ![Service Bus キューの画像 3](./media/service-bus-create-queues/IC657163.gif)
 
 ### <a name="loose-coupling"></a>疎結合
-
 メッセージ キューを使用してメッセージ プロデューサーとメッセージ コンシューマーの間を仲介すると、必然的にコンポーネント間の結び付きは緩くなります。 プロデューサーとコンシューマーは相互に認識しないため、プロデューサーに影響することなく、コンシューマーをアップグレードできます。 さらに、既存のエンドポイントに影響を与えずメッセージング トポロジを拡張できます。 これについては、パブリッシュ/サブスクライブのところでさらに詳しく説明します。
 
 ## <a name="show-me-the-code"></a>コード
-
 以下では、Service Bus を使用してこのアプリケーションを作成する方法を示します。
 
 ### <a name="sign-up-for-an-azure-account"></a>Azure アカウントにサインアップする
-
 Service Bus の使用を開始するには、Azure アカウントが必要です。 アカウントがまだない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)で無料アカウントにサインアップできます。
 
 ### <a name="create-a-namespace"></a>名前空間の作成
-
-サブスクリプションを作成した後は、[新しい名前空間を作成](service-bus-create-namespace-portal.md)できます。 各名前空間は、一連の Service Bus エンティティに対するスコープ コンテナーの役割を果たします。 新しい名前空間に、すべての Service Bus アカウントについて一意の名前を指定します。 
+サブスクリプションを作成した後は、[新しい名前空間を作成](../service-bus/service-bus-create-namespace-portal.md)できます。 各名前空間は、一連の Service Bus エンティティに対するスコープ コンテナーの役割を果たします。 新しい名前空間に、すべての Service Bus アカウントについて一意の名前を指定します。 
 
 ### <a name="install-the-nuget-package"></a>NuGet パッケージのインストール
-
 Service Bus の名前空間を使用するには、アプリケーションは Service Bus アセンブリ (具体的には Microsoft.ServiceBus.dll) を参照する必要があります。 このアセンブリは Microsoft Azure SDK に含まれ、[Azure SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からダウンロードできます。 ただし、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法は、[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)です。
 
 ### <a name="create-the-queue"></a>キューを作成する
-
-Service Bus メッセージング エンティティ (キューおよびトピックのパブリッシュ/サブスクライブ) の管理は、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスを使用して行われます。 Service Bus は、[Shared Access Signature (SAS)](service-bus-sas-overview.md) ベースのセキュリティ モデルを使用します。 [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。 SAS の資格情報を保持するには、[CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) メソッドを使用します。 その後、Service Bus 名前空間のベース アドレスとトークン プロバイダーを使用して、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) インスタンスが作成されます。
+Service Bus メッセージング エンティティ (キューおよびトピックのパブリッシュ/サブスクライブ) の管理は、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスを使用して行われます。 Service Bus は、[Shared Access Signature (SAS)](../service-bus/service-bus-sas-overview.md) ベースのセキュリティ モデルを使用します。 [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。 SAS の資格情報を保持するには、[CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) メソッドを使用します。 その後、Service Bus 名前空間のベース アドレスとトークン プロバイダーを使用して、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) インスタンスが作成されます。
 
 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスには、メッセージング エンティティの作成、列挙、削除を実行するためのメソッドが用意されています。 ここでは、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) インスタンスを作成し、それを使用して **DataCollectionQueue** キューを作成するコードを示します。
 
@@ -77,7 +66,7 @@ Uri uri = ServiceBusEnvironment.CreateServiceUri("sb",
                 "test-blog", string.Empty);
 string name = "RootManageSharedAccessKey";
 string key = "abcdefghijklmopqrstuvwxyz";
- 
+
 TokenProvider tokenProvider = 
     TokenProvider.CreateSharedAccessSignatureTokenProvider(name, key);
 NamespaceManager namespaceManager = 
@@ -88,7 +77,6 @@ namespaceManager.CreateQueue("DataCollectionQueue");
 キューのプロパティを調整できる [CreateQueue](https://msdn.microsoft.com/library/azure/hh322663.aspx) メソッドのオーバーロードがあることに注意してください。 たとえば、キューに送信されるメッセージの既定の有効期限 (TTL) の値を設定できます。
 
 ### <a name="send-messages-to-the-queue"></a>キューへのメッセージの送信
-
 Service Bus のエンティティに対して実行時の操作を行う場合 (メッセージの送受信など)、アプリケーションではまず [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) オブジェクトを作成する必要があります。 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスと同じように、[MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) インスタンスもサービスの名前空間のベース アドレスとトークン プロバイダーから作成されます。
 
 ```
@@ -108,9 +96,7 @@ sender.Send(bm);
 ```
 
 ### <a name="receiving-messages-from-the-queue"></a>キューからのメッセージの受信
-
 キューからメッセージを受け取るには、[MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx) オブジェクトを使用できます。このオブジェクトは、[CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx) を使用して [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) から直接作成します。 メッセージ レシーバーは、**ReceiveAndDelete** と **PeekLock** という 2 つの異なるモードで動作できます。 [ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) は、[CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx) の呼び出しへのパラメーターとして、メッセージ レシーバーの作成時に設定されます。
-
 
 **ReceiveAndDelete** モードでは、受信は単発の操作です。つまり、Service Bus は要求を受信すると、メッセージを読み取り中としてマークしてアプリケーションに返します。 **ReceiveAndDelete** モードは最もシンプルなモデルであり、障害が発生した場合にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus がメッセージを読み取り中としてマークするため、アプリケーションは、再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージを見落とすことになります。
 
@@ -137,13 +123,12 @@ catch (Exception e)
 ```
 
 ### <a name="use-the-queue-client"></a>キュー クライアントの使用
-
 このセクションのこれまでの例では、[MessageSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx) および [MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx) オブジェクトを [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) から直接作成し、キューとの間でメッセージを送受信しました。 他の方法として、[QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) クラスを使用するものがあります。このクラスは、送信と受信両方の操作に加えて、セッションなどのさらに高度な機能をサポートします。
 
 ```
 QueueClient queueClient = factory.CreateQueueClient("DataCollectionQueue");
 queueClient.Send(bm);
-            
+
 BrokeredMessage message = queueClient.Receive();
 
 try
@@ -158,9 +143,7 @@ catch (Exception e)
 ```
 
 ## <a name="next-steps"></a>次のステップ
-
 このトピックではキューの基本を説明しました。次に、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」で Service Bus のトピックとサブスクリプションのパブリッシュ/サブスクライブ機能の使用を学習してください。
-
 
 <!--HONumber=Oct16_HO2-->
 

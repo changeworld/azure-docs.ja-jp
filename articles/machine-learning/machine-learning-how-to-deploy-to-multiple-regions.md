@@ -1,30 +1,27 @@
-<properties
-    pageTitle="複数のリージョンに Web サービスをデプロイする方法 | Microsoft Azure"
-    description="新しい Web サービスを他のリージョンにデプロイ (コピー) する手順。"
-    services="machine-learning"
-    documentationCenter=""
-    authors="vDonGlover"
-    manager="raymondl"
-    editor="cgronlun"/>
+---
+title: 複数のリージョンに Web サービスをデプロイする方法 | Microsoft Docs
+description: 新しい Web サービスを他のリージョンにデプロイ (コピー) する手順。
+services: machine-learning
+documentationcenter: ''
+author: vDonGlover
+manager: raymondl
+editor: cgronlun
 
-<tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/05/2016"
-    ms.author="v-donglo"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/05/2016
+ms.author: v-donglo
 
-
+---
 # <a name="how-to-deploy-a-web-service-to-multiple-regions"></a>複数のリージョンに Web サービスをデプロイする方法
-
 新しい Azure の Web サービスを使用すると、複数のサブスクリプションやワークスペースがなくても、複数のリージョンに Web サービスを簡単にデプロイできます。 
 
 料金は、リージョンに固有なので、Web サービスをデプロイするリージョンごとに課金プランを定義する必要があります。
 
 ## <a name="to-create-a-plan-in-another-region"></a>別のリージョンにプランを作成するには
-
 1. [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/)にサインインします。
 2. **[プラン]** メニュー オプションをクリックします。
 3. [プラン] 概要ページで **[新規]**をクリックします。
@@ -35,9 +32,7 @@
 8. **[Plan Options (プラン オプション)]**で、新しいプランの課金レベルをクリックします。
 9. **[作成]**をクリックします。
 
-
 ## <a name="deploying-the-web-service-to-another-region"></a>別のリージョンに Web サービスをデプロイする
-
 1. **[Web サービス]** メニュー オプションをクリックします。
 2. 新しいリージョンにデプロイする Web サービスを選択します。
 3. **[コピー]**をクリックします。
@@ -49,9 +44,6 @@
 9. **[ストレージ アカウント]** ドロップダウンで、Web サービスを格納するためのストレージ アカウントを選択します。
 10. **[Price Plan (価格プラン)]** ドロップダウンで、手順 8 で選択したリージョンのプランを選択します。
 11. **[コピー]**をクリックします。
-
-
-
 
 <!--HONumber=Oct16_HO2-->
 

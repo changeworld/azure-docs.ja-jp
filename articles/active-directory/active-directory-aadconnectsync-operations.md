@@ -1,30 +1,30 @@
-<properties
-   pageTitle="Azure AD Connect Sync: 操作タスクおよび考慮事項 | Microsoft Azure"
-   description="このトピックでは、Azure AD Connect Sync の運用タスクと、このコンポーネントを操作するための準備方法について説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="AndKjell"
-   manager="femila"
-   editor=""/>
+---
+title: 'Azure AD Connect Sync: 操作タスクおよび考慮事項 | Microsoft Docs'
+description: このトピックでは、Azure AD Connect Sync の運用タスクと、このコンポーネントを操作するための準備方法について説明します。
+services: active-directory
+documentationcenter: ''
+author: AndKjell
+manager: femila
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="09/01/2016"
-   ms.author="andkjell"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/01/2016
+ms.author: andkjell
 
+---
 # Azure AD Connect Sync: 操作タスクおよび考慮事項
 このトピックでは、Azure AD Connect Sync の操作タスクについて説明します。
 
 ## ステージング モード
 ステージング モードは、次のシナリオを含むいくつかのシナリオに使用できます。
 
--	高可用性:
--	新しい構成の変更をテストおよびデプロイする。
--	新しいサーバーを導入し、古いサーバーの使用を中止する。
+* 高可用性:
+* 新しい構成の変更をテストおよびデプロイする。
+* 新しいサーバーを導入し、古いサーバーの使用を中止する。
 
 ステージング モードのサーバーでは、構成を変更した後、そのサーバーをアクティブにする前に変更内容をプレビューできます。また、フル インポートおよび完全同期を実行して、変更を運用環境に加える前に、すべての変更が予定どおりに加えられていることを確認できます。
 
@@ -45,12 +45,10 @@
 4. [アクティブなサーバーの切り替え](#switch-active-server)
 
 #### 準備
-
 1. Azure AD Connect をインストールし、**[ステージング モード]** を選択します。インストール ウィザードの最後のページで、**[同期の開始]** を選択解除します。このモードにより、同期エンジンを手動で実行することができます。 ![ReadyToConfigure](./media/active-directory-aadconnectsync-operations/readytoconfigure.png)
 2. いったんサインオフし、サインインし直してから、[スタート] メニューの **[Synchronization Service (同期サービス)]** を選択します。
 
 #### インポートおよび同期
-
 1. **[コネクタ]** を選択します。種類が "**Active Directory ドメイン サービス**" の 1 つ目のコネクタを選択します。**[Run (実行)]**、**[Full import (フル インポート)]**、**[OK]** の順にクリックします。この種類のすべてのコネクタに対して、これらの手順を繰り返します。
 2. 種類が "**Azure Active Directory (Microsoft)**" のコネクタを選択します。**[Run (実行)]**、**[Full import (フル インポート)]**、**[OK]** の順にクリックします。
 3. [Connectors (コネクタ)] タブが選択されたままであることを確認します。種類が "**Active Directory Domain Services**" の各コネクタに対し、**[Run (実行)]**、**[Delta Synchronization (差分同期)]**、**[OK]** の順にクリックします。
@@ -59,7 +57,6 @@
 これで、Azure AD とオンプレミスの AD (Exchange ハイブリッド デプロイを使用している) へのエクスポートの変更がステージングされました。次の手順では、実際にディレクトリへのエクスポートを開始する前に、変更される内容を確認できます。
 
 #### 確認
-
 1. コマンド プロンプトを起動し、`%ProgramFiles%\Microsoft Azure AD Sync\bin` に移動します。
 2. `csexport "Name of Connector" %temp%\export.xml /f:x` を実行します。同期サービスにコネクタの名前があることを確認できます。Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
 3. 次のコマンドを実行します: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`
@@ -70,28 +67,27 @@
 
 ファイルのほとんどの部分は、一目瞭然です。内容の理解に役立つ省略形のいくつかを次に示します。
 
-- OMODT - オブジェクトの変更の種類。オブジェクト レベルでの操作が追加、更新、または削除のいずれかであるかを示します。
-- AMODT - 属性の変更の種類。属性レベルでの操作が追加、更新、または削除のいずれかであるかを示します。
+* OMODT - オブジェクトの変更の種類。オブジェクト レベルでの操作が追加、更新、または削除のいずれかであるかを示します。
+* AMODT - 属性の変更の種類。属性レベルでの操作が追加、更新、または削除のいずれかであるかを示します。
 
 属性の値が複数値の場合は、すべての変更が表示されるとは限りません。追加および削除された値の数のみが表示されます。
 
 #### アクティブなサーバーの切り替え
-
 1. 現在アクティブなサーバーで、サーバー (DirSync、FIM、または Azure AD Sync) をオフにして Azure AD にエクスポートしないように設定するか、ステージング モード (Azure AD Connect) に設定します。
 2. **ステージング モード**のサーバーでインストール ウィザードを実行して、**ステージング モード**を無効にします。 ![ReadyToConfigure](./media/active-directory-aadconnectsync-operations/additionaltasks.png)
 
 ## 障害復旧
 実装の設計には、同期サーバーを喪失する障害の発生時の対処方法を計画することが含まれます。モデルにはさまざまなものがあり、どのモデルを使用するかは、次の要素を含むいくつかの要素に依存します。
 
--	ダウンタイム中に Azure AD のオブジェクトを変更できないことに関してどれだけ許容できますか?
--	パスワード同期を使用する場合、オンプレミスでパスワードを変更する場合に備えて Azure AD で古いパスワードを使用することが求められることについてユーザーの同意が得られますか?
--	パスワード ライトバックなどのリアルタイムの操作に依存していますか?
+* ダウンタイム中に Azure AD のオブジェクトを変更できないことに関してどれだけ許容できますか?
+* パスワード同期を使用する場合、オンプレミスでパスワードを変更する場合に備えて Azure AD で古いパスワードを使用することが求められることについてユーザーの同意が得られますか?
+* パスワード ライトバックなどのリアルタイムの操作に依存していますか?
 
 これらの質問の回答と組織のポリシーに応じて、次の戦略のいずれかを実装することができます。
 
--	必要に応じて再構築する。
--	予備のスタンバイ サーバーを用意する ("**ステージング モード**" と呼ばれます)。
--	仮想マシンを使用する。
+* 必要に応じて再構築する。
+* 予備のスタンバイ サーバーを用意する ("**ステージング モード**" と呼ばれます)。
+* 仮想マシンを使用する。
 
 組み込みの SQL Express データベースを使用しない場合は、「[SQL 高可用性](#sql-high-availability)」セクションも確認してください。
 
@@ -112,10 +108,9 @@
 Azure AD Connect に付属している SQL Server Express を使用しない場合は、SQL Server の高可用性も考慮する必要があります。サポートされている高可用性ソリューションは SQL クラスタリングのみです。サポートされていないソリューションには、ミラーリングと Always On があります。
 
 ## 次のステップ
-
 **概要トピック**
 
-- [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
-- [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+* [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
+* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
 <!---HONumber=AcomDC_0907_2016-->

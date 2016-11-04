@@ -1,24 +1,23 @@
-<properties
-pageTitle="Excel コネクタを追加する | Microsoft Azure"
-description="Excel コネクタと REST API パラメーターの概要"
-services=""    
-documentationCenter=""     
-authors="msftman"    
-manager="erikre"    
-editor=""
-tags="connectors"/>
+---
+title: Excel コネクタを追加する | Microsoft Docs
+description: Excel コネクタと REST API パラメーターの概要
+services: ''
+documentationcenter: ''
+author: msftman
+manager: erikre
+editor: ''
+tags: connectors
 
-<tags
-ms.service="multiple"
-ms.devlang="na"
-ms.topic="article"
-ms.tgt_pltfrm="na"
-ms.workload="na"
-ms.date="08/23/2016"
-ms.author="deonhe"/>
+ms.service: multiple
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/23/2016
+ms.author: deonhe
 
+---
 # Excel コネクタの使用
-
 現時点では Logic Apps に Excel コネクタはありません。
 
 ## Excel データを使用するには

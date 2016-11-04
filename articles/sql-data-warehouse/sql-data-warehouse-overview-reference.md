@@ -1,34 +1,31 @@
-<properties
-   pageTitle="SQL Data Warehouse 参照トピック | Microsoft Azure"
-   description="SQL Data Warehouse の参照コンテンツ リンク。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="barbkess"
-   manager="jhubbard"
-   editor=""/>
+---
+title: SQL Data Warehouse 参照トピック | Microsoft Docs
+description: SQL Data Warehouse の参照コンテンツ リンク。
+services: sql-data-warehouse
+documentationcenter: NA
+author: barbkess
+manager: jhubbard
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="08/08/2016"
-   ms.author="barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 08/08/2016
+ms.author: barbkess;sonyama
 
+---
 # SQL Data Warehouse の参照トピック
-
 これらの記事には、SQL Data Warehouse に関する参照情報が含まれています。
 
-- [Transact-SQL 言語要素][]
-- [Transact-SQL ステートメント][]
-- [Transact-SQL システム ビュー][]
-- [PowerShell コマンドレット][]
-
-
+* [Transact-SQL 言語要素][Transact-SQL 言語要素]
+* [Transact-SQL ステートメント][Transact-SQL ステートメント]
+* [Transact-SQL システム ビュー][Transact-SQL システム ビュー]
+* [PowerShell コマンドレット][PowerShell コマンドレット]
 
 ## 次のステップ
-詳細については、[開発の概要][]に関するページを参照してください。
+詳細については、[開発の概要][開発の概要]に関するページを参照してください。
 
 <!--Image references-->
 

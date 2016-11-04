@@ -1,23 +1,26 @@
-<properties
-   pageTitle="ロジックアプリでの Azure リソース コネクタの使用 | Microsoft Azure App Service"
-   description="Azure リソース コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-   services="logic-apps"
-   documentationCenter=".net,nodejs,java"
-   authors="stepsic-microsoft-com"
-   manager="erikre"
-   editor=""/>
+---
+title: ロジックアプリでの Azure リソース コネクタの使用 | Microsoft Docs
+description: Azure リソース コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: stepsic-microsoft-com
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="09/01/2016"
-   ms.author="stepsic"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 09/01/2016
+ms.author: stepsic
 
+---
 # Azure リソース コネクタの使用開始とロジック アプリへの追加
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+> [!NOTE]
+> 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+> 
+> 
 
 Azure リソース コネクタを使用して、Logic App 内の Azure リソースを簡単に管理できます。
 
@@ -32,64 +35,66 @@ David Ebbo の[ブログ記事](http://blog.davidebbo.com/2014/12/azure-service-
 ### トリガー
 Azure リソース コネクタでは、2 つのトリガーがサポートされています。
 
-名前 | Description
----- | -----------
-Event occurs | ご利用のサブスクリプション内のリソースに対してイベントが発生したときに作用するトリガーです。
-Metric crosses threshold | メトリックが特定のしきい値を満たしたときに作用するトリガーです。
+| 名前 | Description |
+| --- | --- |
+| Event occurs |ご利用のサブスクリプション内のリソースに対してイベントが発生したときに作用するトリガーです。 |
+| Metric crosses threshold |メトリックが特定のしきい値を満たしたときに作用するトリガーです。 |
 
 ### アクション
-
 同様に、ご利用の Azure サブスクリプション内で多数のアクションを指定することができます。
 
 **リソース グループ**に関しては、次のアクションを実行できます。
 
-名前 | Description
----- | -----------
-List resource groups | サブスクリプションに含まれているすべてのリソース グループをリストします。
-Get resource group | リソース グループをその ID で取得します。
-Create resource group | リソース グループを作成または更新します。
-Delete resource group | リソース グループを削除します。
+| 名前 | Description |
+| --- | --- |
+| List resource groups |サブスクリプションに含まれているすべてのリソース グループをリストします。 |
+| Get resource group |リソース グループをその ID で取得します。 |
+| Create resource group |リソース グループを作成または更新します。 |
+| Delete resource group |リソース グループを削除します。 |
 
 **リソース**に関しては、次のアクションを実行できます。
 
-名前 | Description
----- | -----------
-List resources | サブスクリプションに含まれているリソースを各種フィルターでリストします。
-Get resource | 単一のリソースをそのリソース ID で取得します。
-Create or update resource | リソースを作成したり、既存のリソースを更新したりします。対象となるリソースのすべてのプロパティを指定する必要があります。
-Resource action | その他のアクションをリソースに対して実行します。アクションの名前とそのアクションに渡されるペイロード (存在する場合) を把握しておく必要があります。
-Delete resource | リソースを削除します。
+| 名前 | Description |
+| --- | --- |
+| List resources |サブスクリプションに含まれているリソースを各種フィルターでリストします。 |
+| Get resource |単一のリソースをそのリソース ID で取得します。 |
+| Create or update resource |リソースを作成したり、既存のリソースを更新したりします。対象となるリソースのすべてのプロパティを指定する必要があります。 |
+| Resource action |その他のアクションをリソースに対して実行します。アクションの名前とそのアクションに渡されるペイロード (存在する場合) を把握しておく必要があります。 |
+| Delete resource |リソースを削除します。 |
 
 **リソース プロバイダー**に関しては、次のアクションを実行できます。
 
-名前 | Description
----- | -----------
-List resource providers | サブスクリプション内の利用可能なリソース プロバイダーをすべてリストします。
+| 名前 | Description |
+| --- | --- |
+| List resource providers |サブスクリプション内の利用可能なリソース プロバイダーをすべてリストします。 |
 
 **リソース グループ デプロイ**に関しては、次のアクションを実行できます。
 
-名前 | Description
----- | -----------
-List deployments | リソース グループに含まれているデプロイをすべてリストします。
-Get deployment | テンプレート デプロイをその ID で取得します。
-Create deployment | テンプレートを指定して新しいリソース グループ デプロイを作成します。
+| 名前 | Description |
+| --- | --- |
+| List deployments |リソース グループに含まれているデプロイをすべてリストします。 |
+| Get deployment |テンプレート デプロイをその ID で取得します。 |
+| Create deployment |テンプレートを指定して新しいリソース グループ デプロイを作成します。 |
 
 リソースについての**イベント**に関しては、次のアクションを実行できます。
 
-名前 | Description
----- | -----------
-Get events | サブスクリプション内のイベントやリソースのイベントを取得します。
+| 名前 | Description |
+| --- | --- |
+| Get events |サブスクリプション内のイベントやリソースのイベントを取得します。 |
 
 リソースについての**メトリック**に関しては、次のアクションを実行できます。
 
-名前 | Description
----- | -----------
-Get metrics | リソース ID のメトリックを取得します。
+| 名前 | Description |
+| --- | --- |
+| Get metrics |リソース ID のメトリックを取得します。 |
 
 ## コネクタでできること
 これでコネクタが作成されたため、ロジック アプリを使用してこのコネクタをビジネス フローに追加することができます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> [!NOTE]
+> Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> 
+> 
 
 「[Connectors and API アプリReference (コネクタと API アプリのリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 

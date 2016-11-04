@@ -1,35 +1,32 @@
-<properties 
-	pageTitle="RADIUS 認証と Azure Multi-Factor Authentication Server"
-	description="RADIUS 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtand"/>
+---
+title: RADIUS 認証と Azure Multi-Factor Authentication Server
+description: RADIUS 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtand
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/15/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/15/2016
+ms.author: kgremban
 
-
-
+---
 # RADIUS 認証と Azure Multi-Factor Authentication Server
-
 RADIUS 認証セクションでは、Azure Multi-Factor Authentication Server の RADIUS 認証を有効にして構成することができます。RADIUS は、認証要求を承認してそれらの要求を処理する標準のプロトコルです。Azure Multi-Factor Authentication Server は RADIUS サーバーとして機能し、RADIUS クライアント (VPN 機器など) と認証ターゲット (Active Directory (AD)、LDAP ディレクトリ、別の RADIUS サーバーなど) の間に挿入され、Azure Multi-Factor Authentication を追加します。Azure Multi-Factor Authentication が機能するには、クライアント サーバーと認証ターゲットの両方と通信するように Azure Multi-Factor Authentication Server を構成する必要があります。Azure Multi-Factor Authentication Server は RADIUS クライアントから要求を受け取り、認証ターゲットに対して資格情報を検証し、Azure Multi-Factor Authentication を追加して、RADIUS クライアントに応答を返します。全体の認証は、プライマリ認証と Azure Multi-Factor Authentication の両方が成功した場合にのみ、成功します。
 
->[AZURE.NOTE]
-MFA サーバーは、PAP (パスワード認証プロトコル) と、RADIUS サーバーとして機能するときの MSCHAPv2 (Microsoft チャレンジ ハンドシェイク認証プロトコル ) RADIUS プロトコルのみをサポートします。EAP (拡張認証プロトコル) などの他のプロトコルは、そのプロトコルをサポートしている Microsoft NPS など別の RADIUS サーバーに対する RADIUS プロキシとして MFA サーバーが機能する場合に使用できます。</br>この構成で他のプロトコルを使用する場合、MFA サーバーはそのプロトコルを使用して正常に RADIUS チャレンジ応答を開始できないため、一方向の SMS および OATH トークンは動作しません。
-
+> [!NOTE]
+> MFA サーバーは、PAP (パスワード認証プロトコル) と、RADIUS サーバーとして機能するときの MSCHAPv2 (Microsoft チャレンジ ハンドシェイク認証プロトコル ) RADIUS プロトコルのみをサポートします。EAP (拡張認証プロトコル) などの他のプロトコルは、そのプロトコルをサポートしている Microsoft NPS など別の RADIUS サーバーに対する RADIUS プロキシとして MFA サーバーが機能する場合に使用できます。</br>この構成で他のプロトコルを使用する場合、MFA サーバーはそのプロトコルを使用して正常に RADIUS チャレンジ応答を開始できないため、一方向の SMS および OATH トークンは動作しません。
+> 
+> 
 
 ![RADIUS 認証](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
 ## RADIUS 認証の構成
-
 RADIUS 認証を構成するには、Azure Multi-Factor Authentication Server を Windows サーバーにインストールします。Active Directory 環境を使用している場合は、サーバーをネットワーク内のドメインに参加させる必要があります。次の手順に従って Azure Multi-Factor Authentication Server を構成します。
 
 1. Azure Multi-Factor Authentication Server 内で、左側のメニューの [RADIUS 認証] アイコンをクリックします。
@@ -51,13 +48,11 @@ RADIUS 認証を構成するには、Azure Multi-Factor Authentication Server �
 17. Azure Multi-Factor Authentication Server から受け取ったアクセス要求を処理できるように、Azure Multi-Factor Authentication Server を RADIUS クライアントとしてその他の RADIUS サーバーに追加する必要があります。Azure Multi-Factor Authentication Server で構成されている同じ共有シークレットを使用する必要があります。
 18. この手順を繰り返して RADIUS サーバーを追加し、[上へ移動] と [下へ移動] ボタンを使用して Server が呼び出すサーバーの順序を構成できます。これで Azure Multi-Factor Authentication Server の構成は完了です。Server が構成されたポートを使用して、構成されたクライアントからの RADIUS アクセス要求をリッスンするようになります。
 
-
 ## RADIUS クライアントの構成
-
 RADIUS クライアントを構成するには、ガイドラインに従います。
 
-- RADIUS 経由で Azure Multi-Factor Authentication Server の IP アドレスに対して認証するように機器/サーバーを構成します。これにより、RADIUS サーバーとして機能します。
-- 前に構成した同じ共有シークレットを使用します。
-- RADIUS のタイムアウトを 30 ～ 60 秒に設定し、ユーザーの資格情報を検証する、多要素認証を実行する、応答を受信する、および RADIUS アクセス要求に対して応答する時間を確保します。
+* RADIUS 経由で Azure Multi-Factor Authentication Server の IP アドレスに対して認証するように機器/サーバーを構成します。これにより、RADIUS サーバーとして機能します。
+* 前に構成した同じ共有シークレットを使用します。
+* RADIUS のタイムアウトを 30 ～ 60 秒に設定し、ユーザーの資格情報を検証する、多要素認証を実行する、応答を受信する、および RADIUS アクセス要求に対して応答する時間を確保します。
 
 <!---HONumber=AcomDC_0921_2016-->

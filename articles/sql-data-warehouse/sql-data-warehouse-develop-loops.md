@@ -1,23 +1,23 @@
-<properties
-   pageTitle="SQL Data Warehouse | Microsoft Azure でのループ"
-   description="ソリューションを開発するための Azure SQL Data Warehouse でのTRANSACT-SQL のループと、カーソルの置換に関するヒント。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: SQL Data Warehouse | Microsoft Docs
+description: ソリューションを開発するための Azure SQL Data Warehouse でのTRANSACT-SQL のループと、カーソルの置換に関するヒント。
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/14/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/14/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # SDL Data Warehouse でのループ
-SQL Data Warehouse は、ステートメント ブロックを繰り返し実行するための [WHILE][] ループをサポートします。これは、指定された条件が true の場合に限り、またはコードが `BREAK` キーワードを使用してループを終了するまで実行されます。ループは、SQL コードで定義されているカーソルを置き換えるために特に便利です。また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。そのため、カーソルを置き換える必要がある場合、[WHILE] ループは多くの選択肢があります。
+SQL Data Warehouse は、ステートメント ブロックを繰り返し実行するための [WHILE][WHILE] ループをサポートします。これは、指定された条件が true の場合に限り、またはコードが `BREAK` キーワードを使用してループを終了するまで実行されます。ループは、SQL コードで定義されているカーソルを置き換えるために特に便利です。また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。そのため、カーソルを置き換える必要がある場合、[WHILE] ループは多くの選択肢があります。
 
 ## SQL Data Warehouse でのループの活用とカーソルの置換
 ただし、始める前に、まず、自分で「このカーソルは、セット ベースの操作を使用して再作成できるか」と問いかけてください。多くの場合、答えは「はい」であり、この方法が最適です。セット ベースの操作は、1 行ずつの反復的なアプローチをとるよりも非常に速く実行されます。
@@ -68,7 +68,7 @@ DROP TABLE #tbl;
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 ## 次のステップ
-開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
+開発のその他のヒントについては、[開発の概要][開発の概要]に関するページをご覧ください。
 
 <!--Image references-->
 

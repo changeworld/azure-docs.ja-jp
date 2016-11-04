@@ -1,22 +1,21 @@
-<properties 
-	pageTitle="Application Insights リソースを作成するための PowerShell スクリプト" 
-	description="Application Insights リソースの作成を自動化します。" 
-	services="application-insights" 
-    documentationCenter="windows"
-	authors="alancameronwills" 
-	manager="douge"/>
+---
+title: Application Insights リソースを作成するための PowerShell スクリプト
+description: Application Insights リソースの作成を自動化します。
+services: application-insights
+documentationcenter: windows
+author: alancameronwills
+manager: douge
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/19/2016" 
-	ms.author="awills"/>
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 02/19/2016
+ms.author: awills
 
-#  Application Insights リソースを作成するための PowerShell スクリプト
-
+---
+# Application Insights リソースを作成するための PowerShell スクリプト
 *Application Insights はプレビュー段階です。*
 
 [Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/) を使って新しいアプリケーションを監視する際や、新しいバージョンのアプリケーションを監視する際、Microsoft Azure で新しいリソースをセットアップします。このリソースは、アプリのテレメトリ データを分析、表示する場所です。
@@ -26,12 +25,10 @@ PowerShell を使用して、新しいリソースの作成を自動化できま
 たとえば、モバイル デバイス アプリを開発している場合、顧客によって使用されている発行済みのアプリのバージョンは常に複数存在する可能性があります。複数のバージョンから取得したテレメトリの結果を混在させないようにします。それで、ビルド プロセスを取得して、各ビルドで新しいリソースを作成します。
 
 ## Application Insights リソースを作成するスクリプト
-
 関連するコマンドレットの仕様を参照してください。
 
 * [New-AzureRmResource](https://msdn.microsoft.com/library/mt652510.aspx)
 * [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
-
 
 *PowerShell スクリプト*
 
@@ -92,25 +89,19 @@ Write-Host "IKey = " $resource.Properties.InstrumentationKey
 ```
 
 ## iKey を使用して行うこと
-
 各リソースは、インストルメンテーション キー (iKey) によって識別されます。iKey はリソース作成スクリプトの出力です。ビルド スクリプトで、アプリに組み込まれた Application Insights SDK に iKey を提供する必要があります。
 
 iKey を SDK で使用できるようにする方法は 2 つあります。
-  
+
 * [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) の場合: 
- * `<instrumentationkey>`*ikey*`</instrumentationkey>`
+  * `<instrumentationkey>`*ikey*`</instrumentationkey>`
 * [初期化コードの場合](app-insights-api-custom-events-metrics.md): 
- * `Microsoft.ApplicationInsights.Extensibility.
+  * `Microsoft.ApplicationInsights.Extensibility.
     TelemetryConfiguration.Active.InstrumentationKey = "`*iKey*`";`
 
-
-
 ## 関連項目
-
 * [テンプレートから Application Insights と Web テスト リソースを作成する](app-insights-powershell.md)
 * [PowerShell で Azure 診断の監視を設定する](app-insights-powershell-azure-diagnostics.md) 
 * [PowerShell を使用したアラートの設定](app-insights-powershell-alerts.md)
-
- 
 
 <!---HONumber=AcomDC_0224_2016-->

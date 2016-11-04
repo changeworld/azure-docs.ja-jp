@@ -1,22 +1,21 @@
-<properties 
-	pageTitle="Application Insights データ モデル" 
-	description="JSON の連続エクスポートからエクスポートされ、フィルターとして使用されるプロパティについて説明します。" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="alancameronwills" 
-	manager="douge"/>
+---
+title: Application Insights データ モデル
+description: JSON の連続エクスポートからエクスポートされ、フィルターとして使用されるプロパティについて説明します。
+services: application-insights
+documentationcenter: ''
+author: alancameronwills
+manager: douge
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="03/21/2016" 
-	ms.author="awills"/>
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 03/21/2016
+ms.author: awills
 
+---
 # Application Insights エクスポート データ モデル
-
 次のテーブルは、[Application Insights SDK](app-insights-overview.md) からポータルに送信されるテレメトリのプロパティを一覧表示したものです。[連続エクスポート](app-insights-export-telemetry.md)からのデータ出力で、テレメトリのプロパティが表示されます。テレメトリは[メトリック エクスプローラー](app-insights-metrics-explorer.md)と[診断検索](app-insights-diagnostic-search.md)のプロパティ フィルターでも表示されます。
 
 注意する点:
@@ -27,10 +26,7 @@
 
 テレメトリの使用例は[こちら](app-insights-export-telemetry.md#code-samples)です。
 
-
-
 ## 例
-
     // A server report about an HTTP request
     {
     "request": [ 
@@ -110,220 +106,187 @@
     }
   }
 
-
-
-
 ## Context
-
 テレメトリのすべての種類には、コンテキストのセクションが付いています。これらのフィールドのすべてが各データ ポイントで送信されるわけではありません。
 
-
-
-|パス|型|メモ|
-|---|---|---|
-| context.custom.dimensions [0] | object [ ] | カスタム プロパティ パラメーターによって設定される、キーと値の文字列ペア。キーの最大長は 100 で、値の最大長は 1024 です。100 を超える一意の値で、プロパティを検索することはできますが、セグメント化には使用できません。ikey あたり最大 200 キー。 |
-| context.custom.metrics [0] | object [ ] | カスタム測定パラメーターと TrackMetrics によって設定される、キーと値のペア。キーの最大長は 100 で、値は通常は数値です。 |
-| context.data.eventTime | string | UTC |
-| context.data.isSynthetic | ブール値 | 要求がボットまたは Web テストから送られてきました。 |
-| context.data.samplingRate | number | ポータルに送信される、SDK によって生成されたテレメトリの割合。範囲 0.0 ～ 100.0。|
-| context.device | object@ | クライアント デバイス |
-| context.device.browser | string | IE、Chrome、 ... |
-| context.device.browserVersion | string | Chrome 48.0、 ... |
-| context.device.deviceModel | string | |
-| context.device.deviceName | string | |
-| context.device.id | string | |
-| context.device.locale | string | en-GB、de-DE、 ... |
-| context.device.network | string | |
-| context.device.oemName | string | |
-| context.device.osVersion | string | ホスト OS |
-| context.device.roleInstance | string | サーバー ホストの ID |
-| context.device.roleName | string | |
-| context.device.type | string | PC、ブラウザー、 ... |
-| context.location | object@ | clientip から派生します。 |
-| context.location.city | string | わかっている場合、clientip から派生されます。 |
-| context.location.clientip | string | 最後の 8 文字は 0 に匿名化されます。 |
-| context.location.continent | string | |
-| context.location.country | string | |
-| context.location.province | string | 都道府県 |
-| context.operation.id | string | 同じ操作 ID を持つ項目は、ポータルで関連項目として表示されます。通常は、要求 ID です。 |
-| context.operation.name | string | URL または要求の名前 |
-| context.operation.parentId | string | 入れ子になった関連項目を許可します。 |
-| context.session.id | string | 同じソースからの操作のグループの ID。30 分間操作が行われないと、セッションの終了が通知されます。 |
-| context.session.isFirst | ブール値 | |
-| context.user.accountAcquisitionDate | string | |
-| context.user.anonAcquisitionDate | string | |
-| context.user.anonId | string | |
-| context.user.authAcquisitionDate | string | [認証されたユーザー](app-insights-api-custom-events-metrics.md#authenticated-users) |
-| context.user.isAuthenticated | ブール値 | |
-| internal.data.documentVersion | string | |
-| internal.data.id | string | |
-
-
+| パス | 型 | メモ |
+| --- | --- | --- |
+| context.custom.dimensions [0] |object [ ] |カスタム プロパティ パラメーターによって設定される、キーと値の文字列ペア。キーの最大長は 100 で、値の最大長は 1024 です。100 を超える一意の値で、プロパティを検索することはできますが、セグメント化には使用できません。ikey あたり最大 200 キー。 |
+| context.custom.metrics [0] |object [ ] |カスタム測定パラメーターと TrackMetrics によって設定される、キーと値のペア。キーの最大長は 100 で、値は通常は数値です。 |
+| context.data.eventTime |string |UTC |
+| context.data.isSynthetic |ブール値 |要求がボットまたは Web テストから送られてきました。 |
+| context.data.samplingRate |number |ポータルに送信される、SDK によって生成されたテレメトリの割合。範囲 0.0 ～ 100.0。 |
+| context.device |object@ |クライアント デバイス |
+| context.device.browser |string |IE、Chrome、 ... |
+| context.device.browserVersion |string |Chrome 48.0、 ... |
+| context.device.deviceModel |string | |
+| context.device.deviceName |string | |
+| context.device.id |string | |
+| context.device.locale |string |en-GB、de-DE、 ... |
+| context.device.network |string | |
+| context.device.oemName |string | |
+| context.device.osVersion |string |ホスト OS |
+| context.device.roleInstance |string |サーバー ホストの ID |
+| context.device.roleName |string | |
+| context.device.type |string |PC、ブラウザー、 ... |
+| context.location |object@ |clientip から派生します。 |
+| context.location.city |string |わかっている場合、clientip から派生されます。 |
+| context.location.clientip |string |最後の 8 文字は 0 に匿名化されます。 |
+| context.location.continent |string | |
+| context.location.country |string | |
+| context.location.province |string |都道府県 |
+| context.operation.id |string |同じ操作 ID を持つ項目は、ポータルで関連項目として表示されます。通常は、要求 ID です。 |
+| context.operation.name |string |URL または要求の名前 |
+| context.operation.parentId |string |入れ子になった関連項目を許可します。 |
+| context.session.id |string |同じソースからの操作のグループの ID。30 分間操作が行われないと、セッションの終了が通知されます。 |
+| context.session.isFirst |ブール値 | |
+| context.user.accountAcquisitionDate |string | |
+| context.user.anonAcquisitionDate |string | |
+| context.user.anonId |string | |
+| context.user.authAcquisitionDate |string |[認証されたユーザー](app-insights-api-custom-events-metrics.md#authenticated-users) |
+| context.user.isAuthenticated |ブール値 | |
+| internal.data.documentVersion |string | |
+| internal.data.id |string | |
 
 ## イベント
-
 [TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) によって生成されたカスタム イベント。
 
-
-|パス|型|メモ|
-|---|---|---|
-| event [0] count | integer | 100/([サンプリング](app-insights-sampling.md) レート)。例: 4 =&gt; 25% |
-| event [0] name | string | イベント名。最大長 250。 |
-| event [0] url | string | |
-| event [0] urlData.base | string | |
-| event [0] urlData.host | string | |
+| パス | 型 | メモ |
+| --- | --- | --- |
+| event [0] count |integer |100/([サンプリング](app-insights-sampling.md) レート)。例: 4 =&gt; 25% |
+| event [0] name |string |イベント名。最大長 250。 |
+| event [0] url |string | |
+| event [0] urlData.base |string | |
+| event [0] urlData.host |string | |
 
 ## 例外
-
 サーバーおよびブラウザーの[例外](app-insights-asp-net-exceptions.md)をレポートします。
 
-
-|パス|型|メモ|
-|---|---|---|
-| basicException [0] assembly | string | |
-| basicException [0] count | integer | 100/([サンプリング](app-insights-sampling.md) レート)。例: 4 =&gt; 25% |
-| basicException [0] exceptionGroup | string | |
-| basicException [0] exceptionType | string | |string | |
-| basicException [0] failedUserCodeMethod | string | |
-| basicException [0] failedUserCodeAssembly | string | |
-| basicException [0] handledAt | string | |
-| basicException [0] hasFullStack | ブール値 | |
-| basicException [0] id | string | |
-| basicException [0] method | string | |
-| basicException [0] message | string | 例外メッセージ。最大長 10k。|
-| basicException [0] outerExceptionMessage | string | |
-| basicException [0] outerExceptionThrownAtAssembly | string | |
-| basicException [0] outerExceptionThrownAtMethod | string | |
-| basicException [0] outerExceptionType | string | |
-| basicException [0] outerId | string | |
-| basicException [0] parsedStack [0] assembly | string | |
-| basicException [0] parsedStack [0] fileName | string | |
-| basicException [0] parsedStack [0] level | integer | |
-| basicException [0] parsedStack [0] line | integer | |
-| basicException [0] parsedStack [0] method | string | |
-| basicException [0] stack | string | 最大長 10k。|
-| basicException [0] typeName | string | |
-
-
+| パス | 型 | メモ |
+| --- | --- | --- |
+| basicException [0] assembly |string | |
+| basicException [0] count |integer |100/([サンプリング](app-insights-sampling.md) レート)。例: 4 =&gt; 25% |
+| basicException [0] exceptionGroup |string | |
+| basicException [0] exceptionType |string | |
+| basicException [0] failedUserCodeMethod |string | |
+| basicException [0] failedUserCodeAssembly |string | |
+| basicException [0] handledAt |string | |
+| basicException [0] hasFullStack |ブール値 | |
+| basicException [0] id |string | |
+| basicException [0] method |string | |
+| basicException [0] message |string |例外メッセージ。最大長 10k。 |
+| basicException [0] outerExceptionMessage |string | |
+| basicException [0] outerExceptionThrownAtAssembly |string | |
+| basicException [0] outerExceptionThrownAtMethod |string | |
+| basicException [0] outerExceptionType |string | |
+| basicException [0] outerId |string | |
+| basicException [0] parsedStack [0] assembly |string | |
+| basicException [0] parsedStack [0] fileName |string | |
+| basicException [0] parsedStack [0] level |integer | |
+| basicException [0] parsedStack [0] line |integer | |
+| basicException [0] parsedStack [0] method |string | |
+| basicException [0] stack |string |最大長 10k。 |
+| basicException [0] typeName |string | |
 
 ## トレース メッセージ
-
 [TrackTrace](app-insights-api-custom-events-metrics.md#track-trace) および[ログ アダプター](app-insights-asp-net-trace-logs.md)によって送信されます。
 
-
-|パス|型|メモ|
-|---|---|---|
-| message [0] loggerName | string ||
-| message [0] parameters | string ||
-| message [0] raw | string | ログ メッセージ。最大長は 10k。 |
-| message [0] severityLevel | string | |
-
-
+| パス | 型 | メモ |
+| --- | --- | --- |
+| message [0] loggerName |string | |
+| message [0] parameters |string | |
+| message [0] raw |string |ログ メッセージ。最大長は 10k。 |
+| message [0] severityLevel |string | |
 
 ## リモート依存関係
-
 TrackDependency によって送信されます。サーバーでの[依存関係の呼び出し](app-insights-asp-net-dependencies.md)とブラウザーでの AJAX の呼び出しのパフォーマンスおよび使用状況をレポートするために使用されます。
 
-|パス|型|メモ|
-|---|---|---|
-| remoteDependency [0] async | ブール値 | |
-| remoteDependency [0] baseName | string | |
-| remoteDependency [0] commandName | string | 例: "home/index" |
-| remoteDependency [0] count | integer | 100/([サンプリング](app-insights-sampling.md) レート)。例: 4 =&gt; 25% |
-| remoteDependency [0] dependencyTypeName | string | HTTP、SQL、... |
-| remoteDependency [0] durationMetric.value | number | 呼び出しから依存関係による応答の完了までの時間 |
-| remoteDependency [0] id | string | |
-| remoteDependency [0] name | string | URL。最大長 250。|
-| remoteDependency [0] resultCode | string | HTTP の依存関係から |
-| remoteDependency [0] success | ブール値 | |
-| remoteDependency [0] type | string | Http、Sql、... |
-| remoteDependency [0] url | string | 最大長 2000 |
-| remoteDependency [0] urlData.base | string | 最大長 2000 |
-| remoteDependency [0] urlData.hashTag | string | |
-| remoteDependency [0] urlData.host | string | 最大長 200 |
-
+| パス | 型 | メモ |
+| --- | --- | --- |
+| remoteDependency [0] async |ブール値 | |
+| remoteDependency [0] baseName |string | |
+| remoteDependency [0] commandName |string |例: "home/index" |
+| remoteDependency [0] count |integer |100/([サンプリング](app-insights-sampling.md) レート)。例: 4 =&gt; 25% |
+| remoteDependency [0] dependencyTypeName |string |HTTP、SQL、... |
+| remoteDependency [0] durationMetric.value |number |呼び出しから依存関係による応答の完了までの時間 |
+| remoteDependency [0] id |string | |
+| remoteDependency [0] name |string |URL。最大長 250。 |
+| remoteDependency [0] resultCode |string |HTTP の依存関係から |
+| remoteDependency [0] success |ブール値 | |
+| remoteDependency [0] type |string |Http、Sql、... |
+| remoteDependency [0] url |string |最大長 2000 |
+| remoteDependency [0] urlData.base |string |最大長 2000 |
+| remoteDependency [0] urlData.hashTag |string | |
+| remoteDependency [0] urlData.host |string |最大長 200 |
 
 ## 要求数
-
 [TrackRequest](app-insights-api-custom-events-metrics.md#track-request) によって送信されます。標準モジュールはこれを使用して、サーバーで測定されたサーバー応答時間をレポートします。
 
-
-|パス|型|メモ|
-|---|---|---|
-| request [0] count | integer | 100/([サンプリング](app-insights-sampling.md) レート)。例: 4 =&gt; 25% |
-| request [0] durationMetric.value | number | 要求の到着から応答までの時間。1e7 == 1 秒 |
-| request [0] id | string | 操作 ID |
-| request [0] name | string | GET/POST + URL ベース。最大長 250 |
-| request [0] responseCode | integer | クライアントに送信された HTTP 応答 |
-| request [0] success | boolean | 既定 == (responseCode &lt; 400) |
-| request [0] url | string | ホストを含まない |
-| request [0] urlData.base | string | |
-| request [0] urlData.hashTag | string | |
-| request [0] urlData.host | string | |
-
+| パス | 型 | メモ |
+| --- | --- | --- |
+| request [0] count |integer |100/([サンプリング](app-insights-sampling.md) レート)。例: 4 =&gt; 25% |
+| request [0] durationMetric.value |number |要求の到着から応答までの時間。1e7 == 1 秒 |
+| request [0] id |string |操作 ID |
+| request [0] name |string |GET/POST + URL ベース。最大長 250 |
+| request [0] responseCode |integer |クライアントに送信された HTTP 応答 |
+| request [0] success |boolean |既定 == (responseCode &lt; 400) |
+| request [0] url |string |ホストを含まない |
+| request [0] urlData.base |string | |
+| request [0] urlData.hashTag |string | |
+| request [0] urlData.host |string | |
 
 ## ページ ビュー パフォーマンス
-
 ブラウザーによって送信されます。ユーザーが要求を開始してから表示が完了するまでの時間を測定します (非同期 AJAX 呼び出しを除外)。
 
 コンテキストの値は、クライアント OS やブラウザーのバージョンを示します。
 
-
-|パス|型|メモ|
-|---|---|---|
-| clientPerformance [0] clientProcess.value | integer | HTML の取得終了からページの表示までの時間。 |
-| clientPerformance [0] name | string | |
-| clientPerformance [0] networkConnection.value | integer | ネットワーク接続の確立に要した時間。 |
-| clientPerformance [0] receiveRequest.value | integer | 要求の送信の終了から応答での HTML の取得までの時間。 |
-| clientPerformance [0] sendRequest.value | integer | HTTP 要求の送信に要した時間。 |
-| clientPerformance [0] total.value | integer | 要求の送信の開始からページの表示までの時間。 |
-| clientPerformance [0] url | string | この要求の URL |
-| clientPerformance [0] urlData.base | string | |
-| clientPerformance [0] urlData.hashTag | string | |
-| clientPerformance [0] urlData.host | string | |
-| clientPerformance [0] urlData.protocol | string | |
+| パス | 型 | メモ |
+| --- | --- | --- |
+| clientPerformance [0] clientProcess.value |integer |HTML の取得終了からページの表示までの時間。 |
+| clientPerformance [0] name |string | |
+| clientPerformance [0] networkConnection.value |integer |ネットワーク接続の確立に要した時間。 |
+| clientPerformance [0] receiveRequest.value |integer |要求の送信の終了から応答での HTML の取得までの時間。 |
+| clientPerformance [0] sendRequest.value |integer |HTTP 要求の送信に要した時間。 |
+| clientPerformance [0] total.value |integer |要求の送信の開始からページの表示までの時間。 |
+| clientPerformance [0] url |string |この要求の URL |
+| clientPerformance [0] urlData.base |string | |
+| clientPerformance [0] urlData.hashTag |string | |
+| clientPerformance [0] urlData.host |string | |
+| clientPerformance [0] urlData.protocol |string | |
 
 ## ページ ビュー
-
 trackPageView() または [stopTrackPage](app-insights-api-custom-events-metrics.md#page-view) によって送信されます。
 
-|パス|型|メモ|
-|---|---|---|
-| view [0] count | integer | 100/([サンプリング](app-insights-sampling.md) レート)。例: 4 =&gt; 25% |
-| view [0] durationMetric.value | integer | trackPageView() で、または startTrackPage() - stopTrackPage() によって、オプションで設定される値。clientPerformance 値と同じではありません。 |
-| view [0] name | string | ページのタイトル。最大長 250 |
-| view [0] url | string | |
-| view [0] urlData.base | string | |
-| view [0] urlData.hashTag | string | |
-| view [0] urlData.host | string | |
-
-
+| パス | 型 | メモ |
+| --- | --- | --- |
+| view [0] count |integer |100/([サンプリング](app-insights-sampling.md) レート)。例: 4 =&gt; 25% |
+| view [0] durationMetric.value |integer |trackPageView() で、または startTrackPage() - stopTrackPage() によって、オプションで設定される値。clientPerformance 値と同じではありません。 |
+| view [0] name |string |ページのタイトル。最大長 250 |
+| view [0] url |string | |
+| view [0] urlData.base |string | |
+| view [0] urlData.hashTag |string | |
+| view [0] urlData.host |string | |
 
 ## 可用性
-
 [可用性 Web テスト](app-insights-monitor-web-app-availability.md)をレポートします。
 
-|パス|型|メモ|
-|---|---|---|
-| availability [0] availabilityMetric.name | string | availability |
-| availability [0] availabilityMetric.value | number |1\.0 または 0.0 |
-| availability [0] count | integer | 100/([サンプリング](app-insights-sampling.md) レート)。例: 4 =&gt; 25% |
-| availability [0] dataSizeMetric.name | string | |
-| availability [0] dataSizeMetric.value | integer | |
-| availability [0] durationMetric.name | string | |
-| availability [0] durationMetric.value | number | テストの実行時間1e7==1 秒 |
-| availability [0] message | string | エラーの診断 |
-| availability [0] result | string | 合格/不合格 |
-| availability [0] runLocation | string | HTTP 要求の geo ソース |
-| availability [0] testName | string | |
-| availability [0] testRunId | string | |
-| availability [0] testTimestamp | string | |
-
-
-
+| パス | 型 | メモ |
+| --- | --- | --- |
+| availability [0] availabilityMetric.name |string |availability |
+| availability [0] availabilityMetric.value |number |1\.0 または 0.0 |
+| availability [0] count |integer |100/([サンプリング](app-insights-sampling.md) レート)。例: 4 =&gt; 25% |
+| availability [0] dataSizeMetric.name |string | |
+| availability [0] dataSizeMetric.value |integer | |
+| availability [0] durationMetric.name |string | |
+| availability [0] durationMetric.value |number |テストの実行時間1e7==1 秒 |
+| availability [0] message |string |エラーの診断 |
+| availability [0] result |string |合格/不合格 |
+| availability [0] runLocation |string |HTTP 要求の geo ソース |
+| availability [0] testName |string | |
+| availability [0] testRunId |string | |
+| availability [0] testTimestamp |string | |
 
 ## メトリック
-
 TrackMetric() によって生成されます。
 
 メトリック値は context.custom.metrics[0] にあります。
@@ -354,7 +317,6 @@ TrackMetric() によって生成されます。
     }
 
 ## メトリック値について
-
 メトリック値は、メトリック レポートでもそれ以外でも、標準オブジェクト構造で報告されます。次に例を示します。
 
       "durationMetric": {
@@ -376,15 +338,10 @@ TrackMetric() によって生成されます。
 
 テレメトリの量を削減する必要がある場合は、事前集計メトリックの代わりに、[サンプリング](app-insights-sampling.md)を使用することもできます。
 
-
 ### 期間
-
 特記がない限り、期間は 1/10 マイクロ秒で表されます。そのため、10000000.0 は 1 秒を意味します。
 
-
-
 ## 関連項目
-
 * [Application Insights](app-insights-overview.md) 
 * [連続エクスポート](app-insights-export-telemetry.md)
 * [コード サンプル](app-insights-export-telemetry.md#code-samples)

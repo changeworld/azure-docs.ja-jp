@@ -1,25 +1,26 @@
-<properties
-   pageTitle="Guide to creating a Data Service for the  Marketplace | Microsoft Azure"
-   description="Detailed instructions of how to create, certify and deploy a Data Service for purchase on the Azure Marketplace."
-   services="marketplace-publishing"
-   documentationCenter=""
-   authors="HannibalSII"
-   manager="hascipio"
-   editor=""/>
+---
+title: Guide to creating a Data Service for the  Marketplace | Microsoft Docs
+description: Detailed instructions of how to create, certify and deploy a Data Service for purchase on the Azure Marketplace.
+services: marketplace-publishing
+documentationcenter: ''
+author: HannibalSII
+manager: hascipio
+editor: ''
 
-   <tags
-      ms.service="marketplace"
-      ms.devlang="na"
-      ms.topic="article"
-      ms.tgt_pltfrm="na"
-      ms.workload="na"
-      ms.date="08/26/2016"
-      ms.author="hascipio; avikova" />
+ms.service: marketplace
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/26/2016
+ms.author: hascipio; avikova
 
-
+---
 # <a name="examples-of-mapping-an-existing-web-service-to-odata-through-csdls"></a>Examples of mapping an existing web service to OData through CSDLs
-
->[AZURE.IMPORTANT] **At this time we are no longer onboarding any new Data Service publishers. New dataservices will not get approved for listing.** If you have a SaaS business application you would like to publish on AppSource you can find more information [here](https://appsource.microsoft.com/partners). If you have an IaaS applications or developer service you would like to publish on Azure Marketplace you can find more information [here](https://azure.microsoft.com/marketplace/programs/certified/).
+> [!IMPORTANT]
+> **At this time we are no longer onboarding any new Data Service publishers. New dataservices will not get approved for listing.** If you have a SaaS business application you would like to publish on AppSource you can find more information [here](https://appsource.microsoft.com/partners). If you have an IaaS applications or developer service you would like to publish on Azure Marketplace you can find more information [here](https://azure.microsoft.com/marketplace/programs/certified/).
+> 
+> 
 
 ## <a name="example:-functionimport-for-"raw"-data-returned-using-"post""></a>Example: FunctionImport for "Raw" data returned using "POST"
 Use POST Raw data to create a new subordinate and return its server defined URL(location) or to update part of the subordinate at the server defined URL.  Where the subordinate is a stream, i.e. unstructured, ex. a text file.  Beware POST in not idempotent without a location.
@@ -154,11 +155,9 @@ Use implement RESTful paging through your data with GET.  Default paging is set 
         </FunctionImport>
 
 ## <a name="see-also"></a>See Also
-- If you are interested in understanding the overall OData mapping process and purpose, read this article [Data Service OData Mapping](marketplace-publishing-data-service-creation-odata-mapping.md) to review definitions, structures, and instructions.
-- If you are interested in learning and understanding the specific nodes and their parameters, read this article [Data Service OData Mapping Nodes](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) for definitions and explanations, examples, and use case context.
-- To return to the prescribed path for publishing a Data Service to the Azure Marketplace, read this article [Data Service Publishing Guide](marketplace-publishing-data-service-creation.md).
-
-
+* If you are interested in understanding the overall OData mapping process and purpose, read this article [Data Service OData Mapping](marketplace-publishing-data-service-creation-odata-mapping.md) to review definitions, structures, and instructions.
+* If you are interested in learning and understanding the specific nodes and their parameters, read this article [Data Service OData Mapping Nodes](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) for definitions and explanations, examples, and use case context.
+* To return to the prescribed path for publishing a Data Service to the Azure Marketplace, read this article [Data Service Publishing Guide](marketplace-publishing-data-service-creation.md).
 
 <!--HONumber=Oct16_HO2-->
 

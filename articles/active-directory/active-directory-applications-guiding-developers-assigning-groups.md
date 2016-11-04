@@ -1,21 +1,21 @@
-<properties
-	pageTitle="Azure AD とアプリケーション: アプリケーションへのグループの割り当て | Microsoft Azure"
-	description="Azure アプリケーションへのグループの割り当てを実装する方法です。"
-	services="active-directory"
-	documentationCenter=""
-	authors="IHenkel"
-	manager="femila"
-	editor=""/>
+---
+title: 'Azure AD とアプリケーション: アプリケーションへのグループの割り当て | Microsoft Docs'
+description: Azure アプリケーションへのグループの割り当てを実装する方法です。
+services: active-directory
+documentationcenter: ''
+author: IHenkel
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="12/03/2015"
-	ms.author="inhenk"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 12/03/2015
+ms.author: inhenk
 
+---
 # Azure AD とアプリケーション: アプリケーションへのグループの割り当て
 ユーザーとグループをアプリケーションに割り当てる前に、ユーザー割り当てを要求する必要があります。ユーザー割り当てを要求する方法については、[ユーザー割り当ての要求](active-directory-applications-guiding-developers-requiring-user-assignment.md)に関する記事をご覧ください。
 
@@ -34,6 +34,6 @@
 10. 確認を求めるメッセージが表示されたら、**[はい]** をクリックします。
 
 ## 次のステップ
-[AZURE.INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
+[!INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
 
 <!---HONumber=AcomDC_0928_2016-->

@@ -1,5 +1,4 @@
 ## WordPress と Azure App Service
-
 * [WordPress とは](https://wordpress.org/)
 * [エンタープライズクラスの WordPress Web アプリのセットアップ方法](../articles/app-service-web/web-sites-php-enterprise-wordpress.md)
 * [WordPress アプリ用の ClearDB MySQL 共有ホストの購入方法](http://blog.syntaxc4.net/post/2012/12/03/provisioning-a-mysql-database-from-the-windows-azure-store.aspx)
@@ -8,9 +7,8 @@
 * [Percona Cluster を使用した独自のマスター/マスター MySQL クラスターの構築](/documentation/templates/mysql-ha-pxc/)と[クラスター管理方法の詳細](https://github.com/fanjeffrey/axiom.articles/tree/master/pxc)
 * [マスター/スレーブ構成を使用して MySQL レプリケーション クラスターでバックアップされる WordPress のデプロイ](/documentation/templates/mysql-replication/)
 * [ProjectNami によって管理される SQL Azure DB でバックアップされる WordPress アプリのデプロイ](/marketplace/partners/projectnami/projectnami/)
-  
-## WordPress アプリケーションのトラブルシューティング
 
+## WordPress アプリケーションのトラブルシューティング
 * [WordPress アプリのトラブルシューティング方法](https://sunithamk.wordpress.com/2014/09/04/wordpress-troubleshooting-techniques-on-azure-websites/)
 * [Azure Application Insights サービスを使用状況テレメトリの収集](https://azure.microsoft.com/blog/usage-analytics-for-wordpress-with-azure-app-insights/)
 * [問題とパフォーマンスを診断するための、Web アプリに対する Zend Zray プロファイラーの実行](https://sunithamk.wordpress.com/2015/08/04/profiling-php-application-on-azure-web-apps/)
@@ -19,7 +17,6 @@
 * [Web アプリのバックアップ方法](../articles/app-service-web/web-sites-backup.md)と[Web アプリの復元方法](../articles/app-service-web/web-sites-restore.md)
 
 ## パフォーマンス
-
 * [WordPress Web アプリを高速化する方法](https://sunithamk.wordpress.com/2014/08/01/10-ways-to-speed-up-your-wordpress-site-on-azure-websites/)
 * [Redis Cache プラグイン](https://wordpress.org/plugins/wp-redis/)を使用して [Redis Cache を有効にする方法](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md)
 * [Memcached プラグイン](https://wordpress.org/plugins/memcached/)を使用して、[WordPress 用の Memcached オブジェクト キャッシュを有効にする方法](../articles/app-service-web/web-sites-connect-to-redis-using-memcache-protocol.md)

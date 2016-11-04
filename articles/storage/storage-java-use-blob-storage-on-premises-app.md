@@ -1,40 +1,35 @@
-<properties
-	pageTitle="BLOB ストレージを使用するオンプレミスのアプリケーション (Java) | Microsoft Azure"
-	description="画像を Azure にアップロードしてブラウザーに表示するコンソール アプリケーションを作成する方法について説明します。コード サンプルは Java で記述されています。"
-	services="storage"
-	documentationCenter="java"
-	authors="rmcmurray"
-	manager="wpickett"
-	editor="tysonn"/>
+---
+title: BLOB ストレージを使用するオンプレミスのアプリケーション (Java) | Microsoft Docs
+description: 画像を Azure にアップロードしてブラウザーに表示するコンソール アプリケーションを作成する方法について説明します。コード サンプルは Java で記述されています。
+services: storage
+documentationcenter: java
+author: rmcmurray
+manager: wpickett
+editor: tysonn
 
-<tags
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="08/11/2016"
-	ms.author="jwillis;rmcmurray"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: Java
+ms.topic: article
+ms.date: 08/11/2016
+ms.author: jwillis;rmcmurray
 
+---
 # BLOB ストレージを使用するオンプレミスのアプリケーション
-
 ## Overview
-
 次の例では、Azure Storage を使用して画像を Azure に保存する方法を示しています。この記事では、画像を Azure にアップロードし、ブラウザーに画像を表示する HTML ファイルを作成するコンソール アプリケーションのコードを紹介します。
 
 ## 前提条件
+* Java Developer Kit (JDK) バージョン 1.6 以降がインストールされていること。
+* Azure SDK がインストールされていること。
+* Azure Libraries for Java の JAR および該当する依存関係 JAR がインストールされ、Java コンパイラで使用されるビルド パスに存在すること。Azure Libraries for Java のインストールについては、「[Azure SDK for Java のダウンロード](../java-download-azure-sdk.md)」のページをご覧ください。
+* Azure ストレージ アカウントがセットアップされていること。この記事のコードでは、ストレージ アカウントのアカウント名とアカウント キーが使用されます。ストレージ アカウントの作成については、「[方法: ストレージ アカウントを作成する](storage-create-storage-account.md#create-a-storage-account)」をご覧ください。アカウント キーの取得については[ストレージ アクセス キーの表示およびコピー](storage-create-storage-account.md#view-and-copy-storage-access-keys)に関するページをご覧ください。
+* ローカル画像ファイルが作成され、c:\\myimages\\image1.jpg に保存されていること。または、例に含まれている **FileInputStream** コンストラクターを変更して、別の画像パスとファイル名を使用することもできます。
 
-- Java Developer Kit (JDK) バージョン 1.6 以降がインストールされていること。
-- Azure SDK がインストールされていること。
-- Azure Libraries for Java の JAR および該当する依存関係 JAR がインストールされ、Java コンパイラで使用されるビルド パスに存在すること。Azure Libraries for Java のインストールについては、「[Azure SDK for Java のダウンロード](java-download-azure-sdk.md)」のページをご覧ください。
-- Azure ストレージ アカウントがセットアップされていること。この記事のコードでは、ストレージ アカウントのアカウント名とアカウント キーが使用されます。ストレージ アカウントの作成については、「[方法: ストレージ アカウントを作成する](storage-create-storage-account.md#create-a-storage-account)」をご覧ください。アカウント キーの取得については[ストレージ アクセス キーの表示およびコピー](storage-create-storage-account.md#view-and-copy-storage-access-keys)に関するページをご覧ください。
-
-- ローカル画像ファイルが作成され、c:\\myimages\\image1.jpg に保存されていること。または、例に含まれている **FileInputStream** コンストラクターを変更して、別の画像パスとファイル名を使用することもできます。
-
-[AZURE.INCLUDE [アカウント作成メモ](../../includes/create-account-note.md)]
+[!INCLUDE [アカウント作成メモ](../../includes/create-account-note.md)]
 
 ## Azure BLOB ストレージを使用してファイルをアップロードするには
-
 ここでは、手順を追って説明します。スキップする場合、この記事の後半でコード全体が確認できます。
 
 コードの先頭には、Azure コア ストレージ クラス、Azure BLOB クライアント クラス、Java IO クラス、**URISyntaxException** クラスの import を含めます。
@@ -64,10 +59,10 @@
 
 次の型の変数を宣言します (説明は、この例での使用に関するものです)。
 
--   **CloudStorageAccount**: Azure ストレージ アカウント名とキーを使用してアカウント オブジェクトを初期化し、BLOB クライアント オブジェクトを作成するために使用します。
--   **CloudBlobClient**: BLOB サービスにアクセスするために使用します。
--   **CloudBlobContainer**: BLOB コンテナーの作成、コンテナー内の BLOB のリスト処理、およびコンテナーの削除を行うために使用します。
--   **CloudBlockBlob**: ローカルの画像ファイルをコンテナーにアップロードするために使用します。
+* **CloudStorageAccount**: Azure ストレージ アカウント名とキーを使用してアカウント オブジェクトを初期化し、BLOB クライアント オブジェクトを作成するために使用します。
+* **CloudBlobClient**: BLOB サービスにアクセスするために使用します。
+* **CloudBlobContainer**: BLOB コンテナーの作成、コンテナー内の BLOB のリスト処理、およびコンテナーの削除を行うために使用します。
+* **CloudBlockBlob**: ローカルの画像ファイルをコンテナーにアップロードするために使用します。
 
 <!-- -->
 
@@ -126,10 +121,10 @@
 
 次の例外を処理します。
 
--   **FileNotFoundException**: **FileInputStream** コンストラクターまたは **FileOutputStream** コンストラクターからスローされる可能性があります。
--   **StorageException**: Azure クライアント ストレージ ライブラリからスローされる可能性があります。
--   **URISyntaxException**: **ListBlobItem.getUri** メソッドからスローされる可能性があります。
--   **Exception**: 汎用的な例外処理です。
+* **FileNotFoundException**: **FileInputStream** コンストラクターまたは **FileOutputStream** コンストラクターからスローされる可能性があります。
+* **StorageException**: Azure クライアント ストレージ ライブラリからスローされる可能性があります。
+* **URISyntaxException**: **ListBlobItem.getUri** メソッドからスローされる可能性があります。
+* **Exception**: 汎用的な例外処理です。
 
 <!-- -->
 
@@ -298,7 +293,6 @@
 コードにはアカウント名とアカウント キーが含まれるため、ソース コードは必ずセキュリティで保護してください。
 
 ## コンテナーを削除するには
-
 ストレージには課金されるため、この例を試した後、**gettingstarted** コンテナーを削除することをお勧めします。コンテナーを削除するには、**CloudBlobContainer.delete** メソッドを使用します。
 
     container = serviceClient.getContainerReference("gettingstarted");
@@ -351,12 +345,11 @@
 他の BLOB ストレージ クラスとメソッドの概要については、「[Java から BLOB ストレージを使用する方法](storage-java-how-to-use-blob-storage.md)」をご覧ください。
 
 ## 次のステップ
-
 さらに複雑なストレージ タスクの詳細については、次のリンク先をご覧ください。
 
-- [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
-- [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
-- [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
+* [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
+* [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+* [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
 <!---HONumber=AcomDC_0928_2016-->

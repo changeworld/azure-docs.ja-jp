@@ -1,31 +1,27 @@
-<properties 
-    pageTitle="PowerShell | Microsoft Azure を使用した Stream Analytics ジョブの監視および管理" 
-    description="Azure PowerShell およびコマンドレットを使用して Stream Analytics ジョブを監視および管理する方法について説明します。" 
-    keywords="azure powershell、azure powershell コマンドレット、powershell コマンド、powershell スクリプト" 
-    services="stream-analytics" 
-    documentationCenter="" 
-    authors="jeffstokes72" 
-    manager="jhubbard" 
-    editor="cgronlun"/>
+---
+title: PowerShell | Microsoft Docs
+description: Azure PowerShell およびコマンドレットを使用して Stream Analytics ジョブを監視および管理する方法について説明します。
+keywords: azure powershell、azure powershell コマンドレット、powershell コマンド、powershell スクリプト
+services: stream-analytics
+documentationcenter: ''
+author: jeffstokes72
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-    ms.service="stream-analytics" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.tgt_pltfrm="na" 
-    ms.workload="data-services" 
-    ms.date="09/26/2016" 
-    ms.author="jeffstok"/>
+ms.service: stream-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: data-services
+ms.date: 09/26/2016
+ms.author: jeffstok
 
-
-
+---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Azure PowerShell コマンドレットを使用した Stream Analytics ジョブの監視および管理
-
 基本的な Stream Analytics タスクを実行する Azure PowerShell コマンドレットと PowerShell スクリプトを使用して、Stream Analytics リソースを監視および管理する方法について説明します。
 
 ## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>Stream Analytics 用に Azure PowerShell コマンドレットを実行するための前提条件
-
- - サブスクリプションに Azure リソース グループを作成する。 次に、サンプルの Azure PowerShell スクリプトを示します。 Azure PowerShell については、「 [Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。  
+* サブスクリプションに Azure リソース グループを作成する。 次に、サンプルの Azure PowerShell スクリプトを示します。 Azure PowerShell については、「 [Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。  
 
 Azure PowerShell 0.9.8:  
 
@@ -34,7 +30,7 @@ Azure PowerShell 0.9.8:
 
         # Select the Azure subscription you want to use to create the resource group if you have more than one subscription on your account.
         Select-AzureSubscription -SubscriptionName <subscription name>
- 
+
         # If Stream Analytics has not been registered to the subscription, remove remark symbol below (#) to run the Register-AzureProvider cmdlet to register the provider namespace.
         #Register-AzureProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 
@@ -51,13 +47,16 @@ Azure PowerShell 1.0:
 
         # If Stream Analytics has not been registered to the subscription, remove remark symbol below (#) to run the Register-AzureProvider cmdlet to register the provider namespace.
         #Register-AzureRmResourceProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
-        
+
         # Create an Azure resource group
         New-AzureRMResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
-        
 
 
-> [AZURE.NOTE] プログラムで作成された Stream Analytics ジョブは、既定では監視は有効になっていません。  Azure Portal で、ジョブの [監視] ページに移動し、[有効にする] ボタンをクリックして、監視を手動で有効にすることができます。また、「[Stream Analytics ジョブ モニターをプログラムで作成する](stream-analytics-monitor-jobs.md)」に記載されている手順に従って、プログラムで有効にすることもできます。
+
+> [!NOTE]
+> プログラムで作成された Stream Analytics ジョブは、既定では監視は有効になっていません。  Azure Portal で、ジョブの [監視] ページに移動し、[有効にする] ボタンをクリックして、監視を手動で有効にすることができます。また、「[Stream Analytics ジョブ モニターをプログラムで作成する](stream-analytics-monitor-jobs.md)」に記載されている手順に従って、プログラムで有効にすることもできます。
+> 
+> 
 
 ## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>Stream Analytics 用の Azure PowerShell コマンドレット
 次の Azure PowerShell コマンドレットは、Azure Stream Analytics ジョブの監視と管理に使用できます。 Azure PowerShell にはさまざまなバージョンがあります。 
@@ -188,7 +187,7 @@ Azure PowerShell 1.0:
 
 ### <a name="new-azurestreamanalyticsinput-|-new-azurermstreamanalyticsinput"></a>New-AzureStreamAnalyticsInput | New-AzureRMStreamAnalyticsInput
 Stream Analytics ジョブ内に新しい入力を作成したり、指定した既存の入力を更新したりします。
-  
+
 入力の名前は .json ファイルまたはコマンド ラインで指定できます。 その両方で名前を指定する場合は、コマンド ラインで指定する名前をファイル内の名前と同じものにする必要があります。
 
 既に存在する入力を指定し、–Force パラメーターを指定しない場合は、既存の入力を置き換えるかどうかを尋ねられます。
@@ -305,7 +304,7 @@ Azure PowerShell 1.0:
 
 ### <a name="new-azurestreamanalyticstransformation-|-new-azurermstreamanalyticstransformation"></a>New-AzureStreamAnalyticsTransformation | New-AzureRMStreamAnalyticsTransformation
 Stream Analytics ジョブ内に新しい変換を作成したり、既存の変換を更新したります。
-  
+
 変換の名前は .json ファイルまたはコマンド ラインで指定できます。 その両方で名前を指定する場合は、コマンド ラインで指定する名前をファイル内の名前と同じものにする必要があります。
 
 既に存在する変換を指定し、–Force パラメーターを指定しない場合は、既存の変換を置き換えるかどうかを尋ねられます。
@@ -401,7 +400,6 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは、カスタム出力の開始時刻が UTC の 2012 年 12 月 12 日 12:12:12 に設定された StreamingJob ジョブを開始します。
 
-
 ### <a name="stop-azurestreamanalyticsjob-|-stop-azurermstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzureRMStreamAnalyticsJob
 Microsoft Azure で実行中の Stream Analytics ジョブを非同期的に停止し、使用していたリソースの割り当てを解除します。 ジョブを編集したり再開したりできるように、Azure Portal と管理 API を使えば、ジョブ定義とメタデータをサブスクリプション内で引き続き利用できます。 停止状態のジョブに対しては課金されません。
 
@@ -432,7 +430,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは、StreamingJob 内の入力 EntryStream の接続状態をテストします。  
 
-###<a name="test-azurestreamanalyticsoutput-|-test-azurermstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzureRMStreamAnalyticsOutput
+### <a name="test-azurestreamanalyticsoutput-|-test-azurermstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzureRMStreamAnalyticsOutput
 指定した出力に接続するために、Stream Analytics の機能をテストします。
 
 **例 1**
@@ -450,17 +448,12 @@ Azure PowerShell 1.0:
 ## <a name="get-support"></a>サポートを受ける
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。 
 
-
 ## <a name="next-steps"></a>次のステップ
-
-- [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-- [Azure Stream Analytics の使用](stream-analytics-get-started.md)
-- [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-- [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-- [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
- 
-
-
+* [Azure Stream Analytics の概要](stream-analytics-introduction.md)
+* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 [msdn-switch-azuremode]: http://msdn.microsoft.com/library/dn722470.aspx
 [powershell-install]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
@@ -475,7 +468,7 @@ Azure PowerShell 1.0:
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
- 
+
 
 
 

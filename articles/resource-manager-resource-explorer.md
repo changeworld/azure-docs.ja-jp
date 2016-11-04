@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Azure リソース エクスプローラー | Microsoft Azure"
-   description="Azure リソース エクスプローラーについて説明すると共に、Azure リソース エクスプローラーから Azure リソース マネージャーを介してデプロイを表示し更新する方法についても示します。"
-   services="azure-resource-manager"
-   documentationCenter="na"
-   authors="stuartleeks"
-   manager="ankodu"
-   editor=""/>
+---
+title: Azure リソース エクスプローラー | Microsoft Docs
+description: Azure リソース エクスプローラーについて説明すると共に、Azure リソース エクスプローラーから Azure リソース マネージャーを介してデプロイを表示し更新する方法についても示します。
+services: azure-resource-manager
+documentationcenter: na
+author: stuartleeks
+manager: ankodu
+editor: ''
 
-<tags
-   ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/01/2016"
-   ms.author="stuartle;tomfitz"/>
+ms.service: azure-resource-manager
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/01/2016
+ms.author: stuartle;tomfitz
 
+---
 # Azure リソース エクスプローラーを使用してリソースを表示および変更する
 [Azure リソース エクスプローラー](https://resources.azure.com)は、サブスクリプションで作成済みのリソースを検索するのに非常に便利なツールです。このツールを使用すると、リソースがどのような構成になっているかを把握し、各リソースに割り当てられているプロパティを確認することができます。リソースの種類で使用できる REST API 操作および PowerShell コマンドレットについて説明します。インターフェイスを介してコマンドを発行することもできます。既存のリソースのプロパティを表示できるため、リソース エクスプローラーはリソース マネージャーのテンプレートを作成する際に特に有用です。
 
@@ -45,7 +45,6 @@ Resource Manager テンプレートに精通するに従って、本文の内容
 ![SQL Database](./media/resource-manager-resource-explorer/are-04-database-get.png)
 
 ## リソースの変更
-
 リソースに移動すると、[編集] ボタンを選択することで、JSON コンテンツを編集可能にすることができます。次に、リソース エクスプローラーを使用して JSON を編集し、PUT 要求を送信してリソースを変更することができます。たとえば、次の図は、`S0` に変更されたデータベース層を示しています。
 
 ![データベース - PUT 要求](./media/resource-manager-resource-explorer/are-05-database-put.png)
@@ -57,7 +56,6 @@ Resource Manager テンプレートに精通するに従って、本文の内容
 ![データベース - GET 要求 2](./media/resource-manager-resource-explorer/are-06-database-get2.png)
 
 ## リソースに対する操作の実行
-
 **[アクション]** タブでは、追加の REST 操作を確認および実行することができます。たとえば、Web サイト リソースを選択すると、[アクション] タブに、使用可能な操作を掲載した長いリストが表示されます。その一部を以下に示します。
 
 ![Web - POST 要求](./media/resource-manager-resource-explorer/are-web-post.png)

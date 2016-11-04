@@ -13,7 +13,6 @@
 1. スケール セット内の VM インスタンスにデータ ディスクをアタッチすることはできません。代わりに、Blob Storage、Azure Files、Azure テーブルなどのストレージ ソリューションを使用する必要があります。
 
 ## Azure CLI を使用した簡易作成
-
 [Azure サブスクリプションの無料試用版](https://azure.microsoft.com/pricing/free-trial/)と [Azure CLI](../articles/xplat-cli-install.md) は、[Azure アカウントに接続](../articles/xplat-cli-connect.md)できます (まだ接続していない場合)。接続が完了したら、次のコマンドを実行して VM スケール セットを簡易作成できます。
 
 ```bash
@@ -71,7 +70,6 @@ ssh -p 50000 $FQDN
 ```
 
 ## 次のステップ
-
 全般的な情報については、[VM スケール セットのメイン ランディング ページ](https://azure.microsoft.com/services/virtual-machine-scale-sets/)をご覧ください。
 
 ドキュメントについては、[VM スケール セットのメイン ドキュメント ページ](https://azure.microsoft.com/documentation/services/virtual-machines-scale-sets/)をご覧ください。

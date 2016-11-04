@@ -1,25 +1,24 @@
-<properties
-   pageTitle="Azure Data Catalog の前提条件 | Microsoft Azure"
-   description="Azure Data Catalog の前提条件 - Azure Data Catalog を使用するために必要なもの。"
-   services="data-catalog"
-   documentationCenter=""
-   authors="steelanddata"
-   manager="NA"
-   editor=""
-   tags=""/>
-<tags
-   ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="09/21/2016"
-   ms.author="maroche"/>
+---
+title: Azure Data Catalog の前提条件 | Microsoft Docs
+description: Azure Data Catalog の前提条件 - Azure Data Catalog を使用するために必要なもの。
+services: data-catalog
+documentationcenter: ''
+author: steelanddata
+manager: NA
+editor: ''
+tags: ''
 
+ms.service: data-catalog
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-catalog
+ms.date: 09/21/2016
+ms.author: maroche
+
+---
 # Azure Data Catalog の前提条件
-
 ## Azure Data Catalog の使用を開始するために必要なこと
-
 **Azure Data Catalog** をセットアップする前に、いくつかのことに注意する必要があります。それほど長くはかかりません。
 
 ## Azure サブスクリプション
@@ -32,10 +31,12 @@ Azure Data Catalog をセットアップするには、Azure Active Directory �
 
 Azure Active Directory (Azure AD) は、企業がクラウドとオンプレミス環境の両方で ID とアクセスを簡単に管理できるサービスです。ユーザーは、任意のクラウドおよびオンプレミス Web アプリケーションへのシングル サインオンのために、1 つの職場または学校アカウントを使用できます。Azure Data Catalog は、Azure AD を使用して、サインオンを認証します。詳細については、「[Azure Active Directory とは](../active-directory/active-directory-whatis.md)」を参照してください。
 
-> [AZURE.NOTE] [Azure Portal](http://portal.azure.com/) では、個人の Microsoft アカウント、または Azure Active Directory の職場や学校のアカウントを使用してサインインできます。Azure Portal または [Data Catalog ポータル](http://www.azuredatacatalog.com)を使用して Azure Data Catalog を設定するには、個人用アカウントではなく、Azure Active Directory アカウントを使用してログインする必要があります。
+> [!NOTE]
+> [Azure Portal](http://portal.azure.com/) では、個人の Microsoft アカウント、または Azure Active Directory の職場や学校のアカウントを使用してサインインできます。Azure Portal または [Data Catalog ポータル](http://www.azuredatacatalog.com)を使用して Azure Data Catalog を設定するには、個人用アカウントではなく、Azure Active Directory アカウントを使用してログインする必要があります。
+> 
+> 
 
 ## Active Directory ポリシーの構成
-
 場合によっては、ユーザーは、Azure Data Catalog ポータルにログオンできる状況が発生することがありますが、データ ソース登録ツールにログオンしようとすると、ログオンを妨げるエラー メッセージが表示されます。ユーザーが企業ネットワーク上にいる場合のみ、またはユーザーが企業ネットワークの外部から接続している場合のみ、このエラー動作が発生することがあります。
 
 データ ソース登録ツールは、フォーム認証を使用して、Active Directory に対するユーザー ログオンを検証します。ログオンを成功させるには、Active Directory 管理者によって、グローバル認証ポリシーでフォーム認証が有効にされている必要があります。

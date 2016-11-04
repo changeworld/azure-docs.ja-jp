@@ -1,25 +1,28 @@
-<properties
-   pageTitle="Windows VM での複数 NIC の構成 | Microsoft Azure"
-   description="Azure PowerShell または Resource Manager テンプレートを使用して、複数の NIC を持つ VM を作成する方法について説明します。"
-   services="virtual-machines-windows"
-   documentationCenter=""
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""/>
+---
+title: Windows VM での複数 NIC の構成 | Microsoft Docs
+description: Azure PowerShell または Resource Manager テンプレートを使用して、複数の NIC を持つ VM を作成する方法について説明します。
+services: virtual-machines-windows
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-windows"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows"
-   ms.workload="infrastructure"
-   ms.date="08/04/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-windows
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure
+ms.date: 08/04/2016
+ms.author: iainfou
 
+---
 # 複数 NIC を持つ VM の作成
 Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。この記事では、複数の NIC を持つ VM を作成するためのクイック コマンドを紹介します。独自の PowerShell スクリプト内に複数の NIC を作成する方法など、詳しくは、[複数 NIC の VM のデプロイ](../virtual-network/virtual-network-deploy-multinic-arm-ps.md)に関する記事を参照してください。[VM のサイズ](virtual-machines-windows-sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
 
->[AZURE.WARNING] VM の作成時に複数の NIC をアタッチする必要があります。既存の VM に NIC を追加することはできません。[元の仮想ディスクに基づいて新しい VM を作成](virtual-machines-windows-specialized-image.md)し、VM をデプロイするときに複数の NIC を作成できます。
+> [!WARNING]
+> VM の作成時に複数の NIC をアタッチする必要があります。既存の VM に NIC を追加することはできません。[元の仮想ディスクに基づいて新しい VM を作成](virtual-machines-windows-specialized-image.md)し、VM をデプロイするときに複数の NIC を作成できます。
+> 
+> 
 
 ## コア リソースの作成
 [最新の Azure PowerShell がインストールおよび構成](../powershell-install-configure.md)されていることを確認します。
@@ -67,7 +70,6 @@ $NIC2 = New-AzureRmNetworkInterface -Name NIC2 -ResourceGroupName TestRG `
 ```
 
 通常、複数の VM 間にトラフィックを分散および管理するための[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)または[ロード バランサー](../load-balancer/load-balancer-overview.md)も作成します。ネットワーク セキュリティ グループの作成方法や NIC の割り当て方法については、[より詳しい複数 NIC の VM](../virtual-network/virtual-network-deploy-multinic-arm-ps.md) に関する記事を参照してください。
-
 
 ## 仮想マシンの作成
 では、VM 構成を構築してみましょう。各 VM サイズについて、1 つの VM に追加できる NIC の合計数には制限があります。詳しくは、「[Windows VM のサイズ](virtual-machines-windows-sizes.md)」を参照してください。次の例では、最大 2 つの NIC をサポートする VM サイズを使用します (`Standard_DS2_v2`)。

@@ -1,23 +1,22 @@
-<properties
-	pageTitle="Mobile Engagement の概念 | Microsoft Azure"
-	description="Azure Mobile Engagement の概念"
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="dwrede"
-	editor="" />
+---
+title: Mobile Engagement の概念 | Microsoft Docs
+description: Azure Mobile Engagement の概念
+services: mobile-engagement
+documentationcenter: mobile
+author: piyushjo
+manager: dwrede
+editor: ''
 
-<tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-android"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/19/2016"
-	ms.author="piyushjo" />
+ms.service: mobile-engagement
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-android
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/19/2016
+ms.author: piyushjo
 
+---
 # Azure Mobile Engagement の概念
-
 Mobile Engagement は、サポートされているすべてのプラットフォームに共通の概念をいくつかを定義します。この記事では、それらの概念について簡単に説明します。
 
 この記事は、Mobile Engagement を初めて使用する場合に読むことをお勧めします。使用しているプラットフォームに固有のドキュメントも参照してください。プラットフォーム固有のドキュメントには、この記事で説明する概念が詳細に説明され、例および考えられる制限事項が記載されているためです。
@@ -79,10 +78,9 @@ extras は JSON オブジェクトと同様に構造化されます。キー/値
 キー/値ペアのツリー全体が JSON オブジェクトとして格納されます。それにもかかわらず、キー/値の最初のレベルだけが分解されてセグメントのような一部の高度な機能から直接アクセス可能になります (たとえば、値 "scifi" を設定した追加キー "content\_type" を使用して、"content\_viewed" という名前のイベントを過去 1 か月間に 10 回以上送信したすべてのユーザーから構成される "SciFi fans" というセグメントを簡単に定義できます)。したがって、スカラー値 (文字列、日付、整数、ブール値など) を使用したキー/値ペアの単純なリストから構成される extras のみを送信することを強くお勧めします。
 
 ## 次のステップ
-
-- [Azure Mobile Engagement 向け Windows ユニバーサル SDK の概要](mobile-engagement-windows-store-sdk-overview.md)
-- [Azure モバイル エンゲージメントの Windows Phone Silverlight SDK 概要](mobile-engagement-windows-phone-sdk-overview.md)
-- [iOS SDK for Azure Mobile Engagement](mobile-engagement-ios-sdk-overview.md)
-- [Android SDK for Azure Mobile Engagement](mobile-engagement-android-sdk-overview.md)
+* [Azure Mobile Engagement 向け Windows ユニバーサル SDK の概要](mobile-engagement-windows-store-sdk-overview.md)
+* [Azure モバイル エンゲージメントの Windows Phone Silverlight SDK 概要](mobile-engagement-windows-phone-sdk-overview.md)
+* [iOS SDK for Azure Mobile Engagement](mobile-engagement-ios-sdk-overview.md)
+* [Android SDK for Azure Mobile Engagement](mobile-engagement-android-sdk-overview.md)
 
 <!---HONumber=AcomDC_0824_2016-->

@@ -1,22 +1,21 @@
-<properties
-	pageTitle="感染している可能性があるデバイスからのサインイン"
-	description="マルウェア (悪意のあるソフトウェア) が実行されている可能性があるデバイスから実行されたサインイン試行が含まれるレポート。"
-	services="active-directory"
-	documentationCenter=""
-	authors="SSalahAhmed"
-	manager="gchander"
-	editor=""/>
+---
+title: 感染している可能性があるデバイスからのサインイン
+description: マルウェア (悪意のあるソフトウェア) が実行されている可能性があるデバイスから実行されたサインイン試行が含まれるレポート。
+services: active-directory
+documentationcenter: ''
+author: SSalahAhmed
+manager: gchander
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="03/04/2016"
-	ms.author="saah;kenhoff"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/04/2016
+ms.author: saah;kenhoff
 
-
+---
 # 感染している可能性があるデバイスからのサインイン
 このレポートは、ユーザーのデバイスがウイルスに感染してボットネットの一部になっていることを識別しようとするものです。ユーザーがサインインした IP アドレスを、ボットネット サーバーにつながっていることがわかっている IP アドレスと関連付けます。
 

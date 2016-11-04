@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Reliable Services の WCF 通信スタック | Microsoft Azure"
-   description="Service Fabric の組み込み WCF 通信スタックは、Reliable Services にクライアント サービス WCF 通信を提供します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="BharatNarasimman"
-   manager="timlt"
-   editor="vturecek"/>
+---
+title: Reliable Services の WCF 通信スタック | Microsoft Docs
+description: Service Fabric の組み込み WCF 通信スタックは、Reliable Services にクライアント サービス WCF 通信を提供します。
+services: service-fabric
+documentationcenter: .net
+author: BharatNarasimman
+manager: timlt
+editor: vturecek
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="required"
-   ms.date="07/26/2016"
-   ms.author="bharatn"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: required
+ms.date: 07/26/2016
+ms.author: bharatn
 
+---
 # Reliable Services の WCF ベースの通信スタック
 Reliable Services フレームワークにより、サービスの作成者はサービスに使用する通信スタックを選択できます。[CreateServiceReplicaListeners または CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) メソッドから返された **ICommunicationListener** を介し、選択した通信スタックをプラグインできます。フレームワークでは、Windows Communication Foundation (WCF) ベースの通信を使用したいと考えるサービス作成者に、WCF に基づいた通信スタックの実装を提供します。
 
@@ -113,13 +113,14 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
                 client => client.Channel.Add(2, 3)).Result;
 
 ```
->[AZURE.NOTE] 既定の ServicePartitionResolver は、クライアントがサービスと同じクラスターで実行されているものと想定します。そうでない場合は、ServicePartitionResolver オブジェクトを作成して、クラスター接続エンドポイントを渡します。
+> [!NOTE]
+> 既定の ServicePartitionResolver は、クライアントがサービスと同じクラスターで実行されているものと想定します。そうでない場合は、ServicePartitionResolver オブジェクトを作成して、クラスター接続エンドポイントを渡します。
+> 
+> 
 
 ## 次のステップ
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
-
 * [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)
-
 * [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
 
 <!---HONumber=AcomDC_0727_2016-->

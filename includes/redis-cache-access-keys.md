@@ -3,13 +3,11 @@ Azure Redis Cache のインスタンスに接続するには、キャッシュ �
 ![Redis cache settings](media/redis-cache-access-keys/redis-cache-settings.png)
 
 ### ホスト名とポート
-
 ホスト名とポートにアクセスするには、**[プロパティ]** をクリックします。
 
 ![Redis cache properties](media/redis-cache-access-keys/redis-cache-properties.png)
 
 ### アクセス キー
-
 アクセス キーを取得するには、**[アクセス キー]** をクリックします。
 
 ![Redis cache access keys](media/redis-cache-access-keys/redis-cache-access-keys.png)

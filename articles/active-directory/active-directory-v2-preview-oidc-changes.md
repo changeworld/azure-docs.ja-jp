@@ -1,21 +1,21 @@
-<properties
-	pageTitle="Azure AD v2.0 エンドポイントへの変更 | Microsoft Azure"
-	description="アプリ モデル v2.0 パブリック プレビュー プロトコルに対して行われた変更について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="dstrockis"
-	manager="mbaldwin"
-	editor=""/>
+---
+title: Azure AD v2.0 エンドポイントへの変更 | Microsoft Docs
+description: アプリ モデル v2.0 パブリック プレビュー プロトコルに対して行われた変更について説明します。
+services: active-directory
+documentationcenter: ''
+author: dstrockis
+manager: mbaldwin
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="dastrock"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/16/2016
+ms.author: dastrock
 
+---
 # v2.0 の認証プロトコルに対する重要な更新
 開発者を対象としています。 これからの 2 週間、プレビュー期間中に作成したすべてのアプリを大きく変える可能性があるいくつかの変更を v2.0 認証プロトコルに対して行います。
 
@@ -47,10 +47,10 @@ v2.0 エンドポイントは、トークンに関連するメタデータを含
 
 ```
 { 
-	"type": "JWT",
-	"alg": "RS256",
-	"x5t": "MnC_VZcATfM5pOYiJHMba9goEKY",
-	"kid": "MnC_VZcATfM5pOYiJHMba9goEKY"
+    "type": "JWT",
+    "alg": "RS256",
+    "x5t": "MnC_VZcATfM5pOYiJHMba9goEKY",
+    "kid": "MnC_VZcATfM5pOYiJHMba9goEKY"
 }
 ```
 
@@ -58,7 +58,10 @@ v2.0 エンドポイントは、トークンに関連するメタデータを含
 
 ここで行う変更は、"x5t" プロパティの削除です。トークンの検証には同じメカニズムを使用し続けることができますが、正しい公開キーを取得するには、OpenID Connect プロトコルで指定されている、"kid" プロパティにのみ依存する必要があります。
 
-> [AZURE.IMPORTANT] **確認事項: アプリが x5t 値の存在に依存していないことを確認してください。**
+> [!IMPORTANT]
+> **確認事項: アプリが x5t 値の存在に依存していないことを確認してください。**
+> 
+> 
 
 ### profile\_info を削除する
 今まで、v2.0 エンドポイントでは、`profile_info` というトークンの応答で、base64 でエンコードされた JSON オブジェクトを返していました。次に要求を送信することによって、v2.0 エンドポイントからアクセス トークンを要求すると、
@@ -68,14 +71,15 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
 
 応答は、次の JSON オブジェクトのようになります。
+
 ```
 { 
-	"token_type": "Bearer",
-	"expires_in": 3599,
-	"scope": "https://outlook.office.com/mail.read",
-	"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
-	"refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
-	"profile_info": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
+    "token_type": "Bearer",
+    "expires_in": 3599,
+    "scope": "https://outlook.office.com/mail.read",
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
+    "refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
+    "profile_info": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
 }
 ```
 
@@ -85,12 +89,12 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ```
 { 
-	"token_type": "Bearer",
-	"expires_in": 3599,
-	"scope": "https://outlook.office.com/mail.read",
-	"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
-	"refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
-	"id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
+    "token_type": "Bearer",
+    "expires_in": 3599,
+    "scope": "https://outlook.office.com/mail.read",
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
+    "refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
 }
 ```
 
@@ -98,7 +102,10 @@ profile\_info から受け取ったのと同じ情報を取得するために、
 
 これから 2 週間は、存在している `id_token` または `profile_info` のいずれかから、ユーザー情報を取得するようアプリをコーディングしてください。このようにすれば、変更があっても、アプリは `profile_info` から `id_token` への切り替えをシームレスに処理できます。
 
-> [AZURE.IMPORTANT] **確認事項: アプリが `profile_info` 値**の存在に依存していないことを確認してください。
+> [!IMPORTANT]
+> **確認事項: アプリが `profile_info` 値**の存在に依存していないことを確認してください。
+> 
+> 
 
 ### id\_token\_expires\_in を削除する
 `profile_info` と同様に、応答から `id_token_expires_in` パラメーターも削除します。今まで、v2.0 エンドポイントは、各 id\_token の応答と共に `id_token_expires_in` 値を返していました。承認応答の例を次に示します。
@@ -111,19 +118,21 @@ https://myapp.com?id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...&id_token_exp
 
 ```
 { 
-	"token_type": "Bearer",
-	"id_token_expires_in": 3599,
-	"scope": "openid",
-	"id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
-	"refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
-	"profile_info": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
+    "token_type": "Bearer",
+    "id_token_expires_in": 3599,
+    "scope": "openid",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
+    "refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
+    "profile_info": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
 }
 ```
 
 `id_token_expires_in` 値は、id\_token が有効である秒数を示します。今後 `id_token_expires_in` 値は完全に削除します。代わりに、OpenID Connect 標準の `nbf` と `exp` 要求を使用し、id\_token の有効性を確認できます。これらの要求の詳細については、「[v2.0 トークンのリファレンス](active-directory-v2-tokens.md)」を参照してください。
 
-> [AZURE.IMPORTANT] **確認事項: アプリが `id_token_expires_in` 値**の存在に依存していないことを確認してください。
-
+> [!IMPORTANT]
+> **確認事項: アプリが `id_token_expires_in` 値**の存在に依存していないことを確認してください。
+> 
+> 
 
 ### scope=openid で返される要求を変更する
 この変更が最も大きなものになります。実際、v2.0 エンドポイントを使用するほぼすべてのアプリに影響します。多くのアプリケーションは、次のように `openid` スコープを使用し v2.0 エンドポイントに要求を送信します。
@@ -143,22 +152,22 @@ client_id=...
 
 ```
 { 
-	"aud": "580e250c-8f26-49d0-bee8-1c078add1609",
-	"iss": "https://login.microsoftonline.com/b9410318-09af-49c2-b0c3-653adc1f376e/v2.0 ",
-	"iat": 1449520283,
-	"nbf": 1449520283,
-	"exp": 1449524183,
-	"nonce": "12345",
-	"sub": "MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q",
-	"tid": "b9410318-09af-49c2-b0c3-653adc1f376e",
-	"ver": "2.0",
+    "aud": "580e250c-8f26-49d0-bee8-1c078add1609",
+    "iss": "https://login.microsoftonline.com/b9410318-09af-49c2-b0c3-653adc1f376e/v2.0 ",
+    "iat": 1449520283,
+    "nbf": 1449520283,
+    "exp": 1449524183,
+    "nonce": "12345",
+    "sub": "MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q",
+    "tid": "b9410318-09af-49c2-b0c3-653adc1f376e",
+    "ver": "2.0",
 }
 ```
 
 アプリ内のユーザーの個人を特定できる情報 (PII) を取得するには、アプリからユーザーに追加のアクセス許可を要求する必要があります。これを実行できる OpenID Connect 仕様の 2 つの新しいスコープ、`email` スコープと `profile` スコープのサポートが導入されました。
 
-- `email` スコープは非常に明解です。id\_token の `email` 要求を使用すると、アプリでユーザーのプライマリ電子メール アドレスにアクセスできます。なお、`email` 要求は id\_tokens には必ずしもあるわけではありません。ユーザーのプロファイルにある場合のみ含まれます。
-- `profile` スコープでは、アプリに名前、推奨ユーザー名、オブジェクト ID など、ユーザーに関するその他のすべての基本的な情報へのアクセスを許可します。
+* `email` スコープは非常に明解です。id\_token の `email` 要求を使用すると、アプリでユーザーのプライマリ電子メール アドレスにアクセスできます。なお、`email` 要求は id\_tokens には必ずしもあるわけではありません。ユーザーのプロファイルにある場合のみ含まれます。
+* `profile` スコープでは、アプリに名前、推奨ユーザー名、オブジェクト ID など、ユーザーに関するその他のすべての基本的な情報へのアクセスを許可します。
 
 これにより、最小限の公開でアプリをコーディングできます。アプリがそのジョブを実行するために必要な情報セットのみをユーザーに要求できます。アプリが現在受け取っているユーザー情報をすべて受け取り続けたい場合、承認要求に次の 3 つのスコープすべてを含める必要があります。
 
@@ -173,7 +182,10 @@ client_id=...
 
 即座にアプリで、`email` と `profile` のスコープは送信でき、v2.0 エンドポイントでそれら 2 つのスコープを受け取ると、必要に応じてユーザーからアクセス許可が求められ始めます。ただし、`openid` のスコープの解釈の変更は数週間実行されません。
 
-> [AZURE.IMPORTANT] **確認事項: アプリでユーザーの情報が必要な場合、`profile` と `email` のスコープを追加します。** ADAL には、既定で要求にこれらのアクセス許可が含まれることに注意してください。
+> [!IMPORTANT]
+> **確認事項: アプリでユーザーの情報が必要な場合、`profile` と `email` のスコープを追加します。** ADAL には、既定で要求にこれらのアクセス許可が含まれることに注意してください。
+> 
+> 
 
 ### issuer の末尾のスラッシュを削除する
 今まで、v2.0 エンドポイントからのトークンに示される issuer 値は次の形式になっていました。
@@ -190,7 +202,10 @@ https://login.microsoftonline.com/{some-guid}/v2.0
 
 次のようになります。
 
-> [AZURE.IMPORTANT] **確認事項: issuer 値の検証時、アプリで末尾のスラッシュの有無にかかわらず、issuer 値が受け入れられることを確認してください。**
+> [!IMPORTANT]
+> **確認事項: issuer 値の検証時、アプリで末尾のスラッシュの有無にかかわらず、issuer 値が受け入れられることを確認してください。**
+> 
+> 
 
 ## なぜ変更するのか?
 これらの変更を導入する主な目的は、OpenID Connect 標準の仕様に準拠するためです。OpenID Connect に準拠することにより、Microsoft ID サービスおよびその他の業界の ID サービスと統合することの違いを最小限に抑えたいと考えています。開発者が Microsoft での違いのために、ライブラリを変更することがなく自分の好みのオープン ソースの認証ライブラリを使用できるようにすることが目的です。
@@ -198,11 +213,11 @@ https://login.microsoftonline.com/{some-guid}/v2.0
 ## 何ができますか?
 現時点では、上記のすべての変更の適用を開始できます。即座に次を実行する必要があります。
 
-1.	**`x5t` ヘッダー パラメーターの依存関係をすべて削除します。**
-2.	**トークン応答で、適切に `profile_info` から `id_token` に移行できるようにします。**
-3.  **`id_token_expires_in` 応答パラメーターの依存関係をすべて削除します。**
-3.	**アプリにユーザーの基本情報が必要な場合、アプリに `profile` スコープと `email` スコープを追加します。**
-4.	**トークンで issuer 値が末尾のスラッシュの有無にかかわらず受け入れられるようにします。**
+1. **`x5t` ヘッダー パラメーターの依存関係をすべて削除します。**
+2. **トークン応答で、適切に `profile_info` から `id_token` に移行できるようにします。**
+3. **`id_token_expires_in` 応答パラメーターの依存関係をすべて削除します。**
+4. **アプリにユーザーの基本情報が必要な場合、アプリに `profile` スコープと `email` スコープを追加します。**
+5. **トークンで issuer 値が末尾のスラッシュの有無にかかわらず受け入れられるようにします。**
 
 [v2.0 プロトコルに関するドキュメント](active-directory-v2-protocols.md)では、これらの変更を反映するよう既に更新されているので、コードの更新時の参照として使用することができます。
 

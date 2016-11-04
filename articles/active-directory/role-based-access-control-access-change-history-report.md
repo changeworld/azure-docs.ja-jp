@@ -1,23 +1,22 @@
-<properties
-	pageTitle="アクセス変更履歴レポートの作成 | Microsoft Azure"
-	description="ロールベースのアクセス制御を使用した Azure サブスクリプションへのアクセス権の変更について、過去 90 日間分をすべて一覧表示するレポートを生成します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+---
+title: アクセス変更履歴レポートの作成 | Microsoft Docs
+description: ロールベースのアクセス制御を使用した Azure サブスクリプションへのアクセス権の変更について、過去 90 日間分をすべて一覧表示するレポートを生成します。
+services: active-directory
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="08/03/2016"
-	ms.author="kgremban"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 08/03/2016
+ms.author: kgremban
 
+---
 # アクセス変更履歴レポートの作成
-
 サブスクリプション内でだれかがアクセス権を付与したり取り消したりしたときは、その変更が常に Azure イベントに記録されます。アクセス変更履歴レポートを作成すると、過去 90 日間のすべての変更を確認できます。
 
 ## Azure PowerShell を使用したレポートの作成
@@ -26,19 +25,19 @@ PowerShell でアクセス変更履歴レポートを作成するには、`Get-A
 このコマンドを呼び出すには、表示する割り当てのプロパティを指定します。プロパティの例を次に示します。
 
 | プロパティ | Description |
-| -------- | ----------- |
-| **アクション** | アクセス権が付与されているか取り消されているか |
-| **Caller** | アクセス権の変更を担当する所有者 |
-| **日付** | アクセス権が変更された日時 |
-| **DirectoryName** | Azure Active Directory ディレクトリ |
-| **PrincipalName** | ユーザー、グループ、またはアプリケーションの名前 |
-| **PrincipalType** | 割り当てはユーザー、グループ、アプリケーションのどれか |
-| **RoleId** | 付与または取り消されたロールの GUID |
-| **RoleName** | 付与または取り消されたロール |
-| **ScopeName** | サブスクリプション、リソース グループ、またはリソースの名前 |
-| **ScopeType** | 割り当てはサブスクリプション、リソース グループ、またはリソース スコープのどのレベルで行われたか |
-| **SubscriptionId** | Azure サブスクリプションの GUID |
-| **SubscriptionName** | Azure サブスクリプションの名前 |
+| --- | --- |
+| **アクション** |アクセス権が付与されているか取り消されているか |
+| **Caller** |アクセス権の変更を担当する所有者 |
+| **日付** |アクセス権が変更された日時 |
+| **DirectoryName** |Azure Active Directory ディレクトリ |
+| **PrincipalName** |ユーザー、グループ、またはアプリケーションの名前 |
+| **PrincipalType** |割り当てはユーザー、グループ、アプリケーションのどれか |
+| **RoleId** |付与または取り消されたロールの GUID |
+| **RoleName** |付与または取り消されたロール |
+| **ScopeName** |サブスクリプション、リソース グループ、またはリソースの名前 |
+| **ScopeType** |割り当てはサブスクリプション、リソース グループ、またはリソース スコープのどのレベルで行われたか |
+| **SubscriptionId** |Azure サブスクリプションの GUID |
+| **SubscriptionName** |Azure サブスクリプションの名前 |
 
 このコマンド例を実行すると、サブスクリプションにおける過去 7 日間のすべてのアクセス変更が一覧表示されます。
 
@@ -57,7 +56,7 @@ Azure コマンド ライン インターフェイス (CLI) でアクセス変�
 ![スプレッドシートとして表示した Changelog - スクリーンショット](./media/role-based-access-control-configure/change-history-spreadsheet.png)
 
 ## 関連項目
-- [Azure のロールベースのアクセス制御](role-based-access-control-configure.md)の基本事項の確認
-- [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)の操作
+* [Azure のロールベースのアクセス制御](role-based-access-control-configure.md)の基本事項の確認
+* [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)の操作
 
 <!---HONumber=AcomDC_0810_2016-->

@@ -1,25 +1,24 @@
-<properties 
-   pageTitle="Azure Mobile Engagement ユーザー インターフェイス - マイ アカウント" 
-   description="Azure Mobile Engagement を利用してアカウント プロファイルとテスト デバイスを管理する方法について説明します。" 
-   services="mobile-engagement" 
-   documentationCenter="" 
-   authors="piyushjo" 
-   manager="dwrede" 
-   editor=""/>
+---
+title: Azure Mobile Engagement ユーザー インターフェイス - マイ アカウント
+description: Azure Mobile Engagement を利用してアカウント プロファイルとテスト デバイスを管理する方法について説明します。
+services: mobile-engagement
+documentationcenter: ''
+author: piyushjo
+manager: dwrede
+editor: ''
 
-<tags
-   ms.service="mobile-engagement"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="mobile-multiple"
-   ms.workload="mobile" 
-   ms.date="08/19/2016"
-   ms.author="piyushjo"/>
+ms.service: mobile-engagement
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: mobile-multiple
+ms.workload: mobile
+ms.date: 08/19/2016
+ms.author: piyushjo
 
+---
 # アカウント プロファイルとテスト デバイスを管理する方法
- 
 この記事では、**Mobile Engagement** ポータルの**ホーム** ページについて説明します。**Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。
- 
+
 **[マイ アカウント]** ページにアクセスするには、ページ上部のアカウントをクリックします。
 
 UI の [マイ アカウント] セクションでは、プロファイル設定やテスト デバイス ID などのアカウントに関連付けられている設定を表示し、変更できます。これらの設定には、デバイス API からもアクセスできる項目が含まれています。
@@ -33,24 +32,23 @@ UI の [マイ アカウント] セクションでは、プロファイル設定
 
 ## デバイス:
 **リーチ**または**プッシュ** キャンペーンのテストに使用できるテスト デバイスのテスト デバイス ID を表示、追加、削除できます。各プラットフォーム用 (iOS、Android、Windows Phone など) のデバイスのデバイス ID を検索する方法のコンテキストは、[新しいデバイス] をクリックすると表示されます。
- 
+
 ![MyAccount3][9]
- 
+
 プッシュ API またはデバイス API を使用するには、ユーザーの一意のデバイス ID (deviceid パラメーター) が必要です。これを取得するには、次の方法があります。
- 
+
 1. バックエンドからは、デバイス API の "Get" 機能を使用してデバイス ID の完全な一覧を取得できます。
 2. アプリからは、SDK を使用して取得できます。(Android の場合は、エージェント クラスの getDeviceID() 関数を呼び出し、iOS の場合は、エージェント クラスの deviceid プロパティを読み取ります)。
 3. リーチのお知らせからは、お知らせに関連付けられているアクションの URL に {deviceid} パターンが含まれている場合、このパターンは、アクションをトリガーするデバイスの ID に自動的に置き換えられます。http://<example>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata は、http://<example>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata に置き換えられます。
 4. リーチの Web のお知らせからは、お知らせの HTML コードに {deviceid} パターンが含まれている場合は、Web のお知らせを表示するデバイスの ID に自動的に置き換えられます。自分のデバイス ID: {deviceid} は、次のデバイス ID に置き換えられます。自分のデバイス ID: XXXXXXXXXXXXXXXX
-5.  デバイスでアプリケーションを開き、タグが付けられているアプリでイベントを実行します。[UI] - [アプリ] - [監視] - [イベント] - [詳細] から、実行したイベントを一覧から見つけます。[監視] で、このイベントをクリックします。このイベントを実行したデバイスの一覧に、デバイス ID が見つかるはずです。次に、このデバイス ID をコピーし、[UI] - [マイ アカウント] - [デバイス] - [新しいデバイス] - [デバイスのプラットフォームを選択] で、これを登録できます。
->(IDFA が iOS で無効になっている場合、アプリをアンインストールして再インストールすると、デバイス ID が経時変化する可能性があります)。
+5. デバイスでアプリケーションを開き、タグが付けられているアプリでイベントを実行します。[UI] - [アプリ] - [監視] - [イベント] - [詳細] から、実行したイベントを一覧から見つけます。[監視] で、このイベントをクリックします。このイベントを実行したデバイスの一覧に、デバイス ID が見つかるはずです。次に、このデバイス ID をコピーし、[UI] - [マイ アカウント] - [デバイス] - [新しいデバイス] - [デバイスのプラットフォームを選択] で、これを登録できます。
+   >(IDFA が iOS で無効になっている場合、アプリをアンインストールして再インストールすると、デバイス ID が経時変化する可能性があります)。
 
-##トラブルシューティング ガイド
--  [トラブルシューティング ガイド - サービス][Link 24]
+## トラブルシューティング ガイド
+* [トラブルシューティング ガイド - サービス][Link 24]
 
 ## 関連項目
--  [UI ドキュメント - ホーム][Link 13]
-
+* [UI ドキュメント - ホーム][Link 13]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -148,7 +146,7 @@ UI の [マイ アカウント] セクションでは、プロファイル設定
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
 
 
- 
- 
+
+
 
 <!---HONumber=AcomDC_0824_2016-->

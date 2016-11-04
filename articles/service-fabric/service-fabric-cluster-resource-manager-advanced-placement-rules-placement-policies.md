@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Service Fabric クラスター リソース マネージャー - 配置ポリシー | Microsoft Azure"
-   description="Service Fabric サービスの追加の配置ポリシーとルールの概要"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Service Fabric クラスター リソース マネージャー - 配置ポリシー | Microsoft Docs
+description: Service Fabric サービスの追加の配置ポリシーとルールの概要
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Service Fabric サービスの配置ポリシー
 Service Fabric のクラスターが複数のデータセンターや Azure のリージョンなど、地理的に離れた場所に広がっている場合や、環境が地政学的な管理の異なる領域に広がっている場合 (もしくは法的、政策的な境界について考慮しなければならない場合や、こうした距離がパフォーマンス/待機時間に実際に影響を与える場合) には、他にも最終的に考慮する必要のあるさまざまなルールがあります。こうしたルールの多くはノード プロパティおよび配置の制約によって構成できますが、なかには非常に複雑なものもあります。物事をシンプルにするために、次の追加のコマンドを用意しました。他の配置の制約と同様に、配置ポリシーを名前付きサービス インスタンスごとに構成できます。
 
@@ -96,7 +96,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 では、これらの構成を地理的に分散していないクラスターのサービスに構成することはできるでしょうか。 もちろん、できます。 しかし、あまり利点はありません。特に、必要な、無効な、および優先ドメインの構成は、実際に地理的に分散しているクラスターを実行していない場合は、避ける必要があります。特定のワークロードを単一のラックで実行したり、ローカル クラスターのセグメントを他のものより優先することは、異なる種類のハードウェアまたはワークロード セグメンテーションを使用しているのでない限り意味がありません。また、これらのケースは通常の配置の制約が対処します。
 
 ## 次のステップ
-- サービスの構成に利用できるその他のオプションの詳細については、「[サービスの構成について学習する](service-fabric-cluster-resource-manager-configure-services.md)」にあるその他のクラスター リソース マネージャーに関するトピックを参照してください。
+* サービスの構成に利用できるその他のオプションの詳細については、「[サービスの構成について学習する](service-fabric-cluster-resource-manager-configure-services.md)」にあるその他のクラスター リソース マネージャーに関するトピックを参照してください。
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png

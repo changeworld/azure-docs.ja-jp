@@ -1,28 +1,27 @@
-<properties 
-    pageTitle="Azure Media Services REST API を使用したフィルターの作成 | Microsoft Azure" 
-    description="このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。"
-    services="media-services" 
-    documentationCenter="" 
-    authors="Juliako" 
-    manager="dwrede" 
-    editor=""/>
+---
+title: Azure Media Services REST API を使用したフィルターの作成 | Microsoft Docs
+description: このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。
+services: media-services
+documentationcenter: ''
+author: Juliako
+manager: dwrede
+editor: ''
 
-<tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="ne" 
-    ms.topic="article" 
-    ms.date="09/26/2016"  
-    ms.author="juliako;cenkdin"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: ne
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: juliako;cenkdin
 
-
-#<a name="creating-filters-with-azure-media-services-rest-api"></a>Azure Media Services REST API を使用したフィルターの作成
-
-> [AZURE.SELECTOR]
-- [.NET](media-services-dotnet-dynamic-manifest.md)
-- [REST ()](media-services-rest-dynamic-manifest.md)
-
+---
+# <a name="creating-filters-with-azure-media-services-rest-api"></a>Azure Media Services REST API を使用したフィルターの作成
+> [!div class="op_single_selector"]
+> * [.NET](media-services-dotnet-dynamic-manifest.md)
+> * [REST ()](media-services-rest-dynamic-manifest.md)
+> 
+> 
 
 Media Services のリリース 2.11 以降では、資産にフィルターを定義できます。 これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (資産に関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。 この資産のフィルター処理は**動的マニフェスト**によってアーカイブされます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
 
@@ -30,32 +29,28 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 このトピックでは、REST API を使用してフィルターを作成、更新、削除する方法を説明します。 
 
-##<a name="types-used-to-create-filters"></a>フィルターの作成に使用する種類
-
+## <a name="types-used-to-create-filters"></a>フィルターの作成に使用する種類
 次の種類の REST API を使用してフィルターを作成します。  
 
-- [Filter](http://msdn.microsoft.com/library/azure/mt149056.aspx)
-- [AssetFilter](http://msdn.microsoft.com/library/azure/mt149053.aspx)
-- [PresentationTimeRange](http://msdn.microsoft.com/library/azure/mt149052.aspx)
-- [FilterTrackSelect と FilterTrackPropertyCondition](http://msdn.microsoft.com/library/azure/mt149055.aspx)
+* [Filter](http://msdn.microsoft.com/library/azure/mt149056.aspx)
+* [AssetFilter](http://msdn.microsoft.com/library/azure/mt149053.aspx)
+* [PresentationTimeRange](http://msdn.microsoft.com/library/azure/mt149052.aspx)
+* [FilterTrackSelect と FilterTrackPropertyCondition](http://msdn.microsoft.com/library/azure/mt149055.aspx)
 
+> [!NOTE]
+> Media Services REST API を使用する場合は、次のことに考慮します。
+> 
+> Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
+> 
+> Https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
+> 
+> 
 
-
->[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
->
->Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
-
->Https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
-
-
-##<a name="create-filters"></a>フィルターの作成
-
-###<a name="create-global-filters"></a>グローバル フィルターの作成
-
+## <a name="create-filters"></a>フィルターの作成
+### <a name="create-global-filters"></a>グローバル フィルターの作成
 グローバル フィルターを作成するには、次の HTTP 要求を使用します。  
 
-####<a name="http-request"></a>HTTP 要求
-
+#### <a name="http-request"></a>HTTP 要求
 要求ヘッダー
 
     POST https://media.windows.net/API/Filters HTTP/1.1 
@@ -102,16 +97,13 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 
 
-####<a name="http-response"></a>HTTP 応答
-    
+#### <a name="http-response"></a>HTTP 応答
     HTTP/1.1 201 Created 
 
-###<a name="create-local-assetfilters"></a>ローカル AssetFilter の作成
-
+### <a name="create-local-assetfilters"></a>ローカル AssetFilter の作成
 ローカル AssetFilter を作成するには、次の HTTP 要求を使用します。  
 
-####<a name="http-request"></a>HTTP 要求
-
+#### <a name="http-request"></a>HTTP 要求
 要求ヘッダー
 
     POST https://media.windows.net/API/AssetFilters HTTP/1.1 
@@ -156,19 +148,15 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
        ] 
     } 
 
-####<a name="http-response"></a>HTTP 応答 
-
+#### <a name="http-response"></a>HTTP 応答
     HTTP/1.1 201 Created 
     . . . 
 
-##<a name="list-filters"></a>フィルターの一覧
-
-###<a name="get-all-global-**filter**s-in-the-ams-account"></a>すべてのグローバル **フィルター**を AMS アカウントで取得する
-
+## <a name="list-filters"></a>フィルターの一覧
+### <a name="get-all-global-**filter**s-in-the-ams-account"></a>すべてのグローバル **フィルター**を AMS アカウントで取得する
 フィルターの一覧を表示するには、次の HTTP 要求を使用します。 
 
-####<a name="http-request"></a>HTTP 要求
-     
+#### <a name="http-request"></a>HTTP 要求
     GET https://media.windows.net/API/Filters HTTP/1.1 
     DataServiceVersion:3.0 
     MaxDataServiceVersion: 3.0 
@@ -177,11 +165,9 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     Authorization: Bearer <token value> 
     x-ms-version: 2.11 
     Host: media.windows.net 
-    
+
 ### <a name="get-**assetfilter**s-associated-with-an-asset"></a>資産に関連付けられている **AssetFilter**を取得する
-
-####<a name="http-request"></a>HTTP 要求
-
+#### <a name="http-request"></a>HTTP 要求
     GET https://media.windows.net/API/Assets('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592')/AssetFilters HTTP/1.1 
     DataServiceVersion: 3.0 
     MaxDataServiceVersion: 3.0 
@@ -192,10 +178,8 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
-###<a name="get-an-**assetfilter**-based-on-its-id"></a>ID に基づいた **AssetFilter** を取得する
-
-####<a name="http-request"></a>HTTP 要求
-
+### <a name="get-an-**assetfilter**-based-on-its-id"></a>ID に基づいた **AssetFilter** を取得する
+#### <a name="http-request"></a>HTTP 要求
     GET https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__TestFilter') HTTP/1.1 
     DataServiceVersion: 3.0 
     MaxDataServiceVersion: 3.0 
@@ -206,18 +190,15 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     x-ms-client-request-id: 00000000
 
 
-##<a name="update-filters"></a>フィルターの更新
- 
+## <a name="update-filters"></a>フィルターの更新
 新しいプロパティ値でフィルターを更新するには、PATCH、PUT、MERGE を使用します。  これらの操作の詳細については、「 [PATCH、PUT、MERGE](http://msdn.microsoft.com/library/dd541276.aspx)」をご覧ください。
- 
-フィルターを更新する場合、ストリーミング エンドポイントでルールを更新するのに最大 2 分かかります。 このフィルターを使用してコンテンツが処理された場合 (また、プロキシと CDN にキャッシュされている場合)、このフィルターを更新するとプレイヤーでエラーが発生します。 フィルターを更新した後にキャッシュをクリアすることをお勧めします。 このオプションが利用できない場合は、別のフィルターを使用することを検討してください。  
- 
-###<a name="update-global-filters"></a>グローバル フィルターの更新
 
+フィルターを更新する場合、ストリーミング エンドポイントでルールを更新するのに最大 2 分かかります。 このフィルターを使用してコンテンツが処理された場合 (また、プロキシと CDN にキャッシュされている場合)、このフィルターを更新するとプレイヤーでエラーが発生します。 フィルターを更新した後にキャッシュをクリアすることをお勧めします。 このオプションが利用できない場合は、別のフィルターを使用することを検討してください。  
+
+### <a name="update-global-filters"></a>グローバル フィルターの更新
 グローバル フィルターを更新するには、次の HTTP 要求を使用します。 
 
-####<a name="http-request"></a>HTTP 要求
- 
+#### <a name="http-request"></a>HTTP 要求
 要求ヘッダー: 
 
     MERGE https://media.windows.net/API/Filters('filterName') HTTP/1.1 
@@ -231,9 +212,9 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
     Content-Length: 384
-    
+
 要求本文: 
-    
+
     { 
        "Tracks":[   
           {   
@@ -254,12 +235,10 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
        ] 
     } 
 
-###<a name="update-local-assetfilters"></a>ローカル AssetFilter の更新
-
+### <a name="update-local-assetfilters"></a>ローカル AssetFilter の更新
 ローカル フィルターを更新するには、次の HTTP 要求を使用します。 
 
-####<a name="http-request"></a>HTTP 要求
-
+#### <a name="http-request"></a>HTTP 要求
 要求ヘッダー: 
 
     MERGE https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__TestFilter')  HTTP/1.1 
@@ -272,9 +251,9 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     x-ms-version: 2.11 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
-    
+
 要求本文: 
-    
+
     { 
        "Tracks":[   
           {   
@@ -296,15 +275,11 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     } 
 
 
-##<a name="delete-filters"></a>フィルターの削除
-
-
-###<a name="delete-global-filters"></a>グローバル フィルターの削除
-
+## <a name="delete-filters"></a>フィルターの削除
+### <a name="delete-global-filters"></a>グローバル フィルターの削除
 グローバル フィルターを削除するには、次の HTTP 要求を使用します。
-    
-####<a name="http-request"></a>HTTP 要求
 
+#### <a name="http-request"></a>HTTP 要求
     DELETE https://media.windows.net/api/Filters('GlobalFilter') HTTP/1.1 
     DataServiceVersion:3.0 
     MaxDataServiceVersion: 3.0 
@@ -315,12 +290,10 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     Host: media.windows.net 
 
 
-###<a name="delete-local-assetfilters"></a>ローカル AssetFilter の削除
-
+### <a name="delete-local-assetfilters"></a>ローカル AssetFilter の削除
 ローカル AssetFilter を削除するには、次の HTTP 要求を使用します。
 
-####<a name="http-request"></a>HTTP 要求
-
+#### <a name="http-request"></a>HTTP 要求
     DELETE https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__LocalFilter') HTTP/1.1 
     DataServiceVersion: 3.0 
     MaxDataServiceVersion: 3.0 
@@ -330,10 +303,8 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     x-ms-version: 2.11 
     Host: media.windows.net 
 
-##<a name="build-streaming-urls-that-use-filters"></a>フィルターを使用するストリーミング URL の構築
-
+## <a name="build-streaming-urls-that-use-filters"></a>フィルターを使用するストリーミング URL の構築
 資産の発行と配信方法については、「 [顧客へのコンテンツの配信に関する概要](media-services-deliver-content-overview.md)」をご覧ください。
-
 
 次の例では、ストリーミング URL にフィルターを追加する方法を示します。
 
@@ -359,23 +330,14 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f, filter=MyFilter)
 
 
-##<a name="media-services-learning-paths"></a>Media Services のラーニング パス
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+## <a name="provide-feedback"></a>フィードバックの提供
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-##<a name="provide-feedback"></a>フィードバックの提供
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-##<a name="see-also"></a>関連項目 
-
+## <a name="see-also"></a>関連項目
 [動的マニフェストの概要](media-services-dynamic-manifest-overview.md)
- 
-
- 
-
-
 
 <!--HONumber=Oct16_HO2-->
 

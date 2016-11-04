@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード"
-	description="このドキュメントでは、Azure MFA Server を開始する方法と、古い phonefactor エージェントからアップグレードする方法について説明します。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+---
+title: PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード
+description: このドキュメントでは、Azure MFA Server を開始する方法と、古い phonefactor エージェントからアップグレードする方法について説明します。
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtland
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード
-
 PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authentication Server にアップグレードするには、PhoneFactor エージェントおよび関連するコンポーネントをアンインストールし、その後 Multi-Factor Authentication Server および関連するコンポーネントをインストールする必要があります。
 
 ## PhoneFactor エージェントから Azure Multi-Factor Authentication Server にアップグレードするには
@@ -39,6 +38,7 @@ PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authenticati
 
 
 <li>モバイル アプリ Web サービスがインストールされている場合は、次の手順を実行します。
+
 <ol>
 <li>インストール フォルダーに移動し、web.config ファイルをバックアップします。既定のインストール先は C:\inetpub\wwwroot\PhoneFactorPhoneAppWebService です。</li>
 <li>Windows の [プログラムと機能] よりモバイル アプリ Web サービスをアンインストールします。</li></ol>
@@ -56,6 +56,7 @@ PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authenticati
 <li>ユーザー ポータルが既に PhoneFactor エージェント サーバーにインストールされている場合は、Multi-Factor Authentication Server のユーザー インターフェイスより、新しい Multi-Factor Authentication ユーザー ポータルをインストールします。既定の仮想ディレクトリ名は、"PhoneFactor" ではなく "MultiFactorAuth" であることに注意してください。以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、Multi-Factor Authentication Server の [ユーザー ポータル] アイコンをクリックし、[設定] タブのユーザー ポータル URL を更新する必要があります。
 
 <li>過去にユーザー ポータルまたはモバイル アプリ Web サービスが、PhoneFactor エージェントとは別のサーバーにインストールされていた場合は、次の手順を実行します。
+
 <ol>
 <li>インストール場所 (例: C:\Program Files\PhoneFactor) に移動して適切なインストーラーをもう一方のサーバーにコピーします。ユーザー ポータルとモバイル アプリ Web サービスには、32 ビットおよび 64 ビットのインストーラーがあります。それぞれ、MultiFactorAuthenticationUserPortalSetupXX.msi と MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi という名前です。</li>
 <li>Web サーバー上にユーザー ポータルをインストールするには、コマンド プロンプトを管理者として開き、MultiFactorAuthenticationUserPortalSetupXX.msi を実行します。既定の仮想ディレクトリ名は、"PhoneFactor" ではなく "MultiFactorAuth" であることに注意してください。以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、Multi-Factor Authentication Server の [ユーザー ポータル] アイコンをクリックし、[設定] タブのユーザー ポータル URL を更新する必要があります。既存のユーザーに、新しい URL を通知する必要があります。</li>

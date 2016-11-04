@@ -1,33 +1,31 @@
-<properties
-    pageTitle="Custom caching in Azure API Management"
-    description="Learn how to cache items by key in Azure API Management"
-    services="api-management"
-    documentationCenter=""
-    authors="darrelmiller"
-    manager="erikre"
-    editor=""/>
+---
+title: Custom caching in Azure API Management
+description: Learn how to cache items by key in Azure API Management
+services: api-management
+documentationcenter: ''
+author: darrelmiller
+manager: erikre
+editor: ''
 
-<tags
-    ms.service="api-management"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="na"
-    ms.date="10/25/2016"
-    ms.author="darrmi"/>
+ms.service: api-management
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 10/25/2016
+ms.author: darrmi
 
-
+---
 # <a name="custom-caching-in-azure-api-management"></a>Custom caching in Azure API Management
 Azure API Management service has built-in support for [HTTP response caching](api-management-howto-cache.md) using the resource URL as the key. The key can be modified by request headers using the `vary-by` properties. This is useful for caching entire HTTP responses (aka representations), but sometimes it is useful to just cache a portion of a representation. The new [cache-lookup-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) and [cache-store-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) policies provide the ability to store and retrieve arbitrary pieces of data from within policy definitions. This ability also adds value to the previously introduced [send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) policy because you can now cache responses from external services.
 
-## <a name="architecture"></a>Architecture  
+## <a name="architecture"></a>Architecture
 API Management service uses a shared per-tenant data cache so that, as you scale up to multiple units you will still get access to the same cached data. However, when working with a multi-region deployment there are independent caches within each of the regions. Due to this, it is important to not treat the cache as a data store, where it is the only source of some piece of information. If you did, and later decided to take advantage of the multi-region deployment, then customers with users that travel may lose access to that cached data.
 
 ## <a name="fragment-caching"></a>Fragment caching
 There are certain cases where responses being returned contain some portion of data that is expensive to determine and yet remains fresh for a reasonable amount of time. As an example, consider a service built by an airline that provides information relating flight reservations, flight status, etc. If the user is a member of the airlines points program, they would also have information relating to their current status and mileage accumulated. This user-related information might be stored in a different system, but it may be desirable to include it in responses returned about flight status and reservations. This can be done using a process called fragment caching. The primary representation can be returned from the origin server using some kind of token to indicate where the user-related information is to be inserted. 
 
 Consider the following JSON response from a backend API.
-
 
     {
       "airline" : "Air Canada",
@@ -235,7 +233,6 @@ The completely policy is as follows.
 Enabling API consumers to transparently control which backend version is being accessed by clients without having to update and redeploy clients is a elegant solution that addresses many API versioning concerns.
 
 ## <a name="tenant-isolation"></a>Tenant Isolation
-
 In larger, multi-tenant deployments some companies create separate groups of tenants on distinct deployments of backend hardware. This minimizes the number of customers who are impacted by a hardware issue on the backend. It also enables new software versions to be rolled out in stages. Ideally this backend architecture should be transparent to API consumers. This can be achieved in a similar way to transparent versioning because it is based on the same technique of manipulating the backend URL using configuration state per API key.  
 
 Instead of returning a preferred version of the API for each subscription key, you would return an identifier that relates a tenant to the assigned hardware group. That identifier can be used to construct the appropriate backend URL.
@@ -245,8 +242,6 @@ The freedom to use the Azure API management cache for storing any kind of data e
 
 ## <a name="next-steps"></a>Next steps
 Please give us your feedback in the Disqus thread for this topic if there are other scenarios that these policies have enabled for you, or if there are scenarios you would like to achieve but do not feel are currently possible.
-
-
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,29 +1,26 @@
 
-<properties
-	pageTitle="Azure Multi-Factor Authentication で確認コードを使用したモバイル アプリへのサインイン"
-	description="このページでは、Azure MFA でモバイル アプリの確認コードを使用してサインインする方法を説明します。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+---
+title: Azure Multi-Factor Authentication で確認コードを使用したモバイル アプリへのサインイン
+description: このページでは、Azure MFA でモバイル アプリの確認コードを使用してサインインする方法を説明します。
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtland
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # Azure Multi-Factor Authentication で確認コードを使用したモバイル アプリへのサインイン
-
-
 多要素認証でモバイル アプリを使用した場合、確認コードを使用するときのエクスペリエンスについて以下に記します。
 
 ## モバイル アプリで確認コードを使用してサインインする方法
-
 <ol>
 
 <li>Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。</li>

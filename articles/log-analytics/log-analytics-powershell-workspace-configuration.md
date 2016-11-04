@@ -1,74 +1,70 @@
-<properties
-    pageTitle="PowerShell を使用した Log Analytics ワークスペースの作成と構成 | Microsoft Azure"
-    description="Log Analytics は、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを使用します。 Azure 診断によって生成された場合は、Azure Storage からマシンのデータを収集できます。"
-    services="log-analytics"
-    documentationCenter=""
-    authors="richrundmsft"
-    manager="jochan"
-    editor=""/>
+---
+title: PowerShell を使用した Log Analytics ワークスペースの作成と構成 | Microsoft Docs
+description: Log Analytics は、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを使用します。 Azure 診断によって生成された場合は、Azure Storage からマシンのデータを収集できます。
+services: log-analytics
+documentationcenter: ''
+author: richrundmsft
+manager: jochan
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="powershell"
-    ms.topic="article"
-    ms.date="08/15/2016"
-    ms.author="richrund"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: powershell
+ms.topic: article
+ms.date: 08/15/2016
+ms.author: richrund
 
-
+---
 # <a name="manage-log-analytics-using-powershell"></a>PowerShell を使用した Log Analytics の管理
-
 Log Analytics のさまざまな機能は、コマンド ラインまたはスクリプトから [Log Analytics の PowerShell コマンドレット](http://msdn.microsoft.com/library/mt188224.aspx) を使用して実行できます。  PowerShell で実行できる作業の例を次に挙げます。
 
-+ ワークスペースの作成
-+ ソリューションの追加と削除
-+ 保存されている検索のインポートとエクスポート
-+ コンピューター グループの作成
-+ Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
-+ Linux および Windows コンピューターからのパフォーマンス カウンターの収集
-+ Linux コンピューターの syslog からのイベントの収集 
-+ Windows イベント ログからのイベントの収集
-+ カスタム イベント ログの収集
-+ Azure 仮想マシンへの Log Analytics エージェントの追加
-+ Azure 診断を使用して収集されたデータを Log Analytics でインデックスするための構成
-
+* ワークスペースの作成
+* ソリューションの追加と削除
+* 保存されている検索のインポートとエクスポート
+* コンピューター グループの作成
+* Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
+* Linux および Windows コンピューターからのパフォーマンス カウンターの収集
+* Linux コンピューターの syslog からのイベントの収集 
+* Windows イベント ログからのイベントの収集
+* カスタム イベント ログの収集
+* Azure 仮想マシンへの Log Analytics エージェントの追加
+* Azure 診断を使用して収集されたデータを Log Analytics でインデックスするための構成
 
 この記事の 2 つのコード サンプルで紹介しているのは、PowerShell から実行できる機能の一部です。  その他の機能については、 [Log Analytics の PowerShell コマンドレット リファレンス](http://msdn.microsoft.com/library/mt188224.aspx) を参照してください。
 
-> [AZURE.NOTE] Log Analytics は以前、オペレーション インサイトと呼ばれていました。そのため、コマンドレットにはその旧称が使用されています。
+> [!NOTE]
+> Log Analytics は以前、オペレーション インサイトと呼ばれていました。そのため、コマンドレットにはその旧称が使用されています。
+> 
+> 
 
 ## <a name="prerequisites"></a>前提条件
-
 Log Analytics ワークスペースで PowerShell を使用するには、次の条件を満たしている必要があります。
 
-+ Azure サブスクリプション 
-+ ご利用の Azure サブスクリプションに関連付けられた Azure Log Analytics ワークスペース
+* Azure サブスクリプション 
+* ご利用の Azure サブスクリプションに関連付けられた Azure Log Analytics ワークスペース
 
 OMS ワークスペースを作成してあっても、まだ Azure サブスクリプションに関連付けていない場合は、以下の方法でリンクを作成できます。
 
-+ Azure ポータルで次の操作を行います。
-+ OMS ポータル 
-+ Get-AzureRmOperationalInsightsLinkTargets および New-AzureRmOperationalInsightsWorkspace コマンドレットの使用。
-
+* Azure ポータルで次の操作を行います。
+* OMS ポータル 
+* Get-AzureRmOperationalInsightsLinkTargets および New-AzureRmOperationalInsightsWorkspace コマンドレットの使用。
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成と構成
-
 以下のサンプル スクリプトは、次の作業の方法を紹介したものです。
 
-1.  ワークスペースの作成
-2.  利用可能なソリューションをリストする
-3.  ソリューションをワークスペースに追加する
-4.  保存した検索条件をインポートする
-5.  保存した検索条件をエクスポートする
-6.  コンピューター グループの作成
-7.  Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
-8.  Linux コンピューターからの Logical Disk パフォーマンス カウンター (% Used Inodes、Free Megabytes、% Used Space、Disk Transfers/sec、Disk Reads/sec、Disk Writes/sec) の収集
-9.  Linux コンピューターからの syslog イベントの収集
+1. ワークスペースの作成
+2. 利用可能なソリューションをリストする
+3. ソリューションをワークスペースに追加する
+4. 保存した検索条件をインポートする
+5. 保存した検索条件をエクスポートする
+6. コンピューター グループの作成
+7. Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
+8. Linux コンピューターからの Logical Disk パフォーマンス カウンター (% Used Inodes、Free Megabytes、% Used Space、Disk Transfers/sec、Disk Reads/sec、Disk Writes/sec) の収集
+9. Linux コンピューターからの syslog イベントの収集
 10. Windows コンピューターのアプリケーション イベント ログからのエラーおよび警告のイベントの収集
 11. Windows コンピューターからの Memory Available Mbytes パフォーマンス カウンターの収集
 12. カスタム ログの収集 
-
 
 ```
 
@@ -190,24 +186,23 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 
 ```
 
-## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>Azure 診断で収集されたデータのインデックスを作成するように Log Analytics を構成する 
-
+## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>Azure 診断で収集されたデータのインデックスを作成するように Log Analytics を構成する
 エージェントを介さずに Azure リソースを監視するには、リソースで Azure 診断を有効にし、ストレージ アカウントへの書き込みを構成する必要があります。 その後、ストレージ アカウントからログを収集するように Log Analytics を構成します。 上記の構成を行う必要があるリソースには、次のようなものがあります。
 
-+ クラシック クラウド サービス (Web ロールと worker ロール)
-+ Service Fabric クラスター
-+ ネットワーク セキュリティ グループ
-+ キー コンテナー 
-+ アプリケーション ゲートウェイ
+* クラシック クラウド サービス (Web ロールと worker ロール)
+* Service Fabric クラスター
+* ネットワーク セキュリティ グループ
+* キー コンテナー 
+* アプリケーション ゲートウェイ
 
 PowerShell で特定の Azure サブスクリプションの Log Analytics ワークスペースにアクセスし、別の Azure サブスクリプションからログを収集するように構成することもできます。
 
 以下の例では、次のことを行っています。
 
-1.  既存のストレージ アカウントと Log Analytics でインデックスするデータの収集元とをリストする
-2.  ストレージ アカウントからデータを読み取るための構成を作成する
-3.  新しく作成した構成に変更を加え、インデックスの作成対象となるデータの収集元を追加する
-4.  新しく作成した構成を削除する
+1. 既存のストレージ アカウントと Log Analytics でインデックスするデータの収集元とをリストする
+2. ストレージ アカウントからデータを読み取るための構成を作成する
+3. 新しく作成した構成に変更を加え、インデックスの作成対象となるデータの収集元を追加する
+4. 新しく作成した構成を削除する
 
 ```
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable" 
@@ -232,11 +227,7 @@ Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Re
 ```
 
 ## <a name="next-steps"></a>次のステップ
-
-- [Log Analytics の PowerShell コマンドレットを参照](http://msdn.microsoft.com/library/mt188224.aspx) し、Log Analytics を構成するための PowerShell の使い方について詳しく調べる。
-
-
-
+* [Log Analytics の PowerShell コマンドレットを参照](http://msdn.microsoft.com/library/mt188224.aspx) し、Log Analytics を構成するための PowerShell の使い方について詳しく調べる。
 
 <!--HONumber=Oct16_HO2-->
 

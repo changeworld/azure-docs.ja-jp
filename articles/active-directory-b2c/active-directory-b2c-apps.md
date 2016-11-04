@@ -1,31 +1,30 @@
-<properties
-	pageTitle="Azure AD B2C | Microsoft Azure"
-	description="Azure Active Directory B2C で構築できるアプリケーションの種類。"
-	services="active-directory-b2c"
-	documentationCenter=""
-	authors="dstrockis"
-	manager="msmbaldwin"
-	editor=""/>
+---
+title: Azure AD B2C | Microsoft Docs
+description: Azure Active Directory B2C で構築できるアプリケーションの種類。
+services: active-directory-b2c
+documentationcenter: ''
+author: dstrockis
+manager: msmbaldwin
+editor: ''
 
-<tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="07/22/2016"
-	ms.author="dastrock"/>
+ms.service: active-directory-b2c
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 07/22/2016
+ms.author: dastrock
 
+---
 # Azure Active Directory B2C: アプリケーションの種類
-
 Azure Active Directory (Azure AD) B2C は、さまざまな最新アプリ アーキテクチャの認証をサポートします。すべての認証は、業界標準のプロトコルである [OAuth 2.0](active-directory-b2c-reference-protocols.md) または [OpenID Connect](active-directory-b2c-reference-protocols.md) に基づいています。このドキュメントでは、利用する言語やプラットフォームを問わず、作成できるアプリの種類について簡単に説明します。また、[アプリケーションの構築を始める](active-directory-b2c-overview.md#getting-started)前にシナリオの概要を理解することもできます。
 
 ## 基本
 Azure AD B2C を使用するすべてのアプリは、[Azure ポータル](https://portal.azure.com/)で [B2C ディレクトリ](active-directory-b2c-get-started.md)に登録する必要があります。アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
-- アプリを一意に識別する**アプリケーション ID**。
-- 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI**。
-- その他のシナリオに応じた値。詳細については、[アプリの登録](active-directory-b2c-app-registration.md)方法を参照してください。
+* アプリを一意に識別する**アプリケーション ID**。
+* 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI**。
+* その他のシナリオに応じた値。詳細については、[アプリの登録](active-directory-b2c-app-registration.md)方法を参照してください。
 
 登録の済んだアプリは、Azure AD v2.0 エンドポイントに要求を送ることによって、Azure AD と通信します。
 
@@ -40,10 +39,10 @@ Azure AD B2C に送信される各要求は、**ポリシー**を指定します
 
 1. アプリは、[ポリシー](active-directory-b2c-reference-policies.md)を実行するためにユーザーを v2.0 エンドポイントにリダイレクトします。
 2. ユーザーがポリシーの定義に従ってポリシーを完了します。
-4. アプリは、v2.0 エンドポイントから何らかの種類のセキュリティ トークンを受け取ります。
-5. アプリは、セキュリティ トークンを使って、保護された情報またはリソースにアクセスします。
-6. リソース サーバーは、セキュリティ トークンを検証し、アクセスを許可できることを確認します。
-7. アプリは、セキュリティ トークンを定期的に更新します。
+3. アプリは、v2.0 エンドポイントから何らかの種類のセキュリティ トークンを受け取ります。
+4. アプリは、セキュリティ トークンを使って、保護された情報またはリソースにアクセスします。
+5. リソース サーバーは、セキュリティ トークンを検証し、アクセスを許可できることを確認します。
+6. アプリは、セキュリティ トークンを定期的に更新します。
 
 <!-- TODO: Need a page for libraries to link to -->
 これらの手順は、構築しているアプリの種類によりわずかに異なることがあります。細部は、オープン ソース ライブラリが自動的に対応できます。
@@ -57,10 +56,10 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 // Partial content of a decoded id_token
 {
-	"name": "John Smith",
-	"email": "john.smith@gmail.com",
-	"oid": "d9674823-dffc-4e3f-a6eb-62fe4bd48a58"
-	...
+    "name": "John Smith",
+    "email": "john.smith@gmail.com",
+    "oid": "d9674823-dffc-4e3f-a6eb-62fe4bd48a58"
+    ...
 }
 ```
 
@@ -91,8 +90,10 @@ Accept: application/json
 
 Web API はトークンを使用して API の呼び出し元の ID を検証し、トークン内にエンコードされているクレームから呼び出し元に関する情報を抽出します。アプリで利用できるトークンと要求の種類の詳細については、[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)のページを参照してください。
 
-> [AZURE.NOTE]
-	現在の Azure AD B2C では、Web API の既知のクライアントによってアクセスされる Web API のみをサポートしています。たとえば、完成したアプリには、iOS アプリ、Android アプリ、Web API を含めることができます。このアーキテクチャは完全にサポートされます。別の iOS アプリなどのパートナー クライアントが同じ Web API にアクセスできるようにすることは、現時点ではサポートされていません。完成したアプリのすべてのコンポーネントは、1 つのアプリケーション ID を共有する必要があります。
+> [!NOTE]
+> 現在の Azure AD B2C では、Web API の既知のクライアントによってアクセスされる Web API のみをサポートしています。たとえば、完成したアプリには、iOS アプリ、Android アプリ、Web API を含めることができます。このアーキテクチャは完全にサポートされます。別の iOS アプリなどのパートナー クライアントが同じ Web API にアクセスできるようにすることは、現時点ではサポートされていません。完成したアプリのすべてのコンポーネントは、1 つのアプリケーション ID を共有する必要があります。
+> 
+> 
 
 Web API は、Web アプリ、デスクトップ アプリ、モバイル アプリ、シングル ページ アプリ、サーバー サイド デーモン、それ以外の Web API など、多くの種類のクライアントからトークンを受信できます。ここでは、Web API を呼び出す Web アプリの完全なフローの例を示します。
 
@@ -107,8 +108,10 @@ Azure AD B2C を使用して Web API をセキュリティ保護する方法の�
 
 このフローでは、アプリが[ポリシー](active-directory-b2c-reference-policies.md)を実行し、ユーザーがポリシーを完了した後、Azure AD から `authorization_code` を受け取ります。`authorization_code` は、現在サインインしているユーザーに代わってバックエンド サービスを呼び出すためのアプリのアクセス許可を表します。これにより、アプリはバックグラウンドで `authorization_code` を `id_token` および `refresh_token` と交換できます。アプリは `id_token` を使用し、HTTP 要求でバックエンド Web API への認証を行うことができます。また、古い `id_token` の有効期限が切れたときは、`refresh_token` を使用して新しいものを取得できます。
 
-> [AZURE.NOTE]
-	現在の Azure AD B2C では、アプリ独自のバックエンド Web サービスにアクセスするために使用されるトークンのみをサポートしています。たとえば、完成したアプリには、iOS アプリ、Android アプリ、Web API を含めることができます。このアーキテクチャは完全にサポートされます。iOS アプリが OAuth 2.0 アクセス トークンを使用してパートナー の Web API にアクセスできるようにすることは、現時点ではサポートされていません。完成したアプリのすべてのコンポーネントは、1 つのアプリケーション ID を共有する必要があります。
+> [!NOTE]
+> 現在の Azure AD B2C では、アプリ独自のバックエンド Web サービスにアクセスするために使用されるトークンのみをサポートしています。たとえば、完成したアプリには、iOS アプリ、Android アプリ、Web API を含めることができます。このアーキテクチャは完全にサポートされます。iOS アプリが OAuth 2.0 アクセス トークンを使用してパートナー の Web API にアクセスできるようにすることは、現時点ではサポートされていません。完成したアプリのすべてのコンポーネントは、1 つのアプリケーション ID を共有する必要があります。
+> 
+> 
 
 ![ネイティブ アプリのスイムレーン イメージ](./media/active-directory-b2c-apps/native.png)
 

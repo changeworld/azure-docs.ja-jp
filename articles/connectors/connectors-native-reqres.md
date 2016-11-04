@@ -1,36 +1,34 @@
-<properties
-	pageTitle="要求アクションと応答アクションの使用 |Microsoft Azure"
-	description="Azure ロジック アプリの要求および応答のトリガーとアクションの概要"
-	services=""
-	documentationCenter=""
-	authors="jeffhollan"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+---
+title: 要求アクションと応答アクションの使用 | Microsoft Docs
+description: Azure ロジック アプリの要求および応答のトリガーとアクションの概要
+services: ''
+documentationcenter: ''
+author: jeffhollan
+manager: erikre
+editor: ''
+tags: connectors
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/18/2016"
-   ms.author="jehollan"/>
+ms.service: logic-apps
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/18/2016
+ms.author: jehollan
 
+---
 # 要求コンポーネントと応答コンポーネントの概要
-
 ロジック アプリで要求コンポーネントと応答コンポーネントを使用すると、リアルタイムでイベントに応答できます。
 
 たとえば、次のようなことができます。
 
-- ロジック アプリから、オンプレミスのデータベースのデータを使用して HTTP 要求に応答します。
-- 外部の webhook イベントからロジック アプリをトリガーします。
-- 他のロジック アプリ内からの要求アクションと応答アクションを使用してロジック アプリを呼び出します。
+* ロジック アプリから、オンプレミスのデータベースのデータを使用して HTTP 要求に応答します。
+* 外部の webhook イベントからロジック アプリをトリガーします。
+* 他のロジック アプリ内からの要求アクションと応答アクションを使用してロジック アプリを呼び出します。
 
 ロジック アプリでの要求アクションと応答アクションの使用を開始する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
 ## HTTP 要求トリガーの使用
-
 トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらを参照してください](connectors-overview.md)。
 
 ロジック アプリ デザイナーで HTTP 要求をセットアップする方法の例を次に示します。
@@ -40,12 +38,14 @@
 3. ロジック アプリの保存後、要求カードから HTTP 要求の URL を取得できます。
 4. URL への HTTP POST ([Postman](https://www.getpostman.com/) などのツールを使用できます) によってロジック アプリがトリガーされます。
 
->[AZURE.NOTE] 応答アクションを定義していない場合は、`202 ACCEPTED` 応答がすぐに呼び出し元に返されます。応答アクションを使用すると、応答をカスタマイズできます。
+> [!NOTE]
+> 応答アクションを定義していない場合は、`202 ACCEPTED` 応答がすぐに呼び出し元に返されます。応答アクションを使用すると、応答をカスタマイズできます。
+> 
+> 
 
 ![Response Trigger](./media/connectors-native-reqres/using-trigger.png)
 
 ## HTTP 応答アクションの使用
-
 HTTP 応答アクションは、HTTP 要求によってトリガーされたワークフローで使用した場合にのみ有効です。応答アクションを定義していない場合は、`202 ACCEPTED` 応答がすぐに呼び出し元に返されます。応答アクションは、ワークフロー内のどのステップにでも追加できます。ロジック アプリは、応答のために受信要求を 1 分間だけオープンしたままにします。ワークフローから応答が送信されなかった場合は、(応答アクションが定義内に存在していても) 1 分後に `504 GATEWAY TIMEOUT` が呼び出し元に返されます。
 
 HTTP 応答アクションの追加方法を次に示します。
@@ -53,64 +53,58 @@ HTTP 応答アクションの追加方法を次に示します。
 1. **[新しいステップ]** をクリックします。
 2. **[アクションの追加]** を選択します。
 3. アクションの検索ボックスに「**応答**」と入力して、応答アクションの一覧を表示します。
-
-	![Select the response action](./media/connectors-native-reqres/using-action-1.png)
-
+   
+    ![Select the response action](./media/connectors-native-reqres/using-action-1.png)
 4. HTTP 応答メッセージに必要なすべてのパラメーターを追加します。
-
-	![Complete the response action](./media/connectors-native-reqres/using-action-2.png)
-
+   
+    ![Complete the response action](./media/connectors-native-reqres/using-action-2.png)
 5. ツール バーの左上隅にある [保存] をクリックすると、ロジック アプリが保存されて発行 (アクティブ化) されます。
 
 ## 要求トリガー
-
 ここでは、このコネクタでサポートされているトリガーの詳細について説明します。1 つの要求トリガーがあります。
 
-|トリガー|Description|
-|---|---|
-|要求|HTTP 要求を受信したときに実行されます。|
+| トリガー | Description |
+| --- | --- |
+| 要求 |HTTP 要求を受信したときに実行されます。 |
 
 ## 応答アクション
-
 ここでは、このコネクタでサポートされているアクションの詳細について説明します。要求トリガーに伴う場合にのみ使用可能な応答アクションが 1 つあります。
 
-|アクション|Description|
-|---|---|
-|Response|関連する HTTP 要求に応答を返します。|
+| アクション | Description |
+| --- | --- |
+| Response |関連する HTTP 要求に応答を返します。 |
 
 ### トリガーとアクションの詳細
-
 次の表に、トリガーとアクションの必須および省略可能な入力フィールドと、対応する出力の詳細を示します。
 
 #### 要求トリガー
 受信 HTTP 要求からのトリガーの入力フィールドを次に示します。
 
-|表示名|プロパティ名|Description|
-|---|---|---|
-|JSON スキーマ|schema|HTTP 要求本文の JSON スキーマ|
+| 表示名 | プロパティ名 | Description |
+| --- | --- | --- |
+| JSON スキーマ |schema |HTTP 要求本文の JSON スキーマ |
+
 <br>
 
 **出力の詳細**
 
 要求の出力の詳細を次に示します。
 
-|プロパティ名|データ型|Description|
-|---|---|---|
-|ヘッダー|オブジェクト|要求ヘッダー|
-|本文|オブジェクト|要求オブジェクト|
+| プロパティ名 | データ型 | Description |
+| --- | --- | --- |
+| ヘッダー |オブジェクト |要求ヘッダー |
+| 本文 |オブジェクト |要求オブジェクト |
 
 #### 応答アクション
-
 HTTP 応答アクションの入力フィールドを次に示します。* は、必須フィールドであることを示しています。
 
-|表示名|プロパティ名|Description|
-|---|---|---|
-|状態コード*|StatusCode|HTTP 状態コード|
-|ヘッダー|headers|含める任意の応答ヘッダーの JSON オブジェクト|
-|本文|body|応答本文|
+| 表示名 | プロパティ名 | Description |
+| --- | --- | --- |
+| 状態コード* |StatusCode |HTTP 状態コード |
+| ヘッダー |headers |含める任意の応答ヘッダーの JSON オブジェクト |
+| 本文 |body |応答本文 |
 
 ## 次のステップ
-
 プラットフォームを試用し、[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)してください。[API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 
 <!---HONumber=AcomDC_0810_2016-->

@@ -1,36 +1,35 @@
-<properties 
-	pageTitle="Machine Learning の Recommendations API の一般的な操作 | Microsoft Azure" 
-	description="Azure ML Recommendation サンプル アプリケーション" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="LuisCabrer" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+---
+title: Machine Learning の Recommendations API の一般的な操作 | Microsoft Docs
+description: Azure ML Recommendation サンプル アプリケーション
+services: machine-learning
+documentationcenter: ''
+author: LuisCabrer
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/08/2016" 
-	ms.author="luisca"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/08/2016
+ms.author: luisca
 
-
+---
 # サンプル アプリケーションを使用した Recommendations API のチュートリアル
+> [!NOTE]
+> このバージョンの代わりに Recommendations API Cognitive Service の使用を開始することをお勧めします。このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。詳細については、「[Migrating to the new Cognitive Service](http://aka.ms/recomigrate)」(新しい Cognitive Service への移行) を参照してください。
+> 
+> 
 
->[AZURE.NOTE] このバージョンの代わりに Recommendations API Cognitive Service の使用を開始することをお勧めします。このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。詳細については、「[Migrating to the new Cognitive Service](http://aka.ms/recomigrate)」(新しい Cognitive Service への移行) を参照してください。
-
-##目的
-
+## 目的
 このドキュメントでは、[サンプル アプリケーション](https://code.msdn.microsoft.com/Recommendations-144df403)を使用して、Machine Learning の Recommendations API を使用する方法を示しています。
 
 このアプリケーションは、すべての機能や API の使用を意図したものではありません。Machine Learning の Recommendation サービスを初めて使用する際に実行する一般的な操作の一部を示します。
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-##Machine Learning Recommendation サービスの概要
-
+## Machine Learning Recommendation サービスの概要
 Machine Learning Recommendation サービスを使用した推奨機能は、次のデータに基づいて推奨モデルを構築する際に有効です。
 
 * 推奨する項目のリポジトリ (カタログ)
@@ -56,18 +55,15 @@ Machine Learning Recommendation サービスを使用した推奨機能は、次
 
 通常は、一定時間の間、推奨の取得を呼び出します。その間、使用状況データを Machine Learning の推奨システムにリダイレクトすることができます。システムでは、このデータを指定されたコンテナーのモデルに追加します。十分な使用状況データが取得されたら、新しい推奨モデルを構築してより多くの実際のデータを使用できます。
 
-##前提条件
-
+## 前提条件
 * Visual Studio 2013
 * インターネットへのアクセス
 * Recommendations API のサブスクリプション (https://datamarket.azure.com/dataset/amla/recommendations)。
 
-##Azure Machine Learning サンプル アプリケーション ソリューション
-
+## Azure Machine Learning サンプル アプリケーション ソリューション
 このソリューションには、ソース コード、サンプルの使用状況とカタログのファイル、およびコンパイルに必要なパッケージをダウンロードするディレクティブが含まれています。
 
-##使用される API
-
+## 使用される API
 アプリケーションは、使用可能な API のサブセットを通じて、Machine Learning Recommendation 機能を使用します。次の API がアプリケーションに示されています。
 
 * モデルの作成: 論理のコンテナーを作成し、データと推奨モデルを保持します。モデルは名前によって識別されます。同じ名前のモデルを 2 回作成することはできません。
@@ -83,13 +79,11 @@ API の詳細については、Microsoft Azure Marketplace のドキュメント
 **注**: モデルには (同時にではなく) 時間の経過と共に複数のビルドが含まれます。各ビルドは、同じまたは更新されたカタログ、追加の使用状況データで作成されています。
 
 ## よくある落とし穴
-
 * サンプル アプリケーションを実行するためには、ユーザー名と Microsoft Azure Marketplace のプライマリ アカウント キーを提供する必要があります。
 * サンプル アプリケーションを連続して実行すると失敗します。アプリケーション フローには、作成、アップロード、ビルドの監視、事前定義されたモデルからの推奨の取得が含まれ、呼び出しの間でモデル名を変更しないと、連続した実行は失敗します。
 * 推奨はデータなしで終了する可能性があります。サンプル アプリケーションは、ごく小さいカタログと使用状況ファイルを使用します。よってカタログの項目の一部には推奨項目が返されません。
 
 ## 免責事項
 サンプル アプリケーションは、運用環境での実行を意図していません。カタログに提供されたデータはごく小さく、意味のある推奨モデルとはなりませんが、デモの目的でのみ提供されています。
- 
 
 <!---HONumber=AcomDC_0914_2016-->

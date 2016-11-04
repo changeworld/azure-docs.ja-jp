@@ -1,27 +1,25 @@
-<properties
-   pageTitle="Reliable Service 通信の概要 | Microsoft Azure"
-   description="サービスのリッスン開始、エンドポイントの解決、サービス間の通信など、Reliable Service 通信モデルの概要について説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="vturecek"
-   manager="timlt"
-   editor="BharatNarasimman"/>
+---
+title: Reliable Service 通信の概要 | Microsoft Docs
+description: サービスのリッスン開始、エンドポイントの解決、サービス間の通信など、Reliable Service 通信モデルの概要について説明します。
+services: service-fabric
+documentationcenter: .net
+author: vturecek
+manager: timlt
+editor: BharatNarasimman
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="required"
-   ms.date="07/06/2016"
-   ms.author="vturecek"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: required
+ms.date: 07/06/2016
+ms.author: vturecek
 
+---
 # Reliable Services 通信 API の使用方法
-
 プラットフォームとしての Azure Service Fabric は、サービス間の通信にまったく依存しません。UDP から HTTP まで、あらゆるプロトコルとスタックに対応します。サービスの通信方法の選択は、サービス開発者に委ねられています。Reliable Services アプリケーション フレームワークには、組み込みの通信スタックと、カスタム通信コンポーネントの構築に使用できる API が用意されています。
 
 ## サービス通信のセットアップ
-
 Reliable Services API では、サービス通信に単純なインターフェイスを使用します。サービスのエンドポイントを開くには、単純にこのインターフェイスを実装します。
 
 ```csharp
@@ -89,7 +87,10 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 }
 ```
 
-> [AZURE.NOTE] サービスのリスナーを複数作成する場合は、各リスナーに一意の名前を付ける**必要があります**。
+> [!NOTE]
+> サービスのリスナーを複数作成する場合は、各リスナーに一意の名前を付ける**必要があります**。
+> 
+> 
 
 最後に、[サービス マニフェスト](service-fabric-application-model.md)の Endpoints セクションに、サービスに必要なエンドポイントを記述します。
 
@@ -111,10 +112,12 @@ var port = codePackageActivationContext.GetEndpoint("ServiceEndpoint").Port;
 
 ```
 
-> [AZURE.NOTE] エンドポイント リソースはサービス パッケージ全体に共通であり、サービス パッケージがアクティブ化されたときに Service Fabric によって割り当てられます。同じ ServiceHost でホストされている複数のサービス レプリカは、同じポートを共有する場合があります。これは、通信リスナーがポート共有をサポートする必要があることを意味します。これを実行する推奨される方法は、通信リスナーが、リッスン アドレスを生成する際に、パーティション ID とレプリカ/インスタンス ID を使用することです。
+> [!NOTE]
+> エンドポイント リソースはサービス パッケージ全体に共通であり、サービス パッケージがアクティブ化されたときに Service Fabric によって割り当てられます。同じ ServiceHost でホストされている複数のサービス レプリカは、同じポートを共有する場合があります。これは、通信リスナーがポート共有をサポートする必要があることを意味します。これを実行する推奨される方法は、通信リスナーが、リッスン アドレスを生成する際に、パーティション ID とレプリカ/インスタンス ID を使用することです。
+> 
+> 
 
 ### サービスのアドレスの登録
-
 Service Fabric クラスターでは、*ネーム サービス*と呼ばれるシステム サービスが実行されます。ネーム サービスは、サービスの各インスタンスまたはレプリカがリッスンしているサービスとそのアドレスのレジストラーです。`ICommunicationListener` の `OpenAsync` メソッドが完了すると、戻り値がネーム サービスに登録されます。ネーム サービスで公開されるこの戻り値は、値が任意である文字列です。クライアントがネーム サービスからサービスのアドレスを要求すると、この文字列値が表示されます。
 
 ```csharp
@@ -127,11 +130,11 @@ public Task<string> OpenAsync(CancellationToken cancellationToken)
                 CultureInfo.InvariantCulture,
                 "http://+:{0}/",
                 port);
-                        
+
     this.publishAddress = this.listeningAddress.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
-            
+
     this.webApp = WebApp.Start(this.listeningAddress, appBuilder => this.startup.Invoke(appBuilder));
-    
+
     // the string returned here will be published in the Naming Service.
     return Task.FromResult(this.publishAddress);
 }
@@ -139,7 +142,10 @@ public Task<string> OpenAsync(CancellationToken cancellationToken)
 
 Service Fabric は、クライアントや他のサービスがサービス名でこのアドレスを要求できるようにする API を提供します。これが重要なのは、サービスのアドレスが静的でないためです。リソースの分散と可用性のために、サービスはクラスター内を移動します。これは、クライアントがサービスのリッスンしているアドレスを解決できるようにするメカニズムです。
 
-> [AZURE.NOTE] `ICommunicationListener` の記述方法の詳しいチュートリアルについては、「[OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)」を参照してください。
+> [!NOTE]
+> `ICommunicationListener` の記述方法の詳しいチュートリアルについては、「[OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)」を参照してください。
+> 
+> 
 
 ## サービスとの通信
 Reliable Services API は、サービスと通信するクライアントを作成するために、以下のライブラリを提供します。
@@ -160,7 +166,7 @@ ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.clo
 ```
 
 代わりに、`ServicePartitionResolver` には、内部で使用される `FabricClient` を作成するための関数を指定することもできます。
- 
+
 ```csharp
 public delegate FabricClient CreateFabricClientDelegate();
 ```
@@ -185,7 +191,6 @@ ResolvedServicePartition partition =
 通常は、クライアント コードで `ServicePartitionResolver` を直接操作する必要はありません。リゾルバーが作成されると、Reliable Services API の通信クライアント ファクトリに渡されます。ファクトリでは、リゾルバーを内部で使用して、サービスとの通信に使用できるクライアント オブジェクトを生成します。
 
 ### 通信クライアントと通信ファクトリ
-
 通信ファクトリ ライブラリは、解決済みのサービス エンドポイントへの接続の再試行を容易にする、標準的なエラー処理再試行パターンを実装しています。ファクトリ ライブラリが再試行メカニズムを提供し、開発者がエラー ハンドラーを提供します。
 
 `ICommunicationClientFactory` は、Service Fabric サービスと通信できるクライアントを生成する通信クライアント ファクトリによって実装される基本インターフェイスを定義します。CommunicationClientFactory の実装は、クライアントが通信しようとする Service Fabric サービスで使用される通信スタックによって異なります。Reliable Services API は `CommunicationClientFactoryBase<TCommunicationClient>` を提供します。これは、`ICommunicationClientFactory` インターフェイスの基本実装を提供し、すべての通信スタックに共通するタスクを実行します(これらのタスクには、`ServicePartitionResolver` を使用した、サービス エンドポイントの特定も含まれます)。クライアントは、通常 CommunicationClientFactoryBase 抽象クラスを実装して、通信スタック固有のロジックを処理します。
@@ -228,13 +233,13 @@ public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCom
 
 最後に、例外ハンドラーは、例外が発生したときに実行するアクションを決定する役割を担います。例外は、**再試行可能**と**再試行不可能**に分類されます。
 
- - **再試行不可能な**例外は、呼び出し元に単に再スローされます。
- - **再試行可能な**例外は、**一時的**と**非一時的**にさらに分類されます。
-  - **一時的な**例外は、サービス エンドポイント アドレスを再度解決せずに再試行できる例外です。一時的な例外には、一時的なネットワークの問題やサービスのエラー応答 (サービス エンドポイントのアドレスが存在しないことを示すエラー応答を除く) などがあります。
-  - **非一時的な**例外は、サービス エンドポイント アドレスを再度解決する必要がある例外です。非一時的な例外には、サービス エンドポイントに到達できなかったことを示す (サービスが別のノードに移動したことを示す) 例外などがあります。
+* **再試行不可能な**例外は、呼び出し元に単に再スローされます。
+* **再試行可能な**例外は、**一時的**と**非一時的**にさらに分類されます。
+  * **一時的な**例外は、サービス エンドポイント アドレスを再度解決せずに再試行できる例外です。一時的な例外には、一時的なネットワークの問題やサービスのエラー応答 (サービス エンドポイントのアドレスが存在しないことを示すエラー応答を除く) などがあります。
+  * **非一時的な**例外は、サービス エンドポイント アドレスを再度解決する必要がある例外です。非一時的な例外には、サービス エンドポイントに到達できなかったことを示す (サービスが別のノードに移動したことを示す) 例外などがあります。
 
 `TryHandleException` は、特定の例外について判断を下します。特定の例外についてどのような判断を下せばよいか**わからない**場合は、**false** を返します。どのような判断を下せばよいか**わかっている**場合は、それに応じて結果を設定し、**true** を返します。
- 
+
 ```csharp
 class MyExceptionHandler : IExceptionHandler
 {
@@ -276,12 +281,9 @@ var result = await myServicePartitionClient.InvokeWithRetryAsync(async (client) 
 ```
 
 ## 次のステップ
- - [GitHUb にあるサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount)で、サービス間の HTTP 通信の例を確認します。
-
- - [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
-
- - [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)
-
- - [Reliable Services を使用した WCF 通信](service-fabric-reliable-services-communication-wcf.md)
+* [GitHUb にあるサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount)で、サービス間の HTTP 通信の例を確認します。
+* [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
+* [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Services を使用した WCF 通信](service-fabric-reliable-services-communication-wcf.md)
 
 <!---HONumber=AcomDC_0713_2016-->

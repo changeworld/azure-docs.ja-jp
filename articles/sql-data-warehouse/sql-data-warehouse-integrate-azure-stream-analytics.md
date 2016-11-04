@@ -1,30 +1,28 @@
-<properties
-   pageTitle="SQL Data Warehouse での Azure Stream Analytics の使用 | Microsoft Azure"
-   description="ソリューション開発のための、Azure SQL Data Warehouse での Azure Stream Analytics の使用に関するヒント。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="kevinvngo"
-   manager="barbkess"
-   editor=""/>
+---
+title: SQL Data Warehouse での Azure Stream Analytics の使用 | Microsoft Docs
+description: ソリューション開発のための、Azure SQL Data Warehouse での Azure Stream Analytics の使用に関するヒント。
+services: sql-data-warehouse
+documentationcenter: NA
+author: kevinvngo
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="08/16/2016"
-   ms.author="kevin;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 08/16/2016
+ms.author: kevin;barbkess;sonyama
 
+---
 # SQL Data Warehouse での Azure Stream Analytics の使用
-
-Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、十分に管理されたサービスです。基本事項については、「[Azure Stream Analytics の概要][]」をお読みください。その後で、「[Azure Stream Analytics の使用][]」チュートリアルに従って、Stream Analytics を使用してエンド ツー エンド ソリューションを作成する方法を知ることができます。
+Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、十分に管理されたサービスです。基本事項については、「[Azure Stream Analytics の概要][Azure Stream Analytics の概要]」をお読みください。その後で、「[Azure Stream Analytics の使用][Azure Stream Analytics の使用]」チュートリアルに従って、Stream Analytics を使用してエンド ツー エンド ソリューションを作成する方法を知ることができます。
 
 この記事では、Azure SQL Data Warehouse データベースを、Stream Analytics ジョブの出力シンクとして使用する方法について説明します。
 
 ## 前提条件
-
-最初に、「[Azure Stream Analytics の使用][]」チュートリアルの次の手順を通読します。
+最初に、「[Azure Stream Analytics の使用][Azure Stream Analytics の使用]」チュートリアルの次の手順を通読します。
 
 1. Event Hub 入力の作成
 2. イベント ジェネレーター アプリケーションの構成と起動
@@ -34,13 +32,10 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 次に、Azure SQL Data Warehouse データベースを作成します
 
 ## ジョブの出力の指定: Azure SQL Data Warehouse データベース
-
 ### 手順 1
-
 Stream Analytics ジョブで、ページ上部の **[出力]** をクリックし、**[出力の追加]** をクリックします。
 
 ### 手順 2.
-
 SQL Database を選択し、[次へ] をクリックします。
 
 ![][add-output]
@@ -48,23 +43,22 @@ SQL Database を選択し、[次へ] をクリックします。
 ### 手順 3.
 次の値を次のページに入力します。
 
-- *出力のエイリアス*: このジョブの出力のフレンドリ名を入力します。
-- *サブスクリプション*:
-	- SQL Data Warehouse データベースが Stream Analytics ジョブと同じサブスクリプション内に存在する場合は、[現在のサブスクリプションの SQL データベースを使用] を選択します。
-	- データベースが別のサブスクリプション内にある場合は、[別のサブスクリプションの SQL データベースを使用] を選択します。
-- *データベース*: 宛先データベースの名前を指定します。
-- *サーバー名*: 指定したばかりのデータベース用のサーバー名を指定します。これは、Azure クラシック ポータルを使用して見つけることができます。
+* *出力のエイリアス*: このジョブの出力のフレンドリ名を入力します。
+* *サブスクリプション*:
+  * SQL Data Warehouse データベースが Stream Analytics ジョブと同じサブスクリプション内に存在する場合は、[現在のサブスクリプションの SQL データベースを使用] を選択します。
+  * データベースが別のサブスクリプション内にある場合は、[別のサブスクリプションの SQL データベースを使用] を選択します。
+* *データベース*: 宛先データベースの名前を指定します。
+* *サーバー名*: 指定したばかりのデータベース用のサーバー名を指定します。これは、Azure クラシック ポータルを使用して見つけることができます。
 
 ![][server-name]
 
-- *ユーザー名*: データベースの書き込みアクセス許可を持つアカウントのユーザー名を指定します。
-- *パスワード*: 指定したユーザー アカウントのパスワードを入力します。
-- *テーブル*: データベース内の対象テーブルの名前を指定します。
+* *ユーザー名*: データベースの書き込みアクセス許可を持つアカウントのユーザー名を指定します。
+* *パスワード*: 指定したユーザー アカウントのパスワードを入力します。
+* *テーブル*: データベース内の対象テーブルの名前を指定します。
 
 ![][add-database]
 
 ### 手順 4.
-
 チェック ボタンをクリックして、このジョブ出力を追加し、Stream Analytics がデータベースに適切に接続できることを確認します。
 
 ![][test-connection]
@@ -72,10 +66,9 @@ SQL Database を選択し、[次へ] をクリックします。
 データベースへの接続が成功すると、ポータルの下部に通知が表示されます。下部にある [接続のテスト] をクリックすると、データベースへの接続をテストできます。
 
 ## 次のステップ
+統合の概要については、「[SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)][SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)]」をご覧ください。
 
-統合の概要については、「[SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)][]」をご覧ください。
-
-開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][]に関するページをご覧ください。
+開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse の開発の概要]に関するページをご覧ください。
 
 <!--Image references-->
 

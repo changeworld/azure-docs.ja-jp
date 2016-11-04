@@ -1,21 +1,21 @@
-<properties
-   pageTitle="リソース マネージャー アーキテクチャ | Microsoft Azure"
-   description="Service Fabric クラスター リソース マネージャーのアーキテクチャの概要。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: リソース マネージャー アーキテクチャ | Microsoft Docs
+description: Service Fabric クラスター リソース マネージャーのアーキテクチャの概要。
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # クラスター リソース マネージャーのアーキテクチャの概要
 Service Fabric クラスター リソース マネージャーには、クラスター内のリソースを管理するための情報がいくつか必要です。現在存在しているサービスと、これらのサービスが現在 (または既定で) 消費しているリソースの量を把握している必要があります。クラスター内のノードの実際の容量、つまり、使用可能なリソースがクラスター全体でどれくらいあるか、および特定のノードでどれくらいリソースが残っているかの両方を把握している必要があります。特定のサービスのリソースの消費は時間の経過と共に変わり、またサービスは実際に複数のリソースを使用します。異なる多数のサービスには、メモリーやディスク消費などのメトリックとして測定、報告される実際の物理リソースと、(より一般的な) 論理メトリック (WorkQueueDepth、TotalRequests など) の両方があります。論理および物理メトリックはいずれも、さまざまな種類の数多くのサービスで使用できる場合もあれば、少数のサービスでしか使用できない場合もあります。
 
@@ -34,7 +34,7 @@ Service Fabric クラスター リソース マネージャーには、クラス
 ![リソース バランサーのアーキテクチャ][Image2]
 
 ## 次のステップ
-- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
+* クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-2.png

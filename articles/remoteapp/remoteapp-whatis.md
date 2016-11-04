@@ -1,25 +1,26 @@
-<properties 
-	pageTitle="Azure RemoteApp とは | Microsoft Azure" 
-	description="Azure RemoteApp を使用してアプリとリソースを任意のデバイスと共有する方法について説明します。" 
-	services="remoteapp" 
-	documentationCenter="" 
-	authors="lizap" 
-	manager="mbaldwin" 
-	editor=""/>
+---
+title: Azure RemoteApp とは | Microsoft Docs
+description: Azure RemoteApp を使用してアプリとリソースを任意のデバイスと共有する方法について説明します。
+services: remoteapp
+documentationcenter: ''
+author: lizap
+manager: mbaldwin
+editor: ''
 
-<tags 
-	ms.service="remoteapp" 
-	ms.workload="compute" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/15/2016" 
-	ms.author="elizapo"/>
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/15/2016
+ms.author: elizapo
 
+---
 # Azure RemoteApp とは
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> [!IMPORTANT]
+> Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> 
+> 
 
 Azure RemoteApp は、Azure をサポートするリモート デスクトップ サービスによってオンプレミスの Microsoft の RemoteApp プログラムの機能を提供します。Azure RemoteApp は、多くのさまざまなユーザーのデバイスのアプリケーションにセキュリティで保護されたリモート アクセスを提供します。Azure RemoteApp では基本的に、非永続的なターミナル サーバー セッションがクラウドでホストされ、それらを使用したり、他のユーザーと共有したりできます。
 
@@ -36,23 +37,20 @@ Azure RemoteApp は、[Microsoft の仮想デスクトップ インフラスト�
 ## Azure RemoteApp コレクション
 [Azure RemoteApp のコレクション](remoteapp-collections.md)には、次の 2 種類があります。
 
-
-- **クラウド コレクション**は、クラウドでホストされ、プログラムのデータはそのクラウドに格納されます。ユーザーは、Microsoft アカウントまたは Azure Active Directory と同期また連携した企業資格情報でログインしてアプリにアクセスできます。
-
-	クラウド コレクションを選択するのは、会社のプライベート ネットワークで、共有するアプリケーションに任意のリソースへの接続が必要ない場合 (たとえば、VPN デバイスを使用する場合) です。アプリケーションがインターネット、OneDrive、または Azure 上のリソースを必要とする場合は、クラウド コレクションが適しています。また、作成するのも、最も簡単です。
-
-- **ハイブリッド コレクション**では、Azure クラウドにホストされ、データはクラウドに格納されますが、ユーザーはローカル ネットワークに格納されたデータとリソースにアクセスすることもできます。ユーザーは、Azure Active Directory と同期また連携した企業資格情報でログインしてアプリにアクセスできます。
-
-	ハイブリッド コレクションを選択するのは、会社のプライベート ネットワーク上のリソースへの接続が必要な場合です。たとえば、アプリケーションに、次のいずれかへのアクセスが必要な場合です。
-
-	- イントラネット上に配置されたファイル サーバー
-	- Quicken
-	- ファイアウォールの内側にあるデータベース
-
-	これは一般に、クラウドに移動することができない多数のリソースをプライベート ネットワーク上に持つ大企業にとって役立ちます。
+* **クラウド コレクション**は、クラウドでホストされ、プログラムのデータはそのクラウドに格納されます。ユーザーは、Microsoft アカウントまたは Azure Active Directory と同期また連携した企業資格情報でログインしてアプリにアクセスできます。
+  
+    クラウド コレクションを選択するのは、会社のプライベート ネットワークで、共有するアプリケーションに任意のリソースへの接続が必要ない場合 (たとえば、VPN デバイスを使用する場合) です。アプリケーションがインターネット、OneDrive、または Azure 上のリソースを必要とする場合は、クラウド コレクションが適しています。また、作成するのも、最も簡単です。
+* **ハイブリッド コレクション**では、Azure クラウドにホストされ、データはクラウドに格納されますが、ユーザーはローカル ネットワークに格納されたデータとリソースにアクセスすることもできます。ユーザーは、Azure Active Directory と同期また連携した企業資格情報でログインしてアプリにアクセスできます。
+  
+    ハイブリッド コレクションを選択するのは、会社のプライベート ネットワーク上のリソースへの接続が必要な場合です。たとえば、アプリケーションに、次のいずれかへのアクセスが必要な場合です。
+  
+  * イントラネット上に配置されたファイル サーバー
+  * Quicken
+  * ファイアウォールの内側にあるデータベース
+    
+    これは一般に、クラウドに移動することができない多数のリソースをプライベート ネットワーク上に持つ大企業にとって役立ちます。
 
 各コレクションには、ネットワークを含めて異なるオプションがあるため、[どのコレクションが最適か](remoteapp-collections.md)を見つけてください。
-
 
 ### コレクションの更新
 ハイブリッド コレクションとクラウドのコレクション間の主な違いの 1 つは、ソフトウェア更新の処理方法です。プレインストールの Office 365 ProPlus または Office 2013 のイメージを使用するクラウド コレクションでは、更新プログラムについて心配する必要はありません。サービスはそれ自体が継続的に保守され、更新プログラムはアプリとオペレーティング システムの両方に適用されます。
@@ -71,16 +69,15 @@ Azure RemoteApp は、Windows および Windows RT の RemoteApp クライアン
 ## 次のステップ
 始めましょう。 実際に使ってみてください。 以下の記事が Azure RemoteApp を開始するのに役立ちます。
 
-- [Azure RemoteApp にはどのような種類のコレクションが必要ですか。](remoteapp-collections.md)
-- [Azure RemoteApp イメージの作成](remoteapp-imageoptions.md)
-- [Azure RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
-- [Azure RemoteApp のハイブリッド コレクションの作成方法](remoteapp-create-hybrid-deployment.md)
-- [RemoteApp のライセンスはどのような仕組みになっていますか。](remoteapp-licensing.md)
-- [Azure RemoteApp を構成し、使用するためのベスト プラクティス](remoteapp-bestpractices.md)
-- [Azure RemoteApp よく寄せられる質問](remoteapp-faq.md)
- 
+* [Azure RemoteApp にはどのような種類のコレクションが必要ですか。](remoteapp-collections.md)
+* [Azure RemoteApp イメージの作成](remoteapp-imageoptions.md)
+* [Azure RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
+* [Azure RemoteApp のハイブリッド コレクションの作成方法](remoteapp-create-hybrid-deployment.md)
+* [RemoteApp のライセンスはどのような仕組みになっていますか。](remoteapp-licensing.md)
+* [Azure RemoteApp を構成し、使用するためのベスト プラクティス](remoteapp-bestpractices.md)
+* [Azure RemoteApp よく寄せられる質問](remoteapp-faq.md)
 
-### サポートのお願い 
+### サポートのお願い
 記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上へスクロールし、**[Edit on GitHub (GitHub で編集)]** または **[編集]** をクリックすると、変更を行えます。これらの変更は Microsoft が受け取り、確認します。その後、Microsoft による承認が済んだら、変更と改善をここで確認できます。
 
 <!---HONumber=AcomDC_0817_2016-->

@@ -1,23 +1,22 @@
-<properties
-	pageTitle="音声および SMS に Twilio を使用する方法 (.NET) | Microsoft Azure"
-	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは .NET で記述されています。"
-	services=""
-	documentationCenter=".net"
-	authors="devinrader"
-	manager="twilio"
-	editor=""/>
+---
+title: 音声および SMS に Twilio を使用する方法 (.NET) | Microsoft Docs
+description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは .NET で記述されています。
+services: ''
+documentationcenter: .net
+author: devinrader
+manager: twilio
+editor: ''
 
-<tags
-	ms.service="multiple"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="04/24/2015"
-	ms.author="devinrader"/>
+ms.service: multiple
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 04/24/2015
+ms.author: devinrader
 
+---
 # Azure から音声および SMS 機能に Twilio を使用する方法
-
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。Twilio の詳細とアプリケーションで音声と SMS を使用する方法については、「[次の手順](#NextSteps)」を参照してください。
 
 ## <a id="WhatIs"></a>Twilio とは
@@ -93,17 +92,18 @@ Twilio.Client.Capability|Twilio Client JavaScript SDK と共に使用するた�
 
 Microsoft Visual Studio 2010 では既定で NuGet の Version 1.2 がインストールされます。Twilio ライブラリをインストールするには、NuGet の Version 1.6 以降が必要です。NuGet のインストールまたは更新については、[http://nuget.org/][nuget] を参照してください。
 
-> [AZURE.NOTE] NuGet の最新バージョンをインストールするには、最初に Visual Studio Extension Manager を使用して、読み込み済みのバージョンをアンインストールする必要があります。そのためには、Visual Studio を管理者として実行する必要があります。そのようにしない場合、[アンインストール] ボタンは無効です。
+> [!NOTE]
+> NuGet の最新バージョンをインストールするには、最初に Visual Studio Extension Manager を使用して、読み込み済みのバージョンをアンインストールする必要があります。そのためには、Visual Studio を管理者として実行する必要があります。そのようにしない場合、[アンインストール] ボタンは無効です。
+> 
+> 
 
 ### <a id="use_nuget"></a>Twilio ライブラリを Visual Studio プロジェクトに追加するには、次の手順を実行します。
-
-1.  Visual Studio でソリューションを開きます。
-2.  **[参照]** を右クリックします。
-3.  **[NuGet パッケージの管理]** をクリックします。
-4.  **[オンライン]** をクリックします。
-5.  [オンライン検索] ボックスに、「*twilio*」と入力します。
-6.  Twilio パッケージで **[インストール]** をクリックします。
-
+1. Visual Studio でソリューションを開きます。
+2. **[参照]** を右クリックします。
+3. **[NuGet パッケージの管理]** をクリックします。
+4. **[オンライン]** をクリックします。
+5. [オンライン検索] ボックスに、「*twilio*」と入力します。
+6. Twilio パッケージで **[インストール]** をクリックします。
 
 ## <a id="howto_make_call"></a>方法: 発信通話する
 次のコードでは、**TwilioRestClient** クラスを使用して発信通話を行う方法を示しています。このコードは、Twilio から提供されるサイトも使用して、Twilio Markup Language (TwiML) 応答を返します。コードを実行する前に、**From** および **To** の電話番号の値を置き換えて、Twilio アカウントの **From** の電話番号を確認します。
@@ -164,7 +164,10 @@ Microsoft Visual Studio 2010 では既定で NuGet の Version 1.2 がインス�
 ## <a id="howto_provide_twiml_responses"></a>方法: 独自の Web サイトから TwiML 応答を返す
 アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**client.InitiateOutboundCall** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。「[方法: 発信通話する](#howto_make_call)」の例では、Twilio から提供される URL [http://twimlets.com/message][twimlet_message_url] を使用して応答を返します。
 
-> [AZURE.NOTE] TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、[http://twimlets.com/message](twimlet_message_url) をクリックすると、空の <Response> 要素が表示されます。もう 1 つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World](twimlet_message_url_hello_world) をクリックすると、<Say> 要素を格納している <Response> 要素が表示されます。
+> [!NOTE]
+> TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、[http://twimlets.com/message](twimlet_message_url.md) をクリックすると、空の <Response> 要素が表示されます。もう 1 つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World](twimlet_message_url_hello_world.md) をクリックすると、<Say> 要素を格納している <Response> 要素が表示されます。
+> 
+> 
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自の URL サイトを作成できます。HTTP 応答を返すサイトは、任意の言語で作成できます。このトピックでは、ASP.NET 汎用ハンドラーから URL をホストすることを想定しています。
 
@@ -255,11 +258,7 @@ TwiML 応答を提供する方法を設定したら、**client.InitiateOutboundC
 
 ASP.NET を使用する Microsoft Azure での Twilio の使用に関する詳細については、「[Microsoft Azure の Web ロールで Twilio を使用して通話する方法][howto_phonecall_dotnet]」を参照してください。
 
-[AZURE.INCLUDE [twilio-additional-services-and-next-steps](../includes/twilio-additional-services-and-next-steps.md)]
-
-
-
-
+[!INCLUDE [twilio-additional-services-and-next-steps](../includes/twilio-additional-services-and-next-steps.md)]
 
 [howto_phonecall_dotnet]: partner-twilio-cloud-services-dotnet-phone-call-web-role.md
 

@@ -1,41 +1,36 @@
-<properties
-    pageTitle="VMAccess 拡張機能を使用した Azure Linux VM のアクセスのリセット | Microsoft Azure"
-    description="VMAccess 拡張機能を使用した Azure Linux VM のアクセスのリセット"
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="vlivech"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"
-/>
+---
+title: VMAccess 拡張機能を使用した Azure Linux VM のアクセスのリセット | Microsoft Docs
+description: VMAccess 拡張機能を使用した Azure Linux VM のアクセスのリセット
+services: virtual-machines-linux
+documentationcenter: ''
+author: vlivech
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/30/2016"
-    ms.author="v-livech"
-/>
+ms.service: virtual-machines-linux
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-linux
+ms.devlang: na
+ms.topic: article
+ms.date: 08/30/2016
+ms.author: v-livech
 
+---
 # VMAccess 拡張機能を使用して、Azure Linux VM 上のユーザー、SSH を管理し、ディスクをチェックまたは修復する
-
 この記事では、Azure VMAcesss 拡張機能を使用して、Linux 上のディスクのチェックや修復、ユーザー アクセスのリセット、ユーザー アカウントの管理、またはSSHD 構成のリセットを行う方法を説明します。
 
 前提条件は、[Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)、[SSH の公開キーと秘密キー](virtual-machines-linux-mac-create-ssh-keys.md)があり、Azure CLI がインストールされていて、`azure config mode arm` を使用して Resource Manager モードに切り替えてあることです。
 
 ## クイック コマンド
-
 Linux VM で VMAccess を使用する方法は 2 つあります。
 
-- Azure CLI と必要なパラメーターを使用する。
-- VMAccess が処理して、動作の基となる未加工の JSON ファイルを使用する。
+* Azure CLI と必要なパラメーターを使用する。
+* VMAccess が処理して、動作の基となる未加工の JSON ファイルを使用する。
 
 クイック コマンド セクションで、Azure CLI の `azure vm reset-access` メソッドを使用します。以下のコマンド例の "example" を含む値は、実際の環境の値に置き換えてください。
 
 ## リソース グループと Linux VM の作成
-
 ```bash
 azure group create resourcegroupexample westus
 ```
@@ -52,7 +47,6 @@ azure vm quick-create \
 ```
 
 ## root パスワードのリセット
-
 root パスワードをリセットするには:
 
 ```bash
@@ -60,7 +54,6 @@ azure vm reset-access -g exampleResourceGroup -n exampleVMName -u root -p exampl
 ```
 
 ## SSH キーのリセット
-
 root 以外のユーザーの SSH キーをリセットするには:
 
 ```bash
@@ -68,7 +61,6 @@ azure vm reset-access -g exampleResourceGroup -n exampleVMName -u userexample -M
 ```
 
 ## ユーザーの作成
-
 ユーザーを作成するには:
 
 ```bash
@@ -76,13 +68,11 @@ azure vm reset-access -g exampleResourceGroup -n exampleVMName -u userexample -p
 ```
 
 ## ユーザーの削除
-
 ```bash
 azure vm reset-access -g exampleResourceGroup -n exampleVMName -R userexample
 ```
 
 ## SSHD のリセット
-
 SSHD 構成をリセットするには:
 
 ```bash
@@ -91,15 +81,12 @@ azure vm reset-access -g exampleResourceGroup -n exampleVMName -r
 
 
 ## 詳細なチュートリアル
-
 ### VMAccess が定義済み:
-
 Linux VM 上のディスクがエラーを示しています。何らかの理由で Linux VM の root パスワードをリセットしたか、誤って SSH 秘密キーを削除してしまいました。これがかつてのデータ センターの時代で起きていたら、車で駆けつけ、KVM を開けて、サーバー コンソールにたどり着くことになっていたでしょう。Azure VMAccess 拡張機能は、コンソールにアクセスして、Linux へのアクセスをリセットしたり、ディスク レベルの保守を実行したりできるその KVM スイッチとして考えてください。
 
 詳しいチュートリアルでは、未加工の JSON ファイルを使用する長い形式の VMAccess を使用します。これらの VMAccess JSON ファイルは、Azure テンプレートから呼び出すこともできます。
 
 ### VMAccess を使用して Linux VM のディスクをチェックまたは修復する
-
 VMAccess を使用して、Linux VM 下のディスクに対して、fsck を実行できます。また、ディスク チェックを実行し、VMAccess を使用して、ディスクの修復を実行できます。
 
 ディスクをチェックして修復するには、この VMAccess スクリプトを使用します。
@@ -122,7 +109,6 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 ```
 
 ### VMAccess を使用して Linux へのユーザーのアクセスをリセットする
-
 Linux VM で root へのアクセスを失った場合、VMAccess スクリプトを起動して、root パスワードをリセットできます。
 
 root パスワードをリセットするには、この VMAccess スクリプトを使用します。
@@ -164,7 +150,6 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 ```
 
 ### VMAccess を使用して、Linux 上のユーザー アカウントを管理する
-
 VMAccess は、ログインしたり、sudo や root アカウントを使用したりしなくても、Linux VM 上のユーザーを管理するために使用できる Python スクリプトです。
 
 ユーザーを作成するには、この VMAccess スクリプトを使用します。
@@ -206,7 +191,6 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 ```
 
 ### VMAccess を使用して SSHD 構成をリセットする
-
 Linux VM SSHD 構成を変更して、変更を確認する前に SSH 接続を閉じた場合、SSH 接続を再開できないことがあります。VMAccess を使用して、SSH 経由でログインせずに、SSHD 構成を前回正常起動時の構成にリセットすることができます。
 
 SSHD 構成をリセットするには、この VMAccess スクリプトを使用します。
@@ -228,7 +212,6 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 ```
 
 ## 次のステップ
-
 Azure VMAccess 拡張機能を使用して Linux を更新することは、実行中の Linux VM で変更を加える 1 つの方法です。また、cloud-init と Azure テンプレートのようなツールを使用して、起動時に Linux VM を変更することもできます。
 
 [仮想マシンの拡張機能とその機能について](virtual-machines-linux-extensions-features.md)

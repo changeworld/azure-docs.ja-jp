@@ -1,49 +1,45 @@
-<properties
-	pageTitle="Mobile Services から Azure App Service (Node.js) へのアップグレード"
-	description="簡単に Mobile Services アプリケーションを App Service Mobile App にアップグレードする方法について説明します。"
-	services="app-service\mobile"
-	documentationCenter=""
-	authors="adrianhall"
-	manager="ggailey"
-	editor=""/>
+---
+title: Mobile Services から Azure App Service (Node.js) へのアップグレード
+description: 簡単に Mobile Services アプリケーションを App Service Mobile App にアップグレードする方法について説明します。
+services: app-service\mobile
+documentationcenter: ''
+author: adrianhall
+manager: ggailey
+editor: ''
 
-<tags
-	ms.service="app-service-mobile"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile"
-	ms.devlang="node"
-	ms.topic="article"
-	ms.date="08/11/2016"
-	ms.author="adrianha"/>
+ms.service: app-service-mobile
+ms.workload: mobile
+ms.tgt_pltfrm: mobile
+ms.devlang: node
+ms.topic: article
+ms.date: 08/11/2016
+ms.author: adrianha
 
+---
 # App Service への既存の Node.js Azure Mobile Service のアップグレード
-
 App Service Mobile は、Microsoft Azure を使用してモバイル アプリケーションを構築する新しい方法です。詳細については、「[Mobile Apps とは]」を参照してください。
 
-このトピックでは、既存の Node.js バックエンド アプリケーションを Azure Mobile Services から新しい App Service Mobile Apps にアップグレードする方法について説明します。このアップグレードの実行中も、既存の Mobile Services アプリケーションの動作を続行できます。Node.js バックエンド アプリケーションにアップグレードする必要がある場合は、[既存の .NET Mobile Services のアップグレード](./app-service-mobile-net-upgrading-from-mobile-services.md)に関するページを参照してください。
+このトピックでは、既存の Node.js バックエンド アプリケーションを Azure Mobile Services から新しい App Service Mobile Apps にアップグレードする方法について説明します。このアップグレードの実行中も、既存の Mobile Services アプリケーションの動作を続行できます。Node.js バックエンド アプリケーションにアップグレードする必要がある場合は、[既存の .NET Mobile Services のアップグレード](app-service-mobile-net-upgrading-from-mobile-services.md)に関するページを参照してください。
 
 Azure App Service にアップグレードされたモバイル バックエンドは、App Service のすべての機能にアクセスでき、Mobile Services の価格ではなく [App Service の価格]に従って課金されます。
 
 ## 移行とアップグレード
+[!INCLUDE [app-service-mobile-migrate-vs-upgrade](../../includes/app-service-mobile-migrate-vs-upgrade.md)]
 
-[AZURE.INCLUDE [app-service-mobile-migrate-vs-upgrade](../../includes/app-service-mobile-migrate-vs-upgrade.md)]
-
->[AZURE.TIP] アップグレードする前に、[移行する](app-service-mobile-migrating-from-mobile-services.md)ことをお勧めします。そうすることで、同じ App Service プランに両方のバージョンのアプリケーションを指定できるため、追加コストが発生しません。
+> [!TIP]
+> アップグレードする前に、[移行する](app-service-mobile-migrating-from-mobile-services.md)ことをお勧めします。そうすることで、同じ App Service プランに両方のバージョンのアプリケーションを指定できるため、追加コストが発生しません。
+> 
+> 
 
 ### Mobile Apps Node.js サーバー SDK の機能強化
-
 新しい [Mobile Apps SDK](https://www.npmjs.com/package/azure-mobile-apps) にアップグレードすると、次のような多くの機能が強化されます。
 
-- [Express フレームワーク](http://expressjs.com/en/index.html)に基づく新しい軽量の Node SDK は、リリースされる新しい Node のバージョンに対応できるように設計されています。Express ミドルウェアでアプリケーションの動作をカスタマイズすることができます。
-
-- Mobile Services SDK に比べ、パフォーマンスが大幅に向上します。
-
-- モバイル バックエンドと共に Web サイトをホストできるようになりました。同様に、既存の express.v4 アプリケーションに Azure Mobile SDK を簡単に追加することができます。
-
-- クロスプラットフォームとローカル開発用に構築されており、Mobile Apps SDK を開発して Windows、Linux、および OSX プラットフォーム上でローカルに実行できます。デプロイメントの前の [Mocha](https://mochajs.org/) テストの実行などの一般的な Node 開発手法を簡単に使用できるようになりました。
+* [Express フレームワーク](http://expressjs.com/en/index.html)に基づく新しい軽量の Node SDK は、リリースされる新しい Node のバージョンに対応できるように設計されています。Express ミドルウェアでアプリケーションの動作をカスタマイズすることができます。
+* Mobile Services SDK に比べ、パフォーマンスが大幅に向上します。
+* モバイル バックエンドと共に Web サイトをホストできるようになりました。同様に、既存の express.v4 アプリケーションに Azure Mobile SDK を簡単に追加することができます。
+* クロスプラットフォームとローカル開発用に構築されており、Mobile Apps SDK を開発して Windows、Linux、および OSX プラットフォーム上でローカルに実行できます。デプロイメントの前の [Mocha](https://mochajs.org/) テストの実行などの一般的な Node 開発手法を簡単に使用できるようになりました。
 
 ## <a name="overview"></a>基本的なアップグレードの概要
-
 Node.js のアップグレードをバックエンドで支援するために、Azure App Service には互換性パッケージが用意されています。アップグレード後、新しいサイトが提供され、それを新しい App Service サイトにデプロイすることができます。
 
 Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK の間に互換性は**ありません**。アプリ用にサービスを接続する場合は、発行されたクライアントを現在使用しているサイトに変更を発行しないでください。代わりに、複製として機能する新しいモバイル アプリを作成する必要があります。このアプリケーションを同じ App Service プランに指定することで、追加の財務費用が発生しないようにすることができます。
@@ -56,30 +52,27 @@ Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK
 2. 互換性パッケージを使用してプロジェクトを Azure Mobile App に変換します。
 3. 相違点 (認証設定など) があれば修正します。
 4. 変換済みの Azure Mobile App プロジェクトを新しい App Service にデプロイします。
-4. 新しいモバイル アプリを使用するクライアント アプリケーションの新しいバージョンをリリースする。
-5. (省略可能) 元の移行されたモバイル サービス アプリを削除する。
+5. 新しいモバイル アプリを使用するクライアント アプリケーションの新しいバージョンをリリースする。
+6. (省略可能) 元の移行されたモバイル サービス アプリを削除する。
 
 削除は、元の移行されたモバイル サービスのトラフィックがないときに実行されます。
 
 ## <a name="install-npm-package"></a> 前提条件のインストール
-
 [Node] はローカル コンピューターにインストールする必要があります。加えて互換性パッケージをインストールする必要があります。Node のインストール後は、新しい cmd または PowerShell プロンプトから次のコマンドを実行することができます。
 
 ```npm i -g azure-mobile-apps-compatibility```
 
 ## <a name="obtain-ams-scripts"></a> Azure Mobile Services スクリプトの取得
-
-- [Azure ポータル]にログインします。
-- **[すべてのリソース]** または **[App Services]** を使用して Mobile Services サイトを見つけます。
-- サイト内で **[ツール]**、**[Kudu]**、**[移動]** の順にクリックして Kudu のサイトを開きます。
-- **[デバッグ コンソール]** の **[PowerShell]** をクリックしてデバッグ コンソールを開きます。
-- 各ディレクトリを順にクリックして `site/wwwroot/App_Data/config` に移動します。
-- `scripts` ディレクトリの横にあるダウンロード アイコンをクリックします。
+* [Azure ポータル]にログインします。
+* **[すべてのリソース]** または **[App Services]** を使用して Mobile Services サイトを見つけます。
+* サイト内で **[ツール]**、**[Kudu]**、**[移動]** の順にクリックして Kudu のサイトを開きます。
+* **[デバッグ コンソール]** の **[PowerShell]** をクリックしてデバッグ コンソールを開きます。
+* 各ディレクトリを順にクリックして `site/wwwroot/App_Data/config` に移動します。
+* `scripts` ディレクトリの横にあるダウンロード アイコンをクリックします。
 
 これにより、ZIP 形式でスクリプトがダウンロードされます。ローカル コンピューターに新しいディレクトリを作成し、そのディレクトリに `scripts.ZIP` ファイルを展開します。これによって `scripts` ディレクトリが作成されます。
 
 ## <a name="scaffold-app"></a> 新しい Azure Mobile Apps バックエンドのスキャフォールディング
-
 scripts ディレクトリが格納されているディレクトリから次のコマンドを実行します。
 
 ```scaffold-mobile-app scripts out```
@@ -87,7 +80,6 @@ scripts ディレクトリが格納されているディレクトリから次の
 スキャフォールディング済みの Azure Mobile Apps バックエンドが `out` ディレクトリに作成されます。必須ではありませんが、`out` ディレクトリは、ソース コード リポジトリにチェック インすることをお勧めします。
 
 ## <a name="deploy-ama-app"></a> Azure Mobile Apps バックエンドのデプロイ
-
 デプロイ時には次の作業が必要となります。
 
 1. [Azure ポータル]で新しいモバイル アプリを作成します。
@@ -97,47 +89,37 @@ scripts ディレクトリが格納されているディレクトリから次の
 5. 生成されたコードを新しいサイトにデプロイします。
 
 ### 新しい Mobile App を作成する
-
 1. [Azure ポータル]にログインします。
-
 2. **[+ 新規]**、**[Web + モバイル]**、**[モバイル アプリ]** の順にクリックし、モバイル アプリ バックエンドの名前を入力します。
-
 3. **[リソース グループ]** では、既存のリソース グループを選択するか、新しく作成します (アプリと同じ名前を使用)。
- 
-	別の App Service プランを選択するか、または新しいプランを作成することもできます。App Services プランの詳細と、さまざまな価格レベルおよび目的の場所で新しいプランを作成する方法については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
-
+   
+    別の App Service プランを選択するか、または新しいプランを作成することもできます。App Services プランの詳細と、さまざまな価格レベルおよび目的の場所で新しいプランを作成する方法については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
 4. **[App Service プラン]** には既定のプラン ([Standard レベル](https://azure.microsoft.com/pricing/details/app-service/)) が選択されています。別のプランを選択することも、[新しいプランを作成](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan)することもできます。App Service プランの設定により、アプリに関連付けられる[場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/)が決まります。
-
-	プランを決定したら、**[作成]** をクリックします。モバイル アプリ バックエンドが作成されます。
-
+   
+    プランを決定したら、**[作成]** をクリックします。モバイル アプリ バックエンドが作成されます。
 
 ### CreateViews.SQL の実行
-
 スキャフォールディング済みのアプリには、`createViews.sql` というファイルが存在します。ターゲット データベースに対してこのスクリプトを実行する必要があります。ターゲット データベースの接続文字列は、移行済みのモバイル サービスから取得できます (**[設定]** ブレードの **[接続文字列]**)。名前は `MS_TableConnectionString` です。
 
 このスクリプトは、SQL Server Management Studio または Visual Studio 内から実行できます。
 
 ### App Service へのデータベースの関連付け
-
 App Service に既存のデータベースを関連付けるには、次の作業を行います。
 
-- [Azure ポータル]で、App Service を開きます。
-- **[すべての設定]**、**[データ接続]** の順に選択します。
-- **[+ 追加]** をクリックします。
-- ボックスの一覧から **[SQL Database]** を選択します。
-- **[SQL Database]** で既存のデータベースを選択し、**[選択]** をクリックします。
-- **[接続文字列]** にデータベースのユーザー名とパスワードを入力し、**[OK]** をクリックします。
-- **[Add data connections (データ接続の追加)]** ブレードで **[OK]** をクリックします。
+* [Azure ポータル]で、App Service を開きます。
+* **[すべての設定]**、**[データ接続]** の順に選択します。
+* **[+ 追加]** をクリックします。
+* ボックスの一覧から **[SQL Database]** を選択します。
+* **[SQL Database]** で既存のデータベースを選択し、**[選択]** をクリックします。
+* **[接続文字列]** にデータベースのユーザー名とパスワードを入力し、**[OK]** をクリックします。
+* **[Add data connections (データ接続の追加)]** ブレードで **[OK]** をクリックします。
 
 ユーザー名とパスワードは、移行するモバイル サービスのターゲット データベースの [接続文字列] を見て確認できます。
 
-
 ### 認証の設定
-
 Azure Mobile Apps は、そのサービス内から Azure Active Directory、Facebook、Google、Microsoft、Twitter 認証を使用するように構成することができます。カスタム認証は、個別に開発する必要があります。詳しくは、[認証の概念]と[認証のクイック スタート]に関するドキュメントをご覧ください。
 
 ## <a name="updating-clients"></a>モバイル クライアントの更新
-
 モバイル アプリ バックエンドを運用している場合は、それを利用する新しいバージョンのクライアント アプリケーションを使用できます。Mobile Apps には新しいバージョンのクライアント SDK も含まれ、上記のサーバー アップグレードと同様に、Mobile Apps バージョンをインストールする前に Mobile Services SDK へのすべての参照を削除する必要があります。
 
 バージョン間での主な変更の 1 つは、コンストラクターでアプリケーション キーが不要になったことです。現在は、モバイル アプリの URL を渡すだけです。たとえば、.NET クライアントの場合、現在の `MobileServiceClient` コンストラクターは以下のようになります。
@@ -148,10 +130,10 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 
 新しい SDK のインストールおよび新しい構造の使用については、以下のリンクを介して参照できます。
 
-- [Android バージョン 2.2 以降](app-service-mobile-android-how-to-use-client-library.md)
-- [iOS バージョン 3.0.0 以降](app-service-mobile-ios-how-to-use-client-library.md)
-- [.NET (Windows/Xamarin) バージョン 2.0.0 以降](app-service-mobile-dotnet-how-to-use-client-library.md)
-- [Apache Cordova バージョン 2.0 以降](app-service-mobile-cordova-how-to-use-client-library.md)
+* [Android バージョン 2.2 以降](app-service-mobile-android-how-to-use-client-library.md)
+* [iOS バージョン 3.0.0 以降](app-service-mobile-ios-how-to-use-client-library.md)
+* [.NET (Windows/Xamarin) バージョン 2.0.0 以降](app-service-mobile-dotnet-how-to-use-client-library.md)
+* [Apache Cordova バージョン 2.0 以降](app-service-mobile-cordova-how-to-use-client-library.md)
 
 アプリケーションでプッシュ通知を使用する場合は、変更されている内容もあるため、プラットフォームごとに固有の登録手順をメモしてください。
 

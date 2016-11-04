@@ -1,31 +1,32 @@
-<properties 
-	pageTitle="Machine Learning Recommendations API の設定と使用 | Microsoft Azure" 
-	description="Azure Machine Learning で作成された Microsoft Recommendations API の FAQ" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="LuisCabrer" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+---
+title: Machine Learning Recommendations API の設定と使用 | Microsoft Docs
+description: Azure Machine Learning で作成された Microsoft Recommendations API の FAQ
+services: machine-learning
+documentationcenter: ''
+author: LuisCabrer
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/08/2016" 
-	ms.author="luisca"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/08/2016
+ms.author: luisca
 
-#Machine Learning Recommendations API の設定と使用に関する FAQ
-
-
+---
+# Machine Learning Recommendations API の設定と使用に関する FAQ
 **Recommendations とは何ですか。**
 
->[AZURE.NOTE] このバージョンの代わりに Recommendations API Cognitive Service の使用を開始することをお勧めします。このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。詳細については、「[Migrating to the new Cognitive Service](http://aka.ms/recomigrate)」(新しい Cognitive Service への移行) を参照してください。
+> [!NOTE]
+> このバージョンの代わりに Recommendations API Cognitive Service の使用を開始することをお勧めします。このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。詳細については、「[Migrating to the new Cognitive Service](http://aka.ms/recomigrate)」(新しい Cognitive Service への移行) を参照してください。
+> 
+> 
 
 顧客への製品やサービスのクロスセルやアップセルのために推奨機能を利用している組織や事業に対して、Azure Machine Learning の Recommendations サービスは、セルフサービスの推奨エンジンを提供します。これは、コア アルゴリズムとして行列因子分解を使用した協調フィルタリングの実装です。アプリケーション開発者は REST Api を使用してRecommendations にアクセスできます。
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 **Recommendations では何ができますか。**
 
@@ -34,15 +35,14 @@ Recommendations は、1 つの項目または一連の項目を入力として�
 **使用制限はありますか。**
 
 Recommendations には次の使用制限があります。
+
 * サブスクリプションごとのモデルの最大数: 10
 * カタログが保持できる項目の最大数: 100,000
 * 保持される使用状況ポイントの最大数は ~5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
 * 電子メールで送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
 * アクティブではない Recommendations モデルのビルドの 1 秒あたりのトランザクション数 (TPS) は ~2 TPS です。アクティブな推奨モデルのビルドは、最大 20 TPS を保持できます。
 
-##購入と請求 
-
-
+## 購入と請求
 **開始期間中の Recommendations の料金はいくらですか。**
 
 Recommendations は、サブスクリプション ベースのサービスです。課金は、1 か月あたりのトランザクションのボリュームに基づいて行われます。料金情報については、Microsoft Azure Marketplace の[プランに関するページ](https://datamarket.azure.com/dataset/amla/recommendations)をご確認ください。
@@ -93,8 +93,7 @@ Microsoft Azure Marketplace の [プランに関するページ](https://datamar
 
 新しいサブスクリプションを購入するためにサブスクリプションを今すぐ取り消す場合は、[Microsoft サポート](https://support.microsoft.com/oas/default.aspx?gprid=17024&st=1&wfxredirect=1&sd=gn) でチケットを申請してください。
 
-##Recommendations の概要
-
+## Recommendations の概要
 **Recommendations は私に適していますか。**
 
 Machine Learning の Recommendations サービスは、顧客への製品やサービスのクロスセルやアップセルのために推奨機能を利用している組織や事業を対象にしています。顧客対応のための Web サイト、営業スタッフ、社内営業スタッフ、またはコール センターがあり、数十以上の製品やサービスのカタログを提供している場合、Recommendations を使用することによって収益が向上する可能性があります。
@@ -119,8 +118,7 @@ API ドキュメントは、「[Azure Machine Learning Recommendations - クイ�
 
 カタログや使用状況データのアップロードには 2 つのオプションがあります。CRM システムまたはその他のログからこれらのデータをエクスポートして Recommendations にアップロードするか、ユーザー アクティビティを追跡するタグを Web サイトに追加することができます。後者を使用する場合、データは Azure に格納されます。
 
-##メンテナンスとサポート
-
+## メンテナンスとサポート
 **データ セットの大きさはどの程度まで許容されますか。**
 
 各データ セットには、最大 100,000 のカタログ項目、および最大 2,048 MB の使用状況データを保持できます。さらに、サブスクリプションには最大 10 個のデータ セット (モデル) を含めることができます。
@@ -132,9 +130,5 @@ API ドキュメントは、「[Azure Machine Learning Recommendations - クイ�
 **使用条件はどこで入手できますか。**
 
 「[Microsoft Azure Machine Learning Recommendations API Terms of Service](https://datamarket.azure.com/dataset/amla/recommendations#terms)」をご覧ください。
-
-
-
- 
 
 <!---HONumber=AcomDC_0914_2016-->

@@ -1,41 +1,37 @@
-<properties
-   pageTitle="Log Analytics とは | Microsoft Azure"
-   description="Log Analytics は、Operations Management Suite (OMS) のサービスであり、 クラウドおよびオンプレミスの環境内にあるリソースで生成された運用データを収集して分析するのに役立ちます。この記事では、Log Analytics のさまざまなコンポーネントと詳細なコンテンツへのリンクの概要について説明します。"
-   services="log-analytics"
-   documentationCenter=""
-   authors="bwren"
-   manager="jwhit"
-   editor="tysonn" />
-<tags
-   ms.service="log-analytics"
-   ms.devlang="na"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="05/13/2016"
-   ms.author="bwren" />
+---
+title: Log Analytics とは | Microsoft Docs
+description: Log Analytics は、Operations Management Suite (OMS) のサービスであり、 クラウドおよびオンプレミスの環境内にあるリソースで生成された運用データを収集して分析するのに役立ちます。この記事では、Log Analytics のさまざまなコンポーネントと詳細なコンテンツへのリンクの概要について説明します。
+services: log-analytics
+documentationcenter: ''
+author: bwren
+manager: jwhit
+editor: tysonn
 
+ms.service: log-analytics
+ms.devlang: na
+ms.topic: hero-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 05/13/2016
+ms.author: bwren
+
+---
 # Log Analytics とは
 Log Analytics は、Operations Management Suite (OMS) のサービスであり、 クラウドおよびオンプレミスの環境内にあるリソースで生成されたデータを収集して分析するのに役立ちます。統合検索とカスタム ダッシュボードによるリアルタイムの洞察が得られるため、物理的な場所に関係なくワークロードおよびサーバー全体の無数のレコードをただちに分析できます。
-
 
 ## Log Analytics コンポーネント
 Log Analytics の核となる機能は、Azure クラウドでホストされている OMS リポジトリです。データは、データ ソースを構成してソリューションをサブスクリプションに追加することによって接続されているソースからリポジトリに収集されます。データ ソースとソリューションは、独自のプロパティのセットを持つさまざまなレコードの種類をそれぞれ作成しますが、リポジトリへのクエリでまとめて分析することもできます。これにより、同じツールと方法を使用して、異なるソースによって収集されたさまざまな種類のデータを操作できます。
 
-
 ![OMS リポジトリ](media/log-analytics-overview/overview.png)
-
 
 接続先のソースは、Log Analytics によって収集されたデータを生成するコンピューターとその他のリソースです。これには、直接接続している [Windows](log-analytics-windows-agents.md) および [Linux](log-analytics-linux-agents.md) のコンピューターにインストールされているエージェント、または[接続されている System Center Operations Manager 管理グループ](log-analytics-om-agents.md)のエージェントを含めることができます。Log Analytics は [Azure ストレージ](log-analytics-azure-storage.md)からのデータも収集できます。
 
 [データソース](log-analytics-data-sources.md) は接続されている各ソースから収集されたさまざまな種類のデータです。これには、[IIS ログ](log-analytics-data-sources-iis-logs.md)や[カスタム テキスト ログ](log-analytics-data-sources-custom-logs.md)などのソースに加えて、[Windows](log-analytics-data-sources-windows-events.md) および Linux エージェントからのイベントと[パフォーマンス データ](log-analytics-data-sources-performance-counters.md)が含まれます。 収集するデータ ソースをそれぞれ構成すると、構成は接続されているソースごとに自動的に提供されます。
 
-
 ## Log Analytics データの分析
 Log Analytics の操作のほとんどは OMS ポータルを通じて行います。これは任意のブラウザーで実行し、構成設定と複数のツールにアクセスすることによって、収集されたデータの分析と操作を行うことができます。 [ログ検索](log-analytics-log-searches.md)は、ポータルから利用できます。 ここではクエリを作成して、収集されたデータ、最も重要な検索のグラフィカル表示でカスタマイズできる[ダッシュボード](log-analytics-dashboards.md)、および追加機能と分析ツールを備えた[ソリューション](log-analytics-add-solutions.md)を分析します。
 
 ![OMS ポータル](media/log-analytics-overview/portal.png)
-
 
 Log Analytics は、リポジトリ内のデータを迅速に取得して統合するクエリ構文を提供します。[ログ検索](log-analytics-log-searches.md) を作成して保存し、OMS ポータル内のデータを直接分析するか、またはログ検索を自動的に実行し、クエリの結果が重要な条件を示す場合のアラートを作成できます。
 
@@ -52,7 +48,6 @@ Log Analytics の外部にあるデータを分析するには、OMS リポジ�
 
 ![ソリューションの変更の追跡](media/log-analytics-overview/change-tracking.png)
 
-
 ソリューションはさまざまな機能を利用できるため、利用可能なソリューションを簡単に参照し、ソリューション ギャラリーから [OMS ワークスペースに追加](log-analytics-add-solutions.md)できます。多くは自動的にデプロイされ、すぐに操作を開始しますが、いくつかの構成を必要とする場合もあります。
 
 ![ソリューション ギャラリー](media/log-analytics-overview/solution-gallery.png)
@@ -66,11 +61,9 @@ Log Analytics のデプロイ要件は、中央のコンポーネントが Azure
 
 ![Log Analytics アーキテクチャ](media/log-analytics-overview/architecture.png)
 
-
 ## 次のステップ
-
-- [無料の Log Analytics アカウントにサインアップ](log-analytics-get-started.md)し、独自の環境でテストします。
-- OMS リポジトリにデータを収集できるさまざまな[データソース](log-analytics-data-sources.md)を表示します。
-- [ソリューションギャラリーで利用可能なソリューションを参照](log-analytics-add-solutions.md)し、Log Analytics に機能を追加します。
+* [無料の Log Analytics アカウントにサインアップ](log-analytics-get-started.md)し、独自の環境でテストします。
+* OMS リポジトリにデータを収集できるさまざまな[データソース](log-analytics-data-sources.md)を表示します。
+* [ソリューションギャラリーで利用可能なソリューションを参照](log-analytics-add-solutions.md)し、Log Analytics に機能を追加します。
 
 <!---HONumber=AcomDC_0525_2016-->

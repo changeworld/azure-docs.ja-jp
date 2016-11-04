@@ -1,34 +1,32 @@
-<properties
-    pageTitle="Microsoft Azure Backup - PowerShell を使用した DPM バックアップのデプロイと管理| Microsoft Azure"
-    description="PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明"
-    services="backup"
-    documentationCenter=""
-    authors="Nkolli1"
-    manager="shreeshd"
-    editor=""/>
+---
+title: Microsoft Azure Backup - PowerShell を使用した DPM バックアップのデプロイと管理| Microsoft Docs
+description: PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明
+services: backup
+documentationcenter: ''
+author: Nkolli1
+manager: shreeshd
+editor: ''
 
-<tags
-    ms.service="backup"
-    ms.workload="storage-backup-recovery"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/27/2016"
-    ms.author="jimpark; trinadhk; anuragm; markgal"/>
+ms.service: backup
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/27/2016
+ms.author: jimpark; trinadhk; anuragm; markgal
 
-
-
+---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-(dpm)-servers-using-powershell"></a>PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
-
-> [AZURE.SELECTOR]
-- [ARM](backup-dpm-automation.md)
-- [クラシック](backup-dpm-automation-classic.md)
+> [!div class="op_single_selector"]
+> * [ARM](backup-dpm-automation.md)
+> * [クラシック](backup-dpm-automation-classic.md)
+> 
+> 
 
 この記事では、PowerShell を使用して、DPM サーバー上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
 
 ## <a name="setting-up-the-powershell-environment"></a>PowerShell 環境のセットアップ
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 PowerShell を使用して Data Protection Manager から Azure へのバックアップを管理する前に、PowerShell に正しい環境があることを確認してください。 PowerShell セッションの開始時に、必ず次のコマンドレットを実行して適切なモジュールをインポートし、DPM コマンドレットを適切に参照できるようにしてください。
 
@@ -57,15 +55,17 @@ PS C:\> Switch-AzureMode AzureResourceManager
 
 PowerShell を使用して次のセットアップおよび登録タスクを自動化できます。
 
-- バックアップ資格情報コンテナーの作成
-- Microsoft Azure Backup エージェントのインストール
-- Microsoft Azure Backup サービスへの登録
-- ネットワークの設定
-- 暗号化の設定
+* バックアップ資格情報コンテナーの作成
+* Microsoft Azure Backup エージェントのインストール
+* Microsoft Azure Backup サービスへの登録
+* ネットワークの設定
+* 暗号化の設定
 
 ### <a name="create-a-backup-vault"></a>バックアップ資格情報コンテナーの作成
-
-> [AZURE.WARNING] 顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。 これは、Register-AzureProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
+> [!WARNING]
+> 顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。 これは、Register-AzureProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
+> 
+> 
 
 **New-AzureRMBackupVault** コマンドレットを使用すると、新しいバックアップ コンテナーを作成できます。 バックアップ コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。 管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
 
@@ -75,7 +75,6 @@ PS C:\> $backupvault = New-AzureRMBackupVault –ResourceGroupName “test-rg”
 ```
 
 **Get-AzureRMBackupVault** コマンドレットを使用して、特定のサブスクリプション内のすべてのバックアップ コンテナーの一覧を取得できます。
-
 
 ### <a name="installing-the-azure-backup-agent-on-a-dpm-server"></a>DPM サーバーへの Microsoft Azure Backup エージェントのインストール
 Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。 最新バージョンのインストーラーは、 [Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent) またはバックアップ コンテナーの [ダッシュボード] ページから入手することができます。 インストーラーを、*C:\Downloads\* などの、簡単にアクセスできる場所に保存します。
@@ -102,23 +101,23 @@ PS C:\> MARSAgentInstaller.exe /?
 利用可能なオプションは、次のとおりです。
 
 | オプション | 詳細 | 既定値 |
-| ---- | ----- | ----- |
-| /q | サイレント インストール | - |
-| /p:"location" | Azure Backup エージェントのインストール フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent |
-| /s:"location" | Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m | Microsoft Update へのオプトイン | - |
-| /nu | インストールが完了するまで更新プログラムを確認しない | - |
-| /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - |
-| /ph | プロキシ ホストのアドレス | - |
-| /po | プロキシ ホストのポート番号 | - |
-| /pu | プロキシ ホストのユーザー名 | - |
-| /pw | プロキシ パスワード | - |
+| --- | --- | --- |
+| /q |サイレント インストール |- |
+| /p:"location" |Azure Backup エージェントのインストール フォルダーへのパス |C:\Program Files\Microsoft Azure Recovery Services Agent |
+| /s:"location" |Azure Backup エージェントのキャッシュ フォルダーへのパス |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
+| /m |Microsoft Update へのオプトイン |- |
+| /nu |インストールが完了するまで更新プログラムを確認しない |- |
+| /d |Microsoft Azure Recovery Services エージェントをアンインストールする |- |
+| /ph |プロキシ ホストのアドレス |- |
+| /po |プロキシ ホストのポート番号 |- |
+| /pu |プロキシ ホストのユーザー名 |- |
+| /pw |プロキシ パスワード |- |
 
 ### <a name="registering-with-the-azure-backup-service"></a>Microsoft Azure Backup サービスへの登録
 Microsoft Azure Backup サービスへの登録を実行する前に、 [前提条件](backup-azure-dpm-introduction.md) が満たされていることを確認する必要があります。 前提条件は、以下のとおりです。
 
-- 有効な Azure サブスクリプションがあること
-- バックアップ コンテナーがあること
+* 有効な Azure サブスクリプションがあること
+* バックアップ コンテナーがあること
 
 コンテナーの資格情報をダウンロードするには、Azure PowerShell コンソールで **Get-AzureBackupVaultCredentials** コマンドレットを実行し、*C:\Downloads\* などのアクセスしやすい場所に保管します。
 
@@ -138,7 +137,10 @@ PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredenti
 
 これにより、"TestingServer" という名前の DPM サーバーは、Microsoft Azure Backup コンテナーに、指定されたコンテナーの資格情報を使用して登録されます。
 
-> [AZURE.IMPORTANT] コンテナーの資格情報ファイルを指定する際には、相対パスは使用しないでください。 このコマンドレットへの入力には、絶対パスを指定する必要があります。
+> [!IMPORTANT]
+> コンテナーの資格情報ファイルを指定する際には、相対パスは使用しないでください。 このコマンドレットへの入力には、絶対パスを指定する必要があります。
+> 
+> 
 
 ### <a name="initial-configuration-settings"></a>初期構成の設定
 DPM サーバーが Azure Backup 資格情報コンテナーに登録されると、既定のサブスクリプション設定で起動されます。 これらのサブスクリプションの設定には、ネットワーク、暗号化、ステージング領域が含まれます。 サブスクリプション設定の変更を開始するには、まず既存 (既定) の設定のハンドルを [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) コマンドレットを使用して取得する必要があります。
@@ -175,7 +177,6 @@ PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -Subscrip
 
 上の例では、ステージング領域は PowerShell オブジェクト ```$setting``` の *C:\StagingArea* に設定されます。 指定したフォルダーが既に存在することを確認します。存在しない場合は、サブスクリプション設定の最終コミットが失敗します。
 
-
 ### <a name="encryption-settings"></a>暗号化の設定
 データの機密性を保護するために、Microsoft Azure Backup に送信されるバックアップ データは暗号化されます。 暗号化パスフレーズは、復元時にデータの暗号化を解除するための "パスワード" になります。 設定したら、この情報をセキュリティで保護された安全な場所に保管することが重要です。
 
@@ -187,7 +188,10 @@ PS C:\> $Passphrase = ConvertTo-SecureString -string "passphrase123456789" -AsPl
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -EncryptionPassphrase $Passphrase
 ```
 
-> [AZURE.IMPORTANT] 設定したら、パスフレーズ情報をセキュリティで保護された安全な場所に保管してください。 このパスフレーズがないと、Azure からデータを復元できません。
+> [!IMPORTANT]
+> 設定したら、パスフレーズ情報をセキュリティで保護された安全な場所に保管してください。 このパスフレーズがないと、Azure からデータを復元できません。
+> 
+> 
 
 この時点で、必要な変更はすべて ```$setting``` オブジェクトに行われています。 変更を忘れずにコミットします。
 
@@ -306,9 +310,10 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 ## <a name="view-the-backup-points"></a>バックアップ ポイントの表示
 データソースのすべての回復ポイントの一覧を取得するには、 [Get DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) コマンドレットを使用します。 この例の内容:
-- 配列 ```$PG```
--  ```$PG[0]```
-- データソースのすべての回復ポイントを取得します。
+
+* 配列 ```$PG```
+* ```$PG[0]```
+* データソースのすべての回復ポイントを取得します。
 
 ```
 PS C:\> $PG = Get-DPMProtectionGroup –DPMServerName "TestingServer"
@@ -321,9 +326,9 @@ PS C:\> $RecoveryPoints = Get-DPMRecoverypoint -Datasource $DS[0] -Online
 
 次の例では、バックアップ ポイントと回復対象を組み合わせて、Hyper-V 仮想マシンを Microsoft Azure Backup から復元する方法を示します。 次のトピックがあります。
 
-- [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) コマンドレットを使用した回復オプションの作成。
-- ```Get-DPMRecoveryPoint``` コマンドレットを使用したバックアップ ポイントの配列の取得。
-- 復元元のバックアップ ポイントの選択。
+* [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) コマンドレットを使用した回復オプションの作成。
+* ```Get-DPMRecoveryPoint``` コマンドレットを使用したバックアップ ポイントの配列の取得。
+* 復元元のバックアップ ポイントの選択。
 
 ```
 PS C:\> $RecoveryOption = New-DPMRecoveryOption -HyperVDatasource -TargetServer "HVDCenter02" -RecoveryLocation AlternateHyperVServer -RecoveryType Recover -TargetLocation “C:\VMRecovery”
@@ -338,10 +343,7 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 使用されているコマンドは、任意のデータソースの種類に合わせて簡単に拡張できます。
 
 ## <a name="next-steps"></a>次のステップ
-
-- Azure DPM Backup の詳細については、「 [DPM Backup の概要](backup-azure-dpm-introduction.md)
-
-
+* Azure DPM Backup の詳細については、「 [DPM Backup の概要](backup-azure-dpm-introduction.md)
 
 <!--HONumber=Oct16_HO2-->
 

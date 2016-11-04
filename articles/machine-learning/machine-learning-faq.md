@@ -1,34 +1,31 @@
-<properties
-    pageTitle="Azure Machine Learning FAQ | Microsoft Azure"
-    description="Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。"
-    keywords="機械の概要、予測モデリング、機械学習とは"
-    services="machine-learning"
-    documentationCenter=""
-    authors="garyericson"
-    manager="paulettm"
-    editor="cgronlun"/>
+---
+title: Azure Machine Learning FAQ | Microsoft Docs
+description: 'Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。'
+keywords: 機械の概要、予測モデリング、機械学習とは
+services: machine-learning
+documentationcenter: ''
+author: garyericson
+manager: paulettm
+editor: cgronlun
 
-<tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="07/14/2016"
-    ms.author="garye"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 07/14/2016
+ms.author: garye
 
-
+---
 # <a name="azure-machine-learning-frequently-asked-questions-(faq):-billing,-capabilities,-limitations,-and-support"></a>Azure Machine Learning に関してよく寄せられる質問 (FAQ): 課金、機能、制限、サポート
-
 この FAQ では、Web サービスを使用して予測モデルの作成とソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についての疑問に答えます。 サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。
 
 ## <a name="general-questions"></a>一般的な質問
-
 **Azure Machine Learning とは**
 
 Azure Machine Learning は、クラウドで予測分析ソリューションを作成、テスト、操作、管理するための、十分に管理されたサービスです。 ブラウザーさえあれば、サインアップ、データのアップロード、機械学習の実験をすぐに始めることができます。 ドラッグ アンド ドロップによる予測モデリング、モジュールの大きなパレット、開始用テンプレートのライブラリによって、一般的な機械学習のタスクがシンプルになり、作業時間が短縮されます。  詳細については、「 [Azure Machine Learning サービスの概要](https://azure.microsoft.com/services/machine-learning/)」に関するページをご覧ください。 機械学習の重要な用語や概念など基本事項については、 [Azure Machine Learning の概要](machine-learning-what-is-machine-learning.md)に関するページを参照してください。
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 **Machine Learning Studio とは**
 
@@ -47,7 +44,6 @@ Machine Learning API サービスでは、Machine Learning Studio に組み込�
 クラシック Web サービスは、 [Machine Learning Studio](http://studio.azureml.net) の Web サービスのタブに一覧表示されます。 新しい Azure Resource Manager ベースの Web サービスは、 [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/) ポータルに一覧表示されます。 両方の Web サービスを同じ画面に一覧表示することはできません。
 
 ## <a name="microsoft-azure-machine-learning-web-service-questions"></a>Microsoft Azure Machine Learning Web サービスに関する質問
-
 **Azure ML Web サービスとは何ですか?**
 
 Azure Machine Learning Web サービスを使用して、外部のアプリケーションが Machine Learning のワークフローのスコア付けモデルとリアルタイムで通信します。 Machine Learning Web サービスの呼び出しは、予測結果を外部のアプリケーションに返します。 Machine Learning Web サービスの呼び出しを実行するには、Web サービスのデプロイ時に作成された API キーを渡します。 Machine Learning Web サービスは、Web プログラミング プロジェクトでよく選択されるアーキテクチャの REST に基づいています。
@@ -68,58 +64,50 @@ REST API を使用して Web サービスにアクセスするには、いくつ
 新しい Azure Machine Learning Web サービスの詳細については、 [関連ドキュメント](machine-learning-whats-new.md)を参照してください。
 
 ## <a name="machine-learning-studio-questions"></a>Machine Learning Studio に関する質問
-
 ### <a name="creating-an-experiment"></a>実験の作成
-
 **実験グラフ用のバージョン管理や Git 統合はありますか。**
 
 いいえ。ただし、Machine Learning Studio は、他のユーザーによって変更できない実験の各イテレーションを保持します。
 詳細については、[Machine Learning Studio での実験イテレーションの管理](machine-learning-manage-experiment-iterations.md)に関するページを参照してください。
 
-
 ### <a name="deploying-an-experiment"></a>実験のデプロイ
-
 **予測実験を既にクラシック Web サービスとしてデプロイしている場合、それを新しい (Azure Resource Manager ベースの) Web サービスとしてデプロイすることはできますか?**
 
 いいえ。クラシック Web サービスとして既にデプロイされている実験をデプロイすることはできません。 新しい予測実験を作成して、それを代わりにデプロイする必要があります。
 
-
 ### <a name="importing-and-exporting-data-for-machine-learning"></a>Machine Learning 用データのインポートとエクスポート
-
 **Machine Learning はどのようなデータ ソースをサポートしていますか。**
 
 Machine Learning Studio の実験にデータを読み込むには、3 種類の方法があります。データセットとしてのローカル ファイルのアップロード、モジュールを使用したクラウド データ サービスからのデータのインポート、または別の実験から保存されたデータセットのインポートです。 サポートされているファイル形式の詳細については、[Machine Learning Studio へのトレーニング データのインポート](machine-learning-data-science-import-data.md)に関する記事を参照してください。
 
-
 #### <a name="<a-id="modulelimit"></a>how-large-can-the-data-set-be-for-my-modules?"></a><a id="ModuleLimit"></a>モジュールのデータ セットの大きさはどの程度まで許容されますか。
-
 Machine Learning Studio のモジュールは、一般的に、最大 10 GB の高密度数値データのデータセットをサポートしています。 モジュールが 1 つ以上の入力を受け取る場合は、10 GB はすべての入力サイズの合計です。 インジェストの前に、Hive または Azure SQL Database のクエリ経由で、またはカウントによる学習の前処理によって、より大きなデータセットをサンプリングすることもできます。  
 
 次の種類のデータは、特徴の正規化の際により大きなデータセットに展開でき、10 GB 未満に制限されています。
 
-- スパース
-- カテゴリ
-- 文字列
-- バイナリ データ
+* スパース
+* カテゴリ
+* 文字列
+* バイナリ データ
 
 次のモジュールは、10 GB 未満のデータセットに制限されています。
 
-- 推奨モジュール
-- SMOTE モジュール
-- スクリプト モジュール: R、Python、SQL
-- 出力データ サイズが入力データ サイズを超えるモジュール ("結合"、"特徴ハッシュ" など)。
-- イテレーションの数が非常に大きい場合のクロス検証、調整モデル ハイパーパラメーター、順序回帰、一対全多クラス。
+* 推奨モジュール
+* SMOTE モジュール
+* スクリプト モジュール: R、Python、SQL
+* 出力データ サイズが入力データ サイズを超えるモジュール ("結合"、"特徴ハッシュ" など)。
+* イテレーションの数が非常に大きい場合のクロス検証、調整モデル ハイパーパラメーター、順序回帰、一対全多クラス。
 
 数 GB を超えるデータセットの場合は、ローカル ファイルから直接アップロードするのではなく、Azure Storage または Azure SQL Database にデータをアップロードするか、HDInsight を使用する必要があります。
 
-
-####<a name="<a-id="uploadlimit"></a>what-are-the-limits-for-data-upload?"></a><a id="UploadLimit"></a>データのアップロードの制限は何ですか。
+#### <a name="<a-id="uploadlimit"></a>what-are-the-limits-for-data-upload?"></a><a id="UploadLimit"></a>データのアップロードの制限は何ですか。
 数 GB を超えるデータセットの場合は、ローカル ファイルから直接アップロードするのではなく、Azure Storage または Azure SQL Database にデータをアップロードするか、HDInsight を使用する必要があります。
 
 **Amazon S3 からデータを読み取ることはできますか。**
 
 少量のデータがあり、http URL 経由でこれを公開する場合は、[データのインポート][import-data] モジュールを使用できます。 大量のデータの場合は、まず Azure Storage に転送してから、[データのインポート][import-data] モジュールを使用して実験に取り込みます。
 <!--
+
 <SEE CLOUD DS PROCESS>
 -->
 
@@ -128,11 +116,9 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 イメージの入力機能については、「[Import Images (イメージのインポート)][image-reader]」を参照してください。
 
 ### <a name="modules"></a>モジュール
-
 **探しているアルゴリズム、データ ソース、データ形式、データ変換操作が Azure Machine Learning Studio にありません。どうすればいいでしょうか?**
 
 [ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231) にアクセスすると、機能に関する追跡中の要望をご覧いただけます。 探している機能が既に要求されている場合は、その要求に投票を追加できます。 探している機能が存在しない場合は、新しい要求を作成します。 このフォーラムでの要求の状態も参照できます。 この一覧はこまめに追跡され、機能の提供状況は頻繁に更新されます。 さらに、R と Python の組み込みのサポートを使用して、必要に応じてカスタム変換を作成できます。
-
 
 **既存のコードを Machine Learning Studio に取り込むことはできますか?**
 
@@ -146,9 +132,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 実験では最大 4 つのモジュールを並列実行できます。
 
-
 ### <a name="data-processing"></a>データ処理
-
 **実験内で対話的にデータを視覚化する (R の視覚化以上) 機能はありますか。**
 
 モジュールの出力をクリックすると、データを視覚化し、統計情報を取得できます。
@@ -158,7 +142,6 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 データがブラウザーに送信されると大きくなる可能性があるため、Machine Learning Studio のパフォーマンスが低下しないように、データ サイズが制限されています。 すべてのデータ/結果を表示するには、データをダウンロードし、Excel などのツールを使用することをお勧めします。
 
 ### <a name="algorithms"></a>アルゴリズム
-
 **Machine Learning Studio では既存のどの ML アルゴリズムがサポートされていますか。**
 
 Machine Learning Studio は、拡張性の高い強化された意思決定ツリー、ベイズの推薦システム、ディープ ニューラル ネットワーク、Microsoft Research で開発された意思決定のジャングルなど、最先端のアルゴリズムを提供します。 Vowpal Wabbit のような拡張性が高いオープン ソース機械学習パッケージも含まれます。 Machine Learning Studio は、複数クラスと二項分類、回帰、クラスタリングで、機械学習アルゴリズムをサポートします。 「[Machine Learning Modules (Machine Learning のモジュール)][machine-learning-modules]」の完全な一覧をご覧ください。
@@ -191,7 +174,6 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 現在、新しいカスタム モジュールは R でのみ作成できます。
 
 ### <a name="r-module"></a>R モジュール
-
 **Machine Learning Studio で使用できるのはどの R パッケージですか。**
 
 Machine Learning Studio では現在、400 を超える CRAN R パッケージがサポートされています。対象となるすべてのパッケージが記載された最新の一覧は[こちら](http://az754797.vo.msecnd.net/docs/RPackages.xlsx)です。 また、この一覧を自身で取得する方法については、「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」を参照してください。 必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)でパッケージの名前を指定してください。
@@ -205,36 +187,30 @@ Machine Learning Studio では現在、400 を超える CRAN R パッケージ�
 いいえ。Studio には R 用の REPL 環境はありません。
 
 ### <a name="python-module"></a>Python モジュール
-
 **カスタム Python モジュールを構築することはできますか。**
 
 現在はできません。ただし、1 つまたは複数の [Python スクリプトの実行][python]モジュールを使用して、同じ結果を得ることができます。
 
 **Python 用の REPL 環境はありますか。**
 
-Machine Learning Studio では Jupyter Notebooks を使用できます。 詳細については、「[Introducing Jupyter Notebooks in Azure Machine Learning Studio (Azure Machine Learning Studio への Jupyter Notebook の導入)] (http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)」を参照してください。
+Machine Learning Studio では Jupyter Notebooks を使用できます。 詳細については、「[Introducing Jupyter Notebooks in Azure Machine Learning Studio (Azure Machine Learning Studio への Jupyter Notebook の導入)](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)」を参照してください。
 
 ## <a name="web-service"></a>Web サービス
-
-###<a name="retraining-models-programmatically"></a>モデルをプログラムによって再トレーニングする
-
+### <a name="retraining-models-programmatically"></a>モデルをプログラムによって再トレーニングする
 **プログラムで Machine Learning のモデルを再トレーニングするにはどうすればよいですか?**
 
 再トレーニング API を使用します。 詳細については、「 [プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」を参照してください。 サンプル コードは、「 [Microsoft Azure Maching Learning Retraining Demo (Microsoft Azure Maching Learning 再トレーニング デモ)](https://azuremlretrain.codeplex.com/)」にもあります。
 
 ### <a name="create"></a>作成
-
 **ローカルまたはインターネットに接続していないアプリケーションでモデルをデプロイすることはできますか。**
 
 いいえ。
-
 
 **すべての Web サービスで予測される基本的な遅延はありますか。**
 
  [Azure サブスクリプションの制限](../azure-subscription-service-limits.md)
 
 ### <a name="use"></a>最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、
-
 **バッチ実行サービスと要求応答サービスとして予測モデルを実行するのはいつがいいですか。**
 
 要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスで、実験環境で作成、デプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。 バッチ実行サービス (BES) は、データ レコードのバッチに対して非同期でスコアを付けるためのサービスです。 BES への入力は、RRS で使用されるデータ入力と似ています。 主な違いは、BES が、BLOB サービス、Azure の Table サービス、Azure SQL Database、HDInsight (Hive Query)、HTTP ソースなどのさまざまなソースからレコードのブロックを読み取ることです。 詳細については、「 [How to consume Machine Learning web services (Machine Learning Web サービスを使用する方法)](machine-learning-consume-web-services.md)」をご覧ください。
@@ -263,16 +239,13 @@ RRS の場合は通常、Web サービスの応答に結果が表示されます
 エラー コードと説明の一覧は、「 [Machine Learning Module Error Codes (Machine Learning モジュールのエラー コード)](https://msdn.microsoft.com/library/azure/dn905910.aspx) 」を参照してください。
 
 ## <a name="scalability"></a>拡張性
-
 **Web サービスのスケーラビリティはどれくらいですか。**
 
 現時点では、既定のエンドポイントは 1 つのエンドポイントにつき 20 件の同時 RRS 要求でプロビジョニングされます。 これは、エンドポイントごとに 200 件の同時要求まで拡張でき、「[Web サービスのスケーリング](machine-learning-scaling-webservice.md)」で説明されているように Web サービスごとのエンドポイント数を 10,000 個まで拡張できます。 BES の場合、各エンドポイントは一度に 40 件の要求を処理でき、40 件を超えた要求はキューに登録されます。 これらのキューに登録された要求は、キューから放出されると自動的に実行されます。
 
-
 **R のジョブはノード間に分散されますか。**
 
 いいえ。  
-
 
 **トレーニングに使用できるデータの量はどれくらいですか?**
 
@@ -280,21 +253,20 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 次の種類のデータは、特徴の正規化の際により大きなデータセットに展開でき、10 GB 未満に制限されています。
 
-- スパース
-- カテゴリ
-- 文字列
-- バイナリ データ
+* スパース
+* カテゴリ
+* 文字列
+* バイナリ データ
 
 次のモジュールは、10 GB 未満のデータセットに制限されています。
 
-- 推奨モジュール
-- SMOTE モジュール
-- スクリプト モジュール: R、Python、SQL
-- 出力データ サイズが入力データ サイズを超えるモジュール ("結合"、"特徴ハッシュ" など)。
-- イテレーションの数が非常に大きい場合のクロス検証、調整モデル ハイパーパラメーター、順序回帰、一対全多クラス。
+* 推奨モジュール
+* SMOTE モジュール
+* スクリプト モジュール: R、Python、SQL
+* 出力データ サイズが入力データ サイズを超えるモジュール ("結合"、"特徴ハッシュ" など)。
+* イテレーションの数が非常に大きい場合のクロス検証、調整モデル ハイパーパラメーター、順序回帰、一対全多クラス。
 
 数 GB を超えるデータセットの場合は、ローカル ファイルから直接アップロードするのではなく、Azure Storage または Azure SQL Database にデータをアップロードするか、HDInsight を使用する必要があります。
-
 
 **ベクターのサイズに制限はありますか。**
 
@@ -305,11 +277,9 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 いいえ。  
 
 ## <a name="security-and-availability"></a>セキュリティと可用性
-
 **既定で Web サービスの http エンドポイントにはだれがアクセスできますか? エンドポイントへのアクセスはどのようにして制限できますか?**
 
 Web サービスがデプロイされた後に、そのサービスに対して既定のエンドポイントが作成されます。 既定のエンドポイントは、その API キーを使用して呼び出すことができます。 追加のエンドポイントは、独自のキーを使用して Azure クラシック ポータルから、または Web Service Management API を使用してプログラムにより追加することができます。 Web サービスを呼び出すには、アクセス キーが必要です。 詳細については、「 [Machine Learning Web サービスへの接続](machine-learning-connect-to-azure-machine-learning-web-service.md)」をご覧ください。
-
 
 **Azure ストレージ アカウントが見つからない場合はどうなりますか?**
 
@@ -317,20 +287,16 @@ Machine Learning Studio は、ワークフローを実行する際に中間デ�
 
 誤ってストレージ アカウントを削除した場合は、削除されたストレージ アカウンと同じリージョンに同じ名前のストレージ アカウントを再作成します。 その後、アクセス キーを再同期します。
 
-
 **ストレージ アカウントのアクセス キーの同期が失われてしまった場合はどうなりますか?**
 
 Machine Learning Studio は、ワークフローを実行する際の中間データの格納を、ユーザーが指定した Azure ストレージ アカウントに依存しています。 このストレージ アカウントは、ワークスペースの作成時に Machine Learning Studio に提供され、アクセス キーは、そのワークスペースに関連付けられます。 ワークスペースの作成後にアクセス キーが変更されると、ワークスペースはストレージ アカウントにアクセスできなくなります。 その場合、機能が停止し、そのワークスペース内のすべての実験が失敗します。
 
 ストレージ アカウントのアクセス キーを変更した場合は、Azure クラシック ポータルを使用してワークスペースのアクセス キーを再同期します。  
 
-
 ## <a name="azure-marketplace"></a>Azure Marketplace
-
 [Machine Learning Marketplace でのアプリの公開と使用に関する FAQ](machine-learning-marketplace-faq.md)のページを参照してください。
 
 ## <a name="support-and-training"></a>サポートとトレーニング
-
 **どこで Azure Machine Learning のトレーニングを受講できますか?**
 
 [Azure Machine Learning ドキュメント センター](https://azure.microsoft.com/services/machine-learning/) に、ハウツー ガイドやビデオ チュートリアルが用意されています。 順を追ったハウツー ガイドでは、サービスの概要に加え、データのインポートから、データのクリーニング、予測モデルの構築、Azure Machine Learning を使用した運用環境へのデプロイまで、データ技術のライフ サイクルを説明します。
@@ -346,7 +312,6 @@ Azure Machine Learning のテクニカル サポートを受けるには、「 [
 Azure Machine Learning については、MSDN にコミュニティ フォーラムがあり、ここで、Azure Machine Learning に関連する質問をすることができます。 このフォーラムは Azure Machine Learning チームが監視しています。 [Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)にアクセスしてください。
 
 ## <a name="billing-questions"></a>課金に関する質問
-
 **Machine Learning ではどのように請求が行われますか。**
 
 Azure Machine Learning サービスには、 Machine Learning Studio と Machine Learning Web サービスという 2 つのコンポーネントがあります。
@@ -410,7 +375,6 @@ Machine Learning の Free レベルでは、別個のストレージは必要あ
 Machine Learning サービスはマルチテナント サービスです。バックエンドで使用される実際のコンピューティング リソースの種類はさまざまで、パフォーマンスと予測可能性を向上させるために最適化されます。
 
 ### <a name="management-of-new-web-services"></a>新しい Web サービスの管理
-
 **プランを削除すると、どうなりますか?**
 
 プランはサブスクリプションから削除され、使用量に対して按分計算で課金されます。
@@ -443,9 +407,7 @@ S1、S2、S3 レベルでは、必要なだけインスタンスを追加でき�
 
 インスタンスはサブスクリプションから削除され、使用量に対して按分計算で課金されます。
 
-
 ### <a name="signing-up-for-new-web-services-plans"></a>新しい Web サービス プランへのサインアップ
-
 **プランにサインアップするにはどうすればよいですか?**
 
 課金プランの作成方法は 2 とおりあります。
@@ -475,7 +437,6 @@ Standard S1 レベルから開始して、サービスの使用状況を監視�
 はい。 プランの価格設定はリージョンによって異なります。 Web サービスを別のリージョンにデプロイするときは、そのリージョンに固有のプランを割り当てる必要があります。
 
 ### <a name="new-web-services---overages"></a>新しい Web サービス - 超過料金
-
 **Web サービスの使用量が超過料金に達しているかどうかを確認するには、どうすればよいですか?**
 
 Azure Machine Learning Web サービス ポータルの [プラン] ページで、すべてのプランの使用状況を確認することができます。 ポータルにサインインして、[プラン] メニュー オプションをクリックします。
@@ -497,12 +458,10 @@ BES ワークロードの場合、同じように課金されますが、API ト
 例として、Standard S1 の超過料金の場合を考えてみましょう。それぞれが 500 行で構成されるジョブを毎日 100 個送信し、各ジョブの実行に 0.72 秒かかったとします。1 か月の超過分の費用は、実稼働 API トランザクションの費用が 1.55 ドル (100 ジョブ/日 = 3,100 ジョブ/月 * 0.50 ドル/1K API トランザクション) で、実稼働 API コンピューティング時間の費用は 620 ドル (500 行 * 0.72 秒 * 3,100 ジョブ * 2 ドル/時間) となり、合計は 621.55 ドルになります。
 
 ### <a name="azure-ml-classic-web-services"></a>Azure ML クラシック Web サービス
-
 **従量課金制は現在も利用できますか?**
 はい。クラシック Web サービスは、Azure Machine Learning でも引き続き利用できます。  
 
 ### <a name="azure-machine-learning-free-and-standard-tier"></a>Azure Machine Learning の Free および Standard レベル
-
 **Azure Machine Learning の Free レベルには何が含まれますか?**
 
 Azure Machine Learning の Free レベルは、Azure Machine Learning Studio を深く体験していただくためのものです。 サインアップに必要なのは、Microsoft アカウントだけです。 Free レベルには、 [Microsoft アカウント](https://www.microsoft.com/account/default.aspx)1 つにつき 1 つの Azure Machine Learning Studio ワークスペースへの無料アクセスが含まれます。 最大 10 GB のストレージを使用することができ、モデルをステージング API として運用できます。 Free レベルのワークロードは SLA の対象外であり、開発や個人用の目的にのみ使用されます。 Free レベルのワークロードは、オンプレミスの SQL サーバーに接続してデータにアクセスすることはできません。
@@ -519,8 +478,8 @@ Azure ML API サービスの請求額は、クラシック Web サービスか�
 * スタジオ実験時間 - ML Studio での実験の実行と、ステージング環境での実稼働 API 呼び出しの実行により発生したすべてのコンピューティング料金が、このメーターに集計されます。
 * トレーニングとスコア付けのため、モデル内でオンプレミスの SQL サーバーに接続することによるデータ アクセス。
 * クラシック Web サービスの場合:
-    * 実稼働 API のコンピューティング時間 - 運用環境で実行されている Web サービスにより発生するコンピューティング料金が、このメーターに含まれます。
-    * 実稼働 API トランザクション (1,000 件) - 実働 Web サービスの呼び出しごとに発生する料金が、このメーターに含まれます。
+  * 実稼働 API のコンピューティング時間 - 運用環境で実行されている Web サービスにより発生するコンピューティング料金が、このメーターに含まれます。
+  * 実稼働 API トランザクション (1,000 件) - 実働 Web サービスの呼び出しごとに発生する料金が、このメーターに含まれます。
 
 上記の料金とは別に、新しい Web サービスの場合は選択したプランに以下の各料金が集計されます。
 
@@ -529,7 +488,6 @@ Azure ML API サービスの請求額は、クラシック Web サービスか�
 * Standard S1/S2/S3 超過 API トランザクション (1,000 件) - このメーターには、既存のインスタンスに含まれる数量を使い切った後、新しい実稼働 Web サービスの呼び出しごとに発生する料金が含まれます。 追加の使用量は、S1/S2/S3 プラン レベルに関連付けられている超過料金で請求されます。
 * 含まれる API コンピューティング時間の数量 - 新しい Web サービスでは、このメーターは含まれる API コンピューティング時間の数量を表します。
 * 含まれる API トランザクションの数量 (1,000 件) - 新しい Web サービスでは、このメーターは含まれる API トランザクションの数量を表します。
-
 
 **Azure ML Free レベルにサインアップするには、どうすればよいですか?**
 
@@ -557,15 +515,14 @@ Standard ML ワークスペースを作成するには、まず Azure サブス�
 
 Free レベルから Standard レベルに実験をコピーするには:
 
-1.  Azure Machine Learning Studio にログインし、最上部のナビゲーション バーのワークスペース セレクターに Free ワークスペースと Standard ワークスペースの両方が表示されていることを確認します。
-2.  Standard ワークスペースが選択されている場合は、Free ワークスペースに切り替えます。
-3.  コピーする実験を実験リスト ビューで選択し、[Copy (コピー)] コマンド ボタンをクリックします。
-4.  ポップアップ ダイアログ ボックスから Standard ワークスペースを選択し、[Copy (コピー)] ボタンをクリックします。
-    すべての関連するデータセット、学習済みモデルなどが、実験と共に Standard ワークスペースにコピーされます。
-6.  Standard ワークスペースで、実験を再実行し、Web サービスを再発行することが必要です。
+1. Azure Machine Learning Studio にログインし、最上部のナビゲーション バーのワークスペース セレクターに Free ワークスペースと Standard ワークスペースの両方が表示されていることを確認します。
+2. Standard ワークスペースが選択されている場合は、Free ワークスペースに切り替えます。
+3. コピーする実験を実験リスト ビューで選択し、[Copy (コピー)] コマンド ボタンをクリックします。
+4. ポップアップ ダイアログ ボックスから Standard ワークスペースを選択し、[Copy (コピー)] ボタンをクリックします。
+   すべての関連するデータセット、学習済みモデルなどが、実験と共に Standard ワークスペースにコピーされます。
+5. Standard ワークスペースで、実験を再実行し、Web サービスを再発行することが必要です。
 
 ### <a name="studio-workspace"></a>Studio ワークスペース
-
 **ワークスペースが異なると、表示される請求内容も異なりますか?**
 
 ワークスペースの料金は、1 件の請求で適用可能なメーターごとに別々に表示されます。
@@ -575,7 +532,6 @@ Free レベルから Standard レベルに実験をコピーするには:
 Machine Learning サービスはマルチテナント サービスです。バックエンドで使用される実際のコンピューティング リソースの種類はさまざまで、パフォーマンスと予測可能性を向上させるために最適化されます。
 
 ### <a name="guest-access"></a>ゲスト アクセス
-
 **Azure Machine Learning Studio に対するゲスト アクセスとは何ですか?**
 
 ゲスト アクセスとは機能が制限された試用版エクスペリエンスであり、費用をかけず、認証もせずに、Azure Machine Learning Studio で実験を作成して実行できます。 ゲスト セッションは非永続で保存ができず、利用できる時間は 8 時間に制限されます。 他にも、R と Python がサポートされていない、ステージング API がない、データセットのサイズとストレージの容量が制限されている、などの制限事項があります。 一方 Microsoft アカウントでサインインしたユーザーの場合には、前述した Machine Learning Studio の Free レベルへのフル アクセスが提供され、永続ワークスペースやさらに包括的な機能を使用できます。 **https://studio.azureml.net** の [[Get started (開始)]](https://studio.azureml.net)をクリックして [Guest Access (ゲスト アクセス)] または [Sign In with Microsoft account (Microsoft アカウントでサインイン)] を選択し、無料の Machine Learning の機能をお試しください。

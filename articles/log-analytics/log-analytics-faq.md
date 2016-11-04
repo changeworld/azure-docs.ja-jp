@@ -1,28 +1,25 @@
-<properties
-    pageTitle="Log Analytics についてよく寄せられる質問 | Microsoft Azure"
-    description="Log Analytics サービスについてよく寄せられる質問とその回答"
-    services="log-analytics"
-    documentationCenter=""
-    authors="bandersmsft"
-    manager="jwhit"
-    editor=""/>
+---
+title: Log Analytics についてよく寄せられる質問 | Microsoft Docs
+description: Log Analytics サービスについてよく寄せられる質問とその回答
+services: log-analytics
+documentationcenter: ''
+author: bandersmsft
+manager: jwhit
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/10/2016"
-    ms.author="banders"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/10/2016
+ms.author: banders
 
-
+---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
-
 この Microsoft FAQ は、Microsoft Operations Management Suite (OMS) の Log Analytics についてよく寄せられる質問の一覧です。 Log Analytics に関して他に不明な点がある場合は、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) にアクセスして、質問を投稿してください。 コミュニティのメンバーから回答を得ることができます。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
 ## <a name="general"></a>全般
-
 **Q.AD および SQL Assessment ソリューションでは、どのようなチェックが行われますか?**
 
 A.いいえ。 次のクエリは、現在実行されているすべてのチェックの説明を示します。
@@ -58,7 +55,7 @@ A.いいえ。 Log Analytics サービスは Azure に基づいて構築され�
 
 **Q.Azure への接続に ExpressRoute を使用しています。Log Analytics トラフィックは、この ExpressRoute 接続を使用するでしょうか?**  
 
-A.いいえ。 各種の ExpressRoute トラフィックについては、[ExpressRoute のドキュメント](./expressroute/expressroute-faqs.md#supported-services)を参照してください。
+A.いいえ。 各種の ExpressRoute トラフィックについては、[ExpressRoute のドキュメント](../expressroute/expressroute-faqs.md#supported-services)を参照してください。
 
 Log Analytics へのトラフィックには、パブリックピアリング ExpressRoute 回路が使用されます。
 
@@ -90,7 +87,6 @@ A: SCOM で、OMS 管理対象一覧からコンピューターを削除しま�
 **[Azure Log Analytics (OMS)]**に表示されているすべてのワークスペースを削除します。
 
 ## <a name="agent-data"></a>エージェント データ
-
 **Q.エージェント経由で Log Analytics に送信できるデータ量はどのくらいですか?顧客ごとのデータ量の上限はありますか?**  
 A.いいえ。 無料プランには、1 つのワークスペースにつき 1 日 500 MB という上限があります。 Standard プランと Premium プランの場合、アップロードされるデータ量に上限はありません。 OMS の Log Analytics はクラウド サービスであり、お客様から送信されるデータ量が 1 日に TB (テラバイト) 単位であったとしても、そのデータ量に合わせて自動的にスケールアップされるように設計されています。
 
@@ -106,9 +102,9 @@ A.いいえ。 帯域幅は、送信されるデータ量に関する機能で�
 
 A.いいえ。 次の条件によって大きく変わります。
 
-- 有効にしているソリューション
-- 収集しているログとパフォーマンス カウンターの数
-- ログのデータ量
+* 有効にしているソリューション
+* 収集しているログとパフォーマンス カウンターの数
+* ログのデータ量
 
 いくつかのサーバーをデプロイし、一般的なデータ量を計測する場合は、無料価格レベルがお勧めします。 全体的な使用状況は **[使用状況]** ページに表示されます。
 WireData エージェントを実行できるコンピューターの場合、次のクエリを使用して、送信されているデータ量を確認できます。
@@ -120,10 +116,7 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 
 
 ## <a name="next-steps"></a>次のステップ
-
-- [Log Analytics の起動と開始](log-analytics-get-started.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。
-
-
+* [Log Analytics の起動と開始](log-analytics-get-started.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,22 +1,21 @@
-<properties
-   pageTitle="Reliable Actors のイベント | Microsoft Azure"
-   description="Service Fabric Reliable Actors のイベントの概要"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="vturecek"
-   manager="timlt"
-   editor=""/>
+---
+title: Reliable Actors のイベント | Microsoft Docs
+description: Service Fabric Reliable Actors のイベントの概要
+services: service-fabric
+documentationcenter: .net
+author: vturecek
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/30/2016"
-   ms.author="amanbha"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/30/2016
+ms.author: amanbha
 
-
+---
 # アクター イベント
 アクター イベントは、アクターからクライアントにベスト エフォート通知を送信する方法を提供します。アクター イベントは、アクターとクライアントの通信用に設計されており、アクター間の通信には使用できません。
 
@@ -73,9 +72,9 @@ ev.GameScoreUpdated(Id.GetGuidId(), score);
 ```
 
 ## 次のステップ
- - [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
- - [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
- - [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [コード サンプル](https://github.com/Azure/servicefabric-samples)
+* [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
+* [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
+* [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [コード サンプル](https://github.com/Azure/servicefabric-samples)
 
 <!---HONumber=AcomDC_0907_2016-->

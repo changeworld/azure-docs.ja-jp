@@ -1,7 +1,7 @@
 **基本的な Data Lake Analytics のプロセス:**
-	
+
 ![Azure Data Lake Analytics プロセスのフロー図](./media/data-lake-analytics-basic-process-include/data-lake-analytics-process.png)
-	
+
 1. Data Lake Analytics アカウントを作成します。
 2. ソース データを準備します。Data Lake Analytic ジョブでは、Azure Data Lake Store アカウントまたは Azure Blob Storage アカウントからデータを読み取ることができます。
 3. U-SQL スクリプトを開発します。

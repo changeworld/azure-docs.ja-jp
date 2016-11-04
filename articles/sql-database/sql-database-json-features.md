@@ -1,25 +1,22 @@
-<properties
-	pageTitle="Azure SQL Database の JSON 機能 | Microsoft Azure"
-	description="Azure SQL Database では、JavaScript Object Notation (JSON) 表記法でデータを解析、照会および書式設定できます。"
-	services="sql-database"
-	documentationCenter=""
-	authors="jovanpop-msft"
-	manager="jhubbard"
-	editor=""/>
+---
+title: Azure SQL Database の JSON 機能 | Microsoft Docs
+description: Azure SQL Database では、JavaScript Object Notation (JSON) 表記法でデータを解析、照会および書式設定できます。
+services: sql-database
+documentationcenter: ''
+author: jovanpop-msft
+manager: jhubbard
+editor: ''
 
-<tags
-	ms.service="sql-database"
-	ms.devlang="NA"
-	ms.date="08/17/2016"
-	ms.author="jovanpop"
-   ms.workload="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"/>
+ms.service: sql-database
+ms.devlang: NA
+ms.date: 08/17/2016
+ms.author: jovanpop
+ms.workload: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
 
-
-
+---
 # Azure SQL Database の JSON 機能の概要
-
 Azure SQL Database では、JavaScript Object Notation [(JSON)](http://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。
 
 JSON は、最新の Web およびモバイル アプリケーションのデータを交換するために使用される一般的なデータ形式です。また、JSON は、ログ ファイルや [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) のような NoSQL データベースに半構造化データを格納するためにも使用されます。多くの REST Web サービスは、JSON テキストとして書式設定された結果を返したり、JSON 形式のデータを受け入れたりします。[Azure Search](https://azure.microsoft.com/services/search/)、[Azure Storage](https://azure.microsoft.com/services/storage/)、および [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) などの多くの Azure サービスには、JSON を返したり、使用したりする REST エンドポイントがあります。
@@ -27,7 +24,6 @@ JSON は、最新の Web およびモバイル アプリケーションのデー
 Azure SQL Database では、JSON データを簡単に操作し、データベースを最新のサービスと統合することができます。
 
 ## Overview
-
 Azure SQL Database には、JSON データを操作するために、次の関数が用意されています。
 
 ![JSON 関数](./media/sql-database-json-features/image_1.png)
@@ -84,10 +80,10 @@ FOR JSON 句の主な値を使用すると、入れ子になった JSON オブ�
 
 ```
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
-		Orders.OrderID, Orders.OrderDate, Orders.ExpectedDeliveryDate
+        Orders.OrderID, Orders.OrderDate, Orders.ExpectedDeliveryDate
 from Sales.Customers Customer
-	join Sales.Orders Orders
-		on Customer.CustomerID = Orders.CustomerID
+    join Sales.Orders Orders
+        on Customer.CustomerID = Orders.CustomerID
 where Customer.CustomerID = 931
 FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
 
@@ -109,7 +105,6 @@ Customer データを取得して、関連する Orders のリストを取得す
 ```
 
 ## JSON データの使用
-
 厳密に構造化されたデータがない場合、複雑なサブオブジェクト、配列、または階層データがある場合、またはデータ構造が時間と共に進化する場合、JSON 形式を使うと、すべての複雑なデータ構造を表すことができます。
 
 JSON は、Azure SQL Database の他の文字列型のように使用できるテキスト形式です。JSON データは、標準の NVARCHAR として送信または格納することができます。
@@ -123,8 +118,8 @@ CREATE TABLE Products (
 go
 CREATE PROCEDURE InsertProduct(@title nvarchar(200), @json nvarchar(max))
 AS BEGIN
-	insert into Products(Title, Data)
-	values(@title, @json)
+    insert into Products(Title, Data)
+    values(@title, @json)
 END
 ```
 
@@ -137,7 +132,6 @@ EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","childr
 また、Azure SQL Database の文字列データを操作する任意のクライアント側の言語またはライブラリも、JSON データを操作することができます。JSON は、メモリ最適化テーブルやシステム バージョン管理されたテーブルなど、NVARCHAR 型をサポートする任意のテーブルに格納できます。JSON は、クライアント側のコードまたはデータベース層のいずれにも、既存の制約を導入しません。
 
 ## JSON データをクエリする
-
 Azure SQL テーブルに格納された JSON 形式のデータがある場合、JSON 関数では、このデータを任意の SQL クエリで使用できます。
 
 Azure SQL Database で使用可能な JSON 関数を使用すると、JSON 形式のデータを他の SQL データ型として処理できます。JSON テキストから簡単に値を抽出し、任意のクエリで JSON データを使用できます。
@@ -163,13 +157,12 @@ JSON は標準テキストで格納されるため、値が適切に書式設定
 ```
 ALTER TABLE Products
     ADD CONSTRAINT [Data should be formatted as JSON]
-		CHECK (ISJSON(Data) > 0)
+        CHECK (ISJSON(Data) > 0)
 ```
 
 入力テキストが適切な JSON 形式である場合、ISJSON 関数は値 1 を返します。JSON 列を挿入または更新するたびに、この制約は新しいテキスト値が無効な形式の JSON ではないことを確認します。
 
 ## JSON を表形式に変換する
-
 Azure SQL Database では、JSON コレクションを表形式の書式設定に変換し、JSON データの読み込みまたはクエリを行うこともできます。
 
 OPENJSON は、テーブル値関数です。この関数は、JSON テキストの解析、JSON オブジェクトの配列の検索、配列の要素の反復処理、および配列の各要素の出力結果に 1 行を返す操作を行うことができます。
@@ -184,27 +177,26 @@ OPENJSON は、テーブル値関数です。この関数は、JSON テキスト
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))
 AS BEGIN
 
-	insert into Orders(Number, Date, Customer, Quantity)
-	select Number, Date, Customer, Quantity
-	OPENJSON (@orders)
-	 WITH (
-			Number varchar(200),
-			Date datetime,
-			Customer varchar(200),
-			Quantity int
-	 )
+    insert into Orders(Number, Date, Customer, Quantity)
+    select Number, Date, Customer, Quantity
+    OPENJSON (@orders)
+     WITH (
+            Number varchar(200),
+            Date datetime,
+            Customer varchar(200),
+            Quantity int
+     )
 
 END
 ```
 JSON 配列として書式設定され、ストアド プロシージャにパラメーターとして指定される orders のコレクションは、解析され、Orders テーブルに挿入することができます。
 
 ## 次のステップ
-
 アプリケーションに JSON を統合する方法については、次のリソースを確認してください。
 
-- [TechNet のブログ](https://blogs.technet.microsoft.com/dataplatforminsider/2016/01/05/json-in-sql-server-2016-part-1-of-4/)
-- [MSDN のドキュメント](https://msdn.microsoft.com/library/dn921897.aspx)
-- [Channel 9 のビデオ](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
+* [TechNet のブログ](https://blogs.technet.microsoft.com/dataplatforminsider/2016/01/05/json-in-sql-server-2016-part-1-of-4/)
+* [MSDN のドキュメント](https://msdn.microsoft.com/library/dn921897.aspx)
+* [Channel 9 のビデオ](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
 JSON をアプリケーションに統合するためのさまざまなシナリオの詳細については、この [Channel 9 のビデオ](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)のデモを参照するか、[JSON のブログの投稿](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)でお客様のユース ケースに一致するシナリオを見つけてください。
 

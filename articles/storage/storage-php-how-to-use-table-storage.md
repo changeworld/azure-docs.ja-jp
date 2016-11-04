@@ -1,49 +1,42 @@
-<properties
-    pageTitle="PHP から Table ストレージを使用する方法 | Microsoft Azure"
-    description="PHP から Table サービスを使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。"
-    services="storage"
-    documentationCenter="php"
-    authors="tamram"
-    manager="carmonm"
-    editor="tysonn"/>
+---
+title: PHP から Table ストレージを使用する方法 | Microsoft Docs
+description: PHP から Table サービスを使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。
+services: storage
+documentationcenter: php
+author: tamram
+manager: carmonm
+editor: tysonn
 
-<tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="php"
-    ms.topic="article"
-    ms.date="10/18/2016"
-    ms.author="tamram"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: php
+ms.topic: article
+ms.date: 10/18/2016
+ms.author: tamram
 
-
-
+---
 # <a name="how-to-use-table-storage-from-php"></a>PHP から Table ストレージを使用する方法
+[!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-<br/>
-[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Overview
-
 このガイドでは、Azure Table サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP][download]を利用しています。 紹介するシナリオは、 **テーブルの作成と削除、テーブルのエンティティの挿入、削除、および照会**などです。 Azure Table サービスの詳細については、「 [次のステップ](#next-steps) 」を参照してください。
 
-[AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
-
 Azure Table サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から Azure SDK for PHP のクラスを参照することのみです。 アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
 
 このガイドで使用する Table サービス機能は、PHP アプリケーション内からローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
 
 ## <a name="get-the-azure-client-libraries"></a>Azure クライアント ライブラリの入手
-
-[AZURE.INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
+[!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
 ## <a name="configure-your-application-to-access-the-table-service"></a>Table サービスにアクセスするようにアプリケーションを構成する
-
 Azure Table サービス API を使用するには、次の要件があります。
 
 1. [require_once][require_once] ステートメントを使用してオートローダー ファイルを参照します。
@@ -51,7 +44,10 @@ Azure Table サービス API を使用するには、次の要件があります
 
 次の例では、オートローダー ファイルをインクルードし、 **ServicesBuilder** クラスを参照する方法を示しています。
 
-> [AZURE.NOTE] この例 (とこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。 ライブラリを手動でインストールした場合は、 <code>WindowsAzure.php</code> オートローダー ファイルを参照する必要があります。
+> [!NOTE]
+> この例 (とこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。 ライブラリを手動でインストールした場合は、 <code>WindowsAzure.php</code> オートローダー ファイルを参照する必要があります。
+> 
+> 
 
     require_once 'vendor/autoload.php';
     use WindowsAzure\Common\ServicesBuilder;
@@ -60,7 +56,6 @@ Azure Table サービス API を使用するには、次の要件があります
 下のすべてのサンプルに `require_once` ステートメントが入っていますが、サンプルの実行に必要なクラスのみが参照されます。
 
 ## <a name="set-up-an-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
-
 Azure Table サービス クライアントをインスタンス化するには、まず有効な接続文字列が必要です。 Table サービスの接続文字列の形式は次のとおりです。
 
 ライブ サービスにアクセスする場合:
@@ -76,8 +71,8 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 * 接続文字列を直接渡す
 * **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
-    * 既定では 1 つの外部ソース (環境変数) のみサポートされています。
-    * **ConnectionStringSource** クラスを継承して新しいソースを追加できます。
+  * 既定では 1 つの外部ソース (環境変数) のみサポートされています。
+  * **ConnectionStringSource** クラスを継承して新しいソースを追加できます。
 
 ここで概説している例では、接続文字列を直接渡します。
 
@@ -89,7 +84,6 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 
 ## <a name="create-a-table"></a>テーブルを作成する
-
 **TableRestProxy** オブジェクトの **createTable** メソッドを使用してテーブルを作成できます。 テーブルの作成時、Table サービスのタイムアウトを設定できます  (Table service のタイムアウトの詳細については、「[Table service 操作のタイムアウトの設定][table-service-timeouts]」を参照)。
 
     require_once 'vendor\autoload.php';
@@ -115,7 +109,6 @@ Azure Table サービス クライアントをインスタンス化するには�
 テーブル名の制限については、「[Table service データ モデルについて][table-data-model]」をご覧ください。
 
 ## <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
-
 エンティティをテーブルに追加するには、新しい **Entity** オブジェクトを作成し、**TableRestProxy->insertEntity** に渡します。 エンティティの作成時には `PartitionKey` と `RowKey` を指定する必要があることに注意してください。 これらにはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。 システムでは `PartitionKey` が使用されて多くのストレージ ノードにテーブルのエンティティが自動的に配布されます。 `PartitionKey` が同じエンティティは同じノードで格納されています (同じノードで格納されている複数のエンティティに対する処理は、異なるノードにまたがって格納されているエンティティに対する処理よりもパフォーマンスは高くなります)。`RowKey` は特定のパーティション内のエンティティの一意の ID です。
 
     require_once 'vendor/autoload.php';
@@ -192,7 +185,6 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 
 ## <a name="retrieve-a-single-entity"></a>単一のエンティティを取得する
-
 **TableRestProxy->getEntity`RowKey` メソッドを使用して、その ** と `PartitionKey` を照会することで、1 つのエンティティを取得できます。 次の例では、パーティション キー `tasksSeattle` と行キー `1` を **getEntity** メソッドに渡しています。
 
     require_once 'vendor/autoload.php';
@@ -220,7 +212,6 @@ Azure Table サービス クライアントをインスタンス化するには�
     echo $entity->getPartitionKey().":".$entity->getRowKey();
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>パーティション内のすべてのエンティティを取得する
-
 エンティティのクエリはフィルターを使用して作成します (詳細については「[テーブルおよびエンティティのクエリ][filters]」を参照)。 パーティション内のすべてのエンティティを取得するには、フィルター "PartitionKey eq *partition_name*" を使用します。 次の例では、フィルターを **queryEntities** メソッドに渡すことで、`tasksSeattle` パーティション内のすべてのエンティティを取得する方法を示しています。
 
     require_once 'vendor/autoload.php';
@@ -252,7 +243,6 @@ Azure Table サービス クライアントをインスタンス化するには�
     }
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>パーティション内のエンティティのサブセットを取得する
-
 前の例で示している同じパターンを使用してパーティション内のエンティティのサブセットを取得できます。 取得するエンティティのサブセットは、使用するフィルターによって決まります (詳細については、「[テーブルおよびエンティティのクエリ][filters]」を参照)。次の例では、フィルターを使用して、`Location` が指定した場所でかつ `DueDate` が指定した日付より前のエンティティをすべて取得する方法を示しています。
 
     require_once 'vendor/autoload.php';
@@ -284,7 +274,6 @@ Azure Table サービス クライアントをインスタンス化するには�
     }
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを取得する
-
 クエリを使用してエンティティのプロパティのサブセットを取得できます。 *プロジェクション*と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。 取得するプロパティを指定するには、プロパティの名前を **Query->addSelectField** メソッドに渡します。 このメソッドを複数回呼び出して、ほかのプロパティを追加できます。 **TableRestProxy->queryEntities** の実行後、返されるエンティティには選択したプロパティのみ格納されています。 (テーブル エンティティのサブセットが返されるようにする場合は、前のクエリで示したようにフィルターを使用します)。
 
     require_once 'vendor/autoload.php';
@@ -322,7 +311,6 @@ Azure Table サービス クライアントをインスタンス化するには�
     }
 
 ## <a name="update-an-entity"></a>エンティティを更新する
-
 既存のエンティティは、エンティティの **Entity->setProperty** および **Entity->addProperty** メソッドを使用した後、**TableRestProxy->updateEntity** を呼び出すことで更新できます。 次の例では、エンティティを取得してから、1 つのプロパティの変更、別のプロパティの削除、新しいプロパティの追加を行っています。 プロパティの値を **null**に設定して、プロパティを削除できることに注意してください。
 
     require_once 'vendor/autoload.php';
@@ -358,7 +346,6 @@ Azure Table サービス クライアントをインスタンス化するには�
     }
 
 ## <a name="delete-an-entity"></a>エンティティを削除する
-
 エンティティを削除するには、テーブル名、およびエンティティの `PartitionKey` と `RowKey` を **TableRestProxy->deleteEntity** メソッドに渡します。
 
     require_once 'vendor/autoload.php';
@@ -385,7 +372,6 @@ Azure Table サービス クライアントをインスタンス化するには�
 同時実行のチェック用に、削除するエンティティの Etag を設定できることに注意してください。そのためには、**DeleteEntityOptions->setEtag** メソッドを使用して、**DeleteEntityOptions** オブジェクトを 4 番目のパラメーターとして **deleteEntity** に渡します。
 
 ## <a name="batch-table-operations"></a>バッチ テーブル処理
-
 **TableRestProxy->batch** メソッドを使用すると、1 つの要求で複数の処理を実行できます。 ここで示しているパターンでは、処理を **BatchRequest** オブジェクトに追加し、**BatchRequest** オブジェクトを **TableRestProxy->batch** メソッドに渡しています。 処理を **BatchRequest** オブジェクトに追加するには、次のいずれかのメソッドを複数回呼び出すことができます。
 
 * **addInsertEntity** (insertEntity 処理を追加)
@@ -441,7 +427,6 @@ Azure Table サービス クライアントをインスタンス化するには�
 テーブル バッチ処理の詳細については、「[エンティティ グループ トランザクションの実行][entity-group-transactions]」をご覧ください。
 
 ## <a name="delete-a-table"></a>テーブルを削除する
-
 最後に、テーブルを削除するには、テーブル名を **TableRestProxy->deleteTable** メソッドに渡します。
 
     require_once 'vendor/autoload.php';
@@ -466,10 +451,9 @@ Azure Table サービス クライアントをインスタンス化するには�
     }
 
 ## <a name="next-steps"></a>次のステップ
-
 これで、Azure Table サービスの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
-- [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
 詳細については、 [PHP デベロッパー センター](/develop/php/)も参照してください。
 

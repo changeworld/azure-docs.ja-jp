@@ -8,55 +8,49 @@ Java または PHP を使用する場合は、「[How to use Notification Hubs f
 「[Notification Hubs の使用][get-started]」を実行したときに、通知を送信するためにコンソール アプリケーションを作成した場合は、ステップ 1. ～ 3. はスキップします。
 
 1. Visual Studio で、Visual C# の新しいコンソール アプリケーションを作成します。 
-
-   	![][13]
-
+   
+       ![][13]
 2. Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックし、コンソール ウィンドウで次のコマンドを入力して、**Enter** キーを押します。
-
+   
         Install-Package Microsoft.Azure.NotificationHubs
- 	
-	これにより <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet パッケージ</a>を利用して Azure Notification Hubs SDK に参照が追加されます。
-
+   
+    これにより <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet パッケージ</a>を利用して Azure Notification Hubs SDK に参照が追加されます。
 3. Program.cs ファイルを開き、次の `using` ステートメントを追加します。
-
+   
         using Microsoft.Azure.NotificationHubs;
-
 4. `Program` クラス内で、次のメソッドを追加するか、既にメソッドが指定されている場合は置き換えます。
-
+   
         private static async void SendTemplateNotificationAsync()
         {
-			// Define the notification hub.
-		    NotificationHubClient hub = 
-				NotificationHubClient.CreateClientFromConnectionString(
-					"<connection string with full access>", "<hub name>");
-
+            // Define the notification hub.
+            NotificationHubClient hub = 
+                NotificationHubClient.CreateClientFromConnectionString(
+                    "<connection string with full access>", "<hub name>");
+   
             // Create an array of breaking news categories.
             var categories = new string[] { "World", "Politics", "Business", 
-											"Technology", "Science", "Sports"};
-
+                                            "Technology", "Science", "Sports"};
+   
             // Sending the notification as a template notification. All template registrations that contain 
-			// "messageParam" and the proper tags will receive the notifications. 
-			// This includes APNS, GCM, WNS, and MPNS template registrations.
-
+            // "messageParam" and the proper tags will receive the notifications. 
+            // This includes APNS, GCM, WNS, and MPNS template registrations.
+   
             Dictionary<string, string> templateParams = new Dictionary<string, string>();
-
+   
             foreach (var category in categories)
             {
                 templateParams["messageParam"] = "Breaking " + category + " News!";            
                 await hub.SendTemplateNotificationAsync(templateParams, category);
             }
-		 }
-
-	このコードでは、文字列の配列の 6 つのタグのそれぞれに対するテンプレート通知が送信されます。タグを使用することで、デバイスは登録されているカテゴリに関する通知のみを確実に受信できます。
-
-6. 上のコード内で、`<hub name>` および `<connection string with full access>` プレースホルダーを、通知ハブの名前と通知ハブのダッシュボードの *DefaultFullSharedAccessSignature* の接続文字列に置き換えます。
-
-7. **Main** メソッド内に、次の行を追加します。
-
+         }
+   
+    このコードでは、文字列の配列の 6 つのタグのそれぞれに対するテンプレート通知が送信されます。タグを使用することで、デバイスは登録されているカテゴリに関する通知のみを確実に受信できます。
+5. 上のコード内で、`<hub name>` および `<connection string with full access>` プレースホルダーを、通知ハブの名前と通知ハブのダッシュボードの *DefaultFullSharedAccessSignature* の接続文字列に置き換えます。
+6. **Main** メソッド内に、次の行を追加します。
+   
          SendTemplateNotificationAsync();
-		 Console.ReadLine();
-
-8. コンソール アプリケーションをビルドします。
+         Console.ReadLine();
+7. コンソール アプリケーションをビルドします。
 
 <!-- Anchors -->
 [From a console app]: #console

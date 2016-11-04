@@ -1,22 +1,21 @@
-<properties
-	pageTitle="Azure AD Connect Sync: 既定の構成を変更する方法 | Microsoft Azure"
-	description="Azure AD Connect Sync の構成に変更する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="andkjell"
-	manager="femila"
-	editor=""/>
+---
+title: 'Azure AD Connect Sync: 既定の構成を変更する方法 | Microsoft Docs'
+description: Azure AD Connect Sync の構成に変更する方法について説明します。
+services: active-directory
+documentationcenter: ''
+author: andkjell
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/31/2016"
-	ms.author="andkjell"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/31/2016
+ms.author: andkjell
 
-
+---
 # Azure AD Connect Sync: 既定の構成を変更する方法
 このトピックの目的は、Azure AD Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
 
@@ -43,16 +42,15 @@
 ![Disable the scheduler](./media/active-directory-aadconnectsync-change-the-configuration/schedulerdisable.png)
 
 ### 規則を作成する
-
 1. **Add new rule (新しい規則の追加)** をクリックします。
 2. **[説明]** ページで、次のように入力します。![Inbound rule filtering](./media/active-directory-aadconnectsync-change-the-configuration/description2.png)
-	- 名前: 規則にわかりやすい名前を付けます。
-	- 説明: 規則の目的が他のユーザーにもわかるように説明します。
-	- Connected system (接続されたシステム): オブジェクトがあるシステムです。この場合、Active Directory コネクタを選択します。
-	- Connected System/Metaverse Object Type (接続されたシステム/メタバース オブジェクトの種類): それぞれ **[ユーザー]** と **[Person (人)]** を選択します。
-	- リンクの種類: この値を **[結合]** に変更します。
-	- Precedence (優先順位): システム内で一意になる値を指定します。指定する数値が小さいほど、優先順位が高くなることを示します。
-	- タグ: 空のままにします。Microsoft が提供する標準の規則の場合のみ、このボックスには値が設定されています。
+   * 名前: 規則にわかりやすい名前を付けます。
+   * 説明: 規則の目的が他のユーザーにもわかるように説明します。
+   * Connected system (接続されたシステム): オブジェクトがあるシステムです。この場合、Active Directory コネクタを選択します。
+   * Connected System/Metaverse Object Type (接続されたシステム/メタバース オブジェクトの種類): それぞれ **[ユーザー]** と **[Person (人)]** を選択します。
+   * リンクの種類: この値を **[結合]** に変更します。
+   * Precedence (優先順位): システム内で一意になる値を指定します。指定する数値が小さいほど、優先順位が高くなることを示します。
+   * タグ: 空のままにします。Microsoft が提供する標準の規則の場合のみ、このボックスには値が設定されています。
 3. **[Scoping filter (スコープ フィルター)]** ページで、「**givenName ISNOTNULL**」と入力します。![Inbound rule scoping filter](./media/active-directory-aadconnectsync-change-the-configuration/scopingfilter.png) このセクションを使用して、規則を適用するオブジェクトを定義します。空のままにした場合は、すべてのユーザー オブジェクトに規則が適用されます。ただし、それには、会議室、サービス アカウントなど、人以外のユーザー オブジェクトも含まれます。
 4. **[Join rules (結合規則)]** では、空白のままにします。
 5. **[Transformations (変換)]** ページで、[FlowType] を **[式]** に変更します。[Target Attribute (ターゲット属性)] で **[givenName]** を選択し、[Source (ソース)] に「`PCase([givenName])`」と入力します。![Inbound rule transformations](./media/active-directory-aadconnectsync-change-the-configuration/transformations.png) 同期エンジンでは、関数名と属性名の両方で大文字小文字が区別されます。入力した内容が間違っている場合は、規則を追加するときに警告が表示されます。このエディターでは、保存して続行することが可能なため、規則を再度開き、修正する必要があります。
@@ -69,10 +67,10 @@
 [スタート] メニューから **[Synchronization Service (同期サービス)]** を起動します。このセクションの手順はすべて、このツールで行います。
 
 1. **すべてのオブジェクトに対する完全同期** 上部の **[コネクタ]** を選択します。前の手順で変更を加えたコネクタ (この場合は Active Directory ドメイン サービス) を特定して選択します。[Actions (操作)] の **[実行]** を選択し、**[Full Synchronization (完全同期)]**、**[OK]** の順に選択します。![Full sync](./media/active-directory-aadconnectsync-change-the-configuration/fullsync.png)これで、オブジェクトはメタバースで更新されます。次に、メタバースのオブジェクトを確認します。
-
 2. **1 つのオブジェクトに対するプレビューと完全同期** 上部の **[コネクタ]** を選択します。前の手順で変更を加えたコネクタ (この場合は Active Directory ドメイン サービス) を特定して選択します。**[Search Connector Space (コネクタ スペースの検索)]** を選択します。スコープを使用して、変更のテストに使用するオブジェクトを検索します。オブジェクトを選択し、**[プレビュー]** をクリックします。新しい画面で、**[Commit Preview (プレビューのコミット)]** を選択します。![Commit preview](./media/active-directory-aadconnectsync-change-the-configuration/commitpreview.png) これで、変更はメタバースにコミットされました。
 
 **メタバースのオブジェクトを確認する** ここでは、値が要求されていることと規則が適用されたことを確認するために、いくつかのサンプル オブジェクトを選択します。上部の **[Metaverse Search (メタバース検索)]** を選択します。関連するオブジェクトを検索するために必要なフィルターを追加します。検索結果からオブジェクトを開きます。属性値を確認し、**[同期規則]** 列で、規則が適切に適用されていることを確認します。![Metaverse search](./media/active-directory-aadconnectsync-change-the-configuration/mvsearch.png)
+
 ### スケジューラを有効にする
 すべてが想定どおりになったら、もう一度スケジューラを有効にすることができます。PowerShell から、`Set-ADSyncScheduler -SyncCycleEnabled $true` を実行します。
 
@@ -86,14 +84,14 @@ Fabrikam には、地域ごとの特殊文字を名 (given name)、姓 (surname)
 
 他の属性フローで規則を作成するには、次の手順に従います。
 
-- [スタート] メニューから、**同期規則エディター**を起動します。
-- 左側で **[受信]** を選択状態にしたまま、**[Add new rule (新しい規則の追加)]** ボタンをクリックします。
-- 規則の名前と説明を入力します。オンプレミスの Active Directory と該当するオブジェクトの種類を選択します。**[リンクの種類]** で **[結合]** を選択します。優先順位には、他の規則で使われていない数値を選びます。標準の規則は 100 から始まるので、この例では 50 を使用できます。![Attribute flow 2](./media/active-directory-aadconnectsync-change-the-configuration/attributeflowjp2.png)
-- スコープは空に (つまり、フォレスト内のすべてのユーザー オブジェクトに適用) します。
-- 結合規則は空のままに (つまり、標準の規則で結合を処理) します。
-- [Transformations (変換)] で、次のフローを作成します。![Attribute flow 3](./media/active-directory-aadconnectsync-change-the-configuration/attributeflowjp3.png)
-- **[追加]** をクリックして規則を保存します。
-- **Synchronization Service Manager** に移動します。**[コネクタ]** で、先ほど規則を追加したコネクタを選択します。**[実行]** を選択し、**[Full Synchronization (完全同期)]** を選択します。完全同期により、現在の規則を使ってすべてのオブジェクトが再計算されます。
+* [スタート] メニューから、**同期規則エディター**を起動します。
+* 左側で **[受信]** を選択状態にしたまま、**[Add new rule (新しい規則の追加)]** ボタンをクリックします。
+* 規則の名前と説明を入力します。オンプレミスの Active Directory と該当するオブジェクトの種類を選択します。**[リンクの種類]** で **[結合]** を選択します。優先順位には、他の規則で使われていない数値を選びます。標準の規則は 100 から始まるので、この例では 50 を使用できます。![Attribute flow 2](./media/active-directory-aadconnectsync-change-the-configuration/attributeflowjp2.png)
+* スコープは空に (つまり、フォレスト内のすべてのユーザー オブジェクトに適用) します。
+* 結合規則は空のままに (つまり、標準の規則で結合を処理) します。
+* [Transformations (変換)] で、次のフローを作成します。![Attribute flow 3](./media/active-directory-aadconnectsync-change-the-configuration/attributeflowjp3.png)
+* **[追加]** をクリックして規則を保存します。
+* **Synchronization Service Manager** に移動します。**[コネクタ]** で、先ほど規則を追加したコネクタを選択します。**[実行]** を選択し、**[Full Synchronization (完全同期)]** を選択します。完全同期により、現在の規則を使ってすべてのオブジェクトが再計算されます。
 
 このカスタム規則を同じオブジェクトに適用した後の結果は次のとおりです。![Attribute flow 4](./media/active-directory-aadconnectsync-change-the-configuration/attributeflowjp4.png)
 
@@ -119,19 +117,18 @@ Active Directory の一部の属性は、Active Directory ユーザーとコン�
 
 Fabrikam では、クラウドと同期する属性の一部が不要であることに気づきました。不要な属性が Azure AD から削除されるようにする必要があります。![Bad Extension Attributes](./media/active-directory-aadconnectsync-change-the-configuration/badextensionattribute.png)
 
-- 新しい受信同期規則を作成し、説明を入力します。![説明](./media/active-directory-aadconnectsync-change-the-configuration/syncruledescription.png)
-- 種類が **Expression** でソースが **AuthoritativeNull** の属性フローを作成します。リテラル **AuthoritativeNull** は、低い優先度の同期規則が値を設定しようとしても、MV の値は空になることを示します。![Transformation for Extension Attributes](./media/active-directory-aadconnectsync-change-the-configuration/syncruletransformations.png)
-- 同期規則を保存します。**同期サービス**を開始し、[コネクタ] を探して **[実行]**、**[完全同期]** の順に選択します。この手順では、すべての属性フローが再計算されます。
-- コネクタ スペースを検索して、目的の変更がエクスポート対象になっていることを確認します。![段階的な削除](./media/active-directory-aadconnectsync-change-the-configuration/deletetobeexported.png)
+* 新しい受信同期規則を作成し、説明を入力します。![説明](./media/active-directory-aadconnectsync-change-the-configuration/syncruledescription.png)
+* 種類が **Expression** でソースが **AuthoritativeNull** の属性フローを作成します。リテラル **AuthoritativeNull** は、低い優先度の同期規則が値を設定しようとしても、MV の値は空になることを示します。![Transformation for Extension Attributes](./media/active-directory-aadconnectsync-change-the-configuration/syncruletransformations.png)
+* 同期規則を保存します。**同期サービス**を開始し、[コネクタ] を探して **[実行]**、**[完全同期]** の順に選択します。この手順では、すべての属性フローが再計算されます。
+* コネクタ スペースを検索して、目的の変更がエクスポート対象になっていることを確認します。![段階的な削除](./media/active-directory-aadconnectsync-change-the-configuration/deletetobeexported.png)
 
 ## 次のステップ
-
-- この構成モデルについて詳しくは、「[Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
-- 式言語について詳しくは、「[宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
+* この構成モデルについて詳しくは、「[Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
+* 式言語について詳しくは、「[宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
 
 **概要トピック**
 
-- [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
-- [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+* [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
+* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
 <!---HONumber=AcomDC_0914_2016-->

@@ -1,29 +1,29 @@
 
-<properties
-    pageTitle="Azure AD v2.0 OAuth クライアントの資格情報フロー | Microsoft Azure"
-    description="Azure AD で導入された OAuth 2.0 認証プロトコルを利用し、Web アプリケーションを構築します。"
-    services="active-directory"
-    documentationCenter=""
-    authors="dstrockis"
-    manager="msmbaldwin"
-    editor=""/>
+---
+title: Azure AD v2.0 OAuth クライアントの資格情報フロー | Microsoft Docs
+description: Azure AD で導入された OAuth 2.0 認証プロトコルを利用し、Web アプリケーションを構築します。
+services: active-directory
+documentationcenter: ''
+author: dstrockis
+manager: msmbaldwin
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/26/2016"
-    ms.author="dastrock"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: dastrock
 
-
+---
 # <a name="v2.0-protocols---oauth-2.0-client-credentials-flow"></a>v2.0 プロトコル - OAuth 2.0 クライアント資格情報のフロー
-
 [OAuth 2.0 クライアント資格情報の許可](http://tools.ietf.org/html/rfc6749#section-4.4)は、"2 本足のOAuth" とも呼ばれ、アプリケーションの ID を使用する Web ホストのリソースへのアクセスに使用できます。  一般的には、エンドユーザーの即時 precense を使用せずに、バック グラウンドで実行されるサーバー間の相互作用に使用されます。  これらのアプリケーションは、**"デーモン"** または **"サービス アカウント"** と呼ばれます。
 
-> [AZURE.NOTE]
-    Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。  v2.0 エンドポイントを使用する必要があるかどうかを判断するには、 [v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
+> [!NOTE]
+> Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。  v2.0 エンドポイントを使用する必要があるかどうかを判断するには、 [v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
+> 
+> 
 
 より一般的な 3 種類の "三本足の OAuth" では、特定のユーザーに代わり、クライアント アプリケーションにリソースへのアクセス許可が付与されます。  通常、[同意](active-directory-v2-scopes.md)プロセス中に、アクセス許可はユーザーからアプリケーションに**委任**されます。  ただし、クライアントの資格情報のフローでは、アクセス許可はアプリケーション自体に**直接**付与されます。  アプリケーションがリソースにトークンを提示する場合、リソースはアプリ自体がアクションの一部を実行する承認を行います。一部のユーザーが承認を行うわけではありません。
 
@@ -32,7 +32,7 @@
 
 ![クライアントの資格情報フロー](../media/active-directory-v2-flows/convergence_scenarios_client_creds.png)
 
-## <a name="get-direct-authorization"></a>直接承認を取得する 
+## <a name="get-direct-authorization"></a>直接承認を取得する
 通常、アプリからリソースへアクセスするために直接承認を受けるには 2 つの方法があり、リソースのアクセス制御リスト、または Azure AD でのアプリケーション アクセス許可の割り当てを介します。  その他にもリソースがクライアントを承認する方法がいくつかあり、各リソース サーバーはアプリケーションにとって最適な方法を選択します。  これらの 2 つの方法は、Azure AD で最も一般的であり、クライアント資格情報フローを実行するクライアントとリソースリソースに推奨されています。
 
 ### <a name="access-control-lists"></a>アクセス制御リスト
@@ -45,28 +45,25 @@
 ### <a name="application-permissions"></a>アプリケーションのアクセス許可
 ACL を使用する代わりに、API はアプリケーションに付与される **アプリケーションのアクセス許可** を公開できます。  アプリケーションのアクセス許可は、組織の管理者によってアプリケーションに付与され、その組織と従業員が所有するデータにアクセスする場合にのみ使用されます。  たとえば、Microsoft Graph は次のようなアクセス許可を公開しています:
 
-- すべてのメールボックスのメールの読み取り
-- すべてのメールボックスのメールの読み書き
-- 任意のユーザーとしてのメールの送信
-- ディレクトリ データの読み取り
-- [その他](https://graph.microsoft.io)
+* すべてのメールボックスのメールの読み取り
+* すべてのメールボックスのメールの読み書き
+* 任意のユーザーとしてのメールの送信
+* ディレクトリ データの読み取り
+* [その他](https://graph.microsoft.io)
 
 アプリケーションでこれらのアクセス許可を取得するには、次の手順を実行します。
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>アプリケーション登録ポータルでアクセス許可を要求する
-
-- [apps.dev.microsoft.com](https://apps.dev.microsoft.com) に移動して使用しているアプリケーションを選択するか、または、アプリを作成していない場合は[アプリを作成](active-directory-v2-app-registration.md)します。  アプリケーションで少なくとも 1 つのアプリケーション シークレットが作成されていることを確認する必要があります。
-- **アプリケーションの直接アクセス許可** セクションを検索し、アプリに必要なアクセス許可を追加します。
-- アプリの登録を **保存** してください
+* [apps.dev.microsoft.com](https://apps.dev.microsoft.com) に移動して使用しているアプリケーションを選択するか、または、アプリを作成していない場合は[アプリを作成](active-directory-v2-app-registration.md)します。  アプリケーションで少なくとも 1 つのアプリケーション シークレットが作成されていることを確認する必要があります。
+* **アプリケーションの直接アクセス許可** セクションを検索し、アプリに必要なアクセス許可を追加します。
+* アプリの登録を **保存** してください
 
 #### <a name="recommended:-sign-the-user-into-your-app"></a>アプリで、ユーザーのサインインを行うことを推奨します
-
 通常、アプリケーションのアクセス許可を使用するアプリケーションを構築する場合は、アプリ側に管理者がアプリのアクセス許可を承認するページ/表示が必要となります。  このページは、アプリケーションのサインアップ フロー、アプリの設定、専用の "接続" フローに関する内容を含みます。  多くの場合、職場または学校の Microsoft アカウントでユーザーがサインインした後にのみ、”接続" ビューが表示されます。
 
 ユーザーがアプリケーションにサインインすると、アプリケーションのアクセス許可の承認を依頼する前に、ユーザーが所属する組織を識別できます。  必須ではありませんが、組織のユーザーに向けたより直観的なエクスペリエンスの作成に役立ちます。  ユーザーのサインインを行うには、 [v2.0 プロトコル チュートリアル](active-directory-v2-protocols.md)に従ってください。
 
 #### <a name="request-the-permissions-from-a-directory-admin"></a>ディレクトリ管理者にアクセス許可を要求する
-
 会社の管理者にアクセス許可を要求する準備ができたら、ユーザーを v2.0 **管理者の同意エンドポイント**にリダイレクトできます。
 
 ```
@@ -86,12 +83,12 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| パラメーター | | Description |
-| ----------------------- | ------------------------------- | --------------- |
-| テナント | 必須 | アクセス許可を要求するディレクトリ テナント。  Guid またはフレンドリ名の形式で指定できます。  ユーザーが所属するテナントがわからず、任意のテナントでサインインを行う場合は、`common` を使用します。 |
-| client_id | 必須 | 登録ポータル ([apps.dev.microsoft.com](https://apps.dev.microsoft.com)) によってアプリに割り当てられたアプリケーション ID。 |
-| redirect_uri | 必須 | 処理するアプリのレスポンスの送信先となる redirect_uri。  ポータルで登録した redirect_uri のいずれかと完全に一致させる必要があります (ただし、URL エンコードが必要であり、またその他のパスのセグメントがある場合があります)。 |
-| state | 推奨 | 要求に含まれ、かつトークンの応答として返される値。  任意の文字列を指定することができます。  この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
+| パラメーター |  | Description |
+| --- | --- | --- |
+| テナント |必須 |アクセス許可を要求するディレクトリ テナント。  Guid またはフレンドリ名の形式で指定できます。  ユーザーが所属するテナントがわからず、任意のテナントでサインインを行う場合は、`common` を使用します。 |
+| client_id |必須 |登録ポータル ([apps.dev.microsoft.com](https://apps.dev.microsoft.com)) によってアプリに割り当てられたアプリケーション ID。 |
+| redirect_uri |必須 |処理するアプリのレスポンスの送信先となる redirect_uri。  ポータルで登録した redirect_uri のいずれかと完全に一致させる必要があります (ただし、URL エンコードが必要であり、またその他のパスのセグメントがある場合があります)。 |
+| state |推奨 |要求に含まれ、かつトークンの応答として返される値。  任意の文字列を指定することができます。  この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
 
 現時点で、Azure AD では、テナント管理者のみがサインインして、要求を完了することができます。  管理者は、登録ポータルでユーザーが要求したすべての直接のアプリケーション アクセス許可への承認を求められます。 
 
@@ -103,11 +100,10 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 ```
 
 | パラメーター | Description |
-| ----------------------- | ------------------------------- | --------------- |
-| テナント | アプリケーションが要求したアクセス許可を Guid 形式で付与するディレクトリ テナント。 |
-| state | 要求に含まれ、かつトークンの応答として返される値。  任意の文字列を指定することができます。  この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
-| admin_consent | `True` に設定されます。 |
-
+| --- | --- | --- |
+| テナント |アプリケーションが要求したアクセス許可を Guid 形式で付与するディレクトリ テナント。 |
+| state |要求に含まれ、かつトークンの応答として返される値。  任意の文字列を指定することができます。  この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
+| admin_consent |`True` に設定されます。 |
 
 ##### <a name="error-response"></a>エラー応答
 管理者がアプリケーション アクセス許可を承認しない場合、失敗した応答は次のようになります:
@@ -117,9 +113,9 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 ```
 
 | パラメーター | Description |
-| ----------------------- | ------------------------------- | --------------- |
-| error | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
-| error_description | エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。  |
+| --- | --- | --- |
+| error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
+| error_description |エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
 エンドポイントをプロビジョニングしたアプリケーションから正常な応答を受信した場合、アプリは要求した直接のアプリケーション アクセス許可を獲得しています。  目的のリソースのトークンの要求に移行できます。
 
@@ -138,12 +134,12 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microso
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
 ```
 
-| パラメーター | | Description |
-| ----------------------- | ------------------------------- | --------------- |
-| client_id | 必須 | 登録ポータル ([apps.dev.microsoft.com](https://apps.dev.microsoft.com)) によってアプリに割り当てられたアプリケーション ID。 |
-| scope | 必須 | この要求の `scope` パラメーターに渡された値は、 `.default` サフィックスが付いた目的のリソースのリソース識別子 (アプリ ID URI) である必要があります。  Microsoft Graph の例では、値は `https://graph.microsoft.com/.default`である必要があります。  この値は、アプリ用に構成した直接のアプリケーション アクセス許可を v2.0 エンドポイントに通知し、目的のリソースに関連するトークンを発行します。 |
-| client_secret | 必須 | アプリの登録ポータルで作成した、アプリケーションのシークレット。 |
-| grant_type | 必須 | `client_credentials`である必要があります。 | 
+| パラメーター |  | Description |
+| --- | --- | --- |
+| client_id |必須 |登録ポータル ([apps.dev.microsoft.com](https://apps.dev.microsoft.com)) によってアプリに割り当てられたアプリケーション ID。 |
+| scope |必須 |この要求の `scope` パラメーターに渡された値は、 `.default` サフィックスが付いた目的のリソースのリソース識別子 (アプリ ID URI) である必要があります。  Microsoft Graph の例では、値は `https://graph.microsoft.com/.default`である必要があります。  この値は、アプリ用に構成した直接のアプリケーション アクセス許可を v2.0 エンドポイントに通知し、目的のリソースに関連するトークンを発行します。 |
+| client_secret |必須 |アプリの登録ポータルで作成した、アプリケーションのシークレット。 |
+| grant_type |必須 |`client_credentials`である必要があります。 |
 
 #### <a name="successful-response"></a>成功応答
 成功応答は、次のような形式になります:
@@ -157,10 +153,10 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 ```
 
 | パラメーター | Description |
-| ----------------------- | ------------------------------- |
-| access_token | 要求されたアクセス トークン。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。 |
-| token_type | トークン タイプ値を指定します。 Azure AD でサポートされるのは `Bearer` のみです。  |
-| expires_in | アクセス トークンの有効期間 (秒)。 |
+| --- | --- |
+| access_token |要求されたアクセス トークン。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。 |
+| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは `Bearer` のみです。 |
+| expires_in |アクセス トークンの有効期間 (秒)。 |
 
 #### <a name="error-response"></a>エラー応答
 エラー応答は、次のような形式になります:
@@ -179,13 +175,13 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 ```
 
 | パラメーター | Description |
-| ----------------------- | ------------------------------- |
-| error | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
-| error_description | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。  |
-| error_codes | 診断に役立つ STS 固有のエラー コードの一覧。  |
-| timestamp | エラーが発生した時刻。 |
-| trace_id | 診断に役立つ、要求の一意の識別子。  |
-| correlation_id | コンポーネント間での診断に役立つ、要求の一意の識別子。 |
+| --- | --- |
+| error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
+| error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
+| error_codes |診断に役立つ STS 固有のエラー コードの一覧。 |
+| timestamp |エラーが発生した時刻。 |
+| trace_id |診断に役立つ、要求の一意の識別子。 |
+| correlation_id |コンポーネント間での診断に役立つ、要求の一意の識別子。 |
 
 ## <a name="use-a-token"></a>トークンを使用する
 トークンを獲得したら、そのトークンを使用してリソースへの要求を作成できます。  トークンの有効期限が切れたときは、 `/token` エンドポイントへの要求を繰り返し、新しいアクセス トークンを取得します。
@@ -206,7 +202,6 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dC
 
 ## <a name="code-sample"></a>サンプル コード
 管理者の同意エンドポイントを使用する client_credentials 付与を実装するアプリケーションの例を参照するには、[v2.0 デーモンのコード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)を参照してください。
-
 
 <!--HONumber=Oct16_HO2-->
 

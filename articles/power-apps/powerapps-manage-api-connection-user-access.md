@@ -1,29 +1,30 @@
-<properties
-	pageTitle="新しい API の追加または作成と PowerApps におけるユーザーへのアクセス許可の付与 | Microsoft Azure"
-	description="Azure ポータルでの新しい API、接続、または接続プロファイルの追加、作成、構成とユーザーへのアクセス許可権限の付与"
-	services=""
-    suite="powerapps"
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="dwrede"
-	editor=""/>
+---
+title: 新しい API の追加または作成と PowerApps におけるユーザーへのアクセス許可の付与 | Microsoft Docs
+description: Azure ポータルでの新しい API、接続、または接続プロファイルの追加、作成、構成とユーザーへのアクセス許可権限の付与
+services: ''
+suite: powerapps
+documentationcenter: ''
+author: MandiOhlinger
+manager: dwrede
+editor: ''
 
-<tags
-   ms.service="powerapps"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na" 
-   ms.date="05/02/2016"
-   ms.author="litran"/>
+ms.service: powerapps
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/02/2016
+ms.author: litran
 
-
+---
 # 新しい API の追加、接続の追加、ユーザーへのアクセス許可
-
-> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> [!IMPORTANT]
+> このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
 > 
-> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページをご覧ください。  
-> - PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事をご覧ください。 
+> * PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページをご覧ください。  
+> * PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事をご覧ください。 
+> 
+> 
 
 <!--Archived
 APIs exist within an [app service environment](powerapps-get-started-azure-portal.md). APIs can be created from the available APIs for PowerApps, from API apps hosted in your app service environment, or from Swagger 2.0. There are many pre-built APIs available that can easily be added to your PowerApps. You can also upload your own API in JSON format or Swagger 2.0. 
@@ -39,9 +40,9 @@ This topic:
 - Enable [PowerApps in your Azure subscription](powerapps-get-started-azure-portal.md).
 - Create an [App Service environment](powerapps-get-started-azure-portal.md).
 - Create an API using any of the following methods:  
-	- Create a [Microsoft managed API or an IT managed API](powerapps-register-from-available-apis.md).
-	- Create an API hosted within [your App Service Environment](powerapps-register-api-hosted-in-app-service.md).
-	- Create using a [Swagger 2.0 API definition](powerapps-register-existing-api-from-api-definition.md).
+    - Create a [Microsoft managed API or an IT managed API](powerapps-register-from-available-apis.md).
+    - Create an API hosted within [your App Service Environment](powerapps-register-api-hosted-in-app-service.md).
+    - Create using a [Swagger 2.0 API definition](powerapps-register-existing-api-from-api-definition.md).
 
 
 ## Give users access to the API
@@ -64,10 +65,10 @@ Now give users within your company permissions to use the connection.
 1. Open your API, select **Connections**, and then select your specific connection. This opens a new blade that lists your connection name at the top. 
 2. In this new blade, select **Connection user access**.  In the following example, the **Hybrid Tunnel** connection is selected. The new blade opens and this is where you select **Connection user access**:  
 ![][2]
-  
+
 3. In **Connection user access**, select **Add**, and then select the permission you want to give:  
 ![][3]
-  
+
 4. Add your user or group. Select **Add** to save your changes.
 
 Now that users have permissions to the API and its connection, your users can add these APIs to their apps created in PowerApps. Specifically: 

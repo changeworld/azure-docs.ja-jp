@@ -1,32 +1,30 @@
-<properties
-   pageTitle="Azure Resource Health の概要 | Microsoft Azure"
-   description="Azure Resource Health の概要"
-   services="Resource health"
-   documentationCenter="dev-center-name"
-   authors="BernardoAMunoz"
-   manager=""
-   editor=""/>
+---
+title: Azure Resource Health の概要 | Microsoft Docs
+description: Azure Resource Health の概要
+services: Resource health
+documentationcenter: dev-center-name
+author: BernardoAMunoz
+manager: ''
+editor: ''
 
-<tags
-   ms.service="resource-health"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="Supportability"
-   ms.date="06/01/2016"
-   ms.author="BernardoAMunoz"/>
+ms.service: resource-health
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: Supportability
+ms.date: 06/01/2016
+ms.author: BernardoAMunoz
 
+---
 # Azure Resource Health の概要
-
 Azure Resource Health は個々の Azure リソースの正常性を明らかにし、問題のトラブルシューティングのために実行できるガイダンスを提供するサービスです。Resource Health の目標は、サーバーやインフラストラクチャの要素に直接アクセスすることができないクラウド環境において、お客様がトラブルシューティングに費やす時間を短縮し、特に、問題の根本原因がアプリケーション内にあるか、Azure プラットフォーム内のイベントによるものかを判別する時間を短縮することです。
 
-## どのようなものがリソースと認識されるのか、またリソースが正常であるかどうかはどのようにして判断されるか 
+## どのようなものがリソースと認識されるのか、またリソースが正常であるかどうかはどのようにして判断されるか
 リソースとは、特定のサービスで提供されているリソース タイプ (仮想マシン、Web アプリ、SQL データベースなど) からユーザーが作成したインスタンスです。
 
 Resource Health は、リソースやサービスから生成される信号を基にリソースが正常であるかどうかを判断します。現在 Resource Health で考慮されるのは、決まった 1 つのリソース タイプの正常性だけであることに注意してください。その他の要素については、全体的な正常性を左右する可能性があっても考慮されません。たとえば仮想マシンの状態を報告するときは、インフラストラクチャのコンピューティング要素のみが考慮されます。このときネットワークの問題は Resource Health に表示されません。ただしサービスの機能が停止していることが明らかである場合は、ブレード上部のバナーで表示されます。サービスの機能停止については、後でこの記事の中で詳しく説明します。
 
 ## Resource Health はサービス正常性ダッシュボードと何が違うのでしょうか
-
 Resource Health の方が、サービス正常性ダッシュボードと比べて粒度の細かい情報が得られます。サービス正常性ダッシュボードで報告されるのが、リージョン内のサービスの利用の可否に影響を及ぼすイベントであるのに対し、Resource Health によって報告されるのは、特定のリソースに関連した情報です。たとえば、仮想マシン、Web アプリ、SQL データベースの利用の可否に影響するイベントが報告されます。たとえばノードが予期せず再起動した場合、そのノードで仮想マシンを実行しているユーザーは、自分の VM がしばらく利用できなかった理由を知ることができます。
 
 ## Resource Health へのアクセス方法
@@ -40,7 +38,7 @@ Resource Health で監視できるサービスのリソース正常性には、2
 
 Azure ポータルへのログイン後、[リソース正常性] ブレードには次の 2 とおりの方法でアクセスできます。
 
-###[リソース] ブレードを開く
+### [リソース] ブレードを開く
 特定のリソースの [リソース] ブレードを開きます。[リソース] ブレードの横に表示される [設定] ブレードで [リソース正常性] をクリックすると、[リソース正常性] ブレードが表示されます。
 
 ![Resource health blade](./media/resource-health-overview/resourceBladeAndResourceHealth.png)
@@ -67,12 +65,11 @@ Azure ポータルへのログイン後、[リソース正常性] ブレード�
 ![Resource is available](./media/resource-health-overview/Available.png)
 
 ### 使用不可
-
 この場合、リソースの利用の可否に影響する可能性のある現在進行中の問題がプラットフォームに検出されました (VM を実行しているノードが予期せず再起動されたなど)。これは赤色の警告アイコンで表されます。問題に関する詳しい情報 (下記) は、ブレードの中央のセクションに表示されます。
 
-1.	リソースを復旧するためにマイクロソフトが講じている対策
-2.	詳細な問題のタイムライン (解決までの予想時間)
-3.	ユーザーに推奨される対策
+1. リソースを復旧するためにマイクロソフトが講じている対策
+2. 詳細な問題のタイムライン (解決までの予想時間)
+3. ユーザーに推奨される対策
 
 ![Resource is unavailable](./media/resource-health-overview/Unavailable.png)
 
@@ -97,11 +94,10 @@ Azure ポータルへのログイン後、[リソース正常性] ブレード�
 ![Resource health may be impacted by a SIE](./media/resource-health-overview/serviceImpactingEvent.png)
 
 ## その他リソースの正常性について知っておくべきこと
-
 ### 信号の時間差
 Resource Health に情報を提供する信号には、最大 15 分の遅れが生じる可能性があり、それが原因で、リソースの最新の正常性ステータスが、実際の利用の可否と食い違う可能性があります。不確かな問題の調査に無駄な時間を費やさないためにも、この点に注意してください。
 
-### SQL に関する特記事項 
+### SQL に関する特記事項
 Resource Health から報告されるのは、SQL Server のステータスではなく、SQL データベースのステータスです。その方が、より実態に近い正常性情報が得られる反面、データベースの正常性を判断するためには、複数のコンポーネントとサービスを考慮に入れる必要があります。現在の信号の基になっているのはデータベースへのログインです。つまり、定期的にログイン (クエリの実行要求が届いていることも含む) されているデータベースの場合、正常性ステータスが定期的に表示されます。アクセスが途絶えて 10 分以上経過すると、データベースが不明状態に移行します。かといってデータベースが使用不可というわけではありません。ログインが実行されていないために信号が生成されていないというだけです。データベースに接続してクエリを実行すると、その正常性ステータスの判断と更新に必要な信号が生成されます。
 
 ## フィードバック

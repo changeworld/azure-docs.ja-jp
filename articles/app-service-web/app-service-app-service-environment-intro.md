@@ -1,30 +1,29 @@
-<properties 
-	pageTitle="App Service 環境の概要" 
-	description="すべてのアプリを実行するためのセキュリティで保護され VNet に参加している専用のスケール ユニットを提供する、App Service 環境の機能について説明します。" 
-	services="app-service" 
-	documentationCenter="" 
-	authors="ccompy" 
-	manager="wpickett" 
-	editor=""/>
+---
+title: App Service 環境の概要
+description: すべてのアプリを実行するためのセキュリティで保護され VNet に参加している専用のスケール ユニットを提供する、App Service 環境の機能について説明します。
+services: app-service
+documentationcenter: ''
+author: ccompy
+manager: wpickett
+editor: ''
 
-<tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/11/2016"
-	ms.author="stefsch"/>
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/11/2016
+ms.author: stefsch
 
+---
 # App Service 環境の概要
-
-## Overview ##
+## Overview
 App Service 環境は、Azure App Service アプリを高スケールで安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の [Premium][PremiumTier] サービス プラン オプションです。App Service 環境には、[Web Apps][WebApps]、[Mobile Apps][MobileApps]、[API Apps][APIApps] が含まれています。
 
 App Service 環境は、以下を必要とするアプリケーション ワークロードに最適です。
 
-- 高スケール
-- 分離およびセキュリティで保護されたネットワーク アクセス
+* 高スケール
+* 分離およびセキュリティで保護されたネットワーク アクセス
 
 顧客は、複数の App Service 環境を 1 つの Azure リージョン内に作成することも、複数の Azure リージョンにわたって作成することもできます。そのため、App Service 環境は、高 RPS のワークロードをサポートするステートレス アプリケーション層の水平方向のスケーリングに最適です。
 
@@ -40,9 +39,9 @@ AzureCon Deep Dive に示されたセキュリティ アーキテクチャがど
 
 App Service 環境で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール (WAF) などのアップ ストリーム デバイスによって制限できます。このシナリオについては、記事「[App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する](app-service-app-service-environment-web-application-firewall.md)」で説明します。
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## 専用のコンピューティング リソース ##
+## 専用のコンピューティング リソース
 App Service 環境内のすべてのコンピューティング リソースは、1 つのサブスクリプション専用です。App Service 環境は、1 つのアプリケーションだけが使用する最大 50 個のコンピューティング リソースで構成できます。
 
 App Service 環境は、1 つのフロントエンド コンピューティング リソース プールと、1 ～ 3 個の worker コンピューティング リソース プールで構成されます。
@@ -57,7 +56,7 @@ App Service 環境は、1 つのフロントエンド コンピューティン�
 
 App Service 環境でサポートされる使用可能なコンピューティング リソースのサイズの詳細については、[App Service の料金][AppServicePricing]のページで、Premium 価格レベルの App Service 環境で使用できるオプションを確認してください。
 
-## Virtual Network のサポート ##
+## Virtual Network のサポート
 App Service 環境は、Azure Resource Manager の仮想ネットワーク、**または**クラシック デプロイメント モデルの仮想ネットワークの**どちらにでも**作成できます ([仮想ネットワークについて詳しくは、こちらをご覧ください][MoreInfoOnVirtualNetworks])。App Service 環境は常に仮想ネットワーク (もっと正確に言えば、仮想ネットワークのサブネット内) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。
 
 [ネットワーク セキュリティ グループ][NetworkSecurityGroups]を使用して、受信ネットワーク通信を、App Service 環境が存在するサブネットに制限できます。これによって、Web アプリケーション ファイアウォールやネットワーク SaaS プロバイダーなど、アップストリーム デバイスおよびサービスの背後でアプリを実行できます。
@@ -67,7 +66,6 @@ App Service 環境は、Azure Resource Manager の仮想ネットワーク、**�
 仮想ネットワークとオンプレミス ネットワークでの App Service 環境の機能の詳細については、「[App Service 環境のネットワーク アーキテクチャの概要][NetworkArchitectureOverview]」、「[App Service 環境への受信トラフィックを制御する方法][ControllingInboundTraffic]」、および「[App Service 環境からバックエンド リソースへの安全な接続][SecurelyConnectingToBackends]」をご覧ください。
 
 ## 使用の開始
-
 App Service 環境の使用を開始するには、[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]に関するページを参照してください。
 
 App Service 環境に関するすべての記事と作業方法は [App Service 環境の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
@@ -78,9 +76,9 @@ App Service 環境のネットワーク アーキテクチャの概要につい�
 
 ExpressRoute での App Service 環境の使用方法の詳細については、「[ExpressRoute を使用した App Service 環境のネットワーク構成の詳細][NetworkConfigDetailsForExpressRoute]」をご覧ください。
 
-[AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
+[!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
-[AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
+[!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
 [PremiumTier]: http://azure.microsoft.com/pricing/details/app-service/
@@ -106,6 +104,6 @@ ExpressRoute での App Service 環境の使用方法の詳細については、
 
 <!-- IMAGES -->
 
- 
+
 
 <!---HONumber=AcomDC_0810_2016-->

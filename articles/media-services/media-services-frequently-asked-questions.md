@@ -1,26 +1,23 @@
-<properties 
-	pageTitle="よく寄せられる質問 | Microsoft Azure" 
-	description="よく寄せられる質問 (FAQ)" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="Juliako" 
-	manager="erikre" 
-	editor=""/>
+---
+title: よく寄せられる質問 | Microsoft Docs
+description: よく寄せられる質問 (FAQ)
+services: media-services
+documentationcenter: ''
+author: Juliako
+manager: erikre
+editor: ''
 
-<tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/19/2016" 
-	ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/19/2016
+ms.author: juliako
 
-
-#よく寄せられる質問
-
-##AMS に関してよく寄せられる一般的な質問
-
+---
+# よく寄せられる質問
+## AMS に関してよく寄せられる一般的な質問
 Q: インデックス作成の規模はどのように設定できますか?
 
 A: 予約ユニットは、エンコード タスクでもインデックス作成タスクでも同じです。詳細については、「[Media Services の規模の設定方法](media-services-scale-media-processing-overview.md)」をご覧くださいIndexer のパフォーマンスは、予約ユニットの種類に左右されないことに**注意してください**。
@@ -49,38 +46,34 @@ Q: AMS を使用する場合、ファイルの名前にはどのような文字�
 
 A: Media Services は、ストリーミング コンテンツ (例: http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
 
-
 Q: REST を使用して接続する方法を教えてください。
 
 A: https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
 
-
 Q: エンコーディング プロセスでビデオをローテーションする方法を教えてください。
 
 A: [メディア エンコーダー スタンダード](media-services-dotnet-encode-with-media-encoder-standard.md)は、90/180/270 の角度によるローテーションをサポートしています。既定の動作 "自動" により、受信 MP4/MOV ファイルのローテーション メタデータの検出、およびこの補正が試行されます。[ここ](http://msdn.microsoft.com/library/azure/mt269960.aspx)で定義されたいずれかの JSON プリセットに対する次の**ソース**要素を含めます。
-	
-	"Version": 1.0,
-	"Sources": [
-	{
-	  "Streams": [],
-	  "Filters": {
-	    "Rotation": "90"
-	  }
-	}
-	],
-	"Codecs": [
-	
-	...
+
+    "Version": 1.0,
+    "Sources": [
+    {
+      "Streams": [],
+      "Filters": {
+        "Rotation": "90"
+      }
+    }
+    ],
+    "Codecs": [
+
+    ...
 
 
 
 
-##Media Services のラーニング パス
+## Media Services のラーニング パス
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
-##フィードバックの提供
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+## フィードバックの提供
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 <!---HONumber=AcomDC_0921_2016-->

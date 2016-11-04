@@ -1,28 +1,28 @@
-<properties 
-	pageTitle="App Service API アプリ トリガー | Microsoft Azure" 
-	description="Azure App Service で API アプリにトリガーを実装する方法" 
-	services="logic-apps" 
-	documentationCenter=".net" 
-	authors="guangyang"
-	manager="wpickett" 
-	editor="jimbe"/>
+---
+title: App Service API アプリ トリガー | Microsoft Docs
+description: Azure App Service で API アプリにトリガーを実装する方法
+services: logic-apps
+documentationcenter: .net
+author: guangyang
+manager: wpickett
+editor: jimbe
 
-<tags 
-	ms.service="logic-apps" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="dotnet" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/25/2016" 
-	ms.author="rachelap"/>
+ms.service: logic-apps
+ms.workload: na
+ms.tgt_pltfrm: dotnet
+ms.devlang: na
+ms.topic: article
+ms.date: 08/25/2016
+ms.author: rachelap
 
+---
 # Azure App Service API アプリ トリガー
-
->[AZURE.NOTE] 本記事は、API アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
-
+> [!NOTE]
+> 本記事は、API アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+> 
+> 
 
 ## Overview
-
 この記事では、API アプリ トリガーを実装して、ロジック アプリからそれらを使用する方法について説明します。
 
 このトピック内のすべてのコード スニペットは、[FileWatcher API アプリのサンプル コード](http://go.microsoft.com/fwlink/?LinkId=534802)からコピーしたものです。
@@ -30,34 +30,31 @@
 この記事のコードをビルドして実行するには、次の nuget パッケージをダウンロードする必要がある点に注意してください: [http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/)。
 
 ## API アプリ トリガーとは
-
 API アプリでイベントを発生させることは一般的なシナリオなので、API アプリのクライアントはイベントに応答して適切な処理を行うことができます。このシナリオをサポートする REST API ベースのメカニズムは API アプリ トリガーと呼ばれます。
 
 たとえば、クライアント コードで [Twitter Connector API アプリ](../app-service-logic/app-service-logic-connector-twitter.md)が使用されていて、コードが特定の単語を含む新しいツイートに基づいて処理を実行する必要があるとします。この場合、このニーズを満たすために、ポーリング トリガーかプッシュ トリガーを設定する場合があります。
 
 ## ポーリング トリガーとプッシュ トリガー
-
 現在、2 種類のトリガーがサポートされています。
 
-- ポーリング トリガー - 発生したイベントの通知に対して、クライアントが API アプリをポーリングします。
-- プッシュ トリガー - イベントの発生時に、クライアントは API アプリから通知を受け取ります。
+* ポーリング トリガー - 発生したイベントの通知に対して、クライアントが API アプリをポーリングします。
+* プッシュ トリガー - イベントの発生時に、クライアントは API アプリから通知を受け取ります。
 
 ### ポーリング トリガー
-
 ポーリング トリガーは、標準の REST API として実装され、そのクライアント (ロジック アプリなど) が通知を取得するために API をポーリングすることを想定しています。クライアントは状態を保持できますが、ポーリング トリガー自体はステートレスです。
 
 要求パケットと応答パケットに関する次の情報は、ポーリング トリガー コントラクトのいくつかの重要な側面を示しています。
 
-- 要求
-    - HTTP メソッド: GET
-    - パラメーター
-        - triggerState - このオプション パラメーターでは、指定された状態に基づいて通知が返されたかどうかをポーリング トリガーが適切に判断できるように、クライアントが自身の状態を指定できます。
-        - API 固有のパラメーター
-- 応答
-    - 状態コード **200** - 要求は有効で、トリガーからの通知があります。通知の内容は応答本文です。応答内の "Retry-After" ヘッダーは、後続の要求呼び出しで追加の通知データを取得する必要があることを示しています。
-    - 状態コード **202** - 要求は有効ですが、トリガーからの新しい通知はありません。
-    - 状態コード **4xx** - 要求は無効です。クライアントは要求を再試行できません。
-    - 状態コード **5xx** - 要求の結果、内部サーバー エラーまたは一時的な問題が発生しました。クライアントは要求を再試行する必要があります。
+* 要求
+  * HTTP メソッド: GET
+  * パラメーター
+    * triggerState - このオプション パラメーターでは、指定された状態に基づいて通知が返されたかどうかをポーリング トリガーが適切に判断できるように、クライアントが自身の状態を指定できます。
+    * API 固有のパラメーター
+* 応答
+  * 状態コード **200** - 要求は有効で、トリガーからの通知があります。通知の内容は応答本文です。応答内の "Retry-After" ヘッダーは、後続の要求呼び出しで追加の通知データを取得する必要があることを示しています。
+  * 状態コード **202** - 要求は有効ですが、トリガーからの新しい通知はありません。
+  * 状態コード **4xx** - 要求は無効です。クライアントは要求を再試行できません。
+  * 状態コード **5xx** - 要求の結果、内部サーバー エラーまたは一時的な問題が発生しました。クライアントは要求を再試行する必要があります。
 
 次のコード スニペットは、ポーリング トリガーを実装する方法の例を示します。
 
@@ -97,24 +94,23 @@ API アプリでイベントを発生させることは一般的なシナリオ�
 3. 手順 2. の前に **triggerState** パラメーターがタイムスタンプに設定されたポーリング トリガーを呼び出します。次の図は、Postman を介した要求の例を示しています。![Postman を使用したポーリング トリガーの呼び出し](./media/app-service-api-dotnet-triggers/callpolltriggerfrompostman.PNG)
 
 ### プッシュ トリガー
-
 プッシュ トリガーは、特定のイベントの発生時に通知を受け取るように登録されているクライアントに通知をプッシュする標準の REST API として実装されます。
 
 要求パケットと応答パケットに関する次の情報は、プッシュ トリガー コントラクトのいくつかの重要な側面を示しています。
 
-- 要求
-    - HTTP メソッド: PUT
-    - パラメーター
-        - triggerId: 必須 - プッシュ トリガーの登録を表す不明瞭な文字列 (GUID など)。
-        - callbackUrl: 必須 - イベントの発生時に呼び出されるコールバックの URL。呼び出しは、単純な POST HTTP 呼び出しです。
-        - API 固有のパラメーター
-- 応答
-    - 状態コード **200** - クライアントを登録するための要求が成功しました。
-    - 状態コード **4xx** - 要求は無効です。クライアントは要求を再試行できません。
-    - 状態コード **5xx** - 要求の結果、内部サーバー エラーまたは一時的な問題が発生しました。クライアントは要求を再試行する必要があります。
-- コールバック
-    - HTTP メソッド: POST
-    - 要求本文: 通知の内容です。
+* 要求
+  * HTTP メソッド: PUT
+  * パラメーター
+    * triggerId: 必須 - プッシュ トリガーの登録を表す不明瞭な文字列 (GUID など)。
+    * callbackUrl: 必須 - イベントの発生時に呼び出されるコールバックの URL。呼び出しは、単純な POST HTTP 呼び出しです。
+    * API 固有のパラメーター
+* 応答
+  * 状態コード **200** - クライアントを登録するための要求が成功しました。
+  * 状態コード **4xx** - 要求は無効です。クライアントは要求を再試行できません。
+  * 状態コード **5xx** - 要求の結果、内部サーバー エラーまたは一時的な問題が発生しました。クライアントは要求を再試行する必要があります。
+* コールバック
+  * HTTP メソッド: POST
+  * 要求本文: 通知の内容です。
 
 次のコード スニペットは、プッシュ トリガーを実装する方法の例を示します。
 
@@ -202,7 +198,6 @@ API アプリでイベントを発生させることは一般的なシナリオ�
 5. RequestBin をチェックし、プロパティの出力でプッシュ トリガーのコールバックが呼び出されることを確認します。![Postman を使用したポーリング トリガーの呼び出し](./media/app-service-api-dotnet-triggers/pushtriggercallbackinrequestbin.PNG)
 
 ### API 定義でのトリガーの記述
-
 トリガーを実装して API アプリを Azure にデプロイした後、Azure プレビュー ポータルの **[API の定義]** ブレードに移動すると、トリガーが自動的に UI で認識されることがわかります。これは、API アプリの Swagger 2.0 API 定義によって生じます。
 
 ![[API の定義] ブレード](./media/app-service-api-dotnet-triggers/apidefinitionblade.PNG)
@@ -226,19 +221,17 @@ API アプリでイベントを発生させることは一般的なシナリオ�
 
 拡張機能プロパティ **x-ms-schedular-trigger** は、API の定義におけるトリガーの記述方法を示し、要求が次の条件のいずれかを満たした場合、ゲートウェイ経由で API の定義を要求するときに API アプリ ゲートウェイによって自動的に追加されます (このプロパティは手動で追加することもできます)。
 
-- ポーリング トリガー
-    - HTTP メソッドが **GET** かどうか
-    - **operationId** プロパティに文字列 **trigger** が含まれているかどうか
-    - **parameters** プロパティに、**name** プロパティが **triggerState** に設定されたパラメーターが含まれているかどうか
-- プッシュ トリガー
-    - HTTP メソッドが **PUT** かどうか
-    - **operationId** プロパティに文字列 **trigger** が含まれているかどうか
-    - **parameters** プロパティに、**name** プロパティが **triggerId** に設定されたパラメーターが含まれているかどうか
+* ポーリング トリガー
+  * HTTP メソッドが **GET** かどうか
+  * **operationId** プロパティに文字列 **trigger** が含まれているかどうか
+  * **parameters** プロパティに、**name** プロパティが **triggerState** に設定されたパラメーターが含まれているかどうか
+* プッシュ トリガー
+  * HTTP メソッドが **PUT** かどうか
+  * **operationId** プロパティに文字列 **trigger** が含まれているかどうか
+  * **parameters** プロパティに、**name** プロパティが **triggerId** に設定されたパラメーターが含まれているかどうか
 
 ## ロジック アプリでの API アプリ トリガーの使用
-
 ### ロジック アプリ デザイナーでの API アプリ トリガーの一覧表示と構成
-
 API アプリと同じリソース グループにロジック アプリを作成すると、それをクリックするだけで、デザイナー キャンバスに追加できます。次の図では、これを示します。
 
 ![ロジック アプリ デザイナーにおけるトリガー](./media/app-service-api-dotnet-triggers/triggersinlogicappdesigner.PNG)
@@ -248,12 +241,11 @@ API アプリと同じリソース グループにロジック アプリを作�
 ![ロジック アプリ デザイナーでのプッシュ トリガーの構成](./media/app-service-api-dotnet-triggers/configurepushtriggerinlogicappdesigner.PNG)
 
 ## ロジック アプリ向けの API アプリ トリガーの最適化
-
 API アプリにトリガーを追加した後は、ロジック アプリ内で API アプリを使用するときのエクスペリエンスを改善するためにできることがいくつかあります。
 
 たとえば、ポーリング トリガーの **triggerState** パラメーターは、ロジック アプリで次の式に設定されています。この式は、ロジック アプリからのトリガーの最後の呼び出しを評価して、その値を返します。
 
-	@coalesce(triggers()?.outputs?.body?['triggerState'], '')
+    @coalesce(triggers()?.outputs?.body?['triggerState'], '')
 
 注: 前の式で使用されている関数の詳細については、[ロジック アプリのワークフロー定義言語](https://msdn.microsoft.com/library/azure/dn948512.aspx)に関するドキュメントを参照してください。
 
@@ -261,7 +253,7 @@ API アプリにトリガーを追加した後は、ロジック アプリ内で
 
     "/api/Messages/poll": {
       "get": {
-	    "operationId": "Messages_NewMessageTrigger",
+        "operationId": "Messages_NewMessageTrigger",
         "parameters": [
           {
             "name": "triggerState",
@@ -295,7 +287,6 @@ API の定義で **x-ms-scheduler-recommendation** および **x-ms-visibility**
 
 
 ### API の定義での拡張機能プロパティの追加
-
 拡張機能プロパティ **x-ms-scheduler-recommendation** や **x-ms-visibility** などの追加のメタ情報は、静的または動的の 2 種類の方法のいずれかで API の定義に追加できます。
 
 静的なメタデータの場合は、プロジェクト内の */metadata/apiDefinition.swagger.json* ファイルを直接編集して、プロパティを手動で追加できます。
@@ -340,6 +331,6 @@ API の定義で **x-ms-scheduler-recommendation** および **x-ms-visibility**
             }
         }
     }
- 
+
 
 <!---HONumber=AcomDC_0831_2016-->

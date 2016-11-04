@@ -1,24 +1,26 @@
-<properties
-	pageTitle="オンプレミス アプリへの安全なリモート アクセスを実現する方法"
-	description="Azure AD アプリケーション プロキシを使用して、オンプレミス アプリへの安全なリモート アクセスを実現する方法について取り上げます。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+---
+title: オンプレミス アプリへの安全なリモート アクセスを実現する方法
+description: Azure AD アプリケーション プロキシを使用して、オンプレミス アプリへの安全なリモート アクセスを実現する方法について取り上げます。
+services: active-directory
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/25/2016"
-	ms.author="kgremban"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/25/2016
+ms.author: kgremban
 
+---
 # オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法
-
-> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+> [!NOTE]
+> アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+> 
+> 
 
 現在、従業員は、どこでも、いつでも、どんなデバイスからでも生産的であることを望んでいます。タブレット、電話、ラップトップを問わず、自分のデバイスで作業したいと考えています。そして、すべてのアプリケーション (クラウドにある SaaS アプリとオンプレミスの社内アプリの両方) にアクセスできることを期待しています。オンプレミスのアプリケーションへのアクセス提供には、従来、仮想プライベート ネットワーク (VPN) や非武装地帯 (DMZ)、オンプレミスのリバース プロキシが必要でした。これらのソリューションは、複雑でセキュリティ保護が困難であるだけでなく、設定と管理にコストがかかります。
 
@@ -34,21 +36,18 @@ Azure AD アプリケーション プロキシは、すべてのオンプレミ�
 
 Azure AD アプリケーション プロキシは:
 
-- クラウドで動作するため、時間とコストを節約できます。オンプレミスのソリューションでは、DMZ、エッジ サーバー、またはその他の複雑なインフラストラクチャを設定し維持する必要があります。
-
-- ファイアウォール経由で受信接続を開く必要がないため、オンプレミスのソリューションよりも設定が簡単で安全です。
-
-- 優れたセキュリティを提供します。Azure AD アプリケーション プロキシを使用してアプリを発行するときは、Azure の豊富な承認制御とセキュリティ分析を活用できます。つまり、アプリを変更しなくても、既存のすべてのアプリのセキュリティ機能が強化されます。
-
-- ユーザーに、一貫性のある認証エクスペリエンスを提供します。シングル サインオンにより、エンド ユーザーは生産的であるために必要なすべてのアプリに、1 つのパスワードで簡単かつシンプルにアクセスできます。
+* クラウドで動作するため、時間とコストを節約できます。オンプレミスのソリューションでは、DMZ、エッジ サーバー、またはその他の複雑なインフラストラクチャを設定し維持する必要があります。
+* ファイアウォール経由で受信接続を開く必要がないため、オンプレミスのソリューションよりも設定が簡単で安全です。
+* 優れたセキュリティを提供します。Azure AD アプリケーション プロキシを使用してアプリを発行するときは、Azure の豊富な承認制御とセキュリティ分析を活用できます。つまり、アプリを変更しなくても、既存のすべてのアプリのセキュリティ機能が強化されます。
+* ユーザーに、一貫性のある認証エクスペリエンスを提供します。シングル サインオンにより、エンド ユーザーは生産的であるために必要なすべてのアプリに、1 つのパスワードで簡単かつシンプルにアクセスできます。
 
 ## Azure AD アプリケーション プロキシと連動するアプリケーションの種類
 Azure AD アプリケーション プロキシを使用すると、次のようなさまざまな種類の内部アプリケーションにアクセスできます。
 
-- 認証に統合 Windows 認証を使用する Web アプリケーション
-- フォーム ベースのアクセスを使用する Web アプリケーション
-- さまざまなデバイスの豊富なアプリケーションに公開する Web API
-- リモート デスクトップ ゲートウェイの背後でホストされているアプリケーション
+* 認証に統合 Windows 認証を使用する Web アプリケーション
+* フォーム ベースのアクセスを使用する Web アプリケーション
+* さまざまなデバイスの豊富なアプリケーションに公開する Web API
+* リモート デスクトップ ゲートウェイの背後でホストされているアプリケーション
 
 ## それはどのように機能しますか?
 アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。コネクタを使用すると、受信ポートを開いたり、DMZ に配置したりする必要はありません。アプリのトラフィック量が多い場合は、コネクタを増設すれば、このサービスによって負荷分散が行われます。コネクタはステートレスで、すべての情報が必要に応じてクラウドから取得されます。
@@ -79,10 +78,10 @@ Azure AD Basic または Azure AD Premium サブスクリプションに加え�
 ## 次の手順
 アプリケーション プロキシを使ってできることは他にもたくさんあります。
 
-- [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
-- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
-- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
-- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
+* [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
+* [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
+* [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
+* [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
 
 最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 

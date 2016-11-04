@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Azure Service Fabric でのメトリックの最適化 |Microsoft Azure"
-   description="Service Fabric でのメトリック向け戦略としての最適化またはパッキングの使用の概要"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Azure Service Fabric でのメトリックの最適化 | Microsoft Docs
+description: Service Fabric でのメトリック向け戦略としての最適化またはパッキングの使用の概要
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Service Fabric のメトリックと負荷の最適化
 Service Fabric クラスター リソース マネージャーは主に負荷分散の面で分散機能に関与します。クラスター内のすべてのノードが均等に活用されるようにします。どのような障害が発生しても指定されたワークロードのかなりの割合が失われることはないので、通常、これは障害対応の観点から最も安全で賢明なレイアウトです。Service Fabric クラスター リソース マネージャーは、最適化と呼ばれる別の戦略もサポートしています。最適化は一般に、クラスター全体にメトリックの使用を分散させようとするのではなく、実際にはその統合を試みる必要があることを意味します。これは通常の戦略の転換です – 特定のメトリックのメトリック負荷の平均標準偏差の最小化に基づいてクラスターを最適化する代わりに、偏差を大きくすることで最適化を始めます。しかし、なぜこのような戦略が必要なのでしょうか。
 
@@ -33,10 +33,10 @@ Service Fabric クラスター リソース マネージャーは主に負荷分
 他の概念的トレードオフとはどのようなものでしょうか。 最適化メトリックを有効にする前に、ワークロードを詳細に測定することをお勧めします。次の表は考慮すべきことを簡単にまとめたものです。
 
 | 最適化の長所 | 最適化の短所 |
-|----------------------|----------------------|
-|大きいサービスを短時間で作成できる |	少数のノードに負荷をまとめるので、競合が増える
-|作成の間のデータ移動が減る | 障害の影響を受けるサービスが増え、混乱が増す
-|要件の記述を増やし領域を再利用できる |	全体的なリソース管理構成が複雑になる
+| --- | --- |
+| 大きいサービスを短時間で作成できる |少数のノードに負荷をまとめるので、競合が増える |
+| 作成の間のデータ移動が減る |障害の影響を受けるサービスが増え、混乱が増す |
+| 要件の記述を増やし領域を再利用できる |全体的なリソース管理構成が複雑になる |
 
 最適化されたメトリックと通常のメトリックを同じクラスター内に混在させることができ、リソース マネージャーはできる限り多くの最適化されたメトリックが統合されて残りが分散される最善のレイアウトの作成を試みます。正確な結果は、分散メトリックの数と最適化メトリックの数の比、それらの重み、現在の負荷などによって変わります。
 
@@ -53,8 +53,8 @@ ClusterManifest.xml:
 ```
 
 ## 次のステップ
-- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
-- メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
+* クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
+* メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png
 

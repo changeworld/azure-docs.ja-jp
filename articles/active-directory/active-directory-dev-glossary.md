@@ -1,48 +1,48 @@
-<properties
-   pageTitle="Azure Active Directory 開発者向け用語集 | Microsoft Azure"
-   description="Azure Active Directory 開発で頻出する概念や機能に関する用語の定義を記載しています。"
-   services="active-directory"
-   documentationCenter=""
-   authors="bryanla"
-   manager="mbaldwin"
-   editor=""/>
+---
+title: Azure Active Directory 開発者向け用語集 | Microsoft Docs
+description: Azure Active Directory 開発で頻出する概念や機能に関する用語の定義を記載しています。
+services: active-directory
+documentationcenter: ''
+author: bryanla
+manager: mbaldwin
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="08/31/2016"
-   ms.author="bryanla"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 08/31/2016
+ms.author: bryanla
 
+---
 # Azure Active Directory 開発者向け用語集
 この記事では、Azure Active Directory (AD) 開発で重要となるいくつかの概念について定義しています。Azure AD のアプリケーション開発を習得する際の参考としてください。
 
-## Twitter アプリケーションの 
+## Twitter アプリケーションの
 [承認サーバー](#authorization-server)によって発行される[セキュリティ トークン](#security-token)の一種。[クライアント アプリケーション](#client-application)が、[保護されたリソース サーバー](#resource-server)にアクセスする目的で使用します。要求されたレベルのアクセスに関して、[リソース所有者](#resource-owner)がクライアントに付与しているアクセス権限を通常 [JSON Web トークン (JWT)][JWT] の形式で 1 つにまとめたものがこのトークンです。このトークンは、認証対象に関して当てはまる[要求](#claim)をすべて含んでおり、クライアント アプリケーションが特定のリソースにアクセスする際に一種の資格情報として使用することができます。また、これを使用すると、リソース所有者がクライアントに資格情報を開示する必要がなくなります。
 
 表現の対象となる資格情報によっては、アクセス トークンを "User+App" や "App-Only" と呼ぶこともあります。たとえばクライアント アプリケーションが使用する承認付与には、次のようなタイプがあります。
 
-- ["承認コード" 型の承認付与](#authorization-grant): エンド ユーザーはまず、リソース所有者として認証を行い、リソースにアクセスするための承認をクライアントに委任します。その後クライアントは、アクセス トークンを取得した時点で認証を行います。このトークンは、クライアント アプリケーションを承認したユーザーとアプリケーションの両方を表すことから、より具体的に "User+App" トークンと呼ばれることがあります。
-- ["クライアント資格情報" 型の承認付与](#authorization-grant): クライアントが行うのは単一の認証のみです。クライアントがリソース所有者の認証/承認なしで機能することから、このトークンは、"App-Only" トークンと呼ばれることがあります。
+* ["承認コード" 型の承認付与](#authorization-grant): エンド ユーザーはまず、リソース所有者として認証を行い、リソースにアクセスするための承認をクライアントに委任します。その後クライアントは、アクセス トークンを取得した時点で認証を行います。このトークンは、クライアント アプリケーションを承認したユーザーとアプリケーションの両方を表すことから、より具体的に "User+App" トークンと呼ばれることがあります。
+* ["クライアント資格情報" 型の承認付与](#authorization-grant): クライアントが行うのは単一の認証のみです。クライアントがリソース所有者の認証/承認なしで機能することから、このトークンは、"App-Only" トークンと呼ばれることがあります。
 
 詳細については、「[Azure AD のトークン リファレンス][AAD-Tokens-Claims]」を参照してください。
 
-## アプリケーション マニフェスト  
+## アプリケーション マニフェスト
 [Azure クラシック ポータル][AZURE-classic-portal]に備わっている機能の 1 つで、アプリケーションの ID 構成が JSON 形式で生成されて表現されます。そのマニフェストが関連付けられている [Application][AAD-Graph-App-Entity] エンティティと [ServicePrincipal][AAD-Graph-Sp-Entity] エンティティを更新するための機構として使用されます。詳細については、「[Azure Active Directory のアプリケーション マニフェストについて][AAD-App-Manifest]」を参照してください。
 
-## アプリケーション オブジェクト  
+## アプリケーション オブジェクト
 [Azure クラシック ポータル][AZURE-classic-portal]でアプリケーションを登録/更新すると、そのテナントを対象に、アプリケーション オブジェクトおよび対応する[サービス プリンシパル オブジェクト](#service-principal-object)の両方が作成/更新されます。アプリケーション オブジェクトは、アプリケーションの ID 構成をグローバルに (そのアプリケーションがアクセスできるすべてのテナントに対して) "*定義*" します。このオブジェクトをテンプレートとして、対応するサービス プリンシパル オブジェクトが "*生成*" され、実行時にローカル (特定のテナント) で使用されます。
 
 詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト][AAD-App-SP-Objects]」を参照してください。
 
-## アプリケーションの登録  
+## アプリケーションの登録
 アプリケーションの "ID とアクセス管理" の機能を Azure AD で行うためには、そのアプリケーションを Azure AD [テナント](#tenant)に登録する必要があります。アプリケーションを Azure AD に登録するとき、アプリケーションに使用する ID 構成を指定します。これによって Azure AD との連携が可能となり、次のような機能が使用できるようになります。
 
-- Azure AD Identity Management と [OpenID Connect][OpenIDConnect] プロトコル実装によるシングル サインオンの強固な管理
-- [クライアント アプリケーション](#client-application)による[保護されたリソース](#resource-server)へのブローカー アクセス (Azure AD の OAuth 2.0 [承認サーバー](#authorization-server)実装を介したアクセス)
-- リソース所有者の承認に基づいて保護されたリソースへのクライアント アクセスを管理する[同意フレームワーク](#consent)
+* Azure AD Identity Management と [OpenID Connect][OpenIDConnect] プロトコル実装によるシングル サインオンの強固な管理
+* [クライアント アプリケーション](#client-application)による[保護されたリソース](#resource-server)へのブローカー アクセス (Azure AD の OAuth 2.0 [承認サーバー](#authorization-server)実装を介したアクセス)
+* リソース所有者の承認に基づいて保護されたリソースへのクライアント アクセスを管理する[同意フレームワーク](#consent)
 
 詳細については、「[Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]」を参照してください。
 
@@ -52,8 +52,8 @@
 ## authorization
 認証済みのセキュリティ プリンシパルに対し、何かを実行する権限を付与する行為。Azure AD プログラミング モデルでは、主に次の 2 つの使用ケースが存在します。
 
-- [OAuth2 承認付与](#authorization-grant)フロー時: [リソース所有者](#resource-owner)が[クライアント アプリケーション](#client-application)に承認を付与すると、その所有者のリソースにクライアントがアクセスできます。
-- クライアントによるリソース アクセス時: [リソース サーバー](#resource-server)側で実装されます。[アクセス トークン](#access-token)内に存在する [claim](#claim) 値に基づいてアクセス制御の判断を行います。
+* [OAuth2 承認付与](#authorization-grant)フロー時: [リソース所有者](#resource-owner)が[クライアント アプリケーション](#client-application)に承認を付与すると、その所有者のリソースにクライアントがアクセスできます。
+* クライアントによるリソース アクセス時: [リソース サーバー](#resource-server)側で実装されます。[アクセス トークン](#access-token)内に存在する [claim](#claim) 値に基づいてアクセス制御の判断を行います。
 
 ## 承認コード
 "承認コード" 型 (4 種類ある OAuth2 [承認付与](#authorization-grant) の 1 つ) のフローの過程で[承認エンドポイント](#authorization-endpoint)から[クライアント アプリケーション](#client-application)に提供される有効期間の短い "トークン"。[リソース所有者](#resource-owner)の認証に対する応答としてこのコードがクライアント アプリケーションに返されることで、要求されたリソースにアクセスするための承認がリソース所有者から委任されていることが示されます。このフローの中で、このコードは後で[アクセス トークン](#access-token)と引き換えられます。
@@ -76,7 +76,7 @@ Azure AD アプリケーション統合の場合、Azure AD アプリケーシ�
 
 詳細については、「[Azure AD のトークン リファレンス][AAD-Tokens-Claims]」を参照してください。
 
-## クライアント アプリケーション  
+## クライアント アプリケーション
 [OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、[リソース所有者](#resource-owner)に代わって、保護されたリソースを要求するアプリケーションをいいます。"クライアント" という言葉の意味には、特定のハードウェア実装上の特性 (アプリケーションがサーバーで実行されるのか、デスクトップで実行されるのか、またはそれ以外のデバイスで実行されるのか、など) は含まれません。
 
 クライアント アプリケーションは、リソース所有者に[承認](#authorization)を要求することによって、[OAuth2 承認付与](#authorization-grant)フローに参加し、リソース所有者に代わって API やデータにアクセスすることができます。OAuth2 Authorization Framework では、資格情報の機密維持に対するクライアントの能力に基づき、"confidential" と "public" という [2 種類のクライアント][OAuth2-Client-Types]を定義しています。アプリケーションは、Web サーバー上で実行される [Web クライアント (confidential)](#web-client)、デバイス上にインストールされる[ネイティブ クライアント (public)](#native-client)、またはデバイスのブラウザーで実行される[ユーザーエージェントベース クライアント (public)](#user-agent-based-client) を実装できます。
@@ -100,8 +100,8 @@ Azure AD アプリケーション統合の場合、Azure AD アプリケーシ�
 ## アクセス許可
 [クライアント アプリケーション](#client-application)は、アクセス許可要求を宣言することで[リソース サーバー](#resource-server)へのアクセス権を取得します。次の 2 種類があります。
 
-- "委任" されたアクセス許可。サインインした[リソース所有者](#resource-owner)から委任された承認の下で、[スコープに基づく](#scopes)アクセス権を要求します。実行時には、クライアントの[アクセス トークン](#access-token)の ["scp" 要求](#claim)としてリソースに提示されます。
-- "アプリケーション" のアクセス許可。クライアント アプリケーションの資格情報/ID の下で[ロールベース](#roles)のアクセス権を要求します。実行時には、クライアントのアクセス トークンの ["roles" 要求](#claim)としてリソースに提示されます。
+* "委任" されたアクセス許可。サインインした[リソース所有者](#resource-owner)から委任された承認の下で、[スコープに基づく](#scopes)アクセス権を要求します。実行時には、クライアントの[アクセス トークン](#access-token)の ["scp" 要求](#claim)としてリソースに提示されます。
+* "アプリケーション" のアクセス許可。クライアント アプリケーションの資格情報/ID の下で[ロールベース](#roles)のアクセス権を要求します。実行時には、クライアントのアクセス トークンの ["roles" 要求](#claim)としてリソースに提示されます。
 
 これらの要求は[同意](#consent)プロセス時にも出現し、管理者またはリソース所有者には、そのテナント内のリソースに対するクライアント アクセスを許可/拒否する機会が与えられます。
 
@@ -132,7 +132,7 @@ Azure AD の Graph API によって公開されているアプリケーション
 推奨される名前付け規則は、"resource.operation.constraint" 形式です。Azure AD の Graph API によって公開されているスコープの詳しい説明については、[Graph API のアクセス許可スコープ][AAD-Graph-Perm-Scopes]に関するページを参照してください。Office 365 サービスによって公開されているスコープについては、「[Office 365 API permissions reference (Office 365 API アクセス許可リファレンス)][O365-Perm-Ref]」を参照してください。
 
 ## セキュリティ トークン
-要求を含んだ署名付きのドキュメント (OAuth2 トークン、SAML 2.0 アサーションなど)。OAuth2 [承認付与](#authorization-grant)の場合、[アクセス トークン](#access-token) (OAuth2) と [ID Token](OpenID Connect) がセキュリティ トークンの種類になります。どちらも [JSON Web トークン (JWT)][JWT] として実装されます。
+要求を含んだ署名付きのドキュメント (OAuth2 トークン、SAML 2.0 アサーションなど)。OAuth2 [承認付与](#authorization-grant)の場合、[アクセス トークン](#access-token) (OAuth2) と [ID Token](OpenID Connect.md) がセキュリティ トークンの種類になります。どちらも [JSON Web トークン (JWT)][JWT] として実装されます。
 
 ## サービス プリンシパル オブジェクト
 [Azure クラシック ポータル][AZURE-classic-portal]でアプリケーションを登録/更新すると、そのテナントを対象に、[アプリケーション オブジェクト](#application-object)と対応するサービス プリンシパル オブジェクトの両方が作成/更新されます。アプリケーション オブジェクトは、アプリケーションの ID 構成をグローバルに (関連するアプリケーションがアクセスできるすべてのテナントに対して) "*定義*" します。このオブジェクトをテンプレートとして、対応するサービス プリンシパル オブジェクトが "*生成*" され、実行時にローカル (特定のテナント) で使用されます。
@@ -150,9 +150,9 @@ Azure AD の Graph API によって公開されているアプリケーション
 ## テナント
 Azure AD ディレクトリのインスタンスを "Azure AD テナント" といいます。テナントには、次のようなさまざまな機能が備わっています。
 
-- 統合アプリケーションのレジストリ サービス
-- ユーザー アカウントや登録済みアプリケーションの認証
-- OAuth2、SAML などの各種プロトコルをサポートするうえで必要な REST エンドポイント ([承認エンドポイント](#authorization-endpoint)、[トークン エンドポイント](#token-endpoint) のほか、[マルチテナント アプリケーション](#multi-tenant-application)によって使用される "共通" エンドポイントなど)
+* 統合アプリケーションのレジストリ サービス
+* ユーザー アカウントや登録済みアプリケーションの認証
+* OAuth2、SAML などの各種プロトコルをサポートするうえで必要な REST エンドポイント ([承認エンドポイント](#authorization-endpoint)、[トークン エンドポイント](#token-endpoint) のほか、[マルチテナント アプリケーション](#multi-tenant-application)によって使用される "共通" エンドポイントなど)
 
 また、テナントはサブスクリプションのプロビジョニング中に Azure AD または Office 365 のサブスクリプションに関連付けられるため、サブスクリプションの ID 管理機能とアクセス管理機能が利用できるようになります。テナントを利用するための各種方法について詳しくは、「[Azure Active Directory テナントを取得する方法][AAD-How-To-Tenant]」をご覧ください。サブスクリプションと Azure AD テナントの関係について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法][AAD-How-Subscriptions-Assoc]」をご覧ください。
 

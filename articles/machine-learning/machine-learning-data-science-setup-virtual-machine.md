@@ -1,63 +1,55 @@
-<properties
-	pageTitle="仮想マシンを IPython Notebook サーバーとしてセットアップする | Microsoft Azure"
-	description="高度な分析のために、IPython Server を含むデータ サイエンス環境で使用できるように Azure 仮想マシンをセットアップします。"
-	services="machine-learning"
-	documentationCenter=""
-	authors="bradsev"
-	manager="jhubbard"
-	editor="cgronlun"  />
+---
+title: 仮想マシンを IPython Notebook サーバーとしてセットアップする | Microsoft Docs
+description: 高度な分析のために、IPython Server を含むデータ サイエンス環境で使用できるように Azure 仮想マシンをセットアップします。
+services: machine-learning
+documentationcenter: ''
+author: bradsev
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/19/2016"
-	ms.author="xibingao;bradsev" />
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/19/2016
+ms.author: xibingao;bradsev
 
+---
 # 高度な分析のために Azure 仮想マシンを IPython Notebook サーバーとしてセットアップする
-
 このトピックでは、高度な分析のためにデータ サイエンス環境の一部として使える Azure 仮想マシンをプロビジョニングし、構成する方法について説明します。IPython Notebook、Azure ストレージ エクスプローラー、AzCopy などのサポート ツールと、高度な分析プロジェクトに役立つ他のユーティリティで Windows 仮想マシンを構成します。たとえば Azure ストレージ エクスプローラーおよび AzCopy には、ローカル マシンから Azure BLOB ストレージにデータをアップロードしたり、BLOB ストレージからローカル マシンにデータをダウンロードしたりするための便利な機能が備わっています。
 
 ## <a name="create-vm"></a>手順 1: 汎用の Azure 仮想マシンを作成する
-
 Azure 仮想マシンが既にあり、IPython Notebook サーバーをセットアップするだけの場合は、この手順を省略し、「[手順 2： IPython Notebook 用のエンドポイントを既存の仮想マシンに追加する](#add-endpoint)」に進んでかまいません。
 
 Azure で仮想マシンを作成するプロセスを始める前に、プロジェクトのデータ処理に必要なマシンのサイズを決定する必要があります。小さいマシンは大きいマシンに比べてメモリの量と CPU コア数が少ないですが、より安価でもあります。マシンの種類と価格については、「<a href="http://azure.microsoft.com/pricing/details/virtual-machines/" target="_blank">Virtual Machines 価格</a>」ページをご覧ください。
 
 1. <a href="https://manage.windowsazure.com" target="_blank">Azure クラシック ポータル</a>にログインし、左下隅にある **[新規]** をクリックします。ウィンドウがポップアップ表示されます。**[Compute]** -> **[仮想マシン]** -> **[ギャラリーから]** の順にクリックします。
-
-	![Create workspace][24]
-
+   
+    ![Create workspace][24]
 2. 次のいずれかのイメージを選択します。
-
-	* Windows Server 2012 R2 Datacenter
-	* Windows Server Essentials エクスペリエンス (Windows Server 2012 R2)
-
-	その後、右下にある右向きの矢印をクリックして、次の構成ページに進みます。
-
-	![Create workspace][25]
-
+   
+   * Windows Server 2012 R2 Datacenter
+   * Windows Server Essentials エクスペリエンス (Windows Server 2012 R2)
+     
+     その後、右下にある右向きの矢印をクリックして、次の構成ページに進みます。
+     
+     ![Create workspace][25]
 3. 作成する仮想マシンの名前を入力し、マシンで処理するデータのサイズおよびマシンの想定機能 (メモリ サイズと CPU コア数) に基づいてマシンのサイズ (既定: A3) を選択し、マシンのユーザー名とパスワードを入力します。その後、右向きの矢印をクリックして、次の構成ページに進みます。
-
-	![Create workspace][26]
-
+   
+    ![Create workspace][26]
 4. この仮想マシンに使用する予定の **[ストレージ アカウント]** を含む **[リージョン/アフィニティ グループ/仮想ネットワーク]** を選択し、そのストレージ アカウントを選択します。下部にある **[エンドポイント]** フィールドで、エンドポイントの名前 (ここでは「IPython」) を入力してエンドポイントを追加します。エンドポイントの **[名前]** として任意の文字列を選択し、**[パブリック ポート]** として**使用可能な** 0 から 65536 までの任意の整数を選択できます。**[プライベート ポート]** は **9999** でなければなりません。ユーザーは、インターネット サービスに既に割り当てられているパブリック ポートの使用を**避ける**必要があります。<a href="http://www.chebucto.ns.ca/~rakerman/port-table.html" target="_blank">インターネット サービス用のポート</a>に関するページに、使用しないようにする必要がある割り当て済みのポートの一覧があります。
-
-	![Create workspace][27]
-
+   
+    ![Create workspace][27]
 5. 仮想マシンのプロビジョニング プロセスを開始するには、チェック マークをクリックします。
-
-	![Create workspace][28]
-
+   
+    ![Create workspace][28]
 
 仮想マシンのプロビジョニング プロセスが完了するには、15 ～ 25 分かかる場合があります。仮想マシンが作成されると、このマシンの状態が **[実行中]** と表示されます。
 
 ![Create workspace][29]
 
 ## <a name="add-endpoint"></a>手順 2: IPython Notebook 用のエンドポイントを既存の仮想マシンに追加する
-
 「手順 1」の指示に従って仮想マシンを作成した場合、IPython Notebook 用のエンドポイントは既に作成されており、このステップを省略できます。
 
 仮想マシンが既に存在する場合、下記の「手順 3」でインストールする IPython Notebook 用のエンドポイントを追加する必要があれば、まず Azure クラシック ポータルにログインし、仮想マシンを選択して、IPython Notebook サーバー用のエンドポイントを追加します。次の図は、IPython Notebook 用のエンドポイントを Windows 仮想マシンに追加した後のポータルのスクリーン ショットを示しています。
@@ -65,12 +57,11 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 ![Create workspace][17]
 
 ## <a name="run-commands"></a>手順 3: IPython Notebook とその他のサポート ツールをインストールする
-
 仮想マシンの作成後、リモート デスクトップ プロトコル (RDP) を使用して Windows 仮想マシンにログオンします。詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-windows-classic-connect-logon.md)」を参照してください。**管理者**として (**Powershell コマンド ウィンドウではなく**) **コマンド プロンプト**を開き、次のコマンドを実行します。
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/MachineSetup/Azure_VM_Setup_Windows.ps1'
 
-	@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
+    @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 
 インストールが完了すると、*C:\\Users\\<ユーザー名>\\Documents\\IPython Notebooks* ディレクトリ内で IPython Notebook サーバーが自動的に起動します。
 
@@ -83,7 +74,7 @@ IPython Notebook サーバーにアクセスするには、Web ブラウザー�
 
 ![Create workspace][19]
 
-次の図のように、_この Web サイトのセキュリティ証明書には問題があります_ (Internet Explorer) や_この接続ではプライバシーが保護されません_ (Chrome) という警告が表示されます。Internet Explorer の場合は **[このサイトの閲覧を続行する (推奨されません)]**、Chrome の場合は **[詳細設定]** の **[&#60;*DNS 名*> にアクセスする (安全ではありません)]** をクリックして続行します。次に、既に指定したパスワードを入力して IPython Notebook にアクセスします。
+次の図のように、*この Web サイトのセキュリティ証明書には問題があります* (Internet Explorer) や_この接続ではプライバシーが保護されません_ (Chrome) という警告が表示されます。Internet Explorer の場合は **[このサイトの閲覧を続行する (推奨されません)]**、Chrome の場合は **[詳細設定]** の **[&#60;*DNS 名*> にアクセスする (安全ではありません)]** をクリックして続行します。次に、既に指定したパスワードを入力して IPython Notebook にアクセスします。
 
 **Internet Explorer:**
 ![Create workspace][20]
@@ -95,28 +86,25 @@ IPython Notebook にログオンした後、*DataScienceSamples* ディレクト
 ![Create workspace][18]
 
 ## <a name="upload"></a>手順 5: 既存の IPython Notebook をローカル マシンから IPython Notebook サーバーにアップロードする
-
 IPython Notebook を使用すると、ユーザーはローカル マシン上の既存の IPython Notebook を仮想マシン上の IPython Notebook サーバーに簡単にアップロードできます。ユーザーは Web ブラウザーで IPython Notebook にログオンした後、IPython Notebook のアップロード先となる**ディレクトリ**にクリックして移動します。次に、**[ファイル エクスプローラー]** で、ローカル マシンからアップロードする IPython Notebook の .ipynb ファイルを選択し、Web ブラウザーの IPython Notebook ディレクトリにドラッグ アンド ドロップします。**[アップロード]** ボタンをクリックすると、.ipynb ファイルが IPython Notebook サーバーにアップロードされます。その後、他のユーザーは自分の Web ブラウザーからそれを使用できるようになります。
 
 ![Create workspace][22]
 
 ![Create workspace][23]
 
-
-##<a name="shutdown"></a>未使用時に仮想マシンをシャットダウンして割り当てを解除する
-
+## <a name="shutdown"></a>未使用時に仮想マシンをシャットダウンして割り当てを解除する
 Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用しないときに課金されないようにするには、未使用時に **[停止 (割り当て解除)]** 状態にする必要があります。
 
-> [AZURE.NOTE]\(Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Microsoft Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その場合、"PostShutdownAction" を "StoppedDeallocated" に設定して **ShutdownRoleOperation** を呼び出します。
+> [!NOTE]
+> \(Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Microsoft Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その場合、"PostShutdownAction" を "StoppedDeallocated" に設定して **ShutdownRoleOperation** を呼び出します。
+> 
+> 
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 
 1. アカウントを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/)にログインします。  
-
 2. 左側のナビゲーション バーから **[仮想マシン]** を選択します。
-
 3. 仮想マシンの一覧で、仮想マシンの名前をクリックして **[ダッシュボード]** ページに移動します。
-
 4. ページの下部にある **[シャット ダウン]** をクリックします。
 
 ![VM シャットダウン][15]
@@ -124,11 +112,9 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 仮想マシンの割り当てが解除されますが、削除はされません。Azure クラシック ポータルから、いつでも仮想マシンを再起動することができます。
 
 ## Azure VM を使用する準備ができました。次のステップは ...
-
 これで、仮想マシンをデータ サイエンス演習で使用する準備ができました。また、仮想マシンを IPython Notebook サーバーとして使用し、データの探索と処理など、Azure Machine Learning および Team Data Science Process に関連するタスクを行う準備もできました。
 
 Team Data Science Process の次のステップは、[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)に示されています。HDInsight にデータを移動し、Azure Machine Learning でデータの情報を取得する準備としてデータを処理してサンプリングする手順などがあります。
-
 
 [15]: ./media/machine-learning-data-science-setup-virtual-machine/vmshutdown.png
 [17]: ./media/machine-learning-data-science-setup-virtual-machine/add-endpoints-after-creation.png

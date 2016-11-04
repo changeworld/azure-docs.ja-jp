@@ -1,51 +1,46 @@
 
-<properties 
-    pageTitle="Media Services .NET SDK を使用するアセットと関連エンティティの管理" 
-    description="Media Services SDK for .NET を使用してアセットと関連エンティティを管理する方法について説明します。" 
-    authors="juliako" 
-    manager="dwrede" 
-    editor="" 
-    services="media-services" 
-    documentationCenter=""/>
+---
+title: Media Services .NET SDK を使用するアセットと関連エンティティの管理
+description: Media Services SDK for .NET を使用してアセットと関連エンティティを管理する方法について説明します。
+author: juliako
+manager: dwrede
+editor: ''
+services: media-services
+documentationcenter: ''
 
-<tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/10/2016"
-    ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/10/2016
+ms.author: juliako
 
-
-
-#<a name="managing-assets-and-related-entities-with-media-services-.net-sdk"></a>Media Services .NET SDK を使用するアセットと関連エンティティの管理
-
-
-> [AZURE.SELECTOR]
-- [.NET](media-services-dotnet-manage-entities.md)
-- [REST ()](media-services-rest-manage-entities.md)
-
+---
+# <a name="managing-assets-and-related-entities-with-media-services-.net-sdk"></a>Media Services .NET SDK を使用するアセットと関連エンティティの管理
+> [!div class="op_single_selector"]
+> * [.NET](media-services-dotnet-manage-entities.md)
+> * [REST ()](media-services-rest-manage-entities.md)
+> 
+> 
 
 このトピックでは、次の Media Services 管理タスクを実行する方法を示します。
 
-- アセット参照を取得する 
-- ジョブ参照を取得する 
-- すべてのアセットを一覧表示する 
-- ジョブとアセットを一覧表示する 
-- すべてのアクセス ポリシーを一覧表示する 
-- すべてのロケーターを一覧表示する
-- 大規模なコレクションのエンティティの列挙
-- アセットを削除する 
-- ジョブを削除する 
-- アクセス ポリシーを削除する 
+* アセット参照を取得する 
+* ジョブ参照を取得する 
+* すべてのアセットを一覧表示する 
+* ジョブとアセットを一覧表示する 
+* すべてのアクセス ポリシーを一覧表示する 
+* すべてのロケーターを一覧表示する
+* 大規模なコレクションのエンティティの列挙
+* アセットを削除する 
+* ジョブを削除する 
+* アクセス ポリシーを削除する 
 
-##<a name="prerequisites"></a>前提条件 
-
+## <a name="prerequisites"></a>前提条件
 「 [環境をセットアップする](media-services-set-up-computer.md)
 
-##<a name="get-an-asset-reference"></a>アセット参照を取得する
-
+## <a name="get-an-asset-reference"></a>アセット参照を取得する
 頻繁に実行するタスクでは、Media Services の既存のアセットへの参照を取得します。 次のコード例では、アセット ID に基づいて、サーバー コンテキスト オブジェクトで Assets コレクションからアセット参照を取得する方法を示します。
 次のコード例では、Linq クエリを使用して、既存の IAsset オブジェクトへの参照を取得します。
 
@@ -58,12 +53,11 @@
             select a;
         // Reference the asset as an IAsset.
         IAsset asset = assetInstance.FirstOrDefault();
-    
+
         return asset;
     }
 
-##<a name="get-a-job-reference"></a>ジョブ参照を取得する
-
+## <a name="get-a-job-reference"></a>ジョブ参照を取得する
 Media Services のコードで処理タスクを使用するときは、多くの場合、ID に基づいて既存のジョブへの参照を取得する必要があります。 次のコード例では、Jobs コレクションから IJob オブジェクトへの参照を取得する方法を示します。
 警告: 実行時間の長いエンコード ジョブを開始するときは、ジョブ参照を取得し、スレッドのジョブの状態を確認する必要があります。 このような場合は、メソッドがスレッドから返されるときに、更新されたジョブ参照を取得する必要があります。
 
@@ -77,15 +71,12 @@ Media Services のコードで処理タスクを使用するときは、多く�
             select j;
         // Return the job reference as an Ijob. 
         IJob job = jobInstance.FirstOrDefault();
-    
+
         return job;
     }
 
-##<a name="list-all-assets"></a>すべてのアセットを一覧表示する
-
+## <a name="list-all-assets"></a>すべてのアセットを一覧表示する
 ストレージに保持しているアセットの数が増えていくと、アセットの一覧表示が役立ちます。 次のコード例では、サーバー コンテキスト オブジェクトで Assets コレクションを反復処理する方法を示します。 またこのコード例では、各アセットについて、そのプロパティ値の一部をコンソールに出力します。 たとえば、各アセットには多数のメディア ファイルが含まれることがあります。 このコード例では、各アセットに関連付けられているすべてのファイルを書き出します。
-
-
 
     static void ListAssets()
     {
@@ -96,10 +87,10 @@ Media Services のコードで処理タスクを使用するときは、多く�
             + "Please wait..."
             + Environment.NewLine;
         Console.Write(waitMessage);
-    
+
         // Create a Stringbuilder to store the list that we build. 
         StringBuilder builder = new StringBuilder();
-    
+
         foreach (IAsset asset in _context.Assets)
         {
             // Display the collection of assets.
@@ -109,7 +100,7 @@ Media Services のコードで処理タスクを使用するときは、多く�
             builder.AppendLine("Name: " + asset.Name);
             builder.AppendLine("==============");
             builder.AppendLine("******ASSET FILES******");
-    
+
             // Display the files associated with each asset. 
             foreach (IAssetFile fileItem in asset.AssetFiles)
             {
@@ -118,13 +109,12 @@ Media Services のコードで処理タスクを使用するときは、多く�
                 builder.AppendLine("==============");
             }
         }
-    
+
         // Display output in console.
         Console.Write(builder.ToString());
     }
 
-##<a name="list-jobs-and-assets"></a>ジョブとアセットを一覧表示する
-
+## <a name="list-jobs-and-assets"></a>ジョブとアセットを一覧表示する
 重要な関連タスクとして、Media Services のアセットと関連付けられているジョブを一覧表示することがあります。 次のコード例では、各 IJob オブジェクトを一覧表示し、各ジョブについて、ジョブに関するプロパティ、すべての関連するタスク、すべての入力アセット、およびすべての出力アセットを表示する方法を示します。 この例のコードは、他の多数のタスクに役立てることができます。 たとえば、これまでに実行した 1 つまたは複数のエンコード ジョブの出力アセットを一覧表示する場合は、このコードから出力アセットへのアクセス方法が分かります。 出力アセットへの参照が分かっている場合は、コンテンツをダウンロードまたは URL を提供することで、他のユーザーやアプリケーションにコンテンツを配信できます。 
 
 アセットを配信するためのオプションの詳細については、「 [Media Services SDK for .NET によるアセットの配信](media-services-deliver-streaming-content.md)」をご覧ください。
@@ -141,10 +131,10 @@ Media Services のコードで処理タスクを使用するときは、多く�
             + "Please wait..."
             + Environment.NewLine;
         Console.Write(waitMessage);
-    
+
         // Create a Stringbuilder to store the list that we build. 
         StringBuilder builder = new StringBuilder();
-    
+
         foreach (IJob job in _context.Jobs)
         {
             // Display the collection of jobs on the server.
@@ -155,8 +145,8 @@ Media Services のコードで処理タスクを使用するときは、多く�
             builder.AppendLine("State: " + job.State);
             builder.AppendLine("Order: " + job.Priority);
             builder.AppendLine("==============");
-    
-    
+
+
             // For each job, display the associated tasks (a job  
             // has one or more tasks). 
             builder.AppendLine("******TASKS*******");
@@ -172,12 +162,12 @@ Media Services のコードで処理タスクを使用するときは、多く�
                 }
                 builder.AppendLine("==============");
             }
-    
+
             // For each job, display the list of input media assets.
             builder.AppendLine("******JOB INPUT MEDIA ASSETS*******");
             foreach (IAsset inputAsset in job.InputMediaAssets)
             {
-    
+
                 if (inputAsset != null)
                 {
                     builder.AppendLine("Input Asset Id: " + inputAsset.Id);
@@ -185,7 +175,7 @@ Media Services のコードで処理タスクを使用するときは、多く�
                     builder.AppendLine("==============");
                 }
             }
-    
+
             // For each job, display the list of output media assets.
             builder.AppendLine("******JOB OUTPUT MEDIA ASSETS*******");
             foreach (IAsset theAsset in job.OutputMediaAssets)
@@ -197,15 +187,14 @@ Media Services のコードで処理タスクを使用するときは、多く�
                     builder.AppendLine("==============");
                 }
             }
-    
+
         }
-    
+
         // Display output in console.
         Console.Write(builder.ToString());
     }
 
-##<a name="list-all-access-policies"></a>すべてのアクセス ポリシーを一覧表示する
-
+## <a name="list-all-access-policies"></a>すべてのアクセス ポリシーを一覧表示する
 Media Services では、アセットまたはそのファイルに関するアクセス ポリシーを定義できます。 アクセス ポリシーで、ファイルやアセットに対するアクセス許可 (アクセスの種類や期間) を定義します。 Media Services のコードでアクセス ポリシーを定義するには、通常は IAccessPolicy オブジェクトを作成して既存のアセットに関連付けます。 次に、ILocator オブジェクトを作成します。このオブジェクトにより、Media Services のアセットに直接アクセスできるようになります。 このドキュメント シリーズ付属の Visual Studio プロジェクトには、アクセス ポリシーとロケーターを作成してアセットに割り当てる方法を示すコード例がいくつか含まれています。
 
 次のコード例では、サーバーのすべてのアクセス ポリシーを一覧表示し、それぞれに関連付けられている権限の種類を表示する方法を示します。 アクセス ポリシーを表示するもう 1 つの便利な方法は、サーバーのすべての ILocator オブジェクトを一覧表示することです。各ロケーターについて、関連付けられているアクセス ポリシーを一覧表示するには、AccessPolicy プロパティを使用します。
@@ -219,12 +208,11 @@ Media Services では、アセットまたはそのファイルに関するア�
             Console.WriteLine("ID:  " + policy.Id);
             Console.WriteLine("Permissions: " + policy.Permissions);
             Console.WriteLine("==============");
-    
+
         }
     }
 
-##<a name="list-all-locators"></a>すべてのロケーターを一覧表示する
-
+## <a name="list-all-locators"></a>すべてのロケーターを一覧表示する
 ロケーターは、アセットに直接アクセスできる直接パス、およびロケーターの関連付けられているアクセス ポリシーの定義に従ってアセットへのアクセス許可を提供する URL です。 各アセットの Locators プロパティは、関連付けられている ILocator オブジェクトのコレクションを持つことがあります。 サーバー コンテキストも、すべてのロケーターが含まれる Locators コレクションを持ちます。
 
 次のコード例では、サーバーのすべてのロケーターを一覧表示します。 各ロケーターについて、関連するアセットの ID とアクセス ポリシーを表示します。 また、アクセス許可の種類、有効期限、およびアセットの完全パスも表示します。
@@ -250,20 +238,19 @@ Media Services では、アセットまたはそのファイルに関するア�
     }
 
 ## <a name="enumerating-through-large-collections-of-entities"></a>大規模なコレクションのエンティティの列挙
-
 パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 大規模なコレクションのエンティティを列挙するときは、Skip と Take を使用する必要があります。 
-    
+
 次の関数は、指定された Media Services アカウントのすべてのジョブをループします。 Media Services は、Jobs コレクションの 1000 個のジョブを返します。 この関数は、Skip と Take を使用してすべてのジョブが確実に列挙されるようにします (アカウントに 1,000 個を超えるジョブがある場合)。
-    
+
     static void ProcessJobs()
     {
         try
         {
-    
+
             int skipSize = 0;
             int batchSize = 1000;
             int currentBatch = 0;
-    
+
             while (true)
             {
                 // Loop through all Jobs (1000 at a time) in the Media Services account
@@ -273,7 +260,7 @@ Media Services では、アセットまたはそのファイルに関するア�
                     currentBatch++;
                     Console.WriteLine("Processing Job Id:" + job.Id);
                 }
-    
+
                 if (currentBatch == batchSize)
                 {
                     skipSize += batchSize;
@@ -291,35 +278,33 @@ Media Services では、アセットまたはそのファイルに関するア�
         }
     }
 
-##<a name="delete-an-asset"></a>アセットを削除する
-
+## <a name="delete-an-asset"></a>アセットを削除する
 次の例では、アセットを削除します。
 
     static void DeleteAsset( IAsset asset)
     {
         // delete the asset
         asset.Delete();
-    
+
         // Verify asset deletion
         if (GetAsset(asset.Id) == null)
             Console.WriteLine("Deleted the Asset");
-    
+
     }
 
-##<a name="delete-a-job"></a>ジョブを削除する
-
+## <a name="delete-a-job"></a>ジョブを削除する
 ジョブを削除するには、State プロパティで指定されているジョブの状態を確認する必要があります。 終了または取り消し済みのジョブは削除できますが、キューに登録済み、スケジュール済み、処理中などの他の状態のジョブは、取り消さないと削除できません。
 次のコード例では、ジョブを削除する方法を示します。この例では、ジョブの状態をチェックして、状態が終了または取り消し済みであるときに削除します。 このコードは、ジョブ参照の取得については、このトピックの前述のセクション「ジョブ参照を取得する」に依存します。
 
     static void DeleteJob(string jobId)
     {
         bool jobDeleted = false;
-    
+
         while (!jobDeleted)
         {
             // Get an updated job reference.  
             IJob job = GetJob(jobId);
-    
+
             // Check and handle various possible job states. You can 
             // only delete a job whose state is Finished, Error, or Canceled.   
             // You can cancel jobs that are Queued, Scheduled, or Processing,  
@@ -352,13 +337,12 @@ Media Services では、アセットまたはそのファイルに関するア�
                 default:
                     break;
             }
-    
+
         }
     }
 
 
-##<a name="delete-an-access-policy"></a>アクセス ポリシーを削除する
-
+## <a name="delete-an-access-policy"></a>アクセス ポリシーを削除する
 次のコード例では、ポリシー ID に基づいてアクセス ポリシーへの参照を取得し、ポリシーを削除する方法を示します。
 
     static void DeleteAccessPolicy(string existingPolicyId)
@@ -370,22 +354,18 @@ Media Services では、アセットまたはそのファイルに関するア�
                 where p.Id == existingPolicyId
                 select p;
         IAccessPolicy policy = policyInstance.FirstOrDefault();
-    
+
         policy.Delete();
-    
+
     }
-    
 
 
-##<a name="media-services-learning-paths"></a>Media Services のラーニング パス
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="provide-feedback"></a>フィードバックの提供
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
+## <a name="provide-feedback"></a>フィードバックの提供
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 <!--HONumber=Oct16_HO2-->
 

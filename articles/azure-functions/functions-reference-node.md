@@ -1,36 +1,36 @@
-<properties
-	pageTitle="Azure Functions NodeJS 開発者向けリファレンス | Microsoft Azure"
-	description="NodeJS を使用して Azure Functions を開発する方法について説明します。"
-	services="functions"
-	documentationCenter="na"
-	authors="christopheranderson"
-	manager="erikre"
-	editor=""
-	tags=""
-	keywords="Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
+---
+title: Azure Functions NodeJS 開発者向けリファレンス | Microsoft Docs
+description: NodeJS を使用して Azure Functions を開発する方法について説明します。
+services: functions
+documentationcenter: na
+author: christopheranderson
+manager: erikre
+editor: ''
+tags: ''
+keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 
-<tags
-	ms.service="functions"
-	ms.devlang="nodejs"
-	ms.topic="reference"
-	ms.tgt_pltfrm="multiple"
-	ms.workload="na"
-	ms.date="05/13/2016"
-	ms.author="chrande"/>
+ms.service: functions
+ms.devlang: nodejs
+ms.topic: reference
+ms.tgt_pltfrm: multiple
+ms.workload: na
+ms.date: 05/13/2016
+ms.author: chrande
 
+---
 # Azure Functions NodeJS 開発者向けリファレンス
-
-> [AZURE.SELECTOR]
-- [C# スクリプト](../articles/azure-functions/functions-reference-csharp.md)
-- [F# スクリプト](../articles/azure-functions/functions-reference-fsharp.md)
-- [Node.JS](../articles/azure-functions/functions-reference-node.md)
+> [!div class="op_single_selector"]
+> * [C# スクリプト](functions-reference-csharp.md)
+> * [F# スクリプト](functions-reference-fsharp.md)
+> * [Node.JS](functions-reference-node.md)
+> 
+> 
 
 Azure Functions の Node/JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインドを介してデータの送受信を行ったりする場合に `context` オブジェクトが渡される関数を簡単にエクスポートできます。
 
 この記事では、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
 
 ## 関数のエクスポート
-
 すべての JavaScript 関数では、ランタイムが関数を見つけて実行するために、`module.exports` を使用して `function` を 1 つエクスポートする必要があります。この関数には、常に `context` オブジェクトを含める必要があります。
 
 ```javascript
@@ -54,7 +54,6 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 すべてのバインドも、方向に関係なく、`context` オブジェクトと一緒に渡されます (以下を参照)。
 
 ## context オブジェクト
-
 ランタイムでは、`context` オブジェクトを使用して、関数との間でデータをやり取りし、ユーザーがランタイムと通信できるようにします。
 
 context オブジェクトは、常に関数の最初のパラメーターで、必ず含める必要があります。context オブジェクトには、ランタイムを適切に使用するために必要な `context.done` や `context.log` などのメソッドが用意されているためです。オブジェクトには、任意の名前 (`ctx` や `c` など) を付けることができます。
@@ -67,7 +66,6 @@ module.exports = function(context) {
 ```
 
 ## context.bindings
-
 `context.bindings` オブジェクトは、すべての入出力データを収集します。データは、バインドの `name` プロパティを介して `context.bindings` オブジェクトに追加されます。たとえば、*function.json* に次のバインド定義が含まれている場合は、`context.bindings.myInput` でキューの内容にアクセスできます。
 
 ```json
@@ -89,7 +87,6 @@ context.bindings.myOutput = {
 ```
 
 ## `context.done([err],[propertyBag])`
-
 `context.done` 関数は、実行が完了したことをランタイムに通知します。この関数は、関数が完了したときに呼び出す必要があります。そうしないと、ランタイムは関数が完了したことを認識しません。
 
 `context.done` 関数を使用すると、ユーザー定義のエラーに加えて、`context.bindings` オブジェクトのプロパティを上書きするプロパティのプロパティ バッグをランタイムに渡すことができます。
@@ -105,7 +102,6 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 ```
 
 ## context.log(message)
-
 `context.log` メソッドでは、ログ記録の目的で、相互に関連付けられているログ ステートメントを出力できます。`console.log` を使用した場合、指定したメッセージはプロセス レベルのログのみに対して表示されますが、これはあまり便利ではありません。
 
 ```javascript
@@ -129,7 +125,6 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
 ## HTTP トリガー: context.req と context.res
-
 HTTP トリガーでは、HTTP の要求オブジェクトと応答オブジェクトに `req` と `res` を使用するパターンをよく見かけるため、完全な `context.bindings.name` パターンを使用しなくても、context オブジェクトで簡単にアクセスできるようにしました。
 
 ```javascript
@@ -140,7 +135,6 @@ context.res = { status: 202, body: 'You successfully ordered more coffee!' };
 ```
 
 ## Node のバージョンとパッケージの管理
-
 Node のバージョンは、現在、`5.9.1` にロックされています。現在、さまざまなバージョンのサポートを追加して構成できるようにするために、調査しています。
 
 関数アプリのファイル システムの関数のフォルダーに *package.json* ファイルをアップロードすることで関数にパッケージを追加できます。ファイルをアップロードする方法については、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md#fileupdate)」の「**関数アプリ ファイルを更新する方法**」セクションを参照してください。
@@ -148,11 +142,8 @@ Node のバージョンは、現在、`5.9.1` にロックされています。�
 関数アプリの SCM (Kudu) コマンド ライン インターフェイスで `npm install` を使用することもできます。
 
 1. `https://<function_app_name>.scm.azurewebsites.net` に移動します。
-
 2. **[デバッグ コンソール]、[CMD]** の順にクリックします。
-
 3. `D:\home\site\wwwroot<function_name>` に移動します。
-
 4. `npm install` を実行します。
 
 必要なパッケージがインストールされたら、普段の方法でそれを関数にインポートします。たとえば、`require('packagename')` を利用します。
@@ -169,17 +160,16 @@ module.exports = function(context) {
 ```
 
 ## 環境変数
-
 環境変数またはアプリ設定値を取得するには、次のコード例のように、`process.env` を使用します。
 
 ```javascript
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
-    
+
     context.log('Node.js timer trigger function ran!', timeStamp);   
     context.log(GetEnvironmentVariable("AzureWebJobsStorage"));
     context.log(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
-    
+
     context.done();
 };
 
@@ -190,11 +180,9 @@ function GetEnvironmentVariable(name)
 ```
 
 ## TypeScript/CoffeeScript のサポート
-
 ランタイムによる TypeScript/CoffeeScript の自動コンパイルはまだ直接サポートされていません。そのため、デプロイ時にランタイムの外部ですべて処理する必要があります。
 
 ## 次のステップ
-
 詳細については、次のリソースを参照してください。
 
 * [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)

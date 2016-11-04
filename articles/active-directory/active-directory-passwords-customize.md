@@ -1,45 +1,45 @@
-<properties
-    pageTitle="カスタマイズ: Azure AD Password Management | Microsoft Azure"
-    description="ニーズに合わせて Azure AD で Password Management の外観、動作、および通知をカスタマイズする方法。"
-    services="active-directory"
-    documentationCenter=""
-    authors="asteen"
-    manager="femila"
-    editor="curtand"/>
+---
+title: 'カスタマイズ: Azure AD Password Management | Microsoft Docs'
+description: ニーズに合わせて Azure AD で Password Management の外観、動作、および通知をカスタマイズする方法。
+services: active-directory
+documentationcenter: ''
+author: asteen
+manager: femila
+editor: curtand
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/03/2016"
-    ms.author="asteen"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/03/2016
+ms.author: asteen
 
-
+---
 # <a name="customizing-password-management-to-fit-your-organization's-needs"></a>Password Management を組織のニーズに合わせてカスタマイズする
-
-> [AZURE.IMPORTANT] **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+> [!IMPORTANT]
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+> 
+> 
 
 ユーザーに最良のエクスペリエンスを与えるため、Password Management の使用可能なすべての構成オプションを調べて試してみることをお勧めします。 **Azure クラシック ポータル** で、 [[Active Directory 拡張機能]](https://manage.windowsazure.com)の [構成] タブに移動することで、今すぐ調査を開始できます。 このトピックでは、 **Azure クラシック ポータル** の中で、ディレクトリの [[構成]](https://manage.windowsazure.com)タブから管理者として実行できる以下の Password Management のカスタマイズについて、そのすべてを説明します。
 
 | トピック |  |
-| --------- | --------- |
-| パスワードのリセットを有効または無効にする方法 | [設定: パスワードのリセットが有効になっているユーザー](#users-enabled-for-password-reset) |
-| パスワードのリセットを一連の特定のユーザーに適用する方法 | [パスワードのリセットを特定のユーザーに制限する](#restrict-access-to-password-reset) |
-| サポートされる認証方法を変更する方法 | [設定: ユーザーが使用できる認証方法](#authentication-methods-available-to-users) |
-| 必要な認証方法の数を変更する方法 | [設定: 必要な認証方法の数](#number-of-authentication-methods-required) |
-| カスタムの秘密の質問を設定する方法 | [設定: カスタムの秘密の質問](#custom-security-questions) |
-| 既定のローカライズされた秘密の質問を設定する方法 | [設定: ナレッジ ベースの秘密の質問](#knowledge-based-security-questions) |
-| 必要な秘密の質問の数を変更する方法 | [設定: 登録またはリセット用の秘密の質問の数](#number-of-questions-required-to-register) |
-| サインイン時にユーザーに登録を強制する方法 | [パスワード リセットの登録ベースのロールアウトの適用](#require-users-to-register-when-signing-in) |
-| 登録内容の定期的な再確認をユーザーに強制する方法 | [設定: ユーザーに認証データの再確認を強制するまでの日数](#number-of-days-before-users-must-confirm-their-contact-data) |
-| ユーザーが管理者に連絡する方法をカスタマイズする方法 | [設定: "管理者に問い合わせてください" リンクをカスタマイズする](#customize-the-contact-your-administrator-link) |
-| パスワードをリセットせずに AD アカウントのロックを解除することをユーザーに許可する方法 | [設定: ユーザーがパスワードをリセットせずに AD アカウントのロックを解除できるようにする](#allow-users-to-unlock-accounts-without-resetting-their-password) |
-| ユーザーのパスワード リセット通知を有効にする方法 | [設定: パスワードがリセットされたときにユーザーに通知する](#notify-users-and-admins-when-their-own-password-has-been-reset) |
-| 管理者のパスワード リセット通知を有効にする方法 | [設定: 管理者が自分のパスワードをリセットしたときに他の管理者に通知する](#notify-admins-when-other-admins-reset-their-own-passwords) |
-| パスワード リセットの外観をカスタマイズする方法 | [設定: 会社名、ブランド、ロゴ ](#password-management-look-and-feel) |
-
+| --- | --- |
+| パスワードのリセットを有効または無効にする方法 |[設定: パスワードのリセットが有効になっているユーザー](#users-enabled-for-password-reset) |
+| パスワードのリセットを一連の特定のユーザーに適用する方法 |[パスワードのリセットを特定のユーザーに制限する](#restrict-access-to-password-reset) |
+| サポートされる認証方法を変更する方法 |[設定: ユーザーが使用できる認証方法](#authentication-methods-available-to-users) |
+| 必要な認証方法の数を変更する方法 |[設定: 必要な認証方法の数](#number-of-authentication-methods-required) |
+| カスタムの秘密の質問を設定する方法 |[設定: カスタムの秘密の質問](#custom-security-questions) |
+| 既定のローカライズされた秘密の質問を設定する方法 |[設定: ナレッジ ベースの秘密の質問](#knowledge-based-security-questions) |
+| 必要な秘密の質問の数を変更する方法 |[設定: 登録またはリセット用の秘密の質問の数](#number-of-questions-required-to-register) |
+| サインイン時にユーザーに登録を強制する方法 |[パスワード リセットの登録ベースのロールアウトの適用](#require-users-to-register-when-signing-in) |
+| 登録内容の定期的な再確認をユーザーに強制する方法 |[設定: ユーザーに認証データの再確認を強制するまでの日数](#number-of-days-before-users-must-confirm-their-contact-data) |
+| ユーザーが管理者に連絡する方法をカスタマイズする方法 |[設定: "管理者に問い合わせてください" リンクをカスタマイズする](#customize-the-contact-your-administrator-link) |
+| パスワードをリセットせずに AD アカウントのロックを解除することをユーザーに許可する方法 |[設定: ユーザーがパスワードをリセットせずに AD アカウントのロックを解除できるようにする](#allow-users-to-unlock-accounts-without-resetting-their-password) |
+| ユーザーのパスワード リセット通知を有効にする方法 |[設定: パスワードがリセットされたときにユーザーに通知する](#notify-users-and-admins-when-their-own-password-has-been-reset) |
+| 管理者のパスワード リセット通知を有効にする方法 |[設定: 管理者が自分のパスワードをリセットしたときに他の管理者に通知する](#notify-admins-when-other-admins-reset-their-own-passwords) |
+| パスワード リセットの外観をカスタマイズする方法 |[設定: 会社名、ブランド、ロゴ ](#password-management-look-and-feel) |
 
 ## <a name="password-management-look-and-feel"></a>Password Managment の外観
 次の表は、各コントロールが、パスワード リセットの登録とリセットを行うユーザーのエクスペリエンスに対して、どのように影響するかを説明しています。  これらのオプションは、[Azure の管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[ディレクトリのプロパティ]** セクションで構成できます。
@@ -134,7 +134,10 @@
 ## <a name="password-management-behavior"></a>Password Management の動作
 次の表は、各コントロールが、パスワード リセットの登録とリセットを行うユーザーのエクスペリエンスに対して、どのように影響するかを説明しています。  これらのオプションは、[Azure の管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[ユーザー パスワードのリセット ポリシー]** セクションで構成できます。
 
-> [AZURE.NOTE] これらのポリシー コントロールを表示するには、使用している管理者アカウントに AAD Premium ライセンスが割り当てられている必要があります。<br><br>これらのポリシー コントロールは、パスワードをリセットするエンド ユーザーにのみ適用されます。管理者には適用されません。  **管理者には、Microsoft が管理者のために指定した連絡用メールと携帯電話の既定のポリシーがあり、これらは変更できません。**
+> [!NOTE]
+> これらのポリシー コントロールを表示するには、使用している管理者アカウントに AAD Premium ライセンスが割り当てられている必要があります。<br><br>これらのポリシー コントロールは、パスワードをリセットするエンド ユーザーにのみ適用されます。管理者には適用されません。  **管理者には、Microsoft が管理者のために指定した連絡用メールと携帯電話の既定のポリシーがあり、これらは変更できません。**
+> 
+> 
 
 <table>
             <tbody><tr>
@@ -868,7 +871,6 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 * [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
 * [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
-
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 

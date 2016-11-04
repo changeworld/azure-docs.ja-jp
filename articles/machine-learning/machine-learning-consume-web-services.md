@@ -1,27 +1,23 @@
-<properties
-    pageTitle="Machine Learning Web サービスを使用する | Microsoft Azure"
-    description="機械学習サービスがデプロイされると、利用可能になっている RESTFul Web サービスを、要求応答サービスまたはバッチ実行サービスのいずれかとして使用できます。"
-    services="machine-learning"
-    documentationCenter=""
-    authors="garyericson"
-    manager="jhubbard"
-    editor="cgronlun" />
+---
+title: Machine Learning Web サービスを使用する | Microsoft Docs
+description: 機械学習サービスがデプロイされると、利用可能になっている RESTFul Web サービスを、要求応答サービスまたはバッチ実行サービスのいずれかとして使用できます。
+services: machine-learning
+documentationcenter: ''
+author: garyericson
+manager: jhubbard
+editor: cgronlun
 
-<tags
-    ms.service="machine-learning"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="tbd"
-    ms.date="10/04/2016"
-    ms.author="garye" />
+ms.service: machine-learning
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: tbd
+ms.date: 10/04/2016
+ms.author: garye
 
-
-
+---
 # <a name="how-to-consume-an-azure-machine-learning-web-service-that-has-been-deployed-from-a-machine-learning-experiment"></a>Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法
-
 ## <a name="introduction"></a>はじめに
-
 Azure Machine Learning の実験は、Web サービスとしてデプロイされると、さまざまなデバイスやプラットフォームが使用できる REST API と JSON 形式のメッセージを提供します。 Azure Machine Learning ポータルは、R、C#、および Python で Web サービスを呼び出すために使用できるコードを提供します。 
 
 これらのサービスは、次の 3 つの条件を満たす任意のプログラミング言語とデバイスから呼び出すことができます。
@@ -30,11 +26,14 @@ Azure Machine Learning の実験は、Web サービスとしてデプロイさ�
 * HTTPS 要求を実行する SSL の機能がある
 * (手動またはサポート ライブラリによって) JSON を解析できる
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]  
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 Azure Machine Learning Web サービスは、要求応答サービスまたはバッチ実行サービスの 2 つの方法で使用できます。 各シナリオでは、実験をデプロイしてから使用できる RESTFul Web サービスを通じて機能が提供されます。
 
-> [AZURE.TIP] 予測 Web サービスにアクセスする Web アプリケーションを作成する簡単な方法については、「[Web アプリケーション テンプレートによる Azure Machine Learning Web サービスの使用](machine-learning-consume-web-service-with-web-app-template.md)」をご覧ください。
+> [!TIP]
+> 予測 Web サービスにアクセスする Web アプリケーションを作成する簡単な方法については、「[Web アプリケーション テンプレートによる Azure Machine Learning Web サービスの使用](machine-learning-consume-web-service-with-web-app-template.md)」をご覧ください。
+> 
+> 
 
 <!-- When this article gets published, fix the link and uncomment
 For more information on how to manage Azure Machine Learning Web service endpoints using the REST API, see **Azure machine learning Web service endpoints**.
@@ -43,22 +42,18 @@ For more information on how to manage Azure Machine Learning Web service endpoin
 Azure Machine Learning Web サービスの作成とデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする][発行]」をご覧ください。 Machine Learning の実験の作成とデプロイに関する詳しい手順については、「[Azure Machine Learning を使用した予測ソリューションの開発][チュートリアル]」をご覧ください。
 
 ## <a name="requestresponse-service-rrs"></a>要求応答サービス (RRS)
-
 要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスであり、Azure Machine Learning Studio の実験で作成およびデプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。 このサービスを使用すると、使用側アプリケーションがリアルタイムでの応答を期待するシナリオに対応できます。
 
 RRS は、1 行または複数行の入力パラメーターを受け取り、出力として 1 行または複数行を生成できます。 出力行には複数の列を含めることができます。
 
 RRS の例では、アプリケーションの信頼性を検証しています。 この例では、数百万のアプリケーションのインストールが予想されます。 アプリケーションの開始時に、関連する入力を使用して RRS サービスを呼び出します。 次にアプリケーションは、アプリケーションの実行を許可またはブロックするサービスからの検証応答を受信します。
 
-
 ## <a name="batch-execution-service-bes"></a>バッチ実行サービス (BES)
-
 バッチ実行サービス (BES) は、データ レコードのバッチに対して、大量に非同期でスコアリングを処理するためのサービスです。 BES の入力には、blob、Azure のテーブル、SQL Azure、HDInsight (Hive クエリの結果など)、HTTP のソースなど、さまざまなソースからのレコードのバッチが含まれています。 BES の出力には、スコアの結果が含まれます。 結果は、Azure blob ストレージ内のファイルに出力し、記憶域のエンドポイントからのデータは、応答で返されます。
 
 BES は、個人やモノのインターネット (IOT) の定期的にスケジュールされたスコア付けなど、応答がすぐには必要でない場合に役立ちます。
 
 ## <a name="examples"></a>例
-
 RRS と BES の両方の動作方法を示すために、Azure Web サービスの例を使用します。 このサービスは、IOT (モノのインターネット) のシナリオで使用されます。 ここではシンプルにするために、デバイスは、 `cog_speed`という値を 1 つのみ送信し、1 つの応答を取得します。
 
 実験がデプロイされた後、RR または BES のいずれかのサービスを呼び出すために必要な情報が 4 つあります。
@@ -70,8 +65,7 @@ RRS と BES の両方の動作方法を示すために、Azure Web サービス�
 
 この情報の入手方法は、デプロイしたサービスのタイプ (新しい Web サービスまたはクラシック Web サービス) によって異なります。
 
-### <a name="information-location-in-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルでの情報の場所 
-
+### <a name="information-location-in-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルでの情報の場所
 必要な情報を入手するには、次のようにします。
 
 1. [Azure Machine Learning Web サービス][webservicesportal] ポータルにサインインします。
@@ -86,7 +80,6 @@ RRS と BES の両方の動作方法を示すために、Azure Web サービス�
 * 予想される API の**要求ヘッダー**、**応答ヘッダー**、および**本文**は **[Swagger API]** ページにあります
 
 ### <a name="information-locations-in-machine-learning-studio-classic-web-service-only"></a>Machine Learning Studioでの情報の場所 (クラシック Web サービスのみ)
-
 必要な情報は 2 つの場所から入手できます。Machine Learning Studio または Azure Machine Learning Web サービス ポータルです。
 
 必要な情報を Machine Learning Studio で入手するには、次のようにします。
@@ -100,7 +93,6 @@ RRS と BES の両方の動作方法を示すために、Azure Web サービス�
 * サービスの **API キー**はサービスの**ダッシュボード**にあります 
 * **要求の URI** は API ヘルプ ページにあります
 * 予想される API の**要求ヘッダー**、**応答ヘッダー**、および**本文**は API ヘルプ ページにあります
-
 
 API ヘルプ ページにアクセスするには、タスクに応じた **[要求/応答]** または **[バッチ実行]** リンクをクリックします。
 
@@ -120,9 +112,6 @@ API ヘルプ ページにアクセスするには、タスクに応じた **[�
 次の 2 つの例では、必要なコードを説明するために C# 言語が使用されています。
 
 ### <a name="rrs-example"></a>RRS の例
-
-
-
 次の要求のサンプルは、サンプル サービスの API 呼び出しに対するペイロードの API 入力を示しています。 クラシック Web サービスのペイロードのサンプルは、Machine Learning Web サービス ポータルの **API ヘルプ ページ**または **Swagger API** ページにあります。 新しい Web サービスのペイロードのサンプルは、Machine Learning Web サービス ポータルの **Swagger API** ページにあります。
 
 **要求のサンプル**
@@ -261,16 +250,16 @@ C# の実装のコード サンプルを次に示します。 クラシック We
           * @return response from the REST API
           */    
         public static String rrsHttpPost() {
-        
+
             HttpPost post;
             HttpClient client;
             StringEntity entity;
-        
+
             try {
                     // create HttpPost and HttpClient object
                     post = new HttpPost(apiurl);
                     client = HttpClientBuilder.create().build();
-            
+
                     // setup output message by copying JSON body into 
                     // apache StringEntity object along with content type
                     entity = new StringEntity(jsonBody, HTTP.UTF_8);
@@ -280,35 +269,34 @@ C# の実装のコード サンプルを次に示します。 クラシック We
                     // add HTTP headers
                     post.setHeader("Accept", "text/json");
                     post.setHeader("Accept-Charset", "UTF-8");
-        
+
                     // set Authorization header based on the API key
                     post.setHeader("Authorization", ("Bearer "+apikey));
                     post.setEntity(entity);
 
                     // Call REST API and retrieve response content
                     HttpResponse authResponse = client.execute(post);
-            
+
                     return EntityUtils.toString(authResponse.getEntity());
-            
+
             }
             catch (Exception e) {
-            
+
                     return e.toString();
             }
-    
+
         }
-    
-        
- 
+
+
+
 
 ### <a name="bes-example"></a>BES の例
-
 RR サービスとは異なり、BES サービスは非同期です。 つまり、BES API は単に実行対象のジョブをキューに登録し、呼び出し元はジョブの状態をポーリングして、完了すると表示します。 バッチ ジョブで現在サポートされている操作を次に示します。
 
 1. バッチ ジョブの作成 (送信)
-1. そのバッチ ジョブの開始
-1. バッチ ジョブの状態または結果の取得
-1. 実行中のバッチ ジョブのキャンセル
+2. そのバッチ ジョブの開始
+3. バッチ ジョブの状態または結果の取得
+4. 実行中のバッチ ジョブのキャンセル
 
 **1.バッチ実行ジョブを作成する**
 
@@ -317,11 +305,12 @@ Azure Machine Learning サービスのバッチ ジョブを作成する際に�
 * **Input**: バッチ ジョブの入力が保存される BLOB 参照を表します。
 * **GlobalParameters**: 実験用に定義できる一連のグローバル パラメーターを表します。 Azure Machine Learning の実験では、サービスの実行をカスタマイズする必須パラメーターとオプション パラメーターを使用できます。該当する場合、呼び出し元は必要なすべての必須パラメーターを指定する必要があります。 これらのパラメーターは、キーと値のペアのコレクションとして指定します。
 * **Outputs**: サービスによって 1 つ以上の出力が定義されている場合、呼び出し元は Azure BLOB の場所にそれらをリダイレクトできます。 このパラメーターの設定により、サービスの出力を目的の場所に、予測可能な名前で保存できます。これを設定しなければ、出力 BLOB 名はランダムに生成されます。 
-
+  
     サービスでは、出力コンテンツのタイプに基づいて、サポートされる次の形式で出力コンテンツを保存する必要があります。
-  - データ セット出力: **.csv、.tsv、.arff**
-  - トレーニング済みモデル出力: **.ilearner**
-
+  
+  * データ セット出力: **.csv、.tsv、.arff**
+  * トレーニング済みモデル出力: **.ilearner**
+    
     出力先のオーバーライドは、出力名または BLOB 参照ペアのコレクションとして指定します。 *出力名*は特定の出力ノードのユーザー定義の名前であり、*BLOB 参照*は出力のリダイレクト先となる Azure BLOB の場所への参照です。 *output name* はサービスの API ヘルプ ページに表示されます。
 
 すべてのジョブ作成パラメーターは、サービスの性質によっては省略できます。 たとえば、入力ノードが定義されていないサービスでは、*Input* パラメーターを渡す必要はありません。 同様に、出力先オーバーライド機能は省略可能です。これは、この機能を設定しなければ、出力は Azure Machine Learning ワークスペース用に設定された既定のストレージ アカウントに保存されるからです。 次のサンプルに、入力情報のみが提供されるサービスの要求ペイロードを示します。
@@ -401,7 +390,6 @@ Azure Machine Learning サービスのバッチ ジョブを作成する際に�
 実行中のバッチ ジョブは、指定した *CancelJob API* を呼び出し、ジョブの ID で渡すことで、いつでもキャンセルできます。 キャンセルは、ジョブの完了までにかかる時間が長すぎるなど、さまざまな理由で実行されます。
 
 #### <a name="using-the-bes-sdk"></a>BES SDK の使用
-
 [BES SDK NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.MachineLearning/) には、バッチ モードでスコア付けをするために BES を単に呼び出す機能が用意されています。 NuGet パッケージをインストールするには、Visual Studio で **[ツール]** メニューの **[NuGet パッケージ マネージャー]** を選択し、**[パッケージ マネージャー コンソール]** をクリックします。
 
 Web サービスとしてデプロイされる Azure Machine Learning の実験には、Web サービス入力モジュールを含めることができます。 これは、Web サービスへの入力が、BLOB の場所への参照の形で Web サービスの呼び出しを通して提供されることを意味します。 Web サービス入力モジュールを使用するのではなく、**データのインポート** モジュールを使用することもできます。 この場合、**データのインポート** モジュールは、実行時にクエリを使用して SQL DB などのデータ ソースからから読み取りを行います。 Web サービス パラメーターを使用して、他のサーバーやテーブルなどを動的に指すことができます。SDK ではこれらの両方のパターンがサポートされています。
@@ -409,7 +397,6 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
 次のサンプル コードでは、BES SDK を使用して Azure Machine Learning サービスに対してバッチ ジョブのサブミットおよび監視を行う方法を示します。 コメントには、設定と呼び出しに関する詳細が含まれています。
 
 #### <a name="sample-code"></a>**サンプル コード**
-
     // This code requires the Nuget package Microsoft.Azure.MachineLearning to be installed.
     // Instructions for doing this in Visual Studio:
     // Tools -> Nuget Package Manager -> Package Manager Console
@@ -537,9 +524,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
     }
 
 #### <a name="sample-code-in-java-for-bes"></a>Java for BES のコード サンプル
-
 バッチ実行サービス REST API では、次のサンプルのように入力サンプル csv と出力サンプル csv への参照から構成される JSON を取得し、バッチ予測を実行するジョブを Azure ML で作成します。 完全なコードは [Github](https://github.com/nk773/AzureML_BESApp/tree/master/src/azureml_besapp)で確認できます。 この Java サンプルは [apache http クライアント ライブラリ](https://hc.apache.org/downloads.cgi)を必要とします。 
-
 
     { "GlobalParameters": {}, 
         "Inputs": { "input1": { "ConnectionString":     "DefaultEndpointsProtocol=https;
@@ -551,57 +536,55 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
     } 
 
 
-##### <a name="create-a-bes-job"></a>BES ジョブを作成する  
-        
+##### <a name="create-a-bes-job"></a>BES ジョブを作成する
         /**
          * Call REST API to create a job to Azure ML 
          * for batch predictions
          * @return response from the REST API
          */ 
         public static String besCreateJob() {
-            
+
             HttpPost post;
             HttpClient client;
             StringEntity entity;
-            
+
             try {
                 // create HttpPost and HttpClient object
                 post = new HttpPost(apiurl);
                 client = HttpClientBuilder.create().build();
-                
+
                 // setup output message by copying JSON body into 
                 // apache StringEntity object along with content type
                 entity = new StringEntity(jsonBody, HTTP.UTF_8);
                 entity.setContentEncoding(HTTP.UTF_8);
                 entity.setContentType("text/json");
-    
+
                 // add HTTP headers
                 post.setHeader("Accept", "text/json");
                 post.setHeader("Accept-Charset", "UTF-8");
-            
+
                 // set Authorization header based on the API key
                 // note a space after the word "Bearer " - don't miss that
                 post.setHeader("Authorization", ("Bearer "+apikey));
                 post.setEntity(entity);
-    
+
                 // Call REST API and retrieve response content
                 HttpResponse authResponse = client.execute(post);
-                
+
                 jobId = EntityUtils.toString(authResponse.getEntity()).replaceAll("\"", "");
-                
-                
+
+
                 return jobId;
-                
+
             }
             catch (Exception e) {
-                
+
                 return e.toString();
             }
-        
+
         }
-        
-##### <a name="start-a-previously-created-bes-job"></a>以前に作成した BES ジョブを開始する        
-    
+
+##### <a name="start-a-previously-created-bes-job"></a>以前に作成した BES ジョブを開始する
         /**
          * Call REST API for starting prediction job previously submitted 
          * 
@@ -612,37 +595,36 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
             HttpPost post;
             HttpClient client;
             StringEntity entity;
-            
+
             try {
                 // create HttpPost and HttpClient object
                 post = new HttpPost(startJobUrl+"/"+job+"/start?api-version=2.0");
                 client = HttpClientBuilder.create().build();
-             
+
                 // add HTTP headers
                 post.setHeader("Accept", "text/json");
                 post.setHeader("Accept-Charset", "UTF-8");
-            
+
                 // set Authorization header based on the API key
                 post.setHeader("Authorization", ("Bearer "+apikey));
-    
+
                 // Call REST API and retrieve response content
                 HttpResponse authResponse = client.execute(post);
-                
+
                 if (authResponse.getEntity()==null)
                 {
                     return authResponse.getStatusLine().toString();
                 }
-                
+
                 return EntityUtils.toString(authResponse.getEntity());
-                
+
             }
             catch (Exception e) {
-                
+
                 return e.toString();
             }
         }
 ##### <a name="cancel-a-previously-created-bes-job"></a>以前に作成した BES ジョブをキャンセルする
-        
         /**
          * Call REST API for canceling the batch job 
          * 
@@ -653,37 +635,36 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
             HttpDelete post;
             HttpClient client;
             StringEntity entity;
-            
+
             try {
                 // create HttpPost and HttpClient object
                 post = new HttpDelete(startJobUrl+job);
                 client = HttpClientBuilder.create().build();
-             
+
                 // add HTTP headers
                 post.setHeader("Accept", "text/json");
                 post.setHeader("Accept-Charset", "UTF-8");
-            
+
                 // set Authorization header based on the API key
                 post.setHeader("Authorization", ("Bearer "+apikey));
-    
+
                 // Call REST API and retrieve response content
                 HttpResponse authResponse = client.execute(post);
-             
+
                 if (authResponse.getEntity()==null)
                 {
                     return authResponse.getStatusLine().toString();
                 }
                 return EntityUtils.toString(authResponse.getEntity());
-                
+
             }
             catch (Exception e) {
-                
+
                 return e.toString();
             }
         }
-        
-### <a name="other-programming-environments"></a>その他のプログラミング環境
 
+### <a name="other-programming-environments"></a>その他のプログラミング環境
 [swagger.io](http://swagger.io/) サイトの指示に従うことで、他のさまざまな言語でコードを生成することもできます。 Classic Web サービスの場合は、次の方法で swagger のドキュメントを入手できます。
 
 * API ヘルプ ページから入手する 
@@ -717,7 +698,6 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
 
 **サンプル API ヘルプ ページ**
 
-
     {
       "swagger": "2.0",
       "info": {
@@ -742,7 +722,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
           "get": {
             "summary": "Get swagger API document for the Web service",
             "operationId": "getSwaggerDocument",
-            
+
 <!-- Relative Links -->
 
 [発行]: machine-learning-publish-a-machine-learning-web-service.md

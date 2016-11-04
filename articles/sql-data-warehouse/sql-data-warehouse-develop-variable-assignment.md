@@ -1,28 +1,27 @@
-<properties
-   pageTitle="SQL Data Warehouse の変数の代入 | Microsoft Azure"
-   description="ソリューション開発のための、Azure SQL Data Warehouse での Transact-SQL 変数の代入に関するヒント。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: SQL Data Warehouse の変数の代入 | Microsoft Docs
+description: ソリューション開発のための、Azure SQL Data Warehouse での Transact-SQL 変数の代入に関するヒント。
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/14/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/14/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # SQL Data Warehouse の変数の代入
 SQL Data Warehouse の変数は、`DECLARE` ステートメントまたは `SET` ステートメントを使用して設定します。
 
 以下に示す方法は、いずれも変数値を設定する有効な方法です。
 
 ## DECLARE を使用した変数の設定
-
 DECLARE を使用した変数の初期化は、SQL Data Warehouse で変数値を設定する最も柔軟性の高い方法の 1 つです。
 
 ```sql
@@ -63,9 +62,8 @@ SET を使用して設定できる変数は、一度に 1 つに限られます�
 ## 制限事項
 SELECT および UPDATE は変数代入には使用できません。
 
-
 ## 次のステップ
-開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
+開発のその他のヒントについては、[開発の概要][開発の概要]に関するページをご覧ください。
 
 <!--Image references-->
 

@@ -1,22 +1,22 @@
-<properties
-   pageTitle="Azure の FreeBSD の概要 | Microsoft Azure"
-   description="Azure での FreeBSD 仮想マシンの使用について説明します。"
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="KylieLiang"
-   manager="timlt"
-   editor=""
-   tags="azure-service-management"/>
+---
+title: Azure の FreeBSD の概要 | Microsoft Docs
+description: Azure での FreeBSD 仮想マシンの使用について説明します。
+services: virtual-machines-linux
+documentationcenter: ''
+author: KylieLiang
+manager: timlt
+editor: ''
+tags: azure-service-management
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure-services"
-   ms.date="08/27/2016"
-   ms.author="kyliel"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 08/27/2016
+ms.author: kyliel
 
+---
 # Azure の FreeBSD の概要
 このトピックでは、Azure での FreeBSD 仮想マシンの実行の概要を説明します。
 
@@ -30,28 +30,26 @@ FreeBSD 仮想マシンのデプロイは、[Azure Marketplace](https://azure.mi
 FreeBSD でサポートされている VM 拡張機能を以下に示します。
 
 ### VMAccess
-
 [VMAccess](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) 拡張機能では次のことが可能です。
 
-- 元の sudo ユーザーのパスワードをリセットする。
-- パスワードを指定して新しい sudo ユーザーを作成する。
-- 指定したキーで公開ホスト キーを設定する。
-- ホスト キーが指定されていない場合、VM のプロビジョニング時に指定された公開ホスト キーをリセットする。
-- reset\_ssh が true に設定されている場合に、SSH ポート (22) を開き、sshd\_config を復元する。
-- 既存のユーザーを削除する。
-- ディスクをチェックする。
-- 追加されたディスクを修復する。
+* 元の sudo ユーザーのパスワードをリセットする。
+* パスワードを指定して新しい sudo ユーザーを作成する。
+* 指定したキーで公開ホスト キーを設定する。
+* ホスト キーが指定されていない場合、VM のプロビジョニング時に指定された公開ホスト キーをリセットする。
+* reset\_ssh が true に設定されている場合に、SSH ポート (22) を開き、sshd\_config を復元する。
+* 既存のユーザーを削除する。
+* ディスクをチェックする。
+* 追加されたディスクを修復する。
 
 ### CustomScript
-
 [CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript) 拡張機能では次のことが可能です。
 
-- 指定した場合、Azure Storage または外部パブリック ストレージ (GitHub など) からカスタマイズされたスクリプトをダウンロードする。
-- エントリ ポイント スクリプトを実行する。
-- インライン コマンドをサポートする。
-- シェル スクリプトと Python スクリプトで Windows 形式の改行を自動的に変換する。
-- シェル スクリプトと Python スクリプトで BOM を自動的に削除する。
-- CommandToExecute で機密データを保護する。
+* 指定した場合、Azure Storage または外部パブリック ストレージ (GitHub など) からカスタマイズされたスクリプトをダウンロードする。
+* エントリ ポイント スクリプトを実行する。
+* インライン コマンドをサポートする。
+* シェル スクリプトと Python スクリプトで Windows 形式の改行を自動的に変換する。
+* シェル スクリプトと Python スクリプトで BOM を自動的に削除する。
+* CommandToExecute で機密データを保護する。
 
 ## 認証: ユーザー名、パスワード、SSH キー
 Azure ポータルを使用して FreeBSD 仮想マシンを作成するときに、ユーザー名、パスワード、または SSH 公開キーを入力する必要があります。Azure に FreeBSD 仮想マシンをデプロイするためのユーザー名は、仮想マシン ("root" など) に既に存在するシステム アカウント (UID は 100 未満) の名前とは同じにしないでください。現在サポートされているのは、RSA SSH キーだけです。複数行の SSH キーは、"---- BEGIN SSH2 PUBLIC KEY ----" で始まり、"---- END SSH2 PUBLIC KEY ----" で終わる必要があります。
@@ -64,7 +62,7 @@ Azure での仮想マシン インスタンスをデプロイする際に指定�
 sudo -s を使用して root シェルを取得することもできます。
 
 ## 次のステップ
-- [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/) に移動して、FreeBSD VM を作成します。
-- 独自の FreeBSD を Azure で使用する場合は、「[FreeBSD VHD の作成と Azure へのアップロード](../virtual-machines-linux-classic-freebsd-create-upload-vhd.md)」をご覧ください。
+* [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/) に移動して、FreeBSD VM を作成します。
+* 独自の FreeBSD を Azure で使用する場合は、「[FreeBSD VHD の作成と Azure へのアップロード](../virtual-machines-linux-classic-freebsd-create-upload-vhd.md)」をご覧ください。
 
 <!---HONumber=AcomDC_0914_2016-->

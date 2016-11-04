@@ -1,29 +1,27 @@
-<properties
-	pageTitle="Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート |Microsoft Azure"
-	description="データがオンプレミスであるか、ストリーミングであるか、Azure 内にあるか、サード パーティのクラウド サービス内にあるかに応じて自動化されたデータ パイプラインを Azure Machine Learning Web サービスに対して設定する方法を示す印刷可能なチート シートです。"
-	services="machine-learning"
-	documentationCenter=""
-	authors="garyericson"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート | Microsoft Docs
+description: データがオンプレミスであるか、ストリーミングであるか、Azure 内にあるか、サード パーティのクラウド サービス内にあるかに応じて自動化されたデータ パイプラインを Azure Machine Learning Web サービスに対して設定する方法を示す印刷可能なチート シートです。
+services: machine-learning
+documentationcenter: ''
+author: garyericson
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/19/2016"
-	ms.author="mithal;garye" />
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/19/2016
+ms.author: mithal;garye
 
+---
 # Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート
-
 **Microsoft Azure Machine Learning 自動化データ パイプライン チート シート**は、予測分析モデルによってデータをスコア付けできる Machine Learning Web サービスに対してデータを送信するために使用できるテクノロジを確認するのに役立ちます。
 
 データがオンプレミスにあるか、クラウド内にあるか、リアルタイムでストリーミングするかに応じて、スコア付けする Web サービス エンドポイントにデータを移動するために利用できる複数のメカニズムがあります。このチート シートは、何を決定する必要があるかについて紹介し、ソリューションを開発するために役立つ記事を示します。
 
 ## Machine Learning 自動化データ パイプライン チート シートをダウンロードする
-
 ダウンロードしたチート シートは、タブロイド サイズ (11 x 17 インチ) で印刷できます。
 
 チート シートをダウンロードする: **[Microsoft Azure Machine Learning 自動化データ パイプライン チート シート](http://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
@@ -34,11 +32,10 @@
 
 
 ## Machine Learning Studio に役立つその他の情報
-
 * Microsoft Azure Machine Learning の概要については、「[Microsoft Azure での機械学習の概要](machine-learning-what-is-machine-learning.md)」を参照してください。
 * スコアリング Web サービスをデプロイする方法については、「[Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」を参照してください。
 * スコアリング Web サービスを使用する方法については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 <!---HONumber=AcomDC_0914_2016-->

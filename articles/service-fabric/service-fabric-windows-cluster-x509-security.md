@@ -1,30 +1,27 @@
-<properties
-   pageTitle="セキュリティで保護されたプライベート クラスターへの接続 | Microsoft Azure"
-   description="この記事では、スタンドアロンまたはプライベートのクラスター内での通信と、クライアントとクラスターの間での通信をセキュリティで保護する方法について説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="dsk-2015"
-   manager="timlt"
-   editor=""/>
+---
+title: セキュリティで保護されたプライベート クラスターへの接続 | Microsoft Docs
+description: この記事では、スタンドアロンまたはプライベートのクラスター内での通信と、クライアントとクラスターの間での通信をセキュリティで保護する方法について説明します。
+services: service-fabric
+documentationcenter: .net
+author: dsk-2015
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/08/2016"
-   ms.author="dkshir"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/08/2016
+ms.author: dkshir
 
-
+---
 # <a name="secure-a-standalone-cluster-on-windows-using-x.509-certificates"></a>X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護
-
 この記事では、スタンドアロンの Windows クラスターのさまざまなノード間の通信をセキュリティで保護する方法と、クラスターに接続するクライアントを X.509 証明書を使用して認証する方法について説明しています。 これにより、許可されたユーザーのみが、クラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。  証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  
 
 ノード間のセキュリティ、クライアントとノードの間のセキュリティ、ロールベースのアクセス制御などのクラスター セキュリティの詳細については、 [クラスターのセキュリティ シナリオ](service-fabric-cluster-security.md)に関する記事を参照してください。
 
 ## <a name="which-certificates-will-you-need?"></a>必要な証明書
-
 まず、クラスターのノードの 1 つに [スタンドアロン クラスター パッケージをダウンロード](service-fabric-cluster-creation-for-windows-server.md#downloadpackage) します。 ダウンロードしたパッケージの中に、 **ClusterConfig.X509.MultiMachine.json** ファイルがあります。 このファイルを開き、**properties** セクションの下にある **security** のセクションを確認します:
 
     "security": {
@@ -63,17 +60,20 @@
 
 このセクションでは、スタンドアロンの Windows クラスターをセキュリティで保護するために必要な証明書に関する情報が示されています。 証明書ベースのセキュリティを有効にするには、**ClusterCredentialType** と **ServerCredentialType** の値を *X509* に設定します。
 
->[AZURE.NOTE] [拇印](https://en.wikipedia.org/wiki/Public_key_fingerprint) は、証明書のプライマリ ID です。 作成する証明書の拇印を確認するには、 [証明書の拇印を取得する方法](https://msdn.microsoft.com/library/ms734695.aspx) に関する記事を参照してください。
+> [!NOTE]
+> [拇印](https://en.wikipedia.org/wiki/Public_key_fingerprint) は、証明書のプライマリ ID です。 作成する証明書の拇印を確認するには、 [証明書の拇印を取得する方法](https://msdn.microsoft.com/library/ms734695.aspx) に関する記事を参照してください。
+> 
+> 
 
 次の表は、クラスターのセットアップに必要な証明書の一覧です。
 
-|**CertificateInformation の設定**|**説明**|
-|-----------------------|--------------------------|
-|ClusterCertificate|クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。 2 つの異なる証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。 プライマリ証明書の拇印は **Thumbprint** セクションで設定し、セカンダリ証明書の拇印は **ThumbprintSecondary** 変数で設定します。|
-|ServerCertificate|この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 利便性を考えて、*ClusterCertificate* と *ServerCertificate* に同じ証明書を使用することもできます。 2 つの異なるサーバー証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。 プライマリ証明書の拇印は **Thumbprint** セクションで設定し、セカンダリ証明書の拇印は **ThumbprintSecondary** 変数で設定します。 |
-|ClientCertificateThumbprints|認証されたクライアントにインストールする証明書のセットです。 クラスターへのアクセスを許可するコンピューターには、いくつかの異なるクライアント証明書をインストールできます。 各証明書の拇印は **CertificateThumbprint** 変数で設定します。 **IsAdmin** を *true*に設定した場合、この証明書がインストールされたクライアントは、クラスターに対して管理者権限による管理操作を実行できるようになります。 **IsAdmin** が *false*の場合、この証明書がインストールされたクライアントはユーザー アクセス権限 (通常は読み取り専用) で許可される操作のみ実行できます。 役割の詳細については、「 [ロールベースのアクセス制御 (RBAC)](service-fabric-cluster-security.md/#role-based-access-control-rbac)  |
-|ClientCertificateCommonNames|**CertificateCommonName**には、最初のクライアント証明書の共通名を設定します。 **CertificateIssuerThumbprint** は、この証明書の発行者の拇印です。 共通名と発行者の詳細については、「 [証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx) 」を参照してください。|
-|HttpApplicationGatewayCertificate|これは、HTTP アプリケーション ゲートウェイをセキュリティで保護したい場合に指定することができる、オプションの証明書です。 この証明書を使用している場合は、nodeTypes に reverseProxyEndpointPort を設定してください。|
+| **CertificateInformation の設定** | **説明** |
+| --- | --- |
+| ClusterCertificate |クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。 2 つの異なる証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。 プライマリ証明書の拇印は **Thumbprint** セクションで設定し、セカンダリ証明書の拇印は **ThumbprintSecondary** 変数で設定します。 |
+| ServerCertificate |この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 利便性を考えて、*ClusterCertificate* と *ServerCertificate* に同じ証明書を使用することもできます。 2 つの異なるサーバー証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。 プライマリ証明書の拇印は **Thumbprint** セクションで設定し、セカンダリ証明書の拇印は **ThumbprintSecondary** 変数で設定します。 |
+| ClientCertificateThumbprints |認証されたクライアントにインストールする証明書のセットです。 クラスターへのアクセスを許可するコンピューターには、いくつかの異なるクライアント証明書をインストールできます。 各証明書の拇印は **CertificateThumbprint** 変数で設定します。 **IsAdmin** を *true*に設定した場合、この証明書がインストールされたクライアントは、クラスターに対して管理者権限による管理操作を実行できるようになります。 **IsAdmin** が *false*の場合、この証明書がインストールされたクライアントはユーザー アクセス権限 (通常は読み取り専用) で許可される操作のみ実行できます。 役割の詳細については、「 [ロールベースのアクセス制御 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac) |
+| ClientCertificateCommonNames |**CertificateCommonName**には、最初のクライアント証明書の共通名を設定します。 **CertificateIssuerThumbprint** は、この証明書の発行者の拇印です。 共通名と発行者の詳細については、「 [証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx) 」を参照してください。 |
+| HttpApplicationGatewayCertificate |これは、HTTP アプリケーション ゲートウェイをセキュリティで保護したい場合に指定することができる、オプションの証明書です。 この証明書を使用している場合は、nodeTypes に reverseProxyEndpointPort を設定してください。 |
 
 次に、クラスター、サーバー、クライアント証明書が指定されているクラスター構成の例を示します。
 
@@ -196,51 +196,49 @@ Write-Host $cert.ToString($true)
 
 1. .pfx ファイルをノードにコピーします。
 2. 管理者として PowerShell ウィンドウを開き、次のコマンドを入力します。 *$pswd* を、この証明書の作成に使用したパスワードに置き換えます。 *$PfxFilePath* を、そのノードにコピーした .pfx の完全なパスに置き換えます。
-
+   
     ```
     $pswd = "1234"
     $PfcFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-
 3. 次に、この証明書に対するアクセス制御を設定し、Network Service アカウントで実行される Service Fabric プロセスが次のスクリプトを実行することでそれを使用できるようにします。 証明書とサービス アカウントの "NETWORK SERVICE" の拇印を指定します。 certmgr.exe ツールを使用し、証明書の [秘密キーの管理] を見ることで、証明書の ACL が正しいかどうか確認できます。
-
+   
     ```
     param
     (
         [Parameter(Position=1, Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [string]$pfxThumbPrint,
-
+   
         [Parameter(Position=2, Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [string]$serviceAccount
         )
-
+   
         $cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object -FilterScript { $PSItem.ThumbPrint -eq $pfxThumbPrint; };
-
+   
         # Specify the user, the permissions and the permission type
         $permission = "$($serviceAccount)","FullControl","Allow"
         $accessRule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $permission;
-
+   
         # Location of the machine related keys
         $keyPath = $env:ProgramData + "\Microsoft\Crypto\RSA\MachineKeys\";
         $keyName = $cert.PrivateKey.CspKeyContainerInfo.UniqueKeyContainerName;
         $keyFullPath = $keyPath + $keyName;
-
+   
         # Get the current acl of the private key
         $acl = (Get-Item $keyFullPath).GetAccessControl('Access')
-
+   
         # Add the new ace to the acl of the private key
         $acl.SetAccessRule($accessRule);
-
+   
         # Write back the new acl
         Set-Acl -Path $keyFullPath -AclObject $acl -ErrorAction Stop
-
+   
         #Observe the access rights currently assigned to this certificate.
         get-acl $keyFullPath| fl
         ```
-
 4. Repeat the steps above for each server certificate. You can also use these steps to install the client certificates on the machines that you want to allow access to the cluster.
 
 ## Create the secure cluster
