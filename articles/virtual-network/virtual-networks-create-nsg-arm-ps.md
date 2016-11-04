@@ -39,21 +39,21 @@
 
 2. インターネットからポート 3389 へのアクセスを許可するセキュリティ規則を作成します。
 
-        $rule1 = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP"
-            -Access Allow -Protocol Tcp -Direction Inbound -Priority 100
-            -SourceAddressPrefix Internet -SourcePortRange *
+        $rule1 = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" `
+            -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 `
+            -SourceAddressPrefix Internet -SourcePortRange * `
             -DestinationAddressPrefix * -DestinationPortRange 3389
 
 3. インターネットからポート 80 へのアクセスを許可するセキュリティ規則を作成します。
 
-        $rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP"
-            -Access Allow -Protocol Tcp -Direction Inbound -Priority 101
-            -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix *
+        $rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" `
+            -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 `
+            -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * `
             -DestinationPortRange 80
 
 4. 上記で作成した規則を **NSG-FrontEnd**という名前の新しい NSG に追加します。
 
-        $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus
+        $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus `
         -Name "NSG-FrontEnd" -SecurityRules $rule1,$rule2
 
 5. NSG に作成された規則を確認します。
@@ -141,21 +141,21 @@
 
 1. フロント エンドのサブネットからポート 1433 (SQL Server で使用される既定のポート) へのアクセスを許可するセキュリティ規則を作成します。
 
-        $rule1 = New-AzureRmNetworkSecurityRuleConfig -Name frontend-rule -Description "Allow FE subnet"
-            -Access Allow -Protocol Tcp -Direction Inbound -Priority 100
-            -SourceAddressPrefix 192.168.1.0/24 -SourcePortRange *
+        $rule1 = New-AzureRmNetworkSecurityRuleConfig -Name frontend-rule -Description "Allow FE subnet" `
+            -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 `
+            -SourceAddressPrefix 192.168.1.0/24 -SourcePortRange * `
             -DestinationAddressPrefix * -DestinationPortRange 1433
 
 2. インターネットへのアクセスをブロックするセキュリティ規則を作成します。
 
-        $rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Block Internet"
-            -Access Deny -Protocol * -Direction Outbound -Priority 200
-            -SourceAddressPrefix * -SourcePortRange *
+        $rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Block Internet" `
+            -Access Deny -Protocol * -Direction Outbound -Priority 200 `
+            -SourceAddressPrefix * -SourcePortRange * `
             -DestinationAddressPrefix Internet -DestinationPortRange *
 
 3. 上記で作成した規則を **NSG-BackEnd**という名前の新しい NSG に追加します。
 
-        $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name "NSG-BackEnd"
+        $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name "NSG-BackEnd" `
             -SecurityRules $rule1,$rule2
 
 4. 上記で作成した NSG を *BackEnd* サブネットに関連付けます。

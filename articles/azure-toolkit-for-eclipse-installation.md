@@ -1,104 +1,103 @@
 <properties
-	pageTitle="Azure Toolkit for Eclipse のインストール | Microsoft Azure"
-	description="Azure Toolkit for Eclipse をインストールする方法について説明します。"
-	services=""
-	documentationCenter="java"
-	authors="rmcmurray"
-	manager="wpickett"
-	editor=""/>
+    pageTitle="Installing the Azure Toolkit for Eclipse | Microsoft Azure"
+    description="Learn how to install the Azure Toolkit for Eclipse."
+    services=""
+    documentationCenter="java"
+    authors="rmcmurray"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="multiple"
-	ms.workload="na"
-	ms.tgt_pltfrm="multiple"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="08/11/2016" 
-	ms.author="robmcm"/>
+    ms.service="multiple"
+    ms.workload="na"
+    ms.tgt_pltfrm="multiple"
+    ms.devlang="Java"
+    ms.topic="article"
+    ms.date="11/01/2016" 
+    ms.author="robmcm"/>
 
-<!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690946.aspx -->
 
-# Azure Toolkit for Eclipse のインストール
+# <a name="installing-the-azure-toolkit-for-eclipse"></a>Installing the Azure Toolkit for Eclipse
 
-Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリケーションを簡単に作成、開発、テスト、またデプロイできるテンプレートと機能を提供します。Azure Toolkit for Eclipse はオープン ソース プロジェクトであり、そのソース コードは、GitHub のプロジェクト サイトから MIT License で入手できます。URL は次のとおりです。
+The Azure Toolkit for Eclipse provides templates and functionality that allow you to easily create, develop, test, and deploy Azure applications using the Eclipse development environment. The Azure Toolkit for Eclipse is an Open Source project, whose source code is available under the MIT License from the project's site on GitHub at the following URL:
 
 <https://github.com/microsoft/azure-tools-for-java>
 
-次の手順は、Azure Toolkit for Eclipse をインストールする方法を示しています。
+The following steps show you how to install the Azure Toolkit for Eclipse.
 
 [AZURE.INCLUDE [azure-toolkit-for-eclipse-prerequisites](../includes/azure-toolkit-for-eclipse-prerequisites.md)]
 
-## Azure Toolkit for Eclipse をインストールするには
+## <a name="to-install-the-azure-toolkit-for-eclipse"></a>To install the Azure Toolkit for Eclipse
 
-1. Eclipse を起動します。
+1. Start Eclipse.
 
-1. Eclipse が開いたら、次の図に示すように、**[Help]** メニューをクリックし、**[Install New Software]** をクリックして ます。
+1. When Eclipse opens, click the **Help** menu, and then click **Install New Software**, as shown in the following illustration.
 
-    ![Azure Toolkit for Eclipse のインストール][01]
+    ![Installing the Azure Toolkit for Eclipse][01]
 
-1. **[Available Software]** ダイアログで、**[Work with]** ボックスに「**http://dl.microsoft.com/eclipse**」と入力し、**Enter** キーを押します。
+1. In the **Available Software** dialog, within the **Work with** text box, type **http://dl.microsoft.com/eclipse** followed by the **Enter** key.
 
-1. **[Name]** ウィンドウで、**\[Azure Toolkit for Eclipse]** をオンにし、**[Contact all update sites during install to find required software]** をオフにします。画面は次のようになります。
+1. In the **Name** pane, check **Azure Toolkit for Eclipse**, and uncheck **Contact all update sites during install to find required software**. Your screen should appear similar to the following:
 
-    ![Azure Toolkit for Eclipse のインストール][02]
+    ![Installing the Azure Toolkit for Eclipse][02]
 
-1. **Azure Toolkit for Eclipse** を展開すると、次の項目が表示されます。
+1. If you expand the **Azure Toolkit for Eclipse**, you will see the following items:
 
-    * **Application Insights Plugin for Java**: このコンポーネントによって、アプリケーションとサーバー インスタンスに対する Azure のテレメトリ ログと分析サービスを使用できます。
-    * **Azure Access Control Services Filter**: Azure ACS を使用するアプリケーション ユーザーの認証を支援するコンポーネントです。シングル サインオンの利用形態が可能となり、ID のロジックをアプリケーションから切り離すことができます。
-    * **Azure Common Plugin**: 他のツールキット コンポーネント全般で必要となる機能を備えたコンポーネントです。
-    * **Azure Explorer for Eclipse**: 他のツールキット コンポーネント全般で必要となる機能を備えたコンポーネントです。
-    * **Azure Plugin for Eclipse with Java**: Microsoft Azure クラウド向け Java アプリケーションを Eclipse やコマンド ラインによってビルド、テスト、デプロイできるプロジェクトの開発を支援するコンポーネントです。
-    * **Azure Web Apps Plugin with Java**: Microsoft Azure Web アプリ コンテナーへの Java Web アプリケーションのデプロイを支援するコンポーネントです。
-    * **Microsoft JDBC Driver 4.2 for SQL Server**: SQL Server と Microsoft Azure SQL Database 向けに、Java Platform Enterprise Edition 8 の JDBC API を提供するコンポーネントです。
-    * **Package for Apache Qpid Client Libraries for JMS**: Apache Qpid プロジェクトの JMS クライアント ライブラリを備えたコンポーネントです。Microsoft Azure でアプリケーションから AMQP メッセージングを利用するには、このコンポーネントを使用します。
-    * **Package for Microsoft Azure Libraries for Java**: Microsoft Azure の各種サービス (ストレージ、Service Bus、サービス ランタイムなど) にアクセスするための API を備えたコンポーネントです。
+    * **Application Insights Plugin for Java**: This component allows you to use Azure's telemetry logging and analysis services for your applications and server instances.
+    * **Azure Access Control Services Filter**: This component provides support for authenticating application users with Azure ACS, enabling single sign-on scenarios and externalizing identity logic from the application.
+    * **Azure Common Plugin**: This component provides the common functionality needed by other toolkit components.
+    * **Azure Explorer for Eclipse**: This component provides the common functionality needed by other toolkit components.
+    * **Azure Plugin for Eclipse with Java**: This component provides support for developing projects that help build, test and deploy Java applications for the Microsoft Azure cloud in Eclipse and via command line.
+    * **Azure Web Apps Plugin with Java**: This component provides support for deploying Java web applications to Microsoft Azure Web App containers.
+    * **Microsoft JDBC Driver 4.2 for SQL Server**: This component provides JDBC API for SQL Server and Microsoft Azure SQL Database for Java Platform Enterprise Edition 8.
+    * **Package for Apache Qpid Client Libraries for JMS**: This component provides the JMS client component from the Apache Qpid project to enable your application to use AMQP messaging in Microsoft Azure.
+    * **Package for Microsoft Azure Libraries for Java**: This component provides APIs for accessing Microsoft Azure services, such as storage, service bus, service runtime, etc.
 
-1. **[次へ]** をクリックします。(ツールキットのインストール時に異常な遅延が発生する場合は、**[Contact all update sites during install to find required software]** がオフになっていることを確認してください。)
+1. Click **Next**. (If you experience unusual delays when installing the toolkit, ensure that **Contact all update sites during install to find required software** is unchecked.)
 
-1. **[Install Details]** ダイアログで、**[Next]** をクリックします。
+1. In the **Install Details** dialog, click **Next**.
 
     ![Review Installation Details][03]
 
-1. **[Review Licenses]** ダイアログで、ライセンス契約の条項を確認します。ライセンス契約の条項に同意する場合は、**[I accept the terms of the license agreements]** をクリックし、**[Finish]** をクリックします。(残りの手順は、ライセンス契約の条項に同意したことを前提としています。ライセンス契約の条項に同意しない場合はインストール プロセスを終了します。)
+1. In the **Review Licenses** dialog, review the terms of the license agreements. If you accept the terms of the license agreements, click **I accept the terms of the license agreements** and then click **Finish**. (The remaining steps assume you do accept the terms of the license agreements. If you do not accept the terms of the license agreements, exit the installation process.)
 
     ![Review Licenses][04]
 
-    必要なパッケージが Eclipse によってダウンロードされてインストールされます。
+    Eclipse will download and install the requisite packages.
 
     ![Installation Progress][05]
 
-1. インストールを完了するために Eclipse を再起動することを求めるメッセージが表示されたら、**[Yes]** をクリックします。
+1. If prompted to restart Eclipse to complete installation, click **Yes**.
 
     ![Restart Prompt][06]
 
-## 関連項目
+## <a name="see-also"></a>See Also
 
-Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
+For more information about the Azure Toolkits for Java IDEs, see the following links:
 
 - [Azure Toolkit for Eclipse]
-  - *Azure Toolkit for Eclipse のインストール (この記事）*
-  - [Eclipse で Azure 用の Hello World Web アプリを作成する]
-  - [Azure Toolkit for Eclipse の新機能]
+  - *Installing the Azure Toolkit for Eclipse (This Article)*
+  - [Create a Hello World Web App for Azure in Eclipse]
+  - [What's New in the Azure Toolkit for Eclipse]
 - [Azure Toolkit for IntelliJ]
-  - [Azure Toolkit for IntelliJ のインストール]
-  - [IntelliJ で Azure 用の Hello World Web アプリを作成する]
-  - [Azure Toolkit for IntelliJ の新機能]
+  - [Installing the Azure Toolkit for IntelliJ]
+  - [Create a Hello World Web App for Azure in IntelliJ]
+  - [What's New in the Azure Toolkit for IntelliJ]
 
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
+For more information about using Azure with Java, see the [Azure Java Developer Center].
 
 <!-- URL List -->
 
 [Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse.md
 [Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij.md
-[Eclipse で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
-[IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[Create a Hello World Web App for Azure in Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
+[Create a Hello World Web App for Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [Installing the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-installation.md
-[Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
-[Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
-[Azure Toolkit for IntelliJ の新機能]: ./azure-toolkit-for-intellij-whats-new.md
+[Installing the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[What's New in the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[What's New in the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
-[Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
+[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 
 <!-- IMG List -->
 
@@ -109,4 +108,10 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [05]: ./media/azure-toolkit-for-eclipse-installation/eclipse-installation-05.png
 [06]: ./media/azure-toolkit-for-eclipse-installation/eclipse-installation-06.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690946.aspx -->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

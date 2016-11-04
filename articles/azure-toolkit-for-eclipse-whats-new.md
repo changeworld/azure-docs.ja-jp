@@ -4,7 +4,7 @@
     services=""
     documentationCenter="java"
     authors="rmcmurray"
-    manager="wpickett"
+    manager="erikre"
     editor=""/>
 
 <tags
@@ -13,13 +13,11 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="08/26/2016" 
+    ms.date="11/01/2016" 
     ms.author="robmcm;asirveda;martinsawicki"/>
 
 
-<!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694270.aspx -->
-
-# <a name="what's-new-in-the-azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse の新機能
+# <a name="whats-new-in-the-azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse の新機能
 
 ## <a name="azure-toolkit-for-eclipse-releases"></a>Azure Toolkit for Eclipse のリリース
 
@@ -27,7 +25,7 @@
 
 > [AZURE.NOTE] IntelliJ IDE 用の Azure Toolkit もあります。 詳細については、「 [Azure Toolkit for IntelliJ]」をご覧ください。
 
-### <a name="august-26,-2016"></a>2016 年 8 月 26 日
+### <a name="august-26-2016"></a>2016 年 8 月 26 日
 
 Azure Toolkit for Eclipse - August 2016 リリースでは、次の点が強化されています。
 
@@ -39,7 +37,7 @@ Azure Toolkit for Eclipse - August 2016 リリースでは、次の点が強化�
   - Azure Resource Manager を使用したストレージ アカウントの BLOB 管理をサポートします。これは、「クラシック」ストレージ アカウントを管理するための既存の機能を補完するものです。
 * **Microsoft JDBC Driver 6.0 for SQL Server**。 この更新は、Microsoft SQL Server (v6.0) の最新の JDBC ドライバーを組み込みます。このドライバーは、Java プロジェクトに簡単に追加できるライブラリとして含まれて、以前のバージョンから置き換わるようになりました。
 
-### <a name="june-29,-2016"></a>2016 年 6 月 29 日
+### <a name="june-29-2016"></a>2016 年 6 月 29 日
 
 Azure Toolkit for Eclipse - June 2016 リリースでは、次の点が強化されています。
 
@@ -51,7 +49,7 @@ Azure Toolkit for Eclipse - June 2016 リリースでは、次の点が強化さ
 * **Java Web アプリのリモート デバッグ**。 Azure Toolkit for Eclipse には、現在、Azure App Service での Java Web アプリのリモート デバッグがサポートされています。
 * **Eclipse Luna リリースのサポート。**  今後、Eclipse IDE バージョンは Luna 以上が必須となります。
 
-### <a name="april-12,-2016"></a>2016 年 4 月 12 日
+### <a name="april-12-2016"></a>2016 年 4 月 12 日
 
 Azure Toolkit for Eclipse - April 2016 リリースでは、次の点が強化されています。
 
@@ -59,7 +57,7 @@ Azure Toolkit for Eclipse - April 2016 リリースでは、次の点が強化�
 * **Azure Web アプリのサポートに関連する、その他の操作性、応答性、およびパフォーマンスの強化**。 Toolkit が Azure と通信する際のパフォーマンスがさまざまな点で最適化されたため、より応答性の高い UI となっています。
 * **Eclipse 内から Azure の既存の Web アプリケーション コンテナーを削除する機能**。 Azure Toolkit for Eclipse を使用して、Eclipse を離れることなく既存の Azure Web コンテナーを削除できるようになりました。
 
-### <a name="march-7,-2016"></a>2016 年 3 月 7 日
+### <a name="march-7-2016"></a>2016 年 3 月 7 日
 
 Azure Toolkit for Eclipse - March 2016 リリースでは、次の点が強化されています。
 
@@ -67,7 +65,7 @@ Azure Toolkit for Eclipse - March 2016 リリースでは、次の点が強化�
 * **Azure Explorer ビューによる Web アプリ管理のサポート**。 ツールキットの Azure Explorer ビューで Azure Web Apps を一覧表示し、起動し、停止できるようになりました。
 * **Tomcat、Jetty、Zulu OpenJDK のディストリビューションの更新**。 Azure Toolkit for Eclipse は更新版の Tomcat、Jetty、Zulu OpenJDK に対応しており、Java を Azure Cloud Services にデプロイするために利用できます。
 
-### <a name="january-4,-2016"></a>2016 年 1 月 4 日
+### <a name="january-4-2016"></a>2016 年 1 月 4 日
 
 Azure Toolkit for Eclipse - January 2016 リリースでは、次の点が強化されています。
 
@@ -75,7 +73,7 @@ Azure Toolkit for Eclipse - January 2016 リリースでは、次の点が強化
 * **Tomcat と Jetty ディストリビューションを更新**。 Microsoft Azure で Azure Toolkit for Eclipse から利用できる Jetty ディストリビューションと Tomcat ディストリビューションが更新されました。
 * **Azure の Eclipse ツールキットと IntelliJ ツールキットの機能の同等性**。 Azure Toolkit for Eclipse と [Azure Toolkit for IntelliJ] は、同じ機能セットをサポートするようになりました。
 
-### <a name="september-1,-2015"></a>2015 年 9 月 1 日
+### <a name="september-1-2015"></a>2015 年 9 月 1 日
 
 Azure Toolkit for Eclipse - September 2015 リリースでは、次の点が強化されています。
 
@@ -85,7 +83,7 @@ Azure Toolkit for Eclipse - September 2015 リリースでは、次の点が強�
 *  ただし現在、この機能の用途は開発とテスト (つまりミッションクリティカルではないアプリケーション) に限定されており、運用環境での使用はお勧めできません。
 * **Azure Explorer で Azure Storage 内の BLOB、キュー、テーブルを表示**。 ストレージ アーティファクトに対する一連の基本タスクを、開発者が Eclipse IDE から直接実行できるようになりました (例: BLOB の削除、アップロード、ダウンロード)。
 
-### <a name="august-1,-2015"></a>2015 年 8 月 1 日
+### <a name="august-1-2015"></a>2015 年 8 月 1 日
 
 Azure Toolkit for Eclipse - August 2015 リリースでは、次の点が強化されています。
 
@@ -94,7 +92,7 @@ Azure Toolkit for Eclipse - August 2015 リリースでは、次の点が強化�
 * **Azure SDK の Version 2.7**。 最新の Azure SDK です。 Azure Toolkit for Eclipse を Windows にインストールするための新たな前提条件となっています(Windows 以外のオペレーティング システムでは不要)。
 * **Zulu OpenJDK v7 更新をサポート**。 詳細については、 [Azul Systems の Zulu OpenJDK に関する Web ページ]を参照してください。
 
-### <a name="may-1,-2015"></a>2015 年 5 月 1 日
+### <a name="may-1-2015"></a>2015 年 5 月 1 日
 
 Azure Toolkit for Eclipse - May 2015 リリースでは、次の点が強化されています。
 
@@ -104,7 +102,7 @@ Azure Toolkit for Eclipse - May 2015 リリースでは、次の点が強化さ�
 * **デプロイのアップグレードに対応 (再発行が不要)**。 デプロイ プロジェクトを再発行するとき、以前のバージョンが既に運用されていた場合、従来は、以前のデプロイをシャットダウンしてゼロから再発行していましたが、今後は Azure のデプロイ アップグレード機能が使用されます。 更新時であってもクラウド サービスの中断を可能な限りなくして高い可用性を確保すると共に、再発行プロセスにかかる時間を短縮できます。
 * **最新の Zulu OpenJDK v8 (Update 40) をサポート**。 詳細については、 [Azul Systems の Zulu OpenJDK に関する Web ページ]を参照してください。
 
-### <a name="march-9,-2015"></a>2015 年 3 月 9 日
+### <a name="march-9-2015"></a>2015 年 3 月 9 日
 
 Azure Toolkit for Eclipse - March 2015 リリースでは、次の点が強化されています。
 
@@ -117,7 +115,7 @@ Azure Toolkit for Eclipse - March 2015 リリースでは、次の点が強化�
 * **Tomcat と Jetty が Azure で利用できるようになりデプロイの手間と時間が削減**。 Java サーバーを各自のアカウントに (またはツールキットを介して) アップロードせずに、Azure に用意されている各種バージョンの Tomcat と Jetty を直接参照できるようになりました。Java サーバーをアップロードする必要がない分、立ち上げにかかる時間を短縮することができます。
 * **Java Web アプリを簡単な方法で Azure Cloud Services に発行**。 開発とテストを手軽に行えるよう、従来よりも簡単に Java アプリケーションを Azure に発行できるようにしました。 従来のように Azure デプロイ プロジェクトを作成、構成する必要はありません。Tomcat v8 と Zulu JVM (OpenJDK) の既定のインスタンスを使ってアプリケーションがデプロイされます。
 
-### <a name="january-30,-2015"></a>2015 年 1 月 30 日
+### <a name="january-30-2015"></a>2015 年 1 月 30 日
 
 Azure Toolkit for Eclipse - January 2015 リリースでは、次の点が強化されています。
 
@@ -125,7 +123,7 @@ Azure Toolkit for Eclipse - January 2015 リリースでは、次の点が強化
 * **Application Insights SDK の追加**。 新しくリリースされたクライアント API ライブラリ (v0.9.0) が Package for Azure Libraries for Java に追加されました。
 * **Package for Azure Libraries for Java を更新**。 Azure Libraries for Java v0.7.0 と Storage Client API v2.0.0 のほか、新しくリリースされた Application Insights SDK v0.9.0 が追加されました。
 
-### <a name="november-12,-2014"></a>2014 年 11 月 12 日
+### <a name="november-12-2014"></a>2014 年 11 月 12 日
 
 Azure Toolkit for Eclipse - November 2014 リリースでは、次の点が強化されています。
 
@@ -133,7 +131,7 @@ Azure Toolkit for Eclipse - November 2014 リリースでは、次の点が強�
 * **新しいバージョンの Zulu OpenJDK v1.8、v1.7、v1.6 パッケージをサポート**。 詳細については、 [Azul Systems の Zulu OpenJDK に関する Web ページ]を参照してください。
 * **Standard D サイズのクラウド サービスを新たにサポート**。パフォーマンスが向上し、メモリ リソースが増強されています。 詳細については、「 [Azure の仮想マシンおよびクラウド サービスのサイズ]」をご覧ください。
 
-### <a name="october-17,-2014"></a>2014 年 10 月 17 日
+### <a name="october-17-2014"></a>2014 年 10 月 17 日
 
 Azure Toolkit for Eclipse - October 2014 リリースでは、次の点が強化されています。
 
@@ -143,7 +141,7 @@ Azure Toolkit for Eclipse - October 2014 リリースでは、次の点が強化
 * **Package for Azure Libraries for Java クライアント API ライブラリのバージョンを更新**。 詳細については、 [Microsoft Azure クライアント API]に関するページを参照してください。
 * **バグの修正。**  ユーザーからの報告やテストによって判明した各種バグ修正が数多く行われています。
 
-### <a name="august-5,-2014"></a>2014 年 8 月 5 日
+### <a name="august-5-2014"></a>2014 年 8 月 5 日
 
 Azure Toolkit for Eclipse - August 2014 リリースでは、次の点が強化されています。
 
@@ -154,7 +152,7 @@ Azure Toolkit for Eclipse - August 2014 リリースでは、次の点が強化�
 * **クラウドへの発行機能に伴いアーキテクチャを変更。**  クラウドへの発行機能をサポートするため、新しくリリースされた Microsoft Azure Client API for Java が使用されます。
 * **バグの修正。**  このリリースでは、ユーザーから要請された多数のバグ修正が行われています。
 
-### <a name="june-12,-2014"></a>2014 年 6 月 12 日
+### <a name="june-12-2014"></a>2014 年 6 月 12 日
 
 Azure Toolkit for Eclipse - June 2014 リリースは、小規模なメンテナンス アップデートが行われています。次の点が強化されました。
 
@@ -163,7 +161,7 @@ Azure Toolkit for Eclipse - June 2014 リリースは、小規模なメンテナ
 * **Package for Azure Libraries for Java クライアント API ライブラリのバージョンを更新。** 詳細については、 [Microsoft Azure クライアント API]に関するページを参照してください。
 * **バグの修正。**  このリリースでは、ユーザーから要請された多数のバグ修正が行われています。
 
-### <a name="april-4,-2014"></a>2014 年 4 月 4 日
+### <a name="april-4-2014"></a>2014 年 4 月 4 日
 
 Azure Plugin for Eclipse - April 2014 がリリースされました。 このアップデートに伴い Azure SDK 2.3 がリリースされています。Azure SDK 2.3 は、このプラグインの前提条件であり、プラグインをインストールするときに自動的にダウンロードされます。 このアップデートでは、February 2014 Preview 以降の新機能の追加とバグ修正が行われているほか、フィードバックに基づいてユーザビリティが強化されています。
 
@@ -176,7 +174,7 @@ Azure Plugin for Eclipse - April 2014 がリリースされました。 この�
 * **Express Emulator を使用したローカル エミュレーション。**  アプリケーションをローカルでデバッグする際のエミュレーターとして Azure Express Emulator が使用されます。
 * **Azure のブランド名を Microsoft Azure に変更。** Azure のブランド名変更に伴い、UI 画面が更新されています。Azure の旧名称は廃止されました。
 
-### <a name="february-6,-2014"></a>2014 年 2 月 6 日
+### <a name="february-6-2014"></a>2014 年 2 月 6 日
 
 Azure Plugin for Eclipse - February 2014 Preview がリリースされました。 このアップデートでは、October 2013 Preview 以降の新機能の追加とバグ修正が行われているほか、フィードバックに基づいてユーザビリティが強化されています。
 
@@ -191,7 +189,7 @@ Azure Plugin for Eclipse - February 2014 Preview がリリースされました�
 * **Azure 仮想マシン サイズとして A5 をサポート。**  メモリ容量を増強した A5 サイズの仮想マシンにクラウド サービスをデプロイできるようになりました。 この VM サイズの詳細については、「 [Azure の仮想マシンおよびクラウド サービスのサイズ]」を参照してください。
 * **Microsoft Windows Server 2012 R2 をサポート。**  クラウド オペレーティング システムとして Windows Server 2012 R2 を選択できるようになりました。
 
-### <a name="october-22,-2013"></a>2013 年 10 月 22 日
+### <a name="october-22-2013"></a>2013 年 10 月 22 日
 
 Azure Plugin for Eclipse - October 2013 Preview がリリースされました。 このアップデートでは、September 2013 Preview 以降の新機能の追加とバグ修正が行われているほか、フィードバックに基づいてユーザビリティが強化されています。
 
@@ -204,14 +202,14 @@ Azure Plugin for Eclipse - October 2013 Preview がリリースされました�
 * **[Project (プロジェクト)] コンテキスト メニューからロールを追加。** **Azure** プロジェクトのコンテキスト メニューに **[Add Role (役割の追加)]** という新しいメニュー項目が追加されました。従来よりも見やすくなり、新しいロールをすばやく Azure プロジェクトに追加できます。
 * **Package for the Azure Libraries for Java ライブラリを更新。**  [Microsoft Azure クライアント API]」をご覧ください。
 
-### <a name="september-25,-2013"></a>2013 年 9 月 25 日
+### <a name="september-25-2013"></a>2013 年 9 月 25 日
 
 Azure Plugin for Eclipse - September 2013 Preview がリリースされました。 このアップデートでは、August 2013 Preview 以降の新機能の追加とバグ修正が行われているほか、フィードバックに基づいてユーザビリティが強化されています。
 
 * **Azure で利用できる Azul Zulu OpenJDK パッケージをデプロイする機能。**  Azure のデプロイで使用する JDK を指定するときのオプションが新たに追加されました。 このオプションを使用すると、サード パーティの JDK パッケージを直接 Azure クラウドにデプロイでき、独自にアップロードする必要はありません。 その初となるパッケージは Azul Systems から提供されている Zulu という OpenJDK ベースのパッケージで、このオプションを使ってデプロイすることができます。
 * **Package for the Azure Libraries for Java ライブラリを更新。**  [Microsoft Azure クライアント API]」をご覧ください。
 
-### <a name="august-1,-2013"></a>2013 年 8 月 1 日
+### <a name="august-1-2013"></a>2013 年 8 月 1 日
 
 Azure Plugin for Eclipse - August 2013 Preview がリリースされました。 このアップデートに伴い Azure SDK 2.1 がリリースされています。Azure SDK 2.1 は、このプラグインの前提条件であり、プラグインをインストールするときに自動的にダウンロードされます。 このアップデートでは、July 2013 Preview 以降の新機能の追加とバグ修正が行われているほか、フィードバックに基づいてユーザビリティが強化されています。
 
@@ -219,7 +217,7 @@ Azure Plugin for Eclipse - August 2013 Preview がリリースされました。
 * **Azure SDK 2.1 リリースをサポート。** Azure Plugin for Eclipse - August 2013 Preview には Azure SDK 2.1 が必要となります。 以前のバージョンの Azure SDK で August 2013 Preview を使用することは避けてください。同様に、以前のバージョンの Azure Plugin for Eclipse で Azure SDK 2.1 を使用することも避けてください。
 * **Eclipse Kepler リリースをサポート。**  それに関連して今後、Eclipse IDE バージョンは Indigo 以上が必須となります。 今後、Helios での Azure Plugin for Eclipse の公式テストは実施されません。
 
-### <a name="july-3,-2013"></a>2013 年 7 月 3 日
+### <a name="july-3-2013"></a>2013 年 7 月 3 日
 
 Azure Plugin for Eclipse - July 2013 Preview がリリースされました。 このアップデートでは、May 2013 Preview 以降の新機能の追加とバグ修正が行われているほか、フィードバックに基づいてユーザビリティが強化されています。
 
@@ -230,7 +228,7 @@ Azure Plugin for Eclipse - July 2013 Preview がリリースされました。 �
 * **A6 と A7 の Azure 仮想マシン サイズをサポート。**  メモリ容量を増強した A6 と A7 サイズの仮想マシンにクラウド サービスをデプロイできるようになりました。 VM サイズの詳細については、「 [Azure の仮想マシンおよびクラウド サービスのサイズ]」を参照してください。
 * **Package for the Azure Libraries for Java ライブラリを更新。**  [Microsoft Azure クライアント API]」をご覧ください。
 
-### <a name="may-1,-2013"></a>2013 年 5 月 1 日
+### <a name="may-1-2013"></a>2013 年 5 月 1 日
 
 Azure Plugin for Eclipse - May 2013 Preview がリリースされました。 このメジャー アップデートに伴い Azure SDK 2.0 がリリースされています。Azure SDK 2.0 は、このプラグインの前提条件であり、プラグインをインストールするときに自動的にダウンロードされます。 このリリースでは、February 2013 Preview 以降の新機能の追加とバグ修正が行われているほか、フィードバックに基づいてユーザビリティが強化されています。
 
@@ -241,7 +239,7 @@ Azure Plugin for Eclipse - May 2013 Preview がリリースされました。 �
 * **Windows Server 2012 でスティッキー セッションをサポート。**  これまでスティッキー セッションは Windows Server 2008 R2 でしか動作しませんでしたが、今後は、両方のクラウド オペレーティング システム ターゲットで、セッション アフィニティがサポートされます。
 * **パッケージのアップロード パフォーマンスが向上。**  JDK とアプリケーション サーバーをデプロイ パッケージに埋め込んだときでも、デプロイ プロセスのアップロード部分の処理速度が、以前のバージョンと比べ約 2 倍にアップしています。
 
-### <a name="february-8,-2013"></a>2013 年 2 月 8 日
+### <a name="february-8-2013"></a>2013 年 2 月 8 日
 
 Azure Plugin for Eclipse - February 2013 Preview がリリースされました。 このマイナー アップデートでは、November 2012 Preview 以降の新機能の追加とバグ修正が行われているほか、フィードバックに基づいてユーザビリティが強化されています。
 
@@ -249,7 +247,7 @@ Azure Plugin for Eclipse - February 2013 Preview がリリースされました�
 * **[Azure ロールのプロパティ]** の **[コンポーネント]** セクションに**上へ移動**ボタンと**下へ移動**ボタンが追加され、ロールのユーザー定義コンポーネントの処理順序を変更できるようになりました。
 * **Package for the Azure Libraries for Java** ライブラリを [Microsoft Azure クライアント API]のバージョン 0.4.0 に基づいて更新しました。
 
-### <a name="november-5,-2012"></a>2012 年 11 月 5 日
+### <a name="november-5-2012"></a>2012 年 11 月 5 日
 
 Azure Plugin for Eclipse - November 2012 Preview がリリースされました。 このメジャー アップデートでは、September 2012 Preview 以降の多数の新機能の追加とバグ修正が行われているほか、フィードバックに基づいてユーザビリティが強化されています。
 
@@ -259,7 +257,7 @@ Azure Plugin for Eclipse - November 2012 Preview がリリースされました�
 * **プロジェクトの新規作成ウィザードを改良。**ウィザードの最後に新しいページが追加され、スティッキー セッション、キャッシュ、リモート デバッグなど、日常的に使われる重要な機能をプロジェクトに対していち早く有効にすることができます。
 * コンピューティング エミュレーターでの実行時、サーバー インスタンス間におけるポート バインドの競合を避けるために、ロール インスタンスを自動的に 1 に減らします。
 
-### <a name="september-28,-2012"></a>2012 年 9 月 28 日
+### <a name="september-28-2012"></a>2012 年 9 月 28 日
 
 Azure Plugin for Eclipse - September 2012 Preview がリリースされました。 このサービス更新では、August 2012 Preview 以降の多数のバグ修正が行われているほか、フィードバックに基づいて既存機能のユーザビリティが強化されています。
 
@@ -269,7 +267,7 @@ Azure Plugin for Eclipse - September 2012 Preview がリリースされました
 * ロール コンテキスト メニューの改善により、ロール固有の構成設定にすばやくアクセス可能。
 * **クラウドへの発行** ウィザードの微調整とさまざまなバグ修正。
 
-### <a name="august-28,-2012"></a>2012 年 8 月 28 日
+### <a name="august-28-2012"></a>2012 年 8 月 28 日
 
 Azure Plugin for Eclipse - August 2012 Preview がリリースされました。 このサービス更新では、July 2012 Preview 以降のバグ修正が行われているほか、フィードバックに基づいて既存機能のユーザビリティが強化されています。
 
@@ -280,11 +278,11 @@ Azure Plugin for Eclipse - August 2012 Preview がリリースされました。
     * **JDK の場所を自動検出** (必要に応じて上書きできます)。
     * **サーバーの種類を自動検出** 。
 
-### <a name="july-15,-2012"></a>2012 年 7 月 15 日
+### <a name="july-15-2012"></a>2012 年 7 月 15 日
 
 Azure Plugin for Eclipse - July 2012 Preview では、June 2012 リリース後に見つかった、またはユーザーから報告されたきわめて優先度の高いバグが数多く修正されています。 これはサービス更新のみです。新しい機能は含まれていません。
 
-### <a name="june-7,-2012"></a>2012 年 6 月 7 日
+### <a name="june-7-2012"></a>2012 年 6 月 7 日
 
 Azure Plugin for Eclipse - June 2012 CTP がリリースされました。 新機能は次のとおりです。
 
@@ -307,7 +305,7 @@ Azure Plugin for Eclipse - June 2012 CTP がリリースされました。 新�
 * **コンポーネントの UI:** プロジェクト内の個々の Azure ロール間や他の外部リソース (Java アプリケーション プロジェクトなど) 間で生じるプロジェクトの依存関係を上級ユーザーが設定しやすくなりました。また、デプロイのロジックも概念化しやすくなっています。 詳細については、「[コンポーネントのプロパティ]」を参照してください。
 * **以前のバージョンのプロジェクトを自動的にアップグレード:** ワークスペースを開いたとき、以前のバージョンのプラグインで作成した Azure プロジェクトが含まれていると、その古いプロジェクトは、閉じた状態で Eclipse に表示されます。これは、以前のバージョンのプロジェクトと新しいリリースとの間に互換性がないためです。 これらの古いプロジェクトの 1 つを開こうとすると、アップグレード ウィザードが起動します。 アップグレードに同意すると、名前に **_Upgraded** が追加されて新しいプロジェクトが作成され、新しいリリースで作業できるよう自動的に更新されます。 新しいプロジェクトの名前は必要に応じて変更できます。 アップグレードの過程で元のプロジェクトに変更が加えられることはありません (閉じた状態で維持されます)。
 
-### <a name="december-10,-2011"></a>2011 年 12 月 10 日
+### <a name="december-10-2011"></a>2011 年 12 月 10 日
 
 Azure Plugin for Eclipse - December 2011 CTP がリリースされました。 新機能は次のとおりです。
 
@@ -381,6 +379,8 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [ic710876]: ./media/azure-toolkit-for-eclipse-whats-new/ic710876.png
 [ic710882]: ./media/azure-toolkit-for-eclipse-whats-new/ic710882.png
 [ic710883]: ./media/azure-toolkit-for-eclipse-whats-new/ic710883.png
+
+<!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694270.aspx -->
 
 
 

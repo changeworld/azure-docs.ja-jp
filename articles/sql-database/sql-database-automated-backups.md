@@ -17,22 +17,9 @@
    ms.author="carlrab"/>
 
 
-
-
-<!-- # H1 Title
-
- H1 title should answer the question "What is in this topic?" Write the title in conversational language and use search key words as much as possible. Since this is a learning topic, make sure the title indicates that and doesn't mislead people to think this will tell them how to do tasks.  
--->
-
 # <a name="learn-about-sql-database-backups"></a>SQL Database バックアップについての詳細情報
 
-<!-- Introduction
 
-1. Sentence #1 begins with "Learn about ..." and gives the scope of what the article will cover.
-2. Sentence #2 explains the key capability or selling point of the feature.
-3. Sentence #3 begins with "Use this feature to ..." and gives a common use case.
-
--->
 
 SQL Database は 5 分おきにローカル データベースをバックアップし、Azure 読み取りアクセス Geo 冗長ストレージ (RA-GRS) を利用してデータベース バックアップの一部を別の地理的領域にコピーします。 バックアップは**自動的に行われ、追加料金は発生しません**。 ローカル データベースのバックアップを使用すると、同じサーバーの[ある時点にデータベースを復元](sql-database-point-in-time-restore-portal.md)できます。 Geo 冗長バックアップを使用すると、[異なる地理的領域にデータベースを復元できます](sql-database-geo-restore-portal.md)。  
 
@@ -44,7 +31,7 @@ SQL Database は 5 分おきにローカル データベースをバックアッ
 
 <!--## What is <feature>?" -->
 
-## <a name="what-is-a-sql-database-backup?"></a>SQL Database バックアップとは何か。  
+## <a name="what-is-a-sql-database-backup"></a>SQL Database バックアップとは何か。  
 
 <!-- 
 First sentence begins with "The <feature> is ..." followed by a definition of the feature. Provide a 1-2 paragraph intro to explain what the feature is, how it works, and the importance of the feature for solving business problems.
@@ -68,15 +55,15 @@ SQL Database は [Azure Storage レプリケーション](../storage/storage-red
 >[AZURE.NOTE] Azure Storage の " *レプリケーション* " という用語は、ある場所から別の場所にファイルをコピーすることを表します。 SQL の " *データベース レプリケーション* " は、複数のセカンダリ データベースとプライマリ データベースとの同期を保つことを意味します。 
 
 
-## <a name="how-much-backup-storage-is-included-at-no-cost?"></a>無償のバックアップ ストレージはどのくらい含まれますか。
+## <a name="how-much-backup-storage-is-included-at-no-cost"></a>無償のバックアップ ストレージはどのくらい含まれますか。
 
 SQL Database は、バックアップ ストレージとして、プロビジョニングされている最大のデータベース ストレージの 200% までを追加のコストなしで提供します。 たとえば、プロビジョニングされたデータベース サイズが 250 GB の Standard データベース インスタンスの場合、500 GB のバックアップ ストレージを追加のコストなしで利用できます。 データベースのサイズがプロビジョニングされたバックアップ ストレージを超える場合は、Azure サポートに連絡してリテンション期間を短縮できます。 もう 1 つのオプションとして、標準の読み取りアクセス geo 冗長ストレージ (RA-GRS) の料金で課金される追加のバックアップ ストレージに対して料金を支払うこともできます。 
 
-## <a name="how-often-do-backups-happen?"></a>バックアップはどのくらいの頻度で行われますか。
+## <a name="how-often-do-backups-happen"></a>バックアップはどのくらいの頻度で行われますか。
 
 完全データベース バックアップが毎週作成され、差分データベース バックアップは 1 時間に 1 回作成されます。また、トランザクション ログのバックアップは 5 分間隔で実行されます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースの完全バックアップと[差分](https://msdn.microsoft.com/library/ms175526.aspx)バックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら決定されます。 
 
-## <a name="how-long-do-you-keep-my-backups?"></a>バックアップはどのくらいの期間保存されますか。
+## <a name="how-long-do-you-keep-my-backups"></a>バックアップはどのくらいの期間保存されますか。
 
 各 SQL Database バックアップには、データベースの[サービス レベル](sql-database-service-tiers.md)に基づくリテンション期間が指定されます。 データベースのリテンション期間:
 
@@ -101,6 +88,6 @@ Basic サービス レベルから Standard または Premium にデータベー
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 
