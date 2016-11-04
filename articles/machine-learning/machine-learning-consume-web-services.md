@@ -40,7 +40,7 @@ Azure Machine Learning Web サービスは、要求応答サービスまたは�
 For more information on how to manage Azure Machine Learning Web service endpoints using the REST API, see **Azure machine learning Web service endpoints**.
 -->
 
-Azure Machine Learning Web サービスの作成とデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする][公開]」をご覧ください。 Machine Learning の実験の作成とデプロイに関する詳しい手順については、「[Azure Machine Learning を使用した予測ソリューションの開発][チュートリアル]」をご覧ください。
+Azure Machine Learning Web サービスの作成とデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする][発行]」をご覧ください。 Machine Learning の実験の作成とデプロイに関する詳しい手順については、「[Azure Machine Learning を使用した予測ソリューションの開発][チュートリアル]」をご覧ください。
 
 ## <a name="requestresponse-service-rrs"></a>要求応答サービス (RRS)
 
@@ -753,6 +753,6 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
 [mlstudio]: https://studio.azureml.net
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

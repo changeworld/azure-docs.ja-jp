@@ -312,9 +312,9 @@ IoT Hub では、次の制限事項と特定の動作で MQTT v3.1.1 プロト�
 
 - 「[IoT Hub エンドポイント][lnk-endpoints]」では、各 IoT Hub がランタイムと管理の操作のために公開する、さまざまなエンドポイントについて説明します。
 - 「[クォータと調整][lnk-quotas]」では、IoT Hub サービスに適用されるクォータと、サービスを使用するときに想定される調整の動作について説明します。
-- 「[IoT Hub のデバイス SDK とサービス SDK][lnk sdk]」では、IoT Hub とやりとりするデバイスとサービス アプリケーションの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
+- 「[IoT Hub のデバイス SDK とサービス SDK][lnk-sdks]」では、IoT Hub とやりとりするデバイスとサービス アプリケーションの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
 - 「[Query language for twins, methods, and jobs (ツイン、メソッド、ジョブのクエリ言語)][lnk-query]」では、IoT Hub からデバイス ツイン、メソッド、ジョブに関する情報を取得する際に使用できるクエリ言語について説明します。
-- 「[IoT Hub MQTT サポート][lnk devguide-mqtt]」では、MQTT プロトコルの IoT Hub サポートについて詳しく説明します。
+- 「[IoT Hub MQTT サポート][lnk-devguide-mqtt]」では、MQTT プロトコルの IoT Hub サポートについて詳しく説明します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -324,7 +324,7 @@ IoT Hub でメッセージを送受信する方法を理解できたら、次の
 - [IoT Hub でのデバイス ID の管理][lnk-devguide-identities]
 - [IoT Hub へのアクセスの制御][lnk-devguide-security]
 - [デバイス ツインを使って状態と構成を同期する][lnk-devguide-device-twins]
-- [デバイスでダイレクト メソッドを呼び出す][lnk devguide-directmethods]
+- [デバイスでダイレクト メソッドを呼び出す][lnk-devguide-directmethods]
 - [複数デバイスでのジョブのスケジュール][lnk-devguide-jobs]
 
 この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご利用ください。
@@ -383,6 +383,6 @@ IoT Hub でメッセージを送受信する方法を理解できたら、次の
 [lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

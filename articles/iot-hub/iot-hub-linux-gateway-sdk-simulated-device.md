@@ -137,7 +137,7 @@ Gateway SDK に関する理解をさらに深め、実際にコード例に触�
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-- [開発者ガイド][lnk devguide]
+- [開発者ガイド][lnk-devguide]
 - [IoT ソリューションの徹底的なセキュリティ保護][lnk-securing]
 
 <!-- Links -->
@@ -153,6 +153,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-create-hub]: iot-hub-create-through-portal.md
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

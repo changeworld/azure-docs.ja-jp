@@ -23,7 +23,7 @@
 
 ストレージ アカウントは、 [Azure ポータル](https://portal.azure.com)で監視できます。 ポータルを通じて監視するためのストレージ アカウントを構成する場合、Azure Storage は [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx) を使用してアカウントのメトリックを追跡し、要求データを記録します。
 
-> [AZURE.NOTE][Azure ポータル](https://portal.azure.com)で監視データを調査すると、追加のコストがかかります。 詳細については、 <a href="http://msdn.microsoft.com/library/azure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。 <br />
+> [AZURE.NOTE] で監視データを調査すると、追加のコストがかかります [Azure ポータル](https://portal.azure.com)。 詳細については、 <a href="http://msdn.microsoft.com/library/azure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。 <br />
 
 > 現在、Azure File ストレージは、Storage Analytics のメトリックをサポートしますが、ログ記録はまだサポートされていません。 [Azure ポータル](https://portal.azure.com)から Azure File ストレージのメトリックを有効にすることができます。
 
@@ -162,6 +162,6 @@
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

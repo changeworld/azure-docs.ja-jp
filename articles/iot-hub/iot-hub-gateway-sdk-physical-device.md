@@ -426,7 +426,7 @@ Gateway SDK に関する理解をさらに深め、実際にコード例に触�
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-- [開発者ガイド][lnk devguide]
+- [開発者ガイド][lnk-devguide]
 
 <!-- Links -->
 [lnk-ble-samplecode]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/ble_gateway_hl
@@ -443,6 +443,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-create-hub]: iot-hub-create-through-portal.md 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

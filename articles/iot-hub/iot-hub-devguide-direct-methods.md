@@ -127,9 +127,9 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 - 「[IoT Hub エンドポイント][lnk-endpoints]」では、各 IoT Hub がランタイムと管理の操作のために公開する、さまざまなエンドポイントについて説明します。
 - 「[クォータと調整][lnk-quotas]」では、IoT Hub サービスに適用されるクォータと、サービスを使用するときに想定される調整の動作について説明します。
-- 「[IoT Hub のデバイス SDK とサービス SDK][lnk sdk]」では、IoT Hub とやりとりするデバイスとサービス アプリケーションの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
+- 「[IoT Hub のデバイス SDK とサービス SDK][lnk-sdks]」では、IoT Hub とやりとりするデバイスとサービス アプリケーションの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
 - 「[Query language for twins, methods, and jobs (ツイン、メソッド、ジョブのクエリ言語)][lnk-query]」では、IoT Hub からデバイス ツイン、メソッド、ジョブに関する情報を取得する際に使用できるクエリ言語について説明します。
-- 「[IoT Hub MQTT サポート][lnk devguide-mqtt]」では、MQTT プロトコルの IoT Hub サポートについて詳しく説明します。
+- 「[IoT Hub MQTT サポート][lnk-devguide-mqtt]」では、MQTT プロトコルの IoT Hub サポートについて詳しく説明します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -155,6 +155,6 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

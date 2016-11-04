@@ -17,22 +17,9 @@
    ms.author="carlrab"/>
 
 
-
-
-<!-- # H1 Title
-
- H1 title should answer the question "What is in this topic?" Write the title in conversational language and use search key words as much as possible. Since this is a learning topic, make sure the title indicates that and doesn't mislead people to think this will tell them how to do tasks.  
--->
-
 # <a name="learn-about-sql-database-backups"></a>SQL Database バックアップについての詳細情報
 
-<!-- Introduction
 
-1. Sentence #1 begins with "Learn about ..." and gives the scope of what the article will cover.
-2. Sentence #2 explains the key capability or selling point of the feature.
-3. Sentence #3 begins with "Use this feature to ..." and gives a common use case.
-
--->
 
 SQL Database は 5 分おきにローカル データベースをバックアップし、Azure 読み取りアクセス Geo 冗長ストレージ (RA-GRS) を利用してデータベース バックアップの一部を別の地理的領域にコピーします。 バックアップは**自動的に行われ、追加料金は発生しません**。 ローカル データベースのバックアップを使用すると、同じサーバーの[ある時点にデータベースを復元](sql-database-point-in-time-restore-portal.md)できます。 Geo 冗長バックアップを使用すると、[異なる地理的領域にデータベースを復元できます](sql-database-geo-restore-portal.md)。  
 
@@ -101,6 +88,6 @@ Basic サービス レベルから Standard または Premium にデータベー
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 
