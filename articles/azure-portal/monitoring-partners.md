@@ -65,7 +65,7 @@ Dynatrace OneAgent は、対応する Azure 拡張機能メカニズムによっ
 ## OpsGenie
 OpsGenie は、Azure によって生成されたアラートのディスパッチャーとして動作します。この OpsGenie では、対応スケジュールとエスカレーションに基づいて適切な通知先を特定し、電子メール、テキスト メッセージ (SMS)、電話、プッシュ通知を使用して通知します。検出された問題のアラートを Azure が生成するだけで、OpsGenie は、その問題に対応する適切な担当者を確保してくれます。
 
-[ドキュメントを確認する。][opsgenie-doc]
+[ドキュメントを確認する][opsgenie-doc]
 
 ## PagerDuty
 トップクラスのインシデント管理ソリューション PagerDuty は、メトリックに関して、最高レベルのAzure アラート サポートを提供します。現時点で PagerDuty がサポートするのは、Azure サービスのプラットフォーム レベルのメトリックに関する通知のほか、Azure Application Insights アラートの通知、自動スケールの通知、および監査ログ イベントの通知です。こうした拡張機能により、ユーザーは、Azure コア プラットフォームを高度に視覚化しながら、PagerDuty のインシデント管理機能を最大限に利用し、リアルタイムな応答を得ることができます。Azure 統合の強化することで、webhook を使用して、すばやく簡単に設定やカスタマイズを行うことができます。
@@ -128,4 +128,4 @@ Microsoft Azure 用の Splunk アドオンは、Microsoft Azure で実行され�
 [splunk-doc]: https://splunkbase.splunk.com/app/3084/#/details "Splunk ドキュメント。"
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic ドキュメント"
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_0928_2016--->

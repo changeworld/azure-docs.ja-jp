@@ -26,7 +26,8 @@
 
 また、[Github リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)にも、[NYC タクシー乗車データ](http://chriswhong.com/open-data/foil_nyc_taxi/)のシナリオに固有のクエリの例が用意されています。 これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。 最後のセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターについても説明します。
 
-[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)] この **メニュー** は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。 このタスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
+[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)] 
+この **メニュー** は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。 このタスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -38,7 +39,7 @@
 * クラスターへのリモート アクセスが有効になっている。 手順については、「 [Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#headnode)」をご覧ください。
 
 
-##<a name="<a-name="hive-featureengineering"></a>feature-generation"></a><a name="hive-featureengineering"></a>特徴の生成
+##<a name="a-namehivefeatureengineeringafeature-generation"></a><a name="hive-featureengineering"></a>特徴の生成
 
 このセクションでは、Hive クエリを使用して特徴を生成する方法について、いくつかの例を挙げて説明します。 追加の特徴を生成すると、既存のテーブルに列として追加するか、追加の特徴と主キーを持つ新しいテーブルを作成して元のテーブルと結合することができます。 次の例について説明します。
 
@@ -48,7 +49,7 @@
 4. [[Text] フィールドからの特徴の抽出](#hive-textfeatures)
 5. [GPS 座標間の距離の計算](#hive-gpsdistance)
 
-###<a name="<a-name="hive-frequencyfeature"></a>frequency-based-feature-generation"></a><a name="hive-frequencyfeature"></a>頻度ベースの特徴の生成
+###<a name="a-namehivefrequencyfeatureafrequency-based-feature-generation"></a><a name="hive-frequencyfeature"></a>頻度ベースの特徴の生成
 
 カテゴリ変数のレベルの出現頻度、または複数のカテゴリ変数のレベルの特定の組み合わせの出現頻度を計算することが役立つことがよくあります。 これらの頻度を計算するには、次のスクリプトを使用できます。
 
@@ -63,7 +64,7 @@
         order by frequency desc;
 
 
-###<a name="<a-name="hive-riskfeature"></a>risks-of-categorical-variables-in-binary-classification"></a><a name="hive-riskfeature"></a>二項分類におけるカテゴリ変数のリスク
+###<a name="a-namehiveriskfeaturearisks-of-categorical-variables-in-binary-classification"></a><a name="hive-riskfeature"></a>二項分類におけるカテゴリ変数のリスク
 
 二項分類では、使用中のモデルが数値の特徴のみを処理する場合、数値以外の分類変数を数値の特徴に変換する必要があります。 これを行うには、各数値以外のレベルを数値のリスクに置き換えます。 このセクションでは、カテゴリ変数のリスクの値 (対数オッズ) を計算するいくつかの汎用 Hive クエリについて説明します。
 
@@ -90,7 +91,7 @@
 
 リスクのテーブルが計算されると、リスクの値をリスクのテーブルと結合して、リスクの値をテーブルに割り当てることができます。 Hive 結合クエリは、前のセクションで用意されました。
 
-###<a name="<a-name="hive-datefeatures"></a>extract-features-from-datetime-fields"></a><a name="hive-datefeatures"></a>[Datetime] フィールドからの特徴の抽出
+###<a name="a-namehivedatefeaturesaextract-features-from-datetime-fields"></a><a name="hive-datefeatures"></a>[Datetime] フィールドからの特徴の抽出
 
 Hive には、[datetime] フィールドを処理するための UDF のセットが付属します。 Hive では、既定の datetime 形式は 'yyyy-MM-dd 00:00:00' (例: '1970-01-01 12:21:32') です。 このセクションでは、[datetime] フィールドから日と月を抽出する例、および既定の形式以外の datetime 文字列を既定の形式の datetime 文字列に変換する例を示します。
 
@@ -112,14 +113,14 @@ Hive には、[datetime] フィールドを処理するための UDF のセッ�
 このクエリの *hivesampletable* は、クラスターがプロビジョニングされるときに、既定ですべての Azure HDInsight Hadoop クラスターにプレインストールされます。
 
 
-###<a name="<a-name="hive-textfeatures"></a>extract-features-from-text-fields"></a><a name="hive-textfeatures"></a>[Text] フィールドからの特徴の抽出
+###<a name="a-namehivetextfeaturesaextract-features-from-text-fields"></a><a name="hive-textfeatures"></a>[Text] フィールドからの特徴の抽出
 
 Hive テーブルに、スペースで区切られた単語から成る文字列を含む [Text] フィールドがある場合、次のクエリは、文字列の長さと文字列内の単語数を抽出します。
 
         select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num
         from <databasename>.<tablename>;
 
-###<a name="<a-name="hive-gpsdistance"></a>calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>GPS 座標のセット間の距離の計算
+###<a name="a-namehivegpsdistanceacalculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>GPS 座標のセット間の距離の計算
 
 このセクションで指定されたクエリは、NYC タクシー乗車データに直接適用できます。 このクエリの目的は、特徴を生成する Hive の組み込みの数学関数を適用する方法を示すことです。
 
@@ -147,7 +148,7 @@ Hive テーブルに、スペースで区切られた単語から成る文字列
 
 Hive の組み込み UDF のリストは、<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive Wiki</a> の**組み込み関数**のセクションにあります。  
 
-## <a name="<a-name="tuning"></a>-advanced-topics:-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> 高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる
+## <a name="a-nametuninga-advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> 高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる
 
 Hive クラスターの既定のパラメーター設定は、Hive クエリおよびクエリが処理するデータに適していないことがあります。 このセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターのいくつかについて説明します。 ユーザーは、データ処理のクエリの前に、パラメーター調整クエリを追加する必要があります。
 
@@ -183,6 +184,6 @@ Hive クラスターの既定のパラメーター設定は、Hive クエリお�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

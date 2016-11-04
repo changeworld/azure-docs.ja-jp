@@ -4,7 +4,7 @@
     services="app-service"
     documentationCenter="php"
     authors="rmcmurray"
-    manager="wpickett"
+    manager="erikre"
     editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="PHP"
     ms.topic="article"
-    ms.date="08/11/2016"
+    ms.date="11/01/2016"
     ms.author="robmcm"/>
 
 
@@ -25,7 +25,7 @@
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="how-to:-change-the-built-in-php-version"></a>方法: ビルトインの PHP バージョンを変更する
+## <a name="how-to-change-the-builtin-php-version"></a>方法: ビルトインの PHP バージョンを変更する
 既定では、App Service Web アプリを作成すると PHP 5.4 がインストールされ、直ちに使用できる状態になります。 使用可能なリリース リビジョン、既定の構成、および有効な拡張機能を確認するには、 [phpinfo()] 関数を呼び出すスクリプトをデプロイします。
 
 PHP 5.5 および PHP 5.6 も使用できますが、既定では有効になっていません。 PHP バージョンを更新するには、次のいずれかの方法に従います。
@@ -44,7 +44,7 @@ PHP 5.5 および PHP 5.6 も使用できますが、既定では有効になっ
 
     ![構成設定を保存する][save-button]
 
-### <a name="azure-powershell-(windows)"></a>Azure PowerShell (Windows)。
+### <a name="azure-powershell-windows"></a>Azure PowerShell (Windows)。
 
 1. Azure PowerShell を起動し、アカウントにログインします。
 
@@ -58,7 +58,7 @@ PHP 5.5 および PHP 5.6 も使用できますが、既定では有効になっ
 
         PS C:\> Get-AzureWebsite -Name {site-name} | findstr PhpVersion
 
-### <a name="azure-command-line-interface-(linux,-mac,-windows)"></a>Azure コマンド ライン インターフェイス (Mac、Linux、Windows)
+### <a name="azure-commandline-interface-linux-mac-windows"></a>Azure コマンド ライン インターフェイス (Mac、Linux、Windows)
 
 Azure コマンド ライン インターフェイスを使用するには、 **Node.js** をコンピューターにインストールする必要があります。
 
@@ -75,11 +75,11 @@ Azure コマンド ライン インターフェイスを使用するには、 **
         azure site show {site-name}
 
 
-## <a name="how-to:-change-the-built-in-php-configurations"></a>方法: ビルトインの PHP 構成を変更する
+## <a name="how-to-change-the-builtin-php-configurations"></a>方法: ビルトインの PHP 構成を変更する
 
 次の手順に従うと、いずれのビルトイン PHP ランタイムについても、任意の構成オプションを変更できます (php.ini ディレクティブについては、[php.ini ディレクティブの一覧]を参照してください)。
 
-### <a name="changing-php\_ini\_user,-php\_ini\_perdir,-php\_ini\_all-configuration-settings"></a>PHP\_INI\_USER、PHP\_INI\_PERDIR、PHP\_INI\_ALL 構成設定の変更
+### <a name="changing-phpiniuser-phpiniperdir-phpiniall-configuration-settings"></a>PHP\_INI\_USER、PHP\_INI\_PERDIR、PHP\_INI\_ALL 構成設定の変更
 
 1. [.user.ini] ファイルをルート ディレクトリに追加します。
 2. `php.ini` ファイルで使用するものと同じ構文を使用して、構成設定を `.user.ini` ファイルに追加します。 たとえば、`display_errors` 設定をオンにして `upload_max_filesize` を 10 M に設定する場合は、`.user.ini` ファイルに次のテキストを含めます。
@@ -96,7 +96,7 @@ Azure コマンド ライン インターフェイスを使用するには、 **
 
 `.user.ini` ファイルを使用する代わりに、スクリプト内で [ini_set()] 関数を使用して、システム レベルのディレクティブではない構成オプションを設定することもできます。
 
-### <a name="changing-php\_ini\_system-configuration-settings"></a>PHP\_INI\_SYSTEM 構成設定の変更
+### <a name="changing-phpinisystem-configuration-settings"></a>PHP\_INI\_SYSTEM 構成設定の変更
 
 1. アプリの設定 (キー `PHP_INI_SCAN_DIR`、値 `d:\home\site\ini`) を Web アプリに追加する
 2. Kudu Console (http://&lt;site-name&gt;.scm.azurewebsite.net) を使用して、`d:\home\site\ini` ディレクトリに `settings.ini` ファイルを作成します。
@@ -107,7 +107,7 @@ Azure コマンド ライン インターフェイスを使用するには、 **
         wincache.maxfilesize=512
 4. 変更内容を読み込むには、Web アプリを再起動します。
 
-## <a name="how-to:-enable-extensions-in-the-default-php-runtime"></a>方法: 既定の PHP ランタイムで拡張機能を有効にする
+## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>方法: 既定の PHP ランタイムで拡張機能を有効にする
 前のセクションにも示されているように、既定の PHP バージョン、既定の構成、および有効な拡張機能を確認するには、 [phpinfo()]を呼び出すスクリプトをデプロイします。 追加の拡張機能を有効にするには、次の手順に従います。
 
 ### <a name="configure-via-ini-settings"></a>Ini 設定を使用して構成します。
@@ -144,7 +144,7 @@ Azure コマンド ライン インターフェイスを使用するには、 **
 Zend 拡張機能も、**PHP_ZENDEXTENSIONS** キーを使用することによってサポートされます。 複数の拡張機能を有効にするには、複数の `.dll` ファイルをコンマで区切って指定します。
 
 
-## <a name="how-to:-use-a-custom-php-runtime"></a>方法: カスタムの PHP ランタイムを使用する
+## <a name="how-to-use-a-custom-php-runtime"></a>方法: カスタムの PHP ランタイムを使用する
 App Service Web Apps では、既定の PHP ランタイムを使用する代わりに、指定された PHP ランタイムを使用して PHP スクリプトを実行することができます。 指定するランタイムは、同様に指定する `php.ini` ファイルによって構成できます。 カスタムの PHP ランタイムを Web Apps で使用するには、次の操作を行います。
 
 1. 非スレッドセーフおよび VC9 または VC11 互換バージョンの Windows 用 PHP を入手します。 Windows 用 PHP の最近のリリースは、 [http://windows.php.net/download/]にあります。 以前のリリースは、アーカイブ [http://windows.php.net/downloads/releases/archives/]にあります。
@@ -165,7 +165,7 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
     ![構成設定を保存する][save-button]
 
 <a name="composer" />
-## <a name="how-to:-enable-composer-automation-in-azure"></a>方法: Azure で Composer 自動化を有効にする
+## <a name="how-to-enable-composer-automation-in-azure"></a>方法: Azure で Composer 自動化を有効にする
 
 既定では、PHP プロジェクトに composer.json があっても、App Service で処理されません。 [Git デプロイ](app-service-web-php-get-started.md)を使用する場合、`git push` で composer.json の処理を有効にするには、Composer 拡張機能を有効にします。
 

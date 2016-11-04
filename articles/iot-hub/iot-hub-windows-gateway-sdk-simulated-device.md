@@ -18,7 +18,7 @@
 
 
 
-# <a name="iot-gateway-sdk-(beta)-–-send-device-to-cloud-messages-with-a-simulated-device-using-windows"></a>IoT Gateway SDK (ベータ) - Windows を使用してシミュレートされたデバイスでデバイスからクラウドへのメッセージを送信する
+# <a name="iot-gateway-sdk-beta-send-devicetocloud-messages-with-a-simulated-device-using-windows"></a>IoT Gateway SDK (ベータ) - Windows を使用してシミュレートされたデバイスでデバイスからクラウドへのメッセージを送信する
 
 [AZURE.INCLUDE [iot-hub-gateway-sdk-simulated-selector](../../includes/iot-hub-gateway-sdk-simulated-selector.md)]
 
@@ -135,7 +135,7 @@ Gateway SDK に関する理解をさらに深め、実際にコード例に触�
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-- [開発者ガイド][lnk devguide]
+- [開発者ガイド][lnk-devguide]
 
 <!-- Links -->
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
@@ -149,6 +149,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-create-hub]: iot-hub-create-through-portal.md 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

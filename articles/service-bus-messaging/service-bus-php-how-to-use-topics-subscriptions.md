@@ -42,7 +42,7 @@ Microsoft Azure BLOB Service にアクセスする PHP アプリケーション�
 
 Service Bus API を使用するには、以下の手順を実行します。
 
-1. [require_once][require_once] ステートメントを使用してオートローダー ファイルを参照します。
+1. [require_once][require-once] ステートメントを使用してオートローダー ファイルを参照します。
 2. 使用する可能性のあるクラスを参照する
 
 次の例では、オートローダー ファイルをインクルードし、**ServiceBusService** クラスを参照する方法を示しています。
@@ -122,7 +122,7 @@ catch(ServiceException $e){
 
 トピック サブスクリプションを **ServiceBusRestProxy->createSubscription** メソッドで作成することもできます。 サブスクリプションを指定し、サブスクリプションの仮想キューに渡すメッセージを制限するフィルターを設定できます。
 
-### <a name="create-a-subscription-with-the-default-(matchall)-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
+### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 
 **MatchAll** フィルターは、新しいサブスクリプションの作成時にフィルターが指定されていない場合に使用される既定のフィルターです。 **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、'mysubscription' という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
 
@@ -286,7 +286,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="how-to:-handle-application-crashes-and-unreadable-messages"></a>方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する
+## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する
 
 Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、受信したメッセージについて (**deleteMessage** メソッドの代わりに) **unlockMessage** メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
 
@@ -341,6 +341,6 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

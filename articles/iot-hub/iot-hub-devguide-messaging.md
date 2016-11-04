@@ -38,7 +38,7 @@ IoT Hub では [Event Hubs と互換性のあるエンドポイント][lnk-compa
 
 IoT Hub と Event Hubs サービスの比較については、「[IoT Hub と Event Hubs の比較][lnk-compare]」をご覧ください。
 
-## <a name="device-to-cloud-messages"></a>デバイスからクラウドへのメッセージ
+## <a name="devicetocloud-messages"></a>デバイスからクラウドへのメッセージ
 
 デバイスからのクラウドへのメッセージはデバイス向けのエンドポイント (**/devices/{deviceId}/messages/events**) を介して送信されます。 バックエンド サービスはサービス向けのエンドポイント (**/messages/events**) を介してデバイスからクラウドへのメッセージを受け取ります。このエンドポイントは [Event Hubs][lnk-event-hubs] と互換性を持ちます。 そのため、Standard [Event Hubs の統合と SDK][lnk-compatible-endpoint] を使用して D2C メッセージを受信できます。
 
@@ -64,13 +64,13 @@ D2C メッセージングの使用方法の詳細については、[IoT Hub の 
 
 > [AZURE.NOTE] HTTP を使用して D2C メッセージを送信する場合、プロパティ名と値に含めることができるのは、ASCII 英数字と ``{'!', '#', '$', '%, '&', "'", '*', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` のみです。
 
-### <a name="non-telemetry-traffic"></a>非テレメトリ トラフィック
+### <a name="nontelemetry-traffic"></a>非テレメトリ トラフィック
 
 多くの場合、デバイスからは、テレメトリ データ ポイントが送信されるだけでなく、アプリケーションのビジネス ロジック層での実行と処理を必要とするメッセージと要求も送信されます。 たとえば、バックエンドで特定のアクションをトリガーする必要がある重大なアラートや、バックエンドから送信されるコマンドに対するデバイスの応答などです。
 
 この種類のメッセージを処理する最適な方法の詳細については、「[チュートリアル: IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-d2c-tutorial]」をご覧ください。
 
-### <a name="device-to-cloud-configuration-options"></a>D2C の構成オプション
+### <a name="devicetocloud-configuration-options"></a>D2C の構成オプション
 
 IoT Hub は、D2C メッセージングを制御できる次のプロパティを公開しています。
 
@@ -81,7 +81,7 @@ IoT Hub は、D2C メッセージングを制御できる次のプロパティ�
 
 これらのプロパティはすべて、[Azure IoT Hub のリソース プロバイダー API][lnk-resource-provider-apis] を使用してプログラムにより変更するか、[Azure Portal][lnk-management-portal] を使用して変更できます。
 
-### <a name="anti-spoofing-properties"></a>なりすまし対策のプロパティ
+### <a name="antispoofing-properties"></a>なりすまし対策のプロパティ
 
 D2C メッセージでのデバイスのなりすましを回避するために、IoT Hub では、すべてのメッセージに次のプロパティを持つスタンプが使用されます。
 
@@ -101,7 +101,7 @@ D2C メッセージでのデバイスのなりすましを回避するために�
 }
 ```
 
-## <a name="cloud-to-device-messages"></a>クラウドからデバイスへのメッセージ
+## <a name="cloudtodevice-messages"></a>クラウドからデバイスへのメッセージ
 
 C2D メッセージはサービス向けエンドポイント (**/messages/devicebound**) を介して送信できます。 デバイスはそのメッセージをデバイス固有のエンドポイント (**/devices/{deviceId}/messages/devicebound**) を介して受信します。
 
@@ -134,7 +134,7 @@ C2D メッセージはサービス向けエンドポイント (**/messages/devic
 
 > [AZURE.NOTE] 通常、メッセージの損失がアプリケーション ロジックに影響しない場合、C2D メッセージは必ず完了されます。 たとえば、メッセージの内容が正常にローカル ストレージで保持されている場合、操作が正常に実行された場合などがあります。 また、メッセージには、メッセージの損失がアプリケーションの機能に影響しないことを示す一時的な情報が含まれている場合もあります。 実行時間の長いタスクの場合、タスクの説明をローカル ストレージに保持した後で C2D メッセージを完了できます。 その後、タスクの進行状況のさまざまな段階で、1 つ以上の D2C メッセージによりアプリケーション バックエンドに通知できます。
 
-### <a name="message-expiration-(time-to-live)"></a>メッセージの有効期限
+### <a name="message-expiration-time-to-live"></a>メッセージの有効期限
 
 すべての C2D メッセージに有効期限があります。 これはサービス (**ExpiryTimeUtc** プロパティ) で設定するか、IoT Hub のプロパティとして指定した既定の *time to live* を使用して IoT Hub で設定できます。 「[C2D の構成オプション][lnk-c2d-configuration]」をご覧ください。
 
@@ -191,7 +191,7 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 ]
 ```
 
-### <a name="cloud-to-device-configuration-options"></a>C2D の構成オプション
+### <a name="cloudtodevice-configuration-options"></a>C2D の構成オプション
 
 各 IoT Hub では、C2D メッセージング用に次の構成オプションを公開しています。
 
@@ -204,7 +204,7 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 
 詳細については、「[IoT Hubs の作成][lnk-portal]」をご覧ください。
 
-## <a name="read-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの読み取り
+## <a name="read-devicetocloud-messages"></a>デバイスからクラウドへのメッセージの読み取り
 
 IoT Hub は、バックエンド サービスにエンドポイントを公開して、ハブで受信したデバイスからクラウドへのメッセージを読み取ります。 エンドポイントは Event Hubs との互換性を持ち、Event Hubs がメッセージの読み取りでサポートするすべてのメカニズムを使用できるようになります。
 
@@ -312,9 +312,9 @@ IoT Hub では、次の制限事項と特定の動作で MQTT v3.1.1 プロト�
 
 - 「[IoT Hub エンドポイント][lnk-endpoints]」では、各 IoT Hub がランタイムと管理の操作のために公開する、さまざまなエンドポイントについて説明します。
 - 「[クォータと調整][lnk-quotas]」では、IoT Hub サービスに適用されるクォータと、サービスを使用するときに想定される調整の動作について説明します。
-- 「[IoT Hub のデバイス SDK とサービス SDK][lnk sdk]」では、IoT Hub とやりとりするデバイスとサービス アプリケーションの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
+- 「[IoT Hub のデバイス SDK とサービス SDK][lnk-sdks]」では、IoT Hub とやりとりするデバイスとサービス アプリケーションの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
 - 「[Query language for twins, methods, and jobs (ツイン、メソッド、ジョブのクエリ言語)][lnk-query]」では、IoT Hub からデバイス ツイン、メソッド、ジョブに関する情報を取得する際に使用できるクエリ言語について説明します。
-- 「[IoT Hub MQTT サポート][lnk devguide-mqtt]」では、MQTT プロトコルの IoT Hub サポートについて詳しく説明します。
+- 「[IoT Hub MQTT サポート][lnk-devguide-mqtt]」では、MQTT プロトコルの IoT Hub サポートについて詳しく説明します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -324,7 +324,7 @@ IoT Hub でメッセージを送受信する方法を理解できたら、次の
 - [IoT Hub でのデバイス ID の管理][lnk-devguide-identities]
 - [IoT Hub へのアクセスの制御][lnk-devguide-security]
 - [デバイス ツインを使って状態と構成を同期する][lnk-devguide-device-twins]
-- [デバイスでダイレクト メソッドを呼び出す][lnk devguide-directmethods]
+- [デバイスでダイレクト メソッドを呼び出す][lnk-devguide-directmethods]
 - [複数デバイスでのジョブのスケジュール][lnk-devguide-jobs]
 
 この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご利用ください。
@@ -383,6 +383,6 @@ IoT Hub でメッセージを送受信する方法を理解できたら、次の
 [lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

@@ -68,14 +68,14 @@ Dynatrace OneAgent は、対応する Azure 拡張機能メカニズムによっ
 ## <a name="opsgenie"></a>OpsGenie
 OpsGenie は、Azure によって生成されたアラートのディスパッチャーとして動作します。 この OpsGenie では、対応スケジュールとエスカレーションに基づいて適切な通知先を特定し、電子メール、テキスト メッセージ (SMS)、電話、プッシュ通知を使用して通知します。 検出された問題のアラートを Azure が生成するだけで、OpsGenie は、その問題に対応する適切な担当者を確保してくれます。
 
-[ドキュメントを確認する。][opsgenie-doc]
+[ドキュメントを確認する][opsgenie doc]
 
 ## <a name="pagerduty"></a>PagerDuty
 トップクラスのインシデント管理ソリューション PagerDuty は、メトリックに関して、最高レベルのAzure アラート サポートを提供します。 現時点で PagerDuty がサポートするのは、Azure サービスのプラットフォーム レベルのメトリックに関する通知のほか、Azure Application Insights アラートの通知、自動スケールの通知、および監査ログ イベントの通知です。 こうした拡張機能により、ユーザーは、Azure コア プラットフォームを高度に視覚化しながら、PagerDuty のインシデント管理機能を最大限に利用し、リアルタイムな応答を得ることができます。 Azure 統合の強化することで、webhook を使用して、すばやく簡単に設定やカスタマイズを行うことができます。
 
 [ドキュメントを確認する。][pagerduty-doc]
 
-## <a name="splunk-add-on-for-microsoft-azure"></a>Microsoft Azure 用の Splunk アドオン
+## <a name="splunk-addon-for-microsoft-azure"></a>Microsoft Azure 用の Splunk アドオン
 Microsoft Azure 用の Splunk アドオンは、Microsoft Azure で実行されているインフラストラクチャおよび Web サイトの、重要な診断、パフォーマンス、監査、およびセキュリティ データを収集します。 
 
 パフォーマンスと診断情報の収集元は、Azure Storage Tables と Azure Storage Blobs です。 監査データの収集元は Azure Insights Events API です。 ネットワーク セキュリティ グループのデータの収集元は Azure Storage Blog です。 このアドオンには、事前に組み込まれたパネルがいくつか含まれています。 
@@ -133,6 +133,6 @@ Microsoft Azure 用の Splunk アドオンは、Microsoft Azure で実行され�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 
