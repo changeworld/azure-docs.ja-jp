@@ -19,10 +19,13 @@
       "template_folder": "_themes"
     }
   ],
-  "notification_subscribers": [],
+  "notification_subscribers": [
+    "dengyun@microsoft.com"
+  ],
   "branches_to_filter": [
     "live",
-    "master"
+    "master",
+    "master-sync-work"
   ],
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
