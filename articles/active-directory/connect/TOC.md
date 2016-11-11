@@ -1,98 +1,98 @@
 # Overview
-## [What is Azure AD Connect?](../active-directory-aadconnect.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [What is Azure AD Connect Sync?](../active-directory-aadconnectsync-whatis.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Users and contacts](../active-directory-aadconnectsync-understanding-users-and-contacts.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Architecture](../active-directory-aadconnectsync-understanding-architecture.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Declarative Provisioning](../active-directory-aadconnectsync-understanding-declarative-provisioning.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-#### [Declarative Provisioning Expressions](../active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Default configuration](../active-directory-aadconnectsync-understanding-default-configuration.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [What is Azure AD Connect and Federation?](../active-directory-aadconnectfed-whatis.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [What is Azure AD Connect Health?](../active-directory-aadconnect-health.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Azure AD Connect とは](../active-directory-aadconnect.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Azure AD Connect 同期とは](../active-directory-aadconnectsync-whatis.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [ユーザーと連絡先](../active-directory-aadconnectsync-understanding-users-and-contacts.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [アーキテクチャ](../active-directory-aadconnectsync-understanding-architecture.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [宣言型のプロビジョニング](../active-directory-aadconnectsync-understanding-declarative-provisioning.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+#### [宣言型のプロビジョニングの式](../active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [既定の構成](../active-directory-aadconnectsync-understanding-default-configuration.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Azure AD Connect とフェデレーションとは](../active-directory-aadconnectfed-whatis.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Azure AD Connect Health とは](../active-directory-aadconnect-health.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
-# Get started
-## [Prerequisites](../active-directory-aadconnect-prerequisites.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [Install Azure AD Connect](active-directory-aadconnect-accounts-permissions.md)
-### [Express settings](active-directory-aadconnect-get-started-express.md)
-### [Custom settings](active-directory-aadconnect-get-started-custom.md)
-### [Upgrade from DirSync](active-directory-aadconnect-dirsync-upgrade-get-started.md)
-### [Upgrade from a previous version](../active-directory-aadconnect-upgrade-previous-version.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [Install Azure AD Connect Health Agent](../active-directory-aadconnect-health-agent-install.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [Using Azure AD Connect Health with AD FS](../active-directory-aadconnect-health-adfs.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [Using Azure AD Connect Health for sync](../active-directory-aadconnect-health-sync.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+# 作業開始
+## [前提条件](../active-directory-aadconnect-prerequisites.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Azure AD Connect のインストール](active-directory-aadconnect-accounts-permissions.md)
+### [簡単設定](active-directory-aadconnect-get-started-express.md)
+### [カスタム設定](active-directory-aadconnect-get-started-custom.md)
+### [DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
+### [以前のバージョンからのアップグレード](../active-directory-aadconnect-upgrade-previous-version.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Azure AD Connect Health エージェントをインストールする](../active-directory-aadconnect-health-agent-install.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [AD FS での Azure AD Connect Health の使用](../active-directory-aadconnect-health-adfs.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Azure AD Connect Health for Sync の使用](../active-directory-aadconnect-health-sync.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
-# How to
-## Plan and design
-### [Design concepts](../active-directory-aadconnect-design-concepts.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Topologies for Azure AD Connect](../active-directory-aadconnect-topologies.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Special considerations for instances](../active-directory-aadconnect-instances.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+# 方法
+## 計画と設計
+### [設計概念](../active-directory-aadconnect-design-concepts.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [Azure AD Connect のトポロジ](../active-directory-aadconnect-topologies.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [インスタンスに関する特別な考慮事項](../active-directory-aadconnect-instances.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
-## [Manage Azure AD Connect](../active-directory-aadconnect-whats-next.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Renew certs for O365 and Azure AD](../active-directory-aadconnect-o365-certs.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Enable device writeback](../active-directory-aadconnect-feature-device-writeback.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [User sign-on options](../active-directory-aadconnect-user-signin.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Multiple domain sSupport for federating](../active-directory-aadconnect-multiple-domains.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Automatic upgrade](../active-directory-aadconnect-feature-automatic-upgrade.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [MAzure AD Connect の管理](../active-directory-aadconnect-whats-next.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [O365 と Azure AD の証明書を更新する](../active-directory-aadconnect-o365-certs.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [デバイスの書き戻しを有効にする](../active-directory-aadconnect-feature-device-writeback.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [ユーザー サインオンのオプション](../active-directory-aadconnect-user-signin.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [フェデレーションに使用する複数ドメインのサポート](../active-directory-aadconnect-multiple-domains.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [自動アップグレード](../active-directory-aadconnect-feature-automatic-upgrade.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
 
-## Manage Azure AD Connect Sync
-### [Generic SQL Connector step-by-step](../active-directory-aadconnectsync-connector-genericsql-step-by-step.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Prevent accidental deletes](../active-directory-aadconnectsync-feature-prevent-accidental-deletes.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Password synchronization](../active-directory-aadconnectsync-implement-password-synchronization.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Azure AD service account](../active-directory-aadconnectsync-howto-azureadaccount.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Installation wizard](../active-directory-aadconnectsync-installation-wizard.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Change the default configuration](../active-directory-aadconnectsync-best-practices-changing-default-configuration.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Configure Filtering](../active-directory-aadconnectsync-configure-filtering.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## Azure AD Connect 同期を管理する
+### [Generic SQL コネクタのステップ バイ ステップ](../active-directory-aadconnectsync-connector-genericsql-step-by-step.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [誤って削除されないように保護する](../active-directory-aadconnectsync-feature-prevent-accidental-deletes.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [パスワードの同期](../active-directory-aadconnectsync-implement-password-synchronization.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [Azure AD サービス アカウント](../active-directory-aadconnectsync-howto-azureadaccount.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [インストール ウィザード](../active-directory-aadconnectsync-installation-wizard.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [既定の構成の変更](../active-directory-aadconnectsync-best-practices-changing-default-configuration.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [フィルター処理の構成](../active-directory-aadconnectsync-configure-filtering.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 ### [Scheduler](../active-directory-aadconnectsync-feature-scheduler.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Directory extensions](../active-directory-aadconnectsync-feature-directory-extensions.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [ディレクトリ拡張機能](../active-directory-aadconnectsync-feature-directory-extensions.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 ### [Synchronization Service Manager](../active-directory-aadconnectsync-service-manager-ui.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-#### [Operations](../active-directory-aadconnectsync-service-manager-ui-operations.md?toc=%2fazure%2factive-directory%2faad-connect%2ftoc.json)
-#### [Connectors](../active-directory-aadconnectsync-service-manager-ui-connectors.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-#### [Metaverse designer](../active-directory-aadconnectsync-service-manager-ui-mvdesigner.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-#### [Metaverse search](../active-directory-aadconnectsync-service-manager-ui-mvsearch.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+#### [操作](../active-directory-aadconnectsync-service-manager-ui-operations.md?toc=%2fazure%2factive-directory%2faad-connect%2ftoc.json)
+#### [コネクタ](../active-directory-aadconnectsync-service-manager-ui-connectors.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+#### [メタバース デザイナー](../active-directory-aadconnectsync-service-manager-ui-mvdesigner.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+#### [メタバース検索](../active-directory-aadconnectsync-service-manager-ui-mvsearch.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
-## Manage Federation Services
-### [Manage and customize](../active-directory-aadconnect-federation-management.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## フェデレーション サービスを管理する
+### [管理およびカスタマイズする](../active-directory-aadconnect-federation-management.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
-## Manage Azure AD Connect Health
-### [Operations](../active-directory-aadconnect-health-operations.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Azure AD Connect Health and AD DS](../active-directory-aadconnect-health-adds.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## Azure AD Connect Health を管理する
+### [操作](../active-directory-aadconnect-health-operations.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [Azure AD Connect Health と AD DS](../active-directory-aadconnect-health-adds.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
-## Troubleshoot
-### [Connectivity](../active-directory-aadconnect-troubleshoot-connectivity.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Errors during synchronization](../active-directory-aadconnect-troubleshoot-sync-errors.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## トラブルシューティング
+### [接続](../active-directory-aadconnect-troubleshoot-connectivity.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [同期中のエラー](../active-directory-aadconnect-troubleshoot-sync-errors.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
 
-# Reference
-## [Windows PowerShell Connector](../active-directory-aadconnectsync-connector-powershell.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [Generic SQL Connector](../active-directory-aadconnectsync-connector-genericsql.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [Generic LDAP Connector](../active-directory-aadconnectsync-connector-genericldap.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [Lotus Domino Connector](../active-directory-aadconnectsync-connector-domino.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [Identity synchronization and duplicate attribute resiliency](../active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [Hybrid Identity Required Ports and Protocols](../active-directory-aadconnect-ports.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [Features in preview](../active-directory-aadconnect-feature-preview.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-## [Version History](../active-directory-aadconnect-version-history.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+# リファレンス
+## [Windows PowerShell コネクタ](../active-directory-aadconnectsync-connector-powershell.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Generic SQL コネクタ](../active-directory-aadconnectsync-connector-genericsql.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Generic LDAP コネクタ](../active-directory-aadconnectsync-connector-genericldap.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Lotus Domino コネクタ](../active-directory-aadconnectsync-connector-domino.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [ID 同期と重複属性の回復性](../active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [ハイブリッド ID で必要なポートとプロトコル](../active-directory-aadconnect-ports.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [プレビュー段階の機能](../active-directory-aadconnect-feature-preview.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [バージョン履歴](../active-directory-aadconnect-version-history.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
-## Azure AD Connect Sync
-### [Attributes synchronized to Azure Active Directory](../active-directory-aadconnectsync-attributes-synchronized.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Connector Version Release History](../active-directory-aadconnectsync-connector-version-history.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Functions Reference](../active-directory-aadconnectsync-functions-reference.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Operational tasks and consideration](../active-directory-aadconnectsync-operations.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Azure AD federation compatibility list](../active-directory-aadconnect-federation-compatibility.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Technical Concepts](../active-directory-aadconnectsync-technical-concepts.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-### [Service features](../active-directory-aadconnectsyncservice-features.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## Azure AD Connect 同期
+### [Azure Active Directory に同期される属性](../active-directory-aadconnectsync-attributes-synchronized.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [コネクタ バージョンのリリース履歴](../active-directory-aadconnectsync-connector-version-history.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [関数参照](../active-directory-aadconnectsync-functions-reference.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [操作タスクおよび考慮事項](../active-directory-aadconnectsync-operations.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [Azure AD のフェデレーション互換性リスト](../active-directory-aadconnect-federation-compatibility.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [技術的概念](../active-directory-aadconnectsync-technical-concepts.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [サービスの機能](../active-directory-aadconnectsyncservice-features.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
 ##Azure AD Connect Health
-###[Version Release History](../active-directory-aadconnect-health-version-history.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+###[バージョンのリリース履歴](../active-directory-aadconnect-health-version-history.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
 
-# Related
-## [Hybrid Identity Design Guide](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)
+# 関連項目
+## [ハイブリッド ID 設計ガイド](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)
 
 
-# Resources
-##[Azure AD Connect FAQ](../active-directory-aadconnect-faq.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-##[Azure AD Connect Health FAQ](../active-directory-aadconnect-health-faq.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-##[DirSync Deprecation](../active-directory-aadconnect-dirsync-deprecated.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+# リソース
+##[Azure AD Connect の FAQ](../active-directory-aadconnect-faq.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+##[Azure AD Connect Health の FAQ](../active-directory-aadconnect-health-faq.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+##[DirSync の廃止](../active-directory-aadconnect-dirsync-deprecated.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
 
 <!--HONumber=Nov16_HO2-->

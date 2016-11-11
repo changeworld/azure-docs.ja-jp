@@ -1,30 +1,30 @@
 
 
 # Overview
-## [What is Scheduler?](scheduler-intro.md)
+## [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
 
-# Get started
-## [Create and manage jobs](scheduler-get-started-portal.md)
+# 作業開始
+## [ジョブを作成および管理する](scheduler-get-started-portal.md)
 
-# How to
-## Plan and design
-### [Plans and billing](scheduler-plans-billing.md)
-### [Quotas and limits](scheduler-limits-defaults-errors.md)
-### [High-availability and reliability](scheduler-high-availability-reliability.md)
+# 方法
+## 計画と設計
+### [プランと課金](scheduler-plans-billing.md)
+### [クォータと制限](scheduler-limits-defaults-errors.md)
+### [高可用性と信頼性](scheduler-high-availability-reliability.md)
 
-## Develop
-### [Complex schedules using REST API](scheduler-advanced-complexity.md)
+## 開発
+### [REST API を使用した複雑なスケジュール](scheduler-advanced-complexity.md)
 
-## Secure
-### [Outbound authentication](scheduler-outbound-authentication.md)
+## セキュリティ保護
+### [送信認証](scheduler-outbound-authentication.md)
 
-# Reference
-## [Concepts and terminology](scheduler-concepts-terms.md)
+# リファレンス
+## [概念と用語](scheduler-concepts-terms.md)
 ## [REST API](https://msdn.microsoft.com/library/azure/mt629143)
-## [PowerShell cmdlets](scheduler-powershell-reference.md)
+## [PowerShell コマンドレット](scheduler-powershell-reference.md)
 
-# Resources
-## [Scheduler Videos](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
+# リソース
+## [Scheduler ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
 
 

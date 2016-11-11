@@ -1,28 +1,30 @@
 # Overview
-## [What is Relay?](service-bus-relay-overview.md)
-## [Pricing](https://azure.microsoft.com/pricing/details/service-bus/)
-## [Learning path](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
-## [FAQ](../service-bus-messaging/service-bus-faq.md)
-# Get Started
-## [How to use Relay](service-bus-dotnet-how-to-use-relay.md)
-## [Shared Access Signatures (SAS)](../service-bus-messaging/service-bus-sas-overview.md)
-## [An on-premises/cloud hybrid application using Service Bus Relay](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
-## [Relay .NET tutorial](service-bus-relay-tutorial.md)
-## [Relay REST tutorial](service-bus-relay-rest-tutorial.md)
+## [リレーとは](service-bus-relay-overview.md)
+## [FAQ](../service-bus-messaging/service-bus-faq.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
 
-# How To
-## Develop
-### [Service Bus authentication and authorization](../service-bus-messaging/service-bus-authentication-and-authorization.md)
-### [Handling Service Bus outages and disasters](../service-bus-messaging/service-bus-outages-disasters.md)
-# Reference
-## [Samples](service-bus-relay-samples.md)
-## [.NET API reference](https://msdn.microsoft.com/library/azure/jj933424)
-## [Exceptions](../service-bus-messaging/service-bus-messaging-exceptions.md)
-## [Quotas](../service-bus-messaging/service-bus-quotas.md)
-# Resources
-## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
+# 作業の開始
+## [リレーの使用方法](service-bus-dotnet-how-to-use-relay.md)
+## [Shared Access Signatures](../service-bus-messaging/service-bus-sas-overview.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
+## [Service Bus Relay を使用したハイブリッド アプリの構築](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
+## [.NET リレーのチュートリアル](service-bus-relay-tutorial.md)
+## [REST リレーのチュートリアル](service-bus-relay-rest-tutorial.md)
+
+# 方法
+## [認証と承認](../service-bus-messaging/service-bus-authentication-and-authorization.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
+## [故障と障害に対する計画](../service-bus-messaging/service-bus-outages-disasters.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
+
+# リファレンス
+## [サンプル](service-bus-relay-samples.md)
+## [.NET API リファレンス](https://msdn.microsoft.com/library/azure/jj933424)
+## [例外](../service-bus-messaging/service-bus-messaging-exceptions.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
+## [クォータ](../service-bus-messaging/service-bus-quotas.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
+
+# リソース
+## [ブログ](https://blogs.msdn.microsoft.com/servicebus/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
-## [MSDN forums](https://social.msdn.microsoft.com/forums/home?forum=servbus)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/home?forum=servbus)
+## [料金](https://azure.microsoft.com/pricing/details/service-bus/)
+## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
 
 
 <!--HONumber=Nov16_HO2-->
