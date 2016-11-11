@@ -1,17 +1,17 @@
 # Overview
 
-## [Introduction](storage-introduction.md)
-## [Storage pricing](https://azure.microsoft.com/pricing/details/storage/blobs/)
+## [はじめに](storage-introduction.md)
+## [ストレージの価格](https://azure.microsoft.com/pricing/details/storage/blobs/)
 
-# Get Started
+# 作業の開始
 
-## [Quick start guide](storage-getting-started-guide.md)
-## [Create a storage account](storage-create-storage-account.md)
+## [クイック スタート ガイド](storage-getting-started-guide.md)
+## [ストレージ アカウントの作成](storage-create-storage-account.md)
 
-## Blob Storage
+## BLOB ストレージ
 ### [.NET](storage-dotnet-how-to-use-blobs.md)
 ### [Java](storage-java-how-to-use-blob-storage.md)
-### [Node.js](storage-nodejs-how-to-use-blob-storage.md)
+### [Node.JS](storage-nodejs-how-to-use-blob-storage.md)
 ### [C++](storage-c-plus-plus-how-to-use-blobs.md)
 ### [Python](storage-python-how-to-use-blob-storage.md)
 ### [PHP](storage-php-how-to-use-blobs.md)
@@ -20,7 +20,7 @@
 ### [Xamarin](storage-xamarin-blob-storage.md)
 
 ## File Storage
-### [Windows, .NET, PowerShell](storage-dotnet-how-to-use-files.md)
+### [Windows、.NET、PowerShell](storage-dotnet-how-to-use-files.md)
 ### [Linux](storage-how-to-use-files-linux.md)
 ### [Java](storage-java-how-to-use-file-storage.md)
 ### [C++](storage-c-plus-plus-how-to-use-files.md)
@@ -29,7 +29,7 @@
 ## Queue Storage
 ### [.NET](storage-dotnet-how-to-use-queues.md)
 ### [Java](storage-java-how-to-use-queue-storage.md)
-### [Node.js](storage-nodejs-how-to-use-queues.md)
+### [Node.JS](storage-nodejs-how-to-use-queues.md)
 ### [C++](storage-c-plus-plus-how-to-use-queues.md)
 ### [Python](storage-python-how-to-use-queue-storage.md)
 ### [PHP](storage-php-how-to-use-queues.md)
@@ -38,30 +38,30 @@
 ## Table Storage
 ### [.NET](storage-dotnet-how-to-use-tables.md)
 ### [Java](storage-java-how-to-use-table-storage.md)
-### [Node.js](storage-nodejs-how-to-use-table-storage.md)
+### [Node.JS](storage-nodejs-how-to-use-table-storage.md)
 ### [C++](storage-c-plus-plus-how-to-use-tables.md)
 ### [Python](storage-python-how-to-use-table-storage.md)
 ### [PHP](storage-php-how-to-use-table-storage.md)
 ### [Ruby](storage-ruby-how-to-use-table-storage.md)
 
-## [Storage samples](storage-samples.md)
+## [ストレージのサンプル](storage-samples.md)
 
-# How To
-
-
-## Storage Accounts
-### [General storage accounts](storage-create-storage-account.md)
-### [Blob storage accounts](storage-blob-storage-tiers.md)
-### [Premium Storage accounts](storage-premium-storage.md)
+# 方法
 
 
-## Blob Storage
+## ストレージ アカウント
+### [汎用ストレージ アカウント](storage-create-storage-account.md)
+### [Blob Storage アカウント](storage-blob-storage-tiers.md)
+### [Premium Storage アカウント](storage-premium-storage.md)
 
 
-### Tutorials
+## BLOB ストレージ
+
+
+### Tutorials (チュートリアル)
 #### [.NET](storage-dotnet-how-to-use-blobs.md)
 #### [Java](storage-java-how-to-use-blob-storage.md)
-#### [Node.js](storage-nodejs-how-to-use-blob-storage.md)
+#### [Node.JS](storage-nodejs-how-to-use-blob-storage.md)
 #### [C++](storage-c-plus-plus-how-to-use-blobs.md)
 #### [Python](storage-python-how-to-use-blob-storage.md)
 #### [PHP](storage-php-how-to-use-blobs.md)
@@ -69,201 +69,201 @@
 #### [iOS](storage-ios-how-to-use-blob-storage.md)
 #### [Xamarin](storage-xamarin-blob-storage.md)
 
-### Concepts
-#### [Service overview](https://msdn.microsoft.com/library/dd179376.aspx)
-#### [Hot and cool tiers](storage-blob-storage-tiers.md)
-#### [Custom domains](storage-custom-domain-name.md)
-#### [Import/Export service for Blob storage](storage-import-export-service.md)
-#### [Anonymous access to blobs](storage-manage-access-to-resources.md)
+### 概念
+#### [サービスの概要](https://msdn.microsoft.com/library/dd179376.aspx)
+#### [ホット層およびクール層](storage-blob-storage-tiers.md)
+#### [カスタム ドメイン](storage-custom-domain-name.md)
+#### [Blob Storage 用の Import/Export サービス](storage-import-export-service.md)
+#### [BLOB への匿名アクセス](storage-manage-access-to-resources.md)
 
-### [Samples](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)
+### [サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)
 
 
 ## Queue Storage
 
 
-### Tutorials
+### Tutorials (チュートリアル)
 #### [.NET](storage-dotnet-how-to-use-queues.md)
 #### [Java](storage-java-how-to-use-queue-storage.md)
-#### [Node.js](storage-nodejs-how-to-use-queues.md)
+#### [Node.JS](storage-nodejs-how-to-use-queues.md)
 #### [C++](storage-c-plus-plus-how-to-use-queues.md)
 #### [Python](storage-python-how-to-use-queue-storage.md)
 #### [PHP](storage-php-how-to-use-queues.md)
 #### [Ruby](storage-ruby-how-to-use-queue-storage.md)
 
-### [Concepts](https://msdn.microsoft.com/library/dd179353.aspx)
+### [概念](https://msdn.microsoft.com/library/dd179353.aspx)
 
-### [Samples](https://azure.microsoft.com/documentation/samples/?service=storage&term=queue)
+### [サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=queue)
 
 
 ## Table Storage
 
 
-### Tutorials
+### Tutorials (チュートリアル)
 #### [.NET](storage-dotnet-how-to-use-tables.md)
 #### [Java](storage-java-how-to-use-table-storage.md)
-#### [Node.js](storage-nodejs-how-to-use-table-storage.md)
+#### [Node.JS](storage-nodejs-how-to-use-table-storage.md)
 #### [C++](storage-c-plus-plus-how-to-use-tables.md)
 #### [Python](storage-python-how-to-use-table-storage.md)
 #### [PHP](storage-php-how-to-use-table-storage.md)
 #### [Ruby](storage-ruby-how-to-use-table-storage.md)
 
-### Concepts
-#### [Service overview](https://msdn.microsoft.com/library/dd179463.aspx)
-#### [Table design guide](storage-table-design-guide.md)
+### 概念
+#### [サービスの概要](https://msdn.microsoft.com/library/dd179463.aspx)
+#### [テーブル設計ガイド](storage-table-design-guide.md)
 
-### [Samples](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
+### [サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
 
 
 ## File Storage
 
 
-### Tutorials
-#### [Windows, .NET, PowerShell](storage-dotnet-how-to-use-files.md)
+### Tutorials (チュートリアル)
+#### [Windows、.NET、PowerShell](storage-dotnet-how-to-use-files.md)
 #### [Linux](storage-how-to-use-files-linux.md)
 #### [Java](storage-java-how-to-use-file-storage.md)
 #### [C++](storage-c-plus-plus-how-to-use-files.md)
 #### [Python](storage-python-how-to-use-file-storage.md)
 
-### Concepts
-#### [Service overview](https://msdn.microsoft.com/en-us/library/dn166972.aspx)
-#### [Troubleshoot Azure Files](storage-troubleshoot-file-connection-problems.md)
+### 概念
+#### [サービスの概要](https://msdn.microsoft.com/en-us/library/dn166972.aspx)
+#### [Azure Files のトラブルシューティング](storage-troubleshoot-file-connection-problems.md)
 
-### [Samples](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
+### [サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
 
 
-## Virtual Machine Disks
+## 仮想マシンのディスク
 
 ### Premium Storage
-#### [High-performance storage for VM workloads](storage-premium-storage.md)
-#### [Migrating to Premium Storage](storage-migration-to-premium-storage.md)
-#### [Design for high performance](storage-premium-storage-performance.md)
+#### [VM ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage.md)
+#### [Premium Storage への移行](storage-migration-to-premium-storage.md)
+#### [高パフォーマンス用の設計](storage-premium-storage-performance.md)
 
 ### Standard Storage
-#### Troubleshoot disk deletion errors
-##### [In a Resource Manager deployment](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
-##### [In a classic deployment](storage-cannot-delete-storage-account-container-vhd.md)
-#### [Back up VM disks with incremental snapshots](storage-incremental-snapshots.md)
+#### ディスク削除エラーのトラブルシューティング
+##### [リソース マネージャー デプロイの場合](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
+##### [クラシック デプロイの場合](storage-cannot-delete-storage-account-container-vhd.md)
+#### [増分スナップショットを使用した VM ディスクのバックアップ](storage-incremental-snapshots.md)
 
 
-## Develop with Storage
+## Storage で開発する
 
-### [Samples](storage-samples.md)
-### General development
-#### [Configure connection strings](storage-configure-connection-string.md)
-#### [Use the Storage Emulator](storage-use-emulator.md)
-#### [Set and retrieve properties and metadata](storage-properties-metadata.md)
+### [サンプル](storage-samples.md)
+### 一般的な開発
+#### [接続文字列を構成する](storage-configure-connection-string.md)
+#### [ストレージ エミュレーターを使用する](storage-use-emulator.md)
+#### [プロパティおよびメタデータを設定および取得する](storage-properties-metadata.md)
 
 
-## Manage Storage
+## ストレージを管理する
 
 ### [Azure PowerShell](storage-powershell-guide-full.md)
 ### [Azure CLI](storage-azure-cli.md)
 ### [Azure Automation](automation-manage-storage.md)
 
 
-## Performance & Availability
+## パフォーマンスと可用性
 
-### [Replication](storage-redundancy.md)
-### [Scalability and performance targets](storage-scalability-targets.md)
-### [Performance and scalability checklist](storage-performance-checklist.md)
-### [Concurrency](storage-concurrency.md)
+### [レプリケーション](storage-redundancy.md)
+### [スケーラビリティとパフォーマンスのターゲット](storage-scalability-targets.md)
+### [パフォーマンスと拡張性のチェックリスト](storage-performance-checklist.md)
+### [同時実行](storage-concurrency.md)
 
 
-## Security
+## セキュリティ
 
-### [Storage security guide](storage-security-guide.md)
-### [Encryption for data at rest](storage-service-encryption.md)
-### Client-side encryption
+### [Storage のセキュリティ ガイド](storage-security-guide.md)
+### [保存データの暗号化](storage-service-encryption.md)
+### クライアント側暗号化
 #### [Azure Key Vault](storage-client-side-encryption.md)
 #### [Java](storage-client-side-encryption-java.md)
 #### [Python](storage-client-side-encryption-python.md)
-#### [Tutorial: Encrypt and decrypt blobs using Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md)
+#### [チュートリアル: Azure Key Vault を使用して BLOB を暗号化および復号化する](storage-encrypt-decrypt-blobs-key-vault.md)
 
-### [Shared key authentication](https://msdn.microsoft.com/library/dd179428.aspx)
-### [Shared access signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md)
-### [Anonymous access to blobs](storage-manage-access-to-resources.md)
+### [共有キー認証](https://msdn.microsoft.com/library/dd179428.aspx)
+### [Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md)
+### [BLOB への匿名アクセス](storage-manage-access-to-resources.md)
 
 
-## Monitor & Troubleshoot
+## 監視とトラブルシューティング
 
-### Metrics & Logging
+### メトリックスとログ
 #### [Storage Analytics](storage-analytics.md)
-#### [Enable and view metrics](storage-enable-and-view-metrics.md)
-#### [Monitor, diagnose, and troubleshoot](storage-monitoring-diagnosing-troubleshooting.md)
-#### [Troubleshooting tutorial](storage-e2e-troubleshooting.md)
+#### [メトリックスの有効化と表示](storage-enable-and-view-metrics.md)
+#### [監視、診断、トラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)
+#### [トラブルシューティングのチュートリアル](storage-e2e-troubleshooting.md)
 
-### Troubleshoot disk deletion errors
-#### [In a Resource Manager deployment](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
-#### [In a classic deployment](storage-cannot-delete-storage-account-container-vhd.md)
+### ディスク削除エラーのトラブルシューティング
+#### [リソース マネージャー デプロイの場合](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
+#### [クラシック デプロイの場合](storage-cannot-delete-storage-account-container-vhd.md)
 
-### [Troubleshoot File storage](storage-troubleshoot-file-connection-problems.md)
-### [Disaster recovery guidance](storage-disaster-recovery-guidance.md)
-
-
-## Transfer Data
-
-### [Move data to and from Storage](storage-moving-data.md)
-### [AzCopy command-line utility](storage-use-azcopy.md)
-### [Import/Export service for Blob storage](storage-import-export-service.md)
+### [File Storage のトラブルシューティング](storage-troubleshoot-file-connection-problems.md)
+### [障害復旧ガイダンス](storage-disaster-recovery-guidance.md)
 
 
+## データの転送
 
-# Reference
+### [Storage との間でデータを移動する](storage-moving-data.md)
+### [AzCopy コマンドライン ユーティリティ](storage-use-azcopy.md)
+### [Blob Storage 用の Import/Export サービス](storage-import-export-service.md)
 
-## REST APIs
-### [Blob, Queue, Table, and File](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-### [Resource Provider](https://docs.microsoft.com/rest/api/storage/)
+
+
+# リファレンス
+
+## REST API
+### [Blob、Queue、Table、File](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+### [リソース プロバイダー](https://docs.microsoft.com/rest/api/storage/)
 ### [Import/Export](https://msdn.microsoft.com/library/azure/dn529096.aspx)
 
-## .NET APIs
-### [Blob, Queue, Table, and File](https://docs.microsoft.com/dotnet/api/)
-### [Resource Provider](https://docs.microsoft.com/dotnet/api/)
-### [Data Movement](https://docs.microsoft.com/dotnet/api/)
+## .NET API
+### [Blob、Queue、Table、File](https://docs.microsoft.com/dotnet/api/)
+### [リソース プロバイダー](https://docs.microsoft.com/dotnet/api/)
+### [データの移動](https://docs.microsoft.com/dotnet/api/)
 
 ## [Node.js API](http://azure.github.io/azure-storage-node/)
 ## [Java API](https://docs.microsoft.com/java/api/index)
 ## [C++ API](http://azure.github.io/azure-storage-cpp/)
-## [PowerShell Reference](https://docs.microsoft.com/powershell/)
-## [Azure CLI Reference](https://docs.microsoft.com/cli/azure/storage)
+## [PowerShell リファレンス](https://docs.microsoft.com/powershell/)
+## [Azure CLI リファレンス](https://docs.microsoft.com/cli/azure/storage)
 
 
 
-# Related
+# 関連項目
 
-## Classic Portal
-### [Create storage account](storage-create-storage-account-classic-portal.md)
-### [Enable and view metrics](storage-enable-and-view-metrics-classic-portal.md)
-### [Monitor, diagnose, and troubleshoot](storage-monitoring-diagnosing-troubleshooting-classic-portal.md)
-### [Troubleshooting tutorial](storage-e2e-troubleshooting-classic-portal.md)
+## クラシック ポータル
+### [ストレージ アカウントの作成](storage-create-storage-account-classic-portal.md)
+### [メトリックスの有効化と表示](storage-enable-and-view-metrics-classic-portal.md)
+### [監視、診断、トラブルシューティング](storage-monitoring-diagnosing-troubleshooting-classic-portal.md)
+### [トラブルシューティングのチュートリアル](storage-e2e-troubleshooting-classic-portal.md)
 
 
 
-# Resources
+# リソース
 
-## Azure Storage Explorer
-### [Storage Explorer (Preview)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
-### [Manage blobs with Storage Explorer (Preview)](../vs-azure-tools-storage-explorer-blobs.md)
+## Azure ストレージ エクスプローラー
+### [ストレージ エクスプローラー (プレビュー)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
+### [ストレージ エクスプローラーを使用した BLOB の管理 (プレビュー)](../vs-azure-tools-storage-explorer-blobs.md)
 
-## [Azure Storage client tools](storage-explorers.md)
+## [Azure Storage クライアント ツール](storage-explorers.md)
 
-## Community support
+## コミュニティ サポート
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage)
-### [MSDN Forums](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
+### [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 
-## Nuget packages
-### [Azure Storage Client Library for .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)
-### [Azure Storage Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
+## NuGet パッケージ
+### [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
+### [Azure Storage データ移動ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 ### [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 
-## Source code
+## ソース コード
 
 ### .NET
-#### [Blob, Queue, Table, and File](https://docs.microsoft.com/dotnet/api/)
-#### [Data Movement](https://docs.microsoft.com/dotnet/api/)
-#### [Resource Provider](https://docs.microsoft.com/dotnet/api/)
+#### [Blob、Queue、Table、File](https://docs.microsoft.com/dotnet/api/)
+#### [データの移動](https://docs.microsoft.com/dotnet/api/)
+#### [リソース プロバイダー](https://docs.microsoft.com/dotnet/api/)
 
-### [Node.js](http://azure.github.io/azure-storage-node/)
+### [Node.JS](http://azure.github.io/azure-storage-node/)
 ### [Java](https://github.com/Azure/azure-storage-java)
 ### [C++](https://github.com/Azure/azure-storage-cpp)
 ### [PHP](https://github.com/Azure/azure-storage-php)

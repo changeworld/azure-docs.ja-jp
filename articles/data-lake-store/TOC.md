@@ -1,70 +1,70 @@
 # Overview
-## [Overview of Azure Data Lake Store](data-lake-store-overview.md)
-## [Compare Azure Data Lake Store with Azure Storage](data-lake-store-comparison-with-blob-storage.md)
-## [Use Azure Data Lake Store for big data processing](data-lake-store-data-scenarios.md)
-## [Open source applications that work with Azure Data Lake Store](data-lake-store-compatible-oss-other-applications.md)
+## [Azure Data Lake Store の概要](data-lake-store-overview.md)
+## [Azure Data Lake Store と Azure Storage を比較する](data-lake-store-comparison-with-blob-storage.md)
+## [ビッグ データの処理に Azure Data Lake Store を使用する](data-lake-store-data-scenarios.md)
+## [Azure Data Lake Store で機能するオープン ソース アプリケーション](data-lake-store-compatible-oss-other-applications.md)
 
-# Get started
-## [Using Portal](data-lake-store-get-started-portal.md)
-## [Using PowerShell](data-lake-store-get-started-powershell.md)
-## [Using .NET SDK](data-lake-store-get-started-net-sdk.md)
-## [Using Java SDK](data-lake-store-get-started-java-sdk.md)
-## [Using REST API](data-lake-store-get-started-rest-api.md)
-## [Using Azure CLI](data-lake-store-get-started-cli.md)
-## [Using Node.js](data-lake-store-manage-use-nodejs.md)
+# 作業開始
+## [ポータルの使用](data-lake-store-get-started-portal.md)
+## [PowerShell の使用](data-lake-store-get-started-powershell.md)
+## [.NET SDK の使用](data-lake-store-get-started-net-sdk.md)
+## [Java SDK の使用](data-lake-store-get-started-java-sdk.md)
+## [REST API の使用](data-lake-store-get-started-rest-api.md)
+## [Azure CLI の使用](data-lake-store-get-started-cli.md)
+## [Node.js の使用](data-lake-store-manage-use-nodejs.md)
 
-# How to
-## Copy Data
-### [Using Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md)
-### [Using AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
-### [Using DistCp](data-lake-store-copy-data-wasb-distcp.md)
-### [Using Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
-### [Upload data from offline sources](data-lake-store-offline-bulk-data-upload.md)
+# 方法
+## データをコピーする
+### [Azure Data Factory の使用](../data-factory/data-factory-azure-datalake-connector.md)
+### [AdlCopy を使用](data-lake-store-copy-data-azure-storage-blob.md)
+### [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
+### [Sqoop の使用](data-lake-store-data-transfer-sql-sqoop.md)
+### [オフライン ソースからデータをアップロードする](data-lake-store-offline-bulk-data-upload.md)
 
-## Develop
-### [Using PowerShell](data-lake-store-get-started-powershell.md)
-### [Using .NET SDK](data-lake-store-get-started-net-sdk.md)
-### [Using Java SDK](data-lake-store-get-started-java-sdk.md)
-### [Using REST API](data-lake-store-get-started-rest-api.md)
-### [Using Azure CLI](data-lake-store-get-started-cli.md)
-### [Using Node.js](data-lake-store-manage-use-nodejs.md)
+## 開発
+### [PowerShell の使用](data-lake-store-get-started-powershell.md)
+### [.NET SDK の使用](data-lake-store-get-started-net-sdk.md)
+### [Java SDK の使用](data-lake-store-get-started-java-sdk.md)
+### [REST API の使用](data-lake-store-get-started-rest-api.md)
+### [Azure CLI の使用](data-lake-store-get-started-cli.md)
+### [Node.js の使用](data-lake-store-manage-use-nodejs.md)
 
-## Secure Data
-### [Security overview](data-lake-store-security-overview.md)
-### [Access control in Data Lake Store](data-lake-store-access-control.md)
-### [Secure data in Data Lake Store](data-lake-store-secure-data.md)
-### [Service-to-service authentication](data-lake-store-authenticate-using-active-directory.md)
-### [End-user authentication](data-lake-store-end-user-authenticate-using-active-directory.md)
+## データをセキュリティで保護する
+### [セキュリティの概要](data-lake-store-security-overview.md)
+### [Data Lake Store のアクセス制御](data-lake-store-access-control.md)
+### [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
+### [サービス間認証](data-lake-store-authenticate-using-active-directory.md)
+### [エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)
  
-## Integrate with Azure Services
-### [Use with Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-### [Create HDInsight cluster with Data Lake Store using Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
-### [Create HDInsight cluster with Data Lake Store using PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
-### [Create HDInsight cluster with Data Lake Store using Resource Manager template](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
-### [Use with Data Factory](../data-factory/data-factory-azure-datalake-connector.md)
-### [Use with Stream Analytics](data-lake-store-stream-analytics.md)
-### [Use with Power BI](data-lake-store-power-bi.md)
-### [Use with Data Catalog](data-lake-store-with-data-catalog.md)
-### [More Azure integration options](data-lake-store-integrate-with-other-services.md)
+## Azure サービスと統合する
+### [Data Lake Analytics で使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+### [ポータルを使用して Data Lake Store で HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
+### [PowerShell を使用して Data Lake Store で HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-powershell.md)
+### [Resource Manager テンプレートを使用して Data Lake Store で HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+### [Data Factory で使用する](../data-factory/data-factory-azure-datalake-connector.md)
+### [Stream Analytics で使用する](data-lake-store-stream-analytics.md)
+### [Power BI で使用する](data-lake-store-power-bi.md)
+### [Data Catalog で使用する](data-lake-store-with-data-catalog.md)
+### [その他の Azure 統合オプション](data-lake-store-integrate-with-other-services.md)
 
-## Manage
-### [Access diagnostic logs](data-lake-store-diagnostic-logs.md)
+## [管理]
+### [診断ログにアクセスする](data-lake-store-diagnostic-logs.md)
 
-# Reference
+# リファレンス
 ## [.NET SDK](https://msdn.microsoft.com/library/azure/mt581387.aspx)
 ## [Java SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/)
-## [PowerShell cmdlets](https://msdn.microsoft.com/library/azure/mt607120.aspx)
+## [PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt607120.aspx)
 ## [REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx)
-## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)
+## [Node.JS](https://www.npmjs.com/package/azure-arm-datalake-store)
 
-# Related
+# 関連項目
 ## [Cortana Intelligence Suite](https://www.microsoft.com/en-us/cloud-platform/what-is-cortana-intelligence-suite)
 
-# Resources
-## [MSDN Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
-## [Stack Overflow Forum](http://stackoverflow.com/questions/tagged/azure-data-lake)
-## [Give feedback on UserVoice](https://feedback.azure.com/forums/327234-data-lake)
-## [Data Lake Store Blog](https://blogs.msdn.microsoft.com/azuredatalake/)
+# リソース
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
+## [Stack Overflow フォーラム](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [UserVoice に関するフィードバックを送信する](https://feedback.azure.com/forums/327234-data-lake)
+## [Data Lake Store のブログ](https://blogs.msdn.microsoft.com/azuredatalake/)
 
 
 <!--HONumber=Nov16_HO2-->

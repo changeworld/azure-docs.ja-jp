@@ -1,56 +1,56 @@
 # Overview
-## [What is Stream Analytics?](stream-analytics-introduction.md)
-## [Stream Analytics Learning Path](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
+## [Stream Analytics とは](stream-analytics-introduction.md)
+## [Stream Analytics ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
 
-# Get started
-## [Process IoT streaming data](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
-## [Real-time fraud detection](stream-analytics-real-time-fraud-detection.md)
+# 作業開始
+## [IoT ストリーミング データを処理する](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
+## [リアルタイムでの不正検出](stream-analytics-real-time-fraud-detection.md)
 
-# How to
+# 方法
 
-## Streaming solutions
-### [Build an IoT solution](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
-### [Social media analysis](stream-analytics-twitter-sentiment-analysis-trends.md)
-### [Analyze sensor data with Power BI]https://gallery.cortanaanalytics.com/Tutorial/Sensor-Data-Analytics-with-ASA-and-Power-BI-2?fromlegacydomain=1)
-### [Real-time scoring with Machine Learning](stream-analytics-machine-learning-integration-tutorial.md)
-### [Reference architecture: Real-time event processing](stream-analytics-real-time-event-processing-reference-architecture.md)
+## ストリーミング ソリューション
+### [IoT ソリューションを構築する](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
+### [ソーシャル メディア分析](stream-analytics-twitter-sentiment-analysis-trends.md)
+### [Power BI を使用してセンサー データを分析する]https://gallery.cortanaanalytics.com/Tutorial/Sensor-Data-Analytics-with-ASA-and-Power-BI-2?fromlegacydomain=1)
+### [Machine Learning を使用したリアルタイムのスコアリング](stream-analytics-machine-learning-integration-tutorial.md)
+### [参照アーキテクチャ: リアルタイム イベント処理](stream-analytics-real-time-event-processing-reference-architecture.md)
 
-## Develop
-### [Common query patterns](stream-analytics-stream-analytics-query-patterns.md)
-### [Create inputs](stream-analytics-define-inputs.md)
-### [Create outputs](stream-analytics-define-outputs.md)
-### [Use reference data](stream-analytics-use-reference-data.md)
-### [Output to Azure Redis Cache](stream-analytics-functions-redis.md)
-### [Output to Data Lake Store](stream-analytics-data-lake-output.md)
-### [Output to DocumentDB](stream-analytics-documentdb-output.md)
-### [Analyze data with Power BI](stream-analytics-power-bi-dashboard.md)
-### [REST API & Machine Learning integration](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
-### [Use the Management .NET SDK](stream-analytics-dotnet-management-sdk.md)
-### [Window functions](stream-analytics-window-functions.md)
+## 開発
+### [一般的なクエリのパターン](stream-analytics-stream-analytics-query-patterns.md)
+### [入力を作成する](stream-analytics-define-inputs.md)
+### [出力を作成する](stream-analytics-define-outputs.md)
+### [参照データを使用する](stream-analytics-use-reference-data.md)
+### [Azure Redis Cache に出力する](stream-analytics-functions-redis.md)
+### [Data Lake Store に出力する](stream-analytics-data-lake-output.md)
+### [DocumentDB に出力する](stream-analytics-documentdb-output.md)
+### [Power BI を使用したデータ分析](stream-analytics-power-bi-dashboard.md)
+### [REST API および Machine Learning 統合](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
+### [管理用 .NET SDK を使用する](stream-analytics-dotnet-management-sdk.md)
+### [ウィンドウ関数](stream-analytics-window-functions.md)
 
-## Manage
-### [Monitor jobs](stream-analytics-monitoring.md)
-### [Monitor jobs programmatically](stream-analytics-monitor-jobs.md)
-### [Monitor jobs with PowerShell](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
-### [Scale to increase throughput](stream-analytics-scale-jobs.md)
-### [Scale for Machine Learning functions](stream-analytics-scale-with-machine-learning-functions.md)
-### [Rotate input & output credentials](stream-analytics-login-credentials-inputs-outputs.md)
+## [管理]
+### [ジョブの監視](stream-analytics-monitoring.md)
+### [プログラムでジョブを監視する](stream-analytics-monitor-jobs.md)
+### [PowerShell でジョブを監視する](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
+### [スループット向上のためのスケール](stream-analytics-scale-jobs.md)
+### [Machine Learning 関数のスケール](stream-analytics-scale-with-machine-learning-functions.md)
+### [入出力の資格情報を交換する](stream-analytics-login-credentials-inputs-outputs.md)
 
-## Automate
-### [One-click PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
+## 自動化
+### [ワンクリック PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
-# Reference
-## [Query language](https://msdn.microsoft.com/library/azure/dn834998)
+# リファレンス
+## [クエリ言語](https://msdn.microsoft.com/library/azure/dn834998)
 ## [REST API](https://msdn.microsoft.com/library/azure/dn835031)
 ## [PowerShell](https://msdn.microsoft.com/library/azure/mt270341)
 ## [.NET SDK](https://msdn.microsoft.com/library/azure/mt416896)
-## [Compare Storm & Stream Analytics](stream-analytics-comparison-storm.md)
-## [Release notes](stream-analytics-release-notes.md)
-# Resources
-## [MSDN blog](http://blogs.msdn.com/b/streamanalytics/)
-## [MSDN forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+## [Storm と Stream Analytics を比較する](stream-analytics-comparison-storm.md)
+## [リリース ノート](stream-analytics-release-notes.md)
+# リソース
+## [MSDN ブログ](http://blogs.msdn.com/b/streamanalytics/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
-## [Feedback forum](http://feedback.azure.com/forums/270577-azure-stream-analytics)
+## [フィードバック フォーラム](http://feedback.azure.com/forums/270577-azure-stream-analytics)
 
 
 <!--HONumber=Nov16_HO2-->

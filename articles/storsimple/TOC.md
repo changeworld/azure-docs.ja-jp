@@ -1,177 +1,177 @@
-# StorSimple Overview
+# StorSimple の概要
 
 # StorSimple Virtual Array
 
 ## Overview
-### [What is the solution?](storsimple-ova-overview.md)
+### [ソリューションとは](storsimple-ova-overview.md)
 
-## Get started
-### Plan
-#### [Review requirements](storsimple-ova-system-requirements.md)
-#### [Understand limits](storsimple-ova-limits.md)
-#### [Review best practices](storsimple-ova-best-practices.md)
-### Deploy
-#### [Prepare to deploy](storsimple-ova-deploy1-portal-prep.md)
-#### [Deploy StorSimple Manager service](storsimple-ova-manage-service.md)
-#### [Provision in Hyper-V](storsimple-ova-deploy2-provision-hyperv.md)
-#### [Provision in VMware](storsimple-ova-deploy2-provision-vmware.md)
-#### [Set up as file server](storsimple-ova-deploy3-fs-setup.md)
-#### [Set up as iSCSI server](storsimple-ova-deploy3-iscsi-setup.md)
+## 作業開始
+### プラン
+#### [要件を確認する](storsimple-ova-system-requirements.md)
+#### [制限について](storsimple-ova-limits.md)
+#### [ベスト プラクティスを確認する](storsimple-ova-best-practices.md)
+### デプロイ
+#### [デプロイの準備をする](storsimple-ova-deploy1-portal-prep.md)
+#### [StorSimple Manager サービスをデプロイする](storsimple-ova-manage-service.md)
+#### [Hyper-V でプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)
+#### [VMware でプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)
+#### [ファイル サーバーとして設定する](storsimple-ova-deploy3-fs-setup.md)
+#### [iSCSI サーバーとして設定する](storsimple-ova-deploy3-iscsi-setup.md)
 
-## How to
-### [Manage via Azure portal](storsimple-ova-manager-service-administration.md)
-#### [Install latest Update](storsimple-ova-install-update-01.md)
-#### [Create & manage backups](storsimple-ova-backup.md)
-#### [Restore from backups](storsimple-ova-restore.md)
-#### [Failover and DR](storsimple-ova-failover-dr.md)
-#### [Deactivate and delete](storsimple-ova-deactivate-and-delete-device.md)
-#### [Monitor service dashboard](storsimple-ova-service-dashboard.md)
-#### [Change device password](storsimple-ova-change-device-admin-password.md)
-#### [Manage ACRs](storsimple-ova-manage-acrs.md)
-#### [Manage storage accounts](storsimple-ova-manage-storage-accounts.md)
-#### [Manage jobs](storsimple-ova-manage-jobs.md)
-#### [Configure MPIO on Windows Server host](storsimple-ova-configure-mpio-windows-server.md)
-### [Configure via local web UI](storsimple-ova-web-ui-admin.md)
+## 方法
+### [Azure Portal で管理する](storsimple-ova-manager-service-administration.md)
+#### [最新の更新プログラムをインストールする](storsimple-ova-install-update-01.md)
+#### [バックアップを作成および管理する](storsimple-ova-backup.md)
+#### [バックアップから復元する](storsimple-ova-restore.md)
+#### [フェールオーバーと DR](storsimple-ova-failover-dr.md)
+#### [非アクティブ化および削除](storsimple-ova-deactivate-and-delete-device.md)
+#### [サービス ダッシュボードを監視する](storsimple-ova-service-dashboard.md)
+#### [デバイスのパスワードを変更する](storsimple-ova-change-device-admin-password.md)
+#### [ACR を管理する](storsimple-ova-manage-acrs.md)
+#### [ストレージ アカウントを管理する](storsimple-ova-manage-storage-accounts.md)
+#### [ジョブを管理する](storsimple-ova-manage-jobs.md)
+#### [Windows Server ホストで MPIO を構成する](storsimple-ova-configure-mpio-windows-server.md)
+### [ローカル Web UI で構成する](storsimple-ova-web-ui-admin.md)
 
-## Release notes
-### [Update 0.3 - current](storsimple-ova-update-03-release-notes.md)
-### [Update 0.2 and 0.1](storsimple-ova-update-01-release-notes.md)
+## リリース ノート
+### [Update 0.3 - 最新](storsimple-ova-update-03-release-notes.md)
+### [Update 0.2 および 0.1](storsimple-ova-update-01-release-notes.md)
 
-# StorSimple 8000 Series
+# StorSimple 8000 シリーズ
 
 ## Overview
-### [What is the solution?](storsimple-overview.md)
-### [StorSimple learning map](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
-### [Security considerations](storsimple-security.md)
+### [ソリューションとは](storsimple-overview.md)
+### [StorSimple 学習マップ](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
+### [セキュリティに関する考慮事項](storsimple-security.md)
 
-## Get started
-### Plan
-#### [Review requirements](storsimple-system-requirements.md)
-#### [Review technical specifications](storsimple-technical-specifications-and-compliance.md)
-#### [Understand limits](storsimple-limits.md)
-#### [Best practices](https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68)
+## 作業開始
+### プラン
+#### [要件を確認する](storsimple-system-requirements.md)
+#### [技術仕様を確認する](storsimple-technical-specifications-and-compliance.md)
+#### [制限について](storsimple-limits.md)
+#### [ベスト プラクティス](https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68)
 
-### Install
-#### [Review safety](storsimple-safety.md)
-#### [Unpack, rack, cable an 8100](storsimple-8100-hardware-installation.md)
-#### [Unpack, rack, cable an 8600](storsimple-8600-hardware-installation.md)
-#### [Supported hardware for 10 GbE network interfaces](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+### [インストール]
+#### [安全性を確認する](storsimple-safety.md)
+#### [8100 を開梱、ラック設置、ケーブル接続する](storsimple-8100-hardware-installation.md)
+#### [8600 を開梱、ラック設置、ケーブル接続する](storsimple-8600-hardware-installation.md)
+#### [10 GbE ネットワーク インターフェイスでサポートされるハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
-### Deploy 
-#### [StorSimple Manager service](storsimple-manage-service.md)
-#### [Physical device in Azure - current](storsimple-deployment-walkthrough-u2.md)
-##### [Physical device in Azure - Update 1](storsimple-deployment-walkthrough-u1.md)
-##### [Physical device in Azure - GA](storsimple-deployment-walkthrough.md)
-#### [Physical device in Government Portal - current](storsimple-deployment-walkthrough-gov-u2.md)
-#### [Virtual device in Azure](storsimple-virtual-device-u2.md)
+### デプロイ 
+#### [StorSimple Manager サービス](storsimple-manage-service.md)
+#### [Azure の物理デバイス - 最新](storsimple-deployment-walkthrough-u2.md)
+##### [Azure の物理デバイス - Update 1](storsimple-deployment-walkthrough-u1.md)
+##### [Azure の物理デバイス - 一般公開](storsimple-deployment-walkthrough.md)
+#### [Government ポータルの物理デバイス - 最新](storsimple-deployment-walkthrough-gov-u2.md)
+#### [Azure の仮想デバイス](storsimple-virtual-device-u2.md)
 #### [StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)
-#### [StorSimple Adapter for SharePoint](storsimple-adapter-for-sharepoint.md)
+#### [SharePoint 用 StorSimple アダプター](storsimple-adapter-for-sharepoint.md)
 
-## How to
-### Manage 
-#### [Using StorSimple Manager service](storsimple-manager-service-administration.md)
-##### [Restore from a backup](storsimple-restore-from-backup-set-u2.md)
-###### [Restore from a backup](storsimple-restore-from-backup-set.md)
-##### [Clone a volume](storsimple-clone-volume-u2.md)
-###### [Clone a volume](storsimple-clone-volume.md)
-##### [Remotely connect to your device](storsimple-remote-connect.md)
-##### [Deactivate and delete your device](storsimple-deactivate-and-delete-device.md)
-##### [Fail over your device](storsimple-device-failover-disaster-recovery.md)
-##### [Manage backup catalog](storsimple-manage-backup-catalog.md)
-##### [Manage backup policies - current](storsimple-manage-backup-policies-u2.md)
-###### [Manage backup policies - Update 1](storsimple-manage-backup-policies.md)
-##### [Manage storage accounts](storsimple-manage-storage-accounts.md)
-##### [Manage volume containers](storsimple-manage-volume-containers.md)
-##### [Manage volumes - current](storsimple-manage-volumes-u2.md)
-###### [FAQ: Locally pinned volumes](storsimple-local-volume-faq.md)
-###### [Manage volumes - Update 1](storsimple-manage-volumes.md)
-##### [Manage ACRs](storsimple-manage-acrs.md)
-##### [Manage bandwidth templates](storsimple-manage-bandwidth-templates.md)
-##### [View and manage jobs - current](storsimple-manage-jobs-u2.md)
-###### [View and manage jobs - Update 1](storsimple-manage-jobs.md)
-##### [Change device mode](storsimple-device-modes.md)
-##### [Change device password](storsimple-change-passwords.md)
-##### [Modify device configuration](storsimple-modify-device-config.md)
-##### [Turn on and turn off](storsimple-turn-device-on-or-off.md)
-##### [Configure MPIO on Windows Server host](storsimple-configure-mpio-windows-server.md)
-##### [Configure MPIO on linux host](storsimple-configure-mpio-on-linux.md)
-##### [Configure CHAP](storsimple-configure-chap.md)
+## 方法
+### [管理] 
+#### [StorSimple Manager サービスの使用](storsimple-manager-service-administration.md)
+##### [バックアップから復元する](storsimple-restore-from-backup-set-u2.md)
+###### [バックアップから復元する](storsimple-restore-from-backup-set.md)
+##### [ボリュームを複製する](storsimple-clone-volume-u2.md)
+###### [ボリュームを複製する](storsimple-clone-volume.md)
+##### [デバイスにリモート接続する](storsimple-remote-connect.md)
+##### [デバイスの非アクティブ化および削除](storsimple-deactivate-and-delete-device.md)
+##### [デバイスをフェールオーバーする](storsimple-device-failover-disaster-recovery.md)
+##### [バックアップ カタログを管理する](storsimple-manage-backup-catalog.md)
+##### [バックアップ ポリシーを管理する - 最新](storsimple-manage-backup-policies-u2.md)
+###### [バックアップ ポリシーを管理する - Update 1](storsimple-manage-backup-policies.md)
+##### [ストレージ アカウントを管理する](storsimple-manage-storage-accounts.md)
+##### [ボリューム コンテナーを管理する](storsimple-manage-volume-containers.md)
+##### [ボリュームを管理する - 最新](storsimple-manage-volumes-u2.md)
+###### [FAQ - ローカル固定ボリューム](storsimple-local-volume-faq.md)
+###### [ボリュームを管理する - Update 1](storsimple-manage-volumes.md)
+##### [ACR を管理する](storsimple-manage-acrs.md)
+##### [帯域幅テンプレートを管理する](storsimple-manage-bandwidth-templates.md)
+##### [ジョブの表示および管理 - 最新](storsimple-manage-jobs-u2.md)
+###### [ジョブの表示および管理 - Update 1](storsimple-manage-jobs.md)
+##### [デバイスのモードを変更する](storsimple-device-modes.md)
+##### [デバイスのパスワードを変更する](storsimple-change-passwords.md)
+##### [デバイスの構成を変更する](storsimple-modify-device-config.md)
+##### [オンとオフを切り替える](storsimple-turn-device-on-or-off.md)
+##### [Windows Server ホストで MPIO を構成する](storsimple-configure-mpio-windows-server.md)
+##### [Linux ホストで MPIO を構成する](storsimple-configure-mpio-on-linux.md)
+##### [CHAP を構成する](storsimple-configure-chap.md)
 
-#### [Using Window PowerShell for StorSimple](storsimple-windows-powershell-administration.md)
-##### [Manage device controller](storsimple-manage-device-controller.md)
-##### [Configure web proxy](storsimple-configure-web-proxy.md)
-##### [Modify DATA 0 settings](storsimple-modify-data-0.md)
+#### [StorSimple 用 Window PowerShell の使用](storsimple-windows-powershell-administration.md)
+##### [デバイス コントローラーを管理する](storsimple-manage-device-controller.md)
+##### [Web プロキシを構成する](storsimple-configure-web-proxy.md)
+##### [DATA 0 設定を変更する](storsimple-modify-data-0.md)
 
-#### [Using StorSimple Snapshot Manager](storsimple-snapshot-manager-admin.md)
-##### [What is StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
-##### [About StorSimple Snapshot Manager interface](storsimple-use-snapshot-manager.md)
-##### [Manage devices via StorSimple Snapshot Manager](storsimple-snapshot-manager-manage-devices.md)
-##### [Manage backup policies via StorSimple Snapshot Manager](storsimple-snapshot-manager-manage-backup-policies.md)
-##### [Manage volume groups via StorSimple Snapshot Manager](storsimple-snapshot-manager-manage-volume-groups.md)
-##### [Manage backup catalog via StorSimple Snapshot Manager](storsimple-snapshot-manager-manage-backup-catalog.md)
-##### [Manage backup jobs via StorSimple Snapshot Manager](storsimple-snapshot-manager-manage-backup-jobs.md)
-##### [Manage volumes via StorSimple Snapshot Manager](storsimple-snapshot-manager-manage-volumes.md)
-##### [Use MMC actions in StorSimple Snapshot Manager](storsimple-snapshot-manager-mmc-menu.md)
+#### [StorSimple Snapshot Manager の使用](storsimple-snapshot-manager-admin.md)
+##### [StorSimple Snapshot Manager とは](storsimple-what-is-snapshot-manager.md)
+##### [StorSimple Snapshot Manager インターフェイスについて](storsimple-use-snapshot-manager.md)
+##### [StorSimple Snapshot Manager でデバイスを管理する](storsimple-snapshot-manager-manage-devices.md)
+##### [StorSimple Snapshot Manager でバックアップ ポリシーを管理する](storsimple-snapshot-manager-manage-backup-policies.md)
+##### [StorSimple Snapshot Manager でボリューム グループを管理する](storsimple-snapshot-manager-manage-volume-groups.md)
+##### [StorSimple Snapshot Manager でバックアップ カタログを管理する](storsimple-snapshot-manager-manage-backup-catalog.md)
+##### [StorSimple Snapshot Manager でバックアップ ジョブを管理する](storsimple-snapshot-manager-manage-backup-jobs.md)
+##### [StorSimple Snapshot Manager でボリュームを管理する](storsimple-snapshot-manager-manage-volumes.md)
+##### [StorSimple Snapshot Manager で MMC アクションを使用する](storsimple-snapshot-manager-mmc-menu.md)
 
-### Build solutions
-#### [Distributed global namespace](https://www.microsoft.com/download/details.aspx?id=45507)
-#### [Automate file server DR to Azure](storsimple-disaster-recovery-using-azure-site-recovery.md)
-#### [StorSimple with Express Route](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
+### ソリューションを構築する
+#### [分散されたグローバル名前空間](https://www.microsoft.com/download/details.aspx?id=45507)
+#### [Azure へのファイル サーバー DR を自動化する](storsimple-disaster-recovery-using-azure-site-recovery.md)
+#### [Express Route を使用した StorSimple](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
 
-### Monitor
-#### [Using service dashboard](storsimple-service-dashboard.md)
-#### [Using device dashbaord](storsimple-device-dashboard.md)
-#### [Using service alerts](storsimple-manage-alerts.md)
-#### [Using hardware status](storsimple-monitor-hardware-status.md)
-#### [Using monitoring LEDs](storsimple-monitoring-indicators.md)
+### 監視
+#### [サービス ダッシュボードの使用](storsimple-service-dashboard.md)
+#### [デバイス ダッシュボードの使用](storsimple-device-dashboard.md)
+#### [サービス アラートの使用](storsimple-manage-alerts.md)
+#### [ハードウェアの状態の使用](storsimple-monitor-hardware-status.md)
+#### [監視 LED の使用](storsimple-monitoring-indicators.md)
 
-### Troubleshoot
-#### [Deployment issues](storsimple-troubleshoot-deployment.md)
-#### [Operational issues](storsimple-troubleshoot-operational-device.md)
-#### [Hardware replacement](storsimple-hardware-component-replacement.md)
-##### [Replace device controller](storsimple-controller-replacement.md)
-##### [Replace EBOD controller](storsimple-ebod-controller-replacement.md)
-##### [Replace PCM](storsimple-power-cooling-module-replacement.md)
-##### [Replace disk drive](storsimple-disk-drive-replacement.md)
-##### [Replace backup battery](storsimple-battery-replacement.md)
-##### [Replace chassis](storsimple-chassis-replacement.md)
-#### [Contact Support](storsimple-contact-microsoft-support.md)
-##### [Create Support package](storsimple-create-manage-support-package.md)
+### トラブルシューティング
+#### [デプロイの問題](storsimple-troubleshoot-deployment.md)
+#### [操作上の問題](storsimple-troubleshoot-operational-device.md)
+#### [ハードウェア交換](storsimple-hardware-component-replacement.md)
+##### [デバイス コントローラーを交換する](storsimple-controller-replacement.md)
+##### [EBOD コントローラーを交換する](storsimple-ebod-controller-replacement.md)
+##### [PCM を交換する](storsimple-power-cooling-module-replacement.md)
+##### [ディスク ドライブを交換する](storsimple-disk-drive-replacement.md)
+##### [バックアップ バッテリを交換する](storsimple-battery-replacement.md)
+##### [シャーシを交換する](storsimple-chassis-replacement.md)
+#### [サポートに問い合せる](storsimple-contact-microsoft-support.md)
+##### [サポート パッケージを作成する](storsimple-create-manage-support-package.md)
 
-### Migrate
-#### [From 5000-7000 series](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-19253270)
-#### [From other storage devices](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
+### 移行
+#### [5000 - 7000 シリーズから](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-19253270)
+#### [他のストレージ デバイスから](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
-### Update
-#### [Install Update 3](storsimple-install-update-3.md)
-#### [Install Update 2.2](storsimple-install-update-21.md)
-#### [Install Update 2](storsimple-install-update-2.md)
-#### [Install Update 1.2](storsimple-install-update-1.md)
-#### [Update your device](storsimple-update-device.md)
+### 更新
+#### [Update 3 をインストールする](storsimple-install-update-3.md)
+#### [Update 2.2 をインストールする](storsimple-install-update-21.md)
+#### [Update 2 をインストールする](storsimple-install-update-2.md)
+#### [Update 1.2 をインストールする](storsimple-install-update-1.md)
+#### [デバイスを更新する](storsimple-update-device.md)
 
-## Release notes
-### [Update 3 - current](storsimple-update3-release-notes.md)
+## リリース ノート
+### [Update 3 - 最新](storsimple-update3-release-notes.md)
 ### [Update 2.2](storsimple-update21-release-notes.md)
-### [Update 2 ](storsimple-update2-release-notes.md)
-### [Update 1 ](storsimple-update1-release-notes.md)
+### [Update 2](storsimple-update2-release-notes.md)
+### [Update 1](storsimple-update1-release-notes.md)
 ### [Update 0.3](storsimple-february-2015-release-notes.md)
 ### [Update 0.2](storsimple-january-2015-release-notes.md)
 ### [Update 0.1](storsimple-october-2014-release-notes.md)
-### [Release - GA](storsimple-july-2014-release-notes.md)
+### [リリース - 一般公開](storsimple-july-2014-release-notes.md)
 
-## Reference
-### [Azure PowerShell cmdlet reference](https://msdn.microsoft.com/en-us/library/azure/dn920427)
-### [Windows PowerShell for StorSimple cmdlet reference](https://technet.microsoft.com/library/dn688168.aspx)
+## リファレンス
+### [Azure PowerShell コマンドレット リファレンス](https://msdn.microsoft.com/en-us/library/azure/dn920427)
+### [Windows PowerShell for StorSimple コマンドレット リファレンス](https://technet.microsoft.com/library/dn688168.aspx)
 
-# [StorSimple 5000-7000 Series](http://onlinehelp.storsimple.com)
+# [StorSimple 5000 - 7000 シリーズ](http://onlinehelp.storsimple.com)
 
-# Resources
-## [Azure blog](https://azure.microsoft.com/blog/)
-## [Forums](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
-## [Marketing blog](http://blogs.technet.com/b/cis/)
-## [Marketing](https://www.microsoft.com/en-us/server-cloud/products/storsimple/explore.aspx)
-## [Support blog](http://blogs.msdn.com/b/storsimple/)
-## [Third party notices](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
+# リソース
+## [Azure のブログ](https://azure.microsoft.com/blog/)
+## [フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [マーケティング ブログ](http://blogs.technet.com/b/cis/)
+## [マーケティング](https://www.microsoft.com/en-us/server-cloud/products/storsimple/explore.aspx)
+## [サポート ブログ](http://blogs.msdn.com/b/storsimple/)
+## [サード パーティに関する通知](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
 
 
 <!--HONumber=Nov16_HO2-->
