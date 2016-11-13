@@ -23,7 +23,6 @@
     "dengyun@microsoft.com"
   ],
   "branches_to_filter": [
-    "live",
     "master",
     "master-sync-work"
   ],
