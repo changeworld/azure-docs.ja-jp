@@ -1,27 +1,11 @@
 ---
-title: To be submitted | Microsoft Azure
-description: To be submitted.
-services: 
-documentationcenter: 
-author: squillace
-manager: timlt
-editor: 
-tags: billing
-ms.assetid: 09ad147f-9d99-4a38-97ba-0974dcda8e8d
-ms.service: value
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/21/2016
-ms.author: tysonn
+redirect_url: /azure/logic-apps/
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4512d96e0eb1b1f1db3e392c63a6ec866f9b9988
-
+ms.sourcegitcommit: a232fa3fd9a939a50826b625aa7c7df602290be4
+ms.openlocfilehash: 9bf42870965aa842bef2bb7c70bd6a30ab63d7ae
 
 ---
-# <a name="to-be-submitted"></a>To be submitted.
+
 
 
 
