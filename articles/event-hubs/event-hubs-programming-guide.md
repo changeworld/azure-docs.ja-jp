@@ -1,12 +1,12 @@
 ---
-title: Azure Event Hubs のプログラミング ガイド | Microsoft Docs
-description: Azure .NET SDK を使用し、Azure Event Hubs でプログラミングする方法について説明します。
+title: "Azure Event Hubs のプログラミング ガイド |Microsoft Docs"
+description: "Azure .NET SDK を使用し、Azure Event Hubs でプログラミングする方法について説明します。"
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 64cbfd3d-4a0e-4455-a90a-7f3d4f080323
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/16/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1b7a19868e75811198f54150ced78e51f42d8017
+
 
 ---
 # <a name="event-hubs-programming-guide"></a>Event Hubs のプログラミング ガイド
@@ -168,6 +172,9 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 * [Event Hubs のコード サンプル](http://code.msdn.microsoft.com/site/search?query=event hub&f\[0\].Value=event hub&f\[0\].Type=SearchText&ac=5)
 * [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

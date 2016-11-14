@@ -1,13 +1,13 @@
 ---
-title: '概要: Azure AD でのパスワード管理 | Microsoft Docs'
-description: 自分のパスワードのリセットを可能にし、パスワード リセットの前提条件を学習するほか、パスワード ライトバックを有効化してオンプレミスの Active Directory パスワードを管理します。
+title: "概要: Azure AD でのパスワード管理 | Microsoft Docs"
+description: "自分のパスワードのリセットを可能にし、パスワード リセットの前提条件を学習するほか、パスワード ライトバックを有効化してオンプレミスの Active Directory パスワードを管理します。"
 services: active-directory
-keywords: Active Directory パスワード管理, パスワード管理, Azure AD パスワードのリセット
-documentationcenter: ''
+keywords: "Active Directory パスワード管理, パスワード管理, Azure AD パスワードのリセット"
+documentationcenter: 
 author: asteen
 manager: femila
 editor: curtand
-
+ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: asteen
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 77ca34a56a827e8a69ab9a2b60d14cc7c7a71bfc
+
 
 ---
 # <a name="getting-started-with-password-management"></a>パスワード管理の概要
@@ -61,7 +65,7 @@ ms.author: asteen
 * AAD ディレクトリで、管理者アカウントとユーザー アカウントを少なくとも 1 つずつ作成する。
 * AAD Premium、Basic、または O365 有料ライセンスを、作成済みの管理者およびユーザーのアカウントに割り当てる。
 
-### <a name="step-1:-configure-password-reset-policy"></a>手順 1: パスワードのリセット ポリシーを構成する
+### <a name="step-1-configure-password-reset-policy"></a>手順 1: パスワードのリセット ポリシーを構成する
 ユーザー パスワードのリセット ポリシーを構成するには、以下の手順を実行します。
 
 1. 任意のブラウザーを開いて、[Azure クラシック ポータル](https://manage.windowsazure.com)に移動します。
@@ -94,7 +98,7 @@ ms.author: asteen
    
    ![][006]
 
-### <a name="step-2:-add-contact-data-for-your-test-user"></a>手順 2: テスト ユーザー用の連絡先データを追加する
+### <a name="step-2-add-contact-data-for-your-test-user"></a>手順 2: テスト ユーザー用の連絡先データを追加する
 組織内のユーザーがパスワードのリセットに使用するデータを指定する方法はいくつかあります。
 
 * [Azure クラシック ポータル](https://manage.windowsazure.com)または [Office 365 管理ポータル](https://portal.microsoftonline.com)でユーザーを編集する
@@ -119,10 +123,10 @@ ms.author: asteen
    
    ![][010]
 
-### <a name="step-3:-reset-your-azure-ad-password-as-a-user"></a>手順 3: ユーザーとして Azure AD パスワードをリセットする
+### <a name="step-3-reset-your-azure-ad-password-as-a-user"></a>手順 3: ユーザーとして Azure AD パスワードをリセットする
 これでユーザーのリセット ポリシーが構成され、ユーザーの連絡先の詳細が指定できたので、このユーザーは、セルフサービスのパスワード リセットを実行できます。
 
-#### <a name="to-perform-a-self-service-password-reset"></a>セルフサービスのパスワード リセットを実行するには
+#### <a name="to-perform-a-selfservice-password-reset"></a>セルフサービスのパスワード リセットを実行するには
 1. [**portal.microsoftonline.com**](http://portal.microsoftonline.com) などのサイトにアクセスすると、以下のようなログイン画面が表示されます。  [ **アカウントにアクセスできません** ] リンクをクリックして、パスワード リセットの UI をテストします。
    
    ![][011]
@@ -194,7 +198,7 @@ ms.author: asteen
   > 
   > 
 
-### <a name="step-1:-download-the-latest-version-of-azure-ad-connect"></a>手順 1: Azure AD Connect の最新バージョンをダウンロードする
+### <a name="step-1-download-the-latest-version-of-azure-ad-connect"></a>手順 1: Azure AD Connect の最新バージョンをダウンロードする
 パスワード ライトバックは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0419.0911** 以降の Azure AD Sync ツールで使用できます。  アカウントが自動的にロック解除されるパスワード ライトバックが使用できるのは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0485.0222** 以降の Azure AD Sync ツールです。 以前のバージョンを実行している場合は、続行する前に、少なくともこのバージョンにアップグレードしてください。 [ここをクリックすると、Azure AD Connect の最新バージョンをダウンロードできます。](active-directory-aadconnect.md#install-azure-ad-connect)
 
 #### <a name="to-check-the-version-of-azure-ad-sync"></a>Azure AD Sync のバージョンを確認するには
@@ -213,7 +217,7 @@ ms.author: asteen
 > 
 > 
 
-### <a name="step-2:-enable-password-writeback-in-azure-ad-connect"></a>手順 2: Azure AD Connect でパスワード ライトバックを有効にする
+### <a name="step-2-enable-password-writeback-in-azure-ad-connect"></a>手順 2: Azure AD Connect でパスワード ライトバックを有効にする
 Azure AD Connect ツールをダウンロードしたので、パスワード ライトバックを有効にする準備ができました。  次の 2 つの方法のいずれかで有効にします。  パスワード ライトバックは、Azure AD Connect のセットアップ ウィザードの [オプション機能] 画面で有効にできますし、Windows PowerShell を使用して有効にすることもできます。
 
 #### <a name="to-enable-password-writeback-in-the-configuration-wizard"></a>構成ウィザードでパスワード ライトバックを有効にするには
@@ -237,10 +241,10 @@ Azure AD Connect ツールをダウンロードしたので、パスワード �
 5. 次のコマンドレットを実行して、パスワード ライトバックを有効にします。 `Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name –Enable $true`
 
 > [!NOTE]
-> 資格情報を求められた場合、AzureADCredential に指定した管理者アカウントが、**クラウドの管理者アカウント (Azure AD で作成された)** であり、フェデレーション アカウント (オンプレミスの AD で作成され、Azure AD に同期された) ではないことを確認します。
+> 資格情報を求められた場合、AzureADCredential に指定した管理者アカウントが、 **クラウドの管理者アカウント (Azure AD で作成された)**であり、フェデレーション アカウント (オンプレミスの AD で作成され、Azure AD に同期された) ではないことを確認します。
 > 
 > [!NOTE]
-> パスワード ライトバックを無効にするには、PowerShell を使用して前述の手順を繰り返すか (ただし `$false` を渡す)、[Azure クラシック ポータル](https://manage.windowsazure.com)で、ディレクトリの **[構成]** タブの **[ユーザー パスワードのリセット ポリシー] セクション**にある **[オンプレミスのディレクトリにパスワードをライトバック]** を **[いいえ]** に設定します。
+> パスワード ライトバックを無効にするには、PowerShell を使用して前述の手順を繰り返すか (ただし、`$false` を渡します)、[Azure クラシック ポータル](https://manage.windowsazure.com)で、ディレクトリの **[構成]** タブの **[ユーザー パスワードのリセット ポリシー]** セクションにある **[オンプレミスのディレクトリにパスワードをライトバック]** を **[いいえ]** に設定します。
 > 
 > 
 
@@ -251,7 +255,7 @@ Azure AD Connect ツールをダウンロードしたので、パスワード �
 
   ![][023]
 
-### <a name="step-3:-configure-your-firewall"></a>手順 3: ファイアウォールを構成する
+### <a name="step-3-configure-your-firewall"></a>手順 3: ファイアウォールを構成する 
 Azure AD Connect ツールでパスワード ライトバックを有効にした後、サービスからクラウドに接続できることを確認する必要があります。
 
 1. インストールの完了後、ご使用の環境で不明な送信接続をブロックしている場合は、次の規則をファイアウォールに追加する必要があります。 これらの変更を行った後に、AAD Connect のコンピューターを必ず再起動してください。
@@ -259,7 +263,7 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
    * https://ssprsbprodncu-sb.accesscontrol.windows.net/ への発信接続を許可する
    * プロキシを使用している場合や、一般的な接続問題が発生した場合は、TCP ポート 9350-9354 および 5671 の送信接続を許可する
 
-### <a name="step-4:-set-up-the-appropriate-active-directory-permissions"></a>手順 4: Active Directory の適切な権限を設定する
+### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>手順 4: Active Directory の適切な権限を設定する
 パスワードをリセットするユーザーを含むすべてのフォレストについて、構成ウィザードでそのフォレストに対して (初期構成中に) 指定されたアカウントが X である場合、X には、そのフォレスト内の各ドメインで、`lockoutTime` の **[パスワードのリセット]**、**[パスワードの変更]**、**[書き込みアクセス許可]** や、`pwdLastSet` の **[書き込みアクセス許可]** など、ルート オブジェクトの拡張権限を付与する必要があります。 この権限は、すべてのユーザー オブジェクトにより継承されるものとしてマークされます。  
 
 上記のどのアカウントが参照されるか明らかでない場合は、Azure Active Directory Connect の構成 UI を開き、 **[ソリューションの確認]** オプションをクリックします。  以下のスクリーンショットで、アクセス許可を追加する必要があるアカウントには赤色の下線が表示されています。
@@ -295,7 +299,7 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
    ![][028]
 10. 開いているすべてのダイアログ ボックスで **[適用] または [OK]** をクリックします。
 
-### <a name="step-5:-reset-your-ad-password-as-a-user"></a>手順 5: ユーザーとして AD パスワードをリセットする
+### <a name="step-5-reset-your-ad-password-as-a-user"></a>手順 5: ユーザーとして AD パスワードをリセットする
 これでパスワード ライトバックが有効になったので、その動作をテストできます。テストするには、アカウントがクラウド テナントと同期されているユーザーのパスワードをリセットします。
 
 #### <a name="to-verify-password-writeback-is-working-properly"></a>パスワード ライトバックの正常な動作を確認するには
@@ -317,7 +321,7 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 ## <a name="links-to-password-reset-documentation"></a>パスワードのリセットに関するドキュメントへのリンク
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、 [自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
@@ -361,6 +365,6 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する | Microsoft Docs'
-description: このチュートリアルでは、Visual Studio を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。
+title: "チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する | Microsoft Docs"
+description: "このチュートリアルでは、Visual Studio を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 1751185b-ce0a-4ab2-a9c3-e37b4d149ca3
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/17/2016
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b3381396ce198fbcaf13d63510ef12b225735a49
+
 
 ---
-# <a name="tutorial:-create-a-pipeline-with-copy-activity-using-visual-studio"></a>チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
@@ -57,11 +61,11 @@ ms.author: spelluru
 2. **[新しいプロジェクト]** ダイアログ ボックスで、**[DataFactory]** テンプレートを選択し、**[Empty Data Factory Project (空の Data Factory プロジェクト)]** をクリックします。 DataFactory テンプレートが表示されない場合は、Visual Studio を終了し、Azure SDK for Visual Studio 2013 をインストールし、Visual Studio を再度開きます。  
    
     ![[新しいプロジェクト] ダイアログ ボックス
-   ](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-project-dialog.png)
+](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-project-dialog.png)
 3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
    
     ![ソリューション エクスプローラー
-   ](./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png) 
+](./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png)    
 
 ## <a name="create-linked-services"></a>リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。 コピー アクティビティでサポートされているすべてのソースとシンクについては、 [サポートされているデータ ストア](data-factory-data-movement-activities.md##supported-data-stores-and-formats) に関する記事を参照してください。 Data Factory でサポートされているコンピューティング サービスの一覧については、「 [コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md) 」を参照してください。 このチュートリアルでは、コンピューティング サービスは使用しません。 
@@ -139,7 +143,7 @@ ms.author: spelluru
    * **linkedServiceName** は **AzureStorageLinkedService** に設定されています。 このリンクされたサービスは手順 2. で作成しました。
    * **folderPath** は **adftutorial** コンテナーに設定されています。 **fileName** プロパティを使用して、フォルダー内の BLOB の名前を指定することもできます。 BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。  
    * format の **type** は **TextFormat** に設定されています。
-   * テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。 
+   * テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。    
    * **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 
    
    **入力**データセット用に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。 JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
@@ -271,7 +275,7 @@ ms.author: spelluru
    
    前の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 
-## <a name="publish/deploy-data-factory-entities"></a>Data Factory エンティティの発行/デプロイ
+## <a name="publishdeploy-data-factory-entities"></a>Data Factory エンティティの発行/デプロイ
 この手順では、先ほど作成した Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) を発行します。 また、これらのエンティティを保持するために、新しいデータ ファクトリの名前を指定して作成します。  
 
 1. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]**をクリックします。 
@@ -285,24 +289,27 @@ ms.author: spelluru
    2. **[名前]** に「**VSTutorialFactory**」と入力します。  
       
       > [!IMPORTANT]
-      > Azure Data Factory の名前はグローバルに一意にする必要があります。 発行時にデータ ファクトリの名前に関するエラーが発生した場合は、そのデータ ファクトリの名前を変更して (yournameVSTutorialFactory など)、発行し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。     
-      > 3.**[サブスクリプション]** フィールドで Azure サブスクリプションを選択します。
+      > Azure Data Factory の名前はグローバルに一意にする必要があります。 発行時にデータ ファクトリの名前に関するエラーが発生した場合は、そのデータ ファクトリの名前を変更して (yournameVSTutorialFactory など)、発行し直してください。 Data Factory アーティファクトの名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。        
       > 
+      > 
+   3. **[サブスクリプション]** フィールドで Azure サブスクリプションを選択します。
+      
       > [!IMPORTANT]
       > サブスクリプションが表示されない場合は、サブスクリプションの管理者または共同管理者のアカウントを使用してログインしたことを確認します。  
-      > 4.作成するデータ ファクトリの **リソース グループ** を選択します。 5. データ ファクトリの **リージョン** を選択します。 Data Factory サービスによってサポートされているリージョンのみ、ドロップダウン リストに表示されます。
       > 
       > 
-5. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。
-   
-        ![Configure data factory page](media/data-factory-copy-activity-tutorial-using-visual-studio/configure-data-factory-page.png)   
-6. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。
+   4. 作成するデータ ファクトリの **リソース グループ** を選択します。 
+   5. データ ファクトリの **リージョン** を選択します。 Data Factory サービスによってサポートされているリージョンのみ、ドロップダウン リストに表示されます。
+   6. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。
+      
+       ![Configure data factory page](media/data-factory-copy-activity-tutorial-using-visual-studio/configure-data-factory-page.png)   
+5. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。
    
    ![Publish items page](media/data-factory-copy-activity-tutorial-using-visual-studio/publish-items-page.png)     
-7. 概要を確認してから **[次へ]** をクリックし、デプロイ プロセスを開始して **[デプロイ ステータス]** を表示します。
+6. 概要を確認してから **[次へ]** をクリックし、デプロイ プロセスを開始して **[デプロイ ステータス]** を表示します。
    
    ![Publish summary page](media/data-factory-copy-activity-tutorial-using-visual-studio/publish-summary-page.png)
-8. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。 デプロイメントが完了したら、[完了] をクリックします。 
+7. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。 デプロイメントが完了したら、[完了] をクリックします。 
    ![Deployment status page](media/data-factory-copy-activity-tutorial-using-visual-studio/deployment-status.png) 以下の点に注意してください。 
 
 * "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。 
@@ -327,7 +334,7 @@ ms.author: spelluru
 
 1. Azure **データ ファクトリ**を作成しました。
 2. 次の **リンクされたサービス**を作成しました。
-   1. 入力データを保持する Azure ストレージ アカウントをリンクするための、 **Azure Storage** のリンクされたサービス。    
+   1. 入力データを保持する Azure ストレージ アカウントをリンクするための、 **Azure Storage** のリンクされたサービス。     
    2. 出力データを保持する Azure SQL データベースをリンクするための、 **Azure SQL** のリンクされたサービス。 
 3. パイプラインの入力データと出力データを記述する **データセット**を作成しました。
 4. ソースとして **BlobSource**、シンクとして **SqlSink** を持つ**コピー アクティビティ**がある**パイプライン**を作成しました。 
@@ -357,6 +364,9 @@ Azure ポータルを使用して、このチュートリアルで作成した�
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) |この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 
