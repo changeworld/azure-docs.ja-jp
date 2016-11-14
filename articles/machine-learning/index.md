@@ -1,30 +1,103 @@
 ---
-title: To be submitted | Microsoft Azure
-description: To be submitted.
-services: 
-documentationcenter: 
-author: squillace
-manager: timlt
-editor: 
-tags: billing
-ms.assetid: b2c3d6f6-9c78-4df2-9027-e35554821fa2
-ms.service: value
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/21/2016
-ms.author: tysonn
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8ac54bf88e73782262cd7085438538b8e2120223
+layout: LandingPage
+---
+#Azure Machine Learning Documentation
 
+Azure Machine Learning is a cloud-based predictive analytics service that makes it possible to quickly create and deploy predictive models as analytics solutions. Azure Machine Learning provides tools to model predictive analytics as well as a fully managed service you can use to deploy your predictive models as ready-to-consume web services.
+
+<ul class="panelContent cardsFTitle">
+    <li>
+        <a href="/azure/machine-learning/machine-learning-what-is-machine-learning">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/machine-learning.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Learn about Azure Machine Learning</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+     <li>
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=machine-learning">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Machine Learning Video Library</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/machine-learning/machine-learning-data-science-for-beginnings-the-5-questions-data-science-answers">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Get started with Data Science</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/machine-learning/machine-learning-create-experiment">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Create your first Azure Machine Learning experiment</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li> 
+</ul>
 
 ---
-# <a name="to-be-submitted"></a>To be submitted.
 
+##Reference
 
+###PowerShell
+[Azure PowerShell Reference](/powershell/azureps-cmdlets-docs)
 
-<!--HONumber=Nov16_HO2-->
+###REST
+[Machine Learning REST API Reference](/rest/api/machinelearning)
 
+###Net#
+[Net# Neural Networks Language Reference](/azure/machine-learning/machine-learning-azure-ml-netsharp-reference-guide)
 
+<div class="downloadHolder">
+    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/machine-learning.pdf">
+        <div class="img"></div>
+        <div class="text">
+            Download Machine Learning Documentation
+        </div>
+    </a>
+</div>

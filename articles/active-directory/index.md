@@ -1,64 +1,42 @@
 ---
-title: Active Directory Documentation | Microsoft Azure
-description: Active Directory Documentation
-services: 
-documentationcenter: 
-author: squillace
-manager: timlt
-editor: 
-tags: billing
-ms.assetid: ee9fd2c6-d2bc-4a54-8f13-b8ae30da260a
-ms.service: value
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/21/2016
-ms.author: tysonn
 layout: LandingPage
-translationtype: Human Translation
-ms.sourcegitcommit: 57a604eeaedfc557616d578b1c9b1364d3490a79
-ms.openlocfilehash: 99c2dc0d6543c5cacf7c8299accf0921a291df69
-
----
-<a name="layout-landingpage"></a>layout: LandingPage
 ---
 
-# <a name="active-directory-documentation"></a>Active Directory Documentation
+# Azure Active Directory Documentation
 
 Azure Active Directory (Azure AD) is Microsoft’s multi-tenant cloud based directory and identity management service.  Azure AD offers identity and access capabilities for applications running in Azure as well as on Premises.  
 
-<ul class="panelContent cardsA">
+<ul class="panelContent cardsFTitle">
     <li>
-        <a href="active-directory-whatis">
+        <a href="/azure/active-directory/active-directory-whatis">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="images/placeholder.svg" alt="" />
+                            <img src="media/index/active-directory.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <p>Learn about Azure Active Directory<p>
+                        <h3>Learn about Azure Active Directory</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-      <li>
+    <li>
         <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=active-directory">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="images/placeholder.svg" alt="" />
+                            <img src="media/index/video-library.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <p>Active Directory Video Library<p>
+                        <h3>Azure Active Directory Video Library</h3>
                     </div>
                 </div>
             </div>
@@ -66,35 +44,17 @@ Azure Active Directory (Azure AD) is Microsoft’s multi-tenant cloud based dire
         </a>
     </li>
     <li>
-        <a href="active-directory-howto-tenant?branch=pr-en-us-174">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">                    
-                <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="images/placeholder.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <p>Create an Azure Active Directory Tenant<p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="active-directory-get-started-premium?branch=pr-en-us-174">
+        <a href="/azure/active-directory/active-directory-howto-tenant">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="images/placeholder.svg" alt="" />
+                            <img src="media/index/tutorial.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <p>Create an Active Directory Premium Account<p>
+                        <h3>Get started with Azure Active Directory</h3>
                     </div>
                 </div>
             </div>
@@ -102,17 +62,17 @@ Azure Active Directory (Azure AD) is Microsoft’s multi-tenant cloud based dire
         </a>
     </li>
     <li>
-        <a href="active-directory-how-subscriptions-associated-directory?branch=pr-en-us-174">
+        <a href="/azure/active-directory/active-directory-get-started-premium">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="images/placeholder.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <p>Create a relationship between an Azure Subscription and Azure AD<p>
+                        <h3>Get started with Azure Active Directory Premium</h3>
                     </div>
                 </div>
             </div>
@@ -122,27 +82,29 @@ Azure Active Directory (Azure AD) is Microsoft’s multi-tenant cloud based dire
 </ul>
 
 ---
-##<a name="reference"></a>Reference:
 
-###<a name="powershell"></a>PowerShell
-[Azure AD PowerShell Cmdlet](powershell/azure%20ad%20cmdlets/)
+## Reference
 
-###<a name="net"></a>.NET
-[Azure AD Authentication Library .NET Reference](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
+###PowerShell
+[Azure PowerShell Reference](/powershell/)
+
+###Azure CLI
+[Azure Active Directory Using Azure CLI](/cli/azure/ad)
+
+###.NET
+[Azure Active Directory .NET Reference](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
+
+###Java
+[Azure Java API Reference](/java/api/)
 
 
 ---
 
 <div class="downloadHolder">
-    <a href="https://msdn.microsoft.com/">
+    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/active-directory.pdf">
         <div class="img"></div>
         <div class="text">
-Download Active Directory Documentation </div>
+            Download Active Directory Documentation
+        </div>
     </a>
 </div>
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

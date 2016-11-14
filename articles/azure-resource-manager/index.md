@@ -1,43 +1,23 @@
 ---
-title: Azure Resource Manager Documentation | Microsoft Azure
-description: Azure Resource Manager Documentation
-services: 
-documentationcenter: 
-author: squillace
-manager: timlt
-editor: 
-tags: billing
-ms.assetid: 6f201121-9b69-4264-b309-4dc0e83c3542
-ms.service: value
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/21/2016
-ms.author: tysonn
-translationtype: Human Translation
-ms.sourcegitcommit: d7ae8b5be89529b455dcf7afcbba3e25beb81666
-ms.openlocfilehash: 86054184168020bec87cdc3c926ff0003fc524a5
-
-
+layout: LandingPage
 ---
-# <a name="azure-resource-manager-arm-documentation"></a>Azure Resource Manager (ARM) Documentation
+#Azure Resource Manager Documentation
 
-Azure Resource Manager enables you to work with the resources in your solution as a group. You can deploy, update, or delete all the resources for your solution in a single, coordinated operation. You use a template for deployment and that template can work for different environments such as testing, staging, and production. Resource Manager provides security, auditing, and tagging features to help you manage your resources after deployment. 
+Azure Resource Manager enables you to repeatedly deploy your app and have confidence your resources are deployed in a consistent state. You define the infrastructure and dependencies for your app in a single declarative template. The infrastructure for your application is typically made up of many components – maybe a virtual machine, storage account, and virtual network, or a web app, database, database server, and 3rd party services. You do not see these components as separate entities, instead you see them as related and interdependent parts of a single entity. You want to deploy, manage, and monitor them as a group. Azure Resource Manager enables you to work with the resources in your solution as a group. You can deploy, update, or delete all the resources for your solution in a single, coordinated operation. You use a template for deployment and that template can work for different environments such as testing, staging, and production. Resource Manager provides security, auditing, and tagging features to help you manage your resources after deployment. 
 
-<ul class="panelContent cardsA">
-    <li>
-        <a href="resource-group-overview">
+<ul class="panelContent cardsFTitle">
+	<li>
+        <a href="/azure/Azure-Resource-Manager/resource-group-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="images/placeholder.svg" alt="" />
+                            <img src="media/index/azure-resource-manager.svg" alt="" />
                         </div>
                     </div>
-                    <div class="cardText">                        
-                        <p>Learn how Azure Resource Manager works</p>
+                    <div class="cardText">
+                        <h3>Learn about Azure Resource Manager</h3>
                     </div>
                 </div>
             </div>
@@ -51,11 +31,47 @@ Azure Resource Manager enables you to work with the resources in your solution a
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="images/placeholder.svg" alt="" />
+                            <img src="media/index/video-library.svg" alt="" />
                         </div>
                     </div>
-                    <div class="cardText">                        
-                        <p>Get started with Azure Resource Manager Videos</p>
+                    <div class="cardText">
+                        <h3>Azure Resource Manager Video Library</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+	<li>
+        <a href="/azure/resource-manager-template-walkthrough/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Create an Azure Resource Manager Template</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+	<li>
+        <a href="/azure/resource-group-define-dependencies/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Create dependencies in Azure Resource Manager templates</h3>
                     </div>
                 </div>
             </div>
@@ -63,53 +79,17 @@ Azure Resource Manager enables you to work with the resources in your solution a
         </a>
     </li>
     <li>
-        <a href="resource-manager-template-walkthrough/">
+        <a href="/azure/resource-group-create-multiple/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="images/placeholder.svg" alt="" />
+                            <img src="media/index/tutorial.svg" alt="" />
                         </div>
                     </div>
-                    <div class="cardText">                        
-                        <p>Get started with templates</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="vs-azure-tools-resource-groups-deployment-projects-create-deploy/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="images/placeholder.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">                       
-                        <p>Create and deploy Azure resource groups through Visual Studio</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="resource-manager-vs-code/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="images/placeholder.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">                        
-                        <p>Use ARM Templates in Visual Studio Code</p>
+                    <div class="cardText">
+                        <h3>Create multiple instances of resources in Azure Resource Manager</h3>
                     </div>
                 </div>
             </div>
@@ -120,41 +100,35 @@ Azure Resource Manager enables you to work with the resources in your solution a
 
 ---
 
-##<a name="reference"></a>Reference
+##Reference
 
-###<a name="rest"></a>REST
-[REST API Reference for Azure Resource Manager](/rest/api/resources)
+###PowerShell
+[PowerShell cmdlets](/powershell/azureps-cmdlets-docs/)
 
-###<a name="net"></a>.NET
-[.NET Client Library for Azure Resource Manager](dotnet/api)
+###Azure CLI
+[Azure CLI](/cli/azure)
 
-###<a name="powershell"></a>PowerShell
-[PowerShell Cmdlets for Azure Resource Manager](powershell/resourcemanager)
+###.NET
+[Manage Azure resources and resource groups with .NET](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-dotnet-resources-and-groups/)
 
-###<a name="java"></a>Java
-[Java API Reference for Azure Resource Manager](java/api)
+###Java
+[Getting Started with Resources - Manage Resource - in Java](https://azure.microsoft.com/en-us/documentation/samples/resources-java-manage-resource/)
 
-###<a name="nodejs"></a>Node.js
+###Node.js
 [Manage Azure resources and resource groups with Node.js](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-node-resources-and-groups/)
 
-###<a name="python"></a>Python
+###Python
 [Manage Azure resources and resource groups with Python](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-python-resources-and-groups/)
 
-###<a name="ruby"></a>Ruby
+###Ruby
 [Manage Azure resources and resource groups with Ruby](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
 ---
-
 <div class="downloadHolder">
-    <a href="https://msdn.microsoft.com/">
+    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/azure-resource-manager.pdf">
         <div class="img"></div>
         <div class="text">
-Download Azure Resource Manager Documentation </div>
+            Download Azure Resource Manager Documentation
+        </div>
     </a>
 </div>
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

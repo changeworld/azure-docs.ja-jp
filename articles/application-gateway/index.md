@@ -1,30 +1,127 @@
 ---
-title: To be submitted | Microsoft Azure
-description: To be submitted.
-services: 
-documentationcenter: 
-author: squillace
-manager: timlt
-editor: 
-tags: billing
-ms.assetid: 2746d6f5-4c7e-44c3-a558-d110acbca0b0
-ms.service: value
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/21/2016
-ms.author: tysonn
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 95344fbaf9942cccb100cd476c94babc3f5f88a0
+layout: LandingPage
+---
+#Application Gateway Documentation
 
+Azure Application Gateway provides Application Deliver Controller (ADC) as a service.  It allows customers to optimize web farm productivity by offloading CPU-intensive SSL termination to the application geateway.  It is a dedicated virtual appliance for your application with scalability and high availability as well as a rich set of diagnostics and logging for better manageability.
+
+<ul class="panelContent cardsFTitle">
+    <li>
+        <a href="/azure/application-gateway/application-gateway-introduction">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/application-gateway.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Learn about Application Gateway</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=application-gateway">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Application Gateway Video Library</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+        <li>
+        <a href="/azure/application-gateway/application-gateway-create-gateway-portal">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Create an Application Gateway with the Azure portal</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/application-gateway/application-gateway-create-gateway-arm">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Create an Application Gateway with PowerShell</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/application-gateway/application-gateway-create-gateway-arm-template">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Create an Application Gateway with an Azure Resource Manager template</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
 
 ---
-# <a name="to-be-submitted"></a>To be submitted.
 
+##Reference
 
+###PowerShell
+[PowerShell Reference](/powershell/azureps-cmdlets-doc)
 
-<!--HONumber=Nov16_HO2-->
+###Azure CLI
+[Azure CLI](/cli/azure/network/application-gateway)
 
+###.NET
+[.NET API Reference](/dotnet/api)
 
+###Java
+[Java API Reference](/java/api)
+
+###REST
+[REST API Reference](https://msdn.microsoft.com/library/azure/mt684939.aspx)
+
+<div class="downloadHolder">
+    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/application-gateway.pdf">
+        <div class="img"></div>
+        <div class="text">
+            Download Application Gateway Documentation
+        </div>
+    </a>
+</div>
