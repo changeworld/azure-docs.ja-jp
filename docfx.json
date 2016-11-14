@@ -9,54 +9,53 @@
         "exclude": [         
           "**/obj/**",
           "**/includes/**",
-          "**/_themes/**",
-          "markdown templates/**"
+          "**/_themes/**"
         ],
         "src": "articles",
         "dest": "."
       },
       {
-        "files": [
+      "files": [
           "**/*.md",
           "**/*.yml"
         ],
-        "exclude": [         
+        "exclude": [        
           "**/obj/**",
           "**/includes/**",
-          "**/_themes/**",
-          "markdown templates/**",
-          "articles/**"
+          "**/_themes/**"
         ],
-        "src": null,
-        "dest": null
+        "src": "bread",
+        "dest": "bread"
       }
     ],
     "resource": [
       {
         "files": [
+          "**/*.svg",
           "**/*.png",
           "**/*.jpg",
-          "**/*.gif"
+          "**/*.jpeg",
+          "**/*.gif",
+          "**/*.svg"
         ],
         "exclude": [
           "**/obj/**",
-          "**/_themes/**",
-          "markdown templates/**"
+          "**/_themes/**"
         ],
         "src": "articles",
         "dest": "."
       },
       {
         "files": [
-          "**/*.png",
-          "**/*.jpg",
-          "**/*.gif"
+          "includes/**/*.svg",
+          "includes/**/*.png",
+          "includes/**/*.jpg",
+          "includes/**/*.jpeg",
+          "includes/**/*.gif"
         ],
         "exclude": [
           "**/obj/**",
-          "**/_themes/**",
-          "markdown templates/**",
-          "articles/**"
+          "**/_themes/**"
         ],
         "src": null,
         "dest": null
@@ -65,7 +64,9 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "breadcrumb_path": "/azure/bread/toc.json"
+      "breadcrumb_path": "/azure/bread/toc.json",
+      "brand": "azure",
+      "searchScope": ["Azure"]
     },
     "fileMetadata": {},
     "template": [
