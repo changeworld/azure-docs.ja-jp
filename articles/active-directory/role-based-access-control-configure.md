@@ -1,12 +1,12 @@
 ---
-title: Azure ポータルにおけるロールベースのアクセス制御の使用 | Microsoft Docs
-description: Azure ポータルでのロールベースのアクセス制御を使用したアクセス管理の基本について説明します。 ロールの割り当てを使用して、リソースに対するアクセス許可を割り当てます。
+title: "Azure Portal におけるロールベースのアクセス制御の使用 | Microsoft Docs"
+description: "Azure ポータルでのロールベースのアクセス制御を使用したアクセス管理の基本について説明します。 ロールの割り当てを使用して、リソースに対するアクセス許可を割り当てます。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/10/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b930fe0a4a47cffebb579be43a77e87548549cfd
+
 
 ---
 # <a name="use-role-assignments-to-manage-access-to-your-azure-subscription-resources"></a>Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する
@@ -75,9 +79,12 @@ Azure ポータル以外のツールでも Azure RBAC コマンドを使用し�
 
 ## <a name="next-steps"></a>次のステップ
 * [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md)
-* [RBAC の組み込みロール](role-based-access-built-in-roles.md)
+*  [RBAC の組み込みロール](role-based-access-built-in-roles.md)
 * 独自の [Azure RBAC でカスタム ロール](role-based-access-control-custom-roles.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

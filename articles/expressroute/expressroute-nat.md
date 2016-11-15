@@ -1,12 +1,12 @@
 ---
-title: ExpressRoute 回線の NAT 要件 | Microsoft Docs
-description: このページでは、ExpressRoute 回線の NAT を構成および管理するための詳細な要件について説明します。
+title: "ExpressRoute 回線の NAT 要件 | Microsoft Docs"
+description: "このページでは、ExpressRoute 回線の NAT を構成および管理するための詳細な要件について説明します。"
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: 867bf936-c851-485f-84c8-d8d6e33fee9f
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d16326340f668285e185a6e8adb1a8316d8bd0eb
+
 
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT の要件
@@ -63,6 +67,9 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
   * [ルーティングの構成](expressroute-howto-routing-classic.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,3 +1,7 @@
-Azure Functions のその他のバインドおよびトリガーの詳細については、「[Azure Functions のトリガーとバインドの開発者用リファレンス](../articles/azure-functions/functions-triggers-bindings.md)」をご覧ください。
+Azure Functions のその他のバインドおよびトリガーの詳細については、「 [Azure Functions のトリガーとバインドの開発者用リファレンス](../articles/azure-functions/functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

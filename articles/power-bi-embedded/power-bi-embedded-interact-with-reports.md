@@ -1,13 +1,13 @@
 ---
-title: JavaScript API を使ったレポートの対話操作 | Microsoft Docs
-description: Power BI Embedded は、JavaScript API を使用してレポートと対話します。
+title: "JavaScript API を使ったレポートの対話操作 | Microsoft Docs"
+description: "Power BI Embedded は、JavaScript API を使用してレポートと対話します。"
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: bdd885d3-1b00-4dcf-bdff-531eb1f97bfb
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: hero-article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 83d997577d3a5854eafd9906bd38d3e703c09f5e
+
 
 ---
 # <a name="interact-with-power-bi-reports-using-the-javascript-api"></a>JavaScript API を使った Power BI レポートの対話操作
@@ -30,7 +34,7 @@ iframe により、埋め込み処理は非常に簡単になりますが、Java
 
 Power BI JavaScript API を使用すると、iframe の境界を安全に通過するコードを記述することができます。 これにより、アプリケーションは、レポートでの操作をプログラムで実行したり、ユーザーがレポート内で行った操作からのイベントをリッスンしたりできます。
 
-## <a name="what-can-you-do-with-the-power-bi-javascript-api?"></a>Power BI JavaScript API でできること
+## <a name="what-can-you-do-with-the-power-bi-javascript-api"></a>Power BI JavaScript API でできること
 JavaScript API を使用すると、レポートの管理、レポート内でのページの移動、レポートのフィルター処理、埋め込みイベントの処理を実行できます。 次の図は、API の構造を示します。
 
 ![Power BI JavaScript API diagram](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-3.png)
@@ -132,6 +136,9 @@ Power BI JavaScript API の詳細については、次のリンク先を確認�
   * [Ember](https://github.com/Microsoft/powerbi-ember)
 * [ライブ デモ](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

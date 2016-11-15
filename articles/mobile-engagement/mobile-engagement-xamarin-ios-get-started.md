@@ -1,12 +1,12 @@
 ---
-title: Xamarin.iOS 用 Azure Mobile Engagement の使用
-description: Xamarin.iOS アプリの分析やプッシュ通知で Azure Mobile Engagement を使用する方法を説明します。
+title: "Xamarin.iOS 用 Azure Mobile Engagement の使用"
+description: "Xamarin.iOS アプリの分析やプッシュ通知で Azure Mobile Engagement を使用する方法を説明します。"
 services: mobile-engagement
 documentationcenter: xamarin
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 0448209e-fff6-47bd-985c-2cf074bac12f
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 300403fb483818e5eb1851968ef7f36ff0507fb8
+
 
 ---
-# <a name="get-started-with-azure-mobile-engagement-for-xamarin.ios-apps"></a>Xamarin.iOS アプリ用 Azure Mobile Engagement の使用
+# <a name="get-started-with-azure-mobile-engagement-for-xamarinios-apps"></a>Xamarin.iOS アプリ用 Azure Mobile Engagement の使用
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 このトピックでは、Azure Mobile Engagement を使用してアプリの使用状況を把握し、Xamarin.iOS アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。
@@ -32,15 +36,15 @@ ms.author: piyushjo
 > 
 > 
 
-## <a name="<a-id="setup-azme"></a>setup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>iOS アプリ用に Mobile Engagement を設定する
+## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>iOS アプリ用に Mobile Engagement を設定する
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="<a-id="connecting-app"></a>connect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。
 
 統合のデモンストレーションを行うために、Xamarin で基本的なアプリを作成します。
 
-### <a name="create-a-new-xamarin.ios-project"></a>新しい Xamarin.iOS プロジェクトを作成する
+### <a name="create-a-new-xamarinios-project"></a>新しい Xamarin.iOS プロジェクトを作成する
 1. Xamarin Studio を起動します。 **[File (ファイル)]** -> **[New (新規)]** -> **[Solution (ソリューション)]** の順に移動します。 
    
     ![][1]
@@ -79,7 +83,7 @@ Xamarin Studio で、Mobile Engagement の統合先のデモ アプリが作成�
                     };
         EngagementAgent.Init (config);
 
-## <a name="<a-id="monitor"></a>enabling-real-time-monitoring"></a><a id="monitor"></a>リアルタイム監視の有効化
+## <a name="a-idmonitoraenabling-realtime-monitoring"></a><a id="monitor"></a>リアルタイム監視の有効化
 データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面を Mobile Engagement のバックエンドに送信する必要があります。
 
 1. **ViewController.cs** を開き、次の using ステートメントを追加します。
@@ -87,10 +91,10 @@ Xamarin Studio で、Mobile Engagement の統合先のデモ アプリが作成�
         using Microsoft.Azure.Engagement.Xamarin;
 2. `ViewController` の継承元となるクラスを `UIViewController` から `EngagementViewController` に置き換えます。 
 
-## <a name="<a-id="monitor"></a>connect-app-with-real-time-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
+## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="<a-id="integrate-push"></a>enable-push-notifications-and-in-app-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
+## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
 Mobile Engagement により、ユーザーと通信を行い、キャンペーンに関するプッシュ通知とアプリ内メッセージングを届けることができます。 このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。
 次のセクションでは、それらを受信するようにアプリをセットアップします。
 
@@ -140,7 +144,7 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
     ![][7]
 5. その **Info.plist** ファイルで、**[Enable Background Modes (バックグラウンド モードを有効にする)]** と **[Remote Notifications (リモート通知)]** のチェック ボックスがオンになっていることを確認します。 
    
-    ![][8]
+     ![][8]
 6. この発行プロファイルに関連付けたデバイスでアプリを実行します。 
 
 [!INCLUDE [mobile-engagement-ios-send-push-push](../../includes/mobile-engagement-ios-send-push.md)]
@@ -157,6 +161,6 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

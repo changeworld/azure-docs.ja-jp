@@ -1,12 +1,12 @@
 ---
-title: Load data from SQL Server into Azure SQL Data Warehouse (PolyBase) | Microsoft Docs
-description: Uses bcp to export data from SQL Server to flat files, AZCopy to import data to Azure blob storage, and PolyBase to ingest the data into Azure SQL Data Warehouse.
+title: "SQL Server から Azure SQL Data Warehouse へのデータの読み込み (PolyBase) | Microsoft Docs"
+description: "bcp を使用して SQL Server からフラット ファイルにデータをエクスポートし、AZCopy を使用してデータを Azure Blob Storage にインポートし、PolyBase を使用してデータを Azure SQL Data Warehouse に取り込みます。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 860c86e0-90f7-492c-9a84-1bdd3d1735cd
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 33c100dc471bf76230d068bf52f4a96b6123dab0
+
 
 ---
-# <a name="load-data-with-polybase-in-sql-data-warehouse"></a>Load data with PolyBase in SQL Data Warehouse
+# <a name="load-data-with-polybase-in-sql-data-warehouse"></a>SQL Data Warehouse で PolyBase によってデータを読み込む
 > [!div class="op_single_selector"]
 > * [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
 > * [PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
@@ -24,32 +28,32 @@ ms.author: cakarst;barbkess
 > 
 > 
 
-This tutorial shows how to load data into SQL Data Warehouse by using AzCopy and PolyBase. When finished, you will know how to:
+このチュートリアルでは、AzCopy と PolyBase を使用して SQL Data Warehouse にデータを読み込む方法を説明します。 このチュートリアルを行うと、以下の作業方法がわかります。
 
-* Use AzCopy to copy data to Azure blob storage
-* Create database objects to define the data
-* Run a T-SQL query to load the data
+* AzCopy を使用して Azure Blob Storage にデータをコピーする
+* データを定義するデータベース オブジェクトを作成する
+* データを読み込む T-SQL クエリを実行する
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Loading-data-with-PolyBase-in-Azure-SQL-Data-Warehouse/player]
 > 
 > 
 
-## <a name="prerequisites"></a>Prerequisites
-To step through this tutorial, you need
+## <a name="prerequisites"></a>前提条件
+このチュートリアルを進めるには、次のものが必要です。
 
-* A SQL Data Warehouse database.
-* An Azure storage account of type Standard Locally Redundant Storage (Standard-LRS), Standard Geo-Redundant Storage (Standard-GRS), or Standard Read-Access Geo-Redundant Storage (Standard-RAGRS).
-* AzCopy Command-Line Utility. Download and install the [latest version of AzCopy][latest version of AzCopy] which is installed with the Microsoft Azure Storage Tools.
+* SQL Data Warehouse データベース
+* 種類が Standard ローカル冗長ストレージ (Standard-LRS)、Standard geo 冗長ストレージ (Standard-GRS)、または Standard 読み取りアクセス geo 冗長ストレージ (Standard-RAGRS) である Azure ストレージ アカウント
+* AzCopy コマンド ライン ユーティリティ Microsoft Azure Storage Tools と共にインストールされる[最新バージョンの AzCopy][最新バージョンの AzCopy] をダウンロードしてインストールします。
   
     ![Azure Storage Tools](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
-## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>Step 1: Add sample data to Azure blob storage
-In order to load data, we need to put some sample data into an Azure blob storage. In this step we populate an Azure Storage blob with sample data. Later, we will use PolyBase to load this sample data into your SQL Data Warehouse database.
+## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>手順 1: Azure Blob Storage にサンプル データを追加する
+データを読み込むには、Azure Blob Storage にサンプル データを配置する必要があります。 この手順では、Azure Storage BLOB にサンプル データを設定します。 その後、PolyBase を使用して、このサンプル データを SQL Data Warehouse データベースに読み込みます。
 
-### <a name="a-prepare-a-sample-text-file"></a>A. Prepare a sample text file
-To prepare a sample text file:
+### <a name="a-prepare-a-sample-text-file"></a>A. サンプル テキスト ファイルを準備する
+サンプル テキスト ファイルを準備するには:
 
-1. Open Notepad and copy the following lines of data into a new file. Save this to your local temp directory as %temp%\DimDate2.txt.
+1. メモ帳を開き、データの次の行を新しいファイルにコピーします。 これをローカル一時ディレクトリに %temp%\DimDate2.txt として保存します。
 
 ```
 20150301,1,3
@@ -66,69 +70,69 @@ To prepare a sample text file:
 20150101,1,3
 ```
 
-### <a name="b-find-your-blob-service-endpoint"></a>B. Find your blob service endpoint
-To find your blob service endpoint:
+### <a name="b-find-your-blob-service-endpoint"></a>B. BLOB サービス エンドポイントを検索する
+BLOB サービス エンドポイントを検索するには:
 
-1. From the Azure Portal select **Browse** > **Storage Accounts**.
-2. Click the storage account you want to use.
-3. In the Storage account blade, click Blobs
+1. Azure Portal で、**[参照]** > **[ストレージ アカウント]** の順に選択します。
+2. 使用するストレージ アカウントをクリックします。
+3. ストレージ アカウントのブレードで、BLOB をクリックします。
    
     ![Click Blobs](./media/sql-data-warehouse-get-started-load-with-polybase/click-blobs.png)
-4. Save your blob service endpoint URL for later.
+4. 後の操作のために、BLOB サービス エンドポイントの URL を保存しておきます。
    
     ![Blob service endpoint](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
-### <a name="c-find-your-azure-storage-key"></a>C. Find your Azure storage key
-To find your Azure storage key:
+### <a name="c-find-your-azure-storage-key"></a>C. Azure ストレージ キーを検索する
+Azure ストレージ キーを検索するには:
 
-1. From the Azure Portal, select **Browse** > **Storage Accounts**.
-2. Click on the storage account you want to use.
-3. Select **All settings** > **Access keys**.
-4. Click the copy box to copy one of your access keys to the clipboard.
+1. Azure Portal で、**[参照]** > **[ストレージ アカウント]** の順に選択します。
+2. 使用するストレージ アカウントをクリックします。
+3. **[すべての設定]** > **[アクセス キー]** の順に選択します。
+4. いずれかのアクセス キーをクリップボードにコピーするために、コピー ボックスをクリックします。
    
     ![Copy Azure storage key](./media/sql-data-warehouse-get-started-load-with-polybase/access-key.png)
 
-### <a name="d-copy-the-sample-file-to-azure-blob-storage"></a>D. Copy the sample file to Azure blob storage
-To copy your data to Azure blob storage:
+### <a name="d-copy-the-sample-file-to-azure-blob-storage"></a>D. サンプル ファイルを Azure Blob Storage にコピーする
+Azure Blob Storage にデータをコピーするには:
 
-1. Open a command prompt, and change directories to the AzCopy installation directory. This command changes to the default installation directory on a 64-bit Windows client.
+1. コマンド プロンプトを開き、ディレクトリを AzCopy インストール ディレクトリに変更します。 このコマンドによって、64 ビットの Windows クライアント上の既定のインストール ディレクトリに移動します。
    
     ```
     cd /d "%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy"
     ```
-2. Run the following command to upload the file. Specify your blob service endpoint URL for <blob service endpoint URL> and your Azure storage account key for <azure_storage_account_key>.
+2. 次のコマンドを実行してファイルをアップロードします。 <blob service endpoint URL> に Blob service エンドポイント URL を指定し、<azure_storage_account_key> に Azure ストレージ アカウント キーを指定します。
    
     ```
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-See also [Getting Started with the AzCopy Command-Line Utility][latest version of AzCopy].
+[AzCopy コマンド ライン ユーティリティの概要][最新バージョンの AzCopy]に関するページも参照してください。
 
-### <a name="e-explore-your-blob-storage-container"></a>E. Explore your blob storage container
-To see the file you uploaded to blob storage:
+### <a name="e-explore-your-blob-storage-container"></a>E. Blob Storage コンテナーを調べる
+Blob Storage にアップロードしたファイルを表示するには:
 
-1. Go back to your Blob service blade.
-2. Under Containers, double-click **datacontainer**.
-3. To explore the path to your data, click the folder **datedimension** and you will see your uploaded file **DimDate2.txt**.
-4. To view properties, click **DimDate2.txt**.
-5. Note that in the Blob properties blade, you can download or delete the file.
+1. BLOB サービス ブレードに戻ります。
+2. [コンテナー] の下の **[データコンテナー]**をダブルクリックします。
+3. データへのパスをたどるために **datedimension** フォルダーをクリックすると、アップロードした **DimDate2.txt** ファイルが表示されます。
+4. プロパティを表示するには、 **DimDate2.txt**をクリックします。
+5. BLOB プロパティ ブレードでは、ファイルをダウンロードまたは削除することができます。
    
     ![View Azure storage blob](./media/sql-data-warehouse-get-started-load-with-polybase/view-blob.png)
 
-## <a name="step-2-create-an-external-table-for-the-sample-data"></a>Step 2: Create an external table for the sample data
-In this section we create an external table that defines the sample data.
+## <a name="step-2-create-an-external-table-for-the-sample-data"></a>手順 2: サンプル データ用の外部テーブルを作成する
+このセクションでは、サンプル データを定義する外部テーブルを作成します。
 
-PolyBase uses external tables to access data in Azure blob storage. Since the data is not stored within SQL Data Warehouse, PolyBase handles authentication to the external data by using a database-scoped credential.
+PolyBase では、外部テーブルを使用して、Azure Blob Storage 内のデータにアクセスします。 データは SQL Data Warehouse 内に保存されないため、PolyBase は、データベース スコープの資格情報を使用して、外部データへの認証を処理します。
 
-The example in this step uses these Transact-SQL statements to create an external table.
+この手順の例では、以下の Transact-SQL ステートメントを使用して、外部テーブルを作成します。
 
-* [Create Master Key (Transact-SQL)][Create Master Key (Transact-SQL)] to encrypt the secret of your database scoped credential.
-* [Create Database Scoped Credential (Transact-SQL)][Create Database Scoped Credential (Transact-SQL)] to specify authentication information for your Azure storage account.
-* [Create External Data Source (Transact-SQL)][Create External Data Source (Transact-SQL)] to specify the location of your Azure blob storage.
-* [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)] to specify the format of your data.
-* [Create External Table (Transact-SQL)][Create External Table (Transact-SQL)] to specify the table definition and location of the data.
+* [Create Master Key (Transact-SQL)][Create Master Key (Transact-SQL)]: データベース スコープの資格情報のシークレットを暗号化します。
+* [Create Database Scoped Credential (Transact-SQL)][Create Database Scoped Credential (Transact-SQL)]: Azure ストレージ アカウントの認証情報を指定します。
+* [Create External Data Source (Transact-SQL)][Create External Data Source (Transact-SQL)]: Azure Blob Storage の場所を指定します。
+* [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)]: データの形式を指定します。
+* [Create External Table (Transact-SQL)][Create External Table (Transact-SQL)]: テーブル定義とデータの場所を指定します。
 
-Run this query against your SQL Data Warehouse database. It will create an external table named DimDate2External in the dbo schema that points to the DimDate2.txt sample data in the Azure blob storage.
+SQL Data Warehouse データベースに対して、このクエリを実行します。 Azure Blob Storage 内の DimDate2.txt サンプル データを指す dbo スキーマに、DimDate2External という名前の外部テーブルが作成されます。
 
 ```sql
 -- A: Create a master key.
@@ -199,15 +203,15 @@ SELECT count(*) FROM dbo.DimDate2External;
 ```
 
 
-In SQL Server Object Explorer in Visual Studio, you can see the external file format, external data source, and the DimDate2External table.
+Visual Studio の SQL Server オブジェクト エクスプローラーで、外部ファイル形式、外部データ ソース、および DimDate2External テーブルを表示できます。
 
 ![View external table](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
 
-## <a name="step-3-load-data-into-sql-data-warehouse"></a>Step 3: Load data into SQL Data Warehouse
-Once the external table is created, you can either load the data into a new table or insert it into an existing table.
+## <a name="step-3-load-data-into-sql-data-warehouse"></a>手順 3: SQL Data Warehouse にデータを読み込む
+外部テーブルが作成されたので、新しいテーブルにデータを読み込むか、既存のテーブルに挿入することができます。
 
-* To load the data into a new table, run the [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] statement. The new table will have the columns named in the query. The data types of the columns will match the data types in the external table definition.
-* To load the data into an existing table, use the [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)] statement.
+* 新しいテーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを実行します。 新しいテーブルには、クエリで指定された列があります。 列のデータ型は、外部テーブル定義内のデータ型と一致します。
+* 既存のテーブルにデータを読み込むには、[INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)] ステートメントを使用します。
 
 ```sql
 -- Load the data from Azure blob storage to SQL Data Warehouse
@@ -222,10 +226,10 @@ AS
 SELECT * FROM [dbo].[DimDate2External];
 ```
 
-## <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>Step 4: Create statistics on your newly loaded data
-SQL Data Warehouse does not auto-create or auto-update statistics. Therefore, to achieve high query performance, it's important to create statistics on each column of each table after the first load. It's also important to update statistics after substantial changes in the data.
+## <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>手順 4: 新しく読み込んだデータの統計を作成する
+SQL Data Warehouse は、統計の自動作成または自動更新を行いません。 そのため、高いクエリ パフォーマンスを実現するには、最初の読み込み後に各テーブルの各列についての統計を作成することが重要です。 また、データが大幅に変更された後で統計を更新することも重要です。
 
-This example creates single-column statistics on the new DimDate2 table.
+この例では、新しい DimDate2 テーブルに単一列統計を作成します。
 
 ```sql
 CREATE STATISTICS [DateId] on [DimDate2] ([DateId]);
@@ -233,25 +237,25 @@ CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
 CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
-To learn more, see [Statistics][Statistics].  
+詳細については、[統計][統計]に関するページを参照してください。  
 
-## <a name="next-steps"></a>Next steps
-See the [PolyBase guide][PolyBase guide] for further information you should know as you develop a solution that uses PolyBase.
+## <a name="next-steps"></a>次のステップ
+PolyBase を使用するソリューションを開発する際に知っておく必要がある情報については、[PolyBase ガイド][PolyBase ガイド]を参照してください。
 
 <!--Image references-->
 
 
 <!--Article references-->
-[PolyBase in SQL Data Warehouse Tutorial]: ./sql-data-warehouse-get-started-load-with-polybase.md
-[Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[PolyBase guide]: ./sql-data-warehouse-load-polybase-guide.md
-[latest version of AzCopy]: ../storage/storage-use-azcopy.md
+[SQL Data Warehouse の PolyBase チュートリアル]: ./sql-data-warehouse-get-started-load-with-polybase.md
+[bcp を使用したデータの読み込み]: ./sql-data-warehouse-load-with-bcp.md
+[統計]: ./sql-data-warehouse-tables-statistics.md
+[PolyBase ガイド]: ./sql-data-warehouse-load-polybase-guide.md
+[最新バージョンの AzCopy]: ../storage/storage-use-azcopy.md
 
 <!--External references-->
-[supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx
-[copy activity]: https://msdn.microsoft.com/library/dn835035.aspx
-[SQL Server destination adapter]: https://msdn.microsoft.com/library/ms141095.aspx
+[サポートされているソース/シンク]: https://msdn.microsoft.com/library/dn894007.aspx
+[コピー アクティビティ]: https://msdn.microsoft.com/library/dn835035.aspx
+[SQL Server 変換先アダプター]: https://msdn.microsoft.com/library/ms141095.aspx
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
 
@@ -272,6 +276,6 @@ See the [PolyBase guide][PolyBase guide] for further information you should know
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

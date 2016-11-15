@@ -1,13 +1,13 @@
 ---
-title: ユーザーの Azure AD 参加の設定 | Microsoft Docs
-description: 管理者が、オンプレミス ディレクトリとデバイス登録のために Azure AD 参加を設定する方法について説明します。
+title: "ユーザーの Azure AD 参加の設定 | Microsoft Docs"
+description: "管理者が、オンプレミス ディレクトリとデバイス登録のために Azure AD 参加を設定する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: femila
 manager: swadhwa
-editor: ''
+editor: 
 tags: azure-classic-portal
-
+ms.assetid: bfc5d415-c918-4d8b-afee-b3f41cc28469
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,26 +15,30 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/27/2016
 ms.author: femila
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: aaa52cdecc09adb3b7ca53e0c0283d4203b21810
+
 
 ---
-# 組織での Azure AD 参加の設定
+# <a name="setting-up-azure-ad-join-in-your-organization"></a>組織での Azure AD 参加の設定
 Azure Active Directory 参加 (Azure AD 参加) を設定する前に、ユーザーのオンプレミスのディレクトリをクラウドに同期するか、Azure AD に管理アカウントを手動で作成する必要があります。
 
-オンプレミスのユーザーを Azure AD に同期するための詳しい手順については、「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
+オンプレミスのユーザーを Azure AD に同期するための詳しい手順については、「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
 
-Azure AD にユーザーを手動で作成して管理する方法については、「[Azure AD でのユーザー管理](https://msdn.microsoft.com/library/azure/hh967609.aspx)」を参照してください。
+Azure AD にユーザーを手動で作成して管理する方法については、「 [Azure AD でのユーザー管理](https://msdn.microsoft.com/library/azure/hh967609.aspx)」を参照してください。
 
-## デバイスの登録の設定
+## <a name="set-up-device-registration"></a>デバイスの登録の設定
 1. Azure ポータルに管理者としてサインインします。
-2. 左ウィンドウで、**[Active Directory]** を選択します。
+2. 左ウィンドウで、 **[Active Directory]**を選択します。
 3. **[ディレクトリ]** タブで、ディレクトリを選択します。
 4. **[構成]** タブをクリックします。
 5. **[デバイス]** セクションに移動します。
-6. **[デバイス] **タブで、次のように設定します。
-   * **[ユーザーごとのデバイスの最大数]**: Azure AD でユーザーが持つことができるデバイスの最大数を選択します。ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。
-   * **[デバイスを参加させるには Multi-factor Auth が必要]**: 有効にした場合、ユーザーはデバイスを Azure AD に参加させるために 2 つ目の認証要素を提供する必要があります。Azure Multi-Factor Authentication の詳細については、[クラウドでの Azure Multi-Factor Authentication の概要](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)に関するページを参照してください。
+6. **[デバイス]** タブで、次のように設定します。  
+   * **[ユーザーごとのデバイスの最大数]**: Azure AD でユーザーが持つことができるデバイスの最大数を選択します。  ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。
+   * **[デバイスを参加させるには Multi-factor Auth が必要]**: 有効にした場合、ユーザーはデバイスを Azure AD に参加させるために 2 つ目の認証要素を提供する必要があります。 Azure Multi-Factor Authentication の詳細については、[クラウドでの Azure Multi-Factor Authentication の概要](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)に関するページをご覧ください。
    * **[ユーザーはデバイスの Azure AD 参加を実行できます]**: デバイスを Azure AD に参加させることができるユーザーとグループを選択します。
-   * **[Azure AD 参加済みデバイスの追加の管理者]**: Azure AD Premium または Enterprise Mobility Suite (EMS) では、デバイスに対するローカル管理者権限が許可されるユーザーを選択できます。全体管理者とデバイスの所有者には、既定でローカル管理者権限が付与されます。
+   * **[Azure AD 参加済みデバイスの追加の管理者]**: Azure AD Premium または Enterprise Mobility Suite (EMS) では、デバイスに対するローカル管理者権限が許可されるユーザーを選択できます。 全体管理者とデバイスの所有者には、既定でローカル管理者権限が付与されます。
 
 <center>![デバイスの登録の設定](./media/active-directory-azureadjoin/active-directory-aadjoin-configure-devices.png) </center>
 
@@ -46,11 +50,16 @@ Azure AD 参加をユーザーが設定できるようにする 3 つのシナ�
 * ユーザーが、会社所有のデバイスをオンプレミスの Active Directory にドメイン参加させ、Azure AD に拡張する。
 * ユーザーが個人のデバイス上の Windows に職場または学校のアカウントを追加する。
 
-## 追加情報
+## <a name="additional-information"></a>追加情報
 * [エンタープライズ向け Windows 10: デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)
 * [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
-* [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
+* [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

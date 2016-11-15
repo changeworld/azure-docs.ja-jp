@@ -1,12 +1,12 @@
 ---
-title: Redis Cache で Web アプリを作成する方法 | Microsoft Docs
-description: Redis Cache で Web アプリを作成する方法について説明します。
+title: "Redis Cache で Web アプリを作成する方法 | Microsoft Docs"
+description: "Redis Cache で Web アプリを作成する方法について説明します。"
 services: redis-cache
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
 ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/11/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 425729dde12d8477b7b8ecd6394b31b7c5a5e92b
+
 
 ---
 # <a name="how-to-create-a-web-app-with-redis-cache"></a>Redis Cache で Web アプリを作成する方法
@@ -49,7 +53,7 @@ ms.author: sdanie
 * [無料で Azure アカウントを開きます](/pricing/free-trial/?WT.mc_id=redis_cache_hero)。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、無料の Azure サービスと機能をご利用になれます。
 * [Visual Studio サブスクライバーの特典を有効にします](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero)。 MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 
-### <a name="visual-studio-2015-with-the-azure-sdk-for-.net"></a>Visual Studio 2015 と Azure SDK for .NET
+### <a name="visual-studio-2015-with-the-azure-sdk-for-net"></a>Visual Studio 2015 と Azure SDK for .NET
 このチュートリアルは、Visual Studio 2015 と [Azure SDK for .NET](../dotnet-sdk.md) 2.8.2 以降向けに書かれています。 [最新の Azure SDK for Visual Studio 2015 はここからダウンロードしてください](http://go.microsoft.com/fwlink/?linkid=518003)。 Visual Studio をまだ持っていない場合は、SDK と共に自動的にインストールされます。
 
 Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visual Studio 2013 をダウンロード](http://go.microsoft.com/fwlink/?LinkID=324322)できます。 一部の画面は、このチュートリアルに例示されている画像と異なる場合があります。
@@ -69,7 +73,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ![Select project template][cache-select-template]
 4. **[OK]** をクリックしてプロジェクトを作成します。
 
-## <a name="create-the-asp.net-mvc-application"></a>ASP.NET MVC アプリケーションの作成
+## <a name="create-the-aspnet-mvc-application"></a>ASP.NET MVC アプリケーションの作成
 このセクションでは、データベースからチームの統計情報を読み取って表示する基本的なアプリケーションを作成します。
 
 * [モデルの追加](#add-the-model)
@@ -174,7 +178,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
         <connectionStrings>
             <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-ContosoTeamStats-20160216120918.mdf;Initial Catalog=aspnet-ContosoTeamStats-20160216120918;Integrated Security=True"
                 providerName="System.Data.SqlClient" />
-            <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"  providerName="System.Data.SqlClient" />
+            <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
         </connectionStrings>
 
 ### <a name="add-the-controller"></a>コントローラーの追加
@@ -241,7 +245,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 * [キャッシュと連動するように Create、Edit、Delete の各メソッドを更新する](#update-the-create-edit-and-delete-methods-to-work-with-the-cache)
 * [キャッシュと連動するように Teams Index ビューを更新する](#update-the-teams-index-view-to-work-with-the-cache)
 
-### <a name="configure-the-application-to-use-stackexchange.redis"></a>StackExchange.Redis を使用するようにアプリケーションを構成する
+### <a name="configure-the-application-to-use-stackexchangeredis"></a>StackExchange.Redis を使用するようにアプリケーションを構成する
 1. Visual Studio で StackExchange.Redis NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
    
     ![Manage NuGet packages][redis-cache-manage-nuget-menu]
@@ -513,7 +517,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
         }
 
 
-### <a name="update-the-create,-edit,-and-delete-methods-to-work-with-the-cache"></a>キャッシュと連動するように Create、Edit、Delete の各メソッドを更新する
+### <a name="update-the-create-edit-and-delete-methods-to-work-with-the-cache"></a>キャッシュと連動するように Create、Edit、Delete の各メソッドを更新する
 このサンプルの過程で生成されたスキャフォールディング コードには、チームの追加、編集、削除を行うメソッドが含まれています。 キャッシュ内のデータは、チームが追加、編集、削除されるたびに古くなります。 このセクションでは、キャッシュされたチームを消去することによってキャッシュとデータベースの同期状態を維持するように、この 3 つのメソッドに変更を加えます。
 
 1. `TeamsController` クラスの `Create(Team team)` メソッドに移動します。 次の例のように、 `ClearCachedTeams` メソッドの呼び出しを追加します。
@@ -804,6 +808,6 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

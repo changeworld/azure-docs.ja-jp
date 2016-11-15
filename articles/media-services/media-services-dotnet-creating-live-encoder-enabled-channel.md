@@ -1,110 +1,119 @@
 ---
-title: Azure Media Services を使用してライブ ストリーミングを実行し、.NET でマルチビットレートのストリームを作成する方法 | Microsoft Docs
-description: このチュートリアルでは、.NET SDK を使用して、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードするチャネルを作成する手順について説明します。
+title: "Azure Media Services を使用してライブ ストリーミングを実行し、.NET でマルチビットレートのストリームを作成する方法 | Microsoft Docs"
+description: "このチュートリアルでは、.NET SDK を使用して、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードするチャネルを作成する手順について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: anilmur
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 4df5e690-ff63-47cc-879b-9c57cb8ec240
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/15/2016
+ms.date: 10/12/2016
 ms.author: juliako;anilmur
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
+
 
 ---
-# Azure Media Services を使用してライブ ストリーミングを実行し、.NET でマルチビットレートのストリームを作成する方法
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multibitrate-streams-with-net"></a>Azure Media Services を使用してライブ ストリーミングを実行し、.NET でマルチビットレートのストリームを作成する方法
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 > * [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 > 
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
 > 
 > 
 
-## Overview
-このチュートリアルでは、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードする**チャネル**を作成する手順について説明します。
+## <a name="overview"></a>Overview
+このチュートリアルでは、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードする **チャネル** を作成する手順について説明します。
 
-ライブ エンコード対応のチャネルに関連する概念の詳細情報については、「[Live streaming using Azure Media Services to create multi-bitrate streams (Azure Media Services を使用したライブ ストリーミングによるマルチビットレートのストリームの作成)](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
+ライブ エンコード対応のチャネルに関連する概念の詳細情報については、「 [Live streaming using Azure Media Services to create multi-bitrate streams (Azure Media Services を使用したライブ ストリーミングによるマルチビットレートのストリームの作成)](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
 
-## 一般的なライブ ストリーミング シナリオ
+## <a name="common-live-streaming-scenario"></a>一般的なライブ ストリーミング シナリオ
 次の手順では、一般的なライブ ストリーミング アプリケーションの作成に関連するタスクを示します。
 
 > [!NOTE]
-> 現在、ライブ イベントの最大推奨時間は 8 時間です。チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
+> 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
 > 
 > 
 
-1. ビデオ カメラをコンピューターに接続します。オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーはシングル ビットレート ストリームを RTMP、スムーズ ストリーミング、RTP (MPEG-TS) のいずれかで出力できます。詳しくは、「[Azure Media Services RTMP サポートおよびライブ エンコーダー](http://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
-   
-    この手順は、チャネルを作成した後でも実行できます。
-2. チャネルを作成し、起動します。
-3. チャネルの取り込み URL を取得します。
-   
-    取り込み URL は、ライブ エンコーダーがチャネルにストリームを送信する際に使用されます。
-4. チャネルのプレビュー URL を取得します。
-   
-    この URL を使用して、チャネルがライブ ストリームを正常に受信できることを確認します。
-5. 資産を作成します。
-6. 再生時に資産を動的に暗号化する場合は、次の手順を実行します。
-7. コンテンツ キーを作成します。
-8. コンテンツ キー承認ポリシーの構成
-9. 資産配信ポリシーを構成します (動的パッケージと動的暗号化で使用)。
-10. プログラムを作成し、作成した資産を使用するよう指定します。
-11. OnDemand ロケーターを作成して、プログラムに関連付けられた資産を発行します。
-    
-     コンテンツをストリームするストリーミング エンドポイントに少なくとも 1 つのストリーミング予約ユニットがあることを確認します。
-12. ストリーミングとアーカイブの開始を準備するときにプログラムを開始します。
-13. 必要に応じて、ライブ エンコーダーは、広告の開始を信号通知できます。広告が出力ストリームに挿入されます。
-14. イベントのストリーミングとアーカイブを停止するときにプログラムを停止します。
-15. プログラムを削除し、資産を削除 (オプション) します。
+1. ビデオ カメラをコンピューターに接続します。 オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーはシングル ビットレート ストリームを RTMP、スムーズ ストリーミング、RTP (MPEG-TS) のいずれかで出力できます。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](http://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
 
-## 学習内容
-このトピックでは Media Services .NET SDK を使用したチャネルとプログラムでさまざまな操作を実行する方法を示します。多くの操作は実行時間が長いため、長時間の操作を管理する .NET API が使用されます。
+この手順は、チャネルを作成した後でも実行できます。
+
+1. チャネルを作成し、起動します。
+2. チャネルの取り込み URL を取得します。
+
+取り込み URL は、ライブ エンコーダーがチャネルにストリームを送信する際に使用されます。
+
+1. チャネルのプレビュー URL を取得します。
+
+この URL を使用して、チャネルがライブ ストリームを正常に受信できることを確認します。
+
+1. 資産を作成します。
+2. 再生時に資産を動的に暗号化する場合は、次の手順を実行します。
+3. コンテンツ キーを作成します。
+4. コンテンツ キー承認ポリシーの構成
+5. 資産配信ポリシーを構成します (動的パッケージと動的暗号化で使用)。
+6. プログラムを作成し、作成した資産を使用するよう指定します。
+7. OnDemand ロケーターを作成して、プログラムに関連付けられた資産を発行します。
+
+コンテンツをストリームするストリーミング エンドポイントに少なくとも 1 つのストリーミング予約ユニットがあることを確認します。
+
+1. ストリーミングとアーカイブの開始を準備するときにプログラムを開始します。
+2. 必要に応じて、ライブ エンコーダーは、広告の開始を信号通知できます。 広告が出力ストリームに挿入されます。
+3. イベントのストリーミングとアーカイブを停止するときにプログラムを停止します。
+4. プログラムを削除し、資産を削除 (オプション) します。
+
+## <a name="what-youll-learn"></a>学習内容
+このトピックでは Media Services .NET SDK を使用したチャネルとプログラムでさまざまな操作を実行する方法を示します。 多くの操作は実行時間が長いため、長時間の操作を管理する .NET API が使用されます。
 
 このトピックでは、以下の操作の手順を示します。
 
-1. チャネルを作成し、起動します。実行時間の長い API が使用されます。
-2. チャネルの取り込み (入力) エンドポイントを取得します。このエンドポイントは、シングル ビットレートのライブ ストリームを送信できるエンコーダーに提供される必要があります。
-3. プレビューのエンドポイントを取得します。このエンドポイントを使用して、ストリームをプレビューします。
-4. コンテンツを格納するために使用する資産を作成します。この例に示すように、資産の配信のポリシーを構成する必要もあります。
-5. プログラムを作成し、以前作成した資産を使用するよう指定します。プログラムを起動します。実行時間の長い API が使用されます。
+1. チャネルを作成し、起動します。 実行時間の長い API が使用されます。
+2. チャネルの取り込み (入力) エンドポイントを取得します。 このエンドポイントは、シングル ビットレートのライブ ストリームを送信できるエンコーダーに提供される必要があります。
+3. プレビューのエンドポイントを取得します。 このエンドポイントを使用して、ストリームをプレビューします。
+4. コンテンツを格納するために使用する資産を作成します。 この例に示すように、資産の配信のポリシーを構成する必要もあります。
+5. プログラムを作成し、以前作成した資産を使用するよう指定します。 プログラムを起動します。 実行時間の長い API が使用されます。
 6. 資産のロケーターを作成し、コンテンツがパブリッシュされて、クライアントにストリームできるようにします。
-7. スレートを表示および非表示にします。広告を起動および停止します。実行時間の長い API が使用されます。
+7. スレートを表示および非表示にします。 広告を起動および停止します。 実行時間の長い API が使用されます。
 8. チャネルと関連付けられているすべてのリソースをクリーンアップします。
 
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 チュートリアルを完了するには次のものが必要です。
 
 * このチュートリアルを完了するには、Azure アカウントが必要です。
-  
-    アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
-* Media Services アカウント。Media Services アカウントを作成するには、「[アカウントの作成](media-services-create-account.md)」を参照してください。
+
+アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
+
+* Media Services アカウント。 Media Services アカウントを作成するには、「[アカウントの作成](media-services-portal-create-account.md)」を参照してください。
 * Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降のバージョン。
 * Media Services .NET SDK バージョン 3.2.0.0 以降を使用する必要があります。
 * シングル ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
 
-## 考慮事項
-* 現在、ライブ イベントの最大推奨時間は 8 時間です。チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
+## <a name="considerations"></a>考慮事項
+* 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
 * コンテンツをストリームするストリーミング エンドポイントに少なくとも 1 つのストリーミング予約ユニットがあることを確認します。
 
-## サンプルのダウンロード
+## <a name="download-sample"></a>サンプルのダウンロード
 [ここ](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)からサンプルを取得し、実行します。
 
-## With Media Services SDK for .NET を使用して開発を行うためにセットアップします。
+## <a name="set-up-for-development-with-media-services-sdk-for-net"></a>With Media Services SDK for .NET を使用して開発を行うためにセットアップします。
 1. Visual Studio を使用して、コンソール アプリケーションを作成します。
 2. Media Services NuGet パッケージを使用して、コンソール アプリケーションに .NET 用 Media Services SDK を追加します。
 
-## Media Services への接続
+## <a name="connect-to-media-services"></a>Media Services への接続
 ベスト プラクティスとして、Media Services 名とアカウント キーを格納するために app.config ファイルを使用する必要があります。
 
 > [!NOTE]
-> 名前とキーの値を確認するには、Azure クラシック ポータルに移動して、Media Services アカウントを選択し、ポータル ウィンドウの下にある [キーの管理] アイコンをクリックします。各テキスト ボックスの横にあるアイコンをクリックすると、値がシステム クリップボードにコピーされます。
+> 名前とキーの値を検索するには、Azure Portal に移動してアカウントを選択します。 [設定] ウィンドウが右側に表示されます。 [設定] ウィンドウで、[キー] を選択します。 各テキスト ボックスの横にあるアイコンをクリックすると、値がシステム クリップボードにコピーされます。
 > 
 > 
 
@@ -119,7 +128,7 @@ app.config ファイルに appSettings セクションを追加し、Media Servi
     </configuration>
 
 
-## コード例
+## <a name="code-example"></a>コード例
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -507,15 +516,20 @@ app.config ファイルに appSettings セクションを追加し、Media Servi
     }    
 
 
-## 次のステップ
+## <a name="next-step"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## フィードバックの提供
+## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### 他の情報をお探しですか。
+### <a name="looking-for-something-else"></a>他の情報をお探しですか。
 このトピックに必要な情報が含まれておらず、情報が不足している場合、またはニーズが満たされていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+
