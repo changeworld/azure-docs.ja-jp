@@ -1,12 +1,12 @@
 ---
-title: Visual Studio による Python Web ロールと Python worker ロール | Microsoft Docs
-description: Azure クラウド サービス (Web ロール、worker ロールを含む) を Python Tools for Visual Studio で作成する方法の概要
+title: "Visual Studio による Python Web ロールと Python worker ロール | Microsoft Docs"
+description: "Azure クラウド サービス (Web ロール、worker ロールを含む) を Python Tools for Visual Studio で作成する方法の概要"
 services: cloud-services
 documentationcenter: python
 author: thraka
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 5489405d-6fa9-4b11-a161-609103cbdc18
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 08/03/2016
 ms.author: adegeo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d951e05a9a0ae59adb64d53726e9898d95424d80
+
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python Tools for Visual Studio による Python Web ロールと Python worker ロール
@@ -23,17 +27,17 @@ ms.author: adegeo
 * Visual Studio 2013 または 2015
 * [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS)
 * [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013] または [Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015]
-* [Python 2.7 (32 ビット)][Python 2.7 (32 ビット)] または [Python 3.5 (32 ビット)][Python 3.5 (32 ビット)]
+* [Python 2.7 32 ビット][Python 2.7 32 ビット] または [Python 3.5 32 ビット][Python 3.5 32 ビット]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
-## <a name="what-are-python-web-and-worker-roles?"></a>Python Web ロールと Python worker ロールについて
+## <a name="what-are-python-web-and-worker-roles"></a>Python Web ロールと Python worker ロールについて
 Azure にはアプリケーションを実行するためのコンピューティング モデルとして、[Azure App Service の Web Apps 機能][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] の 3 種類があります。 これら 3 つのモデルはすべて、Python をサポートしています。 Cloud Services には、Web ロールと worker ロールが含まれ、"*サービスとしてのプラットフォーム (PaaS)*" を提供します。 クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
 
 詳細については、「[クラウド サービスとは]」を参照してください。
 
 > [!NOTE]
-> *単純な Web サイトを構築する場合*: 
+> *単純な Web サイトを構築する場合*
 > シナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、Azure App Service の軽量の Web Apps 機能を使用することを検討してください。 Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。 Azure App Service の Web Apps 機能の開発に関する記事については、<a href="/develop/python/">Python デベロッパー センター</a>を参照してください。
 > <br />
 > 
@@ -110,7 +114,7 @@ Web ロールまたは worker ロールは、既存のクラウド サービス�
 </Runtime>
 ```
 
-#### <a name="sample-servicedefinition.csdef"></a>サンプルの ServiceDefinition.csdef
+#### <a name="sample-servicedefinitioncsdef"></a>サンプルの ServiceDefinition.csdef
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="AzureCloudServicePython" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
@@ -161,7 +165,7 @@ Web ロールまたは worker ロールは、既存のクラウド サービス�
 
 次に、**PrepPython.ps1** ファイルと **PipInstaller.ps1** ファイルをロールの **./bin** フォルダーに作成します。
 
-#### <a name="preppython.ps1"></a>PrepPython.ps1
+#### <a name="preppythonps1"></a>PrepPython.ps1
 このスクリプトは、Python をインストールします。 **PYTHON2** 環境変数を **on** に設定すると Python 2.7 がインストールされ、それ以外の場合は Python 3.5 がインストールされます。
 
 ```powershell
@@ -207,7 +211,7 @@ if (-not $is_emulated){
 }
 ```
 
-#### <a name="pipinstaller.ps1"></a>PipInstaller.ps1
+#### <a name="pipinstallerps1"></a>PipInstaller.ps1
 このスクリプトは、pip を呼び出し、**requirements.txt** ファイル内のすべての依存関係をインストールします。 **PYTHON2** 環境変数を **on** に設定すると Python 2.7 が使用され、それ以外の場合は Python 3.5 が使用されます。
 
 ```powershell
@@ -235,7 +239,7 @@ if (-not $is_emulated){
 }
 ```
 
-#### <a name="modify-launchworker.ps1"></a>LaunchWorker.ps1 を変更する
+#### <a name="modify-launchworkerps1"></a>LaunchWorker.ps1 を変更する
 > [!NOTE]
 > **worker ロール** プロジェクトの場合は、スタートアップ ファイルを実行するために **LauncherWorker.ps1** ファイルが必要です。 **Web ロール** プロジェクトでは、スタートアップ ファイルがプロジェクト プロパティで定義されています。
 > 
@@ -280,7 +284,7 @@ else
 }
 ```
 
-#### <a name="ps.cmd"></a>ps.cmd
+#### <a name="pscmd"></a>ps.cmd
 Visual Studio テンプレートによって、**ps.cmd** ファイルが **./bin** フォルダーに作成されています。 このシェル スクリプトは、上記の PowerShell ラッパー スクリプトを呼び出し、呼び出された PowerShell ラッパーの名前に基づくログを提供します。 このファイルが作成されていない場合は、次の内容のファイルを作成します。 
 
 ```bat
@@ -319,7 +323,7 @@ Web ロールまたは worker ロールをデバッグするには、対象と�
 数分経過するとデプロイメントが完了し、Web ロールまたは worker ロールが Azure 上で稼働状態となります。
 
 ### <a name="investigate-logs"></a>ログを調査する
-クラウド サービスの仮想マシンが起動され、Python がインストールされた後、ログにエラー メッセージが含まれているかどうかを確認します。 これらのログは、**C:\Resources\Directory\{role}\LogFiles** フォルダーに格納されます。 **PrepPython.err.txt** には、Python がインストールされているかどうかを検出しようとしたとき以降のエラーが少なくとも 1 つ含まれます。**PipInstaller.err.txt** には、pip のバージョンが古いことに関するエラーが含まれる場合があります。
+クラウド サービスの仮想マシンが起動され、Python がインストールされた後、ログにエラー メッセージが含まれているかどうかを確認します。 これらのログは、**C:\Resources\Directory\\{role}\LogFiles** フォルダーに格納されます。 **PrepPython.err.txt** には、Python がインストールされているかどうかを検出しようとしたとき以降のエラーが少なくとも 1 つ含まれます。**PipInstaller.err.txt** には、pip のバージョンが古いことに関するエラーが含まれる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 Python Tools for Visual Studio で Web ロールまたは worker ロールを扱う方法の詳細については、次の PTVS 関連ドキュメントを参照してください。
@@ -361,6 +365,6 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

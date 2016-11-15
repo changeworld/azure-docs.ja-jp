@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Mobile Engagement からプッシュ通知を受信するには、アプリケーションで `Silent Remote Notifications` を有効にする必要がありますInfo.plist ファイルの UIBackgroundModes 配列に、リモート通知の値を追加する必要があります。
+> Mobile Engagement からプッシュ通知を受信するには、アプリケーションで `Silent Remote Notifications` を有効にする必要があります Info.plist ファイルの UIBackgroundModes 配列に、リモート通知の値を追加する必要があります。
 > 
 > 
 
@@ -7,7 +7,7 @@
 2. 一覧 (`Information Property List`) の一番上の項目を右クリックして、新しい行を追加します
    
     ![](./media/mobile-engagement-ios-silent-push/xcode-plist-add-silent-push1.png)
-3. 新しい行に `Required background modes` を入力します
+3. 新しい行に `Required background modes`
    
     ![](./media/mobile-engagement-ios-silent-push/xcode-plist-add-silent-push2.png)
 4. 行を展開するには、左向きの矢印をクリックします
@@ -24,4 +24,8 @@
    
    * [ターゲット]、ターゲット名、[機能] の順に選択し、**[プッシュ通知]** を有効にします。
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

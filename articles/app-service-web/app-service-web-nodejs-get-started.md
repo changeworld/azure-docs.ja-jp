@@ -1,12 +1,12 @@
 ---
-title: Azure App Service での Node.js Web アプリの使用
-description: Node.js アプリケーションを Azure App Service の Web アプリにデプロイする方法を説明します。
+title: "Azure App Service での Node.js Web アプリの使用"
+description: "Node.js アプリケーションを Azure App Service の Web アプリにデプロイする方法を説明します。"
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: fb2b90c8-02b6-4700-929b-5de9a35d67cc
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: nodejs
 ms.topic: get-started-article
 ms.date: 07/01/2016
 ms.author: cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
+
 
 ---
-# <a name="get-started-with-node.js-web-apps-in-azure-app-service"></a>Azure App Service での Node.js Web アプリの使用
+# <a name="get-started-with-nodejs-web-apps-in-azure-app-service"></a>Azure App Service での Node.js Web アプリの使用
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 このチュートリアルでは、簡単な [Node.js] アプリケーションを作成し、cmd.exe や bash などのコマンド ライン環境を使用して [Azure App Service] にデプロイする方法について説明します。 このチュートリアルの手順は、Node.js を実行できる任意のオペレーティング システムで使用できます。
@@ -35,7 +39,7 @@ ms.author: cephalin
 * [Azure CLI]
 * Microsoft Azure アカウント。 アカウントを持っていない場合は、[無料試用版にサインアップする]か [Visual Studio サブスクライバー特典を有効]にしてください。
 
-## <a name="create-and-deploy-a-simple-node.js-web-app"></a>単純な Node.js Web アプリの作成とデプロイ
+## <a name="create-and-deploy-a-simple-nodejs-web-app"></a>単純な Node.js Web アプリの作成とデプロイ
 1. 任意のコマンド ライン ターミナルを開いて、 [Express generator for Yeoman]をインストールします。
    
         npm install -g generator-express
@@ -99,10 +103,10 @@ ms.author: cephalin
    
     ![Example of browsing to the deployed application.][deployed-express-app]
 
-## <a name="update-your-node.js-web-app"></a>Node.js Web アプリの更新
+## <a name="update-your-nodejs-web-app"></a>Node.js Web アプリの更新
 App Service で実行されている Node.js Web アプリを更新するには、最初にデプロイしたときと同様に、`git add`、`git commit`、`git push` を実行します。
 
-## <a name="how-app-service-deploys-your-node.js-app"></a>App Service における Node.js アプリのデプロイ
+## <a name="how-app-service-deploys-your-nodejs-app"></a>App Service における Node.js アプリのデプロイ
 Azure App Service では、Node.js アプリを実行するために [iisnode] が使用されます。 Node.js アプリの開発とデプロイは、Azure CLI と Kudu エンジン (Git デプロイ) を組み合わせることでコマンド ラインから効率的に行うことができます。 
 
 * `azure site create --git` は、server.js または app.js の一般的な Node.js パターンを認識し、iisnode.yml をルート ディレクトリに作成します。 このファイルを使用して iisnode をカスタマイズできます。
@@ -112,7 +116,7 @@ Azure App Service では、Node.js アプリを実行するために [iisnode] �
   * package.json 内の起動スクリプト (server.js、app.js など) を参照する iisnode 用の Web.config を生成します。
   * Node-Inspector でアプリをデバッグできるよう Web.config をカスタマイズします。
 
-## <a name="use-a-node.js-framework"></a>Node.js フレームワークの使用
+## <a name="use-a-nodejs-framework"></a>Node.js フレームワークの使用
 [Sails.js][SAILSJS] や [MEAN.js][MEANJS] などの広く使われている Node.js フレームワークを使用して開発したアプリは、App Service にデプロイすることができます。 広く使われている Node.js フレームワークには、それぞれ独自のくせがあり、パッケージの依存関係も絶えず更新されます。 しかし App Service では、stdout と stderr のログが利用できるようになっているため、アプリで起こっていることを正確に把握し、それに応じた変更を加えることができます。 詳細については、「 [iisnode から stdout ログと stderr ログを取得する](#iisnodelog)」を参照してください。
 
 以下のチュートリアルには、App Service における特定のフレームワークの使用方法が解説されています。
@@ -123,7 +127,7 @@ Azure App Service では、Node.js アプリを実行するために [iisnode] �
 
 <a name="version"></a>
 
-## <a name="use-a-specific-node.js-engine"></a>特定の Node.js エンジンの使用
+## <a name="use-a-specific-nodejs-engine"></a>特定の Node.js エンジンの使用
 一般的なワークフローでは、通常 package.json で行うように、特定の Node.js エンジンの使用を App Service に指示します。
 次に例を示します。
 
@@ -170,7 +174,7 @@ iisnode ログを読み取るには、次の手順を実行します。
    
         https://{appname}.scm.azurewebsites.net/DebugConsole 
    
-    この URL は、Web アプリの URL とは異なるもので、"*.scm.*"  がDNS 名に追加されています。 この追加部分を URL から省くと、404 エラーが表示されます。
+    この URL は、Web アプリの URL とは異なるもので、"*.scm.*"  が DNS 名に追加されています。 この追加部分を URL から省くと、404 エラーが表示されます。
 5. D:\home\site\wwwroot\iisnode に移動します。
    
     ![Navigating to the location of the iisnode log files.][iislog-kudu-console-find]
@@ -182,7 +186,7 @@ iisnode ログを読み取るには、次の手順を実行します。
    
     ![Examining an iisnode log file.][iislog-kudu-console-read]
 
-## <a name="debug-your-app-with-node-inspector"></a>Node-Inspector によるアプリのデバッグ
+## <a name="debug-your-app-with-nodeinspector"></a>Node-Inspector によるアプリのデバッグ
 Node.js アプリのデバッグに Node-Inspector を使用している場合、実稼働の App Service アプリに Node-Inspector を使用できます。 Node-Inspector は、App Service の iisnode のインストールでプレインストールされます。 また、デプロイに Git を使用している場合、Kudu によって自動生成された Web.config には既に、Node-Inspector を有効にするうえで必要な構成がすべて含まれています。
 
 Node-Inspector を有効にするには、次の手順を実行します。
@@ -243,6 +247,6 @@ Node-Inspector を有効にするには、次の手順を実行します。
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

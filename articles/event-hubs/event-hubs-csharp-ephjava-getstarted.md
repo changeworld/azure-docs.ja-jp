@@ -1,12 +1,12 @@
 ---
-title: C# での Event Hubs の使用 | Microsoft Docs
-description: このチュートリアルでは、C# でイベントを送信し、EventProcessorHost を使用して Java でそのイベントを受信するための Azure Event Hubs の使用方法について説明します。
+title: "C# での Event Hubs の使用 | Microsoft Docs"
+description: "このチュートリアルでは、C# でイベントを送信し、EventProcessorHost を使用して Java でそのイベントを受信するための Azure Event Hubs の使用方法について説明します。"
 services: event-hubs
-documentationcenter: ''
+documentationcenter: 
 author: jtaubensee
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 059fb733-a397-400e-8e43-0c7ea5930b8b
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/27/2016
 ms.author: jotaub;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 51d880650ab8059f3346b5c1272c232b49be33e9
+
 
 ---
 # <a name="get-started-with-event-hubs"></a>Event Hubs の使用
@@ -48,8 +52,8 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 ## <a name="next-steps"></a>次のステップ
 Event Hub を作成し、データを送受信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
-* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]
-* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張] サンプル
+* [Event Hubs を使用する完全なサンプル アプリケーション][Event Hubs を使用する完全なサンプル アプリケーション]。
+* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張]のサンプル。
 * [Event Hubs の概要][Event Hubs の概要]
 
 <!-- Images. -->
@@ -64,6 +68,6 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

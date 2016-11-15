@@ -2,11 +2,11 @@
 title: Quotas in Azure Stack | Microsoft Docs
 description: Administrators set quotas to restrict the maximum amount of resources that tenants have access to.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: mattmcg
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 955c6dd8-cefe-42f3-af88-e11d17d22725
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: mattmcg
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 040727e39aecfeeda37dfb8879a13dcae3096e27
+
 
 ---
 # <a name="set-quotas-in-azure-stack"></a>Set quotas in Azure Stack
@@ -79,6 +83,9 @@ A tenant that subscribes to an offer that contains multiple plans can use all re
 | Max NICs |100 |The maximum number of network interfaces that a subscription can create in this location. |
 | Max network security groups |50 |The maximum number of network security groups that a subscription can create in this location. |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

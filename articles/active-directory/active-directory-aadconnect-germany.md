@@ -1,13 +1,13 @@
 ---
-title: Microsoft Cloud Germany の Azure AD Connect
-description: Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。Office 365、Azure、SaaS など Azure AD と連動するアプリケーションの ID を共通化することができます。
-keywords: Azure AD Connect の紹介, Azure AD Connect の概要, Azure AD Connect とは, Active Directory のインストール, Germany, Black Forest
+title: "Microsoft Cloud Germany の Azure AD Connect"
+description: "Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションの ID を共通化することができます。"
+keywords: "Azure AD Connect の紹介, Azure AD Connect の概要, Azure AD Connect とは, Active Directory のインストール, Germany, Black Forest"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 2bcb0caf-5d97-46cb-8c32-bda66cc22dad
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,11 +15,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/08/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 32feb93bf6b6b77d0b14206802c776da3a8eac91
+
 
 ---
-# Microsoft Cloud Germany の Azure AD Connect - パブリック プレビュー
-## はじめに
-Azure AD Connect は、オンプレミス Active Directory と Azure Active Directory の間の同期を実現します。現在、[Microsoft Cloud Germany](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) の多くのシナリオは、オペレーターが行う必要があります。Microsoft Cloud Germany を使用する場合は、以下の点に注意する必要があります。
+# <a name="azure-ad-connect-in-microsoft-cloud-germany-public-preview"></a>Microsoft Cloud Germany の Azure AD Connect - パブリック プレビュー
+## <a name="introduction"></a>はじめに
+Azure AD Connect は、オンプレミス Active Directory と Azure Active Directory の間の同期を実現します。
+現在、 [Microsoft Cloud Germany](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) の多くのシナリオは、オペレーターが行う必要があります。 Microsoft Cloud Germany を使用する場合は、以下の点に注意する必要があります。
 
 * 同期が正常に行われるようにするには、プロキシ サーバーで以下の URL を開く必要があります。
   
@@ -32,10 +37,10 @@ Azure AD Connect は、オンプレミス Active Directory と Azure Active Dire
   * 自動更新
   * パスワードの書き戻し
 
-## ダウンロード
-Azure AD Connect は、ポータル内の Azure AD Connect ブレードからダウンロードできます。Azure AD Connect ブレードを表示するには、次の手順に従います。
+## <a name="download"></a>ダウンロード
+Azure AD Connect は、ポータル内の Azure AD Connect ブレードからダウンロードできます。  Azure AD Connect ブレードを表示するには、次の手順に従います。
 
-### Azure AD Connect ブレード
+### <a name="the-azure-ad-connect-blade"></a>Azure AD Connect ブレード
 Azure Portal にサインインしたら、次の操作を行います。
 
 1. [参照] に移動します。
@@ -54,10 +59,15 @@ Azure Portal にサインインしたら、次の操作を行います。
 | 最後の同期 |正常に完了した前回の同期です。 |
 | フェデレーション ドメイン |現在構成されているフェデレーション ドメインの数を示します。 |
 
-## インストール
-Azure AD Connect をインストールする場合は、[こちら](active-directory-aadconnect.md#install-azure-ad-connect)のドキュメントを参照してください。
+## <a name="installation"></a>インストール
+Azure AD Connect をインストールする場合は、 [こちら](active-directory-aadconnect.md#install-azure-ad-connect)のドキュメントを参照してください。
 
-## 高度な機能と追加情報
-追加情報と、カスタム設定や高度な構成のガイダンスについては、最初に「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。このページには、情報と追加のガイダンスへのリンクが用意されています。
+## <a name="advanced-features-and-additional-information"></a>高度な機能と追加情報
+追加情報と、カスタム設定や高度な構成のガイダンスについては、最初に「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。  このページには、情報と追加のガイダンスへのリンクが用意されています。
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

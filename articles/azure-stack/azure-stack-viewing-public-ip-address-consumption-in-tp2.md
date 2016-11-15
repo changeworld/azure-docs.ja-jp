@@ -2,11 +2,11 @@
 title: Viewing public IP address consumption in TP2 | Microsoft Docs
 description: Administrators can view the consumption of public IP addresses in a region
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: ScottNapolitan
 manager: darmour
-editor: ''
-
+editor: 
+ms.assetid: 0f77be49-eafe-4886-8c58-a17061e8120f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: scottnap
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f3fe6e2c6d9f1fd3d4ada5a4814d2c403d195db5
+
 
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack-tp2"></a>View public IP address consumption in Azure Stack TP2
@@ -57,6 +61,9 @@ There are a number of different cases in which public IP addresses are assigned 
 | Static public IP address assigned to a fabric infrastructure service endpoint. |Yes |No |
 | Public IP address implicitly created for IaaS VM instances and used for outbound NAT on the virtual network. These are created behind the scenes whenever a tenant creates a VM instance so that VMs can send information out to the Internet. |Yes |No |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

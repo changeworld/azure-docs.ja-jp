@@ -1,12 +1,12 @@
 ---
-title: Azure SDK for Node.js を使用して Azure Data Lake Analytics を管理する | Microsoft Docs
-description: Azure SDK for Node.js を使用して Data Lake Analytics アカウント、データ ソース、ジョブ、およびユーザーを管理する方法について説明します
+title: "Azure SDK for Node.js を使用して Azure Data Lake Analytics を管理する | Microsoft Docs"
+description: "Azure SDK for Node.js を使用して Data Lake Analytics アカウント、データ ソース、ジョブ、およびユーザーを管理する方法について説明します"
 services: data-lake-analytics
-documentationcenter: ''
+documentationcenter: 
 author: edmacauley
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,12 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: edmaca
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 10ec0b63e1867f5f62d30d879a4497c0880d9494
+
 
 ---
-# Azure SDK for Node.js を使用して Azure Data Lake Analytics を管理する
+# <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Azure SDK for Node.js を使用して Azure Data Lake Analytics を管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Azure SDK for Node.js を使用して、Azure Data Lake Analytics アカウント、ジョブ、およびカタログを管理できます。他のツールを使用する管理のトピックを表示するには、上のタブ セレクターをクリックします。
+Azure SDK for Node.js を使用して、Azure Data Lake Analytics アカウント、ジョブ、およびカタログを管理できます。 他のツールを使用する管理のトピックを表示するには、上のタブ セレクターをクリックします。
 
 現時点では、以下がサポートされています。
 
@@ -28,17 +32,17 @@ Azure SDK for Node.js を使用して、Azure Data Lake Analytics アカウン�
 * **カタログ用の REST API のバージョン: 2015-10-01-preview**
 * **ジョブ用の REST API のバージョン: 2016-03-20-preview**
 
-## Features (機能)
+## <a name="features"></a>Features (機能)
 * アカウント管理: 作成、取得、一覧表示、更新、および削除。
 * ジョブ管理: 送信、取得、一覧表示、取り消し。
 * カタログ管理: 取得、一覧表示、作成 (シークレット)、更新 (シークレット)、削除 (シークレット)。
 
-## インストール方法
+## <a name="how-to-install"></a>インストール方法
 ```bash
 npm install azure-arm-datalake-analytics
 ```
 
-## Azure Active Directory を使用して認証する
+## <a name="authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する
  ```javascript
  var msrestAzure = require('ms-rest-azure');
  //user authentication
@@ -47,7 +51,7 @@ npm install azure-arm-datalake-analytics
  var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
  ```
 
-## Data Lake Analytics クライアントを作成する
+## <a name="create-the-data-lake-analytics-client"></a>Data Lake Analytics クライアントを作成する
 ```javascript
 var adlaManagement = require("azure-arm-datalake-analytics");
 var acccountClient = new adlaManagement.DataLakeAnalyticsAccountClient(credentials, 'your-subscription-id');
@@ -55,7 +59,7 @@ var jobClient = new adlaManagement.DataLakeAnalyticsJobClient(credentials, 'azur
 var catalogClient = new adlaManagement.DataLakeAnalyticsCatalogClient(credentials, 'azuredatalakeanalytics.net');
 ```
 
-## Data Lake Analytics アカウントを作成する
+## <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成する
 ```javascript
 var util = require('util');
 var resourceGroupName = 'testrg';
@@ -104,7 +108,7 @@ client.account.create(resourceGroupName, accountName, accountToCreate, function 
 });
 ```
 
-## ジョブの一覧を取得する
+## <a name="get-a-list-of-jobs"></a>ジョブの一覧を取得する
 ```javascript
 var util = require('util');
 var accountName = 'testadlaacct';
@@ -117,7 +121,7 @@ jobClient.job.list(accountName, function (err, result, request, response) {
 });
 ```
 
-## Data Lake Analytics カタログ内のデータベースの一覧を取得する
+## <a name="get-a-list-of-databases-in-the-data-lake-analytics-catalog"></a>Data Lake Analytics カタログ内のデータベースの一覧を取得する
 ```javascript
 var util = require('util');
 var accountName = 'testadlaacct';
@@ -130,8 +134,13 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 });
 ```
 
-## 関連項目
+## <a name="see-also"></a>関連項目
 * [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
 * [Microsoft Azure SDK for Node.js - Data Lake Store の管理](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

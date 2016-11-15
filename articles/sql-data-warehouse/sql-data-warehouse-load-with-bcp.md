@@ -1,12 +1,12 @@
 ---
-title: bcp を使用した SQL Data Warehouse へのデータの読み込み | Microsoft Docs
-description: データ ウェアハウジングのシナリオに沿って、bcp の概要と、その使用方法を学習します。
+title: "bcp を使用した SQL Data Warehouse へのデータの読み込み | Microsoft Docs"
+description: "データ ウェアハウジングのシナリオに沿って、bcp の概要と、その使用方法を学習します。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: twounder
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: f9467d11-fcd6-4131-a65a-2022d2c32d24
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5a0519a0fdbfc428530e5b30a3f8e4e8bcdaa50b
+
 
 ---
 # <a name="load-data-with-bcp"></a>bcp を使用したデータの読み込み
@@ -136,7 +140,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20151201 |4 |2 |
 
 ### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>手順 4: 新しくロードしたデータの統計を作成する
-Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。 クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。 統計の詳細については、開発トピック グループの「 [統計][統計] 」トピックを参照してください。 この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します
+Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。 クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。 統計の詳細については、開発トピック グループの[統計][統計]に関するトピックを参照してください。 この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します
 
 sqlcmd プロンプトから次の CREATE STATISTICS ステートメントを実行します。
 
@@ -180,8 +184,8 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 > 
 
 ## <a name="next-steps"></a>次のステップ
-読み込みの概要については、「 [Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)][]」を参照してください。
-開発に関するその他のヒントについては、「 [SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][]」をご覧ください。
+読み込みの概要については、「[SQL Data Warehouse へのデータの読み込み][SQL Data Warehouse へのデータの読み込み]」を参照してください。
+開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse の開発の概要]に関するページを参照してください。
 
 <!--Image references-->
 
@@ -201,6 +205,6 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

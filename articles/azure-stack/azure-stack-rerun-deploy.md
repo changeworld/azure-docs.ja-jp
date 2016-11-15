@@ -2,11 +2,11 @@
 title: Rerun a deployment from a failed step | Microsoft Docs
 description: If you experience a failure during deployment, you can attempt the following steps to rerun the deployment from where it failed.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: ErikjeMS
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 9e566c3e-187e-4efd-b971-b4432f90c065
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: erikje
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 22c526bf59f673f4d820e65acdbbed7dc4c135cf
+
 
 ---
 # <a name="rerun-a-deployment-from-a-failed-step"></a>Rerun a deployment from a failed step
@@ -46,7 +50,7 @@ Now that you have the step that the deployment failed on, you can attempt a -Rer
 > 
 > 
 
-### <a name="execute-the-invoke-eceaction-command"></a>Execute the Invoke-EceAction command
+### <a name="execute-the-invokeeceaction-command"></a>Execute the Invoke-EceAction command
 1. From an elevated PS console, import the following Modules:
    
         Import-Module C:\CloudDeployment\CloudDeployment.psd1 -Force
@@ -56,7 +60,7 @@ Now that you have the step that the deployment failed on, you can attempt a -Rer
         Invoke-EceAction -RolePath Cloud -ActionType Deployment -Start 60.140.143 -Verbose
 3. This will initiate the deployment from the step identified by the -Start parameter of the Invoke-EceAction command
 
-### <a name="results-of-a--rerun/-start"></a>Results of a -Rerun/-Start
+### <a name="results-of-a-rerunstart"></a>Results of a -Rerun/-Start
 Regardless of the option you choose, the deployment will begin again from the specified -Start parameter.
 
 1. If the failure is recoverable, the deployment will continue through completion.
@@ -69,6 +73,9 @@ Regardless of the option you choose, the deployment will begin again from the sp
 ## <a name="next-steps"></a>Next steps
 [Connect to Azure Stack](azure-stack-connect-azure-stack.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

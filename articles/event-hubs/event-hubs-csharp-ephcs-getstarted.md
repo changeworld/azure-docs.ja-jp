@@ -1,12 +1,12 @@
 ---
-title: C# での Event Hubs の使用 | Microsoft Docs
-description: このチュートリアルでは、C# による Azure Event Hubs と EventProcessorHost の使用方法について説明します。
+title: "C# での Event Hubs の使用 | Microsoft Docs"
+description: "このチュートリアルでは、C# による Azure Event Hubs と EventProcessorHost の使用方法について説明します。"
 services: event-hubs
-documentationcenter: ''
+documentationcenter: 
 author: jtaubensee
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 2ec2378a-34f7-44c3-b976-cc444c98c338
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/02/2016
 ms.author: jotaub;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 35a7e4693ef979dfb947714f2fe5ce5599991189
+
 
 ---
 # <a name="get-started-with-event-hubs"></a>Event Hubs の使用
@@ -22,12 +26,12 @@ ms.author: jotaub;sethm
 ## <a name="introduction"></a>はじめに
 Event Hubs は、接続されているデバイスとアプリケーションからの大量のイベント データ (テレメトリ) を処理するサービスです。 Event Hubs にデータを収集した後、ストレージ クラスターを使用してデータを格納したり、リアルタイムの分析プロバイダーを使用して転送できます。 この大規模なイベントの収集と処理の機能は、モノのインターネット (IoT) など最新アプリケーション アーキテクチャの重要なコンポーネントです。
 
-このチュートリアルでは、Azure クラシック ポータルを使用してイベント ハブを作成する方法を説明します。 また、C# に記述されるコンソール アプリケーションを使用して Event Hub にメッセージを収集し、C# の [イベント プロセッサ ホスト][イベント プロセッサ ホスト] ライブラリを使用して並列で取得する方法を学習します。
+このチュートリアルでは、Azure クラシック ポータルを使用してイベント ハブを作成する方法を説明します。 また、C# に記述されるコンソール アプリケーションを使用して Event Hub にメッセージを収集し、C# の[イベント プロセッサ ホスト][イベント プロセッサ ホスト] ライブラリを使用して並列で取得する方法を学習します。
 
 このチュートリアルを完了するには、次のものが必要です。
 
 * [Microsoft Visual Studio](http://visualstudio.com)
-* アクティブな Azure アカウント。 アカウントがない場合は、無料アカウントを数分で作成できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/free/)を参照してください。
+* アクティブな Azure アカウント。 アカウントがない場合は、無料アカウントを数分で作成できます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/free/)」をご覧ください。
 
 [!INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
@@ -61,8 +65,8 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 ## <a name="next-steps"></a>次のステップ
 Event Hub を作成し、データを送受信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
-* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]
-* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張] サンプル
+* [Event Hubs を使用する完全なサンプル アプリケーション][Event Hubs を使用する完全なサンプル アプリケーション]。
+* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張]のサンプル。
 * [Event Hubs の概要][Event Hubs の概要]
 
 <!-- Images. -->
@@ -82,6 +86,6 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

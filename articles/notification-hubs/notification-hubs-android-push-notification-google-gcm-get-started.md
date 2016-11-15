@@ -1,13 +1,13 @@
 ---
-title: Sending push notifications to Android with Azure Notification Hubs | Microsoft Docs
-description: In this tutorial, you learn how to use Azure Notification Hubs to push notifications to Android devices.
+title: "Azure Notification Hubs から Android へのプッシュ通知の送信 | Microsoft Docs"
+description: "このチュートリアルでは、Azure Notification Hubs を使用して Android デバイスにプッシュ通知を送信する方法について学習します。"
 services: notification-hubs
 documentationcenter: android
-keywords: push notifications,push notification,android push notification
+keywords: "プッシュ通知,プッシュ通知,Android プッシュ通知"
 author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -15,65 +15,69 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 07/05/2016
 ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
+
 
 ---
-# <a name="sending-push-notifications-to-android-with-azure-notification-hubs"></a>Sending push notifications to Android with Azure Notification Hubs
+# <a name="sending-push-notifications-to-android-with-azure-notification-hubs"></a>Azure Notification Hubs から Android へのプッシュ通知の送信
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Overview
 > [!IMPORTANT]
-> This topic demonstrates push notifications with Google Cloud Messaging (GCM). If you are using Google's Firebase Cloud Messaging (FCM), see [Sending push notifications to Android with Azure Notification Hubs and FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
+> このトピックでは、Google Cloud Messaging (GCM) を使用したプッシュ通知について説明します。 Google の Firebase Cloud Messaging (FCM) を使用している場合は、 [Azure Notification Hubs と FCM を使用した Android へのプッシュ通知の送信](notification-hubs-android-push-notification-google-fcm-get-started.md)に関する記事を参照してください。
 > 
 > 
 
-This tutorial shows you how to use Azure Notification Hubs to send push notifications to an Android application.
-You'll create a blank Android app that receives push notifications by using Google Cloud Messaging (GCM).
+このチュートリアルでは、Azure Notification Hubs を使用して Android アプリケーションにプッシュ通知を送信する方法について説明します。
+Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Android アプリケーションを作成します。
 
 [!INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
 
-The completed code for this tutorial can be downloaded from GitHub [here](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted).
+このチュートリアルの完成したコードについては、GitHub の [こちら](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted)からダウンロードできます。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>前提条件
 > [!IMPORTANT]
-> To complete this tutorial, you must have an active Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started).
+> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started)を参照してください。
 > 
 > 
 
-In addition to an active Azure account mentioned above, this tutorial only requires the latest version of [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797).
+上記のアクティブな Azure アカウント以外に、このチュートリアルで必要となるのは、最新版の [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797)のみです。
 
-Completing this tutorial is a prerequisite for all other Notification Hubs tutorials for Android apps.
+このチュートリアルを完了することは、Android アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
 
-## <a name="creating-a-project-that-supports-google-cloud-messaging"></a>Creating a project that supports Google Cloud Messaging
+## <a name="creating-a-project-that-supports-google-cloud-messaging"></a>Google Cloud Messaging をサポートするプロジェクトを作成する
 [!INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
-## <a name="configure-a-new-notification-hub"></a>Configure a new notification hub
+## <a name="configure-a-new-notification-hub"></a>新しい Notification Hub を構成する
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6.   In the **Settings** blade, select **Notification Services** and then **Google (GCM)**. Enter the API key and click **Save**.
+&emsp;&emsp;6. **[設定]** ブレードで、**[Notification Services]**、**[Google (GCM)]** の順に選択します。 API キーを入力して、**[保存]** をクリックします。
 
 &emsp;&emsp;![Azure Notification Hubs - Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
-Your notification hub is now configured to work with GCM, and you have the connection strings to both register your app to receive and send push notifications.
+これで、通知ハブが GCM と連動するように構成されました。接続文字列を使用して、プッシュ通知の受信と送信の両方にアプリを登録できます。
 
-## <a name="<a-id="connecting-app"></a>connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Connect your app to the notification hub
-### <a name="create-a-new-android-project"></a>Create a new Android project
-1. In Android Studio, start a new Android Studio project.
+## <a name="a-idconnectingappaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>通知ハブにアプリを接続する
+### <a name="create-a-new-android-project"></a>新しい Android プロジェクトを作成する
+1. Android Studio で新しい Android Studio プロジェクトを開始する
    
-    ![Android Studio - new project][13]
-2. Choose the **Phone and Tablet** form factor and the **Minimum SDK** that you want to support. Then click **Next**.
+       ![Android Studio - new project][13]
+2. **[Phone and Tablet (電話とタブレット)]** フォーム ファクターを選択し、サポートする **[Minimum SDK (最低限の SDK)]** を選択します。 その後、 **[次へ]**をクリックします。
    
-    ![Android Studio - project creation workflow][14]
-3. Choose **Empty Activity** for the main activity, click **Next**, and then click **Finish**.
+       ![Android Studio - project creation workflow][14]
+3. メイン アクティビティに **[Empty Activity (空のアクティビティ)]** を選択し、**[Next (次へ)]** をクリックして、**[Finish (完了)]** をクリックします。
 
-### <a name="add-google-play-services-to-the-project"></a>Add Google Play services to the project
+### <a name="add-google-play-services-to-the-project"></a>プロジェクトへの Google Play Services の追加
 [!INCLUDE [Add Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
 
-### <a name="adding-azure-notification-hubs-libraries"></a>Adding Azure Notification Hubs libraries
-1. In the `Build.Gradle` file for the **app**, add the following lines in the **dependencies** section.
+### <a name="adding-azure-notification-hubs-libraries"></a>Azure Notification Hubs ライブラリを追加する
+1. **[app (アプリ)]** の `Build.Gradle` ファイルの **dependencies** セクションに次の行を追加します。
    
         compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
         compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
-2. Add the following repository after the **dependencies** section.
+2. **[dependencies]** セクションの後に次のリポジトリを追加します。
    
         repositories {
             maven {
@@ -81,25 +85,25 @@ Your notification hub is now configured to work with GCM, and you have the conne
             }
         }
 
-### <a name="updating-the-androidmanifest.xml."></a>Updating the AndroidManifest.xml.
-1. To support GCM, we must implement a Instance ID listener service in our code which is used to [obtain registration tokens](https://developers.google.com/cloud-messaging/android/client#sample-register) using [Google's Instance ID API](https://developers.google.com/instance-id/). In this tutorial we will name the class `MyInstanceIDService`. 
+### <a name="updating-the-androidmanifestxml"></a>AndroidManifest.xml ファイルを更新する
+1. GCM をサポートするには、[Google のインスタンス ID API](https://developers.google.com/instance-id/) を利用し、[登録トークンの取得](https://developers.google.com/cloud-messaging/android/client#sample-register)に使用されるインスタンス ID リスナー サービスをコードに実装する必要があります。 このチュートリアルでは、クラスに `MyInstanceIDService`という名前を付けます。 
    
-    Add the following service definition to the AndroidManifest.xml file, inside the `<application>` tag. Replace the `<your package>` placeholder with the your actual package name shown at the top of the `AndroidManifest.xml` file.
+    次のサービス定義を AndroidManifest.xml ファイルの `<application>` タグ内に追加します。 `<your package>` プレースホルダーを、`AndroidManifest.xml` ファイルの先頭にある実際のパッケージ名に置き換えます。
    
         <service android:name="<your package>.MyInstanceIDService" android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID"/>
             </intent-filter>
         </service>
-2. Once we have received our GCM registration token from the Instance ID API, we will use it to [register with the Azure Notification Hub](notification-hubs-push-notification-registration-management.md). We will support this registration in the background using an `IntentService` named `RegistrationIntentService`. This service will also be responsible for [refreshing our GCM registration token](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens).
+2. インスタンス ID API から GCM 登録トークンを受け取ったら、それを使用して [Azure 通知ハブに登録](notification-hubs-push-notification-registration-management.md)します。 この登録はバックグラウンドで `RegistrationIntentService` という名前の `IntentService` を利用してサポートします。 このサービスは [GCM 登録トークンの更新](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)も行います。
    
-    Add the following service definition to the AndroidManifest.xml file, inside the `<application>` tag. Replace the `<your package>` placeholder with the your actual package name shown at the top of the `AndroidManifest.xml` file. 
+    次のサービス定義を AndroidManifest.xml ファイルの `<application>` タグ内に追加します。 `<your package>` プレースホルダーを、`AndroidManifest.xml` ファイルの先頭にある実際のパッケージ名に置き換えます。 
    
         <service
             android:name="<your package>.RegistrationIntentService"
             android:exported="false">
         </service>
-3. We will also define a receiver to receive notifications. Add the following receiver definition to the AndroidManifest.xml file, inside the `<application>` tag. Replace the `<your package>` placeholder with the your actual package name shown at the top of the `AndroidManifest.xml` file.
+3. 通知を受信するレシーバーも定義します。 次のレシーバー定義を AndroidManifest.xml ファイルの `<application>` タグ内に追加します。 `<your package>` プレースホルダーを、`AndroidManifest.xml` ファイルの先頭にある実際のパッケージ名に置き換えます。
    
         <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -108,9 +112,9 @@ Your notification hub is now configured to work with GCM, and you have the conne
                 <category android:name="<your package name>" />
             </intent-filter>
         </receiver>
-4. Add the following necessary GCM related permissions below the  `</application>` tag. Make sure to replace `<your package>` with the package name shown at the top of the `AndroidManifest.xml` file.
+4. 次の必要な GCM 関連のアクセス許可を `</application>` タグの下に追加します。 `<your package>` は、`AndroidManifest.xml` ファイルの先頭にあるパッケージ名に必ず置き換えてください。
    
-    For more information on these permissions, see [Setup a GCM Client app for Android](https://developers.google.com/cloud-messaging/android/client#manifest).
+    これらのアクセス許可に関する詳細については、 [Android 用 GCM Client アプリの設定](https://developers.google.com/cloud-messaging/android/client#manifest)に関するページを参照してください。
    
         <uses-permission android:name="android.permission.INTERNET"/>
         <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
@@ -120,18 +124,18 @@ Your notification hub is now configured to work with GCM, and you have the conne
         <permission android:name="<your package>.permission.C2D_MESSAGE" android:protectionLevel="signature" />
         <uses-permission android:name="<your package>.permission.C2D_MESSAGE"/>
 
-### <a name="adding-code"></a>Adding code
-1. In the Project View, expand **app** > **src** > **main** > **java**. Right-click your package folder under **java**, click **New**, and then click **Java Class**. Add a new class named `NotificationSettings`. 
+### <a name="adding-code"></a>コードを追加する
+1. [Project (プロジェクト)] ビューで、**[app]** > **[src]** > **[main]** > **[java]** の順に展開します。 **[java]** のパッケージ フォルダーを右クリックして、**[New (新規)]**、**[Java Class (Java クラス)]** の順にクリックします。 `NotificationSettings`という名前の新しいクラスを追加します。 
    
     ![Android Studio - new Java class][6]
    
-    Make sure to update the these three placeholders in the following code for the `NotificationSettings` class:
+    以下の `NotificationSettings` クラスのコード内にある次の 3 つのプレースホルダーを忘れずに更新してください。
    
-   * **SenderId**: The project number you obtained earlier in the [Google Cloud Console](http://cloud.google.com/console).
-   * **HubListenConnectionString**: The **DefaultListenAccessSignature** connection string for your hub. You can copy that connection string by clicking **Access Policies** on the **Settings** blade of your hub on the [Azure Portal].
-   * **HubName**: Use the name of your notification hub that appears in the hub blade in the [Azure Portal].
+   * **SenderId**: [Google Cloud Console](http://cloud.google.com/console)で取得しておいたプロジェクト番号。
+   * **HubListenConnectionString**: ハブの **DefaultListenAccessSignature** 接続文字列。 接続文字列をコピーするには、[Azure Portal] で、ハブの **[設定]** ブレードにある **[アクセス ポリシー]** をクリックします。
+   * **HubName**: [Azure ポータル]のハブ ブレードに表示される通知ハブの名前を使用します。
      
-     `NotificationSettings` code:
+     `NotificationSettings` のコードは次のとおりです。
      
        public class NotificationSettings {
      
@@ -139,9 +143,9 @@ Your notification hub is now configured to work with GCM, and you have the conne
            public static String HubName = "<Your HubName>";
            public static String HubListenConnectionString = "<Your default listen connection string>";
        }
-2. Using the steps above, add another new class named `MyInstanceIDService`. This will be our Instance ID listener service implementation.
+2. 上記の手順で `MyInstanceIDService`という名前の別の新しいクラスを追加します。 これはインスタンス ID リスナー サービスの実装になります。
    
-    The code for this class will call our `IntentService` to [refresh the GCM token](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) in the background.
+    このクラスのコードでは `IntentService` を呼び出し、バックグラウンドで [GCM トークンを更新](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) します。
    
         import android.content.Intent;
         import android.util.Log;
@@ -162,9 +166,9 @@ Your notification hub is now configured to work with GCM, and you have the conne
         };
 
 
-1. Add another new class to your project named, `RegistrationIntentService`. This will be the implementation for our `IntentService` that will handle [refreshing the GCM token](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) and [registering with the notification hub](notification-hubs-push-notification-registration-management.md).
+1. `RegistrationIntentService`という名前の別の新しいクラスをプロジェクトに追加します。 これが [GCM トークンの更新](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)と[通知ハブへの登録](notification-hubs-push-notification-registration-management.md)を処理する `IntentService` の実装になります。
    
-    Use the following code for this class.
+    次のコードをこのクラスに使用します。
    
         import android.app.IntentService;
         import android.content.Intent;
@@ -187,7 +191,7 @@ Your notification hub is now configured to work with GCM, and you have the conne
             }
    
             @Override
-            protected void onHandleIntent(Intent intent) {      
+            protected void onHandleIntent(Intent intent) {        
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
                 String resultString = null;
                 String regID = null;
@@ -201,7 +205,7 @@ Your notification hub is now configured to work with GCM, and you have the conne
                     // Storing the registration id that indicates whether the generated token has been
                     // sent to your server. If it is not stored, send the token to your server,
                     // otherwise your server should have already received the token.
-                    if ((regID=sharedPreferences.getString("registrationID", null)) == null) {      
+                    if ((regID=sharedPreferences.getString("registrationID", null)) == null) {        
                         NotificationHub hub = new NotificationHub(NotificationSettings.HubName,
                                 NotificationSettings.HubListenConnectionString, this);
                         Log.i(TAG, "Attempting to register with NH using token : " + token);
@@ -213,7 +217,7 @@ Your notification hub is now configured to work with GCM, and you have the conne
                         // regID = hub.register(token, "tag1", "tag2").getRegistrationId();
    
                         resultString = "Registered Successfully - RegId : " + regID;
-                        Log.i(TAG, resultString);       
+                        Log.i(TAG, resultString);        
                         sharedPreferences.edit().putString("registrationID", regID ).apply();
                     } else {
                         resultString = "Previously Registered Successfully - RegId : " + regID;
@@ -230,7 +234,7 @@ Your notification hub is now configured to work with GCM, and you have the conne
                 }
             }
         }
-2. In your `MainActivity` class, add the following `import` statements above the class declaration.
+2. `MainActivity` クラスで、クラス宣言の上に次の `import` ステートメントを追加します。
    
         import com.google.android.gms.common.ConnectionResult;
         import com.google.android.gms.common.GoogleApiAvailability;
@@ -239,13 +243,13 @@ Your notification hub is now configured to work with GCM, and you have the conne
         import android.util.Log;
         import android.widget.TextView;
         import android.widget.Toast;
-3. Add the following private members at the top of the class. We will use these [check the availability of Google Play Services as recommended by Google](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
+3. クラスの最上位に、次のプライベート メンバーを追加します。 これらを利用し、 [Google の推奨事項に従って Google Play サービスが利用可能かどうかを確認](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk)します。
    
         public static MainActivity mainActivity;
         public static Boolean isVisible = false;    
         private GoogleCloudMessaging gcm;
         private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-4. In your `MainActivity` class, add the following method to the availability of Google Play Services. 
+4. `MainActivity` クラスに、Google Play Services が利用可能かどうかを確認する次のメソッドを追加します。 
    
         /**
          * Check the device to make sure it has the Google Play Services APK. If
@@ -268,7 +272,7 @@ Your notification hub is now configured to work with GCM, and you have the conne
             }
             return true;
         }
-5. In your `MainActivity` class, add the following code that will check for Google Play Services before calling your `IntentService` to get your GCM registration token and register with your notification hub.
+5. `MainActivity` クラスに次のコードを追加します。このコードは、Google Play Services を確認してから、`IntentService` を呼び出して GCM 登録トークンを取得し、通知ハブに登録します。
    
         public void registerWithNotificationHubs()
         {
@@ -280,7 +284,7 @@ Your notification hub is now configured to work with GCM, and you have the conne
                 startService(intent);
             }
         }
-6. In the `OnCreate` method of the `MainActivity` class, add the following code to start the registration process when activity is created.
+6. `MainActivity` クラスの `OnCreate` メソッドで、アクティビティの作成時に登録プロセスを開始するために次のコードを追加します。
    
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -291,7 +295,7 @@ Your notification hub is now configured to work with GCM, and you have the conne
             NotificationsManager.handleNotifications(this, NotificationSettings.SenderId, MyHandler.class);
             registerWithNotificationHubs();
         }
-7. Add these additional methods to the `MainActivity` to verify app state and report status in your app.
+7. 次の追加メソッドを `MainActivity` に追加して、アプリの状態を確認してアプリ内で報告します。
    
         @Override
         protected void onStart() {
@@ -327,11 +331,11 @@ Your notification hub is now configured to work with GCM, and you have the conne
                 }
             });
         }
-8. The `ToastNotify` method uses the *"Hello World"* `TextView` control to report status and notifications persistently in the app. In your activity_main.xml layout, add the following id for that control.
+8. `ToastNotify` メソッドでは "*Hello World*" `TextView` コントロールを使用し、アプリで状態と通知を継続的に報告します。 activity_main.xml レイアウトでは、そのコントロールに次の ID を追加します。
    
        android:id="@+id/text_hello"
-9. Next we will add a subclass for our receiver we defined in the AndroidManifest.xml. Add another new class to your project named `MyHandler`.
-10. Add the following import statements at the top of `MyHandler.java`:
+9. 次に、AndroidManifest.xml で定義したレシーバーのサブクラスを追加します。 `MyHandler`という名前の別の新しいクラスをプロジェクトに追加します。
+10. 次の import ステートメントを `MyHandler.java` の先頭に追加します。
     
         import android.app.NotificationManager;
         import android.app.PendingIntent;
@@ -340,9 +344,9 @@ Your notification hub is now configured to work with GCM, and you have the conne
         import android.os.Bundle;
         import android.support.v4.app.NotificationCompat;
         import com.microsoft.windowsazure.notifications.NotificationsHandler;
-11. Add the following code for the `MyHandler` class making it a subclass of `com.microsoft.windowsazure.notifications.NotificationsHandler`.
+11. `MyHandler` クラス用に次のコードを追加して、`com.microsoft.windowsazure.notifications.NotificationsHandler` のサブクラスにします。
     
-    This code overrides the `OnReceive` method, so the handler will report notifications that are received. The handler also sends the push notification to the Android notification manager by using the `sendNotification()` method. The `sendNotification()` method should be executed when the app is not running and a notification is received.
+    このコードによって `OnReceive` メソッドがオーバーライドされるため、ハンドラーは受信した通知を報告します。 ハンドラーは `sendNotification()` メソッドを使用して Android の通知マネージャーにもプッシュ通知を送信します。 `sendNotification()` メソッドは、アプリが動作していないときに通知を受信した場合に実行される必要があります。
     
         public class MyHandler extends NotificationsHandler {
             public static final int NOTIFICATION_ID = 1;
@@ -385,19 +389,19 @@ Your notification hub is now configured to work with GCM, and you have the conne
                 mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
             }
         }
-12. In Android Studio on the menu bar, click **Build** > **Rebuild Project** to make sure that no errors are present in your code.
+12. Android Studio のメニュー バーで、**[Build (ビルド)]** > **[Rebuild Project (プロジェクトのリビルド)]** の順にクリックし、コードにエラーがないことを確認します。
 
-## <a name="sending-push-notifications"></a>Sending push notifications
-You can test receiving push notifications in your app by sending them via the [Azure Portal] - look for the **Troubleshooting** Section in the hub blade, as shown below.
+## <a name="sending-push-notifications"></a>プッシュ通知を送信する
+[Azure Portal] から通知を送信して、アプリでプッシュ通知の受信テストを行うことができます。以下に示す、ハブ ブレードの **[トラブルシューティング]** セクションを参照してください。
 
 ![Azure Notification Hubs - Test Send](./media/notification-hubs-android-get-started/notification-hubs-test-send.png)
 
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
-## <a name="(optional)-send-push-notifications-directly-from-the-app"></a>(Optional) Send push notifications directly from the app
-Normally, you would send notifications using a backend server. For some cases, you might want to be able to send push notifications directly from the client application. This section explains how to send notifications from the client using the [Azure Notification Hub REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx).
+## <a name="optional-send-push-notifications-directly-from-the-app"></a>(省略可能) アプリから直接プッシュ通知を送信する
+通常は、バックエンド サーバーを使用して通知を送信します。 場合によっては、クライアント アプリケーションから直接プッシュ通知を送信できることが必要になります。 このセクションでは、 [Azure Notification Hubs REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx)を使用してクライアントから通知を送信する方法を説明します。
 
-1. In Android Studio Project View, expand **App** > **src** > **main** > **res** > **layout**. Open the `activity_main.xml` layout file and click the **Text** tab to update the text contents of the file. Update it with the code below, which adds new `Button` and `EditText` controls for sending push notification messages to the notification hub. Add this code at the bottom, just before `</RelativeLayout>`.
+1. Android Studio の [Project (プロジェクト)] ビューで **[app]** > **[src]** > **[main]** > **[res]** > **[layout]** の順に展開します。 `activity_main.xml` レイアウト ファイルを開き、**[Text (テキスト)]** タブをクリックしてファイルのテキストの内容を更新します。 次のコードで更新します。これにより、通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールが追加されます。 このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
    
         <Button
         android:layout_width="wrap_content"
@@ -416,16 +420,16 @@ Normally, you would send notifications using a backend server. For some cases, y
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="42dp"
         android:hint="@string/notification_message_hint" />
-2. In Android Studio Project View, expand **App** > **src** > **main** > **res** > **values**. Open the `strings.xml` file and add the string values that are referenced by the new `Button` and `EditText` controls. Add these at the bottom of the file, just before `</resources>`.
+2. Android Studio の [Project (プロジェクト)] ビューで **[app]** > **[src]** > **[main]** > **[res]** > **[values]** の順に展開します。 `strings.xml` ファイルを開き、新しい `Button` コントロールと `EditText` コントロールで参照される文字列の値を追加します。 これらはファイルの一番下の `</resources>`のすぐ前に追加します。
    
         <string name="send_button">Send Notification</string>
         <string name="notification_message_hint">Enter notification message text</string>
-3. In your `NotificationSetting.java` file, add the following setting to the `NotificationSettings` class.
+3. `NotificationSetting.java` ファイルで、次の設定を `NotificationSettings` クラスに追加します。
    
-    Update `HubFullAccess` with the **DefaultFullSharedAccessSignature** connection string for your hub. This connection string can be copied from the [Azure Portal] by clicking **Access Policies** on the **Settings** blade for your notification hub.
+    `HubFullAccess` をハブの **DefaultFullSharedAccessSignature** 接続文字列で更新します。 この接続文字列は [Azure Portal] からコピーできます。これには、通知ハブの **[設定]** ブレードで **[アクセス ポリシー]** をクリックします。
    
         public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
-4. In your `MainActivity.java` file, add the following `import` statements above the `MainActivity` class.
+4. `MainActivity.java` ファイルで、`MainActivity` クラスの上に次の `import` ステートメントを追加します。
    
         import java.io.BufferedOutputStream;
         import java.io.BufferedReader;
@@ -439,14 +443,14 @@ Normally, you would send notifications using a backend server. For some cases, y
         import android.util.Base64;
         import android.view.View;
         import android.widget.EditText;
-5. In your `MainActivity.java` file, add the following members at the top of the `MainActivity` class.  
+5. `MainActivity.java` ファイルで、`MainActivity` クラスの先頭に次のメンバーを追加します。    
    
         private String HubEndpoint = null;
         private String HubSasKeyName = null;
         private String HubSasKeyValue = null;
-6. You must create a Software Access Signature (SaS) token to authenticate a POST request to send messages to your notification hub. This is done by parsing the key data from the connection string and then creating the SaS token, as mentioned in the [Common Concepts](http://msdn.microsoft.com/library/azure/dn495627.aspx) REST API reference. The following code is an example implementation.
+6. 通知ハブにメッセージを送信するには、POST 要求を認証するためのソフトウェア アクセス署名 (SaS) トークンを作成する必要があります。 これを実行するには、接続文字列からキーのデータを解析し、「 [共通概念](http://msdn.microsoft.com/library/azure/dn495627.aspx) 」の REST API リファレンスで説明したように SaS トークンを作成します。 次のコードでは、実装例を示します。
    
-    In `MainActivity.java`, add the following method to the `MainActivity` class to parse your connection string.
+    `MainActivity.java` で、接続文字列を解析する次のメソッドを `MainActivity` クラスに追加します。
    
         /**
          * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx
@@ -473,7 +477,7 @@ Normally, you would send notifications using a backend server. For some cases, y
                 }
             }
         }
-7. In `MainActivity.java`, add the following method to the `MainActivity` class to create a SaS authentication token.
+7. `MainActivity.java` で、SAS 認証トークンを作成する次のメソッドを `MainActivity` クラスに追加します。
    
         /**
          * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx to
@@ -526,7 +530,7 @@ Normally, you would send notifications using a backend server. For some cases, y
    
             return token;
         }
-8. In `MainActivity.java`, add the following method to the `MainActivity` class to handle the **Send Notification** button click and send the push notification message to the hub by using the built-in REST API.
+8. `MainActivity.java` で、次のメソッドを `MainActivity` クラスに追加します。このメソッドは **[Send Notification]** ボタンのクリックを処理し、組み込みの REST API を使用してハブにプッシュ通知メッセージを送信します。
    
         /**
          * Send Notification button click handler. This method parses the
@@ -570,7 +574,7 @@ Normally, you would send notifications using a backend server. For some cases, y
                             // Example below targets 3 specific tags
                             // Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-routing-tag-expressions/
                             // urlConnection.setRequestProperty("ServiceBusNotification-Tags", 
-                            //      "tag1 || tag2 || tag3");
+                            //        "tag1 || tag2 || tag3");
    
                             // Send notification message
                             urlConnection.setFixedLengthStreamingMode(json.length());
@@ -606,29 +610,29 @@ Normally, you would send notifications using a backend server. For some cases, y
             }.start();
         }
 
-## <a name="testing-your-app"></a>Testing your app
-#### <a name="push-notifications-in-the-emulator"></a>Push notifications in the emulator
-If you want to test push notifications inside an emulator, make sure that your emulator image supports the Google API level that you chose for your app. If your image doesn't support native Google APIs, you will end up with the **SERVICE\_NOT\_AVAILABLE** exception.
+## <a name="testing-your-app"></a>アプリケーションのテスト
+#### <a name="push-notifications-in-the-emulator"></a>エミュレーターでのプッシュ通知
+エミュレーターの内部でプッシュ通知をテストする場合は、エミュレーター イメージがアプリケーション用に選択した Google API レベルをサポートしていることを確認してください。 イメージがネイティブの Google API をサポートしていない場合は、最終的に **SERVICE\_NOT\_AVAILABLE** 例外を受け取ることになります。
 
-In addition to the above, ensure that you have added your Google account to your running emulator under **Settings** > **Accounts**. Otherwise, your attempts to register with GCM may result in the **AUTHENTICATION\_FAILED** exception.
+上記に加えて、 **Azure ポータル** > **[アカウント]**に関する記事を参照してください。 アカウントを追加していないと、GCM での登録の試行が **AUTHENTICATION\_FAILED** 例外につながる可能性があります。
 
-#### <a name="running-the-application"></a>Running the application
-1. Run the app and notice that the registration ID is reported for a successful registration.
+#### <a name="running-the-application"></a>アプリケーションの実行
+1. アプリケーションを実行し、登録 ID の登録完了が報告されていることを確認します。
    
-    ![Testing on Android - Channel registration][18]
-2. Enter a notification message to be sent to all Android devices that have registered with the hub.
+       ![Testing on Android - Channel registration][18]
+2. ハブに登録されているすべての Android デバイスに送信される通知メッセージを入力します。
    
-    ![Testing on Android - sending a message][19]
-3. Press **Send Notification**. Any devices that have the app running will show an `AlertDialog` instance with the push notification message. Devices that don't have the app running but were previously registered for push notifications will receive a notification in the Android Notification Manager. Those can be viewed by swiping down from the upper-left corner.
+       ![Testing on Android - sending a message][19]
+3. **[Send Notification (通知の送信)]**を押します。 アプリケーションが実行されているすべてのデバイスで、プッシュ通知メッセージを示す `AlertDialog` インスタンスが表示されます。 実行中のアプリケーションがなくても事前にプッシュ通知に登録されているデバイスでは、Android 通知マネージャーで通知が受信されます。 左上隅から下へスワイプすると、通知を表示できます。
    
-    ![Testing on Android - notifications][21]
+       ![Testing on Android - notifications][21]
 
-## <a name="next-steps"></a>Next steps
-We recommend the [Use Notification Hubs to push notifications to users] tutorial as the next step. It will show you how to send notifications from an ASP.NET backend using tags to target specific users.
+## <a name="next-steps"></a>次のステップ
+次のステップとして「 [Notification Hubs を使用したユーザーへのプッシュ通知] 」チュートリアルをお勧めします。 このチュートリアルでは、特定のユーザーに対してタグを使用して ASP.NET バックエンドから通知を送信する方法について説明しています。
 
-If you want to segment your users by interest groups, check out the [Use Notification Hubs to send breaking news] tutorial.
+対象グループごとにユーザーを区分する場合は、「 [Notification Hubs を使用したニュース速報の送信] 」のチュートリアルを参照してください。
 
-To learn more general information about Notification Hubs, see our [Notification Hubs Guidance].
+Notification Hubs の全般的な情報については、「 [Notification Hubs の概要]」を参照してください。
 
 <!-- Images. -->
 [6]: ./media/notification-hubs-android-get-started/notification-hub-android-new-class.png
@@ -656,17 +660,17 @@ To learn more general information about Notification Hubs, see our [Notification
 
 
 <!-- URLs. -->
-[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md  
+[Mobile Services でのプッシュ通知の使用]: ../mobile-services-javascript-backend-android-get-started-push.md  
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Azure Classic Portal]: https://manage.windowsazure.com/
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-[Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Azure Portal]: https://portal.azure.com
+[ライブラリ プロジェクトの参照]: http://go.microsoft.com/fwlink/?LinkId=389800
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
+[Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+[[アクセス ポリシー]]: https://portal.azure.com
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

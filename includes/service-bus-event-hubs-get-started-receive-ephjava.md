@@ -1,21 +1,21 @@
-## Java の EventProcessorHost を使用したメッセージの受信
-EventProcessorHost は、永続的なチェックポイントと、Event Hubsからの並列受信を管理することで、Event Hubs のイベントの受信を簡素化する Java クラスです。EventProcessorHost を使用すると、異なる複数のノードでホストされている場合でも、複数の受信側の間でイベントを分割することができます。この例では、受信側が単一の場合に EventProcessorHost を使用する方法を示します。
+## <a name="receive-messages-with-eventprocessorhost-in-java"></a>Java の EventProcessorHost を使用したメッセージの受信
+EventProcessorHost は、永続的なチェックポイントと、Event Hubsからの並列受信を管理することで、Event Hubs のイベントの受信を簡素化する Java クラスです。 EventProcessorHost を使用すると、異なる複数のノードでホストされている場合でも、複数の受信側の間でイベントを分割することができます。 この例では、受信側が単一の場合に EventProcessorHost を使用する方法を示します。
 
-### ストレージ アカウントの作成
-EventProcessorHost を使用するには [Azure ストレージ アカウント][Azure ストレージ アカウント]が必要です。
+### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
+EventProcessorHost を使用するには、[Azure Storage アカウント][Azure Storage アカウント]が必要です。
 
 1. [Azure クラシック ポータル][Azure クラシック ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
-2. **[Data Services]**、**[Storage]**、**[簡易作成]** の順にクリックし、ストレージ アカウントの名前を入力します。目的のリージョンを選択し、**[ストレージ アカウントの作成]** をクリックします。
+2. **[Data Services]**、**[Storage]**、**[簡易作成]** の順にクリックし、ストレージ アカウントの名前を入力します。 目的のリージョンを選択し、 **[ストレージ アカウントの作成]**をクリックします。
    
     ![][11]
-3. 新しく作成したストレージ アカウントをクリックし、**[アクセス キーの管理]** をクリックします。
+3. 新しく作成したストレージ アカウントをクリックし、 **[アクセス キーの管理]**をクリックします。
    
     ![][12]
    
     このチュートリアルの後で使用するため、プライマリ アクセス キーをメモしておきます。
 
-### EventProcessor ホストを使用した Java プロジェクトの作成
-Event Hubs の Java クライアント ライブラリは、[Maven Central Repository][Maven Package] の Maven プロジェクトで利用でき、Maven プロジェクト ファイル内の以下の依存関係宣言を使用して参照できます。
+### <a name="create-a-java-project-using-the-eventprocessor-host"></a>EventProcessor ホストを使用した Java プロジェクトの作成
+Event Hubs の Java クライアント ライブラリは、[Maven Central Repository][Maven パッケージ] の Maven プロジェクトで利用でき、Maven プロジェクト ファイル内の次の依存関係宣言を使用して参照できます。    
 
 ``` XML
 <dependency>
@@ -30,9 +30,9 @@ Event Hubs の Java クライアント ライブラリは、[Maven Central Repos
 </dependency>
 ```
 
-ビルド環境の種類に応じて、[Maven Central Repository][Maven Package] または [GitHub のリリース配布ポイント](https://github.com/Azure/azure-event-hubs/releases)から最新リリースの JAR ファイルを明示的に取得できます。
+ビルド環境の種類に応じて、[Maven Central Repository][Maven パッケージ]か [GitHub のリリース配付ポイント](https://github.com/Azure/azure-event-hubs/releases)から最新リリースの JAR ファイルを明示的に取得できます。  
 
-1. 次のサンプルでは、最初に、好みの Java 開発環境でコンソール/シェル アプリケーション用の新しい Maven プロジェクトを作成します。このクラスを ```ErrorNotificationHandler``` と呼びます。
+1. 次のサンプルでは、最初に、好みの Java 開発環境でコンソール/シェル アプリケーション用の新しい Maven プロジェクトを作成します。 このクラスを ```ErrorNotificationHandler```と呼びます。     
    
     ``` Java
     import java.util.function.Consumer;
@@ -47,7 +47,7 @@ Event Hubs の Java クライアント ライブラリは、[Maven Central Repos
         }
     }
     ```
-2. 次のコードで ```EventProcessor``` という新しいクラスを作成します。
+2. 次のコードで ```EventProcessor```という新しいクラスを作成します。
    
     ```Java
     import com.microsoft.azure.eventhubs.EventData;
@@ -100,7 +100,7 @@ Event Hubs の Java クライアント ライブラリは、[Maven Central Repos
         }
     }
     ```
-3. 次のコードで ```EventProcessorSample``` という最後のクラスを作成します。
+3. 次のコードで ```EventProcessorSample```という最後のクラスを作成します。
    
     ```Java
     import com.microsoft.azure.eventprocessorhost.*;
@@ -179,18 +179,22 @@ Event Hubs の Java クライアント ライブラリは、[Maven Central Repos
     ```
 
 > [!NOTE]
-> このチュートリアルでは、EventProcessorHost の単一のインスタンスを使用します。スループットを向上させるには、EventProcessorHost の複数のインスタンスを実行することをお勧めします。このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。複数の受信側でぞれぞれ*すべて*のイベントを処理する場合、**ConsumerGroup** 概念を使用する必要があります。さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて EventProcessorHost インスタンスの名前を指定するのに便利です。
+> このチュートリアルでは、EventProcessorHost の単一のインスタンスを使用します。 スループットを向上させるには、EventProcessorHost の複数のインスタンスを実行することをお勧めします。 このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。 複数の受信側でぞれぞれ *すべて* のイベントを処理する場合、 **ConsumerGroup** 概念を使用する必要があります。 さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて EventProcessorHost インスタンスの名前を指定するのに便利です。
 > 
 > 
 
 <!-- Links -->
-[Event Hubs overview]: event-hubs-overview.md
-[Azure ストレージ アカウント]: ../storage/storage-create-storage-account.md
+[Event Hubs の概要]: ../articles/event-hubs/event-hubs-overview.md
+[Azure ストレージ アカウント]: ../articles/storage/storage-create-storage-account.md
 [Azure クラシック ポータル]: http://manage.windowsazure.com
-[Maven Package]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22
+[Maven パッケージ]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22
 
 <!-- Images -->
 [11]: ./media/service-bus-event-hubs-get-started-receive-ephjava/create-eph-csharp2.png
 [12]: ./media/service-bus-event-hubs-get-started-receive-ephjava/create-eph-csharp3.png
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

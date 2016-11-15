@@ -1,13 +1,13 @@
 ---
-title: 'NoSQL チュートリアル: DocumentDB .NET SDK | Microsoft Docs'
-description: DocumentDB .NET SDK を使用してオンライン データベースと C# コンソール アプリケーションを作成する NoSQL チュートリアル。DocumentDB は、JSON 用の NoSQL データベースです。
-keywords: NoSQL チュートリアル, オンライン データベース, C# コンソール アプリケーション
+title: "NoSQL チュートリアル: DocumentDB .NET SDK | Microsoft Docs"
+description: "DocumentDB .NET SDK を使用してオンライン データベースと C# コンソール アプリケーションを作成する NoSQL チュートリアル。 DocumentDB は、JSON 用の NoSQL データベースです。"
+keywords: "NoSQL チュートリアル, オンライン データベース, C# コンソール アプリケーション"
 services: documentdb
 documentationcenter: .net
 author: AndrewHoh
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 4c084dab-52a4-4b84-9952-6d36a3bbb731
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/01/2016
 ms.author: anhoh
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 55d76dd78a6bb702d3beeadd1961635e3d5bfbbc
+
 
 ---
-# NoSQL チュートリアル: DocumentDB C# コンソール アプリケーションの作成
+# <a name="nosql-tutorial-build-a-documentdb-c-console-application"></a>NoSQL チュートリアル: DocumentDB C# コンソール アプリケーションの作成
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [Node.JS](documentdb-nodejs-get-started.md)
@@ -26,42 +30,47 @@ ms.author: anhoh
 
 Azure DocumentDB .NET SDK の NoSQL チュートリアルへようこそ。 クイック スタート プロジェクトを入手するか、このチュートリアルを完了すると、DocumentDB リソースの作成と照会を行うコンソール アプリケーションが手に入ります。
 
-* **[クイック スタート](#quickstart)**: サンプル プロジェクトをダウンロードし、接続情報を追加して、10 分未満で DocumentDB アプリを稼働させることができます。
+* **[[クイック スタート]](#quickstart)**: サンプル プロジェクトをダウンロードし、接続情報を追加して、10 分未満で DocumentDB アプリを稼働させることができます。
 * **[チュートリアル](#tutorial)**: 30 分以内でクイックスタート アプリを一から構築できます。
 
-## 前提条件
-* アクティブな Azure アカウント。お持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
+## <a name="prerequisites"></a>前提条件
+* アクティブな Azure アカウント。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
 * [Visual Studio 2013 または Visual Studio 2015](http://www.visualstudio.com/)。
 * .NET Framework 4.6
 
-## [クイック スタート]
+## <a name="quickstart"></a>[クイック スタート]
 1. [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started-quickstart/archive/master.zip) からサンプル プロジェクトの .zip をダウンロードするか、[documentdb-dotnet-getting-started-quickstart](https://github.com/Azure-Samples/documentdb-dotnet-getting-started-quickstart) リポジトリをクローンします。
 2. Azure Portal を使用して [DocumentDB アカウントを作成](documentdb-create-account.md)します。
-3. App.config ファイルで、EndpointUri と PrimaryKey の値を [Azure Portal](https://portal.azure.com/) から取得した値に置き換えます (**[DocumentDB (NoSQL)]** ブレードに移動し、**アカウント名**をクリックして、リソース メニューの **[キー]** をクリックします)。![Screen shot of the EndpointUri and PrimaryKey value to replace in App.config](./media/documentdb-get-started-quickstart/nosql-tutorial-documentdb-keys.png)
-4. プロジェクトをビルドします。コンソール ウィンドウで、新しいリソースが作成、照会、クリーンアップされます。
+3. App.config ファイルで、EndpointUri と PrimaryKey の値を [Azure ポータル](https://portal.azure.com/)から取得した値に置き換えます (**[DocumentDB (NoSQL)]** ブレードに移動し、**アカウント名**をクリックして、リソース メニューの **[キー]** をクリックします)。
+    ![Screen shot of the EndpointUri and PrimaryKey value to replace in App.config](./media/documentdb-get-started-quickstart/nosql-tutorial-documentdb-keys.png)
+4. プロジェクトをビルドします。 コンソール ウィンドウで、新しいリソースが作成、照会、クリーンアップされます。
    
     ![Screen shot of the console output](./media/documentdb-get-started-quickstart/nosql-tutorial-documentdb-console-output.png)
 
-## <a id="tutorial"></a>チュートリアル
-このチュートリアルでは、DocumentDB データベース、DocumentDB コレクション、JSON ドキュメントの作成手順について説明します。その後で、コレクションを照会し、データベースをクリーンアップ、削除してみます。このチュートリアルでは、クイック スタート プロジェクトと同じプロジェクトをビルドします。プロジェクトをご自分で段階的にビルドし、プロジェクトに追加するコードに関する説明を確認する形になります。
+## <a name="a-idtutorialatutorial"></a><a id="tutorial"></a>チュートリアル
+このチュートリアルでは、DocumentDB データベース、DocumentDB コレクション、JSON ドキュメントの作成手順について説明します。 その後で、コレクションを照会し、データベースをクリーンアップ、削除してみます。 このチュートリアルでは、クイック スタート プロジェクトと同じプロジェクトをビルドします。プロジェクトをご自分で段階的にビルドし、プロジェクトに追加するコードに関する説明を確認する形になります。
 
-## 手順 1: DocumentDB アカウントを作成する
-DocumentDB アカウントを作成しましょう。使用するアカウントが既にある場合は、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでかまいません。
+## <a name="step-1-create-a-documentdb-account"></a>手順 1: DocumentDB アカウントを作成する
+DocumentDB アカウントを作成しましょう。 使用するアカウントが既にある場合は、「 [Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでかまいません。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-## <a id="SetupVS"></a>手順 2: Visual Studio ソリューションをセットアップする
+## <a name="a-idsetupvsastep-2-setup-your-visual-studio-solution"></a><a id="SetupVS"></a>手順 2: Visual Studio ソリューションをセットアップする
 1. コンピューターで **Visual Studio 2015** を開きます。
 2. **[ファイル]** メニューで、**[新規]**、**[プロジェクト]** の順に選択します。
-3. **[新しいプロジェクト]** ダイアログで、**[テンプレート]**、**[Visual C#]**、**[コンソール アプリケーション]** の順に選択し、プロジェクトの名前を指定して、**[OK]** をクリックします。![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
+3. **[新しいプロジェクト]** ダイアログで、**[テンプレート]** / **[Visual C#]** / **[コンソール アプリケーション]** の順に選択し、プロジェクトの名前を指定して、**[OK]** をクリックします。
+   ![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
 4. **ソリューション エクスプローラー**で、Visual Studio ソリューションの下にある新しいコンソール アプリケーションを右クリックします。
-5. メニューの **[NuGet パッケージの管理...]** をクリックします。![プロジェクトの右クリック メニューのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+5. メニューの **[NuGet パッケージの管理...]** をクリックします。
+   ![プロジェクトの右クリック メニューのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 6. **[Nuget]** タブの **[参照]** をクリックし、検索ボックスに「**azure documentdb**」と入力します。
-7. 結果で **Microsoft Azure DocumentDB** を探し、**[インストール]** をクリックします。DocumentDB クライアント ライブラリのパッケージ ID は [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB) です。 ![DocumentDB クライアント SDK を見つける NuGet メニューのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+7. 結果で **Microsoft Azure DocumentDB** を探し、**[インストール]** をクリックします。
+   DocumentDB クライアント ライブラリのパッケージ ID は [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB) です。
+   ![DocumentDB クライアント SDK を見つける NuGet メニューのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
-そこで、 これでセットアップは終了です。いくつかのコードの記述を開始しましょう。このチュートリアルの完成したコード プロジェクトは [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) にあります。
+そこで、 これでセットアップは終了です。 いくつかのコードの記述を開始しましょう。 このチュートリアルの完成したコード プロジェクトは [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs)にあります。
 
-## <a id="Connect"></a>手順 3: DocumentDB アカウントに接続する
+## <a name="a-idconnectastep-3-connect-to-a-documentdb-account"></a><a id="Connect"></a>手順 3: DocumentDB アカウントに接続する
 まず、Program.cs ファイルで、C# アプリケーションの先頭に以下の参照を追加します。
 
     using System;
@@ -88,15 +97,15 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
         private const string PrimaryKey = "<your key>";
         private DocumentClient client;
 
-次に、[Azure ポータル](https://portal.azure.com)を開き、URI とプライマリ キーを取得します。DocumentDB URI とプライマリ キーは、アプリケーションが接続先を認識し、DocumentDB がアプリケーションの接続を信頼するために必要です。
+次に、 [Azure ポータル](https://portal.azure.com) を開き、URI とプライマリ キーを取得します。 DocumentDB URI とプライマリ キーは、アプリケーションが接続先を認識し、DocumentDB がアプリケーションの接続を信頼するために必要です。
 
-Azure Portal で DocumentDB アカウントに移動し、**[キー]** をクリックします。
+Azure Portal で DocumentDB アカウントに移動し、 **[キー]**をクリックします。
 
-ポータルから URI をコピーし、program.cs ファイルの `<your endpoint URI>` に貼り付けます。次に、ポータルからプライマリ キーをコピーし、`<your key>` に貼り付けます。
+ポータルから URI をコピーし、program.cs ファイルの `<your endpoint URI>` に貼り付けます。 次に、ポータルからプライマリ キーをコピーし、 `<your key>`に貼り付けます。
 
-![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure ポータルのスクリーン ショット。アクティブなハブが強調表示され、[DocumentDB アカウント] ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている DocumentDB アカウントを示します][keys]
+![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure ポータルのスクリーン ショット。 アクティブなハブが強調表示され、[DocumentDB アカウント] ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている DocumentDB アカウントを示します][keys]
 
-**DocumentClient** の新しいインスタンスを作成して、作業の開始アプリケーションを起動します。
+**DocumentClient**の新しいインスタンスを作成して、作業の開始アプリケーションを起動します。
 
 **Main** メソッドの下に、**GetStartedDemo** という新しい非同期タスクを追加します。これによって新しい **DocumentClient** はインスタンス化されます。
 
@@ -110,7 +119,7 @@ Azure Portal で DocumentDB アカウントに移動し、**[キー]** をクリ
         this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
     }
 
-次のコードを追加して、**Main** メソッドから非同期タスクを実行します。**Main** メソッドは例外をキャッチし、コンソールに書き込みます。
+次のコードを追加して、 **Main** メソッドから非同期タスクを実行します。 **Main** メソッドは例外をキャッチし、コンソールに書き込みます。
 
     static void Main(string[] args)
     {
@@ -138,9 +147,9 @@ Azure Portal で DocumentDB アカウントに移動し、**[キー]** をクリ
 
 **F5** キーを押してアプリケーションを実行します。
 
-ご利用ありがとうございます。 これで、DocumentDB アカウントに接続できました。続いては、DocumentDB リソースの使用方法について説明します。
+ご利用ありがとうございます。 これで、DocumentDB アカウントに接続できました。続いては、DocumentDB リソースの使用方法について説明します。  
 
-## 手順 4: データベースを作成する
+## <a name="step-4-create-a-database"></a>手順 4: データベースを作成する
 データベースを作成するコードを追加する前に、コンソールに書き込むためのヘルパー メソッドを追加します。
 
 **WriteToConsoleAndPromptToContinue** メソッドをコピーして、**GetStartedDemo** メソッドの下に貼り付けます。
@@ -153,7 +162,7 @@ Azure Portal で DocumentDB アカウントに移動し、**[キー]** をクリ
             Console.ReadKey();
     }
 
-DocumentDB [データベース](documentdb-resources.md#databases)は、**DocumentClient** クラスの [CreateDatabaseAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) メソッドを使用して作成できます。データベースは、コレクションに分割された JSON ドキュメント ストレージの論理上のコンテナーです。
+DocumentDB [データベースは](documentdb-resources.md#databases)、**DocumentClient** クラスの [CreateDatabaseAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) メソッドを使用して作成できます。 データベースは、コレクションに分割された JSON ドキュメント ストレージの論理上のコンテナーです。
 
 **CreateDatabaseIfNotExists** メソッドをコピーして **WriteToConsoleAndPromptToContinue** メソッドの下に貼り付けます。
 
@@ -181,7 +190,7 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
             }
     }
 
-次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。クライアントを作成する処理のすぐ下に追加してください。これで *FamilyDB* というデータベースが作成されます。
+次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。クライアントを作成する処理のすぐ下に追加してください。 これで *FamilyDB* というデータベースが作成されます。
 
     private async Task GetStartedDemo()
     {
@@ -192,15 +201,15 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 
 **F5** キーを押してアプリケーションを実行します。
 
-おめでとうございます。 これで、DocumentDB データベースが作成されました。
+おめでとうございます。 これで、DocumentDB データベースが作成されました。  
 
-## <a id="CreateColl"></a>手順 5: コレクションを作成する
+## <a name="a-idcreatecollastep-5-create-a-collection"></a><a id="CreateColl"></a>手順 5: コレクションを作成する
 > [!WARNING]
-> **CreateDocumentCollectionAsync** は、予約済みのスループットで新しいコレクションを作成します。これによって価格に影響があります。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
+> **CreateDocumentCollectionAsync** は、予約済みのスループットで新しいコレクションを作成します。これによって価格に影響があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
 > 
 > 
 
-[コレクション](documentdb-resources.md#collections)は、**DocumentClient** クラスの [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) メソッドを使用して作成できます。コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。
+[コレクション](documentdb-resources.md#collections)は、**DocumentClient** クラスの [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) メソッドを使用して作成できます。 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。
 
 **CreateDocumentCollectionIfNotExists** メソッドをコピーし、**CreateDatabaseIfNotExists** メソッドの下に貼り付けます。
 
@@ -238,7 +247,7 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
         }
     }
 
-次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。データベースを作成する処理のすぐ下に追加してください。これで、*FamilyCollection\_va* というドキュメント コレクションが作成されます。
+次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。データベースを作成する処理のすぐ下に追加してください。 これで、*FamilyCollection_va* というドキュメント コレクションが作成されます。
 
         this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 
@@ -249,12 +258,12 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 
 **F5** キーを押してアプリケーションを実行します。
 
-ご利用ありがとうございます。 これで、DocumentDB ドキュメント コレクションが作成されました。
+おめでとうございます。 これで、DocumentDB ドキュメント コレクションが作成されました。  
 
-## <a id="CreateDoc"></a>手順 6: JSON ドキュメントを作成する
-[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) メソッドを使用して作成できます。ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。ここで 1 つ以上のドキュメントを挿入できます。データベースに保存するデータが既にある場合には、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用できます。
+## <a name="a-idcreatedocastep-6-create-json-documents"></a><a id="CreateDoc"></a>手順 6: JSON ドキュメントを作成する
+[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、DocumentDB の [データ移行ツール](documentdb-import-data.md)を使用できます。
 
-まず、この例の DocumentDB 内に格納するオブジェクトの **Family** クラスを作成する必要があります。さらに、**Family** 内で使用するサブクラスとして、**Parent**、**Child**、**Pet**、**Address** を作成します。ドキュメントには、JSON で **id** としてシリアル化される **Id** プロパティが必要であることに注意してください。**GetStartedDemo** の後に次の内部サブクラスを追加することで、これらのクラスを作成します。
+まず、この例の DocumentDB 内に格納するオブジェクトの **Family** クラスを作成する必要があります。 さらに、**Family** 内で使用するサブクラスとして、**Parent**、**Child**、**Pet**、**Address** を作成します。 ドキュメントには、JSON で **id** としてシリアル化される **Id** プロパティが必要であることに注意してください。 **GetStartedDemo** の後に次の内部サブクラスを追加することで、これらのクラスを作成します。
 
 **Family**、**Parent**、**Child**、**Pet**、**Address** の各クラスをコピーし、**WriteToConsoleAndPromptToContinue** メソッドの下に貼り付けます。
 
@@ -408,12 +417,12 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 
 **F5** キーを押してアプリケーションを実行します。
 
-ご利用ありがとうございます。 これで、2 つの DocumentDB ドキュメントが作成されました。
+おめでとうございます。 これで、2 つの DocumentDB ドキュメントが作成されました。  
 
 ![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるアカウント、オンライン データベース、コレクション、およびドキュメントの間の階層関係を示す図](./media/documentdb-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>手順 7: DocumentDB リソースをクエリする
-DocumentDB では、各コレクションに格納された JSON ドキュメントに対する豊富な[クエリ](documentdb-sql-query.md)をサポートしています。次のサンプル コードは、前の手順で挿入したドキュメントに対して実行できる、さまざまなクエリを示しています。DocumentDB SQL 構文と LINQ の両方が使用されています。
+## <a name="a-idqueryastep-7-query-documentdb-resources"></a><a id="Query"></a>手順 7: DocumentDB リソースをクエリする
+DocumentDB では、各コレクションに格納された JSON ドキュメントに対するリッチ [クエリ](documentdb-sql-query.md)をサポートしています。  次のサンプル コードは、前の手順で挿入したドキュメントに対して実行できる、さまざまなクエリを示しています。DocumentDB SQL 構文と LINQ の両方が使用されています。
 
 **ExecuteSimpleQuery** メソッドをコピーし、**CreateFamilyDocumentIfNotExists** メソッドの下に貼り付けます。
 
@@ -460,16 +469,16 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
 
 **F5** キーを押してアプリケーションを実行します。
 
-ご利用ありがとうございます。 これで、DocumentDB コレクションに対するクエリが実行されました。
+おめでとうございます。 これで、DocumentDB コレクションに対するクエリが実行されました。
 
 次の図では、作成したコレクションに対して DocumentDB SQL クエリ構文がどのように呼び出されるか、および同じロジックが LINQ クエリにも適用されることを示します。
 
 ![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるクエリの範囲と意味を示す図](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
 
-DocumentDB クエリのスコープは既に 1 つのコレクションに設定されているので、クエリでは [FROM](documentdb-sql-query.md#from-clause) キーワードを省略できます。したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。DocumentDB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
+DocumentDB クエリのスコープは既に 1 つのコレクションに設定されているので、クエリでは [FROM](documentdb-sql-query.md#from-clause) キーワードを省略できます。 したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。 DocumentDB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
 
-## <a id="ReplaceDocument"></a>手順 8: JSON ドキュメントを置換する
-DocumentDB は、JSON ドキュメントの置換をサポートします。
+## <a name="a-idreplacedocumentastep-8-replace-json-document"></a><a id="ReplaceDocument"></a>手順 8: JSON ドキュメントを置換する
+DocumentDB は、JSON ドキュメントの置換をサポートします。  
 
 **ReplaceFamilyDocument** メソッドをコピーし、**ExecuteSimpleQuery** メソッドの下に貼り付けます。
 
@@ -487,7 +496,7 @@ DocumentDB は、JSON ドキュメントの置換をサポートします。
         }
     }
 
-次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。クエリを実行する処理のすぐ下に追加してください。ドキュメントを置換した後に、同じクエリが実行され、変更されたドキュメントが表示されます。
+次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。クエリを実行する処理のすぐ下に追加してください。 ドキュメントを置換した後に、同じクエリが実行され、変更されたドキュメントが表示されます。
 
     await this.CreateFamilyDocumentIfNotExists("FamilyDB_va", "FamilyCollection_va", wakefieldFamily);
 
@@ -503,10 +512,10 @@ DocumentDB は、JSON ドキュメントの置換をサポートします。
 
 **F5** キーを押してアプリケーションを実行します。
 
-ご利用ありがとうございます。 これで、DocumentDB ドキュメントが置換されました。
+おめでとうございます。 これで、DocumentDB ドキュメントが置換されました。
 
-## <a id="DeleteDocument"></a>手順 9: JSON ドキュメントを削除する
-DocumentDB は、JSON ドキュメントの削除をサポートしています。
+## <a name="a-iddeletedocumentastep-9-delete-json-document"></a><a id="DeleteDocument"></a>手順 9: JSON ドキュメントを削除する
+DocumentDB は、JSON ドキュメントの削除をサポートしています。  
 
 **DeleteFamilyDocument** メソッドをコピーし、**ReplaceFamilyDocument** メソッドの下に貼り付けます。
 
@@ -535,9 +544,9 @@ DocumentDB は、JSON ドキュメントの削除をサポートしています�
 
 **F5** キーを押してアプリケーションを実行します。
 
-ご利用ありがとうございます。 これで、DocumentDB ドキュメントが削除されました。
+おめでとうございます。 これで、DocumentDB ドキュメントが削除されました。
 
-## <a id="DeleteDatabase"></a>手順 10: データベースを削除する
+## <a name="a-iddeletedatabaseastep-10-delete-the-database"></a><a id="DeleteDatabase"></a>手順 10: データベースを削除する
 作成したデータベースを削除すると、データベースとすべての子リソース (コレクション、ドキュメントなど) が削除されます。
 
 データベース全体とすべての子リソースを削除するために、次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。ドキュメントの削除処理のすぐ下に追加してください。
@@ -552,12 +561,12 @@ DocumentDB は、JSON ドキュメントの削除をサポートしています�
 
 **F5** キーを押してアプリケーションを実行します。
 
-ご利用ありがとうございます。 これで、DocumentDB データベースが作成されました。
+おめでとうございます。 これで、DocumentDB データベースが作成されました。
 
-## <a id="Run"></a>手順 11: C# コンソール アプリケーションの全体的な実行の流れ
+## <a name="a-idrunastep-11-run-your-c-console-application-all-together"></a><a id="Run"></a>手順 11: C# コンソール アプリケーションの全体的な実行の流れ
 Visual Studio で F5 キーを押して、デバッグ モードでアプリケーションをビルドします。
 
-開始したアプリケーションの出力が表示されます。出力では追加したクエリの結果が表示されます。次の例のようなものになるはずです。
+開始したアプリケーションの出力が表示されます。 出力では追加したクエリの結果が表示されます。次の例のようなものになるはずです。
 
     Created FamilyDB_va
     Press any key to continue ...
@@ -582,15 +591,20 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 
 ご利用ありがとうございます。 この NoSQL チュートリアルを完了し、実用的な C# コンソール アプリケーションを入手しました。
 
-## 次のステップ
-* さらに複雑な ASP.NET MVC NoSQL チュートリアルが必要ですか。 「[DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築](documentdb-dotnet-application.md)」を参照してください。
-* DocumentDB のスケールとパフォーマンスのテストを行う場合は、 「[Performance and Scale Testing with Azure DocumentDB (Azure DocumentDB のパフォーマンスとスケールのテスト)](documentdb-performance-testing.md)」を参照してください。
+## <a name="next-steps"></a>次のステップ
+* さらに複雑な ASP.NET MVC NoSQL チュートリアルが必要ですか。 「 [DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築](documentdb-dotnet-application.md)」を参照してください。
+* DocumentDB のスケールとパフォーマンスのテストを行う場合は、 「[Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」を参照してください。
 * [DocumentDB アカウントを監視する](documentdb-monitor-accounts.md)方法について学習します。
 * [クエリのプレイ グラウンド](https://www.documentdb.com/sql/demo)でサンプル データセットに対してクエリを実行します。
-* プログラミング モデルの詳細については、[DocumentDB のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/documentdb/)の「開発」セクションを参照してください。
+* プログラミング モデルの詳細については、 [DocumentDB のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/documentdb/)の「開発」セクションを参照してください。
 
 [documentdb-create-account]: documentdb-create-account.md
 [documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started-quickstart/nosql-tutorial-keys.png
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

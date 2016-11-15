@@ -2,11 +2,11 @@
 title: Before you deploy Azure Stack POC | Microsoft Docs
 description: View the environment and hardware requirements for Azure Stack POC (service administrator).
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: ErikjeMS
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 32a21d9b-ee42-417d-8e54-98a7f90f7311
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/12/2016
 ms.author: erikje
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 18125dd8c522d72a4d3626542c45ea9aba6ceec1
+
 
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack deployment prerequisites
@@ -95,7 +99,7 @@ Do not connect the POC machine to the following subnets:
 
 These subnets are reserved for the internal networks within the Microsoft Azure Stack POC environment.
 
-### <a name="ipv4/ipv6"></a>IPv4/IPv6
+### <a name="ipv4ipv6"></a>IPv4/IPv6
 Only IPv4 is supported. You cannot create IPv6 networks.
 
 ### <a name="dhcp"></a>DHCP
@@ -112,6 +116,9 @@ To support telemetry data flow, port 443 (HTTPS) must be open in your network. T
 
 [Deploy Azure Stack POC](azure-stack-run-powershell-script.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 
