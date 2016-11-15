@@ -29,7 +29,7 @@
     "master-sync-work"
   ],
   "skip_source_output_uploading": false,
-  "need_preview_pull_request": true,
+  "need_preview_pull_request": false,
   "enable_incremental_build": true,
   "dependent_repositories": [
     {
