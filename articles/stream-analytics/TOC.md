@@ -1,6 +1,6 @@
 # Overview
 ## [Stream Analytics とは](stream-analytics-introduction.md)
-## [Stream Analytics ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
+## [Storm と Stream Analytics を比較する](stream-analytics-comparison-storm.md)
 
 # 作業開始
 ## [IoT ストリーミング データを処理する](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
@@ -8,12 +8,12 @@
 
 # 方法
 
-## ストリーミング ソリューション
-### [IoT ソリューションを構築する](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
-### [ソーシャル メディア分析](stream-analytics-twitter-sentiment-analysis-trends.md)
-### [Power BI を使用してセンサー データを分析する]https://gallery.cortanaanalytics.com/Tutorial/Sensor-Data-Analytics-with-ASA-and-Power-BI-2?fromlegacydomain=1)
+## ストリーミング ソリューションを構築する
+### [モノのインターネット](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
+### [ソーシャル メディア](stream-analytics-twitter-sentiment-analysis-trends.md)
+### [Power BI を使用したセンサー データ](https://gallery.cortanaanalytics.com/Tutorial/Sensor-Data-Analytics-with-ASA-and-Power-BI-2?fromlegacydomain=1)
 ### [Machine Learning を使用したリアルタイムのスコアリング](stream-analytics-machine-learning-integration-tutorial.md)
-### [参照アーキテクチャ: リアルタイム イベント処理](stream-analytics-real-time-event-processing-reference-architecture.md)
+### [リアルタイム イベント処理](stream-analytics-real-time-event-processing-reference-architecture.md)
 
 ## 開発
 ### [一般的なクエリのパターン](stream-analytics-stream-analytics-query-patterns.md)
@@ -40,17 +40,21 @@
 ### [ワンクリック PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # リファレンス
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [.NET](/dotnet/api/)
 ## [クエリ言語](https://msdn.microsoft.com/library/azure/dn834998)
-## [REST API](https://msdn.microsoft.com/library/azure/dn835031)
-## [PowerShell](https://msdn.microsoft.com/library/azure/mt270341)
-## [.NET SDK](https://msdn.microsoft.com/library/azure/mt416896)
-## [Storm と Stream Analytics を比較する](stream-analytics-comparison-storm.md)
+## [REST ()](/rest/api/streamanalytics/)
 ## [リリース ノート](stream-analytics-release-notes.md)
+
 # リソース
-## [MSDN ブログ](http://blogs.msdn.com/b/streamanalytics/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
+## [料金](https://azure.microsoft.com/pricing/details/stream-analytics/)
+## [ブログ](http://blogs.msdn.com/b/streamanalytics/)
+## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [フィードバック フォーラム](http://feedback.azure.com/forums/270577-azure-stream-analytics)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=stream-analytics)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 
 
 <!--HONumber=Nov16_HO2-->

@@ -1,61 +1,66 @@
 # Overview
-## [What is Site Recovery?](site-recovery-overview.md)
-## [How does Site Recovery work?](site-recovery-components.md)
-## [What workloads can you protect?](site-recovery-workload.md)
-## [What operating systems are supported?](site-recovery-support-matrix.md)
+## [Site Recovery とは](site-recovery-overview.md)
+## [Site Recovery のしくみ](site-recovery-components.md)
+## [保護できるワークロード](site-recovery-workload.md)
+## [サポート対象のオペレーティング システム](site-recovery-support-matrix.md)
 ## [FAQ](site-recovery-faq.md)
-## [Watch an introduction](https://www.youtube.com/watch?v=eOOwMQPBKfM)
+## [概要を見る](https://www.youtube.com/watch?v=eOOwMQPBKfM)
 
-# Get Started
-## [Prepare for deployment](site-recovery-best-practices.md)
+# 作業の開始
+## [デプロイメントの準備をする](site-recovery-best-practices.md)
 
-# How To
-## Plan
-### [Capacity planning](site-recovery-capacity-planner.md)
-### [Performance and scale test results](site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md)
-### [Network infrastructure considerations](site-recovery-network-design.md)
-### [Network mapping (VMM)](site-recovery-network-mapping.md)
-### [Storage mapping between on-premises sites](site-recovery-storage-mapping.md)
-## Replicate
-### [VMWare VMs and servers to Azure](site-recovery-vmware-to-azure.md)
-### [VMware VMs and servers to secondary site](site-recovery-vmware-to-vmware.md)
-### [Hyper-V VMs to Azure (with VMM)](site-recovery-vmm-to-azure.md)
-### [Hyper-V VMs to Azure (no VMM)](site-recovery-hyper-v-site-to-azure.md)
-### [Hyper-V VMs to secondary site](site-recovery-vmm-to-vmm.md)
-### [Hyper-V VMs to secondary site with SAN](site-recovery-vmm-san.md)
-### [Hyper-V VMs with single VMM server](site-recovery-single-vmm.md)
-## Migrate
-### [Migrate between Azure regions](site-recovery-migrate-azure-to-azure.md)
-### [AWS Windows instances to Azure](site-recovery-migrate-aws-to-azure.md)
-## Workloads
-### [Active Directory and DNS](site-recovery-active-directory.md)
+# 方法
+## プラン
+### [容量計画](site-recovery-capacity-planner.md)
+### [パフォーマンスとスケールのテスト結果](site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md)
+### [ネットワーク インフラストラクチャの考慮事項](site-recovery-network-design.md)
+### [ネットワーク マッピング (VMM)](site-recovery-network-mapping.md)
+### [オンプレミス サイト間のストレージ マッピング](site-recovery-storage-mapping.md)
+## レプリケート
+### [VMware VM とサーバーを Azure に](site-recovery-vmware-to-azure.md)
+### [VMware VM とサーバーをセカンダリ サイトに](site-recovery-vmware-to-vmware.md)
+### [Hyper-V VM を Azure に (VMM を使用)](site-recovery-vmm-to-azure.md)
+### [Hyper-V VM を Azure に (VMM なし)](site-recovery-hyper-v-site-to-azure.md)
+### [Hyper-V VM をセカンダリ サイトに](site-recovery-vmm-to-vmm.md)
+### [Hyper-V VM をセカンダリ サイトに (SAN を使用)](site-recovery-vmm-san.md)
+### [Hyper-V VM (単一 VMM サーバーを使用)](site-recovery-single-vmm.md)
+## 移行
+### [Azure リージョンの間で移行](site-recovery-migrate-azure-to-azure.md)
+### [AWS Windows インスタンスを Azure に](site-recovery-migrate-aws-to-azure.md)
+## ワークロード
+### [Active Directory と DNS](site-recovery-active-directory.md)
 ### [SQL Server](site-recovery-sql.md)
 ### [SharePoint](site-recovery-workload.md#protect-sharepoint)
 ### [Dynamics AX](site-recovery-workload.md#protect-dynamics-ax)
 ### [RDS](site-recovery-workload.md#protect-rds)
 ### [Exchange](site-recovery-workload.md#protect-exchange)
 ### [SAP](site-recovery-workload.md#protect-sap)
-### [Other workloads](site-recovery-workload.md#workload-summary)
-## Automate Replication
-### [Hyper-V VMs (with VMM)](site-recovery-deploy-with-powershell.md)
-### [Hyper-V VMs (no VMM)](site-recovery-deploy-with-powershell-resource-manager.md)
-### [Add automation to recovery plans](site-recovery-runbook-automation.md)
-### [Automate Mobility service deployment](site-recovery-automate-mobility-service-install.md)
-## Manage
-### [Remove servers and disable protection](site-recovery-manage-registration-and-protection.md)
-### [Set up recovery plans](site-recovery-create-recovery-plans.md)
-### [Fail over in Site Recovery](site-recovery-failover.md)
-### [Fail back VMware VMs and physical servers](site-recovery-failback-azure-to-vmware.md)
-## [Monitor and troubleshoot](site-recovery-monitoring-and-troubleshooting.md)
+### [その他のワークロード](site-recovery-workload.md#workload-summary)
+## レプリケーションを自動化する
+### [Hyper-V VM (VMM あり)](site-recovery-deploy-with-powershell.md)
+### [Hyper-V VM (VMM なし)](site-recovery-deploy-with-powershell-resource-manager.md)
+### [自動化を復旧計画に追加する](site-recovery-runbook-automation.md)
+### [モビリティ サービスのデプロイを自動化する](site-recovery-automate-mobility-service-install.md)
+## [管理]
+### [サーバーの削除と保護の無効化](site-recovery-manage-registration-and-protection.md)
+### [復旧計画を設定する](site-recovery-create-recovery-plans.md)
+### [Site Recovery でフェールオーバーする](site-recovery-failover.md)
+### [VMware VM と物理サーバーをフェールバックする](site-recovery-failback-azure-to-vmware.md)
+## [監視とトラブルシューティング](site-recovery-monitoring-and-troubleshooting.md)
 
-# Related
+# リファレンス
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [PowerShell クラシック](/powershell/servicemanagement/)
+
+# 関連項目
 ## [Azure Automation](/azure/automation/)
 
-# Resources
-## [Learning path](https://azure.microsoft.com/documentation/learning-paths/site-recovery/)
-## [Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr)
-## [Blog](http://azure.microsoft.com/blog/tag/azure-site-recovery/)
-## [Pricing](https://azure.microsoft.com/pricing/details/site-recovery/)
+# リソース
+## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/site-recovery/)
+## [フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr)
+## [ブログ](http://azure.microsoft.com/blog/tag/azure-site-recovery/)
+## [料金](https://azure.microsoft.com/pricing/details/site-recovery/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
 <!--HONumber=Nov16_HO2-->

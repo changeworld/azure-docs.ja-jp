@@ -14,18 +14,22 @@
 
 ## 開発
 ### [REST API を使用した複雑なスケジュール](scheduler-advanced-complexity.md)
+### [概念と用語](scheduler-concepts-terms.md)
 
 ## セキュリティ保護
 ### [送信認証](scheduler-outbound-authentication.md)
 
 # リファレンス
-## [概念と用語](scheduler-concepts-terms.md)
-## [REST API](https://msdn.microsoft.com/library/azure/mt629143)
-## [PowerShell コマンドレット](scheduler-powershell-reference.md)
+## [Azure Scheduler PowerShell コマンドレット](https://msdn.microsoft.com/en-us/library/mt490138(v=azure.200).aspx)
+## [.NET](/dotnet/api)
+## [REST ()](/rest/api/scheduler/)
 
 # リソース
-## [Scheduler ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
+## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=scheduler)
+## [料金](https://azure.microsoft.com/pricing/details/scheduler/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
 
 
 <!--HONumber=Nov16_HO2-->

@@ -1,10 +1,14 @@
 ---
 layout: LandingPage
 toc_rel: breadcrumb.json
----
-#Virtual Machines Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 4d6fd9344eaee31de4ee1e614ae558ce159c9245
+ms.openlocfilehash: ca5d39641a251dcbc650907d08ce11c6c7124f66
 
-An Azure virtual machine gives you the flexibility of virtualization without having to buy and maintain the physical hardware that runs the virtual machine. However, you still need to maintain the virtual machine&mdash;configuring, patching, and maintaining the software that runs on the virtual machine.
+---
+#<a name="virtual-machines-documentation"></a>Virtual Machines のドキュメント
+
+Azure Virtual Machine は、仮想マシンを実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 ただし仮想マシンのメンテナンス &mdash; つまり仮想マシン上で動作するソフトウェアの構成、修正プログラムの適用、保守は必要です。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -18,7 +22,7 @@ An Azure virtual machine gives you the flexibility of virtualization without hav
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Getting started with Windows Virtual Machines</h3>
+                        <h3>Windows Virtual Machines の概要</h3>
                     </div>
                 </div>
             </div>
@@ -36,7 +40,7 @@ An Azure virtual machine gives you the flexibility of virtualization without hav
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Getting started with Linux Virtual Machines</h3>
+                        <h3>Linux Virtual Machines の概要</h3>
                     </div>
                 </div>
             </div>
@@ -47,25 +51,30 @@ An Azure virtual machine gives you the flexibility of virtualization without hav
 
 ---
 
-##Reference
+##<a name="reference"></a>リファレンス
 
-###.NET 
-[Virtual Machines Managed Reference API](/dotnet/api/) 
+###<a name="net"></a>.NET 
+[Virtual Machines に関する管理リファレンス API](/dotnet/api/) 
 
-###REST 
-[Virtual Machine REST API Reference](/rest/api/) 
+###<a name="rest"></a>REST () 
+[Virtual Machine REST API リファレンス](/rest/api/) 
 
-###Azure CLI 
-[Azure CLI for Virtual Machines](/cli/azure/)
+###<a name="azure-cli"></a>Azure CLI 
+[Virtual Machines 向け Azure CLI](/cli/azure/)
 
-###Java 
-[Virtual Machines PowerShell Cmdlet](/java/api/)
+###<a name="java"></a>Java 
+[Virtual Machines の PowerShell コマンドレット](/java/api/)
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Virtual Machine Documentation
-        </div>
+仮想マシンのドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

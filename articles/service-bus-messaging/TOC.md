@@ -1,70 +1,72 @@
 # Overview
-## [What is Service Bus Messaging?](service-bus-queues-topics-subscriptions.md)
-## [Compare Azure Queues and Service Bus queues](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+## [Service Bus メッセージングとは](service-bus-queues-topics-subscriptions.md)
+## [Azure キューと Service Bus キューを比較する](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 ## [FAQ](service-bus-faq.md)
 
-# Get Started
-## [Create a namespace](service-bus-create-namespace-portal.md)
-## Use queues
+# 作業の開始
+## [名前空間を作成する](service-bus-create-namespace-portal.md)
+## キューの使用
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)
 ### [Java](service-bus-java-how-to-use-queues.md)
-### [Node.js](service-bus-nodejs-how-to-use-queues.md)
+### [Node.JS](service-bus-nodejs-how-to-use-queues.md)
 ### [PHP](service-bus-php-how-to-use-queues.md)
 ### [Python](service-bus-python-how-to-use-queues.md)
 ### [Ruby](service-bus-ruby-how-to-use-queues.md)
-### [REST](service-bus-brokered-tutorial-rest.md)
-## Use topics and subscriptions
+### [REST ()](service-bus-brokered-tutorial-rest.md)
+## トピックとサブスクリプションの使用
 ### [.NET](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 ### [Java](service-bus-java-how-to-use-topics-subscriptions.md)
-### [Node.js](service-bus-nodejs-how-to-use-topics-subscriptions.md)
+### [Node.JS](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 ### [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
 ### [Python](service-bus-python-how-to-use-topics-subscriptions.md)
 ### [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)
-## [Generate Shared Access Signatures](service-bus-sas-overview.md)
+## [Shared Access Signature の生成](service-bus-sas-overview.md)
 
-# How To
-## Plan and design
-### [Optimize performance](service-bus-performance-improvements.md)
-### [Asynchronous messaging and high availability](service-bus-async-messaging.md)
-### [Handling outages and disasters](service-bus-outages-disasters.md)
+# 方法
+## 計画と設計
+### [パフォーマンスを最適化する](service-bus-performance-improvements.md)
+### [非同期メッセージングと高可用性](service-bus-async-messaging.md)
+### [故障と障害の扱い](service-bus-outages-disasters.md)
 
-## Develop
-### [Apps that use queues](service-bus-create-queues.md)
-### [Apps that use topics/subscriptions](service-bus-create-topics-subscriptions.md)
-### [Authentication and authorization](service-bus-authentication-and-authorization.md)
-### [Premium messaging](service-bus-premium-messaging.md)
-### [Partitioned queues and topics](service-bus-partitioning.md)
-### [Dead-letter queues](service-bus-dead-letter-queues.md)
-### [Transaction processing](service-bus-transactions.md)
-### [AMQP developer's guide]
+## 開発
+### [キューを使用するアプリ](service-bus-create-queues.md)
+### [トピック/サブスクリプションを使用するアプリ](service-bus-create-topics-subscriptions.md)
+### [認証と権限承認](service-bus-authentication-and-authorization.md)
+### [Premium メッセージング](service-bus-premium-messaging.md)
+### [パーティション分割されたキューとトピック](service-bus-partitioning.md)
+### [配達不能キュー](service-bus-dead-letter-queues.md)
+### [トランザクション処理](service-bus-transactions.md)
+### [AMQP 開発者ガイド]
 #### [.NET](service-bus-amqp-dotnet.md)
 #### [Java](service-bus-amqp-java.md)
 #### [PHP](service-bus-amqp-php.md)
 #### [Python](service-bus-amqp-python.md)
 #### [Apache](service-bus-amqp-apache.md)
-### [Use AMQP with the .NET API](service-bus-dotnet-advanced-message-queuing.md)
-### [Use AMQP with partitioned queues and topics](service-bus-partitioned-queues-and-topics-amqp-overview.md)
-### [Paired namespaces](service-bus-paired-namespaces.md)
-### [Chain entities with auto-forwarding](service-bus-auto-forwarding.md)
-## Manage
-### [Using ARM templates](service-bus-resource-manager-overview.md)
-### [Using PowerShell to provision entities](service-bus-powershell-how-to-provision.md)
+### [.NET API で AMQP を使用する](service-bus-dotnet-advanced-message-queuing.md)
+### [パーティション分割されたキューとトピックで AMQP を使用する](service-bus-partitioned-queues-and-topics-amqp-overview.md)
+### [ペアの名前空間](service-bus-paired-namespaces.md)
+### [自動転送によるエンティティのチェーン](service-bus-auto-forwarding.md)
+## [管理]
+### [ARM テンプレートの使用](service-bus-resource-manager-overview.md)
+### [PowerShell を使用したエンティティのプロビジョニング](service-bus-powershell-how-to-provision.md)
 
-# Reference
-## [Pricing details](service-bus-pricing-billing.md)
-## [Samples](service-bus-samples.md)
-## [.NET API reference](https://msdn.microsoft.com/library/azure/jj933424)
-## [REST API reference](https://msdn.microsoft.com/library/azure/hh780717)
-## [Exceptions](service-bus-messaging-exceptions.md)
-## [Quotas](service-bus-quotas.md)
+# リファレンス
+## [価格の詳細](service-bus-pricing-billing.md)
+## [サンプル](service-bus-samples.md)
+## [例外](service-bus-messaging-exceptions.md)
+## [クォータ](service-bus-quotas.md)
+## [.NET](/dotnet/api/)
+## [REST ()](/rest/api/servicebus/)
 
-# Resources
-## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
+# リソース
+## [ブログ](https://blogs.msdn.microsoft.com/servicebus/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
-## [MSDN forums](https://social.msdn.microsoft.com/forums/home?forum=servbus)
-## [Pricing](https://azure.microsoft.com/pricing/details/service-bus/)
-## [Learning path](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
-## [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/home?forum=servbus)
+## [料金](https://azure.microsoft.com/pricing/details/service-bus/)
+## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
+## [Service Bus エクスプローラー](https://github.com/paolosalvatori/ServiceBusExplorer)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-bus)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
 <!--HONumber=Nov16_HO2-->

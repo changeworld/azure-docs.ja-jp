@@ -1,10 +1,14 @@
 ---
 layout: LandingPage
+translationtype: Human Translation
+ms.sourcegitcommit: 844e18a1ab702773799cf9045844d982d9ee2581
+ms.openlocfilehash: 0e1d5e7e38aa23c0888e166d584b17fdcbdce40f
+
 ---
 
-# Azure Active Directory Documentation
+# <a name="azure-active-directory-documentation"></a>Azure Active Directory のドキュメント
 
-Azure Active Directory (Azure AD) is Microsoft’s multi-tenant cloud based directory and identity management service.  Azure AD offers identity and access capabilities for applications running in Azure as well as on Premises.  
+Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。  Azure AD では、Azure 内およびオンプレミスで実行されているアプリケーションを識別し、アクセスすることができます。  
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -18,7 +22,7 @@ Azure Active Directory (Azure AD) is Microsoft’s multi-tenant cloud based dire
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Active Directory</h3>
+                        <h3>Azure Active Directory について</h3>
                     </div>
                 </div>
             </div>
@@ -36,7 +40,7 @@ Azure Active Directory (Azure AD) is Microsoft’s multi-tenant cloud based dire
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Active Directory Video Library</h3>
+                        <h3>Azure Active Directory のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -54,7 +58,7 @@ Azure Active Directory (Azure AD) is Microsoft’s multi-tenant cloud based dire
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Active Directory</h3>
+                        <h3>Azure Active Directory の概要</h3>
                     </div>
                 </div>
             </div>
@@ -72,7 +76,7 @@ Azure Active Directory (Azure AD) is Microsoft’s multi-tenant cloud based dire
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Active Directory Premium</h3>
+                        <h3>Azure Active Directory Premium の概要</h3>
                     </div>
                 </div>
             </div>
@@ -83,19 +87,19 @@ Azure Active Directory (Azure AD) is Microsoft’s multi-tenant cloud based dire
 
 ---
 
-## Reference
+## <a name="reference"></a>リファレンス
 
-###PowerShell
-[Azure PowerShell Reference](/powershell/)
+###<a name="powershell"></a>PowerShell
+[Azure PowerShell リファレンス](/powershell/)
 
-###Azure CLI
-[Azure Active Directory Using Azure CLI](/cli/azure/ad)
+###<a name="azure-cli"></a>Azure CLI
+[Azure CLI を使用した Azure Active Directory](/cli/azure/ad)
 
-###.NET
-[Azure Active Directory .NET Reference](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
+###<a name="net"></a>.NET
+[Azure Active Directory .NET リファレンス](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
 
-###Java
-[Azure Java API Reference](/java/api/)
+###<a name="java"></a>Java
+[Azure Java API リファレンス](/java/api/)
 
 
 ---
@@ -104,7 +108,12 @@ Azure Active Directory (Azure AD) is Microsoft’s multi-tenant cloud based dire
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/active-directory.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Active Directory Documentation
-        </div>
+Active Directory のドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,13 +1,13 @@
 # Overview
 ## [Stretch Database とは](sql-server-stretch-database-overview.md)
-## [価格体系について](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)
+## [制限とブロックの問題](sql-server-stretch-database-limitations.md)
+
 # 作業の開始
 ## [データベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)
-## [制限とブロックの問題](sql-server-stretch-database-limitations.md)
+## [ウィザードを実行する](sql-server-stretch-database-wizard.md)
 
 # 方法
 ## 有効化
-### [ウィザードを実行する](sql-server-stretch-database-wizard.md)
 ### [データベース有効にする](sql-server-stretch-database-enable-database.md)
 ### [テーブルを有効にする](sql-server-stretch-database-enable-table.md)
 ### [移行する行を選択する](sql-server-stretch-database-predicate-function.md)
@@ -17,6 +17,12 @@
 ### [管理とトラブルシューティング](sql-server-stretch-database-manage.md)
 ### [バックアップと復元](sql-server-stretch-database-backup.md)
 ### [Strech Database を無効にする](sql-server-stretch-database-disable.md)
+
+# リソース
+## [料金](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)
+## [ブログ](https://blogs.technet.microsoft.com/dataplatforminsider/tag/stretch-database/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=sql-server-stretch-database)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-server-stretch-database)
 
 
 <!--HONumber=Nov16_HO2-->

@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Backup Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 50a8865afe60b47b094e3fa64ab622c229a8a4a4
+ms.openlocfilehash: fc7e57b12158c34b2ee0de334f1b08469765f39d
 
-Azure Backup is cloud service you can use to back up (or protect) and restore your data in the Microsoft cloud.  Azure Backup replaces your existing on-premises or off-site backup solution with a cloud-based solution that is reliable, secure, and cost-competitive.  
+---
+#<a name="backup-documentation"></a>Backup のドキュメント
+
+Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できるクラウド サービスです。  Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。  
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Azure Backup is cloud service you can use to back up (or protect) and restore yo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Backup</h3>
+                        <h3>Azure Backup について</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure Backup is cloud service you can use to back up (or protect) and restore yo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Backup Video Library</h3>
+                        <h3>Azure Backup のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Backup is cloud service you can use to back up (or protect) and restore yo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started backing up files and folders with Azure Backup</h3>
+                        <h3>Azure Backup を使用したファイルとフォルダーのバックアップを開始する</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure Backup is cloud service you can use to back up (or protect) and restore yo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started backing up Azure virtual machines with Azure Backup</h3>
+                        <h3>Azure Backup を使用した Azure 仮想マシンのバックアップを開始する</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Azure Backup is cloud service you can use to back up (or protect) and restore yo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started protecting Azure virtual machines with Azure Backup</h3>
+                        <h3>Azure Backup を使用した Azure 仮想マシンの保護を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -100,19 +104,24 @@ Azure Backup is cloud service you can use to back up (or protect) and restore yo
 
 ---
 
-##Reference
+##<a name="reference"></a>リファレンス
 
-###.NET
-[.NET Managed Reference](/dotnet/api)
+###<a name="net"></a>.NET
+[.NET に関する管理リファレンス](/dotnet/api)
 
-###REST
-[Backup REST API Reference](/rest/api/recoveryservices)
+###<a name="rest"></a>REST ()
+[Backup REST API リファレンス](/rest/api/recoveryservices)
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/backup.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Azure Backup Documentation
-        </div>
+Azure Backup のドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

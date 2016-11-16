@@ -1,42 +1,36 @@
 # Overview
-## [Hybrid Connections overview](integration-hybrid-connection-overview.md)
+## [エディション](biztalk-editions-feature-chart.md)
+## [ハイブリッド接続について](integration-hybrid-connection-overview.md)
 
-# Get Started
-## [Create BizTalk Services using the Azure portal](biztalk-provision-services.md)
-# How To
+# 作業の開始
+## [BizTalk Services の作成](biztalk-provision-services.md)
 
-## Plan and design
-### [Editions chart](biztalk-editions-feature-chart.md)
-### [Administration and developer task list](biztalk-services-administration-and-development-task-list.md)
+# 方法
+## 計画と設計
+### [管理および開発者タスクの一覧](biztalk-services-administration-and-development-task-list.md)
 
-## Backup
-### [Backup and restore](biztalk-backup-restore.md)
+## [バックアップおよび復元](biztalk-backup-restore.md)
 
-## Configure
-### [BizTalk Services: Throttling](biztalk-throttling-thresholds.md)
-### [Review the Dashboard, Monitor, Scale, Configure, and Hybrid Connection tabs](biztalk-dashboard-monitor-scale-tabs.md)
+## 構成
+### [調整](biztalk-throttling-thresholds.md)
+### [サービス設定と監視](biztalk-dashboard-monitor-scale-tabs.md)
 
-## Integrate
-### [Create and Manage Hybrid Connections](integration-hybrid-connection-create-manage.md)
+## 統合
+### [ハイブリッド接続](integration-hybrid-connection-create-manage.md)
 
-## Migrate
-### [Migrating BizTalk Server EDI Solutions to BizTalk Services](biztalk-migrating-to-edi-guide.md)
+## 移行
+### [BizTalk Services への BizTalk Server EDI ソリューション](biztalk-migrating-to-edi-guide.md)
 
-## Monitor
-### [BizTalk Services: Service state chart](biztalk-service-state-chart.md)
+## 監視
+### [サービスの状態に依存するタスク](biztalk-service-state-chart.md)
 
-## Secure
-### [Issuer name and issuer key](biztalk-issuer-name-issuer-key.md)
+## セキュリティ保護
+### [アクセス制御](biztalk-issuer-name-issuer-key.md)
 
-## Troubleshoot
-### [Troubleshoot using operation logs](biztalk-troubleshoot-using-ops-logs.md)
+## [トラブルシューティング](biztalk-troubleshoot-using-ops-logs.md)
 
-# Reference
-
-# Related
-
-# Resources
-## [Release Notes](biztalk-release-notes.md)
+# リファレンス
+## [リリース ノート](biztalk-release-notes.md)
 
 
 <!--HONumber=Nov16_HO2-->

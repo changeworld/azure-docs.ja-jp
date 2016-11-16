@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Storage Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 4d6fd9344eaee31de4ee1e614ae558ce159c9245
+ms.openlocfilehash: 34ead7be5278478047f8c6e56c56dfb977ca1d7c
 
-Azure Storage is the cloud storage solution for modern applications that rely on durability, availability, and scalability to meet the needs of their customers.  It is highly scalable, elastic, globally accessible, and automatically load-balances your data based on traffic.  Azure Storage provides the following four services to meet application needs:  Blob storage, Table storage, Queue storage, and File storage.
+---
+#<a name="storage-documentation"></a>ストレージのドキュメント
+
+Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。  これは、拡張性に優れ、柔軟性があり、グローバルにアクセスでき、トラフィックに基づいて自動的にデータの負荷を分散します。  Azure Storage には、アプリケーションのニーズを満たす 4 つのサービスとして Blob Storage、Table Storage、Queue Storage、File Storage が用意されています。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Azure Storage is the cloud storage solution for modern applications that rely on
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Storage</h3>
+                        <h3>Azure Storage について</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure Storage is the cloud storage solution for modern applications that rely on
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Storage Video Library</h3>
+                        <h3>Azure Storage のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Storage is the cloud storage solution for modern applications that rely on
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Storage</h3>
+                        <h3>Storage の概要</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure Storage is the cloud storage solution for modern applications that rely on
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Storage account</h3>
+                        <h3>ストレージ アカウントの作成</h3>
                     </div>
                 </div>
             </div>
@@ -82,23 +86,23 @@ Azure Storage is the cloud storage solution for modern applications that rely on
 
 ---
 
-##Reference
+##<a name="reference"></a>リファレンス
 
-###PowerShell
+###<a name="powershell"></a>PowerShell
 [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
-###Azure CLI 
-[Storage using Azure CLI Reference](/cli/azure/storage)
+###<a name="azure-cli"></a>Azure CLI 
+[Azure CLI のリファレンスを使用する Storage](/cli/azure/storage)
 
-###Java 
-[Storage in Java Reference](/java/api/)
+###<a name="java"></a>Java 
+[Java リファレンスの Storage](/java/api/)
 
-###.NET 
-[Storage Managed Reference API](https://msdn.microsoft.com/library/azure/mt347887) 
+###<a name="net"></a>.NET 
+[Storage に関する管理リファレンス API](https://msdn.microsoft.com/library/azure/mt347887) 
 
-###REST 
-[Storage REST API Reference](/rest/api/storageservices) 
-[Storage Resource Provider REST API Reference](/rest/api/storagerp)  
+###<a name="rest"></a>REST () 
+[Storage REST API リファレンス](/rest/api/storageservices) 
+[Storage Resource Provider REST API リファレンス](/rest/api/storagerp)  
 
 
 
@@ -108,7 +112,12 @@ Azure Storage is the cloud storage solution for modern applications that rely on
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/storage.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Storage Documentation
-        </div>
+Storage のドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -73,6 +73,11 @@
 ## [クラシック デプロイ Rest](https://msdn.microsoft.com/library/azure/mt163781)
 
 # リソース
+## [料金](https://azure.microsoft.com/pricing/details/automation/)  
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=automation) 
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=automation) 
 ## [Azure Automation トレーニング](https://www.microsoftvirtualacademy.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)

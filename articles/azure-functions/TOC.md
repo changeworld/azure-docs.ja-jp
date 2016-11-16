@@ -1,5 +1,5 @@
-# [概要](functions-overview.md)
-
+# Overview
+## [Azure Functions とは](functions-overview.md)
 # 作業の開始
 ## [最初の関数を作成する](functions-create-first-azure-function.md)
 ## [webhook 関数を作成する](functions-create-a-web-hook-or-api-function.md)
@@ -38,10 +38,14 @@
 ## デプロイ
 ### [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)
 
+# リファレンス
+## [.NET API](https://msdn.microsoft.com/library/azure/dn961176.aspx)
 
 # リソース
-## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
+## [料金](https://azure.microsoft.com/pricing/details/functions/)  
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)
+## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
 <!--HONumber=Nov16_HO2-->

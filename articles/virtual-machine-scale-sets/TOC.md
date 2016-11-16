@@ -26,11 +26,12 @@
 ### [自動スケールのトラブルシューティング](virtual-machine-scale-sets-troubleshoot.md)
 
 # リファレンス
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
-## [スケール セットの REST API](/rest/api/compute/virtualmachinescalesets)
-## [スケール セットの VM REST API](/rest/api/compute/virtualmachinescalesetvms)
-## [Azure Powershell](/powershell/resourcemanager/)
-## [Azure テンプレート](https://azure.microsoft.com/documentation/templates/?term=vmss)
+## [REST ()](/rest/api/compute/)
+
+# リソース
+## [料金](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
 
 
 <!--HONumber=Nov16_HO2-->

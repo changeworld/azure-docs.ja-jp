@@ -1,40 +1,41 @@
 # Overview
-## [Azure and IoT](iot-suite-what-is-azure-iot.md)
-## [What is IoT Suite?](iot-suite-overview.md)
-## [What are the preconfigured solutions?](iot-suite-what-are-preconfigured-solutions.md)
-## [IoT Suite learning path](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
+## [Azure と IoT](iot-suite-what-is-azure-iot.md)
+## [IoT Suite とは](iot-suite-overview.md)
+## [事前に構成されたソリューションとは](iot-suite-what-are-preconfigured-solutions.md)
 
-# Get Started
-## [Get started with the preconfigured solutions](iot-suite-getstarted-preconfigured-solutions.md)
-## [Permissions on azureiotsuite.com](iot-suite-permissions.md)
-## [Predictive maintenance solution overview](iot-suite-predictive-overview.md)
-## [Remote monitoring solution walkthrough](iot-suite-remote-monitoring-sample-walkthrough.md)
-## [Predictive maintenance solution walkthrough](iot-suite-predictive-walkthrough.md)
 
-# How To
-## [Connect your device to the remote monitoring solution (Windows)](iot-suite-connecting-devices.md)
-## [Connect your device to the remote monitoring solution (Linux)](iot-suite-connecting-devices-linux.md)
-## [Connect your device to the remote monitoring solution (mbed)](iot-suite-connecting-devices-mbed.md)
-## [Connect your device to the remote monitoring solution (Node)](iot-suite-connecting-devices-node.md)
-## [Connect a Logic App to the remote monitoring solution](iot-suite-logic-apps-tutorial.md)
-## [Customize a preconfigured solution](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
-## [Use dynamic telemetry with the remote monitoring solution](iot-suite-dynamic-telemetry.md)
-## [Device information in the remote monitoring solution](iot-suite-remote-monitoring-device-info.md)
+# 作業の開始
+## [事前に構成されたソリューションを使ってみる](iot-suite-getstarted-preconfigured-solutions.md)
+## [azureiotsuite.com のアクセス許可](iot-suite-permissions.md)
+## [予測的なメンテナンス ソリューションの概要](iot-suite-predictive-overview.md)
+## [リモート監視ソリューションのチュートリアル](iot-suite-remote-monitoring-sample-walkthrough.md)
+## [予測的なメンテナンス ソリューションのチュートリアル](iot-suite-predictive-walkthrough.md)
 
-# Reference
-## [Security architecture](iot-security-architecture.md)
-## [Security best practices](iot-security-best-practices.md)
-## [Secure your IoT deployment](iot-suite-security-deployment.md)
-## [Security from the ground up](securing-iot-ground-up.md)
+# 方法
+## [デバイスをリモート監視ソリューションに接続する (Windows)](iot-suite-connecting-devices.md)
+## [デバイスをリモート監視ソリューションに接続する (Linux)](iot-suite-connecting-devices-linux.md)
+## [デバイスをリモート監視ソリューションに接続する (mbed)](iot-suite-connecting-devices-mbed.md)
+## [デバイスをリモート監視ソリューションに接続する (ノード)](iot-suite-connecting-devices-node.md)
+## [ロジック アプリをリモート監視ソリューションへに接続する](iot-suite-logic-apps-tutorial.md)
+## [構成済みソリューションのカスタマイズ](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
+## [リモート監視ソリューションでの動的テレメトリを使用する](iot-suite-dynamic-telemetry.md)
+## [リモート監視ソリューションでのデバイス情報](iot-suite-remote-monitoring-device-info.md)
 
-# Related
-## [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
-## [Event Hubs](https://azure.microsoft.com/services/event-hubs/)
-## [IoT Hub](https://azure.microsoft.com/services/iot-hub/)
-## [Machine Learning](https://azure.microsoft.com/services/machine-learning/)
+# リファレンス
+## [セキュリティのアーキテクチャ](iot-security-architecture.md)
+## [セキュリティのベスト プラクティス](iot-security-best-practices.md)
+## [IoT デプロイのセキュリティ保護](iot-suite-security-deployment.md)
+## [徹底的なセキュリティ](securing-iot-ground-up.md)
 
-# Resources
+# 関連項目
+## [Stream Analytics](/azure/stream-analytics/)
+## [Event Hubs](/azure/event-hubs/)
+## [IoT Hub](/azure/iot-hub/)
+## [Machine Learning](/azure/machine-learning/)
+
+# リソース
 ## [FAQ](iot-suite-faq.md)
+## [IoT Suite ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
 
 
 

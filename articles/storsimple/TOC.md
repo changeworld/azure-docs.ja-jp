@@ -57,7 +57,7 @@
 #### [8600 を開梱、ラック設置、ケーブル接続する](storsimple-8600-hardware-installation.md)
 #### [10 GbE ネットワーク インターフェイスでサポートされるハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
-### デプロイ 
+### デプロイ
 #### [StorSimple Manager サービス](storsimple-manage-service.md)
 #### [Azure の物理デバイス - 最新](storsimple-deployment-walkthrough-u2.md)
 ##### [Azure の物理デバイス - Update 1](storsimple-deployment-walkthrough-u1.md)
@@ -68,7 +68,7 @@
 #### [SharePoint 用 StorSimple アダプター](storsimple-adapter-for-sharepoint.md)
 
 ## 方法
-### [管理] 
+### [管理]
 #### [StorSimple Manager サービスの使用](storsimple-manager-service-administration.md)
 ##### [バックアップから復元する](storsimple-restore-from-backup-set-u2.md)
 ###### [バックアップから復元する](storsimple-restore-from-backup-set.md)
@@ -160,18 +160,20 @@
 ### [リリース - 一般公開](storsimple-july-2014-release-notes.md)
 
 ## リファレンス
-### [Azure PowerShell コマンドレット リファレンス](https://msdn.microsoft.com/en-us/library/azure/dn920427)
-### [Windows PowerShell for StorSimple コマンドレット リファレンス](https://technet.microsoft.com/library/dn688168.aspx)
+### [PowerShell](/powershell/servicemanagement/)
 
-# [StorSimple 5000 - 7000 シリーズ](http://onlinehelp.storsimple.com)
+# 関連項目
+## [StorSimple 5000 - 7000 シリーズ](http://onlinehelp.storsimple.com)
 
 # リソース
-## [Azure のブログ](https://azure.microsoft.com/blog/)
 ## [フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
 ## [マーケティング ブログ](http://blogs.technet.com/b/cis/)
-## [マーケティング](https://www.microsoft.com/en-us/server-cloud/products/storsimple/explore.aspx)
+## [マーケティング](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
 ## [サポート ブログ](http://blogs.msdn.com/b/storsimple/)
 ## [サード パーティに関する通知](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=storsimple)
+## [料金](https://azure.microsoft.com/pricing/details/storsimple/)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 
 <!--HONumber=Nov16_HO2-->

@@ -55,6 +55,9 @@
 ## 開発
 ### [初めての Web アプリに機能を追加する](app-service-web-get-started-2.md)
 ### [Linux での Web アプリの作成](app-service-linux-how-to-create-a-web-app.md)
+### [App Service のリファレンス](app-service-changes-existing-services.md)
+### [Azure Portal](app-service-web-app-azure-portal.md)
+### [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)
 
 ### ASP.NET アプリ
 #### [初めての .NET Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-dotnet.md)
@@ -243,9 +246,10 @@
 ### [Web アプリのパフォーマンスに関する問題のトラブルシューティング](app-service-web-troubleshoot-performance-degradation.md)
 
 # リファレンス
-## [App Service のリファレンス](app-service-changes-existing-services.md)
-## [Azure Portal](app-service-web-app-azure-portal.md)
-## [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)
+## [Azure CLI](/cli/azure/)
+## [Java](/java/api/)
+## [.NET](/dotnet/api)
+## [REST ()](/rest/api/appservice)
 
 # 関連項目
 ## [Azure SDK for .NET リリース ノート](azure-sdk-dotnet-release-notes.md)

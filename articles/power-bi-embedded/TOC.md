@@ -1,38 +1,37 @@
 # Overview
-## [What is Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
-## [What's new in Power BI Embedded](power-bi-embedded-whats-new.md)
+## [Power BI Embedded とは](power-bi-embedded-what-is-power-bi-embedded.md)
+## [Power BI Embedded の新機能](power-bi-embedded-whats-new.md)
 
-# Get started
-## [Get started with Power BI Embedded](power-bi-embedded-get-started.md)
-## [Get started with a sample](power-bi-embedded-get-started-sample.md)
-
-# How to 
-## Plan and design
-### [Common scenarios](power-bi-embedded-scenarios.md)
-
-## Manage
-### [Connect to a data source](power-bi-embedded-connect-datasource.md)
-### [Embed a Power BI report with an IFrame](power-bi-embedded-iframe.md)
-### [Interact with Reports](power-bi-embedded-interact-with-reports.md)
-
-## Secure
-### [Authenticating and authorizing](power-bi-embedded-app-token-flow.md)
-### [Row level security with Power BI Embedded ](power-bi-embedded-rls.md)
-
-# Reference
-## [.NET API reference](https://msdn.microsoft.com/en-us/library/azure/mt669800)
-## [JavaScript SDK](https://github.com/Microsoft/PowerBI-JavaScript)
-## [REST API reference](https://msdn.microsoft.com/en-us/library/azure/mt712303)
-## [.NET SDK download](https://www.nuget.org/profiles/powerbi)
-
-# Related 
-
-# Resources
+# 作業開始
+## [Power BI Embedded を使ってみる](power-bi-embedded-get-started.md)
+## [サンプルの使用](power-bi-embedded-get-started-sample.md)
 ## [FAQ](power-bi-embedded-faq.md)
-## [Samples](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
-## [Power BI community](http://community.powerbi.com/t5/Developer/bd-p/Developer)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)
 
+# 方法
+## 計画と設計
+### [一般的なシナリオ](power-bi-embedded-scenarios.md)
+
+## [管理]
+### [データ ソースへの接続](power-bi-embedded-connect-datasource.md)
+### [IFrame を使用した Power BI レポートの埋め込み](power-bi-embedded-iframe.md)
+### [レポートを操作する](power-bi-embedded-interact-with-reports.md)
+
+## セキュリティ保護
+### [認証と承認](power-bi-embedded-app-token-flow.md)
+### [Power BI Embedded の行レベルのセキュリティ](power-bi-embedded-rls.md)
+
+# リファレンス
+## [PowerShell](/powershell/resourcemanager/)
+## [.NET](/dotnet/api/)
+## [.NET SDK ダウンロード](https://www.nuget.org/profiles/powerbi)
+## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
+## [REST ()](/rest/api/powerbiembedded/)
+
+
+# リソース
+## [サンプル](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
+## [Power BI コミュニティ](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)
 
 
 <!--HONumber=Nov16_HO2-->

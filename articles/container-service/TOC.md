@@ -1,33 +1,32 @@
 # Overview
-## [ACS introduction](container-service-intro.md)
-# Get Started
+## [Azure Container Service とは](container-service-intro.md)
+# 作業の開始
 
-## [Deploy an ACS cluster](container-service-deployment.md)
-## [Connect with an ACS cluster](container-service-connect.md)
-## [Scale an ACS cluster](container-service-scale.md)
+## [ACS クラスターをデプロイする](container-service-deployment.md)
+## [ACS クラスターに接続する](container-service-connect.md)
+## [ACS クラスターをスケールする](container-service-scale.md)
 
-# How To
+# 方法
 
-## Manage with DC/OS
-### [Container management - DC/OS web UI](container-service-mesos-marathon-ui.md)
-### [Container management - DC/OS REST API](container-service-mesos-marathon-rest.md)
-### [DC/OS Agent pools](container-service-dcos-agents.md)
-### [Enable DC/OS public access](container-service-enable-public-access.md)
-### [Load balance containers in DC/OS](container-service-load-balancing.md)
-### [App/User Specific Orchestrator in DC/OS](container-service-application-specific-marathon.md)
-### [Monitor with Datadog (DC/OS)](container-service-monitoring.md)
-### [Monitor with Sysdig (DC/OS)](container-service-monitoring-sysdig.md)
-## Manage with Docker Swarm
-### [Docker Swarm Overview](container-service-docker-swarm.md)
+## DC/OS による管理
+### [コンテナー管理 - DC/OS Web UI](container-service-mesos-marathon-ui.md)
+### [コンテナー管理 - DC/OS REST API](container-service-mesos-marathon-rest.md)
+### [DC/OS エージェント プール](container-service-dcos-agents.md)
+### [DC/OS パブリック アクセスを有効にする](container-service-enable-public-access.md)
+### [DC/OS の負荷分散コンテナー](container-service-load-balancing.md)
+### [DC/OS のアプリ/ユーザー固有の Orchestrator](container-service-application-specific-marathon.md)
+### [Datadog で監視する (DC/OS)](container-service-monitoring.md)
+### [Sysdig で監視する (DC/OS)](container-service-monitoring-sysdig.md)
+## Docker Swarm による管理
+### [Docker Swarm の概要](container-service-docker-swarm.md)
 
-# Reference
+# リファレンス
+## [REST API](https://docs.microsoft.com/rest/api/compute/containerservices/)
 
-## [REST API](https://go.microsoft.com/fwlink/p/?linkid=833499)
-
-# Resources
-
-## [Region availability](https://azure.microsoft.com/regions/services/)
-## [Service Updates](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
+# リソース
+## [利用可能なリージョン](https://azure.microsoft.com/regions/services/)
+## [料金](https://azure.microsoft.com/pricing/details/container-service/)
+## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
 <!--HONumber=Nov16_HO2-->
