@@ -1,59 +1,63 @@
 # Overview
-## [What is Application Gateway?](application-gateway-introduction.md)
-## [Web application firewall](application-gateway-webapplicationfirewall-overview.md)
-## [Health monitoring](application-gateway-probe-overview.md)
-## [URL routing](application-gateway-url-route-overview.md)
-## [Multi-site](application-gateway-multi-site-overview.md)
-## [End to end SSL](application-gateway-backend-ssl.md)
-## [Websocket](application-gateway-websocket.md)
-## [Subscription and service limits](../azure-subscription-service-limits.md#application-gateway-limits.md)
-# Get started
-## Create an Application Gateway
-### Public facing
-#### [Portal](application-gateway-create-gateway-portal.md)
+## [Application Gateway とは](application-gateway-introduction.md)
+## [Web アプリケーション ファイアウォール](application-gateway-webapplicationfirewall-overview.md)
+## [正常性の監視](application-gateway-probe-overview.md)
+## [URL ルーティング](application-gateway-url-route-overview.md)
+## [マルチサイト](application-gateway-multi-site-overview.md)
+## [エンド ツー エンド SSL](application-gateway-backend-ssl.md)
+## [WebSocket](application-gateway-websocket.md)
+## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md#application-gateway-limits.md)
+# 作業開始
+## Application Gateway を作成する
+### パブリック
+#### [ポータル](application-gateway-create-gateway-portal.md)
 #### [PowerShell](application-gateway-create-gateway-arm.md)
-#### [Resource Manager template](application-gateway-create-gateway-arm-template.md)
+#### [Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 #### [CLI](application-gateway-create-gateway-arm-template.md)
-#### [PowerShell (classic)](application-gateway-create-gateway-arm-template.md)
-### Internal facing
+#### [PowerShell (クラシック)](application-gateway-create-gateway-arm-template.md)
+### 内部
 #### [PowerShell](application-gateway-ilb-arm.md)
-#### [PowerShell (classic)](application-gateway-ilb.md)
-# How to
-## Create with web application firewall
-### [Portal](application-gateway-web-application-firewall-portal.md)
+#### [PowerShell (クラシック)](application-gateway-ilb.md)
+# 方法
+## Web アプリケーション ファイアウォールを使って作成する
+### [ポータル](application-gateway-web-application-firewall-portal.md)
 ### [PowerShell](application-gateway-web-application-firewall-powershell.md)
-## Configure for SSL
-### [Portal](application-gateway-ssl-portal.md)
+## SSL を構成する
+### [ポータル](application-gateway-ssl-portal.md)
 ### [PowerShell](application-gateway-ssl-arm.md)
-### [PowerShell (Classic)](application-gateway-ssl.md)
-### [Policy and end to end](application-gateway-end-to-end-ssl-powershell.md)
-## Create URL path based Routing
-### [Portal](application-gateway-create-url-route-portal.md)
+### [PowerShell (クラシック)](application-gateway-ssl.md)
+### [ポリシーとエンド ツー エンド](application-gateway-end-to-end-ssl-powershell.md)
+## URL パス ベースのルーティングを作成する
+### [ポータル](application-gateway-create-url-route-portal.md)
 ### [PowerShell](application-gateway-create-url-route-arm-ps.md)
-## Configure for multiple site hosting
-### [Portal](application-gateway-create-multisite-portal.md)
+## 複数サイトのホスティング用に構成する
+### [ポータル](application-gateway-create-multisite-portal.md)
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
-## Create health probes
-### [Portal](application-gateway-create-probe-portal.md)
+## 正常性プローブを作成する
+### [ポータル](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
-### [PowerShell (Classic)](application-gateway-create-probe-classic-ps.md)
-### Manage
-### [Diagnostics](application-gateway-diagnostics.md)
-### [Troubleshoot](application-gateway-troubleshooting-502.md)
-# Reference
-## [Resource Manager APIs](https://msdn.microsoft.com/library/azure/mt684941)
-## [Service Management APIs](https://msdn.microsoft.com/library/azure/mt299393)
-## [PowerShell cmdlets](https://go.microsoft.com/fwlink/p/?LinkId=536407)
-# Related
-## [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/)
-## [Virtual network](https://azure.microsoft.com/documentation/services/virtual-network/)
-## [VPN gateway](https://azure.microsoft.com/documentation/services/vpn-gateway/)
-## [Virtual machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-## [Load balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
-## [Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-# Resources
-## [Pricing](https://azure.microsoft.com/pricing/details/application-gateway/)
+### [PowerShell (クラシック)](application-gateway-create-probe-classic-ps.md)
+## [管理]
+### [診断](application-gateway-diagnostics.md)
+### [トラブルシューティング](application-gateway-troubleshooting-502.md)
+# リファレンス
+## [PowerShell コマンドレット](https://docs.microsoft.com/powershell/resourcemanager)
+## [REST ()](https://msdn.microsoft.com/library/mt684941)
+## [REST (クラシック)](https://msdn.microsoft.com/library/azure/mt299393)
+
+# 関連項目
+## [ExpressRoute](/azure/expressroute/)
+## [Virtual Network](/azure/virtual-network/)
+## [VPN Gateway](/azure/vpn-gateway/)
+## [仮想マシン](/azure/virtual-machines/)
+## [Load Balancer](/azure/load-balancer/)
+## [Traffic Manager](/azure/traffic-manager/)
+# リソース
+## [料金](https://azure.microsoft.com/pricing/details/application-gateway/)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-application-gateway)  
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=application-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
+
 
 <!--HONumber=Nov16_HO2-->
 

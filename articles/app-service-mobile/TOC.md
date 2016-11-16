@@ -1,10 +1,11 @@
-# [Overview](../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [What are Mobile Apps?](app-service-mobile-value-prop.md)
-## [What is App Service](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [App Service plans](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+# Overview
+## [Mobile Apps とは](app-service-mobile-value-prop.md)
+## [App Service とは](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [動作のしくみ](../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-# Get Started
-## Mobile Apps
+# 作業の開始
+## モバイル アプリの作成
 ### [Android](app-service-mobile-android-get-started.md)
 ### [Cordova](app-service-mobile-cordova-get-started.md)
 ### [iOS](app-service-mobile-ios-get-started.md)
@@ -13,209 +14,212 @@
 ### [Xamarin.Forms](app-service-mobile-xamarin-forms-get-started.md)
 ### [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started.md)
 
-## API Apps
+## API アプリの作成
 ### [.NET](../app-service-api/app-service-api-dotnet-get-started.md)
 ### [Java](../app-service-api/app-service-api-java-api-app.md)
-### [Node.js](../app-service-api/app-service-api-nodejs-api-app.md)
+### [Node.JS](../app-service-api/app-service-api-nodejs-api-app.md)
 ### [CORS](../app-service-api/app-service-api-cors-consume-javascript.md)
 
-## Web Apps
+## Web アプリの作成
 ### [.NET](../app-service-web/web-sites-dotnet-get-started.md)
-### [Node.js](../app-service-web/app-service-web-nodejs-get-started.md)
+### [Node.JS](../app-service-web/app-service-web-nodejs-get-started.md)
 ### [Python](../app-service-web/web-sites-python-ptvs-django-mysql.md)
 ### [Java](../app-service-web/web-sites-java-get-started.md)
-### [Marketplace app](../app-service-web/web-sites-php-web-site-gallery.md)
+### [Marketplace アプリ](../app-service-web/web-sites-php-web-site-gallery.md)
 ### [PHP](../app-service-web/app-service-web-php-get-started.md)    
 
-# How To
+# 方法
 
-## Plan & design
-### [Authentication and Authorization in Azure Mobile Apps](app-service-mobile-auth.md)
-### [Offline Data Sync in Azure Mobile Apps](app-service-mobile-offline-data-sync.md)
-### [Best Practices for Azure App Service](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Azure App Service and existing Azure services](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [App Service plans in-depth](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [High-density hosting](../app-service/app-service-high-density-hosting.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Using WebJobs in Azure App Service](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [App Service Environment](../app-service-web/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [App Service Environment documentation](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## 計画と設計
+### [Azure Mobile Apps での認証および承認](app-service-mobile-auth.md)
+### [Azure Mobile Apps でのオフライン データ同期](app-service-mobile-offline-data-sync.md)
+### [Azure App Service のベスト プラクティス](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Azure App Service と既存の Azure サービス](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [App Service プランの詳細](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [高密度ホスティング](../app-service/app-service-high-density-hosting.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Azure App Service での Web ジョブの使用](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [App Service 環境](../app-service-web/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [App Service 環境のドキュメント](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## Develop
+## 開発
 ### Android
-#### [Enable offline sync](app-service-mobile-android-get-started-offline-data.md)
-#### [Add authentication](app-service-mobile-android-get-started-users.md)
-#### [Add push notifications](app-service-mobile-android-get-started-push.md)
-#### [Work with the client SDK](app-service-mobile-android-how-to-use-client-library.md)
+#### [オフライン同期を有効にする](app-service-mobile-android-get-started-offline-data.md)
+#### [認証を追加する](app-service-mobile-android-get-started-users.md)
+#### [プッシュ通知を追加する](app-service-mobile-android-get-started-push.md)
+#### [クライアント SDK を操作する](app-service-mobile-android-how-to-use-client-library.md)
 
 ### Cordova
-#### [Enable offline sync](app-service-mobile-cordova-get-started-offline-data.md)
-#### [Add authentication](app-service-mobile-cordova-get-started-users.md)
-#### [Add push notifications](app-service-mobile-cordova-get-started-push.md)
-#### Work with the client SDK
+#### [オフライン同期を有効にする](app-service-mobile-cordova-get-started-offline-data.md)
+#### [認証を追加する](app-service-mobile-cordova-get-started-users.md)
+#### [プッシュ通知を追加する](app-service-mobile-cordova-get-started-push.md)
+#### クライアント SDK を操作する
 ##### [Cordova](app-service-mobile-cordova-how-to-use-client-library.md)
 ##### [JavaScript/HTML](app-service-mobile-html-how-to-use-client-library.md)
 
 ### iOS
-#### [Enable offline sync](app-service-mobile-ios-get-started-offline-data.md)
-#### [Add authentication](app-service-mobile-ios-get-started-users.md)
-#### [Add Push Notifications](app-service-mobile-ios-get-started-push.md)
-#### [Work with the client SDK](app-service-mobile-ios-how-to-use-client-library.md)
+#### [オフライン同期を有効にする](app-service-mobile-ios-get-started-offline-data.md)
+#### [認証を追加する](app-service-mobile-ios-get-started-users.md)
+#### [プッシュ通知を追加する](app-service-mobile-ios-get-started-push.md)
+#### [クライアント SDK を操作する](app-service-mobile-ios-how-to-use-client-library.md)
 
 ### Windows
-#### [Enable offline sync](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)
-#### [Add authentication](app-service-mobile-windows-store-dotnet-get-started-users.md)
-#### [Add push notifications](app-service-mobile-windows-store-dotnet-get-started-push.md)
-#### [Work with the client SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [オフライン同期を有効にする](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)
+#### [認証を追加する](app-service-mobile-windows-store-dotnet-get-started-users.md)
+#### [プッシュ通知を追加する](app-service-mobile-windows-store-dotnet-get-started-push.md)
+#### [クライアント SDK を操作する](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.Android 
-#### [Enable offline sync](app-service-mobile-xamarin-android-get-started-offline-data.md)
-#### [Add authentication](app-service-mobile-xamarin-android-get-started-users.md)
-#### [Add push notifications](app-service-mobile-xamarin-android-get-started-push.md)
-#### [Work with the client SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [オフライン同期を有効にする](app-service-mobile-xamarin-android-get-started-offline-data.md)
+#### [認証を追加する](app-service-mobile-xamarin-android-get-started-users.md)
+#### [プッシュ通知を追加する](app-service-mobile-xamarin-android-get-started-push.md)
+#### [クライアント SDK を操作する](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.Forms
-#### [Enable offline sync](app-service-mobile-xamarin-forms-get-started-offline-data.md)
-#### [Add authentication](app-service-mobile-xamarin-forms-get-started-users.md)
-#### [Add push notifications](app-service-mobile-xamarin-forms-get-started-push.md)
-#### [Connect to Azure Storage in your Xamarin.Forms app](app-service-mobile-xamarin-forms-blob-storage.md)
-#### [Work with the client SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [オフライン同期を有効にする](app-service-mobile-xamarin-forms-get-started-offline-data.md)
+#### [認証を追加する](app-service-mobile-xamarin-forms-get-started-users.md)
+#### [プッシュ通知を追加する](app-service-mobile-xamarin-forms-get-started-push.md)
+#### [Xamarin.Forms アプリで Azure Storage に接続する](app-service-mobile-xamarin-forms-blob-storage.md)
+#### [クライアント SDK を操作する](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.iOS
-#### [Enable offline sync](app-service-mobile-xamarin-ios-get-started-offline-data.md)
-#### [Add authentication](app-service-mobile-xamarin-ios-get-started-users.md)
-#### [Add push notifications](app-service-mobile-xamarin-ios-get-started-push.md)
-#### [Work with the client SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [オフライン同期を有効にする](app-service-mobile-xamarin-ios-get-started-offline-data.md)
+#### [認証を追加する](app-service-mobile-xamarin-ios-get-started-users.md)
+#### [プッシュ通知を追加する](app-service-mobile-xamarin-ios-get-started-push.md)
+#### [クライアント SDK を操作する](app-service-mobile-dotnet-how-to-use-client-library.md)
 
-### Work with the server SDK
-#### [.NET backend](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)
-#### [Node.js backend](app-service-mobile-node-backend-how-to-use-server-sdk.md)
-#### [Client and server versioning](app-service-mobile-client-and-server-versioning.md)
+### サーバー SDK を操作する
+#### [.NET バックエンド](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)
+#### [Node.JS バックエンド](app-service-mobile-node-backend-how-to-use-server-sdk.md)
+#### [クライアントとサーバーのバージョン管理](app-service-mobile-client-and-server-versioning.md)
 
-### Web Jobs
-#### [What is the Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Create a .NET WebJob in Azure App Service](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [How to use Azure blob storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [How to use Azure queue storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [How to use Azure Service Bus with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [How to use Azure table storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### Web ジョブ
+#### [Azure Web ジョブ SDK とは](../app-service-web/websites-dotnet-webjobs-sdk.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Azure App Service に .NET Web ジョブを作成する](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Web ジョブ SDK で Azure Blob Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Web ジョブ SDK で Azure Service Bus を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Web ジョブ SDK を使用して Azure Table Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-### App Service Environment
-#### [Create a web app in an App Service Environment](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [How To Create an ILB ASE Using Azure Resource Manager Templates](../app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Using an Internal Load Balancer](../app-service-web/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### App Service 環境
+#### [App Service 環境で Web アプリを作成する](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法](../app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [内部 Load Balancer を使用する](../app-service-web/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## [Deploy](../app-service/app-service-deployment-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Deploy to App Service](../app-service-web/web-sites-deploy.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Cloud sync deployment](../app-service-web/app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Continuous deployment](../app-service-web/app-service-continuous-deployment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Staging environments](../app-service-web/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Local Git deployment](../app-service-web/app-service-deploy-local-git.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Deploy WebJobs using Visual Studio](../app-service-web/websites-dotnet-deploy-webjobs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [デプロイする](../app-service/app-service-deployment-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [App Service にデプロイする](../app-service-web/web-sites-deploy.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [クラウドの同期デプロイ](../app-service-web/app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [継続的なデプロイ](../app-service-web/app-service-continuous-deployment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [ステージング環境](../app-service-web/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [ローカル Git のデプロイ](../app-service-web/app-service-deploy-local-git.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Visual Studio を使用して Web ジョブを展開する](../app-service-web/websites-dotnet-deploy-webjobs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## [Scale](../app-service/app-service-scale-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Scale-up an app](../app-service-web/web-sites-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [App Service Environment](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Geo Distributed Scale with App Service Environments](../app-service-web/app-service-app-service-environment-geo-distributed-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Scaling apps in an App Service Environment](../app-service-web/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
-#### [Autoscaling in an App Service Environment](../app-service/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [スケール](../app-service/app-service-scale-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [アプリのスケールアップ](../app-service-web/web-sites-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [App Service 環境](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [App Service 環境を使用した geo 分散スケール](../app-service-web/app-service-app-service-environment-geo-distributed-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [App Service 環境内でのアプリのスケーリング](../app-service-web/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
+#### [App Service 環境内での自動スケール](../app-service/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## Manage
-### [Configure](../app-service-web/web-sites-configure.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### Custom domains
-#### [Buy and configure custom domains](../app-service-web/custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Map your own custom domain](../app-service-web/web-sites-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Configure GoDaddy domains](../app-service-web/web-sites-godaddy-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Custom domains with Traffic Manager](../app-service-web/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [管理]
+### [構成](../app-service-web/web-sites-configure.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### カスタム ドメイン
+#### [カスタム ドメインを購入して構成する](../app-service-web/custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [独自のカスタム ドメインをマップする](../app-service-web/web-sites-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [GoDaddy ドメインを構成する](../app-service-web/web-sites-godaddy-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Traffic Manager でのカスタム ドメイン](../app-service-web/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-### [Clone an existing app](../app-service-web/app-service-web-app-cloning-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [On-premises connections](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [既存のアプリを複製する](../app-service-web/app-service-web-app-cloning-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [オンプレミス接続](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure Virtual Network](../app-service-web/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Advanced configuration](../app-service-web/web-sites-transform-extend.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Resource groups](../app-service-web/app-service-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Web Jobs](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Run Background tasks with WebJobs](../app-service-web/web-sites-create-web-jobs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [詳細な構成](../app-service-web/web-sites-transform-extend.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [リソース グループ](../app-service-web/app-service-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Web ジョブ](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Web ジョブでバックグラウンド タスクを実行する](../app-service-web/web-sites-create-web-jobs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-### [App Service Environment](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Configure](../app-service-web/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Custom configuration settings](../app-service-web/app-service-app-service-environment-custom-settings.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [How to control inbound traffic](../app-service-web/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Network architecture overview](../app-service-web/app-service-app-service-environment-network-architecture-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Network configuration details with ExpressRoute](../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [App Service 環境](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [構成](../app-service-web/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [カスタム構成設定](../app-service-web/app-service-app-service-environment-custom-settings.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [受信トラフィックを制御する方法](../app-service-web/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [ネットワーク アーキテクチャの概要](../app-service-web/app-service-app-service-environment-network-architecture-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [ExpressRoute でのネットワーク構成の詳細](../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## Migrate
-### [How does App Service compare to Mobile Services?](app-service-mobile-value-prop-migration-from-mobile-services.md)
-### [Migrate an existing Mobile Service to App Service](app-service-mobile-migrating-from-mobile-services.md)
-### Upgrade an existing Mobile Service to App Service
-#### [.NET backend](app-service-mobile-net-upgrading-from-mobile-services.md)
-#### [Node.js backend](app-service-mobile-node-backend-upgrading-from-mobile-services.md)
+## 移行
+### [App Service と Mobile Services の比較](app-service-mobile-value-prop-migration-from-mobile-services.md)
+### [既存の Mobile Service を App Service に移行する](app-service-mobile-migrating-from-mobile-services.md)
+### 既存の Mobile Service を App Service にアップグレードする
+#### [.NET バックエンド](app-service-mobile-net-upgrading-from-mobile-services.md)
+#### [Node.JS バックエンド](app-service-mobile-node-backend-upgrading-from-mobile-services.md)
 
-## [Secure](../app-service/app-service-security-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Secure an app in Azure App Service](../app-service-web/web-sites-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Authentication and authorization](../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### Authenticate with identity providers
-#### [Azure Active Directory authentication](app-service-mobile-how-to-configure-active-directory-authentication.md)
-#### [Facebook authentication](app-service-mobile-how-to-configure-facebook-authentication.md)
-#### [Google authentication](app-service-mobile-how-to-configure-google-authentication.md)
-#### [Microsoft Account authentication](app-service-mobile-how-to-configure-microsoft-authentication.md)
-#### [Twitter authentication](app-service-mobile-how-to-configure-twitter-authentication.md)
-### [Authenticate with on-premises Active Directory](../app-service-web/web-sites-authentication-authorization.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [セキュリティ保護](../app-service/app-service-security-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Azure App Service でのアプリのセキュリティ保護](../app-service-web/web-sites-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [認証と権限承認](../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### ID プロバイダーで認証する
+#### [Azure Active Directory 認証](app-service-mobile-how-to-configure-active-directory-authentication.md)
+#### [Facebook 認証](app-service-mobile-how-to-configure-facebook-authentication.md)
+#### [Google 認証](app-service-mobile-how-to-configure-google-authentication.md)
+#### [Microsoft アカウント認証](app-service-mobile-how-to-configure-microsoft-authentication.md)
+#### [Twitter 認証](app-service-mobile-how-to-configure-twitter-authentication.md)
+### [オンプレミスの Active Directory で認証する](../app-service-web/web-sites-authentication-authorization.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ### HTTPS
-#### [Configure TLS Mutual Authentication ](../app-service-web/app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Buy an SSL certificate in Azure](../app-service-web/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Use an SSL certificate obtained elsewhere](../app-service-web/web-sites-configure-ssl-certificate.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [TLS 相互認証を構成する](../app-service-web/app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Azure で SSL 証明書を購入する](../app-service-web/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [他の場所で取得した SSL 証明書を使用する](../app-service-web/web-sites-configure-ssl-certificate.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-### Secure an App Service Environment
-#### [Configure a web application firewall](../app-service-web/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Implement a layered security architecture](../app-service-web/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Securely Connecting to Backend Resources](../app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### App Service 環境をセキュリティで保護する
+#### [Web アプリケーション ファイアウォールを構成する](../app-service-web/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [レイヤード セキュリティ アーキテクチャを実装する](../app-service-web/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [バックエンド リソースへの安全な接続](../app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## Backup
-### [Back up your app in Azure](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Restore an app in Azure](../app-service-web/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Use REST to back up and restore App Service apps](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## バックアップ
+### [Azure でのアプリのバックアップ](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Azure でのアプリの復元](../app-service-web/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [REST を使用して App Service アプリのバックアップと復元を実行する](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## [Monitor](../app-service-web/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Enable diagnostics logging ](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Troubleshoot using Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [監視](../app-service-web/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [診断ログの有効化](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Visual Studio を使用したトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## Automate
-### [Agile development](../app-service-web/app-service-agile-software-development.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Azure Resource Manager deployment](../app-service-web/app-service-deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Web + GitHub ](../app-service-web/app-service-web-arm-from-github-provision.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Web + SQL ](../app-service-web/app-service-web-arm-with-sql-database-provision.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [MSDeploy with custom hostname and SSL certificate](../app-service-web/app-service-web-arm-with-msdeploy-provision.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## 自動化
+### [アジャイル開発](../app-service-web/app-service-agile-software-development.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Azure Resource Manager デプロイ](../app-service-web/app-service-deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Web + GitHub](../app-service-web/app-service-web-arm-from-github-provision.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Web + SQL](../app-service-web/app-service-web-arm-with-sql-database-provision.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [カスタム ホスト名と SSL 証明書を使用した MSDeploy](../app-service-web/app-service-web-arm-with-msdeploy-provision.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### Powershell
-#### [Automate backup and restore](../app-service/app-service-powershell-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [App cloning](../app-service-web/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [SSL Certificate Binding](../app-service-web/app-service-web-app-powershell-ssl-binding.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Use Azure Resource Manager with PowerShell](../app-service-web/app-service-web-app-azure-resource-manager-powershell.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Manage apps using Azure Automation](../app-service-web/automation-manage-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [バックアップと復元を自動化する](../app-service/app-service-powershell-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [アプリの複製](../app-service-web/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [SSL 証明書バインディング](../app-service-web/app-service-web-app-powershell-ssl-binding.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [PowerShell で Azure Resource Manager を使用する](../app-service-web/app-service-web-app-azure-resource-manager-powershell.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Azure Automation を使用してアプリを管理する](../app-service-web/automation-manage-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## Integrate
-### [Connect to Azure Storage in your Xamarin.Forms app](app-service-mobile-xamarin-forms-blob-storage.md)
-### [Access on-premises resources using hybrid connections](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [How to send email using SendGrid with Azure](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## 統合
+### [Xamarin.Forms アプリで Azure Storage に接続する](app-service-mobile-xamarin-forms-blob-storage.md)
+### [ハイブリッド接続を使用してオンプレミスのリソースにアクセスする](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [SendGrid を使用した Azure での電子メールの送信方法](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## Troubleshoot
-### General troubleshooting for Mobile Apps
-#### [.NET backend](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-debug-and-troubleshoot-the-net-server-sdk)
-#### [Node.JS backend](app-service-mobile-node-backend-how-to-use-server-sdk.md#Debugging)
-### [Enable diagnostics logging](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Streaming logs and the console](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Troubleshoot using Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## トラブルシューティング
+### Mobile Apps の一般的なトラブルシューティング
+#### [.NET バックエンド](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-debug-and-troubleshoot-the-net-server-sdk)
+#### [Node.JS バックエンド](app-service-mobile-node-backend-how-to-use-server-sdk.md#Debugging)
+### [診断ログの有効化](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [ストリーミング ログとコンソール](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Visual Studio を使用したトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-# Reference
-## [Azure portal](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [App Service reference](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+# リファレンス
+## [.NET API](https://msdn.microsoft.com/library/azure/dn961176.aspx)
+## [Azure Portal](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [App Service のリファレンス](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-# Related
-
-# Resources
-## [Azure Mobile forum](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
-## [App Service Best practices](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [List of WebJob resources](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+# リソース
+## [料金](https://azure.microsoft.com/en-us/pricing/details/app-service/)  
+## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)  
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)  
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services) 
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=mobile-services)
+## [App Service のベスト プラクティス](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [Web ジョブのリソースの一覧](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 
 

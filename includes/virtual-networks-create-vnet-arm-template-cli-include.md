@@ -1,15 +1,15 @@
-## Azure CLI を使用して ARM テンプレートをデプロイする
+## <a name="deploy-the-arm-template-by-using-the-azure-cli"></a>Azure CLI を使用して ARM テンプレートをデプロイする
 Azure CLI を使用してダウンロードした ARM テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../articles/xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
-2. 次に示すように、**`azure config mode`** コマンドを実行してリソース マネージャー モードに切り替えます。
+1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../articles/xplat-cli-install.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+2. 次に示すように、 **`azure config mode`** コマンドを実行してリソース マネージャー モードに切り替えます。
    
         azure config mode arm
    
     上記のコマンドで想定される出力を次に示します。
    
         info:    New mode is arm
-3. 必要に応じて、次のように **`azure group create`** を実行して新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。リソース グループの詳細については、「[Azure リソース マネージャーの概要](../articles/resource-group-overview.md)」を参照してください。
+3. 必要に応じて、次のように **`azure group create`** を実行して新しいリソース グループを作成します。 コマンドの出力が表示されます。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。 リソース グループの詳細については、「 [Azure リソース マネージャーの概要](../articles/azure-resource-manager/resource-group-overview.md)」を参照してください。
    
         azure group create -n TestRG -l centralus
    
@@ -27,9 +27,9 @@ Azure CLI を使用してダウンロードした ARM テンプレートをデ�
         data:
         info:    group create command OK
    
-   * **-n (または --name)**。新しいリソース グループの名前です。ここでは、*TestRG* です。
-   * **-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。ここでは、*centralus* です。
-4. 上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、**`azure group deployment create`** コマンドレットを実行して新しい VNet をデプロイします。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
+   * **-n (または --name)**。 新しいリソース グループの名前です。 ここでは、 *TestRG*です。
+   * **-l (または --location)**。 新しいリソース グループが作成される Azure リージョンです。 ここでは、 *centralus*です。
+4. 上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、 **`azure group deployment create`** コマンドレットを実行して新しい VNet をデプロイします。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
    
         azure group deployment create -g TestRG -n TestVNetDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
    
@@ -58,10 +58,10 @@ Azure CLI を使用してダウンロードした ARM テンプレートをデ�
         data:    subnet2Name    String  BackEnd
         info:    group deployment create command OK
    
-   * **-g (または --resource-group)**。新しい VNet の作成場所となるリソース グループの名前です。
-   * **-f (または --template-file)**。ARM テンプレート ファイルへのパスです。
-   * **-e (または--parameters-file)**。ARM パラメーター ファイルへのパスです。
-5. 次に示すように、**`azure network vnet show`** コマンドを実行して新しい VNet のプロパティを表示します。
+   * **-g (または --resource-group)**。 新しい VNet の作成場所となるリソース グループの名前です。
+   * **-f (または --template-file)**。 ARM テンプレート ファイルへのパスです。
+   * **-e (または--parameters-file)**。 ARM パラメーター ファイルへのパスです。
+5. 次に示すように、 **`azure network vnet show`** コマンドを実行して新しい VNet のプロパティを表示します。
    
         azure network vnet show -g TestRG -n TestVNet
    
@@ -85,4 +85,8 @@ Azure CLI を使用してダウンロードした ARM テンプレートをデ�
         data:
         info:    network vnet show command OK
 
-<!---HONumber=AcomDC_0323_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

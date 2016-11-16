@@ -11,7 +11,7 @@
       "build_output_subfolder": "azure",
       "locale": "ja-jp",
       "version": 0,
-      "open_to_public_contributors": false,
+      "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content",
         "ManagedReference": "Content",
@@ -22,7 +22,8 @@
     }
   ],
   "notification_subscribers": [
-    "dengyun@microsoft.com"
+    "dengyun@microsoft.com",
+    "MORDPS@microsoft.com"
   ],
   "branches_to_filter": [
     "master",
@@ -30,6 +31,8 @@
   ],
   "skip_source_output_uploading": false,
   "need_preview_pull_request": false,
+  "git_repository_url_open_to_public_contributors": "https://github.com/Microsoft/azure-docs.ja-jp",
+  "git_repository_branch_open_to_public_contributors": "master",
   "enable_incremental_build": true,
   "dependent_repositories": [
     {

@@ -1,12 +1,12 @@
 ---
-title: Azure Event Hubs の概要 | Microsoft Docs
-description: Azure Event Hubs の紹介と概要
+title: "Azure Event Hubs の概要 | Microsoft Docs"
+description: "Azure Event Hubs の紹介と概要"
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: f0e0dd20-f745-49c7-bfca-30ea1c46e873
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: df9897894a2a2a09735b0947fd335959e81a46cd
+
 
 ---
 # <a name="azure-event-hubs-overview"></a>Azure Event Hubs の概要
@@ -25,7 +29,7 @@ Azure Event Hubs は、低遅延の動作と高い信頼性を確保しながら
 
 Event Hub は、Service Bus のキューおよびトピックの場合と同様に、Event Hubs の名前空間レベルに作成されます。 Event Hubs は、プライマリ API インターフェイスとして AMQP と HTTP を使用します。 次の図に、Event Hubs と Service Bus の関係を示します。
 
-![Event Hubs](./media/event-hubs-overview/IC741188.png)
+![Event Hubs](./media/event-hubs-overview/ehoverview2.png)
 
 ## <a name="conceptual-overview"></a>概念の概要
 Event Hubs では、パーティション分割されたコンシューマー パターンを通してメッセージのストリーミングを実現します。 キューおよびトピックでは、[競合コンシューマー](https://msdn.microsoft.com/library/dn568101.aspx) モデルが使用されます。このモデルでは、各コンシューマーは同じキューまたはリソースからの読み取りを試みます。 このリソースの競合により、最終的にストリーム処理アプリケーションが複雑になり拡張性に制限が生じます。 Event Hubs ではパーティション分割されたコンシューマー パターンが使用されます。このパターンでは、各コンシューマーはメッセージ ストリームの特定のサブセット (またはパーティション) のみを読み取ります。 このパターンでは、イベント処理能力を水平方向に拡張 (スケールアウト) することができ、キューおよびトピックでは利用できない、ストリームに重点を置いたその他の機能が利用できます。
@@ -48,13 +52,13 @@ Event Hubs のコンテキストでは、メッセージは *イベント デー
 ## <a name="event-publisher"></a>イベント発行元
 Event Hub にイベントまたはデータを送信するエンティティはいずれも、 *イベント発行元*です。 イベント発行元は、HTTPS または AMQP 1.0 のいずれかを使用してイベントを発行できます。 イベント発行元は、Shared Access Signature (SAS) トークンを使用して Event Hub に身元を明らかにし、シナリオの要件に応じて、一意の ID を備えることも、共通の SAS トークンを使用することもできます。
 
-SAS を使用する方法の詳細については、「[Service Bus による Shared Access Signature 認証](../service-bus/service-bus-shared-access-signature-authentication.md)」を参照してください。
+SAS を使用する方法の詳細については、「[Service Bus による Shared Access Signature 認証](../service-bus-messaging/service-bus-shared-access-signature-authentication.md)」を参照してください。
 
 ### <a name="common-publisher-tasks"></a>発行元の一般的なタスク
 このセクションでは、イベント発行元の一般的なタスクについて説明します。
 
 #### <a name="acquire-a-sas-token"></a>SAS トークンを取得する
-Shared Access Signature (SAS) は、Event Hubs の認証メカニズムです。 Service Bus は、名前空間と Event Hub のレベルでの SAS ポリシーを提供します。 SAS トークンは、SAS キーから生成されるものであり、特定の形式でエンコードされた URL の SHA ハッシュです。 Service Bus は、キー (ポリシー) の名前とトークンを使用することで、ハッシュを再生成し、送信者を認証することができます。 通常、イベント発行元の SAS トークンは特定の Event Hub への **送信** 特権のみを付加して作成されます。 この SAS トークン URL のメカニズムは、発行元ポリシーに導入された発行元識別のための基盤です。 SAS を使用する方法の詳細については、「[Service Bus による Shared Access Signature 認証](../service-bus/service-bus-shared-access-signature-authentication.md)」を参照してください。
+Shared Access Signature (SAS) は、Event Hubs の認証メカニズムです。 Service Bus は、名前空間と Event Hub のレベルでの SAS ポリシーを提供します。 SAS トークンは、SAS キーから生成されるものであり、特定の形式でエンコードされた URL の SHA ハッシュです。 Service Bus は、キー (ポリシー) の名前とトークンを使用することで、ハッシュを再生成し、送信者を認証することができます。 通常、イベント発行元の SAS トークンは特定の Event Hub への **送信** 特権のみを付加して作成されます。 この SAS トークン URL のメカニズムは、発行元ポリシーに導入された発行元識別のための基盤です。 SAS を使用する方法の詳細については、「[Service Bus による Shared Access Signature 認証](../service-bus-messaging/service-bus-shared-access-signature-authentication.md)」を参照してください。
 
 #### <a name="publishing-an-event"></a>イベントの発行
 AMQP 1.0 または HTTPS を介してイベントを発行することができます。 Service Bus は、.NET クライアントから Event Hub へのイベント発行で使用できる [EventHubClient](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.aspx) クラスを提供します。 その他のランタイムとプラットフォームには、 [Apache Qpid](http://qpid.apache.org/)などの任意の AMQP 1.0 クライアントを使用できます。 イベントを個別に発行することも、複数のイベントを一括して発行すること (バッチ) もできます。 単一イベントであるかバッチであるかにかかわらず、単一パブリケーション (イベント データ インスタンス) には 256 KB の制限があります。 これより大きいイベントを発行すると、エラーが発生します。 発行元にとっては、Event Hub 内のパーティションを意識せずに、次のセクションで説明する *パーティション キー* のみを指定するか、または SAS トークンを介して ID のみを指定するのがベスト プラクティスです。
@@ -130,7 +134,7 @@ Event Hubs では、 *発行元ポリシー*を介してイベント プロデ�
 
     //<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
 
-前もって発行元名を作成しておく必要はありませんが、独立した発行元 ID を保証するために、発行元名はイベントを発行するときに使用される SAS トークンと一致する必要があります。 SAS の詳細については、「[Service Bus での Shared Access Signature 認証](../service-bus/service-bus-shared-access-signature-authentication.md)」を参照してください。 発行元ポリシーを使用する場合は、 **PartitionKey** 値を発行元名に設定します。 適切に機能するために、これらの値が一致する必要があります。
+前もって発行元名を作成しておく必要はありませんが、独立した発行元 ID を保証するために、発行元名はイベントを発行するときに使用される SAS トークンと一致する必要があります。 SAS の詳細については、「[Service Bus での Shared Access Signature 認証](../service-bus-messaging/service-bus-shared-access-signature-authentication.md)」を参照してください。 発行元ポリシーを使用する場合は、 **PartitionKey** 値を発行元名に設定します。 適切に機能するために、これらの値が一致する必要があります。
 
 ## <a name="summary"></a>概要
 Azure Event Hubs では、一般的なアプリケーションおよびユーザー ワークフローを任意の規模で監視するために使用できる、非常にスケール性の高い、イベントとテレメトリ データの取り込みサービスを提供します。 低遅延で、かつ大きなスケールでパブリッシュ/サブスクライブ機能を実現する能力があるので、Event Hubs はビッグ データの "オン ランプ" として機能します。 発行元ベースの ID と失効リストを使用すると、これらの機能は一般的なモノのインターネット シナリオに拡張されます。 Event Hubs アプリケーションの開発の詳細については、「 [Event Hub プログラミング ガイド](event-hubs-programming-guide.md)」を参照してください。
@@ -147,6 +151,6 @@ Azure Event Hubs では、一般的なアプリケーションおよびユーザ
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

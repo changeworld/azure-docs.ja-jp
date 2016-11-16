@@ -1,12 +1,12 @@
 ---
-title: Set up your development environment | Microsoft Docs
-description: Install the runtime, SDK, and tools and create a local development cluster. After completing this setup, you will be ready to build applications.
+title: "開発環境のセットアップ | Microsoft Docs"
+description: "ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを終えれば、アプリケーションを構築する準備は完了です。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: get-started-article
@@ -14,22 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/26/2016
 ms.author: ryanwi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7ae0fcc689d51479a92c506ea48ab8af2003acfe
+
 
 ---
-# <a name="prepare-your-development-environment"></a>Prepare your development environment
+# <a name="prepare-your-development-environment"></a>開発環境を準備する
 > [!div class="op_single_selector"]
-> -[ Windows](service-fabric-get-started.md)
+> -[Windows](service-fabric-get-started.md)
 > 
 > * [Linux](service-fabric-get-started-linux.md)
 > * [OSX](service-fabric-get-started-mac.md)
 > 
 > 
 
- To build and run [Azure Service Fabric applications][1] on your development machine, install the runtime, SDK, and tools. You also need to enable execution of the Windows PowerShell scripts included in the SDK.
+ 開発コンピューターで [Azure Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、ツールをインストールする必要があります。 また、SDK に含まれる Windows PowerShell スクリプトの実行を有効にする必要があります。
 
-## <a name="prerequisites"></a>Prerequisites
-### <a name="supported-operating-system-versions"></a>Supported operating system versions
-The following operating system versions are supported for development:
+## <a name="prerequisites"></a>前提条件
+### <a name="supported-operating-system-versions"></a>サポートされるオペレーティング システムのバージョン
+開発では、次のオペレーティング システムのバージョンがサポートされます。
 
 * Windows 7
 * Windows 8/Windows 8.1
@@ -37,42 +41,42 @@ The following operating system versions are supported for development:
 * Windows 10
 
 > [!NOTE]
-> Windows 7 only includes Windows PowerShell 2.0 by default. Service Fabric PowerShell cmdlets requires PowerShell 3.0 or higher. You can [download Windows PowerShell 5.0][powershell5-download] from the Microsoft Download Center.
+> Windows 7 には、既定では Windows PowerShell 2.0 のみが含まれます。 Service Fabric PowerShell のコマンドレットには PowerShell 3.0 以降が必要です。 Microsoft ダウンロード センターから [Windows PowerShell 5.0 をダウンロード][powershell5-download]できます。
 > 
 > 
 
-## <a name="install-the-runtime,-sdk,-and-tools"></a>Install the runtime, SDK, and tools
-The Web Platform Installer offers two configurations for Service Fabric development:
+## <a name="install-the-runtime-sdk-and-tools"></a>ランタイム、SDK、およびツールのインストール
+Web Platform Installer には、Service Fabric 開発用に、次の 3 つの構成が用意されています。
 
-* [Install the Service Fabric runtime, SDK, and tools for Visual Studio 2015 (Requires Visual Studio 2015 Update 2 or later)][full-bundle-vs2015]
-* [Install the Service Fabric runtime and SDK only (no Visual Studio tools)][core-sdk]
+* [Visual Studio 2015 のための Service Fabric ランタイム、SDK、ツールをインストールする (Visual Studio 2015 Update 2 以降が必要)][full-bundle-vs2015]
+* [Service Fabric ランタイムと SDK のみをインストールする (Visual Studio ツールはインストールしない)][core-sdk]
 
-## <a name="enable-powershell-script-execution"></a>Enable PowerShell script execution
-Service Fabric uses Windows PowerShell scripts for creating a local development cluster and for deploying applications from Visual Studio. By default, Windows blocks these scripts from running. To enable them, you must modify your PowerShell execution policy. Open PowerShell as an administrator and enter the following command:
+## <a name="enable-powershell-script-execution"></a>PowerShell スクリプトの実行の有効化
+Service Fabric は、ローカル開発クラスターの作成、および Visual Studio からのアプリケーションのデプロイに、Windows PowerShell スクリプトを使用します。 既定では、Windows はこれらのスクリプトの実行をブロックします。 これらを有効にするには、PowerShell 実行ポリシーを変更する必要があります。 管理者として PowerShell を開き、次のコマンドを入力します。
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
 
-## <a name="next-steps"></a>Next steps
-Now that you've finished setting up your development environment, start building and running apps.
+## <a name="next-steps"></a>次のステップ
+開発環境のセットアップが完了したので、アプリのビルドと実行を開始してください。
 
-* [Create your first Service Fabric application in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
-* [Learn how to deploy and manage applications on your local cluster](service-fabric-get-started-with-a-local-cluster.md)
-* [Learn about the programming models: Reliable Services and Reliable Actors](service-fabric-choose-framework.md)
-* [Check out the Service Fabric code samples on GitHub](https://aka.ms/servicefabricsamples)
-* [Visualize your cluster by using Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
-* [Follow the Service Fabric learning path to get a broad introduction to the platform](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
+* [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
+* [ローカル クラスター上でアプリケーションをデプロイし管理する方法](service-fabric-get-started-with-a-local-cluster.md)
+* [サービスのフレームワークを選択する](service-fabric-choose-framework.md)
+* [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
+* [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
+* [Service Fabric のラーニング パスに沿ってプラットフォームの広範な概要を理解する](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 
-[1]: http://azure.microsoft.com/en-us/campaigns/service-fabric/ "Service Fabric campaign page"
+[1]: http://azure.microsoft.com/en-us/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI link"
-[full-bundle-dev15]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI link"
-[core-sdk]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI link"
+[full-bundle-vs2015]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI のリンク"
+[full-bundle-dev15]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI のリンク"
+[core-sdk]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "コア SDK WebPI のリンク"
 [powershell5-download]:https://www.microsoft.com/en-us/download/details.aspx?id=50395
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

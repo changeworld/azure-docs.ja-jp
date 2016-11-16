@@ -1,12 +1,12 @@
 ---
-title: Azure Security Center and Azure Virtual Machines | Microsoft Docs
-description: This document helps you to understand how Azure Security Center can safeguard you Azure Virtual Machines.
+title: "Azure Security Center と Azure 仮想マシン | Microsoft Docs"
+description: "このドキュメントでは、Azure Security Center で Azure 仮想マシンを保護する方法についてわかりやすく説明します。"
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
 ms.service: security-center
 ms.devlang: na
 ms.topic: hero-article
@@ -14,91 +14,98 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0c5cebf365f99866058aec25da0564ee0854af9a
+
 
 ---
-# <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center and Azure Virtual Machines
-[Azure Security Center](https://azure.microsoft.com/services/security-center/) helps you prevent, detect, and respond to threats. It provides integrated security monitoring and policy management across your Azure subscriptions, helps detect threats that might otherwise go unnoticed, and works with a broad ecosystem of security solutions.
+# <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center と Azure 仮想マシン
+[Azure Security Center](https://azure.microsoft.com/services/security-center/) は、脅威の防御、検出、対応を可能にする機能です。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-This article shows how Security Center can help you secure your Azure Virtual Machines (VM).
+この記事では、Azure 仮想マシン (VM) のセキュリティ保護に Security Center を活かす方法について説明します。
 
-## <a name="why-use-security-center?"></a>Why use Security Center?
-Security Center helps you safeguard virtual machine data in Azure by providing visibility into your virtual machine’s security settings. When Security Center safeguards your VMs, the following capabilities will be available:
+## <a name="why-use-security-center"></a>Security Center を使う意義
+Security Center は、仮想マシンのセキュリティ設定を可視化することによって、Azure にある仮想マシンのデータを保護するのに役立ちます。 Security Center で VM を保護すると、次の機能が使用できるようになります。
 
-* Operating System (OS) security settings with the recommended configuration rules
-* System security and critical updates that are missing
-* Endpoint protection recommendations
-* Disk encryption validation
-* Vulnerability assessment and remediation
-* Threat detection
+* 推奨される構成規則を使用したオペレーティング システム (OS) セキュリティ設定
+* 不足しているシステムのセキュリティ更新プログラムと重要な更新プログラム
+* エンドポイント保護の推奨事項
+* ディスク暗号化の検証
+* 脆弱性評価と修復
+* 脅威の検出
 
-In addition to helping protect your Azure VMs, Security Center also provides security monitoring and management for Cloud Services, App Services, Virtual Networks, and more. 
-
-> [!NOTE]
-> See [Introduction to Azure Security Center](security-center-intro.md) to learn more about Azure Security Center.
-> 
-> 
-
-## <a name="prerequisites"></a>Prerequisites
-To get started with Azure Security Center, you’ll need to know and consider the following:
-
-* You must have a subscription to Microsoft Azure. See [Security Center Pricing](https://azure.microsoft.com/pricing/details/security-center/) for more information on Security Center’s free and standard tiers.
-* Plan your Security Center adoption, see [Azure Security Center planning and operations guide](security-center-planning-and-operations-guide.md) to learn more about planning and operations considerations.
-* For information regarding operating system supportability, see [Azure Security Center frequently asked questions (FAQ)](security-center-faq.md). 
-
-## <a name="set-security-policy"></a>Set security policy
-Data collection needs to be enabled so that Azure Security Center can gather the information it needs to provide recommendations and alerts that are generated based on the security policy you configure. In the figure below, you can see that **Data collection** has been turned **On**.
-
-A security policy defines the set of controls which are recommended for resources within the specified subscription or resource group. Before enabling security policy, you must have data collection enabled, Security Center collects data from your virtual machines in order to assess their security state, provide security recommendations, and alert you to threats. In Security Center, you define policies for your Azure subscriptions or resource groups according to your company’s security needs and the type of applications or sensitivity of the data in each subscription. 
-
-![Security policy](./media/security-center-virtual-machine/security-center-virtual-machine-fig1.png)
+Security Center の機能は、Azure VM を保護することだけではありません。Cloud Services、App Services、Virtual Network などのセキュリティを監視して管理することもできます。 
 
 > [!NOTE]
-> To learn more about each **Prevention policy** available, see [Set security policies](security-center-policies.md) article.
+> Azure Security Center の詳細については、「[Azure Security Center 入門](security-center-intro.md)」をご覧ください。
 > 
 > 
 
-## <a name="manage-security-recommendations"></a>Manage security recommendations
-Security Center analyzes the security state of your Azure resources. When Security Center identifies potential security vulnerabilities, it creates recommendations. The recommendations guide you through the process of configuring the needed controls.
+## <a name="prerequisites"></a>前提条件
+Azure Security Center の使用を開始するには、次のことを理解して検討する必要があります。
 
-After setting a security policy, Security Center analyzes the security state of your resources to identify potential vulnerabilities. The recommendations are shown in a table format where each line represents one particular recommendation. The table below provides some examples of recommendations for Azure VMs and what each one will do if you apply it. When you select a recommendation, you will be provided information that shows you how to implement the recommendation in Security Center.
+* Microsoft Azure サブスクリプションを持っている必要があります。 Security Center の Free レベルと Standard レベルの詳細については、「[セキュリティ センターの価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
+* Security Center の導入を計画します。計画と運用の考慮事項の詳細については、「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」を参照してください。
+* サポートされているオペレーティング システムの情報については、「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」を参照してください。 
 
-| Recommendation | Description |
+## <a name="set-security-policy"></a>セキュリティ ポリシーの設定
+Azure Security Center で必要な情報を収集し、構成したセキュリティ ポリシーに基づいて推奨事項と警告を生成できるよう、データ収集を有効にしておく必要があります。 次の図では、**[データ収集]** が **[オン]** になっていることがわかります。
+
+セキュリティ ポリシーは、指定されたサブスクリプションまたはリソース グループ内のリソースに推奨されるコントロールのセットを定義します。 セキュリティ ポリシーを有効にする前に、データ収集を有効にしておく必要があります。Security Center では、仮想マシンのセキュリティ状態へのアクセス、セキュリティ推奨事項の提供、脅威についての警告を行うために、その仮想マシンからデータを収集します。 Security Center では、セキュリティに関する会社のニーズ、および各サブスクリプションでのアプリケーションの種類やデータの機密度に合わせて、Azure サブスクリプションまたはリソース グループのポリシーを定義できます。 
+
+![セキュリティ ポリシー](./media/security-center-virtual-machine/security-center-virtual-machine-fig1.png)
+
+> [!NOTE]
+> **[防止ポリシー]** で使用できる各ポリシーについては、[セキュリティ ポリシーの設定](security-center-policies.md)に関する記事を参照してください。
+> 
+> 
+
+## <a name="manage-security-recommendations"></a>セキュリティに関する推奨事項の管理
+セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 セキュリティ センターでは、潜在的なセキュリティの脆弱性が特定されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成する手順を説明します。
+
+セキュリティ ポリシーを設定すると、セキュリティ センターではリソースのセキュリティの状態が分析され、潜在的な脆弱性が特定されます。 推奨事項は表形式で表示されます。表の行はそれぞれ特定の推奨事項を表します。 次の表には、Azure VM の推奨事項の例が一部記載されているほか、それぞれ適用した場合に何が実行されるかについて記載されています。 推奨事項を選択すると、Security Center で推奨事項を実装する方法についての情報を確認できます。
+
+| 推奨 | Description |
 | --- | --- |
-| [Enable data collection for subscriptions](security-center-enable-data-collection.md) |Recommends that you turn on data collection in the security policy for each of your subscriptions and all virtual machines (VMs) in your subscriptions. |
-| [Remediate OS vulnerabilities](security-center-remediate-os-vulnerabilities.md) |Recommends that you align your OS configurations with the recommended configuration rules, e.g. do not allow passwords to be saved. |
-| [Apply system updates](security-center-apply-system-updates.md) |Recommends that you deploy missing system security and critical updates to VMs. |
-| [Reboot after system updates](security-center-apply-system-updates.md#reboot-after-system-updates) |Recommends that you reboot a VM to complete the process of applying system updates. |
-| [Install Endpoint Protection](security-center-install-endpoint-protection.md) |Recommends that you provision antimalware programs to VMs (Windows VMs only). |
-| [Resolve Endpoint Protection health alerts](security-center-resolve-endpoint-protection-health-alerts.md) |Recommends that you resolve endpoint protection failures. |
-| [Enable VM Agent](security-center-enable-vm-agent.md) |Enables you to see which VMs require the VM Agent. The VM Agent must be installed on VMs in order to provision patch scanning, baseline scanning, and antimalware programs. The VM Agent is installed by default for VMs that are deployed from the Azure Marketplace. The article [VM Agent and Extensions – Part 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) provides information on how to install the VM Agent. |
-| [Apply disk encryption](security-center-apply-disk-encryption.md) |Recommends that you encrypt your VM disks using Azure Disk Encryption (Windows and Linux VMs). Encryption is recommended for both the OS and data volumes on your VM. |
-| [Vulnerability assessment not installed](security-center-vulnerability-assessment-recommendations.md) |Recommends that you install a vulnerability assessment solution on your VM. |
-| [Remediate vulnerabilities](security-center-vulnerability-assessment-recommendations.md#review-recommendation) |Enables you to see system and application vulnerabilities detected by the vulnerability assessment solution installed on your VM. |
+| [サブスクリプションのデータ収集の有効化](security-center-enable-data-collection.md) |各サブスクリプションおよびサブスクリプションのすべての仮想マシン (VM) に対して、セキュリティ ポリシーでデータ収集を有効にすることをお勧めします。 |
+| [OS の脆弱性の修復](security-center-remediate-os-vulnerabilities.md) |OS の構成を推奨される構成規則 (パスワードの保存を許可しないなど) に合わせることをお勧めします。 |
+| [システムの更新の適用](security-center-apply-system-updates.md) |システムの不足しているセキュリティ更新プログラムおよび重要な更新プログラムを VM にデプロイすることをお勧めします。 |
+| [システムの更新後に再起動する](security-center-apply-system-updates.md#reboot-after-system-updates) |VM を再起動してシステムの更新プログラムの適用プロセスを完了するよう推奨します。 |
+| [Endpoint Protection をインストールします](security-center-install-endpoint-protection.md) |マルウェア対策プログラムを VM (Windows VM のみ) にプロビジョニングすることをお勧めします。 |
+| [Endpoint Protection の正常性アラートの解決](security-center-resolve-endpoint-protection-health-alerts.md) |Endpoint Protection のエラーを解決することをお勧めします。 |
+| [VM エージェントの有効化](security-center-enable-vm-agent.md) |VM エージェントを必要とする VM を確認できます。 パッチのスキャン、基準のスキャン、およびマルウェア対策プログラムをプロビジョニングするには、VM 上に VM エージェントをインストールする必要があります。 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 「 [VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) 」の記事には、VM エージェントのインストール方法が記載されています。 |
+| [ディスク暗号化の適用](security-center-apply-disk-encryption.md) |Azure Disk Encryption を使用して VM ディスクを暗号化することをお勧めします (Windows VM および Linux VM)。 VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。 |
+| [脆弱性評価がインストールされていません](security-center-vulnerability-assessment-recommendations.md) |VM に脆弱性評価ソリューションをインストールすることをお勧めします。 |
+| [脆弱性の修復](security-center-vulnerability-assessment-recommendations.md#review-recommendation) |VM にインストールされている脆弱性評価ソリューションによって検出された、システムとアプリケーションの脆弱性を確認できます。 |
 
 > [!NOTE]
-> To learn more about recommendations, see [Managing security recommendations](security-center-recommendations.md) article.
+> 推奨事項の詳細については、[セキュリティに関する推奨事項の管理](security-center-recommendations.md)についての記事を参照してください。
 > 
 > 
 
-## <a name="monitor-security-health"></a>Monitor security health
-After you enable [security policies](security-center-policies.md) for a subscription’s resources, Security Center will analyze the security of your resources to identify potential vulnerabilities.  You can view the security state of your resources, along with any issues in the **Resource security health** blade. When you click **Virtual machines** in the **Resource security** health tile, the **Virtual machines** blade will open with recommendations for your VMs. 
+## <a name="monitor-security-health"></a>セキュリティ正常性を監視する
+サブスクリプションのリソースに対して [セキュリティ ポリシー](security-center-policies.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  **[リソース セキュリティの正常性]** ブレードで、リソースのセキュリティの状態と、問題がある場合はその問題を確認することができます。 **[リソース セキュリティの正常性]** タイルの **[仮想マシン]** をクリックすると、**[仮想マシン]** ブレードが開いて VM の推奨事項が表示されます。 
 
-![Security health](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
+![セキュリティの正常性](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
-## <a name="manage-and-respond-to-security-alerts"></a>Manage and respond to security alerts
-Security Center automatically collects, analyzes, and integrates log data from your Azure resources, the network, and connected partner solutions (like firewall and endpoint protection solutions), to detect real threats and reduce false positives. By leveraging a diverse aggregation of [detection capabilities](security-center-detection-capabilities.md), Security Center is able to generate prioritized security alerts to help you quickly investigate the problem and provide recommendations for how to remediate possible attacks.
+## <a name="manage-and-respond-to-security-alerts"></a>セキュリティの警告の管理と対応
+Security Center は、真の脅威を検出し、偽陽性を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。 [検出機能](security-center-detection-capabilities.md)のさまざまな集計を利用することで、問題を迅速に調査するうえで役に立つ、優先順位付きのセキュリティの警告を生成できるほか、潜在的な攻撃の修復方法に関する推奨事項を提示することができます。
 
-![Security alerts](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
+![セキュリティのアラート](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
 
-Select a security alert to learn more about the event(s) that triggered the alert and what, if any, steps you need to take to remediate an attack. Security alerts are grouped by [type](security-center-alerts-type.md) and date.
+セキュリティの警告を選択して、警告を発生させたイベントの詳細を確認します。必要に応じて、攻撃を受けたものを修復するために必要な手順を確認します。 セキュリティの警告は、[種類](security-center-alerts-type.md)と日付によってグループ化されます。
 
-## <a name="see-also"></a>See also
-To learn more about Security Center, see the following:
+## <a name="see-also"></a>関連項目
+セキュリティ センターの詳細については、次を参照してください。
 
-* [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies for your Azure subscriptions and resource groups.
-* [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
-* [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
+* [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
+* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

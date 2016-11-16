@@ -1,5 +1,9 @@
 --- 
-layout: HubPage 
+layout: HubPage
+translationtype: Human Translation
+ms.sourcegitcommit: ae13eb84d8a28259ba3c737abbac1181d5ebbe0b
+ms.openlocfilehash: b5010bedfb6a0edceaec6f96209cd73b066d683c
+
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -15,7 +19,7 @@ layout: HubPage
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <h3>Get Started Guide for Azure Developers</h3>
+                                    <h3>Azure 開発者向けファースト ステップ ガイド</h3>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +37,7 @@ layout: HubPage
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <h3>Get Started Guide for Azure IT Operators</h3>
+                                    <h3>Azure IT オペレーター向けファースト ステップ ガイド</h3>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +55,7 @@ layout: HubPage
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <h3>5-Minute Getting Started Videos</h3>
+                                    <h3>5 分間の概要ビデオ</h3>
                                 </div>
                             </div>
                         </div>
@@ -63,10 +67,10 @@ layout: HubPage
     <div class="container">
         <ul class="pivots">
             <li>
-                <a href="#services">Services</a>
+                <a href="#services">サービス</a>
                 <ul id="services">
                     <li>
-                        <a href="#Compute">Compute</a>
+                        <a href="#Compute">コンピューティング</a>
                         <ul id="Compute" class="cardsA">
                             <li>
                                 <a href="/azure/virtual-machines/linux/">
@@ -79,8 +83,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Linux Virtual Machines</h3>
-                                                    <p>Provision virtual machines of Ubuntu, Red Hat, and more</p>
+                                                    <h3>Linux 仮想マシン</h3>
+                                                    <p>Ubuntu、Red Hat などの仮想マシンをプロビジョニングします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,8 +102,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Windows Virtual Machines</h3>
-                                                    <p>Provision virtual machines for SQL Server, SharePoint and more</p>
+                                                    <h3>Windows 仮想マシン</h3>
+                                                    <p>SQL Server、SharePoint などの仮想マシンをプロビジョニングします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -117,8 +121,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Virtual Machine Scale Sets</h3>
-                                                    <p>Create highly available, auto scalable Linux or Windows virtual machines</p>
+                                                    <h3>仮想マシン スケール セット</h3>
+                                                    <p>可用性が高く、自動スケール可能な Linux または Windows の仮想マシンを作成します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -137,7 +141,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>App Service</h3>
-                                                    <p>Create web and mobile apps for any platform and any device</p>
+                                                    <p>プラットフォームやデバイスを問わず Web アプリとモバイル アプリを作成します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -156,7 +160,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Service</h3>
-                                                    <p>Use Docker based tools to deploy and manage containers</p>
+                                                    <p>Docker ベースのツールを使用してコンテナーをデプロイおよび管理します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -174,8 +178,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Functions</h3>
-                                                    <p>Process events with serverless code</p>
+                                                    <h3>関数</h3>
+                                                    <p>サーバー不要のコードを使用してイベントを処理します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -194,7 +198,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Service Fabric</h3>
-                                                    <p>Build and operate always-on, scalable, distributed applications</p>
+                                                    <p>常時接続かつスケーラブルな分散アプリケーションを構築して運用します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -212,8 +216,9 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Batch</h3>
-                                                    <p>Run large-scale parallel and batch compute jobs</p>
+                                                    <h3>Batch
+</h3>
+                                                    <p>大規模な並列/バッチ コンピューティング ジョブの実行します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -232,7 +237,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Cloud Services</h3>
-                                                    <p>Create Highly Available, infinitely scalable cloud applications and APIs</p>
+                                                    <p>高可用性と無限の拡張性を備えたクラウド アプリケーションと API を作成します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -242,7 +247,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#network">Networking</a>
+                        <a href="#network">ネットワーク</a>
                         <ul id="network" class="cardsA">
                             <li>
                                 <a href="/azure/virtual-network/">
@@ -255,8 +260,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Virtual Network</h3>
-                                                    <p>Provision private networks, optionally connect to on-premises datacenters</p>
+                                                    <h3>仮想ネットワーク</h3>
+                                                    <p>プライベート ネットワークをプロビジョニングし、オプションでオンプレミスのデータセンターに接続します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -275,7 +280,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Load Balancer</h3>
-                                                    <p>Deliver high availability and network performance to your applications</p>
+                                                    <p>優れた可用性とネットワーク パフォーマンスをアプリケーションに提供します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -294,8 +299,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Application Gateway</h3>
-                                                    <p>Layer 7 Load Balancer with built-in HTTP load balancing and delivery
-                                                        control</p>
+                                                    <p>HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 Load Balancer</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -314,7 +318,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>VPN Gateway</h3>
-                                                    <p>Establish secure, cross-premises connectivity</p>
+                                                    <p>安全なクロスプレミス接続を確立します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -333,7 +337,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure DNS</h3>
-                                                    <p>Host your DNS domain in Azure</p>
+                                                    <p>Azure で DNS ドメインをホストします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -352,8 +356,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>CDN</h3>
-                                                    <p>Deliver content to end-users through a robust network of global data
-                                                        centers </p>
+                                                    <p>グローバル データ センターの信頼性の高いネットワークを介して、コンテンツをエンド ユーザーに配信します </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -372,7 +375,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Traffic Manager</h3>
-                                                    <p>Route incoming traffic for high performance and availability</p>
+                                                    <p>高パフォーマンスと高可用性のために着信トラフィックをルーティングします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -391,7 +394,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>ExpressRoute</h3>
-                                                    <p>Dedicated private network fiber connections to Azure</p>
+                                                    <p>Azure への専用プライベート ネットワーク ファイバー接続</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -401,7 +404,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#storage">Storage</a>
+                        <a href="#storage">ストレージ</a>
                         <ul id="storage" class="cardsA">
                             <li>
                                 <a href="/azure/storage/">
@@ -415,7 +418,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Storage</h3>
-                                                    <p>Durable, highly available and massively scalable cloud storage</p>
+                                                    <p>耐久性があり、高度にスケーラブルな高可用性クラウド ストレージ</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -434,7 +437,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Store</h3>
-                                                    <p>Hyperscale repository for big data analytics workloads</p>
+                                                    <p>ビッグ データの分析ワークロード用のハイパースケール リポジトリ</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -453,7 +456,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>StorSimple</h3>
-                                                    <p>Hybrid cloud storage for enterprises that improves data security</p>
+                                                    <p>データ セキュリティを強化する、エンタープライズ用のハイブリッド クラウド ストレージ</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -471,8 +474,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup</h3>
-                                                    <p>Simple and reliable server backup to the cloud</p>
+                                                    <h3>バックアップ</h3>
+                                                    <p>クラウドへのシンプルで信頼性の高いサーバー バックアップ サービス</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -491,7 +494,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Site Recovery</h3>
-                                                    <p>Orchestrate protection and recovery of private clouds</p>
+                                                    <p>プライベート クラウドの保護と回復の調整します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -501,7 +504,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#web">Web + Mobile</a>
+                        <a href="#web">Web + モバイル</a>
                         <ul id="web" class="cardsA">
                             <li>
                                 <a href="/azure/app-service/">
@@ -515,7 +518,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>App Service</h3>
-                                                    <p>Learn about building scalable web and mobile apps</p>
+                                                    <p>スケーラブルな Web アプリとモバイル アプリの構築を理解します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -534,7 +537,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Web Apps</h3>
-                                                    <p>Quickly create and deploy mission critical Web apps at scale</p>
+                                                    <p>大規模な基幹業務系 Web アプリを短時間で作成してデプロイします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -553,7 +556,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Mobile Apps</h3>
-                                                    <p>Build and host the backend for any mobile app</p>
+                                                    <p>モバイル アプリ用のバックエンドを構築およびホストします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -572,7 +575,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Apps</h3>
-                                                    <p>Easily build and consume Cloud API</p>
+                                                    <p>クラウド API を簡単に作成して使用します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -591,7 +594,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Logic Apps</h3>
-                                                    <p>Automate the access and use of data across clouds without writing code</p>
+                                                    <p>コードを記述せずに、クラウド全体でデータのアクセスと使用を自動化します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -610,8 +613,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>CDN</h3>
-                                                    <p>Deliver content to end-users through a robust network of global data
-                                                        centers </p>
+                                                    <p>グローバル データ センターの信頼性の高いネットワークを介して、コンテンツをエンド ユーザーに配信します </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -630,7 +632,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Media Services</h3>
-                                                    <p>Encode, store, and stream video and audio at scale</p>
+                                                    <p>大規模にビデオおよびオーディオをエンコード、保存、ストリーミングします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -649,7 +651,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Search</h3>
-                                                    <p>Fully-managed search-as-a-service</p>
+                                                    <p>完全に管理された、サービスとしての検索</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -668,7 +670,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Mobile Engagement</h3>
-                                                    <p>Increase app usage and user retention</p>
+                                                    <p>アプリの使用率とユーザーのリテンション期間を増加させます</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -678,7 +680,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#databases">Databases</a>
+                        <a href="#databases">データベース</a>
                         <ul id="databases" class="cardsA">
                             <li>
                                 <a href="/azure/sql-database/">
@@ -692,7 +694,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Database</h3>
-                                                    <p>Managed relational database-as-a-service</p>
+                                                    <p>管理された、サービスとしてのリレーショナル データベース</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -711,7 +713,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Data Warehouse</h3>
-                                                    <p>Elastic data warehouse-as-a-service with enterprise-class features</p>
+                                                    <p>エンタープライズ クラスの機能を伴うエラスティックなサービスとしてのデータ ウェアハウス</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -730,7 +732,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Server Stretch Database</h3>
-                                                    <p>Dynamically stretch on-premises SQL Server databases to Azure</p>
+                                                    <p>オンプレミス SQL Server データベースを Azure に動的に拡張します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -749,7 +751,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>DocumentDB</h3>
-                                                    <p>Managed NoSQL document database-as-a-service</p>
+                                                    <p>管理された、サービスとしての NoSQL ドキュメント データベース</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -768,7 +770,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Redis Cache</h3>
-                                                    <p>High throughput, low latency data access to build fast/scalable applications</p>
+                                                    <p>スループット向上とデータ アクセスの待機時間の短縮により、高速で拡張性の高いアプリケーションを作成します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -787,7 +789,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Factory</h3>
-                                                    <p>Orchestrate and manage data transformation and movement</p>
+                                                    <p>データの変換と移動を調整および管理します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -797,7 +799,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#analytics">Intelligence + Analytics</a>
+                        <a href="#analytics">インテリジェンス + 分析</a>
                         <ul id="analytics" class="cardsA">
                             <li>
                                 <a href="/azure/hdinsight/">
@@ -811,7 +813,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>HDInsight</h3>
-                                                    <p>Provision cloud Hadoop, Spark, R Server, Hbase, and Storm clusters</p>
+                                                    <p>クラウド Hadoop、Spark、R Server、HBase、および Storm クラスターをプロビジョニングします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -830,7 +832,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning</h3>
-                                                    <p>Powerful cloud based predictive analytics tool to enable predictive maintenance</p>
+                                                    <p>予測メンテナンスを可能にする強力なクラウドベースの予測分析ツール</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -849,7 +851,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Stream Analytics</h3>
-                                                    <p>Real-time data stream processing from millions of IoT devices</p>
+                                                    <p>数百万の IoT デバイスからのデータ ストリームをリアルタイムで処理します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -868,7 +870,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Cognitive Services</h3>
-                                                    <p>Add smart API capabilities to enable contextual interactions</p>
+                                                    <p>スマートな API 機能を追加して状況に合ったやり取りを実現します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -887,7 +889,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Analytics</h3>
-                                                    <p>Distributed analytics service that makes big data easy</p>
+                                                    <p>ビッグ データを簡単にする分散分析サービス</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -906,7 +908,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Store</h3>
-                                                    <p>Hyperscale repository for big data analytics workloads</p>
+                                                    <p>ビッグ データの分析ワークロード用のハイパースケール リポジトリ</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -925,7 +927,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Factory</h3>
-                                                    <p>Orchestrate and manage data transformation and movement</p>
+                                                    <p>データの変換と移動を調整および管理します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -943,8 +945,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>PowerBI Embedded</h3>
-                                                    <p>Embed fully interactive, stunning data visualizations in your applications</p>
+                                                    <h3>Power BI Embedded</h3>
+                                                    <p>魅力的で完全対話式のデータの可視化をアプリケーションに組み込みます</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -954,7 +956,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#iot">Internet of Things</a>
+                        <a href="#iot">モノのインターネット</a>
                         <ul id="iot" class="cardsA">
                             <li>
                                 <a href="https://azure.microsoft.com/en-us/develop/iot/">
@@ -967,8 +969,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>IoT Developer Center</h3>
-                                                    <p>Get started connecting your devices</p>
+                                                    <h3>IoT デベロッパー センター</h3>
+                                                    <p>デバイスの接続を開始します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -987,7 +989,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure IoT Hub</h3>
-                                                    <p>Connect, monitor, and control billions of IoT assets</p>
+                                                    <p>何十億もの IoT 資産を接続して、監視、制御します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1006,7 +1008,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Event Hubs</h3>
-                                                    <p>Receive telemetry from millions of devices</p>
+                                                    <p>何百万ものデバイスから製品利用統計情報を受信します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1025,7 +1027,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Stream Analytics</h3>
-                                                    <p>Real-time data stream processing from millions of IoT devices</p>
+                                                    <p>数百万の IoT デバイスからのデータ ストリームをリアルタイムで処理します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1044,7 +1046,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning</h3>
-                                                    <p>Powerful cloud based predictive analytics tool to enable predictive maintenance</p>
+                                                    <p>予測メンテナンスを可能にする強力なクラウドベースの予測分析ツール</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1063,7 +1065,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Notification Hubs</h3>
-                                                    <p>A scalable, push notification engine for quickly sending millions of messages</p>
+                                                    <p>数百万のメッセージを迅速に送信できるスケーラブルなプッシュ通知エンジン</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1073,7 +1075,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#integration">Enterprise Integration</a>
+                        <a href="#integration">エンタープライズ統合</a>
                         <ul id="integration" class="cardsA">
                             <li>
                                 <a href="/azure/logic-apps/">
@@ -1087,7 +1089,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Logic Apps</h3>
-                                                    <p>Automate the access and use of data across clouds without writing code</p>
+                                                    <p>コードを記述せずに、クラウド全体でデータのアクセスと使用を自動化します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1105,8 +1107,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Biztalk Services</h3>
-                                                    <p>Seamlessly integrate the enterprise and the cloud</p>
+                                                    <h3>BizTalk Services</h3>
+                                                    <p>エンタープライズとクラウドをシームレスに統合します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1125,7 +1127,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Service Bus</h3>
-                                                    <p>Connect across private and public cloud environments</p>
+                                                    <p>プライベートとパブリックのクラウド環境間で接続します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1144,7 +1146,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Management</h3>
-                                                    <p>Publish APIs to developers, partners and employees securely and at scale</p>
+                                                    <p>API を開発者、パートナー、従業員に安全かつ大規模に発行します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1163,7 +1165,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>StorSimple</h3>
-                                                    <p>Hybrid cloud storage for enterprises that improves data security</p>
+                                                    <p>データ セキュリティを強化する、エンタープライズ用のハイブリッド クラウド ストレージ</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1182,7 +1184,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Server Stretch Database</h3>
-                                                    <p>Dynamically stretch on-premises SQL Server databases to Azure</p>
+                                                    <p>オンプレミス SQL Server データベースを Azure に動的に拡張します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1201,7 +1203,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Factory</h3>
-                                                    <p>Orchestrate and manage data transformation and movement</p>
+                                                    <p>データの変換と移動を調整および管理します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1211,7 +1213,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#security">Security + Identity</a>
+                        <a href="#security">セキュリティ + ID</a>
                         <ul id="security" class="cardsA">
                             <li>
                                 <a href="/azure/security-center">
@@ -1224,8 +1226,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Security Center</h3>
-                                                    <p>Prevent, detect and respond to threats with increased visibility</p>
+                                                    <h3>セキュリティ センター</h3>
+                                                    <p>高度な視覚化により脅威を回避、検出、対応します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1244,7 +1246,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Key Vault</h3>
-                                                    <p>Learn how to manage cryptographic keys and secrets</p>
+                                                    <p>暗号化キーと秘密情報の管理方法について確認します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1263,7 +1265,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Active Directory</h3>
-                                                    <p>Synchronize on-premises directories and enable single sign-on</p>
+                                                    <p>オンプレミスのディレクトリを同期してシングル サインオンを可能にします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1282,7 +1284,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Active Directory B2C</h3>
-                                                    <p>Consumer identity and access management in the cloud</p>
+                                                    <p>コンシューマーの ID とアクセスの管理をクラウドで実行します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1301,7 +1303,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Active Directory Domain Services</h3>
-                                                    <p>Join Azure virtual machines to a domain without domain controllers</p>
+                                                    <p>ドメイン コントローラーを使用せずにドメインに Azure 仮想マシンを参加させます</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1320,7 +1322,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Multi-Factor Authentication</h3>
-                                                    <p>Safeguard access to your data and apps with an extra level of authentication</p>
+                                                    <p>高度な認証により、データとアプリへのアクセスを保護します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1338,8 +1340,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Security Information</h3>
-                                                    <p>Learn how Azure provides a secure infrastructure to build cloud solutions</p>
+                                                    <h3>セキュリティ情報</h3>
+                                                    <p>クラウド ソリューションを構築するための安全なインフラストラクチャを Azure で実現するしくみについて理解します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1349,7 +1351,7 @@ layout: HubPage
                         </ul>
                     </li> 
                     <li>
-                        <a href="#devtools">Developer Tools</a>
+                        <a href="#devtools">開発者ツール</a>
                         <ul id="devtools" class="cardsA">
                             <li>
                                 <a href="https://www.visualstudio.com/en-us/docs/overview">
@@ -1363,7 +1365,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Visual Studio Team Services</h3>
-                                                    <p>Services for teams to share code, track work, and ship software</p>
+                                                    <p>チームがコードの共有、作業の追跡、ソフトウェアの出荷を行うためのサービス</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1382,7 +1384,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure DevTest Labs</h3>
-                                                    <p>Quickly create environments using reusable templates and artifacts</p>
+                                                    <p>再利用可能なテンプレートとアーティファクトを使用して環境をすばやく構築します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1401,7 +1403,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Visual Studio Application Insights</h3>
-                                                    <p>Detect, triage, and diagnose issues in your web apps and services</p>
+                                                    <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1420,7 +1422,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Management</h3>
-                                                    <p>Publish APIs to developers, partners and employees securely and at scale</p>
+                                                    <p>API を開発者、パートナー、従業員に安全かつ大規模に発行します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1439,7 +1441,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>HockeyApp</h3>
-                                                    <p>Deploy mobile apps, collect feedback and crash reports, and monitor usage</p>
+                                                    <p>モバイル アプリのデプロイ、フィードバックおよびクラッシュ レポートの収集、使用量の監視を実現します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1449,7 +1451,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#mgmt">Monitoring + Management</a>
+                        <a href="#mgmt">監視 + 管理</a>
                         <ul id="mgmt" class="cardsA">
                             <li>
                                 <a href="/azure/application-insights/">
@@ -1463,7 +1465,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Visual Studio Application Insights</h3>
-                                                    <p>Detect, triage, and diagnose issues in your web apps and services</p>
+                                                    <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1482,7 +1484,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Log Analytics</h3>
-                                                    <p>Learn how to transform machine data into operational intelligence</p>
+                                                    <p>マシン データをオペレーション インテリジェンスに変換する方法を確認します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1501,7 +1503,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Automation</h3>
-                                                    <p>Simplify cloud management with process automation</p>
+                                                    <p>プロセス自動化でクラウド管理を簡素化します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1519,8 +1521,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup</h3>
-                                                    <p>Simple and reliable server backup to the cloud</p>
+                                                    <h3>バックアップ</h3>
+                                                    <p>クラウドへのシンプルで信頼性の高いサーバー バックアップ サービス</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1539,7 +1541,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Site Recovery</h3>
-                                                    <p>Orchestrate protection and recovery of private clouds</p>
+                                                    <p>プライベート クラウドの保護と回復の調整します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1558,7 +1560,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Scheduler</h3>
-                                                    <p>Run your jobs on simple or comples recurring schedules</p>
+                                                    <p>単純または複雑な定期的スケジュールでジョブを実行します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1577,7 +1579,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Traffic Manager</h3>
-                                                    <p>Route incoming traffic for high performance and availability</p>
+                                                    <p>高パフォーマンスと高可用性のために着信トラフィックをルーティングします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1596,7 +1598,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Monitor</h3>
-                                                    <p>Highly granular and real-time monitorign data for any Azure resource</p>
+                                                    <p>Azure リソースのデータを詳細かつリアルタイムに監視します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1614,8 +1616,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Billing</h3>
-                                                    <p>Learn how to read/understand the usage and bill for your Azure subscription</p>
+                                                    <h3>課金</h3>
+                                                    <p>Azure サブスクリプションの使用状況と課金内容を確認し、理解する方法を調べます</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1652,8 +1654,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Resource Manager</h3>
-                                                    <p>Work with the resources in as a group for Azure Services</p>
+                                                    <h3>Azure リソース マネージャー</h3>
+                                                    <p>Azure サービスのグループとしてリソースを操作します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1663,28 +1665,28 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#all">All</a>
+                        <a href="#all">すべて</a>
                         <ul id="all" class="directory">
                             <li>
                                 <div class="group">
-                                    <h3>Compute</h3>
+                                    <h3>計算</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/virtual-machines/linux/">
                                                 <img src="media/index/VirtualMachine.svg" alt="" />
-                                                <p>Linux Virtual Machines</p>
+                                                <p>Linux 仮想マシン</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/virtual-machines/windows/">
                                                 <img src="media/index/VirtualMachine.svg" alt="" />
-                                                <p>Windows Virtual Machines</p>
+                                                <p>Windows 仮想マシン</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/virtual-machine-scale-sets/">
                                                 <img src="media/index/AvailabilitySetOld.svg" alt="" />
-                                                <p>Virtual Machine Scale Sets</p>
+                                                <p>仮想マシン スケール セット</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1702,7 +1704,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/azure-functions/">
                                                 <img src="media/index/AzureFunctions.svg" alt="" />
-                                                <p>Functions</p>
+                                                <p>関数</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1714,7 +1716,8 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>Batch</p>
+                                                <p>Batch
+</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1726,12 +1729,12 @@ layout: HubPage
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Networking</h3>
+                                    <h3>ネットワーク</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/virtual-network/">
                                                 <img src="media/index/VirtualNetwork.svg" alt="" />
-                                                <p>Virtual Network</p>
+                                                <p>仮想ネットワーク</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1802,7 +1805,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Backup</p>
+                                                <p>バックアップ</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1816,8 +1819,7 @@ layout: HubPage
                              </li>
                             <li>
                                 <div class="group">
-                                    <h3>Web + Mobile
-                                    </h3>
+                                    <h3>Web + Mobile </h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/app-service/">
@@ -1876,7 +1878,7 @@ layout: HubPage
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Databases</h3>
+                                    <h3>データベース</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/sql-database/">
@@ -1917,7 +1919,7 @@ layout: HubPage
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Intelligence + Analytics</h3>
+                                    <h3>インテリジェンス + 分析</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/hdinsight/">
@@ -1964,7 +1966,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/power-bi-embedded/">
                                                 <img src="media/index/PowerBIEmbedded.svg" alt="" />
-                                                <p>PowerBI Embedded</p>
+                                                <p>Power BI Embedded</p>
                                             </a>
                                         </li>
                                         <!-- <li>
@@ -1978,12 +1980,12 @@ layout: HubPage
                             </li>
                             <li>
                                 <div class="group">
-                                    <h3>Internet of Things</h3>
+                                    <h3>モノのインターネット</h3>
                                     <ul>
                                         <li>
                                             <a href="https://azure.microsoft.com/develop/iot/">
                                                 <img src="media/index/IoTHub.svg" alt="" />
-                                                <p>IoT Developer Center</p>
+                                                <p>IoT デベロッパー センター</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2019,7 +2021,7 @@ layout: HubPage
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Enterprise Integration</h3>
+                                    <h3>エンタープライズ統合</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/logic-apps/">
@@ -2030,7 +2032,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/biztalk-services/">
                                                 <img src="media/index/BizTalkServices.svg" alt="" />
-                                                <p>Biztalk Services</p>
+                                                <p>BizTalk Services</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2066,13 +2068,12 @@ layout: HubPage
                                     </ul>
                                 </div>
                                  <div class="group">
-                                    <h3>Security + Identity
-                                    </h3>
+                                    <h3>セキュリティ + ID </h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/security-center">
                                                 <img src="media/index/SecurityCenter.svg" alt="" />
-                                                <p>Security Center</p>
+                                                <p>セキュリティ センター</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2096,7 +2097,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/active-directory-domain-services">
                                                 <img src="media/index/ActiveDirectory.svg" alt="" />
-                                                <p>Azure Active Directory Domain Services</p>
+                                                <p>Azure Active Directory ドメイン サービス</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2108,7 +2109,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/security/">
                                                 <img src="media/index/SecurityCenter.svg" alt="" />
-                                                <p>Security Information</p>
+                                                <p>セキュリティ情報</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2116,7 +2117,7 @@ layout: HubPage
                             </li>
                             <li>
                                 <div class="group">
-                                    <h3>Developer Tools</h3>
+                                    <h3>開発者ツール</h3>
                                     <ul>
                                         <li>
                                             <a href="https://www.visualstudio.com/docs/overview">
@@ -2151,8 +2152,7 @@ layout: HubPage
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Monitoring + Management
-                                    </h3>
+                                    <h3>監視 + 管理 </h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/application-insights/">
@@ -2175,7 +2175,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Backup</p>
+                                                <p>バックアップ</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2205,7 +2205,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/billing/">
                                                 <img src="media/index/AzureDefaultBlack.svg" alt="" />
-                                                <p>Billing</p>
+                                                <p>課金</p>
                                             </a>
                                         </li>
                                         <!-- <li>
@@ -2217,7 +2217,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/azure-resource-manager/">
                                                 <img src="media/index/AzureDefaultBlack.svg" alt="" />
-                                                <p>Azure Resource Manager</p>
+                                                <p>Azure リソース マネージャー</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2228,10 +2228,10 @@ layout: HubPage
                 </ul>
             </li>
             <li>
-                <a href="#developer">Developer</a>
+                <a href="#developer">開発者</a>
                 <ul id="developer">
                     <li>
-                        <a href="#languages">Languages &amp; Frameworks</a>
+                        <a href="#languages">言語 &amp; フレームワーク</a>
                         <ul id="languages" class="cardsF">
                             <li>
                                 <div class="cardSize">
@@ -2244,16 +2244,16 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/en-us/downloads/">Get the .NET SDK</a>
+                                                    <a href="https://azure.microsoft.com/en-us/downloads/">.NET SDK の入手</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/net/">Get started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/net/">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/rest/api">API reference</a>
+                                                    <a href="/rest/api">API リファレンス</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=dotnet">Get examples</a>
+                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=dotnet">サンプルの入手</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2271,16 +2271,16 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/python/">Get the Python SDK</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/python/">Python SDK の入手</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/python/">Get started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/python/">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">API reference</a>
+                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">API リファレンス</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=node">Get examples</a>
+                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=node">サンプルの入手</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2298,16 +2298,16 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/nodejs/">Get the Nodejs SDK</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/nodejs/">Nodejs SDK の入手</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/nodejs">Get started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/nodejs">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://azure.github.io/azure-storage-node/index.html">API reference</a>
+                                                    <a href="http://azure.github.io/azure-storage-node/index.html">API リファレンス</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=node">Get  examples</a>
+                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=node">サンプルの入手</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2325,16 +2325,16 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=690320">Get the Java SDK</a>
+                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=690320">Java SDK の入手</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/java/">Get started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/java/">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/java/api/">API reference</a>
+                                                    <a href="/java/api/">API リファレンス</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=java">Get examples</a>
+                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=java">サンプルの入手</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2352,16 +2352,16 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/en-us/downloads/">Get the Ruby SDK</a>
+                                                    <a href="https://azure.microsoft.com/en-us/downloads/">Ruby SDK の入手</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/ruby/">Get started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/ruby/">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">API reference</a>
+                                                    <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">API リファレンス</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=ruby">Get examples</a>
+                                                    <a href="https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=ruby">サンプルの入手</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2379,13 +2379,13 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="">Get started with REST</a>
+                                                    <a href="">REST の使用</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="/rest/api">Reference</a>
+                                                    <a href="/rest/api">リファレンス</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=rest">Get examples</a>
+                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=rest">サンプルの入手</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2395,7 +2395,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#cli">Command Line Interface (CLI)</a>
+                        <a href="#cli">コマンド ライン インターフェイス (CLI)</a>
                         <ul id="cli" class="cardsF">
                             <li>
                                 <div class="cardSize">
@@ -2407,16 +2407,15 @@ layout: HubPage
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>Azure CLI 2.0 Preview
-                                                </h3>
+                                                <h3>Azure CLI 2.0 プレビュー </h3>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/cli/azure/get-started/">Get Started</a>
+                                                    <a href="https://docs.microsoft.com/cli/azure/get-started/">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure/azure-cli">Download Azure CLI 2.0</a>
+                                                    <a href="https://github.com/Azure/azure-cli">Azure CLI 2.0 のダウンロード</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/cli/azure">Reference</a>
+                                                    <a href="/cli/azure">リファレンス</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2435,13 +2434,13 @@ layout: HubPage
                                             <div class="cardText">
                                                 <h3>PowerShell</h3>
                                                 <p>
-                                                    <a href="https://github.com/PowerShell/PowerShell/tree/master/docs/learning-powershell">Get Started</a>
+                                                    <a href="https://github.com/PowerShell/PowerShell/tree/master/docs/learning-powershell">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/PowerShell/PowerShell/blob/master/docs/installation/">Download PowerShell</a>
+                                                    <a href="https://github.com/PowerShell/PowerShell/blob/master/docs/installation/">PowerShell のダウンロード</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/">Reference</a>
+                                                    <a href="/powershell/">リファレンス</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2458,22 +2457,21 @@ layout: HubPage
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>Azure CLI
-                                                </h3>
+                                                <h3>Azure CLI </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-install/">Get Started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-install/">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://aka.ms/linux-azure-cli">Download Azure CLI for Linux</a>
+                                                    <a href="http://aka.ms/linux-azure-cli">Linux 用 Azure CLI のダウンロード</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://aka.ms/mac-azure-cli">Download Azure CLI for Mac</a>
+                                                    <a href="http://aka.ms/mac-azure-cli">Mac 用 Azure CLI のダウンロード</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://aka.ms/webpi-azure-cli">Download Azure CLI for Windows</a>
+                                                    <a href="http://aka.ms/webpi-azure-cli">Windows 用 Azure CLI のダウンロード</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/azure-cli-arm-commands/">Reference</a>
+                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/azure-cli-arm-commands/">リファレンス</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2483,7 +2481,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#tools">Tools &amp; Extensions</a>
+                        <a href="#tools">ツール &amp; 拡張機能</a>
                         <ul id="tools" class="cardsF">
                             <li>
                                 <div class="cardSize">
@@ -2499,7 +2497,7 @@ layout: HubPage
                                                     <a href="https://www.visualstudio.com/vs/azure-tools/">Visual Studio Tools for Azure</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids">Download</a>
+                                                    <a href="https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids">ダウンロード</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2517,19 +2515,19 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://github.com/Microsoft/DockerToolsDocs">Docker Tools</a>
+                                                    <a href="https://github.com/Microsoft/DockerToolsDocs">Docker ツール</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker">Get Started</a>
+                                                    <a href="/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780680&clcid=0x409">Download for Visual Studio</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780680&clcid=0x409">Visual Studio 用のダウンロード</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780681&clcid=0x409">Download for Visual Studio Code</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780681&clcid=0x409">Visual Studio Code 用のダウンロード</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780682&clcid=0x409">Download for Team Services</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780682&clcid=0x409">Team Services 用のダウンロード</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2550,7 +2548,7 @@ layout: HubPage
                                                     <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">PowerShell Tools for Visual Studio</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">Download</a>
+                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">ダウンロード</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2568,19 +2566,19 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://storageexplorer.com/">Storage Explorer</a>
+                                                    <a href="http://storageexplorer.com/">ストレージ エクスプローラー</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/vs-azure-tools-storage-manage-with-storage-explorer/">Get Started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/vs-azure-tools-storage-manage-with-storage-explorer/">作業開始</a>
                                                 </p>
                                                 <p>
-                                                     <a  href="http://go.microsoft.com/fwlink/?LinkId=722418">Download for Linux</a>
+                                                     <a  href="http://go.microsoft.com/fwlink/?LinkId=722418">Linux 用のダウンロード</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=708342">Download for Mac</a>
+                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=708342">Mac 用のダウンロード</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=708343">Download for Windows</a>
+                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=708343">Windows 用のダウンロード</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2601,10 +2599,10 @@ layout: HubPage
                                                     <a href="https://github.com/Microsoft/PTVS/releases/v2.2.4">Python Tools for Visual Studio 2015</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://ptvs.azureedge.net/download/PTVS%20Samples%202.2.4.vsix">Samples</a>
+                                                    <a href="https://ptvs.azureedge.net/download/PTVS%20Samples%202.2.4.vsix">サンプル</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://ptvs.azureedge.net/download/PTVS%202.2.4%20VS%202015.msi">Download</a>
+                                                    <a href="https://ptvs.azureedge.net/download/PTVS%202.2.4%20VS%202015.msi">ダウンロード</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2616,16 +2614,14 @@ layout: HubPage
                 </ul>
             </li>
             <li>
-                <a href="#architecture">Architecture</a>
+                <a href="#architecture">アーキテクチャ</a>
                 <ul id="architecture">
                     <li>
                         <a href="#architecture1"></a>
                         <ul id="architecture1" class="cardsC">
                             <li>
                                 <div class="container intro">
-                                    <p>A set of recommended architectures for cloud applications. Each architecture includes
-                                        recommended practices, prescriptive steps, and an executable component that embodies
-                                        the recommendations.</p>
+                                    <p>クラウド アプリケーションに推奨される一連のアーキテクチャ。 各アーキテクチャには、推奨事例、規範となる手順、および推奨事項を取り入れた実行可能なコンポーネントが含まれています。</p>
                                 </div>
                             </li>
                             <li>
@@ -2639,8 +2635,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Cloud Fundamentals</h3>
-                                                    <p>Fundamental knowledge to be successful in the cloud. If you’re new to the cloud or new to Azure, start here.</p>
+                                                    <h3>クラウドの基礎</h3>
+                                                    <p>クラウドで成功するための基本的な知識。 クラウドまたは Azure を初めてご利用になる場合は、ここから開始してください。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2658,8 +2654,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Reference Architectures</h3>
-                                                    <p>A set of recommended architectures for the cloud. Each architecture includes best practices, prescriptive steps, and a deployable solution.</p>
+                                                    <h3>参照アーキテクチャ</h3>
+                                                    <p>クラウドに推奨される一連のアーキテクチャ。 各アーキテクチャには、ベスト プラクティス、規範となる手順、デプロイ可能なソリューションが含まれています。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2677,8 +2673,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Cloud Design Patterns</h3>
-                                                    <p>Design patterns for the cloud. Each pattern describes a problem, a pattern that addresses the problem, and an example based on Azure.</p>
+                                                    <h3>クラウドの設計パターン</h3>
+                                                    <p>クラウドの設計パターン。 各パターンでは、問題、その問題を解決するパターン、Azure に基づく例を説明します。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2696,9 +2692,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Best Practices for Cloud Applications</h3>
-                                                    <p>A set of best practices for cloud applications, covering aspects such
-                                                        as auto-scaling, caching, data partitioning, API design, and monitoring.</p>
+                                                    <h3>クラウド アプリケーションのベスト プラクティス</h3>
+                                                    <p>自動スケール、キャッシュ、データのパーティション分割、API 設計、監視などの側面について説明する、クラウド アプリケーションの一連のベスト プラクティス。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2716,9 +2711,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Scenario Guides</h3>
-                                                    <p>Guidance for various end-to-end application scenarios in the cloud. Includes
-                                                        written guidance and reference implementations.</p>
+                                                    <h3>シナリオのガイド</h3>
+                                                    <p>クラウド内のさまざまなエンド ツー エンド アプリケーションのシナリオに関するガイダンス。 文書によるガイダンスとリファレンスの実装が含まれます。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2732,3 +2726,9 @@ layout: HubPage
         </ul>
     </div>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

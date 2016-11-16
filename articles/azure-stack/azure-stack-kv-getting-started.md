@@ -2,22 +2,26 @@
 title: Getting Started with Azure Stack Key Vault | Microsoft Docs
 description: Get started using Azure Stack Key Vault
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: rlfmendes
 manager: natmack
-editor: ''
-
+editor: 
+ms.assetid: b973be33-2fc1-4ee6-976a-84ed270e7254
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/26/2016
+ms.date: 10/18/2016
 ms.author: ricardom
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c4d3f708ba7cd05343e11bdbac6e63708b0af28e
+
 
 ---
 # <a name="getting-started-with-key-vault"></a>Getting started with Key Vault
-This section describes the steps to create a vault, manage keys and secrets as well as authorize users or applications to invoke operations in the vault in Azure Stack. The following steps assume a tenant subscription exists and KeyVault service is registered within that subscription. All the example commands are based on the KeyVaul cmdlets available as part of the Azure PowerShell SDK.
+This section describes the steps to create a vault, manage keys and secrets as well as authorize users or applications to invoke operations in the vault in Azure Stack. The following steps assume a tenant subscription exists and KeyVault service is registered within that subscription. All the example commands are based on the KeyVault cmdlets available as part of the Azure PowerShell SDK.
 
 ## <a name="enabling-the-tenant-subscription-for-vault-operations"></a>Enabling the tenant subscription for Vault operations
 Before you can issue operations against any vault, you need to ensure that your subscription is enabled for vault operations. You can confirm that by issuing the following PowerShell command:
@@ -49,10 +53,10 @@ And the folowing is the output of the command:
 > 
 > 
 
-## <a name="creating-a-hardened-container-(a-vault)-in-azure-stack-to-store-and-manage-cryptographic-keys-and-secrets"></a>Creating a hardened container (a vault) in Azure Stack to store and manage cryptographic keys and secrets
+## <a name="creating-a-hardened-container-a-vault-in-azure-stack-to-store-and-manage-cryptographic-keys-and-secrets"></a>Creating a hardened container (a vault) in Azure Stack to store and manage cryptographic keys and secrets
 In order to create a Vault, a tenant should first create a resource group. The following PowerShell commands create a resource group and then a Vault in that Resource Group. The example also includes the typical output from that cmdlet.
 
-### <a name="creating-a-resource-group:"></a>Creating a resource group:
+### <a name="creating-a-resource-group"></a>Creating a resource group:
     New-AzureRmResourceGroup -Name vaultrg010 -Location local -Verbose -Force
 
 Output:
@@ -66,7 +70,7 @@ Output:
     ResourceId : /subscriptions/fa881715-3802-42cc-a54e-a06adf61584d/resourceGroups/vaultrg010
 
 
-### <a name="creating-a-vault:"></a>Creating a vault:
+### <a name="creating-a-vault"></a>Creating a vault:
     New-AzureRmKeyVault -VaultName vault010 -ResourceGroupName vaultrg010 -Location local -Verbose
 
 Output:
@@ -195,6 +199,9 @@ If you want to authorize that same application to read secrets in your vault, ru
 
 [Deploy a VM with a Key Vault certificate](azure-stack-kv-push-secret-into-vm.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

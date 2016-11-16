@@ -9,11 +9,11 @@ articles/sql-database/sql-database-get-started-tutorial.md
 articles/sql-database/sql-database-configure-firewall-settings
 
 -->
-## 新しい Azure SQL Server レベル ファイアウォールを作成する
+## <a name="create-a-new-azure-sql-serverlevel-firewall"></a>新しい Azure SQL Server レベル ファイアウォールを作成する
 次の手順に従い、Azure ポータルで、個々の IP アドレス (クライアント コンピューター) または IP アドレスの範囲全体から SQL Database 論理サーバーに接続できるようなサーバーレベルのファイアウォール規則を作成します。
 
-1. [Azure Portal](http://portal.azure.com) に接続していない場合は接続します。
-2. 既定のブレードで、**[SQL Server]** をクリックします。
+1. [Azure Portal](http://portal.azure.com)に接続していない場合は接続します。
+2. 既定のブレードで、 **[SQL Server]**をクリックします。
    
       ![New server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-1.png)
 3. **[SQL Server]** ブレードで、ファイアウォール規則を作成するサーバーをクリックします。
@@ -41,8 +41,12 @@ articles/sql-database/sql-database-configure-firewall-settings
      ![New server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-7.png)
    
    > [!IMPORTANT]
-   > クライアント IP アドレスは不定期で変更される可能性があるため、新しいファイアウォール規則を作成するまでサーバーにアクセスできなくなる場合があります。[Bing](http://www.bing.com/search?q=my%20ip%20address) を使用して IP アドレスをチェックすることができます。その後、単一の IP アドレスまたは IP アドレスの範囲を追加します。詳細については、[ファイアウォール設定の管理](../articles/sql-database/sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal)に関するセクションを参照してください。
+   > クライアント IP アドレスは不定期で変更される可能性があるため、新しいファイアウォール規則を作成するまでサーバーにアクセスできなくなる場合があります。 [Bing](http://www.bing.com/search?q=my%20ip%20address)を使用して IP アドレスをチェックすることができます。 その後、単一の IP アドレスまたは IP アドレスの範囲を追加します。 詳細については、[ファイアウォール設定の管理](../articles/sql-database/sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal)に関するセクションをご覧ください。
    > 
    > 
 
-<!---HONumber=AcomDC_0912_2016--->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

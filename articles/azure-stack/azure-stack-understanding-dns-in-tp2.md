@@ -2,11 +2,11 @@
 title: Understanding DNS in Azure Stack TP2 | Microsoft Docs
 description: Understanding new DNS features and capabilities in Azure Stack TP2
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: ScottNapolitan
 manager: darmour
-editor: ''
-
+editor: 
+ms.assetid: 60f5ac85-be19-49ac-a7c1-f290d682b5de
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: scottnap
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: bb60161cd23df2d1d493d48ef3859c3b1afdfb0d
+
 
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Introducing iDNS for Azure Stack
@@ -24,7 +28,7 @@ It also allows you to register internal virtual network names. By doing so, you 
 
 It’s something that’s always been there in Azure, but now it's available in Windows Server 2016 and Azure Stack, too.
 
-## <a name="what-does-idns-do?"></a>What does iDNS do?
+## <a name="what-does-idns-do"></a>What does iDNS do?
 With iDNS in Azure Stack, you get the following capabilities, without having to specify custom DNS server entries.
 
 * Shared DNS name resolution services for tenant workloads.
@@ -33,7 +37,7 @@ With iDNS in Azure Stack, you get the following capabilities, without having to 
 
 You can still bring your own DNS and use custom DNS servers if you want. But now, if you just want to be able to resolve Internet DNS names and be able to connect to other virtual machines in the same virtual network, you don’t need to specify anything and it will just work.
 
-## <a name="what-does-idns-not-do?"></a>What does iDNS not do?
+## <a name="what-does-idns-not-do"></a>What does iDNS not do?
 What iDNS does not allow you to do is create a DNS record for a name that can be resolved from outside the virtual network.
 
 In Azure, you have the option of specifying a DNS name label that can be associated with a public IP address. You can choose the label (prefix), but Azure chooses the suffix, which is based on the region in which you create the public IP address.
@@ -64,6 +68,9 @@ If you created a VM via a template with your own image, you had to add the **DHC
 
 In TP2, you no longer need to make these changes to your VM templates to allow your VMs to resolve Internet names. They should just work.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

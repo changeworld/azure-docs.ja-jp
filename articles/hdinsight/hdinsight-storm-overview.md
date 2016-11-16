@@ -1,13 +1,13 @@
 ---
-title: HDInsight での Apache Storm の概要 | Microsoft Docs
-description: Apache Storm の概要と、HDInsight で Storm を使用した、クラウドでのリアルタイムのデータ分析ソリューションを構築する方法について説明します。
+title: "HDInsight での Apache Storm の概要 | Microsoft Docs"
+description: "Apache Storm の概要と、HDInsight で Storm を使用した、クラウドでのリアルタイムのデータ分析ソリューションを構築する方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 72d54080-1e48-4a5e-aa50-cce4ffc85077
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: get-started-article
@@ -15,15 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e2fa11046adf828497b142e1043ac1c2a15443ef
+
 
 ---
-# <a name="introduction-to-apache-storm-on-hdinsight:-real-time-analytics-for-hadoop"></a>HDInsight での Apache Storm の概要: Hadoop のリアルタイム分析
+# <a name="introduction-to-apache-storm-on-hdinsight-realtime-analytics-for-hadoop"></a>HDInsight での Apache Storm の概要: Hadoop のリアルタイム分析
 HDInsight の Apache Stormでは、 [Apache Hadoop](http://hadoop.apache.org)を使用して Azure 環境に分散型の分析ソリューションをリアルタイムで作成できます。
 
-## <a name="what-is-apache-storm?"></a>Apache Storm とは
+## <a name="what-is-apache-storm"></a>Apache Storm とは
 Apache Storm は、Hadoop を使用して、リアルタイムでデータを処理できる、フォールト トレランスに優れたオープン ソースの分散型計算システムです。 また、Storm のソリューションは、最初に正常に処理されなかったデータを再生する機能を備え、保証されたデータ処理を実現します。
 
-## <a name="why-use-storm-on-hdinsight?"></a>HDInsight で Apache Storm を使用する理由
+## <a name="why-use-storm-on-hdinsight"></a>HDInsight で Apache Storm を使用する理由
 HDInsight の Apache Storm  は、管理されるクラスターとして、Azure 環境に統合されて提供されます。 次の主要な利点を提供します。
 
 * 稼働時間 99.9% の SLA を使用した管理されたサービスとして実行します。
@@ -60,7 +64,7 @@ HDInsight クラスター上に新しい Storm を数分でプロビジョニン
 
 Linux ベースの Storm クラスターの使用方法の詳細については、「 [Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-get-started-linux.md)」をご覧ください。
 
-__HDInsight クラスターの Windows ベースの Storm__では、HDInsight Tools for Visual Studio を使用して C# トポロジと C#/Java ハイブリッド トポロジを作成し、それらを HDInsight クラスターの Storm に送信できます。  
+**HDInsight クラスターの Windows ベースの Storm**では、HDInsight Tools for Visual Studio を使用して C# トポロジと C#/Java ハイブリッド トポロジを作成し、それらを HDInsight クラスターの Storm に送信できます。  
 
 ![Storm プロジェクトの作成](./media/hdinsight-storm-overview/createproject.png)
 
@@ -103,7 +107,7 @@ Apache Storm の既定の構成では、Nimbus ノードは 1 つだけです。
 ### <a name="support"></a>サポート
 HDInsight の Storm には、完全なエンタープライズ レベルの 24 時間 365 日のサポートが付属します。 HDInsight の Storm では、99.9% の SLA も保証されています。 つまり、クラスターは、99.9% 以上の時間において外部に接続されることを保証します。
 
-## <a name="common-use-cases-for-real-time-analytics"></a>リアルタイム分析の一般的なユース ケース
+## <a name="common-use-cases-for-realtime-analytics"></a>リアルタイム分析の一般的なユース ケース
 以下に、HDInsight で Apache Storm を使用する一般的なシナリオをいくつか示します。 実際のシナリオの詳細については、「 [how companies are using Storm (企業での Storm の使用事例)](https://storm.apache.org/documentation/Powered-By.html)」をご覧ください。
 
 * モノのインターネット(IoT)
@@ -114,7 +118,8 @@ HDInsight の Storm には、完全なエンタープライズ レベルの 24 �
 * Search
 * Mobile Engagement
 
-## <a name="how-is-data-in-hdinsight-storm-processed?"></a>HDInsight Storm のデータの処理方法
+
+## <a name="how-is-data-in-hdinsight-storm-processed"></a>HDInsight Storm のデータの処理方法
 Apache Storm は、HDInsight や Hadoop から使用することが一般的な MapReduce ジョブではなく、 **トポロジ** を処理します。 HDInsight クラスターの Storm には、**Nimbus** を実行するヘッド ノードと **Supervisor** を実行するワーカー ノードの 2 種類のノードが含まれます。
 
 * **Nimbus**- Hadoop の JobTracker 同様、クラスター全体へのコードの配布、仮想マシンへのタスクの割り当て、障害の監視を処理します。 HDInsight は 2 つの Nimbus ノードを提供するため、HDInsight の Storm クラスターに単一障害点が生じません。
@@ -136,10 +141,10 @@ Apache Storm は、HDInsight や Hadoop から使用することが一般的な 
 
 Storm コンポーネントの詳細については、apache.org の [Storm のチュートリアル][apachetutorial]を参照してください。
 
-## <a name="what-programming-languages-can-i-use?"></a>使用できるプログラミング言語
+## <a name="what-programming-languages-can-i-use"></a>使用できるプログラミング言語
 HDInsight クラスターの Stormでは、C#、Java、Python のサポートを提供します。
 
-### <a name="c&#35;"></a>C (&) #35；
+### <a name="c35"></a>C (&) #35；
 HDInsight Tools for Visual Studio では、.NET 開発者は、C# のトポロジを設計し、実装できます。 Java と C# のコンポーネントを使用するハイブリッド トポロジを作成することもできます。
 
 詳細については、「 [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
@@ -153,7 +158,7 @@ Java トポロジと Trident トポロジの例については、 [Storm トポ�
 
 storm-starter の例は、Linux ベースのクラスターでは **/usr/hdp/current/storm-client/contrib/storm-starter** ディレクトリ、Windows ベースのクラスターでは **%storm_home%\contrib\storm-starter** ディレクトリにあります。
 
-## <a name="what-are-some-common-development-patterns?"></a>一般的な開発パターンの例
+## <a name="what-are-some-common-development-patterns"></a>一般的な開発パターンの例
 ### <a name="guaranteed-message-processing"></a>メッセージの処理の保証
 Storm は、さまざまなレベルでメッセージの処理を保証します。 たとえば、基本的な Storm アプリケーションは "最低 1 回" の処理を保証できますが、Trident は "厳密に 1 回" の処理を保証できます。
 
@@ -184,7 +189,7 @@ Trident を使用している場合、これはタプルのバッチ処理を基
 
 この詳細については、「 [RollingTopWords](https://github.com/nathanmarz/storm-starter/blob/master/src/jvm/storm/starter/RollingTopWords.java) 」の例を参照してください。
 
-## <a name="what-type-of-logging-does-storm-use?"></a>Storm で使用されるログの種類
+## <a name="what-type-of-logging-does-storm-use"></a>Storm で使用されるログの種類
 Storm では、Apache Log4j を使用して情報をログに記録します。 既定では大量のデータがログに記録されるため、情報を調べるのが困難になる可能性があります。 Storm トポロジの一部にログの構成ファイルを含めることにより、ログ記録の動作を制御することができます。
 
 ログ記録を構成する方法を示すトポロジの例については、HDInsight で Storm を使用した [Java ベースの WordCount](hdinsight-storm-develop-java-topology.md) の例を参照してください。
@@ -202,6 +207,6 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

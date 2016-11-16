@@ -1,14 +1,14 @@
 ---
-title: Azure コンテナー サービス クラスターに接続する | Microsoft Docs
-description: SSH トンネルを利用して Azure コンテナー サービス クラスターに接続します。
+title: "Azure Container Service クラスターに接続する | Microsoft Docs"
+description: "SSH トンネルを利用して Azure コンテナー サービス クラスターに接続します。"
 services: container-service
-documentationcenter: ''
+documentationcenter: 
 author: rgardler
 manager: timlt
-editor: ''
+editor: 
 tags: acs, azure-container-service
-keywords: Docker, コンテナー, マクロサービス, DC/OS, Azure
-
+keywords: "Docker, コンテナー, マクロサービス, DC/OS, Azure"
+ms.assetid: ff8d9e32-20d2-4658-829f-590dec89603d
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
@@ -16,24 +16,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 97f74f845e19ae99cf6c5abbb9f076c7c5171993
+
 
 ---
-# Azure コンテナー サービス クラスターに接続する
-Azure コンテナー サービスによってデプロイされている DC/OS クラスターと Docker Swarm クラスターは、REST エンドポイントを公開しています。ただし、これらのエンドポイントは外部には開放されていません。これらのエンドポイントを扱うためには、Secure Shell (SSH) トンネルを作成する必要があります。SSH トンネルが確立されると、クラスター エンドポイントに対してコマンドを実行し、独自のシステムでブラウザー経由でクラスター UI を表示できます。このドキュメントでは、Linux、OS X、Windows から SSH トンネルを作成する手順を紹介します。
+# <a name="connect-to-an-azure-container-service-cluster"></a>Azure コンテナー サービス クラスターに接続する
+Azure コンテナー サービスによってデプロイされている DC/OS クラスターと Docker Swarm クラスターは、REST エンドポイントを公開しています。 ただし、これらのエンドポイントは外部には開放されていません。 これらのエンドポイントを扱うためには、Secure Shell (SSH) トンネルを作成する必要があります。 SSH トンネルが確立されると、クラスター エンドポイントに対してコマンドを実行し、独自のシステムでブラウザー経由でクラスター UI を表示できます。 このドキュメントでは、Linux、OS X、Windows から SSH トンネルを作成する手順を紹介します。
 
 > [!NOTE]
-> SSH セッションは、クラスター管理システムとの間で作成することができます。ただし、これは推奨されません。管理システムで直接作業すると、構成を意図せず変更してしまうおそれがあります。
+> SSH セッションは、クラスター管理システムとの間で作成することができます。 ただし、これは推奨されません。 管理システムで直接作業すると、構成を意図せず変更してしまうおそれがあります。   
 > 
 > 
 
-## Linux または OS X での SSH トンネルの作成
-Linux または OS X で SSH トンネルを作成するにはまず、負荷分散されたマスターのパブリック DNS 名を特定する必要があります。そのためには、リソース グループを展開して各リソースを表示します。マスターのパブリック IP アドレスを見つけ、選択します。パブリック IP アドレスに関する情報を含むブレードが開きます。このブレードに DNS 名が表示されています。後で使用するためにこの名前を保存します。 <br />
+## <a name="create-an-ssh-tunnel-on-linux-or-os-x"></a>Linux または OS X での SSH トンネルの作成
+Linux または OS X で SSH トンネルを作成するにはまず、負荷分散されたマスターのパブリック DNS 名を特定する必要があります。 そのためには、リソース グループを展開して各リソースを表示します。 マスターのパブリック IP アドレスを見つけ、選択します。 パブリック IP アドレスに関する情報を含むブレードが開きます。このブレードに DNS 名が表示されています。 後で使用するためにこの名前を保存します。 <br />
 
 ![Public DNS name](media/pubdns.png)
 
 次に、シェルを開き、次のコマンドを実行します。
 
-**PORT** は、公開するエンドポイントのポートです。Swarm の場合は 2375 です。DC/OS の場合、ポート 80 を使用します。**USERNAME** は、クラスターのデプロイ時に指定したユーザー名です。**DNSPREFIX** は、クラスターのデプロイ時に指定した DNS 接頭辞です。**REGION** は、リソース グループが置かれているリージョンです。**PATH\_TO\_PRIVATE\_KEY** [省略可能] は、コンテナー サービス クラスターの作成時に指定した公開キーに対応する秘密キーへのパスです。このオプションは、-i フラグと共に使用します。
+**PORT** は、公開するエンドポイントのポートです。 Swarm の場合は 2375 です。 DC/OS の場合、ポート 80 を使用します。  
+**USERNAME** は、クラスターのデプロイ時に指定したユーザー名です。  
+**DNSPREFIX** は、クラスターのデプロイ時に指定した DNS 接頭辞です。  
+**REGION** は、リソース グループが置かれているリージョンです。  
+**PATH_TO_PRIVATE_KEY** [省略可能] は、コンテナー サービス クラスターの作成時に指定した公開キーに対応する秘密キーへのパスです。 このオプションは、-i フラグと共に使用します。
 
 ```bash
 ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
@@ -42,7 +50,7 @@ ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.az
 > 
 > 
 
-## DC/OS トンネル
+## <a name="dcos-tunnel"></a>DC/OS トンネル
 DC/OS 関連のエンドポイントへのトンネルを開くには、次のようなコマンドを実行します。
 
 ```bash
@@ -57,29 +65,29 @@ sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.az
 
 同様に、各アプリケーションの REST API にはこのトンネルを経由して到達できます。
 
-## Swarm トンネル
+## <a name="swarm-tunnel"></a>Swarm トンネル
 Swarm エンドポイントへのトンネルを開くには、次のようなコマンドを実行します。
 
 ```bash
 ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
-これで、DOCKER\_HOST 環境変数を次のように設定できます。通常どおり、Docker コマンド ライン インターフェイス (CLI) を使用し続けることができます。
+これで、DOCKER_HOST 環境変数を次のように設定できます。 通常どおり、Docker コマンド ライン インターフェイス (CLI) を使用し続けることができます。
 
 ```bash
 export DOCKER_HOST=:2375
 ```
 
-## Windows の SSH トンネルの作成
-Windows では、さまざまな方法で SSH トンネルを作成できます。このドキュメントでは、PuTTY を使った方法について説明します。
+## <a name="create-an-ssh-tunnel-on-windows"></a>Windows の SSH トンネルの作成
+Windows では、さまざまな方法で SSH トンネルを作成できます。 このドキュメントでは、PuTTY を使った方法について説明します。
 
 Windows システムに PuTTY をダウンロードし、実行します。
 
-ホスト名を入力します。ホスト名は、クラスター管理者のユーザー名とクラスターの第 1 マスターのパブリック DNS 名で構成されます。**ホスト名**は `adminuser@PublicDNS` のようになります。**[ポート]**に「2200」と入力します。
+ホスト名を入力します。ホスト名は、クラスター管理者のユーザー名とクラスターの第 1 マスターのパブリック DNS 名で構成されます。 **ホスト名**は `adminuser@PublicDNS` のようになります。 **[ポート]** に「2200」と入力します。
 
 ![PuTTY configuration 1](media/putty1.png)
 
-**[SSH]** と **[Authentication (認証)]** を選択します。認証のためにプライベート キー ファイルを追加します。
+**[SSH]** と **[認証]** を選択します。 認証のためにプライベート キー ファイルを追加します。
 
 ![PuTTY configuration 2](media/putty2.png)
 
@@ -97,7 +105,7 @@ Windows システムに PuTTY をダウンロードし、実行します。
 
 ![PuTTY configuration 3](media/putty3.png)
 
-完了したら、接続構成を保存し、PuTTY セッションを接続します。接続すると、PuTTY のイベント ログでポート構成を確認できます。
+完了したら、接続構成を保存し、PuTTY セッションを接続します。 接続すると、PuTTY のイベント ログでポート構成を確認できます。
 
 ![PuTTY event log](media/putty4.png)
 
@@ -107,12 +115,17 @@ DC/OS のトンネルを構成したら、関連するエンドポイントに�
 * Marathon: `http://localhost/marathon`
 * Mesos: `http://localhost/mesos`
 
-Docker Swarm のトンネルを構成したら、Docker CLI から Swarm クラスターにアクセスできます。最初に `DOCKER_HOST` という名前の Windows 環境変数を値 ` :2375` で構成する必要があります。
+Docker Swarm のトンネルを構成したら、Docker CLI から Swarm クラスターにアクセスできます。 最初に `DOCKER_HOST` という名前の Windows 環境変数を値 ` :2375` で構成する必要があります。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 コンテナーをデプロイし、DC/OS または Swarm で管理します。
 
 * [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
 * [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

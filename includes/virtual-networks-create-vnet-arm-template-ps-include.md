@@ -1,8 +1,8 @@
-## PowerShell を使用して ARM テンプレートをデプロイする
+## <a name="deploy-the-arm-template-by-using-powershell"></a>PowerShell を使用して ARM テンプレートをデプロイする
 PowerShell を使用してダウンロードした ARM テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](../articles/powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
-2. 必要に応じて、**`New-AzureRmResourceGroup`** コマンドレットを実行して新しいリソース グループを作成します。次のコマンドを実行すると、*TestRG* というリソース グループが *Central US* Azure リージョンに作成されます。リソース グループの詳細については、「[Azure リソース マネージャーの概要](../articles/resource-group-overview.md)」を参照してください。
+1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](../articles/powershell-install-configure.md) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+2. 必要に応じて、 **`New-AzureRmResourceGroup`** コマンドレットを実行して新しいリソース グループを作成します。 次のコマンドを実行すると、*米国中部* Azure リージョンに *TestRG* というリソース グループが作成されます。 リソース グループの詳細については、「 [Azure リソース マネージャーの概要](../articles/azure-resource-manager/resource-group-overview.md)」を参照してください。
    
         New-AzureRmResourceGroup -Name TestRG -Location centralus
    
@@ -17,7 +17,7 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
                             =======  ==========
                             *
         ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
-3. 上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、**`New-AzureRmResourceGroupDeployment`** コマンドレットを実行して新しい VNet をデプロイします。
+3. 上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、 **`New-AzureRmResourceGroupDeployment`** コマンドレットを実行して新しい VNet をデプロイします。
    
         New-AzureRmResourceGroupDeployment -Name TestVNetDeployment -ResourceGroupName TestRG `
             -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
@@ -42,7 +42,7 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
                             subnet2Name      String                     BackEnd
    
         Outputs           :
-4. 次に示すように、**`Get-AzureRmVirtualNetwork`** コマンドレットを実行して新しい VNet のプロパティを表示します。
+4. 次に示すように、 **`Get-AzureRmVirtualNetwork`** コマンドレットを実行して新しい VNet のプロパティを表示します。
 
         Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
 
@@ -67,7 +67,7 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
         Subnets           : [
                               {
                                 "Name": "FrontEnd",
-                                "Etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
+                                "Etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
                                 "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd",
                                 "AddressPrefix": "192.168.1.0/24",
                                 "IpConfigurations": [],
@@ -77,7 +77,7 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
                               },
                               {
                                 "Name": "BackEnd",
-                                "Etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
+                                "Etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
                                 "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd",
                                 "AddressPrefix": "192.168.2.0/24",
                                 "IpConfigurations": [],
@@ -87,4 +87,6 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
                               }
                             ]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!--HONumber=Nov16_HO2-->
+
+

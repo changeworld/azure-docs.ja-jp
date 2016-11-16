@@ -1,12 +1,12 @@
 ---
-title: SQL Data Warehouse の PolyBase チュートリアル | Microsoft Docs
-description: データ ウェアハウジングのシナリオに沿って、PolyBase の概要と、その使用方法を学習します。
+title: "SQL Data Warehouse の PolyBase チュートリアル | Microsoft Docs"
+description: "データ ウェアハウジングのシナリオに沿って、PolyBase の概要と、その使用方法を学習します。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: 0a0103b4-ddd6-4d1e-87be-4965d6e99f3f
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 936bfcb7d4e7d2a901304f31a58b31e6cd14498a
+
 
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>SQL Data Warehouse で PolyBase によってデータを読み込む
@@ -103,7 +107,7 @@ Azure Blob Storage にデータをコピーするには:
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-「 [AzCopy コマンド ライン ユーティリティの概要][AzCopy コマンド ライン ユーティリティの概要]」も参照してください。
+[AzCopy コマンド ライン ユーティリティの概要][AzCopy コマンド ライン ユーティリティの概要]に関するページも参照してください。
 
 ### <a name="e-explore-your-blob-storage-container"></a>E. Blob Storage コンテナーを調べる
 Blob Storage にアップロードしたファイルを表示するには:
@@ -123,11 +127,11 @@ PolyBase では、外部テーブルを使用して、Azure Blob Storage 内の�
 
 この手順の例では、以下の Transact-SQL ステートメントを使用して、外部テーブルを作成します。
 
-* [Create Master Key (Transact-SQL)][Create Master Key (Transact-SQL)] : データベース スコープの資格情報のシークレットを暗号化します。
-* [Create Database Scoped Credential (Transact-SQL)][Create Database Scoped Credential (Transact-SQL)] : Azure ストレージ アカウントの認証情報を指定します。
-* [Create External Data Source (Transact-SQL)][Create External Data Source (Transact-SQL)] : Azure Blob Storage の場所を指定します。
-* [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)] : データの形式を指定します。
-* [Create External Table (Transact-SQL)][Create External Table (Transact-SQL)] : テーブル定義とデータの場所を指定します。
+* [Create Master Key (Transact-SQL)][Create Master Key (Transact-SQL)]: データベース スコープの資格情報のシークレットを暗号化します。
+* [Create Database Scoped Credential (Transact-SQL)][Create Database Scoped Credential (Transact-SQL)]: Azure ストレージ アカウントの認証情報を指定します。
+* [Create External Data Source (Transact-SQL)][Create External Data Source (Transact-SQL)]: Azure Blob Storage の場所を指定します。
+* [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)]: データの形式を指定します。
+* [Create External Table (Transact-SQL)][Create External Table (Transact-SQL)]: テーブル定義とデータの場所を指定します。
 
 SQL Data Warehouse データベースに対して、このクエリを実行します。 Azure Blob Storage 内の DimDate2.txt サンプル データを指す dbo スキーマに、DimDate2External という名前の外部テーブルが作成されます。
 
@@ -207,8 +211,8 @@ Visual Studio の SQL Server オブジェクト エクスプローラーで、�
 ## <a name="step-3-load-data-into-sql-data-warehouse"></a>手順 3: SQL Data Warehouse にデータを読み込む
 外部テーブルが作成されたので、新しいテーブルにデータを読み込むか、既存のテーブルに挿入することができます。
 
-* 新しいテーブルにデータを読み込むには、 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを実行します。 新しいテーブルには、クエリで指定された列があります。 列のデータ型は、外部テーブル定義内のデータ型と一致します。
-* 既存のテーブルにデータを読み込むには、 [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)] ステートメントを使用します。
+* 新しいテーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを実行します。 新しいテーブルには、クエリで指定された列があります。 列のデータ型は、外部テーブル定義内のデータ型と一致します。
+* 既存のテーブルにデータを読み込むには、[INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)] ステートメントを使用します。
 
 ```sql
 -- Load the data from Azure blob storage to SQL Data Warehouse
@@ -234,10 +238,10 @@ CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
 CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
-詳細については、 [統計][統計]に関するページを参照してください。  
+詳細については、[統計][統計]に関するページを参照してください。  
 
 ## <a name="next-steps"></a>次のステップ
-PolyBase を使用するソリューションを開発する際に知っておく必要がある情報については、 [PolyBase ガイド][PolyBase ガイド] を参照してください。
+PolyBase を使用するソリューションを開発する際に知っておく必要がある情報については、[PolyBase ガイド][PolyBase ガイド]を参照してください。
 
 <!--Image references-->
 
@@ -274,6 +278,6 @@ PolyBase を使用するソリューションを開発する際に知ってお�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

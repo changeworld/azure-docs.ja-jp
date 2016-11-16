@@ -1,12 +1,12 @@
 ---
-title: Secure your key vault | Microsoft Docs
-description: Manage access permissions for key vault for managing vaults and keys and secrets. Authentication and authorization model for key vault and how to secure your key vault
+title: "キー コンテナーのセキュリティ保護 | Microsoft Docs"
+description: "コンテナーおよびキーとシークレットを管理するためのキー コンテナーのアクセス許可を管理します。 キー コンテナーの認証と承認モデルおよびキー コンテナーをセキュリティで保護する方法"
 services: key-vault
-documentationcenter: ''
+documentationcenter: 
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
-
+ms.assetid: e5b4e083-4a39-4410-8e3a-2832ad6db405
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,151 +14,155 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/07/2016
 ms.author: ambapat
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5d58210a155666642cec8c180249c4e43b69fb9c
+
 
 ---
-# <a name="secure-your-key-vault"></a>Secure your key vault
-Azure Key Vault is a cloud service that safeguards encryption keys and secrets (such as certificates, connection strings, passwords) for your cloud applications. Since this data is sensitive and business critical, you want to secure access to your key vaults so that only authorized applications and users can access key vault. This article provides an overview of key vault access model, explains authentication and authorization, and describes how to secure access to key vault for your cloud applications with an example.
+# <a name="secure-your-key-vault"></a>キー コンテナーのセキュリティ保護
+Azure Key Vault は、クラウド アプリケーションの暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは慎重な扱いを要する情報であり、ビジネス上重要であるため、承認されたアプリケーションとユーザーのみがキー コンテナーにアクセスできるように、キー コンテナーへのアクセスをセキュリティで保護する必要があります。 この記事では、キー コンテナーのアクセス モデルの概要、認証と承認に加え、例を挙げて、クラウド アプリケーションのキー コンテナーへのアクセスをセキュリティで保護する方法について説明します。
 
 ## <a name="overview"></a>Overview
-Access to a key vault is controlled through two separate interfaces: management plane and data plane. For both planes proper authentication and authorization is required before a caller (a user or an application) can get access to key vault. Authentication establishes the identity of the caller, while authorization determines what operations the caller is allowed to perform.
+キー コンテナーへのアクセスは、2 つの独立したインターフェイス (管理プレーンとデータ プレーン) を使って制御します。 どちらのプレーンでも、呼び出し元 (ユーザーまたはアプリケーション) がキー コンテナーにアクセスするには、適切な認証と承認が必要です。 認証では呼び出し元の ID を確認し、承認では呼び出し元が実行できる操作を決定します。
 
-For authentication both management plane and data plane use Azure Active Directory. For authorization, management plane uses role-based access control (RBAC) while data plane uses key vault access policy.
+認証については、管理プレーンとデータ プレーンの両方で Azure Active Directory を使用します。 承認については、管理プレーンではロールベースのアクセス制御 (RBAC) を使用し、データ プレーンでは Key Vault アクセス ポリシーを使用します。
 
-Here is a brief overview of the topics covered:
+取り上げるトピックの概要を次に示します。
 
-[Authentication using Azure Active Directory](#authentication-using-azure-active-direcrory) - This section explains how a caller authenticates with Azure Active Directory to access a key vault via management plane and data plane. 
+[Azure Active Directory を使用した認証](#authentication-using-azure-active-direcrory) - このセクションでは、管理プレーンとデータ プレーンを介してキー コンテナーにアクセスするために、呼び出し元が Azure Active Directory で認証する方法について説明します。 
 
-[Management plane and data plane](#management-plane-and-data-plane) - Management plane and data plane are two access planes used for accessing your key vault. Each access plane supports specific operations. This section describes the access endpoints, operations supported, and access control method used by each plane. 
+[管理プレーンとデータ プレーン](#management-plane-and-data-plane) - 管理プレーンとデータ プレーンは、キー コンテナーへのアクセスに使用する 2 つのアクセス プレーンです。 各アクセス プレーンでは、特定の操作がサポートされています。 このセクションでは、アクセス エンドポイント、サポートされている操作、各プレーンで使用されるアクセス制御方法について説明します。 
 
-[Management plane access control](#management-plane-access-control) - In this section we'll look at allowing access to management plane operations using role-based access control.
+[管理プレーンのアクセス制御](#management-plane-access-control) - このセクションでは、ロールベースのアクセス制御を使用した管理プレーン操作へのアクセス許可について説明します。
 
-[Data plane access control](#data-plane-access-control) - This section describes how to use key vault access policy to control data plane access.
+[データ プレーンのアクセス制御](#data-plane-access-control) - このセクションでは、Key Vault アクセス ポリシーを使用してデータ プレーンのアクセスを制御する方法について説明します。
 
-[Example](#example) - This example describes how to setup access control for your key vault to allow three different teams (security team, developers/operators, and auditors) to perform specific tasks to develop, manage and monitor an application in Azure.
+[例](#example) - この例では、3 つの異なるチーム (セキュリティ チーム、開発者/運用者、および監査者) が Azure でアプリケーションを開発、管理、および監視する特定のタスクを実行できるように、キー コンテナーのアクセス制御を設定する方法について説明します。
 
-## <a name="authentication-using-azure-active-directory"></a>Authentication using Azure Active Directory
-When you create a key vault in an Azure subscription, it is automatically associated with the subscription's Azure Active Directory tenant. All callers (users and applications) must be registered in this tenant to access this key vault. An application or a user must authenticate with Azure Active Directory to access key vault. This applies to both management plane and data plane access. In both cases, an application can access key vault in two ways:
+## <a name="authentication-using-azure-active-directory"></a>Azure Active Directory を使用した認証
+Azure サブスクリプション内でキー コンテナーを作成すると、作成したキー コンテナーは、そのサブスクリプションの Azure Active Directory テナントに自動的に関連付けられます。 すべての呼び出し元 (ユーザーおよびアプリケーション) は、このキー コンテナーにアクセスするには、このテナントに登録する必要があります。 アプリケーションまたはユーザーは、キー コンテナーにアクセスするには、Azure Active Directory で認証する必要があります。 これは、管理プレーンとデータ プレーンの両方のアクセスに適用されます。 どちらの場合も、アプリケーションは次の 2 つの方法でキー コンテナーにアクセスできます。
 
-* **user+app access** - usually this is for applications that access key vault on behalf of a signed-in user. Azure PowerShell, Azure Portal are examples of this type of access. There are two ways to grant access to users: one way is to grant access to users so they can access key vault from any application and the other way is to grant a user access to key vault only when they use a specific application (referred to as compound identity). 
-* **app-only access** - for applications that run daemon services, background jobs etc. The application's identity is granted access to the key vault.
+* **User+App アクセス** - 通常、これはサインインしたユーザーの代わりにアプリケーションがキー コンテナーにアクセスする場合の方法です。 この種類のアクセスの例としては、Azure PowerShell、Azure Portal が挙げられます。 ユーザーにアクセス権を付与する方法は 2 つあります。1 つは、任意のアプリケーションからキー コンテナーにアクセスできるようにユーザーにアクセス権を付与する方法です。もう 1 つは、特定のアプリケーションを使用するときにのみ、ユーザーにキー コンテナーへのアクセス権を付与する方法です (複合 ID と呼ばれます)。 
+* **App-Only アクセス** - アプリケーションでデーモン サービスやバックグラウンド ジョブなどを実行する場合の方法です。アプリケーションの ID にキー コンテナーへのアクセス権が付与されます。
 
-In both types of applications, the application authenticates with Azure Active Directory using any of the [supported authentication methods](../active-directory/active-directory-authentication-scenarios.md) and acquires a token. Authentication method used depends on the application type. Then the application uses this token and sends REST API request to key vault. In case of management plane access the requests are routed through Azure Resource Manager endpoint. When accessing data plane, the applications talks directly to a key vault endpoint. See more details on the [whole authentication flow](../active-directory/active-directory-protocols-oauth-code.md). 
+どちらの種類のアプリケーションも、[サポートされている認証方法](../active-directory/active-directory-authentication-scenarios.md)のいずれかを使用して Azure Active Directory で認証し、トークンを取得します。 使用する認証方法は、アプリケーションの種類によって異なります。 その後、アプリケーションはこのトークンを使用し、REST API 要求をキー コンテナーに送信します。 管理プレーン アクセスの場合、要求は Azure Resource Manager エンドポイントを介してルーティングされます。 データ プレーンにアクセスする際、アプリケーションはキー コンテナー エンドポイントと直接通信します。 認証フロー全体について詳しくは、[こちら](../active-directory/active-directory-protocols-oauth-code.md)をご覧ください。 
 
-The resource name for which the application requests a token is different depending on whether the application is accessing management plane or data plane. Hence the resource name is either management plane or data plane endpoint described in the table in a later section, depending on the Azure environment.
+アプリケーションが要求するトークンのリソース名は、アプリケーションが管理プレーンとデータ プレーンのどちらにアクセスするかによって異なります。 そのため、リソース名は、Azure 環境に応じて、後のセクションの表で説明する管理プレーンまたはデータ プレーンのエンドポイントになります。
 
-Having one single mechanism for authentication to both management and data plane has its own benefits:
+管理プレーンとデータ プレーンの両方に対して認証する単一のメカニズムを用意すると、独自の利点があります。
 
-* Organizations can centrally control access to all key vaults in their organization
-* If a user leaves, they instantly lose access to all key vaults in the organization
-* Organizations can customize authentication via the options in Azure Active Directory (for example, enabling multi-factor authentication for added security)
+* 組織内のすべてのキー コンテナーへのアクセスを一元的に管理できます
+* 退職したユーザーは、組織内のすべてのキー コンテナーに即座にアクセスできなくなります
+* Azure Active Directory のオプションを使用して認証をカスタマイズできます (例: セキュリティを強化するために多要素認証を有効にする)
 
-## <a name="management-plane-and-data-plane"></a>Management plane and data plane
-Azure Key Vault is an Azure service available via Azure Resource Manager deployment model. When you create a key vault, you get a virtual container inside which you can create other objects like keys, secrets, and certificates. Then you access your key vault using management plane and data plane to perform specific operations. Management plane interface is used to manage your key vault itself, such as creating, deleting, updating key vault attributes and setting access policies for data plane. Data plane interface is used to add, delete, modify, and use the keys, secrets, and certificates stored in your key vault.
+## <a name="management-plane-and-data-plane"></a>管理プレーンとデータ プレーン
+Azure Key Vault は、Azure Resource Manager デプロイメント モデルを介して利用できる Azure サービスです。 キー コンテナーを作成すると、仮想コンテナーが作成され、そこにキー、シークレット、証明書などのオブジェクトを作成できます。 その後、管理プレーンとデータ プレーンを使ってキー コンテナーにアクセスして、特定の操作を実行することができます。 管理プレーン インターフェイスは、キー コンテナーの属性の作成、削除、更新や、データ プレーンのアクセス ポリシーの設定など、キー コンテナー自体を管理する場合に使用します。 データ プレーン インターフェイスは、キー コンテナーに格納されているキー、シークレット、証明書を追加、削除、変更、使用する場合に使用します。
 
-The management plane and data plane interfaces are accessed through different endpoints (see table). The second column in the table describes the DNS names for these endpoints in different Azure environments. The third column describes the operations you can perform from each access plane. Each access plane also has its own access control mechanism: for management plane access control is set using Azure Resource Manager Role-Based Access Control (RBAC), while for data plane access control is set using key vault access policy.
+管理プレーンとデータ プレーンのインターフェイスには異なるエンドポイントを介してアクセスします (表を参照してください)。 表の 2 列目では、さまざまな Azure 環境におけるこれらのエンドポイントの DNS 名について説明しています。 3 列目では、各アクセス プレーンから実行できる操作について説明しています。 どちらのアクセス プレーンにも、独自のアクセス制御メカニズムが用意されています。管理プレーンのアクセス制御は Azure Resource Manager のロールベースのアクセス制御 (RBAC) を使用して設定し、データ プレーンのアクセス制御は Key Vault アクセス ポリシーを使用して設定します。
 
-| Access plane | Access endpoints | Operations | Access control mechanism |
+| アクセス プレーン | アクセス エンドポイント | 操作 | アクセス制御メカニズム |
 | --- | --- | --- | --- |
-| Management plane |**Global:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 |Create/Read/Update/Delete key vault <br> Set access policies for key vault<br>Set tags for key vault |Azure Resource Manager Role-Based Access Control (RBAC) |
-| Data plane |**Global:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |For Keys: Decrypt, Encrypt, UnwrapKey, WrapKey, Verify, Sign, Get, List, Update, Create, Import, Delete, Backup, Restore<br><br> For secrets: Get, List, Set, Delete |Key vault access policy |
+| 管理プレーン |**グローバル:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br>  management.microsoftazure.de:443 |キー コンテナーの作成/読み取り/更新/削除 <br> キー コンテナーのアクセス ポリシーの設定<br>キー コンテナーのタグの設定 |Azure Resource Manager のロールベースのアクセス制御 (RBAC) |
+| データ プレーン |**グローバル:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |キーの場合: 復号化、暗号化、キーのラップ解除、キーのラップ、確認、署名、取得、一覧表示、更新、作成、インポート、削除、バックアップ、復元<br><br> シークレットの場合: 取得、一覧表示、設定、削除 |Key Vault アクセス ポリシー |
 
-The management plane and data plane access controls work independently. For example, if you want to grant an application access to use keys in a key vault, you only need to grant data plane access permissions using key vault access policies and no management plane access is needed for this application. And conversely, if you want a user to be able to read vault properties and tags, but not have any access to keys, secrets, or certificates, you can grant this user, 'read' access using RBAC and no access to data plane is required.
+管理プレーンとデータ プレーンのアクセス制御は独立して動作します。 たとえば、キー コンテナー内のキーを使用するためのアクセス権をアプリケーションに付与する場合、Key Vault アクセス ポリシーを使用して、データ プレーンのアクセス許可のみを付与する必要があります。このアプリケーションには、管理プレーンへのアクセスは必要ありません。 一方、ユーザーがコンテナーのプロパティやタグを読み取ることができるが、キー、シークレット、証明書にはアクセスできないようにする場合は、RBAC を使用してこのユーザーに "読み取り" アクセス権を付与します。データ プレーンへのアクセスは必要ありません。
 
-## <a name="management-plane-access-control"></a>Management plane access control
-The management plane consists of operations that affect the key vault itself. For example, you can create or delete a key vault. You can get a list of vaults in a subscription. You can retrieve key vault properties (such as SKU, tags) and set key vault access policies that control the users and applications that can access keys and secrets in the key vault. Management plane access control uses RBAC. See the complete list of key vault operations that can be performed via management plane in the table in preceding section. 
+## <a name="management-plane-access-control"></a>管理プレーンのアクセス制御
+管理プレーンは、キー コンテナー自体に影響を与える操作で構成されています。 たとえば、キー コンテナーを作成または削除できます。 サブスクリプション内のコンテナーの一覧を取得できます。 キー コンテナーのプロパティ (SKU、タグなど) を取得することや、キー コンテナー内のキーやシークレットにアクセスできるユーザーとアプリケーションを制御する Key Vault アクセス ポリシーを設定することができます。 管理プレーンのアクセス制御では、RBAC を使用します。 管理プレーンを介して実行できるキー コンテナーの操作の完全な一覧については、前のセクションの表を参照してください。 
 
-### <a name="role-based-access-control-(rbac)"></a>Role-based Access Control (RBAC)
-Each Azure subscription has an Azure Active Directory. Users, groups, and applications from this directory can be granted access to manage resources in the Azure subscription that use the Azure Resource Manager deployment model. This type of access control is referred to as Role-Based Access Control (RBAC). To manage this access, you can use the [Azure portal](https://portal.azure.com/), the [Azure CLI tools](../xplat-cli-install.md), [PowerShell](../powershell-install-configure.md), or the [Azure Resource Manager REST APIs](https://msdn.microsoft.com/library/azure/dn906885.aspx).
+### <a name="rolebased-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC)
+各 Azure サブスクリプションには Azure Active Directory があります。 このディレクトリのユーザー、グループ、アプリケーションに対して、Azure Resource Manager デプロイメント モデルを使用する Azure サブスクリプション内にあるリソースを管理するためのアクセス権を付与できます。 この種のアクセス制御は、ロールベースのアクセス制御 (RBAC) と呼ばれます。 このアクセスを管理するには、[Azure Portal](https://portal.azure.com/)、[Azure CLI ツール](../xplat-cli-install.md)、[PowerShell](../powershell-install-configure.md)、または [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx) を使用できます。
 
-With the Azure Resource Manager model, you create your key vault in a resource group and control access to the management plane of this key vault by using Azure Active Directory. For example, you can grant users or a group ability to manage key vaults in a specific resource group.
+Azure Resource Manager モデルでは、リソース グループにキー コンテナーを作成し、Azure Active Directory を使用してこのキー コンテナーの管理プレーンに対するアクセス権を制御します。 たとえば、ユーザーまたはグループに対して、特定のリソース グループのキー コンテナーを管理する権限を付与できます。
 
-You can grant access to users, groups and applications at a specific scope by assigning appropriate RBAC roles. For example, to grant access to a user to manage key vaults you would assign a predefined role 'key vault Contributor' to this user at a specific scope. The scope in this case would be either a subscription, a resource group, or just a specific key vault. A role assigned at subscription level applies to all resource groups and resources within that subscription. A role assigned at resource group level applies to all resources in that resource group. A role assigned for a specific resource only applies to that resource. There are several predefined roles (see [RBAC: Built-in roles](../active-directory/role-based-access-built-in-roles.md)), and if the predefined roles do not fit your needs you can also define your own roles.
-
-> [!IMPORTANT]
-> Note that if a user has Contributor permissions (RBAC) to a key vault management plane, she can grant herself access to data plane, by setting key vault access policy, which controls access to data plane. Therefore, it is recommended to tightly control who has 'Contributor' access to your key vaults to ensure only authorized persons can access and manage your key vaults, keys, secrets, and certificates.
-> 
-> 
-
-## <a name="data-plane-access-control"></a>Data plane access control
-The key vault data plane consists of operations that affect the objects in a key vault, such as keys, secrets, and certificates.  This includes key operations such as create, import, update, list, backup, and restore keys, cryptographic operations such as sign, verify, encrypt, decrypt, wrap, and unwrap, and set tags and other attributes for keys. Similarly, for secrets it includes, get, set, list, delete.
-
-Data plane access is granted by setting access policies for a key vault. A user, group, or an application must have Contributor permissions (RBAC) for management plane for a key vault to be able to set access policies for that key vault. A user, group, or application can be granted access to perform specific operations for keys or secrets in a key vault. key vault support up to 16 access policy entries for a key vault. Create an Azure Active Directory security group and add users to that group to grant data plane access to several users to a key vault.
-
-### <a name="key-vault-access-policies"></a>key vault Access Policies
-key vault access policies grant permissions to keys, secrets and certificates separately. For example, you can give a user access to only keys, but no permissions for secrets. However, permissions to access keys or secrets or certificates are at the vault level. In other words, key vault access policy does not support object level permissions. You can use [Azure portal](https://portal.azure.com/), the [Azure CLI tools](../xplat-cli-install.md), [PowerShell](../powershell-install-configure.md), or the [key vault Management REST APIs](https://msdn.microsoft.com/library/azure/mt620024.aspx) to set access policies for a key vault.
+特定のスコープでユーザー、グループ、およびアプリケーションにアクセス権を付与するには、適切な RBAC ロールを割り当てます。 たとえば、キー コンテナーを管理するためのアクセス権をユーザーに付与するには、定義済みのロール "キー コンテナーの共同作成者" を特定のスコープでこのユーザーに割り当てます。 この場合のスコープは、サブスクリプション、リソース グループ、または特定のキー コンテナーになります。 サブスクリプション レベルで割り当てられたロールは、そのサブスクリプション内のすべてのリソース グループとリソースに適用されます。 リソース グループ レベルで割り当てられたロールは、そのリソース グループ内のすべてのリソースに適用されます。 特定のリソースに対して割り当てられたロールは、そのリソースにのみ適用されます。 定義済みのロールはいくつかあります (「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」をご覧ください)。定義済みのロールがニーズに合わない場合、独自のロールを定義することもできます。
 
 > [!IMPORTANT]
-> Note that key vault access policies apply at the vault level. For example, when a user is granted permission to create and delete keys, she can perform those operations on all keys in that key vault.
+> キー コンテナーの管理プレーンに対する共同作成者権限 (RBAC) を持っているユーザーは、データ プレーンへのアクセスを制御する Key Vault アクセス ポリシーを設定することで、データ プレーンへのアクセス権を自分に付与できることに注意してください。 そのため、キー コンテナーに対する "共同作成者" アクセス権を持つユーザーをしっかりと管理して、承認されたユーザーのみがキー コンテナー、キー、シークレット、および証明書にアクセスして管理できるようにすることをお勧めします。
 > 
 > 
 
-## <a name="example"></a>Example
-Let's say you are developing an application that uses a certificate for SSL, Azure storage for storing data, and uses an RSA 2048-bit key for sign operations. Let's say this application is running in a VM (or a VM Scale Set). You can use a key vault to store all the application secrets, and use key vault to store the bootstrap certificate that is used by the application to authenticate with Azure Active Directory.
+## <a name="data-plane-access-control"></a>データ プレーンのアクセス制御
+キー コンテナーのデータ プレーンは、キー、シークレット、証明書など、キー コンテナー内のオブジェクトに影響を与える操作で構成されています。  これには、キー操作 (キーの作成、インポート、更新、一覧表示、バックアップ、復元など) や暗号化操作 (キーの署名、確認、暗号化、復号化、ラップ、ラップ解除、タグやその他の属性の設定など) が含まれます。 また、シークレットの取得、設定、一覧表示、削除の操作も含まれます。
 
-So, here's a summary of all the keys and secrets to be stored in a key vault.
+データ プレーンのアクセス権は、キー コンテナーのアクセス ポリシーを設定することで付与します。 キー コンテナーのアクセス ポリシーを設定するには、ユーザー、グループ、またはアプリケーションにそのキー コンテナーの管理プレーンに対する共同作成者権限 (RBAC) が必要です。 ユーザー、グループ、またはアプリケーションには、キー コンテナー内のキーやシークレットに対して特定の操作を実行するためのアクセス権を付与できます。 Key Vault では、1 つのキー コンテナーに対して最大 16 個のアクセス ポリシー エントリをサポートしています。 Azure Active Directory セキュリティ グループを作成し、そのグループにユーザーを追加して、キー コンテナーに対するデータ プレーンのアクセス権を複数のユーザーに付与します。
 
-* **SSL Cert** - used for SSL
-* **Storage Key** - used to get access to Storage account
-* **RSA 2048-bit key** - used for sign operations
-* **Bootstrap certificate** - used to authenticate to Azure Active Directory, to get access to key vault to fetch the storage key and use the RSA key for signing.
+### <a name="key-vault-access-policies"></a>Key Vault アクセス ポリシー
+Key Vault アクセス ポリシーでは、キー、シークレット、証明書へのアクセス権を個別に付与します。 たとえば、ユーザーにキーのみのアクセス権を付与し、シークレットのアクセス権は付与しないようにすることができます。 ただし、キー、シークレット、または証明書へのアクセス権は、コンテナー レベルで付与されます。 つまり、Key Vault アクセス ポリシーでは、オブジェクト レベルの権限をサポートしていません。 キー コンテナーのアクセス ポリシーを設定するには、[Azure Portal](https://portal.azure.com/)、[Azure CLI ツール](../xplat-cli-install.md)、[PowerShell](../powershell-install-configure.md)、または [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx) を使用できます。
 
-Now let's meet the people who are managing, deploying and auditing this application. We'll use three roles in this example.
+> [!IMPORTANT]
+> Key Vault アクセス ポリシーはコンテナー レベルで適用されることに注意してください。 たとえば、キーを作成および削除するためのアクセス許可を付与されたユーザーは、そのキー コンテナー内のすべてのキーに対してそれらの操作を実行できます。
+> 
+> 
 
-* **Security team** - These are typically IT staff from the 'office of the CSO (Chief Security Officer)' or equivalent, responsible for the proper safekeeping of secrets such as SSL certificates, RSA keys used for signing, connection strings for databases, storage account keys.
-* **Developers/operators** - These are the folks who develop this application and then deploy it in Azure. Typically, they are not part of the security team, and hence they should not have access to any sensitive data, such as SSL certificates, RSA keys, but the application they deploy should have access to those.
-* **Auditors** - This is usually a different set of people, isolated from the developers and general IT staff. Their responsibility is to review proper use and maintenance of certificates, keys, etc. and ensure compliance with data security standards. 
+## <a name="example"></a>例
+SSL 用の証明書を使用し、データの格納に Azure Storage を使用して、署名操作に RSA 2048 ビット キーを使用するアプリケーションを開発しているとします。 このアプリケーションは、VM (または VM スケール セット) で実行します。 キー コンテナーを使用して、すべてのアプリケーション シークレットや、Azure Active Directory で認証するアプリケーションで使用されるブートストラップ証明書を格納することができます。
 
-There is one more role that is outside the scope of this application, but relevant here to be mentioned, and that would be the subscription (or resource group) administrator. Subscription administrator sets up initial access permissions for the security team. Here we assume that the subscription administrator has granted access to the security team to a resource group in which all the resources needed for this application reside.
+そのため、キー コンテナーに格納するすべてのキーとシークレットの概要を次に示します。
 
-Now let's see what actions each role performs in the context of this application.
+* **SSL 証明書** - SSL に使用します
+* **ストレージ キー** - ストレージ アカウントにアクセスするために使用します
+* **RSA 2048 ビット キー** - 署名操作に使用します
+* **ブートストラップ証明書** - Azure Active Directory に対して認証するためと、キー コンテナーにアクセスして、ストレージ キーを取得し、署名に RSA キーを使用するために使用します。
 
-* **Security team**
-  * Create key vaults
-  * Turns on key vault logging
-  * Add keys/secrets
-  * Create backup of keys for disaster recovery
-  * Set key vault access policy to grant permissions to users and applications to perform specific operations
-  * Periodically roll keys/secrets
-* **Developers/operators**
-  * Get references to bootstrap and SSL certs (thumbprints), storage key (secret URI) and signing key (Key URI) from security team
-  * Develop and deploy application that accesses keys and secrets programmatically
-* **Auditors**
-  * Review usage logs to confirm proper key/secret use and compliance with data security standards
+次に、このアプリケーションの管理、デプロイ、監査を行うユーザーを紹介します。 この例では 3 つのロールを使用します。
 
-Now let's see what access permissions to key vault are needed by each role (and the application) to perform their assigned tasks. 
+* **セキュリティ チーム** - 通常、"CSO (最高セキュリティ責任者) のオフィス" またはそれに相当するオフィスの IT スタッフで、SSL 証明書、署名に使用する RSA キー、データベースの接続文字列、ストレージ アカウント キーなどのシークレットの適切な保管を担当します。
+* **開発者/運用者** - このアプリケーションを開発し、Azure にデプロイするユーザー。 通常、セキュリティ チームには属しておらず、そのため、SSL 証明書や RSA キーなどの機密データにはアクセスできませんが、デプロイしたアプリケーションはそれらにアクセスできる必要があります。
+* **監査者** - 通常、開発者や一般的な IT スタッフとは別のユーザーです。 証明書やキーなどの適切な使用と管理について検査し、データ セキュリティ基準に準拠していることを確認します。 
 
-| User Role | Management plane permissions | Data plane permissions |
+このアプリケーションでは詳しく説明しませんが、関係のあるもう 1 つロールを紹介します。サブスクリプション (またはリソース グループ) 管理者です。 サブスクリプション管理者は、セキュリティ チームの初期のアクセス許可を設定します。 ここでは、サブスクリプション管理者が、このアプリケーションに必要なすべてのリソースが配置されているリソース グループへのアクセス権をセキュリティ チームに付与したとします。
+
+それでは、このアプリケーションのコンテキストで各ロールが実行するアクションを見てみましょう。
+
+* **セキュリティ チーム**
+  * キー コンテナーを作成する
+  * Key Vault のログ記録をオンにする
+  * キーやシークレットを追加する
+  * 障害復旧のためにキーのバックアップを作成する
+  * 特定の操作を実行するためのアクセス許可をユーザーおよびアプリケーションに付与するように Key Vault アクセス ポリシーを設定する
+  * キーやシークレットを定期的に切り替える
+* **開発者/運用者**
+  * セキュリティ チームからブートストラップ証明書と SSL 証明書 (拇印) への参照、ストレージ キー (シークレットの URI) と署名キー (キーの URI) を取得する
+  * キーとシークレットにプログラムからアクセスするアプリケーションを開発し、デプロイする
+* **監査者**
+  * 使用状況ログで、キーやシークレットが正しく使用されているかどうかや、データ セキュリティ基準に準拠しているかどうかを確認する
+
+次に、各ロール (およびアプリケーション) が割り当てられているタスクを実行するために必要な、キー コンテナーに対するアクセス許可について見てみましょう。 
+
+| ユーザー ロール | 管理プレーンのアクセス許可 | データ プレーンのアクセス許可 |
 | --- | --- | --- |
-| Security Team |key vault Contributor |Keys: backup, create, delete, get, import, list, restore <br> Secrets: all |
-| Developers/Operator |key vault deploy permission so that the VMs they deploy can fetch secrets from the key vault |None |
-| Auditors |None |Keys: list<br>Secrets: list |
-| Application |None |Keys: sign<br>Secrets: get |
+| セキュリティ チーム |キー コンテナーの共同作成者 |キー: バックアップ、作成、削除、取得、インポート、一覧表示、復元 <br> シークレット: すべて |
+| 開発者/運用者 |キー コンテナーのデプロイ アクセス許可 (デプロイした VM がキー コンテナーからシークレットを取得できるようにするため) |なし |
+| 監査者 |なし |キー: 一覧表示<br>シークレット: 一覧表示 |
+| アプリケーション |なし |キー: 署名<br>シークレット: 取得 |
 
 > [!NOTE]
-> Auditors need list permission for keys and secrets so they can inspect attributes for keys and secrets that are not emitted in the logs, such as tags, activation and expiration dates.
+> 監査者には、タグ、ライセンス認証を行った日付、有効期限など、ログに出力されないキーとシークレットの属性を調べるために、キーとシークレットを一覧表示するためのアクセス許可が必要です。
 > 
 > 
 
-Besides permission to key vault, all three roles also need access to other resources. For example, to be able to deploy VMs (or Web Apps etc.) Developers/Operators also need 'Contributor' access to those resource types. Auditors need read access to the storage account where the key vault logs are stored.
+3 つすべてのロールには、キー コンテナーに対するアクセス許可に加え、その他のリソースへのアクセス許可も必要です。 たとえば、VM (または Web Apps など) をデプロイできるようにするためのアクセス許可が必要です。開発者/運用者には、それらのリソースの種類に対する "共同作成者" のアクセス権も必要です。 監査者には、Key Vault のログが格納されているストレージ アカウントに対する読み取りアクセス権が必要です。
 
-Since the focus of this article is securing access to your key vault, we only illustrate the relevant portions pertaining to this topic and skip details regarding deploying certificates, accessing keys and secrets programmatically etc. Those details are already covered elsewhere. Deploying certificates stored in key vault to VMs is covered in a [blog post](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/), and there is [sample code](https://www.microsoft.com/download/details.aspx?id=45343) available that illustrates how to use bootstrap certificate to authenticate to Azure AD to get access to key vault.
+この記事では、キー コンテナーへのアクセスをセキュリティで保護することに焦点を絞っています。そのため、このトピックに関連する部分についてのみ説明し、証明書のデプロイや、キーとシークレットへのプログラムからのアクセスなどに関する詳細については省略します。これらの詳細については、既に他の記事で説明しています。 キー コンテナーに格納されている証明書の VM へのデプロイについては、[ブログの投稿](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)をご覧ください。また、ブートストラップ証明書を使用して、Azure AD に対して認証し、キー コンテナーにアクセスする方法を示した[サンプル コード](https://www.microsoft.com/download/details.aspx?id=45343)が公開されています。
 
-Most of the access permissions can be granted using Azure portal, but to grant granular permissions you may need to use Azure PowerShell (or Azure CLI) to achieve the desired result. 
+ほとんどのアクセス許可は、Azure Portal を使用して付与できますが、詳細なアクセス許可を付与するには、Azure PowerShell (または Azure CLI) を使用して、目的の結果を実現する必要があります。 
 
-The following PowerShell snippets assume:
+次の PowerShell スニペットでは、以下を想定しています。
 
-* The Azure Active Directory administrator has created security groups that represent the three roles, namely Contoso Security Team, Contoso App Devops, Contoso App Auditors. The administrator has also added users to the groups they belong.
-* **ContosoAppRG** is the resource group where all the resources reside. **contosologstorage** is where the logs are stored. 
-* Key vault **ContosoKeyVault** and storage account used for key vault logs **contosologstorage** must be in the same Azure location
+* Azure Active Directory 管理者が、3 つのロールを表すセキュリティ グループ (Contoso Security Team、Contoso App Devops、Contoso App Auditors) を作成しています。 また、ユーザーをそれぞれの所属グループに追加しています。
+* **ContosoAppRG** は、すべてのリソースが配置されているリソース グループです。 **contosologstorage** には、ログが格納されます。 
+* キー コンテナー **ContosoKeyVault** と Key Vault のログに使用されるストレージ アカウント **contosologstorage** は、同じ Azure の場所に配置する必要があります
 
-First the subscription administrator assigns 'key vault Contributor' and 'User Access Administrator' roles to the security team. This allows the security team to manage access to other resources and manage key vaults in the resource group ContosoAppRG.
+まず、サブスクリプション管理者がセキュリティ チームに "キー コンテナーの共同作成者" と "ユーザー アクセスの管理者" ロールを割り当てます。 これにより、セキュリティ チームは、その他のリソースへのアクセスと、ContosoAppRG リソース グループ内のキー コンテナーを管理できます。
 
 ```
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "User Access Administrator" -ResourceGroupName ContosoAppRG
 ```
 
-The following script illustrates how the security team can create a key vault, setup logging, and set access permissions for other roles and the application. 
+次のスクリプトでは、セキュリティ チームがキー コンテナーを作成し、ログ記録を設定して、その他のロールとアプリケーションに対してアクセス許可を設定する方法を示しています。 
 
 ```
 # Create key vault and enable logging
@@ -188,64 +192,67 @@ New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso A
 Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso App Auditors')[0].Id -PermissionToKeys list -PermissionToSecrets list
 ```
 
-The custom role defined, is only assignable to the subscription where the ContosoAppRG resource group is created. If the same custom roles will be used for other projects in other subscriptions, it's scope could have more subscriptions added.
+ContosoAppRG リソース グループが作成されるサブスクリプションには、定義済みのカスタム ロールのみを割り当てることができます。 同じカスタム ロールを他のサブスクリプションの他のプロジェクトで使用すると、そのスコープにサブスクリプションが追加される可能性があります。
 
-The custom role assignment for the developers/operators for the "deploy/action" permission is scoped to the resource group. This way only the VMs created in the resource group 'ContosoAppRG' will get the secrets (SSL cert and bootstrap cert). Any VMs that a member of dev/ops team creates in other resource group will not be able to get these secrets even if they knew the secret URIs.
+開発者/運用者に対する "deploy/action" アクセス許可のカスタム ロールの割り当ての対象は、リソース グループです。 これにより、"ContosoAppRG" リソース グループに作成された VM のみがシークレット (SSL 証明書とブートストラップ証明書) を取得します。 開発者/運用者チームのメンバーが他のリソース グループに作成した VM はすべて、シークレットの URI を知っていても、これらのシークレットを取得できません。
 
-This example depicts a simple scenario. Real life scenarios may be more complex and you may need to adjust permissions to your key vault based on your needs. For example, in our example, we assume that security team will provide the key and secret references (URIs and thumbprints) that developers/operators team need to reference in their applications. Hence, they don't need to grant developers/operators any data plane access. Also, note that this example focuses on securing your key vault. Similar consideration should be given to secure [your VMs](https://azure.microsoft.com/services/virtual-machines/security/), [storage accounts](../storage/storage-security-guide.md) and other Azure resources too.
+この例では、単純なシナリオを示しています。 実際のシナリオはもっと複雑で、ニーズに基づいて、キー コンテナーに対するアクセス許可を調整する必要があります。 たとえば、この例では、開発者/運用者チームがアプリケーションで参照するために必要なキーとシークレットの参照 (URI と拇印) をセキュリティ チームが提供します。 そのため、開発者/運用者にデータ プレーンのアクセス権を付与する必要がありません。 また、この例ではキー コンテナーのセキュリティ保護に焦点を当てていることに注意してください。 [VM](https://azure.microsoft.com/services/virtual-machines/security/) や[ストレージ アカウント](../storage/storage-security-guide.md)などの Azure リソースをセキュリティで保護する場合も、同じようなことを考慮します。
 
 > [!NOTE]
-> Note: This example shows how key vault access will be locked down in production. The developers should have their own subscription or resourcegroup where they have full permissions to manage their vaults, VMs and storage account where they develop the application.
+> 注: この例では、運用環境でキー コンテナーのアクセスをロックダウンする方法を示しています。 開発者は、キー コンテナー、VM、ストレージ アカウントを管理するための完全なアクセス許可を持つ自分のサブスクリプションまたはリソース グループで、アプリケーションを開発する必要があります。
 > 
 > 
 
-## <a name="resources"></a>Resources
-* [Azure Active Directory Role-based Access Control](../active-directory/role-based-access-control-configure.md)
+## <a name="resources"></a>リソース
+* [Azure Active Directory のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
   
-  This article explains the Azure Active Directory Role-based Access Control and how it works.
-* [RBAC: Built in Roles](../active-directory/role-based-access-built-in-roles.md)
+  この記事では、Azure Active Directory のロールベースのアクセス制御とそのしくみについて説明しています。
+* [RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)
   
-  This article details all the built-in roles available in RBAC.
-* [Understanding Resource Manager deployment and classic deployment](../resource-manager-deployment-model.md)
+  この記事では、RBAC で使用できるすべての組み込みロールについて詳しく説明しています。
+* [リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)
   
-  This article explains the Resource Manager deployment and classic deployment models, and explains the benefits of using the Resource Manager and resource groups
-* [Manage Role-Based Access Control with Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
+  この記事では、Resource Manager デプロイとクライアント デプロイ モデル、Resource Manager とリソース グループを使用する利点について説明しています。
+* [Azure PowerShell を使用したロールベースのアクセス制御の管理](../active-directory/role-based-access-control-manage-access-powershell.md)
   
-  This article explains how to manage role-based access control with Azure PowerShell
-* [Managing Role-Based Access Control with the REST API](../active-directory/role-based-access-control-manage-access-rest.md)
+  この記事では、Azure PowerShell を使用してロールベースのアクセス制御を管理する方法について説明しています。
+* [REST API を使用したロールベースのアクセス制御の管理](../active-directory/role-based-access-control-manage-access-rest.md)
   
-  This article shows how to use the REST API to manage RBAC.
-* [Role-Based Access Control for Microsoft Azure from Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
+  この記事では、REST API を使用して RBAC を管理する方法について説明しています。
+* [Role-Based Access Control for Microsoft Azure from Ignite (Ignite での Microsoft Azure 向けロールベースのアクセス制御の説明)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
   
-  This is a link to a video on Channel 9 from the 2015 MS Ignite conference. In this session, they talk about access management and reporting capabilities in Azure, and explore best practices around securing access to Azure subscriptions using Azure Active Directory.
-* [Authorize access to web applications using OAuth 2.0 and Azure Active Directory](../active-directory/active-directory-protocols-oauth-code.md)
+  これは、2015 MS Ignite カンファレンスで行われたチャンネル 9 のビデオのリンクです。 このセッションでは、Azure のアクセス制御とレポート機能について話し、Azure Active Directory を使用して Azure サブスクリプションに対するアクセスをセキュリティで保護する場合のベスト プラクティスを探っています。
+* [OAuth 2.0 と Azure Active Directory を使用した Web アプリケーションへのアクセスの承認](../active-directory/active-directory-protocols-oauth-code.md)
   
-  This article describes complete OAuth 2.0 flow for authenticating with Azure Active Directory.
-* [key vault Management REST APIs](https://msdn.microsoft.com/library/azure/mt620024.aspx)
+  この記事では、Azure Active Directory で認証するための完全な OAuth 2.0 フローについて説明しています。
+* [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx)
   
-  This document is the reference for the REST APIs to manage your key vault programmatically, including setting key vault access policy.
-* [key vault REST APIs](https://msdn.microsoft.com/library/azure/dn903609.aspx)
+  このドキュメントは、Key Vault アクセス ポリシーの設定など、プログラムでキー コンテナーを管理するための REST API の参照です。
+* [Key Vault REST API](https://msdn.microsoft.com/library/azure/dn903609.aspx)
   
-  Link to key vault REST API reference documentation.
-* [Key access control](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)
+  Key Vault REST API のリファレンス ドキュメントへのリンクです。
+* [Key access control (キーのアクセス制御)](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)
   
-  Link to Key access control reference documentation.
-* [Secret access control](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
+  キーのアクセス制御のリファレンス ドキュメントへのリンクです。
+* [Secret access control (シークレットのアクセス制御)](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
   
-  Link to Key access control reference documentation.
-* [Set](https://msdn.microsoft.com/library/mt603625.aspx) and [Remove](https://msdn.microsoft.com/library/mt619427.aspx) key vault access policy using PowerShell
+  シークレットのアクセス制御のリファレンス ドキュメントへのリンクです。
+* PowerShell を使用した Key Vault アクセス ポリシーの[設定](https://msdn.microsoft.com/library/mt603625.aspx)と[削除](https://msdn.microsoft.com/library/mt619427.aspx)
   
-  Links to reference documentation for PowerShell cmdlets to manage key vault access policy.
+  Key Vault アクセス ポリシーを管理するための PowerShell コマンドレットのリファレンス ドキュメントへのリンクです。
 
-## <a name="next-steps"></a>Next Steps
-For a getting started tutorial for an administrator, see [Get Started with Azure key vault](key-vault-get-started.md).
+## <a name="next-steps"></a>次のステップ
+管理者用の概要チュートリアルについては、「[Azure Key Vault の概要](key-vault-get-started.md)」をご覧ください。
 
-For more information about usage logging for key vault, see [Azure key vault Logging](key-vault-logging.md).
+Key Vault の使用状況に関するログ記録の詳細については、「[Azure Key Vault のログ記録](key-vault-logging.md)」を参照してください。
 
-For more information about using keys and secrets with Azure key vault, see [About Keys and Secrets](https://msdn.microsoft.com/library/azure/dn903623.aspx).
+Azure Key Vault でキーとシークレットを使用する方法の詳細については、[キーとシークレット](https://msdn.microsoft.com/library/azure/dn903623.aspx)に関する記事をご覧ください。
 
-If you have questions about key vault, visit the [Azure key vault Forums](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
+Key Vault に関する質問がある場合は、[Azure Key Vault フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)にアクセスしてください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

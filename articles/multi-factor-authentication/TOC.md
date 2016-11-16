@@ -1,49 +1,49 @@
 # Overview
-## [What is Azure Multi-Factor Authentication?](multi-factor-authentication.md)
-## [How it Works](multi-factor-authentication-how-it-works.md)
+## [Azure Multi-Factor Authentication とは](multi-factor-authentication.md)
+## [動作のしくみ](multi-factor-authentication-how-it-works.md)
 
-# Get started
-## [Choose where to deploy](multi-factor-authentication-get-started.md)
-## [MFA in the cloud](multi-factor-authentication-get-started-cloud.md)
-## [MFA on-premises](multi-factor-authentication-get-started-server.md)
-## [MFA for O365 users](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)
-## [Security best practices](multi-factor-authentication-security-best-practices.md)
+# 作業開始
+## [デプロイする場所を選択する](multi-factor-authentication-get-started.md)
+## [クラウドでの MFA](multi-factor-authentication-get-started-cloud.md)
+## [オンプレミスでの MFA](multi-factor-authentication-get-started-server.md)
+## [O365 のユーザーの MFA](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)
+## [セキュリティのベスト プラクティス](multi-factor-authentication-security-best-practices.md)
 
-# How to
-## Deploy and use
-### [Create an Auth Provider](multi-factor-authentication-get-started-auth-provider.md)
-### [Configure settings](multi-factor-authentication-whats-next.md)
-### [Reports in MFA](multi-factor-authentication-manage-reports.md)
-### Azure MFA on-premises
-#### [Install the users portal](multi-factor-authentication-get-started-portal.md)
-#### [Advanced VPN Configurations](multi-factor-authentication-advanced-vpn-configurations.md)
-#### [Mobile App Web Service](multi-factor-authentication-get-started-server-webservice.md)
-#### [Windows Authentication](multi-factor-authentication-get-started-server-windows.md)
-#### [Upgrade from PhoneFactor](multi-factor-authentication-get-started-server-upgrade.md)
+# 方法
+## デプロイと使用
+### [認証プロバイダーを作成する](multi-factor-authentication-get-started-auth-provider.md)
+### [設定を構成する](multi-factor-authentication-whats-next.md)
+### [MFA でのレポート](multi-factor-authentication-manage-reports.md)
+### オンプレミスでの Azure MFA
+#### [ユーザー ポータルをインストールする](multi-factor-authentication-get-started-portal.md)
+#### [高度な VPN 構成](multi-factor-authentication-advanced-vpn-configurations.md)
+#### [モバイル アプリ Web サービス](multi-factor-authentication-get-started-server-webservice.md)
+#### [Windows 認証](multi-factor-authentication-get-started-server-windows.md)
+#### [PhoneFactor からアップグレードする](multi-factor-authentication-get-started-server-upgrade.md)
 
-## Manage users
-### [Assign licenses](multi-factor-authentication-get-started-assign-licenses.md)
-### [Enable or disable MFA](multi-factor-authentication-get-started-user-states.md)
-### [User and device settings](multi-factor-authentication-manage-users-and-devices.md)
+## ユーザーの管理
+### [ライセンスを割り当てる](multi-factor-authentication-get-started-assign-licenses.md)
+### [MFA を有効または無効にする](multi-factor-authentication-get-started-user-states.md)
+### [ユーザーとデバイスの設定](multi-factor-authentication-manage-users-and-devices.md)
 
-## Integrate
-### [Federation Services](multi-factor-authentication-get-started-adfs.md)
-#### [Use AD FS](multi-factor-authentication-get-started-adfs-cloud.md)
-#### [Use AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md)
-#### [Use Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md)
-### Directories
-#### [LDAP Authentication](multi-factor-authentication-get-started-server-ldap.md)
-#### [RADIUS Authentication](multi-factor-authentication-get-started-server-radius.md)
+## 統合
+### [フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)
+#### [AD FS を使用する](multi-factor-authentication-get-started-adfs-cloud.md)
+#### [AD FS 2.0 を使用する](multi-factor-authentication-get-started-adfs-adfs2.md)
+#### [Windows Server 2012 R2 AD FS を使用する](multi-factor-authentication-get-started-adfs-w2k12.md)
+### ディレクトリ
+#### [LDAP 認証](multi-factor-authentication-get-started-server-ldap.md)
+#### [RADIUS 認証](multi-factor-authentication-get-started-server-radius.md)
 #### [Active Directory](multi-factor-authentication-get-started-server-dirint.md)
-### [IIS web apps](multi-factor-authentication-get-started-server-iis.md)
-### [Remote Desktop Gateway](multi-factor-authentication-get-started-server-rdg.md)
+### [IIS Web アプリ](multi-factor-authentication-get-started-server-iis.md)
+### [リモート デスクトップ ゲートウェイ](multi-factor-authentication-get-started-server-rdg.md)
 
-## Develop applications
-### [Building into Custom Apps (SDK)](multi-factor-authentication-sdk.md)
+## 開発 
+### [カスタム アプリへの組み込み (SDK)](multi-factor-authentication-sdk.md)
 
-## Troubleshoot
+## トラブルシューティング
 ### [FAQ](multi-factor-authentication-faq.md)
-### [Ask a question](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
+### [質問する](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
 
 
 <!--HONumber=Nov16_HO2-->

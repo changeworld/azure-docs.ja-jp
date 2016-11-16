@@ -1,29 +1,29 @@
 # Overview
-## [Secure privileged access](active-directory-securing-privileged-access.md)
-## [What is Azure AD PIM?](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Roles](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [特権アクセスのセキュリティ保護](active-directory-securing-privileged-access.md)
+## [Azure AD PIMとは](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [ロール](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 
-# Get started
-## [Get started in the portal](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [The security wizard](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Give access to PIM](../active-directory-privileged-identity-management-how-to-give-access-to-pim.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+# 作業開始
+## [ポータルでの作業開始](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [セキュリティ ウィザード](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [PIM へのアクセス権の付与](../active-directory-privileged-identity-management-how-to-give-access-to-pim.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 
-# How to
-## Use PIM
-### [Activate your roles](../active-directory-privileged-identity-management-how-to-activate-role.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Perform an access review](../active-directory-privileged-identity-management-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## Manage PIM
-### [Assign roles](../active-directory-privileged-identity-management-how-to-add-role-to-user.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Change role settings](../active-directory-privileged-identity-management-how-to-change-default-settings.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Start an access review](../active-directory-privileged-identity-management-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Finish an access review](../active-directory-privileged-identity-management-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Configure alerts](../active-directory-privileged-identity-management-how-to-configure-security-alerts.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Require MFA](../active-directory-privileged-identity-management-how-to-require-mfa.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Use the audit log](../active-directory-privileged-identity-management-how-to-use-audit-log.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+# 方法
+## PIM の使用
+### [ロールのアクティブ化](../active-directory-privileged-identity-management-how-to-activate-role.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [アクセス レビューの実行](../active-directory-privileged-identity-management-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## PIM の管理
+### [ロールの割り当て](../active-directory-privileged-identity-management-how-to-add-role-to-user.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [ロールの設定変更](../active-directory-privileged-identity-management-how-to-change-default-settings.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [アクセス レビューを開始する](../active-directory-privileged-identity-management-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [アクセス レビューを終了する](../active-directory-privileged-identity-management-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [アラートを構成する](../active-directory-privileged-identity-management-how-to-configure-security-alerts.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [MFA の要求](../active-directory-privileged-identity-management-how-to-require-mfa.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [監査ログの使用](../active-directory-privileged-identity-management-how-to-use-audit-log.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 
-# Related
+# 関連項目
 ## [Azure Active Directory](/azure/active-directory/)
-## [Role-Based Access Control](../role-based-access-control-what-is.md)
+## [ロールベースのアクセス制御](../role-based-access-control-what-is.md)
 
 
 <!--HONumber=Nov16_HO2-->

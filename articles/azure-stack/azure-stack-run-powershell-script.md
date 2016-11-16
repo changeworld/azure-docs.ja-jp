@@ -2,18 +2,22 @@
 title: Deploy Azure Stack POC | Microsoft Docs
 description: Learn how to prepare the Azure Stack POC and run the PowerShell script to deploy Azure Stack POC.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: ErikjeMS
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 0ad02941-ed14-4888-8695-b82ad6e43c66
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2016
+ms.date: 10/20/2016
 ms.author: erikje
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 77e03a12b6dc4fd6bdcc4aeafe27ac8db9a79e73
+
 
 ---
 # <a name="deploy-azure-stack-poc"></a>Deploy Azure Stack POC
@@ -61,11 +65,8 @@ Before you start, make sure that you at least 85 GB of space.
    
     This script downloads the Azure Stack TP2 support files to the folder specified by the $LocalPath parameter.
 6. Open an elevated PowerShell console and change the directory to where you copied the files.
-   
-   * 11 MicrosoftAzureStackPOC-N.BIN (where N is 1-11)
-7. Extract these files into a single folder on your computer.
-8. Right-Click on the MicrosoftAzureStackPOC.EXE > Run as an administrator.
-9. Run the PrepareBootFromVHD.ps1 script. This script and the unattend files are available with the other support scripts provided along with this build.
+7. Right-Click on the MicrosoftAzureStackPOC.EXE > Run as an administrator.
+8. Run the PrepareBootFromVHD.ps1 script. This script and the unattend files are available with the other support scripts provided along with this build.
     There are five parameters for this PowerShell script:
    
    * CloudBuilderDiskPath (required) – The path to the CloudBuilder.vhdx on the HOST.
@@ -79,8 +80,8 @@ Before you start, make sure that you at least 85 GB of space.
        `.\PrepareBootFromVHD.ps1 -CloudBuilderDiskPath C:\CloudBuilder.vhdx -ApplyUnattend`
      
        If you run this exact command, you must enter the AdminPassword at the prompt.
-10. When the script is complete, you must confirm the reboot. If there are other users logged in, this command will fail. If the command fails, run the following command: `Restart-Computer -force` 
-11. The HOST reboots into the OS of the CloudBuilder.vhdx, where the deployment continues.
+9. When the script is complete, you must confirm the reboot. If there are other users logged in, this command will fail. If the command fails, run the following command: `Restart-Computer -force` 
+10. The HOST reboots into the OS of the CloudBuilder.vhdx, where the deployment continues.
 
 > [!IMPORTANT]
 > Azure Stack requires access to the Internet, either directly or through a transparent proxy. The TP2 POC deployment supports exactly one NIC for networking. If you have multiple NICs, make sure that only one is enabled (and all others are disabled) before running the deployment script in the next section.
@@ -128,7 +129,7 @@ If your environment DOESN'T have DHCP enabled, you must include the following AD
     -NatIPv4Subnet 10.10.10.0/24 -NatIPv4Address 10.10.10.3 -NatIPv4DefaultGateway 10.10.10.1
 
 
-### <a name="installazurestackpoc.ps1-optional-parameters"></a>InstallAzureStackPOC.ps1 optional parameters
+### <a name="installazurestackpocps1-optional-parameters"></a>InstallAzureStackPOC.ps1 optional parameters
 | Parameter | Required/Optional | Description |
 | --- | --- | --- |
 | AADAdminCredential |Optional |Sets the Azure Active Directory user name and password. These Azure credentials can be either an Org ID or a Microsoft Account. To use Microsoft Account credentials, omit this parameter in the cmdlet. Omitting this parameter prompts the Azure Authentication popup during deployment. This creates the authentication and refresh tokens used during deployment. |
@@ -146,6 +147,9 @@ If your environment DOESN'T have DHCP enabled, you must include the following AD
 ## <a name="next-steps"></a>Next steps
 [Connect to Azure Stack](azure-stack-connect-azure-stack.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

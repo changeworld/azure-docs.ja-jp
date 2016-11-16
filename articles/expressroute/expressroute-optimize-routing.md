@@ -1,12 +1,12 @@
 ---
-title: ExpressRoute ルーティングの最適化 | Microsoft Docs
-description: このページでは、Microsoft とユーザー (企業) のネットワークとを接続する ExpressRoute 回線がユーザー側に複数存在する場合のルーティングを最適化する方法について詳しく説明します。
+title: "ExpressRoute ルーティングの最適化 | Microsoft Docs"
+description: "このページでは、Microsoft とユーザー (企業) のネットワークとを接続する ExpressRoute 回線がユーザー側に複数存在する場合のルーティングを最適化する方法について詳しく説明します。"
 documentationcenter: na
 services: expressroute
 author: charwen
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: fca53249-d9c3-4cff-8916-f8749386a4dd
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: charwen
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 26f0992e734f0aae96ac6e8b7040d661d5fb063c
+
 
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute ルーティングの最適化
@@ -24,7 +28,7 @@ ExpressRoute 回線が複数あるとき、Microsoft への接続経路は複数
 
 ![](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
 
-### <a name="solution:-use-bgp-communities"></a>解決策: BGP コミュニティの使用
+### <a name="solution-use-bgp-communities"></a>解決策: BGP コミュニティの使用
 両オフィスのユーザーに使用されるルーティングを最適化するには、Azure の米国西部リージョンに属しているプレフィックスと米国東部リージョンに属しているプレフィックスとを区別できなければなりません。 この情報をコード化するためには、[BGP コミュニティ値](expressroute-routing.md)を使用します。 そこで各 Azure リージョンに一意の BGP コミュニティ値を割り当てました (例: 米国東部は "12076:51004"、米国西部は "12076:51006")。 これでどのプレフィックスがどの Azure リージョンに属しているかという情報が得られるので、優先する ExpressRoute 回線を構成することができます。 ルーティング情報の交換に BGP を使用するため、BGP の Local Preference を使用してルーティングを制御できます。 この例では、13.100.0.0/16 に割り当てる Local Preference 値を米国西部では米国東部よりも大きくすることが考えられます。同様に、23.100.0.0/16 に割り当てる Local Preference 値は、米国西部より米国東部の方が大きくなるようにします。 このように構成することで、Microsoft への経路が 2 つあっても、ロサンゼルスのユーザーは米国西部の ExpressRoute 回線を使用して米国西部リージョンに接続し、ニューヨークのユーザーは米国東部の ExpressRoute を使用して米国東部リージョンに接続することができます。 両側でルーティングが最適化されます。 
 
 ![](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
@@ -34,7 +38,7 @@ ExpressRoute 回線が複数あるとき、Microsoft への接続経路は複数
 
 ![](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
 
-### <a name="solution:-use-as-path-prepending"></a>解決策: AS PATH プリペンドの使用
+### <a name="solution-use-as-path-prepending"></a>解決策: AS PATH プリペンドの使用
 この問題には解決策が 2 つあります。 1 つ目は単純です。米国西部の ExpressRoute 回線にはロサンゼルス オフィスのオンプレミス プレフィックス (177.2.0.0/31) を、米国東部の ExpressRoute 回線にはニューヨーク オフィスのオンプレミス プレフィックス (177.2.0.2/31) をアドバタイズします。 結果的に、Microsoft からそれぞれのオフィスに接続するための経路は 1 つしか存在しないことになります。 あいまいさが排除され、ルーティングが最適化されます。 この設計を採用した場合、フェールオーバーの方針を考慮する必要があります。 ExpressRoute を介した Microsoft への経路に障害が発生しても、Exchange Online が貴社のオンプレミス サーバーに引き続き接続できるように対策を講じなければなりません。 
 
 もう 1 つの解決策は、引き続き両方の ExpressRoute 回線で 2 つのプレフィックスをアドバタイズしたうえで、どのプレフィックスがどちらのオフィスに近いか、という手掛かりを Microsoft に知らせる方法です。 BGP の AS Path プリペンドがサポートされているため、プレフィックスの AS Path を構成することでルーティングを制御することができます。 この例では、172.2.0.0/31 の AS PATH を、米国東部では意図的に長くすることが考えられます。そうすることで、このプレフィックスに向かうトラフィックでは、米国西部の ExpressRoute 回線が優先されます (このプレフィックスに対する経路は米国西部の方が短いと Microsoft のネットワークが判断します)。 米国西部でも同様に、172.2.0.2/31 の AS PATH を意図的に長くし、米国東部の ExpressRoute 回線が優先されるようにします。 これで両方のオフィスのルーティングが最適化されます。 このように設計すれば、いずれかの ExpressRoute 回線で障害が発生しても、Exchange Online は、もう 1 つの ExpressRoute 回線および WAN を介して引き続き貴社オフィスに到達することができます。 
@@ -51,6 +55,9 @@ ExpressRoute 回線が複数あるとき、Microsoft への接続経路は複数
 > 
 > 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

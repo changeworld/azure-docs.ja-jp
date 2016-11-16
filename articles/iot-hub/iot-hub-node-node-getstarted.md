@@ -1,12 +1,12 @@
 ---
-title: Node.js で Azure IoT Hub を使用する方法 | Microsoft Docs
-description: Node.js で Azure IoT Hub を使用する方法についてわかりやすく説明します。 Azure IoT Hub と Node.js、Microsoft Azure IoT SDK を使用して IoT ソリューションを実装します。
+title: "Node.js で Azure IoT Hub を使用する方法 | Microsoft Docs"
+description: "Node.js で Azure IoT Hub を使用する方法についてわかりやすく説明します。 Azure IoT Hub と Node.js、Microsoft Azure IoT SDK を使用して IoT ソリューションを実装します。"
 services: iot-hub
 documentationcenter: nodejs
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 56618522-9a31-42c6-94bf-55e2233b39ac
 ms.service: iot-hub
 ms.devlang: javascript
 ms.topic: hero-article
@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2016
 ms.author: dobett
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7ddd9c1ed88e30eaaa200dc6b83d34746da14aa8
+
 
 ---
-# <a name="get-started-with-azure-iot-hub-for-node.js"></a>Azure IoT Hub for Node.js の使用
+# <a name="get-started-with-azure-iot-hub-for-nodejs"></a>Azure IoT Hub for Node.js の使用
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 このチュートリアルの最後には、次の 3 つの Node.js コンソール アプリケーションが完成します。
 
 * **CreateDeviceIdentity.js**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイスを接続します。
 * **ReadDeviceToCloudMessages.js**。シミュレーション対象デバイスから送信されたテレメトリを表示します。
-* **SimulatedDevice.js**。以前に作成したデバイス ID で IoT ハブに接続し、AMQPS プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
+* **SimulatedDevice.js**。以前に作成したデバイス ID で IoT ハブに接続し、AMQP プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
 
 > [!NOTE]
 > デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの作成に利用できる各種 SDK に関する情報は、「[IoT Hub SDK][lnk-hub-sdks]」の記事で取り上げています。
@@ -33,7 +37,7 @@ ms.author: dobett
 このチュートリアルを完了するには、以下が必要です。
 
 * Node.js バージョン 0.10.x 以降。
-* アクティブな Azure アカウント。 アカウントがない場合は、無料試用版アカウントを数分で作成することができます。 詳細については、[Azure の無料試用版][lnk-free-trial]のサイトをご覧ください。
+* アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -101,11 +105,11 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
 > 
 > 
 
-## <a name="receive-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの受信
-このセクションでは、デバイスからクラウドへのメッセージを IoT Hub から読み込む Node.js コンソール アプリケーションを作成します。 IoT ハブは、デバイスからクラウドへのメッセージを読み取るための、[Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。 わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。 [デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを大規模に処理する方法を紹介しています。 チュートリアル「[Event Hubs の使用][lnk-eventhubs-tutorial]」では、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub の Event Hubs と互換性のあるエンドポイントに適用されます。
+## <a name="receive-devicetocloud-messages"></a>デバイスからクラウドへのメッセージの受信
+このセクションでは、デバイスからクラウドへのメッセージを IoT Hub から読み込む Node.js コンソール アプリケーションを作成します。 IoT ハブは、デバイスからクラウドへのメッセージを読み取るための、[Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。 わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。 [デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを大規模に処理する方法を紹介しています。 チュートリアル「[Event Hubs の使用][lnk-eventhubs-tutorial]」では、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub の Event Hub 対応エンドポイントに適用されます。
 
 > [!NOTE]
-> 常に、Event Hubs と互換性のあるエンドポイントは、デバイスからクラウドへのメッセージを読み取るために AMQPS プロトコルを使用します。
+> Event Hubs と互換性のあるエンドポイントは常に、デバイスからクラウドへのメッセージを読み取るために AMQP プロトコルを使用します。
 > 
 > 
 
@@ -257,13 +261,13 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
     ![Azure portal Usage tile showing number of messages sent to IoT Hub][43]
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、ポータルで新しい IoT Hub を構成し、ハブの ID レジストリにデバイス ID を作成しました。 シミュレーション対象デバイス アプリでデバイスからクラウドへのメッセージをハブに送信できるようにするために、このデバイス ID を使用しました。 また、ハブで受け取ったメッセージを表示するアプリを作成しました。 
+このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、ハブの ID レジストリにデバイス ID を作成しました。 シミュレーション対象デバイス アプリでデバイスからクラウドへのメッセージをハブに送信できるようにするために、このデバイス ID を使用しました。 また、ハブで受け取ったメッセージを表示するアプリを作成しました。 
 
 引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 
 * [デバイスの接続][lnk-connect-device]
 * [デバイス管理の概要][lnk-device-management]
-* [Gateway SDK の概要][lnk-gateway-SDK]
+* [IoT Gateway SDK の概要][lnk-gateway-SDK]
 
 既存の IoT ソリューションを拡張し、デバイスからクラウドへのメッセージを大規模に処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
 
@@ -292,6 +296,6 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

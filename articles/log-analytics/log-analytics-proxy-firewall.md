@@ -1,19 +1,23 @@
 ---
-title: Log Analytics のプロキシ設定とファイアウォール設定の構成 | Microsoft Docs
-description: エージェントや OMS サービスで特定のポートを使用する必要がある場合は、プロキシとファイアウォールの設定を構成します。
+title: "Log Analytics のプロキシ設定とファイアウォール設定の構成 | Microsoft Docs"
+description: "エージェントや OMS サービスで特定のポートを使用する必要がある場合は、プロキシとファイアウォールの設定を構成します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: b55ebd80-efd4-4220-971b-c18aea1b1ab2
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/23/2016
+ms.date: 11/11/2016
 ms.author: banders;magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 36c8f482a55135623865814bd384ac98ae214fa3
+
 
 ---
 # <a name="configure-proxy-and-firewall-settings-in-log-analytics"></a>Log Analytics のプロキシ設定とファイアウォール設定の構成
@@ -78,8 +82,8 @@ Operations Manager エージェントが OMS サービスと通信するには�
 
 > [!NOTE]
 > 次の一部のリソースは、OMS の旧バージョンである Advisor と Operational Insights を指しています。 表示されたリソースは、今後変更される予定です。
-> 
-> 
+>
+>
 
 エージェントのリソースとポートの一覧は次のとおりです。<br>
 
@@ -171,6 +175,8 @@ OMS にソリューションを追加した場合、ソリューションは Ope
 * [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md) 」を参照してください。
 * [ログ検索](log-analytics-log-searches.md) について理解を深め、ソリューションによって収集された情報の詳細を確認します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

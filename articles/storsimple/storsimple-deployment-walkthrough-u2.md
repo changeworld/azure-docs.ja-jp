@@ -1,24 +1,28 @@
 ---
-title: StorSimple デバイス (Update 2) をデプロイする | Microsoft Docs
-description: StorSimple Update 2 のデバイスとサービスをデプロイするための手順とベスト プラクティスを説明します。
+title: "StorSimple デバイス (Update 2) をデプロイする | Microsoft Docs"
+description: "StorSimple Update 2 のデバイスとサービスをデプロイするための手順とベスト プラクティスを説明します。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: 7dff0612-617b-4fc8-a3fe-994c24bc7c51
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/11/2016
+ms.date: 10/24/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 636b4ca48d242edfad2770a29f73f7a76edca034
+
 
 ---
-# <a name="deploy-your-on-premises-storsimple-device-(update-2)"></a>オンプレミスの StorSimple デバイス (Update 2) のデプロイ
+# <a name="deploy-your-onpremises-storsimple-device-update-2"></a>オンプレミスの StorSimple デバイス (Update 2) のデプロイ
 > [!div class="op_single_selector"]
-> * [Update 2](storsimple-deployment-walkthrough-u2.md)
+> * [Update 2 以降 ](storsimple-deployment-walkthrough-u2.md)
 > * [Update 1](storsimple-deployment-walkthrough-u1.md)
 > * [GA リリース](storsimple-deployment-walkthrough.md)
 > 
@@ -91,10 +95,10 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 
 * 「 [StorSimple デバイスのネットワーク要件](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)」で説明するとおり、データセンターのファイアウォールでポートを開くと、iSCSI とクラウドのトラフィックが許可されます。
 
-## <a name="step-by-step-deployment"></a>デプロイの手順
+## <a name="stepbystep-deployment"></a>デプロイの手順
 StorSimple デバイスをデータセンター内にデプロイするには、次の詳細な手順を実行します。
 
-## <a name="step-1:-create-a-new-service"></a>手順 1. 新しいサービスを作成する
+## <a name="step-1-create-a-new-service"></a>手順 1. 新しいサービスを作成する
 StorSimple Manager サービスでは、複数の StorSimple デバイスを管理できます。 StorSimple Manager サービスの新しいインスタンスを作成するには、次の手順を実行します。
 
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-create-new-service.md)]
@@ -107,19 +111,19 @@ StorSimple Manager サービスでは、複数の StorSimple デバイスを管�
 > 
 > 
 
-## <a name="step-2:-get-the-service-registration-key"></a>手順 2. サービス登録キーを取得する
+## <a name="step-2-get-the-service-registration-key"></a>手順 2. サービス登録キーを取得する
 StorSimple Manager サービスが稼働したら、サービス登録キーを取得する必要があります。 このキーを使用して StorSimple デバイスを登録し、サービスに接続します。
 
 管理ポータルで、次の手順を実行します。
 
 [!INCLUDE [storsimple-get-service-registration-key](../../includes/storsimple-get-service-registration-key.md)]
 
-## <a name="step-3:-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>手順 3. StorSimple 用 Windows PowerShell を使用してデバイスを構成し登録する
+## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>手順 3. StorSimple 用 Windows PowerShell を使用してデバイスを構成し登録する
 次の手順の説明に従い、StorSimple 用 Windows PowerShell を使用して StorSimple デバイスの初期セットアップを完了します。 この手順を完了するには、ターミナル エミュレーション ソフトウェアを使用する必要があります。 詳細については、「 [PuTTY を使用してデバイスのシリアル コンソールに接続する](#use-putty-to-connect-to-the-device-serial-console)」を参照してください。
 
 [!INCLUDE [storsimple-configure-and-register-device-u1](../../includes/storsimple-configure-and-register-device-u1.md)]
 
-## <a name="step-4:-complete-minimum-device-setup"></a>手順 4. デバイスの最小セットアップを完了する
+## <a name="step-4-complete-minimum-device-setup"></a>手順 4. デバイスの最小セットアップを完了する
 StorSimple デバイスの最小構成を完了するには、次の手順を実行する必要があります。 
 
 * セカンダリ DNS サーバーをセットアップします。
@@ -130,14 +134,14 @@ StorSimple デバイスの最小構成を完了するには、次の手順を実
 
 [!INCLUDE [storsimple-complete-minimum-device-setup](../../includes/storsimple-complete-minimum-device-setup-u1.md)]
 
-## <a name="step-5:-create-a-volume-container"></a>手順 5. ボリューム コンテナーを作成する
+## <a name="step-5-create-a-volume-container"></a>手順 5. ボリューム コンテナーを作成する
 ボリューム コンテナーでは、そこに含まれるすべてのボリュームのストレージ アカウント、帯域幅、暗号化が設定されています。 StorSimple デバイス上のボリュームのプロビジョニングを開始する前に、ボリューム コンテナーを作成する必要があります。 
 
 ボリューム コンテナーを作成するには、管理ポータルで次の手順を実行します。
 
 [!INCLUDE [storsimple-create-volume-container](../../includes/storsimple-create-volume-container.md)]
 
-## <a name="step-6:-create-a-volume"></a>手順 6. ボリュームを作成する
+## <a name="step-6-create-a-volume"></a>手順 6. ボリュームを作成する
 ボリューム コンテナーを作成したら、サーバーの StorSimple デバイスでストレージ ボリュームをプロビジョニングできます。 ボリュームを作成するには、管理ポータルで次の手順を実行します。
 
 > [!IMPORTANT]
@@ -147,7 +151,7 @@ StorSimple デバイスの最小構成を完了するには、次の手順を実
 
 [!INCLUDE [storsimple-create-volume](../../includes/storsimple-create-volume-u2.md)]
 
-## <a name="step-7:-mount,-initialize,-and-format-a-volume"></a>手順 7. ボリュームをマウント、初期化、フォーマットする
+## <a name="step-7-mount-initialize-and-format-a-volume"></a>手順 7. ボリュームをマウント、初期化、フォーマットする
 次の手順が Windows Server ホストで実行されます。 
 
 > [!IMPORTANT]
@@ -161,7 +165,7 @@ MPIO を構成しない場合は、次の手順に従い、Windows Server ホス
 
 [!INCLUDE [storsimple-mount-initialize-format-volume](../../includes/storsimple-mount-initialize-format-volume.md)]
 
-## <a name="step-8:-take-a-backup"></a>手順 8. バックアップを取得する
+## <a name="step-8-take-a-backup"></a>手順 8. バックアップを取得する
 バックアップにより、特定の時点のボリュームを保護し、復元時間を最小限に抑えながら回復性を向上させることができます。 StorSimple デバイスでは、ローカル スナップショットとクラウド スナップショットという 2 種類のバックアップを実行できます。 どちらの種類のバックアップも、**[スケジュール設定]** または **[手動]** で実行できます。 
 
 スケジュールされたバックアップを作成するには、管理ポータルで次の手順を実行します。
@@ -217,6 +221,9 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 * [仮想デバイス](storsimple-virtual-device-u2.md)を構成します。
 * [StorSimple Manager サービス](storsimple-manager-service-administration.md) を使用して StorSimple デバイスを管理します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

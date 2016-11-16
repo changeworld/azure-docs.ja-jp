@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: コピー アクティビティがあるパイプラインを Azure Portal で作成する | Microsoft Docs'
-description: このチュートリアルでは、Azure ポータルで Data Factory エディターを使用して、コピー アクティビティを含む Azure Data Factory パイプラインを作成します。
+title: "チュートリアル: コピー アクティビティがあるパイプラインを Azure Portal で作成する | Microsoft Docs"
+description: "このチュートリアルでは、Azure ポータルで Data Factory エディターを使用して、コピー アクティビティを含む Azure Data Factory パイプラインを作成します。"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: d9317652-0170-4fd3-b9b2-37711272162b
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
+
 
 ---
-# <a name="tutorial:-create-a-pipeline-with-copy-activity-using-azure-portal"></a>チュートリアル: コピー アクティビティがあるパイプラインを Azure Portal で作成する
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-azure-portal"></a>チュートリアル: コピー アクティビティがあるパイプラインを Azure Portal で作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
@@ -49,12 +53,12 @@ ms.author: spelluru
 
 1. [Azure Portal](https://portal.azure.com/) にログインした後、**[新規]** をクリックして **[インテリジェンス + 分析]** を選択し、**[Data Factory]** をクリックします。 
    
-   ![[新規] -> [DataFactory]](./media/data-factory-copy-activity-tutorial-using-azure-portal/NewDataFactoryMenu.png)  
+   ![[新規] -> [DataFactory]](./media/data-factory-copy-activity-tutorial-using-azure-portal/NewDataFactoryMenu.png)    
 2. **[新しいデータ ファクトリ]** ブレードで以下の手順を実行します。
    
    1. **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
-       ![[新しいデータ ファクトリ] ブレード](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-new-data-factory.png)
+         ![[新しいデータ ファクトリ] ブレード](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-new-data-factory.png)
       
        Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。
       
@@ -67,7 +71,7 @@ ms.author: spelluru
       1. **[Use existing (既存のものを使用)]**を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
       2. **[新規作成]**を選択し、リソース グループの名前を入力します。   
          
-          このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../resource-group-overview.md)に関するページを参照してください。  
+          このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
    4. データ ファクトリの **場所** を選択します。 Data Factory サービスによってサポートされているリージョンのみ、ドロップダウン リストに表示されます。
    5. **[スタート画面にピン留めする]**を選択します。     
    6. **[作成]**をクリックします。
@@ -75,7 +79,7 @@ ms.author: spelluru
       > [!IMPORTANT]
       > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
       > 
-      > データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。              
+      > データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。                
       > 
       > 
 3. 状態/通知メッセージを表示するには、ツール バーのベル アイコンをクリックします。 
@@ -99,7 +103,7 @@ ms.author: spelluru
     ![エディターの [新しいデータ ストア] ボタン](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-editor-newdatastore-button.png)    
 3. `<accountname>` と `<accountkey>` を Azure ストレージ アカウントの名前とキーの値に置き換えます。 
    
-    ![エディターの Blob Storage JSON](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-editor-blob-storage-json.png) 
+    ![エディターの Blob Storage JSON](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-editor-blob-storage-json.png)    
 4. ツール バーの **[デプロイ]** をクリックします。 これで、デプロイした **AzureStorageLinkedService** がツリー ビューに表示されます。 
    
     ![エディターの Blob Storage デプロイ](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-editor-blob-storage-deploy.png)
@@ -168,7 +172,7 @@ ms.author: spelluru
    * **linkedServiceName** は **AzureStorageLinkedService** に設定されています。 このリンクされたサービスは手順 2. で作成しました。
    * **folderPath** は **adftutorial** コンテナーに設定されています。 **fileName** プロパティを使用して、フォルダー内の BLOB の名前を指定することもできます。 BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。  
    * format の **type** は **TextFormat** に設定されています。
-   * テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。 
+   * テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。    
    * **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 
      
      **入力**データセット用に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。 JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
@@ -334,7 +338,7 @@ ms.author: spelluru
 4. **[データセット]** ブレードで、**[InputDataset]** をクリックします。 このデータセットは、 **ADFTutorialPipeline**の入力データセットです。
    
     ![Datasets with InputDataset selected](./media/data-factory-copy-activity-tutorial-using-azure-portal/DataSetsWithInputDatasetFromBlobSelected.png)   
-5. **[...](省略記号.md)** をクリックし、すべてのデータ スライスを表示します。
+5. **[...] (省略記号)** をクリックし、すべてのデータ スライスを表示します。
    
     ![All input data slices](./media/data-factory-copy-activity-tutorial-using-azure-portal/all-input-slices.png)  
    
@@ -352,7 +356,7 @@ ms.author: spelluru
    
     ![[テーブル] ブレード](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-table-blade.png) 
 8. 現在の時刻までのデータ スライスが既に生成されており、 **準備完了**になっています。 下部の **[問題のあるスライス]** セクションにはスライスが表示されていません。
-9. **[...](省略記号.md)** をクリックし、すべてのスライスを表示します。
+9. **[...] (省略記号)** をクリックし、すべてのスライスを表示します。
    
     ![[データ スライス] ブレード](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-dataslices-blade.png)
 10. 一覧で任意のデータ スライスをクリックすると、 **[データ スライス]** ブレードが表示されます。
@@ -369,7 +373,7 @@ ms.author: spelluru
     
     ![SQL クエリの結果](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-sql-query-results.png)
 
-### <a name="monitor-pipeline-using-monitor-&-manage-app"></a>監視と管理アプリを使用してパイプラインを監視する
+### <a name="monitor-pipeline-using-monitor-manage-app"></a>監視と管理アプリを使用してパイプラインを監視する
 パイプラインは、監視と管理アプリを使用して監視することもできます。 このアプリケーションの使い方の詳細については、 [監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
 
 1. データ ファクトリのホーム ページの **[監視と管理]** タイルをクリックします。
@@ -386,7 +390,7 @@ ms.author: spelluru
 
 1. Azure **データ ファクトリ**を作成しました。
 2. 次の **リンクされたサービス**を作成しました。
-   1. 入力データを保持する Azure ストレージ アカウントをリンクするための、 **Azure Storage** のリンクされたサービス。    
+   1. 入力データを保持する Azure ストレージ アカウントをリンクするための、 **Azure Storage** のリンクされたサービス。     
    2. 出力データを保持する Azure SQL データベースをリンクするための、 **Azure SQL** のリンクされたサービス。 
 3. パイプラインの入力データと出力データを記述する **データセット** を作成しました。
 4. ソースとして **BlobSource**、シンクとして **SqlSink** を持つ**コピー アクティビティ**がある**パイプライン**を作成しました。  
@@ -400,6 +404,9 @@ ms.author: spelluru
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) |この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,20 +1,24 @@
 ---
-title: VPN Gateway について| Microsoft Docs
-description: Azure Virtual Networks の VPN Gateway 接続について説明します。
+title: "VPN Gateway について| Microsoft Docs"
+description: "Azure Virtual Networks の VPN Gateway 接続について説明します。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager,azure-service-management
-
+ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/06/2016
+ms.date: 10/18/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 909320f7f898a10ff58c50d276bbe9b2b2a92b48
+
 
 ---
 # <a name="about-vpn-gateway"></a>VPN Gateway について
@@ -32,11 +36,9 @@ Resource Manager デプロイメント モデルでは、仮想ネットワー�
 ## <a name="gateway-skus"></a>ゲートウェイの SKU
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
-PolicyBased VPN をゲートウェイに作成できるのは、Basic SKU を使用した場合のみです。
-ゲートウェイの SKU の詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
+VPN ゲートウェイの SKU の詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
 
-次の表は、ゲートウェイの種類、および予測される合計スループットを示したものです。 この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
-
+### <a name="estimated-aggregate-throughput-by-sku"></a>SKU の予測される合計スループット
 [!INCLUDE [vpn-gateway-table-gwtype-aggthroughput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
 ## <a name="configuring-a-vpn-gateway"></a>VPN ゲートウェイの構成
@@ -52,21 +54,21 @@ VPN ゲートウェイ接続は、特定の設定で構成された複数のリ�
 
 図と説明を参考にして、要件を満たす接続トポロジを選択できます。 図は主要なベースライン トポロジを示していますが、図をガイドラインとして使用して、より複雑な構成を構築することもできます。
 
-## <a name="site-to-site-and-multi-site"></a>サイト間とマルチサイト
-### <a name="site-to-site"></a>サイト間
+## <a name="sitetosite-and-multisite"></a>サイト間とマルチサイト
+### <a name="sitetosite"></a>サイト間
 サイト間 (S2S) VPN ゲートウェイ接続とは、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介した接続です。 この種類の接続では、オンプレミスの VPN デバイスが必要です。そのデバイスは、パブリック IP アドレスを割り当てられていて、NAT の内側に配置されていない必要があります。 S2S 接続は、クロスプレミスおよびハイブリッド構成に使用できます。   
 
 ![S2S connection](./media/vpn-gateway-about-vpngateways/demos2s.png "site-to-site")
 
-### <a name="multi-site"></a>マルチサイト
+### <a name="multisite"></a>マルチサイト
 VNet と複数のオンプレミス ネットワークの間に、VPN ゲートウェイ接続を作成して構成することができます。 複数の接続を使用する場合は、VPN の種類 RouteBased (従来の VNet での動的ゲートウェイ) を使用する必要があります。 VNet に配置できる VPN ゲートウェイは 1 つのみであるため、ゲートウェイを経由するすべての接続は、使用可能な帯域幅を共有します。 これは一般に "マルチサイト" 接続と呼ばれます。
 
 ![Multi-Site connection](./media/vpn-gateway-about-vpngateways/demomulti.png "multi-site")
 
-### <a name="deployment-models-and-methods-for-site-to-site-and-multi-site"></a>サイト間接続とマルチサイト接続で使用できるデプロイメント モデルとデプロイ方法
+### <a name="deployment-models-and-methods-for-sitetosite-and-multisite"></a>サイト間接続とマルチサイト接続で使用できるデプロイメント モデルとデプロイ方法
 [!INCLUDE [vpn-gateway-table-site-to-site](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-## <a name="vnet-to-vnet"></a>VNet 間
+## <a name="vnettovnet"></a>VNet 間
 仮想ネットワークどうし (VNet 間) の接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。 マルチサイト接続構成と VNet 間通信を組み合わせることもできます。 そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます。
 
 以下のような VNet を接続できます。
@@ -83,15 +85,15 @@ Azure には現在、クラシックと Resource Manager という 2 つのデ�
 #### <a name="vnet-peering"></a>VNET ピアリング
 仮想ネットワークが特定の要件を満たしていれば、接続の作成に VNET ピアリングを使用することができます。 VNET ピアリングは、仮想ネットワーク ゲートウェイを使用しません。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
-### <a name="deployment-models-and-methods-for-vnet-to-vnet"></a>VNet 間接続で使用できるデプロイメント モデルとデプロイ方法
+### <a name="deployment-models-and-methods-for-vnettovnet"></a>VNet 間接続で使用できるデプロイメント モデルとデプロイ方法
 [!INCLUDE [vpn-gateway-table-vnet-to-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
-## <a name="point-to-site"></a>ポイント対サイト
+## <a name="pointtosite"></a>ポイント対サイト
 ポイント対サイト (P2S) VPN ゲートウェイ接続では、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 P2S は、SSTP (Secure Socket トンネリング プロトコル) 経由の VPN 接続です。 P2S 接続を機能させるために、VPN デバイスや公開 IP アドレスは必要ありません。 VPN 接続を確立するには、クライアント コンピューターから接続を開始します。 これは、自宅や会議室など、リモートの場所から VNet に接続する場合や、VNet に接続する必要があるクライアントの数が少ない場合などに便利です。 P2S 接続と S2S 接続は、両者の構成要件がすべて両立する場合に、同じ VPN ゲートウェイを使って組み合わせて使用できます。
 
 ![Point-to-site connection](./media/vpn-gateway-about-vpngateways/demop2s.png "point-to-site")
 
-### <a name="deployment-models-and-methods-for-point-to-site"></a>ポイント対サイト接続で使用できるデプロイメント モデルとデプロイ方法
+### <a name="deployment-models-and-methods-for-pointtosite"></a>ポイント対サイト接続で使用できるデプロイメント モデルとデプロイ方法
 [!INCLUDE [vpn-gateway-table-point-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)]
 
 ## <a name="expressroute"></a>ExpressRoute
@@ -99,7 +101,7 @@ Azure には現在、クラシックと Resource Manager という 2 つのデ�
 
 ExpressRoute 接続では、仮想ネットワーク ゲートウェイは "Vpn" ではなく "ExpressRoute" というゲートウェイの種類で構成されます。 ExpressRoute の詳細については、「 [ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
 
-## <a name="site-to-site-and-expressroute-coexisting-connections"></a>サイト間と ExpressRoute の共存接続
+## <a name="sitetosite-and-expressroute-coexisting-connections"></a>サイト間と ExpressRoute の共存接続
 ExpressRoute は、パブリックなインターネットを経由せずに WAN から Azure などの Microsoft サービスに直接アクセスする、専用の接続です。 サイト間 VPN トラフィックは、暗号化が施されたうえでパブリック インターネット経由で送受信されます。 同じ仮想ネットワークに対してサイト間 VPN と ExpressRoute 接続が構成可能な場合、いくつかの利点があります。
 
 ExpressRoute 用にセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成したり、サイト間 VPN を使用して、ネットワークの一部ではないものの、ExpressRoute 経由で接続されているサイトに接続したりすることができます。 ここでは同一の仮想ネットワークに 2 つの仮想ネットワーク ゲートウェイが必要であることに注意してください (1 つは -GatewayType が Vpn のゲートウェイで、もう 1 つは -GatewayType が ExpressRoute のゲートウェイ)。
@@ -112,6 +114,9 @@ ExpressRoute 用にセキュリティで保護されたフェールオーバー 
 ## <a name="next-steps"></a>次のステップ
 VPN ゲートウェイの構成を計画します。 [VPN ゲートウェイの計画と設計](vpn-gateway-plan-design.md)に関するページのほか、「[Connecting your on-premises network to Azure (Azure へのオンプレミス ネットワークの接続)](../guidance/guidance-connecting-your-on-premises-network-to-azure.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

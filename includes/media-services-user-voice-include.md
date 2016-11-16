@@ -1,4 +1,4 @@
-[フィードバック](http://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) フォーラムでは、Azure Media Services の改善方法について、フィードバックの提供や提案を行うことができます。また、次のカテゴリのいずれかをクリックすると、そのカテゴリのフォーラムに直接アクセスすることもできます。
+[フィードバック](http://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) フォーラムでは、Azure Media Services の改善方法について、フィードバックの提供や提案を行うことができます。 また、次のカテゴリのいずれかをクリックすると、そのカテゴリのフォーラムに直接アクセスすることもできます。 
 
 * [Azure Media Player](https://feedback.azure.com/forums/169396-media-services/category/109320-azure-media-player/)
 * [クライアント SDK ライブラリ](https://feedback.azure.com/forums/169396-media-services/category/144435-client-sdks/)
@@ -9,4 +9,8 @@
 * [REST API とプラットフォーム](https://feedback.azure.com/forums/169396-media-services/category/144423-rest-api-and-platform/)
 * [VoD ストリーミング](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)
 
-<!---HONumber=AcomDC_0413_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -2,11 +2,11 @@
 title: Deploy a VM using a password stored in Azure Stack Key Vault | Microsoft Docs
 description: Learn how to deploy a VM using a password stored in Azure Stack Key Vault
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: rlfmendes
 manager: natmack
-editor: ''
-
+editor: 
+ms.assetid: 23322a49-fb7e-4dc2-8d0e-43de8cd41f80
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: ricardom
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 91077d36cd1355ba1f2c731e200cf717152cdb5b
+
 
 ---
 # <a name="deploy-a-vm-by-retrieving-the-password-stored-in-key-vault"></a>Deploy a VM by retrieving the password stored in Key Vault
@@ -41,6 +45,9 @@ You reference the secret from within a parameters file, which passes values to y
 
 [Deploy a VM with a Key Vault certificate](azure-stack-kv-push-secret-into-vm.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

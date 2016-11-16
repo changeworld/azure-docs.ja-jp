@@ -1,12 +1,12 @@
 ---
 title: Adding a VM image to Azure Stack | Microsoft Docs
-description: Add your organization's custom Windows or Linux VM image for tenants to use
+description: Add your organization&quot;s custom Windows or Linux VM image for tenants to use
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: mattmcg
 manager: darmour
-editor: ''
-
+editor: 
+ms.assetid: e5a4236b-1b32-4ee6-9aaa-fcde297a020f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: mattmcg
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4b9b818ddaff4bb968e140a5fa9ec4f8129330cf
+
 
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Make a custom virtual machine image available in Azure Stack
@@ -112,6 +116,9 @@ Follow the steps from [Upload a Windows VM image to Azure for Resource Manager d
 3. The VM Image status changes to ‘Succeeded’ when the image is successfully added.
 4. Tenants can deploy the VM Image by specifying the publisher, offer, SKU, and version of the VM image in an Azure Resource Manager template. To make the VM image more readily available for tenant consumption in the UI, it is best to [create a Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

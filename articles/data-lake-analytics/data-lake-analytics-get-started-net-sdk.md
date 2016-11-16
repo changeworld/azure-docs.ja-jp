@@ -1,39 +1,81 @@
 ---
-title: 'チュートリアル: .NET SDK で Azure Data Lake Analytics の使用を開始する | Microsoft Docs'
-description: .NET SDK を使用して、Data Lake Store アカウントを作成し、Data Lake Analytics ジョブを作成してから、U-SQL で記述されたジョブを送信する方法について説明します。
+title: ".NET SDK で Azure Data Lake Analytics の使用を開始する | Microsoft Docs"
+description: ".NET SDK を使用して、Data Lake Store アカウントを作成し、Data Lake Analytics ジョブを作成してから、U-SQL で記述されたジョブを送信する方法について説明します。 "
 services: data-lake-analytics
-documentationcenter: ''
+documentationcenter: 
 author: edmacauley
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 1dfcbc3d-235d-4074-bc2a-e96def8298b6
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/23/2016
+ms.date: 10/26/2016
 ms.author: edmaca
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 60deb681b1090444f5c178fb0c9b0458ea83f73d
+
 
 ---
-# チュートリアル: .NET SDK で Azure Data Lake Analytics の使用を開始する
+# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-net-sdk"></a>チュートリアル: .NET SDK で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Azure .NET SDK を使用して、[U-SQL](data-lake-analytics-u-sql-get-started.md) で記述されたジョブを Data Lake Analytics に送信する方法について説明します。Data Lake Analytics の詳細については、「[Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
+Azure .NET SDK を使用して、 [U-SQL](data-lake-analytics-u-sql-get-started.md) で記述されたジョブを Data Lake Analytics に送信する方法について説明します。 Data Lake Analytics の詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-このチュートリアルでは、U-SQL ジョブを送信する C# コンソール アプリケーションを開発します。このジョブでは、タブ区切り値 (TSV) ファイルが読み取られ、それがコンマ区切り値 (CSV) ファイルに変換されます。サポートされている他のツールを使用した同じチュートリアルを読み進めるには、この記事の上部にあるタブをクリックします。
+このチュートリアルでは、U-SQL ジョブを送信する C# コンソール アプリケーションを開発します。このジョブでは、タブ区切り値 (TSV) ファイルが読み取られ、それがコンマ区切り値 (CSV) ファイルに変換されます。 サポートされている他のツールを使用した同じチュートリアルを読み進めるには、この記事の上部にあるタブをクリックします。
 
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * **Visual Studio 2015、Visual Studio 2013 update 4、または Visual Studio 2012 (Visual C++ インストール済み)**。
-* **Microsoft Azure SDK for .NET バージョン 2.5 以上**。[Web Platform Installer を使用してインストールします](http://www.microsoft.com/web/downloads/platform.aspx)。
-* **Azure Data Lake Analytics アカウント**。「[Manage Data Lake Analytics using Azure .NET SDK (Azure .NET SDK を使用した Data Lake Analytics の管理)](data-lake-analytics-manage-use-dotnet-sdk.md)」を参照してください。
+* **Microsoft Azure SDK for .NET バージョン 2.5 以上**。  [Web Platform Installer を使用してインストールします](http://www.microsoft.com/web/downloads/platform.aspx)。
+* **Azure Data Lake Analytics アカウント**。 「 [Manage Data Lake Analytics using Azure .NET SDK (Azure .NET SDK を使用した Data Lake Analytics の管理)](data-lake-analytics-manage-use-dotnet-sdk.md)」を参照してください。
 
-## コンソール アプリケーションの作成
-このチュートリアルでは、いくつかの検索ログを処理します。検索ログは、Data Lake Store または Azure Blob Storage に格納できます。
+## <a name="create-console-application"></a>コンソール アプリケーションの作成
+このチュートリアルでは、いくつかの検索ログを処理します。  検索ログは、Data Lake Store または Azure Blob Storage に格納できます。 
 
-サンプルの検索ログは、パブリック Azure BLOB コンテナーにあります。アプリケーションで、ファイルをワークステーションにダウンロードしてから、Data Lake Analytics アカウントの既定の Data Lake Store アカウントにそのファイルをアップロードします。
+サンプルの検索ログは、パブリック Azure BLOB コンテナーにあります。 アプリケーションで、ファイルをワークステーションにダウンロードしてから、Data Lake Analytics アカウントの既定の Data Lake Store アカウントにそのファイルをアップロードします。
+
+**U-SQL スクリプトを作成するには**
+
+Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の詳細については、[U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)に関する記事および「[U-SQL Language Reference (U-SQL 言語リファレンス)](http://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
+
+次の U-SQL スクリプトを使用して **SampleUSQLScript.txt** ファイルを作成し、**C:\temp\** パスにファイルを配置します。  このパスは、次の手順で作成する .NET アプリケーションでハードコーディングされます。  
+
+    @searchlog =
+        EXTRACT UserId          int,
+                Start           DateTime,
+                Region          string,
+                Query           string,
+                Duration        int?,
+                Urls            string,
+                ClickedUrls     string
+        FROM "/Samples/Data/SearchLog.tsv"
+        USING Extractors.Tsv();
+
+    OUTPUT @searchlog   
+        TO "/Output/SearchLog-from-Data-Lake.csv"
+    USING Outputters.Csv();
+
+この U-SQL スクリプトでは、**Extractors.Tsv()** を使用してソース データ ファイルを読み取ってから、**Outputters.Csv()** を使用して csv ファイルを作成します。 
+
+C# プログラムでは、**/Samples/Data/SearchLog.tsv** ファイルと **/Output/** フォルダーを準備する必要があります。    
+
+既定の Data Lake アカウントに格納されたファイルの相対パスを使用する方が簡単です。 絶対パスを使用することもできます。  たとえば、次のように入力します。 
+
+    adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
+
+リンクされたストレージ アカウント内のファイルへのアクセスには、絶対パスを使用する必要があります。  リンクされた Azure Storage アカウントに格納されているファイルの構文は次のとおりです。
+
+    wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
+
+> [!NOTE]
+> 現時点で、Azure Data Lake Service の既知の問題があります。  サンプル アプリケーションが中断されたり、エラーが発生した場合は、スクリプトによって作成された Data Lake Store と Data Lake Analytics のアカウントを手動で削除することが必要になる場合があります。  Azure Portal に慣れていない場合は、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」から始めることをお勧めします。       
+> 
+> 
 
 **アプリケーションを作成するには**
 
@@ -46,40 +88,7 @@ Azure .NET SDK を使用して、[U-SQL](data-lake-analytics-u-sql-get-started.m
         Install-Package Microsoft.Azure.Management.DataLake.StoreUploader -Pre
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package WindowsAzure.Storage
-4. **SampleUSQLScript.txt** というプロジェクトに新しいファイルを追加してから、以下の U-SQL スクリプトを貼り付けます。Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の詳細については、[U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)と [U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/?LinkId=691348)に関する記述を参照してください。
-   
-        @searchlog =
-            EXTRACT UserId          int,
-                    Start           DateTime,
-                    Region          string,
-                    Query           string,
-                    Duration        int?,
-                    Urls            string,
-                    ClickedUrls     string
-            FROM "/Samples/Data/SearchLog.tsv"
-            USING Extractors.Tsv();
-   
-        OUTPUT @searchlog   
-            TO "/Output/SearchLog-from-Data-Lake.csv"
-        USING Outputters.Csv();
-   
-    この U-SQL スクリプトでは、**Extractors.Tsv()** を使用してソース データ ファイルを読み取ってから、**Outputters.Csv()** を使用して csv ファイルを作成します。
-   
-    C# プログラムでは、**/Samples/Data/SearchLog.tsv** ファイル、および **/Output/** フォルダーを準備する必要があります。
-   
-    既定の Data Lake アカウントに格納されたファイルの相対パスを使用する方が簡単です。絶対パスを使用することもできます。たとえば、次のように入力します。
-   
-        adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
-   
-    リンクされたストレージ アカウント内のファイルへのアクセスには、絶対パスを使用する必要があります。リンクされた Azure ストレージ アカウントに格納されているファイルの構文は以下のとおりです。
-   
-        wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
-   
-   > [!NOTE]
-   > 現時点で、Azure Data Lake Service の既知の問題があります。サンプル アプリケーションが中断されたり、エラーが発生した場合は、スクリプトによって作成された Data Lake Store と Data Lake Analytics のアカウントを手動で削除することが必要になる場合があります。ポータルに慣れていない場合は、「[Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」から始めることをお勧めします。
-   > 
-   > 
-5. Program.cs では、次のコードを貼り付けます。
+4. Program.cs では、次のコードを貼り付けます。
    
         using System;
         using System.IO;
@@ -110,7 +119,7 @@ Azure .NET SDK を使用して、[U-SQL](data-lake-analytics-u-sql-get-started.m
    
             private static void Main(string[] args)
             {
-                string localFolderPath = @"c:\temp";
+                string localFolderPath = @"c:\temp\";
    
                 // Connect to Azure
                 var creds = AuthenticateAzure(DOMAINNAME, CLIENTID);
@@ -232,17 +241,22 @@ Azure .NET SDK を使用して、[U-SQL](data-lake-analytics-u-sql-get-started.m
           }
         }
 
-1. **F5** キーを押してアプリケーションを実行します。出力は次のようになります。
+1. **F5** キーを押してアプリケーションを実行します。 出力は次のようになります。
    
     ![Azure Data Lake Analytics job U-SQL .NET SDK output](./media/data-lake-analytics-get-started-net-sdk/data-lake-analytics-dotnet-job-output.png)
-2. 出力ファイルをチェックします。既定のパスとファイル名は、c:\\Temp\\SearchLog-from-Data-Lake.csv です。
+2. 出力ファイルをチェックします。  既定のパスとファイル名は、c:\Temp\SearchLog-from-Data-Lake.csv です。
 
-## 関連項目
+## <a name="see-also"></a>関連項目
 * 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
-* より複雑なクエリを表示する場合は、「[チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
-* U-SQL アプリケーションの開発を開始する場合は、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
-* U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」と「[U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/?LinkId=691348)」を参照してください。
-* 管理タスクについては、「[Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
-* Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
+* より複雑なクエリを表示する場合は、「 [チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
+* U-SQL アプリケーションの開発を開始する場合は、「 [チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」をご覧ください。
+* U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」および「[U-SQL Language Reference (U-SQL 言語リファレンス)](http://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
+* 管理タスクについては、「 [Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
+* Data Lake Analytics の概要については、「 [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

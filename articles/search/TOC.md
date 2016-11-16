@@ -55,14 +55,18 @@
 ### [多言語検索](search-language-support.md)
 
 # リファレンス
-## [.NET SDK](https://msdn.microsoft.com/library/azure/dn951165)
-## [サービス REST API](https://msdn.microsoft.com/library/azure/dn798935)
-## [サービス REST API (プレビュー バージョン)](search-api-2015-02-28-preview.md)
-## [管理 REST API](https://msdn.microsoft.com/library/azure/dn832684)
 ## [API のバージョン](search-api-versions.md)
+## [Java](/java/api/)
+## [.NET](/dotnet/api/)
 ## [Lucene クエリ構文](https://msdn.microsoft.com/library/azure/mt589323)
 ## [単純なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920)
+## [サービス REST](/rest/api/searchservice/)
+## [サービス REST (プレビュー)](search-api-2015-02-28-preview.md)
+## [管理 REST](/rest/api/searchmanagement/)
+
 # リソース
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=search)
+## [料金](https://azure.microsoft.com/pricing/details/search/)
 ## デモ サイト
 ### [求人情報アプリ](http://aka.ms/azjobsdemo)
 ### [ライブ デモ アプリ](https://searchsamples.azurewebsites.net/)
@@ -73,7 +77,7 @@
 ## パートナーとコミュニティ
 ### [リレーショナル データをモデル化する](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
 ### [多層構造ファセット](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
-### [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
+### [フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-search)
 ### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 

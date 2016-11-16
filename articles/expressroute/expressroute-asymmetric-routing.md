@@ -1,12 +1,12 @@
 ---
-title: 非対称ルーティング | Microsoft Docs
-description: この記事では、送信先へのリンクが複数あるネットワーク内の非対称ルーティングに関して発生する可能性がある問題について説明します。
+title: "非対称ルーティング | Microsoft Docs"
+description: "この記事では、送信先へのリンクが複数あるネットワーク内の非対称ルーティングに関して発生する可能性がある問題について説明します。"
 documentationcenter: na
 services: expressroute
 author: osamazia
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: a754bff9-95c9-44b5-9796-377fc21e8322
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: osamazia
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: cebf1a1712b6ba7f1f6125369703694ba19d0244
+
 
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>複数のネットワーク パスを使用した非対称ルーティング
@@ -60,7 +64,7 @@ ExpressRoute とインターネットに同一のネットワーク アドレス
 
 ExpressRoute を認証に使用したい場合は、NAT を使用せずに ExpressRoute 経由で AD FS パブリック IP アドレスをアドバタイズするようにしてください。 そうすることで、Microsoft から送信されオンプレミスの AD FS サーバーに向かうトラフィックは、ExpressRoute を経由します。 ユーザーから Microsoft に戻るトラフィックには ExpressRoute が使用されます。これは、ExpressRoute がインターネットよりも優先されるルートであるためです。
 
-### <a name="source-based-nat"></a>送信元ベースの NAT
+### <a name="sourcebased-nat"></a>送信元ベースの NAT
 非対称ルーティングの問題を解決するもう 1 つの方法は、SNAT を使用することです。 たとえば、簡易メール転送プロトコル (SMTP) サーバーによる通信にインターネットを使用するため、オンプレミスの SMTP サーバーのパブリック IP アドレスを ExpressRoute 経由でアドバタイズしていないとします。 Microsoft によってオンプレミスの SMTP サーバーに送信される要求はインターネットを経由します。 SNAT を使用して受信要求を内部 IP アドレスに変換します。 SMTP サーバーからの逆方向トラフィックは、ExpressRoute を経由せず、(NAT に使用する) 境界ファイアウォールに届きます。 戻りトラフィックはインターネットを経由します。
 
 ![Source-based NAT network configuration](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
@@ -68,6 +72,9 @@ ExpressRoute を認証に使用したい場合は、NAT を使用せずに Expre
 ## <a name="asymmetric-routing-detection"></a>非対称ルーティングの検出
 traceroute は、ネットワーク トラフィックが予想されるパスを経由していることを確認するうえで、最善の手段です。 オンプレミスの SMTP サーバーから Microsoft に送信されるトラフィックがインターネット パスを経由することが予想される場合、予想される traceroute は SMTP サーバーから Office 365 までです。 その結果から、トラフィックが実際にユーザーのネットワークから (ExpressRoute ではなく) インターネットに向かって送信されていることが確認できます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

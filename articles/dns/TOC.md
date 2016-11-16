@@ -1,48 +1,54 @@
 # Overview
-## [What is Azure DNS?](dns-overview.md)
-## [DNS zones and records](dns-zones-records.md)
+## [Azure DNS とは](dns-overview.md)
+## [DNS ゾーンとレコード](dns-zones-records.md)
 
-# Get Started
+# 作業の開始
 
-## [Create a DNS zone](dns-getstarted-create-dnszone-portal.md)
-### [Create a DNS zone (PowerShell)](dns-getstarted-create-dnszone.md)
-### [Create a DNS zone (CLI)](dns-getstarted-create-dnszone-cli.md)
+## [DNS ゾーンの作成](dns-getstarted-create-dnszone-portal.md)
+### [PowerShell](dns-getstarted-create-dnszone.md)
+### [CLI](dns-getstarted-create-dnszone-cli.md)
 
-## [Create DNS records](dns-getstarted-create-recordset-portal.md)
-### [Create DNS records (PowerShell)](dns-getstarted-create-recordset.md)
-### [Create DNS records (CLI)](dns-getstarted-create-recordset-cli.md)
+## [DNS レコードの作成](dns-getstarted-create-recordset-portal.md)
+### [PowerShell](dns-getstarted-create-recordset.md)
+### [CLI](dns-getstarted-create-recordset-cli.md)
 
-## [Delegate your domain to Azure DNS](dns-domain-delegation.md)
+## [Azure DNS にドメインを委任する](dns-domain-delegation.md)
 
-# How to
+# 方法
 
-## [Manage DNS zones](dns-operations-dnszones.md)
-### [Manage DNS zones (CLI)](dns-operations-dnszones.md)
+## DNS ゾーンの管理
+### [PowerShell](dns-operations-dnszones.md)
+### [CLI](dns-operations-dnszones.md)
 
-## [Manage DNS records](dns-operations-recordsets-portal.md)
-### [Manage DNS records (PowerShell)](dns-operations-recordsets.md)
-### [Manage DNS records (CLI)](dns-operations-recordsets-cli.md)
+## [DNS レコードの管理](dns-operations-recordsets-portal.md)
+### [PowerShell](dns-operations-recordsets.md)
+### [CLI](dns-operations-recordsets-cli.md)
 
-## [Manage reverse DNS records](dns-reverse-dns-record-operations-ps.md)
-### [Manage reverse DNS records (CLI)](dns-reverse-dns-record-operations-cli.md)
-### [Manage reverse DNS records (Classic PS)](dns-reverse-dns-record-operations-classic-ps.md)
+## [逆引き DNS レコードを管理する](dns-reverse-dns-record-operations-ps.md)
+### [CLI](dns-reverse-dns-record-operations-cli.md)
+### [PowerShell](dns-reverse-dns-record-operations-classic-ps.md)
 
-## [Import and export a DNS zone file](dns-import-export.md)
-## [Using Azure DNS with other Azure services](dns-for-azure-services.md)
-## [Protect DNS zones and records](dns-protect-zones-recordsets.md)
-## [Automate DNS operations with the DNS.NET SDK](dns-sdk.md)
+## [DNS ゾーン ファイルのインポートとエクスポート](dns-import-export.md)
+## [Azure DNS を他の Azure サービスで使用する](dns-for-azure-services.md)
+## [DNS ゾーンとレコードを保護する](dns-protect-zones-recordsets.md)
+## [.NET SDK で DNS 操作を自動化する](dns-sdk.md)
 
-# References
-## [PowerShell cmdlets](https://msdn.microsoft.com/en-us/library/azure/mt126288(v=azure.300))
-## [REST APIs](https://msdn.microsoft.com/library/azure/mt163862)
+# リファレンス
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [REST API](/rest/api/dns/)
 
-# Related
+# 関連項目
 ## [Application Gateway](/azure/application-gateway/)
 ## [Virtual Network](/azure/virtual-network/)
-## [Virtual Machine](/azure/virtual-machines/)
+## [仮想マシン](/azure/virtual-machines/)
 ## [Load Balancer](/azure/load-balancer/)
 ## [Traffic Manager](/azure/traffic-manager/)
-## [Web apps](/azure/app-service/web/)
+## [Web アプリ](/azure/app-service-web/)
+
+# リソース
+## [ネットワークのブログ](http://azure.microsoft.com/blog/topics/networking)
+## [ネットワークのフォーラム](https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork)
+## [料金](https://azure.microsoft.com/pricing/details/dns/)
 
 
 <!--HONumber=Nov16_HO2-->

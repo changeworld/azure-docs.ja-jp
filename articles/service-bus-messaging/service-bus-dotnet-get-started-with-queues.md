@@ -1,12 +1,12 @@
 ---
-title: Service Bus キューの使用 | Microsoft Docs
-description: Service Bus メッセージング用の C# コンソール アプリケーションを記述する方法
+title: "Service Bus キューの使用 | Microsoft Docs"
+description: "Service Bus メッセージング用の C# コンソール アプリケーションを記述する方法"
 services: service-bus
 documentationcenter: .net
 author: jtaubensee
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
 ms.service: service-bus
 ms.devlang: tbd
 ms.topic: hero-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/23/2016
 ms.author: jotaub;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
+
 
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
@@ -33,17 +37,17 @@ ms.author: jotaub;sethm
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1.-create-a-namespace-using-the-azure-portal"></a>1.Azure ポータルを使用した名前空間の作成
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1.Azure ポータルを使用した名前空間の作成
 Service Bus 名前空間を既に作成している場合は、「[Azure Portal を使用したキューの作成](#2-create-a-queue-using-the-azure-portal)」セクションに進んでください。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2.-create-a-queue-using-the-azure-portal"></a>2.Azure ポータルを使用したキューの作成
+## <a name="2-create-a-queue-using-the-azure-portal"></a>2.Azure ポータルを使用したキューの作成
 Service Bus キューを既に作成している場合は、「[キューへのメッセージの送信](#3-send-messages-to-the-queue)」セクションに進んでください。
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## <a name="3.-send-messages-to-the-queue"></a>3.キューへのメッセージの送信
+## <a name="3-send-messages-to-the-queue"></a>3.キューへのメッセージの送信
 キューにメッセージを送信するために、Visual Studio を使用して C# コンソール アプリケーションを記述します。
 
 ### <a name="create-a-console-application"></a>コンソール アプリケーションの作成
@@ -99,7 +103,7 @@ Service Bus キューを既に作成している場合は、「[キューへの�
    
       ![Message count][queue-message]
 
-## <a name="4.-receive-messages-from-the-queue"></a>4.キューからメッセージを受け取る
+## <a name="4-receive-messages-from-the-queue"></a>4.キューからメッセージを受け取る
 1. 前の手順で説明した送信アプリケーションと同じように、新しいコンソール アプリケーションを作成し、Service Bus NuGet パッケージへの参照を追加します。
 2. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
    
@@ -172,6 +176,7 @@ Azure Service Bus メッセージングのさらに高度な機能を紹介す�
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO2-->
 
 

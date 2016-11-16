@@ -32,18 +32,25 @@
 ## [クラウド サービスの複数 VIP を構成する](load-balancer-multivip.md)
 ## [Azure Load Balancer のログ分析](load-balancer-monitor-log.md)
 ## [Linux VM の DHCPv6 の設定](load-balancer-ipv6-for-linux.md)
+
 # リファレンス
+## [PowerShell](https://go.microsoft.com/fwlink/p/?LinkId=536407)
+## [.NET](https://docs.microsoft.com/dotnet/api/)
 ## [Resource Manager API](https://go.microsoft.com/fwlink/p/?LinkId=536405)
-## [Resource Manager の PowerShell コマンドレット](https://go.microsoft.com/fwlink/p/?LinkId=536407)
 ## [ネットワーク リソースの使用](https://go.microsoft.com/fwlink/p/?LinkId=536403)
+
 # 関連項目
-## [Application Gateway](https://azure.microsoft.com/documentation/services/application-gateway/)
-## [Express Route](https://azure.microsoft.com/documentation/services/expressroute/)
-## [Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/)
-## [VPN Gateway](https://azure.microsoft.com/documentation/services/vpn-gateway/)
-## [仮想マシン](https://azure.microsoft.com/documentation/services/virtual-machines/)
-## [Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-## [DNS](https://azure.microsoft.com/documentation/services/dns/)
+## [Application Gateway](/azure/application-gateway/)
+## [Express Route](/azure/expressroute/)
+## [Virtual Network](/azure/virtual-network/)
+## [VPN Gateway](/azure/vpn-gateway/)
+## [仮想マシン](/azure/virtual-machines/)
+## [Traffic Manager](/azure/traffic-manager/)
+## [DNS](/azure/dns/)
+
+# リソース
+## [料金](https://azure.microsoft.com/pricing/details/load-balancer/) 
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=load-balancer) 
 
 
 <!--HONumber=Nov16_HO2-->

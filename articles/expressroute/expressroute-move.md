@@ -1,12 +1,12 @@
 ---
-title: クラシックから Resource Manager への ExpressRoute 回線の移行 | Microsoft Docs
-description: このページでは、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルのブリッジについて知っておく必要がある情報を概説します。
+title: "クラシックから Resource Manager への ExpressRoute 回線の移行 | Microsoft Docs"
+description: "このページでは、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルのブリッジについて知っておく必要がある情報を概説します。"
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: bdf01217-1a98-4ec0-a08e-d84fd37f78af
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: ganesr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 945923d9858ec0ed31272c23268b263f77b5c7a4
+
 
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>クラシック デプロイメント モデルから Resource Manager デプロイメント モデルへの ExpressRoute 回線の移行
@@ -74,7 +78,7 @@ ExpressRoute 回線は、クラシック デプロイメント モデルと Reso
 ## <a name="access-to-azure-public-and-microsoft-peering-resources"></a>Azure パブリックおよび Microsoft ピアリング リソースへのアクセス
 通常、Azure パブリック ピアリングおよび Microsoft ピアリングからアクセスできるリソースに対して、中断することなくアクセスできます。  
 
-## <a name="what's-supported"></a>サポートされる操作
+## <a name="whats-supported"></a>サポートされる操作
 ここでは、ExpressRoute 回線でサポートされる操作について説明します。
 
 * クラシック デプロイメント モデルでデプロイされた仮想ネットワークと Resource Manager デプロイメント モデルでデプロイされた仮想ネットワークには、単一の ExpressRoute 回線を使用してアクセスできます。
@@ -84,7 +88,7 @@ ExpressRoute 回線は、クラシック デプロイメント モデルと Reso
 * ExpressRoute 回線は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルとの間の橋渡し的な役割を果たします。 クラシック デプロイメント モデルの仮想ネットワーク内の仮想マシンと Resource Manager デプロイメント モデルの仮想ネットワーク内の仮想マシンとの間のトラフィックは、両方の仮想ネットワークが同じ ExpressRoute 回線にリンクされている場合は ExpressRoute を通過します。
 * サブスクリプションの境界を越えた接続は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方でサポートされます。
 
-## <a name="what's-not-supported"></a>サポートされていないもの
+## <a name="whats-not-supported"></a>サポートされていないもの
 ここでは、ExpressRoute 回線でサポートされない操作について説明します。
 
 * クラシック デプロイメント モデルから Resource Manager デプロイメント モデルへの回線リンク、ゲートウェイ、仮想ネットワークの移行。
@@ -102,6 +106,9 @@ ExpressRoute 回線は、クラシック デプロイメント モデルと Reso
   * [ルーティングの構成](expressroute-howto-routing-arm.md)
   * [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

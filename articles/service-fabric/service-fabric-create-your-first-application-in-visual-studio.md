@@ -1,19 +1,23 @@
 ---
-title: Visual Studio で最初の Service Fabric アプリケーションを作成する | Microsoft Docs
-description: Visual Studio を使用して Service Fabric アプリケーションを作成、デプロイ、デバッグする
+title: "Visual Studio で最初の Service Fabric アプリケーションを作成する | Microsoft Docs"
+description: "Visual Studio を使用して Service Fabric アプリケーションを作成、デプロイ、デバッグする"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: c3655b7b-de78-4eac-99eb-012f8e042109
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2016
+ms.date: 10/26/2016
 ms.author: ryanwi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 037dc010a6dc60eb49ad4fdad2861e8653e36199
+
 
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>最初の Azure Service Fabric アプリケーションを作成する
@@ -71,7 +75,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
 1. Visual Studio で F5 キーを押して、デバッグ用にアプリケーションをデプロイします。
    
    > [!NOTE]
-   > デプロイにはしばらく時間がかかります。初めての場合、Visual Studio によって開発用のローカル クラスターが作成されるためです。 ローカル クラスターでは、複数のコンピューターからなるクラスターで使用するのと同じプラットフォーム コードを 1 台のコンピューター上でのみ実行します。 Visual Studio の出力ウィンドウにクラスターの作成状態が表示されます。
+   > デプロイにはしばらく時間がかかります。初めての場合、Visual Studio によって開発用のローカル クラスターが作成されるためです。 ローカル クラスターでは、複数のコンピューターから成るクラスターで使用するのと同じプラットフォーム コードを 1 台のコンピューター上でのみ実行します。 Visual Studio の出力ウィンドウにクラスターの作成状態が表示されます。
    > 
    > 
    
@@ -87,7 +91,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
    
     ![診断イベント ビューアーの詳細][6]
    
-    ローカル クラスターには、1 台のコンピューターでホストされている 5 つのノードが含まれています。 ノードがそれぞれ異なるコンピューター上にある 5 ノード クラスターを模倣します。 ローカル クラスター上のノードのいずれかをダウンさせて、コンピューターの損失をシミュレートし、これと同時に Visual Studio デバッガーを実行します。
+    ローカル クラスターには、1 台のコンピューターでホストされている 5 つのノードが含まれています。 ノードがそれぞれ異なるコンピューター上にある 5 ノード クラスターを模倣します。 ローカル クラスター上のノードのいずれかをダウンさせて、コンピューターの損失をシミュレートし、これと同時に Visual Studio デバッガーを実行してみましょう。
    
    > [!NOTE]
    > プロジェクト テンプレートによって生成されたアプリケーション診断イベントでは、付属の `ServiceEventSource` クラスを使用します。 詳細については、 [サービスをローカルで監視および診断する方法](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)に関するページを参照してください。
@@ -96,7 +100,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
 4. StatefulService から派生したサービス プロジェクト内のクラス (たとえば、MyStatefulService) を見つけ、 `RunAsync` メソッドの最初の行にブレークポイントを設定します。
    
     ![ステートフル サービスの RunAsync メソッド内のブレークポイント][7]
-5. ローカル クラスター マネージャーのシステム トレイ アプリを右クリックし、 **[Manage Local Cluster (ローカル クラスターの管理)]** を選択して Service Fabric Explorer を起動します。
+5. ローカル クラスター マネージャーのシステム トレイ アプリを右クリックし、**[ローカル クラスターの管理]** を選択して Service Fabric Explorer を起動します。
    
     ![ローカル クラスター マネージャーから Service Fabric Explorer を起動する][systray-launch-sfx]
    
@@ -107,7 +111,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
     ![Service Fabric Explorer でノードを停止する][sfx-stop-node]
    
     すぐに、Visual Studio にブレークポイント ヒットが表示されます。これは、1 つのノードで行っていた計算が別のノードにシームレスにフェールオーバーするためです。
-8. 診断イベント ビューアーに戻り、メッセージを確認します。 イベントが実際には別のノードから取得されている場合でも、カウンターが継続的にインクリメントされていることに注意してください。
+8. 診断イベント ビューアーに戻り、メッセージを確認します。 イベントが実際には別のノードから取得されている場合でも、カウンターが継続的にインクリメントされています。
    
     ![フェールオーバー後の診断イベント ビューアー][diagnostic-events-viewer-detail-post-failover]
 
@@ -122,7 +126,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
   まとめに入る前に、ローカル クラスターが非常に現実的であることを覚えておくことが重要です。 デバッガーを停止すると、アプリケーション インスタンスが削除され、アプリケーションの種類の登録が解除されます。 ただし、クラスターは引き続きバックグラウンドで実行されます。 クラスターは、いくつかの方法で管理することができます。
 
 1. クラスターをシャットダウンしても、アプリケーションのデータとトレースは保持するという場合は、システム トレイ アプリで **[Stop Local Cluster (ローカル クラスターの停止)]** をクリックします。
-2. クラスターを完全に削除するには、システム トレイ アプリで **[Remove Local Cluster (ローカル クラスターの削除)]** をクリックします。 このオプションを使用すると、次回 Visual Studio で F5 キーを押したときに、デプロイメントがさらに遅くなることに注意してください。 しばらくの間、ローカル クラスターを使用しない場合や、リソースを解放する必要がある場合にのみ、クラスターを削除してください。
+2. クラスターを完全に削除するには、システム トレイ アプリで **[Remove Local Cluster (ローカル クラスターの削除)]** をクリックします。 このオプションを使用すると、次回 Visual Studio で F5 キーを押したときにも、デプロイが遅くなります。 しばらくの間、ローカル クラスターを使用しない場合や、リソースを解放する必要がある場合にのみ、クラスターを削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure でのクラスター](service-fabric-cluster-creation-via-portal.md)または [Windows でのスタンドアロン クラスター](service-fabric-cluster-creation-for-windows-server.md)を作成する方法を学びます。
@@ -147,6 +151,6 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

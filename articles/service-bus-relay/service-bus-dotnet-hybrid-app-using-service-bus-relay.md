@@ -1,12 +1,12 @@
 ---
-title: ハイブリッド オンプレミス/クラウド アプリケーション (.NET) | Microsoft Docs
-description: Azure Service Bus Relay を使用して .NET オンプレミス/クラウド ハイブリッド アプリケーションを作成する方法について説明します。
+title: "ハイブリッド オンプレミス/クラウド アプリケーション (.NET) | Microsoft Docs"
+description: "Azure Service Bus Relay を使用して .NET オンプレミス/クラウド ハイブリッド アプリケーションを作成する方法について説明します。"
 services: service-bus
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
 ms.service: service-bus
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,16 +14,20 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/16/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3c9d542edf04c119f5d97f80eacdfd0521acd77d
+
 
 ---
-# <a name=".net-on-premises/cloud-hybrid-application-using-azure-service-bus-relay"></a>Azure Service Bus Relay を使用した .NET オンプレミス/クラウド ハイブリッド アプリケーション
+# <a name="net-onpremisescloud-hybrid-application-using-azure-service-bus-wcf-relay"></a>Azure Service Bus WCF Relay を使用した .NET オンプレミス/クラウド ハイブリッド アプリケーション
 ## <a name="introduction"></a>はじめに
 この記事では、Microsoft Azure と Visual Studio を使ってハイブリッド クラウド アプリケーションを作成する方法について説明します。 このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。 複数の Azure リソースをクラウドで運用するアプリケーションを 30 分未満で作成できます。
 
 学習内容:
 
 * Web ソリューションによって使用される Web サービスを作成、または既存の Web サービスを適合させる方法。
-* Azure アプリケーションと別の場所でホストされている Web サービスの間で、Azure Service Bus Relay サービスを使用してデータを共有する方法。
+* Azure アプリケーションと別の場所でホストされている Web サービスの間で、Azure Service Bus WCF Relay サービスを使用してデータを共有する方法。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
@@ -32,7 +36,7 @@ ms.author: sethm
 
 ソリューション アーキテクトたちは、スケーラビリティが高く運用コストが低いクラウドを使い始めています。 その中で、ソリューションの構成要素として利用する既存のサービス資産は企業ファイアウォールの内部にあり、クラウド ソリューションからのアクセスが難しいということがわかってきました。 多くの内部サービスは、企業ネットワークと外部との境界で簡単に公開できるような方法では構築されたり、ホストされたりしていません。
 
-Service Bus Relay は、既存の Windows Communication Foundation (WCF) Web サービスを使用し、企業ネットワークのインフラストラクチャを大幅に変更することなく、企業の境界の外部にあるソリューションからそれらのサービスに安全にアクセスできる使用事例として設計されています。 このような Service Bus Relay サービスは既存の環境内でもホストされていますが、受信セッションや要求のリッスンは、クラウドでホストされている Service Bus にデリゲートしています。 さらに Service Bus は、[Shared Access Signature](../service-bus/service-bus-sas-overview.md) (SAS) 認証を使用して、これらのサービスを未承認のアクセスから保護します。
+Service Bus Relay は、既存の Windows Communication Foundation (WCF) Web サービスを使用し、企業ネットワークのインフラストラクチャを大幅に変更することなく、企業の境界の外部にあるソリューションからそれらのサービスに安全にアクセスできる使用事例として設計されています。 このような Service Bus Relay サービスは既存の環境内でもホストされていますが、受信セッションや要求のリッスンは、クラウドでホストされている Service Bus にデリゲートしています。 さらに Service Bus は、[Shared Access Signature](../service-bus-messaging/service-bus-sas-overview.md) (SAS) 認証を使用して、これらのサービスを未承認のアクセスから保護します。
 
 ## <a name="solution-scenario"></a>ソリューション シナリオ
 このチュートリアルでは、商品在庫ページに商品の一覧を表示する ASP.NET Web サイトを作成します。
@@ -59,7 +63,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="create-an-on-premises-server"></a>オンプレミスのサーバーを作成する
+## <a name="create-an-onpremises-server"></a>オンプレミスのサーバーを作成する
 まず、仮のオンプレミスの商品カタログ システムを構築します。 かなり単純なものですが、これがこれから統合しようとしている完全なサービス機能を備えた実際のオンプレミスの商品カタログ システムであると考えてください。
 
 このプロジェクトは Visual Studio コンソール アプリケーションです。[Azure Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)を使用して、Service Bus ライブラリと構成設定を組み込みます。
@@ -197,14 +201,14 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
     
     ```
     <appSettings>
-    <!-- Service Bus specific app settings for messaging connections -->
-    <add key="Microsoft.ServiceBus.ConnectionString"
+       <!-- Service Bus specific app settings for messaging connections -->
+       <add key="Microsoft.ServiceBus.ConnectionString"
            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
     </appSettings>
     ```
 14. **Ctrl + Shift + B** キーを押すか、**[ビルド]** メニューの **[ソリューションのビルド]** をクリックしてアプリケーションをビルドし、ここまでの作業に問題がないことを確認します。
 
-## <a name="create-an-asp.net-application"></a>ASP.NET アプリケーションを作成する
+## <a name="create-an-aspnet-application"></a>ASP.NET アプリケーションを作成する
 このセクションでは、商品サービスから取得したデータを表示する単純な ASP.NET アプリケーションを構築します。
 
 ### <a name="create-the-project"></a>プロジェクトを作成する
@@ -234,7 +238,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
    
    ```
    // Declare properties for the products inventory.
-   namespace ProductsWeb.Models
+    namespace ProductsWeb.Models
    {
        public class Product
        {
@@ -278,31 +282,31 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
    @model IEnumerable<ProductsWeb.Models.Product>
    
    @{
-           ViewBag.Title = "Index";
+            ViewBag.Title = "Index";
    }
    
    <h2>Prod Inventory</h2>
    
    <table>
-           <tr>
-               <th>
-                   @Html.DisplayNameFor(model => model.Name)
-               </th>
+             <tr>
+                 <th>
+                     @Html.DisplayNameFor(model => model.Name)
+                 </th>
                  <th></th>
-               <th>
-                   @Html.DisplayNameFor(model => model.Quantity)
-               </th>
-           </tr>
+                 <th>
+                     @Html.DisplayNameFor(model => model.Quantity)
+                 </th>
+             </tr>
    
    @foreach (var item in Model) {
-           <tr>
-               <td>
-                   @Html.DisplayFor(modelItem => item.Name)
-               </td>
-               <td>
-                   @Html.DisplayFor(modelItem => item.Quantity)
-               </td>
-           </tr>
+             <tr>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.Name)
+                 </td>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.Quantity)
+                 </td>
+             </tr>
    }
    
    </table>
@@ -469,6 +473,6 @@ Service Bus の詳細については、次のリソースを参照してくだ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

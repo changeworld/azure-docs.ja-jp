@@ -1,12 +1,12 @@
 ---
-title: Java を使用して Linux 上で最初の Service Fabric アプリケーションを作成する | Microsoft Docs
-description: Java を使用して Service Fabric アプリケーションを作成およびデプロイします
+title: "Java を使用して Linux 上で最初の Service Fabric アプリケーションを作成する | Microsoft Docs"
+description: "Java を使用して Service Fabric アプリケーションを作成およびデプロイします"
 services: service-fabric
 documentationcenter: java
 author: seanmck
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: hero-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/04/2016
 ms.author: seanmck
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 288d504b44fd7588a03a31171da1bfb332e2429f
+
 
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>最初の Azure Service Fabric アプリケーションを作成する
@@ -113,6 +117,6 @@ Service Fabric テンプレートには、アプリケーションをビルド�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

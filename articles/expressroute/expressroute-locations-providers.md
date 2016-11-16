@@ -1,25 +1,29 @@
 ---
-title: ExpressRoute の場所 | Microsoft Docs
-description: この記事では、サービスが提供されている場所と Azure リージョンに接続する方法の詳細について説明します。
+title: "ExpressRoute の場所 | Microsoft Docs"
+description: "この記事では、サービスが提供されている場所と Azure リージョンに接続する方法の詳細について説明します。"
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: feb67da3-5abc-4acb-bad4-f78e3c541ded
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/12/2016
+ms.date: 11/02/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 86b7d396307761acb8baee5761f08a3e1120cddc
+
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 この記事の表では、ExpressRoute 接続プロバイダー、ExpressRoute の地理的範囲、ExpressRoute でサポートされる Microsoft クラウド サービス、ExpressRoute システム インテグレーター (SI) に関する情報を提供します。
 
-## <a name="<a-name="partners"></a>expressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute 接続プロバイダー
+## <a name="a-namepartnersaexpressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute 接続プロバイダー
 ExpressRoute は、すべての Azure のリージョンと場所でサポートされています。 次のマップは Azure のリージョンと ExpressRoute の場所を一覧しています。 ExpressRoute の場所は、Microsoft がいくつかのサービス プロバイダーと接続している場所を示します。
 
 ![Location map][0]
@@ -58,28 +62,29 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | --- | --- |
 | **アムステルダム** |Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT+、InterCloud、Internet Solutions - Cloud Connect、Interxion、Level 3 Communications、Orange、Tata Communications、TeleCity Group、Telenor、Verizon |
 | **アトランタ** |Equinix |
-| **チェンナイ** |Tata Communications |
+| **チェンナイ** |SIFY、Tata Communications |
 | **シカゴ** |AT&T NetBond、Comcast、Equinix、Level 3 Communications、Zayo Group |
-| **ダラス** |AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport |
+| **ダラス** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport |
 | **ダブリン** |Colt、Telecity Group |
 | **香港** |British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
-| **ロンドン** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc+、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telenor、Verizon、Vodafone |
+| **ロンドン** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telenor、Verizon、Vodafone |
 | **ラスベガス** |Level 3 Communications+、Megaport |
 | **ロサンゼルス** |CoreSite、Equinix、Megaport、NTT、Zayo Group |
 | **メルボルン** |AARNet、Equinix、Megaport、NEXTDC、Telstra Corporation |
 | **ニューヨーク** |Equinix、Megaport、Zayo Group |
+| **Newport(Wales)+** |Next Generation Data+ |
 | **モントリオール** |Cologix+ |
 | **ムンバイ** |Tata Communications |
 | **大阪** |Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、Softbank |
-| **パリ** |Interxion |
+| **パリ** |Interxion、Equinix+ |
 | **サンパウロ** |Equinix、Telefonica |
 | **シアトル** |Equinix、Level 3 Communications、Megaport |
 | **シリコン バレー** |Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink+、Comcast、Equinix、Level 3 Communications、Orange、Tata Communications、Verizon、Zayo Group |
-| **シンガポール** |Aryaka Networks、AT&T NetBond、British Telecom、Equinix、InterCloud、Megaport、Orange、SingTel、Tata Communications、Verizon |
+| **シンガポール** |Aryaka Networks、AT&T NetBond、British Telecom、Equinix、InterCloud、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Verizon |
 | **シドニー** |AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、Orange、Telstra Corporation、Verizon |
 | **東京** |Aryaka Networks、British Telecom、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、Softbank、Verizon |
 | **トロント** |Cologix、Equinix、Zayo Group |
-| **ワシントン DC** |Aryaka Networks、AT&T NetBond、British Telecom、Comcast、Equinix、InterCloud、Level 3 Communications、Megaport、Orange、Tata Communications、Verizon、Zayo Group |
+| **ワシントン DC** |Aryaka Networks、AT&T NetBond、British Telecom、Comcast、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、Verizon、Zayo Group |
 
  **+** は近日対応予定を表します
 
@@ -88,7 +93,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **場所** | **サービス プロバイダー** |
 | --- | --- |
 | **シカゴ** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
-| **ダラス** |Equinix、Verizon+ |
+| **ダラス** |Equinix、Verizon |
 | **ニューヨーク** |Equinix、Level 3 Communications+、Verizon |
 | **ワシントン DC** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 
@@ -103,10 +108,10 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 #### <a name="germany"></a>ドイツ
 | **場所** | **サービス プロバイダー** |
 | --- | --- |
-| **ベルリン** |Colt、e-shelter |
+| **ベルリン** |Colt+、e-shelter |
 | **フランクフルト** |Colt、Equinix、Interxion |
 
-## <a name="<a-name="nonpartners"></a>connectivity-through-service-providers-not-listed"></a><a name="nonpartners"></a>一覧にないサービス プロバイダー経由の接続
+## <a name="a-namenonpartnersaconnectivity-through-service-providers-not-listed"></a><a name="nonpartners"></a>一覧にないサービス プロバイダー経由の接続
 接続プロバイダーが上記のセクションの一覧にない場合でも、接続を作成できます。
 
 * 接続プロバイダーが上の表に記載されているいずれかの Exchange に接続されているかどうかをその接続プロバイダーに確認します。 次のリンクから、Exchange プロバイダーが提供するサービスの詳細情報を収集できます。 一部の接続プロバイダーは既にイーサネット Exchange に接続されています。
@@ -148,6 +153,6 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

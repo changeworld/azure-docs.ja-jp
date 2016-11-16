@@ -1,19 +1,23 @@
 ---
-title: Web アプリの概要 | Microsoft Docs
-description: Azure App Service が Web アプリケーションの開発およびホストにどのように役立つかについて説明します
+title: "Web Apps の概要 | Microsoft Docs"
+description: "Azure App Service が Web アプリケーションの開発およびホストにどのように役立つかについて説明します"
 services: app-service\web
-documentationcenter: ''
-author: jaime-espinosa
-manager: wpickett
-editor: ''
-
+documentationcenter: 
+author: cephalin
+manager: erikre
+editor: 
+ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/26/2016
-ms.author: rachelap
+ms.date: 10/28/2016
+ms.author: cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d366fc36e2731be34d70fd4e4fa082370c452d63
+
 
 ---
 # <a name="web-apps-overview"></a>Web Apps の概要
@@ -21,14 +25,15 @@ ms.author: rachelap
 
 次の 5 分間のビデオでは、Azure App Service Web Apps の概要について説明しています。
 
-[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Web-Apps-with-Yochay-Kiriaty/player]
-
+>[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Web-Apps-with-Yochay-Kiriaty/player]
+>
+>
 
 > [!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
 > 
 > 
 
-## <a name="what-is-a-web-app-in-app-service?"></a>App Service の Web アプリとは
+## <a name="what-is-a-web-app-in-app-service"></a>App Service の Web アプリとは
 App Service の *Web アプリ* とは、Web サイトまたは Web アプリケーションをホストするために Azure が提供するコンピューティング リソースです。  
 
 コンピューティング リソースは、選択した価格レベルに応じて、共有または専用の仮想マシン (VM) 上に配置されます。 アプリケーション コードは、他のお客様から分離された管理 VM で実行されます。
@@ -37,12 +42,12 @@ App Service の *Web アプリ* とは、Web サイトまたは Web アプリケ
 
 Web Apps を使用できる一般的なアプリケーション シナリオの例については、[Web アプリのシナリオ](https://azure.microsoft.com/documentation/scenarios/web-app/)に関するページおよび「[Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較](choose-web-site-cloud-service-vm.md#scenarios)」の「**シナリオと推奨事項**」セクションを参照してください。
 
-## <a name="why-use-web-apps?"></a>Web Apps を使用する理由
+## <a name="why-use-web-apps"></a>Web Apps を使用する理由
 Web Apps に適用されるいくつかの App Service の主要機能を次に示します。
 
 * **複数の言語とフレームワーク** - App Service は、ASP.NET、Node.js、Java、PHP、Python を最高レベルでサポートしています。 また、App Service VM では、 [PowerShell などのスクリプトや実行可能ファイル](web-sites-create-web-jobs.md) を実行することもできます。
 * **DevOps の最適化** - [継続的インテグレーションとデプロイ](app-service-continuous-deployment.md) を、Visual Studio Team Services、GitHub、または BitBucket でセットアップできます。 [テスト環境やステージング環境](web-sites-staged-publishing.md)を介して更新を反映できます。 また、 [A/B テスト](app-service-web-test-in-production-get-start.md)を実行できます。 App Service でのアプリの管理には、[Azure PowerShell](../powershell-install-configure.md) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](../xplat-cli-install.md) を使用します。
-* **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](web-sites-scale.md)または[スケールアウト](../azure-portal/insights-how-to-scale.md)を実行できます。 Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
+* **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](web-sites-scale.md)または[スケールアウト](../monitoring-and-diagnostics/insights-how-to-scale.md)を実行できます。 Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
 * **SaaS プラットフォームおよびオンプレミス データへの接続** - エンタープライズ システム (SAP、Siebel、Oracle など)、SaaS サービス (Salesforce や Office 365 など)、インターネット サービス (Facebook や Twitter など) 向けに用意された 50 を超える [コネクタ](../connectors/apis-list.md) から選択できます。 また、[ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md)と [Azure Virtual Networks](web-sites-integrate-with-vnet.md) を利用して、オンプレミスのデータにアクセスできます。
 * **セキュリティとコンプライアンス** - App Service は [ISO、SOC、および PCI に準拠](https://www.microsoft.com/TrustCenter/)しています。
 * **アプリケーション テンプレート** - [Azure Marketplace](https://azure.microsoft.com/marketplace/) にある詳細な一覧からアプリケーション テンプレートを選択し、ウィザードを通じて、WordPress、Joomla、Drupal などの広く普及しているオープン ソース ソフトウェアをインストールできます。
@@ -57,6 +62,9 @@ App Service の Web Apps に加え、Azure では Web サイトと Web アプリ
 
 Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,38 +1,43 @@
 ---
 title: " Azure Portal を使用した Media Services アカウントへのファイルのアップロード | Microsoft Docs"
-description: このチュートリアルでは、Azure Portal を使用して Media Services アカウントにファイルをアップロードする手順について説明します。
+description: "このチュートリアルでは、Azure Portal を使用して Media Services アカウントにファイルをアップロードする手順について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 3ad3dcea-95be-4711-9aae-a455a32434f6
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/29/2016
+ms.date: 10/14/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8daf63e164dc548023878af091491b5d942276d9
+
 
 ---
-# Azure Portal を使用した Media Services アカウントへのファイルのアップロード
+# <a name="upload-files-into-a-media-services-account-using-the-azure-portal"></a>Azure Portal を使用した Media Services アカウントへのファイルのアップロード
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-upload-files.md)
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST ()](media-services-rest-upload-files.md)
 > 
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
 > 
 > 
 
-Media Services で、デジタル ファイルを資産にアップロードします。資産には、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、字幕ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
+Media Services で、デジタル ファイルを資産にアップロードします。 資産には、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、字幕ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
-1. **[設定]** ウィンドウで、**[資産]** をクリックします。
+1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
+2. **[設定]** ブレードで **[資産]** をクリックします。
    
     ![ファイルのアップロード](./media/media-services-portal-vod-get-started/media-services-upload.png)
-2. **[アップロード]** ボタンをクリックします。
+3. **[アップロード]** ボタンをクリックします。
    
     **[Upload a video asset (ビデオ資産をアップロード)]** ウィンドウが表示されます。
    
@@ -40,19 +45,24 @@ Media Services で、デジタル ファイルを資産にアップロードし�
    > ファイル サイズの制限はありません。
    > 
    > 
-3. コンピューターで目的のビデオを参照して選択し、[OK] をクリックします。
+4. コンピューターで目的のビデオを参照して選択し、[OK] をクリックします。  
    
-    アップロードが開始され、ファイル名の下に進行状況が表示されます。
+    アップロードが開始され、ファイル名の下に進行状況が表示されます。  
 
-アップロードが完了すると、**[資産]** ウィンドウの一覧に新しい資産が表示されます。
+アップロードが完了すると、 **[資産]** ウィンドウの一覧に新しい資産が表示されます。 
 
-## 次のステップ
-これで、アップロードした資産をエンコードできます。詳細については、[資産のエンコード](media-services-portal-encode.md)に関するページをご覧ください。
+## <a name="next-steps"></a>次のステップ
+これで、アップロードした資産をエンコードできます。 詳細については、 [資産のエンコード](media-services-portal-encode.md)に関するページをご覧ください。
 
-## Media Services のラーニング パス
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## フィードバックの提供
+## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

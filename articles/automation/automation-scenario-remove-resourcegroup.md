@@ -1,12 +1,12 @@
 ---
-title: リソース グループの削除の自動化 | Microsoft Docs
-description: サブスクリプション内のすべてのリソース グループを削除する Runbook が含まれた、PowerShell Workflow バージョンの Azure Automation のシナリオ。
+title: "リソース グループの削除の自動化 | Microsoft Docs"
+description: "サブスクリプション内のすべてのリソース グループを削除する Runbook が含まれた、PowerShell Workflow バージョンの Azure Automation のシナリオ。"
 services: automation
-documentationcenter: ''
+documentationcenter: 
 author: MGoedtel
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: b848e345-fd5d-4b9d-bc57-3fe41d2ddb5c
 ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
+ms.openlocfilehash: 6aa3897d44b146483204d43e026d3d158c3e13b6
+
 
 ---
-# <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure Automation のシナリオ - リソース グループの削除の自動化
+# <a name="azure-automation-scenario-automate-removal-of-resource-groups"></a>Azure Automation のシナリオ - リソース グループの削除の自動化
 多くのユーザーは、1 つ以上のリソース グループを作成します。 リソース グループは、実稼働アプリケーションの管理に使用することもあれば、開発、テスト、ステージング環境として使用することもあります。 これらのリソースのデプロイを自動化することと、ワンクリックでリソース グループを削除する機能は、まったくの別物です。 Azure Automation を使用することで、この一般的な管理タスクを効率化できます。 これは、MSDN や Microsoft Partner Network Cloud Essentials プログラムなどのメンバー プランを通じて使用制限のある Azure サブスクリプションを使っている場合に役立ちます。
 
 このシナリオは PowerShell Runbook に基づいており、指定した 1 つ以上のリソース グループをサブスクリプションから削除するために使用されます。 Runbook の既定の設定では、手順を実行する前にテストが行われます。 そのため、この手順を完了する準備が整う前にリソース グループを誤って削除してしまうことはありません。   
@@ -41,7 +45,7 @@ ms.author: magoedte
 この Runbook は、 [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)を使用して認証します。    
 
 ### <a name="install-and-publish-the-runbooks"></a>Runbook をインストールして発行する
-Runbook をダウンロードした後、[Runbook のインポートの手順](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-Azure-Automation)を使用してインポートすることができます。 Runbook が Automation アカウントに正常にインポートされたら、それを発行します。
+Runbook をダウンロードした後、[Runbook のインポートの手順](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation)を使用してインポートすることができます。 Runbook が Automation アカウントに正常にインポートされたら、それを発行します。
 
 ## <a name="using-the-runbook"></a>Runbook の使用
 以下の手順では、この Runbook の実行について説明していきます。これらの手順は、Runbook のしくみを理解するのに役立ちます。 この例では Runbook のテストのみを行い、リソース グループは実際には削除しません。  
@@ -49,11 +53,11 @@ Runbook をダウンロードした後、[Runbook のインポートの手順](a
 1. Azure Portal で Automation アカウントを開き、**[Runbook]** をクリックします。
 2. **Remove-ResourceGroup** Runbook を選択し、**[開始]** をクリックします。
 3. Runbook を開始すると、**[Runbook の開始]** ブレードが開き、パラメーターを構成できます。 サブスクリプション内にある、テストに使用できるリソース グループの名前を入力します。誤って削除しても悪影響のないものを選んでください。<br> ![Remove-ResouceGroup のパラメーター](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-input-parameters.png)
-   
+
    > [!NOTE]
    > 選択したリソース グループが削除されないように、**[Previewmode]** が **true** に設定されていることを確認します。  この Runbook では、Runbook を実行中の Automation アカウントが含まれているリソース グループは削除されないことに**注意してください**。  
-   > 
-   > 
+   >
+   >
 4. すべてのパラメーター値を構成したら、**[OK]** をクリックします。Runbook が実行されるよう、キューに配置されます。  
 
 Azure Portal で **Remove-ResourceGroup** Runbook ジョブの詳細を表示するには、Runbook の **[ジョブ]** タイルを選択します。 ジョブの概要として、入力パラメーターと出力ストリーム、さらにジョブに関する全般情報が表示されます。例外が発生した場合は、その情報も表示されます。<br> ![Remove-ResourceGroup Runbook ジョブの状態](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-status.png)
@@ -64,6 +68,8 @@ Azure Portal で **Remove-ResourceGroup** Runbook ジョブの詳細を表示す
 * 独自の Runbook の作成を開始するには、「[Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)」を参照してください。
 * PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

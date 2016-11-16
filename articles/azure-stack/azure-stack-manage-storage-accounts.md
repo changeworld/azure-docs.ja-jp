@@ -2,11 +2,11 @@
 title: Manage Azure Stack storage accounts  | Microsoft Docs
 description: Learn how to find, manage, recover and reclaim Azure Stack storage accounts
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: AniAnirudh
 manager: darmour
-editor: ''
-
+editor: 
+ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: anirudha
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 5890fb69668c925b882e722cd43f266af38bbbfd
+
 
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Manage Storage Accounts in Azure Stack
@@ -124,6 +128,9 @@ One of the side effects of having a retention period is that a deleted account w
 > 
 > 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

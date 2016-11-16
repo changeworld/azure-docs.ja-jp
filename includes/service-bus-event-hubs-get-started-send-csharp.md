@@ -1,15 +1,15 @@
-## Event Hub へのメッセージ送信
+## <a name="send-messages-to-event-hubs"></a>Event Hub へのメッセージ送信
 このセクションでは、Windows コンソール アプリを記述して、Event Hub にイベントを送信します。
 
-1. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。プロジェクトの名前として「**Sender**」と入力します。
+1. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。 プロジェクトの名前として「 **Sender**」と入力します。
    
     ![](./media/service-bus-event-hubs-getstarted-send-csharp/create-sender-csharp1.png)
-2. ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします。
-3. **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。プロジェクト名 (**Sender**) が **[バージョン]** ボックスで指定されていることを確認します。**[インストール]** をクリックして、使用条件に同意します。
+2. ソリューション エクスプローラーでソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]**をクリックします。 
+3. **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 プロジェクト名 (**Sender**) が **[バージョン]** ボックスで指定されていることを確認します。 **[インストール]**をクリックして、使用条件に同意します。 
    
     ![](./media/service-bus-event-hubs-getstarted-send-csharp/create-sender-csharp2.png)
    
-    Visual Studio によりパッケージのダウンロードとインストールが実行され、[Azure Service Bus ライブラリ NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)への参照が追加されます。
+    Visual Studio によりパッケージのダウンロードとインストールが実行され、 [Azure Service Bus ライブラリ NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)への参照が追加されます。
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
     ```
@@ -49,7 +49,7 @@
     ```
    
     このメソッドは、200 ミリ秒の遅延時間でイベント ハブにイベントを継続的に送信します。
-7. 最後に、**Main** メソッドに次の行を追加します。
+7. 最後に、 **Main** メソッドに次の行を追加します。
    
     ```
     Console.WriteLine("Press Ctrl-C to stop the sender process");
@@ -58,4 +58,8 @@
     SendingRandomMessages();
     ```
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

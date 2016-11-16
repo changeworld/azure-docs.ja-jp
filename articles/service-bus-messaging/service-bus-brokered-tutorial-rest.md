@@ -1,12 +1,12 @@
 ---
-title: Service Bus ブローカー メッセージングの REST チュートリアル | Microsoft Docs
-description: ブローカー メッセージングの REST チュートリアル。
+title: "Service Bus ブローカー メッセージングの REST チュートリアル | Microsoft Docs"
+description: "ブローカー メッセージングの REST チュートリアル。"
 services: service-bus
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 9b7a8147-a1b1-42fc-b30e-f52e79a902b5
 ms.service: service-bus
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 45b72037e2de01b9201edf3e4ebee7e80d996383
+
 
 ---
 # <a name="service-bus-brokered-messaging-rest-tutorial"></a>Service Bus ブローカー メッセージングの REST チュートリアル
@@ -22,7 +26,7 @@ ms.author: sethm
 このチュートリアルでは、基本的な REST ベースの Azure Service Bus のキューおよびトピック/サブスクリプションを作成する方法を示します。
 
 ## <a name="create-a-namespace"></a>名前空間の作成
-最初の手順では、サービス名前空間を作成し、[Shared Access Signature](../service-bus/service-bus-sas-overview.md) (SAS) キーを取得します。 名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。 サービス名前空間が作成された時点で、SAS キーが生成されます。 サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
+最初の手順では、サービス名前空間を作成し、[Shared Access Signature](service-bus-sas-overview.md) (SAS) キーを取得します。 名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。 サービス名前空間が作成された時点で、SAS キーが生成されます。 サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -31,7 +35,7 @@ Service Bus キューを使用すると、先入れ先出しキューにメッ�
 
 このチュートリアルのコードでは、次のことを行います。
 
-* 名前空間と [Shared Access Signature](../service-bus/service-bus-sas-overview.md) (SAS) キーを使用して、Service Bus 名前空間のリソースにアクセスします。
+* 名前空間と [Shared Access Signature](service-bus-sas-overview.md) (SAS) キーを使用して、Service Bus 名前空間のリソースにアクセスします。
 * キューを作成し、キューにメッセージを送信して、キューからメッセージを読み取ります。
 * トピックを作成し、そのトピックをサブスクライブした後、サブスクリプションにメッセージを送信して、サブスクリプションからメッセージを読み取ります。
 * キュー、トピック、サブスクリプションのすべての情報 (サブスクリプション ルールなど) を Service Bus から取得します。
@@ -139,7 +143,7 @@ Service Bus キューを使用すると、先入れ先出しキューにメッ�
 ## <a name="create-management-credentials"></a>管理資格情報を作成する
 次の手順では、前の手順で入力した名前空間と SAS キーを処理して SAS トークンを返すメソッドを作成します。 この例では、1 時間有効な SAS トークンを作成します。
 
-### <a name="create-a-getsastoken()-method"></a>GetSASToken() メソッドを作成する
+### <a name="create-a-getsastoken-method"></a>GetSASToken() メソッドを作成する
 次のコードを `Program` クラスの `Main()` メソッドの後に貼り付けます。
 
 ```
@@ -594,9 +598,12 @@ namespace Microsoft.ServiceBus.Samples
 詳細については、次の記事を参照してください。
 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [Azure Service Bus の基礎](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
+* [Azure Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus Relay REST のチュートリアル](../service-bus-relay/service-bus-relay-rest-tutorial.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

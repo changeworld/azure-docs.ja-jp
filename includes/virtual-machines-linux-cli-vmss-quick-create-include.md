@@ -1,7 +1,7 @@
-[Azure サブスクリプションの無料試用版](https://azure.microsoft.com/pricing/free-trial/)と [Azure CLI](../articles/xplat-cli-install.md) は、[Azure アカウントに接続](../articles/xplat-cli-connect.md)できます (まだ接続していない場合)。接続が完了したら、次のコマンドを実行してスケール セットを簡易作成できます。
+まだない場合は、[Azure サブスクリプションの無料試用版](https://azure.microsoft.com/pricing/free-trial/)と、[Azure アカウント](../articles/xplat-cli-connect.md)に接続された [Azure CLI](../articles/xplat-cli-install.md) を入手できます。 接続が完了したら、次のコマンドを実行してスケール セットを簡易作成できます。
 
 ```bash
-# make sure we are in Resource Manager mode (https://azure.microsoft.com/documentation/articles/resource-manager-deployment-model/)
+# make sure we are in Resource Manager mode (https://azure.microsoft.com/en-us/documentation/articles/resource-manager-deployment-model/)
 azure config mode arm
 
 # quick-create a scale set
@@ -13,9 +13,9 @@ azure config mode arm
 azure vmss quick-create -n negatvmss -g negatvmssrg -l westus -u negat -p P4ssw0rd -C 5 -Q Canonical:UbuntuServer:14.04.4-LTS:latest
 ```
 
-場所またはイメージの URN をカスタマイズする場合は、`azure location list` コマンドと `azure vm image {list-publishers|list-offers|list-skus|list|show}` コマンドをご確認ください。
+場所またはイメージの URN をカスタマイズする場合は、`azure location list` コマンドと `azure vm image {list-publishers|list-offers|list-skus|list|show}` コマンドを確認してください。
 
-このコマンドから制御が返された時点で、スケール セットは既に作成されています。このスケール セットは、ロード バランサー上のポート 50,000+i を VM i のポート 22 にマッピングする NAT 規則が構成されたロード バランサーを備えています。したがって、ロード バランサーの FQDN がわかっていれば、VM に SSH で接続することができます。
+このコマンドから制御が返された時点で、スケール セットは既に作成されています。 このスケール セットは、ロード バランサー上のポート 50,000+i を VM i のポート 22 にマッピングする NAT 規則が構成されたロード バランサーを備えています。 したがって、ロード バランサーの FQDN がわかっていれば、VM に SSH で接続することができます。
 
 ```bash
 # (if you decide to run this as a script, please invoke using bash)
@@ -56,4 +56,6 @@ FQDN=${split_line[3]}
 ssh -p 50000 negat@$FQDN
 ```
 
-<!---HONumber=AcomDC_0413_2016-->
+<!--HONumber=Nov16_HO2-->
+
+

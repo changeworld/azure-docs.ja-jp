@@ -1,23 +1,27 @@
 ---
 title: Azure Machine Learning FAQ | Microsoft Docs
-description: 'Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。'
-keywords: 機械の概要、予測モデリング、機械学習とは
+description: "Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。"
+keywords: "機械の概要、予測モデリング、機械学習とは"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: paulettm
 editor: cgronlun
-
+ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/14/2016
+ms.date: 10/26/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 36fd6b01dae6aa9a48985a252766d3f2d0b19342
+
 
 ---
-# <a name="azure-machine-learning-frequently-asked-questions-(faq):-billing,-capabilities,-limitations,-and-support"></a>Azure Machine Learning に関してよく寄せられる質問 (FAQ): 課金、機能、制限、サポート
+# <a name="azure-machine-learning-frequently-asked-questions-faq-billing-capabilities-limitations-and-support"></a>Azure Machine Learning に関してよく寄せられる質問 (FAQ): 課金、機能、制限、サポート
 この FAQ では、Web サービスを使用して予測モデルの作成とソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についての疑問に答えます。 サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。
 
 ## <a name="general-questions"></a>一般的な質問
@@ -41,12 +45,14 @@ Machine Learning API サービスでは、Machine Learning Studio に組み込�
 
 **クラシック Web サービスの一覧はどこで確認できますか?新しい Azure Resource Manager ベースの Web サービスの一覧はどこで確認できますか?**
 
-クラシック Web サービスは、 [Machine Learning Studio](http://studio.azureml.net) の Web サービスのタブに一覧表示されます。 新しい Azure Resource Manager ベースの Web サービスは、 [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/) ポータルに一覧表示されます。 両方の Web サービスを同じ画面に一覧表示することはできません。
+クラシック Web サービスと新しい Azure Resource Manager ベースの Web サービスは、[Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/) ポータルに一覧表示されます。 
+
+クラシック Web サービスは、[Machine Learning Studio](http://studio.azureml.net) の Web サービスのタブにも一覧表示されます。
 
 ## <a name="microsoft-azure-machine-learning-web-service-questions"></a>Microsoft Azure Machine Learning Web サービスに関する質問
-**Azure ML Web サービスとは何ですか?**
+**Azure Machine Learning Web サービスとは何ですか?**
 
-Azure Machine Learning Web サービスを使用して、外部のアプリケーションが Machine Learning のワークフローのスコア付けモデルとリアルタイムで通信します。 Machine Learning Web サービスの呼び出しは、予測結果を外部のアプリケーションに返します。 Machine Learning Web サービスの呼び出しを実行するには、Web サービスのデプロイ時に作成された API キーを渡します。 Machine Learning Web サービスは、Web プログラミング プロジェクトでよく選択されるアーキテクチャの REST に基づいています。
+Machine Learning Web サービスは、アプリケーションと Machine Learning ワークフローのスコア付けモデルの間のインターフェイスを提供します。 Azure Machine Learning Web サービスを使用すると、外部のアプリケーションは Machine Learning ワークフローのスコア付けモデルとリアルタイムで通信できます。 Machine Learning Web サービスの呼び出しは、予測結果を外部のアプリケーションに返します。 Machine Learning Web サービスの呼び出しを実行するには、Web サービスのデプロイ時に作成された API キーを渡します。 Machine Learning Web サービスは、Web プログラミング プロジェクトでよく選択されるアーキテクチャの REST に基づいています。
 
 Azure Machine Learning には、2 種類のサービスがあります。
 
@@ -55,7 +61,8 @@ Azure Machine Learning には、2 種類のサービスがあります。
 
 REST API を使用して Web サービスにアクセスするには、いくつかの方法があります。 たとえば、Web サービスをデプロイしたときに生成されたサンプル コードを使用して、C#、R、または Python でアプリケーションを記述できます。
 
-サンプル コードは、Azure Machine Learning Web サービス ポータルの Web サービスの使用ページや、Machine Learning Studio の Web サービス ダッシュボードの API ヘルプ ページで参照できます。
+サンプル コードは、Azure Machine Learning Web サービス ポータルの Web サービスの使用ページで参照できます。
+または、Machine Learning Studio の Web サービス ダッシュボードの API ヘルプ ページで参照できます。
 
 また、作成されたサンプル Microsoft Excel ブック (これも Studio の Web サービス ダッシュボードで利用可能) を使用することもできます。
 
@@ -64,23 +71,12 @@ REST API を使用して Web サービスにアクセスするには、いくつ
 新しい Azure Machine Learning Web サービスの詳細については、 [関連ドキュメント](machine-learning-whats-new.md)を参照してください。
 
 ## <a name="machine-learning-studio-questions"></a>Machine Learning Studio に関する質問
-### <a name="creating-an-experiment"></a>実験の作成
-**実験グラフ用のバージョン管理や Git 統合はありますか。**
-
-いいえ。ただし、Machine Learning Studio は、他のユーザーによって変更できない実験の各イテレーションを保持します。
-詳細については、[Machine Learning Studio での実験イテレーションの管理](machine-learning-manage-experiment-iterations.md)に関するページを参照してください。
-
-### <a name="deploying-an-experiment"></a>実験のデプロイ
-**予測実験を既にクラシック Web サービスとしてデプロイしている場合、それを新しい (Azure Resource Manager ベースの) Web サービスとしてデプロイすることはできますか?**
-
-いいえ。クラシック Web サービスとして既にデプロイされている実験をデプロイすることはできません。 新しい予測実験を作成して、それを代わりにデプロイする必要があります。
-
 ### <a name="importing-and-exporting-data-for-machine-learning"></a>Machine Learning 用データのインポートとエクスポート
 **Machine Learning はどのようなデータ ソースをサポートしていますか。**
 
 Machine Learning Studio の実験にデータを読み込むには、3 種類の方法があります。データセットとしてのローカル ファイルのアップロード、モジュールを使用したクラウド データ サービスからのデータのインポート、または別の実験から保存されたデータセットのインポートです。 サポートされているファイル形式の詳細については、[Machine Learning Studio へのトレーニング データのインポート](machine-learning-data-science-import-data.md)に関する記事を参照してください。
 
-#### <a name="<a-id="modulelimit"></a>how-large-can-the-data-set-be-for-my-modules?"></a><a id="ModuleLimit"></a>モジュールのデータ セットの大きさはどの程度まで許容されますか。
+#### <a name="a-idmodulelimitahow-large-can-the-data-set-be-for-my-modules"></a><a id="ModuleLimit"></a>モジュールのデータ セットの大きさはどの程度まで許容されますか。
 Machine Learning Studio のモジュールは、一般的に、最大 10 GB の高密度数値データのデータセットをサポートしています。 モジュールが 1 つ以上の入力を受け取る場合は、10 GB はすべての入力サイズの合計です。 インジェストの前に、Hive または Azure SQL Database のクエリ経由で、またはカウントによる学習の前処理によって、より大きなデータセットをサンプリングすることもできます。  
 
 次の種類のデータは、特徴の正規化の際により大きなデータセットに展開でき、10 GB 未満に制限されています。
@@ -100,7 +96,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 数 GB を超えるデータセットの場合は、ローカル ファイルから直接アップロードするのではなく、Azure Storage または Azure SQL Database にデータをアップロードするか、HDInsight を使用する必要があります。
 
-#### <a name="<a-id="uploadlimit"></a>what-are-the-limits-for-data-upload?"></a><a id="UploadLimit"></a>データのアップロードの制限は何ですか。
+#### <a name="a-iduploadlimitawhat-are-the-limits-for-data-upload"></a><a id="UploadLimit"></a>データのアップロードの制限は何ですか。
 数 GB を超えるデータセットの場合は、ローカル ファイルから直接アップロードするのではなく、Azure Storage または Azure SQL Database にデータをアップロードするか、HDInsight を使用する必要があります。
 
 **Amazon S3 からデータを読み取ることはできますか。**
@@ -193,7 +189,7 @@ Machine Learning Studio では現在、400 を超える CRAN R パッケージ�
 
 **Python 用の REPL 環境はありますか。**
 
-Machine Learning Studio では Jupyter Notebooks を使用できます。 詳細については、「[Introducing Jupyter Notebooks in Azure Machine Learning Studio (Azure Machine Learning Studio への Jupyter Notebook の導入)](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)」を参照してください。
+Machine Learning Studio では Jupyter Notebooks を使用できます。 詳細については、 [Azure Machine Learning Studio への Jupyter Notebooks の導入](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)に関するブログ記事を参照してください。
 
 ## <a name="web-service"></a>Web サービス
 ### <a name="retraining-models-programmatically"></a>モデルをプログラムによって再トレーニングする
@@ -224,7 +220,7 @@ Retraining API を使用することもできます。
 
 **運用環境にデプロイされた Web サービスはどのように監視できますか?**
 
-予測モデルがデプロイされると、Azure クラシック ポータルから監視できます。 デプロイされた各サービスには専用のダッシュボードがあり、ここでそのサービスについての監視情報を参照できます。 デプロイされた Web サービスの管理方法の詳細については、「 [Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」を参照してください。
+予測モデルがデプロイされると、Azure クラシック ポータル (クラシック Web サービスのみ) または Azure Machine Learning Web サービス ポータルから監視できます。 デプロイされた各サービスには専用のダッシュボードがあり、ここでそのサービスについての監視情報を参照できます。 デプロイされた Web サービスの管理に関する詳しい情報については、「[Manage a Web service using the Azure Machine Learning Web Services portal (Azure Machine Learning Web サービス ポータルを使用した Web サービスの管理)](machine-learning-manage-new-webservice.md)」と「[Manage an Azure Machine Learning workspace (Azure Machine Learning ワークスペースの管理)](machine-learning-manage-workspace.md)」を参照してください。
 
 **RRS/BES の出力を確認できまる場所はありますか。**
 
@@ -436,7 +432,7 @@ Standard S1 レベルから開始して、サービスの使用状況を監視�
 
 はい。 プランの価格設定はリージョンによって異なります。 Web サービスを別のリージョンにデプロイするときは、そのリージョンに固有のプランを割り当てる必要があります。
 
-### <a name="new-web-services---overages"></a>新しい Web サービス - 超過料金
+### <a name="new-web-services-overages"></a>新しい Web サービス - 超過料金
 **Web サービスの使用量が超過料金に達しているかどうかを確認するには、どうすればよいですか?**
 
 Azure Machine Learning Web サービス ポータルの [プラン] ページで、すべてのプランの使用状況を確認することができます。 ポータルにサインインして、[プラン] メニュー オプションをクリックします。
@@ -549,6 +545,6 @@ Machine Learning サービスはマルチテナント サービスです。バ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

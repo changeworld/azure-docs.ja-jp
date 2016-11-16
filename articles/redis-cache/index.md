@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Redis Cache Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: cd96f7ea32696ea920cd1622ae6d08692b4f8f4c
+ms.openlocfilehash: a244eaf8dff788354caab1c327a22cb5c5b423cf
 
-Azure Redis Cache is based on the popular open-source Redis Cache. It gives you access to a secure dedicated Redis cache managed by Microsoft and accessible from any application within Azure. Azure Redis Cache provides high throughput and consistent low-latency data access to power fast, scalable Azure applications.
+---
+#<a name="redis-cache-documentation"></a>Redis Cache のドキュメント
+
+Azure Redis Cache は広く普及しているオープンソース Redis Cache を基盤にしています。 これを使用すると、Microsoft によって管理されている、セキュリティで保護された専用 Redis Cache に Azure 内の任意のアプリケーションからアクセスできます。 Azure Redis Cache によって、スループット向上と、一貫して短いデータ アクセスの待機時間による高速でスケーラブルな Azure アプリケーションが強化されます。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Azure Redis Cache is based on the popular open-source Redis Cache. It gives you 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Redis Cache Premium tier</h3>
+                        <h3>Azure Redis Cache Premium レベルについて</h3>
                     </div>
                 </div>
             </div>
@@ -34,7 +38,7 @@ Azure Redis Cache is based on the popular open-source Redis Cache. It gives you 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Redis Cache Video Library</h3>
+                        <h3>Azure Redis Cache のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -52,7 +56,7 @@ Azure Redis Cache is based on the popular open-source Redis Cache. It gives you 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Redis Cache using .NET</h3>
+                        <h3>.NET を使用する Redis Cache の概要</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +74,7 @@ Azure Redis Cache is based on the popular open-source Redis Cache. It gives you 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Redis Cache using ASP.NET MVC</h3>
+                        <h3>ASP.NET MVC を使用する Redis Cache の概要</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +92,7 @@ Azure Redis Cache is based on the popular open-source Redis Cache. It gives you 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Redis Cache using Node.js</h3>
+                        <h3>Node.js を使用する Redis Cache の概要</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +110,7 @@ Azure Redis Cache is based on the popular open-source Redis Cache. It gives you 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Redis Cache using Java</h3>
+                        <h3>Java を使用する Redis Cache の概要</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +128,7 @@ Azure Redis Cache is based on the popular open-source Redis Cache. It gives you 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Redis Cache using Python</h3>
+                        <h3>Python を使用する Redis Cache の概要</h3>
                     </div>
                 </div>
             </div>
@@ -135,29 +139,34 @@ Azure Redis Cache is based on the popular open-source Redis Cache. It gives you 
 
 ---
 
-##Reference
+##<a name="reference"></a>リファレンス
 
-###PowerShell
-[Azure PowerShell reference](/powershell/azureps-cmdlets-docs)
+###<a name="powershell"></a>PowerShell
+[Azure PowerShell リファレンス](/powershell/azureps-cmdlets-docs)
 
-###Azure CLI
-[Redis Cache with Azure CLI](/cli/azure/redis) 
+###<a name="azure-cli"></a>Azure CLI
+[Redis Cache と Azure CLI](/cli/azure/redis) 
 
-###.NET 
-[Redis Cache Managed Reference API](/dotnet/api/) 
+###<a name="net"></a>.NET 
+[Redis Cache に関する管理リファレンス API](/dotnet/api/) 
 
-###Java 
+###<a name="java"></a>Java 
 [Azure Java SDK](/java/api/)
 
-###REST 
-[Redis Cache REST API Reference](/rest/api/)  
+###<a name="rest"></a>REST () 
+[Redis Cache REST API リファレンス](/rest/api/)  
 
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/redis-cache.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Redis Cache Documentation
-        </div>
+Redis Cache のドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

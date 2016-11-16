@@ -2,11 +2,11 @@
 title: Deploy a VM with a certificate using Azure Stack Key Vault  | Microsoft Docs
 description: Learn how deploy a VM and inject a certificate from Azure Stack Key Vault
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: rlfmendes
 manager: natmack
-editor: ''
-
+editor: 
+ms.assetid: 46590eb1-1746-4ecf-a9e5-41609fde8e89
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: ricardom
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0a5bca8564f69434cfb3cbe74021609c6696b46e
+
 
 ---
 # <a name="create-vms-and-include-certificates-retrieved-from-key-vault"></a>Create VMs and include certificates retrieved from Key Vault
@@ -43,21 +47,7 @@ This sample script creates a key vault, and then stores a certificate stored in 
     $fileContentBytes = get-content \$fileName -Encoding Byte
 
     $fileContentEncoded =
-[System.Convert\]::ToBase64String(\$fileContentBytes)
-    $jsonObject = @"
-    {
-    "data": "\$filecontentencoded",
-    "dataType" :"pfx",
-    "password": "\$certPassword"
-    }
-    @$jsonObjectBytes = [System.Text.Encoding\]::UTF8.GetBytes(\$jsonObject)
-    $jsonEncoded = \[System.Convert\]::ToBase64String(\$jsonObjectBytes)
-    Switch-AzureMode -Name AzureResourceManager
-    New-AzureResourceGroup -Name \$resourceGroup -Location \$location
-    New-AzureKeyVault -VaultName \$vaultName -ResourceGroupName
-    $resourceGroup -Location \$location -sku standard -EnabledForDeployment
-    $secret = ConvertTo-SecureString -String \$jsonEncoded -AsPlainText -Force
-    Set-AzureKeyVaultSecret -VaultName \$vaultName -Name \$secretName -SecretValue \$secret
+[System.Convert\]::ToBase64String(\$fileContentBytes) $jsonObject = @" { "data": "\$filecontentencoded", "dataType" :"pfx", "password": "\$certPassword" } @$jsonObjectBytes = [System.Text.Encoding\]::UTF8.GetBytes(\$jsonObject) $jsonEncoded = \[System.Convert\]::ToBase64String(\$jsonObjectBytes) Switch-AzureMode -Name AzureResourceManager New-AzureResourceGroup -Name \$resourceGroup -Location \$location New-AzureKeyVault -VaultName \$vaultName -ResourceGroupName $resourceGroup -Location \$location -sku standard -EnabledForDeployment $secret = ConvertTo-SecureString -String \$jsonEncoded -AsPlainText -Force Set-AzureKeyVaultSecret -VaultName \$vaultName -Name \$secretName -SecretValue \$secret
 
 The first part of the script reads the .pfx file, and then stores it as a JSON object with the file content base64 encoded. Then the JSON object is also base64 encoded.
 
@@ -151,6 +141,9 @@ As an added benefit, you now have one convenient place in Key Vault to manage al
 
 [Allow an application to access Key Vault](azure-stack-kv-sample-app.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

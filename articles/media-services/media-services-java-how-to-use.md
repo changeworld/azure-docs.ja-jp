@@ -1,40 +1,44 @@
 ---
-title: Java を使用したオンデマンド コンテンツ配信の概要 | Microsoft Docs
-description: Azure Media Services を使用して、リソースのエンコード、暗号化、ストリーミングなど、基本的なタスクを実行する方法について説明します。
+title: "Java を使用したオンデマンド コンテンツ配信の概要 | Microsoft Docs"
+description: "Azure Media Services を使用して、リソースのエンコード、暗号化、ストリーミングなど、基本的なタスクを実行する方法について説明します。"
 services: media-services
 documentationcenter: java
-author: rmcmurray
-manager: wpickett
-editor: jimbe
-
+author: juliako
+manager: erikre
+editor: 
+ms.assetid: b884bd61-dbdb-42ea-b170-8fb02e7fded7
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: java
 ms.topic: get-started-article
-ms.date: 08/17/2016
-ms.author: robmcm
+ms.date: 10/19/2016
+ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
+
 
 ---
-# Java を使用したオンデマンド コンテンツ配信の概要
+# <a name="get-started-with-delivering-content-on-demand-using-java"></a>Java を使用したオンデマンド コンテンツ配信の概要
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-## Media Services 用の Azure アカウントの設定
-Media Services アカウントを設定するには、Azure クラシック ポータルを使用します。「[メディア サービス アカウントの作成方法](media-services-create-account.md)」を参照してください。Azure クラシック ポータルでアカウントを作成すると、Media Services 開発用にコンピューターをセットアップできるようになります。
+## <a name="setting-up-an-azure-account-for-media-services"></a>Media Services 用の Azure アカウントの設定
+Media Services アカウントを設定するには、Azure クラシック ポータルを使用します。 「[メディア サービス アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。 Azure クラシック ポータルでアカウントを作成すると、Media Services 開発用にコンピューターをセットアップできるようになります。
 
-## Media Services 開発のための設定
+## <a name="setting-up-for-media-services-development"></a>Media Services 開発のための設定
 このセクションでは、Media Services SDK for Java を使用したメディア サービス開発の大まかな前提条件について説明します。
 
-### 前提条件
-* 新規または既存の Azure サブスクリプションで作成した Media Services アカウント。「[メディア サービス アカウントの作成方法](media-services-create-account.md)」を参照してください。
-* Azure Libraries for Java。これは [Azure Java デベロッパー センター][Azure Java デベロッパー センター]からインストールできます。
+### <a name="prerequisites"></a>前提条件
+* 新規または既存の Azure サブスクリプションで作成した Media Services アカウント。 「[メディア サービス アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
+* Azure Libraries for Java。[Azure Java デベロッパー センター][Azure Java デベロッパー センター]からインストールできます。
 
-## 方法: Java で Media Services を使用する
+## <a name="how-to-use-media-services-with-java"></a>方法: Java で Media Services を使用する
 次のコードは、資産を作成してメディア ファイルを資産にアップロードし、資産の変換タスクを伴うジョブを実行して、ビデオをストリーミングするためのロケーターを作成する方法を示しています。
 
-このコードを使用する前に、Media Services アカウントを設定する必要があります。アカウントの設定方法については、「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。
+このコードを使用する前に、Media Services アカウントを設定する必要があります。 アカウントの設定方法については、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
 
-変数 "clientId" と "clientSecret" は、実際の値に置き換えてください。また、このコードは、ローカル保存されているファイルに依存しています。実際に使用するファイルを用意する必要があります。
+変数 "clientId" と "clientSecret" は、実際の値に置き換えてください。 また、このコードは、ローカル保存されているファイルに依存しています。 実際に使用するファイルを用意する必要があります。
 
     import java.io.*;
     import java.security.NoSuchAlgorithmException;
@@ -63,7 +67,6 @@ Media Services アカウントを設定するには、Azure クラシック ポ�
     import com.microsoft.windowsazure.services.media.models.MediaProcessor;
     import com.microsoft.windowsazure.services.media.models.MediaProcessorInfo;
     import com.microsoft.windowsazure.services.media.models.Task;
-
 
     public class HelloMediaServices
     {
@@ -178,8 +181,8 @@ Media Services アカウントを設定するには、Azure クラシック ポ�
             // Create a task with the specified Media Processor
             String outputAssetName = String.format("%s as %s", assetToEncode.getName(), encodingPreset);
             String taskXml = "<taskBody><inputAsset>JobInputAsset(0)</inputAsset>"
-                    + "<outputAsset assetCreationOptions="0"" // AssetCreationOptions.None
-                    + " assetName="" + outputAssetName + "">JobOutputAsset(0)</outputAsset></taskBody>";
+                    + "<outputAsset assetCreationOptions=\"0\"" // AssetCreationOptions.None
+                    + " assetName=\"" + outputAssetName + "\">JobOutputAsset(0)</outputAsset></taskBody>";
 
             Task.CreateBatchOperation task = Task.create(mediaProcessor.getId(), taskXml)
                     .setConfiguration(encodingPreset).setName("Encoding");
@@ -250,21 +253,23 @@ Media Services アカウントを設定するには、Azure クラシック ポ�
     }
 
 
-## Media Services のラーニング パス
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## フィードバックの提供
+## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## その他のリソース
+## <a name="additional-resources"></a>その他のリソース
 Media Services に関する Javadoc ドキュメントについては、[Azure Libraries for Java のドキュメント][Azure Libraries for Java のドキュメント]を参照してください。
 
 <!-- URLs. -->
 
 [Azure Java デベロッパー センター]: http://azure.microsoft.com/develop/java/
 [Azure Libraries for Java のドキュメント]: http://dl.windowsazure.com/javadoc/
-[Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
+[Media Services クライアント開発]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
 
 
 
-<!---HONumber=AcomDC_0824_2016-->
+<!--HONumber=Nov16_HO2-->
+
+

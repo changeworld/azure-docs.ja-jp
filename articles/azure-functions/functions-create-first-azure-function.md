@@ -1,13 +1,13 @@
 ---
-title: Create your first Azure Function | Microsoft Docs
-description: Build your first Azure Function, a serverless application, in less than two minutes.
+title: "初めての Azure 関数の作成 | Microsoft Docs"
+description: "初めての Azure 関数、つまりサーバー不要のアプリケーションを 2 分以内に作成します。"
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 4a1669e7-233e-4ea2-9b83-b8624f2dbe59
 ms.service: functions
 ms.devlang: multiple
 ms.topic: hero-article
@@ -15,56 +15,63 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/08/2016
 ms.author: glenga
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e446766c0f3d19a8cce585d708e8e7a809593408
+
 
 ---
-# <a name="create-your-first-azure-function"></a>Create your first Azure Function
+# <a name="create-your-first-azure-function"></a>初めての Azure 関数の作成
 ## <a name="overview"></a>Overview
-Azure Functions is an event-driven, compute-on-demand experience that extends the existing Azure application platform with capabilities to implement code triggered by events occurring in other Azure services, SaaS products, and on-premises systems. With Azure Functions, your applications scale based on demand and you pay only for the resources you consume. Azure Functions enables you to create scheduled or triggered units of code implemented in a variety of programming languages. To learn more about Azure Functions, see the [Azure Functions Overview](functions-overview.md).
+Azure Functions は、他の Azure サービス、SaaS 製品、オンプレミス システムで発生するイベントによってトリガーされるコードを実装する機能により、既存の Azure アプリケーション プラットフォームを拡張する、イベント ドリブンのオンデマンド コンピューティング エクスペリエンスを提供します。 Azure Functions を利用すれば、アプリケーションを必要に応じてスケールでき、消費したリソースに対して料金を支払うだけで済みます。 Azure Functions では、スケジュールやトリガーが設定されたコード ユニットを、さまざまなプログラミング言語で作成して実装できます。 Azure Functions の詳細については、「 [Azure Functions の概要](functions-overview.md)」をご覧ください。
 
-This topic shows you how to use the Azure Functions quickstart in the portal to create a simple "hello world"  Node.js function that is invoked by an HTTP-trigger. You can also watch a short video to see how these steps are performed in the portal.
+このトピックでは、ポータルで Azure Functions のクイック スタートを使用して、HTTP トリガーによって呼び出される簡単な "hello world" Node.js 関数を作成する方法について説明します。 また、ポータルでこれらの手順を実行する方法についての短いビデオも視聴できます。
 
-## <a name="watch-the-video"></a>Watch the video
-The following video show how to perform the basic steps in this tutorial. 
+## <a name="watch-the-video"></a>ビデオを見る
+次のビデオでは、このチュートリアルの基本的な手順を実行する方法について説明します。 
 
 > [!VIDEO https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-your-first-Azure-Function-simple/player]
 > 
 > 
 
-## <a name="create-a-function-from-the-quickstart"></a>Create a function from the quickstart
-A function app hosts the execution of your functions in Azure. Follow these steps to create a new function app as well as the new function. The new function app is created with a default configuration. For an example of how to explicitly create your function app, see [the other Azure Functions quickstart tutorial](functions-create-first-azure-function-azure-portal.md).
+## <a name="create-a-function-from-the-quickstart"></a>クイック スタートから関数を作成する
+関数アプリは Azure での関数の実行をホストします。 次の手順に従って、新しい関数アプリと新しい関数を作成してください。 新しい Function App アプリは、既定の構成で作成されます。 Function App を明示的に作成する方法の例については、 [別の Azure Functions クイック スタート チュートリアル](functions-create-first-azure-function-azure-portal.md)を参照してください。
 
-Before you can create your first function, you need to have an active Azure account. If you don't already have an Azure account, [free accounts are available](https://azure.microsoft.com/free/).
+初めての関数を作成するには、アクティブな Azure アカウントを用意しておく必要があります。 Azure アカウントがない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。
 
-1. Go to the [Azure Functions portal](https://functions.azure.com/signin) and sign-in with your Azure account.
-2. Type a unique **Name** for your new function app or accept the generated one, select your preferred **Region**, then click **Create + get started**. 
-3. In the **Quickstart** tab, click **WebHook + API** and **JavaScript**, then click **Create a function**. A new predefined Node.js function is created. 
+1. [Azure Functions ポータル](https://functions.azure.com/signin) に移動し、Azure アカウントでサインインします。
+2. 新しい関数アプリの一意の**名前**を入力するか、生成された名前をそのまま使用し、希望の**リージョン**を選択して、**[作成 + 開始]** をクリックします。 
+3. **[クイック スタート]** タブで、**[WebHook + API]**、**[JavaScript]**、**[関数を作成する]** の順にクリックします。 新しい定義済みの Node.js 関数が作成されます。 
    
     ![](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
-4. (Optional) At this point in the quickstart, you can choose to take a quick tour of Azure Functions features in the portal.   Once you have completed or skipped the tour, you can test your new function by using the HTTP trigger.
+4. (オプション) クイック スタートのこの時点で、ポータルの Azure Functions 機能のクイック ツアーを開始するかどうか選択することができます。    ツアーを完了するかスキップしたら、HTTP トリガーを使用して新しい関数をテストできます。
 
-## <a name="test-the-function"></a>Test the function
-Since the Azure Functions quickstarts contain functional code, you can immediately test your new function.
+## <a name="test-the-function"></a>関数をテストする
+Azure Functions クイック スタートには機能コードが含まれているため、新しい関数をすぐにテストできます。
 
-1. In the **Develop** tab, review the **Code** window and notice that this Node.js code expects an HTTP request with a *name* value passed either in the message body or in a query string. When the function runs, this value is returned in the response message.
+1. **[開発]** タブで **[コード]** ウィンドウを確認すると、この Node.js コードでは、HTTP 要求で *name* 値をメッセージ本文またはクエリ文字列で渡す必要があることがわかります。 関数を実行すると、応答メッセージでこの値が返されます。
    
     ![](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
-2. Scroll down to the **Request body** text box, change the value of the *name* property to your name, and click **Run**. You will see that execution is triggered by a test HTTP request, information is written to the streaming logs, and the "hello" response is displayed in the **Output**. 
-3. To trigger execution of the same function from another browser window or tab, copy the **Function URL** value from the **Develop** tab and paste it in a browser address bar, then append the query string value `&name=yourname` and press enter. The same information is written to the logs and the browser displays the "hello" response as before.
+2. 下にスクロールして **[要求本文]** ボックスを表示し、*name* プロパティの値を自分の名前に変更して、**[実行]** をクリックします。 テスト HTTP 要求によって実行がトリガーされ、ストリーミング ログに情報が書き込まれて、"hello" という応答が **[Output]**(出力) に表示されます。 
+3. 同じ関数の実行を別のブラウザー ウィンドウやタブからトリガーするには、**[開発]** タブから **[関数の URL]** の値をコピーしてブラウザーのアドレス バーに貼り付け、クエリ文字列値 `&name=yourname` を追加して Enter キーを押します。 同じ情報がログに書き込まれ、ブラウザーに "hello" という応答が前と同じように表示されます。
 
-## <a name="next-steps"></a>Next steps
-This quickstart demonstrates a very simple execution of a basic HTTP-triggered function. See these topics for more information about leveraging the power of Azure Functions in your apps.
+## <a name="next-steps"></a>次のステップ
+このクイック スタートでは、基本的な HTTP トリガーによる関数を非常に簡単な方法で実行します。 Azure Functions の機能をアプリで活用する方法の詳細については、以下のトピックを参照してください。
 
-* [Azure Functions developer reference](functions-reference.md)  
-  Programmer reference for coding functions and defining triggers and bindings.
-* [Testing Azure Functions](functions-test-a-function.md)  
-  Describes various tools and techniques for testing your functions.
-* [How to scale Azure Functions](functions-scale.md)  
-  Discusses service plans available with Azure Functions, including the Dynamic service plan, and how to choose the right plan. 
-* [What is Azure App Service?](../app-service/app-service-value-prop-what-is.md)  
-  Azure Functions leverages the Azure App Service platform for core functionality like deployments, environment variables, and diagnostics. 
+* [Azure Functions 開発者向けリファレンス](functions-reference.md)  
+   関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
+* [Azure Functions のテスト](functions-test-a-function.md)  
+   関数をテストするための各種ツールと手法について説明します。
+* [Azure Functions のスケーリング方法](functions-scale.md)  
+   Azure Functions で利用できるサービス プラン (動的サービス プランなど) と、適切なプランを選択する方法について説明します。 
+* [Azure App Service とは](../app-service/app-service-value-prop-what-is.md)  
+   Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service プラットフォームを活用しています。 
 
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
-<!--HONumber=Nov16_HO1-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

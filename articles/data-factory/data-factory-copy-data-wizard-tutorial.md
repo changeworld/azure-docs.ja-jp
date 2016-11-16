@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: コピー ウィザードを使用してパイプラインを作成する | Microsoft Docs'
-description: このチュートリアルでは、Data Factory でサポートされているコピー ウィザードを使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。
+title: "チュートリアル: コピー ウィザードを使用してパイプラインを作成する | Microsoft Docs"
+description: "このチュートリアルでは、Data Factory でサポートされているコピー ウィザードを使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: b87afb8e-53b7-4e1b-905b-0343dd096198
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d47c43201b15a3452871d662038a1246ea403f02
+
 
 ---
-# <a name="tutorial:-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>チュートリアル: コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>チュートリアル: コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
@@ -53,21 +57,23 @@ Azure Data Factory の**コピー ウィザード**を使用すると、デー�
       > データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
       > 
       > 
-3. Azure **サブスクリプション**を選択します。
-4. リソース グループについて、次の手順のいずれかを行います。 1. **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
-5. **[新規作成]** を選択し、リソース グループの名前を入力します。
-   
-            Some of the steps in this tutorial assume that you use the name: **ADFTutorialResourceGroup** for the resource group. To learn about resource groups, see [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md).
-   1. データ ファクトリの**場所**を選択します。
-   2. ブレードの一番下にある **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。  
-   3. **[作成]**をクリックします。
+   2. Azure **サブスクリプション**を選択します。
+   3. リソース グループについて、次の手順のいずれかを行います。 
       
-       ![[新しいデータ ファクトリ] ブレード](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)          
-6. 作成が完了すると、次の図に示すような **[Data Factory]** ブレードが表示されます。
+      1. **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
+      2. **[新規作成]** を選択し、リソース グループの名前を入力します。
+         
+          このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
+   4. データ ファクトリの**場所**を選択します。
+   5. ブレードの一番下にある **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。  
+   6. **[作成]**をクリックします。
+      
+       ![[新しいデータ ファクトリ] ブレード](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)            
+3. 作成が完了すると、次の図に示すような **[Data Factory]** ブレードが表示されます。
    
    ![データ ファクトリのホーム ページ](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
-## <a name="launch-and-use-copy-wizard"></a>コピー ウィザードの起動と使用
+## <a name="launch-copy-wizard"></a>コピー ウィザードの起動
 1. Data Factory のホーム ページで **[データのコピー]** タイルをクリックして、**コピー ウィザード**を起動します。 
    
    > [!NOTE]
@@ -154,6 +160,9 @@ Azure Data Factory の**コピー ウィザード**を使用すると、デー�
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) |この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

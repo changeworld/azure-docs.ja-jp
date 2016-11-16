@@ -1,11 +1,11 @@
 ---
-title: Application Insights SDK を追加して Node.js アプリを監視する | Microsoft Docs
-description: オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。
+title: "Application Insights SDK を追加して Node.js アプリを監視する | Microsoft Docs"
+description: "オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。"
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: alancameronwills
 manager: douge
-
+ms.assetid: 2ec7f809-5e1a-41cf-9fcd-d0ed4bebd08c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
@@ -13,41 +13,45 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: fb80168b38be88ab18952569e6b6f9bcb53d473a
+
 
 ---
-# Application Insights SDK を追加して Node.js アプリを監視する
+# <a name="add-application-insights-sdk-to-monitor-your-nodejs-app"></a>Application Insights SDK を追加して Node.js アプリを監視する
 *Application Insights はプレビュー段階です。*
 
-[Visual Studio Application Insights](app-insights-overview.md) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断](app-insights-detect-triage-diagnose.md)、[アプリの使用方法の把握](app-insights-overview-usage.md)に役立ちます。Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します。
+[Visual Studio Application Insights](app-insights-overview.md) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断](app-insights-detect-triage-diagnose.md)、[アプリの使用方法の把握](app-insights-overview-usage.md)に役立ちます。 Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します。
 
-SDK では、受信 HTTP 要求レートと応答、パフォーマンス カウンター (CPU、メモリ、RPS)、ハンドルされない例外の自動収集機能が提供されます。さらに、カスタム呼び出しを追加して、依存関係、メトリック、またはその他のイベントを追跡することができます。
+SDK では、受信 HTTP 要求レートと応答、パフォーマンス カウンター (CPU、メモリ、RPS)、ハンドルされない例外の自動収集機能が提供されます。 さらに、カスタム呼び出しを追加して、依存関係、メトリック、またはその他のイベントを追跡することができます。
 
-![Example performance monitoring charts](./media/app-insights-windows-services/10-perf.png)
+![Example performance monitoring charts](./media/app-insights-nodejs/10-perf.png)
 
-#### 開始する前に
+#### <a name="before-you-start"></a>開始する前に
 必要なもの:
 
-* Visual Studio 2013 以降より新しいバージョンが適しています。
-* [Microsoft Azure](http://azure.com) のサブスクリプションチームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
+* Visual Studio 2013 以降 より新しいバージョンが適しています。
+* [Microsoft Azure](http://azure.com) サブスクリプション。 チームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
 
-## <a name="add"></a>Application Insights リソースの作成
-[Azure ポータル][portal]にサインインし、Application Insights の新しいリソースを作成します。Azure の[リソース][roles]は、サービスのインスタンスです。このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
+## <a name="a-nameaddacreate-an-application-insights-resource"></a><a name="add"></a>Application Insights リソースの作成
+[Azure Portal][portal] にサインインし、Application Insights の新しいリソースを作成します。 Azure の[リソース][roles]は、サービスのインスタンスです。 このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
 
-![[新規]、[Application Insights] の順にクリックする](./media/app-insights-windows-services/01-new-asp.png)
+![[新規]、[Application Insights] の順にクリックする](./media/app-insights-nodejs/01-new-asp.png)
 
-アプリケーションの種類として [その他] を選択します。アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと[メトリックス エクスプローラー][metrics]に表示されるプロパティが設定されます。
+アプリケーションの種類として [その他] を選択します。 アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと[メトリックス エクスプローラー][metrics]に表示されるプロパティが設定されます。
 
-#### インストルメンテーション キーのコピー
+#### <a name="copy-the-instrumentation-key"></a>インストルメンテーション キーのコピー
 これはリソースを識別するキーです。データをリソースに送信するために SDK の後の手順でインストールします。
 
-![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-windows-services/02-props-asp.png)
+![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-nodejs/02-props-asp.png)
 
-## <a name="sdk"></a>アプリケーションに SDK をインストールする
+## <a name="a-namesdka-install-the-sdk-in-your-application"></a><a name="sdk"></a> アプリケーションに SDK をインストールする
 ```
 npm install applicationinsights --save
 ```
 
-## 使用法
+## <a name="usage"></a>使用法
 これにより、要求の監視、ハンドルされない例外の追跡、システム パフォーマンスの監視 (CPU/Memory/RPS) が有効になります。
 
 ```javascript
@@ -56,42 +60,42 @@ var appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>").start();
 ```
 
-インストルメンテーション キーは、APPINSIGHTS\_INSTRUMENTATIONKEY 環境変数でも設定できます。この設定が済むと、`appInsights.setup()` または `appInsights.getClient()` を呼び出すときに引数が不要になります。
+インストルメンテーション キーは、APPINSIGHTS_INSTRUMENTATIONKEY 環境変数でも設定できます。 この設定が済むと、`appInsights.setup()` または `appInsights.getClient()` を呼び出すときに引数が不要になります。
 
 インストルメンテーション キーを空でない文字列に設定することで、テレメトリを送信せずに SDK を試してみることができます。
 
-## <a name="run"></a> プロジェクトの実行
+## <a name="a-nameruna-run-your-project"></a><a name="run"></a> プロジェクトの実行
 アプリケーションを実行して動作を確認します。さまざまなページを開き、テレメトリをいくつか生成します。
 
-## <a name="monitor"></a> 利用統計情報を表示する
-[Azure ポータル](https://portal.azure.com)に戻り、Application Insights のリソースを参照します。
+## <a name="a-namemonitora-view-your-telemetry"></a><a name="monitor"></a> 利用統計情報を表示する
+[Azure ポータル](https://portal.azure.com) に戻り、Application Insights のリソースを参照します。
 
-[概要] ページでデータを探します。最初、1 つまたは 2 つのポイントだけが表示されます。For example:
+[概要] ページでデータを探します。 最初、1 つまたは 2 つのポイントだけが表示されます。 次に例を示します。
 
-![クリックしてより多くのデータを表示する](./media/app-insights-windows-services/12-first-perf.png)
+![クリックしてより多くのデータを表示する](./media/app-insights-nodejs/12-first-perf.png)
 
-任意のグラフをクリックして、より詳細なメトリックを表示します。[メトリックの詳細についてはこちらをご覧ください。][perf]
+任意のグラフをクリックして、より詳細なメトリックを表示します。 メトリックの詳細については、[こちら][perf]をご覧ください。
 
-#### データが表示されない場合
+#### <a name="no-data"></a>データが表示されない場合
 * アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
-* [[検索]](app-insights-diagnostic-search.md) タイルを開き、個々のイベントを表示します。メトリック パイプラインを経由すると、イベントの取得に少し時間がかかる場合があります。
-* 数秒待機してから **[最新の情報に更新]** をクリックします。グラフは周期的に自動で更新されますが、データの表示を待機している場合、手動で更新することもできます。
-* [トラブルシューティング][qna]に関するページを参照します。
+* [[検索]](app-insights-diagnostic-search.md) タイルを開き、個々のイベントを表示します。 メトリック パイプラインを経由すると、イベントの取得に少し時間がかかる場合があります。
+* 数秒待機してから **[最新の情報に更新]**をクリックします。 グラフは周期的に自動で更新されますが、データの表示を待機している場合、手動で更新することもできます。
+* [トラブルシューティング][qna]に関するページを参照してください。
 
-## アプリケーションの発行
+## <a name="publish-your-app"></a>アプリケーションの発行
 ここで、アプリケーションを IIS または Azure にデプロイし、データ累積を確認します。
 
-#### サーバーに発行した後でデータはありませんか。
+#### <a name="no-data-after-you-publish-to-your-server"></a>サーバーに発行した後でデータはありませんか。
 サーバーのファイアウォールで発信トラフィック用のこれらのポートを開きます。
 
 * `dc.services.visualstudio.com:443`
 * `f5.services.visualstudio.com:443`
 
-#### ビルド サーバーで問題が発生した場合
+#### <a name="trouble-on-your-build-server"></a>ビルド サーバーで問題が発生した場合
 [このトラブルシューティング項目](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。
 
-## カスタマイズした使用状況
-### 自動収集の無効化
+## <a name="customized-usage"></a>カスタマイズした使用状況
+### <a name="disabling-autocollection"></a>自動収集の無効化
 ```javascript
 import appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>")
@@ -102,7 +106,7 @@ appInsights.setup("<instrumentation_key>")
     .start();
 ```
 
-### カスタム監視
+### <a name="custom-monitoring"></a>カスタム監視
 ```javascript
 import appInsights = require("applicationinsights");
 var client = appInsights.getClient();
@@ -115,7 +119,7 @@ client.trackTrace("trace message");
 
 [テレメトリ API の詳細については、こちらを参照してください](app-insights-api-custom-events-metrics.md)。
 
-### 複数のインストルメンテーション キーの使用
+### <a name="using-multiple-instrumentation-keys"></a>複数のインストルメンテーション キーの使用
 ```javascript
 import appInsights = require("applicationinsights");
 
@@ -127,8 +131,8 @@ var otherClient = appInsights.getClient("<other_instrumentation_key>");
 otherClient.trackEvent("custom event");
 ```
 
-## 例
-### 依存関係の追跡
+## <a name="examples"></a>例
+### <a name="tracking-dependency"></a>依存関係の追跡
 ```javascript
 import appInsights = require("applicationinsights");
 var client = appInsights.getClient();
@@ -144,7 +148,7 @@ client.trackDependency("dependency name", "command name", elapsedTime, success);
 
 
 
-### すべての "GET" 要求の手動要求トラッキング
+### <a name="manual-request-tracking-of-all-get-requests"></a>すべての "GET" 要求の手動要求トラッキング
 ```javascript
 var http = require("http");
 var appInsights = require("applicationinsights");
@@ -181,7 +185,7 @@ server.on("listening", () => {
 });
 ```
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [ポータル内でテレメトリを監視する](app-insights-dashboards.md)
 * [テレメトリに関する分析クエリを記述する](app-insights-analytics-tour.md)
 
@@ -194,4 +198,8 @@ server.on("listening", () => {
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

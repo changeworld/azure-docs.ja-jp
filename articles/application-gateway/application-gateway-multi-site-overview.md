@@ -1,12 +1,12 @@
 ---
-title: Application Gateway での複数のサイトのホスト | Microsoft Docs
-description: このページでは、Application Gateway による複数サイトのサポートの概要を示します。
+title: "Application Gateway での複数のサイトのホスト | Microsoft Docs"
+description: "このページでは、Application Gateway による複数サイトのサポートの概要を示します。"
 documentationcenter: na
 services: application-gateway
 author: amsriva
 manager: rossort
 editor: amsriva
-
+ms.assetid: 49993fd2-87e5-4a66-b386-8d22056a616d
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2016
 ms.author: amsriva
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 85fc1315f32811873c577fe75d88eb08a2bbac26
+
 
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway の複数サイトのホスト
@@ -25,7 +29,7 @@ http://contoso.com に対する要求は ContosoServerPool にルーティング
 
 同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、http://blog.contoso.com とhttp://app.contoso.com が 1 つのアプリケーション ゲートウェイ デプロイでホストされるという局面が考えられます。
 
-## <a name="host-headers-and-server-name-indication-(sni)"></a>ホスト ヘッダーと Server Name Indication (SNI)
+## <a name="host-headers-and-server-name-indication-sni"></a>ホスト ヘッダーと Server Name Indication (SNI)
 同じインフラストラクチャで複数サイトのホストを有効にするための一般的な方法は 3 つあります。
 
 1. 複数の Web アプリケーションをそれぞれ、一意の IP アドレスでホストする。
@@ -117,6 +121,9 @@ http://contoso.com に対する要求は ContosoServerPool にルーティング
 ## <a name="next-steps"></a>次のステップ
 複数サイトのホストについて学習した後に、 [複数サイトのホストを使用するアプリケーション ゲートウェイの作成](application-gateway-create-multisite-azureresourcemanager-powershell.md) に関するページにアクセスして、複数の Web アプリケーションをサポートする機能を備えたアプリケーション ゲートウェイを作成してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

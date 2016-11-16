@@ -10,7 +10,7 @@
    * **名前**: 名前 of your *アプリケーション コレクション* 
    * **プラットフォーム**: クリックすると開く [プラットフォーム] ブレードでアプリのターゲット プラットフォームを選択します。 例: アプリを iOS と Android の両方に対応させる場合は、両方のプラットフォームを選択すると、このアプリ コレクションの下に 2 つのアプリが作成されます。 
      
-     ![](./media/mobile-engagement-create-app-in-portal-new/choose-platform.png)
+      ![](./media/mobile-engagement-create-app-in-portal-new/choose-platform.png)
    * **サブスクリプション**: Azure サブスクリプションを選択します。 
    * **リソース グループ**: この Azure リソース (Mobile Engagement アプリ コレクション) を追加する Azure リソース グループを選択します。 新しいリソース グループを作成することもできます。  
    * **場所**: このアプリ コレクションとアプリについてのデータが格納されるリージョン。
@@ -30,6 +30,8 @@
    
     ![](./media/mobile-engagement-create-app-in-portal-new/app-connection-info.png)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

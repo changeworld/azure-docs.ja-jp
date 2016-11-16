@@ -1,22 +1,26 @@
 ---
-title: 'チュートリアル: コピー アクティビティがあるパイプラインを .NET API で作成する | Microsoft Docs'
-description: このチュートリアルでは、.NET API を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。
+title: "チュートリアル: コピー アクティビティがあるパイプラインを .NET API で作成する | Microsoft Docs"
+description: "このチュートリアルでは、.NET API を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 58fc4007-b46d-4c8e-a279-cb9e479b3e2b
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/16/2016
+ms.date: 10/27/2016
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 629ff68b11df0d17629ca101e5a80a396cfd0fb9
+
 
 ---
-# <a name="tutorial:-create-a-pipeline-with-copy-activity-using-.net-api"></a>チュートリアル: コピー アクティビティがあるパイプラインを .NET API で作成する
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>チュートリアル: コピー アクティビティがあるパイプラインを .NET API で作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
@@ -41,7 +45,7 @@ ms.author: spelluru
 ## <a name="prerequisites"></a>前提条件
 * [チュートリアルの概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) のページに目を通して、チュートリアルの概要を理解し、 **前提条件** の手順を完了します。 
 * Visual Studio 2012 または 2013 または 2015
-* [Azure .NET SDK](http://azure.microsoft.com/downloads/)
+*  [Azure .NET SDK](http://azure.microsoft.com/downloads/)
 * Azure PowerShell。 「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md) 」に記載されている手順に従って、コンピューターに Azure PowerShell をインストールします。 Azure PowerShell を使用して、Azure Active Directory アプリケーションを作成します。
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
@@ -105,25 +109,29 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
    6. [場所] で **[C:\ADFGetStarted]** を選択します。
    7. **[OK]** をクリックしてプロジェクトを作成します。
 2. **[ツール]** をクリックし、**[NuGet パッケージ マネージャー]** をポイントして、**[パッケージ マネージャー コンソール]** をクリックします。
-3. **[パッケージ マネージャー コンソール]**で、次のコマンドを 1 つずつ実行します。 
-   
-       Install-Package Microsoft.Azure.Management.DataFactories
-       Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213
+3. **パッケージ マネージャー コンソール**で、次の手順を実行します。 
+   1. 次のコマンドを実行して、Data Factory パッケージをインストールします: `Install-Package Microsoft.Azure.Management.DataFactories`        
+   2. 次のコマンドを実行して、Azure Active Directory パッケージをインストールします (コードで Active Directory API を使用します): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. 次の **appSetttings** セクションを **App.config** ファイルに追加します。 これらの設定は、ヘルパー メソッド **GetAuthorizationHeader**によって使用されます。 
    
     **&lt;Application ID&gt;**、**&lt;Password&gt;**、**&lt;Subscription ID&gt;**、**&lt;tenant ID&gt;** の値を実際の値に置き換えます。 
    
-        <appSettings>
-            <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
-            <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
-            <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
+        <?xml version="1.0" encoding="utf-8" ?>
+        <configuration>
+            <startup> 
+                <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
+            </startup>
+            <appSettings>
+                <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
+                <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
+                <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
    
-            <!-- Replace the following values with your own -->
-            <add key="ApplicationId" value="<Application ID>" />
-            <add key="Password" value="<Password>" />    
-            <add key="SubscriptionId" value= "Subscription ID" />
-            <add key="ActiveDirectoryTenantId" value="tenant ID" />
-        </appSettings>
+                <add key="ApplicationId" value="your application ID" />
+                <add key="Password" value="Password you used while creating the AAD application" />
+                <add key="SubscriptionId" value= "Subscription ID" />
+                <add key="ActiveDirectoryTenantId" value="Tenant ID" />
+            </appSettings>
+        </configuration>
 5. 次の **using** ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
    
         using System.Threading;
@@ -345,7 +353,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
                            },
                        }
                    }
-               }); 
+               });    
 2. 次のコードを **Main** メソッドに追加して、出力データセットのデータ スライスのステータスを取得します。 この例で予想されるスライスのみが存在します。   
    
            // Pulling status within a timeout threshold
@@ -453,12 +461,15 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
    * リンクされたサービス: **LinkedService_AzureStorage** 
    * データセット: **DatasetBlobSource** と **DatasetBlobDestination**
    * パイプライン: **PipelineBlobSample** 
-10. **adftutorial** コンテナーの "**apifactoryoutput**" フォルダーに出力ファイルが作成されることを確認します。
+10. 指定した Azure SQL データベースの "**emp**" テーブルに 2 つの従業員レコードが作成されることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 * [データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に目を通してください。この記事には、このチュートリアルで使用したコピー アクティビティの詳細が記載されています。
 * Data Factory .NET SDK の詳細については、 [Data Factory .NET API リファレンス](https://msdn.microsoft.com/library/mt415893.aspx) のページを参照してください。 この記事では、すべての Data Factory .NET API を取り上げているわけではありません。 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

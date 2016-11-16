@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Linux Virtual Machine Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 8125aca5030c869476499a07b17c8e21fcb76ef6
+ms.openlocfilehash: e5640566e8781441713ca5491abee1d9334b3970
 
-Use Azure Virtual Machines to create and run Linux virtual machines on Azure's compute, networking, and storage infrastructure.  Scale to thousands of machines for internet-wide deployments, or run one for a few minutes to crunch some serious numbers:  you'll get both speed and consistency.
+---
+#<a name="linux-virtual-machine-documentation"></a>Linux 仮想マシンのドキュメント
+
+Azure Virtual Machines により、Azure のコンピューティング、ネットワーク、ストレージ インフラストラクチャ上で Linux 仮想マシンを作成して実行することができます。  数千台のマシンに規模を拡大してインターネット全体にデプロイすることも、1 台のマシンを実行してある程度重要な計算を数分間で行うことも可能です。どちらの場合でも、高速かつ一貫性が保たれます。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -13,11 +17,11 @@ Use Azure Virtual Machines to create and run Linux virtual machines on Azure's c
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/virtualmachine.svg" alt="" />
+                            <img src="media/index/virtual-machine.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Linux Virtual Machines</h3>
+                        <h3>Linux 仮想マシンについて</h3>
                     </div>
                 </div>
             </div>
@@ -31,11 +35,11 @@ Use Azure Virtual Machines to create and run Linux virtual machines on Azure's c
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/virtualmachine.svg" alt="" />
+                            <img src="media/index/video-library.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Virtual Machines Video Library</h3>
+                        <h3>Virtual Machines のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -49,11 +53,11 @@ Use Azure Virtual Machines to create and run Linux virtual machines on Azure's c
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/virtualmachine.svg" alt="" />
+                            <img src="media/index/portal.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a VM using the Portal</h3>
+                        <h3>ポータルを使用して VM を作成する</h3>
                     </div>
                 </div>
             </div>
@@ -67,11 +71,11 @@ Use Azure Virtual Machines to create and run Linux virtual machines on Azure's c
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/virtualmachine.svg" alt="" />
+                            <img src="media/index/tutorial.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create SSH keys on Linux and Mac for Linux VMs in Azure</h3>
+                        <h3>Azure の Linux VM と Mac for Linux VM に SSH キーを作成する</h3>
                     </div>
                 </div>
             </div>
@@ -85,11 +89,11 @@ Use Azure Virtual Machines to create and run Linux virtual machines on Azure's c
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/virtualmachine.svg" alt="" />
+                            <img src="media/index/cli.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Install the Azure CLI</h3>
+                        <h3>Azure CLI のインストール</h3>
                     </div>
                 </div>
             </div>
@@ -103,11 +107,11 @@ Use Azure Virtual Machines to create and run Linux virtual machines on Azure's c
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/virtualmachine.svg" alt="" />
+                            <img src="media/index/cli.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Linux VM on Azure by using the CLI</h3>
+                        <h3>CLI を使用した Azure での Linux VM の作成</h3>
                     </div>
                 </div>
             </div>
@@ -118,31 +122,36 @@ Use Azure Virtual Machines to create and run Linux virtual machines on Azure's c
 
 ---
 
-##Reference
+##<a name="reference"></a>リファレンス
 
-###Azure CLI
+###<a name="azure-cli"></a>Azure CLI
 [Azure CLI](/cli/azure/vm)
 
-###.NET
-[Managed Reference API Reference](/dotnet/api/)
+###<a name="net"></a>.NET
+[管理リファレンス API のリファレンス](/dotnet/api/)
 
-###Java SDK
+###<a name="java-sdk"></a>Java SDK
 [Java](/java/api/)
 
-###REST (Compute)
-[Compute REST API Reference](/rest/api/compute)
+###<a name="rest-compute"></a>REST (コンピューティング)
+[Compute REST API リファレンス](/rest/api/compute)
 
-###REST (Network)
-[Network REST API Reference](https://msdn.microsoft.com/library/mt163658.aspx)
+###<a name="rest-network"></a>REST (ネットワーク)
+[Network REST API リファレンス](https://msdn.microsoft.com/library/mt163658.aspx)
 
-###REST (Storage)
-[Storage REST API Reference](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+###<a name="rest-storage"></a>REST (ストレージ)
+[Storage REST API リファレンス](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/linux.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Linux Virtual Machine Documentation
-        </div>
+Linux 仮想マシンのドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

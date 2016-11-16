@@ -1,23 +1,27 @@
 ---
-title: Azure ポータルを使用した Resource Manager でのインターネットに接続するロード バランサーの作成 | Microsoft Docs
-description: Azure ポータルを使用して、Resource Manager でインターネットに接続するロード バランサーを作成する方法について説明します
+title: "Azure Portal を使用した Resource Manager でのインターネットに接続するロード バランサーの作成 | Microsoft Docs"
+description: "Azure ポータルを使用して、Resource Manager でインターネットに接続するロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
 author: anavinahar
 manager: narayan
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: annahar
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d9e27ce132a837ec26a92de0c38b3e1c23b706c1
+
 
 ---
-# <a name="creating-an-internet-facing-load-balancer-using-the-azure-portal"></a>Azure ポータルを使用したインターネットに接続するロード バランサーの作成
+# <a name="creating-an-internetfacing-load-balancer-using-the-azure-portal"></a>Azure ポータルを使用したインターネットに接続するロード バランサーの作成
 [!INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
@@ -30,7 +34,7 @@ ms.author: annahar
 
 ここでは、ロード バランサーを作成するために実行する必要のある一連の作業を個別に取り上げ、目的を達成するために実行する事柄を詳しく説明します。
 
-## <a name="what-is-required-to-create-an-internet-facing-load-balancer?"></a>インターネットに接続するロード バランサーを作成するために必要な項目
+## <a name="what-is-required-to-create-an-internetfacing-load-balancer"></a>インターネットに接続するロード バランサーを作成するために必要な項目
 ロード バランサーをデプロイするには、次のオブジェクトを作成して構成する必要があります。
 
 * フロントエンド IP 構成 - 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
@@ -56,14 +60,14 @@ Azure Resource Manager でのロード バランサー コンポーネントの�
 
 ![ロード バランサーのリソース グループの更新](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
 
-## <a name="create-a-back-end-address-pool"></a>バックエンド アドレス プールを作成する
+## <a name="create-a-backend-address-pool"></a>バックエンド アドレス プールを作成する
 1. ロード バランサーが正常にデプロイされたら、リソースからそのロード バランサーを選択します。 [設定] で、[バックエンド プール] を選択します。 バックエンド プールの名前を入力します。 表示されたブレードの上部にある **[追加]** ボタンをクリックします。
 2. **[バックエンド プールの追加]** ブレードで **[仮想マシンの追加]** をクリックします。  **[可用性セット]** で **[可用性セットの選択]** を選択し、**[myAvailSet]** を選択します。 次に、このブレードの [仮想マシン] セクションで **[仮想マシンの選択]** を選択し、**[web1]** と **[web2]** (負荷分散用に作成した 2 つのVM) をクリックします。 次の図に示すように、両方の左側に青色のチェック マークが付いていることを確認します。 このブレードで **[選択]** をクリックしてから **[仮想マシンの選択]** ブレードで [OK] をクリックし、**[バックエンド プールの追加]** ブレードで **[OK]** をクリックします。
    
     ![バックエンド アドレス プールへの追加 ](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
 3. 通知のドロップダウン リストが、VM **web1** と **web2** 両方のネットワーク インターフェイスの更新に加えて、ロード バランサーのバックエンド プールの保存に関する更新内容が反映されていることを確認します。
 
-## <a name="create-a-probe,-lb-rule,-and-nat-rules"></a>プローブ、LB 規則、NAT 規則を作成する
+## <a name="create-a-probe-lb-rule-and-nat-rules"></a>プローブ、LB 規則、NAT 規則を作成する
 1. 正常性プローブを作成します。
    
     ロード バランサーの [設定] で [プローブ] を選択します。 次に、ブレード上部の **[追加]** をクリックします。
@@ -97,6 +101,9 @@ Azure Resource Manager でのロード バランサー コンポーネントの�
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

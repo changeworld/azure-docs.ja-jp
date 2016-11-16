@@ -1,78 +1,79 @@
 # Overview
-## [What is ExpressRoute?](expressroute-introduction.md)
-## [Locations and partners](expressroute-locations.md)
-## [Moving circuits from classic to Resource Manager](expressroute-move.md)
-## Best Practices
-### [Best practices for network security and cloud services](../best-practices-network-security.md)
-### [Asymmetric routing](expressroute-asymmetric-routing.md)
+## [ExpressRoute とは](expressroute-introduction.md)
+## [場所とパートナー](expressroute-locations.md)
+## [クラシックから Resource Manager への回線の移行](expressroute-move.md)
+## ベスト プラクティス
+### [ネットワーク セキュリティとクラウド サービスのベスト プラクティス](../best-practices-network-security.md)
+### [非対称ルーティング](expressroute-asymmetric-routing.md)
 
 
-# Get Started
-## [Circuits and routing domains](expressroute-circuit-peerings.md)
-## [Workflows](expressroute-workflows.md)
-## [Prerequisites](expressroute-prerequisites.md)
-## [Routing requirements](expressroute-routing.md)
-## [Optimize routing](expressroute-optimize-routing.md)
-## [NAT requirements](expressroute-nat.md)
-## [QoS requirements](expressroute-qos.md)
-## [Virtual network gateways for ExpressRoute](expressroute-about-virtual-network-gateways.md)
-## [ExpressRoute FAQ](expressroute-faqs.md)
+# 作業の開始
+## [回線およびルーティング ドメイン](expressroute-circuit-peerings.md)
+## [ワークフロー](expressroute-workflows.md)
+## [前提条件](expressroute-prerequisites.md)
+## [ルーティングの要件](expressroute-routing.md)
+## [ルーティングを最適化する](expressroute-optimize-routing.md)
+## [NAT の要件](expressroute-nat.md)
+## [QoS の要件](expressroute-qos.md)
+## [ExpressRoute 用の仮想ネットワーク ゲートウェイ](expressroute-about-virtual-network-gateways.md)
+## [ExpressRoute の FAQ](expressroute-faqs.md)
 
-# How To
-## Create and modify a circuit
-### [Create and modify a circuit using the Azure portal](expressroute-howto-circuit-portal-resource-manager.md)
-### [Create and modify a circuit using PowerShell](expressroute-howto-circuit-arm.md)
-### [Create and modify a circuit using PowerShell (Classic)](expressroute-howto-circuit-classic.md)
-## Create and modify routing configuration
-### [Create and modify routing configuration using the Azure portal](expressroute-howto-routing-portal-resource-manager.md)
-### [Create and modify routing configuration using PowerShell](expressroute-howto-routing-arm.md)
-### [Create and modify routing configuration using PowerShell (Classic)](expressroute-howto-routing-classic.md)
-## Link a virtual network to an ExpressRoute circuit
-### [Link a virtual network to an ExpressRoute circuit using the Azure portal](expressroute-howto-linkvnet-portal-resource-manager.md)
-### [Link a virtual network to an ExpressRoute circuit using PowerShell](expressroute-howto-linkvnet-arm.md)
-### [Link a virtual network to an ExpressRoute circuit using PowerShell (Classic)](expressroute-howto-linkvnet-classic.md)
-## Configure a virtual network gateway for ExpressRoute
-### [Configure a virtual network gateway for ExpressRoute using PowerShell](expressroute-howto-add-gateway-resource-manager.md)
-### [Configure a virtual network gateway for ExpressRoute using PowerShell (Classic)](expressroute-howto-add-gateway-classic.md)
-## [Create Site-to-Site and ExpressRoute coexisting connections](expressroute-howto-coexist-classic.md)
-## [Migrate a circuit from classic to Resource Manager](expressroute-howto-move-arm.md)
+# 方法
+## 回線の作成と変更
+### [Azure Portal を使用して回線を作成および変更する](expressroute-howto-circuit-portal-resource-manager.md)
+### [PowerShell を使用して回線を作成および変更する](expressroute-howto-circuit-arm.md)
+### [PowerShell (クラシック) を使用して回線を作成および変更する](expressroute-howto-circuit-classic.md)
+## ルーティング構成を作成および変更する
+### [Azure Portal を使用してルーティング構成を作成および変更する](expressroute-howto-routing-portal-resource-manager.md)
+### [PowerShell を使用してルーティング構成を作成および変更する](expressroute-howto-routing-arm.md)
+### [PowerShell (クラシック) を使用してルーティング構成を作成および変更する](expressroute-howto-routing-classic.md)
+## ExpressRoute 回線への仮想ネットワークのリンク
+### [Azure Portal を使用して仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-portal-resource-manager.md)
+### [PowerShell を使用して仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
+### [PowerShell (クラシック) を使用して仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-classic.md)
+## ExpressRoute の仮想ネットワーク ゲートウェイを構成する
+### [PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する](expressroute-howto-add-gateway-resource-manager.md)
+### [PowerShell (クラシック) を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する](expressroute-howto-add-gateway-classic.md)
+## [共存するサイト間接続と ExpressRoute 接続を作成する](expressroute-howto-coexist-classic.md)
+## [回線をクラシックから Resource Manager に移行する](expressroute-howto-move-arm.md)
 
-## Troubleshoot
-### [Getting ARP tables](expressroute-troubleshooting-arp-resource-manager.md)
-### [Getting ARP tables (Classic)](expressroute-troubleshooting-arp-classic.md)
+## トラブルシューティング
+### [ARP テーブルの取得](expressroute-troubleshooting-arp-resource-manager.md)
+### [ARP テーブルの取得 (クラシック)](expressroute-troubleshooting-arp-classic.md)
 
 
-# Reference
-## [APIs-Resource Manager](https://msdn.microsoft.com/library/azure/mt586720)
-## [APIs-Service Management](https://msdn.microsoft.com/library/azure/dn606310)
-## [PowerShell Cmdlets-Resource Manager](https://msdn.microsoft.com/library/azure/mt163510(v=azure.300))
-## [PowerShell Cmdlets-Service Management](https://msdn.microsoft.com/library/azure/dn683813)
-## [Router configuration setup samples](expressroute-config-samples-routing.md)
-## [Router configuration samples for NAT](expressroute-config-samples-nat.md)
+# リファレンス
 
-# Related 
-## [Virtual Network](../virtual-network/index.md)
-## [VPN Gateway](../vpn-gateway/index.md)
-## [Virtual Machines](../virtual-machines/index.md)
-## [Load Balancer](../load-balancer/index.md)
-## [Traffic Manager](../traffic-manager/index.md)
+## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [ルーター構成設定のサンプル](expressroute-config-samples-routing.md)
+## [NAT のルーター構成サンプル](expressroute-config-samples-nat.md)
+## [REST ()](https://msdn.microsoft.com/library/azure/mt586720)
+## [REST (クラシック)](https://msdn.microsoft.com/library/azure/dn606310)
 
-# Resources
-## [Networking Blog](https://azure.microsoft.com/blog/topics/networking/)
-## [Case Studies](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
-## [Pricing](https://azure.microsoft.com/pricing/details/expressroute/)
+# 関連項目
+## [Virtual Network](/azure/virtual-network/)
+## [VPN Gateway](/azure/vpn-gateway/)
+## [Virtual Machines](/azure/virtual-machines/)
+## [Load Balancer](/azure/load-balancer/)
+## [Traffic Manager](/azure/traffic-manager/)
+
+# リソース
+## [料金](https://azure.microsoft.com/pricing/details/expressroute/)
+## [ネットワークのブログ](https://azure.microsoft.com/blog/topics/networking/)
+## [ケース スタディ](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
-## [Subscription and Service Limits](../azure-subscription-service-limits.md)
-## Videos
-### [Create an ExpressRoute circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
-### [How to set up Private Peering for your circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
-### [Set up Public Peering for your circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)
-### [Set up Microsoft Peering for your circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/)
-### [Create a virtual network for ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)
-### [Create a virtual network gateway for ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network/)
-### [Cconnect a virtual network gateway to a circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
-### [Evolve your network infrastructure for connectivity](https://go.microsoft.com/fwlink/p/?LinkId=615124)
-### [Hybrid partnerships: Enabling on-premises scenarios](https://go.microsoft.com/fwlink/p/?LinkId=615125)
+## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=expressroute) 
+### [ExpressRoute 回線の作成](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
+### [回線のプライベート ピアリングを設定する方法](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
+### [回線のパブリック ピアリングを設定する](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)
+### [回線の Microsoft ピアリングを設定する](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/)
+### [ExpressRoute の仮想ネットワークを作成する](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)
+### [ExpressRoute の仮想ネットワーク ゲートウェイを作成する](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network/)
+### [仮想ネットワーク ゲートウェイを回線に接続する](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
+### [接続のためにネットワーク インフラストラクチャを拡張する](https://go.microsoft.com/fwlink/p/?LinkId=615124)
+### [ハイブリッド パートナーシップ: オンプレミスのシナリオの有効化](https://go.microsoft.com/fwlink/p/?LinkId=615125)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=expressroute) 
 
 <!--HONumber=Nov16_HO2-->
 

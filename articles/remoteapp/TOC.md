@@ -64,6 +64,12 @@
 ### [ハイブリッド コレクションのトラブルシューティング](remoteapp-hybridtrouble.md)
 ### [クラウド コレクションのトラブルシューティング](remoteapp-cloudtrouble.md)
 
+# リソース
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=remoteapp)
+## [料金](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureRemoteApp)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=remoteapp)
+
 
 <!--HONumber=Nov16_HO2-->
 

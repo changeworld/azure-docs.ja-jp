@@ -1,4 +1,5 @@
-# [概要](notification-hubs-push-notification-overview.md)
+# Overview
+## [Azure Notification Hubs とは](notification-hubs-push-notification-overview.md)
 # 作業の開始
 ## [Android (FCM)](notification-hubs-android-push-notification-google-fcm-get-started.md)
 ## [Baidu](notification-hubs-baidu-china-android-notifications-get-started.md)
@@ -9,9 +10,9 @@
 ## [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)
 ## [Xamarin.Android](xamarin-notification-hubs-push-notifications-android-gcm.md)
 ## [Xamarin.iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)
+## [よく寄せられる質問](notification-hubs-push-notification-faq.md)
 
 # 方法
-
 ## 計画と設計
 ### [エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス](notification-hubs-enterprise-push-notification-architecture.md)
 
@@ -48,24 +49,26 @@
 ### 安全なプッシュ
 #### [Android](notification-hubs-aspnet-backend-android-secure-google-gcm-push-notification.md)
 #### [iOS](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)
-#### [Windowsh](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
-
-
+#### [Windows](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
 
 ## 自動化
 ### [PowerShell を使用した Notification Hubs のデプロイと管理](notification-hubs-deploy-and-manage-powershell.md)
 ### [スケジュール設定された通知を送信する](notification-hubs-send-push-notifications-scheduled.md)
 
-
 ## トラブルシューティング
 ### [診断ガイドライン](notification-hubs-push-notification-fixer.md)
 
 # リファレンス
-
-# 関連項目
+## [PowerShell コマンドレット](/powershell/resourcemanager/)
+## [.NET](/dotnet/api/)
+## [REST ()](/rest/api/notificationhubs/)
 
 # リソース
-## [よく寄せられる質問](notification-hubs-push-notification-faq.md)
+## [料金](https://azure.microsoft.com/pricing/details/notification-hubs/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-notificationhub)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=notification-hubs)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=notification-hubs)
 
 
 <!--HONumber=Nov16_HO2-->

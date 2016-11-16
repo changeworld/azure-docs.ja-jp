@@ -1,12 +1,12 @@
 ---
-title: Log Analytics の起動と開始 | Microsoft Docs
-description: Log Analytics は、Microsoft Operations Management Suite (OMS) からほんの数分で起動して開始できます。
+title: "Log Analytics の起動と開始 | Microsoft Docs"
+description: "Log Analytics は、Microsoft Operations Management Suite (OMS) からほんの数分で起動して開始できます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 508716de-72d3-4c06-9218-1ede631f23a6
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2f8defce183e61825d9df3397ea1082dbdb4b11a
+
 
 ---
 # <a name="get-started-with-log-analytics"></a>Log Analytics の起動と開始
@@ -95,7 +99,7 @@ Operations Management Suite で作成したワークスペースを設定して�
    
     ![データの収集](./media/log-analytics-get-started/oms-onboard-logs.png)    
 
-## <a name="optionally,-connect-servers-directly-to-the-operations-management-suite-by-installing-an-agent"></a>必要に応じて、エージェントをインストールして、サーバーを直接 Operations Management Suite に接続します。
+## <a name="optionally-connect-servers-directly-to-the-operations-management-suite-by-installing-an-agent"></a>必要に応じて、エージェントをインストールして、サーバーを直接 Operations Management Suite に接続します。
 次の例は、Windows エージェントをインストールする方法を示しています。
 
 1. **[設定]** タイル、**[接続されたソース]** タブ、追加するソースの種類のタブを順にクリックします。その後、エージェントをダウンロードするか、エージェントを有効にする方法について確認します。 たとえば、**[Windows エージェントのダウンロード (64 ビット)]** をクリックします。 Windows エージェントは、Windows Server 2008 SP 1 以降または Windows 7 SP1 以降にのみインストールできます。
@@ -119,7 +123,7 @@ Operations Management Suite で作成したワークスペースを設定して�
 
 Operations Management Suite にエージェントを接続する方法の詳細については、「 [Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agents.md)」を参照してください。
 
-## <a name="optionally,-connect-servers-using-system-center-operations-manager"></a>オプションでの System Center Operations Manager を使用したサーバーの接続
+## <a name="optionally-connect-servers-using-system-center-operations-manager"></a>オプションでの System Center Operations Manager を使用したサーバーの接続
 1. Operations Manager コンソールで、 **[管理]**をクリックします。
 2. **[オペレーション インサイト]** ノードを展開して、**[オペレーション インサイトの接続]** を選択します。
    
@@ -133,7 +137,7 @@ Operations Management Suite にエージェントを接続する方法の詳細�
 
 Operations Manager を Operations Management Suite に接続する方法の詳細については、「[Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」を参照してください。
 
-## <a name="optionally,-analyze-data-from-cloud-services-in-microsoft-azure"></a>オプションで Microsoft Azure でクラウド サービスのデータを分析する
+## <a name="optionally-analyze-data-from-cloud-services-in-microsoft-azure"></a>オプションで Microsoft Azure でクラウド サービスのデータを分析する
 Operations Management Suite では、Azure Cloud Services の診断を有効にすることで、クラウド サービスや仮想マシンのイベントおよび IIS ログを迅速に検索できます。 また、Microsoft Monitoring Agent をインストールすることによって、Azure Virtual Machines の情報を追加で得ることもできます。 Operations Management Suite を使用するように Azure 環境を構成する方法の詳細については、「 [Azure Storage を Log Analytics に接続する](log-analytics-azure-storage.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
@@ -141,6 +145,9 @@ Operations Management Suite では、Azure Cloud Services の診断を有効に�
 * [ログ検索](log-analytics-log-searches.md) について理解を深め、ソリューションによって収集された情報の詳細を確認します。
 * カスタム検索結果を保存および表示するには、 [ダッシュボード](log-analytics-dashboards.md) を使用します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,22 +1,26 @@
 ---
-title: Azure App Service での Node.js Web アプリの作成 | Microsoft Docs
-description: Node.js アプリケーションを Azure App Service の Web アプリにデプロイする方法を説明します。
+title: "Azure App Service での Node.js Web アプリの作成 | Microsoft Docs"
+description: "Node.js アプリケーションを Azure App Service の Web アプリにデプロイする方法を説明します。"
 services: app-service\web
 documentationcenter: nodejs
 author: rmcmurray
-manager: wpickett
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: 85af23df-54af-4430-8d77-a1f97e2f5b10
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
-ms.date: 08/11/2016
+ms.date: 11/01/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c63b2b59143b57d6666910e701d8810bd517a42d
+
 
 ---
-# Azure App Service での Node.js Web アプリの作成
+# <a name="create-a-nodejs-web-app-in-azure-app-service"></a>Azure App Service での Node.js Web アプリの作成
 > [!div class="op_single_selector"]
 > * [.NET](web-sites-dotnet-get-started.md)
 > * [Node.JS](web-sites-nodejs-develop-deploy-mac.md)
@@ -27,7 +31,7 @@ ms.author: robmcm
 > 
 > 
 
-このチュートリアルでは、簡単な [Node.js](http://nodejs.org) アプリケーションを作成し、[Git](http://git-scm.com) を使用して [Azure App Service](../app-service/app-service-value-prop-what-is.md) の [Web アプリ](app-service-web-overview.md)にデプロイする方法について説明します。このチュートリアルの手順は、Node.js を実行できる任意のオペレーティング システムで使用できます。
+このチュートリアルでは、簡単な [Node.js](http://nodejs.org) アプリケーションを作成し、[Git](http://git-scm.com) を使用して [Azure App Service](../app-service/app-service-value-prop-what-is.md) の [Web アプリ](app-service-web-overview.md)にデプロイする方法について説明します。 このチュートリアルの手順は、Node.js を実行できる任意のオペレーティング システムで使用できます。
 
 学習内容:
 
@@ -38,19 +42,19 @@ ms.author: robmcm
 
 !["Hello World" メッセージを表示しているブラウザー][helloworld-completed]
 
-より複雑な Node.js アプリケーションを使用したチュートリアルとサンプル コードや、Azure での Node.js の使用方法に関するその他のトピックについては、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+より複雑な Node.js アプリケーションを使用したチュートリアルとサンプル コードや、Azure での Node.js の使用方法に関するその他のトピックについては、 [Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
 > [!NOTE]
-> このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](/ja-JP/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+> このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。 アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/en-us/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 > 
-> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。 有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
-## Web アプリの作成と Git 発行の有効化
-Azure App Service で Web アプリを作成して、Git 発行を有効にするには、次の手順に従います。
+## <a name="create-a-web-app-and-enable-git-publishing"></a>Web アプリの作成と Git 発行の有効化
+Azure App Service で Web アプリを作成して、Git 発行を有効にするには、次の手順に従います。 
 
-[Git](http://git-scm.com/) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。Web アプリ用に記述したコードはローカルの Git リポジトリに格納されます。このコードをリモート リポジトリにプッシュして Azure にデプロイします。このデプロイ方法は、App Service Web アプリの特徴です。
+[Git](http://git-scm.com/) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。 Web アプリ用に記述したコードはローカルの Git リポジトリに格納されます。このコードをリモート リポジトリにプッシュして Azure にデプロイします。 このデプロイ方法は、App Service Web アプリの特徴です。  
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. Azure ポータルの左上にある **[+ 新規]** アイコンをクリックします。
@@ -59,15 +63,15 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
     ![][portal-quick-create]
 4. **[Web アプリ]** ボックスに Web アプリの名前を入力します。
    
-    Web アプリの URL は {name}.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
-5. **[サブスクリプション]** を選択します。
-6. **リソース グループ**を選択するか、新しく作成します。
+    Web アプリの URL は {name}.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。 入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
+5. **[サブスクリプション]**を選択します。
+6. **リソース グループ** を選択するか、新しく作成します。
    
-    リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
-7. **App Service プラン/場所**を選択するか、新しく作成します。
+    リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
+7. **App Service プラン/場所** を選択するか、新しく作成します。
    
-    App Service プランの詳細については、[Azure App Service プランの概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)に関するページを参照してください。
-8. **[作成]** をクリックします。
+    App Service プランの詳細については、 [Azure App Service プランの概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)
+8. **[作成]**をクリックします。
    
     ![][portal-quick-create2]
    
@@ -84,24 +88,24 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
     ![][setup-git-publishing]
 13. デプロイ資格情報をまだ設定していない場合は設定します。
     
-    a.[Web アプリ] ブレードで、**[設定]、[デプロイ資格情報]** の順にクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [Web アプリ] ブレードで、**[設定]、[デプロイ資格情報]** の順にクリックします。
     
     ![][deployment-credentials]
     
-    b.ユーザー名とパスワードを作成します。
+    b. ユーザー名とパスワードを作成します。 
     
     ![](./media/web-sites-nodejs-develop-deploy-mac/setdeploycreds.png)
 14. [Web アプリ] ブレードで、**[設定]** をクリックし、**[プロパティ]** をクリックします。
     
-    発行するには、リモート Git リポジトリにプッシュします。リポジトリの URL が **[GIT URL]** の下に表示されます。この URL は、チュートリアルの後半で使用します。
+    発行するには、リモート Git リポジトリにプッシュします。 リポジトリの URL が **[GIT URL]**の下に表示されます。 この URL は、チュートリアルの後半で使用します。
     
     ![][git-url]
 
-## アプリケーションの作成とローカル テスト
-ここでは、[nodejs.org] から入手した 'Hello World' の例を若干変更したバージョンを含む **server.js** ファイルを作成します。コードでは、Azure Web アプリでの実行時にリッスンするポートとして process.env.PORT が追加されます。
+## <a name="build-and-test-your-application-locally"></a>アプリケーションの作成とローカル テスト
+ここでは、[nodejs.org] から入手した 'Hello World' の例を若干変更したバージョンを含む **server.js** ファイルを作成します。 コードでは、Azure Web アプリでの実行時にリッスンするポートとして process.env.PORT が追加されます。
 
-1. *helloworld* という名前のディレクトリを作成します。
-2. テキスト エディターを使用して、*helloworld* ディレクトリに **server.js** という名前の新しいファイルを作成します。
+1. *helloworld*という名前のディレクトリを作成します。
+2. テキスト エディターを使用して、 **helloworld** ディレクトリに *server.js* という名前の新しいファイルを作成します。
 3. **server.js** ファイルに次のコードをコピーし、ファイルを保存します。
    
         var http = require('http')
@@ -113,17 +117,17 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
 4. コマンド ラインを開き、次のコマンドを使用してローカルで Web アプリを開始します。
    
         node server.js
-5. Web ブラウザーを開いて、http://localhost:1337 にアクセスします。
+5. Web ブラウザーを開き、http://localhost:1337/ に移動します。 
    
     次のスクリーンショットに示すように、"Hello World" と表示された Web ページが開きます。
    
     !["Hello World" メッセージを表示しているブラウザー][helloworld-localhost]
 
-## アプリケーションの発行
+## <a name="publish-your-application"></a>アプリケーションの発行
 1. Git をまだインストールしていない場合はインストールします。
    
-    お使いのプラットフォームでのインストールの手順については、[Git のダウンロード ページ](http://git-scm.com/download)を参照してください。
-2. コマンド ラインから、**helloworld** ディレクトリに移動し、次のコマンドを入力してローカル Git リポジトリを初期化します。
+    お使いのプラットフォームでのインストールの手順については、 [Git のダウンロード ページ](http://git-scm.com/download)を参照してください。
+2. コマンド ラインから、 **helloworld** ディレクトリに移動し、次のコマンドを入力してローカル Git リポジトリを初期化します。
    
         git init
 3. 次のコマンドを使用して、リポジトリにファイルを追加します。
@@ -137,7 +141,7 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
    
         git push azure master
    
-    以前作成したパスワードを入力するように求められます。出力は次の例のようになります。
+    以前作成したパスワードを入力するように求められます。 出力は次の例のようになります。
    
         Counting objects: 3, done.
         Delta compression using up to 8 threads.
@@ -152,16 +156,16 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
         remote: Deployment successful.
         To https://user@testsite.scm.azurewebsites.net/testsite.git
          * [new branch]      master -> master
-6. アプリを表示するには、Azure ポータルで **[Web アプリ]** パーツの **[参照]** ボタンをクリックします。
+6. アプリを表示するには、Azure Portal で **[Web アプリ]** パーツの **[参照]** ボタンをクリックします。
    
     ![[参照] ボタン](./media/web-sites-nodejs-develop-deploy-mac/browsebutton.png)
    
     ![Azure、Hello World](./media/web-sites-nodejs-develop-deploy-mac/helloworldazure.png)
 
-## アプリケーションへの変更の発行
-1. テキスト エディターで **server.js** ファイルを開き、'Hello World\\n' を 'Hello Azure\\n' に変更します。
+## <a name="publish-changes-to-your-application"></a>アプリケーションへの変更の発行
+1. テキスト エディターで **server.js** ファイルを開き、"Hello World\n" を "Hello Azure\n" に変更します。 
 2. ファイルを保存します。
-3. コマンド ラインから、**helloworld** ディレクトリに移動し、次のコマンドを実行します。
+3. コマンド ラインから、 **helloworld** ディレクトリに移動し、次のコマンドを実行します。
    
         git add .
         git commit -m "changing to hello azure"
@@ -172,19 +176,19 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
    
     !["Hello Azure" と表示している Web ページ][helloworld-completed]
 
-## デプロイをロールバックします。
-**[Web アプリ]** ブレードで **[設定]、[継続的なデプロイ]** の順にクリックすると、**[デプロイ]** ブレードにデプロイ履歴が表示されます。以前のデプロイにロールバックする必要がある場合は、そのデプロイを選択し、**[デプロイの詳細]** ブレードの **[再デプロイ]** をクリックできます。
+## <a name="roll-back-a-deployment"></a>デプロイをロールバックします。
+**[Web アプリ]** ブレードで **[設定]、[継続的なデプロイ]** の順にクリックすると、**[デプロイ]** ブレードにデプロイ履歴が表示されます。 以前のデプロイにロールバックする必要がある場合は、そのデプロイを選択し、**[デプロイの詳細]** ブレードの **[再デプロイ]** をクリックできます。
 
-## 次のステップ
-ここでは、Node.js アプリケーションを Azure App Service の Web アプリにデプロイしました。App Service の Web アプリによる Node.js アプリケーションの実行方法の詳細については、[Azure App Service Web Apps の Node.js](http://blogs.msdn.com/b/silverlining/archive/2012/06/14/windows-azure-websites-node-js.aspx) に関するページと「[Azure アプリケーションでの Node.js のバージョンの指定](../nodejs-specify-node-version-azure-apps.md)」を参照してください。
+## <a name="next-steps"></a>次のステップ
+ここでは、Node.js アプリケーションを Azure App Service の Web アプリにデプロイしました。 App Service の Web アプリによる Node.js アプリケーションの実行方法の詳細については、[Azure App Service Web Apps の Node.js](http://blogs.msdn.com/b/silverlining/archive/2012/06/14/windows-azure-websites-node-js.aspx) に関するページと「[Azure アプリケーションでの Node.js のバージョンの指定](../nodejs-specify-node-version-azure-apps.md)」を参照してください。
 
-Node.js は、アプリケーションで使用できるモジュールのリッチなエコシステムを実現します。Web Apps でモジュールを使用する方法については、「[Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)」を参照してください。
+Node.js は、アプリケーションで使用できるモジュールのリッチなエコシステムを実現します。 Web Apps でモジュールを使用する方法については、「 [Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)」を参照してください。
 
-Azure へのデプロイ後にアプリケーションで問題が発生した場合、問題の診断については、「[Azure App Service で Node.js Web アプリをデバッグする方法](web-sites-nodejs-debug.md)」を参照してください。
+Azure へのデプロイ後にアプリケーションで問題が発生した場合、問題の診断については、「 [Azure App Service で Node.js Web アプリをデバッグする方法](web-sites-nodejs-debug.md) 」を参照してください。
 
-この記事では、Web アプリの作成に Azure ポータルを使用しています。[Azure コマンド ライン インターフェイス](../xplat-cli-install.md)または [Azure PowerShell](../powershell-install-configure.md) を使用して、同じ操作を行うこともできます。
+この記事では、Web アプリの作成に Azure ポータルを使用しています。 [Azure コマンド ライン インターフェイス](../xplat-cli-install.md)または [Azure PowerShell](../powershell-install-configure.md) を使用して、同じ操作を行うこともできます。
 
-Azure で Node.js アプリケーションを開発する方法の詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+Azure で Node.js アプリケーションを開発する方法の詳細については、 [Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
 [helloworld-completed]: ./media/web-sites-nodejs-develop-deploy-mac/helloazure.png
 [helloworld-localhost]: ./media/web-sites-nodejs-develop-deploy-mac/helloworldlocal.png
@@ -196,4 +200,8 @@ Azure で Node.js アプリケーションを開発する方法の詳細につ�
 [deployment-credentials]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-credentials.png
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

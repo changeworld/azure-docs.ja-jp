@@ -1,12 +1,12 @@
 ---
-title: 使用可能なコネクタと API Apps の一覧 | Microsoft Docs
-description: Azure App Service のコネクタと API Apps に関するページを参照してください。
+title: "使用可能なコネクタと API Apps の一覧 | Microsoft Docs"
+description: "Azure App Service のコネクタと API Apps に関するページを参照してください。"
 services: logic-apps
-documentationcenter: ''
+documentationcenter: 
 author: MandiOhlinger
 manager: erikre
 editor: cgronlun
-
+ms.assetid: 984a425d-ba64-48cc-90dc-bb624411e0f0
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: mandia
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6028fc53661978f63bbac89be6214ffebdc22405
+
 
 ---
 # <a name="list-of-connectors-and-api-apps-to-use-in-your-logic-apps"></a>Logic Apps で使用するコネクタと API Apps の一覧
@@ -72,6 +76,9 @@ ms.author: mandia
 [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)  
 [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

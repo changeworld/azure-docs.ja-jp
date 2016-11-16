@@ -10,7 +10,11 @@
   * [App Service 環境の作成方法](../articles/app-service-web/app-service-web-how-to-create-an-app-service-environment.md)
 * [Azure App Service 開発スタックのサポート](/blog/windows-azure-websites-development-stacks-support/)
 
-## ビデオ
+## <a name="videos"></a>ビデオ
 * [Azure App Service のアーキテクチャ](/documentation/videos/why-azure-web-sites-plus-architecture/)
 
-<!---HONumber=AcomDC_0224_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,131 +1,146 @@
 # Overview
-## [Virtual networks](virtual-networks-overview.md)
-## [Network security groups](virtual-networks-nsg.md)
-## [User-defined routes and IP forwarding](virtual-networks-udr-overview.md)
-## IP addressing
+## [仮想ネットワーク](virtual-networks-overview.md)
+## [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)
+## [仮想ネットワーク ピアリング](virtual-network-peering-overview.md)
+## [ビジネス継続性](virtual-network-disaster-recovery-guidance.md)
+## [FAQ](virtual-networks-faq.md)
+## IP アドレス指定
 ### [Resource Manager](virtual-network-ip-addresses-overview-arm.md)
-### [Classic](virtual-network-ip-addresses-overview-classic.md)
-## [Virtual network peering](virtual-network-peering-overview.md)
-## Virtual machines
-### [Network interfaces](virtual-network-network-interface-overview.md)
-### [Name resolution](virtual-networks-name-resolution-for-vms-and-role-instances.md)
-## [Business continuity](virtual-network-disaster-recovery-guidance.md)
-## [Pricing](https://azure.microsoft.com/pricing/details/virtual-network)
+### [クラシック](virtual-network-ip-addresses-overview-classic.md)
+## 仮想マシン
+### [ネットワーク インターフェイス](virtual-network-network-interface-overview.md)
+### [名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
-# Get Started
-## [Create a virtual network](virtual-networks-create-vnet-arm-pportal.md)
-## [Deploy a VM to a virtual network](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+# 作業の開始
+## [仮想ネットワークの作成](virtual-networks-create-vnet-arm-pportal.md)
+## [仮想ネットワークへの VM のデプロイ](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
-# How To
-## Plan and design
-### [Virtual networks](virtual-network-vnet-plan-design-arm.md)
-### [Network security groups](virtual-networks-nsg.md)
+# 方法
+## 計画と設計
+### [仮想ネットワーク](virtual-network-vnet-plan-design-arm.md)
+### [ネットワーク セキュリティ グループ](virtual-networks-nsg.md)
 
-## Deploy
-### Virtual networks
-#### [Portal](virtual-networks-create-vnet-arm-pportal.md)
+## デプロイ
+### 仮想ネットワーク
+#### [ポータル](virtual-networks-create-vnet-arm-pportal.md)
 #### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
 #### [CLI](virtual-networks-create-vnet-arm-cli.md)
-#### [Template](virtual-networks-create-vnet-arm-template-click.md)
-#### [Portal (Classic)](virtual-networks-create-vnet-classic-pportal.md)
-#### [PowerShell (Classic)](virtual-networks-create-vnet-classic-netcfg-ps.md)
-#### [CLI (Classic)](virtual-networks-create-vnet-classic-cli.md)
+#### [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
+#### [ポータル (クラシック)](virtual-networks-create-vnet-classic-pportal.md)
+#### [PowerShell (クラシック)](virtual-networks-create-vnet-classic-netcfg-ps.md)
+#### [CLI (クラシック)](virtual-networks-create-vnet-classic-cli.md)
 
-### Network security groups
-#### [Portal](virtual-networks-create-nsg-arm-portal.md)
+### ネットワーク セキュリティ グループ
+#### [ポータル](virtual-networks-create-nsg-arm-pportal.md)
 #### [PowerShell](virtual-networks-create-nsg-arm-ps.md)
 #### [CLI](virtual-networks-create-nsg-arm-cli.md)
-#### [Template](virtual-networks-create-nsg-arm-template.md)
-#### [PowerShell (Classic)](virtual-networks-create-nsg-classic-ps.md)
-#### [CLI (Classic)](virtual-networks-create-nsg-classic-cli.md)
+#### [テンプレート](virtual-networks-create-nsg-arm-template.md)
+#### [PowerShell (クラシック)](virtual-networks-create-nsg-classic-ps.md)
+#### [CLI (クラシック)](virtual-networks-create-nsg-classic-cli.md)
 
-### User-defined routes
+### ユーザー定義のルート
 #### [PowerShell](virtual-network-create-udr-arm-ps.md)
 #### [CLI](virtual-network-create-udr-arm-cli.md)
-#### [Template](virtual-network-create-udr-arm-template.md)
-#### [PowerShell (Classic)](virtual-network-create-udr-classic-ps.md)
-#### [CLI (Classic)](virtual-network-create-udr-classic-cli.md)
+#### [テンプレート](virtual-network-create-udr-arm-template.md)
+#### [PowerShell (クラシック)](virtual-network-create-udr-classic-ps.md)
+#### [CLI (クラシック)](virtual-network-create-udr-classic-cli.md)
 
-### Virtual network peering
-#### [Portal](virtual-networks-create-vnetpeering-arm-portal.md)
+### 仮想ネットワーク ピアリング
+#### [ポータル](virtual-networks-create-vnetpeering-arm-portal.md)
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
-#### [Template](virtual-networks-create-vnetpeering-arm-template-click.md)
+#### [テンプレート](virtual-networks-create-vnetpeering-arm-template-click.md)
 
-### Virtual machines
+### 仮想マシン
 
-#### Static public IP addresses
-##### [Portal](virtual-network-deploy-static-pip-arm-portal.md)
+#### 静的パブリック IP アドレス
+##### [ポータル](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 ##### [CLI](virtual-network-deploy-static-pip-arm-cli.md)
-##### [Template](virtual-network-deploy-static-pip-arm-template.md)
-##### [PowerShell (Classic)](virtual-networks-reserved-public-ip.md)
+##### [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
+##### [PowerShell (クラシック)](virtual-networks-reserved-public-ip.md)
 
-#### Static private IP addresses
-##### [Portal](virtual-networks-static-private-ip-arm-pportal.md)
+#### 静的プライベート IP アドレス
+##### [ポータル](virtual-networks-static-private-ip-arm-pportal.md)
 ##### [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 ##### [CLI](virtual-networks-static-private-ip-arm-cli.md)
-##### [Portal (Classic)](virtual-networks-static-private-ip-classic-pportal.md)
-##### [PowerShell (Classic)](virtual-networks-static-private-ip-classic-ps.md)
-##### [CLI (Classic)](virtual-networks-static-private-ip-classic-cli.md)
+##### [ポータル (クラシック)](virtual-networks-static-private-ip-classic-pportal.md)
+##### [PowerShell (クラシック)](virtual-networks-static-private-ip-classic-ps.md)
+##### [CLI (クラシック)](virtual-networks-static-private-ip-classic-cli.md)
 
-#### Multiple network interfaces
+#### 複数のネットワーク インターフェイス
 ##### [PowerShell](virtual-network-deploy-multinic-arm-ps.md)
 ##### [CLI](virtual-network-deploy-multinic-arm-cli.md)
-##### [Template](virtual-network-deploy-multinic-arm-template.md)
-##### [PowerShell (Classic)](virtual-network-deploy-multinic-classic-ps.md)
-##### [CLI (Classic)](virtual-network-deploy-multinic-classic-cli.md)
+##### [テンプレート](virtual-network-deploy-multinic-arm-template.md)
+##### [PowerShell (クラシック)](virtual-network-deploy-multinic-classic-ps.md)
+##### [CLI (クラシック)](virtual-network-deploy-multinic-classic-cli.md)
 
-#### [Multiple IP addresses](virtual-network-multiple-ip-addresses-powershell.md)
+#### 複数の IP アドレス
+##### [Azure ポータル](virtual-network-multiple-ip-addresses-portal.md)
+##### [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
 
-### Connectivity scenarios
-#### [Virtual network (VNet) to VNet](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-#### [VNet (Resource Manager) to a VNet (Classic)](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-#### [VNet to on-premises network (VPN)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-#### [VNet to on-premises network (ExpressRoute)](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-#### [Highly available hybrid network architecture](../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+### 接続のシナリオ
+#### [仮想ネットワーク (VNet) から VNet に](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+#### [VNet (Resource Manager) から VNet に (クラシック)](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+#### [VNet からオンプレミスのネットワークに (VPN)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+#### [VNet からオンプレミスのネットワークに (ExpressRoute)](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+#### [高可用性ハイブリッド ネットワーク アーキテクチャ](../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
-### Security scenarios
-#### [Secure networks with virtual appliances](virtual-network-scenario-udr-gw-nva.md)
-#### [DMZ between Azure and the Internet](../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-#### [Cloud service and network security](../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [Simple DMZ with NSGs](virtual-networks-dmz-nsg-asm.md)
-##### [DMZ with firewall and NSGs](virtual-networks-dmz-nsg-fw-asm.md)
-##### [DMZ with firewall, UDR, and NSGs](virtual-networks-dmz-nsg-fw-udr-asm.md)
-##### [Sample application](virtual-networks-sample-app.md)
+### セキュリティのシナリオ
+#### [仮想アプライアンスでネットワークをセキュリティで保護する](virtual-network-scenario-udr-gw-nva.md)
+#### [Azure とインターネットの間の DMZ](../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+#### [クラウド サービスとネットワーク セキュリティ](../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [シンプルな DMZ と NSG](virtual-networks-dmz-nsg-asm.md)
+##### [DMZ とファイアウォールおよび NSG](virtual-networks-dmz-nsg-fw-asm.md)
+##### [DMZ とファイアウォール、UDR、および NSG](virtual-networks-dmz-nsg-fw-udr-asm.md)
+##### [サンプル アプリケーション](virtual-networks-sample-app.md)
 
-## Manage
-### Network security groups
-#### [Portal](virtual-network-manage-nsg-arm-portal.md)
+## 構成
+### Accelerated Networking
+#### [Azure Portal](virtual-network-accelerated-networking-portal.md)
+#### [PowerShell](virtual-network-accelerated-networking-powershell.md)
+### アクセス制御リスト
+#### [クラシック ポータル](virtual-networks-acl.md)
+#### [PowerShell](virtual-networks-acl-powershell.md)
+
+## [管理]
+### ネットワーク セキュリティ グループ
+#### [ポータル](virtual-network-manage-nsg-arm-portal.md)
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
 #### [CLI](virtual-network-manage-nsg-arm-cli.md)
-#### [Logs](virtual-network-nsg-manage-log.md)
-#### Troubleshoot
-##### [Portal](virtual-network-nsg-troubleshoot-portal.md)
+#### [ログ](virtual-network-nsg-manage-log.md)
+#### トラブルシューティング
+##### [ポータル](virtual-network-nsg-troubleshoot-portal.md)
 ##### [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
-### Troubleshoot routes
-#### [Portal](virtual-network-routes-troubleshoot-portal.md)
+### ルートのトラブルシューティング
+#### [ポータル](virtual-network-routes-troubleshoot-portal.md)
 #### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
-### Virtual machines
-#### [View and modify hostnames](virtual-networks-viewing-and-modifying-hostnames.md)
-#### [Move a VM to a different subnet](virtual-networks-move-vm-role-to-subnet.md)
+### 仮想マシン
+#### [ホスト名の表示および変更](virtual-networks-viewing-and-modifying-hostnames.md)
+#### [VM を別のサブネットに移動する](virtual-networks-move-vm-role-to-subnet.md)
 
-# Reference
-## [PowerShell cmdlets (Resource manager)](https://msdn.microsoft.com/library/mt163510(v=azure.300))
-## [PowerShell cmdlets (Classic)](https://msdn.microsoft.com/library/mt270335(v=azure.300))
-## [APIs (Resource Manager)](https://msdn.microsoft.com/library/mt163658.aspx)
-## [APIs (Classic)](https://msdn.microsoft.com/library/jj157182.aspx)
-## [Networking blog](http://azure.microsoft.com/blog/topics/networking)
-## [Frequently asked questions](virtual-networks-faq.md)
+# リファレンス
+## [PowerShell (Resource Manager)](https://msdn.microsoft.com/library/mt163510(v=azure.300))
+## [PowerShell (クラシック)](https://msdn.microsoft.com/library/mt270335(v=azure.300))
+## [Azure CLI](/cli/azure/)
+## [Java](/java/api/)
+## [REST (Resource Manager)](https://msdn.microsoft.com/library/mt163658.aspx)
+## [REST (クラシック)](https://msdn.microsoft.com/library/jj157182.aspx)
 
-# Related
-## [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines)
-## [Application Gateway](https://azure.microsoft.com/documentation/services/application-gateway)
-## [Azure DNS](https://azure.microsoft.com/documentation/services/dns)
-## [Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager)
-## [Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer)
-## [VPN Gateway](https://azure.microsoft.com/documentation/services/vpn-gateway)
-## [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute)
 
+# 関連項目
+## [Virtual Machines](/azure/virtual-machines/)
+## [Application Gateway](/azure/application-gateway/)
+## [Azure DNS](/azure/dns/)
+## [Traffic Manager](/azure/traffic-manager/)
+## [Load Balancer](/azure/load-balancer/)
+## [VPN Gateway](/azure/vpn-gateway/)
+## [ExpressRoute](/azure/expressroute/)
+
+# リソース
+## [ネットワークのブログ](http://azure.microsoft.com/blog/topics/networking)
+## [ネットワークのフォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
+## [料金](https://azure.microsoft.com/pricing/details/virtual-network)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 
 
 <!--HONumber=Nov16_HO2-->

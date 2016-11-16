@@ -1,12 +1,12 @@
 ---
-title: ExpressRoute の QoS の要件 | Microsoft Docs
-description: このページでは、ExpressRoute 回線の QoS を構成および管理するための詳細な要件について説明します。
+title: "ExpressRoute の QoS の要件 | Microsoft Docs"
+description: "このページでは、ExpressRoute 回線の QoS を構成および管理するための詳細な要件について説明します。"
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: db1c1447-0283-4a09-907b-ae481adc40c7
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9e74127e3140ec9973753fb5f29151c406326c36
+
 
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS の要件
@@ -48,6 +52,9 @@ Skype for Business には、特化した QoS 処理を必要とするさまざ�
   * [ルーティングの構成](expressroute-howto-routing-classic.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 
