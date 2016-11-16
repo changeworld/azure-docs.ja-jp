@@ -1,12 +1,12 @@
 ---
-title: Android アプリの Azure Mobile Engagement の使用
-description: Azure Mobile Engagement を使用して、Android アプリの分析やプッシュ通知を送信する方法について説明します。
+title: "Android アプリの Azure Mobile Engagement の使用"
+description: "Azure Mobile Engagement を使用して、Android アプリの分析やプッシュ通知を送信する方法について説明します。"
 services: mobile-engagement
 documentationcenter: android
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 3c286c6d-cfef-4e3e-9b2c-715429fe82db
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -14,6 +14,10 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a4b9ab47969c95aa9940e044b426cf2811e23f61
+
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-android-apps"></a>Android アプリ用 Azure Mobile Engagement の使用
@@ -106,10 +110,10 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 2. エージェント サービスを宣言するには、次のコードを `<application>` タグと `</application>` タグの間に追加します。
    
         <service
-            android:name="com.microsoft.azure.engagement.service.EngagementService"
-            android:exported="false"
-            android:label="<Your application name>"
-            android:process=":Engagement"/>
+             android:name="com.microsoft.azure.engagement.service.EngagementService"
+             android:exported="false"
+             android:label="<Your application name>"
+             android:process=":Engagement"/>
 3. 貼り付けたコードで、ラベルの `"<Your application name>"` を置き換えます。これは、デバイスで実行中のサービスを確認できる **[設定]** メニューに表示されます。 たとえば、このラベルに「サービス」という語句を追加できます。
 
 ### <a name="send-a-screen-to-mobile-engagement"></a>画面を Mobile Engagement に送信する
@@ -130,10 +134,10 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 
 アプリで `ActionBar` を維持する場合は、 [高度な Android のレポート](mobile-engagement-android-advanced-reporting.md#modifying-your-codeactivitycode-classes)に関するページを参照してください。
 
-## <a name="connect-app-with-real-time-monitoring"></a>リアルタイム監視を使用してアプリを接続する
+## <a name="connect-app-with-realtime-monitoring"></a>リアルタイム監視を使用してアプリを接続する
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="enable-push-notifications-and-in-app-messaging"></a>プッシュ通知とアプリ内メッセージングを有効にする
+## <a name="enable-push-notifications-and-inapp-messaging"></a>プッシュ通知とアプリ内メッセージングを有効にする
 キャンペーンの際に Mobile Engagement を利用すると、プッシュ通知とアプリ内メッセージングを利用して、ユーザーにキャンペーン情報を提供できます。 このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。
 次のセクションでは、それらを受信するようにアプリをセットアップします。
 
@@ -169,6 +173,6 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

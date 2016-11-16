@@ -1,12 +1,12 @@
 ---
-title: ExpressRoute 導入の前提条件 | Microsoft Docs
-description: このページでは、Azure ExpressRoute 回線を注文する前に満たす必要がある要件を一覧します。
+title: "ExpressRoute 導入の前提条件 | Microsoft Docs"
+description: "このページでは、Azure ExpressRoute 回線を注文する前に満たす必要がある要件を一覧します。"
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: f872d25e-acfd-405d-9d1b-dcb9f323a2ff
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a582941b06fa7f81d7db188f2a9feba837b9bfd8
+
 
 ---
-# <a name="expressroute-prerequisites-&-checklist"></a>ExpressRoute の前提条件とチェック リスト
+# <a name="expressroute-prerequisites-checklist"></a>ExpressRoute の前提条件とチェック リスト
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、以下のセクションにある前提条件を満たしていることを確認する必要があります。
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
@@ -60,6 +64,9 @@ ExpressRoute で CRM Online を有効にする予定がある場合は、以下�
   * [ルーティングの構成](expressroute-howto-routing-classic.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

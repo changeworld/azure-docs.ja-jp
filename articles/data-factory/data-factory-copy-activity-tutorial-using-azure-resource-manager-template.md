@@ -1,12 +1,12 @@
 ---
-title: 'Tutorial: Create a pipeline using Resource Manager Template | Microsoft Docs'
-description: In this tutorial, you create an Azure Data Factory pipeline with a Copy Activity by using Azure Resource Manager template.
+title: "チュートリアル: Resource Manager テンプレートを使用してパイプラインを作成する | Microsoft Docs"
+description: "このチュートリアルでは、Azure Resource Manager テンプレートを使用して、コピー アクティビティを含む Azure Data Factory パイプラインを作成します。"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 1274e11a-e004-4df5-af07-850b2de7c15e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,47 +14,51 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 535eb3c22dad35da3c1dbc10be5a7c11c6bb8d00
+
 
 ---
-# <a name="tutorial:-create-a-pipeline-with-copy-activity-using-azure-resource-manager-template"></a>Tutorial: Create a pipeline with Copy Activity using Azure Resource Manager template
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-azure-resource-manager-template"></a>チュートリアル: Azure Resource Manager テンプレートを使用してコピー アクティビティを含むパイプラインを作成する
 > [!div class="op_single_selector"]
-> * [Overview and prerequisites](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Copy Wizard](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
+> * [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure Resource Manager template](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
 > 
 
-This tutorial shows you how to create and monitor an Azure data factory using an Azure Resource Manager template. The pipeline in the data factory copies data from Azure Blob Storage to Azure SQL Database.
+このチュートリアルでは、Azure Resource Manager テンプレートを使用して、Azure Data Factory を作成し、監視する方法について説明します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から Azure SQL Database にデータをコピーします。
 
-## <a name="prerequisites"></a>Prerequisites
-* Go through [Tutorial Overview and Prerequisites](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) and complete the **prerequisite** steps.
-* Follow instructions in [How to install and configure Azure PowerShell](../powershell-install-configure.md) article to install latest version of Azure PowerShell on your computer. In this tutorial, you use PowerShell to deploy Data Factory entities. 
-* (optional) See [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md) to learn about Azure Resource Manager templates.
+## <a name="prerequisites"></a>前提条件
+* [チュートリアルの概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に目を通し、**前提条件**の手順を完了します。
+* 「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。 このチュートリアルでは、PowerShell を使用して Data Factory エンティティをデプロイします。 
+* (省略可能)「[Azure Resource Manager テンプレートの作成](../resource-group-authoring-templates.md)」を参照して、Azure Resource Manager テンプレートについて学びます。
 
-## <a name="in-this-tutorial"></a>In this tutorial
-In this tutorial, you create a data factory with the following Data Factory entities:
+## <a name="in-this-tutorial"></a>このチュートリアルの内容
+このチュートリアルでは、次の Data Factory エンティティを含むデータ ファクトリを作成します。
 
-| Entity | Description |
+| エンティティ | Description |
 | --- | --- |
-| Azure Storage linked service |Links your Azure Storage account to the data factory. Azure Storage is the source data store and Azure SQL database is the sink data store for the copy activity in the tutorial. It specifies the storage account that contains the input data for the copy activity. |
-| Azure SQL Database linked service |Links your Azure SQL database to the data factory. It specifies the Azure SQL database that holds the output data for the copy activity. |
-| Azure Blob input dataset |Refers to the Azure Storage linked service. The linked service refers to an Azure Storage account and the Azure Blob dataset specifies the container, folder, and file name in the storage that holds the input data. |
-| Azure SQL output dataset |Refers to the Azure SQL linked service. The Azure SQL linked service refers to an Azure SQL server and the Azure SQL dataset specifies the name of the table that holds the output data. |
-| Data pipeline |The pipeline has one activity of type Copy that takes the Azure blob dataset as an input and the Azure SQL dataset as an output. The copy activity copies data from an Azure blob to a table in the Azure SQL database. |
+| Azure Storage のリンクされたサービス |Azure Storage アカウントをデータ ファクトリにリンクします。 このチュートリアルのコピー アクティビティでは、Azure Storage がソース データ ストアであり、Azure SQL Database がシンク データ ストアです。 コピー アクティビティの入力データを格納するストレージ アカウントを指定します。 |
+| Azure SQL Database のリンクされたサービス |Azure SQL Database をデータ ファクトリにリンクします。 コピー アクティビティの出力データを保持する Azure SQL Database を指定します。 |
+| Azure BLOB の入力データセット |Azure Storage のリンクされたサービスを参照します。 リンクされたサービスは、Azure Storage アカウントを参照します。Azure BLOB データセットは、入力データを保持するストレージ内のコンテナー、フォルダー、ファイルの名前を指定します。 |
+| Azure SQL の出力データセット |Azure SQL のリンクされたサービスを参照します。 Azure SQL のリンクされたサービスは、Azure SQL サーバーを参照します。Azure SQL データセットは、出力データを保持するテーブルの名前を指定します。 |
+| データ パイプライン |パイプラインには、Azure BLOB データセットを入力として取得し、Azure SQL データセットを出力として取得する Copy 型のアクティビティが 1 つ含まれます。 コピー アクティビティでは、Azure BLOB から Azure SQL Database のテーブルにデータをコピーします。 |
 
-A data factory can have one or more pipelines. A pipeline can have one or more activities in it. There are two types of activities: [data movement activities](data-factory-data-movement-activities.md) and [data transformation activities](data-factory-data-transformation-activities.md). In this tutorial, you create a pipeline with one activity (copy activity).
+データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 アクティビティには、[データ移動アクティビティ](data-factory-data-movement-activities.md)と[データ変換アクティビティ](data-factory-data-transformation-activities.md)の 2 種類があります。 このチュートリアルでは、アクティビティ (コピー アクティビティ) を 1 つ含むパイプラインを作成します。
 
-![Copy Azure Blob to Azure SQL Database](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/CopyBlob2SqlDiagram.png) 
+![Azure BLOB から Azure SQL Database へのコピー](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/CopyBlob2SqlDiagram.png) 
 
-The following section provides the complete Resource Manager template for defining Data Factory entities so that you can quickly run through the tutorial and test the template. To understand how each Data Factory entity is defined, see [Data Factory entities in the template](#data-factory-entities-in-the-template) section.
+次のセクションでは、このチュートリアルを速やかに実行し、テンプレートをテストできるように、Data Factory エンティティを定義するための完全な Resource Manager テンプレートを提供します。 各 Data Factory エンティティを定義する方法については、「[テンプレートの Data Factory エンティティ](#data-factory-entities-in-the-template)」をご覧ください。
 
-## <a name="data-factory-json-template"></a>Data Factory JSON template
-The top-level Resource Manager template for defining a data factory is: 
+## <a name="data-factory-json-template"></a>Data Factory JSON テンプレート
+データ ファクトリを定義するための大まかな Resource Manager テンプレートは次のとおりです。 
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -79,7 +83,7 @@ The top-level Resource Manager template for defining a data factory is:
         ]
     }
 
-Create a JSON file named **ADFCopyTutorialARM.json** in **C:\ADFGetStarted** folder with the following content:
+**C:\ADFGetStarted** フォルダーに、次の内容を記述した **ADFCopyTutorialARM.json** という名前の JSON ファイルを作成します。
 
     {
         "contentVersion": "1.0.0.0",
@@ -265,10 +269,10 @@ Create a JSON file named **ADFCopyTutorialARM.json** in **C:\ADFGetStarted** fol
       }
 
 ## <a name="parameters-json"></a>Parameters JSON
-Create a JSON file named **ADFCopyTutorialARM-Parameters.json** that contains parameters for the Azure Resource Manager template. 
+Azure Resource Manager テンプレートのパラメーターを含む **ADFCopyTutorialARM-Parameters.json** という名前の JSON ファイルを作成します。 
 
 > [!IMPORTANT]
-> Specify the name and key of your Azure Storage account for **storageAccountName** and **storageAccountKey** parameters.  
+> **storageAccountName** パラメーターと **storageAccountKey** パラメーターに、Azure Storage アカウントの名前とキーを指定します。  
 > 
 > 
 
@@ -276,9 +280,9 @@ Create a JSON file named **ADFCopyTutorialARM-Parameters.json** that contains pa
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",
         "parameters": { 
-            "storageAccountName": { "value": "<Name of the Azure storage account>"  },
+            "storageAccountName": {    "value": "<Name of the Azure storage account>"    },
             "storageAccountKey": {
-                "value": "<Key for the Azure storage account>"
+                     "value": "<Key for the Azure storage account>"
             },
             "sourceBlobContainer": { "value": "adftutorial" },
             "sourceBlobName": { "value": "emp.txt" },
@@ -291,45 +295,45 @@ Create a JSON file named **ADFCopyTutorialARM-Parameters.json** that contains pa
     }
 
 > [!IMPORTANT]
-> You may have separate parameter JSON files for development, testing, and production environments that you can use with the same Data Factory JSON template. By using a Power Shell script, you can automate deploying Data Factory entities in these environments.  
+> 開発環境、テスト環境、運用環境用にそれぞれ別の parameter JSON ファイルを作成して、同じ Data Factory JSON テンプレートで使用できます。 PowerShell スクリプトを使用して、これらの環境への Data Factory エンティティのデプロイを自動化できます。  
 > 
 > 
 
-## <a name="create-data-factory"></a>Create data factory
-1. Start **Azure PowerShell** and run the following command:
-   * Run `Login-AzureRmAccount` and enter the user name and password that you use to sign in to the Azure portal.  
-   * Run `Get-AzureRmSubscription` to view all the subscriptions for this account.
-   * Run `Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext` to select the subscription that you want to work with. 
-2. Run the following command to deploy Data Factory entities using the Resource Manager template you created in Step 1.
+## <a name="create-data-factory"></a>データ ファクトリの作成
+1. **Azure PowerShell** を起動し、次のコマンドを実行します。
+   * `Login-AzureRmAccount` を実行し、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。  
+   * `Get-AzureRmSubscription` を実行して、このアカウントのサブスクリプションをすべて表示します。
+   * `Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext` を実行して、使用するサブスクリプションを選択します。 
+2. 次のコマンドを実行し、手順 1. で作成した Resource Manager テンプレートを使用して Data Factory エンティティをデプロイします。
    
         New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFCopyTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFCopyTutorialARM-Parameters.json
 
-## <a name="monitor-pipeline"></a>Monitor pipeline
-1. Log in to the [Azure portal](https://portal.azure.com) using your Azure account.
-2. Click **Data factories** on the left menu (or) click **More services** and click **Data factories** under **INTELLIGENCE + ANALYTICS** category.
+## <a name="monitor-pipeline"></a>パイプラインを監視する
+1. Azure アカウントを使用して [Azure Portal](https://portal.azure.com) にログインします。
+2. 左側のメニューの **[データ ファクトリ]** をクリックするか、**[その他のサービス]** をクリックし、**[インテリジェンス + 分析]** カテゴリの** [データ ファクトリ]** をクリックします。
    
-    ![Data factories menu](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
-3. In the **Data factories** page, search for and find your data factory. 
+    ![[データ ファクトリ] メニュー](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
+3. **[データ ファクトリ]** ページで、使用するデータ ファクトリを検索して見つけます。 
    
-    ![Search for data factory](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png)  
-4. Click your Azure data factory. You see the home page for the data factory.
+    ![データ ファクトリの検索](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png)  
+4. 使用する Azure Data Factory をクリックします。 データ ファクトリのホーム ページが表示されます。
    
-    ![Home page for data factory](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
-5. Click **Diagram** tile to see the diagram view of your data factory.
+    ![データ ファクトリのホーム ページ](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
+5. **[ダイアグラム]** タイルをクリックすると、データ ファクトリのダイアグラム ビューが表示されます。
    
-    ![Diagram view of data factory](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-diagram-view.png)
-6. In the diagram view, double-click the dataset **SQLOutputDataset**. You see that status of the slice. When the copy operation is done, you the status set to **Ready**.
+    ![データ ファクトリのダイアグラム ビュー](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-diagram-view.png)
+6. ダイアグラム ビューで、**SQLOutputDataset** データセットをダブルクリックします。 スライスの状態が表示されます。 コピー操作が完了すると、状態が **[準備完了]** に設定されます。
    
-    ![Output slice in ready state](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/output-slice-ready.png)
-7. When the slice is in **Ready** state, verify that the data is copied to the **emp** table in the Azure SQL database.
+    ![準備完了状態の出力スライス](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/output-slice-ready.png)
+7. スライスが **[準備完了]** 状態になったら、Azure SQL Database の **emp** テーブルにデータがコピーされていることを確認します。
 
-See [Monitor datasets and pipeline](data-factory-monitor-manage-pipelines.md) for instructions on how to use the Azure portal blades to monitor the pipeline and datasets you have created in this tutorial.
+Azure ポータル ブレードを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、 [データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md) に関するページを参照してください。
 
-You can also use Monitor and Manage App to monitor your data pipelines. See [Monitor and manage Azure Data Factory pipelines using Monitoring App](data-factory-monitor-manage-app.md) for details about using the application.
+データ パイプラインは、監視と管理アプリを使用して監視することもできます。 このアプリケーションの使い方の詳細については、 [監視アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md) に関する記事を参照してください。
 
-## <a name="data-factory-entities-in-the-template"></a>Data Factory entities in the template
-### <a name="define-data-factory"></a>Define data factory
-You define a data factory in the resource manager template as shown in the following sample:  
+## <a name="data-factory-entities-in-the-template"></a>テンプレートの Data Factory エンティティ
+### <a name="define-data-factory"></a>データ ファクトリの定義
+次のサンプルに示すように、Resource Manager テンプレートでデータ ファクトリを定義します。  
 
     "resources": [
     {
@@ -339,23 +343,23 @@ You define a data factory in the resource manager template as shown in the follo
         "location": "West US"
     }
 
-The dataFactoryName is defined as: 
+dataFactoryName は次のように定義されています。 
 
     "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
 
-It is an unique string based on the resource group ID.  
+これは、リソース グループ ID に基づく一意の文字列です。  
 
-### <a name="defining-data-factory-entities"></a>Defining Data Factory entities
-The following Data Factory entities are defined in the JSON template: 
+### <a name="defining-data-factory-entities"></a>Data Factory エンティティの定義
+JSON テンプレートには、次の Data Factory エンティティが定義されています。 
 
-1. [Azure Storage linked service](#azure-storage-linked-service)
-2. [Azure SQL linked service](#azure-sql-database-linked-service)
-3. [Azure blob dataset](#azure-blob-dataset)
-4. [Azure SQL dataset](#azure-sql-dataset)
-5. [Data pipeline with a copy activity](#data-pipeline)
+1. [Azure Storage のリンクされたサービス](#azure-storage-linked-service)
+2. [Azure SQL のリンクされたサービス](#azure-sql-database-linked-service)
+3. [Azure BLOB データセット](#azure-blob-dataset)
+4. [Azure SQL データセット](#azure-sql-dataset)
+5. [コピー アクティビティを含むデータ パイプライン](#data-pipeline)
 
-#### <a name="azure-storage-linked-service"></a>Azure Storage linked service
-You specify the name and key of your Azure storage account in this section. See [Azure Storage linked service](data-factory-azure-blob-connector.md#azure-storage-linked-service) for details about JSON properties used to define an Azure Storage linked service. 
+#### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
+このセクションで、Azure Storage アカウントの名前とキーを指定します。 Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、「[Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)」をご覧ください。 
 
     {
         "type": "linkedservices",
@@ -373,10 +377,10 @@ You specify the name and key of your Azure storage account in this section. See 
         }
     }
 
-The connectionString uses the storageAccountName and storageAccountKey parameters. The values for these parameters passed by using a configuration file. The definition also uses variables: azureStroageLinkedService and dataFactoryName defined in the template. 
+connectionString では、storageAccountName パラメーターと storageAccountKey パラメーターを使用しています。 これらのパラメーターの値は、構成ファイルを使用して渡されます。 この定義では、テンプレートで定義された azureStroageLinkedService、dataFactoryName の各変数も使用しています。 
 
-#### <a name="azure-sql-database-linked-service"></a>Azure SQL Database linked service
-You specify the Azure SQL server name, database name, user name, and user password in this section. See [Azure SQL linked service](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) for details about JSON properties used to define an Azure SQL linked service.  
+#### <a name="azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービス
+このセクションで、Azure SQL サーバー名、データベース名、ユーザー名、ユーザー パスワードを指定します。 Azure SQL のリンクされたサービスの定義に使用する JSON プロパティの詳細については、[Azure SQL のリンクされたサービス](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関するセクションをご覧ください。  
 
     {
         "type": "linkedservices",
@@ -386,18 +390,18 @@ You specify the Azure SQL server name, database name, user name, and user passwo
         ],
         "apiVersion": "2015-10-01",
         "properties": {
-            "type": "AzureSqlDatabase",
-            "description": "Azure SQL linked service",
-            "typeProperties": {
+              "type": "AzureSqlDatabase",
+              "description": "Azure SQL linked service",
+              "typeProperties": {
                 "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
-            }
+              }
         }
     }
 
-The connectionString uses sqlServerName, databaseName, sqlServerUserName, and sqlServerPassword parameters whose values are passed by using a configuration file. The definition also uses the following variables from the template: azureSqlLinkedServiceName, dataFactoryName.
+connectionString では、sqlServerName、databaseName、sqlServerUserName、sqlServerPassword の各パラメーターを使用しています。これらのパラメーターの値は、構成ファイルを使用して渡されます。 この定義では、テンプレートの azureSqlLinkedServiceName、dataFactoryName の各変数も使用しています。
 
-#### <a name="azure-blob-dataset"></a>Azure blob dataset
-You specify the names of blob container, folder, and file that contains the input data. See [Azure Blob dataset properties](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) for details about JSON properties used to define an Azure Blob dataset. 
+#### <a name="azure-blob-dataset"></a>Azure BLOB データセット
+入力データを格納する BLOB コンテナー、フォルダー、ファイルの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)に関するセクションをご覧ください。 
 
     {
         "type": "datasets",
@@ -409,127 +413,127 @@ You specify the names of blob container, folder, and file that contains the inpu
         "apiVersion": "2015-10-01",
         "properties": {
             "type": "AzureBlob",
-            "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
+              "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
             "structure": [
             {
-                "name": "Column0",
-                "type": "String"
+                  "name": "Column0",
+                  "type": "String"
             },
             {
-                "name": "Column1",
-                "type": "String"
+                  "name": "Column1",
+                  "type": "String"
             }
-            ],
-            "typeProperties": {
+              ],
+              "typeProperties": {
                 "folderPath": "[concat(parameters('sourceBlobContainer'), '/')]",
                 "fileName": "[parameters('sourceBlobName')]",
                 "format": {
-                    "type": "TextFormat",
-                    "columnDelimiter": ","
+                      "type": "TextFormat",
+                      "columnDelimiter": ","
                 }
-            },
-            "availability": {
+              },
+              "availability": {
                 "frequency": "Day",
                 "interval": 1
-            },
-            "external": true
+              },
+              "external": true
         }
     }
 
-#### <a name="azure-sql-dataset"></a>Azure SQL dataset
-You specify the name of the table in the Azure SQL database that holds the copied data from the Azure Blob storage. See [Azure SQL dataset properties](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties) for details about JSON properties used to define an Azure SQL dataset. 
+#### <a name="azure-sql-dataset"></a>Azure SQL データセット
+Azure Blob Storage からコピーしたデータを保持する、Azure SQL Database のテーブルの名前を指定します。 Azure SQL データセットの定義に使用する JSON プロパティの詳細については、[Azure SQL データセットのプロパティ](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties)に関するセクションをご覧ください。 
 
     {
         "type": "datasets",
         "name": "[variables('sqlOutputDatasetName')]",
         "dependsOn": [
             "[variables('dataFactoryName')]",
-            "[variables('azureSqlLinkedServiceName')]"
+              "[variables('azureSqlLinkedServiceName')]"
         ],
         "apiVersion": "2015-10-01",
         "properties": {
-            "type": "AzureSqlTable",
-            "linkedServiceName": "[variables('azureSqlLinkedServiceName')]",
-            "structure": [
+              "type": "AzureSqlTable",
+              "linkedServiceName": "[variables('azureSqlLinkedServiceName')]",
+              "structure": [
             {
-                "name": "FirstName",
-                "type": "String"
+                  "name": "FirstName",
+                  "type": "String"
             },
             {
-                "name": "LastName",
-                "type": "String"
+                  "name": "LastName",
+                  "type": "String"
             }
-            ],
-            "typeProperties": {
+              ],
+              "typeProperties": {
                 "tableName": "[parameters('targetSQLTable')]"
-            },
-            "availability": {
+              },
+              "availability": {
                 "frequency": "Day",
                 "interval": 1
-            }
+              }
         }
     }
 
-#### <a name="data-pipeline"></a>Data pipeline
-You define a pipeline that copies data from the Azure blob dataset to the Azure SQL dataset. See [Pipeline JSON](data-factory-create-pipelines.md#pipeline-json) for descriptions of JSON elements used to define a pipeline in this example. 
+#### <a name="data-pipeline"></a>データ パイプライン
+Azure BLOB データセットから Azure SQL データセットにデータをコピーするパイプラインを定義します。 この例のパイプラインの定義に使用されている JSON 要素については、「[パイプライン JSON](data-factory-create-pipelines.md#pipeline-json)」をご覧ください。 
 
     {
         "type": "datapipelines",
         "name": "[variables('pipelineName')]",
         "dependsOn": [
             "[variables('dataFactoryName')]",
-            "[variables('azureStorageLinkedServiceName')]",
-            "[variables('azureSqlLinkedServiceName')]",
-            "[variables('blobInputDatasetName')]",
-            "[variables('sqlOutputDatasetName')]"
+              "[variables('azureStorageLinkedServiceName')]",
+              "[variables('azureSqlLinkedServiceName')]",
+              "[variables('blobInputDatasetName')]",
+              "[variables('sqlOutputDatasetName')]"
         ],
         "apiVersion": "2015-10-01",
         "properties": {
-            "activities": [
+              "activities": [
             {
-                "name": "CopyFromAzureBlobToAzureSQL",
-                "description": "Copy data frm Azure blob to Azure SQL",
-                "type": "Copy",
-                "inputs": [
+                  "name": "CopyFromAzureBlobToAzureSQL",
+                  "description": "Copy data frm Azure blob to Azure SQL",
+                  "type": "Copy",
+                  "inputs": [
                 {
-                    "name": "[variables('blobInputDatasetName')]"
+                      "name": "[variables('blobInputDatasetName')]"
                 }
-                ],
-                "outputs": [
+                  ],
+                  "outputs": [
                 {
-                    "name": "[variables('sqlOutputDatasetName')]"
+                      "name": "[variables('sqlOutputDatasetName')]"
                 }
-                ],
-                "typeProperties": {
+                  ],
+                  "typeProperties": {
                     "source": {
-                        "type": "BlobSource"
+                          "type": "BlobSource"
                     },
                     "sink": {
-                        "type": "SqlSink",
-                        "sqlWriterCleanupScript": "$$Text.Format('DELETE FROM {0}', 'emp')"
+                          "type": "SqlSink",
+                          "sqlWriterCleanupScript": "$$Text.Format('DELETE FROM {0}', 'emp')"
                     },
                     "translator": {
-                        "type": "TabularTranslator",
-                        "columnMappings": "Column0:FirstName,Column1:LastName"
+                          "type": "TabularTranslator",
+                          "columnMappings": "Column0:FirstName,Column1:LastName"
                     }
-                },
-                "Policy": {
+                  },
+                  "Policy": {
                     "concurrency": 1,
                     "executionPriorityOrder": "NewestFirst",
                     "retry": 3,
                     "timeout": "01:00:00"
-                }
+                  }
             }
-            ],
-            "start": "2016-10-02T00:00:00Z",
-            "end": "2016-10-03T00:00:00Z"
+              ],
+              "start": "2016-10-02T00:00:00Z",
+              "end": "2016-10-03T00:00:00Z"
         }
     }
 
-## <a name="reuse-the-template"></a>Reuse the template
-In the tutorial, you created a template for defining Data Factory entities and a template for passing values for parameters. The pipeline copies data from an Azure Storage account to an Azure SQL database specified via parameters. To use the same template to deploy Data Factory entities to different environments, you create a parameter file for each environment and use it when deploying to that environment.     
+## <a name="reuse-the-template"></a>テンプレートの再利用
+このチュートリアルでは、Data Factory エンティティを定義するためのテンプレートと、パラメーターの値を渡すためのテンプレートを作成しました。 パイプラインでは、パラメーターで指定された Azure Storage アカウントから Azure SQL Database にデータをコピーします。 同じテンプレートを使用して、Data Factory エンティティをさまざまな環境にデプロイするには、環境ごとにパラメーター ファイルを作成し、その環境にデプロイするときに使用します。     
 
-Example:  
+例:  
 
     New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Dev.json
 
@@ -537,10 +541,13 @@ Example:
 
     New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Production.json
 
-Notice that the first command uses parameter file for the development environment, second one for the test environment, and the third one for the production environment.  
+最初のコマンドでは開発環境用、2 番目のコマンドではテスト環境用、3 番目のコマンドでは運用環境用のパラメーター ファイルをそれぞれ使用していることに注意してください。  
 
-You can also reuse the template to perform repeated tasks. For example, you need to create many data factories with one or more pipelines that implement the same logic but each data factory uses different Azure storage and Azure SQL Database accounts. In this scenario, you use the same template in the same environment (dev, test, or production) with different parameter files to create data factories.   
+テンプレートを再利用して、繰り返されるタスクを実行することもできます。 たとえば、1 つ以上のパイプラインを持つ多数のデータ ファクトリを作成する必要があるとします。各データ ファクトリは同じロジックを実装しますが、それぞれ異なる Azure Storage アカウントと Azure SQL Database アカウントを使用します。 このシナリオでは、1 つの環境 (開発、テスト、または運用) で同じテンプレートと異なるパラメーター ファイルを使用してデータ ファクトリを作成します。   
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

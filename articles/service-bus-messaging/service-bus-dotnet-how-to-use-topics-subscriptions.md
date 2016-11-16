@@ -1,12 +1,12 @@
 ---
-title: Service Bus トピックの使用 (.NET) | Microsoft Docs
-description: Azure における Service Bus のトピックとサブスクリプションを .NET で使用する方法について学習します。 コード サンプルは .NET アプリケーション向けに作成されています。
+title: "Service Bus トピックの使用 (.NET) | Microsoft Docs"
+description: "Azure における Service Bus のトピックとサブスクリプションを .NET で使用する方法について学習します。 コード サンプルは .NET アプリケーション向けに作成されています。"
 services: service-bus
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 31d0bc29-6524-4b1b-9c7f-aa15d5a9d3b4
 ms.service: service-bus
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b90d2b49807b39bb7a71315877a8e84550efc9cc
+
 
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions"></a>Service Bus のトピックとサブスクリプションの使用方法
@@ -47,7 +51,7 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
 いずれの場合も、この記事で後ほど説明する `CloudConfigurationManager.GetSetting` メソッドを使用して接続文字列を取得できます。
 
 ### <a name="configure-your-connection-string"></a>接続文字列の構成
-サービス構成メカニズムを使用すると、アプリケーションを再デプロイしなくても [Azure Portal][] から構成設定を動的に変更できます。 たとえば、次の例に示すように、サービス定義 (**.csdef**) ファイルに `Setting` ラベルを追加します。
+サービス構成メカニズムを使用すると、アプリケーションを再デプロイしなくても [Azure Portal][Azure Portal] から構成設定を動的に変更できます。 たとえば、次の例に示すように、サービス定義 (**.csdef**) ファイルに `Setting` ラベルを追加します。
 
 ```
 <ServiceDefinition name="Azure1">
@@ -90,7 +94,7 @@ Websites または Virtual Machines を使用する場合には、.NET 構成シ
 </configuration>
 ```
 
-前に説明したように、[Azure Portal][] から取得した SAS 名とキー値を使用します。
+前に説明したように、[Azure Portal][Azure Portal] から取得した SAS 名とキー値を使用します。
 
 ## <a name="create-a-topic"></a>トピックを作成する
 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスを使用して Service Bus のトピックとサブスクリプションに対する管理操作を実行できます。 このクラスにはトピックの作成、列挙、削除のためのメソッドが用意されています。
@@ -151,7 +155,7 @@ if (!namespaceManager.TopicExists("TestTopic"))
 > 
 > 
 
-### <a name="create-a-subscription-with-the-default-(matchall)-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
+### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 **MatchAll** フィルターは、新しいサブスクリプションの作成時にフィルターが指定されていない場合に使用される既定のフィルターです。 **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、"AllMessages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
 
 ```
@@ -170,7 +174,7 @@ if (!namespaceManager.SubscriptionExists("TestTopic", "AllMessages"))
 ### <a name="create-subscriptions-with-filters"></a>フィルターを適用したサブスクリプションの作成
 トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージを指定できるフィルターを設定することもできます。
 
-サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する [SqlFilter][SqlFilter] クラスです。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SQL フィルターで使用できる式の詳細については、[SqlFilter.SqlExpression][SqlFilter.SqlExpression] 構文の説明を参照してください。
+サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する [SqlFilter][SqlFilter] クラスです。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SQL フィルターで使用できる式の詳細については、[SqlFilter.SqlExpression][SqlFilter.SqlExpression] 構文をご覧ください。
 
 次の例では、**HighMessages** という名前のサブスクリプションを作成し、[SqlFilter][SqlFilter] オブジェクトを適用します。このフィルターでは、カスタム **MessageNumber** プロパティが 3 を超えるメッセージのみが選択されます。
 
@@ -306,10 +310,10 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 * [キュー、トピック、サブスクリプション][キュー、トピック、サブスクリプション]。
 * [トピック フィルターのサンプル][トピック フィルターのサンプル]。
 * [SqlFilter][SqlFilter] の API のリファレンス。
-* Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: 「[Service Bus ブローカー メッセージング .NET チュートリアル][]」を参照してください。
-* Service Bus のサンプル: [Azure のサンプル][Azure のサンプル]からダウンロードするか、[概要](../service-bus/service-bus-samples.md)に関するページを参照してください。
+* Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: 「[Service Bus ブローカー メッセージング .NET チュートリアル][Service Bus ブローカー メッセージングに関する .NET チュートリアル]」を参照してください。
+* Service Bus のサンプル: [Azure のサンプル][Azure のサンプル]からダウンロードするか、[概要](service-bus-samples.md)に関するページを参照してください。
 
-[Azure ポータル]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 
 [7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
 
@@ -322,6 +326,6 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Service Bus ブローカー メッセージング .NET チュートリアル | Microsoft Docs
-description: ブローカー メッセージング .NET チュートリアル。
+title: "Service Bus ブローカー メッセージング .NET チュートリアル | Microsoft Docs"
+description: "ブローカー メッセージング .NET チュートリアル。"
 services: service-bus
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 964e019a-8abe-42f3-8314-867010cb2608
 ms.service: service-bus
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3127a84f4d4cd9881de56a6d199cfb1780cd8189
+
 
 ---
-# <a name="service-bus-brokered-messaging-.net-tutorial"></a>Service Bus ブローカー メッセージング .NET チュートリアル
+# <a name="service-bus-brokered-messaging-net-tutorial"></a>Service Bus ブローカー メッセージング .NET チュートリアル
 Azure Service Bus では、2 種類の包括的メッセージング ソリューションが提供されています。1 つ目は、クラウドで実行する一元的な "リレー" サービスによるもので、SOAP、WS-*、REST など、広範なトランスポート プロトコルと Web サービスの標準をサポートします。 クライアントは、オンプレミス サービスと直接接続する必要はありません。また、クライアントはオンプレミス サービスの場所を知っている必要はありません。オンプレミス サービス側では、ファイアウォールの着信ポートを開く必要がありません。
 
 2 つ目のメッセージング ソリューションでは、"ブローカー" メッセージング機能を使用します。 この機能は、非同期的または分離されたメッセージング機能と考えることができ、Service Bus メッセージング インフラストラクチャを使用する発行/サブスクライブ、一時的な切り離し、負荷分散のシナリオをサポートします。 分離型通信には、クライアントとサーバーを必要に応じて接続し、非同期に操作を実行できるなど多数の利点があります。
 
-このチュートリアルでは、Service Bus ブローカー メッセージングのコア コンポーネントの 1 つであるキューに関する概要と実践的使用例を説明します。 このチュートリアルの一連のトピックでは、メッセージの一覧を設定し、キューを作成して、そのキューにメッセージを送信するアプリケーションを作成します。 最後に、アプリケーションはキューからメッセージを受信して表示した後、リソースをクリーンアップして終了します。 Service Bus Relay を使用するアプリケーションを構築する方法を説明する該当のチュートリアルについては、[Service Bus リレー型メッセージングのチュートリアル](../service-bus-relay/service-bus-relay-tutorial.md)に関するページを参照してください。
+このチュートリアルでは、Service Bus ブローカー メッセージングのコア コンポーネントの 1 つであるキューに関する概要と実践的使用例を説明します。 このチュートリアルの一連のトピックでは、メッセージの一覧を設定し、キューを作成して、そのキューにメッセージを送信するアプリケーションを作成します。 最後に、アプリケーションはキューからメッセージを受信して表示した後、リソースをクリーンアップして終了します。 Service Bus WCF Relay を使用したアプリケーションの構築方法を説明する当該のチュートリアルについては、[Service Bus リレー型メッセージングのチュートリアル](../service-bus-relay/service-bus-relay-tutorial.md)に関するページを参照してください。
 
 ## <a name="introduction-and-prerequisites"></a>概要と前提条件
 キューでは、コンシューマーが競合している場合のメッセージ配信に先入先出法 (FIFO) を使用します。 FIFO では、通常、メッセージはキューに追加された順番に受信され、処理されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。 キューを使用する主なメリットは、アプリケーション コンポーネントの "*一時的な結合の解除*" を実現することです。つまり、メッセージはキューに永続的に格納されるため、プロデューサーとコンシューマーは同時にメッセージを送受信する必要はありません。 関連する利点として "*負荷平準化*" があります。これにより、プロデューサーとコンシューマーは異なるレートでメッセージを送受信できます。
@@ -29,7 +33,7 @@ Azure Service Bus では、2 種類の包括的メッセージング ソリュ�
 このチュートリアルを始める前に済ましておく必要がある管理および準備の手順を次に示します。 最初に、サービス名前空間を作成し、Shared Access Signature (SAS) キーを取得します。 名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。 サービス名前空間が作成された時点で、SAS キーが生成されます。 サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
 ### <a name="create-a-service-namespace-and-obtain-a-sas-key"></a>サービス名前空間を作成し、SAS キーを取得する
-最初の手順では、サービス名前空間を作成し、[Shared Access Signature](../service-bus/service-bus-sas-overview.md) (SAS) キーを取得します。 名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。 サービス名前空間が作成された時点で、SAS キーが生成されます。 サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
+最初の手順では、サービス名前空間を作成し、[Shared Access Signature](service-bus-sas-overview.md) (SAS) キーを取得します。 名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。 サービス名前空間が作成された時点で、SAS キーが生成されます。 サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -611,14 +615,17 @@ namespace Microsoft.ServiceBus.Samples
 Visual Studio の **[ビルド]** メニューで **[ソリューションのビルド]** をクリックするか、**Ctrl + Shift + B** キーを押します。 エラーが発生する場合は、前の手順の最後に示されている完全な例を基にして、コードが正しいことを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Service Bus の ブローカー メッセージング機能を使用して、Service Bus クライアント アプリケーションとサービスを構築する方法を紹介しました。 Service Bus [リレー](service-bus-messaging-overview.md#Relayed-messaging)を使用する類似のチュートリアルについては、[Service Bus リレー型メッセージングのチュートリアル](../service-bus-relay/service-bus-relay-tutorial.md)に関するページを参照してください。
+このチュートリアルでは、Service Bus の ブローカー メッセージング機能を使用して、Service Bus クライアント アプリケーションとサービスを構築する方法を紹介しました。 Service Bus [WCF Relay](service-bus-messaging-overview.md#Relayed-messaging) を使用する類似のチュートリアルについては、[Service Bus リレー型メッセージングのチュートリアル](../service-bus-relay/service-bus-relay-tutorial.md)に関するページを参照してください。
 
 [Service Bus](https://azure.microsoft.com/services/service-bus/)の詳細については、次のトピックを参照してください。
 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [Service Bus の基礎](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
-* [Service Bus のアーキテクチャ](../service-bus/service-bus-architecture.md)
+* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
+* [Service Bus のアーキテクチャ](service-bus-architecture.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

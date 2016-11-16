@@ -1,12 +1,12 @@
 ---
-title: Operations Management Suite (OMS) アーキテクチャ | Microsoft Docs
-description: Microsoft Operations Management Suite (OMS) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。  この記事では、OMS に含まれるさまざまなサービスについて説明し、詳細なコンテンツへのリンクを提供します。
+title: "Operations Management Suite (OMS) アーキテクチャ | Microsoft Docs"
+description: "Microsoft Operations Management Suite (OMS) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。  この記事では、OMS に含まれるさまざまなサービスについて説明し、詳細なコンテンツへのリンクを提供します。"
 services: operations-management-suite
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 40e41686-7e35-4d85-bbe8-edbcb295a534
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 88c0bd67562111baa5aa5882b7c1a4ef52bc6dd2
+
 
 ---
 # <a name="oms-architecture"></a>OMS アーキテクチャ
@@ -80,6 +84,9 @@ Azure Site Recovery には、3 つの基本的なレプリケーション シナ
 * [Azure Backup](http://azure.microsoft.com/documentation/services/backup)の詳細を確認する。
 * [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery)の詳細を確認する。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

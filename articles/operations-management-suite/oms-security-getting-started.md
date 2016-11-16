@@ -1,12 +1,12 @@
 ---
-title: Operations Management Suite のセキュリティと監査ソリューションの概要 | Microsoft Docs
-description: このドキュメントは、Operations Management Suite のセキュリティと監査ソリューションの機能を利用してハイブリッド クラウドの監視を開始する際に役立ちます。
+title: "Operations Management Suite のセキュリティと監査ソリューションの概要 | Microsoft Docs"
+description: "このドキュメントは、Operations Management Suite のセキュリティと監査ソリューションの機能を利用してハイブリッド クラウドの監視を開始する際に役立ちます。"
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: 754796ef-a43e-468a-86c9-04a2eda55b5b
 ms.service: operations-management-suite
 ms.topic: get-started-article
 ms.devlang: na
@@ -14,12 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: fe043cd4438612ada9a31ae895aae75b913b0a37
+
 
 ---
 # <a name="getting-started-with-operations-management-suite-security-and-audit-solution"></a>Operations Management Suite のセキュリティと監査ソリューションの概要
 このドキュメントでは、Operations Management Suite (OMS) のセキュリティと監査ソリューションの機能をすぐに利用できるように、各オプションについて詳しく説明します。
 
-## <a name="what-is-oms?"></a>OMS とは
+## <a name="what-is-oms"></a>OMS とは
 Microsoft Operations Management Suite (OMS) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 OMS の詳細については、[Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx)に関する記事を参照してください。
 
 ## <a name="oms-security-and-audit-dashboard"></a>OMS Security and Audit dashboard
@@ -53,7 +57,7 @@ OMS のセキュリティと監査ダッシュボードは、次の 4 つの主�
 > 
 > 
 
-## <a name="security-domains"></a>[Security Domains](セキュリティ ドメイン.md)
+## <a name="security-domains"></a>[Security Domains] (セキュリティ ドメイン)
 リソースを監視する場合は、現在の環境の状態にすばやくアクセスできるようにする必要があります。 しかし、過去に発生したイベントをさかのぼって追跡できることも重要であり、これによって特定の時点で環境内に発生したイベントを詳細に把握できるようになります。 
 
 > [!NOTE]
@@ -92,7 +96,7 @@ OMS のダッシュボードに表示されているその他のライブ タイ
 
 コンピューターの名前をクリックすると、このコンピューターの保護の状態についての時系列ビューが表示されます。 この機能は、過去にマルウェア対策がインストールされていて、ある時点でそれが削除されたようなケースを把握する必要がある場合に、非常に役に立ちます。   
 
-### <a name="update-assessment"></a>[Update Assessment](更新の評価.md)
+### <a name="update-assessment"></a>[Update Assessment] (更新の評価)
 このオプションでは、潜在的なセキュリティの問題に全体でどの程度さらされているか、これらの更新プログラムが環境にとって重要かどうか、その重要度はどの程度かをすばやく判断することができます。 OMS のセキュリティと監査ソリューションで提供するのは、これらの更新プログラムの視覚化機能のみであり、実際のデータは OMS 内の別のモジュールである[システムの更新ソリューション](https://technet.microsoft.com/library/mt484096.aspx)から提供されます。 次に更新プログラムの例を示します。
 
 ![system updates](./media/oms-security-getting-started/oms-getting-started-fig6.png)
@@ -129,17 +133,17 @@ ID アクティビティを監視することにより、インシデントが�
 
 各コンピューターをクリックするとさらに詳細が表示され、フラグが設定されたセキュリティ イベントを確認することができます。
 
-### <a name="azure-security-center"></a>[Azure Security Center](Azure Security Center.md)
+### <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
 このタイルは、基本的には Azure Security Center のダッシュボードにアクセスするためのショートカットです。 このソリューションの詳細については、 [Azure Security Center の概要](../security-center/security-center-get-started.md) に関するページを参照してください。
 
-## <a name="notable-issues"></a>[Notable Issues](注目すべき問題.md)
-複数のオプションから成るこのグループの主な目的は、環境内で発生している問題を、重大、警告、情報に分類して簡単に確認できるようにすることです。 これらの問題を視覚化したものが [Active issue type](アクティブな問題の種類.md) タイルですが、このタイルでは問題ごとの詳細を確認することはできません。詳細を確認するには、このタイルの下部の、問題の名前 ([NAME](名前.md))、問題によって発生したオブジェクトの数 ([COUNT](カウント.md))、問題の重大度 ([SEVERITY](重要度.md)) が表示されている部分を使用する必要があります。
+## <a name="notable-issues"></a>[Notable Issues] (注目すべき問題)
+複数のオプションから成るこのグループの主な目的は、環境内で発生している問題を、重大、警告、情報に分類して簡単に確認できるようにすることです。 これらの問題を視覚化したものが [Active issue type] (アクティブな問題の種類) タイルですが、このタイルでは問題ごとの詳細を確認することはできません。詳細を確認するには、このタイルの下部の、問題の名前 ([NAME] (名前))、問題によって発生したオブジェクトの数 ([COUNT] (カウント))、問題の重大度 ([SEVERITY] (重要度)) が表示されている部分を使用する必要があります。
 
 ![[Notable Issues] (注目すべき問題)](./media/oms-security-getting-started/oms-getting-started-fig10.JPG)
 
 ご存じのとおり、これらの問題は既に **[セキュリティ ドメイン]** グループのさまざまな領域で取り上げられていました。このことからも、利用する環境において最も重要な問題を 1 つの場所で視覚化するという、このビューの目的が明確になっています。
 
-## <a name="detections-(preview)"></a>[検出 (プレビュー)]
+## <a name="detections-preview"></a>[検出 (プレビュー)]
 このオプションの主な目的は、IT が、利用する環境に対する潜在的な脅威とこの脅威の重要度をすばやく特定できるようにすることです。
 
 ![Threat Intel](./media/oms-security-getting-started/oms-getting-started-fig12.png)
@@ -179,6 +183,9 @@ ID アクティビティを監視することにより、インシデントが�
 * [Operations Management Suite のセキュリティと監査ソリューションでのセキュリティの警告に対する監視と対応](oms-security-responding-alerts.md)
 * [Operations Management Suite のセキュリティと監査ソリューションでのリソースの監視](oms-security-monitoring-resources.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

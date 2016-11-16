@@ -1,12 +1,12 @@
 ---
-title: CSV ファイルから Azure SQL Database へのデータの読み込み (bcp) | Microsoft Docs
-description: データ サイズが小さい場合は、bcp を使用して Azure SQL Database にデータをインポートできます。
+title: "CSV ファイルから Azure SQL Database へのデータの読み込み (bcp) | Microsoft Docs"
+description: "データ サイズが小さい場合は、bcp を使用して Azure SQL Database にデータをインポートできます。"
 services: sql-database
 documentationcenter: NA
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 875f9b8d-f1a1-4895-b717-f45570fb7f80
 ms.service: sql-database
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 09/13/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8d6e201ba5fb8283d883272e0cb2b8e7c11f43e5
+
 
 ---
-# CSV から Azure SQL Data Warehouse へのデータの読み込み (フラット ファイル)
+# <a name="load-data-from-csv-into-azure-sql-data-warehouse-flat-files"></a>CSV から Azure SQL Data Warehouse へのデータの読み込み (フラット ファイル)
 bcp コマンドライン ユーティリティを使用して、CSV ファイルから Azure SQL Database にデータをインポートできます。
 
-## 開始する前に
-### 前提条件
+## <a name="before-you-begin"></a>開始する前に
+### <a name="prerequisites"></a>前提条件
 このチュートリアルを進めるには、次が必要です。
 
 * Azure SQL Database の論理サーバーとデータベース
@@ -29,11 +33,11 @@ bcp コマンドライン ユーティリティを使用して、CSV ファイ�
 
 bcp および sqlcmd ユーティリティは [Microsoft ダウンロード センター][Microsoft ダウンロード センター]からダウンロードできます。
 
-### ASCII または UTF-16 形式のデータ
-自身のデータを使ってこのチュートリアルを試す場合、bcp では UTF-8 がサポートされないため、データには ASCII または UTF-16 エンコードを使用する必要があります。
+### <a name="data-in-ascii-or-utf16-format"></a>ASCII または UTF-16 形式のデータ
+自身のデータを使ってこのチュートリアルを試す場合、bcp では UTF-8 がサポートされないため、データには ASCII または UTF-16 エンコードを使用する必要があります。 
 
-## 1\.ターゲット テーブルを作成する
-SQL Database 内でターゲット テーブルとなるテーブルを定義します。テーブル内の各列は、データ ファイルの各行のデータに対応する必要があります。
+## <a name="1-create-a-destination-table"></a>1.ターゲット テーブルを作成する
+SQL Database 内でターゲット テーブルとなるテーブルを定義します。 テーブル内の各列は、データ ファイルの各行のデータに対応する必要があります。
 
 テーブルを作成するには、コマンド プロンプトを開き、sqlcmd.exe を使用して次のコマンドを実行します。
 
@@ -50,8 +54,8 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## 手順 2.ソース データ ファイルを作成する
-メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\\Temp\\DimDate2.txt)。このデータは ASCII 形式です。
+## <a name="2-create-a-source-data-file"></a>手順 2.ソース データ ファイルを作成する
+メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\Temp\DimDate2.txt)。 このデータは ASCII 形式です。
 
 ```
 20150301,1,3
@@ -68,13 +72,13 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 20150101,1,3
 ```
 
-(オプション) 自身のデータを SQL Server データベースからエクスポートするには、コマンド プロンプトを開き、次のコマンドを実行します。TableName、ServerName、DatabaseName、Username、および Password を自身の情報に置き換えてください。
+(オプション) 自身のデータを SQL Server データベースからエクスポートするには、コマンド プロンプトを開き、次のコマンドを実行します。 TableName、ServerName、DatabaseName、Username、および Password を自身の情報に置き換えてください。
 
 ```sql
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t ','
 ```
 
-## 3\.データを読み込む
+## <a name="3-load-the-data"></a>3.データを読み込む
 データを読み込むには、コマンド プロンプトを開き、次のコマンドを実行します。ここでは、ServerName、DatabaseName、Username、および Password を自身の情報に置き換えます。
 
 ```sql
@@ -104,14 +108,18 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20151101 |4 |2 |
 | 20151201 |4 |2 |
 
-## 次のステップ
-SQL Server データベースを移行するには、[SQL Server データベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
+## <a name="next-steps"></a>次のステップ
+SQL Server データベースを移行するには、 [SQL Server データベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
+[CREATE TABLE 構文]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

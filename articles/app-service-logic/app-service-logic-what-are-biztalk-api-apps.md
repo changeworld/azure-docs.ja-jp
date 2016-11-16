@@ -1,12 +1,12 @@
 ---
-title: コネクタと BizTalk API Apps とは
-description: API Apps、コネクタ、および BizTalk API Apps について説明します。
+title: "コネクタと BizTalk API Apps とは"
+description: "API Apps、コネクタ、および BizTalk API Apps について説明します。"
 services: logic-apps
-documentationcenter: ''
+documentationcenter: 
 author: MandiOhlinger
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 1295ea9c-30e0-4b5c-931e-51aefae2d4fe
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: mandia
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c89b0714a5c6e606cf8517a40be62cc856d5959c
+
 
 ---
 # <a name="what-are-connectors-and-biztalk-api-apps"></a>コネクタと BizTalk API Apps とは
@@ -45,6 +49,9 @@ ms.author: mandia
 ## <a name="connector-and-api-app-list"></a>コネクタと API のアプリの一覧
 Standard コネクタ、BizTalk EAI、Premium コネクタなどの各カテゴリに含まれるコネクタと API Apps の完全な一覧については、 [コネクタと API Apps の一覧](app-service-logic-connectors-list.md) を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

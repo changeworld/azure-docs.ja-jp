@@ -1,13 +1,13 @@
 ---
-title: Microsoft Power BI Embedded の概要
-description: Power BI Embedded、対話型の Power BI レポートをビジネス インテリジェンス アプリケーションに追加する
+title: "Microsoft Power BI Embedded の概要"
+description: "Power BI Embedded、対話型の Power BI レポートをビジネス インテリジェンス アプリケーションに追加する"
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 4787cf44-5d1c-4bc3-b3fd-bf396e5c1176
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: hero-article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b8748ffac2159661d9496b7033b510e6e584fe0f
+
 
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Microsoft Power BI Embedded の概要
@@ -66,13 +70,13 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 アプリケーション用の Power BI のインスタンスと **アクセス キー**が準備できたら、レポートをアプリにインポートできます。 レポートのインポート方法を説明する前に、次のセクションで、アプリに埋め込む Power BI データセットとレポートの作成について説明します。
 
 ## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app"></a>アプリに埋め込む Power BI データセットとレポートの作成
-アプリケーション用の Power BI のインスタンスと **アクセス キー**が準備できたら、埋め込む Power BI データセットとレポートを作成する必要があります。 データセットとレポートは、**Power BI Desktop** を使用して作成できます。 [Power BI Desktop は無料で](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)ダウンロードできます。 または、[Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をダウンロードしてすぐに開始できます。 **Power BI Desktop** の使用方法の詳細については、「[Power BI Desktop の概要](https://powerbi.microsoft.com/en-us/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop)」を参照してください。
+アプリケーション用の Power BI のインスタンスと **アクセス キー**が準備できたら、埋め込む Power BI データセットとレポートを作成する必要があります。 データセットとレポートは、**Power BI Desktop** を使用して作成できます。 [Power BI Desktop は無料で](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)ダウンロードできます。 または、 [Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547)をダウンロードしてすぐに開始できます。 **Power BI Desktop** の使用方法の詳細については、「[Power BI Desktop の概要](https://powerbi.microsoft.com/en-us/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop)」を参照してください。
 
 **Power BI Desktop** でデータ ソースに接続する場合、データのコピーを **Power BI Desktop** にインポートする方法と、**DirectQuery** を使ってデータ ソースに直接接続する方法があります。
 
 **インポート**する方法と **DirectQuery** を使う方法の違いを次に示します。
 
-| インポート | DirectQuery |
+| [インポート] | DirectQuery |
 | --- | --- |
 | テーブル、列、 *データ* が **Power BI Desktop**にインポートまたはコピーされます。 視覚化の際、 **Power BI Desktop** はデータのコピーを照会します。 基になるデータに加えられた変更を表示するには、更新する (現在の完全なデータセットをもう一度インポートする) 必要があります。 |*テーブルと列*のみが **Power BI Desktop** にインポートまたはコピーされます。 視覚化の際、**Power BI Desktop** は基になるデータ ソースを照会します。そのため、常に最新のデータが表示されます。 |
 
@@ -100,6 +104,9 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 * [Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)
 * [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: ピーク時間外 VM 起動/停止 [プレビュー] ソリューション | Microsoft Docs
-description: スケジュールに従って Azure Resource Manager 仮想マシンを起動/停止し、Log Analytics からプロアクティブに監視する VM 管理ソリューションについて説明します。
+title: "ピーク時間外 VM 起動/停止 [プレビュー] ソリューション | Microsoft Docs"
+description: "スケジュールに従って Azure Resource Manager 仮想マシンを起動/停止し、Log Analytics からプロアクティブに監視する VM 管理ソリューションについて説明します。"
 services: automation
-documentationcenter: ''
+documentationcenter: 
 author: MGoedtel
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883
 ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/07/2016
 ms.author: magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b0fec06e4a167e615381fca17def46923d9f0f1b
+
 
 ---
-# <a name="start/stop-vms-during-off-hours-[preview]-solution-in-automation"></a>ピーク時間外 VM 起動/停止 [プレビュー] ソリューション (Automation)
+# <a name="startstop-vms-during-offhours-preview-solution-in-automation"></a>ピーク時間外 VM 起動/停止 [プレビュー] ソリューション (Automation)
 ピーク時間外 VM 起動/停止 (プレビュー) は、ユーザー定義のスケジュールに従って Azure Resource Manager 仮想マシンを起動/停止することによって、それらの仮想マシンを起動/停止する Automation ジョブが正常に実行されているかどうかを OMS Log Analytics で分析するソリューションです。  
 
 ## <a name="prerequisites"></a>前提条件
@@ -80,8 +84,8 @@ ms.author: magoedte
 ピーク時間外 VM 起動/停止 [プレビュー] ソリューションをご利用の Automation アカウントに追加し、変数を設定してソリューションをカスタマイズするには、以下の手順を実行します。
 
 1. Azure Portal のホーム画面から **[Marketplace]** タイルを選択します。  このタイルがホーム画面にピン留めされていない場合は、左側のナビゲーション ウィンドウから **[新規]** を選択します。  
-2. [Marketplace] ブレードの検索ボックスに「**Start VM**」と入力し、検索結果から **[Start/Stop VMs during off-hours [Preview](ピーク時間外 VM 起動/停止 \[プレビュー\].md)]** を選択します。  
-3. 選択したソリューションの **[Start/Stop VMs during off-hours [Preview](ピーク時間外 VM 起動/停止 \[プレビュー\].md)]** ブレードで概要を確認し、**[作成]** をクリックします。  
+2. [Marketplace] ブレードの検索ボックスに「**Start VM**」と入力し、検索結果から **[Start/Stop VMs during off-hours [Preview] (ピーク時間外 VM 起動/停止 [プレビュー])]** を選択します。  
+3. 選択したソリューションの **[Start/Stop VMs during off-hours [Preview] (ピーク時間外 VM 起動/停止 [プレビュー])]** ブレードで概要を確認し、**[作成]** をクリックします。  
 4. **[ソリューションの追加]** ブレードが表示されます。Automation サブスクリプションにインポートするソリューションの設定を事前に行うよう求められます。<br><br> ![VM 管理の [ソリューションの追加] ブレード](media/automation-solution-vm-management/vm-management-solution-add-solution-blade.png)<br><br>
 5. **[ソリューションの追加]** ブレードで **[ワークスペース]** を選択し、ここで、Automation アカウントと同じ Azure サブスクリプションに関連付けられている OMS ワークスペースを選択するか、新しい OMS ワークスペースを作成します。  OMS ワークスペースがない場合は、**[新しいワークスペースの作成]** を選択し、**[OMS Workspace (OMS ワークスペース)]** ブレードで次の手順を実行します。 
    
@@ -121,7 +125,7 @@ OMS ワークスペースに VM 管理ソリューションを追加すると、
 
 このブレードから、OMS ワークスペースを開いたり、ジョブ レコードの分析をさらに実行したりすることもできます。  **[すべての設定]** をクリックし、**[設定]** ブレードで **[クイック スタート]** を選択してから、**[クイック スタート]** ブレードで **[OMS Portal (OMS ポータル)]** を選択します。   新しいタブまたは新しいブラウザー セッションが開き、Automation のアカウントとサブスクリプションに関連付けられた OMS ワークスペースが表示されます。  
 
-### <a name="configuring-e-mail-notifications"></a>電子メール通知の構成
+### <a name="configuring-email-notifications"></a>電子メール通知の構成
 VM の起動/停止 Runbook が完了したときの電子メール通知を有効にするには、**O365Credential** の資格情報を変更したうえで、少なくとも次の変数に変更を加える必要があります。
 
 * SendMailO365-IsSendEmail-MS-Mgmt
@@ -161,7 +165,7 @@ Automation により 2 種類のレコードが OMS リポジトリに作成さ�
 | ResourceProvider |デプロイと管理の対象となるリソースのプロバイダー (Azure サービス) を指定します。  Automation の場合、その値は Azure Automation になります。 |
 | ResourceType |Azure のリソースの種類を指定します。  Automation の場合、値は Runbook に関連付けられている Automation アカウントです。 |
 | resultType |Runbook ジョブの状態。  次のいずれかの値になります。<br>- 開始済み<br>- 停止済み<br>- 中断<br>- 失敗<br>- 成功 |
-| resultDescription |Runbook ジョブの結果の状態について説明します。  次のいずれかの値になります。<br>- ジョブが開始されました<br>- 失敗したジョブ<br>- ジョブが完了しました |
+| resultDescription |Runbook ジョブの結果の状態について説明します。  次のいずれかの値になります。<br>- ジョブが開始されました<br>- ジョブが失敗しました<br>- ジョブが完了しました |
 | RunbookName |Runbook の名前を指定します。 |
 | SourceSystem |送信されたデータのソース システムを指定します。  Automation の場合、値は OpsManager になります。 |
 | StreamType |イベントの種類を指定します。 次のいずれかの値になります。<br>- 詳細<br>- 出力<br>- エラー<br>- 警告 |
@@ -202,6 +206,9 @@ Automation により 2 種類のレコードが OMS リポジトリに作成さ�
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、 [Runbook ジョブの追跡](automation-runbook-execution.md)
 * OMS Log Analytics とデータ収集ソースの詳細については、 [Log Analytics での Azure Storage データの収集の概要](../log-analytics/log-analytics-azure-storage.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

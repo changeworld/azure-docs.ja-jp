@@ -1,12 +1,12 @@
 ---
-title: Unity iOS デプロイでの Azure Mobile Engagement の使用
-description: iOS デバイスにデプロイする Unity アプリの分析やプッシュ通知で Azure Mobile Engagement を使用する方法について説明します。
+title: "Unity iOS デプロイでの Azure Mobile Engagement の使用"
+description: "iOS デバイスにデプロイする Unity アプリの分析やプッシュ通知で Azure Mobile Engagement を使用する方法について説明します。"
 services: mobile-engagement
 documentationcenter: unity
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 7ddfbac3-8d13-4ebe-b061-c865f357297f
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-unity-ios
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c8f50404771965ec636065346ac04e059d264c3d
+
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-unity-ios-deployment"></a>Unity iOS デプロイでの Azure Mobile Engagement の使用
@@ -33,10 +37,10 @@ ms.author: piyushjo
 > 
 > 
 
-## <a name="<a-id="setup-azme"></a>setup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>iOS アプリ用に Mobile Engagement を設定する
+## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>iOS アプリ用に Mobile Engagement を設定する
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="<a-id="connecting-app"></a>connect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 ### <a name="import-the-unity-package"></a>Unity パッケージのインポート
 1. [Mobile Engagement Unity パッケージ](https://aka.ms/azmeunitysdk) をダウンロードし、ローカル コンピューターに保存します。 
 2. **[Assets (アセット)]、[Import Package (パッケージのインポート)]、[Custom Package (カスタム パッケージ)]** の順に移動し、前の手順でダウンロードしたパッケージを選択します。 
@@ -90,10 +94,10 @@ ms.author: piyushjo
     ![][75]
 9. XCode でアプリを実行すると、接続されているデバイスにパッケージがデプロイされ、スマートフォンに Unity ゲームが表示されます。 
 
-## <a name="<a-id="monitor"></a>connect-app-with-real-time-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
+## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="<a-id="integrate-push"></a>enable-push-notifications-and-in-app-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
+## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
 Mobile Engagement により、ユーザーと通信を行い、キャンペーンに関するプッシュ通知とアプリ内メッセージングを届けることができます。 このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。
 通知を受け取るためにさらにアプリの構成を行う必要はありません。設定は既に完了しています。
 
@@ -115,6 +119,6 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

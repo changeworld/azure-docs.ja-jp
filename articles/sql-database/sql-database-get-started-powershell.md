@@ -1,13 +1,13 @@
 ---
-title: PowerShell を使用した新しい SQL Database の設定 | Microsoft Docs
-description: PowerShell で SQL データベースを作成する方法について説明します。PowerShell コマンドレットを使用して、一般的なデータベース設定タスクを管理できます。
-keywords: 新しい SQL Database の作成、データベースの設定
+title: "PowerShell を使用した新しい SQL Database の設定 | Microsoft Docs"
+description: "PowerShell で SQL データベースを作成する方法について説明します。 PowerShell コマンドレットを使用して、一般的なデータベース設定タスクを管理できます。"
+keywords: "新しい SQL Database の作成、データベースの設定"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 7d99869b-cec5-4583-8c1c-4c663f4afd4d
 ms.service: sql-database
 ms.devlang: NA
 ms.topic: hero-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: powershell
 ms.workload: data-management
 ms.date: 08/19/2016
 ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 87e52fe29f659577d7dc0c9661ebde2c1c475cfc
+
 
 ---
-# PowerShell コマンドレットを使用して SQL データベースを作成し、一般的なデータベース設定タスクを実行する
+# <a name="create-a-sql-database-and-perform-common-database-setup-tasks-with-powershell-cmdlets"></a>PowerShell コマンドレットを使用して SQL データベースを作成し、一般的なデータベース設定タスクを実行する
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-database-get-started.md)
 > * [PowerShell](sql-database-get-started-powershell.md)
@@ -25,50 +29,50 @@ ms.author: sstein
 > 
 > 
 
-PowerShell コマンドレットを使用して SQL データベースを作成する方法について説明します。(Elastic Database の作成については、「[PowerShell による新しい Elastic Database プールの作成](sql-database-elastic-pool-create-powershell.md)」を参照してください。)
+PowerShell コマンドレットを使用して SQL データベースを作成する方法について説明します。 (エラスティック データベースの作成については、「[PowerShell による新しい Elastic Database プールの作成](sql-database-elastic-pool-create-powershell.md)」を参照してください。)
 
-[!INCLUDE [PowerShell セッションの開始](../../includes/sql-database-powershell.md)]
+[!INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
-## データベースの設定: リソース グループ、サーバー、ファイアウォール規則を作成する
-これで、選択した Azure サブスクリプションに対してコマンドレットを実行する準備ができたので、次にデータベースを作成するサーバーを含むリソース グループを確立します。次のコマンドを編集して選択した任意の有効な場所で使用できます。**(Get-AzureRmLocation | Where-Object { $\_.Providers -eq "Microsoft.Sql" }).Location** を実行して有効な場所の一覧を取得します。
+## <a name="database-setup-create-a-resource-group-server-and-firewall-rule"></a>データベースの設定: リソース グループ、サーバー、ファイアウォール規則を作成する
+これで、選択した Azure サブスクリプションに対してコマンドレットを実行する準備ができたので、次にデータベースを作成するサーバーを含むリソース グループを確立します。 次のコマンドを編集して選択した任意の有効な場所で使用できます。 **(Get-AzureRmLocation | Where-Object { $_.Providers -eq "Microsoft.Sql" }).Location** を実行して有効な場所の一覧を取得します。
 
 次のコマンドを実行して、リソース グループを作成します。
 
     New-AzureRmResourceGroup -Name "resourcegroupsqlgsps" -Location "westus"
 
 
-### サーバーの作成
-SQL データベースは Azure SQL Database サーバーの内部で作成されます。**New-AzureRmSqlServer** を実行してサーバーを作成します。サーバーの名前は、すべての Azure SQL Database サーバーに対して一意であることが必要です。サーバー名を既に取得している場合は、エラーが表示されます。このコマンドは完了するまでに数分かかる場合があることに注意してください。コマンドを編集して有効な場所を選択して使用できますが、前の手順でのリソース グループ作成時に使用した場所と同じでなければなりません。
+### <a name="create-a-server"></a>サーバーの作成
+SQL データベースは Azure SQL Database サーバーの内部で作成されます。 [New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715\(v=azure.300\).aspx) を実行してサーバーを作成します。 サーバーの名前は、すべての Azure SQL Database サーバーに対して一意であることが必要です。 サーバー名を既に取得している場合は、エラーが表示されます。 このコマンドは完了するまでに数分かかる場合があることに注意してください。 コマンドを編集して有効な場所を選択して使用できますが、前の手順でのリソース グループ作成時に使用した場所と同じでなければなりません。
 
     New-AzureRmSqlServer -ResourceGroupName "resourcegroupsqlgsps" -ServerName "server1" -Location "westus" -ServerVersion "12.0"
 
-このコマンドを実行すると、ユーザー名とパスワードの入力を求められます。Azure の資格情報は入力しないでください。代わりに、サーバー管理者として作成するユーザー名とパスワードを入力します。この記事の末尾のスクリプトは、コードでサーバー資格情報を設定する方法を示しています。
+このコマンドを実行すると、ユーザー名とパスワードの入力を求められます。 Azure の資格情報は入力しないでください。 代わりに、サーバー管理者として作成するユーザー名とパスワードを入力します。 この記事の末尾のスクリプトは、コードでサーバー資格情報を設定する方法を示しています。
 
 サーバーが正常に作成されると、サーバーの詳細が表示されます。
 
-### サーバーのファイアウォール規則を構成し、サーバーへのアクセスを許可します。
-サーバーにアクセスするには、ファイアウォール規則を確立する必要があります。ご利用のコンピューターで有効な開始 IP アドレスと終了 IP アドレスに置き換え、次のコマンドを実行します。
+### <a name="configure-a-server-firewall-rule-to-allow-access-to-the-server"></a>サーバーのファイアウォール規則を構成し、サーバーへのアクセスを許可します。
+サーバーにアクセスするには、ファイアウォール規則を確立する必要があります。 開始 IP アドレスと終了 IP アドレスをご利用のコンピューターで有効な値に置き換えて、[New-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603860\(v=azure.300\).aspx) コマンドを実行します。
 
     New-AzureRmSqlServerFirewallRule -ResourceGroupName "resourcegroupsqlgsps" -ServerName "server1" -FirewallRuleName "rule1" -StartIpAddress "192.168.0.0" -EndIpAddress "192.168.0.0"
 
 規則が正常に作成されると、ファイアウォール規則の詳細が表示されます。
 
-他の Azure サービスによるサーバーへのアクセスを許可するには、ファイアウォール規則を追加し、StartIpAddress と EndIpAddress を 0.0.0.0 に設定します。この規則は、すべての Azure サブスクリプションからの Azure トラフィックに、サーバーへのアクセスを許可します。
+他の Azure サービスによるサーバーへのアクセスを許可するには、ファイアウォール規則を追加し、StartIpAddress と EndIpAddress を 0.0.0.0 に設定します。 この規則は、すべての Azure サブスクリプションからの Azure トラフィックに、サーバーへのアクセスを許可します。
 
-詳細については、「[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)」をご覧ください。
+詳細については、「 [Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)」をご覧ください。
 
-## SQL Database の作成
+## <a name="create-a-sql-database"></a>SQL Database の作成
 これでリソース グループ、サーバー、ファイアウォール規則が構成され、サーバーにアクセスできるようになりました。
 
-次のコマンドは、S1 パフォーマンス レベル、Standard サービス レベルで (空の) SQL データベースを作成します。
+次の [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339\(v=azure.300\).aspx) コマンドは、S1 パフォーマンス レベル、Standard サービス レベルで (空の) SQL データベースを作成します。
 
     New-AzureRmSqlDatabase -ResourceGroupName "resourcegroupsqlgsps" -ServerName "server1" -DatabaseName "database1" -Edition "Standard" -RequestedServiceObjectiveName "S1"
 
 
 データベースが正常に作成されると、データベースの詳細が表示されます。
 
-## SQL データベースの PowerShell スクリプト作成
-次の PowerShell スクリプトは、SQL データベースとそのすべての依存リソースを作成します。すべての `{variables}` を、自分のサブスクリプションおよびリソースに固有の値に置き換えます (値を設定するときに、**{}** は削除します)。
+## <a name="create-a-sql-database-powershell-script"></a>SQL データベースの PowerShell スクリプト作成
+次の PowerShell スクリプトは、SQL データベースとそのすべての依存リソースを作成します。 すべての `{variables}` を、自分のサブスクリプションおよびリソースに固有の値に置き換えます (値を設定するときに、 **{}** は削除します)。
 
     # Sign in to Azure and set the subscription to work with
     $SubscriptionId = "{subscription-id}"
@@ -119,13 +123,19 @@ SQL データベースは Azure SQL Database サーバーの内部で作成さ�
 
 
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 SQL データベースを作成し、基本的なデータベース設定タスクを実行したら、次の手順を実行します。
 
 * [PowerShell を使用して SQL Database を管理する](sql-database-manage-powershell.md)
 * [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
 
-## その他のリソース
+## <a name="additional-resources"></a>その他のリソース
+* [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084\(v=azure.300\).aspx)
 * [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

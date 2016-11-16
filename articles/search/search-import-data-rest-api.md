@@ -1,13 +1,13 @@
 ---
-title: Data upload in Azure Search using the REST API | Microsoft Docs
-description: Learn how to upload data to an index in Azure Search using the REST API.
+title: "REST API を使用した Azure Search でのデータ アップロード | Microsoft Docs"
+description: "REST API を使用して Azure Search のインデックスにデータをアップロードする方法について説明します。"
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: ashmaka
 manager: jhubbard
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 8d0749fb-6e08-4a17-8cd3-1a215138abc6
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
@@ -15,59 +15,63 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: ashmaka
+translationtype: Human Translation
+ms.sourcegitcommit: 6ff31940f3a4e7557e0caf3d9d3740590be3bc04
+ms.openlocfilehash: 340287e4a3331eba441bce7feb957f27aca38b2b
+
 
 ---
-# <a name="upload-data-to-azure-search-using-the-rest-api"></a>Upload data to Azure Search using the REST API
+# <a name="upload-data-to-azure-search-using-the-rest-api"></a>REST API を使用した Azure Search へのデータのアップロード
 > [!div class="op_single_selector"]
-> * [Overview](search-what-is-data-import.md)
+> * [概要](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
-> * [REST](search-import-data-rest-api.md)
+> * [REST ()](search-import-data-rest-api.md)
 > 
 > 
 
-This article will show you how to use the [Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) to import data into an Azure Search index.
+この記事では、 [Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用して Azure Search インデックスにデータをインポートする方法について説明します。
 
-Before beginning this walkthrough, you should already have [created an Azure Search index](search-what-is-an-index.md).
+このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)してあります。
 
-In order to push documents into your index using the REST API, you will issue an HTTP POST request to your index's URL endpoint. The body of the HTTP request body is a JSON object containing the documents to be added, modified, or deleted.
+REST API を使用してインデックスにドキュメントをプッシュするには、HTTP POST 要求をインデックスの URL エンドポイントに発行します。 HTTP 要求の本文は、追加、変更、または削除するドキュメントを含む JSON オブジェクトです。
 
-## <a name="i.-identify-your-azure-search-service's-admin-api-key"></a>I. Identify your Azure Search service's admin api-key
-When issuing HTTP requests against your service using the REST API, *each* API request must include the api-key that was generated for the Search service you provisioned. Having a valid key establishes trust, on a per request basis, between the application sending the request and the service that handles it.
+## <a name="i-identify-your-azure-search-services-admin-apikey"></a>I. Azure Search サービスの管理者 API キーの識別
+REST API を使用してサービスに対する HTTP 要求を発行する場合、 *各* API 要求には、プロビジョニングした Search サービスに対して生成された API キーを含める必要があります。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-1. To find your service's api-keys you must log into the [Azure Portal](https://portal.azure.com/)
-2. Go to your Azure Search service's blade
-3. Click on the "Keys" icon
+1. サービスの API キーを探すには、 [Azure ポータル](https://portal.azure.com/)
+2. Azure Search サービスのブレードに移動します。
+3. "キー" アイコンをクリックします。
 
-Your service will have *admin keys* and *query keys*.
+サービスで*管理者キー*と*クエリ キー*を使用できるようになります。
 
-* Your primary and secondary *admin keys* grant full rights to all operations, including the ability to manage the service, create and delete indexes, indexers, and data sources. There are two keys so that you can continue to use the secondary key if you decide to regenerate the primary key, and vice-versa.
-* Your *query keys* grant read-only access to indexes and documents, and are typically distributed to client applications that issue search requests.
+* プライマリおよびセカンダリ *管理者キー* は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。 キーは 2 つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
+* *クエリ キー* はインデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。
 
-For the purposes of importing data into an index, you can use either your primary or secondary admin key.
+データをインデックスにインポートする目的では、プライマリ管理者キーとセカンダリ管理者キーのどちらかを使用できます。
 
-## <a name="ii.-decide-which-indexing-action-to-use"></a>II. Decide which indexing action to use
-When using the REST API, you will issue HTTP POST requests with JSON request bodies to your Azure Search index's endpoint URL. The JSON object in your HTTP request body will contain a single JSON array named "value" containing JSON objects representing documents you would like to add to your index, update, or delete.
+## <a name="ii-decide-which-indexing-action-to-use"></a>II. 利用するインデックス作成アクションの決定
+REST API を使用する場合は、JSON 要求本文を利用して HTTP POST 要求を Azure Search インデックスのエンドポイント URL に発行します。 HTTP 要求本文内の JSON オブジェクトには、インデックスへの追加、更新、削除を行うドキュメントを表す JSON オブジェクトを含む "value" という 1 つの JSON 配列が含まれます。
 
-Each JSON object in the "value" array represents a document to be indexed. Each of these objects contains the document's key and specifies the desired indexing action (upload, merge, delete, etc). Depending on which of the below actions you choose, only certain fields must be included for each document:
+"value" 配列内の各 JSON オブジェクトは、インデックスを作成するドキュメントを表します。 これらの各オブジェクトにはドキュメントのキーが含まれます。また、これらの各オブジェクトで、目的のインデックス作成アクション (アップロード、マージ、削除など) を指定します。 以下のアクションのうちどれを選ぶかに応じて、各ドキュメントに含める必要のあるフィールドは異なります。
 
-| @search.action | Description | Necessary fields for each document | Notes |
+| @search.action | Description | 各ドキュメントに必要なフィールド | メモ |
 | --- | --- | --- | --- |
-| `upload` |An `upload` action is similar to an "upsert" where the document will be inserted if it is new and updated/replaced if it exists. |key, plus any other fields you wish to define |When updating/replacing an existing document, any field that is not specified in the request will have its field set to `null`. This occurs even when the field was previously set to a non-null value. |
-| `merge` |Updates an existing document with the specified fields. If the document does not exist in the index, the merge will fail. |key, plus any other fields you wish to define |Any field you specify in a merge will replace the existing field in the document. This includes fields of type `Collection(Edm.String)`. For example, if the document contains a field `tags` with value `["budget"]` and you execute a merge with value `["economy", "pool"]` for `tags`, the final value of the `tags` field will be `["economy", "pool"]`. It will not be `["budget", "economy", "pool"]`. |
-| `mergeOrUpload` |This action behaves like `merge` if a document with the given key already exists in the index. If the document does not exist, it behaves like `upload` with a new document. |key, plus any other fields you wish to define |- |
-| `delete` |Removes the specified document from the index. |key only |Any fields you specify other than the key field will be ignored. If you want to remove an individual field from a document, use `merge` instead and simply set the field explicitly to null. |
+| `upload` |`upload` アクションは、ドキュメントが新しい場合は挿入され、存在する場合は更新/置換される "upsert" に似ています。 |キーのほか、定義するその他すべてのフィールド |既存のドキュメントを更新または置換する際に、要求で指定されていないフィールドは `null`に設定されます。 この処理は、フィールドが null 以外の値に設定されていた場合にも行われます。 |
+| `merge` |指定されたフィールドで既存のドキュメントを更新します。 ドキュメントがインデックスに存在しない場合、マージは失敗します。 |キーのほか、定義するその他すべてのフィールド |マージで指定したすべてのフィールドは、ドキュメント内の既存のフィールドを置き換えます。 これには、 `Collection(Edm.String)`型のフィールドも含まれます。 たとえば、ドキュメントにフィールド `tags` があり、その値が `["budget"]` である場合、`tags` に値 `["economy", "pool"]` を指定してマージを実行すると、`tags` フィールドの最終的な値は `["economy", "pool"]` になります。 `["budget", "economy", "pool"]`にはなりません。 |
+| `mergeOrUpload` |このアクションは、指定したキーを持つドキュメントがインデックスに既に存在する場合は、`merge` と同様の処理になります。 ドキュメントが存在しない場合は、 `upload` と同様の処理になり、新しいドキュメントが挿入されます。 |キーのほか、定義するその他すべてのフィールド |- |
+| `delete` |インデックスから指定したドキュメントを削除します。 |キーのみ |指定したフィールドは、キー フィールド以外すべて無視されます。 ドキュメントから個々のフィールドを削除する場合は、代わりに `merge` を使用して、フィールドを明示的に null に設定します。 |
 
-## <a name="iii.-construct-your-http-request-and-request-body"></a>III. Construct your HTTP request and request body
-Now that you have gathered the necessary field values for your index actions, you are ready to construct the actual HTTP request and JSON request body to import your data.
+## <a name="iii-construct-your-http-request-and-request-body"></a>III. HTTP 要求と要求本文の構築
+インデックス アクションに必要なフィールド値を収集したので、実際の HTTP 要求と JSON 要求本文を構築してデータをインポートする準備が整いました。
 
-#### <a name="request-and-request-headers"></a>Request and Request Headers
-In the URL, you will need to provide your service name, index name ("hotels" in this case), as well as the proper API version (the current API version is `2015-02-28` at the time of publishing this document). You will need to define the `Content-Type` and `api-key` request headers. For the latter, use one of your service's admin keys.
+#### <a name="request-and-request-headers"></a>要求と要求ヘッダー
+URL では、サービス名とインデックス名 (この場合は "hotels") のほか、適切な API バージョン (このドキュメントが書かれた時点で最新の API バージョンは `2015-02-28` ) を指定する必要があります。 `Content-Type` および `api-key` 要求ヘッダーを定義する必要があります。 後者については、サービスの管理者キーのいずれかを使用してください。
 
     POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
     Content-Type: application/json
     api-key: [admin key]
 
-#### <a name="request-body"></a>Request Body
+#### <a name="request-body"></a>要求本文
 ```JSON
 {
     "value": [
@@ -115,15 +119,15 @@ In the URL, you will need to provide your service name, index name ("hotels" in 
 }
 ```
 
-In this case, we are using `upload`, `mergeOrUpload`, and `delete` as our search actions.
+この例では、検索アクションとして `upload`、`mergeOrUpload`、`delete` を使用しています。
 
-Assume that this example "hotels" index is already populated with a number of documents. Note how we did not have to specify all the possible document fields when using `mergeOrUpload` and how we only specified the document key (`hotelId`) when using `delete`.
+この例の "hotels" インデックスには、既にさまざまなドキュメントが設定されているものとします。 `mergeOrUpload` を使用する場合はすべてのドキュメント フィールドを指定する必要はなく、`delete` を使用する場合はドキュメント キー (`hotelId`) のみを指定しています。
 
-Also, note that you can only include up to 1000 documents (or 16 MB) in a single indexing request.
+また、単一のインデックス作成要求に含めることのできるドキュメントは最大 1,000 個 (または 16 MB) であることにも注意が必要です。
 
-## <a name="iv.-understand-your-http-response-code"></a>IV. Understand your HTTP response code
+## <a name="iv-understand-your-http-response-code"></a>IV. HTTP 応答コードの理解
 #### <a name="200"></a>200
-After submitting a successful indexing request you will receive an HTTP response with status code of `200 OK`. The JSON body of the HTTP response will be as follows:
+インデックス作成要求を正常に送信すると、状態コード `200 OK`の HTTP 応答が届きます。 HTTP 応答の JSON 本文は次のようになります。
 
 ```JSON
 {
@@ -139,7 +143,7 @@ After submitting a successful indexing request you will receive an HTTP response
 ```
 
 #### <a name="207"></a>207
-A status code of `207` will be returned when at least one item was not successfully indexed. The JSON body of the HTTP response will contain information about the unsuccessful document(s).
+1 つ以上の項目のインデックスが正常に作成されなかった場合は、状態コード `207` が返されます。 HTTP 応答の JSON 本文には、失敗したドキュメントに関する情報が格納されます。
 
 ```JSON
 {
@@ -155,26 +159,29 @@ A status code of `207` will be returned when at least one item was not successfu
 ```
 
 > [!NOTE]
-> This often means that the load on your search service is reaching a point where indexing requests will begin to return `503` responses. In this case, we highly recommend that your client code back off and wait before retrying. This will give the system some time to recover, increasing the chances that future requests will succeed. Rapidly retrying your requests will only prolong the situation.
+> これは多くの場合、Search サービスでの負荷が、インデックス作成要求に対して `503` 応答が返され始めるポイントに到達していることを表します。 この場合は、クライアント コードをバックオフし、再試行するまで待機することを強くお勧めします。 こうすることで、システムが回復する時間が生まれ、その後の要求に成功する可能性が高くなります。 要求をすぐに再試行しても、状況が長引くだけです。
 > 
 > 
 
 #### <a name="429"></a>429
-A status code of `429` will be returned when you have exceeded your quota on the number of documents per index.
+インデックスあたりのドキュメント数に対するクォータを超過した場合は、状態コード `429` が返されます。
 
 #### <a name="503"></a>503
-A status code of `503` will be returned if none of the items in the request were successfully indexed. This error means that the system is under heavy load and your request can't be processed at this time.
+要求内のどの項目についても正常にインデックスが作成されなかった場合は、状態コード `503` が返されます。 このエラーは、システムが過負荷の状態にあり、この時点では要求を処理できないことを示します。
 
 > [!NOTE]
-> In this case, we highly recommend that your client code back off and wait before retrying. This will give the system some time to recover, increasing the chances that future requests will succeed. Rapidly retrying your requests will only prolong the situation.
+> この場合は、クライアント コードをバックオフし、再試行するまで待機することを強くお勧めします。 こうすることで、システムが回復する時間が生まれ、その後の要求に成功する可能性が高くなります。 要求をすぐに再試行しても、状況が長引くだけです。
 > 
 > 
 
-For more information on document actions and success/error responses, please see [Add, Update, or Delete Documents](https://msdn.microsoft.com/library/azure/dn798930.aspx). For more information on other HTTP status codes that could be returned in case of failure, see [HTTP status codes (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx).
+ドキュメント アクションおよび成功/エラー応答の詳細については、「 [ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)」を参照してください。 エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「 [HTTP status codes (Azure Search) (HTTP 状態コード (Azure Search))](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。
 
-## <a name="next"></a>Next
-After populating your Azure Search index, you will be ready to start issuing queries to search for documents. See [Query Your Azure Search Index](search-query-overview.md) for details.
+## <a name="next"></a>次へ
+Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。 詳細については、「 [Azure Search インデックスの照会](search-query-overview.md) 」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

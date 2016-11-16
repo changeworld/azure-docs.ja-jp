@@ -12,4 +12,8 @@
 * [MFA を要求する方法](../articles/active-directory/active-directory-privileged-identity-management-how-to-require-mfa.md)
 * [監査ログを使用する方法](../articles/active-directory/active-directory-privileged-identity-management-how-to-use-audit-log.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

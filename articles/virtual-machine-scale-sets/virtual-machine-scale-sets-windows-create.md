@@ -1,20 +1,24 @@
 ---
-title: PowerShell を使用した仮想マシン スケール セットの作成 | Microsoft Docs
-description: PowerShell を使用した仮想マシン スケール セットの作成
+title: "PowerShell を使用した仮想マシン スケール セットの作成 | Microsoft Docs"
+description: "PowerShell を使用した仮想マシン スケール セットの作成"
 services: virtual-machine-scale-sets
-documentationcenter: ''
+documentationcenter: 
 author: davidmu1
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 7bb03323-8bcc-4ee4-9a3e-144ca6d644e2
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2016
+ms.date: 10/18/2016
 ms.author: davidmu
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
+
 
 ---
 # <a name="create-a-windows-virtual-machine-scale-set-using-azure-powershell"></a>Azure PowerShell を使用した Windows 仮想マシン スケール セットの作成
@@ -22,41 +26,18 @@ ms.author: davidmu
 
 この記事の手順を実行するには約 30 分かかります。
 
-## <a name="step-1:-install-azure-powershell"></a>手順 1: Azure PowerShell をインストールする
+## <a name="step-1-install-azure-powershell"></a>手順 1: Azure PowerShell をインストールする
 最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
-## <a name="step-2:-create-resources"></a>手順 2: リソースを作成する
+## <a name="step-2-create-resources"></a>手順 2: リソースを作成する
 新しいスケール セットに必要なリソースを作成します。
 
 ### <a name="resource-group"></a>リソース グループ
 仮想マシン スケール セットは、リソース グループに含める必要があります。
 
-1. 利用可能な場所とサポートされるサービスの一覧を取得します。
+1. リソースを配置できる場所の一覧を取得します。
    
-        Get-AzureLocation | Sort Name | Select Name, AvailableServices
-   
-    次のような結果が表示されます。
-   
-        Name                AvailableServices
-        ----                -----------------
-        Australia East      {Compute, Storage, PersistentVMRole, HighMemory}
-        Australia Southeast {Compute, Storage, PersistentVMRole, HighMemory}
-        Brazil South        {Compute, Storage, PersistentVMRole, HighMemory}
-        Central India       {Compute, Storage, PersistentVMRole, HighMemory}
-        Central US          {Compute, Storage, PersistentVMRole, HighMemory}
-        East Asia           {Compute, Storage, PersistentVMRole, HighMemory}
-        East US             {Compute, Storage, PersistentVMRole, HighMemory}
-        East US 2           {Compute, Storage, PersistentVMRole, HighMemory}
-        Japan East          {Compute, Storage, PersistentVMRole, HighMemory}
-        Japan West          {Compute, Storage, PersistentVMRole, HighMemory}
-        North Central US    {Compute, Storage, PersistentVMRole, HighMemory}
-        North Europe        {Compute, Storage, PersistentVMRole, HighMemory}
-        South Central US    {Compute, Storage, PersistentVMRole, HighMemory}
-        South India         {Compute, Storage, PersistentVMRole, HighMemory}
-        Southeast Asia      {Compute, Storage, PersistentVMRole, HighMemory}
-        West Europe         {Compute, Storage, PersistentVMRole, HighMemory}
-        West India          {Compute, Storage, PersistentVMRole, HighMemory}
-        West US             {Compute, Storage, PersistentVMRole, HighMemory}
+        Get-AzureLocation | Sort Name | Select Name
 2. 最適な場所を選択し、 **$locName** の値を場所の名前に置き換えた後、変数を作成します。
    
         $locName = "location name from the list, such as Central US"
@@ -132,36 +113,6 @@ ms.author: davidmu
 4. 仮想ネットワークを作成します。
    
         $vnet = New-AzureRmVirtualNetwork -Name $netName -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-
-### <a name="public-ip-address"></a>パブリック IP アドレス
-ネットワーク インターフェイスを作成する前に、パブリック IP アドレスを作成しておく必要があります。
-
-1. **$domName** の値を、パブリック IP アドレスで使用するドメイン名ラベルに置き換えた後、変数を作成します。  
-   
-        $domName = "domain name label"
-   
-    ラベルに使用できるのはアルファベット、数字、ハイフンのみであり、最後の文字はアルファベットまたは数字にする必要があります。
-2. 名前が一意であるかどうかをテストします。
-   
-        Test-AzureRmDnsAvailability -DomainQualifiedName $domName -Location $locName
-   
-    **True**が返された場合、提案した名前は一意です。
-3. **$pipName** の値を、パブリック IP アドレスに使用する名前に置き換えた後、変数を作成します。 
-   
-        $pipName = "public ip address name"
-4. パブリック IP アドレスを作成します。
-   
-        $pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic -DomainNameLabel $domName
-
-### <a name="network-interface"></a>ネットワーク インターフェイス
-パブリック IP アドレスを作成したので、ネットワーク インターフェイスを作成できます。
-
-1. **$nicName** の値を、ネットワーク インターフェイスに使用する名前に置き換えた後、変数を作成します。 
-   
-        $nicName = "network interface name"
-2. ネットワーク インターフェイスを作成します。
-   
-        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
 
 ### <a name="configuration-of-the-scale-set"></a>スケール セットの構成
 スケール セットの構成に必要なリソースはすべて揃っているため、作成を開始しましょう。  
@@ -253,7 +204,7 @@ ms.author: davidmu
         Location              : centralus
         Tags                  :
 
-## <a name="step-3:-explore-resources"></a>手順 3: リソースを調査する
+## <a name="step-3-explore-resources"></a>手順 3: リソースを調査する
 次のリソースを使って、作成した仮想マシン スケール セットを調査します。
 
 * Azure ポータル - ポータルを使用して入手できる情報の量は限られています。
@@ -271,6 +222,9 @@ ms.author: davidmu
 * 「 [自動スケールと仮想マシン スケール セット](virtual-machine-scale-sets-autoscale-overview.md)
 * 「 [仮想マシン スケール セットを使用した垂直方向の自動スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,13 +1,13 @@
 ---
-title: Azure ポータルを使用して ExpressRoute 回線のルーティングを構成する方法 | Microsoft Docs
-description: この記事では、ExpressRoute 回線のプライベート、パブリックおよび Microsoft ピアリングを作成し、プロビジョニングする手順について説明します。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
+title: "Azure Potal を使用して ExpressRoute 回線のルーティングを構成する方法 | Microsoft Docs"
+description: "この記事では、ExpressRoute 回線のプライベート、パブリックおよび Microsoft ピアリングを作成し、プロビジョニングする手順について説明します。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。"
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 8c2a7ed2-ae5c-4e49-81f6-77cf9f2b2ac9
 ms.service: expressroute
 ms.devlang: na
 ms.topic: hero-article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1d78bdb6cbb9870298b050207fd1fa9c5e71d674
+
 
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>ExpressRoute 回線のルーティングの作成と変更を行う
@@ -148,11 +152,11 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
    ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft2.png)
 5. すべてのパラメーターを指定したら、構成を保存します。 
    
-    回線が検証が必要な状態になった場合 (次の図を参照)、サポート チケットを開き、プレフィックスの所有権を示す証拠をサポート チームに示してください。  
+    回線が検証が必要な状態になった場合 (次の図を参照)、サポート チケットを開き、プレフィックスの所有権を示す証拠をサポート チームに示してください。    
    
     ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft5.png)
 
-    次のように、ポータルから直接サポート チケットを開くことができます。   
+    次のように、ポータルから直接サポート チケットを開くことができます。     
 
     ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
 
@@ -183,6 +187,9 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 * 回路ピアリングの詳細については、「 [ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
 * 仮想ネットワークの詳細については、「 [仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

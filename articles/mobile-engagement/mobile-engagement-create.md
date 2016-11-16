@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement アプリの作成 | Microsoft Docs
-description: Azure で新しい Mobile Engagement アプリ コレクションを作成し、Mobile Engagement ポータルでアプリの管理を開始する方法について説明します。
+title: "Azure Mobile Engagement アプリの作成 | Microsoft Docs"
+description: "Azure で新しい Mobile Engagement アプリ コレクションを作成し、Mobile Engagement ポータルでアプリの管理を開始する方法について説明します。"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: b8aa1798-28c6-424c-a5b5-8a264d5a0ff0
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-store
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ecffc5a867c1c69354a88a8b7ce29ab67ea29cc1
+
 
 ---
 # <a name="create-an-azure-mobile-engagement-app"></a>Azure Mobile Engagement アプリの作成
@@ -44,6 +48,9 @@ Mobile Engagement ポータルに移動すると、セグメントの分析、�
 
 [Azure Mobile Engagement を使ってみる](mobile-engagement-windows-store-dotnet-get-started.md) (ページの上部でその他のモバイル プラットフォームを選択できます)。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

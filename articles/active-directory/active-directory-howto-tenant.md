@@ -1,12 +1,12 @@
 ---
-title: Azure AD テナントを取得する方法 | Microsoft Docs
-description: アプリケーションを登録および構築するために Azure Active Directory テナントを取得する方法を説明します。
+title: "Azure AD テナントを取得する方法 | Microsoft Docs"
+description: "アプリケーションを登録および構築するために Azure Active Directory テナントを取得する方法を説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dstrockis
 manager: terrylan
-editor: ''
-
+editor: 
+ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/28/2015
 ms.author: dastrock
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b72271ca68df3b4b11c41f208fd1e3dd75b5e727
+
 
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>Azure Active Directory テナントを取得する方法
@@ -60,6 +64,9 @@ Azure AD ユーザーがアプリケーションにサインインできるよ�
 
 Azure へのサインアップ プロセスの中で、クレジット カードの詳細を提供する必要があります。  Azure AD でのアプリケーションの発行または新しいテナントの作成には料金は発生しないので安心してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

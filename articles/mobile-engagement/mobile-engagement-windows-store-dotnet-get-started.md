@@ -1,12 +1,12 @@
 ---
-title: Windows ユニバーサル アプリの Azure Mobile Engagement の概要
-description: Windows ユニバーサル アプリで Azure Mobile Engagement の分析機能やプッシュ通知を使用する方法について説明します。
+title: "Windows ユニバーサル アプリの Azure Mobile Engagement の概要"
+description: "Windows ユニバーサル アプリで Azure Mobile Engagement の分析機能やプッシュ通知を使用する方法について説明します。"
 services: mobile-engagement
 documentationcenter: windows
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 48103867-7f64-4646-b019-42bd797d38e2
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-store
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 59a4c270be4bb9a0d247ce81da548b58ce4baf3f
+
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-universal-apps"></a>Windows ユニバーサル アプリの Azure Mobile Engagement の概要
@@ -28,7 +32,7 @@ ms.author: piyushjo;ricksal
 ## <a name="set-up-mobile-engagement-for-your-windows-universal-app"></a>Windows ユニバーサル アプリの Mobile Engagement の設定
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="<a-id="connecting-app"></a>connect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。 完全な統合のドキュメントについては、「 [Mobile Engagement Windows ユニバーサル SDK の統合](mobile-engagement-windows-store-sdk-overview.md)」を参照してください。
 
 統合の実例を示すために、Visual Studio で基本的なアプリを作成します。
@@ -53,12 +57,12 @@ ms.author: piyushjo;ricksal
 3. 先にコピーした Mobile Engagement アプリの接続文字列を `Resources\EngagementConfiguration.xml` ファイルの `<connectionString>` タグと `</connectionString>` タグの間にコピーします。
    
     ![][3]
-   
-   > [!TIP]
-   > アプリの対象プラットフォームを Windows と Windows Phone の両方にする場合、2 つの Mobile Engagement アプリケーションを作成する必要があります (サポートされているプラットフォームごとに 1 つずつ)。 2 つのアプリがあれば、対象ユーザーを適切に分け、各プラットフォームに合わせた通知を送信できます。
-   > 
-   > 
-4. `App.xaml.cs` ファイルで次の操作を行います。
+
+    >[AZURE.TIP] アプリの対象プラットフォームを Windows と Windows Phone の両方にする場合、2 つの Mobile Engagement アプリケーションを作成する必要があります (サポートされているプラットフォームごとに 1 つずつ)。 2 つのアプリがあれば、対象ユーザーを適切に分け、各プラットフォームに合わせた通知を送信できます。
+
+    > [AZURE.IMPORTANT] NuGet は、Windows 10 UWP アプリケーションで SDK のリソースを自動的にコピーしません。 NuGet パッケージのインストール時に表示される手順 (readme.txt) に従って、手動で行う必要があります。  
+
+1. `App.xaml.cs` ファイルで次の操作を行います。
    
     a. `using` ステートメントを追加します。
    
@@ -91,12 +95,12 @@ ms.author: piyushjo;ricksal
               //... rest of the code
             }
 
-## <a name="<a-id="monitor"></a>enable-real-time-monitoring"></a><a id="monitor"></a>リアルタイム監視を有効にする
+## <a name="a-idmonitoraenable-realtime-monitoring"></a><a id="monitor"></a>リアルタイム監視を有効にする
 データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
 
 1. **MainPage.xaml.cs** に、次の `using` ステートメントを追加します。
    
-       using Microsoft.Azure.Engagement.Overlay;
+    using Microsoft.Azure.Engagement.Overlay;
 2. **MainPage** の基本クラスを **Page** から **EngagementPageOverlay** に変更します。
    
         class MainPage : EngagementPageOverlay
@@ -111,12 +115,15 @@ ms.author: piyushjo;ricksal
 > [!IMPORTANT]
 > ページが `OnNavigatedTo` メソッドをオーバーライドする場合は、必ず `base.OnNavigatedTo(e)` を呼び出します。 そうしないと、アクティビティが報告されません (`EngagementPage` は、`OnNavigatedTo` メソッド内で `StartActivity` を呼び出します)。 これは既定のテンプレートに `OnNavigatedTo` メソッドがある Windows Phone プロジェクトで特に重要です。
 > 
+> [!IMPORTANT]
+> **Windows 10 ユニバーサル アプリ**の場合、上記の方法ではなく、[こちらの推奨される方法](mobile-engagement-windows-store-advanced-reporting.md#recommended-method-overload-your-codepagecode-classes)を使用してください。
+> 
 > 
 
-## <a name="<a-id="monitor"></a>connect-app-with-real-time-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
+## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="<a-id="integrate-push"></a>enable-push-notifications-and-in-app-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
+## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
 Mobile Engagement を導入すると、キャンペーンとの関連でプッシュ通知とアプリ内メッセージングを利用し、ユーザーに情報を提供できます。 このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。
 次のセクションでは、それらを受信するようにアプリをセットアップします。
 
@@ -159,7 +166,7 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 8. 最後に、アプリ ストアに作成されたこのアプリに Visual Studio アプリケーションが関連付けます。 Visual Studio で **[アプリケーションをストアと関連付ける]** をクリックします。
     ![][7]
 
-## <a name="<a-id="send"></a>send-a-notification-to-your-app"></a><a id="send"></a>アプリへ通知を送信する
+## <a name="a-idsendasend-a-notification-to-your-app"></a><a id="send"></a>アプリへ通知を送信する
 [!INCLUDE [Create Windows Push campaign](../../includes/mobile-engagement-windows-push-campaign.md)]
 
 アプリが実行中の場合は、アプリ内通知が表示されます。 アプリが閉じている場合は、トースト通知が表示されます。
@@ -189,6 +196,6 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

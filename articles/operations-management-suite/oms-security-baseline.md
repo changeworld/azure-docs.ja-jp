@@ -1,12 +1,12 @@
 ---
-title: Operations Management Suite のセキュリティと監査ソリューションのベースライン | Microsoft Docs
-description: このドキュメントでは、OMS のセキュリティと監査ソリューションを使用して、コンプライアンスとセキュリティの目的で監視対象のすべてのコンピューターのベースライン評価を実行する方法を説明します。
+title: "Operations Management Suite のセキュリティと監査ソリューションのベースライン | Microsoft Docs"
+description: "このドキュメントでは、OMS のセキュリティと監査ソリューションを使用して、コンプライアンスとセキュリティの目的で監視対象のすべてのコンピューターのベースライン評価を実行する方法を説明します。"
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: 17837c8b-3e79-47c0-9b83-a51c6ca44ca6
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: hero-article
@@ -14,12 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1c3e2cf86a33f9bbe6b34f4f52b82a078b91661f
+
 
 ---
 # <a name="baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Operations Management Suite のセキュリティと監査ソリューションでのベースライン評価
 このドキュメントは、[Operations Management Suite (OMS) のセキュリティと監査ソリューション](operations-management-suite-overview.md)のベースライン評価機能を使用して、監視対象のリソースのセキュリティで保護された状態にアクセスする際に役立ちます。
 
-## <a name="what-is-baseline-assessment?"></a>ベースライン評価とは
+## <a name="what-is-baseline-assessment"></a>ベースライン評価とは
 Microsoft は、世界中の業界団体や政府機関と協力して、安全性の高いサーバー全世界と共に安全性の高いサーバーのデプロイを表す Windows 構成を定義しています。 この構成は、レジストリ キー、監査ポリシーの設定、セキュリティ ポリシーの設定のセットで、これらの設定には Microsoft が推奨する値があります。 この規則のセットがセキュリティ ベースラインと呼ばれます。 OMS のセキュリティと監査のベースライン評価機能では、コンプライアンスについてすべてのコンピューターをシームレスにスキャンできます。 
 
 規則には次の 3 種類があります。
@@ -80,6 +84,9 @@ OMS は、Windows Server 2008 R2 から Windows Server 2012 R2 まででドメ�
 * [Operations Management Suite のセキュリティと監査ソリューションでのセキュリティの警告に対する監視と対応](oms-security-responding-alerts.md)
 * [Operations Management Suite のセキュリティと監査ソリューションでのリソースの監視](oms-security-monitoring-resources.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

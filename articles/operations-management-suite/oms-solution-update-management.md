@@ -1,22 +1,26 @@
 ---
-title: OMS の更新管理ソリューション | Microsoft Docs
-description: この記事の目的は、このソリューションを使用して Windows コンピューターと Linux コンピューターの更新プログラムを管理する方法の理解を助けることです。
+title: "OMS の更新管理ソリューション | Microsoft Docs"
+description: "この記事の目的は、このソリューションを使用して Windows コンピューターと Linux コンピューターの更新プログラムを管理する方法の理解を助けることです。"
 services: operations-management-suite
-documentationcenter: ''
+documentationcenter: 
 author: MGoedtel
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: e33ce6f9-d9b0-4a03-b94e-8ddedcc595d2
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2016
+ms.date: 10/14/2016
 ms.author: magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4bd1e84fd9af1273f95f70d941c3a4535984c8a9
+
 
 ---
-# <a name="![update-management-solution-in-oms](./media/oms-solution-update-management/update-management-solution-icon.png)-update-management-solution-in-oms"></a>![OMS の更新管理ソリューション](./media/oms-solution-update-management/update-management-solution-icon.png) OMS の更新管理ソリューション
+# <a name="update-management-solution-in-omsmediaomssolutionupdatemanagementupdatemanagementsolutioniconpng-update-management-solution-in-oms"></a>![OMS の更新管理ソリューション](./media/oms-solution-update-management/update-management-solution-icon.png) OMS の更新管理ソリューション
 OMS の更新管理ソリューションを使用すると、Windows コンピューターと Linux コンピューターの更新プログラムを管理することができます。  すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを開始することができます。 
 
 ## <a name="prerequisites"></a>前提条件
@@ -35,15 +39,13 @@ OMS ワークスペースに更新管理ソリューションを追加し、Linu
 2. OMS ポータルで、**[設定]** を選択し、**[接続されたソース]** を選択します。  **ワークスペース ID** と、**主キー**または **2 次キー**をメモしておきます。
 3. 各 Linux コンピューターで、次の手順を実行します。
    
-   a.  次のコマンドを実行して、OMS Agent for Linux の最新バージョンをインストールします。  <Workspace ID> を実際のワークスペース ID、<Key> を実際の主キーまたは 2 次キーに置き換えてください。
+   a.    次のコマンドを実行して、OMS Agent for Linux の最新バージョンをインストールします。  <Workspace ID> を実際のワークスペース ID、<Key> を実際の主キーまたは 2 次キーに置き換えてください。
    
-       cd ~
-       wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh
-       sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
+     cd ~   wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh   sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
    
-    b. エージェントを削除するには、次のコマンドを実行します。
+   b. エージェントを削除するには、次のコマンドを実行します。
    
-       sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
+     sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
 
 ## <a name="management-packs"></a>管理パック
 System Center Operations Manager 管理グループが OMS ワークスペースに接続されている場合、このソリューションを追加したときに次の管理パックが Operations Manager にインストールされます。 これらの管理パックに伴う構成や保守は不要です。 
@@ -95,7 +97,7 @@ OMS ワークスペースに更新管理ソリューションを追加すると�
 ![[更新管理] ダッシュボードのパッケージ ビュー](./media/oms-solution-update-management/update-management-assessment-package-view.png)<br>  
 
 ## <a name="installing-updates"></a>更新プログラムのインストール
-ご利用の環境のすべてのコンピューターで更新プログラムが評価されたら、"*更新プログラムの展開*" を作成することで、必要な更新プログラムがインストールされるようにすることができます。  "更新プログラムの展開" とは、1 台以上の Windows コンピューターに必要な更新プログラムをスケジュールに従ってインストールすることです。  対象に含めるコンピューターまたはコンピューター グループに加え、展開の日時を指定します。  
+ご利用の環境のすべての Windows コンピューターで更新プログラムが評価されたら、"*更新プログラムのデプロイ*" を作成することで、必要な更新プログラムがインストールされるようにすることができます。  "更新プログラムの展開" とは、1 台以上の Windows コンピューターに必要な更新プログラムをスケジュールに従ってインストールすることです。  対象に含めるコンピューターまたはコンピューター グループに加え、展開の日時を指定します。  
 
 更新プログラムは、Azure Automation の Runbook によってインストールされます。  現在、これらの Runbook を表示できません。また、これらは構成不要です。  "更新プログラムの展開" を作成すると、対象に含めたコンピューターに対して、指定した時間にマスター更新 Runbook を開始するスケジュールが作成されます。  このマスター Runbook は、必要な更新プログラムのインストールを実行する子 Runbook を各 Windows エージェントで開始します。  
 
@@ -104,7 +106,7 @@ OMS ワークスペースに更新管理ソリューションを追加すると�
 
 各更新プログラムの展開に表示されるプロパティについては、次の表で説明します。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 | --- | --- |
 | 名前 |更新プログラムの展開の名前。 |
 | スケジュール |スケジュールの種類。  現在、指定可能な値は *OneTime* のみです。 |
@@ -128,7 +130,7 @@ OMS ワークスペースに更新管理ソリューションを追加すると�
 ### <a name="creating-an-update-deployment"></a>更新プログラムの展開の作成
 新しい更新プログラムの展開を作成するには、画面上部にある **[追加]** ボタンをクリックして **[New Update Deployment (新しい更新プログラムの展開)]** ページを開きます。  次の表にあるプロパティの値を指定する必要があります。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 | --- | --- |
 | 名前 |更新プログラムの展開を識別する一意の名前。 |
 | タイム ゾーン |開始時刻に使用するタイム ゾーン。 |
@@ -237,6 +239,9 @@ OMS ワークスペースに更新管理ソリューションを追加すると�
 * 管理対象のコンピューターで更新プログラムが準拠しているかどうかを示す[独自のダッシュボードを作成](../log-analytics/log-analytics-dashboards.md)します。
 * 緊急更新プログラムがコンピューターにインストールされていないと検出された場合またはコンピューターで自動更新が無効になっている場合、[アラートを作成](../log-analytics/log-analytics-alerts.md)します。  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

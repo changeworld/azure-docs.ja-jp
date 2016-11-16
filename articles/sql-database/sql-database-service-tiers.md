@@ -1,13 +1,13 @@
 ---
-title: 'SQL Database のパフォーマンスとオプション: サービス階層 | Microsoft Docs'
-description: サービス階層の SQL Database のパフォーマンスとビジネス継続性機能を比較して、実際の規模に合わせてコストと互換性のバランスを取ります。
-keywords: データベース オプション, データベース パフォーマンス
+title: "SQL Database のパフォーマンスとオプション: サービス レベル | Microsoft Docs"
+description: "サービス階層の SQL Database のパフォーマンスとビジネス継続性機能を比較して、実際の規模に合わせてコストと互換性のバランスを取ります。"
+keywords: "データベース オプション, データベース パフォーマンス"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
 editor: CarlRabeler
-
+ms.assetid: f5c5c596-cd1e-451f-92a7-b70d4916e974
 ms.service: sql-database
 ms.devlang: na
 ms.topic: get-started-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 08/10/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 9ecbee74bc0559aa632304b0a0428abb36606597
+
 
 ---
-# <a name="sql-database-options-and-performance:-understand-what's-available-in-each-service-tier"></a>SQL Database のオプションとパフォーマンス: 各サービス レベルで使用できる内容について理解する
+# <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL Database のオプションとパフォーマンス: 各サービス レベルで使用できる内容について理解する
 [Azure SQL Database](sql-database-technical-overview.md) は、さまざまなワークロードに対応するため、3 つのサービス レベルといくつかのパフォーマンス レベルが用意されています。 パフォーマンス レベルごとに提供されるリソースのセットが増加し、スループットが段階的に高くなるように設計されています。 データベースはそれぞれ、[サービス レベル](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)とパフォーマンス レベルを変えて管理することができます。 また、一定のリソースを共有する[エラスティック プール](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)で複数のデータベースを管理することもできます。 スタンドアロン データベースで利用できるリソースは、データベース トランザクション ユニット (DTU) という用語で表現します。これに対して、エラスティック プールで利用できるリソースは、エラスティック DTU または eDTU と呼びます。 DTU と eDTU については、[DTU の概要](sql-database-what-is-a-dtu.md)に関するページを参照してください。 
 
 どちらの場合も、サービス レベルには **Basic**、**Standard**、**Premium** があります。 これらのレベルのデータベース オプションは、スタンドアロン データベースとエラスティック プールの場合に似ていますが、エラスティック プールにはさらに考慮事項があります。 この記事では、スタンドアロン データベースとエラスティック プールのサービス レベルの詳細について説明します。
@@ -70,7 +74,7 @@ Basic、Standard、および Premium のサービス階層は、いずれも稼�
 
 SQL Database のエディションを選んだら、データベースのパフォーマンス レベル (DTU 数) を決めます。 見当をつけたうえで実際の使用感に基づいて [動的にスケールアップしたりスケールダウンしたり](sql-database-scale-up.md) することができます。 [DTU Calculator](http://dtucalculator.azurewebsites.net/) を使用して、必要な DTU 数を見積もることもできます。 
 
-### <a name="choosing-a-service-tier-for-an-elastic-database-pool."></a>エラスティック データベース プールのサービス階層の選択
+### <a name="choosing-a-service-tier-for-an-elastic-database-pool"></a>エラスティック データベース プールのサービス階層の選択
 エラスティック データベース プールのサービス レベルを決めるにあたって最初に行うことは、プールのサービス レベルを選択するのに必要なデータベース機能を特定することです。
 
 * データベース サイズ (Basic では 2 GB、Standard では 250 GB、Premium では 500 GB)
@@ -90,6 +94,9 @@ SQL Database のエディションを選んだら、データベースのパフ�
 * [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * [Azure SQL Database のエラスティック データベース機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

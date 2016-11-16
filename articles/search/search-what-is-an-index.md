@@ -1,11 +1,10 @@
 ---
-title: Create an Azure Search index | Microsoft Docs
-description: What is an index in Azure Search and how is it used?
+title: "Azure Search インデックスの作成 | Microsoft Azure | ホステッド クラウド検索サービス"
+description: "Azure Search のインデックスとその使用方法について説明します。"
 services: search
-manager: jhubbard
-documentationcenter: ''
+documentationcenter: 
 author: ashmaka
-
+ms.assetid: a395e166-bf2e-4fca-8bfc-116a46c5f7b1
 ms.service: search
 ms.devlang: na
 ms.workload: search
@@ -13,56 +12,63 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: ashmaka
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3f2a2b6c82c6c931261036ae1fba733b46a074dc
+
 
 ---
-# <a name="create-an-azure-search-index"></a>Create an Azure Search index
+# <a name="create-an-azure-search-index"></a>Azure Search インデックスの作成
 > [!div class="op_single_selector"]
-> * [Overview](search-what-is-an-index.md)
-> * [Portal](search-create-index-portal.md)
+> * [概要](search-what-is-an-index.md)
+> * [ポータル](search-create-index-portal.md)
 > * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
+> * [REST ()](search-create-index-rest-api.md)
 > 
 > 
 
-## <a name="what-is-an-index?"></a>What is an index?
-An *index* is a persistent store of *documents* and other constructs used by an Azure Search service. A document is a single unit of searchable data in your index. For example, an e-commerce retailer might have a document for each item they sell, a news organization might have a document for each article, etc. Mapping these concepts to more familiar database equivalents: an *index* is conceptually similar to a *table*, and *documents* are roughly equivalent to *rows* in a table.
+## <a name="what-is-an-index"></a>インデックスとは
+*インデックス*とは、Azure Search サービスで使用される*ドキュメント*などの構成要素の永続的なストアです。 ドキュメントは、インデックス内の 1 単位の検索可能なデータです。 たとえば、e コマースの小売業者であれば販売品目ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*インデックス*は概念的には*テーブル*に似ており、*ドキュメント*はテーブルにおける*行*とほぼ同じです。
 
-When you add/upload documents and submit search queries to Azure Search, you submit your requests to a specific index in your search service.
+ドキュメントを追加/アップロードして検索クエリを Azure Search に送信する場合、検索サービス内の特定のインデックスへの要求を送信していることになります。
 
-## <a name="field-types-and-attributes-in-an-azure-search-index"></a>Field types and attributes in an Azure Search index
-As you define your schema, you must specify the name, type, and attributes of each field in your index. The field type classifies the data that is stored in that field. Attributes are set on individual fields to specify how the field is used. The following tables enumerate the types and attributes you can specify.
+## <a name="field-types-and-attributes-in-an-azure-search-index"></a>Azure Search インデックスのフィールドの種類と属性
+スキーマを定義する際に、インデックスの各フィールドの名前、型、属性を指定する必要があります。 フィールドの型によって、そのフィールドに格納されているデータが分類されます。 属性は個々のフィールドに設定されてフィールドの使用方法を指定します。 次の表に、指定できる型と属性をまとめます。
 
-### <a name="field-types"></a>Field types
-| Type | Description |
+### <a name="field-types"></a>フィールドの型
+| 型 | Description |
 | --- | --- |
-| *Edm.String* |Text that can optionally be tokenized for full-text search (word-breaking, stemming, etc). |
-| *Collection(Edm.String)* |A list of strings that can optionally be tokenized for full-text search. There is no theoretical upper limit on the number of items in a collection, but the 16 MB upper limit on payload size applies to collections. |
-| *Edm.Boolean* |Contains true/false values. |
-| *Edm.Int32* |32-bit integer values. |
-| *Edm.Int64* |64-bit integer values. |
-| *Edm.Double* |Double-precision numeric data. |
-| *Edm.DateTimeOffset* |Date time values represented in the OData V4 format (e.g. `yyyy-MM-ddTHH:mm:ss.fffZ` or `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
-| *Edm.GeographyPoint* |A point representing a geographic location on the globe. |
+| *Edm.String* |フルテキスト検索 (単語区切り、ステミングなど) のために必要に応じてトークン化することのできるテキスト。 |
+| *Collection(Edm.String)* |フルテキスト検索のために必要に応じてトークン化することのできる一連の文字列。 コレクション内の項目の数に理論上の上限はありませんが、ペイロードのサイズに対する 16 MB の上限がコレクションに適用されます。 |
+| *Edm.Boolean* |true または false の値が含まれます。 |
+| *Edm.Int32* |32 ビット整数値です。 |
+| *Edm.Int64* |64 ビット整数値です。 |
+| *Edm.Double* |倍精度数値データです。 |
+| *Edm.DateTimeOffset* |OData V4 形式で表された日時の値です (例: `yyyy-MM-ddTHH:mm:ss.fffZ` または `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`)。 |
+| *Edm.GeographyPoint* |地球上の地理的な場所を表すポイントです。 |
 
-You can find more detailed information about Azure Search's [supported data types on MSDN](https://msdn.microsoft.com/library/azure/dn798938.aspx).
+Azure Search の [サポートされるデータ型について詳しくは、MSDN をご覧ください](https://msdn.microsoft.com/library/azure/dn798938.aspx)。
 
-### <a name="field-attributes"></a>Field attributes
-| Attribute | Description |
+### <a name="field-attributes"></a>フィールド属性
+| 属性 | Description |
 | --- | --- |
-| *Key* |A string that provides the unique ID of each document, used for document look up. Every index must have one key. Only one field can be the key, and its type must be set to Edm.String. |
-| *Retrievable* |Specifies whether a field can be returned in a search result. |
-| *Filterable* |Allows the field to be used in filter queries. |
-| *Sortable* |Allows a query to sort search results using this field. |
-| *Facetable* |Allows a field to be used in a [faceted navigation](search-faceted-navigation.md) structure for user self-directed filtering. Typically fields containing repetitive values that you can use to group multiple documents together (for example, multiple documents that fall under a single brand or service category) work best as facets. |
-| *Searchable* |Marks the field as full-text searchable. |
+| *キー* |ドキュメント検索に使用される各ドキュメントの一意の ID を提供する文字列です。 各インデックスに、1 つのキーが必要です。 1 つのフィールドだけをキーにすることができ、その型を Edm.String に設定する必要があります。 |
+| *Retrievable* |検索結果でフィールドを返すことができるかどうかを設定します。 |
+| *Filterable* |フィルター クエリでフィールドを使用できるようにします。 |
+| *Sortable* |このフィールドを使ってクエリで検索結果を並べ替えられるようにします。 |
+| *Facetable* |ユーザー自律フィルター処理の [ファセット ナビゲーション](search-faceted-navigation.md) 構造でフィールドを使用できるようにします。 通常は、複数のドキュメント (たとえば、1 つのブランドやサービス カテゴリに属する複数のドキュメント) をまとめてグループ化するために使用できる、反復する値があるフィールドが、ファセットとして最適です。 |
+| *Searchable* |フィールドをフルテキスト検索可能としてマークします。 |
 
-You can find more detailed information about Azure Search's [index attributes on MSDN](https://msdn.microsoft.com/library/azure/dn798941.aspx).
+Azure Search の [インデックス属性について詳しくは、MSDN をご覧ください](https://msdn.microsoft.com/library/azure/dn798941.aspx)。
 
-## <a name="guidance-for-defining-an-index-schema"></a>Guidance for defining an index schema
-As you design your index, take your time in the planning phase to think through each decision. It is important that you keep your search user experience and business needs in mind when designing your index as each field must be assigned the [proper attributes](https://msdn.microsoft.com/library/azure/dn798941.aspx). Changing an index after it is deployed involves rebuilding and reloading the data.
+## <a name="guidance-for-defining-an-index-schema"></a>インデックス スキーマの定義に関するガイダンス
+インデックスを設計する際は、計画フェーズに時間をかけ、それぞれの決定項目を十分に検討してください。 各フィールドには [適切な属性](https://msdn.microsoft.com/library/azure/dn798941.aspx)を割り当てる必要があるため、インデックスを設計する際は、検索のユーザー エクスペリエンスとビジネス ニーズに留意することが重要です。 デプロイ後にインデックスを変更するには、再構築とデータの再読み込みが必要になります。
 
-If data storage requirements change over time, you can increase or decrease capacity by adding or removing partitions. For details, see [Manage your Search service in Azure](search-manage.md) or [Service Limits](search-limits-quotas-capacity.md).
+データ ストレージの要件が随時変更される環境でも、パーティションを追加または削除することで容量を増減できます。 詳細については、「[Microsoft Azure で Search サービスを管理する](search-manage.md)」または「[サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

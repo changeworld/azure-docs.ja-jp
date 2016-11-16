@@ -1,13 +1,13 @@
 ---
-title: 'SQL Database チュートリアル: セキュリティの概要'
-description: ユーザー アカウントを作成してアクセスし、データベースを管理する方法について説明します。
-keywords: ''
+title: "SQL Database チュートリアル: セキュリティの概要"
+description: "ユーザー アカウントを作成してアクセスし、データベースを管理する方法について説明します。"
+keywords: 
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 67797b09-f5c3-4ec2-8494-fe18883edf7f
 ms.service: sql-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 08/17/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a3bd8ac5466ae67df0a1865509c8fb897d1374ec
+
 
 ---
-# SQL Database チュートリアル: データベースにアクセスして管理するための SQL Database ユーザー アカウントを作成する
+# <a name="sql-database-tutorial-create-sql-database-user-accounts-to-access-and-manage-a-database"></a>SQL Database チュートリアル: データベースにアクセスして管理するための SQL Database ユーザー アカウントを作成する
 > [!div class="op_single_selector"]
 > * [Notification Hubs の使用](sql-database-get-started-security.md)
 > * [アクセス権の付与](sql-database-manage-logins.md)
@@ -28,20 +32,25 @@ ms.author: carlrab
 
 * サーバー レベルのプリンシパル ログインを使用して SQL Database にログインする。
 * SQL Database ユーザー アカウントを作成する。
-* SQL Database ユーザーに [db\_owner アクセス許可](https://msdn.microsoft.com/library/ms189121.aspx#Anchor_0)を付与する。
+* SQL Database ユーザーに [db_owner アクセス許可](https://msdn.microsoft.com/library/ms189121.aspx#Anchor_0)を付与する。
 * サーバー レベルのプリンシパルではないユーザー アカウントを使用して SQL データベースに接続する。
 
-[!INCLUDE [ログイン](../../includes/azure-getting-started-portal-login.md)]
+[!INCLUDE [Login](../../includes/azure-getting-started-portal-login.md)]
 
-[!INCLUDE [SQL Database 論理サーバーを作成する](../../includes/sql-database-sql-server-management-studio-connect-server-principal.md)]
+[!INCLUDE [Create SQL Database logical server](../../includes/sql-database-sql-server-management-studio-connect-server-principal.md)]
 
-[!INCLUDE [SQL Database データベースを作成する](../../includes/sql-database-create-new-database-user.md)]
+[!INCLUDE [Create SQL Database database](../../includes/sql-database-create-new-database-user.md)]
 
-[!INCLUDE [SQL Database データベースを作成する](../../includes/sql-database-grant-database-user-dbo-permissions.md)]
+[!INCLUDE [Create SQL Database database](../../includes/sql-database-grant-database-user-dbo-permissions.md)]
 
-[!INCLUDE [SQL Database データベースを作成する](../../includes/sql-database-sql-server-management-studio-connect-user.md)]
+[!INCLUDE [Create SQL Database database](../../includes/sql-database-sql-server-management-studio-connect-user.md)]
 
-## 次のステップ
-この SQL Database チュートリアルを完了して、ユーザー アカウントを作成し、ユーザー アカウントに dbo アクセス許可を付与した後は、[SQL Database のセキュリティ](sql-database-manage-logins.md)についてさらに詳しく学習できます。
+## <a name="next-steps"></a>次のステップ
+この SQL Database チュートリアルを完了して、ユーザー アカウントを作成し、ユーザー アカウントに dbo アクセス許可を付与した後は、 [SQL Database のセキュリティ](sql-database-manage-logins.md)についてさらに詳しく学習できます。
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

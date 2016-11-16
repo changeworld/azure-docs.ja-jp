@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: コピー アクティビティがあるパイプラインを REST API で作成する | Microsoft Docs'
-description: このチュートリアルでは、REST API を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。
+title: "チュートリアル: コピー アクティビティがあるパイプラインを REST API で作成する | Microsoft Docs"
+description: "このチュートリアルでは、REST API を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e3c045d652c04a8a03525753d9c18c3017c04f08
+
 
 ---
-# <a name="tutorial:-create-a-pipeline-with-copy-activity-using-rest-api"></a>チュートリアル: コピー アクティビティがあるパイプラインを REST API で作成する
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-rest-api"></a>チュートリアル: コピー アクティビティがあるパイプラインを REST API で作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
@@ -67,7 +71,7 @@ ms.author: spelluru
 ## <a name="create-json-definitions"></a>JSON 定義の作成
 curl.exe があるフォルダーに、以下の JSON ファイルを作成します。 
 
-### <a name="datafactory.json"></a>datafactory.json
+### <a name="datafactoryjson"></a>datafactory.json
 > [!IMPORTANT]
 > 名前はグローバルに一意である必要があります。一意の名前にするために、ADFCopyTutorialDF にプレフィックス/サフィックスを付けることができます。 
 > 
@@ -78,7 +82,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
         "location": "WestUS"
     }  
 
-### <a name="azurestoragelinkedservice.json"></a>azurestoragelinkedservice.json
+### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
 > **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
 > 
@@ -94,7 +98,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
         }
     }
 
-### <a name="azuersqllinkedservice.json"></a>azuersqllinkedservice.json
+### <a name="azuersqllinkedservicejson"></a>azuersqllinkedservice.json
 > [!IMPORTANT]
 > **servername**、**databasename**、**username**、**password** を、Azure SQL サーバーの名前、SQL データベースの名前、ユーザー アカウント、アカウントのパスワードに置き換えます。  
 > 
@@ -112,7 +116,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
     }
 
 
-### <a name="inputdataset.json"></a>inputdataset.json
+### <a name="inputdatasetjson"></a>inputdataset.json
     {
       "name": "AzureBlobInput",
       "properties": {
@@ -152,7 +156,7 @@ JSON 定義では **AzureBlobInput** という名前のデータセットを定�
 * **linkedServiceName** は **AzureStorageLinkedService** に設定されています。 
 * **folderPath** は **adftutorial** コンテナーに設定され、**fileName** は **emp.txt** に設定されています。  
 * format の **type** は **TextFormat** に設定されています。
-* テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。 
+* テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。    
 * **availability** が **hourly** に設定されています (frequency は hour、interval は 1 に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 
 
 入力データセット用に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。 JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
@@ -161,7 +165,7 @@ JSON 定義では **AzureBlobInput** という名前のデータセットを定�
 
 **folderPath** と **fileName** を **SliceStart** 時刻に基づいて動的に設定するには、**partitionedBy** プロパティを使用します。 次の例では、folderPath に SliceStart (処理されるスライスの開始時刻) の年、月、日を使用し、fileName に SliceStart の時間を使用します。 たとえば、スライスが 2014-10-20T08:00:00 に生成されている場合、folderName は wikidatagateway/wikisampledataout/2014/10/20 に設定され、fileName は 08.csv に設定されます。 
 
-    "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+      "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
     "fileName": "{Hour}.csv",
     "partitionedBy": 
     [
@@ -172,7 +176,7 @@ JSON 定義では **AzureBlobInput** という名前のデータセットを定�
     ],
 
 
-### <a name="outputdataset.json"></a>outputdataset.json
+### <a name="outputdatasetjson"></a>outputdataset.json
     {
       "name": "AzureSqlOutput",
       "properties": {
@@ -209,7 +213,7 @@ JSON 定義では **AzureSqlOutput** という名前のデータセットを定�
 * データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
 * **availability** は **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 
-### <a name="pipeline.json"></a>pipeline.json
+### <a name="pipelinejson"></a>pipeline.json
     {
       "name": "ADFTutorialPipeline",
       "properties": {
@@ -468,7 +472,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 
 1. Azure **データ ファクトリ**を作成しました。
 2. 次の **リンクされたサービス**を作成しました。
-   1. 入力データを保持する Azure ストレージ アカウントをリンクするための、Azure Storage のリンクされたサービス。    
+   1. 入力データを保持する Azure ストレージ アカウントをリンクするための、Azure Storage のリンクされたサービス。     
    2. 出力データを保持する Azure SQL データベースをリンクするための、Azure SQL のリンクされたサービス。 
 3. パイプラインの入力データと出力データを記述する **データセット**を作成しました。
 4. ソースとして BlobSource、シンクとして SqlSink を持つコピー アクティビティを含む **パイプライン** を作成しました。 
@@ -500,6 +504,6 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

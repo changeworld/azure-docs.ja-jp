@@ -1,28 +1,30 @@
 ---
-title: Application Gateway の概要 | Microsoft Docs
-description: このページでは、ゲートウェイのサイズ、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、SSL オフロードなど、レイヤー 7 の負荷分散を提供する Application Gateway サービスの概要について説明します。
+title: "Application Gateway の概要 | Microsoft Docs"
+description: "このページでは、ゲートウェイのサイズ、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、SSL オフロードなど、レイヤー 7 の負荷分散を提供する Application Gateway サービスの概要について説明します。"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
 manager: carmonm
 editor: tysonn
-
+ms.assetid: b37a2473-4f0e-496b-95e7-c0594e96f83e
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/26/2016
+ms.date: 10/25/2016
 ms.author: gwallace
+translationtype: Human Translation
+ms.sourcegitcommit: a7cf17e7c84ca6ec69b8a88b78bb0bbc91db0b5b
+ms.openlocfilehash: b365a44d59b7d6f4d0f1eec42aa02a565412b18e
+
 
 ---
 # <a name="application-gateway-overview"></a>Application Gateway の概要
 ## <a name="what-is-application-gateway"></a>Application Gateway とは
-Microsoft Azure Application Gateway はアプリケーション配信コントローラー (ADC) をサービスとして提供することで、多くのレイヤー 7 負荷分散機能をもたらします。 単純化して言えば、Application Gateway は、トラフィックを受け取り、定義された規則に基づいてそのトラフィックを適切なバックエンド インスタンスに転送します。
+Microsoft Azure Application Gateway は、アプリケーション配信コントローラー (ADC) をサービスとして提供することで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。 これにより、CPU を集中的に使用する SSL ターミネーションをお客様が Application Gateway にオフロードし、Web ファームの生産性を最適化できます。 また、着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 さらに、Application Gateway は、OWASP の上位 10 件の一般的 Web 脆弱性の大部分に対する保護をアプリケーションに提供する、Web アプリケーション ファイアウォール (WAF) も備えています。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。 Application Gateway は Azure によって完全に管理され、非常にスケーラブルで、高い可用性を備えています。 管理しやすいように診断機能とログ機能が豊富に用意されているほか、 仮想マシン、クラウド サービス、内部 Web アプリケーションや外部接続された Web アプリケーションとも連携します。
 
-アプリケーションの負荷分散では、IT 管理者や開発者は、HTTP プロトコルに基づくネットワーク トラフィックのルーティング規則を作成することができます。  この Application Gateway サービスは可用性が高く、従量課金制で使用できます。 SLA と価格については、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」および「[Application Gateway の価格](https://azure.microsoft.com/pricing/details/application-gateway/)」をご覧ください。
-
-Application Gateway は、HTTP トラフィックにルーティング ルールを適用して、レイヤー 7 (HTTP) の負荷分散を実現します。 アプリケーション ゲートウェイを作成すると、エンドポイント (VIP) が関連付けられ、イングレス ネットワーク トラフィック用のパブリック IP として使用されます。 Azure では、トランスポート レベル (TCP/UDP) で機能する Azure Load Balancer を介してレイヤー 4 の負荷分散を提供し、すべての受信ネットワーク トラフィックを Application Gateway サービスに負荷分散させます。 Application Gateway は、仮想マシン、クラウド サービス、外部 IP アドレスのいずれであるかにかかわらず、その構成に基づいて HTTP トラフィックをルーティングします。
+Application Gateway は、アプリケーションの専用仮想アプライアンスで、スケーラビリティと高可用性のための複数の worker インスタンスで構成されています。 アプリケーション ゲートウェイを作成すると、エンドポイント (パブリック VIP または内部 ILB IP) が関連付けられ、イングレス ネットワーク トラフィックに使用されます。 この VIP または ILB IP は、Azure Load Balancer によって提供されます。Azure Load Balancer は、トランスポート レベル (TCP/UDP) で機能し、すべての受信ネットワーク トラフィックの負荷を Application Gateway worker インスタンスに分散します。 その後、Application Gateway は、仮想マシン、クラウド サービス、内部または外部 IP アドレスのいずれであるかにかかわらず、その構成に基づいて HTTP/HTTPS トラフィックをルーティングします。 SLA と価格については、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」および「[Application Gateway の価格](https://azure.microsoft.com/pricing/details/application-gateway/)」をご覧ください。
 
 ## <a name="features"></a>Features (機能)
 Application Gateway は現在、次の機能でレイヤー 7 アプリケーションの配信をサポートします。
@@ -36,6 +38,7 @@ Application Gateway は現在、次の機能でレイヤー 7 アプリケーシ
 * **[マルチサイト ルーティング](application-gateway-multi-site-overview.md)** - Application Gateway では、単一のアプリケーション ゲートウェイに最大 20 個の Web サイトを統合できます。
 * **[WebSocket のサポート](application-gateway-websocket.md)** - Application Gateway のもう 1 つの優れた機能として、WebSocket がネイティブでサポートされます。
 * **[正常性の監視](application-gateway-probe-overview.md)** - Application Gateway は、バックエンド リソースの既定の正常性の監視と、より具体的なシナリオを監視するカスタム プローブを提供します。
+* **[高度な診断](application-gateway-diagnostics.md)** - Application Gateway は、完全な診断とアクセス ログを提供します。 WAF が有効になっているアプリケーション ゲートウェイに対してファイアウォールのログを使用できます。
 
 ## <a name="benefits"></a>メリット
 Application Gateway は、以下の用途に便利です。
@@ -46,6 +49,10 @@ Application Gateway は、以下の用途に便利です。
 * WebSocket トラフィックをサポートするアプリケーション
 * SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃に対する Web アプリケーションの保護。
 
+Azure で管理されるサービスとしての Application Gateway の負荷分散により、Azure のソフトウェア ロード バランサーの背後でレイヤー 7 ロード バランサーをプロビジョニングできます。 Traffic Manager を使用して、次の図のようなシナリオを作成します。このシナリオでは、Traffic Manager は、さまざまなリージョンの複数のアプリケーション ゲートウェイ リソースに対するトラフィックにリダイレクトと可用性を提供し、アプリケーション ゲートウェイは、リージョン間でレイヤー 7 の負荷分散を実現します。 このシナリオの例については、「[Using load balancing services in the Azure cloud (Azure クラウドの負荷分散サービスの使用)](../traffic-manager/traffic-manager-load-balancing-azure.md)」を参照してください
+
+![トラフィック マネージャーとアプリケーション ゲートウェイのシナリオ](./media/application-gateway-introduction/tm-lb-ag-scenario.png)
+
 [!INCLUDE [load-balancer-compare-tm-ag-lb-include.md](../../includes/load-balancer-compare-tm-ag-lb-include.md)]
 
 ## <a name="gateway-sizes-and-instances"></a>ゲートウェイのサイズとインスタンス
@@ -53,7 +60,7 @@ Application Gateway は、以下の用途に便利です。
 
 Application Gateway には現在、WAF と Standard の 2 つの SKU があります。
 
-サブスクリプションごとに最大 50 個のアプリケーション ゲートウェイを作成でき、アプリケーション ゲートウェイごとに最大 10 個のインスタンスを使用できます。 各アプリケーション ゲートウェイは、20 個の HTTP リスナーで構成できます。 Azure で管理されるサービスとしての Application Gateway の負荷分散により、Azure のソフトウェア ロード バランサーの背後でレイヤー 7 ロード バランサーをプロビジョニングできます。
+サブスクリプションごとに最大 50 個のアプリケーション ゲートウェイを作成でき、アプリケーション ゲートウェイごとに最大 10 個のインスタンスを使用できます。 各アプリケーション ゲートウェイは、20 個の HTTP リスナーで構成できます。 その他のアプリケーション ゲートウェイ制限の詳細については、「[Azure subscription and service limits, quotas, and constraints (Azure サブスクリプションとサービスの制限、クォータ、および制約)](../azure-subscription-service-limits.md)」を参照してください。
 
 次の表では、アプリケーション ゲートウェイ インスタンスごとにパフォーマンス スループットの平均値を示します。
 
@@ -64,8 +71,8 @@ Application Gateway には現在、WAF と Standard の 2 つの SKU があり�
 
 > [!NOTE]
 > これらの値は、アプリケーション ゲートウェイ スループットのおおよその値です。 実際のスループットは、平均ページ サイズ、バックエンド インスタンスの場所、ページの処理時間など、さまざまな環境の違いによって異なります。 パフォーマンス面の正確な数値は、ご自身でテストを実施のうえご確認ください。ここに挙げた数値は、容量計画の参考とすることを目的として記載したものにすぎません。
-> 
-> 
+>
+>
 
 ## <a name="health-monitoring"></a>正常性の監視
 Azure Application Gateway は、基本またはカスタムの正常性プローブを使用してバックエンド インスタンスの正常性を自動的に監視します。 正常性プローブを使用すると、正常なホストのみがトラフィックに応答する状態を確保できます。 詳細については、「 [Application Gateway による正常性監視の概要](application-gateway-probe-overview.md)」を参照してください。
@@ -80,6 +87,8 @@ REST API、PowerShell コマンドレット、Azure CLI、または [Azure Porta
 
 URL ベースのコンテンツ ルーティングを使用してアプリケーション ゲートウェイを作成する方法については、「 [URL ベースのルーティングを使用して Application Gateway を作成する](application-gateway-create-url-route-arm-ps.md) 」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

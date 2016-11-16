@@ -1,20 +1,24 @@
 ---
-title: Azure Virtual Machines での SQL Server の概要 | Microsoft Docs
-description: Azure Virtual Machines で各 SQL Server エディションを実行する方法について説明します。 すべての SQL Server VM イメージと関連コンテンツへのダイレクト リンクが記載されています。
+title: "Azure Virtual Machines での SQL Server の概要 | Microsoft Docs"
+description: "Azure Virtual Machines で各 SQL Server エディションを実行する方法について説明します。 すべての SQL Server VM イメージと関連コンテンツへのダイレクト リンクが記載されています。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: rothja
 manager: jhubbard
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 10/19/2016
 ms.author: jroth
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: fcc2883ae52bb3d4be098ce741bbf5f5047777d2
+
 
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server の概要
@@ -51,19 +55,10 @@ ms.author: jroth
 > 
 > 
 
-## <a name="understand-your-options"></a>オプションについて
+## <a name="scenarios"></a>シナリオ
 データを Azure でホストするにはさまざまな理由があります。 アプリケーションが Azure に移動している場合、データの移動でもパフォーマンスが向上します。 ただし、ほかにも利点があります。 グローバルな展開と障害復旧のために、自動的に複数のデータ センターにアクセスできるようになります。 データは、高度なセキュリティで保護され、耐久性に優れています。
 
-Azure VM で実行されている SQL Server は、リレーショナル データを Azure に格納するための 1 つのオプションです。 次の表に、Azure における SQL サービスの簡単な概要を示します。
-
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | SQL サービス | Description |
-| ---:| --- | --- |
-| ![Azure Virtual Machines における SQL Server](./media/virtual-machines-windows-sql-server-iaas-overview/sql-server-virtual-machine.png) |[Azure Virtual Machines における SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) |Azure Virtual Machines で SQL Server を実行します (このトピックの中心)。 直接仮想マシンを管理し、製品版の SQL Server でデータベースを実行します。 |
-| ![SQL Database](./media/virtual-machines-windows-sql-server-iaas-overview/azure-sql-database.png) |[SQL Database](https://azure.microsoft.com/services/sql-database/) |SQL Database サービスを使用して、基になるインフラストラクチャを管理することなく、データベースにアクセスしてスケールアップ/スケールダウンします。 |
-| ![SQL Data Warehouse](./media/virtual-machines-windows-sql-server-iaas-overview/azure-sql-data-warehouse.png) |[SQL Data Warehouse](https://azure.microsoft.com/en-us/services/sql-data-warehouse/) |Azure SQL Data Warehouse を使用して、大量のリレーショナルおよび非リレーショナル データを処理します。 サービスとしてスケーラブルなデータ ウェアハウジング機能を提供します。 |
-| ![SQL Server Stretch Database](./media/virtual-machines-windows-sql-server-iaas-overview/sql-server-stretch-database.png) |[SQL Server Stretch Database](https://azure.microsoft.com/en-us/services/sql-server-stretch-database/) |オンプレミスのトランザクション データを Microsoft SQL Server 2016 から Azure に動的にストレッチします。 |
-
-このようにさまざまなオプションがあるため、Azure VM で実行されている SQL Server は、複数のシナリオにお勧めします。 たとえば、オンプレミスの SQL Server マシンとできるだけ同じように、Azure VM を構成することができます。 また、同じデータベース サーバー上で追加のアプリケーションとサービスを実行することもできます。 より多くの決定要因を検討するのに役立つ 2 つのリソースがあります。
+Azure VM で実行されている SQL Server は、リレーショナル データを Azure に格納するための 1 つのオプションです。 一部のシナリオに適しています。 たとえば、オンプレミスの SQL Server マシンとできるだけ同じように、Azure VM を構成することができます。 また、同じデータベース サーバー上で追加のアプリケーションとサービスを実行することもできます。 さらに多くのシナリオや考慮事項について考えるのに役立つ主なリソースが 2 つあります。
 
 * [Azure 仮想マシン上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) に関するページでは、Azure VM で SQL Server を使用するのに最適なシナリオの概要を示します。 
 * 「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/sql-database-paas-vs-sql-server-iaas.md)」では、VM で実行されている SQL Database と SQL Server の詳細な比較を示します。
@@ -73,7 +68,7 @@ Azure VM で実行されている SQL Server は、リレーショナル デー�
 
 このプロセスの詳細な手順については、チュートリアル「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」に記載されています。 また、[SQL Server VM のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)の記事も参照してください。ここでは、適切なマシンのサイズと、プロビジョニング中に使用できるその他の機能の選択方法を説明しています。
 
-## <a name="option-1:-create-a-sql-vm-with-per-minute-licensing"></a>オプション 1: 分単位のライセンスを利用した SQL VM の作成
+## <a name="option-1-create-a-sql-vm-with-perminute-licensing"></a>オプション 1: 分単位のライセンスを利用した SQL VM の作成
 次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。 指定したバージョン、エディション、およびオペレーティング システムで新しい SQL VM の作成を開始するには、いずれかのリンクをクリックします。
 
 | バージョン | オペレーティング システム | エディション |
@@ -87,7 +82,7 @@ Azure VM で実行されている SQL Server は、リレーショナル デー�
 | **SQL 2008 R2 SP3** |Windows Server 2008 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3EnterpriseWindowsServer2008R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3StandardWindowsServer2008R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3WebWindowsServer2008R2) |
 | **SQL 2008 R2 SP3** |Windows Server 2012 |[Express](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3ExpressWindowsServer2012) |
 
-## <a name="option-2:-create-a-sql-vm-with-an-existing-license"></a>オプション 2: 既存のライセンスを利用した SQL VM の作成
+## <a name="option-2-create-a-sql-vm-with-an-existing-license"></a>オプション 2: 既存のライセンスを利用した SQL VM の作成
 ライセンス持ち込み (BYOL) を利用することもできます。 このシナリオでは、SQL Server ライセンスに対する追加料金はなく、VM のみに対して料金を支払います。 所有するライセンスを使用するには、以下の SQL Server のバージョン、エディション、およびオペレーティング システムのマトリックスを使用します。 ポータルでは、これらのイメージ名に **{BYOL}**というプレフィックスが付きます。
 
 | バージョン | オペレーティング システム | エディション |
@@ -121,7 +116,7 @@ Azure VM では[自動バックアップ](virtual-machines-windows-sql-automated
 ### <a name="automate-updates"></a>更新の自動化
 Azure VM では、 [自動修正](virtual-machines-windows-sql-automated-patching.md) を使用して、Windows と SQL Server の重要な更新プログラムを自動的にインストールするメンテナンス期間をスケジュール設定できます。
 
-### <a name="customer-experience-improvement-program-(ceip)"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
+### <a name="customer-experience-improvement-program-ceip"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
 既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 
 
 詳細については、「[使用許諾契約への同意](https://msdn.microsoft.com/library/ms143343.aspx)」の CEIP に関するセクションを参照してください。 
@@ -131,6 +126,9 @@ Azure VM では、 [自動修正](virtual-machines-windows-sql-automated-patchin
 
 質問がある場合は、 まず、「[Azure Virtual Machines における SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)」をご確認ください。 SQL VM に関するトピックのいずれかで、下部のセクションに質問またはコメントを追加して、Microsoft やコミュニティとやり取りすることもできます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

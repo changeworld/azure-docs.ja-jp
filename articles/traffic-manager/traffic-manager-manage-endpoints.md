@@ -1,12 +1,12 @@
 ---
-title: Manage endpoints in Azure Traffic Manager | Microsoft Docs
-description: This article will help you add, remove, enable and disable endpoints from Azure Traffic Manager.
+title: "Azure Traffic Manager でのエンドポイントの管理 | Microsoft Docs"
+description: "この記事では、Azure Traffic Manager からエンドポイントの追加、削除、有効化、無効化する方法について説明します。"
 services: traffic-manager
-documentationcenter: ''
+documentationcenter: 
 author: sdwheeler
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: ade2bbc2-35a7-43c5-8001-4698f7254526
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,64 +14,69 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: sewhee
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e6af6652d39fad5812c15e19fa29c757595a78b6
 
 ---
-# <a name="add,-disable,-enable,-or-delete-endpoints"></a>Add, disable, enable, or delete endpoints
-The Web Apps feature in Azure App Service already provides failover and round-robin traffic routing functionality for websites within a datacenter, regardless of the website mode. Azure Traffic Manager allows you to specify failover and round-robin traffic routing for websites and cloud services in different datacenters. The first step necessary to provide that functionality is to add the cloud service or website endpoint to Traffic Manager.
+
+# <a name="add-disable-enable-or-delete-endpoints"></a>エンドポイントの追加、削除、有効化、無効化
+
+Azure App Service の Web Apps 機能では、データセンター内の Web サイト向けに、Web サイトのモードに関係なく、フェールオーバーとラウンド ロビンによるトラフィック ルーティング機能があらかじめ用意されています。 Azure Traffic Manager を使用すると、異なるデータセンター内の Web サイトやクラウド サービスに対して、フェールオーバーとラウンド ロビンによるトラフィックルーティング方法を指定できます。 この機能の実現に必要な最初の手順は、Traffic Manager にクラウド サービスまたは Web サイトのエンドポイントを追加することです。
 
 > [!NOTE]
-> This article explains how to use the classic portal. The Azure classic portal only supports the creation and assignment of cloud services and Web apps as endpoints. The new [Azure portal](https://portal.azure.com) is the preferred interface.
-> 
-> 
+> この記事では、クラシック ポータルの使用方法について説明します。 Azure クラシック ポータルでは、クラウド サービスと Web アプリのエンドポイントとしての作成と割り当てのみがサポートされています。 新しい [Azure Portal](https://portal.azure.com) がお勧めのインターフェイスです。
 
-You can also disable individual endpoints that are part of a Traffic Manager profile. Disabling an endpoint leaves it as part of the profile, but the profile acts as if the endpoint is not included in it. This action is useful for temporarily removing an endpoint that is in maintenance mode or being redeployed. Once the endpoint is up and running again, it can be enabled.
+Traffic Manager プロファイルを構成する個々のエンドポイントを無効にすることもできます。 無効にしたエンドポイントはその後もプロファイルの一部として残りますが、プロファイルは、エンドポイントが含まれていないかのように機能します。 この操作は、メンテナンス モードのエンドポイントや再デプロイされるエンドポイントを一時的に削除するときに役立ちます。 エンドポイントが稼働状態になって再度動作すると、有効にすることができます。
 
 > [!NOTE]
-> Disabling an endpoint has nothing to do with its deployment state in Azure. A healthy endpoint remains up and able to receive traffic even when disabled in Traffic Manager. Additionally, disabling an endpoint in one profile does not affect its status in another profile.
-> 
-> 
+> エンドポイントの無効化は、Azure でのデプロイメント状態とは関係ありません。 正常なエンドポイントは、Traffic Manager で無効になっていても、稼働状態のままでトラフィックを受信できます。 また、あるプロファイルでエンドポイントを無効化しても、そのエンドポイントの他のプロファイルでの状態には影響しません。
 
-## <a name="to-add-a-cloud-service-or-website-endpoint"></a>To add a cloud service or website endpoint
-1. On the Traffic Manager pane in the Azure classic portal, locate the Traffic Manager profile that contains the endpoint settings that you want to modify. To open the settings page, click the arrow to the right of the profile name.
-2. At the top of the page, click **Endpoints** to view the endpoints that are already part of your configuration.
-3. At the bottom of the page, click **Add** to access the **Add Service Endpoints** page. By default, the page lists the cloud services under **Service Endpoints**.
-4. For cloud services, select the cloud services in the list to add them as endpoints for this profile. Clearing the cloud service name removes it from the list of endpoints.
-5. For websites, click the **Service Type** drop-down list, and then select **Web app**.
-6. Select the websites in the list to add them as endpoints for this profile. Clearing the website name removes it from the list of endpoints. You can select only one website per Azure datacenter (also known as a region). When you select the first website, the other websites in the same datacenter become unavailable for selection. Also note that only Standard websites are listed.
-7. After you select the endpoints for this profile, click the checkmark on the lower right to save your changes.
+## <a name="to-add-a-cloud-service-or-website-endpoint"></a>クラウド サービスまたは Web サイトのエンドポイントを追加するには
+
+1. Azure クラシック ポータルの [Traffic Manager] ウィンドウで、変更対象のエンドポイント設定が保存されている Traffic Manager プロファイルを見つけます。 設定ページを開くには、プロファイル名の右側にある矢印をクリックします。
+2. ページの上部にある **[エンドポイント]** をクリックして、既に構成に含まれているエンドポイントを表示します。
+3. ページの下部にある **[追加]** をクリックして、**[サービス エンドポイントの追加]** ページにアクセスします。 既定では、このページの **[サービス エンドポイント]**の下にクラウド サービスの一覧が表示されます。
+4. クラウド サービスの場合は、このプロファイルでエンドポイントとして追加するクラウド サービスを一覧から選択します。 クラウド サービスの名前をクリアすると、エンドポイントの一覧から削除されます。
+5. Web サイトの場合は、**[サービスの種類]** ドロップダウン リストをクリックし、**[Web アプリ]** を選択します。
+6. このプロファイルでエンドポイントとして追加する Web サイトを一覧から選択します。 Web サイトの名前をクリアすると、エンドポイントの一覧から削除されます。 選択できる Web サイトは、Azure データセンター (リージョンとも呼ばれます) ごとに 1 つだけです。 最初の Web サイトを選択すると、同じデータセンター内の他の Web サイトは選択できなくなります。 また、一覧には標準 Web サイトのみが表示されます。
+7. このプロファイルのエンドポイントを選択したら、右下にあるチェックマークをクリックして変更を保存します。
 
 > [!NOTE]
-> After you add or remove an endpoint from a profile using the *Failover* traffic routing method, the failover priority list may not be ordered they way you want. You can adjust the order of the Failover Priority List on the Configuration page. For more information, see [Configure Failover traffic routing](traffic-manager-configure-failover-routing-method.md).
-> 
-> 
+> *[フェールオーバー]* トラフィック ルーティング方法でプロファイルにエンドポイントを追加したり、プロファイルからエンドポイントを削除したりすると、フェールオーバー優先度リストの順番が適切ではなくなる可能性があります。 フェールオーバー優先度リストの順番は、[構成] ページで調整できます。 詳細については、「 [フェールオーバーによるトラフィック ルーティング方法の構成](traffic-manager-configure-failover-routing-method.md)」をご覧ください。
 
-## <a name="to-disable-an-endpoint"></a>To disable an endpoint
-1. On the Traffic Manager pane in the Azure classic portal, locate the Traffic Manager profile that contains the endpoint settings that you want to modify. To open the settings page, click the arrow to the right of the profile name.
-2. At the top of the page, click **Endpoints** to view the endpoints that are included in your configuration.
-3. Click the endpoint that you want to disable, and then click **Disable** at the bottom of the page.
-4. Clients continue to send traffic to the endpoint for the duration of Time-to-Live (TTL). You can change the TTL on the Configuration page of the Traffic Manager profile.
+## <a name="to-disable-an-endpoint"></a>エンドポイントを無効にするには
 
-## <a name="to-enable-an-endpoint"></a>To enable an endpoint
-1. On the Traffic Manager pane in the Azure classic portal, locate the Traffic Manager profile that contains the endpoint settings that you want to modify. To open the settings page, click the arrow to the right of the profile name.
-2. At the top of the page, click **Endpoints** to view the endpoints that are included in your configuration.
-3. Click the endpoint that you want to enable, and then click **Enable** at the bottom of the page.
-4. Clients are directed to the enabled endpoint as dictated by the profile.
+1. Azure クラシック ポータルの [Traffic Manager] ウィンドウで、変更対象のエンドポイント設定が保存されている Traffic Manager プロファイルを見つけます。 設定ページを開くには、プロファイル名の右側にある矢印をクリックします。
+2. ページの上部にある、 **[エンドポイント]** をクリックして、構成に含まれるエンドポイントを表示します。
+3. 無効にするエンドポイントをクリックしてから、ページの下部にある **[無効化]** をクリックします。
+4. クライアントは、有効期間 (TTL) 中はエンドポイントにトラフィックを送信し続けます。 TTL は、Traffic Manager プロファイルの [構成] ページで変更できます。
 
-## <a name="to-delete-a-cloud-service-or-website-endpoint"></a>To delete a cloud service or website endpoint
-1. On the Traffic Manager pane in the Azure classic portal, locate the Traffic Manager profile that contains the endpoint settings that you want to modify. To open the settings page, click the arrow to the right of the profile name.
-2. At the top of the page, click **Endpoints** to view the endpoints that are already part of your configuration.
-3. On the Endpoints page, click the name of the endpoint that you want to delete from the profile.
-4. At the bottom of the page, click **Delete**.
+## <a name="to-enable-an-endpoint"></a>エンドポイントを有効にするには
 
-## <a name="next-steps"></a>Next steps
-* [Traffic Manager - Disable, enable, or delete a profile](traffic-manager-manage-profiles.md)
-* [Configure failover routing method](traffic-manager-configure-failover-routing-method.md)
-* [Configure round robin routing method](traffic-manager-configure-round-robin-routing-method.md)
-* [Configure performance routing method](traffic-manager-configure-performance-routing-method.md)
-* [Troubleshooting Traffic Manager degraded state](traffic-manager-troubleshooting-degraded.md)
-* [Traffic Manager performance considerations](traffic-manager-performance-considerations.md)
-* [Operations on Traffic Manager (REST API Reference)](http://go.microsoft.com/fwlink/p/?LinkID=313584)
+1. Azure クラシック ポータルの [Traffic Manager] ウィンドウで、変更対象のエンドポイント設定が保存されている Traffic Manager プロファイルを見つけます。 設定ページを開くには、プロファイル名の右側にある矢印をクリックします。
+2. ページの上部にある、 **[エンドポイント]** をクリックして、構成に含まれるエンドポイントを表示します。
+3. 有効にするエンドポイントをクリックしてから、ページの下部にある **[有効化]** をクリックします。
+4. クライアントは、プロファイルで指定されているとおりに、有効になっているエンドポイントにリダイレクトされます。
 
-<!--HONumber=Oct16_HO2-->
+## <a name="to-delete-a-cloud-service-or-website-endpoint"></a>クラウド サービスまたは Web サイトのエンドポイントを削除するには
+
+1. Azure クラシック ポータルの [Traffic Manager] ウィンドウで、変更対象のエンドポイント設定が保存されている Traffic Manager プロファイルを見つけます。 設定ページを開くには、プロファイル名の右側にある矢印をクリックします。
+2. ページの上部にある **[エンドポイント]** をクリックして、既に構成に含まれているエンドポイントを表示します。
+3. [エンドポイント] ページで、プロファイルから削除するエンドポイントの名前をクリックします。
+4. ページの下部にある **[削除]**をクリックします。
+
+## <a name="next-steps"></a>次のステップ
+
+* [Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)
+* [ルーティング方法の構成](traffic-manager-configure-routing-method.md)
+* [Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
+* [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
+* [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkID=313584)
+
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

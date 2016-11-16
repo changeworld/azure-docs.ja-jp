@@ -1,12 +1,12 @@
 ---
-title: Log Analytics でのデータ使用状況の分析 | Microsoft Docs
-description: OMS サービスに送信されているデータの量は、Log Analytics の [使用量] ページで確認できます。
+title: "Log Analytics でのデータ使用状況の分析 | Microsoft Docs"
+description: "OMS サービスに送信されているデータの量は、Log Analytics の [使用量] ページで確認できます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/11/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4c1d0319e768eec69718d8b49db30069ec1331d9
+
 
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
@@ -65,6 +69,9 @@ Operations Management Suite (OMS) の Log Analytics は、データを収集し�
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics でのログ検索](log-analytics-log-searches.md) を参照し、ソリューションによって収集された情報の詳細を確認します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

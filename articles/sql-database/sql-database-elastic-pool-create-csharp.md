@@ -1,12 +1,12 @@
 ---
-title: C# を使用したエラスティック データベース プールの作成 | Microsoft Docs
-description: 多数のデータベースでリソースを共有できるように、C# データベース開発手法を使用して、Azure SQL Database にスケーラブルなエラスティック データベース プールを作成します。
+title: "C# を使用したエラスティック データベース プールの作成 | Microsoft Docs"
+description: "多数のデータベースでリソースを共有できるように、C# データベース開発手法を使用して、Azure SQL Database にスケーラブルなエラスティック データベース プールを作成します。"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 2dedddbb-618d-462b-80dd-e4a57857c737
 ms.service: sql-database
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 28f792cd5afd194445666aeb1d17d5fbf27a835d
+
 
 ---
-# <a name="create-an-elastic-database-pool-with-c&#x23;"></a>C&#x23; を使用したエラスティック データベース プールの作成
+# <a name="create-an-elastic-database-pool-with-cx23"></a>C&#x23; を使用したエラスティック データベース プールの作成
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
@@ -26,10 +30,10 @@ ms.author: sstein
 
 この記事では、C# と [Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)を使用して Azure SQL エラスティック データベース プールを作成する方法を説明します。 スタンドアロンの SQL データベースを作成する場合には、「 [C# を使用して SQL Database Library for .NET で SQL Database を作成する](sql-database-get-started-csharp.md)」を参照してください。
 
-Azure SQL Database Library for .NET は、[Resource Manager ベースの SQL Database REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) をラップする [Azure Resource Manager](../resource-group-overview.md) ベースの API を提供します。
+Azure SQL Database Library for .NET は、[Resource Manager ベースの SQL Database REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) をラップする [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) ベースの API を提供します。
 
 > [!NOTE]
-> SQL Database の新機能の多くは、[Azure Resource Manager デプロイメント モデル](../resource-group-overview.md)を使用している場合にのみサポートされます。そのため、常に最新の **Azure SQL Database Management Library for .NET ([ドキュメント](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))** を使用する必要があります。 以前の[クラシック デプロイメント モデル ベースのライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql)は互換性のためだけにサポートされているため、より新しい Resource Manager ベースのライブラリを使用することをお勧めします。
+> SQL Database の新機能の多くは、[Azure Resource Manager デプロイメント モデル](../azure-resource-manager/resource-group-overview.md)を使用している場合にのみサポートされます。そのため、常に最新の **Azure SQL Database Management Library for .NET ([ドキュメント](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))** を使用する必要があります。 以前の[クラシック デプロイメント モデル ベースのライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql)は互換性のためだけにサポートされているため、より新しい Resource Manager ベースのライブラリを使用することをお勧めします。
 > 
 > 
 
@@ -55,7 +59,7 @@ C# を使用して SQL データベースを作成するために、( [パッケ
 > 
 > 
 
-## <a name="create-a-sql-elastic-database-pool---c#-example"></a>SQL エラスティック データベース プールの作成 - C# の例
+## <a name="create-a-sql-elastic-database-pool-c-example"></a>SQL エラスティック データベース プールの作成 - C# の例
 次のサンプルでは、リソース グループ、サーバー、ファイアウォール規則、エラスティック プールを作成した後、そのプールに SQL データベースを作成します。 「[リソースにアクセスするためのサービス プリンシパルの作成](#create-a-service-principal-to-access-resources)」を参照し、変数 `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` を取得してください。
 
 **Program.cs** の内容を次のとおりに書き換え、実際のアプリの値で `{variables}` を更新します (`{}` は含めません)。
@@ -307,6 +311,9 @@ namespace SqlElasticPoolConsoleApp
 * [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 * [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 
