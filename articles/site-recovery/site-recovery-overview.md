@@ -79,6 +79,6 @@ Site Recovery では、アプリケーション対応レプリケーションを
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!-----HONumber=Nov16_HO2-->
 
 
