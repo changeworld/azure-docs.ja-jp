@@ -51,19 +51,22 @@
 ### [診断ログにアクセスする](data-lake-store-diagnostic-logs.md)
 
 # リファレンス
-## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-## [Java](https://azure.github.io/azure-data-lake-store-java/javadoc/)
-## [.NET](https://docs.microsoft.com/dotnet/api)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [Java](/java/api/)
+## [.NET](/dotnet/api/)
 ## [Node.JS](https://www.npmjs.com/package/azure-arm-datalake-store)
-## [REST ()](https://docs.microsoft.com/en-us/rest/api/datalakestore/)
+## [REST ()](/rest/api/datalakestore/)
 
 # リソース
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-lake-store)
+## [料金](https://azure.microsoft.com/pricing/details/data-lake-store/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [Stack Overflow フォーラム](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [UserVoice に関するフィードバックを送信する](https://feedback.azure.com/forums/327234-data-lake)
 ## [Data Lake Store のブログ](https://blogs.msdn.microsoft.com/azuredatalake/)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

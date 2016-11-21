@@ -1,11 +1,11 @@
 # Overview
-## [Azure Government とは](../azure-government-overview.md?toc=%@Fazure%2fazure-government%2ftoc.json)
+## [Azure Government とは](../azure-government-overview.md?toc=%2fazure%2fazure-government%2ftoc.json)
 ## [ITAR](documentation-government-overview-itar.md)
 ## [司法と公衆安全](documentation-government-overview-jps.md)
 ## [国防省](documentation-government-overview-dod.md)
 
 # 作業の開始
-## [開発者ガイド](../azure-government-developer-guide.md?toc=%@Fazure%2fazure-government%2ftoc.json)
+## [開発者ガイド](../azure-government-developer-guide.md?toc=%2fazure%2fazure-government%2ftoc.json)
 
 # 方法
 ## プラン
@@ -28,10 +28,12 @@
 ### [監視 + 管理](documentation-government-services-monitoringandmanagement.md)
 
 # リソース
-## [試用版](https://azuregov.microsoft.com/trial/azuregovtrial)
 ## [料金](https://azure.microsoft.com/pricing/)
+## [試用版](https://azuregov.microsoft.com/trial/azuregovtrial)
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

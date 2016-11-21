@@ -67,23 +67,24 @@
 ### [Runbook ジョブが中断されました](automation-troubleshooting-hrw-runbook-terminates-suspended.md)
 
 # リファレンス
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [クラシック PowerShell](/powershell/servicemanagement)
+## [.NET](/dotnet/api)
+## [REST ()](https://msdn.microsoft.com/library/azure/mt662285.aspx)
+## [REST (クラシック)](https://msdn.microsoft.com/library/azure/mt163781)
 ## [リリース ノート](https://azure.microsoft.com/updates/?product=automation)
-## [PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/dn690262)
-## [Resource Manager REST API](https://msdn.microsoft.com/library/azure/mt662285.aspx)
-## [クラシック デプロイ Rest](https://msdn.microsoft.com/library/azure/mt163781)
 
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/automation/)  
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=automation) 
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=automation) 
-## [Azure Automation トレーニング](https://www.microsoftvirtualacademy.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=automation)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=automation)
+## [Azure Automation トレーニング](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

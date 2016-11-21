@@ -4,6 +4,7 @@
 ## [Resource Manager とクラシック デプロイメントを理解する](../resource-manager-deployment-model.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [サブスクリプションの規範的なガバナンス](../resource-manager-subscription-governance.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [エンタープライズ向けガバナンスの例](../resource-manager-subscription-examples.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+
 # 作業開始
 ## [テンプレートをエクスポートする](../resource-manager-export-template.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [テンプレート チュートリアル](../resource-manager-template-walkthrough.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -51,23 +52,22 @@
 ### [PowerShell でデプロイ操作を表示する](../resource-manager-troubleshoot-deployments-powershell.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Azure CLI でのデプロイ操作の表示](../resource-manager-troubleshoot-deployments-cli.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [REST API でデプロイ操作を表示する](../resource-manager-troubleshoot-deployments-rest.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+
 # リファレンス
-## [PowerShell コマンドレット](/powershell/azureps-cmdlets-docs/)
+## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
 ## [Azure CLI](/cli/azure)
 ## [Java](/java/api)
-## [.NET API](/dotnet/api)
+## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [テンプレートのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)
-## [Resource Manager の PowerShell コマンドレット](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
-## [Resource Manager の REST API](/rest/api/resources/)
-## [Resource Manager の .NET クライアント ライブラリ](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [スロットル リクエスト](../resource-manager-request-limits.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [REST ()](/rest/api/resources/)
 
 # リソース
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=azure-resource-manager) 
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

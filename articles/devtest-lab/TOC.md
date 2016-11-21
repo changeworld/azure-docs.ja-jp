@@ -28,11 +28,13 @@
 ### [数式とイメージを比較する](devtest-lab-comparing-vm-base-image-types.md)
 
 # リソース
-## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=devtest-lab&updatetype=&platform=)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=devtest-lab)
+## [料金](https://azure.microsoft.com/pricing/details/devtest-lab/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-devtest-labs)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

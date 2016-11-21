@@ -40,13 +40,17 @@
 ### [Automation を使用して管理する](automation-manage-api-management.md)
 ### [Git を使用して構成する](api-management-configuration-repository-git.md)
 #リファレンス
-## [リソース管理のための PowerShell コマンドレット]/powershell/resourcemanager()
-## [クラシック デプロイ PowerShell コマンドレット リファレンス](https://msdn.microsoft.com/en-us/library/azure/mt613507)
-## [REST API](/rest/api/apimanagement/)
-## [ポリシー](https://msdn.microsoft.com/en-us/library/azure/dn894081)
-## [テンプレート](https://msdn.microsoft.com/en-us/library/azure/mt697540)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [クラシック PowerShell](https://msdn.microsoft.com/library/azure/mt613507)
+## [REST ()](/rest/api/apimanagement/)
+## [ポリシー](https://msdn.microsoft.com/library/azure/dn894081)
+## [テンプレート](https://msdn.microsoft.com/library/azure/mt697540)
 #リソース
 ## [料金](https://azure.microsoft.com/pricing/details/api-management/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-management)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=api-management)
 ## [ホワイトペーパー: クラウド ベースの API Management](http://j.mp/ms-apim-whitepaper)
 ## [API 設計ガイダンス](../best-practices-api-design.md?toc=%2fazure%2fapi-management%2ftoc.json)
 ## [API 実装ガイダンス](../best-practices-api-implementation.md?toc=%2fazure%2fapi-management%2ftoc.json)
@@ -59,6 +63,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,6 +1,5 @@
 # Overview
-## [Azure AD Domain Services とは](https://azure.microsoft.com/services/active-directory-ds/)
-## [動作のしくみ](active-directory-ds-overview.md)
+## [Azure AD Domain Services とは](active-directory-ds-overview.md)
 ## [適しているかの判断](active-directory-ds-comparison.md)
 ## [機能](active-directory-ds-features.md)
 ## [シナリオ](active-directory-ds-scenarios.md)
@@ -36,9 +35,11 @@
 
 # リソース 
 ## [料金](https://azure.microsoft.com/pricing/details/active-directory-ds/)
-## [お問い合わせ](active-directory-ds-contact-us.md)
 ## [Azure フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-ds)
+## [お問い合わせ](active-directory-ds-contact-us.md)
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

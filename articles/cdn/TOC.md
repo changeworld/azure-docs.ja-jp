@@ -1,5 +1,6 @@
 # [概要](cdn-overview.md)
 ## [Azure CDN とは](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+
 # 作業の開始
 ## [Azure CDN を有効にする](cdn-create-new-endpoint.md)
 
@@ -41,19 +42,19 @@
 ### [ファイル圧縮](cdn-troubleshoot-compression.md)
 
 # リファレンス
-## [PowerShell コマンドレット](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [.NET](/dotnet/api/)
 ## [Azure CDN の POP の場所](cdn-pop-locations.md)
-## [REST ()](https://msdn.microsoft.com/library/mt634456.aspx)
+## [REST ()](/rest/api/cdn/)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/cdn/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/home?forum=azurecdn)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cdn)
+## [料金](https://azure.microsoft.com/pricing/details/cdn/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cdn)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

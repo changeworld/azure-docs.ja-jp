@@ -1,26 +1,11 @@
 # Overview
 ## [Machine Learning とは](machine-learning-what-is-machine-learning.md)
-## [新機能](machine-learning-whats-new.md)
-## [ライブ チャットからヘルプを表示する](machine-learning-live-chat.md)
-## Machine Learning Studio
-### [Studio とは](machine-learning-what-is-ml-studio.md)
-### [Studio の機能](machine-learning-studio-overview-diagram.md)
-### [インフォグラフィック: ML の基本](machine-learning-basics-infographic-with-algorithm-examples.md)
-## Team Data Science Process
-### [概要](http://aka.ms/datascienceprocess)
-### [ライフサイクル](data-science-process-overview.md)
-### [ツールとユーティリティ](machine-learning-data-science-environment-setup.md)
-### [チュートリアル](data-science-process-walkthroughs.md)
+## [Machine Learning Studio](machine-learning-what-is-ml-studio.md)
 ## [シナリオを特定する](machine-learning-data-science-plan-your-environment.md)
-## [サンプル シナリオを表示する](machine-learning-data-science-plan-sample-scenarios.md)
 ## 例
 ### [サンプル実験](machine-learning-sample-experiments.md)
 ### [サンプル データセット](machine-learning-use-sample-datasets.md)
 ### [顧客離れの例](machine-learning-azure-ml-customer-churn-scenario.md)
-## API
-### [異常の検出](machine-learning-apps-anomaly-detection.md)
-### [テキスト分析](machine-learning-apps-text-analytics.md)
-### [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
 ### 推奨事項
 #### [概要](machine-learning-recommendation-api-sample-application.md)
 #### [クイック スタート](machine-learning-recommendation-api-quick-start-guide.md)
@@ -28,19 +13,12 @@
 #### [JavaScript を使用する](machine-learning-recommendation-api-javascript-integration.md)
 #### [FAQ](machine-learning-recommendation-api-faq.md)
 ## Cortana Analytics
-### 予測的なメンテナンス
-#### [概要](cortana-analytics-playbook-predictive-maintenance.md)
+### [予測的なメンテナンス](cortana-analytics-playbook-predictive-maintenance.md)
 #### [アーキテクチャ](cortana-analytics-architecture-predictive-maintenance.md)
 #### [テクニカル ガイド](cortana-analytics-technical-guide-predictive-maintenance.md)
-### 車両テレメトリ
-#### [概要](cortana-analytics-playbook-vehicle-telemetry.md)
+### [車両テレメトリ](cortana-analytics-playbook-vehicle-telemetry.md)
 #### [プレイブック](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
 #### [セットアップ](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
-## Data Science Process
-### [Hadoop クラスターを使用する](machine-learning-data-science-process-hive-walkthrough.md)
-### [1 TB で Hadoop を使用する](machine-learning-data-science-process-hive-criteo-walkthrough.md)
-### [SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)
-### [SQL Data Warehouse を使用する](machine-learning-data-science-process-sqldw-walkthrough.md)
 ## [Web サービス]
 ### [R を使用した例](machine-learning-r-csharp-web-service-examples.md)
 ### [バイナリ分類器](machine-learning-r-csharp-binary-classifier.md)
@@ -57,6 +35,7 @@
 ### [Azure Marketplace に関する FAQ](machine-learning-marketplace-faq.md)
 
 # 作業の開始
+## [サンプル シナリオを表示する](machine-learning-data-science-plan-sample-scenarios.md)
 ## [初めての実験を作成する](machine-learning-create-experiment.md)
 ## [予測ソリューションを作成する](machine-learning-walkthrough-develop-predictive-solution.md)
 ### [1: ワークスペースを作成する](machine-learning-walkthrough-1-create-ml-workspace.md)
@@ -72,9 +51,17 @@
 ### [4: 回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
 ### [5: 他のユーザーの作業をコピーする](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
 ## [よく寄せられる質問](machine-learning-faq.md)
+## Team Data Science Process
+### [ライフサイクル](data-science-process-overview.md)
+### [ツールとユーティリティ](machine-learning-data-science-environment-setup.md)
+### [チュートリアル](data-science-process-walkthroughs.md)
+#### [Hadoop クラスターを使用する](machine-learning-data-science-process-hive-walkthrough.md)
+#### [1 TB で Hadoop を使用する](machine-learning-data-science-process-hive-criteo-walkthrough.md)
+#### [SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)
+#### [SQL Data Warehouse を使用する](machine-learning-data-science-process-sqldw-walkthrough.md)
 
 # 方法
-## ツールをインストールする 
+## ツールをインストールする
 ### [環境をセットアップする](machine-learning-data-science-environment-setup.md)
 ### [仮想マシンをセットアップする](machine-learning-data-science-virtual-machines.md)
 ### [Hadoop をカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)
@@ -190,11 +177,13 @@
 #### [Web アプリ テンプレートを使用する](machine-learning-consume-web-service-with-web-app-template.md)
 
 #リファレンス
-## [R のクイック スタート](machine-learning-r-quickstart.md)
+## [リリース ノート](machine-learning-whats-new.md)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [PowerShell の概要](machine-learning-powershell-module.md)
 ## [PowerShell でモデルを作成する](machine-learning-create-models-and-endpoints-with-powershell.md)
-## [Web サービスの REST API](https://msdn.microsoft.com/library/azure/dn950030.aspx)
+## [R のクイック スタート](machine-learning-r-quickstart.md)
 ## [Net# ニューラル ネットワーク仕様言語](machine-learning-azure-ml-netsharp-reference-guide.md)
+## [REST ()](/rest/api/machinelearning/)
 
 # 関連項目
 ## Cortana Intelligence ギャラリー
@@ -210,10 +199,23 @@
 ### [カスタム モジュール](machine-learning-gallery-custom-modules.md)
 
 # リソース
+## [ラーニング パス](http://aka.ms/datascienceprocess)
+## [料金](https://azure.microsoft.com/pricing/details/machine-learning/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=machine-learning)
 ## [ブログ](http://blogs.technet.com/b/machinelearning/)
-## [フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=MachineLearning)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-machine-learning)
+## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
+## [ライブ チャットからヘルプを表示する](machine-learning-live-chat.md)
+## ダウンロード可能なダイアグラム
+### [Studio の機能](machine-learning-studio-overview-diagram.md)
+### [インフォグラフィック: ML の基本](machine-learning-basics-infographic-with-algorithm-examples.md)
+## API
+### [異常の検出](machine-learning-apps-anomaly-detection.md)
+### [テキスト分析](machine-learning-apps-text-analytics.md)
+### [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

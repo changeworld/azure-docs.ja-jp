@@ -98,9 +98,9 @@
 ### [Cloud Services に関する FAQ](cloud-services-faq.md)
 
 # リファレンス
-## [.NET](https://msdn.microsoft.com/library)
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
 ## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
+## [REST ()](https://msdn.microsoft.com/library/azure/ee460812)
 ## [ゲスト OS の修正プログラム](cloud-services-guestos-msrc-releases.md)
 ## ゲスト OS の提供終了
 ### [提供終了ポリシー](cloud-services-guestos-retirement-policy.md)
@@ -116,6 +116,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

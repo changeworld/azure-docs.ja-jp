@@ -2,13 +2,12 @@
 ## [Data Catalog とは](data-catalog-what-is-data-catalog.md)
 ## [一般的なシナリオ](data-catalog-common-scenarios.md)
 ## [サポートされるデータ ソース](data-catalog-dsr.md)
-## [新機能](data-catalog-whats-new.md)
 
 # 作業の開始
 ## [Azure Data Catalog の概要](data-catalog-get-started.md)
 ## [Azure Data Catalog の導入](data-catalog-adopting-data-catalog.md)
-## [Azure Data Catalog の前提条件](data-catalog-prerequisites.md)
-## [よく寄せられる質問](data-catalog-frequently-asked-questions.md)
+## [前提条件](data-catalog-prerequisites.md)
+## [FAQ](data-catalog-frequently-asked-questions.md)
 
 # 方法
 ## [データ ソースの登録](data-catalog-how-to-register.md)
@@ -30,12 +29,16 @@
 ## [Azure Data Catalog 用のキーボード ショートカット](data-catalog-keyboard-shortcuts.md)
 ## [用語集](data-catalog-terminology.md)
 ## [リリース ノート](data-catalog-release-notes.md)
-## [REST ()](https://docs.microsoft.com/rest/api/datacatalog/)
+## [REST ()](/rest/api/datacatalog/)
 
 # リソース
+## [リリース ノート](data-catalog-whats-new.md)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-catalog)
 ## [料金](https://azure.microsoft.com/pricing/details/data-catalog/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

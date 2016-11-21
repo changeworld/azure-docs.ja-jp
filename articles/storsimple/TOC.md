@@ -1,7 +1,4 @@
-# StorSimple の概要
-
 # StorSimple Virtual Array
-
 ## Overview
 ### [ソリューションとは](storsimple-ova-overview.md)
 
@@ -54,6 +51,7 @@
 ### [インストール]
 #### [安全性を確認する](storsimple-safety.md)
 #### [8100 を開梱、ラック設置、ケーブル接続する](storsimple-8100-hardware-installation.md)
+
 #### [8600 を開梱、ラック設置、ケーブル接続する](storsimple-8600-hardware-installation.md)
 #### [10 GbE ネットワーク インターフェイスでサポートされるハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
@@ -63,6 +61,7 @@
 ##### [Azure の物理デバイス - Update 1](storsimple-deployment-walkthrough-u1.md)
 ##### [Azure の物理デバイス - 一般公開](storsimple-deployment-walkthrough.md)
 #### [Government ポータルの物理デバイス - 最新](storsimple-deployment-walkthrough-gov-u2.md)
+##### [Government ポータルの物理デバイス - 最新](storsimple-deployment-walkthrough-gov.md)
 #### [Azure の仮想デバイス](storsimple-virtual-device-u2.md)
 #### [StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)
 #### [SharePoint 用 StorSimple アダプター](storsimple-adapter-for-sharepoint.md)
@@ -139,7 +138,7 @@
 ##### [サポート パッケージを作成する](storsimple-create-manage-support-package.md)
 
 ### 移行
-#### [5000 - 7000 シリーズから](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-19253270)
+#### [5000 - 7000 シリーズから](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)
 #### [他のストレージ デバイスから](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### 更新
@@ -160,22 +159,26 @@
 ### [リリース - 一般公開](storsimple-july-2014-release-notes.md)
 
 ## リファレンス
-### [PowerShell](/powershell/servicemanagement/)
+### [Azure PowerShell](/powershell/servicemanagement)
+### [StorSimple 用 Windows PowerShell のコマンドレット] (https://technet.microsoft.com/library/dn688168.aspx)
 
 # 関連項目
 ## [StorSimple 5000 - 7000 シリーズ](http://onlinehelp.storsimple.com)
 
 # リソース
-## [フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [料金](https://azure.microsoft.com/pricing/details/storsimple/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=storsimple)
 ## [マーケティング ブログ](http://blogs.technet.com/b/cis/)
 ## [マーケティング](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
 ## [サポート ブログ](http://blogs.msdn.com/b/storsimple/)
 ## [サード パーティに関する通知](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=storsimple)
-## [料金](https://azure.microsoft.com/pricing/details/storsimple/)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

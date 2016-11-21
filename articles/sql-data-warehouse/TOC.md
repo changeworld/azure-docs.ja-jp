@@ -28,10 +28,9 @@
 
 ### [概要](sql-data-warehouse-connect-overview.md)
 ### [接続文字列](sql-data-warehouse-connection-strings.md)
-### クエリ
-#### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
-#### [SSMS](sql-data-warehouse-query-ssms.md)
-#### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+### [SSMS](sql-data-warehouse-query-ssms.md)
+### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 ### [Visual Studio のインストール](sql-data-warehouse-install-visual-studio.md)
 
 ## 開発
@@ -111,6 +110,7 @@
 ## パフォーマンス
 
 ### [概要](sql-data-warehouse-overview-manage-user-queries.md)
+### [列ストア圧縮](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [クエリ](sql-data-warehouse-manage-monitor.md)
 ### [ワークロード](sql-data-warehouse-develop-concurrency.md)
 ### [トラブルシューティング](sql-data-warehouse-troubleshoot.md)
@@ -146,6 +146,6 @@
 ### [データ管理](sql-data-warehouse-partner-data-management.md)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

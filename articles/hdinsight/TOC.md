@@ -6,6 +6,7 @@
 ## [HBase](hdinsight-hbase-overview.md)
 ## [Apache Storm](hdinsight-storm-overview.md)
 ## [ドメイン参加済み HDInsight プレビュー](hdinsight-domain-joined-introduction.md)
+## [Kafka (プレビュー)](hdinsight-apache-kafka-introduction.md)
 
 # 作業の開始
 ## [Hadoop の開始](hdinsight-hadoop-linux-tutorial-get-started.md)
@@ -14,6 +15,7 @@
 ## [Spark の開始](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [HBase & NoSQL の開始](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Storm の開始](hdinsight-apache-storm-tutorial-get-started-linux.md)
+## [Kafka の開始 (プレビュー)](hdinsight-apache-kafka-get-started.md )
 ## [Hadoop サンドボックス](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake Tools と Hortonworks サンドボックス](hdinsight-hadoop-emulator-visual-studio.md)
 ## [Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)
@@ -94,6 +96,10 @@
 ### [構成](hdinsight-domain-joined-configure.md)
 ### [管理](hdinsight-domain-joined-manage.md)
 ### [Hive ポリシーを構成する](hdinsight-domain-joined-run-hive.md)
+## Kafka の使用 (プレビュー)
+### [Kafka データのレプリケート](hdinsight-apache-kafka-mirroring.md)
+### [Spark での使用](hdinsight-apache-spark-with-kafka.md)
+### [Storm での使用](hdinsight-apache-storm-with-kafka.md)
 ## 開発
 ### [Java MapReduce プログラムを開発する](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [Scalding MapReduce ジョブを開発する](hdinsight-hadoop-mapreduce-scalding.md)
@@ -217,6 +223,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

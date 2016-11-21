@@ -38,7 +38,6 @@
 #### [アラートの管理](log-analytics-solution-alert-management.md)
 #### [容量管理](log-analytics-capacity.md)
 #### [変更の追跡](log-analytics-change-tracking.md)
-#### [構成の評価](log-analytics-configuration-assessment.md)
 #### [コンテナー](log-analytics-containers.md)
 #### [Key Vault](log-analytics-azure-key-vault.md)
 #### [マルウェアの評価](log-analytics-malware.md)
@@ -48,7 +47,6 @@
 #### [Service Fabric](log-analytics-service-fabric.md)
 #### [SQL の評価](log-analytics-sql-assessment.md)
 #### [Surface Hub](log-analytics-surface-hubs.md)
-#### [システムの更新の評価](log-analytics-system-update.md)
 #### [VMware](log-analytics-vmware.md)
 #### [ワイヤ データ](log-analytics-wire-data.md)
 ## 分析
@@ -63,11 +61,10 @@
 
 # リソース
 ## [アップグレード分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
+## [料金](https://azure.microsoft.com/pricing/details/log-analytics/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
