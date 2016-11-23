@@ -110,6 +110,6 @@ Azure Container Service のドキュメントのダウンロード </div>
 </div>
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

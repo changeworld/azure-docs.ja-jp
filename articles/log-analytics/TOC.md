@@ -65,6 +65,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -122,6 +122,6 @@ Azure Virtual Machine は、仮想マシンを実行する物理的なハード�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

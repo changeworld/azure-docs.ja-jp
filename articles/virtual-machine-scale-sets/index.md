@@ -145,6 +145,6 @@ Virtual Machine Scale Sets のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -6,7 +6,7 @@ ms.openlocfilehash: 078421d67ae2b2f0854b6f31bb97d146224ef685
 
 
 ---
-# <a name="app-service-api-apps-documentation"></a>App Service - API Apps のドキュメント
+# <a name="app-service---api-apps-documentation"></a>App Service - API Apps のドキュメント
 
 API Apps は、Azure App Service によって提供される 4 種類のアプリの中の 1 つです。 Azure App Service の API Apps は、クラウドとオンプレミスでの API の開発、ホスト、使用に役立つ機能を豊富に備えています。 Azure App Service は、Web、モバイル、および統合シナリオのための完全に管理されたプラットフォームです。
 
@@ -133,6 +133,6 @@ Mobile Apps のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

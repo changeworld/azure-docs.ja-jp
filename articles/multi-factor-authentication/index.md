@@ -5,7 +5,7 @@ ms.sourcegitcommit: defa12cb202ce4861a479ac40782248cd50039d3
 ms.openlocfilehash: 2db76cf5af88cc103b0109eb8ead4d63cbae0a0e
 
 ---
-# <a name="multifactor-authentication-documentation"></a>Multi-Factor Authentication のドキュメント
+# <a name="multi-factor-authentication-documentation"></a>Multi-Factor Authentication のドキュメント
 
 Azure Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 Azure MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。 電話、テキスト メッセージ、モバイル アプリによる確認など、一連の照合方法を通じて確実な認証を行うことができます。
 
@@ -113,6 +113,6 @@ Multi-Factor Authentication のドキュメントのダウンロード </div>
 </div>
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

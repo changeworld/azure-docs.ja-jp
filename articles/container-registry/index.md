@@ -102,6 +102,6 @@ Azure Container Registry (プレビュー) は、コンテナー イメージを
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

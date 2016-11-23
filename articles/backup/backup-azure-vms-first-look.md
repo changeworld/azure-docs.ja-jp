@@ -47,7 +47,7 @@ VM をバックアップする手順は、主に次の 5 つです。
 >
 >
 
-## <a name="step-1-create-a-backup-vault-for-a-vm"></a>手順 1. VM 用のバックアップ コンテナーの作成
+## <a name="step-1---create-a-backup-vault-for-a-vm"></a>手順 1. VM 用のバックアップ コンテナーの作成
 バックアップ コンテナーは、経時的に作成されたすべてのバックアップと復旧ポイントを格納するエンティティです。 バックアップ コンテナーには、バックアップ対象の仮想マシンに適用されるバックアップ ポリシーも含まれています。
 
 1. [Azure クラシック ポータル](http://manage.windowsazure.com/)にサインインします。
@@ -86,7 +86,7 @@ VM をバックアップする手順は、主に次の 5 つです。
 
 コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。 関連付けを開始するには、Azure 仮想マシンを検出して登録します。
 
-## <a name="step-2-discover-and-register-azure-virtual-machines"></a>手順 2. Azure 仮想マシンの検出と登録
+## <a name="step-2---discover-and-register-azure-virtual-machines"></a>手順 2. Azure 仮想マシンの検出と登録
 コンテナーに VM を登録する前に、検出プロセスを実行して新しい VM を検出します。 これにより、サブスクリプションに含まれる仮想マシンの一覧が、クラウド サービス名、リージョンなどの追加情報と共に返されます。
 
 1.  [Azure クラシック ポータル](http://manage.windowsazure.com/)
@@ -133,12 +133,12 @@ VM をバックアップする手順は、主に次の 5 つです。
 
     ![登録状態 2](./media/backup-azure-vms/register-status02.png)
 
-## <a name="step-3-install-the-vm-agent-on-the-virtual-machine"></a>手順 3. 仮想マシンへの VM エージェントのインストール
+## <a name="step-3---install-the-vm-agent-on-the-virtual-machine"></a>手順 3. 仮想マシンへの VM エージェントのインストール
 バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。 VM を Azure ギャラリーから作成した場合、VM エージェントは既に VM に存在します。 [VM の保護](backup-azure-vms-first-look.md#step-4---create-the-backup-policy)に進むことができます。
 
 オンプレミス データセンターから VM を移行した場合、VM にはおそらく VM エージェントがインストールされていません。 VM の保護に進む前に、仮想マシンに VM エージェントをインストールする必要があります。 VM エージェントをインストールする詳しい手順については、 [VM のバックアップに関する記事の VM エージェントのセクション](backup-azure-vms-prepare.md#vm-agent)をご覧ください。
 
-## <a name="step-4-create-the-backup-policy"></a>手順 4 - バックアップ ポリシーの作成
+## <a name="step-4---create-the-backup-policy"></a>手順 4 - バックアップ ポリシーの作成
 最初のバックアップ ジョブをトリガーする前に、バックアップ スナップショットの取得スケジュールを設定します。 バックアップ スナップショットの取得スケジュールと、スナップショットのリテンション期間は、バックアップ ポリシーです。 リテンション期間情報は、祖父-父-子バックアップ ローテーション スキームに基づいています。
 
 1. Azure クラシック ポータルの **[Recovery Services]** にあるバックアップ コンテナーに移動し、**[登録済みの項目]** をクリックします。
@@ -175,7 +175,7 @@ VM をバックアップする手順は、主に次の 5 つです。
 
     ポリシーを確立したら、次の手順に進み、初回のバックアップを実行します。
 
-## <a name="step-5-initial-backup"></a>手順 5. 初回バックアップ
+## <a name="step-5---initial-backup"></a>手順 5. 初回バックアップ
 ポリシーを使用して仮想マシンが保護されると、その関係が **[保護された項目]** タブに表示されます。 初回バックアップが行われるまで、**[保護の状態]** には **[Protected - (pending initial backup) (保護済み (初回のバックアップが保留中))]** と表示されます。 既定では、スケジュールされた最初のバックアップが *初回バックアップ*となります。
 
 ![Backup pending](./media/backup-azure-vms-first-look/protection-pending-border.png)

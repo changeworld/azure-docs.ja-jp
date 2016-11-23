@@ -40,6 +40,6 @@
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=traffic-manager)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 
