@@ -11,6 +11,9 @@
 2. アプリ内でサポートするプロバイダーごとに、前の手順を繰り返します。
 
 <!-- URLs. -->
-[Azure portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=Nov15_HO4-->
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -10,22 +10,22 @@
 
     {  
         "name": "AzureBlobDataSet",  
-        "properties": {  
+          "properties": {  
             "availability": {  
                 "frequency": "Day",  
-                "interval": 1  
+                  "interval": 1  
             },  
             "type": "AzureBlob",  
             "linkedServiceName": "StorageLinkedService",  
             "typeProperties": {  
                 "fileName": "pagecounts.csv.gz",  
-                "folderPath": "compression/file/",  
-                "compression": {  
+                  "folderPath": "compression/file/",  
+                  "compression": {  
                     "type": "GZip",  
                     "level": "Optimal"  
-                }  
+                  }  
             }  
-        }  
+          }  
     }  
 
 **compression** セクションには次の 2 つのプロパティがあります。  
@@ -46,6 +46,8 @@
 * オンプレミスのファイル システムのプレーンテキスト ファイルからデータを読み取り、GZip 形式で圧縮して、圧縮データを Azure BLOB に書き込みます。 この場合、Azure BLOB 出力データセットを、compression JSON プロパティを使用して定義します。  
 * Azure BLOB から GZIP 圧縮データを読み取って展開し、BZIP2 で圧縮して、生成されたデータを Azure BLOB に書き込みます。 この場合、Azure BLOB 入力データセットは圧縮タイプを GZIP に設定して定義し、Azure BLOB 出力データセットは圧縮タイプを BZIP2 に設定して定義します。   
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -15,14 +15,15 @@ ms.topic: hero-article
 ms.date: 11/02/2016
 ms.author: aasthan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8770e89cd54dae23ba05fb53382f7d89d19b029a
+ms.sourcegitcommit: 9f4105d1ab366994add0f75d634917ab9a063733
+ms.openlocfilehash: 15719afed2435bd42e732a7d610e7b516ba07ad8
 
 
 ---
 # <a name="nosql-c-tutorial-documentdb-c-console-application"></a>NoSQL C++ チュートリアル: DocumentDB C++ コンソール アプリケーション
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
+> * [.NET Core](documentdb-dotnetcore-get-started.md)
 > * [Node.JS](documentdb-nodejs-get-started.md)
 > * [C++](documentdb-cpp-get-started.md)
 > 
@@ -292,6 +293,6 @@ Visual Studio で F5 キーを押すか、ターミナル ウィンドウでア�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

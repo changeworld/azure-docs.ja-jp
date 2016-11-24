@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/10/2016
+ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9ecbee74bc0559aa632304b0a0428abb36606597
+ms.sourcegitcommit: c7d253dfca8f399527d193f14af12c166157d39d
+ms.openlocfilehash: eaadd5c8d30a522fc05d214620600331d7485485
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL Database のオプションとパフォーマンス: 各サービス レベルで使用できる内容について理解する
-[Azure SQL Database](sql-database-technical-overview.md) は、さまざまなワークロードに対応するため、3 つのサービス レベルといくつかのパフォーマンス レベルが用意されています。 パフォーマンス レベルごとに提供されるリソースのセットが増加し、スループットが段階的に高くなるように設計されています。 データベースはそれぞれ、[サービス レベル](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)とパフォーマンス レベルを変えて管理することができます。 また、一定のリソースを共有する[エラスティック プール](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)で複数のデータベースを管理することもできます。 スタンドアロン データベースで利用できるリソースは、データベース トランザクション ユニット (DTU) という用語で表現します。これに対して、エラスティック プールで利用できるリソースは、エラスティック DTU または eDTU と呼びます。 DTU と eDTU については、[DTU の概要](sql-database-what-is-a-dtu.md)に関するページを参照してください。 
+[Azure SQL Database](sql-database-technical-overview.md) は、さまざまなワークロードに対応するため、3 つのサービス レベルといくつかのパフォーマンス レベルが用意されています。 パフォーマンス レベルが高くなるほど提供されるリソースのセットが増加し、スループットが段階的に高くなるように設計されています。 サービス レベルとパフォーマンス レベルは動的に変更できます。 詳細については、「 [データベースのサービス階層とパフォーマンス レベルの変更](sql-database-scale-up.md) 」を参照してください。
+
+データベースはそれぞれ、[サービス レベル](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)とパフォーマンス レベルを変えて管理することができます。 また、一定のリソースを共有する[エラスティック プール](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)で複数のデータベースを管理することもできます。 スタンドアロン データベースで利用できるリソースは、データベース トランザクション ユニット (DTU) という用語で表現します。これに対して、エラスティック プールで利用できるリソースは、エラスティック DTU または eDTU と呼びます。 DTU と eDTU については、[DTU の概要](sql-database-what-is-a-dtu.md)に関するページを参照してください。 
 
 どちらの場合も、サービス レベルには **Basic**、**Standard**、**Premium** があります。 これらのレベルのデータベース オプションは、スタンドアロン データベースとエラスティック プールの場合に似ていますが、エラスティック プールにはさらに考慮事項があります。 この記事では、スタンドアロン データベースとエラスティック プールのサービス レベルの詳細について説明します。
 

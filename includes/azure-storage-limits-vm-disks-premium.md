@@ -6,7 +6,7 @@
 | アカウントごとのスナップショット容量合計 |10 TB |
 | アカウントごとの最大帯域幅 (受信 + 送信<sup>1</sup>) |50 Gbps 以下 |
 
-<sup>1</sup>受信とはストレージ アカウントに送信されるすべてのデータ (要求) のことです。*送信*とはストレージ アカウントから送信されるすべてのデータ (応答) のことです。
+<sup>1</sup>*受信*とはストレージ アカウントに送信されるすべてのデータ (要求) のことです。 *送信* とはストレージ アカウントから送信されるすべてのデータ (応答) のことです。
 
 **仮想マシンのディスク: ディスクあたりの上限**
 
@@ -24,6 +24,10 @@
 | VM あたりの最大 IOPS |GS5 VM<sup>1</sup> で 80,000 IOPS |
 | VM あたりの最大スループット |GS5 VM<sup>1</sup> で 2,000 MB/秒 |
 
-<sup>1</sup>他の VM サイズに制限については、「[VM サイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
+<sup>1</sup>他の VM サイズの制限については、[VM のサイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するトピックを参照してください。 
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

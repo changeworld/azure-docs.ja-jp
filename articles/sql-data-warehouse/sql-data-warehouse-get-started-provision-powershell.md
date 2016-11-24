@@ -15,18 +15,18 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3d13d4a0dd1d6e0b7361a57e167b06f0b717bfb4
+ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
+ms.openlocfilehash: 7107c64a25b3f60d7789cec57181eec9ce844f6b
 
 
 ---
 # <a name="create-sql-data-warehouse-using-powershell"></a>PowerShell を使用して SQL Data Warehouse を作成する
 > [!div class="op_single_selector"]
-> * [Azure ポータル](sql-data-warehouse-get-started-provision.md)
+> * [Azure Portal](sql-data-warehouse-get-started-provision.md)
 > * [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 > * [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
-> 
-> 
+>
+>
 
 この記事では、PowerShell を使用して SQL Data Warehouse を作成する方法を示します。
 
@@ -34,29 +34,29 @@ ms.openlocfilehash: 3d13d4a0dd1d6e0b7361a57e167b06f0b717bfb4
 開始するには、以下が必要です。
 
 * **Azure アカウント**: アカウントを作成するには、[Azure 無料試用版][Azure 無料試用版]に関するページまたは [MSDN Azure クレジット][MSDN Azure クレジット]に関するページにアクセスしてください。
-* **Azure SQL Server**: 詳細については、[Azure Portal を使用した Azure SQL Database 論理サーバーの作成][Azure Portal を使用した Azure SQL Database 論理サーバーの作成]または [PowerShell を使用した Azure SQL Database 論理サーバーの作成][PowerShell を使用した Azure SQL Database 論理サーバーの作成]に関するセクションを参照してください。
+* **Azure SQL Server**: 詳細については、[Azure Portal での Azure SQL Database 論理サーバーの作成][Azure Portal での Azure SQL Database 論理サーバーの作成]または [PowerShell を使用したAzure SQL Database 論理サーバーの作成][PowerShell を使用したAzure SQL Database 論理サーバーの作成]に関するセクションを参照してください。
 * **リソース グループ**: 使用している Azure SQL Server と同じリソース グループを使用するか、[リソース グループの作成方法][リソース グループの作成方法]に関するセクションを参照してください。
 * **PowerShell バージョン 1.0.3 以降**: **Get-Module -ListAvailable -Name Azure** を実行することで、バージョンを確認できます。  最新バージョンは、[Microsoft Web プラットフォーム インストーラー][Microsoft Web プラットフォーム インストーラー]からインストールできます。  最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][Azure PowerShell のインストールおよび構成方法]」を参照してください。
 
 > [!NOTE]
 > SQL Data Warehouse を作成すると、新しい課金対象サービスを使用することになる場合があります。  価格の詳細については、「[SQL Data Warehouse の価格][SQL Data Warehouse の価格]」を参照してください。
-> 
-> 
+>
+>
 
 ## <a name="create-a-sql-data-warehouse"></a>SQL Data Warehouse の作成
 1. Windows PowerShell を開きます。
 2. このコマンドレットを実行して、Azure リソース マネージャーにログインします。
-   
+
     ```Powershell
     Login-AzureRmAccount
     ```
 3. 現在のセッションに使用するサブスクリプションを選択します。
-   
+
     ```Powershell
     Get-AzureRmSubscription    -SubscriptionName "MySubscription" | Select-AzureRmSubscription
     ```
 4. データベースを作成します。 この例では、サービス目標レベルが "DW400" で名前が "mynewsqldw" のデータベースを、"mywesteuroperesgp1" という名前のリソース グループ内の "sqldwserver1" という名前のサーバーに作成します。
-   
+
    ```Powershell
    New-AzureRmSqlDatabase -RequestedServiceObjectiveName "DW400" -DatabaseName "mynewsqldw" -ServerName "sqldwserver1" -ResourceGroupName "mywesteuroperesgp1" -Edition "DataWarehouse" -CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 10995116277760
    ```
@@ -94,7 +94,7 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 
 [Azure PowerShell のインストールおよび構成方法]: ../powershell-install-configure.md
 [Azure Portal から SQL Data Warehouse を作成する方法]: ./sql-data-warehouse-get-started-provision.md
-[Azure Portal での Azure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
+[Azure Portal での Azure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started.md#create-logical-server-bk
 [PowerShell を使用したAzure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
 [リソース グループの作成方法]: ../resource-group-template-deploy-portal.md#create-resource-group
 

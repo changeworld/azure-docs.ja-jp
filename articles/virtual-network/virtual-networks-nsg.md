@@ -1,6 +1,6 @@
 ---
-title: "ネットワーク セキュリティ グループ (NSG)"
-description: "ネットワーク セキュリティ グループ (NSG) を使用した Azure でのファイアウォールの分散について、さらに、NSG を使用して仮想ネットワーク (VNet) 内のトラフィック フローを分離および制御する方法について説明します。"
+title: "ネットワーク セキュリティ グループ | Microsoft Docs"
+description: "ネットワーク セキュリティ グループを使用した Azure でのファイアウォールの分散により、仮想ネットワーク内のトラフィック フローを分離および制御する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,13 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 92ba745915c4b496ac6b0ff3b3e25f6611f5707c
+ms.sourcegitcommit: c3b96b583260bc8975082b952929d524e4040730
+ms.openlocfilehash: ba8bfc32b6662f629fc2203f605f8d9f51b3b559
 
 
 ---
-# <a name="what-is-a-network-security-group-nsg"></a>ネットワーク セキュリティ グループ (NSG) について
-ネットワーク セキュリティ グループ (NSG) には、Virtual Network の VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。 また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。
+# <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
+
+ネットワーク セキュリティ グループ (NSG) には、仮想ネットワークの VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。 また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。
+
+> [!NOTE]
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、両方のモデルについて取り上げていますが、最新のデプロイではリソース マネージャー モデルの使用をお勧めします。
 
 ## <a name="nsg-resource"></a>NSG リソース
 NSG には、次のプロパティが含まれています。
@@ -35,7 +39,6 @@ NSG には、次のプロパティが含まれています。
 
 > [!NOTE]
 > エンドポイント ベースの ACL とネットワーク セキュリティ グループは、同じ VM インスタンスではサポートされません。 エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。 これを行う方法については、 [PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](virtual-networks-acl-powershell.md)を参照してください。
-> 
 > 
 
 ### <a name="nsg-rules"></a>NSG ルール
@@ -90,37 +93,27 @@ NSG には受信と送信の 2 つのルール セットがあります。 ル�
 ## <a name="associating-nsgs"></a>NSG の関連付け
 NSG は、使用しているデプロイ モデルに応じて、VM、NIC、およびサブネットに関連付けることができます。
 
-[!INCLUDE [learn-about-deployment-models-both-include.md](../../includes/learn-about-deployment-models-both-include.md)]
-
 * **VM に対する NSG の関連付け (クラシック デプロイメントのみ)。**  VM に対して NSG を関連付ける場合、NSG のネットワーク アクセス ルールが、その VM を宛先とするすべてのトラフィックに適用されます。 
 * **NIC に対する NSG の関連付け (リソース マネージャー デプロイメントのみ)。**  NIC に対して NSG を関連付ける場合、NSG のネットワーク アクセス ルールが、その NIC にのみ適用されます。 これは、複数 NIC の VM で、NSG が 1 つの NIC に適用されている場合、その NIC を宛先とするトラフィックに影響がないことを意味します。 
 * **サブネットに対する NSG の関連付け (すべてのデプロイメント)**。 NSG をサブネットに関連付けた場合、NSG のネットワーク アクセス ルールは、サブネット内のすべての IaaS リソースと PaaS リソースに適用されます。 
 
 さまざまな NSG を VM (デプロイメント モデルによっては NIC) および NIC や VM の宛先のサブネットに関連付けることができます。 この場合、すべてのネットワーク アクセス ルールが、各 NSG 内の優先度に基づき、次の順番でトラフィックに適用されます。
 
-* **受信トラフィック**
-  
-  1. サブネットに適用される NSG 
-     
-     サブネット NSG に、トラフィックを拒否する照合ルールがある場合、パケットはここで破棄されます。
-  2. NIC (リソース マネージャー) または VM (クラシック) に適用される NSG 
-     
-     トラフィックを拒否する照合ルールが VM\NIC NSG にある場合、サブネット NSG にトラフィックを許可する照合ルールがあったとしても、パケットは VM\NIC で破棄されます。
-* **送信トラフィック**
-  
-  1. NIC (リソース マネージャー) または VM (クラシック) に適用される NSG 
-     
-     VM\NIC NSG に、トラフィックを拒否する照合ルールがある場合、パケットはここで破棄されます。
-  2. サブネットに適用される NSG
-     
-     トラフィックを拒否する照合ルールがサブネット NSG にある場合、VM\NIC NSG にトラフィックを許可する照合ルールがあったとしても、パケットはここで破棄されます。
-     
-      ![NSG ACL](./media/virtual-network-nsg-overview/figure2.png)
+- **受信トラフィック**
+
+  1. **サブネットに適用される NSG:** サブネット NSG に、トラフィックを拒否する照合ルールがある場合、パケットは破棄されます。
+
+  2. **NIC (リソース マネージャー) または VM (クラシック) に適用される NSG:** トラフィックを拒否する照合ルールが VM\NIC NSG にある場合、サブネット NSG にトラフィックを許可する照合ルールがあったとしても、パケットは VM\NIC で破棄されます。
+
+- **送信トラフィック**
+
+  1. **NIC (リソース マネージャー) または VM (クラシック) に適用される NSG:** トラフィックを拒否する照合ルールが VM\NIC NSG にある場合、パケットは破棄されます。
+
+  2. **サブネットに適用される NSG:** トラフィックを拒否する照合ルールがサブネット NSG にある場合、VM\NIC NSG にトラフィックを許可する照合ルールがあったとしても、パケットはここで破棄されます。
 
 > [!NOTE]
 > 1 つの NSG は 1 つのサブネット、VM、または NIC に関連付けられますが、同じ NSG は必要なだけの数のリソースに関連付けることができます。
-> 
-> 
+>
 
 ## <a name="implementation"></a>実装
 従来のデプロイ モデルまたはリソース マネージャーによるデプロイ モデルで、以下に示す各種のツールを使用して、NSG を実装することができます。
@@ -133,12 +126,14 @@ NSG は、使用しているデプロイ モデルに応じて、VM、NIC、お�
 | Azure CLI |[![はい][緑]](virtual-networks-create-nsg-classic-cli.md) |[![はい][緑]](virtual-networks-create-nsg-arm-cli.md) |
 | ARM テンプレート |![いいえ](./media/virtual-network-nsg-overview/red.png) |[![はい][緑]](virtual-networks-create-nsg-arm-template.md) |
 
-| **キー** | ![はい](./media/virtual-network-nsg-overview/green.png)  サポートされています。 | ![いいえ](./media/virtual-network-nsg-overview/red.png)  サポートされていません。 |
-| --- | --- | --- |
-|  | | |
+**キー**
+
+![はい](./media/virtual-network-nsg-overview/green.png)  サポートされています。
+
+![いいえ](./media/virtual-network-nsg-overview/red.png)  サポートされていません。
 
 ## <a name="planning"></a>計画
-NSG を実装する前に、次の質問への回答を用意する必要があります。    
+NSG を実装する前に、次の質問への回答を用意する必要があります。
 
 1. どのような種類のリソース間のトラフィックをフィルター処理する必要があるか (同じ VM 内の NIC 間、同じサブネットに接続されている VM 間またはクラウド サービスやアプリケーション サービス環境などのリソース間、異なるサブネットに接続されているリソース間のいずれか)。
 2. トラフィックをフィルター処理するリソースは、既存の VNet 内のサブネットに接続されているか、新しい VNet またはサブネットに接続されているか。
@@ -276,6 +271,6 @@ NSG はサブネットに適用できるため、リソースをサブネット�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

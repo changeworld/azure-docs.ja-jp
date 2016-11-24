@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 08/29/2016
 ms.author: cfowler;mahender;glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 601c5a61023fe1565dc0f8e22d9826ae5705fe22
+ms.sourcegitcommit: a06126707ad9942ba3b269b0e2e2a52f9cf0c61e
+ms.openlocfilehash: 7d6bcf84b8d1de1b9f77385909d81ad6baafe9d9
 
 
 ---
@@ -30,7 +30,7 @@ Azure Functions は、小規模なコード ("関数") をクラウドで手軽�
 ## <a name="features"></a>Features (機能)
 Azure Functions の主要な機能を次に示します。
 
-* **さまざまな言語** - C#、F#、Node.js、Python、PHP、Batch、Bash、Java、その他実行可能な言語を使って関数を記述できます。
+* **さまざまな言語** - C#、F#、Node.js、Python、PHP、Batch、Bash、その他実行可能な言語を使って関数を記述できます。
 * **従量課金制の価格モデル** - コードの実行に要した時間に対してのみ課金されます。 下の [価格に関するセクション](#pricing) で動的 App Service プランのオプションをご覧ください。  
 * **独自の依存関係を使用** - Azure Functions では NuGet と NPM をサポートしているので、お気に入りのライブラリを使用できます。  
 * **セキュリティの統合** - Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントなどの OAuth プロバイダーにより、HTTP によってトリガーされる関数を保護できます。  
@@ -90,6 +90,6 @@ Azure Functions には 2 種類の料金プランがあり、ニーズに合わ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

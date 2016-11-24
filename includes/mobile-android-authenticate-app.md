@@ -10,7 +10,7 @@
    
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceAuthenticationProvider;
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
-2. **ToDoActivity** クラスに次のメソッドを追加します。
+2. **ToDoActivity** クラスに次のメソッドを追加します。 
    
         private void authenticate() {
             // Login using the Google provider.
@@ -32,16 +32,16 @@
             });       
         }
 
-    これで、認証プロセスを処理する新しいメソッドが作成されます。ユーザーは、Google ログインを使用して認証されます。認証されたユーザーの ID を示すダイアログが表示されます。認証が成功しないと、次に進むことはできません。
+    これで、認証プロセスを処理する新しいメソッドが作成されます。 ユーザーは、Google ログインを使用して認証されます。 認証されたユーザーの ID を示すダイアログが表示されます。 認証が成功しないと、次に進むことはできません。
 
-    > [AZURE.NOTE]Google 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を_ MicrosoftAccount_、_Facebook_、_Twitter_、_windowsazureactivedirectory_ のいずれかに変更します。
+    > [AZURE.NOTE] Google 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、_MicrosoftAccount_、_Facebook_、_Twitter_、_windowsazureactivedirectory_ のいずれかに変更します。
 
 1. **onCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
    
         authenticate();
    
     この呼び出しで、認証プロセスが開始されます。
-2. **onCreate** メソッド内の`authenticate();` の後の残りのコードを新しい **createTable** メソッドに移動し、次のようにします。
+2. **onCreate** メソッド内の `authenticate();` の後の残りのコードを新しい **createTable** メソッドに移動します。こうすると次のようになります。
    
         private void createTable() {
    
@@ -58,8 +58,12 @@
             // Load the items from Azure.
             refreshItemsFromTable();
         }
-3. **[実行]** メニューの **[アプリの実行]** をクリックしてアプリを再開し、選択した ID プロバイダーでサインインします。
+3. **[実行]** メニューの **[アプリの実行]** をクリックしてアプリを再開し、選択した ID プロバイダーでサインインします。 
    
-       ログインに成功すると、アプリケーションはエラーなしで実行されます。また、バックエンド サービスに照会したり、データを更新したりできるようになります。
+       When you are successfully logged-in, the app should run without errors, and you should be able to query the backend service and make updates to data.
 
-<!---HONumber=AcomDC_1210_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

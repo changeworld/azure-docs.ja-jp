@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/28/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d366fc36e2731be34d70fd4e4fa082370c452d63
+ms.sourcegitcommit: ee8c76d383867ef4a545f690e75b8246a03d1cc4
+ms.openlocfilehash: e9e5408c60332e3def9c312ce06a9a27ecefefb2
 
 
 ---

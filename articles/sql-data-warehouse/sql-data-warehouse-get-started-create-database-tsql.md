@@ -16,33 +16,33 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 443e74834a7181560e812ce31db460ef2c4ff911
+ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
+ms.openlocfilehash: bbfce3f3cf329792f270632e2244e33e3fafb7ef
 
 
 ---
-# <a name="create-a-sql-data-warehouse-database-by-using-transactsql-tsql"></a>Transact-SQL (TSQL) を使用して SQL Data Warehouse データベースを作成する
+# <a name="create-a-sql-data-warehouse-database-by-using-transact-sql-tsql"></a>Transact-SQL (TSQL) を使用して SQL Data Warehouse データベースを作成する
 > [!div class="op_single_selector"]
-> * [Azure ポータル](sql-data-warehouse-get-started-provision.md)
+> * [Azure Portal](sql-data-warehouse-get-started-provision.md)
 > * [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 > * [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
-> 
-> 
+>
+>
 
 この記事では、T-SQL を使用して SQL Data Warehouse を作成する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
-開始するには、以下が必要です。 
+開始するには、以下が必要です。
 
 * **Azure アカウント**: アカウントを作成するには、[Azure 無料試用版][Azure 無料試用版]に関するページまたは [MSDN Azure クレジット][MSDN Azure クレジット]に関するページにアクセスしてください。
-* **Azure SQL Server**: 詳細については、[Azure Portal を使用した Azure SQL Database 論理サーバーの作成][Azure Portal を使用した Azure SQL Database 論理サーバーの作成]または [PowerShell を使用した Azure SQL Database 論理サーバーの作成][PowerShell を使用した Azure SQL Database 論理サーバーの作成]に関するセクションを参照してください。
+* **Azure SQL Server**: 詳細については、[Azure Portal での Azure SQL Database 論理サーバーの作成][Azure Portal での Azure SQL Database 論理サーバーの作成]または [PowerShell を使用したAzure SQL Database 論理サーバーの作成][PowerShell を使用したAzure SQL Database 論理サーバーの作成]に関するセクションを参照してください。
 * **リソース グループ**: 使用している Azure SQL Server と同じリソース グループを使用するか、[リソース グループの作成方法][リソース グループの作成方法]に関するセクションを参照してください。
 * **T-SQL の実行環境**: T-SQL の実行には、[Visual Studio][Visual Studio と SSDT のインストール]、[sqlcmd][sqlcmd]、または [SSMS][SSMS] を使用できます。
 
 > [!NOTE]
 > SQL Data Warehouse を作成すると、新しい課金対象サービスを使用することになる場合があります。  価格の詳細については、「[SQL Data Warehouse の価格][SQL Data Warehouse の価格]」を参照してください。
-> 
-> 
+>
+>
 
 ## <a name="create-a-database-with-visual-studio"></a>Visual Studio でデータベースを作成する
 Visual Studio に慣れていない場合は、「[Azure SQL Data Warehouse に対するクエリ (Visual Studio)][Azure SQL Data Warehouse に対するクエリ (Visual Studio)]」を参照してください。  開始するには、Visual Studio で SQL Server オブジェクト エクスプローラーを開き、SQL Data Warehouse データベースをホストするサーバーに接続します。  接続したら、 **master** データベースに対して次の SQL コマンドを実行することで、SQL Data Warehouse を作成できます。  このコマンドは、サービス目標を DW400 にしてデータベース MySqlDwDb を作成し、データベースのサイズを最大で 10 TB まで拡張できるようにします。
@@ -71,13 +71,13 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [開発]: sql-data-warehouse-overview-develop.md
 [読み込み]: sql-data-warehouse-overview-load.md
 [サンプル データの読み込み]: sql-data-warehouse-load-sample-databases.md
-[Azure Portal での Azure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
+[Azure Portal での Azure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started.md#create-logical-server-bk
 [PowerShell を使用したAzure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
 [リソース グループの作成方法]: ../resource-group-template-deploy-portal.md#create-resource-group
 [Visual Studio と SSDT のインストール]: sql-data-warehouse-install-visual-studio.md
 [sqlcmd]: sql-data-warehouse-get-started-connect-sqlcmd.md
 
-<!--MSDN references--> 
+<!--MSDN references-->
 [CREATE DATABASE]: https://msdn.microsoft.com/library/mt204021.aspx
 [ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx
 [SSMS]: https://msdn.microsoft.com/library/mt238290.aspx

@@ -5,6 +5,8 @@
 | **高性能 SKU** |2000 Mbps |はい |
 | **Ultra Performance SKU** |10000 Mbps |はい |
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

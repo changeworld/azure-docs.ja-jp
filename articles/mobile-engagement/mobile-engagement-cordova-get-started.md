@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 86e6597340867ffd620eac38a55de9113f571880
+ms.sourcegitcommit: a3e619d6e130212064093150d22d971a562a6601
+ms.openlocfilehash: 18a32c7282fd24280cb634b90db20721503437e7
 
 
 ---
@@ -45,10 +45,10 @@ ms.openlocfilehash: 86e6597340867ffd620eac38a55de9113f571880
 > 
 > 
 
-## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-cordova-app"></a><a id="setup-azme"></a>Cordova アプリ用に Mobile Engagement を設定する
+## <a name="a-idsetup-azmeasetup-mobile-engagement-for-your-cordova-app"></a><a id="setup-azme"></a>Cordova アプリ用に Mobile Engagement を設定する
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnecting-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続する
+## <a name="a-idconnecting-appaconnecting-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続する
 このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。 
 
 統合のデモンストレーションを行うために、Cordova で基本的なアプリを作成します。
@@ -67,8 +67,10 @@ ms.openlocfilehash: 86e6597340867ffd620eac38a55de9113f571880
         $ cordova platform add android
         $ cordova run android
 4. Cordova Console プラグインを追加します。 
-   
-    $ cordova plugin add cordova-plugin-console 
+
+    ```
+    $ cordova plugin add cordova-plugin-console
+    ``` 
 
 ### <a name="connect-your-app-to-mobile-engagement-backend"></a>アプリを Mobile Engagement のバックエンドに接続する
 1. Azure Mobile Engagement Cordova プラグインに変数値を設定しながら、このプラグインをインストールします。
@@ -87,7 +89,7 @@ ms.openlocfilehash: 86e6597340867ffd620eac38a55de9113f571880
 
 "*iOS Reach アイコン*": 拡張子付きのリソース名を指定する必要があります (例: mynotificationicon.png)。また、アイコン ファイルは ([フィールドの追加] メニューを使用して) XCode と共に iOS プロジェクトに追加する必要があります。
 
-## <a name="a-idmonitoraenabling-realtime-monitoring"></a><a id="monitor"></a>リアルタイム監視の有効化
+## <a name="a-idmonitoraenabling-real-time-monitoring"></a><a id="monitor"></a>リアルタイム監視の有効化
 1. Cordova プロジェクトで、 **www/js/index.js** を編集して、 *deviceReady* イベントが受信された場合に新しいアクティビティを宣言する Mobile Engagement への呼び出しを追加します。
    
          onDeviceReady: function() {
@@ -114,10 +116,10 @@ ms.openlocfilehash: 86e6597340867ffd620eac38a55de9113f571880
         [Engagement] Connection: Sent: startSession
         [Engagement] Connection: Sent: activity name='myPage'
 
-## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
+## <a name="a-idmonitoraconnect-app-with-real-time-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegratepushaenabling-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
+## <a name="a-idintegrate-pushaenabling-push-notifications-and-in-app-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
 Mobile Engagement を導入すると、キャンペーンとの関連でプッシュ通知とアプリ内メッセージングを利用し、ユーザーとのやり取りを行うことができます。 このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。
 次のセクションでは、それらを受信するためにアプリをセットアップします。
 
@@ -203,7 +205,7 @@ GCM 通知は Android エミュレーターでサポートされているため�
     ![][10]
 9. このキャンペーンでは、デバイスまたはエミュレーターにプッシュ通知が表示されるはずです。 
 
-## <a name="a-idnextstepsanext-steps"></a><a id="next-steps"></a>次のステップ
+## <a name="a-idnext-stepsanext-steps"></a><a id="next-steps"></a>次のステップ
 [Cordova Mobile Engagement SDK で使用できるすべてのメソッドの概要](https://github.com/Azure/azure-mobile-engagement-cordova)
 
 <!-- Images. -->

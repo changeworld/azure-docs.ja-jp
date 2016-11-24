@@ -1,6 +1,6 @@
 ---
 title: "Azure PowerShell で Azure Data Lake Analytics の使用を開始する | Microsoft Docs"
-description: "Azure PowerShell を使用して、Data Lake Store アカウントを作成し、U-SQL を使用して Data Lake Analytics ジョブを作成してから、ジョブを送信する方法について説明します。 "
+description: "Azure PowerShell を使用して Data Lake Analytics アカウントを作成し、U-SQL で Data Lake Analytics ジョブを作成して、ジョブを送信する方法について説明します。 "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 09/21/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 59efa050944059c737654a3f039a058c50865ea6
+ms.sourcegitcommit: c9440e26a563ed9315225b34709b009d01e065d7
+ms.openlocfilehash: 57c52a8c28e5a87a63fded3db7d0a2a785e47a53
 
 
 ---
@@ -209,6 +209,6 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

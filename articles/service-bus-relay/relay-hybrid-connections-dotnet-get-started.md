@@ -1,22 +1,22 @@
 ---
 title: "Relay ハイブリッド接続の概要 | Microsoft Docs"
 description: "ハイブリッド接続用の C# コンソール アプリケーションを作成する方法"
-services: service-bus
+services: service-bus-relay
 documentationcenter: .net
 author: jtaubensee
 manager: timlt
 editor: 
 ms.assetid: d1386900-b942-4abf-acfc-38d2ef826253
-ms.service: service-bus
+ms.service: service-bus-relay
 ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/28/2016
-ms.author: jotaub
+ms.author: jotaub,sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 92d7935596ab1dede6dc1d613cb635c32d52e3ab
+ms.sourcegitcommit: 849d7995e9c74bc929c4f791ae9155ca18ddb77b
+ms.openlocfilehash: 3ab92ba4e5c19d4b713ceb2da30835542f343d68
 
 
 ---
@@ -74,6 +74,6 @@ Relay にメッセージを送信するために、Visual Studio を使って C#
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

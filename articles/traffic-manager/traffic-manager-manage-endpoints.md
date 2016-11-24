@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: sewhee
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e6af6652d39fad5812c15e19fa29c757595a78b6
+ms.sourcegitcommit: 69b94c93ad3e9c9745af8485766b4237cac0062c
+ms.openlocfilehash: 47a2090e4f5a6da2879201aba5dbcd7beebcfa58
 
 ---
 

@@ -17,8 +17,8 @@ ms.topic: hero-article
 ms.date: 09/06/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aaef478107d9c9771a1dc799a101ff9a41f821c6
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: b54a45ed9472cfc457649a0e32c82259d95c87f0
 
 
 ---
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 4. 完了したら、 **[OK]** をクリックして次のセクションに進みます。 
    
     ![Azure VM を構成するための **[基本]** ブレードの設定が示されているスクリーンショット](./media/virtual-machines-windows-hero-tutorial/basics-blade.png)
-5. VM の [サイズ](virtual-machines-windows-sizes.md)を選び、 **[選択]** をクリックして続行します。 
+5. VM の [サイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を選び、 **[選択]** をクリックして続行します。 
    
     ![Screenshot of the Size blade that shows the Azure VM sizes that you can select](./media/virtual-machines-windows-hero-tutorial/size-blade.png)
 6. **[設定]** ブレードでは、ストレージとネットワークのオプションを変更できます。 このチュートリアルでは、既定の設定をそのまま使用します。 Premium Storage がサポートされる仮想マシンのサイズを選択した場合は、**[ディスクの種類]** の **[Premium (SSD)]** を選択することで、Azure Premium Storage をお試しいただくことができます。 変更が済んだら **[OK]**をクリックします。
@@ -76,7 +76,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
    ![Screenshot showing a message abut verifying the identity of the VM](./media/virtual-machines-windows-hero-tutorial/cert-warning.png)
 
-接続時に問題が発生した場合は、 [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)についてのページを参照してください。
+接続時に問題が発生した場合は、 [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)についてのページを参照してください。
 
 これで、仮想マシンを他のサーバーと同様に扱うことができます。
 
@@ -88,9 +88,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 再び使用する準備が整ったら **[開始]** ボタンを押して VM を再起動してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [IIS をインストール](virtual-machines-windows-hero-role.md)して新しい VM でさまざまな機能を試すことができます。 また、このチュートリアルでは、ネットワーク セキュリティ グループ (NSG) を使用して受信 Web トラフィックに対してポート 80 を開く方法について説明しています。 
-* [PowerShell を使用して Windows VM を作成する](virtual-machines-windows-ps-create.md)ことも、Azure CLI を使用して [Linux 仮想マシンを作成する](virtual-machines-linux-quick-create-cli.md)こともできます。
-* デプロイの自動化に関心がある場合は、 [Resource Manager テンプレートを使用した Windows 仮想マシンの作成](virtual-machines-windows-ps-template.md)に関するページをご覧ください。
+* [IIS をインストール](virtual-machines-windows-hero-role.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)して新しい VM でさまざまな機能を試すことができます。 また、このチュートリアルでは、ネットワーク セキュリティ グループ (NSG) を使用して受信 Web トラフィックに対してポート 80 を開く方法について説明しています。 
+* [PowerShell を使用して Windows VM を作成する](virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことも、Azure CLI を使用して [Linux 仮想マシンを作成する](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)こともできます。
+* デプロイの自動化に関心がある場合は、 [Resource Manager テンプレートを使用した Windows 仮想マシンの作成](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
 
 

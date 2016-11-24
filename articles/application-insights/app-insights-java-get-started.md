@@ -1,9 +1,9 @@
 ---
 title: "Application Insights を使用した Java Web アプリの分析 | Microsoft Docs"
-description: "Application Insights を使用して Java Web サイトのパフォーマンスと利用状況を監視します。 "
+description: "Application Insights を使用した Java Web アプリのアプリケーション パフォーマンス監視 "
 services: application-insights
 documentationcenter: java
-author: alancameronwills
+author: harelbr
 manager: douge
 ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.date: 08/17/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cc0167ef78eb3ca84e959599473af5935e5da0d0
+ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
+ms.openlocfilehash: 2c3c0c79e62631a42249ea6dc3865e59f26cad53
 
 
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
-*Application Insights はプレビュー段階です。*
+
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/) は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 Application Insights を使用して、[パフォーマンスの問題や例外を検出して診断](app-insights-detect-triage-diagnose.md)したり、アプリケーションでのユーザーの操作を追跡する[コードを記述][api]したりします。
 
@@ -90,7 +90,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
       // or applicationinsights-core for bare API
     }
 
-* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、特定のバージョンを試してください:* `version:'1.0.n'`。 * [SDK リリース ノート](https://githubにサインインします。com/Microsoft/ApplicationInsights-Java#release-notes)にサインインします。*
+* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、特定のバージョンを試してください:* `version:'1.0.n'`。 *[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)にサインインします。*
 * *新しい SDK に更新するには*
   *  プロジェクトの依存関係を更新します。
 
@@ -182,7 +182,7 @@ Application Insights SDK は、次の順序でキーを探します。
     </filter-mapping>
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Spring Web MVC 3.1 以降を使用している場合
-Application Insights パッケージを含めるように次の要素を編集します。
+Application Insights パッケージを含めるように、*-servlet.xml で次の要素を編集します。
 
     <context:component-scan base-package=" com.springapp.mvc, com.microsoft.applicationinsights.web.spring"/>
 
@@ -244,11 +244,15 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
   
   * dc.services.visualstudio.com:443
   * f5.services.visualstudio.com:443
+
+* 送信トラフィックをファイアウォール経由でルーティングする必要がある場合は、システム プロパティの `http.proxyHost` と `http.proxyPort` を定義します。 
+
 * Windows サーバーに次のものをインストールします。
   
   * [Microsoft Visual C++ 再頒布可能パッケージ](http://www.microsoft.com/download/details.aspx?id=40784)
     
     (このコンポーネントにより、パフォーマンス カウンターが有効になります。)
+
 
 ## <a name="exceptions-and-request-failures"></a>例外と要求エラー
 未処理の例外は、自動的に収集されます。
@@ -309,7 +313,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 * counterName - パフォーマンス カウンターの名前。
 * instanceName - パフォーマンス カウンター カテゴリ インスタンスの名前、または空の文字列 ("") (カテゴリにインスタンスが 1 つ含まれている場合)。 categoryName が Process であり、アプリが実行されている現在の JVM プロセスからパフォーマンス カウンターを収集する場合は、 `"__SELF__"`を指定します。
 
-パフォーマンス カウンターは、[メトリックス エクスプローラー][メトリックス]でカスタム メトリックとして表示されます。
+パフォーマンス カウンターは、[メトリックス エクスプローラー][メトリック]でカスタム メトリックとして表示されます。
 
 ![](./media/app-insights-java-get-started/12-custom-perfs.png)
 
@@ -329,7 +333,7 @@ Application Insights を使用すると、Log4J、Logback、またはその他�
 SDK をインストールすると、API を使用して独自のテレメトリを送信できるようになります。
 
 * アプリケーションでのユーザーの操作を把握するには、[カスタム イベントとメトリックを追跡][api]します。
-* 問題の診断に役立つ情報を得るには、[イベントおよびログを検索][diagnostic]します。
+* 問題の診断に役立つ情報を得るには、[イベントおよびログを検索][診断]します。
 
 ## <a name="availability-web-tests"></a>可用性 Web テスト
 Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。 [設定するには][可用性]、Web テストをクリックします。
@@ -358,15 +362,15 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
-[availability]: app-insights-monitor-web-app-availability.md
-[diagnostic]: app-insights-diagnostic-search.md
+[可用性]: app-insights-monitor-web-app-availability.md
+[診断]: app-insights-diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [javalogs]: app-insights-java-trace-logs.md
-[metrics]: app-insights-metrics-explorer.md
-[usage]: app-insights-web-track-usage.md
+[メトリック]: app-insights-metrics-explorer.md
+[使用状況]: app-insights-web-track-usage.md
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
