@@ -1,12 +1,12 @@
 ---
-title: 'Azure AD Connect: アカウントとアクセス許可 | Microsoft Docs'
-description: このトピックでは、使用および作成されるアカウントと、必要なアクセス許可について説明します。
+title: "Azure AD Connect: アカウントとアクセス許可 | Microsoft Docs"
+description: "このトピックでは、使用および作成されるアカウントと、必要なアクセス許可について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b2baa9ea093a36cadb2251bbd1f4390552d8ec0e
+
 
 ---
-# <a name="azure-ad-connect:-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
+# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
 Azure AD Connect インストール ウィザードには次の 2 つの別の設定からアクセスできます。
 
 * 簡単設定: ウィザードにより多くの権限が必要になりますが、個別にユーザーを作成したりアクセス許可を構成しなくても構成を簡単にセットアップできます。
@@ -125,8 +129,11 @@ Azure AD のアカウントは、同期サービスで使用するために作�
 ![AD アカウント ロール](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccountrole.png)
 
 ## <a name="next-steps"></a>次のステップ
-「[オンプレミス ID と Azure Active Directory の統合](../active-directory-aadconnect.md)」をご覧ください。
+「 [オンプレミス ID と Azure Active Directory の統合](../active-directory-aadconnect.md)」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
