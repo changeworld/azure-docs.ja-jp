@@ -1,6 +1,6 @@
 # Overview
 ## [Application Insights とは何か?](app-insights-overview.md)
-## [動作のしくみ](app-insights-detect-triage-diagnose.md)
+## [DevOps サイクルにおけるパフォーマンス監視](app-insights-detect-triage-diagnose.md)
 
 # 作業開始
 ## Azure の監視
@@ -63,8 +63,8 @@
 #### [メトリック アラート](app-insights-alerts.md)
 
 ### [スマート検出](app-insights-proactive-diagnostics.md)
-#### [障害の検出](app-insights-proactive-failure-diagnostics.md)
-#### [異常の検出](app-insights-proactive-performance-diagnostics.md)
+#### [失敗の異常](app-insights-proactive-failure-diagnostics.md)
+#### [パフォーマンスの異常](app-insights-proactive-performance-diagnostics.md)
 
 ## 分析
 
@@ -128,10 +128,10 @@
 ### [Java](app-insights-java-troubleshoot.md)
 
 # リファレンス
-## [Java](http://dl.windowsazure.com/applicationinsights/javadoc/)
+## [Java API](http://dl.windowsazure.com/applicationinsights/javadoc/)
 ## [.NET API](https://docs.microsoft.com/dotnet/api)
 ## [JavaScript API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-## [Analytics](app-insights-analytics-reference.md)
+## [Analytics リファレンス](app-insights-analytics-reference.md)
 ## [サンプリング](app-insights-sampling.md)
 ## [IP アドレス](app-insights-ip-addresses.md)
 ## [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
@@ -145,7 +145,7 @@
 ## [Windows Phone と Windows ストア向けの Application Insights SDK のリリース ノート](app-insights-release-notes-windows.md)
 ## [Developer Analytics Tools のリリース ノート](app-insights-release-notes-vsix.md)
 ## [SDK リリース ノート - Application Insights](app-insights-release-notes.md)
-## [REST API](https://dev.applicationinsights.io/)
+## [データ アクセス REST API](https://dev.applicationinsights.io/)
 
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/application-insights/)  
@@ -157,6 +157,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

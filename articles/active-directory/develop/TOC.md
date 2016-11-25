@@ -101,6 +101,6 @@
 ## [トークンと要求](../active-directory-token-and-claims.md?toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 
