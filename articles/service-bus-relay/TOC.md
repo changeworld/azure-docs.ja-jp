@@ -1,24 +1,27 @@
 # Overview
-## [リレーとは](service-bus-relay-overview.md)
-## [FAQ](../service-bus-messaging/service-bus-faq.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
+## [リレーとは](relay-what-is-it.md)
+## [FAQ](relay-faq.md)
 
 # 作業の開始
-## [リレーの使用方法](service-bus-dotnet-how-to-use-relay.md)
+## [名前空間を作成する](relay-create-namespace-portal.md)
+## [ハイブリッド接続の概要](relay-hybrid-connections-dotnet-get-started.md)
+## [WCF Relay の概要](service-bus-dotnet-how-to-use-relay.md)
 ## [Shared Access Signatures](../service-bus-messaging/service-bus-sas-overview.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
-## [Service Bus Relay を使用したハイブリッド アプリの構築](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
-## [.NET リレーのチュートリアル](service-bus-relay-tutorial.md)
-## [REST リレーのチュートリアル](service-bus-relay-rest-tutorial.md)
+## [WCF Relay ハイブリッドのチュートリアル](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
+## [WCF Relay .NET のチュートリアル](service-bus-relay-tutorial.md)
+## [WCF Relay REST のチュートリアル](service-bus-relay-rest-tutorial.md)
 
 # 方法
 ## [認証と承認](../service-bus-messaging/service-bus-authentication-and-authorization.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
 ## [故障と障害に対する計画](../service-bus-messaging/service-bus-outages-disasters.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
+## [ハイブリッド接続のプロトコル](relay-hybrid-connections-protocol.md)
+## [一般的な例外](relay-exceptions.md)
 
 # リファレンス
 ## [サンプル](service-bus-relay-samples.md)
-## [例外](../service-bus-messaging/service-bus-messaging-exceptions.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
-## [クォータ](../service-bus-messaging/service-bus-quotas.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
-## [.NET](/dotnet/api/)
-## [REST ()](/rest/api/servicebus/)
+## [ハイブリッド接続 .NET API](/dotnet/api/microsoft.servicebus)
+## [WCF Relay .NET API](/dotnet/api/microsoft.servicebus)
+
 
 # リソース
 ## [ブログ](https://blogs.msdn.microsoft.com/servicebus/)
@@ -30,6 +33,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

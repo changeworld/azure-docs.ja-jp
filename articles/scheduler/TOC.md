@@ -5,6 +5,7 @@
 
 # 作業開始
 ## [ジョブを作成および管理する](scheduler-get-started-portal.md)
+## [概念と用語](scheduler-concepts-terms.md)
 
 # 方法
 ## 計画と設計
@@ -14,7 +15,7 @@
 
 ## 開発
 ### [REST API を使用した複雑なスケジュール](scheduler-advanced-complexity.md)
-### [概念と用語](scheduler-concepts-terms.md)
+
 
 ## セキュリティ保護
 ### [送信認証](scheduler-outbound-authentication.md)
@@ -25,13 +26,16 @@
 ## [REST ()](/rest/api/scheduler/)
 
 # リソース
-## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=scheduler)
 ## [料金](https://azure.microsoft.com/pricing/details/scheduler/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=scheduler)
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

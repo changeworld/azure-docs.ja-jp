@@ -6,7 +6,7 @@
 ## [マルチサイト](application-gateway-multi-site-overview.md)
 ## [エンド ツー エンド SSL](application-gateway-backend-ssl.md)
 ## [WebSocket](application-gateway-websocket.md)
-## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md#application-gateway-limits.md)
+## [サービスの制限](../azure-subscription-service-limits.md#application-gateway-limits?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 # 作業開始
 ## Application Gateway を作成する
 ### パブリック
@@ -19,26 +19,26 @@
 #### [PowerShell](application-gateway-ilb-arm.md)
 #### [PowerShell (クラシック)](application-gateway-ilb.md)
 # 方法
-## Web アプリケーション ファイアウォールを使って作成する
+## Web アプリケーション ファイアウォールを構成する
 ### [ポータル](application-gateway-web-application-firewall-portal.md)
 ### [PowerShell](application-gateway-web-application-firewall-powershell.md)
-## SSL を構成する
+## SSL オフロードを構成する
 ### [ポータル](application-gateway-ssl-portal.md)
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell (クラシック)](application-gateway-ssl.md)
 ### [ポリシーとエンド ツー エンド](application-gateway-end-to-end-ssl-powershell.md)
-## URL パス ベースのルーティングを作成する
+## URL パス ベースのルーティングを構成する
 ### [ポータル](application-gateway-create-url-route-portal.md)
 ### [PowerShell](application-gateway-create-url-route-arm-ps.md)
-## 複数サイトのホスティング用に構成する
+## 複数サイトのホスティングを構成する
 ### [ポータル](application-gateway-create-multisite-portal.md)
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
-## 正常性プローブを作成する
+## 正常性プローブを構成する
 ### [ポータル](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell (クラシック)](application-gateway-create-probe-classic-ps.md)
 ## [負荷分散サービスの結合](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
-## [管理]
+## 管理
 ### [診断](application-gateway-diagnostics.md)
 ### [トラブルシューティング](application-gateway-troubleshooting-502.md)
 # リファレンス
@@ -61,6 +61,6 @@
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

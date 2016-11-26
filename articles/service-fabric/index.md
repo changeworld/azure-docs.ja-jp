@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 3086937d48026ee0a7643c428c8857f1c8ef85d0
+ms.sourcegitcommit: c6d2e90a58359c809a2b01a97cb25c12f7600008
+ms.openlocfilehash: 798d728c163df6647fb2607e14decf880f43b053
 
 ---
 #<a name="service-fabric-documentation"></a>Service Fabric のドキュメント
@@ -178,6 +178,6 @@ Service Fabric のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -24,6 +24,8 @@
 #### [Premium レベル](cdn-query-string-premium.md)
 ### [キャッシュしたアセットを消去する](cdn-purge-endpoint.md)
 ### [キャッシュしたアセットを事前に読み込む](cdn-preload-endpoint.md)
+### [認証トークン](cdn-token-auth.md)
+### [リソースの監視](cdn-resource-health.md)
 ### [規則に従って動作を上書きする](cdn-rules-engine.md)
 ### [リアルタイムでアラートを受け取る](cdn-real-time-alerts.md)
 
@@ -55,6 +57,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,17 +1,17 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: f9c998b6d6431fe08a1b6e6332f992be1446f0c7
+ms.sourcegitcommit: 1420ed40368d21bbf391142782834e781155a72a
+ms.openlocfilehash: 6a413c765bf034dda1917c6a3853bcd2d060b49c
 
 ---
 #<a name="data-catalog-documentation"></a>Data Catalog のドキュメント
 
-Data Catalog は、スケーラブルで信頼性の高いマイクロサービスを簡単にパッケージ化、デプロイ、管理できる分散システム プラットフォームであり、クラウド アプリケーションの開発や管理での大きな課題に対処します。  Data Catalog は、これらのエンタープライズ クラスの Tier-1 クラウド スケール アプリケーションを構築して管理するための次世代ミドルウェア プラットフォームです。
+Azure Data Catalog は、完全に管理されたクラウド サービスです。Azure Data Catalog を通じて、ユーザーは必要なデータ ソースを検出したり、見つけたデータ ソースについての知見を得たりすることができ、組織は既存の投資からさらに大きな価値を引き出すことができます。 アナリストからデータ サイエンティスト、開発者に至るまで、あらゆるユーザーが Data Catalog の機能を利用してデータ ソースを検出し、理解して利用することができます。 Data Catalog には、メタデータや注釈のクラウドソーシング モデルが組み込まれており、すべてのユーザーがその知見を持ち寄ってデータのコミュニティや文化を構築することができます。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/samples/service-fabric-dotnet-getting-started/">
+        <a href="/azure/data-catalog/data-catalog-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -21,7 +21,7 @@ Data Catalog は、スケーラブルで信頼性の高いマイクロサービ�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Data Catalog の入門サンプル</h3>
+                        <h3>Azure Data Catalog の概要</h3>
                     </div>
                 </div>
             </div>
@@ -29,25 +29,7 @@ Data Catalog は、スケーラブルで信頼性の高いマイクロサービ�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/samples/service-fabric-dotnet-management-party-cluster/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Data Catalog のパーティ クラスター</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/samples/service-fabric-dotnet-core-getting-started/">
+        <a href="/azure/data-catalog/data-catalog-what-is-data-catalog">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -57,7 +39,7 @@ Data Catalog は、スケーラブルで信頼性の高いマイクロサービ�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>.NET Core を使用する Data Catalog の概要</h3>
+                        <h3>Azure Data Catalog の詳細</h3>
                     </div>
                 </div>
             </div>
@@ -72,28 +54,13 @@ Data Catalog は、スケーラブルで信頼性の高いマイクロサービ�
 
 <ul class="panelContent cardsW">
     <li>
-        <a href="/rest/api/">
+        <a href="/rest/api/datacatalog">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
                         <p>Data Catalog REST API リファレンス</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-    <li>
-        <a href="https://msdn.microsoft.com/library/azure/mt416943">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Data Catalog の管理リファレンス</p>
                     </div>
                 </div>
             </div>
@@ -112,6 +79,6 @@ Data Catalog のドキュメントのダウンロード </div>
 </div>
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

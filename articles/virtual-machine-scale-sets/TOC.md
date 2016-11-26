@@ -20,7 +20,7 @@
 ### [自動スケールとスケール セット](virtual-machine-scale-sets-autoscale-overview.md)
 ### [スケール セットの垂直スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 ### [スケール セットのアップグレード](virtual-machine-scale-sets-upgrade-scale-set.md)
-### [高度な自動スケール](virtual-machine-scale-sets-advanced-autoscale.md)
+### [高度な自動スケール](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [DSC とスケール セットの使用](virtual-machine-scale-sets-dsc.md)
 
 ## トラブルシューティング
@@ -38,6 +38,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -44,10 +44,11 @@
 ## [Linux VM の DHCPv6 の設定](load-balancer-ipv6-for-linux.md)
 
 # リファレンス
-## [PowerShell](https://go.microsoft.com/fwlink/p/?LinkId=536407)
-## [.NET](https://docs.microsoft.com/dotnet/api/)
-## [Resource Manager API](https://go.microsoft.com/fwlink/p/?LinkId=536405)
-## [ネットワーク リソースの使用](https://go.microsoft.com/fwlink/p/?LinkId=536403)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [Azure CLI](/cli/azure/network/lb)
+## [Java](/java/api)
+## [.NET](/dotnet/api)
+## [REST ()](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
 # 関連項目
 ## [Application Gateway](/azure/application-gateway/)
@@ -63,6 +64,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=load-balancer)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

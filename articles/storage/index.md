@@ -1,13 +1,13 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: d299d9b2d08086fa7a5946d8270437f652edd746
-ms.openlocfilehash: d5a866740ed977f091d750767825ab30eda71c64
+ms.sourcegitcommit: 965b96507d66f3880bdf3b38362d1eb026afdb51
+ms.openlocfilehash: e72557a87088ba66a669d37ba0033da951e7fdb8
 
 ---
 #<a name="storage-documentation"></a>ストレージのドキュメント
 
-Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。  これは、拡張性に優れ、柔軟性があり、グローバルにアクセスでき、トラフィックに基づいて自動的にデータの負荷を分散します。  Azure Storage には、アプリケーションのニーズを満たす 4 つのサービスとして Blob Storage、Table Storage、Queue Storage、File Storage が用意されています。
+Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。  これは、拡張性に優れ、柔軟性があり、グローバルにアクセスでき、トラフィックに基づいて自動的にデータの負荷を分散します。  Azure Storage には、アプリケーションのニーズを満たす 5 つのサービスとして、Blob Storage、Table Storage、Queue Storage、Disk Storage、File Storage が用意されています。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -182,6 +182,6 @@ Storage のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

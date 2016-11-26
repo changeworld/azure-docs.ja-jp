@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: ec3f50b8da14b48a0c97942ed326deeb57b2e7a2
-ms.openlocfilehash: 5ff24136d5cede5678ea35499034a64bb2e22d1f
+ms.sourcegitcommit: 086574639b31ee82ab72efbc93d58af735524a1b
+ms.openlocfilehash: b03565feb98f18d2a90d72e154901baf0dd89df0
 
 ---
 
@@ -175,6 +175,6 @@ Monitoring and Diagnostics のドキュメントのダウンロード </div>
 </div>
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

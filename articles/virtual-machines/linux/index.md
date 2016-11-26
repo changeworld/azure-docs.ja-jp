@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 80f16aef21f41d7040342e5a3907e330efa5f90b
-ms.openlocfilehash: 46bbb80b76ff88d6c413f3329d19db663c2e3ea6
+ms.sourcegitcommit: c5ed66f3a060dcd1bac9c04c70c493dcebcf9df8
+ms.openlocfilehash: 7b5078165e008819baed1c1e38d1c1a677648955
 
 ---
 #<a name="linux-virtual-machine-documentation"></a>Linux 仮想マシンのドキュメント
@@ -89,6 +89,20 @@ Azure Virtual Machines により、Azure のコンピューティング、ネッ
 ##<a name="reference"></a>リファレンス
 
 <ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/azureps-cmdlets-docs">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>PowerShell コマンドレット</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
     <li>
         <a href="/cli/azure/install-az-cli2">
         <div class="cardSize">
@@ -186,6 +200,6 @@ Linux 仮想マシンのドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

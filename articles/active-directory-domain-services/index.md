@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: a4233cfb578f5671fc16f83aae4531fb8315c1af
-ms.openlocfilehash: bb59158dbbe43a938a638cff3c43ef4ecdae5854
+ms.sourcegitcommit: 55dedcab5b8e62b3666cffcfc7d9a0a31c624784
+ms.openlocfilehash: d3a6b967921edad13479c615ebec8edc9e568458
 
 ---
 # <a name="active-directory-domain-services-documentation"></a>Active Directory Domain Services のドキュメント
@@ -168,6 +168,6 @@ Active Directory Domain Services のドキュメントのダウンロード </di
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 6f8668953a095d488ab91ce1acf9affaf4000b58
+ms.sourcegitcommit: e0ec3ec5c8a24a84f54350441be73871e81b9761
+ms.openlocfilehash: 7af04a1619ea9d84eb3d477660d55eeea89e57bf
 
 ---
 #<a name="dns-documentation"></a>DNS のドキュメント
@@ -160,6 +160,6 @@ DNS のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

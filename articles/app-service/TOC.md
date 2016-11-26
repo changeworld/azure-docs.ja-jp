@@ -22,7 +22,7 @@
 
 ## Web アプリの作成
 ### [.NET](../app-service-web/web-sites-dotnet-get-started.md)
-### [Node.JS](../app-service-web/app-service-web-nodejs-get-started.md)
+### [Node.js](../app-service-web/app-service-web-nodejs-get-started.md)
 ### [Python](../app-service-web/web-sites-python-ptvs-django-mysql.md)
 ### [Java](../app-service-web/web-sites-java-get-started.md)
 ### [Marketplace アプリ](../app-service-web/web-sites-php-web-site-gallery.md)
@@ -159,6 +159,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=app-service) 
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=app-service) 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

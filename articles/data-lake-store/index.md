@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 2d3ef037449a4d98b5386024e161fee69f46be02
-ms.openlocfilehash: 9e40f7750fd85b779ba4e3cac83a7cd3ac16b27f
+ms.sourcegitcommit: 5ddeaf6f2049983f80618d9e2294f82c60fe9af5
+ms.openlocfilehash: 2948011d1d321d0371928bbdf7a9a9414036589c
 
 ---
 # <a name="data-lake-store-documentation"></a>Data Lake Store のドキュメント
@@ -231,6 +231,6 @@ Azure Data Lake Store のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

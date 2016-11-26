@@ -102,13 +102,15 @@
 ### [既存の VM の再起動またはサイズ変更に関するクラシック デプロイの問題](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 # リファレンス
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](/cli/azure/vm)
-## [Java](/java/api/)
+## [Java](/java/api)
+## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [Resource Manager テンプレートの作成](../../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [コミュニティ テンプレート](https://azure.microsoft.com/documentation/templates/)
-## [コンピューティング REST](/rest/api/compute/)
-## [ネットワーク REST](/rest/api/)
-## [Storage REST](/rest/api/storageservices/)
+## [コミュニティ テンプレート](https://azure.microsoft.com/documentation/templates)
+## [コンピューティング REST](/rest/api/compute)
+## [ネットワーク REST](/rest/api)
+## [Storage REST](/rest/api/storageservices)
 
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
@@ -117,6 +119,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

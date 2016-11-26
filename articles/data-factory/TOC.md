@@ -9,14 +9,14 @@
 # 作業の開始
 ## [チュートリアル: パイプラインを作成してデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 ### [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-### [[アクセス ポリシー]](data-factory-copy-activity-tutorial-using-azure-portal.md)
+### [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
 ### [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 ### [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 ### [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 ### [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 ### [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 ## [チュートリアル: パイプラインを作成してデータを転送する](data-factory-build-your-first-pipeline.md)
-### [[アクセス ポリシー]](data-factory-build-your-first-pipeline-using-editor.md)
+### [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 ### [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 ### [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 ### [Azure Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
@@ -98,9 +98,8 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-factory)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=data-factory)
 ## [機能のリクエスト](https://feedback.azure.com/forums/270578-azure-data-factory)
-## [すべての記事への索引](data-factory-alltopcat.md)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

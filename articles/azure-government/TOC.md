@@ -15,10 +15,10 @@
 ### [イメージ](../azure-government-image-gallery.md?toc=%2fazure%2fazure-government%2ftoc.json)
 ### [Marketplace](documentation-government-manage-marketplace.md)
 ### [パートナー向けの Marketplace](documentation-government-manage-marketplace-partners.md)
+### [リソース マネージャー](documentation-government-manage-azure-resource-manager.md)
 ### [サブスクリプション](documentation-government-manage-subscriptions.md)
 
 # リファレンス
-## [Resource Manager](documentation-government-manage-azure-resource-manager.md)
 ## [サービス](documentation-government-services.md)
 ### [Compute](documentation-government-compute.md)
 ### [Storage](documentation-government-services-storage.md)
@@ -32,8 +32,6 @@
 ## [試用版](https://azuregov.microsoft.com/trial/azuregovtrial)
 
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -16,6 +16,7 @@
 ### [DC/OS パブリック アクセスを有効にする](container-service-enable-public-access.md)
 ### [DC/OS の負荷分散コンテナー](container-service-load-balancing.md)
 ### [DC/OS のアプリ/ユーザー固有の Orchestrator](container-service-application-specific-marathon.md)
+### [OMS で監視する (DC/OS)](container-service-monitoring-oms.md)
 ### [Datadog で監視する (DC/OS)](container-service-monitoring.md)
 ### [Sysdig で監視する (DC/OS)](container-service-monitoring-sysdig.md)
 ## [Kubernetes による管理](container-service-kubernetes-walkthrough.md)
@@ -30,6 +31,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -11,11 +11,11 @@
 # 作業の開始
 ## [Hadoop の開始](hdinsight-hadoop-linux-tutorial-get-started.md)
 ## [対話型 Hive を開始する (プレビュー)](hdinsight-hadoop-use-interactive-hive.md)
-## [R Server を開始する (プレビュー)](hdinsight-hadoop-r-server-get-started.md)
+## [R Server の開始](hdinsight-hadoop-r-server-get-started.md)
 ## [Spark の開始](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [HBase & NoSQL の開始](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Storm の開始](hdinsight-apache-storm-tutorial-get-started-linux.md)
-## [Kafka の開始 (プレビュー)](hdinsight-apache-kafka-get-started.md )
+## [Kafka の開始 (プレビュー)](hdinsight-apache-kafka-get-started.md)
 ## [Hadoop サンドボックス](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake Tools と Hortonworks サンドボックス](hdinsight-hadoop-emulator-visual-studio.md)
 ## [Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)
@@ -49,11 +49,12 @@
 ### [DataFu と Pig を使用する](hdinsight-hadoop-use-pig-datafu-udf.md)
 ### [オンデマンド クラスター](hdinsight-hadoop-create-linux-clusters-adf.md)
 ### [Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
-## R Server の使用 (プレビュー)
+## R Server の使用
 ### [ストレージ オプション](hdinsight-hadoop-r-server-storage.md)
 ### [RStudio のインストール](hdinsight-hadoop-r-server-install-r-studio.md)
 ### [Compute コンテキスト](hdinsight-hadoop-r-server-compute-contexts.md)
 ## メモリ内の処理への Spark の使用
+### [Data Lake Store を使用](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [BI ツールを使用](hdinsight-apache-spark-use-bi-tools.md)
 ### [スタンドアロン アプリ](hdinsight-apache-spark-create-standalone-application.md)
 ### [ストリーミング イベントを処理する](hdinsight-apache-spark-eventhub-streaming.md)
@@ -180,12 +181,12 @@
 #### [Hive クエリのパフォーマンス](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
 # リファレンス
-## [REST API リファレンス](https://msdn.microsoft.com/library/mt622197.aspx)
-## [リモート ジョブ用の Spark REST API](https://msdn.microsoft.com/library/mt613023.aspx)
-## [PowerShell コマンドレット](https://msdn.microsoft.com/library/mt438705.aspx)
+## [PowerShell コマンドレット](/powershell/resourcemanager/azurerm.hdinsight/v2.2.0/azurerm.hdinsight)
 ## [.NET SDK for Hadoop](https://msdn.microsoft.com/library/mt271028.aspx)
 ## [.NET SDK for HBase](https://www.nuget.org/packages/Microsoft.HBase.Client/)
 ## [.NET library for Avro](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
+## [REST API リファレンス](/rest/api/hdinsight/)
+## [リモート ジョブ用の Spark REST API](/rest/api/hdinsightspark/)
 
 # 関連項目
 ## Windows クラスター
@@ -223,6 +224,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

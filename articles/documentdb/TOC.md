@@ -5,12 +5,11 @@
 ## シナリオ
 ### [一般的なユース ケース](documentdb-use-cases.md)
 ### [DocumentDB によるソーシャル化](documentdb-social-media-apps.md)
-### [マルチテナント](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx)
-
 
 # 作業の開始
 ## 最初のアプリを記述する
 ### [.NET コンソール アプリ](documentdb-get-started.md)
+### [.NET Core コンソール アプリ](documentdb-dotnetcore-get-started.md)
 ### [Node.js コンソール アプリ](documentdb-nodejs-get-started.md)
 ### [C++ コンソール アプリ](documentdb-cpp-get-started.md)
 ## Web アプリを構築する
@@ -18,6 +17,7 @@
 ### [Node.js Web アプリ](documentdb-nodejs-application.md)
 ### [Java Web アプリ](documentdb-java-application.md)
 ### [Python Flask Web アプリ](documentdb-python-application.md)
+## [ローカルでの開発](documentdb-nosql-local-emulator.md)
 ## [FAQ](documentdb-faq.md)
 
 # 方法
@@ -85,6 +85,7 @@
 # リファレンス
 ## [Java SDK](documentdb-sdk-java.md)
 ## [.NET SDK](documentdb-sdk-dotnet.md)
+## [.NET Core SDK](documentdb-sdk-dotnet-core.md)
 ## [.NET のサンプル](documentdb-dotnet-samples.md)
 ## [Node.js SDK](documentdb-sdk-node.md)
 ## [Node.js のサンプル](documentdb-nodejs-samples.md)
@@ -109,6 +110,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

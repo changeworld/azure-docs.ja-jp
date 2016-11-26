@@ -9,6 +9,7 @@
 ### [データ セキュリティと暗号化のベスト プラクティス](azure-security-data-encryption-best-practices.md)
 ### [Storage のセキュリティ ガイド](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## [コンピューティングのセキュリティ](security-virtual-machines-overview.md)
+### [IaaS ワークロードのベスト プラクティス](azure-security-iaas.md)
 ### [Microsoft Antimalware](azure-security-antimalware.md)
 ### [ディスクの暗号化](azure-security-disk-encryption.md)
 ### [Azure VM を暗号化する](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
@@ -51,6 +52,6 @@
 ## [Virtual Academy のセキュリティ講座](security-microsoft-virtual-academy.md)
 ## [Channel 9 で配信中のセキュリティに関するビデオ](security-channel-nine.md)
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -18,6 +18,7 @@
 #### [Azure Storage](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
 #### [Configuration Manager](log-analytics-sccm.md)
+#### [OMS ゲートウェイ](log-analytics-oms-gateway.md)
 ### データ ソース
 #### [データ ソースの概要](log-analytics-data-sources.md)
 #### [Windows イベント](log-analytics-data-sources-windows-events.md)
@@ -49,6 +50,7 @@
 #### [Surface Hub](log-analytics-surface-hubs.md)
 #### [VMware](log-analytics-vmware.md)
 #### [ワイヤ データ](log-analytics-wire-data.md)
+#### [SCOM 評価](log-analytics-scom-assessment.md)
 ## 分析
 ### [ダッシュボード](log-analytics-dashboards.md)
 ### [ビュー デザイナー](log-analytics-view-designer.md)

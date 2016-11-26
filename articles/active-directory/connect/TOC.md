@@ -95,6 +95,6 @@
 ##[DirSync の廃止](../active-directory-aadconnect-dirsync-deprecated.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

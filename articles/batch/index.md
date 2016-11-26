@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 8def9c2a64251214b173f959dbb5bec3ec6fc43b
+ms.sourcegitcommit: 5b9948f59fad542ce488f7682aef2cc57b1a0b55
+ms.openlocfilehash: 20bf594172ade3277455aae59469181162b4238a
 
 ---
 #<a name="batch-documentation"></a>Batch のドキュメント
@@ -223,6 +223,6 @@ Azure Batch のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

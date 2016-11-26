@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: c0302bfd21b4982d13e859bbb1fe2d1557f33b96
+ms.sourcegitcommit: 8f90dd518c6147df884ca9fd61ff8ee3b47dd179
+ms.openlocfilehash: 0fa4f3f5d5f07dcd0ec7dfdea7a0bec67900288e
 
 ---
 
@@ -160,6 +160,6 @@ Active Directory のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

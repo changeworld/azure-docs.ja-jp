@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: ffc70a3aa12afdf1796e2498bce156b13cd6f215
+ms.sourcegitcommit: 448cccdf35510db9bac9cdb5648739b18302c90b
+ms.openlocfilehash: 146078c8caf1bcd757d3e19aae5860aba9049ab9
 
 ---
 #<a name="expressroute-documentation"></a>ExpressRoute のドキュメント
@@ -113,6 +113,6 @@ ExpressRoute ドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

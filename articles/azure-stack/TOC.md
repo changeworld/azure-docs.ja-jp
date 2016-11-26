@@ -68,20 +68,17 @@
 ## [更新プログラムの管理](azure-stack-updates.md)
 ## [Azure Stack 向けの開発](azure-stack-developer.md)
 ## SQL または MySQL リソース プロバイダーのデプロイ
-### [Azure Stack で MySQL データベースを PaaS として使用する](azure-stack-mysql-rp-deploy-short.md)
-### [Azure Stack での SQL Server リソース プロバイダー アダプターのデプロイ](azure-stack-sql-rp-deploy-long.md)
-### [Azure Stack で SQL データベースを使用する](azure-stack-sql-rp-deploy-short.md)
+### [Azure Stack で MySQL データベースを PaaS として使用する](azure-stack-mysql-resource-provider-deploy.md)
+### [Azure Stack での SQL Server リソース プロバイダー アダプターのデプロイ](azure-stack-sql-resource-provider-deploy.md)
 
-## Web Apps の計画とデプロイ
-### [Azure Stack Web Apps の概要](azure-stack-webapps-overview.md)
-### [Azure Stack Web Apps を開始する前に](azure-stack-webapps-before-you-get-started.md)
-### [MySQL リソース プロバイダーを Azure Stack にデプロイして WebApps と連携させる](azure-stack-mysql-rp-deploy-long.md)
+## App Service の計画およびデプロイ
+### [Azure Stack Web Apps の概要](azure-stack-app-service-overview.md)
+### [Azure Stack Web Apps を開始する前に](azure-stack-app-service-before-you-get-started.md)
 ### [Web Apps: Web worker ロールの追加](azure-stack-webapps-add-worker-roles.md)
-### [Web Apps リソース プロバイダーを Azure Stack に追加する](azure-stack-webapps-deploy.md)
+### [Web Apps リソース プロバイダーを Azure Stack に追加する](azure-stack-app-service-deploy.md)
 
 # トラブルシューティング
 ## [Azure Stack のトラブルシューティング](azure-stack-troubleshooting.md)
-## [失敗した手順からデプロイを再実行する](azure-stack-rerun-deploy.md)
 ## [Web Apps リソース プロバイダー](azure-stack-webapps-troubleshoot-known-issues.md)
 
 # リソース
@@ -90,6 +87,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stack)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -28,7 +28,7 @@
 ### [クロスプラットフォーム通知を送信する](notification-hubs-aspnet-cross-platform-notification.md)
 ### サーバー スクリプトを使用する
 #### [.NET](https://msdn.microsoft.com/library/mt414893.aspx)
-#### [Node.JS](notification-hubs-nodejs-push-notification-tutorial.md)
+#### [Node.js](notification-hubs-nodejs-push-notification-tutorial.md)
 #### [Java](notification-hubs-java-push-notification-tutorial.md)
 #### [PHP](notification-hubs-php-push-notification-tutorial.md)
 #### [Python](notification-hubs-python-push-notification-tutorial.md)
@@ -71,6 +71,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=notification-hubs)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

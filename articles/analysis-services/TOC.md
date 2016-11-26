@@ -1,19 +1,19 @@
 # Overview
-##[What is Azure Analysis Services?](analysis-services-overview.md)
-# Get started
-##[Create a server](analysis-services-create-server.md)
+##[Azure Analysis Services とは](analysis-services-overview.md)
+# 作業開始
+##[サーバーの作成](analysis-services-create-server.md)
 
-# How to 
-## [Deploy](analysis-services-deploy.md)
-## Manage
-###[Connect to a server](analysis-services-connect.md)
-###[Manage a server](analysis-services-manage.md)
-## Integrate
-###[On-premise data gateway](analysis-services-gateway.md)
+# 方法 
+## [デプロイする](analysis-services-deploy.md)
+## [管理]
+###[サーバーへの接続](analysis-services-connect.md)
+###[サーバーの管理](analysis-services-manage.md)
+## 統合
+###[オンプレミス データ ゲートウェイ](analysis-services-gateway.md)
 
-# References
-##[Datasource connections](analysis-services-datasource.md)
+# 参照
+##[データ ソースの接続](analysis-services-datasource.md)
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

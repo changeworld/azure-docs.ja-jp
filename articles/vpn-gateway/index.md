@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 21d5070616888654aad4a8e3bc17a066233fb907
+ms.sourcegitcommit: dca0fb0b2de4943b9a031d2759756654a0c7280f
+ms.openlocfilehash: 6a72b28f95338ebe04e764d7f83e8db3e3e91b78
 
 ---
 #<a name="vpn-gateway-documentation"></a>VPN Gateway のドキュメント
@@ -65,7 +65,7 @@ Azure VPN Gateway は、Azure 仮想ネットワークとオンプレミスの�
         </a>
     </li>
     <li>
-        <a href="/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal/">
+        <a href="/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -83,7 +83,7 @@ Azure VPN Gateway は、Azure 仮想ネットワークとオンプレミスの�
         </a>
     </li>
      <li>
-        <a href="/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal/">
+        <a href="/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -101,7 +101,7 @@ Azure VPN Gateway は、Azure 仮想ネットワークとオンプレミスの�
         </a>
     </li>
      <li>
-        <a href="/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal/">
+        <a href="/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -119,6 +119,7 @@ Azure VPN Gateway は、Azure 仮想ネットワークとオンプレミスの�
         </a>
     </li>
  </ul>
+ 
 ---
 
 ## <a name="reference"></a>リファレンス
@@ -200,12 +201,12 @@ Azure VPN Gateway は、Azure 仮想ネットワークとオンプレミスの�
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/vpn-gateway.pdf">
         <div class="img"></div>
         <div class="text">
-Azure Batch のドキュメントのダウンロード </div>
+Azure VPN Gateway のドキュメントのダウンロード </div>
     </a>
 </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,13 +1,13 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 98fdd8ee3dc1b90aae349652e471a218ef44a44e
-ms.openlocfilehash: 35919aa28a5c03aa04d0b6018dac5366f19d9794
+ms.sourcegitcommit: 3273e748265fa23efadd010bb5f0bc9ce43223b6
+ms.openlocfilehash: dae331e93ab1682741a34758172d7c8cdb38aec5
 
 ---
 # <a name="azure-search-documentation"></a>Azure Search のドキュメント
 
-Azure Search は、サーバーとインフラストラクチャの管理を Microsoft に委任するクラウドの Search-as-a-service (サービスとしての検索) ソリューションです。データを取り込んだら、Web サイトやモバイル アプリケーションに検索機能を追加して、すぐに利用を開始できます。 簡単な REST API または .NET SDK を使用してアプリケーションに強力な検索エクスペリエンスを簡単に追加できるので、検索インフラストラクチャを管理する必要も、検索のエキスパートになる必要もありません。
+Azure Search は、強力な検索エクスペリエンスをカスタム アプリに組み込んで、ポータルのビューからサービス、インデックス、クエリ アクティビティを監視できる、管理されたクラウド検索サービスです。 主な機能として、複数の言語でのスケーラブルなフルテキスト検索、地理空間検索、フィルタリングとファセット ナビゲーション、先行入力クエリ、検索結果の強調表示、カスタム アナライザーなどがあります。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -47,7 +47,7 @@ Azure Search は、サーバーとインフラストラクチャの管理を Mic
         </a>
     </li>
     <li>
-        <a href="/azure/search/search-create-service">
+        <a href="/azure/search/search-create-service-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -82,6 +82,42 @@ Azure Search は、サーバーとインフラストラクチャの管理を Mic
         </div>
         </a>
     </li>
+    <li>
+        <a href="/azure/search/search-query-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Search インデックスを照会する</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/search/search-howto-dotnet-sdk">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>.NET で Azure Search を使用する</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 </ul>
 
 
@@ -91,13 +127,41 @@ Azure Search は、サーバーとインフラストラクチャの管理を Mic
 
 <ul class="panelContent cardsW">
     <li>
-        <a href="/dotnet/api/">
+        <a href="/dotnet/api/microsoft.azure.search">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>.NET</h3>
-                        <p>.NET に関する管理リファレンス API</p>
+                        <p>サービス .NET API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/dotnet/api/microsoft.azure.management.search">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>管理 .NET API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/searchservice/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p>サービス REST API</p>
                     </div>
                 </div>
             </div>
@@ -111,7 +175,7 @@ Azure Search は、サーバーとインフラストラクチャの管理を Mic
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p>Search REST API リファレンス</p>
+                        <p>管理 REST API</p>
                     </div>
                 </div>
             </div>
@@ -130,6 +194,6 @@ Azure Search のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

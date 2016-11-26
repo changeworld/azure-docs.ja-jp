@@ -2,7 +2,7 @@
 ## [Site Recovery とは](site-recovery-overview.md)
 ## [Site Recovery のしくみ](site-recovery-components.md)
 ## [保護できるワークロード](site-recovery-workload.md)
-## [サポート対象のオペレーティング システム](site-recovery-support-matrix.md)
+## [Site Recovery のサポート マトリックス](site-recovery-support-matrix.md)
 ## [FAQ](site-recovery-faq.md)
 ## [概要を見る](https://www.youtube.com/watch?v=eOOwMQPBKfM)
 
@@ -63,6 +63,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

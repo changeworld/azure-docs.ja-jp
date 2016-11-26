@@ -8,7 +8,7 @@
 
 ## Web Apps
 ### [.NET](web-sites-dotnet-get-started.md)
-### [Node.JS](app-service-web-nodejs-get-started.md)
+### [Node.js](app-service-web-nodejs-get-started.md)
 ### [Python](web-sites-python-ptvs-django-mysql.md)
 ### [Java](web-sites-java-get-started.md)
 ### [Marketplace アプリ](web-sites-php-web-site-gallery.md)
@@ -153,6 +153,7 @@
 ### [オンプレミス接続](web-sites-hybrid-connection-get-started.md)
 ### [Azure Virtual Network](web-sites-integrate-with-vnet.md)
 ### [詳細な構成](web-sites-transform-extend.md)
+### [Linux で App Service のコンテナーを構成する](app-service-linux-using-custom-docker-image.md)
 ### [リソース グループ](app-service-move-resources.md)
 ### [WordPress を Multisite に変換する](web-sites-php-convert-wordpress-multisite.md) 
 
@@ -265,6 +266,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 0661b4b41184e5c2bd51304372980a086e0be5c4
+ms.sourcegitcommit: f6a1d50752043e74cd5b8adadfcb5ff41d0716d0
+ms.openlocfilehash: e93f2197c677a7e64a18646ddece38c48a200056
 
 ---
 #<a name="azure-government-documentation"></a>Azure Government のドキュメント
@@ -95,6 +95,6 @@ Azure Government のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

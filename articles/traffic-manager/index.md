@@ -1,13 +1,13 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 2bb861bf0e2d3505b3e2eeeb3ce779ab718e7013
-ms.openlocfilehash: 53f98b140cd1daa82b71a2924312cb0c2b3ac553
+ms.sourcegitcommit: 9e86ae23b3fe3b8134f4725035c03837425cc0c4
+ms.openlocfilehash: 9a05d78edbf2c186d4a4d84f38eb6deff0cdafc5
 
 ---
 #<a name="traffic-manager-documentation"></a>Traffic Manager のドキュメント
 
-Azure Traffic Manager では、さまざまなデータセンターのサービス エンドポイントへのユーザー トラフィックの分散を制御できます。  Traffic Manager では、ドメイン ネーム システム (DNS) を使用し、トラフィック ルーティング方法とエンドポイントの正常性に基づいて最適なエンドポイントにクライアント要求を配信することで、大規模アプリケーションに必要な可用性と応答性を備えたアプリケーションを実現します。
+Azure Traffic Manager では、さまざまなリージョンのサービス エンドポイントへのユーザー トラフィックの分散を制御できます。 Traffic Manager では、ドメイン ネーム システム (DNS) を使用して、選択されたトラフィック ルーティング方法とエンドポイントの正常性に基づいて最適なエンドポイントにクライアント要求を送信することで、アプリケーションの可用性と応答性を高めます。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -123,12 +123,12 @@ Azure Traffic Manager では、さまざまなデータセンターのサービ�
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/traffic-manager.pdf">
         <div class="img"></div>
         <div class="text">
-Service Fabric のドキュメントのダウンロード </div>
+Traffic Manager のドキュメントのダウンロード </div>
     </a>
 </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 
