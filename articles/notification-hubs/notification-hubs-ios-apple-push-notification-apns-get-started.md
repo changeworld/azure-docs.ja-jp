@@ -417,7 +417,7 @@ ms.openlocfilehash: 968e24b0441575be7ef17aac8ffaddb8fd16d3c6
 5. プロジェクトをビルドし、エラーがないことを確認します。
 
 > [!NOTE]
-> Xcode7 でビットコード サポートに関するビルド エラーが発生した場合は、Xcode の **[Build Settings (ビルド設定)]** > **[Enable Bitcode (ビットコードの有効化)]** (ENABLE_BITCODE) を **[NO (いいえ)]** に変更する必要があります。 Notification Hubs SDK は、現在ビットコードをサポートしていません。 
+> Xcode7 でビットコード サポートに関するビルド エラーが発生した場合は、Xcode の **[Build Settings (ビルド設定)]** > **[Enable Bitcode (ビットコードの有効化)]** \(ENABLE_BITCODE) を **[NO (いいえ)]** に変更する必要があります。 Notification Hubs SDK は、現在ビットコードをサポートしていません。 
 > 
 > 
 
