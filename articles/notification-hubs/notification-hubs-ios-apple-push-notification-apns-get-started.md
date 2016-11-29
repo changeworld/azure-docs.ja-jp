@@ -437,7 +437,7 @@ iOS でプッシュ通知をテストするには、物理 iOS デバイスに�
     ![iOS App Push Notification Receive Test][35]
 
 ## <a name="next-steps"></a>次のステップ
-この簡単な例では、すべての登録済み iOS デバイスにプッシュ通知をブロードキャストしました。 学習の次のステップとして、「[Azure Notification Hubs Notify Users for iOS with .NET backend (Azure Notification Hubs と .NET バックエンドによる iOS ユーザーへの通知)]」に進むことをお勧めします。このチュートリアルでは、バックエンドを作成し、タグを使用してプッシュ通知を送信する方法について説明しています。 
+この簡単な例では、すべての登録済み iOS デバイスにプッシュ通知をブロードキャストしました。 学習の次のステップとして、「[Azure Notification Hubs と .NET バックエンドによる iOS ユーザーへの通知]」に進むことをお勧めします。このチュートリアルでは、バックエンドを作成し、タグを使用してプッシュ通知を送信する方法について説明しています。 
 
 対象グループごとにユーザーを区分する場合は、チュートリアル「 [Notification Hubs を使用したニュース速報の送信] 」もご覧ください。 
 
@@ -465,7 +465,7 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 [Mobile Services iOS SDK バージョン 1.2.4]: http://aka.ms/kymw2g
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
 [アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
 [Mobile Services の使用]: /develop/mobile/tutorials/get-started-ios
@@ -478,7 +478,7 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 [Azure Notification Hubs と .NET バックエンドによる iOS ユーザーへの通知]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 
-[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド) (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Azure ポータル]: https://portal.azure.com
 
 
