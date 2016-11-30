@@ -85,7 +85,7 @@ ms.openlocfilehash: 968e24b0441575be7ef17aac8ffaddb8fd16d3c6
     ![Xcode - project options][11]
 3. **[Target (ターゲット)]** でプロジェクト名をクリックし、**[Build Settings (ビルド設定)]** タブをクリックして **[Code Signing Identity (コード署名 ID)]** を展開し、**[Debug (デバッグ)]** でコード署名 ID を選択します。 **[Levels (レベル)]** を **[Basic (基本)]** から **[All (すべて)]** に切り替え、**[Provisioning Profile (プロビジョニング プロファイル)]** に、事前に作成したプロビジョニング プロファイルを設定します。
    
-    Xcode で作成した新しいプロビジョニング プロファイルが表示されない場合は、署名 ID のプロファイルを更新してみてください。 メニュー バーの **[Xcode]** をクリックし、**[Preference (ユーザー設定)]**、**[Account (アカウント)]** タブ、**[View Details (詳細の表示)]** ボタンの順にクリックします。次に、署名 ID をクリックし、右下隅にある更新ボタンをクリックします。
+    Xcode で作成した新しいプロビジョニング プロファイルが表示されない場合は、署名 ID のプロファイルを更新してみてください。 メニュー バーの **Xcode** をクリックし、**[Preference (ユーザー設定)]**、**[Account (アカウント)]** タブ、**[View Details (詳細の表示)]** ボタンの順にクリックします。次に、署名 ID をクリックし、右下隅にある更新ボタンをクリックします。
    
        ![Xcode - provisioning profile][9]
 4. [Mobile Services iOS SDK バージョン 1.2.4] をダウンロードしてファイルを解凍します。 Xcode でプロジェクトを右クリックして **[Add Files to (ファイルの追加先)]** オプションをクリックし、Xcode プロジェクトに **WindowsAzureMessaging.framework** フォルダーを追加します。 **[Copy items if needed (必要に応じてアイテムをコピー)]** を選択し、**[Add (追加)]** をクリックします。
