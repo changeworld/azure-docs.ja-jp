@@ -3,8 +3,8 @@ title: "Resource Manager で PowerShell を使用してインターネットに�
 description: "Resource Manager で PowerShell を使用してインターネットに接続するロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 tags: azure-resource-manager
 ms.assetid: 8257f548-7019-417f-b15f-d004a1eec826
 ms.service: load-balancer
@@ -13,7 +13,7 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
-ms.author: sewhee
+ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: 1a1c3c15c51b1e441f21158510e92cc8de057352
 ms.openlocfilehash: d489573e9a3efceb5bf8a4d6a7e0284c61bc24e9

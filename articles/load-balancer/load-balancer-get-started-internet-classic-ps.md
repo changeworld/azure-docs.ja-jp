@@ -3,8 +3,8 @@ title: "PowerShell を使用したインターネットに接続するロード 
 description: "PowerShell を使用し、インターネットに接続するクラシック モードのロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 tags: azure-service-management
 ms.assetid: 73e8bfa4-8086-4ef0-9e35-9e00b24be319
 ms.service: load-balancer
@@ -13,7 +13,7 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2016
-ms.author: sewhee
+ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
 ms.openlocfilehash: 16ebe82b866565f676fb33bfa915465c08a5ea89

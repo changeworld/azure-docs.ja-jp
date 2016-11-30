@@ -3,8 +3,8 @@ title: "インターネットに接続するクラシック デプロイメン�
 description: "インターネットに接続するクラシック デプロイ モデルのロード バランサー (クラウド サービス用) を作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 tags: azure-service-management
 ms.assetid: 0bb16f96-56a6-429f-88f5-0de2d0136756
 ms.service: load-balancer
@@ -13,7 +13,7 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/17/2016
-ms.author: sewhee
+ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
 ms.openlocfilehash: 6a471050a03c8399b0715c331b54636c68fd71cb
