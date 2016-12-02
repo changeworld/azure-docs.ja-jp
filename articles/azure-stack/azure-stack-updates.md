@@ -2,11 +2,11 @@
 title: Updates in Azure Stack | Microsoft Docs
 description: Learn about updates in Azure Stack
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: HeathL17
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 9b0781f4-2cd5-4619-a9b1-59182b4a6e43
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: Helaw
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 56fe2aa646ef51a671bf260663e87dfa26ef2521
+
 
 ---
 # <a name="updates-management-in-azure-stack"></a>Updates management in Azure Stack
@@ -31,6 +35,9 @@ Technical Preview 2 introduces a preview of the experience for managing Azure St
 * [Understand deployment prerequisites](azure-stack-deploy.md)
 * [Deploy Azure Stack](azure-stack-run-powershell-script.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

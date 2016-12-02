@@ -1,22 +1,26 @@
 ---
-title: Install PowerShell and connect | Microsoft Docs
+title: Connect to Azure Stack with PowerShell | Microsoft Docs
 description: Learn how to manage Azure Stack with PowerShell
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: HeathL17
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: de418dfa-6f33-407e-b001-42166cf71014
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 10/19/2016
 ms.author: helaw
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8b2761f89c4505237d69338743bf45a20928ac0a
+
 
 ---
-# <a name="install-powershell-and-connect"></a>Install PowerShell and connect
+# <a name="install-powershell-and-connect-to-azure-stack"></a>Install PowerShell and connect to Azure Stack
 In this guide, we walk through the steps for connecting to Azure Stack with PowerShell. Once completed, these steps can also help you manage and deploy resources.
 
 ## <a name="install-azure-stack-powershell-cmdlets"></a>Install Azure Stack PowerShell cmdlets
@@ -38,7 +42,7 @@ In this guide, we walk through the steps for connecting to Azure Stack with Powe
        Get-Command -Module AzureRM.AzureStackAdmin
 
 ## <a name="connect-to-azure-stack"></a>Connect to Azure Stack
-A module is available for download which handles configuring the PowerShell connection to Azure Stack for you.  Visit [Azure Stack Tools](http://aka.ms/ConnectToAzureStackPS) for the module and additional steps. 
+A module is available for download that handles configuring the PowerShell connection to Azure Stack for you.  Visit [Azure Stack Tools](http://aka.ms/ConnectToAzureStackPS) for the module and additional steps. 
 
 ## <a name="retrieve-a-list-of-subscriptions"></a>Retrieve a list of subscriptions
 In this section, you verify PowerShell cmdlets are running against Azure Stack by retrieving and selecting a subscription for use.
@@ -55,6 +59,9 @@ Run the following command to retrieve a list of Azure Stack subscriptions associ
 
 [Deploy templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

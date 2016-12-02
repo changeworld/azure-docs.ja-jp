@@ -2,11 +2,11 @@
 title: Deploy templates with the command line in Azure Stack | Microsoft Docs
 description: Learn how to use the cross-platform command line interface (CLI) to deploy templates from inside the ClientVM or after using the VPN to connect to Azure Stack.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: heathl17
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 9584177f-4af3-4834-864d-930b09ae0995
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: helaw
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b9af860ad2a6b97d4ae38037c088a6f77a4d4c2e
+
 
 ---
 # <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>Deploy templates in Azure Stack using the command line
@@ -39,6 +43,9 @@ To see this resource group and storage account, use the following commands:
 ## <a name="next-steps"></a>Next steps
 [Manage user permissions](azure-stack-manage-permissions.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

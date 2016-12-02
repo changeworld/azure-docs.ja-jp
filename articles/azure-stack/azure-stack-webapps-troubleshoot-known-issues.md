@@ -2,11 +2,11 @@
 title: Web Apps on Azure Stack - Known Issues and Troubleshooting | Microsoft Docs
 description: Detailed guidance for deploying Web Apps in Azure Stack
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: apwestgarth
 manager: stefsch
-editor: ''
-
+editor: 
+ms.assetid: 8469e3f3-fa2f-41cc-8e3e-0fb771dc3f2f
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: anwestg
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5ea5f9a751e0a539d6c5ac445415815cd6c0612c
+
 
 ---
 # <a name="web-apps-resource-provider---known-issues-and-troubleshooting"></a>Web Apps Resource Provider - Known Issues and Troubleshooting
@@ -55,6 +59,6 @@ If you encounter other issues with Web Apps on Azure Stack please post in [the A
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

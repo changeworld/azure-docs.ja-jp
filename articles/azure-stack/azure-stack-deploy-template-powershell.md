@@ -2,18 +2,22 @@
 title: Deploy templates with PowerShell in Azure Stack | Microsoft Docs
 description: Learn how to deploy a virtual machine using a Resource Manager template and PowerShell.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: heathl17
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 12fe32d7-0a1a-4c02-835d-7b97f151ed0f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 11/18/2016
 ms.author: helaw
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 01a3a508e7abc1aea2c3797be9c97182d57ea16d
+
 
 ---
 # <a name="deploy-templates-in-azure-stack-using-powershell"></a>Deploy templates in Azure Stack using PowerShell
@@ -50,13 +54,16 @@ The VHD used in this example template is a default marketplace image (WindowsSer
    ```
 3. Open the Azure Stack portal, click **Browse**, click **Virtual machines**, and look for your new virtual machine (*myDeployment001*).
 
-## <a name="video-example:-hybrid-virtual-machine-deployment"></a>Video example: hybrid virtual machine deployment
-[!VIDEO https://channel9.msdn.com/Blogs/azurestack/Microsoft-Azure-Stack-TP1-POC-Hybrid-VM-Deployment/player]
+## <a name="video-example-hybrid-virtual-machine-deployment"></a>Video example: hybrid virtual machine deployment
+>[!VIDEO https://channel9.msdn.com/Blogs/azurestack/Microsoft-Azure-Stack-TP1-POC-Hybrid-VM-Deployment/player]
 
 
 ## <a name="next-steps"></a>Next steps
 [Deploy templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
