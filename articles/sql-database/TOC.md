@@ -111,7 +111,7 @@
 ### 詳細情報
 #### [概要](sql-database-business-continuity.md)
 #### [データベースのバックアップ](sql-database-automated-backups.md)
-#### [長期的な保持](sql-database-long-term-retention.md) 
+#### [長期保存](sql-database-long-term-retention.md)
 #### [バックアップを使用したデータベースの復元](sql-database-recovery-using-backups.md)
 #### [障害復旧の認証要件](sql-database-geo-replication-security-config.md)
 #### [ビジネス継続性の設計シナリオ](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
@@ -220,7 +220,7 @@
 #### [Add Azure AD 認証](sql-database-aad-authentication.md)
 #### [多要素認証](sql-database-ssms-mfa-authentication.md)
 ### ファイアウォール規則
-#### [[アクセス ポリシー]](sql-database-configure-firewall-settings.md)
+#### [Azure ポータル](sql-database-configure-firewall-settings.md)
 #### [PowerShell](sql-database-configure-firewall-settings-powershell.md)
 #### [REST API](sql-database-configure-firewall-settings-rest.md)
 #### [T-SQL](sql-database-configure-firewall-settings-tsql.md)
@@ -358,8 +358,6 @@
 ## [BCP](https://msdn.microsoft.com/library/ms162802.aspx)
 ## [SQLCMD](https://msdn.microsoft.com/library/ms162773.aspx)
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
-
-
 
 
 <!--HONumber=Nov16_HO4-->

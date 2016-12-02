@@ -13,7 +13,7 @@
 ### [API 定義をインポートする](api-management-howto-import-api.md)
 ## バックエンドをセキュリティで保護する
 ### [AAD で Web API バックエンドを保護する](api-management-howto-protect-backend-with-aad.md)
-### [VPN または ExpressRoute 経由で接続する](api-management-howto-setup-vpn.md)
+### [仮想ネットワークに接続する](api-management-using-with-vnet.md)
 ### [相互証明書認証](api-management-howto-mutual-certificates.md)
 ## ポリシーを構成する
 ### [カスタム キャッシュ](api-management-sample-cache-by-key.md)
@@ -63,6 +63,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO5-->
 
 

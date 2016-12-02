@@ -79,7 +79,6 @@
 
 # トラブルシューティング
 ## [Azure Stack のトラブルシューティング](azure-stack-troubleshooting.md)
-## [Web Apps リソース プロバイダー](azure-stack-webapps-troubleshoot-known-issues.md)
 
 # リソース
 ## [ツール](azure-stack-tools-paas-services.md)

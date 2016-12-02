@@ -16,6 +16,7 @@
 ### [Marketplace](documentation-government-manage-marketplace.md)
 ### [パートナー向けの Marketplace](documentation-government-manage-marketplace-partners.md)
 ### [リソース マネージャー](documentation-government-manage-azure-resource-manager.md)
+### [Operations Management Suite](documentation-government-manage-oms.md)
 ### [サブスクリプション](documentation-government-manage-subscriptions.md)
 
 # リファレンス

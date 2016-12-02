@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 09/26/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 317d6980d304cc503cc43358c4b91459d4abd1ba
-ms.openlocfilehash: 6b08f27a27a31fcc665ab051438a962ddc711767
+ms.sourcegitcommit: 2bd363e3c22f4cf4daf2e0fa352fd4a131d1675f
+ms.openlocfilehash: 89db2c9f388b8a5496a306ba0a152ab57481ea50
 
 
 ---
 
 # <a name="create-a-linux-vm-using-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) を使用した Linux VM の作成
-この記事では、Azure CLI 2.0 (プレビュー) で [az vm create](/cli/azure/vm?branch=master#create) コマンドを使用して、Azure に Linux 仮想マシン (VM) をすばやくデプロイする方法を説明します。 
+この記事では、Azure CLI 2.0 (プレビュー) で [az vm create](/cli/azure/vm#create) コマンドを使用して、Azure に Linux 仮想マシン (VM) をすばやくデプロイする方法を説明します。 
 
 > [!NOTE] 
 > Azure CLI 2.0 (プレビュー) は、次世代マルチプラットフォーム CLI です。 試してみて、[GitHub プロジェクト ページ](https://github.com/Azure/azure-cli)でご意見をお聞かせください。
@@ -127,6 +127,6 @@ bin  boot  dev  etc  home  initrd.img  lib  lib64  lost+found  media  mnt  opt  
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

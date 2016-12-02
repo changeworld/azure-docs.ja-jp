@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 10/30/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 64d085bff08d9a824204851d32504fac3e79024c
+ms.sourcegitcommit: 7455d6f99ed8ceb401224f98105f7b651f55c724
+ms.openlocfilehash: 98bf94960c39565243995a1c4dd45787478b8f40
 
 
 ---
@@ -30,7 +30,7 @@ Site Recovery は、オンプレミスの仮想マシンと物理サーバーの
 プライマリ サイトで障害が発生した場合は、セカンダリ サイトにフェールオーバーして、ワークロードのアクセス性と可用性を維持します。 プライマリの場所が通常の動作に戻ると、その場所にフェールバックします。
 
 ## <a name="site-recovery-in-the-azure-portal"></a>Azure ポータルの Site Recovery
-Azure には、リソースの作成と操作に関して 2 種類の[デプロイメント モデル](../resource-manager-deployment-model.md)があります。 Azure Resource Manager モデルと、クラシック サービス管理モデルです。 Azure には、 [Azure クラシック ポータル](https://manage.windowsazure.com/)と [Azure Portal](https://portal.azure.com) の 2 つのポータルがあります。
+Azure には、リソースの作成と操作に関して 2 種類の[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)があります。 Azure Resource Manager モデルと、クラシック サービス管理モデルです。 Azure には、 [Azure クラシック ポータル](https://manage.windowsazure.com/)と [Azure Portal](https://portal.azure.com) の 2 つのポータルがあります。
 
 * Site Recovery は、このクラシック ポータルと Azure Portal の両方にデプロイできます。
 * Azure クラシック ポータルでは、クラシック サービス管理モデルで Site Recovery をサポートできます。
@@ -79,6 +79,6 @@ Site Recovery では、アプリケーション対応レプリケーションを
 
 
 
-<!-----HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

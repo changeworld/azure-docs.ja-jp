@@ -21,7 +21,7 @@
 ## [サンプル](service-bus-relay-samples.md)
 ## [ハイブリッド接続 .NET API](/dotnet/api/microsoft.servicebus)
 ## [WCF Relay .NET API](/dotnet/api/microsoft.servicebus)
-
+## [ポートの設定](service-bus-relay-port-settings.md)
 
 # リソース
 ## [ブログ](https://blogs.msdn.microsoft.com/servicebus/)
@@ -33,6 +33,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO5-->
 
 

@@ -7,16 +7,41 @@
 #### [要件を確認する](storsimple-ova-system-requirements.md)
 #### [制限について](storsimple-ova-limits.md)
 #### [ベスト プラクティスを確認する](storsimple-ova-best-practices.md)
-### デプロイ
+
+### デプロイ (Azure Portal)
+#### [デプロイの準備をする](storsimple-virtual-array-deploy1-portal-prep.md)
+##### [StorSimple Manager サービスをデプロイする](storsimple-virtual-array-manage-service.md)
+#### [Hyper-V でプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md)
+#### [VMware でプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md)
+#### [ファイル サーバーとして設定する](storsimple-virtual-array-deploy3-fs-setup.md)
+#### [iSCSI サーバーとして設定する](storsimple-virtual-array-deploy3-iscsi-setup.md)
+
+### デプロイ (クラシック ポータル)
 #### [デプロイの準備をする](storsimple-ova-deploy1-portal-prep.md)
-#### [StorSimple Manager サービスをデプロイする](storsimple-ova-manage-service.md)
+##### [StorSimple Manager サービスをデプロイする](storsimple-ova-manage-service.md)
 #### [Hyper-V でプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)
 #### [VMware でプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)
 #### [ファイル サーバーとして設定する](storsimple-ova-deploy3-fs-setup.md)
 #### [iSCSI サーバーとして設定する](storsimple-ova-deploy3-iscsi-setup.md)
 
 ## 方法
-### [Azure Portal で管理する](storsimple-ova-manager-service-administration.md)
+### [Azure Portal で管理する](storsimple-virtual-array-manager-service-administration.md)
+#### [最新の更新プログラムをインストールする](storsimple-virtual-array-install-update.md)
+#### [バックアップを作成および管理する](storsimple-virtual-array-backup.md)
+#### [バックアップから複製する](storsimple-virtual-array-clone.md)
+#### [フェールオーバーと DR](storsimple-virtual-array-failover-dr.md)
+#### [非アクティブ化および削除](storsimple-virtual-array-deactivate-and-delete-device.md)
+#### [共有を管理する](storsimple-virtual-array-manage-shares.md)
+#### [ボリュームを管理する](storsimple-virtual-array-manage-volumes.md)
+#### [サービスの概要を表示する](storsimple-virtual-array-service-summary.md)
+#### [デバイスの概要を表示する](storsimple-virtual-array-device-summary.md)
+#### [ストレージ アカウントを管理する](storsimple-virtual-array-manage-storage-accounts.md)
+#### [ACR を管理する](storsimple-virtual-array-manage-acrs.md)
+#### [ジョブを管理する](storsimple-virtual-array-manage-jobs.md)
+#### [デバイスのパスワードを変更する](storsimple-virtual-array-change-device-admin-password.md)
+#### [Windows Server ホストで MPIO を構成する](storsimple-virtual-array-configure-mpio-windows-server.md)
+
+### [Azure クラシック ポータルで管理する](storsimple-ova-manager-service-administration.md)
 #### [最新の更新プログラムをインストールする](storsimple-ova-install-update-01.md)
 #### [バックアップを作成および管理する](storsimple-ova-backup.md)
 #### [バックアップから復元する](storsimple-ova-restore.md)
@@ -61,7 +86,7 @@
 ##### [Azure の物理デバイス - Update 1](storsimple-deployment-walkthrough-u1.md)
 ##### [Azure の物理デバイス - 一般公開](storsimple-deployment-walkthrough.md)
 #### [Government ポータルの物理デバイス - 最新](storsimple-deployment-walkthrough-gov-u2.md)
-##### [Government ポータルの物理デバイス - 最新](storsimple-deployment-walkthrough-gov.md)
+##### [Government ポータルの物理デバイス - Update 1](storsimple-deployment-walkthrough-gov.md)
 #### [Azure の仮想デバイス](storsimple-virtual-device-u2.md)
 #### [StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)
 #### [SharePoint 用 StorSimple アダプター](storsimple-adapter-for-sharepoint.md)
@@ -113,9 +138,11 @@
 ##### [StorSimple Snapshot Manager で MMC アクションを使用する](storsimple-snapshot-manager-mmc-menu.md)
 
 ### ソリューションを構築する
-#### [分散されたグローバル名前空間](https://www.microsoft.com/download/details.aspx?id=45507)
 #### [Azure へのファイル サーバー DR を自動化する](storsimple-disaster-recovery-using-azure-site-recovery.md)
 #### [Express Route を使用した StorSimple](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
+#### [StorSimple と VMware](https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463)
+#### [StorSimple と Hyper-V](https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6)
+#### [分散されたグローバル名前空間](https://www.microsoft.com/download/details.aspx?id=45507)
 
 ### 監視
 #### [サービス ダッシュボードの使用](storsimple-service-dashboard.md)
@@ -160,7 +187,18 @@
 
 ## リファレンス
 ### [Azure PowerShell](/powershell/servicemanagement)
-### [StorSimple 用 Windows PowerShell のコマンドレット] (https://technet.microsoft.com/library/dn688168.aspx)
+### [StorSimple 用 Windows PowerShell のコマンドレット](https://technet.microsoft.com/library/dn688168.aspx)
+
+# StorSimple Data Manager (プライベート プレビュー)
+
+## Overview
+### [ソリューションとは](storsimple-data-manager-overview.md)
+
+## 作業開始
+### [StorSimple Data Manager の使用](storsimple-data-manager-ui.md)
+
+## 方法
+### [.NET を使用したデータの変換](storsimple-data-manager-dotnet-jobs.md)
 
 # 関連項目
 ## [StorSimple 5000 - 7000 シリーズ](http://onlinehelp.storsimple.com)
@@ -179,6 +217,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO5-->
 
 

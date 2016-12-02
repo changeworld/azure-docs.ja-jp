@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/06/2016
+ms.date: 11/16/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: b54a45ed9472cfc457649a0e32c82259d95c87f0
+ms.sourcegitcommit: 22156a9f3c5a57e10cad96661f50531b309c3a04
+ms.openlocfilehash: a25d394e83d7945f0ea50de1fc65a68a96190a34
 
 
 ---
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 例として Windows Server 2012 R2 Datacenter イメージを使用しますが、Azure では他にも使用可能なイメージが多数あります。 イメージの選択肢は、サブスクリプションによって異なります。 たとえば、 [MSDN サブスクライバー](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)はデスクトップ イメージをいくつか使用できます。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューで、**[新規]** > **[仮想マシン]** > **[Windows Server 2012 R2 Datacenter]** をクリックします。
+2. ハブ メニューで、**[新規]** > **[Compute]** > **[Windows Server 2012 R2 Datacenter]** の順にクリックします。
    
     ![ポータルで使用できる Azure VM イメージを示すスクリーンショット](./media/virtual-machines-windows-hero-tutorial/marketplace-new.png)
 3. **[Windows Server 2012 R2 Datacenter]** ブレードの **[デプロイ モデルの選択]** で、**[リソース マネージャー]** が選択されていることを確認します。 **[作成]**をクリックします。
@@ -95,6 +95,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

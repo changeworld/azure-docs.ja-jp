@@ -46,8 +46,8 @@
 ### [パーティション分割されたキューとトピックで AMQP を使用する](service-bus-partitioned-queues-and-topics-amqp-overview.md)
 ### [ペアの名前空間](service-bus-paired-namespaces.md)
 ### [自動転送によるエンティティのチェーン](service-bus-auto-forwarding.md)
-## [管理]
-### [ARM テンプレートの使用](service-bus-resource-manager-overview.md)
+## 管理
+### [Azure Resource Manager テンプレートを使用する](service-bus-resource-manager-overview.md)
 ### [PowerShell を使用したエンティティのプロビジョニング](service-bus-powershell-how-to-provision.md)
 
 # リファレンス
@@ -57,6 +57,10 @@
 ## [クォータ](service-bus-quotas.md)
 ## [.NET](/dotnet/api/)
 ## [REST ()](/rest/api/servicebus/)
+## [SQLFilter 構文](service-bus-messaging-sql-filter.md)
+## [SQLRuleAction 構文](service-bus-messaging-sql-rule-action.md)
+## [AMQP1.0 プロトコル ガイド](service-bus-amqp-protocol-guide.md)
+### [AMQP 1.0 要求応答ベースの操作](service-bus-amqp-request-response.md)
 
 # リソース
 ## [ブログ](https://blogs.msdn.microsoft.com/servicebus/)
@@ -69,6 +73,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO5-->
 
 

@@ -2,35 +2,32 @@
 <!--
 includes/sql-database-create-new-server-firewall-portal.md
 
-Latest Freshness check:  2016-08-01 , rickbyh.
+Latest Freshness check:  2016-11-28 , rickbyh.
 
 As of circa 2016-04-11, the following topics might include this include:
 articles/sql-database/sql-database-get-started-tutorial.md
 articles/sql-database/sql-database-configure-firewall-settings
 
 -->
-## <a name="create-a-new-azure-sql-serverlevel-firewall"></a>新しい Azure SQL Server レベル ファイアウォールを作成する
+## <a name="create-a-new-azure-sql-server-level-firewall"></a>新しい Azure SQL Server レベル ファイアウォールを作成する
 次の手順に従い、Azure ポータルで、個々の IP アドレス (クライアント コンピューター) または IP アドレスの範囲全体から SQL Database 論理サーバーに接続できるようなサーバーレベルのファイアウォール規則を作成します。
 
 1. [Azure Portal](http://portal.azure.com)に接続していない場合は接続します。
 2. 既定のブレードで、 **[SQL Server]**をクリックします。
    
       ![New server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-1.png)
-3. **[SQL Server]** ブレードで、ファイアウォール規則を作成するサーバーをクリックします。
+3. **[SQL Server]** ブレードで、作成するファイアウォール規則の対象となるサーバーをクリックします。
    
      ![New server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-2.png)
-4. サーバーのプロパティを確認します。
+4. サーバーのプロパティを確認し、**[ファイアウォール]** をクリックします。
    
      ![New server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-3.png)
-5. **[設定]** ブレードで **[ファイアウォール]** をクリックします。
-   
-     ![New server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-4.png)
    
    > [!NOTE]
    > サーバーレベルの **[ファイアウォール設定]** ブレードには、**[データベース]** ブレードのツール バーからアクセスすることもできます。
-   > 
-   > 
-6. **[クライアント IP の追加]** をクリックすると、Azure でそのクライアント IP アドレスの規則が作成されます。
+    
+    
+6. **[クライアント IP の追加]** をクリックすると、規則のボックスに IP アドレスが入力されます。
    
       ![New server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-5.png)
 7. 必要に応じて、IP アドレスの範囲にアクセスできるように、追加した IP アドレスをクリックしてファイアウォール アドレスを編集します。
@@ -47,6 +44,6 @@ articles/sql-database/sql-database-configure-firewall-settings
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 
