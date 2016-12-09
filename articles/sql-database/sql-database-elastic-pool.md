@@ -1,38 +1,42 @@
 ---
-title: Azure エラスティック プールの概要 | Microsoft Docs
-description: プールを使用して数百または数千のデータベースを管理します。 一連のパフォーマンス ユニットの単一価格をプール上で配布できます。 データベースは自由に内外に移動できます。
-keywords: エラスティック データベース、SQL データベース
+title: "Azure エラスティック プールの概要 | Microsoft Docs"
+description: "プールを使用して数百または数千のデータベースを管理します。 一連のパフォーマンス ユニットの単一価格をプール上で配布できます。 データベースは自由に内外に移動できます。"
+keywords: "エラスティック データベース、SQL データベース"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.devlang: NA
-ms.date: 07/12/2016
+ms.date: 11/15/2016
 ms.author: CarlRabeler
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
+translationtype: Human Translation
+ms.sourcegitcommit: 5b800e157264764d69b4fed94d960120a2395367
+ms.openlocfilehash: 316d40aebdfff379aa007f56472a6596f9eb808d
+
 
 ---
-# <a name="what-is-an-azure-elastic-pool?"></a>Azure エラスティック プールの概要
+# <a name="what-is-an-azure-elastic-pool"></a>Azure エラスティック プールの概要
 SQL DB エラスティック プールは、多種多様な予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理するための、簡単でコスト効率に優れたソリューションを提供します。
 
 > [!NOTE]
 > エラスティック プールは、現在プレビュー段階にあるインド西部を除くすべての Azure リージョンで一般公開 (GA) されています。  エラスティック プールは、このリージョンでもできるだけ早く一般公開される予定です。
-> 
-> 
+>
+>
 
 ## <a name="how-it-works"></a>動作のしくみ
 SaaS アプリケーションの一般的なパターンは、シングル テナント データベース モデルであり、顧客ごとにそれぞれ異なるデータベースが割り当てられます。 各顧客 (データベース) のメモリ、IO、CPU のリソース要件は予測することができません。 このように需要の浮き沈みがある中で、コスト効率よくリソースを割り当てるには、どうしたらよいでしょうか。 従来、(1) ピーク時の使用量に基づくリソースの過剰プロビジョニングと、(2) ピーク時のパフォーマンスと顧客満足度を犠牲にしてコストを削減する過小プロビジョニングの 2 つの選択肢がありました。 エラスティック プールは、データベースが必要なパフォーマンス リソースを必要なときに確保できるようにすることで、この問題を解決します。 また、予測可能な予算の範囲内でシンプルなリソース割り当てメカニズムが提供されます。 エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
-> 
-> 
+>
+>
 
-SQL Database では、リソースの需要に対処するデータベースの能力の相対尺度は、単一のデータベースのデータベース トランザクション ユニット (DTU) とエラスティック プール内のエラスティック データベースの エラスティック DTU (eDTU) で表されます。 DTU と eDTU の詳細については、 [SQL Database の概要](sql-database-technical-overview.md#understand-dtus) に関するページをご覧ください。
+SQL Database では、リソースの需要に対処するデータベースの能力の相対尺度は、単一のデータベースのデータベース トランザクション ユニット (DTU) とエラスティック プール内のエラスティック データベースの エラスティック DTU (eDTU) で表されます。 DTU と eDTU の詳細については、 [SQL Database の概要](sql-database-technical-overview.md) に関するページをご覧ください。
 
 プールには、設定価格に合わせて、設定された eDTU 数が与えられます。 プール内で、個々のデータベースには、設定されたパラメーターの範囲内で自動的にスケーリングを行う柔軟性が与えられます。 データベースは負荷が大きい場合、eDTU の使用量を増やして需要に対応します。 負荷が小さい場合、データベースは eDTU の使用量を減らし、負荷がなくなると eDTU を使用しません。 Single Database ではなく、プール全体に対してリソースをプロビジョニングすることで、管理タスクの簡略化を実現します。 さらに、プールにかかる予算を予測することができます。
 
@@ -40,19 +44,25 @@ SQL Database では、リソースの需要に対処するデータベースの�
 
 プールへのデータベースの追加、またはプールからの削除ができます。 データベースのリソース使用率が低いと予測できる場合は、プールから削除します。
 
-## <a name="which-databases-go-in-a-pool?"></a>どのデータベースをプールに移動しますか?
+## <a name="which-databases-go-in-a-pool"></a>どのデータベースをプールに移動しますか?
 ![エラスティック データベース プール内で eDTU を共有する SQL データベース][1]
 
 エラスティック プールの候補として最適であるデータベースには通常、決まった期間のアクティビティがあり、その他の期間はアイドル状態です。 上図は、1 つのデータベース、4 つのデータベース、20 のデータベースによるエラスティック プールのアクティビティをそれぞれ示しています。 これらのデータベースは時間の経過と共にさまざまなアクティビティを行いますが、同時にアクティブにならず、eDTU を共有できるため、エラスティック プールの候補として最適です。 すべてのデータベースが、このパターンに適合するわけではありません。 リソースに常に一定の負荷があるデータベースは、リソースが個別に割り当てられる Basic、Standard、Premium サービス階層に適しています。
 
 [エラスティック プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)。
 
-## <a name="edtu-and-storage-limits-for-elastic-pools-and-elastic-databases."></a>エラスティック プールとエラスティック データベースの eDTU と記憶域の上限。
+## <a name="edtu-and-storage-limits-for-elastic-pools-and-elastic-databases"></a>エラスティック プールとエラスティック データベースの eDTU と記憶域の上限
+
+次の表では、Basic、Standard、および Premium のエラスティック データベース プールの特性について説明します。
+
 [!INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
 エラスティック プールのすべての DTU が使用されている場合は、プール内の各データベースが、同量のリソースを受け取ってクエリを処理します。  SQL Database サービスは、コンピューティング時間を均等にすることで、データベース間におけるリソース共有の公平性を実現します。 それ以外の場合、エラスティック プールのリソース共有の公平性は、データベースあたりの DTU分が 0 以外の値に設定されているときに、リソース量に加えて各データベースに適用されることが保証されます。
 
 ## <a name="elastic-pool-and-elastic-database-properties"></a>エラスティック プールとエラスティック データベースのプロパティ
+
+次の表では、エラスティック プールとエラスティック データベースの上限について説明します。
+
 ### <a name="limits-for-elastic-pools"></a>エラスティック プールに関する制限事項
 | プロパティ | Description |
 |:--- |:--- |
@@ -74,7 +84,7 @@ SQL Database では、リソースの需要に対処するデータベースの�
 ## <a name="elastic-database-jobs"></a>エラスティック データベース ジョブ
 プールでは、**[エラスティック ジョブ](sql-database-elastic-jobs-overview.md)**でスクリプトを実行することで、管理タスクが簡素化されます。 エラスティック データベース ジョブを使用すると、大量のデータベースに関連する面倒な作業のほとんどが不要になります。 まず、「 [Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md)」をご覧ください。
 
-他のツールの詳細については、 [エラスティック データベース ツールの学習マップ](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)に関する記事をご覧ください。
+その他のエラスティック データベース ツールの詳細については、「[Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
 ## <a name="business-continuity-features-for-databases-in-a-pool"></a>プール内のデータベースのビジネス継続性機能
 エラスティック データベースは、一般的に、V12 サーバーの単一のデータベースで使用できるのと同じ [ビジネス継続性機能](sql-database-business-continuity.md) をサポートしています。
@@ -83,19 +93,19 @@ SQL Database では、リソースの需要に対処するデータベースの�
 ポイントインタイム リストアは、自動データベース バックアップを使用して、プール内のデータベースを特定の時点に復元します。 「 [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 ### <a name="geo-restore"></a>地理リストア
-Geo リストアは、データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合にも既定の復旧オプションを提供します。 「 [Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](sql-database-disaster-recovery.md) 
+Geo リストアは、データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合にも既定の復旧オプションを提供します。 「 [Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](sql-database-disaster-recovery.md)
 
 ### <a name="active-geo-replication"></a>アクティブ geo レプリケーションを選択するとき
 geo リストアよりもアグレッシブな復旧要件があるアプリケーションについては、[Azure Portal](sql-database-geo-replication-portal.md)、[PowerShell](sql-database-geo-replication-powershell.md)、または [Transact-SQL](sql-database-geo-replication-transact-sql.md) を使用して、アクティブ geo レプリケーションを構成します。
 
 ## <a name="additional-resources"></a>その他のリソース
-* [エラスティック データベース機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) 
+* [エラスティック データベース機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
