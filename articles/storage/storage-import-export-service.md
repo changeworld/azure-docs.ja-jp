@@ -247,29 +247,41 @@ Azure Import/Export クライアント ツールを使用してハード ディ�
 
 最初のコピー セッションでディレクトリをコピーする際に使用する、Azure Import/Export クライアント ツールの PrepImport コマンドを次に示します。
 
-    WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]
+```
+WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]
+```
 
 **例:**
 
 次の例では、H:\Video のすべてのファイルとサブディレクトリを、X: にマウントされたハード ディスク ドライブにコピーします。 データは、ストレージ アカウント キーで指定されたコピー先ストレージ アカウントと、video/ というストレージ コンテナーにインポートされます。 ストレージ コンテナーが存在しない場合は作成されます。 このコマンドでは、ターゲット ハード ディスク ドライブのフォーマットと暗号化も実行されます。
 
-    WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:storageaccountkey /t:x /format /encrypt /srcdir:H:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt
+```
+WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:storageaccountkey /t:x /format /encrypt /srcdir:H:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt
+```
 
 後続のコピー セッションでディレクトリをコピーする際に使用する、Azure Import/Export クライアント ツールの PrepImport コマンドを次に示します。
 
-    WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]
+```
+WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]
+```
 
 同じハード ディスク ドライブに対する後続のコピー セッションでは、同じジャーナル ファイル名を指定し、新しいセッション ID を指定します。ストレージ アカウント キーとターゲット ドライブを再指定する必要はありません。ドライブのフォーマットと暗号化も不要です。 次の例では、H:\Photo フォルダーとそのサブディレクトリを同じターゲット ドライブの photo というストレージ コンテナーにコピーします。
 
-    WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Photo /srcdir:H:\Photo /dstdir:photo/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt
+```
+WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Photo /srcdir:H:\Photo /dstdir:photo/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt
+```
 
 最初のコピー セッションでファイルをコピーする際に使用する、Azure Import/Export クライアント ツールの PrepImport コマンドを次に示します。
 
-    WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcfile:<SourceFile> /dstblob:<DestinationBlobPath> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]
+```
+WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcfile:<SourceFile> /dstblob:<DestinationBlobPath> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]
+```
 
 後続のコピー セッションでファイルをコピーする際に使用する、Azure Import/Export クライアント ツールの PrepImport コマンドを次に示します。
 
-    WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /srcfile:<SourceFile> /dstblob:<DestinationBlobPath> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]
+```
+WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /srcfile:<SourceFile> /dstblob:<DestinationBlobPath> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]
+```
 
 **注意**: 既定では、データはブロック BLOB としてインポートされます。 /BlobType パラメーターを使用すると、データをページ BLOB としてインポートできます。 たとえば、Azure VM にディスクとしてマウントされる VHD ファイルをインポートする場合は、ページ BLOB としてインポートする必要があります。 使用する BLOB の種類がわからない場合は、/blobType:auto を指定すると、適切な種類を判断する際に役立ちます。 この例では、すべての vhd ファイルと vhdx ファイルがページ BLOB としてインポートされ、それ以外のファイルはブロック BLOB としてインポートされます。
 

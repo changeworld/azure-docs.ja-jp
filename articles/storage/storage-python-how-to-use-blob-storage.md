@@ -3,8 +3,8 @@ title: "Python から Azure Blob Storage (オブジェクト ストレージ) �
 description: "Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 services: storage
 documentationcenter: python
-author: tamram
-manager: carmonm
+author: mmacy
+manager: timlt
 editor: tysonn
 ms.assetid: 0348e360-b24d-41fa-bb12-b8f18990d8bc
 ms.service: storage
@@ -12,8 +12,8 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 11/28/2016
-ms.author: tamram
+ms.date: 12/08/2016
+ms.author: marsma
 translationtype: Human Translation
 ms.sourcegitcommit: 963bf66d71a5c3eb2bf4ec8449e342ff1da782a8
 ms.openlocfilehash: d54a3d812051869e70102c19674292fe9edbf248
