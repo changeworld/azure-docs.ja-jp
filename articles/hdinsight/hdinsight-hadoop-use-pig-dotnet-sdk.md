@@ -1,41 +1,41 @@
 ---
-title: HDInsight で Hadoop Pig と .NET の使用 | Microsoft Docs
-description: .NET SDK for Hadoop を使用して HDInsight で Hadoop に Pig ジョブを送信する方法を説明します。
+title: "HDInsight での Hadoop Pig と .NET の使用 | Microsoft Docs"
+description: ".NET SDK for Hadoop を使用して HDInsight で Hadoop に Pig ジョブを送信する方法を説明します。"
 services: hdinsight
 documentationcenter: .net
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: fa11d49a-328c-47e7-b16d-e7ed2a453195
 ms.service: hdinsight
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2016
+ms.date: 10/17/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 46acf298a489aae34866c90126f3df00fd10c6e3
+
 
 ---
-# HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
-[!INCLUDE [pig セレクター](../../includes/hdinsight-selector-use-pig.md)]
+# <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
+[!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
 このドキュメントでは、.NET SDK for Hadoop を使用して HDInsight クラスターで Hadoop に Pig ジョブを送信する方法の例を紹介します。
 
-HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。Pig では、一連のデータ変換をモデル化することで MapReduce 操作を作成できます。基本的な C# アプリケーションを使用して、Pig ジョブを HDInsight クラスターに送信する方法を説明します。
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。 Pig では、一連のデータ変換をモデル化することで MapReduce 操作を作成できます。 基本的な C# アプリケーションを使用して、Pig ジョブを HDInsight クラスターに送信する方法を説明します。
 
-[!INCLUDE [azure-portal](../../includes/hdinsight-azure-portal.md)]
-
-* [HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行](hdinsight-hadoop-use-pig-dotnet-sdk-v1.md)
-
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * Azure HDInsight (HDInsight の Hadoop) クラスター (Windows または Linux ベース)
 * Visual Studio 2012/2013/2015
 
-## アプリケーションを作成する
-HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。
+## <a name="create-the-application"></a>アプリケーションを作成する
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。 
 
 1. Visual Studio 2012 または 2013 を開く
 2. **[ファイル]** メニューから **[新規]**、**[プロジェクト]** の順に選択します。
@@ -64,7 +64,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 6. コンソールで次のコマンドを実行して、.NET SDK パッケージをインストールします。
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
-7. ソリューション エクスプローラーで **Program.cs** をダブルクリックして、このファイルを開きます。既存のコードを次のコードに置き換えます。
+7. ソリューション エクスプローラーで **Program.cs** をダブルクリックして、このファイルを開きます。 既存のコードを次のコードに置き換えます。
    
         using Microsoft.Azure.Management.HDInsight.Job;
         using Microsoft.Azure.Management.HDInsight.Job.Models;
@@ -119,10 +119,10 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 8. **F5** キーを押してアプリケーションを起動します。
 9. **ENTER** キーを押してアプリケーションを閉じます。
 
-## 概要
+## <a name="summary"></a>概要
 このように、.NET SDK for Hadoop では、Pig ジョブを HDInsight クラスターに送信する .NET アプリケーションを作成し、ジョブの状態を監視できます。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 HDInsight での Pig に関する全般的な情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
@@ -134,4 +134,8 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

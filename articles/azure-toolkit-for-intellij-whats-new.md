@@ -1,12 +1,12 @@
 ---
-title: Azure Toolkit for IntelliJ の新機能 | Microsoft Docs
-description: Azure Toolkit for IntelliJ の最新の機能について説明します。
-services: ''
+title: "Azure Toolkit for IntelliJ の新機能 | Microsoft Docs"
+description: "Azure Toolkit for IntelliJ の最新の機能について説明します。"
+services: 
 documentationcenter: java
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 46ed791f-df59-416a-809e-f52345ad973c
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: multiple
@@ -14,6 +14,10 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/01/2016
 ms.author: robmcm;asirveda;martinsawicki
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3ed0ef3d245ff8b5cddc2e26bc8574bf4ae67bec
+
 
 ---
 # <a name="whats-new-in-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ の新機能
@@ -84,6 +88,6 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

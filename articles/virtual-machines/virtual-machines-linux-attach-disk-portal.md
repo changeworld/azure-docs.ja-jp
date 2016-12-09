@@ -1,13 +1,13 @@
 ---
-title: データ ディスクを Linux VM に接続する | Microsoft Docs
-description: Azure ポータルでリソース マネージャー デプロイ モデルを使用して、新規または既存のデータ ディスクを Linux VM に接続する方法。
+title: "データ ディスクを Linux VM に接続する | Microsoft Docs"
+description: "Azure ポータルでリソース マネージャー デプロイ モデルを使用して、新規または既存のデータ ディスクを Linux VM に接続する方法。"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,20 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 743f6abb871bdc4f65f302f0c1efdc4603c52626
+
 
 ---
-# Azure ポータルで Linux VM にデータ ディスクを接続する方法
-この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。[Azure ポータルで Windows VM にデータ ディスクを接続する](virtual-machines-windows-attach-disk-portal.md)こともできます。接続する前に、次のヒントを確認してください。
+# <a name="how-to-attach-a-data-disk-to-a-linux-vm-in-the-azure-portal"></a>Azure ポータルで Linux VM にデータ ディスクを接続する方法
+この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。 接続する前に、次のヒントを確認してください。
 
-* 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。
-* Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
-* 仮想マシンに接続されているディスクは、実際には Azure ストレージ アカウントの .vhd ファイルです。詳細については、[仮想マシン用のディスクと VHD](virtual-machines-linux-about-disks-vhds.md) に関するページを参照してください。
+* 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、「 [仮想マシンのサイズ](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+* Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。 これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。 Premium Storage は特定のリージョンで使用できます。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
+* 仮想マシンに接続されているディスクは、実際には Azure ストレージ アカウントの .vhd ファイルです。 詳細については、 [仮想マシン用のディスクと VHD](virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 * 新しいディスクの場合、接続時に Azure で自動的に作成されるので、最初に作成する必要はありません。
-* 既存のディスクの場合、Azure ストレージ アカウントで .vhd ファイルを使用できる必要があります。別の仮想マシンに接続されていない場合は既存の .vhd を使用できます。そうでなければ、独自の .vhd ファイルをストレージ アカウントにアップロードできます。
+* 既存のディスクの場合、Azure ストレージ アカウントで .vhd ファイルを使用できる必要があります。 別の仮想マシンに接続されていない場合は既存の .vhd を使用できます。そうでなければ、独自の .vhd ファイルをストレージ アカウントにアップロードできます。
 
 [!INCLUDE [virtual-machines-common-attach-disk-portal](../../includes/virtual-machines-common-attach-disk-portal.md)]
 
-## 次のステップ
-ディスクを追加した後、使用できるように準備する必要があります。この[記事](virtual-machines-linux-classic-attach-disk.md#how-to-initialize-a-new-data-disk-in-linux)の仮想マシンのオペレーティング システムの「方法: Linux での新しいデータ ディスクの初期化」を参照してください。
+## <a name="next-steps"></a>次のステップ
+ディスクを追加した後、使用できるように準備する必要があります。 この[記事](virtual-machines-linux-classic-attach-disk.md#initialize-a-new-data-disk-in-linux)の仮想マシンのオペレーティング システムの「方法: Linux での新しいデータ ディスクの初期化」を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

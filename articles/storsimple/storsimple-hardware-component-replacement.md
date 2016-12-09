@@ -1,12 +1,12 @@
 ---
-title: StorSimple のハードウェア コンポーネントの交換 | Microsoft Docs
-description: StorSimple デバイスの PCM、バッテリ、コントローラー モジュール、EBOD コントローラー、ディスク ドライブ、およびシャーシを安全に交換する方法について説明します。
+title: "StorSimple のハードウェア コンポーネントの交換 | Microsoft Docs"
+description: "StorSimple デバイスの PCM、バッテリ、コントローラー モジュール、EBOD コントローラー、ディスク ドライブ、およびシャーシを安全に交換する方法について説明します。"
 services: storsimple
-documentationcenter: ''
+documentationcenter: 
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: e8087ba7-0b66-4f59-8988-e53aad52ee21
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/11/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 50df20f1f84f570cec1261e14028f3a700871dac
+
 
 ---
 # <a name="storsimple-hardware-component-replacement"></a>StorSimple のハードウェア コンポーネントの交換
@@ -131,6 +135,9 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 ## <a name="next-steps"></a>次のステップ
 StorSimple のハードウェア コンポーネントを交換する前に、すべての [安全に関する情報](storsimple-safety.md) を確認します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

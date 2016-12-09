@@ -1,12 +1,12 @@
 ---
-title: Java を使用した HDInsight の Storm での Event Hubs のイベントの処理 | Microsoft Docs
-description: Maven で作成した Java Storm トポロジを使用して Event Hubs を処理する方法について説明します。
+title: "Java を使用した HDInsight の Storm での Event Hubs のイベントの処理 | Microsoft Docs"
+description: "Maven で作成した Java Storm トポロジを使用して Event Hubs を処理する方法について説明します。"
 services: hdinsight,notification hubs
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 453fa7b0-c8a6-413e-8747-3ac3b71bed86
 ms.service: hdinsight
 ms.devlang: dotnet
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: eaa86b706a538543816b59d8cd09ee54df43b26d
+
 
 ---
-# <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-(java)"></a>HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java)
+# <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-java"></a>HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java)
 Azure Event Hubs では、Web サイト、アプリ、デバイスで発生する大量のデータを処理できます。 Event Hubs スパウトでは、HDInsight で Apache Storm を使用してこのデータをリアルタイムで簡単に分析できます。 また、Event Hubs のボルトを使用して Storm から Event Hub にデータを書き込むこともできます。
 
 このチュートリアルでは、Event Hubs スパウトとボルトを使用して、Java ベースの Storm トポロジでデータの読み取りと書き込みを行う方法について説明します。
@@ -370,7 +374,7 @@ Event Hubs は、この例のデータ ソースです。 新しい Event Hub �
    * **追加パラメーター**: 「`reader`」と入力します
      
      [送信] をクリックして EventHubReader トポロジを開始します。
-6. 数分待つと、トポロジでイベントを生成し、Azure Storage に格納できるようになります。次に、**[Storm ダッシュボード]** ページの上部にある **[Hadoop Query Console](Hadoop クエリ コンソール.md)** タブを選択します。
+6. 数分待つと、トポロジでイベントを生成し、Azure Storage に格納できるようになります。次に、**[Storm ダッシュボード]** ページの上部にある **[Hadoop Query Console] (Hadoop クエリ コンソール)** タブを選択します。
 7. **[クエリ コンソール]** の **[Hive エディター]** を選択し、既定の `select * from hivesampletable` を次の値で置き換えます。
    
         create external table devicedata (deviceid string, devicevalue int) row format delimited fields terminated by ',' stored as textfile location 'wasbs:///devicedata/';
@@ -429,6 +433,9 @@ Storm UI の詳細な使用方法については、次のトピックを参照�
 ## <a name="next-steps"></a>次のステップ
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

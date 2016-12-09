@@ -1,12 +1,12 @@
 ---
-title: Windows ストア アプリでの Azure ストレージの使用 | Microsoft Docs
-description: Azure BLOB、Queue、Table、または File ストレージを使用する Windows ストア アプリを作成する方法について説明します。
+title: "Windows ストア アプリでの Azure ストレージの使用 | Microsoft Docs"
+description: "Azure BLOB、Queue、Table、または File ストレージを使用する Windows ストア アプリを作成する方法について説明します。"
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: tamram
 manager: carmonm
 editor: tysonn
-
+ms.assetid: 63c4b29d-b2f2-4d7c-b164-a0d38f4d14f6
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: mobile-windows-store
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: tamram
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 678592957e5740194e9292393231be111d6067a5
+
 
 ---
 # <a name="how-to-use-azure-storage-in-windows-store-apps"></a>Windows ストア アプリでの Azure Storage の使用方法
@@ -82,6 +86,6 @@ WCF Data Services NuGet パッケージを参照したら、ボタンの **Click
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

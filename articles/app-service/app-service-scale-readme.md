@@ -1,13 +1,13 @@
 ---
-title: 'Azure App Service: App Service アプリケーションのスケーリング'
-description: App Service でのアプリケーションのスケーリングの詳細について説明します。
-keywords: App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト
+title: "Azure App Service: App Service アプリケーションのスケーリング"
+description: "App Service でのアプリケーションのスケーリングの詳細について説明します。"
+keywords: "App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト"
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: btardif
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: f403c971-4450-432b-8cea-3eeb426c0147
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: byvinyal
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ec043a9e01aca2e843e50cef8b90328ba1939ea5
+
 
 ---
-# <a name="azure-app-service:-scaling-app-service-applications"></a>Azure App Service: App Service アプリケーションのスケーリング
+# <a name="azure-app-service-scaling-app-service-applications"></a>Azure App Service: App Service アプリケーションのスケーリング
 Azure App Service でホストされているアプリケーションは、 [大規模なスケーリングを実現](https://azure.microsoft.com/blog/canadian-broadcasting-corporation-radio-canada-leverage-azure-for-smooth-election-coverage/)できますが、アプリケーションのスケーリングは、"どのような場合にも通用する" 解決策が存在しない複雑な問題です。
 アプリケーションを正しくスケーリングするには、次の 3 つのことが重要です。 これらは、アプリケーションの成功に役立ちます。
 
@@ -38,6 +42,9 @@ Azure App Service でホストされているアプリケーションは、 [大
 
 [!INCLUDE [app-service-blueprint-scaling-app-service-applications](../../includes/app-service-blueprint-scaling-app-service-applications.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

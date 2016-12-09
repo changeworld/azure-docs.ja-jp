@@ -1,13 +1,13 @@
 ---
-title: Windows 仮想マシン スケール セットの自動スケール | Microsoft Docs
-description: Azure PowerShell を利用し、Windows 仮想マシン スケール セットの自動スケールを設定する
+title: "Windows 仮想マシン スケール セットの自動スケール | Microsoft Docs"
+description: "Azure PowerShell を利用し、Windows 仮想マシン スケール セットの自動スケールを設定する"
 services: virtual-machine-scale-sets
-documentationcenter: ''
+documentationcenter: 
 author: davidmu1
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: davidmu
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: da6a16f3c76f1029332c764227795852e6902941
+
 
 ---
 # <a name="automatically-scale-machines-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットでのマシンの自動スケール
@@ -34,16 +38,16 @@ ms.author: davidmu
 * Microsoft.Insights.VMDiagnosticsSettings
 * Microsoft.Insights/autoscaleSettings
 
-Resource Manager のリソースの詳細については、「 [Azure Resource Manager における Compute、Network、Storage プロバイダー](../virtual-machines/virtual-machines-windows-compare-deployment-models.md)」を参照してください。
+Resource Manager のリソースの詳細については、「[Azure Resource Manager vs. classic deployment (Azure Resource Manager 対クラシック デプロイ)](../resource-manager-deployment-model.md)」を参照してください。
 
-## <a name="step-1:-install-azure-powershell"></a>手順 1: Azure PowerShell をインストールする
+## <a name="step-1-install-azure-powershell"></a>手順 1: Azure PowerShell をインストールする
 最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、Azure にサインインする方法については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」を参照してください。
 
-## <a name="step-2:-create-a-resource-group-and-a-storage-account"></a>手順 2: リソース グループとストレージ アカウントを作成する
+## <a name="step-2-create-a-resource-group-and-a-storage-account"></a>手順 2: リソース グループとストレージ アカウントを作成する
 1. **リソース グループを作成します**。リソースはすべてリソース グループにデプロイする必要があります。 **vmsstestrg1** という名前のリソース グループを作成するには、[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx) を使用します。
 2. **ストレージ アカウントを作成します**。このストレージ アカウントがテンプレートの保存先となります。 [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) を使用して、**vmsstestsa** という名前のストレージ アカウントを作成します。
 
-## <a name="step-3:-create-the-template"></a>手順 3: テンプレートを作成する
+## <a name="step-3-create-the-template"></a>手順 3: テンプレートを作成する
 Azure リソース マネージャー テンプレートを使用すると、Azure リソースとそれに関連するデプロイ パラメーターを JSON 形式で記述することによって、それらのリソースをまとめてデプロイし、管理することができます。
 
 1. 任意のエディターで C:\VMSSTemplate.json ファイルを作成し、このテンプレートをサポートする初期 JSON 構造体を追加します。
@@ -96,7 +100,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
      * 仮想ネットワークとサブネットに使用する IP アドレスの名前とプレフィックス。
      * 仮想ネットワーク、ロード バランサー、ネットワーク インターフェイスの名前と識別子。
      * スケール セット内のマシンに関連付けられているアカウントのストレージ アカウントの名前。
-     * 仮想マシンにインストールする診断拡張機能の設定。 診断拡張機能の詳細については、「[Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)」を参照してください。
+     * 仮想マシンにインストールする診断拡張機能の設定。 診断拡張機能の詳細については、「[Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 4. テンプレートに追加した resources を親要素として、その下にストレージ アカウント リソースを追加します。 このテンプレートは、オペレーティング システムのディスクと診断データの保存先として、推奨される 5 つのストレージ アカウントをループを使って作成します。 この一連のアカウントは、スケール セットで最大 100 台の仮想マシンをサポートします。これが現時点での最大数となります。 各ストレージ アカウントには、変数で定義された文字指定子とテンプレートのパラメーターで指定したプレフィックスとを組み合わせた名前が付けられます。
    
         {
@@ -264,153 +268,153 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
         },
 10. 仮想マシン スケール セット リソースを追加し、スケール セット内のすべての仮想マシンにインストールする診断拡張機能を指定します。 このリソースに使用する設定の多くは、仮想マシン リソースと同様です。 主な違いは、スケール セット内の仮想マシンの数を指定する capacity 要素と仮想マシンを更新する方法を指定する upgradePolicy です。 スケール セットは、dependsOn 要素に指定されたすべてのストレージ アカウントが作成されたときに初めて作成されます。
     
-            {
-              "type": "Microsoft.Compute/virtualMachineScaleSets",
-              "apiVersion": "2016-03-30",
-              "name": "[parameters('vmSSName')]",
-              "location": "[resourceGroup().location]",
-              "dependsOn": [
-                "storageLoop",
-                "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
-                "[concat('Microsoft.Network/loadBalancers/', variables('loadBalancerName'))]"
-              ],
-              "sku": {
-                "name": "Standard_A1",
-                "tier": "Standard",
-                "capacity": "[parameters('instanceCount')]"
-              },
-              "properties": {
-                "upgradePolicy": {
-                  "mode": "Manual"
-                },
-                "virtualMachineProfile": {
-                  "storageProfile": {
-                    "osDisk": {
-                      "vhdContainers": [
-                        "[concat('https://', parameters('resourcePrefix'), variables('storageAccountSuffix')[0], '.blob.core.windows.net/vhds')]",
-                        "[concat('https://', parameters('resourcePrefix'), variables('storageAccountSuffix')[1], '.blob.core.windows.net/vhds')]",
-                        "[concat('https://', parameters('resourcePrefix'), variables('storageAccountSuffix')[2], '.blob.core.windows.net/vhds')]",
-                        "[concat('https://', parameters('resourcePrefix'), variables('storageAccountSuffix')[3], '.blob.core.windows.net/vhds')]",
-                        "[concat('https://', parameters('resourcePrefix'), variables('storageAccountSuffix')[4], '.blob.core.windows.net/vhds')]"
-                      ],
-                      "name": "vmssosdisk",
-                      "caching": "ReadOnly",
-                      "createOption": "FromImage"
-                    },
-                    "imageReference": {
-                      "publisher": "MicrosoftWindowsServer",
-                      "offer": "WindowsServer",
-                      "sku": "2012-R2-Datacenter",
-                      "version": "latest"
-                    }
-                  },
-                  "osProfile": {
-                    "computerNamePrefix": "[parameters('vmSSName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]"
-                  },
-                  "networkProfile": {
-                    "networkInterfaceConfigurations": [
-                      {
-                        "name": "networkconfig1",
-                        "properties": {
-                          "primary": "true",
-                          "ipConfigurations": [
-                            {
-                              "name": "ip1",
-                              "properties": {
-                                "subnet": {
-                                  "id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/virtualNetworks/',variables('virtualNetworkName'),'/subnets/subnet1')]"
-                                },
-                                "loadBalancerBackendAddressPools": [
-                                  {
-                                    "id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/loadBalancers/',variables('loadBalancerName'),'/backendAddressPools/bepool1')]"
-                                  }
-                                ],
-                                "loadBalancerInboundNatPools": [
-                                  {
-                                    "id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/loadBalancers/',variables('loadBalancerName'),'/inboundNatPools/natpool1')]"
-                                  }
-                                ]
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    ]
-                  },
-                  "extensionProfile": {
-                    "extensions": [
-                      {
-                        "name": "Microsoft.Insights.VMDiagnosticsSettings",
-                        "properties": {
-                          "publisher": "Microsoft.Azure.Diagnostics",
-                          "type": "IaaSDiagnostics",
-                          "typeHandlerVersion": "1.5",
-                          "autoUpgradeMinorVersion": true,
-                          "settings": {
-                            "xmlCfg": "[base64(concat(variables('wadcfgxstart'),variables('wadmetricsresourceid'),variables('wadcfgxend')))]",
-                            "storageAccount": "[variables('diagnosticsStorageAccountName')]"
-                          },
-                          "protectedSettings": {
-                            "storageAccountName": "[variables('diagnosticsStorageAccountName')]",
-                            "storageAccountKey": "[listkeys(variables('accountid'), '2015-06-15').key1]",
-                            "storageAccountEndPoint": "https://core.windows.net"
-                          }
-                        }
-                      }
-                    ]
-                  }
-                }
-              }
-            },
+         {
+           "type": "Microsoft.Compute/virtualMachineScaleSets",
+           "apiVersion": "2016-03-30",
+           "name": "[parameters('vmSSName')]",
+           "location": "[resourceGroup().location]",
+           "dependsOn": [
+             "storageLoop",
+             "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+             "[concat('Microsoft.Network/loadBalancers/', variables('loadBalancerName'))]"
+           ],
+           "sku": {
+             "name": "Standard_A1",
+             "tier": "Standard",
+             "capacity": "[parameters('instanceCount')]"
+           },
+           "properties": {
+             "upgradePolicy": {
+               "mode": "Manual"
+             },
+             "virtualMachineProfile": {
+               "storageProfile": {
+                 "osDisk": {
+                   "vhdContainers": [
+                     "[concat('https://', parameters('resourcePrefix'), variables('storageAccountSuffix')[0], '.blob.core.windows.net/vhds')]",
+                     "[concat('https://', parameters('resourcePrefix'), variables('storageAccountSuffix')[1], '.blob.core.windows.net/vhds')]",
+                     "[concat('https://', parameters('resourcePrefix'), variables('storageAccountSuffix')[2], '.blob.core.windows.net/vhds')]",
+                     "[concat('https://', parameters('resourcePrefix'), variables('storageAccountSuffix')[3], '.blob.core.windows.net/vhds')]",
+                     "[concat('https://', parameters('resourcePrefix'), variables('storageAccountSuffix')[4], '.blob.core.windows.net/vhds')]"
+                   ],
+                   "name": "vmssosdisk",
+                   "caching": "ReadOnly",
+                   "createOption": "FromImage"
+                 },
+                 "imageReference": {
+                   "publisher": "MicrosoftWindowsServer",
+                   "offer": "WindowsServer",
+                   "sku": "2012-R2-Datacenter",
+                   "version": "latest"
+                 }
+               },
+               "osProfile": {
+                 "computerNamePrefix": "[parameters('vmSSName')]",
+                 "adminUsername": "[parameters('adminUsername')]",
+                 "adminPassword": "[parameters('adminPassword')]"
+               },
+               "networkProfile": {
+                 "networkInterfaceConfigurations": [
+                   {
+                     "name": "networkconfig1",
+                     "properties": {
+                       "primary": "true",
+                       "ipConfigurations": [
+                         {
+                           "name": "ip1",
+                           "properties": {
+                             "subnet": {
+                               "id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/virtualNetworks/',variables('virtualNetworkName'),'/subnets/subnet1')]"
+                             },
+                             "loadBalancerBackendAddressPools": [
+                               {
+                                 "id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/loadBalancers/',variables('loadBalancerName'),'/backendAddressPools/bepool1')]"
+                               }
+                             ],
+                             "loadBalancerInboundNatPools": [
+                               {
+                                 "id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/loadBalancers/',variables('loadBalancerName'),'/inboundNatPools/natpool1')]"
+                               }
+                             ]
+                           }
+                         }
+                       ]
+                     }
+                   }
+                 ]
+               },
+               "extensionProfile": {
+                 "extensions": [
+                   {
+                     "name": "Microsoft.Insights.VMDiagnosticsSettings",
+                     "properties": {
+                       "publisher": "Microsoft.Azure.Diagnostics",
+                       "type": "IaaSDiagnostics",
+                       "typeHandlerVersion": "1.5",
+                       "autoUpgradeMinorVersion": true,
+                       "settings": {
+                         "xmlCfg": "[base64(concat(variables('wadcfgxstart'),variables('wadmetricsresourceid'),variables('wadcfgxend')))]",
+                         "storageAccount": "[variables('diagnosticsStorageAccountName')]"
+                       },
+                       "protectedSettings": {
+                         "storageAccountName": "[variables('diagnosticsStorageAccountName')]",
+                         "storageAccountKey": "[listkeys(variables('accountid'), '2015-06-15').key1]",
+                         "storageAccountEndPoint": "https://core.windows.net"
+                       }
+                     }
+                   }
+                 ]
+               }
+             }
+           }
+         },
 11. スケール セットの仮想マシンのプロセッサ使用率に基づく調整方法を定義する autoscaleSettings リソースを追加します。
     
-            {
-              "type": "Microsoft.Insights/autoscaleSettings",
-              "apiVersion": "2015-04-01",
-              "name": "[concat(parameters('resourcePrefix'),'as1')]",
-              "location": "[resourceGroup().location]",
-              "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachineScaleSets/',parameters('vmSSName'))]"
-              ],
-              "properties": {
-                "enabled": true,
-                "name": "[concat(parameters('resourcePrefix'),'as1')]",
-                "profiles": [
-                  {
-                    "name": "Profile1",
-                    "capacity": {
-                      "minimum": "1",
-                      "maximum": "10",
-                      "default": "1"
-                    },
-                    "rules": [
-                      {
-                        "metricTrigger": {
-                          "metricName": "\\Processor(_Total)\\% Processor Time",
-                          "metricNamespace": "",
-                          "metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Compute/virtualMachineScaleSets/',parameters('vmSSName'))]",
-                          "timeGrain": "PT1M",
-                          "statistic": "Average",
-                          "timeWindow": "PT5M",
-                          "timeAggregation": "Average",
-                          "operator": "GreaterThan",
-                          "threshold": 50.0
-                        },
-                        "scaleAction": {
-                          "direction": "Increase",
-                          "type": "ChangeCount",
-                          "value": "1",
-                          "cooldown": "PT5M"
-                        }
-                      }
-                    ]
-                  }
-                ],
-                "targetResourceUri": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/', resourceGroup().name,'/providers/Microsoft.Compute/virtualMachineScaleSets/',parameters('vmSSName'))]"
-              }
-            }
+         {
+           "type": "Microsoft.Insights/autoscaleSettings",
+           "apiVersion": "2015-04-01",
+           "name": "[concat(parameters('resourcePrefix'),'as1')]",
+           "location": "[resourceGroup().location]",
+           "dependsOn": [
+             "[concat('Microsoft.Compute/virtualMachineScaleSets/',parameters('vmSSName'))]"
+           ],
+           "properties": {
+             "enabled": true,
+             "name": "[concat(parameters('resourcePrefix'),'as1')]",
+             "profiles": [
+               {
+                 "name": "Profile1",
+                 "capacity": {
+                   "minimum": "1",
+                   "maximum": "10",
+                   "default": "1"
+                 },
+                 "rules": [
+                   {
+                     "metricTrigger": {
+                       "metricName": "\\Processor(_Total)\\% Processor Time",
+                       "metricNamespace": "",
+                       "metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Compute/virtualMachineScaleSets/',parameters('vmSSName'))]",
+                       "timeGrain": "PT1M",
+                       "statistic": "Average",
+                       "timeWindow": "PT5M",
+                       "timeAggregation": "Average",
+                       "operator": "GreaterThan",
+                       "threshold": 50.0
+                     },
+                     "scaleAction": {
+                       "direction": "Increase",
+                       "type": "ChangeCount",
+                       "value": "1",
+                       "cooldown": "PT5M"
+                     }
+                   }
+                 ]
+               }
+             ],
+             "targetResourceUri": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/', resourceGroup().name,'/providers/Microsoft.Compute/virtualMachineScaleSets/',parameters('vmSSName'))]"
+           }
+         }
     
     このチュートリアルで重要となる値は次のとおりです。
     
@@ -428,31 +432,31 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
     * **cooldown** – この値は、前回のスケール アクションから次回のスケール アクションまでの待機時間です。 この値は 1 分から 1 週間の範囲で指定する必要があります。
 12. テンプレート ファイルを保存します。    
 
-## <a name="step-4:-upload-the-template-to-storage"></a>手順 4: テンプレートをストレージにアップロードする
+## <a name="step-4-upload-the-template-to-storage"></a>手順 4: テンプレートをストレージにアップロードする
 手順 1. で作成したストレージ アカウントの名前とプライマリ キーがわかっていれば、テンプレートをアップロードできます。
 
 1. 手順 1. で作成したストレージ アカウントの名前を指定する変数を Microsoft Azure PowerShell ウィンドウで設定します。
    
-           $storageAccountName = "vmstestsa"
+         $storageAccountName = "vmstestsa"
 2. ストレージ アカウントのプライマリ キーを指定する変数を設定します。
    
-           $storageAccountKey = "<primary-account-key>"
+         $storageAccountKey = "<primary-account-key>"
    
    このキーは、Azure ポータルでストレージ アカウント リソースを表示しているときにキー アイコンをクリックして取得できます。
 3. ストレージ アカウントのコンテキスト オブジェクトを作成します。ストレージ アカウントに対する操作を検証する際にこのオブジェクトを使用します。
    
-           $ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+         $ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
 4. テンプレートを格納するコンテナーを作成します。
    
-           $containerName = "templates"
-           New-AzureStorageContainer -Name $containerName -Context $ctx  -Permission Blob
+         $containerName = "templates"
+         New-AzureStorageContainer -Name $containerName -Context $ctx  -Permission Blob
 5. その新しいコンテナーにテンプレート ファイルをアップロードします。
    
-           $blobName = "VMSSTemplate.json"
-           $fileName = "C:\" + $BlobName
-           Set-AzureStorageBlobContent -File $fileName -Container $containerName -Blob  $blobName -Context $ctx
+         $blobName = "VMSSTemplate.json"
+         $fileName = "C:\" + $BlobName
+         Set-AzureStorageBlobContent -File $fileName -Container $containerName -Blob  $blobName -Context $ctx
 
-## <a name="step-5:-deploy-the-template"></a>手順 5: テンプレートをデプロイする
+## <a name="step-5-deploy-the-template"></a>手順 5: テンプレートをデプロイする
 テンプレートを作成したら、リソースのデプロイを開始できます。 このプロセスを開始するには、次のコマンドを使用します。
 
     New-AzureRmResourceGroupDeployment -Name "vmsstestdp1" -ResourceGroupName "vmsstestrg1" -TemplateUri "https://vmsstestsa.blob.core.windows.net/templates/VMSSTemplate.json"
@@ -473,7 +477,7 @@ Enter キーを押すと、先ほど割り当てた変数の値を入力する�
 > 
 > 
 
-## <a name="step-6:-monitor-resources"></a>手順 6: リソースを監視する
+## <a name="step-6-monitor-resources"></a>手順 6: リソースを監視する
 仮想マシン スケール セットに関する情報の一部は、次の方法で入手することができます。
 
 * Azure ポータル - 現在、ポータルを使用して入手できる情報の量は限られています。
@@ -494,7 +498,7 @@ Enter キーを押すと、先ほど割り当てた変数の値を入力する�
 > 
 > 
 
-## <a name="step-7:-remove-the-resources"></a>手順 7: リソースを削除する
+## <a name="step-7-remove-the-resources"></a>手順 7: リソースを削除する
 Azure で使用されるリソースに対して課金されるため、不要になったリソースは削除することを常にお勧めします。 リソース グループから各リソースを個別に削除する必要はありません。 リソース グループを削除すると、そのすべてのリソースが自動的に削除されます。
 
     Remove-AzureRmResourceGroup -Name vmsstestrg1
@@ -506,10 +510,13 @@ Azure で使用されるリソースに対して課金されるため、不要�
 ## <a name="next-steps"></a>次のステップ
 * 「 [仮想マシン スケール セットで仮想マシンを管理する](virtual-machine-scale-sets-windows-manage.md)」の情報を参照して、作成したスケール セットを管理します。
 * 垂直方向のスケール処理の詳細については、 [仮想マシン スケール セットでの垂直方向の自動スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)
-* Azure Insights の監視機能の例を「 [Azure Insights の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)
-* 通知機能の詳細については、「 [Azure Insights で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md) 
-* [Azure Insights で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
+* Azure Monitor の監視機能の例については、「[Azure Insights の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)」をご覧ください。
+* 通知機能の詳細については、「[Azure Insights で自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。
+* [Azure Monitor で監査ログを使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)方法についてご確認ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

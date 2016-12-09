@@ -1,13 +1,13 @@
 ---
-title: VM の再起動またはサイズ変更の問題 | Microsoft Docs
-description: Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング
+title: "VM の再起動またはサイズ変更に関する問題 | Microsoft Docs"
+description: "Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: Deland-Han
 manager: felixwu
-editor: ''
+editor: 
 tags: top-support-issue
-
+ms.assetid: 73f2672c-602e-4766-8948-2b180115d299
 ms.service: virtual-machines-linux
 ms.topic: support-article
 ms.tgt_pltfrm: vm-linux
@@ -15,33 +15,39 @@ ms.workload: required
 ms.date: 09/20/2016
 ms.devlang: na
 ms.author: delhan
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: 9268bc13c33893df624bd2311ba28f898e2fee90
+
 
 ---
-# Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング
+# <a name="troubleshoot-classic-deployment-issues-with-restarting-or-resizing-an-existing-linux-virtual-machine-in-azure"></a>Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング
 > [!div class="op_single_selector"]
-> * [クラシック](virtual-machines-linux-classic-restart-resize-error-troubleshooting.md)
-> * [リソース マネージャー](virtual-machines-linux-restart-resize-error-troubleshooting.md)
+> * [クラシック](virtual-machines-linux-classic-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+> * [Resource Manager](virtual-machines-linux-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 > 
 > 
 
-停止している Azure 仮想マシン (VM) を起動しようとしたとき、または既存の Azure VM のサイズを変更しようとしたときに発生する一般的なエラーは割り当てエラーです。このエラーは、クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできない場合に発生します。
+停止している Azure 仮想マシン (VM) を起動しようとしたとき、または既存の Azure VM のサイズを変更しようとしたときに発生する一般的なエラーは割り当てエラーです。 このエラーは、クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできない場合に発生します。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
+Resource Manager バージョンについては、[こちら](virtual-machines-linux-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください。
+
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## 監査ログの収集
+## <a name="collect-audit-logs"></a>監査ログの収集
 トラブルシューティングを開始するには、監査ログを収集して問題に関連するエラーを特定します。
 
-Azure ポータルで、**[参照]**、**[仮想マシン]**、*対象の Linux 仮想マシン*、**[設定]**、**[監査ログ]** の順にクリックします。
+Azure ポータルで、**[参照]** > **[仮想マシン]** > *対象の Linux 仮想マシン* > **[設定]** > **[監査ログ]** をクリックします。
 
-## 問題: 停止している VM の起動時のエラー
+## <a name="issue-error-when-starting-a-stopped-vm"></a>問題: 停止している VM の起動時のエラー
 停止している VM を起動しようとしたときに、割り当てエラーが発生します。
 
-### 原因
-停止している VM の起動要求は、クラウド サービスをホストしている元のクラスターで行う必要がありますが、クラスターに要求の処理に使用できる空き領域がありません。
+### <a name="cause"></a>原因
+停止している VM の起動要求は、クラウド サービスをホストしている元のクラスターで行う必要がありますが、 クラスターに要求の処理に使用できる空き領域がありません。
 
-### 解決策
+### <a name="resolution"></a>解決策
 * 新しいクラウド サービスを作成し、アフィニティ グループではなく、リージョンまたはリージョン ベースの仮想ネットワークに関連付けます。
 * 停止している VM を削除します。
 * ディスクを使用して、新しいクラウド サービスに VM を再作成します。
@@ -54,27 +60,32 @@ Azure ポータルで、**[参照]**、**[仮想マシン]**、*対象の Linux 
 > 
 > 
 
-## 問題: 既存の VM のサイズ変更時のエラー
+## <a name="issue-error-when-resizing-an-existing-vm"></a>問題: 既存の VM のサイズ変更時のエラー
 既存の VM のサイズを変更しようとしたときに割り当てエラーが発生します。
 
-### 原因
-VM のサイズ変更要求は、クラウド サービスをホストしている元のクラスターで行う必要がありますが、クラスターが要求された VM サイズをサポートしていません。
+### <a name="cause"></a>原因
+VM のサイズ変更要求は、クラウド サービスをホストしている元のクラスターで行う必要がありますが、 クラスターが要求された VM サイズをサポートしていません。
 
-### 解決策
+### <a name="resolution"></a>解決策
 要求する VM サイズを小さくし、サイズ変更要求を再試行します。
 
-* **[すべて参照]**、**[仮想マシン (クラシック)]**、*対象の仮想マシン*、**[設定]**、**[サイズ]** の順にクリックします。詳細な手順については、「[Resize the virtual machine (仮想マシンのサイズの変更)](https://msdn.microsoft.com/library/dn168976.aspx)」を参照してください。
+* **[すべて参照]** > **[仮想マシン (クラシック)]** > *お使いの仮想マシン* > **[設定]** > **[サイズ]** の順にクリックします。 詳細な手順については、「 [Resize the virtual machine (仮想マシンのサイズの変更)](https://msdn.microsoft.com/library/dn168976.aspx)」を参照してください。
 
 VM サイズを小さくできない場合は、次の手順に従います。
 
 * アフィニティ グループにリンクしたり、アフィニティ グループにリンクされた仮想ネットワークに関連付けたりせずに、新しいクラウド サービスを作成します。
 * 作成したクラウド サービスにサイズの大きい新しい VM を作成します。
 
-同じクラウド サービス内のすべての VM を統合できます。既存のクラウド サービスがリージョン ベースの仮想ネットワークに関連付けられている場合は、新しいクラウド サービスを既存の仮想ネットワークに接続できます。
+同じクラウド サービス内のすべての VM を統合できます。 既存のクラウド サービスがリージョン ベースの仮想ネットワークに関連付けられている場合は、新しいクラウド サービスを既存の仮想ネットワークに接続できます。
 
-既存のクラウド サービスがリージョン ベースの仮想ネットワークに関連付けられていない場合は、既存のクラウド サービス内の VM を削除し、ディスクから新しいクラウド サービスに VM を再作成する必要があります。ただし、新しいクラウド サービスには新しい名前と VIP が割り当てられるので、既存のクラウド サービスでこれらの情報を現在使用しているすべての依存関係について、情報を更新する必要があります。
+既存のクラウド サービスがリージョン ベースの仮想ネットワークに関連付けられていない場合は、既存のクラウド サービス内の VM を削除し、ディスクから新しいクラウド サービスに VM を再作成する必要があります。 ただし、新しいクラウド サービスには新しい名前と VIP が割り当てられるので、既存のクラウド サービスでこれらの情報を現在使用しているすべての依存関係について、情報を更新する必要があります。
 
-## 次のステップ
-Azure で新しい Linux VM を作成するときに問題が発生する場合は、[Azure での新しい Linux 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](virtual-machines-linux-troubleshoot-deployment-new-vm.md)に関するページを参照してください。
+## <a name="next-steps"></a>次のステップ
+Azure で新しい Linux VM を作成するときに問題が発生する場合は、[Azure での新しい Linux 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](virtual-machines-linux-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

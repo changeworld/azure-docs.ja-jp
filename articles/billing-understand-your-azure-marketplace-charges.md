@@ -1,13 +1,13 @@
 ---
-title: Azure 外部サービスの課金について | Microsoft Docs
-description: Azure 外部サービス (旧称 Marketplace) の課金について説明します。
-services: ''
-documentationcenter: ''
+title: "Azure 外部サービスの課金について | Microsoft Docs"
+description: "Azure 外部サービス (旧称 Marketplace) の課金について説明します。"
+services: 
+documentationcenter: 
 author: adpick
 manager: felixwu
-editor: ''
+editor: 
 tags: billing
-
+ms.assetid: 5e0e2a3c-d111-4054-8508-0c111c1b749b
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: adpick
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 45e0d553179b63de2d0664314271472f1151d73f
+
 
 ---
 # <a name="understand-your-azure-external-service-charges"></a>Azure 外部サービスの課金について
@@ -25,7 +29,7 @@ ms.author: adpick
 * 外部サービスの使用から発生するコストを追跡して表示する
 * 外部サービスの注文を管理して支払いを行う
 
-## <a name="what-are-azure-external-services?"></a>Azure 外部サービスとは
+## <a name="what-are-azure-external-services"></a>Azure 外部サービスとは
 外部サービスは、以前は Azure Marketplace と呼ばれていました。 通常、外部サービスは、サードパーティが公開している Azure で使用できるサービスです。 たとえば、ClearDB と SendGrid は、Azure で購入できる外部サービスですが、これらはマイクロソフトが公開したものではありません。
 
 ### <a name="identify-external-services"></a>外部サービスを識別する
@@ -44,21 +48,19 @@ ms.author: adpick
 ### <a name="each-external-service-has-a-different-billing-model"></a>外部サービスの課金モデルはサービスごとに異なります
 一部のサービスは従量課金制で請求され、一部のサービスは月単位で課金されます。 Azure 外部サービスにはクレジット カードが必要であり、請求書による支払いで外部サービスを購入することはできません。
 
-### <a name="you-can't-use-monthly-free-credits-for-external-services"></a>外部サービスでは月々の無料クレジットは使用できません
+### <a name="you-cant-use-monthly-free-credits-for-external-services"></a>外部サービスでは月々の無料クレジットは使用できません
 [無料クレジット](https://azure.microsoft.com/pricing/spending-limits/)付きの Azure サブスクリプションを使用している場合でも、外部サービスの請求に対して無料クレジットを適用することはできません。 外部サービスを購入する際は、クレジット カードをご使用ください。
 
 ## <a name="view-external-service-spending-and-history"></a>外部サービスの支払い履歴を表示する
 サブスクライブ中の外部サービスの一覧を [Azure ポータル](https://portal.azure.com/)に表示できます。 
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインし、[**[課金]** ブレードに移動](https://portal.azure.com/?flight=1#blade/Microsoft_Azure_Billing/BillingBlade)します。
+1. [Azure Portal](https://portal.azure.com/) にアカウント管理者としてサインインします。
+2. ハブ メニューで、**[サブスクリプション]** を選択します。
    
-    ![ハブ メニューの [課金] を選択](./media/billing-understand-your-azure-marketplace-charges/billing-button.png) 
-2. **[Subscription costs (サブスクリプション コスト)]** セクションで、表示するサブスクリプションを選択します。 
+    ![ハブ メニューで [サブスクリプション] を選択します](./media/billing-understand-your-azure-marketplace-charges/sub-button.png) 
+3. **[サブスクリプション]** ブレードで、表示するサブスクリプションを選択し、**[External services (外部サービス)]** を選択します。
    
-    ![[課金] ブレードでサブスクリプションを選択](./media/billing-understand-your-azure-marketplace-charges/select-sub.png)
-3. **[外部サービス]** をクリックします。
-   
-    ![サブスクリプション ブレードで [外部サービス] をクリック](./media/billing-understand-your-azure-marketplace-charges/external-service-blade.png)
+    ![[課金] ブレードでサブスクリプションを選択](./media/billing-understand-your-azure-marketplace-charges/select-sub-external-services.png)
 4. 外部サービスについて、公開元の名前、購入したサービス レベル、リソースに付けた名前、および現在の注文状態が注文ごとに表示されます。 過去の課金情報を表示する外部サービスを選択します。
    
     ![外部サービスを選択](./media/billing-understand-your-azure-marketplace-charges/external-service-blade2.png)
@@ -92,9 +94,12 @@ ms.author: adpick
 
 ![リソースを削除](./media/billing-understand-your-azure-marketplace-charges/deleteMarketplaceOrder.PNG)
 
-## <a name="need-help?-contact-support."></a>お困りの際は、 サポートにお問い合せください。
+## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

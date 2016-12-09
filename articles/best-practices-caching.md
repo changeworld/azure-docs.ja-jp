@@ -1,13 +1,13 @@
 ---
-title: キャッシュに関するガイダンス | Microsoft Docs
-description: キャッシュによるパフォーマンスとスケーラビリティの向上に関するガイダンス。
-services: ''
+title: "キャッシュに関するガイダンス | Microsoft Docs"
+description: "キャッシュによるパフォーマンスとスケーラビリティの向上に関するガイダンス。"
+services: 
 documentationcenter: na
 author: dragon119
 manager: christb
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: c86e2d49-066b-43b0-b0b6-f70ff4f87cdd
 ms.service: best-practice
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2016
 ms.author: masashin
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 27612fcd27a4d314a07982446375ac32ed1a2e4a
+
 
 ---
 # <a name="caching-guidance"></a>キャッシュに関するガイダンス
@@ -134,7 +138,7 @@ HTTP 接続経由でデータを提供する Web アプリケーションを作�
 * **オプティミスティック同時実行制御。** アプリケーションは、キャッシュ内のデータを更新する直前に、取得後にそのデータが変更されたかどうかを確認します。 データが同じままの場合、変更できます。 同じではない場合、アプリケーションはデータを更新するかどうかを決定する必要があります (この決定を左右するビジネス ロジックは、アプリケーションによって異なります)。この方法は、更新が頻繁に行われる状況、または競合が発生する可能性がない状況に適しています。
 * **ペシミスティック同時実行制御。**  アプリケーションは、キャッシュ内のデータを取得するときにそのデータをロックして、他のインスタンスがそのデータを変更できないようにします。 このプロセスによって競合は起きなくなりますが、同じデータを処理する必要がある他のインスタンスもブロックされる可能性もあります。 ペシミスティック同時実行制御は、ソリューションのスケーラビリティに影響をあたえる可能性があるため、一時的な操作にのみ使用することをお勧めします。 この方法は、競合が発生する可能性が高い状況、特にアプリケーションがキャッシュ内の複数の項目を更新するため、こうした変更が矛盾なく適用されるようにする必要がある場合に適しています。
 
-### <a name="implement-high-availability-and-scalability,-and-improve-performance"></a>高可用性とスケーラビリティの実装とパフォーマンスの向上
+### <a name="implement-high-availability-and-scalability-and-improve-performance"></a>高可用性とスケーラビリティの実装とパフォーマンスの向上
 データのプライマリ リポジトリとしてキャッシュを使用しないでください。この役割は、キャッシュの入力元である元のデータ ストアのものです。 元のデータ ストアは、データの永続性を確保するために使用します。
 
 ソリューションに、共有キャッシュ サービスの可用性に関する重要な依存関係が発生しないように注意してください。 共有キャッシュを提供するサービスが利用できなくなった場合でも、アプリケーションは継続的に機能する必要があります。 キャッシュ サービスが再開されるまでアプリケーションが停止または失敗することは避ける必要があります。
@@ -207,7 +211,7 @@ Azure Redis Cache は、可用性、スケーラビリティ、およびセキ�
 > キャッシュは、Web または worker ロールのインスタンスによってホストされ、同じクラウド サービス デプロイ ユニットの一部として動作するロールのみがキャッシュにアクセスできます (デプロイ ユニットとは、特定のリージョンに対してクラウド サービスとしてデプロイされる 1 セットのロール インスタンスです)。キャッシュはクラスター化され、同じデプロイメント ユニット内でキャッシュをホストするロールのすべてのインスタンスは、同じキャッシュ クラスターの一部になります。 ただし、このオプションは推奨されなくなりました。このオプションは、これを使用するように組み立てられた既存のアプリケーションをサポートするためだけに提供されています。 新しく開発されたすべてのアプリケーションでは、代わりに Azure Redis Cache を使用します。
 > 
 > Azure Managed Cache Service と Azure In-Role Cache の両方が現在予定されている 2016 年 11 月 16 日に提供終了します。
-> 提供終了に備えて、Azure Redis Cache に移行することをお勧めします。 詳細については、Microsoft Web サイトの「  [Redis Cache のサービス内容と適切なサイズの選択](redis-cache/cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
+> 提供終了に備えて、Azure Redis Cache に移行することをお勧めします。 詳細については、Microsoft Web サイトの「[Redis Cache のサービス内容と適切なサイズの選択](redis-cache/cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
 > 
 > 
 
@@ -927,6 +931,9 @@ ISubscriber subscriber = redisHostConnection.GetSubscriber();
 * StackExchange.Redis リポジトリの「 [Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) (Redis のトランザクション)」のページ
 * Microsoft Web サイトの「 [Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx) (データのパーティション分割のガイダンス)」
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

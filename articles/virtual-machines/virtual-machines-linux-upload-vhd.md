@@ -1,13 +1,13 @@
 ---
-title: カスタム Linux イメージの作成とアップロード | Microsoft Docs
-description: Resource Manager デプロイメント モデルを使用して、仮想ハード ディスク (VHD) とカスタム Linux イメージを作成し、Azure にアップロードします。
+title: "カスタム Linux イメージの作成とアップロード | Microsoft Docs"
+description: "Resource Manager デプロイメント モデルを使用して、仮想ハード ディスク (VHD) とカスタム Linux イメージを作成し、Azure にアップロードします。"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-
+ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
+translationtype: Human Translation
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: 125833947af591d4f8995d803b5ee922679f6c8e
+
 
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image"></a>カスタム ディスク イメージをアップロードして Linux VM を作成する
@@ -76,7 +80,7 @@ azure vm create myVM -l "WestUS" --resource-group myResourceGroup \
 ## <a name="requirements"></a>必要条件
 次の手順を完了するには、以下が必要です。
 
-* **.vhd ファイルにインストールされている Linux オペレーティング システム** - [動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md) (または[動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-generic.md)を参照してください) を VHD 形式で仮想ディスクにインストールします。 VM と VHD を作成するツールはいくつかあります。
+* **.vhd ファイルにインストールされている Linux オペレーティング システム** - [動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (または[動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください) を VHD 形式で仮想ディスクにインストールします。 VM と VHD を作成するツールはいくつかあります。
   * [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) または [KVM](http://www.linux-kvm.org/page/RunningKVM) をインストールして構成します。その際、イメージ形式として VHD を使用します。 必要であれば `qemu-img convert` を使用して[イメージを変換](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)できます。
   * [Windows 10 上](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install)または [Windows Server 2012/2012 R2 上](https://technet.microsoft.com/library/hh846766.aspx)の Hyper-V を使用することもできます。
 
@@ -100,25 +104,25 @@ azure config mode arm
 <a id="prepimage"> </a>
 
 ## <a name="prepare-the-image-to-be-uploaded"></a>アップロードするイメージを準備する
-Azure は、さまざまな Linux ディストリビューションをサポートしています (「 [Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md)」を参照してください)。 次の記事では、Azure でサポートされる以下のさまざまな Linux ディストリビューションを準備する方法について説明します。
+Azure は、さまざまな Linux ディストリビューションをサポートしています (「 [Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください)。 次の記事では、Azure でサポートされる以下のさまざまな Linux ディストリビューションを準備する方法について説明します。
 
-* **[CentOS ベースのディストリビューション](virtual-machines-linux-create-upload-centos.md)**
-* **[Debian Linux](virtual-machines-linux-debian-create-upload-vhd.md)**
-* **[Oracle Linux](virtual-machines-linux-oracle-create-upload-vhd.md)**
-* **[Red Hat Enterprise Linux](virtual-machines-linux-redhat-create-upload-vhd.md)**
-* **[SLES と openSUSE](virtual-machines-linux-suse-create-upload-vhd.md)**
-* **[Ubuntu](virtual-machines-linux-create-upload-ubuntu.md)**
-* **[その他 - 動作保証外のディストリビューション](virtual-machines-linux-create-upload-generic.md)**
+* **[CentOS ベースのディストリビューション](virtual-machines-linux-create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Debian Linux](virtual-machines-linux-debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Oracle Linux](virtual-machines-linux-oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Red Hat Enterprise Linux](virtual-machines-linux-redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES と openSUSE](virtual-machines-linux-suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Ubuntu](virtual-machines-linux-create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[その他 - 動作保証外のディストリビューション](virtual-machines-linux-create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
 Azure で Linux イメージを準備する際のその他のヒントについては、**[Linux のインストールに関する注記](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes)**をご覧ください。
 
 > [!NOTE]
-> [Azure プラットフォームの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) は、動作保証済みディストリビューションのいずれか 1 つを、「[Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md)」の "サポートされているバージョン" で指定されている構成で使用した場合にのみ、Linux を実行する VM に適用されます。
+> [Azure プラットフォームの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) は、動作保証済みディストリビューションのいずれか 1 つを、「[Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」の "サポートされているバージョン" で指定されている構成で使用した場合にのみ、Linux を実行する VM に適用されます。
 > 
 > 
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
-リソース グループは、仮想ネットワークやストレージ記憶域など、仮想マシンをサポートするすべての Azure リソースを論理的にまとめます。 Azure リソース グループの詳細については [こちら](../resource-group-overview.md)をご覧ください。 カスタム ディスク イメージをアップロードして VM を作成する前に、まずリソース グループを作成する必要があります。 
+リソース グループは、仮想ネットワークやストレージ記憶域など、仮想マシンをサポートするすべての Azure リソースを論理的にまとめます。 Azure リソース グループの詳細については [こちら](../azure-resource-manager/resource-group-overview.md)をご覧ください。 カスタム ディスク イメージをアップロードして VM を作成する前に、まずリソース グループを作成する必要があります。 
 
 次の例では、`myResourceGroup` という名前のリソース グループを `WestUS` の場所に作成します。
 
@@ -196,7 +200,7 @@ azure vm create myVM -l "WestUS" --resource-group myResourceGroup \
 また、 `azure vm create` コマンドで求められるその他のパラメーターすべて (仮想ネットワーク、パブリック IP アドレス、ユーザー名、SSH キー) を指定するか、プロンプトで回答する必要もあります。 詳細については、 [リソース マネージャーの CLI から利用できるパラメーター](azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)に関するトピックをご覧ください。
 
 ### <a name="create-a-vm-using-a-json-template"></a>JSON テンプレートを使用して VM を作成する
-Azure Resource Manager のテンプレートは、ビルドする環境を定義する JavaScript Object Notation (JSON) ファイルです。 このテンプレートは、コンピューティングやネットワークなどのさまざまなリソース プロバイダーに分類されます。 既存のテンプレートを使用することも独自に作成することもできます。 詳細については、 [Resource Manager とテンプレートの使用方法](../resource-group-overview.md)に関する記事をご覧ください。
+Azure Resource Manager のテンプレートは、ビルドする環境を定義する JavaScript Object Notation (JSON) ファイルです。 このテンプレートは、コンピューティングやネットワークなどのさまざまなリソース プロバイダーに分類されます。 既存のテンプレートを使用することも独自に作成することもできます。 詳細については、 [Resource Manager とテンプレートの使用方法](../azure-resource-manager/resource-group-overview.md)に関する記事をご覧ください。
 
 テンプレートの `Microsoft.Compute/virtualMachines` プロバイダー内に、VM の構成の詳細を格納する `storageProfile` ノードが作成されます。 編集が必要な 2 つの主なパラメーターが `image` URI と `vhd` URI です。これらでそれぞれカスタム ディスク イメージと新しい VM の仮想ディスクをポイントします。 以下に、カスタム ディスク イメージを使用する場合の JSON の例を示します。
 
@@ -234,8 +238,11 @@ azure group deployment create --resource-group myResourceGroup
 
 
 ## <a name="next-steps"></a>次のステップ
-カスタム仮想ディスクを準備してアップロードしたら、 [Resource Manager とテンプレートの使用](../resource-group-overview.md)について学習しましょう。 必要であれば、新しい VM に [データ ディスクを追加](virtual-machines-linux-add-disk.md) することもできます。 VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず [ポートとエンドポイント](virtual-machines-linux-nsg-quickstart.md)を開放してください。
+カスタム仮想ディスクを準備してアップロードしたら、 [Resource Manager とテンプレートの使用](../azure-resource-manager/resource-group-overview.md)について学習しましょう。 必要であれば、新しい VM に [データ ディスクを追加](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) することもできます。 VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず [ポートとエンドポイント](virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を開放してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

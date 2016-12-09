@@ -1,13 +1,13 @@
 ---
-title: Azure への独自のプライベート Docker Registry のデプロイ | Microsoft Docs
-description: Docker Registry を使用して Azure BLOB ストレージ サービスでコンテナー イメージをホストする方法について説明します。
+title: "Azure への独自のプライベート Docker Registry のデプロイ | Microsoft Docs"
+description: "Docker Registry を使用して Azure BLOB ストレージ サービスでコンテナー イメージをホストする方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: ahmetalpbalkan
 editor: squillace
 manager: timlt
 tags: azure-service-management,azure-resource-manager
-
+ms.assetid: d72c9425-4a52-4f6d-935f-70f28df529d8
 ms.service: virtual-machines-linux
 ms.devlang: multiple
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/27/2016
 ms.author: ahmetb
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4dee43f5cb5ce27831e2a56c9c31784317c22559
+
 
 ---
 # <a name="deploying-your-own-private-docker-registry-on-azure"></a>Azure への独自のプライベート Docker Registry のデプロイ
@@ -27,7 +31,7 @@ ms.author: ahmetb
 1. 読者は Docker の使用方法を理解しており、格納する Docker イメージを持っている。 (そうでない場合は、 [Docker について学習](https://www.docker.com)してください)
 2. Docker エンジンがインストールされているサーバーがある。 (そうでない場合は、 [Azure ですぐに行って](https://azure.microsoft.com/documentation/templates/docker-simple-on-ubuntu/)ください。)
 
-## <a name="what-is-a-private-docker-registry?"></a>プライベート Docker レジストリとは
+## <a name="what-is-a-private-docker-registry"></a>プライベート Docker レジストリとは
 コンテナー化されたアプリケーションをクラウドに配布するには、Docker コンテナー イメージを作成し、自分または他のユーザーが使用できるようにどこかに格納します。 
 
 コンテナー イメージの作成およびクラウドへの配布は簡単ですが、生成されたイメージを確実に格納することは簡単ではありません。 そのため、Docker では、クラウドにコンテナー イメージを格納するための [Docker Hub][docker-hub] と呼ばれる集中サービスが提供されており、これらのイメージを使用していつでもコンテナーを作成できます。
@@ -35,7 +39,7 @@ ms.author: ahmetb
 [Docker Hub][docker-hub] はプライベート アプリケーション コンテナー イメージを格納するための有料サービスですが、開発者のニーズを尊重し、パブリック インターネットに接続することなくファイアウォールまたはオンプレミスの背後の独自のプライベート Docker Registry にイメージを格納するためのオープンソース ツールセットが提供されています。
 Azure BLOB ストレージは簡単にセキュリティで保護できるので、それを使用して自分で管理するプライベート Docker Registry を Azure に簡単に作成して使用できます。
 
-## <a name="why-should-you-host-a-docker-registry-on-azure?"></a>Azure で Docker Registry をホストする必要がある理由
+## <a name="why-should-you-host-a-docker-registry-on-azure"></a>Azure で Docker Registry をホストする必要がある理由
 Docker Registry インスタンスを Microsoft Azure でホストし、イメージを Azure BLOB ストレージに格納すると、いくつかの利点があります。
 
 **セキュリティ:** Docker イメージは Azure データセンターを離れないので、Docker Hub を使用する場合とは異なり、パブリック インターネットを移動しません。
@@ -99,6 +103,6 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

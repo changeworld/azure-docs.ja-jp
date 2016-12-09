@@ -1,13 +1,13 @@
 ---
-title: HDInsight の Apache Hive を使用した Twitter データの分析 | Microsoft Docs
-description: Python を使用して特定のキーワードを含むツイートを格納してから、HDInsight で Hive と Hadoop を使用して未加工の Twitter データを検索可能な Hive テーブルに変換する方法について説明します。
+title: "HDInsight の Apache Hive を使用した Twitter データの分析 | Microsoft Docs"
+description: "Python を使用して特定のキーワードを含むツイートを格納してから、HDInsight で Hive と Hadoop を使用して未加工の Twitter データを検索可能な Hive テーブルに変換する方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: e1e249ed-5f57-40d6-b3bc-a1b4d9a871d3
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 660524509b523ae2edb72cb8c80d75437730c119
+
 
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>HDInsight での Hive を使用した Twitter データの分析
@@ -61,7 +65,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 > 
 
 ### <a name="download-tweets"></a>ツイートをダウンロードする
-次の Python コードは、Twitter から 10,000 個のツイートをダウンロードし、 __tweets.txt__という名前のファイルに保存します。
+次の Python コードは、Twitter から 10,000 個のツイートをダウンロードし、 **tweets.txt**という名前のファイルに保存します。
 
 > [!NOTE]
 > Python が既にインストールされているので、次の手順は HDInsight クラスターで実行します。
@@ -94,10 +98,10 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
    > ツイートを処理するときに発生する可能性のある [エラー](https://github.com/tweepy/tweepy/issues/576) を回避するために、Tweepy v3.2.0 が使用されます。
    > 
    > 
-4. 次のコマンドを使用して、 __gettweets.py__という名前の新しいファイルを作成します。
+4. 次のコマンドを使用して、 **gettweets.py**という名前の新しいファイルを作成します。
    
         nano gettweets.py
-5. **gettweets.py** ファイルの内容として、次のコードを使用します。 **consumer\_secret____consumer\_key____access/\_token____access\_token\_secret** のプレースホルダー情報を、Twitter アプリケーションの情報に置き換えます。
+5. **gettweets.py** ファイルの内容として、次のコードを使用します。 **consumer\_secret****consumer\_key****access/\_token****access\_token\_secret** のプレースホルダー情報を、Twitter アプリケーションの情報に置き換えます。
    
         #!/usr/bin/python
    
@@ -231,7 +235,7 @@ WASB (HDInsight で使用される分散ファイル システム) にデータ�
             concat(substr (get_json_object(json_response, '$.created_at'),1,10),' ',
             substr (get_json_object(json_response, '$.created_at'),27,4)),
             substr (get_json_object(json_response, '$.created_at'),27,4),
-            case substr (get_json_object(json_response, '$.created_at'),5,3)
+            case substr (get_json_object(json_response,    '$.created_at'),5,3)
                 when "Jan" then "01"
                 when "Feb" then "02"
                 when "Mar" then "03"
@@ -312,6 +316,6 @@ WASB (HDInsight で使用される分散ファイル システム) にデータ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

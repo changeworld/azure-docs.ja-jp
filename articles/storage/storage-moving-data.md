@@ -1,19 +1,23 @@
 ---
-title: Azure Storage との間でのデータの移動 | Microsoft Docs
-description: この記事では、Azure Storage との間でデータを移動するためのさまざまな方法の概要を説明します。
+title: "Azure Storage との間でのデータの移動 | Microsoft Docs"
+description: "この記事では、Azure Storage との間でデータを移動するためのさまざまな方法の概要を説明します。"
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: micurd
 manager: jahogg
 editor: tysonn
-
+ms.assetid: 5e3947a9-d99b-4108-9d57-3eb67c03e7ba
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 11/18/2016
 ms.author: micurd
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 26dc2d2269855bcb31bc8f6faf2277ac059b81f5
+
 
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Azure Storage との間でのデータの移動
@@ -28,7 +32,7 @@ Azure Storage では、.NET、iOS、Java、Android、Universal Windows Platform 
 
 さらに、Azure との間で相互に高パフォーマンスのデータ コピーを行うことができるように設計されたライブラリである、 [Azure Storage Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement) も用意されています。 詳細については、Data Movement Library の [ドキュメント](https://github.com/Azure/azure-storage-net-data-movement) を参照してください。 
 
-## <a name="quickly-viewing/interacting-with-your-data"></a>データのすばやい表示/操作
+## <a name="quickly-viewinginteracting-with-your-data"></a>データのすばやい表示/操作
 Azure Storage のデータを簡単に表示するだけでなく、データのアップロードやダウンロードも行いたい場合は、Azure ストレージ エクスプローラーを使用できます。
 
 詳細については、 [Azure ストレージ エクスプローラー](storage-explorers.md) の一覧を確認してください。
@@ -71,6 +75,9 @@ Azure Storage にデータをバックアップするだけの場合は、Azure 
 
 詳細については、 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) に関する記事を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

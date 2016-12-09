@@ -1,13 +1,13 @@
 ---
-title: HDInsight で Hadoop サービスのヒープ ダンプを有効にする | Microsoft Docs
-description: デバッグと分析のために Linux ベースの HDInsight クラスターから Hadoop サービスのヒープ ダンプを有効にする
+title: "HDInsight で Hadoop サービスのヒープ ダンプを有効にする | Microsoft Docs"
+description: "デバッグと分析のために Linux ベースの HDInsight クラスターから Hadoop サービスのヒープ ダンプを有効にする"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 8f151adb-f687-41e4-aca0-82b551953725
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4bbd6f0033fd148832e56d0e0abef50c84a8422f
+
 
 ---
-# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight-(preview)"></a>Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする (プレビュー)
+# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight-preview"></a>Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする (プレビュー)
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
 ヒープ ダンプには、ダンプが作成された時点の変数の値を含む、アプリケーションのメモリのスナップショットが含まれています。 これらは、実行時に発生する問題を診断するのに便利です。
@@ -27,7 +31,7 @@ ms.author: larryfr
 > 
 > 
 
-## <a name="<a-name="whichservices"></a>services"></a><a name="whichServices"></a>サービス
+## <a name="a-namewhichservicesaservices"></a><a name="whichServices"></a>サービス
 次のサービスのヒープ ダンプを有効にできます。
 
 * **hcatalog** - tempelton
@@ -38,7 +42,7 @@ ms.author: larryfr
 
 HDInsight によって実行されるマップと削減のプロセスに対して、ヒープ ダンプを有効にすることもできます。
 
-## <a name="<a-name="configuration"></a>understanding-heap-dump-configuration"></a><a name="configuration"></a>ヒープ ダンプ構成について
+## <a name="a-nameconfigurationaunderstanding-heap-dump-configuration"></a><a name="configuration"></a>ヒープ ダンプ構成について
 ヒープ ダンプは、サービスの開始時にオプション (opts またはパラメーターとも呼ばれる) を JVM に渡すことによって有効になります。 ほとんどの Hadoop サービスでは、サービスを開始するのに使用されるシェル スクリプトを変更することでこれを実現できます。
 
 各スクリプトには、JVM に渡されるオプションを含む **\*\_OPTS** のエクスポートが含まれています。 たとえば、**hadoop env.sh** スクリプトには、`export HADOOP_NAMENODE_OPTS=` で始まる行に NameNode サービスのオプションが含まれています。
@@ -127,6 +131,9 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
    > 
 8. サービスが再開したら、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。 これにより、Ambari はサービスのアラートの監視を再開します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

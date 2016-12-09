@@ -1,13 +1,13 @@
 ---
-title: Debian Linux VHD の準備 | Microsoft Docs
-description: Azure へのデプロイ用に Debian 7 および 8 の VHD ファイルを作成する方法について説明します。
+title: "Debian Linux VHD の準備 | Microsoft Docs"
+description: "Azure へのデプロイ用に Debian 7 および 8 の VHD ファイルを作成する方法について説明します。"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: szarkos
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager,azure-service-management
-
+ms.assetid: a6de7a7c-cc70-44e7-aed0-2ae6884d401a
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: szark
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: e96a2beccf48c8bfd08d0c7ae111219fd4269fcc
+
 
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Azure 用の Debian VHD の準備
@@ -24,7 +28,7 @@ ms.author: szark
 ## <a name="installation-notes"></a>インストールに関する注記
 * Azure で Linux を準備する際のその他のヒントについては、「 [Linux のインストールに関する注記](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes) 」も参照してください。
 * 新しい VHDX 形式は、Azure ではサポートされていません。 Hyper-V マネージャーまたは **convert-vhd** コマンドレットを使用して、ディスクを VHD 形式に変換できます。
-* Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。 必要な場合は、[LVM](virtual-machines-linux-configure-lvm.md) または [RAID](virtual-machines-linux-configure-raid.md) をデータ ディスク上で使用できます。
+* Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。 必要な場合は、[LVM](virtual-machines-linux-configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
 * OS ディスクにスワップ パーティションを構成しないでください。 Azure Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。 このことに関する詳細については、次の手順を参照してください。
 * すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
@@ -89,8 +93,11 @@ ms.author: szark
 4. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ## <a name="next-steps"></a>次のステップ
-これで、Debian 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「 [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
+これで、Debian 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「 [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」の手順 2 と 3 をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

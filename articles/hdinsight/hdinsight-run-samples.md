@@ -1,66 +1,70 @@
 ---
-title: HDInsight での Hadoop のサンプルの実行 | Microsoft Docs
-description: 用意されたサンプルを利用して、Azure HDInsight サービスを使い始めます。データ クラスター上で MapReduce プログラムを実行する PowerShell スクリプトを使用します。
+title: "HDInsight での Hadoop のサンプルの実行 | Microsoft Docs"
+description: "用意されたサンプルを利用して、Azure HDInsight サービスを使い始めます。 データ クラスター上で MapReduce プログラムを実行する PowerShell スクリプトを使用します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: bf76d452-abb4-4210-87bd-a2067778c6ed
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 10/21/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: dbc14234200c7e4995464e2a8ed4009b963eaff4
+
 
 ---
-# Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行
+# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Azure HDInsight を使用して、Hadoop クラスターで MapReduce ジョブの実行を始めるときに役立つサンプルが用意されています。これらのサンプルは、HDInsight によって管理されるクラスターを作成して、それぞれのクラスターで利用できます。これらのサンプルを実行すると、Hadoop クラスターで Azure PowerShell コマンドレットを使用してジョブを実行するのに慣れることができます。
+Azure HDInsight を使用して、Hadoop クラスターで MapReduce ジョブの実行を始めるときに役立つサンプルが用意されています。 これらのサンプルは、HDInsight によって管理されるクラスターを作成して、それぞれのクラスターで利用できます。 これらのサンプルを実行すると、Hadoop クラスターで Azure PowerShell コマンドレットを使用してジョブを実行するのに慣れることができます。
 
-* [**ワード カウント**][hdinsight-sample-wordcount]\: テキスト ファイル内の単語出現回数をカウントします。
-* [**C# ストリーミング ワード カウント**][hdinsight-sample-csharp-streaming]\: Hadoop ストリーミング インターフェイスを使用して、テキスト ファイル内の単語出現回数をカウントします。
-* [**Pi 推定**][hdinsight-sample-pi-estimator]\: 統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。
-* [**10 GB GraySort **][hdinsight-sample-10gb-graysort]\: HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
+* [**ワード カウント**][hdinsight-sample-wordcount]: テキスト ファイル内の単語出現回数をカウントします。
+* [**C# ストリーミング ワード カウント**][hdinsight-sample-csharp-streaming]: Hadoop ストリーミング インターフェイスを使用して、テキスト ファイル内の単語出現回数をカウントします。
+* [**Pi 推定**][hdinsight-sample-pi-estimator]: 統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。
+* [**10-GB Graysort**][hdinsight-sample-10gb-graysort]: HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。 実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
 
 > [!NOTE]
-> ソース コードは「付録」にあります。
+> ソース コードは「付録」にあります。 
 > 
 > 
 
-Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラミングやストリーミング、Windows PowerShell スクリプトで使用するコマンドレットのドキュメントなど、Web 上に多数存在しています。これらのリソースの詳細については、以下を参照してください。
+Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラミングやストリーミング、Windows PowerShell スクリプトで使用するコマンドレットのドキュメントなど、Web 上に多数存在しています。 これらのリソースの詳細については、以下を参照してください。
 
 * [HDInsight での Hadoop 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce-linux.md)
 * [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
 * [Azure HDInsight 入門][hdinsight-introduction]
 
-今日では、多くの人が MapReduce より Hive と Pig を選びます。詳細については、次を参照してください。
+今日では、多くの人が MapReduce より Hive と Pig を選びます。  詳細については、次を参照してください。
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight での Pig の使用](hdinsight-use-pig.md)
 
 **前提条件**:
 
-* **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **HDInsight クラスター**。クラスターを作成できるさまざまな方法については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)」を参照してください。
+* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* **HDInsight クラスター**。 クラスターを作成できるさまざまな方法については、「 [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)」を参照してください。
 * **Azure PowerShell を実行できるワークステーション**。
   
     [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-## <a name="hdinsight-sample-wordcount"></a>ワード カウント - Java
-MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasbs:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
+## <a name="a-namehdinsight-sample-wordcountaword-count---java"></a><a name="hdinsight-sample-wordcount"></a>ワード カウント - Java
+MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。 ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasbs:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。  ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
 
-ソース コードは「[付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
+ソース コードは「 [付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
 
-Java MapReduce プログラムの開発手順については、「[HDInsight での Hadoop 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce-linux.md)」を参照してください。
+Java MapReduce プログラムの開発手順については、「 [HDInsight での Hadoop 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce-linux.md)
 
 **ワード カウント MapReduce ジョブを送信するには**
 
-1. **Windows PowerShell ISE** を開きます。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
+1. **Windows PowerShell ISE**を開きます。 手順については、「[Azure PowerShell のインストールと構成方法][powershell-install-configure]」を参照してください。
 2. 次の PowerShell スクリプトを貼り付けます。
    
         $subscriptionName = "<Azure Subscription Name>"
@@ -112,26 +116,26 @@ Java MapReduce プログラムの開発手順については、「[HDInsight で
         # Display the output file
         cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
    
-    MapReduce ジョブは、単語と出現回数が記録された *part-r-00000* という名前のファイルを作成します。スクリプトでは **findstr** コマンドを使用して、*"there"* を含む単語をすべて表示しています。
+    MapReduce ジョブは、単語と出現回数が記録された *part-r-00000*という名前のファイルを作成します。 スクリプトでは **findstr** コマンドを使用して、 *"there"*を含む単語をすべて表示しています。
 3. 最初の 3 つの変数を設定し、スクリプトを実行します。
 
-## <a name="hdinsight-sample-csharp-streaming"></a>ワード カウント - C# ストリーミング
+## <a name="a-namehdinsight-sample-csharp-streamingaword-count---c-streaming"></a><a name="hdinsight-sample-csharp-streaming"></a>ワード カウント - C# ストリーミング
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述できます。
 
 > [!NOTE]
-> このチュートリアルの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。Linux ベースの HDInsight クラスターのストリーミング例は、「[HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)」をご覧ください。
+> このチュートリアルの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Linux ベースの HDInsight クラスターのストリーミング例は、「 [HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)」をご覧ください。
 > 
 > 
 
-この例では、mapper と reducer は [stdin][stdin-stdout-stderr] から入力を (1 行ずつ) 読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
+この例では、mapper と reducer は [stdin][stdin-stdout-stderr] から入力を (1 行ずつ) 読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。 プログラムはテキスト内の単語すべての出現数を計算します。
 
-**mapper** 用の実行可能ファイルが指定されると、各 mapper タスクは mapper 開始時に別のプロセスとしてその実行可能ファイルを起動します。mapper タスクは実行されると、入力を行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。
+**mapper**用の実行可能ファイルが指定されると、各 mapper タスクは mapper 開始時に別のプロセスとしてその実行可能ファイルを起動します。 mapper タスクは実行されると、入力を行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。
 
-一方、mapper はプロセスの stdout から行指向の出力を収集します。各行はキーと値のペアに変換され、mapper の出力として収集されます。既定では、行の最初のタブ文字までがキーであり、行の残り (タブ文字を除く) が値です。行にタブ文字がない場合は、行全体がキーと見なされ、値は null になります。
+一方、mapper はプロセスの stdout から行指向の出力を収集します。 各行はキーと値のペアに変換され、mapper の出力として収集されます。 既定では、行の最初のタブ文字までがキーであり、行の残り (タブ文字を除く) が値です。 行にタブ文字がない場合は、行全体がキーと見なされ、値は null になります。
 
-**reducer** 用の実行可能ファイルが指定されると、各 reducer タスクは reducer 開始時に別のプロセスとしてその実行可能ファイルを起動します。reducer タスクは実行されると、入力のキーと値のペアを行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。
+**reducer**用の実行可能ファイルが指定されると、各 reducer タスクは reducer 開始時に別のプロセスとしてその実行可能ファイルを起動します。 reducer タスクは実行されると、入力のキーと値のペアを行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。
 
-一方、reducer はプロセスの [stdout][stdin-stdout-stderr] から行指向の出力を収集します。各行はキーと値のペアに変換され、reducer の出力として収集されます。既定では、行の最初のタブ文字までがキーであり、行の残り (タブ文字を除く) が値です。
+一方、reducer はプロセスの [stdout][stdin-stdout-stderr] から行指向の出力を収集します。 各行はキーと値のペアに変換され、reducer の出力として収集されます。 既定では、行の最初のタブ文字までがキーであり、行の残り (タブ文字を除く) が値です。
 
 Hadoop ストリーミング インターフェイスの詳細については、[Hadoop ストリーミングに関するサイト][hadoop-streaming] を参照してください。
 
@@ -150,10 +154,10 @@ Hadoop ストリーミング インターフェイスの詳細については、
 
         example/data/StreamingOutput/wc.txt/part-00000        
 
-## <a name="hdinsight-sample-pi-estimator"></a>Pi 推定
-Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。単位正方形の内部にランダムに配置された点は、その正方形に内接する円の内部にも円の面積に等しい確率 (Pi/4) で配置されます。Pi の値は 4R という値で計算されます。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。サンプルの点の数が大きくなるほど、推定値の精度が上がります。
+## <a name="a-namehdinsight-sample-pi-estimatorapi-estimator"></a><a name="hdinsight-sample-pi-estimator"></a>Pi 推定
+Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。 単位正方形の内部にランダムに配置された点は、その正方形に内接する円の内部にも円の面積に等しい確率 (Pi/4) で配置されます。 Pi の値は 4R という値で計算されます。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。 サンプルの点の数が大きくなるほど、推定値の精度が上がります。
 
-このサンプルで示したスクリプトでは、Hadoop jar ジョブを送信し、マップ数を 16 として実行し、それぞれがパラメーター値として指定された 1,000 万個のサンプル点を計算します。このパラメーター値を変更すると、Pi の推定値の精度を高めることができます。参考のために、Pi の小数点以下 10 桁までは 3.1415926535 です。
+このサンプルで示したスクリプトでは、Hadoop jar ジョブを送信し、マップ数を 16 として実行し、それぞれがパラメーター値として指定された 1,000 万個のサンプル点を計算します。 このパラメーター値を変更すると、Pi の推定値の精度を高めることができます。 参考のために、Pi の小数点以下 10 桁までは 3.1415926535 です。
 
 **Pi 推定ジョブを送信するには**
 
@@ -164,16 +168,16 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
                                     -ClassName "pi" `
                                     -Arguments "16", "10000000"
 
-## <a name="hdinsight-sample-10gb-graysort"></a>10 GB GraySort
-このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。これも含めたソート ベンチマークの詳細については、[Sortbenchmark](http://sortbenchmark.org/) サイトを参照してください。
+## <a name="a-namehdinsight-sample-10gb-graysorta10-gb-graysort"></a><a name="hdinsight-sample-10gb-graysort"></a>10 GB GraySort
+このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。 使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。 これも含めたソート ベンチマークの詳細については、 [Sortbenchmark](http://sortbenchmark.org/) サイトを参照してください。
 
 このサンプルでは 3 組の MapReduce プログラムを使用します。
 
 1. **TeraGen** は、ソートするデータ行を生成するのに使用できる MapReduce プログラムです。
-2. **TeraSort** は入力データをサンプリングし、MapReduce を使用してデータを合計順にソートします。TeraSort は MapReduce 関数の標準ソートです。ただし、各 reduce のキー範囲を定義する N-1 個のサンプリングされたキーのソート済みリストを使用するカスタム partitioner を使用します。特に、sample[i-1] <= key < sample[i] となるキーはすべて reduce i に送られます。このため、reduce i の出力がすべて reduce i+1 の出力より小さくなることが保証されます。
-3. **TeraValidate** は、出力がグローバルにソートされているか検証する MapReduce プログラムです。出力ディレクトリ内のファイルごとにマップを 1 つ作成します。各マップは各キーが前のキー以下であることを保証します。map 関数は、各ファイルの最初のキーと最後のキーの記録も生成し、reduce 関数は、ファイル i の最初のキーがファイル i-1 の最後のキーよりも大きいことを確認します。問題が見つかった場合は、reduce の出力として範囲外のキーがレポートされます。
+2. **TeraSort** は入力データをサンプリングし、MapReduce を使用してデータを合計順にソートします。 TeraSort は MapReduce 関数の標準ソートです。 特に、sample[i-1] <= key < sample[i] となるキーはすべて reduce i に送られます。 このため、reduce i の出力がすべて reduce i+1 の出力より小さくなることが保証されます。
+3. **TeraValidate** は、出力がグローバルにソートされているか検証する MapReduce プログラムです。 出力ディレクトリ内のファイルごとにマップを 1 つ作成します。各マップは各キーが前のキー以下であることを保証します。 map 関数は、各ファイルの最初のキーと最後のキーの記録も生成し、reduce 関数は、ファイル i の最初のキーがファイル i-1 の最後のキーよりも大きいことを確認します。 問題が見つかった場合は、reduce の出力として範囲外のキーがレポートされます。
 
-3 つのアプリケーションすべてで使用される入力形式と出力形式は、適切な形式のテキスト ファイルを読み書きします。ベンチマーク コンテストでは出力データを複数のノードにレプリケーションする必要がないため、reduce の出力ではレプリケーションが既定の 3 ではなく 1 に設定されます。
+3 つのアプリケーションすべてで使用される入力形式と出力形式は、適切な形式のテキスト ファイルを読み書きします。 ベンチマーク コンテストでは出力データを複数のノードにレプリケーションする必要がないため、reduce の出力ではレプリケーションが既定の 3 ではなく 1 に設定されます。
 
 サンプルでは 3 つのタスクを実行する必要があります。各タスクが、先ほど説明した MapReduce プログラムに対応しています。
 
@@ -187,27 +191,33 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
   
     $teragen = New-AzureRmHDInsightMapReduceJobDefinition `
   
-                                -JarFile "/example/jars/hadoop-mapreduce-examples.jar" ` -ClassName "teragen" ` -Arguments "-Dmapred.map.tasks=50", "100000000", "/example/data/10GB-sort-input"
+                                -JarFile "/example/jars/hadoop-mapreduce-examples.jar" `
+                                -ClassName "teragen" `
+                                -Arguments "-Dmapred.map.tasks=50", "100000000", "/example/data/10GB-sort-input"
   
     $terasort = New-AzureRmHDInsightMapReduceJobDefinition `
   
-                                -JarFile "/example/jars/hadoop-mapreduce-examples.jar" ` -ClassName "terasort" ` -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-input", "/example/data/10GB-sort-output"
+                                -JarFile "/example/jars/hadoop-mapreduce-examples.jar" `
+                                -ClassName "terasort" `
+                                -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-input", "/example/data/10GB-sort-output"
   
     $teravalidate = New-AzureRmHDInsightMapReduceJobDefinition `
   
-                                -JarFile "/example/jars/hadoop-mapreduce-examples.jar" ` -ClassName "teravalidate" ` -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-output", "/example/data/10GB-sort-validate"
+                                -JarFile "/example/jars/hadoop-mapreduce-examples.jar" `
+                                -ClassName "teravalidate" `
+                                -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-output", "/example/data/10GB-sort-validate"
 
-## 次のステップ
-この記事および各サンプルの記事では、Azure PowerShell を使用して HDInsight クラスターに付属するサンプルを実行する方法を説明しました。HDInsight で Pig、Hive、および MapReduce を使用する方法のチュートリアルについては、次のトピックをご覧ください。
+## <a name="next-steps"></a>次のステップ
+この記事および各サンプルの記事では、Azure PowerShell を使用して HDInsight クラスターに付属するサンプルを実行する方法を説明しました。 HDInsight で Pig、Hive、および MapReduce を使用する方法のチュートリアルについては、次のトピックをご覧ください。
 
-* [HDInsight で Hive と Hadoop を使用し、モバイル ハンドセットの使用状況を分析する][hdinsight-get-started]
+* [HDInsight で Hive と Hadoop を使用したモバイル ハンドセットの使用状況の分析][hdinsight-get-started]
 * [HDInsight での Pig と Hadoop の使用][hdinsight-use-pig]
 * [HDInsight での Hive と Hadoop の使用][hdinsight-use-hive]
 * [HDInsight での Hadoop ジョブの送信][hdinsight-submit-jobs]
 * [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
 * [HDInsight での Hadoop のデバッグ: エラー メッセージ][hdinsight-errors]
 
-## 付録 A - ワード カウントのソース コード
+## <a name="appendix-a---the-word-count-source-code"></a>付録 A - ワード カウントのソース コード
     package org.apache.hadoop.examples;
     import java.io.IOException;
     import java.util.StringTokenizer;
@@ -277,8 +287,8 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
       }
 
 
-## 付録 B - ワード カウントのストリーミング ソース コード
-MapReduce プログラムでは、cat.exe アプリケーションを map インターフェイスとして使ってコンソールにテキストをストリーミングし、wc.exe アプリケーションを reduce インターフェイスとして使って、文書からストリーミングされた単語の数を計算します。mapper と reducer はどちらも標準入力ストリーム (stdin) から 1 行ずつ文字を読み取って、標準出力ストリーム (stdout) に書き込みます。
+## <a name="appendix-b---the-word-count-streaming-source-code"></a>付録 B - ワード カウントのストリーミング ソース コード
+MapReduce プログラムでは、cat.exe アプリケーションを map インターフェイスとして使ってコンソールにテキストをストリーミングし、wc.exe アプリケーションを reduce インターフェイスとして使って、文書からストリーミングされた単語の数を計算します。 mapper と reducer はどちらも標準入力ストリーム (stdin) から 1 行ずつ文字を読み取って、標準出力ストリーム (stdout) に書き込みます。
 
     // The source code for the cat.exe (Mapper).
 
@@ -337,10 +347,10 @@ cat.cs ファイルの mapper コードは、[StreamReader][streamreader] オブ
     }
 
 
-wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブジェクトを使用して、mapper の cat.exe によって出力された標準入力ストリームから文字を読み取ります。[Console.Writeline][console-writeline] メソッドを使用して文字を読み取ると、各単語の末尾にある空白および改行文字をカウントして、[Console.Writeline][console-writeline] メソッドを使用して合計を標準出力ストリームに書き込みます。
+wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブジェクトを使用して、mapper の cat.exe によって出力された標準入力ストリームから文字を読み取ります。 [Console.Writeline][console-writeline] メソッドを使用して文字を読み取ると、各単語の末尾にある空白および改行文字をカウントして、 [Console.Writeline][console-writeline] メソッドを使用して合計を標準出力ストリームに書き込みます。
 
-## 付録 C - Pi 推定のソース コード
-検査に利用できる mapper 関数と reducer 関数を含む Pi 推定 Java コードを次に挙げます。mapper プログラムは、指定された数の点を生成して単位正方形内にランダムに配置して、円の内部にある点の数を計算します。reducer プログラムは、mapper が計算した点の数を累計して、4R という公式から Pi の値を推定します。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。
+## <a name="appendix-c---the-pi-estimator-source-code"></a>付録 C - Pi 推定のソース コード
+検査に利用できる mapper 関数と reducer 関数を含む Pi 推定 Java コードを次に挙げます。 mapper プログラムは、指定された数の点を生成して単位正方形内にランダムに配置して、円の内部にある点の数を計算します。 reducer プログラムは、mapper が計算した点の数を累計して、4R という公式から Pi の値を推定します。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。
 
      /**
      * Licensed to the Apache Software Foundation (ASF) under one
@@ -679,7 +689,7 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
      }
      }
 
-## 付録 D -10 GB GraySort のソース コード
+## <a name="appendix-d---the-10gb-graysort-source-code"></a>付録 D -10 GB GraySort のソース コード
 このセクションでは、内容を確認するために TeraSort MapReduce プログラムのコードを示します。
 
     /**
@@ -989,4 +999,8 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 [stdin-stdout-stderr]: https://msdn.microsoft.com/library/3x292kth.aspx
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

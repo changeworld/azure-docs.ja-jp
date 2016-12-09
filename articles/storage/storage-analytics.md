@@ -1,12 +1,12 @@
 ---
-title: Storage Analytics を使用したログとメトリック データの収集 | Microsoft Docs
-description: Storage Analytics では、すべてのストレージ サービスのメトリック データを追跡し、BLOB、キュー、Table Storage のログを収集できます。
+title: "Storage Analytics を使用したログとメトリック データの収集 | Microsoft Docs"
+description: "Storage Analytics では、すべてのストレージ サービスのメトリック データを追跡し、BLOB、キュー、Table Storage のログを収集できます。"
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: robinsh
 manager: carmonm
 editor: tysonn
-
+ms.assetid: 7894993b-ca42-4125-8f17-8f6dfe3dca76
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: robinsh
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: af5fae5c5153c91fe78bdfb310c407a2c4462e04
+
 
 ---
 # <a name="storage-analytics"></a>Storage Analytics
@@ -91,7 +95,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 
     https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log
 
-ストレージ要求がログに記録されるとき、生成されるログの名前は、要求された操作が完了した時刻が基準となります。 たとえば、GetBlob 要求が 2011 年 7 月 31 日の午後 6 時 30 分に完了した場合、 書き込まれるログのプレフィックスは、`blob/2011/07/31/1800/` になります。
+ストレージ要求がログに記録されるとき、生成されるログの名前は、要求された操作が完了した時刻が基準となります。 たとえば、GetBlob 要求が 2011 年 7 月 31 日午後 6 時 30 分に完了した場合、 ログには次のプレフィックス (`blob/2011/07/31/1800/`) が書き込まれます。
 
 ### <a name="log-metadata"></a>ログのメタデータ
 すべてのログ BLOB はメタデータと共に格納されます。このメタデータを使って、BLOB に含まれるログ データを特定できます。 それぞれのメタデータ属性について次の表で説明します。
@@ -188,6 +192,9 @@ Storage Analytics のデータで課金対象の要求を調べるときには�
 * [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx)
 * [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Azure アプリケーションの障害復旧 | Microsoft Docs
-description: Microsoft Azure での障害復旧に対応したアプリケーションを設計するための方法に関する技術的概要と詳細。
-services: ''
+title: "Azure アプリケーションの障害復旧 | Microsoft Docs"
+description: "Microsoft Azure での障害復旧に対応したアプリケーションを設計するための方法に関する技術的概要と詳細。"
+services: 
 documentationcenter: na
 author: adamglick
 manager: saladki
-editor: ''
-
+editor: 
+ms.assetid: f9e0cbdc-ec82-46dc-bee6-558b35518252
 ms.service: resiliency
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 416ec840c60bf7446e37aeda241fc2646f83a52f
+
 
 ---
 # <a name="disaster-recovery-for-applications-built-on-microsoft-azure"></a>Microsoft Azure 上に構築されたアプリケーションの障害復旧
@@ -148,7 +152,7 @@ Azure Storage キューを使用してトランザクション データを保�
 可能性のある実装の 1 つは、前の例で中間キューを使用するものです。 最終的なストレージ先へのデータを処理する worker ロールは、プライマリ リージョンとセカンダリ リージョンの両方で変更を行うことができます。 これらは簡単なタスクではなく、レプリケーション コードの詳細なガイダンスはこの記事の範囲を超えています。 重要なのは、セカンダリ リージョンへのデータのレプリケート方法に多くの時間を費やし、十分にテストすることです。 さらに、可能性のあるデータの不整合や重複トランザクションがフェールオーバーおよび回復のプロセスで正しく処理されることを確認するために、追加の作業とテストを実行することもできます。
 
 > [!NOTE]
-> このドキュメントの大部分では、サービスとしてのプラットフォーム (PaaS) について説明します。 ただし、ハイブリッド アプリケーションのための追加のレプリケーション オプションおよび可用性オプションでは、Azure Virtual Machines を使用します。 これらのハイブリッド アプリケーションは、サービスとしてのインフラストラクチャ (IaaS) を使用して、Azure の仮想マシンで SQL Server をホストします。 これにより、AlwaysOn 可用性グループやログ配布などの SQL Server の従来の可用性アプローチを使用できます。 AlwaysOn などの一部のテクニックは、オンプレミスの SQL Server インスタンスと Azure Virtual Machines の間でのみ機能します。 詳細については、「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
+> このドキュメントの大部分では、サービスとしてのプラットフォーム (PaaS) について説明します。 ただし、ハイブリッド アプリケーションのための追加のレプリケーション オプションおよび可用性オプションでは、Azure Virtual Machines を使用します。 これらのハイブリッド アプリケーションは、サービスとしてのインフラストラクチャ (IaaS) を使用して、Azure の仮想マシンで SQL Server をホストします。 これにより、AlwaysOn 可用性グループやログ配布などの SQL Server の従来の可用性アプローチを使用できます。 AlwaysOn などの一部のテクニックは、オンプレミスの SQL Server インスタンスと Azure Virtual Machines の間でのみ機能します。 詳細については、「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 > 
 > 
 
@@ -242,7 +246,7 @@ Azure Storage キューを使用してトランザクション データを保�
 
 このようなハイブリッド アーキテクチャには、いくつかの課題があります。 まず、この記事のほとんどでは、PaaS アーキテクチャ パターンについて説明しています。 Azure の一般的な PaaS アプリケーションは、ロール、クラウド サービス、Traffic Manager などの Azure 固有の構造に依存します。 この種の PaaS アプリケーション用のオンプレミス ソリューションを作成するには、まったく異なるアーキテクチャが必要です。 これは、管理やコストの点で実現できない場合があります。
 
-一方、障害復旧用のハイブリッド ソリューションでは、クラウドに単に移動する従来のアーキテクチャに対する課題はあまりありません。 これは、IaaS を使用するアーキテクチャにも当てはまります。 IaaS アプリケーションは、オンプレミスに同等の機能を直接持つことができるクラウド内の仮想マシンを使用します。 仮想ネットワークの使用により、クラウドのマシンをオンプレミスのネットワーク リソースと接続することもできます。 これにより、PaaS のみのアプリケーションでは実現できない複数の可能性が生まれます。 たとえば、SQL Server は、AlwaysOn 可用性グループやデータベース ミラーリングなどの障害復旧ソリューションを利用できます。 詳細については、「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
+一方、障害復旧用のハイブリッド ソリューションでは、クラウドに単に移動する従来のアーキテクチャに対する課題はあまりありません。 これは、IaaS を使用するアーキテクチャにも当てはまります。 IaaS アプリケーションは、オンプレミスに同等の機能を直接持つことができるクラウド内の仮想マシンを使用します。 仮想ネットワークの使用により、クラウドのマシンをオンプレミスのネットワーク リソースと接続することもできます。 これにより、PaaS のみのアプリケーションでは実現できない複数の可能性が生まれます。 たとえば、SQL Server は、AlwaysOn 可用性グループやデータベース ミラーリングなどの障害復旧ソリューションを利用できます。 詳細については、「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 また、IaaS ソリューションは、フェールオーバー オプションとして Azure を使用する簡単なパスをオンプレミスのアプリケーションに提供します。 既存のオンプレミス リージョンに完全に機能するアプリケーションがあるかもしれません。 しかし、フェールオーバーのために地理的に別のリージョンを維持するためのリソースがなかったらどうでしょう。 仮想マシンと仮想ネットワークを使用して、Azure でアプリケーションを実行できます。 その場合は、クラウドにデータを同期するプロセスを定義します。 Azure のデプロイはフェールオーバーに使用するセカンダリ リージョンになります。 プライマリ リージョンはオンプレミスのアプリケーションのままです。 IaaS のアーキテクチャと機能の詳細については、 [Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)を参照してください。
 
@@ -281,6 +285,9 @@ Automation に関するベスト プラクティスとしては、Azure 障害�
 ## <a name="next-steps"></a>次のステップ
 この記事は、 [Microsoft Azure 上に構築されたアプリケーションの障害復旧と高可用性](resiliency-disaster-recovery-high-availability-azure-applications.md)に関する一連の記事に属しています。 このシリーズの前の記事は、「 [Microsoft Azure 上に構築されたアプリケーションの高可用性](resiliency-high-availability-azure-applications.md)」です。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

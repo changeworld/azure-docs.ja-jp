@@ -1,14 +1,14 @@
 ---
-title: Azure ポータルを使用した仮想マシン スケール セットの作成 | Microsoft Docs
-description: Azure Portal を使用してスケール セットをデプロイします。
-keywords: 仮想マシン スケール セット
+title: "Azure ポータルを使用した仮想マシン スケール セットの作成 | Microsoft Docs"
+description: "Azure Portal を使用してスケール セットをデプロイします。"
+keywords: "仮想マシン スケール セット"
 services: virtual-machine-scale-sets
-documentationcenter: ''
+documentationcenter: 
 author: gatneil
 manager: madhana
 editor: tysonn
 tags: azure-resource-manager
-
+ms.assetid: 9c1583f0-bcc7-4b51-9d64-84da76de1fda
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
@@ -16,6 +16,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: gatneil
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8c4248077626cba2f1ace3c119d301b99247e19f
+
 
 ---
 # <a name="create-a-virtual-machine-scale-set-using-the-azure-portal"></a>Azure ポータルを使用して仮想マシン スケール セットを作成する
@@ -64,6 +68,9 @@ Visual Studio を使用してスケール セットをデプロイする方法�
 
 全般的な情報については、 [スケール セットのメイン ランディング ページ](https://azure.microsoft.com/services/virtual-machine-scale-sets/)をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,13 +1,13 @@
 ---
-title: Linux ベースの HDInsight での Hadoop YARN アプリケーション ログへのアクセス | Microsoft Docs
-description: コマンドラインと Web ブラウザーの両方を使用して、Linux ベース HDInsight (Hadoop) クラスターで YARN アプリケーション ログにアクセスする方法について説明します。
+title: "Linux ベースの HDInsight での Hadoop YARN アプリケーション ログへのアクセス | Microsoft Docs"
+description: "コマンドラインと Web ブラウザーの両方を使用して、Linux ベース HDInsight (Hadoop) クラスターで YARN アプリケーション ログにアクセスする方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 3ec08d20-4f19-4a8e-ac86-639c04d2f12e
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,13 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f03c595977f098f19d396cc460c73e27163f070c
+
 
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Linux ベースの HDInsight での YARN アプリケーション ログへのアクセス
 このドキュメントでは、Azure HDInsight の Hadoop クラスターで完了した YARN (Yet Another Resource Negotiator) アプリケーションのログにアクセスする方法について説明します。
 
 > [!NOTE]
-> このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。 Windows ベースのクラスターについては、「 [プログラムで HDInsight の Hadoop の YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs.md)
+> このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。 Windows ベースのクラスターについては、「[プログラムで HDInsight の Hadoop の YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs.md)
 > 
 > 
 
@@ -29,7 +33,7 @@ ms.author: larryfr
 * Linux ベースの HDInsight クラスター。
 * ResourceManager Logs Web UI にアクセスするには、 [SSH トンネルを作成](hdinsight-linux-ambari-ssh-tunnel.md) しておく必要があります。
 
-## <a name="<a-name="yarntimelineserver"></a>yarn-timeline-server"></a><a name="YARNTimelineServer"></a>YARN タイムライン サーバー
+## <a name="a-nameyarntimelineserverayarn-timeline-server"></a><a name="YARNTimelineServer"></a>YARN タイムライン サーバー
 [YARN タイムライン サーバー](http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) は、2 つの異なるインターフェイスを通じて、完了したアプリケーションに関する全般的な情報と、フレームワーク固有のアプリケーション情報を提供します。 具体的には次の処理が行われます。
 
 * HDInsight クラスター上での汎用アプリケーション情報の格納と取得はバージョン 3.1.1.374 以降で有効になります。
@@ -42,7 +46,7 @@ ms.author: larryfr
 * アプリケーションを完了するために実行された試みに関する情報
 * 特定のアプリケーションの試行で使用されたコンテナー
 
-## <a name="<a-name="yarnappsandlogs"></a>yarn-applications-and-logs"></a><a name="YARNAppsAndLogs"></a>YARN アプリケーションとログ
+## <a name="a-nameyarnappsandlogsayarn-applications-and-logs"></a><a name="YARNAppsAndLogs"></a>YARN アプリケーションとログ
 YARN はアプリケーションのスケジュール設定/監視からリソース管理を切り離すことで、複数のプログラミング モデル (MapReduce はそのうちの 1 つ) をサポートします。 これは、グローバルな *リソース マネージャー* (RM)、ワーカー ノードごとの*ノード マネージャー* (NM)、アプリケーションごとの*アプリケーション マスター* (AM) によって実現されます。 アプリケーションごとの AM は、アプリケーションを実行するためのリソース (CPU、メモリ、ディスク、ネットワーク) を RM と調整します。 RM は NM と連携して、これらのリソースに *コンテナー*としての許可を付与します。 AM は、RM によって自身に割り当てられたコンテナーの進行状況を追跡します。 アプリケーションはその性質によって、多くのコンテナーを必要とする場合があります。
 
 さらに、クラッシュが発生した場合または AM と RM の間で通信が失われた場合、アプリケーションを完了するために、各アプリケーションで複数の*アプリケーション試行*が行われる場合があります。 そのため、アプリケーションの特定の試行にコンテナーが付与されます。 コンテナーは YARN アプリケーションによって実行される作業の基本単位のコンテキストを提供します。そのコンテキストの中で行われるすべての作業は、コンテナーが割り当てられた 1 つのワーカー ノードで実行されます。 詳細については、[YARN の概念][YARN-concepts]に関するページをご覧ください。
@@ -74,7 +78,7 @@ YARN ResourceManager UI は、クラスター ヘッドノードで実行され�
 SSH トンネルを作成したら、次の手順に従って YARN のログを表示します。
 
 1. Web ブラウザーで、https://CLUSTERNAME.azurehdinsight.net に移動します。 CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
-2. 左側のサービスの一覧で、 __[YARN]__を選択します。
+2. 左側のサービスの一覧で、 **[YARN]**を選択します。
    
     ![選択された YARN サービス](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnservice.png)
 3. **[クイック リンク]** ボックスの一覧で、クラスター ヘッドノードのいずれかを選択し、**[ResourceManager Log]** を選択します。
@@ -91,6 +95,6 @@ SSH トンネルを作成したら、次の手順に従って YARN のログを�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

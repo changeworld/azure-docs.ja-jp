@@ -1,12 +1,12 @@
 ---
-title: Azure 診断ログの概要 | Microsoft Docs
-description: Azure 診断ログの概要と、診断ログを使用して Azure リソース内で発生するイベントを把握する方法について説明します。
+title: "Azure 診断ログの概要 | Microsoft Docs"
+description: "Azure 診断ログの概要と、診断ログを使用して Azure リソース内で発生するイベントを把握する方法について説明します。"
 author: johnkemnetz
 manager: rboucher
-editor: ''
+editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-
+ms.assetid: fe8887df-b0e6-46f8-b2c0-11994d28e44f
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: johnkem; magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 61a54b3cb170b7961a4900d2c353bea48ae83d64
+
 
 ---
 # <a name="overview-of-azure-diagnostic-logs"></a>Azure 診断ログの概要
@@ -35,7 +39,7 @@ ms.author: johnkem; magoedte
 * 送信するログ カテゴリ。
 * 各ログ カテゴリをストレージ アカウントに保持する期間。リテンション期間 0 日の場合、ログは永続的に保持されます。 それ以外の場合、この値は 1 ～ 2,147,483,647 の範囲の数にすることができます。 保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
 
-これらの設定は、Azure ポータルのリソースの [診断] ブレード、Azure PowerShell および CLI のコマンド、または [Insights REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx)を使用して簡単に構成できます。
+これらの設定は、Azure Portal 内のリソースの [診断] ブレード、Azure PowerShell および CLI のコマンド、または [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) を使用して簡単に構成できます。
 
 > [!WARNING]
 > コンピューティング リソース (VM や Service Fabric など) の診断ログとメトリックでは、 [出力の構成と選択に別のメカニズム](../azure-diagnostics.md)を使用します。
@@ -43,7 +47,7 @@ ms.author: johnkem; magoedte
 > 
 
 ## <a name="how-to-enable-collection-of-diagnostic-logs"></a>診断ログの収集を有効にする方法
-診断ログの収集は、リソースの作成中に有効にすることも、リソースの作成後にポータルのリソースのブレードで有効にすることもできます。 また、診断ログは、Azure PowerShell または CLI のコマンドを使用するか、Insights REST API を使用していつでも有効にすることができます。
+診断ログの収集は、リソースの作成中に有効にすることも、リソースの作成後にポータルのリソースのブレードで有効にすることもできます。 また、診断ログは、Azure PowerShell または CLI のコマンドを使用するか、Azure Monitor REST API を使用していつでも有効にすることができます。
 
 > [!TIP]
 > これらの手順は、すべてのリソースに直接適用できるわけではありません。 特定のリソースの種類に適用できる具体的な手順については、このページの最後にあるスキーマのリンクを参照してください。
@@ -53,7 +57,7 @@ ms.author: johnkem; magoedte
 [リソース テンプレートを使用して、リソースの作成時に診断設定を有効にする方法については、こちらの記事をご覧ください。](monitoring-enable-diagnostic-logs-using-template.md)
 
 ### <a name="enable-diagnostic-logs-in-the-portal"></a>ポータルでの診断ログの有効化
-リソースの作成時に Azure ポータルで診断ログを有効にするには、次の手順に従います。
+コンピューティング タイプのリソースの場合には、その作成時に Azure Portal で Windows または Linux の Azure Diagnostics 拡張機能を有効にすると、診断ログを有効にできます。
 
 1. **[新規]** に移動し、興味のあるリソースを選択します。
 2. 基本設定を構成し、サイズを選択したら、**[設定]** ブレードの **[監視]** で **[有効]** を選択し、診断ログの保存先となるストレージ アカウントを選択します。 診断データをストレージ アカウントに送信する際には、ストレージとトランザクションの通常のデータ料金が発生します。
@@ -61,7 +65,7 @@ ms.author: johnkem; magoedte
    ![リソースの作成時に診断ログを有効にする](./media/monitoring-overview-of-diagnostic-logs/enable-portal-new.png)
 3. **[OK]** をクリックしてリソースを作成します。
 
-リソースの作成後に Azure ポータルで診断ログを有効にするには、次の手順を実行します。
+コンピューティング以外のリソースについては、リソースの作成後に Azure Portal で以下を行うと、診断ログを有効にできます。
 
 1. リソースのブレードに移動し、 **[診断]** ブレードを開きます。
 2. **[オン]** をクリックし、ストレージ アカウントおよび Event Hubs を選択します。
@@ -70,7 +74,7 @@ ms.author: johnkem; magoedte
 3. **[ログ]** で、収集またはストリーミングする**ログ カテゴリ**を選択します。
 4. [ **Save**] をクリックします。
 
-### <a name="enable-diagnostic-logs-programmatically"></a>プログラムによる診断ログの有効化
+### <a name="enable-diagnostic-logs-via-powershell"></a>PowerShell での診断ログの有効化
 Azure PowerShell コマンドレットを使用して診断ログを有効にするには、次のコマンドを使用します。
 
 ストレージ アカウントへの診断ログの保存を有効にするには、次のコマンドを使用します。
@@ -98,6 +102,7 @@ Azure ポータルで、Log Analytics ワークスペース ID を取得でき�
 
 このパラメーターを組み合わせて、複数の出力オプションを有効にできます。
 
+### <a name="enable-diagnostic-logs-via-cli"></a>CLI での診断ログの有効化
 Azure CLI を使用して診断ログを有効にするには、次のコマンドを使用します。
 
 ストレージ アカウントへの診断ログの保存を有効にするには、次のコマンドを使用します。
@@ -125,7 +130,8 @@ Azure ポータルで、Log Analytics ワークスペース ID を取得でき�
 
 このパラメーターを組み合わせて、複数の出力オプションを有効にできます。
 
-Insights REST API を使用して診断設定を変更する場合は、 [こちらのドキュメント](https://msdn.microsoft.com/library/azure/dn931931.aspx)をご覧ください。
+### <a name="enable-diagnostic-logs-via-rest-api"></a>REST API での診断ログの有効化
+Azure Monitor REST API を使用して診断設定を変更する場合は、[こちらのドキュメント](https://msdn.microsoft.com/library/azure/dn931931.aspx)をご覧ください。
 
 ## <a name="manage-diagnostic-settings-in-the-portal"></a>ポータルでの診断設定の管理
 すべてのリソースを診断設定で確実かつ適切に設定されるようにするには、ポータルで **[監視]** ブレードに移動して、**[診断ログ]** ブレードを開きます。
@@ -146,6 +152,8 @@ Insights REST API を使用して診断設定を変更する場合は、 [こち
 > 診断ログは、このビューだけに表示され、診断設定がストレージ アカウントに保存されるように構成した場合にのみダウンロードできます。
 > 
 > 
+
+**[診断設定]** のリンクをクリックすると [診断設定] ブレードが開き、選択したリソースの診断設定を有効化、無効化、または変更できます。
 
 ## <a name="supported-services-and-schema-for-diagnostic-logs"></a>診断ログでサポートされているサービスとスキーマ
 診断ログのスキーマは、リソースとログ カテゴリによって異なります。 サポートされているサービスとそのスキーマを次に示します。
@@ -196,9 +204,12 @@ Insights REST API を使用して診断設定を変更する場合は、 [こち
 
 ## <a name="next-steps"></a>次のステップ
 * [診断ログを **Event Hubs** にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-* [Insights REST API を使用して診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+* [Azure Monitor REST API を使用して診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 * [ログを OMS Log Analytics で分析する](../log-analytics/log-analytics-azure-storage-json.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

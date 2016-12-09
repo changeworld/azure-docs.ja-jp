@@ -1,12 +1,12 @@
 ---
-title: AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化
-description: AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化について説明します。
+title: "AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化"
+description: "AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: a0a79f3d-76a1-4994-9202-59b91a2230e0
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8b0758e1fa5f12dc49d8548b733aefdf1f43d6f0
+
 
 ---
 # <a name="encrypting-your-content-with-storage-encryption-using-ams-rest-api"></a>AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化
@@ -92,7 +96,7 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
 
     ストレージ暗号化では、次のプロパティを要求本文に含める必要があります。
 
-    要求本文のプロパティ   | Description
+    要求本文のプロパティ    | Description
     ---|---
     ID | "nb:kid:UUID:<NEW GUID>" 形式を使用して生成する ContentKey ID です。
     ContentKeyType | 整数によるこのコンテンツ キーの種類です。 ストレージの暗号化には、値 1 を渡します。
@@ -364,6 +368,6 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

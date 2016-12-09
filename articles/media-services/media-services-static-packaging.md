@@ -1,12 +1,12 @@
 ---
-title: Azure Media Packager を使用して静的パッケージ タスクを実行する | Microsoft Docs
-description: このトピックでは、Azure Media Packager で実行されるさまざまなタスクについて説明します。
+title: "Azure Media Packager を使用して静的パッケージ タスクを実行する | Microsoft Docs"
+description: "このトピックでは、Azure Media Packager で実行されるさまざまなタスクについて説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 0582628e-a525-4a78-90ac-9f7fc1cd909f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4f05f188633e2d5103e29ae4501f7ea9a832acba
+
 
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media Packager を使用して静的パッケージ タスクを実行する
@@ -1455,6 +1459,9 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

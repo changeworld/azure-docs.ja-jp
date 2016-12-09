@@ -1,19 +1,23 @@
 ---
-title: Azure Media Analytics での顔と感情の検出 | Microsoft Docs
-description: このトピックでは、Azure Media Analytics で顔と感情を検出する方法を示します。
+title: "Azure Media Analytics での顔と感情の検出 | Microsoft Docs"
+description: "このトピックでは、Azure Media Analytics で顔と感情を検出する方法を示します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 5ca4692c-23f1-451d-9d82-cbc8bf0fd707
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 11/15/2016
 ms.author: milanga;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: 48a4cdf7d50e765ee42cb44d12d1dafd49c13795
+ms.openlocfilehash: 3147eba8bd31d3d05bd990571a986316d6f5093f
+
 
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics での顔と感情の検出
@@ -44,7 +48,7 @@ ms.author: milanga;juliako;
 
 検出されて追跡される顔に対しては、画像内での顔の位置を示す座標 (左端、上端、幅、高さ、ピクセル単位) と、追跡対象の個人を識別する顔 ID 番号が返されます。 顔 ID 番号は、前向きの顔が失われたりフレーム内で重なったりするとリセットされる場合があり、同じ顔に複数の ID が割り当てられる可能性があります。
 
-### <a name="<a-id="output_elements"></a>elements-of-the-output-json-file"></a><a id="output_elements"></a>出力 JSON ファイルの要素
+### <a name="a-idoutputelementsaelements-of-the-output-json-file"></a><a id="output_elements"></a>出力 JSON ファイルの要素
 顔の検出と追跡の操作での出力結果は、顔のメタデータが含まれる JSON 形式ファイルです。
 
 顔の検出と追跡の JSON には、次の属性が含まれます。
@@ -70,18 +74,11 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 * 開始/タイムスケール = 2.1 秒
 * 秒数 x (フレームレート/タイムスケール) = 63 フレーム
 
-顔の検出と追跡のために JSON からフレーム単位の形式を抽出する簡単な例を次に示します。
-
-    var faceDetectionResultJsonString = operationResult.ProcessingResult;
-    var faceDetecionTracking = 
-         JsonConvert.DeserializeObject<FaceDetectionResult>(faceDetectionResultJsonString, settings);
-
-
 ## <a name="face-detection-input-and-output-example"></a>顔検出の入力と出力の例
 ### <a name="input-video"></a>入力ビデオ
 [入力ビデオ](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-(preset)"></a>タスクの構成 (プリセット)
+### <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Face Detector**でタスクを作成するときは、構成プリセットを指定する必要があります。 次の構成プリセットは、顔検出用だけです。
 
     {"version":"1.0"}
@@ -140,7 +137,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 ### <a name="input-video"></a>入力ビデオ
 [入力ビデオ](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-(preset)"></a>タスクの構成 (プリセット)
+### <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Face Detector**でタスクを作成するときは、構成プリセットを指定する必要があります。 次の構成プリセットでは、感情検出に基づく JSON の作成を指定しています。
 
     {
@@ -514,6 +511,9 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

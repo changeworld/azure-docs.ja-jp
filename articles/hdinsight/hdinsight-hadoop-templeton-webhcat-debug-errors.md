@@ -1,13 +1,13 @@
 ---
-title: HDInsight の WebHCat エラーの説明と解決策
-description: HDInsight で WebHCat から返される一般的なエラーの原因とその解決策について説明します。
+title: "HDInsight の WebHCat エラーの説明と解決策"
+description: "HDInsight で WebHCat から返される一般的なエラーの原因とその解決策について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 1b3d94b1-207d-4550-aece-21dc45485549
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -15,12 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b57bd17a8887dbf9bdecee4a3ad79b55ec7fb610
+
 
 ---
-# <a name="understand-and-resolve-errors-received-from-webhcat-(templeton,)-on-hdinsight"></a>HDInsight で WebHCat (Templeton) から受信したエラーの説明と解決策
+# <a name="understand-and-resolve-errors-received-from-webhcat-templeton-on-hdinsight"></a>HDInsight で WebHCat (Templeton) から受信したエラーの説明と解決策
 WebHCat (旧称 Templeton) を使用して HDInsight を使用するときに、エラーが発生することがあります。 このドキュメントでは、一般的なエラーのガイダンスとして、エラーが発生する理由と、そのエラーを解決策として考えられるものを説明します。
 
-## <a name="what-is-webhcat?"></a>WebHCat とは
+## <a name="what-is-webhcat"></a>WebHCat とは
 [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) は、[Hadoop](https://cwiki.apache.org/confluence/display/Hive/HCatalog) のテーブルおよびストレージの管理層である HCatalog 用の REST API です。 WebHCat は、HDInsight クラスターで既定で有効になっており、ジョブの送信、ジョブの状態の取得などの操作をクラスターにログインすることなく行うために、さまざまなツールで使用されます。
 
 ## <a name="modifying-configuration"></a>構成の変更
@@ -55,7 +59,7 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 | --- | --- |
 | これは、通常、クラスターのプライマリ ヘッドノードとセカンダリ ヘッドノードの間のフェールオーバー中に発生します。 |2 分待ってから操作をやり直してください。 |
 
-## <a name="bad-request-content:-could-not-find-job"></a>Bad request Content: Could not find job
+## <a name="bad-request-content-could-not-find-job"></a>Bad request Content: Could not find job
 **HTTP 状態コード**: 400
 
 | 原因 | 解決策 |
@@ -82,6 +86,6 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

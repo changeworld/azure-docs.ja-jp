@@ -1,13 +1,13 @@
 ---
-title: HDInsight .NET SDK を使用した Hive クエリの実行 | Microsoft Docs
-description: HDInsight .NET SDK を使用して、Hadoop ジョブを Azure HDInsight Hadoop に送信する方法について説明します。
+title: "HDInsight .NET SDK を使用した Hive クエリの実行 | Microsoft Docs"
+description: "HDInsight .NET SDK を使用して、Hadoop ジョブを Azure HDInsight Hadoop に送信する方法について説明します。"
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
-
+ms.assetid: 4e291890-f8b4-426c-b5e8-d4fd512ff042
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,26 +15,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
+ms.openlocfilehash: 2168147972184e14705781765b9afb3f2ee902e3
+
 
 ---
-# HDInsight .NET SDK を使用した Hive クエリの実行
-[!INCLUDE [hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
+# <a name="run-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用した Hive クエリの実行
+[!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
 HDInsight .NET SDK を使用して Hive クエリを送信する方法について説明します。
 
 > [!NOTE]
-> この記事の手順は、Windows クライアントから実行する必要があります。Linux、OS X、または Unix クライアントで Hive を使用する方法については、この記事の上部に表示されているタブ セレクターをクリックしてください。
+> この記事の手順は、Windows クライアントから実行する必要があります。 Linux、OS X、または Unix クライアントで Hive を使用する方法については、この記事の上部に表示されているタブ セレクターをクリックしてください。
 > 
 > 
 
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-* **HDInsight の Hadoop クラスター**。「[クラスターと SQL Database の作成](hdinsight-use-sqoop.md#create-cluster-and-sql-database)」をご覧ください。
+* **HDInsight の Hadoop クラスター**。 詳細については、[HDInsight での Linux ベース Hadoop の使用](hdinsight-use-sqoop.md#create-cluster-and-sql-database)に関するページを参照してください。
 * **Visual Studio 2012/2013/2015**。
 
-## HDInsight .NET SDK を使用した Hive クエリの送信
-HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。
+## <a name="submit-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用した Hive クエリの送信
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。 
 
 **ジョブを送信するには**
 
@@ -43,7 +47,8 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 3. 次のコードを使用します。
-   
+
+    ```csharp
         using System.Collections.Generic;
         using System.IO;
         using System.Text;
@@ -124,10 +129,11 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
                 }
             }
         }
+    ```
 4. **F5** キーを押してアプリケーションを実行します。
 
-## 次のステップ
-この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。詳細については、次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure HDInsight の概要][hdinsight-get-started]
 * [HDInsight で Hadoop クラスターを作成する][hdinsight-provision]
@@ -140,4 +146,10 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

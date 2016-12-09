@@ -1,12 +1,12 @@
 ---
-title: フィルターと動的マニフェスト | Microsoft Docs
-description: このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。
+title: "フィルターと動的マニフェスト | Microsoft Docs"
+description: "このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: cenkdin
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: ff102765-8cee-4c08-a6da-b603db9e2054
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: cenkdin;juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 6b322f69a1b4dec77a1c8c8bcd0e5f231f9617ff
+
 
 ---
 # <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
@@ -32,7 +36,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 以下に、マニフェスト ファイルの例を示します。 
 
-    <?xml version="1.0" encoding="UTF-8"?>  
+    <?xml version="1.0" encoding="UTF-8"?>    
     <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="330187755" TimeScale="10000000">
 
     <StreamIndex Chunks="17" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="8">
@@ -88,7 +92,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 > 
 > 
 
-### <a name="<a-id="filters"></a>filters"></a><a id="filters"></a>フィルター
+### <a name="a-idfiltersafilters"></a><a id="filters"></a>フィルター
 次の 2 種類のアセット フィルターがあります。 
 
 * グローバル フィルター (Azure Media Services アカウントのすべてのアセットに適用可能。有効期間付きアカウント) 
@@ -96,7 +100,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 グローバル フィルターとローカル フィルターのプロパティはまったく同じです。 この 2 つのフィルターの主な違いは、適しているシナリオが異なることです。 グローバル フィルターは通常、デバイス プロファイル (演奏フィルター処理) に適していますが、ローカル フィルターは特定のアセットのトリミングに使用できます。
 
-## <a name="<a-id="scenarios"></a>common-scenarios"></a><a id="scenarios"></a>一般的なシナリオ
+## <a name="a-idscenariosacommon-scenarios"></a><a id="scenarios"></a>一般的なシナリオ
 コンテンツ (ストリーミング ライブ イベントまたはビデオ オンデマンド) を顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあると既に説明しました。 それに加えて、アセットのフィルタ―処理や、 **動的マニフェスト**の使用に関するその他の要件も考慮する必要があります。 次のセクションでは、さまざまなフィルター処理のシナリオについて、簡単に説明します。
 
 * 特定のデバイスで処理できるオーディオやビデオ演奏のサブセットのみを指定する (アセットに関連付けられているすべての演奏ではなく)。 
@@ -124,7 +128,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 ![トリミングの開始][trim_filter]
 
-## <a name="creating-sub-clips-(views)-from-a-live-archive"></a>ライブ アーカイブからサブクリップ (ビュー) を作成する
+## <a name="creating-sub-clips-views-from-a-live-archive"></a>ライブ アーカイブからサブクリップ (ビュー) を作成する
 多くのライブ イベントは長時間実行され、ライブ アーカイブに複数のイベントが含まれる場合があります。 ライブ イベントの終了後に、ブロードキャスタはライブ アーカイブを論理プログラムの開始と終了シーケンスに分割することもあります。 この場合、ライブ アーカイブの後処理や個別のアセットの作成を行わずに、これらの仮想ブログラムを個別に発行します (これでは CDN にキャッシュされた既存のフラグメントを利用できません)。 このような仮想プログラム (サブクリップ) の例として、フットボールやバスケットボールの試合のクオーター、野球のイニング、オリンピック大会の午後の各イベントなどが挙げられます。
 
 動的マニフェストでは、開始時刻と終了時刻を使用したフィルターを作成し、ライブ アーカイブ上に仮想ビューを作成できます。 
@@ -135,12 +139,12 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 ![スキー][skiing]
 
-## <a name="adjusting-presentation-window-(dvr)"></a>プレゼンテーション ウィンドウ (DVR) を調整する
+## <a name="adjusting-presentation-window-dvr"></a>プレゼンテーション ウィンドウ (DVR) を調整する
 現在、Azure Media Services では 5 分～ 25 時間の期間を構成できる循環アーカイブを提供しています。 マニフェストのフィルタ―処理を使用して、メディアを削除せずにアーカイブ上に DVR のローリングウィンドウを作成できます。 ブロードキャスタが、ライブ エッジとともに移動する限定的な DVR ウィンドウを配信しつつ、規模の大きいアーカイブ ウインドウも確保しておく必要があるといったシナリオはよくあります。 ブロードキャスタは、クリップを強調表示するために DVR ウィンドウ外のデータを使用し、さまざまなデバイスに合わせて異なる DVR ウィンドウを用意する必要があります。 たとえば、ほとんどのモバイル デバイスでは大きな DVR ウィンドウに対応していません (DVR ウィンドウはモバイル デバイスでは 2 分、デスクトップ クライアントでは 1 時間使用できます)。
 
 ![DVR ウィンドウ][dvr_filter]
 
-## <a name="adjusting-livebackoff-(live-position)"></a>LiveBackoff (ライブ位置) を調整する
+## <a name="adjusting-livebackoff-live-position"></a>LiveBackoff (ライブ位置) を調整する
 マニフェストのフィルター処理を使用して、ライブ プログラムのライブ エッジから数秒を削除できます。 これにより、ブロードキャスタはプレビュー公開ポイントでプレゼンテーションを視聴し、視聴者がストリームを受信する前の広告の挿入ポイントを作成できます (通常 30 秒後退します)。 ブロードキャスタは、広告のチャンスの前にクライアントが情報を受信して処理するよう、これらの広告をクライアント フレームワークにプッシュできます。
 
 広告のサポートに加えて、LiveBackoff はクライアントのライブ ダウンロード位置の調整に使用することもできます。これにより、クライアントの接続が安定せず、ライブ エッジに到達した場合でも、404 または 412 の HTTP エラーを発生させずにサーバーからフラグメントを取得できます。
@@ -157,7 +161,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 [REST API を使用してフィルターを作成する](media-services-rest-dynamic-manifest.md)
 
-## <a name="combining-multiple-filters-(filter-composition)"></a>複数のフィルターを結合する (フィルターの構成)
+## <a name="combining-multiple-filters-filter-composition"></a>複数のフィルターを結合する (フィルターの構成)
 1 つの URL で複数のフィルターを結合することもできます。 
 
 次のシナリオは、フィルターを結合する理由を示しています。
@@ -209,6 +213,6 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

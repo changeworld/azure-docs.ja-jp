@@ -1,13 +1,13 @@
 ---
-title: Power BI Embedded の行レベルのセキュリティ
-description: Power BI Embedded の行レベルのセキュリティの詳細
+title: "Power BI Embedded の行レベルのセキュリティ"
+description: "Power BI Embedded の行レベルのセキュリティの詳細"
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 7936ade5-2c75-435b-8314-ea7ca815867a
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a98185bf44af2271f5ded04c05d3134321db536a
+
 
 ---
 # <a name="row-level-security-with-power-bi-embedded"></a>Power BI Embedded の行レベルのセキュリティ
@@ -102,6 +106,9 @@ username プロパティが存在する場合は、roles にも 1 つ以上の�
 ## <a name="see-also"></a>関連項目
 [Power の行レベルのセキュリティ (RLS)](https://powerbi.microsoft.com/en-us/documentation/powerbi-admin-rls/)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

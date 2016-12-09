@@ -1,13 +1,13 @@
 ---
-title: Office 365 テナントを Azure サブスクリプションで使用する | Microsoft Docs
-description: Office 365 ディレクトリ (テナント) を Azure サブスクリプションに追加して両者の関連付けを行う方法について説明します。
-services: ''
-documentationcenter: ''
+title: "Office 365 テナントを Azure サブスクリプションで使用する | Microsoft Docs"
+description: "Office 365 ディレクトリ (テナント) を Azure サブスクリプションに追加して両者の関連付けを行う方法について説明します。"
+services: 
+documentationcenter: 
 author: JiangChen79
 manager: mbaldwin
-editor: ''
+editor: 
 tags: billing,top-support-issue
-
+ms.assetid: cc9c57c6-7bfd-4dea-9027-c75ef3737589
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: ibiza
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: cjiang
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 36cd9eac7be2d99971d8d2e227cd4b761df82d08
+
 
 ---
 # <a name="associate-an-office-365-tenant-with-an-azure-subscription"></a>Office 365 テナントの Azure サブスクリプションへの関連付け
@@ -161,6 +165,9 @@ Office 365 テナントを Azure サブスクリプションに関連付ける�
 
 具体的な方法については、「 [既存の Office 365 アカウントを Azure サブスクリプションに使用する (またはその逆)](billing-use-existing-office-365-account-azure-subscription.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

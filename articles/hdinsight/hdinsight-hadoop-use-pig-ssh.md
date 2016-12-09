@@ -1,13 +1,13 @@
 ---
-title: HDInsight クラスターでの Hadoop Pig と SSH の使用 | Microsoft Docs
-description: SSH で Linux ベースの Hadoop クラスターに接続し、Pig コマンドを使用して Pig Latin ステートメントを対話的に実行するか、バッチ ジョブとして実行する方法について説明します。
+title: "HDInsight クラスターでの Hadoop Pig と SSH の使用 | Microsoft Docs"
+description: "SSH で Linux ベースの Hadoop クラスターに接続し、Pig コマンドを使用して Pig Latin ステートメントを対話的に実行するか、バッチ ジョブとして実行する方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: b646a93b-4c51-4ba4-84da-3275d9124ebe
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b6a03b5ce95d2bcdf0bd7b3007acedb1e030a379
+
 
 ---
-# <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-(ssh)"></a>Pig コマンド (SSH) を使用して Linux ベースのクラスターで Pig ジョブを実行する
+# <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Pig コマンド (SSH) を使用して Linux ベースのクラスターで Pig ジョブを実行する
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
 このドキュメントでは、Secure Shell (SSH) を使用して Linux ベースの Azure HDInsight クラスターに接続し、Pig コマンドを使用して Pig Latin ステートメントを対話的にまたはバッチ ジョブとして実行する方法を順を追って説明します。
@@ -29,13 +33,13 @@ Pig Latin プログラミング言語では、入力データに適用される�
 > 
 > 
 
-## <a name="<a-id="prereq"></a>prerequisites"></a><a id="prereq"></a>前提条件
+## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * Linux ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 * SSH クライアント。 SSH クライアントを備えた Linux、Unix、および Mac OS Windows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
-## <a name="<a-id="ssh"></a>connect-with-ssh"></a><a id="ssh"></a>SSH を使用した接続
+## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>SSH を使用した接続
 SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。 FQDN はクラスターに指定した名前で、その後、 **.azurehdinsight.net**が続きます。 以下の例では、 **myhdinsight**という名前のクラスターに接続します。
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
@@ -48,12 +52,12 @@ SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメ
 
 HDInsight での SSH の使用に関する詳細については、「 [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
 
-### <a name="putty-(windows-based-clients)"></a>PuTTY (Windows ベースのクライアント)
+### <a name="putty-windows-based-clients"></a>PuTTY (Windows ベースのクライアント)
 Windows ではビルトイン SSH クライアントは提供されません。 **http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html**からダウンロードできる [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)を使用することをお勧めします。
 
 PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する ](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
-## <a name="<a-id="pig"></a>use-the-pig-command"></a><a id="pig"></a>Pig コマンドの使用
+## <a name="a-idpigause-the-pig-command"></a><a id="pig"></a>Pig コマンドの使用
 1. 接続したら、次のコマンドを使用して Pig コマンド ライン インターフェイス (CLI) を起動します。
    
         pig
@@ -130,10 +134,10 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
         (ERROR,6)
         (FATAL,2)
 
-## <a name="<a-id="summary"></a>summary"></a><a id="summary"></a>概要
+## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
 このように、Pig コマンドでは、Pig Latin を使用して MapReduce 操作を対話的に実行できるだけでなく、バッチ ファイルに格納されたステートメントも実行できます。
 
-## <a name="<a-id="nextsteps"></a>next-steps"></a><a id="nextsteps"></a>次のステップ
+## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
 HDInsight での Pig に関する全般的な情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
@@ -143,6 +147,9 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

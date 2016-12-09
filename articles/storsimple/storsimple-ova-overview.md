@@ -1,12 +1,12 @@
 ---
-title: StorSimple Virtual Array の概要 | Microsoft Docs
-description: オンプレミス仮想デバイスと Microsoft Azure クラウド ストレージ間でストレージ タスクを管理する統合ストレージ ソリューションである StorSimple Virtual Array について説明します。
+title: "StorSimple Virtual Array の概要 | Microsoft Docs"
+description: "オンプレミス仮想デバイスと Microsoft Azure クラウド ストレージ間でストレージ タスクを管理する統合ストレージ ソリューションである StorSimple Virtual Array について説明します。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: dacf0aa8-6cd3-425b-993d-d93bb632157d
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/06/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 80cac87cbcabe32f8aa1e4e05e8ba0b6643f1dc5
+
 
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Virtual Array の概要
@@ -48,7 +52,7 @@ Virtual Array の重要な機能を次の表にまとめます。
 | スナップショット |クラッシュ整合性 |
 | 項目レベルの回復 |可能: ユーザーが共有から復元可能 |
 
-## <a name="why-use-storsimple?"></a>StorSimple を使用する理由
+## <a name="why-use-storsimple"></a>StorSimple を使用する理由
 StorSimple は、アプリケーションを変更せずに、ユーザーとサーバーを数分で Azure ストレージに接続します。
 
 Virtual Array ソリューションの主な利点を次の表に示します。
@@ -184,6 +188,9 @@ StorSimple のデータ保護機能を使用すると、オンデマンド バ�
 ## <a name="next-steps"></a>次のステップ
 [Virtual Array ポータルを準備する](storsimple-ova-deploy1-portal-prep.md)方法を確認します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,13 +1,13 @@
 ---
-title: Linux VM の RM デプロイメントのトラブルシューティング | Microsoft Docs
-description: Azure で新しい Linux 仮想マシンを作成するときに発生する Resource Manager デプロイメントの問題のトラブルシューティング
+title: "Linux VM の RM デプロイメントのトラブルシューティング | Microsoft Docs"
+description: "Azure で新しい Linux 仮想マシンを作成するときに発生する Resource Manager デプロイメントの問題のトラブルシューティング"
 services: virtual-machines-linux, azure-resource-manager
-documentationcenter: ''
+documentationcenter: 
 author: JiangChen79
 manager: felixwu
-editor: ''
+editor: 
 tags: top-support-issue, azure-resource-manager
-
+ms.assetid: 906a9c89-6866-496b-b4a4-f07fb39f990c
 ms.service: virtual-machines-linux
 ms.workload: na
 ms.tgt_pltfrm: vm-linux
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2016
 ms.author: cjiang
+translationtype: Human Translation
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: 3790c6108c151c30ca12feb4af19ad0fd4ae1f68
+
 
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Azure での新しい Linux 仮想マシンの作成に関する Resource Manager デプロイメントの問題のトラブルシューティング
@@ -53,9 +57,9 @@ ms.author: cjiang
 
 **解決策:**
 
-これらのエラーを解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で [現在の VHD からイメージをキャプチャし直します](virtual-machines-linux-capture-image.md) 。
+これらのエラーを解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で [現在の VHD からイメージをキャプチャし直します](virtual-machines-linux-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 。
 
-## <a name="issue:-custom/-gallery/-marketplace-image;-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
 このエラーは、新しい VM 要求が、要求されている VM サイズをサポートできないか、要求に対応するための使用可能な空き領域がないクラスターに固定されている場合に発生します。
 
 **原因 1:** クラスターが要求された VM サイズをサポートできない。
@@ -79,8 +83,11 @@ ms.author: cjiang
   * 新しい VM を同じ仮想ネットワークに追加します。
 
 ## <a name="next-steps"></a>次のステップ
-Azure で停止していた Linux VM の再起動または既存の Linux VM のサイズ変更に問題が発生する場合は、「 [Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング](virtual-machines-linux-restart-resize-error-troubleshooting.md)」を参照してください。
+Azure で停止していた Linux VM の再起動または既存の Linux VM のサイズ変更に問題が発生する場合は、「 [Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング](virtual-machines-linux-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

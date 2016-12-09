@@ -1,13 +1,13 @@
 ---
-title: 仮想マシンの拡張機能とその機能 | Microsoft Docs
-description: Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。
+title: "仮想マシンの拡張機能とその機能 | Microsoft Docs"
+description: "Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management,azure-resource-manager
-
+ms.assetid: 52f5d0ec-8f75-49e7-9e15-88d46b420e63
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/22/2016
 ms.author: nepeters
+translationtype: Human Translation
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: f377293e39699cd2be2493df020576389393ee0e
+
 
 ---
 # <a name="about-virtual-machine-extensions-and-features"></a>仮想マシンの拡張機能とその機能について
@@ -26,7 +30,7 @@ Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ
 ## <a name="azure-vm-agent"></a>Azure VM エージェント
 Azure VM エージェントは、Azure 仮想マシンと Azure ファブリック コントローラーとの相互動作を管理します。 VM エージェントは、Azure Virtual Machines のデプロイと管理の多くの機能面を担当します (VM 拡張機能の実行など)。 Azure VM エージェントは、Azure ギャラリー イメージにプレインストールされており、サポートされているオペレーティング システムにインストールすることができます。 
 
-サポートされているオペレーティング システムおよびインストール手順については、「 [Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)」を参照してください。
+サポートされているオペレーティング システムおよびインストール手順については、「 [Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 ## <a name="discover-vm-extensions"></a>VM 拡張機能の検出
 Azure Virtual Machines と共に、多くのさまざまな VM 拡張機能を使用できます。 完全な一覧を表示するには、Azure CLI で次のコマンドを実行します。場所は、実際の場所に置き換えます。
@@ -40,11 +44,14 @@ azure vm extension-image list westus
 ## <a name="common-vm-extensions"></a>一般的な VM 拡張機能
 | 拡張機能の名前 | Description | 詳細情報 |
 | --- | --- | --- |
-| Linux 用カスタム スクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します |[Linux 用カスタム スクリプト拡張機能](virtual-machines-linux-extensions-customscript.md) |
-| Docker 拡張機能 |リモートの Docker コマンドをサポートする Docker デーモンをインストールします。 |[Docker VM 拡張機能](virtual-machines-linux-dockerextension.md) |
+| Linux 用カスタム スクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します |[Linux 用カスタム スクリプト拡張機能](virtual-machines-linux-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
+| Docker 拡張機能 |リモートの Docker コマンドをサポートする Docker デーモンをインストールします。 |[Docker VM 拡張機能](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
 | VM アクセス拡張機能 |Azure 仮想マシンへのアクセスを回復します |[VM アクセス拡張機能](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
 | Azure 診断拡張機能 |Azure 診断を管理します |[Azure 診断拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Shared Access Signature を使用してデータへの HDInsight のアクセスを制限する
-description: Azure Storage の BLOB に格納されたデータへの HDInsight のアクセスを制限するために、Shared Access Signature を使用する方法について説明します。
+title: "Shared Access Signature を使用してデータへの HDInsight のアクセスを制限する"
+description: "Azure Storage の BLOB に格納されたデータへの HDInsight のアクセスを制限するために、Shared Access Signature を使用する方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 7bcad2dd-edea-467c-9130-44cffc005ff3
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7f2e5bbd2516c0f697084a802d6963c3d1023914
+
 
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-with-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でデータへのアクセスを制限する
@@ -59,7 +63,7 @@ Shared Access Signature の詳細については、「 [SAS モデルについ�
 ## <a name="create-a-stored-policy-and-generate-a-sas"></a>保存済みのポリシーを作成して SAS を生成する
 現在は、プログラムを使用して保存済みのポリシーを作成する必要があります。 保存済みのポリシーおよび SAS を作成する C# と Python のサンプルは両方とも、 [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature)にあります。
 
-### <a name="create-a-stored-policy-and-sas-using-c\#"></a>C\# を使用して保存済みのポリシーと SAS を作成する
+### <a name="create-a-stored-policy-and-sas-using-c"></a>C\ を使用して保存済みのポリシーと SAS を作成する
 1. Visual Studio でソリューションを開きます。
 2. ソリューション エクスプローラーで **[SASToken]** プロジェクトを右クリックし、**[プロパティ]** を選択します。
 3. **[設定]** を選択し、次のエントリに値を追加します。
@@ -93,7 +97,7 @@ HDInsight クラスターを作成するときは、プライマリ ストレー
 
 コンテナーへのアクセスを制限するために Shared Access Signature を使用するには、カスタム エントリをクラスターの **core-site** 構成に追加する必要があります。
 
-* __Windows ベース__または __Linux ベース__の HDInsight クラスターでは、PowerShell を使用してクラスターを作成するときにこれを実行できます。
+* **Windows ベース**または **Linux ベース**の HDInsight クラスターでは、PowerShell を使用してクラスターを作成するときにこれを実行できます。
 * **Linux ベース** の HDInsight クラスターでは、Ambari を使用してクラスターを作成した後に構成を変更します。
 
 ### <a name="create-a-new-cluster-that-uses-the-sas"></a>SAS を使用する新しいクラスターの作成
@@ -163,7 +167,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
    * **値**: 以前に実行した C# または Python アプリケーションが返した SAS
      
      **CONTAINERNAME** を C# または SAS のアプリケーションで使用したコンテナー名に置き換えます。 **STORAGEACCOUNTNAME** を使用したストレージ アカウント名に置き換えます。
-5. **[追加]** ボタンをクリックしてこのキーと値を保存し、**[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されると、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、 __[保存]__をクリックします。
+5. **[追加]** ボタンをクリックしてこのキーと値を保存し、**[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されると、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、 **[保存]**をクリックします。
    
     変更が完了したら、 **[OK]** をクリックします。
    
@@ -203,7 +207,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
    
         hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME testfile.txt
    
-    ここでは、ファイルは __testfile.txt__という名前のローカル ファイルにダウンロードされます。
+    ここでは、ファイルは **testfile.txt**という名前のローカル ファイルにダウンロードされます。
 4. 次を使用して、ローカル ファイルを SAS ストレージ上の **testupload.txt** という名前の新しいファイルにアップロードします。
    
         hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
@@ -249,6 +253,6 @@ HDInsight クラスターにアクセスが制限されたストレージを追�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
