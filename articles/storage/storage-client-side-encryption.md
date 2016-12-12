@@ -4,7 +4,7 @@ description: ".NET 用 Azure Storage クライアント ライブラリはクラ
 services: storage
 documentationcenter: .net
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: becfccca-510a-479e-a798-2044becd9a64
 ms.service: storage
@@ -12,7 +12,7 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
 ms.sourcegitcommit: 223a7f808ae21ddf8e237e7c5ec2d7ba035e38e8

@@ -4,7 +4,7 @@ description: "Python から Azure File Storage を使用して、ファイルを
 services: storage
 documentationcenter: python
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
@@ -12,7 +12,7 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
 ms.sourcegitcommit: fefebeae665ccd14f15b0197241b30d33830fd09

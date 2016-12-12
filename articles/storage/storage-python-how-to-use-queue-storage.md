@@ -4,7 +4,7 @@ description: "Python から Azure Queue サービスを使用して、キュー�
 services: storage
 documentationcenter: python
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: cc0d2da2-379a-4b58-a234-8852b4e3d99d
 ms.service: storage
@@ -12,7 +12,7 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
 ms.sourcegitcommit: fefebeae665ccd14f15b0197241b30d33830fd09

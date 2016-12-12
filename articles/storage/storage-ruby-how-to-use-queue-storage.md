@@ -4,15 +4,15 @@ description: "Azure Queue サービスを使用して、キューの作成と削
 services: storage
 documentationcenter: ruby
 author: robinsh
-manager: carmonm
-editor: 
+manager: timlt
+editor: tysonn
 ms.assetid: 59c2d81b-db9c-46ee-ade2-2f0caae6b1e6
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
