@@ -5,7 +5,7 @@ ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
 ms.openlocfilehash: e32393348fc26fa4cb0a5221695a9bf8bb4d36e1
 
 ---
-#<a name="dns-documentation"></a>DNS のドキュメント
+# <a name="dns-documentation"></a>DNS のドキュメント
 
 Azure DNS (Domain Name System) は、DNS ドメインのためのサービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。  Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
@@ -89,7 +89,7 @@ Azure DNS (Domain Name System) は、DNS ドメインのためのサービスで
 <h2>リファレンス</h2>
 <ul class="panelContent cardsW">
 <li>
-    <div class="cardSize"><p />
+    <div class="cardSize">
         <div class="cardPadding">
             <div class="card">
                 <div class="cardText">

@@ -120,7 +120,7 @@ Azure Virtual Machines (VM) は、Azure が提供するスケーラブルなオ�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -135,7 +135,7 @@ Azure Virtual Machines (VM) は、Azure が提供するスケーラブルなオ�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
