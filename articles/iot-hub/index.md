@@ -119,7 +119,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -136,7 +136,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

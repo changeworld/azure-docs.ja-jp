@@ -29,7 +29,7 @@ Azure DevTest Labs は、無駄を最小限に抑え、コストを管理しつ�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=devtest-lab">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

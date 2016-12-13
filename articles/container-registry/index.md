@@ -84,7 +84,7 @@ Azure Container Registry (プレビュー) は、コンテナー イメージを
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

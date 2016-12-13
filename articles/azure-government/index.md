@@ -30,7 +30,7 @@ Microsoft Azure Government は、セキュリティの根本原則、プライ�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=azure-government">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=azure-government">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

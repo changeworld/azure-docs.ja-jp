@@ -195,7 +195,7 @@ Azure DocumentDB は、完全管理された NoSQL データベース サービ�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

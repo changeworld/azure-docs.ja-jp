@@ -138,7 +138,7 @@ Azure HDInsight は、クラウドによって機能強化された Apache Hadoo
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -152,7 +152,7 @@ Azure HDInsight は、クラウドによって機能強化された Apache Hadoo
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

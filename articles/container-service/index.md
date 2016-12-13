@@ -66,7 +66,7 @@ Azure Container Service を使用すると、コンテナー化されたアプ�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -78,7 +78,7 @@ Azure Container Service を使用すると、コンテナー化されたアプ�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

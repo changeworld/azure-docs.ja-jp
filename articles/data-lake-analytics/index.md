@@ -29,7 +29,7 @@ Azure Data Lake Analytics は、ビッグ データ分析を容易にするた�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=data-lake-analytics">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=data-lake-analytics">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -191,7 +191,7 @@ Azure Data Lake Analytics は、ビッグ データ分析を容易にするた�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -206,7 +206,7 @@ Azure Data Lake Analytics は、ビッグ データ分析を容易にするた�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

@@ -5,7 +5,7 @@ ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
 ms.openlocfilehash: 4985185ad8cb4a21e05d4668458e82411cd88ee0
 
 ---
-#<a name="cloud-services-documentation"></a>Cloud Services のドキュメント
+# <a name="cloud-services-documentation"></a>Cloud Services のドキュメント
 
 Cloud Services は、サービスとしてのプラットフォーム (PaaS) 型のサービスです。 拡張性と信頼性に優れ、運用コストの効率が高いアプリケーションをサポートするように設計されています。 Cloud Services では、仮想化のメリットを利用しつつ、ソフトウェアの構成、修正、インストールの際には仮想マシンを思いどおりに制御できます。  
 
@@ -89,8 +89,7 @@ Cloud Services は、サービスとしてのプラットフォーム (PaaS) 型
 <h2>リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>
-    <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -103,7 +102,7 @@ Cloud Services は、サービスとしてのプラットフォーム (PaaS) 型
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
