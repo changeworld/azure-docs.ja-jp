@@ -1,13 +1,13 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 98fdd8ee3dc1b90aae349652e471a218ef44a44e
-ms.openlocfilehash: ca6b16a891f599135c193198b5b0acc7bbd6425e
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 7ac552010e41d59e07f2881750540206ffa24f5b
 
 ---
 # <a name="security-center-documentation"></a>Security Center のドキュメント
 
-セキュリティ センターは、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+Security Center は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -77,7 +77,7 @@ ms.openlocfilehash: ca6b16a891f599135c193198b5b0acc7bbd6425e
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p>Security Center REST API リファレンス</p>
+                        <p>Security Center REST API</p>
                     </div>
                 </div>
             </div>
@@ -96,6 +96,6 @@ Security Center のドキュメントのダウンロード </div>
 </div>
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

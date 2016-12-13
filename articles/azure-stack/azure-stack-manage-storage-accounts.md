@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/26/2016
+ms.date: 12/2/2016
 ms.author: anirudha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5890fb69668c925b882e722cd43f266af38bbbfd
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 50e788a73f3164634abefdac82362a9feb9de95c
 
 
 ---
@@ -116,12 +116,11 @@ One of the side effects of having a retention period is that a deleted account w
    For more information about Azure Resource Manager cmdlets, see [Using Azure PowerShell with Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
 2. Run this cmdlet:
    
-   ```
-   PS C:\\>; Clear-ACSStorageAccount -ResourceGroupName system
-   -FarmName <your farmname>
-   ```
+    ```PowerShell
+    Clear-ACSStorageAccount -ResourceGroupName system -FarmName <your farmname>
+    ```
 
-> For more details, please refer to [AzureStack powershell documentation](https://msdn.microsoft.com/library/mt637964.aspx)
+For more details, please refer to [AzureStack powershell documentation](https://msdn.microsoft.com/library/mt637964.aspx)
 > 
 > [!NOTE]
 > Running this cmdlet will permanently delete the account and its contents. It will no longer be recoverable. Use with care.
@@ -131,6 +130,6 @@ One of the side effects of having a retention period is that a deleted account w
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

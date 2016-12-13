@@ -26,19 +26,20 @@
 ### [開発者向けサンプル](data-catalog-samples.md)
 
 # リファレンス
-## [Azure Data Catalog 用のキーボード ショートカット](data-catalog-keyboard-shortcuts.md)
-## [用語集](data-catalog-terminology.md)
-## [リリース ノート](data-catalog-release-notes.md)
 ## [REST ()](/rest/api/datacatalog/)
 
 # リソース
-## [リリース ノート](data-catalog-whats-new.md)
+## [Azure Data Catalog 用のキーボード ショートカット](data-catalog-keyboard-shortcuts.md)
+## [用語集](data-catalog-terminology.md)
+## リリース ノート
+### [リリース ノート - 新機能](data-catalog-whats-new.md)
+### [リリース ノート](data-catalog-release-notes.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-catalog)
 ## [料金](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

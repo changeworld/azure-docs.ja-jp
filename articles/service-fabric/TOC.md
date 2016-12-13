@@ -3,6 +3,7 @@
 ## [マイクロサービスの概要](service-fabric-overview-microservices.md)
 ## [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
 ## [アーキテクチャ](service-fabric-architecture.md)
+## [用語集](service-fabric-technical-overview.md)
 
 # 作業の開始
 ## 開発環境を設定する
@@ -176,21 +177,13 @@
 ### [アプリケーションのロード テスト](service-fabric-vso-load-test.md)
 
 # リファレンス
-## [用語集](service-fabric-technical-overview.md)
-## [Reliable Actors](https://go.microsoft.com/fwlink/p/?linkid=833398)
-## [Reliable Actors WCF](https://go.microsoft.com/fwlink/p/?linkid=833401)
-## [Reliable Services](https://go.microsoft.com/fwlink/p/?linkid=833402)
-## [Reliable Services WCF](https://go.microsoft.com/fwlink/p/?linkid=833403)
-## [データ](https://go.microsoft.com/fwlink/p/?linkid=833404)
-## [データ インターフェイス](https://go.microsoft.com/fwlink/p/?linkid=833406)
-## [システム](https://go.microsoft.com/fwlink/p/?linkid=833407)
-## [コード サンプル](http://aka.ms/servicefabricsamples)
-## [PowerShell](/powershell/servicefabric/vlatest/servicefabric)
-## [Java API](https://go.microsoft.com/fwlink/p/?linkid=833410)
-## [.NET](/dotnet/api)
-## [REST ()](/rest/api/servicefabric/)
+## [PowerShell](//powershell/servicefabric/vlatest/servicefabric)
+## [Java API](/java/api/microsoft.servicefabric.services)
+## [.NET](/dotnet/api/microsoft.servicefabric.services)
+## [REST ()](/rest/api/servicefabric)
 
 # リソース
+## [コード サンプル](http://aka.ms/servicefabricsamples)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 ## [料金](https://azure.microsoft.com/pricing/details/service-fabric/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-fabric)
@@ -198,6 +191,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

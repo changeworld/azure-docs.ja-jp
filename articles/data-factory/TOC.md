@@ -9,7 +9,7 @@
 # 作業の開始
 ## [チュートリアル: パイプラインを作成してデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 ### [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-### [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
+### [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 ### [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 ### [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 ### [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -81,13 +81,14 @@
 ### [Data Management Gateway の使用に関する問題のトラブルシューティング](data-factory-troubleshoot-gateway-issues.md)
 
 # リファレンス
-## [Data Management Gateway のリリース ノート](data-factory-gateway-release-notes.md)
+## [PowerShell](/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories)
+## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
 ## [Azure Data Factory の開発者用リファレンス](data-factory-sdks.md)
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [.NET](/dotnet/api/)
 ## [REST ()](/rest/api/datafactory/)
 
 # リソース
+## [Data Management Gateway のリリース ノート](data-factory-gateway-release-notes.md)
+## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/data-factory)
 ## [ケース スタディ](data-factory-customer-case-studies.md)
 ### [製品の推奨](data-factory-product-reco-usecase.md)
 ### [顧客プロファイリング](data-factory-customer-profiling-usecase.md)
@@ -100,6 +101,6 @@
 ## [機能のリクエスト](https://feedback.azure.com/forums/270578-azure-data-factory)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: a7f5894e445cad808f38195838376c620a6b5944
-ms.openlocfilehash: 87fab3c99228f127326609a3e614020a982192f0
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: c0911518e954131f1c8de783d71fb17a9eea1945
 
 ---
 #<a name="documentdb-documentation"></a>DocumentDB のドキュメント
@@ -176,27 +176,38 @@ Azure DocumentDB は、完全管理された NoSQL データベース サービ�
 
 ---
 
-## <a name="reference"></a>リファレンス
-
-### <a name="java"></a>Java
-[Java SDK リファレンス](http://azure.github.io/azure-documentdb-java)
-
-### <a name="net"></a>.NET
-[.NET に関する管理リファレンス](https://msdn.microsoft.com/library/azure/dn948556)
-
-### <a name="node"></a>ノード
-[Node SDK リファレンス](http://azure.github.io/azure-documentdb-node/DocumentClient)
-
-### <a name="python"></a>Python
-[Python リファレンス](http://azure.github.io/azure-documentdb-python/api/pydocumentdb)
-
-### <a name="sql"></a>SQL
-[SQL リファレンス](https://msdn.microsoft.com/library/azure/dn782250)
-
-### <a name="rest"></a>REST ()
-[REST API リファレンス](/rest/api/documentdb)
-
-[リソースプロバイダー API リファレンス](/rest/api/documentdbresourceprovider)
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/azure/documentdb/documentdb-sdk-dotnet">.NET</a></p>
+                        <p><a href="/azure/documentdb/documentdb-sdk-dotnet-core">.NET Core</a></p>
+                        <p><a href="/azure/documentdb/documentdb-sdk-java">Java</a></p>
+                        <p><a href="/azure/documentdb/documentdb-sdk-node">Node.js</a></p>
+                        <p><a href="/azure/documentdb/documentdb-sdk-java">Python</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize"><p />
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/documentdb/">REST API</a></p>
+                        <p><a href="/rest/api/documentdbresourceprovider/">リソース プロバイダー REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 ---
 
@@ -210,6 +221,6 @@ DocumentDB のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

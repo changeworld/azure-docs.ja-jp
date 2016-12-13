@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: dariagrigoriu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 59f2a4d48959cca07ea9e04865207f9100657f53
+ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
+ms.openlocfilehash: 033fd0cb3512a22bb05488fe83aa2ffa9d81def3
 
 
 ---
@@ -84,19 +84,19 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 
 [Azure App Service]: https://azure.microsoft.com/en-us/documentation/articles/app-service-changes-existing-services/
 [Azure Portal]: https://portal.azure.com
-[VSTS ポータル]: https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx
-[Installing Git (Git のインストール) (Git のインストール)]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)]: ../powershell-install-configure.md
+[VSTS Portal]: https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx
+[Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+[How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)]: /powershell/azureps-cmdlets-docs
 [Mac および Linux 用 Azure コマンド ライン ツールの使用方法]: ../xplat-cli-install.md
 [Git に関するドキュメント]: http://git-scm.com/documentation
 
 [Create a repo (GitHub) (リポジトリの作成 (GitHub))]: https://help.github.com/articles/create-a-repo
 [Create a repo (BitBucket) (リポジトリの作成 (BitBucket))]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
 [Get started with VSTS (VSTS で作業を始める) (VSTS で作業を始める)]: https://www.visualstudio.com/get-started/overview-of-get-started-tasks-vs
-[Visual Studio Team Services を使用した Azure への継続的な配信]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
+[Continuous delivery to Azure using Visual Studio Team Services]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

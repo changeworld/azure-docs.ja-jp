@@ -26,6 +26,10 @@
 ### [3: 適切な質問を投稿する](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
 ### [4: 回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
 ### [5: 他のユーザーの作業をコピーする](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
+
+## [R のクイック スタート](machine-learning-r-quickstart.md)
+
+
 # 方法
 ## ツールとユーティリティの設定
 ### [環境を設定する](machine-learning-data-science-environment-setup.md)
@@ -51,7 +55,7 @@
 ## データの取得と理解
 ### ストレージにデータを読み込む
 #### [概要](machine-learning-data-science-ingest-data.md)
-#### [BLOB ストレージ](machine-learning-data-science-move-azure-blob.md)
+#### [Blob Storage](machine-learning-data-science-move-azure-blob.md)
 #### [ストレージ エクスプローラーを使用する](machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer.md)
 #### [AzCopy を使用する](machine-learning-data-science-move-data-to-azure-blob-using-azcopy.md)
 #### [Python を使用する](machine-learning-data-science-move-data-to-azure-blob-using-python.md)
@@ -76,7 +80,7 @@
 ##### [Hive テーブルを使用する](machine-learning-data-science-explore-data-hive-tables.md)
 #### サンプル データ
 ##### [概要](machine-learning-data-science-sample-data.md)
-##### [BLOB ストレージを使用する](machine-learning-data-science-sample-data-blob.md)
+##### [Blob Storage を使用する](machine-learning-data-science-sample-data-blob.md)
 ##### [SQL Server を使用する](machine-learning-data-science-sample-data-sql-server.md)
 ##### [Hive テーブルを使用する](machine-learning-data-science-sample-data-hive.md)
 #### データを処理する
@@ -167,14 +171,15 @@
 #### [正規分布スイート](machine-learning-r-csharp-normal-distribution.md)
 #### [二項分布スイート](machine-learning-r-csharp-binomial-distribution.md)
 #### [Azure Marketplace に関する FAQ](machine-learning-marketplace-faq.md)
+
 # リファレンス
-## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [PowerShell](/azure/machine-learning/machine-learning-powershell-module)
 ## [Machine Learning 用 PowerShell モジュール](machine-learning-powershell-module.md)
-## [アルゴリズム リファレンス](https://msdn.microsoft.com/library/azure/dn905974.aspx)
-## [R のクイック スタート](machine-learning-r-quickstart.md)
-## [Net# ニューラル ネットワーク仕様言語](machine-learning-azure-ml-netsharp-reference-guide.md)
-## [管理 REST API](/rest/api/machinelearning/index)
+## [アルゴリズムとモジュールのリファレンス](https://msdn.microsoft.com/library/azure/dn905974.aspx)
+## [REST ()](/rest/api/machinelearning)
+
 # 関連項目
+
 ## Cortana Intelligence ギャラリー
 ### [概要](machine-learning-gallery-how-to-use-contribute-publish.md)
 ### [業界](machine-learning-gallery-industries.md)
@@ -205,7 +210,10 @@
 ##### [概要](cortana-analytics-playbook-vehicle-telemetry.md)
 ##### [プレイブック](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
 ##### [セットアップ](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
+
 # リソース
+## [Machine Learning REST のエラー コード](/machine-learning/machine-learning-web-service-error-codes)
+## [Net# ニューラル ネットワーク仕様言語](machine-learning-azure-ml-netsharp-reference-guide.md)
 ## [料金](https://azure.microsoft.com/pricing/details/machine-learning/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=machine-learning)
 ## [ブログ](http://blogs.technet.com/b/machinelearning/)
@@ -214,6 +222,7 @@
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
 ## [ライブ チャットからヘルプを表示する](machine-learning-live-chat.md)
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO1-->
 
 

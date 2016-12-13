@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: fbd98ba8100dddf870c8d40d65edc9709bfeda41
-ms.openlocfilehash: 4023b92302b0e7462ff5c067b4ded3123a6f6bcb
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: b3774d229255bbcab433e570e679678e70761f05
 
 ---
 # <a name="site-recovery-documentation"></a>Site Recovery のドキュメント
@@ -88,7 +88,7 @@ Azure Site Recovery は、オンプレミスの仮想マシンと物理サーバ
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p>Site Recovery REST API リファレンス</p>
+                        <p>Site Recovery REST API</p>
                     </div>
                 </div>
             </div>
@@ -107,6 +107,6 @@ Site Recovery のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

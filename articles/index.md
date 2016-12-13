@@ -4,8 +4,8 @@ hide_bc: true
 title: "Microsoft Azure のドキュメント | Microsoft Docs"
 description: "Microsoft Azure Cloud Services を使用して、強力なアプリケーションを構築し、管理する方法について説明します。 ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 392db4d8261f6e927aa5ea4b2f6b30e244bfec50
-ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
+ms.sourcegitcommit: b6c08febd8c95c1aa6a2af4563ed4fdee8ee022f
+ms.openlocfilehash: 0261823171ab55b2242e34c27c40385f56503a0d
 
 ---
 <div id="main" class="v2">
@@ -130,8 +130,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                         <li>
                                             <a href="/azure/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>Batch
-</p>
+                                                <p>Batch</p>
                                             </a>
                                         </li>
                                         <li>
@@ -185,7 +184,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                         <li>
                                             <a href="/azure/security-center">
                                                 <img src="media/index/SecurityCenter.svg" alt="" />
-                                                <p>セキュリティ センター</p>
+                                                <p>Security Center</p>
                                             </a>
                                         </li>
                                         <li>
@@ -209,7 +208,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                         <li>
                                             <a href="/azure/active-directory-domain-services">
                                                 <img src="media/index/ActiveDirectory.svg" alt="" />
-                                                <p>Azure Active Directory ドメイン サービス</p>
+                                                <p>Azure Active Directory Domain Services</p>
                                             </a>
                                         </li>
                                         <li>
@@ -232,7 +231,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                         <li>
                                             <a href="/azure/virtual-network/">
                                                 <img src="media/index/VirtualNetwork.svg" alt="" />
-                                                <p>仮想ネットワーク</p>
+                                                <p>Virtual Network</p>
                                             </a>
                                         </li>
                                         <li>
@@ -265,12 +264,12 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                 <p>CDN</p>
                                             </a>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                         <a href="/azure/traffic-manager/">
                                                 <img src="media/index/TrafficManager.svg" alt="" />
                                                 <p>Traffic Manager</p>
                                             </a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="/azure/expressroute/">
                                                 <img src="media/index/ExpressRoute.svg" alt="" />
@@ -364,7 +363,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                         <li>
                                             <a href="/azure/application-insights/">
                                                 <img src="media/index/ApplicationInsights.svg" alt="" />
-                                                <p>アプリケーション インサイト</p>
+                                                <p>Application Insights</p>
                                             </a>
                                         </li>
                                         <li>
@@ -407,7 +406,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>バックアップ</p>
+                                                <p>Backup</p>
                                             </a>
                                         </li>
                                         <li>
@@ -467,7 +466,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                         <li>
                                             <a href="/azure/application-insights/">
                                                 <img src="media/index/ApplicationInsights.svg" alt="" />
-                                                <p>アプリケーション インサイト</p>
+                                                <p>Application Insights</p>
                                             </a>
                                         </li>
                                         <li>
@@ -485,7 +484,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>バックアップ</p>
+                                                <p>Backup</p>
                                             </a>
                                         </li>
                                         <li>
@@ -500,12 +499,12 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                 <p>Scheduler</p>
                                             </a>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <a href="/azure/traffic-manager/">
                                                 <img src="media/index/TrafficManager.svg" alt="" />
                                                 <p>Traffic Manager</p>
                                             </a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="/azure/monitoring-and-diagnostics/">
                                                 <img src="media/index/AzureMonitoring.svg" alt="" />
@@ -811,8 +810,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Batch
-</h3>
+                                                    <h3>Batch</h3>
                                                     <p>大規模な並列/バッチ コンピューティング ジョブの実行します</p>
                                                 </div>
                                             </div>
@@ -855,7 +853,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>仮想ネットワーク</h3>
+                                                    <h3>Virtual Network</h3>
                                                     <p>プライベート ネットワークをプロビジョニングし、オプションでオンプレミスのデータセンターに接続します</p>
                                                 </div>
                                             </div>
@@ -894,7 +892,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Application Gateway</h3>
-                                                    <p>HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 Load Balancer</p>
+                                                    <p>HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロード バランサー</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -958,7 +956,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                     </div>
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="/azure/traffic-manager/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -970,13 +968,13 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Traffic Manager</h3>
-                                                    <p>高パフォーマンスと高可用性のために着信トラフィックをルーティングします</p>
+                                                    <p>Route incoming traffic for high performance and availability</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="/azure/expressroute/">
                                     <div class="cardSize">
@@ -1069,7 +1067,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>バックアップ</h3>
+                                                    <h3>Backup</h3>
                                                     <p>クラウドへのシンプルで信頼性の高いサーバー バックアップ サービス</p>
                                                 </div>
                                             </div>
@@ -1916,7 +1914,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>セキュリティ センター</h3>
+                                                    <h3>Security Center</h3>
                                                     <p>高度な視覚化により脅威を回避、検出、対応します</p>
                                                 </div>
                                             </div>
@@ -2092,7 +2090,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>アプリケーション インサイト</h3>
+                                                    <h3>Application Insights</h3>
                                                     <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断します</p>
                                                 </div>
                                             </div>
@@ -2154,7 +2152,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>アプリケーション インサイト</h3>
+                                                    <h3>Application Insights</h3>
                                                     <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断します</p>
                                                 </div>
                                             </div>
@@ -2211,7 +2209,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>バックアップ</h3>
+                                                    <h3>Backup</h3>
                                                     <p>クラウドへのシンプルで信頼性の高いサーバー バックアップ サービス</p>
                                                 </div>
                                             </div>
@@ -2257,7 +2255,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                     </div>
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="/azure/traffic-manager/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -2269,13 +2267,13 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Traffic Manager</h3>
-                                                    <p>高パフォーマンスと高可用性のために着信トラフィックをルーティングします</p>
+                                                    <p>Route incoming traffic for high performance and availability</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="/azure/monitoring-and-diagnostics/">
                                     <div class="cardSize">
@@ -2357,11 +2355,11 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                 </ul>
             </li>
             <li>
-                <a href="#sdktools">SDK/ツール</a>
-                <ul id="sdktools">
+                <a href="#sdkstools">SDK/ツール</a>
+                <ul id="sdkstools">
                     <li>
-                        <a href="#sdktools-all">すべて</a>
-                        <ul id="sdktools-all" class="cardsF">
+                        <a href="#sdkstools-all">すべて</a>
+                        <ul id="sdkstools-all" class="cardsF">
                             <li>
                                 <div class="container">
                                     <h1>言語 &amp; フレームワーク</h1>
@@ -2378,16 +2376,19 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/1.0.0-beta3">.NET SDK の入手</a>
+                                                    <a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent">.NET SDK の入手</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/develop/net/">作業開始</a>
+                                                    <a href="https://docs.microsoft.com/dotnet/api/">作業開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="/dotnet/api">API リファレンス</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=dotnet">サンプルの入手</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=dotnet">サンプルを入手する</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://azure.microsoft.com/develop/net/">詳細情報</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2405,16 +2406,19 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/develop/python">Python SDK の入手</a>
+                                                    <a href="https://pypi.python.org/pypi/azure">Python SDK の入手</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/develop/python">作業開始</a>
+                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">作業開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">API リファレンス</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/resources/samples/?platform=python">サンプルの入手</a>
+                                                    <a href="https://azure.microsoft.com/resources/samples/?platform=python">サンプルを入手する</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://azure.microsoft.com/develop/python">詳細情報</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2432,16 +2436,19 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/develop/nodejs/">Node.js SDK の入手</a>
+                                                    <a href="https://www.npmjs.com/package/azure">Node.js SDK の入手</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/develop/nodejs">作業開始</a>
+                                                    <a href="http://azure.github.io/azure-sdk-for-node/">作業開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="http://azure.github.io/azure-storage-node/index.html">API リファレンス</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=nodejs">サンプルの入手</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=nodejs">サンプルを入手する</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://azure.microsoft.com/develop/nodejs">詳細情報</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2459,16 +2466,19 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://search.maven.org/remotecontent?filepath=com/microsoft/azure/azure-parent/1.0.0-beta3/azure-parent-1.0.0-beta3.pom">Java SDK の入手</a>
+                                                    <a href="https://github.com/Azure/azure-sdk-for-java#download">Java SDK の入手</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/develop/java/">作業開始</a>
+                                                    <a href="https://docs.microsoft.com/java/api/">作業開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="/java/api/">API リファレンス</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=java">サンプルの入手</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=java">サンプルを入手する</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://azure.microsoft.com/develop/java/">詳細情報</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2486,16 +2496,19 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/downloads/">Ruby SDK の入手</a>
+                                                    <a href="https://rubygems.org/gems/azure">Ruby SDK の入手</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/develop/ruby/">作業開始</a>
+                                                    <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">作業開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">API リファレンス</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=ruby">サンプルの入手</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=ruby">サンプルを入手する</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://azure.microsoft.com/develop/ruby/">詳細情報</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2513,13 +2526,13 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="">REST の使用</a>
+                                                    <a href="https://docs.microsoft.com/rest/api/">REST の使用</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/rest/api">リファレンス</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=rest">サンプルの入手</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=rest">サンプルを入手する</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2863,6 +2876,6 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

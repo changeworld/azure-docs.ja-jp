@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: scottnap
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bb60161cd23df2d1d493d48ef3859c3b1afdfb0d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5bab61517298eedb5c36860542432b87609b6dcb
 
 
 ---
@@ -71,6 +71,6 @@ In TP2, you no longer need to make these changes to your VM templates to allow y
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

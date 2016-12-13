@@ -18,7 +18,7 @@
 
 # 方法
 ## 回線の作成と変更
-### [Azure ポータル](expressroute-howto-circuit-portal-resource-manager.md)
+### [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-circuit-arm.md)
 ### [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
 ## ルーティング構成を作成および変更する
@@ -26,7 +26,7 @@
 ### [PowerShell](expressroute-howto-routing-arm.md)
 ### [PowerShell (クラシック)](expressroute-howto-routing-classic.md)
 ## ExpressRoute 回線への仮想ネットワークのリンク
-### [Azure ポータル](expressroute-howto-linkvnet-portal-resource-manager.md)
+### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
 ### [PowerShell (クラシック)](expressroute-howto-linkvnet-classic.md)
 ## ExpressRoute の仮想ネットワーク ゲートウェイを構成する
@@ -51,7 +51,7 @@
 
 # リファレンス
 ## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
-## [REST (Resource Manager)](https://msdn.microsoft.com/library/azure/mt586720)
+## [REST ()](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/azure/dn606310)
 
 # 関連項目
@@ -80,6 +80,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=expressroute)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

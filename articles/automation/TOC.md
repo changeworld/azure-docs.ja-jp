@@ -1,14 +1,11 @@
 # Overview
 ## [Azure Automation とは](automation-intro.md)
 ## [Azure Automation のセキュリティ](automation-security-overview.md)
-
 # 作業開始
 ## [Runbook を作成する](automation-first-runbook-graphical.md)
 ## [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
 ## [PowerShell Workflow Runbook を作成する](automation-first-runbook-textual.md)
 ## [ロールベースのアクセス制御を管理する](automation-role-based-access-control.md)
-
-
 # 方法
 ## Runbook を作成する
 ### [Runbook の種類](automation-runbook-types.md)
@@ -55,26 +52,22 @@
 ### [JSON タグを使用して VM を起動/停止する](automation-scenario-start-stop-vm-wjson-tags.md)
 ### [リソース グループを削除する](automation-scenario-remove-resourcegroup.md)
 ### [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
-
+### [GitHub Enterprise によるソース管理の統合](automation-scenario-source-control-integration-with-github-ent.md)
 ## [監視](automation-manage-send-joblogs-log-analytics.md)
-
 ## 移行
 ### [Orchestrator から移行する](automation-orchestrator-migration.md)
 ### [Automation アカウントを移動する](automation-migrate-account-subscription.md)
-
 ## トラブルシューティング
 ### [一般的なエラーのトラブルシューティング](automation-troubleshooting-automation-errors.md)
 ### [Runbook ジョブが中断されました](automation-troubleshooting-hrw-runbook-terminates-suspended.md)
-
 # リファレンス
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [クラシック PowerShell](/powershell/servicemanagement)
-## [.NET](/dotnet/api)
+## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
+## [PowerShell (クラシック)](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
+## [.NET](/dotnet/api/microsoft.azure.management.automation)
 ## [REST ()](https://msdn.microsoft.com/library/azure/mt662285.aspx)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/azure/mt163781)
-## [リリース ノート](https://azure.microsoft.com/updates/?product=automation)
-
 # リソース
+## [リリース ノート](https://azure.microsoft.com/updates/?product=automation)
 ## [料金](https://azure.microsoft.com/pricing/details/automation/)  
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)
@@ -85,6 +78,6 @@
 ## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

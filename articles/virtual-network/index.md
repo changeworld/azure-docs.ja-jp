@@ -2,13 +2,13 @@
 layout: LandingPage
 +toc_rel: breadcrumb.json
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: f03b3e68dd62cdf429162d3fe7d2342bbf254b52
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: c3607bf6699b83fb3fedf7cb7ccf9f1d97ad4c56
 
 ---
 #<a name="virtual-network-documentation"></a>Virtual Network のドキュメント
 
-Azure Virtual Network (VNet) は、クラウド上に構築されたお客様用のネットワークを論理的に表したものです。  VNet では、ネットワークの各種要素を完全に制御できるだけでなく、VNet を複数のサブネットに分割し、そのサブネットを使用して Azure Virtual Machines や Cloud Services の利用を開始できます。  また、Azure に用意されている接続オプションのいずれかを使用して VNet をオンプレミスのネットワークに接続し、リソースの制御を維持したまま自社ネットワークをクラウドに拡張することができます。
+Azure 仮想ネットワーク (VNet) は、クラウド上に構築されたお客様用のネットワークを論理的に表したものです。  VNet では、ネットワークの各種要素を完全に制御できるだけでなく、VNet を複数のサブネットに分割し、そのサブネットを使用して Azure Virtual Machines や Cloud Services の利用を開始できます。  また、Azure に用意されている接続オプションのいずれかを使用して VNet をオンプレミスのネットワークに接続し、リソースの制御を維持したまま自社ネットワークをクラウドに拡張することができます。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -171,7 +171,7 @@ Azure Virtual Network (VNet) は、クラウド上に構築されたお客様用
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p>Virtual Network REST API リファレンス</p>
+                        <p>Virtual Network REST API</p>
                     </div>
                 </div>
             </div>
@@ -191,6 +191,6 @@ Virtual Network のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

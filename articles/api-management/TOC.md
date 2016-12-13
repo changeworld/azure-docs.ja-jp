@@ -39,13 +39,17 @@
 ### [ユーザー アカウントを管理する](api-management-howto-create-or-invite-developers.md)
 ### [Automation を使用して管理する](automation-manage-api-management.md)
 ### [Git を使用して構成する](api-management-configuration-repository-git.md)
-#リファレンス
+
+# リファレンス
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [クラシック PowerShell](https://msdn.microsoft.com/library/azure/mt613507)
+## [PowerShell (クラシック)](https://msdn.microsoft.com/library/azure/mt613507)
 ## [REST ()](/rest/api/apimanagement/)
+## [REST (オリジナル)](/rest/api/apimanagement/ApiManagementREST/API-Management-REST)
+
+
+# リソース
 ## [ポリシー](https://msdn.microsoft.com/library/azure/dn894081)
 ## [テンプレート](https://msdn.microsoft.com/library/azure/mt697540)
-#リソース
 ## [料金](https://azure.microsoft.com/pricing/details/api-management/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-management)
@@ -63,6 +67,6 @@
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

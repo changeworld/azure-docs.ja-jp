@@ -20,8 +20,8 @@
 ## ソリューションを作成する
 ### [Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)
 
-## [管理]
-### [Azure ポータル](data-lake-analytics-manage-use-portal.md)
+## 管理
+### [Azure Portal](data-lake-analytics-manage-use-portal.md)
 ### [Azure CLI](data-lake-analytics-manage-use-cli.md)
 ### [PowerShell](data-lake-analytics-manage-use-powershell.md)
 ### [.NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)
@@ -36,11 +36,11 @@
 ### [頂点実行ビューを使用する](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 
 # リファレンス
-
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [.NET](/dotnet/api/)
+## [PowerShell](/powershell/resourcemanager/azurerm.datalakeanalytics/v2.3.0/azurerm.datalakeanalytics)
+## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
+## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html)
 ## [U-SQL](https://msdn.microsoft.com/library/azure/mt591959)
-## [Node.JS](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 ## [REST ()](/rest/api/datalakeanalytics/)
 
 # リソース
@@ -52,6 +52,6 @@
 ## [Azure Data Lake のブログ](https://blogs.msdn.microsoft.com/azuredatalake/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

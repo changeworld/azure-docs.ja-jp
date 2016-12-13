@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: c192cc88c383677abbc356242c08c7cf6f74d289
-ms.openlocfilehash: 6e74ccf90249a2397c6dbe842cf96461b02b7da3
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: c627e7f936557eb6c4b1f4125a4a5f4e9a0e0b6a
 
 ---
 # <a name="application-insights-documentation"></a>Application Insights のドキュメント
@@ -121,67 +121,37 @@ Application Insights は、Web 開発者向けの拡張可能なアプリケー�
 </ul>
 
 ---
-
-## <a name="reference"></a>リファレンス
-
+ 
+<h2>リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="https://docs.microsoft.com/java/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Application Insights Java API リファレンス</p>
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.applicationinsights">.NET</a></p>
+                        <p><a href="http://dl.windowsazure.com/applicationinsights/javadoc/">Java</a></p>
+                        <p><a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md">JavaScript</a></p>
+                        <p><a href="/azure/application-insights/app-insights-analytics-reference">Analytics リファレンス</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-     <li>
-        <a href="https://docs.microsoft.com/dotnet/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Application Insights に関する管理リファレンス API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>JavaScript</h3>
-                        <p>Application Insights JS API リファレンス</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="https://dev.applicationinsights.io/">
-        <div class="cardSize">
+    <li>
+        <div class="cardSize"><p />
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p>Application Insights REST API リファレンス</p>
+                        <p><a href="https://dev.applicationinsights.io/">REST API</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-    </ul>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/application-insights.pdf">
@@ -193,6 +163,6 @@ Application Insights のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -14,8 +14,8 @@
 
 # リファレンス
 
-## [Azure CLI](/cli/azure/acr)
-## [REST API](/rest/api/containerregistry)
+## [Azure CLI 2.0 プレビュー](/cli/azure/acr)
+## [REST ()](/rest/api/containerregistry)
 
 # 関連項目
 
@@ -27,6 +27,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

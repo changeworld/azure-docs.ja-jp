@@ -105,7 +105,7 @@
 #### [Azure Web ジョブ SDK とは](websites-dotnet-webjobs-sdk.md)
 #### [.NET WebJob を作成する](websites-dotnet-webjobs-sdk-get-started.md)
 #### [Web ジョブ SDK で Azure Blob Storage を使用する方法](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
-#### [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
+#### [Web ジョブ SDK を使用して Azure Queue Storage を操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
 #### [Web ジョブ SDK で Azure Service Bus を使用する方法](websites-dotnet-webjobs-sdk-service-bus.md)
 #### [Web ジョブ SDK を使用して Azure Table Storage を使用する方法](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)
 
@@ -113,7 +113,7 @@
 #### [App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)
 #### [App Service 環境で Web アプリを作成する](app-service-web-how-to-create-a-web-app-in-an-ase.md)
 #### [Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法](app-service-app-service-environment-create-ilb-ase-resourcemanager.md)
-#### [内部 Load Balancer を使用する](app-service-environment-with-internal-load-balancer.md)
+#### [内部ロード バランサーを使用する](app-service-environment-with-internal-load-balancer.md)
 
 ## [デプロイする](../app-service/app-service-deployment-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [App Service にデプロイする](web-sites-deploy.md)
@@ -247,9 +247,9 @@
 ### [Web アプリのパフォーマンスに関する問題のトラブルシューティング](app-service-web-troubleshoot-performance-degradation.md)
 
 # リファレンス
-## [Azure CLI](/cli/azure/)
-## [Java](/java/api/)
+## [Azure CLI 2.0 プレビュー](/cli/azure/appservice)
 ## [.NET](/dotnet/api)
+## [Java](/java/api/)
 ## [REST ()](/rest/api/appservice)
 
 # 関連項目
@@ -266,6 +266,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -8,6 +8,10 @@
 ### [IoT Hub (.NET) を使ってみる](iot-hub-csharp-csharp-getstarted.md)
 ### [IoT Hub (Java) を使ってみる](iot-hub-java-java-getstarted.md)
 ### [IoT Hub (ノード) を使ってみる](iot-hub-node-node-getstarted.md)
+## IoT device SDK を使ってみる
+### [Azure IoT device SDK for C の概要](iot-hub-device-sdk-c-intro.md)
+### [IoT device SDK for C: IoTHubClient の詳細](iot-hub-device-sdk-c-iothubclient.md)
+### [IoT device SDK for C: シリアライザー](iot-hub-device-sdk-c-serializer.md)
 ## Raspberry Pi を使ってみる
 ### [Raspberry Pi 3 を使ってみる](iot-hub-raspberry-pi-kit-node-get-started.md)
 ### レッスン 1: デバイスの構成
@@ -16,7 +20,7 @@
 #### [ツールを入手する (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-ubuntu.md)
 #### [ツールを入手する (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-mac.md)
 #### [点滅アプリケーションを作成してデプロイする](iot-hub-raspberry-pi-kit-node-lesson1-deploy-blink-app.md)
-### レッスン 2: IoT ハブの作成
+### レッスン 2: IoT Hub の作成
 #### [Azure ツールを入手する (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
 #### [Azure ツールを入手する (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-ubuntu.md)
 #### [Azure ツールを入手する (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
@@ -31,6 +35,7 @@
 ### [トラブルシューティング](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
 ## [Gateway SDK を使ってみる (Linux)](iot-hub-linux-gateway-sdk-get-started.md)
 ## [Gateway SDK を使ってみる (Windows)](iot-hub-windows-gateway-sdk-get-started.md)
+
 
 # 方法
 ## [デバイスからクラウドへのメッセージの処理に関するチュートリアル (.NET)](iot-hub-csharp-csharp-process-d2c.md)
@@ -51,7 +56,7 @@
 ## [デバイス ジョブを使用して .NET/Node のデバイス ファームウェアを更新する](iot-hub-csharp-node-firmware-update.md)
 ## [Node.js のジョブをスケジュールおよびブロードキャストする](iot-hub-node-node-schedule-jobs.md)
 ## [.NET/Node のジョブをスケジュールおよびブロードキャストする](iot-hub-csharp-node-schedule-jobs.md)
-## デプロイを計画する
+## プラン
 ### [IoT Hub と Event Hubs の比較](iot-hub-compare-event-hubs.md)
 ### [ソリューションをスケール調整する](iot-hub-scaling.md)
 ### [高可用性と障害復旧](iot-hub-ha-dr.md)
@@ -74,9 +79,10 @@
 ### [デバイス SDK とサービス SDK](iot-hub-devguide-sdks.md)
 ### [MQTT サポート](iot-hub-mqtt-support.md)
 ### [用語集](iot-hub-devguide-glossary.md)
-## サービスを管理する
+## 管理
 ### [ポータルを使用して IoT Hub を作成する](iot-hub-create-through-portal.md)
-### [CLI を使用して IoT Hub を作成する](iot-hub-create-using-cli.md)
+### [CLI 2.0 プレビューを使用して IoT Hub を作成する](iot-hub-create-using-cli.md)
+### [CLI を使用して IoT Hub を作成する](iot-hub-create-using-cli-nodejs.md)
 ### [REST を使用して IoT Hub を作成する](iot-hub-rm-rest.md)
 ### [PowerShell を使用して IoT Hub を作成する](iot-hub-rm-template-powershell.md)
 ### [テンプレートを使用して IoT Hub を作成する](iot-hub-rm-template.md)
@@ -96,17 +102,16 @@
 ### [IoT デプロイのセキュリティ保護](iot-hub-security-deployment.md)
 
 # リファレンス
-## [Azure CLI](https://docs.microsoft.com/cli/azure)
-## [Java](https://docs.microsoft.com/java/api)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
+## [Azure CLI 2.0 プレビュー](/cli/azure/iot)
+## [.NET (サービス)](/dotnet/api/microsoft.azure.devices)
+## [.NET (デバイス)](/dotnet/api/microsoft.azure.devices.client)
+## [Java (サービス)](/java/api/com.microsoft.azure.iot.service.auth)
+## [Java (デバイス)](/java/api/com.microsoft.azure.iothub)
 ## [Azure IoT SDK](http://azure.github.io/azure-iot-sdks/)
-## [Gateway SDK API](http://azure.github.io/azure-iot-gateway-sdk)
-## [リソース プロバイダー REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest)
-## [デバイス ID REST API](https://docs.microsoft.com/rest/api/iothub/device-identities-rest)
-## [Device Messaging REST API](https://docs.microsoft.com/rest/api/iothub/device-messaging-rest-apis)
-## [Azure IoT device SDK for C の概要](iot-hub-device-sdk-c-intro.md)
-## [IoT device SDK for C: IoTHubClient の詳細](iot-hub-device-sdk-c-iothubclient.md)
-## [IoT device SDK for C: シリアライザー](iot-hub-device-sdk-c-serializer.md)
+## [Gateway SDK](http://azure.github.io/azure-iot-gateway-sdk)
+## [REST (リソース プロバイダー)](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest)
+## [REST (デバイス ID)](https://docs.microsoft.com/rest/api/iothub/device-identities-rest)
+## [REST (Device Messaging) REST API](https://docs.microsoft.com/rest/api/iothub/device-messaging-rest-apis)
 
 # 関連項目
 ## [Azure IoT Suite](https://azure.microsoft.com/documentation/suites/iot-suite/)
@@ -125,6 +130,6 @@
 ## [IoT デバイス カタログ向けの Azure 認定](https://catalog.azureiotsuite.com/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

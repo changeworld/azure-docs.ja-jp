@@ -5,15 +5,19 @@
 
 # 方法 
 ## [デプロイする](analysis-services-deploy.md)
-## [管理]
+## 管理
 ###[サーバーへの接続](analysis-services-connect.md)
 ###[サーバーの管理](analysis-services-manage.md)
 ## 統合
 ###[オンプレミス データ ゲートウェイ](analysis-services-gateway.md)
 
-# 参照
+# リファレンス
+##[PowerShell](/powershell/resourcemanager)
+##[REST ()](/rest/api/analysisservices/)
+
+# 関連項目
 ##[データ ソースの接続](analysis-services-datasource.md)
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

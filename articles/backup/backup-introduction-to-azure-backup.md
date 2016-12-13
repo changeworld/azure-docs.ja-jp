@@ -1,11 +1,11 @@
 ---
-title: "Azure Backup とは | Microsoft Docs"
-description: "Azure Backup と Recovery Services を利用すれば、Windows Server、Windows クライアント コンピューター、System Center DPM サーバー、Azure Virtual Machines のデータとアプリケーションをバックアップして、復元できます。"
+title: "Azure Backup とは  | Microsoft Docs"
+description: "Azure Backup と Recovery Services を利用すると、Windows Server、Windows クライアント コンピューター、System Center DPM サーバー、Azure 仮想マシンのデータとアプリケーションをバックアップして、復元できます。"
 services: backup
 documentationcenter: 
 author: markgalioto
 manager: cfreeman
-editor: tysonn
+editor: 
 keywords: "バックアップと復元, 復元サービス, バックアップ ソリューション"
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
 ms.service: backup
@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/31/2016
+ms.date: 12/6/2016
 ms.author: jimpark; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: cf3930f209e84ee9b14b56566ca19d31382946aa
-ms.openlocfilehash: cefb405b4f30ca5fe20f6acfaee5ebba2690990b
+ms.sourcegitcommit: b9737c3da308aecf25d5f18088f96c319edeafd5
+ms.openlocfilehash: 76ec51a75240710b24c0e91042d6229e60eeada9
 
 
 ---
@@ -52,8 +52,8 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 | コンポーネント | メリット | 制限 | 保護対象 | バックアップの保存場所 |
 | --- | --- | --- | --- | --- |
 | Azure Backup (MARS) エージェント |<li>物理または仮想 Windows OS でファイルとフォルダーをバックアップ (VM はオンプレミスまたは Azure に配置できます)<li>個別のバックアップ サーバーが不要。 |<li>バックアップは 1 日に 3 回 <li>アプリケーション非対応。ファイル、フォルダー、およびボリューム レベルの復元のみ。 <li>  Linux は未サポート。 |<li>ファイル、 <li>フォルダー |Azure Backup コンテナー |
-| System Center DPM |<li>アプリ対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Azure Backup コンテナーを使用可能<li>Linux に対応 (Hyper-V でホストされている場合) <li>DPM 2012 R2 を使用して VMware 仮想マシンを保護 |Oracle ワークロード バックアップはサポートされません。 |<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Azure Backup コンテナー、<li> ローカルに接続されたディスク、<li>  テープ (オンプレミスのみ) |
-| Azure Backup Server |<li>アプリ対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Azure Backup コンテナーを使用可能<li>Linux に対応 (Hyper-V でホストされている場合)<li>System Center ライセンスは不要 |<li>異機種混在環境には非対応 (VMware VM バックアップ、Oracle ワークロード バックアップ)<li>必ずライブ Azure サブスクリプションが必要<li>テープ バックアップには非対応 |<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Azure Backup コンテナー、<li> ローカルに接続されたディスク |
+| System Center DPM |<li>アプリ対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Azure Backup コンテナーを使用可能<li>Hyper-V と VMware VM での Linux のサポート <li>DPM 2012 R2 を使用して VMware 仮想マシンを保護 |Oracle ワークロードをバックアップできない。|<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Azure Backup コンテナー、<li> ローカルに接続されたディスク、<li>  テープ (オンプレミスのみ) |
+| Azure Backup Server |<li>アプリ対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Azure Backup コンテナーを使用可能<li>Linux に対応 (Hyper-V でホストされている場合)<li>DPM 2012 R2 を使用して VMware 仮想マシンを保護<li>System Center ライセンスは不要 |<li>Oracle ワークロードをバックアップできない。<li>必ずライブ Azure サブスクリプションが必要<li>テープ バックアップには非対応 |<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Azure Backup コンテナー、<li> ローカルに接続されたディスク |
 | Azure IaaS VM のバックアップ |<li>Windows/Linux のネイティブ バックアップ<li>特定のエージェント インストールが不要<li>バックアップ インフラストラクチャを必要としないファブリック レベルのバックアップ |<li>1 日に 1 回 VM をバックアップ <li>ディスク レベルでのみ VM を復元<li>オンプレミスでバックアップできない |<li>VM、 <li>すべてのディスク (PowerShell を使用) |<p>Azure Backup コンテナー</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>各コンポーネントのデプロイ シナリオ
@@ -95,7 +95,7 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 Azure Backup で、Premium Storage VM が保護されます。 Azure Premium Storage は、入出力集中型ワークロードをサポートすることを目的としたソリッド ステート ドライブ (SSD) ベースのストレージです。 Premium Storage は、仮想マシン (VM) ワークロードに適しています。 Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください
 
 ### <a name="back-up-premium-storage-vms"></a>Premium Storage VM のバックアップ
-Premium Storage VM をバックアップすると、Backup サービスによって、Premium ストレージ アカウントの一時的なステージング場所が作成されます。 "AzureBackup-" というステージングの場所は、VM にアタッチされている Premium ディスクの合計データ サイズと同じです。
+Premium Storage VM をバックアップすると、Backup サービスによって、Premium ストレージ アカウントの一時的なステージング場所が作成されます。 "AzureBackup-" というステージングの場所は、VM にアタッチされている Premium ディスクの合計データ サイズと同じです。 ストレージ アカウント上の一時的なステージング場所に十分な空き領域があるかどうかを確認します。 詳細については、[Premium Storage の制限](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)に関する記事を参照してください。
 
 > [!NOTE]
 > ステージングの場所は変更または編集できません。
@@ -175,13 +175,16 @@ System Center DPM または Azure Backup Server にデータをバックアッ�
 Azure Backup エージェントには、データ転送時のネットワーク帯域幅の使用方法を制御できる、ネットワーク スロットル機能が用意されています。 業務時間中に実行が必要なデータのバックアップ処理が他のインターネット トラフィックに干渉しないようにする必要がある場合などに効果を発揮します。 データ転送のスロットルはバックアップと復元のアクティビティに適用されます。
 
 ### <a name="backup-and-retention"></a>バックアップと保持
+
+Azure Backup には、バックアップ コンテナーにつき復旧ポイント (バックアップ コピーまたはスナップショットとも呼ばれます) が 9999 個という制限があります。 次の表は、コンポーネントごとの (コンテナーに対する) 最大バックアップ頻度を示します。 バックアップ ポリシーの構成では、復旧ポイントを使用する頻度を決定します。 たとえば、日ごとに復旧ポイントを作成すると、期限切れになるまで 27 年間復旧ポイントを保持できます。 月ごとの復旧ポイントを取得すると、期限切れになるまで 833 年間復旧ポイントを保持できます。 Backup サービスによって、復旧ポイントに有効期限が設定されることはありません。
+
 |  | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
 | バックアップ頻度<br/> (対バックアップ コンテナー) |3 バックアップ/日 |2 バックアップ/日 |2 バックアップ/日 |1 バックアップ/日 |
 | バックアップ頻度<br/> (対ディスク) |適用不可 |<li>SQL Server の場合は 15 分ごと <li>他のワークロードの場合は 1 時間ごと |<li>SQL Server の場合は 15 分ごと <li>他のワークロードの場合は 1 時間ごと</p> |適用不可 |
 | 保持オプション |毎日、毎週、毎月、毎年 |毎日、毎週、毎月、毎年 |毎日、毎週、毎月、毎年 |毎日、毎週、毎月、毎年 |
-| 保持期間 |最大 99 年 |最大 99 年 |最大 99 年 |最大 99 年 |
-| バックアップ コンテナーの回復ポイント |無制限 |無制限 |無制限 |無制限 |
+| サーバーあたりの復旧ポイントの最大数 |9999|9999|9999|9999|
+| 最大保有期間 |バックアップ頻度次第 |バックアップ頻度次第 |バックアップ頻度次第 |バックアップ頻度次第 |
 | ローカル ディスクの回復ポイント |適用不可 |<li>ファイル サーバーの場合 64 個、<li>アプリケーション サーバーの場合 448 個 |<li>ファイル サーバーの場合 64 個、<li>アプリケーション サーバーの場合 448 個 |適用不可 |
 | テープの回復ポイント |適用不可 |無制限 |適用不可 |適用不可 |
 
@@ -215,12 +218,12 @@ Windows Server でのデータ保護の詳細な段階的手順、または Azur
 * [アプリケーション ワークロードのバックアップ](backup-azure-microsoft-azure-backup.md)
 * [Azure IaaS VM のバックアップ](backup-azure-vms-prepare.md)
 
-[緑]: ./media/backup-introduction-to-azure-backup/green.png
-[黄]: ./media/backup-introduction-to-azure-backup/yellow.png
-[赤]: ./media/backup-introduction-to-azure-backup/red.png
+[green]: ./media/backup-introduction-to-azure-backup/green.png
+[yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
+[red]: ./media/backup-introduction-to-azure-backup/red.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

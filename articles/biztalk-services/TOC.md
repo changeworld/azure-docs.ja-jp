@@ -22,10 +22,8 @@
 ### [アクセス制御](biztalk-issuer-name-issuer-key.md)
 ## [トラブルシューティング](biztalk-troubleshoot-using-ops-logs.md)
 
-# リファレンス
-## [リリース ノート](biztalk-release-notes.md)
-
 # リソース
+## [リリース ノート](biztalk-release-notes.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=biztalk-services)
 ## [料金](https://azure.microsoft.com/pricing/details/biztalk-services/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
@@ -33,6 +31,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

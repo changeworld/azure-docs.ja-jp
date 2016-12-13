@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: ricardom
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0a5bca8564f69434cfb3cbe74021609c6696b46e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 39da63d7f168e3e1f8bf45693d0fee4f41a5608d
 
 
 ---
@@ -144,6 +144,6 @@ As an added benefit, you now have one convenient place in Key Vault to manage al
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

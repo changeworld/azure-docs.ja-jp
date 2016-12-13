@@ -2,20 +2,22 @@
 ## [仮想マシン スケール セットとは](virtual-machine-scale-sets-overview.md)
 
 # 作業の開始
-## [Windows スケール セットを作成する](virtual-machine-scale-sets-windows-create.md)
-## [Linux スケール セットを作成する](virtual-machine-scale-sets-linux-create-cli.md)
+## [ポータルでスケール セットを作成する](virtual-machine-scale-sets-portal-create.md)
 
 # 方法
 ## 計画と設計
 ### [設計上の考慮事項](virtual-machine-scale-sets-design-overview.md)
+
 ## デプロイ
 ### [ポータルを使用したスケール セット](virtual-machine-scale-sets-portal-create.md)
 ### [Visual Studio を使用したスケール セット](virtual-machine-scale-sets-vs-create.md)
+### [PowerShell を使用したスケール セット](virtual-machine-scale-sets-windows-create.md)
+### [Azure CLI を使用したスケール セット](virtual-machine-scale-sets-linux-create-cli.md)
 ### [自動スケールを使用した Linux スケール セット](virtual-machine-scale-sets-linux-autoscale.md)
 ### [自動スケールを使用した Windows スケール セット](virtual-machine-scale-sets-windows-autoscale.md)
 ### [スケール セット上のアプリケーション](virtual-machine-scale-sets-deploy-app.md)
 
-## [管理]
+## 管理
 ### [PowerShell を使用した Windows スケール セット](virtual-machine-scale-sets-windows-manage.md)
 ### [自動スケールとスケール セット](virtual-machine-scale-sets-autoscale-overview.md)
 ### [スケール セットの垂直スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)
@@ -38,6 +40,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

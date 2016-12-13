@@ -28,7 +28,7 @@
 ### [整合性](documentdb-consistency-levels.md)
 ### [NoSQL 対 SQL](documentdb-nosql-vs-sql.md)
 
-## [管理]
+## 管理
 ### [データのインポート](documentdb-import-data.md)
 ### [データのモデル化](documentdb-modeling-data.md)
 ### [地理空間のデータを使用する](documentdb-geospatial.md)
@@ -83,18 +83,20 @@
 
 
 # リファレンス
-## [Java SDK](documentdb-sdk-java.md)
-## [.NET SDK](documentdb-sdk-dotnet.md)
-## [.NET Core SDK](documentdb-sdk-dotnet-core.md)
-## [.NET のサンプル](documentdb-dotnet-samples.md)
-## [Node.js SDK](documentdb-sdk-node.md)
-## [Node.js のサンプル](documentdb-nodejs-samples.md)
-## [Python SDK](documentdb-sdk-python.md)
-## [Python のサンプル](documentdb-python-samples.md)
-## [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-## [SQL の文法チート シート](documentdb-sql-query-cheat-sheet.md)
+## [Java](documentdb-sdk-java.md)
+## [.NET](documentdb-sdk-dotnet.md)
+## [.NET Core](documentdb-sdk-dotnet-core.md)
+## [Node.JS](documentdb-sdk-node.md)
+## [Python](documentdb-sdk-python.md)
 ## [REST ()](/rest/api/documentdb/)
 ## [REST リソース プロバイダー](/rest/api/documentdbresourceprovider/)
+
+# 関連項目
+## [.NET のサンプル](documentdb-dotnet-samples.md)
+## [Node.js のサンプル](documentdb-nodejs-samples.md)
+## [Python のサンプル](documentdb-python-samples.md)
+## [SQL 構文](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+## [SQL の文法チート シート](documentdb-sql-query-cheat-sheet.md)
 
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/documentdb/)
@@ -110,6 +112,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -5,9 +5,7 @@
 ## [Azure CLI 2.0 Preview を使用した ACS へのデプロイ](container-service-create-acs-cluster-cli.md)
 ## [ACS クラスターに接続する](container-service-connect.md)
 ## [ACS クラスターをスケールする](container-service-scale.md)
-
 # 方法
-
 ## DC/OS による管理
 ### [コンテナー管理 - DC/OS Web UI](container-service-mesos-marathon-ui.md)
 ### [コンテナー管理 - DC/OS REST API](container-service-mesos-marathon-rest.md)
@@ -21,16 +19,16 @@
 ### [Sysdig で監視する (DC/OS)](container-service-monitoring-sysdig.md)
 ## [Kubernetes による管理](container-service-kubernetes-walkthrough.md)
 ## [Docker Swarm による管理](container-service-docker-swarm.md)
-
 # リファレンス
-## [REST API](/rest/api/compute/containerservices)
-
+## [PowerShell](/powershell/resourcemanager/azurerm.compute/v2.3.0/azurerm.compute)
+## [.NET](/dotnet/api/microsoft.azure.management.compute.models)
+## [REST ()](/rest/api/compute/containerservices)
 # リソース
 ## [利用可能なリージョン](https://azure.microsoft.com/regions/services/)
 ## [料金](https://azure.microsoft.com/pricing/details/container-service/)
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

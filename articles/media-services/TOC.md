@@ -195,16 +195,18 @@
 ### [再試行ロジック](media-services-retry-logic-in-dotnet-sdk.md)
 
 # リファレンス
-## [リリース ノート](media-services-release-notes.md)
-## [.NET](media-services-dotnet-how-to-use.md)
-## [REST ()](media-services-rest-how-to-use.md)
+## [PowerShell (Resource Manager)](/powershell/resourcemanager/azurerm.media/v0.3.1/azurerm.media)
+## [PowerShell (サービス管理)](/powershell/servicemanagement/azure.compute/v3.1.0/azure.compute)
+## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
+## [REST ()](/rest/api/media)
 
 # リソース
+## [リリース ノート](media-services-release-notes.md)
 ## [料金](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure Media Services コミュニティ](media-services-community.md)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -61,12 +61,15 @@
 ### [ログ検索 API](log-analytics-log-search-api.md)
 ### [アラート API](log-analytics-api-alerts.md)
 
+# リファレンス
+## [PowerShell](/powershell/resourcemanager/azurerm.operationalinsights/v2.3.0/azurerm.operationalinsights)
+
 # リソース
 ## [アップグレード分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
 ## [料金](https://azure.microsoft.com/pricing/details/log-analytics/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

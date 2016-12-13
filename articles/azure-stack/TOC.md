@@ -72,10 +72,10 @@
 ### [Azure Stack での SQL Server リソース プロバイダー アダプターのデプロイ](azure-stack-sql-resource-provider-deploy.md)
 
 ## App Service の計画およびデプロイ
-### [Azure Stack Web Apps の概要](azure-stack-app-service-overview.md)
-### [Azure Stack Web Apps を開始する前に](azure-stack-app-service-before-you-get-started.md)
-### [Web Apps: Web worker ロールの追加](azure-stack-webapps-add-worker-roles.md)
-### [Web Apps リソース プロバイダーを Azure Stack に追加する](azure-stack-app-service-deploy.md)
+### [Azure Stack 上の App Service の概要](azure-stack-app-service-overview.md)
+### [開始する前に](azure-stack-app-service-before-you-get-started.md)
+### [web worker ロールを追加する](azure-stack-app-service-add-worker-roles.md)
+### [App Service リソース プロバイダーを Azure Stack に追加する](azure-stack-app-service-deploy.md)
 
 # トラブルシューティング
 ## [Azure Stack のトラブルシューティング](azure-stack-troubleshooting.md)
@@ -86,6 +86,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stack)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

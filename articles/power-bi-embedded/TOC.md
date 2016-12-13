@@ -11,7 +11,7 @@
 ## 計画と設計
 ### [一般的なシナリオ](power-bi-embedded-scenarios.md)
 
-## [管理]
+## 管理
 ### [データ ソースへの接続](power-bi-embedded-connect-datasource.md)
 ### [IFrame を使用した Power BI レポートの埋め込み](power-bi-embedded-iframe.md)
 ### [レポートを操作する](power-bi-embedded-interact-with-reports.md)
@@ -21,8 +21,8 @@
 ### [Power BI Embedded の行レベルのセキュリティ](power-bi-embedded-rls.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/)
-## [.NET](/dotnet/api/)
+## [PowerShell](/powershell/resourcemanager/azurerm.powerbiembedded/v2.3.0/azurerm.powerbiembedded)
+## [.NET](/dotnet/api/microsoft.azure.management.powerbiembedded)
 ## [.NET SDK ダウンロード](https://www.nuget.org/profiles/powerbi)
 ## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
 ## [REST ()](/rest/api/powerbiembedded/)
@@ -34,6 +34,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

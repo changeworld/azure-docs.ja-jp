@@ -142,7 +142,7 @@
 ### [Linux、Unix、OS X から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 ### [Windows OS から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 ### [データ アクセスを制限する](hdinsight-storage-sharedaccesssignature-permissions.md)
-## [管理]
+## 管理
 ### [Linux クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)
 #### [Azure PowerShell の使用](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 #### [cURL と Azure REST API を使用する](hdinsight-hadoop-create-linux-clusters-curl-rest.md)
@@ -181,12 +181,12 @@
 #### [Hive クエリのパフォーマンス](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
 # リファレンス
-## [PowerShell コマンドレット](/powershell/resourcemanager/azurerm.hdinsight/v2.2.0/azurerm.hdinsight)
-## [.NET SDK for Hadoop](https://msdn.microsoft.com/library/mt271028.aspx)
-## [.NET SDK for HBase](https://www.nuget.org/packages/Microsoft.HBase.Client/)
-## [.NET library for Avro](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
-## [REST API リファレンス](/rest/api/hdinsight/)
-## [リモート ジョブ用の Spark REST API](/rest/api/hdinsightspark/)
+## [PowerShell](/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight)
+## [.NET (Hadoop)](https://msdn.microsoft.com/library/mt271028.aspx)
+## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
+## [.NET (Avro)](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
+## [REST ()](/rest/api/hdinsight/)
+## [REST (Spark)](/rest/api/hdinsightspark/)
 
 # 関連項目
 ## Windows クラスター
@@ -224,6 +224,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

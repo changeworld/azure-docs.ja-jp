@@ -16,6 +16,7 @@
 #### [Node.JS](functions-reference-node.md)
 #### [F#](functions-reference-fsharp.md)
 ### [トリガーとバインドを処理する](functions-triggers-bindings.md)
+#### [DocumentDB のバインド](functions-bindings-documentdb.md)
 #### [Event Hub のバインド](functions-bindings-event-hubs.md)
 #### [HTTP と webhook のバインド](functions-bindings-http-webhook.md)
 #### [Mobile Apps のバインド](functions-bindings-mobile-apps.md)
@@ -33,7 +34,7 @@
 ### [Azure Functions のベスト プラクティス](functions-best-practices.md)
 ### [スケジュールされたクリーンアップ タスクを Azure Functions で実行する](functions-scenario-database-table-cleanup.md)
 
-## [管理]
+## 管理
 ### [関数アプリの設定を構成する](functions-how-to-use-azure-function-app-settings.md)
 
 ## デプロイ
@@ -49,6 +50,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -22,6 +22,7 @@
 ## セキュリティ
 ### [Azure SQL Database の Azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-sql-database/)
 ### [SQL セキュリティ センター](https://msdn.microsoft.com/library/azure/bb510589)
+
 # 作業の開始
 ## データベースとサーバー
 ### Single Database
@@ -74,12 +75,12 @@
 ##### [PowerShell を使用したコピー](sql-database-copy-powershell.md)
 ##### [T-SQL を使用したコピー](sql-database-copy-transact-sql.md)
 #### データベースを BACPAC ファイルにエクスポートする
-##### [Azure ポータル](sql-database-export.md)
+##### [Azure Portal](sql-database-export.md)
 ##### [SQL Server Management Studio](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
 ##### [SQL パッケージ ユーティリティ](sql-database-cloud-migrate-compatible-export-bacpac-sqlpackage.md)
 ##### [PowerShell](sql-database-export-powershell.md)
 #### データベースを BACPAC ファイルからインポートする
-##### [Azure ポータル](sql-database-import.md)
+##### [Azure Portal](sql-database-import.md)
 ##### [PowerShell](sql-database-import-powershell.md)
 ##### [SQL Server Management Studio](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
 ##### [SQL パッケージ ユーティリティ](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
@@ -104,7 +105,7 @@
 ##### [列の暗号化](https://msdn.microsoft.com/library/azure/ms179331)
 #### データをマスクする
 ##### 動的データ マスク
-###### [Azure ポータル](sql-database-dynamic-data-masking-get-started.md)
+###### [Azure Portal](sql-database-dynamic-data-masking-get-started.md)
 ### すべきこと
 #### [Azure Portal を使用した動的データ マスク](sql-database-dynamic-data-masking-get-started.md)
 ## ビジネス継続性
@@ -119,10 +120,10 @@
 #### [ローリング アップグレード](sql-database-manage-application-rolling-upgrade.md)
 ### すべきこと
 #### 削除済みデータベースの復元
-##### [Azure ポータル](sql-database-restore-deleted-database-portal.md)
+##### [Azure Portal](sql-database-restore-deleted-database-portal.md)
 ##### [PowerShell](sql-database-restore-deleted-database-powershell.md)
 #### ポイントインタイム リストア
-##### [Azure ポータル](sql-database-point-in-time-restore-portal.md)
+##### [Azure Portal](sql-database-point-in-time-restore-portal.md)
 ##### [PowerShell](sql-database-point-in-time-restore-powershell.md)
 #### データベースの geo リストア
 ##### [Azure Portal](sql-database-geo-restore-portal.md)
@@ -133,7 +134,7 @@
 ### データベースのレプリケート
 #### [アクティブ geo レプリケーションの概要](sql-database-geo-replication-overview.md)
 #### アクティブ geo レプリケーションの構成
-##### [Azure ポータル](sql-database-geo-replication-portal.md)
+##### [Azure Portal](sql-database-geo-replication-portal.md)
 ##### [PowerShell](sql-database-geo-replication-powershell.md)
 ##### [T-SQL](sql-database-geo-replication-transact-sql.md)
 #### アクティブ geo レプリケーションを使用したフェールオーバー
@@ -189,11 +190,12 @@
 #### [Azure Portal を使用したアップグレード](sql-database-upgrade-server-portal.md)
 #### [PowerShell を使用したアップグレード](sql-database-upgrade-server-powershell.md)
 #### [価格レベルの推奨](sql-database-service-tier-advisor.md)
+
 # 方法
 ## 作成と管理
 ### サーバーとデータベース
 #### [単一データベース](sql-database-manage-portal.md)
-#### [Azure ポータル](sql-database-get-started.md)
+#### [Azure Portal](sql-database-get-started.md)
 #### [C#](sql-database-get-started-csharp.md)
 #### [PowerShell](sql-database-manage-powershell.md)
 #### [SQL Server Management Studio](sql-database-manage-azure-ssms.md)
@@ -220,7 +222,7 @@
 #### [Add Azure AD 認証](sql-database-aad-authentication.md)
 #### [多要素認証](sql-database-ssms-mfa-authentication.md)
 ### ファイアウォール規則
-#### [Azure ポータル](sql-database-configure-firewall-settings.md)
+#### [Azure Portal](sql-database-configure-firewall-settings.md)
 #### [PowerShell](sql-database-configure-firewall-settings-powershell.md)
 #### [REST API](sql-database-configure-firewall-settings-rest.md)
 #### [T-SQL](sql-database-configure-firewall-settings-tsql.md)
@@ -274,12 +276,12 @@
 #### [PowerShell](sql-database-copy-powershell.md)
 #### [T-SQL](sql-database-copy-transact-sql.md)
 ### データベースを BACPAC ファイルにエクスポートする
-#### [Azure ポータル](sql-database-export.md)
+#### [Azure Portal](sql-database-export.md)
 #### [SQL Server Management Studio](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
 #### [SQL パッケージ ユーティリティ](sql-database-cloud-migrate-compatible-export-bacpac-sqlpackage.md)
 #### [PowerShell](sql-database-export-powershell.md)
 ### データベースを BACPAC ファイルからインポートする
-#### [Azure ポータル](sql-database-import.md)
+#### [Azure Portal](sql-database-import.md)
 #### [PowerShell](sql-database-import-powershell.md)
 #### [SQL Server Management Studio](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
 #### [SQL パッケージ ユーティリティ](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
@@ -295,10 +297,10 @@
 #### [クラウド データベースにまたがる分散トランザクション](sql-database-elastic-transactions-overview.md)
 ## 復元
 ### 削除済みデータベースの復元
-#### [Azure ポータル](sql-database-restore-deleted-database-portal.md)
+#### [Azure Portal](sql-database-restore-deleted-database-portal.md)
 #### [PowerShell](sql-database-restore-deleted-database-powershell.md)
 ### ポイントインタイム リストア
-#### [Azure ポータル](sql-database-point-in-time-restore-portal.md)
+#### [Azure Portal](sql-database-point-in-time-restore-portal.md)
 #### [PowerShell](sql-database-point-in-time-restore-powershell.md)
 ### 地理リストア
 #### [Azure Portal](sql-database-geo-restore-portal.md)
@@ -315,7 +317,6 @@
 #### [Azure Portal](sql-database-geo-replication-failover-portal.md)
 #### [PowerShell](sql-database-geo-replication-failover-powershell.md)
 #### [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-
 ## トラブルシューティング
 ### [接続に関する問題](sql-database-troubleshoot-common-connection-issues.md)
 ### [一時的な接続エラー](sql-database-troubleshoot-connection.md)
@@ -325,26 +326,26 @@
 
 
 # リファレンス
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
-## [PowerShell クラシック](/powershell/servicemanagement/)
-## [Java](/java/api/)
-## [.NET](/dotnet/api/)
+## [PowerShell](/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql)
+## [PowerShell (エラスティック データベース)](/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs)
+## [.NET](https://docs.microsoft.com)
+## [Java](/java/api/com.microsoft.azure.management.sql)
+## [Node.JS](https://msdn.microsoft.com/library/mt652093.aspx)
+## [Python](https://msdn.microsoft.com/library/mt652092.aspx)
+## [Ruby](https://msdn.microsoft.com/library/mt691981.aspx)
+## [PHP](https://msdn.microsoft.com/library/dn865013.aspx)
 ## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
-## [Azure SQL Database コマンドレット](/powershell/resourcemanager/AzureRM.Sql/v1.0.12/AzureRM.Sql)
-## [SQL Server コマンドレット](https://msdn.microsoft.com/library/mt740629.aspx)
 ## [REST ()](/rest/api/sql/)
 
+# 関連項目
 ## SQL Database の管理ライブラリ
-### [SQL Database の管理ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/mt349017.aspx)
 ### [SQL Database の管理ライブラリ パッケージを取得する](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)
 ## [SQL Server ドライバー](https://msdn.microsoft.com/library/mt654049.aspx)
 ### [ADO.NET](https://msdn.microsoft.com/library/mt657768.aspx)
 ### [JDBC](https://msdn.microsoft.com/library/mt484311.aspx)
-### [Node.JS](https://msdn.microsoft.com/library/mt652093.aspx)
+
 ### [ODBC](https://msdn.microsoft.com/library/mt654048.aspx)
-### [PHP](https://msdn.microsoft.com/library/dn865013.aspx)
-### [Python](https://msdn.microsoft.com/library/mt652092.aspx)
-### [Ruby](https://msdn.microsoft.com/library/mt691981.aspx)
+
 
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/sql-database/)
@@ -360,6 +361,6 @@
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

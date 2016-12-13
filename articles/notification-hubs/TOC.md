@@ -42,7 +42,7 @@
 #### [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 #### [Windows](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 
-## [管理]
+## 管理
 ### [登録](notification-hubs-push-notification-registration-management.md)
 
 ## [セキュリティ保護](notification-hubs-push-notification-security.md)
@@ -59,9 +59,9 @@
 ### [診断ガイドライン](notification-hubs-push-notification-fixer.md)
 
 # リファレンス
-## [PowerShell コマンドレット](/powershell/resourcemanager/)
-## [.NET](/dotnet/api/)
-## [REST ()](/rest/api/notificationhubs/)
+## [PowerShell](/powershell/resourcemanager/azurerm.notificationhubs/v2.3.0/azurerm.notificationhubs)
+## [.NET](/dotnet/api/microsoft.azure.notificationhubs)
+## [REST ()](/rest/api/notificationhubs)
 
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/notification-hubs/)
@@ -71,6 +71,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=notification-hubs)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 
