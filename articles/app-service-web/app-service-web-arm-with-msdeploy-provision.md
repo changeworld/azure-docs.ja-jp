@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2016
-ms.author: john.dehavilland
+ms.author: jodehavi
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 9c748f4f65ec4a2ba32bca97648fb7ccdbb8d749

@@ -15,7 +15,7 @@ ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
-ms.author: gatneil
+ms.author: negat
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 8c4248077626cba2f1ace3c119d301b99247e19f

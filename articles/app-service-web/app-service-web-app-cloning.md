@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2016
-ms.author: ahmedelnably
+ms.author: aelnably
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: e238f804d4a96e10101e7aa2e2a1bcb78a44e967

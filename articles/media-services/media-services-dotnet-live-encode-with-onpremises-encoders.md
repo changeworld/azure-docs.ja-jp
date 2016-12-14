@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 08/31/2016
-ms.author: cenkdin;juliako
+ms.author: cenkd;juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 46cd4171b4d88aa68386b80471f1e7d05539cdd4

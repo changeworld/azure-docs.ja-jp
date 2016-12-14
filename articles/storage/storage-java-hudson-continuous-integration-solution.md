@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 10/18/2016
-ms.author: dinesh
+ms.author: dineshm
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 37ad86ce34d7f9ed6642e6f0fa98cf5fbf26e8bc

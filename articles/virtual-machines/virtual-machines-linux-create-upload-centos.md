@@ -14,7 +14,7 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2016
-ms.author: szarkos
+ms.author: szark
 translationtype: Human Translation
 ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
 ms.openlocfilehash: 6919a8c2147db4f8c86230e336540c8c88c714e1

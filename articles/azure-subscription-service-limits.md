@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2016
-ms.author: btardif
+ms.author: byvinyal
 translationtype: Human Translation
 ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
 ms.openlocfilehash: c98484a754943ad0ea5b1098a9a6c06cbf5f8814

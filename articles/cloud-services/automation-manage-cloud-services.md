@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2016
-ms.author: jolevy
+ms.author: timlt
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 47307ed521201b462730a2ea4cb8d0ca665b6d72
@@ -44,7 +44,6 @@ Azure Automation を使用して、次のような Azure Cloud Services を管�
 * [Azure Automation Overview (Azure Automation の概要)](../automation/automation-intro.md)
 * [初めての Runbook](../automation/automation-first-runbook-graphical.md)
 * [Azure Automation の学習マップ](https://azure.microsoft.com/documentation/learning-paths/automation/)
-
 
 
 

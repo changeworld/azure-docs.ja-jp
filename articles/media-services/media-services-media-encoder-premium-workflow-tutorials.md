@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
-ms.author: xstof;xpouyat;juliako
+ms.author: christoc;xpouyat;juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
 ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
