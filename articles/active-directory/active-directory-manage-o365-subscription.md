@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 11/09/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
-ms.openlocfilehash: f0d882509abde7f5dd3d380087e38557ed0163a6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b2985119b60bf11bf1ce1b951c40f8b87351e749
 
 
 ---
@@ -68,6 +68,6 @@ Michael Smith が msmith@hotmail.com, として Azure にサインインして�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

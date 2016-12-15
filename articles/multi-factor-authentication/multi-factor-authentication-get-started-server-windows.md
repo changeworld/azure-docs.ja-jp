@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1952e103c574f83c2c6285e32c59144816749348
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 84b6df0b45548d3797528c3723f02bd1a124454f
 
 
 ---
-# <a name="windows-authentication-and-azure-multifactor-authentication-server"></a>Windows 認証と Azure Multi-Factor Authentication Server
+# <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 認証と Azure Multi-Factor Authentication Server
 Windows 認証セクションでは、管理者が 1 つ以上のアプリケーションで Windows 認証を有効にして構成できます。  Windows 認証を設定する前に考慮する必要がある点の一覧を次に示します。
 
 * ターミナル サービスで Azure Multi-Factor Authentication を有効にするには再起動が必要です。
@@ -49,6 +49,6 @@ Windows 認証セクションでは、管理者が 1 つ以上のアプリケー
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

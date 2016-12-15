@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/20/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4ddc691f4f3d53dbff2e55b7a97446427b93a8a4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: bdd7d3d6e532efe7c3ed8225dd29a895725f2ff9
 
 
 ---
@@ -171,7 +171,7 @@ Azure Security Center は、悪意のある IP アドレス (多くの場合、�
 
 [AZURE.NOTE] ライブ IP アドレスは、プライバシー保護の目的でこのスクリーンショットからは削除しています。
 
-### <a name="possible-outgoing-denialofservice-attack-detected"></a>送信サービス拒否攻撃の可能性の検出
+### <a name="possible-outgoing-denial-of-service-attack-detected"></a>送信サービス拒否攻撃の可能性の検出
 ある仮想マシンによって送信された異常なネットワーク トラフィックが原因で、Security Center が潜在的なサービス拒否型の攻撃をトリガーする場合があります。
 
 このタイプの警告の例を次に示します。
@@ -214,6 +214,6 @@ SQL インジェクションとは、後で SQL Server のインスタンスに�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

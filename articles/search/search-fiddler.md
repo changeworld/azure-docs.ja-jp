@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: d78ceb2b616b5c574bede1e2df21c3415a9d757a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c38b73fa69bee34ce2434c6274cb017c99ef3c35
 
 ---
 
@@ -226,6 +226,6 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/02/2016
 ms.author: aasthan
 translationtype: Human Translation
-ms.sourcegitcommit: 9f4105d1ab366994add0f75d634917ab9a063733
-ms.openlocfilehash: 15719afed2435bd42e732a7d610e7b516ba07ad8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 31368661906bc8ca0f8ac1d3329bb053d41a94d7
 
 
 ---
@@ -293,6 +293,6 @@ Visual Studio で F5 キーを押すか、ターミナル ウィンドウでア�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

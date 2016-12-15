@@ -6,18 +6,19 @@ services: sql-database
 documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: cgronlun
+editor: 
 ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
+ms.custom: sharded databases pool
 ms.devlang: NA
-ms.date: 11/15/2016
+ms.date: 12/06/2016
 ms.author: CarlRabeler
 ms.workload: data-management
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 5b800e157264764d69b4fed94d960120a2395367
-ms.openlocfilehash: 316d40aebdfff379aa007f56472a6596f9eb808d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 829229542c05477d427b15a9d862f414d9c730d6
 
 
 ---
@@ -106,6 +107,6 @@ geo リストアよりもアグレッシブな復旧要件があるアプリケ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

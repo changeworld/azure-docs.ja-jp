@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 0d9d87d0dc26d2fcaa3886a9f8c0849b71b26847
-ms.openlocfilehash: 61ea806ec3ad620d454e2de0910fa2b49de66493
+ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
+ms.openlocfilehash: 645fa2574efb9501da173f8ac8aea146d1e79ff8
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 61ea806ec3ad620d454e2de0910fa2b49de66493
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 
 > 
 > 
 
@@ -50,7 +50,7 @@ ms.openlocfilehash: 61ea806ec3ad620d454e2de0910fa2b49de66493
 
 * このチュートリアルを完了するには、Azure アカウントが必要です。 
   
-    アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
+    アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
 * オペレーティング システム: Windows 8 以降、Windows 2008 R2、Windows 7。
 * .NET Framework 4.0 以降
 * Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降のバージョン。
@@ -441,10 +441,10 @@ MPEG DASH
 
 <!-- URLs. -->
 [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
-[ポータル]: http://manage.windowsazure.com/
+[Portal]: http://manage.windowsazure.com/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

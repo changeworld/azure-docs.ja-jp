@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 968e24b0441575be7ef17aac8ffaddb8fd16d3c6
+ms.sourcegitcommit: e17f0e050530a64fdf569176abc5cf3ae88da516
+ms.openlocfilehash: ab0777f859e80afcd61e371056b44d018c7b7ab9
 
 
 ---
@@ -70,24 +70,26 @@ ms.openlocfilehash: 968e24b0441575be7ef17aac8ffaddb8fd16d3c6
 <p>これは開発用であるため、<b>[サンドボックス]</b> モードを選択してください。 <b>[実稼働]</b> は、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合にのみ使用します。</p>
 </li>
 </ol>
-&emsp;&emsp;![Configure APNS in Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
+&emsp;&emsp;&emsp;&emsp;![Configure APNS in Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
 
-&emsp;&emsp;![Configure APNS certification in Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+&emsp;&emsp;&emsp;&emsp;![Configure APNS certification in Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
 これで、通知ハブが APNS と連動するように構成されました。接続文字列にアプリケーションを登録し、プッシュ通知を送信できます。
 
 ## <a name="connect-your-ios-app-to-notification-hubs"></a>Notification Hubs に iOS アプリケーションを接続する
 1. Xcode で、新しい iOS プロジェクトを作成し、 **[Single View Application]** テンプレートを選択します。
    
-       ![Xcode - Single View Application][8]
+    ![Xcode - Single View Application][8]
+    
 2. 新しいプロジェクトのオプションを設定する際には、以前に Apple Developer ポータルでバンドル ID を設定したときと同じ**製品名**と**組織 ID** を使用してください。
    
     ![Xcode - project options][11]
+    
 3. **[Target (ターゲット)]** でプロジェクト名をクリックし、**[Build Settings (ビルド設定)]** タブをクリックして **[Code Signing Identity (コード署名 ID)]** を展開し、**[Debug (デバッグ)]** でコード署名 ID を選択します。 **[Levels (レベル)]** を **[Basic (基本)]** から **[All (すべて)]** に切り替え、**[Provisioning Profile (プロビジョニング プロファイル)]** に、事前に作成したプロビジョニング プロファイルを設定します。
    
     Xcode で作成した新しいプロビジョニング プロファイルが表示されない場合は、署名 ID のプロファイルを更新してみてください。 メニュー バーの **Xcode** をクリックし、**[Preference (ユーザー設定)]**、**[Account (アカウント)]** タブ、**[View Details (詳細の表示)]** ボタンの順にクリックします。次に、署名 ID をクリックし、右下隅にある更新ボタンをクリックします。
    
-       ![Xcode - provisioning profile][9]
+    ![Xcode - provisioning profile][9]
 4. [Mobile Services iOS SDK バージョン 1.2.4] をダウンロードしてファイルを解凍します。 Xcode でプロジェクトを右クリックして **[Add Files to (ファイルの追加先)]** オプションをクリックし、Xcode プロジェクトに **WindowsAzureMessaging.framework** フォルダーを追加します。 **[Copy items if needed (必要に応じてアイテムをコピー)]** を選択し、**[Add (追加)]** をクリックします。
    
    > [!NOTE]
@@ -95,7 +97,7 @@ ms.openlocfilehash: 968e24b0441575be7ef17aac8ffaddb8fd16d3c6
    > 
    > 
    
-       ![Unzip Azure SDK][10]
+    ![Unzip Azure SDK][10]
 5. `HubInfo.h`という名前の新しいヘッダー ファイルをプロジェクトに追加します。 このファイルに通知ハブの定数が保存されます。  次の定義を追加し、文字列リテラルのプレースホルダーを "*ハブ名*" とメモしておいた *DefaultListenSharedAccessSignature* に置き換えます。
    
         #ifndef HubInfo_h
@@ -464,17 +466,17 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 <!-- URLs. -->
 [Mobile Services iOS SDK バージョン 1.2.4]: http://aka.ms/kymw2g
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
-[アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[Mobile Services の使用]: /develop/mobile/tutorials/get-started-ios
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
+[Azure Classic Portal]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[iOS プロビジョニング ポータル]: http://go.microsoft.com/fwlink/p/?LinkId=272456
+[iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
-[Mobile Services でのプッシュ通知の使用]: ../mobile-services-javascript-backend-ios-get-started-push.md
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-ios-get-started-push.md
 [Azure Notification Hubs と .NET バックエンドによる iOS ユーザーへの通知]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 
@@ -483,6 +485,6 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

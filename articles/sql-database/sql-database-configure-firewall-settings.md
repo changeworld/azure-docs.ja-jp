@@ -8,19 +8,20 @@ manager: jhubbard
 editor: 
 ms.assetid: c3b206b5-af6e-41af-8306-db12ecfc1b5d
 ms.service: sql-database
+ms.custom: auth and access
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: hero-article
 ms.date: 11/28/2016
 ms.author: rickbyh;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: ad72adf626fb5f59f239f57ff0158db101017a1b
-ms.openlocfilehash: 7925663bd4233e368f54b38c94888ac1b0f5dcab
+ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
+ms.openlocfilehash: 1479595fb7de2e0a37520c7d323624142e624af1
 
 
 ---
-# <a name="configure-an-azure-sql-database-server-level-firewall-rule-using-the-azure-portal"></a>Azure ポータルを使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する
+# <a name="create-and-manage-azure-sql-database-server-level-firewall-rules-using-the-azure-portal"></a>Azure Portal を使用した Azure SQL Database のサーバーレベルのファイアウォール規則の作成と管理
 > [!div class="op_single_selector"]
 > * [概要](sql-database-firewall-configure.md)
 > * [Azure ポータル](sql-database-configure-firewall-settings.md)
@@ -28,18 +29,14 @@ ms.openlocfilehash: 7925663bd4233e368f54b38c94888ac1b0f5dcab
 > * [PowerShell](sql-database-configure-firewall-settings-powershell.md)
 > * [REST API](sql-database-configure-firewall-settings-rest.md)
 > 
-> 
 
-Azure SQL Server では、サーバーとデータベースの接続許可に、ファイアウォール規則を使用します。 データベースへのアクセスを選択的に許可するには、Azure SQL Server 論理サーバーのマスター データベースまたはユーザー データベースに、サーバーレベルおよびデータベースレベルのファイアウォール設定を定義します。 このトピックでは、サーバーレベルのファイアウォール規則について説明します。
+サーバーレベルのファイアウォール規則を使用すると、管理者は、指定された IP アドレスまたは IP アドレス範囲から SQL Database サーバーにアクセスできます。 アクセス要件が同じデータベースが多数存在し、それぞれのデータベースの構成に時間を費やしたくない場合は、ユーザーにサーバーレベルのファイアウォール規則を使用することもできます。 ただし、セキュリティを強化しデータベースの移植性を高めるため、可能な限りデータベースレベルのファイアウォール規則を使用することをお勧めします。 SQL Database ファイアウォールの概要については、[SQL Database ファイアウォール規則の概要](sql-database-firewall-configure.md)に関する記事を参照してください。
 
-> [!IMPORTANT]
-> Azure のアプリケーションから Azure SQL Server に接続を許可するには、Azure の接続を有効にする必要があります。 ファイアウォール規則の働きを理解するには、[Azure SQL サーバーのファイアウォールの構成方法\-の概要](sql-database-firewall-configure.md)に関するページを参照してください。 Azure クラウド境界内で接続を行う場合、追加の TCP ポートを開くことが必要な場合があります。 詳細については、「 **ADO.NET 4.5 と SQL Database V12 の 1433 以外のポート** 」の「 [SQL Database V12: 外部と内部](sql-database-develop-direct-route-ports-adonet-v12.md)
-> 
-> 
+> [!Note]
+> ビジネス継続性のコンテキストにおける移植可能なデータベースについては、[障害復旧の認証要件](sql-database-geo-replication-security-config.md)に関する記事を参照してください。
+>
 
-**推奨:** アクセス要件が同じデータベースが多数存在し、それぞれのデータベースの設定に時間を費やしたくない場合は、管理者向けのサーバーレベルのファイアウォール規則を使用してください。 ただし、セキュリティを強化しデータベースの移植性を高めるため、可能な限りデータベースレベルのファイアウォール規則を使用することをお勧めします。
-
-[!INCLUDE [Create SQL Database database](../../includes/sql-database-create-new-server-firewall-portal.md)]
+[!INCLUDE [Create SQL Database firewall rule](../../includes/sql-database-create-new-server-firewall-portal.md)]
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>Azure ポータルで既存のサーバー レベルのファイアウォール規則を管理する
 サーバーレベルのファイアウォール規則を管理する手順を繰り返します。
@@ -52,16 +49,11 @@ Azure SQL Server では、サーバーとデータベースの接続許可に、
 **[保存]** をクリックして変更を保存します。
 
 ## <a name="next-steps"></a>次のステップ
-Transact-SQL を使用して、サーバー レベルとデータベース レベルのファイアウォール規則を作成する方法については、「 [T-SQL を使用して Azure SQL Database のサーバー レベルとデータベース レベルのファイアウォール規則を構成する](sql-database-configure-firewall-settings-tsql.md)」をご覧ください。 
 
-他の方法でサーバー レベルのファイアウォール規則を作成する方法については、次の記事をご覧ください。 
-
-* [PowerShell を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を構成する](sql-database-configure-firewall-settings-powershell.md)
-* [REST API を使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings-rest.md)
-
-データベース作成のチュートリアルについては、「 [SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」をご覧ください。   
-
-データベースに接続可能な追加ユーザーの作成方法については、「[SQL Database 認証および承認： アクセス権を付与する](https://msdn.microsoft.com/library/azure/ee336235.aspx)」を参照してください。
+- 概要チュートリアルについては、[サーバー、サーバーレベルのファイアウォール規則、サンプル データベース、データベースレベルのファイアウォール規則の作成と SQL Server への接続に関する SQL Database のチュートリアル](sql-database-get-started.md)を参照してください。
+- セキュリティの概要チュートリアルについては、[セキュリティの概要](sql-database-get-started-security.md)に関する記事を参照してください。
+- オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、 [SQL Database のクライアント クイック スタート コード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関する記事をご覧ください。
+- データベースに接続可能な追加ユーザーの作成方法については、「[SQL Database 認証および承認： アクセス権を付与する](https://msdn.microsoft.com/library/azure/ee336235.aspx)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 * [データベースの保護](sql-database-security.md)   
@@ -72,6 +64,6 @@ Transact-SQL を使用して、サーバー レベルとデータベース レ�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

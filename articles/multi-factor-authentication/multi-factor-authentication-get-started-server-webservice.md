@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 883b3a27b4b06785068d04a143bae6c33fbed99b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0374fea21dbecabc0008cf6cd9096cd8c2d3f206
 
 
 ---
@@ -45,7 +45,7 @@ Azure Multi-Factor Authentication Server 以外のサーバーでユーザー �
 4. エンドユーザー向けに Azure Multi-Factor Authentication アプリをアクティブ化します
 
 ## <a name="install-the-web-service-sdk"></a>Web サービス SDK のインストール
-Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication Web サービス SDK がまだインストールされていない場合、そのサーバーに移動し、Azure Multi-Factor Authentication Server を開きます。 [Web サービス SDK] アイコン、[Web サービス SDK のインストール]  ボタンを順にクリックし、表示された指示に従います。 Web サービス SDK は、SSL 証明書で保護されている必要があります。 この目的で自己署名証明書を使用できますが、ユーザー ポータル Web サーバー上のローカル コンピューター アカウントの「信頼されたルート証明機関」ストアにインポートすることで、SSL 接続を開始するときにこの証明書が信頼されます。
+Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication Web サービス SDK がまだインストールされていない場合、そのサーバーに移動し、Azure Multi-Factor Authentication Server を開きます。 [Web サービス SDK] アイコンをクリックし、[Web サービス SDK のインストール] ボタンをクリックして、 表示される指示に従います。 Web サービス SDK は、SSL 証明書で保護されている必要があります。 この目的で自己署名証明書を使用できますが、ユーザー ポータル Web サーバー上のローカル コンピューター アカウントの「信頼されたルート証明機関」ストアにインポートすることで、SSL 接続を開始するときにこの証明書が信頼されます。
 
 <center>![セットアップ](./media/multi-factor-authentication-get-started-server-webservice/sdk.png)</center>
 
@@ -75,10 +75,10 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 
 <li>任意のコンピューターで Web ブラウザーを開き、モバイル アプリ Web サービスがインストールされた URL に移動します (https://www.publicwebsite.com/PA など)。 証明書の警告およびエラーが表示されないことを確認してください。</li>
 
-### <a name="configure-the-mobile-app-settings-in-the-azure-multifactor-authentication-server"></a>Azure Multi-Factor Authentication Server でモバイル アプリ設定を構成する
+### <a name="configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server でモバイル アプリ設定を構成する
 モバイル アプリ Web サービスがインストールされたため、ポータルから Azure Multi-Factor Authentication Server を構成する必要があります。
 
-#### <a name="to-configure-the-mobile-app-settings-in-the-azure-multifactor-authentication-server"></a>Azure Multi-Factor Authentication Server のモバイル アプリ設定を構成するには
+#### <a name="to-configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のモバイル アプリ設定を構成するには
 1. Azure Multi-Factor Authentication Server で [ユーザー ポータル] アイコンをクリックします。 ユーザーによる認証方法の制御が許可される場合は、[設定] タブの [ユーザーに認証方法の選択を許可する] の下にある [モバイル アプリ] を確認します。 この機能が有効になっていないと、エンドユーザーはモバイル アプリのアクティブ化を完了するために、ヘルプ デスクに連絡する必要があります。
 2. [ユーザーにモバイル アプリのアクティブ化を許可する] ボックスを確認します。
 3. [ユーザー登録を許可する] ボックスを確認します。
@@ -89,6 +89,6 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

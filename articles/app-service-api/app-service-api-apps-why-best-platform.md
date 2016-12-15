@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/23/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eda73900ded4c587bacfa3b4d4e8465c1de5a5ed
+ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
+ms.openlocfilehash: b38f1876b3317a44268caf80a953dee638a342d1
 
 
 ---
@@ -33,7 +33,7 @@ API Apps の主要な機能を次に示します。
 * **既存の API をそのまま使用できる** - API Apps を利用するために既存の API のコードを変更する必要はありません。現在のコードを API アプリにデプロイするだけです。 API では、App Service でサポートされている任意の言語またはフレームワークを使用できます。たとえば、ASP.NET、C#、Java、PHP、Node.js、Python などを使用できます。
 * **簡単な利用** - [Swagger API メタデータ](http://swagger.io/) に対するサポートの統合によって、さまざまなクライアントで API を簡単に利用できます。  C#、Java、Javascript などのさまざまな言語で API のクライアント コードを自動的に生成します。 コードの変更なしで [CORS](app-service-api-cors-consume-javascript.md) を簡単に構成します。 詳細については、「[API の検出とコードの生成用の App Service API Apps メタデータ](app-service-api-metadata.md)」および「[CORS を使用して JavaScript から API アプリを使用する](app-service-api-cors-consume-javascript.md)」をご覧ください。 
 * **シンプルなアクセス制御** - コードを変更せずに、API アプリを不正なアクセスから保護します。 組み込みの認証サービスでは、他のサービスからのアクセスまたはユーザーを表すクライアントからのアクセスから API をセキュリティで保護します。 Azure Active Directory、Facebook、Twitter、Google、Microsoft アカウントなどが、ID プロバイダーとしてサポートされています。 クライアントでは、Active Directory 認証ライブラリ (ADAL) または Mobile Apps SDK を使用できます。 詳細については、「 [Azure App Service での API Apps の認証と承認](app-service-api-authentication.md)」を参照してください。
-* **Visual Studio の統合** - Visual Studio の専用ツールを使えば、API アプリを作成、デプロイ、使用、デバッグ、管理する作業が効率的になります。 詳細については、 [Azure SDK 2.8.1 for .NET の発表に関するページ](/blog/announcing-azure-sdk-2-8-1-for-net/)を参照してください。
+* **Visual Studio の統合** - Visual Studio の専用ツールを使えば、API アプリを作成、デプロイ、使用、デバッグ、管理する作業が効率的になります。 詳細については、 [Azure SDK 2.8.1 for .NET の発表に関するページ](https://azure.microsoft.com/blog/announcing-azure-sdk-2-8-1-for-net/)を参照してください。
 * **Logic Apps との統合** - 作成した API アプリは、 [App Service Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)で使用できます。  詳細については、「[App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」および「[新しいスキーマ バージョン 2015-08-01-preview](../app-service-logic/app-service-logic-schema-2015-08-01.md)」をご覧ください。
 
 さらに、API アプリでは、[Web Apps](../app-service-web/app-service-web-overview.md) および [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) によって提供される機能を利用できます。 この逆も当てはまります。Web アプリまたはモバイル アプリを使用して API をホストする場合は、Swagger メタデータなどの API Apps の機能を活用してクライアント コードを生成し、CORS を活用してブラウザーのクロス ドメイン アクセスを実行できます。 3 つの種類 (API、Web、モバイル) の異なる点は、Azure ポータルでこれらに対して使用する名前とアイコンのみです。
@@ -62,6 +62,6 @@ API アプリに関する質問がある場合は、 [API Apps フォーラム](
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

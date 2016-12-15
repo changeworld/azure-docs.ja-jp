@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/22/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 09293d71b99e325a417edf59172550ef6e5f5b71
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
 
 
 ---
@@ -79,7 +79,7 @@ Azure クラシック ポータルで **[構成]** タブを開くには、**[Ac
 * [Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する](active-directory-create-users-external.md)
 * [Administer your Azure AD directory](active-directory-administer.md)
 * [Manage passwords in Azure AD](active-directory-manage-passwords.md)
-* [Azure AD でのグループの管理](active-directory-manage-groups.md)
+* [Manage groups in Azure AD](active-directory-manage-groups.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
@@ -87,6 +87,6 @@ Azure クラシック ポータルで **[構成]** タブを開くには、**[Ac
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

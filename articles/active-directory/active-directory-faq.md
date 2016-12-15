@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/31/2016
-ms.author: markusvi
+ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0f7070d9d691e2471978a2986025ebfdafbeaa7c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3f550639f0e48f34200ad480f94524df2cc0b2b6
 
 
 ---
@@ -161,6 +161,6 @@ Azure Active Directory は、包括的なサービスとしての ID (IDaaS) ソ
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/14/2016
+ms.date: 12/06/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2759ce1fd8fd02a94256e0ba8f455608157ffbd0
-ms.openlocfilehash: 4033630dbbe065072cc58e642fce51f4860b82b6
+ms.sourcegitcommit: cfbfccfe09e6f2b3826223a779a5ff478c1f804f
+ms.openlocfilehash: 64250a0b37488eb165bd13e727f365bd391794b7
 
 
 ---
@@ -321,20 +321,20 @@ ms.openlocfilehash: 4033630dbbe065072cc58e642fce51f4860b82b6
    ![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
 8. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます。
 
-> [!IMPORTANT]
-> オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。 そのため、パイプラインによるスライスの処理に **約 30 分** かかると想定してください。    
->
->
+   ![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)  
 
-    ![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)    
+   > [!IMPORTANT]
+   > オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。 そのため、パイプラインによるスライスの処理に **約 30 分** かかると想定してください。
+   >
+   >
 
-1. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
+9. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
 
    ![output data](./media/data-factory-build-your-first-pipeline-using-editor/three-ouptut-files.png)
-2. スライスをクリックすると、 **[データ スライス]** ブレードに詳細が表示されます。
+10. スライスをクリックすると、 **[データ スライス]** ブレードに詳細が表示されます。
 
    ![Data slice details](./media/data-factory-build-your-first-pipeline-using-editor/data-slice-details.png)  
-3. **[アクティビティの実行]** 一覧でアクティビティの実行をクリックすると、**[アクティビティの実行の詳細]** ウィンドウにアクティビティの実行の詳細 (このシナリオでは Hive アクティビティ) が表示されます。   
+11. **[アクティビティの実行]** 一覧でアクティビティの実行をクリックすると、**[アクティビティの実行の詳細]** ウィンドウにアクティビティの実行の詳細 (このシナリオでは Hive アクティビティ) が表示されます。   
 
    ![アクティビティ実行の詳細](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-blade.png)    
 
@@ -382,6 +382,6 @@ ms.openlocfilehash: 4033630dbbe065072cc58e642fce51f4860b82b6
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

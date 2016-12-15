@@ -8,15 +8,16 @@ manager: swadhwa
 editor: 
 ms.assetid: 754796ef-a43e-468a-86c9-04a2eda55b5b
 ms.service: operations-management-suite
+ms.custom: oms-security
 ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2016
+ms.date: 12/01/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fe043cd4438612ada9a31ae895aae75b913b0a37
+ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
+ms.openlocfilehash: 888b9786de8302ccd2e11f271aa417bcbcc2620b
 
 
 ---
@@ -148,7 +149,7 @@ ID アクティビティを監視することにより、インシデントが�
 
 ![Threat Intel](./media/oms-security-getting-started/oms-getting-started-fig12.png)
 
-また、このオプションをインシデント対応調査中に使用すると、評価を実行し、攻撃に関する詳細を入手できます。
+また、このオプションを[インシデント対応調査](https://blogs.msdn.microsoft.com/azuresecurity/2016/11/30/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/)中に使用すると、評価を実行し、攻撃に関する詳細を入手できます。
 
 > [!NOTE]
 > インシデント対応に OMS を使用する方法の詳細については、「[How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response (インシデント対応に Azure Security Center と Microsoft Operations Management Suite を利用する方法)](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)」を参照してください。
@@ -186,6 +187,6 @@ ID アクティビティを監視することにより、インシデントが�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

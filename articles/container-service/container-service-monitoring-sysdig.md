@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 08/08/2016
 ms.author: t-ribhat
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4407bc49bf11cada012015f340a9995a26374d00
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6df2b6ee0064a2baa79a154641f097b11cb55059
 
 
 ---
@@ -57,6 +57,6 @@ Sysdig は監視サービスです。クラスター内のコンテナーを監�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/31/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f5341ecd0256d6268b9247ef5ec391809b7071a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 73cbbce9ae3d727632b8cac2a29c2b1b92332ae7
 
 
 ---
@@ -140,6 +140,6 @@ Microsoft クラウド サービスで利用できるサービスと機能は、
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: edc3a915a59d83718d05ce39a1ce2bcd14333da4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 42d71bf43070e08ae287a7b251c5bb94a6a80548
 
 
 ---
@@ -39,12 +39,12 @@ ms.openlocfilehash: edc3a915a59d83718d05ce39a1ce2bcd14333da4
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを進めるには、次が必要です。
 
-* AdventureWorksDW サンプル データが事前に読み込まれた SQL Data Warehouse。 これをプロビジョニングするには、[SQL Data Warehouse の作成][SQL Data Warehouse の作成]に関するページを参照し、サンプル データの読み込みを選択してください。 データ ウェアハウスは既にあってもサンプル データがない場合は、[サンプル データを手動で読み込む][サンプル データを手動で読み込む]ことができます。
+* AdventureWorksDW サンプル データが事前に読み込まれた SQL Data Warehouse。 これをプロビジョニングするには、[SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照し、サンプル データを読み込んでください。 データ ウェアハウスは既にあるもののサンプル データがない場合は、[サンプル データを手動で読み込む][load sample data manually]ことができます。
 
 ## <a name="1-get-data"></a>1.データを取得する
 このデータは、AdventureWorksDW データベースの dbo.vTargetMail ビューにあります。 このデータを読み取るには、次の手順を実行します。
 
-1. [Azure Machine Learning Studio][Azure Machine Learning Studio] にサインインし、[実験] をクリックします。
+1. [Azure Machine Learning Studio][Azure Machine Learning studio] にサインインし、実験をクリックします。
 2. **[+新規]** をクリックし、**[Blank Experiment (空の実験)]** を選択します。
 3. 実験の名前として「対象を絞ったマーケティング」と入力します。
 4. [モジュール] ウィンドウから **[リーダー]** モジュールをキャンバスにドラッグします。
@@ -124,7 +124,7 @@ FROM [dbo].[vTargetMail]
 [BikeBuyer] 列 (実際) をスコア付けラベル (予測) と比較すると、モデルのパフォーマンスがどの程度優れていたかを評価できます。 次のステップとして、このモデルを使用して新規顧客の予測を行い、Web サービスとしてこのモデルを発行したり、SQL Data Warehouse に結果を書き戻したりできます。
 
 ## <a name="next-steps"></a>次のステップ
-予測機械学習モデルの構築の詳細については、[Azure での機械学習の概要][Azure での機械学習の概要]に関するページを参照してください。
+予測機械学習モデルの構築の詳細については、[Azure での機械学習の概要][Introduction to Machine Learning on Azure]に関するページを参照してください。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1_reader.png
@@ -142,13 +142,13 @@ FROM [dbo].[vTargetMail]
 
 
 <!--Article references-->
-[Azure Machine Learning Studio]:https://studio.azureml.net/
-[Azure での機械学習の概要]:https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
-[サンプル データを手動で読み込む]: sql-data-warehouse-load-sample-databases.md
-[SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
+[Azure Machine Learning studio]:https://studio.azureml.net/
+[Introduction to Machine Learning on Azure]:https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
+[load sample data manually]: sql-data-warehouse-load-sample-databases.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

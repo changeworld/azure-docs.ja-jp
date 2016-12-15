@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/31/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 96784e006b5986cbc6dfd4f264b22bd1d1bf208d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e082470c8ad3ee02c528a4ca6e3326e5be4752a3
 
 
 ---
-# <a name="azure-active-directory-reporting-preview"></a>Azure Active Directory レポート - プレビュー
+# <a name="azure-active-directory-reporting---preview"></a>Azure Active Directory レポート - プレビュー
 > [!div class="op_single_selector"]
 > * [Azure ポータル](active-directory-reporting-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-reporting-guide.md)
@@ -38,8 +38,8 @@ Azure Active Directory プレビューのレポートでは、環境の動作状
 
 必要なデータのスコープに応じて、[Azure Portal](https://portal.azure.com) のサービス一覧で **[ユーザーとグループ]** または **[エンタープライズ アプリケーション]** をクリックして、これらのレポートにアクセスできます。
 
-## <a name="signin-activities"></a>サインイン アクティビティ
-### <a name="user-signin-activities"></a>ユーザー サインイン アクティビティ
+## <a name="sign-in-activities"></a>サインイン アクティビティ
+### <a name="user-sign-in-activities"></a>ユーザー サインイン アクティビティ
 ユーザー サインイン レポートによって提供される情報を使用すると、次のような疑問への答えを得ることができます。
 
 * ユーザーのサインインにどのようなパターンがあるか。
@@ -97,7 +97,7 @@ Azure Active Directory プレビューのレポートでは、環境の動作状
 
 ![レポート](./media/active-directory-reporting-azure-portal/column_chooser.png "Reporting")
 
-### <a name="filtering-signins"></a>サインインのフィルター処理
+### <a name="filtering-sign-ins"></a>サインインのフィルター処理
 表示されるデータの量を制限するために、次のフィールドを使用してサインインをフィルター処理できます。
 
 * 日付と時刻 
@@ -203,6 +203,6 @@ Azure Portal には、監査関連のアクティビティとして、次の 3 �
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

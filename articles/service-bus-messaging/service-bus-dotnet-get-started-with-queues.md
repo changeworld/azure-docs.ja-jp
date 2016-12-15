@@ -1,22 +1,22 @@
 ---
 title: "Service Bus キューの使用 | Microsoft Docs"
 description: "Service Bus メッセージング用の C# コンソール アプリケーションを記述する方法"
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: jtaubensee
 manager: timlt
 editor: 
 ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/23/2016
+ms.date: 11/30/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
+ms.sourcegitcommit: 560e73eb7129e665d254c3e93b08f29cfb6b1aa9
+ms.openlocfilehash: d80bedba1909de671ef96ac5372d9ff15a90764e
 
 
 ---
@@ -51,7 +51,8 @@ Service Bus キューを既に作成している場合は、「[キューへの�
 キューにメッセージを送信するために、Visual Studio を使用して C# コンソール アプリケーションを記述します。
 
 ### <a name="create-a-console-application"></a>コンソール アプリケーションの作成
-1. Visual Studio を起動し、新しいコンソール アプリケーションを作成します。
+
+- Visual Studio を起動し、新しいコンソール アプリケーションを作成します。
 
 ### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの追加
 1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
@@ -62,12 +63,12 @@ Service Bus キューを既に作成している場合は、「[キューへの�
 ### <a name="write-some-code-to-send-a-message-to-the-queue"></a>キューにメッセージを送信するコードの記述
 1. Program.cs ファイルの先頭に次の using ステートメントを追加します。
    
-    ```
+    ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
 2. `Main` メソッドに次のコードを追加し、**connectionString** 変数に名前空間の作成時に取得した接続文字列を設定して、**queueName** にキューの作成時に使用したキュー名を設定します。
    
-    ```
+    ```csharp
     var connectionString = "<Your connection string>";
     var queueName = "<Your queue name>";
    
@@ -78,7 +79,7 @@ Service Bus キューを既に作成している場合は、「[キューへの�
    
     Program.cs は次のようになります。
    
-    ```
+    ```csharp
     using System;
     using Microsoft.ServiceBus.Messaging;
    
@@ -107,12 +108,12 @@ Service Bus キューを既に作成している場合は、「[キューへの�
 1. 前の手順で説明した送信アプリケーションと同じように、新しいコンソール アプリケーションを作成し、Service Bus NuGet パッケージへの参照を追加します。
 2. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
    
-    ```
+    ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
 3. `Main` メソッドに次のコードを追加し、**connectionString** 変数に名前空間の作成時に取得した接続文字列を設定して、**queueName** にキューの作成時に使用したキュー名を設定します。
    
-    ```
+    ```csharp
     var connectionString = "";
     var queueName = "samplequeue";
    
@@ -129,7 +130,7 @@ Service Bus キューを既に作成している場合は、「[キューへの�
    
     Program.cs ファイルは次のようになります。
    
-    ```
+    ```csharp
     using System;
     using Microsoft.ServiceBus.Messaging;
    
@@ -177,6 +178,6 @@ Azure Service Bus メッセージングのさらに高度な機能を紹介す�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 
