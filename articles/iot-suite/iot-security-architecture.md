@@ -1,25 +1,29 @@
 ---
-title: IoT のセキュリティ アーキテクチャ | Microsoft Docs
-description: IoT のセキュリティ アーキテクチャのガイドラインと考慮事項
-services: ''
+title: "IoT のセキュリティ アーキテクチャ | Microsoft Docs"
+description: "IoT のセキュリティ アーキテクチャのガイドラインと考慮事項"
+services: 
 suite: iot-suite
-documentationcenter: ''
+documentationcenter: 
 author: YuriDio
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 18ed3eb0-9406-44e1-8a3a-93dc6726c7ac
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2016
+ms.date: 10/17/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6ce288a512e685694cf6c606f7a5b47f0fcf21e5
+
 
 ---
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 IoT ソリューションのセキュリティ保護の詳細については、[IoT デプロイのセキュリティ保護][lnk-security-deployment]に関するページをご覧ください。
 
 IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
@@ -33,6 +37,7 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 [lnk-security-deployment]: iot-suite-security-deployment.md
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

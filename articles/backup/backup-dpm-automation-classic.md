@@ -1,12 +1,12 @@
 ---
-title: Microsoft Azure Backup - PowerShell を使用した DPM バックアップのデプロイと管理| Microsoft Docs
-description: PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明
+title: "Microsoft Azure Backup - PowerShell を使用した DPM バックアップのデプロイと管理| Microsoft Docs"
+description: "PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明"
 services: backup
-documentationcenter: ''
+documentationcenter: 
 author: Nkolli1
 manager: shreeshd
-editor: ''
-
+editor: 
+ms.assetid: bcbcef79-9d33-4e84-a558-9866614f2cae
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: jimpark; trinadhk; anuragm; markgal
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 245172873a1ae3418fd33ccf98a26054208b620a
+
 
 ---
-# <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-(dpm)-servers-using-powershell"></a>PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
+# <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
 > [!div class="op_single_selector"]
 > * [ARM](backup-dpm-automation.md)
 > * [クラシック](backup-dpm-automation-classic.md)
@@ -299,7 +303,7 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 PS C:\> Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 ```
-### <a name="changing-the-size-of-dpm-replica-&-recovery-point-volume"></a>DPM レプリカと回復ポイントのボリューム サイズの変更
+### <a name="changing-the-size-of-dpm-replica-recovery-point-volume"></a>DPM レプリカと回復ポイントのボリューム サイズの変更
 DPM レプリカとシャドウ コピーのボリューム サイズは、[Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) コマンドレットを使用して変更することもできます。次に例を示します。Get-DatasourceDiskAllocation -Datasource $DS Set-DatasourceDiskAllocation -Datasource $DS -ProtectionGroup $MPG -manual -ReplicaArea (2gb) -ShadowCopyArea (2gb)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>保護グループに対する変更のコミット
@@ -312,7 +316,7 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 データソースのすべての回復ポイントの一覧を取得するには、 [Get DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) コマンドレットを使用します。 この例の内容:
 
 * 配列 ```$PG```
-* ```$PG[0]```
+*  ```$PG[0]```
 * データソースのすべての回復ポイントを取得します。
 
 ```
@@ -345,6 +349,9 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 ## <a name="next-steps"></a>次のステップ
 * Azure DPM Backup の詳細については、「 [DPM Backup の概要](backup-azure-dpm-introduction.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

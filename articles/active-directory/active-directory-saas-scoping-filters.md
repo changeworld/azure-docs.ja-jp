@@ -1,12 +1,12 @@
 ---
-title: スコープ フィルターを使用する属性ベースのアプリ プロビジョニング | Microsoft Docs
-description: スコープ フィルターを使用して、自動ユーザー プロビジョニングをサポートするアプリ内のオブジェクトが、ビジネス要件を満たしていないのに実際にプロビジョニングされてしまうことを防ぐ方法について説明します。
+title: "スコープ フィルターを使用する属性ベースのアプリ プロビジョニング | Microsoft Docs"
+description: "スコープ フィルターを使用して、自動ユーザー プロビジョニングをサポートするアプリ内のオブジェクトが、ビジネス要件を満たしていないのに実際にプロビジョニングされてしまうことを防ぐ方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: bcfbda74-e4d4-4859-83bc-06b104df3918
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: markusvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 003e75d1b3576a6b882c220cded0c30dea44c78f
+
 
 ---
-# <a name="attributebased-app-provisioning-with-scoping-filters"></a>スコープ フィルターを使用する属性ベースのアプリ プロビジョニング
+# <a name="attribute-based-app-provisioning-with-scoping-filters"></a>スコープ フィルターを使用する属性ベースのアプリ プロビジョニング
 このセクションでは、スコープ フィルターを使用して属性ベースのルールを定義する方法について説明します。このルールで、アプリケーションに対してプロビジョニングするユーザーを指定します。
 
 ## <a name="clauses-and-scope-groups"></a>句とスコープ グループ
@@ -63,6 +67,6 @@ ms.author: markusvi
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

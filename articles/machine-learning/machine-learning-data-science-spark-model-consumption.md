@@ -1,12 +1,12 @@
 ---
-title: Spark で構築した機械学習モデルのスコア付け | Microsoft Docs
-description: Azure Blob Storage (WASB) に保存されている学習モデルをスコア付けする方法です。
+title: "Spark で構築した機械学習モデルのスコア付け | Microsoft Docs"
+description: "Azure Blob Storage (WASB) に保存されている学習モデルをスコア付けする方法です。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 626305a2-0abf-4642-afb0-dad0f6bd24e9
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: deguhath;bradsev;gokuma
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2387baad5737998d2ba7f289e0a4fcdd6dd04245
+
 
 ---
 # <a name="score-spark-built-machine-learning-models"></a>Spark で構築した機械学習モデルのスコア付け
@@ -27,7 +31,7 @@ ms.author: deguhath;bradsev;gokuma
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="setup:-storage-locations,-libraries,-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
+## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
 Spark は Azure Storage BLOB (WASB) の読み取りと書き込みを実行できます。 そのため、そこに保存されている既存データはすべて Spark を使って処理でき、結果も再び WASB に保存できます。
 
 WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、 *"wasb///"*で始まるパスを使用して参照できます。 次のコード サンプルでは、読み取るデータの場所と、モデルの出力の保存先となるモデル ストレージ ディレクトリのパスを指定しています。 
@@ -174,7 +178,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 ## <a name="prepare-data-for-scoring-in-spark"></a>Spark でスコア付けを行うためのデータの準備
 このセクションでは、カテゴリの特徴のインデックスを作成し、エンコードし、スケーリングして、MLlib 監視学習アルゴリズムで分類と回帰分析に使用できるように準備する方法を説明します。
 
-### <a name="feature-transformation:-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>特徴の変換: カテゴリの特徴のインデックスを作成してエンコードし、モデルに入力してスコア付けできるようにする
+### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>特徴の変換: カテゴリの特徴のインデックスを作成してエンコードし、モデルに入力してスコア付けできるようにする
 このセクションでは、`StringIndexer` を使用してカテゴリ データのインデックスを作成し、`OneHotEncoder` 入力を使って特徴をモデルにエンコードする方法について説明します。
 
 [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) によって、ラベルの文字列型の列をラベル インデックスの列にエンコードします。 インデックスの順序は、ラベルの頻度順になります。 
@@ -393,7 +397,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
     # RECORD START TIME
     timestart = datetime.datetime.now()
 
-    #IMPORT MLLIB LIBRARIES 
+    #IMPORT MLLIB LIBRARIES    
     from pyspark.mllib.tree import RandomForest, RandomForestModel
 
 
@@ -573,9 +577,12 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 
 ![](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
 
-## <a name="what's-next?"></a>次の手順
+## <a name="whats-next"></a>次の手順
 **クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「 [Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) 」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
