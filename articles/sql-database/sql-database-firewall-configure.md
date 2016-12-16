@@ -10,7 +10,7 @@ editor: cgronlun
 tags: 
 ms.assetid: ac57f84c-35c3-4975-9903-241c8059011e
 ms.service: sql-database
-ms.custom: auth and access
+ms.custom: authentication and authorization
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
