@@ -1,11 +1,11 @@
 ---
-title: Application Insights のリリース ノート
-description: 最新の更新プログラム。
+title: "Application Insights のリリース ノート"
+description: "最新の更新プログラム。"
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: alancameronwills
 manager: douge
-
+ms.assetid: 9cd2ecdb-c2b9-4e4a-b6aa-beb0c2ca4ffc
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
@@ -13,9 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1add923868a3d187401d33f6d4e38cbf028f92dc
+
 
 ---
-# SDK リリース ノート - Application Insights
+# <a name="sdk-release-notes---application-insights"></a>SDK リリース ノート - Application Insights
 リリース ノートと SDK の更新手順の詳細を以下に示します。
 
 * [ASP.NET Web サーバー SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)
@@ -31,6 +35,11 @@ ms.author: awills
 * [Visual Studio ツール](app-insights-release-notes-vsix.md)
 * [その他のプラットフォーム](https://github.com/Microsoft/ApplicationInsights-Home)
 
-Application Insights サービス全体の主要な機能強化をまとめた「[サービスの更新情報](https://azure.microsoft.com/updates/?service=application-insights)」ページもご覧ください。
+Application Insights サービス全体の主要な機能強化をまとめた「 [サービスの更新情報](https://azure.microsoft.com/updates/?service=application-insights) 」ページもご覧ください。
 
-<!---HONumber=AcomDC_0224_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

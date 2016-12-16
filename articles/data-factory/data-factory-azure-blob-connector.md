@@ -1,20 +1,24 @@
 ---
-title: Azure Blob Storage との間でのデータのコピー | Microsoft Docs
-description: Azure Data Factory で BLOB データをコピーする方法について説明します。 サンプルを使用して、Azure Blob Storage と Azure SQL Database の間でデータをコピーする方法を示します。
-keywords: BLOB データ, Azure BLOB のコピー
+title: "Azure Blob Storage との間でのデータのコピー | Microsoft Docs"
+description: "Azure Data Factory で BLOB データをコピーする方法について説明します。 サンプルを使用して、Azure Blob Storage と Azure SQL Database の間でデータをコピーする方法を示します。"
+keywords: "BLOB データ, Azure BLOB のコピー"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: linda33wj
 manager: jhubbard
 editor: monicar
-
+ms.assetid: bec8160f-5e07-47e4-8ee1-ebb14cfb805d
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 12/12/2016
 ms.author: jingwang
+translationtype: Human Translation
+ms.sourcegitcommit: 701d82971b7da92fb0946cbfc7f708ad32501ef3
+ms.openlocfilehash: 69b530c085cc99959e66e75f2c8ebb391c9d26f4
+
 
 ---
 # <a name="move-data-to-and-from-azure-blob-using-azure-data-factory"></a>Azure Data Factory を使用した Azure BLOB との間でのデータの移動
@@ -23,7 +27,7 @@ ms.author: jingwang
 ## <a name="supported-sources-and-sinks"></a>サポートされているソースとシンク
 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、 [サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats) の表をご覧ください。 サポートされる任意のソース データ ストアのデータを、Azure BLOB ストレージに移動したり、Azure BLOB ストレージのデータを、サポートされる任意のシンク データ ストアに移動したりできます。
 
-コピー アクティビティは、汎用 Azure Strage アカウントとコールド/ホット Blob Storage との間でデータをコピーできるようになりました。 このアクティビティは、ブロック BLOB、追加 BLOB、ページ BLOB を読み取りますが、書き込みはブロック BLOB のみをサポートしています。 
+コピー アクティビティは、汎用 Azure Strage アカウントとコールド/ホット Blob Storage との間でデータをコピーできるようになりました。 このアクティビティは、ブロック BLOB、追加 BLOB、ページ BLOB を読み取りますが、書き込みはブロック BLOB のみをサポートしています。
 
 ## <a name="create-pipeline"></a>パイプラインの作成
 さまざまなツール/API を使用して、Azure BLOB ストレージとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。  
@@ -38,11 +42,11 @@ ms.author: jingwang
 さまざまな方法でコピー アクティビティによってパイプラインを作成する手順については、 [コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) をご覧ください。
 
 ## <a name="copy-data-wizard"></a>データのコピー ウィザード
-Azure Blob Storage との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。 
+Azure Blob Storage との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
 
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 ここでは、Azure Blob Storage と Azure SQL Database の間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して **ここ** から開始したいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores) コピーすることができます。
+以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 ここでは、Azure Blob Storage と Azure SQL Database の間でデータをコピーする方法を示します。 ただし、任意のソースのデータを、サポートされている任意のシンクに**直接**コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」のセクションを参照してください。
 
-## <a name="sample:-copy-data-from-azure-blob-to-azure-sql"></a>サンプル: Azure BLOB から Azure SQL にデータをコピーする
+## <a name="sample-copy-data-from-azure-blob-to-azure-sql"></a>サンプル: Azure BLOB から Azure SQL にデータをコピーする
 次のサンプルは以下を示しています。
 
 1. [AzureSqlDatabase](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)型のリンクされたサービス。
@@ -51,7 +55,7 @@ Azure Blob Storage との間でデータをコピーするパイプラインを�
 4. [AzureSqlTable](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [BlobSource](#azure-blob-copy-activity-type-properties) と [SqlSink](data-factory-azure-sql-connector.md#azure-sql-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは、Azure BLOB から Azure SQL テーブルに時系列データを 1 時間おきにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。 
+このサンプルは、Azure BLOB から Azure SQL テーブルに時系列データを 1 時間おきにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure SQL のリンクされたサービス:**
 
@@ -167,7 +171,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 
 **コピー アクティビティのあるパイプライン:**
 
-パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプラインの JSON 定義で、**source** 型が **BlobSource** に設定され、**sink** 型が **SqlSink** に設定されています。 
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプラインの JSON 定義で、**source** 型が **BlobSource** に設定され、**sink** 型が **SqlSink** に設定されています。
 
     {  
         "name":"SamplePipeline",
@@ -213,7 +217,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
        }
     }
 
-## <a name="sample:-copy-data-from-azure-sql-to-azure-blob"></a>サンプル: Azure SQL から Azure BLOB にデータをコピーする
+## <a name="sample-copy-data-from-azure-sql-to-azure-blob"></a>サンプル: Azure SQL から Azure BLOB にデータをコピーする
 次のサンプルは以下を示しています。
 
 1. [AzureSqlDatabase](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)型のリンクされたサービス。
@@ -222,7 +226,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 4. [AzureBlob](#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [SqlSource](data-factory-azure-sql-connector.md#azure-sql-copy-activity-type-properties) と [BlobSink](#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは、Azure SQL テーブルから Azure BLOB に時系列データを 1 時間おきにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。 
+このサンプルは、Azure SQL テーブルから Azure BLOB に時系列データを 1 時間おきにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure SQL のリンクされたサービス:**
 
@@ -252,7 +256,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 
 **Azure SQL の入力データセット:**
 
-このサンプルでは、Azure SQL で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。 
+このサンプルでは、Azure SQL で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
 
 "external": "true" の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
@@ -349,7 +353,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
             "end":"2014-06-01T19:00:00",
             "description":"pipeline for copy activity",
             "activities":[  
-                {
+                  {
                     "name": "AzureSQLtoBlob",
                     "description": "copy activity",
                     "type": "Copy",
@@ -367,22 +371,22 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
                         "source": {
                             "type": "SqlSource",
                             "SqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
-                        },
-                        "sink": {
+                          },
+                          "sink": {
                             "type": "BlobSink"
-                        }
+                          }
                     },
-                    "scheduler": {
-                        "frequency": "Hour",
-                        "interval": 1
+                       "scheduler": {
+                          "frequency": "Hour",
+                          "interval": 1
                     },
                     "policy": {
-                        "concurrency": 1,
-                        "executionPriorityOrder": "OldestFirst",
-                        "retry": 0,
-                        "timeout": "01:00:00"
+                          "concurrency": 1,
+                          "executionPriorityOrder": "OldestFirst",
+                          "retry": 0,
+                          "timeout": "01:00:00"
                     }
-                }
+                  }
              ]
         }
     }
@@ -395,7 +399,7 @@ Azure BLOB ストレージを Azure Data Factory にリンクするために使�
 [!INCLUDE [data-factory-azure-storage-linked-services](../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## <a name="azure-blob-dataset-type-properties"></a>Azure BLOB データセットの type プロパティ
-サンプルでは、 **AzureBlob** 型のデータセットを使用して、Azure BLOB ストレージの BLOB コンテナーとフォルダーを表しています。 
+サンプルでは、 **AzureBlob** 型のデータセットを使用して、Azure BLOB ストレージの BLOB コンテナーとフォルダーを表しています。
 
 データセットの定義に利用できる JSON のセクションとプロパティの完全一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
@@ -412,13 +416,11 @@ Azure BLOB ストレージを Azure Data Factory にリンクするために使�
 ### <a name="using-partitionedby-property"></a>partitionedBy プロパティの使用
 前のセクションで説明したように、 **partitionedBy** セクション、Data Factory マクロ、特定のデータ スライスの開始時刻と終了時刻を示すシステム変数の SliceStart と SliceEnd を使用して、時系列データの動的な folderPath と fileName を指定できます。
 
-partitionedBy セクションで使用可能な Data Factory の変数と関数については、「[Data Factory のシステム変数](data-factory-scheduling-and-execution.md#data-factory-system-variables)」と「[Data Factory 関数リファレンス](data-factory-scheduling-and-execution.md#data-factory-functions-reference)」を参照してください。   
-
 時系列データセット、スケジュール設定、およびスライスの詳細については、[データセットの作成](data-factory-create-datasets.md)に関する記事および[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関する記事をご覧ください。
 
 #### <a name="sample-1"></a>サンプル 1
     "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
-    "partitionedBy": 
+    "partitionedBy":
     [
         { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
     ],
@@ -428,12 +430,12 @@ partitionedBy セクションで使用可能な Data Factory の変数と関数�
 #### <a name="sample-2"></a>サンプル 2
     "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
     "fileName": "{Hour}.csv",
-    "partitionedBy": 
+    "partitionedBy":
      [
         { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
-        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
-        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
-        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
+        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
+        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
     ],
 
 この例では、SliceStart の年、月、日、時刻が folderPath プロパティと fileName プロパティで使用される個別の変数に抽出されます。
@@ -447,7 +449,7 @@ partitionedBy セクションで使用可能な Data Factory の変数と関数�
 
 一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります
 
-Azure BLOB ストレージからデータを移動する場合は、コピー アクティビティのソースの種類を **BlobSource**に設定します。 同様に、Azure BLOB ストレージにデータを移動する場合は、コピー アクティビティのシンクの種類を **BlobSink**に設定します。 このセクションでは、BlobSource と BlobSink でサポートされるプロパティの一覧を示します。 
+Azure BLOB ストレージからデータを移動する場合は、コピー アクティビティのソースの種類を **BlobSource**に設定します。 同様に、Azure BLOB ストレージにデータを移動する場合は、コピー アクティビティのシンクの種類を **BlobSink**に設定します。 このセクションでは、BlobSource と BlobSink でサポートされるプロパティの一覧を示します。
 
 **BlobSource** の **typeProperties** セクションでは次のプロパティがサポートされます。
 
@@ -461,18 +463,18 @@ Azure BLOB ストレージからデータを移動する場合は、コピー �
 | --- | --- | --- | --- |
 | copyBehavior |ソースが BlobSource または FileSystem である場合のコピー動作を定義します。 |**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><br/>**FlattenHierarchy**: ソース フォルダーのすべてのファイルがターゲット フォルダーの最初のレベルになります。 ターゲット ファイルは、自動生成された名前になります。 <br/><br/>**MergeFiles: (既定値)** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。 |いいえ |
 
-**BlobSource** は、下位互換性のために次の 2 つのプロパティもサポートしています。 
+**BlobSource** は、下位互換性のために次の 2 つのプロパティもサポートしています。
 
 * **treatEmptyAsNull**: null または空の文字列を null 値として処理するかどうかを指定します。
 * **skipHeaderLineCount** - スキップする必要がある行数を指定します。 入力データセットで TextFormat を利用しているときにのみ適用されます。
 
 同様に、 **BlobSink** も、下位互換性のために次のプロパティをサポートしています。
 
-* **blobWriterAddHeader**: 出力データセットへの書き込み中に列定義のヘッダーを追加するかどうかを指定します。 
+* **blobWriterAddHeader**: 出力データセットへの書き込み中に列定義のヘッダーを追加するかどうかを指定します。
 
 データセットは、同じ機能を実装するプロパティとして、**treatEmptyAsNull**、**skipLineCount**、**firstRowAsHeader** をサポートするようになりました。
 
-次の表は、BLOB ソース/シンク プロパティの代わりに新しいデータセットのプロパティを使用するためのガイドラインをまとめたものです。 
+次の表は、BLOB ソース/シンク プロパティの代わりに新しいデータセットのプロパティを使用するためのガイドラインをまとめたものです。
 
 | コピー アクティビティのプロパティ | データセットのプロパティ |
 |:--- |:--- |
@@ -483,7 +485,7 @@ Azure BLOB ストレージからデータを移動する場合は、コピー �
 これらのプロパティの詳細については、「 [TextFormat の指定](#specifying-textformat) 」セクションを参照してください。    
 
 ### <a name="recursive-and-copybehavior-examples"></a>recursive と copyBehavior の例
-このセクションでは、recursive 値と copyBhavior 値の組み合わせごとに、Copy 操作で行われる動作について説明します。 
+このセクションでは、recursive 値と copyBhavior 値の組み合わせごとに、Copy 操作で行われる動作について説明します。
 
 | recursive | copyBehavior | 行われる動作 |
 | --- | --- | --- |
@@ -503,6 +505,8 @@ Azure BLOB ストレージからデータを移動する場合は、コピー �
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

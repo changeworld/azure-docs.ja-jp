@@ -1,11 +1,11 @@
 ---
-title: 'チュートリアル: Azure Active Directory と AnswerHub の統合 | Microsoft Docs'
-description: Azure Active Directory で AnswerHub を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。
+title: "チュートリアル: Azure Active Directory と AnswerHub の統合 | Microsoft Docs"
+description: "Azure Active Directory で AnswerHub を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。"
 services: active-directory
 author: jeevansd
 documentationcenter: na
 manager: femila
-
+ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,9 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-answerhub"></a>チュートリアル: Azure Active Directory と AnswerHub の統合
+# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>チュートリアル: Azure Active Directory と AnswerHub の統合
 このチュートリアルでは、Azure と [AnswerHub](http://www.dzonesoftware.com/products/answerhub-question-answer-software)の統合について説明します。  
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
@@ -36,7 +40,7 @@ ms.author: jeedes
 ## <a name="enabling-the-application-integration-for-answerhub"></a>AnswerHub のアプリケーション統合の有効化
 このセクションでは、AnswerHub のアプリケーション統合を有効にする方法を説明します。
 
-### <a name="to-enable-the-application-integration-for-answerhub,-perform-the-following-steps:"></a>AnswerHub のアプリケーション統合を有効にするには、次の手順に従います。
+### <a name="to-enable-the-application-integration-for-answerhub-perform-the-following-steps"></a>AnswerHub のアプリケーション統合を有効にするには、次の手順に従います。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
    ![[Active Directory]](./media/active-directory-saas-answerhub-tutorial/IC700993.png "Active Directory")
@@ -62,7 +66,7 @@ ms.author: jeedes
 この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
 この手順に慣れていない場合は、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)
 
-### <a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>シングル サインオンを構成するには、次の手順を実行します。
+### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **AnswerHub** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
    ![Configure single sign-on](./media/active-directory-saas-answerhub-tutorial/IC785168.png "Configure single sign-on")
@@ -114,7 +118,7 @@ ms.author: jeedes
 Azure AD ユーザーが AnswerHub にログインできるようにするには、そのユーザーを AnswerHub にプロビジョニングする必要があります。  
 AnswerHub の場合、プロビジョニングは手動で行います。
 
-### <a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
+### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
 1. **AnswerHub** 企業サイトに管理者としてログインします。
 2. [ **Administration**] に移動します。
 3. **[Users & Groups]** タブをクリックします。
@@ -131,7 +135,7 @@ AnswerHub の場合、プロビジョニングは手動で行います。
 ## <a name="assigning-users"></a>ユーザーの割り当て
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-answerhub,-perform-the-following-steps:"></a>ユーザーを AnswerHub に割り当てるには、次の手順に従います。
+### <a name="to-assign-users-to-answerhub-perform-the-following-steps"></a>ユーザーを AnswerHub に割り当てるには、次の手順に従います。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **AnswerHub** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
@@ -142,6 +146,9 @@ AnswerHub の場合、プロビジョニングは手動で行います。
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

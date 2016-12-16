@@ -1,19 +1,23 @@
 ---
-title: 'Azure AD Connect Sync: ユーザーと連絡先について | Microsoft Docs'
-description: Azure AD Connect Sync のユーザーと連絡先について説明します。
+title: "Azure AD Connect 同期: ユーザーと連絡先について | Microsoft Docs"
+description: "Azure AD Connect Sync のユーザーと連絡先について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 8d204647-213a-4519-bd62-49563c421602
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: markusvi;andkjell
+ms.author: markvi;andkjell
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 133535646c579de78bfe9ef4bc132899723770ff
+
 
 ---
 # <a name="azure-ad-connect-sync-understanding-users-and-contacts"></a>Azure AD Connect Sync: ユーザーと連絡先について
@@ -51,6 +55,9 @@ Azure AD に対するオブジェクトのプロビジョニングでは、メ�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

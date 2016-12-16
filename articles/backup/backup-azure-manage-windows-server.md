@@ -1,19 +1,23 @@
 ---
-title: Azure Recovery Services コンテナーとサーバーの管理 | Microsoft Docs
-description: このチュートリアルでは、Azure Recovery Services コンテナーとサーバーを管理する方法について説明します。
+title: "Azure Recovery Services コンテナーとサーバーの管理 | Microsoft Docs"
+description: "このチュートリアルでは、Azure Recovery Services コンテナーとサーバーを管理する方法について説明します。"
 services: backup
-documentationcenter: ''
-author: Jim-Parker
-manager: jwhit
+documentationcenter: 
+author: markgalioto
+manager: cfreeman
 editor: tysonn
-
+ms.assetid: 4eea984b-7ed6-4600-ac60-99d2e9cb6d8a
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2016
+ms.date: 10/19/2016
 ms.author: jimpark; markgal
+translationtype: Human Translation
+ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
+ms.openlocfilehash: 74697b634392f7fe6b747ac21a9b1efac5703788
+
 
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Windows コンピューター用 Azure Recovery Services コンテナーとサーバーの監視と管理
@@ -23,11 +27,9 @@ ms.author: jimpark; markgal
 > 
 > 
 
-この記事では、Microsoft Azure 管理ポータルと Microsoft Azure Backup エージェントで使用できるバックアップ管理タスクの概要を説明します。
+この記事では、Azure Portal と Microsoft Azure Backup エージェントで使用できるバックアップ管理タスクの概要を説明します。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
-
-クラシック デプロイメント モデル。
 
 ## <a name="management-portal-tasks"></a>管理ポータルのタスク
 ### <a name="access-your-recovery-services-vaults"></a>Recovery Services コンテナーへのアクセス
@@ -59,11 +61,11 @@ ms.author: jimpark; markgal
 
 ![バックアップ ダッシュボードのタスク](./media/backup-azure-manage-windows-server/dashboard-tasks.png)
 
-## <a name="alerts-for-backups-using-azure-backup-agent:"></a>Azure Backup エージェントを使用したバックアップに関するアラート:
+## <a name="alerts-for-backups-using-azure-backup-agent"></a>Azure Backup エージェントを使用したバックアップに関するアラート:
 | アラート レベル | 送信されるアラート |
 | --- | --- |
 | 重大 |バックアップの失敗、回復エラー |
-| 警告 |警告を伴ってバックアップが完了した (破損が原因で 100 個未満のファイルがバックアップされず、膨大な数のファイルが正常にバックアップされたとき) |
+| 警告 |警告を伴ってバックアップが完了した (破損が原因でバックアップされなかったファイルが 100 個未満で、正常にバックアップされたファイルの数が 100 万を超えるとき) |
 | 情報 |なし |
 
 ## <a name="manage-backup-alerts"></a>バックアップ アラートの管理
@@ -120,7 +122,7 @@ ms.author: jimpark; markgal
 
 ![[バックアップ項目]](./media/backup-azure-manage-windows-server/backup-item-list.png)
 
-一覧で特定のバックアップ項目をクリックすると、その項目の重要な詳細情報が表示されます。
+一覧で特定のバックアップ項目を選択すると、その項目の重要な詳細情報が表示されます。
 
 > [!NOTE]
 > ファイルとフォルダーを管理するには、**[設定]** ブレードで、**[保護された広告]、[バックアップ項目]** の順に選択し、ドロップダウン メニューから **[ファイル フォルダー]** を選択します。
@@ -222,13 +224,14 @@ Azure Backup エージェントには、データ転送時のネットワーク�
 調整を有効にするには、次の手順を実行します。
 
 1. **Backup エージェント**で、**[プロパティの変更]** をクリックします。
-2. **[バックアップ操作用のインターネット使用帯域幅の調整を有効にする]** チェックタイルをオンにします。
+2. **[調整] タブで、**[バックアップ操作用のインターネット使用帯域幅の調整を有効にする]** をオンにします。
    
     ![ネットワークのスロットル](./media/backup-azure-manage-windows-server/throttling-dialog.png)
-3. スロットルを有効にしたら、**[作業時間]** と **[作業時間外]** で、バックアップ データの転送時に使用できる帯域幅を指定します。
+   
+    スロットルを有効にしたら、**[作業時間]** と **[作業時間外]** で、バックアップ データの転送時に使用できる帯域幅を指定します。
    
     帯域幅の値は、512 キロバイト/秒 (Kbps) から始まり、最大で 1023 メガバイト/秒 (Mbps) まで指定できます。 また、 **[作業時間]**の開始および終了時刻や、作業日と見なされる曜日も指定できます。 指定した作業時間以外は、作業時間外と見なされます。
-4. **[OK]**をクリックします。
+3. **[OK]**をクリックします。
 
 ## <a name="manage-exclusion-settings"></a>除外の設定の管理
 1. **Microsoft Azure Backup エージェント** を開きます (コンピューターで " *Microsoft Azure Backup*" を検索すると見つかります)。
@@ -276,25 +279,33 @@ A2. アラートは、Azure のバックアップが失敗してから 20 分以
 
 **Q3.通知が設定されているのに、電子メールが送信されないことはありますか。**
 
-A3. アラートのノイズを軽減する目的で、次の場合は通知が送信されません。 
+A3. アラートのノイズを軽減する目的で、次の場合は通知が送信されません。
 
 * 通知頻度が 1 時間ごとに設定されており、アラートが発生してから 1 時間以内に解決した。
 * ジョブが取り消された。
-* 元のバックアップ ジョブが進行中のために 2 番目のバックアップ ジョブが失敗した。 
+* 元のバックアップ ジョブが進行中のために 2 番目のバックアップ ジョブが失敗した。
 
-## <a name="troubleshooting-monitoring-issues<br>"></a>監視に関する問題のトラブルシューティング<br>
-#### <a name="issue:-jobs-and-alerts-from-azure-backup-agent-does-not-appear-on-the-portal."></a>問題: Azure Backup エージェントからのジョブとアラートがポータルに表示されない。
-##### <a name="troubleshooting-steps:"></a>トラブルシューティングの手順:
-ジョブやアラートのデータを Azure Backup サービスに送信するには、"OBRecoveryServicesManagementAgent" を使用します。 タスク マネージャーを開き、"OBRecoveryServicesManagementAgent" プロセスが実行されているかどうかを確認します。
-場合によっては、このプロセスが停止またはシャットダウンしていることがあります。 このプロセスが実行されていない場合は、コントロール パネルからサービスの一覧を表示し、"Microsoft Azure Recovery Services 管理エージェント" を開始または再起動してください。
-詳細については、"Azure Backup エージェントのインストール フォルダー"\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider* にあるログを参照してください。
-<b>例:</b> C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog
+## <a name="troubleshooting-monitoring-issues"></a>監視に関する問題のトラブルシューティング
+**問題:** Azure Backup エージェントからのジョブやアラートがポータルに表示されない。
+
+**トラブルシューティング手順:** ```OBRecoveryServicesManagementAgent``` は、Azure Backup サービスにジョブとアラートのデータを送信するプロセスです。 このプロセスは、頻度は高くないものの停止またはシャットダウンすることがあります。
+
+1. このプロセスが動作しているかどうかを確認するには、**タスク マネージャー**を開いて ```OBRecoveryServicesManagementAgent``` プロセスの状態が実行中かどうかを確認します。
+2. プロセスが実行中でなかった場合には、**コントロール パネル**を開いてサービスの一覧を参照し、 **Microsoft Azure Recovery Services 管理エージェント**を開始または再起動します。
+   
+    詳細については、以下の場所にあるログを参照してください。<br/>
+   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`
+   例:<br/>
+   `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 * Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
-* [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
+*  [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

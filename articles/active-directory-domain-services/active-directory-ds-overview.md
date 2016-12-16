@@ -1,12 +1,12 @@
 ---
-title: Azure Active Directory Domain Services の概要 | Microsoft Docs
-description: Azure Active Directory Domain Services の概要
+title: "Azure Active Directory Domain Services の概要 | Microsoft Docs"
+description: "Azure Active Directory Domain Services の概要"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: 0d47178f-773e-45f9-9ff4-9e8cffa4ffa2
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2e78382b4cbfe7623eec1b2cd32a9eaea61e4709
+
 
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
@@ -79,6 +83,9 @@ Azure AD ドメイン サービスを使用することで、次の恩恵を享�
 * **互換** – Azure AD ドメイン サービスが Windows Server Active Directory の実績のあるエンタープライズ グレードのインフラストラクチャに組み込まれています。 そのため、アプリケーションは、Windows Server Active Directory の機能との互換性をより高いレベルで活用できます。 現時点では、Windows Server AD で使用できるすべての機能が Azure AD ドメイン サービスで利用できるわけではありません。 ただし、使用できる機能については、オンプレミスのインフラストラクチャで依存している、対応する Windows Server AD 機能と互換性があります。 LDAP、Kerberos、NTLM、グループ ポリシー、およびドメインへの参加といった各機能は、さまざまな Windows Server リリースでテストおよび改良された完成度の高いサービスを構成します。
 * **コスト効果** – Azure AD ドメイン サービスを使用すると、従来のディレクトリ対応アプリケーションをサポートする ID インフラストラクチャを管理することに関連して発生するインフラストラクチャおよび管理の負担を回避できます。 これらのアプリケーションを Azure インフラストラクチャ サービスに移行することで、運用コストの大幅節減を実現することができます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

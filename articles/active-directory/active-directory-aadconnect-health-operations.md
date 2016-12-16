@@ -1,12 +1,12 @@
 ---
-title: Azure AD Connect Health の操作。
-description: この記事では、Azure AD Connect Health のデプロイ後に実行できる追加操作について説明しています。
+title: "Azure AD Connect Health の操作。"
+description: "この記事では、Azure AD Connect Health のデプロイ後に実行できる追加操作について説明しています。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: karavar
 manager: samueld
 editor: curtand
-
+ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: vakarand
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: cc78c6059ff96608c181c8d3d9f8dc2df6a5cd8e
+
 
 ---
 # <a name="azure-ad-connect-health-operations"></a>Azure AD Connect Health の操作
@@ -106,10 +110,10 @@ Azure AD Connect では、2 つのレベルのアクセス管理をサポート�
 アクセス許可は、エンド ユーザーがディレクトリ レベルまたはサービス インスタンス レベルのいずれかでアクセス権がある場合に与えられます。
 
 ### <a name="how-to-allow-users-or-groups-access-to-azure-ad-connect-health"></a>ユーザーまたはグループに Azure AD Connect Health へのアクセスを許可する方法
-#### <a name="steps-1:-select-the-appropriate-access-scope"></a>手順 1: 適切なアクセス スコープを選択する
+#### <a name="steps-1-select-the-appropriate-access-scope"></a>手順 1: 適切なアクセス スコープを選択する
 Azure AD Connect Health 内で "*すべてのサービス インスタンス*" レベルのユーザーにアクセスを許可するには、Azure AD Connect Health でメイン ブレードを開きます。<br>
 
-#### <a name="step-2:-add-users,-groups-and-assign-roles"></a>手順 2: ユーザー/グループを追加し、ロールを割り当てる
+#### <a name="step-2-add-users-groups-and-assign-roles"></a>手順 2: ユーザー/グループを追加し、ロールを割り当てる
 1. [構成] セクションから [ユーザー] 部分をクリックします。<br>
    ![Azure AD Connect Health RBAC のメイン ブレード](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
 2. [追加] を選択します。
@@ -129,7 +133,7 @@ Azure AD Connect Health 内で "*すべてのサービス インスタンス*" �
 > 
 > 
 
-#### <a name="step-3:-share-the-blade-location-with-users-or-groups"></a>手順 3: ブレードの場所をユーザーまたはグループと共有する
+#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>手順 3: ブレードの場所をユーザーまたはグループと共有する
 1. アクセス許可を割り当てた後、ユーザーは [http://aka.ms/aadconnecthealth](http://aka.ms/aadconnecthealth)に移動することで Azure AD Connect Health にアクセスできます。
 2. ブレードで [ダッシュボードにピン留め] をクリックするだけで、ブレードやさまざまな部分をダッシュボードにピン留めできます。<br>
    ![Azure AD Connect Health RBAC のピン ブレード](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
@@ -139,7 +143,7 @@ Azure AD Connect Health 内で "*すべてのサービス インスタンス*" �
 > 
 > 
 
-### <a name="remove-users-and/or-groups"></a>ユーザー/グループを削除する
+### <a name="remove-users-andor-groups"></a>ユーザー/グループを削除する
 Azure AD Connect Health Role の [ロール ベースの Access Control] 部分に追加したユーザーまたはグループは、右クリックして [削除] を選択することで削除できます。<br>
 ![Azure AD Connect Health RBAC のユーザーの削除](./media/active-directory-aadconnect-health/RBAC_remove.png)
 
@@ -154,6 +158,9 @@ Azure AD Connect Health Role の [ロール ベースの Access Control] 部分�
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

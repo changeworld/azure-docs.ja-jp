@@ -1,12 +1,12 @@
 ---
-title: Azure Active Directory サインイン アクティビティ レポート API リファレンス | Microsoft Docs
-description: Azure Active Directory サインイン アクティビティ レポート API のリファレンス
+title: "Azure Active Directory サインイン アクティビティ レポート API リファレンス | Microsoft Docs"
+description: "Azure Active Directory サインイン アクティビティ レポート API のリファレンス"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: ddcd9ae0-f6b7-4f13-a5e1-6cbf51a25634
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2016
 ms.author: dhanyahk;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4c60c0fd364400c881f1b8b96598725f6bd11d26
+
 
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Azure Active Directory サインイン アクティビティ レポート API リファレンス
@@ -28,7 +32,7 @@ Azure AD レポートは、コードまたは関連ツールを使用してサ�
 
 質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
 
-## <a name="who-can-access-the-api-data?"></a>誰が API データにアクセスできますか。
+## <a name="who-can-access-the-api-data"></a>誰が API データにアクセスできますか。
 * セキュリティ管理者またはセキュリティ リーダーの役割のユーザー
 * グローバル管理者
 * API へのアクセスを承認するすべてのアプリ (アプリの承認は、グローバル管理者のアクセス許可に基づいてのみ設定できます)
@@ -94,7 +98,7 @@ Reporting API を使用してこのレポートにアクセスするには、次
 
 特定の日付を使用する
 
-    $filter=signinDateTime+eq+2016-04-25T23:59:00Z  
+    $filter=signinDateTime+eq+2016-04-25T23:59:00Z    
 
 
 
@@ -177,6 +181,9 @@ loginStatus には 2 つのオプション (0 - 成功、1 - 失敗) があり�
 * フィルター処理されたサインイン アクティビティの例を参照しますか。 「 [Azure Active Directory サインイン アクティビティ レポート API のサンプル](active-directory-reporting-api-sign-in-activity-samples.md)」を確認してください。
 * Azure AD Reporting API の詳細を確認しますか。 「 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

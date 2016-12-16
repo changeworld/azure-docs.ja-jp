@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と GaggleAMP の統合 | Microsoft Docs'
-description: Azure Active Directory と GaggleAMP の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と GaggleAMP の統合 | Microsoft Docs"
+description: "Azure Active Directory と GaggleAMP の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 9cc1a4b7-964b-406b-9e0c-05cb1a7c9856
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 50b4b23f4cbf8503fb6115f516df7ae88bf15d30
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-gaggleamp"></a>チュートリアル: Azure Active Directory と GaggleAMP の統合
+# <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>チュートリアル: Azure Active Directory と GaggleAMP の統合
 このチュートリアルの目的は、GaggleAMP と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 GaggleAMP と Azure AD の統合には、次の利点があります。
@@ -159,24 +163,24 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-gaggleamp-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-gaggleamp-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに、「**Britta Simon**」と入力します。
+   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-gaggleamp-tutorial/create_aaduser_07.png) 
@@ -200,7 +204,7 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
 
 **GaggleAMP に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![ユーザーの割り当て][201] 
 2. アプリケーションの一覧で **[GaggleAMP]**を選択します。
@@ -242,6 +246,6 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
