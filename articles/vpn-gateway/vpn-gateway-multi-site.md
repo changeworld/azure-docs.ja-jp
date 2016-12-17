@@ -1,13 +1,13 @@
 ---
-title: VPN ゲートウェイと PowerShell を使用して仮想ネットワークを複数のサイトに接続する | Microsoft Docs
-description: この記事では、クラシック デプロイメント モデルで VPN Gateway を使用して複数のローカルのオンプレミスのサイトを仮想ネットワークに接続する操作について説明します。
+title: "VPN ゲートウェイと PowerShell を使用して仮想ネットワークを複数のサイトに接続する |Microsoft Docs"
+description: "この記事では、クラシック デプロイメント モデルで VPN Gateway を使用して複数のローカルのオンプレミスのサイトを仮想ネットワークに接続する操作について説明します。"
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: b043df6e-f1e8-4a4d-8467-c06079e2c093
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2016
 ms.author: yushwang
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c909622219128f87f05668eb9124542d2d59e1ea
+
 
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する
@@ -60,21 +64,21 @@ ms.author: yushwang
   
     例えば、2 つのローカル ネットワーク サイトの両方が IP アドレス範囲 10.2.3.0/24 を含んでおり、送信先アドレスが 10.2.3.3 のパッケージを持っている場合、アドレス範囲が重複しているため、Azure はパッケージを送ろうとしているのがどちらのサイトなのかわかりません。 ルーティングの問題を避けるため、Azure は重複した範囲を持つ構成ファイルをアップロードすることを許可しません。
 
-## <a name="1.-create-a-site-to-site-vpn"></a>1.サイト間 VPN を作成する
+## <a name="1-create-a-site-to-site-vpn"></a>1.サイト間 VPN を作成する
 動的ルーティング ゲートウェイを持つサイト間 VPN が既に存在する場合は、 [仮想ネットワーク構成設定のエクスポート](#export)に進んでください。 まだ作成していない場合は、以下の作業を行います。
 
-### <a name="if-you-already-have-a-site-to-site-virtual-network,-but-it-has-a-static-(policy-based)-routing-gateway:"></a>サイト間仮想ネットワークは既に存在するが、静的な (ポリシー ベースの) ルーティング ゲートウェイの場合:
+### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>サイト間仮想ネットワークは既に存在するが、静的な (ポリシー ベースの) ルーティング ゲートウェイの場合:
 1. ゲートウェイ タイプを動的ルーティングに変更します。 マルチサイト VPN は動的 (ルート ベースとも呼ばれます) ルーティング ゲートウェイを必要とします。 ゲートウェイ タイプを変更するには、最初に既存のゲートウェイを削除し、新規で作成します。 手順については、「 [ゲートウェイの VPN ルーティングの種類を変更する方法](vpn-gateway-configure-vpn-gateway-mp.md#how-to-change-the-vpn-routing-type-for-your-gateway)」を参照してください。  
 2. 新しいゲートウェイを構成し、VPN トンネルを作成します。 手順については、「 [Azure クラシック ポータルで VPN ゲートウェイを構成する](vpn-gateway-configure-vpn-gateway-mp.md)」を参照してください。 最初に、ゲートウェイ タイプを動的ルーティングに変更します。 
 
-### <a name="if-you-don't-have-a-site-to-site-virtual-network:"></a>サイト間仮想ネットワークが存在しない場合:
+### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>サイト間仮想ネットワークが存在しない場合:
 1. 次の手順によりサイト間仮想ネットワークを作成します: [Azure クラシック ポータルでサイト間 VPN 接続を使用して Virtual Network を作成する](vpn-gateway-site-to-site-create.md)。  
 2. 次の手順により動的ルーティング ゲートウェイを構成します。[VPN ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md) 必ずゲートウェイ タイプに**動的ルーティング**を選択してください。
 
-## <a name="<a-name="export"></a>2.-export-the-network-configuration-file"></a><a name="export"></a>2.ネットワーク構成ファイルをエクスポートする
+## <a name="a-nameexporta2-export-the-network-configuration-file"></a><a name="export"></a>2.ネットワーク構成ファイルをエクスポートする
 ネットワーク構成ファイルをエクスポートします。 エクスポートするファイルは新しいマルチサイト設定の構成に使われます。 ファイルのエクスポートに関する手順が必要な場合は、次の記事のセクションを参照してください: [Azure ポータルのネットワーク構成ファイルを使用して VNet を作成する方法](../virtual-network/virtual-networks-create-vnet-classic-portal.md#how-to-create-a-vnet-using-a-network-config-file-in-the-azure-portal)。 
 
-## <a name="3.-open-the-network-configuration-file"></a>3.ネットワーク構成ファイルを開く
+## <a name="3-open-the-network-configuration-file"></a>3.ネットワーク構成ファイルを開く
 前のステップでダウンロードしたネットワーク構成ファイルを開きます。 任意の xml エディターを使用してください。 ファイルは次のようになります。
 
         <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
@@ -124,7 +128,7 @@ ms.author: yushwang
           </VirtualNetworkConfiguration>
         </NetworkConfiguration>
 
-## <a name="4.-add-multiple-site-references"></a>4.複数のサイト リファレンスを追加する
+## <a name="4-add-multiple-site-references"></a>4.複数のサイト リファレンスを追加する
 サイト リファレンスの情報を追加または削除する場合、ConnectionsToLocalNetwork/LocalNetworkSiteRef に対して構成の変更を行います。 新しいローカル サイトのリファレンスを追加することで、Azure が新しくトンネルを作成します。 下の例で、ネットワーク構成はシングル サイト接続のものです。 変更が完了したら、ファイルを保存します。
 
         <Gateway>
@@ -142,10 +146,10 @@ ms.author: yushwang
           </ConnectionsToLocalNetwork>
         </Gateway>
 
-## <a name="5.-import-the-network-configuration-file"></a>5.ネットワーク構成ファイルをインポートする
+## <a name="5-import-the-network-configuration-file"></a>5.ネットワーク構成ファイルをインポートする
 ネットワーク構成ファイルをインポートします。 変更をしてこのファイルをインポートすると、新しいトンネルが追加されます。 トンネルは先ほど作成した動的ゲートウェイを使用します。 ファイルのインポートに関する手順が必要な場合は、次の記事のセクションを参照してください: [Azure ポータルのネットワーク構成ファイルを使用して VNet を作成する方法](../virtual-network/virtual-networks-create-vnet-classic-portal.md#how-to-create-a-vnet-using-a-network-config-file-in-the-azure-portal)。 
 
-## <a name="6.-download-keys"></a>6.キーをダウンロードする
+## <a name="6-download-keys"></a>6.キーをダウンロードする
 新しいトンネルが追加されたら、PowerShell コマンドレット `Get-AzureVNetGatewayKey` を使用して、IPsec/IKE 事前共有キーを各トンネル用に取得します。
 
 次に例を示します。
@@ -156,7 +160,7 @@ ms.author: yushwang
 
 必要に応じて、*Get Virtual Network Gateway Shared Key* という REST API を使用して事前共有キーを取得することもできます。
 
-## <a name="7.-verify-your-connections"></a>7.接続の確認
+## <a name="7-verify-your-connections"></a>7.接続の確認
 マルチサイトのトンネルの状態を確認します。 各トンネルのキーをダウンロードしたら、接続を確認します。 `Get-AzureVnetConnection` を使用して、下の例で示すように仮想ネットワークのトンネルのリストを取得します。 VNet1 とは VNet の名前です。
 
     Get-AzureVnetConnection -VNetName VNET1
@@ -188,6 +192,9 @@ ms.author: yushwang
 ## <a name="next-steps"></a>次のステップ
 VPN Gateway について詳しくは、「 [VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
