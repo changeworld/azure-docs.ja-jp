@@ -1,19 +1,23 @@
 ---
-title: Service Bus トピックの使用方法 (PHP) | Microsoft Docs
-description: Azure 上の PHP で Service Bus トピックを使用する方法について説明します。
-services: service-bus
+title: "Service Bus トピックの使用方法 (PHP) | Microsoft Docs"
+description: "Azure 上の PHP で Service Bus トピックを使用する方法について説明します。"
+services: service-bus-messaging
 documentationcenter: php
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: faaa4bbd-f6ef-42ff-aca7-fc4353976449
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 05/10/2016
+ms.date: 10/14/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c1d58e912f3b08c0eeff3724658301e8c6b28be5
+
 
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions"></a>Service Bus のトピックとサブスクリプションの使用方法
@@ -39,7 +43,7 @@ Microsoft Azure BLOB Service にアクセスする PHP アプリケーション�
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Service Bus API を使用するには、以下の手順を実行します。
 
-1. [require_once][require-once] ステートメントを使用してオートローダー ファイルを参照します。
+1. [require-once][require-once] ステートメントを使用してオートローダー ファイルを参照します。
 2. 使用する可能性のあるクラスを参照する
 
 次の例では、オートローダー ファイルをインクルードし、**ServiceBusService** クラスを参照する方法を示しています。
@@ -57,7 +61,7 @@ use WindowsAzure\Common\ServicesBuilder;
 下のすべてのサンプルに `require_once` ステートメントが入っていますが、サンプルの実行に必要なクラスのみが参照されます。
 
 ## <a name="set-up-a-service-bus-connection"></a>Service Bus 接続の設定
-Azure Service Bus クライアントをインスタンス化するには、まず次の形式の有効な接続文字列が必要です。
+Service Bus クライアントをインスタンス化するには、まず次の形式の有効な接続文字列が必要です。
 
 ```
 Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[Default Key]
@@ -99,7 +103,7 @@ use WindowsAzure\ServiceBus\Models\TopicInfo;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try {       
+try    {        
     // Create topic.
     $topicInfo = new TopicInfo("mytopic");
     $serviceBusRestProxy->createTopic($topicInfo);
@@ -135,7 +139,7 @@ use WindowsAzure\ServiceBus\Models\SubscriptionInfo;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try {
+try    {
     // Create subscription.
     $subscriptionInfo = new SubscriptionInfo("mysubscription");
     $serviceBusRestProxy->createSubscription("mytopic", $subscriptionInfo);
@@ -201,7 +205,7 @@ use WindowsAzure\ServiceBus\Models\BrokeredMessage;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try {
+try    {
     // Create message.
     $message = new BrokeredMessage();
     $message->setBody("my message");
@@ -235,7 +239,7 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピック サイズの上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus のクォータ]」を参照してください。
+Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピック サイズの上限は 5 GB です。 クォータの詳細については、[「Service Bus のクォータ」][Service Bus のクォータ]を参照してください。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 サブスクリプションからメッセージを受信する最良の方法は、**ServiceBusRestProxy->receiveSubscriptionMessage** メソッドを使用することです。 受信したメッセージは、2 つの異なるモード (**ReceiveAndDelete** (既定) と **PeekLock**) で受信できます。
@@ -256,7 +260,7 @@ use WindowsAzure\ServiceBus\Models\ReceiveMessageOptions;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try {
+try    {
     // Set receive mode to PeekLock (default is ReceiveAndDelete)
     $options = new ReceiveMessageOptions();
     $options->setPeekLock();
@@ -307,7 +311,7 @@ use WindowsAzure\Common\ServiceException;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try {       
+try    {        
     // Delete topic.
     $serviceBusRestProxy->deleteTopic("mytopic");
 }
@@ -328,7 +332,7 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 ```
 
 ## <a name="next-steps"></a>次のステップ
-これで、Service Bus キューの基本を学習できました。詳細については、「[Service Bus のキュー、トピック、サブスクリプション][]」をご覧ください。
+これで、Service Bus キューの基本を学習できました。詳細については、[「キュー、トピック、サブスクリプション」][キュー、トピック、サブスクリプション]を参照してください。
 
 [キュー、トピック、サブスクリプション]: service-bus-queues-topics-subscriptions.md
 [sqlfilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
@@ -337,6 +341,6 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 
 
 
-<!---HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

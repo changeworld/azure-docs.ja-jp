@@ -1,12 +1,12 @@
 ---
-title: Generic LDAP コネクタ | Microsoft Docs
-description: この記事では、Microsoft の Generic LDAP コネクタを構成する方法について説明します。
+title: "Generic LDAP コネクタ | Microsoft Docs"
+description: "この記事では、Microsoft の Generic LDAP コネクタを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: AndKjell
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 984beeb0-4d91-4908-ad81-c19797c4891b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 783952ef1a19d18c3dd5d25c9ccf25cf3b29af45
+
 
 ---
 # <a name="generic-ldap-connector-technical-reference"></a>Generic LDAP コネクタに関するテクニカル リファレンス
@@ -258,6 +262,9 @@ Novell eDirectory の場合、差分インポートでオブジェクトの削�
 ## <a name="troubleshooting"></a>トラブルシューティング
 * コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「 [How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

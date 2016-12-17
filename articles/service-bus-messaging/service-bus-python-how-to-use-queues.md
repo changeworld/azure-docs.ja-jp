@@ -1,30 +1,34 @@
 ---
-title: Service Bus キューの使用方法 (Python) | Microsoft Docs
-description: Python から Azure Service Bus キューを使用する方法を説明します。
-services: service-bus
+title: "Service Bus キューの使用方法 (Python) | Microsoft Docs"
+description: "Python から Azure Service Bus キューを使用する方法を説明します。"
+services: service-bus-messaging
 documentationcenter: python
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: b95ee5cd-3b31-459c-a7f3-cf8bcf77858b
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 09/21/2016
 ms.author: sethm;lmazuel
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6a162dc04f8eb5002cae3bf708ae2fcd4c2aa694
+
 
 ---
 # <a name="how-to-use-service-bus-queues"></a>Service Bus キューの使用方法
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-この記事では、Service Bus キューの使用方法について説明します。 サンプルは Python で記述され、[Python Azure Service Bus パッケージ][]を使用しています。 紹介するシナリオは、**キューの作成、メッセージの送受信**、**キューの削除**です。
+この記事では、Service Bus キューの使用方法について説明します。 サンプルは Python で記述され、[Python Azure Service Bus パッケージ][Python Azure Service Bus のパッケージ]を使用しています。 紹介するシナリオは、**キューの作成、メッセージの送受信**、**キューの削除**です。
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 > [!NOTE]
-> Python または [Python Azure Service Bus パッケージ][]をインストールする方法については、「[Python インストール ガイド](../python-how-to-install.md)」をご覧ください。
+> Python または [Python Azure Service Bus パッケージ][Python Azure Service Bus のパッケージ]をインストールする方法については、[「Python インストール ガイド」](../python-how-to-install.md)をご覧ください。
 > 
 > 
 
@@ -44,7 +48,7 @@ bus_service = ServiceBusService(
     shared_access_key_value='sharedaccesskey')
 ```
 
-SAS キーの名前と値は、[Azure クラシック ポータル][Azure クラシック ポータル]接続情報に含まれています。また、サービス エクスプローラーで Service Bus 名前空間を選択すると、Visual Studio の**プロパティ** ウィンドウに表示されます (前のセクションに示されているとおり)。
+SAS キーの名前と値は、[Azure クラシック ポータル][Azure クラシック ポータル]接続情報に含まれています。また、サーバー エクスプローラーで Service Bus 名前空間を選択すると、Visual Studio の**プロパティ** ウィンドウに表示されます (前のセクションに示されているとおり)。
 
 ```
 bus_service.create_queue('taskqueue')
@@ -70,7 +74,7 @@ msg = Message(b'Test Message')
 bus_service.send_queue_message('taskqueue', msg)
 ```
 
-Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus のクォータ]」を参照してください。
+Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。 クォータの詳細については、[「Service Bus のクォータ」][Service Bus のクォータ]を参照してください。
 
 ## <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
 キューからメッセージを受信するには、**ServiceBusService** オブジェクトの **receive\_queue\_message** メソッドを使用します。
@@ -103,7 +107,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 ## <a name="next-steps"></a>次のステップ
 これで、Service Bus キューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
-* [Service Bus のキュー、トピック、サブスクリプション][]。
+* [「Service Bus のキュー、トピック、サブスクリプション」][キュー、トピック、サブスクリプション]を参照してください。
 
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 [Python Azure Service Bus のパッケージ]: https://pypi.python.org/pypi/azure-servicebus  
@@ -113,6 +117,6 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

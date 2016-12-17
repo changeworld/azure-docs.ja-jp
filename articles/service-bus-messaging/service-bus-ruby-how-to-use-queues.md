@@ -1,19 +1,23 @@
 ---
-title: Ruby で Service Bus キューを使用する方法 | Microsoft Docs
-description: Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Ruby で記述されています。
-services: service-bus
+title: "Ruby で Service Bus キューを使用する方法 | Microsoft Docs"
+description: "Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Ruby で記述されています。"
+services: service-bus-messaging
 documentationcenter: ruby
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 0a11eab2-823f-4cc7-842b-fbbe0f953751
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: bde6cfe0daa95fc64e18be308798263544119b9f
+
 
 ---
 # <a name="how-to-use-service-bus-queues"></a>Service Bus キューの使用方法
@@ -21,7 +25,7 @@ ms.author: sethm
 
 このガイドでは、Service Bus キューの使用方法について説明します。 サンプルは Ruby で記述され、Azure gem を利用しています。 紹介するシナリオは、**キューの作成、メッセージの送受信**、**キューの削除**です。 Service Bus キューの詳細については、[「次のステップ」](#next-steps)セクションを参照してください。
 
-## <a name="what-are-service-bus-queues?"></a>Service Bus キューとは
+## <a name="what-are-service-bus-queues"></a>Service Bus キューとは
 Service Bus キューは、*ブローカー メッセージング通信*モデルをサポートしています。 キューを使用すると、分散アプリケーションのコンポーネントが互いに直接通信することがなくなり、仲介者の役割を果たすキューを介してメッセージをやり取りすることになります。 メッセージ プロデューサー (送信者) はキューにメッセージを送信した後で、それまでの処理を引き続き実行します。
 メッセージ コンシューマー (受信者) は、キューからメッセージを非同期に受信して処理します。 メッセージ プロデューサーは、それ以降のメッセージの処理と送信を続ける場合、メッセージ コンシューマーからの応答を待つ必要がありません。 キューでは、コンシューマーが競合している場合のメッセージ配信に**先入れ先出し法 (FIFO)** を使用します。 つまり、通常はキューに追加された順番にメッセージが受信され、処理されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。
 
@@ -154,6 +158,9 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 この記事で説明されている Azure Service Bus キューと、[「Ruby から Queue ストレージを使用する方法」](../storage/storage-ruby-how-to-use-queue-storage.md)の記事で説明されている Azure キューの比較については、[「Azure キューと Service Bus キューの比較」](service-bus-azure-and-service-bus-queues-compared-contrasted.md)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

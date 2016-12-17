@@ -1,12 +1,12 @@
 ---
-title: Log Analytics での Active Directory のレプリケーションの状態のソリューション | Microsoft Docs
-description: Active Directory レプリケーションの状態ソリューション パックは、レプリケーションの失敗がないか Active Directory 環境を定期的に監視し、その結果を OMS ダッシュボードにレポートします。
+title: "Log Analytics での Active Directory のレプリケーションの状態のソリューション | Microsoft Docs"
+description: "Active Directory レプリケーションの状態ソリューション パックは、レプリケーションの失敗がないか Active Directory 環境を定期的に監視し、その結果を OMS ダッシュボードにレポートします。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 49e5cc5045f5bd626826b4992b8b49f886ef7bde
+
 
 ---
 # <a name="active-directory-replication-status-solution-in-log-analytics"></a>Log Analytics での Active Directory のレプリケーションの状態ソリューション
@@ -34,7 +38,7 @@ AD レプリケーションの状態ソリューション パックは、レプ�
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |![あり](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |![あり](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |![なし](./media/log-analytics-ad-replication-status/oms-bullet-red.png) |![いいえ](./media/log-analytics-ad-replication-status/oms-bullet-red.png) |![あり](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |5 日ごと |
 
-## <a name="optionally,-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>ドメイン コントローラー以外からの AD データの OMS への送信をオプションで有効にする
+## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>ドメイン コントローラー以外からの AD データの OMS への送信をオプションで有効にする
 いずれのドメイン コントローラーも直接 OMS に接続しない場合、ドメイン内の OMS に接続されている他の任意のコンピューターを使用し、それに AD レプリケーションの状態ソリューション パック用にデータを送信させることができます。
 
 ### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>ドメイン コントローラー以外から AD データを OMS に送信するには
@@ -147,6 +151,9 @@ AD レプリケーションの状態ソリューション パックでデータ�
 ## <a name="next-steps"></a>次のステップ
 * Active Directory のレプリケーション状態の詳細データを参照するには、「 [Log Analytics におけるログの検索](log-analytics-log-searches.md) 」を使用してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

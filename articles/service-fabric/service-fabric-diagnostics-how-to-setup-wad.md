@@ -1,12 +1,12 @@
 ---
-title: Azure 診断でログを収集する方法 | Microsoft Docs
-description: この記事では、Azure で実行されている Service Fabric クラスターのログを収集するように Azure 診断を設定する方法について説明します。
+title: "Azure 診断でログを収集する方法 | Microsoft Docs"
+description: "この記事では、Azure で実行されている Service Fabric クラスターのログを収集するように Azure 診断を設定する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: ms-toddabel
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 9f7e1fa5-6543-4efd-b53f-39510f18df56
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/28/2016
 ms.author: toddabel
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 454e1379e4ec598ffd31017b413f6b15c98039a6
+
 
 ---
 # <a name="collect-logs-by-using-azure-diagnostics"></a>Azure 診断でログを収集する方法
@@ -31,10 +35,10 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 これらのツールは、このドキュメントの操作の一部を実行するために使用します:
 
 * [Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md) (Azure Cloud Services と関連性はありますが、お勧めの情報と例が掲載されています)
-* [Azure リソース マネージャー](../resource-group-overview.md)
+* [Azure リソース マネージャー](../azure-resource-manager/resource-group-overview.md)
 * [Azure PowerShell](../powershell-install-configure.md)
 * [Azure Resource Manager クライアント](https://github.com/projectkudu/ARMClient)
-* [Azure Resource Manager テンプレート](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
+* [Azure Resource Manager テンプレート](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="log-sources-that-you-might-want-to-collect"></a>収集することができるログ ソース
 * **Service Fabric ログ:** プラットフォームから標準の Windows イベント トレーシング (ETW) と EventSource チャネルに対して生成されます。 次のような種類のログがあります。
@@ -206,15 +210,18 @@ template.json ファイル内の `EtwEventSourceProviderConfiguration` セクシ
         }
 ```
 
-パフォーマンス カウンターまたはイベント ログを収集するには、「[Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)」に記載されている例を使用して Resource Manager テンプレートを変更します。 その後、Resource Manager テンプレートを再発行します。
+パフォーマンス カウンターまたはイベント ログを収集するには、「[Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に記載されている例を使用して Resource Manager テンプレートを変更します。 その後、Resource Manager テンプレートを再発行します。
 
 ## <a name="next-steps"></a>次のステップ
 問題を解決する際に確認する必要があるイベントの詳細については、[Reliable Actors](service-fabric-reliable-actors-diagnostics.md) と [Reliable Services](service-fabric-reliable-services-diagnostics.md) で生成される診断イベントを参照してください。
 
 ## <a name="related-articles"></a>関連記事
-* [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
+* [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Log Analytics の Service Fabric ソリューション](../log-analytics/log-analytics-service-fabric.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Service Fabric の正常性モニタリング | Microsoft Docs
-description: クラスター、アプリケーション、およびサービスを監視する Azure Service Fabric の正常性監視モデルの紹介です。
+title: "Service Fabric の正常性モニタリング | Microsoft Docs"
+description: "クラスター、アプリケーション、およびサービスを監視する Azure Service Fabric の正常性監視モデルの紹介です。"
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 1d979210-b1eb-4022-be24-799fd9d8e003
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2016
 ms.author: oanapl
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 6ec1e341bc87475251161521e808dcbb821c2939
+
 
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric の正常性モニタリングの概要
@@ -206,7 +210,7 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 * **RemoveWhenExpired**。 ブール値。 true に設定されている場合、期限切れの正常性レポートは自動的に正常性ストアから削除され、エンティティの正常性評価には影響しません。 レポートが指定された期間のみ有効で、レポーターがレポートを明示的に消去する必要がない場合に使用されます。 また、正常性ストアからレポートを削除する場合 (たとえば、ウォッチドッグが変更され、以前のソースとプロパティを使用したレポート送信を停止した場合) にも使用されます。 短い TimeToLive と RemoveWhenExpired を一緒に使用してレポートを送信し、正常性ストアから以前の任意の状態をクリアできます。 この値が false に設定されている場合、期限切れのレポートは正常性評価でエラーとして扱われます。 値を false にすると、このプロパティに関するソースからの定期的なレポートが必要であることが正常性ストアに通知されます。 通知されない場合は、ウォッチドッグに何らかの問題があります。 ウォッチドッグの正常性は、このイベントをエラーと見なすことによりキャプチャされます。
 * **SequenceNumber**。 正の整数値です。レポートの順序を表すものであり、増え続ける必要があります。 正常性ストアにより、ネットワークの遅延やその他の問題のために受信が遅れた古いレポートを検出するのに使用されます。 レポートのシーケンス番号が、同じエンティティ、ソース、およびプロパティに適用されている最新のシーケンス番号以下である場合、レポートは拒否されます。 指定されていない場合、シーケンス番号は自動的に生成されます。 状態遷移をレポートする場合にのみ、シーケンス番号を入力する必要があります。 この場合、ソースは送信したレポートを記憶し、フェールオーバー時の復旧用にその情報を保持する必要があります。
 
-すべての正常性レポートに、SourceId、エンティティ識別子、プロパティおよび 　HealthState という 4 つの情報が必要です。 SourceId 文字列では、先頭に "**System.**" というプレフィックスを使用することはできません。これはシステム レポート用に予約されています。 同じエンティティの場合、同じソースとプロパティに対するレポートは 1 つだけ存在します。 同じソースとプロパティに対する複数のレポートは、正常性クライアント側 (バッチ処理される場合) または正常性ストア側で、互いにオーバーライドします。 置換はシーケンス番号に基づいて行われます。新しいレポート (シーケンス番号が大きい方) が古いレポートを置換します。
+すべての正常性レポートに、SourceId、エンティティ識別子、プロパティおよび HealthState という 4 つの情報が必要です。 SourceId 文字列では、先頭に "**System.**" というプレフィックスを使用することはできません。これはシステム レポート用に予約されています。 同じエンティティの場合、同じソースとプロパティに対するレポートは 1 つだけ存在します。 同じソースとプロパティに対する複数のレポートは、正常性クライアント側 (バッチ処理される場合) または正常性ストア側で、互いにオーバーライドします。 置換はシーケンス番号に基づいて行われます。新しいレポート (シーケンス番号が大きい方) が古いレポートを置換します。
 
 ### <a name="health-events"></a>正常性イベント
 内部的には、正常性ストアは [正常性イベント](https://msdn.microsoft.com/library/azure/system.fabric.health.healthevent.aspx)を保持しており、これにはレポートからのすべての情報と追加のメタデータが含まれています。 メタデータには、レポートが正常性クライアントに送信された時刻やレポートがサーバー側で変更された時刻が含まれています。 正常性イベントは、 [正常性クエリ](service-fabric-view-entities-aggregated-health.md#health-queries)によって返されます。
@@ -224,7 +228,7 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 * 最後の X 分間に変更された条件のみに基づいてアラートを出す。 指定した時刻より前に既にエラーの状態にあったレポートについては、既に通知されているため、無視できます。
 * プロパティが警告とエラーの状態を行き来している場合、異常とする (つまり、OK ではない) 時間を決定します。 たとえば、プロパティが正常ではない状態で 5 分経過するとアラートを出す場合は、(HealthState != Ok and Now - LastOkTransitionTime > 5 minutes) のように記述できます。
 
-## <a name="example:-report-and-evaluate-application-health"></a>例: アプリケーションの正常性をレポートおよび評価する
+## <a name="example-report-and-evaluate-application-health"></a>例: アプリケーションの正常性をレポートおよび評価する
 次の例では、PowerShell を使用して、**fabric:/WordCount** というアプリケーションの正常性レポートを **MyWatchdog** というソースから送信します。 正常性レポートには、エラーの正常性状態の正常性プロパティ "availability" に関する情報が、無限に設定された TimeToLive と共に含まれています。 次に、アプリケーションの正常性がクエリされ、集計された正常性状態のエラーおよびレポートされた正常性イベントが正常性イベントの一覧で返されます。
 
 ```powershell
@@ -311,6 +315,9 @@ HealthEvents                    :
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

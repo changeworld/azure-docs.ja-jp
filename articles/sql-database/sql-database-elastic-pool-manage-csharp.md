@@ -1,22 +1,27 @@
 ---
-title: C# でのエラスティック データベース プールの監視と管理 | Microsoft Docs
-description: C# データベース開発技術を使用して Azure SQL Database エラスティック データベース プールを管理します。
+title: "C# での Elastic Database プールの監視と管理 | Microsoft Docs"
+description: "C# データベース開発技術を使用して Azure SQL Database エラスティック データベース プールを管理します。"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: f6e6ff3b-6b60-43c1-afe9-575991e38237
 ms.service: sql-database
+ms.custom: sharded databases pool; how to
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 62e13424d8dd652bc20c5746f81df7958963c43a
+
 
 ---
-# <a name="monitor-and-manage-an-elastic-database-pool-with-c&#x23;"></a>C&#x23; でのエラスティック データベース プールの監視と管理
+# <a name="monitor-and-manage-an-elastic-database-pool-with-cx23"></a>C&#x23; でのエラスティック データベース プールの監視と管理
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-database-elastic-pool-manage-portal.md)
 > * [PowerShell](sql-database-elastic-pool-manage-powershell.md)
@@ -28,7 +33,7 @@ ms.author: sstein
 C&#x23; を使用して[エラスティック データベース プール](sql-database-elastic-pool.md)を管理する方法について説明します。 
 
 > [!NOTE]
-> SQL Database の新機能の多くは、[Azure Resource Manager デプロイメント モデル](../resource-group-overview.md)を使用している場合にのみサポートされます。そのため、常に最新の **Azure SQL Database Management Library for .NET ([ドキュメント](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))** を使用する必要があります。 以前の[クラシック デプロイメント モデル ベースのライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql)は互換性のためだけにサポートされているため、より新しい Resource Manager ベースのライブラリを使用することをお勧めします。
+> SQL Database の新機能の多くは、[Azure Resource Manager デプロイメント モデル](../azure-resource-manager/resource-group-overview.md)を使用している場合にのみサポートされます。そのため、常に最新の **Azure SQL Database Management Library for .NET ([ドキュメント](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))** を使用する必要があります。 以前の[クラシック デプロイメント モデル ベースのライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql)は互換性のためだけにサポートされているため、より新しい Resource Manager ベースのライブラリを使用することをお勧めします。
 > 
 > 
 
@@ -106,6 +111,9 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
 * [エラスティック データベース プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
 * エラスティック データベース ツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「 [Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

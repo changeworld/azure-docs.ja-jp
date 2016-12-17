@@ -1,12 +1,12 @@
 ---
-title: SQL Database 監査の使用 | Microsoft Docs
-description: SQL Database 監査の使用
+title: "SQL Database 監査の使用 | Microsoft Docs"
+description: "SQL Database 監査の使用"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: ronitr
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
 ms.service: sql-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: CarlRabeler; ronitr; giladm
+translationtype: Human Translation
+ms.sourcegitcommit: 80680647559fe8b42cfa09985b9da3713b9c9305
+ms.openlocfilehash: cf0152b0cbcc85befa1b753b92f1593af958dd89
+
 
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
@@ -27,7 +31,7 @@ Azure SQL Database の監査では、データベース イベントを追跡し
 * [データベースに対する監査を設定する]
 * [監査ログとレポートを分析する]
 
-## <a name="<a-id="subheading-1"></a>azure-sql-database-auditing-overview"></a><a id="subheading-1"></a>Azure SQL Database の監査の概要
+## <a name="a-idsubheading-1aazure-sql-database-auditing-overview"></a><a id="subheading-1"></a>Azure SQL Database の監査の概要
 SQL Database 監査により、以下のことが可能になります。
 
 * **保持** 。 監査するデータベース活動のカテゴリを定義できます。
@@ -45,10 +49,10 @@ SQL Database 監査により、以下のことが可能になります。
 
 特定のデータベースに対して、または既定のサーバー ポリシーとして、監査ポリシーを定義できます。 既定のサーバー監視ポリシーがサーバー上にある既存と新規作成のすべてのデータベースに適用されます。
 
-## <a name="<a-id="subheading-2"></a>set-up-auditing-for-your-database"></a><a id="subheading-2"></a>データベースに対する監査を設定する
+## <a name="a-idsubheading-2aset-up-auditing-for-your-database"></a><a id="subheading-2"></a>データベースに対する監査を設定する
 以下のセクションでは、Azure ポータルを使用した監査の構成について説明します。
 
-### <a name="<a-id="subheading-2-1">i.-blob-auditing</a>"></a><a id="subheading-2-1">i.BLOB の監査</a>
+### <a name="a-idsubheading-2-1blob-auditinga"></a><a id="subheading-2-1">BLOB の監査</a>
 1. https://portal.azure.com で [Azure Portal](https://portal.azure.com)を起動します。
 2. 監査する SQL Database または SQL Server の [設定] ブレードに移動します。 [設定] ブレードで、**[監査と脅威の検出]** を選択します。
    
@@ -69,9 +73,9 @@ SQL Database 監査により、以下のことが可能になります。
     <a id="storage-screenshot"></a>
     ![ナビゲーション ウィンドウ][4]
 6. 監査対象イベントをカスタマイズする場合、PowerShell または REST API から実行できます。詳細については、「[Automation (PowerShell / REST API)](#subheading-7)」セクションを参照してください。
-7. [ **Save**] をクリックします。
+7. **[Save]**をクリックします。
 
-### <a name="<a-id="subheading-2-2">ii.-table-auditing</a>"></a><a id="subheading-2-2">ii.テーブルの監査</a>
+### <a name="a-idsubheading-2-2table-auditinga"></a><a id="subheading-2-2">テーブルの監査</a>
 > [!NOTE]
 > **テーブルの監査**をセットアップする前に、["ダウンレベル クライアント"](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md) を使用しているかどうかを確認します。 また、ファイアウォールを厳密に設定している場合は、テーブル監査を有効にすると[データベースの IP エンドポイントが変更される](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)ことに注意してください。
 > 
@@ -96,14 +100,14 @@ SQL Database 監査により、以下のことが可能になります。
 7. 監査設定を構成したら、新しい**脅威の検出** (プレビュー) 機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、 [脅威の検出の概要](sql-database-threat-detection-get-started.md) に関するページを参照してください。
 8. **[保存]**をクリックします。
 
-## <a name="<a-id="subheading-3"></a>analyze-audit-logs-and-reports"></a><a id="subheading-3"></a>監査ログとレポートを分析する
+## <a name="a-idsubheading-3aanalyze-audit-logs-and-reports"></a><a id="subheading-3"></a>監査ログとレポートを分析する
 監査ログは、設定時に選択した Azure ストレージ アカウントで集計されます。
 
 [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用して監査ログを調査できます。
 
 **テーブル**監査ログと **BLOB** 監査ログの両方の分析について、下の詳細を参照してください。
 
-### <a name="<a-id="subheading-3-1">i.-blob-auditing</a>"></a><a id="subheading-3-1">i.BLOB の監査</a>
+### <a name="a-idsubheading-3-1blob-auditinga"></a><a id="subheading-3-1">BLOB の監査</a>
 BLOB 監査は "**sqldbauditlogs**" という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。
 
 BLOB 監査ログのストレージ フォルダー階層、BLOB の命名規則、ログ形式の詳細については、「[BLOB 監査ログ形式のリファレンス (doc ファイルのダウンロード)](https://go.microsoft.com/fwlink/?linkid=829599)」を参照してください。
@@ -127,7 +131,7 @@ BLOB 監査ログはいくつかの方法で表示できます。
      * 拡張イベント リーダー **C# ライブラリ** ([詳細はここを参照](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/))
      * **PowerShell** を利用し、拡張イベント ファイルにクエリを実行する ([詳細はここを参照](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/))
 
-### <a name="<a-id="subheading-3-2">ii.-table-auditing</a>"></a><a id="subheading-3-2">ii.テーブルの監査</a>
+### <a name="a-idsubheading-3-2table-auditinga"></a><a id="subheading-3-2">テーブルの監査</a>
 テーブル監査ログは、**SQLDBAuditLogs** プレフィックスを付け、Azure Storage テーブルのコレクションとして保存されます。
 
 テーブル監査ログ形式の詳細については、[テーブル監査ログ形式のリファレンス (doc ファイルのダウンロード)](http://go.microsoft.com/fwlink/?LinkId=506733) を参照してください。
@@ -148,10 +152,10 @@ BLOB 監査ログはいくつかの方法で表示できます。
    
     ![Navigation pane][9]
 
-## <a name="<a-id="subheading-5"></a>practices-for-usage-in-production"></a><a id="subheading-5"></a>運用環境での使用手法
+## <a name="a-idsubheading-5apractices-for-usage-in-production"></a><a id="subheading-5"></a>運用環境での使用手法
 <!--The description in this section refers to screen captures above.-->
 
-### <a name="<a-id="subheading-6">auditing-geo-replicated-databases</a>"></a><a id="subheading-6">Geo レプリケーション対応データベースの監査</a>
+### <a name="a-idsubheading-6auditing-geo-replicated-databasesa"></a><a id="subheading-6">Geo レプリケーション対応データベースの監査</a>
 Geo レプリケーション対応データベースを使用するとき、監査の種類によっては、プライマリ データベースとセカンダリ データベースのいずれかまたは両方に監査を設定できます。
 
 **テーブルの監査** - 「[データベースに対する監査を設定する](#subheading-2-2)」セクションの説明にあるように、2 つのデータベース (プライマリとセカンダリ) のそれぞれに、データベース レベルまたはサーバー レベルで個別のポリシーを構成できます。
@@ -167,7 +171,7 @@ Geo レプリケーション対応データベースを使用するとき、監�
 
 <br>
 
-### <a name="<a-id="subheading-6">storage-key-regeneration</a>"></a><a id="subheading-6">ストレージ キーの再生成</a>
+### <a name="a-idsubheading-6storage-key-regenerationa"></a><a id="subheading-6">ストレージ キーの再生成</a>
 運用環境では、ストレージ キーを最新の情報に定期的に更新することが推奨されます。 キーを最新の情報に更新する場合は、監査ポリシーを再度保存する必要があります。 このプロセスは次のとおりです。
 
 1. [Storage Details (ストレージ詳細)] ブレードで、**[ストレージ アクセス キー]** を *[プライマリ]* から *[セカンダリ]* に切り替え、一番下にある **[OK]** をクリックします。 [監査構成] ブレードの上部の **[保存]** をクリックします。
@@ -179,7 +183,7 @@ Geo レプリケーション対応データベースを使用するとき、監�
 3. [監査の構成] ブレードに戻り、**[ストレージ アクセス キー]** を *[セカンダリ]* から *[プライマリ]* に切り替え、一番下にある **[OK]** をクリックします。 [監査構成] ブレードの上部の **[保存]** をクリックします。
 4. [ストレージの構成] ブレードに戻り、*セカンダリ アクセス キー*を**再生成** (次のキー更新サイクルの準備として) します。
 
-## <a name="<a-id="subheading-7"></a>automation-(powershell-/-rest-api)"></a><a id="subheading-7"></a>Automation (PowerShell / REST API)
+## <a name="a-idsubheading-7aautomation-powershell-rest-api"></a><a id="subheading-7"></a>Automation (PowerShell / REST API)
 次の自動化ツールを利用し、Azure SQL Database で監査を構成することもできます。
 
 1. **PowerShell コマンドレット**
@@ -237,6 +241,6 @@ Geo レプリケーション対応データベースを使用するとき、監�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

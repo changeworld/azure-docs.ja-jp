@@ -1,12 +1,12 @@
 ---
-title: サーバーの削除と保護の無効化 | Microsoft Docs
-description: この記事では、Site Recovery コンテナーからサーバーの登録を解除して、仮想マシンと物理サーバーの保護を無効にする方法を説明します。
+title: "サーバーの削除と保護の無効化 | Microsoft Docs"
+description: "この記事では、Site Recovery コンテナーからサーバーの登録を解除して、仮想マシンと物理サーバーの保護を無効にする方法を説明します。"
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: rayne-wiselman
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: ef1f31d5-285b-4a0f-89b5-0123cd422d80
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/05/2016
 ms.author: raynew
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 08dcf342c122dd1ca119bcfec405bbef2171a0e1
+
 
 ---
 # <a name="remove-servers-and-disable-protection"></a>サーバーの削除と保護の無効化
@@ -96,7 +100,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
             {
                 if (Test-Path $registrationPath)
                 {
-                    "Removing registration related registry keys."  
+                    "Removing registration related registry keys."    
                     Remove-Item -Recurse -Path $registrationPath
                 }
    
@@ -127,7 +131,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
                 $store.Remove($cert)
             }
         }catch
-        {   
+        {    
             [system.exception]
             Write-Host "Error occured" -ForegroundColor "Red"
             $error[0] 
@@ -147,7 +151,7 @@ Hyper-V 仮想マシンの保護を停止する場合は、保護を削除する
 
 仮想マシンとそのハード ディスクを削除することを選択した場合は、それらはターゲットの場所から削除されます。
 
-### <a name="clean-up-protection-settings-manually-(between-vmm-sites)"></a>保護設定を手動でクリーンアップする (VMM サイト間)
+### <a name="clean-up-protection-settings-manually-between-vmm-sites"></a>保護設定を手動でクリーンアップする (VMM サイト間)
 **[仮想マシンの管理の停止]**を選択した場合は、次のように手動で設定をクリーンアップします。
 
 1. プライマリ サーバーで VMM コンソールからこのスクリプトを実行し、プライマリ仮想マシンの設定をクリーンアップします。 VMM コンソールで、[PowerShell] ボタンをクリックし、VMM PowerShell コンソールを開きます。 SQLVM1 を仮想マシンの名前に置き換えます。
@@ -163,7 +167,7 @@ Hyper-V 仮想マシンの保護を停止する場合は、保護を削除する
    
         Remove-VMReplication –VMName “SQLVM1”
 
-### <a name="clean-up-protection-settings-manually-(between-on-premises-vmm-sites-and-azure)"></a>保護設定を手動でクリーンアップする (オンプレミスの VMM サイトと Azure の間)
+### <a name="clean-up-protection-settings-manually-between-on-premises-vmm-sites-and-azure"></a>保護設定を手動でクリーンアップする (オンプレミスの VMM サイトと Azure の間)
 1. 次のように、ソース VMM サーバーでこのスクリプトを実行して、プライマリ仮想マシンの設定をクリーンアップします。
    
         $vm = get-scvirtualmachine -Name "SQLVM1"
@@ -176,7 +180,7 @@ Hyper-V 仮想マシンの保護を停止する場合は、保護を削除する
         $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  -computername $hostName
         $replicationService.RemoveReplicationRelationship($vm.__PATH)
 
-### <a name="clean-up-protection-settings-manually-(between-hyper-v-sites-and-azure)"></a>保護設定を手動でクリーンアップする (Hyper-V サイトと Azure の間)
+### <a name="clean-up-protection-settings-manually-between-hyper-v-sites-and-azure"></a>保護設定を手動でクリーンアップする (Hyper-V サイトと Azure の間)
 1. ソース Hyper-V ホスト サーバーで仮想マシンのレプリケーションを削除するには、このスクリプトを使用します。 SQLVM1 を仮想マシンの名前に置き換えます。
    
         $vmName = "SQLVM1"
@@ -202,6 +206,9 @@ VMware 仮想マシンまたは物理サーバーの保護を停止する場合�
      
        ![オプションを削除する](./media/site-recovery-manage-registration-and-protection/remove-vm.png)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
