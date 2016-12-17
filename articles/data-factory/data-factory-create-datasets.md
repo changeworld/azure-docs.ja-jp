@@ -38,31 +38,33 @@ Azure Data Factory では、パイプライン内でコピー アクティビテ
 ## <a name="define-datasets"></a>データセットの定義
 Azure Data Factory のデータセットは次のように定義されます。
 
-    {
-        "name": "<name of dataset>",
-        "properties": {
-            "type": "<type of dataset: AzureBlob, AzureSql etc...>",
-            "external": <boolean flag to indicate external data. only for input datasets>,
-            "linkedServiceName": "<Name of the linked service that refers to a data store.>",
-            "structure": [
-                {
-                    "name": "<Name of the column>",
-                    "type": "<Name of the type>"
-                }
-            ],
-            "typeProperties": {
-                "<type specific property>": "<value>",
-                "<type specific property 2>": "<value 2>",
-            },
-            "availability": {
-                "frequency": "<Specifies the time unit for data slice production. Supported frequency: Minute, Hour, Day, Week, Month>",
-                "interval": "<Specifies the interval within the defined frequency. For example, frequency set to 'Hour' and interval set to 1 indicates that new data slices should be produced hourly>"
-            },
-           "policy":
-            {      
+```json
+{
+    "name": "<name of dataset>",
+    "properties": {
+        "type": "<type of dataset: AzureBlob, AzureSql etc...>",
+        "external": <boolean flag to indicate external data. only for input datasets>,
+        "linkedServiceName": "<Name of the linked service that refers to a data store.>",
+        "structure": [
+            {
+                "name": "<Name of the column>",
+                "type": "<Name of the type>"
             }
+        ],
+        "typeProperties": {
+            "<type specific property>": "<value>",
+            "<type specific property 2>": "<value 2>",
+        },
+        "availability": {
+            "frequency": "<Specifies the time unit for data slice production. Supported frequency: Minute, Hour, Day, Week, Month>",
+            "interval": "<Specifies the interval within the defined frequency. For example, frequency set to 'Hour' and interval set to 1 indicates that new data slices should be produced hourly>"
+        },
+       "policy":
+        {      
         }
     }
+}
+```
 
 次の表では、上記の JSON のプロパティについて説明します。   
 
@@ -79,22 +81,24 @@ Azure Data Factory のデータセットは次のように定義されます。
 ## <a name="dataset-example"></a>データセットの例
 以下の例では、データセットは **Azure SQL データベース**にある **MyTable** という名前のテーブルを示します。
 
-    {
-        "name": "DatasetSample",
-        "properties": {
-            "type": "AzureSqlTable",
-            "linkedServiceName": "AzureSqlLinkedService",
-            "typeProperties":
-            {
-                "tableName": "MyTable"
-            },
-            "availability":
-            {
-                "frequency": "Day",
-                "interval": 1
-            }
+```json
+{
+    "name": "DatasetSample",
+    "properties": {
+        "type": "AzureSqlTable",
+        "linkedServiceName": "AzureSqlLinkedService",
+        "typeProperties":
+        {
+            "tableName": "MyTable"
+        },
+        "availability":
+        {
+            "frequency": "Day",
+            "interval": 1
         }
     }
+}
+```
 
 次の点に注意してください。
 
@@ -105,16 +109,18 @@ Azure Data Factory のデータセットは次のように定義されます。
 
 AzureSqlLinkedService は次のように定義されます。
 
-    {
-        "name": "AzureSqlLinkedService",
-        "properties": {
-            "type": "AzureSqlDatabase",
-            "description": "",
-            "typeProperties": {
-                "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Password=<password>;Integrated Security=False;Encrypt=True;Connect Timeout=30"
-            }
+```json
+{
+    "name": "AzureSqlLinkedService",
+    "properties": {
+        "type": "AzureSqlDatabase",
+        "description": "",
+        "typeProperties": {
+            "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Password=<password>;Integrated Security=False;Encrypt=True;Connect Timeout=30"
         }
     }
+}
+```
 
 上記の JSON では、
 
@@ -134,23 +140,27 @@ AzureSqlLinkedService は次のように定義されます。
 ## <a name="a-namestructureadataset-structure"></a><a name="Structure"></a>データセット構造
 **structure** セクションでは、データセットのスキーマを定義します。 このセクションには列の名前とデータ型のコレクションが含まれています。  次の例では、データセットに slicetimestamp、projectname、pageviews の 3 つの列があります。各列の型は、String、String、Decimal です。
 
-    structure:  
-    [
-        { "name": "slicetimestamp", "type": "String"},
-        { "name": "projectname", "type": "String"},
-        { "name": "pageviews", "type": "Decimal"}
-    ]
+```json
+structure:  
+[
+    { "name": "slicetimestamp", "type": "String"},
+    { "name": "projectname", "type": "String"},
+    { "name": "pageviews", "type": "Decimal"}
+]
+```
 
 ## <a name="a-nameavailabilitya-dataset-availability"></a><a name="Availability"></a> データセットの可用性
 データセットの **availability** セクションでは、データセットの処理時間枠 (時間単位、日単位、週単位など) またはスライシング モデルを定義します。 データセットのスライシングと依存関係モデルの詳細については、[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。
 
 次の availability セクションでは、出力データセットが 1 時間ごとに生成されるか、入力データセットが 1 時間ごとに使用可能となるように指定されます。
 
-    "availability":    
-    {    
-        "frequency": "Hour",        
-        "interval": 1    
-    }
+```json
+"availability":    
+{    
+    "frequency": "Hour",        
+    "interval": 1    
+}
+```
 
 次の表では、availability セクションで使用できるプロパティについて説明します。
 
@@ -165,45 +175,50 @@ AzureSqlLinkedService は次のように定義されます。
 ### <a name="offset-example"></a>offset 例
 既定の設定である真夜中ではなく、毎日午前 6 時にスライスを開始する例です。
 
-    "availability":
-    {
-        "frequency": "Day",
-        "interval": 1,
-        "offset": "06:00:00"
-    }
+```json
+"availability":
+{
+    "frequency": "Day",
+    "interval": 1,
+    "offset": "06:00:00"
+}
+```
 
 **frequency** が **Day** に、**interval** が **1** (1 日に 1 回) に設定され、既定の午前 12 時ではなく、午前 6 時にスライスが生成されるように設定されています。 この時刻は UTC 時間であることに注意してください。
 
 ## <a name="anchordatetime-example"></a>anchorDateTime の例
 **例:** 2007-04-19T08:00:00 に開始する 23 時間のデータセット スライス
 
-    "availability":    
-    {    
-        "frequency": "Hour",        
-        "interval": 23,    
-        "anchorDateTime":"2007-04-19T08:00:00"    
-    }
+```json
+"availability":    
+{    
+    "frequency": "Hour",        
+    "interval": 23,    
+    "anchorDateTime":"2007-04-19T08:00:00"    
+}
+```
 
 ## <a name="offsetstyle-example"></a>offset/style の例
 毎月、特定の日時 (たとえば、毎月 3 日の午前 8 時) にデータセットが必要な場合は、 **offset** タグを使用して、実行する日時を設定します。
 
-    {
-      "name": "MyDataset",
-      "properties": {
-        "type": "AzureSqlTable",
-        "linkedServiceName": "AzureSqlLinkedService",
-        "typeProperties": {
-          "tableName": "MyTable"
-        },
-        "availability": {
-          "frequency": "Month",
-          "interval": 1,
-          "offset": "3.08:10:00",
-          "style": "StartOfInterval"
-        }
-      }
+```json
+{
+  "name": "MyDataset",
+  "properties": {
+    "type": "AzureSqlTable",
+    "linkedServiceName": "AzureSqlLinkedService",
+    "typeProperties": {
+      "tableName": "MyTable"
+    },
+    "availability": {
+      "frequency": "Month",
+      "interval": 1,
+      "offset": "3.08:10:00",
+      "style": "StartOfInterval"
     }
-
+  }
+}
+```
 
 ## <a name="a-namepolicyadataset-policy"></a><a name="Policy"></a>データセット ポリシー
 データセット定義の **policy** セクションでは、データセット スライスで満たさなければならない基準または条件を定義します。
@@ -217,24 +232,28 @@ AzureSqlLinkedService は次のように定義されます。
 #### <a name="examples"></a>例
 **minimumSizeMB:**
 
-    "policy":
+```json
+"policy":
 
+{
+    "validation":
     {
-        "validation":
-        {
-            "minimumSizeMB": 10.0
-        }
+        "minimumSizeMB": 10.0
     }
+}
+```
 
 **minimumRows**
 
-    "policy":
+```json
+"policy":
+{
+    "validation":
     {
-        "validation":
-        {
-            "minimumRows": 100
-        }
+        "minimumRows": 100
     }
+}
+```
 
 ### <a name="external-datasets"></a>外部データセット
 外部データセットはデータ ファクトリのパイプライン実行で生成されないデータセットです。 データセットが **external** としてマークされている場合は、**ExternalData** ポリシーを定義することで、データセット スライス可用性の動作を変更できます。
@@ -256,95 +275,96 @@ AzureSqlLinkedService は次のように定義されます。
 >
 >
 
-    {
-        "name": "CopyPipeline-rdc",
-        "properties": {
-            "activities": [
-                {
-                    "type": "Copy",
-                    "typeProperties": {
-                        "source": {
-                            "type": "BlobSource",
-                            "recursive": false
-                        },
-                        "sink": {
-                            "type": "BlobSink",
-                            "writeBatchSize": 0,
-                            "writeBatchTimeout": "00:00:00"
-                        }
+```json
+{
+    "name": "CopyPipeline-rdc",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource",
+                        "recursive": false
                     },
-                    "inputs": [
-                        {
-                            "name": "InputDataset-rdc"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "OutputDataset-rdc"
-                        }
-                    ],
-                    "scheduler": {
-                        "frequency": "Day",
-                        "interval": 1,
-                        "style": "StartOfInterval"
-                    },
-                    "name": "CopyActivity-0"
-                }
-            ],
-            "start": "2016-02-28T00:00:00Z",
-            "end": "2016-02-28T00:00:00Z",
-            "isPaused": false,
-            "pipelineMode": "OneTime",
-            "expirationTime": "15.00:00:00",
-            "datasets": [
-                {
-                    "name": "InputDataset-rdc",
-                    "properties": {
-                        "type": "AzureBlob",
-                        "linkedServiceName": "InputLinkedService-rdc",
-                        "typeProperties": {
-                            "fileName": "emp.txt",
-                            "folderPath": "adftutorial/input",
-                            "format": {
-                                "type": "TextFormat",
-                                "rowDelimiter": "\n",
-                                "columnDelimiter": ","
-                            }
-                        },
-                        "availability": {
-                            "frequency": "Day",
-                            "interval": 1
-                        },
-                        "external": true,
-                        "policy": {}
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
                     }
                 },
-                {
-                    "name": "OutputDataset-rdc",
-                    "properties": {
-                        "type": "AzureBlob",
-                        "linkedServiceName": "OutputLinkedService-rdc",
-                        "typeProperties": {
-                            "fileName": "emp.txt",
-                            "folderPath": "adftutorial/output",
-                            "format": {
-                                "type": "TextFormat",
-                                "rowDelimiter": "\n",
-                                "columnDelimiter": ","
-                            }
-                        },
-                        "availability": {
-                            "frequency": "Day",
-                            "interval": 1
-                        },
-                        "external": false,
-                        "policy": {}
+                "inputs": [
+                    {
+                        "name": "InputDataset-rdc"
                     }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset-rdc"
+                    }
+                ],
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1,
+                    "style": "StartOfInterval"
+                },
+                "name": "CopyActivity-0"
+            }
+        ],
+        "start": "2016-02-28T00:00:00Z",
+        "end": "2016-02-28T00:00:00Z",
+        "isPaused": false,
+        "pipelineMode": "OneTime",
+        "expirationTime": "15.00:00:00",
+        "datasets": [
+            {
+                "name": "InputDataset-rdc",
+                "properties": {
+                    "type": "AzureBlob",
+                    "linkedServiceName": "InputLinkedService-rdc",
+                    "typeProperties": {
+                        "fileName": "emp.txt",
+                        "folderPath": "adftutorial/input",
+                        "format": {
+                            "type": "TextFormat",
+                            "rowDelimiter": "\n",
+                            "columnDelimiter": ","
+                        }
+                    },
+                    "availability": {
+                        "frequency": "Day",
+                        "interval": 1
+                    },
+                    "external": true,
+                    "policy": {}
                 }
-            ]
-        }
+            },
+            {
+                "name": "OutputDataset-rdc",
+                "properties": {
+                    "type": "AzureBlob",
+                    "linkedServiceName": "OutputLinkedService-rdc",
+                    "typeProperties": {
+                        "fileName": "emp.txt",
+                        "folderPath": "adftutorial/output",
+                        "format": {
+                            "type": "TextFormat",
+                            "rowDelimiter": "\n",
+                            "columnDelimiter": ","
+                        }
+                    },
+                    "availability": {
+                        "frequency": "Day",
+                        "interval": 1
+                    },
+                    "external": false,
+                    "policy": {}
+                }
+            }
+        ]
     }
-
+}
+```
 
 
 <!--HONumber=Nov16_HO3-->
