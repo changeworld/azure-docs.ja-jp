@@ -1,19 +1,23 @@
 ---
-title: Azure キューと Service Bus キューの比較 | Microsoft Docs
-description: Azure によって提供される 2 種類のキューの相違点と共通点について説明します。
-services: service-bus
+title: "Azure キューと Service Bus キューの比較 | Microsoft Docs"
+description: "Azure によって提供される 2 種類のキューの相違点と共通点について説明します。"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
 editor: tysonn
-
-ms.service: service-bus
+ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/23/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0740427b1cd990fb94e82f1f045cc9e7f11468cd
+
 
 ---
 # <a name="azure-queues-and-service-bus-queues---compared-and-contrasted"></a>Azure キューと Service Bus キューの比較
@@ -129,7 +133,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 * Service Bus キューでサポートされている重複検出機能は、[MessageID](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) プロパティの値に基づいて、キューまたはトピックに送信された重複するメッセージを自動的に削除します。
 
 ## <a name="capacity-and-quotas"></a>容量およびクォータ
-このセクションでは、[容量および適用可能なクォータ](../service-bus/service-bus-quotas.md)の観点から Azure キューと Service Bus キューを比較します。
+このセクションでは、[容量および適用可能なクォータ](service-bus-quotas.md)の観点から Azure キューと Service Bus キューを比較します。
 
 | 比較条件 | Azure キュー | Service Bus キュー |
 | --- | --- | --- |
@@ -140,12 +144,12 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 | 同時クライアントの最大数 |**無制限** |**無制限**<br/><br/>(最大 100 の同時接続数の制限は TCP プロトコル ベースの通信にのみ適用されます) |
 
 ### <a name="additional-information"></a>追加情報
-* Service Bus では、キューのサイズが制限されます。 キューの最大サイズは、キューの作成時に 1 ～ 80 GB の値を指定できます。 キューの作成時に設定したキュー サイズの値に達すると、その後の受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。 Service Bus でのクォータの詳細情報については、「[Service Bus のクォータ](../service-bus/service-bus-quotas.md)」をご覧ください。
-* Service Bus キューは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。 パーティション分割を有効にすると (既定)、Service Bus は指定した各 GB あたりに 16 個のパーティションを作成できます。 そのため、5 GB のキューを作成すると、16 個のパーティションで、キューの最大サイズは (5 x 16) = 80 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure Portal][] の各エントリで確認できます。
+* Service Bus では、キューのサイズが制限されます。 キューの最大サイズは、キューの作成時に 1 ～ 80 GB の値を指定できます。 キューの作成時に設定したキュー サイズの値に達すると、その後の受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。 Service Bus でのクォータの詳細情報については、「[Service Bus のクォータ](service-bus-quotas.md)」をご覧ください。
+* Service Bus キューは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。 パーティション分割を有効にすると (既定)、Service Bus は指定した各 GB あたりに 16 個のパーティションを作成できます。 そのため、5 GB のキューを作成すると、16 個のパーティションで、キューの最大サイズは (5 x 16) = 80 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure ポータル][Azure ポータル] の各エントリで確認できます。
 * Azure キューでは、内容が XML セーフでないメッセージに対しては **Base64** エンコードを使用する必要があります。 メッセージを **Base64** エンコードを使用する場合、ユーザー ペイロードの上限は 64 KB ではなく 48 KB になります。
 * Service Bus キューでは、キューに格納される各メッセージはヘッダーおよび本文で構成されます。 メッセージの合計サイズが、サービス レベルでサポートされる最大メッセージ サイズを超えることはできません。
 * クライアントが TCP プロトコルで Service Bus キューと通信する場合は、1 つの Service Bus キューに対する同時接続の最大数が 100 に制限されます。 この数は送信側と受信側で共有されます。 このクォータに達すると、その後の接続要求は拒否され、呼び出し元のコードが例外を受け取ります。 この制限は、REST ベースの API を使用してキューに接続するクライアントには適用されません。
-* 1 つの Service Bus Service の名前空間で 10,000 を超える数のキューが必要な場合は、Azure サポート チームに連絡してキューの数を増やすことができます。 Service Bus でキューの数を 10,000 より多くするために、[Azure Portal][] を使用して追加の名前空間を作成することもできます。
+* 1 つの Service Bus Service の名前空間で 10,000 を超える数のキューが必要な場合は、Azure サポート チームに連絡してキューの数を増やすことができます。 Service Bus でキューの数を 10,000 より多くするために、[Azure ポータル][Azure ポータル] を使用して追加の名前空間を作成することもできます。
 
 ## <a name="management-and-operations"></a>管理と操作
 このセクションでは、Azure キューと Service Bus キューで提供される管理機能を比較します。
@@ -181,8 +185,8 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 | ID プロバイダー フェデレーション |**いいえ** |**はい** |
 
 ### <a name="additional-information"></a>追加情報
-* どちらのキュー テクノロジでも、すべての要求を認証する必要があります。 匿名アクセスを使用するパブリック キューはサポートされていません。 [SAS](../service-bus/service-bus-sas-overview.md) を使用すると、書き込み専用 SAS、読み取り専用 SAS、フルアクセス SAS を発行することで、このシナリオに対応できます。
-* Azure キューによって提供される認証方式では対称キーが使用されます。対称キーとは、SHA-256 アルゴリズムを使用してコンピューティングされ、**Base64** 文字列としてエンコードされるハッシュ ベースのメッセージ認証コード (HMAC) です。 各プロトコルの詳細情報については、「[Azure ストレージ サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)」をご覧ください。 Service Bus キューでは、対称キーを使用する類似のモデルをサポートします。 詳細については、「[Service Bus での共有アクセス署名認証](../service-bus/service-bus-shared-access-signature-authentication.md)」をご覧ください。
+* どちらのキュー テクノロジでも、すべての要求を認証する必要があります。 匿名アクセスを使用するパブリック キューはサポートされていません。 [SAS](service-bus-sas-overview.md) を使用すると、書き込み専用 SAS、読み取り専用 SAS、フルアクセス SAS を発行することで、このシナリオに対応できます。
+* Azure キューによって提供される認証方式では対称キーが使用されます。対称キーとは、SHA-256 アルゴリズムを使用してコンピューティングされ、**Base64** 文字列としてエンコードされるハッシュ ベースのメッセージ認証コード (HMAC) です。 各プロトコルの詳細情報については、「[Azure ストレージ サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)」をご覧ください。 Service Bus キューでは、対称キーを使用する類似のモデルをサポートします。 詳細については、「[Service Bus での共有アクセス署名認証](service-bus-shared-access-signature-authentication.md)」をご覧ください。
 
 ## <a name="cost"></a>コスト
 このセクションでは、コストの観点から Azure キューと Service Bus キューを比較します。
@@ -227,6 +231,6 @@ Service Bus キューには高度な機能が数多く用意されているた�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

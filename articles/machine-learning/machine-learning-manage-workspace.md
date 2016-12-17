@@ -1,12 +1,12 @@
 ---
-title: Machine Learning ワークスペースの管理 | Microsoft Docs
-description: Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します
+title: "Machine Learning ワークスペースの管理 | Microsoft Docs"
+description: "Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: daf3d413-7a77-4beb-9a7a-6b4bdf717719
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a5d98d804697a9b5c745d4fa236cb0ee5b7c456b
+
 
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースの管理
@@ -112,6 +116,6 @@ Web サービス エンドポイントの名前をクリックして開きます
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

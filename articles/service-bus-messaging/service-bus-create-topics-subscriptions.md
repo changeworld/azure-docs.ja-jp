@@ -1,19 +1,23 @@
 ---
-title: Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する | Microsoft Docs
-description: Service Bus のトピックとサブスクリプションによって提供されるパブリッシュ/サブスクライブ機能について説明します。
-services: service-bus
+title: "Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する | Microsoft Docs"
+description: "Service Bus のトピックとサブスクリプションによって提供されるパブリッシュ/サブスクライブ機能について説明します。"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: a48fc9b0-b7b0-464e-8187-a517bf8b4eb4
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 75f2cddad471c89fd826097831362d9d51a6dccf
+
 
 ---
 # <a name="create-applications-that-use-service-bus-topics-and-subscriptions"></a>Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する
@@ -48,7 +52,7 @@ Azure Service Bus は、信頼性の高いメッセージ キュー機能や永�
 「[Service Bus キューを使用するアプリケーションを作成する](service-bus-create-queues.md)」という記事では、Azure アカウントにサインアップしてサービス名前空間を作成する方法が説明されています。 Service Bus の名前空間を使用するには、アプリケーションは Service Bus アセンブリ (具体的には Microsoft.ServiceBus.dll) を参照する必要があります。 Service Bus 依存関係を参照する最も簡単な方法は、Service Bus の [Nuget パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)をインストールすることです。 また、アセンブリは Azure SDK にも含まれます。 SDK は [Azure SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からダウンロードできます。
 
 ### <a name="create-the-topic-and-subscriptions"></a>トピックとサブスクリプションを作成する
-Service Bus メッセージング エンティティ (キューおよびトピックのパブリッシュ/サブスクライブ) の管理は、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスを使用して行われます。 特定の名前空間の [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) インスタンスを作成するには、適切な資格情報が必要です。 Service Bus は、[Shared Access Signature (SAS)](../service-bus/service-bus-sas-overview.md) ベースのセキュリティ モデルを使用します。 [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。 SAS の資格情報を保持するには、[CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) メソッドを使用します。 その後、Service Bus 名前空間のベース アドレスとトークン プロバイダーを使用して、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) インスタンスが作成されます。
+Service Bus メッセージング エンティティ (キューおよびトピックのパブリッシュ/サブスクライブ) の管理は、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスを使用して行われます。 特定の名前空間の [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) インスタンスを作成するには、適切な資格情報が必要です。 Service Bus は、[Shared Access Signature (SAS)](service-bus-sas-overview.md) ベースのセキュリティ モデルを使用します。 [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。 SAS の資格情報を保持するには、[CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) メソッドを使用します。 その後、Service Bus 名前空間のベース アドレスとトークン プロバイダーを使用して、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) インスタンスが作成されます。
 
 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスには、メッセージング エンティティの作成、列挙、削除を実行するためのメソッドが用意されています。 ここでは、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) インスタンスを作成し、それを使用して **DataCollectionTopic** トピックを作成するコードを示します。
 
@@ -139,6 +143,9 @@ namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard", dashboar
 ## <a name="next-steps"></a>次のステップ
 POS 小売シナリオでキューを使用する方法については、「[Service Bus キューを使用するアプリケーションを作成する](service-bus-create-queues.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

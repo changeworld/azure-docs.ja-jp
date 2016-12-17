@@ -1,19 +1,23 @@
 ---
-title: Service Bus キューの使用方法 (PHP) | Microsoft Docs
-description: Azure での Service Bus キューの使用方法を学習します。 コード サンプルは PHP で記述されています。
-services: service-bus
+title: "Service Bus キューの使用方法 (PHP) | Microsoft Docs"
+description: "Azure での Service Bus キューの使用方法を学習します。 コード サンプルは PHP で記述されています。"
+services: service-bus-messaging
 documentationcenter: php
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: e29c829b-44c5-4350-8f2e-39e0c380a9f2
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1d89a2f0a7f36bf9e2052682e931ac5c3596721f
+
 
 ---
 # <a name="how-to-use-service-bus-queues"></a>Service Bus キューの使用方法
@@ -84,7 +88,7 @@ $connectionString = "Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer]
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 ```
 
-## <a name="how-to:-create-a-queue"></a>方法: キューを作成する
+## <a name="how-to-create-a-queue"></a>方法: キューを作成する
 Service Bus キューの管理処理は **ServiceBusRestProxy** クラスを使用して実行できます。 **ServiceBusRestProxy** オブジェクトを作成するには、**ServicesBuilder::createServiceBusService** ファクトリ メソッドに、管理処理用のトークン アクセス許可をカプセル化した適切な接続文字列を渡します。
 
 次の例では、**ServiceBusRestProxy** をインスタンス化し、**ServiceBusRestProxy->createQueue** を呼び出して、`MySBNamespace` サービス名前空間内で `myqueue` という名前のキューを作成する方法を示しています。
@@ -99,7 +103,7 @@ use WindowsAzure\ServiceBus\Models\QueueInfo;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try {
+try    {
     $queueInfo = new QueueInfo("myqueue");
 
     // Create queue.
@@ -120,7 +124,7 @@ catch(ServiceException $e){
 > 
 > 
 
-## <a name="how-to:-send-messages-to-a-queue"></a>方法: キューにメッセージを送信する
+## <a name="how-to-send-messages-to-a-queue"></a>方法: キューにメッセージを送信する
 メッセージを Service Bus キューに送信するには、アプリケーションで **ServiceBusRestProxy->sendQueueMessage** メソッドを呼び出します。 次のコードでは、上のコードで `MySBNamespace` サービス名前空間内で作成した `myqueue` キューにメッセージを送信する方法を示しています。
 
 ```
@@ -133,7 +137,7 @@ use WindowsAzure\ServiceBus\Models\BrokeredMessage;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try {
+try    {
     // Create message.
     $message = new BrokeredMessage();
     $message->setBody("my message");
@@ -174,7 +178,7 @@ use WindowsAzure\ServiceBus\Models\ReceiveMessageOptions;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try {
+try    {
     // Set the receive mode to PeekLock (default is ReceiveAndDelete).
     $options = new ReceiveMessageOptions();
     $options->setPeekLock();
@@ -202,7 +206,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="how-to:-handle-application-crashes-and-unreadable-messages"></a>方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する
+## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する
 Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、受信したメッセージについて (**deleteMessage** メソッドの代わりに) **unlockMessage** メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
 
 キュー内でロックされているメッセージには、タイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、Service Bus によってメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
@@ -210,7 +214,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 メッセージが処理された後、**deleteMessage** 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は "**1 回以上の処理**" と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加することをお勧めします。 通常、この問題はメッセージの **getMessageId** メソッドを使用して対処します。このプロパティは、配信が試行された後も同じ値を保持します。
 
 ## <a name="next-steps"></a>次のステップ
-これで、Service Bus キューの基本を学習できました。詳細については、「[Service Bus のキュー、トピック、サブスクリプション][]」をご覧ください。
+これで、Service Bus キューの基本を学習できました。詳細については、[「キュー、トピック、サブスクリプション」][キュー、トピック、サブスクリプション]を参照してください。
 
 詳細については、[PHP デベロッパー センター](/develop/php/)も参照してください。
 
@@ -221,6 +225,6 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

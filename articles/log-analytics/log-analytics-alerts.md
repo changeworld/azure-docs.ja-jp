@@ -1,19 +1,23 @@
 ---
-title: Log Analytics のアラート | Microsoft Docs
-description: Log Analytics のアラートは、OMS リポジトリ内の重要な情報を識別し、問題について事前に通知したり、問題を修正するためのアクションを呼び出したりできます。  この記事では、アラート ルールを作成する方法と、実行できるさまざまなアクションの詳細について説明します。
+title: "Log Analytics のアラート | Microsoft Docs"
+description: "Log Analytics のアラートは、OMS リポジトリ内の重要な情報を識別し、問題について事前に通知したり、問題を修正するためのアクションを呼び出したりできます。  この記事では、アラート ルールを作成する方法と、実行できるさまざまなアクションの詳細について説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 6cfd2a46-b6a2-4f79-a67b-08ce488f9a91
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/22/2016
+ms.date: 12/09/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7f8603c9ddfd3f99ea38ad07b7a8a0a553e5e4dd
+
 
 ---
 # <a name="alerts-in-log-analytics"></a>Log Analytics のアラート
@@ -24,7 +28,7 @@ Log Analytics のアラートは、OMS リポジトリ内の重要な情報を�
 ## <a name="creating-an-alert-rule"></a>アラート ルールの作成
 アラート ルールを作成するには、まずアラートを呼び出すレコードに対するログ検索を作成します。  それにより、アラート ルールを作成して構成するための **[Alert]** (アラート) ボタンが使用できるようになります。
 
-1. OMS の [Overview](概要.md) ページで、 **[Log Search]**(ログ検索) をクリックします。
+1. OMS の [Overview] (概要) ページで、 **[Log Search]**(ログ検索) をクリックします。
 2. 新しいログ検索クエリを作成するか、保存されているログ検索を選択します。 
 3. ページの上部にある **[アラート]** をクリックして、**[アラート ルールの追加]** 画面を開きます。
 4. アラートを構成するオプションの詳細については、次に示す表を参照してください。
@@ -205,6 +209,9 @@ Log Analytics のアラート ルールで作成されるアラート レコー�
 * アラート ルールに関する [Webhook を構成する](log-analytics-alerts-webhooks.md) チュートリアルを完了します。  
 * アラートで識別された問題を修復するために [Azure Automation の Runbook](https://azure.microsoft.com/documentation/services/automation) を作成する方法について学習します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

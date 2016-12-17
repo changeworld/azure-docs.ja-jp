@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Bynder の統合 | Microsoft Docs'
-description: Azure Active Directory と Bynder の間でシングル サインオンを構成する方法について確認します。
+title: "チュートリアル: Azure Active Directory と Bynder の統合 | Microsoft Docs"
+description: "Azure Active Directory と Bynder の間でシングル サインオンを構成する方法について確認します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 4fb0ab26-b3b9-420a-8072-a0be80ea021e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 01ce02974d18d56421f161126e3541ac7d4997fa
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-bynder"></a>チュートリアル: Azure Active Directory と Bynder の統合
+# <a name="tutorial-azure-active-directory-integration-with-bynder"></a>チュートリアル: Azure Active Directory と Bynder の統合
 このチュートリアルの目的は、Bynder と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Bynder と Azure AD の統合には、次の利点があります。
@@ -123,7 +127,7 @@ Bynder で Microsoft Azure AD のシングル サインオンを構成してテ�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-bynder-tutorial/tutorial_bynder_05.png)
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
 2. アプリケーション用に構成された SSO を入手するために、Bynder のサポート チームに問い合わせます。 Bynder チーム側で SSO を設定する必要があるため、ダウンロードしたメタデータ ファイルを添付して、チームと共有してください。
@@ -155,16 +159,16 @@ Bynder で Microsoft Azure AD のシングル サインオンを構成してテ�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-bynder-tutorial/create_aaduser_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-bynder-tutorial/create_aaduser_06.png)
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -172,7 +176,7 @@ Bynder で Microsoft Azure AD のシングル サインオンを構成してテ�
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-bynder-tutorial/create_aaduser_07.png)
@@ -244,6 +248,6 @@ Bynder で Microsoft Azure AD のシングル サインオンを構成してテ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
