@@ -1,11 +1,11 @@
 ---
-title: 'チュートリアル: 受信同期のための Workday の構成 | Microsoft Docs'
-description: Workday を Azure Active Directory の ID データのソースとして使用する方法について説明します。
+title: "チュートリアル: 受信同期のための Workday の構成 | Microsoft Docs"
+description: "Workday を Azure Active Directory の ID データのソースとして使用する方法について説明します。"
 services: active-directory
 author: MarkusVi
 documentationcenter: na
 manager: femila
-
+ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,9 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/10/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a7bf2a8d093b5d314fdd08f5012f0517a45e3579
+
 
 ---
-# <a name="tutorial:-configuring-workday-for-inbound-synchronization"></a>チュートリアル: 受信同期のための Workday の構成
+# <a name="tutorial-configuring-workday-for-inbound-synchronization"></a>チュートリアル: 受信同期のための Workday の構成
 このチュートリアルでは、Workday から Azure AD にユーザーをインポートするために、Workday と Azure AD で実行する必要のある手順について説明します。 
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
@@ -36,7 +40,7 @@ ms.author: markvi
 ## <a name="enabling-the-application-integration-for-workday"></a>Workday のアプリケーション統合の有効化
 このセクションでは、Workday のアプリケーション統合を有効にする方法について説明します。
 
-### <a name="steps:"></a>手順:
+### <a name="steps"></a>手順:
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
    ![[Active Directory]](./media/active-directory-saas-workday-inbound-tutorial/IC700993.png "Active Directory")
@@ -55,7 +59,7 @@ ms.author: markvi
     ![アプリケーション ギャラリー](./media/active-directory-saas-workday-inbound-tutorial/IC701022.png "Application gallery")
 
 ## <a name="creating-an-integration-system-user"></a>統合システム ユーザーの作成
-### <a name="steps:"></a>手順:
+### <a name="steps"></a>手順:
 1. **Workday Workbench** で、検索ボックスに「ユーザーの作成」と入力し、**[Create Integration System User (統合システム ユーザーの作成)]** をクリックします。 
    
     ![ユーザーの作成](./media/active-directory-saas-workday-inbound-tutorial/IC750979.png "Create user")
@@ -66,7 +70,7 @@ ms.author: markvi
 ## <a name="creating-a-security-group"></a>セキュリティ グループの作成
 このチュートリアルで概説したシナリオの場合、制約のない統合システム セキュリティ グループを作成し、それにユーザーを割り当てる必要があります。
 
-### <a name="steps:"></a>手順:
+### <a name="steps"></a>手順:
 1. 検索ボックスに「セキュリティ グループの作成」と入力し、 **[Create Security Group (セキュリティ グループの作成)]**をクリックします。 
    
     ![CreateSecurity グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750981.png "CreateSecurity Group")
@@ -75,7 +79,7 @@ ms.author: markvi
     ![CreateSecurity グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750982.png "CreateSecurity Group")
 
 ## <a name="assigning-the-integration-system-user-to-the-security-group"></a>セキュリティ グループへの統合システム ユーザーの割り当て
-### <a name="steps:"></a>手順:
+### <a name="steps"></a>手順:
 1. 検索ボックスに「セキュリティ グループの編集」と入力し、 **[Edit Security Group (セキュリティ グループの編集)]**をクリックします。 
    
     ![[Edit Security Group (セキュリティ グループの編集)]](./media/active-directory-saas-workday-inbound-tutorial/IC750983.png "Edit Security Group")
@@ -95,7 +99,7 @@ ms.author: markvi
 * Worker Data: Current Staffing Information
 * Worker Data: Business Title on Worker Profile
 
-### <a name="steps:"></a>手順:
+### <a name="steps"></a>手順:
 1. 検索ボックスにドメインのセキュリティ ポリシーを入力し、[機能領域のドメイン セキュリティ ポリシー] リンクをクリックします。  
    
     ![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750986.png "Domain Security Policies")  
@@ -127,7 +131,7 @@ ms.author: markvi
 
 
 ## <a name="activating-security-policy-changes"></a>セキュリティ ポリシーの変更のアクティブ化
-### <a name="steps:"></a>手順:
+### <a name="steps"></a>手順:
 1. 検索ボックスに「アクティブ化」と入力し、[保留中のセキュリティ ポリシーの変更をアクティブ化] をクリックします。 
    
     ![アクティブ化](./media/active-directory-saas-workday-inbound-tutorial/IC750992.png "Activate") 
@@ -141,7 +145,7 @@ ms.author: markvi
 ## <a name="configuring-user-import-in-azure-ad"></a>Azure AD でのユーザー インポートの構成
 このセクションでは、Azure AD を構成して Workday からユーザーをインポートする方法について説明します。
 
-### <a name="steps:"></a>手順:
+### <a name="steps"></a>手順:
 1. **Workday** アプリケーション統合ページで、**[ユーザー インポートの構成]** をクリックして、**[プロビジョニングの構成]** ダイアログを開きます。
 2. **[設定と管理者資格情報]** ページで次の手順を実行し、**[次へ]** をクリックします。 
    
@@ -168,6 +172,9 @@ ms.author: markvi
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

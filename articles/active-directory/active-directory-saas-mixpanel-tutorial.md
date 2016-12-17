@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Mixpanel の統合 | Microsoft Docs'
-description: Azure Active Directory と Mixpanel の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Mixpanel の統合 | Microsoft Docs"
+description: "Azure Active Directory と Mixpanel の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: a2df26ef-d441-44ac-a9f3-b37bf9709bcb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f76b0f17eecaa6f86e67810296df14decf459153
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-mixpanel"></a>チュートリアル: Azure Active Directory と Mixpanel の統合
+# <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>チュートリアル: Azure Active Directory と Mixpanel の統合
 このチュートリアルの目的は、Mixpanel と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Mixpanel と Azure AD の統合には、次の利点があります。
@@ -116,7 +120,7 @@ Mixpanel で Azure AD のシングル サインオンを構成してテストす
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。 
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。 
    
     b. **[次へ]** をクリックします。
 2. 別のブラウザー ウィンドウで、管理者として Mixpanel アプリケーションにサインオンします。
@@ -162,20 +166,20 @@ Mixpanel で Azure AD のシングル サインオンを構成してテストす
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに、「**Britta Simon**」と入力します。
+   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
@@ -254,6 +258,6 @@ Mixpanel で Azure AD のシングル サインオンを構成してテストす
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

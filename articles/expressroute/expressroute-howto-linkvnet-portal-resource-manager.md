@@ -1,13 +1,13 @@
 ---
-title: Resource Manager デプロイメント モデルと Azure ポータルを使用した ExpressRoute 回線への仮想ネットワークのリンク | Microsoft Docs
-description: このドキュメントでは、ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要を示します。
+title: "Resource Manager デプロイメント モデルと Azure Portal を使用した ExpressRoute 回線への仮想ネットワークのリンク | Microsoft Docs"
+description: "このドキュメントでは、ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要を示します。"
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: f5cb5441-2fba-46d9-99a5-d1d586e7bda4
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6a3604b95179d1a88f832ed45d9a6b85931187b1
+
 
 ---
 # <a name="link-a-virtual-network-to-an-expressroute-circuit"></a>ExpressRoute 回線への仮想ネットワークのリンク
@@ -70,6 +74,9 @@ ms.author: cherylmc
 ## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
