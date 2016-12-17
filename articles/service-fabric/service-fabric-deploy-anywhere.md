@@ -1,12 +1,12 @@
 ---
-title: Windows Server および Linux での Azure Service Fabric クラスターの作成 | Microsoft Docs
-description: Service Fabric クラスターは Windows Server または Linux で実行されます。つまり、Windows Server または Linux を実行できる任意の場所に Service Fabric アプリケーションをデプロイしてホストできます。
+title: "Windows Server および Linux での Azure Service Fabric クラスターの作成 | Microsoft Docs"
+description: "Service Fabric クラスターは Windows Server または Linux で実行されます。つまり、Windows Server または Linux を実行できる任意の場所に Service Fabric アプリケーションをデプロイしてホストできます。"
 services: service-fabric
 documentationcenter: .net
 author: Chackdan
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/22/2016
 ms.author: chackdan
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3885733b67933f331f65760474649fba18adce12
+
 
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>Windows Server または Linux での Service Fabric クラスターの作成
@@ -34,7 +38,7 @@ Service Fabric には、オンプレミスまたは任意のクラウド プロ�
 
 Windows Server におけるスタンドアロン Service Fabric クラスターのセットアップの詳細については、 [Windows Server での Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
 
-### <a name="any-cloud-deployments-vs.-on-premises-deployments"></a>クラウドのデプロイとオンプレミスのデプロイの比較
+### <a name="any-cloud-deployments-vs-on-premises-deployments"></a>クラウドのデプロイとオンプレミスのデプロイの比較
 オンプレミスに Service Fabric クラスターを作成するプロセスは、一連の VM がある任意のクラウド上にクラスターを作成するプロセスとほぼ同じです。 VM をプロビジョニングするための最初の手順は、使用しているクラウド プロバイダーまたはオンプレミス環境に左右されます。 一連の VM を相互にネットワーク接続できる状態にした後は、Service Fabric パッケージの設定、クラスター設定の編集、クラスターの作成と管理のスクリプトの実行の手順はオンプレミスの場合と同じです。 これにより、新しいホスティング環境の使用を決めたときにも、Service Fabric クラスターの運用と管理の経験を活かすことができます。
 
 ### <a name="benefits-of-creating-standalone-service-fabric-clusters"></a>スタンドアロンの Service Fabric クラスターを作成する利点
@@ -67,6 +71,9 @@ Windows Server を実行する VM またはコンピューターでのクラス�
 
 Linux を実行している VM またはコンピューターでのクラスターの作成: [Linux 上の Service Fabric](service-fabric-linux-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

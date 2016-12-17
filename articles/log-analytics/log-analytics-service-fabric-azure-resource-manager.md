@@ -1,12 +1,12 @@
 ---
-title: Log Analytics で Service Fabric ソリューションによる環境を最適化する | Microsoft Docs
-description: Service Fabric ソリューションを使用して、Service Fabric アプリケーション、マイクロサービス、ノード、およびクラスターのリスクと正常性を評価することができます。
+title: "Log Analytics で Service Fabric ソリューションによる環境を最適化する | Microsoft Docs"
+description: "Service Fabric ソリューションを使用して、Service Fabric アプリケーション、マイクロサービス、ノード、およびクラスターのリスクと正常性を評価することができます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: niniikhena
 manager: jochan
-editor: ''
-
+editor: 
+ms.assetid: 9c91aacb-c48e-466c-b792-261f25940c0c
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2016
 ms.author: nini
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2fe6c2b23c816a5ec5bb00199725cdf0b29b31f0
+
 
 ---
 # <a name="service-fabric-solution-in-log-analytics"></a>Log Analytics の Service Fabric ソリューション
@@ -33,7 +37,7 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 2. ホストからパフォーマンス カウンターを収集して Service Fabric クラスターでセキュリティなどの他の OMS ソリューションを使用する必要がある場合は、「***VM 拡張機能がインストールされている OMS ワークスペースに接続されている Service Fabric クラスターのデプロイ***」の手順に従います。
 3. 既に Service Fabric クラスターをデプロイしてあり、Log Analytics に接続する場合は、「***Log Analytics への既存のストレージ アカウントの追加***」の手順に従います。
 
-## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace."></a>Log Analytics ワークスペースに接続されている Service Fabric クラスターをデプロイします。
+## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>Log Analytics ワークスペースに接続されている Service Fabric クラスターをデプロイします。
 このテンプレートは、次の処理を実行します。
 
 1. 既に Log Analytics ワークスペースに接続されている Azure Service Fabric クラスターをデプロイします。 テンプレートをデプロイするときに新しいワークスペースを作成するか、既存の Log Analytics ワークスペースの名前を入力します。
@@ -50,7 +54,7 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 
 ![Service Fabric](./media/log-analytics-service-fabric/4.png)
 
-## <a name="deploy-a-service-fabric-cluster-connected-to-an-oms-workspace-with-vm-extension-installed."></a>VM 拡張機能がインストールされている OMS ワークスペースに接続されている Service Fabric クラスターをデプロイします。
+## <a name="deploy-a-service-fabric-cluster-connected-to-an-oms-workspace-with-vm-extension-installed"></a>VM 拡張機能がインストールされている OMS ワークスペースに接続されている Service Fabric クラスターをデプロイします。
 このテンプレートは、次の処理を実行します。
 
 1. 既に Log Analytics ワークスペースに接続されている Azure Service Fabric クラスターをデプロイします。 新しいワークスペースを作成するか、既存のワークスペースを使用することができます。
@@ -139,13 +143,16 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 | Windows |![なし](./media/log-analytics-malware/oms-bullet-red.png) |![いいえ](./media/log-analytics-malware/oms-bullet-red.png) |![あり](./media/log-analytics-malware/oms-bullet-green.png) |![なし](./media/log-analytics-malware/oms-bullet-red.png) |![なし](./media/log-analytics-malware/oms-bullet-red.png) |10 分 |
 
 > [!NOTE]
-> ダッシュボードの上部にある **[Data based on last 7 days](過去 7 日間に基づくデータ.md)** をクリックして、Service Fabric ソリューションのこれらのイベントの範囲を変更することができます。 また、過去 7 日、過去 1 日、過去 6 時間のいずれかの時間範囲内に生成されたイベントを表示できます。 **[Custom]** (カスタム) を選択して、独自の日付範囲を指定することもできます。
+> ダッシュボードの上部にある **[Data based on last 7 days](過去 7 日間に基づくデータ)** をクリックして、Service Fabric ソリューションのこれらのイベントの範囲を変更することができます。 また、過去 7 日、過去 1 日、過去 6 時間のいずれかの時間範囲内に生成されたイベントを表示できます。 **[Custom]** (カスタム) を選択して、独自の日付範囲を指定することもできます。
 > 
 > 
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md) を使用して、詳細な Service Fabric イベント データを確認してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

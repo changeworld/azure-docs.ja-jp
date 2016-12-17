@@ -1,20 +1,24 @@
 ---
-title: 2 段階認証を会社または学校のアカウントに設定します。
-description: '会社が Azure Multi-factor Authentication を構成している場合は、2 段階認証のサインアップを求められます。 設定方法について説明します。 '
+title: "2 段階認証を会社または学校のアカウントに設定します。"
+description: "会社が Azure Multi-factor Authentication を構成している場合は、2 段階認証のサインアップを求められます。 設定方法について説明します。 "
 services: multi-factor-authentication
-keywords: azure ディレクトリの使用方法, クラウドの active directory, active directory のチュートリアル
-documentationcenter: ''
+keywords: "azure ディレクトリの使用方法, クラウドの active directory, active directory のチュートリアル"
+documentationcenter: 
 author: kgremban
 manager: femila
 editor: pblachar
-
+ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 11/23/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 98869aa8c05b849e9d487838823afb04d9a89907
+
 
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>アカウントへの 2 段階認証の設定
@@ -42,17 +46,17 @@ ms.author: kgremban
 
 1. ドロップダウン リストから **[モバイル アプリ]** を選択します。
 2. **[確認のため通知を受け取る]** または **[Use verification code (確認コードを使用)]** のいずれかを選択し、**[セットアップ]** を選択します。
-   
-    ![[追加のセキュリティ確認] 画面](./media/multi-factor-authentication-end-user-first-time-mobile-app/mobileapp.png)
+
+    ![[追加のセキュリティ確認] 画面](./media/multi-factor-authentication-end-user-first-time/mobileapp.png)
 3. 携帯電話またはタブレットでアプリを開き、**[+]**を選択してアカウントを追加します。 (Android デバイスの場合は、3 つのドットを選択して、**[アカウントの追加]** を選択します)。
 4. [職場または学校アカウント] をタップします。 携帯電話の QR コード スキャナーを開きます。 カメラが正常に動作しない場合は、会社情報を手動で入力することもできます。 詳細については、「 [手動でのアカウントの追加](#add-an-account-manually)」を参照してください。  
 5. モバイル アプリを構成するために、画面に表示された QR コード画像をスキャンします。  **[完了]** を選択して、QR コードの画面を閉じます。  
-   
-    ![QR コード画面](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan2.png)
+
+    ![QR コード画面](./media/multi-factor-authentication-end-user-first-time/scan2.png)
 6. 電話でアクティブ化が完了したら、 **[連絡してください]**を選択します。  これによって、通知コードまたは認証コードが電話に送信されます。 **[認証]**を選択します。  
 7. 会社によっては、検証時に暗証番号 (PIN) の入力を求められる場合があります。
-   
-    ![PIN を入力するボックス](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan3.png)
+
+    ![PIN を入力するボックス](./media/multi-factor-authentication-end-user-first-time/scan3.png)
 8. PIN の入力が完了したら、 **[閉じる]**を選択します。 この時点で、認証が完了します。
 9. モバイル アプリにアクセスできなくなった場合に備えて、携帯電話番号を入力しておくことをお勧めします。 ドロップダウン リストからお住まいの国を指定し、国名の横のボックスに携帯電話番号を入力します。 **[次へ]**を選択します。
 10. この時点で、Outlook 2010 以降や Apple デバイスのネイティブのメール アプリなどの非ブラウザー アプリのアプリ パスワードの設定が求められます。 これは、一部のアプリで 2 段階認証がサポートされていないためです。 これらのアプリを使用しない場合は、**[完了]** をクリックして残りの手順をスキップします。
@@ -64,14 +68,14 @@ ms.author: kgremban
 
 1. **[Enter account manually (アカウントの手動入力)]** ボタンを選択します。  
 2. バーコードが表示されているページに記載されたコードと URL を入力します。 この情報は、モバイル アプリの**コード**と **URL** ボックスに入力されます。
-   
-    ![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/barcode2.png)
+
+    ![セットアップ](./media/multi-factor-authentication-end-user-first-time/barcode2.png)
 3. アクティブ化が完了したら、 **[連絡してください]**を選択します。 これによって、通知コードまたは認証コードが電話に送信されます。 **[認証]**を選択します。
 
 ## <a name="use-your-mobile-phone-as-the-contact-method"></a>連絡方法としての携帯電話の使用
 1. ドロップダウン リストから **[認証用電話]** を選択します。  
-   
-    ![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-phone/phone.png)  
+
+    ![セットアップ](./media/multi-factor-authentication-end-user-first-time/phone.png)  
 2. ドロップダウン リストからお住まいの国を選択し、携帯電話番号を入力します。
 3. 携帯電話で使用する方法 (テキストまたは通話) を選択します。
 4. 電話番号を確認して **[連絡してください]** を選択します。 選択したモードによって、テキストが送信されるか、呼び出されます。 画面に表示される指示に従って、**[確認]** を選択します。
@@ -81,8 +85,8 @@ ms.author: kgremban
 
 ## <a name="use-your-office-phone-as-the-contact-method"></a>連絡方法としての会社電話の使用
 1. ドロップダウン リストから **[会社電話]** を選択します。  
-   
-    ![セットアップ](./media/multi-factor-authentication-end-user-first-time-office-phone/office.png)  
+
+    ![セットアップ](./media/multi-factor-authentication-end-user-first-time/office.png)  
 2. 電話番号ボックスに会社の連絡先情報が自動的に入力されます。 番号が間違っているか、見つからない場合は、変更するように管理者に依頼してください。
 3. 電話番号を確認して **[連絡してください]** を選択すると、その番号が呼び出されます。 画面に表示される指示に従って、**[確認]** を選択します。
 4. この時点で、Outlook 2010 以降や Apple デバイスのネイティブのメール アプリなどの非ブラウザー アプリのアプリ パスワードの設定が求められます。 これは、一部のアプリで 2 段階認証がサポートされていないためです。 これらのアプリを使用しない場合は、**[完了]** をクリックして残りの手順をスキップします。
@@ -94,6 +98,8 @@ ms.author: kgremban
 * 2 段階認証をサポートしていないネイティブ デバイス アプリに[アプリ パスワード](multi-factor-authentication-end-user-app-passwords.md)を設定します。
 * 携帯電話サービスを利用していない場合でも、迅速で安全な認証のために [Microsoft Authenticator アプリ](multi-factor-authentication-microsoft-authenticator.md)をご確認ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

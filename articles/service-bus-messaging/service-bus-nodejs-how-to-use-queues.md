@@ -1,19 +1,23 @@
 ---
-title: Service Bus キューの使用方法 (Node.js) | Microsoft Docs
-description: Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。
-services: service-bus
+title: "Service Bus キューの使用方法 (Node.js) | Microsoft Docs"
+description: "Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。"
+services: service-bus-messaging
 documentationcenter: nodejs
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
+ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
+ms.openlocfilehash: d36d806d14fbaa813ea9e8e6ec132fda998bb22c
+
 
 ---
 # <a name="how-to-use-service-bus-queues"></a>Service Bus キューの使用方法
@@ -23,16 +27,16 @@ ms.author: sethm
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="create-a-node.js-application"></a>Node.js アプリケーションの作成
-空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][]」または「[Node.js クラウド サービス][Node.js クラウド サービス]」 (Windows PowerShell の使用) を参照してください。
+## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
+空の Node.js アプリケーションを作成します。 Node.js アプリケーションの作成手順については、[「Node.js アプリケーションの作成と Azure Web サイトへのデプロイ」][Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ] または[「Node.js クラウド サービス」][Node.js クラウド サービス] (Windows PowerShell を使用) を参照してください。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Azure Service Bus を使用するには、Node.js Azure パッケージをダウンロードして使用します。 このパッケージには、Service Bus REST サービスと通信するためのライブラリのセットが含まれています。
 
-### <a name="use-node-package-manager-(npm)-to-obtain-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 1. **Windows PowerShell for Node.js** コマンド ウィンドウを使用して、サンプル アプリケーションを作成した **c:\\node\\sbqueues\\WebRole1** フォルダーに移動します。
 2. コマンド ウィンドウに「**npm install azure**」と入力すると、次のような出力が生成されます。
-   
+
     ```
     azure@0.7.5 node_modules\azure
         ├── dateformat@1.0.2-1.2.3
@@ -58,9 +62,9 @@ var azure = require('azure');
 ### <a name="set-up-an-azure-service-bus-connection"></a>Azure Service Bus 接続の設定
 Azure モジュールは、Service Bus に接続するために必要な情報を得るために、環境変数 AZURE\_SERVICEBUS\_NAMESPACE と AZURE\_SERVICEBUS\_ACCESS\_KEY を読み取ります。 これらの環境変数が設定されていない場合、**createServiceBusService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Cloud Service の構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js Cloud Service に関するトピック][]を参照してください。
+Azure Cloud Service の構成ファイルで環境変数を設定する例については、[ストレージを使用する Node.js Cloud Service に関するトピック][ストレージを使用する Node.js クラウド サービス]を参照してください。
 
-Azure Web サイトの [Azure クラシック ポータル][Azure クラシック ポータル]で環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション][ストレージを使用する Node.js Web アプリケーション]」を参照してください。
+Azure Web サイトの [Azure クラシック ポータル][Azure クラシック ポータル] で環境変数を設定する例については、[「ストレージを使用する Node.js Web アプリケーション」][ストレージを使用する Node.js Web アプリケーション]を参照してください。
 
 ## <a name="create-a-queue"></a>キューを作成する
 Service Bus キューは、**ServiceBusService** オブジェクトを使用して操作できます。 次のコードでは、**ServiceBusService** オブジェクトを作成します。 **server.js** ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
@@ -134,7 +138,7 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 });
 ```
 
-Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus のクォータ]」を参照してください。
+Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。 クォータの詳細については、[「Service Bus のクォータ」][Service Bus のクォータ]を参照してください。
 
 ## <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
 キューからメッセージを受信するには、**ServiceBusService** オブジェクトの **receiveQueueMessage** メソッドを使用します。 既定では、メッセージは読み取られるときにキューから削除されますが、省略可能な **isPeekLock** パラメーターを **true** に設定することによって、キューからメッセージを削除せずに、メッセージを読み取って (ピークして) ロックできます。
@@ -183,13 +187,12 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 [Node.js クラウド サービス]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [キュー、トピック、サブスクリプション]: service-bus-queues-topics-subscriptions.md
 [Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
-[ストレージを使用する Node.js クラウド サービス]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+[ストレージを使用する Node.js クラウド サービス]: ../storage/storage-nodejs-use-table-storage-cloud-service-app.md
 [ストレージを使用する Node.js Web アプリケーション]: ../storage/storage-nodejs-how-to-use-table-storage.md
 [Service Bus のクォータ]: service-bus-quotas.md
 
 
 
-
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

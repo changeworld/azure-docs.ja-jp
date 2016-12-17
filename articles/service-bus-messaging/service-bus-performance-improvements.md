@@ -1,32 +1,40 @@
 ---
-title: Service Bus を使用したパフォーマンス向上のためのベスト プラクティス | Microsoft Docs
-description: 仲介型メッセージを交換する際のパフォーマンスを Azure Service Bus を使用して最適化する方法について説明しています。
-services: service-bus
+title: "Service Bus を使用したパフォーマンス向上のためのベスト プラクティス | Microsoft Docs"
+description: "仲介型メッセージを交換する際のパフォーマンスを Azure Service Bus を使用して最適化する方法について説明しています。"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: e756c15d-31fc-45c0-8df4-0bca0da10bb2
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/08/2016
+ms.date: 10/25/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 5402481a0adc27474f7ddd9b5be1d71dc2c91d44
+
 
 ---
-# <a name="best-practices-for-performance-improvements-using-service-bus-brokered-messaging"></a>Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
-このトピックでは、ブローカー メッセージを交換する際のパフォーマンスを Azure Service Bus を使用して最適化する方法について説明しています。 このトピックの前半では、パフォーマンスの向上に役立つさまざまなメカニズムについて説明します。 後半では、特定のシナリオでパフォーマンスを最大限に高めるための Service Bus の使用方法に関するガイダンスを示します。
+# <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
+このトピックでは、ブローカー メッセージを交換する際のパフォーマンスを Azure Service Bus メッセージングを使用して最適化する方法について説明しています。 このトピックの前半では、パフォーマンスの向上に役立つさまざまなメカニズムについて説明します。 後半では、特定のシナリオでパフォーマンスを最大限に高めるための Service Bus の使用方法に関するガイダンスを示します。
 
 このトピック全体で、"クライアント" という用語は Service Bus にアクセスするすべてのエンティティを指します。 クライアントは送信側または受信側の役割を実行できます。 "送信側" という用語は、Service Bus キューまたはトピックにメッセージを送信する Service Bus キューまたはトピックのクライアントを指します。 "受信側" という用語は、Service Bus キューまたはサブスクリプションからメッセージを受信する Service Bus キューまたはサブスクリプションのクライアントを指します。
 
 以下のセクションでは、パフォーマンスを向上するために Service Bus で利用される概念をいくつか紹介します。
 
 ## <a name="protocols"></a>プロトコル
-Service Bus を利用することで、クライアントは 2 つのプロトコル、つまり Service Bus クライアント プロトコルと HTTP (REST) を使用して、メッセージを送受信できます。 Service Bus クライアント プロトコルの方が効率的です。それは、メッセージ ファクトリが存在する限り、Service Bus サービスの接続が維持されるためです。 また、バッチとプリフェッチも実装されます。 Service Bus クライアント プロトコルは .NET API を使用する .NET アプリケーションに利用できます。
+Service Bus を利用することで、クライアントは次の 3 つのプロトコルを使用してメッセージを送受信できます。
 
-明記されていない限り、このトピックのすべてのコンテンツで Service Bus クライアント プロトコルを使用するものとします。
+1. Advanced Message Queuing Protocol (AMQP)
+2. Service Bus メッセージング プロトコル (SBMP)
+3. HTTP
+
+AMQP と SBMP の両者は、メッセージング ファクトリが存在する限り Service Bus への接続を維持するため、より効率的です。 また、バッチとプリフェッチも実装されます。 明記されていない限り、このトピックのすべてのコンテンツで AMQP または SBMP を使用するものとします。
 
 ## <a name="reusing-factories-and-clients"></a>ファクトリとクライアントの再利用
 [QueueClient][QueueClient] や [MessageSender][MessageSender] などの Service Bus クライアント オブジェクトは、接続の内部管理も提供する [MessagingFactory][MessagingFactory] オブジェクトにより作成されます。 メッセージを送信した後にメッセージ ファクトリ、またはキュー、トピック、サブスクリプションのクライアントを閉じ、次のメッセージを送信するときにこれらを再作成することはしないでください。 メッセージング ファクトリを閉じると Service Bus サービスの接続が削除され、ファクトリを再作成すると新しい接続が確立されます。 接続の確立は費用のかかる操作です。この操作は、同じファクトリとクライアント オブジェクトを複数の操作に再利用することで回避できます。 同時の非同期操作と複数のスレッドからメッセージを送信するための [QueueClient][QueueClient] オブジェクトを安全に使用できます。 
@@ -132,7 +140,7 @@ namespaceManager.CreateTopic(td);
 消失してはならない重要な情報が含まれているメッセージがエクスプレス エンティティに送信される場合、[ForcePersistence][ForcePersistence] プロパティを **true** に設定することで、送信側は Service Bus で強制的にメッセージを安定したストレージに直ちに保存できます。
 
 ## <a name="use-of-partitioned-queues-or-topics"></a>パーティション分割されたキューまたはトピックの使用
-内部的には、Service Bus は同じノードとメッセージング ストアを使用して、メッセージング エンティティ (キューまたはトピック) のすべてのメッセージを処理し、格納します。 一方、パーティション分割されたキューまたはトピックは複数のノードとメッセージング ストアの間で分散されます。 パーティション分割されたキューとトピックは通常のキューとトピックより高いスループットを生むだけでなく、可用性にも優れています。 パーティション分割されたエンティティを作成するには、次の例のように、[EnablePartitioning][EnablePartitioning] プロパティを **true** に設定します。 パーティション分割されたエンティティの詳細については、「 [パーティション分割されたメッセージング エンティティ][パーティション分割されたメッセージング エンティティ]」を参照してください。
+内部的には、Service Bus は同じノードとメッセージング ストアを使用して、メッセージング エンティティ (キューまたはトピック) のすべてのメッセージを処理し、格納します。 一方、パーティション分割されたキューまたはトピックは複数のノードとメッセージング ストアの間で分散されます。 パーティション分割されたキューとトピックは通常のキューとトピックより高いスループットを生むだけでなく、可用性にも優れています。 パーティション分割されたエンティティを作成するには、次の例のように、[EnablePartitioning][EnablePartitioning] プロパティを **true** に設定します。 パーティション分割されたエンティティの詳細については、[「パーティション分割されたメッセージング エンティティ」][パーティション分割されたメッセージング エンティティ]を参照してください。
 
 ```
 // Create partitioned queue.
@@ -143,6 +151,13 @@ namespaceManager.CreateQueue(qd);
 
 ## <a name="use-of-multiple-queues"></a>複数のキューの使用
 パーティション分割されたキューまたはトピックを使用できない場合、または予想される負荷をパーティション分割された 1 つのキューまたはトピックで処理できない場合、複数のメッセージング エンティティを使用する必要があります。 複数のエンティティを使用するときは、すべてのエンティティに同じクライアントを使用するのではなく、エンティティごとに専用のクライアントを作成します。
+
+## <a name="development-testing-features"></a>開発およびテストの機能
+Service Bus は、開発専用に使用される機能の 1 つです。**運用環境の構成では絶対に使用しないでください**。
+
+[TopicDescription.EnableFilteringMessagesBeforePublishing](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing.aspx)
+
+* 新しい規則またはフィルターをトピックに追加したときに、EnableFilteringMessagesBeforePublishing を使用して、新しいフィルター式が正しく動作していることを確認できます。
 
 ## <a name="scenarios"></a>シナリオ
 次のセクションでは、一般的なメッセージング シナリオについて説明し、好ましい Service Bus 設定について概要を説明します。 スループット レートは小 (1 メッセージ/秒未満)、中 (1 メッセージ/秒以上、100 メッセージ/秒未満)、高 (100 メッセージ/秒以上) に分類されます。 クライアントの数は小 (5 以下)、中 (5 より大きく 20 以下)、大 (20 より大きい) に分類されます。
@@ -226,7 +241,7 @@ Service Bus によって、エンティティに最大 1000 件同時接続で�
 * プリフェッチ数を予想される受信レート (秒単位) の 20 倍に設定します。 これにより、Service Bus クライアント プロトコル伝送の数が減ります。
 
 ## <a name="next-steps"></a>次のステップ
-Service Bus のパフォーマンスの最適化の詳細については、「[パーティション分割されたメッセージング エンティティ][パーティション分割されたメッセージング エンティティ]」を参照してください。
+Service Bus のパフォーマンスの最適化の詳細については、[「パーティション分割されたメッセージング エンティティ」][パーティション分割されたメッセージング エンティティ]を参照してください。
 
 [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
 [MessageSender]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx
@@ -243,6 +258,6 @@ Service Bus のパフォーマンスの最適化の詳細については、「[�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
