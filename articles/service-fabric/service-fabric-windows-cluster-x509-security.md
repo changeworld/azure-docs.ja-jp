@@ -1,12 +1,12 @@
 ---
-title: セキュリティで保護されたプライベート クラスターへの接続 | Microsoft Docs
-description: この記事では、スタンドアロンまたはプライベートのクラスター内での通信と、クライアントとクラスターの間での通信をセキュリティで保護する方法について説明します。
+title: "スタンドアロン クラスターをセキュリティで保護する | Microsoft Docs"
+description: "この記事では、スタンドアロンまたはプライベートのクラスター内での通信と、クライアントとクラスターの間での通信をセキュリティで保護する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: dsk-2015
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: fe0ed74c-9af5-44e9-8d62-faf1849af68c
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/08/2016
 ms.author: dkshir
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 885b5102d19df786ae6f1f380e3f791033041838
+
 
 ---
-# <a name="secure-a-standalone-cluster-on-windows-using-x.509-certificates"></a>X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護
+# <a name="secure-a-standalone-cluster-on-windows-using-x509-certificates"></a>X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護
 この記事では、スタンドアロンの Windows クラスターのさまざまなノード間の通信をセキュリティで保護する方法と、クラスターに接続するクライアントを X.509 証明書を使用して認証する方法について説明しています。 これにより、許可されたユーザーのみが、クラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。  証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  
 
 ノード間のセキュリティ、クライアントとノードの間のセキュリティ、ロールベースのアクセス制御などのクラスター セキュリティの詳細については、 [クラスターのセキュリティ シナリオ](service-fabric-cluster-security.md)に関する記事を参照してください。
 
-## <a name="which-certificates-will-you-need?"></a>必要な証明書
+## <a name="which-certificates-will-you-need"></a>必要な証明書
 まず、クラスターのノードの 1 つに [スタンドアロン クラスター パッケージをダウンロード](service-fabric-cluster-creation-for-windows-server.md#downloadpackage) します。 ダウンロードしたパッケージの中に、 **ClusterConfig.X509.MultiMachine.json** ファイルがあります。 このファイルを開き、**properties** セクションの下にある **security** のセクションを確認します:
 
     "security": {
@@ -91,7 +95,7 @@ ms.author: dkshir
         "upgradeDomain": "UD0"
     }, {
       "nodeName": "vm1",
-            "metadata": "Replace the localhost with valid IP address or FQDN",
+              "metadata": "Replace the localhost with valid IP address or FQDN",
         "iPAddress": "10.7.0.4",
         "nodeTypeRef": "NodeType0",
         "faultDomain": "fd:/dc1/r1",
@@ -99,7 +103,7 @@ ms.author: dkshir
     }, {
         "nodeName": "vm2",
       "iPAddress": "10.7.0.6",
-            "metadata": "Replace the localhost with valid IP address or FQDN",
+              "metadata": "Replace the localhost with valid IP address or FQDN",
         "nodeTypeRef": "NodeType0",
         "faultDomain": "fd:/dc1/r2",
         "upgradeDomain": "UD2"
@@ -165,14 +169,14 @@ ms.author: dkshir
 }
  ```
 
-## <a name="aquire-the-x.509-certificates"></a>X.509 証明書の取得
+## <a name="acquire-the-x509-certificates"></a>X.509 証明書を取得します。
 クラスター内の通信をセキュリティで保護するには、最初にクラスター ノード用の X.509 証明書を取得する必要があります。 さらに、承認されたコンピューターまたはユーザーだけがそのクラスターに接続できるように制限するには、クライアント コンピューター用に証明書を取得し、インストールする必要があります。
 
 運用ワークロードを実行するクラスターの場合、 [証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) で署名された X.509 証明書を使用してクラスターをセキュリティで保護する必要があります。 これらの証明書を取得する方法の詳細については、「 [方法 : 証明書 (WCF) を取得する](http://msdn.microsoft.com/library/aa702761.aspx)」を参照してください。
 
 テスト目的で使用するクラスターの場合は、自己署名証明書を選択することができます。
 
-## <a name="optional:-create-a-self-signed-certificate"></a>省略可能: 自己署名証明書の作成
+## <a name="optional-create-a-self-signed-certificate"></a>省略可能: 自己署名証明書の作成
 正しく保護できる自己署名証明書を作成する方法の 1 つが、*C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure* ディレクトリの Service Fabric SDK フォルダーにある *CertSetup.ps1* スクリプトを使用する方法です。 このファイルを編集し、適切な名前の証明書を作成します。
 
 次に、保護されたパスワードを含む PFX ファイルにその証明書をエクスポートします。 まず、証明書の拇印を取得する必要があります。 certmgr.exe アプリケーションを実行します。 **Local Computer\Personal** フォルダーに移動して、先ほど作成した証明書を探します。 その証明書をダブルクリックして開き、 [*詳細*] タブを選択して、下にスクロールして [*拇印*] を表示します。 その拇印の値を次の PowerShell コマンドにコピーします。スペースは削除してください。  保護のために *$pswd* 値を適切で安全なパスワードに変更して、PowerShell を実行します:
@@ -199,7 +203,7 @@ Write-Host $cert.ToString($true)
    
     ```
     $pswd = "1234"
-    $PfcFilePath ="C:\mypfx.pfx"
+    $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
 3. 次に、この証明書に対するアクセス制御を設定し、Network Service アカウントで実行される Service Fabric プロセスが次のスクリプトを実行することでそれを使用できるようにします。 証明書とサービス アカウントの "NETWORK SERVICE" の拇印を指定します。 certmgr.exe ツールを使用し、証明書の [秘密キーの管理] を見ることで、証明書の ACL が正しいかどうか確認できます。
@@ -207,66 +211,73 @@ Write-Host $cert.ToString($true)
     ```
     param
     (
-        [Parameter(Position=1, Mandatory=$true)]
-        [ValidateNotNullOrEmpty()]
-        [string]$pfxThumbPrint,
+    [Parameter(Position=1, Mandatory=$true)]
+    [ValidateNotNullOrEmpty()]
+    [string]$pfxThumbPrint,
    
-        [Parameter(Position=2, Mandatory=$true)]
-        [ValidateNotNullOrEmpty()]
-        [string]$serviceAccount
-        )
+    [Parameter(Position=2, Mandatory=$true)]
+    [ValidateNotNullOrEmpty()]
+    [string]$serviceAccount
+    )
    
-        $cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object -FilterScript { $PSItem.ThumbPrint -eq $pfxThumbPrint; };
+    $cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object -FilterScript { $PSItem.ThumbPrint -eq $pfxThumbPrint; }
    
-        # Specify the user, the permissions and the permission type
-        $permission = "$($serviceAccount)","FullControl","Allow"
-        $accessRule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $permission;
+    # Specify the user, the permissions and the permission type
+    $permission = "$($serviceAccount)","FullControl","Allow"
+    $accessRule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $permission
    
-        # Location of the machine related keys
-        $keyPath = $env:ProgramData + "\Microsoft\Crypto\RSA\MachineKeys\";
-        $keyName = $cert.PrivateKey.CspKeyContainerInfo.UniqueKeyContainerName;
-        $keyFullPath = $keyPath + $keyName;
+    # Location of the machine related keys
+    $keyPath = Join-Path -Path $env:ProgramData -ChildPath "\Microsoft\Crypto\RSA\MachineKeys"
+    $keyName = $cert.PrivateKey.CspKeyContainerInfo.UniqueKeyContainerName
+    $keyFullPath = Join-Path -Path $keyPath -ChildPath $keyName
    
-        # Get the current acl of the private key
-        $acl = (Get-Item $keyFullPath).GetAccessControl('Access')
+    # Get the current acl of the private key
+    $acl = (Get-Item $keyFullPath).GetAccessControl('Access')
    
-        # Add the new ace to the acl of the private key
-        $acl.SetAccessRule($accessRule);
+    # Add the new ace to the acl of the private key
+    $acl.SetAccessRule($accessRule)
    
-        # Write back the new acl
-        Set-Acl -Path $keyFullPath -AclObject $acl -ErrorAction Stop
+    # Write back the new acl
+    Set-Acl -Path $keyFullPath -AclObject $acl -ErrorAction Stop
    
-        #Observe the access rights currently assigned to this certificate.
-        get-acl $keyFullPath| fl
-        ```
-4. Repeat the steps above for each server certificate. You can also use these steps to install the client certificates on the machines that you want to allow access to the cluster.
+    # Observe the access rights currently assigned to this certificate.
+    get-acl $keyFullPath| fl
+    ```
+4. 各サーバーの証明書について、上記の手順を繰り返します。 また、クラスターへの接続を許可するコンピューターにクライアント証明書をインストールするときにも、この手順を使用できます。
 
-## Create the secure cluster
-After configuring the **security** section of the **ClusterConfig.X509.MultiMachine.json** file, you can proceed to [Create your cluster](service-fabric-cluster-creation-for-windows-server.md#createcluster) section to configure the nodes and create the standalone cluster. Remember to use the **ClusterConfig.X509.MultiMachine.json** file while creating the cluster. For example, your command might look like the following:
+## <a name="create-the-secure-cluster"></a>セキュリティで保護されたクラスターの作成
+**ClusterConfig.X509.MultiMachine.json** ファイルの **security** セクションを構成した後は、「[クラスターの作成](service-fabric-cluster-creation-for-windows-server.md#createcluster)」セクションに進んで、ノードの構成とスタンドアロン クラスターの作成を行います。 クラスターを作成する際は、必ず **ClusterConfig.X509.MultiMachine.json** ファイルを使用してください。 たとえば、コマンドは次のようになります。
 
 ```
-.\CreateServiceFabricCluster.ps1 - ClusterConfigFilePath.\ClusterConfig.X509.MultiMachine.json - MicrosoftServiceFabricCabFilePath.\MicrosoftAzureServiceFabric.cab AcceptEULA $true
+.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab -AcceptEULA $true
 ```
 
-Once you have the secure standalone Windows cluster successfully running, and have setup the authenticated clients to connect to it, follow the section [Connect to a secure cluster using PowerShell](service-fabric-connect-to-secure-cluster.md#connectsecurecluster) to connect to it. For example:
+セキュリティで保護されたスタンドアロンの Windows クラスターを正常に実行し、認証されたクライアントがそのクラスターに接続できるようにセットアップしたら、「[PowerShell を使用して、セキュリティで保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md#connectsecurecluster)」を参考にして、クラスターに接続してください。 次に例を示します。
 
 ```
 Connect-ServiceFabricCluster -ConnectionEndpoint 10.7.0.4:19000 -KeepAliveIntervalInSec 10 -X509Credential -ServerCertThumbprint 057b9544a6f2733e0c8d3a60013a58948213f551 -FindType FindByThumbprint -FindValue 057b9544a6f2733e0c8d3a60013a58948213f551 -StoreLocation CurrentUser -StoreName My
 ```
 
-If you are logged on to one of the machines in the cluster, since this already has the certificate installed locally you can simply run the Powershell command to connect to the cluster and show a list of nodes:
+クラスター内のコンピューターのいずれかにログオンしている場合、証明書が既にローカルにインストールされているため、Powershell コマンドを実行するだけでクラスターに接続し、ノードの一覧を表示できます。
 
 ```
-Connect-ServiceFabricCluster Get-ServiceFabricNode
+Connect-ServiceFabricCluster
+Get-ServiceFabricNode
 ```
-To remove the cluster call the following command:
+クラスターを削除するには、次のコマンドを呼び出します。
 
 ```
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json   -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab
 ```
 
+> [!NOTE]
+> 証明書の構成が正しくないと、デプロイ中にクラスターを起動できない場合があります。 セキュリティの問題を自己診断するには、イベント ビューアーのグループ *[アプリケーションとサービス ログ]* > *[Microsoft Service Fabric]*を参照してください。
+> 
+> 
 
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

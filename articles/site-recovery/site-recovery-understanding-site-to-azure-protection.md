@@ -1,12 +1,12 @@
 ---
-title: Azure Site Recovery を使用した Hyper-V レプリケーション | Microsoft Docs
-description: この記事を使用すると、Azure Site Recovery を正常にインストール、構成、管理するのに役立つ技術的な概念を理解できます。
+title: "Azure Site Recovery を使用した Hyper-V レプリケーション | Microsoft Docs"
+description: "この記事を使用すると、Azure Site Recovery を正常にインストール、構成、管理するのに役立つ技術的な概念を理解できます。"
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: Rajani-Janaki-Ram
 manager: mkjain
-editor: ''
-
+editor: 
+ms.assetid: 97916915-1379-47df-8369-12ddf022c4da
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/12/2016
 ms.author: rajanaki
+translationtype: Human Translation
+ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
+ms.openlocfilehash: b49771ff1e29aeb6ec582c21061085504705991b
+
 
 ---
 # <a name="hyper-v-replication-with-azure-site-recovery"></a>Azure Site Recovery での Hyper-V レプリケーション
@@ -43,7 +47,7 @@ Azure Portal またはオンプレミスから仮想マシンの保護を実行�
 
 初期レプリケーションが完了すると、 **仮想マシンでの保護の最終処理** ジョブにより、ネットワークとレプリケーション後の設定が構成されます。 初期レプリケーションの進行中に次の処理が実行されます。
 
-* ディスクへのすべての変更が追跡されます。 
+* ディスクへのすべての変更が追跡されます。
 * スナップショットと Hyper-V Replica Log (HRL) ファイル用のディスク記憶域が別途消費されます。
 
 初期レプリケーションが完了すると、Hyper-V VM スナップショットが削除されます。 この削除により、初期レプリケーションの後に行われたデータの変更が親ディスクにマージされます。
@@ -55,7 +59,7 @@ Hyper-V レプリカ レプリケーション トラッカーは、Hyper-V レ�
 
 レプリケーション用に構成された各ディスクには、関連付けられた HRL ファイルがあります。 このログは、初期レプリケーションの完了後、顧客のストレージ アカウントに送信されます。 ログが Azure に送信される間、プライマリでの変更は同じディレクトリ内の別のログ ファイルで追跡されます。
 
-[仮想マシンのレプリケーションの正常性の監視](site-recovery-monitoring-and-troubleshooting.md#monitor-replication-health-for-virtual-machine)に関するセクションで説明されているように、初期レプリケーションまたは差分レプリケーション中の VM のレプリケーションの正常性は VM ビューで監視できます。  
+[仮想マシンのレプリケーションの正常性の監視](site-recovery-monitoring-and-troubleshooting.md#monitor-replication-health-for-virtual-machines)に関するセクションで説明されているように、初期レプリケーションまたは差分レプリケーション中の VM のレプリケーションの正常性は VM ビューで監視できます。  
 
 ### <a name="resynchronization"></a>再同期
 差分レプリケーションが失敗し、完全な初期レプリケーションのコストがネットワーク帯域幅または時間の面で高くなる場合、仮想マシンは再同期の対象としてマークが付きます。 たとえば、HRL ファイルのサイズが合計ディスク サイズの 50% まで増大すると、仮想マシンは再同期の対象としてマークが付きます。 再同期では、ソースとターゲットの仮想マシン ディスクのチェックサムを計算して差分のみを送信することで、ネットワーク経由で送信されるデータの量が最小限に抑えられます。
@@ -81,9 +85,11 @@ Hyper-V レプリカ レプリケーション トラッカーは、Hyper-V レ�
 
 ## <a name="other-references"></a>その他のリファレンス
 * [VMware、VMM、Hyper-V、および物理サイトの監視とトラブルシューティング](site-recovery-monitoring-and-troubleshooting.md)
-* [Microsoft サポートを得る](site-recovery-monitoring-and-troubleshooting.md#reaching-out-for-microsoft-support)
-* [Azure Site Recovery の一般的なエラーとその解決策](site-recovery-monitoring-and-troubleshooting.md#common-asr-errors-and-their-resolutions)
+* [Microsoft サポートを得る](site-recovery-monitoring-and-troubleshooting.md#reach-out-for-microsoft-support)
+* [Azure Site Recovery の一般的なエラーとその解決策](site-recovery-monitoring-and-troubleshooting.md#common-azure-site-recovery-errors-and-their-resolutions)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Manage compute power in Azure SQL Data Warehouse (REST) | Microsoft Docs
-description: Transact-SQL (T-SQL) tasks to scale-out performance by adjusting DWUs. Save costs by scaling back during non-peak times.
+title: "Azure SQL Data Warehouse のコンピューティング能力の管理 (REST) | Microsoft Docs"
+description: "DWU を調整することでパフォーマンスをスケールアウトする Transact-SQL (T-SQL) タスク。 ピーク時以外にリソースをスケール バックして、コストを削減します。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: a970d939-2adf-4856-8a78-d4fe8ab2cceb
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -14,37 +14,41 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 41ab1c4b2709c2ea6890ca526db1dea177b7da1b
+
 
 ---
-# <a name="manage-compute-power-in-azure-sql-data-warehouse-tsql"></a>Manage compute power in Azure SQL Data Warehouse (T-SQL)
+# <a name="manage-compute-power-in-azure-sql-data-warehouse-t-sql"></a>Azure SQL Data Warehouse のコンピューティング能力の管理 (T-SQL)
 > [!div class="op_single_selector"]
-> * [Overview](sql-data-warehouse-manage-compute-overview.md)
-> * [Portal](sql-data-warehouse-manage-compute-portal.md)
+> * [概要](sql-data-warehouse-manage-compute-overview.md)
+> * [ポータル](sql-data-warehouse-manage-compute-portal.md)
 > * [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
-> * [REST](sql-data-warehouse-manage-compute-rest-api.md)
+> * [REST ()](sql-data-warehouse-manage-compute-rest-api.md)
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
 > 
 > 
 
-Scale performance by scaling out compute resources and memory to meet the changing demands of your workload. Save costs by scaling back resources during non-peak times or pausing compute altogether. 
+ワークロードの変化する需要に合わせてコンピューティング リソースとメモリをスケールアウトすることで、パフォーマンスをスケーリングします。 ピーク時以外にリソースをスケール バックするか、すべてのコンピューティング処理を一時停止して、コストを削減します。 
 
-This collection of tasks uses T-SQL to:
+このタスクのコレクションでは、T-SQL を使用して次の操作を実行します。
 
-* View current DWU settings
-* Change compute resources by adjusting DWUs
+* 現在の DWU 設定の表示
+* DWU を調整することによるコンピューティング リソースの変更
 
-To pause or resume a database, choose one of the other platform options at the top of this article.
+データベースを一時停止または再開する方法については、この記事の上部にある他のプラットフォーム オプションのいずれかを選択してください。
 
-To learn about this, see [Manage compute power overview][Manage compute power overview].
+これについては、[コンピューティング能力の管理の概要][コンピューティング能力の管理の概要] に関するページをご覧ください。
 
 <a name="current-dwu-bk"></a>
 
-## <a name="view-current-dwu-settings"></a>View current DWU settings
-To view the current DWU settings for your databases:
+## <a name="view-current-dwu-settings"></a>現在の DWU 設定の表示
+データベースの現在の DWU 設定を表示するには、次の手順に従います。
 
-1. Open SQL Server Object Explorer in Visual Studio 2015.
-2. Connect to the master database associated with the logical SQL Database server.
-3. Select from the sys.database_service_objectives dynamic management view. Here is an example: 
+1. Visual Studio 2015 で SQL Server オブジェクト エクスプローラーを開きます。
+2. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
+3. sys.database_service_objectives 動的管理ビューから選択します。 たとえば次のようになります。 
 
 ```
 SELECT
@@ -59,13 +63,13 @@ FROM
 <a name="scale-dwu-bk"></a>
 <a name="scale-compute-bk"></a>
 
-## <a name="scale-compute"></a>Scale compute
+## <a name="scale-compute"></a>コンピューティングのスケーリング
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-To change the DWUs:
+DWU を変更するには、次の手順に従います。
 
-1. Connect to the master database associated with your logical SQL Database server.
-2. Use the [ALTER DATABASE][ALTER DATABASE] TSQL statement. The following example sets the service level objective to DW1000 for the database MySQLDW. 
+1. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
+2. [ALTER DATABASE][ALTER DATABASE] TSQL ステートメントを使用します。 次の例では、MySQLDW データベースのサービス レベル目標を DW1000 に設定します。 
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -75,15 +79,15 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 <a name="next-steps-bk"></a>
 
-## <a name="next-steps"></a>Next steps
-For other management tasks, see [Management overview][Management overview].
+## <a name="next-steps"></a>次のステップ
+他の管理タスクについては、[管理の概要][管理の概要] に関する記事をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
-[Management overview]: ./sql-data-warehouse-overview-manage.md
-[Manage compute power overview]: ./sql-data-warehouse-manage-compute-overview.md
+[サービス容量制限]: ./sql-data-warehouse-service-capacity-limits.md
+[管理の概要]: ./sql-data-warehouse-overview-manage.md
+[コンピューティング能力の管理の概要]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 
@@ -92,10 +96,10 @@ For other management tasks, see [Management overview][Management overview].
 
 <!--Other Web references-->
 
-[Azure portal]: http://portal.azure.com/
+[Azure ポータル]: http://portal.azure.com/
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
