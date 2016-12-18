@@ -1,12 +1,12 @@
 ---
-title: '手順 3: Machine Learning の新しい実験を作成する | Microsoft Docs'
-description: 予測ソリューションの開発に関するチュートリアルの中の、Azure Machine Learning Studio で新しいトレーニング実験を作成するステップの 3 番目の手順です。
+title: "手順 3: Machine Learning の新しい実験を作成する | Microsoft Docs"
+description: "予測ソリューションの開発に関するチュートリアルの中の、Azure Machine Learning Studio で新しいトレーニング実験を作成するステップの 3 番目の手順です。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ec6ca6b1f06223b1ce3d38e22117e63f438859ce
+
 
 ---
-# <a name="walkthrough-step-3:-create-a-new-azure-machine-learning-experiment"></a>チュートリアル手順 3: Azure Machine Learning の新しい実験を作成する
+# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>チュートリアル手順 3: Azure Machine Learning の新しい実験を作成する
 これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Machine Learning ワークスペースの作成](machine-learning-walkthrough-1-create-ml-workspace.md)
@@ -69,7 +73,7 @@ ms.author: garye
 6. **[OK]** チェックマークをクリックします。
 7. **[プロパティ]** ウィンドウに戻り、**[新しい列名]** パラメーターを探します。 このフィールドには、コンマ区切りで列の順番どおりに、データセットの 21 列分の名前を入力します。 列名は、UCI Web サイトのデータセットに関するドキュメントから入手できます。または、次の一覧をコピーして貼り付けることができます。  
    
-         Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
+       Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
    
    [プロパティ] ウィンドウは以下のようになります。
    
@@ -104,11 +108,11 @@ UCI での説明のとおり、高い信用リスクを誤って低リスクと�
 2. [R スクリプトの実行][execute-r-script]モジュールをダブルクリックして、「コスト調整の設定」というコメントを入力します。
 3. **[プロパティ]** ウィンドウの **[R スクリプト]** パラメーターの既定の文字列を削除し、以下のスクリプトを入力します。
    
-         dataset1 <- maml.mapInputPort(1)
-         data.set<-dataset1[dataset1[,21]==1,]
-         pos<-dataset1[dataset1[,21]==2,]
-         for (i in 1:5) data.set<-rbind(data.set,pos)
-         maml.mapOutputPort("data.set")
+       dataset1 <- maml.mapInputPort(1)
+       data.set<-dataset1[dataset1[,21]==1,]
+       pos<-dataset1[dataset1[,21]==2,]
+       for (i in 1:5) data.set<-rbind(data.set,pos)
+       maml.mapOutputPort("data.set")
 
 [データの分割][split]モジュールの各出力について同様の重複操作を設定する必要があります。これによって、トレーニング データとテスト データのコスト調整が等しくなります。
 
@@ -143,6 +147,6 @@ UCI での説明のとおり、高い信用リスクを誤って低リスクと�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

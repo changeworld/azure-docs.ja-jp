@@ -1,19 +1,23 @@
 ---
-title: Log Analytics を使用して Surface Hub を監視する | Microsoft Docs
-description: Surface Hub ソリューションを使用して、Surface Hub の正常性を追跡し、Surface Hub がどのように使用されているかを理解します。
+title: "Log Analytics を使用して Surface Hub を監視する | Microsoft Docs"
+description: "Surface Hub ソリューションを使用して、Surface Hub の正常性を追跡し、Surface Hub がどのように使用されているかを理解します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 8b4e56bc-2d4f-4648-a236-16e9e732ebef
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 11/09/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
+ms.openlocfilehash: 9ba6b1b3fcdaf090eee696ba3cb33be5d94be039
+
 
 ---
 # <a name="monitor-surface-hubs-with-log-analytics"></a>Log Analytics を使用して Surface Hub を監視する
@@ -46,7 +50,7 @@ InTune は、1 つまたは複数のデバイスに適用される OMS 構成設
 4. ポリシーの OMS (Azure Operational Insights) セクションに移動し、"*ワークスペース ID*" と "*ワークスペース キー*" をポリシーに追加します。
 5. ポリシーを保存します。
 6. ポリシーを適切なデバイス グループに関連付けます。
-   
+
    ![InTune ポリシー](./media/log-analytics-surface-hubs/intune.png)
 
 その後、InTune によって、OMS の設定がターゲット グループ内のデバイスと同期され、デバイスが OMS ワークスペースに登録されます。
@@ -72,7 +76,7 @@ OMS を使用した Surface Hub の監視は、その他の登録済みデバイ
 1. OMS ポータルにサインインします。
 2. Surface Hub ソリューション パック ダッシュボードに移動します。
 3. デバイスの正常性が表示されます。
-   
+
    ![Surface Hub ダッシュボード](./media/log-analytics-surface-hubs/surface-hub-dashboard.png)
 
 既存またはカスタムのログ検索に基づく[アラート](log-analytics-alerts.md)を作成できます。 OMS が Surface Hub から収集するデータを使用して、デバイス用に定義した条件に該当する問題とアラートを検索できます。
@@ -81,6 +85,8 @@ OMS を使用した Surface Hub の監視は、その他の登録済みデバイ
 * [Log Analytics のログ検索](log-analytics-log-searches.md)を使用して、Surface Hub の詳細データを表示します。
 * Surface Hub で問題が発生した場合に通知する[アラート](log-analytics-alerts.md)を作成します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

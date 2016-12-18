@@ -1,13 +1,13 @@
 ---
-title: Troubleshoot two-step verification | Microsoft Docs
-description: This document will provide users information on what to do if they run into an issue with Azure Multi-Factor Authentication.
+title: "2 段階認証のトラブルシューティング |Microsoft Docs"
+description: "このドキュメントでは、Azure Multi-factor Authentication で問題が発生した場合の処置に関する情報をユーザーに提供します。"
 services: multi-factor-authentication
-keywords: multifactor authentication client, authentication problem, correlation ID
-documentationcenter: ''
+keywords: "多要素認証のクライアント, 認証の問題, 関連付け ID"
+documentationcenter: 
 author: kgremban
 manager: femila
 editor: yossib
-
+ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,82 +15,89 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1a25f7303bd0335149e846c0f248ff61ed0938b5
+
 
 ---
-# <a name="having-trouble-with-two-step-verification"></a>Having trouble with two-step verification
-This article discusses some issues that you may experience with two-step verification. If the issue you're having is not included here, please provide detailed feedback in the comments section so that we can improve.
+# <a name="having-trouble-with-two-step-verification"></a>2 段階認証で発生する問題
+この記事では、2 段階認証で発生する可能性がある問題について説明します。 発生している問題がここに含まれていない場合は、コメント セクションで詳細なフィードバックをご提供ください。改善に役立てます。
 
-## <a name="i-lost-my-phone-or-it-was-stolen"></a>I lost my phone or it was stolen
-There are two ways to get back in to your account. The first is to sign in using your alternate authentication phone number, if you have set one up. The second is to ask your administrator to clear your settings.
+## <a name="i-lost-my-phone-or-it-was-stolen"></a>電話を紛失した場合や電話が盗まれた場合
+アカウントにアクセスする方法は 2 つあります。 1 つ目の方法は、代替認証電話番号を設定しているのであれば、その番号を使用することです。 2 つ目の方法は、管理者に設定をクリアしてもらうことです。
 
-If your phone was lost or stolen, we also recommend that you have your administrator reset your app passwords and clear any remembered devices. If your admin isn't sure how to accomplish this, point them to this article: [Manage users and devices](multi-factor-authentication-manage-users-and-devices.md#delete-users-existing-app-passwords).
+電話を紛失した場合や電話が盗まれた場合は、アプリ パスワードのリセットと記憶されたすべてのデバイスのクリアも管理者に依頼することをお勧めします。 これらの実行方法を管理者がわからない場合は、[ユーザーとデバイスの管理](multi-factor-authentication-manage-users-and-devices.md#delete-users-existing-app-passwords)に関する記事を示してください。
 
-### <a name="use-an-alternate-phone-number"></a>Use an alternate phone number
-If you have set up multiple verification options, including a secondary phone number or an authenticator app on a different device, you can use one of these to sign in.
+### <a name="use-an-alternate-phone-number"></a>代替電話番号を使用する
+複数の検証オプション (セカンダリ電話番号や別のデバイス上の認証アプリなど) を設定している場合は、いずれかのオプションを使用してサインインできます。
 
-To sign in using the alternate phone number, follow these steps:
+代替電話番号を使用してサインインするには、次の手順に従います。
 
-1. Sign in as you normally would.
-2. When prompted to further verify your account, choose **Use a different verification option**.
+1. 通常どおりにサインインします。
+2. アカウントをさらに検証するメッセージが表示されたら、**[別の確認オプションを使用する]** を選択します。
    
     ![Different Verification](./media/multi-factor-authentication-end-user-manage/differentverification.png)
-3. Select the phone number that you have access to.
+3. アクセスできる電話番号を選択します。
    
     ![Alternate phone](./media/multi-factor-authentication-end-user-manage/altphone2.png)
-4. After you're back in your account, [manage your settings](multi-factor-authentication-end-user-manage-settings.md) to change your authentication phone number.
+4. アカウントにアクセスできたら、[設定の管理](multi-factor-authentication-end-user-manage-settings.md)を行って認証電話番号を変更します。
 
 > [!IMPORTANT]
-> It is important to configure a secondary authentication phone number. If your primary phone number and your mobile app are on the same phone, you need a third option if your phone is lost or stolen.
+> セカンダリ認証用電話番号を構成することは重要です。 プライマリ電話番号を持つ電話にモバイル アプリがインストールされている場合は、電話の紛失や盗難に備えて 3 つ目のオプションを設定する必要があります。
 > 
 > 
 
-### <a name="clear-your-settings"></a>Clear your settings
-If you have not configured a secondary authentication phone number, then you will have to contact your administrator for help. Have them clear your settings so the next time you sign in, you will be prompted to [set up your account](multi-factor-authentication-end-user-first-time.md) again.
+### <a name="clear-your-settings"></a>設定をクリアする
+セカンダリ認証電話番号を構成していない場合は、管理者に連絡して、 設定をクリアしてもらう必要があります。これにより、次回のサイン時に[アカウントの設定](multi-factor-authentication-end-user-first-time.md)を求めるメッセージが再び表示されます。
 
-## <a name="i-am-not-receiving-a-text-or-call-on-my-phone"></a>I am not receiving a text or call on my phone
-There are several reasons why you may try to sign in, but not receive the text or phone call. If you've successfully received texts or phone calls to your phone in the past, then this is probably an issue with the phone provider, not your account. Make sure that you have good cell signal, and if you are trying to receive a text message make sure that your phone and service plan support text messages.
+## <a name="i-am-not-receiving-a-text-or-call-on-my-phone"></a>電話でテキストまたは通話呼び出しを受け取ることができない場合
+サインインしようとしたが、テキストまたは通話呼び出しを受け取れない理由はいくつかあります。 これまで、同じ電話でテキストまたは通話を正常に受け取っている場合は、アカウントではなく携帯電話会社に問題がある可能性があります。 電波状態が良いことを確認します。テキスト メッセージを受信する場合は、電話とサービス プランでテキスト メッセージがサポートされていることを確認します。
 
-If you've waited several minutes for a text or call, the fastest way to get into your account is to try a different option.
+数分待ってもテキストも通話呼び出しも着信しない場合、アカウントにアクセスするための最も簡単な方法は、別のオプションを試すことです。
 
-1. Select **Use a different verification option** on the page that's waiting for your verification.
+1. 検証を待っているページで、**[別の確認オプションを使用する]** を選択します。
    
     ![Different Verification](./media/multi-factor-authentication-end-user-troubleshoot/diff_option.png)
-2. Select the phone number or delivery method you want to use.
+2. 使用する電話番号または配信方法を選択します。
    
-    If you received multiple verification codes, only the newest one works.
+    複数の確認コードを受信した場合は、最新のコードだけが有効です。
 
-If you don’t have another method configured, contact your admin and ask them to clear your settings. The next time you sign in, you will be prompted to [set up multi-factor authentication](multi-factor-authentication-end-user-first-time.md) again.
+別の方法を構成していない場合は、管理者に連絡して設定のクリアを依頼します。 次回のサインイン時に、[多要素認証の設定](multi-factor-authentication-end-user-first-time.md)を求めるメッセージが再び表示されます。
 
-If you often have delays due to bad cell signal, we recommend you use the [Microsoft Authenticator app](multi-factor-authentication-microsoft-authenticator.md) on your smartphone. The app can generate random security codes that you use to sign in, and these codes don't require any cell signal or internet connection.
+電波状態が悪いために時間がかかる場合は、スマート フォンで[Microsoft Authenticator アプリ](multi-factor-authentication-microsoft-authenticator.md)を使用することをお勧めします。 サインインするために使用するランダムなセキュリティコードをアプリで生成できます。これらのコードでは、携帯電話の信号もインターネット接続も必要ありません。
 
-## <a name="app-passwords-are-not-working"></a>App passwords are not working
-First, make sure that you have entered the app password correctly.  If it is still not working try signing-in and [create a new app password](multi-factor-authentication-end-user-app-passwords.md).  If this does not work, contact your administrator and have them [delete your existing app passwords](multi-factor-authentication-manage-users-and-devices.md#delete-users-existing-app-passwords) and then you can create a new one.
+## <a name="app-passwords-are-not-working"></a>アプリ パスワードが機能しない場合
+最初に、アプリ パスワードが正しく入力されていることを確認します。  それでも機能しない場合は、サインインを試し、 [新しいアプリ パスワードを作成](multi-factor-authentication-end-user-app-passwords.md)します。  うまくいかない場合は、管理者に連絡して[既存のアプリ パスワードの削除](multi-factor-authentication-manage-users-and-devices.md#delete-users-existing-app-passwords)を依頼します。その後、新しいパスワードを作成できます。
 
-## <a name="i-didn't-find-an-answer-to-my-problem."></a>I didn't find an answer to my problem.
-If you've tried these troubleshooting steps but are still running into problems, contact your administrator or the person who set up multi-factor authentication for you. They should be able to assist you.
+## <a name="i-didnt-find-an-answer-to-my-problem"></a>問題に対する回答が見つからなかった場合
+トラブルシューティング手順を試したが、問題が解決されない場合は、管理者または多要素認証を設定した人に問い合わせて、 助言を求めてください。
 
-Also, you can post a question on the [Azure AD Forums](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD) or [contact support](https://support.microsoft.com/contactus) and we'll respond to your problem as soon as we can.
+[Azure AD フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)に質問を投稿するか、[サポートに問い合わせる](https://support.microsoft.com/contactus)こともできます。できる限り早く回答いたします。
 
-If you contact support, include the following information:
+サポートにお問い合わせいただく際は、次の情報をお知らせください。
 
-* **User ID** – What's the email address you tried to sign in with?
-* **General description of the error** – what exact error message did you see?  If there was no error message, describe the unexpected behavior you noticed, in detail.
-* **Page** – what page were you on when you saw the error (include the URL)?
-* **ErrorCode** - the specific error code you are receiving.
-* **SessionId** - the specific session id you are receiving.
-* **Correlation ID** – what was the correlation id code generated when the user saw the error.
-* **Timestamp** – what was the precise date and time you saw the error (include the timezone)?
+* **ユーザー ID** – サインインするために使用した電子メール アドレスは何ですか。
+* **エラーの一般的な説明** – どのようなエラー メッセージが表示されましたか。  エラー メッセージが表示されなかった場合は、気が付いた予期しない動作について詳しく説明してください。
+* **ページ** – エラーが表示されたときに、どのページを表示していましたか (URL を含む)。
+* **エラー コード** - 受信した特定のエラー コード。
+* **セッション ID** - 受信した特定のセッション ID。
+* **関連付け ID** – エラーが表示されたときに生成された関連付け ID コード。
+* **タイムスタンプ** – エラーが表示された正確な日時 (タイムゾーンを含む)。
 
-Much of this information can be found on your sign-in page. When you don't verify your sign-in in time, select **View details**.
+情報の大部分は、サインイン ページで確認できます。 サインイン時に確認していない場合は、**[詳細の表示]** を選択します。
 
-![Sign in error details](./media/multi-factor-authentication-end-user-troubleshoot/view_details.png)
+![サインイン エラーの詳細](./media/multi-factor-authentication-end-user-troubleshoot/view_details.png)
 
-Including this information helps us to solve your problem as quickly as possible.
+これらの情報を含めることで、迅速に問題を解決するのに役立ちます。
 
-## <a name="related-topics"></a>Related topics
-* [Manage your settings for two-step verification](multi-factor-authentication-end-user-manage-settings.md)  
-* [Microsoft Authenticator application FAQ](multi-factor-authentication-app-faq.md)
+## <a name="related-topics"></a>関連トピック
+* [2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)  
+* [Microsoft Authenticator アプリケーションに関する FAQ](multi-factor-authentication-app-faq.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

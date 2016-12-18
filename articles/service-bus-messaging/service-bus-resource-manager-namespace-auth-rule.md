@@ -1,44 +1,48 @@
 ---
-title: Service Bus に使用する承認規則を Azure Resource Manager テンプレートで作成する | Microsoft Docs
-description: Service Bus の名前空間とキューに使用する承認規則を Azure Resource Manager テンプレートで作成する
-services: service-bus
+title: "Service Bus に使用する承認規則を Azure Resource Manager テンプレートで作成する | Microsoft Docs"
+description: "Service Bus の名前空間とキューに使用する承認規則を Azure Resource Manager テンプレートで作成する"
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 7f1443a0-5fa8-4d90-8637-1a977ef0b1f0
+ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 07/11/2016
+ms.date: 10/14/2016
 ms.author: sethm;shvija
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 178b49b74319c57bb6a948b1b364c9d2e59b2379
+
 
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Service Bus の名前空間とキューに使用する承認規則を Azure Resource Manager テンプレートで作成する
-この記事では、Azure Resource Manager テンプレートを使用して、Service Bus の名前空間とキューに使用する[承認規則](../service-bus/service-bus-authentication-and-authorization.md#shared-access-signature-authentication)を作成する方法について説明します。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+この記事では、Azure Resource Manager テンプレートを使用して、Service Bus の名前空間とキューに使用する[承認規則](service-bus-authentication-and-authorization.md#shared-access-signature-authentication)を作成する方法について説明します。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成][Azure Resource Manager のテンプレートの作成]」を参照してください。
+テンプレートの作成の詳細については、[「Azure Resource Manager のテンプレートの作成」][Azure Resource Manager のテンプレートの作成]を参照してください。
 
-完全なテンプレートについては、GitHub の [Service Bus 承認規則テンプレート][Service Bus 承認規則テンプレート] を参照してください。
+完全なテンプレートについては、GitHub の[「Service Bus 承認規則テンプレート」][Service Bus 承認規則テンプレート]を参照してください。
 
 > [!NOTE]
 > 次の Azure Resource Manager テンプレートは、ダウンロードしてデプロイすることができます。
 > 
-> * [イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を作成する](../event-hubs/event-hubs-resource-manager-namespace-event-hub.md)
+> * [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
 > * [キューを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-queue.md)
 > * [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
-> * [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
+> * [トピック、サブスクリプション、ルールを含んだ Service Bus の名前空間を作成する](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> 最新のテンプレートを確認する場合は、「 [Azure クイックスタート テンプレート][Azure クイックスタート テンプレート] 」ギャラリーで "Service Bus" を検索してください。
+> 最新のテンプレートを確認する場合は、[「Azure クイックスタート テンプレート」][Azure クイックスタート テンプレート]ギャラリーで "Service Bus" を検索してください。
 > 
 > 
 
-## <a name="what-will-you-deploy?"></a>デプロイの対象
+## <a name="what-will-you-deploy"></a>デプロイの対象
 このテンプレートでデプロイされるのは、名前空間とメッセージング エンティティ (このケースではキュー) に使用する Service Bus 承認規則です。
 
-このテンプレートでは、[Shared Access Signature (SAS)](../service-bus/service-bus-sas-overview.md) を認証に使用します。 SAS 認証により、アプリケーションは、名前空間、または特定の権限が関連付けられているメッセージ エンティティ (キューまたはトピック) で構成されたアクセス キーを使用して Service Bus に対して認証できます。 次に、このキーを使用して、クライアントが後で Service Bus に対する認証に使用できる SAS トークンを生成できます。
+このテンプレートでは、[Shared Access Signature (SAS)](service-bus-sas-overview.md) を認証に使用します。 SAS 認証により、アプリケーションは、名前空間、または特定の権限が関連付けられているメッセージ エンティティ (キューまたはトピック) で構成されたアクセス キーを使用して Service Bus に対して認証できます。 次に、このキーを使用して、クライアントが後で Service Bus に対する認証に使用できる SAS トークンを生成できます。
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
@@ -157,9 +161,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ## <a name="next-steps"></a>次のステップ
 Azure Resource Manager を使ってリソースを作成、デプロイしたら、それらのリソースを管理する方法を次の記事で確認しましょう。
 
-* [PowerShell で Service Bus を管理する](../service-bus/service-bus-powershell-how-to-provision.md)
+* [PowerShell で Service Bus を管理する](service-bus-powershell-how-to-provision.md)
 * [Service Bus リソースを Service Bus Explorer で管理する](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
-* [Service Bus の認証と承認](../service-bus/service-bus-authentication-and-authorization.md)
+* [Service Bus の認証と承認](service-bus-authentication-and-authorization.md)
 
 [Azure Resource Manager のテンプレートの作成]: ../resource-group-authoring-templates.md
 [Azure クイックスタート テンプレート]: https://azure.microsoft.com/documentation/templates/?term=service+bus
@@ -169,6 +173,6 @@ Azure Resource Manager を使ってリソースを作成、デプロイしたら
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

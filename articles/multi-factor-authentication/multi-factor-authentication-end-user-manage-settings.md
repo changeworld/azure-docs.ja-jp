@@ -1,20 +1,24 @@
 ---
-title: 2 段階認証設定の管理 | Microsoft Docs
-description: 連絡先情報の変更やデバイスの構成などの Azure Multi-Factor Authentication の使用方法を管理します。
+title: "2 段階認証設定の管理 | Microsoft Docs"
+description: "連絡先情報の変更やデバイスの構成などの Azure Multi-Factor Authentication の使用方法を管理します。"
 services: multi-factor-authentication
-keywords: 多要素認証のクライアント, 認証の問題, 関連付け ID
-documentationcenter: ''
+keywords: "多要素認証のクライアント, 認証の問題, 関連付け ID"
+documentationcenter: 
 author: kgremban
 manager: femila
 editor: yossib
-
+ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 11/23/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
+ms.openlocfilehash: 8156a7e9d9cbe1631c2e777454d04519b413d551
+
 
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>2 段階認証設定の管理
@@ -28,19 +32,19 @@ IT 管理者が 2 段階認証を管理するための特定の URL または手
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。  
 2. 上部にある **[プロファイル]** を選択します。  
 3. **[追加のセキュリティ確認]** を選択します。  
-   
+
     ![Myapps](./media/multi-factor-authentication-end-user-manage/myapps1.png)
 4. [追加のセキュリティ確認] ページに設定が読み込まれます。
-   
-    ![追加のセキュリティ確認](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
 
-## <a name="i-want-to-change-my-phone-number,-or-add-a-secondary-number"></a>電話番号を変更または追加する場合
+    ![追加のセキュリティ確認](./media/multi-factor-authentication-end-user-manage/proofup.png)
+
+## <a name="i-want-to-change-my-phone-number-or-add-a-secondary-number"></a>電話番号を変更または追加する場合
 2 つ目の認証用電話番号を構成することは重要です。  1 つ目の電話番号の携帯電話にモバイル アプリがインストールされている場合が多いため、電話の紛失や盗難が起きた場合にアカウントに再度サインインできる唯一の手段は、2 つ目の電話番号を使用する方法になります。
 
 > [!NOTE]
 > 1 つ目の電話番号にアクセスできず、アカウントへのサインインでヘルプが必要な場合は、「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」のヘルプ トピックをご覧ください。
-> 
-> 
+>
+>
 
 **代表電話番号を変更するには: **  
 
@@ -54,13 +58,15 @@ IT 管理者が 2 段階認証を管理するための特定の URL または手
 2. 予備の話番号をテキスト ボックスに入力します。  
 3. **[保存]** を選択すると、変更が完了します。  
 
-## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one?"></a>古いデバイスから Microsoft Authenticator をクリーンアップして新しいデバイスに移行する場合
-デバイスからアプリをアンインストールしたり、デバイスをリセットしても、アクティブ化はバック エンドで削除されません。 [新しいデバイスへの移行](multi-factor-authentication-microsoft-authenticator.md#how-to-move-to-the-new-microsoft-authenticator-app)に関するトピックで説明されている手順に従ってください。
+## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>古いデバイスから Microsoft Authenticator をクリーンアップして新しいデバイスに移行する場合
+デバイスからアプリをアンインストールしたり、デバイスをリセットしても、アクティブ化はバック エンドで削除されません。 詳細については、「[Microsoft Authenticator](multi-factor-authentication-microsoft-authenticator.md)」参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * 「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」でトラブルシューティングのヒントとヘルプを習得します。
 * 2 段階認証をサポートしていないアプリに[アプリ パスワード](multi-factor-authentication-end-user-app-passwords.md)を設定します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

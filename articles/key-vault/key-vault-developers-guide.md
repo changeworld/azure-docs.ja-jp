@@ -1,12 +1,12 @@
 ---
-title: Azure Key Vault 開発者ガイド | Microsoft Docs
-description: '開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内で暗号化キーを管理できます。 '
+title: "Azure Key Vault 開発者ガイド | Microsoft Docs"
+description: "開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内で暗号化キーを管理できます。 "
 services: key-vault
-documentationcenter: ''
+documentationcenter: 
 author: BrucePerlerMS
 manager: mbaldwin
 editor: bruceper
-
+ms.assetid: b2b1bd28-e149-4d69-b08b-97f6c50ebe30
 ms.service: key-vault
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2016
 ms.author: bruceper
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3b4664cdfebad63307c0e964527fc5ecf6500348
+
 
 ---
-# <a name="azure-key-vault-developer's-guide"></a>Azure Key Vault 開発者ガイド
+# <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 Key Vault を使用すると、アプリケーション内から機密情報に安全にアクセスできるようになります。具体的には次のとおりです。
 
 * 自分でコードを記述しなくても、キーとシークレットが保護され、アプリケーションから簡単に使用できます。
@@ -102,6 +106,9 @@ Key Vault を利用したり Key Vault と連携したりするその他のシ�
 * [Key Vault Blog](http://aka.ms/kvblog)
 * [Key Vault Forum](http://aka.ms/kvforum)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
