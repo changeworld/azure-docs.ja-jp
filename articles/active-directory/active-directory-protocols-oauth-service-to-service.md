@@ -1,12 +1,12 @@
 ---
-title: OAuth2.0 を使用した Azure AD のサービス間の認証 | Microsoft Docs
-description: この記事では、HTTP メッセージを使用して、OAuth2.0 クライアント資格情報付与フローを使用するサービス間の認証を実装する方法について説明します。
+title: "OAuth2.0 を使用した Azure AD のサービス間の認証 | Microsoft Docs"
+description: "この記事では、HTTP メッセージを使用して、OAuth2.0 クライアント資格情報付与フローを使用するサービス間の認証を実装する方法について説明します。"
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: priyamo
+translationtype: Human Translation
+ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
+ms.openlocfilehash: 9d9ddbddb1039f56c420cb8f10dfa9bb82788b72
+
 
 ---
 # <a name="service-to-service-calls-using-client-credentials"></a>クライアント資格情報を使用したサービス間の呼び出し
@@ -30,7 +34,7 @@ OAuth 2.0 クライアント資格情報付与フローでは、Web サービス
 4. セキュリティで保護されたリソースから Web アプリケーションにデータが返されます。
 
 ## <a name="register-the-services-in-azure-ad"></a>Azure AD にサービスを登録する
-Azure Active Directory (Azure AD) に呼び出し元のサービスと受信側のサービスの両方を登録します。 詳細については、 [アプリケーションの追加、更新、削除](active-directory-integrating-applications.md#BKMK_Native)
+Azure Active Directory (Azure AD) に呼び出し元のサービスと受信側のサービスの両方を登録します。 詳しい説明については、「[Azure Active Directory とアプリケーションの統合](active-directory-integrating-applications.md)」を参照してください。
 
 ## <a name="request-an-access-token"></a>アクセス トークンを要求する
 アクセス トークンを要求するには、テナントに固有の Azure AD エンドポイントへの HTTP POST を使用します。
@@ -87,6 +91,8 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ## <a name="see-also"></a>関連項目
 * [Azure AD での OAuth 2.0](active-directory-protocols-oauth-code.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

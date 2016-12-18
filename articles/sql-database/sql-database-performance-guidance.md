@@ -1,19 +1,24 @@
 ---
-title: データベースが 1 つの場合の Azure SQL Database とパフォーマンス | Microsoft Docs
-description: この記事は、アプリケーションに適したサービス レベルを判断する際に役に立ちます。 Azure SQL Database を最大限活用できるようにアプリケーションを調整する方法についても紹介しています。
+title: "データベースが 1 つの場合の Azure SQL Database とパフォーマンス | Microsoft Docs"
+description: "この記事は、アプリケーションに適したサービス レベルを判断する際に役に立ちます。 Azure SQL Database を最大限活用できるようにアプリケーションを調整する方法についても紹介しています。"
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: dd8d95fa-24b2-4233-b3f1-8e8952a7a22b
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 09/13/2016
+ms.date: 12/06/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b4bd777b454a68ee06bbc4dffaff91213d58f28c
+
 
 ---
 # <a name="azure-sql-database-and-performance-for-single-databases"></a>データベースが 1 つの場合の Azure SQL Database とパフォーマンス
@@ -32,7 +37,7 @@ Azure SQL Database には、Basic、Standard、Premium の 3 つの [サービ�
 
 各サービス レベルでは、パフォーマンス レベルを設定します。これにより、必要な容量に対してのみ料金を支払うことができる柔軟性が得られます。 ワークロードの変化に応じて、レベルを上げたり下げたりして[容量を調整](sql-database-scale-up.md)できます。 たとえば、新学期の買い物シーズンにデータベースのワークロードが高くなる場合、7 月から 9 月までの指定の期間、データベースのパフォーマンス レベルを上げることができます。 ピークのシーズンが過ぎたら、パフォーマンス レベルを下げることができます。 ビジネスの季節性に合わせてクラウド環境を最適化することで、支払いを最小限に抑えることができます。 このモデルはソフトウェア製品のリリース周期にも適しています。 テスト チームは、テストの実行中に容量を割り当て、テストが完了したらその容量を解放できます。 容量要求モデルでは、必要な分の容量に対して料金を支払い、使われることがほとんどない専用のリソースに対する支出を回避します。
 
-## <a name="why-service-tiers?"></a>サービス レベルを使用する理由
+## <a name="why-service-tiers"></a>サービス レベルを使用する理由
 それぞれのデータベース ワークロードが変化する中でサービス レベルを使用する目的は、各種のパフォーマンス レベルでパフォーマンス予測可能性を提供することにあります。 データベース リソース要件の規模が大きなユーザーは、より専用度の高いコンピューティング環境で作業できます。
 
 ### <a name="common-service-tier-use-cases"></a>サービス レベルの一般的なユース ケース
@@ -116,7 +121,7 @@ SQL データベースのリソース使用量をそのサービス レベルと
 * [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 * [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sys.dm_db_resource_stats"></a>sys.dm_db_resource_stats
+### <a name="sysdmdbresourcestats"></a>sys.dm_db_resource_stats
 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) ビューは、すべての SQL データベースで使用できます。 **sys.dm_db_resource_stats** ビューには、サービス レベルに関連した最近のリソース使用率データが表示されます。 CPU、データ I/O、ログ書き込み、メモリの平均 (%) が 15 秒ごとに記録され、1 時間保持されます。
 
 このビューにはリソース使用率が詳細に表示されるので、現状の分析やトラブルシューティングが目的の場合、最初に **sys.dm_db_resource_stats** を使用してください。 たとえば次のクエリは、現在のデータベースの過去 1 時間の平均リソース使用率と最大リソース使用率を表示します。
@@ -134,7 +139,7 @@ SQL データベースのリソース使用量をそのサービス レベルと
 
 その他のクエリについては、[sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) の例を参照してください。
 
-### <a name="sys.resource_stats"></a>sys.resource_stats
+### <a name="sysresourcestats"></a>sys.resource_stats
 **master** データベースの [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) ビューには、特定のサービス レベルとパフォーマンス レベルで SQL データベースのパフォーマンスを監視するのに役立つ追加情報があります。 データは 5 分ごとに集められ、約 35 日間保持されます。 このビューは、過去に SQL データベースでリソースがどのように使用されたかを長期にわたり分析する際に役立ちます。
 
 次のグラフは、Premium データベースの CPU リソース使用率を示しています (P2 パフォーマンス レベル、1 週間における毎時間の使用率)。 このグラフは月曜日から始まります。5 営業日が経過した後の週末ではアプリケーションの活動が大幅に減っていることがわかります。
@@ -210,7 +215,7 @@ Azure SQL Database では、各サーバーの **master** データベースの 
    
         SELECT
         (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU fit percent'
-        ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log write fit percent’
+        ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log write fit percent'
         ,(COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical data I/O fit percent'
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
@@ -437,6 +442,9 @@ Azure SQL Database 内でスケールアウト アーキテクチャを使用す
 * エラスティック データベース プールの詳細については、 [Azure エラスティック データベース プールの概要](sql-database-elastic-pool.md)
 * パフォーマンスとエラスティック データベース プールの詳細については、 [エラスティック データベース プールの使用を検討する場合](sql-database-elastic-pool-guidance.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

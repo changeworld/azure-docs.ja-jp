@@ -1,19 +1,23 @@
 ---
-title: Service Bus メッセージング エンティティの自動転送 | Microsoft Docs
-description: キューまたはサブスクリプションを別のキューまたはトピックにチェーンする方法。
-services: service-bus
+title: "Service Bus メッセージング エンティティの自動転送 |Microsoft Docs"
+description: "キューまたはサブスクリプションを別のキューまたはトピックにチェーンする方法。"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: f7060778-3421-402c-97c7-735dbf6a61e8
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a20450442a8471534e4cd3faab9167d1db65d9b3
+
 
 ---
 # <a name="chaining-service-bus-entities-with-auto-forwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
@@ -30,7 +34,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 転送先エンティティは、ソース エンティティの作成時に存在している必要があります。 転送先エンティティが存在しない場合、Service Bus は、ソース エンティティを作成するように要求されたときに例外を返します。
 
-自動転送を使用すると、個々のトピックをスケールアウトできます。 Service Bus は、[特定のトピックのサブスクリプションの数](../service-bus/service-bus-quotas.md)を 2,000 に制限します。 第 2 レベルのトピックを作成することで、追加のサブスクリプションに対応できます。 Service Bus のサブスクリプションの数に関する制限がない場合でも、トピックの 2 番目のレベルを追加することで、トピック全体のスループットを向上させることができます。
+自動転送を使用すると、個々のトピックをスケールアウトできます。 Service Bus は、[特定のトピックのサブスクリプションの数](service-bus-quotas.md)を 2,000 に制限します。 第 2 レベルのトピックを作成することで、追加のサブスクリプションに対応できます。 Service Bus のサブスクリプションの数に関する制限がない場合でも、トピックの 2 番目のレベルを追加することで、トピック全体のスループットを向上させることができます。
 
 ![自動転送のシナリオ][0]
 
@@ -56,7 +60,7 @@ Service Bus では、メッセージの転送ごとに 1 操作を請求しま�
 * [QueueDescription][QueueDescription]
 * [SubscriptionDescription][SubscriptionDescription]
 
-Service Bus のパフォーマンスの向上の詳細については、「[パーティション分割されたメッセージング エンティティ][パーティション分割されたメッセージング エンティティ]」を参照してください。
+Service Bus のパフォーマンスの向上の詳細については、[「パーティション分割されたメッセージング エンティティ」][パーティション分割されたメッセージング エンティティ]を参照してください。
 
 [QueueDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
 [SubscriptionDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.forwardto.aspx
@@ -67,6 +71,7 @@ Service Bus のパフォーマンスの向上の詳細については、「[パ�
 [パーティション分割されたメッセージング エンティティ]: service-bus-partitioning.md
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 
