@@ -1,11 +1,11 @@
 ---
-title: 'チュートリアル: 受信同期のための Workday の構成 | Microsoft Docs'
-description: Azure Active Directory で受信同期を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。
+title: "チュートリアル: 受信同期のための Workday の構成 | Microsoft Docs"
+description: "Azure Active Directory で受信同期を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。"
 services: active-directory
 author: jeevansd
 documentationcenter: na
 manager: femila
-
+ms.assetid: 8fe96f0a-f142-4d66-b53d-3ac3eb41a661
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,9 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7f45241e96df7e0381d775afc9a5cfa36fca49c4
+
 
 ---
-# <a name="tutorial:-configuring-workday-for-inbound-synchronization"></a>チュートリアル: 受信同期のための Workday の構成
+# <a name="tutorial-configuring-workday-for-inbound-synchronization"></a>チュートリアル: 受信同期のための Workday の構成
 > [!NOTE]
 > Azure AD のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory (AD) Premium を利用できます。    
 > 中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure AD Premium は現在サポートされていません。    
@@ -41,7 +45,7 @@ ms.author: jeedes
 ## <a name="enabling-the-application-integration-for-workday"></a>Workday のアプリケーション統合の有効化
 このセクションでは、Workday のアプリケーション統合を有効にする方法について説明します。    
 
-### <a name="to-enable-the-application-integration-for-workday,-perform-the-following-steps:"></a>Workday のアプリケーション統合を有効にするには、次の手順を実行します。
+### <a name="to-enable-the-application-integration-for-workday-perform-the-following-steps"></a>Workday のアプリケーション統合を有効にするには、次の手順を実行します。
 1. Azure 管理ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。    
    
    ![[Active Directory]](./media/active-directory-saas-inbound-synchronization-tutorial/IC700993.png "Active Directory")  
@@ -138,7 +142,7 @@ ms.author: jeedes
 ## <a name="configuring-user-import-in-microsoft-azure-ad"></a>Microsoft Azure AD でのユーザー インポートの構成
 このセクションでは、Microsoft Azure AD を構成して Workday からユーザーをインポートする方法を概説します。    
 
-### <a name="to-configure-user-import-in-microsoft-azure-ad,-perform-the-following-steps:"></a>Microsoft Azure AD でユーザーのインポートを構成するには、次の手順を実行します。
+### <a name="to-configure-user-import-in-microsoft-azure-ad-perform-the-following-steps"></a>Microsoft Azure AD でユーザーのインポートを構成するには、次の手順を実行します。
 1. **Workday** アプリケーション統合ページで、**[ユーザー インポートの構成]** をクリックして、**[プロビジョニングの構成]** ダイアログを開きます。    
 2. **[設定と管理者資格情報]** ページで次の手順を実行し、[次へ] をクリックします。    
    
@@ -159,6 +163,9 @@ ms.author: jeedes
 
 これで、 **[ユーザー]** セクションに移動して、Workday ユーザーがインポートされたかどうかを確認できます。    
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
