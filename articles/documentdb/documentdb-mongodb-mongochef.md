@@ -1,13 +1,13 @@
 ---
-title: MongoDB のプロトコル対応の DocumentDB アカウントで MongoChef を使用する | Microsoft Docs
-description: 現在プレビューとして提供されている MongoDB のプロトコル対応の DocumentDB アカウントで MongoChef を使用する方法について説明します。
+title: "MongoDB のプロトコル対応の DocumentDB アカウントで MongoChef を使用する | Microsoft Docs"
+description: "現在プレビューとして提供されている MongoDB のプロトコル対応の DocumentDB アカウントで MongoChef を使用する方法について説明します。"
 keywords: MongoChef
 services: documentdb
 author: AndrewHoh
 manager: jhubbard
-editor: ''
-documentationcenter: ''
-
+editor: 
+documentationcenter: 
+ms.assetid: 352c5fb9-8772-4c5f-87ac-74885e63ecac
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2016
 ms.author: anhoh
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 90039d2626724ed789415967a345d2aadc3407af
+
 
 ---
 # <a name="use-mongochef-with-a-documentdb-account-with-protocol-support-for-mongodb"></a>MongoDB のプロトコル対応の DocumentDB アカウントで MongoChef を使用する
@@ -45,7 +49,7 @@ MongoChef 接続マネージャーに MongoDB のプロトコル対応の Docume
    
     ![Screen shot of the MongoChef test connection window](./media/documentdb-mongodb-mongochef/TestConnectionResults.png)
 
-## <a name="use-mongochef-to-create-a-database,-collection,-and-documents"></a>MongoChef を使用してデータベース、コレクション、ドキュメントを作成する
+## <a name="use-mongochef-to-create-a-database-collection-and-documents"></a>MongoChef を使用してデータベース、コレクション、ドキュメントを作成する
 MongoChef を使用してデータベース、コレクション、ドキュメントを作成するには、次の手順を実行します。
 
 1. **接続マネージャー**で目的の接続を強調表示し、**[Connect (接続)]** をクリックします。
@@ -66,14 +70,14 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
         "_id": "AndersenFamily",
         "lastName": "Andersen",
         "parents": [
-            { "firstName": "Thomas" },
-            { "firstName": "Mary Kay"}
+               { "firstName": "Thomas" },
+               { "firstName": "Mary Kay"}
         ],
         "children": [
-        {
-            "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
-            "pets": [{ "givenName": "Fluffy" }]
-        }
+           {
+               "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
+               "pets": [{ "givenName": "Fluffy" }]
+           }
         ],
         "address": { "state": "WA", "county": "King", "city": "seattle" },
         "isRegistered": true
@@ -89,7 +93,7 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
         "children": [
             {
                 "familyName": "Merriam", 
-                "givenName": "Jesse", 
+                 "givenName": "Jesse", 
                 "gender": "female", "grade": 1,
                 "pets": [
                     { "givenName": "Goofy" },
@@ -98,9 +102,9 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
             },
             { 
                 "familyName": "Miller", 
-                "givenName": "Lisa", 
-                "gender": "female", 
-                "grade": 8 }
+                 "givenName": "Lisa", 
+                 "gender": "female", 
+                 "grade": 8 }
         ],
         "address": { "state": "NY", "county": "Manhattan", "city": "NY" },
         "isRegistered": false
@@ -112,6 +116,9 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
 ## <a name="next-steps"></a>次のステップ
 * MongoDB のプロトコル対応 DocumentDB の [サンプル](documentdb-mongodb-samples.md)を体験します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

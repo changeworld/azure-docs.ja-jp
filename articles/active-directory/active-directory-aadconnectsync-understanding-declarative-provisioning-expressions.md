@@ -1,22 +1,26 @@
 ---
-title: 'Azure AD Connect Sync: 宣言型のプロビジョニングの式について | Microsoft Docs'
-description: 宣言型のプロビジョニングの式について説明します。
+title: "Azure AD Connect 同期: 宣言型のプロビジョニングの式について | Microsoft Docs"
+description: "宣言型のプロビジョニングの式について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: andkjell
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2016
-ms.author: markusvi;andkjell
+ms.author: markvi;andkjell
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3dbbe1c5df2e86cda7101452b490ec7251cc7b75
+
 
 ---
-# <a name="azure-ad-connect-sync:-understanding-declarative-provisioning-expressions"></a>Azure AD Connect Sync: 宣言型のプロビジョニングの式について
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect Sync: 宣言型のプロビジョニングの式について
 Azure AD Connect Sync は、Forefront Identity Manager 2010 で初めて導入された宣言型のプロビジョニングに基づいています。 これにより、コンパイル済みコードを記述することなく完全な ID 統合ビジネス ロジックを実装できます。
 
 宣言型のプロビジョニングの不可欠な要素は、属性フローに使用される式言語です。 使用される言語は、Microsoft ® Visual Basic ® for Applications (VBA) のサブセットです。 この言語は、Microsoft Office で使用され、VBScript の経験を持つユーザーも理解できます。 宣言型のプロビジョニングの式言語は、関数を使用するだけであり、構造化言語ではありません。 メソッドやステートメントはありません。 代わりに、関数を入れ子にして、プログラム フローを記述します。
@@ -94,6 +98,9 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 
 * [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
