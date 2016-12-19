@@ -1,12 +1,12 @@
 ---
-title: Azure Active Directory レポートの保持ポリシー | Microsoft Docs
-description: Azure Active Directory でのレポート データの保持ポリシー
+title: "Azure Active Directory レポートの保持ポリシー | Microsoft Docs"
+description: "Azure Active Directory でのレポート データの保持ポリシー"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,10 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/07/2016
 ms.author: dhanyahk
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7e0e1ede67509de9f47293eb7257ecc56c0df93d
+
 
 ---
-# Azure Active Directory レポートの保持ポリシー
-*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
+# <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory レポートの保持ポリシー
+*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です。*
 
 Azure Active Directory (Azure AD) レポートは、データを次に示す一定期間保存します。
 
@@ -47,4 +51,9 @@ Azure Active Directory (Azure AD) レポートは、データを次に示す一�
 | RMS デバイスの利用状況 |30 日 |
 | RMS 対応アプリケーションの利用状況 |30 日 |
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+
