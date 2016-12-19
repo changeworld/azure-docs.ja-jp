@@ -29,7 +29,7 @@ Azure Redis Cache は、データへの超高速アクセスを提供するこ�
 Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Redis Cache の FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
 
 ## Redis データの保持
-Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。基盤となるインフラストラクチャに問題が発生した場合、データが失われる可能性があります。Premium レベルの Resis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。Azure Redis Cache には、[Redis の永続化](http://redis.io/topics/persistence)の RDB オプションと AOF オプション (近日公開予定) があります。
+Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。基盤となるインフラストラクチャに問題が発生した場合、データが失われる可能性があります。Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。Azure Redis Cache には、[Redis の永続化](http://redis.io/topics/persistence)の RDB オプションと AOF オプション (近日公開予定) があります。
 
 永続化の構成手順については、「[Premium Azure Redis Cache の永続性の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
 
