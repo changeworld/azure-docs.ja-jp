@@ -1,12 +1,12 @@
 ---
-title: Azure への組織としてのサインアップ
-description: 職場または学校アカウントを使用して、組織の内部設置型 ID と Azure AD の間の効率性を既に強化した既存のユーザー アカウント、ポリシー、設定、または内部設置型サーバー デプロイを利用する方法について説明します。
+title: "Azure への組織としてのサインアップ"
+description: "職場または学校アカウントを使用して、組織の内部設置型 ID と Azure AD の間の効率性を既に強化した既存のユーザー アカウント、ポリシー、設定、または内部設置型サーバー デプロイを利用する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 1b7f6dc2-bbdb-4aee-a615-db2f991f46ed
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: bdbe25307b8b5e811dad374583d9ba3b96e212a5
+
 
 ---
 # <a name="sign-up-for-azure-as-an-organization"></a>Azure への組織としてのサインアップ
@@ -32,6 +36,9 @@ ms.author: markvi
 * [Azure AD とは](active-directory-whatis.md)
 * [クラウド内のオンプレミスの ID インフラストラクチャの使用](active-directory-aadconnect.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

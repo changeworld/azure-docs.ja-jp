@@ -1,12 +1,12 @@
 ---
-title: Log Analytics を使用した Azure 診断ログの分析 | Microsoft Docs
-description: Log Analytics は、Azure 診断ログを JSON 形式で Blob Storage に出力する Azure サービスからログを読み取ることができます。
+title: "Log Analytics を使用した Azure 診断ログの分析 | Microsoft Docs"
+description: "Log Analytics は、Azure 診断ログを JSON 形式で Blob Storage に出力する Azure サービスからログを読み取ることができます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: adf2f366-ea98-4250-ae66-6d2cfce5b4f9
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 08274c03dd1ebb7533efde4c01744ed5293fb4dd
+
 
 ---
 # <a name="analyze-azure-diagnostic-logs-using-log-analytics"></a>Log Analytics を使用した Azure 診断ログの分析
@@ -80,7 +84,7 @@ Log Analytics の構成を支援するための次の 2 つのコマンドレッ
 4. AzureDiagnosticsAndLogAnalytics PowerShell モジュール
    * [AzureDiagnosticsAndLogAnalytics](https://www.powershellgallery.com/packages/AzureDiagnosticsAndLogAnalytics/) モジュールを PowerShell ギャラリーからダウンロードします。
 
-### <a name="option-1:-run-the-interactive-configuration-scripts"></a>オプション 1: 対話型の構成スクリプトを実行する
+### <a name="option-1-run-the-interactive-configuration-scripts"></a>オプション 1: 対話型の構成スクリプトを実行する
 PowerShell を開き、以下を実行します。
 
 ```
@@ -106,7 +110,7 @@ Add-AzureDiagnosticsToLogAnalyticsUI
 
 このスクリプトを実行すると、新しい診断データがストレージに書き込まれてから約 30 分後に、Log Analytics にレコードが表示されます。 その時間が過ぎてもレコードが表示されない場合は、後のトラブルシューティングのセクションを参照してください。
 
-### <a name="option-2:-build-a-list-of-resources-and-pass-them-to-the-configuration-cmdlet"></a>オプション 2: リソースの一覧を作成して、構成コマンドレットに渡す
+### <a name="option-2-build-a-list-of-resources-and-pass-them-to-the-configuration-cmdlet"></a>オプション 2: リソースの一覧を作成して、構成コマンドレットに渡す
 Azure 診断が有効になっているリソースの一覧を作成し、リソースを構成コマンドレットに渡すことができます。
 
 `Get-Help Add-AzureDiagnosticsToLogAnalytics` を実行すると、コマンドレットに関する追加情報を表示できます。
@@ -233,6 +237,9 @@ Log Analytics の構成を新しいキーで更新するには、次の PowerShe
 * [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。
 * [検索クエリを使用](log-analytics-log-searches.md) して、データを分析します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

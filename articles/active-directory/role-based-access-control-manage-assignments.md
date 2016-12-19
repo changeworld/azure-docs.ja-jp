@@ -1,12 +1,12 @@
 ---
-title: Azure リソースのアクセス権の割り当ての確認 | Microsoft Docs
-description: Azure Portal の任意のユーザーまたはグループについて、すべてのロールベースのアクセス制御の割り当てを確認および管理する
+title: "Azure リソースのアクセス権の割り当ての確認 | Microsoft Docs"
+description: "Azure Portal の任意のユーザーまたはグループについて、すべてのロールベースのアクセス制御の割り当てを確認および管理する"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
 editor: jeffsta
-
+ms.assetid: e6f9e657-8ee3-4eec-a21c-78fe1b52a005
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/10/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 87fa4373e5496a91d4e808ceb45095a6aea9e884
+
 
 ---
 # <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal---public-preview"></a>Azure Portal のユーザーとグループのアクセス権の割り当てを表示 - パブリック プレビュー
@@ -55,8 +59,11 @@ Azure Active Directory のロールベースのアクセス制御 (RBAC) のプ�
 
 ## <a name="related-topics"></a>関連トピック
 * ロールベースのアクセス制御を開始して、 [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](role-based-access-control-configure.md)
-* [RBAC の組み込みロール](role-based-access-built-in-roles.md)
+*  [RBAC の組み込みロール](role-based-access-built-in-roles.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
