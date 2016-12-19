@@ -12,7 +12,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 12/13/2016
 ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -123,7 +123,7 @@ Azure ポータル、または関連するパフォーマンス カウンター�
 #### <a name="problem"></a>問題点
 Azure Redis Cache インスタンスにあるはずの特定のデータがないように見えます。
 
-##### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解決策
 考えられる原因と解決策については、「 [What happened to my data in Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) 」 (Redis のデータが正常ではない) を参照してください。
 
 ## <a name="server-side-troubleshooting"></a>サーバー側のトラブルシューティング
@@ -152,7 +152,7 @@ Redis は 2 つのメトリックを表示します。これらは、この問�
 4. [スケーリング](cache-how-to-scale.md) します。
 5. [Redis クラスターが有効な Premium キャッシュ](cache-how-to-premium-clustering.md)を使用している場合は、[シャードの数を増やす](cache-how-to-premium-clustering.md#change-the-cluster-size-on-a-running-premium-cache)ことができます。
 
-### <a name="high-cpu-usage-server-load"></a>CPU 使用率またはサーバーの負荷が高い
+### <a name="high-cpu-usage--server-load"></a>CPU 使用率またはサーバーの負荷が高い
 #### <a name="problem"></a>問題点
 高い CPU 使用率は、Redis が短時間で応答を送信したとしても、クライアントが Redis からの応答を適切なタイミングで処理できない可能性があることを意味している場合があります。
 
@@ -194,20 +194,21 @@ StackExchange.Redis では、同期操作に `synctimeout` という名前の構
 ### <a name="steps-to-investigate"></a>調査手順
 1. ベスト プラクティスとして、StackExchange.Redis クライアントの使用時に接続する場合に以下のパターンを使用していることを確認します。
 
-        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+    ```c#
+    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+    {
+        return ConnectionMultiplexer.Connect("cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
+    
+    });
+    
+    public static ConnectionMultiplexer Connection
+    {
+        get
         {
-            return ConnectionMultiplexer.Connect("cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
-
-        });
-
-        public static ConnectionMultiplexer Connection
-        {
-            get
-            {
-                return lazyConnection.Value;
-            }
+            return lazyConnection.Value;
         }
-
+    }
+    ````
 
     詳細については、 [StackExchange.Redis を使用するキャッシュへの接続](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)に関するページを参照してください。
 
