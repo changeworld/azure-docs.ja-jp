@@ -98,7 +98,7 @@ Linux VM の現在の設定を確認するには、次に示す 'cat/etc/resolv.
 
     options timeout:1 attempts:5
 
-resolv.conf ファイルは自動生成され、編集する必要はありません。  'options' 行を追加する具体的な手順は、ディストリビューションによって異なります。
+resolv.conf ファイルは自動生成され、編集すべきではありません。'options' 行を追加する具体的な手順は、ディストリビューションによって異なります。
 
 * **Ubuntu** (resolvconf を使用):
   * options 行を '/etc/resolveconf/resolv.conf.d/head' に追加する 
