@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 12/16/2016
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -78,32 +78,33 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
   
     最高のスループットを実現するには、`xlargerc` リソース クラスに所属する SQL Data Warehouse ユーザーでコピーを実行する必要があります。  「[ユーザー リソース クラスの変更例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)」で、実行方法を確認してください。  
 * 次の DDL ステートメントを実行して、Azure SQL Data Warehouse データベースに変換先テーブル スキーマを作成します。
-  
-        CREATE TABLE [dbo].[lineitem]
-        (
-            [L_ORDERKEY] [bigint] NOT NULL,
-            [L_PARTKEY] [bigint] NOT NULL,
-            [L_SUPPKEY] [bigint] NOT NULL,
-            [L_LINENUMBER] [int] NOT NULL,
-            [L_QUANTITY] [decimal](15, 2) NULL,
-            [L_EXTENDEDPRICE] [decimal](15, 2) NULL,
-            [L_DISCOUNT] [decimal](15, 2) NULL,
-            [L_TAX] [decimal](15, 2) NULL,
-            [L_RETURNFLAG] [char](1) NULL,
-            [L_LINESTATUS] [char](1) NULL,
-            [L_SHIPDATE] [date] NULL,
-            [L_COMMITDATE] [date] NULL,
-            [L_RECEIPTDATE] [date] NULL,
-            [L_SHIPINSTRUCT] [char](25) NULL,
-            [L_SHIPMODE] [char](10) NULL,
-            [L_COMMENT] [varchar](44) NULL
-        )
-        WITH
-        (
-            DISTRIBUTION = ROUND_ROBIN,
-            CLUSTERED COLUMNSTORE INDEX
-        )
 
+    ```SQL  
+    CREATE TABLE [dbo].[lineitem]
+    (
+        [L_ORDERKEY] [bigint] NOT NULL,
+        [L_PARTKEY] [bigint] NOT NULL,
+        [L_SUPPKEY] [bigint] NOT NULL,
+        [L_LINENUMBER] [int] NOT NULL,
+        [L_QUANTITY] [decimal](15, 2) NULL,
+        [L_EXTENDEDPRICE] [decimal](15, 2) NULL,
+        [L_DISCOUNT] [decimal](15, 2) NULL,
+        [L_TAX] [decimal](15, 2) NULL,
+        [L_RETURNFLAG] [char](1) NULL,
+        [L_LINESTATUS] [char](1) NULL,
+        [L_SHIPDATE] [date] NULL,
+        [L_COMMITDATE] [date] NULL,
+        [L_RECEIPTDATE] [date] NULL,
+        [L_SHIPINSTRUCT] [char](25) NULL,
+        [L_SHIPMODE] [char](10) NULL,
+        [L_COMMENT] [varchar](44) NULL
+    )
+    WITH
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    )
+    ```
 以上で前提条件の手順が完了し、コピー ウィザードを使用するコピー アクティビティを構成する準備が整いました。
 
 ## <a name="launch-copy-wizard"></a>コピー ウィザードの起動
@@ -139,67 +140,66 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 2. **[Run once now (今すぐ 1 度だけ実行する)]** オプションを選択します。   
 3. **[次へ]**をクリックします。  
 
-![コピー ウィザード - [プロパティ] ページ](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
+    ![コピー ウィザード - [プロパティ] ページ](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
 ## <a name="step-2-configure-source"></a>手順 2: ソースを構成する
 このセクションでは、ソース (1 TB の TPC-H 行項目ファイルを含む Azure Blob) を構成する手順を示します。
 
-データ ストアとして **[Azure Blob Storage]** を選択し、**[次へ]** をクリックします。
+1. データ ストアとして **[Azure Blob Storage]** を選択し、**[次へ]** をクリックします。
 
-![コピー ウィザード - ソース選択ページ](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
+    ![コピー ウィザード - ソース選択ページ](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
 
-Azure Blob ストレージ アカウントの接続情報を入力し、**[次へ]** をクリックします。
+2. Azure Blob ストレージ アカウントの接続情報を入力し、**[次へ]** をクリックします。
 
-![コピー ウィザード - ソース接続情報](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
+    ![コピー ウィザード - ソース接続情報](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-TPC-H 行項目ファイルが含まれている**フォルダー**を選択し、**[次へ]** をクリックします。
+3. TPC-H 行項目ファイルが含まれている**フォルダー**を選択し、**[次へ]** をクリックします。
 
-![コピー ウィザード - 入力フォルダーの選択](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
+    ![コピー ウィザード - 入力フォルダーの選択](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-**[次へ]** をクリックすると、ファイル形式の設定が自動的に検出されます。  列区切り記号が、既定のカンマ ‘,’ ではなく、‘|’ になっていることを確認します。  データをプレビューした後、**[次へ]** をクリックします。
+4. **[次へ]** をクリックすると、ファイル形式の設定が自動的に検出されます。  列区切り記号が、既定のカンマ ‘,’ ではなく、‘|’ になっていることを確認します。  データをプレビューした後、**[次へ]** をクリックします。
 
-![コピー ウィザード - ファイル形式の設定](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
+    ![コピー ウィザード - ファイル形式の設定](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>手順 3: 変換先を構成する
 このセクションでは、変換先 (Azure SQL Data Warehouse データベースの `lineitem` テーブル) を構成する方法を示します。
 
-変換先ストアとして **[Azure SQL Data Warehouse]** を選択し、**[次へ]** をクリックします。
+1. 変換先ストアとして **[Azure SQL Data Warehouse]** を選択し、**[次へ]** をクリックします。
 
-![コピー ウィザード - 変換先データ ストアの選択](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
+    ![コピー ウィザード - 変換先データ ストアの選択](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-Azure SQL Data Warehouse の接続情報を入力します。  `xlargerc` ロールのメンバーであるユーザー (詳細な手順については「**前提条件**」セクションを参照してください) を指定したことを確認し、**[次へ]** をクリックします。 
+2. Azure SQL Data Warehouse の接続情報を入力します。  `xlargerc` ロールのメンバーであるユーザー (詳細な手順については「**前提条件**」セクションを参照してください) を指定したことを確認し、**[次へ]** をクリックします。 
 
-![コピー ウィザード - 変換先の接続情報](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
+    ![コピー ウィザード - 変換先の接続情報](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-変換先テーブルを選択し、**[次へ]** をクリックします。
+3. 変換先テーブルを選択し、**[次へ]** をクリックします。
 
-![コピー ウィザード - [テーブル マッピング] ページ](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
+    ![コピー ウィザード - [テーブル マッピング] ページ](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-列マッピングの既定の設定をそのまま使用し、**[次へ]** をクリックします。
+4. 列マッピングの既定の設定をそのまま使用し、**[次へ]** をクリックします。
 
-![コピー ウィザード - [スキーマ マッピング] ページ](media/data-factory-load-sql-data-warehouse/schema-mapping.png)
+    ![コピー ウィザード - [スキーマ マッピング] ページ](media/data-factory-load-sql-data-warehouse/schema-mapping.png)
 
 ## <a name="step-4-performance-settings"></a>手順 4: パフォーマンス設定
+
 **[Allow polybase (PolyBase を許可する)]** は既定でオンになっています。  **[次へ]**をクリックします。
 
 ![コピー ウィザード - [スキーマ マッピング] ページ](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
 ## <a name="step-5-deploy-and-monitor-load-results"></a>手順 5: デプロイを実行し、読み込み結果を監視する
-**[完了]** ボタンをクリックしてデプロイします。 
+1. **[完了]** ボタンをクリックしてデプロイします。 
 
-![コピー ウィザード - [概要] ページ](media/data-factory-load-sql-data-warehouse/summary-page.png)
+    ![コピー ウィザード - [概要] ページ](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
-デプロイが完了したら、[`Click here to monitor copy pipeline`] をクリックして、コピーの実行の進行状況を監視します。
+2. デプロイが完了したら、[`Click here to monitor copy pipeline`] をクリックして、コピーの実行の進行状況を監視します。 **[アクティビティ ウィンドウ]** の一覧から、作成したコピー パイプラインを選択します。
 
-**[アクティビティ ウィンドウ]** の一覧から、作成したコピー パイプラインを選択します。
+    ![コピー ウィザード - [概要] ページ](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 
-![コピー ウィザード - [概要] ページ](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
+    右側のパネルの**アクティビティ ウィンドウ エクスプローラー**で、コピーの実行の詳細を確認できます。ソースから読み取られたデータ量、変換先に書き込まれたデータ量、および実行の平均スループットなどが表示されます。
 
-右側のパネルの**アクティビティ ウィンドウ エクスプローラー**で、コピーの実行の詳細を確認できます。ソースから読み取られたデータ量、変換先に書き込まれたデータ量、および実行の平均スループットなどが表示されます。
+    次のスクリーンショットからわかるように、1 TB のデータを Azure Blob Storage から SQL Data Warehouse にコピーする処理は 14 分で完了し、実質的に 1.22 GBps のスループットが達成されています。
 
-次のスクリーンショットからわかるように、1 TB のデータを Azure Blob Storage から SQL Data Warehouse にコピーする処理は 14 分で完了し、実質的に 1.22 GBps のスループットが達成されています。
-
-![コピー ウィザード - [成功] ダイアログ](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
+    ![コピー ウィザード - [成功] ダイアログ](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
 ## <a name="best-practices"></a>ベスト プラクティス
 Azure SQL Data Warehouse データベースを実行するためのいくつかのベスト プラクティスを次に示します。

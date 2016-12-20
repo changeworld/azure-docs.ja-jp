@@ -24,25 +24,29 @@
 時系列データセット、スケジュール作成、スライスの詳細については、[データセットの作成](../articles/data-factory/data-factory-create-datasets.md)、[スケジュール設定と実行](../articles/data-factory/data-factory-scheduling-and-execution.md)、および[パイプラインの作成](../articles/data-factory/data-factory-create-pipelines.md)に関する記事を参照してください。 
 
 #### <a name="sample-1"></a>サンプル 1:
-    "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
-    "partitionedBy": 
-    [
-        { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
-    ],
 
+```json
+"folderPath": "wikidatagateway/wikisampledataout/{Slice}",
+"partitionedBy": 
+[
+    { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
+],
+```
 この例では、{Slice} は、指定された形式 (YYYYMMDDHH) で、Data Factory システム変数の SliceStart の値に置き換えられます。 SliceStart はスライスの開始時刻です。 folderPath はスライスごとに異なります。 例: wikidatagateway/wikisampledataout/2014100103 または wikidatagateway/wikisampledataout/2014100104
 
 #### <a name="sample-2"></a>サンプル 2:
-    "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
-    "fileName": "{Hour}.csv",
-    "partitionedBy": 
-     [
-        { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
-        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
-        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
-        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
-    ],
 
+```json
+"folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+"fileName": "{Hour}.csv",
+"partitionedBy": 
+ [
+    { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+    { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
+    { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
+    { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
+],
+```
 この例では、SliceStart の年、月、日、時刻が folderPath プロパティと fileName プロパティで使用される個別の変数に抽出されます。
 
 

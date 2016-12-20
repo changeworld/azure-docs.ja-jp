@@ -12,12 +12,14 @@
 
 次に、userid、name、および lastlogindate という 3 つの列があるテーブルの structure セクション JSON の例を示します。
 
-    "structure": 
-    [
-        { "name": "userid"},
-        { "name": "name"},
-        { "name": "lastlogindate"}
-    ],
+```json
+"structure": 
+[
+    { "name": "userid"},
+    { "name": "name"},
+    { "name": "lastlogindate"}
+],
+```
 
 "structure" 情報を含める場合と、 **structure** セクションに含める内容については、次のガイドラインに従ってください。
 

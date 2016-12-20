@@ -8,25 +8,27 @@
 
 データセットの圧縮を指定するには、次の例のように、データセットの JSON で **compression** プロパティを使用します。   
 
-    {  
-        "name": "AzureBlobDataSet",  
-          "properties": {  
-            "availability": {  
-                "frequency": "Day",  
-                  "interval": 1  
-            },  
-            "type": "AzureBlob",  
-            "linkedServiceName": "StorageLinkedService",  
-            "typeProperties": {  
-                "fileName": "pagecounts.csv.gz",  
-                  "folderPath": "compression/file/",  
-                  "compression": {  
-                    "type": "GZip",  
-                    "level": "Optimal"  
-                  }  
-            }  
-          }  
-    }  
+```json
+{  
+    "name": "AzureBlobDataSet",  
+      "properties": {  
+        "availability": {  
+            "frequency": "Day",  
+              "interval": 1  
+        },  
+        "type": "AzureBlob",  
+        "linkedServiceName": "StorageLinkedService",  
+        "typeProperties": {  
+            "fileName": "pagecounts.csv.gz",  
+              "folderPath": "compression/file/",  
+              "compression": {  
+                "type": "GZip",  
+                "level": "Optimal"  
+              }  
+        }  
+      }  
+}  
+```
 
 **compression** セクションには次の 2 つのプロパティがあります。  
 

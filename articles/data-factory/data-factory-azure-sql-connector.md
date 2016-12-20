@@ -57,30 +57,32 @@ Azure SQL Database との間でデータをコピーするパイプラインを�
 
 **Azure SQL のリンクされたサービス**
 
-    {
-      "name": "AzureSqlLinkedService",
-      "properties": {
-        "type": "AzureSqlDatabase",
-        "typeProperties": {
-          "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-      }
+```JSON
+{
+  "name": "AzureSqlLinkedService",
+  "properties": {
+    "type": "AzureSqlDatabase",
+    "typeProperties": {
+      "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
     }
-
+  }
+}
+```
 このリンクされたサービスでサポートされているプロパティの一覧については、「 [Azure SQL のリンクされたサービス](#azure-sql-linked-service-properties) 」を参照してください。
 
 **Azure BLOB ストレージのリンクされたサービス**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+  }
+}
+```
 このリンクされたサービスでサポートされているプロパティの一覧については、[Azure BLOB](data-factory-azure-blob-connector.md#azure-storage-linked-service) に関する記事を参照してください。
 
 
@@ -90,28 +92,30 @@ Azure SQL Database との間でデータをコピーするパイプラインを�
 
 "external" を "true" に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Azure Data Factory サービスに通知されます。
 
-    {
-      "name": "AzureSqlInput",
-      "properties": {
-        "type": "AzureSqlTable",
-        "linkedServiceName": "AzureSqlLinkedService",
-        "typeProperties": {
-          "tableName": "MyTable"
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
+```JSON
+{
+  "name": "AzureSqlInput",
+  "properties": {
+    "type": "AzureSqlTable",
+    "linkedServiceName": "AzureSqlLinkedService",
+    "typeProperties": {
+      "tableName": "MyTable"
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
       }
     }
+  }
+}
+```
 
 このデータセット型でサポートされているプロパティの一覧については、「 [Azure SQL データセットの type プロパティ](#azure-sql-dataset-type-properties) 」を参照してください。  
 
@@ -119,111 +123,113 @@ Azure SQL Database との間でデータをコピーするパイプラインを�
 
 データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
-    {
-      "name": "AzureBlobOutput",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}/",
-          "partitionedBy": [
-            {
-              "name": "Year",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyy"
-              }
-            },
-            {
-              "name": "Month",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "MM"
-              }
-            },
-            {
-              "name": "Day",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "dd"
-              }
-            },
-            {
-              "name": "Hour",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HH"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": "\t",
-            "rowDelimiter": "\n"
+```JSON
+{
+  "name": "AzureBlobOutput",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}/",
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
           }
         },
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "MM"
+          }
+        },
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "dd"
+          }
+        },
+        {
+          "name": "Hour",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "HH"
+          }
         }
+      ],
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": "\t",
+        "rowDelimiter": "\n"
       }
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
-
+  }
+}
+```
 このデータセット型でサポートされているプロパティの一覧については、「 [Azure BLOB データセットの type プロパティ](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 」を参照してください。  
 
 **コピー アクティビティのあるパイプライン**
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **SqlSource** に設定され、**sink** 型が **BlobSink** に設定されています。 **SqlReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-        "start":"2014-06-01T18:00:00",
-        "end":"2014-06-01T19:00:00",
-        "description":"pipeline for copy activity",
-        "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+    "start":"2014-06-01T18:00:00",
+    "end":"2014-06-01T19:00:00",
+    "description":"pipeline for copy activity",
+    "activities":[  
+      {
+        "name": "AzureSQLtoBlob",
+        "description": "copy activity",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "AzureSQLtoBlob",
-            "description": "copy activity",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "AzureSQLInput"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "AzureBlobOutput"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "SqlSource",
-                "SqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
-              },
-              "sink": {
-                "type": "BlobSink"
-              }
-            },
-           "scheduler": {
-              "frequency": "Hour",
-              "interval": 1
-            },
-            "policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "OldestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "AzureSQLInput"
           }
-         ]
-       }
-    }
-
+        ],
+        "outputs": [
+          {
+            "name": "AzureBlobOutput"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "SqlSource",
+            "SqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
+          },
+          "sink": {
+            "type": "BlobSink"
+          }
+        },
+       "scheduler": {
+          "frequency": "Hour",
+          "interval": 1
+        },
+        "policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "OldestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
+      }
+     ]
+   }
+}
+```
 この例では、SqlSource に **sqlReaderQuery** が指定されています。 コピー アクティビティでは、データを取得するために Azure SQL Database ソースに対してこのクエリを実行します。 または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
 
 sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Azure SQL Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます。 (例: `select column1, column2 from mytable`)。 データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
@@ -243,30 +249,32 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 **Azure SQL のリンクされたサービス**
 
-    {
-      "name": "AzureSqlLinkedService",
-      "properties": {
-        "type": "AzureSqlDatabase",
-        "typeProperties": {
-          "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-      }
+```JSON
+{
+  "name": "AzureSqlLinkedService",
+  "properties": {
+    "type": "AzureSqlDatabase",
+    "typeProperties": {
+      "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
     }
-
+  }
+}
+```
 このリンクされたサービスでサポートされているプロパティの一覧については、「 [Azure SQL のリンクされたサービス](#azure-sql-linked-service-properties) 」を参照してください。
 
 **Azure BLOB ストレージのリンクされたサービス**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+  }
+}
+```
 このリンクされたサービスでサポートされているプロパティの一覧については、[Azure BLOB](data-factory-azure-blob-connector.md#azure-storage-linked-service) に関する記事を参照してください。
 
 
@@ -274,141 +282,144 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日の部分を利用し、ファイル名は開始時間の時刻部分を使用します。 "external": "true" 設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
 
-    {
-      "name": "AzureBlobInput",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/",
-          "fileName": "{Hour}.csv",
-          "partitionedBy": [
-            {
-              "name": "Year",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyy"
-              }
-            },
-            {
-              "name": "Month",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "MM"
-              }
-            },
-            {
-              "name": "Day",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "dd"
-              }
-            },
-            {
-              "name": "Hour",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HH"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ",",
-            "rowDelimiter": "\n"
+```JSON
+{
+  "name": "AzureBlobInput",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/",
+      "fileName": "{Hour}.csv",
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
           }
         },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "MM"
+          }
         },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "dd"
+          }
+        },
+        {
+          "name": "Hour",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "HH"
           }
         }
+      ],
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ",",
+        "rowDelimiter": "\n"
+      }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
       }
     }
-
+  }
+}
+```
 このデータセット型でサポートされているプロパティの一覧については、「 [Azure BLOB データセットの type プロパティ](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 」を参照してください。
 
 **Azure SQL の出力データセット**
 
 このサンプルは Azure SQL の「MyTable」というテーブルにデータをコピーします。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Azure SQL にテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
 
-    {
-      "name": "AzureSqlOutput",
-      "properties": {
-        "type": "AzureSqlTable",
-        "linkedServiceName": "AzureSqlLinkedService",
-        "typeProperties": {
-          "tableName": "MyOutputTable"
-        },
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        }
-      }
+```JSON
+{
+  "name": "AzureSqlOutput",
+  "properties": {
+    "type": "AzureSqlTable",
+    "linkedServiceName": "AzureSqlLinkedService",
+    "typeProperties": {
+      "tableName": "MyOutputTable"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
-
+  }
+}
+```
 このデータセット型でサポートされているプロパティの一覧については、「 [Azure SQL データセットの type プロパティ](#azure-sql-dataset-type-properties) 」を参照してください。
 
 **コピー アクティビティのあるパイプライン**
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプラインの JSON 定義で、**source** 型が **BlobSource** に設定され、**sink** 型が **SqlSink** に設定されています。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-        "start":"2014-06-01T18:00:00",
-        "end":"2014-06-01T19:00:00",
-        "description":"pipeline with copy activity",
-        "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+    "start":"2014-06-01T18:00:00",
+    "end":"2014-06-01T19:00:00",
+    "description":"pipeline with copy activity",
+    "activities":[  
+      {
+        "name": "AzureBlobtoSQL",
+        "description": "Copy Activity",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "AzureBlobtoSQL",
-            "description": "Copy Activity",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "AzureBlobInput"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "AzureSqlOutput"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "BlobSource",
-                "blobColumnSeparators": ","
-              },
-              "sink": {
-                "type": "SqlSink"
-              }
-            },
-           "scheduler": {
-              "frequency": "Hour",
-              "interval": 1
-            },
-            "policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "OldestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "AzureBlobInput"
           }
-          ]
-       }
-    }
-
+        ],
+        "outputs": [
+          {
+            "name": "AzureSqlOutput"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource",
+            "blobColumnSeparators": ","
+          },
+          "sink": {
+            "type": "SqlSink"
+          }
+        },
+       "scheduler": {
+          "frequency": "Hour",
+          "interval": 1
+        },
+        "policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "OldestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
+      }
+      ]
+   }
+}
+```
 SqlSink と BlobSource でサポートされるプロパティの一覧については、「[Sql Sink](#sqlsink)」および [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) に関する記述を参照してください。
 
 ## <a name="azure-sql-linked-service-properties"></a>Azure SQL のリンクされたサービスのプロパティ
@@ -466,32 +477,35 @@ sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 >
 
 ### <a name="sqlsource-example"></a>SqlSource の例
-    "source": {
-        "type": "SqlSource",
-        "sqlReaderStoredProcedureName": "CopyTestSrcStoredProcedureWithParameters",
-        "storedProcedureParameters": {
-            "stringData": { "value": "str3" },
-            "id": { "value": "$$Text.Format('{0:yyyy}', SliceStart)", "type": "Int"}
-        }
-    }
 
+```JSON
+"source": {
+    "type": "SqlSource",
+    "sqlReaderStoredProcedureName": "CopyTestSrcStoredProcedureWithParameters",
+    "storedProcedureParameters": {
+        "stringData": { "value": "str3" },
+        "identifier": { "value": "$$Text.Format('{0:yyyy}', SliceStart)", "type": "Int"}
+    }
+}
+```
 **ストアド プロシージャの定義:**
 
-    CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
-    (
-        @stringData varchar(20),
-        @id int
-    )
-    AS
-    SET NOCOUNT ON;
-    BEGIN
-         select *
-         from dbo.UnitTestSrcTable
-         where dbo.UnitTestSrcTable.stringData != stringData
-        and dbo.UnitTestSrcTable.id != id
-    END
-    GO
-
+```SQL
+CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
+(
+    @stringData varchar(20),
+    @identifier int
+)
+AS
+SET NOCOUNT ON;
+BEGIN
+     select *
+     from dbo.UnitTestSrcTable
+     where dbo.UnitTestSrcTable.stringData != stringData
+    and dbo.UnitTestSrcTable.identifier != identifier
+END
+GO
+```
 
 ### <a name="sqlsink"></a>パイプライン
 **SqlSink** では次のプロパティがサポートされます。
@@ -507,84 +521,89 @@ sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 | sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |テーブルの種類の名前。 |なし |
 
 #### <a name="sqlsink-example"></a>SqlSink の例
-    "sink": {
-        "type": "SqlSink",
-        "writeBatchSize": 1000000,
-        "writeBatchTimeout": "00:05:00",
-        "sqlWriterStoredProcedureName": "CopyTestStoredProcedureWithParameters",
-        "sqlWriterTableType": "CopyTestTableType",
-        "storedProcedureParameters": {
-            "id": { "value": "1", "type": "Int" },
-            "stringData": { "value": "str1" },
-            "decimalData": { "value": "1", "type": "Decimal" }
-        }
-    }
 
+```JSON
+"sink": {
+    "type": "SqlSink",
+    "writeBatchSize": 1000000,
+    "writeBatchTimeout": "00:05:00",
+    "sqlWriterStoredProcedureName": "CopyTestStoredProcedureWithParameters",
+    "sqlWriterTableType": "CopyTestTableType",
+    "storedProcedureParameters": {
+        "identifier": { "value": "1", "type": "Int" },
+        "stringData": { "value": "str1" },
+        "decimalData": { "value": "1", "type": "Decimal" }
+    }
+}
+```
 ## <a name="identity-columns-in-the-target-database"></a>ターゲット データベースの ID 列
 このセクションでは、ID 列がないソース テーブルから ID 列がある対象テーブルにデータをコピーする例を示します。
 
 **ソース テーブル:**
 
-    create table dbo.SourceTbl
-    (
-           name varchar(100),
-           age int
-    )
-
+```SQL
+create table dbo.SourceTbl
+(
+       name varchar(100),
+       age int
+)
+```
 **対象テーブル:**
 
-    create table dbo.TargetTbl
-    (
-           id int identity(1,1),
-           name varchar(100),
-           age int
-    )
-
-
+```SQL
+create table dbo.TargetTbl
+(
+       identifier int identity(1,1),
+       name varchar(100),
+       age int
+)
+```
 ターゲット テーブルには ID 列があることに注意してください。
 
 **ソース データセット JSON の定義**
 
-    {
-        "name": "SampleSource",
-        "properties": {
-            "type": " SqlServerTable",
-            "linkedServiceName": "TestIdentitySQL",
-            "typeProperties": {
-                "tableName": "SourceTbl"
-            },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            },
-            "external": true,
-            "policy": {}
-        }
+```JSON
+{
+    "name": "SampleSource",
+    "properties": {
+        "type": " SqlServerTable",
+        "linkedServiceName": "TestIdentitySQL",
+        "typeProperties": {
+            "tableName": "SourceTbl"
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
     }
-
+}
+```
 **対象データセット JSON の定義**
 
-    {
-        "name": "SampleTarget",
-        "properties": {
-            "structure": [
-                { "name": "name" },
-                { "name": "age" }
-            ],
-            "type": "AzureSqlTable",
-            "linkedServiceName": "TestIdentitySQLSource",
-            "typeProperties": {
-                "tableName": "TargetTbl"
-            },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            },
-            "external": false,
-            "policy": {}
-        }    
-    }
-
+```JSON
+{
+    "name": "SampleTarget",
+    "properties": {
+        "structure": [
+            { "name": "name" },
+            { "name": "age" }
+        ],
+        "type": "AzureSqlTable",
+        "linkedServiceName": "TestIdentitySQLSource",
+        "typeProperties": {
+            "tableName": "TargetTbl"
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
+        },
+        "external": false,
+        "policy": {}
+    }    
+}
+```
 
 ソースとターゲット テーブルには異なるスキーマがあることに注意してください (ターゲットには ID を持つ追加の列があります)。 このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
 
@@ -596,7 +615,7 @@ sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
-### <a name="type-mapping-for-sql-server-azure-sql-database"></a>SQL Server と Azure SQL Database の型のマッピング
+### <a name="type-mapping-for-sql-server--azure-sql-database"></a>SQL Server と Azure SQL Database の型のマッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
