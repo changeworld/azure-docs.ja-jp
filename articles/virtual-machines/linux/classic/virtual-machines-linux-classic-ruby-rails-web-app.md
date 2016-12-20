@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b8ab951046e031e5b1f8ae428ba7dc6ea936066e
+ms.sourcegitcommit: 66b1bcdf0f79ff4743f466c3737696f53ef6a44c
+ms.openlocfilehash: 4233cd55218c59e7998c7dd6de27086c492635a8
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: b8ab951046e031e5b1f8ae428ba7dc6ea936066e
 このチュートリアルは、Ubuntu Server 14.04 LTS を使用して検証されました。 他の Linux ディストリビューションを使用する場合は、Rails のインストール手順が異なる場合があります。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../../../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../../../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 > 
 > 
 
@@ -146,6 +146,6 @@ Ruby アプリケーションから Azure のサービスを使用する方法�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 
