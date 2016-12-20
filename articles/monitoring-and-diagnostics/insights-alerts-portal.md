@@ -1,12 +1,12 @@
 ---
-title: Azure ポータルでの Azure サービス アラートの作成 | Microsoft Docs
-description: Azure ポータルを使用して Azure アラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。
+title: "Azure Portal での Azure サービス アラートの作成 | Microsoft Docs"
+description: "Azure ポータルを使用して Azure アラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。"
 author: rboucher
-manager: ''
-editor: ''
+manager: carolz
+editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-
+ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e8c04dd76c01cc5eaa4cbbcd82a263090894aecf
+
 
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-services"></a>Azure ポータルでの Azure サービス アラートの作成
 > [!div class="op_single_selector"]
 > * [ポータル](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
-> * [CLI](../azure-portal/insights-alerts-command-line-interface.md) 
+> * [CLI](insights-alerts-command-line-interface.md)
 > 
 > 
 
@@ -32,19 +36,19 @@ ms.author: robb
 * **メトリック値** - アラートは、指定したメトリックの値が、割り当てたしきい値をいずれかの方向で超えたときにトリガーされます。 つまり、条件を最初に満たしたときと、後でその条件を満たさなくなったときの両方でトリガーされます。    
 * **アクティビティ ログ イベント** - アラートは、" *すべて* " のイベントに対して、または特定数のイベントが発生したときにのみトリガーされます。
 
-アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。 
+アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
 
 * サービスの管理者/共同管理者に電子メール通知を送信する
 * 指定した追加の電子メール アドレスに電子メールを送信する。
 * Webhook を呼び出す
-* Azure Runbook の実行を開始する (Azure ポータルからのみ) 
+* Azure Runbook の実行を開始する (Azure ポータルからのみ)
 
-アラート ルールを構成したり、その情報を取得したりするには、以下を使用します 
+アラート ルールを構成したり、その情報を取得したりするには、以下を使用します
 
 * [Azure ポータル](insights-alerts-portal.md)
-* [PowerShell](insights-alerts-powershell.md) 
-* [コマンド ライン インターフェイス (CLI)](../azure-portal/insights-alerts-command-line-interface.md) 
-* [Azure Insights REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [PowerShell](insights-alerts-powershell.md)
+* [コマンド ライン インターフェイス (CLI)](insights-alerts-command-line-interface.md)
+* [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure ポータルでメトリックにアラート ルールを作成する
 1. [ポータル](https://portal.azure.com/)で、監視するリソースを見つけて選択します。
@@ -57,9 +61,9 @@ ms.author: robb
 4. アラート ルールに**名前**を付けて、**説明**を選択します。この説明は通知電子メールにも表示されます。
 5. 監視する**メトリック**を選択し、メトリックの**条件**と**しきい値**を選択します。 また、 **[期間]** では、どのくらいの期間メトリック ルールが満たされた後、アラートがトリガーされるかを選択します。 たとえば、期間として [PT5M] を使用すると、アラートは 80% を超える CPU を見つけて、その CPU が 5 分間継続して 80% を超えた時点でトリガーされます。 最初のトリガーが発生したら、次のアラートは、CPU が 5 分間継続して 80% を下回ったときにトリガーされます。 CPU 測定は 1 分ごとに発生します。   
 6. アラートが発生したときに管理者と共同管理者に電子メールが送信されるようにするには、 **[メールの所有者...]** をオンにします。
-7. アラートが発生したときに、他のアドレスにも電子メールを送信して通知する場合は、 **[追加する管理者の電子メール]** フィールドにそのアドレスを入力します。 複数の電子メール アドレスを入力する場合はセミコロンで区切ります- *email@contoso.com;email2@contoso.com* 
+7. アラートが発生したときに、他のアドレスにも電子メールを送信して通知する場合は、 **[追加する管理者の電子メール]** フィールドにそのアドレスを入力します。 複数の電子メール アドレスを入力する場合はセミコロンで区切ります- *email@contoso.com;email2@contoso.com*
 8. **[webhook]** フィールドに、アラートが発生したときに呼び出す webhook の有効な URI を入力します。
-9. Azure Automation を使用する場合は、アラートが発生したときに実行する Runbook を選択できます。 
+9. Azure Automation を使用する場合は、アラートが発生したときに実行する Runbook を選択できます。
 10. 完了したら **[OK]** を選択して、アラートを作成します。   
 
 数分後にアラートがアクティブになり、前述のようにトリガーされます。
@@ -67,17 +71,20 @@ ms.author: robb
 ## <a name="managing-your-alerts"></a>アラートの管理
 アラートを作成して選択したら、次の操作を行うことができます。
 
-* メトリックのしきい値と、前日の実際の値を示すグラフを表示する。 
-* 編集または削除する。 
-* そのアラートの受信を一時的に停止または再開する必要がある場合に、そのアラートを**無効**または**有効**にする。 
+* メトリックのしきい値と、前日の実際の値を示すグラフを表示する。
+* 編集または削除する。
+* そのアラートの受信を一時的に停止または再開する必要がある場合に、そのアラートを**無効**または**有効**にする。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure での監視の概要](monitoring-overview.md) 情報を入手します。
 * [アラートでの webhook の構成](insights-webhooks-alerts.md)に関する詳細情報を確認します。
 * [Azure Automation Runbooks](../automation/automation-starting-a-runbook.md)の詳細情報を確認します。
 * [診断ログの概要](monitoring-overview-of-diagnostic-logs.md) 情報を入手し、サービスに関する詳細な頻度の高いメトリックを収集します。
-* [メトリック収集の概要](../azure-portal/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。
+* [メトリック収集の概要](insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

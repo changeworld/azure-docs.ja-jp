@@ -1,12 +1,12 @@
 ---
-title: 'Azure AD Connect: デバイスの書き戻しの有効化 | Microsoft Docs'
-description: Azure AD Connect を使用するデバイスの書き戻しを有効にする方法について詳しく説明します
+title: "Azure AD Connect: デバイスの書き戻しの有効化 | Microsoft Docs"
+description: "Azure AD Connect を使用するデバイスの書き戻しを有効にする方法について詳しく説明します"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: billmath
 manager: femila
 editor: curtand
-
+ms.assetid: c0ff679c-7ed5-4d6e-ac6c-b2b6392e7892
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: df2a2abed95126fbcbdcdef8100f728375ce9673
+
 
 ---
-# <a name="azure-ad-connect:-enabling-device-writeback"></a>Azure AD Connect: デバイスの書き戻しの有効化
+# <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: デバイスの書き戻しの有効化
 > [!NOTE]
 > デバイスの書き戻しには、Azure AD Premium に対するサブスクリプションが必要です。
 > 
@@ -30,14 +34,12 @@ ms.author: billmath
 
 > [!IMPORTANT]
 > <li>デバイスは、ユーザーと同じフォレスト内にある必要があります。 デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。</li>
-> <li>オンプレミスの Active Directory フォレストに追加できるのは、1 つのデバイス登録構成オブジェクトのみです。 この機能は、オンプレミスの Active Directory が複数の Azure AD ディレクトリに同期されるトポロジと互換性がありません。</li>
-> 
-> 
+> <li>オンプレミスの Active Directory フォレストに追加できるのは、1 つのデバイス登録構成オブジェクトのみです。 この機能は、オンプレミスの Active Directory が複数の Azure AD ディレクトリに同期されるトポロジと互換性がありません。</li>> 
 
-## <a name="part-1:-install-azure-ad-connect"></a>パート 1: Azure AD Connect のインストール
+## <a name="part-1-install-azure-ad-connect"></a>パート 1: Azure AD Connect のインストール
 1. カスタム設定または簡単設定を使用して Azure AD Connect をインストールします。 すべてのユーザーとグループの同期に成功してから、デバイスの書き戻しを有効にすることをお勧めします。
 
-## <a name="part-2:-prepare-active-directory"></a>パート 2: Active Directory の準備
+## <a name="part-2-prepare-active-directory"></a>パート 2: Active Directory の準備
 デバイスの書き戻しの使用を準備するには、次の手順を使用します。
 
 1. Azure AD Connect がインストールされているコンピューターから、管理者特権モードで PowerShell を起動します。
@@ -67,7 +69,7 @@ ms.author: billmath
 * DomainName: デバイス オブジェクトが作成される Active Directory ドメイン。 注: 特定の Active Directory フォレストのデバイスはすべて、1 つのドメインに作成されます。
 * AdConnectorAccount: ディレクトリ内のオブジェクトを管理するために Azure AD Connect によって使用される Active Directory アカウント。 Azure AD Connect Sync が AD に接続するために使用するアカウントです。 簡単設定を使用してインストールした場合、アカウントには MSOL_ というプレフィックスが付きます。
 
-## <a name="part-3:-enable-device-writeback-in-azure-ad-connect"></a>パート 3: Azure AD Connect でのデバイスの書き戻しを有効にする
+## <a name="part-3-enable-device-writeback-in-azure-ad-connect"></a>パート 3: Azure AD Connect でのデバイスの書き戻しを有効にする
 Azure AD Connect でデバイスの書き戻しを有効にするには、次の手順を使用します。
 
 1. インストール ウィザードをもう一度実行します。 [追加のタスク] ページで **[同期オプションのカスタマイズ]** を選択し、**[次へ]** をクリックします。
@@ -76,7 +78,7 @@ Azure AD Connect でデバイスの書き戻しを有効にするには、次の
    ![カスタム インストール デバイスの書き戻しオプション機能](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback3.png)
 3. [書き戻し] ページでは、指定したドメインが既定の [デバイスの書き戻しフォレスト] として表示されます。
    ![カスタム インストール デバイスの書き戻し先フォレスト](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
-4. その他の構成は変更しないで、ウィザードのインストールを完了します。 必要に応じて、「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」をご覧ください。
+4. その他の構成は変更しないで、ウィザードのインストールを完了します。 必要に応じて、「[Azure AD Connect のカスタム インストール](connect/active-directory-aadconnect-get-started-custom.md)」をご覧ください。
 
 ## <a name="enable-conditional-access"></a>条件付きアクセスを有効にする
 このシナリオを有効にする詳細な手順については、「 [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://msdn.microsoft.com/library/azure/dn788908.aspx)」をご覧ください。
@@ -137,6 +139,9 @@ Active Directory の構成を確認します。
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

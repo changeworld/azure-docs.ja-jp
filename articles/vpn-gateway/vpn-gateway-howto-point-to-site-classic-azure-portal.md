@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 87d52de2d6ccb80390f8680371527a23904c5bb0
+ms.sourcegitcommit: f6fa6511c8d54e191de27fda73aad9feb734191f
+ms.openlocfilehash: 11d27b786522d1f780a701229ed0a695224e9eb6
 
 
 ---
-# <a name="configure-a-pointtosite-connection-to-a-vnet-using-the-azure-portal"></a>Azure Portal を使用した VNet へのポイント対サイト接続の構成
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-the-azure-portal"></a>Azure Portal を使用した VNet へのポイント対サイト接続の構成
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
@@ -68,7 +68,7 @@ ms.openlocfilehash: 87d52de2d6ccb80390f8680371527a23904c5bb0
 * **サイズ:** 使用するゲートウェイ SKU を選択します。
 * **ルーティングの種類: 動的**
 
-## <a name="a-namevnetvpnasection-1-create-a-virtual-network-and-a-vpn-gateway"></a><a name="vnetvpn"></a>セクション 1 - 仮想ネットワークと VPN ゲートウェイの作成
+## <a name="a-namevnetvpnasection-1---create-a-virtual-network-and-a-vpn-gateway"></a><a name="vnetvpn"></a>セクション 1 - 仮想ネットワークと VPN ゲートウェイの作成
 ### <a name="a-namecreatevnetapart-1-create-a-virtual-network"></a><a name="createvnet"></a>パート 1: 仮想ネットワークの作成
 まだ仮想ネットワークがない場合は作成します。 スクリーンショットは例として示されています。 サンプルの値は必ず実際の値に変更してください。 Azure Portal を使用して VNet を作成するには、以下の手順に従ってください。 
 
@@ -130,7 +130,7 @@ ms.openlocfilehash: 87d52de2d6ccb80390f8680371527a23904c5bb0
     ![ルーティングの種類の構成](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/routingtype125.png "Configure routing type")
 10. **[新しい VPN 接続]** ブレードで、ブレードの下部にある **[OK]** をクリックして、仮想ネットワーク ゲートウェイの作成を開始します。 完了するまで最大 45 分かかることがあります。 
 
-## <a name="a-namegeneratecertsasection-2-generate-certificates"></a><a name="generatecerts"></a>セクション 2 - 証明書の生成
+## <a name="a-namegeneratecertsasection-2---generate-certificates"></a><a name="generatecerts"></a>セクション 2 - 証明書の生成
 証明書は、ポイント対サイト VPN の VPN クライアントを認証するために、Azure によって使用されます。 秘密キーではなく公開証明書データを Base 64 エンコードの X.509 .cer ファイルとして、エンタープライズ証明書ソリューションによって生成されたルート証明書から、または自己署名ルート証明書からエクスポートします。 その後、公開証明書データをルート証明書から Azure にインポートします。 また、クライアントのルート証明書からクライアント証明書を生成する必要があります。 P2S 接続を使用して仮想ネットワークに接続する各クライアントには、ルート証明書から生成されたクライアント証明書をインストールする必要があります。
 
 ### <a name="a-namecerapart-1-obtain-the-cer-file-for-the-root-certificate"></a><a name="cer"></a>パート 1: ルート証明書の .cer ファイルの取得
@@ -157,7 +157,7 @@ ms.openlocfilehash: 87d52de2d6ccb80390f8680371527a23904c5bb0
 1. クライアント証明書をエクスポートするには、 *certmgr.msc*を使用できます。 エクスポートするクライアント証明書を右クリックして、**[すべてのタスク]**、**[エクスポート]** の順にクリックします。
 2. クライアント証明書と秘密キーをエクスポートします。 これは *.pfx* ファイルです。 この証明書に設定したパスワード (キー) を記録するか、覚えておいてください。
 
-## <a name="a-nameuploadasection-3-upload-the-root-certificate-cer-file"></a><a name="upload"></a>セクション 3: ルート証明書 .cer ファイルのアップロード
+## <a name="a-nameuploadasection-3---upload-the-root-certificate-cer-file"></a><a name="upload"></a>セクション 3: ルート証明書 .cer ファイルのアップロード
 ゲートウェイが作成されたら、信頼されたルート証明書の .cer ファイルを Azure にアップロードできます。 最大 20 個のルート証明書のファイルをアップロードすることができます。 ルート証明書の秘密キーは、Azure にアップロードしません。 .cer ファイルをアップロードすると、Azure は仮想ネットワークに接続するクライアントの認証にそれを使用します。
 
 1. VNet のブレードの **[VPN 接続]** セクションで**クライアント**のグラフィックをクリックして、**[ポイント対サイト VPN 接続]** ブレードを開きます。
@@ -173,7 +173,7 @@ ms.openlocfilehash: 87d52de2d6ccb80390f8680371527a23904c5bb0
    
     ![証明書のアップロード](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/upload.png "Upload certificate")<br>
 
-## <a name="a-namevpnclientconfigasection-4-generate-the-vpn-client-configuration-package"></a><a name="vpnclientconfig"></a>セクション 4: VPN クライアント構成パッケージの生成
+## <a name="a-namevpnclientconfigasection-4---generate-the-vpn-client-configuration-package"></a><a name="vpnclientconfig"></a>セクション 4: VPN クライアント構成パッケージの生成
 仮想ネットワークに接続するには、VPN クライアントも構成する必要があります。 クライアント コンピューターが接続するためには、クライアント証明書と適切な VPN クライアント構成パッケージの両方が必要です。
 
 VPN クライアント パッケージには、Windows に組み込まれた VPN クライアント ソフトウェアを構成する構成情報が含まれています。 このパッケージでは、追加のソフトウェアはインストールされません。 この設定は、接続先の仮想ネットワークに固有です。 サポートされているクライアント オペレーティング システムの一覧については、「VPN Gateway に関する FAQ」の「[ポイント対サイト接続](vpn-gateway-vpn-faq.md#point-to-site-connections)」セクションを参照してください。 
@@ -188,7 +188,7 @@ VPN クライアント パッケージには、Windows に組み込まれた VPN
      ![VPN クライアント構成パッケージのダウンロード](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png "Download VPN client configuration package")<br>
 3. Azure が仮想ネットワークの VPN クライアント構成パッケージを生成しているというメッセージが表示されます。 数分後にパッケージが生成され、パッケージがダウンロードされたというメッセージがローカル コンピューターに表示されます。 構成パッケージ ファイルを保存します。 これを、P2S を使用して仮想ネットワークに接続する各クライアント コンピューターにインストールします。
 
-## <a name="a-nameclientconfigurationasection-5-configure-the-client-computer"></a><a name="clientconfiguration"></a>セクション 5: クライアント コンピューターの構成
+## <a name="a-nameclientconfigurationasection-5---configure-the-client-computer"></a><a name="clientconfiguration"></a>セクション 5: クライアント コンピューターの構成
 ### <a name="part-1-install-the-client-certificate"></a>パート 1: クライアント証明書のインストール
 各クライアント コンピューターには、認証のためにクライアント証明書が必要です。 クライアント証明書をインストールするときに、クライアント証明書のエクスポート時に作成されたパスワードが必要になります。
 
@@ -204,7 +204,7 @@ VPN クライアント パッケージには、Windows に組み込まれた VPN
    
     ![VPN client](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/vpn.png "VNet VPN client")
 
-## <a name="a-nameconnectasection-6-connect-to-azure"></a><a name="connect"></a>セクション 6 - Azure への接続
+## <a name="a-nameconnectasection-6---connect-to-azure"></a><a name="connect"></a>セクション 6 - Azure への接続
 ### <a name="connect-to-your-vnet"></a>VNet への接続
 1. VNet に接続するには、クライアント コンピューターで [VPN 接続] に移動し、作成した VPN 接続を見つけます。 仮想ネットワークと同じ名前が付いています。 **[接続]**をクリックします。 証明書を使用することを示すポップアップ メッセージが表示される場合があります。 その場合、 **[続行]** をクリックして、昇格された特権を使用します。 
 2. **接続**の状態ページで、**[接続]** をクリックして接続を開始します。 **[証明書の選択]** 画面が表示された場合は、表示されているクライアント証明書が接続に使用する証明書であることを確認します。 そうでない場合は、ドロップダウン矢印を使用して適切な証明書を選択し、 **[OK]**をクリックします。
@@ -232,11 +232,11 @@ VPN クライアント パッケージには、Windows に組み込まれた VPN
         NetBIOS over Tcpip..............: Enabled
 
 ## <a name="next-steps"></a>次のステップ
-仮想ネットワークに仮想マシンを追加できます。 「 [カスタム仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-classic-createportal.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

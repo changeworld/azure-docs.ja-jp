@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9e6af9016318f9e31a143c6cf1329a7ab2c8acd6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ec2a69ff5a7f1f3a954eae70f1cd776242b0b7f4
 
 
 ---
@@ -449,6 +449,6 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

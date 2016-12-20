@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
+ms.sourcegitcommit: 2050bda9c1a4390232d32370863e8d6a62ed5c2b
+ms.openlocfilehash: 66f1a0987960c9251922f1d22ed647d10bb0d10e
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
 <a name="prereq"></a>
 
 ## <a name="prerequisites"></a>前提条件
-* [Node.JS]
+* [Node.js]
 * [Bower]
 * [Yeoman]
 * [Git]
@@ -91,6 +91,7 @@ ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
 8. 変更内容を保存し、git を使用してアプリを Azure にデプロイします。
    
         git add .
+        git add -f config
         git commit -m "{your commit message}"
         git push azure master
    
@@ -186,7 +187,7 @@ iisnode ログを読み取るには、次の手順を実行します。
    
     ![Examining an iisnode log file.][iislog-kudu-console-read]
 
-## <a name="debug-your-app-with-nodeinspector"></a>Node-Inspector によるアプリのデバッグ
+## <a name="debug-your-app-with-node-inspector"></a>Node-Inspector によるアプリのデバッグ
 Node.js アプリのデバッグに Node-Inspector を使用している場合、実稼働の App Service アプリに Node-Inspector を使用できます。 Node-Inspector は、App Service の iisnode のインストールでプレインストールされます。 また、デプロイに Git を使用している場合、Kudu によって自動生成された Web.config には既に、Node-Inspector を有効にするうえで必要な構成がすべて含まれています。
 
 Node-Inspector を有効にするには、次の手順を実行します。
@@ -222,7 +223,7 @@ Node-Inspector を有効にするには、次の手順を実行します。
 
 [Azure CLI]: ../xplat-cli-install.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
-[Visual Studio サブスクライバー特典を有効にする]: http://go.microsoft.com/fwlink/?LinkId=623901
+[Visual Studio サブスクライバー特典を有効]: http://go.microsoft.com/fwlink/?LinkId=623901
 [Bower]: http://bower.io/
 [Azure App Service での Socket.IO を使用する Node.js チャット アプリケーションの構築]: ./web-sites-nodejs-chat-app-socketio.md
 [Deploy a Sails.js web app to Azure App Service (Sails.js Web アプリを Azure App Service にデプロイする)]: ./app-service-web-nodejs-sails.md
@@ -232,10 +233,10 @@ Node-Inspector を有効にするには、次の手順を実行します。
 [Azure App Service Web Apps で io.js を使用する方法]: ./web-sites-nodejs-iojs.md
 [iisnode]: https://github.com/tjanczuk/iisnode/wiki
 [MEANJS]: http://meanjs.org/
-[Node.JS]: http://nodejs.org
+[Node.js]: http://nodejs.org
 [SAILSJS]: http://sailsjs.org/
-[無料試用版にサインアップ]: http://go.microsoft.com/fwlink/?LinkId=623901
-[Web アプリ]: ./app-service-web-overview.md
+[無料試用版にサインアップする]: http://go.microsoft.com/fwlink/?LinkId=623901
+[web app]: ./app-service-web-overview.md
 [Yeoman]: http://yeoman.io/
 
 <!-- IMG List -->
@@ -247,6 +248,6 @@ Node-Inspector を有効にするには、次の手順を実行します。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

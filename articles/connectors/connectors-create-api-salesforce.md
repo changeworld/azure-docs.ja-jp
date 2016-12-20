@@ -1,13 +1,13 @@
 ---
-title: Logic Apps での Salesforce コネクタの使用方法 | Microsoft Docs
-description: Azure App Service を使用してロジック アプリを作成します。 Salesforce コネクタは、Salesforce オブジェクトを操作するための API を提供します。
+title: "Logic Apps での Salesforce コネクタの使用方法 | Microsoft Docs"
+description: "Azure App Service を使用してロジック アプリを作成します。 Salesforce コネクタは、Salesforce オブジェクトを操作するための API を提供します。"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
 ms.service: logic-apps
 ms.devlang: multiple
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/05/2016
 ms.author: deonhe
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f2f9a4d182527d2772e78d78a0c10bd94742d0fe
+
 
 ---
 # <a name="get-started-with-the-salesforce-connector"></a>Salesforce コネクタの使用
@@ -226,6 +230,9 @@ TablesList
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

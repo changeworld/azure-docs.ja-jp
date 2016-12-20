@@ -1,12 +1,12 @@
 ---
-title: 復旧計画の作成 | Microsoft Docs
-description: Azure Site Recovery で復旧計画を作成し、仮想マシンと物理サーバーのグループをフェールオーバーおよび復旧します。
+title: "復旧計画の作成 | Microsoft Docs"
+description: "Azure Site Recovery で復旧計画を作成し、仮想マシンと物理サーバーのグループをフェールオーバーおよび復旧します。"
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: rayne-wiselman
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 72408c62-fcb6-4ee2-8ff5-cab1218773f2
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/05/2016
 ms.author: raynew
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3cc2aa0ade25417a1e2a8fb96fc3a059349afa99
+
 
 ---
 # <a name="create-recovery-plans"></a>復旧計画の作成
@@ -109,6 +113,9 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 ## <a name="next-steps"></a>次のステップ
 さまざまな種類のフェールオーバー復旧計画を実行できます。このような種類としては、環境を確認するためのテスト フェールオーバー、計画されたフェールオーバー、計画されていないフェールオーバーなどがあります。 [詳細情報](site-recovery-failover.md)。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

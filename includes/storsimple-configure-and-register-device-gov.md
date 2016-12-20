@@ -1,26 +1,26 @@
 <!--author=SharS last changed: 02/22/16-->
 
-### デバイスを構成して登録するには
-1. StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイス にアクセスします。方法については、「[PuTTY を使用してデバイスのシリアル コンソールに接続する](#use-putty-to-connect-to-the-device-serial-console)」を参照してください。**必ず手順を正確に実行してください。そうしないと、コンソールにアクセスできません。**
-2. 開いたセッションで、Enter キーを 1 回押して、コマンド プロンプトを開きます。
-3. デバイスに設定する言語を選択するように求められます。言語を指定し、Enter キーを押します。
+### <a name="to-configure-and-register-the-device"></a>デバイスを構成して登録するには
+1. StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイス にアクセスします。 方法については、「 [PuTTY を使用してデバイスのシリアル コンソールに接続する](#use-putty-to-connect-to-the-device-serial-console) 」を参照してください。 **必ず手順を正確に実行してください。そうしないと、コンソールにアクセスできません。**
+2. 開いたセッションで、Enter キーを 1 回押して、コマンド プロンプトを開きます。 
+3. デバイスに設定する言語を選択するように求められます。 言語を指定し、Enter キーを押します。 
    
     ![StorSimple によるデバイスの構成および登録 1](./media/storsimple-configure-and-register-device-gov/HCS_RegisterYourDevice1-gov-include.png)
-4. 表示されるシリアル コンソール メニューで、オプション 1 を選択してフル アクセスでログインします。
+4. 表示されるシリアル コンソール メニューで、オプション 1 を選択してフル アクセスでログインします。 
    
     ![StorSimple によるデバイスの登録 2](./media/storsimple-configure-and-register-device-gov/HCS_RegisterYourDevice2-gov-include.png)
 5. 次の手順を実行して、デバイスで必要な最小のネットワーク設定を構成します。
    
    > [!IMPORTANT]
-   > これらの構成手順は、デバイスのアクティブ コントローラーで実行する必要があります。シリアル コンソール メニューでは、バナー メッセージにコントローラーの状態が示されます。アクティブ コントローラーに接続されていない場合は、切断してアクティブ コントローラーに接続します。
+   > これらの構成手順は、デバイスのアクティブ コントローラーで実行する必要があります。 シリアル コンソール メニューでは、バナー メッセージにコントローラーの状態が示されます。 アクティブ コントローラーに接続されていない場合は、切断してアクティブ コントローラーに接続します。
    > 
    > 
    
-   1. コマンド プロンプトにパスワードを入力します。デバイスの既定のパスワードは **Password1** です。
+   1. コマンド プロンプトにパスワードを入力します。 デバイスの既定のパスワードは **Password1**です。
    2. 次のコマンドを入力します。
       
         `Invoke-HcsSetupWizard`
-   3. デバイスのネットワーク設定の構成に役立つセットアップ ウィザードが表示されます。次の情報を指定します。
+   3. デバイスのネットワーク設定の構成に役立つセットアップ ウィザードが表示されます。 次の情報を指定します。 
       
       * DATA 0 ネットワーク インターフェイスの IP アドレス
       * サブネット マスク
@@ -29,13 +29,13 @@
       * プライマリ NTP サーバーの IP アドレス
       
       > [!NOTE]
-      > サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。
+      > サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。 
       > 
       > 
    4. 必要に応じて、Web プロキシ サーバーを構成します。
       
       > [!IMPORTANT]
-      > Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、ここでのみ構成できることに注意してください。詳細については、「[デバイスの Web プロキシの構成](../articles/storsimple/storsimple-configure-web-proxy.md)」を参照してください。
+      > Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、ここでのみ構成できることに注意してください。 詳細については、「 [デバイスの Web プロキシの構成](../articles/storsimple/storsimple-configure-web-proxy.md)」を参照してください。 
       > 
       > 
 6. Ctrl キーを押しながら C キーを押してセットアップ ウィザードを終了します。
@@ -44,10 +44,10 @@
    1. 次のコマンドレットを使用して、両方のコントローラーに IP を設定します。
       
       `Set-HcsNetInterface -InterfaceAlias Data0 -Controller0IPv4Address <Controller0 IP> -Controller1IPv4Address <Controller1 IP>`
-   2. コマンド プロンプトで、`Get-HcsUpdateAvailability` を実行します。更新プログラムを使用できることが通知されます。
-   3. `Start-HcsUpdate` を実行します。このコマンドは、任意のノードで実行できます。更新プログラムが最初のコントローラーに適用され、コントローラーがフェールオーバーします。次に、もう 1 つのコントローラーに更新が適用されます。
+   2. コマンド プロンプトで、 `Get-HcsUpdateAvailability`を実行します。 更新プログラムを使用できることが通知されます。
+   3. `Start-HcsUpdate` を実行します。 このコマンドは、任意のノードで実行できます。 更新プログラムが最初のコントローラーに適用され、コントローラーがフェールオーバーします。次に、もう 1 つのコントローラーに更新が適用されます。
       
-      `Get-HcsUpdateStatus` を実行すると、更新プログラムの進行状況を監視できます。
+      `Get-HcsUpdateStatus` を実行すると、更新プログラムの進行状況を監視できます。    
       
       次のサンプル出力は、インストール中の更新プログラムを示しています。
       
@@ -71,68 +71,72 @@
       Controller0Events   :
       Controller1Events   :
       
-      Windows 更新プログラムを含むすべての更新を適用するには最大で 11 時間かかる場合があります。
-8. すべての更新プログラムが正常にインストールされたら、次のコマンドレットを実行して、ソフトウェア更新プログラムが正しく適用されたことを確認します。
+      It may take up to 11 hours to apply all the updates, including the Windows Updates.
+8. After all the updates are successfully installed, run the following cmdlet to confirm that the software updates were applied correctly:
    
      `Get-HcsSystem`
    
-    次のバージョンが表示されます。
+    You should see the following versions:
    
    * HcsSoftwareVersion: 6.3.9600.17491
    * CisAgentVersion: 1.0.9037.0
    * MdsAgentVersion: 26.0.4696.1433
-9. 次のコマンドレットを実行して、ファームウェアの更新が正しく適用されたことを確認します。
+9. Run the following cmdlet to confirm that the firmware update was applied correctly:
    
-    `Start-HcsFirmwareCheck`
+    `Start-HcsFirmwareCheck`.
    
-     ファームウェアの状態が **UpToDate** になっています。
-10. 次のコマンドレットを実行して、デバイスが Microsoft Azure Government ポータルを示すように設定します (デバイスは既定でパブリックの Microsoft Azure クラシック ポータルを示します)。これにより、両方のコントローラーが再起動されます。2 つの PuTTY セッションを使用して両方のコントローラーに同時に接続して、各コント ローラーが再起動されるのを確認できるようにすることをお勧めします。
+     The firmware status should be **UpToDate**.
+10. Run the following cmdlet to point the device to the Microsoft Azure Government portal (because it points to the public Azure classic portal by default). This will restart both controllers. We recommend that you use two PuTTY sessions to simultaneously connect to both controllers so that you can see when each controller is restarted.
     
      `Set-CloudPlatform -AzureGovt_US`
     
-    確認メッセージが表示されます。既定値を受け入れます (**Y**)。
-11. 次のコマンドレットを実行してセットアップを再開します。
+    You will see a confirmation message. Accept the default (**Y**).
+11. Run the following cmdlet to resume setup:
     
      `Invoke-HcsSetupWizard`
     
-     ![Resume セットアップ ウィザード](./media/storsimple-configure-and-register-device-gov/HCS_ResumeSetup-gov-include.png)
+     ![Resume setup wizard](./media/storsimple-configure-and-register-device-gov/HCS_ResumeSetup-gov-include.png)
     
-    セットアップを再開すると、ウィザードは、(バージョン 17469 に対応する) Update 1 1 バージョンになります。
-12. ネットワークの設定を受け入れます。各設定を受け入れた後、検証メッセージが表示されます。
-13. セキュリティ上の理由で、デバイス管理者のパスワードは最初のセッション後に期限が切れるため、今すぐパスワードを変更する必要があります。画面の指示に従って、デバイスの管理者パスワードを入力します。デバイス管理者の有効なパスワードの長さは、8 ～ 15 文字です。パスワードには、小文字、大文字、数字、および特殊文字のうち 3 種類の文字を組み合わせる必要があります。
+    When you resume setup, the wizard will be the Update 1 version (which corresponds to version 17469). 
+12. Accept the network settings. You will see a validation message after you accept each setting.
+13. For security reasons, the device administrator password expires after the first session, and you will need to change it now. When prompted, provide a device administrator password. A valid device administrator password must be between 8 and 15 characters. The password must contain three of the following: lowercase, uppercase, numeric, and special characters.
     
-    <br/>![StorSimple によるデバイスの登録 5](./media/storsimple-configure-and-register-device-gov/HCS_RegisterYourDevice5_gov-include.png)
-14. セットアップ ウィザードの最後の手順では、お使いのデバイスを StorSimple Manager サービスに登録します。そのためには、[手順 2. (サービス登録キーの取得)](#step-2-get-the-service-registration-key) で取得したサービス登録キーが必要です。登録キーを指定したら、デバイスが登録されるまでに 2 ～ 3 分かかる場合があります。
+    <br/>![StorSimple register device 5](./media/storsimple-configure-and-register-device-gov/HCS_RegisterYourDevice5_gov-include.png)
+14. The final step in the setup wizard registers your device with the StorSimple Manager service. For this, you will need the service registration key that you obtained in [Step 2: Get the service registration key](#step-2-get-the-service-registration-key). After you supply the registration key, you may need to wait for 2-3 minutes before the device is registered.
     
     > [!NOTE]
-    > Ctrl キーを押しながら C キーを押すことで、いつでもセットアップ ウィザードを終了できます。すべてのネットワーク設定 (Data 0、サブネット マスク、およびゲートウェイの IP アドレス) を入力した場合、エントリは保持されます。
+    > You can press Ctrl + C at any time to exit the setup wizard. If you have entered all the network settings (IP address for Data 0, Subnet mask, and Gateway), your entries will be retained.
     > 
     > 
     
-    ![StorSimple 登録進行状況](./media/storsimple-configure-and-register-device-gov/HCS_RegistrationProgress-gov-include.png)
-15. デバイスが登録されると、サービス データ暗号化キーが表示されます。このキーをコピーし、安全な場所に保存しておきます。**このキーは、StorSimple Manager サービスに追加のデバイスを登録するために、サービス登録キーと共に必要になります。** このキーの詳細については、「[StorSimple のセキュリティ](../articles/storsimple/storsimple-security.md)」を参照してください。
+    ![StorSimple registration progress](./media/storsimple-configure-and-register-device-gov/HCS_RegistrationProgress-gov-include.png)
+15. After the device is registered, a Service Data Encryption key will appear. Copy this key and save it in a safe location. **This key will be required with the service registration key to register additional devices with the StorSimple Manager service.** Refer to [StorSimple security](../articles/storsimple/storsimple-security.md) for more information about this key.
     
-    ![StorSimple によるデバイスの登録 7](./media/storsimple-configure-and-register-device-gov/HCS_RegisterYourDevice7_gov-include.png)
+    ![StorSimple register device 7](./media/storsimple-configure-and-register-device-gov/HCS_RegisterYourDevice7_gov-include.png)    
     
     > [!IMPORTANT]
-    > シリアル コンソール ウィンドウからテキストをコピーするには、単にテキストを選択します。その状態で、クリップボードまたは任意のテキスト エディターに貼り付けることができます。
+    > To copy the text from the serial console window, simply select the text. You should then be able to paste it in the clipboard or any text editor. 
     > 
-    > サービス データ暗号化キーをコピーするときには、Ctrl キーを押しながら C キーを押さないでください。Ctrl キーを押しながら C キーを押すと、セットアップ ウィザードが終了します。その場合、デバイスの管理者パスワードは変更されず、デバイスは既定のパスワードに戻ります。
+    > DO NOT use Ctrl + C to copy the service data encryption key. Using Ctrl + C will cause you to exit the setup wizard. As a result, the device administrator password will not be changed and the device will revert to the default password.
     > 
     > 
-16. シリアル コンソールを終了します。
-17. Azure Government ポータルに戻り、次の手順を実行します。
+16. Exit the serial console.
+17. Return to the Azure Government Portal, and complete the following steps:
     
-    1. StorSimple Manager サービスをダブルクリックして **[クイック スタート]** ページにアクセスします。
-    2. **[接続されたデバイスの表示]** をクリックします。
-    3. **[デバイス]** ページで、状態を参照して、デバイスが正常にサービスに接続されていることを確認します。デバイスの状態は **"オンライン"** と表示されます。
-    
-    ![StorSimple デバイス ページ](./media/storsimple-configure-and-register-device-gov/HCS_DeviceOnline-gov-include.png)
-    
-    デバイスの状態が **"オフライン"** の場合は、デバイスがオンラインになるまで数分待ちます。
-    
-    数分待ってもデバイスがまだオフラインである場合は、「[StorSimple ソフトウェア、高可用性、ネットワークの要件](../articles/storsimple/storsimple-system-requirements.md)」で説明されているとおりにファイアウォール ネットワークが構成されていることを確認する必要があります。
-    
-    ポート 9354 は Service Bus によって StorSimple Manager のサービスとデバイス間の通信に使用されているため、このポートが送信用に開かれていることを確認してください。
+    1. Double-click your StorSimple Manager service to access the **Quick Start** page.
+    2. Click **View connected devices**.
+    3. On the **Devices** page, verify that the device has successfully connected to the service by looking up the status. The device status should be **Online**.
+       
+        ![StorSimple Devices page](./media/storsimple-configure-and-register-device-gov/HCS_DeviceOnline-gov-include.png) 
+       
+        If the device status is **Offline**, wait for a couple of minutes for the device to come online. 
+       
+        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in [networking requirements for your StorSimple device](../articles/storsimple/storsimple-system-requirements.md). 
+       
+        Verify that port 9354 is open for outbound communication as this is used by the service bus for StorSimple Manager service-to-device communication.
 
-<!---HONumber=AcomDC_0224_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

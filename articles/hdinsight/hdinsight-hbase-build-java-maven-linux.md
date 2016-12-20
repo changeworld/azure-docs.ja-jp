@@ -1,58 +1,62 @@
 ---
-title: Maven と Java を使用した HBase アプリケーションのビルドと、Linux ベースの HDInsight へのデプロイ | Microsoft Docs
-description: Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure クラウドの Linux ベースの HDInsight にデプロイする方法について説明します。
+title: "Maven と Java を使用した HBase アプリケーションのビルドと、Linux ベースの HDInsight へのデプロイ | Microsoft Docs"
+description: "Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure クラウドの Linux ベースの HDInsight にデプロイする方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 1d1ed180-e0f4-4d1c-b5ea-72e0eda643bc
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 10/03/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0f321065b9c24075837bebb71251cbc5751a1854
+
 
 ---
-# Linux ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する
-Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成し、ビルドする方法について説明します。その後、Linux ベースの HDInsight クラスターでアプリケーションを使用します。
+# <a name="use-maven-to-build-java-applications-that-use-hbase-with-linux-based-hdinsight-hadoop"></a>Linux ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する
+Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成し、ビルドする方法について説明します。 その後、Linux ベースの HDInsight クラスターでアプリケーションを使用します。
 
-[Maven](http://maven.apache.org/) は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。この記事では、このツールを使用して、Linux ベースの HDInsight クラスターで HBase テーブルの作成、クエリ、削除を実行する基本的な Java アプリケーションを作成する方法について説明します。
+[Maven](http://maven.apache.org/) は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。 この記事では、このツールを使用して、Linux ベースの HDInsight クラスターで HBase テーブルの作成、クエリ、削除を実行する基本的な Java アプリケーションを作成する方法について説明します。
 
 > [!NOTE]
-> このドキュメントの手順は、Linux ベースの HDInsight クラスターを使用することを前提としています。Windows ベースの HDInsight クラスターを使用する方法の詳細については、「[Windows ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する](hdinsight-hbase-build-java-maven.md)」を参照してください。
+> このドキュメントの手順は、Linux ベースの HDInsight クラスターを使用することを前提としています。 Windows ベースの HDInsight クラスターを使用する方法の詳細については、「 [Windows ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する](hdinsight-hbase-build-java-maven.md)
 > 
 > 
 
-## 必要条件
+## <a name="requirements"></a>必要条件
 * [Java プラットフォーム JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 以降
 * [Maven](http://maven.apache.org/)
-* [Linux ベースの Azure HDInsight クラスターと HBase](../hdinsight-hbase-get-started-linux.md#create-hbase-cluster)
+* [Linux ベースの Azure HDInsight クラスターと HBase](hdinsight-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
   
   > [!NOTE]
-  > このドキュメントの手順は、HDInsight クラスター バージョン 3.2、3.3、3.4 でテスト済みです。例で指定される既定値は、HDInsight 3.4 クラスターに対応しています。
+  > このドキュメントの手順は、HDInsight クラスター バージョン 3.2、3.3、3.4 でテスト済みです。 例で指定される既定値は、HDInsight 3.4 クラスターに対応しています。
   > 
   > 
-* **SSH と SCP を熟知していること**HDInsight での SSH と SCP の使用方法の詳細については、次の記事をご覧ください。
+* **SSH と SCP を熟知していること**。 HDInsight での SSH と SCP の使用方法の詳細については、次の記事をご覧ください。
   
-  * **Linux、Unix、または OS X クライアント**: 「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
-  * **Windows クライアント**: 「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+  * **Linux、Unix、または OS X クライアント**: 「 [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-unix.md)
+  * **Windows クライアント**: 「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-## プロジェクトを作成する
+## <a name="create-the-project"></a>プロジェクトを作成する
 1. 開発環境のコマンド ラインから、プロジェクトを作成する場所にディレクトリを変更します。例: `cd code/hdinsight`
 2. Maven でインストールされた **mvn** コマンドを使用し、プロジェクトのスキャフォールディングを生成します。
    
         mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    
-    これにより、**artifactID** パラメーターで指定した名前 (この例では **hbaseapp**) で、新しいディレクトリが現在のディレクトリに作成されます。 このディレクトリには、次の項目が含まれます。
+    これにより、**artifactID** パラメーターで指定した名前 (この例では **hbaseapp**) で、新しいディレクトリが現在のディレクトリに作成されます。このディレクトリには、次の項目が含まれます。
    
    * **pom.xml**: プロジェクト オブジェクト モデル ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
-   * **src**: アプリケーションを作成する **main\\java\\com\\microsoft\\examples** ディレクトリに含まれるディレクトリです。
-3. **src\\test\\java\\com\\microsoft\\examples\\apptest.java** ファイルはこの例では使用しないため、削除します。
+   * **src**: アプリケーションを作成する **main\java\com\microsoft\examples** ディレクトリに含まれるディレクトリです。
+3. **src\test\java\com\microsoft\examples\apptest.java** ファイルはこの例では使用しないため、削除します。
 
-## プロジェクト オブジェクト モデルを更新する
+## <a name="update-the-project-object-model"></a>プロジェクト オブジェクト モデルを更新する
 1. **pom.xml** ファイルを編集し、`<dependencies>` セクション内に次のコードを追加します。
    
         <dependency>
@@ -61,20 +65,20 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
           <version>1.1.2</version>
         </dependency>
    
-    これは Maven に対して、**hbase-client** のバージョン **1.1.2** がプロジェクトに必要であることを伝えます。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven セントラル リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar)を使用して、この依存関係についての詳細を確認できます。
+    これは Maven に対して、**hbase-client** のバージョン **1.1.2** がプロジェクトに必要であることを伝えます。 これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。 [Maven セントラル リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) を使用して、この依存関係についての詳細を確認できます。
    
    > [!IMPORTANT]
-   > バージョン番号は、HDInsight クラスターに付属の HBase のバージョンと一致する必要があります。次の表を使用して、正しいバージョン番号を調べてください。
+   > バージョン番号は、HDInsight クラスターに付属の HBase のバージョンと一致する必要があります。 次の表を使用して、正しいバージョン番号を調べてください。
    > 
    > 
    
    | HDInsight クラスターのバージョン | 使用する HBase のバージョン |
    | --- | --- |
-   | 3\.2 |0\.98.4-hadoop2 |
-   | 3\.3 および 3.4 |1\.1.2 |
+   | 3.2 |0.98.4-hadoop2 |
+   | 3.3 および 3.4 |1.1.2 |
    
-    HDInsight のバージョンとコンポーネントの詳細については、「[HDInsight で使用できる Hadoop コンポーネントの種類を教えてください](hdinsight-component-versioning.md)」を参照してください。
-2. HDInsight 3.3 または 3.4 クラスターを使用している場合は、`<dependencies>` セクションに次のコードも追加する必要があります。
+    HDInsight のバージョンとコンポーネントの詳細については、「 [HDInsight で使用できる Hadoop コンポーネントの種類を教えてください](hdinsight-component-versioning.md)」を参照してください。
+2. HDInsight 3.3 または 3.4 クラスターを使用している場合は、 `<dependencies>` セクションに次のコードも追加する必要があります。
    
         <dependency>
             <groupId>org.apache.phoenix</groupId>
@@ -83,7 +87,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
         </dependency>
    
     これにより、Hbase Version 1.1.x で必要な phoenix コア コンポーネントが読み込まれます。
-3. **pom.xml** ファイルに次のコードを追加します。これは、ファイルの `<project>...</project>` タグ内に配置する必要があります (たとえば `</dependencies>` と `</project>` の間)。
+3. **pom.xml** ファイルに次のコードを追加します。 これは、ファイルの `<project>...</project>` タグ内に配置する必要があります (たとえば `</dependencies>` と `</project>` の間)。
    
         <build>
           <sourceDirectory>src</sourceDirectory>
@@ -128,31 +132,31 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
           </plugins>
         </build>
    
-    これにより、HBase の構成情報が含まれたリソース (**conf\\hbase-site.xml**) が構成されます。
+    これにより、HBase の構成情報が含まれたリソース (**conf\hbase-site.xml**) が構成されます。
    
    > [!NOTE]
-   > コードを介して構成値を設定することもできます。その方法については、**CreateTable** サンプル内のコメントをご覧ください。
+   > コードを介して構成値を設定することもできます。 その方法については、**CreateTable** サンプル内のコメントをご覧ください。
    > 
    > 
    
-    これによって、[Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) と [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/) も構成されます。トポロジのコンパイルにはコンパイラ プラグインが使用されます。シャードのプラグインは、Maven でビルドされる JAR パッケージ内のライセンスの重複を防ぐために使用されます。ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
+    これによって、[Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) と [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/) も構成されます。 トポロジのコンパイルにはコンパイラ プラグインが使用されます。 シャードのプラグインは、Maven でビルドされる JAR パッケージ内のライセンスの重複を防ぐために使用されます。 ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。 maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
    
     また、maven-shade-plugin は、アプリケーションで必要とされるすべての依存関係を含む uberjar (または fatjar) も生成します。
 4. **pom.xml** ファイルを保存します。
-5. **conf** という名前の新しいディレクトリを **hbaseapp** ディレクトリ内に作成します。このディレクトリを使用して、HBase に接続するための構成情報を保持します。
-6. 次のコマンドを使用して、HDInsight サーバーから **conf** ディレクトリに HBase の構成をコピーします。**USERNAME** には、SSH ログイン名を指定します。**CLUSTERNAME** には、HDInsight クラスター名を指定します。
+5. **conf** という名前の新しいディレクトリを **hbaseapp** ディレクトリ内に作成します。 このディレクトリを使用して、HBase に接続するための構成情報を保持します。
+6. 次のコマンドを使用して、HDInsight サーバーから **conf** ディレクトリに HBase の構成をコピーします。 **USERNAME** には、SSH ログイン名を指定します。 **CLUSTERNAME** には、HDInsight クラスター名を指定します。
    
         scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
    
    > [!NOTE]
-   > SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。アカウントで SSH キーを使用した場合は、`-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。次の例は、`~/.ssh/id_rsa` から秘密キーを読み込みます。
+   > SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。 アカウントで SSH キーを使用した場合は、 `-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。 次の例は、 `~/.ssh/id_rsa`から秘密キーを読み込みます。
    > 
    > `scp -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml`
    > 
    > 
 
-## アプリケーションを作成する
-1. **hbaseapp\\src\\main\\java\\com\\microsoft\\examples** ディレクトリに移動し、app.java ファイルの名前を **CreateTable.java** に変更します。
+## <a name="create-the-application"></a>アプリケーションを作成する
+1. **hbaseapp\src\main\java\com\microsoft\examples** ディレクトリに移動し、app.java ファイルの名前を **CreateTable.java** に変更します。
 2. **CreateTable.java** ファイルを開き、既存の内容を次のコードで置き換えます。
    
         package com.microsoft.examples;
@@ -225,7 +229,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
    
     これは、**people** という名前のテーブルを作成して定義済みユーザーを設定する **CreateTable** クラスです。
 3. **CreateTable.java** ファイルを保存します。
-4. **hbaseapp\\src\\main\\java\\com\\microsoft\\examples** ディレクトリに、**SearchByEmail.java** という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
+4. **hbaseapp\src\main\java\com\microsoft\examples** ディレクトリに、**SearchByEmail.java** という名前の新しいファイルを作成します。 このファイルの内容として以下を使用します。
    
         package com.microsoft.examples;
         import java.io.IOException;
@@ -298,9 +302,9 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
           }
         }
    
-    **SearchByEmail** クラスを使用し、電子メール アドレスによって行を照会できます。正規表現フィルターが使用されるため、このクラスを使用するときに文字列または正規表現を指定できます。
+    **SearchByEmail** クラスを使用し、メール アドレスによって行を照会できます。 正規表現フィルターが使用されるため、このクラスを使用するときに文字列または正規表現を指定できます。
 5. **SearchByEmail.java** ファイルを保存します。
-6. **hbaseapp\\src\\main\\hava\\com\\microsoft\\examples** ディレクトリに、**DeleteTable.java** という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
+6. **hbaseapp\src\main\hava\com\microsoft\examples** ディレクトリに、**DeleteTable.java** という名前の新しいファイルを作成します。 このファイルの内容として以下を使用します。
    
         package com.microsoft.examples;
         import java.io.IOException;
@@ -325,38 +329,38 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
     このクラスは、このサンプルのクリーンアップに使用するため、最初に **CreateTable** クラスで作成されたテーブルを無効にし、次にそれを削除します。
 7. **DeleteTable.java** ファイルを保存します。
 
-## アプリケーションをビルドおよびパッケージ化する
+## <a name="build-and-package-the-application"></a>アプリケーションをビルドおよびパッケージ化する
 1. **hbaseapp** ディレクトリで次のコマンドを使用して、アプリケーションが含まれた JAR ファイルをビルドします。
    
         mvn clean package
    
     これにより、前のビルド アーティファクトを整理し、まだインストールされていない依存関係をダウンロードして、アプリケーションをビルドしてパッケージ化します。
-2. コマンドが完了すると、**hbaseapp\\target** ディレクトリに **hbaseapp-1.0-SNAPSHOT.jar** という名前のファイルが格納されます。
+2. コマンドが完了すると、**hbaseapp\target** ディレクトリに **hbaseapp-1.0-SNAPSHOT.jar** という名前のファイルが格納されます。
    
    > [!NOTE]
-   > **hbaseapp-1.0-SNAPSHOT.jar** ファイルは、アプリケーションの実行に必要なすべての依存関係を含む uberjar (fatjar とも呼ばれる) です。
+   > **hbaseapp-1.0-SNAPSHOT.jar** ファイルは、アプリケーションの実行に必要なすべての依存関係を含む uber jar (fat jar とも呼ばれる) です。
    > 
    > 
 
-## JAR ファイルをアップロードしてジョブを実行する
-1. 次のコマンドを使用して、HDInsight クラスターに jar をアップロードします。**USERNAME** には、SSH ログイン名を指定します。**CLUSTERNAME** には、HDInsight クラスター名を指定します。
+## <a name="upload-the-jar-file-and-run-jobs"></a>JAR ファイルをアップロードしてジョブを実行する
+1. 次のコマンドを使用して、HDInsight クラスターに jar をアップロードします。 **USERNAME** には、SSH ログイン名を指定します。 **CLUSTERNAME** には、HDInsight クラスター名を指定します。
    
         scp ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.
    
     これにより、SSH ユーザー アカウントのホーム ディレクトリにファイルがアップロードされます。
    
    > [!NOTE]
-   > SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。アカウントで SSH キーを使用した場合は、`-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。次の例は、`~/.ssh/id_rsa` から秘密キーを読み込みます。
+   > SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。 アカウントで SSH キーを使用した場合は、 `-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。 次の例は、 `~/.ssh/id_rsa`から秘密キーを読み込みます。
    > 
    > `scp -i ~/.ssh/id_rsa ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`
    > 
    > 
-2. SSH を使用して、HDInsight クラスターに接続します。**USERNAME** には、SSH ログイン名を指定します。**CLUSTERNAME** には、HDInsight クラスター名を指定します。
+2. SSH を使用して、HDInsight クラスターに接続します。 **USERNAME** には、SSH ログイン名を指定します。 **CLUSTERNAME** には、HDInsight クラスター名を指定します。
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
    > [!NOTE]
-   > SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。アカウントで SSH キーを使用した場合は、`-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。次の例は、`~/.ssh/id_rsa` から秘密キーを読み込みます。
+   > SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。 アカウントで SSH キーを使用した場合は、 `-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。 次の例は、 `~/.ssh/id_rsa`から秘密キーを読み込みます。
    > 
    > `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`
    > 
@@ -379,9 +383,14 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
         Gabriela Ingram - ID: 6
         Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-## テーブルを削除する
+## <a name="delete-the-table"></a>テーブルを削除する
 サンプルの操作が終了したら、Azure PowerShell セッションから次のコマンドを使用し、このサンプルで使用された **people** テーブルを削除します。
 
     hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

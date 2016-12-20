@@ -1,12 +1,12 @@
 ---
-title: Azure Monitor のメトリック - サポートされているメトリック (リソースの種類別) | Microsoft Docs
-description: Azure Monitor で使用できるメトリックの一覧 (リソースの種類別) です。
+title: "Azure Monitor のメトリック - サポートされているメトリック (リソースの種類別) | Microsoft Docs"
+description: "Azure Monitor で使用できるメトリックの一覧 (リソースの種類別) です。"
 author: johnkemnetz
 manager: rboucher
-editor: ''
+editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-
+ms.assetid: 63d4ac65-1688-40d1-85c8-7cd408285b0f
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: johnkem
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: fd07342dad07e70a09f372c9c6c116376630e6f8
+
 
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
@@ -24,7 +28,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 > 
 > 
 
-## <a name="microsoft.batch/batchaccounts"></a>Microsoft.Batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | CoreCount |コア数 |カウント |合計 |Batch アカウントの合計コア数 |
@@ -49,7 +53,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | PoolDeleteStartEvent |プール削除の開始イベント |カウント |合計 |開始したプール削除の合計数 |
 | PoolDeleteCompleteEvent |プール削除の完了イベント |カウント |合計 |完了したプール削除の合計数 |
 
-## <a name="microsoft.cache/redis"></a>Microsoft.Cache/redis
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | connectedclients |接続されているクライアント数 |カウント |最大値 | |
@@ -218,13 +222,13 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | cacheRead9 |キャッシュの読み取り (シャード 9) |BytesPerSecond |最大値 | |
 | percentProcessorTime9 |CPU (シャード 9) |Percent |最大値 | |
 
-## <a name="microsoft.cognitiveservices/accounts"></a>Microsoft.CognitiveServices/accounts
+## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | 説明 |
 | --- | --- | --- | --- | --- |
 | NumberOfCalls |API 呼び出しの合計数 |カウント |合計 |API 呼び出しの合計数 |
 | NumberOfFailedCalls |失敗した API 呼び出しの合計数 |カウント |合計 |失敗した API 呼び出しの合計数 |
 
-## <a name="microsoft.compute/virtualmachines"></a>Microsoft.Compute/virtualMachines
+## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | CPU の割合 |CPU の割合 |Percent |平均 |仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合 |
@@ -235,7 +239,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | ディスク読み取り操作数/秒 |ディスク読み取り操作数/秒 |CountPerSecond |平均 |ディスク読み取り IOPS |
 | ディスク書き込み操作数/秒 |ディスク書き込み操作数/秒 |CountPerSecond |平均 |ディスク書き込み IOPS |
 
-## <a name="microsoft.compute/virtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
+## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | CPU の割合 |CPU の割合 |Percent |平均 |仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合 |
@@ -246,7 +250,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | ディスク読み取り操作数/秒 |ディスク読み取り操作数/秒 |CountPerSecond |平均 |ディスク読み取り IOPS |
 | ディスク書き込み操作数/秒 |ディスク書き込み操作数/秒 |CountPerSecond |平均 |ディスク書き込み IOPS |
 
-## <a name="microsoft.compute/virtualmachinescalesets/virtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
+## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | CPU の割合 |CPU の割合 |Percent |平均 |仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合 |
@@ -257,7 +261,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | ディスク読み取り操作数/秒 |ディスク読み取り操作数/秒 |CountPerSecond |平均 |ディスク読み取り IOPS |
 | ディスク書き込み操作数/秒 |ディスク書き込み操作数/秒 |CountPerSecond |平均 |ディスク書き込み IOPS |
 
-## <a name="microsoft.devices/iothubs"></a>Microsoft.Devices/IotHubs
+## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | d2c.telemetry.ingress.allProtocol |テレメトリ メッセージ送信試行 |カウント |合計 |IoT Hub への送信が試行された Device to Cloud テレメトリ メッセージの数 |
@@ -268,7 +272,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | devices.totalDevices |合計デバイス |カウント |合計 |IoT Hub に登録されたデバイスの数 |
 | devices.connectedDevices.allProtocol |接続されているデバイス |カウント |合計 |IoT Hub に接続されているデバイスの数 |
 
-## <a name="microsoft.eventhub/namespaces"></a>Microsoft.EventHub/namespaces
+## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | INREQS |受信要求 |カウント |合計 |名前空間のEvent Hub 受信メッセージのスループット |
@@ -285,7 +289,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | EHAMSGS |アーカイブ メッセージ |カウント |合計 |名前空間内の Event Hub アーカイブ メッセージ |
 | EHAMBS |アーカイブ メッセージ スループット |BytesPerSecond |合計 |名前空間内の HubEvent アーカイブ メッセージのスループット |
 
-## <a name="microsoft.logic/workflows"></a>Microsoft.Logic/workflows
+## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | RunsStarted |開始した実行 |カウント |合計 |開始したワークフロー実行の数。 |
@@ -319,25 +323,25 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | BillableTriggerExecutions |課金対象のトリガーの実行 |カウント |合計 |課金されるワークフロー トリガーの実行数。 |
 | TotalBillableExecutions |課金対象の実行の合計数 |カウント |合計 |課金されるワークフローの実行数。 |
 
-## <a name="microsoft.network/applicationgateways"></a>Microsoft.Network/applicationGateways
+## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | スループット |スループット |BytesPerSecond |平均 | |
 
-## <a name="microsoft.search/searchservices"></a>Microsoft.Search/searchServices
+## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | 説明 |
 | --- | --- | --- | --- | --- |
 | SearchLatency |検索の待機時間 |Seconds |平均 |検索サービスの平均検索待機時間 |
 | SearchQueriesPerSecond |1 秒あたりの検索クエリ数 |CountPerSecond |平均 |検索サービスの 1 秒あたりの検索クエリ数 |
 | ThrottledSearchQueriesPercentage |スロットルされた検索クエリの割合 |Percent |平均 |検索サービスのスロットルされた検索クエリの割合 |
 
-## <a name="microsoft.servicebus/namespaces"></a>Microsoft.ServiceBus/namespaces
+## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | CPUXNS |名前空間あたりの CPU 使用率 |Percent |最大値 |Service Bus Premium 名前空間の CPU 使用率メトリック |
 | WSXNS |名前空間あたりのメモリ サイズの使用量 |Percent |最大値 |Service Bus Premium 名前空間のメモリ使用量メトリック |
 
-## <a name="microsoft.sql/servers/databases"></a>Microsoft.Sql/servers/databases
+## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | cpu_percent |CPU の割合 |Percent |平均 |CPU の割合 |
@@ -360,7 +364,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | dwu_consumption_percent |DWU の割合 |Percent |平均 |DWU の割合 |
 | dwu_used |使用済み DWU |カウント |平均 |使用済み DWU |
 
-## <a name="microsoft.sql/servers/elasticpools"></a>Microsoft.Sql/servers/elasticPools
+## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | cpu_percent |CPU の割合 |Percent |平均 |CPU の割合 |
@@ -375,7 +379,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | eDTU_used |使用済み eDTU |カウント |平均 |使用済み eDTU |
 | storage_used |使用済みストレージ |バイト |平均 |使用済みストレージ |
 
-## <a name="microsoft.streamanalytics/streamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
+## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | ResourceUtilization |SU % 使用率 |Percent |最大値 |SU % 使用率 |
@@ -390,7 +394,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | AMLCalloutFailedRequests |失敗した関数の要求 |カウント |合計 |失敗した関数の要求 |
 | AMLCalloutInputEvents |関数のイベント |カウント |合計 |関数のイベント |
 
-## <a name="microsoft.web/serverfarms"></a>Microsoft.Web/serverfarms
+## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | CpuPercentage |CPU の割合 |Percent |平均 |CPU の割合 |
@@ -400,7 +404,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | BytesReceived |受信データ |Bytes |合計 |受信データ |
 | BytesSent |送信データ |Bytes |合計 |送信データ |
 
-## <a name="microsoft.web/sites"></a>Microsoft.Web/sites
+## <a name="microsoftwebsites"></a>Microsoft.Web/sites
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | CpuTime |CPU 時間 |Seconds |合計 |CPU 時間 |
@@ -419,7 +423,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | AverageMemoryWorkingSet |平均メモリ ワーキング セット |Bytes |平均 |平均メモリ ワーキング セット |
 | AverageResponseTime |平均応答時間 |Seconds |平均 |平均応答時間 |
 
-## <a name="microsoft.web/sites/slots"></a>Microsoft.Web/sites/slots
+## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 | メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
 | --- | --- | --- | --- | --- |
 | CpuTime |CPU 時間 |Seconds |合計 |CPU 時間 |
@@ -440,9 +444,12 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Monitor のメトリックを確認します](monitoring-overview.md#monitoring-sources)
-* [メトリックでアラートを作成します](../azure-portal/insights-receive-alert-notifications.md)
+* [メトリックでアラートを作成します](insights-receive-alert-notifications.md)
 * [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](monitoring-overview-of-diagnostic-logs.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

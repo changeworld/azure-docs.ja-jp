@@ -1,19 +1,23 @@
 ---
-title: Lotus Domino コネクタ | Microsoft Docs
-description: この記事では、Microsoft の Lotus Domino Connector を構成する方法について説明します。
+title: "Lotus Domino コネクタ | Microsoft Docs"
+description: "この記事では、Microsoft の Lotus Domino Connector を構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: AndKjell
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: e07fd469-d862-470f-a3c6-3ed2a8d745bf
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 11/01/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f7b22fdacfebe98bde5dd74028561e18393ab7e3
+
 
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Lotus Domino Connector のテクニカル リファレンス
@@ -32,7 +36,7 @@ Lotus Domino Connector を使用すると、IBM の Lotus Domino サーバーと
 
 | 機能 | サポート |
 | --- | --- |
-| 接続先のデータ ソース |サーバー:  <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>クライアント: <li>Lotus Notes 9.x</li> |
+| 接続先のデータ ソース |サーバー:  <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>クライアント: <li>Lotus Domino 8.5.x</li><li>Lotus Notes 9.x</li> |
 | シナリオ |<li>オブジェクトのライフサイクル管理</li><li>グループ管理</li><li>パスワード管理</li> |
 | 操作 |<li>フル インポートと差分インポート</li><li>エクスポート</li><li>HTTP パスワードにおけるパスワードの設定と変更</li> |
 | スキーマ |<li>Person (ローミング ユーザー、連絡先 (証明書のない Person))</li><li>グループ</li><li>リソース (リソース、ルーム、オンライン会議)</li><li>メールイン データベース</li><li>サポートされているオブジェクトの属性の動的検出</li> |
@@ -143,7 +147,7 @@ Domino Server のプロパティでは、サーバー名に次の 2 つの形式
 
 この構成オプションは、最後の 2 回のインポート間の変更を同期サービスが特定するのを可能にするため、 **差分インポート** 操作で必要です。
 
-#### <a name="import-settings,-method"></a>インポート設定および方法
+#### <a name="import-settings-method"></a>インポート設定および方法
 **[フル インポートの実行方法]** には次のオプションがあります。
 
 * Search
@@ -172,7 +176,7 @@ Domino の属性 **FullName** に複数の値がある場合、参照が解決�
 
 これらのオブジェクトの DN には、VC=\_Contact が追加されます。
 
-#### <a name="import-settings,-conflict-object"></a>インポート設定および競合オブジェクト
+#### <a name="import-settings-conflict-object"></a>インポート設定および競合オブジェクト
 **競合するオブジェクトの除外**
 
 大規模な Domino の実装では、レプリケーションの問題により、複数のオブジェクトの DN が同じである場合があります。 このような場合、コネクタには UniversalID は同じですが DN は異なる 2 つのオブジェクトが示されます。 この競合により、コネクタ スペースに一時オブジェクトが作成されます。 コネクタは、Domino で選択したオブジェクトは、レプリケーション上作成されたものとして無視できます。 このチェックボックスはオンのままにしておくことをお勧めします。
@@ -486,6 +490,9 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 ## <a name="troubleshooting"></a>トラブルシューティング
 * コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「 [How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

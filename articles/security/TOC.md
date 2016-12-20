@@ -5,10 +5,11 @@
 ### [ネットワーク セキュリティのベスト プラクティス](azure-security-network-security-best-practices.md)
 ### [境界のセキュリティ](../best-practices-network-security.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md?toc=%2fazure%2fsecurity%2ftoc.json)
-## [ストレージのセキュリティ](security-storage-overview.md)
+## [Storage のセキュリティ](security-storage-overview.md)
 ### [データ セキュリティと暗号化のベスト プラクティス](azure-security-data-encryption-best-practices.md)
 ### [Storage のセキュリティ ガイド](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## [コンピューティングのセキュリティ](security-virtual-machines-overview.md)
+### [IaaS ワークロードのベスト プラクティス](azure-security-iaas.md)
 ### [Microsoft Antimalware](azure-security-antimalware.md)
 ### [ディスクの暗号化](azure-security-disk-encryption.md)
 ### [Azure VM を暗号化する](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
@@ -32,13 +33,11 @@
 ### [セキュリティのベスト プラクティスとパターン](security-best-practices-and-patterns.md)
 ### [耐障害性のあるアプリケーションの設計](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
-# リファレンス
+# 関連項目
 ## [トラスト センター](security-microsoft-trust-center.md)
 ## [Microsoft Security Response Center](azure-security-response-center.md)
 ## [侵入テスト](azure-security-pen-testing.md)
-
-# 関連項目
-## [セキュリティ センター](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity-center%2ftoc.json)
+## [Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity-center%2ftoc.json)
 ## [Key Vault](../key-vault/key-vault-whatis.md)
 ## [Log Analytics](../log-analytics/log-analytics-overview.md)
 ## [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
@@ -51,6 +50,7 @@
 ## [Virtual Academy のセキュリティ講座](security-microsoft-virtual-academy.md)
 ## [Channel 9 で配信中のセキュリティに関するビデオ](security-channel-nine.md)
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Origami の統合 | Microsoft Docs'
-description: Azure Active Directory と Origami の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Origami の統合 | Microsoft Docs"
+description: "Azure Active Directory と Origami の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: a28bb0ba-b564-46ba-accc-e587699295d4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d5499636ff1c560dd5a50924f0fd67d8dac50203
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-origami"></a>チュートリアル: Azure Active Directory と Origami の統合
+# <a name="tutorial-azure-active-directory-integration-with-origami"></a>チュートリアル: Azure Active Directory と Origami の統合
 このチュートリアルでは、Origami と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
 Origami と Azure AD の統合には、次の利点があります。
@@ -161,9 +165,9 @@ Origami で Azure AD のシングル サインオンを構成してテストす�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]**をクリックします。
+    c. ページの下部にある **[次へ]**」を参照してください。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-origami-tutorial/create_aaduser_06.png) 
    
    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
@@ -182,7 +186,7 @@ Origami で Azure AD のシングル サインオンを構成してテストす�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-origami-tutorial/create_aaduser_08.png) 
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
     b. **[完了]** をクリックします。   
 
@@ -213,7 +217,7 @@ Origami で Azure AD のシングル サインオンを構成してテストす�
    
     e. **[姓]** ボックスに「**Simon**」と入力します。
    
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[保存]**をクリックします。
+    f. **[保存]**をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-origami-tutorial/tutorial_origami_57.png)
 6. **ユーザー ロール**と**クライアント アクセス**をユーザーに割り当てます。 
@@ -270,6 +274,6 @@ Origami で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

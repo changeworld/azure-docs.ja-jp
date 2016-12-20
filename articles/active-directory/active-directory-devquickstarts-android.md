@@ -1,12 +1,12 @@
 ---
-title: Azure AD Android の概要 | Microsoft Docs
-description: サインインと、OAuth を使用して Azure AD で保護されている API を呼び出しのために Azure AD と統合する、Android アプリケーションを構築する方法を説明します。
+title: "Azure AD Android の概要 | Microsoft Docs"
+description: "サインインと、OAuth を使用して Azure AD で保護されている API を呼び出しのために Azure AD と統合する、Android アプリケーションを構築する方法を説明します。"
 services: active-directory
 documentationcenter: android
-author: brandwe
+author: xerners
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: mobile-android
@@ -14,6 +14,10 @@ ms.devlang: java
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: brandwe
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 276207411fcfd6906cb99da3d291decf7e2566d1
+
 
 ---
 # <a name="integrate-azure-ad-into-an-android-app"></a>Azure AD の Android アプリへの統合
@@ -36,14 +40,14 @@ ms.author: brandwe
 > 
 > 
 
-## <a name="step-1:-download-and-run-the-node.js-rest-api-todo-sample-server"></a>手順 1. Node.js REST API の TODO サンプル サーバーをダウンロードして実行する
+## <a name="step-1-download-and-run-the-nodejs-rest-api-todo-sample-server"></a>手順 1. Node.js REST API の TODO サンプル サーバーをダウンロードして実行する
 このサンプルは、Microsoft Azure Active Directory の単一のテナント To-Do REST API の作成用の既存のサンプルを扱うために、特別に作成されました。 これは、クイック スタートの前提条件です。
 
 この設定方法については、次の既存のサンプルを参照してください。
 
 * [Node.js 用の Microsoft Azure Active Directory のサンプル REST API サービス](active-directory-devquickstarts-webapi-nodejs.md)
 
-## <a name="step-2:-register-your-web-api-with-your-microsoft-azure-ad-tenant"></a>手順 2. Web API を Microsoft Azure AD テナントに登録する
+## <a name="step-2-register-your-web-api-with-your-microsoft-azure-ad-tenant"></a>手順 2. Web API を Microsoft Azure AD テナントに登録する
 **実行する事柄**
 
 *Microsoft Active Directory は、2 種類のアプリケーションの追加をサポートします。サービスをユーザーに提供する Web API と、それらの Web API にアクセスする (Web 上またはデバイス上のいずれかで実行する) アプリケーションです。この手順では、このサンプルをテストするために、ローカルで実行している Web API を登録します。この Web API は、通常、アプリがアクセスする機能を提供する REST サービスです。Microsoft Azure Active Directory は、あらゆるエンドポイントを保護できます。*
@@ -61,10 +65,10 @@ Microsoft Azure AD を使用して Web API を登録する手順
 7. たとえば "TodoListService" など、アプリケーションのわかりやすい名前を入力し、[Web アプリケーションや Web API] を選択して、[次へ] をクリックします。
 8. サインオン URL には、サンプルのベース URL を入力します。既定では `https://localhost:8080` となります。
 9. アプリ ID URI には、「`https://<your_tenant_name>/TodoListService`」と入力します。これは `<your_tenant_name>` を Azure AD テナントの名前に置き換えます。  [OK] クリックして登録を完了します。
-10. 引き続き Azure ポータルで、アプリケーションの [構成] タブをクリックします。
+10. 引き続き Azure Portal で、アプリケーションの [構成] タブをクリックします。
 11. **クライアント ID 値を見つけて、コピーして保持しておきます**。これは後でアプリケーションを構成するときに必要になります。
 
-## <a name="step-3:-register-the-sample-android-native-client-application"></a>手順 3. サンプルの Android ネイティブ クライアント アプリケーションを登録する
+## <a name="step-3-register-the-sample-android-native-client-application"></a>手順 3. サンプルの Android ネイティブ クライアント アプリケーションを登録する
 最初の手順として、Web アプリケーションを登録します。 次に、アプリケーションについて Azure Active Directory に通知する必要があります。 これにより、アプリケーションは登録した Web API と通信できるようになります。
 
 **実行する事柄**  
@@ -94,7 +98,7 @@ Maven を使用して構築するために、最上位レベルで pom.xml を�
 * このリポジトリを任意のディレクトリに複製します。
   
   `$ git clone git@github.com:AzureADSamples/NativeClient-Android.git`  
-* [「Setting up maven environment for Android」の「Prerequests」セクション](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android)
+*  [「Setting up maven environment for Android」の「Prerequests」セクション](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android)
 * SDK 19 でエミュレーターをセットアップします。
 * リポジトリを複製したルート フォルダーに移動します。
 * コマンド mvn clean install を実行します。
@@ -105,22 +109,22 @@ Maven を使用して構築するために、最上位レベルで pom.xml を�
 
 aar パッケージに加え、jar パッケージも送信されます。
 
-### <a name="step-4:-download-the-android-adal-and-add-it-to-your-eclipse-workspace"></a>手順 4. Android ADAL をダウンロードして Eclipse ワークスペースに追加する
+### <a name="step-4-download-the-android-adal-and-add-it-to-your-eclipse-workspace"></a>手順 4. Android ADAL をダウンロードして Eclipse ワークスペースに追加する
 このライブラリを Android プロジェクトで簡単に使用できるようにするために、複数のオプションが用意されています。
 
 * ソース コードを使用して、このライブラリを Eclipse にインポートし、アプリケーションにリンクします。
 * Android Studio を使用する場合は、 *aar* パッケージ形式を使用して、バイナリを参照します。
 
-#### <a name="option-1:-source-zip"></a>オプション 1. ソース Zip
+#### <a name="option-1-source-zip"></a>オプション 1. ソース Zip
 ソース コードのコピーをダウンロードするには、ページの右側にある [ZIP のダウンロード] をクリックするか、 [ここ](https://github.com/AzureAD/azure-activedirectory-library-for-android/archive/v1.0.9.tar.gz)をクリックします。
 
-#### <a name="option-2:-source-via-git"></a>オプション 2. Git 経由のソース
+#### <a name="option-2-source-via-git"></a>オプション 2. Git 経由のソース
 SDK のソース コードを Git 経由で取得するには、次のように入力します。
 
     git clone git@github.com:AzureAD/azure-activedirectory-library-for-android.git
     cd ./azure-activedirectory-library-for-android/src
 
-#### <a name="option-3:-binaries-via-gradle"></a>オプション 3. Gradle 経由のバイナリ
+#### <a name="option-3-binaries-via-gradle"></a>オプション 3. Gradle 経由のバイナリ
 Maven 中央リポジトリからバイナリを取得できます。 aar パッケージは、次のようにして AndroidStudio でプロジェクトに含めることができます。
 
 ```gradle
@@ -141,7 +145,7 @@ dependencies {
 }
 ```
 
-#### <a name="option-4:-aar-via-maven"></a>オプション 4. Maven 経由の aar
+#### <a name="option-4-aar-via-maven"></a>オプション 4. Maven 経由の aar
 Eclipse で m2e プラグインを使用する場合は、pom.xml ファイルで次のように依存関係を指定できます。
 
 ```xml
@@ -154,11 +158,11 @@ Eclipse で m2e プラグインを使用する場合は、pom.xml ファイル�
 ```
 
 
-#### <a name="option-5:-jar-package-inside-libs-folder"></a>オプション 5. libs フォルダー内の jar パッケージ
+#### <a name="option-5-jar-package-inside-libs-folder"></a>オプション 5. libs フォルダー内の jar パッケージ
 Maven リポジトリから jar ファイルを取得して、プロジェクトの *libs* フォルダーにドロップできます。 jar パッケージには含まれていないので、必要なリソースもプロジェクトにコピーする必要があります。
 
-### <a name="step-5:-add-references-to-android-adal-to-your-project"></a>手順 5. プロジェクトに Android ADAL への参照を追加する
-1. プロジェクトへの参照を追加し、Android ライブラリとして指定します。 この方法がわからない場合は、[こちらをクリックして詳細をご確認ください](http://developer.android.com/tools/projects/projects-eclipse.html)
+### <a name="step-5-add-references-to-android-adal-to-your-project"></a>手順 5. プロジェクトに Android ADAL への参照を追加する
+1. プロジェクトへの参照を追加し、Android ライブラリとして指定します。 この実行方法がわからない場合は、 [詳細についてここをクリックしてください](http://developer.android.com/tools/projects/projects-eclipse.html)
 2. デバッグのためのプロジェクト依存関係をプロジェクト設定に追加します。
 3. プロジェクトの AndroidManifest.xml ファイルを更新して、次のものを含めます。
    
@@ -426,6 +430,9 @@ ADAL バージョン 1.1.0 は、WebViewClient からの onReceivedHttpAuthReque
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!--HONumber=Oct16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: HDinsight での Storm トポロジの Python コンポーネントの使用 | Microsoft Docs
-description: Azure HDInsight で Apache Storm から Python コンポーネントを使用する方法について説明します。 Java ベースと Clojure ベースの両方の Storm トポロジから Python コンポーネントを使用する方法を学習します。
+title: "HDinsight での Storm トポロジの Python コンポーネントの使用 |Microsoft Docs"
+description: "Azure HDInsight で Apache Storm から Python コンポーネントを使用する方法について説明します。 Java ベースと Clojure ベースの両方の Storm トポロジから Python コンポーネントを使用する方法を学習します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: edd0ec4f-664d-4266-910c-6ecc94172ad8
 ms.service: hdinsight
 ms.devlang: python
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4b667dda33c61c44090cf89ebeebece0b19c84ea
+
 
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight での Python を使用した Apache Storm トポロジの開発
@@ -39,7 +43,7 @@ Storm モジュール (https://github.com/apache/storm/blob/master/storm-multila
 
 また、Storm クラスターは分散環境で実行されるため、Python コンポーネントで必要なすべてのモジュールが、クラスター内のすべての worker ノードで使用できることを確認する必要があります。 Storm の場合、多言語リソースではこれを容易に行うことはできません。つまり、トポロジの jar ファイルの一部として依存関係をすべて含めるか、クラスター内の各 worker ノードに依存関係を手動でインストールする必要があります。
 
-### <a name="java-vs.-clojure-topology-definition"></a>Java とClojure トポロジの定義
+### <a name="java-vs-clojure-topology-definition"></a>Java とClojure トポロジの定義
 トポロジを定義する 2 つの方法の 1 つである Clojure は、トポロジ定義で Python コンポーネントを直接参照できるため、非常に簡単でわかりやすい方法です。 Java ベースのトポロジ定義の場合、Python コンポーネントから返されるタプルでのフィールド宣言などを処理する Java コンポーネントを定義する必要もあります。
 
 このドキュメントでは両方の方法について説明し、プロジェクト例も示します。
@@ -58,7 +62,7 @@ Python (または他の JVM 言語コンポーネント) を使用する Java �
 
 この場合、Java は Python を呼び出し、実際のボルト ロジックを含むスクリプトを実行します。 Java スパウト/ボルト (この例の場合) は、基になる Python コンポーネントによって出力されるタプルでフィールドを宣言するだけです。
 
-この例では、実際の Python ファイルは `/multilang/resources` ディレクトリに格納されます。 次のように、 `/multilang` ディレクトリは __pom.xml__で参照されます。
+この例では、実際の Python ファイルは `/multilang/resources` ディレクトリに格納されます。 次のように、 `/multilang` ディレクトリは **pom.xml**で参照されます。
 
 <resources>
     <resource>
@@ -70,7 +74,7 @@ Python (または他の JVM 言語コンポーネント) を使用する Java �
 これには、このプロジェクトから構築される jar の `/multilang` フォルダー内のファイルがすべて含まれます。
 
 > [!IMPORTANT]
-> ここでは、`/multilang/resources` ではなく、`/multilang` ディレクトリのみが指定されることに注意してください。 Storm には `resources` ディレクトリの JVM 以外のリソースが必要であるため、内部的に既に検索されています。 このフォルダーにコンポーネントを配置することで、Java コードでは名前での参照のみが可能になります。 たとえば、「 `super("python", "countbolt.py");`」のように入力します。 考えてみると、Storm が多言語リソースへのアクセス時に `resources` ディレクトリをルート (/) と見なすようにする別の方法もあります。
+> ここでは、`/multilang/resources` ではなく、`/multilang` ディレクトリのみが指定されることに注意してください。 Storm には `resources` ディレクトリの JVM 以外のリソースが必要であるため、内部的に既に検索されています。 このフォルダーにコンポーネントを配置することで、Java コードでは名前での参照のみが可能になります。 たとえば、「`super("python", "countbolt.py");`」のように入力します。 考えてみると、Storm が多言語リソースへのアクセス時に `resources` ディレクトリをルート (/) と見なすようにする別の方法もあります。
 > 
 > このプロジェクト例の場合、`storm.py` モジュールは `/multilang/resources` ディレクトリに含まれます。
 > 
@@ -120,7 +124,7 @@ Apache Storm を実行して HDInsight クラスターにプロジェクトを�
 
 * **project.clj**: Storm の依存関係が追加され、HDInsight サーバーへのデプロイ時に問題が生じる可能性がある項目は除外されました。
 * **resources/resources**: Leiningen は既定の `resources` ディレクトリを作成しますが、ここに格納されたファイルはこのプロジェクトから作成された jar ファイルのルートに追加されるように見え、Storm は `resources` という名前のサブディレクトリのファイルを予期します。 したがって、サブディレクトリが追加され、Python ファイルは `resources/resources`に格納されています。 実行時に、これは Phthon コンポーネントにアクセスするためのルート (/) として扱われます。
-* **src/wordcount/core.clj**: このファイルはトポロジ定義を含み、**project.clj** ファイルから参照されます。 Storm トポロジを定義するための Clojure の使用に関する詳細については、「 [Clojure DSL](https://storm.apache.org/documentation/Clojure-DSL.html)」を参照してください。
+* **src/wordcount/core.clj**: このファイルはトポロジ定義を含み、**project.clj** ファイルから参照されます。 Storm トポロジを定義するための Clojure の使用に関する詳細については、「[Clojure DSL](https://storm.apache.org/documentation/Clojure-DSL.html)」を参照してください。
 
 ### <a name="build-and-run-the-project"></a>プロジェクトをビルドして実行する
 **プロジェクトをローカルでビルドして実行するには**、次のコマンドを使用します。
@@ -174,6 +178,9 @@ Apache Storm を実行して HDInsight クラスターにプロジェクトを�
 * [HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)
 * [HDInsight における Python と Hive および Pig の使用](hdinsight-python.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

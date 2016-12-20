@@ -1,12 +1,12 @@
 ---
-title: Log Analytics で Active Directory 評価ソリューションによる環境を最適化する | Microsoft Docs
-description: Active Directory 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。
+title: "Log Analytics で Active Directory 評価ソリューションによる環境を最適化する | Microsoft Docs"
+description: "Active Directory 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 58eee787b54122380b48f1c7a96dbe2e79e4bcef
+
 
 ---
 # <a name="optimize-your-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>Log Analytics で Active Directory 評価ソリューションによる環境を最適化する
@@ -73,7 +77,7 @@ Active Directory 評価では、有効になっているエージェントを使
 
 **アップグレード、移行、デプロイ** - この対象領域は、既存のインフラストラクチャへの Active Directory のアップグレード、移行、およびデプロイに役立つ推奨事項を示しています。
 
-### <a name="should-you-aim-to-score-100%-in-every-focus-area?"></a>すべての対象領域で 100% のスコアを目指す必要がありますか?
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>すべての対象領域で 100% のスコアを目指す必要がありますか?
 必ずしもその必要はありません。 推奨事項は、マイクロソフトのエンジニアによる数多くの顧客訪問によって得られた知識と経験に基づいています。 ただし、まったく同じサーバー インフラストラクチャは存在せず、関連性の高い、または低い推奨事項が存在する可能性があります。 たとえば、仮想マシンがインターネットに対して公開されていない場合、セキュリティに関する一部の推奨事項は関連性が低い場合があります。 優先度の低いアドホックなデータ収集とレポート作成を提供するサービスの場合、可用性に関する一部の推奨事項は関連性が低い可能性があります。 成熟したビジネスにとって重要な問題は、起業したばかりの会社には重要性が低い場合があります。 ユーザーが優先度の高い対象領域を識別して、スコアの経時変化を監視できます。
 
 すべての推奨事項には、重要である理由についてのガイダンスが含まれます。 ユーザーはこのガイダンスを使用し、IT サービスの性質と組織のビジネス ニーズに基づいて、推奨事項を実装することが会社にとって適切かどうかを評価する必要があります。
@@ -103,7 +107,7 @@ OMS の評価ソリューションを使用するには、ソリューション�
    ログ検索のクエリを示すスクリーン ショットを次に示します。![失敗した推奨事項](./media/log-analytics-ad-assessment/ad-failed-recommendations.png)
 2. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
 
-### <a name="to-create-and-use-an-ignorerecommendations.txt-text-file"></a>IgnoreRecommendations.txt テキスト ファイルを作成および使用するには
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations.txt テキスト ファイルを作成および使用するには
 1. IgnoreRecommendations.txt という名前のファイルを作成します。
 2. Log Analytics に個別の行で無視させ、ファイルを保存して閉じさせるには、推奨事項ごとにそれぞれ RecommendationId を貼り付けるか入力します。
 3. OMS に推奨事項を無視させる各コンピューターの次のフォルダーにファイルを配置します。
@@ -167,6 +171,9 @@ OMS の評価ソリューションを使用するには、ソリューション�
 ## <a name="next-steps"></a>次のステップ
 * 「 [Log Analytics におけるログの検索](log-analytics-log-searches.md) 」を参照し、詳細な AD 評価データと推奨事項を確認してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

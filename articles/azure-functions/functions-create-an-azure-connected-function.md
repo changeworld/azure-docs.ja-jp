@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 10/25/2016
 ms.author: rachelap@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9ffd199c9e3c621a808ade109ed044b6c9b689b7
+ms.sourcegitcommit: a0a46708645be91f89b0a6ae9059468bc84aeb11
+ms.openlocfilehash: c6905452951910d3c62bc5152741a8ead26196ef
 
 
 ---

@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Domo の統合 | Microsoft Docs'
-description: Azure Active Directory と Domo の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Domo の統合 | Microsoft Docs"
+description: "Azure Active Directory と Domo の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 058626e4-73b3-4dc2-86ca-b060d002d70a
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0b3eea4df3728b54554014eed99a911ec8770161
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-domo"></a>チュートリアル: Azure Active Directory と Domo の統合
+# <a name="tutorial-azure-active-directory-integration-with-domo"></a>チュートリアル: Azure Active Directory と Domo の統合
 このチュートリアルの目的は、Domo と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
 Domo と Azure AD の統合には、次の利点があります。
 
@@ -115,7 +119,7 @@ Domo アプリケーションは、特定の形式で構成された SAML アサ
    
     c. **[属性値]** 一覧から、その行に対して表示される属性値を選択します。
    
-    d. **[完了]** をクリックします。  
+    d. **[完了]** をクリックします。    
 3. Azure クラシック ポータルの **Domo** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![[シングル サインオンの構成]][6] 
@@ -168,14 +172,14 @@ Domo アプリケーションは、特定の形式で構成された SAML アサ
    
     a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-domo-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -183,7 +187,7 @@ Domo アプリケーションは、特定の形式で構成された SAML アサ
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-domo-tutorial/create_aaduser_07.png) 
@@ -254,6 +258,6 @@ Domo アプリケーションは、特定の形式で構成された SAML アサ
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

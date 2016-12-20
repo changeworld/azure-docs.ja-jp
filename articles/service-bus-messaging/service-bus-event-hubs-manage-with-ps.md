@@ -1,19 +1,23 @@
 ---
-title: PowerShell で Service Bus と Event Hubs リソースを管理する | Microsoft Docs
-description: PowerShell で Service Bus と Event Hubs リソースを作成し、管理する
-services: service-bus,event-hubs
+title: "PowerShell で Service Bus と Event Hubs リソースを管理する | Microsoft Docs"
+description: "PowerShell で Service Bus と Event Hubs リソースを作成し、管理する"
+services: service-bus-messaging,event-hubs
 documentationcenter: .NET
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: f6436f6f-2156-41ea-a4ca-08cfaecbb778
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 95068f046c57bd65b5258771a272e70124f3dd12
+
 
 ---
 # <a name="use-powershell-to-manage-service-bus-and-event-hubs-resources"></a>PowerShell で Service Bus と Event Hubs リソースを管理する
@@ -22,11 +26,11 @@ Microsoft Azure PowerShell は、Azure サービスのデプロイメントと�
 ## <a name="prerequisites"></a>前提条件
 開始する前に、次の条件が必要です。
 
-* Azure サブスクリプション。 Azure はサブスクリプション方式のプラットフォームです。 サブスクリプションの入手方法の詳細については、[購入オプション][購入オプション]、[メンバー プラン][メンバー プラン]、または[無料アカウント][無料アカウント]に関するページを参照してください。
-* Azure PowerShell を搭載するコンピューター 手順については、[Azure PowerShell のインストールと構成に関するページ][]をご覧ください。
+* Azure サブスクリプション。 Azure はサブスクリプション方式のプラットフォームです。 サブスクリプションの入手方法の詳細については、[購入オプション][購入オプション]、[メンバー プラン][メンバー プラン]、または[無料アカウント][無料アカウント] に関するページを参照してください。
+* Azure PowerShell を搭載するコンピューター 手順については、[「Azure PowerShell のインストールおよび構成方法」][Azure PowerShell のインストールと構成]を参照してください。
 * PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
 
-## <a name="include-a-reference-to-the-.net-assembly-for-service-bus"></a>Service Bus 用の .NET アセンブリへの参照を含む
+## <a name="include-a-reference-to-the-net-assembly-for-service-bus"></a>Service Bus 用の .NET アセンブリへの参照を含む
 Service Bus の管理で利用できる PowerShell コマンドレットの数は限定されています。 既存のコマンドレットを使用しないエンティティをプロビジョニングするには、[Service Bus NuGet パッケージ]を参照し、PowerShell 内から Service Bus の .NET クライアントを使用できます。
 
 まず、このスクリプトが NuGet パッケージでインストールされる **Microsoft.ServiceBus.dll** アセンブリを見つけることができるかどうかを確認します。 柔軟性を持たせるために、スクリプトでは次のステップを実行します。
@@ -267,6 +271,6 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

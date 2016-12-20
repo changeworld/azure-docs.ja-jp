@@ -59,7 +59,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 これで、通知ハブが GCM と連動するように構成されました。接続文字列を使用して、プッシュ通知の受信と送信の両方にアプリを登録できます。
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>通知ハブにアプリを接続する
+## <a name="a-idconnecting-appaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>通知ハブにアプリを接続する
 ### <a name="create-a-new-android-project"></a>新しい Android プロジェクトを作成する
 1. Android Studio で新しい Android Studio プロジェクトを開始する
    
@@ -133,7 +133,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
    
    * **SenderId**: [Google Cloud Console](http://cloud.google.com/console)で取得しておいたプロジェクト番号。
    * **HubListenConnectionString**: ハブの **DefaultListenAccessSignature** 接続文字列。 接続文字列をコピーするには、[Azure Portal] で、ハブの **[設定]** ブレードにある **[アクセス ポリシー]** をクリックします。
-   * **HubName**: [Azure ポータル]のハブ ブレードに表示される通知ハブの名前を使用します。
+   * **HubName**: [Azure Portal]のハブ ブレードに表示される通知ハブの名前を使用します。
      
      `NotificationSettings` のコードは次のとおりです。
      
@@ -667,7 +667,7 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[[アクセス ポリシー]]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 
 
 

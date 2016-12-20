@@ -1,12 +1,12 @@
 ---
-title: Media Encoder Standard を使用した高度なエンコード | Microsoft Docs
-description: このトピックでは、Media Encoder Standard のタスク プリセットをカスタマイズして、高度なエンコードを実行する方法を紹介します。 また、Media Services .NET SDK を使用してエンコード タスクとジョブを作成する方法も紹介します。 エンコード ジョブにカスタム プリセットを与える方法も紹介します。
+title: "Media Encoder Standard を使用した高度なエンコード | Microsoft Docs"
+description: "このトピックでは、Media Encoder Standard のタスク プリセットをカスタマイズして、高度なエンコードを実行する方法を紹介します。 また、Media Services .NET SDK を使用してエンコード タスクとジョブを作成する方法も紹介します。 エンコード ジョブにカスタム プリセットを与える方法も紹介します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: ec95392f-d34a-4c22-a6df-5274eaac445b
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e85bc8a1e9193474fa3c9ef3f19ead25f314ecac
+
 
 ---
 # <a name="advanced-encoding-with-media-encoder-standard"></a>Media Encoder Standard を使用した高度なエンコード
@@ -29,7 +33,7 @@ ms.author: juliako
 * [自動インターレース解除を無効にする](media-services-custom-mes-presets-with-dotnet.md#deinterlacing)
 * [オーディオのみのプリセット](media-services-custom-mes-presets-with-dotnet.md#audio_only)
 
-## <a name="<a-id="encoding_with_dotnet"></a>encoding-with-media-services-.net-sdk"></a><a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
+## <a name="a-idencodingwithdotnetaencoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
 次のコード サンプルでは、Media Services SDK を使用して次のタスクを実行します。
 
 * エンコード ジョブを作成します。
@@ -230,7 +234,7 @@ ms.author: juliako
         }
 
 
-## <a name="<a-id="thumbnails"></a>generate-thumbnails"></a><a id="thumbnails"></a>サムネイルを生成する
+## <a name="a-idthumbnailsagenerate-thumbnails"></a><a id="thumbnails"></a>サムネイルを生成する
 このセクションでは、サムネイルを生成するプリセットをカスタマイズする方法を紹介します。 下に定義されているプリセットには、ファイルとサムネイルの生成に必要な情報をエンコードする方法に関する情報が含まれています。 [こちら](https://msdn.microsoft.com/library/mt269960.aspx) に記載されている MES プリセットを使用し、サムネイルを生成するコードを追加できます。  
 
 > [!NOTE]
@@ -242,7 +246,7 @@ ms.author: juliako
 
 必ず「 [考慮事項](media-services-custom-mes-presets-with-dotnet.md#considerations) 」セクションを確認してください。
 
-### <a name="<a-id="json"></a>json-preset"></a><a id="json"></a>JSON プリセット
+### <a name="a-idjsonajson-preset"></a><a id="json"></a>JSON プリセット
     {
       "Version": 1.0,
       "Codecs": [
@@ -342,7 +346,7 @@ ms.author: juliako
     }
 
 
-### <a name="<a-id="xml"></a>xml-preset"></a><a id="xml"></a>XML プリセット
+### <a name="a-idxmlaxml-preset"></a><a id="xml"></a>XML プリセット
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -423,7 +427,7 @@ ms.author: juliako
   
   * 負ではない整数の場合は、フレーム番号 (例: "Start": "120")
   * % サフィックス付きで表現される場合は、ソース期間に対する相対値 (例: "Start": "15%")
-  * HH:MM:SS… 形式で表現される場合は、タイムスタンプ。 format. 例: "Start" : "00:01:00")
+  * HH:MM:SS… 形式で表現されている場合は、タイムスタンプ  ( 例: "Start" : "00:01:00")
     
     必要に応じて、表記法を混在させたり、一致させたりすることができます。
     
@@ -431,12 +435,12 @@ ms.author: juliako
   * 既定: Start:{Best}
 * 各画像形式の出力形式は明示的に指定する必要があります (Jpg/Png/BmpFormat)。 指定されている場合、JpgVideo は JpgFormat に、などと MES によって関連付けられます。 OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
 
-## <a name="<a-id="trim_video"></a>trim-a-video-(clipping)"></a><a id="trim_video"></a>動画をトリミングする (クリッピング)
+## <a name="a-idtrimvideoatrim-a-video-clipping"></a><a id="trim_video"></a>動画をトリミングする (クリッピング)
 このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。 エンコーダーを使用して、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングすることもできます。詳細については、[このブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)をご覧ください。
 
 動画をトリミングするには、 [ここ](https://msdn.microsoft.com/library/mt269960.aspx) に記載されている MES プリセットを利用し、 **Sources** 要素を変更します (下記を参照)。 StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。 たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。 次の例では、入力ビデオの開始タイムスタンプは 0 であると想定しています。 **Sources** 要素はスキーマの先頭に配置する必要があります。 
 
-### <a name="<a-id="json"></a>json-preset"></a><a id="json"></a>JSON プリセット
+### <a name="a-idjsonajson-preset"></a><a id="json"></a>JSON プリセット
     {
       "Version": 1.0,
       "Sources": [
@@ -673,7 +677,7 @@ ms.author: juliako
       </Outputs>
     </Preset>
 
-## <a name="<a-id="overlay"></a>create-an-overlay"></a><a id="overlay"></a>オーバーレイを作成する
+## <a name="a-idoverlayacreate-an-overlay"></a><a id="overlay"></a>オーバーレイを作成する
 Media Encoder Standard では、画像を既存の動画に重ね合わせることができます。 現在サポートされている形式は png、jpg、gif、bmp です。 下に定義されているプリセットはビデオ オーバーレイの基本例です。
 
 プリセット ファイルの定義に加え、資産内のどのファイルがオーバーレイ画像であるか、また画像を重ね合わせるソース動画であるかを Media Services に認識させる必要もあります。 ビデオ ファイルは **プライマリ** ファイルである必要があります。 
@@ -827,7 +831,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
       </Outputs>
     </Preset>
 
-## <a name="<a-id="silent_audio"></a>insert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>音声が入力されない場合、無音オーディオ トラックを挿入する
+## <a name="a-idsilentaudioainsert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>音声が入力されない場合、無音オーディオ トラックを挿入する
 既定では、映像のみで音声の入っていないエンコーダーに入力を送信すると、映像データのみが含まれるファイルが出力資産に含まれます。 プレーヤーによっては、このような出力ストリームを処理できないことがあります。 そのような場合、この設定を利用すれば、無音のオーディオ トラックを出力に追加するようにエンコーダーに強制できます。
 
 入力に音声が入っていないとき、無音オーディオ トラックが含まれる資産を生成するようにエンコーダーに強制するには、"InsertSilenceIfNoAudio" 値を指定します。
@@ -850,7 +854,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-## <a name="<a-id="deinterlacing"></a>disable-auto-de-interlacing"></a><a id="deinterlacing"></a>自動インターレース解除を無効にする
+## <a name="a-iddeinterlacingadisable-auto-de-interlacing"></a><a id="deinterlacing"></a>自動インターレース解除を無効にする
 コンテンツのインターレース解除を自動的に行う場合は、何もする必要はありません。 自動インターレース解除がオンになっていれば (既定値)、MES がインターレース フレームを自動で検出し、解除処理を行います (インターレースとしてマークされているフレームのみが処理されます)。
 
 自動インターレース解除はオフにすることもできますが、 この設定は変更しないことをお勧めします。
@@ -878,7 +882,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
     </Sources>
 
 
-## <a name="<a-id="audio_only"></a>audio-only-presets"></a><a id="audio_only"></a>オーディオのみのプリセット
+## <a name="a-idaudioonlyaaudio-only-presets"></a><a id="audio_only"></a>オーディオのみのプリセット
 このセクションでは、2 つのオーディオのみの MES プリセット (AAC Audio と AAC Good Quality Audio) を示します。
 
 ### <a name="aac-audio"></a>AAC Audio
@@ -934,6 +938,9 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 ## <a name="see-also"></a>関連項目
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

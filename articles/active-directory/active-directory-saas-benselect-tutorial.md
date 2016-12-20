@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と BenSelect の統合 | Microsoft Docs'
-description: Azure Active Directory と BenSelect の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と BenSelect の統合 | Microsoft Docs"
+description: "Azure Active Directory と BenSelect の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: ffa17478-3ea1-4356-a289-545b5b9a4494
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 296a7ce8f84c226dfa899788bd4e0581f0a80eae
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-benselect"></a>チュートリアル: Azure Active Directory と BenSelect の統合
+# <a name="tutorial-azure-active-directory-integration-with-benselect"></a>チュートリアル: Azure Active Directory と BenSelect の統合
 このチュートリアルでは、BenSelect と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
 BenSelect と Azure AD の統合には、次の利点があります。
@@ -175,14 +179,14 @@ BenSelect アプリケーションは、特定の形式で構成された SAML �
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-benselect-tutorial/create_aaduser_04.png) 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-benselect-tutorial/create_aaduser_05.png) 
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-benselect-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]**をクリックします。
-6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-benselect-tutorial/create_aaduser_06.png) 
+    c. ページの下部にある **[次へ]**」を参照してください。
+6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-benselect-tutorial/create_aaduser_06.png) 
    
    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
@@ -262,6 +266,6 @@ BenSelect アプリケーションは、特定の形式で構成された SAML �
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

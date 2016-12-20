@@ -1,12 +1,12 @@
 ---
-title: フェールオーバー ストリーミング シナリオを実装する | Microsoft Docs
-description: このトピックでは、フェールオーバー ストリーミング シナリオを実装する方法を説明します。
+title: "フェールオーバー ストリーミング シナリオを実装する | Microsoft Docs"
+description: "このトピックでは、フェールオーバー ストリーミング シナリオを実装する方法を説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: fc45d849-eb0d-4739-ae91-0ff648113445
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
+
 
 ---
 # <a name="implementing-failover-streaming-scenario"></a>フェールオーバー ストリーミング シナリオを実装する
@@ -96,7 +100,7 @@ ms.author: juliako
           <add key="MediaServicesStorageAccountKeyTarget" value=" Media-Services-Storage-Account-Key-Target" />
         </appSettings>
 
-## <a name="add-code-that-handles-redundancy-for-on-demand-streaming."></a>オンデマンド ストリーミングの冗長性を処理するコードを追加します。
+## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>オンデマンド ストリーミングの冗長性を処理するコードを追加します。
 1. 次のクラスレベル フィールドを Program クラスに追加します。
    
         // Read values from the App.config file.
@@ -957,6 +961,9 @@ ms.author: juliako
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

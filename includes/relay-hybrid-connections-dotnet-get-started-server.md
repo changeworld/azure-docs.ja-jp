@@ -8,12 +8,16 @@
 ### <a name="write-some-code-to-receive-messages"></a>メッセージを受信するコードを記述する
 1. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
    
-    ```cs
+    ```csharp
+    using System;
+    using System.IO;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
     ```
 2. ハイブリッド接続の接続の詳細に関する定数を `Program` クラスに追加します。 中かっこ内のプレースホルダーを、ハイブリッド接続の作成時に取得した適切な値に置き換えます。
    
-    ```cs
+    ```csharp
     private const string RelayNamespace = "{RelayNamespace}";
     private const string ConnectionName = "{HybridConnectionName}";
     private const string KeyName = "{SASKeyName}";
@@ -21,7 +25,7 @@
     ```
 3. 次に示すように、`ProcessMessagesOnConnection` という新しいメソッドを `Program` クラスに追加します。
    
-    ```cs
+    ```csharp
     // Method is used to initiate connection
     private static async void ProcessMessagesOnConnection(HybridConnectionStream relayConnection, CancellationTokenSource cts)
     {
@@ -72,7 +76,7 @@
     ```
 4. 次に示すように、`RunAsync` という別の新しいメソッドを `Program` クラスに追加します。
    
-    ```cs
+    ```csharp
     private static async Task RunAsync()
     {
         var cts = new CancellationTokenSource();
@@ -117,13 +121,13 @@
     ```
 5. `Program` クラスの `Main` メソッドに次のコード行を追加します。
    
-    ```cs
+    ```csharp
     RunAsync().GetAwaiter().GetResult();
     ```
    
     Program.cs は次のようになります。
    
-    ```cs
+    ```csharp
     namespace Server
     {
         using System;
@@ -238,6 +242,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

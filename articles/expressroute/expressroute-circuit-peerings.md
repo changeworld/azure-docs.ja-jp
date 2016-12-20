@@ -1,12 +1,12 @@
 ---
-title: ExpressRoute 回線とルーティング ドメイン | Microsoft Docs
-description: このページでは、ExpressRoute 回線とルーティング ドメインの概要を示します。
+title: "ExpressRoute 回線とルーティング ドメイン | Microsoft Docs"
+description: "このページでは、ExpressRoute 回線とルーティング ドメインの概要を示します。"
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: 6f0c5d8e-cc60-4a04-8641-2c211bda93d9
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: bd3b8761c0390d9b1f55423ec3fde0301cf8a20b
+
 
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute 回線とルーティング ドメイン
@@ -30,7 +34,7 @@ ExpressRoute 回線では、Azure パブリック、Azure プライベート、�
 
 各接続には固定帯域幅 (50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、10 Gbps) があり、接続プロバイダーとピアリング場所にマップされます。 選択する帯域幅は、この回線のすべてのピアリング間で共有されます。 
 
-### <a name="quotas,-limits,-and-limitations"></a>クォータ、制限、および制限事項
+### <a name="quotas-limits-and-limitations"></a>クォータ、制限、および制限事項
 既定のクォータと制限は、すべての ExpressRoute 回線に適用されます。 クォータに関する最新情報については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md) 」ページをご覧ください。
 
 ## <a name="expressroute-routing-domains"></a>ExpressRoute のルーティング ドメイン
@@ -82,6 +86,9 @@ ExpressRoute 回線の一部として 1 つ以上のルーティング ドメイ
   * [ルーティング (回線ピアリング) の構成](expressroute-howto-routing-classic.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: センサーまたはその他のシステムから受信したデータをユーザーに通知する | Microsoft Docs
-description: Event Hubs を使用してセンサーのデータをユーザーに通知する方法について説明します。
+title: "センサーまたはその他のシステムから受信したデータをユーザーに通知する | Microsoft Docs"
+description: "Event Hubs を使用してセンサーのデータをユーザーに通知する方法について説明します。"
 services: event-hubs
 documentationcenter: na
 author: spyrossak
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: a4c0d679-2cac-4ac6-ad48-26cf9a6d8627
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2016
 ms.author: spyros;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8de8710d3de16c9b239af6c07c4f73e60e5a182b
+
 
 ---
 # <a name="notify-users-of-data-received-from-sensors-or-other-systems"></a>センサーまたはその他のシステムから受信したデータをユーザーに通知する
@@ -25,14 +29,14 @@ ms.author: spyros;sethm
 
 ![][2]
 
-問題は、静的なレポートを確認するための時間ができたときではなく、特定の条件が満たされたときに、重要な情報をいかに取得するかということです。 [Azure Event Hub][Azure Event Hub] または [Azure IoT Hub][Azure IoT Hub] を使用して、[Dynamics AX][Dynamics AX] などのデバイスまたはエンタープライズ アプリケーションからデータを受信する場合、それらのデータを処理する方法としていくつかのオプションがあります。 受信したデータは Web サイトで確認できるほか、分析し、格納することができ、さらに、それらのデータを使用して適切な作業を行うコマンドをトリガーすることもできます。 それには、[Azure Websites][Azure Websites]、[SQL Azure][SQL Azure]、[HDInsight][HDInsight]、[Cortana Intelligence Suite][Cortana Intelligence Suite]、[IoT Suite][IoT Suite]、[Logic Apps][Logic Apps]、[Azure Notification Hubs][Azure Notification Hubs] など強力なツールを使用することができます。 ただし、そのデータを誰かに最小限のオーバーヘッドで送信することが最も重要である場合があります。 ほんの少しのコードでそれを行う方法を示すために、 [AppToNotifyUsers][]という新しいサンプルを用意しました。 オプションには、電子メール (SMTP)、SMS、電話などがあります。
+問題は、静的なレポートを確認するための時間ができたときではなく、特定の条件が満たされたときに、重要な情報をいかに取得するかということです。 [Azure Event Hub][Azure Event Hub] または [Azure IoT Hub][Azure IoT Hub] を使用して、[Dynamics AX][Dynamics AX] などのデバイスまたはエンタープライズ アプリケーションからデータを受信する場合、それらのデータを処理する方法としていくつかのオプションがあります。 受信したデータは Web サイトで確認できるほか、分析し、格納することができ、さらに、それらのデータを使用して適切な作業を行うコマンドをトリガーすることもできます。 それには、[Azure Websites][Azure Websites]、[SQL Azure][SQL Azure]、[HDInsight][HDInsight]、[Cortana Intelligence Suite][Cortana Intelligence Suite]、[IoT Suite][IoT Suite]、[Logic Apps][Logic Apps]、[Azure Notification Hubs][Azure Notification Hubs] などの強力なツールを使用することができます。 ただし、そのデータを誰かに最小限のオーバーヘッドで送信することが最も重要である場合があります。 ほんの少しのコードでそれを行う方法を示すために、[AppToNotifyUsers][AppToNotifyUsers] という新しいサンプルを用意しました。 オプションには、電子メール (SMTP)、SMS、電話などがあります。
 
 ## <a name="application-structure"></a>アプリケーション構造
 アプリケーションは C# で記述されています。このサンプルの readme ファイルには、アプリケーションを変更、ビルド、および発行するために必要なすべての情報が含まれています。 次のセクションでは、アプリケーションの動作の概要を説明します。
 
 Azure Event Hub または IoT Hub にプッシュする重大なイベントがあるという想定で説明を始めます。 ハブへのアクセス権を有し、接続文字列がわかっている限り、どのハブも使用できます。
 
-Event Hub または IoT Hub をまだお持ちでない場合は、[Connect The Dots](https://github.com/Azure/connectthedots) プロジェクトにある手順に従って、Arduino シールドおよび Raspberry Pi でテスト ベッドを簡単にセットアップすることができます。 Arduino シールドの光センサーは Pi を通して光のレベルを [Azure Event Hub][Azure Event Hub] (**ehdevices**) に送信します。[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブは受信した光のレベルが重大レベルを下回っている場合、2 番目のイベント ハブ (**ehalerts**) に通知をプッシュします。
+Event Hub または IoT Hub をまだお持ちでない場合は、[Connect The Dots](https://github.com/Azure/connectthedots) プロジェクトにある手順に従って、Arduino シールドおよび Raspberry Pi でテスト ベッドを簡単にセットアップすることができます。 Arduino シールドの光センサーは Pi を通して光のレベルを [Azure Event Hub][Azure Event Hub] (**ehdevices**) に送信します。[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブは受信した光のレベルが一定のレベルを下回っている場合、2 番目のイベント ハブ (**ehalerts**) に通知をプッシュします。
 
 **AppToNotify** は起動すると、構成ファイル (App.config) を読み取って、アラートを受信する Event Hub の URL と資格情報を取得します。 次に、その Event Hub を継続的に監視して、それを介して渡されたメッセージがないかを確認するプロセスを生成します。Event Hub または IoT Hub の URL および有効な資格情報にアクセスできる限り、この Event Hubs リーダー コードは何が入ってきたかを継続的に読み取ることができます。 アプリケーションはまた、起動中に、使用されるメッセージング サービス (電子メール、SMS、電話) の URL と資格情報、送信者の名前とアドレス、および受信者のリストを読み取ります。
 
@@ -45,7 +49,7 @@ Event Hub モニターは、メッセージを検出すると、構成ファイ�
 * [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx) を使用する。ブログ「[Broadcast push notifications to millions of mobile devices using Azure Notification Hubs (Azure Notification Hubs を使用して何百万ものモバイル デバイスにプッシュ通知をブロードキャストする)](http://weblogs.asp.net/scottgu/broadcast-push-notifications-to-millions-of-mobile-devices-using-windows-azure-notification-hubs)」を参照。 
 
 ## <a name="next-steps"></a>次のステップ
-受信者に電子メールまたはテキスト メッセージを送信したり、受信者を呼び出したりして、Event Hub または IoT Hub で受信したデータを中継するシンプルな通知サービスを作成することは簡単です。 これらのハブで受信したデータに基づいてユーザーに通知するソリューションをデプロイするには、 [AppToNotifyUsers][]にアクセスしてください。
+受信者に電子メールまたはテキスト メッセージを送信したり、受信者を呼び出したりして、Event Hub または IoT Hub で受信したデータを中継するシンプルな通知サービスを作成することは簡単です。 これらのハブで受信したデータに基づいてユーザーに通知するソリューションをデプロイするには、[AppToNotifyUsers][AppToNotifyUsers] にアクセスしてください。
 
 これらのハブの詳細については、次の記事を参照してください。
 
@@ -56,14 +60,14 @@ Event Hub モニターは、メッセージを検出すると、構成ファイ�
 
 これらのハブで受信したデータに基づいてユーザーに通知するソリューションをデプロイするには、
 
-* [AppToNotifyUsers にアクセスしてください。][AppToNotifyUsers にアクセスしてください。]
+* [AppToNotifyUsers][AppToNotifyUsers]
 
 [Event Hubs の使用]: event-hubs-csharp-ephcs-getstarted.md
 [Azure IoT Hub]: https://azure.microsoft.com/services/iot-hub/
 [Azure Event Hubs]: https://azure.microsoft.com/services/event-hubs/
 [Azure Event Hub]: https://azure.microsoft.com/services/event-hubs/
-[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[AppToNotifyUsers にアクセスしてください。]: https://github.com/Azure-Samples/event-hubs-dotnet-user-notifications
+[Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[AppToNotifyUsers]: https://github.com/Azure-Samples/event-hubs-dotnet-user-notifications
 [Dynamics AX]: http://www.microsoft.com/dynamics/erp-ax-overview.aspx
 [Azure Websites]: https://azure.microsoft.com/services/app-service/web/
 [SQL Azure]: https://azure.microsoft.com/services/sql-database/
@@ -78,6 +82,7 @@ Event Hub モニターは、メッセージを検出すると、構成ファイ�
 [2]: ./media/event-hubs-sensors-notify-users/event-hubs-erp-alert.png
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

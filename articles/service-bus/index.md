@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: bfc1bf3d78099ba04a2621bcec9f870f7f88b122
-ms.openlocfilehash: 3eadd4b9bdb7621965057271f0e1b5e034bdcbf8
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: 0ecc51f19240ecfa49852ed1eafcf78d1227af16
 
 ---
 #<a name="service-bus-documentation"></a>Service Bus のドキュメント
@@ -29,7 +29,7 @@ Service Bus は、エンタープライズ メッセージングと中継通信�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=service-bus">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=service-bus">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -194,16 +194,45 @@ Service Bus は、エンタープライズ メッセージングと中継通信�
 
 ---
 
-## <a name="reference"></a>リファレンス
-
-### <a name="powershell"></a>PowerShell
-[Azure PowerShell リファレンス](/powershell/azureps-cmdlets-docs)
-
-### <a name="net"></a>.NET
-[.NET に関する管理リファレンス API](/dotnet/api/) 
-
-### <a name="rest"></a>REST () 
-[Service Bus REST API リファレンス](/rest/api/servicebus)  
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/servicebus">REST API リファレンスに関するページ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>他の</h3>
+                        <p><a href="/dotnet/api/">管理リファレンス API</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-bus.pdf">
@@ -215,6 +244,6 @@ Service Bus のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

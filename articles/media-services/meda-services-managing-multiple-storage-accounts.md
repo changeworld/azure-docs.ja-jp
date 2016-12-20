@@ -1,12 +1,12 @@
 ---
-title: 複数のストレージ アカウントでの Media Services 資産の管理 | Microsoft Docs
-description: この記事では、複数のストレージ アカウントで Media Services の資産を管理する方法について説明します。
+title: "複数のストレージ アカウントでの Media Services 資産の管理 | Microsoft Docs"
+description: "この記事では、複数のストレージ アカウントで Media Services の資産を管理する方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 4e4a9ec3-8ddb-4938-aec1-d7172d3db858
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 42a2b241ed6ac2b13d1fb65f42242b194ef2858b
+
 
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>複数のストレージ アカウントでの Media Services 資産の管理
@@ -250,6 +254,9 @@ Media Services は、ストリーミング コンテンツ (たとえば、http:
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ | Microsoft Docs
-description: Azure リソース マネージャーのテンプレートを使用して DocumentDB アカウント、Azure App Service Web Apps、サンプルの Web アプリケーションをデプロイする方法を説明します。
+title: "Azure Resource Manager テンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ | Microsoft Docs"
+description: "Azure リソース マネージャーのテンプレートを使用して DocumentDB アカウント、Azure App Service Web Apps、サンプルの Web アプリケーションをデプロイする方法を説明します。"
 services: documentdb, app-service\web
 author: h0n
 manager: jhubbard
 editor: monicar
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 087d8786-1155-42c7-924b-0eaba5a8b3e0
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2016
 ms.author: hawong
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ea624ffc9a33fe89aea065de8c96efd79d6c2b9a
+
 
 ---
 # <a name="deploy-documentdb-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ
@@ -38,7 +42,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 * Azure サブスクリプション。 Azure はサブスクリプション方式のプラットフォームです。  サブスクリプションの入手方法の詳細については、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 
-## <a name="<a-id="createdb"></a>step-1:-download-the-template-files"></a><a id="CreateDB"></a>手順 1: テンプレート ファイルをダウンロードする
+## <a name="a-idcreatedbastep-1-download-the-template-files"></a><a id="CreateDB"></a>手順 1: テンプレート ファイルをダウンロードする
 このチュートリアルで使用するサンプル ファイルをダウンロードすることから始めましょう。
 
 1. [DocumentDB アカウントと Web Apps の作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json)のテンプレートを、ローカルのフォルダー (C:\DocumentDBTemplates など) にダウンロードします。 このテンプレートでは、DocumentDB アカウント、App Service Web アプリ、Web アプリケーションをデプロイします。  また、Web アプリケーションをこの DocumentDB アカウントに接続するように自動的に構成します。
@@ -46,7 +50,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 <a id="Build"></a>
 
-## <a name="step-2:-deploy-the-documentdb-account,-app-service-web-app-and-demo-application-sample"></a>手順 2: DocumentDB アカウント、App Service Web アプリ、デモ アプリケーション サンプルをデプロイする
+## <a name="step-2-deploy-the-documentdb-account-app-service-web-app-and-demo-application-sample"></a>手順 2: DocumentDB アカウント、App Service Web アプリ、デモ アプリケーション サンプルをデプロイする
 では、最初のテンプレートをデプロイしましょう。
 
 > [!TIP]
@@ -54,7 +58,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 > 
 > 
 
-1. [Azure ポータル](https://portal.azure.com)にログインし、[New](新規.md) をクリックし、「テンプレートのデプロイ」を検索します。
+1. [Azure ポータル](https://portal.azure.com)にログインし、[New] (新規) をクリックし、「テンプレートのデプロイ」を検索します。
     ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
 2. [テンプレートのデプロイ] を選択し、**[作成]** 
      ![[テンプレートのデプロイメント UI のスクリーンショット]](./media/documentdb-create-documentdb-website/TemplateDeployment2.png) をクリックします。
@@ -86,7 +90,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 <a id="Build"></a> 
 
-## <a name="step-3:-deploy-the-document-account-and-web-app-sample"></a>手順 3: Document アカウントと Web アプリのサンプルのデプロイ
+## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>手順 3: Document アカウントと Web アプリのサンプルのデプロイ
 では、2 番目のテンプレートをデプロイしましょう。  このテンプレートは、アカウント エンドポイントやマスター キーなどの DocumentDB 接続情報を、アプリケーション設定またはカスタム接続文字列として Web アプリに導入する方法を理解するのに役立ちます。 たとえば、DocumentDB アカウントを使用してデプロイする独自の Web アプリケーションがあり、接続情報をデプロイ時に自動的に設定するような場合があります。
 
 > [!TIP]
@@ -129,7 +133,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 * Azure App Service Web Apps の詳細については、 [ここ](http://go.microsoft.com/fwlink/?LinkId=325362)をクリックしてください。
 * Azure リソース マネージャーのテンプレートの詳細については、 [ここ](https://msdn.microsoft.com/library/azure/dn790549.aspx)をクリックしてください。
 
-## <a name="what's-changed"></a>変更内容
+## <a name="whats-changed"></a>変更内容
 * Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
 * 以前のポータルから新しいポータルへの変更ガイドについては、「 [Azure クラシック ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)
 
@@ -138,6 +142,9 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 > 
 > 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

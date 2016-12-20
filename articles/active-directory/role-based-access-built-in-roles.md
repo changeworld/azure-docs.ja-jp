@@ -1,12 +1,12 @@
 ---
-title: 'RBAC: 組み込みのロール | Microsoft Docs'
-description: このトピックでは、ロール ベースのアクセス制御 (RBAC) の組み込みのロールについて説明します。
+title: "RBAC: 組み込みのロール |Microsoft Docs"
+description: "このトピックでは、ロール ベースのアクセス制御 (RBAC) の組み込みのロールについて説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/25/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 386e8479a64af20469e3e03180348f674b08ef8f
+
 
 ---
-# RBAC: 組み込みのロール
-Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが用意されています。組み込みのロールの定義は変更できません。ただし、組織の具体的なニーズに合うように [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)を作成することができます。
+# <a name="rbac-built-in-roles"></a>RBAC: 組み込みのロール
+Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが用意されています。 組み込みのロールの定義は変更できません。 ただし、組織の具体的なニーズに合うように [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md) を作成することができます。
 
-## Azure におけるロール
-次の表に、組み込みのロールについての簡単な説明を示します。ロール名をクリックすると、そのロールの **actions** と **notactions** の詳細な一覧を確認できます。**actions** プロパティは、Azure リソースに対して許可するアクションを指定します。アクションの文字列にワイルドカード文字を使用できます。**notactions** プロパティは、許可するアクションから除外されるアクションを指定します。
+## <a name="roles-in-azure"></a>Azure におけるロール
+次の表に、組み込みのロールについての簡単な説明を示します。 ロール名をクリックすると、そのロールの **actions** と **notactions** の詳細な一覧を確認できます。 **actions** プロパティは、Azure リソースに対して許可するアクションを指定します。 アクションの文字列にワイルドカード文字を使用できます。 **notactions** プロパティは、許可するアクションから除外されるアクションを指定します。
 
 > [!NOTE]
-> Azure のロール定義は常に進化しています。この記事は、最新の状態であることを心掛けておりますが、Azure PowerShell で常に最新のロール定義を見つけることができます。適宜、コマンドレット `(get-azurermroledefinition "<role name>").actions` または `(get-azurermroledefinition "<role name>").notactions` を使用します。
+> Azure のロール定義は常に進化しています。 この記事は、最新の状態であることを心掛けておりますが、Azure PowerShell で常に最新のロール定義を見つけることができます。 適宜、コマンドレット `(get-azurermroledefinition "<role name>").actions` または `(get-azurermroledefinition "<role name>").notactions` を使用します。
 > 
 > 
 
@@ -37,6 +41,7 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [共同作成者](#contributor) |アクセス権以外のすべてを管理できます。 |
 | [Data Factory の共同作業者](#data-factory-contributor) |Data Factory と Data Factory に含まれる子リソースを作成および管理できます。 |
 | [DevTest Labs ユーザー](#devtest-labs-user) |すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます |
+| [DNS ゾーン共同作成者](#dns-zone-contributor) |DNS ゾーンとレコードを保護できます |
 | [Document DB アカウントの共同作業者](#documentdb-account-contributor) |DocumentDB アカウントを管理できます |
 | [Intelligent Systems アカウントの共同作業者](#intelligent-systems-account-contributor) |Intelligent Systems アカウントを管理できます |
 | [ネットワークの共同作業者](#network-contributor) |すべてのネットワーク リソースを管理できます |
@@ -59,10 +64,10 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [Web プランの共同作業者](#web-plan-contributor) |Web プランを管理できます |
 | [Web サイトの共同作業者](#website-contributor) |Web サイトを管理できますが、その接続先の Web プランは管理できません |
 
-## ロールのアクセス許可
-以降の表は、各ロールに割り当てられている具体的なアクセス許可の説明です。アクセス許可を与える **Actions** のほか、それらを制限する **NotActions** が含まれている場合があります。
+## <a name="role-permissions"></a>ロールのアクセス許可
+以降の表は、各ロールに割り当てられている具体的なアクセス許可の説明です。 アクセス許可を与える **Actions** のほか、それらを制限する **NotActions** が含まれている場合があります。
 
-### API Management サービスの共同作業者
+### <a name="api-management-service-contributor"></a>API 管理サービスの共同作業者
 API Management サービスを管理できます
 
 | **アクション** |  |
@@ -75,7 +80,7 @@ API Management サービスを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |ロールとロール割り当ての読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### Application Insights コンポーネントの共同作業者
+### <a name="application-insights-component-contributor"></a>Application Insights コンポーネントの共同作業者
 Application Insights コンポーネントを管理できます
 
 | **アクション** |  |
@@ -89,7 +94,7 @@ Application Insights コンポーネントを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### オートメーション オペレーター
+### <a name="automation-operator"></a>オートメーション オペレーター
 ジョブを開始、停止、中断、および再開できます
 
 | **アクション** |  |
@@ -113,7 +118,7 @@ Application Insights コンポーネントを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### BizTalk の共同作業者
+### <a name="biztalk-contributor"></a>BizTalk の共同作業者
 BizTalk Services を管理できます
 
 | **アクション** |  |
@@ -126,7 +131,7 @@ BizTalk Services を管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### ClearDB MySQL DB の共同作業者
+### <a name="cleardb-mysql-db-contributor"></a>ClearDB MySQL DB の共同作業者
 ClearDB MySQL データベースを管理できます
 
 | **アクション** |  |
@@ -139,7 +144,7 @@ ClearDB MySQL データベースを管理できます
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 | successbricks.cleardb/databases/* |ClearDB MySQL データベースの作成と管理 |
 
-### 共同作成者
+### <a name="contributor"></a>共同作成者
 アクセス権以外のすべてを管理できます。
 
 | **アクション** |  |
@@ -151,7 +156,7 @@ ClearDB MySQL データベースを管理できます
 | Microsoft.Authorization/*/Delete |ロールとロール割り当ては削除できません |
 | Microsoft.Authorization/*/Write |ロールとロール割り当ては作成できません |
 
-### Data Factory の共同作業者
+### <a name="data-factory-contributor"></a>Data Factory の共同作業者
 Data Factory と Data Factory に含まれる子リソースを作成および管理します。
 
 | **アクション** |  |
@@ -164,7 +169,7 @@ Data Factory と Data Factory に含まれる子リソースを作成および�
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### DevTest Labs ユーザー
+### <a name="devtest-labs-user"></a>DevTest Labs ユーザー
 すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます
 
 | **アクション** |  |
@@ -197,7 +202,20 @@ Data Factory と Data Factory に含まれる子リソースを作成および�
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Storage/storageAccounts/listKeys/action |ストレージ アカウント キーの一覧表示 |
 
-### Document DB アカウントの共同作業者
+### <a name="dns-zone-contributor"></a>DNS ゾーン共同作成者
+DNS ゾーンとレコードを保護できます。
+
+| **アクション** |  |
+| --- | --- |
+| Microsoft.Authorization/\*/read |ロールとロール割り当ての読み取り |
+| Microsoft.Insights/alertRules/\* |アラート ルールの作成と管理 |
+| Microsoft.Network/dnsZones/\* |DNS ゾーンとレコードの作成と管理 |
+| Microsoft.ResourceHealth/availabilityStatuses/read |リソースの正常性の読み取り |
+| Microsoft.Resources/deployments/\* |リソース グループ デプロイの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
+| Microsoft.Support/\* |サポート チケットの作成と管理 |
+
+### <a name="documentdb-account-contributor"></a>Document DB アカウントの共同作業者
 DocumentDB アカウントを管理できます
 
 | **アクション** |  |
@@ -210,7 +228,7 @@ DocumentDB アカウントを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### Intelligent Systems アカウントの共同作業者
+### <a name="intelligent-systems-account-contributor"></a>Intelligent Systems アカウントの共同作業者
 Intelligent Systems アカウントを管理できます
 
 | **アクション** |  |
@@ -223,7 +241,7 @@ Intelligent Systems アカウントを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### ネットワークの共同作業者
+### <a name="network-contributor"></a>ネットワークの共同作業者
 すべてのネットワーク リソースを管理できます
 
 | **アクション** |  |
@@ -236,7 +254,7 @@ Intelligent Systems アカウントを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### New Relic APM アカウントの共同作業者
+### <a name="new-relic-apm-account-contributor"></a>New Relic APM アカウントの共同作業者
 New Relic Application Performance Management アカウントおよびアプリケーションを管理できます
 
 | **アクション** |  |
@@ -249,21 +267,21 @@ New Relic Application Performance Management アカウントおよびアプリ�
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 | NewRelic.APM/accounts/* |New Relic Application Performance Management アカウントの作成と管理 |
 
-### 所有者
+### <a name="owner"></a>所有者
 アクセス権を含めすべてを管理できます
 
 | **アクション** |  |
 | --- | --- |
 | * |あらゆる種類のリソースの作成と管理 |
 
-### 閲覧者
+### <a name="reader"></a>閲覧者
 すべてを閲覧できますが、変更を加えることはできません
 
 | **アクション** |  |
 | --- | --- |
 | */read |機密データを除くあらゆる種類のリソースの読み取り |
 
-### Redis Cache の共同作業者
+### <a name="redis-cache-contributor"></a>Redis Cache の共同作業者
 Redis キャッシュを管理できます
 
 | **アクション** |  |
@@ -276,8 +294,8 @@ Redis キャッシュを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### Scheduler Job Collection の共同作業者
-Scheduler ジョブ コレクションを管理できます
+### <a name="scheduler-job-collections-contributor"></a>Scheduler Job Collection の共同作業者
+Scheduler Job Collection を管理できます
 
 | **アクション** |  |
 | --- | --- |
@@ -289,7 +307,7 @@ Scheduler ジョブ コレクションを管理できます
 | Microsoft.Scheduler/jobcollections/* |ジョブ コレクションの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### Search サービスの共同作業者
+### <a name="search-service-contributor"></a>Search サービスの共同作業者
 Search サービスを管理できます
 
 | **アクション** |  |
@@ -302,7 +320,7 @@ Search サービスを管理できます
 | Microsoft.Search/searchServices/* |検索サービスの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### セキュリティ管理者
+### <a name="security-manager"></a>セキュリティ管理者
 セキュリティ コンポーネント、セキュリティ ポリシー、および仮想マシンを管理できます
 
 | **アクション** |  |
@@ -318,7 +336,7 @@ Search サービスを管理できます
 | Microsoft.Security/* |セキュリティ コンポーネントおよびポリシーの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### SQL DB の共同作業者
+### <a name="sql-db-contributor"></a>SQL DB の共同作業者
 SQL データベースを管理できますが、そのセキュリティ関連ポリシーは管理できません
 
 | **アクション** |  |
@@ -342,7 +360,7 @@ SQL データベースを管理できますが、そのセキュリティ関連�
 | Microsoft.Sql/servers/databases/securityAlertPolicies/* |セキュリティの警告のポリシーを編集することはできません |
 | Microsoft.Sql/servers/databases/securityMetrics/* |セキュリティ基準を編集することはできません |
 
-### SQL セキュリティ管理者
+### <a name="sql-security-manager"></a>SQL セキュリティ管理者
 SQL サーバーおよびデータベースのセキュリティ関連ポリシーを管理できます
 
 | **アクション** |  |
@@ -369,7 +387,7 @@ SQL サーバーおよびデータベースのセキュリティ関連ポリシ�
 | Microsoft.Sql/servers/securityAlertPolicies/* |SQL サーバー セキュリティの警告のポリシーの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### SQL Server の共同作業者
+### <a name="sql-server-contributor"></a>SQL Server の共同作業者
 SQL サーバーおよびデータベースを管理できますが、そのセキュリティ関連ポリシーは管理できません
 
 | **アクション** |  |
@@ -395,7 +413,7 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Sql/servers/databases/securityMetrics/* |SQL サーバー データベース セキュリティ基準は編集できません |
 | Microsoft.Sql/servers/securityAlertPolicies/* |SQL サーバー セキュリティの警告のポリシーは編集できません |
 
-### 従来のストレージ アカウントの共同作業者
+### <a name="classic-storage-account-contributor"></a>従来のストレージ アカウントの共同作業者
 従来のストレージ アカウントを管理できます
 
 | **アクション** |  |
@@ -408,7 +426,7 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### ストレージ アカウントの共同作業者
+### <a name="storage-account-contributor"></a>ストレージ アカウントの共同作業者
 ストレージ アカウントを管理できますが、ストレージ アカウントにアクセスすることはできません。
 
 | **アクション** |  |
@@ -422,7 +440,7 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Storage/storageAccounts/* |ストレージ アカウントの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### ユーザーアクセスの管理者
+### <a name="user-access-administrator"></a>ユーザーアクセスの管理者
 Azure リソースに対するユーザー アクセスを管理できます
 
 | **アクション** |  |
@@ -431,7 +449,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 | Microsoft.Authorization/* |承認の管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### 従来の仮想マシンの共同作業者
+### <a name="classic-virtual-machine-contributor"></a>従来の仮想マシンの共同作業者
 接続している仮想ネットワークやストレージ アカウント以外の従来の仮想マシンを管理できます
 
 | **アクション** |  |
@@ -454,7 +472,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### 仮想マシンの共同作業者
+### <a name="virtual-machine-contributor"></a>仮想マシンの共同作業者
 接続している仮想ネットワークやストレージ アカウント以外の仮想マシンを管理できます
 
 | **アクション** |  |
@@ -485,7 +503,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 | Microsoft.Storage/storageAccounts/read |ストレージ アカウントの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### 従来のネットワークの共同作業者
+### <a name="classic-network-contributor"></a>従来のネットワークの共同作業者
 従来の仮想ネットワークと予約済み IP を管理できます
 
 | **アクション** |  |
@@ -498,7 +516,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### Web Plan の共同作業者
+### <a name="web-plan-contributor"></a>Web プランの共同作業者
 Web プランを管理できます
 
 | **アクション** |  |
@@ -511,7 +529,7 @@ Web プランを管理できます
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 | Microsoft.Web/serverFarms/* |サーバー ファームの作成と管理 |
 
-### Web サイトの共同作業者
+### <a name="website-contributor"></a>Web サイトの共同作業者
 Web サイトを管理できますが、接続されている Web プランは管理できません
 
 | **アクション** |  |
@@ -527,12 +545,17 @@ Web サイトを管理できますが、接続されている Web プランは�
 | Microsoft.Web/listSitesAssignedToHostName/read |ホスト名に割り当てられたサイトの読み取り |
 | Microsoft.Web/serverFarms/join/action |サーバー ファームの接続 |
 | Microsoft.Web/serverFarms/read |サーバー ファームの読み取り |
-| Microsoft.Web/sites/* |Web サイトの作成と管理 |
+| Microsoft.Web/sites/* |Web サイトの作成と管理 (サイト作成では、関連付けられた App Service プランに対する書き込みアクセス許可も必要です) |
 
-## 関連項目
+## <a name="see-also"></a>関連項目
 * [ロールベースのアクセス制御](role-based-access-control-configure.md): Azure ポータルでの RBAC の基本について説明します。
 * [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md): アクセスのニーズに合わせてカスタム ロールを作成する方法について説明します。
 * [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
 * [ロールベースのアクセス制御のトラブルシューティング](role-based-access-control-troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

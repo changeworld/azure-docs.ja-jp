@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.date: 06/21/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8886107f96f31f668ce55ebb4c76e58ad1f21268
+ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
+ms.openlocfilehash: 2334a85402049eb8654039e98cf2c3131a43de62
 
 
 ---
 # <a name="working-with-application-insights-in-visual-studio"></a>Visual Studio での Application Insights の操作
-Visual Studio (2015 以降) では、 [Visual Studio Application Insights](app-insights-overview.md)からのテレメトリを使用し、パフォーマンスの分析と問題の診断を、デバッグ中と運用環境の両方において実行できます。
+Visual Studio (2015 以降) では、[Azure Application Insights](app-insights-overview.md)からのテレメトリを使用し、パフォーマンスの分析と問題の診断を、デバッグ中と運用環境の両方において実行できます。
 
 [アプリに Application Insights をインストール](app-insights-asp-net.md)していない場合は、今すぐインストールしてください。
 
@@ -94,6 +94,6 @@ Application Insights のツール バー ボタンか [Application Insights の�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,25 +1,29 @@
 ---
-title: 'ExpressRoute トラブルシューティング ガイド: ARP テーブルを取得する | Microsoft Docs'
-description: このページでは、ExpressRoute 回線の ARP テーブルを取得する手順について説明します。
+title: "ExpressRoute トラブルシューティング ガイド: ARP テーブルを取得する | Microsoft Docs"
+description: "このページでは、ExpressRoute 回線の ARP テーブルを取得する手順について説明します。"
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carolz
 editor: tysonn
-
+ms.assetid: b5856acf-03c2-4933-8111-6ce12998d92a
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 10/11/2016
 ms.author: ganesr
+translationtype: Human Translation
+ms.sourcegitcommit: e7931f1b08d09fbe1fa5a5a2d4a11da01e736462
+ms.openlocfilehash: 49f7eae7184fda3ea73c8a85e354d0e41df039c7
+
 
 ---
-# <a name="expressroute-troubleshooting-guide:-getting-arp-tables-in-the-classic-deployment-model"></a>ExpressRoute トラブルシューティング ガイド: クラシック デプロイ モデルの ARP テーブルを取得する
+# <a name="expressroute-troubleshooting-guide-getting-arp-tables-in-the-classic-deployment-model"></a>ExpressRoute トラブルシューティング ガイド: クラシック デプロイ モデルの ARP テーブルを取得する
 > [!div class="op_single_selector"]
-> [PowerShell - Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
-> [PowerShell - クラシック](expressroute-troubleshooting-arp-classic.md)
+> * [PowerShell - Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
+> * [PowerShell - クラシック](expressroute-troubleshooting-arp-classic.md)
 > 
 > 
 
@@ -30,7 +34,7 @@ ms.author: ganesr
 > 
 > 
 
-## <a name="address-resolution-protocol-(arp)-and-arp-tables"></a>アドレス解決プロトコル (ARP) と ARP テーブル
+## <a name="address-resolution-protocol-arp-and-arp-tables"></a>アドレス解決プロトコル (ARP) と ARP テーブル
 ARP は、 [RFC 826](https://tools.ietf.org/html/rfc826)で定義されているレイヤー 2 のプロトコルです。 Ethernet アドレス (MAC アドレス) と IP アドレスとを対応付けるために、ARP が使用されます。
 
 ARP テーブルから、特定のピアリングに関する IPv4 アドレスと MAC アドレスのマッピングを得ることができます。 ExpressRoute 回線のピアリングで使用される ARP テーブルは、プライマリ インターフェイスとセカンダリ インターフェイスのそれぞれに関して次の情報を提供します。
@@ -82,7 +86,7 @@ Azure プライベート ピアリングの ARP テーブルは、次のコマ�
           0 Microsoft         10.0.0.2 aaaa.bbbb.cccc
 
 
-### <a name="arp-tables-for-azure-public-peering:"></a>Azure パブリック ピアリングの ARP テーブル
+### <a name="arp-tables-for-azure-public-peering"></a>Azure パブリック ピアリングの ARP テーブル
 Azure パブリック ピアリングの ARP テーブルは、次のコマンドレットで取得します。
 
         # Required variables
@@ -131,7 +135,7 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
 ## <a name="how-to-use-this-information"></a>この情報の用途
 ピアリングの ARP テーブルは、レイヤー 2 の構成と接続性の検証に使用できます。 このセクションでは、各種の状況下における ARP テーブルの見え方について簡単に説明します。
 
-### <a name="arp-table-when-a-circuit-is-in-an-operational-(expected)-state"></a>回線が運用 (正常な) 状態にあるときの ARP テーブル
+### <a name="arp-table-when-a-circuit-is-in-an-operational-expected-state"></a>回線が運用 (正常な) 状態にあるときの ARP テーブル
 * ARP テーブルには、オンプレミス側とマイクロソフト側とについて、有効な IP アドレスと MAC アドレスから成るエントリがそれぞれ存在します。
 * オンプレミス側 IP アドレスの最後のオクテットは常に奇数です。
 * マイクロソフト側 IP アドレスの最後のオクテットは常に偶数です。
@@ -142,7 +146,7 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
          10 On-Prem           65.0.0.1 ffff.eeee.dddd
           0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
 
-### <a name="arp-table-when-it's-on-premises-or-when-the-connectivity-provider-side-has-problems"></a>オンプレミス側または接続プロバイダー側に問題がある場合の ARP テーブル
+### <a name="arp-table-when-its-on-premises-or-when-the-connectivity-provider-side-has-problems"></a>オンプレミス側または接続プロバイダー側に問題がある場合の ARP テーブル
  ARP テーブルに表示されるのは 1 件のエントリのみです。 この場合マイクロソフト側で使用されている MAC アドレスと IP アドレスとのマッピングが表示されます。
 
         Age InterfaceProperty IpAddress  MacAddress    
@@ -165,6 +169,9 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
 * バイトの入出力を参照してデータ転送を検証します。
 * 問題が解消しない場合は [Microsoft Azure のヘルプとサポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) にサポート要求を申請します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

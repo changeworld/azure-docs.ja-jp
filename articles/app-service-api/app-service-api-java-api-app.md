@@ -140,7 +140,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 4. エディターに表示されるドキュメントのページと API の概要を確認します。 
    
     ![View Swagger Generated Docs][view-swagger-generated-docs]
-5. **[Generate Server] -> [JAX-RS]** メニュー オプションを選択し、後で編集してモック実装を追加するサーバー側のコードをスキャフォールディングします。 
+5. **[Generate Server] -> JAX-RS** メニュー オプションを選択し、後で編集してモック実装を追加するサーバー側のコードをスキャフォールディングします。 
    
     ![Generate Code Menu Item][generate-code-menu-item]
    
@@ -283,7 +283,7 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 <!-- URL List -->
 
 [App Service API CORS]: app-service-api-cors-consume-javascript.md
-[Azure ポータル]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Document DB Java SDK]: ../documentdb/documentdb-java-application.md
 [無料試用版]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: http://www.git-scm.com/

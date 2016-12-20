@@ -1,6 +1,6 @@
 # Overview
 ## [Application Insights とは何か?](app-insights-overview.md)
-## [動作のしくみ](app-insights-detect-triage-diagnose.md)
+## [DevOps サイクルにおけるパフォーマンス監視](app-insights-detect-triage-diagnose.md)
 
 # 作業開始
 ## Azure の監視
@@ -30,18 +30,20 @@
 
 # 方法
 ## 計画と設計
-
 ### [Web アプリおよびサービスの詳細な診断](app-insights-devops.md)
 ### [Application Insights と HockeyApp による開発者分析](app-insights-developer-analytics.md)
 ### [Web アプリケーションのパフォーマンスを監視する](app-insights-web-monitor-performance.md)
 ### [Application Insights による利用状況分析](app-insights-overview-usage.md)
 ### [Application Insights リソースの分離](app-insights-separate-resources.md)
 ### [Application Insights での作業](app-insights-how-do-i.md)
+## 移行
+### [Azure エンドポイント監視から Application Insights 可用性テストへの移行](app-insights-migrate-azure-endpoint-tests.md)
 
 ## 構成
-
+### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
 ### Azure
 #### [診断](app-insights-azure-diagnostics.md)
+## [IP アドレス](app-insights-ip-addresses.md)
 
 ### ASP.NET
 #### [その他のテレメトリの収集](app-insights-asp-net-more.md)
@@ -63,8 +65,8 @@
 #### [メトリック アラート](app-insights-alerts.md)
 
 ### [スマート検出](app-insights-proactive-diagnostics.md)
-#### [障害の検出](app-insights-proactive-failure-diagnostics.md)
-#### [異常の検出](app-insights-proactive-performance-diagnostics.md)
+#### [失敗の異常](app-insights-proactive-failure-diagnostics.md)
+#### [パフォーマンスの異常](app-insights-proactive-performance-diagnostics.md)
 
 ## 分析
 
@@ -102,7 +104,6 @@
 ### [連続エクスポート](app-insights-export-telemetry.md)
 ### [Power BI へのエクスポート](app-insights-export-power-bi.md)
 
-
 ## 開発
 
 ### [カスタム イベントとメトリックの API](app-insights-api-custom-events-metrics.md)
@@ -110,34 +111,31 @@
 ### [ASP.NET Core](app-insights-asp-net-core.md)
 
 
-## [管理]
-
+## 管理
 ### [価格とクォータの管理](app-insights-pricing.md)
 ### [SCOM での Application Insights を使用したアプリケーション パフォーマンス監視](app-insights-scom.md)
 
+##エクスポート
+## [データのエクスポート モデル](app-insights-export-data-model.md)
 
 ## セキュリティ保護
-
 ### [データの収集、保持、保存](app-insights-data-retention-privacy.md)
 ### [リソース、役割、およびアクセス制御](app-insights-resources-roles-access-control.md)
-
-
 ## トラブルシューティング
 ### [.NET のデータがない](app-insights-asp-net-troubleshoot-no-data.md)
 ### [Analytics](app-insights-analytics-troubleshooting.md)
 ### [Java](app-insights-java-troubleshoot.md)
 
 # リファレンス
+## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
 ## [Java](http://dl.windowsazure.com/applicationinsights/javadoc/)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
-## [JavaScript API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-## [Analytics](app-insights-analytics-reference.md)
-## [サンプリング](app-insights-sampling.md)
-## [IP アドレス](app-insights-ip-addresses.md)
-## [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
-## [データのエクスポート モデル](app-insights-export-data-model.md)
-## [Azure エンドポイント監視から Application Insights 可用性テストへの移行](app-insights-migrate-azure-endpoint-tests.md)
+## [REST ()](https://dev.applicationinsights.io/)
+
+# リソース
+## [Analytics リファレンス](app-insights-analytics-reference.md)
+## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 ## [開発者分析: 言語、プラットフォーム、統合](app-insights-platforms.md)
+### [サンプリング](app-insights-sampling.md)
 ### [サンプルとチュートリアル](app-insights-code-samples.md)
 #### [チュートリアル: Microsoft Dynamics CRM Online のテレメトリの有効化](app-insights-sample-mscrm.md)
 #### [チュートリアル: Stream Analytics を使用して SQL にエクスポートする](app-insights-code-sample-export-sql-stream-analytics.md)
@@ -145,9 +143,6 @@
 ## [Windows Phone と Windows ストア向けの Application Insights SDK のリリース ノート](app-insights-release-notes-windows.md)
 ## [Developer Analytics Tools のリリース ノート](app-insights-release-notes-vsix.md)
 ## [SDK リリース ノート - Application Insights](app-insights-release-notes.md)
-## [REST API](https://dev.applicationinsights.io/)
-
-# リソース
 ## [料金](https://azure.microsoft.com/pricing/details/application-insights/)  
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
@@ -157,6 +152,7 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Dec16_HO1-->
 
 

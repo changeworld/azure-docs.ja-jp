@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Promapp の統合 | Microsoft Docs'
-description: Azure Active Directory と Promapp の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Promapp の統合 | Microsoft Docs"
+description: "Azure Active Directory と Promapp の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 418d0601-6e7a-4997-a683-73fa30a2cfb5
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: dece2cd1c8645c0a2d19177d433dbfe5d6e3f6cd
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-promapp"></a>チュートリアル: Azure Active Directory と Promapp の統合
+# <a name="tutorial-azure-active-directory-integration-with-promapp"></a>チュートリアル: Azure Active Directory と Promapp の統合
 このチュートリアルの目的は、Promapp と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
 Promapp と Azure AD の統合には、次の利点があります。 
 
@@ -130,7 +134,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
     b. **[SSO - Single Sign-on Mode]** として **[Optional]** を選択し、**[Save]** をクリックします。
    
     c. ダウンロードした証明書をメモ帳で開き、最初の行 (*-----BEGIN CERTIFICATE-----*) と最後の行 (*-----END CERTIFICATE-----*) を除く証明書の内容をコピーして、**[SSO-x.509 Certificate]** に貼り付け、**[Save]** をクリックします。
-6. Azure AD クラシック ポータルで、[single sign-on configuration confirmation](シングル サインオンの構成の確認.md) を選択し、 **[次へ]**をクリックします。 
+6. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。 
    
     ![Azure AD のシングル サインオン][10]
 7. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
@@ -158,16 +162,16 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_05.png)  
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -255,6 +259,6 @@ Promapp アプリケーションでは、ジャストインタイム プロビ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

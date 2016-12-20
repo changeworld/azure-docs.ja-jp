@@ -15,17 +15,17 @@ ms.topic: hero-article
 ms.date: 11/01/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: e7d3c82e235d691c4ab329be3b168dcccc19774f
-ms.openlocfilehash: 2809b7f5367a333a7aac99db890d0aee3bc6667a
+ms.sourcegitcommit: 79a3ba8f0daee5c20f7a05e20e473cfbea384acc
+ms.openlocfilehash: c941628ece0daffba7cb9bfd79fa0ffdda4ecfba
 
 
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
+
 > [!div class="op_single_selector"]
-> * [Node.JS](cloud-services-nodejs-develop-deploy-app.md)
 > * [.NET](cloud-services-dotnet-get-started.md)
->
->
+> * [Node.JS](cloud-services-nodejs-develop-deploy-app.md)
+> * [Python](cloud-services-python-ptvs.md)
 
 このガイドでは、Azure のクラウド サービスで実行される簡単な Node.js アプリケーションを作成します。 Cloud Services は、Azure のスケーラブルなクラウド アプリケーションの構成要素です。 クラウド サービスによって、アプリケーションのフロントエンド コンポーネントとバックエンド コンポーネントの分離および独立した管理とスケールアウトを実現できます。  Cloud Services は、各ロールを信頼性の高い方法でホストするための堅牢な専用仮想マシンを提供します。
 
@@ -176,12 +176,12 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 <!-- URL List -->
 
 [Azure Websites、Cloud Services、および Virtual Machines の比較]: ../app-service-web/choose-web-site-cloud-service-vm.md
-[軽量の Web アプリを使用する]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
+[軽量の Web アプリを使用]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
 [Azure Powershell]: ../powershell-install-configure.md
 [Azure SDK for .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
 [PowerShell を接続します]: ../powershell-install-configure.md#step-3-connect
 [nodejs.org]: http://nodejs.org/
-[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要) (Azure 対応のホステッド サービスの作成の概要)]: https://azure.microsoft.com/documentation/services/cloud-services/
+[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js デベロッパー センター]: https://azure.microsoft.com/develop/nodejs/
 
 <!-- IMG List -->
@@ -196,6 +196,6 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

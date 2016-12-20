@@ -1,12 +1,12 @@
 ---
-title: Azure BLOB ストレージのデータをサンプリングする | Microsoft Docs
-description: Azure BLOB ストレージのサンプル データ
+title: "Azure BLOB ストレージのデータをサンプリングする | Microsoft Docs"
+description: "Azure BLOB ストレージのデータをサンプリングする"
 services: machine-learning,storage
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: e8d9ad2c-86c5-43d6-80b8-d355b5c0dccf
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,21 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: fashah;garye;bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 66eddd40d3aa5156762acd1b1783a527e9ab463d
+
 
 ---
-# <a name="heading"></a>Azure BLOB ストレージのデータをサンプリングする
+# <a name="a-nameheadingasample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure BLOB ストレージのデータをサンプリングする
 このドキュメントでは、Azure Blob Storage に格納されたデータのサンプリングについて説明します。プログラムからデータをダウンロードし、Python で記述されたプロシージャを使ってそのデータをサンプリングします。
 
-**データをサンプリングする理由** 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
+**データをサンプリングする理由**
+ 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。 これにより、データの理解、探索、および特徴エンジニアリングが容易になります。 Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
 
-次の**メニュー**は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。
+次の **メニュー** は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。 
 
 [!INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
-このサンプリング タスクは、[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
+このサンプリング タスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
 
-## データのダウンロードとダウン サンプリング
-1. 次の Python のサンプル コードから、BLOB サービスを使用して Azure BLOB ストレージからデータをダウンロードします。
+## <a name="download-and-down-sample-data"></a>データのダウンロードとダウン サンプリング
+1. 次の Python のサンプル コードから、BLOB サービスを使用して Azure BLOB ストレージからデータをダウンロードします。 
    
         from azure.storage.blob import BlobService
         import tables
@@ -61,7 +66,7 @@ ms.author: fashah;garye;bradsev
 
 これで、上記の 1 パーセントのサンプルのデータ フレームを操作して、さらなる探索および特徴の生成を行えるようになりました。
 
-## <a name="heading"></a>データをアップロードし、Azure Machine Learning で読み取る
+## <a name="a-nameheadingaupload-data-and-read-it-into-azure-machine-learning"></a><a name="heading"></a>データをアップロードし、Azure Machine Learning で読み取る
 次のサンプル コードを使用すると、次のようにデータをダウンサンプリングして、 Azure ML で直接使用することができます。
 
 1. データ フレームをローカル ファイルに書き込む
@@ -88,8 +93,13 @@ ms.author: fashah;garye;bradsev
    
         except:            
             print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
-3. 次のスクリーン ショットに示すように、Azure ML の[データのインポート](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)を使用して Azure BLOB からデータを読み取ります。
+3. 次のスクリーン ショットに示すように、Azure ML の [データのインポート](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) を使用して Azure BLOB からデータを読み取ります。
 
 ![リーダー BLOB](./media/machine-learning-data-science-sample-data-blob/reader_blob.png)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

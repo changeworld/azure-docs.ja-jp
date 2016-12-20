@@ -1,12 +1,12 @@
 ---
-title: Azure Event Hubs Archive チュートリアル | Microsoft Docs
-description: Azure Python SDK を使用して、Event Hubs Archive 機能を使用する方法を試すサンプル。
+title: "Azure Event Hubs Archive チュートリアル | Microsoft Docs"
+description: "Azure Python SDK を使用して、Event Hubs Archive 機能を使用する方法を試すサンプル。"
 services: event-hubs
-documentationcenter: ''
+documentationcenter: 
 author: djrosanova
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2016
 ms.author: darosa;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c836558426b44633993f9f52de39d0a843039614
+
 
 ---
-# Event Hubs Archive チュートリアル: Python
-Event Hubs Archive は Event Hubs の新機能で、任意の Azure Blob Storage アカウントに、Event Hub 内のストリーム データを自動的に配布することができます。これにより、ストリーミング データをリアルタイムで容易にバッチ処理することができます。この記事では、Python で Event Hubs Archive を使用する方法について説明します。Event Hubs Archive の詳細については、「[概要の記事](event-hubs-archive-overview.md)」を参照してください。
+# <a name="event-hubs-archive-walkthrough-python"></a>Event Hubs Archive チュートリアル: Python
+Event Hubs Archive は Event Hubs の新機能で、任意の Azure Blob Storage アカウントに、Event Hub 内のストリーム データを自動的に配布することができます。 これにより、ストリーミング データをリアルタイムで容易にバッチ処理することができます。 この記事では、Python で Event Hubs Archive を使用する方法について説明します。 Event Hubs Archive の詳細については、「 [概要の記事](event-hubs-archive-overview.md)」を参照してください。
 
-このサンプルでは、Azure Python SDK を使用して、Archive の機能を使用する方法を試してみます。Sender.py は、シミュレートされた環境のテレメトリを JSON 形式で Event Hubs に送信します。Event Hub を構成して Archive 機能を使用することにより、このデータをバッチ内の BLOB ストレージに書き込みます。Archivereader.py はこれらの BLOB を読み込み、デバイスごとに追加ファイルを作成し、データを .csv ファイルに書き込みます。
+このサンプルでは、Azure Python SDK を使用して、Archive の機能を使用する方法を試してみます。 Sender.py は、シミュレートされた環境のテレメトリを JSON 形式で Event Hubs に送信します。 Event Hub を構成して Archive 機能を使用することにより、このデータをバッチ内の BLOB ストレージに書き込みます。 Archivereader.py はこれらの BLOB を読み込み、デバイスごとに追加ファイルを作成し、データを .csv ファイルに書き込みます。
 
 作業内容
 
@@ -34,25 +38,25 @@ Event Hubs Archive は Event Hubs の新機能で、任意の Azure Blob Storage
 1. Python 2.7.x
 2. Azure サブスクリプション
 
-[!INCLUDE [アカウント作成メモ](../../includes/create-account-note.md)]
+[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## Azure Storage アカウントの作成
-1. [Azure ポータル][Azure ポータル]にログオンします。
+## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
+1. [Azure ポータル][Azure ポータル] にログオンします。
 2. ポータルの左側のナビゲーション ウィンドウで [新規] をクリックし、[データ + ストレージ]、[ストレージ アカウント] の順にクリックします。
-3. ストレージ アカウントのブレードで、フィールドを入力し、**[作成]** をクリックします。
+3. ストレージ アカウントのブレードで、フィールドを入力し、 **[作成]**をクリックします。
    
    ![][1]
-4. **[デプロイメントが成功しました]** メッセージが表示されたら、新しいストレージ アカウントをクリックし、 **[Essentials]** ブレードで **[BLOB]** をクリックします。**[BLOB サービス]** ブレードが開いたら、上部にある **[+ コンテナー]** をクリックします。コンテナーの **[アーカイブ]** に名前を付け、**[BLOB サービス]** ブレードを閉じます。
-5. 左のブレードにある **[アクセス キー]** をクリックして、ストレージ アカウントの名前と **[key1]** の値をコピーします。これらの値をメモ帳などに一時的に保存します。
+4. **[デプロイメントが成功しました]** メッセージが表示されたら、新しいストレージ アカウントをクリックし、**[要点]** ブレードで **[BLOB]** をクリックします。 **[Blob service]** ブレードが開いたら、上部にある **[+ Container (+ コンテナー)]** をクリックします。 コンテナーの **[アーカイブ]** に名前を付け、**[Blob service]** ブレードを閉じます。
+5. 左のブレードにある **[アクセス キー]** をクリックして、ストレージ アカウントの名前と **[key1]** の値をコピーします。 これらの値をメモ帳などに一時的に保存します。
 
 [!INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
-## イベントを Event Hub に送信する Python スクリプトを作成する
+## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>イベントを Event Hub に送信する Python スクリプトを作成する
 1. [Visual Studio Code][Visual Studio Code] など、お使いの Python エディターを開きます。
-2. **sender.py** という名前のスクリプトを作成します。このスクリプトでは、200 のイベントを Event Hub に送信します。これらは、JSON で送信される単純な環境の測定値です。
+2. **sender.py**という名前のスクリプトを作成します。 このスクリプトでは、200 のイベントを Event Hub に送信します。 これらは、JSON で送信される単純な環境の測定値です。
 3. 以下のコードを sender.py に貼り付けます:
    
-   ```
+   ```python
    import uuid
    import datetime
    import random
@@ -73,12 +77,12 @@ Event Hubs Archive は Event Hubs の新機能で、任意の Azure Blob Storage
    ```
 4. 名前空間の名前と Event Hubs の名前空間を作成したときに取得したキーの値を使用するように、上記のコードを更新します。
 
-## アーカイブ ファイルを読み取る Python スクリプトを作成する
-1. ブレードに入力し、**[作成]** をクリックします。
-2. **archivereader.py** と言う名前のスクリプトを作成します。このスクリプトはアーカイブ ファイルを読み取り、それぞれのデバイスにのみデータを書き込むようにデバイスごとのファイルを作成します。
+## <a name="create-a-python-script-to-read-your-archive-files"></a>アーカイブ ファイルを読み取る Python スクリプトを作成する
+1. ブレードに入力し、 **[作成]**をクリックします。
+2. **archivereader.py**と言う名前のスクリプトを作成します。 このスクリプトはアーカイブ ファイルを読み取り、それぞれのデバイスにのみデータを書き込むようにデバイスごとのファイルを作成します。
 3. 以下のコードを archivereader.py に貼り付けます:
    
-   ```
+   ```python
    import os
    import string
    import json
@@ -122,7 +126,7 @@ Event Hubs Archive は Event Hubs の新機能で、任意の Azure Blob Storage
    ```
 4. 呼び出しでのストレージ アカウント名とキーには必ず適切な値を `startProcessing`に貼り付けます。
 
-## スクリプトの実行
+## <a name="run-the-scripts"></a>スクリプトの実行
 1. Python をパス設定した状態でコマンド プロンプトを開き、これらのコマンドを実行してPython の前提条件となるパッケージをインストールします:
    
    ```
@@ -145,29 +149,33 @@ Event Hubs Archive は Event Hubs の新機能で、任意の Azure Blob Storage
    ```
    
    これにより、新しい Python プロセスが起動して sender を実行します。
-3. アーカイブが実行されるまで、数分間待ちます。元のコマンド ウィンドウに、次のコマンドを入力します。
+3. アーカイブが実行されるまで、数分間待ちます。 元のコマンド ウィンドウに、次のコマンドを入力します。
    
     ```
     python archivereader.py
     ```
 
-このアーカイブ プロセッサでは、ローカルのディレクトリを使用して、ストレージ アカウントとコンテナーからすべての BLOB をダウンロードします。空ではないものすべてを処理し、結果を .csv ファイルとしてローカル ディレクトリに書き込みます。
+このアーカイブ プロセッサでは、ローカルのディレクトリを使用して、ストレージ アカウントとコンテナーからすべての BLOB をダウンロードします。 空ではないものすべてを処理し、結果を .csv ファイルとしてローカル ディレクトリに書き込みます。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs Archive の概要][Event Hubs Archive の概要]
-* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]
-* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張]サンプル
+* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]。
+* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張]のサンプル。
 * [Event Hubs の概要][Event Hubs の概要]
 
 [Azure ポータル]: https://portal.azure.com/
 [Event Hubs Archive の概要]: event-hubs-archive-overview.md
 [1]: ./media/event-hubs-archive-python/event-hubs-python1.png
-[About Azure storage accounts]: https://azure.microsoft.com/documentation/articles/storage-create-storage-account/
+[Azure ストレージ アカウントについて]: https://azure.microsoft.com/en-us/documentation/articles/storage-create-storage-account/
 [Visual Studio Code]: https://code.visualstudio.com/
 [Event Hubs の概要]: event-hubs-overview.md
 [Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

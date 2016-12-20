@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ab26637d0f49abd73b55e3ccf9ace0f33f6f8731
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2a23cc8fdfcda1120f885f34855105a38b055a85
 
 
 ---
@@ -61,6 +61,6 @@ ms.openlocfilehash: ab26637d0f49abd73b55e3ccf9ace0f33f6f8731
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

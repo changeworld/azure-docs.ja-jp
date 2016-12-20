@@ -1,12 +1,12 @@
 ---
-title: C および Apache Storm での Event Hubs の使用 | Microsoft Docs
-description: このチュートリアルでは、C でイベントを送信し、Apache Storm クラスターでそれを受信するための Azure Event Hubs の使用方法について説明します。
+title: "C および Apache Storm での Event Hubs の使用 | Microsoft Docs"
+description: "このチュートリアルでは、C でイベントを送信し、Apache Storm クラスターでそれを受信するための Azure Event Hubs の使用方法について説明します。"
 services: event-hubs
-documentationcenter: ''
+documentationcenter: 
 author: jtaubensee
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 3b15825e-c53c-471b-870c-686bff46885a
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: c
@@ -14,6 +14,10 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/16/2016
 ms.author: jotaub;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: 1b4573db5c4e03aba8b98408765e7c2debfb9a30
+
 
 ---
 # <a name="get-started-with-event-hubs"></a>Event Hubs の使用
@@ -28,7 +32,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 このチュートリアルを最後まで行うには、以下のものが必要です。
 
-* C の開発環境。 このチュートリアルでは、Ubuntu 14.04 での [Azure Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md) 上の GCC スタックを想定しています。 他の環境用の手順は、外部リンクで提供されます。
+* C の開発環境。 このチュートリアルでは、Ubuntu 14.04 での [Azure Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 上の GCC スタックを想定しています。 他の環境用の手順は、外部リンクで提供されます。
 * [Maven](http://maven.apache.org/)を実行するように構成された Java 開発環境。 このチュートリアルでは、 [Eclipse](https://www.eclipse.org/)を想定しています。
 * アクティブな Azure アカウント。 アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
@@ -54,8 +58,8 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 ## <a name="next-steps"></a>次のステップ
 Event Hubs と Storm を統合するアプリケーションの開発には、次のリソースを使用できます。
 
-* [HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析][HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析] 」は、Hadoop クラスター内のセンサー データを取り込むための Event Hubs、Storm、および HBase を使用した完全なシナリオ チュートリアルです。
-* [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発][HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発] 」は、C# を使用して Storm のパイプラインを作成する方法に関するチュートリアルです。
+* [HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析][HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]に関するページは、Event Hubs、Storm、HBase を使用して Hadoop クラスター内のセンサー データを取り込むための完全なシナリオのチュートリアルです。
+* [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発][HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]に関するページは、C# を使用した Storm のパイプラインの作成に関するチュートリアルです。
 
 <!-- Images. -->
 [23]: ./media/event-hubs-c-storm-getstarted/receive-storm3.png
@@ -66,12 +70,12 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [Event Hubs の概要]: event-hubs-overview.md
 
 [Apache Storm]: https://storm.incubator.apache.org
-[HDInsight Storm の概要]: ../hdinsight/hdinsight-storm-overview.md/
+[HDInsight Storm の概要]: ../hdinsight/hdinsight-storm-overview.md
 [HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

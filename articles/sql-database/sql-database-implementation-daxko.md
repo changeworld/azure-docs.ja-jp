@@ -1,22 +1,27 @@
 ---
-title: Azure SQL Database Azure 導入事例 - Daxko/CSI | Microsoft Docs
-description: SQL Database を活用することで、Daxko/CSI がどのように開発サイクルを迅速化し、顧客サービスとパフォーマンスの強化を実現したのかご紹介します。
+title: "Azure SQL Database Azure 導入事例 - Daxko/CSI | Microsoft Docs"
+description: "SQL Database を活用することで、Daxko/CSI がどのように開発サイクルを迅速化し、顧客サービスとパフォーマンスの強化を実現したのかご紹介します。"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 00c8a713-f20c-4d6b-b8b7-0c1b9ba5f05b
 ms.service: sql-database
+ms.custom: app development case study; app development
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/08/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 357b402955187a08a35faacdcb178af75698433d
+
 
 ---
-# <a name="daxko/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI 社、Azure 導入で開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化
+# <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI 社、Azure 導入で開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化
 ![Daxko/CSI Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
 
 Daxko/CSI Software 社 (以下 CSI Software) は問題に直面していました。自社の包括的な企業向けソフトウェア ソリューションの成功により、フィットネス レクリエーション センターの顧客基盤が急速に拡大する一方で、顧客数の増加により、IT インフラストラクチャのニーズに応えることが難しくなっていたのです。 CSI Software は、拡大するデータベースの管理に伴う経費の増加に頭を悩ませるようになりました。 また、この問題により、ソフトウェアのモビリティ機能などの新たな取り組みに向けた開発リソースがひっ迫していました。
@@ -86,10 +91,13 @@ Azure SQL Database は、俊敏で信頼性の高いサービスを受ける Spe
 * データベース ツールおよびエラスティック スケーリングの詳細については、 [エラスティック データベース ツールおよびエラスティック スケーリング](sql-database-elastic-scale-get-started.md)に関する記事をご覧ください。
 * SQL Server データベースの移行について、詳しくは、 [Azure SQL 移行ウィザード](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)に関する記事をご覧ください。
 * アクティブ geo レプリケーションの詳細については、 [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事をご覧ください。
-* Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。 
+* Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。    
 * Azure Service Bus の詳細については、「 [Azure Service Bus](https://azure.microsoft.com/services/service-bus/)」をご覧ください。
 * 自動スケールの詳細については、 [クラウド サービスのスケーリング](../cloud-services/cloud-services-how-to-scale.md)に関する記事をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

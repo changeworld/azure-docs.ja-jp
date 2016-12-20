@@ -10,14 +10,14 @@ tags: azure-resource-manager
 ms.assetid: dac579bd-7545-461a-bdac-301c87434c84
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayanannamalai; annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 348b23b277c80867f600a408736e13b8ceb665f4
+ms.sourcegitcommit: bd5f3b3cd46ce347896ed9ef229e438b2a3c830f
+ms.openlocfilehash: 7de9b1f207caf582bde153aa931f3996b459d825
 
 
 ---
@@ -32,10 +32,9 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
 
 1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
-> [!NOTE]
-> VNet ピアリングを管理するための PowerShell コマンドレットは、[Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0) に付属しています。
-> 
-> 
+    > [!NOTE]
+    > VNet ピアリングを管理するための PowerShell コマンドレットは、[Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0) に付属しています。
+    >
 
 1. 仮想ネットワーク オブジェクトを読み取ります。
    
@@ -238,6 +237,6 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

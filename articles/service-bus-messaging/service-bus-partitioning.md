@@ -1,25 +1,29 @@
 ---
-title: パーティション分割されたキューとトピック | Microsoft Docs
-description: 複数のメッセージ ブローカーを使用して Service Bus のキューとトピックをパーティション分割する方法について説明します。
-services: service-bus
+title: "パーティション分割されたキューとトピック | Microsoft Docs"
+description: "複数のメッセージ ブローカーを使用して Service Bus のキューとトピックをパーティション分割する方法について説明します。"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: a0c7d5a2-4876-42cb-8344-a1fc988746e7
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/02/2016
 ms.author: sethm;hillaryc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 03e68436372414a25d87f50c2b057c2f8d193401
+
 
 ---
 # <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
 Azure Service Bus では、メッセージを処理する複数のメッセージ ブローカーとメッセージを格納する複数のメッセージング ストアを採用しています。 従来のキューまたはトピックは、単一のメッセージ ブローカーで処理されて 1 つのメッセージング ストアに格納されます。 Service Bus では、キューまたはトピックを複数のメッセージ ブローカーとメッセージング ストアにパーティション分割することもできます。 そのため、パーティション分割されたキューまたはトピックの全体のスループットは、単一のメッセージ ブローカーまたはメッセージング ストアのパフォーマンスによって制限されなくなりました。 また、1 つのメッセージング ストアが一時的に停止しても、パーティション分割されたキューまたはトピックは使用することができます。 パーティション分割されたキューとトピックには、トランザクションやセッションのサポートなど、あらゆる高度な Service Bus 機能を含めることができます。
 
-Service Bus 内部の詳細については、「[Service Bus アーキテクチャ][]」のトピックを参照してください。
+Service Bus 内部の詳細については、[「Service Bus アーキテクチャ」][Service Bus のアーキテクチャ]のトピックを参照してください。
 
 ## <a name="how-it-works"></a>動作のしくみ
 パーティション分割されたキューまたはトピックはそれぞれ、複数のフラグメントで構成されます。 フラグメントはそれぞれ別々のメッセージング ストアに格納され、別々のメッセージ ブローカーで処理されます。 パーティション分割されたキューまたはトピックにメッセージが送信されると、Service Bus はそのメッセージをいずれかのフラグメントに割り当てます。 対象のフラグメントは、Service Bus によってランダムに選択されるか、送信側で指定できるパーティション キーによって選択されます。
@@ -31,7 +35,7 @@ Service Bus 内部の詳細については、「[Service Bus アーキテクチ�
 ## <a name="enable-partitioning"></a>パーティション分割の有効化
 Azure Service Bus でパーティション分割されたキューとトピックを使用するには、Azure SDK Version 2.2 以降を使用するか、HTTP 要求で `api-version=2013-10` を指定します。
 
-Service Bus のキューとトピックは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。 パーティション分割が有効な場合、Service Bus は指定された GB 数に対して 1 GB ごとに 16 個のパーティションを作成します。 そのため、サイズが 5 GB のキューを作成すると、パーティションが 16 個であるため、最大キュー サイズは 5 \* 16 = 80 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure Portal][] の各エントリで確認できます。
+Service Bus のキューとトピックは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。 パーティション分割が有効な場合、Service Bus は指定された GB 数に対して 1 GB ごとに 16 個のパーティションを作成します。 そのため、サイズが 5 GB のキューを作成すると、パーティションが 16 個であるため、最大キュー サイズは 5 \* 16 = 80 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure ポータル][Azure ポータル] の各エントリで確認できます。
 
 パーティション分割されたキューまたはトピックを作成する方法は複数あります。 ご使用のアプリケーションからキューまたはトピックを作成する際に、[QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning] プロパティまたは [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning] プロパティをそれぞれ **true** に設定することで、キューまたはトピックのパーティション分割を有効にできます。 これらのプロパティは、キューまたはトピックの作成時に設定する必要があります。 既存のキューまたはトピックでこれらのプロパティを変更することはできません。 次に例を示します。
 
@@ -43,7 +47,7 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-また、Visual Studio または [Azure Portal][] で、パーティション分割されたキューまたはトピックを作成することもできます。 ポータルで新しいキューまたはトピックを作成する場合は、キューまたはトピックの ** [設定] ** ウィンドウの **[全般設定]** ブレードにある **[パーティション分割の有効化]** オプションを **true** に設定します。 Visual Studio で作成する場合は、** [新しいキュー] ** または ** [新しいトピック] ** ダイアログ ボックスの ** [パーティション分割の有効化] ** チェック ボックスをオンにします。
+また、Visual Studio または [Azure ポータル][Azure ポータル] で、パーティション分割されたキューまたはトピックを作成することもできます。 ポータルで新しいキューまたはトピックを作成する場合は、キューまたはトピックの ** [設定] ** ウィンドウの **[全般設定]** ブレードにある **[パーティション分割の有効化]** オプションを **true** に設定します。 Visual Studio で作成する場合は、** [新しいキュー] ** または ** [新しいトピック] ** ダイアログ ボックスの ** [パーティション分割の有効化] ** チェック ボックスをオンにします。
 
 ## <a name="use-of-partition-keys"></a>パーティション キーの使用
 パーティション分割されたキューまたはトピックにメッセージがエンキューされると、Service Bus はパーティション キーが存在するかどうかを調べます。 パーティション キーが見つかった場合は、そのキーに基づいてフラグメントを選択します。 パーティション キーが見つからない場合は、内部アルゴリズムに基づいてフラグメントを選択します。
@@ -57,7 +61,7 @@ ns.CreateTopic(td);
 
 **PartitionKey**: メッセージで [BrokeredMessage.PartitionKey][BrokeredMessage.PartitionKey] プロパティは設定されているが、[BrokeredMessage.SessionId][BrokeredMessage.SessionId] プロパティは設定されていない場合、Service Bus は [PartitionKey][PartitionKey] プロパティをパーティション キーとして使用します。 メッセージで [SessionId][SessionId] プロパティと [PartitionKey][PartitionKey] プロパティが両方とも設定されている場合、この 2 つのプロパティの値は同じである必要があります。 [PartitionKey][PartitionKey] プロパティが [SessionId][SessionId] プロパティとは異なる値に設定されている場合、Service Bus は **InvalidOperationException** 例外を返します。 セッションを認識しないトランザクション メッセージを送信側が送信する場合は、[PartitionKey][PartitionKey] プロパティを使用する必要があります。 パーティション キーを使用することにより、トランザクション内で送信されるすべてのメッセージを同じメッセージング ブローカーで処理することができます。
 
-**MessageId**: キューまたはトピックで [QueueDescription.RequiresDuplicateDetection][QueueDescription.RequiresDuplicateDetection] プロパティが **true** に設定され、[BrokeredMessage.SessionId][BrokeredMessage.SessionId] プロパティまたは [BrokeredMessage.PartitionKey][BrokeredMessage.PartitionKey] プロパティが設定されていない場合は、[BrokeredMessage.MessageId][BrokeredMessage.MessageId]プロパティがパーティション キーとしての役割を果たします。 (送信元のアプリケーションでメッセージ ID が割り当てられていない場合は、Microsoft .NET および AMQP のライブラリによって自動的にメッセージ ID が割り当てられます)。この場合は、同じメッセージのすべてのコピーが同じメッセージ ブローカーによって処理されます。 これにより、Service Bus は重複したメッセージを検出し削除することができるようになります。 [QueueDescription.RequiresDuplicateDetection][QueueDescription.RequiresDuplicateDetection] プロパティが **true** に設定されていない場合、Service Bus は [MessageId][MessageId] プロパティをパーティション キーと見なしません。
+**MessageId**: キューまたはトピックで [QueueDescription.RequiresDuplicateDetection][QueueDescription.RequiresDuplicateDetection] プロパティが**true** に設定され、[BrokeredMessage.SessionId][BrokeredMessage.SessionId] プロパティまたは [BrokeredMessage.PartitionKey][BrokeredMessage.PartitionKey] プロパティが設定されていない場合は、[BrokeredMessage.MessageId][BrokeredMessage.MessageId] プロパティがパーティション キーとしての役割を果たします。 (送信元のアプリケーションでメッセージ ID が割り当てられていない場合は、Microsoft .NET および AMQP のライブラリによって自動的にメッセージ ID が割り当てられます)。この場合は、同じメッセージのすべてのコピーが同じメッセージ ブローカーによって処理されます。 これにより、Service Bus は重複したメッセージを検出し削除することができるようになります。 [QueueDescription.RequiresDuplicateDetection][QueueDescription.RequiresDuplicateDetection] プロパティが **true** に設定されていない場合、Service Bus は [MessageId][MessageId] プロパティをパーティション キーと見なしません。
 
 ### <a name="not-using-a-partition-key"></a>パーティション キーを使用しない場合
 パーティション キーが存在しない場合、Service Bus は、ラウンドロビン方式で、パーティション分割されたキューまたはトピックのすべてのフラグメントにメッセージを配信します。 選択されたフラグメントが使用できない場合、Service Bus はメッセージを別のフラグメントに割り当てます。 このように、メッセージング ストアが一時的に使用できなくても送信操作は成功します。
@@ -66,7 +70,7 @@ Service Bus が別のフラグメントにメッセージをエンキューす�
 
 パーティション キーは、メッセージを特定のフラグメントに "ピン留め" します。 このフラグメントを保持しているメッセージング ストアを使用できない場合、Service Bus はエラーを返します。 パーティション キーが存在しない場合、Service Bus は異なるフラグメントを選択できるので、操作は成功します。 したがって、パーティション キーが必要でない場合は、パーティション キーを指定しないことをお勧めします。
 
-## <a name="advanced-topics:-use-transactions-with-partitioned-entities"></a>高度なトピック: パーティション分割されたエンティティでのトランザクションの使用
+## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>高度なトピック: パーティション分割されたエンティティでのトランザクションの使用
 トランザクションの一部として送信されるメッセージでは、パーティション キーを指定する必要があります。 指定できるプロパティは、[BrokeredMessage.SessionId][BrokeredMessage.SessionId]、[BrokeredMessage.PartitionKey][BrokeredMessage.PartitionKey]、[BrokeredMessage.MessageId][BrokeredMessage.MessageId] のいずれかです。 同じトランザクションの一部として送信されるすべてのメッセージで、同じパーティション キーを指定する必要があります。 トランザクション内でパーティション キーなしのメッセージを送信しようとすると、Service Bus は ** InvalidOperationException** 例外を返します。 同じトランザクション内で異なるパーティション キーを持つ複数のメッセージを送信しようとすると、Service Bus は **InvalidOperationException** 例外を返します。 次に例を示します。
 
 ```
@@ -142,6 +146,6 @@ Azure Service Bus では、パーティション分割されたエンティテ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

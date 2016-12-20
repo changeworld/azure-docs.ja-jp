@@ -1,12 +1,12 @@
 ---
-title: Azure .NET SDK を使用して Azure Data Lake Analytics を管理する | Microsoft Docs
-description: 'Data Lake Analytics のジョブ、データ ソース、ユーザーの管理方法について説明します。 '
+title: "Azure .NET SDK を使用して Azure Data Lake Analytics を管理する | Microsoft Docs"
+description: "Data Lake Analytics のジョブ、データ ソース、ユーザーの管理方法について説明します。 "
 services: data-lake-analytics
-documentationcenter: ''
+documentationcenter: 
 author: mumian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/23/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 63ce27657ecf1c89f5d3dfc163ee655bc15ce0b7
+
 
 ---
-# <a name="manage-azure-data-lake-analytics-using-azure-.net-sdk"></a>Azure .NET SDK を使用して Azure Data Lake Analytics を管理する
+# <a name="manage-azure-data-lake-analytics-using-azure-net-sdk"></a>Azure .NET SDK を使用して Azure Data Lake Analytics を管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 Azure .NET SDK を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、およびジョブを管理する方法について説明します。 他のツールを使用する管理のトピックを表示する場合は、上のタブ セレクターをクリックします。
@@ -178,7 +182,7 @@ Analytics アカウントを作成する際には、既定のストレージ ア
 
 
 ## <a name="use-azure-resource-manager-groups"></a>Azure リソース マネージャー グループの使用
-アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。 Azure Resource Manager を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。 
+アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。 Azure Resource Manager を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
 
 Data Lake Analtyics サービスには、次のコンポーネントを含めることができます。
 
@@ -200,6 +204,9 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 * [Azure ポータルを使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-portal.md)
 * [Azure ポータルを使用して Azure Data Lake Analytics ジョブの監視とトラブルシューティングを行う](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

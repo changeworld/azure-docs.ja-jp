@@ -1,12 +1,12 @@
 ---
-title: Azure でのシングル サインオンの SAML プロトコル | Microsoft Docs
-description: この記事では、Azure Active Directory でのシングル サインオン SAML プロトコルについて説明します。
+title: "Azure でのシングル サインオンの SAML プロトコル | Microsoft Docs"
+description: "この記事では、Azure Active Directory でのシングル サインオン SAML プロトコルについて説明します。"
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: priyamo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 548191cfe851a37893f068e8de482ed6e28e476b
+
 
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
@@ -246,7 +250,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
       </Attribute>
       ...
 </AttributeStatement>
-```     
+```        
 
 * **Name 要求**: `Name` 属性 (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`) の値は、認証されたユーザーのユーザー プリンシパル名です (例: `testuser@managedtenant.com`)。
 * **ObjectIdentifier 要求**: `ObjectIdentifier` 属性 (`http://schemas.microsoft.com/identity/claims/objectidentifier`) の値は、Azure AD で認証されたユーザーを表すディレクトリ オブジェクトの `ObjectId` です。 `ObjectId` は、認証されたユーザーの変更不可能で、グローバルに一意であり、再利用が安全な識別子です。
@@ -267,6 +271,6 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

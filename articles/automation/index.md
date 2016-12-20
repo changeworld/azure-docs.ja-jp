@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: d6f53d51a2ceb6d499209b874c79d3d3ccb1758f
-ms.openlocfilehash: b36299b17809bafb0956818d346063e89b86b7c6
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: c9444c341bc5746c96719e6ebfa464f294adf2f8
 
 ---
 # <a name="automation-documentation"></a>Automation のドキュメント
@@ -29,7 +29,7 @@ ms.openlocfilehash: b36299b17809bafb0956818d346063e89b86b7c6
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=automation">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=automation">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -123,17 +123,47 @@ ms.openlocfilehash: b36299b17809bafb0956818d346063e89b86b7c6
 
 ---
 
-## <a name="reference"></a>リファレンス
-
-### <a name="powershell"></a>PowerShell
-[Azure PowerShell リファレンス](/powershell/azureps-cmdlets-docs)
-
-### <a name="net"></a>.NET
-[Azure に関する管理リファレンス API](/dotnet/api)
-
-### <a name="rest"></a>REST ()
-[Automation REST API リファレンス](https://msdn.microsoft.com/en-us/library/azure/mt662285)
-
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation">PowerShell</a></p>
+                        <p><a href="/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation">クラシック PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.automation">.NET</a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt662285.aspx">REST API</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt163781">クラシック REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/automation.pdf">
@@ -145,6 +175,6 @@ Automation のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

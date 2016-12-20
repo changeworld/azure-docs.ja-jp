@@ -1,12 +1,12 @@
 ---
-title: Azure リージョンの損失から復旧するための回復性に関する技術的ガイダンス | Microsoft Docs
-description: 回復力のあるアプリケーション、高可用性のアプリケーション、およびフォールト トレラント アプリケーションの内容および設計方法、ならびに障害復旧の計画策定に関する記事。
-services: ''
+title: "Azure リージョンの損失から復旧するための回復性に関する技術的ガイダンス | Microsoft Docs"
+description: "回復力のあるアプリケーション、高可用性のアプリケーション、およびフォールト トレラント アプリケーションの内容および設計方法、ならびに障害復旧の計画策定に関する記事。"
+services: 
 documentationcenter: na
 author: adamglick
 manager: saladki
-editor: ''
-
+editor: 
+ms.assetid: f2f750aa-9305-487e-8c3f-1f8fbc06dc47
 ms.service: resiliency
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 15f0183d8ada59227a412788f1d53a9db0e712c8
+
 
 ---
-# <a name="azure-resiliency-technical-guidance:-recovery-from-a-region-wide-service-disruption"></a>Azure の回復性に関する技術ガイダンス: リージョン全体のサービス中断からの復旧
+# <a name="azure-resiliency-technical-guidance-recovery-from-a-region-wide-service-disruption"></a>Azure の回復性に関する技術ガイダンス: リージョン全体のサービス中断からの復旧
 Azure はリージョンと呼ばれる物理的および論理的な単位に分割されます。 リージョンは、ごく近くにある 1 つ以上のデータセンターで構成されます。 この記事の執筆時に、Azure には世界中に 24 のリージョンがありました。
 
 まれに、1 つのリージョン全体の施設がネットワーク障害などでアクセスできなくなることがあります。 また、自然災害などにより、施設が完全に失われることもあります。 ここでは、複数のリージョンに分散するアプリケーションを作成するための Azure の機能について説明します。 そのように分散することで、1 つのリージョンの障害が他のリージョンに影響を与える可能性を最小限に抑えることができます。
@@ -53,7 +57,7 @@ Azure はリージョンと呼ばれる物理的および論理的な単位に�
 * **複数の VM ディスクの geo フェールオーバー後の潜在的な一貫性の問題に注意する**。 VM ディスクは、Azure Storage BLOB として実装され、同じ geo レプリケーションの特性を備えています。 [Azure Backup](https://azure.microsoft.com/services/backup/) を使用しない場合、geo レプリケーションは非同期で個別にレプリケートするため、ディスク間の一貫性については保証されません。 個々の VM ディスクは geo フェールオーバー後にクラッシュ整合性状態になることが保証されています。ただし、ディスク間の一貫性についての保証はありません。 これは、場合によっては問題を引き起こす可能性があります (ディスク ストライピングの場合など)。
 
 ## <a name="storage"></a>Storage
-### <a name="recovery-by-using-geo-redundant-storage-of-blob,-table,-queue-and-vm-disk-storage"></a>BLOB、テーブル、キュー、および VM ディスク ストレージの geo 冗長ストレージを使用した復旧
+### <a name="recovery-by-using-geo-redundant-storage-of-blob-table-queue-and-vm-disk-storage"></a>BLOB、テーブル、キュー、および VM ディスク ストレージの geo 冗長ストレージを使用した復旧
 Azure の BLOB、テーブル、キュー、および VM ディスクはすべて、既定で geo レプリケーションに対応しています。 これは geo 冗長ストレージ (GRS) と呼ばれます。 GRS は、ストレージ データを特定の地理的リージョン内の数百マイル離れた場所にあるペアのデータセンターにレプリケートします。 GRS を使用すると、データセンターで大きな災害が発生したときのデータの持続性が向上します。 フェールオーバーが発生するタイミングは Microsoft によって制御されており、元のプライマリの場所が一定の時間内に復旧不可能と見なされるような大きな災害が発生した場合にのみフェールオーバーが行われます。 シナリオによっては、これには数日かかる場合があります。 データは通常数分以内にレプリケートされますが、同期の間隔はまだサービス レベル アグリーメントによってカバーされていません。
 
 geo フェールオーバーが行われた場合、アカウントへのアクセス方法に変更はありません (URL とアカウント キーは変わりません)。 ただし、ストレージ アカウントは、フェールオーバー後は別のリージョンに存在します。 このことは、ストレージ アカウントと同じリージョンに置かれる必要があるアプリケーションに影響を与える可能性があります。 同じデータセンターにストレージ アカウントを必要としないサービスとアプリケーションについても、データセンター間の待機時間と帯域幅の料金の問題のために、トラフィックをフェールオーバー リージョンに一時的に移動させなければならないことがあります。 これは障害復旧方法全体に組み入れることができます。
@@ -62,12 +66,12 @@ GRS によって提供される自動フェールオーバーに加えて、セ�
 
 GRS および RA-GRS ストレージの詳細については、「 [Azure Storage のレプリケーション](../storage/storage-redundancy.md)」を参照してください。
 
-### <a name="geo-replication-region-mappings:"></a>geo レプリケーションのリージョン マッピング:
+### <a name="geo-replication-region-mappings"></a>geo レプリケーションのリージョン マッピング:
 ストレージと同じリージョンにある必要があるデータの他のインスタンスをデプロイする場所を知るために、データが geo レプリケーションされている場所を知ることが重要です。 次の表に、プライマリの場所とセカンダリの場所のペアを示します。
 
 [!INCLUDE [paired-region-list](../../includes/paired-region-list.md)]
 
-### <a name="geo-replication-pricing:"></a>geo レプリケーションの価格:
+### <a name="geo-replication-pricing"></a>geo レプリケーションの価格:
 geo レプリケーションは Azure Storage の現在の価格に含まれます。 これは geo 冗長ストレージ (GRS) と呼ばれます。 自分のデータに geo レプリケーションを行う必要がない場合は、自分のアカウントの geo レプリケーションを無効にできます。 これにはローカル冗長ストレージと呼ばれ、GRS と比較すると割り引きされた料金で課金されます。
 
 ### <a name="determining-if-a-geo-failover-has-occurred"></a>geo フェールオーバーが発生したかどうかの判断
@@ -93,7 +97,7 @@ Azure SQL Database には、geo リストアとアクティブ geo レプリケ�
 [アクティブ geo レプリケーション](../sql-database/sql-database-geo-replication-overview.md) は、すべてのデータベース レベルで使用できます。 アクティブ geo レプリケーションは、geo リストアよりもアグレッシブな復旧要件があるアプリケーション用に設計されています。 アクティブ geo レプリケーションを使用して、別のリージョン内のサーバーで最大 4 つの読み取り可能なセカンダリを作成できます。 いずれかのセカンダリへのフェールオーバーを開始できます。 さらに、アクティブ geo レプリケーションを使用すると、アプリケーションのアップグレードや再配置のシナリオをサポートするだけでなく読み取り専用ワークロードの負荷を分散することができます。 詳細については、[geo レプリケーションの構成](../sql-database/sql-database-geo-replication-portal.md)に関するページと、[セカンダリ データベースへのフェールオーバー](../sql-database/sql-database-geo-replication-failover-portal.md)に関するページをご覧ください。 アプリケーションを設計して実装する方法と、ダウンタイムなしのアプリケーション アップグレードの詳細については、「[SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)」と「[SQL Database アクティブ geo レプリケーションを使用したクラウド アプリケーションのローリング アップグレードの管理](../sql-database/sql-database-manage-application-rolling-upgrade.md)」をご覧ください。
 
 ### <a name="sql-server-on-virtual-machines"></a>Virtual Machines 上の SQL Server
-SQL Server 2012 (以降) を Azure Virtual Machines で実行した場合、復旧および高可用性のためのさまざまなオプションを利用できます。 詳細については、「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
+SQL Server 2012 (以降) を Azure Virtual Machines で実行した場合、復旧および高可用性のためのさまざまなオプションを利用できます。 詳細については、「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 ## <a name="other-azure-platform-services"></a>その他の Azure プラットフォーム サービス
 複数の Azure リージョンでクラウド サービスを実行しようとする場合、依存関係ごとに影響について検討する必要があります。 以下のセクションにおいて、サービスに固有のガイダンスでは代替の Azure データセンターにおいては同じ Azure サービスを使用する必要があると想定されています。 これには、構成タスクとデータ レプリケーション タスクの両方があります。
@@ -104,13 +108,10 @@ SQL Server 2012 (以降) を Azure Virtual Machines で実行した場合、復�
 > 
 
 ### <a name="service-bus"></a>Service Bus
-Azure Service Bus は、Azure リージョンにまたがらない一意の名前空間名を使用します。 したがって、最初の要件は代替リージョンで必要なサービス バス名前空間を設定することです。 ただし、キューに置かれたメッセージの持続性についても考慮事項があります。 Azure リージョン間でメッセージをレプリケートするにはいくつかの方法があります。 これらのレプリケーション方法とその他の障害復旧計画の詳細については、「[Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス](../service-bus/service-bus-outages-disasters.md)」をご覧ください。 その他の可用性の考慮事項については、 [Service Bus (可用性)](resiliency-technical-guidance-recovery-local-failures.md#other-azure-platform-services)に関するページを参照してください。
+Azure Service Bus は、Azure リージョンにまたがらない一意の名前空間名を使用します。 したがって、最初の要件は代替リージョンで必要なサービス バス名前空間を設定することです。 ただし、キューに置かれたメッセージの持続性についても考慮事項があります。 Azure リージョン間でメッセージをレプリケートするにはいくつかの方法があります。 これらのレプリケーション方法とその他の障害復旧計画の詳細については、「[Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス](../service-bus-messaging/service-bus-outages-disasters.md)」をご覧ください。 その他の可用性の考慮事項については、 [Service Bus (可用性)](resiliency-technical-guidance-recovery-local-failures.md#other-azure-platform-services)に関するページを参照してください。
 
-### <a name="web-apps"></a>Web Apps
-Azure の Web アプリをセカンダリ Azure リージョンに移行するには、発行に使用できる Web サイトのバックアップが必要です。 障害が Azure データセンター全体を含んでいなければ、FTP を使用してサイト コンテンツの最新のバックアップをダウンロードできる場合があります。 次に、容量を確保するために代替リージョンにまだ新しい Web サイトを作成していない場合は、それを作成します。 サイトを新しいリージョンに発行し、必要な構成の変更を行います。 これらの変更には、データベース接続文字列またはその他のリージョン固有の設定が含まれる場合があります。 必要に応じて、サイトの SSL 証明書を追加し、DNS の CNAME レコードを変更して、カスタム ドメイン名が再デプロイされた Azure の Web サイトの URL を参照するようにします。
-
-### <a name="mobile-services"></a>モバイル サービス
-セカンダリ Azure リージョンで、アプリケーションのバックアップ モバイル サービスを作成します。 代替リージョンにも Azure SQL Database を復元します。 次に、Azure コマンド ライン ツールを使用して、モバイル サービスを代替リージョンへ移動します。 最後に、復元したデータベースを使用するようにモバイル サービスを構成します。 このプロセスの詳細については、「 [障害発生時のモバイル サービスの復旧](../mobile-services/mobile-services-disaster-recovery.md)」を参照してください。 その他の可用性の考慮事項については、 [Mobile Services (可用性)](resiliency-technical-guidance-recovery-local-failures.md#mobile-services)に関するページを参照してください。
+### <a name="app-service"></a>App Service
+Azure App Service アプリケーション (Web Apps や Mobile Apps など) をセカンダリ Azure リージョンに移行するには、発行に使用できる Web サイトのバックアップが必要です。 障害が Azure データセンター全体を含んでいなければ、FTP を使用してサイト コンテンツの最新のバックアップをダウンロードできる場合があります。 次に、容量を確保するために代替リージョンにまだ新しいアプリを作成していない場合は、それを作成します。 サイトを新しいリージョンに発行し、必要な構成の変更を行います。 これらの変更には、データベース接続文字列またはその他のリージョン固有の設定が含まれる場合があります。 必要に応じて、サイトの SSL 証明書を追加し、DNS の CNAME レコードを変更して、カスタム ドメイン名が再デプロイされた Azure の Web サイトの URL を参照するようにします。
 
 ### <a name="hdinsight"></a>HDInsight
 HDInsight に関連付けられているデータは、既定では Azure BLOB ストレージに保存されます。 HDInsight では、MapReduce ジョブを処理する Hadoop クラスターは、分析されるデータを保持したストレージ アカウントと同じリージョンに併置する必要があります。 Azure Storage で利用可能な geo レプリケーション機能を使用すると、何らかの理由によりプライマリ リージョンが使用できなくなった場合、データがレプリケートされたセカンダリ リージョンのデータにアクセスできます。 データがレプリケートされているリージョンに新しい Hadoop クラスターを作成し、データの処理を継続することができます。 その他の可用性の考慮事項については、 [HDInsight (可用性)](resiliency-technical-guidance-recovery-local-failures.md#other-azure-platform-services)に関するページを参照してください。
@@ -155,18 +156,12 @@ Azure Media Services には、エンコードとストリーミングのため�
 2. 代替リージョンで Service Bus 名前空間を構成する。
 3. リージョン間でのメッセージのカスタム レプリケーション方法を検討する。
 
-## <a name="web-apps-checklist"></a>Web Apps のチェックリスト
-1. このドキュメントの「Web Apps」セクションを確認する。
-2. プライマリ リージョンの外で Web サイトのバックアップを維持する。
+## <a name="app-service-checklist"></a>App Service のチェックリスト
+1. このドキュメントの「App Service」セクションを確認する。
+2. プライマリ リージョンの外でサイトのバックアップを維持する。
 3. 障害が部分的な場合は、FTP を使用して現在のサイトの取得を試みる。
-4. 代替リージョンの新規または既存の Web サイトに Web サイトをデプロイする計画を作成する。
+4. 代替リージョンの新規または既存のサイトにサイトをデプロイする計画を作成する。
 5. アプリケーションと DNS の CNAME レコードの両方の構成変更を計画する。
-
-## <a name="mobile-services-checklist"></a>Mobile Services のチェックリスト
-1. このドキュメントの「モバイル サービス」セクションを確認する。
-2. 代替リージョンのバックアップ モバイル サービスを作成する。
-3. フェールオーバー中に復元する、関連付けられた Azure SQL Database のバックアップを管理する。
-4. Azure コマンド ライン ツールを使用して、モバイル サービスに移動する。
 
 ## <a name="hdinsight-checklist"></a>HDInsight のチェックリスト
 1. このドキュメントの「HDInsight」セクションを確認する。
@@ -190,6 +185,9 @@ Azure Media Services には、エンコードとストリーミングのため�
 ## <a name="next-steps"></a>次のステップ
 この記事は、 [Azure の回復性技術ガイダンス](resiliency-technical-guidance.md)について重点的に説明したシリーズの一部です。 このシリーズの次の記事では、 [オンプレミスのデータセンターから Azure への復旧](resiliency-technical-guidance-recovery-on-premises-azure.md)について重点的に説明します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

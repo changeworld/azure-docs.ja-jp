@@ -6,14 +6,17 @@
 ## [HBase](hdinsight-hbase-overview.md)
 ## [Apache Storm](hdinsight-storm-overview.md)
 ## [ドメイン参加済み HDInsight プレビュー](hdinsight-domain-joined-introduction.md)
+## [Kafka (プレビュー)](hdinsight-apache-kafka-introduction.md)
 
 # 作業の開始
 ## [Hadoop の開始](hdinsight-hadoop-linux-tutorial-get-started.md)
 ## [対話型 Hive を開始する (プレビュー)](hdinsight-hadoop-use-interactive-hive.md)
-## [R Server を開始する (プレビュー)](hdinsight-hadoop-r-server-get-started.md)
+## [R Server の開始](hdinsight-hadoop-r-server-get-started.md)
 ## [Spark の開始](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [HBase & NoSQL の開始](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Storm の開始](hdinsight-apache-storm-tutorial-get-started-linux.md)
+## [対話型 Hive を開始する (プレビュー)](hdinsight-hadoop-use-interactive-hive.md)
+## [Kafka の開始 (プレビュー)](hdinsight-apache-kafka-get-started.md)
 ## [Hadoop サンドボックス](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake Tools と Hortonworks サンドボックス](hdinsight-hadoop-emulator-visual-studio.md)
 ## [Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)
@@ -47,11 +50,12 @@
 ### [DataFu と Pig を使用する](hdinsight-hadoop-use-pig-datafu-udf.md)
 ### [オンデマンド クラスター](hdinsight-hadoop-create-linux-clusters-adf.md)
 ### [Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
-## R Server の使用 (プレビュー)
+## R Server の使用
 ### [ストレージ オプション](hdinsight-hadoop-r-server-storage.md)
 ### [RStudio のインストール](hdinsight-hadoop-r-server-install-r-studio.md)
 ### [Compute コンテキスト](hdinsight-hadoop-r-server-compute-contexts.md)
 ## メモリ内の処理への Spark の使用
+### [Data Lake Store を使用](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [BI ツールを使用](hdinsight-apache-spark-use-bi-tools.md)
 ### [スタンドアロン アプリ](hdinsight-apache-spark-create-standalone-application.md)
 ### [ストリーミング イベントを処理する](hdinsight-apache-spark-eventhub-streaming.md)
@@ -94,6 +98,10 @@
 ### [構成](hdinsight-domain-joined-configure.md)
 ### [管理](hdinsight-domain-joined-manage.md)
 ### [Hive ポリシーを構成する](hdinsight-domain-joined-run-hive.md)
+## Kafka の使用 (プレビュー)
+### [Kafka データのレプリケート](hdinsight-apache-kafka-mirroring.md)
+### [Spark での使用](hdinsight-apache-spark-with-kafka.md)
+### [Storm での使用](hdinsight-apache-storm-with-kafka.md)
 ## 開発
 ### [Java MapReduce プログラムを開発する](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [Scalding MapReduce ジョブを開発する](hdinsight-hadoop-mapreduce-scalding.md)
@@ -135,7 +143,7 @@
 ### [Linux、Unix、OS X から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 ### [Windows OS から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 ### [データ アクセスを制限する](hdinsight-storage-sharedaccesssignature-permissions.md)
-## [管理]
+## 管理
 ### [Linux クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)
 #### [Azure PowerShell の使用](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 #### [cURL と Azure REST API を使用する](hdinsight-hadoop-create-linux-clusters-curl-rest.md)
@@ -174,12 +182,12 @@
 #### [Hive クエリのパフォーマンス](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
 # リファレンス
-## [REST API リファレンス](https://msdn.microsoft.com/library/mt622197.aspx)
-## [リモート ジョブ用の Spark REST API](https://msdn.microsoft.com/library/mt613023.aspx)
-## [PowerShell コマンドレット](https://msdn.microsoft.com/library/mt438705.aspx)
-## [.NET SDK for Hadoop](https://msdn.microsoft.com/library/mt271028.aspx)
-## [.NET SDK for HBase](https://www.nuget.org/packages/Microsoft.HBase.Client/)
-## [.NET library for Avro](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
+## [PowerShell](/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight)
+## [.NET (Hadoop)](https://msdn.microsoft.com/library/mt271028.aspx)
+## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
+## [.NET (Avro)](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
+## [REST ()](/rest/api/hdinsight/)
+## [REST (Spark)](/rest/api/hdinsightspark/)
 
 # 関連項目
 ## Windows クラスター
@@ -217,6 +225,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1a9e01c161b0c81d4a2fd079824a427f7f135476
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 88f9a6b7e1f49ad58e91165a772e8453163d224c
 
 
 ---
@@ -85,12 +85,12 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 <!-- Anchors. -->
 <!-- Images. -->
 <!-- URLs. -->
-[モバイル アプリ SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Azure Portal]: https://portal.azure.com/
+[Mobile App SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
+[Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2015]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

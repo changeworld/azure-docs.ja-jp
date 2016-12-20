@@ -1,12 +1,12 @@
 ---
-title: '技術ガイダンス: Azure でのローカル障害からの復旧 | Microsoft Docs'
-description: 回復力のあるアプリケーション、高可用性のアプリケーション、およびフォールト トレラント アプリケーションの内容および設計方法、ならびに Azure 内でのローカル障害を対象にした障害復旧の計画策定に関する記事。
-services: ''
+title: "技術ガイダンス: Azure でのローカル障害からの復旧 | Microsoft Docs"
+description: "回復力のあるアプリケーション、高可用性のアプリケーション、およびフォールト トレラント アプリケーションの内容および設計方法、ならびに Azure 内でのローカル障害を対象にした障害復旧の計画策定に関する記事。"
+services: 
 documentationcenter: na
 author: adamglick
 manager: saladki
-editor: ''
-
+editor: 
+ms.assetid: 2e50f6c1-fa61-4c7d-ac26-566a142fbfc2
 ms.service: resiliency
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: e3e07066d5fc8fd9ceb45cb4b397e7a1e2869c38
+
 
 ---
-# <a name="azure-resiliency-technical-guidance:-recovery-from-local-failures-in-azure"></a>Azure の回復性に関する技術ガイダンス - Azure でのローカル障害からの復旧
+# <a name="azure-resiliency-technical-guidance-recovery-from-local-failures-in-azure"></a>Azure の回復性に関する技術ガイダンス - Azure でのローカル障害からの復旧
 アプリケーションの可用性にとって脅威となるのは、主に次の 2 つです。
 
 * ドライブやサーバーなどのデバイスの障害
@@ -72,7 +76,7 @@ Azure は PaaS アプリケーションの層 (Web ロールと worker ロール
 上の図で、インターネット インフォメーション サービス (IIS) 層 (Web アプリ層として機能) および SQL の層 (データ層として機能) は異なる可用性セットに割り当てられています。 こうすることで、各層のすべてのインスタンスが仮想マシンを障害ドメインに分散することによってハードウェア冗長性を備え、更新中に層全体がダウンしないようになります。
 
 ### <a name="load-balancing"></a>負荷分散
-VM のトラフィックが VM 全体で分散される必要がある場合は、アプリケーションの VM をグループ化し、特定の TCP または UDP エンドポイントで負荷分散する必要があります。 詳細については、 [仮想マシンの負荷分散](../virtual-machines/virtual-machines-linux-load-balance.md)に関するページを参照してください。 VM が別のソースからの入力 (キュー メカニズムなど) を受信する場合、Load Balancer は必要ではありません。 Load Balancer は、トラフィックをノードに送信する必要があるかどうかを判断するために基本的な正常性チェックを使用します。 また、VM がトラフィックを受信する必要があるかどうかを判断するために、アプリケーション固有の正常性メトリックを実装する独自のプローブを作成することもできます。
+VM のトラフィックが VM 全体で分散される必要がある場合は、アプリケーションの VM をグループ化し、特定の TCP または UDP エンドポイントで負荷分散する必要があります。 詳細については、 [仮想マシンの負荷分散](../virtual-machines/virtual-machines-linux-load-balance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。 VM が別のソースからの入力 (キュー メカニズムなど) を受信する場合、Load Balancer は必要ではありません。 Load Balancer は、トラフィックをノードに送信する必要があるかどうかを判断するために基本的な正常性チェックを使用します。 また、VM がトラフィックを受信する必要があるかどうかを判断するために、アプリケーション固有の正常性メトリックを実装する独自のプローブを作成することもできます。
 
 ## <a name="storage"></a>Storage
 Azure Storage は、Azure の基本の永続的データ サービスです。 BLOB、テーブル、キュー、および VM ディスク ストレージを提供します。 このサービスは、レプリケーションとリソース管理の組み合わせを使用して、単一のデータセンター内で高可用性を提供します。 Azure Storage の可用性についての SLA では、99.9% 以上の時間で、
@@ -121,16 +125,16 @@ Azure に高可用性ソリューションを実装した場合、Azure 内の�
 
 クラシック ポータルでデプロイされた Azure Cloud Services の一連の VM を同じ可用性セットに含めるためには、それらを同じクラウド サービスにデプロイする必要があります。 Azure Resource Manager (現在のポータル) を介してデプロイされた VM には、このような制限はありません。 クラシック ポータルで Azure クラウド サービスにデプロイされた VM の場合、同じ可用性セットに参加できるのは、同じクラウド サービス内のノードだけです。 さらに、Cloud Services の一連の VM はサービス復旧後も IP を維持するために、同じ仮想ネットワーク内にある必要があります。 これにより、DNS の更新の中断を回避できます。
 
-### <a name="azure-only:-high-availability-solutions"></a>Azure のみ: 高可用性ソリューション
+### <a name="azure-only-high-availability-solutions"></a>Azure のみ: 高可用性ソリューション
 Azure 内の SQL Server データベースの高可用性ソリューションを実現するには、AlwaysOn 可用性グループまたはデータベース ミラーリングを使用します。
 
-次の図は、Azure Virtual Machines で実行している AlwaysOn 可用性グループのアーキテクチャを示しています。 この図は、このテーマについての詳細な解説記事「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md)」から引用したものです。
+次の図は、Azure Virtual Machines で実行している AlwaysOn 可用性グループのアーキテクチャを示しています。 この図は、このテーマについての詳細な解説記事「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」から引用したものです。
 
 ![Microsoft Azure AlwaysOn 可用性グループ](./media/resiliency-technical-guidance-recovery-local-failures/high_availability_solutions-1.png)
 
 また、Azure ポータルの AlwaysOn テンプレートを使用して、Azure VM で AlwaysOn 可用性グループのデプロイをエンドツーエンドで自動的にプロビジョニングすることもできます。 詳細については、 [Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](https://blogs.technet.microsoft.com/dataplatforminsider/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery/)に関する記事を参照してください。
 
-次の図は、Azure Virtual Machines でのデータベース ミラーリングの使用方法を示しています。 この図も、 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md)に関する詳細な解説記事から引用したものです。
+次の図は、Azure Virtual Machines でのデータベース ミラーリングの使用方法を示しています。 この図も、 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する詳細な解説記事から引用したものです。
 
 ![Database mirroring in Microsoft Azure](./media/resiliency-technical-guidance-recovery-local-failures/high_availability_solutions-2.png)
 
@@ -144,11 +148,6 @@ Azure に構築されるアプリケーションは、ローカル障害から�
 
 ### <a name="service-bus"></a>Service Bus
 Azure Service Bus の一時的な機能停止状態を緩和するには、永続的なクライアント側キューの作成を検討してください。 これにより、一時的に代替の、ローカル ストレージ メカニズムを使用して、Service Bus キューに追加できないメッセージを保存します。 アプリケーションでは、サービスを復元した後で、一時的に保存されたメッセージの処理方法を決定することができます。 詳細については、「[Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](../service-bus-messaging/service-bus-performance-improvements.md)」と [Service Bus (障害復旧)](resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services) に関するページをご覧ください。
-
-### <a name="mobile-services"></a>Mobile Services
-Azure Mobile Services には、可用性について 2 つの考慮事項があります。 1 つは、モバイル サービスに関連付けられた SQL データベースを定期的にバックアップすること、 もう 1 つは、モバイル サービス スクリプトをバックアップすることです。 詳細については、「[障害発生時のモバイル サービスの復旧](../mobile-services/mobile-services-disaster-recovery.md)」をご覧ください。
-
-Mobile Services で一時的な機能停止が発生した場合、代替の Azure データセンターを一時的に使用する必要があることがあります。 詳細については、 [モバイル サービス (障害復旧)](resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services)に関するページを参照してください。
 
 ### <a name="hdinsight"></a>HDInsight
 Azure HDInsight に関連付けられているデータは、既定では Azure Blob Storage に保存されます。 Azure Storage は、Blob Storage に対して高可用性と持続性のプロパティを指定します。 Hadoop MapReduce ジョブに関連付けられたマルチノード処理は、HDInsight が必要とする場合にプロビジョニングされる一時的な Hadoop 分散ファイル システム (HDFS) 上で発生します。 MapReduce ジョブの結果も、既定では Azure BLOB ストレージに保存されます。そのため、Hadoop クラスターがプロビジョニング解除された後も、処理されたデータには持続性があり、高可用性が保たれます。 詳細については、[HDInsight (障害復旧)](resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services) に関するページをご覧ください。
@@ -195,6 +194,9 @@ Azure HDInsight に関連付けられているデータは、既定では Azure 
 ## <a name="next-steps"></a>次のステップ
 この記事は、 [Azure の回復性技術ガイダンス](resiliency-technical-guidance.md)について重点的に説明したシリーズの一部です。 このシリーズの次の記事では、 [リージョン全体のサービス中断からの復旧](resiliency-technical-guidance-recovery-loss-azure-region.md)について説明します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

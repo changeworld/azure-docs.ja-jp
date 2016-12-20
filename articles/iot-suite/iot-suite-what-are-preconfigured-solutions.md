@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/09/2016
+ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 597043b17993ebddc9cf730ddce849e1d6ff3bc9
+ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
+ms.openlocfilehash: 25be292144e31c6f34ff1e015362aee31e242619
 
 
 ---
@@ -73,7 +73,7 @@ Azure にソリューションをデプロイして実行するだけでなく�
 ## <a name="iot-hub"></a>IoT Hub
 この構成済みソリューションの IoT Hub インスタンスは、一般的な [IoT ソリューション アーキテクチャ][lnk-what-is-azure-iot]の "*クラウド ゲートウェイ*" に相当します。
 
-IoT Hub は、1 つのエンドポイントのデバイスからテレメトリを受信します。 また、IoT Hub は、デバイス固有のエンドポイントも保守します。各デバイスは、送信されたコマンドをエンドポイントで取得できます。
+IoT Hub は、1 つのエンドポイントのデバイスからテレメトリを受信します。 また、IoT Hub は、デバイス固有のエンドポイントも保持します。各デバイスは、送信されたコマンドをエンドポイントで取得できます。
 
 IoT Hub は、受信したテレメトリをサービス側のテレメトリ読み取りエンドポイントを介して使用できるようにします。
 
@@ -130,6 +130,6 @@ IoT ソリューション アーキテクチャの詳細については、[Micro
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

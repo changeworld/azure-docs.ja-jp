@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/13/2016
+ms.date: 11/10/2016
 ms.author: markgal; jimpark
 translationtype: Human Translation
-ms.sourcegitcommit: e29891dc03f8a864ecacc893fd1cc0d3cc1436cb
-ms.openlocfilehash: 3fe4d985c62b8476bd3b3f923fa17e7f364f9352
+ms.sourcegitcommit: 85b291e3916d1274fefc71bc0c1f12cac2920bb4
+ms.openlocfilehash: 77b4f6e5ee18cb3772487820bc72d7794f82162f
 
 
 ---
@@ -45,6 +45,36 @@ Premium Storage VM の保護の詳細については、「 [Premium Storage VM �
 
 [!INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
 
+保護する VM の数に応じて、異なる開始点から開始できます。1 回の操作で複数の仮想マシンをバックアップする場合は、Recovery Services コンテナーに移動し、コンテナーのダッシュボードからバックアップを開始します。 VM が 1 つで、その VM をバックアップする場合は、VM 管理ブレードから直接バックアップできます。
+
+## <a name="configure-backup-from-vm-management-blade"></a>VM 管理ブレードからのバックアップの構成
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+2. ハブ メニューの **[その他のサービス]** をクリックし、リソースの一覧で「**Virtual machines**」と入力します。  仮想マシンの一覧が表示されます。 仮想マシンの一覧で、バックアップする仮想マシンを選択します。 これにより、仮想マシン管理ブレードが開きます。 
+ ![VM 管理ブレード](./media/backup-azure-vms-first-look-arm/vm-management-blade.png)
+ 
+3. VM 管理ブレードで、左側にある [設定] の [バックアップ] オプションをクリックします。
+![VM 管理ブレードの [バックアップ] オプション](./media/backup-azure-vms-first-look-arm/backup-option-vm-management-blade.png)
+
+4. これにより、[バックアップの有効化] ブレードが開きます。 このブレードでは、2 つの入力が必要です。1 つは、Recovery Services コンテナー (VM のバックアップを格納するための Azure Backup リソース) です。もう 1 つは、バックアップ ポリシーです (バックアップ ポリシーでは、バックアップのスケジュールと、バックアップ コピーのリテンション期間を指定します)。 このブレードには、既定のオプションがあります。 バックアップの要件に従って、カスタマイズできます。 
+![バックアップの有効化ウィザード](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
+
+5. Recovery Services コンテナーについては、既存のコンテナーを選択するか、新しいコンテナーを作成することができます。 新しいコンテナーを作成すると、仮想マシンと同じリソース グループと場所に作成されます。 異なる値で Recovery Services コンテナーを作成する場合は、手順 3. で [バックアップ] オプションをクリックする前に [Recovery Services コンテナーを作成](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm)し、このブレードでそのコンテナーを選択します。 
+
+6. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選択し、 **[OK]**をクリックします。
+    ![バックアップ ポリシーの選択](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
+
+    既定のポリシーの詳細が一覧表示されます。 ポリシーを作成する場合は、ドロップダウン メニューの **[新規作成]** を選択します。 このドロップダウン メニューでは、スナップショットの作成時刻を切り替えることもできます。 バックアップ ポリシーを定義する手順については、「 [バックアップ ポリシーの定義](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)」を参照してください。 **[OK]** をクリックすると、バックアップ ポリシーが仮想マシンに関連付けられます。
+    
+7. [バックアップの有効化] をクリックして、仮想マシンのバックアップを構成します。 これにより、デプロイが開始されます。 
+![[バックアップの有効化] ボタン](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-button.png)
+
+8. 通知によって構成の進行状況を追跡できます。 
+![バックアップの有効化の通知](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-notification.png)
+
+9. バックアップの構成のデプロイが完了した後、VM 管理ブレードの [バックアップ] オプションをクリックすると、バックアップ対象の VM に対応するバックアップ項目ブレードが開きます。
+![VM バックアップ項目のビュー](./media/backup-azure-vms-first-look-arm/backup-item-view.png)
+
+## <a name="configure-backup-from-recovery-services-vault-view"></a>Recovery Services コンテナー ビューからのバックアップの構成
 手順の概要は次のとおりです。  
 
 1. VM 用の Recovery Services コンテナーを作成する。
@@ -71,7 +101,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
     ![Create Recovery Services Vault step 2](./media/backup-azure-vms-first-look-arm/rs-vault-menu.png)
 
-    Recovery Services コンテナー ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定するよう求められます。
+    [Recovery Services コンテナー] ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定するよう求められます。
 
     ![Create Recovery Services vault step 5](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
 4. **[名前]**ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
@@ -95,7 +125,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
 1. コンテナーを選択して、コンテナーのダッシュボードと [設定] ブレードを開きます。 **[設定]** ブレードが開かない場合は、コンテナーのダッシュボードで **[すべての設定]** をクリックします。
-2. **[設定]** ブレードで、**[バックアップ インフラストラクチャ]**  >  **[バックアップ構成]** をクリックして、**[バックアップ構成]** ブレードを開きます。 **[バックアップ構成]** ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。
+2. **[設定]** ブレードで、**[バックアップ インフラストラクチャ]** > **[バックアップ構成]** をクリックして、**[バックアップ構成]** ブレードを開きます。 **[バックアップ構成]** ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。
 
     ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -187,16 +217,16 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>仮想マシンに VM エージェントをインストールする
-この情報は、必要な場合に備えて提供されます。 バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。 ただし、VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。 オンプレミスのデータセンターから移行された VM には、VM エージェントがインストールされていません。 このような場合は、VM エージェントをインストールする必要があります。 Azure VM のバックアップで問題が発生する場合は、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください (次の表を参照)。 カスタム VM を作成する場合は、仮想マシンをプロビジョニングする前に、[**[VM エージェントのインストール]** チェック ボックスがオンになっていることを確認](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md)してください。
+この情報は、必要な場合に備えて提供されます。 バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。 ただし、VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。 オンプレミスのデータセンターから移行された VM には、VM エージェントがインストールされていません。 このような場合は、VM エージェントをインストールする必要があります。 Azure VM のバックアップで問題が発生する場合は、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください (次の表を参照)。 カスタム VM を作成する場合は、仮想マシンをプロビジョニングする前に、[**[VM エージェントのインストール]** チェック ボックスがオンになっていることを確認](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)してください。
 
-詳細については、[VM エージェント](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)および[インストール方法](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md)に関する記事をご覧ください。
+詳細については、[VM エージェント](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)および[インストール方法](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関する記事をご覧ください。
 
 次の表に、Windows VM と Linux VM の VM エージェントに関する追加情報をまとめています。
 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
 | VM エージェントのインストール |<li>[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 <li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) して、エージェントがインストールされていることを示します。 |<li> GitHub から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent) をインストールします。 インストールを実行するには、管理者特権が必要です。 <li> [VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) して、エージェントがインストールされていることを示します。 |
-| VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新 ](../virtual-machines/virtual-machines-linux-update-agent.md)に関する手順に従います。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
+| VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新 ](../virtual-machines/virtual-machines-linux-update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従います。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
 | VM エージェントのインストールの検証 |<li>Azure VM で *C:\WindowsAzure\Packages* フォルダーに移動します。 <li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。 [製品バージョン] が 2.6.1198.718 以上であることを確認します。 |該当なし |
 
 ### <a name="backup-extension"></a>バックアップ拡張機能

@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement iOS SDK のアップグレード手順 | Microsoft Docs
-description: Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順
+title: "Azure Mobile Engagement iOS SDK のアップグレード手順 | Microsoft Docs"
+description: "Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 72a9e493-3f14-4e52-b6e2-0490fd04b184
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
@@ -14,6 +14,10 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 09/14/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ea5025cf031afb2a6d13356059d090c2d63f1665
+
 
 ---
 # <a name="upgrade-procedures"></a>アップグレードの手順
@@ -21,7 +25,7 @@ ms.author: piyushjo
 
 まず、新しいバージョンの SDK ごとに、EngagementSDK フォルダーと EngagementReach フォルダーを置き換える (削除し、xcode で再インポートする) 必要があります。
 
-## <a name="from-3.0.0-to-4.0.0"></a>3.0.0 から 4.0.0 に移行
+## <a name="from-300-to-400"></a>3.0.0 から 4.0.0 に移行
 ### <a name="xcode-8"></a>XCode 8
 SDK のバージョン 4.0.0 以降では、XCode 8 が必須となります。
 
@@ -148,7 +152,7 @@ SDK にも UNUserNotificationCenterDelegate プロトコルの独自の実装が
 > 
 > 
 
-## <a name="from-2.0.0-to-3.0.0"></a>2.0.0 から 3.0.0 に移行
+## <a name="from-200-to-300"></a>2.0.0 から 3.0.0 に移行
 iOS 4.X のサポートが終了。 このバージョンから、アプリケーションのデプロイ ターゲットは iOS 6 以降である必要があります。
 
 アプリケーションでリーチを使用している場合は、リモート通知を受け取れるように、`remote-notification` 値を Info.plist ファイル内の `UIBackgroundModes` 配列に追加する必要があります。
@@ -161,7 +165,7 @@ AEPushDelegate.h インターフェイスは廃止されるため、すべての
     -(void)didFailToRetrieveLaunchMessage;
     -(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
 
-## <a name="from-1.16.0-to-2.0.0"></a>1.16.0 から 2.0.0 に移行
+## <a name="from-1160-to-200"></a>1.16.0 から 2.0.0 に移行
 Azure Mobile Engagement を使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。
 以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 1.16 に移行し、次の手順を適用してください。
 
@@ -200,6 +204,9 @@ SmartAd の追跡が SDK から削除されました。`AETrackModule` クラス
 * クラス `CapptainUtils` は `EngagementUtils` に変更されました。
 * クラス `CapptainViewController` は `EngagementViewController` に変更されました。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

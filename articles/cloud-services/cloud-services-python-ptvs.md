@@ -1,5 +1,5 @@
 ---
-title: "Visual Studio による Python Web ロールと Python worker ロール | Microsoft Docs"
+title: "Python と Azure Cloud Services を使ってみる | Microsoft Docs"
 description: "Azure クラウド サービス (Web ロール、worker ロールを含む) を Python Tools for Visual Studio で作成する方法の概要"
 services: cloud-services
 documentationcenter: python
@@ -12,15 +12,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 08/03/2016
+ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d951e05a9a0ae59adb64d53726e9898d95424d80
+ms.sourcegitcommit: 712c62ed3d5ff21847e2431df3530e7d39c6aae2
+ms.openlocfilehash: 53f7c17d8404bb02ab8bb2be9018ba2b179f1b08
 
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python Tools for Visual Studio による Python Web ロールと Python worker ロール
+
+> [!div class="op_single_selector"]
+> * [.NET](cloud-services-dotnet-get-started.md)
+> * [Node.js](cloud-services-nodejs-develop-deploy-app.md)
+> * [Python](cloud-services-python-ptvs.md)
+
 この記事では、[Python Tools for Visual Studio][Python Tools for Visual Studio] で Python Web ロールと Python worker ロールを扱う方法について概説します。 Python を使用する基本的なクラウド サービスを、Visual Studio を使って作成、デプロイする方法を学習します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -360,11 +366,11 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 [クラウド サービス プロジェクト]: http://go.microsoft.com/fwlink/?LinkId=624028
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
 [Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
-[Python 2.7 (32 ビット)]: https://www.python.org/downloads/
-[Python 3.5 (32 ビット)]: https://www.python.org/downloads/
+[Python 2.7 32 ビット]: https://www.python.org/downloads/
+[Python 3.5 32 ビット]: https://www.python.org/downloads/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

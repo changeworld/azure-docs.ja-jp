@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 80001fda921c4504237b1c5e3812a84924814dfd
-ms.openlocfilehash: c0c908d2597c6570511d6a15ea3f1f48b2dab6c8
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: c0911518e954131f1c8de783d71fb17a9eea1945
 
 ---
 #<a name="documentdb-documentation"></a>DocumentDB のドキュメント
@@ -71,7 +71,7 @@ Azure DocumentDB は、完全管理された NoSQL データベース サービ�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -89,7 +89,7 @@ Azure DocumentDB は、完全管理された NoSQL データベース サービ�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -107,7 +107,7 @@ Azure DocumentDB は、完全管理された NoSQL データベース サービ�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -125,7 +125,7 @@ Azure DocumentDB は、完全管理された NoSQL データベース サービ�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -143,7 +143,7 @@ Azure DocumentDB は、完全管理された NoSQL データベース サービ�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -161,7 +161,7 @@ Azure DocumentDB は、完全管理された NoSQL データベース サービ�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -176,18 +176,40 @@ Azure DocumentDB は、完全管理された NoSQL データベース サービ�
 
 ---
 
-##<a name="reference"></a>リファレンス
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/azure/documentdb/documentdb-sdk-dotnet">.NET</a></p>
+                        <p><a href="/azure/documentdb/documentdb-sdk-dotnet-core">.NET Core</a></p>
+                        <p><a href="/azure/documentdb/documentdb-sdk-java">Java</a></p>
+                        <p><a href="/azure/documentdb/documentdb-sdk-node">Node.js</a></p>
+                        <p><a href="/azure/documentdb/documentdb-sdk-java">Python</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/documentdb/">REST API</a></p>
+                        <p><a href="/rest/api/documentdbresourceprovider/">リソース プロバイダー REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-###<a name="net"></a>.NET
-[.NET に関する管理リファレンス](/dotnet/api)
-
-### <a name="java"></a>Java
-[Java SDK リファレンス](/java/api)
-
-###<a name="rest"></a>REST ()
-[DocumentDB REST API リファレンス](https://msdn.microsoft.com/library/azure/dn781481)
-
-
+---
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/documentdb.pdf">
@@ -199,6 +221,6 @@ DocumentDB のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

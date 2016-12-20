@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 09/06/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 91942517a481a252d631af15e532389256b64108
+ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
+ms.openlocfilehash: e062d55e990faeb0776f643b297788afd87ac1e3
 
 
 ---
@@ -32,7 +32,7 @@ DTU とは、スタンドアロンの Azure SQL データベースが [スタン
 [サービス レベル](sql-database-scale-up.md) はいつでも変更することが可能で、アプリケーションのダウンタイムも最小限に留められます (通常、平均で 4 秒未満)。 特に使用パターンが比較的予測可能である場合、多くのビジネスとアプリについては、データベースを作成し、要求に応じて単一のデータベースのパフォーマンスを調整する能力は十分です。 しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。 そのような場合には、一定数の eDTU を備えたエラスティック プールを使用します。
 
 ## <a name="what-are-elastic-database-transaction-units-edtus"></a>エラスティック データベース トランザクション ユニット (eDTU) とは
-eDTU とは、1 つの Azure SQL サーバー ( [エラスティック プール](sql-database-elastic-pool.png)) に存在するいくつかのデータベースが共有できるリソース (DTU) を 1 つにまとめた単位です。 エラスティック プールは、多種多様な予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理するための、簡単でコスト効率に優れたソリューションを提供します。 詳細については、 [エラスティック プールとサービス レベル](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) に関する記事を参照してください。
+eDTU とは、1 つの Azure SQL サーバー ( [エラスティック プール](sql-database-elastic-pool.md)) に存在するいくつかのデータベースが共有できるリソース (DTU) を 1 つにまとめた単位です。 エラスティック プールは、多種多様な予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理するための、簡単でコスト効率に優れたソリューションを提供します。 詳細については、 [エラスティック プールとサービス レベル](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) に関する記事を参照してください。
 
 ![Intro to SQL Database: eDTUs by tier and level](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
@@ -54,7 +54,6 @@ eDTU とは、1 つの Azure SQL サーバー ( [エラスティック プール
 * CPU、メモリ、データの I/O、トランザクション ログの I/O 以外のリソースに対する制限については、「 [Azure SQL Database のリソース制限](sql-database-resource-limits.md) 」を参照してください。
 * (DTU の) 消費量を確認する場合には、「 [SQL Database Query Performance Insight](sql-database-query-performance.md) 」を参照してください。
 * DTU の各構成要素の割合を決める際に使用する OLTP ワークロードの裏で具体的にどのような方法論が採用されているかについては、「 [Azure SQL Database ベンチマークの概要](sql-database-benchmark-overview.md) 」を参照してください。
-
 
 
 

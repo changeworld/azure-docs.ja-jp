@@ -13,7 +13,7 @@
 ### [API 定義をインポートする](api-management-howto-import-api.md)
 ## バックエンドをセキュリティで保護する
 ### [AAD で Web API バックエンドを保護する](api-management-howto-protect-backend-with-aad.md)
-### [VPN または ExpressRoute 経由で接続する](api-management-howto-setup-vpn.md)
+### [仮想ネットワークに接続する](api-management-using-with-vnet.md)
 ### [相互証明書認証](api-management-howto-mutual-certificates.md)
 ## ポリシーを構成する
 ### [カスタム キャッシュ](api-management-sample-cache-by-key.md)
@@ -39,14 +39,21 @@
 ### [ユーザー アカウントを管理する](api-management-howto-create-or-invite-developers.md)
 ### [Automation を使用して管理する](automation-manage-api-management.md)
 ### [Git を使用して構成する](api-management-configuration-repository-git.md)
-#リファレンス
-## [リソース管理のための PowerShell コマンドレット]/powershell/resourcemanager()
-## [クラシック デプロイ PowerShell コマンドレット リファレンス](https://msdn.microsoft.com/en-us/library/azure/mt613507)
-## [REST API](/rest/api/apimanagement/)
-## [ポリシー](https://msdn.microsoft.com/en-us/library/azure/dn894081)
-## [テンプレート](https://msdn.microsoft.com/en-us/library/azure/mt697540)
-#リソース
+
+# リファレンス
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [REST ()](/rest/api/apimanagement/)
+## [REST (オリジナル)](/rest/api/apimanagement/ApiManagementREST/API-Management-REST)
+
+
+# リソース
+## [ポリシー](https://msdn.microsoft.com/library/azure/dn894081)
+## [テンプレート](https://msdn.microsoft.com/library/azure/mt697540)
 ## [料金](https://azure.microsoft.com/pricing/details/api-management/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-management)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=api-management)
 ## [ホワイトペーパー: クラウド ベースの API Management](http://j.mp/ms-apim-whitepaper)
 ## [API 設計ガイダンス](../best-practices-api-design.md?toc=%2fazure%2fapi-management%2ftoc.json)
 ## [API 実装ガイダンス](../best-practices-api-implementation.md?toc=%2fazure%2fapi-management%2ftoc.json)
@@ -59,6 +66,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

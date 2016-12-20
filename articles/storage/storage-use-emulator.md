@@ -1,19 +1,23 @@
 ---
-title: 開発とテストのための Azure ストレージ エミュレーター使用 | Microsoft Docs
-description: Azure ストレージ エミュレーターは、Azure Storage に対する開発とテストのための無料のローカル開発環境を提供します。 要求の認証方法、アプリケーションからエミュレーターへの接続方法、コマンド ライン ツールの使用方法など、ストレージ エミュレーターについて説明します。
+title: "開発とテストのための Azure Storage エミュレーター使用 | Microsoft Docs"
+description: "Azure ストレージ エミュレーターは、Azure Storage に対する開発とテストのための無料のローカル開発環境を提供します。 要求の認証方法、アプリケーションからエミュレーターへの接続方法、コマンド ライン ツールの使用方法など、ストレージ エミュレーターについて説明します。"
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: tamram
 manager: carmonm
 editor: tysonn
-
+ms.assetid: f480b059-df8a-4a63-b05a-7f2f5d1f5c2a
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 11/28/2016
 ms.author: tamram
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 94de2ce77328cc9902b054200d52d78fb5ccf5ec
+
 
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>開発とテストのための Azure のストレージ エミュレーター使用
@@ -49,14 +53,16 @@ Xamarin ライブラリなど、一部の Azure ストレージ クライアン�
 
 1. Azure PowerShell がまだインストールされていない場合は、インストールします。 Azure PowerShell コマンドレットの最新バージョンを使用することをお勧めします。 インストールの手順については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md#Install) 」を参照してください。
 2. Azure PowerShell を開き、次のコマンドを実行します。 *ACCOUNT_NAME* と *ACCOUNT_KEY==* を必ず自分の資格情報に置き換えてください。 *CONTAINER_NAME* を自分で選択した名前に置き換えます。
-   
-        $context = New-AzureStorageContext -StorageAccountName "ACCOUNT_NAME" -StorageAccountKey "ACCOUNT_KEY=="
-   
-        New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
-   
-        $now = Get-Date 
-   
-        New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
+
+```powershell
+$context = New-AzureStorageContext -StorageAccountName "ACCOUNT_NAME" -StorageAccountKey "ACCOUNT_KEY=="
+
+New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
+
+$now = Get-Date 
+
+New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
+```
 
 新しいコンテナーの共有アクセス署名 URI は、次のようになります。
 
@@ -122,7 +128,7 @@ Azure ストレージ アカウントのリソースをアドレス指定する�
     Queue Service: http://127.0.0.1:10001/<account-name>/<resource-path>
     Table Service: http://127.0.0.1:10002/<account-name>/<resource-path>
 
-### <a name="addressing-the-account-secondary-with-ragrs"></a>RA-GRS を使用した、アカウントのセカンダリ拠点のアドレス指定
+### <a name="addressing-the-account-secondary-with-ra-grs"></a>RA-GRS を使用した、アカウントのセカンダリ拠点のアドレス指定
 Version 3.1 以降では、ストレージ エミュレーター アカウントで読み取りアクセスの geo 冗長レプリケーション (RA-GRS) がサポートされます。 クラウド内のストレージ リソースとローカル エミュレーター内のストレージ リソースの場合、2 次拠点にアクセスするにはアカウント名に -secondary を付加します。 たとえば、ストレージ エミュレーターで読み取り専用の 2 次拠点を使用して BLOB にアクセスするには、次のアドレスを使用します。
 
     http://127.0.0.1:10000/myaccount-secondary/mycontainer/myblob.txt 
@@ -132,7 +138,7 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 > 
 > 
 
-## <a name="storage-emulator-commandline-tool-reference"></a>ストレージ エミュレーター コマンド ライン ツールのリファレンス
+## <a name="storage-emulator-command-line-tool-reference"></a>ストレージ エミュレーター コマンド ライン ツールのリファレンス
 バージョン 3.0 からは、ストレージ エミュレーターの起動時にコマンド ライン ウィンドウがポップアップ表示されます。 このコマンド ライン ウィンドウを使用して、エミュレーターを起動または停止したり、状態のクエリやその他の操作を実行したりします。
 
 > [!NOTE]
@@ -219,6 +225,9 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 * ストレージ エミュレーターのグラフィカル ユーザー インターフェイスが、スクリプト可能なコマンド ライン インターフェイスを優先して、廃止されました。 コマンド ライン インターフェイスの詳細については、ストレージ エミュレーター コマンド ライン ツールのリファレンスをご覧ください。 グラフィカル インターフェイスはバージョン 3.0 までは引き続き存在しますが、計算エミュレーターがインストールされている場合にシステム トレイ アイコンを右クリックして [ストレージ エミュレーター UI の表示] を選択することによってのみアクセスできます。
 * Azure ストレージ サービスのバージョン 2013-08-15 が、完全にサポートされるようになりました。 (以前は、このバージョンはストレージ エミュレーター バージョン 2.2.1 プレビューだけでサポートされていました。)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

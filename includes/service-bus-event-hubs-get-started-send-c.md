@@ -1,16 +1,16 @@
-## Event Hub へのメッセージ送信
-このセクションでは、イベントを Event Hub に送信する C アプリを作成します。[Apache Qpid プロジェクト](http://qpid.apache.org/)の Proton AMQP ライブラリを使用します。これは、[ここ](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューと Topics と使用するのに似ています。詳細については、「[Qpid Proton のドキュメント](http://qpid.apache.org/proton/index.html)」を参照してください。
+## <a name="send-messages-to-event-hubs"></a>Event Hub へのメッセージ送信
+このセクションでは、イベントを Event Hub に送信する C アプリを作成します。 [Apache Qpid プロジェクト](http://qpid.apache.org/)の Proton AMQP ライブラリを使用します。 これは、 [ここ](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューと Topics と使用するのに似ています。 詳細については、「 [Qpid Proton のドキュメント](http://qpid.apache.org/proton/index.html)」を参照してください。
 
-1. [Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html)の **[Installing Qpid Proton]** リンクをクリックして、環境に応じた指示に従ってください。ここでは、Linux 環境で [Azure Linux VM](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md) と Ubuntu 14.04 を使用していると仮定します。
+1. [Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html)の **[Installing Qpid Proton]** リンクをクリックして、環境に応じた指示に従ってください。 ここでは、Linux 環境で [Azure Linux VM](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) と Ubuntu 14.04 を使用していると仮定します。
 2. Proton ライブラリをコンパイルするには、次のパッケージをインストールします。
    
     ```
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
-3. [Qpid Proton ライブラリ](http://qpid.apache.org/proton/index.html)をダウンロードし、次のように抽出します。
+3. [Qpid Proton ライブラリ](http://qpid.apache.org/proton/index.html) をダウンロードし、次のように抽出します。
    
     ```
-    wget http://apache.fastbull.org/qpid/proton/0.7/qpid-proton-0.7.tar.gz
+    wget http://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
     tar xvfz qpid-proton-0.7.tar.gz
     ```
 4. build ディレクトリを作成し、コンパイルとインストールを行います。
@@ -22,9 +22,9 @@
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. 作業ディレクトリに **sender.c** と呼ばれる新しいファイルを次の内容で作成します。Event Hub の名前と名前空間の名前の値を置き換えます (通常、後者は `{event hub name}-ns` です)。前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。[ここ](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードすることができます。
+5. 作業ディレクトリに **sender.c** と呼ばれる新しいファイルを次の内容で作成します。 Event Hub の名前と名前空間の名前の値を置き換えます (通常、後者は `{event hub name}-ns`です)。 前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。 [ここ](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードすることができます。
    
-    ```
+    ```c
     #include "proton/message.h"
     #include "proton/messenger.h"
    
@@ -103,15 +103,19 @@
         return 0;
     }
     ```
-6. **gcc** でファイルをコンパイルします。
+6. **gcc**でファイルをコンパイルします。
    
     ```
     gcc sender.c -o sender -lqpid-proton
     ```
 
 > [!NOTE]
-> コンパイルしたコードで、1 の送信ウィンドウを使用して、メッセージをできるだけ早く強制的に送信します。一般に、アプリケーションではスループットが向上するようにメッセージをバッチ処理する必要があります。この環境やその他の環境、バインドが提供されているプラットフォーム (現在は、Perl、PHP、Python、Ruby) から Qpid Proton ライブラリを使用する方法の詳細については、「[Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html)」を参照してください。
+> コンパイルしたコードで、1 の送信ウィンドウを使用して、メッセージをできるだけ早く強制的に送信します。 一般に、アプリケーションではスループットが向上するようにメッセージをバッチ処理する必要があります。 この環境やその他の環境、バインドが提供されているプラットフォーム (現在は、Perl、PHP、Python、Ruby) から Qpid Proton ライブラリを使用する方法の詳細については、「 [Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html) 」を参照してください。
 > 
 > 
 
-<!---HONumber=AcomDC_0413_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,13 +1,13 @@
 ---
-title: Power BI Embedded での認証と承認
-description: Power BI Embedded での認証と承認
+title: "Power BI Embedded での認証と承認"
+description: "Power BI Embedded での認証と承認"
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 1c1369ea-7dfd-4b6e-978b-8f78908fd6f6
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2b860b5815a0dd35138c685eb90490a8e2c53d5e
+
 
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-embedded"></a>Power BI Embedded での認証と承認
@@ -55,7 +59,7 @@ REST 呼び出しでキーを使用するには、次の Authorization ヘッダ
 
 ![](media\\power-bi-embedded-app-token-flow\\power-bi-embedded-app-token-flow-sample-decoded.png)
 
-## <a name="here's-how-the-flow-works"></a>フローのしくみ
+## <a name="heres-how-the-flow-works"></a>フローのしくみ
 1. アプリケーションに API キーをコピーします。 このキーは **Azure ポータル**で取得できます。
    
     ![](media\\powerbi-embedded-get-started-sample\\azure-portal.png)
@@ -84,6 +88,9 @@ REST 呼び出しでキーを使用するには、次の Authorization ヘッダ
 * [Common Microsoft Power BI Embedded scenarios (Microsoft Power BI Embedded の一般的なシナリオ)](power-bi-embedded-scenarios.md)
 * [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

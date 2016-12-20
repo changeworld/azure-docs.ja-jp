@@ -1,12 +1,12 @@
 ---
-title: Linux Azure 診断でログを収集する方法 | Microsoft Docs
-description: この記事では、Azure で実行されている Service Fabric Linux クラスターのログを収集するように Azure 診断を設定する方法について説明します。
+title: "Linux Azure 診断でログを収集する方法 | Microsoft Docs"
+description: "この記事では、Azure で実行されている Service Fabric Linux クラスターのログを収集するように Azure 診断を設定する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: a160d469-8b7d-4560-82dd-8500db34a44a
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/28/2016
 ms.author: subramar
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: 3416511777ff006d0aa933cd45e50f1d200bcad4
+
 
 ---
 # <a name="collect-logs-by-using-azure-diagnostics"></a>Azure 診断でログを収集する方法
@@ -34,7 +38,7 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 
 クラスター作成の一環としてクラスター内の VM に診断拡張機能をデプロイするには、**[診断]** を **[オン]** に設定します。 クラスターを作成した後、ポータルを使用してこの設定を変更することはできません。
 
-次に、ファイルを収集する Linux Azure Diagnostics (LAD) を構成し、ストレージ アカウントに配置します。 このプロセスについては、 [LAD を使用して Linux VM を監視および診断する方法](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md)に関する記事でシナリオ 3 (「独自のログ ファイルをアップロードする」) として説明されています。 この手順に従うと、トレースへのアクセスを取得できます。 トレースは、好みのビジュアライザーにアップロードできます。
+次に、ファイルを収集する Linux Azure Diagnostics (LAD) を構成し、ストレージ アカウントに配置します。 このプロセスについては、 [LAD を使用して Linux VM を監視および診断する方法](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関する記事でシナリオ 3 (「独自のログ ファイルをアップロードする」) として説明されています。 この手順に従うと、トレースへのアクセスを取得できます。 トレースは、好みのビジュアライザーにアップロードできます。
 
 診断拡張機能は Azure Resource Manager を使用してデプロイすることもできます。 このプロセスは、Windows と Linux とで似ています。Windows クラスター向けのプロセスについては、「[Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)」を参照してください。
 
@@ -43,8 +47,11 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 この構成を完了すると、指定されたログ ファイルが LAD エージェントによって監視されます。 新しい行がファイルに追加されるたびに、指定したストレージに送信される syslog エントリが作成されます。
 
 ## <a name="next-steps"></a>次のステップ
-問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](http://lttng.org/docs)と [LAD の使用](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md)に関するページを参照してください。
+問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](http://lttng.org/docs)と [LAD の使用](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関するページを参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

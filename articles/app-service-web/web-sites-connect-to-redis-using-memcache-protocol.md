@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 02/29/2016
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f0321c71655f1b023862aeeef4615544135adb5a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d8a177074d6b7671fe04081c5547665ec892f244
 
 
 ---
@@ -38,7 +38,7 @@ Web Apps の Memcache shim は、Memcache プロトコルを使用して通信�
 スケーラブルな WordPress サイトをデプロイして、Redis Cache インスタンスをプロビジョニングしたら、Azure App Service Web Apps で Memcache shim を有効にできるようになります。
 
 ## <a name="enable-the-web-apps-memcache-shim"></a>Web Apps の Memcache shim を有効にする
-Memcache shim を構成するためには 3 つのアプリ設定を作成する必要があります。 これは、[Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715)、[クラシック ポータル][3]、[Azure PowerShell コマンドレット][5]、[Azure コマンド ライン インターフェイス][5]などのさまざまな手法を使用して実行できます。 この投稿では、[Azure Portal][4] を使用してアプリ設定を行います。 次の値は Redis Cache インスタンスの **[設定]** ブレードから取得できます。
+Memcache shim を構成するためには 3 つのアプリ設定を作成する必要があります。 これは、[Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715)、[クラシック ポータル][3]、[Azure PowerShell コマンドレット][5]、[Azure コマンド ライン インターフェイス][5]などのさまざまな手法を使用して実行できます。 この記事では、[Azure Portal][4] を使用してアプリ設定を行います。 次の値は Redis Cache インスタンスの **[設定]** ブレードから取得できます。
 
 ![Azure Redis Cache の設定ブレード](./media/web-sites-connect-to-redis-using-memcache-protocol/1-azure-redis-cache-settings.png)
 
@@ -71,7 +71,7 @@ Memcache shim を構成するためには 3 つのアプリ設定を作成する
 アプリケーションで Memcache プロトコルを使用するには、PHP (WordPress サイトの言語フレームワーク) に Memcache 拡張機能をインストールする必要があります。
 
 ### <a name="download-the-phpmemcache-extension"></a>php_memcache 拡張機能のダウンロード
-[PECL][6] に移動します。 キャッシュ カテゴリで [[memcache]][7] をクリックします。 [Downloads] 列で [DLL] のリンクをクリックします。
+[PECL][6] を参照します。 キャッシュ カテゴリで [[memcache]][7] をクリックします。 [Downloads] 列で [DLL] のリンクをクリックします。
 
 ![PHP PECL の Website](./media/web-sites-connect-to-redis-using-memcache-protocol/7-php-pecl-website.png)
 
@@ -136,7 +136,7 @@ $memcached_servers = array(
 ## <a name="verify-the-memcache-object-cache-plugin-is-functioning"></a>Memcache オブジェクト キャッシュ プラグインが機能していることを確認する
 Web Apps の Memcache shim を有効にするためのすべての手順が完了しました。 最後にデータが Redis Cache インスタンスに入力されていることを確認します。
 
-### <a name="enable-the-nonssl-port-support-in-azure-redis-cache"></a>Azure Redis Cache で非 SSL ポートのサポートを有効にする
+### <a name="enable-the-non-ssl-port-support-in-azure-redis-cache"></a>Azure Redis Cache で非 SSL ポートのサポートを有効にする
 > [!NOTE]
 > この記事を書いている時点では、Redis CLI では SSL 接続がサポートされていないため、次の手順が必要になります。
 > 
@@ -158,9 +158,9 @@ Azure ポータルで、この Web アプリ用に作成した Redis Cache イ�
 
 ![Azure Redis Cache の Redis アクセス ポータル (非 SSL)](./media/web-sites-connect-to-redis-using-memcache-protocol/18-azure-redis-cache-access-port-non-ssl.png)
 
-### <a name="connect-to-azure-redis-cache-from-rediscli"></a>redis-cli から Azure Redis Cache に接続する
+### <a name="connect-to-azure-redis-cache-from-redis-cli"></a>redis-cli から Azure Redis Cache に接続する
 > [!NOTE]
-> この手順では、ｒedis が開発用コンピューターにローカルでインストールされていることを前提としています。 [こちらの手順に従って Redis をローカルにインストールします][9]。
+> この手順では、ｒedis が開発用コンピューターにローカルでインストールされていることを前提としています。 [こちらの手順に従って Redis をインストールします][9]。
 > 
 > 
 
@@ -177,7 +177,7 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 キーを一覧表示する呼び出しは、値を返す必要があります。 返さない場合は、Web アプリに移動してもう一度試します。
 
 ## <a name="conclusion"></a>まとめ
-ご利用ありがとうございます。 これで、WordPress アプリには一元的なメモリ内キャッシュが導入され、増加するスループットをサポートできるようになりました。 Web Apps の Memcache Shim は、プログラミング言語やアプリケーション フレームワークに関係なく、あらゆる Memcache クライアントで使用できることを忘れないでください。 Web アプリの Memcache shim に関するフィードバックや質問は、[MSDN フォーラム][10]や [Stackoverflow][11] に投稿してください。
+ご利用ありがとうございます。 これで、WordPress アプリには一元的なメモリ内キャッシュが導入され、増加するスループットをサポートできるようになりました。 Web Apps の Memcache Shim は、プログラミング言語やアプリケーション フレームワークに関係なく、あらゆる Memcache クライアントで使用できることを忘れないでください。 Web Apps の Memcache shim に関するフィードバックや質問は、[MSDN フォーラム][10]や [Stackoverflow][11] に投稿してください。
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
@@ -191,7 +191,7 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 [1]: http://bit.ly/1t0KxBQ
 [2]: http://manage.windowsazure.com
 [3]: http://portal.azure.com
-[4]: ../powershell-install-configure.md
+[4]: /powershell/azureps-cmdlets-docs
 [5]: /downloads
 [6]: http://pecl.php.net
 [7]: http://pecl.php.net/package/memcache
@@ -204,6 +204,6 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

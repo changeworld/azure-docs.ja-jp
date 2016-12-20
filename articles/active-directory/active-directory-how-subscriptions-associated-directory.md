@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73d58df13d3265312b371a02e12fbb9342fb3980
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e41300ac8f6829ba93ebe7cba6063d82db1119f7
 
 
 ---
@@ -128,6 +128,6 @@ Azure クラシック ポータルで両方のディレクトリを管理する�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

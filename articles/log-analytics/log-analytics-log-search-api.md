@@ -1,12 +1,12 @@
 ---
-title: Log Analytics のログ検索 REST API | Microsoft Docs
-description: このガイドには、Operations Management Suite (OMS) で Log Analytics 検索 REST API を使用する方法に関する基本的な説明と、コマンドの使用方法の例が記載されています。
+title: "Log Analytics のログ検索 REST API | Microsoft Docs"
+description: "このガイドには、Operations Management Suite (OMS) で Log Analytics 検索 REST API を使用する方法に関する基本的な説明と、コマンドの使用方法の例が記載されています。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: b4e9ebe8-80f0-418e-a855-de7954668df7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 81dd7d9dc799f6f4c0dd54a12409724c182a0349
+
 
 ---
 # <a name="log-analytics-log-search-rest-api"></a>Log Analytics のログ検索 REST API
@@ -93,7 +97,7 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
 ## <a name="log-analytics-search-rest-api-reference-examples"></a>Log Analytics 検索 REST API リファレンスの例
 次の例は、検索 API の使用方法を示します。
 
-### <a name="search---action/read"></a>検索 - アクション/読み取り
+### <a name="search---actionread"></a>検索 - アクション/読み取り
 **サンプル URL:**
 
 ```
@@ -179,7 +183,7 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
     }
 ```
 
-### <a name="search/{id}---action/read"></a>検索/{ID} - アクション/読み取り
+### <a name="searchid---actionread"></a>検索/{ID} - アクション/読み取り
 **保存された検索の内容を要求:**
 
 ```
@@ -356,7 +360,7 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
         "Tags": [{
             "Name": "Group",
             "Value": "Computer"
-        }],
+          }],
     "Version": 1
     }
 
@@ -395,6 +399,9 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{Resource Group
 ## <a name="next-steps"></a>次のステップ
 * 基準のカスタム フィールドを使用してクエリを作成するための、 [ログ検索](log-analytics-log-searches.md) について説明します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

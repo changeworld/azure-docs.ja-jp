@@ -1,12 +1,12 @@
 ---
-title: Log Analytics の Azure Networking Analytics ソリューション | Microsoft Docs
-description: Log Analytics の Azure Networking Analytics ソリューションを使用すると、Azure ネットワーク セキュリティ グループのログと Azure Application Gateway のログを調査することができます。
+title: "Log Analytics の Azure Networking Analytics ソリューション | Microsoft Docs"
+description: "Log Analytics の Azure Networking Analytics ソリューションを使用すると、Azure ネットワーク セキュリティ グループのログと Azure Application Gateway のログを調査することができます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: richrundmsft
 manager: jochan
-editor: ''
-
+editor: 
+ms.assetid: 66a3b8a1-6c55-4533-9538-cad60c18f28b
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: richrund
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: eed3bd763edb94d7bea28b4039c03afa7359fee1
+
 
 ---
-# <a name="azure-networking-analytics-(preview)-solution-in-log-analytics"></a>Log Analytics の Azure Networking Analytics (プレビュー) ソリューション
+# <a name="azure-networking-analytics-preview-solution-in-log-analytics"></a>Log Analytics の Azure Networking Analytics (プレビュー) ソリューション
 > [!NOTE]
 > これは[プレビュー ソリューション](log-analytics-add-solutions.md#log-analytics-preview-solutions-and-features)です。
 > 
@@ -96,6 +100,9 @@ Azure Application Gateway とネットワーク セキュリティ グループ�
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md)を使用して、詳細な Azure Networking Analytics データを確認してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

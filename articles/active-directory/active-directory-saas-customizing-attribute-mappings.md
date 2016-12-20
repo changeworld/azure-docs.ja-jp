@@ -1,12 +1,12 @@
 ---
-title: 属性マッピングのカスタマイズ | Microsoft Docs
-description: Azure Active Directory における SaaS アプリの属性マッピングとは何かと、この属性マッピングをビジネス ニーズに合わせて変更する方法について説明します。
+title: "属性マッピングのカスタマイズ | Microsoft Docs"
+description: "Azure Active Directory における SaaS アプリの属性マッピングとは何かと、この属性マッピングをビジネス ニーズに合わせて変更する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 549e0b8c-87ce-4c9b-b487-b7bf0155dc77
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: markusvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f555547fb3e30b1a68387232de60395b615bfa19
+
 
 ---
 # <a name="customizing-attribute-mappings"></a>属性マッピングのカスタマイズ
@@ -54,7 +58,8 @@ SaaS アプリケーションが正常に機能するために必要となる属
 
 * **直接** - ターゲットの属性に、Azure AD でリンクされているオブジェクトの属性値を設定します。
 * **定数** – ターゲットの属性に、指定した特定の文字列を設定します。
-* **式** - ターゲットの属性を、スクリプトのような式の結果に基づいて設定します。 詳細については、「 [Azure Active Directory での属性マッピングのための式の作成](active-directory-saas-writing-expressions-for-attribute-mappings.md)」を参照してください。
+* **式** - ターゲットの属性を、スクリプトのような式の結果に基づいて設定します。 
+  詳細については、「 [Azure Active Directory での属性マッピングのための式の作成](active-directory-saas-writing-expressions-for-attribute-mappings.md)」を参照してください。
 * **なし** - ターゲットの属性を変更しません。 ただし、ターゲットの属性が空の場合は、指定した既定値が設定されます。
 
 これら 4 つの基本的な属性マッピングの種類に加えて、カスタム属性マッピングでは **既定** 値の割り当てという概念をサポートします。 既定値の割り当てでは、Azure AD にもターゲット オブジェクトにも値がない場合にも、ターゲットの属性にかならず値を設定します。
@@ -78,6 +83,6 @@ Microsoft Azure AD では、同期プロセスの非常に効率的な実装を�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

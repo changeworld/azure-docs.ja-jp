@@ -1,13 +1,13 @@
 ---
-title: Web サービスのスケーリング | Microsoft Docs
-description: 同時実行を増やし、新しいエンドポイントを追加して Web サービスを拡大する方法について説明します。
+title: "Web サービスのスケーリング | Microsoft Docs"
+description: "同時実行を増やし、新しいエンドポイントを追加して Web サービスを拡大する方法について説明します。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: neerajkh
 manager: srikants
 editor: cgronlun
-keywords: Azure Machine Learning、Web サービス、運用、スケーリング、エンドポイント、同時実行
-
+keywords: "Azure Machine Learning、Web サービス、運用、スケーリング、エンドポイント、同時実行"
+ms.assetid: c2c51d7f-fd2d-4f03-bc51-bf47e6969296
 ms.service: machine-learning
 ms.devlang: NA
 ms.workload: data-services
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: neerajkh
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 559db01d2c9f44af17b86f99031a8827dfeb5ab3
+
 
 ---
 # <a name="scaling-a-web-service"></a>Web サービスのスケーリング
@@ -42,6 +46,6 @@ Web サービスのスケーリングは一般的なタスクです。 スケー
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

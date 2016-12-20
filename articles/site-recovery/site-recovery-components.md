@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 94250becb238adad7983d4b45939eb988411fca3
+ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
+ms.openlocfilehash: ef9a7da86e7528d3052f89dbe1eaac6fbb90527c
 
 
 ---
@@ -94,7 +94,7 @@ Site Recovery をデプロイして VMware VM/物理サーバーをレプリケ�
 * Azure Portal でのフェールバックについては、[こちら](site-recovery-failback-azure-to-vmware.md)で詳細を確認してください。
 * クラシック ポータルでのフェールバックについては、[こちら](site-recovery-failback-azure-to-vmware-classic.md)で詳細を確認してください。
 
-## <a name="replicate-to-azure-hyperv-vms-not-managed-by-vmm"></a>Azure へのレプリケート: VMM で管理されていない Hyper-V VM
+## <a name="replicate-to-azure-hyper-v-vms-not-managed-by-vmm"></a>Azure へのレプリケート: VMM で管理されていない Hyper-V VM
 System Center VMM で管理されていない Hyper-V VM を Site Recovery を使用して Azure にレプリケートできます。手順は次のとおりです。
 
 * **Azure ポータルを使用する**- Azure ポータルで Site Recovery をデプロイしている場合は、クラシック ストレージまたは Resource Manager に VM をフェールオーバーできます。 [詳細情報](site-recovery-hyper-v-site-to-azure.md)
@@ -120,7 +120,7 @@ System Center VMM で管理されていない Hyper-V VM を Site Recovery を�
 * [詳細情報](site-recovery-hyper-v-site-to-azure.md#azure-prerequisites) をご覧ください。
 * [詳細情報](site-recovery-hyper-v-site-to-azure-classic.md#azure-prerequisites) をご覧ください。
 
-## <a name="replicate-to-azure-hyperv-vms-managed-by-vmm"></a>Azure へのレプリケート: VMM で管理された Hyper-V VM
+## <a name="replicate-to-azure-hyper-v-vms-managed-by-vmm"></a>Azure へのレプリケート: VMM で管理された Hyper-V VM
 VMM クラウド内の Hyper-V VM を Site Recovery を使用して Azure にレプリケートできます。手順は次のとおりです。
 
 * **Azure ポータルを使用する**- Azure ポータルで Site Recovery をデプロイしている場合は、クラシック ストレージまたは Resource Manager に VM をフェールオーバーできます。 [詳細情報](site-recovery-vmm-to-azure.md)
@@ -144,8 +144,8 @@ VMM クラウド内の Hyper-V VM を Site Recovery を使用して Azure にレ
 
 ![VMM から Azure](./media/site-recovery-components/arch-onprem-onprem-azure-vmm.png)
 
-* [詳細情報](site-recovery-vmm-to-azure.md#azure-requirements) をご覧ください。
-* [詳細情報](site-recovery-vmm-to-azure-classic.md#before-you-start) をご覧ください。
+* [詳細情報](site-recovery-vmm-to-azure.md#azure-prerequisites) をご覧ください。
+* [詳細情報](site-recovery-vmm-to-azure-classic.md) をご覧ください。
 
 ## <a name="replicate-to-a-secondary-site-vmware-virtual-machines-or-physical-servers"></a>セカンダリ サイトへのレプリケート: VMware 仮想マシンまたは物理サーバー
 VMware VM または物理サーバーをセカンダリ サイトにレプリケートするには、Azure Site Recovery サブスクリプションに含まれている InMage Scout をダウンロードします。 Azure ポータルまたは Azure クラシック ポータルからダウンロードできます。
@@ -167,7 +167,7 @@ VMware VM または物理サーバーをセカンダリ サイトにレプリケ
 
 ![VMware から VMware](./media/site-recovery-components/vmware-to-vmware.png)
 
-## <a name="replicate-to-a-secondary-site-hyperv-vms-managed-by-vmm"></a>セカンダリ サイトへのレプリケート: VMM で管理された Hyper-V VM
+## <a name="replicate-to-a-secondary-site-hyper-v-vms-managed-by-vmm"></a>セカンダリ サイトへのレプリケート: VMM で管理された Hyper-V VM
 System Center VMM で管理されていない Hyper-V VM を Site Recovery を使用してセカンダリ データセンターにレプリケートできます。手順は次のとおりです。
 
 * **Azure ポータルを使用する**- Azure ポータルで Site Recovery をデプロイしている場合。 [詳細情報](site-recovery-hyper-v-site-to-azure.md)
@@ -193,7 +193,7 @@ System Center VMM で管理されていない Hyper-V VM を Site Recovery を�
 * [詳細情報](site-recovery-vmm-to-vmm.md#azure-prerequisites) をご覧ください。
 * * [詳細情報](site-recovery-vmm-to-vmm-classic.md#before-you-start) をご覧ください。
 
-## <a name="replicate-to-a-secondary-site-with-san-replication-hyperv-vms-managed-by-vmm"></a>SAN レプリケーションを使用したセカンダリ サイトへのレプリケート: VMM で管理された Hyper-V VM
+## <a name="replicate-to-a-secondary-site-with-san-replication-hyper-v-vms-managed-by-vmm"></a>SAN レプリケーションを使用したセカンダリ サイトへのレプリケート: VMM で管理された Hyper-V VM
 VMM クラウドで管理されている Hyper-V VM を、Azure クラシック ポータルで SAN レプリケーションを使用してセカンダリ サイトにレプリケートできます。 このシナリオは現在、新しい Azure ポータルではサポートされていません。
 
 このシナリオでは、Site Recovery をデプロイする際に Azure Site Recovery Provider を VMM サーバーにインストールします。 Provider は、インターネット経由で Site Recovery サービスを使用してレプリケーションを調整および統制します。 プライマリ ストレージ アレイとセカンダリ ストレージ アレイとの間で同期 SAN レプリケーションによって、データがレプリケートされます。
@@ -213,8 +213,8 @@ VMM クラウドで管理されている Hyper-V VM を、Azure クラシック 
 
 [詳細情報](site-recovery-vmm-san.md#before-you-start) をご覧ください。
 
-### <a name="onpremises"></a>オンプレミスの
-## <a name="hyperv-protection-lifecycle"></a>Hyper-V 保護のライフ サイクル
+### <a name="on-premises"></a>オンプレミスの
+## <a name="hyper-v-protection-lifecycle"></a>Hyper-V 保護のライフ サイクル
 次のワークフローでは、Hyper-V 仮想マシンを保護、レプリケート、およびフェールオーバーするプロセスを示します。
 
 1. **保護の有効化**: Site Recovery コンテナーをセットアップし、VMM クラウドまたは Hyper-V サイトのレプリケーション設定を構成し、VM の保護を有効にします。 **保護の有効化**と呼ばれるジョブは、開始されると、**[ジョブ]** タブで監視することができます。 このジョブは、まずマシンが前提条件を満たしていることを確認します。次に、構成された設定を使用して Azure へのレプリケーションをセットアップする [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) メソッドを呼び出します。 **保護の有効化**ジョブは、[StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) メソッドも呼び出して、完全な VM レプリケーションを初期化します。
@@ -229,7 +229,6 @@ VMM クラウドで管理されている Hyper-V VM を、Azure クラシック 
 
 ## <a name="next-steps"></a>次のステップ
 [デプロイメントの準備をする](site-recovery-best-practices.md)
-
 
 
 

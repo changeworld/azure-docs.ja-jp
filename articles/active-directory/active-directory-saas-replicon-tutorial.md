@@ -1,11 +1,11 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Replicon の統合 | Microsoft Docs'
-description: Azure Active Directory で Replicon を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。
+title: "チュートリアル: Azure Active Directory と Replicon の統合 | Microsoft Docs"
+description: "Azure Active Directory で Replicon を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。"
 services: active-directory
 author: jeevansd
 documentationcenter: na
 manager: femila
-
+ms.assetid: 02a62f15-917c-417c-8d80-fe685e3fd601
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,9 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1dfd8edcae7d54d4ba8456a424a3fbc40d45c777
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-replicon"></a>チュートリアル: Azure Active Directory と Replicon の統合
+# <a name="tutorial-azure-active-directory-integration-with-replicon"></a>チュートリアル: Azure Active Directory と Replicon の統合
 このチュートリアルでは、Azure と Replicon の統合について説明します。 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 * 有効な Azure サブスクリプション
@@ -35,7 +39,7 @@ ms.author: jeedes
 ## <a name="enabling-the-application-integration-for-replicon"></a>Replicon のアプリケーション統合の有効化
 このセクションでは、Replicon のアプリケーション統合を有効にする方法について説明します。
 
-### <a name="to-enable-the-application-integration-for-replicon,-perform-the-following-steps:"></a>Replicon のアプリケーション統合を有効にするには、次の手順に従います。
+### <a name="to-enable-the-application-integration-for-replicon-perform-the-following-steps"></a>Replicon のアプリケーション統合を有効にするには、次の手順に従います。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
    ![[Active Directory]](./media/active-directory-saas-replicon-tutorial/IC700993.png "Active Directory")
@@ -60,7 +64,7 @@ ms.author: jeedes
 
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Replicon に対する認証を行うことができるようにする方法を説明します。
 
-### <a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>シングル サインオンを構成するには、次の手順を実行します。
+### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **Replicon** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
    ![Configure single sign-on](./media/active-directory-saas-replicon-tutorial/IC777801.png "Configure single sign-on")
@@ -78,7 +82,7 @@ ms.author: jeedes
       > **https://global.replicon.com/!/saml2/\<企業キー\>** でReplicon メタデータから URL を取得できます。
       > 
       > 
-   3. **[次へ]**
+   3.  **[次へ]**
 4. **[Replicon でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、メタデータをコンピューターのローカルに保存します。
    
    ![Configure single sign-on](./media/active-directory-saas-replicon-tutorial/IC777804.png "Configure single sign-on")
@@ -103,7 +107,7 @@ ms.author: jeedes
 Azure AD ユーザーが Replicon にログインできるようにするには、そのユーザーを Replicon にプロビジョニングする必要があります。  
 Replicon の場合、プロビジョニングは手動で行います。
 
-### <a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
+### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
 1. Web ブラウザー ウィンドウで、 Replicon 企業サイトに管理者としてログインします。
 2. **[Administration] \> [Users]** に移動します。
    
@@ -129,7 +133,7 @@ Replicon の場合、プロビジョニングは手動で行います。
 ## <a name="assigning-users"></a>ユーザーの割り当て
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-replicon,-perform-the-following-steps:"></a>ユーザーを Replicon に割り当てるには、次の手順に従います。
+### <a name="to-assign-users-to-replicon-perform-the-following-steps"></a>ユーザーを Replicon に割り当てるには、次の手順に従います。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **Replicon** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
@@ -140,6 +144,9 @@ Replicon の場合、プロビジョニングは手動で行います。
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

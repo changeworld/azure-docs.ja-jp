@@ -1,13 +1,13 @@
 ---
-title: 'DocumentDB の設計パターン: ソーシャル メディア アプリ | Microsoft Docs'
-description: DocumentDB のストレージの柔軟性と他の Azure サービスを活用したソーシャル ネットワークの設計パターンについて説明します。
-keywords: ソーシャル メディア アプリ
+title: "DocumentDB の設計パターン: ソーシャル メディア アプリ | Microsoft Docs"
+description: "DocumentDB のストレージの柔軟性と他の Azure サービスを活用したソーシャル ネットワークの設計パターンについて説明します。"
+keywords: "ソーシャル メディア アプリ"
 services: documentdb
 author: ealsur
 manager: jhubbard
-editor: ''
-documentationcenter: ''
-
+editor: 
+documentationcenter: 
+ms.assetid: 2dbf83a7-512a-4993-bf1b-ea7d72e095d9
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: mimig
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 6c9e285834707b668086ceab7fdde582f0cd87cc
+
 
 ---
 # <a name="going-social-with-documentdb"></a>DocumentDB によるソーシャル化
@@ -34,7 +38,7 @@ ms.author: mimig
 
 誤解しないでください。私は SQL データベースを長年使用してきました。SQL データベースは優れていますが、他のあらゆるパターン、手法、ソフトウェア プラットフォームと同様に、すべてのシナリオに最適というわけではありません。
 
-このシナリオで SQL が最適な選択肢でないのはなぜでしょうか。 1 つの投稿の構造を見てみましょう。Web サイトやアプリケーションでその投稿を表示する場合、たった 1 つの投稿を表示するために 8 つのテーブルを結合してクエリを実行しなければなりません。 動的に読み込まれ、画面に表示される投稿のストリームを想像してみてください。そうすれば、私が目指しているものがおわかりいただけると思います。
+このシナリオで SQL が最適な選択肢でないのはなぜでしょうか。 1 つの投稿の構造を見てみましょう。Web サイトやアプリケーションでその投稿を表示する場合、たった 1 つの投稿を表示するために  8 つのテーブルを結合してクエリを実行しなければなりません。動的に読み込まれ、画面に表示される投稿のストリームを想像してみてください。そうすれば、私が目指しているものがおわかりいただけると思います。
 
 コンテンツを提供するために、こうした多数の結合を使用する何千ものクエリを解決できるだけの能力を備えた巨大な SQL インスタンスを使用することもできますが、実際のところ、よりシンプルなソリューションが存在するのに、そのようなインスタンスをわざわざ使用する必要があるでしょうか。
 
@@ -131,7 +135,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
 
 さらに、フォロワーの実際のグラフは、単純な "A-follows-B" のようなグラフの保存と取得を可能にする [拡張機能](https://github.com/richorama/AzureStorageExtensions#azuregraphstore) を使用して、Azure Storage テーブルに保存することができます。 この方法では、正確なフォロワー リストを必要なときに取得するプロセスを Azure Storage テーブルに委任できますが、簡単な数値の検索には引き続き DocumentDB を使用します。
 
-## <a name="the-“ladder”-pattern-and-data-duplication"></a>"ラダー (梯子)" パターンとデータの重複
+## <a name="the-ladder-pattern-and-data-duplication"></a>"ラダー (梯子)" パターンとデータの重複
 投稿を参照する JSON ドキュメントでお気付きかと思いますが、同じユーザーが何度も出現します。 皆さんの推測どおり、この非正規化を考慮すると、これはユーザーを表す情報が複数の場所に存在する可能性があることを意味します。
 
 クエリの高速化を可能するために、データの重複が発生しています。 この副作用による問題は、何らかの操作によってユーザーのデータが変更された場合に、そのユーザーがこれまでに実行したすべてのアクティビティを見つけ、そのすべてを更新する必要があることです。 あまり現実的ではなさそうですよね。
@@ -227,6 +231,9 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 
 または、 [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)に従って、DocumentDB の詳細を確認してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

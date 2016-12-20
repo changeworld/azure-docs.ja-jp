@@ -1,12 +1,12 @@
 ---
-title: REST API によるジョブの進行状況のチェック方法 | Microsoft Docs
-description: ジョブの進行状況を追跡する方法について説明します。
+title: "REST API によるジョブの進行状況のチェック方法 | Microsoft Docs"
+description: "ジョブの進行状況を追跡する方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: a1a1f956-c035-448a-af9c-5ac15fcce9dd
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 04c80dddd1d42f923233eae49d3c1501cdfa5051
+
 
 ---
-# <a name="how-to:-check-job-progress"></a>方法: ジョブの進行状況をチェックする
+# <a name="how-to-check-job-progress"></a>方法: ジョブの進行状況をチェックする
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-check-job-progress.md)
 > * [.NET](media-services-check-job-progress.md)
@@ -62,6 +66,9 @@ ms.author: juliako
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

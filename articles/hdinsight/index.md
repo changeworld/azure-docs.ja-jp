@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 1b5f6156de634d3e32dd848518d4433a5d2e4b5c
-ms.openlocfilehash: 050d31a70a7dddff1f840235002f9b233dee9059
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 28b6ebfae16a5c2e119fc4f1af0dcee6a348d47f
 
 ---
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight のドキュメント
@@ -122,18 +122,49 @@ Azure HDInsight は、クラウドによって機能強化された Apache Hadoo
 </ul>
 
 ---
-
-##<a name="reference"></a>リファレンス
-
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell リファレンス](/powershell/azureps-cmdlets-docs)
-
-###<a name="rest"></a>REST ()
-[HDInsight REST API リファレンス](/rest/api/hdinsight)
-[Spark for HDInsight REST API リファレンス](/rest/api/hdinsightspark)
-
-###<a name="net"></a>.NET
-[HDInsight に関する管理リファレンス](https://msdn.microsoft.com/library/azure/mt271028)
+ 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt271028.aspx">.NET (Hadoop)</a></p>
+                        <p><a href="https://www.nuget.org/packages/Microsoft.HBase.Client/">.NET (HBase)</a></p>
+                        <p><a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library">.NET (Avro)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/hdinsight/">REST API</a></p>
+                        <p><a href="/rest/api/hdinsightspark/">REST API (Spark)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/hdinsight.pdf">
@@ -145,6 +176,6 @@ HDInsight のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 10/05/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 45c0646f6eb1067f49bc185f1592cd1c94fc9470
+ms.sourcegitcommit: 5da660fc36ac0ebef26ed815da6dbba6668643d3
+ms.openlocfilehash: 57e8ee6f067a61c1262a8902dd56393e4803c3c6
 
 
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>ExpressRoute 回線のルーティングの作成と変更を行う
 > [!div class="op_single_selector"]
-> [Azure Portal - Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
-> [PowerShell - Resource Manager](expressroute-howto-routing-arm.md)
-> [PowerShell - クラシック](expressroute-howto-routing-classic.md)
+> * [Azure ポータル - Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
+> * [PowerShell - Resource Manager](expressroute-howto-routing-arm.md)
+> * [PowerShell - クラシック](expressroute-howto-routing-classic.md)
 > 
 > 
 
@@ -249,7 +249,9 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
      
        Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-    >[AZURE.IMPORTANT] 顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
+    > [!IMPORTANT]
+    > 顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
+
 
 ### <a name="to-view-azure-public-peering-details"></a>Azure パブリック ピアリングの詳細を表示するには
 次のコマンドレットを使用して、構成の詳細を取得することができます。
@@ -387,6 +389,6 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

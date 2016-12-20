@@ -1,12 +1,12 @@
 ---
-title: Resource Manager テンプレートを使用して診断設定を自動的に有効にする | Microsoft Docs
-description: Resource Manager テンプレートを使用して、診断ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできるようにするための診断設定を作成する方法について説明します。
+title: "Resource Manager テンプレートを使用して診断設定を自動的に有効にする | Microsoft Docs"
+description: "Resource Manager テンプレートを使用して、診断ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできるようにするための診断設定を作成する方法について説明します。"
 author: johnkemnetz
 manager: rboucher
-editor: ''
+editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-
+ms.assetid: a8a88a8c-4a48-4df6-8f7e-d90634d39c57
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: johnkem
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 30b023429cfdc671ac68175f94ffb48379c58dda
+
 
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してリソースの作成時に診断設定を自動的に有効にする
@@ -185,12 +189,15 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 > 
 > 
 
-このプロセス全体とサンプルについては、 [こちらのドキュメント](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)をご覧ください。
+このプロセス全体とサンプルについては、 [こちらのドキュメント](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure 診断ログの詳細を確認する](monitoring-overview-of-diagnostic-logs.md)
 * [Azure 診断ログを Event Hubs にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

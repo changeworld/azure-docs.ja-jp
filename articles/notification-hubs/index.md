@@ -1,11 +1,15 @@
 ---
 layout: LandingPage
+translationtype: Human Translation
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 54bebbed74b344ff854a83b2b6c4abdb5ba68321
+
 ---
-#Notification Hubs Documentation
+#<a name="notification-hubs-documentation"></a>Notification Hubs のドキュメント
 
-Azure Notification Hubs provide an easy-to-use, multiplatform, scaled-out push infrastructure that enables you to send mobile push notifications from any backend (in the cloud or on-premises) to any mobile platform.
+Azure Notification Hubs は、任意のバックエンド (クラウドまたはオンプレミス内) から任意のモバイル プラットフォームにモバイル プッシュ通知を送信できるようにする、使いやすい、マルチプラットフォームのスケールアウトされたプッシュ インフラストラクチャです。
 
-With Notification Hubs, you can easily send cross-platform, personalized push notifications, abstracting the details of the different platform notification systems (PNS). With a single API call, you can target individual users or entire audience segments containing millions of users, across all their devices.
+Notification Hubs を使用すると、異なるプラットフォーム通知システム (PNS: Platform Notification System) の詳細を抽象化して、クロスプラットフォームの個人用プッシュ通知を簡単に送信できます。 単一の API 呼び出しで、すべてのデバイスの個々のユーザー、または数百万のユーザーを含むセグメント全体を対象にすることができます。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -19,7 +23,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Notification Hubs</h3>
+                        <h3>Notification Hubs について</h3>
                     </div>
                 </div>
             </div>
@@ -37,7 +41,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Notification Hubs Video Library</h3>
+                        <h3>Notification Hubs のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -55,7 +59,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started sending push notifications to Android (FCM) with Azure Notification Hubs</h3>
+                        <h3>Azure Notification Hubs から Android (FCM) へのプッシュ通知の送信</h3>
                     </div>
                 </div>
             </div>
@@ -73,7 +77,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Notification Hubs using Baidu</h3>
+                        <h3>Baidu での Notification Hubs の使用</h3>
                     </div>
                 </div>
             </div>
@@ -91,7 +95,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started sending push notifications to Chrome apps with Azure Notification Hubs</h3>
+                        <h3>Azure Notification Hubs から Chrome アプリへのプッシュ通知の送信</h3>
                     </div>
                 </div>
             </div>
@@ -109,7 +113,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started sending push notifications to iOS with Azure Notification Hubs</h3>
+                        <h3>Azure Notification Hubs から iOS へのプッシュ通知の送信</h3>
                     </div>
                 </div>
             </div>
@@ -127,7 +131,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Notification Hubs for Kindle apps</h3>
+                        <h3>Notification Hubs の使用 (Kindle アプリ)</h3>
                     </div>
                 </div>
             </div>
@@ -145,7 +149,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Notification Hubs for Windows Universal Platform Apps</h3>
+                        <h3>Notification Hubs の使用 (Windows ユニバーサル プラットフォーム アプリ)</h3>
                     </div>
                 </div>
             </div>
@@ -156,16 +160,52 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
 
 ---
 
-## Reference
+## <a name="reference"></a>リファレンス
 
-### PowerShell
-[Notification Hubs PowerShell Cmdlets](/powershell/resourcemanager/)
-
-### .NET
-[Notification Hubs .NET API Reference](/dotnet/api/)
-
-### REST
-[Notification Hubs REST API Reference](/rest/api/notificationhubs/)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/resourcemanager/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Notification Hubs の PowerShell コマンドレット</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/dotnet/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>Notification Hubs .NET API リファレンス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/notificationhubs/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p>Notification Hubs REST API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+<ul>
 
 ---
 
@@ -173,7 +213,12 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/notification-hubs.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Notification Hubs Documentation
-        </div>
+Notification Hubs のドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

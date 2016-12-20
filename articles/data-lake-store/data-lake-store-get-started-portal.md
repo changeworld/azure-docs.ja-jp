@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 11/15/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 658671199cf3454428cc7102566093f7c2b42ae8
+ms.sourcegitcommit: 408a5fb25ef7b285a76e8f5b65890dc625574437
+ms.openlocfilehash: fba738575ee9a60cc930adfb68b7c34323bbe747
 
 
 ---
@@ -58,8 +58,8 @@ Data Lake Store の基本操作については以下のビデオをご覧くだ�
    * **[場所]**: Data Lake Store アカウントを作成する場所を選択します。
    * **暗号化設定**。 Data Lake Store アカウントを暗号化するかどうかを選択できます。 暗号化する場合は、アカウントのデータの暗号化に使用するマスター暗号化キーを管理する方法も指定できます。
      
-     * (既定) 暗号化しない場合は、ドロップダウンから **[暗号化を有効にしない]** を選択します。
-     * (オプション) Azure Data Lake Store で暗号化キーを管理する場合は、**[Azure Data Lake で管理されるキーを使用します]** を選択します。
+     * (オプション) 暗号化しない場合は、ドロップダウンから **[暗号化を有効にしない]** を選択します。
+     * (既定) Azure Data Lake Store で暗号化キーを管理する場合は、**[Azure Data Lake で管理されるキーを使用します]** を選択します。
        
          ![Data Lake Store での暗号化](./media/data-lake-store-get-started-portal/adls-encryption-1.png "Data Lake Store encryption")
      * (オプション) Azure Key Vault にある独自のキーを使用する場合は、**[Azure Key Vault からキーを選択します]** を選択します。 このオプションでは、Key Vault アカウントとキーがまだない場合にこれらを作成することもできます。
@@ -136,6 +136,6 @@ Azure Data Lake Store アカウントを削除するには、Data Lake Store ブ
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

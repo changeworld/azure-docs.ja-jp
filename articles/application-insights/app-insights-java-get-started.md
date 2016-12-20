@@ -1,9 +1,9 @@
 ---
-title: "Application Insights を使用した Java Web アプリの分析 | Microsoft Docs"
-description: "Application Insights を使用して Java Web サイトのパフォーマンスと利用状況を監視します。 "
+title: "Azure Application Insights を使用した Java Web アプリの分析 | Microsoft Docs"
+description: "Application Insights を使用した Java Web アプリのアプリケーション パフォーマンス監視 "
 services: application-insights
 documentationcenter: java
-author: alancameronwills
+author: harelbr
 manager: douge
 ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
@@ -11,18 +11,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.date: 12/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cc0167ef78eb3ca84e959599473af5935e5da0d0
+ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
+ms.openlocfilehash: f7dc72299665a5324de7b9320eb9876c61ced123
 
 
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
-*Application Insights はプレビュー段階です。*
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 Application Insights を使用して、[パフォーマンスの問題や例外を検出して診断](app-insights-detect-triage-diagnose.md)したり、アプリケーションでのユーザーの操作を追跡する[コードを記述][api]したりします。
+
+[Application Insights](https://azure.microsoft.com/services/application-insights/) は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 [パフォーマンスの問題や例外を検出および診断](app-insights-detect-triage-diagnose.md)したり、アプリケーションで何が実行されているかを追跡する[コードを記述][api]したりすることができます。
 
 ![サンプル データ](./media/app-insights-java-get-started/5-results.png)
 
@@ -31,7 +31,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 必要なもの:
 
 * Oracle JRE 1.6 以降、または Zulu JRE 1.6 以降
-* [Microsoft Azure](https://azure.microsoft.com/) サブスクリプション。 ([無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
+* [Microsoft Azure](https://azure.microsoft.com/) サブスクリプション。
 
 *既にライブの Web アプリがある場合、代替手順に従って [Web サーバーで実行時に SDK を追加](app-insights-java-live.md)できます。これによってコードのリビルドを回避できますが、ユーザーの利用状況を追跡するためにコードを記述することができなくなります。*
 
@@ -90,7 +90,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
       // or applicationinsights-core for bare API
     }
 
-* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、特定のバージョンを試してください:* `version:'1.0.n'`。 * [SDK リリース ノート](https://githubにサインインします。com/Microsoft/ApplicationInsights-Java#release-notes)にサインインします。*
+* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、特定のバージョンを試してください:* `version:'1.0.n'`。 *[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)にサインインします。*
 * *新しい SDK に更新するには*
   *  プロジェクトの依存関係を更新します。
 
@@ -148,7 +148,7 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
 
 * インストルメンテーション キーは、テレメトリのすべての項目と共に送信されます。インストルメンテーション キーを受け取った Application Insights は、リソース内にこのキーを表示します。
 * HTTP 要求コンポーネントはオプションです。 このコンポーネントは、要求と応答時間に関するテレメトリをポータルに自動的に送信します。
-* イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。 この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。 これにより、[診断検索][診断]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
+* イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。 この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。 これにより、[診断検索][diagnostic]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
 * Application Insights キーは Azure ポータルからシステム プロパティ (-DAPPLICATION_INSIGHTS_IKEY=your_ikey) として動的に渡されることがあります。 定義されたプロパティがない場合、Azure App Settings で環境変数 (APPLICATION_INSIGHTS_IKEY) がチェックされます。 プロパティが両方とも定義されていない場合、ApplicationInsights.xml の既定の InstrumentationKey が使用されます。 このシーケンスは、さまざまな環境のさまざまな InstrumentationKeys を動的に管理するのに役立ちます。
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>インストルメンテーション キーの他の設定方法
@@ -182,7 +182,7 @@ Application Insights SDK は、次の順序でキーを探します。
     </filter-mapping>
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Spring Web MVC 3.1 以降を使用している場合
-Application Insights パッケージを含めるように次の要素を編集します。
+Application Insights パッケージを含めるように、*-servlet.xml で次の要素を編集します。
 
     <context:component-scan base-package=" com.springapp.mvc, com.microsoft.applicationinsights.web.spring"/>
 
@@ -213,7 +213,7 @@ HTTP 要求データが概要ブレードに表示されます  (表示されな
 
 ![サンプル データ](./media/app-insights-java-get-started/5-results.png)
 
-[メトリックの詳細については、こちらをご覧ください。][メトリック]
+[メトリックの詳細についてはこちらをご覧ください。][metrics]
 
 任意のグラフをクリックして、より詳細な集計メトリックを表示します。
 
@@ -244,11 +244,15 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
   
   * dc.services.visualstudio.com:443
   * f5.services.visualstudio.com:443
+
+* 送信トラフィックをファイアウォール経由でルーティングする必要がある場合は、システム プロパティの `http.proxyHost` と `http.proxyPort` を定義します。 
+
 * Windows サーバーに次のものをインストールします。
   
   * [Microsoft Visual C++ 再頒布可能パッケージ](http://www.microsoft.com/download/details.aspx?id=40784)
     
     (このコンポーネントにより、パフォーマンス カウンターが有効になります。)
+
 
 ## <a name="exceptions-and-request-failures"></a>例外と要求エラー
 未処理の例外は、自動的に収集されます。
@@ -257,7 +261,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 
 その他の例外に関するデータを収集するには 2 つのオプションがあります。
 
-* [trackException() の呼び出しをコードに挿入します][apiexceptions]。 
+* [TrackException への呼び出しをコードに挿入します][apiexceptions]。 
 * [Java エージェントをサーバーにインストール](app-insights-java-agent.md)します。 監視するメソッドを指定します。
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>メソッドの呼び出しと外部依存関係の監視
@@ -309,7 +313,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 * counterName - パフォーマンス カウンターの名前。
 * instanceName - パフォーマンス カウンター カテゴリ インスタンスの名前、または空の文字列 ("") (カテゴリにインスタンスが 1 つ含まれている場合)。 categoryName が Process であり、アプリが実行されている現在の JVM プロセスからパフォーマンス カウンターを収集する場合は、 `"__SELF__"`を指定します。
 
-パフォーマンス カウンターは、[メトリックス エクスプローラー][メトリックス]でカスタム メトリックとして表示されます。
+パフォーマンス カウンターは、[メトリックス エクスプローラー][metrics]でカスタム メトリックとして表示されます。
 
 ![](./media/app-insights-java-get-started/12-custom-perfs.png)
 
@@ -319,20 +323,20 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 ## <a name="get-user-and-session-data"></a>ユーザーとセッションのデータを取得する
 Web サーバーからテレメトリを送信しようとしているところです。 ここで、アプリケーションの状態を完全に把握するために、監視を追加することもできます。
 
-* [Web ページにテレメトリを追加][使用状況]して、ページ ビューやユーザー メトリックを監視します。
-* [Web テストを設定][可用性]して、アプリケーションが動作していて応答することを確認します。
+* [Web ページにテレメトリを追加][usage]して、ページ ビューやユーザー メトリックを監視します。
+* [Web テストを設定][availability]して、アプリケーションが動作していて応答できることを確認します。
 
 ## <a name="capture-log-traces"></a>ログ トレースをキャプチャする
-Application Insights を使用すると、Log4J、Logback、またはその他のログ フレームワークのログをさまざまな側面から分析できます。 ログは、HTTP 要求やその他のテレメトリに関連付けることができます。 [方法については、こちらをご覧ください][javalogs]。
+Application Insights を使用すると、Log4J、Logback、またはその他のログ フレームワークのログをさまざまな側面から分析できます。 ログは、HTTP 要求やその他のテレメトリに関連付けることができます。 方法については、[こちら][javalogs]をご覧ください。
 
 ## <a name="send-your-own-telemetry"></a>独自のテレメトリを送信する
 SDK をインストールすると、API を使用して独自のテレメトリを送信できるようになります。
 
-* アプリケーションでのユーザーの操作を把握するには、[カスタム イベントとメトリックを追跡][api]します。
+* アプリケーションのユーザーの行動を把握するには、[カスタム イベントおよびメトリックを追跡][api]します。
 * 問題の診断に役立つ情報を得るには、[イベントおよびログを検索][diagnostic]します。
 
 ## <a name="availability-web-tests"></a>可用性 Web テスト
-Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。 [設定するには][可用性]、Web テストをクリックします。
+Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。 [設定するには][availability]、[Web テスト] をクリックします。
 
 ![Click Web tests, then Add Web test](./media/app-insights-java-get-started/31-config-web-test.png)
 
@@ -340,9 +344,9 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 
 ![Web テストの例](./media/app-insights-java-get-started/appinsights-10webtestresult.png)
 
-[可用性 Web テストの詳細については、こちらをご覧ください。][可用性] 
+可用性 Web テストの詳細については、[こちら][availability]をご覧ください。 
 
-## <a name="questions-problems"></a>疑問がある場合は、 問題が発生した場合
+## <a name="questions-problems"></a>疑問がある場合 問題が発生した場合
 [Java のトラブルシューティング](app-insights-java-troubleshoot.md)
 
 ## <a name="next-steps"></a>次のステップ
@@ -367,6 +371,6 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

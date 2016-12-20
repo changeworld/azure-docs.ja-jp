@@ -1,19 +1,23 @@
 ---
-title: Azure Storage のスケーラビリティおよびパフォーマンスのターゲット | Microsoft Docs
-description: Standard Storage アカウントと Premium Storage アカウントの両方の容量、要求レート、および送受信の帯域幅を含む、Azure Storage のスケーラビリティとパフォーマンスのターゲットについて説明します。 各 Azure Storage サービス内にあるパーティションのパフォーマンス ターゲットを理解します。
+title: "Azure Storage のスケーラビリティおよびパフォーマンスのターゲット | Microsoft Docs"
+description: "Standard Storage アカウントと Premium Storage アカウントの両方の容量、要求レート、および送受信の帯域幅を含む、Azure Storage のスケーラビリティとパフォーマンスのターゲットについて説明します。 各 Azure Storage サービス内にあるパーティションのパフォーマンス ターゲットを理解します。"
 services: storage
 documentationcenter: na
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
-
+ms.assetid: be721bd3-159f-40a1-88c1-96418537fe75
 ms.service: storage
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 08/03/2016
+ms.date: 12/08/2016
 ms.author: robinsh
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 70f73577fdaf6efa74fe1516a8486c45ef76db31
+
 
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Azure Storage のスケーラビリティおよびパフォーマンスのターゲット
@@ -32,13 +36,13 @@ ms.author: robinsh
 
 アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。 ボリューム価格については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/) 」をご覧ください。
 
-## <a name="scalability-targets-for-blobs,-queues,-tables,-and-files"></a>Blob、キュー、テーブル、およびファイルのスケーラビリティ ターゲット
+## <a name="scalability-targets-for-blobs-queues-tables-and-files"></a>Blob、キュー、テーブル、およびファイルのスケーラビリティ ターゲット
 [!INCLUDE [azure-storage-limits](../../includes/azure-storage-limits.md)]
 
 ## <a name="scalability-targets-for-virtual-machine-disks"></a>仮想マシンのディスクのスケーラビリティ ターゲット
 [!INCLUDE [azure-storage-limits-vm-disks](../../includes/azure-storage-limits-vm-disks.md)]
 
-詳細については、[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md)と [Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md)に関するページをご覧ください。
+詳細については、[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)と [Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
 
 ### <a name="standard-storage-accounts"></a>Standard Storage アカウント
 [!INCLUDE [azure-storage-limits-vm-disks-standard](../../includes/azure-storage-limits-vm-disks-standard.md)]
@@ -75,6 +79,9 @@ Azure Storage に格納されているデータを含むすべてのオブジェ
 * [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md)
 * [Microsoft Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

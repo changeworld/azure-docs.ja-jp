@@ -1,12 +1,12 @@
 ---
-title: プールに適した 1 つのデータベースを特定する PowerShell スクリプト | Microsoft Docs
-description: 弾力性データベース プールは、弾力性データベースのグループで共有される使用可能なリソースのコレクションです。 このドキュメントでは、データベースのグループに対して、エラスティック データベース プールを使用することが適切であるか評価する PowerShell スクリプトについて説明します。
+title: "プールに適した 1 つのデータベースを特定する PowerShell スクリプト | Microsoft Docs"
+description: "弾力性データベース プールは、弾力性データベースのグループで共有される使用可能なリソースのコレクションです。 このドキュメントでは、データベースのグループに対して、エラスティック データベース プールを使用することが適切であるか評価する PowerShell スクリプトについて説明します。"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: db541e94-abc8-4578-bae0-9b8c8ad0170e
 ms.service: sql-database
 ms.devlang: NA
 ms.date: 09/28/2016
@@ -14,6 +14,10 @@ ms.author: sstein
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 47b4890482752d8954a84c59b333b6607d997da3
+
 
 ---
 # <a name="powershell-script-for-identifying-databases-suitable-for-an-elastic-database-pool"></a>エラスティック データベース プールに適したデータベースを識別する PowerShell スクリプト
@@ -272,6 +276,6 @@ $data | %{'{0}' -f $_[0]}
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

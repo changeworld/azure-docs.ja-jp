@@ -1,12 +1,12 @@
 ---
-title: .NET アプリケーションから Azure Search を使用する方法 | Microsoft Docs
-description: .NET アプリケーションから Azure Search を使用する方法
+title: ".NET アプリケーションから Azure Search を使用する方法 | Microsoft Docs"
+description: ".NET アプリケーションから Azure Search を使用する方法"
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: brjohnstmsft
 manager: pablocas
-editor: ''
-
+editor: 
+ms.assetid: 93653341-c05f-4cfd-be45-bb877f964fcb
 ms.service: search
 ms.devlang: dotnet
 ms.workload: search
@@ -14,12 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/06/2016
 ms.author: brjohnst
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 21bd4f05eabfd685cb87b819621fe8d826f209b5
+
 
 ---
-# <a name="how-to-use-azure-search-from-a-.net-application"></a>.NET アプリケーションから Azure Search を使用する方法
+# <a name="how-to-use-azure-search-from-a-net-application"></a>.NET アプリケーションから Azure Search を使用する方法
 この記事では、 [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)を使用する手順について説明します。 .NET SDK を使用すると、Azure Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
 
-## <a name="what's-in-the-azure-search-sdk"></a>Azure Search SDK の内容
+## <a name="whats-in-the-azure-search-sdk"></a>Azure Search SDK の内容
 SDK は、クライアント ライブラリ `Microsoft.Azure.Search`で構成されます。 SDK を使用すると、インデックス、データ ソース、インデクサーの管理、ドキュメントのアップロードと管理、クエリの実行を行うことができ、HTTP や JSON の細部を処理する必要はありません。
 
 クライアント ライブラリでは、`Index`、`Field`、`Document` などのクラス、および `SearchServiceClient` や `SearchIndexClient` クラス上の `Indexes.Create` や `Documents.Search` などの操作が定義されています。 これらのクラスは、次の名前空間にまとめられています。
@@ -304,7 +308,7 @@ Azure Search .NET SDK は、.NET Framework 4.5 を対象とするアプリケー
 
 最後に、メソッドは 2 秒間遅延します。 インデックスの作成は Azure Search サービスで非同期的に行われるので、サンプル アプリケーションは短い時間待機して、確実にドキュメントを検索に使用できるようにする必要があります。 通常、このような遅延は、デモ、テスト、およびサンプル アプリケーションでのみ必要です。
 
-#### <a name="how-the-.net-sdk-handles-documents"></a>.NET SDK がドキュメントを処理する方法
+#### <a name="how-the-net-sdk-handles-documents"></a>.NET SDK がドキュメントを処理する方法
 Azure Search .NET SDK が `Hotel` のようなユーザー定義クラスのインスタンスをどのようにしてインデックスにアップロードできるのか不思議に思われるかもしれません。 その質問に答えるため、 `Hotel` クラスを見ていくことにします。
 
     [SerializePropertyNamesAsCamelCase]
@@ -367,7 +371,7 @@ Azure Search インデックスにマップする独自のモデル クラスを
 
 <a name="JsonDotNet"></a>
 
-#### <a name="custom-serialization-with-json.net"></a>JSON.NET 使用したシリアル化のカスタマイズ
+#### <a name="custom-serialization-with-jsonnet"></a>JSON.NET 使用したシリアル化のカスタマイズ
 SDK では、ドキュメントのシリアル化と逆シリアル化に JSON.NET を使用します。 独自の `JsonConverter` または `IContractResolver` を定義して、必要に応じてシリアル化と逆シリアル化をカスタマイズできます (詳細については、「[JSON.NET のドキュメント](http://www.newtonsoft.com/json/help/html/Introduction.htm)」をご覧ください)。 この機能は、アプリケーションの既存のモデル クラスを Azure Search 用に適合させる場合、およびその他の高度なシナリオに役立ちます。 たとえば、カスタム シリアル化を使用すると次のことが可能です。
 
 * ドキュメント フィールドとして格納されるものに、モデル クラスの特定のプロパティを含める、または除外する。
@@ -663,6 +667,6 @@ namespace AzureSearch.SDKHowTo
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

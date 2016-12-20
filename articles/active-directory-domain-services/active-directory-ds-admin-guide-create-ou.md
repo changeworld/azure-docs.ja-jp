@@ -1,12 +1,12 @@
 ---
-title: 'Azure Active Directory Domain Services: 管理ガイド | Microsoft Docs'
-description: Azure AD ドメイン サービスの管理対象ドメインに組織単位 (OU) を作成する
+title: "Azure Active Directory Domain Services: 管理ガイド | Microsoft Docs"
+description: "Azure AD ドメイン サービスの管理対象ドメインに組織単位 (OU) を作成する"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0707a8efd91d646bf7c417f881ccb9ebb6f2a470
+
 
 ---
-# <a name="create-an-organizational-unit-(ou)-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインに組織単位 (OU) を作成する
+# <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインに組織単位 (OU) を作成する
 Azure AD ドメイン サービスの管理対象ドメインには 2 つの組み込みのコンテナーが含まれており、それぞれを "AADDC Computers"、"AADDC Users" と呼びます。 "AADDC Computers" コンテナーには、管理対象ドメインに参加しているすべてのコンピューターを対象としたコンピューター オブジェクトが含まれています。 "AADDC Users" コンテナーには、Azure AD テナント内のユーザーとグループが含まれています。 場合によっては、ワークロードをデプロイするために、管理対象ドメイン上にサービス アカウントを作成しなければならないことがあります。 その場合は、管理対象ドメイン上でカスタムの組織単位 (OU) を作成し、その OU 内でサービス アカウントを作成できます。 この記事では、管理対象ドメインに OU を作成する方法を説明します。
 
 ## <a name="install-ad-administration-tools-on-a-domain-joined-virtual-machine-for-remote-administration"></a>リモート管理のために、ドメインに参加している仮想マシンに AD 管理ツールをインストールする
@@ -50,7 +54,7 @@ Azure AD ドメイン サービスの管理対象ドメインは、Active Direct
    
     ![ADAC - OU created](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
 
-## <a name="permissions/security-for-newly-created-ous"></a>新しく作成した OU へのアクセス許可とセキュリティ
+## <a name="permissionssecurity-for-newly-created-ous"></a>新しく作成した OU へのアクセス許可とセキュリティ
 既定では、カスタム OU を作成したユーザー ("AAD DC Administrators" グループのメンバー) に、その OU に対する管理特権 (フル コントロール) が付与されます。 管理特権が付与されたら、ユーザーは他のユーザーや "AAD DC Administrators" グループに、必要に応じて権限を付与できるようになります。 次のスクリーンショットでは、新しい "MyCustomOU" 組織単位を作成した 'bob@domainservicespreview.onmicrosoft.com' というユーザーに、OU に対するフル コントロールの権限が付与されています。
 
  ![ADAC - new OU security](./media/active-directory-domain-services-admin-guide/create-ou-permissions.png)
@@ -68,6 +72,9 @@ Azure AD ドメイン サービスの管理対象ドメインは、Active Direct
 * [Active Directory 管理センター: はじめに](https://technet.microsoft.com/library/dd560651.aspx)
 * [サービス アカウントのステップ バイ ステップ ガイド](https://technet.microsoft.com/library/dd548356.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

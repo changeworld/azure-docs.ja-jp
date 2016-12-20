@@ -1,13 +1,13 @@
 ---
-title: サンプルの使用
-description: Power BI Embedded、SDK を使用して対話型の Power BI レポートをビジネス インテリジェンス アプリケーションに追加する
+title: "サンプルの使用"
+description: "Power BI Embedded、SDK を使用して対話型の Power BI レポートをビジネス インテリジェンス アプリケーションに追加する"
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: d8a9ef78-ad4e-4bc7-9711-89172dc5c548
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
+ms.openlocfilehash: 90207623273c3c8f959a07425e1bdf7324649067
+
 
 ---
 # <a name="get-started-with-power-bi-embedded-sample"></a>Power BI Embedded の使用を開始するためのサンプル
@@ -28,8 +32,8 @@ ms.author: asaxton
 
 > [!NOTE]
 > Power BI Embedded の使用を開始するためのサンプルを構成して実行するには、Azure サブスクリプションで少なくとも 1 つの **ワークスペース コレクション** 作成する必要があります。 Azure ポータルで **ワークスペース コレクション** を作成する方法については、 [Power BI Embedded の概要](power-bi-embedded-get-started.md)に関する記事をご覧ください。
-> 
-> 
+>
+>
 
 ## <a name="configure-the-sample-app"></a>サンプル アプリの構成
 サンプル アプリの実行に必要なコンポーネントにアクセスするための Visual Studio 開発環境の設定手順を説明します。
@@ -39,13 +43,13 @@ ms.author: asaxton
 3. ソリューションをビルドします。
 4. **ProvisionSample** コンソール アプリを実行します。 サンプルのコンソール アプリで、ワークスペースのプロビジョニングを行って、PBIX ファイルをインポートします。
 5. 新しい**ワークスペース**をプロビジョニングするために、オプション 5 の **[Provision a new workspace in an existing workspace collection (既存のワークスペース コレクションに新しいワークスペースをプロビジョニングする)]** を選択します。
-   
+
     ![](media\\powerbi-embedded-get-started-sample\\console-option-5.png)
-6. **ワークスペース コレクション**名と**アクセス キー**を入力します。 これらは **Azure ポータル**で確認できます。 **アクセス キー**を取得する方法の詳細については、「Microsoft Power BI Embedded の概要」の「 [Power BI API のアクセス キーの表示](power-bi-embedded-get-started-sample.md#view-access-keys) 」をご覧ください。
-   
+6. **ワークスペース コレクション**名と**アクセス キー**を入力します。 これらは **Azure ポータル**で確認できます。 **アクセス キー**を取得する方法の詳細については、「Microsoft Power BI Embedded の概要」の「 [Power BI API のアクセス キーの表示](power-bi-embedded-get-started.md#view-power-bi-api-access-keys) 」をご覧ください。
+
     ![](media\\powerbi-embedded-get-started-sample\\azure-portal.png)
 7. 新しく作成された **ワークスペース ID** を、この記事の後半で使用するためにコピーして保存します。 作成された**ワークスペース ID** は **Azure Portal** で確認できます。
-   
+
     ![](media\\powerbi-embedded-get-started-sample\\workspace-id.png)
 8. PBIX ファイルを**ワークスペース**にインポートするために、オプション **[6.Import PBIX Desktop file into an existing workspace]** を選択します。 PBIX ファイルがない場合は、[Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をダウンロードできます。
 9. メッセージが表示されたら、分かりやすい **データセット**名を入力します。
@@ -59,8 +63,8 @@ Checking import state... Succeeded
 
 > [!NOTE]
 > If your PBIX file contains any direct query connections, run option 7 to update the connection strings.
-> 
-> 
+>
+>
 
 At this point, you have a Power BI PBIX report imported into your **Workspace**. Now, let's look at how to run the **Power BI Embedded** get started sample web app.
 
@@ -69,7 +73,7 @@ The web app sample is a sample dashboard that renders reports imported into your
 
 1. In the **PowerBI-embedded** Visual Studio solution, right click the **EmbedSample** web application, and choose **Set as StartUp project**.
 2. In **web.config**, in the **EmbedSample** web application, edit the **appSettings**: **AccessKey**, **WorkspaceCollection** name, and **WorkspaceId**.
-   
+
     ```
     <appSettings>
         <add key="powerbi:AccessKey" value="" />
@@ -95,8 +99,8 @@ The **Microsoft Power BI Embedded** sample code is separated as follows. Each se
 
 > [!NOTE]
 > This section is a summary of the sample code that shows how the code was written. To view the complete sample, please load the PowerBI-embedded.sln solution in Visual Studio.
-> 
-> 
+>
+>
 
 ### Model
 The sample has a **ReportsViewModel** and **ReportViewModel**.
@@ -231,13 +235,15 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 
 > [!NOTE]
 > {tableName/fieldName} cannot include spaces or special characters. The {fieldValue} accepts a single categorical value.  
-> 
-> 
+>
+>
 
 ## See also
 * [Common Microsoft Power BI Embedded scenarios](power-bi-embedded-scenarios.md)
 * [Authenticating and authorizing in Power BI Embedded](power-bi-embedded-app-token-flow.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

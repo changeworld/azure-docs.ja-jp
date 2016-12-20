@@ -1,6 +1,6 @@
 # Overview
 ## [メッセージング](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)
-## [リレー](../service-bus-relay/service-bus-relay-overview.md)
+## [リレー](../service-bus-relay/relay-what-is-it.md)
 # リファレンス
 ## [PowerShell Resource Manager のコマンドレット](/powershell/resourcemanager)
 ## [Service Bus に関する管理リファレンス API](/dotnet/api/) 
@@ -15,6 +15,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

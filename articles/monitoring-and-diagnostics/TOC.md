@@ -1,13 +1,12 @@
 # Overview
-## [Microsoft Azure での監視](../monitoring-and-diagnostics/monitoring-overview.md)
+## [Azure Monitor の概要](../monitoring-and-diagnostics/monitoring-overview.md)
 ## [メトリック](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 ## [アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
 ## [Autoscale](../monitoring-and-diagnostics/monitoring-overview-autoscale.md)
-## [自動スケールのベスト プラクティス](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ## [アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
 ## [診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
 ## [パートナー統合](../monitoring-and-diagnostics/monitoring-partners.md)
-## [REST API を使用したチュートリアル](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
+
 
 # 作業の開始
 ## [Azure Monitor を使ってみる](../monitoring-and-diagnostics/monitoring-get-started.md)
@@ -21,11 +20,12 @@
 ### [メトリック アラートで webhook を構成する](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
 ### [Resource Manager テンプレートでのメトリック アラートの作成](../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md)
 ## 自動スケールの使用
+### [自動スケールのベスト プラクティス](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ### [自動スケールの一般的なメトリック](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)
 ### [Resource Manager テンプレートを使用した VM Scale Sets の自動スケール](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [仮想マシン スケール セットでのマシンの自動スケール](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)
 ### [自動スケールで webhook と電子メール通知を構成する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
-## アクティビティ ログの管理
+## アクティビティ ログの使用
 ### [アクティビティ ログでのイベントの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md)
 ### [アクティビティ ログ アラートで webhook を構成する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
 ### [アクティビティ ログをアーカイブする](../monitoring-and-diagnostics/monitoring-archive-activity-log.md)
@@ -35,18 +35,20 @@
 ### [アーカイブ](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 ### [Event Hubs へのストリーム](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
 ### [Resource Manager テンプレートを使用して診断設定を有効にする](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md)
-
+## REST API の使用
+### [REST API を使用したチュートリアル](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
 
 
 # リファレンス
-## [PowerShell](../monitoring-and-diagnostics/insights-powershell-samples.md)
-## [Azure CLI](../monitoring-and-diagnostics/insights-cli-samples.md)
+## [PowerShell](/powershell/resourcemanager/azurerm.insights/v1.0.12/azurerm.insights?redirectedfrom=msdn#40v=azure.200#41)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
+## [REST ()](/rest/api/monitor/)
+
+# リソース
+## [PowerShell のサンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)
+## [Azure CLI 2.0 (プレビュー) のサンプル](../monitoring-and-diagnostics/insights-cli-samples.md)
 ## [サポートされるメトリックスの一覧](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
-## [REST ()](https://docs.microsoft.com/rest/api/monitor/)
 
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

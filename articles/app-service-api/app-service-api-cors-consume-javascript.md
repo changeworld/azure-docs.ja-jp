@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/27/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 14de66f6035d8cd0579351d64b85bd7e1c8f2ab2
+ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
+ms.openlocfilehash: be48f1f0b9c3c749c13fd89f63d41fbaff6a62ee
 
 
 ---
@@ -51,7 +51,7 @@ CORS は、Azure Portal、または [Azure Resource Manager](../azure-resource-m
    **[保存]**をクリックすると、API アプリは、指定した URL からの JavaScript 呼び出しを受け付けるようになります。
 
 #### <a name="configure-cors-by-using-azure-resource-manager-tools"></a>Azure リソース マネージャー ツールを使用して CORS を構成する
-API アプリに使用する CORS は、コマンド ライン ツール ([Azure PowerShell](../powershell-install-configure.md)、[Azure CLI](../xplat-cli-install.md) など) から [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使って構成することもできます。 
+API アプリに使用する CORS は、コマンド ライン ツール ([Azure PowerShell](/powershell/azureps-cmdlets-docs)、[Azure CLI](../xplat-cli-install.md) など) から [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使って構成することもできます。 
 
 CORS のプロパティを設定する Azure Resource Manager テンプレートの例については、 [このチュートリアルのサンプル アプリケーションのリポジトリにある azuredeploy.json ファイル](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json)を参照してください。 テンプレートに次のようなセクションがあります。
 
@@ -61,7 +61,7 @@ CORS のプロパティを設定する Azure Resource Manager テンプレート
             ]
         }
 
-## <a name="a-idtutorialstarta-continuing-the-net-gettingstarted-tutorial"></a><a id="tutorialstart"></a> .NET 入門チュートリアルの続行
+## <a name="a-idtutorialstarta-continuing-the-net-getting-started-tutorial"></a><a id="tutorialstart"></a> .NET 入門チュートリアルの続行
 API アプリの Node.js または Java の入門シリーズを読んでいる場合は、これで作業が完了しました。 「 [次のステップ](#next-steps) 」セクションに移動し、API Apps についてさらに学習を進めるうえでの推奨事項を確認してください。
 
 この記事の残りの部分は .NET 入門シリーズの続きであり、 [最初のチュートリアル](app-service-api-dotnet-get-started.md)を問題なく完了したことを前提としています。
@@ -252,6 +252,6 @@ API アプリで Azure API Management を使用する場合は、API アプリ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

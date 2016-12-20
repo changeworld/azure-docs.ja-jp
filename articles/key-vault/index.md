@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: d6059070f8cb8765986763a2ae52068ab692d41d
-ms.openlocfilehash: 9614778d6c7502f16639d2ccb2f259a98be5b0c9
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 09d20c4c035a072d78118cb0e2184773f4642c81
 
 ---
 # <a name="key-vault-documentation"></a>Key Vault のドキュメント
@@ -29,7 +29,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=key-vault">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=key-vault">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -103,23 +103,50 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 </ul>
 
 ---
-
-## <a name="reference"></a>リファレンス
-
-### <a name="powershell"></a>PowerShell
-[Azure PowerShell リファレンス](/PowerShell/azureps-cmdlets-docs)
-
-### <a name="azure-cli"></a>Azure CLI 
-[Azure CLI を使用した Key Vault](/cli/azure/keyvault)
-
-### <a name="java"></a>Java 
-[Java リファレンスの Key Vault](/java/api/)
-
-### <a name="net"></a>.NET 
-[Key Vault に関する管理リファレンス API](/dotnet/api/) 
-
-### <a name="rest"></a>REST () 
-[Key Vault REST API リファレンス](/rest/api/keyvault) 
+ 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault">PowerShell</a></p>
+                         <p><a href="/cli/azure/keyvault">Azure 2.0 CLI (プレビュー)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.keyvault">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.keyvault">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest">Node.js</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.keyvault">Java</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/keyvault">REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 ---
 
@@ -133,6 +160,6 @@ Key Vault のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Azure でのシングル サインアウトの SAML プロトコル | Microsoft Docs
-description: この記事では、Azure Active Directory でのシングル サインアウト SAML プロトコルについて説明します。
+title: "Azure でのシングル サインアウトの SAML プロトコル | Microsoft Docs"
+description: "この記事では、Azure Active Directory でのシングル サインアウト SAML プロトコルについて説明します。"
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: 0e4aa75d-d1ad-4bde-a94c-d8a41fb0abe6
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: priyamo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d05ab5c4bd813b5f371be27605a9096b0b9c9656
+
 
 ---
 # <a name="single-sign-out-saml-protocol"></a>シングル サインアウトの SAML プロトコル
@@ -72,6 +76,9 @@ Azure AD は、この値を `https://login.microsoftonline.com/<TenantIdGUID>/` 
 ### <a name="status"></a>状態
 Azure AD は、`Status` 要素の `StatusCode` 要素を使用して、サインアウトの成功または失敗を示します。 サインアウトの試行が失敗した場合、 `StatusCode` 要素にはカスタム エラー メッセージを含めることもできます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

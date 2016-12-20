@@ -1,12 +1,12 @@
 ---
-title: .NET を使用した Media Encoder Premium ワークフローでの高度なエンコード | Microsoft Docs
-description: メディア エンコーダー プレミアム ワークフローでエンコードする方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。
+title: "Media Encoder Premium ワークフローでの高度なエンコード | Microsoft Docs"
+description: "メディア エンコーダー プレミアム ワークフローでエンコードする方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 0f4c87ac-810a-4d42-8df8-923dff2016c6
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4e86a871222def32f7779f07eab5668d366ecec4
+
 
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>メディア エンコーダー プレミアム ワークフローでの高度なエンコード
@@ -59,12 +63,13 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
    
     b. 2 - ビデオ アセット。
    
-    **注**: ワークフロー アセットは、メディア アセットの前にタスクに追加する必要あります。 このタスクの構成文字列は空にする必要があります。 
+    **注**: ワークフロー アセットは、メディア アセットの前にタスクに追加する必要あります。 
+   このタスクの構成文字列は空にする必要があります。 
 6. エンコード ジョブを送信します。
 
 完全な例を次に示します。 Media Services の .NET 開発を使用して設定する方法の詳細については、「 [Media Services development with .NET (.NET での Media Services 開発)](media-services-dotnet-how-to-use.md)」を参照してください
 
-    using System; 
+     using System; 
     using System.Linq;
     using System.Configuration;
     using System.IO;
@@ -272,6 +277,9 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

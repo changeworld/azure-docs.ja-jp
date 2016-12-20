@@ -1,84 +1,88 @@
 ---
-title: HDInsight の Hadoop を使用したフライトの遅延データの分析 | Microsoft Docs
-description: 1 つの Windows PowerShell スクリプトを使用して、HDInsight クラスターの作成、Hive ジョブの実行、Sqoop ジョブの実行、クラスターの削除を行う方法について説明します。
+title: "HDInsight の Hadoop を使用したフライトの遅延データの分析 | Microsoft Docs"
+description: "1 つの Windows PowerShell スクリプトを使用して、HDInsight クラスターの作成、Hive ジョブの実行、Sqoop ジョブの実行、クラスターの削除を行う方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: mumian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 00e26aa9-82fb-4dbe-b87d-ffe8e39a5412
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 10/19/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ff9c3e16c043293db016e94113201ba99eaab769
+
 
 ---
-# HDInsight での Hive を使用したフライト遅延データの分析
+# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>HDInsight での Hive を使用したフライト遅延データの分析
 Hive では、*[HiveQL][hadoop-hiveql]* と呼ばれる SQL に似たスクリプト言語を使用して Hadoop MapReduce ジョブを実行します。大規模なデータの集約、照会、分析に Hive を利用できます。
 
 > [!NOTE]
-> このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。Linux ベースのクラスターでの手順については、「[HDInsight での Hive を使用したフライト遅延データの分析 (Linux)](hdinsight-analyze-flight-delay-data-linux.md)」を参照してください。
+> このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。 Linux ベースのクラスターでの手順については、「 [HDInsight での Hive を使用したフライト遅延データの分析 (Linux)](hdinsight-analyze-flight-delay-data-linux.md)」を参照してください。
 > 
 > 
 
-Azure HDInsight の大きな利点の 1 つに、データ ストレージとコンピューティングの分離があります。HDInsight はデータ ストレージとして Azure BLOB ストレージを使用します。標準的なジョブは 3 つの部分で構成されます。
+Azure HDInsight の大きな利点の 1 つに、データ ストレージとコンピューティングの分離があります。 HDInsight は、データ ストレージとして Azure BLOB ストレージを使用します。 標準的なジョブは 3 つの部分で構成されます。
 
-1. **Azure BLOB ストレージにデータを保存する。** これは連続的なプロセスとなる場合があります。たとえば、気象データ、センサー データ、Web ログを Azure BLOB ストレージに保存できます。ここではフライトの遅延データが保存対象となります。
-2. **ジョブを実行する。** データを処理する段階になったら、Windows PowerShell スクリプト (またはクライアント アプリケーション) を実行して HDInsight クラスターを作成し、ジョブを実行して、クラスターを削除します。このジョブによって、出力データが Azure BLOB ストレージに保存されます。出力データは、クラスターの削除後も維持されます。こうして、実際に消費した分だけが課金されることとなります。
+1. **Azure BLOB ストレージにデータを保存する。**  たとえば、気象データ、センサー データ、Web ログを Azure BLOB ストレージに保存できます。ここではフライトの遅延データが保存対象となります。
+2. **ジョブを実行する。**  データを処理する段階になったら、Windows PowerShell スクリプト (またはクライアント アプリケーション) を実行して HDInsight クラスターを作成し、ジョブを実行して、クラスターを削除します。 このジョブによって、出力データが Azure BLOB ストレージに保存されます。 出力データは、クラスターの削除後も維持されます。 こうして、実際に消費した分だけが課金されることとなります。
 3. **Azure BLOB ストレージから出力結果を取り出す。**ここでは、Azure SQL データベースにデータをエクスポートする過程がこれに相当します。
 
 このチュートリアルのシナリオと構成を示したのが次の図です。
 
 ![HDI.FlightDelays.flow][img-hdi-flightdelays-flow]
 
-**注:** 図中の番号は、セクション タイトルに対応します。**M** はメイン (main) プロセスを表します。**A** は付録 (appendix) の内容を表します。
+**注:**図中の番号は、セクション タイトルに対応します。 **M** はメイン (main) プロセスを表します。 **A** は付録 (appendix) の内容を表します。
 
-このチュートリアルでは、主に 1 つの Windows PowerShell スクリプトを使用して次のことを実行する方法を示します。
+このチュートリアルでは、主に 1 つの Windows PowerShell スクリプトを使用して次のタスクを実行する方法を示します。
 
-* HDInsight クラスターを作成する。
-* クラスターで Hive ジョブを実行し、空港での平均遅延時間を計算する。フライトの遅延データは Azure BLOB ストレージ アカウントに保存されます。
+* HDInsight クラスターを作成します。
+* クラスターで Hive ジョブを実行し、空港での平均遅延時間を計算する。 フライトの遅延データは Azure BLOB ストレージ アカウントに保存されます。
 * Sqoop ジョブを実行し、Hive ジョブの出力結果を Azure SQL Database にエクスポートする。
 * HDInsight クラスターを削除する。
 
 フライト遅延データのアップロード手順、Hive クエリ文字列の作成とアップロード手順、および Sqoop ジョブのための Azure SQL Database の準備手順については、付録を参照してください。
 
 > [!NOTE]
-> このドキュメントの手順は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースのクラスターでの手順については、「[HDInsight での Hive を使用したフライト遅延データの分析 (Linux)](hdinsight-analyze-flight-delay-data-linux.md)」を参照してください。
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに固有のものです。 Linux ベースのクラスターでの手順については、「[HDInsight での Hive を使用したフライト遅延データの分析 (Linux)](hdinsight-analyze-flight-delay-data-linux.md)」を参照してください。
 > 
 > 
 
-### 前提条件
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+### <a name="prerequisites"></a>前提条件
+このチュートリアルを開始する前に、次の項目を用意する必要があります。
 
-* **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * **Azure PowerShell を実行できるワークステーション**。
   
     [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 **このチュートリアルで使用するファイル**
 
-このチュートリアルでは、[米国運輸省研究・革新技術庁/運輸統計局][rita-website]が公開している航空便の定時運航データをダウンロードして使用します。データのコピーは、パブリック BLOB アクセス権限が設定された Azure BLOB ストレージ コンテナーにアップロード済みです。PowerShell スクリプトの一部は、パブリック BLOB コンテナーからクラスターの既定の BLOB コンテナーにデータをコピーします。HiveQL スクリプトも同じ BLOB コンテナーにコピーされます。独自のストレージ アカウントにデータを取得/アップロードする方法や、HiveQL スクリプト ファイルを作成/アップロードする方法については、[付録 A](#appendix-a) および[付録 B](#appendix-b) を参照してください。
+このチュートリアルでは、[米国運輸省研究・革新技術庁/運輸統計局][rita-website]が公開している航空便の定時運航データをダウンロードして使用します。 データのコピーは、パブリック BLOB アクセス権限が設定された Azure BLOB ストレージ コンテナーにアップロード済みです。 PowerShell スクリプトの一部は、パブリック BLOB コンテナーからクラスターの既定の BLOB コンテナーにデータをコピーします。 HiveQL スクリプトも同じ BLOB コンテナーにコピーされます。 独自のストレージ アカウントにデータを取得/アップロードする方法や、HiveQL スクリプト ファイルを作成/アップロードする方法については、[付録 A](#appendix-a) および[付録 B](#appendix-b) を参照してください。
 
 このチュートリアルで使用するファイルを次の表に示します。
 
 <table border="1">
-<tr><th>ファイル</th><th>Description</th></tr>
-<tr><td>wasbs://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>実行する Hive ジョブで使用する HiveQL スクリプト ファイル。このスクリプトは、パブリック アクセス権限の設定された Azure BLOB ストレージ アカウントにアップロード済みです。このファイルの準備と Azure BLOB ストレージ アカウントへのアップロードの手順については、<a href="#appendix-b">付録 B</a> を参照してください。</td></tr>
-<tr><td>wasbs://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Hive ジョブの入力データ。このデータは、パブリック アクセス権限の設定された Azure BLOB ストレージ アカウントにアップロード済みです。このデータの取得と Azure BLOB ストレージ アカウントへのアップロードの手順については、<a href="#appendix-a">付録 A</a> を参照してください。</td></tr>
-<tr><td>\tutorials\flightdelays\output</td><td>Hive ジョブの出力パス。出力データの保存には、既定のコンテナーを使用します。</td></tr>
+<tr><th>ファイル</th><th>説明</th></tr>
+<tr><td>wasbs://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Hive ジョブで使用する HiveQL スクリプト ファイル。 このスクリプトは、パブリック アクセス権限の設定された Azure BLOB ストレージ アカウントにアップロード済みです。 このファイルの準備と Azure BLOB ストレージ アカウントへのアップロードの手順については、<a href="#appendix-b">付録 B</a> を参照してください。</td></tr>
+<tr><td>wasbs://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Hive ジョブの入力データ。 このデータは、パブリック アクセス権限の設定された Azure BLOB ストレージ アカウントにアップロード済みです。 このデータの取得と Azure BLOB ストレージ アカウントへのアップロードの手順については、<a href="#appendix-a">付録 A</a> を参照してください。</td></tr>
+<tr><td>\tutorials\flightdelays\output</td><td>Hive ジョブの出力パス。 出力データの保存には、既定のコンテナーを使用します。</td></tr>
 <tr><td>\tutorials\flightdelays\jobstatus</td><td>既定のコンテナーにある Hive ジョブのステータス フォルダー。</td></tr>
 </table>
 
 
-## クラスターを作成して Hive/Sqoop ジョブを実行する
-Hadoop MapReduce はバッチ処理です。Hive ジョブを実行する最もコスト効率の良い方法は、ジョブに使用するクラスターを作成し、ジョブの完了後、ジョブを削除することです。以下のスクリプトは、その全過程をカバーしています。HDInsight クラスターの作成と Hive ジョブの実行の詳細については、「[HDInsight で Hadoop クラスターを作成する][hdinsight-provision]」および「[HDInsight での Hive の使用][hdinsight-use-hive]」をご覧ください。
+## <a name="create-cluster-and-run-hivesqoop-jobs"></a>クラスターを作成して Hive/Sqoop ジョブを実行する
+Hadoop MapReduce はバッチ処理です。 Hive ジョブを実行する最もコスト効率の良い方法は、ジョブに使用するクラスターを作成し、ジョブの完了後、ジョブを削除することです。 以下のスクリプトは、その全過程をカバーしています。 HDInsight クラスターの作成と Hive ジョブの実行の詳細については、「[HDInsight で Hadoop クラスターを作成する][hdinsight-provision]」および「[HDInsight での Hive の使用][hdinsight-use-hive]」をご覧ください。
 
 **Azure PowerShell で Hive クエリを実行するには**
 
-1. [付録 C](#appendix-c) の手順に従い、Azure SQL データベースと Sqoop ジョブ出力用のテーブルを作成します。
+1. [付録 C](#appendix-c)の手順に従い、Azure SQL データベースと Sqoop ジョブ出力用のテーブルを作成します。
 2. Windows PowerShell ISE を開き、次のスクリプトを実行します。
    
         $subscriptionID = "<Azure Subscription ID>"
@@ -93,7 +97,7 @@ Hadoop MapReduce はバッチ処理です。Hive ジョブを実行する最も�
         $existingSqlDatabasePassword = "<Azure SQL Database Server login password>"
         $existingSqlDatabaseName = "<Azure SQL Database name>"
    
-        $localFolder = "E:\Tutorials\Downloads" # A temp location for copying files. 
+        $localFolder = "E:\Tutorials\Downloads\" # A temp location for copying files. 
         $azcopyPath = "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy" # depends on the version, the folder can be different
    
         ###########################################
@@ -234,14 +238,14 @@ Hadoop MapReduce はバッチ処理です。Hive ジョブを実行する最も�
     ![HDI.FlightDelays.AvgDelays.Dataset][image-hdi-flightdelays-avgdelays-dataset]
 
 - - -
-## <a id="appendix-a"></a>付録 A: フライト遅延データを Azure BLOB ストレージにアップロードする
-データ ファイルと HiveQL スクリプト ファイルをアップロード ([付録 B](#appendix-b) 参照) する前に、いくつか計画を立てる必要があります。データ ファイルと HiveQL ファイルを保存してから HDInsight クラスターを作成し、Hive ジョブを実行するという考え方です。2 つのオプションがあります。
+## <a name="a-idappendix-aaappendix-a---upload-flight-delay-data-to-azure-blob-storage"></a><a id="appendix-a"></a>付録 A: フライト遅延データを Azure BLOB ストレージにアップロードする
+データ ファイルと HiveQL スクリプト ファイルをアップロード ( [付録 B](#appendix-b)参照) する前に、いくつか計画を立てる必要があります。 データ ファイルと HiveQL ファイルを保存してから HDInsight クラスターを作成し、Hive ジョブを実行するという考え方です。 2 つのオプションがあります。
 
-* **HDInsight クラスターと既定のファイル システムで、使用する Azure ストレージ アカウントを同じものにする。** HDInsight クラスターにはストレージ アカウントのアクセス キーがあるため、追加の変更は不要です。
-* **HDInsight クラスターと既定のファイル システムで、使用する Azure ストレージ アカウントを別のものにする。** この場合、ストレージ アカウントを追加のストレージ アカウントとしてリンクするために、「[HDInsight クラスターを作成して Hive/Sqoop ジョブを実行する](#runjob)」に記載されている Windows PowerShell スクリプトの作成に関する部分を変更する必要があります。手順については、「[HDInsight で Hadoop クラスターを作成する][hdinsight-provision]」をご覧ください。ストレージ アカウントのアクセス キーが HDInsight クラスターで認識されるようになります。
+* **HDInsight クラスターと既定のファイル システムで、使用する Azure ストレージ アカウントを同じものにする。**  HDInsight クラスターにはストレージ アカウントのアクセス キーがあるため、追加の変更は不要です。
+* **HDInsight クラスターと既定のファイル システムで、使用する Azure ストレージ アカウントを別のものにする。** この場合、ストレージ アカウントを追加のストレージ アカウントとしてリンクするために、「 [HDInsight クラスターを作成して Hive/Sqoop ジョブを実行する](#runjob) 」に記載されている Windows PowerShell スクリプトの作成に関する部分を変更する必要があります。 手順については、「[HDInsight で Hadoop クラスターを作成する][hdinsight-provision]」をご覧ください。 ストレージ アカウントのアクセス キーが HDInsight クラスターで認識されるようになります。
 
 > [!NOTE]
-> データ ファイルの BLOB ストレージ パスは、HiveQL スクリプト ファイルでハードコーディングされます。このパスは適宜更新する必要があります。
+> データ ファイルの BLOB ストレージ パスは、HiveQL スクリプト ファイルでハードコーディングされます。 このパスは適宜更新する必要があります。
 > 
 > 
 
@@ -256,10 +260,10 @@ Hadoop MapReduce はバッチ処理です。Hive ジョブを実行する最も�
     <tr><td>Filter Period</td><td>January</td></tr>
     <tr><td>フィールド</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay* (その他のフィールドはすべてオフにする)</td></tr>
     </table>
-3. **[Download]** をクリックします。
-4. ファイルを **C:\\Tutorials\\FlightDelay\\2013Data** フォルダーに解凍します。ファイルはそれぞれ CSV ファイルで、サイズは約 60 GB です。
-5. ファイルの名前を、データを含む月の名前に変更します。たとえば、1 月のデータを含むファイルの場合、*January.csv* という名前にします。
-6. 手順 2. ～ 5. を繰り返して、2013 年の 12 か月分のファイルをダウンロードします。チュートリアルを実行するには、月別のファイルが少なくとも 1 つ必要です。
+3. **[Download]**をクリックします。
+4. ファイルを **C:\Tutorials\FlightDelay\2013Data** フォルダーに解凍します。 ファイルはそれぞれ CSV ファイルで、サイズは約 60 GB です。
+5. ファイルの名前を、データを含む月の名前に変更します。 たとえば、1 月のデータを含むファイルの場合、 *January.csv*という名前にします。
+6. 手順 2. ～ 5. を繰り返して、2013 年の 12 か月分のファイルをダウンロードします。 チュートリアルを実行するには、月別のファイルが少なくとも 1 つ必要です。  
 
 **フライト遅延データを Azure BLOB ストレージにアップロードするには**
 
@@ -341,32 +345,32 @@ Hadoop MapReduce はバッチ処理です。Hive ジョブを実行する最も�
         #EndRegion
 4. **F5** キーを押して、スクリプトを実行します。
 
-ファイルのアップロード方法として別の方法を選択した場合は、ファイル パスが tutorials/flightdelay/data であることを確認してください。ファイルにアクセスする構文は次のとおりです。
+ファイルのアップロード方法として別の方法を選択した場合は、ファイル パスが tutorials/flightdelay/data であることを確認してください。 ファイルにアクセスする構文は次のとおりです。
 
     wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/tutorials/flightdelay/data
 
-パス tutorials/flightdelay/data は、ファイルのアップロード時に作成した仮想フォルダーです。月ごとに 1 つ、合計 12 個のファイルがあることを確認します。
+パス tutorials/flightdelay/data は、ファイルのアップロード時に作成した仮想フォルダーです。 月ごとに 1 つ、合計 12 個のファイルがあることを確認します。
 
 > [!NOTE]
 > 新しい場所からファイルを読み取るには、Hive クエリを更新する必要があります。
 > 
-> コンテナーのアクセス権限をパブリックに設定するか、またはストレージ アカウントを HDInsight クラスターにバインドする必要があります。そうしないと、Hive クエリからデータ ファイルにアクセスできません。
+> コンテナーのアクセス権限をパブリックに設定するか、またはストレージ アカウントを HDInsight クラスターにバインドする必要があります。 そうしないと、Hive クエリからデータ ファイルにアクセスできません。
 > 
 > 
 
 - - -
-## <a id="appendix-b"></a>付録 B: HiveQL スクリプトを作成してアップロードする
-Azure PowerShell を使用して、複数の HiveQL ステートメントを一度に実行することも、HiveQL ステートメントをスクリプト ファイルにまとめることもできます。このセクションでは、HiveQL スクリプトを作成し、Azure PowerShell を使用して Azure BLOB ストレージにアップロードする方法を説明します。Hive を利用するには、HiveQL スクリプトが Azure BLOB ストレージに格納されている必要があります。
+## <a name="a-idappendix-baappendix-b---create-and-upload-a-hiveql-script"></a><a id="appendix-b"></a>付録 B: HiveQL スクリプトを作成してアップロードする
+Azure PowerShell を使用して、複数の HiveQL ステートメントを一度に実行することも、HiveQL ステートメントをスクリプト ファイルにまとめることもできます。 このセクションでは、HiveQL スクリプトを作成し、Azure PowerShell を使用して Azure BLOB ストレージにアップロードする方法を説明します。 Hive を利用するには、HiveQL スクリプトが Azure BLOB ストレージに格納されている必要があります。
 
 HiveQL スクリプトは、次の作業を実行します。
 
-1. **delays\_raw テーブルを削除します** (テーブルが既に存在する場合)。
-2. **delays\_raw 外部 Hive テーブルを作成します**。このテーブルはフライト遅延ファイルのある BLOB ストレージの場所を指しています。このクエリでは、フィールドがコンマ (,) 区切りで、行末が "\\n" であることを指定しています。この場合、フィールド値にコンマが "含まれている" と問題が発生します。Hive は、フィールド区切りのコンマとフィールド値の一部であるコンマを識別できません (ORIGIN\_CITY\_NAME フィールドや DEST\_CITY\_NAME フィールドの値など)。これに対処するため、クエリでは、間違って複数の列に分割されるデータを格納する TEMP 列を作成します。
-3. **delays テーブルを削除します** (テーブルが既に存在する場合)。
-4. **delays テーブルを作成します**。次へ進む前にデータをクリーンアップしておくと面倒がありません。次のクエリは、delays\_raw テーブルを基にして、新しい *delays* テーブルを作成します。(前述のように) TEMP 列はコピーしません。**substring** 関数を使用してデータから引用符を削除します。
-5. **悪天候による平均遅延を計算し、その結果を都市名ごとにグループ化します。** さらに、結果を BLOB ストレージに出力します。このクエリは、データからアポストロフィを削除し、**weather\_delay** の値が null の行を除外します。このチュートリアルで後ほど使用する Sqoop ではこれらの値が既定では適切に処理されないため、この処理が必要です。
+1. **delays_raw テーブルを削除します** (テーブルが既に存在する場合)。
+2. **delays_raw 外部 Hive テーブルを作成します**。このテーブルはフライト遅延ファイルのある BLOB ストレージの場所を指しています。 このクエリでは、フィールドがコンマ (,) 区切りで、行末が "\n" であることを指定しています。 この場合、フィールド値にコンマが "含まれている" と問題が発生します。Hive は、フィールド区切りのコンマとフィールド値の一部であるコンマを識別できません (ORIGIN\_CITY\_NAME フィールドや DEST\_CITY\_NAME フィールドの値など)。 これに対処するため、クエリでは、間違って複数の列に分割されるデータを格納する TEMP 列を作成します。  
+3. **delays テーブルを削除します**(テーブルが既に存在する場合)。
+4. **delays テーブルを作成します**。 次へ進む前にデータをクリーンアップしておくと面倒がありません。 次のクエリは、delays_raw テーブルを基にして、新しい *delays* テーブルを作成します。 (前述のように) TEMP 列はコピーしません。**substring** 関数を使用してデータから引用符を削除します。
+5. **悪天候による平均遅延を計算し、その結果を都市名ごとにグループ化します。**  さらに、結果を BLOB ストレージに出力します。 このクエリは、データからアポストロフィを削除し、**weather_delay** の値が null の行を除外します。 このチュートリアルで後ほど使用する Sqoop ではこれらの値が既定では適切に処理されないため、この処理が必要です。
 
-HiveQL コマンドの完全な一覧については、「[Hive Data Definition Language (Hive データ定義言語)][hadoop-hiveql]」を参照してください。各 HiveQL コマンドは、セミコロンで終了します。
+HiveQL コマンドの完全な一覧については、「[Hive Data Definition Language (Hive データ定義言語)][hadoop-hiveql]」を参照してください。 各 HiveQL コマンドは、セミコロンで終了します。
 
 **HiveQL スクリプト ファイルを作成するには**
 
@@ -547,23 +551,23 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
    
     スクリプトには次の変数が使用されています。
    
-   * **$hqlLocalFileName** - HiveQL スクリプト ファイルは、BLOB ストレージにアップロードされる前に、いったんローカルに保存されます。その際に、このファイル名が使用されます。既定値は、<u>C:\\tutorials\\flightdelay\\flightdelays.hql</u> です。
-   * **$hqlBlobName** - Azure BLOB ストレージで使用される HiveQL スクリプト ファイルの BLOB 名。既定値は、tutorials/flightdelay/flightdelays.hql です。ファイルは直接 Azure BLOB ストレージに書き込まれるため、BLOB 名の先頭に "/" はありません。BLOB ストレージからファイルにアクセスする場合は、ファイル名の先頭に "/" を追加する必要があります。
+   * **$hqlLocalFileName** - HiveQL スクリプト ファイルは、BLOB ストレージにアップロードされる前に、いったんローカルに保存されます。 その際に、このファイル名が使用されます。 既定値は、<u>C:\tutorials\flightdelay\flightdelays.hql</u> です。
+   * **$hqlBlobName** - Azure BLOB ストレージで使用される HiveQL スクリプト ファイルの BLOB 名。 既定値は、tutorials/flightdelay/flightdelays.hql です。 ファイルは直接 Azure BLOB ストレージに書き込まれるため、BLOB 名の先頭に "/" はありません。 BLOB ストレージからファイルにアクセスする場合は、ファイル名の先頭に "/" を追加する必要があります。
    * **$srcDataFolder** と **$dstDataFolder** はそれぞれ "tutorials/flightdelay/data" と "tutorials/flightdelay/output" です。
 
 - - -
-## <a id="appendix-c"></a>付録 C - Sqoop ジョブを出力するための Azure SQL Database の準備
+## <a name="a-idappendix-caappendix-c---prepare-an-azure-sql-database-for-the-sqoop-job-output"></a><a id="appendix-c"></a>付録 C - Sqoop ジョブを出力するための Azure SQL Database の準備
 **SQL データベースを準備するには (Sqoop スクリプトとマージ)**
 
 1. 次のパラメーターを準備します。
    
     <table border="1">
     <tr><th>変数名</th><th>メモ</th></tr>
-    <tr><td>$sqlDatabaseServerName</td><td>Azure SQL Database サーバーの名前。新しいサーバーを作成する場合は、何も入力しないでください。</td></tr>
-    <tr><td>$sqlDatabaseUsername</td><td>Azure SQL Database サーバーのログイン名。$sqlDatabaseServerName が既存のサーバーである場合、ログイン名とログイン パスワードを使用してサーバーを認証します。$sqlDatabaseServerName が既存のサーバーでない場合、ログイン名とログイン パスワードを使用して新しいサーバーを作成します。</td></tr>
+    <tr><td>$sqlDatabaseServerName</td><td>Azure SQL Database サーバーの名前。 新しいサーバーを作成する場合は、何も入力しないでください。</td></tr>
+    <tr><td>$sqlDatabaseUsername</td><td>Azure SQL Database サーバーのログイン名。 $sqlDatabaseServerName が既存のサーバーである場合、ログイン名とログイン パスワードを使用してサーバーを認証します。 $sqlDatabaseServerName が既存のサーバーでない場合、ログイン名とログイン パスワードを使用して新しいサーバーを作成します。</td></tr>
     <tr><td>$sqlDatabasePassword</td><td>Azure SQL Database サーバーのログイン パスワード。</td></tr>
     <tr><td>$sqlDatabaseLocation</td><td>この値は、新しい Azure データベース サーバーを作成するときにのみ使用されます。</td></tr>
-    <tr><td>$sqlDatabaseName</td><td>Sqoop ジョブ用の AvgDelays テーブルの作成に使用する SQL Database。空白のままにすると、"HDISqoop" というデータベースが作成されます。Sqoop ジョブ出力用のテーブル名は AvgDelays です。</td></tr>
+    <tr><td>$sqlDatabaseName</td><td>Sqoop ジョブ用の AvgDelays テーブルの作成に使用する SQL Database。 空白のままにすると、"HDISqoop" というデータベースが作成されます。 Sqoop ジョブ出力用のテーブル名は AvgDelays です。 </td></tr>
     </table>
 2. Azure PowerShell ISE を開きます。
 3. 次のスクリプトをスクリプト ウィンドウにコピーして貼り付けます。
@@ -689,23 +693,23 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
         Write-host "`nEnd of the PowerShell script" -ForegroundColor Green
    
    > [!NOTE]
-   > このスクリプトは Representational State Transfer (REST) サービスの 1 つである http://bot.whatismyipaddress.com を使用して外部 IP アドレスを取得します。SQL Database サーバーのファイアウォール ルールを作成する際に、その IP アドレスを使用します。
+   > このスクリプトは、Representational State Transfer (REST) サービス (http://bot.whatismyipaddress.com) を使用して外部 IP アドレスを取得します。 SQL Database サーバーのファイアウォール ルールを作成する際に、その IP アドレスを使用します。  
    > 
    > 
    
     スクリプトには次のいくつかの変数が使用されています。
    
-   * **$ipAddressRestService** - 既定値は http://bot.whatismyipaddress.com です。外部 IP アドレスを取得するためのパブリック IP アドレス (REST サービス) です。必要に応じて他のサービスを使用することもできます。このサービスを使用して取得した外部 IP アドレスは、Azure SQL Database サーバーのファイアウォール ルールを作成する際に使用され、ご利用のワークステーションから (Windows PowerShell スクリプトを使用して) データベースへのアクセスが許可されます。
-   * **$fireWallRuleName** - Azure SQL Database サーバーのファイアウォール ルールの名前です。既定の名前は <u>FlightDelay</u> です。この名前は必要に応じて変更できます。
-   * **$sqlDatabaseMaxSizeGB** - この値は、新しい Azure SQL Database サーバーを作成するときにのみ使用されます。既定値は 10 GB です。このチュートリアルにはこれで十分です。
-   * **$sqlDatabaseName** - この値は、新しい Azure SQL データベースを作成するときにのみ使用されます。既定値は HDISqoop です。この名前を変更した場合は、Sqoop Windows PowerShell スクリプトにも反映する必要があります。
+   * **$ipAddressRestService** - 既定値は http://bot.whatismyipaddress.com です。 外部 IP アドレスを取得するためのパブリック IP アドレス (REST サービス) です。 必要に応じて他のサービスを使用することもできます。 このサービスを使用して取得した外部 IP アドレスは、Azure SQL Database サーバーのファイアウォール ルールを作成する際に使用され、ご利用のワークステーションから (Windows PowerShell スクリプトを使用して) データベースへのアクセスが許可されます。
+   * **$fireWallRuleName** - Azure SQL Database サーバーのファイアウォール ルールの名前です。 既定の名前は <u>FlightDelay</u> です。 この名前は必要に応じて変更できます。
+   * **$sqlDatabaseMaxSizeGB** - この値は、新しい Azure SQL Database サーバーを作成するときにのみ使用されます。 既定値は 10 GB です。 このチュートリアルにはこれで十分です。
+   * **$sqlDatabaseName** - この値は、新しい Azure SQL データベースを作成するときにのみ使用されます。 既定値は HDISqoop です。 この名前を変更した場合は、Sqoop Windows PowerShell スクリプトにも反映する必要があります。
 4. **F5** キーを押して、スクリプトを実行します。
-5. スクリプトの出力結果を検証します。スクリプトが正常に実行されたことを確認してください。
+5. スクリプトの出力結果を検証します。 スクリプトが正常に実行されたことを確認してください。
 
-## <a id="nextsteps"></a> 次のステップ
-ここでは、ファイルを Azure BLOB ストレージにアップロードする方法、Azure BLOB ストレージのデータを Hive テーブルに取り込む方法、Hive クエリの実行方法、Sqoop を使用して HDFS から Azure SQL Database にデータをエクスポートする方法を学習しました。詳細については、次の記事を参照してください。
+## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> 次のステップ
+ここでは、ファイルを Azure BLOB ストレージにアップロードする方法、Azure BLOB ストレージのデータを Hive テーブルに取り込む方法、Hive クエリの実行方法、Sqoop を使用して HDFS から Azure SQL Database にデータをエクスポートする方法を学習しました。 詳細については、次の記事を参照してください。
 
-* [Azure HDInsight の概要][hdinsight-get-started]
+* [HDInsight の概要][hdinsight-get-started]
 * [HDInsight での Hive の使用][hdinsight-use-hive]
 * [HDInsight での Oozie の使用][hdinsight-use-oozie]
 * [HDInsight での Sqoop の使用][hdinsight-use-sqoop]
@@ -739,4 +743,8 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 [img-hdi-flightdelays-run-hive-job-output]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.RunHiveJob.Output.png
 [img-hdi-flightdelays-flow]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.Flow.png
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

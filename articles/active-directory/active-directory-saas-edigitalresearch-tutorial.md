@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と eDigitalResearch の統合 | Microsoft Docs'
-description: Azure Active Directory と eDigitalResearch の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と eDigitalResearch の統合 | Microsoft Docs"
+description: "Azure Active Directory と eDigitalResearch の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: c6b66ea0-16ba-45b4-b550-e81c56262b1f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ce449d6a64b4ef9022939f0487a30157f7014673
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-edigitalresearch"></a>チュートリアル: Azure Active Directory と eDigitalResearch の統合
+# <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>チュートリアル: Azure Active Directory と eDigitalResearch の統合
 このチュートリアルの目的は、eDigitalResearch と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 eDigitalResearch と Azure AD の統合には、次の利点があります。
@@ -120,7 +124,7 @@ eDigitalResearch で Microsoft Azure AD のシングル サインオンを構成
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_05.png)
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
 5. アプリケーション用に構成された SSO を入手するために、eDigitalResearch サポート チームに連絡し、次のものを情報として提供します。 
@@ -160,7 +164,7 @@ eDigitalResearch で Microsoft Azure AD のシングル サインオンを構成
    
     a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
@@ -242,6 +246,6 @@ eDigitalResearch サポート チームと連携し、ユーザーを作成し�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

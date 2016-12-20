@@ -1,19 +1,24 @@
 ---
-title: Azure SQL Database Azure 導入事例 - Umbraco | Microsoft Docs
-description: Umbraco が SQL Database を使用して、クラウド上の数千のテナントに、サービスの迅速なプロビジョニングとスケールをどのように行っているかをご紹介します
+title: "Azure SQL Database Azure 導入事例 - Umbraco | Microsoft Docs"
+description: "Umbraco が SQL Database を使用して、クラウド上の数千のテナントに、サービスの迅速なプロビジョニングとスケールをどのように行っているかをご紹介します"
 services: sql-database
-documentationcenter: ''
-author: carlrabeler
+documentationcenter: 
+author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 5243d31e-3241-4cb0-9470-ad488ff28572
 ms.service: sql-database
+ms.custom: app development case study; app development
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/22/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0800f04034410c3734ef0a97afd9d41cf850381b
+
 
 ---
 # <a name="umbraco-uses-azure-sql-database-to-quickly-provision-and-scale-services-for-thousands-of-tenants-in-the-cloud"></a>Umbraco、Azure SQL Database を使用して、クラウド上の数千のテナント向けに迅速にサービスをプロビジョニングおよびスケール
@@ -37,7 +42,7 @@ UaaS により、SaaS ユーザーは、これまで利用が不可能だった 
 
 図 1. サービスとしての Umbraco (UaaS) のプロビジョニング ライフサイクル
 
-## <a name="azure-elastic-pools-and-automation-simplify-deployments"></a>Azure エラスティック プールと自動化が環境を簡素化
+## <a name="azure-elastic-pools-and-automation-simplify-deployments"></a>Azure エラスティック プールと自動化が環境を簡素化 
 Azure SQL Database および Azure のその他のサービスにより、Umbraco を利用する顧客は環境のセルフ プロビジョニングを行うことができます。また Umbraco は直観的なワークフローの一環として、データベースの監視と管理を容易に行うことができます。
 
 1. プロビジョニング
@@ -113,18 +118,21 @@ Morten 氏は、Azure の拡張機能にも満足しています。 「エラス
 
 Mikkel Madsen 氏は次のように締めくくっています。「私たちは、Azure SQL Database との結合に Azure Service Bus キューを使用する基盤技術の上に、大規模でリアルタイムな新規顧客の受け入れという共通の SaaS シナリオを結ぶ強力な Azure のアルゴリズムを、当社のアプリケーション パターン (開発およびライブ環境両方のデータベースの事前プロビジョニング) に採用しています。」
 
-## <a name="with-azure,-uaas-is-exceeding-customer-expectations"></a>Azure で顧客の期待を超える UaaS
+## <a name="with-azure-uaas-is-exceeding-customer-expectations"></a>Azure で顧客の期待を超える UaaS
 クラウド パートナーとして Azure を選択してからというもの、Umbraco は、自己ホスト型ソリューションで必要な IT リソースへの投資を省きつつ、UaaS ユーザーにコンテンツ管理の最適化されたパフォーマンスを提供しています。 Morten 氏は次のように述べています。「開発者にとって利便性が高く、スケーラビリティに優れた Azure に非常に満足しています。 機能と信頼性は当社のお客様に高く評価されています。 全体的に見て、Azure を選んだことは私たちにとって大きな成功です。」
 
 ## <a name="more-information"></a>詳細情報
 * Azure エラスティック データベース プールの詳細については、 [エラスティック データベース プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
 * Azure Service Bus の詳細については、「 [Azure Service Bus](https://azure.microsoft.com/services/service-bus/)」をご覧ください。
-* Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。 
+* Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。    
 * 仮想ネットワークの詳細については、 [仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)に関する記事を参照してください。    
-* バックアップと復旧の詳細については、 [ビジネス継続性](sql-database-business-continuity.md)に関する記事を参照してください。  
-* プールの監視の詳細については、 [プールの監視](sql-database-elastic-pool-manage-portal.md)に関する記事を参照してください。 
+* バックアップと復旧の詳細については、 [ビジネス継続性](sql-database-business-continuity.md)に関する記事を参照してください。    
+* プールの監視の詳細については、 [プールの監視](sql-database-elastic-pool-manage-portal.md)に関する記事を参照してください。    
 * サービスとしての Umbraco について、詳しくは、 [Umbraco](https://umbraco.com/cloud)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

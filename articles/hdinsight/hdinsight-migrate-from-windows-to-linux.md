@@ -1,19 +1,23 @@
 ---
-title: Windows ベースの HDInsight から Linux ベースの HDInsight への移行 | Microsoft Docs
-description: Windows ベースの HDInsight クラスターから Linux ベースの HDInsight クラスターへの移行方法について説明します。
+title: "Windows ベースの HDInsight から Linux ベースの HDInsight への移行 | Microsoft Docs"
+description: "Windows ベースの HDInsight クラスターから Linux ベースの HDInsight クラスターへの移行方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: ff35be59-bae3-42fd-9edc-77f0041bab93
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2016
+ms.date: 10/28/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
+ms.openlocfilehash: f82e8fcb6228df25c8e3181059fe06fea5fbce78
+
 
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
@@ -22,9 +26,9 @@ Windows ベースの HDInsight にはクラウドで Hadoop を使用する簡�
 このドキュメントでは、Windows と Linux での HDInsight の違いについて詳しく説明し、Linux ベースのクラスターに既存のワークロードを移行する方法に関するガイダンスを示します。
 
 > [!NOTE]
-> HDInsight クラスターは、クラスター内のノードのオペレーティング システムとして Ubuntu の長期サポート (LTS) を使用します。 HDInsight 3.3 および 3.4 クラスターは Ubuntu 14.0.4 LTS を使用し、これらより前のバージョンの HDInsight は Ubuntu 12.04.05 LTS を使用します。
-> 
-> 
+> HDInsight クラスターは、クラスター内のノードのオペレーティング システムとして Ubuntu の長期サポート (LTS) を使用します。 HDInsight で使用可能な Ubuntu のバージョンの詳細や他のコンポーネントのバージョン情報については、[HDInsight コンポーネントのバージョンに関する記事](hdinsight-component-versioning.md)を参照してください。
+>
+>
 
 ## <a name="migration-tasks"></a>移行タスク
 移行の一般的なワークフローは次のとおりです。
@@ -51,7 +55,7 @@ Windows ベースの HDInsight にはクラウドで Hadoop を使用する簡�
 Hadoop HDFS コマンドを使用し、以下の手順で既存の運用環境クラスターのストレージから、新しいテスト クラスターのストレージに直接データをコピーすることができます。
 
 1. 既存のクラスターのストレージ アカウントと既定のコンテナー情報を見つけます。 これは、次の Azure PowerShell スクリプトを使用して実行できます。
-   
+
         $clusterName="Your existing HDInsight cluster name"
         $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
         write-host "Storage account name: $clusterInfo.DefaultStorageAccount.split('.')[0]"
@@ -60,17 +64,17 @@ Hadoop HDFS コマンドを使用し、以下の手順で既存の運用環境�
 3. [オプションの構成] ブレードで、 **[リンクされたストレージ アカウント]**を選択します。
 4. **[ストレージ キーを追加]** を選択し、メッセージが表示されたら、手順 1. で PowerShell スクリプトによって返されたストレージ アカウントを選択します。 各ブレードで **[選択]** を選択して閉じます。 最後に、クラスターを作成します。
 5. クラスターが作成されたら、**SSH** を使用して接続します。 HDInsight での SSH の使用に慣れていない場合は、次の記事のいずれかを参照してください。
-   
+
    * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
    * [Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 6. SSH セッションで次のコマンドを使用して、リンクされたストレージ アカウントから新しい既定のストレージ アカウントにファイルをコピーします。 CONTAINER と ACCOUNT を、手順 1. で PowerShell スクリプトによって返されたコンテナーとアカウントの情報に置き換えます。 データへのパスをデータ ファイルへのパスに置き換えます。
-   
+
         hdfs dfs -cp wasbs://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
-   
+
     [AZURE.NOTE] テスト環境にデータを格納するディレクトリ構造が存在しない場合は、次のコマンドを使用して作成できます。
-   
+
         hdfs dfs -mkdir -p /new/path/to/create
-   
+
     `-p` スイッチで、パス内のすべてのディレクトリを作成できます。
 
 #### <a name="direct-copy-between-azure-storage-blobs"></a>Azure Storage BLOB 間で直接コピーする
@@ -86,7 +90,7 @@ Hadoop HDFS コマンドを使用し、以下の手順で既存の運用環境�
 | --- | --- |
 | **PowerShell** (クラスターの作成時に使用されるスクリプトを含む、サーバー側スクリプト) |Bash スクリプトを書き直します。 スクリプト アクションについては、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」および「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。 |
 | **Azure CLI** (サーバー側スクリプト) |Azure CLI は Linux で使用可能ですが、HDInsight クラスター ヘッド ノードにはプレインストールされません。 サーバー側スクリプトで必要な場合は、Linux ベースのプラットフォームへのインストールについて、「 [Azure CLI のインストール](../xplat-cli-install.md) 」を参照してください。 |
-| **.NET コンポーネント** |.NET は現在 Linux ベースの HDInsight クラスターではサポートされていませんが、今後の更新プログラムで追加される予定です。 今すぐ移行する必要がある場合は、Java または Python でコンポーネントを書き換える必要があります。 |
+| **.NET コンポーネント** |.Net は、Linux ベースの HDInsight クラスターで全面的にはサポートされていません。 2017 年 10 月 28 日以降に作成される HDInsight クラスター上の Linux ベース Storm は、SCP.NET フレームワークを使用して C# Storm トポロジをサポートします。 .NET のその他のサポートは将来の更新時に追加される予定です。 |
 | **Win32 コンポーネントまたはその他の Windows 専用のテクノロジ** |ガイダンスはコンポーネントやテクノロジによって異なります。Linux と互換性のあるバージョンを見つけることができる場合や、代替ソリューションを見つけるかこのコンポーネントを書き換える必要がある場合があります。 |
 
 ## <a name="cluster-creation"></a>クラスターの作成
@@ -129,10 +133,10 @@ Ambari には、クラスターに関する潜在的な問題を通知できる�
 
 > [!IMPORTANT]
 > Ambari アラートは問題が*ある可能性のある*ことを示すものであり、問題が*ある*ことを示すものではありません。 たとえば、HiveServer2 に通常どおりアクセスできる場合でも、アクセスできないことを示すアラートを受け取ることがあります。
-> 
+>
 > 多くのアラートがサービスに対する一定間隔のクエリとして実装され、特定の期間内での応答を予期します。 したがって、アラートは必ずしもサービスが停止していることを意味するわけでなく、単に予期した期間内に結果が返されなかったことを意味します。
-> 
-> 
+>
+>
 
 通常は、アラートが長期間発生していたか、アクションを実行する前にクラスターで以前報告されたユーザーの問題を反映しているのかを評価する必要があります。
 
@@ -152,7 +156,7 @@ Linux クラスターのファイル システムは、Windows ベースの HDIn
 
 ファイル名にワイルドカードを使用することもできます。 たとえば、 `find / -name *streaming*.jar 2>/dev/null` の場合、ファイル名の一部として 'streaming' という単語を含む jar ファイルへのパスが返されます。
 
-## <a name="hive,-pig,-and-mapreduce"></a>Hive、Pig、および MapReduce
+## <a name="hive-pig-and-mapreduce"></a>Hive、Pig、および MapReduce
 Linux ベースのクラスターの Pig と MapReduce は非常に似ています。主な違いは、リモート デスクトップを使用して Windows ベースのクラスターに接続してジョブを実行する場合に、Linux ベースのクラスターで SSH を使用する点です。
 
 * [SSH での Pig の使用](hdinsight-hadoop-use-pig-ssh.md)
@@ -173,7 +177,7 @@ Linux ベースのクラスターの Pig と MapReduce は非常に似ていま�
 | --- | --- |
 | Storm ダッシュボード |Storm ダッシュ ボードは使用できません。 トポロジの送信方法については、「 [Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md) 」を参照してください。 |
 | Storm UI |Storm UI は https://CLUSTERNAME.azurehdinsight.net/stormui で利用できます。 |
-| Visual Studio を使用して、C# またはハイブリッド トポロジを作成、デプロイ、および管理します。 |Linux ベースのクラスターでは現在、.NET トポロジはサポートされていません。ただし、このサポートは今後の更新プログラムで追加される予定です。 サポートが追加される前に移行する必要がある場合は、Java でトポロジを再実装する必要があります。 Java ベース トポロジの作成の詳細については、「[HDInsight で Apache Storm と Maven を使用する基本的なワード カウント アプリケーションの Java ベースのトポロジの開発](hdinsight-storm-develop-java-topology.md)」をご覧ください。 |
+| Visual Studio を使用して、C# またはハイブリッド トポロジを作成、デプロイ、および管理します。 |Visual Studio は、2017 年 10 月 28 日以降に作成される HDInsight クラスター上の Linux ベース Storm で、C# (SCP.NET) またはハイブリッド トポロジの作成、デプロイ、管理に使用できます。 |
 
 ## <a name="hbase"></a>HBase
 Linux ベースのクラスターでは、HBase の znode の親は `/hbase-unsecure`です。 これを、ネイティブの HBase Java API を使用するすべての Java クライアント アプリケーションの構成で設定する必要があります。
@@ -184,10 +188,10 @@ Linux ベースのクラスターでは、HBase の znode の親は `/hbase-unse
 Spark クラスターはプレビュー版では Windows クラスターで使用できましたが、リリース版では Linux ベースのクライアントでのみ使用できます。 プレビュー版の Windows ベースの Spark クラスターからリリース版の Linux ベースの Spark クラスターへの移行パスはありません。
 
 ## <a name="known-issues"></a>既知の問題
-### <a name="azure-data-factory-custom-.net-activities"></a>Azure Data Factory カスタム .NET アクティビティ
+### <a name="azure-data-factory-custom-net-activities"></a>Azure Data Factory カスタム .NET アクティビティ
 現在、Azure Data Factory カスタム .NET アクティビティは Linux ベースの HDInsight クラスターでサポートされていません。 代わりに、以下のいずれかの方法を使用して、ADF パイプラインの一部としてカスタム アクティビティを実装する必要があります。
 
-* Azure Batch プールで .NET アクティビティを実行します。 「 [Azure Data Factory パイプラインでカスタム アクティビティを使用する](../data-factory/data-factory-use-custom-activities.md#AzureBatch)
+* Azure Batch プールで .NET アクティビティを実行します。 「 [Azure Data Factory パイプラインでカスタム アクティビティを使用する](../data-factory/data-factory-use-custom-activities.md)
 * MapReduce アクティビティとしてアクティビティを実装します。 詳細については、「 [Data Factory から MapReduce プログラムを起動する](../data-factory/data-factory-map-reduce.md) 」を参照してください。
 
 ### <a name="line-endings"></a>行の終わり
@@ -200,12 +204,12 @@ Linux クラスター ノードで直接実行されるスクリプト (Hive ま
 スクリプトに CR 文字が埋め込まれた文字列が含まれていないことがわかっている場合は、以下のいずれかの方法を使用して行の終わりを一括変更することができます。
 
 * **クラスターにアップロードする予定のスクリプトの場合**、次の PowerShell ステートメントを使用して、クラスターにスクリプトをアップロードする前に行の終わりを CRLF から LF に変更します。
-  
+
       $original_file ='c:\path\to\script.py'
       $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
       [IO.File]::WriteAllText($original_file, $text)
 * **クラスターで使用されているストレージに既に存在するスクリプトの場合**、Linux ベースのクラスターに対して SSH セッションで以下のコマンドを使用して、スクリプトを変更します。
-  
+
       hdfs dfs -get wasbs:///path/to/script.py oldscript.py
       tr -d '\r' < oldscript.py > script.py
       hdfs dfs -put -f script.py wasbs:///path/to/script.py
@@ -216,6 +220,8 @@ Linux クラスター ノードで直接実行されるスクリプト (Hive ま
 * [Linux、Unix、または Mac クライアントから SSH を使用して Linux ベースのクラスターに接続する](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

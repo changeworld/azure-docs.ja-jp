@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 10/28/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b1446cd8892e14988ff428eaa03233f8e9aefb8a
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: 3ad64861bc4c3b0a938c75990fc516ef634943ef
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: b1446cd8892e14988ff428eaa03233f8e9aefb8a
 要件は次のとおりです。
 
 * [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
-* [SSH パブリック キー ファイルおよびプライベート キー ファイル](virtual-machines-linux-mac-create-ssh-keys.md)
+* [SSH パブリック キー ファイルおよびプライベート キー ファイル](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="sign-in"></a>[サインイン]
 Azure アカウント ID で Azure ポータルにサインインしたうえで、左上隅にある **[+ 新規]** をクリックします。
@@ -80,7 +80,7 @@ NIC 設定でパブリック IP アドレスのメニューを開きます。
 ## <a name="ssh-to-the-vm"></a>VM への SSH 接続
 SSH 公開キーを使用して、パブリック IP に SSH 接続します。  Mac または Linux のワークステーションでは、端末から直接 SSH 接続できます。 Windows ワークステーションの場合は、Linux に SSH 接続するために、PuTTY、MobaXTerm、または Cygwin を使用する必要があります。  Windows ワークステーションで Linux に SSH 接続するための準備については、以下のドキュメントを参照してください。
 
-[Azure 上の Windows における SSH の使用方法](virtual-machines-linux-ssh-from-windows.md)
+[Azure 上の Windows における SSH の使用方法](virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ```
 ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
@@ -89,9 +89,9 @@ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
 ## <a name="next-steps"></a>次のステップ
 テストまたはデモンストレーション用の Linux VM を迅速に作成しました。 インフラストラクチャに合わせてカスタマイズした Linux VM を作成する方法については、次の記事を参照してください。
 
-* [テンプレートを使用して Azure に Linux VM を作成する](virtual-machines-linux-cli-deploy-templates.md)
-* [テンプレートを使用して、SSH で保護された Linux VM を Azure で作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
-* [Azure CLI を使用して新しく Linux VM を作成する](virtual-machines-linux-create-cli-complete.md)
+* [テンプレートを使用して Azure に Linux VM を作成する](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [テンプレートを使用して、SSH で保護された Linux VM を Azure で作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure CLI を使用して新しく Linux VM を作成する](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 
 

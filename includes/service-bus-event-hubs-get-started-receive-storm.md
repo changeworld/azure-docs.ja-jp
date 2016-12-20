@@ -1,13 +1,13 @@
-## Apache Storm を使用したメッセージの受信
-[**Apache Storm**](https://storm.incubator.apache.org) は、境界のないデータ ストリームを確実かつ容易に処理する分散型リアルタイム計算システムです。このセクションでは、Event Hub Storm スパウトを使用して、Event Hub からイベントを受信する方法を示します。Apache Storm を使用して、別々のノードにホストされている複数のプロセスでイベントを分割することができます。Storm と Event Hub の統合は、Storm の Zookeeper のインストールを使用して、進行状況への透過的なチェックポイントの設定、永続的なチェックポイントの管理、並行した Event Hub からの受信によって、イベントの利用を簡略化します。
+## <a name="receive-messages-with-apache-storm"></a>Apache Storm を使用したメッセージの受信
+[**Apache Storm**](https://storm.incubator.apache.org) は、境界のないデータ ストリームを確実かつ容易に処理する分散型リアルタイム計算システムです。 このセクションでは、Event Hub Storm スパウトを使用して、Event Hub からイベントを受信する方法を示します。 Apache Storm を使用して、別々のノードにホストされている複数のプロセスでイベントを分割することができます。 Storm と Event Hub の統合は、Storm の Zookeeper のインストールを使用して、進行状況への透過的なチェックポイントの設定、永続的なチェックポイントの管理、並行した Event Hub からの受信によって、イベントの利用を簡略化します。
 
-Event Hub の受信パターンの詳細については、「[Event Hub の概要][Event Hub の概要]」を参照してください。
+Event Hub の受信パターンの詳細については、[Event Hubs の概要][Event Hubs の概要]のページを参照してください。
 
 このチュートリアルでは、[HDInsight Storm][HDInsight Storm] インストールを使用します。これは、Event Hubs スパウトと共に既に利用できます。
 
-1. [HDInsight Storm の使用](../articles/hdinsight/hdinsight-storm-overview.md)の手順に従って、新しい HDInsight クラスターを作成し、リモート デスクトップを介して接続します。
-2. `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` ファイルをローカル開発環境にコピーします。これには events-storm-spout が含まれています。
-3. 次のコマンドを使用して Maven のローカル ストアにパッケージをインストールします。これにより、後の手順で Storm プロジェクトに参照として追加できます。
+1. [HDInsight Storm の使用](../articles/hdinsight/hdinsight-storm-overview.md) の手順に従って、新しい HDInsight クラスターを作成し、リモート デスクトップを介して接続します。
+2. `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` ファイルをローカル開発環境にコピーします。 これには events-storm-spout が含まれています。
+3. 次のコマンドを使用して Maven のローカル ストアにパッケージをインストールします。 これにより、後の手順で Storm プロジェクトに参照として追加できます。
    
         mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
 4. Eclipse で、新しい Maven プロジェクトを作成します (**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします)。
@@ -64,7 +64,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
    
         eventhub.receiver.credits = 10
    
-    **eventhub.receiver.credits** の値によって、Storm パイプラインにリリースする前にバッチ処理されるイベントの数が決まります。わかりやすくするため、この例ではこの値を 10 に設定しています。運用環境では通常、1024 などの大きい値を設定します。
+    **eventhub.receiver.credits** の値によって、Storm パイプラインにリリースする前にバッチ処理されるイベントの数が決まります。 わかりやすくするため、この例ではこの値を 10 に設定しています。 運用環境では通常、1024 などの大きい値を設定します。
 10. 次のコードで **LoggerBolt** という新しいクラスを作成します。
     
         import java.util.Map;
@@ -102,7 +102,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
     
         }
     
-    この Storm ボルトは、受信したイベントの内容を記録します。これを容易に拡張して、ストレージ サービスにタプルを格納できます。[HDInsight センサー分析のチュートリアル]は同じ方法を使用して、データを HBase に格納します。
+    この Storm ボルトは、受信したイベントの内容を記録します。 これを容易に拡張して、ストレージ サービスにタプルを格納できます。 [HDInsight センサー分析のチュートリアル] は同じ方法を使用して、データを HBase に格納します。
 11. 次のコードで **LogTopology** という新しいクラスを作成します。
     
         import java.io.FileReader;
@@ -205,10 +205,10 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
             }
         }
 
-    このクラスは、新しい Event Hub スパウトを作成して、これをインスタンス化するために構成ファイルのプロパティを使用します。この例では、Event Hub で許可されている最大の数の並列処理を使用するために、その Event Hub のパーティションの数と同数のスパウト タスクを作成することが重要です。
+    このクラスは、新しい Event Hub スパウトを作成して、これをインスタンス化するために構成ファイルのプロパティを使用します。 この例では、Event Hub で許可されている最大の数の並列処理を使用するために、その Event Hub のパーティションの数と同数のスパウト タスクを作成することが重要です。
 
 <!-- Links -->
-[Event Hub の概要]: ../articles/event-hubs/event-hubs-overview.md
+[Event Hubs の概要]: ../articles/event-hubs/event-hubs-overview.md
 [HDInsight Storm]: ../articles/hdinsight/hdinsight-storm-overview.md
 [HDInsight センサー分析のチュートリアル]: ../articles/hdinsight/hdinsight-storm-sensor-data-analysis.md
 
@@ -216,4 +216,6 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 
 [12]: ./media/service-bus-event-hubs-get-started-receive-storm/create-storm1.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!--HONumber=Nov16_HO3-->
+
+

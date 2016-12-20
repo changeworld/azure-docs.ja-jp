@@ -2,11 +2,11 @@
 title: Tools and PaaS services for Azure Stack | Microsoft Docs
 description: Learn how to get started with PaaS services in Azure Stack.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: ErikjeMS
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 2ce8d7e3-bc5d-4d61-8ab8-e8f61df40675
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: erikje
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7ff4af1ec1dd5c8735361a812a81fb9b874046c1
+
 
 ---
 # <a name="tools-for-azure-stack"></a>Tools for Azure Stack
@@ -59,6 +63,9 @@ Quickly install the Azure Command-Line Interface (Azure CLI) to use a set of ope
 > 
 > 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,19 +1,23 @@
 ---
-title: Service Bus トピックの使用方法 (Python) | Microsoft Docs
-description: Python から Azure Service Bus のトピックとサブスクリプションを使用する方法を説明します。
-services: service-bus
+title: "Service Bus トピックの使用方法 (Python) | Microsoft Docs"
+description: "Python から Azure Service Bus のトピックとサブスクリプションを使用する方法を説明します。"
+services: service-bus-messaging
 documentationcenter: python
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 86fa1e1cc5db31bdbec216e1c1f20c2b07cf68d9
+
 
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions"></a>Service Bus のトピックとサブスクリプションの使用方法
@@ -23,7 +27,7 @@ ms.author: sethm
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
-**注:** Python または [Python Azure パッケージ][Python Azure パッケージ]をインストールする場合は、「[Python Installation Guide (Python インストール ガイド)](../python-how-to-install.md)」をご覧ください。
+**注:** Python または [Python Azure パッケージ][Python Azure パッケージ]をインストールする場合は、[「Python Installation Guide」](../python-how-to-install.md) (Python インストール ガイド) を参照してください。
 
 ## <a name="create-a-topic"></a>トピックを作成する
 **ServiceBusService** オブジェクトを使用すると、トピックを操作できます。 プログラムを使用して Service Bus にアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
@@ -65,7 +69,7 @@ bus_service.create_topic('mytopic', topic_options)
 > 
 > 
 
-### <a name="create-a-subscription-with-the-default-(matchall)-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
+### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 **MatchAll** フィルターは、新しいサブスクリプションの作成時にフィルターが指定されていない場合に使用される既定のフィルターです。 **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、"AllMessages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
 
 ```
@@ -75,7 +79,7 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 ### <a name="create-subscriptions-with-filters"></a>フィルターを適用したサブスクリプションの作成
 トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージを指定するフィルターを定義することもできます。
 
-サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する **SqlFilter** です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SQL フィルターで使用できる式の詳細については、[SqlFilter.SqlExpression][SqlFilter.SqlExpression] 構文の説明を参照してください。
+サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する **SqlFilter** です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SQL フィルターで使用できる式の詳細については、[SqlFilter.SqlExpression][SqlFilter.SqlExpression] 構文をご覧ください。
 
 **ServiceBusService** オブジェクトの **create\_rule** メソッドを使用して、サブスクリプションにフィルターを追加できます。 このメソッドによって、新しいフィルターを既存のサブスクリプションに追加できます。
 
@@ -123,7 +127,7 @@ for i in range(5):
     bus_service.send_topic_message('mytopic', msg)
 ```
 
-Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus のクォータ]」を参照してください。
+Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。 クォータの詳細については、[「Service Bus のクォータ」][Service Bus のクォータ]を参照してください。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 サブスクリプションからメッセージを受信するには、**ServiceBusService** オブジェクトの **receive\_subscription\_message** メソッドを使用します。
@@ -154,7 +158,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 メッセージが処理された後、**delete** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は **1 回以上の処理** と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの **MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
-トピックおよびサブスクリプションは永続的であり、[Azure ポータル][Azure ポータル]またはプログラムによって明示的に削除する必要があります。 次の例では、`mytopic` という名前のトピックを削除する方法を示しています。
+トピックおよびサブスクリプションは永続的であり、[Azure Portal][Azure ポータル] またはプログラムによって明示的に削除する必要があります。 次の例では、`mytopic` という名前のトピックを削除する方法を示しています。
 
 ```
 bus_service.delete_topic('mytopic')
@@ -169,8 +173,8 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 ## <a name="next-steps"></a>次のステップ
 これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
-* [Service Bus のキュー、トピック、サブスクリプション][]。
-* [SqlFilter.SqlExpression][SqlFilter.SqlExpression] のリファレンス
+* [「Service Bus のキュー、トピック、サブスクリプション」][キュー、トピック、サブスクリプション]を参照してください。
+* [SqlFilter.SqlExpression][SqlFilter.SqlExpression] のリファレンス。
 
 [Azure ポータル]: https://portal.azure.com
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure  
@@ -180,6 +184,6 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

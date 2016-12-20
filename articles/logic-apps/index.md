@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-# Logic Apps Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: ba5941d636a605059d981ddda8ea66288a682451
 
-Logic Apps provide a way to simplify and implement scalable integrations and workflows in the cloud. It provides a visual designer to model and automate your process as a series of steps known as a workflow. There are many connectors across the cloud and on-premises to quickly integrate across services and protocols. A logic app begins with a trigger (like 'When an account is added to Dynamics CRM') and after firing can begin many combinations actions, conversions, and condition logic.
+---
+# <a name="logic-apps-documentation"></a>Logic Apps ドキュメント
+
+Logic Apps は、プロセスをワークフローとしてモデル化し、自動化するためのデザイン ツールです。 サービスとプロトコルをまたいだ迅速な統合のために、クラウドとオンプレミスの両方で数多くのコネクタが提供されています。 ロジック アプリはトリガー ("Dynamics CRM にアカウントが追加されたとき" など) によって起動することができ、その後も数多くのアクション、変換、条件ロジックを組み合わせて起動できます。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Logic Apps</h3>
+                        <h3>Logic Apps について</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>App Service Video Librasry</h3>
+                        <h3>App Service のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -49,11 +53,11 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a new Logic App connecting SaaS services</h3>
+                        <h3>SaaS サービスを接続する新しいロジック アプリの作成</h3>
                     </div>
                 </div>
             </div>
@@ -67,11 +71,11 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Logic App using a template</h3>
+                        <h3>テンプレートを使用したロジック アプリの作成</h3>
                     </div>
                 </div>
             </div>
@@ -85,11 +89,11 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a custom API to use with Logic Apps</h3>
+                        <h3>Logic Apps で使用するカスタム API の作成</h3>
                     </div>
                 </div>
             </div>
@@ -100,22 +104,64 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
 
 ---
 
-## Reference
+## <a name="reference"></a>リファレンス
 
-### PowerShell
-[Logic Apps PowerShell Cmdlets](/powershell/resourcemanager/)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/resourcemanager/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Logic Apps の PowerShell コマンドレット</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-### .NET
-[Logic Apps Managed Reference](https://msdn.microsoft.com/library/azure/mt416943)
+<li>
+        <a href="https://msdn.microsoft.com/library/azure/mt416943">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>Logic Apps に関する管理リファレンス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-### REST
-[Logic Apps REST API Reference](/rest/api/logic/)
+    <li>
+        <a href="/rest/api/logic/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p>Logic Apps REST API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/logic-apps.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Logic Apps Documentation
-        </div>
+Logic Apps ドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+<!--HONumber=Dec16_HO2-->
+
+

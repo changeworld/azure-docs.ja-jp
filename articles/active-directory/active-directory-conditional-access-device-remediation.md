@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 11/11/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fd2076f22c6048fda83d6da3b069e2805afb453f
+ms.sourcegitcommit: 77031b3bbe2372bf2cac34bac45368ac40911641
+ms.openlocfilehash: 81dcda2e11ff98f7f21495a83043a546786979c7
 
 
 ---

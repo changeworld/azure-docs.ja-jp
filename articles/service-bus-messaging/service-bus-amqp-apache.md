@@ -1,19 +1,23 @@
 ---
-title: Linux VM に Apache Qpid PROTON-C をインストールする方法 | Microsoft Docs
-description: Azure Virtual Machines を使用して CentOS Linux VM を作成し、Apache Qpid Proton-C ライブラリをビルドしてインストールする方法です。
-services: service-bus
+title: "Linux VM に Apache Qpid PROTON-C をインストールする方法 |Microsoft Docs"
+description: "Azure Virtual Machines を使用して CentOS Linux VM を作成し、Apache Qpid Proton-C ライブラリをビルドしてインストールする方法です。"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 3158d69f-c409-494d-9a6c-32613c1a3c74
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 226703f9b4a4b295231ecd48d719638321ae55ef
+
 
 ---
 # <a name="install-apache-qpid-proton-c-on-an-azure-linux-vm"></a>Azure Linux VM に Apache Qpid Proton-C をインストールする
@@ -21,7 +25,7 @@ ms.author: sethm
 
 このセクションでは、Azure Virtual Machines を使用して CentOS Linux VM を作成する方法と、Python および PHP 言語バインドと共に Apache Qpid PROTON-C ライブラリをダウンロード、ビルド、インストールする方法を示します。 次の手順を完了すると、このガイドに含まれる Python および PHP のサンプルを実行できます。
 
-最初の手順は、[Azure クラシック ポータル][Azure クラシック ポータル]を使用して実行します。 次のスクリーンショットでは、"scott centos" という名前の CentOS VM を作成する方法を示します。
+最初の手順は、[Azure クラシック ポータル][Azure クラシック ポータル] を使用して実行します。 次のスクリーンショットでは、"scott centos" という名前の CentOS VM を作成する方法を示します。
 
 ![Azure Linux VM 上の Proton][0]
 
@@ -29,7 +33,7 @@ ms.author: sethm
 
 ![Azure Linux VM 上の Proton][1]
 
-コンピューターにログオンするには、SSH のエンドポイント ポートを知る必要があります。 この値は、新しく作成した VM を選択して **[エンドポイント]** タブをクリックすることにより、[Azure クラシック ポータル][Azure クラシック ポータル]から取得できます。 次のスクリーンショットでは、このコンピューターのパブリック SSH ポートが 57146 であることが示されています。
+コンピューターにログオンするには、SSH のエンドポイント ポートを知る必要があります。 この値は、新しく作成した VM を選択して **[エンドポイント]** タブをクリックすることにより、[Azure クラシック ポータル][Azure クラシック ポータル] から取得できます。 次のスクリーンショットでは、このコンピューターのパブリック SSH ポートが 57146 であることが示されています。
 
 ![Azure Linux VM 上の Proton][2]
 
@@ -84,15 +88,15 @@ Python および PHP アプリの場合、この例では Apache の Proton ク�
    
    mkdir build cd build
    
-   # Set the install prefix. You may need to adjust depending on your      
-   # system.       
+   # Set the install prefix. You may need to adjust depending on your        
+   # system.        
    cmake -DCMAKE\_INSTALL\_PREFIX=/usr ..
    
-   # Omit the docs target if you do not wish to build or install       
+   # Omit the docs target if you do not wish to build or install        
    # documentation.        
    make all docs
    
-   # Note that this step will require root privileges.     
+   # Note that this step will require root privileges.        
    make install
    ```
 
@@ -115,6 +119,6 @@ Python および PHP アプリの場合、この例では Apache の Proton ク�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

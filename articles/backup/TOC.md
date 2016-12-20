@@ -1,10 +1,10 @@
 # Overview
 ## [Azure Backup とは](backup-introduction-to-azure-backup.md)
 # 作業開始
-## [FAQ](backup-azure-backup-faq.md)
 ## [ファイルとフォルダーのバックアップ](backup-try-azure-backup-in-10-mins.md)
 ## [Azure 仮想マシンのバックアップ](backup-azure-vms-first-look.md)
 ## [Azure VM の保護](backup-azure-vms-first-look-arm.md)
+## [FAQ](backup-azure-backup-faq.md)
 # 方法
 ## PowerShell によるバックアップの自動化
 ### [Azure Portal での Azure VM](backup-azure-vms-automation.md)
@@ -52,7 +52,17 @@
 ### [Azure VM のバックアップの失敗: スナップショットの状態について VM エージェントと通信できませんでした - スナップショット VM サブタスクがタイムアウトしました](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 ### [Azure Backup でファイルとフォルダーのバックアップが遅い](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 
+# リファレンス
+## [PowerShell](/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup)
+## [.NET](/dotnet/api/microsoft.azure.management.backupservices)
 
-<!--HONumber=Nov16_HO2-->
+# リソース
+## [料金](https://azure.microsoft.com/pricing/details/backup/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup) 
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=backup) 
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=backup)
+
+
+<!--HONumber=Dec16_HO1-->
 
 

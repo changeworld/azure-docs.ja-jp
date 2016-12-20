@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Azure Data Factory Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: b23fd70f2941898524a848d5c0f353542f416e59
 
-Azure Data Factory is a cloud-based data integration service that orchestrates and automates the movement and transformation of data. Using the Data Factory service, you can create data integration solutions that can ingest data from various stores, transform and process the data, and publish the result data back to the data stores.
+---
+# <a name="azure-data-factory-documentation"></a>Azure Data Factory のドキュメント
+
+Azure Data Factory は、データの移動や変換を自動化するクラウドベースのデータ統合サービスです。 Data Factory サービスによって、さまざまなストアからデータを取り込み、データを変換し処理して、結果データをデータ ストアに発行できるデータ統合ソリューションを作成できます。
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -17,7 +21,7 @@ Azure Data Factory is a cloud-based data integration service that orchestrates a
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Data Factory</h3>
+                        <h3>Azure Data Factory の詳細</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure Data Factory is a cloud-based data integration service that orchestrates a
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Data Factory Video Library</h3>
+                        <h3>Azure Data Factory のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Data Factory is a cloud-based data integration service that orchestrates a
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Factory</h3>
+                        <h3>Azure Data Factory を使ってみる</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure Data Factory is a cloud-based data integration service that orchestrates a
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create your pipeline for Data Factory</h3>
+                        <h3>Data Factory 用パイプラインの作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -81,23 +85,60 @@ Azure Data Factory is a cloud-based data integration service that orchestrates a
 </ul>
 
 ---
+ 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize"><p />
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.datafactories.models">.NET</a></p>
+                        <p><a href="/azure/data-factory/data-factory-sdks">Azure Data Factory の開発者用リファレンス</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize"><p />
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/datafactory/">REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-##Reference
-
-###PowerShell
-[Azure PowerShell Reference](/powershell/azureps-cmdlets-docs)
-
-###.NET
-[Data Factory Managed Reference](/dotnet/api)
-
-###REST
-[Data Factory REST API Reference](/rest/api/datafactory)
+---
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-factory.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Data Factory Documentation
-        </div>
+Data Factory のドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

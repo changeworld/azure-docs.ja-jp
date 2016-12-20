@@ -1,12 +1,12 @@
 ---
-title: Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護 | Microsoft Docs
-description: このトピックでは、Azure Media Services を使用して HTTP Live Streaming (HLS) コンテンツを Apple FairPlay で動的に暗号化する方法の概要を説明します。 また、Media Services ライセンス配信サービスを使用して FairPlay ライセンスをクライアントに配信する方法も示します。
+title: "Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護 | Microsoft Docs"
+description: "このトピックでは、Azure Media Services を使用して HTTP Live Streaming (HLS) コンテンツを Apple FairPlay で動的に暗号化する方法の概要を説明します。 また、Media Services ライセンス配信サービスを使用して FairPlay ライセンスをクライアントに配信する方法も示します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,16 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
+ms.openlocfilehash: 7ee42899d1f50d562a8e776c840f0cbde12b13fe
+
 
 ---
-# <a name="protect-your-hls-content-with-apple-fairplay-and/or-microsoft-playready"></a>Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護
+# <a name="protect-your-hls-content-with-apple-fairplay-andor-microsoft-playready"></a>Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護
 Azure Media Services では、次の形式を使用して HTTP Live Streaming (HLS) コンテンツを動的に暗号化することができます。  
 
-* **AES-128 エンベロープ クリア キー** 
-  
+* **AES-128 エンベロープ クリア キー**
+
     **AES-128 CBC** モードを使用してチャンク全体を暗号化します。 ストリームの復号化は iOS および OSX プレーヤーでネイティブにサポートされています。 詳細については、 [こちらの記事](media-services-protect-with-aes128.md)を参照してください。
-* **Apple FairPlay** 
-  
+* **Apple FairPlay**
+
     **AES-128 CBC** モードを使用して個々のビデオやオーディオのサンプルを暗号化します。 **FairPlay ストリーミング** (FPS) はデバイスのオペレーティング システムに統合されており、iOS および Apple TV でネイティブにサポートされます。 OS X 上の Safari では、Encrypted Media Extensions (EME) インターフェイスのサポートを使用することで FPS が可能になります。
 * **Microsoft PlayReady**
 
@@ -35,89 +39,90 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 > [!NOTE]
 > HLS コンテンツを PlayReady で暗号化する必要がある場合は、共通コンテンツ キーを作成し、それを資産に関連付ける必要があります。 また、「 [Using PlayReady dynamic common encryption](media-services-protect-with-drm.md) 」(PlayReady 動的な共通暗号化の使用) の説明に従って、コンテンツ キーの承認ポリシーを構成する必要もあります。
-> 
-> 
+>
+>
 
 ## <a name="requirements-and-considerations"></a>要件と考慮事項
 * AMS を使用して FairPlay で暗号化された HLS を配信し、FairPlay ライセンスを配信するには、次のものが必要です。
-  
+
   * Azure アカウント。 詳細については、 [Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
   * Media Services アカウント。 Media Services アカウントを作成するには、「[アカウントの作成](media-services-portal-create-account.md)」を参照してください。
   * [Apple 開発プログラム](https://developer.apple.com/)にサインアップします。
-  * コンテンツ所有者による[デプロイ パッケージ](https://developer.apple.com/contact/fps/)の取得が Apple によって求められます。 要求には、Azure Media Services で KSM (キー セキュリティ モジュール) が既に実装されていること、および最終的な FPS パッケージを要求していることを明記してください。 最終的な FPS パッケージに含まれるのは、証明書を生成し、ASK を取得するための指示です。これを使用して FairPlay を構成します。 
+  * コンテンツ所有者による[デプロイ パッケージ](https://developer.apple.com/contact/fps/)の取得が Apple によって求められます。 要求には、Azure Media Services で KSM (キー セキュリティ モジュール) が既に実装されていること、および最終的な FPS パッケージを要求していることを明記してください。 最終的な FPS パッケージに含まれるのは、証明書を生成し、ASK を取得するための指示です。これを使用して FairPlay を構成します。
   * Azure Media Services .NET SDK バージョン **3.6.0** 以降。
 * AMS キーの配信側で次の設定が必要です。
-  
-  * **App Cert (AC)** - 秘密キーを含む .pfx ファイル。 このファイルは顧客が作成し、同じ顧客がパスワードで暗号化します。 
-    
-      顧客がキー配信ポリシーを構成する場合、パスワードと .pfx は base64 形式にする必要があります。
-    
+
+  * **App Cert (AC)** - 秘密キーを含む .pfx ファイル。 このファイルは顧客が作成し、同じ顧客がパスワードで暗号化します。
+
+       顧客がキー配信ポリシーを構成する場合、パスワードと .pfx は base64 形式にする必要があります。
+
       次の手順では、FairPlay 用の pfx 証明書を生成する方法について説明します。
-    
+
     1. https://slproweb.com/products/Win32OpenSSL.html から OpenSSL をインストールします
-       
+
         Apple によって提供される FairPlay 証明書とその他のファイルが含まれるフォルダーに移動します。
     2. cer を pem に変換するコマンド ライン:
-       
+
         "C:\OpenSSL-Win32\bin\openssl.exe" x509 -inform der -in fairplay.cer -out fairplay-out.pem
     3. pem を、秘密キーを備えた pfx (OpenSSL によって pfx ファイルのパスワードが求められます) に変換するコマンド ライン。
-       
-        "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out fairplay-out.pfx -inkey privatekey.pem -in fairplay-out.pem -passin file:privatekey-pem-pass.txt 
+
+        "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out fairplay-out.pfx -inkey privatekey.pem -in fairplay-out.pem -passin file:privatekey-pem-pass.txt
   * **App Cert パスワード** - .pfx ファイルを作成するための顧客のパスワード。
   * **App Cert パスワード ID** - 顧客は **ContentKeyType.FairPlayPfxPassword** 列挙値を使用して、他の AMS キーと同様の方法でパスワードをアップロードする必要があります。 そうすることで、キー配信ポリシー オプションの内部で使用する必要がある AMS ID を取得できます。
-  * **iv** - 16 バイトのランダム値。資産配信ポリシーの iv と一致している必要があります。 顧客は IV を生成し、アセット配信ポリシーとキー配信ポリシー オプションの両方に配置します。 
-  * **ASK** - ASK (アプリケーション シークレット キー) は、Apple 開発者ポータルを使用して証明書を生成したときに受け取ります。 開発チームごとに一意の ASK が割り当てられます。 ASK のコピーを保存して、安全な場所に保管してください。 後から ASK を FairPlayAsk として Azure Media services に構成する必要があります。 
+  * **iv** - 16 バイトのランダム値。資産配信ポリシーの iv と一致している必要があります。 顧客は IV を生成し、アセット配信ポリシーとキー配信ポリシー オプションの両方に配置します。
+  * **ASK** - ASK (アプリケーション シークレット キー) は、Apple 開発者ポータルを使用して証明書を生成したときに受け取ります。 開発チームごとに一意の ASK が割り当てられます。 ASK のコピーを保存して、安全な場所に保管してください。 後から ASK を FairPlayAsk として Azure Media services に構成する必要があります。
   * **ASK ID** - 顧客が ASK を AMS にアップロードするときに取得されます。 顧客は **ContentKeyType.FairPlayASk** 列挙値を使用して ASK をアップロードする必要があります。 これにより AMS ID が返されます。これは、キー配信ポリシー オプションを設定するときに使用する ID です。
 * FPS のクライアント側で、次の設定が必要です。
-  
+
   * **App Cert (AC)** - OS が一部のペイロードを暗号化する際に使用する公開キーを含む .cer/.der ファイル。 AMS で把握しておく必要がある理由は、プレーヤーで必要になるからです。 復号化は、キー配信サービスが対応する秘密キーを使用して行います。
 * FairPlay で暗号化されたストリームを再生するには、まず実際の ASK を取得してから、実際の証明書を生成する必要があります。 そのプロセスにより、3 つすべてのパートが作成されます。
-  
-  * .der 
-  * .pfx 
+
+  * .der
+  * .pfx
   * .pfx のパスワード
 * **AES-128 CBC** 暗号化で HLS をサポートしているクライアントは、OS X 上の Safari、Apple TV、iOS です。
 
 ## <a name="steps-for-configuring-fairplay-dynamic-encryption-and-license-delivery-services"></a>FairPlay の動的暗号化とライセンス配信サービスを構成する手順
 以下では、Media Services ライセンス配信サービスと動的暗号化を使用して、FairPlay で資産を保護するときに実行する必要のある一般的な手順について説明します。
 
-1. 資産を作成し、その資産にファイルをアップロードします。 
+1. 資産を作成し、その資産にファイルをアップロードします。
 2. ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードします。
 3. コンテンツ キーを作成し、それをエンコードした資産に関連付けます。  
-4. コンテンツ キーの承認ポリシーを構成します。 コンテンツ キーの承認ポリシーを作成するときに、次のものを指定する必要があります。 
-   
-   * 配信方法 (ここでは FairPlay) 
+4. コンテンツ キーの承認ポリシーを構成します。 コンテンツ キーの承認ポリシーを作成するときに、次のものを指定する必要があります。
+
+   * 配信方法 (ここでは FairPlay)
    * FairPlay ポリシー オプションの構成 FairPlay を構成する方法の詳細については、以下のサンプルの ConfigureFairPlayPolicyOptions() メソッドをご覧ください。
-     
+
      > [!NOTE]
      > 通常、証明書と ASK は 1 組だけなので、FairPlay ポリシー オプションを構成する必要があるのは 1 回のみです。
-     > 制限 (オープンまたはトークン)、およびキーをクライアントに配信する方法を定義する、キー配信タイプに固有の情報。 
-     > 
-     > 
-5. 資産配信ポリシーを構成します。 配信ポリシーの構成は次のとおりです。 
-   
-   * 配信プロトコル (HLS) 
-   * 動的暗号化のタイプ (共通 CBC 暗号化) 
-   * ライセンス取得 URL 
-     
+     >
+     >
+   * 制限 (オープンまたはトークン)
+   * キーをクライアントに配信する方法を定義する、キー配信タイプに固有の情報
+5. 資産配信ポリシーを構成します。 配信ポリシーの構成は次のとおりです。
+
+   * 配信プロトコル (HLS)
+   * 動的暗号化のタイプ (共通 CBC 暗号化)
+   * ライセンス取得 URL
+
      > [!NOTE]
-     > FairPlay と他の DRM で暗号化されたストリームを配信する場合は、別々の配信ポリシーを構成する必要があります。 
-     > 
-     > * 1 つは、DASH with CENC (PlayReady + WideVine) と Smooth with PlayReady を構成するための IAssetDeliveryPolicy 
+     > FairPlay と他の DRM で暗号化されたストリームを配信する場合は、別々の配信ポリシーを構成する必要があります。
+     >
+     > * 1 つは、DASH with CENC (PlayReady + WideVine) と Smooth with PlayReady を構成するための IAssetDeliveryPolicy
      > * もう 1 つは、HLS 向けに FairPlay を構成するための IAssetDeliveryPolicy
-     > 
-     > 
+     >
+     >
 6. ストリーミング URL を取得するために、OnDemand ロケーターを作成します。
 
-## <a name="using-fairplay-key-delivery-by-player/client-apps"></a>プレーヤー アプリまたはクライアント アプリによる FairPlay キー配信の使用
-プレーヤー アプリは、iOS SDK を使用して開発できます。 FairPlay コンテンツを再生できるようにするには、ライセンス交換プロトコルを実装する必要があります。 ライセンス交換プロトコルは、Apple によって指定されていません。 キー配信の要求を送信する方法は、各アプリに従います。 AMS FairPlay キー配信サービスでは、SPC が www-form-url でエンコードされた投稿メッセージとなることが想定されます。これは次のような形式になります。 
+## <a name="using-fairplay-key-delivery-by-playerclient-apps"></a>プレーヤー アプリまたはクライアント アプリによる FairPlay キー配信の使用
+プレーヤー アプリは、iOS SDK を使用して開発できます。 FairPlay コンテンツを再生できるようにするには、ライセンス交換プロトコルを実装する必要があります。 ライセンス交換プロトコルは、Apple によって指定されていません。 キー配信の要求を送信する方法は、各アプリに従います。 AMS FairPlay キー配信サービスでは、SPC が www-form-url でエンコードされた投稿メッセージとなることが想定されます。これは次のような形式になります。
 
     spc=<Base64 encoded SPC>
 
 > [!NOTE]
-> Azure Media Player では、すぐに使用できる FairPlay 再生はサポートされていません。 MAC OSX で FairPlay 再生を入手するには、Apple 開発者アカウントからサンプル プレーヤーを取得する必要があります。 
-> 
-> 
+> Azure Media Player では、すぐに使用できる FairPlay 再生はサポートされていません。 MAC OSX で FairPlay 再生を入手するには、Apple 開発者アカウントからサンプル プレーヤーを取得する必要があります。
+>
+>
 
 ## <a name="streaming-urls"></a>ストリーミング URL
 資産を複数の DRM を使用して暗号化した場合、ストリーミング URL で暗号化タグを使用する必要があります: (format='m3u8-aapl', encryption='xxx')。
@@ -132,7 +137,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
   * **cbcs-aapl**: Fairplay
   * **cbc**: AES エンベロープ暗号化
 
-## <a name=".net-example"></a>.NET の例
+## <a name="net-example"></a>.NET の例
 次の例では、Azure Media Services .Net SDK バージョン 3.6.0 で導入された機能 (Azure Media Services を使用して FairPlay で暗号化されたコンテンツを配信する機能) を示します。 パッケージのインストールには、次の Nuget パッケージ コマンドを使用しました。
 
     PM> Install-Package windowsazure.mediaservices -Version 3.6.0
@@ -142,22 +147,22 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 2. NuGet を使用して、Azure Media Services .NET SDK をインストールして追加します。
 3. その他の参照 System.Configuration を追加します。
 4. アカウント名とキー情報が含まれた構成ファイルを追加します。
-   
+
         <?xml version="1.0" encoding="utf-8"?>
         <configuration>
-            <startup> 
+            <startup>
                 <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
             </startup>
               <appSettings>
-   
+
                 <add key="MediaServicesAccountName" value="AccountName"/>
                 <add key="MediaServicesAccountKey" value="AccountKey"/>
-   
+
                 <add key="Issuer" value="http://testacs.com"/>
                 <add key="Audience" value="urn:test"/>
               </appSettings>
         </configuration>
-5. コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。 詳細については、「 [ストリーミング エンドポイントの構成](media-services-dotnet-get-started.md#configure-streaming-endpoint-using-the-portal)」を参照してください。
+5. コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。 詳細については、「 [ストリーミング エンドポイントの構成](media-services-dotnet-get-started.md#configure-streaming-endpoints-using-the-azure-portal)」を参照してください。
 6. Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
 
         using System;
@@ -241,7 +246,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
                             TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
                         // Generate a test token based on the the data in the given TokenRestrictionTemplate.
-                        // Note, you need to pass the key id Guid because we specified 
+                        // Note, you need to pass the key id Guid because we specified
                         // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
                         Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
                         string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey,
@@ -305,7 +310,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
                     ITask encodeTask = job.Tasks.AddNew("Encoding", latestMediaProcessor, encodingPreset, TaskOptions.None);
                     encodeTask.InputAssets.Add(inputAsset);
-                    encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset),    AssetCreationOptions.StorageEncrypted);
+                    encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset),     AssetCreationOptions.StorageEncrypted);
 
                     job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
                     job.Submit();
@@ -335,7 +340,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
                 static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
                 {
-                    // Create ContentKeyAuthorizationPolicy with Open restrictions 
+                    // Create ContentKeyAuthorizationPolicy with Open restrictions
                     // and create authorization policy          
 
                     List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
@@ -411,7 +416,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
                 private static string ConfigureFairPlayPolicyOptions()
                 {
-                    // For testing you can provide all zeroes for ASK bytes together with the cert from Apple FPS SDK. 
+                    // For testing you can provide all zeroes for ASK bytes together with the cert from Apple FPS SDK.
                     // However, for production you must use a real ASK from Apple bound to a real prod certificate.
                     byte[] askBytes = Guid.NewGuid().ToByteArray();
                     var askId = Guid.NewGuid();
@@ -475,11 +480,11 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
                     Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.FairPlay);
 
                     // The reason the below code replaces "https://" with "skd://" is because
-                    // in the IOS player sample code which you obtained in Apple developer account, 
-                    // the player only recognizes a Key URL that starts with skd://. 
-                    // However, if you are using a customized player, 
-                    // you can choose whatever protocol you want. 
-                    // For example, "https". 
+                    // in the IOS player sample code which you obtained in Apple developer account,
+                    // the player only recognizes a Key URL that starts with skd://.
+                    // However, if you are using a customized player,
+                    // you can choose whatever protocol you want.
+                    // For example, "https".
 
                     Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
                         new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
@@ -509,23 +514,23 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
                 {
 
                     // Get a reference to the streaming manifest file from the  
-                    // collection of files in the asset. 
+                    // collection of files in the asset.
 
                     var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
                                                  EndsWith(".ism")).
                                                  FirstOrDefault();
 
-                    // Create a 30-day readonly access policy. 
+                    // Create a 30-day readonly access policy.
                     IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
                         TimeSpan.FromDays(30),
                         AccessPermissions.Read);
 
-                    // Create a locator to the streaming content on an origin. 
+                    // Create a locator to the streaming content on an origin.
                     ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
                         policy,
                         DateTime.UtcNow.AddMinutes(-5));
 
-                    // Create a URL to the manifest file. 
+                    // Create a URL to the manifest file.
                     return originLocator.Path + assetFile.Name;
                 }
 
@@ -553,12 +558,14 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
         }
 
 
-## <a name="next-steps:-media-services-learning-paths"></a>次のステップ: Media Services のラーニング パス
+## <a name="next-steps-media-services-learning-paths"></a>次のステップ: Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

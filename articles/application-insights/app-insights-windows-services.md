@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aac35e524759d5f4356e9a9e386f658e9003d2ca
+ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
+ms.openlocfilehash: 926f77b6674a0dba92e160435e4cce7bb0de160d
 
 
 ---
@@ -82,6 +82,8 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
     `<InstrumentationKey>`*コピーしたインストルメンテーション キー* `</InstrumentationKey>`
 * ソリューション エクスプローラーで ApplicationInsights.config のプロパティが **[ビルド アクション] = [コンテンツ]、[出力ディレクトリにコピー] = [コピー]**に設定されていることを確認します。
 
+[複数のビルド構成でキーを切り替える](app-insights-separate-resources.md)場合は、コードでインストルメンテーション キーを設定すると便利です。 コードでキーを設定する場合は、`.config` ファイルで設定する必要がありません。
+
 ## <a name="a-nameruna-run-your-project"></a><a name="run"></a> プロジェクトの実行
 **F5** キーを使用してアプリケーションを実行します。さまざまなページを開いて、テレメトリを生成してみます。
 
@@ -132,6 +134,6 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

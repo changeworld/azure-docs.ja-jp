@@ -1,12 +1,12 @@
 ---
-title: SaaS アプリ向けの Azure の条件付きアクセス | Microsoft Docs
-description: 'Azure AD の条件付きアクセスを使用すると、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークにないユーザーのアクセスをブロックする機能を構成できます。 '
+title: "SaaS アプリ向けの Azure の条件付きアクセス | Microsoft Docs"
+description: "Azure AD の条件付きアクセスを使用すると、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークにないユーザーのアクセスをブロックする機能を構成できます。 "
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 51a1ee61-3ffe-4f65-b8de-ff21903e1e74
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 6c64b76c190efb6c9298487ca6c5e7fcf3b57b52
+
 
 ---
 # <a name="getting-started-with-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの概要
@@ -28,7 +32,7 @@ ms.author: markvi
 * フェデレーションまたは管理対象 Azure Active Directory テナント
 * フェデレーション テナントでは、Multi-Factor Authentication を有効にする必要があります。
 
-## <a name="configure-perapplication-access-rules"></a>アプリケーションごとのアクセス規則の構成
+## <a name="configure-per-application-access-rules"></a>アプリケーションごとのアクセス規則の構成
 ここでは、アプリケーションごとのアクセス規則を構成する方法について説明します。
 
 1. Azure AD のグローバル管理者であるアカウントを使用して Azure クラシック ポータルにサインインします。
@@ -68,7 +72,7 @@ ms.author: markvi
 ### <a name="access-rule-evaluation"></a>アクセス規則の評価
 アクセス規則は、ユーザーが OAuth 2.0、OpenID Connect、SAML、または WS-Federation を使用するフェデレーション アプリケーションにアクセスした場合に評価されます。 また、OAuth 2.0 と OpenID Connect でアクセス トークンを取得するために更新トークンが使用されたときにもアクセス規則が評価されます。 更新トークンの使用時にポリシーの評価が失敗すると、**invalid_grant** エラーが返されます。これは、ユーザーがクライアントに対して再認証する必要があることを示します。
 
-### <a name="configure-federation-services-to-provide-multifactor-authentication"></a>Multi-Factor Authentication を実現するためのフェデレーション サービスの構成
+### <a name="configure-federation-services-to-provide-multi-factor-authentication"></a>Multi-Factor Authentication を実現するためのフェデレーション サービスの構成
 フェデレーション テナントでは、MFA が Azure Active Directory またはオンプレミスの AD FS サーバーによって実行される場合があります。
 
 既定では、MFA は Azure Active Directory によってホストされているページで実行されます。 オンプレミスの MFA を構成するには、Windows PowerShell の Azure AD モジュールを使用して、Azure Active Directory で **-SupportsMFA** プロパティを **true** に設定する必要があります。
@@ -83,6 +87,9 @@ ms.author: markvi
 * [Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

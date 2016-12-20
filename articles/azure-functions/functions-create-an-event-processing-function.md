@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2381b04e32a6d65075dadf04f717f4946ba4d464
+ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
+ms.openlocfilehash: c7e4d5c0b2602ba8c12184900eba05fee48c4450
 
 
 ---
@@ -29,7 +29,7 @@ Azure Functions では、イベント ドリブンでオンデマンドのコン
 ## <a name="prerequisites"></a>前提条件
 関数を作成するには、アクティブな Azure アカウントを用意する必要があります。 Azure アカウントがない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。
 
-## <a name="create-a-timertriggered-function-from-the-template"></a>タイマーでトリガーされる関数をテンプレートから作成する
+## <a name="create-a-timer-triggered-function-from-the-template"></a>タイマーでトリガーされる関数をテンプレートから作成する
 関数アプリは Azure での関数の実行をホストします。 関数を作成するには、アクティブな Azure アカウントを用意する必要があります。 Azure アカウントがない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。 
 
 1. [Azure Functions ポータル](https://functions.azure.com/signin) に移動し、Azure アカウントでサインインします。

@@ -2,11 +2,11 @@
 title: Redeploy Azure Stack | Microsoft Docs
 description: Redeploy Azure Stack.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: ErikjeMS
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 795af5ea-892d-40b1-a080-42e4472e4bba
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2016
 ms.author: erikje
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e7b63ac0e093c7e2fa3659e6e5ece4cc0946b405
+
 
 ---
 # <a name="redeploy-azure-stack"></a>Redeploy Azure Stack
@@ -38,6 +42,9 @@ To redeploy Azure Stack, you must start over from scratch as described below.
 ## <a name="next-steps"></a>Next steps
 [Connect to Azure Stack](azure-stack-connect-azure-stack.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

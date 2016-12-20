@@ -1,14 +1,12 @@
-
 ---
-title: Azure Guidance | Microsoft Docs
-description: Best practices and guidance for Azure
-services: ''
+title: "Azure ガイダンス | Microsoft Docs"
+description: "Azure のベスト プラクティスとガイダンス"
+services: 
 documentationcenter: na
 author: bennage
 manager: marksou
-editor: ''
-tags: ''
-
+editor: 
+tags: 
 ms.assetid: de94c74a-fea7-4815-8484-553e421a7490
 ms.service: guidance
 ms.devlang: na
@@ -17,100 +15,104 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: christb
+translationtype: Human Translation
+ms.sourcegitcommit: 5f3ced657cf3d6587a63789b3dd3ca41cd2856f0
+ms.openlocfilehash: 0061e1ff2ae2d6b8ed7b7c3bb60405e76d4cc91b
+
 
 ---
-# Azure Guidance
+# <a name="azure-guidance"></a>Azure ガイダンス
 [!INCLUDE [pnp-header](../../includes/guidance-pnp-header-include.md)]
 
-The Microsoft patterns & practices team is part of the Azure Customer Advisory Team. Our purpose is to help developers, architects, and IT professionals be successful on the Microsoft Azure platform. We develop guidance that shows best practices for building cloud solutions on Azure.
+Microsoft patterns & practices チームは、Azure Customer Advisory Team の一員です。 チームの目的は、開発者、設計者、IT 担当者が Microsoft Azure Platform を適切に使用できるよう支援することです。 私たちチームでは、Azure でクラウド ソリューションを構築する際のベスト プラクティスを示すガイダンスを作成しました。
 
-## Checklists
-These lists are a quick reference for reviewing the fundamental aspects of availability and scalability. 
+## <a name="checklists"></a>Checklists
+以下のリストは、可用性とスケーラビリティの基本的な側面を確認するためのクイック リファレンスです。 
 
-* [Availability Checklist][AvailabilityChecklist] 
+* [可用性のチェックリスト][AvailabilityChecklist] 
   
-    A summary of recommended practices for ensuring availability.
-* [Scalability Checklist][ScalabilityChecklist]
+    可用性を確保するための推奨プラクティスの概要です。
+* [スケーラビリティのチェックリスト][ScalabilityChecklist]
   
-    A summary of recommended practices for designing and implementing scalable services and handling data management.
+    スケーラブルなサービスの設計および実装とデータ管理の扱いに関する推奨プラクティスの概要です。
 
-## Best practices articles
-These articles provide an in-depth discussion of important concepts commonly associated with cloud computing. 
+## <a name="best-practices-articles"></a>ベスト プラクティス記事
+以下の記事では、クラウド コンピューティングと関連することの多い重要な概念について詳細に説明しています。 
 
-* [API Design][APIDesign] 
+* [API 設計][APIDesign] 
   
-    A discussion of design issues to consider when designing a web API.
-* [API Implementation][APIImplementation] 
+    Web API の設計で考慮する必要がある設計上の問題についての説明です。
+* [API 実装][APIImplementation] 
   
-    A set of recommended practices for implementing and publishing a web API.
-* [API security guidance](https://github.com/mspnp/azure-guidance/blob/master/API-security.md) 
+    Web API の実装および公開に関する推奨プラクティスをまとめています。
+* [Azure のセキュリティに関するガイダンス](https://github.com/mspnp/azure-guidance/blob/master/API-security.md) 
   
-    A discussion of authentication and authorization concerns (for example, token types, authorization protocols, authorization flows, and threat mitigation).
-* [Autoscaling guidance][AutoscalingGuidance] 
+    認証と承認に関する検討事項 (トークンの種類、承認プロトコル、承認フロー、および脅威の軽減など) についての説明です。
+* [自動スケール ガイダンス][AutoscalingGuidance] 
   
-    A summary of considerations for scaling solutions without the need for manual intervention.
-* [Background Jobs guidance][BackgroundJobsGuidance] 
+    手動による操作を行わずにソリューションのスケール調整を行う際の検討事項の概要です。
+* [バックグラウンド ジョブのガイダンス][BackgroundJobsGuidance] 
   
-    A description of available options and recommended practices for implementing tasks that should be performed in the background, independently from any foreground or interactive operations.
-* [Content Delivery Network (CDN) guidance][CDNGuidance] 
+    フォアグラウンド操作および対話型操作とは独立してバックグラウンドで実行されるタスクの実装で使用可能なオプションと推奨プラクティスについての説明です。
+* [コンテンツ配信ネットワーク (CDN) のガイダンス][CDNGuidance] 
   
-    General guidance and recommended practice for using the CDN to minimize the load on your applications, and maximize availability and performance.
-* [Caching guidance][CachingGuidance] 
+    CDN を使用してアプリケーションにかかる負荷を最小限に抑え可用性とパフォーマンスを最大化する際の、一般的なガイダンスと推奨プラクティスです。
+* [キャッシュに関するガイダンス][CachingGuidance] 
   
-    A summary of how to use caching to improve the performance and scalability of a system.
-* [Data Partitioning guidance][DataPartitioningGuidance]
+    キャッシュを使用してシステムのパフォーマンスとスケーラビリティを改善する方法の概要です。
+* [データのパーティション分割のガイダンス][DataPartitioningGuidance]
   
-    Strategies that you can use to partition data to improve scalability, reduce contention, and optimize performance.
-* [Monitoring and Diagnostics guidance][MonitoringandDiagnosticsGuidance] 
+    パーティション分割を使用してスケーラビリティを向上させ、競合を少なくし、パフォーマンスを最適化する際に役立つ方針を示します。
+* [監視と診断のガイダンス][MonitoringandDiagnosticsGuidance] 
   
-    Guidance on tracking how your users utilize your system, trace resource utilization, and generally monitor the health and performance of your system.
-* [Recommended naming conventions][naming-conventions] 
+    ユーザーによるシステムの使用方法の追跡、リソースの使用率のトレース、およびシステムの正常性とパフォーマンスの総合的な監視に関するガイダンスです。
+* [推奨される名前付け規則][naming-conventions] 
   
-    Recommended naming conventions for Azure resources.
-* [Retry General guidance][RetryGeneralGuidance] 
+    Azure リソースの推奨される名前付け規則。
+* [再試行の一般的なガイダンス][RetryGeneralGuidance] 
   
-    Discussion of the general concepts for handling transient faults.
-* [Retry Service-specific guidance][RetryServiceSpecificGuidance]
+    一時的エラーに関する一般概念についての説明です。
+* [再試行サービス固有のガイダンス][RetryServiceSpecificGuidance]
   
-    A summary of retry features for many of Azure services, including information to help you use, adapt, or extend the retry mechanism for that service.
+    多くの Azure サービスの再試行メカニズム機能についての、各サービスの再試行メカニズムを使用、応用、拡張するために役立つ情報を含めた概要です。
 
-## Scenario guides
-* [Running Elasticsearch on Azure][elasticsearch] 
+## <a name="scenario-guides"></a>シナリオのガイド
+* [Azure で Elasticsearch を実行する][elasticsearch] 
   
-    Elasticsearch is a highly scalable open-source search engine and database. It is suitable for situations that require fast analysis and discovery of information held in large datasets. This guidance looks at some key aspects to consider when designing an Elasticsearch cluster.
-* [Identity management for multitenant applications][identity-multitenant] 
+    Elasticsearch は、非常にスケーラブルなオープンソースの検索エンジンとデータベースです。 これは、大規模なデータセットに含まれる情報を高速で検索し、分析する場合に最適です。 このガイダンスでは、Elasticsearch クラスターを設計するときに考慮する必要がある、いくつかの重要な側面について説明します。
+* [マルチテナント アプリケーションの ID 管理][identity-multitenant] 
   
-    Multitenancy is an architecture where multiple tenants share an application but are isolated from one another. This guidance shows you how to manage user identities in a multitenant application, using [Azure Active Directory][AzureAD] to handle sign-in and authentication.
-* [Developing big data solutions](https://msdn.microsoft.com/library/dn749874.aspx)
+    マルチテナントとは、複数のテナントでアプリケーションを共有していながら、各テナントは互いに分離されているアーキテクチャのことです。 このガイダンスでは、[Azure Active Directory][AzureAD] を使用してサインインと認証を処理し、マルチテナント アプリケーションのユーザー ID を管理する方法について説明します。
+* [ビッグ データ ソリューションの開発](https://msdn.microsoft.com/library/dn749874.aspx)
   
-    This guide explores the use of HDInsight for scenarios such as iterative exploration, as a data warehouse, for ETL processes, and integration into existing BI systems. It also includes guidance on understanding the concepts of big data, planning and designing big data solutions, and implementing these solutions.
+    このガイドでは、反復探索などのシナリオで HDInsight をデータ ウェアハウスとして使用して ETL プロセスを行う方法と、既存の BI システムへの統合について説明します。 また、ビッグ データという概念の詳細、ビッグ データ ソリューションの計画と設計、およびこうしたソリューションの実装に関するガイダンスも含まれています。
 
-## Patterns
-* [Cloud Design Patterns: Prescriptive Architecture Guidance for Cloud Applications](https://msdn.microsoft.com/library/dn568099.aspx)
+## <a name="patterns"></a>パターン
+* [クラウドの設計パターン: クラウド アプリケーションのアーキテクチャに関する規範的なガイダンス](https://msdn.microsoft.com/library/dn568099.aspx)
   
-    Cloud Design Patterns is a library of design patterns and related guidance topics. It articulates the benefit of applying patterns by showing how each piece can fit into cloud application architectures.
-* [Optimizing Performance for Cloud Applications](https://github.com/mspnp/performance-optimization)
+    クラウド設計パターンは、設計パターンおよび関連するガイダンス トピックをまとめたものです。 パターンを適用することのメリットについて、クラウド アプリケーション アーキテクチャに各ピースを適合させる方法示しながら説明します。
+* [クラウド アプリケーションのパフォーマンスの最適化](https://github.com/mspnp/performance-optimization)
   
-    This guidance is an exploration of common anti-patterns that impede apps from scaling under load. It includes samples demonstrating eight anti-patterns and a [performance analysis primer](https://github.com/mspnp/performance-optimization/blob/master/Performance-Analysis-Primer.md) and a guide for [assessing performance against key metrics](https://github.com/mspnp/performance-optimization/blob/master/Assessing-System-Performance-Against-KPI.md).
+    このガイダンスでは、負荷がかかるとアプリを拡張できなくなる一般的なアンチパターンについて説明します。 8 種類のアンチパターンを示したサンプルと、[パフォーマンス分析の手引き](https://github.com/mspnp/performance-optimization/blob/master/Performance-Analysis-Primer.md)および[主要なメトリックによるパフォーマンス評価のガイド](https://github.com/mspnp/performance-optimization/blob/master/Assessing-System-Performance-Against-KPI.md)が含まれています。
 
-## Reference architectures
-Our reference architectures are arranged by scenario.
-Each individual architecture offers recommended practices and prescriptive steps, and an executable component that embodies the recommendations.
+## <a name="reference-architectures"></a>参照用アーキテクチャ
+シナリオ別に参照用アーキテクチャが用意されています。
+各アーキテクチャには、推奨プラクティスと規範となる手順、および推奨事項を取り入れた実行可能なコンポーネントが含まれています。
 
-The current library of reference architectures is available at [http://aka.ms/architecture](http://aka.ms/architecture).
+最新の参照用アーキテクチャ ライブラリは [http://aka.ms/architecture](http://aka.ms/architecture) にあります。
 
-## Resiliency guidance
-These topics describe how to design applications that are resilient to failure in a distributed cloud environment.   
+## <a name="resiliency-guidance"></a>回復性のガイダンス
+以下のトピックでは、分散クラウド環境での障害に対して回復性を持つアプリケーションを設計する方法について説明しています。   
 
-* [Resiliency overview][ResiliencyOvervew]
+* [回復性の概要][ResiliencyOvervew]
   
-     How to build applications on the Azure platform that can recover from failures and continue to function. Describes a structured approach to achieve resiliency,from design to implementation, deployment, and operations.
-* [Resiliency checklist][resiliency-checklist]
+     障害から回復可能であり、継続して動作することのできるアプリケーションを Azure プラットフォームで構築する方法を示します。 設計から実装、デプロイ、運用にわたり回復性を実現する体系化された方法について説明します。
+* [回復性のチェックリスト][resiliency-checklist]
   
-    A checklist of recommendations that will help you plan for a variety of failure modes that could occur.
-* [Failure mode analysis][resiliency-fma] 
+    発生する可能性のあるさまざまな障害モードへの備えに役立つ推奨事項のチェックリストです。
+* [障害モードの分析][resiliency-fma] 
   
-    Failure mode analysis (FMA) is a process for building resiliency into a system, by identifying possible failure points. As a starting point for your FMA process,this article contains a catalog of potential failure modes and their mitigations. 
+    障害モード分析 (FMA) は、考えられる障害点を特定することによって、システムに回復力を持たせるためのプロセスです。 この記事では、FMA プロセスの出発点として、起こりうる障害モードの一覧とその緩和方法について説明します。 
 
 <!-- links -->
 
@@ -151,4 +153,10 @@ These topics describe how to design applications that are resilient to failure i
 [resiliency-fma]: guidance-resiliency-failure-mode-analysis.md
 [resiliency-checklist]: guidance-resiliency-checklist.md
 [ResiliencyOvervew]: guidance-resiliency-overview.md
+
+
+
+
+<!--HONumber=Dec16_HO1-->
+
 

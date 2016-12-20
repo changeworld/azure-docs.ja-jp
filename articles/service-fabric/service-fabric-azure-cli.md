@@ -1,12 +1,12 @@
 ---
-title: CLI を使用した Service Fabric クラスターの対話操作 | Microsoft Docs
-description: Azure CLI を使用して Service Fabric クラスターの対話操作を実行する方法
+title: "CLI を使用した Service Fabric クラスターの対話操作 | Microsoft Docs"
+description: "Azure CLI を使用して Service Fabric クラスターの対話操作を実行する方法"
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: c3ec8ff3-3b78-420c-a7ea-0c5e443fb10e
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/24/2016
 ms.author: subramar
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1a73f51b182cd9ce4634deeb33153345b935b13b
+
 
 ---
 # <a name="using-the-azure-cli-to-interact-with-a-service-fabric-cluster"></a>Azure CLI を使用した Service Fabric クラスターの対話操作
@@ -175,6 +179,9 @@ SFX を使用してアプリケーションのアップグレードを監視で�
 ## <a name="next-steps"></a>次のステップ
 開発環境を設定し、Linux クラスターに Service Fabric アプリケーションをデプロイします。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

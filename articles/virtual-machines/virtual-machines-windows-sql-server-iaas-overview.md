@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fcc2883ae52bb3d4be098ce741bbf5f5047777d2
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 63ae1f48bcc384eff27a6fa8642f7a214bc7493f
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: fcc2883ae52bb3d4be098ce741bbf5f5047777d2
 このトピックでは、[ポータル イメージへのリンク](#option-1-create-a-sql-vm-with-per-minute-licensing)および[一般的なタスク](#manage-your-sql-vm)の概要と共に、Azure 仮想マシン (VM) で SQL Server を実行するための選択肢について説明します。
 
 > [!NOTE]
-> 既に SQL Server を使い慣れており、SQL Server VM のデプロイ方法を確認するだけの場合は、「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
+> 既に SQL Server を使い慣れており、SQL Server VM のデプロイ方法を確認するだけの場合は、「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 > 
 > 
 
@@ -66,9 +66,9 @@ Azure VM で実行されている SQL Server は、リレーショナル デー�
 ## <a name="create-a-new-sql-vm"></a>新しい SQL VM の作成
 以下のセクションでは、SQL Server 仮想マシン ギャラリー イメージに関する、Azure Portal へのリンクを記載しています。 選択するイメージによっては、SQL Server のライセンス費用を支払って分単位の従量課金で利用するか、ライセンス持ち込み (BYOL) を利用するかを選択できます。
 
-このプロセスの詳細な手順については、チュートリアル「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」に記載されています。 また、[SQL Server VM のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)の記事も参照してください。ここでは、適切なマシンのサイズと、プロビジョニング中に使用できるその他の機能の選択方法を説明しています。
+このプロセスの詳細な手順については、チュートリアル「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に記載されています。 また、[SQL Server VM のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)の記事も参照してください。ここでは、適切なマシンのサイズと、プロビジョニング中に使用できるその他の機能の選択方法を説明しています。
 
-## <a name="option-1-create-a-sql-vm-with-perminute-licensing"></a>オプション 1: 分単位のライセンスを利用した SQL VM の作成
+## <a name="option-1-create-a-sql-vm-with-per-minute-licensing"></a>オプション 1: 分単位のライセンスを利用した SQL VM の作成
 次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。 指定したバージョン、エディション、およびオペレーティング システムで新しい SQL VM の作成を開始するには、いずれかのリンクをクリックします。
 
 | バージョン | オペレーティング システム | エディション |
@@ -100,21 +100,21 @@ Azure VM で実行されている SQL Server は、リレーショナル デー�
 SQL Server VM をプロビジョニングした後、オプションの管理タスクがいくつかあります。 多くの点について、SQL Server の構成と管理は、オンプレミスの SQL Server インスタンスを管理する場合とまったく同じです。 しかし、一部のタスクは Azure に固有です。 以降のセクションでは、それらの領域の一部について説明し、詳細情報へのリンクを付記します。
 
 ### <a name="connect-to-the-vm"></a>VM に接続します
-最も基本的な管理手順の 1 つとして、SQL Server Management Studio (SSMS) などのツールを使用して SQL Server VM に接続します。 新しい SQL Server VM に接続する手順については、「[Azure での SQL Server 仮想マシンへの接続](virtual-machines-windows-sql-connect.md)」を参照してください。
+最も基本的な管理手順の 1 つとして、SQL Server Management Studio (SSMS) などのツールを使用して SQL Server VM に接続します。 新しい SQL Server VM に接続する手順については、「[Azure での SQL Server 仮想マシンへの接続](virtual-machines-windows-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 ### <a name="migrate-your-data"></a>データの移行
-既存のデータベースがある場合は、新たにプロビジョニングした SQL VM にそれを移動することがあります。 移行オプションの一覧とガイダンスについては、 [Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)に関するページを参照してください。
+既存のデータベースがある場合は、新たにプロビジョニングした SQL VM にそれを移動することがあります。 移行オプションの一覧とガイダンスについては、 [Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 ### <a name="configure-high-availability"></a>高可用性の構成
-高可用性が必要な場合は、SQL Server 高可用性グループの構成を検討してください。 そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。 Azure ポータルには、この構成が事前に設定されたテンプレートがあります。 詳細については、 [Azure Resource Manager 仮想マシンでの AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)に関するページを参照してください。 可用性グループおよび関連付けられているリスナーを手動で構成する場合は、 [Azure VM での AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)に関するページを参照してください。
+高可用性が必要な場合は、SQL Server 高可用性グループの構成を検討してください。 そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。 Azure ポータルには、この構成が事前に設定されたテンプレートがあります。 詳細については、 [Azure Resource Manager 仮想マシンでの AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 可用性グループおよび関連付けられているリスナーを手動で構成する場合は、 [Azure VM での AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
-その他の高可用性構成については、「 [Azure の仮想マシン内の SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
+その他の高可用性構成については、「 [Azure の仮想マシン内の SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 ### <a name="back-up-your-data"></a>データのバックアップ
-Azure VM では[自動バックアップ](virtual-machines-windows-sql-automated-backup.md)を活用できます。これにより、データベースのバックアップが BLOB ストレージに定期的に作成されます。 また、この手法は手動で使用できます。 詳細については、「[Azure Storage を使用した SQL Server のバックアップと復元](virtual-machines-windows-use-storage-sql-server-backup-restore.md)」を参照してください。 すべてのバックアップと復元のオプションの概要については、「[Azure Virtual Machines おける SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」を参照してください。
+Azure VM では[自動バックアップ](virtual-machines-windows-sql-automated-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を活用できます。これにより、データベースのバックアップが BLOB ストレージに定期的に作成されます。 また、この手法は手動で使用できます。 詳細については、「[Azure Storage を使用した SQL Server のバックアップと復元](virtual-machines-windows-use-storage-sql-server-backup-restore.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 すべてのバックアップと復元のオプションの概要については、「[Azure Virtual Machines おける SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 ### <a name="automate-updates"></a>更新の自動化
-Azure VM では、 [自動修正](virtual-machines-windows-sql-automated-patching.md) を使用して、Windows と SQL Server の重要な更新プログラムを自動的にインストールするメンテナンス期間をスケジュール設定できます。
+Azure VM では、 [自動修正](virtual-machines-windows-sql-automated-patching.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、Windows と SQL Server の重要な更新プログラムを自動的にインストールするメンテナンス期間をスケジュール設定できます。
 
 ### <a name="customer-experience-improvement-program-ceip"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
 既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 
@@ -124,7 +124,7 @@ Azure VM では、 [自動修正](virtual-machines-windows-sql-automated-patchin
 ## <a name="next-steps"></a>次のステップ
 [ラーニング パスを調べます](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) 。
 
-質問がある場合は、 まず、「[Azure Virtual Machines における SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)」をご確認ください。 SQL VM に関するトピックのいずれかで、下部のセクションに質問またはコメントを追加して、Microsoft やコミュニティとやり取りすることもできます。
+質問がある場合は、 まず、「[Azure Virtual Machines における SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご確認ください。 SQL VM に関するトピックのいずれかで、下部のセクションに質問またはコメントを追加して、Microsoft やコミュニティとやり取りすることもできます。
 
 
 

@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-# Data Lake Analytics Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 4a9b9a0aef993055e0c5400a15918a05491509eb
 
-Azure Data Lake Analytics is a new service, built to make big data analytics easy. This service lets you focus on writing, running and managing jobs, rather than operating distributed infrastructure. Instead of deploying, configuring and tuning hardware, you write queries to transform your data and extract valuable insights. The analytics service can handle jobs of any scale instantly by simply setting the dial for how much power you need. You only pay for your job when it is running making it cost-effective. The analytics service supports Azure Active Directory letting you simply manage access and roles, integrated with your on-premises identity system. It also includes U-SQL, a language that unifies the benefits of SQL with the expressive power of user code. U-SQL’s scalable distributed runtime enables you to efficiently analyze data in the store and across SQL Servers in Azure, Azure SQL Database and Azure SQL Data Warehouse.
+---
+# <a name="data-lake-analytics-documentation"></a>Data Lake Analytics のドキュメント
+
+Azure Data Lake Analytics は、ビッグ データ分析を容易にするために構築された、新しいサービスです。 このサービスでは、分散インフラストラクチャの操作ではなく、ジョブの記述、実行および管理に集中できます。 ハードウェアのデプロイ、構成、チューニングを行う代わりに、クエリを作成してデータを変換し、価値ある洞察を抽出します。 この分析サービスでは、必要な性能をダイヤルで設定するだけで、どんな規模のジョブでも即座に処理できます。 ジョブの実行中にのみ課金されるコスト効率の良いサービスです。 この分析サービスは Azure Active Directory をサポートしているので、既存のオンプレミスの ID システムと統合してアクセス権限とロールをシンプルに管理できます。 また、SQL のメリットとユーザー コードの表現力を融合した U-SQL 言語が組み込まれています。 U-SQL のスケーラブルな分散ランタイムで、Azure の SQL Server、Azure SQL Database、Azure SQL Data Warehouse にまたがるストア内のデータを効率良く分析できます。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Data Lake Analytics</h3>
+                        <h3>Data Lake Analytics について</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +29,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=data-lake-analytics">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=data-lake-analytics">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -35,7 +39,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Data Lake Analytics Video Library</h3>
+                        <h3>Azure Data Lake Analytics のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using Azure portal</h3>
+                        <h3>Azure Portal で Azure Data Lake Analytics の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using Azure PowerShell</h3>
+                        <h3>Azure PowerShell で Azure Data Lake Analytics の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using .NET SDK</h3>
+                        <h3>NET SDK で Azure Data Lake Analytics の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -107,7 +111,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using Java SDK</h3>
+                        <h3>Java SDK で Azure Data Lake Analytics の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -125,7 +129,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create U-SQL scripts using Data Lake Tools for Visual Studio</h3>
+                        <h3>Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを作成する</h3>
                     </div>
                 </div>
             </div>
@@ -143,7 +147,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using Azure CLI</h3>
+                        <h3>Azure CLI で Azure Data Lake Analytics の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -161,7 +165,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using REST APIs</h3>
+                        <h3>REST API で Azure Data Lake Analytics の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -171,20 +175,49 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
 </ul>
 
 ---
-
-## Reference
-
-### PowerShell
-[Data Lake Analytics Resource Manager PowerShell Cmdlets](/powershell/resourcemanager/)
-
-### Java
-[Data Lake Analytics Java API Reference](/java/api/)
-
-### .NET
-[Data Lake Analytics Managed Reference](/dotnet/api)
-
-### REST
-[Data Lake Analytics REST API Reference](/rest/api/datalakeanalytics/)
+ 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.datalakeanalytics/v2.3.0/azurerm.datalakeanalytics">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.datalake.analytics">.NET</a></p>
+                        <p><a href="https://www.npmjs.com/package/azure-arm-datalake-analytics">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html">Python</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt591959">U-SQL</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/datalakeanalytics/">REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 ---
 
@@ -192,7 +225,12 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-lake-analytics.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Data Lake Analytics Documentation
-        </div>
+Data Lake Analytics のドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

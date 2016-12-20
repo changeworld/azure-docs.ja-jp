@@ -2,11 +2,11 @@
 title: Manage permissions to resources per user in Azure Stack (service administrator and tenant) | Microsoft Docs
 description: As a service administrator or tenant, learn how to manage permissions to resources per user.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: ErikjeMS
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: erikje
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4065c39f760d808cb4edc07e3b6de6b36324a0d4
+
 
 ---
 # <a name="manage-user-permissions"></a>Manage user permissions
@@ -32,6 +36,9 @@ A user in Azure Stack can be a reader, owner, or contributor for each instance o
 ## <a name="next-steps"></a>Next steps
 [Add an Azure Stack tenant](azure-stack-add-new-user-aad.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

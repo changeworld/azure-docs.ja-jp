@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/23/2016
+ms.date: 11/16/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4582e81a0d2e7bf5be401e72885e2ee751087cf5
+ms.sourcegitcommit: 35b0d0e7dd73852900384c34b8b842754434cc93
+ms.openlocfilehash: 4fbdb64918a642dbe899ab8b606fbf58e1fb94d3
 
 
 ---
@@ -33,7 +33,7 @@ StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 80
 | **Azure VM** |Standard_A3 (4 コア、7 GB メモリ) |Standard_DS3 (4 コア、14 GB メモリ) |
 | **バージョン互換性** |Update 2 より前または Update 2 以降を実行しているバージョン |Update 2 以降を実行しているバージョン |
 | **利用可能なリージョン** |すべての Azure リージョン |Premium Storage をサポートする Azure リージョン<br></br>リージョンの一覧については、「 [8020 のサポートされるリージョン](#supported-regions-for-8020) |
-| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成]()方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../storage/storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を参照 |
+| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../storage/storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を参照 |
 | **ワークロードのガイダンス** |バックアップからファイルを項目レベルで取得 |クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード  <br></br>障害復旧のためのセカンダリ デバイス |
 
 <sup>1</sup> *以前は 1100 と呼ばれていました*。
@@ -92,7 +92,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 * 仮想デバイスに対し、 [Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)します。 Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。 現在 8020 でサポートされているリージョンの詳細については、 [こちら](#supported-regions-for-8020)をご覧ください。
 * 独自の DNS サーバー名を指定する代わりに、Azure に用意されている既定の DNS サーバーを使用することをお勧めします。 DNS サーバー名が有効でない場合または DNS サーバーが IP アドレスを正しく解決できない場合、仮想デバイスの作成は失敗します。
 * ポイント対サイトおよびサイト間を必要に応じて選ぶことができますが、必須ではありません。 必要に応じてこれらのオプションを構成することで、より高度なシナリオを実現することができます。 
-* 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-linux-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。 これらのサーバーは次の要件を満たしている必要があります。                             
+* 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (ホスト サーバー) を仮想ネットワークに作成できます。 これらのサーバーは次の要件を満たしている必要があります。                             
   
   * Windows または Linux の VM が実行され、iSCSI イニシエーター ソフトウェアがインストールされていること。
   * 仮想デバイスと同じ仮想ネットワークで実行されていること。
@@ -103,7 +103,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 仮想デバイスを作成する前に、Azure StorSimple サービスに対して次の更新作業を行います。
 
 * 仮想デバイスのホスト サーバーとなる VM の [アクセス制御レコード](storsimple-manage-acrs.md) を追加します。
-* 仮想デバイスと同じリージョンにある [ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account) を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら]()、Premium Storage アカウントの場合は[こちら](../storage/storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)を参照してください。
+* 仮想デバイスと同じリージョンにある [ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account) を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 Standard Storage アカウントの作成方法については[こちら](../storage/storage-create-storage-account.md)を、Premium Storage アカウントの作成方法については[こちら](../storage/storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)をご覧ください。
 * 仮想デバイスの作成には、データに使用するストレージ アカウントとは異なるストレージ アカウントを使用します。 同じストレージ アカウントを使用すると、十分なパフォーマンスが得られない可能性があります。
 
 作業を開始する前に、次の情報を確認してください。
@@ -121,12 +121,13 @@ StorSimple 仮想デバイスを作成するには、次の手順を実行しま
 
 [!INCLUDE [Create a virtual device](../../includes/storsimple-create-virtual-device-u2.md)]
 
-この手順で仮想デバイスを作成できない場合は、インターネットに接続されていない可能性があります。 詳細については、「 [インターネット接続エラーのトラブルシューティング](#troubleshoot-internet-connectivity-errors) 」を参照してください。
+この手順で仮想デバイスを作成できない場合は、インターネットに接続されていない可能性があります。 詳しくは、「[インターネット接続エラーのトラブルシューティング](#troubleshoot-internet-connectivity-errors)」をご覧ください。
 
 ### <a name="step-2-configure-and-register-the-virtual-device"></a>手順 2. 仮想デバイスの構成と登録
 この手順を開始する前に、サービス データ暗号化キーのコピーがあることを確認してください。 サービス データ暗号化キーは、最初の StorSimple デバイスの構成時に作成され、安全な場所に保存するように指示されます。 サービス データ暗号化キーのコピーがない場合は、Microsoft サポートに支援を依頼する必要があります。
 
 StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。
+
 [!INCLUDE [Configure and register a virtual device](../../includes/storsimple-configure-register-virtual-device.md)]
 
 ### <a name="step-3-optional-modify-the-device-configuration-settings"></a>手順 3. (オプション) デバイスの構成設定の変更
@@ -259,6 +260,6 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

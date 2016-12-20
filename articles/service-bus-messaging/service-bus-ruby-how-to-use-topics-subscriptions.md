@@ -1,22 +1,26 @@
 ---
-title: Service Bus トピックの使用方法 (Ruby) | Microsoft Docs
-description: Azure での Service Bus のトピックとサブスクリプションの使用方法について説明します。 コード サンプルは Ruby アプリケーション向けに作成されています。
-services: service-bus
+title: "Service Bus トピックの使用方法 (Ruby) | Microsoft Docs"
+description: "Azure での Service Bus のトピックとサブスクリプションの使用方法について説明します。 コード サンプルは Ruby アプリケーション向けに作成されています。"
+services: service-bus-messaging
 documentationcenter: ruby
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 3ef2295e-7c5f-4c54-a13b-a69c8045d4b6
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a033aee05db1a837e0891256db26d63fe80e05a2
+
 
 ---
-# <a name="how-to-use-service-bus-topics/subscriptions"></a>Service Bus トピック/サブスクリプションの使用方法
+# <a name="how-to-use-service-bus-topicssubscriptions"></a>Service Bus トピック/サブスクリプションの使用方法
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 この記事では、Ruby アプリケーションから Service Bus のトピックとサブスクリプションを使用する方法について説明します。 ここでは、**トピックとサブスクリプションの作成、サブスクリプション フィルターの作成、トピックへのメッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。 トピックとサブスクリプションの詳細については、[「次のステップ」](#next-steps)を参照してください。
@@ -33,7 +37,7 @@ Service Bus のトピックとサブスクリプションは、メッセージ�
 Service Bus のトピックとサブスクリプションを使用すると、多数のユーザーとアプリケーションの間でやり取りされる膨大な数のメッセージを処理することもできます。
 
 ## <a name="create-a-namespace"></a>名前空間の作成
-Azure の Service Bus キューを使用するには、最初に名前空間を作成する必要があります。 名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。 [Azure ポータル][Azure ポータル]では、名前空間の作成に ACS 接続が使用されないため、コマンド ライン インターフェイスを使用して名前空間を作成する必要があります。
+Azure の Service Bus キューを使用するには、最初に名前空間を作成する必要があります。 名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。 [Azure ポータル][Azure ポータル] では、名前空間の作成に ACS 接続が使用されないため、コマンド ライン インターフェイスを使用して名前空間を作成する必要があります。
 
 名前空間を作成するには:
 
@@ -54,12 +58,12 @@ Service Bus 名前空間を作成するために実行した PowerShell コマ�
 ![キーのコピー](./media/service-bus-ruby-how-to-use-topics-subscriptions/defaultkey.png)
 
 > [!NOTE]
-> このキーは、[Azure ポータル][Azure ポータル]にログオンして、名前空間の接続情報に移動する場合にも見つかります。
+> このキーは、[Azure ポータル][Azure ポータル] にログオンして、名前空間の接続情報に移動する場合にも見つかります。
 > 
 > 
 
 ## <a name="create-a-ruby-application"></a>Ruby アプリケーションの作成
-手順については、[Microsoft Azure での Ruby アプリケーションの作成](../virtual-machines/virtual-machines-linux-classic-ruby-rails-web-app.md) に関するページを参照してください。
+手順については、[Microsoft Azure での Ruby アプリケーションの作成](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md) に関するページを参照してください。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Service Bus を使用するには、Ruby Azure パッケージをダウンロードして使用します。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
@@ -112,7 +116,7 @@ topic = azure_service_bus_service.create_topic(topic)
 
 サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで存在し続けます。 アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に getSubscription メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
 
-### <a name="create-a-subscription-with-the-default-(matchall)-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
+### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 **MatchAll** フィルターは、新しいサブスクリプションの作成時にフィルターが指定されていない場合に使用される既定のフィルターです。 **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、"all-messages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
 
 ```
@@ -198,7 +202,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 メッセージが処理された後、**delete\_subscription\_message()** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動するときにメッセージが再配信されます。 一般的に、この動作は **1 回以上の処理** と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、このロジックはメッセージの **message\_id** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
-トピックおよびサブスクリプションは永続的であり、[Azure ポータル][Azure ポータル]またはプログラムによって明示的に削除する必要があります。 次の例では、"test-topic" という名前のトピックを削除する方法を示します。
+トピックおよびサブスクリプションは永続的であり、[Azure Portal][Azure ポータル] またはプログラムによって明示的に削除する必要があります。 次の例では、"test-topic" という名前のトピックを削除する方法を示します。
 
 ```
 azure_service_bus_service.delete_topic("test-topic")
@@ -221,6 +225,6 @@ azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

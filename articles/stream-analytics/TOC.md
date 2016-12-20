@@ -28,7 +28,7 @@
 ### [管理用 .NET SDK を使用する](stream-analytics-dotnet-management-sdk.md)
 ### [ウィンドウ関数](stream-analytics-window-functions.md)
 
-## [管理]
+## 管理
 ### [ジョブの監視](stream-analytics-monitoring.md)
 ### [プログラムでジョブを監視する](stream-analytics-monitor-jobs.md)
 ### [PowerShell でジョブを監視する](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
@@ -40,13 +40,14 @@
 ### [ワンクリック PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # リファレンス
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
-## [.NET](/dotnet/api/)
+## [PowerShell](/powershell/resourcemanager/azurerm.streamanalytics/v2.3.0/azurerm.streamanalytics)
+## [.NET](/dotnet/api/streamanalytics.tests.operationtests)
 ## [クエリ言語](https://msdn.microsoft.com/library/azure/dn834998)
-## [REST ()](/rest/api/streamanalytics/)
-## [リリース ノート](stream-analytics-release-notes.md)
+## [REST ()](/rest/api/streamanalytics)
+
 
 # リソース
+## [リリース ノート](stream-analytics-release-notes.md)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
 ## [料金](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [ブログ](http://blogs.msdn.com/b/streamanalytics/)
@@ -57,6 +58,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

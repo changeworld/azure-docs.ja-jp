@@ -1,13 +1,13 @@
 ---
-title: Linux VM のクラシック デプロイメントのトラブルシューティング | Microsoft Docs
-description: Azure での新しい Linux 仮想マシンの作成に関するクラシック デプロイメントの問題のトラブルシューティング
+title: "Linux VM のクラシック デプロイメントのトラブルシューティング | Microsoft Docs"
+description: "Azure での新しい Linux 仮想マシンの作成に関するクラシック デプロイメントの問題のトラブルシューティング"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: JiangChen79
 manager: felixwu
-editor: ''
+editor: 
 tags: top-support-issue
-
+ms.assetid: c8a963fa-6b2a-4c7a-a1f4-7793adb02b19
 ms.service: virtual-machines-linux
 ms.workload: na
 ms.tgt_pltfrm: vm-linux
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: cjiang
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: 8c13f9289a5873dbc3cffe4c8fb6a32d30fc2312
+
 
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Azure での新しい Linux 仮想マシンの作成に関するクラシック デプロイメントの問題のトラブルシューティング
@@ -23,6 +27,8 @@ ms.author: cjiang
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+
+この記事の Resource Manager バージョンについては、[こちら](virtual-machines-linux-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -45,7 +51,7 @@ Azure ポータルで、**[参照]** > **[仮想マシン]** > *対象の Window
 
 **解決策:**
 
-これらのエラーを解決するには、OS と同じ設定 (一般化/特殊化) を使用して、オンプレミスで使用可能な元の VHD をアップロードします。 一般化された OS としてアップロードするには、まずプロビジョニング解除を必ず実行してください。 詳細については、「 [Linux オペレーティング システムを格納した仮想ハード ディスクを作成してアップロードする](virtual-machines-linux-classic-create-upload-vhd.md) 」を参照してください。
+これらのエラーを解決するには、OS と同じ設定 (一般化/特殊化) を使用して、オンプレミスで使用可能な元の VHD をアップロードします。 一般化された OS としてアップロードするには、まずプロビジョニング解除を必ず実行してください。 詳細については、「 [Linux オペレーティング システムを格納した仮想ハード ディスクを作成してアップロードする](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) 」を参照してください。
 
 **キャプチャ エラー:**
 
@@ -55,9 +61,9 @@ Azure ポータルで、**[参照]** > **[仮想マシン]** > *対象の Window
 
 **解決策:**
 
-これらのエラーを解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で [現在の VHD からイメージをキャプチャし直します](virtual-machines-linux-classic-capture-image.md) 。
+これらのエラーを解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で [現在の VHD からイメージをキャプチャし直します](virtual-machines-linux-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) 。
 
-## <a name="issue:-custom/-gallery/-marketplace-image;-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
 このエラーは、新しい VM 要求が、要求に対応するのに十分な空き領域がないか、要求されている VM サイズをサポートできないクラスターに新しい VM 要求が送信された場合に発生します。 同じクラウド サービスに別シリーズの VM を混在させることはできません。 したがって、クラウド サービスでサポートできるのとは異なるサイズの新しい VM を作成したい場合は、コンピューティング要求は失敗します。
 
 新しい VM の作成に使用したクラウド サービスの制約により、次の 2 つのいずれかの状況が原因のエラーが発生します。
@@ -84,8 +90,11 @@ Azure ポータルで、**[参照]** > **[仮想マシン]** > *対象の Window
 * [、既存の仮想ネットワークを接続](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/) します。 詳細については、「 [リージョン仮想ネットワーク](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」を参照してください。 または、 [アフィニティ グループ ベースの仮想ネットワークをリージョン仮想ネットワークに移行](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)し、その後に新しい VM を作成します。
 
 ## <a name="next-steps"></a>次のステップ
-Azure での停止していた Linux VM の再起動または既存の Linux VM のサイズ変更に問題が発生する場合は、 [Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-linux-classic-restart-resize-error-troubleshooting.md)を参照してください。
+Azure での停止していた Linux VM の再起動または既存の Linux VM のサイズ変更に問題が発生する場合は、 [Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-linux-classic-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

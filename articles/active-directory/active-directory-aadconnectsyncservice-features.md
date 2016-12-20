@@ -1,12 +1,12 @@
 ---
-title: Azure AD Connect 同期サービスの機能と構成 | Microsoft Docs
-description: Azure AD Connect 同期サービスのサービス側の機能について説明します。
+title: "Azure AD Connect 同期サービスの機能と構成 | Microsoft Docs"
+description: "Azure AD Connect 同期サービスのサービス側の機能について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: andkjell
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 213aab20-0a61-434a-9545-c4637628da81
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2016
 ms.author: andkjell;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 70f6596ec85f8662efecd99679fde6b7e9a29aae
+
 
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同期サービスの機能
@@ -104,6 +108,9 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 * [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

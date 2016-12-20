@@ -1,13 +1,13 @@
 ---
-title: Azure Government のドキュメント | Microsoft Docs
-description: Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。
+title: "Azure Government のコンピューティング | Microsoft Docs"
+description: "Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。"
 services: Azure-Government
 cloud: gov
-documentationcenter: ''
+documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: ''
-
+editor: 
+ms.assetid: fb11f60c-5a70-46a9-82a0-abb2a4f4239b
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: azure-government
 ms.date: 09/29/2016
 ms.author: ryansoc
+translationtype: Human Translation
+ms.sourcegitcommit: a0374d6aeae42641e906a7f8e39bfc58eaacf096
+ms.openlocfilehash: b351229c474e84a9e385d2ed81f2eb73267d9fd1
+
 
 ---
 # <a name="azure-government-compute"></a>Azure 政府機関向けコンピューティング
 ## <a name="virtual-machines"></a>Virtual Machines
-このサービスとその使用方法について詳しくは、「[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」をご覧ください。
+このサービスとその使用方法について詳しくは、「[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 ### <a name="variations"></a>バリエーション
 次の VM SKU が Azure Government で一般公開されています。
@@ -43,6 +47,9 @@ ms.author: ryansoc
 ## <a name="next-steps"></a>次のステップ
 補足情報と最新情報については、<a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government ブログ</a>を講読してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

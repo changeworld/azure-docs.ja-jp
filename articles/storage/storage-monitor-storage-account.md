@@ -1,19 +1,23 @@
 ---
-title: ストレージ アカウントの監視方法 | Microsoft Docs
-description: Azure ポータルを使用して Azure でストレージ アカウントを監視する方法について説明します。
+title: "ストレージ アカウントの監視方法 | Microsoft Docs"
+description: "Azure ポータルを使用して Azure でストレージ アカウントを監視する方法について説明します。"
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
-
+ms.assetid: b83cba7b-4627-4ba7-b5d0-f1039fe30e78
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 12/08/2016
 ms.author: robinsh
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c0506fd6745c9ab04f10b60936315901ed35edbc
+
 
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
@@ -21,7 +25,7 @@ ms.author: robinsh
 ストレージ アカウントは、 [Azure ポータル](https://portal.azure.com)で監視できます。 ポータルを通じて監視するためのストレージ アカウントを構成する場合、Azure Storage は [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx) を使用してアカウントのメトリックを追跡し、要求データを記録します。
 
 > [!NOTE]
-> で監視データを調査すると、追加のコストがかかります [Azure ポータル](https://portal.azure.com)。 詳細については、 <a href="http://msdn.microsoft.com/library/azure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。 <br />
+> [Azure Portal](https://portal.azure.com) で監視データを調査すると、追加のコストがかかります。 詳細については、 <a href="http://msdn.microsoft.com/library/azure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。 <br />
 > 
 > 現在、Azure File ストレージは、Storage Analytics のメトリックをサポートしますが、ログ記録はまだサポートされていません。 [Azure ポータル](https://portal.azure.com)から Azure File ストレージのメトリックを有効にすることができます。
 > 
@@ -104,7 +108,7 @@ ms.author: robinsh
     下図では、承認エラーのパーセンテージ メトリックが展開されています。
    
     ![ExpandCollapse](./media/storage-monitor-storage-account/Storage_AddMetrics_ExpandCollapse.png)
-6. すべてのサービスについてメトリックを選択したら、[OK](チェックマーク.md) をクリックして監視の構成を更新します。 選択したメトリックがメトリック テーブルに追加されます。
+6. すべてのサービスについてメトリックを選択したら、[OK] (チェックマーク) をクリックして監視の構成を更新します。 選択したメトリックがメトリック テーブルに追加されます。
 7. テーブルからメトリックを削除するには、メトリックをクリックして選択し、 **[メトリックの削除]**をクリックします。
    
     ![DeleteMetric](./media/storage-monitor-storage-account/Storage_DeleteMetric.png)
@@ -129,6 +133,9 @@ ms.author: robinsh
 
 診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。 $logs コンテナーへのアクセスの詳細については、「 [Storage Analytics Logging について](http://msdn.microsoft.com/library/azure/hh343262.aspx)」を参照してください。
 
-<!---HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

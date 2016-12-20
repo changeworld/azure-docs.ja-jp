@@ -1,12 +1,12 @@
 ---
-title: Azure Media Video Thumbnails を使用してビデオ要約を作成する | Microsoft Docs
-description: ビデオ要約では、ソース ビデオから興味深いスニペットが自動的に選択されるので、長いビデオの要約を簡単に作成することができます。 これは、長いビデオにおいて予定されている内容の概要をすばやく提供する場合に便利です。
+title: "Azure Media Video Thumbnails を使用してビデオ要約を作成する | Microsoft Docs"
+description: "ビデオ要約では、ソース ビデオから興味深いスニペットが自動的に選択されるので、長いビデオの要約を簡単に作成することができます。 これは、長いビデオにおいて予定されている内容の概要をすばやく提供する場合に便利です。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: a245529f-3150-4afc-93ec-e40d8a6b761d
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: milanga;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0c6f4a020430f464a97b0716dea2a40719c0b064
+
 
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails を使用してビデオ要約を作成する
@@ -33,7 +37,7 @@ ms.author: milanga;juliako;
 ### <a name="video-thumbnail-result"></a>ビデオのサムネイル結果
 [ビデオのサムネイル結果](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
-## <a name="task-configuration-(preset)"></a>タスクの構成 (プリセット)
+## <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Video Thumbnails**でビデオのサムネイル タスクを作成するときは、構成プリセットを指定する必要があります。 上記のサムネイル サンプルは、次の基本的な JSON 構成で作成されました。
 
     {"version":"1.0"}
@@ -70,7 +74,7 @@ ms.author: milanga;juliako;
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
 2. 次の JSON プリセットを含む構成ファイルに基づくビデオ サムネイル タスクのジョブを作成します。 
    
-        {               
+        {                
             "version": "1.0",
             "options": {
                 "outputAudio": "true",
@@ -80,7 +84,7 @@ ms.author: milanga;juliako;
         }
 3. 出力ファイルをダウンロードします。 
 
-### <a name=".net-code"></a>.NET コード
+### <a name="net-code"></a>.NET コード
     using System;
     using System.Configuration;
     using System.IO;
@@ -259,6 +263,9 @@ ms.author: milanga;juliako;
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

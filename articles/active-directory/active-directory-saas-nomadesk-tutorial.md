@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Nomadesk の統合 | Microsoft Docs'
-description: Azure Active Directory と Nomadesk の間でシングル サインオンを構成する方法について確認します。
+title: "チュートリアル: Azure Active Directory と Nomadesk の統合 | Microsoft Docs"
+description: "Azure Active Directory と Nomadesk の間でシングル サインオンを構成する方法について確認します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: d261b776-b48e-45f0-9722-0297adefabb8
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3be980b1428c19c7f1f6eb2c165758281d6e46b2
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-nomadesk"></a>チュートリアル: Azure Active Directory と Nomadesk の統合
+# <a name="tutorial-azure-active-directory-integration-with-nomadesk"></a>チュートリアル: Azure Active Directory と Nomadesk の統合
 このチュートリアルの目的は、Nomadesk と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Nomadesk と Azure AD の統合には、次の利点があります。
@@ -44,7 +48,7 @@ Nomadesk と Azure AD の統合を構成するには、次のものが必要で�
 * Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。 
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
@@ -56,7 +60,7 @@ Azure AD への Nomadesk の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Nomadesk を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
     ![Active Directory][1]
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
@@ -98,23 +102,23 @@ Nomadesk で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure クラシック ポータルの **Nomadesk** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![[シングル サインオンの構成]][6] 
+    ![[シングル サインオンの構成]][6]
 2. **[ユーザーの Nomadesk へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_03.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_03.png)
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_04.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_04.png)
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [サインオン URL] ボックスに、"**https://mynomadesk.com/logon/saml/TENANTID**" のパターンを使用して、ユーザーが Nomadesk アプリケーションへのサインオンに使用する URL を入力します。 一般名を参照するときは、この **TENANTID** を実際のテナント ID に置き換える必要があります。
 4. **[Nomadesk でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_05.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_05.png)
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. **[次へ]** をクリックします。
-5. お使いのアプリケーション用に構成された SSO を取得するために、Novatus のサポート チーム ([mailto:support@nomadesk.com](support@nomadesk.com)) に問い合わせます。 Nomadesk チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (エンティティ ID、SSO サインイン URL、およびサインアウト URL) をチームと共有してください。
+    b. **[次へ]**をクリックします。
+5. お使いのアプリケーション用に構成された SSO を入手するために、Nomadesk のサポート チーム (support@nomadesk.com.) に問い合わせます。Nomadesk チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (エンティティ ID、SSO サインイン URL、およびサインアウト URL) をチームと共有してください。
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
@@ -131,42 +135,42 @@ Nomadesk で Azure AD のシングル サインオンを構成してテストす
 
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_09.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_09.png)
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_03.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_03.png)
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_04.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_04.png)
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_05.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_06.png) 
+   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_06.png)
    
    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに、「**Britta Simon**」と入力します。
+   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_07.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_07.png)
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_08.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_08.png)
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
@@ -185,19 +189,19 @@ Nomadesk で Azure AD のシングル サインオンを構成してテストす
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 このセクションの目的は、Nomadesk へのアクセスを許可することによって、Britta Simon が Azure のシングル サインオンを使用できるようにすることです。
 
-![ユーザーの割り当て][200] 
+![ユーザーの割り当て][200]
 
 **Nomadesk に Britta Simon を割り当てるには、次の手順に従います。**
 
 1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![ユーザーの割り当て][201] 
+    ![ユーザーの割り当て][201]
 2. アプリケーションの一覧で **[Nomadesk]**を選択します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_50.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_50.png)
 3. 上部のメニューで **[ユーザー]**をクリックします。
    
-    ![ユーザーの割り当て][203] 
+    ![ユーザーの割り当て][203]
 4. ユーザーの一覧で **[Britta Simon]**を選択します。
 5. 下部にあるツール バーで **[割り当て]**をクリックします。
    
@@ -232,6 +236,6 @@ Nomadesk で Azure AD のシングル サインオンを構成してテストす
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

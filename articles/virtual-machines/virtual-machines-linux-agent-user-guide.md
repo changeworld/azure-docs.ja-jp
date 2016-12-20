@@ -1,13 +1,13 @@
 ---
-title: Linux エージェント ユーザー ガイド | Microsoft Docs
-description: Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。
+title: "Linux エージェント ユーザー ガイド | Microsoft Docs"
+description: "Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: szarkos
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management,azure-resource-manager
-
+ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: 43d3ad9e2b50a84cb9fd70582eb03b9d7d45d788
+
 
 ---
 # <a name="azure-linux-agent-user-guide"></a>Azure Linux エージェント ユーザー ガイド
@@ -57,7 +61,7 @@ Microsoft Azure Linux エージェント (waagent) は、Linux と FreeBSD の�
 * **VM 拡張機能**
   
   * Microsoft やパートナーによって作成されたコンポーネントを Linux VM (IaaS) に挿入し、ソフトウェアおよび構成を自動化
-  * [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  *  [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>通信
 プラットフォームからエージェントへの情報の流れは 2 つのチャンネルを経由します。
@@ -98,7 +102,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 * UDF ファイルシステムのマウントのカーネル サポート。
 
 ## <a name="installation"></a>インストール
-使用しているディストリビューションのパッケージのリポジトリから RPM または DEB パッケージを使用してインストールする方法は、Azure Linux エージェントのインストールおよびアップグレードとしてお勧めする方法です。 すべての[動作保証済みディストリビューション プロバイダー](virtual-machines-linux-endorsed-distros.md)Azure Linux エージェント パッケージをイメージとリポジトリに統合します。
+使用しているディストリビューションのパッケージのリポジトリから RPM または DEB パッケージを使用してインストールする方法は、Azure Linux エージェントのインストールおよびアップグレードとしてお勧めする方法です。 すべての[動作保証済みディストリビューション プロバイダー](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)Azure Linux エージェント パッケージをイメージとリポジトリに統合します。
 
 ソースからカスタムの場所へのインストールやプレフィックスなどの高度なインストール オプションについては、[Github の Azure Linux Agent リポジトリ](https://github.com/Azure/WALinuxAgent)にあるドキュメントを参照してください。
 
@@ -300,8 +304,11 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 * プロビジョニング中に Ubuntu Cloud Image にリソース ディスク マウント ポイントとスワップ領域を構成するときは、次のリソースを参照してください。
   
   * [Ubuntu Wiki: スワップ パーティションの構成に関するページ](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Azure の仮想マシンにカスタム データを挿入する](virtual-machines-windows-classic-inject-custom-data.md)
+  * [Azure の仮想マシンにカスタム データを挿入する](virtual-machines-windows-classic-inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

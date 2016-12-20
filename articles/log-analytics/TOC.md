@@ -18,6 +18,7 @@
 #### [Azure Storage](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
 #### [Configuration Manager](log-analytics-sccm.md)
+#### [OMS ゲートウェイ](log-analytics-oms-gateway.md)
 ### データ ソース
 #### [データ ソースの概要](log-analytics-data-sources.md)
 #### [Windows イベント](log-analytics-data-sources-windows-events.md)
@@ -38,7 +39,6 @@
 #### [アラートの管理](log-analytics-solution-alert-management.md)
 #### [容量管理](log-analytics-capacity.md)
 #### [変更の追跡](log-analytics-change-tracking.md)
-#### [構成の評価](log-analytics-configuration-assessment.md)
 #### [コンテナー](log-analytics-containers.md)
 #### [Key Vault](log-analytics-azure-key-vault.md)
 #### [マルウェアの評価](log-analytics-malware.md)
@@ -48,9 +48,9 @@
 #### [Service Fabric](log-analytics-service-fabric.md)
 #### [SQL の評価](log-analytics-sql-assessment.md)
 #### [Surface Hub](log-analytics-surface-hubs.md)
-#### [システムの更新の評価](log-analytics-system-update.md)
 #### [VMware](log-analytics-vmware.md)
 #### [ワイヤ データ](log-analytics-wire-data.md)
+#### [SCOM 評価](log-analytics-scom-assessment.md)
 ## 分析
 ### [ダッシュボード](log-analytics-dashboards.md)
 ### [ビュー デザイナー](log-analytics-view-designer.md)
@@ -61,13 +61,15 @@
 ### [ログ検索 API](log-analytics-log-search-api.md)
 ### [アラート API](log-analytics-api-alerts.md)
 
+# リファレンス
+## [PowerShell](/powershell/resourcemanager/azurerm.operationalinsights/v2.3.0/azurerm.operationalinsights)
+
 # リソース
 ## [アップグレード分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
+## [料金](https://azure.microsoft.com/pricing/details/log-analytics/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

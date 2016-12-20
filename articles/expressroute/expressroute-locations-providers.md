@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 11/02/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 86b7d396307761acb8baee5761f08a3e1120cddc
+ms.sourcegitcommit: 53a301bd501f223aa8489ba6592c8428c1fcd530
+ms.openlocfilehash: 877a70c162f23ced4606ee8a5c51db5e4eeaa89a
 
 
 ---
@@ -28,7 +28,10 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 ![Location map][0]
 
-地理的リージョン内の少なくとも 1 つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。 次の表は、地理的リージョン、ExpressRoute の場所、Azure リージョンをまとめたものです。
+地理的リージョン内の少なくとも 1 つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。 
+
+### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>地理的リージョン内の Azure リージョンと ExpressRoute の場所の対応
+次の表は、地理的リージョン、ExpressRoute の場所、Azure リージョンをまとめたものです。
 
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
 | --- | --- | --- |
@@ -40,6 +43,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **オーストラリア** |オーストラリア東部、オーストラリア南東部 |メルボルン、シドニー |
 | **インド** |インド西部、インド中部、インド南部 |チェンナイ、ムンバイ |
 
+### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>各国のクラウドのリージョンと地理的境界
 次の表は、国内のクラウドのリージョンと地政学的境界に関する情報をまとめたものです。
 
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
@@ -50,10 +54,10 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 標準の ExpressRoute SKU では、地理的リージョン間の接続はサポートされていません。 グローバル接続に対応するには、ExpressRoute Premium アドオンを有効にする必要があります。 国内のクラウド環境には接続できません。 国内のクラウド環境に接続する必要がある場合、接続プロバイダーにご相談ください。
 
-## <a name="connectivity-provider-locations"></a>接続プロバイダーの場所
+## <a name="a-namelocationsaconnectivity-provider-locations"></a><a name="locations"></a>接続プロバイダーの場所
 > [!div class="op_single_selector"]
-> [プロバイダーで整理した場所](expressroute-locations.md#connectivity-provider-locations)
-> [場所で整理したプロバイダー](expressroute-locations-providers.md#connectivity-provider-locations)
+> * [プロバイダー別の場所](expressroute-locations.md#locations)
+> * [場所別のプロバイダー](expressroute-locations-providers.md#locations)
 > 
 > 
 
@@ -89,7 +93,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
  **+** は近日対応予定を表します
 
 ### <a name="national-cloud-environments"></a>国内のクラウド環境
-#### <a name="us-government-cloud"></a>米国政府のクラウド
+
+### <a name="us-government-cloud"></a>米国政府のクラウド
 | **場所** | **サービス プロバイダー** |
 | --- | --- |
 | **シカゴ** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
@@ -97,7 +102,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ニューヨーク** |Equinix、Level 3 Communications+、Verizon |
 | **ワシントン DC** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 
-#### <a name="china"></a>中国
+### <a name="china"></a>中国
 | **場所** | **サービス プロバイダー** |
 | --- | --- |
 | **北京** |China Telecom |
@@ -105,7 +110,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 詳細については、 [中国の ExpressRoute](http://www.windowsazure.cn/home/features/expressroute/)
 
-#### <a name="germany"></a>ドイツ
+### <a name="germany"></a>ドイツ
 | **場所** | **サービス プロバイダー** |
 | --- | --- |
 | **ベルリン** |Colt+、e-shelter |
@@ -153,6 +158,6 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

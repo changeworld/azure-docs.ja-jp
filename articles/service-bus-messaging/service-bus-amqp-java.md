@@ -1,27 +1,31 @@
 ---
-title: AMQP 1.0 での Service Bus と Java | Microsoft Docs
-description: AMQP で Java から Service Bus を使用する
-services: service-bus
+title: "AMQP 1.0 での Service Bus と Java | Microsoft Docs"
+description: "AMQP で Java から Service Bus を使用する"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 1848f58d-1b40-43e0-89c4-ab14ba34c032
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: eb41df70551bc327473caea4fab95cd269bc0175
+
 
 ---
-# <a name="use-service-bus-from-java-with-amqp-1.0"></a>AMQP 1.0 を使用した Java からの Service Bus の使用
+# <a name="use-service-bus-from-java-with-amqp-10"></a>AMQP 1.0 を使用した Java からの Service Bus の使用
 [!INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
-Java Message Service (JMS) は、Java プラットフォーム上でメッセージ指向ミドルウェアを操作するための標準 API です。 Microsoft Azure Service Bus は、Apache Qpid プロジェクトで開発された AMQP 1.0 ベースの JMS クライアント ライブラリでテストされています。 このライブラリは JMS 1.1 API 全体をサポートしており、AMQP 1.0 に準拠するすべてのメッセージング サービスで使用できます。 このシナリオは [Service Bus for Windows Server](https://msdn.microsoft.com/library/dn282144.aspx) (オンプレミスの Service Bus) でもサポートされています。 詳細については、[Windows Server 用 Service Bus の AMQP][Windows Server 用 Service Bus の AMQP] に関するページを参照してください。
+Java Message Service (JMS) は、Java プラットフォーム上でメッセージ指向ミドルウェアを操作するための標準 API です。 Microsoft Azure Service Bus は、Apache Qpid プロジェクトで開発された AMQP 1.0 ベースの JMS クライアント ライブラリでテストされています。 このライブラリは JMS 1.1 API 全体をサポートしており、AMQP 1.0 に準拠するすべてのメッセージング サービスで使用できます。 このシナリオは [Service Bus for Windows Server](https://msdn.microsoft.com/library/dn282144.aspx) (オンプレミスの Service Bus) でもサポートされています。 詳細については、[「Windows Server 用 Service Bus の AMQP」][Windows Server 用 Service Bus の AMQP]を参照してください。
 
-## <a name="download-the-apache-qpid-amqp-1.0-jms-client-library"></a>Apache Qpid AMQP 1.0 JMS クライアント ライブラリをダウンロードする
+## <a name="download-the-apache-qpid-amqp-10-jms-client-library"></a>Apache Qpid AMQP 1.0 JMS クライアント ライブラリをダウンロードする
 Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョンのダウンロードについては、[http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html](http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html) を参照してください。
 
 Service Bus を使用する JMS アプリケーションをビルドおよび実行するときは、次の 4 つの JAR ファイルを Apache Qpid JMS AMQP 1.0 ディストリビューション アーカイブから Java CLASSPATH に追加する必要があります。
@@ -31,8 +35,8 @@ Service Bus を使用する JMS アプリケーションをビルドおよび実
 * qpid-amqp-1-0-client-jms-[version].jar
 * qpid-amqp-1-0-common-[version].jar
 
-## <a name="work-with-service-bus-queues,-topics,-and-subscriptions-from-jms"></a>JMS から Service Bus のキュー、トピック、サブスクリプションを使用する
-### <a name="java-naming-and-directory-interface-(jndi)"></a>Java Naming and Directory Interface (JNDI)
+## <a name="work-with-service-bus-queues-topics-and-subscriptions-from-jms"></a>JMS から Service Bus のキュー、トピック、サブスクリプションを使用する
+### <a name="java-naming-and-directory-interface-jndi"></a>Java Naming and Directory Interface (JNDI)
 JMS では、Java Naming and Directory Interface (JNDI) を使用して論理名と物理名が関連付けられます。 2 種類の JMS オブジェクト、**ConnectionFactory** および **Destination** が JNDI を使用して解決されます。 JNDI で使用されるプロバイダー モデルでは、さまざまなディレクトリ サービスに接続して、名前解決のタスクを処理できます。 Apache Qpid JMS AMQP 1.0 ライブラリには、テキスト ファイルを使用して構成される単純なプロパティ ファイルベースの JNDI Provider が付属しています。
 
 Qpid Properties File JNDI Provider は、次の形式のプロパティ ファイルを使用して構成されます。
@@ -75,9 +79,9 @@ amqps://[username]:[password]@[namespace].servicebus.windows.net
 
 | 名前 | 意味 |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
-| `[namespace]` |[Azure ポータル][Azure ポータル]から取得した Service Bus 名前空間。 | | | | |
-| `[username]` |[Azure ポータル][Azure ポータル]から取得した Service Bus SAS キー名。 | | | | |
-| `[password]` |[Azure ポータル][Azure ポータル]から取得した Service Bus SAS キーの URL エンコード形式。 | | | | |
+| `[namespace]` |[Azure ポータル][Azure ポータル] から取得した Service Bus 名前空間。 | | | | |
+| `[username]` |[Azure ポータル][Azure ポータル] から取得した Service Bus SAS キーの名前。 | | | | |
+| `[password]` |[Azure ポータル][Azure ポータル] から取得した Service Bus SAS キーの URL エンコード形式。 | | | | |
 
 > [!NOTE]
 > パスワードは手動で URL エンコードする必要があります。 便利な URL エンコード ユーティリティは、[http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) で入手できます。
@@ -174,11 +178,11 @@ JMS 仕様には API メソッドの例外コントラクトが定義されて�
   1. 送信された特定のメッセージが Service Bus によって拒否されたことが問題の原因である場合は、**MessageRejectedException** 例外が発生します。 このエラーは一時的なものである場合と、メッセージに原因となる問題がある場合があります。 推奨される対処方法として、バックオフ ロジックを使用して処理を何度か再試行します。 問題が解決しない場合は、エラーをローカルで記録してメッセージを破棄する必要があります。 この場合、**JMS Connection**、**Session**、または **MessageProducer** オブジェクトを再作成する必要はありません。 
   2. Service Bus が AMQP リンクを閉じたことが問題の原因である場合は、**InvalidDestinationException** 例外が発生します。 これは一時的な問題が原因であるか、メッセージ エンティティが削除されていることが原因である可能性があります。 いずれの場合も、**JMS Connection**、**Session**、**MessageProducer** オブジェクトを再作成する必要があります。 エラー状態が一時的なものである場合、この処理は最終的に正常に完了します。 エンティティが削除されている場合、永続的な失敗となります。
 
-## <a name="messaging-between-.net-and-jms"></a>.NET と JMS 間のメッセージング
+## <a name="messaging-between-net-and-jms"></a>.NET と JMS 間のメッセージング
 ### <a name="message-bodies"></a>メッセージ本文
 JMS が定義する 5 つの異なるメッセージには、**BytesMessage**、**MapMessage**、**ObjectMessage**、**StreamMessage**、**TextMessage** があります。 Service Bus .NET API には、[BrokeredMessage][BrokeredMessage] という 1 種類のメッセージがあります。
 
-#### <a name="jms-to-service-bus-.net-api"></a>JMS から Service Bus .NET API へ
+#### <a name="jms-to-service-bus-net-api"></a>JMS から Service Bus .NET API へ
 次のセクションでは、.NET から各種類の JMS メッセージを使用する方法を示します。 **ObjectMessage** の例は含まれていません。これは、**ObjectMessage** の本文に、.NET アプリケーションで解釈できない、Java プログラミング言語でシリアル化可能なオブジェクトが含まれるためです。
 
 ##### <a name="bytesmessage"></a>BytesMessage
@@ -233,7 +237,7 @@ foreach (Object item in list)
 Console.WriteLine("Text: " + message.GetBody<String>());
 ```
 
-#### <a name="service-bus-.net-apis-to-jms"></a>Service Bus .NET API から JMS へ
+#### <a name="service-bus-net-apis-to-jms"></a>Service Bus .NET API から JMS へ
 以下のセクションでは、.NET アプリケーションが、各 JMS メッセージの種類の JMS で受信されるメッセージを作成する方法を示します。 **ObjectMessage** の例は含まれていません。これは、**ObjectMessage** の本文に、.NET アプリケーションで解釈できない、Java プログラミング言語でシリアル化可能なオブジェクトが含まれるためです。
 
 ##### <a name="bytesmessage"></a>BytesMessage
@@ -264,7 +268,7 @@ message = new BrokeredMessage("this is a text string");
 ```
 
 ### <a name="application-properties"></a>Application properties
-#### <a name="jms-to-service-bus-.net-apis"></a>JMS から Service Bus .NET API へ
+#### <a name="jms-to-service-bus-net-apis"></a>JMS から Service Bus .NET API へ
 JMS メッセージでサポートされるアプリケーションのプロパティの型は、**boolean**、**byte**、**short**、**int**、**long**、**float**、**double**、**String** です。 次の Java コードは、これらのプロパティの各型を使用してメッセージにプロパティを設定する方法を示しています。
 
 ```
@@ -364,7 +368,7 @@ while (propertyNames.hasMoreElements())
 ### <a name="standard-headers"></a>標準ヘッダー
 次の表は、AMQP 1.0 を使用して、JMS 標準ヘッダーと [BrokeredMessage][BrokeredMessage] 標準プロパティがどのように対応するかを示します。
 
-#### <a name="jms-to-service-bus-.net-apis"></a>JMS から Service Bus .NET API へ
+#### <a name="jms-to-service-bus-net-apis"></a>JMS から Service Bus .NET API へ
 | JMS | Service Bus .NET | メモ |
 | --- | --- | --- |
 | JMSCorrelationID |Message.CorrelationID |- |
@@ -378,7 +382,7 @@ while (propertyNames.hasMoreElements())
 | JMSTimestamp |Message.EnqueuedTimeUtc |Conversion |
 | JMSType |Message.Properties[“jms-type”] |- |
 
-#### <a name="service-bus-.net-apis-to-jms"></a>Service Bus .NET API から JMS へ
+#### <a name="service-bus-net-apis-to-jms"></a>Service Bus .NET API から JMS へ
 | Service Bus .NET | JMS | メモ |
 | --- | --- | --- |
 | ContentType |- |現在、利用できません |
@@ -417,6 +421,6 @@ Service Bus で AMQP 1.0 を介して JMS を使用する場合は、次の制�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

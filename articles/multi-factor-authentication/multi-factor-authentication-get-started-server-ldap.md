@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1c57047f9a7eefcc0c4dbf08e705c3193e89f9a7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0cafcd1d21e12a3e8dfd020d1e59ee99d8c4d370
 
 
 ---
-# <a name="ldap-authentication-and-azure-multifactor-authentication-server"></a>LDAP 認証と Azure Multi-Factor Authentication Server
+# <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 認証と Azure Multi-Factor Authentication Server
 既定では、Azure Multi-Factor Authentication Server は、Active Directory からユーザーをインポートするか同期するように構成されます。 ただし、ADAM ディレクトリや特定の Active Directory ドメイン コントローラーなどの別の LDAP ディレクトリにバインドするように構成できます。 LDAP 経由でディレクトリに接続するように構成した場合は、認証を実行する LDAP プロキシとして機能するように Azure Multi-Factor Authentication Server を構成できます。 LDAP バインドは、RADIUS ターゲットとして使用する、IIS 認証使用時にユーザーを事前認証する、または Azure Multi-Factor Authentication ユーザー ポータルでのプライマリ認証のために使用することもできます。
 
 Azure Multi-Factor Authentication を LDAP プロキシとして使用する場合、多要素認証を追加するために、Azure Multi-Factor Authentication Server が LDAP クライアント (VPN アプライアンス、アプリケーションなど) と LDAP ディレクトリ サーバーの間に挿入されます。 Azure Multi-Factor Authentication を機能させるには、クライアント サーバーと LDAP ディレクトリの両方と通信するように Azure Multi-Factor Authentication Server を構成する必要があります。 この構成の中で、Azure Multi-Factor Authentication Server は、クライアント サーバーとアプリケーションから LDAP 要求を受け取り、プライマリ資格情報を検証するためにターゲット LDAP ディレクトリ サーバーに要求を転送します。 LDAP ディレクトリからの応答でプライマリ資格情報が有効であることが示された場合、Azure Multi-Factor Authentication は第 2 要素認証を実行し、応答を LDAP クライアントに送信します。 認証全体は、LDAP サーバーへの認証と多要素認証の両方が成功した場合にのみ成功します。
@@ -45,7 +45,7 @@ LDAP 認証を構成するには、Azure Multi-Factor Authentication Server を 
 15. [フィルター] タブをクリックします。 Server は、Active Directory からコンテナー、セキュリティ グループ、およびユーザーを読み込むように事前構成されています。 別の LDAP ディレクトリにバインドする場合は、表示されるフィルターの編集が必要になることがあります。 フィルターの詳細については、[ヘルプ] リンクをクリックしてください。
 16. [属性] タブをクリックします。 Server は、Active Directory から属性をマッピングするように事前構成されています。
 17. 別の LDAP ディレクトリにバインドする、または事前構成されている属性のマッピングを変更する場合は、[編集] ボタンをクリックします。  ボタンを選択します。
-18. [属性の編集] ダイアログ ボックスで、ディレクトリの LDAP 属性マッピングを変更します。 属性名はキーボードから入力するか、各フィールドの横にある […]  ボタンをクリックして選択できます。
+18. [属性の編集] ダイアログ ボックスで、ディレクトリの LDAP 属性マッピングを変更します。 属性名はキーボードから入力するか、 各フィールドの横にある […] ボタンをクリックして選択できます。
 19. 属性の詳細については、[ヘルプ] リンクをクリックしてください。
 20. [OK] ボタンをクリックします。
 21. [会社の設定] アイコンをクリックし、[ユーザー名の解決] タブを選択します。
@@ -61,6 +61,6 @@ LDAP クライアントを構成するには、次のガイドラインに従い
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

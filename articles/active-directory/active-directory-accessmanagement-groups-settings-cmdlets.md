@@ -1,12 +1,12 @@
 ---
-title: グループの設定を構成するための Azure Active Directory コマンドレット | Microsoft Docs
-description: Azure Active Directory コマンドレットを使用して、グループの設定を管理する方法です。
+title: "グループの設定を構成するための Azure Active Directory コマンドレット | Microsoft Docs"
+description: "Azure Active Directory コマンドレットを使用して、グループの設定を管理する方法です。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 9f2090e6-3af4-4f07-bbb2-1d18dae89b73
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 6a8bd076830d9b639007ee0130320869d2a63746
+
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
@@ -98,7 +102,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 ## <a name="cmdlet-syntax-reference"></a>コマンドレット構文リファレンス
 Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=808260)を参照してください。
 
-## <a name="settingstemplate-object-reference-(group.unified-settingstemplate-object)"></a>SettingsTemplate オブジェクトリファレンス (Group.Unified SettingsTemplate オブジェクト)
+## <a name="settingstemplate-object-reference-groupunified-settingstemplate-object"></a>SettingsTemplate オブジェクトリファレンス (Group.Unified SettingsTemplate オブジェクト)
 * "name": "EnableGroupCreation", "type": "System.Boolean", "defaultValue": "true", "description": "統合グループの作成機能がオンになっているかどうかを示すブール型のフラグ。"
 * "name": "GroupCreationAllowedGroupId", "type": "System.Guid", "defaultValue": "", "description": "統合グループを作成するためのホワイトリストに登録されているセキュリティ グループの GUID。"
 * "name": "ClassificationList", "type": "System.String", "defaultValue": "", "description": "統合グループに適用できる有効な分類の値のコンマ区切りの一覧。"
@@ -119,6 +123,9 @@ Azure Active Directory PowerShell のその他のドキュメントについて�
 * [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

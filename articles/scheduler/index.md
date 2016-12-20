@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-# Scheduler Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 7ab6ecc4f1193245e9778d8a92bb2a5591edfff5
 
-Scheduler is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices and addresses the significant challenges in developing and managing cloud applications.  Scheduler represents the next-generation middleware platform for building and managing these enterprise-class, Tier-1 cloud-scale applications.
+---
+# <a name="scheduler-documentation"></a>Scheduler のドキュメント
+
+Azure Scheduler では、クラウドで実行するアクションを宣言的に記述することができます。  その後スケジュールを設定し、アクションを自動的に実行します。  その後、Scheduler にはジョブの実行結果の履歴が保存され、それを表示することができます。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Scheduler is a distributed systems platform that makes it easy to package, deplo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Scheduler</h3>
+                        <h3>Scheduler の詳細</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Scheduler is a distributed systems platform that makes it easy to package, deplo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Scheduler Video Library</h3>
+                        <h3>Azure Scheduler のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -49,29 +53,11 @@ Scheduler is a distributed systems platform that makes it easy to package, deplo
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create and manage jobs with Azure Scheduler</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/scheduler/scheduler-advanced-complexity">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Create complex schedules and Advanced Recurrence with Azure Scheduler</h3>
+                        <h3>Azure Scheduler の概要</h3>
                     </div>
                 </div>
             </div>
@@ -82,22 +68,62 @@ Scheduler is a distributed systems platform that makes it easy to package, deplo
 
 ---
 
-## Reference
+## <a name="reference"></a>リファレンス
 
-### PowerShell
-[Azure Scheduler PowerShell Cmdlets](https://msdn.microsoft.com/en-us/library/mt490138(v=azure.200).aspx)
-
-### .NET
-[Scheduler Managed Reference](/dotnet/api)
-
-### REST
-[Scheduler REST API Reference](/rest/api/scheduler/)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="https://msdn.microsoft.com/en-us/library/mt490138(v=azure.200).aspx">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Azure Scheduler PowerShell コマンドレット</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/dotnet/api">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>Scheduler に関する管理リファレンス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/scheduler/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p>Scheduler REST API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+<ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/scheduler.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Scheduler Documentation
-        </div>
+Scheduler のドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+<!--HONumber=Dec16_HO2-->
+
+

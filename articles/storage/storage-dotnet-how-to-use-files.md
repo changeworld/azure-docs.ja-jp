@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/18/2016
 ms.author: minet
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: af7b1c3d302282920ce9b347a7686903d1c6fe03
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: bf8acbd37f717c0e055facde781966665ca67d2d
 
 
 ---
@@ -210,8 +210,8 @@ SMB 3.0 のサポートにより、File Storage では、SMB 3.0 クライアン
 ### <a name="mount-the-file-share-from-an-azure-virtual-machine-running-windows"></a>Windows を実行する Azure の仮想マシンからのファイル共有のマウント
 Azure のファイル共有をマウントする方法を示すために、ここでは Windows を実行する Azure の仮想マシンを作成します。このマシンにリモート接続して、共有をマウントします。
 
-1. 最初に、 [Azure ポータルでの Windows 仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページの説明に従って、Azure の仮想マシンを新規作成します。
-2. 次に、「 [Azure ポータルを使用して Windows 仮想マシンにログオンする](../virtual-machines/virtual-machines-windows-connect-logon.md)」の説明に従って仮想マシンにリモート接続します。
+1. 最初に、 [Azure ポータルでの Windows 仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページの説明に従って、Azure の仮想マシンを新規作成します。
+2. 次に、「 [Azure ポータルを使用して Windows 仮想マシンにログオンする](../virtual-machines/virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」の説明に従って仮想マシンにリモート接続します。
 3. 仮想マシンで PowerShell ウィンドウを開きます。
 
 ### <a name="persist-your-storage-account-credentials-for-the-virtual-machine"></a>ストレージ アカウントの資格情報を仮想マシンに適用
@@ -242,7 +242,7 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 さらに、ロールにリモート接続することで、Azure クラウド サービスで実行されるロールからファイル共有をマウントすることもできます。
 
-### <a name="mount-the-file-share-from-an-onpremises-client-running-windows"></a>Windows を実行するオンプレミスのクライアントからのファイル共有のマウント
+### <a name="mount-the-file-share-from-an-on-premises-client-running-windows"></a>Windows を実行するオンプレミスのクライアントからのファイル共有のマウント
 オンプレミスのクライアントからファイル共有をマウントするには、まず次の手順を実行する必要があります。
 
 * SMB 3.0 をサポートする Windows バージョンをインストールします。 Windows では、オンプレミスのクライアントと、クラウドの Azure のファイル共有間でデータを安全に転送するために SMB 3.0 の暗号化を利用しています。

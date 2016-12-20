@@ -1,13 +1,13 @@
 ---
-title: Machine Learning 向け R 言語のクイック スタート チュートリアル | Microsoft Docs
-description: この R プログラミング チュートリアルは、Azure Machine Learning Studio と R 言語を使った予測ソリューションの作成に必要な基本的な事柄を短期間で習得できるように作成されています。
-keywords: クイック スタート、r 言語、r プログラミング言語、r プログラミングのチュートリアル
+title: "Machine Learning 向け R 言語のクイック スタート チュートリアル | Microsoft Docs"
+description: "この R プログラミング チュートリアルは、Azure Machine Learning Studio と R 言語を使った予測ソリューションの作成に必要な基本的な事柄を短期間で習得できるように作成されています。"
+keywords: "クイック スタート、r 言語、r プログラミング言語、r プログラミングのチュートリアル"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 120e7819535dca314ae9bc8cc266ec8771516735
+
 
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Azure Machine Learning 向け R プログラミング言語クイック スタート チュートリアル
@@ -45,7 +49,7 @@ Azure Machine Learning 環境で R コードを作成、テストし、分析と
 * 用意されたデータを使用し、データセットのいくつかの変数間における相関関係を分析します。
 * 最終的に、牛乳生産の季節的な時系列予測モデルを作成します。
 
-## <a name="<a-id="mlstudio"></a>interact-with-r-language-in-machine-learning-studio"></a><a id="mlstudio"></a>Machine Learning Studio での R 言語の操作
+## <a name="a-idmlstudioainteract-with-r-language-in-machine-learning-studio"></a><a id="mlstudio"></a>Machine Learning Studio での R 言語の操作
 このセクションでは、Machine Learning Studio 環境における R プログラミング言語操作の基本を見ていきます。 R 言語は、Azure Machine Learning 環境内でカスタマイズされた分析とデータ操作モジュールを作成するための、強力なツールを提供します。
 
 R コードの小規模な開発、テスト、デバッグを行うには、RStudio を使用します。 このコードを Machine Learning Studio で実行するには、コードを切り取り、[R スクリプトの実行][execute-r-script] モジュールに貼り付けます。  
@@ -126,13 +130,13 @@ RStudio のチュートリアルの手順は、https://support.rstudio.com/hc/se
 
 RStudio の使用に関する追加情報が、[ A][appendixa] に記載されています。  
 
-## <a name="<a-id="scriptmodule"></a>get-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>R スクリプトの実行モジュールでのデータ入出力
+## <a name="a-idscriptmoduleaget-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>R スクリプトの実行モジュールでのデータ入出力
 このセクションでは、[R スクリプトの実行][execute-r-script]モジュールでデータを入出力する方法を説明します。 [R スクリプト実行][execute-r-script]モジュールでさまざまなデータ型の入出力を操作する方法を確認します。
 
 このセクションのすべてのコードは、既にダウンロードした zip ファイルに含まれています。
 
 ### <a name="load-and-check-data-in-machine-learning-studio"></a>Machine Learning Studio でのデータの読み込みとチェック
-#### <a name="<a-id="loading"></a>load-the-dataset"></a><a id="loading"></a>データセットの読み込み
+#### <a name="a-idloadingaload-the-dataset"></a><a id="loading"></a>データセットの読み込み
 最初に、 **csdairydata.csv** ファイルを Azure Machine Learning Studio に読み込みます。
 
 * Azure Machine Learning 環境を起動します。
@@ -309,7 +313,7 @@ R デバイス出力を表示するは、ポートをクリックして、 **[�
 
 *図 8: R デバイス ポートからのグラフィックス出力*  
 
-## <a name="<a-id="filtering"></a>data-filtering-and-transformation"></a><a id="filtering"></a>データのフィルター処理と変換
+## <a name="a-idfilteringadata-filtering-and-transformation"></a><a id="filtering"></a>データのフィルター処理と変換
 このセクションでは、カリフォルニア酪農データに対して、基本的なフィルター処理と変換操作を行います。 このセクションの終了までに、データを分析モデルの構築に適した形式にします。  
 
 具体的には、このセクションで一般的なデータ クリーニングと変換タスク (型の変換、データフレームのフィルター処理、新しい計算列の追加、値の変換) を行います。 このような背景情報は、現実の問題で直面するさまざまなバリエーションに対処するのに役立ちます。
@@ -592,7 +596,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 この時点でデータはクリーンアップされ、モデリングの準備が整いました。 [R スクリプトの実行][execute-r-script]モジュールの結果データセット出力に関する視覚化サマリーを調べると、"Month" 列が希望する 12 個の一意値を持つ "Categorical" であることがわかります。
 
-## <a name="<a-id="timeseries"></a>time-series-objects-and-correlation-analysis"></a><a id="timeseries"></a>時系列オブジェクトと相関関係分析
+## <a name="a-idtimeseriesatime-series-objects-and-correlation-analysis"></a><a id="timeseries"></a>時系列オブジェクトと相関関係分析
 このセクションでは、いくつかの基本的な R 時系列オブジェクトについて調べ、変数間の相関関係を分析します。 目標は、いくつかの時間差におけるペアワイズ相関情報を含むデータフレームを出力することです。
 
 このセクションのすべての R コードは、既にダウンロードした zip ファイルに含まれています。
@@ -709,7 +713,7 @@ R データフレームは、強力なフィルター処理機能をサポート
                     'ERROR: ts.detrend has encountered a Time argument not of class POSIXct',
                     'ERROR: Detrend regression has failed in ts.detrend',
                     'ERROR: Exception occurred in ts.detrend while standardizing time series in function ts.detrend'
-    )
+      )
       # Create a vector of zeros to return as a default in some cases
       zerovec  <- rep(length(ts), 0.0)
 
@@ -873,7 +877,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 
 *図 19: 相関関係分析による結果出力*
 
-## <a name="<a-id="seasonalforecasting"></a>time-series-example:-seasonal-forecasting"></a><a id="seasonalforecasting"></a>時系列の例: 季節的予測
+## <a name="a-idseasonalforecastingatime-series-example-seasonal-forecasting"></a><a id="seasonalforecasting"></a>時系列の例: 季節的予測
 現在データは、分析に適したフォームになっており、変数間に有意な相関関係はないと判断しています。 先に進み、時系列予測モデルを作成しましょう。 このモデルを使用し、2013 年の 12 か月のカリフォルニアにおける牛乳生産を予測します。
 
 この予測モデルには、傾向コンポーネントと季節コンポーネントの 2 つのコンポーネントがあります。 これら 2 つのコンポーネントの成果により、完全な予測が可能になります。 このタイプのモデルは、乗法モデルと呼ばれます。 それに代わるものが、加法モデルです。 この分析を容易にするために、対象の変数に既に対数変換を適用しています。
@@ -981,7 +985,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ##
     ## Residual standard error: 0.0418 on 212 degrees of freedom
-    ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
+    ## Multiple R-squared:  0.941,    Adjusted R-squared:  0.94
     ## F-statistic: 1.12e+03 on 3 and 212 DF,  p-value: <2e-16
 
 この出力の P 値 (Pr(>|t|)) により、2 次の項が有意でない場合があることがわかります。 `update()` 関数を使用し、2 次の項を除去してモデルを変更します。
@@ -1065,7 +1069,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ##
     ## Residual standard error: 0.0263 on 202 degrees of freedom
-    ## Multiple R-squared:     1,   Adjusted R-squared:     1
+    ## Multiple R-squared:     1,    Adjusted R-squared:     1
     ## F-statistic: 1.42e+06 on 14 and 202 DF,  p-value: <2e-16
 
 モデルに切片項がなく、12 個の有意な月因子があることがわかります。 まさにこれが、希望していたものです。
@@ -1148,7 +1152,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
         return(NA)}
 
       if((length(series1) != length(series2))) {
-        warning(messages[3])
+           warning(messages[3])
         return(NA)}
 
       ## If is.log is TRUE exponentiate the values, else just copy
@@ -1203,7 +1207,7 @@ RMS 誤差を測定する関数を準備したので、ビルドを行い、RMS 
 
 これらの結果から、季節因子をモデルに追加すると、RMS 誤差が大幅に少なくなることがわかります。 それほど意外ではありませんが、トレーニング データの RMS 誤差は、予測よりもわずかに少なくなっています。
 
-## <a name="<a-id="appendixa"></a>appendix-a:-guide-to-rstudio"></a><a id="appendixa"></a>付録 A: RStudio ガイド
+## <a name="a-idappendixaaappendix-a-guide-to-rstudio"></a><a id="appendixa"></a>付録 A: RStudio ガイド
 RStudio はドキュメントが非常に整っているため、この付録では、使用を開始するための RStudio ドキュメントの重要なセクションに対するリンクをいくつか示します。
 
 1. プロジェクトの作成
@@ -1220,11 +1224,11 @@ RStudio はドキュメントが非常に整っているため、この付録で
    
    ブレークポイント トラブルシューティング機能のドキュメントは、https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting にあります。
 
-## <a name="<a-id="appendixb"></a>appendix-b:-further-reading"></a><a id="appendixb"></a>付録 B: 参考資料
+## <a name="a-idappendixbaappendix-b-further-reading"></a><a id="appendixb"></a>付録 B: 参考資料
 この R プログラミングのチュートリアルでは、Azure Machine Learning Studio で、R 言語を使用するために必要な基本事項について説明します。 R に精通していない場合、CRAN に 2 つの入門書が用意されています。
 
 * Emmanuel Paradis による『R for Beginners』 (http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) が初心者に適しています。  
-* W. Venables et.  N. Venables  他による『An Introduction to R』 (http://cran.r-project.org/doc/manuals/R-intro.html) は、少し詳しく説明しています。
+* W. N. Venables  他 による『An Introduction to R』 (http://cran.r-project.org/doc/manuals/R-intro.html) は、少し詳しく説明しています。
 
 R の使用を開始するのに役立つ書籍は、多数存在します。 役に立つものをいくつか紹介します。
 
@@ -1280,6 +1284,6 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

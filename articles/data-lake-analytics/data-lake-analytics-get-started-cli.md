@@ -1,6 +1,6 @@
 ---
 title: "Azure コマンド ライン インターフェイスを使用して Azure Data Lake Analytics の使用を開始する | Microsoft Docs"
-description: "Azure コマンド ライン インターフェイスを使用して Data Lake Store アカウントを作成し、U-SQL を使用して Data Lake Analytics ジョブを作成し、ジョブを送信する方法について説明します。 "
+description: "Azure コマンド ライン インターフェイスを使用して Data Lake Analytics アカウントを作成し、U-SQL を使用して Data Lake Analytics ジョブを作成し、ジョブを送信する方法について説明します。 "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8b38c62ae1a60728d08643990238e2cc69cb6447
+ms.sourcegitcommit: c9440e26a563ed9315225b34709b009d01e065d7
+ms.openlocfilehash: ff9b0d9e098fd8c6cde7c63c005c8f1906c6e0f2
 
 
 ---
-# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-azure-commandline-interface-cli"></a>チュートリアル: Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics の使用を開始する
+# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-azure-command-line-interface-cli"></a>チュートリアル: Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Azure CLI を使用して、Azure Data Lake Analytics アカウントを作成し、 [U-SQL](data-lake-analytics-u-sql-get-started.md)で Data Lake Analytics ジョブを定義し、Data Lake Analtyic アカウントにジョブを送信する方法について説明します。 Data Lake Analytics の詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
@@ -165,6 +165,6 @@ azure datalake analytics job show "<Data Lake Analytics Account Name>" "<Job Id>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

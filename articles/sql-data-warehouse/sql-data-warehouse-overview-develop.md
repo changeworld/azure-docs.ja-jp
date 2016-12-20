@@ -1,25 +1,29 @@
 ---
-title: SQL Data Warehouse の設計に関する設計上の決定とコーディング技法 | Microsoft Docs
-description: SQL Data Warehouse に関する開発コンセプト、設計上の決定、推奨事項、およびコーディング技法。
+title: "SQL Data Warehouse の設計に関する設計上の決定とコーディング技法 | Microsoft Docs"
+description: "SQL Data Warehouse に関する開発コンセプト、設計上の決定、推奨事項、およびコーディング技法。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: 996e3afc-c21c-4e21-b9df-997f953f6dfd
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 08/16/2016
-ms.author: jrj;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d1c2255264a4240eecc51199050f8406d141ace2
+
 
 ---
-# SQL Data Warehouse の設計上の決定と コーディング技法
+# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>SQL Data Warehouse の設計上の決定と コーディング技法
 SQL Data Warehouse に関する主要な設計上の決定、推奨事項、およびコーディング技法をより深く理解するために、開発に関する次の記事に目を通してください。
 
-## 主要な設計上の決定
+## <a name="key-design-decisions"></a>主要な設計上の決定
 次の記事には、SQL Data Warehouse を使用した分散データ ウェアハウスの開発を理解するのに必要ないくつかの主な概念と設計上の決定事項が概説されています。
 
 * [接続][接続]
@@ -32,7 +36,7 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 * [CTAS][CTAS]
 * [統計][統計]
 
-## 開発における推奨事項とコーディング技法
+## <a name="development-recommendations-and-coding-techniques"></a>開発における推奨事項とコーディング技法
 次の記事には、SQL Data Warehouse を開発するための具体的なコーディング技法、ヒント、および推奨事項が概説されています。
 
 * [ストアド プロシージャ][ストアド プロシージャ]
@@ -41,11 +45,11 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 * [一時テーブル][一時テーブル]
 * [動的 SQL][動的 SQL]
 * [ループ][ループ]
-* [オプションでのグループ化][オプションでのグループ化]
+* [GROUP BY オプション][オプションでのグループ化]
 * [変数の代入][変数の代入]
 
-## 次のステップ
-開発記事に目を通したら、SQL Data Warehouse でサポートされる構文の詳細について、「[Transact-SQL リファレンス][Transact-SQL リファレンス]」ページを参照してください。
+## <a name="next-steps"></a>次のステップ
+開発記事に目を通したら、SQL Data Warehouse でサポートされる構文の詳細について、[「Transact-SQL リファレンス」][Transact-SQL リファレンス] ページを参照してください。
 
 <!--Image references-->
 
@@ -70,8 +74,12 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 [Transact-SQL リファレンス]: ./sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
-[renaming objects]: https://msdn.microsoft.com/library/mt631611.aspx
+[オブジェクトの名前変更]: https://msdn.microsoft.com/library/mt631611.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

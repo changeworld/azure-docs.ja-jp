@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Deputy の統合 | Microsoft Docs'
-description: Azure Active Directory と Deputy の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Deputy の統合 | Microsoft Docs"
+description: "Azure Active Directory と Deputy の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 5665c3ac-5689-4201-80fe-fcc677d4430d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f0db022251b16c2c3fe1ca93c25d8550a2b899d8
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-deputy"></a>チュートリアル: Azure Active Directory と Deputy の統合
+# <a name="tutorial-azure-active-directory-integration-with-deputy"></a>チュートリアル: Azure Active Directory と Deputy の統合
 このチュートリアルの目的は、Deputy と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Deputy と Azure AD の統合には、次の利点があります。
@@ -104,7 +108,7 @@ Deputy で Azure AD のシングル サインオンを構成してテストす�
     ![Configure Single Sign-On](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_03.png)
 3. **[アプリケーション設定の構成]** ダイアログ ページで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行し、**[次へ]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_04.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_04.png)
    
     a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<your-subdomain>.<region>.deputy.com` のパターンを使用して URL を入力します。
    
@@ -175,16 +179,16 @@ Deputy で Azure AD のシングル サインオンを構成してテストす�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-deputy-tutorial/create_aaduser_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-deputy-tutorial/create_aaduser_06.png)
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -200,14 +204,14 @@ Deputy で Azure AD のシングル サインオンを構成してテストす�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-deputy-tutorial/create_aaduser_08.png)
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
     b. **[完了]** をクリックします。   
 
 ### <a name="creating-a-deputy-test-user"></a>Deputy テスト ユーザーの作成
 Azure AD ユーザーが Deputy にログインできるようにするには、そのユーザーを Deputy にプロビジョニングする必要があります。 Deputy の場合、プロビジョニングは手動で行います。
 
-#### <a name="to-provision-a-user-account,-perform-the-following-steps:"></a>ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+#### <a name="to-provision-a-user-account-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
 1. Deputy 企業サイトに管理者としてログインします。
 2. ナビゲーション ウィンドウの上部にある **[ユーザー]**をクリックします。
    
@@ -282,6 +286,6 @@ Azure AD ユーザーが Deputy にログインできるようにするには、
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

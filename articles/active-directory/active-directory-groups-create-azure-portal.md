@@ -1,33 +1,37 @@
 ---
-title: Azure Active Directory プレビューで新しいグループを作成する | Microsoft Docs
-description: Azure Active Directory でグループを作成し、ユーザー (メンバー) をグループに追加する方法
+title: "Azure Active Directory プレビューで新しいグループを作成する | Microsoft Docs"
+description: "Azure Active Directory でグループを作成し、ユーザー (メンバー) をグループに追加する方法"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: cc5f232a-1e77-45c2-b28b-1fcb4621725c
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 10/17/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 21e36b4bb812eb614332a060ffbfd5b7cc76749a
+
 
 ---
 # <a name="create-a-new-group-in-azure-active-directory-preview"></a>Azure Active Directory プレビューで新しいグループを作成する
 > [!div class="op_single_selector"]
 > * [Azure Portal](active-directory-groups-create-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-accessmanagement-manage-groups.md)
-> * [PowerShell](active-directory-accessmanagement-groups-v2-cmdlets.md)
+> * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 > 
 > 
 
 この記事では、Azure Active Directory (Azure AD) プレビューで新しいグループを作成して設定する方法について説明します。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) グループを使用して管理タスクを実行します。たとえば、複数のユーザーやデバイスにライセンスまたはアクセス許可を一度に割り当てることができます。
 
-## <a name="how-do-i-create-a-group?"></a>どのようにしてグループを作成しますか?
-1. ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com) にサインインします。
+## <a name="how-do-i-create-a-group"></a>どのようにしてグループを作成しますか?
+1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[More services (その他のサービス)]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
    
    ![ユーザー管理を開く](./media/active-directory-groups-create-azure-portal/search-user-management.png)
@@ -55,6 +59,9 @@ ms.author: curtand
 * [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
 * [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

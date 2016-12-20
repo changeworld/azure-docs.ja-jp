@@ -1,19 +1,23 @@
 ---
-title: Service Bus キューを使用するアプリケーションを作成する | Microsoft Docs
-description: Service Bus を使用する簡単なキュー ベースのアプリケーションを作成する方法。
-services: service-bus
+title: "Service Bus キューを使用するアプリケーションを作成する | Microsoft Docs"
+description: "Service Bus を使用する簡単なキュー ベースのアプリケーションを作成する方法。"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 754d91b3-1426-405e-84b4-fd36d65b114a
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2350c3e222277b6d8e837472f55a7b79346d3d21
+
 
 ---
 # <a name="create-applications-that-use-service-bus-queues"></a>Service Bus キューを使用するアプリケーションを作成する
@@ -25,7 +29,7 @@ ms.author: sethm
 
 各 POS 端末は、**DataCollectionQueue** にメッセージを送信することによって、売上データを報告します。 これらのメッセージは、在庫管理システムによって取り出されるまでこのキューに残っています。 POS 端末は処理を続行するために在庫管理システムからの応答を待機する必要がないため、このパターンは*非同期メッセージング*と呼ばれることがよくあります。
 
-## <a name="why-queuing?"></a>キューを使用する理由
+## <a name="why-queuing"></a>キューを使用する理由
 このアプリケーションを設定するために必要なコードを見る前に、POS 端末が在庫管理システムと直接 (同期的に) 対話するのではなく、キューをこのシナリオで使用することの利点について検討します。
 
 ### <a name="temporal-decoupling"></a>一時的な結合の解除
@@ -51,13 +55,13 @@ ms.author: sethm
 Service Bus の使用を開始するには、Azure アカウントが必要です。 アカウントがまだない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)で無料アカウントにサインアップできます。
 
 ### <a name="create-a-namespace"></a>名前空間の作成
-サブスクリプションを作成した後は、[新しい名前空間を作成](../service-bus/service-bus-create-namespace-portal.md)できます。 各名前空間は、一連の Service Bus エンティティに対するスコープ コンテナーの役割を果たします。 新しい名前空間に、すべての Service Bus アカウントについて一意の名前を指定します。 
+サブスクリプションを作成した後は、[新しい名前空間を作成](service-bus-create-namespace-portal.md)できます。 各名前空間は、一連の Service Bus エンティティに対するスコープ コンテナーの役割を果たします。 新しい名前空間に、すべての Service Bus アカウントについて一意の名前を指定します。 
 
 ### <a name="install-the-nuget-package"></a>NuGet パッケージのインストール
 Service Bus の名前空間を使用するには、アプリケーションは Service Bus アセンブリ (具体的には Microsoft.ServiceBus.dll) を参照する必要があります。 このアセンブリは Microsoft Azure SDK に含まれ、[Azure SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からダウンロードできます。 ただし、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法は、[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)です。
 
 ### <a name="create-the-queue"></a>キューを作成する
-Service Bus メッセージング エンティティ (キューおよびトピックのパブリッシュ/サブスクライブ) の管理は、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスを使用して行われます。 Service Bus は、[Shared Access Signature (SAS)](../service-bus/service-bus-sas-overview.md) ベースのセキュリティ モデルを使用します。 [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。 SAS の資格情報を保持するには、[CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) メソッドを使用します。 その後、Service Bus 名前空間のベース アドレスとトークン プロバイダーを使用して、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) インスタンスが作成されます。
+Service Bus メッセージング エンティティ (キューおよびトピックのパブリッシュ/サブスクライブ) の管理は、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスを使用して行われます。 Service Bus は、[Shared Access Signature (SAS)](service-bus-sas-overview.md) ベースのセキュリティ モデルを使用します。 [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。 SAS の資格情報を保持するには、[CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) メソッドを使用します。 その後、Service Bus 名前空間のベース アドレスとトークン プロバイダーを使用して、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) インスタンスが作成されます。
 
 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスには、メッセージング エンティティの作成、列挙、削除を実行するためのメソッドが用意されています。 ここでは、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) インスタンスを作成し、それを使用して **DataCollectionQueue** キューを作成するコードを示します。
 
@@ -145,6 +149,9 @@ catch (Exception e)
 ## <a name="next-steps"></a>次のステップ
 このトピックではキューの基本を説明しました。次に、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」で Service Bus のトピックとサブスクリプションのパブリッシュ/サブスクライブ機能の使用を学習してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

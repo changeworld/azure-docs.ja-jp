@@ -1,12 +1,12 @@
 ---
-title: Machine Learning Web サービスを使用する | Microsoft Docs
-description: 機械学習サービスがデプロイされると、利用可能になっている RESTFul Web サービスを、要求応答サービスまたはバッチ実行サービスのいずれかとして使用できます。
+title: "Machine Learning Web サービスを使用する | Microsoft Docs"
+description: "機械学習サービスがデプロイされると、利用可能になっている RESTFul Web サービスを、要求応答サービスまたはバッチ実行サービスのいずれかとして使用できます。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
 ms.service: machine-learning
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 369b7c8775388f641727cb889b406ac60be13d16
+
 
 ---
 # <a name="how-to-consume-an-azure-machine-learning-web-service-that-has-been-deployed-from-a-machine-learning-experiment"></a>Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法
@@ -41,7 +45,7 @@ For more information on how to manage Azure Machine Learning Web service endpoin
 
 Azure Machine Learning Web サービスの作成とデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする][発行]」をご覧ください。 Machine Learning の実験の作成とデプロイに関する詳しい手順については、「[Azure Machine Learning を使用した予測ソリューションの開発][チュートリアル]」をご覧ください。
 
-## <a name="requestresponse-service-rrs"></a>要求応答サービス (RRS)
+## <a name="request-response-service-rrs"></a>要求応答サービス (RRS)
 要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスであり、Azure Machine Learning Studio の実験で作成およびデプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。 このサービスを使用すると、使用側アプリケーションがリアルタイムでの応答を期待するシナリオに対応できます。
 
 RRS は、1 行または複数行の入力パラメーターを受け取り、出力として 1 行または複数行を生成できます。 出力行には複数の列を含めることができます。
@@ -244,11 +248,11 @@ C# の実装のコード サンプルを次に示します。 クラシック We
 
     /**
      * Download full code from github - [https://github.com/nk773/AzureML_RRSApp](https://github.com/nk773/AzureML_RRSApp)
-     */
+      */
         /**
-          * Call REST API for retrieving prediction from Azure ML 
-          * @return response from the REST API
-          */    
+           * Call REST API for retrieving prediction from Azure ML 
+           * @return response from the REST API
+           */    
         public static String rrsHttpPost() {
 
             HttpPost post;
@@ -415,7 +419,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
         class Program
         {
             static void Main(string[] args)
-            {               
+            {                
                 InvokeBatchExecutionService().Wait();
             }
 
@@ -530,7 +534,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
         "Inputs": { "input1": { "ConnectionString":     "DefaultEndpointsProtocol=https;
             AccountName=myAcctName; AccountKey=Q8kkieg==", 
             "RelativeLocation": "myContainer/sampleinput.csv" } }, 
-        "Outputs": { "output1": { "ConnectionString":   "DefaultEndpointsProtocol=https;
+        "Outputs": { "output1": { "ConnectionString":     "DefaultEndpointsProtocol=https;
             AccountName=myAcctName; AccountKey=kjC12xQ8kkieg==", 
             "RelativeLocation": "myContainer/sampleoutput.csv" } } 
     } 
@@ -541,7 +545,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
          * Call REST API to create a job to Azure ML 
          * for batch predictions
          * @return response from the REST API
-         */ 
+         */    
         public static String besCreateJob() {
 
             HttpPost post;
@@ -590,7 +594,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
          * 
          * @param job job to be started 
          * @return response from the REST API
-         */ 
+         */    
         public static String besStartJob(String job){
             HttpPost post;
             HttpClient client;
@@ -630,7 +634,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
          * 
          * @param job job to be started 
          * @return response from the REST API
-         */ 
+         */    
         public static String besCancelJob(String job) {
             HttpDelete post;
             HttpClient client;
@@ -733,6 +737,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
 [mlstudio]: https://studio.azureml.net
 
 
-<!---HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

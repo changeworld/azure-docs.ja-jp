@@ -1,22 +1,26 @@
 ---
-title: AMQP 1.0 での Service Bus と PHP | Microsoft Docs
-description: AMQP で PHP から Service Bus を使用します。
-services: service-bus
+title: "AMQP 1.0 での Service Bus と PHP | Microsoft Docs"
+description: "AMQP で PHP から Service Bus を使用します。"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: dfb26c2b-41d3-4ed6-936b-b8d2f1dbd470
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 122865f056d6bd7fc8c75665d29753542a83405c
+
 
 ---
-# <a name="using-service-bus-from-php-with-amqp-1.0"></a>AMQP 1.0 で PHP から Service Bus を使用する
+# <a name="using-service-bus-from-php-with-amqp-10"></a>AMQP 1.0 で PHP から Service Bus を使用する
 [!INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
 Proton-PHP は Proton-C にバインドされている PHP 言語です。つまり、Proton-PHP は、C で実装されているエンジンのラッパーとして実装されています。
@@ -29,7 +33,7 @@ Proton-C および関連するバインド (PHP を含む) は、[http://qpid.ap
 > 
 > 
 
-## <a name="working-with-service-bus-queues,-topics,-and-subscriptions-from-php"></a>PHP から Service Bus のキュー、トピック、サブスクリプションを使用する
+## <a name="working-with-service-bus-queues-topics-and-subscriptions-from-php"></a>PHP から Service Bus のキュー、トピック、サブスクリプションを使用する
 次のコードは、Service Bus メッセージング エンティティからメッセージを送受信する方法を示しています。
 
 ### <a name="sending-messages-using-proton-php"></a>Proton-PHP を使用してメッセージを送信する
@@ -65,9 +69,9 @@ if($messenger->incoming())
 $messenger->stop();
 ```
 
-## <a name="messaging-between-.net-and-proton-php"></a>.NET と Proton-PHP 間のメッセージング
+## <a name="messaging-between-net-and-proton-php"></a>.NET と Proton-PHP 間のメッセージング
 ### <a name="application-properties"></a>Application properties
-#### <a name="protonphp-to-service-bus-.net-apis"></a>Proton-PHP から Service Bus .NET API へ
+#### <a name="protonphp-to-service-bus-net-apis"></a>Proton-PHP から Service Bus .NET API へ
 Proton-PHP メッセージでサポートされるアプリケーションのプロパティの型は、**integer**、**double**、**Boolean**、**string**、**object** です。 次の PHP コードは、これらのプロパティの型を使用してメッセージにプロパティを設定する方法を示しています。
 
 ```
@@ -110,7 +114,7 @@ Console.WriteLine();
 | string |string |
 | オブジェクト |オブジェクト |
 
-#### <a name="service-bus-.net-apis-to-php"></a>Service Bus .NET API から PHP へ
+#### <a name="service-bus-net-apis-to-php"></a>Service Bus .NET API から PHP へ
 [BrokeredMessage][BrokeredMessage] 型でサポートされるアプリケーションのプロパティの型は、**byte**、**sbyte**、**char**、**short**、**ushort**、**int**、**uint**、**long**、**ulong**、**float**、**double**、**decimal**、**bool**、**Guid**、**string**、**Uri**、**DateTime**、**DateTimeOffset**、**TimeSpan** です。 次の .NET コードは、これらのプロパティの各型を使用して [BrokeredMessage][BrokeredMessage] オブジェクトにプロパティを設定する方法を示しています。
 
 ```
@@ -196,7 +200,7 @@ if ($message->properties != null)
 | reply\_to\_group\_id |Message.ReplyToSessionId |- |
 | 形式 |該当なし |- |
 
-#### <a name="service-bus-.net-apis-to-proton-php"></a>Service Bus .NET API から Proton-PHP へ
+#### <a name="service-bus-net-apis-to-proton-php"></a>Service Bus .NET API から Proton-PHP へ
 | Service Bus .NET | Proton-PHP | メモ |
 | --- | --- | --- |
 | ContentType |Message-\>content\_type |- |
@@ -223,6 +227,6 @@ if ($message->properties != null)
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

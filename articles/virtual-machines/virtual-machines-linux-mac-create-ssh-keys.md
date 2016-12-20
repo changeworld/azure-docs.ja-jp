@@ -13,22 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2016
+ms.date: 11/14/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 689445bc656b5cdebc7689f7fec6e2ea2683576e
+ms.sourcegitcommit: b80fb49929ce53f33b9a4064ba6ad14d0108d690
+ms.openlocfilehash: c879231fac37ae3c69bac4d201b01469ca18240c
 
 
 ---
 # <a name="create-ssh-keys-on-linux-and-mac-for-linux-vms-in-azure"></a>Azure の Linux VM と Mac for Linux VM に SSH キーを作成する
-SSH キー ペアを使用すると、既定で認証に SSH キーを使用する仮想マシンを Azure に作成できます。そのため、ログインするためのパスワードが不要になります。  パスワードは推測できる場合もあるため、VM が執拗なブルート フォース攻撃にさらされる危険性が生じかねません。 Azure テンプレートまたは `azure-cli` で作成された VM には、デプロイの一部として SSH 公開キーを含めることができるため、デプロイ後の構成を行わずに済みます。  Windows から Linux VM に接続している場合は、[このドキュメント](virtual-machines-linux-ssh-from-windows.md)を参照してください。
+SSH キー ペアを使用すると、既定で認証に SSH キーを使用する仮想マシンを Azure に作成できます。そのため、ログインするためのパスワードが不要になります。  パスワードは推測できる場合もあるため、VM が執拗なブルート フォース攻撃にさらされる危険性が生じかねません。 Azure テンプレートまたは `azure-cli` で作成された VM には、デプロイの一部として SSH 公開キーを含めることができるため、デプロイ後の構成を行わずに済みます。  Windows から Linux VM に接続している場合は、[Windows での SSH キーの作成](virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 
-この記事では以下が必要です。
-
-* Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/))。
-* `azure login` でログインした [Azure CLI](../xplat-cli-install.md)。
-* Azure CLI は、Azure Resource Manager モード (`azure config mode arm`) である "*必要があります*"。
 
 ## <a name="quick-commands"></a>クイック コマンド
 次のコマンドで、例を独自の値に置き換えます。
@@ -92,7 +87,7 @@ Linux サーバーにログインするための最も簡単な方法は、SSH �
 ## <a name="create-the-ssh-keys"></a>SSH キーの作成
 Azure では、長さ 2,048 ビット以上の ssh-rsa 形式の公開キーと秘密キーを必須としています。 このキーを作成するには、`ssh-keygen` を使用します。一連の質問に答えることによって、秘密キーと対応する公開キーが出力されます。 Azure VM が作成されると、公開キーが `~/.ssh/authorized_keys` にコピーされます。  `~/.ssh/authorized_keys` の SSH キーは、クライアントが SSH ログイン接続の対応する秘密キーと一致することを確認するために使用されます。
 
-## <a name="using-sshkeygen"></a>ssh-keygen の使用
+## <a name="using-ssh-keygen"></a>ssh-keygen の使用
 次に示すのは、2,048 ビット RSA を使用してパスワードで保護された (暗号化された) SSH キー ペアを作成するコマンドです。識別しやすいようにコメントを付けています。  
 
 最初に、ディレクトリを変更すると、すべての SSH キーがそのディレクトリに作成されます。
@@ -126,7 +121,7 @@ ssh-keygen -t rsa -b 2048 -C "myusername@myserver"
 ssh-keygen -f ~/.ssh/id_rsa.pub -e > ~/.ssh/id_ssh2.pem
 ```
 
-## <a name="example-of-sshkeygen"></a>ssh-keygen の例
+## <a name="example-of-ssh-keygen"></a>ssh-keygen の例
 ```bash
 ssh-keygen -t rsa -b 2048 -C "myusername@myserver"
 Generating public/private rsa key pair.
@@ -170,7 +165,7 @@ ls -al ~/.ssh
 
 `ssh-keygen` では、パスワードのことを "パスフレーズ" と言います。  キー ペアにはパスワードを追加することを " *強く* " お勧めします。 キー ペアを保護するパスワードがないと、秘密キー ファイルを持っている人は、そのファイルを使用して、対応する公開キーを持つ任意のサーバーにログインすることができます。 パスワードを追加すれば、第三者に秘密キー ファイルへのアクセスを許してしまった場合でも、認証用のキーを変更する時間ができるので、保護のレベルが上がります。
 
-## <a name="using-sshagent-to-store-your-private-key-password"></a>ssh-agent を使用して秘密キーのパスワードを格納する
+## <a name="using-ssh-agent-to-store-your-private-key-password"></a>ssh-agent を使用して秘密キーのパスワードを格納する
 SSH ログインのたびに秘密キー ファイルのパスワードを入力しなくて済むように、 `ssh-agent` を使用して秘密キー ファイルのパスワードをキャッシュできます。 Mac を使用している場合、 `ssh-agent`を呼び出すと、秘密キーのパスワードは OSX キーチェーンによって安全に保存されます。
 
 最初に、`ssh-agent` が実行されていることを確認します。
@@ -247,13 +242,12 @@ ssh fedora22
 ## <a name="next-steps"></a>次のステップ
 次のステップでは、新しい SSH 公開キーを使用して Azure Linux VM を作成します。  Azure VM は、SSH 公開キーをログインとして作成した方が、既定のログイン方法であるパスワードを使って作成するよりも高いセキュリティが得られます。  SSH キーを使用して作成された Azure VM は、既定ではパスワードが無効にされます。そのため、推測によるブルート フォース攻撃を回避できます。
 
-* [Azure テンプレートを使用して安全な Linux VM を作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
-* [Azure ポータルを使用して安全な Linux VM を作成する](virtual-machines-linux-quick-create-portal.md)
-* [Azure CLI を使用して安全な Linux VM を作成する](virtual-machines-linux-quick-create-cli.md)
+* [Azure テンプレートを使用して安全な Linux VM を作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure ポータルを使用して安全な Linux VM を作成する](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure CLI を使用して安全な Linux VM を作成する](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

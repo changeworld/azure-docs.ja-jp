@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ricardom
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c4d3f708ba7cd05343e11bdbac6e63708b0af28e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c4a694211cfba1caef04b0584fce5bc745631237
 
 
 ---
@@ -202,6 +202,6 @@ If you want to authorize that same application to read secrets in your vault, ru
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

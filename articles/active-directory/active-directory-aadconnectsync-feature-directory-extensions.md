@@ -1,12 +1,12 @@
 ---
-title: 'Azure AD Connect 同期: ディレクトリ拡張機能 | Microsoft Docs'
-description: このトピックでは、Azure AD Connect のディレクトリ拡張機能について説明します。
+title: "Azure AD Connect 同期: ディレクトリ拡張機能 | Microsoft Docs"
+description: "このトピックでは、Azure AD Connect のディレクトリ拡張機能について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: AndKjell
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/19/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 78fa8bc1394f98c6aa90a75ba17ec36106f09290
+
 
 ---
-# <a name="azure-ad-connect-sync:-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
+# <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure AD のスキーマを拡張できます。 この機能により、独自に構築した LOB アプリで利用する属性を引き続きオンプレミスで管理することが可能です。 これらの属性は、[Azure AD Graph ディレクトリ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)または [Microsoft Graph](https://graph.microsoft.io/) を通じて利用できます。 それぞれ [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net) と [Microsoft Graph Explorer](https://graphexplorer2.azurewebsites.net/) を使用して、利用可能な属性を表示できます。
 
 現在のところ、これらの属性を使用する Office 365 ワークロードはありません。
@@ -32,7 +36,7 @@ ms.author: billmath
 
 オブジェクトは、最大で 100 個のディレクトリ拡張機能属性を持つことができます。 最大長は、250 文字です。 属性値がそれより長い場合は、同期エンジンによって切り捨てられます。
 
-これらの属性が利用できるアプリケーションは、Azure AD Connect のインストール中に登録されます。 このアプリケーションは、Azure ポータルで確認できます。  
+これらの属性が利用できるアプリケーションは、Azure AD Connect のインストール中に登録されます。 このアプリケーションは、Azure Portal で確認できます。  
 ![Schema Extension App](./media/active-directory-aadconnectsync-feature-directory-extensions/extension3.png)
 
 これで、これらの属性を Graph を通じて利用できるようになりました。  
@@ -45,6 +49,9 @@ ms.author: billmath
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

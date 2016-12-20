@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 09/13/2016
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 019395d76a1e2d8e75b4ac1474abe45ce1b8aeb1
+ms.sourcegitcommit: b8bb16b9557006e894deca76e4274d93a5a27144
+ms.openlocfilehash: 770356c0e334f4efc46f0d5f41433ff93c5046f5
 
 
 ---
-# <a name="about-vpn-devices-for-sitetosite-vpn-gateway-connections"></a>サイト間 VPN Gateway 接続の VPN デバイスについて
-サイト間 (S2S) VPN 接続を構成するには、VPN デバイスが必要です。 サイト間接続は、ハイブリッド ソリューションを作成するときに、またはオンプレミスのネットワークと仮想ネットワークの間にセキュリティで保護された接続が必要な場合にいつでも使用することができます。 この記事では、互換性のある VPN デバイス、および構成パラメーターについて説明します。 
+# <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN Gateway 接続の VPN デバイスについて
+サイト間 (S2S) VPN 接続を構成するには、VPN デバイスが必要です。 サイト間接続は、ハイブリッド ソリューションを作成するときに、またはオンプレミスのネットワークと仮想ネットワークの間にセキュリティで保護された接続が必要な場合にいつでも使用することができます。 この記事では、互換性のある VPN デバイス、および構成パラメーターについて説明します。
 
 > [!NOTE]
 > サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。                                                                                                                                                                               
-> 
-> 
+>
+>
 
 「[検証済みの VPN デバイス](#devicetable)」の表にデバイスが見つからない場合は、この記事の「[未検証の VPN デバイス](#additionaldevices)」セクションを参照してください。 デバイスは引き続き Azure で動作する可能性があります。 VPN デバイスのサポートは、デバイスの製造元に問い合わせてください。
 
@@ -36,10 +36,10 @@ ms.openlocfilehash: 019395d76a1e2d8e75b4ac1474abe45ce1b8aeb1
 * 静的および動的ルーティングの用語に変更がありました。 おそらく、両方の用語が見つかるでしょう。 機能上の変更はありませんが、名前のみが変更されています。
   * 静的ルーティング = PolicyBased
   * 動的ルーティング = RouteBased
-* 高性能 VPN ゲートウェイと RouteBased VPN ゲートウェイの仕様は、特に記載がない限り同じです。 たとえば、RouteBased VPN ゲートウェイと互換性がある検証済みの VPN デバイスは、Azure 高性能 VPN ゲートウェイとも互換性があります。 
+* 高性能 VPN ゲートウェイと RouteBased VPN ゲートウェイの仕様は、特に記載がない限り同じです。 たとえば、RouteBased VPN ゲートウェイと互換性がある検証済みの VPN デバイスは、Azure 高性能 VPN ゲートウェイとも互換性があります。
 
 ## <a name="a-namedevicetableavalidated-vpn-devices"></a><a name="devicetable"></a>検証済みの VPN デバイス
-Microsoft では、デバイス ベンダーと協力して一連の標準的な VPN デバイスを検証しました。 以下の一覧に含まれているデバイス ファミリ内のすべてのデバイスは、Azure VPN ゲートウェイで動作します。 「 [VPN Gateway について](vpn-gateway-about-vpngateways.md) 」を参照して、構成するソリューションで作成する必要があるゲートウェイの種類を確認してください。 
+Microsoft では、デバイス ベンダーと協力して一連の標準的な VPN デバイスを検証しました。 以下の一覧に含まれているデバイス ファミリ内のすべてのデバイスは、Azure VPN ゲートウェイで動作します。 「 [VPN Gateway について](vpn-gateway-about-vpngateways.md) 」を参照して、構成するソリューションで作成する必要があるゲートウェイの種類を確認してください。
 
 VPN デバイスを構成するには、適切なデバイス ファミリに対応するリンクを参照してください。 VPN デバイスのサポートは、デバイスの製造元に問い合わせてください。
 
@@ -70,15 +70,15 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 (*) ISR 7200 シリーズのルーターは、PolicyBased の VPN だけをサポートしています。
 
-## <a name="a-nameadditionaldevicesanonvalidated-vpn-devices"></a><a name="additionaldevices"></a>未検証の VPN デバイス
-検証済みの VPN デバイスの表にデバイスが見つからない場合でも、サイト間接続に利用できる可能性があります。 お使いの VPN デバイスが、「 [VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md#gateway-requirements) 」の記事の「ゲートウェイの要件」セクションに記載されている最小要件を満たしていることを確認してください。 最小要件を満たしていれば、そのデバイスは VPN ゲートウェイでも正常に動作します。 詳細なサポートと構成手順については、デバイスの製造元にお問い合わせください。
+## <a name="a-nameadditionaldevicesanon-validated-vpn-devices"></a><a name="additionaldevices"></a>未検証の VPN デバイス
+検証済みの VPN デバイスの表にデバイスが見つからない場合でも、サイト間接続に利用できる可能性があります。 お使いの VPN デバイスが、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」のゲートウェイの要件に関するセクションに記載されている最小要件を満たしていることを確認してください。 最小要件を満たしていれば、そのデバイスは VPN ゲートウェイでも正常に動作します。 詳細なサポートと構成手順については、デバイスの製造元にお問い合わせください。
 
 ## <a name="editing-device-configuration-samples"></a>デバイス構成のサンプルの編集
-提供されている VPN デバイス構成のサンプルをダウンロードしたら、一部の値を使用している環境の設定を反映した値に置換する必要があります。 
+提供されている VPN デバイス構成のサンプルをダウンロードしたら、一部の値を使用している環境の設定を反映した値に置換する必要があります。
 
 **サンプルを編集するには:**
 
-1. メモ帳を使用してサンプルを開きます。 
+1. メモ帳を使用してサンプルを開きます。
 2. お使いの環境に関連する値を含む <*テキスト*> 文字列をすべて検索して置き換えます。 < と > を必ず含めてください。 名前を指定する場合、選択する名前は一意である必要があります。 コマンドが機能しない場合は、デバイスの製造元のドキュメントを参照してください。
 
 | **サンプル テキスト** | **次に変更** |
@@ -98,8 +98,8 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 ## <a name="ipsec-parameters"></a>IPsec パラメーター
 > [!NOTE]
 > 以下の表に記載した値は Azure VPN Gateway でサポートされていますが、現在、Azure VPN Gateway から特定の組み合わせを指定または選択する方法はありません。 すべての制約は、オンプレミスの VPN デバイスから指定する必要があります。 また、MSS は 1350 で固定する必要があります。
-> 
-> 
+>
+>
 
 ### <a name="ike-phase-1-setup"></a>IKE フェーズ 1 セットアップ
 | **プロパティ** | **PolicyBased** | **RouteBased、および Standard または 高性能 VPN ゲートウェイ** |
@@ -150,7 +150,6 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 * RouteBased および高性能 VPN ゲートウェイで IPsec ESP NULL 暗号化を指定することができます。 Null ベースの暗号化では、転送中のデータ保護は提供されません。そのため、最大のスループットおよび最小の待機時間が必要な場合にのみ使用する必要があります。  クライアントは、VNet 間の通信シナリオ、または暗号化がソリューションの他の場所に適用されている場合に、この暗号化の使用を選択することができます。
 * インターネット経由のクロスプレミス接続では、重要な通信のセキュリティを確保するため、上記の表にある暗号化およびハッシュ アルゴリズムによる既定の Azure VPN Gateway 設定を使用してください。
-
 
 
 

@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 842b6e0b69661a91ebb997346b34da00576378c2
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 4ad4c6cf0aca7ac5f1d179eb3d91ecb5846319b4
 
 
 ---
 # <a name="provision-a-sql-server-virtual-machine-in-the-azure-portal"></a>Azure ポータルでの SQL Server 仮想マシンのプロビジョニング
 > [!div class="op_single_selector"]
-> * [ポータル](virtual-machines-windows-portal-sql-server-provision.md)
-> * [PowerShell](virtual-machines-windows-ps-sql-create.md)
+> * [ポータル](virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> * [PowerShell](virtual-machines-windows-ps-sql-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 > 
 > 
 
@@ -57,7 +57,7 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
 6. 各テンプレートでは、SQL Server のバージョンとオペレーティング システムが示されています。 一覧からこれらのイメージのいずれかを選択します。 次に、仮想マシン イメージの説明を提供する詳細ブレードを確認します。
    
    > [!NOTE]
-   > SQL VM イメージでは、SQL Server のライセンス コストが、作成した VM の分単位の料金に含まれます。 また、ライセンス持ち込み (BYOL) により VM の料金のみを支払うという別のオプションもあります。 それらのイメージの名前には、{BYOL} というプレフィックスが付きます。 このオプションの詳細については、[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページを参照してください。
+   > SQL VM イメージでは、SQL Server のライセンス コストが、作成した VM の分単位の料金に含まれます。 また、ライセンス持ち込み (BYOL) により VM の料金のみを支払うという別のオプションもあります。 それらのイメージの名前には、{BYOL} というプレフィックスが付きます。 このオプションの詳細については、[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
    > 
    > 
 7. **[デプロイ モデルの選択]** で **[Resource Manager]** が選択されていることを確認します。 Resource Manager が、新しい仮想マシンに推奨されるデプロイ モデルです。 **[作成]**をクリックします。
@@ -101,7 +101,7 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 運用環境のワークロードには、 [Premium Storage](../storage/storage-premium-storage.md)をサポートする仮想マシンのサイズを選択することをお勧めします。 そのレベルのパフォーマンスが必要ない場合は、 **[すべて表示]** ボタンを使用すると、マシン サイズのオプションすべてが表示されます。 たとえば、開発またはテスト環境用には、小さいマシン サイズを使用することができます。
 
 > [!NOTE]
-> 仮想マシン サイズの詳細については、 [仮想マシンのサイズ](virtual-machines-windows-sizes.md)に関するページを参照してください。 SQL Server VM のサイズに関する考慮事項については、「 [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
+> 仮想マシン サイズの詳細については、 [仮想マシンのサイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 SQL Server VM のサイズに関する考慮事項については、「 [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 > 
 > 
 
@@ -120,7 +120,7 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 * **[ストレージ アカウント]**で、自動的にプロビジョニングされたストレージ アカウント名をそのまま使用できます。 また、 **[ストレージ アカウント]** をクリックして、既存のアカウントを選択し、ストレージ アカウントの種類を構成することもできます。 既定では、ローカル冗長ストレージで新しいストレージ アカウントが作成されます。 ストレージ オプションの詳細については、「 [Azure Storage のレプリケーション](../storage/storage-redundancy.md)」を参照してください。
 * **[ネットワーク]**で、自動的に設定された値をそのまま使用できます。 また、各機能をクリックして、**仮想ネットワーク**、**サブネット**、**パブリック IP アドレス**、**ネットワーク セキュリティ グループ**を手動で構成することもできます。 このチュートリアルでは、既定値をそのまま使用します。
 * **[監視]** は、既定では VM に指定されているものと同じストレージ アカウントで有効になります。 これらの設定はここで変更できます。
-* **[可用性セット]**で、可用性セットを指定します。 このチュートリアルでは、 **[なし]**を選択します。 SQL AlwaysOn 可用性グループを設定する場合は、仮想マシンを再作成しないように可用性を構成します。  詳細については、「 [Virtual Machines の可用性管理](virtual-machines-windows-manage-availability.md)」を参照してください。
+* **[可用性セット]**で、可用性セットを指定します。 このチュートリアルでは、 **[なし]**を選択します。 SQL AlwaysOn 可用性グループを設定する場合は、仮想マシンを再作成しないように可用性を構成します。  詳細については、「 [Virtual Machines の可用性管理](virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 これらの設定の構成が済んだら、 **[OK]**をクリックします。
 
@@ -162,7 +162,7 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 一般的に、シナリオで許容される最も制限の厳しい接続を選択すると、セキュリティが向上します。 ただし、ネットワーク セキュリティ グループの規則と SQL 認証または Windows 認証を使用すると、すべてのオプションをセキュリティで保護できます。
 
 **[ポート]** の既定値は 1433 です。 別のポート番号を指定できます。
-詳細については、 [Microsoft Azure での SQL Server 仮想マシンへの接続 (Resource Manager)](virtual-machines-windows-sql-connect.md)に関する記事を参照してください。
+詳細については、 [Microsoft Azure での SQL Server 仮想マシンへの接続 (Resource Manager)](virtual-machines-windows-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事を参照してください。
 
 ### <a name="authentication"></a>認証
 SQL Server 認証が必要な場合は、 **[有効]** under **[有効]**にアクセスしてください。
@@ -206,7 +206,7 @@ SQL Server 認証を有効にしない場合は、VM のローカル管理者ア
 
 ![SQL Automated Patching](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-patching.png)
 
-詳細については、 [Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-sql-automated-patching.md)に関するページを参照してください。
+詳細については、 [Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-sql-automated-patching.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 ### <a name="automated-backup"></a>自動化されたバックアップ
 **[自動バックアップ]**では、すべてのデータベースの自動データベース バックアップを有効にすることができます。 既定では、自動バックアップは無効です。
@@ -221,7 +221,7 @@ SQL の自動バックアップを有効にするときは、以下の構成を�
 
 ![SQL Automated Backup](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup.png)
 
- 詳細については、「 [Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-sql-automated-backup.md)」をご覧ください。
+ 詳細については、「 [Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-sql-automated-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 ### <a name="azure-key-vault-integration"></a>Azure Key Vault の統合
 暗号化のためのセキュリティ シークレットを Azure に格納するには、**[Azure Key Vault の統合]**、**[有効]** の順にクリックします。
@@ -237,7 +237,7 @@ SQL の自動バックアップを有効にするときは、以下の構成を�
 | **プリンシパル シークレット** |Azure Active Directory サービスのプリンシパル シークレット。 クライアント シークレットとも呼ばれます。 |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
 | **資格情報名** |**資格情報名**: AKV 統合により SQL Server 内に資格情報が作成されます。VM に Key Vault にアクセスする許可が与えられます。 この資格情報の名前を選択します。 |mycred1 |
 
-詳細については、 [Azure VM 上の SQL Server に関する Azure Key Vault 統合の構成](virtual-machines-windows-ps-sql-keyvault.md)に関するページを参照してください。
+詳細については、 [Azure VM 上の SQL Server に関する Azure Key Vault 統合の構成](virtual-machines-windows-ps-sql-keyvault.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 SQL Server の設定の構成が完了したら、 **[OK]**をクリックします。
 
@@ -282,7 +282,7 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 このチュートリアルでは、仮想マシンと **SQL Server 認証**に**パブリック** アクセスを選択しています。 これらの設定により、インターネット経由による任意のクライアントから SQL Server への接続を許可するように仮想マシンが自動的に構成されています (適切な SQL ログインを持っている場合)。
 
 > [!NOTE]
-> プロビジョニング時に [パブリック] を選択しなかった場合、インターネット経由で SQL Server インスタンスにアクセスするには、追加の手順が必要です。 詳細については、[SQL Server 仮想マシンへの接続](virtual-machines-windows-sql-connect.md)に関するページを参照してください。
+> プロビジョニング時に [パブリック] を選択しなかった場合、インターネット経由で SQL Server インスタンスにアクセスするには、追加の手順が必要です。 詳細については、[SQL Server 仮想マシンへの接続](virtual-machines-windows-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 > 
 > 
 
@@ -293,7 +293,7 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 > 
 
 ## <a name="next-steps"></a>次のステップ
-Azure での SQL Server の使用に関するその他の情報については、[Azure 仮想マシンにおける SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) に関する記事と[よく寄せられる質問](virtual-machines-windows-sql-server-iaas-faq.md)に関するページを参照してください。
+Azure での SQL Server の使用に関するその他の情報については、[Azure 仮想マシンにおける SQL Server](virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関する記事と[よく寄せられる質問](virtual-machines-windows-sql-server-iaas-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 Azure 仮想マシン上の SQL Server の概要に関するビデオについては、「 [Azure VM is the best platform for SQL Server 2016 (Azure VM は SQL Server 2016 に最適なプラットフォーム)](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)」をご覧ください。
 

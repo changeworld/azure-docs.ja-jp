@@ -1,30 +1,34 @@
 ---
-title: .NET で Service Bus Relay を使用する方法 | Microsoft Docs
-description: Azure Service Bus Relay サービスを使用して、別の場所にホストされた 2 つのアプリケーションに接続する方法について説明します。
-services: service-bus
+title: ".NET で Service Bus WCF Relay を使用する方法 | Microsoft Docs"
+description: "Azure Service Bus Relay サービスを使用して、別の場所にホストされた 2 つのアプリケーションに接続する方法について説明します。"
+services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 5493281a-c2e5-49f2-87ee-9d3ffb782c75
+ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9f7f9dc2eb6332c8f179fc35c9f746cbe5a7985e
+
 
 ---
-# <a name="how-to-use-the-azure-service-bus-relay-service"></a>Azure Service Bus Relay サービスの使用方法
+# <a name="how-to-use-the-service-bus-wcf-relay-with-net"></a>.NET で Service Bus WCF Relay を使用する方法
 この記事では、Service Bus Relay サービスの使用方法について説明します。 サンプルは、C# で記述され、Windows Communication Foundation (WCF) API と Service Bus アセンブリに含まれている拡張機能を使用しています。 Service Bus Relay の詳細については、「[Service Bus のリレー型メッセージング](service-bus-relay-overview.md)」の概要を参照してください。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="what-is-the-service-bus-relay?"></a>Service Bus Relay とは
+## <a name="what-is-the-service-bus-relay"></a>Service Bus Relay とは
 [Service Bus *Relay*](service-bus-relay-overview.md) サービスを使用して、Azure データセンターと独自のオンプレミスのエンタープライズ環境の両方で動作するハイブリッド アプリケーションを構築できます。 Service Bus Relay を使用することで、ファイアウォール接続を開放せず、または企業ネットワークのインフラストラクチャ内部を変更せずに、企業のエンタープライズ ネットワーク内部にある Windows Communication Foundation (WCF) サービスを安全にパブリック クラウドに公開することができます。
 
-![リレーの概念](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
+![WCF Relay の概念](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
 
 Service Bus Relay を使用して、既存のエンタープライズ環境内の WCF サービスをホストできます。 その後で、その WCF サービスに対する受信セッションと受信要求のリッスンを Azure 内で動作するService Bus にデリゲートできます。 これにより、Azure で実行されるアプリケーション コードや、モバイル ワーカー環境またはエクストラネット パートナー環境に対して、これらのサービスを公開できます。 Service Bus を使用すると、これらのサービスにアクセスできるユーザーを詳細なレベルで安全に制御できます。 これは、既存のエンタープライズ ソリューションのデータとアプリケーション機能を公開してクラウドで活用するため、強力で安全な手段となります。
 
@@ -117,7 +121,7 @@ sh.Close();
 
 この例では、同じコントラクト実装にある 2 つのエンドポイントを作成します。 1 つはローカルで、もう 1 つは Service Bus を経由して提示されます。 大きな違いはバインドです。ローカルには [NetTcpBinding](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx) を使用し、Service Bus エンドポイントとアドレスには [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx) を使用します。 ローカル エンドポイントは、個々のポートを含むローカル ネットワーク アドレスを持ちます。 Service Bus エンドポイントは、文字列 `sb`、使用する名前空間の名前、およびパス "solver" で構成されるエンドポイント アドレスを持ちます。 全体としては `sb://[serviceNamespace].servicebus.windows.net/solver` という URI になり、このサービス エンドポイントは完全修飾の外部 DNS 名を持つ Service Bus TCP エンドポイントとして識別されます。 プレースホルダーを置き換えたコードを **Service** アプリケーションの `Main` 関数に配置すると、このサービスが実際に機能します。 サービスで Service Bus を排他的にリッスンするには、ローカル エンドポイントの宣言を削除します。
 
-### <a name="configure-a-service-host-in-the-app.config-file"></a>サービス ホストを App.config ファイルで構成する
+### <a name="configure-a-service-host-in-the-appconfig-file"></a>サービス ホストを App.config ファイルで構成する
 App.config ファイルを使用してホストを構成することもできます。 この場合にコードをホストするサービスは、次の例にあります。
 
 ```
@@ -182,7 +186,7 @@ using (var ch = cf.CreateChannel())
 
 これで、クライアントとサービスを構築して実行できます (先にサービスを実行します)。クライアントはサービスを呼び出し、**9** を出力します。 クライアントとサーバーを別々のコンピューターで実行しても (ネットワークが異なっても)、通信は維持されます。 クライアント コードは、クラウド上でもローカルでも実行できます。
 
-#### <a name="configure-a-client-in-the-app.config-file"></a>App.config ファイルでクライアントを構成する
+#### <a name="configure-a-client-in-the-appconfig-file"></a>App.config ファイルでクライアントを構成する
 次のコードは、App.config ファイルを使用してクライアントを構成する方法を示しています。
 
 ```
@@ -219,14 +223,15 @@ using (var ch = cf.CreateChannel())
 これで、Service Bus Relay サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 * [Service Bus のリレー型メッセージングの概要](service-bus-relay-overview.md)
-* [Azure Service Bus アーキテクチャの概要](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
-* Service Bus のサンプルを [Azure のサンプル][Azure のサンプル]からダウンロードするか、[Service Bus サンプルの概要][Service Bus サンプルの概要]を参照してください。
+* [Azure Service Bus アーキテクチャの概要](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
+* Service Bus のサンプルを [Azure のサンプル][Azure のサンプル] からダウンロードするか、[Service Bus サンプルの概要][Service Bus サンプルの概要]を参照してください。
 
 [Service Bus による Shared Access Signature 認証]: ../service-bus-messaging/service-bus-shared-access-signature-authentication.md
 [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 [Service Bus サンプルの概要]: ../service-bus-messaging/service-bus-samples.md
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -10,14 +10,14 @@ tags: azure-resource-manager
 ms.assetid: 026bca75-2946-4c03-b4f6-9f3c5809c69a
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayanannamalai;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 688fed72b32767f33010b9e8f17921b16320072d
+ms.sourcegitcommit: 2ae62a2e657e3b20e258b5afaa1d03b6825e8019
+ms.openlocfilehash: e40af1e363f7add88ead6e552290926abe4db328
 
 
 ---
@@ -138,6 +138,6 @@ ms.openlocfilehash: 688fed72b32767f33010b9e8f17921b16320072d
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

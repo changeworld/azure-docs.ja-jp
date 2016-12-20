@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と OpsGenie の統合 | Microsoft Docs'
-description: Azure Active Directory と OpsGenie の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と OpsGenie の統合 | Microsoft Docs"
+description: "Azure Active Directory と OpsGenie の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 41b59b22-a61d-4fe6-ab0d-6c3991d1375f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 552b1a2a7ef63bc1c958adf8e06cd1c92c5c0ea2
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-opsgenie"></a>チュートリアル: Azure Active Directory と OpsGenie の統合
+# <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>チュートリアル: Azure Active Directory と OpsGenie の統合
 このチュートリアルの目的は、OpsGenie と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 OpsGenie と Azure AD の統合には、次の利点があります。
@@ -117,7 +121,7 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。 この証明書とメタデータ URL (エンティティ ID、SSO サインイン URL、サインアウト URL) は OpsGenie 側で SSO をセットアップするために必要です。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。 この証明書とメタデータ URL (エンティティ ID、SSO サインイン URL、サインアウト URL) は OpsGenie 側で SSO をセットアップするために必要です。
    
     b. **[次へ]** をクリックします。
 2. 別のブラウザー インスタンスを開き、管理者として OpsGenie にログインします。
@@ -174,9 +178,9 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-opsgenie-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
@@ -273,6 +277,6 @@ Britta にプロファイルの設定方法が記載されたメールが届き�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

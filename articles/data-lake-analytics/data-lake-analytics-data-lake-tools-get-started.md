@@ -15,12 +15,12 @@ ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 7450400920517bed56f608fd74c62238f2fb9eab
+ms.sourcegitcommit: bfc8a774ebaaae7dbf1018614681134a5b10a769
+ms.openlocfilehash: 7938e0c2f0363bcce51375ddab9c68e8e8068186
 
 
 ---
-# <a name="tutorial-develop-usql-scripts-using-data-lake-tools-for-visual-studio"></a>チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発
+# <a name="tutorial-develop-u-sql-scripts-using-data-lake-tools-for-visual-studio"></a>チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Data Lake Tools for Visual Studio をインストールし、それを使用して U-SQL スクリプトを作成およびテストする方法を説明します。
@@ -72,7 +72,7 @@ U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析す�
 4. ファイルをアップロードするフォルダーを参照します。
 5. 空白部分を右クリックし、 **[アップロード]**をクリックします。
 
-## <a name="develop-usql-scripts"></a>U-SQL スクリプトの開発
+## <a name="develop-u-sql-scripts"></a>U-SQL スクリプトの開発
 Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の詳細については、[U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)に関する記事および「[U-SQL Language Reference (U-SQL 言語リファレンス)](http://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
 
 **Data Lake Analytics ジョブを作成して送信するには**
@@ -195,7 +195,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
 ### <a name="heat-map"></a>ヒート マップ
 Data Lake Tools for Visual Studio にはユーザーが選択できるカラー オーバーレイがあり、各ステージの進行状況、データ I/O、実行時間、I/O スループットがジョブ ビューに表示されます。 これにより、ジョブのプロパティの潜在的な問題と分布が直接かつ直観的にわかります。 ドロップダウン リストから表示するデータ ソースを選択できます。  
 
-## <a name="run-usql-locally"></a>U-SQL のローカル実行
+## <a name="run-u-sql-locally"></a>U-SQL のローカル実行
 Visual Studio で U-SQL をローカル実行し、次のことができます。
 
 * C# アセンブリと共に U-SQL スクリプトをローカル実行します。
@@ -225,7 +225,7 @@ Visual Studio で U-SQL をローカル実行し、次のことができます�
 
     Data Lake サービスで実行されたスクリプトの場合、既定のストレージ アカウントがルート フォルダーとして使用され、適宜検索されます。
 
-### <a name="test-usql-scripts-locally"></a>U-SQL スクリプトのローカル テスト
+### <a name="test-u-sql-scripts-locally"></a>U-SQL スクリプトのローカル テスト
 U-SQL スクリプトの開発方法については、「[U-SQL スクリプトの開発](#develop-and-test-u-sql-scripts)」をご覧ください。 U-SQL スクリプトをローカルで作成し、実行するには、クラスター ドロップダウン リストで **[(ローカル)]** を選択し、**[送信]** をクリックします。 正しいデータを参照していることを確認してください。絶対パスを参照するか、DataRoot フォルダーの下にデータを配置します。
 
 ![U-SQL Visual Studio プロジェクトのローカル送信](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
@@ -255,7 +255,10 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
 1. C# アセンブリ プロジェクトを作成してビルドし、出力 dll を生成します。
 2. U-SQL ステートメントを使用して dll を登録します。
 
-     CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+    ```
+    CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+    ```
+    
 3. C# コードにブレークポイントを設定します。
 4. **F5** キーを押し、C# dll をローカルで参照してスクリプトをデバッグします。  
 
@@ -274,7 +277,7 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
 * [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
 * [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
-## <a name="appxa-powershell-sample-for-preparing-the-tutorial"></a>付録 A: チュートリアルの準備のための PowerShell サンプル
+## <a name="appx-a-powershell-sample-for-preparing-the-tutorial"></a>付録 A: チュートリアルの準備のための PowerShell サンプル
 次の PowerShell スクリプトを使用すると、Azure Data Lake Analytics アカウントとソース データが準備されるため、「 [U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md#develop-u-sql-scripts)」までスキップできます。
 
     #region - used for creating Azure service names

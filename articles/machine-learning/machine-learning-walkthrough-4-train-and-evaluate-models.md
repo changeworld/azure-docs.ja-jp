@@ -1,12 +1,12 @@
 ---
-title: '手順 4: 予測分析モデルをトレーニングして評価する | Microsoft Docs'
-description: 予測ソリューションの開発に関するチュートリアルの中の、Azure Machine Learning Studio で複数のモデルのトレーニング、スコア付け、評価するステップの 4 番目の手順です。
+title: "手順 4: 予測分析モデルをトレーニングして評価する | Microsoft Docs"
+description: "予測ソリューションの開発に関するチュートリアルの中の、Azure Machine Learning Studio で複数のモデルのトレーニング、スコア付け、評価するステップの 4 番目の手順です。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: d905f6b3-9201-4117-b769-5f9ed5ee1cac
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 434e7e2c40f98956de44435c23642bdee6072379
+
 
 ---
-# <a name="walkthrough-step-4:-train-and-evaluate-the-predictive-analytic-models"></a>チュートリアル手順 4: 予測分析モデルをトレーニングして評価する
+# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models"></a>チュートリアル手順 4: 予測分析モデルをトレーニングして評価する
 このトピックに含まれるのは、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](machine-learning-walkthrough-develop-predictive-solution.md)」の 4 番目の手順です。
 
 1. [Machine Learning ワークスペースの作成](machine-learning-walkthrough-1-create-ml-workspace.md)
@@ -119,7 +123,8 @@ SVM モデルを設定するには、次の操作を行います。
 > [!TIP]
 > 実験を実行するたびに、イテレーションの記録が実行履歴に保存されます。 キャンバスの下にある **[実行履歴を表示]** をクリックすると、これらのイテレーションをいつでも表示し、いつでも実験に戻ることができます。 また、**[プロパティ]** ウィンドウの **[前回の実行]** をクリックすると、現在開いているイテレーションの前のイテレーションがすぐに表示されます。
 > 
-> キャンバスの下にある **[名前を付けて保存]** をクリックすることで、実験のイテレーションのコピーを作成できます。 実験の **[概要]** と **[説明]** のプロパティを使用して、実験のイテレーションで行った内容を記録します。
+> キャンバスの下にある **[名前を付けて保存]** をクリックすることで、実験のイテレーションのコピーを作成できます。 
+> 実験の **[概要]** と **[説明]** のプロパティを使用して、実験のイテレーションで行った内容を記録します。
 > 
 > 詳細については、「 [Azure Machine Learning Studio での実験イテレーションの管理](machine-learning-manage-experiment-iterations.md)」をご覧ください。  
 > 
@@ -146,6 +151,6 @@ SVM モデルを設定するには、次の操作を行います。
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

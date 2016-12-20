@@ -11,20 +11,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/07/2016
+ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: d3478ef704c0029f69cca141bd3fa0b3ac54de15
+ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
+ms.openlocfilehash: 334d7391368509385dfc6c18ae1353d27faf7600
 
 
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Web サイトの可用性と応答性の監視
-サーバーに Web アプリまたは Web サイトをデプロイした後、Web テストを設定して Web アプリまたは Web サイトの可用性と応答性を監視できます。 [Visual Studio Application Insights](app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。 アプリケーションがまったく応答しなくなったりアプリケーションの応答が遅くなったりした場合は、Application Insights からその旨が通知されます。
+サーバーに Web アプリまたは Web サイトをデプロイした後、Web テストを設定して Web アプリまたは Web サイトの可用性と応答性を監視できます。 [ Application Insights](app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。 アプリケーションがまったく応答しなくなったりアプリケーションの応答が遅くなったりした場合は、Application Insights からその旨が通知されます。
 
 ![Web テストの例](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
 
-Web テストは、パブリック インターネットからアクセスできる任意の HTTP または HTTPS のエンドポイントに対して設定できます。
+Web テストは、パブリック インターネットからアクセスできる任意の HTTP または HTTPS のエンドポイントに対して設定できます。 テストする Web サイトには何も追加する必要はありません。 自社のサイトにも何も追加せずに、使用する REST API サービスをテストできます。
 
 Web テストには次の 2 種類があります。
 
@@ -106,8 +106,21 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 *問題がないように見えるのに、エラーとして報告されました。*  イメージ、スクリプト、スタイル シート、およびページによって読み込まれるその他のファイルすべてを確認してください。 これらのいずれかにエラーがある場合、メインの html ページの読み込みに問題がない場合でも、テストはエラーとして報告されます。
 
-## <a name="multistep-web-tests"></a>複数手順の Web テスト
+### <a name="open-the-server-request-and-exceptions"></a>サーバーの要求と例外を開く
+
+特定のテストの詳細なプロパティから、サーバー側のレポートを開き、要求と、例外などのイベントに関する情報を確認できます。
+
+![Web テスト実行結果
+](./media/app-insights-monitor-web-app-availability/web-test-linked-to-server-telemetry.png)
+
+関連項目が表示されない場合は、[サンプリング](app-insights-sampling.md)が実行中である可能性があります。
+
+## <a name="multi-step-web-tests"></a>複数手順の Web テスト
 URL の順序に関連するシナリオを監視することができます。 たとえば、販売 Web サイトを監視している場合は、ショッピング カートに商品を正しく追加できるかどうかをテストできます。
+
+> [!NOTE] 
+> 複数ステップ Web テストは課金対象です。 [価格の詳細](http://azure.microsoft.com/pricing/details/application-insights/)のページをご覧ください。
+> 
 
 複数手順のテストを作成するには、Visual Studio を使用してシナリオを記録してから、その記録を Application Insights にアップロードします。 Application Insights は周期的にそのシナリオを再生し、応答を確認します。
 
@@ -157,7 +170,7 @@ Web セッションを記録するには、Visual Studio Enterprise または Ul
 
 Web テスト全体が .webtest ファイルに含まれる必要があります。コード化された機能をテストで使用することはできません。
 
-### <a name="plugging-time-and-random-numbers-into-your-multistep-test"></a>複数手順のテストに対する時間とランダムな数の組み込み
+### <a name="plugging-time-and-random-numbers-into-your-multi-step-test"></a>複数手順のテストに対する時間とランダムな数の組み込み
 外部からフィードされる株価など、時間に依存するデータを取得するツールをテストするとします。 Web テストを記録するときに、特定の時刻を使用する必要があります。ただし、その時刻は、StartTime と EndTime というテストのパラメーターとして設定しました。
 
 ![パラメーターを含む Web テスト。](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-parameters.png)
@@ -180,7 +193,7 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 ここでテストをポータルにアップロードします。 テストを実行するたびに動的な値を使用します。
 
-## <a name="dealing-with-signin"></a>サインインの処理
+## <a name="dealing-with-sign-in"></a>サインインの処理
 ユーザーがアプリにサインインする場合、サインインの背後にあるページをテストできるように、サインインをシミュレートするためのさまざまなオプションがあります。 使用する方法は、アプリで提供されるセキュリティの種類によって異なります。
 
 どの場合も、アプリケーションでテスト目的のみのアカウントを作成する必要があります。 可能であれば、実際のユーザーが Web テストの影響を受けないように、このテスト アカウントのアクセス許可を制限します。
@@ -287,6 +300,6 @@ Web サイトに対してロード テストを実行できます。 可用性�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

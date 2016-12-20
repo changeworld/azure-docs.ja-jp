@@ -1,13 +1,13 @@
 ---
-title: HDInsight での Python MapReduce ジョブの開発 | Microsoft Docs
-description: Linux ベースの HDInsight クラスターで Python MapReduce ジョブを作成、実行する方法を説明します。
+title: "HDInsight での Python MapReduce ジョブの開発 | Microsoft Docs"
+description: "Linux ベースの HDInsight クラスターで Python MapReduce ジョブを作成、実行する方法を説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 7631d8d9-98ae-42ec-b9ec-ee3cf7e57fb3
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 729550243e18c7a9f514aa18d1f4fdd8142d141b
+
 
 ---
 # <a name="develop-python-streaming-programs-for-hdinsight"></a>HDInsight 用 Python ストリーミング プログラムの開発
@@ -46,7 +50,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 ![MapReduce の図](./media/hdinsight-hadoop-streaming-python/HDI.WordCountDiagram.png)
 
-## <a name="why-python?"></a>Python について
+## <a name="why-python"></a>Python について
 Python は、多くの他の言語より少ないコード行で概念を表現できる高度な汎用プログラム言語です。 迅速なアプリケーションに最適な構造、動的型付けのほか、その洗練された構文といった特徴のため、データ サイエンティストの間で、近年、プロトタイプ言語として一般的になりつつあります。
 
 Python はすべての HDInsight クラスターにインストールされています。
@@ -63,7 +67,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 ## <a name="create-the-mapper-and-reducer"></a>マッパーとリデューサーの作成
 マッパーとレジューサは単なるテキスト ファイルで、この場合 **mapper.py** と **reducer.py** であるため、各ファイルで何が実行されるかは明白です。 これらは、好みのエディターを使用して作成できます。
 
-### <a name="mapper.py"></a>Mapper.py
+### <a name="mapperpy"></a>Mapper.py
 **mapper.py** という名前の新しいファイルを作成し、内容として以下のコードを使用します。
 
     #!/usr/bin/env python
@@ -92,7 +96,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 コードが読み取られ、解読されるまでしばらく待ちます。
 
-### <a name="reducer.py"></a>reducer.py
+### <a name="reducerpy"></a>reducer.py
 **reducer.py** という名前の新しいファイルを作成し、内容として以下のコードを使用します。
 
     #!/usr/bin/env python
@@ -204,6 +208,9 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

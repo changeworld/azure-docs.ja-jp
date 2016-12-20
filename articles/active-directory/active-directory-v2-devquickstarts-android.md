@@ -1,12 +1,12 @@
 ---
-title: Azure Active Directory v2.0 Android アプリ | Microsoft Docs
-description: サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用し、サード パーティのライブラリを使用して Graph API を呼び出す Android アプリの構築方法を説明します。
+title: "Azure Active Directory v2.0 Android アプリ | Microsoft Docs"
+description: "サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用し、サード パーティのライブラリを使用して Graph API を呼び出す Android アプリの構築方法を説明します。"
 services: active-directory
-documentationcenter: ''
-author: brandwe
+documentationcenter: 
+author: xerners
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: 16294c07-f27d-45c9-833f-7dbb12083794
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: brandwe
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 143d72953e84f9ffead2e3c4b0c88b350b824572
+
 
 ---
-# <a name="add-sign-in-to-an-android-app-using-a-third-party-library-with-graph-api-using-the-v2.0-endpoint"></a>v2.0 エンドポイントを使用した Graph API を使って、サード パーティのライブラリを使用している Android アプリへのサインインを追加する
+# <a name="add-sign-in-to-an-android-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>v2.0 エンドポイントを使用した Graph API を使って、サード パーティのライブラリを使用している Android アプリへのサインインを追加する
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。 開発者は、任意のライブラリを使用して Microsoft のサービスと連携させることができます。 Microsoft では、そのプラットフォームを他のライブラリから使用する開発者のために、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を紹介するチュートリアルを作成しています。この記事もそうしたチュートリアルの一つです。 Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
 
 このチュートリアルで作成するアプリケーションで、ユーザーは所属組織にサインインした後、Graph API を使用して組織内のユーザー自身を検索できます。
@@ -49,7 +53,7 @@ git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.g
 ```
 
 ## <a name="register-an-app"></a>アプリを登録します
-[アプリケーション登録ポータル](https://apps.dev.microsoft.com)で新しいアプリを作成するか、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](active-directory-v2-app-registration.md)」の詳細な手順に従ってください。  次のことを確認します。
+[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)で新しいアプリを作成するか、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](active-directory-v2-app-registration.md)」の詳細な手順に従ってください。  次のことを確認します。
 
 * アプリに割り当てられた**アプリケーション ID** をコピーしておきます。これは後で必要になります。
 * アプリ用の **モバイル** プラットフォームを追加します。
@@ -116,7 +120,7 @@ git@github.com:kalemontes/OIDCAndroidLib.git
 ## <a name="configure-the-endpoints-of-the-sample"></a>サンプルのエンドポイントの構成
 `oidlib-sample` が正常に実行されることを確認したら、いくつかのエンドポイントを編集して、Azure Active Directory と連携させましょう。
 
-### <a name="configure-your-client-by-editing-the-oidc_clientconf.xml-file"></a>oidc_clientconf.xml ファイルを編集してクライアントを構成する
+### <a name="configure-your-client-by-editing-the-oidcclientconfxml-file"></a>oidc_clientconf.xml ファイルを編集してクライアントを構成する
 1. OAuth2 のフローのみを使用してトークンを取得し、Graph API を呼び出すため、クライアントは OAuth2 のみに設定します。 OIDC の例については、また別の機会に紹介します。
    
     ```xml
@@ -148,7 +152,7 @@ git@github.com:kalemontes/OIDCAndroidLib.git
 
 OpenID Connect のスコープとしての `openid` または `offline_access` について詳しい解説が必要な場合は、[2.0 プロトコル - OAuth 2.0 承認コード フロー](active-directory-v2-protocols-oauth-code.md)に関するページを参照してください。
 
-### <a name="configure-your-client-endpoints-by-editing-the-oidc_endpoints.xml-file"></a>oidc_endpoints.xml ファイルを編集して、クライアント エンドポイントを構成する
+### <a name="configure-your-client-endpoints-by-editing-the-oidcendpointsxml-file"></a>oidc_endpoints.xml ファイルを編集して、クライアント エンドポイントを構成する
 * `oidc_endpoints.xml` ファイルを開いて次の変更を加えます。
   
     ```xml
@@ -185,6 +189,9 @@ OpenID Connect のスコープとしての `openid` または `offline_access` �
 ## <a name="get-security-updates-for-our-product"></a>Microsoft 製品のセキュリティ更新プログラムの取得
 セキュリティの問題に関する通知を受け取ることをお勧めします。[Security TechCenter](https://technet.microsoft.com/security/dd252948) にアクセスし、セキュリティ アドバイザリ通知の受信登録を行ってください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

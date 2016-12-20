@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/20/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73fafeff227061feae1fbc0a1c50e5056116e3ea
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 00c4336bd5cef4ddc0b92127d0945d39291b9c7f
 
 
 ---
@@ -40,7 +40,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 このチュートリアルでデプロイする WordPress サイトは、データベースに MySQL を使用します。 代わりに SQL Database を使用する場合は、[Project Nami] を参照してください。これは Azure Marketplace からも入手できます。
 
 > [!NOTE]
-> このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。 アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効][activate]にするか、[無料試用版にサインアップ][free trial]してください。
+> このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。 アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする][activate]か、[無料試用版にサインアップ][free trial]してください。
 > 
 > Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用]に関するページにアクセスしてください。 有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードや契約は必要ありません。
 > 
@@ -72,7 +72,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
     ![Configure the subscription for the web app][ConfigSubscription]
 4. **リソース グループ** を選択するか、新しく作成します。
    
-    リソース グループの詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。
+    リソース グループの詳細については、[Azure Resource Manager の概要][ResourceGroups]に関するページをご覧ください。
    
     ![Configure the resource group for the web app][ConfigResourceGroup]
 5. **App Service プラン/場所** を選択するか、新しく作成します。
@@ -127,22 +127,22 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 
 App Service Web Apps の使用方法の詳細については、ページの左側 (ワイド ブラウザー ウィンドウの場合) またはページの上部 (幅の狭いブラウザー ウィンドウの場合) に表示されるリンクを参照してください。
 
-Azure での WordPress Web アプリの開発の詳細については、「[Azure App Service での WordPress の開発][WordPressOnAzure]」を参照してください。
+Azure での WordPress Web アプリの開発の詳細については、「[Azure App Service での WordPress の開発][WordPressOnAzure]」をご覧ください。
 
 <!-- URL List -->
 
 [PHP]: https://azure.microsoft.com/develop/php/
 [.NET]: https://azure.microsoft.com/develop/net/
-[Node.JS]: https://azure.microsoft.com/develop/nodejs/
+[Node.js]: https://azure.microsoft.com/develop/nodejs/
 [Java]: https://azure.microsoft.com/develop/java/
 [Python]: https://azure.microsoft.com/develop/python/
 [activate]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
-[無料試用版]: https://azure.microsoft.com/pricing/free-trial/
-[Azure App Service アプリケーションの作成]: http://go.microsoft.com/fwlink/?LinkId=523751
+[free trial]: https://azure.microsoft.com/pricing/free-trial/
+[App Service の試用]: http://go.microsoft.com/fwlink/?LinkId=523751
 [ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
 [AzureAppServicePlans]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
 [ApplicationInsights]: https://azure.microsoft.com/services/application-insights/
-[Azure App Service で Java Web アプリ]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 [Project Nami]: http://projectnami.org/
 [WordPressOnAzure]: ./develop-wordpress-on-app-service-web-apps.md
 
@@ -168,6 +168,6 @@ Azure での WordPress Web アプリの開発の詳細については、「[Azur
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

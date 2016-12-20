@@ -1,19 +1,23 @@
 ---
-title: Linux データ サイエンス仮想マシンのプロビジョニング | Microsoft Docs
-description: 分析と機械学習を行うために、Azure で Linux データ サイエンス仮想マシンを構成および作成します。
+title: "Linux データ サイエンス仮想マシンのプロビジョニング | Microsoft Docs"
+description: "分析と機械学習を行うために、Azure で Linux データ サイエンス仮想マシンを構成および作成します。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/09/2016
 ms.author: bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3d5c5d6ae177b6f662df261f3254816b20bac764
+
 
 ---
 # <a name="provision-the-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンのプロビジョニング
@@ -101,13 +105,13 @@ Linux VM は、既に X2Go サーバーでプロビジョニングされてお�
 
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
 2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]**を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
-   * **[Session](セッション.md) タブ**:
+   * **[Session] (セッション) タブ**:
      * **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
      * **[Login (ログイン)]**: Linux VM のユーザー名。
-     * **[SSH Port](SSH ポート.md)**: 既定値の 22 のままにします。
-     * **[Session Type](セッションの種類.md)**: 値を XFCE に変更します。 現在、Linux VM では XFCE デスクトップのみをサポートしています。
-   * **[Media](メディア.md) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
-   * **[Shared folders](共有フォルダー.md)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
+     * **[SSH Port] (SSH ポート)**: 既定値の 22 のままにします。
+     * **[Session Type] (セッションの種類)**: 値を XFCE に変更します。 現在、Linux VM では XFCE デスクトップのみをサポートしています。
+   * **[Media] (メディア) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
+   * **[Shared folders] (共有フォルダー)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
 
 SSH クライアントを使用するか、X2Go クライアントから XFCE グラフィカル デスクトップを使用して VM にサインインしたら、VM にインストールされ、構成されているツールをすぐに使い始めることができます。 XFCE では、アプリケーション メニューのショートカットとさまざまなツールのデスクトップ アイコンが表示されます。
 
@@ -341,6 +345,9 @@ Rattle と R を終了できます。これで、生成された R スクリプ�
 * [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
 * [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

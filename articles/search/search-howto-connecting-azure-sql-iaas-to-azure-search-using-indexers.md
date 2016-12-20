@@ -1,12 +1,12 @@
 ---
-title: Azure Search インデクサーから Azure の仮想マシンの SQL Server への接続の構成 | Microsoft Docs
-description: 暗号化された接続を有効にして、Azure Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。
+title: "Azure Search インデクサーから Azure の仮想マシンの SQL Server への接続の構成 | Microsoft Docs"
+description: "暗号化された接続を有効にして、Azure Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。"
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: jack4it
 manager: pablocas
-editor: ''
-
+editor: 
+ms.assetid: 46e42e0e-c8de-4fec-b11a-ed132db7e7bc
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
@@ -14,10 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 09/26/2016
 ms.author: jackma
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: cfd53c8240244ffbcf34380acb25657fcc8c9562
+
 
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure VM での Azure Search インデクサーから SQL Server への接続の構成
-「[インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md#frequently-asked-questions)」で説明したように、**Azure VM 上の SQL Server** (略して **SQL Azure VM**) に対してインデクサーを作成することは、Azure Search でサポートされています。ただし、最初にセキュリティ関連のいくつかの前提条件に対応する必要があります。 
+「[インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#frequently-asked-questions)」で説明したように、**Azure VM 上の SQL Server** (略して **SQL Azure VM**) に対してインデクサーを作成することは、Azure Search でサポートされています。ただし、最初にセキュリティ関連のいくつかの前提条件に対応する必要があります。 
 
 **タスクの所要時間:** 約 30 分 (VM に証明書をインストール済みであることが前提)
 
@@ -46,12 +50,12 @@ Azure Search には、パブリック インターネット接続経由のすべ
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>VM で SQL Server への接続を構成する
 Azure Search に必要な、暗号化された接続を設定した後は、Azure VM 上の SQL Server に固有の追加の構成手順があります。 その構成手順をまだ実行していない場合は、以下のいずれかの記事を参照して構成を実行します。
 
-* **Resource Manager** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure using Resource Manager](../virtual-machines/virtual-machines-windows-sql-connect.md)」(Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続) をご覧ください。 
-* **クラシック** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure Classic](../virtual-machines/virtual-machines-windows-classic-sql-connect.md)」(Azure クラシックでの SQL Server 仮想マシンへの接続) をご覧ください。
+* **Resource Manager** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure using Resource Manager](../virtual-machines/virtual-machines-windows-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」(Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続) をご覧ください。 
+* **クラシック** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure Classic](../virtual-machines/virtual-machines-windows-classic-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」(Azure クラシックでの SQL Server 仮想マシンへの接続) をご覧ください。
 
 特に、各記事の、インターネット経由での接続に関するセクションを確認してください。
 
-## <a name="configure-the-network-security-group-(nsg)"></a>ネットワーク セキュリティ グループ (NSG) を構成する
+## <a name="configure-the-network-security-group-nsg"></a>ネットワーク セキュリティ グループ (NSG) を構成する
 外部から Azure VM にアクセスできるように、NSG および対応する Azure エンドポイントまたはアクセス制御リスト (ACL) を構成することはめずらしくありません。 独自のアプリケーション ロジックから SQL Azure VM に接続できるようにするために、この構成を既に実行している可能性があります。 Azure Search から SQL Azure VM への接続もこれと同じです。 
 
 以下のリンクでは、VM デプロイメントの NSG を構成する手順を説明しています。 これらの手順を、IP アドレスに基づいて ACL および Azure Search エンドポイントに 使用してください。
@@ -82,8 +86,11 @@ Search サービスに検索ユニットが 1 つ (1 つのレプリカと 1 つ
 Azure Portal を使用してインデクサーを作成する場合は、作成時に、Azure Search ポータル ロジックから SQL Azure VM にアクセスできることも必要になります。 Azure Search ポータルの IP アドレスは、 `stamp2.search.ext.azure.com`に ping を実行すると確認できます。
 
 ## <a name="next-steps"></a>次のステップ
-これで構成が完了し、Azure VM 上 の SQL Server を Azure Search インデクサーのデータ ソースとして指定できるようになりました。 詳細については、「 [インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md) 」を参照してください。
+これで構成が完了し、Azure VM 上 の SQL Server を Azure Search インデクサーのデータ ソースとして指定できるようになりました。 詳細については、「 [インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) 」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

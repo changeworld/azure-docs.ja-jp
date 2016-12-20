@@ -1,80 +1,87 @@
 ---
-title: Data Factory を使用して MongoDB からデータを移動する | Microsoft Docs
-description: Azure Data Factory を使用して MongoDB データベースからデータを移動する方法を説明します。
+title: "Data Factory を使用して MongoDB からデータを移動する | Microsoft Docs"
+description: "Azure Data Factory を使用して MongoDB データベースからデータを移動する方法を説明します。"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: linda33wj
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 10ca7d9a-7715-4446-bf59-2d2876584550
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2016
+ms.date: 11/02/2016
 ms.author: jingwang
+translationtype: Human Translation
+ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
+ms.openlocfilehash: 2a590795178d819d9df1b010dc68809492d6bdbc
+
 
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB からデータを移動する
 この記事では、Azure Data Factory のコピー アクティビティを使用して、オンプレミスの MongoDB データベースから他のデータ ストアにデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般概要と、コピー アクティビティでサポートされるソース/シンク データ ストアの組み合わせについて紹介している、 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事に基づいています。
 
-Data Factory のサービスでは、Data Management Gateway を使用したオンプレミスの MongoDB ソースへの接続をサポートします。 [Data Management Gateway](data-factory-data-management-gateway.md) の詳細については、「Data Management Gateway」をご覧ください。また、データを移動するデータ パイプラインにゲートウェイをセットアップするための詳しい手順については、[オンプレミスからクラウドへのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。 
+Data Factory のサービスでは、Data Management Gateway を使用したオンプレミスの MongoDB ソースへの接続をサポートします。 [Data Management Gateway](data-factory-data-management-gateway.md) の詳細については、「Data Management Gateway」をご覧ください。また、データを移動するデータ パイプラインにゲートウェイをセットアップするための詳しい手順については、[オンプレミスからクラウドへのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。
 
 > [!NOTE]
 > Azure IaaS VM でホストされている場合でも、MongoDB への接続にゲートウェイを使用する必要があります。 クラウドでホストされている MongoDB のインスタンスに接続しようとしている場合は、IaaS VM にゲートウェイ インスタンスをインストールすることもできます。
-> 
-> 
+>
+>
 
 現時点では、Data Factory は、他のデータ ストアから MongoDB へのデータの移動ではなく、MongoDB から他のデータ ストアへのデータの移動のみをサポートしています。
 
+## <a name="supported-versions"></a>サポートされているバージョン
+この MongoDB コネクタは、MongoDB バージョン 2.4 以降をサポートしています。
+
 ## <a name="prerequisites"></a>前提条件
-Azure Data Factory サービスをオンプレミスの MongoDB データベースに接続できるようにするには、次のコンポーネントをインストールする必要があります。 
+Azure Data Factory サービスをオンプレミスの MongoDB データベースに接続できるようにするには、次のコンポーネントをインストールする必要があります。
 
 * データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上にインストールされた、バージョン 2.0 以降の Data Management Gateway。 Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータをクラウド サービスに接続するソフトウェアです。 Data Management Gateway の詳細については、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」をご覧ください。
-  
-    ゲートウェイをインストールすると、MongoDB への接続に使用される Microsoft MongoDB ODBC ドライバーが自動的にインストールされます。 
+
+    ゲートウェイをインストールすると、MongoDB への接続に使用される Microsoft MongoDB ODBC ドライバーが自動的にインストールされます。
 
 ## <a name="copy-data-wizard"></a>データのコピー ウィザード
-MongoDB データベースから、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。 
+MongoDB データベースから、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
 
-次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、MongoDB データベースから Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores) に記載されているシンクのいずれかにデータをコピーすることができます。
+次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、MongoDB データベースから Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。
 
-## <a name="sample:-copy-data-from-mongodb-to-azure-blob"></a>サンプル: MongoDB から Azure BLOB にデータをコピーする
-このサンプルは、オンプレミスの MongoDB データベースから Azure BLOB ストレージにデータをコピーする方法を示しています。 Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores) コピーすることもできます。  
+## <a name="sample-copy-data-from-mongodb-to-azure-blob"></a>サンプル: MongoDB から Azure BLOB にデータをコピーする
+このサンプルは、オンプレミスの MongoDB データベースから Azure BLOB ストレージにデータをコピーする方法を示しています。 Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることもできます。  
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
 1. [OnPremisesMongoDb](#linked-service-properties)型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)型のリンクされたサービス。
+2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service)型のリンクされたサービス。
 3. [MongoDbCollection](#dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
 4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [MongoDbSource](#copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは MongoDB データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。 
+このサンプルは MongoDB データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-最初の手順として、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」の指示に従って Data Management Gateway を設定してください。 
+最初の手順として、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」の指示に従って Data Management Gateway を設定してください。
 
 **MongoDB のリンクされたサービス**
 
-    { 
-        "name": "OnPremisesMongoDbLinkedService", 
-        "properties": 
-        { 
-            "type": "OnPremisesMongoDb", 
-            "typeProperties": 
-            { 
-                "authenticationType": "<Basic or Anonymous>", 
+    {
+        "name": "OnPremisesMongoDbLinkedService",
+        "properties":
+        {
+            "type": "OnPremisesMongoDb",
+            "typeProperties":
+            {
+                "authenticationType": "<Basic or Anonymous>",
                 "server": "< The IP address or host name of the MongoDB server >",  
-                "port": "<The number of the TCP port that the MongoDB server uses to listen for client connections.>", 
-                "username": "<username>", 
+                "port": "<The number of the TCP port that the MongoDB server uses to listen for client connections.>",
+                "username": "<username>",
                 "password": "<password>",
                "authSource": "< The database that you want to use to check your credentials for authentication. >",
                 "databaseName": "<database name>",
                 "gatewayName": "<mygateway>"
-            } 
+            }
         }
-    } 
+    }
 
 
 **Azure Storage のリンクされたサービス**
@@ -93,18 +100,18 @@ MongoDB データベースから、サポートされているシンク デー�
 
     {
          "name":  "MongoDbInputDataset",
-        "properties": { 
-            "type": "MongoDbCollection", 
-            "linkedServiceName": "OnPremisesMongoDbLinkedService", 
-            "typeProperties": { 
-                "collectionName": "<Collection name>"   
-            }, 
+        "properties": {
+            "type": "MongoDbCollection",
+            "linkedServiceName": "OnPremisesMongoDbLinkedService",
+            "typeProperties": {
+                "collectionName": "<Collection name>"    
+            },
             "availability": {
                 "frequency": "Hour",
                 "interval": 1
             },
             "external": true
-        } 
+        }
     }
 
 
@@ -234,7 +241,7 @@ MongoDB データベースから、サポートされているシンク デー�
 | gatewayName |データ ストアにアクセスするゲートウェイの名前。 |はい |
 | encryptedCredential |ゲートウェイによって暗号化された資格情報。 |省略可能 |
 
-オンプレミスの MongoDB データ ソースの資格情報の設定について詳しくは、 [資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security) に関する記事をご覧ください。
+オンプレミスの MongoDB データ ソースの資格情報の設定について詳しくは、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
 
 ## <a name="dataset-type-properties"></a>データセットの type プロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
@@ -246,7 +253,7 @@ MongoDB データベースから、サポートされているシンク デー�
 | collectionName |MongoDB データベースのコレクション名前。 |はい |
 
 ## <a name="copy-activity-type-properties"></a>コピー アクティビティの type プロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。 
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
@@ -257,7 +264,7 @@ MongoDB データベースから、サポートされているシンク デー�
 | query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **collectionName** が指定されている場合) |
 
 ## <a name="schema-by-data-factory"></a>Data Factory によるスキーマ
-Azure Data Factory サービスは、MongoDB コレクション内の最新のドキュメント 100 個を使用してスキーマを推論します。 この 100 個のドキュメントにスキーマが完全には含まれていない場合は、コピー操作中に無視される列が生じる可能性があります。 
+Azure Data Factory サービスは、MongoDB コレクション内の最新のドキュメント 100 個を使用してスキーマを推論します。 この 100 個のドキュメントにスキーマが完全には含まれていない場合は、コピー操作中に無視される列が生じる可能性があります。
 
 ## <a name="type-mapping-for-mongodb"></a>MongoDB の型マッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
@@ -281,9 +288,9 @@ MongoDB にデータを移動する場合、MongoDB 型から .NET 型に対す�
 | オブジェクト |入れ子の区切り文字に "_" を使用してフラット化された列に再正規化されます。 |
 
 > [!NOTE]
-> 仮想テーブルを使用した配列に対するサポートの詳細については、下の「 [仮想テーブルを使用した複合型のサポート](#support-for-complex-types-using-virtual-tables) 」セクションをご覧ください。 
-> 
-> 
+> 仮想テーブルを使用した配列に対するサポートの詳細については、下の「 [仮想テーブルを使用した複合型のサポート](#support-for-complex-types-using-virtual-tables) 」セクションをご覧ください。
+>
+>
 
 現時点では、次の MongoDB データ型はサポートされていません: DBPointer、JavaScript、Max/Min key、Regular Expression、Symbol、Timestamp、Undefined。
 
@@ -295,10 +302,10 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 
 仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。  詳細については、次の「例」を参照してください。 仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
 
-[コピー ウィザード](data-factory-data-movement-activities.md#data-factory-copy-wizard) を使用して、仮想テーブルを含む MongoDB データベースのテーブルの一覧を直感的に表示し、内部データをプレビューすることができます。 また、コピー ウィザードでクエリを構築して検証し、結果を確認することもできます。
+[コピー ウィザード](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) を使用して、仮想テーブルを含む MongoDB データベースのテーブルの一覧を直感的に表示し、内部データをプレビューすることができます。 また、コピー ウィザードでクエリを構築して検証し、結果を確認することもできます。
 
 ### <a name="example"></a>例
-例として下に挙げる "ExampleTable" は、各セルにオブジェクトの配列が 1 つ含まれた列 Invoices と、スカラー型の配列が 1 つ含まれた列 Ratings で構成された MongoDB テーブルです。 
+例として下に挙げる "ExampleTable" は、各セルにオブジェクトの配列が 1 つ含まれた列 Invoices と、スカラー型の配列が 1 つ含まれた列 Ratings で構成された MongoDB テーブルです。
 
 | _id | Customer Name | Invoices | Service Level | Ratings |
 | --- | --- | --- | --- | --- |
@@ -312,10 +319,10 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 | 1111 |ABC |シルバー |
 | 2222 |XYZ |ゴールド |
 
-次のテーブルは、例における元の配列を表す仮想テーブルを示しています。 これらのテーブルには、以下が含まれます。 
+次のテーブルは、例における元の配列を表す仮想テーブルを示しています。 これらのテーブルには、以下が含まれます。
 
 * 元の配列の行に対応する元のプライマリ キー列への参照 (_Id 列を使用) 
-* 元の配列内のデータの位置の指定 
+* 元の配列内のデータの位置の指定
 * 配列内の各要素の展開されたデータ
 
 テーブル "ExampleTable_Invoices":
@@ -343,8 +350,10 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-オンプレミスのデータ ストアから Azure データ ストアにデータを移動するデータ パイプラインを作成するための詳しい手順については、 [オンプレミスとクラウドの間でデータを移動する方法](data-factory-move-data-between-onprem-and-cloud.md) に関する記事をご覧ください。 
+オンプレミスのデータ ストアから Azure データ ストアにデータを移動するデータ パイプラインを作成するための詳しい手順については、 [オンプレミスとクラウドの間でデータを移動する方法](data-factory-move-data-between-onprem-and-cloud.md) に関する記事をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

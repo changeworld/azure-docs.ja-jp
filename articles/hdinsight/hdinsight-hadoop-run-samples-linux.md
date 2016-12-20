@@ -1,13 +1,13 @@
 ---
-title: Linux ベースの HDInsight での Hadoop MapReduce サンプルの実行 | Microsoft Docs
-description: Linux ベースの HDInsight で MapReduce サンプルの使用を開始します。 SSH を使用してクラスターに接続し、Hadoop コマンドを使用してサンプル ジョブを実行します。
+title: "Linux ベースの HDInsight での Hadoop MapReduce サンプルの実行 | Microsoft Docs"
+description: "Linux ベースの HDInsight で MapReduce サンプルの使用を開始します。 SSH を使用してクラスターに接続し、Hadoop コマンドを使用してサンプル ジョブを実行します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: e1d2a0b9-1659-4fab-921e-4a8990cbb30a
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d4b6db263becb722cabfab2160c0a460034eae72
+
 
 ---
 # <a name="run-the-hadoop-samples-in-hdinsight"></a>HDInsight での Hadoop のサンプルの実行
@@ -61,7 +65,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 **ソース コード**: これらのサンプルのソース コードは、HDInsight クラスター上の **/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples** にあります。
 
 > [!NOTE]
-> `2.2.4.9-1` は、HDInsight クラスターの Hortonworks Data Platform のバージョンであり、HDInsight が更新されると変更される場合があります。
+>  `2.2.4.9-1` は、HDInsight クラスターの Hortonworks Data Platform のバージョンであり、HDInsight が更新されると変更される場合があります。
 > 
 > 
 
@@ -133,7 +137,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
     ? ? ? ? 4 5 ? 7 8
 
 > [!NOTE]
-> `2.2.4.9-1` の部分は、HDInsight クラスターが更新されると変更される場合があります。
+>  `2.2.4.9-1` の部分は、HDInsight クラスターが更新されると変更される場合があります。
 > 
 > 
 
@@ -153,7 +157,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
     1 8 5 7 3 9 2 6 4
     2 6 3 1 4 5 9 7 8
 
-## <a name="pi-(π)"></a>Pi (π)
+## <a name="pi-"></a>Pi (π)
 pi サンプルでは統計的手法 (準モンテカルロ法) に基づいて Pi の値を計算します。 単位正方形の内部にランダムに配置された点は、その正方形に内接する円の内部にも円の面積に等しい確率 (Pi/4) で配置されます。 Pi の値は 4R という値で計算されます。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。 サンプルの点の数が大きくなるほど、推定値の精度が上がります。
 
 このサンプルの mapper は、単位正方形の内部にランダムに多数の点を生成し、円の内部にある点の数を計算します。
@@ -220,6 +224,6 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

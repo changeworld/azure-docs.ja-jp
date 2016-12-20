@@ -1,13 +1,13 @@
 ---
-title: Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する | Microsoft Docs
-description: デバイスを企業ネットワークのドメインに参加させることができるように管理者がグループ ポリシーを構成する方法を説明します。
+title: "Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する | Microsoft Docs"
+description: "デバイスを企業ネットワークのドメインに参加させることができるように管理者がグループ ポリシーを構成する方法を説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: femila
 manager: swadhwa
-editor: ''
+editor: 
 tags: azure-classic-portal
-
+ms.assetid: 2ff29f3e-5325-4f43-9baa-6ae8d6bad3e3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: femila
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0e211d13e41526157f6ade960b86f31dfdfd54e1
+
 
 ---
 # <a name="connect-domain-joined-devices-to-azure-ad-for-windows-10-experiences"></a>Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する
@@ -50,10 +54,10 @@ PKI のデプロイ要件の代替策として、次の操作を実行できま�
 * System Center Configuration Manager Version 1509 for Technical Preview (Passport のシナリオ用)
 
 ## <a name="deployment-instructions"></a>デプロイの手順
-### <a name="step-1:-deploy-azure-active-directory-connect"></a>手順 1: Azure Active Directory Connect をデプロイする
+### <a name="step-1-deploy-azure-active-directory-connect"></a>手順 1: Azure Active Directory Connect をデプロイする
 Azure AD Connect により、オンプレミスのコンピューターをクラウド内のデバイス オブジェクトとしてプロビジョニングできます。 Azure AD Connect のデプロイについては、「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md#install-azure-ad-connect)」の「Azure AD Connect をインストールする」を参照してください。
 
-* [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md) (高速インストールではありません) を実行した場合は、次にこの後の「**オンプレミスの Active Directory でサービス接続ポイントを作成する**」の手順に従います。
+* [Azure AD Connect のカスタム インストール](connect/active-directory-aadconnect-get-started-custom.md) (高速インストールではありません) を実行した場合は、次にこの後の「**オンプレミスの Active Directory でサービス接続ポイントを作成する**」の手順に従います。
 * Azure AD Connect をインストールする前に Azure AD で構成をフェデレーションした場合は (たとえば、以前に Active Directory フェデレーション サービス (AD FS) をデプロイした場合)、後の「 **AD FS の要求規則を構成する** 」の手順に従います。
 
 #### <a name="create-a-service-connection-point-in-on-premises-active-directory"></a>オンプレミスの Active Directory でサービス接続ポイントを作成する
@@ -117,7 +121,7 @@ AD FS サーバー (または AD FS サーバーに接続されているセッ�
 > 
 > 
 
-### <a name="step-2:-configure-automatic-device-registration-via-group-policy-in-active-directory"></a>手順 2: Active Directory のグループ ポリシーを使用してデバイスの自動登録を構成する
+### <a name="step-2-configure-automatic-device-registration-via-group-policy-in-active-directory"></a>手順 2: Active Directory のグループ ポリシーを使用してデバイスの自動登録を構成する
 Active Directory のグループ ポリシーを使用すると、自動的に Azure AD に登録するよう Windows 10 ドメイン参加済みデバイスを構成できます。
 
 > [!NOTE]
@@ -137,6 +141,9 @@ Active Directory のグループ ポリシーを使用すると、自動的に A
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

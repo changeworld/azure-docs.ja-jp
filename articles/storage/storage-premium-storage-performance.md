@@ -1,12 +1,12 @@
 ---
-title: 'Azure Premium Storage: パフォーマンスのための設計 | Microsoft Docs'
-description: Azure Premium Storage を使用する高パフォーマンスのアプリケーションを設計します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
+title: "Azure Premium Storage: パフォーマンスのための設計 | Microsoft Docs"
+description: "Azure Premium Storage を使用する高パフォーマンスのアプリケーションを設計します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。"
 services: storage
 documentationcenter: na
 author: aungoo-msft
 manager: tadb
 editor: tysonn
-
+ms.assetid: e6a409c3-d31a-4704-a93c-0a04fdc95960
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: aungoo
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 67b5ea270bc8bcbe22aa4a3cbdd15b7affbbb4e6
+
 
 ---
-# <a name="azure-premium-storage:-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンスのための設計
+# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンスのための設計
 ## <a name="overview"></a>Overview
 この記事では、Azure Premium Storage を使用する高パフォーマンスのアプリケーションを構築するためのガイドラインを示します。 このドキュメントで説明する手順は、アプリケーションで使用されているテクノロジに適用できるパフォーマンスのベスト プラクティスと組み合わせて使用できます。 ガイドラインを示すために、このドキュメント全体を通じて、Premium Storage で実行されている SQL Server を例として使用しています。
 
@@ -88,9 +92,9 @@ Azure Premium Storage で実行される高パフォーマンスのアプリケ�
 | キューの深さ | | | |
 
 > **重要な注意:**  
-> アプリケーションの予想される将来の成長に基づいて、これらの数値を調整することを検討する必要があります。 パフォーマンスを向上させるために、後でインフラストラクチャを変更するのは困難である可能性があるため、あらかじめ成長に向けた計画を立てることをお勧めします。
-> 
-> 
+>  アプリケーションの予想される将来の成長に基づいて、これらの数値を調整することを検討する必要があります。 パフォーマンスを向上させるために、後でインフラストラクチャを変更するのは困難である可能性があるため、あらかじめ成長に向けた計画を立てることをお勧めします。
+>
+>
 
 既存のアプリケーションを Premium Storage に移行する場合は、まず、そのアプリケーションについて上記のチェックリストを作成します。 次に、Premium Storage でアプリケーションのプロトタイプを作成し、このドキュメントで後述する「 *アプリケーションのパフォーマンスの最適化* 」に記載されているガイドラインに基づいてアプリケーションを設計します。 次のセクションで、パフォーマンスの測定値の収集に使用できるツールについて説明しています。
 
@@ -119,7 +123,7 @@ Premium Storage で実行されるアプリケーションのパフォーマン�
 
 アプリケーションのパフォーマンスをどの程度最適化する必要があるかを明確にするために、このセクション全体を通じて、作成したアプリケーション要件チェックリストを参照します。 これを基に、このセクションの要素の中で、調整する必要がある要素を特定できるようになります。 アプリケーションのパフォーマンスに対する各要素の影響を監視するには、アプリケーションのセットアップでベンチマーク ツールを実行します。 Windows VM と Linux VM で一般的なベンチマーク ツールを実行する手順については、この記事の最後のセクションである「 [ベンチマーク](#Benchmarking) 」をご覧ください。
 
-### <a name="optimizing-iops,-throughput-and-latency-at-a-glance"></a>IOPS、スループット、待機時間の最適化の概要
+### <a name="optimizing-iops-throughput-and-latency-at-a-glance"></a>IOPS、スループット、待機時間の最適化の概要
 次の表に、パフォーマンスのすべての要素と、IOPS、スループット、待機時間を最適化する手順の概要を示します。 この概要の後の各セクションで、それぞれの要素についてさらに詳しく説明します。
 
 |  | **IOPS** | **スループット** | **待機時間** |
@@ -166,9 +170,9 @@ IO サイズを変更できるアプリケーションを使用している場�
 1 つの Premium Storage ディスクの最大値を超える IOPS と帯域幅を得るには、ストライピングされた複数の Premium ディスクを使用します。 たとえば、2 つの P30 ディスクをストライピングすると、10,000 IOPS の合計 IOPS または 400 MB/秒の合計スループットが得られます。 次のセクションで説明するように、ディスクの合計 IOPS と合計スループットをサポートする VM サイズを使用する必要があります。
 
 > **注:**  
-> IOPS とスループットのいずれかを増やすと、もう一方も増加するので、どちらか一方を増やしたときには、ディスクまたは VM のスループットまたは IOPS の上限に達していないことを確認してください。
-> 
-> 
+>  IOPS とスループットのいずれかを増やすと、もう一方も増加するので、どちらか一方を増やしたときには、ディスクまたは VM のスループットまたは IOPS の上限に達していないことを確認してください。
+>
+>
 
 IO サイズがアプリケーションのパフォーマンスに及ぼす影響を監視するには、VM とディスクでベンチマーク ツールを実行します。 複数のテスト実行を作成し、実行ごとに異なる IO サイズを使用して影響を確認します。 詳細については、この記事の最後のセクションである「 [ベンチマーク](#Benchmarking) 」をご覧ください。
 
@@ -182,7 +186,7 @@ IO サイズがアプリケーションのパフォーマンスに及ぼす影�
 | Standard_DS14 |16 |112 GB |OS = 1023 GB  <br>  ローカル SSD = 224 GB |32 |576 GB |50,000 IOPS  <br>  512 MB/秒 |4,000 IOPS、33 MB/秒 |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB  <br>  ローカル SSD = 896 GB |64 |4224 GB |80,000 IOPS  <br>  2,000 MB/秒 |5,000 IOPS、50 MB/秒 |
 
-利用可能なすべての Azure VM サイズの一覧については、[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md)と [Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md)に関するページをご覧ください。 アプリケーションの目的のパフォーマンス要件を満たし、拡張できる VM サイズを選択します。 これに加え、VM サイズを選択するときは、次の重要な考慮事項に注意してください。
+利用可能なすべての Azure VM サイズの一覧については、[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)と [Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。 アプリケーションの目的のパフォーマンス要件を満たし、拡張できる VM サイズを選択します。 これに加え、VM サイズを選択するときは、次の重要な考慮事項に注意してください。
 
 *スケールの上限*  
  IOPS の上限は、VM あたりとディスクあたりで異なり、互いに独立しています。 アプリケーションが、VM と VM に接続された Premium ディスクの制限の範囲内で IOPS を引き上げていることを確認します。 制限を超えると、アプリケーションのパフォーマンスが調整されます。
@@ -206,7 +210,7 @@ IO サイズがアプリケーションのパフォーマンスに及ぼす影�
 
 *Linux ディストリビューション*  
 
-Azure Premium Storage を使用すると、Windows を実行する VM と Linux を実行する VM で同レベルのパフォーマンスが得られます。 さまざまな Linux ディストリビューションがサポートされています。リストについては、[こちら](../virtual-machines/virtual-machines-linux-endorsed-distros.md)をご覧ください。 ワークロードの種類によって、適しているディストリビューションが異なることに注意してください。 パフォーマンスのレベルは、ワークロードが実行されるディストリビューションによって異なります。 アプリケーションで Linux ディストリビューションをテストし、最適なディストリビューションを選択します。
+Azure Premium Storage を使用すると、Windows を実行する VM と Linux を実行する VM で同レベルのパフォーマンスが得られます。 さまざまな Linux ディストリビューションがサポートされています。リストについては、[こちら](../virtual-machines/virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。 ワークロードの種類によって、適しているディストリビューションが異なることに注意してください。 パフォーマンスのレベルは、ワークロードが実行されるディストリビューションによって異なります。 アプリケーションで Linux ディストリビューションをテストし、最適なディストリビューションを選択します。
 
 Premium Storage で Linux を実行するときは、高パフォーマンスを確保するために、必要なドライバーについて最新の更新プログラムを確認してください。
 
@@ -227,11 +231,11 @@ Premium Storage で Linux を実行するときは、高パフォーマンスを
 たとえば、アプリケーションの要件が最大 250 MB/秒のスループットであり、DS4 VM と 1 つの P30 ディスクを使用しているとします。 DS4 VM が提供できる最大スループットは 256 MB/秒です。 しかし、1 つの P30 ディスクのスループットの上限は 200 MB/秒です。 そのため、アプリケーションは 200 MB/秒というディスクの制限による制約を受けることになります。 この制限を克服するには、VM に複数のデータ ディスクをプロビジョニングします。
 
 > **注:**  
-> キャッシュで処理される読み取りはディスクの IOPS とスループットに含まれないので、ディスクの制限の対象にはなりません。 キャッシュには、VM あたりの IOPS とスループットの別の上限が設けられています。
-> 
+>  キャッシュで処理される読み取りはディスクの IOPS とスループットに含まれないので、ディスクの制限の対象にはなりません。 キャッシュには、VM あたりの IOPS とスループットの別の上限が設けられています。
+>
 > たとえば、最初は読み取りと書き込みがそれぞれ 60MB/秒と 40MB/秒であったとします。 時間が経つにつれて、キャッシュがウォームアップされ、処理されるキャッシュからの読み取りが増加します。 これにより、ディスクからの書き込みスループットが向上します。
-> 
-> 
+>
+>
 
 *ディスク数*  
  アプリケーションの要件を評価して必要なディスク数を決定します。 各 VM サイズにも、VM に接続できるディスク数の上限が設けられています。 通常、これはコア数の 2 倍です。 選択した VM サイズが必要なディスク数をサポートできることを確認します。
@@ -243,8 +247,8 @@ Azure Premium Storage を利用する高スケール VM には、BlobCache と�
 
 > [!WARNING]
 > Azure ディスクのキャッシュ設定を変更すると、対象となるディスクをデタッチして再アタッチします。 オペレーティング システム ディスクの場合は、VM が再起動されます。 ディスク キャッシュの設定を変更する前に、この中断の影響を受ける可能性があるすべてのアプリケーションまたはサービスを停止します。
-> 
-> 
+>
+>
 
 BlobCache の機能の詳細については、Inside の [Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) に関するブログ記事をご覧ください。
 
@@ -287,19 +291,19 @@ Windows では、記憶域スペースを使用してディスクをストライ
 
 重要: サーバー マネージャーの UI を使用して、ストライプ ボリュームの列の総数を最大 8 列に設定できます。 8 個を超えるディスクを接続するときは、PowerShell を使用してボリュームを作成します。 PowerShell を使用すると、列数をディスクと同じ数に設定できます。 たとえば、1 つのストライプ セットに 16 個のディスクがある場合、*New-VirtualDisk* PowerShell コマンドレットの *NumberOfColumns* パラメーターで 16 列を指定します。
 
-Linux では、MDADM ユーティリティを使用してディスクをストライピングします。 Linux でのディスク ストライピングの詳しい手順については、「 [Linux でのソフトウェア RAID の構成](../virtual-machines/virtual-machines-linux-configure-raid.md)」をご覧ください。
+Linux では、MDADM ユーティリティを使用してディスクをストライピングします。 Linux でのディスク ストライピングの詳しい手順については、「 [Linux でのソフトウェア RAID の構成](../virtual-machines/virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
 *ストライプ サイズ*  
  ディスク ストライピングの重要な構成の 1 つに、ストライプ サイズがあります。 ストライプ サイズ (ブロック サイズ) は、アプリケーションがストライプ ボリュームで対応できるデータの最小チャンクです。 構成するストライプ サイズは、アプリケーションの種類と要求パターンによって異なります。 間違ったストライプ サイズを選択すると、IO の不均衡が生じ、アプリケーションのパフォーマンスが低下する可能性があります。
 
 たとえば、アプリケーションによって生成された IO 要求がディスクのストライプ サイズよりも大きい場合、ストレージ システムは、複数のディスクのストライプ ユニット境界にまたがって要求を書き込みます。 該当のデータにアクセスするときが来ると、要求を完了するために複数のストライプ ユニットにわたってシークしなければなりません。 このような動作の累積的影響により、パフォーマンスが大幅に低下する可能性があります。 一方、IO 要求サイズがストライプ サイズよりも小さい場合や、要求の特性がランダムの場合、IO 要求が同じディスクに追加されていく可能性があり、これがボトルネックとなって、最終的に IO パフォーマンスが低下することがあります。
 
-アプリケーションが実行するワークロードの種類に応じて、適切なストライプ サイズを選択します。 小さなランダム IO 要求には、小さいストライプ サイズを使用します。 これに対して、大きな順次 IO 要求には、大きいストライプ サイズを使用します。 Premium Storage で実行するアプリケーションについて、ストライプ サイズの推奨事項を確認します。 SQL Server の場合、OLTP ワークロードには 64KB、データ ウェアハウス ワークロードには 256KB のストライプ サイズを構成します。 詳細については、「 [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-windows-sql-performance.md#disks-and-performance-considerations) 」をご覧ください。
+アプリケーションが実行するワークロードの種類に応じて、適切なストライプ サイズを選択します。 小さなランダム IO 要求には、小さいストライプ サイズを使用します。 これに対して、大きな順次 IO 要求には、大きいストライプ サイズを使用します。 Premium Storage で実行するアプリケーションについて、ストライプ サイズの推奨事項を確認します。 SQL Server の場合、OLTP ワークロードには 64KB、データ ウェアハウス ワークロードには 256KB のストライプ サイズを構成します。 詳細については、「 [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-windows-sql-performance.md#disks-guidance) 」をご覧ください。
 
 > **注:**  
-> ストライピングできる Premium Storage ディスクの最大数は、DS シリーズ VM では 32 個、GS シリーズ VM では 64 個です。
-> 
-> 
+>  ストライピングできる Premium Storage ディスクの最大数は、DS シリーズ VM では 32 個、GS シリーズ VM では 64 個です。
+>
+>
 
 ## <a name="multi-threading"></a>マルチスレッド
 Azure では、超並列のプラットフォームとして Premium Storage が設計されました。 そのため、マルチスレッド アプリケーションは、シングルスレッド アプリケーションよりもはるかに高いパフォーマンスを実現します。 マルチスレッド アプリケーションでは、タスクを複数のスレッドに分割し、VM とディスクのリソースを最大限に活用することで実行効率を高めます。
@@ -354,9 +358,9 @@ Azure Premium Storage では、選択された VM サイズとディスク サ�
  ReadOnly ホスト キャッシュを使用するディスクでは、ディスクの制限を超えた高 IOPS を実現できます。 ホスト キャッシュからこの最大の読み取りパフォーマンスを得るには、まず、このディスクのキャッシュをウォームアップする必要があります。 これにより、ベンチマーク ツールが CacheReads ボリュームで促進する読み取り IO が、直接ディスクにヒットするのではなく、実際にキャッシュにヒットするようになります。 キャッシュ ヒットにより、キャッシュが有効化された 1 つのディスクから追加の IOPS が得られます。
 
 > **重要:**  
-> VM を再起動するたびに、キャッシュをウォームアップしてからベンチマークを実行する必要があります。
-> 
-> 
+>  VM を再起動するたびに、キャッシュをウォームアップしてからベンチマークを実行する必要があります。
+>
+>
 
 #### <a name="iometer"></a>Iometer
 [Iometer ツールをダウンロード](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) します。
@@ -390,18 +394,18 @@ Azure Premium Storage では、選択された VM サイズとディスク サ�
  次の手順を実行して、キャッシュをウォームアップします。
 
 1. 次に示す値を使用して、2 つのアクセス仕様を作成します。
-   
+
    | 名前 | 要求サイズ | ランダム % | 読み取り % |
    | --- | --- | --- | --- |
    | RandomWrites\_1 MB |1 MB |100 |0 |
    | RandomReads\_1 MB |1 MB |100 |100 |
 2. 次のパラメーターを使用して、キャッシュ ディスクの初期化の Iometer テストを実行します。 ターゲット ボリュームに 3 つのワーカー スレッドを使用し、キューの深さとして 128 を使用します。 [Test Setup] タブでテストの [Run time] を 2 時間に設定します。
-   
+
    | シナリオ | ターゲット ボリューム | 名前 | 時間 |
    | --- | --- | --- | --- |
    | キャッシュ ディスクの初期化 |CacheReads |RandomWrites\_1 MB |2 時間 |
 3. 次のパラメーターを使用して、キャッシュ ディスクのウォームアップの Iometer テストを実行します。 ターゲット ボリュームに 3 つのワーカー スレッドを使用し、キューの深さとして 128 を使用します。 [Test Setup] タブでテストの [Run time] を 2 時間に設定します。
-   
+
    | シナリオ | ターゲット ボリューム | 名前 | 時間 |
    | --- | --- | --- | --- |
    | キャッシュ ディスクのウォームアップ |CacheReads |RandomReads\_1 MB |2 時間 |
@@ -410,7 +414,7 @@ Azure Premium Storage では、選択された VM サイズとディスク サ�
 
 | テスト シナリオ | ターゲット ボリューム | 名前 | 結果 |
 | --- | --- | --- | --- |
-| 最大 読み取り IOPS |CacheReads |RandomWrites\_8 K |50,000 IOPS |
+| 最大 読み取り IOPS |CacheReads |RandomWrites\_8 K |50,000 IOPS  |
 | 最大 書き込み IOPS |NoCacheWrites |RandomReads\_8 K |64,000 IOPS |
 | 最大 合計 IOPS |CacheReads |RandomWrites\_8 K |100,000 IOPS |
 | NoCacheWrites |RandomReads\_8 K | | |
@@ -579,9 +583,11 @@ Azure Premium Storage の詳細については、次の記事をご覧くださ�
 
 SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プラクティスに関する次の記事をご覧ください。
 
-* [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-windows-sql-performance.md)
-* [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx) 
+* [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

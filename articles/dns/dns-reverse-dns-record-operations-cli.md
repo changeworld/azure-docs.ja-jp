@@ -1,63 +1,77 @@
 ---
-title: Resource Manager で Azure CLI を使用してサービスの逆引き DNS レコードを管理する方法 | Microsoft Docs
-description: Resource Manager で Azure CLI を使用して Azure サービスの逆引き DNS レコードまたは PTR レコードを管理する方法
+title: "Azure CLI を使用して Azure サービスの逆引き DNS レコードを管理する | Microsoft Docs"
+description: "Resource Manager で Azure CLI を使用して Azure サービスの逆引き DNS レコードまたは PTR レコードを管理する方法"
 services: DNS
 documentationcenter: na
 author: s-malone
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: c655707e-1156-4893-b163-0b228ffd25d2
 ms.service: DNS
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/05/2016
+ms.date: 10/28/2016
 ms.author: smalone
+translationtype: Human Translation
+ms.sourcegitcommit: 0f8bc125855bc5a5b67fde5b0b742c73b5da7610
+ms.openlocfilehash: b7c91d7c13884a00bb06a7cfed55a59b357f7d18
+
 
 ---
-# Azure CLI を使用してサービスの逆引き DNS レコードを管理する方法
-[!INCLUDE [DNS-reverse-dns-record-operations-arm-selectors-include.md](../../includes/dns-reverse-dns-record-operations-arm-selectors-include.md)]
+# <a name="how-to-manage-reverse-dns-records-for-your-azure-services-using-the-azure-cli"></a>Azure CLI を使用して Azure サービスの逆引き DNS レコードを管理する方法
 
-<BR>
-[!INCLUDE [DNS-reverse-dns-record-operations-intro-include.md](../../includes/dns-reverse-dns-record-operations-intro-include.md)]
-<BR>
+[!INCLUDE [dns-reverse-dns-record-operations-arm-selectors-include.md](../../includes/dns-reverse-dns-record-operations-arm-selectors-include.md)]
+
+
+[!INCLUDE [dns-reverse-dns-record-operations-intro-include.md](../../includes/dns-reverse-dns-record-operations-intro-include.md)]
+
+
 [!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]
-[classic deployment model](dns-reverse-dns-record-operations-classic-ps.md).
 
-## 逆引き DNS レコードの検証
+クラシック デプロイメント モデルの詳細については、「[Azure PowerShell を使用して Azure サービス (クラシック) の逆引き DNS レコードを管理する方法](dns-reverse-dns-record-operations-classic-ps.md)」を参照してください。
+
+## <a name="validation-of-reverse-dns-records"></a>逆引き DNS レコードの検証
 Azure では、サード パーティがお客様の DNS ドメインにマッピングされた逆引き DNS レコードを作成できないようにするために、以下のいずれかに該当する場合のみ逆引き DNS レコードを作成できるようにしています。
 
 * "ReverseFqdn" が、逆引き DNS で指定されたパブリック IP アドレス リソースの "Fqdn"、または同じサブスクリプションに含まれるいずれかのパブリック IP アドレスの "Fqdn" と同じである (例: "ReverseFqdn" が "contosoapp1.northus.cloudapp.azure.com." である)。
-* "ReverseFqdn" が、逆引き DNS で指定されたパブリック IP アドレスの名前または IP か、または同じサブスクリプションに含まれるいずれかのパブリック IP アドレスの "Fqdn" または IP に対して前方解決される (例: "ReverseFqdn" が、"contosoapp1.northus.cloudapp.azure.com" の CName エイリアスの "app1.contoso.com" である)。
+* "ReverseFqdn" が、逆引き DNS で指定されたパブリック IP アドレスの名前または IP か、または同じサブスクリプションに含まれるいずれかのパブリック IP アドレスの "Fqdn" または IP に対して前方解決される (例: "ReverseFqdn" が、"contosoapp1.northus.cloudapp.azure.com" の CName エイリアスの "app1.contoso.com" である )。
 
-検証チェックが実行されるのは、パブリック IP アドレスの逆引き DNS プロパティの設定時または変更時のみです。定期的な再検証は行われません。
+検証チェックが実行されるのは、パブリック IP アドレスの逆引き DNS プロパティの設定時または変更時のみです。 定期的な再検証は行われません。
 
-## 既存の Public IP Addresses への逆引き DNS の追加
+## <a name="add-reverse-dns-to-existing-public-ip-addresses"></a>既存の Public IP Addresses への逆引き DNS の追加
 逆引き DNS を既存のパブリック IP アドレスに追加するには、azure network public-ip set を使用します。
 
     azure network public-ip set -n PublicIp -g NRP-DemoRG-PS -f contosoapp1.westus.cloudapp.azure.com.
 
-まだ DNS 名を持っていない既存のパブリック IP アドレスに逆引き DNS を追加する場合は、DNS 名も指定する必要があります。DNS 名を指定するには、azure network public-ip set を使用します。
+まだ DNS 名を持っていない既存のパブリック IP アドレスに逆引き DNS を追加する場合は、DNS 名も指定する必要があります。 DNS 名を指定するには、azure network public-ip set を使用します。
 
     azure network public-ip set -n PublicIp -g NRP-DemoRG-PS -d contosoapp1 -f contosoapp1.westus.cloudapp.azure.com.
 
-## 逆引き DNS でのパブリック IP アドレスの作成
+## <a name="create-a-public-ip-address-with-reverse-dns"></a>逆引き DNS でのパブリック IP アドレスの作成
 逆引き DNS プロパティを指定して新しいパブリック IP アドレスを追加するには、azure network public-ip create を使用します。
 
     azure network public-ip create -n PublicIp3 -g NRP-DemoRG-PS -l westus -d contosoapp3 -f contosoapp3.westus.cloudapp.azure.com.
 
-## 既存の Public IP Addresses の逆引き DNS の表示
+## <a name="view-reverse-dns-for-existing-public-ip-addresses"></a>既存の Public IP Addresses の逆引き DNS の表示
 既存のパブリック IP アドレスで構成されている値を確認するには、azure network public-ip show を使用します。
 
     azure network public-ip show -n PublicIp3 -g NRP-DemoRG-PS
 
-## 既存のパブリック IP アドレスの逆引き DNS を削除する
-既存のパブリック IP アドレスの逆引き DNS プロパティを削除するには、azure network public-ip set を使用します。この操作を行うには、ReverseFqdn プロパティの値を空白にします。
+## <a name="remove-reverse-dns-from-existing-public-ip-addresses"></a>既存のパブリック IP アドレスの逆引き DNS を削除する
+既存のパブリック IP アドレスの逆引き DNS プロパティを削除するには、azure network public-ip set を使用します。 この操作を行うには、ReverseFqdn プロパティの値を空白にします。
 
     azure network public-ip set -n PublicIp3 -g NRP-DemoRG-PS –f “”
 
-[!INCLUDE [FAQ](../../includes/dns-reverse-dns-record-operations-faq-arm-include.md)]
+[!INCLUDE [FAQ1](../../includes/dns-reverse-dns-record-operations-faq-host-own-arpa-zone-include.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+[!INCLUDE [FAQ2](../../includes/dns-reverse-dns-record-operations-faq-arm-include.md)]
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

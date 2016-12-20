@@ -1,19 +1,23 @@
 ---
-title: PowerShell を使用した Service Fabric アプリケーションのアップグレード | Microsoft Docs
-description: この記事では、PowerShell による Service Fabric アプリケーションのデプロイ、コードの変更、アップグレードのロールアウトを段階的に説明します。
+title: "PowerShell を使用した Service Fabric アプリのアップグレード | Microsoft Docs"
+description: "この記事では、PowerShell による Service Fabric アプリケーションのデプロイ、コードの変更、アップグレードのロールアウトを段階的に説明します。"
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 9bc75748-96b0-49ca-8d8a-41fe08398f25
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/14/2016
+ms.date: 11/15/2016
 ms.author: subramar
+translationtype: Human Translation
+ms.sourcegitcommit: 5e4aebee48754f1f6762898d9571a4fff7d7283e
+ms.openlocfilehash: 568d32f713fa4af1e0841fbf457014c5705be265
+
 
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell を使用した Service Fabric アプリケーションのアップグレード
@@ -31,7 +35,7 @@ ms.author: subramar
 
 Service Fabric による監視付きローリング アップグレードを使用することにより、アプリケーション管理者は、アプリケーションの正常性を判断するために Service Fabric が使用する正常性評価ポリシーを構成できます。 また、管理者は、正常性評価が失敗した場合 (たとえば、自動ロールバック時) に実行するアクションを構成できます。このセクションでは、PowerShell を使用した SDK サンプルの 1 つの監視付きアップグレードについて説明します。
 
-## <a name="step-1:-build-and-deploy-the-visual-objects-sample"></a>手順 1: ビジュアル オブジェクト サンプルのビルドとデプロイ
+## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>手順 1: ビジュアル オブジェクト サンプルのビルドとデプロイ
 **VisualObjectsApplication** アプリケーション プロジェクトを右クリックし、**[発行]** コマンドを選択して、アプリケーションをビルドし、発行します。  詳細については、 [Service Fabric アプリケーションのアップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)を参照してください。  代わりに、PowerShell を使用して、アプリケーションをデプロイすることができます。
 
 > [!NOTE]
@@ -43,7 +47,7 @@ Visual Studio でプロジェクトをビルドした後に、PowerShell コマ�
 
 これで、 [クラスターおよびアプリケーションを表示する Service Fabric エクスプローラー](service-fabric-visualizing-your-cluster.md)を使用できます。 このアプリケーションには Web サービスが設けられており、Internet explorer のアドレス バーに「 [http://localhost:8081/visualobjects](http://localhost:8081/visualobjects) 」と入力して移動できます。  画面上を動くフローティング ビジュアル オブジェクトが表示されます。  さらに、 **Get-ServiceFabricApplication** を使用すると、アプリケーションの状態を確認できます。
 
-## <a name="step-2:-update-the-visual-objects-sample"></a>手順 2: ビジュアル オブジェクト サンプルの更新
+## <a name="step-2-update-the-visual-objects-sample"></a>手順 2: ビジュアル オブジェクト サンプルの更新
 手順 1. でデプロイされたバージョンでは、ビジュアル オブジェクトが回転しないことにお気付きになったことでしょう。 アプリケーションをアップグレードして、ビジュアル オブジェクトも回転させてみましょう。
 
 VisualObjects ソリューション内の VisualObjects.ActorService プロジェクトを選択し、StatefulVisualObjectActor.cs ファイルを開きます。 そのファイル内で `MoveObject` メソッドに移動して、`this.State.Move()` をコメントにし、`this.State.Move(true)` をコメント解除します。 これにより、サービスのアップグレード後、オブジェクトが回転します。
@@ -70,7 +74,7 @@ VisualObjects ソリューション内の VisualObjects.ActorService プロジ�
 
 ここで、Visual Studio で **ActorService** プロジェクトのみを選択して右クリックし、**[ビルド]** オプションを選択して、プロジェクトをビルドします。 コードが変更されているため、 **[すべてリビルド]**を選択すると、すべてのプロジェクトのバージョンを更新する必要があります。 次は、***VisualObjectsApplication*** を右クリックし、Service Fabric のメニュー、**[パッケージ]** の順に選択して、更新されたアプリケーションをパッケージ化しましょう。 このアクションにより、デプロイ可能なアプリケーション パッケージが作成されます。  更新されたアプリケーションをデプロイする準備は完了です。
 
-## <a name="step-3:-decide-on-health-policies-and-upgrade-parameters"></a>手順 3: 正常性ポリシーとアップグレード パラメーターの決定
+## <a name="step-3-decide-on-health-policies-and-upgrade-parameters"></a>手順 3: 正常性ポリシーとアップグレード パラメーターの決定
 [アプリケーション アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)と[アップグレード プロセス](service-fabric-application-upgrade.md)に詳しくなって、アップグレードのさまざまなパラメーター、タイムアウト、および適用されている正常性条件に対する理解を深めます。 このチュートリアルでは、サービスの正常性評価条件は既定 (推奨値) に設定されています。つまり、すべてのサービスとインスタンスは、アップグレード後も *healthy* である必要があります。  
 
 ただし、 *HealthCheckStableDuration* を 60 秒間に増やします (これにより、次の更新ドメインにアップグレードが進む前に、少なくとも 20 秒間、サービスは正常な状態になります)。  また、*UpgradeDomainTimeout* を 1200 秒に、*UpgradeTimeout* を 3000 秒に設定しましょう。
@@ -85,7 +89,7 @@ UpgradeDomainTimeoutSec = 1200
 
 UpgradeTimeout = 3000
 
-## <a name="step-4:-prepare-application-for-upgrade"></a>手順 4: アプリケーションのアップグレードの準備
+## <a name="step-4-prepare-application-for-upgrade"></a>手順 4: アプリケーションのアップグレードの準備
 アプリケーションはビルドされ、アップグレードの準備は完了しています。 PowerShell ウィンドウを管理者として開き、**「Get-ServiceFabricApplication」**と入力すると、デプロイされているのが **VisualObjects** のアプリケーションの種類 1.0.0.0 であることが表示されます。  
 
 アプリケーション パッケージは、Service Fabric SDK を圧縮解除した次の相対パスの下に格納されています - *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*。 そのディレクトリ内に "パッケージ" フォルダーが見つかるはずです。このフォルダーにアプリケーション パッケージが格納されます。 タイムスタンプを確認して、最新のビルドであることを確かめます (場合によっては、パスも適切に変更する必要があります)。
@@ -105,7 +109,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObject
 
 前のコマンドが成功しなかった場合、すべてのサービスのリビルドが必要な可能性があります。 手順 2 で説明したとおり、WebService のバージョンの更新が必要な場合もあります。
 
-## <a name="step-5:-start-the-application-upgrade"></a>手順 5: アプリケーションのアップグレード開始
+## <a name="step-5-start-the-application-upgrade"></a>手順 5: アプリケーションのアップグレード開始
 アプリケーションのアップグレードを開始する準備がすべて完了しました。開始するには次のコマンドを使用します。
 
 ```powershell
@@ -132,6 +136,9 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 「 [アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

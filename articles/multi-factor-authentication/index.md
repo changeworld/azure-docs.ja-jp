@@ -1,13 +1,17 @@
 ---
 layout: LandingPage
----
-# Multi-factor Authentication Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: defa12cb202ce4861a479ac40782248cd50039d3
+ms.openlocfilehash: 2db76cf5af88cc103b0109eb8ead4d63cbae0a0e
 
-Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification solution. Azure MFA helps safeguard access to data and applications while meeting user demand for a simple sign-in process. It delivers strong authentication via a range of verification methods, including phone call, text message, or mobile app verification.
+---
+# <a name="multi-factor-authentication-documentation"></a>Multi-Factor Authentication のドキュメント
+
+Azure Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 Azure MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。 電話、テキスト メッセージ、モバイル アプリによる確認など、一連の照合方法を通じて確実な認証を行うことができます。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/multi-factor-authentication/multi-factor-authentication/">
+        <a href="/azure/multi-factor-authentication/multi-factor-authentication">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -17,7 +21,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Multi-factor Authentication</h3>
+                        <h3>Azure Multi-factor Authentication の詳細</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +29,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=multi-factor-authentication">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=multi-factor-authentication">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -35,7 +39,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Multi-factor Authentication Video Library</h3>
+                        <h3>Azure Multi-Factor Authentication のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Multi-factor Authentication Deployment options</h3>
+                        <h3>Azure Multi-factor Authentication のデプロイ オプションの概要</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Multi-factor Authentication in the cloud</h3>
+                        <h3>クラウドでの Azure Multi-Factor Authentication の概要</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Multi-factor Authentication Server</h3>
+                        <h3>オンプレミスでの Azure Multi-Factor Authentication の概要</h3>
                     </div>
                 </div>
             </div>
@@ -104,7 +108,11 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/multi-factor-authentication.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Multi-factor Authentication Documentation
-        </div>
+Multi-Factor Authentication のドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+<!--HONumber=Nov16_HO4-->
+
+

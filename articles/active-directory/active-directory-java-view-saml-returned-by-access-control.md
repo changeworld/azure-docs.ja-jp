@@ -1,48 +1,52 @@
 ---
-title: Access Control Service によって返される SAML の表示 (Java)
-description: Azure でホストされる Java アプリケーションで Access Control Service によって返される SAML を表示する方法について説明します。
+title: "Access Control Service によって返される SAML の表示 (Java)"
+description: "Azure でホストされる Java アプリケーションで Access Control Service によって返される SAML を表示する方法について説明します。"
 services: active-directory
 documentationcenter: java
 author: rmcmurray
-manager: wpickett
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: 6cd216f9-eb43-46b4-b30d-f194d0ae2d48
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 11/01/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 782b73f4a3d3bac5423412349a08edc5f60829da
+
 
 ---
-# How to view SAML returned by the Azure Access Control Service (Azure の Access Control Service によって返される SAML を表示する方法)
-このガイドでは、Azure の Access Control Service (ACS) によって基盤として使用され、アプリケーションに返される SAML (Security Assertion Markup Language) を表示する方法について説明します。このガイドでは、「[Eclipse を使用して Azure Access Control Service で Web ユーザーを認証する方法][Eclipse を使用して Azure Access Control Service で Web ユーザーを認証する方法]」で作成したコードを基にして、SAML 情報を表示するコードを完成させます。完成したアプリケーションは次のようになります。
+# <a name="how-to-view-saml-returned-by-the-azure-access-control-service"></a>How to view SAML returned by the Azure Access Control Service (Azure の Access Control Service によって返される SAML を表示する方法)
+このガイドでは、Azure の Access Control Service (ACS) によって基盤として使用され、アプリケーションに返される SAML (Security Assertion Markup Language) を表示する方法について説明します。 このガイドでは、「[Eclipse を使用して Azure Access Control Service で Web ユーザーを認証する方法](active-directory-java-authenticate-users-access-control-eclipse.md)」で作成したコードを基にして、SAML 情報を表示するコードを完成させます。 完成したアプリケーションは次のようになります。
 
 ![SAML の出力例][saml_output]
 
-ACS の詳細については、「[次のステップ](#next_steps)」を参照してください。
+ACS の詳細については、「 [次のステップ](#next_steps) 」を参照してください。
 
 > [!NOTE]
-> Azure Access Control Services Filter は Community Technology Preview 版です。プレリリース版ソフトウェアとしてマイクロソフトによって正式にサポートされていません。
+> Azure Access Control Services Filter は Community Technology Preview 版です。 プレリリース版ソフトウェアとしてマイクロソフトによって正式にサポートされていません。
 > 
 > 
 
-## 前提条件
-このガイド内のタスクを完了するには、「[Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法][Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法]」のサンプル コードを完成させて、このチュートリアルでの出発点として使用します。
+## <a name="prerequisites"></a>前提条件
+このガイド内のタスクを完了するには、「[Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法](active-directory-java-authenticate-users-access-control-eclipse.md)」のサンプル コードを完成させて、このチュートリアルでの出発点として使用します。
 
-## ビルド パスとデプロイ アセンブリに JspWriter ライブラリを追加する
-**javax.servlet.jsp.JspWriter** クラスを格納するライブラリをビルド パスとデプロイ アセンブリに追加します。Tomcat を使用している場合、ライブラリは Apache の **lib** フォルダー内の **jsp-api.jar** です。
+## <a name="add-the-jspwriter-library-to-your-build-path-and-deployment-assembly"></a>ビルド パスとデプロイ アセンブリに JspWriter ライブラリを追加する
+**javax.servlet.jsp.JspWriter** クラスを格納するライブラリをビルド パスとデプロイ アセンブリに追加します。 Tomcat を使用している場合、ライブラリは Apache の **lib** フォルダー内の **jsp-api.jar** です。
 
 1. Eclipse の Project Explorer で、**MyACSHelloWorld** を右クリックし、**[Build Path]**、**[Configure Build Path]**、**[Libraries]** タブ、**[Add External JARs]** の順にクリックします。
 2. **[JAR Selection]** ダイアログ ボックスで、必要な JAR に移動して選択し、**[Open]** をクリックします。
 3. **[Properties for MyACSHelloWorld]** ダイアログ ボックスが開いた状態で、**[Deployment Assembly]** をクリックします。
 4. **[Web Deployment Assembly]** ダイアログ ボックスで **[Add]** をクリックします。
 5. **[New Assembly Directive]** ダイアログ ボックスで、**[Java Build Path Entries]**、**[Next]** の順にクリックします。
-6. 該当するライブラリを選択し、**[Finish]** をクリックします。
+6. 該当するライブラリを選択し、 **[Finish]**をクリックします。
 7. **[OK]** をクリックして **[Properties for MyACSHelloWorld]** ダイアログ ボックスを閉じます。
 
-## SAML を表示するように JSP ファイルを変更する
+## <a name="modify-the-jsp-file-to-display-saml"></a>SAML を表示するように JSP ファイルを変更する
 次のコードを使用するように **index.jsp** を変更します。
 
     <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -127,7 +131,7 @@ ACS の詳細については、「[次のステップ](#next_steps)」を参照�
                                      for (i=0; i < nChild; i++)
                                      {
                                         Node temp = list.item(i);
-                                        displaySAMLInfo(temp, parent + nodeName + "\", out);
+                                        displaySAMLInfo(temp, parent + nodeName + "\\", out);
                                      }
                                }
                           }
@@ -142,7 +146,7 @@ ACS の詳細については、「[次のステップ](#next_steps)」を参照�
         %>
 
         <%
-        try 
+        try
         {
             String data  = (String) request.getAttribute("ACSSAML");
 
@@ -153,7 +157,7 @@ ACS の詳細については、「[次のステップ](#next_steps)」を参照�
             docBuilder = docBuilderFactory.newDocumentBuilder();
             byte[] xmlDATA = data.getBytes();
 
-            ByteArrayInputStream in = new ByteArrayInputStream(xmlDATA); 
+            ByteArrayInputStream in = new ByteArrayInputStream(xmlDATA);
             doc = docBuilder.parse(in);
             doc.getDocumentElement().normalize();
 
@@ -165,7 +169,7 @@ ACS の詳細については、「[次のステップ](#next_steps)」を参照�
                 displaySAMLInfo(list.item(i), "", out);
             }
         }
-        catch (Exception e) 
+        catch (Exception e)
         {
             out.println("Exception encountered.");
             e.printStackTrace();
@@ -175,22 +179,24 @@ ACS の詳細については、「[次のステップ](#next_steps)」を参照�
     </body>
     </html>
 
-## アプリケーションの実行
-1. アプリケーションをコンピューター エミュレーターで実行するか、「[Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法][Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法]」の手順に従って Azure にデプロイします。
-2. ブラウザーを起動し、Web アプリケーションを開きます。アプリケーションにログオンした後、SAML 情報 (ID プロバイダーから提供されるセキュリティ アサーションなど) が表示されます。
+## <a name="run-the-application"></a>アプリケーションの実行
+1. アプリケーションをコンピューター エミュレーターで実行するか、「[Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法](active-directory-java-authenticate-users-access-control-eclipse.md)」の手順に従って Azure にデプロイします。
+2. ブラウザーを起動し、Web アプリケーションを開きます。 アプリケーションにログオンした後、SAML 情報 (ID プロバイダーから提供されるセキュリティ アサーションなど) が表示されます。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 さらに ACS の機能を調べたり、より洗練されたシナリオを試してみたりする場合は、「[Access Control Service 2.0][Access Control Service 2.0]」を参照してください。
 
-[Prerequisites]: #pre
-[Modify the JSP file to display SAML]: #modify_jsp
-[Add the JspWriter library to your build path and deployment assembly]: #add_library
-[Run the application]: #run_application
-[Next steps]: #next_steps
+[前提条件]: #pre
+[SAML を表示するように JSP ファイルを変更する]: #modify_jsp
+[ビルド パスとデプロイ アセンブリに JspWriter ライブラリを追加する]: #add_library
+[アプリケーションの実行]: #run_application
+[次のステップ]: #next_steps
 [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
-[Eclipse を使用して Azure Access Control Service で Web ユーザーを認証する方法]: ../active-directory-java-authenticate-users-access-control-eclipse
 [Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法]: ../active-directory-java-authenticate-users-access-control-eclipse
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png
 
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Nov16_HO3-->
+
+

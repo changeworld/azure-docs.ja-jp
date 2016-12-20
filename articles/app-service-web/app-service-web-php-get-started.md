@@ -1,13 +1,13 @@
 ---
-title: Azure への PHP Web アプリの作成、構成、デプロイ
-description: Azure App Service で動作する PHP (Laravel) Web アプリの作成方法をわかりやすく説明しています。 ご利用の PHP フレームワークの要件を満たすように Azure App Service を構成する方法について説明します。
+title: "Azure への PHP Web アプリの作成、構成、デプロイ"
+description: "Azure App Service で動作する PHP (Laravel) Web アプリの作成方法をわかりやすく説明しています。 ご利用の PHP フレームワークの要件を満たすように Azure App Service を構成する方法について説明します。"
 services: app-service\web
 documentationcenter: php
 author: cephalin
 manager: wpickett
-editor: ''
+editor: 
 tags: mysql
-
+ms.assetid: cb73859d-48aa-470a-b486-d984746d6d26
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 06/03/2016
 ms.author: cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: aafd6378709ec584bc1bfa0aeb8a1593c103dacb
+
 
 ---
-# <a name="create,-configure,-and-deploy-a-php-web-app-to-azure"></a>Azure への PHP Web アプリの作成、構成、デプロイ
+# <a name="create-configure-and-deploy-a-php-web-app-to-azure"></a>Azure への PHP Web アプリの作成、構成、デプロイ
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 このチュートリアルでは、Azure 用に PHP Web アプリを作成、構成、デプロイする方法のほか、その PHP Web アプリの要件を満たすように Azure App Service を構成する方法について説明します。 このチュートリアルの最後には、実用的な [Laravel](https://www.laravel.com/) Web アプリが完成し、[Azure App Service](../app-service/app-service-value-prop-what-is.md) で実際に動作するようすを確認できます。
@@ -38,9 +42,9 @@ PHP 開発者の方は、お気に入りの PHP フレームワークを Azure �
 
 ## <a name="prerequisites"></a>前提条件
 * [PHP 5.6.x](http://php.net/downloads.php) をインストールします (PHP 7 のサポートはベータ段階)。
-* [Composer](https://getcomposer.org/download/)
-* [Azure CLI](../xplat-cli-install.md)
-* [Git](http://www.git-scm.com/downloads)
+*  [Composer](https://getcomposer.org/download/)
+*  [Azure CLI](../xplat-cli-install.md)
+*  [Git](http://www.git-scm.com/downloads)
 * Microsoft Azure アカウントを取得します。 アカウントを持っていない場合は、[無料試用版にサインアップ](/pricing/free-trial/?WT.mc_id=A261C142F)するか [Visual Studio サブスクライバー特典を有効](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
 
 > [!NOTE]
@@ -48,7 +52,7 @@ PHP 開発者の方は、お気に入りの PHP フレームワークを Azure �
 > 
 > 
 
-## <a name="create-a-php-(laravel)-app-on-your-dev-machine"></a>開発コンピューター上で PHP (Laravel) アプリを作成する
+## <a name="create-a-php-laravel-app-on-your-dev-machine"></a>開発コンピューター上で PHP (Laravel) アプリを作成する
 1. 新しい Windows コマンド プロンプト、PowerShell ウィンドウ、Linux のシェル、または OS X ターミナルを開きます。 必要なツールが適切にコンピューターにインストールされていることを次のコマンドを実行して確認します。 
    
         php --version
@@ -114,7 +118,8 @@ Azure App Service への Web アプリの作成と、Git デプロイに必要�
 * PHP 5.5.9 以降を構成します。 サーバーの全要件については、 [最新の Laravel 5.2 サーバーの要件](https://laravel.com/docs/5.2#server-requirements) を参照してください。 その他の要件は拡張機能に関するものであり、Azure の PHP 環境であらかじめ使用できる状態になっています。 
 * アプリに必要な環境変数を設定します。 Laravel では、`.env` ファイルを使用して簡単に環境変数を設定できます。 ただし、このファイルをソース管理下に置くことは避けてください ([Laravel の環境構成](https://laravel.com/docs/5.2/configuration#environment-configuration)に関するページを参照)。Azure Web アプリに対するアプリ設定は自分で行うことになります。
 * Laravel アプリのエントリ ポイント ( `public/index.php`) が最初に読み込まれることを確認します。 [Laravel のライフサイクルの概要](https://laravel.com/docs/5.2/lifecycle#lifecycle-overview)に関するページを参照してください。 つまり、Web アプリのルート URL が `public` ディレクトリを指すように設定する必要があります。
-* composer.json があるので、Azure で Composer 拡張機能を有効にします。 これにより、 `git push`でのデプロイ時に必要なパッケージの入手に関連した面倒な処理を Composer に委ねることができます。 これは利便性の問題です。 Composer によるオートメーションを有効にしなかった場合、必要なことは、コードのコミットとデプロイ時に `vendor` ディレクトリの内容がすべて対象となる ("無視されない") ように、`/vendor` を `.gitignore` ファイルから削除するだけです。
+* composer.json があるので、Azure で Composer 拡張機能を有効にします。 これにより、 `git push`でのデプロイ時に必要なパッケージの入手に関連した面倒な処理を Composer に委ねることができます。 これは利便性の問題です。 
+  Composer によるオートメーションを有効にしなかった場合、必要なことは、コードのコミットとデプロイ時に `vendor` ディレクトリの内容がすべて対象となる ("無視されない") ように、`/vendor` を `.gitignore` ファイルから削除するだけです。
 
 では、これらの作業を順に行っていきます。
 
@@ -134,13 +139,11 @@ Azure App Service への Web アプリの作成と、Git デプロイに必要�
     環境変数の設定はこれで完了です。
    
    > [!NOTE]
-   > ここでひと息吐いて、Laravel と Azure がここで何をしているかについて説明します。 Laravel はルート ディレクトリにある `.env` ファイルを使用して、アプリに環境変数を渡します。`APP_DEBUG=true` や `APP_KEY=...` の行が該当します。 `config/app.php` では、    `'debug' => env('APP_DEBUG', false),` というコードでこの変数にアクセスしています。 [env()](https://laravel.com/docs/5.2/helpers#method-env) は Laravel のヘルパー メソッドで、内部的には PHP の [getenv()](http://php.net/manual/en/function.getenv.php) が使われています。
+   > ここでひと息吐いて、Laravel と Azure がここで何をしているかについて説明します。 Laravel はルート ディレクトリにある `.env` ファイルを使用して、アプリに環境変数を渡します。`APP_DEBUG=true` や `APP_KEY=...` の行が該当します。 `config/app.php` では、`'debug' => env('APP_DEBUG', false),` というコードでこの変数にアクセスしています。 [env()](https://laravel.com/docs/5.2/helpers#method-env) は Laravel のヘルパー メソッドで、内部的には PHP の [getenv()](http://php.net/manual/en/function.getenv.php) が使われています。
    > 
-   > ただし `.env` は、ルート ディレクトリの `.gitignore` ファイルによって除外指定されているため、Git によって無視されます。 つまり、ローカル Git リポジトリ内の `.env` 
-   > だけは、他のファイルとは異なり、Azure にプッシュされません。 もちろん、この行を `.gitignore`から削除すればよいのですが、既に述べたように、このファイルをソース管理に追加することは推奨されません。 とはいえ Azure でこれらの環境変数を指定する手段は必要です。 
+   > ただし `.env` は、ルート ディレクトリの `.gitignore` ファイルによって除外指定されているため、Git によって無視されます。 つまり、ローカル Git リポジトリ内の `.env` だけは、他のファイルとは異なり、Azure にプッシュされません。 もちろん、この行を `.gitignore`から削除すればよいのですが、既に述べたように、このファイルをソース管理に追加することは推奨されません。 とはいえ Azure でこれらの環境変数を指定する手段は必要です。 
    > 
-   > さいわい、Azure App Service におけるアプリ設定では、PHP の [getenv()](http://php.net/manual/en/function.getenv.php) 
-   > がサポートされています。 FTP などの手段を使用して手動で `.env` ファイルを Azure にアップロードしてもかまいませんが、Azure では、`.env` を使わず単に必要な変数を Azure のアプリ設定として指定することができます。先ほど行った手順がまさにこれに該当します。 さらに、`.env` ファイルと Azure のアプリ設定との両方に同じ変数が存在した場合、Azure のアプリ設定が優先されます。     
+   > さいわい、Azure App Service におけるアプリ設定では、PHP の [getenv()](http://php.net/manual/en/function.getenv.php) がサポートされています。 FTP などの手段を使用して手動で `.env` ファイルを Azure にアップロードしてもかまいませんが、Azure では、`.env` を使わず単に必要な変数を Azure のアプリ設定として指定することができます。先ほど行った手順がまさにこれに該当します。 さらに、`.env` ファイルと Azure のアプリ設定との両方に同じ変数が存在した場合、Azure のアプリ設定が優先されます。     
    > 
    > 
 4. 最後の 2 つのタスク (仮想ディレクトリの設定と Composer の有効化) には [Azure Portal](https://portal.azure.com) が必要となります。ご使用の Azure アカウントで [Azure Portal](https://portal.azure.com) にログインしましょう。
@@ -149,11 +152,10 @@ Azure App Service への Web アプリの作成と、Git デプロイに必要�
     ![Enable Composer for your PHP (Laravel) app in Azure](./media/app-service-web-php-get-started/configure-composer-tools.png)
    
    > [!TIP]
-   > **[ツール]** の代わりに **[設定]** をクリックした場合は **[アプリケーション設定]** 
-   > ブレードが表示され、先ほど行った PHP のバージョンやアプリ設定、仮想ディレクトリの設定を行うことができます。 
+   > **[ツール]** の代わりに **[設定]** をクリックした場合は **[アプリケーション設定]** ブレードが表示され、先ほど行った PHP のバージョンやアプリ設定、仮想ディレクトリの設定を行うことができます。 
    > 
    > 
-6. **Composer** > **[追加]** の順にクリックして拡張機能を追加します。
+6.  **Composer** > **[追加]** の順にクリックして拡張機能を追加します。
 7. **[拡張機能の選択]** [ブレード](../azure-portal-overview.md)で **[Composer]** を選択します ("*ブレード*" = 横並びで表示されるポータル ページ)。
 8. **[法律条項に同意する]** ブレードの **[OK]** をクリックします。 
 9. **[拡張機能の追加]** ブレードの **[OK]** をクリックします。
@@ -181,7 +183,7 @@ Azure App Service への Web アプリの作成と、Git デプロイに必要�
     
      仮想ディレクトリの設定はこれで完了です。 
 
-## <a name="deploy-your-web-app-with-git-(and-setting-environment-variables)"></a>Git を使用した Web アプリのデプロイ (と環境変数の設定)
+## <a name="deploy-your-web-app-with-git-and-setting-environment-variables"></a>Git を使用した Web アプリのデプロイ (と環境変数の設定)
 いよいよコードをデプロイする段階となりました。 デプロイ作業は、再びコマンド プロンプトまたは端末から行います。
 
 1. Git リポジトリの場合と同様に、すべての変更をコミットし、Azure Web アプリにコードをデプロイします。
@@ -211,7 +213,7 @@ Azure App Service への Web アプリの作成と、Git デプロイに必要�
 
 <a name="clierror"></a>
 
-### <a name="azure-cli-shows-"'site'-is-not-an-azure-command""></a>Azure CLI で "'site' is not an azure command ('サイト' は Azure コマンドではありません)" が表示される
+### <a name="azure-cli-shows-site-is-not-an-azure-command"></a>Azure CLI で "'site' is not an azure command ('サイト' は Azure コマンドではありません)" が表示される
 コマンド ライン端末から `azure site *` を実行しているときに、`error:   'site' is not an azure command. See 'azure help'.` というエラーが表示されます。 
 
 一般に、"ARM" (Azure Resource Manager) モードに切り替えた結果として、このエラーが発生します。 これを解決するには、「 `azure config mode asm`」を実行して "ASM" (Azure Service Management) モードに戻してください。
@@ -225,14 +227,14 @@ Web アプリを正しく Azure にデプロイしたにもかかわらず、ブ
 
 <a name="whoops"></a>
 
-### <a name="web-app-shows-"whoops,-looks-like-something-went-wrong.""></a>Web アプリで "Whoops, looks like something went wrong. (問題が発生しました)" が表示される
+### <a name="web-app-shows-whoops-looks-like-something-went-wrong"></a>Web アプリで "Whoops, looks like something went wrong. (問題が発生しました)" が表示される
 Web アプリを正しく Azure にデプロイしたにもかかわらず、Azure Web アプリにブラウザーでアクセスすると、" `Whoops, looks like something went wrong.`
 
 エラーの状況をもっと詳しく把握するために、`APP_DEBUG` 環境変数を `true` に設定して Laravel のデバッグを有効にします (「[Azure Web アプリの構成](#configure)」を参照)。
 
 <a name="encryptor"></a>
 
-### <a name="web-app-shows-"no-supported-encryptor-found.""></a>Web アプリで "No supported encryptor found. (サポートされている暗号化機能が見つかりません)" が表示される
+### <a name="web-app-shows-no-supported-encryptor-found"></a>Web アプリで "No supported encryptor found. (サポートされている暗号化機能が見つかりません)" が表示される
 Web アプリを正しく Azure にデプロイしたにもかかわらず、Azure Web アプリにブラウザーでアクセスすると、次のエラー メッセージが表示されます。
 
 ![APP_KEY missing in your PHP (Laravel) app in Azure](./media/app-service-web-php-get-started/laravel-error-APP_KEY.png)
@@ -248,6 +250,9 @@ Web アプリを正しく Azure にデプロイしたにもかかわらず、Azu
 * [Azure App Service での WordPress から Multisite への変換](web-sites-php-convert-wordpress-multisite.md)
 * [Azure App Service のエンタープライズ クラスの WordPress](web-sites-php-enterprise-wordpress.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

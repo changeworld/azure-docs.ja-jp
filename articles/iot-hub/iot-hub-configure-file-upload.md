@@ -1,12 +1,12 @@
 ---
-title: Use the Azure portal to configure file upload | Microsoft Docs
-description: An overview of how to configure file upload using the Azure portal
+title: "Azure Portal を使用してファイルのアップロードを構成する | Microsoft Docs"
+description: "Azure Portal を使用してファイルのアップロードを構成する方法の概要"
 services: iot-hub
-documentationcenter: ''
+documentationcenter: 
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 915f1597-272d-4fd4-8c5b-a0ccb1df0d91
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
@@ -14,42 +14,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2016
 ms.author: dobett
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e3ac3e8cee2724b76f51423d1a6757382cca04f0
+
 
 ---
-# <a name="configure-file-uploads-using-the-azure-portal"></a>Configure file uploads using the Azure portal
-## <a name="file-upload"></a>File upload
-To use the [file upload functionality in IoT Hub][lnk-upload], you must first associate an Azure Storage account with your hub. Select the **File upload** settings to display a list of file upload properties for the IoT hub that is being modified.
+# <a name="configure-file-uploads-using-the-azure-portal"></a>Azure Portal を使用してファイルのアップロードを構成する
+## <a name="file-upload"></a>ファイルのアップロード
+[IoT Hub でファイルのアップロード機能][lnk-upload]を使用するには、最初に Azure Storage アカウントとハブを関連付ける必要があります。 **[ファイルのアップロード]** 設定を選択して、変更対象の IoT Hub のファイル アップロード プロパティのリストを表示します。
 
 ![][13]
 
-**Storage container**: Use the portal to select a blob container in a storage account in your current subscription to associate with your IoT Hub. If necessary, you can create a storage account on the **Storage accounts** blade and blob container on the **Containers** blade. IoT Hub automatically generates SAS URIs with write permissions to this blob container for devices to use when they upload files.
+**ストレージ コンテナー**: Azure Portal を使用して現在の Azure サブスクリプションの Azure Storage アカウントの BLOB コンテナーを選択し、IoT Hub に関連付けます。 必要に応じて、**[ストレージ アカウント]** ブレードで Azure Storage アカウントを作成し、**[コンテナー]** ブレードで BLOB コンテナーを作成できます。 IoT Hub により、ファイルをアップロードするときにデバイスで使用する、この BLOB コンテナーへの書き込みアクセス許可を含む SAS URI が自動的に生成します。
 
 ![][14]
 
-**Receive notifications for uploaded files**: Enable or disable file upload notifications via the toggle.
+**Receive notifications for uploaded files (アップロードされたファイルに関する通知を受け取る)**: トグル ボタンを使用して、ファイルのアップロードに関する通知を有効または無効にします。
 
-**SAS TTL**: This setting is the time-to-live of the SAS URIs returned to the device by IoT Hub. Set to one hour by default but can be customized to other values using the slider.
+**SAS TTL**: IoT Hub によりデバイスに返される SAS URI の有効期間を設定します。 既定で 1 時間に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
 
-**File notification settings default TTL**: The time-to-live of a file upload notification before it is expired. Set to one day by default but can be customized to other values using the slider.
+**File notification settings default TTL (ファイルの通知設定 既定の TTL)**: 有効期限が切れるまでのファイルのアップロード通知の有効期間です。 既定で 1 時間に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
 
-**File notification maximum delivery count**: The number of times the IoT Hub attempts to deliver a file upload notification. Set to 10 by default but can be customized to other values using the slider.
+**File notification maximum delivery count (ファイルの通知設定 最大配信回数)**: IoT Hub がファイルのアップロード通知の配信を試行する回数です。 既定で 10 に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
 
 ![][15]
 
-## <a name="next-steps"></a>Next steps
-For more information about the file upload capabilities of IoT Hub, see [Upload files from a device][lnk-upload] in the developer guide.
+## <a name="next-steps"></a>次のステップ
+IoT Hub のファイルのアップロード機能に関する詳細については、開発者ガイドの「[Upload files from a device][lnk-upload]」(デバイスからのファイルのアップロード) をご覧ください。
 
-Follow these links to learn more about managing Azure IoT Hub:
+Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
-* [Bulk manage IoT devices][lnk-bulk]
-* [Usage metrics][lnk-metrics]
-* [Operations monitoring][lnk-monitor]
+* [IoT デバイスの一括管理][lnk-bulk]
+* [使用状況メトリック][lnk-metrics]
+* [操作の監視][lnk-monitor]
 
-To further explore the capabilities of IoT Hub, see:
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [Developer guide][lnk-devguide]
-* [Simulating a device with the Gateway SDK][lnk-gateway]
-* [Secure your IoT solution from the ground up][lnk-securing]
+* [開発者ガイド][lnk-devguide]
+* [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+* [IoT ソリューションの徹底的なセキュリティ保護][lnk-securing]
 
 [13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png
 [14]: ./media/iot-hub-configure-file-upload/file-upload-container-selection.png
@@ -66,6 +70,7 @@ To further explore the capabilities of IoT Hub, see:
 [lnk-securing]: iot-hub-security-ground-up.md
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

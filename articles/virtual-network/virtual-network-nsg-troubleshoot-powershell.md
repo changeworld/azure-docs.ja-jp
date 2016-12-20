@@ -1,13 +1,13 @@
 ---
-title: ネットワーク セキュリティ グループのトラブルシューティング - PowerShell | Microsoft Docs
-description: Azure Resource Manager のデプロイメント モデルで、Azure PowerShell を使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。
+title: "ネットワーク セキュリティ グループのトラブルシューティング - PowerShell | Microsoft Docs"
+description: "Azure Resource Manager のデプロイメント モデルで、Azure PowerShell を使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 4c732bb7-5cb1-40af-9e6d-a2a307c2a9c4
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 10a56e134f0e31e60758d6e616b771dabc0f4dad
+
 
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Azure PowerShell を使用したネットワーク セキュリティ グループのトラブルシューティング
@@ -194,6 +198,9 @@ VM の NSG のトラブルシューティングを行うには、次の手順を
 * 有効なセキュリティの規則は、VM の NIC やサブネットに関連付けられている NSG がある場合のみ表示されます。 
 * NIC やサブネットに関連付けられている NSG がなく、VM にパブリック IP アドレスを割り当てている場合は、着信/発信アクセス用にすべてのポートが開きます。 VM にパブリック IP アドレスがある場合は、NIC またはサブネットに NSG を適用することを強くお勧めします。  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

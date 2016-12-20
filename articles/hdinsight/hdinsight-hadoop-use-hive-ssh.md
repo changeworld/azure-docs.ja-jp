@@ -1,57 +1,61 @@
 ---
-title: HDInsight (Hadoop) での Hive シェルの使用 | Microsoft Docs
-description: Linux ベースの HDInsight クラスターで Hive シェルを使用する方法について説明します。SSh を使用して HDInsight クラスターに接続してから、Hive シェルを使用して対話的にクエリを実行する方法について説明します。
+title: "HDInsight (Hadoop) での Hive シェルの使用 | Microsoft Docs"
+description: "Linux ベースの HDInsight クラスターで Hive シェルを使用する方法について説明します。 SSh を使用して HDInsight クラスターに接続してから、Hive シェルを使用して対話的にクエリを実行する方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 0e919171-03e6-4f5a-ab4e-3eec3e34c347
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/19/2016
+ms.date: 10/04/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 366642a753223aec116ebd87751dfce0c393f7a7
+
 
 ---
-# SSH による HDInsight での Hive と Hadoop の使用
-[!INCLUDE [hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
+# <a name="use-hive-with-hadoop-in-hdinsight-with-ssh"></a>SSH による HDInsight での Hive と Hadoop の使用
+[!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
 この記事では、Secure Shell (SSH) を使用して Azure HDInsight クラスターで Hadoop に接続してから、Hive コマンド ライン インターフェイス (CLI) を使用して Hive クエリを対話的に実行する方法について説明します。
 
 > [!IMPORTANT]
-> Hive コマンドは Linux ベースの HDInsight クラスターで利用できますが、Beeline の使用を検討してください。Beeline は Hive を使用するための最新クライアントであり、HDInsight クラスターに付属します。使用方法に関する詳細については、「[Beeline による HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-beeline.md)」を参照してください。
+> Hive コマンドは Linux ベースの HDInsight クラスターで利用できますが、Beeline の使用を検討してください。 Beeline は Hive を使用するための最新クライアントであり、HDInsight クラスターに付属します。 使用方法に関する詳細については、「 [Beeline による HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-beeline.md)」を参照してください。
 > 
 > 
 
-## <a id="prereq"></a>前提条件
+## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * HDInsight クラスターでの Linux ベースの Hadoop
-* SSH クライアントSSH クライアントを備えた Linux、Unix、および Mac OSWindows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
+* SSH クライアント SSH クライアントを備えた Linux、Unix、および Mac OS Windows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
-## <a id="ssh"></a>SSH を使用した接続
-SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。FQDN はクラスターに指定した名前で、その後、**.azurehdinsight.net** が続きます。以下の例では、**myhdinsight** という名前のクラスターに接続します。
+## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>SSH を使用した接続
+SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。 FQDN はクラスターに指定した名前で、その後、 **.azurehdinsight.net**が続きます。 以下の例では、 **myhdinsight**という名前のクラスターに接続します。
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
 
-**HDInsight クラスターの作成時に SSH 認証に証明書キーを指定した場合は**、クライアント システムの秘密キーの場所を指定する必要があることがあります。
+**HDInsight クラスターの作成時に SSH 認証に証明書キーを指定した場合は** 、クライアント システムの秘密キーの場所を指定する必要があることがあります。
 
-    ssh admin@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
+    ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
 
-**HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は**、パスワードの入力を求められます。
+**HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は** 、パスワードの入力を求められます。
 
-HDInsight での SSH の使用に関する詳細については、「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
+HDInsight での SSH の使用に関する詳細については、「 [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
 
-### PuTTY (Windows ベースのクライアント)
-Windows ではビルトイン SSH クライアントは提供されません。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
+### <a name="putty-windows-based-clients"></a>PuTTY (Windows ベースのクライアント)
+Windows ではビルトイン SSH クライアントは提供されません。 **http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html**からダウンロードできる [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)を使用することをお勧めします。
 
-PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する ](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
-## <a id="hive"></a>Hive コマンドの使用
+## <a name="a-idhiveause-the-hive-command"></a><a id="hive"></a>Hive コマンドの使用
 1. 接続したら、次のコマンドを使用して Hive CLI を起動します。
    
         hive
@@ -66,11 +70,11 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
     これらのステートメントは次のアクションを実行します。
    
    * **DROP TABLE** - テーブルが既存の場合にテーブルとデータ ファイルを削除します。
-   * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。外部テーブルは Hive にテーブル定義のみを格納します。データは元の場所に残されます。
-   * **ROW FORMAT** - Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
+   * **CREATE EXTERNAL TABLE** : Hive に新しく '外部' テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
+   * **ROW FORMAT** - Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
    * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
-   * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
-   * **INPUT\_\_FILE\_\_NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
+   * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が 3 行あるため、 **3** という値が返されています。
+   * **INPUT__FILE__NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。 これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
      
      > [!NOTE]
      > 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
@@ -78,15 +82,15 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
      > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
      > 
      > 
-3. 次のステートメントを使用して、**errorLogs** という名前の新しい "内部" テーブルを作成します。
+3. 次のステートメントを使用して、 **errorLogs**という名前の新しい "内部" テーブルを作成します。
    
         CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
         INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
    
     これらのステートメントは次のアクションを実行します。
    
-   * **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。**EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ保管先に格納され、完全に Hive によって管理されます。
-   * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
+   * **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。 **EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ保管先に格納され、完全に Hive によって管理されます。
+   * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。 この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
    * **INSERT OVERWRITE ...SELECT** - **[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
      
      **errorLogs** テーブルには t4 列に **[ERROR]** を含む行のみが格納されていることを確認するには、次のステートメントを使用して、**errorLogs** 列からすべての列を返します。
@@ -100,10 +104,10 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
      > 
      > 
 
-## <a id="summary"></a>概要
+## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
 このように、Hive コマンドを使用すると、HDInsight クラスターで簡単に対話的に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-## <a id="nextsteps"></a>次のステップ
+## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
 HDInsight での Hive に関する全般的な情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
@@ -147,4 +151,9 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

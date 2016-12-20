@@ -1,19 +1,23 @@
 ---
-title: 増分スナップショットを使用した Azure Virtual Machines のバックアップと復元 | Microsoft Docs
-description: 増分スナップショットを使用して Azure 仮想マシン ディスクのバックアップと復元を行うカスタム ソリューションを作成します。
+title: "増分スナップショットを使用した Azure Virtual Machines のバックアップと復元 | Microsoft Docs"
+description: "増分スナップショットを使用して Azure 仮想マシン ディスクのバックアップと復元を行うカスタム ソリューションを作成します。"
 services: storage
 documentationcenter: na
 author: aungoo-msft
 manager: tadb
 editor: tysonn
-
+ms.assetid: 3524b987-bd65-4e35-83e7-fbc2136643e5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 11/17/2016
 ms.author: aungoo
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 9ade78c954ca6443354b198c7141b6fb5c88afdb
+
 
 ---
 # <a name="back-up-azure-virtual-machine-disks-with-incremental-snapshots"></a>Azure 仮想マシン ディスクを増分スナップショットでバックアップする
@@ -22,7 +26,7 @@ Azure Storage には、BLOB のスナップショットを作成する機能が�
 
 Azure Storage には、Azure 仮想マシン ディスクがページ BLOB として格納されます。 この記事のテーマは仮想マシン ディスクのバックアップ方法であるため、スナップショットという言葉は、ページ BLOB のコンテキストにおける意味合いを指しています。 スナップショットの詳細については、「 [BLOB のスナップショットの作成](https://msdn.microsoft.com/library/azure/hh488361.aspx)」を参照してください。
 
-## <a name="what-is-a-snapshot?"></a>スナップショットとは
+## <a name="what-is-a-snapshot"></a>スナップショットとは
 BLOB のスナップショットとは、ある時点でキャプチャされた BLOB の読み取り専用版です。 作成されたスナップショットは、読み取り、コピー、削除はできますが、変更はできません。 スナップショットを使用すると、BLOB をある時点での表示内容のままバックアップできます。 REST バージョン 2015-04-05 までは、スナップショット全体をコピーすることができました。 REST バージョン 2015-07-08 以降では、増分スナップショットをコピーすることもできます。
 
 ## <a name="full-snapshot-copy"></a>スナップショット全体のコピー
@@ -116,6 +120,9 @@ Azure VM のバックアップについて詳しくは、 [Azure での VM バ�
 * [BLOB のスナップショットの作成](https://msdn.microsoft.com/library/azure/hh488361.aspx)
 * [VM のバックアップ インフラストラクチャの計画](../backup/backup-azure-vms-introduction.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,41 +1,45 @@
 ---
-title: Azure API Management で API Inspector を使用して呼び出しをトレースする方法
-description: Azure API Management で API Inspector を使用して呼び出しをトレースする方法について説明します。
+title: "Azure API Management で API Inspector を使用して呼び出しをトレースする方法"
+description: "Azure API Management で API Inspector を使用して呼び出しをトレースする方法について説明します。"
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 4b222327-c8a4-4f33-9a06-adff2a9834d9
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: dd806a187d1ac2c34020325753ac4f68b44064de
+
 
 ---
-# Azure API Management で API Inspector を使用して呼び出しをトレースする方法
-API Management には、API のデバッグとトラブルシューティングに役立つ API Inspector ツールが用意されています。API Inspector は、プログラムで使用することも、開発者ポータルから直接使用することもできます。
+# <a name="how-to-use-the-api-inspector-to-trace-calls-in-azure-api-management"></a>Azure API Management で API Inspector を使用して呼び出しをトレースする方法
+API Management には、API のデバッグとトラブルシューティングに役立つ API Inspector ツールが用意されています。 API Inspector は、プログラムで使用することも、開発者ポータルから直接使用することもできます。 
 
-操作のトレースに加え、API Inspector は、[ポリシー式](https://msdn.microsoft.com/library/azure/dn910913.aspx)の評価もトレースします。デモについては、「[Cloud Cover Episode 177: More API Management Features (クラウド カバー エピソード 177: その他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」を 21:00 まで早送りしてご覧ください。
+操作のトレースに加え、API Inspector は、 [ポリシー式](https://msdn.microsoft.com/library/azure/dn910913.aspx) の評価もトレースします。 デモについては、「 [Cloud Cover Episode 177: More API Management Features (クラウド カバー エピソード 177: その他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 」を 21:00 まで早送りしてご覧ください。
 
 このガイドでは、API Inspector の使い方を順をおって説明していきます。
 
 > [!NOTE]
-> API インスペクター トレースは、[管理者](api-management-howto-create-groups.md)アカウントに属するサブスクリプション キーが要求に含まれている場合に限り生成され利用できるようになります。
+> API インスペクター トレースは、 [管理者](api-management-howto-create-groups.md) アカウントに属するサブスクリプション キーが要求に含まれている場合に限り生成され利用できるようになります。
 > 
 > 
 
 ## <a name="trace-call"> </a> API Inspector を使用した呼び出しのトレース
-API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダーを操作の呼び出しに追加します。その後、**ocp-apim-trace-location** 応答ヘッダーで示される URL を使用してトレースをダウンロードし、内容を確認します。この操作は、プログラムで実行することも、開発者ポータルから直接実行することもできます。
+API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダーを操作の呼び出しに追加します。その後、**ocp-apim-trace-location** 応答ヘッダーで示される URL を使用してトレースをダウンロードし、内容を確認します。 この操作は、プログラムで実行することも、開発者ポータルから直接実行することもできます。
 
-このチュートリアルは API Inspector を使って、[初めての API の管理](api-management-get-started.md)に関する概要チュートリアルで構成される Basic Calculator API を使用した操作のトレース方法を説明します。このチュートリアルをまだ完了していない場合は、Basic Calculator API をインポートするか (わずかの時間しかかかりません)、Echo API など、他のお好きな API を使用できます。それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。Echo API は、受け取った入力をそのまま返します。これを使用するには、任意の HTTP 動詞を呼び出します。すると、送った値がそのまま返されます。
+このチュートリアルは API Inspector を使って、[初めての API の管理](api-management-get-started.md)に関する概要チュートリアルで構成される Basic Calculator API を使用した操作のトレース方法を説明します。 このチュートリアルをまだ完了していない場合は、Basic Calculator API をインポートするか (わずかの時間しかかかりません)、Echo API など、他のお好きな API を使用できます。 それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。 Echo API は、受け取った入力をそのまま返します。 これを使用するには、任意の HTTP 動詞を呼び出します。すると、送った値がそのまま返されます。 
 
-最初に、ご利用の API Management サービスの Azure クラシック ポータルで **[開発者ポータル]** をクリックします。開発者ポータルには、API の操作を見てテストするための便利な環境が用意されており、操作を直接呼び出すことができます。
+最初に、ご利用の API Management サービスの Azure Portal で **[開発者ポータル]** をクリックします。 開発者ポータルには、API の操作を見てテストするための便利な環境が用意されており、操作を直接呼び出すことができます。
 
-> まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][Azure API Management の使用]」チュートリアルの「[API Management インスタンスの作成][API Management インスタンスの作成]」を参照してください。
+> API Management サービス インスタンスをまだ作成していない場合は、[API Management インスタンスの作成][API Management インスタンスの作成]に関するチュートリアルの [API Management サービス インスタンスの作成][API Management サービス インスタンスの作成]に関するセクションをご覧ください。
 > 
 > 
 
@@ -43,21 +47,21 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
 
 上部のメニューの **[API]** をクリックし、**[Basic Calculator]** をクリックします。
 
-![Echo API][api-management-api]
+![[Echo API]][api-management-api]
 
 **2 つの整数を追加する**操作を試すには、**[試してみる]** をクリックします。
 
 ![試してみる][api-management-open-console]
 
-既定のパラメーターの値はそのままにし、**[サブスクリプション キー]** ボックスの一覧で使用する製品のサブスクリプション キーを選択します。
+既定のパラメーターの値はそのままにし、 **[サブスクリプション キー]** ボックスの一覧で使用する製品のサブスクリプション キーを選択します。
 
-開発者ポータルの既定では、**Ocp-Apim-Trace** ヘッダーは **true** に設定されています。このヘッダーにより、トレースが生成されるかどうかが構成されます。
+開発者ポータルの既定では、**Ocp-Apim-Trace** ヘッダーは **true** に設定されています。 このヘッダーにより、トレースが生成されるかどうかが構成されます。
 
-![送信][api-management-http-get]
+![[送信]][api-management-http-get]
 
 **[送信]** をクリックし、操作を呼び出します。
 
-![送信][api-management-send-results]
+![[送信]][api-management-send-results]
 
 応答ヘッダーは、次の例のような値を含む **ocp-apim-trace-location** となります。
 
@@ -66,7 +70,7 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
 トレースは、次のステップに示すように、指定された場所からダウンロードして内容を確認できます。
 
 ## <a name="inspect-trace"> </a>トレースの確認
-トレース内の値を確認するには、**ocp-apim-trace-location** URL からトレース ファイルをダウンロードします。これは JSON 形式のテキスト ファイルで、次の例に示すようなエントリを含んでいます。
+トレース内の値を確認するには、 **ocp-apim-trace-location** URL からトレース ファイルをダウンロードします。 これは JSON 形式のテキスト ファイルで、次の例に示すようなエントリを含んでいます。
 
     {
         "traceId": "abcd8ea63d134c1fabe6371566c7cbea",
@@ -228,23 +232,23 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
     }
 
 ## <a name="next-steps"> </a>次のステップ
-* 「[Cloud Cover Episode 177: More API Management Features (クラウド カバー エピソード 177: その他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」でポリシー式のトレースのデモをご覧ください。デモを表示するには、21:00 まで早送りします。
+* 「 [Cloud Cover Episode 177: More API Management Features (クラウド カバー エピソード 177: その他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」でポリシー式のトレースのデモをご覧ください。 デモを表示するには、21:00 まで早送りします。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Cloud+Cover/Episode-177-More-API-Management-Features-with-Vlad-Vinogradsky/player]
 > 
 > 
 
-[Use API Inspector to trace a call]: #trace-call
-[Inspect the trace]: #inspect-trace
-[Next steps]: #next-steps
+[API Inspector を使用した呼び出しのトレース]: #trace-call
+[トレースの確認]: #inspect-trace
+[次のステップ]: #next-steps
 
-[Configure API settings]: api-management-howto-create-apis.md#configure-api-settings
-[Responses]: api-management-howto-add-operations.md#responses
-[How create and publish a product]: api-management-howto-add-products.md
+[API 設定の構成]: api-management-howto-create-apis.md#configure-api-settings
+[応答]: api-management-howto-add-operations.md#responses
+[成果物を作成して発行する方法]: api-management-howto-add-products.md
 
-[Azure API Management の使用]: api-management-get-started.md
-[API Management インスタンスの作成]: api-management-get-started.md#create-service-instance
-[Azure Classic Portal]: https://manage.windowsazure.com/
+[API Management インスタンスの作成]: api-management-get-started.md
+[API Management サービス インスタンスの作成]: api-management-get-started.md#create-service-instance
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 
 
 [api-management-developer-portal-menu]: ./media/api-management-howto-api-inspector/api-management-developer-portal-menu.png
@@ -260,4 +264,7 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
 
 
 
-<!---HONumber=AcomDC_0831_2016-->
+
+<!--HONumber=Nov16_HO3-->
+
+

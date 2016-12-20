@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement ユーザー インターフェイス - マイ アカウント
-description: Azure Mobile Engagement を利用してアカウント プロファイルとテスト デバイスを管理する方法について説明します。
+title: "Azure Mobile Engagement ユーザー インターフェイス - マイ アカウント"
+description: "Azure Mobile Engagement を利用してアカウント プロファイルとテスト デバイスを管理する方法について説明します。"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 22832678-3959-4b8c-9fb2-f2ff5974e5d1
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
@@ -14,41 +14,51 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8430f80b9b2ec596d43b0de5e7ef022d4b3261bd
+
 
 ---
-# アカウント プロファイルとテスト デバイスを管理する方法
-この記事では、**Mobile Engagement** ポータルの**ホーム** ページについて説明します。**Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。
+# <a name="how-to-manage-your-account-profile-and-test-devices"></a>アカウント プロファイルとテスト デバイスを管理する方法
+この記事では、**Mobile Engagement** ポータルの**ホーム** ページについて説明します。 **Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。 
 
 **[マイ アカウント]** ページにアクセスするには、ページ上部のアカウントをクリックします。
 
-UI の [マイ アカウント] セクションでは、プロファイル設定やテスト デバイス ID などのアカウントに関連付けられている設定を表示し、変更できます。これらの設定には、デバイス API からもアクセスできる項目が含まれています。
+UI の [マイ アカウント] セクションでは、プロファイル設定やテスト デバイス ID などのアカウントに関連付けられている設定を表示し、変更できます。 これらの設定には、デバイス API からもアクセスできる項目が含まれています。
 
-![MyAccount1][7]
+![MyAccount1][7]  
 
-## プロファイル:
-アカウント設定を次のように表示または変更できます。[[ホーム]](mobile-engagement-user-interface-home.md) から、メール アドレスに基づいて別のユーザーに自分のアプリケーションを使用するアクセス許可を与えることもできます。
+## <a name="profile"></a>プロファイル:
+アカウント設定を次のように表示または変更できます。 [[ホーム]](mobile-engagement-user-interface-home.md)から、メール アドレスに基づいて別のユーザーに自分のアプリケーションを使用するアクセス許可を与えることもできます。
 
-![MyAccount2][8]
+![MyAccount2][8]  
 
-## デバイス:
-**リーチ**または**プッシュ** キャンペーンのテストに使用できるテスト デバイスのテスト デバイス ID を表示、追加、削除できます。各プラットフォーム用 (iOS、Android、Windows Phone など) のデバイスのデバイス ID を検索する方法のコンテキストは、[新しいデバイス] をクリックすると表示されます。
+## <a name="devices"></a>デバイス:
+**リーチ**または**プッシュ** キャンペーンのテストに使用できるテスト デバイスのテスト デバイス ID を表示、追加、削除できます。 各プラットフォーム用 (iOS、Android、Windows Phone など) のデバイスのデバイス ID を検索する方法のコンテキストは、[新しいデバイス] をクリックすると表示されます。 
 
-![MyAccount3][9]
+![MyAccount3][9]  
 
-プッシュ API またはデバイス API を使用するには、ユーザーの一意のデバイス ID (deviceid パラメーター) が必要です。これを取得するには、次の方法があります。
+プッシュ API またはデバイス API を使用するには、ユーザーの一意のデバイス ID (deviceid パラメーター) が必要です。 これを取得するには、次の方法があります。
 
 1. バックエンドからは、デバイス API の "Get" 機能を使用してデバイス ID の完全な一覧を取得できます。
-2. アプリからは、SDK を使用して取得できます。(Android の場合は、エージェント クラスの getDeviceID() 関数を呼び出し、iOS の場合は、エージェント クラスの deviceid プロパティを読み取ります)。
-3. リーチのお知らせからは、お知らせに関連付けられているアクションの URL に {deviceid} パターンが含まれている場合、このパターンは、アクションをトリガーするデバイスの ID に自動的に置き換えられます。http://<example>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata は、http://<example>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata に置き換えられます。
-4. リーチの Web のお知らせからは、お知らせの HTML コードに {deviceid} パターンが含まれている場合は、Web のお知らせを表示するデバイスの ID に自動的に置き換えられます。自分のデバイス ID: {deviceid} は、次のデバイス ID に置き換えられます。自分のデバイス ID: XXXXXXXXXXXXXXXX
-5. デバイスでアプリケーションを開き、タグが付けられているアプリでイベントを実行します。[UI] - [アプリ] - [監視] - [イベント] - [詳細] から、実行したイベントを一覧から見つけます。[監視] で、このイベントをクリックします。このイベントを実行したデバイスの一覧に、デバイス ID が見つかるはずです。次に、このデバイス ID をコピーし、[UI] - [マイ アカウント] - [デバイス] - [新しいデバイス] - [デバイスのプラットフォームを選択] で、これを登録できます。
+2. アプリからは、SDK を使用して取得できます。 (Android の場合は、エージェント クラスの getDeviceID() 関数を呼び出し、iOS の場合は、エージェント クラスの deviceid プロパティを読み取ります)。
+3. リーチのお知らせからは、お知らせに関連付けられているアクションの URL に {deviceid} パターンが含まれている場合、このパターンは、アクションをトリガーするデバイスの ID に自動的に置き換えられます。
+   http://<example>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata は、http://<example>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata に置き換えられます。 
+4. リーチの Web のお知らせからは、お知らせの HTML コードに {deviceid} パターンが含まれている場合は、Web のお知らせを表示するデバイスの ID に自動的に置き換えられます。
+   自分のデバイス ID: {deviceid} は、次のデバイス ID に置き換えられます。自分のデバイス ID: XXXXXXXXXXXXXXXX
+5. デバイスでアプリケーションを開き、タグが付けられているアプリでイベントを実行します。
+   [UI] - [アプリ] - [監視] - [イベント] - [詳細] から、実行したイベントを一覧から見つけます。
+   [監視] で、このイベントをクリックします。
+   このイベントを実行したデバイスの一覧に、デバイス ID が見つかるはずです。
+   次に、このデバイス ID をコピーし、[UI] - [マイ アカウント] - [デバイス] - [新しいデバイス] - [デバイスのプラットフォームを選択] で、これを登録できます。
    >(IDFA が iOS で無効になっている場合、アプリをアンインストールして再インストールすると、デバイス ID が経時変化する可能性があります)。
 
-## トラブルシューティング ガイド
-* [トラブルシューティング ガイド - サービス][Link 24]
+## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
+* [サービスの問題に関するトラブルシューティング ガイド][リンク 24]
 
-## 関連項目
-* [UI ドキュメント - ホーム][Link 13]
+## <a name="see-also"></a>関連項目
+* [UI ドキュメント - ホーム][リンク 13]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -111,42 +121,46 @@ UI の [マイ アカウント] セクションでは、プロファイル設定
 [58]: ./media/mobile-engagement-user-interface-settings/settings13.png
 
 <!--Link references-->
-[Link 1]: mobile-engagement-user-interface.md
-[Link 2]: mobile-engagement-troubleshooting-guide.md
-[Link 3]: mobile-engagement-how-tos.md
-[Link 4]: http://go.microsoft.com/fwlink/?LinkID=525553
-[Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
-[Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
-[Link 7]: https://account.windowsazure.com/PreviewFeatures
-[Link 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
-[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
-[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
-[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
-[Link 12]: mobile-engagement-user-interface-navigation.md
-[Link 13]: mobile-engagement-user-interface-home.md
-[Link 14]: mobile-engagement-user-interface-my-account.md
-[Link 15]: mobile-engagement-user-interface-analytics.md
-[Link 16]: mobile-engagement-user-interface-monitor.md
-[Link 17]: mobile-engagement-user-interface-reach.md
-[Link 18]: mobile-engagement-user-interface-segments.md
-[Link 19]: mobile-engagement-user-interface-dashboard.md
-[Link 20]: mobile-engagement-user-interface-settings.md
-[Link 21]: mobile-engagement-troubleshooting-guide-analytics.md
-[Link 22]: mobile-engagement-troubleshooting-guide-apis.md
-[Link 23]: mobile-engagement-troubleshooting-guide-push-reach.md
-[Link 24]: mobile-engagement-troubleshooting-guide-service.md
-[Link 25]: mobile-engagement-troubleshooting-guide-sdk.md
-[Link 26]: mobile-engagement-troubleshooting-guide-sr-info.md
-[Link 27]: ../mobile-engagement-how-tos-first-push.md
-[Link 28]: ../mobile-engagement-how-tos-test-campaign.md
-[Link 29]: ../mobile-engagement-how-tos-personalize-push.md
-[Link 30]: ../mobile-engagement-how-tos-differentiate-push.md
-[Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
-[Link 32]: ../mobile-engagement-how-tos-text-view.md
-[Link 33]: ../mobile-engagement-how-tos-web-view.md
+[リンク 1]: mobile-engagement-user-interface.md
+[リンク 2]: mobile-engagement-troubleshooting-guide.md
+[リンク 3]: mobile-engagement-how-tos.md
+[リンク 4]: http://go.microsoft.com/fwlink/?LinkID=525553
+[リンク 5]: http://go.microsoft.com/fwlink/?LinkID=525554
+[リンク 6]: http://go.microsoft.com/fwlink/?LinkId=525555
+[リンク 7]: https://account.windowsazure.com/PreviewFeatures
+[リンク 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
+[リンク 9]: http://azure.microsoft.com/services/mobile-engagement/
+[リンク 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
+[リンク 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
+[リンク 12]: mobile-engagement-user-interface-navigation.md
+[リンク 13]: mobile-engagement-user-interface-home.md
+[リンク 14]: mobile-engagement-user-interface-my-account.md
+[リンク 15]: mobile-engagement-user-interface-analytics.md
+[リンク 16]: mobile-engagement-user-interface-monitor.md
+[リンク 17]: mobile-engagement-user-interface-reach.md
+[リンク 18]: mobile-engagement-user-interface-segments.md
+[リンク 19]: mobile-engagement-user-interface-dashboard.md
+[リンク 20]: mobile-engagement-user-interface-settings.md
+[リンク 21]: mobile-engagement-troubleshooting-guide-analytics.md
+[リンク 22]: mobile-engagement-troubleshooting-guide-apis.md
+[リンク 23]: mobile-engagement-troubleshooting-guide-push-reach.md
+[リンク 24]: mobile-engagement-troubleshooting-guide-service.md
+[リンク 25]: mobile-engagement-troubleshooting-guide-sdk.md
+[リンク 26]: mobile-engagement-troubleshooting-guide-sr-info.md
+[リンク 27]: ../mobile-engagement-how-tos-first-push.md
+[リンク 28]: ../mobile-engagement-how-tos-test-campaign.md
+[リンク 29]: ../mobile-engagement-how-tos-personalize-push.md
+[リンク 30]: ../mobile-engagement-how-tos-differentiate-push.md
+[リンク 31]: ../mobile-engagement-how-tos-schedule-campaign.md
+[リンク 32]: ../mobile-engagement-how-tos-text-view.md
+[リンク 33]: ../mobile-engagement-how-tos-web-view.md
 
 
 
 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

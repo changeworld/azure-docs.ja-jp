@@ -1,12 +1,12 @@
 ---
-title: Log Analytics におけるログの検索 | Microsoft Docs
-description: ユーザーはログの検索を通じて、環境内のさまざまなソースから収集したコンピューター データを組み合わせて相互の関係を比較することができます。
+title: "Log Analytics におけるログの検索 | Microsoft Docs"
+description: "ユーザーはログの検索を通じて、環境内のさまざまなソースから収集したコンピューター データを組み合わせて相互の関係を比較することができます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 0d7b6712-1722-423b-a60f-05389cde3625
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3e1810850651cff4680ea558178ebf92aeac4faa
+
 
 ---
 # <a name="log-searches-in-log-analytics"></a>Log Analytics におけるログの検索
@@ -246,7 +250,7 @@ Select コマンドは、PowerShell の Select-Object のように動作しま�
 ## <a name="use-the-measure-command"></a>Measure コマンドを使用する
 Measure は、Log Analytics 検索で最も用途の広いコマンドの 1 つです。 データに統計 *関数* を適用し、結果を指定したフィールドでグループ化して集計できます。 Measure がサポートする統計関数は複数あります。
 
-### <a name="measure-count()"></a>Measure count()
+### <a name="measure-count"></a>Measure count()
 操作する最初の統計関数であり、最も簡単な関数の 1 つは *count()* 関数です。
 
 `Type=Event`などの検索クエリの結果では、検索結果の左側にフィルター (ファセットとも呼ばれます) が表示されます。 これらのフィルターは、実行された検索の結果を、特定のフィールドによる値の分布で示します。
@@ -571,6 +575,9 @@ Type=WireData | measure avg(ReceivedBytes), avg(SentBytes) by Direction interval
 * ログの検索を拡張するには、 [Log Analytics でカスタム フィールド](log-analytics-custom-fields.md) を使用します。
 * Log Analytics で使用できるすべての検索フィールドとファセットは、 [Log Analytics のログ検索のリファレンス](log-analytics-search-reference.md) でご覧いただけます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
