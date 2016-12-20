@@ -34,6 +34,7 @@
 ### [ベースライン評価](oms-security-baseline.md)
 ### [マルウェアの評価](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [システムの更新の評価](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [セキュリティ製品の接続](oms-security-connect-products.md)
 ## [OMS との統合](operations-management-suite-integration.md)
 
 
@@ -64,6 +65,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

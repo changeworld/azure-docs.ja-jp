@@ -1,13 +1,13 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 9b0f7ee1d0eae8a7f0a67c4636de739f6c301d47
-ms.openlocfilehash: 9b853e70f34a4bc1462dfab71c41b2ea802b9dbf
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: f59615ce37aa83a99a058775d4e1705e016baf07
 
 ---
 # <a name="iot-suite-documentation"></a>IoT Suite のドキュメント
 
-Microsoft Azure IoT Suite はすぐに使い始められます。 事前に構成されたソリューションを利用して、モノのインターネット (IoT) ソリューションの開発を加速させることができます。 複数のプラットフォーム (Linux、Windows、リアルタイム オペレーティング システムなど) 向けのデバイス SDK を使用して、新しいデバイスを追加し、既存のデバイスを接続できます。 ほんの数台のセンサーから何百万台ものデバイスの同時接続まで簡単に拡張できるため、プロジェクトの規模に関係なく Azure のグローバルな可用性を活用できます。
+Microsoft Azure IoT Suite はすぐに使い始められます。 事前に構成されたソリューションを利用して、モノのインターネット (IoT) ソリューションの開発を加速させることができます。 複数のプラットフォーム (Linux、Windows、リアルタイム オペレーティング システムなど) 向けのデバイス SDK を使用して、新しいデバイスを追加し、既存のデバイスを接続できます。 ほんの数台のセンサーから、何百万台ものデバイスの同時接続まで簡単にスケール調整が可能なので、プロジェクトの規模に関係なく、Azure のグローバルな可用性を頼りにできます。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +29,7 @@ Microsoft Azure IoT Suite はすぐに使い始められます。 事前に構�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/resources/videos/index/?services=internet-of-things">
+        <a href="https://azure.microsoft.com/resources/videos/index/?services=internet-of-things">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -68,6 +68,27 @@ Microsoft Azure IoT Suite はすぐに使い始められます。 事前に構�
 
 ---
 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>リソース</h3>
+                        <p><a href="/azure/iot-suite/iot-security-architecture">セキュリティのアーキテクチャ</a></p>
+                        <p><a href="/azure/iot-suite/iot-security-best-practices">セキュリティのベスト プラクティス</a></p>
+                        <p><a href="/azure/iot-suite/iot-suite-security-deployment">IoT デプロイのセキュリティ保護</a></p>
+                        <p><a href="/azure/iot-suite/securing-iot-ground-up">徹底的なセキュリティ</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+---
+
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/iot-suite.pdf">
         <div class="img"></div>
@@ -78,6 +99,6 @@ IoT Suite のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

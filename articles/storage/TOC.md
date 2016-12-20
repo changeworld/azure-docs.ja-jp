@@ -123,7 +123,7 @@
 ## [C++](http://azure.github.io/azure-storage-cpp)
 ## [iOS](https://github.com/Azure/azure-storage-ios)
 ## [Android](http://azure.github.io/azure-storage-android)
-## [REST]
+## REST ()
 ### [BLOB、キュー、テーブル、ファイル](/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference)
 ### [リソース プロバイダー](/rest/api/storagerp)
 ### [Import/Export](/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference)

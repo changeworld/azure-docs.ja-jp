@@ -15,6 +15,7 @@
 ## [Spark の開始](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [HBase & NoSQL の開始](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Storm の開始](hdinsight-apache-storm-tutorial-get-started-linux.md)
+## [対話型 Hive を開始する (プレビュー)](hdinsight-hadoop-use-interactive-hive.md)
 ## [Kafka の開始 (プレビュー)](hdinsight-apache-kafka-get-started.md)
 ## [Hadoop サンドボックス](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake Tools と Hortonworks サンドボックス](hdinsight-hadoop-emulator-visual-studio.md)
@@ -224,6 +225,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 877d92deebfda835eef37cdc8dc1bca21520d892
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: 78433e8f6d66d55f7917e4abbbbe1c24e662a400
 
 ---
 # <a name="media-services-documentation"></a>Media Services のドキュメント
@@ -159,52 +159,46 @@ Media Services を使いこなして、エンド ツー エンドのワークフ
 
 ---
 
-## <a name="reference"></a>リファレンス
-
+<h2>リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell リファレンス</p>
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.media/v0.3.1/azurerm.media">PowerShell (Resource Manager)</a></p>
+                        <p><a href="/powershell/servicemanagement/azure.compute/v3.1.0/azure.compute">PowerShell (サービス管理)</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET に関する管理リファレンス API</p>
-                    </div>
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.windowsazure.mediaservices.client">.NET</a></p>
+                   </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/rest/api/media/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p>Media Services REST API</p>
+                        <p><a href="/rest/api/media">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-<ul>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/media-services.pdf">
