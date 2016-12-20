@@ -22,7 +22,7 @@
 ### [イベントと監査ログの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md)
 ### [アラート通知を受け取る](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-# リファレンス
+# 関連項目
 ## [Azure Resource Manager テンプレートの関数](../resource-group-template-functions.md)
 ## [自動スケールのベスト プラクティス](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ## [自動スケールの一般的なメトリック](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)
@@ -32,10 +32,16 @@
 ## [Azure Insights の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)
 ## [Azure Insights の CLI クイック スタート サンプル](../monitoring-and-diagnostics/insights-cli-samples.md)
 
+# リソース
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuremanagement) 
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-management-portal)
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

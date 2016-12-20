@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/17/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d7d909184eb129e46ffc350505101e68c1426c46
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c6fe00b72d95a3eb40d91f6f7989b7163518c46f
 
 
 ---
-# <a name="getting-started-with-azure-multifactor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-Factor Authentication Server の概要
+# <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-Factor Authentication Server の概要
 この記事では、クラウドで Azure Multi-Factor Authentication の使用を開始する方法について説明します。
 
 > [!NOTE]
@@ -41,12 +41,12 @@ ms.openlocfilehash: d7d909184eb129e46ffc350505101e68c1426c46
 > 
 > 
 
-## <a name="turn-on-twostep-verification-for-users"></a>ユーザーに対する 2 段階認証をオンにする
+## <a name="turn-on-two-step-verification-for-users"></a>ユーザーに対する 2 段階認証をオンにする
 あるユーザーに対して新たに 2 段階認証を必須とするには、そのユーザーの状態を [無効] から [有効] に変更します。  ユーザーの状態の詳細については、「[Azure Multi-Factor Authentication におけるユーザーの状態](multi-factor-authentication-get-started-user-states.md)」を参照してください。
 
 ユーザーの MFA を有効にするには、次の手順を使用します。
 
-### <a name="to-turn-on-multifactor-authentication"></a>多要素認証を有効にするには
+### <a name="to-turn-on-multi-factor-authentication"></a>多要素認証を有効にするには
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)に管理者としてサインインします。
 2. 左側の **[Active Directory]**をクリックします。
 3. [ディレクトリ] の下で、有効にするユーザーのディレクトリを選択します。
@@ -66,8 +66,8 @@ ms.openlocfilehash: d7d909184eb129e46ffc350505101e68c1426c46
 
 有効にした後は、ユーザーにメールで通知することをお勧めします。 2 段階認証が有効になっているユーザーは、次回のサインイン時に、2 段階認証のためにアカウントの登録が必要であることを示すメッセージが表示されます。 このほか、ユーザーが 2 段階認証の使用を開始した後には、ブラウザー以外のアプリからロックアウトされないように、アプリのパスワードを設定する必要があります。
 
-## <a name="use-powershell-to-automate-turning-on-twostep-verification"></a>PowerShell を使って 2 段階認証を自動でオンにする
-[Azure AD PowerShell](../powershell-install-configure.md) を使用して[状態](multi-factor-authentication-whats-next.md)を変更するには、次のようにします。  `$st.State` は、次のいずれかの状態と一致するように変更できます。
+## <a name="use-powershell-to-automate-turning-on-two-step-verification"></a>PowerShell を使って 2 段階認証を自動でオンにする
+[Azure AD PowerShell](/powershell/azureps-cmdlets-docs) を使用して[状態](multi-factor-authentication-whats-next.md)を変更するには、次のようにします。  `$st.State` は、次のいずれかの状態と一致するように変更できます。
 
 * 有効
 * 適用
@@ -107,6 +107,6 @@ ms.openlocfilehash: d7d909184eb129e46ffc350505101e68c1426c46
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

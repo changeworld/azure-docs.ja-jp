@@ -1,24 +1,28 @@
 ---
-title: Windows VM 用のディスクと VHD について | Microsoft Docs
-description: Azure での Windows 仮想マシン用のディスクと VHD の基本について説明します。
+title: "Windows VM 用のディスクと VHD について | Microsoft Docs"
+description: "Azure での Windows 仮想マシン用のディスクと VHD の基本について説明します。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
-
+ms.assetid: 0142c64d-5e8c-4d62-aa6f-06d6261f485a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 11/18/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: a800d23208c190a381689a2417bbe9952343bc16
+
 
 ---
 # <a name="about-disks-and-vhds-for-azure-virtual-machines"></a>Azure 仮想マシン用のディスクと VHD について
-Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。 Azure のすべての仮想マシンには、Windows オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。 この記事は、 [Linux 仮想マシン](virtual-machines-linux-about-disks-vhds.md)にも利用できます。
+Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。 Azure のすべての仮想マシンには、Windows オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。 この記事は、 [Linux 仮想マシン](virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にも利用できます。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -28,10 +32,10 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 ## <a name="temporary-disk"></a>一時ディスク
 一時ディスクが自動的に作成されます。 この一時ディスクには D ドライブのラベルが付けられ、pagefile.sys を保存するために使用されます。 
 
-仮想マシンのサイズに基づいて、一時ディスクのサイズは異なります。 詳細については、「 [Azure の仮想マシンのサイズ](virtual-machines-windows-sizes.md)」を参照してください。
+仮想マシンのサイズに基づいて、一時ディスクのサイズは異なります。 詳細については、「 [Azure の仮想マシンのサイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 > [!WARNING]
-> 一時的なディスクにデータを格納しないでください。 これはアプリケーションとプロセスに一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 このディスクを再マッピングするには、 [Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-classic-change-drive-letter.md)に関するページを参照してください。
+> 一時的なディスクにデータを格納しないでください。 これはアプリケーションとプロセスに一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 このディスクを再マッピングするには、 [Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
 > 
 > 
 
@@ -41,7 +45,7 @@ Azure による一時ディスクの使用方法については、 [Microsoft Az
 データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。  各ディスクの最大容量は 1023 ギガバイトです。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
 
 > [!NOTE]
-> 仮想マシンの容量については、「 [Azure の Windows 仮想マシンのサイズ](virtual-machines-windows-sizes.md)」を参照してください。
+> 仮想マシンの容量については、「 [Azure の Windows 仮想マシンのサイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 > 
 > 
 
@@ -66,10 +70,13 @@ Azure は VHD フォーマットの固定ディスクをサポートしていま
 > 
 
 ## <a name="next-steps"></a>次のステップ
-* [ディスクのアタッチ](virtual-machines-windows-attach-disk-portal.md) による VM 用のストレージの追加。
-* [Windows VM イメージを Azure にアップロード](virtual-machines-windows-upload-image.md) します。
-* [Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-classic-change-drive-letter.md) します。
+* [ディスクのアタッチ](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) による VM 用のストレージの追加。
+* [Windows VM イメージを Azure にアップロード](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) します。
+* [Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

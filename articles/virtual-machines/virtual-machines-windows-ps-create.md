@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6a78e83d84df9bdd4fedd9c90aa02dc26e9d94c9
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 87f62d99ae8671fb3732806d8cd8bd7d9aa101e1
 
 
 ---
@@ -114,7 +114,7 @@ ms.openlocfilehash: 6a78e83d84df9bdd4fedd9c90aa02dc26e9d94c9
     $myVm = New-AzureRmVMConfig -VMName "myVM" -VMSize "Standard_DS1_v2"
     ```
    
-    仮想マシンに使用できるサイズの一覧は、「 [Azure の仮想マシンのサイズ](virtual-machines-windows-sizes.md) 」をご覧ください。
+    仮想マシンに使用できるサイズの一覧は、「 [Azure の仮想マシンのサイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」をご覧ください。
 3. VM のオペレーティング システム設定を構成します。 次のコマンドを実行すると、VM のコンピューター名、オペレーティング システムの種類、アカウントの資格情報が設定されます。
    
     ```powershell
@@ -128,7 +128,7 @@ ms.openlocfilehash: 6a78e83d84df9bdd4fedd9c90aa02dc26e9d94c9
         -Offer "WindowsServer" -Skus "2012-R2-Datacenter" -Version "latest"
     ```
    
-    使用するイメージの選択の詳細については、「[Powershell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択](virtual-machines-windows-cli-ps-findimage.md)」を参照してください。
+    使用するイメージの選択の詳細については、「[Powershell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択](virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 5. 作成したネットワーク インターフェイスを構成に追加します。
    
     ```powershell
@@ -153,8 +153,8 @@ ms.openlocfilehash: 6a78e83d84df9bdd4fedd9c90aa02dc26e9d94c9
 
 ## <a name="next-steps"></a>次のステップ
 * デプロイに問題がある場合は、次の手順として、「[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
-* 「[Resource Manager と PowerShell を使用した Azure Virtual Machines の管理](virtual-machines-windows-ps-manage.md)」で、作成した仮想マシンを管理する方法を確認します。
-* テンプレートを使用して仮想マシンを作成する方法については、「 [Resource Manager テンプレートで Windows 仮想マシンを作成する](virtual-machines-windows-ps-template.md)
+* 「[Resource Manager と PowerShell を使用した Azure Virtual Machines の管理](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」で、作成した仮想マシンを管理する方法を確認します。
+* テンプレートを使用して仮想マシンを作成する方法については、「 [Resource Manager テンプレートで Windows 仮想マシンを作成する](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 
 

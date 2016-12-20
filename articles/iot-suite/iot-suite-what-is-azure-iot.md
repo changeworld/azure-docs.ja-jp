@@ -13,20 +13,26 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/09/2016
+ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 87b9b0685ab3401a617e1089312a65d2b5a90099
+ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
+ms.openlocfilehash: bd2b41944e3a37fde1cecd3d0ff299f949cd4eb4
 
 
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## <a name="azure-iot-suite"></a>Azure IoT Suite
-Microsoft Azure IoT Suite は、[リモート監視][lnk-preconfigured-solutions]や[予測的メンテナンス][lnk-predictive-maintenance]など、一般的な IoT シナリオ向けの拡張可能な一連の事前構成済みソリューションによってすばやく開始できる、エンタープライズ レベルのソリューションです。 これらのソリューションは、この記事で概説しているように、IoT ソリューションのアーキテクチャの実装です。
+Microsoft Azure IoT Suite は、拡張可能な一連の事前構成済みソリューションを介してすばやく使用を開始できるエンタープライズ グレードのソリューションです。 これらのソリューションは、[リモート モニタリング][lnk-preconfigured-solutions]や[予測メンテナンス][lnk-predictive-maintenance]など、一般的な IoT シナリオに対処します。 これらのソリューションは、この記事で概説しているように、IoT ソリューションのアーキテクチャの実装です。
 
-事前構成済みソリューションは、すぐに開始できるようにシミュレートされたデバイスのほか、[Azure IoT Hub][Azure IoT Hub]、[Azure Event Hubs][Azure Event Hubs]、[Azure Stream Analytics][Azure Stream Analytics]、[Azure Machine Learning][Azure Machine Learning]、[Azure ストレージ][Azure ストレージ]などの事前構成済み Azure サービスや、ソリューション専用の管理コンソールを備えた、包括的で実用的なエンド ツー エンド ソリューションです。 事前構成済みソリューションには、独自の IoT シナリオを実装するためにカスタマイズおよび拡張できる、実績のある、実稼働可能なコードが含まれています。
+構成済みソリューションは、完全かつ実用的なエンド ツー エンドのソリューションであり、以下のものが含まれます。
+
+- 使用を始めるためのシミュレートされたデバイス。
+- [Azure IoT Hub][Azure IoT Hub]、[Azure Event Hubs][Azure Event Hubs]、[Azure Stream Analytics][Azure Stream Analytics]、[Azure Machine Learning][Azure Machine Learning]、[Azure Storage][Azure Storage] など、構成済みの Azure サービス。
+- ソリューション専用の管理コンソール。
+
+事前構成済みソリューションには、独自の IoT シナリオを実装するためにカスタマイズおよび拡張できる、実績のある、実稼働可能なコードが含まれています。
 
 多数の構成済みソリューションで使用される [Azure IoT Hub][Azure IoT Hub] サービスも用意されています。 [Azure IoT Hub][Azure IoT Hub] は、構成済みソリューションのアーキテクチャで使用されるデバイスとクラウド間にセキュリティで保護された信頼性の高い双方向の通信を提供します。
 
@@ -49,6 +55,6 @@ IoT Suite と構成済みのソリューションについて引き続き学習�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

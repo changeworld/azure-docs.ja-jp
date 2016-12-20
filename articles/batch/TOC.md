@@ -19,18 +19,18 @@
 ### [Batch での MPI ジョブの実行](batch-mpi.md)
 ### [Task dependencies](batch-task-dependencies.md)
 ### [Batch 用の Visual Studio プロジェクト テンプレート](batch-visual-studio-templates.md)
-## [管理]
+## 管理
 ### [Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)
 ### [Azure CLI](batch-cli-get-started.md)
 ### [Batch 診断ログ](batch-diagnostics.md)
 
 # リファレンス
-## [PowerShell コマンドレット](https://docs.microsoft.com/en-us/powershell/azureps-cmdlets-docs/)
-## [Java](https://docs.microsoft.com/java/api)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
-## [Python SDK](https://go.microsoft.com/fwlink/p/?linkid=833496)
-## [Node.JS](https://go.microsoft.com/fwlink/p/?linkid=833544)
-## [REST ()](https://docs.microsoft.com/rest/api/batchservice/)
+## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.3.0/azurerm.batch)
+## [.NET](/dotnet/api/microsoft.azure.batch)
+## [Java](/java/api/com.microsoft.azure.batch)
+## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-batch/latest)
+## [Python SDK](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch)
+## [REST ()](/rest/api/batchservice)
 
 # 関連項目
 ## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
@@ -43,11 +43,11 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
-## [Batch C# コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
-## [Batch Python コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [C# コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
+## [Python コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

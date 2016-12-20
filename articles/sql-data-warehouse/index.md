@@ -1,13 +1,17 @@
 ---
 layout: LandingPage
----
-#SQL Data Warehouse Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
+ms.openlocfilehash: cee95b961b45bb0a004eb6dd254222d909ea57b8
 
-Azure SQL Data Warehouse is a cloud-based, scale-out database capable of processing massive volumes of data, both relational and non-relational. SQL Data Warehouse combines the SQL Server relational database with Azure cloud scale-out capabilities.  Built on our massively parallel processing (MPP) architecture, SQL Data Warehouse can handle your enterprise workload.
+---
+# <a name="sql-data-warehouse-documentation"></a>SQL Data Warehouse のドキュメント
+
+Azure SQL Data Warehouse では、SQL Server リレーショナル データベースが、Azure クラウド スケールアウト機能と統合されています。  超並列処理 (MPP) アーキテクチャを基盤とする SQL Data Warehouse は、企業のワークロードに対応できます。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/sql-database/sql-data-warehouse-overview-what-is">
+        <a href="/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -17,7 +21,7 @@ Azure SQL Data Warehouse is a cloud-based, scale-out database capable of process
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure SQL Data Warehouse</h3>
+                        <h3>Azure SQL Data Warehouse の詳細</h3>
                     </div>
                 </div>
             </div>
@@ -35,24 +39,7 @@ Azure SQL Data Warehouse is a cloud-based, scale-out database capable of process
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure SQL Data Warehouse Video Library</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li><li>
-        <a href="/azure/SQL-Data-WArehouse/sql-data-warehouse-overview-workload/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Get started with SQL Data Warehouse</h3>
+                        <h3>Azure SQL Data Warehouse のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -60,7 +47,7 @@ Azure SQL Data Warehouse is a cloud-based, scale-out database capable of process
         </a>
     </li>
      <li>
-        <a href="/azure/SQL-Data-WArehouse/sql-data-warehouse-get-started-provision/">
+        <a href="/azure/sql-data-WArehouse/sql-data-warehouse-get-started-provision">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -70,43 +57,7 @@ Azure SQL Data Warehouse is a cloud-based, scale-out database capable of process
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a SQL Data Warehouse using the Azure Portal</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/SQL-Data-WArehouse/sql-data-warehouse-get-started-create-database-tsql/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Create a SQL Data Warehouse using Transact-SQL</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/SQL-Data-WArehouse/sql-data-warehouse-get-started-provision-powershell">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/powershell.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Create a SQL Data Warehouse using PowerShell</h3>
+                        <h3>Azure Portal を使用した SQL Data Warehouse の作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -116,20 +67,49 @@ Azure SQL Data Warehouse is a cloud-based, scale-out database capable of process
 </ul>
 
 ---
+## <a name="reference"></a>リファレンス
 
-##Reference
-
-###PowerShell
-[Azure PowerShell Reference] (/powershell/azureps-cmdlets-docs)
-
-###T-SQL
-[T-SQL Reference](https://msdn.microsoft.com/library/azure/bb510741)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/azureps-cmdlets-docs">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Azure PowerShell リファレンス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="https://msdn.microsoft.com/library/azure/bb510741">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>T-SQL</h3>
+                        <p>T-SQL リファレンス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-data-warehouse.pdf">
         <div class="img"></div>
         <div class="text">
-            Download SQL Data Warehouse Documentation
-        </div>
+SQL Data Warehouse のドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO4-->
+
+

@@ -1,14 +1,11 @@
 # Overview
 ## [Azure Automation とは](automation-intro.md)
 ## [Azure Automation のセキュリティ](automation-security-overview.md)
-
 # 作業開始
 ## [Runbook を作成する](automation-first-runbook-graphical.md)
 ## [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
 ## [PowerShell Workflow Runbook を作成する](automation-first-runbook-textual.md)
 ## [ロールベースのアクセス制御を管理する](automation-role-based-access-control.md)
-
-
 # 方法
 ## Runbook を作成する
 ### [Runbook の種類](automation-runbook-types.md)
@@ -55,35 +52,32 @@
 ### [JSON タグを使用して VM を起動/停止する](automation-scenario-start-stop-vm-wjson-tags.md)
 ### [リソース グループを削除する](automation-scenario-remove-resourcegroup.md)
 ### [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
-
+### [GitHub Enterprise によるソース管理の統合](automation-scenario-source-control-integration-with-github-ent.md)
 ## [監視](automation-manage-send-joblogs-log-analytics.md)
-
 ## 移行
 ### [Orchestrator から移行する](automation-orchestrator-migration.md)
 ### [Automation アカウントを移動する](automation-migrate-account-subscription.md)
-
 ## トラブルシューティング
 ### [一般的なエラーのトラブルシューティング](automation-troubleshooting-automation-errors.md)
 ### [Runbook ジョブが中断されました](automation-troubleshooting-hrw-runbook-terminates-suspended.md)
-
 # リファレンス
-## [リリース ノート](https://azure.microsoft.com/updates/?product=automation)
-## [PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/dn690262)
-## [Resource Manager REST API](https://msdn.microsoft.com/library/azure/mt662285.aspx)
-## [クラシック デプロイ Rest](https://msdn.microsoft.com/library/azure/mt163781)
-
+## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
+## [PowerShell (クラシック)](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
+## [.NET](/dotnet/api/microsoft.azure.management.automation)
+## [REST ()](https://msdn.microsoft.com/library/azure/mt662285.aspx)
+## [REST (クラシック)](https://msdn.microsoft.com/library/azure/mt163781)
 # リソース
+## [リリース ノート](https://azure.microsoft.com/updates/?product=automation)
 ## [料金](https://azure.microsoft.com/pricing/details/automation/)  
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=automation) 
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=automation) 
-## [Azure Automation トレーニング](https://www.microsoftvirtualacademy.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=automation)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=automation)
+## [Azure Automation トレーニング](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

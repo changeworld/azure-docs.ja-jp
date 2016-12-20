@@ -1,12 +1,12 @@
 ---
-title: Eclipse で Azure 用の Hello World Web アプリを作成する | Microsoft Docs
-description: このチュートリアルでは、Azure Toolkit for Eclipse を使用して、Azure 用の Hello World Web アプリを作成する方法について説明します。
+title: "Eclipse で Azure 用の Hello World Web アプリを作成する | Microsoft Docs"
+description: "このチュートリアルでは、Azure Toolkit for Eclipse を使用して、Azure 用の Hello World Web アプリを作成する方法について説明します。"
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 20d41e88-9eab-462e-8ee3-89da71e7a33f
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/01/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d3549bca22266aab2deca1d9fcaabfc4034956cf
+
 
 ---
 # <a name="create-a-hello-world-web-app-for-azure-in-eclipse"></a>Eclipse で Azure 用の Hello World Web アプリを作成する
@@ -70,9 +74,9 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
     ![[Deploy to Azure Web App Container (Azure Web アプリ コンテナーにデプロイ)] ダイアログ ボックス][06]
 6. 以前に Azure Web アプリ コンテナーを作成していない場合、またはアプリケーションを新しいコンテナーに発行する場合は、次の手順を実行します。 作成済みの場合は、既存の Web アプリ コンテナーを選択し、以下の手順 7 に進みます。
    
-   1. **[New (新規)]**
+   1.  **[New (新規)]**
       
-      ![[Deploy to Azure Web App Container (Azure Web アプリ コンテナーにデプロイ)] ダイアログ ボックス][15]
+       ![[Deploy to Azure Web App Container (Azure Web アプリ コンテナーにデプロイ)] ダイアログ ボックス][15]
    2. **[New Web App Container (新しい Web アプリ コンテナー)]** ダイアログ ボックスが表示されます。
       
        ![[New Web App Container (新しい Web アプリ コンテナー)] ダイアログ ボックス][07a]
@@ -85,7 +89,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
       
        (所有している場合は) 既存のリソース グループを選択して、下記のステップ g にスキップするか、以下のステップに従って、新しいリソース グループを作成します。
       
-      * **[New (新規)]**
+      *  **[New (新規)]**
       * **[New Resource Group (新しいリソース グループ)]** ダイアログ ボックスが表示されます。
         
           ![[New Resource Group (新しいリソース グループ)] ダイアログ ボックス][08]
@@ -103,7 +107,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
       
        (所有している場合は) 既存の App Service プランを選択して、下記のステップ h にスキップするか、以下のステップに従って、新しい App Service プランを作成します。
       
-      * **[New (新規)]**
+      *  **[New (新規)]**
       * **[New App Service Plan (新しい App Service プラン)]** ダイアログ ボックスが表示されます。
         
           ![[新しい App Service プラン] ダイアログ ボックス][09]
@@ -111,7 +115,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
       * **[Location (場所)]** ドロップダウン メニューで、プランに適した Azure データ センターの場所を選択します。
       * **[Pricing Tier (価格レベル)]** ドロップダウン メニューで、プランに適した価格を選択します。 テスト目的の場合は、 **[Free]**を選択できます。
       * **[Instance Size (インスタンス サイズ)]** ドロップダウン メニューで、プランに適したインスタンス サイズを選択します。 テスト目的の場合は、 **[Small]**を選択できます。
-   9. これらの手順をすべて完了すると、[New Web App Container](新しい Web アプリ コンテナー.md) ダイアログ ボックスは次の図のようになります。
+   9. これらの手順をすべて完了すると、[New Web App Container] (新しい Web アプリ コンテナー) ダイアログ ボックスは次の図のようになります。
       
        ![[New Web App Container (新しい Web アプリ コンテナー)] ダイアログ ボックス][10]
    10. **[OK]** をクリックすると、新しい Web アプリ コンテナーの作成が完了します。
@@ -211,6 +215,6 @@ Azure Web Apps の作成の詳細については、「 [Web Apps の概要]」�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,35 +1,39 @@
 ---
-title: Linux ベースの HDInsight での R のインストール | Microsoft Docs
-description: R をインストールして使用し、Linux ベースの Hadoop クラスターをカスタマイズする方法について説明します。
+title: "Linux ベースの HDInsight での R のインストール | Microsoft Docs"
+description: "R をインストールして使用し、Linux ベースの Hadoop クラスターをカスタマイズする方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 7b758492-87bf-4d82-8b8c-1664e7d177bd
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 11/15/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: fb8a8563d41827ce22604e2fb485c84a1441efa2
+ms.openlocfilehash: 651d759ac489c6e42a70cbf4bf21a8722771e668
+
 
 ---
-# HDInsight Hadoop クラスターに R をインストールして使用する
-**Script Action** クラスターのカスタマイズを使用して HDInsight 上の Hadoop で任意の種類のクラスターに R をインストールできます。これにより、R を使用して強力な MapReduce/YARN プログラミング フレームワークをデプロイし、HDInsight に展開される Hadoop クラスター上で大量のデータを処理できます。
+# <a name="install-and-use-r-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに R をインストールして使用する
+**Script Action** クラスターのカスタマイズを使用して HDInsight 上の Hadoop で任意の種類のクラスターに R をインストールできます。 これにより、R を使用して強力な MapReduce/YARN プログラミング フレームワークをデプロイし、HDInsight に展開される Hadoop クラスター上で大量のデータを処理できます。
 
 > [!IMPORTANT]
-> HDInsight の [Premium レベル](https://azure.microsoft.com/pricing/details/hdinsight/) サービスには、HDInsight クラスターの一部として R Server が含まれています。これにより、R スクリプトで MapReduce と Spark を使用して、分散計算を実行することができます。詳細については、「[HDInsight の R Server の使用開始](hdinsight-hadoop-r-server-get-started.md)」を参照してください。
+> HDInsight の [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) サービスには、HDInsight クラスターの一部として R Server が含まれています。 これにより、R スクリプトで MapReduce と Spark を使用して、分散計算を実行することができます。 詳細については、「 [HDInsight の R Server の使用開始](hdinsight-hadoop-r-server-get-started.md)」を参照してください。 
 > 
 > 
 
-## R とは
-<a href="http://www.r-project.org/" target="_blank">統計計算用 R プロジェクト</a>は、統計計算用のオープン ソースの言語と環境です。R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。また、広範なグラフィカル機能も提供します。R は、さまざまな分野におけるほぼすべての統計学専門家や科学者に推奨されるプログラミング環境です。
+## <a name="what-is-r"></a>R とは
+<a href="http://www.r-project.org/" target="_blank">統計計算用 R プロジェクト</a>は、統計計算用のオープン ソースの言語と環境です。 R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。 また、広範なグラフィカル機能も提供します。 R は、さまざまな分野におけるほぼすべての統計学専門家や科学者に推奨されるプログラミング環境です。
 
-作成時に Script Action を使用してカスタマイズされた HDInsight の Hadoop クラスター上で R スクリプトを実行し、R 環境をインストールできます。R は Azure BLOB ストレージ (WASB) と互換性があるので、そこに格納されているデータは HDInsight 上の R を使用して処理できます。
+作成時に Script Action を使用してカスタマイズされた HDInsight の Hadoop クラスター上で R スクリプトを実行し、R 環境をインストールできます。 R は Azure BLOB ストレージ (WASB) と互換性があるので、そこに格納されているデータは HDInsight 上の R を使用して処理できます。
 
-## スクリプトの機能
+## <a name="what-the-script-does"></a>スクリプトの機能
 HDInsight クラスターへの R のインストールに使用するスクリプト アクションでは、次の Ubuntu パッケージがインストールされ、基本的な R インストールが提供されます。
 
 * [r-base](http://packages.ubuntu.com/precise/r-base): GNU R の基本パッケージ
@@ -56,34 +60,34 @@ HDInsight クラスターへの R のインストールに使用するスクリ�
 | [caTools](https://cran.r-project.org/web/packages/caTools/index.html) |移動ウィンドウ統計、GIF、Base64、ROC AUC などのためのツール |
 | [stringdist](https://cran.r-project.org/web/packages/stringdist/index.html) |近似文字列マッチング関数および文字列距離関数 |
 
-## スクリプト アクションを使用した R のインストール
-次のスクリプト アクションを使用して、R を HDInsight クラスターにインストールできます。https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh
+## <a name="install-r-using-script-actions"></a>スクリプト アクションを使用した R のインストール
+次のスクリプト アクションを使用して、R を HDInsight クラスターにインストールできます。 https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh
 
-このセクションでは、Azure ポータルを使用して新しいクラスターを作成する際にこのスクリプトを使用する方法について説明します。
+このセクションでは、Azure ポータルを使用して新しいクラスターを作成する際にこのスクリプトを使用する方法について説明します。 
 
 > [!NOTE]
-> スクリプト アクションは、Azure PowerShell、Azure CLI、HDInsight .NET SDK、または Azure Resource Manager のテンプレートを使用して適用することもできます。既に実行しているクラスターにスクリプト アクションを適用することもできます。詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関する記事を参照してください。
+> スクリプト アクションは、Azure PowerShell、Azure CLI、HDInsight .NET SDK、または Azure Resource Manager のテンプレートを使用して適用することもできます。 既に実行しているクラスターにスクリプト アクションを適用することもできます。 詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関する記事を参照してください。
 > 
 > 
 
-1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
+1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
 2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下の情報を指定します。
    
    * **[名前]**: スクリプト アクションの表示名を入力します。
-   * **[スクリプト URI]**: https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh
+   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh
    * **[ヘッド]**: このオプションをオンにします。
    * **[ワーカー]**: このオプションをオンにします。
    * **[Zookeeper]**: Zookeeper ノードにインストールするには、このオプションをオンにします。
    * **[パラメーター]**: このフィールドは空のままにします。
-3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
-4. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md#portal)に関するページの説明に従って、クラスターのプロビジョニングを続行します。
+3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。 最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
+4. 「[Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-hadoop-provision-linux-clusters.md)」の説明に従って、クラスターのプロビジョニングを続行します。
 
-## R スクリプトの実行
+## <a name="run-r-scripts"></a>R スクリプトの実行
 クラスターがプロビジョニングを完了したら、次の手順に従い、R を使用してクラスター上で MapReduce 操作を実行します。
 
 1. SSH を使用して HDInsight クラスターに接続します。
    
-        ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+        ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
    
     HDInsight での SSH の使用方法の詳細については、以下の記事を参照してください。
    
@@ -92,7 +96,7 @@ HDInsight クラスターへの R のインストールに使用するスクリ�
 2. `username@hn0-CLUSTERNAME:~$` プロンプトで次のコマンドを入力し、R の対話型セッションを開始します。
    
         R
-3. 次の R プログラムを入力します。このプログラムでは 1 ～ 100 の数値を生成してから 2 倍します。
+3. 次の R プログラムを入力します。 このプログラムでは 1 ～ 100 の数値を生成してから 2 倍します。
    
         library(rmr2)
         ints = to.dfs(1:100)
@@ -102,12 +106,12 @@ HDInsight クラスターへの R のインストールに使用するスクリ�
    
     2 行目では、1 ～ 100 の値を生成し、`to.dfs` を使用して Hadoop ファイル システムに格納しています。
    
-    3 行目では、rmr2 で提供される機能を使用して MapReduce プロセスを作成し、処理を開始しています。処理が始まると、複数の行がスクロール表示されます。
+    3 行目では、rmr2 で提供される機能を使用して MapReduce プロセスを作成し、処理を開始しています。 処理が始まると、複数の行がスクロール表示されます。
 4. 次に、以下のコードを使用して、MapReduce 出力の格納先になっていた一時パスを確認します。
    
         print(calc())
    
-    この結果は、`/tmp/file5f615d870ad2` のようになります。実際の出力を表示するには、次のコマンドを使用します。
+    この結果は、 `/tmp/file5f615d870ad2`のようになります。 実際の出力を表示するには、次のコマンドを使用します。
    
         print(from.dfs(calc))
    
@@ -125,12 +129,16 @@ HDInsight クラスターへの R のインストールに使用するスクリ�
    
         q()
 
-## 次のステップ
-* [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)。Hue は、Pig ジョブや Hive ジョブの作成、実行、保存や、HDInsight クラスターの既定のストレージの参照を容易にする Web UI です。
-* [HDInsight クラスターでの Giraph のインストール](hdinsight-hadoop-giraph-install.md): クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
-* [HDInsight クラスターでの Solr のインストール](hdinsight-hadoop-solr-install.md):クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。Solr は、格納されたデータに対して強力な検索操作を実行することができます。
-* [HDInsight クラスターに Hue をインストールする](hdinsight-hadoop-hue-linux.md)。クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Hue をインストールします。Hue は Hadoop クラスターとの情報のやりとりに使用される一連の Web アプリケーションです。
+## <a name="next-steps"></a>次のステップ
+* [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)。 Hue は、Pig ジョブや Hive ジョブの作成、実行、保存や、HDInsight クラスターの既定のストレージの参照を容易にする Web UI です。
+* [HDInsight クラスターでの Giraph のインストール](hdinsight-hadoop-giraph-install.md) クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。 Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
+* [HDInsight クラスターに Solr をインストールする](hdinsight-hadoop-solr-install.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。 Solr は、格納されたデータに対して強力な検索操作を実行することができます。
+* [HDInsight クラスターに Hue をインストールする](hdinsight-hadoop-hue-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Hue をインストールします。 Hue は Hadoop クラスターとの情報のやりとりに使用される一連の Web アプリケーションです。
 
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

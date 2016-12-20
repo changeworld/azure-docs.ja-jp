@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 1b5ea8b5b5fb99fa65a1efd0eeff48af2e39346c
-ms.openlocfilehash: 7e3e54511ef1205d04eef1820a3e20f480386ed1
+ms.sourcegitcommit: 62cc285a4dc0b85f364a6306e3fc4b0727c439db
+ms.openlocfilehash: 4a165d2f3e4447d2490296a76934cba98b9dcd79
 
 ---
 #<a name="iot-hub-documentation"></a>IoT Hub のドキュメント
@@ -103,21 +103,53 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 </ul>
 
 ---
-
-##<a name="reference"></a>リファレンス
-
-###<a name="azure-cli"></a>Azure CLI 
-[IoT HuB と Azure CLI](/cli/azure/iot)  
-
-###<a name="net"></a>.NET 
-[.NET に関する管理リファレンス API](/dotnet/api/) 
-
-###<a name="java"></a>Java 
-[Java SDK リファレンス](/java/api/) 
-
-###<a name="rest"></a>REST () 
-[IoT HuB REST API リファレンス](/rest/api/iothub) 
-
+ 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/cli/azure/iot">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.devices">.NET (サービス)</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (デバイス)</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.iot.service.auth">Java (サービス)</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.iothub">Java (デバイス)</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-sdks/">Azure IoT SDK</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-gateway-sdk">Gateway SDK</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest">REST API (リソース プロバイダー)</a></p>
+                        <p><a href="/rest/api/iothub/device-identities-rest">REST API (デバイス ID)</a></p>
+                        <p><a href="/rest/api/iothub/device-messaging-rest-apis">REST API (Device Messaging)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/iot-hub.pdf">
@@ -129,6 +161,6 @@ IoT Hub のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

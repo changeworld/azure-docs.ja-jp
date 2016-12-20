@@ -1,13 +1,13 @@
 ---
-title: Windows 10 ローミング設定リファレンス | Microsoft Docs
-description: Windows 10 でローミングまたはバックアップされる全設定の一覧です。
+title: "Windows 10 ローミング設定リファレンス | Microsoft Docs"
+description: "Windows 10 でローミングまたはバックアップされる全設定の一覧です。"
 services: active-directory
-keywords: Enterprise State Roaming, Windows クラウド
-documentationcenter: ''
+keywords: "Enterprise State Roaming, Windows クラウド"
+documentationcenter: 
 author: femila
 manager: swadhwa
 editor: curtand
-
+ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: femila
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e38fd24edb0cb6cee0552a3cbdb282aae870d737
+
 
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
@@ -30,7 +34,7 @@ ms.author: femila
 | Microsoft アカウント: 同期 |はい |はい |
 | Microsoft アカウント: バックアップ/復元 |なし |はい |
 
-## <a name="what-is-backup?"></a>バックアップとは
+## <a name="what-is-backup"></a>バックアップとは
 一般に Windows の設定は既定で同期されますが、デバイスにインストールされているアプリケーションの一覧など、バックアップにのみ対応している設定もあります。 バックアップはモバイル デバイス向けのみで、Enterprise State Roaming ユーザーは現在使用できません。 バックアップには Microsoft アカウントが使用され、OneDrive に設定とアプリケーション データが保存されます。 ユーザーが設定アプリを使ってデバイス上の同期を無効にした場合、通常であれば同期されるアプリケーション データがバックアップのみになります。 バックアップ データは、新しいデバイスの初回実行時に復元操作を通じてのみアクセスできます。 バックアップは、デバイスの設定で無効にできるほか、ユーザーの OneDrive アカウントを通じて管理したり削除したりすることができます。
 
 ## <a name="windows-settings-overview"></a>Windows 設定の概要
@@ -166,6 +170,9 @@ Edge ブラウザーの設定 (お気に入り、リーディング リスト) �
 * [設定とデータのローミングに関する FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

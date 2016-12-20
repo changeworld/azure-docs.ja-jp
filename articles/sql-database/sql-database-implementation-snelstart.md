@@ -1,22 +1,27 @@
 ---
-title: Azure SQL Database Azure 導入事例 - Snelstart | Microsoft Docs
-description: SnelStart が SQL Database を使用して、新規の Azure SQL Database を月あたり 1,000 台追加し、どのように事業サービスを急速に拡大したのかをご紹介します。
+title: "Azure SQL Database Azure 導入事例 - Snelstart | Microsoft Docs"
+description: "SnelStart が SQL Database を使用して、新規の Azure SQL Database を月あたり 1,000 台追加し、どのように事業サービスを急速に拡大したのかをご紹介します。"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: fab506b2-439d-4f1a-bdc5-d1d25c80d267
 ms.service: sql-database
+ms.custom: app development case study; app development
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/08/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 66360bc0a8618d250cc07e3e806af6c9a157afaf
+
 
 ---
-# <a name="with-azure,-snelstart-has-rapidly-expanded-its-business-services-at-a-rate-of-1,000-new-azure-sql-databases-per-month"></a>Azure を利用する SnelStart 社、新規の Azure SQL Database を 1 月あたり 1,000 台のペースで追加し、サービスを急速に拡大
+# <a name="with-azure-snelstart-has-rapidly-expanded-its-business-services-at-a-rate-of-1000-new-azure-sql-databases-per-month"></a>Azure を利用する SnelStart 社、新規の Azure SQL Database を 1 月あたり 1,000 台のペースで追加し、サービスを急速に拡大
 ![SnelStartLogo](./media/sql-database-implementation-snelstart/snelstartlogo.png)
 
 SnelStart 社 (以下 SnelStart) は、オランダの中堅・中小規模企業 (SMB) 向けに、定評ある財務/業務管理ソフトウェアを製造しています。 SnelStart では、IT スタッフ 35 人を含む 110 人の社員が 5 万 5,000 人の顧客に対応しています。 デスクトップ ソフトウェアから Azure 上に構築されたサービスとしてのソフトウェア (SaaS) の提供に移行して、管理を自動化するビルトイン サービスの大半を、C# 言語のなじみのある環境を使用して作成しています。またエラスティック データベース プールを使用することで、顧客企業へのプロビジョニングの過不足なく、パフォーマンスとスケーラビリティを最適化しています。 Azure の導入により、SnelStart は、顧客のオンプレミスとクラウド間の円滑な移動を実現しています。
@@ -99,10 +104,13 @@ SnelStart の目下の目標は、顧客満足度をさらに高めていくこ�
 
 ## <a name="more-information"></a>詳細情報
 * Azure エラスティック データベース プールの詳細については、 [エラスティック データベース プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
-* Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。 
+* Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。    
 * Azure SQL Data Warehouse の詳細については、 [SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)
 * SnelStart の詳細については、 [SnelStart](http://www.snelstart.nl)をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

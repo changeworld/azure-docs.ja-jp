@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/07/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b0fec06e4a167e615381fca17def46923d9f0f1b
+ms.sourcegitcommit: 0ab72bd4ad531d1162726c6f5548fa253a4f5265
+ms.openlocfilehash: acc0c0c8db966d7a185d69501442ba431f3d5e1f
 
 
 ---
-# <a name="startstop-vms-during-offhours-preview-solution-in-automation"></a>ピーク時間外 VM 起動/停止 [プレビュー] ソリューション (Automation)
+# <a name="startstop-vms-during-off-hours-preview-solution-in-automation"></a>ピーク時間外 VM 起動/停止 [プレビュー] ソリューション (Automation)
 ピーク時間外 VM 起動/停止 (プレビュー) は、ユーザー定義のスケジュールに従って Azure Resource Manager 仮想マシンを起動/停止することによって、それらの仮想マシンを起動/停止する Automation ジョブが正常に実行されているかどうかを OMS Log Analytics で分析するソリューションです。  
 
 ## <a name="prerequisites"></a>前提条件
@@ -125,7 +125,7 @@ OMS ワークスペースに VM 管理ソリューションを追加すると、
 
 このブレードから、OMS ワークスペースを開いたり、ジョブ レコードの分析をさらに実行したりすることもできます。  **[すべての設定]** をクリックし、**[設定]** ブレードで **[クイック スタート]** を選択してから、**[クイック スタート]** ブレードで **[OMS Portal (OMS ポータル)]** を選択します。   新しいタブまたは新しいブラウザー セッションが開き、Automation のアカウントとサブスクリプションに関連付けられた OMS ワークスペースが表示されます。  
 
-### <a name="configuring-email-notifications"></a>電子メール通知の構成
+### <a name="configuring-e-mail-notifications"></a>電子メール通知の構成
 VM の起動/停止 Runbook が完了したときの電子メール通知を有効にするには、**O365Credential** の資格情報を変更したうえで、少なくとも次の変数に変更を加える必要があります。
 
 * SendMailO365-IsSendEmail-MS-Mgmt
@@ -143,7 +143,7 @@ VM の起動/停止 Runbook が完了したときの電子メール通知を有�
 
 1. Automation アカウントから、ウィンドウ上部にある **[すべての設定]** をクリックします。 
 2. **[設定]** ブレードの **[Automation リソース]** セクションで **[資産]** を選択します。 
-3. **[資産]** ブレードの **[変数]** タイルを選択して、上に挙げた変数を **[変数]** ブレードから選択し、前出の「[変数](##variables)」セクションの説明に従ってその値を変更します。  
+3. **[資産]** ブレードの **[変数]** タイルを選択して、上に挙げた変数を **[変数]** ブレードから選択し、前出の「[変数](#variables)」セクションの説明に従ってその値を変更します。  
 4. **[保存]** をクリックして、変数に対する変更を保存します。   
 
 ### <a name="modifying-the-startup-and-shutdown-schedule"></a>開始と停止のスケジュールの変更

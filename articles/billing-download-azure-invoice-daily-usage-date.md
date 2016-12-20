@@ -1,46 +1,68 @@
 ---
-title: Azure の請求書と毎日の使用状況データをダウンロードする方法 | Microsoft Docs
-description: Azure の請求書と毎日の使用状況データをダウンロードする方法について説明します
-services: ''
-documentationcenter: ''
+title: "Azure の請求書と毎日の使用状況データをダウンロードする方法 | Microsoft Docs"
+description: "Azure の請求書と毎日の使用状況データをダウンロードする方法について説明します"
+services: 
+documentationcenter: 
 author: genlin
 manager: mbaldwin
-editor: ''
+editor: 
 tags: billing
-
+ms.assetid: 6d568d1d-3bd6-4348-97d0-1098b5fe0661
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2016
+ms.date: 10/23/2016
 ms.author: genli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 72df1ff737ff84c817a4b245823993a67508b9e1
+
 
 ---
-# Azure の請求書と毎日の使用状況データをダウンロードする方法
+# <a name="how-to-download-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードする方法
 > [!NOTE]
-> この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+> この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
 > 
 > 
 
-Azure アカウント管理者の場合、Azure アカウント センターで現在の料金を確認し、過去 6 か月間の料金の明細書をダウンロードすることができます。その方法は次のとおりです。
+Azure アカウント管理者は、[Azure Portal](https://portal.azure.com) または [Azure アカウント センター](https://account.windowsazure.com/subscriptions)で請求書と日常の使用状況データを確認できます。 その方法は次のとおりです。
 
-1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/subscriptions)にサインインします。[Azure ポータル](https://portal.azure.com) でアカウント センターにアクセスするには、**[サブスクリプション]**、"*サブスクリプション名*"、**[管理]** の順に選択します。
+## <a name="azure-portal"></a>Azure ポータル
+1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
    
    > [!NOTE]
-   > アカウント センターへのアクセス権があるのはアカウント管理者だけです。サブスクリプションのアカウント管理者を確認する方法の詳細については、[よく寄せられる質問](billing-subscription-transfer.md#faq)を参照してください。
+   > 請求データに対するアクセス権があるのはアカウント管理者だけです。 サブスクリプションのアカウント管理者を確認する方法の詳細については、 [よく寄せられる質問](billing-subscription-transfer.md#faq)を参照してください。
    > 
    > 
+2. ハブ メニューで、**[サブスクリプション]**を選択します。
+   
+    ![[サブスクリプション] ボタン](./media/billing-download-azure-invoice-daily-usage-date/submenu.png)
+3. **[サブスクリプション]** ブレードで、表示するサブスクリプションを選択し、**[課金と使用量]** を選択します。
+   
+    ![課金のボタン](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
+4. **[課金と使用量]** ブレードで、**[請求書のダウンロード]** をクリックして請求書を表示します。 請求期間をクリックすると、毎日の使用状況データが表示されます。
+   
+    ![課金の詳細](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
+
+## <a name="azure-account-center"></a>Azure アカウント センター
+1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/subscriptions) にサインインします。
 2. 請求書と使用状況を確認するサブスクリプションを選択します。
-3. **[請求履歴]** を選択します。</br>![billinghistory](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
-4. 過去 6 回の請求期間だけでなく、現行の未請求期間の明細も確認できます。</br>![billingsum](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)</br>
-5. 見積もりを作成した時点での料金の見積もりを表示するには、**[現在の明細書の表示]** を選択します。この情報は毎日更新されますが、すべての累計使用量が含まれていない可能性があります。その月に実際に支払う料金は、この見積もりとは異なる場合があります。</br>![billingsum2](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)</br>![billingsum3](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)</br>
-6. 最新の請求書のコピーを確認するには、**[請求書のダウンロード]** を選択します。</br>![DLInvoice](./media/billing-download-azure-invoice-daily-usage-date/DLInvoice1.png)
-7. CSV ファイル形式で毎日の使用状況データをダウンロードするには、**[使用量のダウンロード]** を選択します。</br>![DLusage](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
+3. **[請求履歴]**を選択します。 </br>![billinghistory](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
+4. 過去 6 回の請求期間と、現行の未請求期間の明細も確認できます。 </br>![billingsum](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)</br>
+5. 見積もりを作成した時点での料金の見積もりを表示するには、**[現在の明細書の表示]** を選択します。 この情報は毎日更新されますが、すべての累計使用量が含まれていない可能性があります。 その月に実際に支払う料金は、この見積もりとは異なる場合があります。</br>![billingsum2](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)</br>![billingsum3](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)</br>
+6. 最新の請求書のコピーを確認するには、 **[請求書のダウンロード]** を選択します。 </br>![DLInvoice](./media/billing-download-azure-invoice-daily-usage-date/DLInvoice1.png)
+7. CSV ファイル形式で毎日の使用状況データをダウンロードするには、**[利用状況のダウンロード]** を選択します。</br>![DLusage](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
 
 > [!NOTE]
-> まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+> まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
 > 
 > 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

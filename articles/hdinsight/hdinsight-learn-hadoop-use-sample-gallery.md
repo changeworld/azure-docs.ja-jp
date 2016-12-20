@@ -1,24 +1,28 @@
 ---
-title: サンプル ギャラリーを使用して、HDInsight での Hadoop について説明します。| Microsoft Docs
-description: HDInsight 概要ギャラリーのサンプル アプリケーションを実行して Hadoop をすばやく学習できます。サンプル データを使用するか、独自のデータを用意します。
+title: "サンプル ギャラリーを使用した、HDInsight での Hadoop についての説明 | Microsoft Docs"
+description: "HDInsight 概要ギャラリーのサンプル アプリケーションを実行して Hadoop をすばやく学習できます。 サンプル データを使用するか、独自のデータを用意します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 3d391bf3-fcb2-4956-8a2c-7c142e952bbb
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 10/21/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0c5a9ee8d437a529c320f19a6f32c88bd38326e7
+
 
 ---
-# HDInsight 概要ギャラリーを使用して Hadoop について説明する
-概要ギャラリーは、Windows ベースの HDInsight クラスターでのみ使用できます。概要ギャラリーでは、HDInsight でサンプル アプリケーションを実行して Hadoop をすばやく簡単に学習できます。一部のサンプルには、サンプル データが含まれています。その他のサンプルでは、独自のデータを使用いただけます。現時点では、次の 6 つのサンプルがあります (今後追加される予定)。
+# <a name="learn-hadoop-by-using-the-azure-hdinsight-getting-started-gallery"></a>HDInsight 概要ギャラリーを使用して Hadoop について説明する
+概要ギャラリーは、Windows ベースの HDInsight クラスターでのみ使用できます。 概要ギャラリーでは、HDInsight でサンプル アプリケーションを実行して Hadoop をすばやく簡単に学習できます。 一部のサンプルには、サンプル データが含まれています。 その他のサンプルでは、独自のデータを使用いただけます。 現時点では、次の 6 つのサンプルがあります (今後追加される予定)。
 
 * Azure データを使用したソリューション
   * Microsoft Azure Web サイトのログ分析
@@ -35,7 +39,7 @@ ms.author: jgao
 
 <center><a href="https://www.youtube.com/embed/7ePbHot1SN4">https://www.youtube.com/embed/7ePbHot1SN4></a></center>
 
-ダッシュボードには、http://<使用している HDInsight クラスター名>.azurehdinsight.net/ を参照してアクセスするか、Azure ポータルからアクセスできます。
+ダッシュボードには、http://<YourHDInsightClusterName> を参照してアクセスするか、Azure ポータルからアクセスできます。
 
 **概要ギャラリーからサンプルを実行するには**
 
@@ -44,11 +48,11 @@ ms.author: jgao
 3. 上部のメニューから **[ダッシュボード]** をクリックします。
 4. HTTP ユーザー (別名: クラスター ユーザー) のユーザー名とパスワードを入力します。
 5. ページの上部にある **[概要ギャラリー]** をクリックします。
-6. サンプルを 1 つクリックします。各サンプルで、実行するための詳細な手順が表示されます。次の図は、Twitter の傾向分析のサンプルを示しています。
+6. サンプルを 1 つクリックします。 各サンプルで、実行するための詳細な手順が表示されます。 次の図は、Twitter の傾向分析のサンプルを示しています。
    
     ![HDInsight Twitter の傾向分析サンプル][hdinsight.twitter.sample]
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 HDInsight に関するその他の資料。
 
 * [HDInsight の学習マップ][hdinsight.learn.map]
@@ -61,6 +65,10 @@ HDInsight に関するその他の資料。
 <!--Link references-->
 [hdinsight.learn.map]: https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/
 [hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
-[azure.portal]: https://portal.azure.com
+[azure.portal]:https://portal.azure.com
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

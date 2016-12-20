@@ -2,11 +2,11 @@
 title: Deploy templates with the portal in Azure Stack | Microsoft Docs
 description: Learn how to use the Azure Stack portal to deploy templates.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: HeathL17
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: eafa60f2-16c9-4ef1-b724-47709e9ea29e
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: helaw
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9c4b7cbdeba7e27b49996f5bcbfd7e62a0d92353
+
 
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Deploy templates using the Azure Stack portal
@@ -31,6 +35,9 @@ Resource Manager templates deploy and provision all the resources for your appli
 ## <a name="next-steps"></a>Next steps
 [Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

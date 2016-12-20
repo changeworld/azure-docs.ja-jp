@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と YouEarnedIt の統合 | Microsoft Docs'
-description: Azure Active Directory と YouEarnedIt の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と YouEarnedIt の統合 | Microsoft Docs"
+description: "Azure Active Directory と YouEarnedIt の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 3011d44d-dfcf-4061-888f-cff90fbc8150
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0965d6b12e556be60e25a8880432572ee3dceae7
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-youearnedit"></a>チュートリアル: Azure Active Directory と YouEarnedIt の統合
+# <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>チュートリアル: Azure Active Directory と YouEarnedIt の統合
 このチュートリアルでは、YouEarnedIt と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
 YouEarnedIt と Azure AD の統合には、次の利点があります。
@@ -235,6 +239,6 @@ YouEarnedIt で Azure AD のシングル サインオンを構成してテスト
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

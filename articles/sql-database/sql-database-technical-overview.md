@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 11/08/2016
 ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 23d68a523fa9a79d2b5154eef04a5f6e706bdeb2
+ms.sourcegitcommit: 9fc8295aaa68a0d41a34f714b34642585b13b67d
+ms.openlocfilehash: 37da0020c8fc51a422ce6c70fed26329863a90f0
 
 
 ---

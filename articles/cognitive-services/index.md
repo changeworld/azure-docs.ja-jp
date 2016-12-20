@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Cognitive Services Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: f59bb52f11334d93bbc6cf655b7f790a58a3ebfd
 
-Cognitive Services (Preview) is a series of APIs which can be used to enable natural and contextual interaction within your applications.  Cognitive Services offers Language, Speech, Vision, Search, and Knowledge APIs.
+---
+#<a name="cognitive-services-documentation"></a>Cognitive Services のドキュメント
+
+Cognitive Services (プレビュー) は、アプリケーション内でコンテキストに応じた自然な操作を実現できる、一連の API です。  Cognitive Services は、言語、音声、視覚、検索、知識の API を提供します。
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -17,7 +21,7 @@ Cognitive Services (Preview) is a series of APIs which can be used to enable nat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Cognitive Services Video Library</h3>
+                        <h3>Cognitive Services のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Cognitive Services (Preview) is a series of APIs which can be used to enable nat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with the Text Analytics APIs</h3>
+                        <h3>Text Analytics API の概要</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Cognitive Services (Preview) is a series of APIs which can be used to enable nat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with the Recommendations APIs</h3>
+                        <h3>Recommendations API の概要</h3>
                     </div>
                 </div>
             </div>
@@ -64,22 +68,65 @@ Cognitive Services (Preview) is a series of APIs which can be used to enable nat
 
 ---
 
-##Reference
+## <a name="reference"></a>リファレンス
 
-###PowerShell
-[Azure PowerShell Reference](/powershell/azureps-cmdlets-docs)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/azureps-cmdlets-docs">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Azure PowerShell リファレンス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-###.NET
-[Cognitive Services Managed Reference](https://msdn.microsoft.com/library/azure/mt416943)
+    <li>
+        <a href="https://msdn.microsoft.com/library/azure/mt416943">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>Cognitive Services の管理リファレンス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-###REST
-[Cognitive Services REST API Reference](/rest/api/cognitiveservices)
+    <li>
+        <a href="/rest/api/cognitiveservices">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p>Cognitive Services REST API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cognitive-services.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Cognitive Services Documentation
-        </div>
+Cognitive Services のドキュメントのダウンロード </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

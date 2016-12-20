@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Trello の統合 | Microsoft Docs'
-description: Azure Active Directory と Trello の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Trello の統合 | Microsoft Docs"
+description: "Azure Active Directory と Trello の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: cd5ae365-9ed6-43a6-920b-f7814b993949
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 5af430daa609f1838c640949f535f1d84cbe5f13
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-trello"></a>チュートリアル: Azure Active Directory と Trello の統合
+# <a name="tutorial-azure-active-directory-integration-with-trello"></a>チュートリアル: Azure Active Directory と Trello の統合
 このチュートリアルでは、Trello と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
 Trello と Azure AD の統合には、次の利点があります:
@@ -100,11 +104,11 @@ Trello アプリケーションは SAML アサーションを使用し、特定�
     ![Configure Single Sign-On][5]
 2. **[Saml トークン属性]** ダイアログで、以下の表の各行について、次の手順を実行します。
 
-      | 属性名 | 属性値 |
-      | --- | --- |    
-      | User.Email | User.mail |
-      | User.FirstName | User.givenname |
-      | User.LastName | User.surname |
+    | 属性名 | 属性値 |
+    | --- | --- |    
+    | User.Email | User.mail |
+    | User.FirstName | User.givenname |
+    | User.LastName | User.surname |
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー属性の追加]** をクリックして、**[ユーザー属性の追加]** ダイアログを開きます。
 
@@ -177,11 +181,11 @@ Trello アプリケーションは SAML アサーションを使用し、特定�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-trello-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-trello-tutorial/create_aaduser_06.png) 
@@ -194,7 +198,7 @@ Trello アプリケーションは SAML アサーションを使用し、特定�
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-trello-tutorial/create_aaduser_07.png) 
@@ -202,7 +206,7 @@ Trello アプリケーションは SAML アサーションを使用し、特定�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-trello-tutorial/create_aaduser_08.png) 
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
     b. ページの下部**[完了]**をクリックします。   
 
@@ -262,6 +266,6 @@ Trello アプリケーションは SAML アサーションを使用し、特定�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

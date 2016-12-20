@@ -1,13 +1,13 @@
 ---
-title: Power BI Embedded の新機能
-description: Power BI Embedded の新機能に関する最新情報を入手できます。
+title: "Power BI Embedded の新機能"
+description: "Power BI Embedded の新機能に関する最新情報を入手できます。"
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 2794ae98-b9a7-45df-b6e1-962a395b91fa
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
@@ -15,18 +15,22 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 86c4f2b6ab4ff9dfba429acfcfbd0cd2bac7b42c
+
 
 ---
-# <a name="what's-new-in-power-bi-embedded"></a>Power BI Embedded の新機能
+# <a name="whats-new-in-power-bi-embedded"></a>Power BI Embedded の新機能
 **Power BI Embedded** の更新は定期的にリリースされます。 ただし、すべてのリリースにユーザー向けの新機能が含まれているわけではありません。一部のリリースでは、バックエンド サービス機能に重点を置いています。 ここでは、ユーザー向けの新機能について説明します。 必ず頻繁に確認してください。
 
-## <a name="august-31st,-2016"></a>2016 年 8 月 31 日
+## <a name="august-31st-2016"></a>2016 年 8 月 31 日
 このリリースの新機能は次のとおりです。
 
 * すべての新しい JavaScript SDK で [高度なフィルタリングと ページ ナビゲーション](power-bi-embedded-interact-with-reports.md)がサポートされます。
 * Power BI Embedded がカナダ中部データセンターでサポートされるようになりました。 [データセンターのステータス](https://azure.microsoft.com/status/)に関するページをご覧ください。
 
-## <a name="july-11th,-2016"></a>2016 年 7 月 11 日
+## <a name="july-11th-2016"></a>2016 年 7 月 11 日
 このリリースの新機能は次のとおりです。
 
 * **お知らせ:**  Power BI Embedded サービスがプレビューではなくなり、一般公開 (GA) されました。  
@@ -39,6 +43,9 @@ ms.author: asaxton
 * 視覚化データを **.csv**にエクスポートできるようになりました。
 * Microsoft Azure と同じすべての言語/ロケールで Power BI Embedded がサポートされるようになりました。 詳細については、[Azure の言語](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx)に関するページをご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

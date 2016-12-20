@@ -1,13 +1,13 @@
 ---
-title: リソース マネージャー モードでの Azure CLI コマンド | Microsoft Docs
-description: リソース マネージャー のデプロイ モデルのリソースを管理する Azure コマンド ライン インターフェイス (CLI) コマンド
+title: "Resource Manager モードでの Azure CLI コマンド | Microsoft Docs"
+description: "リソース マネージャー のデプロイ モデルのリソースを管理する Azure コマンド ライン インターフェイス (CLI) コマンド"
 services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
-documentationcenter: ''
+documentationcenter: 
 author: dlepow
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: be37da5b-72fe-41a1-9fa0-8937b69464ec
 ms.service: multiple
 ms.workload: multiple
 ms.tgt_pltfrm: command-line-interface
@@ -15,10 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/05/2016
 ms.author: danlep
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 028e09c031037f3c4001eccfb4543122eef2c055
+
 
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager モードでの Azure CLI コマンド
-この記事では、Azure Resource Manager デプロイメントモデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 Azure リソースおよびリソース グループの一般的な概要については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。  
+この記事では、Azure Resource Manager デプロイメントモデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 Azure リソースおよびリソース グループの一般的な概要については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。  
 
 開始するには、まず、[Azure CLI をインストール](../xplat-cli-install.md)し、職場/学校のアカウント、または Microsoft アカウント ID を使用して [Azure サブスクリプションに接続](../xplat-cli-connect.md)します。
 
@@ -38,7 +42,7 @@ ms.author: danlep
 > 
 > 
 
-## <a name="azure-account:-manage-your-account-information"></a>Azure アカウント: アカウント情報の管理
+## <a name="azure-account-manage-your-account-information"></a>Azure アカウント: アカウント情報の管理
 Azure のサブスクリプション情報は、ツールがアカウントにアクセスする際に使用されます。
 
 **インポートされたサブスクリプションを一覧表示します**
@@ -65,7 +69,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad:-commands-to-display-active-directory-objects"></a>Azure AD: Active Directory オブジェクトを表示するコマンド
+## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Azure AD: Active Directory オブジェクトを表示するコマンド
 **Active Directory アプリケーションを表示するコマンド**
 
     ad app create [options]
@@ -92,7 +96,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     ad user list [options]
     ad user show [options]
 
-## <a name="azure-availset:-commands-to-manage-your-availability-sets"></a>Azure 可用性セット: 可用性セットを管理するコマンド
+## <a name="azure-availset-commands-to-manage-your-availability-sets"></a>Azure 可用性セット: 可用性セットを管理するコマンド
 **リソース グループ内に可用性セットを作成します**
 
     availset create [options] <resource-group> <name> <location> [tags]
@@ -109,7 +113,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     availset delete [options] <resource-group> <name>
 
-## <a name="azure-config:-commands-to-manage-your-local-settings"></a>Azure の構成: ローカル設定を管理するコマンド
+## <a name="azure-config-commands-to-manage-your-local-settings"></a>Azure の構成: ローカル設定を管理するコマンド
 **Azure CLI の構成設定を一覧表示します**
 
     config list [options]
@@ -127,7 +131,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     config mode [options] <modename>
 
 
-## <a name="azure-feature:-commands-to-manage-account-features"></a>Azure の機能: アカウント機能を管理するコマンド
+## <a name="azure-feature-commands-to-manage-account-features"></a>Azure の機能: アカウント機能を管理するコマンド
 **サブスクリプションで使用可能なすべての機能を一覧表示します**
 
     feature list [options]
@@ -140,7 +144,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group:-commands-to-manage-your-resource-groups"></a>Azure グループ: リソース グループを管理するコマンド
+## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Azure グループ: リソース グループを管理するコマンド
 **リソース グループを作成します**
 
     group create [options] <name> <location>
@@ -179,7 +183,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight:-commands-to-manage-your-hdinsight-clusters"></a>Azure HDInsight: HDInsight クラスターを管理するコマンド
+## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>Azure HDInsight: HDInsight クラスターを管理するコマンド
 **クラスターの構成ファイルを作成するコマンドまたはこのファイルに追加するコマンド**
 
     hdinsight config create [options] <configFilePath> <overwrite>
@@ -297,17 +301,17 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights:-commands-related-to-monitoring-insights-(events,-alert-rules,-autoscale-settings,-metrics)"></a>Azure Insights: Insights (イベント、アラート ルール、自動スケール設定、メトリック) の監視に関連するコマンド
+## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure Insights: Insights (イベント、アラート ルール、自動スケール設定、メトリック) の監視に関連するコマンド
 **サブスクリプション、関連付け ID、リソース グループ、リソース、またはリソース プロバイダーの操作ログを取得します**
 
     insights logs list [options]
 
-## <a name="azure-location:-commands-to-get-the-available-locations-for-all-resource-types"></a>Azure の場所: すべてのリソースの種類で利用可能な場所を取得するコマンド
+## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Azure の場所: すべてのリソースの種類で利用可能な場所を取得するコマンド
 **利用可能な場所を一覧表示します**
 
     location list [options]
 
-## <a name="azure-network:-commands-to-manage-network-resources"></a>Azure ネットワーク: ネットワーク リソースを管理するコマンド
+## <a name="azure-network-commands-to-manage-network-resources"></a>Azure ネットワーク: ネットワーク リソースを管理するコマンド
 **仮想ネットワークを管理するコマンド**
 
     network vnet create [options] <resource-group> <name> <location>
@@ -334,18 +338,18 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 パラメーターのオプション:
 
-    -h, --help                                 output usage information
-    -v, --verbose                              use verbose output
+     -h, --help                                 output usage information
+     -v, --verbose                              use verbose output
     --json                                     use json output
-    -g, --resource-group <resource-group>      the name of the resource group
-    -n, --name <name>                          the name of the virtual network
-    -l, --location <location>                  the location
-    -a, --address-prefixes <address-prefixes>  the comma separated list of address prefixes for this virtual network
+     -g, --resource-group <resource-group>      the name of the resource group
+     -n, --name <name>                          the name of the virtual network
+     -l, --location <location>                  the location
+     -a, --address-prefixes <address-prefixes>  the comma separated list of address prefixes for this virtual network
       For example -a 10.0.0.0/24,10.0.1.0/24.
       Default value is 10.0.0.0/8
 
     -d, --dns-servers <dns-servers>            the comma separated list of DNS servers IP addresses
-    -t, --tags <tags>                          the tags set on this virtual network.
+     -t, --tags <tags>                          the tags set on this virtual network.
       Can be multiple. In the format of "name=value".
       Name is required and value is optional.
       For example, -t tag1=value1;tag2
@@ -579,14 +583,14 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 パラメーターのオプション:
 
-    -h, --help                             output usage information
-    -v, --verbose                          use verbose output
-    --json                                 use json output
-    -g, --resource-group <resource-group>  the name of the resource group
-    -e, --vnet-name <vnet-name>            the name of the virtual network
-    -n, --name <name>                      the subnet name
-    -s, --subscription <subscription>      the subscription identifier
-    -q, --quiet                            quiet mode, do not ask for delete confirmation
+     -h, --help                             output usage information
+     -v, --verbose                          use verbose output
+     --json                                 use json output
+     -g, --resource-group <resource-group>  the name of the resource group
+     -e, --vnet-name <vnet-name>            the name of the virtual network
+     -n, --name <name>                      the subnet name
+     -s, --subscription <subscription>      the subscription identifier
+     -q, --quiet                            quiet mode, do not ask for delete confirmation
 
 **ロード バランサーを管理するコマンド**
 
@@ -681,13 +685,13 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 パラメーターのオプション:
 
-    -h, --help                             output usage information
-    -v, --verbose                          use verbose output
-    --json                                 use json output
-    -g, --resource-group <resource-group>  the name of the resource group
-    -n, --name <name>                      the name of the load balancer
-    -q, --quiet                            quiet mode, do not ask for delete confirmation
-    -s, --subscription <subscription>      the subscription identifier
+     -h, --help                             output usage information
+     -v, --verbose                          use verbose output
+     --json                                 use json output
+     -g, --resource-group <resource-group>  the name of the resource group
+     -n, --name <name>                      the name of the load balancer
+     -q, --quiet                            quiet mode, do not ask for delete confirmation
+     -s, --subscription <subscription>      the subscription identifier
 
 **ロード バランサーのプローブを管理するコマンド**
 
@@ -704,9 +708,9 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 パラメーターのオプション:
 
-    -h, --help                             output usage information
-    -v, --verbose                          use verbose output
-    --json                                 use json output
+     -h, --help                             output usage information
+     -v, --verbose                          use verbose output
+     --json                                 use json output
     -g, --resource-group <resource-group>  the name of the resource group
     -l, --lb-name <lb-name>                the name of the load balancer
     -n, --name <name>                      the name of the probe
@@ -1031,12 +1035,12 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 パラメーターのオプション:
 
-    -h, --help                             output usage information
-    -v, --verbose                          use verbose output
-    --json                                 use json output
-    -g, --resource-group <resource-group>  the name of the resource group
-    -l, --lb-name <lb-name>                the name of the load balancer
-    -s, --subscription <subscription>      the subscription identifier
+     -h, --help                             output usage information
+     -v, --verbose                          use verbose output
+     --json                                 use json output
+     -g, --resource-group <resource-group>  the name of the resource group
+     -l, --lb-name <lb-name>                the name of the load balancer
+     -s, --subscription <subscription>      the subscription identifier
 
 <BR>
  network lb address-pool delete [オプション] <resource-group> <lb-name> <name>
@@ -1574,7 +1578,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider:-commands-to-manage-resource-provider-registrations"></a>Azure プロバイダー: リソース プロバイダーの登録を管理するコマンド
+## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Azure プロバイダー: リソース プロバイダーの登録を管理するコマンド
 **Resource Manager で現在登録されているプロバイダーを一覧表示します**
 
     provider list [options]
@@ -1591,7 +1595,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource:-commands-to-manage-your-resources"></a>Azure リソース: リソースを管理するコマンド
+## <a name="azure-resource-commands-to-manage-your-resources"></a>Azure リソース: リソースを管理するコマンド
 **リソース グループにリソースを作成します**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1612,7 +1616,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role:-commands-to-manage-your-azure-roles"></a>Azure ロール: Azure ロールを管理するコマンド
+## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Azure ロール: Azure ロールを管理するコマンド
 **使用可能なすべてのロールの定義を取得します**
 
     role list [options]
@@ -1627,7 +1631,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage:-commands-to-manage-your-storage-objects"></a>Azure Storage: Storage のオブジェクトを管理するコマンド
+## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure Storage: Storage のオブジェクトを管理するコマンド
 **Storage のアカウントを管理するコマンド**
 
     storage account list [options]
@@ -1750,7 +1754,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag:-commands-to-manage-your-resource-manager-tag"></a>Azure タグ: リソース マネージャー タグを管理するコマンド
+## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>Azure タグ: リソース マネージャー タグを管理するコマンド
 **タグを追加します**
 
     tag create [options] <name> <value>
@@ -1767,7 +1771,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     tag show [options] [name]
 
-## <a name="azure-vm:-commands-to-manage-your-azure-virtual-machines"></a>Azure VM: Azure Virtual Machines を管理するコマンド
+## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Azure VM: Azure Virtual Machines を管理するコマンド
 **VM を作成します**
 
     vm create [options] <resource-group> <name> <location> <os-type>
@@ -1857,6 +1861,6 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

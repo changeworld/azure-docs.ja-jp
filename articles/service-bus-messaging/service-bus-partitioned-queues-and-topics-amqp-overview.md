@@ -1,22 +1,26 @@
 ---
-title: パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート | Microsoft Docs
-description: Advanced Message Queuing Protocol (AMQP) 1.0 を Service Bus のパーティション分割されたキューおよびトピックで使用する方法を学習します。
-services: service-bus
+title: "パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート | Microsoft Docs"
+description: "Advanced Message Queuing Protocol (AMQP) 1.0 を Service Bus のパーティション分割されたキューおよびトピックで使用する方法を学習します。"
+services: service-bus-messaging
 documentationcenter: .net
 author: hillaryc
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: e2549ad3-41eb-47e5-b25f-20043a7ffa2a
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 07/08/2016
+ms.date: 10/14/2016
 ms.author: hillaryc;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2f343c1f087b516c35eb75fc9a1e61c5cf6d1e93
+
 
 ---
-# <a name="amqp-1.0-support-for-service-bus-partitioned-queues-and-topics"></a>パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート
+# <a name="amqp-10-support-for-service-bus-partitioned-queues-and-topics"></a>パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート
 Azure Service Bus では、**パーティション分割された Service Bus のキューとトピック**で Advanced Message Queuing Protocol (**AMQP**) 1.0 がサポートされるようになりました。
 
 **AMQP** とは、さまざまなプログラミング言語を使用して、クロス プラットフォーム アプリケーションを開発できるようにするオープン標準のメッセージ キューイング プロトコルです。 Service Bus での AMQP のサポートの概要については、「[Service Bus での AMQP 1.0 サポート](service-bus-amqp-overview.md)」を参照してください。
@@ -115,6 +119,6 @@ AMQP のほか、パーティション分割されたメッセージング エ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

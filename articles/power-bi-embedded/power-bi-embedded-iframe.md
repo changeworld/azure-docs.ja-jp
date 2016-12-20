@@ -1,13 +1,13 @@
 ---
-title: REST 経由で Power BI Embedded を使用する方法 | Microsoft Docs
-description: 'REST 経由で Power BI Embedded を使用する方法を説明します。 '
+title: "REST 経由で Power BI Embedded を使用する方法 | Microsoft Docs"
+description: "REST 経由で Power BI Embedded を使用する方法を説明します。 "
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 8bcef780-cca0-4f30-9a9b-9daa1a7ae865
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,14 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7aadb6ceba1a8c672ed9eeea8651c965e5b665fd
+
 
 ---
 # <a name="how-to-use-power-bi-embedded-with-rest"></a>REST 経由で Power BI Embedded を使用する方法
-## <a name="power-bi-embedded:-what-it-is-and-what-it's-for"></a>Power BI Embedded の概要と目的
+## <a name="power-bi-embedded-what-it-is-and-what-its-for"></a>Power BI Embedded の概要と目的
 Power BI Embedded の概要については、正式な説明を [Power BI Embedded のサイト](https://azure.microsoft.com/services/power-bi-embedded/)で参照できます。ここでは、Power BI Embedded と REST の使用に関する詳細に入る前に、Power BI Embedded について簡単に確認します。
 
 きわめてシンプルというのは事実です。 ISV が独自のアプリケーションで UI の構成要素として [Power BI](https://powerbi.microsoft.com) の動的データ ビジュアライゼーションの利用を希望することはよくあります。
@@ -34,7 +38,7 @@ ISV のアプリケーションで、フォーム認証や基本認証などの�
 
 .NET \(C#) または Node.js SDK を使用すると、Power BI Embedded を使用してアプリケーションを簡単に作成できます。 ただし、この記事では、SDK なしの Power BI の HTTP フロー \(AuthN を含む) の概要について説明します。 このフローを理解すると、**任意のプログラミング言語で**アプリケーションを構築することができ、Power BI Embedded の本質を深く理解できるようになります。
 
-## <a name="create-power-bi-workspace-collection,-and-get-access-key-\(provisioning)"></a>Power BI ワークスペース コレクションを作成してアクセス キーを取得する \(プロビジョニング)
+## <a name="create-power-bi-workspace-collection-and-get-access-key-provisioning"></a>Power BI ワークスペース コレクションを作成してアクセス キーを取得する \(プロビジョニング)
 Power BI Embedded は Azure のサービスの 1 つです。 Azure Portal を使用している ISV のみに \(1 時間のユーザー セッションごとに) 使用料が課金され、レポートを表示しているユーザーは課金されないだけでなく、Azure サブスクリプションさえ必要ありません。
 アプリケーションの開発を開始する前に、Azure ポータルを使用して **Power BI のワークスペース コレクション** を作成する必要があります。
 
@@ -51,7 +55,7 @@ Power BI Embedded の各ワークスペースは、各顧客 (テナント) の�
 > 
 > 
 
-## <a name="create-.pbix-file-with-power-bi-desktop"></a>Power BI Desktop を使用して .pbix ファイルを作成する
+## <a name="create-pbix-file-with-power-bi-desktop"></a>Power BI Desktop を使用して .pbix ファイルを作成する
 次に、データ接続と、埋め込むレポートを作成する必要があります。
 このタスクでは、プログラミングやコードは必要ありません。 使用するのは Power BI Desktop のみです。
 この記事では、Power BI Desktop を使用する方法の詳細は説明しません。 サポートが必要な場合は、「 [Power BI Desktop の概要](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)」を参照してください。 こちらの例では、「 [小売の分析のサンプル](https://powerbi.microsoft.com/documentation/powerbi-sample-datasets/)」のみを使用します。
@@ -86,7 +90,7 @@ RequestId: 4220d385-2fb3-406b-8901-4ebe11a5f6da
 
 返された **workspaceId** は、次に示す後続の API 呼び出しに使用します。 アプリケーションでこの値を保持する必要があります。
 
-## <a name="import-.pbix-file-into-the-workspace"></a>.pbix ファイルをワークスペースにインポートする
+## <a name="import-pbix-file-into-the-workspace"></a>.pbix ファイルをワークスペースにインポートする
 各ワークスペースでは、\(データ ソースの設定も含む) データセットとレポートを含む 1 つの Power BI Desktop ファイルをホストできます。 次のコードに示すように、.pbix ファイルをワークスペースにインポートできます。 ご覧のように、http で MIME マルチパートを使用して、.pbix ファイルのバイナリをアップロードできます。
 
 URI フラグメント **32960a09-6366-4208-a8bb-9e0678cdbb9d** が workspaceId であり、クエリ パラメーター **datasetDisplayName** は作成するデータセットの名前です。 作成したデータセットには、インポートされたデータ、データ ソースを指すポインターなどの .pbix ファイルのすべてのデータ関連アーティファクトが保持されます。
@@ -170,7 +174,7 @@ RequestId: eb2c5a85-4d7d-4cc2-b0aa-0bafee4b1606
 }
 ```
 
-## <a name="data-source-connectivity-\(and-multi-tenancy-of-data)"></a>データ ソース接続 \(とデータのマルチ テナント)
+## <a name="data-source-connectivity-and-multi-tenancy-of-data"></a>データ ソース接続 \(とデータのマルチ テナント)
 .pbix ファイル内のほぼすべてのアーティファクトがワークスペースにインポートされますが、データ ソースの資格情報はインポートされません。 その結果、 **DirectQuery モード**を使用した場合、埋め込みレポートを正しく表示できません。 ただし、 **Import モード**を使用すると、インポート済みの既存のデータを使用してレポートを表示できます。 このような場合は、次の手順を使用して、REST 呼び出し経由で資格情報を設定する必要があります。
 
 最初に、ゲートウェイのデータ ソースを取得する必要があります。 データセット **ID** とは、以前返された ID をです。
@@ -249,7 +253,7 @@ Content-Type: application/json; charset=utf-8
 > 
 > 
 
-## <a name="authentication-and-hosting-(embedding)-reports-in-our-web-page"></a>Web ページでの認証と (埋め込み) レポートのホスティング
+## <a name="authentication-and-hosting-embedding-reports-in-our-web-page"></a>Web ページでの認証と (埋め込み) レポートのホスティング
 以前の REST API では、アクセス キー **AppKey** 自体を承認ヘッダーとして使用できます。 これらの呼び出しは、バックエンド サーバー側で処理されるため、安全です。
 
 ただし、Web ページにレポートを埋め込むときは、JavaScript \(フロント エンド) を使用してこの種のセキュリティ情報を処理します。 この場合は、承認ヘッダーの値をセキュリティで保護する必要があります。 悪意のあるユーザーや悪意のあるコードによってアクセス キーが検出されると、アクセス キーが操作の呼び出しに使用される可能性があります。
@@ -338,7 +342,7 @@ function rfc4648_base64_encode($arg) {
 ?>
 ```
 
-## <a name="finally,-embed-the-report-into-the-web-page"></a>最後にレポートを Web ページに埋め込む
+## <a name="finally-embed-the-report-into-the-web-page"></a>最後にレポートを Web ページに埋め込む
 レポートを埋め込むには、次の REST API を使用して、埋め込み URL とレポート **ID** を取得する必要があります。
 
 **HTTP 要求**
@@ -464,6 +468,9 @@ RequestId: d4099022-405b-49d3-b3b7-3c60cf675958
 ## <a name="see-also"></a>関連項目
 * [Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,13 +1,13 @@
 ---
-title: 仮想マシンの Accelerated Networking - PowerShell | Microsoft Docs
-description: PowerShell を使用して Azure 仮想マシンで Accelerated Networking を構成する方法について説明します。
+title: "仮想マシンの Accelerated Networking - PowerShell | Microsoft Docs"
+description: "PowerShell を使用して Azure 仮想マシンで Accelerated Networking を構成する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: a0b63599-c23b-40b5-a8ab-23af8b07dded
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 8ae59a99a8397676160c032b744460c0b2bcc1d7
+
 
 ---
 # <a name="accelerated-networking-for-a-virtual-machine"></a>仮想マシンの Accelerated Networking
@@ -50,7 +54,7 @@ VM で Accelerated Networking が有効になっている場合のみ、その�
 * **VM の作成:** Accelerated Networking を有効にしたネットワーク インターフェイスは、VM の作成時にのみ VM にアタッチできます。 ネットワーク インターフェイスを既存の VM にアタッチすることはできません。
 * **リージョン:** 米国中西部と西ヨーロッパの Azure のリージョンでのみ提供されます。 リージョンは今後拡大する予定です。
 * **サポートされているオペレーティング システム:** Microsoft Windows Server 2012 R2、Windows Server 2016 テクニカル プレビュー 5。 Linux と Windows Server 2012 もまもなくサポートされる予定です。
-* **VM サイズ:** サポートされる VM のインスタンス サイズは、Standard_D15_v2 と Standard_DS15_v2 のみです。 詳細については、「 [Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md) 」の記事をご覧ください。 サポートされる VM のインスタンス サイズは、今後増える予定です。
+* **VM サイズ:** サポートされる VM のインスタンス サイズは、Standard_D15_v2 と Standard_DS15_v2 のみです。 詳細については、「 [Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」の記事をご覧ください。 サポートされる VM のインスタンス サイズは、今後増える予定です。
 
 これらの制限に対する変更については、「[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/accelerated-networking-in-preview)」のページでお知らせします。
 
@@ -111,7 +115,7 @@ VM で Accelerated Networking が有効になっている場合のみ、その�
 10. インターフェイスにパブリック IP アドレス リソースを追加しない場合は、次に続くコマンドの最後の *- PublicIPAddress $PIP1* を削除します。 次のコマンドを入力して、Accelerated Networking を使ったネットワーク インターフェイスを作成します。
     
         $nic = New-AzureRmNetworkInterface -Location $locName -Name $NICName -ResourceGroupName $rgName -Subnet $Subnet -EnableAcceleratedNetworking -PublicIpAddress $PIP1 
-11. 「 [VM を作成する](../virtual-machines/virtual-machines-windows-ps-create.md) 」 記事の手順 3 と 6 の手順に従って VM を作成するときに、ネットワーク インターフェイスを VM に割り当てます。 手順 6-2 で、*Standard_A1* を、この記事の「[制限](#limitations)」セクションにリストされているいずれかの VM のサイズに置き換えます。
+11. 「 [VM を作成する](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」 記事の手順 3 と 6 の手順に従って VM を作成するときに、ネットワーク インターフェイスを VM に割り当てます。 手順 6-2 で、*Standard_A1* を、この記事の「[制限](#limitations)」セクションにリストされているいずれかの VM のサイズに置き換えます。
     
     > [!NOTE]
     > この記事の $locName、$rgName、$nic の変数の *名前* を変更した場合は、「VM を作成する」記事の手順 6 は使用できません。 ただし、変数の *値* は変更できます。
@@ -122,6 +126,9 @@ VM で Accelerated Networking が有効になっている場合のみ、その�
     
     ![[デバイス マネージャー]](./media/virtual-network-accelerated-networking-powershell/image2.png)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

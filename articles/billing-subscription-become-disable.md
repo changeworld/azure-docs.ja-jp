@@ -1,90 +1,73 @@
 ---
-title: Azure サブスクリプションが無効になった場合にどうすればよいか | Microsoft Docs
-description: Azure サブスクリプションが無効になった理由と解決策を説明する
-services: ''
-documentationcenter: ''
+title: "無効な Azure サブスクリプションを再度有効にする | Microsoft Docs"
+description: "Azure サブスクリプションが無効になっているときに再度有効にする方法について説明します。"
+keywords: "azure サブスクリプションの無効化"
+services: 
+documentationcenter: 
 author: genlin
-manager: msmbaldwin
-editor: ''
+manager: mbaldwin
+editor: 
 tags: billing
-
+ms.assetid: 4529d685-3a87-49d9-8d7a-49baad552d76
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2016
+ms.date: 10/04/2016
 ms.author: genli
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ebb91605960c1f4354e99a7193cbf7467c8ab4ab
+
 
 ---
-# Azure サブスクリプションが無効になった場合にどうすればよいか
-> [!NOTE]
-> この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-> 
-> 
+# <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>私の Azure サブスクリプションが無効になっています。その理由と、再度有効にする方法を教えてください。
+Azure サブスクリプションは、使用制限に達している、請求の支払い期限が過ぎている、請求がクレジット カードの制限を超えている、アカウント管理者によってサブスクリプションが取り消されているという理由で無効にされることがあります。 どの問題に該当するかを調べ、この記事の手順を参照してサブスクリプションを再度有効にできます。 
 
-Azure サブスクリプションが無効になった場合、この記事の手順を使って再び有効にできます。Azure サブスクリプションは、次の理由で無効になることがあります。
+## <a name="you-reached-your-spending-limit"></a>使用制限に達している
+使用量がサブスクリプションに含まれる 1 か月の規定量に達すると、その請求月の残りの期間はサービスが無効化されます。 サービスは、サブスクリプションに含まれる規定量を超えた使用による意図しない料金の発生を防止するために無効になります。 使用制限を削除し、[Microsoft Azure サブスクリプションの課金アラートを設定する](billing-set-up-alerts.md)ことで、Azure アカウントの課金状況を監視して管理できます。
 
-## 使用制限に達している
-誤ってプランの規定量を超過したリソースの利用に対する課金を防ぐために、[使用制限](https://azure.microsoft.com/pricing/spending-limits/)機能が用意されています。プランに含まれる月間使用量に達した場合、その請求月のそれ以降の期間、サービスは無効化されます。使用制限を削除してサービスの無効化を回避できます。また、Azure アカウントの課金状況を監視して管理できるように、[Microsoft Azure サブスクリプションの課金アラートを設定](billing-set-up-alerts.md)できます。
-
-使用制限を削除する方法を次に示します。
+使用制限を削除するには
 
 1. [Azure アカウント センター](https://account.windowsazure.com/Home/Index)にログインします。
 2. **[サブスクリプション]** をクリックします。
 3. サブスクリプションを選択します。
-4. "*サブスクリプションの使用制限に達したので、課金されないように無効にされました*" というメッセージが表示されたら、それをクリックします。
+4. **[サブスクリプションの使用制限に達したので、課金されないように無効にされました]**をクリックします。
    
-    それ以外の場合は、**[サブスクリプションの状態]** 領域の **[使用制限の削除]** をクリックします。
-5. 必要に応じて次のオプションのいずれかを選択します。
+    このオプションが表示されない場合は、**[サブスクリプションの状態]** 領域の **[使用制限の削除]** をクリックします。
+5. 次のいずれかのオプションを選択します。
 
 | オプション | 効果 |
 | --- | --- |
-| 使用制限を無期限に削除 |次の請求期間の開始時に使用制限を自動的に有効にすることなく、使用制限を削除します。 |
-| 現在の請求期間の使用制限を削除 |使用制限を削除し、次の請求期間の開始時に使用制限を自動的に有効に戻します。 |
+| 使用制限を無期限に削除 |再び有効にするまで、使用制限を削除します。 |
+| 現在の請求期間の使用制限を削除 |使用制限を削除しますが、次の請求期間で使用制限を再び開始します。 |
 
-> [!NOTE]
-> 無料試用版サブスクリプションを使用している場合、使用制限を削除すると、ご利用のサブスクリプションが、無料試用の最後に従量課金制に変換されます。
-> 
-> 
+無料試用版サブスクリプションを使用しているときに使用制限を削除すると、ご利用のサブスクリプションは、無料試用の終了時に従量課金制に変換されます。
 
-## 請求の支払い期限が過ぎている
-未払いの残高を全額支払います。支払いを行うには、「[Azure サブスクリプションに支払期限を過ぎた未払い額があるという通知を受信する理由](billing-azure-subscription-past-due-balance.md#what-can-you-do-to-resolve-the-issue)」を参照してください。
+## <a name="your-bill-is-past-due"></a>請求の支払い期限が過ぎている
+未払いの残高を全額支払います。 「[Azure サブスクリプションに支払期限を過ぎた未払い額があるという通知を受信する理由](billing-azure-subscription-past-due-balance.md#what-can-you-do-to-resolve-the-issue)」を参照してください。
 
-## 請求がクレジット カードの制限を超えている
-この問題を解決するには、次の方法のいずれかを使用してください。
+## <a name="the-bill-exceeds-your-credit-card-limit"></a>請求がクレジット カードの制限を超えている
+この問題を解決するには、[別のクレジット カードに切り替えます](billing-how-to-change-credit-card.md)。 ご自身が会社を代表するユーザーである場合は、[請求書による支払いに切り替える](https://azure.microsoft.com/pricing/invoicing/)ことができます。
 
-* [別のクレジット カードに切り替えます](billing-how-to-change-credit-card.md)。
-* 企業の場合、[請求書による支払いに切り替える](https://azure.microsoft.com/pricing/invoicing/)ことができます。
+## <a name="the-subscription-was-canceled-by-the-account-administrator"></a>サブスクリプションがアカウント管理者によって取り消されている
+ご自身がアカウント管理者の場合は、次の手順に従って、従量課金制サブスクリプションを再度有効にできます。 
 
-## サブスクリプションがアカウント管理者によって取り消されている
-> [!NOTE]
-> 現時点では、ここで説明する方法は、従量課金制サブスクリプションにのみ適用されます。その他の種類のサブスクリプションについては、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-> 
-> 
+1. [Azure アカウント センター](https://account.windowsazure.com/Home/Index)にログインします。
+2. 取り消されたサブスクリプションを選択します。
+3. **[再度有効にする ]** をクリックします。
 
-ご自身がアカウント管理者の場合は、次の手順に従って、従量課金制サブスクリプションを再度有効にできます。
+![右側のウィンドウに [再度有効にする] リンクが表示されているスクリーンショット。](./media/billing-how-to-cancel-azure-subscription/reactivate-sub.png)
 
-* 取り消されたサブスクリプションを選択します。
-* サブスクリプション詳細ページのいずれかの **[再アクティブ化]** リンクをクリックします。
+その他のサブスクリプションの種類については、[サポートに連絡して](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)、サブスクリプションを再度有効にしてもらいます。
 
-![reactivate-sub](./media/billing-how-to-cancel-azure-subscription/reactivate-sub.png)
+## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
+お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 
 
-## 従量課金制以外のサブスクリプションを再度有効にする方法
-無効になったサブスクリプションを再度有効にするには、サポート チケットを作成する必要があります。[Azure ポータル](https://portal.azure.com/)にサインインし、**[ヘルプとサポート]**、**[新しいサポート要求]** の順に選択します。
 
-![helpandsupportbutton](./media/billing-how-to-create-billing-support-ticket/helpandsupport.png)
 
-ポータルにアクセスできない場合は、Azure サポート Web サイトか Azure アカウント センターからサポート要求を送信してください。
 
-* [Azure サポート Web サイト](https://azure.microsoft.com/support/options/)からサポート チケットを送信するには、**[サポートの要求]** をクリックします。
-* [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)からサポート チケットを送信するには、サブスクリプションを選択し、**[Microsoft サポートに問い合わせる]** をクリックします。
+<!--HONumber=Nov16_HO3-->
 
-詳細については、「[Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法](billing-how-to-create-billing-support-ticket.md)」を参照してください。
 
-> [!NOTE]
-> まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-> 
-> 
-
-<!---HONumber=AcomDC_0914_2016-->

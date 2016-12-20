@@ -1,11 +1,11 @@
 ---
-title: Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング | Microsoft Docs
-description: Azure Storage Analytics、AzCopy、Microsoft Message Analyzer を使用したエンド ツー エンド トラブルシューティングについて説明するチュートリアル
+title: "Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング | Microsoft Docs"
+description: "Azure Storage Analytics、AzCopy、Microsoft Message Analyzer を使用したエンド ツー エンド トラブルシューティングについて説明するチュートリアル"
 services: storage
 documentationcenter: dotnet
 author: robinsh
 manager: carmonm
-
+ms.assetid: 6b23cba5-0d53-439e-870b-de8e406107d8
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -13,9 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: robinsh
+translationtype: Human Translation
+ms.sourcegitcommit: f2032f3a4fa559b9772ee63d39d66408b3f92175
+ms.openlocfilehash: 5a07c355259c61cfde9f2c1e5f056a0b7f794861
+
 
 ---
-# <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging,-azcopy,-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
+# <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../includes/storage-selector-portal-e2e-troubleshooting.md)]
 
 ## <a name="overview"></a>Overview
@@ -103,29 +107,32 @@ Azure の PowerShell を使用するには、 [Azure PowerShell のインスト�
 
 1. [Add-AzureAccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) コマンドレットを使用して、Azure ユーザー アカウントを PowerShell ウィンドウに追加します。
    
+    ```powershell
+     Add-AzureAccount
     ```
-    Add-AzureAccount
-    ```
+
 2. **[Microsoft Azure へのサインイン]** ウィンドウで、アカウントに関連付けられた電子メール アドレスとパスワードを入力します。 Azure により資格情報が認証および保存され、ウィンドウが閉じます。
 3. PowerShell ウィンドウで次のコマンドを実行し、既定のストレージ アカウントをチュートリアル用に使用しているストレージ アカウントに設定します。
    
-    ```
+    ```powershell
     $SubscriptionName = 'Your subscription name'
     $StorageAccountName = 'yourstorageaccount' 
     Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName 
     ```
+
 4. BLOB サービスのストレージ ログを有効にします。 
    
-    ```
+    ```powershell
     Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0 
     ```
+
 5. BLOB サービスのストレージ メトリックを有効にしますが、その際、**-MetricsType** を `Minute` に設定します。
    
-    ```
+    ```powershell
     Set-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0 
     ```
 
-### <a name="configure-.net-client-side-logging"></a>.NET のクライアント側のログを構成する
+### <a name="configure-net-client-side-logging"></a>.NET のクライアント側のログを構成する
 .NET アプリケーションのクライアント側のログを構成するには、アプリケーションの構成ファイル (web.config または app.config) 内で .NET 診断を有効にします。 詳細については、「[.NET ストレージ クライアント ライブラリと、クライアント側のログ記録](http://msdn.microsoft.com/library/azure/dn782839.aspx)」および「[Microsoft Azure Storage SDK for Java によるクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782844.aspx)」をご覧ください。
 
 クライアント側のログには、クライアントが要求を準備し、応答を受信して処理する方法についての詳細情報が含まれます。
@@ -150,10 +157,11 @@ Message Analyzer を使用して、クライアント アプリケーション�
 4. **Microsoft-Pef-WebProxy** ETW プロバイダーの右側にある **[Configure]** リンクを選択します。
 5. **[Advanced Settings]** ダイアログで、**[Provider]** タブをクリックします。
 6. **Hostname Filter** フィールドに、スペースで区切られたストレージ エンドポイントを指定します。 たとえば、次のようにエンドポイントを指定することができます。`storagesample` をストレージ アカウントの名前に変更してください。
-   
-    ``` 
+
+    ```   
     storagesample.blob.core.windows.net storagesample.queue.core.windows.net storagesample.table.core.windows.net 
     ```
+   
 7. ダイアログを終了し、**[Restart]** をクリックして、ホスト名フィルターを配置した状態でトレースの収集を開始します。これで、Azure Storage ネットワーク トラフィックのみがトレースに含まれるようになります。
 
 > [!NOTE]
@@ -188,7 +196,9 @@ Azure Storage は、サーバー ログ データを BLOB に書き込みます�
 
 AzCopy コマンドライン ツールを使用して、これらのサーバー側のログ ファイルをローカル コンピューター上の好きな場所にダウンロードすることができます。 たとえば、次のコマンドを使用して、2015 年 1 月 2 日に記録された BLOB 操作のログ ファイルを、`C:\Temp\Logs\Server` フォルダーにダウンロードすることができます。`<storageaccountname>` はストレージ アカウント名に置き換え、`<storageaccountkey>` はアカウントのアクセス キーに置き換えます。
 
-    AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
+```azcopy
+AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
+```
 
 AzCopy は、 [Azure ダウンロード](https://azure.microsoft.com/downloads/) のページからダウンロードできます。 AzCopy の使用方法の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」をご覧ください。
 
@@ -280,8 +290,10 @@ Azure Storage カラー ルールを使用するだけでなく、独自のカ�
 2. 次に、 **[ClientRequestId]** 列によってグループ化します。 これで、Analysis Grid 内のデータが状態コードとクライアント要求 ID によって整理されたことがわかります。
 3. View Filter ツール ウィンドウがまだ表示されていない場合、これを表示します。 ツール バー リボンで、**[Tool Windows]**、**[View Filter]** の順に選択します。
 4. ログ データにフィルターを適用して 400 番台のエラーのみを表示するには、次のフィルター条件を **[View Filter]** ウィンドウに追加し、**[Apply]** をクリックします。
-   
-        (AzureStorageLog.StatusCode >= 400 && AzureStorageLog.StatusCode <=499) || (HTTP.StatusCode >= 400 && HTTP.StatusCode <= 499)
+
+    ```   
+    (AzureStorageLog.StatusCode >= 400 && AzureStorageLog.StatusCode <=499) || (HTTP.StatusCode >= 400 && HTTP.StatusCode <= 499)
+    ```
 
 以下の画像では、このグループ化およびフィルター適用の結果が表示されています。 たとえば、状態コード 409 のグループ内にある **ClientRequestID** フィールドを展開し、その状態コードを引き起こした操作を表示します。
 
@@ -306,9 +318,11 @@ Storage アセットには定義済みのフィルターが含まれており、
 3. もう一度 **[Library]** メニューを表示し、**[Global Time Filter]** を見つけて選択します。
 4. フィルター内に表示されるタイムスタンプを、確認したい範囲に編集します。 これにより、分析するデータの範囲を絞り込むことができます。
 5. フィルターは以下の例のように表示されます。 **[Apply]** をクリックして Analysis Grid にフィルターを適用します。
-   
-        ((AzureStorageLog.StatusCode == 404 || HTTP.StatusCode == 404)) And 
-        (#Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39)
+
+    ```   
+    ((AzureStorageLog.StatusCode == 404 || HTTP.StatusCode == 404)) And 
+    (#Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39)
+    ```
 
 ![Azure Storage View Layout](./media/storage-e2e-troubleshooting-classic-portal/404-filtered-errors1.png)
 
@@ -325,8 +339,10 @@ Storage アセットには定義済みのフィルターが含まれており、
 2. ツール バー リボンで、**[New Viewer]**、**[Analysis Grid]** の順に選択して新しいタブを開きます。 新しいタブは、ログ ファイル内のすべてのデータを、グループ化やフィルター、カラー ルールを適用せずに表示します。 
 3. ツール バー リボンで、**[View Layout]** を選択し、**[Azure Storage]** セクションの **[All .NET Client Columns]** を選択します。 このビュー レイアウトでは、サーバーおよびネットワーク トレース ログだけでなく、クライアント ログのデータも表示されます。 このデータは、既定では **[MessageNumber]** 列によって並べ替えが行われています。
 4. 次に、クライアント ログでクライアント要求 ID を検索します。 ツール バー リボンで **[Find Messages]** を選択し、**Find** フィールドでクライアント要求 ID についてのカスタム フィルターを指定します。 フィルターには、この構文を使用して独自のクライアント要求 ID を指定します。
-   
-        *ClientRequestId == "398bac41-7725-484b-8a69-2a9e48fc669a"
+
+    ```  
+    *ClientRequestId == "398bac41-7725-484b-8a69-2a9e48fc669a"
+    ```
 
 Message Analyzer は、検索条件がクライアント要求 ID に一致する最初のログ エントリを見つけて選択します。 クライアント ログには、各クライアント要求 ID に対して複数のエントリがあるため、それらをまとめて確認しやすいように、 **ClientRequestId** フィールドでグループ化する必要があります。 以下の画像では、指定したクライアント要求 ID のクライアント ログにあるすべてのメッセージが表示されています。 
 
@@ -366,6 +382,7 @@ Azure Storage におけるエンド ツー エンド シナリオのトラブル
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 * [Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

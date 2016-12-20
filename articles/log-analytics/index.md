@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: eddb633a5f4c67775a219d75b21439140c8ff30e
-ms.openlocfilehash: 759abc65106d80a280a005eb9cc9592f80281ca7
+ms.sourcegitcommit: 98fdd8ee3dc1b90aae349652e471a218ef44a44e
+ms.openlocfilehash: a70f352a076f0d018856c1bdf5c326515405d154
 
 ---
 # <a name="log-analytics-documentation"></a>Log Analytics のドキュメント
@@ -70,8 +70,22 @@ Log Analytics は、Operations Management Suite (OMS) のサービスであり�
 
 ## <a name="automation"></a>Automation
 
-### <a name="powershell"></a>PowerShell 
-[Azure PowerShell リファレンス](/powershell/azureps-cmdlets-docs) 
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/azureps-cmdlets-docs">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Azure PowerShell リファレンス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/log-analytics.pdf">
@@ -83,6 +97,6 @@ Log Analytics のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

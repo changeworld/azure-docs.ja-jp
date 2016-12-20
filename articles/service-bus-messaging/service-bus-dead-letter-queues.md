@@ -1,19 +1,23 @@
 ---
-title: Service Bus の配信不能キュー | Microsoft Docs
-description: Azure Service Bus の配信不能キューの概要
-services: service-bus
+title: "Service Bus の配信不能キュー | Microsoft Docs"
+description: "Azure Service Bus の配信不能キューの概要"
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 68b2aa38-dba7-491a-9c26-0289bc15d397
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2016
-ms.author: clemensv;sethm
+ms.author: clemensv,sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: dfab83bdd505a1a173abc1142da609d31ecbd72a
+
 
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
@@ -83,6 +87,9 @@ Service Bus キューの詳細については、次の記事を参照してく�
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

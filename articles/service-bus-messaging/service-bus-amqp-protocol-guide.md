@@ -1,22 +1,26 @@
 ---
-title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド | Microsoft Docs
-description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
-services: service-bus,event-hubs
+title: "Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド | Microsoft Docs"
+description: "Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド"
+services: service-bus-messaging,event-hubs
 documentationcenter: .net
 author: clemensv
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2016
 ms.author: clemensv;jotaub;hillaryc;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 946384b5986ee56f16f5b3fe3be07d09f9837076
+
 
 ---
-# <a name="amqp-1.0-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
+# <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 Advanced Message Queueing Protocol 1.0 は、2 つの当事者間でメッセージを非同期で、安全かつ確実に転送することを目的に標準化されたフレーミングと転送のためのプロトコルです。 Azure Service Bus メッセージングと Azure Event Hubs の主要なプロトコルとなっています。 どちらのサービスも HTTPS をサポートしています。 同じくサポートされている独自開発の SBMP プロトコルは今後、徐々に AMQP に置き換わっていく予定です。
 
 AMQP 1.0 は、ミドルウェア ベンダー (Microsoft、Red Hat など) と各種メッセージング ミドルウェア ユーザー (金融サービス業界を代表する JP モルガン・チェースなど) とを結び付ける、あまねく業界の協業の成果として生まれました。 AMQP プロトコルと拡張仕様の技術的な標準化は OASIS が担っており、今や国際標準の ISO/IEC 19494 として正式に認定されるに至っています。
@@ -32,7 +36,7 @@ AMQP 1.0 は、ミドルウェア ベンダー (Microsoft、Red Hat など) と�
 
 メッセージの読み取りやセッションの管理など、Azure Service Bus の高度な機能に触れる際は、AMQP の観点で説明しますが、これらの機能も、前提となる抽象化された API の上に階層化された擬似的な実装として解説します。
 
-## <a name="what-is-amqp?"></a>AMQP とは何か
+## <a name="what-is-amqp"></a>AMQP とは何か
 AMQP は、フレーミングと転送のプロトコルです。 フレーミングとは、ネットワーク接続のいずれかの方向に流れるバイナリ データ ストリームに構造を与えることです。 接続された当事者間で交換される個々のデータ ブロック (フレーム) には、この構造によって輪郭が与えられます。 フレームをいつ転送するかや何をもって転送の完了と見なすかについて、通信を行う両方の当事者が共有の認識を持てるようにするのが、転送機能の役割となります。
 
 かつて AMQP の作業部会によって作成されて既に失効している草案版が今も、一部のメッセージ ブローカーで使用されています。しかし作業部会によって最終的に標準化された AMQP 1.0 プロトコルでは、こうした草案版とは異なり、メッセージ ブローカーの存在や、メッセージ ブローカー内のエンティティに対する特定のトポロジについては一切規定されていません。
@@ -44,7 +48,7 @@ AMQP 1.0 プロトコルでは拡張性を意図した設計が採用され、�
 ## <a name="basic-amqp-scenarios"></a>基本的な AMQP のシナリオ
 このセクションでは、Azure Service Bus での AMQP 1.0 の基本的な処理について説明します。接続やセッション、リンクを作成したり、Service Bus の各種エンティティ (キュー、トピック、サブスクリプションなど) との間でメッセージをやり取りしたりする方法を見ていきましょう。
 
-AMQP の動作について最も権威のある情報源は AMQP 1.0 仕様です。しかし仕様の目的は、実装上の指針を厳密に記述することであり、プロトコルについてわかりやすく解説することではありません。 このセクションでは、Service Bus での AMQP 1.0 の使われ方を理解するうえで最低限必要な用語のみを紹介することに重点を置いています。 AMQP について大局的に扱った入門情報が必要な場合や、AMQP 1.0 についての広範な解説が必要である場合は、[こちらのビデオ コース][]をご覧ください。
+AMQP の動作について最も権威のある情報源は AMQP 1.0 仕様です。しかし仕様の目的は、実装上の指針を厳密に記述することであり、プロトコルについてわかりやすく解説することではありません。 このセクションでは、Service Bus での AMQP 1.0 の使われ方を理解するうえで最低限必要な用語のみを紹介することに重点を置いています。 AMQP についてより包括的な入門情報が必要な場合や、AMQP 1.0 についての広範な解説が必要である場合は、[こちらのビデオ コース][このビデオ コース] をご覧ください。
 
 ### <a name="connections-and-sessions"></a>接続とセッション
 ![][1]
@@ -57,7 +61,7 @@ Azure Service Bus では、常時 TLS の使用が必須となります。 Azure
 
 Service Bus では、接続と TLS のセットアップ後、SASL の機構に関して次の 2 つの選択肢が用意されています。
 
-* SASL PLAIN: ユーザー名とパスワードの資格情報をサーバーに渡す目的で一般的に使用されます。 Service Bus はアカウントを持ちませんが、[Shared Access Security の規則](../service-bus/service-bus-shared-access-signature-authentication.md)が指定されます。Shared Access Security の規則によって権限は付与され、また、この規則にキーが関連付けられます。 規則の名前はユーザー名として使用され、キー (base64 エンコード テキスト) はパスワードとして使用されます。 選択した規則に関連付けられている権限によって、対象の接続上で許可される操作が管理されます。
+* SASL PLAIN: ユーザー名とパスワードの資格情報をサーバーに渡す目的で一般的に使用されます。 Service Bus はアカウントを持ちませんが、[Shared Access Security の規則](service-bus-shared-access-signature-authentication.md)が指定されます。Shared Access Security の規則によって権限は付与され、また、この規則にキーが関連付けられます。 規則の名前はユーザー名として使用され、キー (base64 エンコード テキスト) はパスワードとして使用されます。 選択した規則に関連付けられている権限によって、対象の接続上で許可される操作が管理されます。
 * SASL ANONYMOUS: 後述の CBS (Claims Based Security) モデルの使用をクライアントが希望しているとき、SASL の承認をバイパスする場合に使用します。 この方法を選択した場合、クライアント接続を短時間、匿名で確立することができます。その間にクライアントが対話できるのは CBS エンドポイントのみです。また、CBS ハンドシェイクも、その間に完了する必要があります。
 
 トランスポート接続が確立された後、コンテナーはそれぞれ、処理する最大フレーム サイズを宣言し、その後、その接続でアクティビティが存在しなければ、アイドル タイムアウトの経過後、一方的に接続を解除します。
@@ -141,25 +145,25 @@ API レベルでの "receive" 要求は、*flow* パフォーマティブに変�
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |アクションなし |
 | アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link id},<br/>target={entity name}<br/>) |
 
-#### <a name="create-message-sender-(error)"></a>メッセージの送信側の作成 (エラー)
+#### <a name="create-message-sender-error"></a>メッセージの送信側の作成 (エラー)
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |アクションなし |
 | アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numeric handle},<br/>closed=**true**,<br/>error={error info}<br/>) |
 
-#### <a name="close-message-receiver/sender"></a>メッセージ受信側/送信側のクローズ
+#### <a name="close-message-receiversender"></a>メッセージ受信側/送信側のクローズ
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |アクションなし |
 | アクションなし |<-- detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |
 
-#### <a name="send-(success)"></a>送信 (成功)
+#### <a name="send-success"></a>送信 (成功)
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |アクションなし |
 | アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
 
-#### <a name="send-(error)"></a>送信 (エラー)
+#### <a name="send-error"></a>送信 (エラー)
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |アクションなし |
@@ -308,6 +312,7 @@ AMQP の詳細については、次のリンクを参照してください。
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

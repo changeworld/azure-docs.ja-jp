@@ -2,11 +2,11 @@
 title: Deploy templates with Visual Studio in Azure Stack | Microsoft Docs
 description: Learn how to deploy templates with Visual Studio in Azure Stack.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: HeathL17
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 628da2ae-64cc-42e0-b8b7-a6a3724cb974
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: helaw
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5b828b5f04582f3e5fda3cd0162323ec7ccab70f
+
 
 ---
 # <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>Deploy templates in Azure Stack using Visual Studio
@@ -36,6 +40,9 @@ Resource Manager templates deploy and provision all the resources for your appli
 ## <a name="next-steps"></a>Next steps
 [Deploy templates with the command line](azure-stack-deploy-template-command-line.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Azure Media Analytics で動作を検出する | Microsoft Docs
-description: Azure Media Motion Detector メディア プロセッサ (MP) を使用すると、長くて動きの少ないビデオから注目すべき部分を効率よく識別できます。
+title: "Azure Media Analytics で動作を検出する | Microsoft Docs"
+description: "Azure Media Motion Detector メディア プロセッサ (MP) を使用すると、長くて動きの少ないビデオから注目すべき部分を効率よく識別できます。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: d144f813-1a55-442f-a895-5c4cb6d0aeae
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: milanga;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7b92e9290396009e59bfadb2eb3f75cf4952a45d
+
 
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Azure Media Analytics で動作を検出する
@@ -29,7 +33,7 @@ ms.author: milanga;juliako;
 ## <a name="motion-detector-input-files"></a>Motion Detector の入力ファイル
 ビデオ ファイルです。 現在サポートされている形式は MP4、MOV、WMV です。
 
-## <a name="task-configuration-(preset)"></a>タスクの構成 (プリセット)
+## <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Motion Detector**でタスクを作成するときは、構成プリセットを指定する必要があります。 
 
 ### <a name="parameters"></a>パラメーター
@@ -78,7 +82,7 @@ ms.author: milanga;juliako;
 
 Motion Detector API は、固定背景ビデオ (監視ビデオなど) 内に動く対象物があると、インジケーターを提供します。 Motion Detector は、照明と影の変化などの誤アラームが減るようにトレーニングされます。 アルゴリズムの現在の制限事項としては、暗視ビデオ、半透明の対象物、小さな対象物などがあります。
 
-### <a name="<a-id="output_elements"></a>elements-of-the-output-json-file"></a><a id="output_elements"></a>出力 JSON ファイルの要素
+### <a name="a-idoutputelementsaelements-of-the-output-json-file"></a><a id="output_elements"></a>出力 JSON ファイルの要素
 > [!NOTE]
 > 最新リリースでは、出力 JSON 形式が変更されています。これは、一部のお客様にとっては重大な変更である場合があります。
 > 
@@ -365,6 +369,9 @@ JSON 出力の例を次に示します
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cf8f9a06c4d720dade11ea67fc1befe07a56cf85
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5dc9822072417b41856a7d4015c54b8573e56587
 
 
 ---
@@ -81,8 +81,8 @@ ms.openlocfilehash: cf8f9a06c4d720dade11ea67fc1befe07a56cf85
 * [Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 <!-- Anchors. -->
-[モバイル アプリ バックエンドの使用]:#getting-started
-[新しいモバイル アプリ バックエンドの作成]:#create-new-service
+[Getting started with mobile app backends]:#getting-started
+[Create a new mobile app backend]:#create-new-service
 [Next Steps]:#next-steps
 
 <!-- Images. -->
@@ -92,10 +92,10 @@ ms.openlocfilehash: cf8f9a06c4d720dade11ea67fc1befe07a56cf85
 [10]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[Azure Portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

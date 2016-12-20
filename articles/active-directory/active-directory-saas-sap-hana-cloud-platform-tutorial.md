@@ -1,11 +1,11 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SAP HANA Cloud Platform の統合 | Microsoft Docs'
-description: Azure Active Directory で SAP HANA Cloud Platform を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。
+title: "チュートリアル: Azure Active Directory と SAP HANA Cloud Platform の統合 | Microsoft Docs"
+description: "Azure Active Directory で SAP HANA Cloud Platform を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。"
 services: active-directory
 author: jeevansd
 documentationcenter: na
 manager: femila
-
+ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,9 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: dae115c597e3a86c954eafcdd322954774fd55a5
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-sap-hana-cloud-platform"></a>チュートリアル: Azure Active Directory と SAP HANA Cloud Platform の統合
+# <a name="tutorial-azure-active-directory-integration-with-sap-hana-cloud-platform"></a>チュートリアル: Azure Active Directory と SAP HANA Cloud Platform の統合
 このチュートリアルでは、Azure と SAP HANA Cloud Platform の統合について説明します。  
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
@@ -41,7 +45,7 @@ ms.author: jeedes
 ## <a name="enabling-the-application-integration-for-sap-hana-cloud-platform"></a>SAP HANA Cloud Platform でアプリケーション統合を有効にする
 このセクションでは、SAP HANA Cloud Platform のアプリケーション統合を有効にする方法について説明します。
 
-### <a name="to-enable-the-application-integration-for-sap-hana-cloud-platform,-perform-the-following-steps:"></a>SAP HANA Cloud Platform のアプリケーション統合を有効にするには、次の手順に従います。
+### <a name="to-enable-the-application-integration-for-sap-hana-cloud-platform-perform-the-following-steps"></a>SAP HANA Cloud Platform のアプリケーション統合を有効にするには、次の手順に従います。
 1. Azure 管理ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
    ![[Active Directory]](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC700993.png "Active Directory")
@@ -68,7 +72,7 @@ ms.author: jeedes
 この手順の途中で、base-64 でエンコードされた証明書を SAP HANA Cloud Platform テナントにアップロードする必要があります。  
 この手順に慣れていない場合は、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)
 
-### <a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>シングル サインオンを構成するには、次の手順を実行します。
+### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **SAP HANA Cloud Platform** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
    ![Configure single sign-on](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC778552.png "Configure single sign-on")
@@ -164,7 +168,7 @@ ms.author: jeedes
 ## <a name="assigning-a-role-to-a-user"></a>ユーザーにロールを割り当てる
 Azure AD ユーザーが SAP HANA Cloud Platform にログインできるようにするには、SAP HANA Cloud Platform のロールをそれらのユーザーに割り当てる必要があります。
 
-### <a name="to-assign-a-role-to-a-user,-perform-the-following-steps:"></a>ロールをユーザーに割り当てるには、次の手順に従います。
+### <a name="to-assign-a-role-to-a-user-perform-the-following-steps"></a>ロールをユーザーに割り当てるには、次の手順に従います。
 1. **SAP HANA Cloud Platform** コックピットにログインします。
 2. 次の手順に従います。
    
@@ -179,7 +183,7 @@ Azure AD ユーザーが SAP HANA Cloud Platform にログインできるよう�
 ## <a name="assigning-users"></a>ユーザーの割り当て
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-sap-hana-cloud-platform,-perform-the-following-steps:"></a>ユーザーを SAP HANA Cloud Platform に割り当てるには、次の手順に従います。
+### <a name="to-assign-users-to-sap-hana-cloud-platform-perform-the-following-steps"></a>ユーザーを SAP HANA Cloud Platform に割り当てるには、次の手順に従います。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **SAP HANA Cloud Platform** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
@@ -190,6 +194,9 @@ Azure AD ユーザーが SAP HANA Cloud Platform にログインできるよう�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

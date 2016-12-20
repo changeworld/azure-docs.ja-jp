@@ -1,12 +1,12 @@
 ---
-title: Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成 | Microsoft Docs
-description: Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。 このトピックでは、Media Indexer 2 プレビューの使用方法について説明します。
+title: "Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成 | Microsoft Docs"
+description: "Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。 このトピックでは、Media Indexer 2 プレビューの使用方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 85d25525-a498-44eb-ae3a-2ca5ceb8e53d
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: adsolank;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 17571acfab870974186af9849d030e9702f3be76
+
 
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成
@@ -50,7 +54,7 @@ ms.author: adsolank;juliako;
 
 これらの形式のクローズド キャプション (CC) ファイルを使用して、聴覚障がいを持つユーザーがオーディオ ファイルとビデオ ファイルにアクセスできるようにします。
 
-## <a name="task-configuration-(preset)"></a>タスクの構成 (プリセット)
+## <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Indexer 2 プレビュー**でインデックス作成タスクを作成するときは、構成プリセットを指定する必要があります。
 
 次の JSON では、使用可能なパラメーターを設定します。
@@ -275,6 +279,9 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

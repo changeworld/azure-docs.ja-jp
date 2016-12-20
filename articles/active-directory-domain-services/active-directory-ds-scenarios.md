@@ -1,12 +1,12 @@
 ---
-title: 'Azure Active Directory Domain Services: デプロイ シナリオ | Microsoft Docs'
-description: Azure AD ドメイン サービスのデプロイ シナリオ
+title: "Azure Active Directory Domain Services: デプロイ シナリオ | Microsoft Docs"
+description: "Azure AD ドメイン サービスのデプロイ シナリオ"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: c5216ec9-4c4f-4b7e-830b-9d70cf176b20
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b76a5c7dfd640e0a398845b6c8f6b0b35574b4ac
+
 
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>デプロイ シナリオおよびユース ケース
 このセクションでは、Azure Active Directory (AD) ドメイン サービスから恩恵を受けられるいくつかのシナリオとユース ケースについて説明します。
 
-## <a name="secure,-easy-administration-of-azure-virtual-machines"></a>Azure 仮想マシンの安全で簡単な管理
+## <a name="secure-easy-administration-of-azure-virtual-machines"></a>Azure 仮想マシンの安全で簡単な管理
 Azure Active Directory Domain Services を使用して、Azure 仮想マシンを効率的に管理できます。 Azure 仮想マシンは管理対象ドメインに参加できるため、企業の AD の資格情報を使用してログインできるようになります。 この方法により、各 Azure 仮想マシンのローカル管理者アカウントの管理などの、資格情報の管理に関する面倒を回避できます。
 
 管理対象ドメインに参加しているサーバー仮想マシンは、グループ ポリシーを使用してセキュリティ保護することもできます。 Azure 仮想マシンに必要なセキュリティ基準を適用し、企業のセキュリティ ガイドラインに従ってロックダウンできます。 たとえば、グループ ポリシー管理機能を使用して、これらの仮想マシンで起動できるアプリケーションの種類を制限できます。
@@ -79,6 +83,9 @@ Azure RemoteApp は、ドメイン参加コレクションを作成する Contos
 
 このデプロイ シナリオの詳細については、「 [Lift-and-shift your workloads with Azure RemoteApp and Azure AD Domain Services (Azure RemoteApp と Azure AD ドメイン サービスを使用したワークロードのリフト アンド シフト)](http://blogs.msdn.com/b/rds/archive/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services.aspx)」というタイトルのリモート デスクトップ サービスのブログを参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

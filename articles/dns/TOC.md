@@ -13,12 +13,13 @@
 ### [CLI](dns-getstarted-create-recordset-cli.md)
 
 ## [Azure DNS にドメインを委任する](dns-domain-delegation.md)
+## [Web アプリのカスタム DNS レコードの作成](dns-web-sites-custom-domain.md)
 
 # 方法
 
 ## DNS ゾーンの管理
 ### [PowerShell](dns-operations-dnszones.md)
-### [CLI](dns-operations-dnszones.md)
+### [CLI](dns-operations-dnszones-cli.md)
 
 ## [DNS レコードの管理](dns-operations-recordsets-portal.md)
 ### [PowerShell](dns-operations-recordsets.md)
@@ -29,13 +30,19 @@
 ### [PowerShell](dns-reverse-dns-record-operations-classic-ps.md)
 
 ## [DNS ゾーン ファイルのインポートとエクスポート](dns-import-export.md)
-## [Azure DNS を他の Azure サービスで使用する](dns-for-azure-services.md)
+## [他の Azure サービスとの統合](dns-for-azure-services.md)
 ## [DNS ゾーンとレコードを保護する](dns-protect-zones-recordsets.md)
 ## [.NET SDK で DNS 操作を自動化する](dns-sdk.md)
 
 # リファレンス
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
-## [REST API](/rest/api/dns/)
+## [PowerShell](/powershell/resourcemanager/azurerm.dns/v2.3.0/azurerm.dns)
+## [Azure CLI 2.0 (プレビュー)](/cli/azure/network/dns)
+## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
+## [Java](/java/api/com.microsoft.azure.management.dns)
+## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/)
+## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0)
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html)
+## [REST ()](/rest/api/dns/)
 
 # 関連項目
 ## [Application Gateway](/azure/application-gateway/)
@@ -46,11 +53,12 @@
 ## [Web アプリ](/azure/app-service-web/)
 
 # リソース
-## [ネットワークのブログ](http://azure.microsoft.com/blog/topics/networking)
-## [ネットワークのフォーラム](https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=dns)
 ## [料金](https://azure.microsoft.com/pricing/details/dns/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
+## [ネットワークのブログ](http://azure.microsoft.com/blog/topics/networking)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

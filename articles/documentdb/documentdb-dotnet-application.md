@@ -13,18 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 08/25/2016
+ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
+ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
+ms.openlocfilehash: 3b756b11ce762cbbc56650ea9d49715d899bfbdb
 
 
 ---
 # <a name="a-nametoc395809351aaspnet-mvc-tutorial-web-application-development-with-documentdb"></a><a name="_Toc395809351"></a>ASP.NET MVC のチュートリアル: DocumentDB を使用した Web アプリケーションの開発
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
-> * [Node.JS](documentdb-nodejs-application.md)
+> * [Node.js](documentdb-nodejs-application.md)
 > * [Java](documentdb-java-application.md)
 > * [Python](documentdb-python-application.md) 
 > 
@@ -44,14 +44,18 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
 ## <a name="a-nametoc395637760aprerequisites-for-this-database-tutorial"></a><a name="_Toc395637760"></a>このデータベース チュートリアルの前提条件
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-* アクティブな Azure アカウント。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* アクティブな Azure アカウント。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
+
+    または
+
+    [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) のローカル インストール。
 * [Visual Studio 2015](http://www.visualstudio.com/) または Visual Studio 2013 Update 4 以降。 Visual Studio 2013 を使用している場合は、 [Microsoft.Net.Compilers NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Net.Compilers/) をインストールして、C# 6.0 のサポートを追加する必要があります。 
-* Azure SDK for .NET Version 2.5.1 以降 ([Microsoft Web Platform Installer][Microsoft Web Platform Installer] にて提供)。
+* Azure SDK for .NET Version 2.5.1 以降 ([Microsoft Web プラットフォーム インストーラー][Microsoft Web プラットフォーム インストーラー] にて提供)。
 
 この記事に掲載されているすべてのスクリーン ショットは、Visual Studio 2013 Update 4 および Azure SDK for .NET Version 2.5.1 で撮影しました。 ご利用のシステムにインストールされているバージョンと異なる場合、画面やオプション設定が一部異なる可能性もありますが、上記の前提条件を満たしていれば、アプリケーションの動作に支障はありません。
 
 ## <a name="a-nametoc395637761astep-1-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>手順 1: DocumentDB データベース アカウントを作成する
-最初に、DocumentDB アカウントを作成します。 既にアカウントを持っている場合は、この手順を省略して「 [新しい ASP.NET MVC アプリケーションを作成する](#_Toc395637762)」に進んでください。
+最初に、DocumentDB アカウントを作成します。 アカウントが既にある場合や、このチュートリアルに DocumentDB Emulator を使用する場合は、「[新しい ASP.NET MVC アプリケーションを作成する](#_Toc395637762)」に進むことができます。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -78,6 +82,9 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
 5. テンプレート ウィンドウで、 **[MVC]**を選択します。
 6. アプリケーションを Azure でホストする場合は、右下にある **[クラウドでホストする]** を選択してください。 これで、アプリケーションをクラウドでホストすること、および Azure Web サイトでホストされるアプリケーションを実行することを選択しました。 このオプションを選択すると、Azure Websites があらかじめ自動的にプロビジョニングされ、最終的に完成したアプリケーションをデプロイする作業が段違いにやりやすくなります。 これを他の場所でホストする場合、または Azure を事前に構成しない場合は、 **[クラウドでホストする]**を選択解除します。
 7. **[OK]** をクリックすると、Visual Studio のスキャフォールディング機能によって空の ASP.NET MVC テンプレートが作成されます。 
+
+    "要求の処理中にエラーが発生しました" というエラーが発生した場合、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
+
 8. これをクラウドでホストすることを選択した場合、少なくとも 1 つの画面が表示され、Azure アカウントにログインして新しい Web サイトの値を指定するよう求められます。 追加の値をすべて指定して続行します。 
    
       ここでは Azure SQL Database サーバーを使用しないため、ここで [データベース サーバー] を選択していません。後で Azure DocumentDB アカウントを Azure ポータルで作成する予定です。
@@ -536,6 +543,25 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 数秒すると、Web アプリケーションの発行が完了し、ブラウザーが起動されます。作成したアプリケーションが Azure で実行されているようすが確認できます。
 
+## <a name="a-nametroubleshootingatroubleshooting"></a><a name="Troubleshooting"></a>トラブルシューティング
+
+Web アプリをデプロイするときに "要求の処理中にエラーが発生しました" というエラーが発生した場合、次の操作を行います。 
+
+1. エラー メッセージを取り消し、**[Microsoft Azure Web Apps]** を再度選択します。 
+2. ログインし、**[新規]** をクリックして、新しい Web アプリを作成します。 
+3. **[Microsoft Azure で Web アプリを作成する]** 画面で、次を実行します。 
+    
+    - [Web App name (Web アプリの名前)]: "todo-net-app"
+    - [App Service プラン]: "todo-net-app" という名前で新しく作成します
+    - [リソース グループ]: "todo-net-app" という名前で新しく作成します
+    - [リージョン]: アプリ ユーザーに最も近いリージョンを選択します
+    - [データベース サーバー]: [データベースなし] をクリックし、**[作成]** をクリックします。 
+
+4. "todo-net-app * の画面" で、**[接続の検証]** をクリックします。接続を検証したら、**[発行]** をクリックします。 
+    
+    アプリがブラウザーに表示されます。
+
+
 ## <a name="a-nametoc395637775anext-steps"></a><a name="_Toc395637775"></a>次のステップ
 ご利用ありがとうございます。 ここでは初めての方を対象に、Azure DocumentDB を使用した ASP.NET MVC Web アプリケーションを作成し、Azure Websites に発行する方法を説明しました。 このチュートリアルに含まれていない詳細や削除の機能など、完全なアプリケーションのソース コードは、[GitHub][GitHub] からダウンロードまたは複製できます。 これらの機能を自分のアプリケーションに追加する場合は、該当するコードを入手してアプリケーションに追加してください。
 
@@ -550,6 +576,6 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 11/11/2016
 ms.author: banders;magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 36c8f482a55135623865814bd384ac98ae214fa3
+ms.sourcegitcommit: adbf803f2c3b34948bcc37c7fcceb1c3af2e6dc7
+ms.openlocfilehash: 741e83f3ce790378d5f699bb27775457f8a63256
 
 
 ---

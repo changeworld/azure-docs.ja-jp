@@ -1,12 +1,12 @@
 ---
-title: Azure Media Services REST API を使用したフィルターの作成 | Microsoft Docs
-description: このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。
+title: "Azure Media Services REST API を使用したフィルターの作成 | Microsoft Docs"
+description: "このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: f7d23daf-7cd2-49c7-a195-ab902912ab3c
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako;cenkdin
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 941f9e45b7b61c2ae7ce0fcd5b3a3d1891ff8315
+
 
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Azure Media Services REST API を使用したフィルターの作成
@@ -153,7 +157,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     . . . 
 
 ## <a name="list-filters"></a>フィルターの一覧
-### <a name="get-all-global-**filter**s-in-the-ams-account"></a>すべてのグローバル **フィルター**を AMS アカウントで取得する
+### <a name="get-all-global-filters-in-the-ams-account"></a>すべてのグローバル **フィルター**を AMS アカウントで取得する
 フィルターの一覧を表示するには、次の HTTP 要求を使用します。 
 
 #### <a name="http-request"></a>HTTP 要求
@@ -166,7 +170,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     x-ms-version: 2.11 
     Host: media.windows.net 
 
-### <a name="get-**assetfilter**s-associated-with-an-asset"></a>資産に関連付けられている **AssetFilter**を取得する
+### <a name="get-assetfilters-associated-with-an-asset"></a>資産に関連付けられている **AssetFilter**を取得する
 #### <a name="http-request"></a>HTTP 要求
     GET https://media.windows.net/API/Assets('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592')/AssetFilters HTTP/1.1 
     DataServiceVersion: 3.0 
@@ -178,7 +182,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
-### <a name="get-an-**assetfilter**-based-on-its-id"></a>ID に基づいた **AssetFilter** を取得する
+### <a name="get-an-assetfilter-based-on-its-id"></a>ID に基づいた **AssetFilter** を取得する
 #### <a name="http-request"></a>HTTP 要求
     GET https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__TestFilter') HTTP/1.1 
     DataServiceVersion: 3.0 
@@ -339,6 +343,9 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 ## <a name="see-also"></a>関連項目
 [動的マニフェストの概要](media-services-dynamic-manifest-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

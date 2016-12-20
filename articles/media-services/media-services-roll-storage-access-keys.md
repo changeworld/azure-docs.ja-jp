@@ -1,12 +1,12 @@
 ---
-title: ストレージ アクセス キーをローリングした後に Media Services を更新する | Microsoft Docs
-description: この記事は、ストレージ アクセス キーをローリングした後に Media Services を更新する際のガイダンスについて説明します。
+title: "ストレージ アクセス キーをローリングした後に Media Services を更新する | Microsoft Docs"
+description: "この記事は、ストレージ アクセス キーをローリングした後に Media Services を更新する際のガイダンスについて説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: a892ebb0-0ea0-4fc8-b715-60347cc5c95b
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: milangada;cenkdin;juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
+ms.openlocfilehash: a979519dc617f40e6f090a412d17aa7778cbcf69
+
 
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>ストレージ アクセス キーをローリングした後に Media Services を更新する
@@ -25,15 +29,15 @@ Media Services は、指定されたストレージ キーに依存します。 
 
 > [!NOTE]
 > ストレージ アカウントが複数ある場合、この手順をストレージ アカウントごとに実行する必要があります。
-> 
+>
 > このトピックで説明する手順を実稼働アカウントで実行する前に、実稼働前のアカウントでテストするようにしてください。
-> 
-> 
+>
+>
 
-## <a name="step-1:-regenerate-secondary-storage-access-key"></a>手順 1: セカンダリ ストレージ アクセス キーを再生成する
-セカンダリ ストレージ キーの再生成から開始します。 既定では、セカンダリ キーは Media Services で使用されません。  ストレージ キーをローリングする方法の詳細については、「 [方法: ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+## <a name="step-1-regenerate-secondary-storage-access-key"></a>手順 1: セカンダリ ストレージ アクセス キーを再生成する
+セカンダリ ストレージ キーの再生成から開始します。 既定では、セカンダリ キーは Media Services で使用されません。  ストレージ キーをローリングする方法の詳細については、「 [方法: ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
 
-## <a name="<a-id="step2"></a>step-2:-update-media-services-to-use-the-new-secondary-storage-key"></a><a id="step2"></a>手順 2: Media Services を更新して新しいセカンダリ ストレージ キーを使用する
+## <a name="a-idstep2astep-2-update-media-services-to-use-the-new-secondary-storage-key"></a><a id="step2"></a>手順 2: Media Services を更新して新しいセカンダリ ストレージ キーを使用する
 Media Services を更新してセカンダリ ストレージ アクセス キーを使用します。 再生成されたストレージ キーを Media Services と同期するには、次の 2 つの方法のどちらかを使用できます。
 
 * Azure Portal を使用します。 名前とキーの値を検索するには、Azure Portal に移動してアカウントを選択します。 [設定] ウィンドウが右側に表示されます。 [設定] ウィンドウで、[キー] を選択します。 Media Services で同期するストレージ キーに応じて、同期するキーをプライマリ キーとセカンダリ キーのどちらかに指定します。 この例では、セカンダリ キーを使用します。
@@ -79,14 +83,14 @@ Media Services を更新してセカンダリ ストレージ アクセス キ�
 
 > [!NOTE]
 > 保留中のジョブに影響しないよう、30 分待ってから、Media Services で操作を行います (新しいロケーターの作成など)。
-> 
-> 
+>
+>
 
-## <a name="step-3:-update-locators"></a>手順 3: ロケーターを更新する
+## <a name="step-3-update-locators"></a>手順 3: ロケーターを更新する
 > [!NOTE]
 > ストレージ アクセス キーをローリングする際は、ストリーミング サービスが中断されないように既存のロケーターを更新する必要があります。
-> 
-> 
+>
+>
 
 新しいストレージ キーを AMS と同期した後、少なくとも 30 分間待ちます。 その後、OnDemand ロケーターを再作成して、指定したプライマリ ストレージ キーとの依存関係を確立し、既存の URL を保持できます。
 
@@ -94,8 +98,8 @@ SAS ロケーターを更新 (または再作成) するときに、URL は常�
 
 > [!NOTE]
 > OnDemand ロケーターの既存の URL を保持するには、既存のロケーターを削除し、同じ ID を持つ新しいロケーターを作成する必要があります。
-> 
-> 
+>
+>
 
 以下の .NET の例は、同じ ID のロケーターを再作成する方法を示しています。
 
@@ -122,18 +126,18 @@ if (locator.ExpirationDateTime <= DateTime.UtcNow) { throw new Exception(String.
     }
 
 
-## <a name="step-5:-regenerate-primary-storage-access-key"></a>手順 5: プライマリ ストレージ アクセス キーを再生成する
-プライマリ ストレージ アクセス キーを再生成します。 ストレージ キーをローリングする方法の詳細については、「 [方法: ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+## <a name="step-5-regenerate-primary-storage-access-key"></a>手順 5: プライマリ ストレージ アクセス キーを再生成する
+プライマリ ストレージ アクセス キーを再生成します。 ストレージ キーをローリングする方法の詳細については、「 [方法: ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
 
-## <a name="step-6:-update-media-services-to-use-the-new-primary-storage-key"></a>手順 6: Media Services を更新して新しいプライマリ ストレージ キーを使用する
+## <a name="step-6-update-media-services-to-use-the-new-primary-storage-key"></a>手順 6: Media Services を更新して新しいプライマリ ストレージ キーを使用する
 [手順 2](media-services-roll-storage-access-keys.md#step2) と同じ手順を使用しますが、ここで Media Services アカウントと同期するのは新しいプライマリ ストレージ アクセス キーです。
 
 > [!NOTE]
 > 保留中のジョブに影響しないよう、30 分待ってから、Media Services で操作を行います (新しいロケーターの作成など)。
-> 
-> 
+>
+>
 
-## <a name="step-7:-update-locators"></a>手順 7: ロケーターを更新する
+## <a name="step-7-update-locators"></a>手順 7: ロケーターを更新する
 30 分が経過したら、OnDemand ロケーターを再作成して、新しいプライマリ ストレージ キーとの依存関係を確立し、既存の URL を保持できます。
 
 [手順 3.](media-services-roll-storage-access-keys.md#step-3-update-locators)と同じ操作を行います。
@@ -147,6 +151,8 @@ if (locator.ExpirationDateTime <= DateTime.UtcNow) { throw new Exception(String.
 ### <a name="acknowledgments"></a>謝辞
 この文書の作成に協力してくれた Cenk Dingiloglu、Milan Gada、 Seva Titov に感謝します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

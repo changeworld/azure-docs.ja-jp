@@ -1,26 +1,30 @@
 ---
-title: Reliable Actors のアクター型のシリアル化に関する留意事項 | Microsoft Docs
-description: Service Fabric Reliable Actors の状態とインターフェイスを定義する場合に使用できるシリアル化可能なクラスを定義するための基本的な要件について説明します。
+title: "Reliable Actors のアクター型のシリアル化に関する留意事項 | Microsoft Docs"
+description: "Service Fabric Reliable Actors の状態とインターフェイスを定義する場合に使用できるシリアル化可能なクラスを定義するための基本的な要件について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 6e50e4dc-969a-4a1c-b36c-b292d964c7e3
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/06/2015
+ms.date: 10/19/2016
 ms.author: vturecek
+translationtype: Human Translation
+ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
+ms.openlocfilehash: f08fc1df10506dead5d049fb2c6cdc29c8f89d90
+
 
 ---
-# Service Fabric Reliable Actors 型のシリアル化に関する留意事項
-すべてのメソッドの引数、アクター インターフェイスの各メソッドによって返されるタスクの結果の型、アクターの状態マネージャーに保存されるオブジェクトは、[シリアル化可能なデータ コントラクト](https://msdn.microsoft.com/library/ms731923.aspx)である必要があります。これは、[アクター イベント インターフェイス](service-fabric-reliable-actors-events.md#actor-events)で定義されているメソッドの引数にも当てはまります (アクター イベント インターフェイス メソッドは常に void を返します)。
+# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Service Fabric Reliable Actors 型のシリアル化に関する留意事項
+すべてのメソッドの引数、アクター インターフェイスの各メソッドによって返されるタスクの結果の型、アクターの状態マネージャーに保存されるオブジェクトは、[シリアル化可能なデータ コントラクト](https://msdn.microsoft.com/library/ms731923.aspx)である必要があります。 これは、[アクター イベント インターフェイス](service-fabric-reliable-actors-events.md)で定義されているメソッドの引数にも当てはまります。 (アクター イベント インターフェイス メソッドは常に void を返します)。
 
-## カスタム データ型
-次の例では、アクター インターフェイスで `VoicemailBox` というカスタム データ型を返すメソッドを定義しています。
+## <a name="custom-data-types"></a>カスタム データ型
+次の例では、アクター インターフェイスで `VoicemailBox`というカスタム データ型を返すメソッドを定義しています。
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -35,6 +39,11 @@ public interface IVoiceMailBoxActor : IActor
 [StatePersistence(StatePersistence.Persisted)]
 public class VoiceMailBoxActor : Actor, IVoicemailBoxActor
 {
+    public VoiceMailBoxActor(ActorService actorService, ActorId actorId)
+        : base(actorService, actorId)
+    {
+    }
+
     public Task<VoicemailBox> GetMailboxAsync()
     {
         return this.StateManager.GetStateAsync<VoicemailBox>("Mailbox");
@@ -43,12 +52,12 @@ public class VoiceMailBoxActor : Actor, IVoicemailBoxActor
 
 ```
 
-この例では、`VoicemailBox` オブジェクトは次の状況でシリアル化されます。
+この例では、 `VoicemailBox` オブジェクトは次の状況でシリアル化されます。
 
 * オブジェクトがアクター インスタンスと呼び出し元の間で送信されるとき。
 * オブジェクトが状態マネージャーに保存されるとき (状態マネージャーでオブジェクトがディスクに保存され、他のノードにレプリケートされます)。
 
-Reliable Actors フレームワークでは、DataContract シリアル化を使用します。そのため、カスタム データ オブジェクトとそのメンバーに、それぞれ **DataContract** 属性と **DataMember** 属性を注釈として付ける必要があります。
+Reliable Actors フレームワークでは、DataContract シリアル化を使用します。 そのため、カスタム データ オブジェクトとそのメンバーに、それぞれ **DataContract** 属性と **DataMember** 属性を注釈として付ける必要があります。
 
 ```csharp
 [DataContract]
@@ -82,7 +91,7 @@ public class VoicemailBox
 }
 ```
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
 * [アクターのタイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)
 * [アクター イベント](service-fabric-reliable-actors-events.md)
@@ -90,4 +99,8 @@ public class VoicemailBox
 * [アクターのポリモーフィズムとオブジェクト指向設計パターン](service-fabric-reliable-actors-polymorphism.md)
 * [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

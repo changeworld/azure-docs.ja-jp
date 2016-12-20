@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2016
+ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7913033d0812d6f6c2ff9a413862cb63c1e5a59e
+ms.sourcegitcommit: 358a6df35276aca357e0ee2182529402898f71fe
+ms.openlocfilehash: 19a132284d0061134139a687abbb9235fdf308f4
 
 
 ---
@@ -49,15 +49,15 @@ ms.openlocfilehash: 7913033d0812d6f6c2ff9a413862cb63c1e5a59e
 これで IoT ハブが作成され、このチュートリアルを完了するために必要な IoT Hub ホスト名、IoT Hub 接続文字列、IoT Hub 主キー、Event Hub 対応の名前、Event Hub 対応エンドポイントが入手できました。
 
 ## <a name="create-a-device-identity"></a>デバイス ID の作成
-このセクションでは、IoT ハブの ID レジストリに新しいデバイス ID を作成する Java コンソール アプリケーションを作成します。 IoT Hub に接続するデバイスは、あらかじめデバイス ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の**デバイス ID レジストリ**に関するセクションを参照してください。 このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
+このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成する Java コンソール アプリケーションを作成します。 IoT Hub に接続するデバイスは、あらかじめデバイス ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の**デバイス ID レジストリ**に関するセクションを参照してください。 このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
 
-1. 「iot-java-get-started」という名前の空のフォルダーを新規作成します。 コマンド プロンプトで次のコマンドを実行し、iot-java-get-started フォルダーに **create-device-identity** という名前の Maven プロジェクトを新しく作成します。 これは、1 つの長いコマンドであることに注意してください。
+1. "iot-java-get-started" という名前の空のフォルダーを作成します。 コマンド プロンプトで次のコマンドを実行し、iot-java-get-started フォルダーに **create-device-identity** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=create-device-identity -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
-2. コマンド プロンプトで、新しい「create-device-identity」フォルダーに移動します。
-3. テキスト エディターを使用し、create-device-identity フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 それにより、アプリケーションで iothub-service-sdk パッケージを利用できるようになります。
+2. コマンド プロンプトで、create-device-identity フォルダーに移動します。
+3. テキスト エディターを使用し、create-device-identity フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリケーションで iothub-service-sdk パッケージを利用できるようになります。
    
     ```
     <dependency>
@@ -119,14 +119,14 @@ ms.openlocfilehash: 7913033d0812d6f6c2ff9a413862cb63c1e5a59e
     ```
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
-13. **デバイス ID** と**デバイス キー**をメモします。 後でデバイスとして IoT Hub に接続するアプリケーションを作成するときに必要になります。
+13. **デバイス ID** と**デバイス キー**をメモします。 これらの値は、後でデバイスとして IoT Hub に接続するアプリケーションを作成するときに必要になります。
 
 > [!NOTE]
 > IoT Hub の ID レジストリには、ハブに対するアクセスの安全性を確保するためのデバイス ID だけが格納されます。 セキュリティ資格情報として使用するキーとデバイス ID、そして個々のデバイスについてアクセスを無効にすることのできる有効/無効フラグが格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]を参照してください。
 > 
 > 
 
-## <a name="receive-devicetocloud-messages"></a>デバイスからクラウドへのメッセージの受信
+## <a name="receive-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの受信
 このセクションでは、デバイスからクラウドへのメッセージを IoT Hub から読み取る Java コンソール アプリケーションを作成します。 IoT ハブは、デバイスからクラウドへのメッセージを読み取るための、[イベント ハブ][lnk-event-hubs-overview]と互換性のあるエンドポイントを公開します。 わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。 [デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを大規模に処理する方法を紹介しています。 チュートリアル「[Event Hubs の使用][lnk-eventhubs-tutorial]」では、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub の Event Hub 対応エンドポイントに適用されます。
 
 > [!NOTE]
@@ -134,13 +134,13 @@ ms.openlocfilehash: 7913033d0812d6f6c2ff9a413862cb63c1e5a59e
 > 
 > 
 
-1. コマンド プロンプトで次のコマンドを実行し、「 *デバイス ID の作成* 」セクションで作成した iot-java-get-started フォルダーに **read-d2c-messages** という名前の Maven プロジェクトを新しく作成します。 これは、1 つの長いコマンドであることに注意してください。
+1. コマンド プロンプトで次のコマンドを実行し、「*デバイス ID の作成*」セクションで作成した iot-java-get-started フォルダーに **read-d2c-messages** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-d2c-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
-2. コマンド プロンプトで、新しい「read-d2c-messages」フォルダーに移動します。
-3. テキスト エディターを使用して、read-d2c-messages フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 これで、アプリケーションの eventhubs-client パッケージを利用して、イベント ハブと互換性のあるエンドポイントから読み込めるようにすることができます。
+2. コマンド プロンプトで、read-d2c-messages フォルダーに移動します。
+3. テキスト エディターを使用して、read-d2c-messages フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリケーションの eventhubs-client パッケージを利用して、イベント ハブと互換性のあるエンドポイントから読み込めるようになります。
    
     ```
     <dependency> 
@@ -230,7 +230,7 @@ ms.openlocfilehash: 7913033d0812d6f6c2ff9a413862cb63c1e5a59e
     ```
    
    > [!NOTE]
-   > 受信側が実行開始後、IoT Hub に送信されたメッセージのみを読み込むように、このメソッドは受信側の構築時にフィルターを称します。 現在のメッセージのセットを表示できるので、テスト環境で便利です。 運用環境の場合、すべてのメッセージがコードで処理されるようにする必要があります。詳細については、[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
+   > 受信側が実行開始後、IoT Hub に送信されたメッセージのみを読み込むように、このメソッドは受信側の構築時にフィルターを称します。 この手法は、現在のメッセージのセットを表示できるので、テスト環境で便利です。 運用環境の場合、すべてのメッセージがコードで処理されるようにする必要があります。詳細については、[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
    > 
    > 
 9. **main** メソッドのシグネチャを変更し、下の例外を追加します。
@@ -271,13 +271,13 @@ ms.openlocfilehash: 7913033d0812d6f6c2ff9a413862cb63c1e5a59e
 ## <a name="create-a-simulated-device-app"></a>シミュレーション対象デバイス アプリの作成
 このセクションでは、デバイスからクラウドへのメッセージを IoT ハブに送信するデバイスをシミュレートする Java コンソール アプリを作成します。
 
-1. コマンド プロンプトで次のコマンドを実行し、「 *デバイス ID の作成* 」セクションで作成した iot-java-get-started フォルダーに **simulated-device** という名前の Maven プロジェクトを新しく作成します。 これは、1 つの長いコマンドであることに注意してください。
+1. コマンド プロンプトで次のコマンドを実行し、「*デバイス ID の作成*」セクションで作成した iot-java-get-started フォルダーに **simulated-device** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
-2. コマンド プロンプトで、新しい「simulated-device」フォルダーに移動します。
-3. テキスト エディターを使用して、simulated-device フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 これにより、アプリケーションの iothub-java-client パッケージを使用し、IoT Hub と通信し、Java オブジェクトを JSON にシリアル化できます。
+2. コマンド プロンプトで、simulated-device フォルダーに移動します。
+3. テキスト エディターを使用して、simulated-device フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリケーションの iothub-java-client パッケージを使用して IoT Hub と通信し、Java オブジェクトを JSON にシリアル化できるようになります。
    
     ```
     <dependency>
@@ -309,7 +309,7 @@ ms.openlocfilehash: 7913033d0812d6f6c2ff9a413862cb63c1e5a59e
     import java.util.concurrent.Executors;
     import java.util.concurrent.ExecutorService;
     ```
-7. 次のクラスレベルの変数を **App** クラスに追加し、**{youriothubname}** を IoT ハブ名に、**{yourdevicekey}** を「*デバイス ID の作成*」セクションで生成したデバイス キーの値に置き換えます。
+7. 次のクラスレベル変数を **App** クラスに追加します。 **{youriothubname}** を IoT Hub 名に、**{yourdevicekey}** を「*デバイス ID の作成*」セクションで生成したデバイス キーの値に置き換えます。
    
     ```
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myFirstJavaDevice;SharedAccessKey={yourdevicekey}";
@@ -474,6 +474,6 @@ ms.openlocfilehash: 7913033d0812d6f6c2ff9a413862cb63c1e5a59e
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

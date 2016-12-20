@@ -1,12 +1,12 @@
 ---
-title: Media Services REST API を使用して Media Services アカウントに接続する | Microsoft Docs
-description: このトピックでは、Media Services REST API を使用して Media Services に接続する方法について説明します。
+title: "Media Services REST API を使用して Media Services アカウントに接続する | Microsoft Docs"
+description: "このトピックでは、Media Services REST API を使用して Media Services に接続する方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 79dc64f1-15d8-4a81-b9d9-3d3c44d2e1e8
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9ec07aacbde3f218d7a1bbddadad7552e737e1ea
+
 
 ---
 # <a name="connecting-to-media-services-account-using-media-services-rest-api"></a>Media Services REST API を使用して Media Services アカウントに接続する
@@ -179,6 +183,9 @@ Media Services アカウントの AccountKey は、アクセス トークン要�
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

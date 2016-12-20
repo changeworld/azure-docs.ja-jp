@@ -1,13 +1,13 @@
 ---
-title: HDInsight での Hadoop Pig と Remote Desktop の使用 | Microsoft Docs
-description: Pig コマンドを使用して、HDInsight の Windows ベースの Hadoop のクラスターへのリモート デスクトップ接続から Pig Latin ステートメントを実行する方法について説明します。
+title: "HDInsight での Hadoop Pig とリモート デスクトップの使用 | Microsoft Docs"
+description: "Pig コマンドを使用して、HDInsight の Windows ベースの Hadoop のクラスターへのリモート デスクトップ接続から Pig Latin ステートメントを実行する方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: e034a286-de0f-465f-8bf1-3d085ca6abed
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 28499d1778db75fa164afe20ae1adc6736f7bb93
+
 
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>リモート デスクトップ接続から Pig ジョブを実行する
@@ -24,16 +28,16 @@ ms.author: larryfr
 
 このドキュメントでは、方法について説明します。
 
-## <a name="<a-id="prereq"></a>prerequisites"></a><a id="prereq"></a>前提条件
+## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * Windows ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 * Windows 10、Windows 8、Windows 7 を実行するクライアント コンピューター
 
-## <a name="<a-id="connect"></a>connect-with-remote-desktop"></a><a id="connect"></a>リモート デスクトップへの接続
+## <a name="a-idconnectaconnect-with-remote-desktop"></a><a id="connect"></a>リモート デスクトップへの接続
 「 [RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 
-## <a name="<a-id="pig"></a>use-the-pig-command"></a><a id="pig"></a>Pig コマンドの使用
+## <a name="a-idpigause-the-pig-command"></a><a id="pig"></a>Pig コマンドの使用
 1. リモート デスクトップに接続したら、デスクトップ上のアイコンを使用して **Hadoop コマンド ライン** を開始します。
 2. Pig コマンドを開始するには次のコマンドを使用します。
    
@@ -109,10 +113,10 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
         (ERROR,6)
         (FATAL,2)
 
-## <a name="<a-id="summary"></a>summary"></a><a id="summary"></a>概要
+## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
 このように、Pig コマンドでは、MapReduce 操作を対話的に実行できるだけでなく、バッチ ファイルに格納された Pig Latin ジョブも実行できます。
 
-## <a name="<a-id="nextsteps"></a>next-steps"></a><a id="nextsteps"></a>次のステップ
+## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
 HDInsight での Pig に関する全般的な情報:
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
@@ -122,6 +126,9 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

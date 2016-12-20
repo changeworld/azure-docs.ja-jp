@@ -1,19 +1,23 @@
 ---
-title: Azure Monitor パートナーとの統合 | Microsoft Docs
-description: Azure Monitor のパートナーと、そのパートナーとの統合に関するドキュメントにアクセスする方法について説明します。
+title: "Azure Monitor パートナーとの統合 | Microsoft Docs"
+description: "Azure Monitor のパートナーと、そのパートナーとの統合に関するドキュメントにアクセスする方法について説明します。"
 author: johnkemnetz
 manager: rboucher
-editor: ''
+editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-
+ms.assetid: 01ee13ac-66fc-4edc-8b0c-32f69b986a26
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 10/31/2016
 ms.author: johnkem
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8a971b0dc1f216deaa93045857d6220d0fcbf8c1
+
 
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
@@ -25,17 +29,19 @@ ms.author: johnkem
 | [![Partner Logo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |[![Partner Logo][splunk-logo]<br/>**Splunk**][splunk-anchor] |[![Partner Logo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] |
 
 ## <a name="alertlogic-log-manager"></a>Alert Logic Log Manager
-Alert Logic Log Manager は、セキュリティの分析と保持の目的で、VM、アプリケーション、Azure プラットフォームのログを収集します。 これには、Azure Insights API による Azure 監査ログが含まれます。  この情報を使って、不正を検出し、コンプライアンス要件に対応します。
+Alert Logic Log Manager は、セキュリティの分析と保持の目的で、VM、アプリケーション、Azure プラットフォームのログを収集します。 これには、Azure Monitor API による Azure 監査ログが含まれます。  この情報を使って、不正を検出し、コンプライアンス要件に対応します。
 
 [ドキュメントを確認する。][alertlogic-doc]
 
 ## <a name="appdynamics"></a>AppDynamics
-AppDynamics アプリケーション パフォーマンス管理 (APM) により、アプリケーション所有者が、パフォーマンスのボトルネックのトラブルシューティングを迅速に行い、Azure 環境で実行されているアプリケーションのパフォーマンスを最適化できます。 AppDynamics APM は、Azure Marketplace にシームレスに統合され、Azure Cloud Services (PaaS) (Web および worker ロールを含む)、Virtual Machines (IaaS)、リモート サービス検出 (Microsoft Azure Service Bus)、Microsoft Azure キュー Microsoft Azure リモート サービス (Azure BLOB)、Azure キュー (Microsoft Service Bus)、データ ストレージ、Microsoft Azure BLOB ストレージの監視に使用できます。 
+AppDynamics アプリケーション パフォーマンス管理 (APM) により、アプリケーション所有者が、パフォーマンスのボトルネックのトラブルシューティングを迅速に行い、Azure 環境で実行されているアプリケーションのパフォーマンスを最適化できます。 AppDynamics APM は、Azure Marketplace にシームレスに統合され、Azure Cloud Services (PaaS) (Web および worker ロールを含む)、Virtual Machines (IaaS)、リモート サービス検出 (Microsoft Azure Service Bus)、Microsoft Azure キュー Microsoft Azure リモート サービス (Azure BLOB)、Azure キュー (Microsoft Service Bus)、データ ストレージ、Microsoft Azure BLOB ストレージの監視に使用できます。
 
 [ドキュメントを確認する。][appdynamics-doc]
 
 ## <a name="atlassian-jira"></a>Atlassian JIRA
-近日対応予定
+Azure Monitor のアラートで JIRA チケットを作成できます。
+
+[ドキュメントを確認する。][atlassian-doc]
 
 ## <a name="cloudmonix"></a>CloudMonix
 CloudMonix は、Microsoft Azure Platform の監視、自動化、および自己復旧サービスを提供します。
@@ -53,7 +59,8 @@ Datadog は、世界をリードするクラウド規模のアプリケーショ
 [ドキュメントを確認する。][datadog-doc]
 
 ## <a name="dynatrace"></a>Dynatrace
-Dynatrace OneAgent は、対応する Azure 拡張機能メカニズムによって、Azure VM と App Services に統合されています。 これにより、ホスト、ネットワーク、およびサービスのパフォーマンス メトリックを収集できます。
+Dynatrace OneAgent は、対応する Azure 拡張機能メカニズムによって、Azure VM と App Services に統合されています。
+これにより、ホスト、ネットワーク、およびサービスのパフォーマンス メトリックを収集できます。
 また、メトリックだけでなく、環境をエンド ツー エンドで視覚化して、クライアント側からデータベース レイヤーへのトランザクションも表示します。
 さらに、AI ベースで問題が相互に関連付けられ、根本原因の分析 (コードおよびデータベースに対するメソッド レベルの洞察を含む) が完全に統合されているため、トラブルシューティングとパフォーマンスの最適化が大幅に容易になります。
 
@@ -65,17 +72,15 @@ Dynatrace OneAgent は、対応する Azure 拡張機能メカニズムによっ
 ## <a name="opsgenie"></a>OpsGenie
 OpsGenie は、Azure によって生成されたアラートのディスパッチャーとして動作します。 この OpsGenie では、対応スケジュールとエスカレーションに基づいて適切な通知先を特定し、電子メール、テキスト メッセージ (SMS)、電話、プッシュ通知を使用して通知します。 検出された問題のアラートを Azure が生成するだけで、OpsGenie は、その問題に対応する適切な担当者を確保してくれます。
 
-[ドキュメントを確認する][opsgenie doc]
+[ドキュメントを確認する。][opsgenie doc]
 
 ## <a name="pagerduty"></a>PagerDuty
-トップクラスのインシデント管理ソリューション PagerDuty は、メトリックに関して、最高レベルのAzure アラート サポートを提供します。 現時点で PagerDuty がサポートするのは、Azure サービスのプラットフォーム レベルのメトリックに関する通知のほか、Azure Application Insights アラートの通知、自動スケールの通知、および監査ログ イベントの通知です。 こうした拡張機能により、ユーザーは、Azure コア プラットフォームを高度に視覚化しながら、PagerDuty のインシデント管理機能を最大限に利用し、リアルタイムな応答を得ることができます。 Azure 統合の強化することで、webhook を使用して、すばやく簡単に設定やカスタマイズを行うことができます。
+トップクラスのインシデント管理ソリューション PagerDuty は、メトリックに関して、最高レベルのAzure アラート サポートを提供します。 現時点で PagerDuty がサポートするのは、Azure サービスのプラットフォーム レベルのメトリックに関する通知のほか、Azure アプリケーションの Azure Monitor アラートの通知、自動スケールの通知、および監査ログ イベントの通知です。 こうした拡張機能により、ユーザーは、Azure コア プラットフォームを高度に視覚化しながら、PagerDuty のインシデント管理機能を最大限に利用し、リアルタイムな応答を得ることができます。 Azure 統合の強化することで、webhook を使用して、すばやく簡単に設定やカスタマイズを行うことができます。
 
 [ドキュメントを確認する。][pagerduty-doc]
 
-## <a name="splunk-addon-for-microsoft-azure"></a>Microsoft Azure 用の Splunk アドオン
-Microsoft Azure 用の Splunk アドオンは、Microsoft Azure で実行されているインフラストラクチャおよび Web サイトの、重要な診断、パフォーマンス、監査、およびセキュリティ データを収集します。 
-
-パフォーマンスと診断情報の収集元は、Azure Storage Tables と Azure Storage Blobs です。 監査データの収集元は Azure Insights Events API です。 ネットワーク セキュリティ グループのデータの収集元は Azure Storage Blog です。 このアドオンには、事前に組み込まれたパネルがいくつか含まれています。 
+## <a name="splunk-add-on-for-microsoft-cloud-services"></a>Microsoft Cloud Services 用の Splunk アドオン
+Microsoft Cloud Services 用の Splunk アドオンは、[こちらの Splunkbase で使用できます](https://splunkbase.splunk.com/app/3110/)。
 
 [ドキュメントを確認する。][splunk-doc]
 
@@ -97,7 +102,7 @@ Microsoft Azure 用の Splunk アドオンは、Microsoft Azure で実行され�
 [newrelic-anchor]: #newrelic "NewRelic"
 [opsgenie-anchor]: #opsgenie "OpsGenie"
 [pagerduty-anchor]: #pagerduty "PagerDuty"
-[splunk-anchor]: #splunk-add-on-for-microsoft-azure "Splunk"
+[splunk-anchor]: #splunk-add-on-for-microsoft-cloud-services "Splunk"
 [sumologic-anchor]: #sumologic "Sumo Logic"
 
 <!--Icon references-->
@@ -117,6 +122,7 @@ Microsoft Azure 用の Splunk アドオンは、Microsoft Azure で実行され�
 <!--Partner Documentation-->
 [alertlogic-doc]: https://docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic のドキュメント。"
 [appdynamics-doc]: https://docs.appdynamics.com/display/PRO42/Register+for+AppDynamics+for+Windows+Azure "AppDynamics のドキュメント。"
+[atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "CloudMonix の概要。"
 [cloudyn-doc]: https://www.cloudyn.com/azure-monitoring "Cloudyn の概要。"
 [datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "DataDog のドキュメント。"
@@ -124,11 +130,11 @@ Microsoft Azure 用の Splunk アドオンは、Microsoft Azure で実行され�
 [newrelic-doc]: https://newrelic.com/azure "NewRelicのドキュメント。"
 [opsgenie doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie のドキュメント。"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty のドキュメント。"
-[splunk-doc]: https://splunkbase.splunk.com/app/3084/#/details "Splunk のドキュメント。"
+[splunk-doc]: http://docs.splunk.com/Documentation/AddOns/released/MSCloudServices/About "Splunk のドキュメント。"
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic のドキュメント。"
 
 
 
-<!---HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: スタンドアロン Service Fabric クラスターでノードを追加または削除する | Microsoft Docs
-description: Windows Server を実行する物理コンピューターまたは仮想マシン上で、Azure Service Fabric クラスターにノードを追加または削除する方法について説明します。追加先または削除元は、オンプレミスでも、任意のクラウドでもかまいません。
+title: "スタンドアロン Service Fabric クラスターでノードを追加または削除する | Microsoft Docs"
+description: "Windows Server を実行する物理コンピューターまたは仮想マシン上で、Azure Service Fabric クラスターにノードを追加または削除する方法について説明します。追加先または削除元は、オンプレミスでも、任意のクラウドでもかまいません。"
 services: service-fabric
 documentationcenter: .net
 author: dsk-2015
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: bc6b8fc0-d2af-42f8-a164-58538be38d02
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/20/2016
 ms.author: dkshir;chackdan
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 335ab9d3746b089e9e7a8d640a89a2d381295b46
+
 
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Windows Server を実行するスタンドアロン Service Fabric クラスターでノードを追加または削除する
@@ -38,13 +42,18 @@ ms.author: dkshir;chackdan
 3. クラスターから削除する VM/マシンにリモート デスクトップ (RDP) 接続します。
 4. [Windows Server 用の Service Fabric のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690) またはコピーし、この VM/マシンにパッケージを解凍します。
 5. 管理者として Powershell を実行し、解凍したパッケージのある場所に移動します。
-6. *RemoveNode.ps1* Powershell を実行します。 次の例では、現在のノードをクラスターから削除します。 *ExistingClusterConnectionEndPoint* は、既存のクラスターに既にあるノードの接続エンドポイントです。 このエンドポイントでは、クラスター内の *任意* **任意** " のノードの IP アドレスを選択する必要があります。
+6. Powershell で *RemoveNode.ps1* を実行します。 次の例では、現在のノードをクラスターから削除します。 *ExistingClientConnectionEndpoint* は、クラスター内に残るすべてのノードに対するクライアント接続エンドポイントです。 クラスター内にある*任意の* **他のノード** の IP アドレスとエンドポイント ポートを選択します。 この**他のノード**はさらに、削除されたノードのクラスターの構成を更新します。 
 
 ```
-.\RemoveNode.ps1 -ExistingClusterConnectionEndPoint 182.17.34.50:19000
+.\RemoveNode.ps1 -ExistingClientConnectionEndpoint 182.17.34.50:19000
 ```
 
-次回のリリースで修正予定の既知の不具合 - 削除したはずのノードが、クエリや SFX にダウン中として表示されます。 
+> [!NOTE]
+> システム サービスの依存性に起因し、一部のノードが削除されないことがあります。 そのようなノードはプライマリ ノードであり、`Get-ServiceFabricClusterManifest` を利用してクラスター マニフェストに問い合わせると識別できます。`IsSeedNode=”true”` のマークが付いたノード エントリを探してください。 
+> 
+> 
+
+ノードを削除した後でも、クリエまたは SFX に「ダウン中」として表示される場合、それは既知の不具合であるとして理解してください。 今後のリリースで修正される予定です。 
 
 ## <a name="next-steps"></a>次のステップ
 * [スタンドアロン Windows クラスターの構成設定](service-fabric-cluster-manifest.md)
@@ -52,6 +61,9 @@ ms.author: dkshir;chackdan
 * [X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)
 * [Windows を実行する Azure VM を使用してスタンドアロン Service Fabric クラスターを作成する](service-fabric-cluster-creation-with-windows-azure-vms.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

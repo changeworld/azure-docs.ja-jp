@@ -1,19 +1,23 @@
 ---
-title: ODBC データ ストアからデータを移動する | Microsoft Docs
-description: Azure Data Factory を使用して ODBC データ ストアからデータを移動する方法を説明します。
+title: "ODBC データ ストアからデータを移動する | Microsoft Docs"
+description: "Azure Data Factory を使用して ODBC データ ストアからデータを移動する方法を説明します。"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: linda33wj
 manager: jhubbard
 editor: monicar
-
+ms.assetid: ad70a598-c031-4339-a883-c6125403cb76
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/07/2016
 ms.author: jingwang
+translationtype: Human Translation
+ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
+ms.openlocfilehash: 4d23fb04a238656128447e21772ca92069424440
+
 
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアからデータを移動する
@@ -22,38 +26,38 @@ ms.author: jingwang
 Data Factory は、現在、オンプレミスの ODBCデータ ストアから他のデータ ストアへのデータの移動のみをサポートします。 他のデータ ストアからオンプレミスの ODBC データ ストアへのデータの移動はサポートされていません。
 
 ## <a name="enabling-connectivity"></a>接続を有効にする
-Data Factory のサービスでは、Data Management Gateway を使用したオンプレミスの ODBC ソースへの接続をサポートします。 Data Management Gateway の詳細およびゲートウェイの設定手順については、「 [オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md) 」を参照してください。 Azure IaaS VM でホストされている場合でも、ODBC データ ストアへの接続にゲートウェイを使用します。 
+Data Factory のサービスでは、Data Management Gateway を使用したオンプレミスの ODBC ソースへの接続をサポートします。 Data Management Gateway の詳細およびゲートウェイの設定手順については、「 [オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md) 」を参照してください。 Azure IaaS VM でホストされている場合でも、ODBC データ ストアへの接続にゲートウェイを使用します。
 
-ODBC データ ストアとして、同じオンプレミスのコンピューターまたは Azure VM にゲートウェイをインストールできます。 ただし、リソースの競合を防ぎ、パフォーマンスの向上を図るために、別のコンピューターまたは Azure IaaS VM にゲートウェイをインストールすることをお勧めします。 別のマシンにゲートウェイをインストールすると、そのマシンが ODBC データ ストアを持つマシンにアクセスできるようになります。 
+ODBC データ ストアとして、同じオンプレミスのコンピューターまたは Azure VM にゲートウェイをインストールできます。 ただし、リソースの競合を防ぎ、パフォーマンスの向上を図るために、別のコンピューターまたは Azure IaaS VM にゲートウェイをインストールすることをお勧めします。 別のマシンにゲートウェイをインストールすると、そのマシンが ODBC データ ストアを持つマシンにアクセスできるようになります。
 
-Data Management Gateway とは別に、ゲートウェイ マシン上にデータ ストア用の ODBC ドライバーもインストールする必要があります。 
+Data Management Gateway とは別に、ゲートウェイ マシン上にデータ ストア用の ODBC ドライバーもインストールする必要があります。
 
 > [!NOTE]
-> 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues) に関するセクションをご覧ください。 
-> 
-> 
+> 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
+>
+>
 
 ## <a name="copy-data-wizard"></a>データのコピー ウィザード
-ODBC ソースとの間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。 
+ODBC ソースとの間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
 
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、ODBC ソースから Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores) に記載されているシンクのいずれかにデータをコピーすることができます。
+以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、ODBC ソースから Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。
 
-## <a name="sample:-copy-data-from-odbc-data-store-to-azure-blob"></a>サンプル: ODBC データ ストアから Azure BLOB にデータをコピーする
-このサンプルは、ODBC データ ストアから Azure BLOB ストレージにデータをコピーする方法を示します。 Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores) コピーすることもできます。  
+## <a name="sample-copy-data-from-odbc-data-store-to-azure-blob"></a>サンプル: ODBC データ ストアから Azure BLOB にデータをコピーする
+このサンプルは、ODBC データ ストアから Azure BLOB ストレージにデータをコピーする方法を示します。 Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることもできます。  
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
 1. [OnPremisesOdbc](#odbc-linked-service-properties)型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)型のリンクされたサービス。
+2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service)型のリンクされたサービス。
 3. [RelationalTable](#odbc-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
 4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [RelationalSource](#odbc-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)
 
-このサンプルは ODBC データ ストアのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。 
+このサンプルは ODBC データ ストアのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-最初の手順として、データ管理ゲートウェイを設定します。 設定手順は、 [オンプレミスの場所とクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md) に関する記事に記載されています。 
+最初の手順として、データ管理ゲートウェイを設定します。 設定手順は、 [オンプレミスの場所とクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md) に関する記事に記載されています。
 
-**ODBC のリンクされたサービス** : この例では基本認証を使用しています。 使用できるさまざまな種類の認証については、 [ODBC のリンクされたサービス](#odbc-linked-service-properties) に関するセクションをご覧ください。 
+**ODBC のリンクされたサービス** : この例では基本認証を使用しています。 使用できるさまざまな種類の認証については、 [ODBC のリンクされたサービス](#odbc-linked-service-properties) に関するセクションをご覧ください。
 
     {
         "name": "OnPremOdbcLinkedService",
@@ -234,9 +238,9 @@ ODBC ソースとの間でデータをコピーするパイプラインを作成
 | authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 Anonymous と Basic のいずれかの値になります。 |はい |
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |なし |
 | パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
-| gatewayName |Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 |はい |
+| gatewayName |Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 |あり |
 
-オンプレミスの ODBC データ ストアの資格情報の設定について詳しくは、 [資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security) に関する記事をご覧ください。
+オンプレミスの ODBC データ ストアの資格情報の設定について詳しくは、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
 
 ### <a name="using-basic-authentication"></a>基本認証を使用する
     {
@@ -301,7 +305,7 @@ ODBC ソースとの間でデータをコピーするパイプラインを作成
 | tableName |ODBC データ ストア内のテーブルの名前。 |はい |
 
 ## <a name="odbc-copy-activity-type-properties"></a>ODBC のコピー アクティビティの type プロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。 
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
@@ -326,7 +330,7 @@ ODBC ソースとの間でデータをコピーするパイプラインを作成
 [!INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
 ## <a name="ge-historian-store"></a>GE Historian ストア
-次の例に示すように、 [GE Proficy Historian (現在は GE Historian)](http://www.geautomation.com/products/proficy-historian) データ ストアを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。 
+次の例に示すように、 [GE Proficy Historian (現在は GE Historian)](http://www.geautomation.com/products/proficy-historian) データ ストアを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
 
     {
         "name": "HistorianLinkedService",
@@ -346,26 +350,28 @@ ODBC ソースとの間でデータをコピーするパイプラインを作成
 
 オンプレミス コンピューターに Data Management Gateway をインストールし、ゲートウェイをポータルに登録します。 オンプレミス コンピューターにインストールされているゲートウェイは、GE Historian データ ストアに接続するために GE Historian 用の ODBC ドライバーを使用します。 そのため、ゲートウェイ コンピューターにまだドライバーがインストールされていない場合は、インストールしてください。 詳細については、「 [接続を有効にする](#enabling-connectivity) 」をご覧ください。
 
-Data Factory ソリューションで GE Historian ストアを使用する前に、ゲートウェイが次のセクションの手順を使用してデータ ストアに接続できるかどうかを確認します。 
+Data Factory ソリューションで GE Historian ストアを使用する前に、ゲートウェイが次のセクションの手順を使用してデータ ストアに接続できるかどうかを確認します。
 
 コピー操作で ODBC データ ストアをソース データ ストアとして使用する方法の詳細については、記事を最初からお読みください。  
 
 ## <a name="troubleshoot-connectivity-issues"></a>接続の問題のトラブルシューティング
-接続の問題をトラブルシューティングするには、**Data Management Gateway** 構成マネージャーの **[診断]** タブを使用します。 
+接続の問題をトラブルシューティングするには、**Data Management Gateway** 構成マネージャーの **[診断]** タブを使用します。
 
-1. **Data Management Gateway 構成マネージャー**を起動します。 "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe" を直接実行することも、次の図に示すように、**Gateway** を検索して **Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。 
-   
+1. **Data Management Gateway 構成マネージャー**を起動します。 "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe" を直接実行することも、次の図に示すように、**Gateway** を検索して **Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。
+
     ![Search gateway](./media/data-factory-odbc-connector/search-gateway.png)
 2. **[診断]** タブに切り替えます。
-   
-    ![Gateway diagnostics](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png) 
-3. データ ストアの **種類** (リンクされたサービス) を選択します。 
-4. **認証方法**を指定し、**資格情報**を入力します。または、データ ストアへの接続に使用する**接続文字列**を入力します。 
-5. **[接続テスト]** をクリックして、データ ストアへの接続をテストします。 
+
+    ![Gateway diagnostics](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
+3. データ ストアの **種類** (リンクされたサービス) を選択します。
+4. **認証方法**を指定し、**資格情報**を入力します。または、データ ストアへの接続に使用する**接続文字列**を入力します。
+5. **[接続テスト]** をクリックして、データ ストアへの接続をテストします。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

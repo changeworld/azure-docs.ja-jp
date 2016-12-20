@@ -1,26 +1,30 @@
 ---
-title: Azure が販売されている国とサポートされている通貨の一覧 | Microsoft Docs
-description: Microsoft Azure が販売されている国と地域および Azure の購入に使用できる対応通貨。
-services: ''
-documentationcenter: ''
+title: "Azure が販売されている国とリージョン、およびサポートされている通貨の一覧 | Microsoft Docs"
+description: "Microsoft Azure が販売されている国とリージョン、Azure の購入に使用できる対応通貨。"
+services: 
+documentationcenter: 
 author: genlin
-manager: msmbaldwin
-editor: ''
+manager: mbaldwin
+editor: 
 tags: billing
-
+ms.assetid: 31a5c698-2041-45b5-9299-884f305cebbc
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2016
+ms.date: 11/10/2016
 ms.author: genli
+translationtype: Human Translation
+ms.sourcegitcommit: 72d750dfd8c0044ee845a9feb9b8f4d2a4761cf0
+ms.openlocfilehash: a7d83d9d098de41a65581a5924453d311b6203f5
+
 
 ---
-# Microsoft Azure が販売されている国と地域および Azure の購入に使用できる通貨
-Microsoft Azure は世界の 140 を超える国で購入でき、さまざまな通貨がサポートされています。Azure を購入できる国と Azure の料金支払いに使用できる通貨の一覧を次に示します。
+# <a name="in-which-countriesregions-is-microsoft-azure-commercially-available-and-what-currencies-can-be-used-to-purchase-azure"></a>Microsoft Azure が販売されている国とリージョン、Azure の購入に使用できる通貨
+Microsoft Azure は世界の 140 を超える国とリージョンで購入でき、さまざまな通貨がサポートされています。 Azure を購入できる国とリージョン、および Azure の料金支払いに使用できる通貨の一覧を次に示します。
 
-| 国 | 通貨コード |
+| 国/リージョン | 通貨コード |
 | --- | --- |
 | アフガニスタン |USD |
 | アルバニア |USD |
@@ -170,4 +174,8 @@ Microsoft Azure は世界の 140 を超える国で購入でき、さまざま�
 | ザンビア |USD |
 | ジンバブエ |USD |
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

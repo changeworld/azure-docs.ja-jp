@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2016
+ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8ec86ebefccaf74c67cb7917ccf7d538bc95ae07
+ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
+ms.openlocfilehash: 79c9f2d8c683be493160fffe40992006b039f60f
 
 
 ---
@@ -180,7 +180,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 完了したら、[azureiotsuite.com][lnk-azureiotsuite] サイトで事前構成済みソリューションを Azure サブスクリプションから削除できます。 このサイトでは、構成済みのソリューションを作成したときにプロビジョニングされていたすべてのリソースを簡単に削除することができます。
 
 > [!NOTE]
-> 事前構成済みソリューションに関連するすべてのものを確実に削除するには、ポータルでリソース グループを単に削除するのではなく、[azureiotsuite.com][lnk-azureiotsuite] サイトで事前構成済みソリューションを削除してください。
+> 事前構成済みソリューションに関連するすべてのものを確実に削除するには、ポータルでリソース グループを削除するのではなく、[azureiotsuite.com][lnk-azureiotsuite] サイトで事前構成済みソリューションを削除してください。
 > 
 > 
 
@@ -229,6 +229,6 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

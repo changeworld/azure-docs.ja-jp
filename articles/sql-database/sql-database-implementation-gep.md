@@ -1,19 +1,24 @@
 ---
-title: Azure SQL Database Azure 導入事例 - GEP| Microsoft Docs
-description: SQL Database を活用することで、GEP がどのように世界中の顧客とつながり、高い効率性を実現したのかご紹介します。
+title: "Azure SQL Database Azure 導入事例 - GEP| Microsoft Docs"
+description: "SQL Database を活用することで、GEP がどのように世界中の顧客とつながり、高い効率性を実現したのかご紹介します。"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: ae8bcb10-c251-4bac-b666-10a253918583
 ms.service: sql-database
+ms.custom: app development case study; app development
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/08/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: da2e3e4f9a33860141d94352fd2e657b14b0d03d
+
 
 ---
 # <a name="azure-gives-gep-global-reach-and-greater-efficiency"></a>GEP 社のグローバルな事業展開と効率性向上を Azure が支援
@@ -99,6 +104,9 @@ SMART by GEP が日々生成する数千ものトランザクション メール
 * GEP エンジニアリング マネージャー Sathyan Narasingh
 * GEP データベース アーキテクト Deepa Velukutty
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: クラシック デプロイメント モデルを使用した Azure Backup コンテナーとサーバーの管理 | Microsoft Docs
-description: このチュートリアルでは、Azure Backup コンテナーとサーバーを管理する方法について説明します。
+title: "クラシック デプロイ モデルを使用した Azure Backup コンテナーとサーバーの管理 | Microsoft Docs"
+description: "このチュートリアルでは、Azure Backup コンテナーとサーバーを管理する方法について説明します。"
 services: backup
-documentationcenter: ''
+documentationcenter: 
 author: markgalioto
 manager: jwhit
 editor: tysonn
-
+ms.assetid: f175eb12-0905-437f-91fd-eaee03ab6e81
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: jimpark;markgal
+translationtype: Human Translation
+ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
+ms.openlocfilehash: ee95dd7f96adcb2a271f3bddf56a4b6c85c4afd5
+
 
 ---
 # <a name="manage-azure-backup-vaults-and-servers-using-the-classic-deployment-model"></a>クラシック デプロイメント モデルを使用した Azure Backup コンテナーとサーバーの管理
@@ -26,8 +30,6 @@ ms.author: jimpark;markgal
 この記事では、Azure クラシック ポータルと Microsoft Azure Backup エージェントで使用できるバックアップ管理タスクの概要を説明します。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-リソース マネージャーのデプロイ モデル。
 
 ## <a name="management-portal-tasks"></a>管理ポータルのタスク
 1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
@@ -188,8 +190,11 @@ Azure Backup エージェントには、データ転送時のネットワーク�
 ## <a name="next-steps"></a>次のステップ
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 * Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
-* [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
+*  [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

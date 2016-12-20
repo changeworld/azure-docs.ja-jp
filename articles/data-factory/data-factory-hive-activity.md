@@ -1,12 +1,12 @@
 ---
-title: Hive アクティビティ
-description: Azure データ ファクトリで Hive アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Hive クエリを実行する方法について説明します。
+title: "Hive アクティビティ"
+description: "Azure データ ファクトリで Hive アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Hive クエリを実行する方法について説明します。"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: sharonlo101
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 80083218-743e-4da8-bdd2-60d1c77b1227
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: shlo
+translationtype: Human Translation
+ms.sourcegitcommit: a4121f8857fa9eaeb1cf1bca70e29666f6a04f63
+ms.openlocfilehash: 6f5aecf7ac50258e8f744a7bbf9c78d46413069d
+
 
 ---
 # <a name="hive-activity"></a>Hive アクティビティ
 > [!div class="op_single_selector"]
-> [Hive](data-factory-hive-activity.md)  
-> [Pig](data-factory-pig-activity.md)  
-> [MapReduce](data-factory-map-reduce.md)  
-> [Hadoop Streaming](data-factory-hadoop-streaming-activity.md)
-> [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
-> [ストアド プロシージャ](data-factory-stored-proc-activity.md)
-> [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-> [.NET カスタム](data-factory-use-custom-activities.md)
+> * [Hive](data-factory-hive-activity.md)  
+> * [Pig](data-factory-pig-activity.md)  
+> * [MapReduce](data-factory-map-reduce.md)  
+> * [Hadoop ストリーミング](data-factory-hadoop-streaming-activity.md)
+> * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
+> * [ストアド プロシージャ](data-factory-stored-proc-activity.md)
+> * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
+> * [.NET カスタム](data-factory-use-custom-activities.md)
 > 
 > 
 
@@ -89,18 +93,18 @@ Data Factory [パイプライン](data-factory-create-pipelines.md) の HDInsigh
     DROP TABLE IF EXISTS HiveSampleIn; 
     CREATE EXTERNAL TABLE HiveSampleIn 
     (
-        ProfileID       string, 
-        SessionStart    string, 
-        Duration        int, 
-        SrcIPAddress    string, 
-        GameType        string
+        ProfileID        string, 
+        SessionStart     string, 
+        Duration         int, 
+        SrcIPAddress     string, 
+        GameType         string
     ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION 'wasb://adfwalkthrough@<storageaccount>.blob.core.windows.net/samplein/'; 
 
     DROP TABLE IF EXISTS HiveSampleOut; 
     CREATE EXTERNAL TABLE HiveSampleOut 
-    (   
-        ProfileID   string, 
-        Duration    int
+    (    
+        ProfileID     string, 
+        Duration     int
     ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION 'wasb://adfwalkthrough@<storageaccount>.blob.core.windows.net/sampleout/';
 
     INSERT OVERWRITE TABLE HiveSampleOut
@@ -122,36 +126,37 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
    > 
 5. HDInsightHive アクティビティでパイプラインを作成します。 このアクティビティはデータの処理や変換を行います。
    
-       {
-         "name": "HiveActivitySamplePipeline",
-         "properties": {
-           "activities": [
-             {
-               "name": "HiveActivitySample",
-               "type": "HDInsightHive",
-               "inputs": [
-                 {
-                   "name": "HiveSampleIn"
-                 }
-               ],
-               "outputs": [
-                 {
-                   "name": "HiveSampleOut"
-                 }
-               ],
-               "linkedServiceName": "HDInsightLinkedService",
-               "typeproperties": {
-                 "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
-                 "scriptLinkedService": "StorageLinkedService"
-               },
-               "scheduler": {
+     {
+   
+       "name": "HiveActivitySamplePipeline",
+       "properties": {
+         "activities": [
+           {
+             "name": "HiveActivitySample",
+             "type": "HDInsightHive",
+             "inputs": [
+               {
+                 "name": "HiveSampleIn"
+               }
+             ],
+             "outputs": [
+               {
+                 "name": "HiveSampleOut"
+               }
+             ],
+             "linkedServiceName": "HDInsightLinkedService",
+             "typeproperties": {
+               "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
+               "scriptLinkedService": "StorageLinkedService"
+             },
+                "scheduler": {
                    "frequency": "Hour",
                    "interval": 1
-               }
              }
-           ]
-         }
+           }
+         ]
        }
+     }
 6. パイプラインをデプロイします。 詳細については、 [パイプラインの作成](data-factory-create-pipelines.md) に関する記事を参照してください。 
 7. データ ファクトリの監視と管理のビューを使用して、パイプラインを監視します。 詳細については、 [Data Factory パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md) に関する記事を参照してください。 
 
@@ -164,35 +169,35 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
   
         {
             "name": "HiveActivitySamplePipeline",
-            "properties": {
+              "properties": {
             "activities": [
-                {
+                 {
                     "name": "HiveActivitySample",
                     "type": "HDInsightHive",
                     "inputs": [
-                        {
+                          {
                             "name": "HiveSampleIn"
                           }
                     ],
                     "outputs": [
-                        {
+                          {
                             "name": "HiveSampleOut"
                         }
                     ],
                     "linkedServiceName": "HDInsightLinkedService",
                     "typeproperties": {
-                        "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
-                        "scriptLinkedService": "StorageLinkedService",
-                        "defines": {
+                          "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
+                          "scriptLinkedService": "StorageLinkedService",
+                          "defines": {
                             "Input": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/samplein/yearno={0:yyyy}/monthno={0:%M}/dayno={0:%d}/', SliceStart)",
                             "Output": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/sampleout/yearno={0:yyyy}/monthno={0:%M}/dayno={0:%d}/', SliceStart)"
-                        },
-                        "scheduler": {
-                            "frequency": "Hour",
-                            "interval": 1
+                          },
+                           "scheduler": {
+                              "frequency": "Hour",
+                              "interval": 1
                         }
                     }
-                }
+                  }
             ]
           }
         }
@@ -201,18 +206,18 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
         DROP TABLE IF EXISTS HiveSampleIn; 
         CREATE EXTERNAL TABLE HiveSampleIn 
         (
-            ProfileID   string, 
-            SessionStart    string, 
-            Duration    int, 
-            SrcIPAddress    string, 
-            GameType    string
+            ProfileID     string, 
+            SessionStart     string, 
+            Duration     int, 
+            SrcIPAddress     string, 
+            GameType     string
         ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:Input}'; 
   
         DROP TABLE IF EXISTS HiveSampleOut; 
         CREATE EXTERNAL TABLE HiveSampleOut 
         (
-            ProfileID   string, 
-            Duration    int
+            ProfileID     string, 
+            Duration     int
         ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:Output}';
   
         INSERT OVERWRITE TABLE HiveSampleOut
@@ -228,6 +233,9 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
 * [Spark プログラムを呼び出す](data-factory-spark.md)
 * [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

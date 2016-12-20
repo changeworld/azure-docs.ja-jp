@@ -1,12 +1,12 @@
 ---
-title: Azure BLOB データを高度な分析を使用して処理する | Microsoft Docs
-description: Azure BLOB ストレージのデータを処理します。
+title: "Azure BLOB データを高度な分析を使用して処理する | Microsoft Docs"
+description: "Azure BLOB ストレージのデータを処理します。"
 services: machine-learning,storage
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: d8a59078-91d3-4440-b85c-430363c3f4d1
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,15 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: fashah;garye;bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3a8bf79ca39effaa19518ade7ff392530ef29475
+
 
 ---
-# <a name="heading"></a>Azure BLOB データを高度な分析を使用して処理する
-このドキュメントでは、データの探索および Azure BLOB ストレージに保存されたデータからの特徴の生成について説明します。
+# <a name="a-nameheadingaprocess-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>Azure  BLOB データを高度な分析を使用して処理する
+このドキュメントでは、データの探索および Azure BLOB ストレージに保存されたデータからの特徴の生成について説明します。 
 
-## Pandas データ フレームにデータを読み込む
-データセットを探索および操作するには、データを BLOB ソースからローカル ファイルにダウンロードする必要があります。このローカル ファイルは、Pandas データ フレームに読み込むことができます。この手順に必要な操作は次のとおりです。
+## <a name="load-the-data-into-a-pandas-data-frame"></a>Pandas データ フレームにデータを読み込む
+データセットを探索および操作するには、データを BLOB ソースからローカル ファイルにダウンロードする必要があります。このローカル ファイルは、Pandas データ フレームに読み込むことができます。 この手順に必要な操作は次のとおりです。
 
-1. BLOB サービスを使用する次の Python のサンプル コードによって、Azure BLOB からデータをダウンロードします。次のコードの変数を、実際の値に置き換えます。 
+1. BLOB サービスを使用する次の Python のサンプル コードによって、Azure BLOB からデータをダウンロードします。 次のコードの変数を、実際の値に置き換えます。 
    
         from azure.storage.blob import BlobService
         import tables
@@ -46,7 +50,7 @@ ms.author: fashah;garye;bradsev
 
 これで、データを探索し、このデータセットでの特徴を生成する準備が整いました。
 
-## <a name="blob-dataexploration"></a>データの探索
+## <a name="a-nameblob-dataexplorationadata-exploration"></a><a name="blob-dataexploration"></a>データの探索
 次に、Pandas を使用してデータを探索する方法の例をいくつかを示します。
 
 1. 行と列の数を調べる 
@@ -73,13 +77,12 @@ ms.author: fashah;garye;bradsev
         print miss_num
 7. データ内の特定の列に不足値がある場合は、次のように削除できます。
    
-     dataframe_blobdata_noNA = dataframe_blobdata.dropna()
-     dataframe_blobdata_noNA.shape
+     dataframe_blobdata_noNA = dataframe_blobdata.dropna()   dataframe_blobdata_noNA.shape
    
    不足値を置き換えるを別の方法として、モード関数を使用した以下のものを実行します。
    
      dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
-8. 変数の分布をプロットする可変個の箱を使用して、ヒストグラム図を作成します。
+8. 変数の分布をプロットする可変個の箱を使用して、ヒストグラム図を作成します。    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
    
@@ -92,10 +95,10 @@ ms.author: fashah;garye;bradsev
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <a name="blob-featuregen"></a>特徴の生成
+## <a name="a-nameblob-featuregenafeature-generation"></a><a name="blob-featuregen"></a>特徴の生成
 次のように、Python を使用して特徴を生成できます。
 
-### <a name="blob-countfeature"></a>インジケーター値ベースの特徴の生成
+### <a name="a-nameblob-countfeatureaindicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>
 カテゴリの特徴は、次のように作成できます。
 
 1. カテゴリの列の分布を検査します。
@@ -105,7 +108,7 @@ ms.author: fashah;garye;bradsev
    
         #generate the indicator column
         dataframe_blobdata_identity = pd.get_dummies(dataframe_blobdata['<categorical_column>'], prefix='<categorical_column>_identity')
-3. インジケーター列と元のデータ フレームを結合します。
+3. インジケーター列と元のデータ フレームを結合します。 
    
             #Join the dummy variables back to the original data frame
             dataframe_blobdata_with_identity = dataframe_blobdata.join(dataframe_blobdata_identity)
@@ -114,7 +117,7 @@ ms.author: fashah;garye;bradsev
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="blob-binningfeature"></a>ビン分割特徴の生成
+### <a name="a-nameblob-binningfeatureabinning-feature-generation"></a><a name="blob-binningfeature"></a>ビン分割特徴の生成
 ビン分割特徴を生成するには、次のように進めます。
 
 1. 数値列をビン分割する列のシーケンスを追加します。
@@ -128,8 +131,8 @@ ms.author: fashah;garye;bradsev
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="sql-featuregen"></a>Azure BLOB にデータを書き戻して Azure Machine Learning で使用する
-データを探索して必要な特徴を作成したら、次の手順を使用して、Azure BLOB に (サンプリングまたは特徴を生成した) データをアップロードして Azure Machine Learning で使用します。Azure Machine Learning Studio でも、追加の特徴を作成できます。
+## <a name="a-namesql-featuregenawriting-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Azure BLOB にデータを書き戻して Azure Machine Learning で使用する
+データを探索して必要な特徴を作成したら、次の手順を使用して、Azure BLOB に (サンプリングまたは特徴を生成した) データをアップロードして Azure Machine Learning で使用します。Azure Machine Learning Studio でも、追加の特徴を作成できます。 
 
 1. ローカル ファイルへのデータ フレームの書き込み
    
@@ -155,7 +158,7 @@ ms.author: fashah;garye;bradsev
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. これで、次の画面に示すように、Azure Machine Learning の[データのインポート][import-data] モジュールを使用して BLOB からデータを読み取ることができます。
+3. これで、次の画面に示すように、Azure Machine Learning の [データのインポート][import-data] モジュールを使用して BLOB からデータを読み取ることができます。
 
 ![リーダー BLOB][1]
 
@@ -166,4 +169,8 @@ ms.author: fashah;garye;bradsev
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

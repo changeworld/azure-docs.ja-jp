@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 08/30/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9484a637a1876f2cae644e43986bd5ef3201da1e
+ms.sourcegitcommit: 71ee49cd316563490677ad4efbe78e05dca93162
+ms.openlocfilehash: 293121f3eb626a3296d39be11d7b0294378a017b
 
 
 ---
@@ -33,7 +33,7 @@ Azure Functions では、イベント ドリブンでオンデマンドのコン
 >
 >
 
-## <a name="create-a-webhooktriggered-function-from-the-template"></a>webhook でトリガーされる関数をテンプレートから作成する
+## <a name="create-a-webhook-triggered-function-from-the-template"></a>webhook でトリガーされる関数をテンプレートから作成する
 関数アプリは Azure での関数の実行をホストします。 関数を作成するには、アクティブな Azure アカウントを用意する必要があります。 Azure アカウントがない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。 
 
 1. [Azure Functions ポータル](https://functions.azure.com/signin) に移動し、Azure アカウントでサインインします。

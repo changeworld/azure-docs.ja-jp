@@ -1,13 +1,13 @@
 ---
-title: サービス管理モードでの Azure CLI コマンド | Microsoft Docs
-description: Azure コマンドライン インターフェイス (CLI) コマンドをサービス管理モードで使用して、クラシック デプロイ モデルのデプロイを管理する方法について説明します
+title: "サービス管理モードでの Azure CLI コマンド |Microsoft Docs"
+description: "Azure コマンドライン インターフェイス (CLI) コマンドをサービス管理モードで使用して、クラシック デプロイ モデルのデプロイを管理する方法について説明します"
 services: virtual-machines-linux,virtual-machines-windows,mobile-services, cloud-services
-documentationcenter: ''
+documentationcenter: 
 author: dlepow
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-
+ms.assetid: b9ccdeed-0ab8-4de2-937f-4046c7918bd8
 ms.service: multiple
 ms.workload: multiple
 ms.tgt_pltfrm: vm-multiple
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2016
 ms.author: danlep
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 614adbd3536d6740e6a46895b36575f0f4c66a8c
+
 
 ---
-# <a name="azure-cli-commands-in-azure-service-management-(asm)-mode"></a>Azure サービス管理 (asm) モードでの Azure CLI コマンド
+# <a name="azure-cli-commands-in-azure-service-management-asm-mode"></a>Azure サービス管理 (asm) モードでの Azure CLI コマンド
 [!INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)]
 
 [Resource Manager モデルのすべてのコマンドに関する記事](virtual-machines/azure-cli-arm-commands.md)を確認し、CLI を使用して、クラシックから Resource Manager モデルへの[リソースの移行](virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)を行うこともできます。
@@ -921,7 +925,7 @@ Azure の Web アプリは、URI でアクセスできる Web 構成です。 We
     Web site name: mydemosite
     + Getting sites
     + Getting site information
-    data:    Subject                       Expiration Date                    Thumbprint
+    data:    Subject                       Expiration Date                      Thumbprint
     data:    ----------------------------  -----------------------------------------
     ----------------  ----------------------------------------
     data:    *.msopentech.com              Fri Nov 28 2014 09:49:57 GMT-0800 (Pacific Standard Time)  A40E82D3DC0286D1F58650E570ECF8224F69A148
@@ -1144,7 +1148,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 * **-v** または **--verbose**: 詳細な出力を書き込みます。
 * **--json**: JSON の出力を書き込みます。
 
-### <a name="<a-name="mobile_services"></a>commands-to-manage-mobile-service-instances"></a><a name="Mobile_Services"></a>モバイル サービス インスタンスの管理用コマンド
+### <a name="a-namemobileservicesacommands-to-manage-mobile-service-instances"></a><a name="Mobile_Services"></a>モバイル サービス インスタンスの管理用コマンド
 **mobile locations [options]**
 
 このコマンドは、Mobile Services がサポートする場所の一覧を表示します。
@@ -1300,7 +1304,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドは、モバイル サービス キーに指定された値を設定します。
 
-### <a name="<a-name="mobile_configuration"></a>commands-to-manage-mobile-service-configuration"></a><a name="Mobile_Configuration"></a>モバイル サービス構成の管理用コマンド
+### <a name="a-namemobileconfigurationacommands-to-manage-mobile-service-configuration"></a><a name="Mobile_Configuration"></a>モバイル サービス構成の管理用コマンド
 **mobile config list [options] [servicename]**
 
 このコマンドは、モバイル サービスの構成オプションの一覧を表示します。
@@ -1341,7 +1345,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
     info:    mobile config set command OK
 
 
-### <a name="<a-name="mobile_tables"></a>commands-to-manage-mobile-service-tables"></a><a name="Mobile_Tables"></a>モバイル サービス テーブルの管理用コマンド
+### <a name="a-namemobiletablesacommands-to-manage-mobile-service-tables"></a><a name="Mobile_Tables"></a>モバイル サービス テーブルの管理用コマンド
 **mobile table list [options] [servicename]**
 
 このコマンドは、モバイル サービスの全テーブルの一覧を表示します。
@@ -1453,8 +1457,8 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
     info:    mobile data truncate command OK
 
 
-### <a name="<a-name="mobile_scripts"></a>commands-to-manage-scripts"></a><a name="Mobile_Scripts"></a>スクリプトの管理用コマンド
-このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。 詳細については、[Mobile Services のサーバー スクリプトの操作に関するページ](mobile-services/mobile-services-how-to-use-server-scripts.md)を参照してください。
+### <a name="a-namemobilescriptsacommands-to-manage-scripts"></a><a name="Mobile_Scripts"></a>スクリプトの管理用コマンド
+このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。 詳細については、[Mobile Services のサーバー スクリプトの操作に関するページ](https://github.com/Azure/azure-mobile-services/blob/master/docs/mobile-services-how-to-use-server-scripts.md)を参照してください。
 
 **mobile script list [options] [servicename]**
 
@@ -1510,7 +1514,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
     info:    Executing command mobile script delete
     info:    mobile script delete command OK
 
-### <a name="<a-name="mobile_jobs"></a>commands-to-manage-scheduled-jobs"></a><a name="Mobile_Jobs"></a>スケジュールされたジョブの管理用コマンド
+### <a name="a-namemobilejobsacommands-to-manage-scheduled-jobs"></a><a name="Mobile_Jobs"></a>スケジュールされたジョブの管理用コマンド
 このセクションのコマンドは、モバイル サービスに属するスケジュールされたジョブの管理に使用します。 詳細については、「[ジョブのスケジュール](http://msdn.microsoft.com/library/windowsazure/jj860528.aspx)」を参照してください。
 
 **mobile job list [options] [servicename]**
@@ -1585,7 +1589,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 > 
 > 
 
-### <a name="<a-name="mobile_scale"></a>commands-to-scale-a-mobile-service"></a><a name="Mobile_Scale"></a>モバイル サービスのスケール用コマンド
+### <a name="a-namemobilescaleacommands-to-scale-a-mobile-service"></a><a name="Mobile_Scale"></a>モバイル サービスのスケール用コマンド
 このセクションのコマンドは、モバイル サービスの規模を設定するために使用されます。 詳細については、「[モバイル サービスの拡張](http://msdn.microsoft.com/library/windowsazure/jj193178.aspx)」を参照してください。
 
 **mobile scale show [options] [servicename]**
@@ -2047,7 +2051,7 @@ Service Bus 名前空間を作成します。
 ## <a name="commands-to-manage-sql-databases"></a>SQL Database の管理用コマンド
 これらのコマンドを使用して、Azure SQL Database を管理します。
 
-### <a name="commands-to-manage-sql-servers."></a>SQL サーバーの管理用コマンド
+### <a name="commands-to-manage-sql-servers"></a>SQL サーバーの管理用コマンド
 これらのコマンドを使用して、SQL サーバーを管理します。
 
 **sql server create &lt;administratorLogin> &lt;administratorPassword> &lt;location>**
@@ -2350,6 +2354,6 @@ Virtual Network の詳細を表示します。
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

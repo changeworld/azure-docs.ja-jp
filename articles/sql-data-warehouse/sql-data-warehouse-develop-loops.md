@@ -1,28 +1,32 @@
 ---
-title: SQL Data Warehouse | Microsoft Docs
-description: ソリューションを開発するための Azure SQL Data Warehouse でのTRANSACT-SQL のループと、カーソルの置換に関するヒント。
+title: "SQL Data Warehouse でのループ | Microsoft Docs"
+description: "ソリューションを開発するための  Azure SQL Data Warehouse  でのTRANSACT-SQL のループと、カーソルの置換に関するヒント。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
-manager: barbkess
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: f3384b81-b943-431b-bc73-90e47e4c195f
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/14/2016
-ms.author: jrj;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 41bb17ccd175506d4436eff985c52d46fa594576
+
 
 ---
-# SDL Data Warehouse でのループ
-SQL Data Warehouse は、ステートメント ブロックを繰り返し実行するための [WHILE][WHILE] ループをサポートします。これは、指定された条件が true の場合に限り、またはコードが `BREAK` キーワードを使用してループを終了するまで実行されます。ループは、SQL コードで定義されているカーソルを置き換えるために特に便利です。また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。そのため、カーソルを置き換える必要がある場合、[WHILE] ループは多くの選択肢があります。
+# <a name="loops-in-sql-data-warehouse"></a>SDL Data Warehouse でのループ
+SQL Data Warehouse は、ステートメント ブロックを繰り返し実行するための [WHILE][WHILE] ループをサポートします。 これは、指定された条件が true の場合に限り、またはコードが `BREAK` キーワードを使用してループを終了するまで実行されます。 ループは、SQL コードで定義されているカーソルを置き換えるために特に便利です。 また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。 そのため、カーソルを置き換える必要がある場合、 [WHILE] ループは多くの選択肢があります。
 
-## SQL Data Warehouse でのループの活用とカーソルの置換
-ただし、始める前に、まず、自分で「このカーソルは、セット ベースの操作を使用して再作成できるか」と問いかけてください。多くの場合、答えは「はい」であり、この方法が最適です。セット ベースの操作は、1 行ずつの反復的なアプローチをとるよりも非常に速く実行されます。
+## <a name="leveraging-loops-and-replacing-cursors-in-sql-data-warehouse"></a>SQL Data Warehouse でのループの活用とカーソルの置換
+ただし、始める前に、まず、自分で「このカーソルは、セット ベースの操作を使用して再作成できるか」と問いかけてください。 多くの場合、答えは「はい」であり、この方法が最適です。 セット ベースの操作は、1 行ずつの反復的なアプローチをとるよりも非常に速く実行されます。
 
-高速順方向の読み取り専用カーソルは、ループ構造で簡単に置き換えることができます。単純な例を次に示します。このコード例は、データベース内のすべてのテーブルの統計を更新します。ループ内のテーブルを反復処理することで、シーケンス内の各コマンドを実行できます。
+高速順方向の読み取り専用カーソルは、ループ構造で簡単に置き換えることができます。 単純な例を次に示します。 このコード例は、データベース内のすべてのテーブルの統計を更新します。 ループ内のテーブルを反復処理することで、シーケンス内の各コマンドを実行できます。
 
 最初に、個々のステートメントを識別するための一意の行番号が含まれている、一時テーブルを作成します。
 
@@ -67,8 +71,8 @@ DROP TABLE #tbl;
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## 次のステップ
-開発のその他のヒントについては、[開発の概要][開発の概要]に関するページをご覧ください。
+## <a name="next-steps"></a>次のステップ
+開発に関するその他のヒントについては、[「開発の概要」][開発の概要]をご覧ください。
 
 <!--Image references-->
 
@@ -81,4 +85,8 @@ DROP TABLE #tbl;
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

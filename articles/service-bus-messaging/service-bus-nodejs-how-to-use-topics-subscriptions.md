@@ -1,19 +1,23 @@
 ---
-title: Node.js での Service Bus トピックの使用方法 | Microsoft Docs
-description: Node.js アプリから Azure の Service Bus トピックとサブスクリプションを使用する方法を学習します。
-services: service-bus
+title: "Node.js での Service Bus トピックの使用方法 | Microsoft Docs"
+description: "Node.js アプリから Azure の Service Bus トピックとサブスクリプションを使用する方法を学習します。"
+services: service-bus-messaging
 documentationcenter: nodejs
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
+ms.openlocfilehash: d956c392a209522dd6535297316f9ed695207b00
+
 
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions"></a>Service Bus のトピックとサブスクリプションの使用方法
@@ -23,16 +27,16 @@ ms.author: sethm
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
-## <a name="create-a-node.js-application"></a>Node.js アプリケーションの作成
-空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]」、「[Node.js クラウド サービス][Node.js クラウド サービス]」 (Windows PowerShell の使用)、または「WebMatrix を使用した Web サイト」を参照してください。
+## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
+空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービス][Node.js クラウド サービス] (Windows PowerShell を使用)、または WebMatrix を使用した Web サイトに関するページを参照してください。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Service Bus を使用するには、Node.js Azure パッケージをダウンロードします。 このパッケージには、Service Bus REST サービスと通信するためのライブラリのセットが含まれています。
 
-### <a name="use-node-package-manager-(npm)-to-obtain-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 1. **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 2. コマンド ウィンドウに「**npm install azure**」と入力します。次のような出力が生成されます。
-   
+
    ```
        azure@0.7.5 node_modules\azure
    ├── dateformat@1.0.2-1.2.3
@@ -58,9 +62,9 @@ var azure = require('azure');
 ### <a name="set-up-a-service-bus-connection"></a>Service Bus 接続の設定
 Azure モジュールは、Service Bus に接続するために必要な情報を得るために、環境変数 AZURE\_SERVICEBUS\_NAMESPACE と AZURE\_SERVICEBUS\_ACCESS\_KEY を読み取ります。 これらの環境変数が設定されていない場合、**createServiceBusService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Cloud Service の構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js Cloud Service に関するトピック][]を参照してください。
+Azure Cloud Service の構成ファイルで環境変数を設定する例については、[ストレージを使用する Node.js Cloud Service に関するトピック][ストレージを使用する Node.js クラウド サービス]を参照してください。
 
-Azure Web サイトの [Azure クラシック ポータル][Azure クラシック ポータル]で環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション][ストレージを使用する Node.js Web アプリケーション]」を参照してください。
+Azure Web サイトの [Azure クラシック ポータル][Azure クラシック ポータル] で環境変数を設定する例については、[「ストレージを使用する Node.js Web アプリケーション」][ストレージを使用する Node.js Web アプリケーション]を参照してください。
 
 ## <a name="create-a-topic"></a>トピックを作成する
 **ServiceBusService** オブジェクトを使用すると、トピックを操作できます。 次のコードでは、**ServiceBusService** オブジェクトを作成します。 **server.js** ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
@@ -120,10 +124,10 @@ function (returnObject, finalCallback, next)
 
 > [!NOTE]
 > サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで存在し続けます。 アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に **getSubscription** メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
-> 
-> 
+>
+>
 
-### <a name="create-a-subscription-with-the-default-(matchall)-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
+### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 **MatchAll** フィルターは、新しいサブスクリプションの作成時にフィルターが指定されていない場合に使用される既定のフィルターです。 **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、"AllMessages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
 
 ```
@@ -143,8 +147,8 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 
 > [!NOTE]
 > 既定のフィルターはすべての新しいサブスクリプションに自動的に適用されるため、最初に既定のフィルターを削除する必要があります。削除しなければ、指定された他のすべてのフィルターは **MatchAll** によってオーバーライドされます。 既定のルールを削除するには、**ServiceBusService** オブジェクトの **deleteRule** メソッドを使用します。
-> 
-> 
+>
+>
 
 次の例では、`HighMessages` という名前のサブスクリプションを作成し、**SqlFilter** を適用します。このフィルターでは、カスタム **messagenumber** プロパティが 3 を超えるメッセージのみが選択されます。
 
@@ -158,8 +162,8 @@ serviceBusService.createSubscription('MyTopic', 'HighMessages', function (error)
 var rule={
     deleteDefault: function(){
         serviceBusService.deleteRule('MyTopic',
-            'HighMessages', 
-            azure.Constants.ServiceBusConstants.DEFAULT_RULE_NAME, 
+            'HighMessages',
+            azure.Constants.ServiceBusConstants.DEFAULT_RULE_NAME,
             rule.handleError);
     },
     create: function(){
@@ -167,10 +171,10 @@ var rule={
             sqlExpressionFilter: 'messagenumber > 3'
         };
         rule.deleteDefault();
-        serviceBusService.createRule('MyTopic', 
-            'HighMessages', 
-            'HighMessageFilter', 
-            ruleOptions, 
+        serviceBusService.createRule('MyTopic',
+            'HighMessages',
+            'HighMessageFilter',
+            ruleOptions,
             rule.handleError);
     },
     handleError: function(error){
@@ -193,8 +197,8 @@ serviceBusService.createSubscription('MyTopic', 'LowMessages', function (error){
 var rule={
     deleteDefault: function(){
         serviceBusService.deleteRule('MyTopic',
-            'LowMessages', 
-            azure.Constants.ServiceBusConstants.DEFAULT_RULE_NAME, 
+            'LowMessages',
+            azure.Constants.ServiceBusConstants.DEFAULT_RULE_NAME,
             rule.handleError);
     },
     create: function(){
@@ -202,10 +206,10 @@ var rule={
             sqlExpressionFilter: 'messagenumber <= 3'
         };
         rule.deleteDefault();
-        serviceBusService.createRule('MyTopic', 
-            'LowMessages', 
-            'LowMessageFilter', 
-            ruleOptions, 
+        serviceBusService.createRule('MyTopic',
+            'LowMessages',
+            'LowMessageFilter',
+            ruleOptions,
             rule.handleError);
     },
     handleError: function(error){
@@ -285,7 +289,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 メッセージが処理された後、**deleteMessage** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は **1 回以上の処理** と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの **MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
-トピックおよびサブスクリプションは永続的であり、[Azure クラシック ポータル][Azure クラシック ポータル]またはプログラムによって明示的に削除する必要があります。
+トピックおよびサブスクリプションは永続的であり、[Azure クラシック ポータル][Azure クラシック ポータル] またはプログラムによって明示的に削除する必要があります。
 次の例では、`MyTopic` という名前のトピックを削除する方法を示します。
 
     serviceBusService.deleteTopic('MyTopic', function (error) {
@@ -305,9 +309,9 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 ## <a name="next-steps"></a>次のステップ
 これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
-* [Service Bus のキュー、トピック、サブスクリプション][]。
+* [「Service Bus のキュー、トピック、サブスクリプション」][キュー、トピック、サブスクリプション]を参照してください。
 * [SqlFilter][SqlFilter] の API のリファレンス。
-* GitHub の [Azure SDK for Node][Azure SDK for Node] リポジトリ。
+* GitHub の [Azure SDK for Node][Azure SDK for Node] リポジトリを参照してください。
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
 [Azure クラシック ポータル]: https://manage.windowsazure.com
@@ -315,13 +319,12 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 [キュー、トピック、サブスクリプション]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
 [Node.js クラウド サービス]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
+[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
 [ストレージを使用する Node.js クラウド サービス]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[ストレージを使用する Node.js Web アプリケーション]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+[ストレージを使用する Node.js Web アプリケーション]: ../storage/storage-nodejs-use-table-storage-cloud-service-app.md
 
 
 
-
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

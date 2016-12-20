@@ -1,12 +1,12 @@
 ---
-title: コンテンツ保護の概要 | Microsoft Docs
-description: この記事では、Media Services でのコンテンツ保護の概要について説明します。
+title: "コンテンツ保護の概要 | Microsoft Docs"
+description: "この記事では、Media Services でのコンテンツ保護の概要について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 81bc00e1-dcda-4d69-b9ab-8768b793422b
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 576d3a1c242c74715e7a6dc33ec0a4adebcc9959
+
 
 ---
 # <a name="protecting-content-overview"></a>コンテンツ保護の概要
@@ -51,7 +55,7 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 
 ストレージで暗号化された資産を配信するためには、資産の配信ポリシーを構成して、コンテンツの配信方法を Media Services に指示する必要があります。 資産をストリーミングするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシー (AES、共通暗号化、暗号化なしなど) を使用してコンテンツをストリーミングする必要があります。
 
-## <a name="common-encryption-(cenc)"></a>共通暗号化 (CENC)
+## <a name="common-encryption-cenc"></a>共通暗号化 (CENC)
 PlayReady または Widewine を使用してコンテンツを暗号化する場合は、共通暗号化を使用します。
 
 ## <a name="using-cbcs-aapl-encryption"></a>cbcs-aapl 暗号化の使用
@@ -77,7 +81,7 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 * 1 つの暗号化のみが資産に適用された場合は、暗号化タイプを URL で指定する必要はありません。
 * 暗号化タイプでは大文字と小文字が区別されます。
 * 指定できる暗号化タイプは次のとおりです。  
-  * **cenc**: 共通暗号化 (Playready または Widevine)
+  * **cenc**: 共通暗号化 (PlayReady または Widevine)
   * **cbcs-aapl**: Fairplay
   * **cbc**: AES エンベロープ暗号化
 
@@ -115,6 +119,6 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

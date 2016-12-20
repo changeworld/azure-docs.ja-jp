@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/18/2016
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0e6effa1e74a06a99a2a6bea9df3cfc6deedeb0e
+ms.sourcegitcommit: ee390dcdeefbc1ed87317ae2e167b3c054911723
+ms.openlocfilehash: a8149b38872a8d5b5a5e30280712ca38d983f80c
 
 
 ---
@@ -287,7 +287,7 @@ Table Storage を使用したその他の例については、「 [Getting Start
     else
        Console.WriteLine("Entity could not be retrieved.");
 ```
-## <a name="insertorreplace-an-entity"></a>エンティティを挿入または置換する
+## <a name="insert-or-replace-an-entity"></a>エンティティを挿入または置換する
 **Replace** 操作は、サーバーからエンティティを取得した後にエンティティが変更されていると失敗します。  さらに、 **Replace** 操作を成功させるためには、先にエンティティをサーバーから取得する必要があります。
 しかし、サーバーにエンティティが存在するかどうかわからないが、現在格納されている値は不適切である場合があります。 このため、更新ですべての値を上書きする必要があります。  そのような場合は、 **InsertOrReplace** 操作を使用します。  この操作は、最終更新日時に関係なく、エンティティが存在しない場合は挿入し、存在する場合は置換します。  次のコード例では、先ほどと同じように Ben Smith のユーザー エンティティを取得していますが、今度は **InsertOrReplace**を使用してサーバーに保存しています。  そのため、取得操作と更新操作の間に行われたエンティティの更新は上書きされます。
 ```csharp

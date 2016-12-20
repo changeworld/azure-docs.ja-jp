@@ -1,20 +1,24 @@
 ---
-title: 'Stream Analytics: 入力と出力のログイン資格情報の交換 | Microsoft Docs'
-description: Stream Analytics の入力と出力の資格情報を更新する方法について説明します。
-keywords: ログイン資格情報
+title: "Stream Analytics: 入力と出力のログイン資格情報の交換 | Microsoft Docs"
+description: "Stream Analytics の入力と出力の資格情報を更新する方法について説明します。"
+keywords: "ログイン資格情報"
 services: stream-analytics
-documentationcenter: ''
+documentationcenter: 
 author: jeffstokes72
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 42ae83e1-cd33-49bb-a455-a39a7c151ea4
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
+ms.date: 11/11/2016
 ms.author: jeffstok
+translationtype: Human Translation
+ms.sourcegitcommit: 0b82ffed4b09dcde3f04282d3d0ce368eb2d614f
+ms.openlocfilehash: 45156a48c24192bdfe76585891b7fbd0176efc8b
+
 
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-in-stream-analytics-jobs"></a>Stream Analytics ジョブでの入力と出力のログイン資格情報の交換
@@ -23,7 +27,7 @@ ms.author: jeffstok
 
 Azure Stream Analytics では、最後の出力からのジョブの再開がサポートされていますが、ジョブを停止して開始し、ログイン資格情報を交換するまでの遅延を最小限に抑えるためのプロセス全体を共有することを考えました。
 
-## <a name="part-1---prepare-the-new-set-of-credentials:"></a>パート 1: 新しい資格情報セットの準備
+## <a name="part-1---prepare-the-new-set-of-credentials"></a>パート 1: 新しい資格情報セットの準備
 このパートは、次の入力/出力に適用できます。
 
 * BLOB ストレージ
@@ -33,7 +37,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 
 その他の入力/出力の場合は、パート2 へ進んでください。
 
-### <a name="blob-storage/table-storage"></a>BLOB ストレージとテーブル ストレージ
+### <a name="blob-storagetable-storage"></a>BLOB ストレージとテーブル ストレージ
 1. Azure 管理ポータルで [ストレージ] 拡張に移動します。  
    ![図 1][graphic1]
 2. ジョブで使用されているストレージを見つけ、そこに移動します。  
@@ -65,13 +69,13 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 9. [再生成] をクリックします。  
    ![図 12][graphic12]
 10. 新しく生成されたキーをコピーします。  
-    ![図 13][graphic13]
+   ![図 13][graphic13]
 11. パート 2 に進みます。  
 
 ### <a name="sql-database"></a>SQL Database
 > [!NOTE]
 > 注: SQL Databse サービスに接続する必要があります。 Azure 管理ポータルで管理機能を使用して実行する方法を説明しますが、SQL Server Management Studio などのクライアント側のツールを使用することもできます。
-> 
+>
 > 
 
 1. Azure 管理ポータルで [SQL データベース] 拡張に移動します。  
@@ -93,19 +97,19 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 9. 手順 2 に戻り、今回はデータベースをクリックします。  
    ![図 21][graphic21]
 10. [管理] コマンドをクリックします。  
-    ![図 22][graphic22]
+   ![図 22][graphic22]
 11. ユーザー名、パスワードを入力し、[ログオン] をクリックします。  
-    ![図 23][graphic23]
+   ![図 23][graphic23]
 12. [新しいクエリ] をクリックします。  
-    ![図 24][graphic24]
+   ![図 24][graphic24]
 13. 次のクエリを入力し、<user_name> を、このデータベースのコンテキストでこのログインを識別するために使用する名前 (たとえば、<login_name> に指定したものと同じ値を入力できます) に置き換え、<login_name> を新しいユーザー名に置き換えます。  
-    `CREATE USER <user_name> FROM LOGIN <login_name>`
+   `CREATE USER <user_name> FROM LOGIN <login_name>`
 14. [実行] をクリックします。  
-    ![図 25][graphic25]
+   ![図 25][graphic25]
 15. ここで、元のユーザーと同じロールと権限を持つ新しいユーザーを指定する必要があります。
 16. パート 2 に進みます。
 
-## <a name="part-2:-stopping-the-stream-analytics-job"></a>パート 2: Stream Analytics ジョブの停止
+## <a name="part-2-stopping-the-stream-analytics-job"></a>パート 2: Stream Analytics ジョブの停止
 1. Azure 管理ポータルで [Stream Analytics] 拡張に移動します。  
    ![図 26][graphic26]
 2. ジョブを見つけ、それに移動します。  
@@ -113,13 +117,13 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 3. 入力時と出力時のどちらで資格情報を交換するかに基づいて、[入力] タブまたは [出力] タブに移動します。  
    ![図 28][graphic28]
 4. [停止] コマンドをクリックし、ジョブが停止されたことを確認します。  
-   ![graphic29][graphic29] ジョブが停止するまで待機します。
+   ![図 29][graphic29] ジョブが停止するまで待機します。
 5. 資格情報を交換する入力/出力を見つけ、そこに移動します。  
    ![図 30][graphic30]
 6. パート 3 に進みます。
 
-## <a name="part-3:-editing-the-credentials-on-the-stream-analytics-job"></a>パート 3: Stream Analytics ジョブの資格情報の編集
-### <a name="blob-storage/table-storage"></a>BLOB ストレージとテーブル ストレージ
+## <a name="part-3-editing-the-credentials-on-the-stream-analytics-job"></a>パート 3: Stream Analytics ジョブの資格情報の編集
+### <a name="blob-storagetable-storage"></a>BLOB ストレージとテーブル ストレージ
 1. [ストレージ アカウント キー] フィールドを見つけ、新しく生成されたキーをそこに貼り付けます。  
    ![図 31][graphic31]
 2. [保存] コマンドをクリックし、変更内容の保存を確定します。  
@@ -137,13 +141,15 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 
 ### <a name="power-bi"></a>Power BI
 1. [承認の更新] をクリックします。  
-2. ![図 35][graphic35]
-3. 次の確認メッセージが表示されます。  
-4. ![図 36][graphic36]
-5. [保存] コマンドをクリックし、変更内容の保存を確定します。  
+
+   ![図 35][graphic35]
+2. 次の確認メッセージが表示されます。  
+
+   ![図 36][graphic36]
+3. [保存] コマンドをクリックし、変更内容の保存を確定します。  
    ![図 37][graphic37]
-6. 変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。
-7. パート 4 に進みます。
+4. 変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。
+5. パート 4 に進みます。
 
 ### <a name="sql-database"></a>SQL Database
 1. [ユーザー名] フィールドと [パスワード] のフィールドを見つけ、新しく作成された資格情報セットをそこに貼り付けます。  
@@ -153,7 +159,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 3. 変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。  
 4. パート 4 に進みます。
 
-## <a name="part-4:-starting-your-job-from-last-stopped-time"></a>パート 4: 最後に停止した時刻からのジョブの開始
+## <a name="part-4-starting-your-job-from-last-stopped-time"></a>パート 4: 最後に停止した時刻からのジョブの開始
 1. 入力/出力から移動します。  
    ![図 40][graphic40]
 2. [開始] コマンドをクリックします。  
@@ -162,7 +168,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
    ![図 42][graphic42]
 4. パート 5 に進みます。  
 
-## <a name="part-5:-removing-the-old-set-of-credentials"></a>パート 5: 以前の資格情報セットの削除
+## <a name="part-5-removing-the-old-set-of-credentials"></a>パート 5: 以前の資格情報セットの削除
 このパートは、次の入力/出力に適用できます。
 
 * BLOB ストレージ
@@ -170,7 +176,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 * SQL Database
 * Table Storage
 
-### <a name="blob-storage/table-storage"></a>BLOB ストレージとテーブル ストレージ
+### <a name="blob-storagetable-storage"></a>BLOB ストレージとテーブル ストレージ
 ジョブで以前に使用されていたアクセス キーに対してパート 1 を繰り返し、現在未使用のアクセス キーを更新します。
 
 ### <a name="event-hubs"></a>Event Hubs
@@ -243,6 +249,6 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

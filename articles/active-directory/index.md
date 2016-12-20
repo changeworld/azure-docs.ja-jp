@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 844e18a1ab702773799cf9045844d982d9ee2581
-ms.openlocfilehash: 0e1d5e7e38aa23c0888e166d584b17fdcbdce40f
+ms.sourcegitcommit: 8f90dd518c6147df884ca9fd61ff8ee3b47dd179
+ms.openlocfilehash: 0fa4f3f5d5f07dcd0ec7dfdea7a0bec67900288e
 
 ---
 
@@ -89,18 +89,64 @@ Azure Active Directory (Azure AD) は、マイクロソフトが提供する、�
 
 ## <a name="reference"></a>リファレンス
 
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell リファレンス](/powershell/)
-
-###<a name="azure-cli"></a>Azure CLI
-[Azure CLI を使用した Azure Active Directory](/cli/azure/ad)
-
-###<a name="net"></a>.NET
-[Azure Active Directory .NET リファレンス](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
-
-###<a name="java"></a>Java
-[Azure Java API リファレンス](/java/api/)
-
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Azure PowerShell リファレンス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/cli/azure/ad">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure CLI</h3>
+                        <p>Azure CLI を使用した Azure Active Directory</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/active-directory/adal/microsoft.identitymodel.clients.activedirectory">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>Azure Active Directory .NET リファレンス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/java/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Java</h3>
+                        <p>Azure Java API リファレンス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+   </ul>
 
 ---
 
@@ -114,6 +160,6 @@ Active Directory のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

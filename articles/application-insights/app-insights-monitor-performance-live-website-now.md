@@ -14,15 +14,15 @@ ms.topic: get-started-article
 ms.date: 10/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: 5159e7fc47d320d52eb7b94b5775158a3f09c769
+ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
+ms.openlocfilehash: 79819619ff7f25ba1097fe12f2da7453a1fcb4f1
 
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Application Insights を使用した実行時の Web アプリのインストルメント化
-*Application Insights はプレビュー段階です。*
 
-Visual Studio Application Insights を使用すれば、ライブ Web アプリをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 オンプレミスの IIS サーバーにアプリがホストされている場合は、Status Monitor をインストールします。アプリが Azure Web アプリであったり、Azure VM で実行されていたりする場合は、Application Insights 拡張機能をインストールできます  ([ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化については、個別の記事もあります)。
+
+Azure Application Insights を使用すれば、ライブ Web アプリケーションをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 オンプレミスの IIS サーバーにアプリがホストされている場合は、Status Monitor をインストールします。アプリが Azure Web アプリであったり、Azure VM で実行されていたりする場合は、Application Insights 拡張機能をインストールできます  ([ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化については、個別の記事もあります)。
 
 ![サンプルのグラフ](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
@@ -38,7 +38,7 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 | --- | --- | --- |
 | 要求と例外 |はい |はい |
 | [より詳細な例外](app-insights-asp-net-exceptions.md) | |はい |
-| [依存関係の診断](app-insights-asp-net-dependencies.md) |はい (.NET 4.6 以降) |はい |
+| [依存関係の診断](app-insights-asp-net-dependencies.md) |.NET 4.6 以降 (詳細レベルは低い) |はい。全詳細。結果コード、SQL コマンド テキスト、HTTP 動詞|
 | [システム パフォーマンス カウンター](app-insights-performance-counters.md) | |IIS または Azure Cloud Services (Azure Web アプリは除く) |
 | [カスタム テレメトリの API][api] |はい | |
 | [トレース ログ統合](app-insights-asp-net-trace-logs.md) |はい | |
@@ -232,6 +232,6 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

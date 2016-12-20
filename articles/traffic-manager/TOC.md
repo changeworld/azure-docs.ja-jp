@@ -17,11 +17,17 @@
 ## [ルーティング方法の構成](traffic-manager-configure-routing-method.md)
 ## [設定のテスト](traffic-manager-testing-settings.md)
 ## [低下したエンドポイントのトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
-## [ネットワーク リソースの使用](../virtual-network/resource-groups-networking.md)
+## [負荷分散サービスの結合](traffic-manager-load-balancing-azure.md)
+## [ネットワーク リソースの使用](../virtual-network/resource-groups-networking.md?toc=%2fazure%2ftraffic-manager%2ftoc.json)
 
 # リファレンス
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
-## [PowerShell (クラシック)](/powershell/servicemanagement/)
+## [PowerShell](/powershell/resourcemanager/azurerm.trafficmanager/v2.3.0/azurerm.trafficmanager)
+## [PowerShell (クラシック)](/powershell/servicemanagement/azure.trafficmanager/v3.1.0/azure.trafficmanager)
+## [Azure CLI 2.0 プレビュー](/cli/azure/network/traffic-manager)
+## [Java](/java/api/com.microsoft.azure.management.trafficmanager)
+## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/)
+## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_traffic_manager)
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html)
 ## [REST ()](https://msdn.microsoft.com/library/mt163667.aspx)
 
 # 関連項目
@@ -30,14 +36,15 @@
 ## [Azure DNS](/azure/dns/)
 
 # リソース
-##[料金](https://azure.microsoft.com/pricing/details/traffic-manager/)
-##[SLA](https://azure.microsoft.com/support/legal/sla/traffic-manager/)
-##[サービスの制限](../azure-subscription-service-limits.md#traffic-manager-limits)
+## [料金](https://azure.microsoft.com/pricing/details/traffic-manager/)
+## [SLA](https://azure.microsoft.com/support/legal/sla/traffic-manager/)
+## [サービスの制限](../azure-subscription-service-limits.md#traffic-manager-limits)
 ## [ブログ](https://azure.microsoft.com/blog/topics/networking/)
-## [フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=traffic-manager)
+## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=traffic-manager)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

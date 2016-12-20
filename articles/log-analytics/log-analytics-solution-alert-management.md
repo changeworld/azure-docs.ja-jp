@@ -1,22 +1,26 @@
 ---
-title: Operations Management Suite (OMS) アラート管理ソリューション | Microsoft Docs
-description: 管理対象となる環境内のすべてのアラートは、Log Analytics のアラート管理ソリューションを使用して分析できます。  OMS 内で生成されたアラートを一元管理できるほか、接続されている System Center Operations Manager (SCOM) 管理グループからのアラートを Log Analytics にインポートすることができます。
+title: "Operations Management Suite (OMS) アラート管理ソリューション |Microsoft Docs"
+description: "管理対象となる環境内のすべてのアラートは、Log Analytics のアラート管理ソリューションを使用して分析できます。  OMS 内で生成されたアラートを一元管理できるほか、接続されている System Center Operations Manager (SCOM) 管理グループからのアラートを Log Analytics にインポートすることができます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: fe5d534e-0418-4e2f-9073-8025e13271a8
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/06/2016
+ms.date: 12/09/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2caa3118785fab6919dd088e440bf3483a77bd69
+
 
 ---
-# <a name="alert-management-solution-in-operations-management-suite-(oms)"></a>Operations Management Suite (OMS) アラート管理ソリューション
+# <a name="alert-management-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) アラート管理ソリューション
 ![Alert Management icon](media/log-analytics-solution-alert-management/icon.png) 管理対象となる環境内のすべてのアラートは、アラート管理ソリューションを使用して分析できます。  OMS 内で生成されたアラートを一元管理できるほか、接続されている System Center Operations Manager (SCOM) 管理グループからのアラートを Log Analytics にインポートすることができます。  複数の管理グループが存在する環境では、すべての管理グループのアラートをアラート管理ソリューションによって一元的に把握することができます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -114,6 +118,9 @@ OMS ワークスペースにアラート管理ソリューションを追加す�
 ## <a name="next-steps"></a>次のステップ
 * Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](log-analytics-alerts.md) に関するページを参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

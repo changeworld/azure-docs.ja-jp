@@ -1,13 +1,13 @@
 ---
-title: Linux ベースの HDInsight 用 Java MapReduce プログラムの開発 | Microsoft Docs
-description: Java MapReduce プログラムを開発する方法と、それらのプログラムを Linux ベースの HDInsight にデプロイする方法について説明します。
+title: "Linux ベースの HDInsight 用 Java MapReduce プログラムの開発 | Microsoft Docs"
+description: "Java MapReduce プログラムを開発する方法と、それらのプログラムを Linux ベースの HDInsight にデプロイする方法について説明します。"
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 author: Blackmist
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
-
+ms.assetid: 9ee6384c-cb61-4087-8273-fb53fa27c1c3
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,12 +15,16 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e22d28c76902fbfe549f2a7aeb22b62eb0a540fb
+
 
 ---
 # <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight-linux"></a>HDInsight Linux での Hadoop 用 Java MapReduce プログラムの開発
 このドキュメントでは、Apache Maven を使用して MapReduce アプリケーションを作成し、HDInsight クラスターの Linux ベースの Hadoop にこれをデプロイして実行する手順について説明します。
 
-## <a name="<a-name="prerequisites"></a>prerequisites"></a><a name="prerequisites"></a>前提条件
+## <a name="a-nameprerequisitesaprerequisites"></a><a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 7 以降 (または同等の OpenJDK など)
@@ -62,15 +66,15 @@ Java と JDK をインストールするときに、次のような環境変数�
           <scope>provided</scope>
         </dependency>
         <dependency>
-          <groupId>org.apache.hadoop</groupId>
-          <artifactId>hadoop-mapreduce-client-common</artifactId>
-          <version>2.5.1</version>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-mapreduce-client-common</artifactId>
+            <version>2.5.1</version>
           <scope>provided</scope>
         </dependency>
         <dependency>
-          <groupId>org.apache.hadoop</groupId>
-          <artifactId>hadoop-common</artifactId>
-          <version>2.5.1</version>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>2.5.1</version>
           <scope>provided</scope>
         </dependency>
    
@@ -80,26 +84,26 @@ Java と JDK をインストールするときに、次のような環境変数�
 2. **pom.xml** ファイルに次のコードを追加します。 このコードは、ファイルの `<project>...</project>` タグ内に配置する必要があります (たとえば `</dependencies>` と `</project>` の間)。
    
         <build>
-          <plugins>
+            <plugins>
             <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-shade-plugin</artifactId>
-              <version>2.3</version>
-              <configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
                 <transformers>
-                  <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
                   </transformer>
                 </transformers>
-              </configuration>
-              <executions>
+                </configuration>
+                <executions>
                 <execution>
-                  <phase>package</phase>
-                    <goals>
+                    <phase>package</phase>
+                      <goals>
                       <goal>shade</goal>
-                    </goals>
+                      </goals>
                 </execution>
-              </executions>
-            </plugin>
+                </executions>
+              </plugin>
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
@@ -108,7 +112,7 @@ Java と JDK をインストールするときに、次のような環境変数�
                <target>1.7</target>
               </configuration>
             </plugin>
-          </plugins>
+            </plugins>
         </build>
    
     最初のプラグインは [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/) を構成します。これは、アプリケーションで必要な依存関係を含む uberjar (fatjar と呼ばれることもある) を作成するために使用されます。 また、一部のシステムで問題が発生する可能性がある jar パッケージ内のライセンスの重複を防止します。
@@ -206,7 +210,7 @@ Java と JDK をインストールするときに、次のような環境変数�
    > 
    > 
 
-## <a name="<a-id="upload"></a>upload-the-jar"></a><a id="upload"></a>jar をアップロードする
+## <a name="a-iduploadaupload-the-jar"></a><a id="upload"></a>jar をアップロードする
 次のコマンドを使用して、HDInsight ヘッドノードに jar ファイルをアップロードします。
 
     scp wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
@@ -220,7 +224,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 > 
 > 
 
-## <a name="<a-name="run"></a>run-the-mapreduce-job"></a><a name="run"></a>MapReduce ジョブを実行する
+## <a name="a-namerunarun-the-mapreduce-job"></a><a name="run"></a>MapReduce ジョブを実行する
 1. 次の記事の説明に従って、SSH を使用して HDInsight に接続します。
    
    * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
@@ -240,7 +244,7 @@ Java と JDK をインストールするときに、次のような環境変数�
         zelus   1
         zenith  2
 
-## <a name="<a-id="nextsteps"></a>next-steps"></a><a id="nextsteps"></a>次のステップ
+## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
 このドキュメントでは、Java MapReduce ジョブを作成する方法を説明しました。 HDInsight を使用する他の方法については、次のドキュメントを参照してください。
 
 * [HDInsight での Hive の使用][hdinsight-use-hive]
@@ -268,6 +272,6 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

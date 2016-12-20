@@ -1,12 +1,12 @@
 ---
-title: Log Analytics についてよく寄せられる質問 | Microsoft Docs
-description: Log Analytics サービスについてよく寄せられる質問とその回答
+title: "Log Analytics についてよく寄せられる質問 | Microsoft Docs"
+description: "Log Analytics サービスについてよく寄せられる質問とその回答"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e24e6f9cc383be77dc631a0dd67db099906dccc0
+
 
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
@@ -45,7 +49,7 @@ A: いいえ。 Log Analytics では大量のデータが処理され、格納�
 ## <a name="configuration"></a>構成
 **Q.Azure 診断 (WAD) からの読み取りに使用されるテーブル/BLOB コンテナー名は変更できますか?**  
 
-A.  いいえ。現在のところは変更できませんが、今後のリリースで予定されています。
+A.    いいえ。現在のところは変更できませんが、今後のリリースで予定されています。
 
 **Q.OMS サービスにはどの IP アドレスが使用されていますか?ファイアウォールが OMS サービスへのトラフィックのみを許可していることはどうやって確認できますか?**  
 
@@ -118,6 +122,9 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics の起動と開始](log-analytics-get-started.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

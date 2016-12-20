@@ -1,19 +1,23 @@
 ---
-title: Log Analytics HTTP データ コレクター API | Microsoft Docs
-description: Log Analytics HTTP データ コレクター API を使用すると、REST API を呼び出すことのできるクライアントから POST JSON データを Log Analytics リポジトリに追加できます。 この記事では、この API の使用方法について説明し、さまざまなプログラミング言語を使用してデータを発行する方法の例を紹介します。
+title: "Log Analytics HTTP データ コレクター API | Microsoft Docs"
+description: "Log Analytics HTTP データ コレクター API を使用すると、REST API を呼び出すことのできるクライアントから POST JSON データを Log Analytics リポジトリに追加できます。 この記事では、この API の使用方法について説明し、さまざまなプログラミング言語を使用してデータを発行する方法の例を紹介します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2016
+ms.date: 10/26/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f574a3cd837e4fc9cf292d672432a7960cae177b
+
 
 ---
 # <a name="log-analytics-http-data-collector-api"></a>Log Analytics HTTP データ コレクター API
@@ -26,7 +30,7 @@ Azure Log Analytics HTTP データ コレクター API を使用すれば、REST
 | Attribute | プロパティ |
 |:--- |:--- |
 | メソッド |POST |
-| URI |https://<WorkspaceID>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
+| URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | コンテンツの種類 |application/json |
 
 ### <a name="request-uri-parameters"></a>要求 URI のパラメーター
@@ -59,10 +63,10 @@ Authorization: SharedKey <WorkspaceID>:<Signature>
 
 ```
 StringToSign = VERB + "\n" +
-               Content-Length + "\n" +
+                  Content-Length + "\n" +
                Content-Type + "\n" +
-               x-ms-date + "\n" +
-               "/api/logs";
+                  x-ms-date + "\n" +
+                  "/api/logs";
 ```
 
 署名文字列の例を次に示します。
@@ -143,6 +147,13 @@ Log Analytics API への各要求には、レコード型の名前が付いた *
 次に、レコード型が作成される前に、下記のようなエントリを送信する場合、Log Analytics によって **number_s**、**boolean_s**、**string_s** という 3 つのプロパティを含むレコードが作成されます。 このエントリでは、初期の値はそれぞれ文字列の形式で指定されています。
 
 ![サンプル レコード 4](media/log-analytics-data-collector-api/record-04.png)
+
+## <a name="data-limits"></a>データ制限
+Log Analytics データ収集 API に送信するデータに関して制約がいくつかあります。
+
+* Log Analytics データ コレクター API に送信するデータの上限は 30 MB です。 これは 1 回の送信のサイズ制限です。 1 回の送信のデータ サイズが 30 MB を超える場合は、データを小さなサイズのチャンクに分割し、それらを同時に送信する必要があります。 
+* フィールド値の上限は 32 KB です。 フィールド値が 32 KB を超えた場合、データは切り捨てられます。 
+* 特定の種類のフィールドの推奨される最大数は 50 個です。 これは、使いやすさと検索エクスペリエンスの観点からの実質的な制限です。  
 
 ## <a name="return-codes"></a>リターン コード
 HTTP 状態コード 202 は、要求は処理のために受け入れられているものの、処理は未完了であることを意味します。 これは、操作が正常に完了したことを示します。
@@ -263,7 +274,7 @@ Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 Post-OMSData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
 ```
 
-### <a name="c#-sample"></a>C# のサンプル
+### <a name="c-sample"></a>C# のサンプル
 ```
 using System;
 using System.Net;
@@ -383,7 +394,7 @@ def build_signature(customer_id, shared_key, date, content_length, method, conte
     string_to_hash = method + "\n" + str(content_length) + "\n" + content_type + "\n" + x_headers + "\n" + resource
     bytes_to_hash = bytes(string_to_hash).encode('utf-8')  
     decoded_key = base64.b64decode(shared_key)
-    encoded_hash = base64.b64encode(hmac.new(decoded_key, string_to_hash, digestmod=hashlib.sha256).digest())
+    encoded_hash = base64.b64encode(hmac.new(decoded_key, bytes_to_hash, digestmod=hashlib.sha256).digest())
     authorization = "SharedKey {}:{}".format(customer_id,encoded_hash)
     return authorization
 
@@ -416,6 +427,9 @@ post_data(customer_id, shared_key, body, log_type)
 ## <a name="next-steps"></a>次のステップ
 * [ビュー デザイナー](log-analytics-view-designer.md)を使用して、送信したデータのカスタム ビューを構築します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

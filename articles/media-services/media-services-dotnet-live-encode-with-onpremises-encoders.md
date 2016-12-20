@@ -1,22 +1,26 @@
 ---
-title: .NET を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法 | Microsoft Docs
-description: このトピックでは、.NET を使用して、オンプレミス エンコーダーでライブ エンコードを実行する方法について紹介します。
+title: ".NET を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法 | Microsoft Docs"
+description: "このトピックでは、.NET を使用して、オンプレミス エンコーダーでライブ エンコードを実行する方法について紹介します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 15908152-d23c-4d55-906a-3bfd74927db5
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 08/31/2016
-ms.author: cenkdin;juliako
+ms.author: cenkd;juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 46cd4171b4d88aa68386b80471f1e7d05539cdd4
+
 
 ---
-# .NET を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
+# <a name="how-to-perform-live-streaming-with-on-premise-encoders-using-net"></a>.NET を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -24,28 +28,28 @@ ms.author: cenkdin;juliako
 > 
 > 
 
-このチュートリアルでは、Azure Media Services .NET SDK を使用して、パススルー配信用に構成された**チャネル**を作成する手順を紹介します。
+このチュートリアルでは、Azure Media Services .NET SDK を使用して、パススルー配信用に構成された **チャネル** を作成する手順を紹介します。 
 
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 チュートリアルを完了するには次のものが必要です。
 
 * Azure アカウント。
-* Media Services アカウント。Media Services アカウントを作成するには、「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。
-* 開発環境の設定。詳細については、「[環境を設定する](media-services-set-up-computer.md)」を参照してください。
-* Web カメラ。たとえば、 [Telestream Wirecast エンコーダー](http://www.telestream.net/wirecast/overview.htm)。
+* Media Services アカウント。    Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
+* 開発環境の設定。 詳細については、「 [環境を設定する](media-services-set-up-computer.md)」を参照してください。
+* Web カメラ。 たとえば、 [Telestream Wirecast エンコーダー](http://www.telestream.net/wirecast/overview.htm)。
 
 次の記事の確認をお勧めします。
 
 * [Azure Media Services RTMP サポートおよびライブ エンコーダー](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-live-streaming-with-onprem-encoders.md)
 
-## 例
+## <a name="example"></a>例
 次のコード サンプルでは、次のタスクを実現する方法を示しています。
 
 * Media Services への接続
 * チャネルの作成
 * チャネルの更新
-* チャネルの入力エンドポイントを取得します。入力エンドポイントはオンプレミスのライブ エンコーダーに指定する必要があります。ライブ エンコーダーはカメラからの信号をストリームに変換します。ストリームはチャネルの入力 (インジェスト) エンドポイントに送信されます。
+* チャネルの入力エンドポイントを取得します。 入力エンドポイントはオンプレミスのライブ エンコーダーに指定する必要があります。 ライブ エンコーダーはカメラからの信号をストリームに変換します。ストリームはチャネルの入力 (インジェスト) エンドポイントに送信されます。
 * チャネルのプレビュー エンドポイントの取得
 * プログラムの作成と起動
 * プログラムにアクセスするために必要なロケーターの作成
@@ -54,7 +58,7 @@ ms.author: cenkdin;juliako
 * ストリーミング エンドポイントのロケーターの取得
 * リソースのシャット ダウン
 
-ライブ エンコーダーの設定方法については、「[Azure Media Services の RTMP サポートとライブ エンコーダー](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)」をご覧ください。
+ライブ エンコーダーの設定方法については、「 [Azure Media Services の RTMP サポートとライブ エンコーダー](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)」をご覧ください。
 
     using System;
     using System.Collections.Generic;
@@ -382,12 +386,17 @@ ms.author: cenkdin;juliako
         }
     }
 
-## 次のステップ
+## <a name="next-step"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## フィードバックの提供
+## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

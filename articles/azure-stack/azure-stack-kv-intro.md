@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: ricardom
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b6f1922a68d80f2d191169c1ec92373638686d7e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 800bcbf059bb3c6e18ed444a148c803ac8035093
 
 
 ---
@@ -68,6 +68,6 @@ The following table depicts some of the scenarios where Key Vault can help meet 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

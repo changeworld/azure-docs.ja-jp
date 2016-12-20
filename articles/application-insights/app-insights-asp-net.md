@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.date: 10/13/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b6e5898d94a43b6859ce354f154bdb25948f7686
+ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
+ms.openlocfilehash: a97e20b208d92e03bd4458605aaa48ef7c389e32
 
 
 ---
 # <a name="set-up-application-insights-for-aspnet"></a>ASP.NET 向けの Application Insights の設定
-[Visual Studio Application Insights](app-insights-overview.md) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断](app-insights-detect-triage-diagnose.md)、[アプリの使用方法の把握](app-insights-overview-usage.md)に役立ちます。  Azure Web アプリに加えて、独自のオンプレミス IIS サーバーやクラウドの仮想マシンでホストされているアプリに対しても機能します。
+[Azure Application Insights](app-insights-overview.md) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断](app-insights-detect-triage-diagnose.md)、[アプリの使用方法の把握](app-insights-overview-usage.md)に役立ちます。  Azure Web アプリに加えて、独自のオンプレミス IIS サーバーやクラウドの仮想マシンでホストされているアプリに対しても機能します。
 
 ## <a name="before-you-start"></a>開始する前に
 必要なもの:
@@ -113,7 +113,7 @@ Application Insights によって、アプリのテレメトリが (Microsoft Az
 ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておき、後から新しいバージョンに変更をマージします。
 
 ## <a name="add-more-telemetry"></a>テレメトリをさらに追加
-### <a name="web-pages-and-singlepage-apps"></a>Web ページおよび単一ページ アプリ
+### <a name="web-pages-and-single-page-apps"></a>Web ページおよび単一ページ アプリ
 1. ページ ビュー、読み込み時間、ブラウザーの例外、AJAX 呼び出しのパフォーマンス、ユーザーとセッションの数に関するデータを [ブラウザー] ブレードと [使用状況] ブレードに表示するために、Web ページに [JavaScript スニペットを追加](app-insights-javascript.md)します。
 2. ユーザー アクションのカウント、時間の計測、または測定を行う[カスタム イベントのコードを記述](app-insights-api-custom-events-metrics.md)します。
 
@@ -175,6 +175,6 @@ Visual Studio Team Services を使用する場合は、新しいバージョン�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

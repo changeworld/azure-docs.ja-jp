@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/08/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1df15de1c24e80b0692149dfc7cb660f74941886
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2fb248f3e71b248ce0b5ae02ebeff291bbd28dce
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 1df15de1c24e80b0692149dfc7cb660f74941886
 FR = 今後リリース  
 PP = パブリック プレビュー  
 
-## <a name="onpremises-to-cloud-synchronization"></a>オンプレミスからクラウドへの同期
+## <a name="on-premises-to-cloud-synchronization"></a>オンプレミスからクラウドへの同期
 | 機能 | Azure Active Directory Connect | Azure Active Directory 同期サービス (AAD Sync) | Azure Active Directory 同期ツール (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | 単一のオンプレミス AD フォレストへの接続 |● |● |● |● |● |
@@ -52,7 +52,7 @@ PP = パブリック プレビュー
 | オンプレミス HR (SAP、Oracle eBusiness、PeopleSoft など) への接続 |FR | | |● |● |
 | FIM 同期ルールとコネクタによるオンプレミス システムへのプロビジョニングのサポート | | | |● |● |
 
-## <a name="cloud-to-onpremises-synchronization"></a>クラウドからオンプレミスへの同期
+## <a name="cloud-to-on-premises-synchronization"></a>クラウドからオンプレミスへの同期
 | 機能 | Azure Active Directory Connect | Azure Active Directory 同期サービス | Azure Active Directory 同期ツール (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | デバイスの書き戻し |● | |● | | |
@@ -68,7 +68,7 @@ PP = パブリック プレビュー
 | フェデレーションを使用したシングル サインオン |● |● |● |● |● |
 | (SSPR とパスワードの変更による) パスワードの書き戻し |● |● | | | |
 
-## <a name="setup-and-installation"></a>セットアップとインストール
+## <a name="set-up-and-installation"></a>セットアップとインストール
 | 機能 | Azure Active Directory Connect | Azure Active Directory 同期サービス | Azure Active Directory 同期ツール (DirSync) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|
 | ドメイン コントローラーへのインストールのサポート |● |● |● | |
@@ -95,6 +95,6 @@ PP = パブリック プレビュー
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

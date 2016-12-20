@@ -1,12 +1,12 @@
 ---
-title: DirSync と Azure AD Sync からのアップグレード | Microsoft Docs
-description: DirSync と Azure AD Sync から Azure AD Connect にアップグレードする方法について説明します。
+title: "DirSync と Azure AD Sync からのアップグレード |Microsoft Docs"
+description: "DirSync と Azure AD Sync から Azure AD Connect にアップグレードする方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: andkjell
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: bd68fb88-110b-4d76-978a-233e15590803
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d1339b36275b30438d92c9bbe94734644cc9aefe
+
 
 ---
-# <a name="upgrade-windows-azure-active-directory-sync-(“dirsync”)-and-azure-active-directory-sync-(“azure-ad-sync”)"></a>Windows Azure Active Directory Sync (“DirSync”) と Azure Active Directory Sync (“Azure AD Sync”) をアップグレードする
+# <a name="upgrade-windows-azure-active-directory-sync-dirsync-and-azure-active-directory-sync-azure-ad-sync"></a>Windows Azure Active Directory Sync (“DirSync”) と Azure Active Directory Sync (“Azure AD Sync”) をアップグレードする
 Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Office 365 を接続するための最適な方法です。 Windows Azure Active Directory Sync (DirSync) および Azure AD Sync は廃止となり、2017 年 4 月 13 日でサポートが終了するため、Azure AD Connect へアップグレードする絶好の機会です。
 
 廃止されるこの 2 つの ID 同期ツールは、単一フォレスト顧客用 (DirSync) および複数フォレストとその他の高度なユーザー用 (Azure AD Sync) に提供されていました。 これらの古いツールは、すべてのシナリオで使用できる Azure AD Connect という単一のソリューションに代わりました。 Azure AD Connect は、新機能、機能強化、および新しいシナリオのサポートを提供します。 Azure AD と Office 365 に対してオンプレミスの ID データの同期を継続するには、Azure AD Connect にアップグレードすることを強くお勧めします。
@@ -39,7 +43,7 @@ Azure AD Sync を使用している場合、インプレース アップグレ�
 
 | 解決策 | シナリオ |
 | --- | --- |
-| [DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md) |<li>既存の DirSync サーバーが既に実行されている場合に使用します。</li> |
+| [DirSync からのアップグレード](connect/active-directory-aadconnect-dirsync-upgrade-get-started.md) |<li>既存の DirSync サーバーが既に実行されている場合に使用します。</li> |
 | [Azure AD Sync からのアップグレード](active-directory-aadconnect-upgrade-previous-version.md) |<li>Azure AD Sync から移行する場合に使用します。</li> |
 
 DirSync から Azure AD Connect へのインプレース アップグレードを実行する方法を確認するには、チャネル 9 ビデオをご覧ください。
@@ -64,6 +68,9 @@ FIM または MIM の Azure AD コネクタは、**廃止とは発表されて�
 ## <a name="additional-resources"></a>その他のリソース
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

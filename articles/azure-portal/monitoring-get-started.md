@@ -96,4 +96,4 @@ Azure Monitor は、Azure リソースを監視するための 1 つのソース
 ## 次のステップ
 * [Azure Monitor の概要](../monitoring-and-diagnostics/monitoring-overview.md)を確認します
 
-<!---HONumber=AcomDC_0928_2016-->
+<!----HONumber=AcomDC_0928_2016-->

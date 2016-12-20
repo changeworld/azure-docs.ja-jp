@@ -1,4 +1,5 @@
 ---
+redirect_url: /azure/sql-data-warehouse/sql-data-warehouse-load-with-data-factory
 title: "Azure Data Factory を使用してデータを読み込む | Microsoft Docs"
 description: "Azure Data Factory を使用してデータを読み込む方法"
 services: sql-data-warehouse
@@ -16,8 +17,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 960225117a1c9b0802004455353fb9015a80b07b
+ms.sourcegitcommit: 3d41671920d40335e3e0931599a434f9d5f58bba
+ms.openlocfilehash: 0fcbd492f1f26efb67dec90a5ba25ba27172065c
 
 
 ---
@@ -64,7 +65,7 @@ Azure Data Factory を理解するには、[Azure Data Factory の概要][Azure 
 ## <a name="step-2-connect-resources-to-azure-data-factory"></a>手順 2: Azure Data Factory にリソースを接続する
 これでデータの準備ができたので、Azure Data Factory パイプラインを作成して、データを Azure Storage BLOB から SQL Data Warehouse に移動することができます。
 
-そのためには、まず、[Azure Portal][Azure Portal] を開き、左側のメニューで対象のデータ ファクトリを選択します。
+そのためには、まず、[Azure ポータル][Azure ポータル] を開き、左側のメニューで対象のデータ ファクトリを選択します。
 
 ### <a name="step-21-create-linked-service"></a>手順 2.1: リンクされたサービスを作成する
 Azure ストレージ アカウントと SQL Data Warehouse をデータ ファクトリにリンクします。  
@@ -230,6 +231,6 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

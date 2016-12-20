@@ -1,13 +1,13 @@
 ---
-title: .NET SDK を使用した HDInsight での Windows ベースの Hadoop クラスターの作成 | Microsoft Docs
-description: .NET SDK テンプレートを使用して Azure HDInsight の HDInsight クラスターを作成する方法について説明します。
+title: ".NET SDK を使用した HDInsight での Windows ベースの Hadoop クラスターの作成 | Microsoft Docs"
+description: ".NET SDK テンプレートを使用して Azure HDInsight の HDInsight クラスターを作成する方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 134fbcdf-8f62-492f-84fd-8e2a3e0cd896
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -15,25 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/02/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 21f2a14c1514c3f70787613c5f0962dc3eabd7b1
+
 
 ---
-# .NET SDK を使用した HDInsight での Windows ベースの Hadoop クラスターの作成
-[!INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
+# <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-net-sdk"></a>.NET SDK を使用した HDInsight での Windows ベースの Hadoop クラスターの作成
+[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-.NET SDK を使用して HDInsight クラスターを作成する方法について説明します。その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「[クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
+.NET SDK を使用して HDInsight クラスターを作成する方法について説明します。 その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「 [クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
 
-## 前提条件:
+## <a name="prerequisites"></a>前提条件:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 この記事の手順を開始する前に、次の項目を用意する必要があります。
 
-* Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * Visual Studio 2013 または 2015
 
-## クラスターの作成
-HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。Visual Studio コンソール アプリケーションを作成し、クラスターを作成するためのコードを貼り付けるには、次の手順に従います。
+### <a name="access-control-requirements"></a>アクセス制御の要件
+[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
-アプリケーションには、Azure リソース グループと既定のストレージ アカウントが必要です。「[付録 A](#appx-a-create-dependent-components)」では、依存コンポーネントを作成する PowerShell スクリプトについて説明します。
+## <a name="create-clusters"></a>クラスターの作成
+HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。 Visual Studio コンソール アプリケーションを作成し、クラスターを作成するためのコードを貼り付けるには、次の手順に従います。
+
+アプリケーションには、Azure リソース グループと既定のストレージ アカウントが必要です。  「 [付録 A](#appx-a-create-dependent-components) 」では、依存コンポーネントを作成する PowerShell スクリプトについて説明します。
 
 **Visual Studio コンソール アプリケーションを作成するには**
 
@@ -43,7 +50,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
-3. ソリューション エクスプローラーで、**Program.cs** をダブルクリックして開き、次のコードを貼り付け、変数の値を指定します。
+3. ソリューション エクスプローラーで、 **Program.cs** をダブルクリックして開き、次のコードを貼り付け、変数の値を指定します。
    
         using System;
         using System.Threading;
@@ -146,17 +153,17 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
             }
         }
 
-1. **F5** キーを押してアプリケーションを実行します。コンソール ウィンドウが開き、アプリケーションの状態が表示されます。Azure アカウントの資格情報の入力も求められます。HDInsight クラスターの作成は数分かかる場合があります。
+1. **F5** キーを押してアプリケーションを実行します。 コンソール ウィンドウが開き、アプリケーションの状態が表示されます。 Azure アカウントの資格情報の入力も求められます。 HDInsight クラスターの作成は数分かかる場合があります。
 
-## 次のステップ
-この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。詳細については、次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md) - HDInsight クラスターの使用方法について説明しています。
 * [.NET SDK を使用して HDInsight で Hive ジョブを実行する](hdinsight-hadoop-use-hive-dotnet-sdk.md)
 * [.NET SDK を使用して HDInsight で Pig ジョブを実行する](hdinsight-hadoop-use-pig-dotnet-sdk.md)
 * [.NET SDK を使用して HDInsight で Sqoop ジョブを実行する](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
 * [HDInsight で Oozie ジョブを実行する](hdinsight-use-oozie.md)
-* [HDInsight][hdinsight-sdk-documentation] - HDInsight SDK について説明しています。
+* [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation] - HDInsight SDK の検出
 
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-preview-portal]: https://manage.windowsazure.com
@@ -166,7 +173,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 [ssisclusterdelete]: http://msdn.microsoft.com/library/mt146778(v=sql.120).aspx
 
 
-## 付録 A 依存コンポーネントの作成
+## <a name="appx-a-create-dependent-components"></a>付録 A 依存コンポーネントの作成
 次の Azure PowerShell スクリプトを使用して、このチュートリアルでの .NET アプリケーションで必要な依存コンポーネントを作成できます。
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
@@ -236,4 +243,8 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
     Write-host "Default Storage Account Key: $defaultStorageAccountKey"
     Write-host "Default Blob Container Name: $defaultBlobContainerName"
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

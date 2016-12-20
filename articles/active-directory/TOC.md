@@ -12,7 +12,7 @@
 ## [AD ライセンスの管理](active-directory-licensing-what-is.md)
 ## [組織で Azure を導入する](sign-up-organization.md)
 ## [FAQ](active-directory-faq.md)
-
+## [SaaS アプリのチュートリアル](active-directory-saas-tutorial-list.md)
 
 # 方法
 ## ユーザーの管理
@@ -279,7 +279,7 @@
 # リファレンス
 ## [PowerShell コマンドレット](/powershell/ )
 ## [Java API リファレンス](/java/api)
-## [.NET API](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
+## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
 ## [サービスの制限と制約](active-directory-service-limits-restrictions.md)
 
 # 関連項目
@@ -291,12 +291,12 @@
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory) 
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Azure フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

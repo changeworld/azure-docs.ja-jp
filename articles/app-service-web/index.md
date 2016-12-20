@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 29794682e0258a6d30c9b2ac96b6e58272bc3f48
-ms.openlocfilehash: 97a0f22bf72b30e6adc92e9b8d7e58a25e67c14b
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: d513f059bdf85bd727e9ec3e712a6a83698795bb
 
 ---
 # <a name="azure-web-apps-documentation"></a>Azure Web Apps ドキュメント
@@ -75,43 +75,25 @@ App Service Web Apps は、Web サイトと Web アプリケーションをホ�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Visual Studio を使った ASP.NET Web アプリの作成</h3>
+                        <h3>ASP.NET と Visual Studio を使用した Web Apps の使用</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
-    <li>
-        <a href="/azure/app-service-web/web-sites-dotnet-get-started">
+    </li> 
+     <li>
+        <a href="/azure/app-service-web/web-sites-java-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/dotnet.svg" alt="" />
+                            <img src="media/index/java.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Visual Studio を使った ASP.NET Web アプリの作成</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/app-service-web/web-sites-dotnet-get-started">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/dotnet.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Visual Studio を使った ASP.NET Web アプリの作成</h3>
+                        <h3>Java を使用した Web Apps の作成</h3>
                     </div>
                 </div>
             </div>
@@ -129,7 +111,7 @@ App Service Web Apps は、Web サイトと Web アプリケーションをホ�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure App Service での Node.js Web アプリの使用</h3>
+                        <h3>Node.js を使用した Web Apps の作成 </h3>
                     </div>
                 </div>
             </div>
@@ -147,25 +129,26 @@ App Service Web Apps は、Web サイトと Web アプリケーションをホ�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Python Tools 2.2 を使った Web アプリの作成</h3>
+                        <h3>Python Tools 2.2 を使用した Web Apps の作成</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-    <li>
-        <a href="/azure/app-service-web/web-sites-java-get-started">
+   
+     <li>
+        <a href="/azure/app-service-web/app-service-web-php-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/java.svg" alt="" />
+                            <img src="media/index/tutorial.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure App Service での Java Web アプリの作成</h3>
+                        <h3>PHP を使用した Web Apps の作成</h3>
                     </div>
                 </div>
             </div>
@@ -183,48 +166,58 @@ App Service Web Apps は、Web サイトと Web アプリケーションをホ�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure App Service での WordPress Web アプリの作成</h3>
+                        <h3>Azure App Service での WordPress の使用</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-    <li>
-        <a href="/azure/app-service-web/app-service-web-php-get-started">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure への PHP Web アプリの作成、構成、デプロイ</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
+   
 </ul>
 
 ---
 
-## <a name="reference"></a>リファレンス
-
-### <a name="azure-cli"></a>Azure CLI
-[Web Apps AzureCLI リファレンス](/cli/azure/)
-
-### <a name="java"></a>Java
-[Web Apps Java API リファレンス](/java/api/)
-
-### <a name="net"></a>.NET
-[Web Apps に関する管理リファレンス](/dotnet/api)
-
-### <a name="rest"></a>REST ()
-[Web Apps REST API リファレンス](/rest/api/appservice)
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/cli/azure/">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize"><p />
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api">.NET</a></p>
+                        <p><a href="/java/api/">Java</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize"><p />
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/appservice">REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-web.pdf">
@@ -235,6 +228,7 @@ Web Apps のドキュメントのダウンロード </div>
 </div>
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Dec16_HO2-->
 
 

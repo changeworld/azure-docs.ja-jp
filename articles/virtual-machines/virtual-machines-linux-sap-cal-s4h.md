@@ -1,14 +1,14 @@
 ---
-title: Azure VM での S/4 HANA または BW/4 HANA のデプロイ | Microsoft Docs
-description: Azure VM での S/4 HANA または BW/4 HANA のデプロイ
+title: "Azure VM での S/4 HANA または BW/4 HANA のデプロイ | Microsoft Docs"
+description: "Azure VM での S/4 HANA または BW/4 HANA のデプロイ"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: hermanndms
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-keywords: ''
-
+keywords: 
+ms.assetid: 44bbd2b6-a376-4b5c-b824-e76917117fa9
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -16,9 +16,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f653e69590ee15d272543dc58840b1ee6983e953
+
 
 ---
-# <a name="deploying-s/4-hana-or-bw/4-hana-on-microsoft-azure"></a>Microsoft Azure での S/4 HANA または BW/4 HANA のデプロイ
+# <a name="deploying-s4-hana-or-bw4-hana-on-microsoft-azure"></a>Microsoft Azure での S/4 HANA または BW/4 HANA のデプロイ
 この記事では、SAP Cloud Appliance Library 3.0 を使用して Microsoft Azure で S/4 HANA をデプロイする方法について説明します。
 スクリーン ショットでは、その手順を示します。 他の SAP HANA ベースのソリューション (BW/4 HANA など) のデプロイも同様のプロセスで機能します。 必要なのは別のソリューションを選択することだけです。
 
@@ -89,6 +93,9 @@ Azure ポータルで、SAP CAL で指定したのと同じインスタンス名
 
 別のオプションとして、クライアント Windows VM にログインして、事前構成された SAP GUI などを起動することもできます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

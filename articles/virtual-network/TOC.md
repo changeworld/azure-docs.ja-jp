@@ -13,7 +13,7 @@
 
 # 作業の開始
 ## [仮想ネットワークの作成](virtual-networks-create-vnet-arm-pportal.md)
-## [仮想ネットワークへの VM のデプロイ](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+## [仮想ネットワークへの VM のデプロイ](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 # 方法
 ## 計画と設計
@@ -77,6 +77,8 @@
 #### 複数の IP アドレス
 ##### [Azure ポータル](virtual-network-multiple-ip-addresses-portal.md)
 ##### [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+##### [CLI](virtual-network-multiple-ip-addresses-cli.md)
+##### [テンプレート](virtual-network-multiple-ip-addresses-template.md)
 
 ### 接続のシナリオ
 #### [仮想ネットワーク (VNet) から VNet に](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -143,6 +145,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

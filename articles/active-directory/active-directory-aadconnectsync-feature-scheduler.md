@@ -1,12 +1,12 @@
 ---
-title: 'Azure AD Connect 同期: スケジューラ | Microsoft Docs'
-description: このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ機能について説明します。
+title: "Azure AD Connect 同期: スケジューラ | Microsoft Docs"
+description: "このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ機能について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: AndKjell
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/04/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 41b2cdf8fec8a0e3cb83682afdfb5c974452fe47
+
 
 ---
-# <a name="azure-ad-connect-sync:-scheduler"></a>Azure AD Connect 同期: スケジューラ
+# <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同期: スケジューラ
 このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ ( 同期エンジンとも言います) について説明します。
 
 この機能は、ビルド 1.1.105.0 (2016 年 2 月リリース) で導入されました。
@@ -157,6 +161,9 @@ Get-ADSyncConnectorRunStatus
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

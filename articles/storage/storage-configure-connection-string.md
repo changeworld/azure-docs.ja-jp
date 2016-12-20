@@ -1,12 +1,12 @@
 ---
-title: Azure Storage への接続文字列の構成 | Microsoft Docs
-description: Azure ストレージ アカウントへの接続文字列を構成します。 接続文字列には、アプリケーションがストレージ アカウントに対し、そのアクセスが信頼できるものであることを実行時に証明するうえで必要な情報が格納されます。
+title: "Azure Storage への接続文字列の構成 |Microsoft Docs"
+description: "Azure ストレージ アカウントへの接続文字列を構成します。 接続文字列には、アプリケーションがストレージ アカウントに対し、そのアクセスが信頼できるものであることを実行時に証明するうえで必要な情報が格納されます。"
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: tamram
 manager: carmonm
 editor: tysonn
-
+ms.assetid: ecb0acb5-90a9-4eb2-93e6-e9860eda5e53
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: tamram
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 27c995e16f1137f6e18ebfc8210d492872d0e76c
+
 
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
@@ -117,6 +121,9 @@ Azure China、Azure Governance など、別のエンドポイント サフィッ
 * [Azure ストレージ エクスプローラー](storage-explorers.md)
 * [Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

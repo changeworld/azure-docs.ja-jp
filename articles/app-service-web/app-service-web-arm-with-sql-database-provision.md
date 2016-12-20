@@ -1,12 +1,12 @@
 ---
-title: SQL Database を使用する Web アプリをプロビジョニングする
-description: SQL Database を含む Web アプリをデプロイするには、Azure リソース マネージャー テンプレートを使用します。
+title: "SQL Database を使用する Web アプリをプロビジョニングする"
+description: "SQL Database を含む Web アプリをデプロイするには、Azure リソース マネージャー テンプレートを使用します。"
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: cephalin
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: fb9648e1-9bf2-4537-bc4a-ab8d4953168c
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,20 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 461b97b56058620202a5f7f69171ffa0f2cb25cb
+
 
 ---
-# Web アプリと SQL Database をプロビジョニングする
-このトピックでは、Web アプリと SQL Database をデプロイする Azure リソース マネージャー テンプレートを作成する方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+# <a name="provision-a-web-app-with-a-sql-database"></a>Web アプリと SQL Database をプロビジョニングする
+このトピックでは、Web アプリと SQL Database をデプロイする Azure リソース マネージャー テンプレートを作成する方法について説明します。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
+テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
 
-アプリのデプロイの詳細については、「[Deploy a complex application predictably in Azure (Azure で複雑なアプリケーションを予測どおりにデプロイする)](app-service-deploy-complex-application-predictably.md)」を参照してください。
+アプリのデプロイの詳細については、「 [Deploy a complex application predictably in Azure (Azure で複雑なアプリケーションを予測どおりにデプロイする)](app-service-deploy-complex-application-predictably.md)」を参照してください。
 
-完全なテンプレートについては、「[Web App With SQL Database template (SQL Database を使用する Web アプリ用のテンプレート)](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json)」を参照してください。
+完全なテンプレートについては、「 [Web App With SQL Database template (SQL Database を使用する Web アプリ用のテンプレート)](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json)」を参照してください。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## デプロイ対象
+## <a name="what-you-will-deploy"></a>デプロイ対象
 このテンプレートでは、以下をデプロイします。
 
 * Web アプリ
@@ -41,24 +45,24 @@ ms.author: cephalin
 
 [![Azure へのデプロイ](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
 
-## 指定するパラメーター
+## <a name="parameters-to-specify"></a>指定するパラメーター
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
-### administratorLogin
+### <a name="administratorlogin"></a>administratorLogin
 データベース サーバー管理者で使用するアカウントの名前。
 
     "administratorLogin": {
       "type": "string"
     }
 
-### administratorLoginPassword
+### <a name="administratorloginpassword"></a>administratorLoginPassword
 データベース サーバー管理者で使用するパスワード。
 
     "administratorLoginPassword": {
       "type": "securestring"
     }
 
-### databaseName
+### <a name="databasename"></a>databaseName
 作成する新しいデータベースの名前。
 
     "databaseName": {
@@ -66,7 +70,7 @@ ms.author: cephalin
       "defaultValue": "sampledb"
     }
 
-### collation
+### <a name="collation"></a>collation
 文字の適切な使用を制御するために使用するデータベース照合。
 
     "collation": {
@@ -74,7 +78,7 @@ ms.author: cephalin
       "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
     }
 
-### edition
+### <a name="edition"></a>edition
 作成するデータベースの種類。
 
     "edition": {
@@ -90,7 +94,7 @@ ms.author: cephalin
       }
     }
 
-### maxSizeBytes
+### <a name="maxsizebytes"></a>maxSizeBytes
 データベースの最大サイズ (バイト単位)。
 
     "maxSizeBytes": {
@@ -98,8 +102,8 @@ ms.author: cephalin
       "defaultValue": "1073741824"
     }
 
-### requestedServiceObjectiveName
-エディションのパフォーマンス レベルに対応する名前。
+### <a name="requestedserviceobjectivename"></a>requestedServiceObjectiveName
+エディションのパフォーマンス レベルに対応する名前。 
 
     "requestedServiceObjectiveName": {
       "type": "string",
@@ -118,8 +122,8 @@ ms.author: cephalin
       }
     }
 
-## 名前用の変数
-このテンプレートには、テンプレートで使用される名前を作成する変数が含まれています。この変数値は、**uniqueString** 関数を使用してリソース グループ ID から名前を生成します。
+## <a name="variables-for-names"></a>名前用の変数
+このテンプレートには、テンプレートで使用される名前を作成する変数が含まれています。 この変数値は、 **uniqueString** 関数を使用してリソース グループ ID から名前を生成します。
 
     "variables": {
         "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -128,9 +132,9 @@ ms.author: cephalin
     },
 
 
-## デプロイ対象のリソース
-### SQL Server と Database
-新しい SQL Server とデータベースを作成します。サーバーの名前を **serverName** パラメーターに、場所を **serverLocation** パラメーターに指定します。新しいサーバーを作成するときは、データベース サーバー管理者のログイン名とパスワードを指定する必要があります。
+## <a name="resources-to-deploy"></a>デプロイ対象のリソース
+### <a name="sql-server-and-database"></a>SQL Server と Database
+新しい SQL Server とデータベースを作成します。 サーバーの名前を **serverName** パラメーターに、場所を **serverLocation** パラメーターに指定します。 新しいサーバーを作成するときは、データベース サーバー管理者のログイン名とパスワードを指定する必要があります。 
 
     {
       "name": "[variables('sqlserverName')]",
@@ -181,7 +185,7 @@ ms.author: cephalin
 
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
-### Web アプリ
+### <a name="web-app"></a>Web アプリ
     {
       "apiVersion": "2015-08-01",
       "name": "[variables('webSiteName')]",
@@ -217,7 +221,7 @@ ms.author: cephalin
     },
 
 
-### Autoscale
+### <a name="autoscale"></a>Autoscale
     {
       "apiVersion": "2014-04-01",
       "name": "[concat(variables('hostingPlanName'), '-', resourceGroup().name)]",
@@ -286,7 +290,7 @@ ms.author: cephalin
     },
 
 
-### ステータス コード 403 と 500 用のアラート ルール、高い CPU 使用率、および HTTP キューの長さ
+### <a name="alert-rules-for-status-codes-403-and-500s-high-cpu-and-http-queue-length"></a>ステータス コード 403 と 500 用のアラート ルール、高い CPU 使用率、および HTTP キューの長さ
     {
       "apiVersion": "2014-04-01",
       "name": "[concat('ServerErrors ', variables('webSiteName'))]",
@@ -424,7 +428,7 @@ ms.author: cephalin
       }
     },
 
-### App Insights
+### <a name="app-insights"></a>App Insights
     {
       "apiVersion": "2014-04-01",
       "name": "[concat('AppInsights', variables('webSiteName'))]",
@@ -442,16 +446,20 @@ ms.author: cephalin
       }
     }
 
-## デプロイを実行するコマンド
+## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-### PowerShell
+### <a name="powershell"></a>PowerShell
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
-### Azure CLI
+### <a name="azure-cli"></a>Azure CLI
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
 
 
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

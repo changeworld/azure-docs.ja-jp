@@ -1,31 +1,40 @@
 ---
-title: Team Data Science Process で使用するためのデータ サイエンス環境の設定 | Microsoft Docs
-description: Team Data Science Process で使用するためのデータ サイエンス環境の設定
+title: "Team Data Science Process で使用するためのデータ サイエンス環境の設定 | Microsoft Docs"
+description: "Team Data Science Process で使用するためのデータ サイエンス環境の設定"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 481cfa6a-7ea3-46ac-b0f9-2e3982c37153
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/23/2016
+ms.date: 11/01/2016
 ms.author: bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6c7fc92d72504e853a1c4cf4aaac309097e44c44
+
 
 ---
-# Team Data Science Process で使用するためのデータ サイエンス環境の設定
-Team Data Science Process は、データの格納、処理、および分析のために、さまざまなデータ サイエンス環境を使用します。たとえば、Azure BLOB ストレージ、いくつかの種類の Azure 仮想マシン、HDInsight (Hadoop) クラスター、Azure Machine Learning ワークスペースなどです。使用する環境を決定する方法は、Machine Learning によってモデル化するデータの種類と量、さらにクラウド内でのデータの宛先によって異なります。
+# <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Team Data Science Process で使用するためのデータ サイエンス環境の設定
+Team Data Science Process は、データの格納、処理、および分析のために、さまざまなデータ サイエンス環境を使用します。 たとえば、Azure Blob Storage、いくつかの種類の Azure 仮想マシン、HDInsight (Hadoop) クラスター、Azure Machine Learning ワークスペースなどです。 使用する環境を決定する方法は、モデル化するデータの種類と量、さらにクラウド内でのデータの宛先によって異なります。 
 
-* この決定を行う際の考慮事項については、「[Azure Machine Learning のデータ サイエンス環境を計画する](machine-learning-data-science-plan-your-environment.md)」をご覧ください。
-* 高度な分析を実施する際に発生する可能性があるシナリオのカタログについては、[Team Data Science Process のシナリオ](machine-learning-data-science-plan-sample-scenarios.md)に関するページをご覧ください
+* この決定を行う際の考慮事項については、「[Azure Machine Learning のデータ サイエンス環境を計画する](machine-learning-data-science-plan-your-environment.md)」をご覧ください。 
+* 高度な分析を実施する際に発生する可能性があるシナリオのカタログについては、 [Team Data Science Process のシナリオ](machine-learning-data-science-plan-sample-scenarios.md)
 
 このメニューは、Team Data Science Process によって使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
 
 [!INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
-**Microsoft データ サイエンス用仮想マシン**を利用することもできます。Microsoft データ サイエンス用仮想マシンは、プレインストールの Azure 仮想マシン (VM) イメージです。データ分析と機械学習用に一般的に使用されているいくつかのツールで構成されています。この VM の使用方法については、「[Microsoft データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-provision-vm.md)」を参照してください。
+**Microsoft データ サイエンス仮想マシン (DSVM)** は、Azure Virtual Machine (VM) イメージとしても利用できます。 VM は、あらかじめインストールされており、データ分析と機械学習用に一般的に使用されているいくつかのツールで構成されています。 DSVM は、Windows と Linux の両方で使用できます。 詳しくは、「[Linux および Windows 用のクラウド ベースのデータ サイエンス仮想マシンの概要](machine-learning-data-science-virtual-machine-overview.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

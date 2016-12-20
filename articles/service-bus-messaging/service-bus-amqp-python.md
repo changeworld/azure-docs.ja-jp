@@ -1,22 +1,26 @@
 ---
-title: AMQP 1.0 での Service Bus と Python | Microsoft Docs
-description: AMQP で Python から Service Bus を使用します。
-services: service-bus
+title: "AMQP 1.0 での Service Bus と Python | Microsoft Docs"
+description: "AMQP で Python から Service Bus を使用します。"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 375396e7-cbec-4d25-9b98-63ef8de75fef
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 97e90f5429fe4f2535a246db8dfbe81c772b3c88
+
 
 ---
-# <a name="using-service-bus-from-python-with-amqp-1.0"></a>AMQP 1.0 で Python から Service Bus を使用する
+# <a name="using-service-bus-from-python-with-amqp-10"></a>AMQP 1.0 で Python から Service Bus を使用する
 [!INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
 Proton-Python は Proton-C にバインドされている Python 言語です。つまり、Proton-Python は、C で実装されているエンジンのラッパーとして実装されています。
@@ -26,7 +30,7 @@ Proton-C および関連するバインド (Python を含む) は、[http://qpid
 
 このドキュメントの執筆時点で、Proton-C での SSL サポートは Linux オペレーティング システムでのみ提供されています。 Azure Service Bus では SSL を使用する必要があるため、Proton-C (および言語バインド) は、現時点では Linux から Service Bus へのアクセスにのみ使用できます。 Windows で Proton-C と SSL を使用できるようにするための作業が進行中です。更新情報を頻繁に確認してください。
 
-## <a name="working-with-service-bus-queues,-topics,-and-subscriptions-from-python"></a>Python を使用した Service Bus のキュー、トピック、およびサブスクリプションの操作
+## <a name="working-with-service-bus-queues-topics-and-subscriptions-from-python"></a>Python を使用した Service Bus のキュー、トピック、およびサブスクリプションの操作
 次のコードは、Service Bus メッセージング エンティティからメッセージを送受信する方法を示しています。
 
 ### <a name="send-messages-using-proton-python"></a>Proton-Python を使用したメッセージの送信
@@ -58,9 +62,9 @@ if messenger.incoming:
 messenger.stop()
 ```
 
-## <a name="messaging-between-.net-and-proton-python"></a>.NET と Proton-Python 間のメッセージング
+## <a name="messaging-between-net-and-proton-python"></a>.NET と Proton-Python 間のメッセージング
 ### <a name="application-properties"></a>Application properties
-#### <a name="proton-python-to-service-bus-.net-apis"></a>Proton-Python から Service Bus .NET API へ
+#### <a name="proton-python-to-service-bus-net-apis"></a>Proton-Python から Service Bus .NET API へ
 Proton-Python メッセージでサポートされるアプリケーションのプロパティの型は、**int**、**long**、**float**、**uuid**、**bool**、**string** です。 次の Python コードは、これらのプロパティの型を使用してメッセージにプロパティを設定する方法を示しています。
 
 ```
@@ -96,7 +100,7 @@ if (message.Properties.Keys.Count > 0)
 | bool |bool |
 | string |string |
 
-#### <a name="service-bus-.net-apis-to-proton-python"></a>Service Bus .NET API から Proton-Python へ
+#### <a name="service-bus-net-apis-to-proton-python"></a>Service Bus .NET API から Proton-Python へ
 [BrokeredMessage][BrokeredMessage] 型でサポートされるアプリケーションのプロパティの型は、**byte**、**sbyte**、**char**、**short**、**ushort**、**int**、**uint**、**long**、**ulong**、**float**、**double**、**decimal**、**bool**、**Guid**、**string**、**Uri**、**DateTime**、**DateTimeOffset**、**TimeSpan** です。 次の .NET コードは、これらのプロパティの各型を使用して [BrokeredMessage][BrokeredMessage] オブジェクトにプロパティを設定する方法を示しています。
 
 ```
@@ -157,7 +161,7 @@ if message.properties != None:
 ### <a name="standard-properties"></a>標準のプロパティ
 次の表は、Proton-Python の標準のメッセージ プロパティと [BrokeredMessage][BrokeredMessage] の標準のメッセージ プロパティの対応を示します。
 
-#### <a name="proton-python-to-service-bus-.net-apis"></a>Proton-Python から Service Bus .NET API へ
+#### <a name="proton-python-to-service-bus-net-apis"></a>Proton-Python から Service Bus .NET API へ
 | Proton-Python | Service Bus .NET | メモ |
 | --- | --- | --- |
 | durable |該当なし |Service Bus は、持続的なメッセージのみをサポートします。 |
@@ -207,6 +211,6 @@ if message.properties != None:
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

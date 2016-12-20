@@ -1,19 +1,23 @@
 ---
-title: Log Analytics で SQL 評価ソリューションによる環境を最適化する | Microsoft Docs
-description: SQL 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。
+title: "Log Analytics で SQL 評価ソリューションによる環境を最適化する | Microsoft Docs"
+description: "SQL 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 11/09/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
+ms.openlocfilehash: 0b0c739f1d89b83c43314d8ace794d26abf10054
+
 
 ---
 # <a name="optimize-your-environment-with-the-sql-assessment-solution-in-log-analytics"></a>Log Analytics で SQL 評価ソリューションによる環境を最適化する
@@ -39,17 +43,17 @@ SQL 評価は、Standard、Developer、Enterprise の各エディションの、
 * エージェントは、SQL Server がインストールされているサーバーにインストールする必要があります。
 * SQL 評価ソリューションには、OMS エージェントがある各コンピューターにインストールされている .NET Framework 4 が必要です。
 * Operations Manager エージェントを SQL の評価に使用する場合は、Operations Manager の実行アカウントを使用する必要があります。 詳細については、「 [OMS で使用される Operations Manager の実行アカウント](#operations-manager-run-as-accounts-for-oms) 」を参照してください。
-  
+
   > [!NOTE]
   > MMA エージェントでは、Operations Manager の実行アカウントはサポートされていません。
-  > 
-  > 
+  >
+  >
 * 「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」で説明されている手順に従って SQL 評価ソリューションを OMS ワークスペースに追加します。 さらに手動で構成する必要はありません。
 
 > [!NOTE]
 > ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの OMS サービスに送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
-> 
-> 
+>
+>
 
 ## <a name="sql-assessment-data-collection-details"></a>SQL 評価データ収集の詳細
 SQL 評価では、有効になっているエージェントを使用して、WMI データ、レジストリ データ、パフォーマンス データ、SQL Server の動的管理の表示結果を収集します。
@@ -71,18 +75,18 @@ OMS の Log Analytics では、データの収集と OMS サービスへのデ�
 #### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>オペレーション コンソールで SQL の実行アカウントを構成するには
 > [!NOTE]
 > SCOM エージェントではなく、OMS ダイレクト エージェントを使用している場合、管理パックは、常にローカル システム アカウントのセキュリティ コンテキストで実行されます。 以下の手順 1. ～ 5. をスキップし、ユーザー名として NT AUTHORITY\SYSTEM を指定して、T-SQL または PowerShell のサンプルを実行します。
-> 
-> 
+>
+>
 
 1. Operations Manager でオペレーション コンソールを開き、 **[管理]**をクリックします。
 2. **[実行アカウントの構成]** の **[プロファイル]** をクリックし、**[OMS SQL の評価の実行プロファイル]** を開きます。
 3. **[実行アカウント]** ページの **[追加]** をクリックします。
 4. SQL Server に必要な資格情報を含んだ Windows 実行アカウントを選択するか、 **[新規]** をクリックして新たに作成します。
-   
+
    > [!NOTE]
    > 実行アカウントの種類は Windows であることが必要です。 さらに、SQL Server インスタンスをホストするすべての Windows Server 上のローカルの Administrators グループに、その実行アカウントが属している必要があります。
-   > 
-   > 
+   >
+   >
 5. **[保存]**をクリックします。
 6. 次の T-SQL サンプルに変更を加えて、各 SQL Server インスタンスで実行します。実行アカウントで SQL の評価を行うために必要な最低限の権限が付与されます。 ただし、実行アカウントが既に SQL Server インスタンスの sysadmin サーバー ロールに属している場合、この作業は不要です。
 
@@ -142,7 +146,7 @@ PowerShell ウィンドウを開き、次のスクリプトに自分の情報を
 
 **変更管理と構成管理** - この対象領域は、日常業務を保護し、変更がインフラストラクチャに悪影響を及ぼさないことを保証し、変更管理手順を確立し、システムの構成を追跡および監査するのに役立つ推奨事項を示します。
 
-### <a name="should-you-aim-to-score-100%-in-every-focus-area?"></a>すべての対象領域で 100% のスコアを目指す必要がありますか?
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>すべての対象領域で 100% のスコアを目指す必要がありますか?
 必ずしもその必要はありません。 推奨事項は、マイクロソフトのエンジニアによる数多くの顧客訪問によって得られた知識と経験に基づいています。 ただし、まったく同じサーバー インフラストラクチャは存在せず、関連性の高い、または低い推奨事項が存在する可能性があります。 たとえば、仮想マシンがインターネットに対して公開されていない場合、セキュリティに関する一部の推奨事項は関連性が低い場合があります。 優先度の低いアドホックなデータ収集とレポート作成を提供するサービスの場合、可用性に関する一部の推奨事項は関連性が低い可能性があります。 成熟したビジネスにとって重要な問題は、起業したばかりの会社には重要性が低い場合があります。 ユーザーが優先度の高い対象領域を識別して、スコアの経時変化を監視できます。
 
 すべての推奨事項には、重要である理由についてのガイダンスが含まれます。 ユーザーはこのガイダンスを使用し、IT サービスの性質と組織のビジネス ニーズに基づいて、推奨事項を実装することが会社にとって適切かどうかを評価する必要があります。
@@ -164,15 +168,15 @@ OMS の評価ソリューションを使用するには、ソリューション�
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>無視する推奨事項を識別するには
 1. ワークスペースにサインインして、ログ検索を開きます。 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
-   
+
    ```
    Type=SQLAssessmentRecommendation RecommendationResult=Failed | select  Computer, RecommendationId, Recommendation | sort  Computer
    ```
-   
+
    ログ検索のクエリを示すスクリーン ショットを次に示します。![失敗した推奨事項](./media/log-analytics-sql-assessment/sql-assess-failed-recommendations.png)
 2. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
 
-### <a name="to-create-and-use-an-ignorerecommendations.txt-text-file"></a>IgnoreRecommendations.txt テキスト ファイルを作成および使用するには
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations.txt テキスト ファイルを作成および使用するには
 1. IgnoreRecommendations.txt という名前のファイルを作成します。
 2. OMS に個別の行で無視させ、ファイルを保存して閉じさせるには、推奨事項ごとにそれぞれ RecommendationId を貼り付けるか入力します。
 3. OMS に推奨事項を無視させる各コンピューターの次のフォルダーにファイルを配置します。
@@ -182,7 +186,7 @@ OMS の評価ソリューションを使用するには、ソリューション�
 ### <a name="to-verify-that-recommendations-are-ignored"></a>推奨事項が無視されていることを確認するには
 1. 次回スケジュールされている評価が実行した後は、既定では 7 日おきで、推奨事項が Ignored とマークされ、評価ダッシュボードには表示されません。
 2. 次のログ検索クエリを使用して、無視されるすべての推奨事項の一覧を表示します。
-   
+
    ```
    Type=SQLAssessmentRecommendation RecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
    ```
@@ -240,6 +244,8 @@ OMS の評価ソリューションを使用するには、ソリューション�
 ## <a name="next-steps"></a>次のステップ
 * [ログ検索](log-analytics-log-searches.md) を実行して、詳細な SQL 評価データと推奨事項を表示します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

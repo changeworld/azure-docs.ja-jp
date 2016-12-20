@@ -1,12 +1,12 @@
 ---
-title: 'Azure AD Connect: ポート | Microsoft Docs'
-description: このページは Azure AD Connect のために開く必要があるポートのテクニカル リファレンス ページです
+title: "Azure AD Connect: ポート | Microsoft Docs"
+description: "このページは Azure AD Connect のために開く必要があるポートのテクニカル リファレンス ページです"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: billmath
 manager: femila
 editor: curtand
-
+ms.assetid: de97b225-ae06-4afc-b2ef-a72a3643255b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: bc48cac1f7e361df7f80f1dbf5a438484d4137c9
+
 
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>ハイブリッド ID で必要なポートとプロトコル
@@ -43,7 +47,7 @@ ms.author: billmath
 
 ファイアウォールで開く必要のある URL と IP アドレスの一覧については、「 [Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」を参照してください。
 
-## <a name="table-3---azure-ad-connect-and-federation-servers/wap"></a>表 3 - Azure AD Connect とフェデレーション サーバー/WAP
+## <a name="table-3---azure-ad-connect-and-federation-serverswap"></a>表 3 - Azure AD Connect とフェデレーション サーバー/WAP
 この表は、Azure AD Connect サーバーとフェデレーション/WAP サーバー間の通信に必要なポートとプロトコルについて説明しています。  
 
 | プロトコル | ポート | Description |
@@ -67,10 +71,10 @@ ms.author: billmath
 | HTTPS |443 (TCP/UDP) |デバイスの認証で使用されます。 |
 | TCP |49443 (TCP) |証明書の認証で使用されます。 |
 
-## <a name="table-6a-&-6b---azure-ad-connect-health-agent-for-(ad-fs/sync)-and-azure-ad"></a>テーブル 6a および 6b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD
+## <a name="table-6a-6b---azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>テーブル 6a および 6b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD
 次の表は、Azure AD Connect Health エージェントと Azure AD 間の通信に必要なエンドポイント、ポート、プロトコルについて説明しています。
 
-### <a name="table-6a---ports-and-protocols-for-azure-ad-connect-health-agent-for-(ad-fs/sync)-and-azure-ad"></a>表 6a - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のポートとプロトコル
+### <a name="table-6a---ports-and-protocols-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>表 6a - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のポートとプロトコル
 この表は、Azure AD Connect Health エージェントと Azure AD 間の通信に必要な以下の送信ポートとプロトコルについて説明しています。  
 
 | プロトコル | ポート | Description |
@@ -78,9 +82,12 @@ ms.author: billmath
 | HTTPS |443 (TCP/UDP) |送信 |
 | Azure Service Bus |5671 (TCP/UDP) |送信 |
 
-### <a name="6b---endpoints-for-azure-ad-connect-health-agent-for-(ad-fs/sync)-and-azure-ad"></a>表 6b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント
+### <a name="6b---endpoints-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>表 6b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント
 エンドポイントの一覧については、 [Azure AD Connect Health エージェントの「必要条件」セクション](active-directory-aadconnect-health-agent-install.md#requirements)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

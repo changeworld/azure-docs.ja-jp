@@ -1,12 +1,12 @@
 ---
-title: Linux コンピューターを Log Analytics に接続する | Microsoft Docs
-description: Log Analytics を使用すると、Linux コンピューターから生成されたデータを収集し、そのデータに基づいた行動を起こすことができます。
+title: "Linux コンピューターを Log Analytics に接続する | Microsoft Docs"
+description: "Log Analytics を使用すると、Linux コンピューターから生成されたデータを収集し、そのデータに基づいた行動を起こすことができます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: ab5b76d8-9ab5-406e-8768-76fb0632d830
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 218ffec4601c5b0b4ee9872b5bbd03489cb3ddcf
+
 
 ---
 # <a name="connect-linux-computers-to-log-analytics"></a>Linux コンピューターを Log Analytics に接続する
@@ -125,7 +129,7 @@ sudo /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py –enable
 Linux のパフォーマンス カウンターは、Windows のパフォーマンス カウンターと似ており、どちらも同じような働きがあります。 パフォーマンス カウンターの追加と構成は、以下の手順で行います。 パフォーマンス カウンターが OMS に追加された後、30 秒おきにデータが収集されます。
 
 ### <a name="to-add-a-linux-performance-counter-in-oms"></a>Linux のパフォーマンス カウンターを OMS で追加するには
-1. OMS ポータルを使用して OMS Agent for Linux を構成するには、[Settings](設定.md) ページで Linux のパフォーマンス カウンターを追加し、 **[Data]**(データ) をクリックします。  
+1. OMS ポータルを使用して OMS Agent for Linux を構成するには、[Settings] (設定) ページで Linux のパフォーマンス カウンターを追加し、 **[Data]**(データ) をクリックします。  
 2. **[Settings (設定)]** ページの **[Data (データ)]** で、**[Linux performance counters (Linux パフォーマンス カウンター)]** をクリックし、追加するカウンターの名前を選択するか入力します。  
     ![データ](./media/log-analytics-linux-agents/oms-settings-data01.png)
 3. カウンターのフル ネームがわからない場合は、名前の一部分を入力すると、使用できるカウンターが一覧表示されます。 追加するカウンターが見つかったら、目的の名前を一覧から選んでクリックし、プラス アイコンをクリックしてカウンターを追加します。
@@ -240,7 +244,7 @@ Apache 監視モジュールをアンロードするには、次のコマンド�
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 ### <a name="to-view-performance-data-with-log-analytics"></a>Log Analytics でパフォーマンス データを表示するには
-1. Operations Management Suite ポータルで、[Log Search](ログの検索.md) タイルをクリックします。
+1. Operations Management Suite ポータルで、[Log Search] (ログの検索) タイルをクリックします。
 2. すべてのパフォーマンス カウンターを表示するには、検索バーに「 `* (Type=Perf)` 」と入力します。
 
 OMS の収集対象には Windows のパフォーマンス カウンター データも含まれるので、Linux 固有のデータに検索範囲を限定する必要があります。 次の例では、Chorizo21 という名前の Linux サーバーに固有のパフォーマンス データが表示されます。
@@ -645,7 +649,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 
 #### <a name="resolution"></a>解決策
 * `date` コマンドを使用して、Linux サーバーの時刻を確認します。 データが現在の時刻から 15 分より前または後である場合、オンボードは失敗します。 これを修正するには、Linux サーバーの日付やタイムゾーンを更新します。
-* OMS Agent for Linux の最新バージョンは、時間の差によってオンボードが失敗する場合に通知します
+* OMS Agent for Linux の最新バージョンは、時間の差によってオンボードが失敗する場合に通知します。
 * 正しいワークスペース ID とワークスペース キーを使用して、再オンボードします。 詳細については、「[Onboarding using the command line (コマンド ラインを使用したオンボード)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)」を参照してください。
 
 ### <a name="a-500-error-or-404-error-appears-in-the-log-file-after-onboarding"></a>オンボード後、ログ ファイルに 500 エラーまたは 404 エラーが記録される
@@ -674,7 +678,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 ```
 
 
-### <a name="linux-data-doesn't-appear-in-the-oms-portal"></a>Linux データが OMS ポータルに表示されない
+### <a name="linux-data-doesnt-appear-in-the-oms-portal"></a>Linux データが OMS ポータルに表示されない
 #### <a name="probable-causes"></a>考えられる原因
 * OMS サービスへのオンボードが失敗しました
 * OMS サービスへの接続がブロックされています
@@ -779,6 +783,9 @@ syslog メッセージを収集するには、rsyslog または syslog-ng が必
 * [ログ検索](log-analytics-log-searches.md) について理解を深め、ソリューションによって収集された情報の詳細を確認します。
 * カスタム検索結果を保存および表示するには、 [ダッシュボード](log-analytics-dashboards.md) を使用します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,19 +1,23 @@
 ---
-title: Log Analytics における Azure Storage データの収集について | Microsoft Docs
-description: Azure リソースは、Azure 診断を使用して、Azure Storage アカウントにログとメトリックを書き込むことができます。 Log Analytics は、このデータのインデックスを作成し、検索可能な状態にすることができます。
+title: "Log Analytics における Azure Storage データの収集について | Microsoft Docs"
+description: "Azure リソースは、Azure 診断を使用して、Azure Storage アカウントにログとメトリックを書き込むことができます。 Log Analytics は、このデータのインデックスを作成し、検索可能な状態にすることができます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 84105740-3697-4109-bc59-2452c1131bfe
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 10/31/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2a160030ab51799199fc6df08133f811d4987feb
+
 
 ---
 # <a name="collecting-azure-storage-data-in-log-analytics-overview"></a>Log Analytics における Azure Storage データの収集について
@@ -40,7 +44,6 @@ Log Analytics は、以下の Azure リソースのデータを収集できま�
 | リソースの種類 | ログ (診断カテゴリ) | Log Analytics ソリューション |
 | --- | --- | --- |
 | Application Insights |可用性 <br> カスタム イベント <br> 例外 <br> 要求数 <br> |Application Insights (プレビュー) |
-| API Management | |"*なし*" (プレビュー) |
 | Automation <br> Microsoft.Automation/AutomationAccounts |JobLogs <br> JobStreams |Azure Automation (プレビュー) |
 | Key Vault <br> Microsoft.KeyVault/Vaults |AuditEvent |KeyVault (プレビュー) |
 | Application Gateway <br> Microsoft.Network/ApplicationGateways |ApplicationGatewayAccessLog <br> ApplicationGatewayPerformanceLog |Azure Networking (プレビュー) |
@@ -67,14 +70,15 @@ OMS で分析できるログを追加する順番を決定するために、 [�
   * worker ロール
   * Virtual Machines
 
-Application Insights はプライベート プレビューであり、Blob Storage への連続エクスポートを使用します。 プライベート プレビューに参加するには、Microsoft アカウント チームにお問い合わせいただくか、[フィードバック サイト](https://feedback.azure.com/forums/267889-log-analytics/suggestions/6519248-integration-with-app-insights)の情報を参照してください。
-
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics を使用して Azure 診断ログを分析](log-analytics-azure-storage-json.md)します。ログは、診断情報を JSON 形式で Blob Storage に出力する Azure サービスから読み取ります。
 * [Blob Storage (IIS の場合) と Table Storage (イベントの場合) を使用](log-analytics-azure-storage-iis-table.md)して、診断情報を Table Storage に出力する Azure サービスのログや、Blob Storage に出力された IIS ログを読み取ります。
 * [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。
 * [検索クエリを使用](log-analytics-log-searches.md) して、データを分析します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

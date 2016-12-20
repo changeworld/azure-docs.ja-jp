@@ -1,13 +1,13 @@
 ---
-title: Azure Search のビデオ、サンプル、およびチュートリアル | Microsoft Docs
-description: Microsoft Azure でホストされるクラウド サービスである Azure Search のために作成されたすべての動画、サンプル、デモ、チュートリアルを集めた一覧。
+title: "Azure Search のビデオ、サンプル、およびチュートリアル | Microsoft Docs"
+description: "Microsoft Azure でホストされるクラウド サービスである Azure Search のために作成されたすべての動画、サンプル、デモ、チュートリアルを集めた一覧。"
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: HeidiSteen
 manager: jhubbard
-editor: ''
+editor: 
 tags: azure-portal
-
+ms.assetid: 4ffa17a3-9e2b-4172-ad77-30c6a1354b24
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -15,9 +15,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 09/22/2016
 ms.author: heidist
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1011a19ae7ffae0fedee1d6202d1b00d35d948f9
+
 
 ---
-# <a name="azure-search:-code-samples,-demos,-videos-and-tutorials"></a>Azure Search: コード サンプル、デモ、ビデオ、チュートリアル
+# <a name="azure-search-code-samples-demos-videos-and-tutorials"></a>Azure Search: コード サンプル、デモ、ビデオ、チュートリアル
 次のビデオ、デモ、チュートリアル、サンプル アプリを使って作業をスピードアップできます。
 
 ## <a name="code-samples"></a>コード サンプル
@@ -81,6 +85,9 @@ ms.author: heidist
 | [スコアリング プロファイルのチュートリアル](search-get-started-scoring-profiles.md) |コンソール アプリケーションを使用してスコアリング プロファイルをテスト使用します。 |
 | [Azure Search 管理 REST API チュートリアル](search-get-started-management-api.md) |管理 REST API を使用して、サービスをプロビジョニングし、管理またはクエリ API キーを管理する方法。 |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

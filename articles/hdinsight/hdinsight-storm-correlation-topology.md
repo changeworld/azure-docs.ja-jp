@@ -1,20 +1,24 @@
 ---
-title: HDInsight での一定期間に発生したイベントの Storm および HBase との関連付け
-description: HDInsight で Storm と HBase を使用して、別々の時間に到着するイベントを関連付ける方法について説明します。
+title: "HDInsight での一定期間に発生したイベントの Storm および HBase との関連付け"
+description: "HDInsight で Storm と HBase を使用して、別々の時間に到着するイベントを関連付ける方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 17d11479-2d02-4790-8d29-05fb38351479
 ms.service: hdinsight
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 10/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 477568c4e1da51928f3618ba13b670cd62791fb9
+
 
 ---
 # <a name="correlate-events-over-time-with-storm-and-hbase-on-hdinsight"></a>HDInsight での一定期間に発生したイベントの Storm および HBase との関連付け
@@ -22,12 +26,15 @@ Apache Storm の永続的なデータ ストアを使用して、別々の時刻
 
 このドキュメントでは、ユーザー セッションのログイン イベントとログアウト イベントを追跡し、セッションの期間を計算する基本的な C# Storm トポロジを作成する方法を学習します。 このトポロジは、永続的なデータ ストアとして HBase を使用します。 HBase では、履歴データに対してバッチのクエリを実行し、特定の期間に開始または終了したユーザー セッションの数などの追加の情報を生成することもできます。
 
-[!INCLUDE [windows-only](../../includes/hdinsight-windows-only.md)]
-
 ## <a name="prerequisites"></a>前提条件
 * Visual Studio および HDInsight Tools for Visual Studio: インストールの情報については、 [HDInsight Tools for Visual Studio の概要](hdinsight-hadoop-visual-studio-tools-get-started.md) に関するページを参照してください。
 * HDInsight クラスターの Apache Storm (Windows ベース)。 これは Storm トポロジを実行します。受信データが処理され、HBase に格納されます。
-* HDInsight クラスターの Apache HBase (Windows ベースまたは Linux ベース)。 これは、この例のデータ ストアです。
+  
+  > [!IMPORTANT]
+  > SCP.NET トポロジは、2016 年 10 月 28 日以降に作成された Linux ベース Storm クラスタでサポートされます。2016 年 10 月 28 日以降に入手可能な HBase SDK for .NET パッケージは Linux では正常に作動しません。
+  > 
+  > 
+* HDInsight クラスター (Linux または Windows ベース) の Apache HBase。 これは、この例のデータ ストアです。
 
 ## <a name="architecture"></a>アーキテクチャ
 ![トポロジ経由のデータ フロー図](./media/hdinsight-storm-correlation-topology/correlationtopology.png)
@@ -176,6 +183,9 @@ START イベントと同じ方法で END イベントを検索できます。 �
 ## <a name="next-steps"></a>次のステップ
 Storm の例の詳細については、「 [HDInsight での Storm のサンプル トポロジ](hdinsight-storm-example-topology.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

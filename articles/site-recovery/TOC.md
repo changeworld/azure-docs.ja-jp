@@ -2,7 +2,7 @@
 ## [Site Recovery とは](site-recovery-overview.md)
 ## [Site Recovery のしくみ](site-recovery-components.md)
 ## [保護できるワークロード](site-recovery-workload.md)
-## [サポート対象のオペレーティング システム](site-recovery-support-matrix.md)
+## [Site Recovery のサポート マトリックス](site-recovery-support-matrix.md)
 ## [FAQ](site-recovery-faq.md)
 ## [概要を見る](https://www.youtube.com/watch?v=eOOwMQPBKfM)
 
@@ -41,7 +41,7 @@
 ### [Hyper-V VM (VMM なし)](site-recovery-deploy-with-powershell-resource-manager.md)
 ### [自動化を復旧計画に追加する](site-recovery-runbook-automation.md)
 ### [モビリティ サービスのデプロイを自動化する](site-recovery-automate-mobility-service-install.md)
-## [管理]
+## 管理
 ### [サーバーの削除と保護の無効化](site-recovery-manage-registration-and-protection.md)
 ### [復旧計画を設定する](site-recovery-create-recovery-plans.md)
 ### [Site Recovery でフェールオーバーする](site-recovery-failover.md)
@@ -49,8 +49,9 @@
 ## [監視とトラブルシューティング](site-recovery-monitoring-and-troubleshooting.md)
 
 # リファレンス
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
-## [PowerShell クラシック](/powershell/servicemanagement/)
+## [PowerShell](/powershell/resourcemanager/azurerm.siterecovery/v3.2.0/azurerm.siterecovery)
+## [PowerShell クラシック](/powershell/servicemanagement/azure.siterecovery/v3.1.0/azure.siterecovery)
+## [REST ()](https://msdn.microsoft.com/en-us/library/mt750497)
 
 # 関連項目
 ## [Azure Automation](/azure/automation/)
@@ -63,6 +64,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

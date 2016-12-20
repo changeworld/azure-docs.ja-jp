@@ -1,19 +1,23 @@
 ---
-title: Resource Manager テンプレートでのメトリック アラートの作成 | Microsoft Docs
-description: Resource Manager テンプレートを使用してメトリック アラートを作成し、電子メールまたは webhook で通知を受信する方法について説明します。
+title: "Resource Manager テンプレートでのメトリック アラートの作成 | Microsoft Docs"
+description: "Resource Manager テンプレートを使用してメトリック アラートを作成し、電子メールまたは webhook で通知を受信する方法について説明します。"
 author: johnkemnetz
 manager: rboucher
-editor: ''
+editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-
+ms.assetid: 41d62044-6bc5-4674-b277-45b919f58efe
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 11/28/2016
 ms.author: johnkem
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4788235f470fafb043f72dfb44dbe96ebb595df9
+
 
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
@@ -139,7 +143,7 @@ Resource Manager テンプレートを使用してアラートを作成するに
             "type": "Microsoft.Insights/alertRules",
             "name": "[parameters('alertName')]",
             "location": "[resourceGroup().location]",
-            "apiVersion": "2014-04-01",
+            "apiVersion": "2016-03-01",
             "properties": {
                 "name": "[parameters('alertName')]",
                 "description": "[parameters('alertDescription')]",
@@ -361,7 +365,7 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
                 "[variables('vmID')]"
             ],
             "location": "[variables('location')]",
-            "apiVersion": "2014-04-01",
+            "apiVersion": "2016-03-01",
             "properties": {
                 "name": "[variables('alertName')]",
                 "description": "variables('alertDescription')",
@@ -397,9 +401,12 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [アラートの詳細を確認します](../azure-portal/insights-receive-alert-notifications.md)
+* [アラートの詳細を確認します](insights-receive-alert-notifications.md)
 * [診断の設定を追加](monitoring-enable-diagnostic-logs-using-template.md) します
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

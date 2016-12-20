@@ -1,12 +1,12 @@
 ---
-title: Azure アプリケーションの高可用性 | Microsoft Docs
-description: Microsoft Azure で可用性の高いアプリケーションを設計し、構築するための方法に関する技術的概要と詳細。
-services: ''
+title: "Azure アプリケーションの高可用性 | Microsoft Docs"
+description: "Microsoft Azure で可用性の高いアプリケーションを設計し、構築するための方法に関する技術的概要と詳細。"
+services: 
 documentationcenter: na
 author: adamglick
 manager: saladki
-editor: ''
-
+editor: 
+ms.assetid: 8be4f323-ca00-4025-9356-c9bbc998eef3
 ms.service: resiliency
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f7289c969184b518a6ff836cbb9ed7e20841206b
+
 
 ---
 # <a name="high-availability-for-applications-built-on-microsoft-azure"></a>Microsoft Azure 上に構築されたアプリケーションの高可用性
@@ -134,6 +138,9 @@ web ロールはインフラストラクチャの残りの部分から自立し�
 ## <a name="next-steps"></a>次のステップ
 この記事は、 [Microsoft Azure 上に構築されたアプリケーションの障害復旧と高可用性](resiliency-disaster-recovery-high-availability-azure-applications.md)に関する一連の記事に属しています。 このシリーズの次の記事は、「 [Microsoft Azure 上で構築されたアプリケーションの障害復旧](resiliency-disaster-recovery-azure-applications.md)」です。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

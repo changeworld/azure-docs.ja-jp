@@ -1,12 +1,12 @@
 ---
-title: Microsoft Azure のアラートの概要 | Microsoft Docs
-description: アラートを使用すると、Azure リソースのメトリック、イベント、またはログを監視し、指定した条件が満たされたときに通知を受けることができます。
+title: "Microsoft Azure のアラートの概要 | Microsoft Docs"
+description: "アラートを使用すると、Azure リソースのメトリック、イベント、またはログを監視し、指定した条件が満たされたときに通知を受けることができます。"
 author: rboucher
-manager: ''
-editor: ''
+manager: carolz
+editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-
+ms.assetid: a6dea224-57bf-43d8-a292-06523037d70b
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2016
 ms.author: robb
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f80179a487d08244cbd5e57d34b10c4ab67b3cf5
+
 
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要
 この記事では、アラートの概要、利点、使用方法について説明します。  
 
-## <a name="what-are-alerts?"></a>アラートとは
+## <a name="what-are-alerts"></a>アラートとは
 アラートとは、Azure リソースのメトリック、イベント、またはログを監視し、指定した条件が満たされたときに通知する手段です。
 
 アラートは、以下の値とイベントに基づいて受け取ることができます。
@@ -31,8 +35,8 @@ ms.author: robb
 アラートは、次のようなさまざまなサービスで使用できます。
 
 * **Application Insights**: Web テストとメトリックのアラートを有効にします。 「[Application Insights のアラートの設定](../application-insights/app-insights-alerts.md)」と「[Web サイトの可用性と応答性の監視](../application-insights/app-insights-monitor-web-app-availability.md)」をご覧ください。
-* **Log Analytics (Operations Management Suite)**: 診断ログの Log Analytics へのルーティングを有効にします。 Operations Management Suite では、メトリック、ログなどのアラートの種類が許可されています。 詳細については、「 [Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)」を参照してください。   
-* **Azure Monitor**: メトリック値とアクティビティ ログ イベントの両方に基づいてアラートを有効にします。 Azure Monitor には、 [Azure Insights REST API](https://msdn.microsoft.com/library/dn931943.aspx)が含まれます。  詳細については、[Azure Portal、PowerShell、またはコマンド ライン インターフェイスでのアラートの作成](insights-alerts-portal.md)に関するページをご覧ください。
+* **Log Analytics (Operations Management Suite)**: 診断ログの Log Analytics へのルーティングを有効にします。 Operations Management Suite では、メトリック、ログなどのアラートの種類が許可されています。 詳細については、「 [Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)」を参照してください。  
+* **Azure Monitor**: メトリック値とアクティビティ ログ イベントの両方に基づいてアラートを有効にします。 Azure Monitor には、[Azure Monitor REST API](https://msdn.microsoft.com/library/dn931943.aspx) が含まれます。  詳細については、[Azure Portal、PowerShell、またはコマンド ライン インターフェイスでのアラートの作成](insights-alerts-portal.md)に関するページをご覧ください。
 
 ## <a name="alert-actions"></a>アラート アクション
 次を実行するようにアラートを構成できます。
@@ -47,9 +51,12 @@ ms.author: robb
 
 * [Azure ポータル](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
-* [コマンド ライン インターフェイス (CLI)](../azure-portal/insights-alerts-command-line-interface.md)
+* [コマンド ライン インターフェイス (CLI)](insights-alerts-command-line-interface.md)
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

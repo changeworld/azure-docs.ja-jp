@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/25/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 23176a9251a90a985a5d2fbce23ceeb9d0925234
+ms.sourcegitcommit: fb085ca229beba1757efa100ffca1e42089aedfa
+ms.openlocfilehash: 827ecc587dabfba58e87d192001c2714a1d7ce4a
 
 
 ---
-# <a name="azure-iot-gateway-sdk-beta-get-started-using-linux"></a>Azure IoT Gateway SDK (Beta) – Linux の使用
+# <a name="azure-iot-gateway-sdk-beta---get-started-using-linux"></a>Azure IoT Gateway SDK (Beta) – Linux の使用
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-selector](../../includes/iot-hub-gateway-sdk-getstarted-selector.md)]
 
 ## <a name="how-to-build-the-sample"></a>サンプルをビルドする方法
@@ -38,30 +38,30 @@ ms.openlocfilehash: 23176a9251a90a985a5d2fbce23ceeb9d0925234
 ## <a name="how-to-run-the-sample"></a>サンプルを実行する方法
 1. **build.sh** スクリプトは、**azure-iot-gateway-sdk** リポジトリのローカル コピーの**ビルド** フォルダーに出力を生成します。 ここには、このサンプルで使用する 2 つのモジュールが含まれています。
    
-    このビルド スクリプトにより、**liblogger_hl.so** が **build/modules/logger/** フォルダーに配置され、**libhello_world_hl.so** が **build/modules/hello_world/** フォルダーに配置されます。 次の JSON 設定ファイルに示すように、 **モジュール パス** の値にはこれらのパスを使用します。
-2. **samples/hello_world/src** フォルダーの **hello_world_lin.json** ファイルは、サンプルの実行に使用できる Linux の JSON 設定ファイルの例です。 次に示す JSON 設定の例は、 **azure-iot-gateway-sdk** リポジトリのローカル コピーのルートからサンプルを実行することを前提としています。
-3. **args** セクションの **logger_hl** モジュールでは、**ファイル名**の値をログ データを格納するファイルの名前とパスに設定します。
-   
-    これは、サンプルを実行するフォルダーに **log.txt** を書き込む Linux の JSON 設定ファイルの例です。
+    このビルド スクリプトにより、**liblogger.so** が **build/modules/logger/** フォルダーに配置され、**libhello_world.so** が **build/modules/hello_world/** フォルダーに配置されます。 次の JSON 設定ファイルに示すように、 **モジュール パス** の値にはこれらのパスを使用します。
+2. hello_world_sample プロセスは、コマンド ラインの引数として JSON 構成ファイルのパスを取得します。 サンプルの JSON ファイルは、**azure-iot-gateway-sdk/samples/hello_world/src/hello_world_win.json** でリポジトリの一部として提供されています。以下にコピーします。 既定以外の場所にモジュールまたはサンプルの実行可能ファイルを配置するようにビルド スクリプトを変更していない限り、そのままで動作します。
+
+   > [!NOTE]
+   > モジュール パスは、hello_world_sample 実行可能ファイルがある場所から現在の作業ディレクトリへの相対パスです。実行可能ファイルが配置されているディレクトリではありません。 サンプルの JSON 構成ファイルにより、既定で現在の作業ディレクトリに "log.txt" というファイルが作成されます。
    
     ```
     {
       "modules" :
       [ 
         {
-          "module name" : "logger_hl",
+          "module name" : "logger",
           "loading args": {
-            "module path" : "./build/modules/logger/liblogger_hl.so"
+            "module path" : "./build/modules/logger/liblogger.so"
           },
           "args" : 
           {
-            "filename":"./log.txt"
+            "filename":"log.txt"
           }
         },
         {
           "module name" : "hello_world",
           "loading args": {
-            "module path" : "./build/modules/hello_world/libhello_world_hl.so"
+            "module path" : "./build/modules/hello_world/libhello_world.so"
           },
           "args" : null
         }
@@ -70,13 +70,13 @@ ms.openlocfilehash: 23176a9251a90a985a5d2fbce23ceeb9d0925234
       [
         {
           "source": "hello_world",
-          "sink": "logger_hl"
+          "sink": "logger"
         }
       ]
     }
     ```
-4. シェル内で **azure-iot-gateway-sdk** フォルダーに移動します。
-5. 次のコマンドを実行します。
+3. **azure-iot-gateway-sdk** フォルダーに移動します。
+4. 次のコマンドを実行します。
    
    ```
    ./build/samples/hello_world/hello_world_sample ./samples/hello_world/src/hello_world_lin.json
@@ -89,6 +89,6 @@ ms.openlocfilehash: 23176a9251a90a985a5d2fbce23ceeb9d0925234
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

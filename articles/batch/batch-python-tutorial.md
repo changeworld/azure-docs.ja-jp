@@ -15,8 +15,8 @@ ms.workload: big-compute
 ms.date: 09/27/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c0a778c8dc8786f0c084686b3f8722ff15eed78c
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: a72a726b9c5ac2b3698d79aff00591c444c26594
 
 
 ---
@@ -362,7 +362,7 @@ def create_pool(batch_service_client, pool_id,
 * プールの **ID** (*id* - 必須)<p/>Batch のほとんどのエンティティと同様、新しいプールには、Batch アカウント内で一意となる ID が必要です。 このプールをコードから参照するときには、対応する ID を使用します。[Azure Portal][azure_portal] でも、このようにしてプールを識別することになります。
 * **コンピューティング ノード数** (*target_dedicated* - 必須)<p/>プールにデプロイする VM の数を指定するプロパティです。 すべての Batch アカウントには、1 つの Batch アカウントで使用できる**コア**数 (つまり、コンピューティング ノード数) に上限を設ける既定の**クォータ**が割り当てられています。 既定のクォータと、[クォータを増やす](batch-quota-limit.md#increase-a-quota)手順 (Batch アカウントの最大コア数を増やす方法など) については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。 なぜかプール内のノードが一定数を超えない、と疑問を感じている場合、 このコア クォータが原因である可能性があります。
 * ノードの**オペレーティング システム** (*virtual_machine_configuration* **または** *cloud_service_configuration* - 必須)<p/>*python_tutorial_client.py* では、[VirtualMachineConfiguration][py_vm_config] を使用して、Linux ノードのプールを作成します。 `common.helpers` の `select_latest_verified_vm_image_with_node_agent_sku` 関数を使用すると、[Azure Virtual Machines Marketplace][vm_marketplace] イメージの操作を簡素化できます。 Marketplace イメージの使用の詳細については、「 [Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md) 」を参照してください。
-* **コンピューティング ノードのサイズ** (*vm_size* - 必須)<p/>ここでは [VirtualMachineConfiguration][py_vm_config] に Linux ノードを指定するため、[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)に基づいて VM サイズ (このサンプルでは `STANDARD_A1`) を指定します。 詳細については、「 [Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md) 」を参照してください。
+* **コンピューティング ノードのサイズ** (*vm_size* - 必須)<p/>ここでは [VirtualMachineConfiguration][py_vm_config] に Linux ノードを指定するため、[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に基づいて VM サイズ (このサンプルでは `STANDARD_A1`) を指定します。 詳細については、「 [Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md) 」を参照してください。
 * **開始タスク** (*start_task* - 任意)<p/>前に示した物理ノードのプロパティに加え、必要に応じてプールの [StartTask][py_starttask] も指定できます。 各ノードがプールに参加するときと、ノードの再起動のたびに、各ノードで StartTask が実行されます。 StartTask は、タスクの実行に使用するコンピューティング ノードを準備する (たとえばタスクで実行するアプリケーションをインストールする) 場合に特に有効です。<p/>このサンプル アプリケーションでは、StartTask が、StartTask "*作業ディレクトリ*" の Storage からダウンロードするファイル (StartTask の **resource_files** プロパティを使用して指定します) を、ノードで実行されるすべてのタスクからアクセスできる "*共有*" ディレクトリにコピーします。 基本的に、これはノードがプールに参加するときに各ノードの共有ディレクトリに `python_tutorial_task.py` をコピーし、ノードで実行するすべてのタスクがアクセスできるようにします。
 
 `wrap_commands_in_shell` ヘルパー関数の呼び出しに注目してください。 これは、独立した複数のコマンドのコレクションを引数として受け取り、タスクのコマンド ライン プロパティに適した単一のコマンド ラインを作成する関数です。
@@ -597,7 +597,7 @@ if query_yes_no('Delete pool?') == 'yes':
 > 
 
 ## <a name="run-the-sample-script"></a>サンプル スクリプトの実行
-チュートリアルの[コード サンプル][github_article_samples]にある *python_tutorial_client.py* スクリプトを実行すると、コンソールの出力は次のようになります。 プールのコンピューティング ノードを作成するときや起動するとき、またはプールの起動タスクのコマンドを実行しているときに、画面に `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` と表示されて待機状態になります。 実行中と実行後のプール、コンピューティング ノード、ジョブ、タスクを監視するには、[Azure Portal][azure_portal] を使用します。 アプリケーションで作成された Storage リソース (コンテナーと BLOB) を表示するには、[Azure Portal][azure_portal] か [Microsoft Azure Storage エクスプローラー][storage_explorers]を使用します。
+チュートリアルの[コード サンプル][github_article_samples]にある *python_tutorial_client.py* スクリプトを実行すると、コンソールの出力は次のようになります。 プールのコンピューティング ノードを作成するときや起動するとき、またはプールの起動タスクのコマンドを実行しているときに、画面に `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` と表示されて待機状態になります。 実行中と実行後のプール、コンピューティング ノード、ジョブ、タスクを監視するには、[Azure Portal][azure_portal] を使用します。 アプリケーションで作成された Storage リソース (コンテナーと BLOB) を表示するには、[Azure Portal][azure_portal] か [Microsoft Azure Storage エクスプローラー][storage_explorer]を使用します。
 
 > [!TIP]
 > `azure-batch-samples/Python/Batch/article_samples` ディレクトリ内から *python_tutorial_client.py* スクリプトを実行してください。 `common.helpers` モジュール インポートの相対パスが使用されるため、このディレクトリ内からスクリプトを実行しなかった場合に `ImportError: No module named 'common'` が表示されることがあります。

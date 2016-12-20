@@ -1,19 +1,23 @@
 ---
-title: Log Analytics の Syslog メッセージ | Microsoft Docs
-description: Syslog は、Linux に共通のイベント ログ プロトコルです。   この記事では、Log Analytics の Syslog メッセージの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。
+title: "Log Analytics の Syslog メッセージ | Microsoft Docs"
+description: "Syslog は、Linux に共通のイベント ログ プロトコルです。   この記事では、Log Analytics の Syslog メッセージの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2016
+ms.date: 12/09/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 724567b853bec19cb41ef6a78b7d25a665830897
+
 
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Log Analytics の Syslog データ ソース
@@ -69,7 +73,7 @@ rsyslog の構成ファイルは、 **/etc/rsyslog.d/95-omsagent.conf**にあり
 
 ファシリティを削除するには、構成ファイルの該当セクションを削除します。  ファシリティのエントリを変更することで、特定のファシリティで収集される重大度を制限することができます。  たとえば、ユーザー ファシリティを重大度がエラー以上のメッセージに制限するには、構成ファイルの該当行を次のように変更します。
 
-    user.error  @127.0.0.1:25224
+    user.error    @127.0.0.1:25224
 
 
 #### <a name="syslog-ng"></a>syslog-ng
@@ -175,6 +179,9 @@ Syslog レコードの型は **Syslog** になり、次の表に示すプロパ�
 * [カスタム フィールド](log-analytics-custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
 * [Linux エージェントを構成](log-analytics-linux-agents.md) して、他の種類のデータを収集します。 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

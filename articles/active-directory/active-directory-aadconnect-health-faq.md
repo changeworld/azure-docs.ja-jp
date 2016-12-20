@@ -1,49 +1,50 @@
 ---
-title: Azure AD Connect Health の FAQ
-description: この FAQ は、Azure AD Connect Health について寄せられる質問とその回答です。 サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。
+title: "Azure AD Connect Health の FAQ"
+description: "この FAQ は、Azure AD Connect Health について寄せられる質問とその回答です。 サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: billmath
-manager: femila
+manager: samueld
 editor: curtand
-
+ms.assetid: f1b851aa-54d7-4cb4-8f5c-60680e2ce866
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2016
+ms.date: 10/18/2016
 ms.author: vakarand
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 907a4e73d47005d13151387b851e5640912e8cce
+
 
 ---
-# <a name="azure-ad-connect-health-frequently-asked-questions-(faq)"></a>Azure AD Connect Health についてよく寄せられる質問 (FAQ)
+# <a name="azure-ad-connect-health-frequently-asked-questions-faq"></a>Azure AD Connect Health についてよく寄せられる質問 (FAQ)
 この FAQ は、Azure AD Connect Health について寄せられる質問とその回答です。 サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。
 
 ## <a name="general-questions"></a>一般的な質問
 **Q: 複数の Azure AD ディレクトリを管理しています。どのようにすればその 1 つを Azure Active Directory Premium に切り替えることができますか。**
 
-右上隅にある、現在サインインしているユーザー名を選択し、適切なアカウントを選択することで、Azure AD ディレクトリを切り替えることができます。 ここにアカウントが表示されていない場合は、[サインアウト] を選択し、Azure Active Directory Premium が有効になっているディレクトリのグローバル管理者資格情報を使用してサインインします。
+右上隅にある、現在サインインしているユーザー名を選択し、適切なアカウントを選択することで、Azure AD テナントを切り替えることができます。 ここにアカウントが表示されていない場合は、[サインアウト] を選択し、Azure Active Directory Premium が有効になっているディレクトリのグローバル管理者資格情報を使用してサインインします。
 
 ## <a name="installation-questions"></a>インストールに関する質問
 **Q: 各サーバーに Azure AD Connect Health エージェントをインストールすると、どのような影響があるでしょうか。**
 
-ADFS サーバーまたはドメイン コントローラーに Microsoft Identity Health エージェントをインストールすることによる、CPU、メモリ消費、ネットワーク帯域幅、ストレージへの影響は最小限です。
+Microsoft Azure AD Connect Health エージェント ADFS、Web アプリケーション プロキシ サーバー、Azure AD Connect (同期) サーバー、ドメイン コントローラーをインストールすることによる、CPU、メモリ消費、ネットワーク帯域幅、ストレージへの影響は最小限です。
 
 おおよその数値を以下に示します。
 
 * CPU 消費率: 約 1% 上昇
 * メモリ消費量: システム メモリ合計の最大 10%
-* ネットワーク帯域幅の使用量: 1000 件の ADFS 要求につき約 1 MB
 
 > [!NOTE]
-> エージェントは、Azure と通信できない場合、定義済みの上限に達するまで、データをローカルに保存します。 上限に達した後、エージェントがサービスにデータをアップロードできなくなった場合は、新しい ADFS トランザクションによって、“処理された時期が最も古い” トランザクションから順に、“キャッシュされた” トランザクションが上書きされます。
+> エージェントは、Azure と通信できない場合、定義済みの上限に達するまで、データをローカルに保存します。 エージェントは、"最も長く使用されていない" という基準で、"キャッシュされた" データを上書きします。
 > 
 > 
 
-* AD Health エージェントのローカル バッファー ストレージ: 約 20 MB
-* 監査チャネルに必要なデータ ストレージ
-
-AD FS Audit Channel for AD Health エージェントがすべてのデータを処理できるように、1,024 MB (1 GB) のディスク領域をプロビジョニングすることをお勧めします。
+* Azure AD Connect Health エージェントのローカル バッファー ストレージ: 約 20 MB
+* AD FS サーバーの場合は、AD FS Audit Channel for Azure AD Connect Health エージェントがすべての監査データを上書き前に処理できるように、1,024 MB (1 GB) のディスク領域をプロビジョニングすることをお勧めします。
 
 **Q: Azure AD Connect Health エージェントのインストール時にサーバーを再起動する必要はありますか。**
 
@@ -53,12 +54,12 @@ AD FS Audit Channel for AD Health エージェントがすべてのデータを�
 
 **Q: Azure AD Connect Health サービスはパススルー http プロキシで動作しますか。**
 
-はい。  実行中の操作については、HTTP プロキシを使用して送信 http 要求を転送するように Health エージェントを構成できます。 詳細については、「 [HTTP プロキシを使用するための Azure AD Connect Health エージェントの構成](active-directory-aadconnect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy) 」をご覧ください。
+はい。  実行中の操作については、HTTP プロキシを使用して送信 http 要求を転送するように Health エージェントを構成できます。 詳細については、「[HTTP プロキシを使用するための Azure AD Connect Health エージェントの構成](active-directory-aadconnect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)」を参照してください。
+エージェントの登録時にプロキシを構成する必要がある場合は、Internet Explorer のプロキシ設定を事前に変更する必要があることがあります。
 
-エージェントの登録時にプロキシを構成する必要がある場合は、Internet Explorer のプロキシ設定を変更する必要があります。 <br>
-Internet Explorer から [設定]、[インターネット オプション]、[接続]、[LAN の設定] の順に開きます。<br>
-[LAN にプロキシ サーバーを使用する] をオンにします。<br>
-HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、[詳細設定] を選択します。<br>
+1. Internet Explorer から [設定]、[インターネット オプション]、[接続]、[LAN の設定] の順に開きます。
+2. [LAN にプロキシ サーバーを使用する] をオンにします。
+3. HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、[詳細設定] を選択します。
 
 **Q: Azure AD Connect Health サービスは、Http プロキシに接続するときに基本認証をサポートしますか。**
 
@@ -66,7 +67,7 @@ HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、[詳細�
 
 **Q: Azure AD Connect Health for AD DS では、どのバージョンの AD DS がサポートされていますか。**
 
-以下の OS バージョンにインストールされている場合は AD DS の監視がサポートされます。 
+以下の OS バージョンにインストールされている場合は AD DS の監視がサポートされます。
 
 * Windows Server 2008 R2
 * Windows Server 2012
@@ -75,7 +76,7 @@ HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、[詳細�
 ## <a name="operations-questions"></a>操作に関する質問
 **Q: 自分の AD FS アプリケーション プロキシ サーバーまたは Web アプリケーション プロキシ サーバーで監査を有効にする必要はありますか。**
 
-いいえ。AD FS アプリケーション プロキシ サーバーまたは Web アプリケーション プロキシ サーバーで監査を有効にする必要はありません。 AD FS フェデレーション サーバーでのみ有効にする必要があります。
+いいえ。Web アプリケーション プロキシ (WAP) サーバーで監査を有効にする必要はありません。 AD FS サーバーで有効にします。
 
 **Q: Azure AD Connect Health アラートはどのように解決すればよいですか。**
 
@@ -83,12 +84,14 @@ Azure AD Connect Health アラートは、成功条件を満たすと解決さ�
 
 **Q: Azure AD Connect Health エージェントを使用するためには、どのファイアウォール ポートを開放すればよいですか。**
 
-Azure AD Health サービス エンドポイントと通信できるようにするには、Azure AD Connect Health エージェント用に TCP/UDP ポート 80、443、および 5671 を開く必要があります。
+Azure AD Health サービス エンドポイントと通信できるようにするには、Azure AD Connect Health エージェント用に TCP/UDP ポート 443 と 5671 を開く必要があります。
 
 **Q: Azure AD Connect Health ポータルに同じ名前のサーバーが 2 つ表示されるのはなぜですか?**
 
-サーバーからエージェントを削除しても、サーバーは Azure AD Connect ポータルから自動的に削除されません。  そのため、サーバーから手動でエージェントを削除したか、サーバー自体を削除した場合は、Azure AD Connect Health ポータルから手動でサーバー エントリを削除する必要があります。  詳細については、「[サーバーまたはサービス インスタンスを削除する](active-directory-aadconnect-health-operations.md#delete-a-server-or-service-instance)」を参照してください。
-また、同じ詳細情報でサーバーを再イメージ化したか、新しいサーバーを作成したが、Azure AD Connect Health ポータルからサーバーを削除せずに新しいサーバーにエージェントをインストールした場合には、サーバーの 2 つのエントリが表示される可能性があります。  この場合は、古いサーバーに属しているエントリを手動で削除する必要があります。  通常、このエントリのデータは古いものと見なされます。
+サーバーからエージェントを削除しても、サーバーは Azure AD Connect ポータルから自動的に削除されません。  サーバーから手動でエージェントを削除したか、サーバー自体を削除した場合は、Azure AD Connect Health ポータルから手動でサーバー エントリを削除する必要があります。 詳細については、「[サーバーまたはサービス インスタンスを削除する](active-directory-aadconnect-health-operations.md#delete-a-server-or-service-instance)」を参照してください。
+
+同じ詳細情報 (コンピューター名など) でサーバーを再イメージ化したか、新しいサーバーを作成し、Azure AD Connect Health ポータルから登録済みサーバーを削除せずに新しいサーバーにエージェントをインストールした場合は、同じ名前の 2 つのエントリが表示される可能性があります。  
+この場合は、古いサーバーに属しているエントリを手動で削除する必要があります。 このサーバーのデータは古くなっているはずです。
 
 ## <a name="related-links"></a>関連リンク
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
@@ -96,9 +99,12 @@ Azure AD Health サービス エンドポイントと通信できるようにす
 * [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
 * [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
-* [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md) 
+* [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

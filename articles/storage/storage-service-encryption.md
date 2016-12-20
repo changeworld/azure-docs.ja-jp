@@ -1,12 +1,12 @@
 ---
-title: 保存データ向け Azure Storage Service Encryption | Microsoft Docs
-description: データを保存するときにサービス側で Azure Blob Storage を暗号化し、データを取得するときに復号化するには、Azure Storage Service Encryption 機能を使用します。
+title: "保存データ向け Azure Storage Service Encryption | Microsoft Docs"
+description: "データを保存するときにサービス側で Azure Blob Storage を暗号化し、データを取得するときに復号化するには、Azure Storage Service Encryption 機能を使用します。"
 services: storage
 documentationcenter: .net
 author: robinsh
 manager: carmonm
 editor: tysonn
-
+ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: robinsh
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: bdb016af2c21b06c6abf5af607e703e5f898f8f4
+
 
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption for Data at Rest
@@ -56,8 +60,8 @@ SSE には次の制限事項があります。
 * テーブル、キュー、ファイルのデータは暗号化されません。
 
 ## <a name="getting-started"></a>Getting Started (概要)
-### <a name="step-1:-[create-a-new-storage-account](storage-create-storage-account.md)."></a>手順 1: [新しいストレージ アカウントを作成する](storage-create-storage-account.md)
-### <a name="step-2:-enable-encryption."></a>手順 2: 暗号化を有効にする
+### <a name="step-1-create-a-new-storage-accountstorage-create-storage-accountmd"></a>手順 1: [新しいストレージ アカウントを作成する](storage-create-storage-account.md)
+### <a name="step-2-enable-encryption"></a>手順 2: 暗号化を有効にする
 [Azure ポータル](https://portal.azure.com)を使用して、暗号化を有効にできます。
 
 > [!NOTE]
@@ -65,7 +69,7 @@ SSE には次の制限事項があります。
 > 
 > 
 
-### <a name="step-3:-copy-data-to-storage-account"></a>手順 3: ストレージ アカウントにデータをコピーする
+### <a name="step-3-copy-data-to-storage-account"></a>手順 3: ストレージ アカウントにデータをコピーする
 ストレージ アカウントで SSE を有効にして、そのストレージ アカウントに BLOB を書き込むと、BLOB が暗号化されます。 このストレージ アカウントに既にある BLOB は、再度書き込まれるまで暗号化されません。 あるストレージ アカウントからのデータを SSE 暗号化が有効になっている別のストレージ アカウントにコピーしたり、あるコンテナーから別のコンテナーに BLOB をコピーしたりして、以前のデータを確実に暗号化することができます。 そのためには、次のツールを使用できます。
 
 #### <a name="using-azcopy"></a>AzCopy の使用
@@ -83,7 +87,7 @@ AzCopy は、最適なパフォーマンスの単純なコマンドを使用し�
 
 詳細については、「 [Azure ストレージ エクスプローラー](storage-explorers.md)」を参照してください。
 
-### <a name="step-4:-query-the-status-of-the-encrypted-data"></a>手順 4: 暗号化されたデータの状態を照会する
+### <a name="step-4-query-the-status-of-the-encrypted-data"></a>手順 4: 暗号化されたデータの状態を照会する
 ストレージ クライアント ライブラリの更新バージョンがデプロイされ、オブジェクトの状態を照会して暗号化されているかどうかを判別できるようになります。 例については、今後このドキュメントに追加される予定です。
 
 それまでの間は、Azure ポータルで [Get Account Properties](https://msdn.microsoft.com/library/azure/mt163553.aspx) を呼び出して、ストレージ アカウントの暗号化が有効であることを確認したり、ストレージ アカウントのプロパティを表示したりできます。
@@ -175,6 +179,9 @@ A: Storage Service Encryption に関する問題は、 [ssediscussions@microsoft
 ## <a name="next-steps"></a>次のステップ
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。 詳細については、 [Storage セキュリティ ガイド](storage-security-guide.md)に関する記事を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する | Microsoft Docs
-description: Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します
+title: "Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する | Microsoft Docs"
+description: "Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: vDonGlover
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: b62cf2ca-dd2a-4a83-bb54-469f948fb026
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: v-donglo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3b04aa7406f44130deb4f12c856b459369301449
+
 
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する
@@ -22,7 +26,7 @@ Microsoft Azure Machine Learning Web サービス ポータルを使用して、
 Machine Learning Web サービス ポータルでは、次のことができます。
 
 * Web サービスの使用状況を監視する。
-* 説明を設定する、Web サービスのキーを更新する (新しい Web サービスのみ)、ストレージ アカウント キーを更新する (新しい Web サービスのみ)、ログ記録を有効にする (クラシック Web サービスのみ)、サンプル データを有効または無効にする。
+* 説明を設定する、Web サービスのキーを更新する (新しい Web サービスのみ)、ストレージ アカウント キーを更新する (新しい Web サービスのみ)、ログ記録を有効にする、サンプル データを有効または無効にする。
 * Web サービスを削除する。
 * 課金プランを作成、削除、または更新する (新しい Web サービスのみ)。
 * エンドポイントを追加、削除する (クラシック Web サービスのみ)。
@@ -171,6 +175,9 @@ Machine Learning Studio のワークスペースにアクセスできる追加�
 > 
 > 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

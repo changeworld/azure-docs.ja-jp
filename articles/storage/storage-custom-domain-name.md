@@ -1,12 +1,12 @@
 ---
-title: BLOB ストレージ エンドポイントのドメイン名の構成 | Microsoft Docs
-description: Azure クラシック ポータルでカスタム ユーザー ドメインを Azure ストレージ アカウントの BLOB ストレージ エンドポイントにマッピングする方法について説明します。
+title: "Blob Storage エンドポイントのドメイン名の構成 | Microsoft Docs"
+description: "Azure クラシック ポータルでカスタム ユーザー ドメインを Azure ストレージ アカウントの BLOB ストレージ エンドポイントにマッピングする方法について説明します。"
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: tamram
 manager: carmonm
 editor: tysonn
-
+ms.assetid: aaafd8c5-eacb-49dc-8c8b-3f7011ad5e92
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: tamram
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9e81c98e0da32e0ac432a1a4bae0fb771e35cff7
+
 
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>BLOB ストレージ エンドポイントのカスタム ドメイン名の構成
@@ -101,6 +105,9 @@ asverify サブドメインは、Azure で認識される特殊なサブドメ�
 ## <a name="additional-resources"></a>その他のリソース
 * [Content Delivery Network (CDN) エンドポイントにカスタム ドメインをマップする方法](../cdn/cdn-map-content-to-custom-domain.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

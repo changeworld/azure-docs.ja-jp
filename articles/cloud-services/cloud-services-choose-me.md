@@ -1,11 +1,11 @@
 ---
-title: Azure のコンピューティング オプション - Cloud Services | Microsoft Docs
-description: 'Azure の次のコンピューティング ホスティング オプションとそのしくみについて学習します: App Service、Cloud Services、Virtual Machines'
+title: "Azure のコンピューティング オプション - Cloud Services | Microsoft Docs"
+description: "Azure の次のコンピューティング ホスティング オプションとそのしくみについて学習します: App Service、Cloud Services、Virtual Machines"
 services: cloud-services
-documentationcenter: ''
+documentationcenter: 
 author: Thraka
 manager: timlt
-
+ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
 ms.service: multiple
 ms.workload: multiple
 ms.tgt_pltfrm: na
@@ -13,9 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: adegeo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: db55f505d499fdb60f8a9d99509a68a1fd487eae
+
 
 ---
-# <a name="should-i-choose-cloud-services-or-something-else?"></a>Cloud Services と他のサービスのどちらを選択すればよいか
+# <a name="should-i-choose-cloud-services-or-something-else"></a>Cloud Services と他のサービスのどちらを選択すればよいか
 Azure Cloud Services が最適な選択ですか? Azure にはアプリケーションを実行するための複数のホスティング モデルがあります。 それぞれの実行モデルには異なるサービスが用意されているため、実行する内容に正確に基づいて実行モデルを選択してください。
 
 [!INCLUDE [compute-table](../../includes/compute-options-table.md)]
@@ -38,7 +42,7 @@ Cloud Services は、[サービスとしてのプラットフォーム](https://
 * **Worker ロール**  
    IIS を搭載していない Windows Server を実行します。
 
-たとえば、単純なアプリケーションは Web ロールだけを使用するかもしれませんが、複雑なアプリケーションは Web ロールを使用してユーザーから受け取った要求を処理してから、それらの要求が作成する作業を Worker ロールに渡して処理することがあります  (この通信は、[Service Bus](../service-bus/service-bus-fundamentals-hybrid-solutions.md) または [Azure キュー](../storage/storage-introduction.md)を使用する可能性があります)。
+たとえば、単純なアプリケーションは Web ロールだけを使用するかもしれませんが、複雑なアプリケーションは Web ロールを使用してユーザーから受け取った要求を処理してから、それらの要求が作成する作業を Worker ロールに渡して処理することがあります  (この通信は、[Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) または [Azure キュー](../storage/storage-introduction.md)を使用する可能性があります)。
 
 上の図に示すように、1 つのアプリケーションのすべての VM は同じクラウド サービスで実行されます。 このため、ユーザーは 1 つのパブリック IP アドレスを通してアプリケーションにアクセスし、要求はアプリケーションの VM 間で自動的に負荷分散されます。 プラットフォームは、ハードウェアの単一障害点を回避する方法で、VM を Cloud Services アプリケーションで [スケールおよびデプロイ](cloud-services-how-to-scale.md) します。
 
@@ -60,6 +64,9 @@ PaaS という Cloud Services の本質には、他の含意もあります。 �
 [php でクラウド サービス アプリケーションを作成する](../cloud-services-php-create-web-role.md)  
 [Python でのクラウド サービス アプリの作成](cloud-services-python-ptvs.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: d737a8b14000e157d4f70c9e23cc9d40697d2b50
-ms.openlocfilehash: 0d9510cc32e4d3e0ed4b61f47cb4749180c1b830
+ms.sourcegitcommit: cd8dfa8b436cd165b3438a1823a571feebb0f4f4
+ms.openlocfilehash: 0a2b4c08e5da4d9c16e12f33c5f1a3f9ae863498
 
 ---
 #<a name="windows-virtual-machines-documentation"></a>Windows 仮想マシンのドキュメント
@@ -11,7 +11,7 @@ Azure Virtual Machines (VM) は、Azure が提供するスケーラブルなオ�
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-windows-overview">
+        <a href="/azure/virtual-machines/virtual-machines-windows-overview?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -47,17 +47,17 @@ Azure Virtual Machines (VM) は、Azure が提供するスケーラブルなオ�
         </a>
     </li>
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-windows-hero-tutorial">
+        <a href="/azure/virtual-machines/virtual-machines-windows-hero-tutorial?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/portal.svg" alt="" />
+                            <img src="../media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure ポータルで初めての Windows 仮想マシンを作成する</h3>
+                        <h3>Azure Portal での Windows VM の概要</h3>
                     </div>
                 </div>
             </div>
@@ -65,17 +65,17 @@ Azure Virtual Machines (VM) は、Azure が提供するスケーラブルなオ�
         </a>
     </li>
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-windows-ps-create">
+        <a href="/azure/virtual-machines/virtual-machines-windows-ps-create?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/powershell.svg" alt="" />
+                            <img src="../media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>PowerShell を使用して VM を作成する</h3>
+                        <h3>PowerShell を使用した Windows VM の概要</h3>
                     </div>
                 </div>
             </div>
@@ -83,17 +83,17 @@ Azure Virtual Machines (VM) は、Azure が提供するスケーラブルなオ�
         </a>
     </li>
     <li>
-        <a href="/azure/resource-manager-template-walkthrough">
+        <a href="/azure/resource-manager-template-walkthrough?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="../media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Resource Manager テンプレートを使用して VM を作成する</h3>
+                        <h3>Resource Manager テンプレートを使用した Windows VM の概要</h3>
                     </div>
                 </div>
             </div>
@@ -103,32 +103,50 @@ Azure Virtual Machines (VM) は、Azure が提供するスケーラブルなオ�
 </ul>
 
 ---
-
-##<a name="reference"></a>リファレンス
-
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell](/powershell/)
-
-###<a name="azure-cli"></a>Azure CLI
-[Azure CLI](/cli/azure/vm)
-
-###<a name="net"></a>.NET
-[管理リファレンス API](/dotnet/api/)
-
-###<a name="java-sdk"></a>Java SDK
-[Java リファレンス](/java/api/)
-
-###<a name="rest-compute"></a>REST (Compute)
-[Compute REST API リファレンス](/rest/api/compute)
-
-###<a name="rest-network"></a>REST (ネットワーク)
-[Network REST API リファレンス](https://msdn.microsoft.com/library/mt163658.aspx)
-
-###<a name="rest-storage"></a>REST (ストレージ)
-[Storage REST API リファレンス](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-
-###<a name="rest-vm-scale-sets"></a>REST (VM Scale Sets)
-[Virtual Machine Scale Sets REST API リファレンス](https://msdn.microsoft.com/library/azure/mt705635.aspx)
+ 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
+                        <p><a href="/cli/azure/vm">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p>
+                        <p><a href="/java/api">Java</a></p>
+                        <p><a href="https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html">Python</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/compute">REST API リファレンスのコンピューティング</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/windows.pdf">
@@ -140,6 +158,6 @@ Windows 仮想マシンのドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

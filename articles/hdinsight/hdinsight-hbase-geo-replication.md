@@ -1,12 +1,12 @@
 ---
-title: 2 つのデータセンター間での HBase レプリケーションの構成 | Microsoft Docs
-description: 2 つのデータ センター間で HBase のレプリケーションを構成する方法と、クラスターのレプリケーションの用途について説明します。
+title: "2 つのデータセンター間での HBase レプリケーションの構成 | Microsoft Docs"
+description: "2 つのデータ センター間で HBase のレプリケーションを構成する方法と、クラスターのレプリケーションの用途について説明します。"
 services: hdinsight,virtual-network
-documentationcenter: ''
+documentationcenter: 
 author: mumian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 7590d02b-f745-450a-9daf-dd942db2d38d
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -14,45 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/25/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 112e64a740354feb55692212e964d33be8f9c9b6
+
 
 ---
-# HDInsight での HBase geo レプリケーションの構成
+# <a name="configure-hbase-geo-replication-in-hdinsight"></a>HDInsight での HBase geo レプリケーションの構成
 > [!div class="op_single_selector"]
-> * [VPN 接続の構成](../hdinsight-hbase-geo-replication-configure-VNETs.md)
-> * [DNS の構成](hdinsight-hbase-geo-replication-configure-DNS.md)
-> * [HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md)
+> * [VPN 接続の構成](hdinsight-hbase-geo-replication-configure-vnets.md)
+> * [DNS の構成](hdinsight-hbase-geo-replication-configure-dns.md)
+> * [HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md) 
 > 
 > 
 
-2 つのデータ センター間に HBase レプリケーションを構成する方法について説明します。クラスターのレプリケーションには次のような用途があります。
+2 つのデータ センター間に HBase レプリケーションを構成する方法について説明します。 クラスターのレプリケーションには次のような用途があります。
 
 * バックアップと障害復旧
 * データの集計
 * 地理的なデータの分散
 * オフライン データ分析と組み合わされたオンラインでのデータの取り込み
 
-クラスターのレプリケーションでは、ソース プッシュの手法が使用されます。HBase クラスターは、ソースまたはターゲットになることも、両方のロールを同時に満たすこともできます。レプリケーションは非同期であり、レプリケーションの目的は最終的な整合性です。レプリケーションが有効になった列ファミリに対する編集をソースが受け取ると、その編集はすべてのターゲット クラスターに伝達されます。クラスター間でデータがレプリケートされるときは、ソース クラスターとそのデータを既に消費されているすべてのクラスターが追跡されて、レプリケーション ループが防止されます。このチュートリアルでは、ソースとターゲットの間のレプリケーションの構成について詳しく説明します。他のクラスター トポロジについては、[Apache HBase のリファレンス ガイド](http://hbase.apache.org/book.html#_cluster_replication)を参照してください。
+クラスターのレプリケーションでは、ソース プッシュの手法が使用されます。 HBase クラスターは、ソースまたはターゲットになることも、両方のロールを同時に満たすこともできます。 レプリケーションは非同期であり、レプリケーションの目的は最終的な整合性です。 レプリケーションが有効になった列ファミリに対する編集をソースが受け取ると、その編集はすべてのターゲット クラスターに伝達されます。 クラスター間でデータがレプリケートされるときは、ソース クラスターとそのデータを既に消費されているすべてのクラスターが追跡されて、レプリケーション ループが防止されます。 このチュートリアルでは、ソースとターゲットの間のレプリケーションの構成について詳しく説明します。  他のクラスター トポロジについては、 [Apache HBase のリファレンス ガイド](http://hbase.apache.org/book.html#_cluster_replication)を参照してください。
 
 これは、シリーズの第 3 部です。
 
-* [2 つの仮想ネットワーク間に VPN 接続を構成します][hdinsight-hbase-replication-vnet]
-* [仮想ネットワーク用に DNS を構成します][hdinsight-hbase-replication-dns]
+* [2 つの仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-replication-vnet]
+* [仮想ネットワーク用の DNS の構成][hdinsight-hbase-replication-dns]
 * HBase の geo レプリケーションを構成します (このチュートリアル)
 
-次の図は、[2 つの仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-geo-replication-vnet]に関するページおよび [2 つの仮想ネットワーク間の DNS の構成][hdinsight-hbase-replication-dns]に関するページで作成した 2 つの仮想ネットワークとネットワーク接続を示したものです。
+次の図は、[2 つの仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-geo-replication-vnet]に関するページおよび [仮想ネットワーク間の DNS の構成][hdinsight-hbase-replication-dns]に関するページで作成した 2 つの仮想ネットワークとネットワーク接続を示したものです。 
 
 ![HDInsight HBase レプリケーション仮想ネットワークの図][img-vnet-diagram]
 
-## <a id="prerequisites"></a>前提条件
+## <a name="a-idprerequisitesaprerequisites"></a><a id="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-* **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * **Azure PowerShell を実行できるワークステーション**。
   
-    PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「Set-ExecutionPolicy コマンドレットの使用」を参照してください。
+    PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned*に設定する必要があります。 「Set-ExecutionPolicy コマンドレットの使用」を参照してください。
   
     [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
-* **VPN 接続と DNS が構成された 2 つの Azure 仮想ネットワーク**。方法については、「[2 つの Azure 仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-replication-vnet]」および「[2 つの Azure 仮想ネットワーク間の DNS の構成][hdinsight-hbase-replication-dns]」を参照してください。
+* **VPN 接続と DNS が構成された 2 つの Azure 仮想ネットワーク**。  方法については、「[2 つの Azure 仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-replication-vnet]」および「[2 つの Azure 仮想ネットワーク間の DNS の構成][hdinsight-hbase-replication-dns]」を参照してください。
 
     PowerShell スクリプトを実行する前に、次のコマンドレットを使用して Azure サブスクリプションに接続されていることを確認します。
 
@@ -64,12 +68,12 @@ ms.author: jgao
 
 
 
-## HDInsight での HBase クラスターのプロビジョニング
-「[2 つの Azure 仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-replication-vnet]」では、ヨーロッパと米国のデータ センターに仮想ネットワークを作成しました。2 つの仮想ネットワークは VPN で接続されています。このセッションでは、各仮想ネットワークに HBase クラスターをプロビジョニングします。このチュートリアルの後半では、一方の HBase クラスターが他の HBase クラスターにレプリケートするようにします。
+## <a name="provision-hbase-clusters-in-hdinsight"></a>HDInsight での HBase クラスターのプロビジョニング
+「[2 つの Azure 仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-replication-vnet]」では、ヨーロッパと米国のデータ センターに仮想ネットワークを作成しました。 2 つの仮想ネットワークは VPN で接続されています。 このセッションでは、各仮想ネットワークに HBase クラスターをプロビジョニングします。 このチュートリアルの後半では、一方の HBase クラスターが他の HBase クラスターにレプリケートするようにします。
 
-Azure クラシック ポータルでは、カスタム構成オプションで HDInsight クラスターをプロビジョニングすることはできません。たとえば、*hbase.replication* を *true* に設定するような場合です。クラスターをプロビジョニングした後で構成ファイルの値を設定した場合、クラスターが再イメージ化された後で設定は失われます。詳細については、「[HDInsight での Hadoop クラスターのプロビジョニング][hdinsight-provision]」を参照してください。カスタム オプションで HDInsight クラスターをプロビジョニングする方法の 1 つは、Azure PowerShell を使用することです。
+Azure クラシック ポータルでは、カスタム構成オプションで HDInsight クラスターをプロビジョニングすることはできません。 たとえば、*hbase.replication* を *true* に設定するような場合です。 クラスターをプロビジョニングした後で構成ファイルの値を設定した場合、クラスターが再イメージ化された後で設定は失われます。 詳細については、[HDInsight での Hadoop クラスターのプロビジョニング][hdinsight-provision]に関するページを参照してください。 カスタム オプションで HDInsight クラスターをプロビジョニングする方法の 1 つは、Azure PowerShell を使用することです。
 
-**Contoso-VNet-EU で HBase クラスターをプロビジョニングするには**
+**Contoso-VNet-EU で HBase クラスターをプロビジョニングするには** 
 
 1. ワークステーションで、Windows PowerShell ISE を開きます。
 2. スクリプトの先頭にある変数を設定し、スクリプトを実行します。
@@ -129,7 +133,7 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
    
         $config | New-AzureHDInsightCluster -Name $hbaseClusterName -Location $location -Credential $credential
 
-**Contoso-VNet-US で HBase クラスターをプロビジョニングするには**
+**Contoso-VNet-US で HBase クラスターをプロビジョニングするには** 
 
 * 次の値を指定して同じスクリプトを使用します。
   
@@ -142,33 +146,33 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
         Add-AzureAccount 
         Select-AzureSubscription $azureSubscriptionName
 
-## DNS 条件付フォワーダーの構成
-[仮想ネットワークの DNS の構成][hdinsight-hbase-replication-dns]に関するページでは、2 つのネットワークに DNS サーバーを構成しました。HBase クラスターには異なるドメイン サフィックスがあります。したがって、新しく DNS 条件付フォワーダーを構成する必要があります。
+## <a name="configure-dns-conditional-forwarder"></a>DNS 条件付フォワーダーの構成
+[仮想ネットワークの DNS の構成][hdinsight-hbase-replication-dns]に関するページでは、2 つのネットワークに DNS サーバーを構成しました。 HBase クラスターには異なるドメイン サフィックスがあります。 したがって、新しく DNS 条件付フォワーダーを構成する必要があります。
 
-条件付フォワーダーを構成するには、2 つの HBase クラスターのドメイン サフィックスを知っている必要があります。
+条件付フォワーダーを構成するには、2 つの HBase クラスターのドメイン サフィックスを知っている必要があります。 
 
 **2 つの HBase クラスターのドメイン サフィックスを調べるには**
 
-1. RDP で **Contoso-HBase-EU** に接続します。方法については、「[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。これは、実際にはクラスターの headnode0 です。
+1. RDP で **Contoso-HBase-EU**に接続します。  方法については、[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]に関するページを参照してください。 これは、実際にはクラスターの headnode0 です。
 2. Windows PowerShell コンソールまたはコマンド プロンプトを開きます。
 3. **ipconfig** を実行し、**接続固有の DNS サフィックス**の値を記録します。
-4. RDP セッションを閉じないでください。後でドメイン名の解決をテストするために必要です。
+4. RDP セッションを閉じないでください。  後でドメイン名の解決をテストするために必要です。
 5. 同じ手順を繰り返し、**Contoso-HBase-US** の**接続固有の DNS サフィックス**を調べます。
 
 **DNS フォワーダーを構成するには**
 
-1. RDP で **Contoso-DNS-EU** に接続します。
+1. RDP で **Contoso-DNS-EU**に接続します。 
 2. 左下の Windows キーをクリックします。
-3. **[管理ツール]** をクリックします。
-4. **[DNS]** をクリックします。
+3. **[管理ツール]**をクリックします。
+4. **[DNS]**をクリックします。
 5. 左側のウィンドウで、**[DSN]**、**[Contoso-DNS-EU]** の順に展開します。
-6. **[条件付フォワーダー]** をクリックし、**[新規条件付フォワーダー]** をクリックします。
+6. **[条件付フォワーダー]** をクリックし、**[新規条件付フォワーダー]** をクリックします。 
 7. 次の情報を入力します。
-   * **DNS ドメイン**: Contoso-HBase-US の DNS サフィックスを入力します。例: Contoso-HBase-US.f5.internal.cloudapp.net
-   * **マスター サーバーの IP アドレス**: 「10.2.0.4」と入力します。これは、Contoso-DNS-US の IP アドレスです。IP を確認してください。実際の DNS サーバーでは IP アドレスが異なる場合があります。
-8. **Enter** キーを押し、**[OK]** をクリックします。以上で、Contoso-DNS-EU から Contoso-DNS-US の IP アドレスを解決できるようになります。
+   * **DNS ドメイン**: Contoso-HBase-US の DNS サフィックスを入力します。 例: Contoso-HBase-US.f5.internal.cloudapp.net
+   * **マスター サーバーの IP アドレス**: 「10.2.0.4」と入力します。これは、Contoso-DNS-US の IP アドレスです。 IP を確認してください。 実際の DNS サーバーでは IP アドレスが異なる場合があります。
+8. **Enter** キーを押し、**[OK]** をクリックします。  以上で、Contoso-DNS-EU から Contoso-DNS-US の IP アドレスを解決できるようになります。
 9. 同じ手順を繰り返し、次の値を使用して、Contoso-DNS-US 仮想マシン上の DNS サービスへの DNS 条件付フォワーダーを追加します。
-   * **DNS ドメイン**: Contoso-HBase-EU の DNS サフィックスを入力します。
+   * **DNS ドメイン**: Contoso-HBase-EU の DNS サフィックスを入力します。 
    * **マスター サーバーの IP アドレス**: 「10.2.0.4」と入力します。これは、Contoso-DNS-EU の IP アドレスです。
 
 **ドメイン名の解決をテストするには**
@@ -180,7 +184,7 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
         ping headnode0.[DNS suffix of Contoso-HBase-US]
    
     ICM プロトコルは、HBase クラスターのワーカー ノードで有効になっています。
-4. RDP セッションを閉じないでください。後で必要になります。
+4. RDP セッションを閉じないでください。 後で必要になります。
 5. 同じ手順を繰り返し、Contoso-HBase-US から Contoso-HBase-EU の headnode0 に対して ping を実行します。
 
 > [!IMPORTANT]
@@ -188,17 +192,17 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
 > 
 > 
 
-## HBase テーブル間のレプリケーションの有効化
-次に、サンプルの HBase テーブルを作成し、レプリケーションを有効にしてから、いくつかのデータでテストします。使用するサンプル テーブルには、Personal と Office という 2 つの列ファミリがあります。
+## <a name="enable-replication-between-hbase-tables"></a>HBase テーブル間のレプリケーションの有効化
+次に、サンプルの HBase テーブルを作成し、レプリケーションを有効にしてから、いくつかのデータでテストします。 使用するサンプル テーブルには、Personal と Office という 2 つの列ファミリがあります。 
 
 このチュートリアルでは、ヨーロッパの HBase クラスターをソース クラスターとして使用し、米国の HBase クラスターをターゲット クラスターとして使用します。
 
-ターゲット クラスターが受け取ったデータを格納する場所がわかるように、ソース クラスターとターゲット クラスターの両方に名前と列ファミリが同じ HBase テーブルを作成します。HBase シェルの使用の詳細については、「[Get started with Apache HBase in HDInsight (HDInsight での Apache HBase の使用)][hdinsight-hbase-get-started]」を参照してください。
+ターゲット クラスターが受け取ったデータを格納する場所がわかるように、ソース クラスターとターゲット クラスターの両方に名前と列ファミリが同じ HBase テーブルを作成します。 HBase シェルの使用の詳細については、[HDInsight での Apache HBase の使用開始][hdinsight-hbase-get-started]に関するページを参照してください。
 
 **Contoso-HBase-EU で HBase テーブルを作成するには**
 
 1. **Contoso-HBase-EU** の RDP ウィンドウに切り替えます。
-2. デスクトップで **[Hadoop コマンド ライン]** をクリックします。
+2. デスクトップで **[Hadoop コマンド ライン]**をクリックします。
 3. 次のようにフォルダーを HBase ホーム ディレクトリに変更します。
    
         cd %HBASE_HOME%\bin
@@ -208,7 +212,7 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
 5. HBase テーブルを作成します。
    
         create 'Contacts', 'Personal', 'Office'
-6. RDP セッションも Hadoop コマンド ライン ウィンドウも閉じないでください。後で必要になります。
+6. RDP セッションも Hadoop コマンド ライン ウィンドウも閉じないでください。 後で必要になります。
 
 **Contoso-HBase-US で HBase テーブルを作成するには**
 
@@ -221,7 +225,7 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
    
         add_peer '1', 'zookeeper0.contoso-hbase-us.d4.internal.cloudapp.net,zookeeper1.contoso-hbase-us.d4.internal.cloudapp.net,zookeeper2.contoso-hbase-us.d4.internal.cloudapp.net:2181:/hbase'
    
-    サンプルでは、ドメインのサフィックスは *contoso-hbase-us.d4.internal.cloudapp.net* です。米国の HBase クラスターの実際のドメイン サフィックスと一致するように、更新する必要があります。ホスト名の間にスペースがないことを確認してください。
+    サンプルでは、ドメインのサフィックスは *contoso-hbase-us.d4.internal.cloudapp.net*です。 米国の HBase クラスターの実際のドメイン サフィックスと一致するように、更新する必要があります。 ホスト名の間にスペースがないことを確認してください。
 
 **ソース クラスターでレプリケートされるように各列ファミリを構成するには**
 
@@ -254,7 +258,7 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
 同じデータ ファイルを HBase クラスターにアップロードし、そこからデータをインポートできます。
 
 1. **Contoso-HBase-EU** の RDP ウィンドウに切り替えます。
-2. デスクトップで **[Hadoop コマンド ライン]** をクリックします。
+2. デスクトップで **[Hadoop コマンド ライン]**をクリックします。
 3. 次のようにフォルダーを HBase ホーム ディレクトリに変更します。
    
         cd %HBASE_HOME%\bin
@@ -264,24 +268,24 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
    
         hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /tmpOutput Contacts
 
-## データのレプリケーションが実行されていることを確認します。
+## <a name="verify-that-data-replication-is-taking-place"></a>データのレプリケーションが実行されていることを確認します。
 次の HBase シェル コマンドで両方のクラスターのテーブルをスキャンすることにより、レプリケーションが行われていることを確認できます。
 
         Scan 'Contacts'
 
 
-## 次のステップ
-このチュートリアルでは、2 つのデータ センター間に HBase レプリケーションを構成する方法を説明しました。HDInsight と HBase の詳細については、以下を参照してください。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、2 つのデータ センター間に HBase レプリケーションを構成する方法を説明しました。 HDInsight と HBase の詳細については、以下を参照してください。
 
 * [HDInsight サービスのページ](https://azure.microsoft.com/services/hdinsight/)
 * [HDInsight のドキュメント](https://azure.microsoft.com/documentation/services/hdinsight/)
-* [Get started with Apache HBase in HDInsight (HDInsight での Apache HBase の使用)][hdinsight-hbase-get-started]
+* [HDInsight での Apache HBase の使用開始][hdinsight-hbase-get-started]
 * [HDInsight HBase の概要][hdinsight-hbase-overview]
 * [Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]
-* [HBase で Twitter のセンチメントをリアルタイム分析する][hdinsight-hbase-twitter-sentiment]
-* [HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析][hdinsight-sensor-data]
+* [HBase を使った Twitter のリアルタイム感情分析][hdinsight-hbase-twitter-sentiment]
+* [HDInsight (Hadoop) での Storm と HBase を使用したセンサー データ分析][hdinsight-sensor-data]
 
-[hdinsight-hbase-geo-replication-vnet]: hdinsight-hbase-geo-replication-configure-VNets.md
+[hdinsight-hbase-geo-replication-vnet]: hdinsight-hbase-geo-replication-configure-vnets.md
 [hdinsight-hbase-geo-replication-dns]: ../hdinsight-hbase-geo-replication-configure-VNet.md
 
 
@@ -291,11 +295,15 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
 [hdinsight-hbase-get-started]: hdinsight-hbase-tutorial-get-started.md
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-hbase-replication-vnet]: hdinsight-hbase-geo-replication-configure-VNets.md
-[hdinsight-hbase-replication-dns]: hdinsight-hbase-geo-replication-configure-DNS.md
+[hdinsight-hbase-replication-vnet]: hdinsight-hbase-geo-replication-configure-vnets.md
+[hdinsight-hbase-replication-dns]: hdinsight-hbase-geo-replication-configure-dns.md
 [hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 [hdinsight-sensor-data]: hdinsight-storm-sensor-data-analysis.md
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

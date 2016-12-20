@@ -1,12 +1,12 @@
 ---
-title: ビデオをトリミングする方法 | Microsoft Docs
-description: この記事では、Media Encoder Standard でビデオをトリミングする方法について説明します。
+title: "ビデオをトリミングする方法 | Microsoft Docs"
+description: "この記事では、Media Encoder Standard でビデオをトリミングする方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: anilmur
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 7628f674-2005-4531-8b61-d7a4f53e46ba
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: anilmur;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 770eaaba800ed9847a34d38813ebbda82014a697
+
 
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Media Encoder Standard を使用してビデオをトリミングする
@@ -139,6 +143,9 @@ Azure Media Services のラーニング パスをご覧ください。AMS で提
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

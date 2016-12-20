@@ -1,32 +1,36 @@
 ---
-title: Log Analytics の容量管理ソリューション | Microsoft Docs
-description: Log Analytics の容量計画ソリューションを利用して、System Center Virtual Machine Manager で管理する Hyper-V サーバーの容量を把握できます。
+title: "Log Analytics の容量管理ソリューション | Microsoft Docs"
+description: "Log Analytics の容量計画ソリューションを利用して、System Center Virtual Machine Manager で管理する Hyper-V サーバーの容量を把握できます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 11/15/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 57e7fbdaa393e078b62a6d6a0b181b67d532523d
+ms.openlocfilehash: c34cda0da164c711c8effc78d2af38ad8df581aa
+
 
 ---
 # <a name="capacity-management-solution-in-log-analytics"></a>Log Analytics の容量管理ソリューション
-Log Analytics の容量計画ソリューションを利用して、System Center Virtual Machine Manager で管理する Hyper-V サーバーの容量を把握できます。 このソリューションでは、System Center Operations Manager と System Center Virtual Machine Manager の両方が必要です。 直接接続型のエージェントのみを使用している場合、容量計画は利用できません。 このソリューションをインストールすると、Operations Manager エージェントが更新されます。 このソリューションは監視対象サーバーのパフォーマンス カウンターを読み取り、使用状況データを処理のためにクラウド上の OMS サービスに送ります。 使用状況データにロジックが適用されて、クラウド サービスによってそのデータが記録されます。 時間の経過と共に、使用状況パターンが識別されて、現在の消費量に基づいて容量が予測されます。
+Log Analytics の容量管理ソリューションを利用して、Hyper-V サーバーの容量を把握できます。 このソリューションでは、System Center Operations Manager と System Center Virtual Machine Manager の両方が必要です。 直接接続されたエージェントを使用している場合、容量計画ソリューションは機能しません。 このソリューションは監視対象サーバーのパフォーマンス カウンターを読み取り、使用状況データを処理のためにクラウド上の OMS サービスに送ります。 使用状況データにロジックが適用されて、クラウド サービスによってそのデータが記録されます。 時間の経過と共に、使用状況パターンが識別されて、現在の消費量に基づいて容量が予測されます。
 
-たとえば、予測によって、追加のプロセッサ コアまたは追加のメモリが個々のサーバーに必要になるときがわかります。 この例では、予測により 30 日以内にサーバーに追加メモリが必要になることが示されています。 これにより、サーバーの次のメンテナンス期間 (たとえば 2 週間ごとに実施される) 中にメモリのアップグレードを計画できます。
+たとえば、予測によって、追加のプロセッサ コアまたは追加のメモリが個々のサーバーに必要になるときがわかります。 この例では、予測により 30 日以内にサーバーに追加メモリが必要になることが示されています。 この予測により、サーバーの次のメンテナンス期間中にメモリのアップグレードを計画できます。
 
 > [!NOTE]
 > 容量管理ソリューションはワークスペースに追加できません。 容量管理ソリューションをインストールしているお客様は、引き続きソリューションを利用できます。  
 > 
 > 
 
-容量管理ソリューションは、お客様が報告した次の問題を解決するために現在更新中です。
+置換用の容量とパフォーマンスのソリューションはプライベート プレビュー段階です。 この置換ソリューションは、元の容量管理ソリューションについてユーザーから報告されている次の問題に対処するためのものです。
 
 * Virtual Machine Manager と Operations Manager を使用する必要がある
 * グループに基づいてカスタマイズしたり、フィルターを適用したりできない
@@ -38,15 +42,18 @@ Log Analytics の容量計画ソリューションを利用して、System Cente
 
 * 信頼性と精度が高まり、きめ細かなデータ収集がサポートされる
 * VMM 不要の Hyper-V サポート
-* PowerBI におけるメトリックの視覚化
 * VM レベルの使用率の分析
+
+現在、この新しいソリューションでは Hyper-V Server 2012 以降が必要です。 このソリューションは、Hyper-V 環境の状況を把握し、それらの Hyper-V サーバーで実行中のホストと VM の全体的な使用状況 (CPU、メモリ、およびディスク) を表示します。 すべてのホストとホストで実行している VM で、CPU、メモリ、ディスクに関するメトリックが収集されます。
+
+このページのこれから先の部分では、元の容量管理ソリューションについて説明します。 ドキュメントが更新されるのは、新しいソリューションがパブリック プレビューに含まれるときです。
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
 * Operations Manager は、容量管理ソリューションに必須です。
 * Virtual Machine Manager は、容量管理ソリューションに必須です。
-* Operations Manager を Virtual Machine Manager (VMM) に接続する必要があります。 システムの接続の詳細については、「 [VMM を Operations Manager と接続する方法](http://technet.microsoft.com/library/hh882396.aspx)」をご覧ください。
+* Operations Manager を Virtual Machine Manager (VMM) に接続する必要があります。 システムの接続の詳細については、「[VMM を Operations Manager と接続する方法](http://technet.microsoft.com/library/hh882396.aspx)」をご覧ください。
 * Operations Manager を Log Analytics に接続する必要があります。
 * 「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」で説明されている手順に従って容量管理ソリューションを OMS ワークスペースに追加します。  さらに手動で構成する必要はありません。
 
@@ -55,7 +62,7 @@ Log Analytics の容量計画ソリューションを利用して、System Cente
 
 次の表は、容量管理におけるデータの収集手段と、データ収集方法に関する各種情報をまとめたものです。
 
-| プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
+| プラットフォーム | 直接エージェント | Operations Manager エージェント | Azure Storage (Azure Storage) | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |![いいえ](./media/log-analytics-capacity/oms-bullet-red.png) |![あり](./media/log-analytics-capacity/oms-bullet-green.png) |![なし](./media/log-analytics-capacity/oms-bullet-red.png) |![はい](./media/log-analytics-capacity/oms-bullet-green.png) |![あり](./media/log-analytics-capacity/oms-bullet-green.png) |時間単位 |
 
@@ -68,7 +75,7 @@ Log Analytics の容量計画ソリューションを利用して、System Cente
 | 状態 |StateChangeEventId、StateId、NewHealthState、OldHealthState、コンテキスト、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
 ## <a name="capacity-management-page"></a>[容量管理] ページ
- 容量管理ソリューションをインストールすると、監視対象のサーバーの容量を表示することができます。それには、OMS の **[概要]** ページの **[容量計画]** タイルを使用します。
+容量管理ソリューションをインストールすると、監視対象のサーバーの容量を表示することができます。それには、OMS の **[概要]** ページの **[容量計画]** タイルを使用します。
 
 ![[容量計画] タイルの画像](./media/log-analytics-capacity/oms-capacity01.png)
 
@@ -152,11 +159,11 @@ OMS の **[直接接続ストレージ]** ダッシュボードを使用して�
 
 **ディスク パフォーマンス**
 
-OMS を使用すると、ディスク領域の使用状況の履歴傾向を見ることができます。 予測機能は、将来の使用状況を推測するためのアルゴリズムを使用します。 領域の使用状況の場合、具体的には、予測機能によりディスク領域が不足するのがいつごろかを予測できます。 これは、適切なストレージを計画し、ストレージを追加購入する必要がある時期を把握するのに役立ちます。
+OMS を使用すると、ディスク領域の使用状況の履歴傾向を見ることができます。 予測機能は、将来の使用状況を推測するためのアルゴリズムを使用します。 領域の使用状況の場合、具体的には、予測機能によりディスク領域が不足するのがいつごろかを予測できます。 この予測は、適切なストレージを計画し、ストレージを追加購入する必要がある時期を把握するのに役立ちます。
 
 **予測ツール**
 
-予測ツールを使用すると、ディスク領域の使用率の履歴傾向を見ることができます。 また、ディスク領域が不足するタイミングを予想できます。 これは、適切な容量を計画し、ストレージ容量を追加購入する必要がある時期を把握するのに役立ちます。
+予測ツールを使用すると、ディスク領域の使用率の履歴傾向を見ることができます。 また、ディスク領域が不足するタイミングを予想できます。 この予測は、適切な容量を計画し、ストレージ容量を追加購入する必要がある時期を把握するのに役立ちます。
 
 ### <a name="to-work-with-items-on-the-direct-attached-storage-page"></a>[直接接続ストレージ] ページの項目を使用するには
 1. **[直接接続ストレージ]** ダッシュボードの **[使用率]** 領域では、ディスク使用率情報を見ることができます。
@@ -167,6 +174,9 @@ OMS を使用すると、ディスク領域の使用状況の履歴傾向を見�
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md) を使用して、詳細な容量管理データを確認してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Site Recovery のデプロイの準備 | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用してレプリケーションをデプロイする準備を整える方法について説明します。
+title: "Site Recovery のデプロイの準備 | Microsoft Docs"
+description: "この記事では、Azure Site Recovery を使用してレプリケーションをデプロイする準備を整える方法について説明します。"
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: rayne-wiselman
 manager: jwhit
 editor: tysonn
-
+ms.assetid: e24eea6c-50a7-4cd5-aab4-2c5c4d72ee2d
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/05/2016
 ms.author: raynew
+translationtype: Human Translation
+ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
+ms.openlocfilehash: 8a4d265694e5eef438b0560a42ea5a95c04f9b02
+
 
 ---
 # <a name="prepare-for-azure-site-recovery-deployment"></a>Azure Site Recovery のデプロイの準備
@@ -22,7 +26,7 @@ Azure Site Recovery サービスでサポートされている各レプリケー
 この記事に関するコメントや質問は、この記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
 ## <a name="overview"></a>Overview
-組織には、予定されたダウンタイムおよび予定外のダウンタイム時にアプリ、ワークロード、およびデータの実行と利用可能な状態を維持し、できるだけ早く通常の動作状態に復旧させる方法を決定する BCDR の戦略が必要です。 BCDR 戦略は、災害発生時にビジネス データを安全かつ回復可能な状態に維持し、ワークロードが継続的に利用可能な状態に保たれるようなものである必要があります。 
+組織には、予定されたダウンタイムおよび予定外のダウンタイム時にアプリ、ワークロード、およびデータの実行と利用可能な状態を維持し、できるだけ早く通常の動作状態に復旧させる方法を決定する BCDR の戦略が必要です。 BCDR 戦略は、災害発生時にビジネス データを安全かつ回復可能な状態に維持し、ワークロードが継続的に利用可能な状態に保たれるようなものである必要があります。
 
 Site Recovery とは、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび仮想マシンのレプリケーションを統制することで BCDR 戦略を支援する Azure サービスです。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリとワークロードの可用性を維持します。 プライマリの場所が通常の動作に戻ると、その場所にフェールバックします。 詳細については、「 [Site Recovery とは](site-recovery-overview.md)
 
@@ -57,7 +61,7 @@ Azure には、リソースの作成と操作に関して、Azure Resource Manag
 | **Azure Storage** |レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると Azure VM が作成されます。 Azure にレプリケートするには、[Azure ストレージ アカウント](../storage/storage-introduction.md)が必要です。<br/><br/>クラシック ポータルで Site Recovery をデプロイする場合は、1 つ以上の [Standard GRS ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要です。<br/><br/> Azure Portal でデプロイする場合は、GRS または LRS ストレージを使用できます。<br/><br/> Azure ポータルで VMware VM または物理サーバーをレプリケートする場合は、Premium ストレージがサポートされています。 Premium ストレージ アカウントを使用している場合は、オンプレミス データの継続的な変更をキャプチャするレプリケーション ログを保存するために、Standard ストレージ アカウントも必要になります。 [Premium Storage](../storage/storage-premium-storage.md) は、IO を集中的に行うワークロードをホストするために、常に高い IO パフォーマンスと低遅延時間を必要とする仮想マシンに通常使用されます。<br/><br/> Premium アカウントを使用してレプリケートされたデータを保存する場合は、オンプレミスのデータの継続的な変更をキャプチャするレプリケーション ログを保存するために、Standard ストレージ アカウントも必要になります。 |
 | **Azure ネットワーク** |Azure にレプリケートするには、フェールオーバー後、Azure VM が作成されたときに、その Azure VM が接続する Azure ネットワークが必要です。<br/><br/> クラシック ポータルでデプロイする場合は、従来のネットワークを使用します。 Azure Portal でデプロイする場合は、従来のネットワークまたは Resource Manager ネットワークを使用できます。<br/><br/> ネットワークは、コンテナーと同じリージョンにある必要があります。 |
 | **ネットワーク マッピング (VMM から Azure)** |VMM から Azure にレプリケートする場合、フェールオーバー後、[ネットワーク マッピング](site-recovery-network-mapping.md)により、Azure VM が正しいネットワークに確実に接続されます。<br/><br/> ネットワーク マッピングを設定するには、VMM ポータルで VM ネットワークを構成する必要があります。 |
-| **オンプレミスの** |**VMware VM**: Site Recovery コンポーネントが実行されているオンプレミスのコンピューター、VMware vSphere ホスト/vCenter サーバー、およびレプリケートする VM が必要です。 詳細については、[こちら](site-recovery-vmware-to-azure.md#configuration-server-prerequisites)を参照してください。<br/><br/> **物理サーバー**: 物理サーバーをレプリケートする場合は、Site Recovery コンポーネントが実行されているオンプレミスのコンピューター、およびレプリケートする物理サーバーが必要です。 詳細については、[こちら](site-recovery-vmware-to-azure.md#configuration-server-prerequisites)を参照してください。 Azure へのフェールオーバー後に[フェールバック](site-recovery-failback-azure-to-vmware.md)を行う場合は、そのための VMware インフラストラクチャが必要になります。<br/><br/> **Hyper-V VM**: VMM クラウドで Hyper-V VM をレプリケートする場合、VMM サーバーと、保護する VM が配置されている Hyper-V ホストが必要です。 詳細については、[こちら](site-recovery-vmm-to-azure.md#on-premises-prerequisites)を参照してください。<br/><br/> VMM なしの Hyper-V VM をレプリケートする場合は、VM が配置されている Hyper-V ホストが必要です。 詳細については、[こちら](site-recovery-hyper-v-site-to-azure.md#on-premises-prerequisites)を参照してください。 |
+| **オンプレミスの** |**VMware VM**: Site Recovery コンポーネントが実行されているオンプレミスのコンピューター、VMware vSphere ホスト/vCenter サーバー、およびレプリケートする VM が必要です。 詳細については、[こちら](site-recovery-vmware-to-azure.md#configuration-server-or-additional-process-server-prerequisites)を参照してください。<br/><br/> **物理サーバー**: 物理サーバーをレプリケートする場合は、Site Recovery コンポーネントが実行されているオンプレミスのコンピューター、およびレプリケートする物理サーバーが必要です。 詳細については、[こちら](site-recovery-vmware-to-azure.md#configuration-server-or-additional-process-server-prerequisites)を参照してください。 Azure へのフェールオーバー後に[フェールバック](site-recovery-failback-azure-to-vmware.md)を行う場合は、そのための VMware インフラストラクチャが必要になります。<br/><br/> **Hyper-V VM**: VMM クラウドで Hyper-V VM をレプリケートする場合、VMM サーバーと、保護する VM が配置されている Hyper-V ホストが必要です。 詳細については、[こちら](site-recovery-vmm-to-azure.md#on-premises-prerequisites)を参照してください。<br/><br/> VMM なしの Hyper-V VM をレプリケートする場合は、VM が配置されている Hyper-V ホストが必要です。 詳細については、[こちら](site-recovery-hyper-v-site-to-azure.md#on-premises-prerequisites)を参照してください。 |
 | **保護されたマシン** |Azure にレプリケートする保護されたマシンは、以下で説明する [Azure の前提条件](#azure-virtual-machine-requirements) に従う必要があります。 |
 
 ### <a name="replicate-to-a-secondary-site"></a>セカンダリ サイトへのレプリケート
@@ -143,6 +147,8 @@ Site Recovery をデプロイすると、Azure でサポートされた任意の
 * [Hyper-V VM をセカンダリ サイトにレプリケート (SAN を使用)](site-recovery-vmm-san.md)
 * [Hyper-V VM をレプリケート (単一の VMM サーバーを使用)](site-recovery-single-vmm.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

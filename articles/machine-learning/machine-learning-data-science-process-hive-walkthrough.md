@@ -1,12 +1,12 @@
 ---
-title: 'Team Data Science Process の活用: Hadoop クラスターの使用 | Microsoft Docs'
-description: HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、公開されているデータセットを使ってモデルを構築してデプロイします。
+title: "Team Data Science Process の活用: Hadoop クラスターの使用 | Microsoft Docs"
+description: "HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、公開されているデータセットを使ってモデルを構築してデプロイします。"
 services: machine-learning,hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: e9e76c91-d0f6-483d-bae7-2d3157b86aa0
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,16 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: hangzh;bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 6eb9fd3750eaf03547f93462d97bc30d30a9a8bc
+
 
 ---
-# <a name="the-team-data-science-process-in-action:-using-hdinsight-hadoop-clusters"></a>Team Data Science Process の活用: HDInsight Hadoop クラスターの使用
+# <a name="the-team-data-science-process-in-action-using-hdinsight-hadoop-clusters"></a>Team Data Science Process の活用: HDInsight Hadoop クラスターの使用
 このチュートリアルでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行するエンド ツー エンドのシナリオで、[Team Data Science Process (TDSP)](data-science-process-overview.md) を使用します。 データのモデルは、Azure Machine Learning を使用して作成され、二項分類、多クラス分類、回帰予測タスクを処理します。
 
 HDInsight Hadoop クラスターを使用したデータ処理の同様のシナリオで、より大きなサイズ (1 テラバイト) のデータセットを処理する方法については、「 [Team Data Science Process - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](machine-learning-data-science-process-hive-criteo-walkthrough.md)」を参照してください。
 
 IPython Notebook を使用して、このチュートリアルで説明する 1 TB のデータセットを使用したタスクを実行することもできます。 この方法を試してみたい方は、「 [Criteo walkthrough using a Hive ODBC connection (Hive ODBC の接続を使用した Criteo チュートリアル)](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) 」のトピックをご覧ください。
 
-## <a name="<a-name="dataset"></a>nyc-taxi-trips-dataset-description"></a><a name="dataset"></a>NYC タクシー乗車データセットの説明
+## <a name="a-namedatasetanyc-taxi-trips-dataset-description"></a><a name="dataset"></a>NYC タクシー乗車データセットの説明
 NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切り値 (CSV) ファイル (非圧縮で最大 48 GB) です。1 億 7300 万以上の個々の乗車と、各乗車に支払われた料金で構成されています。 各旅行レコードには、pickup (乗車) と drop-off (降車) の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、および medallion (タクシーの一意の ID) 番号が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
 1. 'trip_data' CSV ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。 いくつかのサンプル レコードを次に示します。
@@ -49,7 +53,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 
 データの詳細については、この後で Hive テーブルにデータを格納するときに説明します。
 
-## <a name="<a-name="mltasks"></a>examples-of-prediction-tasks"></a><a name="mltasks"></a>予測タスクの例
+## <a name="a-namemltasksaexamples-of-prediction-tasks"></a><a name="mltasks"></a>予測タスクの例
 データ処理に取り掛かる際、分析に基づいて一種の予測を行うことを目標にすると、プロセスに含める必要があるタスクを明確にするのに役立ちます。
 このチュートリアルで扱う予測問題の 3 つの例を以下に示します。これらの例の公式は、*tip\_amount* に基づいています。
 
@@ -66,7 +70,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
         Class 4 : tip_amount > $20
 3. **回帰タスク**: 乗車で支払われたチップの金額を予測します。  
 
-## <a name="<a-name="setup"></a>set-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>高度な分析用に HDInsight Hadoop クラスターをセットアップする
+## <a name="a-namesetupaset-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>高度な分析用に HDInsight Hadoop クラスターをセットアップする
 > [!NOTE]
 > これは、通常 **Admin** タスクです。
 > 
@@ -81,7 +85,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
    * クラスターを作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にします。 **[構成]** タブに移動して、**[リモートを有効にする]** をクリックします。 この手順で、リモート ログインに使用するユーザーの資格情報を指定します。
 3. [Azure Machine Learning ワークスペースを作成する](machine-learning-create-workspace.md): この Azure Machine Learning ワークスペースは、Machine Learning モデルの作成に使用されます。 このタスクは、HDInsight クラスターを使用した初期データの探索とダウンサンプリングの完了後に対処されます。
 
-## <a name="<a-name="getdata"></a>get-the-data-from-a-public-source"></a><a name="getdata"></a>公開されているソースからデータを取得する
+## <a name="a-namegetdataaget-the-data-from-a-public-source"></a><a name="getdata"></a>公開されているソースからデータを取得する
 > [!NOTE]
 > これは、通常 **Admin** タスクです。
 > 
@@ -97,7 +101,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 1. コピーが完了すると、合計 24 個の Zip ファイルが選択したデータのフォルダー内に見つかります。 ダウンロードされたファイルをローカル コンピューター上の同じディレクトリに解凍します。 圧縮されていないファイルが存在するフォルダーをメモしておきます。 *<path\_to\_unzipped_data\_files\>* として参照されるこのフォルダーについては、後ほど説明します。
 
-## <a name="<a-name="upload"></a>upload-the-data-to-the-default-container-of-azure-hdinsight-hadoop-cluster"></a><a name="upload"></a>データを Azure HDInsight Hadoop クラスターの既定のコンテナーにアップロードする
+## <a name="a-nameuploadaupload-the-data-to-the-default-container-of-azure-hdinsight-hadoop-cluster"></a><a name="upload"></a>データを Azure HDInsight Hadoop クラスターの既定のコンテナーにアップロードする
 > [!NOTE]
 > これは、通常 **Admin** タスクです。
 > 
@@ -122,7 +126,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 これで、データが Azure BLOB ストレージに格納され、HDInsight クラスター内で利用できるようになりました。
 
-## <a name="<a-name="#download-hql-files"></a>log-into-the-head-node-of-hadoop-cluster-and-and-prepare-for-exploratory-data-analysis"></a><a name="#download-hql-files"></a>Hadoop クラスターのヘッド ノードにログインして探索的データ分析の準備をする
+## <a name="a-namedownload-hql-filesalog-into-the-head-node-of-hadoop-cluster-and-and-prepare-for-exploratory-data-analysis"></a><a name="#download-hql-files"></a>Hadoop クラスターのヘッド ノードにログインして探索的データ分析の準備をする
 > [!NOTE]
 > これは、通常 **Admin** タスクです。
 > 
@@ -140,7 +144,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 この 2 つのコマンドによって、このチュートリアルで必要なすべての .hql ファイルが、ヘッド ノード上のローカル ディレクトリ ***C:\temp&#92;*** にダウンロードされます。
 
-## <a name="<a-name="#hive-db-tables"></a>create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>Hive データベースと月ごとにパーティション分割されたテーブルを作成する
+## <a name="a-namehive-db-tablesacreate-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>Hive データベースと月ごとにパーティション分割されたテーブルを作成する
 > [!NOTE]
 > これは、通常 **Admin** タスクです。
 > 
@@ -208,7 +212,7 @@ Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop �
 
 これらの手順または代わりの手順についてさらに支援が必要な場合は、「[Hive クエリを直接 Hadoop コマンドラインから送信する](machine-learning-data-science-move-hive-tables.md#submit)」をご覧ください。
 
-## <a name="<a-name="#load-data"></a>load-data-to-hive-tables-by-partitions"></a><a name="#load-data"></a>パーティションごとに Hive テーブルにデータを読み込む
+## <a name="a-nameload-dataaload-data-to-hive-tables-by-partitions"></a><a name="#load-data"></a>パーティションごとに Hive テーブルにデータを読み込む
 > [!NOTE]
 > これは、通常 **Admin** タスクです。
 > 
@@ -225,12 +229,12 @@ NYC タクシー データセットは、月ごとに自然にパーティショ
 
 この探索プロセスで使用する多くの Hive クエリは、1 つのパーティションのみまたはいくつかのパーティションのみを対象としていますが、 これらのクエリをデータ全体に対して実行することもできます。
 
-### <a name="<a-name="#show-db"></a>show-databases-in-the-hdinsight-hadoop-cluster"></a><a name="#show-db"></a>HDInsight Hadoop クラスターのデータベースを表示する
+### <a name="a-nameshow-dbashow-databases-in-the-hdinsight-hadoop-cluster"></a><a name="#show-db"></a>HDInsight Hadoop クラスターのデータベースを表示する
 Hadoop コマンド ライン ウィンドウ内に HDInsight Hadoop クラスターで作成されたデータベースを表示するには、Hadoop コマンド ラインで次のコマンドを実行します。
 
     hive -e "show databases;"
 
-### <a name="<a-name="#show-tables"></a>show-the-hive-tables-in-the-nyctaxidb-database"></a><a name="#show-tables"></a>nyctaxidb データベースの Hive テーブルを表示する
+### <a name="a-nameshow-tablesashow-the-hive-tables-in-the-nyctaxidb-database"></a><a name="#show-tables"></a>nyctaxidb データベースの Hive テーブルを表示する
 nyctaxidb データベースのテーブルを表示するには、Hadoop コマンドラインで次のコマンドを実行します。
 
     hive -e "show tables in nyctaxidb;"
@@ -275,7 +279,7 @@ nyctaxidb データベースのテーブルを表示するには、Hadoop コマ
     month=9
     Time taken: 1.887 seconds, Fetched: 12 row(s)
 
-## <a name="<a-name="#explore-hive"></a>data-exploration-and-feature-engineering-in-hive"></a><a name="#explore-hive"></a>Hive におけるデータの探索と特徴エンジニアリング
+## <a name="a-nameexplore-hiveadata-exploration-and-feature-engineering-in-hive"></a><a name="#explore-hive"></a>Hive におけるデータの探索と特徴エンジニアリング
 > [!NOTE]
 > これは、通常、 **データ サイエンティスト** タスクです。
 > 
@@ -289,7 +293,7 @@ Hive テーブルに読み込まれるデータのデータの探索タスクお
 * **tip\_amount** に基づいて、二項分類および多クラス分類のラベルを生成する。
 * 直線乗車距離を計算して、特徴を生成する。
 
-### <a name="exploration:-view-the-top-10-records-in-table-trip"></a>探索: trip テーブルの上位 10 個のレコードを表示する
+### <a name="exploration-view-the-top-10-records-in-table-trip"></a>探索: trip テーブルの上位 10 個のレコードを表示する
 > [!NOTE]
 > これは、通常、 **データ サイエンティスト** タスクです。
 > 
@@ -309,7 +313,7 @@ Hive テーブルに読み込まれるデータのデータの探索タスクお
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
-### <a name="exploration:-view-the-number-of-records-in-each-of-the-12-partitions"></a>探索: 12 個のそれぞれのパーティションのレコードの数を表示する
+### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>探索: 12 個のそれぞれのパーティションのレコードの数を表示する
 > [!NOTE]
 > これは、通常、 **データ サイエンティスト** タスクです。
 > 
@@ -379,7 +383,7 @@ Hive ディレクトリ プロンプトから次のコマンドを使用して�
 
 2 つのテーブルの合計レコード数も同じです。 これで、データが正しく読み込まれていることが再度検証されました。
 
-### <a name="exploration:-trip-distribution-by-medallion"></a>探索: medallion (タクシー番号) ごとの乗車回数の分布
+### <a name="exploration-trip-distribution-by-medallion"></a>探索: medallion (タクシー番号) ごとの乗車回数の分布
 > [!NOTE]
 > これは、通常、 **データ サイエンティスト** タスクです。
 > 
@@ -413,7 +417,7 @@ Hive ディレクトリ プロンプトで次のコマンドを発行します�
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-### <a name="exploration:-trip-distribution-by-medallion-and-hack_license"></a>探索: medallion および hack_license ごとの乗車回数の分布
+### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>探索: medallion および hack_license ごとの乗車回数の分布
 > [!NOTE]
 > これは、通常、 **データ サイエンティスト** タスクです。
 > 
@@ -438,7 +442,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 クエリ結果は、ローカル ファイル C:\temp\queryoutput.tsv に書き込まれます。
 
-### <a name="exploration:-assessing-data-quality-by-checking-for-invalid-longitude/latitude-records"></a>探索: 無効な経度と緯度のレコードをチェックしてデータの品質を評価する
+### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitudelatitude-records"></a>探索: 無効な経度と緯度のレコードをチェックしてデータの品質を評価する
 > [!NOTE]
 > これは、通常、 **データ サイエンティスト** タスクです。
 > 
@@ -462,7 +466,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 このコマンドに含まれている引数 *-S* は、Hive の Map/Reduce ジョブの状態の画面出力を抑制します。 このコマンドは、Hive クエリの画面出力を読みやすくするので役立ちます。
 
-### <a name="exploration:-binary-class-distributions-of-trip-tips"></a>探索: チップの二項分類の分布
+### <a name="exploration-binary-class-distributions-of-trip-tips"></a>探索: チップの二項分類の分布
 > [!NOTE]
 > これは、通常、 **データ サイエンティスト** タスクです。
 > 
@@ -488,7 +492,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
     hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
 
 
-### <a name="exploration:-class-distributions-in-the-multiclass-setting"></a>探索: 多クラス設定での分類分布
+### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>探索: 多クラス設定での分類分布
 > [!NOTE]
 > これは、通常、 **データ サイエンティスト** タスクです。
 > 
@@ -511,7 +515,7 @@ Hadoop コマンド ライン コンソールから、次のコマンドを実�
 
     hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
 
-### <a name="exploration:-compute-direct-distance-between-two-longitude-latitude-locations"></a>探索: 経度緯度の 2 つの場所の直線距離を計算する
+### <a name="exploration-compute-direct-distance-between-two-longitude-latitude-locations"></a>探索: 経度緯度の 2 つの場所の直線距離を計算する
 > [!NOTE]
 > これは、通常、 **データ サイエンティスト** タスクです。
 > 
@@ -568,7 +572,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 Azure BLOB にこのデータがあることの主な利点は、[データのインポート][import-data] モジュールを使って Azure Machine Learning 内でデータを探索できることです。
 
-## <a name="<a-name="#downsample"></a>down-sample-data-and-build-models-in-azure-machine-learning"></a><a name="#downsample"></a>Azure Machine Learning でデータをダウンサンプリングしてモデルを作成する
+## <a name="a-namedownsampleadown-sample-data-and-build-models-in-azure-machine-learning"></a><a name="#downsample"></a>Azure Machine Learning でデータをダウンサンプリングしてモデルを作成する
 > [!NOTE]
 > これは、通常、 **データ サイエンティスト** タスクです。
 > 
@@ -750,7 +754,7 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 
 このデータセットを Machine Learning モデル作成のための出発点として使用します。
 
-### <a name="<a-name="mlmodel"></a>build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Azure Machine Learning でモデルを作成する
+### <a name="a-namemlmodelabuild-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Azure Machine Learning でモデルを作成する
 これで、 [Azure Machine Learning](https://studio.azureml.net)でのモデルの作成とモデルのデプロイに進む準備が整いました。 データも、以前に特定した予測問題への対応に使用できる状態になりました。
 
 **1.二項分類**: 乗車に対してチップが支払われたかどうかを予測します。
@@ -818,9 +822,9 @@ b. 回帰の問題については、予測や決定係数での二乗誤差を�
 このサンプルのチュートリアルとそれに付随するスクリプトは、MIT ライセンスの下で Microsoft と共有されています。 詳細については、GitHub のサンプル コードのディレクトリにある LICENSE.txt ファイルを確認してください。
 
 ## <a name="references"></a>参照
-•   [Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
-•   [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-•   [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
+•    [Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
+•    [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 
 [2]: ./media/machine-learning-data-science-process-hive-walkthrough/output-hive-results-3.png
 [11]: ./media/machine-learning-data-science-process-hive-walkthrough/hive-reader-properties.png
@@ -835,6 +839,6 @@ b. 回帰の問題については、予測や決定係数での二乗誤差を�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,19 +1,23 @@
 ---
-title: Azure Storage の停止が発生した場合の対処方法 | Microsoft Docs
-description: Azure Storage の停止が発生した場合の対処方法
+title: "Azure Storage の停止が発生した場合の対処方法 | Microsoft Docs"
+description: "Azure Storage の停止が発生した場合の対処方法"
 services: storage
 documentationcenter: .net
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
-
+ms.assetid: 8f040b0f-8926-4831-ac07-79f646f31926
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 12/08/2016
 ms.author: robinsh
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 14997080496adfd363fee249c858ed9a0b553066
+
 
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Azure Storage の停止が発生した場合の対処方法
@@ -34,10 +38,10 @@ Azure サービスの状態は、 [Azure サービス正常性ダッシュボー
 ## <a name="what-to-do-if-a-storage-outage-occurs"></a>Storage の停止が発生した場合の対処方法
 1 つ以上のリージョンで 1 つ以上の Storage サービスが一時的に使用できない場合は、2 つのオプションがあります。 すぐにデータにアクセスする必要がある場合は、オプション 2 を検討してください。
 
-### <a name="option-1:-wait-for-recovery"></a>オプション 1: 復旧を待つ
+### <a name="option-1-wait-for-recovery"></a>オプション 1: 復旧を待つ
 この場合、ユーザーによる操作は必要ありません。 Azure サービスを利用できるようにするために鋭意取り組んでいます。 サービスの状態は [Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/)で監視できます。
 
-### <a name="option-2:-copy-data-from-secondary"></a>オプション 2: セカンダリ リージョンからデータをコピーする
+### <a name="option-2-copy-data-from-secondary"></a>オプション 2: セカンダリ リージョンからデータをコピーする
 ストレージ アカウントに対して [読み取りアクセス geo 冗長ストレージ (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (推奨) を選択した場合は、セカンダリ リージョンからデータに読み取りアクセスできます。 [AzCopy](storage-use-azcopy.md)、[Azure PowerShell](storage-powershell-guide-full.md)、[Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) などのツールを使用して、セカンダリ リージョンから、影響を受けていないリージョンの別のストレージ アカウントにデータをコピーし、読み取りと書き込みの両方の可用性について、アプリケーションがそのストレージ アカウントを指すように指定します。
 
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Storage のフェールオーバーが発生した場合
@@ -62,6 +66,9 @@ Azure サービスの状態は、 [Azure サービス正常性ダッシュボー
 * テーブル - [AzCopy](storage-use-azcopy.md) を使用して、テーブル データを、他のリージョンの別のストレージ アカウントにエクスポートします。
 * ファイル - [AzCopy](storage-use-azcopy.md) または [Azure PowerShell](storage-powershell-guide-full.md) を使用して、他のリージョンの別のストレージ アカウントにファイルをコピーします。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

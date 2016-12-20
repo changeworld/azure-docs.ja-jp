@@ -1,13 +1,13 @@
 ---
-title: Azure Portal での Azure Search のサービス管理
-description: Azure Portal を使用して、Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します。
+title: "Azure Portal での Azure Search のサービス管理"
+description: "Azure Portal を使用して、Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します。"
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: HeidiSteen
 manager: jhubbard
-editor: ''
+editor: 
 tags: azure-portal
-
+ms.assetid: c87d1fdd-b3b8-4702-a753-6d7e29dbe0a2
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
@@ -15,6 +15,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/17/2016
 ms.author: heidist
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 71cfd2ea327cad22cdb1085558658934804c15f1
+
 
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure Portal での Azure Search のサービス管理
@@ -35,9 +39,11 @@ Azure Search は、高度な検索エクスペリエンスをカスタムアプ�
 
 *コンテンツ管理* " (インデックス管理) とは、クエリの量を把握し、ユーザーが検索した語句と検索結果からインデックス内の特定ドキュメントへの顧客誘導がどの程度成功しているかを調べるための、検索トラフィックの分析などの操作を指します。 コンテンツ管理については、この記事では取り扱いません。 インデックス レベルで内部操作を把握する方法については、「 [Azure Search の検索トラフィックの分析](search-traffic-analytics.md)」をご覧ください。
 
-*クエリのパフォーマンス* " も、この記事では取り扱いません。 詳細については、「 [Performance and optimization in Azure Search](search-performance-optimization.md)」(Azure Search のパフォーマンスと最適化) をご覧ください。
+*クエリのパフォーマンス* " も、この記事では取り扱いません。 詳細については、「[Azure Search サービスでの使用状況と統計の監視](search-monitor-usage.md)と「[Azure Search のパフォーマンスと最適化に関する考慮事項](search-performance-optimization.md)を参照してください。
 
-Azure Search には、障害復旧またはバックアップと復元のためのソリューションは組み込まれていません。 サービスにオブジェクトとデータをプッシュするお客様に対しては、インデックスの作成と読み込みのためのソース コードが、誤ってインデックスを削除した場合の事実上の復元オプションとなります。 障害復旧に関しては、お客様は、別の地域のデータセンターに追加のサービスを配置して冗長性を実現することを選択できます。 詳細については、「 [Performance and optimization in Azure Search](search-performance-optimization.md)」(Azure Search のパフォーマンスと最適化) をご覧ください。
+Azure Search は、障害が発生した場合は他のクラスターまたはデータ センターにフェールオーバーしますが、インデックスまたはサービスが悪意や不注意によって削除された場合に備えて手動でバックアップと復元を行うためのソリューションは組み込まれていません。 サービスにオブジェクトとデータをプッシュするお客様に対しては、インデックスの作成と読み込みのためのソース コードが、誤ってインデックスを削除した場合の事実上の復元オプションとなります。 
+
+Azure Search では、サービス全体のインデックスの geo レプリケーションは提供されません。 ソリューションの対象範囲がグローバルな場合は、各地のデータ センターにサービスを追加することで冗長性を追加して、すべてのアプリケーションコンポーネントが 1 か所でホストされるようにすることを検討してください。 詳細については、「 [Performance and optimization in Azure Search](search-performance-optimization.md)」(Azure Search のパフォーマンスと最適化) をご覧ください。
 
 <a id="admin-rights"></a>
 
@@ -156,7 +162,7 @@ Standard レベルでは、パーティションが 12 の倍数単位 (具体�
 
 <a id="advanced-deployment"></a>
 
-## <a name="best-practices-on-scale-and-deployment-(video)"></a>スケールとデプロイメントに関するベスト プラクティス (ビデオ)
+## <a name="best-practices-on-scale-and-deployment-video"></a>スケールとデプロイメントに関するベスト プラクティス (ビデオ)
 この 30 分間のビデオでは、地理的に分散したワークロードを含む、高度なデプロイメント シナリオのベスト プラクティスを確認します。 同じ点を説明したヘルプ ページとして、「 [Performance and optimization in Azure Search](search-performance-optimization.md) 」(Azure Search のパフォーマンスと最適化) もご覧ください。
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
@@ -184,6 +190,6 @@ Standard レベルでは、パーティションが 12 の倍数単位 (具体�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

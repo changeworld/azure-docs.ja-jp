@@ -1,13 +1,13 @@
 ---
-title: Linux ベースの HDInsight での Hadoop Oozie ワークフローの使用 | Microsoft Docs
-description: Linux ベースの HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
+title: "Linux ベースの HDInsight での Hadoop Oozie ワークフローの使用 | Microsoft Docs"
+description: "Linux ベースの HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: d7603471-5076-43d1-8b9a-dbc4e366ce5d
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 79c3ad47ca40c2b64b5304ae377d2e84224a823e
+
 
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-hdinsight"></a>Hadoop で Oozie を使用して Linux ベースの HDInsight でワークフローを定義して実行する
@@ -66,7 +70,7 @@ Oozie では、ジョブに必要なリソースを同じディレクトリに�
     hdfs dfs -mkdir -p /tutorials/useoozie/data
 
 > [!NOTE]
-> `-p` パラメーターを指定すると、ディレクトリがまだ存在しない場合に、すべてのディレクトリがこのパスに作成されます。 **data** ディレクトリは、**useooziewf.hql** スクリプトで使用するデータを保持するために使用されます。
+>  `-p` パラメーターを指定すると、ディレクトリがまだ存在しない場合に、すべてのディレクトリがこのパスに作成されます。 **data** ディレクトリは、**useooziewf.hql** スクリプトで使用するデータを保持するために使用されます。
 > 
 > 
 
@@ -233,7 +237,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
    
         TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
         oozietest       dbo     mobiledata      BASE TABLE
-4. Enter `exit` at the `1>` 」と入力して、tsql ユーティリティを終了します。
+4. Enter `exit` at the `1>`」と入力して、tsql ユーティリティを終了します。
 
 ## <a name="create-the-job-definition"></a>ジョブ定義の作成
 ジョブ定義では、workflow.xml とワークフローで使用される他のファイル (useooziewf.hql など) の検索場所を記述します。また、ワークフローおよび関連するファイル内で使用されるプロパティの値も定義します。
@@ -368,7 +372,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
    
     このコマンドでは、 **job.xml** からジョブ情報を読み込んで Oozie に送信しますが、ジョブは実行しません。
    
-    コマンドが完了すると、ジョブの ID が返されます。 たとえば、「 `0000005-150622124850154-oozie-oozi-W`」のように入力します。 これはジョブの管理に使用されます。
+    コマンドが完了すると、ジョブの ID が返されます。 たとえば、「`0000005-150622124850154-oozie-oozi-W`」のように入力します。 これはジョブの管理に使用されます。
 4. 次のコマンドを使用して、ジョブの状態を表示します。 前のコマンドによって返されたジョブ ID を入力します。
    
         oozie job -info <JOBID>
@@ -433,7 +437,7 @@ Oozie Web UI は、クラスターでの Oozie ジョブの状態を表示する
 
 Oozie Web UI にアクセスするには、次の手順に従います。
 
-1. HDInsight クラスターへの SSH トンネルを作成します。 これを実行する方法の詳細については、「 [SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
+1. HDInsight クラスターへの SSH トンネルを作成します。 これを実行する方法の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 2. トンネルが作成されたら、Web ブラウザーで Ambari Web UI を開きます。 Ambari サイトの URI は **https://CLUSTERNAME.azurehdinsight.net** です。 **CLUSTERNAME** を、Linux ベースの HDInsight クラスターの名前に置き換えます。
 3. ページの左側で **[Oozie]** を選択し、**[Quick Links]**、**[Oozie Web UI]** の順にクリックします。
    
@@ -553,7 +557,7 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 発生する可能性のあるエラーとその解決方法を以下に示します。
 
-### <a name="ja009:-cannot-initialize-cluster"></a>JA009: Cannot initialize cluster (クラスターを初期化できません)
+### <a name="ja009-cannot-initialize-cluster"></a>JA009: Cannot initialize cluster (クラスターを初期化できません)
 **現象**: ジョブの状態が **SUSPENDED** に変更されます。 ジョブの詳細に、RunHiveScript の状態が **START_MANUAL** と示されます。 アクションを選択すると、次のエラー メッセージが表示されます。
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
@@ -562,7 +566,7 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 **解決方法**: ジョブで使用する WASB アドレスを変更します。
 
-### <a name="ja002:-oozie-is-not-allowed-to-impersonate-&lt;user>"></a>JA002: Oozie is not allowed to impersonate &lt;USER> (Oozie は &lt;USER> の偽装を許可されていません)
+### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Oozie is not allowed to impersonate &lt;USER> (Oozie は &lt;USER> の偽装を許可されていません)
 **現象**: ジョブの状態が **SUSPENDED** に変更されます。 ジョブの詳細に、RunHiveScript の状態が **START_MANUAL** と示されます。 アクションを選択すると、次のエラー メッセージが表示されます。
 
     JA002: User: oozie is not allowed to impersonate <USER>
@@ -578,7 +582,7 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 > 
 > 
 
-### <a name="launcher-error-(sqoop)"></a>Launcher ERROR (ランチャー エラー) (Sqoop)
+### <a name="launcher-error-sqoop"></a>Launcher ERROR (ランチャー エラー) (Sqoop)
 **現象**: ジョブの状態が **KILLED** に変更されます。 ジョブの詳細に、RunSqoopExport の状態が **ERROR**と示されます。 アクションを選択すると、次のエラー メッセージが表示されます。
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
@@ -655,6 +659,6 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

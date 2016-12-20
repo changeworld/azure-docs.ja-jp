@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Icertis Contract Management Platform の統合 | Microsoft Docs'
-description: Azure Active Directory と Icertis Contract Management Platform の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Icertis Contract Management Platform の統合 | Microsoft Docs"
+description: "Azure Active Directory と Icertis Contract Management Platform の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 6627e6dd-f559-4cd4-a509-f6d9a4961b49
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a2d2fba76850d6dfcff7545d6646f45c12e05c3f
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-icertis-contract-management-platform"></a>チュートリアル: Azure Active Directory と Icertis Contract Management Platform の統合
+# <a name="tutorial-azure-active-directory-integration-with-icertis-contract-management-platform"></a>チュートリアル: Azure Active Directory と Icertis Contract Management Platform の統合
 このチュートリアルの目的は、Icertis Contract Management Platform と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Icertis Contract Management Platform と Azure AD の統合には、次の利点があります。
@@ -106,7 +110,7 @@ Icertis Contract Management Platform で Azure AD のシングル サインオ�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-icertisicm-tutorial/tutorial_icertisicm_04.png)
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.icertis.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.icertis.com` のパターンを使用して URL を入力します。
    
     b.  **[次へ]**
 
@@ -121,13 +125,13 @@ Icertis Contract Management Platform で Azure AD のシングル サインオ�
     b. **[次へ]**をクリックします。
 2. アプリケーション用に構成された SSO を入手するには、Icertis Contract Management Platform サポート チームに連絡し、次のものを情報として提供してください。 
    
-   * **ダウンロードしたメタデータ** ファイル 
-     
-     - **エンティティ ID** 
-     
-     - **SAML SSO URL** 
-     
-     - **シングル サインアウト サービス URL**
+    - **ダウンロードしたメタデータ** ファイル 
+   
+    - **エンティティ ID** 
+   
+    - **SAML SSO URL** 
+   
+    - **シングル サインアウト サービス URL**
 3. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
@@ -156,9 +160,9 @@ Icertis Contract Management Platform で Azure AD のシングル サインオ�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-icertisicm-tutorial/create_aaduser_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
@@ -169,7 +173,7 @@ Icertis Contract Management Platform で Azure AD のシングル サインオ�
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに、「**Britta Simon**」と入力します。
+   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
@@ -238,6 +242,6 @@ Icertis Contract Management Platform で Azure AD のシングル サインオ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

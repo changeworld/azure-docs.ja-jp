@@ -1,12 +1,12 @@
 ---
-title: Linux 上の Azure Service Fabric | Microsoft Docs
-description: Service Fabric クラスターは Linux と Java をサポートするので、Java と C# で記述された Service Fabric アプリケーションを Linux にデプロイし、ホストすることができます。
+title: "Linux 上の Azure Service Fabric | Microsoft Docs"
+description: "Service Fabric クラスターは Linux と Java をサポートするので、Java と C# で記述された Service Fabric アプリケーションを Linux にデプロイし、ホストすることができます。"
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 459afade-145d-4ee6-b72b-ddf380ccd1bf
 ms.service: service-fabric
 ms.devlang: Java
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2016
 ms.author: SubramaR
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f52903801c53a50d149fe8732bf514194aae0478
+
 
 ---
 # <a name="service-fabric-on-linux"></a>Linux 上の Service Fabric
@@ -42,6 +46,9 @@ Linux 上の Service Fabric は、概念的には Windows 上の Service Fabric 
 3. [OSX で開発環境を準備する](service-fabric-get-started-mac.md)
 4. [Linux 上で最初の Service Fabric Java アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-java.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

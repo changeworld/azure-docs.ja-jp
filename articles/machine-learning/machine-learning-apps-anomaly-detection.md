@@ -1,22 +1,26 @@
 ---
-title: 'Machine Learning アプリケーション: 異常検出サービス | Microsoft Docs'
-description: 異常検出 API は、Microsoft Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。
+title: "Machine Learning アプリケーション: 異常検出サービス | Microsoft Docs"
+description: "異常検出 API は、Microsoft Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: alokkirpal
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 52fafe1f-e93d-47df-a8ac-9a9a53b60824
 ms.service: machine-learning
 ms.devlang: na
-ms.topic: reference
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 10/11/2016
 ms.author: alokkirpal
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 9b900e3febd3ba945250b52ff4b878f22eae33f3
+
 
 ---
-# <a name="machine-learning-anomaly-detection-service#"></a>Machine Learning 異常検出サービス
+# <a name="machine-learning-anomaly-detection-service"></a>Machine Learning 異常検出サービス
 ## <a name="overview"></a>概要
 [異常検出 API](https://datamarket.azure.com/dataset/aml_labs/anomalydetection) は、Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。 
 
@@ -139,24 +143,24 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
         "odata.metadata": "https://api.datamarket.azure.com/data.ashx/aml_labs/anomalydetection/v2/$metadata#AnomalyDetection.FrontEndService.Models.AnomalyDetectionResult",
         "ADOutput": "{
             "ColumnNames":["Time","OriginalData","ProcessedData","TSpike","ZSpike","PScore","PAlert","RPScore","RPAlert","TScore","TAlert"],
-            "ColumnTypes":["DateTime","Double","Double","Double","Double","Double","Int32","Double","Int32","Double","Int32"],
-            "Values":[
+              "ColumnTypes":["DateTime","Double","Double","Double","Double","Double","Int32","Double","Int32","Double","Int32"],
+              "Values":[
                 ["9/21/201411: 20: 00AM","10","10","0","0","-1.30229513613974","0","-1.30229513613974","0","-1.173800281031","0"]
-            ]
+              ]
         }"
     }
 
 ### <a name="detectors"></a>検出機能
 異常検出 API がサポートしている検出機能 (ディテクター) は大きく 3 つのカテゴリに分けられます。 検出機能ごとの具体的な入力パラメーターと出力について詳しくは、次の表を参照してください。
 
-|検出機能のカテゴリ|検出機能|Description|入力パラメーター|出力
-
-|---|---|---|---|---|
-|スパイク検出機能|T スパイク検出機能|第 1 四分位数および第 3 四分位数から値までの距離に基づいて、スパイクとディップを検出します。|*tspikedetector.sensitivity:* 1 ～ 10 の範囲の整数値を受け取ります (既定値は 3)。値が高いほど極端な値を取得するため、感度が低くなります。|TSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’|
-||Z スパイク検出機能|平均値からデータポイントまでの距離に基づいて、スパイクとディップを検出します。|*tspikedetector.sensitivity:* 1 ～ 10 の範囲の整数値を受け取ります (既定値は 3)。値が高いほど極端な値を取得するため、感度が低くなります。|ZSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’|
-|スロー傾向検出機能|スロー傾向検出機能|設定されている感度に従って、ゆっくりとした正方向の傾向を検出します。|*trenddetector.sensitivity:* 検出機能スコアのしきい値 (既定値: 3.25、妥当な範囲は 3.25 ～ 5、値が大きいほど感度が低下)|TScore: 傾向に関する異常スコアを表す浮動小数点数|
-|レベル変化検出機能|一方向レベル変化検出機能|設定されている感度に従って、上向きのレベルの変化を検出します。|*upleveldetector.sensitivity:* 検出機能スコアのしきい値 (既定値: 3.25、妥当な範囲は 3.25 ～ 5、値が大きいほど感度が低下)|PScore: 上向きのレベルの変化に関する異常スコアを表す浮動小数点数|
-||双方向レベル変化検出機能|設定されている感度に従って、上向きと下向きの両方のレベルの変化を検出します。|*bileveldetector.sensitivity:* 検出機能スコアのしきい値 (既定値: 3.25、妥当な範囲は 3.25 ～ 5、値が大きいほど感度が低下)|RPScore: 上向きと下向きのレベルの変化に関する異常スコアを表す浮動小数点数
+| 検出機能のカテゴリ | 検出機能 | Description | 入力パラメーター | 出力
+ |
+| --- | --- | --- | --- | --- |
+| スパイク検出機能 |T スパイク検出機能 |第 1 四分位数および第 3 四分位数から値までの距離に基づいて、スパイクとディップを検出します。 |*tspikedetector.sensitivity:* 1 ～ 10 の範囲の整数値を受け取ります (既定値は 3)。値が高いほど極端な値を取得するため、感度が低くなります。 |TSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ |
+| Z スパイク検出機能 |平均値からデータポイントまでの距離に基づいて、スパイクとディップを検出します。 |*tspikedetector.sensitivity:* 1 ～ 10 の範囲の整数値を受け取ります (既定値は 3)。値が高いほど極端な値を取得するため、感度が低くなります |ZSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ | |
+| スロー傾向検出機能 |スロー傾向検出機能 |設定されている感度に従って、ゆっくりとした正方向の傾向を検出します。 |*trenddetector.sensitivity:* 検出機能スコアのしきい値 (既定値: 3.25、妥当な範囲は 3.25 ～ 5、値が大きいほど感度が低下) |TScore: 傾向に関する異常スコアを表す浮動小数点数 |
+| レベル変化検出機能 |一方向レベル変化検出機能 |設定されている感度に従って、上向きのレベルの変化を検出します。 |*upleveldetector.sensitivity:* 検出機能スコアのしきい値 (既定値: 3.25、妥当な範囲は 3.25 ～ 5、値が大きいほど感度が低下) |PScore: 上向きのレベルの変化に関する異常スコアを表す浮動小数点数 |
+| 双方向レベル変化検出機能 |設定されている感度に従って、上向きと下向きの両方のレベルの変化を検出します。 |*bileveldetector.sensitivity:* 検出機能スコアのしきい値 (既定値: 3.25、妥当な範囲は 3.25 ～ 5、値が大きいほど感度が低下) |RPScore: 上向きと下向きのレベルの変化に関する異常スコアを表す浮動小数点数 | |
 
 ### <a name="parameters"></a>パラメーター
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
@@ -168,7 +172,7 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 | preprocess.replaceMissing |欠損データの補完に使用する値 |lkv (last known value) |enumerated |zero、lkv、mean |該当なし |
 | detectors.historyWindow |異常スコアの計算に使用された履歴 (データ ポイントの数) |500 |integer |10 ～ 2000 |時系列に依存 |
 | upleveldetector.sensitivity |上方レベル変化検出機能の感度 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
-| bileveldetector.sensitivity |双方向のレベル変化検出機能の感度 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
+| bileveldetector.sensitivity |双方向のレベル変化検出機能の感度。 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
 | trenddetector.sensitivity |正傾向検出機能に使用する感度 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
 | tspikedetector.sensitivity |T スパイク検出機能の感度 |3 |integer |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
 | zspikedetector.sensitivity |Z スパイク検出機能の感度 |3 |integer |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
@@ -180,20 +184,20 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 ### <a name="output"></a>出力
 この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。 以下の表は、API からの出力の一覧です。 
 
-|出力
-|Description|
-|---|---|
-|Time|生データのタイムスタンプ。または、集計/欠損データ補完が適用された場合は集計/補完データのタイムスタンプ。|
-|OriginalData|生データの値。または、集計/欠損データ補完が適用された場合は集計/補完データの値。|
-|ProcessedData|次のいずれかになります。 <ul><li>有意な季節性が検出され、なおかつ deseason オプションが選択された場合は、季節に基づいて調整された時系列</li><li>有意な季節性が検出され、なおかつ deseasontrend オプションが選択された場合は、季節に基づいて調整され、トレンド除去された時系列</li><li>それ以外の場合は、OriginalData と等価</li>|
-|TSpike|T スパイク検出機能によってスパイクが検出されたかどうかを示す 2 進値のインジケーター|
-|ZSpike|Z スパイク検出機能によってスパイクが検出されたかどうかを示す 2 進値のインジケーター|
-|Pscore|上向きのレベルの変化に関する異常スコアを表す浮動小数点数|
-|Palert|上向きのレベルの変化に異常が存在するかどうかを、入力された感度に基づいて示す 1/0 値|
-|RPScore|双方向のレベルの変化に関する異常スコアを表す浮動小数点数|
-|RPAlert|双方向のレベルの変化に異常が存在するかどうかを、入力された感度に基づいて示す 1/0 値|
-|TScore|正傾向に関する異常スコアを表す浮動小数点数|
-|TAlert|正傾向に異常が存在するかどうかを、入力された感度に基づいて示す 1/0 値|
+| 出力
+ | Description |
+| --- | --- |
+| Time |生データのタイムスタンプ。または、集計/欠損データ補完が適用された場合は集計/補完データのタイムスタンプ。 |
+| OriginalData |生データの値。または、集計/欠損データ補完が適用された場合は集計/補完データの値。 |
+| ProcessedData |次のいずれかになります。 <ul><li>有意な季節性が検出され、なおかつ deseason オプションが選択された場合は、季節に基づいて調整された時系列</li><li>有意な季節性が検出され、なおかつ deseasontrend オプションが選択された場合は、季節に基づいて調整され、トレンド除去された時系列</li><li>それ以外の場合は、OriginalData と等価</li> |
+| TSpike |T スパイク検出機能によってスパイクが検出されたかどうかを示す 2 進値のインジケーター |
+| ZSpike |Z スパイク検出機能によってスパイクが検出されたかどうかを示す 2 進値のインジケーター |
+| Pscore |上向きのレベルの変化に関する異常スコアを表す浮動小数点数 |
+| Palert |上向きのレベルの変化に異常が存在するかどうかを、入力された感度に基づいて示す 1/0 値 |
+| RPScore |双方向のレベルの変化に関する異常スコアを表す浮動小数点数 |
+| RPAlert |双方向のレベルの変化に異常が存在するかどうかを、入力された感度に基づいて示す 1/0 値 |
+| TScore |正傾向に関する異常スコアを表す浮動小数点数 |
+| TAlert |正傾向に異常が存在するかどうかを、入力された感度に基づいて示す 1/0 値 |
 
 この出力は、[単純なパーサー](https://adresultparser.codeplex.com/)を使って解析できます。このパーサーには、API に接続して出力結果を解析する方法を示したサンプル コードが含まれています。 検出された異常は、ダッシュボードでの視覚化や専門家への提出によって是正措置を講じることができるほか、チケット システムに統合することができます。
 
@@ -206,6 +210,6 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

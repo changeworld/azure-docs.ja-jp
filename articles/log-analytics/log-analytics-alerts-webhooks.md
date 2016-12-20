@@ -1,12 +1,12 @@
 ---
-title: Log Analytics のアラートでの Webhook のサンプル
-description: Log Analytics のアラートに対して実行できるアクションの 1 つが *Webhook* であり、1 つの HTTP 要求を使用して外部プロセスを呼び出すことができます。 この記事では、Slack を使用して、Log Analytics のアラートで Webhook アクションを作成する例を見ていきます。
+title: "Log Analytics のアラートでの Webhook のサンプル"
+description: "Log Analytics のアラートに対して実行できるアクションの 1 つが *Webhook* であり、1 つの HTTP 要求を使用して外部プロセスを呼び出すことができます。 この記事では、Slack を使用して、Log Analytics のアラートで Webhook アクションを作成する例を見ていきます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 13c39f0f-fd3c-472d-8324-ddf7538be45e
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 001f8abfc5862aeb1914f6e93b68cadeed42eba0
+
 
 ---
 # <a name="webhooks-in-log-analytics-alerts"></a>Log Analytics のアラートでの Webhook
@@ -108,6 +112,9 @@ Slack では、受信メッセージを広範囲にカスタマイズできま�
 * 他のアクションなど、 [Log Analytics のアラート](log-analytics-alerts.md) の詳細を学習します。
 * [Azure Automation の Runbook を作成](../automation/automation-webhooks.md) します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

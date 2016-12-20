@@ -1,12 +1,12 @@
 ---
-title: 既存の Blob を Media Services 資産にコピーする | Microsoft Docs
-description: このトピックでは、既存の BLOB を Media Services 資産にコピーする方法を説明します。
+title: "既存の Blob を Media Services 資産にコピーする | Microsoft Docs"
+description: "このトピックでは、既存の BLOB を Media Services 資産にコピーする方法を説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 6a63823f-f3c9-424c-91b8-566f70bec346
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 10/13/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 62e675d3e87e40a09d67eb5d00b58ea8857e9610
+
 
 ---
 # <a name="copying-an-existing-blob-into-a-media-services-asset"></a>既存の Blob を Media Services 資産にコピーする
@@ -317,6 +321,9 @@ blob は、Media Services アカウントに関連付けられた (または関�
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Azure キュー ストレージを使用して .NET で Media Services ジョブ通知を監視する | Microsoft Docs
-description: Azure キュー ストレージを使用して Media Services ジョブ通知を監視する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。
+title: "Azure Queue Storage を使用して .NET で Media Services ジョブ通知を監視する | Microsoft Docs"
+description: "Azure キュー ストレージを使用して Media Services ジョブ通知を監視する方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: f535d0b5-f86c-465f-81c6-177f4f490987
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,47 +14,51 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
+ms.openlocfilehash: 8eea2b930c9182f43cb1f1e416652ce8378d70b0
+
 
 ---
-# Azure キュー ストレージを使用して .NET で Media Services ジョブ通知を監視する
-ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。進行状況は Azure キュー ストレージを使用して Media Services ジョブ通知を監視する (このトピックで説明) か、StateChanged イベント ハンドラーを定義する ([この](media-services-check-job-progress.md)トピックで説明) ことにより確認できます。
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure キュー ストレージを使用して .NET で Media Services ジョブ通知を監視する
+ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 進行状況は Azure キュー ストレージを使用して Media Services ジョブ通知を監視する (このトピックで説明) か、StateChanged イベント ハンドラーを定義する ( [この](media-services-check-job-progress.md) トピックで説明) ことにより確認できます。  
 
-## Azure キュー ストレージを使用して Media Services ジョブ通知を監視する
-Microsoft Azure Media Services には、メディア ジョブを処理する際に [Azure キュー ストレージ](../storage/storage-dotnet-how-to-use-queues.md#what-is)に通知メッセージを配信する機能があります。このトピックでは、キュー ストレージからこれらの通知メッセージを取得する方法について説明します。
+## <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications"></a>Azure キュー ストレージを使用して Media Services ジョブ通知を監視する
+Microsoft Azure Media Services には、メディア ジョブを処理する際に [Azure Queue Storage](../storage/storage-dotnet-how-to-use-queues.md) に通知メッセージを配信する機能があります。 このトピックでは、キュー ストレージからこれらの通知メッセージを取得する方法について説明します。
 
-キュー ストレージに配信されたメッセージは、世界中のどこからでもアクセスできます。Azure キュー メッセージング アーキテクチャは、信頼性と拡張性に優れています。キュー ストレージのポーリングには、他のメソッドを使用することをお勧めします。
+キュー ストレージに配信されたメッセージは、世界中のどこからでもアクセスできます。 Azure キュー メッセージング アーキテクチャは、信頼性と拡張性に優れています。 キュー ストレージのポーリングには、他のメソッドを使用することをお勧めします。
 
 Media Services 通知をリッスンする 1 つの一般的なシナリオは、エンコード ジョブの完了後にいくつかの追加タスクを実行する必要があるコンテンツ管理システムを開発しているかどうかです (ワークフローの次の手順のトリガーや、コンテンツの発行など)。
 
-### 考慮事項
+### <a name="considerations"></a>考慮事項
 Azure ストレージ キューを使用する Media Services アプリケーションを開発する場合は、次の点を考慮してください。
 
-* キュー サービスでは、先入先出法 (FIFO) の順次配送を保証しません。詳細については、「[Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」をご覧ください。
+* キュー サービスでは、先入先出法 (FIFO) の順次配送を保証しません。 詳細については、「 [Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」をご覧ください。
 * Azure ストレージ キューはプッシュ サービスではありません。キューをポーリングする必要があります。
-* キューの数に制限はありません。詳細については、「[Queue サービスの REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)」をご覧ください。
-* Azure ストレージ キューには、いくつかの制限事項や特性があります。詳細については、「[Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」の記事をご覧ください。
+* キューの数に制限はありません。 詳細については、「 [Queue サービスの REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)」をご覧ください。
+* Azure Storage キューには、いくつかの制限事項や特性があります。詳細については、「[Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」を参照してください。
 
-### コード例
+### <a name="code-example"></a>コード例
 このセクションのコード例では、次の処理を行います。
 
-1. 通知メッセージの形式にマップする **EncodingJobMessage** クラスを定義します。このコードは、キューから受信したメッセージを **EncodingJobMessage** 型のオブジェクトに逆シリアル化します。
-2. Media Services とストレージのアカウント情報を app.config ファイルから読み込みます。.この情報を使用して、**CloudMediaContext **オブジェクトと **CloudQueue** オブジェクトを作成します。
+1. 通知メッセージの形式にマップする **EncodingJobMessage** クラスを定義します。 このコードは、キューから受信したメッセージを **EncodingJobMessage** 型のオブジェクトに逆シリアル化します。
+2. Media Services とストレージのアカウント情報を app.config ファイルから読み込みます。 この情報を使用して、**CloudMediaContext** オブジェクトと **CloudQueue** オブジェクトを作成します。
 3. エンコード ジョブに関する通知メッセージを受信するキューを作成します。
 4. キューにマップされる通知エンドポイントを作成します。
-5. ジョブに通知エンドポイントを添付し、エンコード ジョブを送信します。複数の通知エンドポイントをジョブに添付できます。
+5. ジョブに通知エンドポイントを添付し、エンコード ジョブを送信します。 複数の通知エンドポイントをジョブに添付できます。
 6. この例では、ジョブ処理の最終状態のみを対象としているので、**NotificationJobState.FinalStatesOnly** を **AddNew** メソッドに渡します。
-   
+
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-7. NotificationJobState.All を渡す場合は、すべての状態変更通知 (キューに登録 -> スケジュール済み -> 処理中 -> 完了) を受信することが予想されます。ただし、前述のように、Azure ストレージ キュー サービスでは、順次配送を保証しません。タイムスタンプ プロパティ (次の例の EncodingJobMessage 型で定義) を使用してメッセージの順序を指定できます。通知メッセージを重複して受信する可能性があります。重複を確認するには、ETag プロパティ (EncodingJobMessage 型で定義) を使用してください。一部の状態変更通知がスキップされる可能性もあります。
-8. 10 秒ごとにキューをチェックし、ジョブが完了状態になるまで待機します。処理が終了したら、メッセージを削除します。
+7. NotificationJobState.All を渡す場合は、すべての状態変更通知 (キューに登録 -> スケジュール済み -> 処理中 -> 完了) を受信することが予想されます。 ただし、前述のように、Azure ストレージ キュー サービスでは、順次配送を保証しません。 タイムスタンプ プロパティ (次の例の EncodingJobMessage 型で定義) を使用してメッセージの順序を指定できます。 通知メッセージを重複して受信する可能性があります。 重複を確認するには、ETag プロパティ (EncodingJobMessage 型で定義) を使用してください。 一部の状態変更通知がスキップされる可能性もあります。
+8. 10 秒ごとにキューをチェックし、ジョブが完了状態になるまで待機します。 処理が終了したら、メッセージを削除します。
 9. キューと通知エンドポイントを削除します。
 
 > [!NOTE]
 > ジョブの状態を監視するお勧めの方法は、次の例に示すように、通知メッセージをリッスンすることです。
-> 
-> または、**IJob.State** プロパティを使用してジョブの状態を確認することもできます。**IJob** の状態が **[完了]** に設定される前に、ジョブの完了に関する通知メッセージが到着する場合があります。**IJob.State** プロパティは、多少遅延しますが正確な状態を反映します。
-> 
-> 
+>
+> または、 **IJob.State** プロパティを使用してジョブの状態を確認することもできます。  **IJob** の状態が **[完了]** に設定される前に、ジョブの完了に関する通知メッセージが到着する場合があります。 **IJob.State** プロパティは、多少遅延しますが正確な状態を反映します。
+>
+>
 
     using System;
     using System.Linq;
@@ -75,14 +79,14 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
     {
         public class EncodingJobMessage
         {
-            // MessageVersion is used for version control. 
+            // MessageVersion is used for version control.
             public String MessageVersion { get; set; }
 
-            // Type of the event. Valid values are 
+            // Type of the event. Valid values are
             // JobStateChange and NotificationEndpointRegistration.
             public String EventType { get; set; }
 
-            // ETag is used to help the customer detect if 
+            // ETag is used to help the customer detect if
             // the message is a duplicate of another message previously sent.
             public String ETag { get; set; }
 
@@ -99,9 +103,9 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
             //          Scheduled, Processing, Canceling, Cancelled, Error, Finished
 
             // For the NotificationEndpointRegistration event the values are:
-            //     NotificationEndpointId- Id of the NotificationEndpoint 
+            //     NotificationEndpointId- Id of the NotificationEndpoint
             //          that triggered the notification.
-            //     State- The state of the Endpoint. 
+            //     State- The state of the Endpoint.
             //          Valid values are: Registered and Unregistered.
 
             public IDictionary<string, object> Properties { get; set; }
@@ -126,14 +130,14 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 
                 string endPointAddress = Guid.NewGuid().ToString();
 
-                // Create the context. 
+                // Create the context.
                 _context = new CloudMediaContext(mediaServicesAccountName, mediaServicesAccountKey);
 
                 // Create the queue that will be receiving the notification messages.
                 _queue = CreateQueue(storageConnectionString, endPointAddress);
 
                 // Create the notification point that is mapped to the queue.
-                _notificationEndPoint = 
+                _notificationEndPoint =
                         _context.NotificationEndPoints.Create(
                         Guid.NewGuid().ToString(), NotificationEndPointType.AzureQueue, endPointAddress);
 
@@ -172,15 +176,15 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My MP4 to Smooth Streaming encoding job");
 
-                //Create an encrypted asset and upload the mp4. 
-                IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.StorageEncrypted, 
+                //Create an encrypted asset and upload the mp4.
+                IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.StorageEncrypted,
                     inputMediaFilePath);
 
-                // Get a media processor reference, and pass to it the name of the 
+                // Get a media processor reference, and pass to it the name of the
                 // processor to use for the specific task.
                 IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-                // Create a task with the conversion details, using a configuration file. 
+                // Create a task with the conversion details, using a configuration file.
                 ITask task = job.Tasks.AddNew("My encoding Task",
                     processor,
                     "H264 Multiple Bitrate 720p",
@@ -194,7 +198,7 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
                     AssetCreationOptions.None);
 
                 // Add a notification point to the job. You can add multiple notification points.  
-                job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, 
+                job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly,
                     _notificationEndPoint);
 
                 job.Submit();
@@ -237,7 +241,7 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
                                 Console.WriteLine("    {0}: {1}", property.Key, property.Value);
                             }
 
-                            // We are only interested in messages 
+                            // We are only interested in messages
                             // where EventType is "JobStateChange".
                             if (encodingJobMsg.EventType == "JobStateChange")
                             {
@@ -254,7 +258,7 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 
                                     if (newJobState == (JobState)expectedState)
                                     {
-                                        Console.WriteLine("job with Id: {0} reached expected state: {1}", 
+                                        Console.WriteLine("job with Id: {0} reached expected state: {1}",
                                             jobId, newJobState);
                                         jobReachedExpectedState = true;
                                         break;
@@ -271,7 +275,7 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
                     bool timedOut = (timeDiff.TotalSeconds > timeOutInSeconds);
                     if (timedOut)
                     {
-                        Console.WriteLine(@"Timeout for checking job notification messages, 
+                        Console.WriteLine(@"Timeout for checking job notification messages,
                                             latest found state ='{0}', wait time = {1} secs",
                             jobState,
                             timeDiff.TotalSeconds);
@@ -283,7 +287,7 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 
             static private IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
             {
-                var asset = _context.Assets.Create("UploadSingleFile_" + DateTime.UtcNow.ToString(), 
+                var asset = _context.Assets.Create("UploadSingleFile_" + DateTime.UtcNow.ToString(),
                     assetCreationOptions);
 
                 var fileName = Path.GetFileName(singleFilePath);
@@ -312,7 +316,7 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
         }
     }
 
-上記の例では、次の出力が生成されました。値は異なる場合があります。
+上記の例では、次の出力が生成されました。 値は異なる場合があります。
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4
@@ -336,16 +340,20 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
         NewState: Finished
         OldState: Processing
         AccountName: westeuropewamsaccount
-    job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected 
+    job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
     State: Finished
 
 
-## 次のステップ
+## <a name="next-step"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## フィードバックの提供
+## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

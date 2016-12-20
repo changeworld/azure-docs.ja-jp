@@ -1,12 +1,12 @@
 ---
-title: Log Analytics のデータ ソース | Microsoft Docs
-description: データ ソースは、Log Analytics がエージェントや接続されている他のソースから収集するデータを定義します。  この記事では、Log Analytics でのデータ ソースの扱い方の概念、それらを構成する方法の詳細、および使用可能なさまざまなデータ ソースの概要について説明します。
+title: "Log Analytics のデータ ソース | Microsoft Docs"
+description: "データ ソースは、Log Analytics がエージェントや接続されている他のソースから収集するデータを定義します。  この記事では、Log Analytics でのデータ ソースの扱い方の概念、それらを構成する方法の詳細、および使用可能なさまざまなデータ ソースの概要について説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 67710115-c861-40f8-a377-57c7fa6909b4
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 412483cfbce7621612a7283b8a72c24d23b851b5
+
 
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics のデータ ソース
@@ -58,6 +62,9 @@ Log Analytics によって収集されたデータはすべて、レコードと
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * データ ソースやソリューションから収集された重要なデータについて事前に通知する[アラート](log-analytics-alerts.md)を構成します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
