@@ -19,7 +19,7 @@ Azure ドキュメントにご興味をお持ちくださり、ありがとう�
 ## <a name="ways-to-contribute"></a>作成協力の方法
 次のように、[Azure のドキュメント](http://docs.microsoft.com/azure)に対する更新を提案できます。
 
-* GitHub ユーザー インターフェイスからも技術記事の作成に簡単にご協力いただけます。 目的の記事をこのリポジトリで見つけるか、[http://docs.microsoft.com/azur](http://docs.microsoft.com/azur) で記事にアクセスして GitHub 内のソースにアクセスするためのリンクをクリックしてください。
+* GitHub ユーザー インターフェイスからも技術記事の作成に簡単にご協力いただけます。 目的の記事をこのリポジトリで見つけるか、[http://docs.microsoft.com/azure](http://docs.microsoft.com/azure) で記事にアクセスして GitHub 内のソースにアクセスするためのリンクをクリックしてください。
 * 既存の記事に大幅な変更を加える場合、画像を追加または変更する場合、新しい記事を投稿する場合は、このリポジトリのフォーク、Git Bash と Markdown Pad のインストール、いくつかの Git コマンドの習得が必要になります。
 
 ## <a name="code-of-conduct"></a>倫理規定
@@ -48,7 +48,7 @@ azure-docs リポジトリ内のコンテンツは、http://docs.microsoft.com/a
 ### <a name="markdown-templates"></a>\markdown templates
 このフォルダーには、記事に必要な基本のマークダウン書式が設定された標準のマークダウン テンプレートが格納されています。
 
-### <a name="contributorguide"></a>\contributor-guide
+### <a name="contributor-guide"></a>\contributor-guide
 このフォルダーには、作成協力者ガイドを構成している記事が格納されています。  
 
 ## <a name="use-github-git-and-this-repository"></a>GitHub、Git、およびこのリポジトリの使い方
@@ -87,6 +87,6 @@ GitBash をインストールしてローカルで作業する場合は、[記�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: '手順 5: Machine Learning Web サービスをデプロイする | Microsoft Docs'
-description: '予測ソリューションの開発チュートリアルの 5 番目の手順: Machine Learning Studio で予測実験を Web サービスとしてデプロイする。'
+title: "手順 5: Machine Learning Web サービスをデプロイする | Microsoft Docs"
+description: "予測ソリューションの開発チュートリアルの 5 番目の手順: Machine Learning Studio で予測実験を Web サービスとしてデプロイする。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 3fca74a3-c44b-4583-a218-c14c46ee5338
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: c7e5bf29aacbcb11bfa1db01738d234ae64b46b2
+ms.openlocfilehash: 141586d880e6a8f069ec26b3279d9787c5e046b4
+
 
 ---
-# <a name="walkthrough-step-5:-deploy-the-azure-machine-learning-web-service"></a>チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする
+# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする
 これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Machine Learning ワークスペースの作成](machine-learning-walkthrough-1-create-ml-workspace.md)
@@ -98,7 +102,7 @@ Machine Learning Studio では、[分割][split]モジュールを削除する�
 Azure Resource Managerに基づく新しい Web サービスか、従来の Web サービスのどちらかとして実験をデプロイできます。
 
 ### <a name="deploy-as-a-classic-web-service"></a>従来の Web サービスとしてデプロイする
-実験から派生する従来の Web サービスをデプロイするには、キャンバスの下にある **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic](Web サービスのデプロイ \[従来\].md)]** を選択します。 Machine Learning Studio によって実験が Web サービスとしてデプロイされ、その Web サービス用のダッシュボードに移動します。 そこから、実験に戻って (**[スナップショットの表示]** または **[最新の表示]** をクリック)、Web サービスの簡単なテストを実行できます (次の「**Web サービスをテストする**」セクションを参照してください)。 この Web サービスにアクセスできるアプリケーションを作成するための情報も表示されます (詳細はこのチュートリアルの次の手順を参照してください)。
+実験から派生する従来の Web サービスをデプロイするには、キャンバスの下にある **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic](Web サービスのデプロイ [従来])]** を選択します。 Machine Learning Studio によって実験が Web サービスとしてデプロイされ、その Web サービス用のダッシュボードに移動します。 そこから、実験に戻って (**[スナップショットの表示]** または **[最新の表示]** をクリック)、Web サービスの簡単なテストを実行できます (次の「**Web サービスをテストする**」セクションを参照してください)。 この Web サービスにアクセスできるアプリケーションを作成するための情報も表示されます (詳細はこのチュートリアルの次の手順を参照してください)。
 
 ![Web サービス ダッシュボード][6]
 
@@ -107,7 +111,7 @@ Azure Resource Managerに基づく新しい Web サービスか、従来の Web 
 ![Web サービスを構成する][5]  
 
 ### <a name="deploy-as-a-new-web-service"></a>新しい Web サービスとしてデプロイする
-実験から派生する新しい Web サービスをデプロイするには、キャンバスの下にある **[Web サービスのデプロイ]**、**[Deploy Web Service [New](Web サービスのデプロイ \[新規\].md)]** の順にクリックします。 Machine Learning Studio から Azure Machine Learning Web サービスの [Deploy Experiment (実験のデプロイ)] ページに転送されます。
+実験から派生する新しい Web サービスをデプロイするには、キャンバスの下にある **[Web サービスのデプロイ]**、**[Deploy Web Service [New](Web サービスのデプロイ [新規])]** の順にクリックします。 Machine Learning Studio から Azure Machine Learning Web サービスの [Deploy Experiment (実験のデプロイ)] ページに転送されます。
 
 Web サービスの名前を入力し、料金プランを選択します。 既存の料金プランがある場合はそのプランを選択できます。ない場合は、サービス用に新しい料金プランを作成する必要があります。 
 
@@ -122,7 +126,7 @@ Web サービスの名前を入力し、料金プランを選択します。 既
 Web サービスをテストするには、**[テスト]** メニュー オプションを選択します (以下の「**Web サービスをテストする**」を参照してください)。 この Web サービスにアクセスできるアプリケーションを作成するための情報については、 **[Consume (使用)]** メニュー オプションをクリックしてください (詳細はこのチュートリアルの次の手順を参照してください)。
 
 > [!TIP]
-> Web サービスをデプロイした後で更新できます。 たとえばモデルを変更する場合、トレーニング実験を編集し、モデルのパラメーターを調整して **[Web サービスのデプロイ]**をクリックします。 **[Deploy Web Service [Classic](Web サービスのデプロイ \[従来\].md)]** または **[Deploy Web Service [New](Web サービスのデプロイ \[新規\].md)]** を選択します。 もう一度実験をデプロイすると、Web サービスが置き換えられ、更新済みのモデルが使用されるようになります。  
+> Web サービスをデプロイした後で更新できます。 たとえばモデルを変更する場合、トレーニング実験を編集し、モデルのパラメーターを調整して **[Web サービスのデプロイ]**をクリックします。 **[Deploy Web Service [Classic](Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New](Web サービスのデプロイ [新規])]** を選択します。 もう一度実験をデプロイすると、Web サービスが置き換えられ、更新済みのモデルが使用されるようになります。  
 > 
 > 
 
@@ -172,13 +176,11 @@ Azure Machine Learning Web サービス ポータルでテストするとき、�
 6. "既定の" エンドポイントをクリックします。
 
 そこから、Web サービスの動作の監視や、サービスが処理できる同時呼び出し数の変更によるパフォーマンスの微調整などを実行できます。
-Web サービスを Azure Marketplace に発行することもできます。
 
 詳細については、次のリンクを参照してください。
 
 * [エンドポイントを作成する](machine-learning-create-endpoint.md)
 * [Web サービスのスケーリング](machine-learning-scaling-webservice.md)
-* [Azure Marketplace への Azure Machine Learning Web サービスの発行](machine-learning-publish-web-service-to-azure-marketplace.md)
 
 **Azure Machine Learning Web サービス ポータルで Web サービスを管理する**
 
@@ -215,6 +217,7 @@ Web サービスのパフォーマンスを監視するには:
 [project-columns]: https://msdn.microsoft.com/en-us/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO4-->
 
 
