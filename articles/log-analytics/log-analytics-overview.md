@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2016
+ms.date: 12/09/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 09a2b3ccd2048ab2638dd91d1905483f10d6d339
+ms.sourcegitcommit: bf1455cf3975b925d114acc3e1d4cba55f2a17a9
+ms.openlocfilehash: 3e7e42e2ac2deedf936ffc4d246553f72ee4dcd3
 
 
 ---
@@ -73,6 +73,6 @@ Log Analytics のデプロイ要件は、中央のコンポーネントが Azure
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

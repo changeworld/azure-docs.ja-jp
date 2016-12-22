@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 12/09/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2ebe71b3456420f29ffe06bc15471d3fd2121f8c
+ms.sourcegitcommit: 72cc0d9ff35ff656a6134b52812b64c39a295a6f
+ms.openlocfilehash: 53786d60d9971d9f976bf0f3ef4e40346c3101f4
 
 
 ---
@@ -34,23 +34,23 @@ Azure Search インデックスにデータを設定する方法は 2 とおり�
 
 このガイドでは、データ アップロードのプッシュ モデル ([REST API](search-import-data-rest-api.md) と [.NET SDK](search-import-data-dotnet.md) でのみサポート) の使用手順のみを取り上げますが、以下でプル モデルの詳細も確認できます。
 
-### <a name="push-data-to-an-index"></a>インデックスにデータをプッシュする
+## <a name="push-data-to-an-index"></a>インデックスにデータをプッシュする
 このアプローチでは、データを Azure Search にプログラムで送信し、検索に利用できるようにします。 待機時間の要件が非常に厳しいアプリケーションの場合 (たとえば、検索操作を動的な在庫データベースと同期する必要がある場合) は、プッシュ モデルしか利用できません。
 
-インデックスにデータをプッシュするには、[REST API](https://msdn.microsoft.com/library/azure/dn798930.aspx) または [.NET SDK](search-import-data-dotnet.md) を使用することができます。 現在では、ポータルを使用してデータをプッシュするためのツール サポートはありません。
+インデックスにデータをプッシュするには、[REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) または [.NET SDK](search-import-data-dotnet.md) を使用することができます。 現在では、ポータルを使用してデータをプッシュするためのツール サポートはありません。
 
 このアプローチでは、ドキュメントを個別に、またはバッチでアップロードできるため、プル モデルよりも柔軟です ("バッチごとに最大 1,000 個" と "16 MB" のうち、どちらか先に達した制限が適用されます)。 プッシュ モデルでは、データのある場所にかかわらず、ドキュメントを Azure Search にアップロードすることもできます。
 
-### <a name="pull-data-into-an-index"></a>インデックスへのデータのプル
+## <a name="pull-data-into-an-index"></a>インデックスへのデータのプル
 プル モデルでは、サポートされているデータ ソースをクロールし、データを Azure Search に自動的にアップロードします。 インデクサーは、新しいドキュメントを認識するだけでなく、既存のドキュメントの変更と削除を追跡するため、インデックス内のデータをアクティブに管理する必要がありません。
 
 Azure Search では、この機能は*インデクサー*によって実装され、現時点では [Blob Storage (プレビュー)](search-howto-indexing-azure-blob-storage.md)、[DocumentDB](http://aka.ms/documentdb-search-indexer)、[Azure SQL Database、Azure VM 上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) で利用可能です。
 
-インデクサーの機能は、[REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx) に加えて [Azure Portal](search-import-data-portal.md) でも公開されています。
+インデクサーの機能は、[REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) に加えて [Azure Portal](search-import-data-portal.md) でも公開されています。
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 
