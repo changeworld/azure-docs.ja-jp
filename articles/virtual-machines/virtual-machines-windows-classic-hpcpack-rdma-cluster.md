@@ -1,13 +1,13 @@
 ---
-title: MPI アプリケーションを実行するように Windows RDMA クラスターを設定する | Microsoft Docs
-description: H16r、H16mr、A8、または A9 サイズの VM を使用する Windows HPC Pack クラスターを作成し、Azure の RDMA ネットワークを使用して MPI アプリを実行する方法について説明します。
+title: "MPI アプリケーションを実行するように Windows RDMA クラスターを設定する | Microsoft Docs"
+description: "H16r、H16mr、A8、または A9 サイズの VM を使用する Windows HPC Pack クラスターを作成し、Azure の RDMA ネットワークを使用して MPI アプリを実行する方法について説明します。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: dlepow
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management,hpc-pack
-
+ms.assetid: 7d9f5bc8-012f-48dd-b290-db81c7592215
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -15,12 +15,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/20/2016
 ms.author: danlep
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: caab5d5d95200e909d0be26a0712f78e3960deb1
+
 
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)
-Azure で [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) と [H シリーズまたはコンピューティング集中型 A シリーズ インスタンス](virtual-machines-windows-a8-a9-a10-a11-specs.md)を使用して Windows RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行します。 HPC Pack クラスターで RDMA 対応の Windows Server ベースのノードを設定すると、MPI アプリケーションは、リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく Azure の低待機時間で高スループットのネットワークを介して効率的に通信します。
+Azure で [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) と [H シリーズまたはコンピューティング集中型 A シリーズ インスタンス](virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を使用して Windows RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行します。 HPC Pack クラスターで RDMA 対応の Windows Server ベースのノードを設定すると、MPI アプリケーションは、リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく Azure の低待機時間で高スループットのネットワークを介して効率的に通信します。
 
-Linux VM 上で Azure RDMA ネットワークにアクセスする MPI ワークロードを実行する場合は、「 [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-classic-rdma-cluster.md)」を参照してください。
+Linux VM 上で Azure RDMA ネットワークにアクセスする MPI ワークロードを実行する場合は、「 [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。
 
 ## <a name="hpc-pack-cluster-deployment-options"></a>HPC Pack クラスターのデプロイ オプション
 Microsoft HPC Pack は、追加コストなしで提供され、Windows または Linux HPC アプリケーションを実行するための HPC クラスターをオンプレミスまたは Azure で作成するために使用できます。 HPC Pack には、Microsoft が実装する Windows 用 Message Passing Interface (MS-MPI) のランタイム環境が含まれています。 サポートされている Windows Server オペレーティング システムを実行している RDMA 対応のインスタンスで使用する場合、HPC Pack は、Azure RDMA ネットワークにアクセスする Windows MPI アプリケーションを実行するための効率的なオプションとなります。 
@@ -30,9 +34,9 @@ Microsoft HPC Pack は、追加コストなしで提供され、Windows また�
 * シナリオ 1. コンピューティング集中型 worker ロール インスタンスをデプロイする (PaaS)
 * シナリオ 2. 計算ノードをコンピューティング集中型 VM にデプロイする (IaaS)
 
-Windows でコンピューティング集中型インスタンスを使用するための一般的な前提条件については、「 [H シリーズとコンピューティング集中型 A シリーズの VM について](virtual-machines-windows-a8-a9-a10-a11-specs.md) 」を参照してください。
+Windows でコンピューティング集中型インスタンスを使用するための一般的な前提条件については、「 [H シリーズとコンピューティング集中型 A シリーズの VM について](virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」を参照してください。
 
-## <a name="scenario-1.-deploy-compute-intensive-worker-role-instances-(paas)"></a>シナリオ 1. コンピューティング集中型 worker ロール インスタンスをデプロイする (PaaS)
+## <a name="scenario-1-deploy-compute-intensive-worker-role-instances-paas"></a>シナリオ 1. コンピューティング集中型 worker ロール インスタンスをデプロイする (PaaS)
 既存の HPC Pack クラスターから、クラウド サービスで実行される Azure worker ロール インスタンス (Azure ノード) にコンピューティング リソースを追加します (PaaS)。 HPC Pack からの "Azure へのバースト" とも呼ばれるこの機能は、worker ロール インスタンスのサイズの範囲をサポートしています。 Azure ノードを追加するときは、RDMA 対応のサイズのいずれかを指定するだけです。
 
 既存の (通常はオンプレミスの) クラスターから RDMA 対応のインスタンスにバーストする際の考慮事項とバーストの手順を以下に示します。 Azure VM にデプロイされた HPC Pack ヘッド ノードに worker ロール インスタンスを追加する場合も、同様の手順を実行します。
@@ -79,8 +83,8 @@ Windows でコンピューティング集中型インスタンスを使用する
    
    ジョブの実行が完了したら、HPC クラスター マネージャーでノードをオフラインにし、 **[停止]** 操作を使用します。
 
-## <a name="scenario-2.-deploy-compute-nodes-in-compute-intensive-vms-(iaas)"></a>シナリオ 2. 計算ノードをコンピューティング集中型 VM にデプロイする (IaaS)
-このシナリオでは、Azure 仮想ネットワークの Active Directory ドメインに参加している VM に HPC Pack ヘッド ノードとクラスター計算ノードをデプロイします。 HPC Pack には、自動デプロイ スクリプトや Azure クイックスタート テンプレートなど、 [Azure VM でのデプロイ オプション](virtual-machines-linux-hpcpack-cluster-options.md)が多数用意されています。 例として、下記の考慮事項と手順は、 [HPC Pack IaaS デプロイ スクリプト](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md) を使用して、このプロセスのほとんどを自動化する方法を示しています。
+## <a name="scenario-2-deploy-compute-nodes-in-compute-intensive-vms-iaas"></a>シナリオ 2. 計算ノードをコンピューティング集中型 VM にデプロイする (IaaS)
+このシナリオでは、Azure 仮想ネットワークの Active Directory ドメインに参加している VM に HPC Pack ヘッド ノードとクラスター計算ノードをデプロイします。 HPC Pack には、自動デプロイ スクリプトや Azure クイックスタート テンプレートなど、 [Azure VM でのデプロイ オプション](virtual-machines-linux-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)が多数用意されています。 例として、下記の考慮事項と手順は、 [HPC Pack IaaS デプロイ スクリプト](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) を使用して、このプロセスのほとんどを自動化する方法を示しています。
 
 ![Cluster in Azure VMs][iaas]
 
@@ -89,7 +93,7 @@ Windows でコンピューティング集中型インスタンスを使用する
    
     HPC Pack の IaaS デプロイ スクリプト パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=49922)からダウンロードします。
    
-    クライアント コンピューターを準備し、スクリプトの構成ファイルを作成して、スクリプトを実行するには、 [HPC Pack の IaaS デプロイ スクリプトを使用した HPC クラスターの作成](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md)に関するページを参照してください。 
+    クライアント コンピューターを準備し、スクリプトの構成ファイルを作成して、スクリプトを実行するには、 [HPC Pack の IaaS デプロイ スクリプトを使用した HPC クラスターの作成](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。 
    
     RDMA 対応のコンピューティング ノードをデプロイする場合は、以下の追加の考慮事項に注意してください。
    
@@ -104,13 +108,13 @@ Windows でコンピューティング集中型インスタンスを使用する
     ノードを選択し、HPC クラスター マネージャーの **[オンラインにする]** 操作を使用します。 ノードでジョブを実行する準備が整います。
 3. **クラスターにジョブを送信する**
    
-    ヘッド ノードに接続してジョブを送信するか、またはオンプレミスのコンピューターを設定してジョブを送信します。 詳細については、 [Azure の HPC クラスターへのジョブの送信](virtual-machines-windows-hpcpack-cluster-submit-jobs.md)に関するページを参照してください。
+    ヘッド ノードに接続してジョブを送信するか、またはオンプレミスのコンピューターを設定してジョブを送信します。 詳細については、 [Azure の HPC クラスターへのジョブの送信](virtual-machines-windows-hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 4. **ノードをオフラインにし、停止 (割り当て解除) する**
    
     ジョブの実行が完了したら、HPC クラスター マネージャーでノードをオフラインにします。 次に、Azure の管理ツールを使用して、ノードをシャットダウンします。
 
 ## <a name="run-mpi-applications-on-the-cluster"></a>クラスターで MPI アプリケーションを実行する
-### <a name="example:-run-mpipingpong-on-an-hpc-pack-cluster"></a>例: HPC Pack クラスターで mpipingpong を実行する
+### <a name="example-run-mpipingpong-on-an-hpc-pack-cluster"></a>例: HPC Pack クラスターで mpipingpong を実行する
 RDMA 対応のインスタンスの HPC Pack デプロイを確認するには、クラスターで HPC Pack の **mpipingpong** コマンドを実行します。 **mpipingpong** により、ペアになっているノード間でデータのパケットが繰り返し送信され、待機時間とスループットの測定値、RDMA が有効なアプリケーション ネットワークの統計情報が計算されます。 この例は、クラスターの **mpiexec** コマンドを使用して MPI ジョブ (この場合は **mpipingpong**) を実行するための一般的なパターンを示しています。
 
 この例では、“Azure にバースト” 構成 ([シナリオ 1](#scenario-1.-deploy-compute-intensive-worker-role-instances-\(PaaS\) in this article)) で Azure ノードを追加すると仮定します。 HPC Pack を Azure VM のクラスターにデプロイする場合は、コマンド構文を修正して、別のノード グループを指定し、ネットワーク トラフィックを RDMA ネットワークに転送するように追加の環境変数を設定する必要があります。
@@ -180,15 +184,16 @@ Azure で HPC Pack を使用して MPI アプリケーションを実行する�
 
 ## <a name="next-steps"></a>次のステップ
 * HPC Pack を使用する代わりに、Azure Batch サービスを開発し、Azure の計算ノードの管理されたプールで MPI アプリケーションを実行します。 「 [Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](../batch/batch-mpi.md)」をご覧ください。
-* Azure RDMA ネットワークにアクセスする Linux MPI ワークロードを実行する場合は、「 [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-classic-rdma-cluster.md)」を参照してください。
+* Azure RDMA ネットワークにアクセスする Linux MPI ワークロードを実行する場合は、「 [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。
 
 <!--Image references-->
-[バースト]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/burst.png
+[Burst to Azure]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/burst.png
 [iaas]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/iaas.png
 [pingpong1]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/pingpong1.png
 [pingpong2]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/pingpong2.png
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 
