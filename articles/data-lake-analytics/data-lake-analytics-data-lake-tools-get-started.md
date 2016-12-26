@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/08/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: bfc8a774ebaaae7dbf1018614681134a5b10a769
-ms.openlocfilehash: 7938e0c2f0363bcce51375ddab9c68e8e8068186
+ms.sourcegitcommit: 3c8406efd9d716df56ed3ca10fc596684945c2f2
+ms.openlocfilehash: 3281b001aeab42aace951b5bdd5d4ec901de396f
 
 
 ---
@@ -28,19 +28,19 @@ Data Lake Tools for Visual Studio をインストールし、それを使用し�
 U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析するための拡張性に優れた言語です。 詳細については、 [U-SQL リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=691348)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Visual Studio 2015、Visual Studio 2013 Update 4、Visual Studio 2012 のいずれか。サポートされるエディションは Enterprise (Ultimate/Premium)、Professional、Community です。Express エディションはサポートされません。現在、Visual Studio "15" はサポートされておらず、実現に向けて取り組んでいます。 **
+* **Visual Studio 2015、Visual Studio 2013 Update 4、Visual Studio 2012 のいずれか。サポートされるエディションは Enterprise (Ultimate/Premium)、Professional、Community です。Express エディションはサポートされません。Visual Studio 2017 は現在、サポートされていません。**
 * **Microsoft Azure SDK for .NET Version 2.7.1 以降**。  [Web Platform Installer を使用してインストールします](http://www.microsoft.com/web/downloads/platform.aspx)。
 * **[Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs)**。
 
     Data Lake Tools for Visual Studio をインストールすると、サーバー エクスプローラーの "Azure" ノードに "Data Lake Analytics" ノードが表示されます (サーバー エクスプローラーを表示するには Ctrl + Alt + S を押します)。
-* **「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」の次の 2 つのセクションを進めます**。
 
-  * [Azure Data Lake Analytics アカウントの作成](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)
-  * [既定の Data Lake ストレージ アカウントへの SearchLog.tsv のアップロード](data-lake-analytics-get-started-portal.md#prepare-source-data)
+* **Data Lake Analytics アカウントとサンプル データ** Data Lake Tools では、Data Lake Analytics アカウントの作成はサポートしていません。 そのため、Azure Portal、Azure PowerShell、.NET SDK、または Azure CLI を使ってアカウントを作成する必要があります。
+参考までに、Data Lake Analytics サービスを作成し、ソース データ ファイルをアップロードするための PowerShell スクリプトについては、「[付録 A: チュートリアルの準備のための PowerShell サンプル](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial)」を参照してください。
 
-    参考までに、Data Lake Analytic サービスを作成し、ソース データ ファイルをアップロードするための PowerShell サンプル スクリプトについては、「 [付録 A: チュートリアルの準備のための PowerShell サンプル](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial)」を参照してください。
+    このほか、「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」の次の 2 つのセクションに示した方法でも、アカウントを作成して手動でデータをアップロードできます。
 
-    Data Lake Tools では、Data Lake Analytics アカウントの作成はサポートされません。 そのため、Azure Portal、Azure PowerShell、.NET SDK、または Azure CLI を使用して作成する必要があります。 Data Lake Analytics ジョブを実行するには、いくつかのデータが必要です。 Data Lake Tools でデータのアップロードがサポートされていても、このチュートリアルに従いやすくするため、サンプル データのアップロードにはポータルを使用します。
+    1. [Azure Data Lake Analytics アカウントの作成](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)
+    2. [既定の Data Lake ストレージ アカウントへの SearchLog.tsv のアップロード](data-lake-analytics-get-started-portal.md#prepare-source-data)
 
 ## <a name="connect-to-azure"></a>Azure への接続
 **Data Lake Analytics に接続するには**
@@ -270,6 +270,8 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
 * [.NET SDK で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-net-sdk.md)
 * [U-SQL ジョブのデバッグ](data-lake-analytics-debug-u-sql-jobs.md)
 
+Data Lake Tools for Visual Studio Code については、「[Use the Azure Data Lake Tools for Visual Studio Code (Azure Data Lake Tools for Visual Studio Code の使用)](data-lake-analytics-data-lake-tools-for-vscode.md)」を参照してください。
+
 開発に関するその他のトピックも参照してください。
 
 * [Analyze weblogs using Data Lake Analytics (Data Lake Analytics を使用したウェブログの分析)](data-lake-analytics-analyze-weblogs.md)
@@ -350,6 +352,6 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,39 +1,43 @@
 ---
-title: Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する | Microsoft Docs
-description: Azure Resource Manager テンプレートを使用して Service Bus リソースの作成を自動化する
-services: service-bus
+title: "Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する | Microsoft Docs"
+description: "Azure Resource Manager テンプレートを使用して Service Bus リソースの作成を自動化する"
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 24f6a207-0fa4-49cf-8a58-963f9e2fd655
+ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 07/11/2016
+ms.date: 10/14/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 182b4378cfd876d3700a1f0028a681ce936be03c
+ms.openlocfilehash: 1425628c6e0c544b5b84a4f828bfaef3073fddee
+
 
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する
-この記事では、Azure Resource Manager テンプレート、PowerShell、Service Bus リソース プロバイダーを使用して Service Bus と Event Hubs リソースを作成し、デプロイする方法について説明します。
+この記事では、Azure Resource Manager テンプレート、PowerShell、Service Bus リソース プロバイダーを使用して Service Bus リソースを作成し、デプロイする方法について説明します。
 
-Azure Resource Manager テンプレートを使用すると、ソリューションでデプロイするリソースを定義し、さまざまな環境用の値を入力できるパラメーターと変数を指定できます。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 Azure Resource Manager テンプレートの作成の詳細と、テンプレート形式の説明については、[「Azure Resource Manager のテンプレートの作成」](../resource-group-authoring-templates.md)を参照してください。 
+Azure Resource Manager テンプレートを使用すると、ソリューションでデプロイするリソースを定義し、さまざまな環境用の値を入力できるパラメーターと変数を指定できます。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 Azure Resource Manager テンプレートの作成の詳細と、テンプレート形式の説明については、[「Azure Resource Manager のテンプレートの作成」](../resource-group-authoring-templates.md)を参照してください。
 
 > [!NOTE]
-> この記事の例では、Azure Resource Manager を使用して Service Bus の名前空間とメッセージング エンティティ (キュー) を作成する方法について説明します。 他のテンプレート例については、[「Azure クイックスタート テンプレート」][]ギャラリーで "Service Bus" を検索してください。
+> この記事の例では、Azure Resource Manager を使用して Service Bus の名前空間とメッセージング エンティティ (キュー) を作成する方法について説明します。 他のテンプレート例については、[Azure クイックスタート テンプレート ギャラリー][Azure クイックスタート テンプレート ギャラリー]にアクセスし、"Service Bus" を検索してください。
 > 
 > 
 
 ## <a name="service-bus-and-event-hubs-resource-manager-templates"></a>Service Bus と Event Hubs Resource Manager テンプレート
-これらの Service Bus と Event Hubs Azure Resource Manager テンプレートは、ダウンロードしてデプロイすることができます。 次のリンクをクリックすると、それぞれの詳細情報と、GitHub のテンプレートを参照できます。 
+これらの Service Bus Azure Resource Manager テンプレートは、ダウンロードしてデプロイすることができます。 次のリンクをクリックすると、それぞれの詳細情報と、GitHub のテンプレートを参照できます。
 
 * [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
 * [キューを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-queue.md)
 * [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
 * [キューと承認規則を含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-auth-rule.md)
-* [イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を作成する](../event-hubs/event-hubs-resource-manager-namespace-event-hub.md)
+* [トピック、サブスクリプション、ルールを含んだ Service Bus の名前空間を作成する](service-bus-resource-manager-namespace-topic-with-rule.md)
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 次の手順では、PowerShell を使用して、Azure Resource Manager テンプレートをデプロイします。**標準**レベルの Service Bus 名前空間と、名前空間内にキューが作成されます。 この例は、[キューを使用した Service Bus 名前空間の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue)テンプレートに基づいています。 ワークフローの概要は次のとおりです。
@@ -46,7 +50,7 @@ Azure Resource Manager テンプレートを使用すると、ソリューショ
 6. 必要に応じて、デプロイ モードを設定します。
 7. テンプレートをデプロイします。
 
-Azure Resource Manager テンプレートのデプロイの詳細については、[「Azure リソース マネージャーのテンプレートを使用したリソースのデプロイ」][]を参照してください。
+Azure Resource Manager テンプレートのデプロイの詳細については、[Azure リソース マネージャーのテンプレートを使用したリソースのデプロイ][Azure リソース マネージャーのテンプレートを使用したリソースのデプロイ]に関する記事をご覧ください。
 
 ### <a name="install-powershell"></a>PowerShell をインストールする
 Azure PowerShell をインストールするには、[「Azure PowerShell のインストールおよび構成方法」](../powershell-install-configure.md)の手順に従います。
@@ -120,8 +124,8 @@ GitHub から [201-servicebus-create-queue](https://github.com/Azure/azure-quick
 }
 ```
 
-### <a name="create-a-parameters-file-(optional)"></a>パラメーター ファイルを作成する (省略可能)
-省略可能なパラメーター ファイルを使用するには、[201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) ファイルをコピーします。 `serviceBusNamespaceName` の値を、このデプロイで作成する Service Bus 名前空間の名前で置き換えます。また、`serviceBusQueueName` の値を、作成するキューの名前で置き換えます。 
+### <a name="create-a-parameters-file-optional"></a>パラメーター ファイルを作成する (省略可能)
+省略可能なパラメーター ファイルを使用するには、[201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) ファイルをコピーします。 `serviceBusNamespaceName` の値を、このデプロイで作成する Service Bus 名前空間の名前で置き換えます。また、`serviceBusQueueName` の値を、作成するキューの名前で置き換えます。
 
 ```
 {
@@ -141,7 +145,7 @@ GitHub から [201-servicebus-create-queue](https://github.com/Azure/azure-quick
 }
 ```
 
-詳細については、[「パラメーター ファイル」](../resource-group-template-deploy.md#parameter-file) を参照してください。
+詳細については、[「パラメーター ファイル」](../resource-group-template-deploy.md#parameter-precedence) を参照してください。
 
 ### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Azure にログインして Azure サブスクリプションを設定する
 PowerShell プロンプトから、次のコマンドを実行します。
@@ -210,7 +214,7 @@ New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyD
 [完全](../resource-group-template-deploy.md#incremental-and-complete-deployments)デプロイを実行するには、**Mode** パラメーターを **Complete** に設定します。
 
 ```
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
+New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ### <a name="verify-the-deployment"></a>デプロイを検証する
@@ -239,11 +243,12 @@ Azure Resource Manager テンプレートをデプロイする基本のワーク
 * [Azure リソース マネージャーのテンプレートを使用したリソースのデプロイ][Azure リソース マネージャーのテンプレートを使用したリソースのデプロイ]
 * [テンプレートの作成](../resource-group-authoring-templates.md)
 
-[Azure リソース マネージャーの概要]: ../resource-group-overview.md
+[Azure リソース マネージャーの概要]: ../azure-resource-manager/resource-group-overview.md
 [Azure リソース マネージャーのテンプレートを使用したリソースのデプロイ]: ../resource-group-template-deploy.md
 [Azure クイックスタート テンプレート ギャラリー]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: node.js を使用する Azure AD へのサインインおよびサインアウトの概要
-description: サインインのために Azure AD と連携する node.js Express MVC Web アプリを構築する方法
+title: "node.js を使用する Azure AD へのサインインおよびサインアウトの概要"
+description: "サインインのために Azure AD と連携する node.js Express MVC Web アプリを構築する方法"
 services: active-directory
 documentationcenter: nodejs
-author: brandwe
+author: xerners
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: 81deecec-dbe2-4e75-8bc0-cf3788645f99
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: brandwe
+translationtype: Human Translation
+ms.sourcegitcommit: 1865043ca9c9019b9813f11eb4a55f7f16d79287
+ms.openlocfilehash: fc31f2c157cb91b95820e18aa186818d69977e24
+
 
 ---
-# <a name="nodejs-web-app-sign-in-&-sign-out-with-azure-ad"></a>Azure AD を使用した NodeJS Web アプリのサインインおよびサインアウト
+# <a name="nodejs-web-app-sign-in--sign-out-with-azure-ad"></a>Azure AD を使用した NodeJS Web アプリのサインインおよびサインアウト
 ここでは、Passport を使用して次の操作を行います。
 
 * Azure AD を使用するアプリにユーザーをサインインします。
@@ -38,18 +42,17 @@ ms.author: brandwe
 
 完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
-## <a name="1.-register-an-app"></a>1.アプリを登録します
-* Microsoft Azure の管理ポータルにサインインします。
-* 左側のナビゲーションで **[Active Directory]**をクリックします。
+## <a name="1-register-an-app"></a>1.アプリを登録します
+* [Azure Portal](https://portal.azure.com) にサインインします。
 * アプリケーションの登録先となるテナントを選択します。
-* **[アプリケーション]** タブをクリックし、下部のドロアーで [追加] をクリックします。
+* 左側のナビゲーションで **[Azure Active Directory]** をクリックします。
+* **[アプリの登録]** タブ、**[追加]** の順にクリックします。
 * 画面の指示に従い、新しい **Web アプリケーションまたは WebAPI**を作成します。
   * アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
   * **[サインオン URL]** は、アプリのベース URL です。  スケルトンの既定値は `http://localhost:3000/auth/openid/return` です。
-  * **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。  形式は、`https://<tenant-domain>/<app-name>` (たとえば、`https://contoso.onmicrosoft.com/my-first-aad-app`) です。
-* 登録が完了すると、AAD により、アプリケーションに一意のクライアント ID が割り当てられます。  この値は次のセクションで必要になるので、[構成] タブからコピーします。
+* 登録が完了すると、AAD により、アプリに一意のアプリケーション ID が割り当てられます。  この値は次のセクションで必要になるので、アプリケーション ページからコピーします。
 
-## <a name="2.-add-pre-requisities-to-your-directory"></a>手順 2.ディレクトリに前提条件を追加する
+## <a name="2-add-pre-requisities-to-your-directory"></a>2.ディレクトリに前提条件を追加する
 コマンド ラインから、ディレクトリをルート フォルダーに移動し (まだルート フォルダーでない場合)、次のコマンドを実行します。
 
 * `npm install express`
@@ -65,11 +68,11 @@ ms.author: brandwe
 
 これにより、passport-azure-ad が依存するライブラリがインストールされます。
 
-## <a name="3.-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3.passport-node-js 戦略を使用するようにアプリを設定する
+## <a name="3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3.passport-node-js 戦略を使用するようにアプリを設定する
 ここでは、OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを構成します。  Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
 * 最初に、プロジェクトのルートにある `config.js` ファイルを開いて、`exports.creds` セクションでアプリの構成値を入力します。
-  
+
   * `clientID:` は、登録ポータルでアプリに割り当てられた **アプリケーション ID** です。
   * `returnURL` は、ポータルで入力した **リダイレクト URI** です。
   * `clientSecret` は、ポータルで生成したシークレットです。
@@ -88,8 +91,8 @@ var log = bunyan.createLogger({
 * その後、今参照した戦略を使用してログイン要求を処理します。
 
 ```JavaScript
-// Use the OIDCStrategy within Passport. (Section 2) 
-// 
+// Use the OIDCStrategy within Passport. (Section 2)
+//
 //   Strategies in passport require a `validate` function, which accept
 //   credentials (in this case, an OpenID identifier), and invoke a callback
 //   with a user object.
@@ -129,8 +132,8 @@ Passport は、すべての戦略ライターが従うすべての戦略 (Twitte
 
 > [!IMPORTANT]
 > 上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。 これは、自動登録と呼ばれます。 運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。 これは、Facebook への登録は許可するが、その後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。 これがサンプル アプリケーションでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。 これはテスト サーバーなので、単純にユーザーをメモリ内データベースに追加します。
-> 
-> 
+>
+>
 
 * 次に、Passport で必要な、ログオンしているユーザーの追跡を可能にするメソッドを追加します。 これには、ユーザーの情報のシリアル化と逆シリアル化が含まれます。
 
@@ -238,7 +241,7 @@ app.post('/auth/openid/return',
   });
   ```
 
-## <a name="4.-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4.Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
+## <a name="4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4.Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
 OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと通信するように、アプリが適切に構成されました。  `passport-azure-ad` が行います。  残っているのは、サインインとサインアウトを行う方法をユーザーに提示することと、ログインしているユーザーに関する追加情報を収集することです。
 
 * まず、既定のメソッド、login メソッド、account メソッド、logout メソッドを `app.js` ファイルに追加します。
@@ -270,7 +273,7 @@ app.get('/logout', function(req, res){
 ```
 
 * これらについて詳しく説明しましょう。
-  
+
   * `/` ルートは、index.ejs ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
   * `/account` ルートは、"***ユーザーが認証されていることを確認***" した後 (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
   * `/login` ルートは、`passport-azuread` から azuread-openidconnect authenticator を呼び出し、これが成功しなかった場合は、ユーザーを /login にリダイレクトして戻します。
@@ -300,7 +303,7 @@ app.listen(3000);
 ```
 
 
-## <a name="5.-create-the-views-and-routes-in-express-to-display-our-user-in-the-website"></a>5.Web サイトにユーザーを表示する express のビューとルートを作成する
+## <a name="5-create-the-views-and-routes-in-express-to-display-our-user-in-the-website"></a>5.Web サイトにユーザーを表示する express のビューとルートを作成する
 `app.js` が完成しました。 次に実行する必要があるのは、取得した情報をユーザーに表示するルートとビューを追加し、作成した `/logout` ルートと `/login` ルートを処理することだけです。
 
 * ルート ディレクトリの下に `/routes/index.js` ルートを作成します。
@@ -373,13 +376,13 @@ exports.list = function(req, res){
     <body>
         <% if (!user) { %>
             <p>
-            <a href="/">Home</a> | 
+            <a href="/">Home</a> |
             <a href="/login">Log In</a>
             </p>
         <% } else { %>
             <p>
-            <a href="/">Home</a> | 
-            <a href="/account">Account</a> | 
+            <a href="/">Home</a> |
+            <a href="/account">Account</a> |
             <a href="/logout">Log Out</a>
             </p>
         <% } %>
@@ -388,7 +391,7 @@ exports.list = function(req, res){
 </html>
 ```
 
-最後に、アプリを構築して実行します。 
+最後に、アプリを構築して実行します。
 
 `node app.js` を実行し、`http://localhost:3000` に移動します。
 
@@ -404,6 +407,8 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!--HONumber=Oct16_HO4-->
+
+
+<!--HONumber=Nov16_HO5-->
 
 
