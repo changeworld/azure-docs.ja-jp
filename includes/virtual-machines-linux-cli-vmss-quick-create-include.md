@@ -4,12 +4,20 @@
 azure config mode arm
 ```
 
-次に、`azure vmss quick-create` コマンドを使ってスケール セットを作成します。 次の例では、`myResourceGroup` という名前のリソース グループに、5 個の VM を含む `myVMSS` という名前のスケール セットを作成します。
+次に、`azure vmss quick-create` コマンドを使ってスケール セットを作成します。 次の例では、`myResourceGroup` という名前のリソース グループに、5 個の VM を含む `myVMSS` という名前の Linux スケール セットを作成します。
 
 ```azurecli
 azure vmss quick-create -n myVMSS -g myResourceGroup -l westus \
     -u ops -p P@ssw0rd! \
-    -C 5 -Q Canonical:UbuntuServer:14.04.4-LTS:latest
+    -C 5 -Q Canonical:UbuntuServer:16.04.0-LTS:latest
+```
+
+次の例では、同じ構成で Windows スケール セットを作成します。
+
+```azurecli
+azure vmss quick-create -n myVMSS -g myResourceGroup -l westus \
+    -u ops -p P@ssw0rd! \
+    -C 5 -Q MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest
 ```
 
 場所またはイメージの URN をカスタマイズする場合は、`azure location list` コマンドと `azure vm image {list-publishers|list-offers|list-skus|list|show}` コマンドを確認してください。
@@ -56,6 +64,6 @@ FQDN=${split_line[3]}
 ssh -p 50000 negat@$FQDN
 ```
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 
