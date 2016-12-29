@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure Active Directory とは](active-directory-whatis.md)
 ## [エディションの選択](active-directory-editions.md)
 ## [Azure の ID 管理について](fundamentals-identity.md)
@@ -65,8 +65,7 @@
 
 
 #### [イベントを監査する](active-directory-reporting-audit-events.md)
-#### [リテンション期間](active-directory-reporting-retention.md)
-#### [バックフィル](active-directory-reporting-backfill.md)
+#### [保持](active-directory-reporting-retention.md)
 #### [待機時間](active-directory-reporting-latencies.md)
 #### [Notifications](active-directory-reporting-notifications.md)
 ### レポートについて
@@ -203,6 +202,7 @@
 #### [グループ ポリシーの設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 #### [Windows 10 の設定](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 #### [FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
+#### [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 ### [Azure AD B2B コラボレーションを使用してパートナーを統合する](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [概要](active-directory-b2b-collaboration-overview.md)
 #### [動作のしくみ](active-directory-b2b-how-it-works.md)
@@ -297,6 +297,6 @@
 ## [Azure フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

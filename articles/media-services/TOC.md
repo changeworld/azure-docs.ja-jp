@@ -44,7 +44,7 @@
 ##### [Media Encoder Standard スキーマ](media-services-mes-schema.md)
 ##### [入力メタデータ](media-services-input-metadata-schema.md)
 ##### [出力メタデータ](media-services-output-metadata-schema.md)
-#### MES のプリセット 
+#### [MES のプリセット](media-services-mes-presets-overview.md) 
 ##### [H264 Multiple Bitrate 1080p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md)
 ##### [H264 Multiple Bitrate 1080p](media-services-mes-preset-H264-Multiple-Bitrate-1080p.md)
 ##### [H264 Multiple Bitrate 16x9 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md)
@@ -135,7 +135,7 @@
 ### [Face Detector による処理](media-services-face-and-emotion-detection.md)
 ### [Motion Detector による処理](media-services-motion-detection.md)
 ### [Face Redactor による処理](media-services-face-redaction.md)
-#### [顔編集のチュートリアル](media-services-redactor-walkthrough.md)
+#### [Face Redactor のチュートリアル](media-services-redactor-walkthrough.md)
 ### [Video Thumbnails による処理](media-services-video-summarization.md)
 ### [OCR による処理](media-services-video-optical-character-recognition.md)
 
@@ -207,6 +207,6 @@
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

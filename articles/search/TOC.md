@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure Search とは](search-what-is-azure-search.md)
 # 作業の開始
 ## [SKU を選択する](search-sku-tier.md)
@@ -69,7 +69,7 @@
 # リソース
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=search)
 ## 検索 API の使用
-##[API のバージョン](search-api-versions.md)
+## [API のバージョン](search-api-versions.md)
 ## [サービス REST (プレビュー)](search-api-2015-02-28-preview.md)
 ## [料金](https://azure.microsoft.com/pricing/details/search/)
 ## デモ サイト
@@ -87,6 +87,6 @@
 ### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 
