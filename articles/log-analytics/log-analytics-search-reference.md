@@ -1,19 +1,23 @@
 ---
-title: Log Analytics 検索リファレンス | Microsoft Docs
-description: Log Analytics 検索リファレンスでは、検索言語について説明し、データを検索するときに使用できる一般的なクエリ構文のオプションと、検索を絞り込むために使用できるフィルター式の情報を提供します。
+title: "Log Analytics 検索リファレンス | Microsoft Docs"
+description: "Log Analytics 検索リファレンスでは、検索言語について説明し、データを検索するときに使用できる一般的なクエリ構文のオプションと、検索を絞り込むために使用できるフィルター式の情報を提供します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 402615a2-bed0-4831-ba69-53be49059718
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 10/25/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: d3abf62e590b5e9466c69f971f4cc6490a7e0d6e
+ms.openlocfilehash: fbbf8c75fa78bf94f0ad84401013d37327329028
+
 
 ---
 # <a name="log-analytics-search-reference"></a>Log Analytics 検索リファレンス
@@ -94,7 +98,7 @@ Type:Perf 0.5
 HTTP 500
 ```
 
-### <a name="date/time"></a>日付/時刻
+### <a name="datetime"></a>日付/時刻
 システム内のすべてのデータは *TimeGenerated* プロパティを持っています。これはレコードの元の日付と時刻を表します。 データの種類によっては、さらに多くの日付/時刻フィールドを持つことができます (たとえば *LastModified*)。
 
 Log Analytics のタイムライン グラフ/タイム セレクターは、 *TimeGenerated* フィールドに基づき (実行されている現在のクエリに従って)、時間の経過による結果の分布を表示します。 日付/時刻フィールドには、クエリを特定の期間に制限するためにクエリ内で使用できる文字列の形式があります。 相対的な期間 (たとえば "3 日前と 2 時間前の間") を参照する構文を使用することもできます。
@@ -140,7 +144,7 @@ TimeGenerated:2013-10-01T12:20
 
 これらの例は、相対的な日付と絶対的な日付を使用するための構成要素です。 次の 3 つのサブセクションでは、高度なフィルター内でのそれらの使用方法について、相対的な日付範囲を使用する例を用いて説明します。
 
-### <a name="date/time-math"></a>日付/時刻の計算
+### <a name="datetime-math"></a>日付/時刻の計算
 日付/時刻算術演算子を使用して、単純な日付/時刻計算による日付/時刻値をオフセットするか丸めます。
 
 構文:
@@ -301,7 +305,7 @@ Type=Event Computer=*SQL*
 
 結果を特定のフィールドを基準に並べ替えます。 asc/desc プレフィックスは省略可能です。 これらを省略した場合、並べ替え順序は *asc* であると見なされます。 クエリで *Sort* コマンドが明示的に使用されない場合、既定の動作である Sort **TimeGenerated** desc によって常に最新の結果が最初に戻ります。
 
-### <a name="top/limit"></a>Top/Limit
+### <a name="toplimit"></a>Top/Limit
 構文:
 
     top number
@@ -359,7 +363,7 @@ Type=Event Computer=*SQL*
 | Measure 統計関数 | 説明 |
 | --- | --- |
 | *aggregateFunction* |集計関数の名前 (大文字と小文字は区別されません)。 次の集計関数がサポートされています: COUNT、MAX、MIN、SUM、AVG、STDDEV、COUNTDISTINCT、PERCENTILE##、または PCT## (## は 1 ～ 99 の任意の数) |
-| *aggregatedField* |集計されるフィールド。 このフィールドは COUNT 集計関数では省略可能ですが、SUM、MAX、MIN、AVG、STDDEV、PERCENTILE##、または PCT## (## は 1 ～ 99 の任意の数) では既存の数値フィールドにする必要があります。 |
+| *aggregatedField* |集計されるフィールド。 このフィールドは COUNT 集計関数では省略可能ですが、SUM、MAX、MIN、AVG、STDDEV、PERCENTILE##、または PCT## (## は 1 ～ 99 の任意の数) では既存の数値フィールドにする必要があります。 aggregatedField には、Extend がサポートされている関数のいずれかを指定することもできます。 |
 | *fieldAlias* |計算される集計値のエイリアス (省略可能)。 指定されていない場合、フィールド名は AggregatedValue になります。 |
 | *groupField* |結果セットのグループ化に使用するフィールドの名前。 |
 | *間隔* |**nnnNAME** 形式の時間間隔。nnn は正の整数です。 **NAME** は間隔名です。 サポートされている間隔名 (大文字と小文字の区別あり): MILLISECOND[S]、SECOND[S]、MINUTE[S]、HOUR[S]、DAY[S]、MONTH[S]、YEAR[S] |
@@ -528,6 +532,16 @@ Type:Perf CounterName=”% Processor Time”  | measure min(CounterValue) as MIN
 
 % プロセッサ時間を、まずコンピューター別に、次にインスタンス名別にグループ化し、1 時間ごとの最小値、平均値、75 パーセンタイル値、最大値を返します。
 
+**例 20**
+
+```
+Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | measure max(product(CounterValue,60)) as MaxDWPerMin by InstanceName Interval 1HOUR
+```
+
+*説明*
+
+コンピューターのすべてのディスクの 1 分あたりの最大ディスク書き込み回数を計算します。
+
 ### <a name="where"></a>Where
 構文:
 
@@ -573,12 +587,12 @@ Type=Event Computer IN {Type:Update Classification="Security Updates"  UpdateSta
 
 **例**
 
-    Type=Event | sort TimeGenerated DESC | Dedup EventID
+    Type=Event | Dedup EventID | sort TimeGenerated DESC
 
 上の例では、EventID ごとに 1 つのイベント (TimeGenerated で DESC を使用しているため最新のイベント) を返します。
 
 ### <a name="extend"></a>Extend
-**説明** クエリ内に実行時のフィールドを作成できます。
+**説明** クエリ内に実行時フィールドを作成できます。 集計を実行する場合は、Extend の後に measure コマンドを使用することもできます。
 
 **例 1**
 
@@ -599,8 +613,15 @@ SQL の評価に関する推奨事項の重み付けされた推奨スコアを�
 
 ```
 Type=Perf CounterName="% Processor Time" | EXTEND if(map(CounterValue,0,50,0,1),"HIGH","LOW") as UTILIZATION
-Tag Perf Counter Values less than 50% las LOW and others as HIGH
 ```
+Perf Counter 値に対して 50% 未満を LOW、それ以外を HIGH としてタグ付けします。
+
+**例 5**
+
+```
+Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Extend product(CounterValue,60) as DWPerMin| measure max(DWPerMin) by InstanceName Interval 1HOUR
+```
+コンピューターのすべてのディスクの 1 分あたりの最大ディスク書き込み回数を計算します。
 
 **サポートされている関数**
 
@@ -767,6 +788,9 @@ Tag Perf Counter Values less than 50% las LOW and others as HIGH
 * [ログ検索](log-analytics-log-searches.md) について理解を深め、ソリューションによって収集された情報の詳細を確認します。
 * ログの検索を拡張するには、 [Log Analytics でカスタム フィールド](log-analytics-custom-fields.md) を使用します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO5-->
 
 
