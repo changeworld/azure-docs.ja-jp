@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a38cbb830ea5e99e9527bc2d86a47fd53627adb3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f31188ed3216034ef8ec056023472844ec4debd6
 
 
 ---
@@ -166,6 +166,6 @@ Azure Active Directory で ID を認証するプロセスとアクション、�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

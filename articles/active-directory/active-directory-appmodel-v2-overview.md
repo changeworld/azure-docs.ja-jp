@@ -1,12 +1,12 @@
 ---
-title: v2.0 エンドポイントの概要 | Microsoft Docs
-description: Microsoft アカウントと Azure Active Directory の両方でサインインできるアプリケーション構築を紹介します。
+title: "v2.0 エンドポイントの概要 | Microsoft Docs"
+description: "Microsoft アカウントと Azure Active Directory の両方でサインインできるアプリケーション構築を紹介します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dstrockis
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: 2dee579f-fdf6-474b-bc2c-016c931eaa27
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: dastrock
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e98ec55dbe5ff0411af124b45bd7ef6177aa957e
+
 
 ---
-# <a name="sign-in-microsoft-account-&-azure-ad-users-in-a-single-app"></a>Microsoft アカウント ユーザーおよび Azure AD ユーザーによる単一アプリでのサインイン
+# <a name="sign-in-microsoft-account--azure-ad-users-in-a-single-app"></a>Microsoft アカウント ユーザーおよび Azure AD ユーザーによる単一アプリでのサインイン
 アプリケーション開発者はこれまで、Microsoft アカウントと Azure Active Directory の両方をサポートするには、2 つの異なるシステムを統合する必要がありました。  そこで、どちらのアカウントのユーザーも Azure AD システムを使ってサインインできるようにする、新しい認証 API のバージョンを導入しました。  この集中型の認証システムを **v2.0 エンドポイント**と呼びます。  v2.0 エンドポイントを使用すれば、1 回のシンプルな統合によって、個人アカウントと職場/学校のアカウントを両方持っている何百万ものユーザーにリーチできるようになります。
 
 v2.0 エンドポイントを使うアプリは、どちらの種類のアカウントを使用していても、[Microsoft Graph](https://graph.microsoft.io) や [Office 365](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) の REST API を使用できます。
@@ -32,7 +36,7 @@ v2.0 エンドポイントを使うアプリは、どちらの種類のアカウ
 <!-- TODO: Finalize this table  -->
 [!INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-v2-quickstart-table.md)]
 
-## <a name="what's-new"></a>新機能
+## <a name="whats-new"></a>新機能
 ここで説明する概念は、v2.0 エンドポイントでできることとできないことを理解するうえで役立ちます。
 
 * [v2.0 エンドポイントを使用して構築できるアプリケーションの種類](active-directory-v2-flows.md)について詳しく学習します。
@@ -48,10 +52,13 @@ v2.0 エンドポイントを使うアプリは、どちらの種類のアカウ
 * [v2.0 トークンのリファレンス](active-directory-v2-tokens.md)
 * [v2.0 ライブラリのリファレンス](active-directory-v2-libraries.md)
 * [v2.0 エンドポイントのスコープと同意](active-directory-v2-scopes.md)
-* [Microsoft アプリ登録ポータル](https://apps.dev.microsoft.com)
+* [Microsoft アプリ登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)
 * [Office 365 の REST API リファレンス](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)
 * [Microsoft Graph](https://graph.microsoft.io)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

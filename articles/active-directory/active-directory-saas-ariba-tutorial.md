@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Ariba の統合 | Microsoft Docs'
-description: Azure Active Directory と Ariba の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Ariba の統合 | Microsoft Docs"
+description: "Azure Active Directory と Ariba の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 45a8364c-55d1-4dc7-b079-9eb2a701842d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e70f34f37f3f641a4d5a0c006274d84ecd8cceb4
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-ariba"></a>チュートリアル: Azure Active Directory と Ariba の統合
+# <a name="tutorial-azure-active-directory-integration-with-ariba"></a>チュートリアル: Azure Active Directory と Ariba の統合
 このチュートリアルの目的は、Ariba と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Ariba と Azure AD の統合には、次の利点があります。
@@ -152,16 +156,16 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ariba-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ariba-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -169,7 +173,7 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ariba-tutorial/create_aaduser_07.png) 
@@ -177,7 +181,7 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ariba-tutorial/create_aaduser_08.png) 
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
     b. **[完了]** をクリックします。   
 
@@ -185,7 +189,7 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
 このセクションの目的は、Ariba で Britta Simon というユーザーを作成することです。 Ariba サポート チームと連携し、Ariba システムにユーザーを追加してください。 
 
 > [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、Ariba サポート チームにお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、Ariba のサポート チームにお問い合わせください。
 > 
 > 
 
@@ -239,6 +243,6 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO5-->
 
 

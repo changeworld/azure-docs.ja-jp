@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 09/16/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fe8b92bb347ec82ca9b8183eb375e90a790b421e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0950b6154ffd8534dc41910c6ae47078f980e48d
 
 
 ---
@@ -134,6 +134,6 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

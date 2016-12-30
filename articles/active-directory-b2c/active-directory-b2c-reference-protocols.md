@@ -69,6 +69,6 @@ Azure AD B2C で使われている各種トークンの詳細については、 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

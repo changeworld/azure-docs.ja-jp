@@ -43,6 +43,6 @@ Azure AD Domain Services 管理対象ドメインでは、次の機能を使用�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 1865043ca9c9019b9813f11eb4a55f7f16d79287
-ms.openlocfilehash: d1873c09974f4a82f779c30c65287a690f887ec4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3005e094ade639baa2d897c8722aac98a4127c85
 
 
 ---
@@ -153,6 +153,6 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO5-->
 
 

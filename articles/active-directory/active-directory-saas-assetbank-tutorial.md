@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 67a7c348acc9d0fc07641cefcca52addbc460a2e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cb9e051dcb5cb3c59f80a4e0c022654166ca747d
 
 
 ---
@@ -241,6 +241,6 @@ Asset Bank で Azure AD のシングル サインオンを構成してテスト�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 
