@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure Functions とは](functions-overview.md)
 # 作業の開始
 ## [最初の関数を作成する](functions-create-first-azure-function.md)

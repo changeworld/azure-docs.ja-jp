@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure Data Lake Store の概要](data-lake-store-overview.md)
 ## [Azure Data Lake Store と Azure Storage を比較する](data-lake-store-comparison-with-blob-storage.md)
 ## [ビッグ データの処理に Azure Data Lake Store を使用する](data-lake-store-data-scenarios.md)

@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Application Gateway とは](application-gateway-introduction.md)
 ## [Web アプリケーション ファイアウォール](application-gateway-webapplicationfirewall-overview.md)
 ## [正常性の監視](application-gateway-probe-overview.md)

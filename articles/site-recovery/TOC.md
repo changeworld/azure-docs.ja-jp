@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Site Recovery とは](site-recovery-overview.md)
 ## [Site Recovery のしくみ](site-recovery-components.md)
 ## [保護できるワークロード](site-recovery-workload.md)

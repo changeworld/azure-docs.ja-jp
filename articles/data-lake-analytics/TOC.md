@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Data Lake Analytics とは](data-lake-analytics-overview.md)
 
 # 作業開始

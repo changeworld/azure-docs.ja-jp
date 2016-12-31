@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ##[Redis Cache を使用する理由](https://azure.microsoft.com/services/cache/)
 ##[Premium レベルの機能を探索する](cache-premium-tier-intro.md)
 ## シナリオ

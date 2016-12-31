@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [仮想マシン スケール セットとは](virtual-machine-scale-sets-overview.md)
 
 # 作業の開始

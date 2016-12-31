@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure Automation とは](automation-intro.md)
 ## [Azure Automation のセキュリティ](automation-security-overview.md)
 # 作業開始

@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure Stack とは](azure-stack-poc.md)
 ## [新機能](azure-stack-whats-new.md)
 ## [主要機能および概念](azure-stack-key-features.md)

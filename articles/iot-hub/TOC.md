@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure と IoT](iot-hub-what-is-azure-iot.md)
 ## [Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)
 ## [デバイス管理の概要](iot-hub-device-management-overview.md)

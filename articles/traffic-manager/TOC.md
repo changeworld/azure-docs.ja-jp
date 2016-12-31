@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Traffic Manager について](traffic-manager-overview.md)
 ## [Traffic Manager のしくみ](traffic-manager-how-traffic-manager-works.md)
 ## [Traffic Manager エンドポイント](traffic-manager-endpoint-types.md)

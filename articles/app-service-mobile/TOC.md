@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Mobile Apps とは](app-service-mobile-value-prop.md)
 ## [App Service とは](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [動作のしくみ](../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
