@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/10/2016
-ms.author: yochay
+ms.author: yochayk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3e5c425daf83962ca0b49035784c3804e0c17b2c
+ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
+ms.openlocfilehash: d1ab1ab2132d12bf06dbe2504b7d7111ef2ae851
 
 
 ---
@@ -53,6 +53,6 @@ App Service のさまざまな機能により、開発者はコードに専念�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

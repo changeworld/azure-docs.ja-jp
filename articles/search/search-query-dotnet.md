@@ -11,11 +11,11 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 12/08/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: d638e79517053fa758d9695c297ef09f4d9a806d
+ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
+ms.openlocfilehash: e862002a5b1406196516e5ddd786790da7bd5a4d
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: d638e79517053fa758d9695c297ef09f4d9a806d
 > 
 > 
 
-この記事では、 [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)を使用してインデックスを照会する方法について説明します。
+この記事では、 [Azure Search .NET SDK](https://aka.ms/search-sdk)を使用してインデックスを照会する方法について説明します。
 
 このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)し、[インデックスにデータを読み込んで](search-what-is-data-import.md)います。
 
@@ -37,7 +37,7 @@ ms.openlocfilehash: d638e79517053fa758d9695c297ef09f4d9a806d
 ## <a name="i-identify-your-azure-search-services-query-api-key"></a>I. Azure Search サービスのクエリ API キーの識別
 Azure Search インデックスの作成は済んでいるので、.NET SDK を使用してクエリを発行する準備はほとんどできています。 まず、プロビジョニングした検索サービス用に生成されたクエリ API キーの 1 つを取得する必要があります。 .NET SDK は、サービスに対する要求ごとに、この API キーを送信します。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-1. サービスの API キーを探すには、 [Azure ポータル](https://portal.azure.com/)
+1. サービスの API キーを探すには、[Azure Portal](https://portal.azure.com/) にログインする必要があります。
 2. Azure Search サービスのブレードに移動します。
 3. "キー" アイコンをクリックします。
 
@@ -162,7 +162,6 @@ Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
 Search the entire index for the term 'motel':
 
 ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
-
 ```
 
 上記のサンプル コードでは、コンソールを使って検索結果を出力します。 同様に、独自のアプリケーションに検索結果を表示する場合もあります。 ASP.NET MVC ベースの Web アプリケーションで検索結果を表示する方法を示した例については、 [GitHub でこちらのサンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample) を参照してください。

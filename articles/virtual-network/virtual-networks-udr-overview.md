@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7ae1803a299a5fb569ea0ca8a1ce68c33df1a769
+ms.sourcegitcommit: d0b8e8ec88c39ce18ddfd6405faa7c11ab73f878
+ms.openlocfilehash: 673ce33f0f0836c3df3854b0e6368a6215ee6f5f
 
 
 ---
@@ -29,6 +29,7 @@ Azure で仮想マシン (VM) を仮想ネットワーク (VNet) に追加する
 * VNet 内でサブネットから別のサブネットに。
 * VM からインターネットに。
 * VNet から VPN Gateway を通して別の VNet に。
+* VNet ピアリングを通して VNet から別の VNet に (サービス チェイニング)。
 * VNet から VPN Gateway を通してオンプレミスのネットワークに。
 
 次の図は、VNet、2 つのサブネット、いくつかの VM、および IP トラフィックのフローを許可するシステム ルートによる、簡単な設定を示したものです。
@@ -52,7 +53,7 @@ Azure で仮想マシン (VM) を仮想ネットワーク (VNet) に追加する
 | プロパティ | Description | 制約 | 考慮事項 |
 | --- | --- | --- | --- |
 | アドレス プレフィックス |ルートの適用対象となる宛先の CIDR 表記 (例: 10.1.0.0/16)。 |パブリック インターネット、Azure Virtual Network、オンプレミス データセンターのいずれかのアドレスを表す有効な CIDR 範囲である必要があります。 |**アドレス プレフィックス**に、**次ホップ アドレス**のアドレスが含まれていないことを確認してください。このアドレスが含まれていると、パケットが発信元と次ホップとの間でループ状態となり宛先に到達しません。 |
-| 次ホップの種類 |パケットの送信先となる Azure ホップの種類。 |次のいずれかの値を指定する必要があります。 <br/> **Virtual Network**。 ローカルの仮想ネットワークを表します。 たとえば、同じ仮想ネットワークに 10.1.0.0/16 と 10.2.0.0/16 の 2 つのサブネットがある場合、ルート テーブル内の各サブネットのルートは、次ホップの値が *Virtual Network* になります。 <br/> **Virtual Network Gateway**。 Azure S2S VPN Gateway を表します。 <br/> **Internet**。 Azure インフラストラクチャによって提供される既定のインターネット ゲートウェイを表します。 <br/> **Virtual Appliance**であるルートに限られます。 Azure Virtual Network に追加した仮想アプライアンスを表します。 <br/> **なし**。 ブラック ホールを表します。 ブラック ホールに転送されたパケットはまったく転送されません。 |特定の宛先にパケットを流さないようにするには、 **None** タイプの使用を検討してください。 |
+| 次ホップの種類 |パケットの送信先となる Azure ホップの種類。 |次のいずれかの値を指定する必要があります。 <br/> **仮想ネットワーク**。 ローカルの仮想ネットワークを表します。 たとえば、同じ仮想ネットワークに 10.1.0.0/16 と 10.2.0.0/16 の 2 つのサブネットがある場合、ルート テーブル内の各サブネットのルートは、次ホップの値が *Virtual Network* になります。 <br/> **Virtual Network Gateway**。 Azure S2S VPN Gateway を表します。 <br/> **Internet**。 Azure インフラストラクチャによって提供される既定のインターネット ゲートウェイを表します。 <br/> **Virtual Appliance**であるルートに限られます。 Azure Virtual Network に追加した仮想アプライアンスを表します。 <br/> **なし**。 ブラック ホールを表します。 ブラック ホールに転送されたパケットはまったく転送されません。 |特定の宛先にパケットを流さないようにするには、 **None** タイプの使用を検討してください。 |
 | 次ホップ アドレス |次ホップ アドレスには、パケットの転送先となる IP アドレスが格納されます。 次ホップの値が使用できるのは、次ホップの種類が *Virtual Appliance*であるルートに限られます。 |ユーザー定義ルートの適用先となる Virtual Network 内の到達可能な IP アドレスを指定する必要があります。 |IP アドレスが VM を表している場合、その VM の [IP 転送](#IP-forwarding) が Azure で有効になっていることを確認してください。 |
 
 Azure PowerShell では、次のように、一部の "NextHopType" 値が異なる名前を持っています。
@@ -111,6 +112,6 @@ Azure PowerShell では、次のように、一部の "NextHopType" 値が異な
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

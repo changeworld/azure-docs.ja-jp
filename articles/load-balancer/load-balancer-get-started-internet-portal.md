@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 196f9f002a1639867c210fc0dafdb783ed1e90af
+ms.sourcegitcommit: 5ce773311b691bf28ea3e9590ab74603a1a9b641
+ms.openlocfilehash: 052a9e6a511875dcb2a79ecad89ee09b32948d06
 
 ---
 
@@ -115,6 +115,6 @@ Azure Resource Manager でのロード バランサー コンポーネントの�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

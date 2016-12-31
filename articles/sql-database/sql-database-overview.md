@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: overview
+ms.custom: single databases
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 1db24abb38ff28dd3535f527ef95a84abac5ea9c
-ms.openlocfilehash: 6f479beb6caf8a6dfccc0b13e6926bd5e47fb547
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 6d5f4640556f98f9601139c318ffc578e9df2539
 
 
 ---
@@ -27,8 +27,8 @@ ms.openlocfilehash: 6f479beb6caf8a6dfccc0b13e6926bd5e47fb547
 ## <a name="what-is-azure-sql-database"></a>Azure SQL Database とは
 Azure SQL Database 内の各データベースは、論理サーバーに関連付けられています。 データベースには以下の種類があります。
 
-- 単一のデータベースとその[独自のリソースのセット](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTU)
-- [リソースのセットを共有する](sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus)[データベースのプール](sql-database-elastic-pool.md)の一部 (eDTU)
+- スタンドアロン データベースとその[独自のリソースのセット](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTU)
+- [一連のリソースを共有する](sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus)[エラスティック プール](sql-database-elastic-pool.md)の一部 (eDTU)
 - [シャード化されたデータベースのスケール アウトされたセット](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling)の一部 (単一またはプールされたデータベースのいずれか)
 - [マルチテナント SaaS デザイン パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)に参加しているデータベースのセットの一部 (これらのデータベースは、単一またはプールされたデータベースのいずれか (またはその両方)) 
 
@@ -71,6 +71,6 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

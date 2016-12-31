@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 12/08/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a63d71de584b526972ff86ba8cb47664e66e22da
+ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
+ms.openlocfilehash: 724edc7894cabfb31f6e43a291f98ab60c0a9981
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: a63d71de584b526972ff86ba8cb47664e66e22da
 > 
 > 
 
-この記事では、 [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用して Azure Search インデックスにデータをインポートする方法について説明します。
+この記事では、 [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用して Azure Search インデックスにデータをインポートする方法について説明します。
 
 このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)してあります。 また、この記事では、「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md#CreateSearchServiceClient)」で説明されているとおりに、`SearchServiceClient` オブジェクトを作成済みであることを前提としています。
 
@@ -45,11 +45,11 @@ ms.openlocfilehash: a63d71de584b526972ff86ba8cb47664e66e22da
 Azure Search .NET SDK を使用してインデックスにデータをインポートするには、 `SearchIndexClient` クラスのインスタンスを作成する必要があります。 このインスタンスは自分で作成することもできますが、既に `SearchServiceClient` インスタンスがある場合は、`Indexes.GetClient` メソッドを呼び出すほうが簡単に済みます。 たとえば、`serviceClient` という名前の `SearchServiceClient` から "hotels" という名前のインデックスの `SearchIndexClient` を取得する方法は次のようになります。
 
 ```csharp
-SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
+ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
 > [!NOTE]
-> 一般的な検索アプリケーションでは、インデックスの管理とインデックスの設定は、検索クエリとは別のコンポーネントによって処理されます。 `Indexes.GetClient` は、別の `SearchCredentials` を指定する手間を省くため、インデックスを作成するのに便利です。 そのためには、`SearchServiceClient` を作成するときに使用した管理者キーを新しい `SearchIndexClient` に渡します。 ただし、アプリケーションのクエリを実行する部分では、管理者キーの代わりにクエリ キーを渡すことができるように、 `SearchIndexClient` を直接作成する方が適しています。 これは、 [最小権限の原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege) にも適合しており、アプリケーションのセキュリティ強化に役立ちます。 管理者キーとクエリ キーの詳細については、 [MSDN で Azure Search REST API のリファレンス](https://msdn.microsoft.com/library/azure/dn798935.aspx)を参照してください。
+> 一般的な検索アプリケーションでは、インデックスの管理とインデックスの設定は、検索クエリとは別のコンポーネントによって処理されます。 `Indexes.GetClient` は、別の `SearchCredentials` を指定する手間を省くため、インデックスを作成するのに便利です。 そのためには、`SearchServiceClient` を作成するときに使用した管理者キーを新しい `SearchIndexClient` に渡します。 ただし、アプリケーションのクエリを実行する部分では、管理者キーの代わりにクエリ キーを渡すことができるように、 `SearchIndexClient` を直接作成する方が適しています。 これは、 [最小権限の原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege) にも適合しており、アプリケーションのセキュリティ強化に役立ちます。 管理者キーとクエリ キーの詳細については、[Azure Search REST API のリファレンス](https://docs.microsoft.com/rest/api/searchservice/)を参照してください。
 > 
 > 
 
@@ -165,29 +165,43 @@ Azure Search .NET SDK が `Hotel` のようなユーザー定義クラスのイ�
 [SerializePropertyNamesAsCamelCase]
 public partial class Hotel
 {
+    [Key]
+    [IsFilterable]
     public string HotelId { get; set; }
 
+    [IsFilterable, IsSortable, IsFacetable]
     public double? BaseRate { get; set; }
 
+    [IsSearchable]
     public string Description { get; set; }
 
+    [IsSearchable]
+    [Analyzer(AnalyzerName.AsString.FrLucene)]
     [JsonProperty("description_fr")]
     public string DescriptionFr { get; set; }
 
+    [IsSearchable, IsFilterable, IsSortable]
     public string HotelName { get; set; }
 
+    [IsSearchable, IsFilterable, IsSortable, IsFacetable]
     public string Category { get; set; }
 
+    [IsSearchable, IsFilterable, IsFacetable]
     public string[] Tags { get; set; }
 
+    [IsFilterable, IsFacetable]
     public bool? ParkingIncluded { get; set; }
 
+    [IsFilterable, IsFacetable]
     public bool? SmokingAllowed { get; set; }
 
+    [IsFilterable, IsSortable, IsFacetable]
     public DateTimeOffset? LastRenovationDate { get; set; }
 
+    [IsFilterable, IsSortable, IsFacetable]
     public int? Rating { get; set; }
 
+    [IsFilterable, IsSortable]
     public GeographyPoint Location { get; set; }
 
     // ToString() method omitted for brevity...
@@ -197,20 +211,20 @@ public partial class Hotel
 最初に気付くのは、`Hotel` の各パブリック プロパティがインデックス定義のフィールドに対応していることですが、1 つ重要な違いがあります。各フィールドの名前が小文字で始まっているのに対し ("camel case")、`Hotel` の各パブリック プロパティの名前は大文字で始まっています ("Pascal case")。 これは、ターゲット スキーマをアプリケーション開発者が制御できない場合にデータ バインドを実行する .NET アプリケーションでの一般的なシナリオです。 プロパティ名を camel-case にして .NET の命名ガイドラインに違反するのではなく、プロパティ名を自動的に camel-case にマップするように `[SerializePropertyNamesAsCamelCase]` 属性で SDK に指示できます。
 
 > [!NOTE]
-> Azure Search .NET SDK は、 [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) ライブラリを使用して、カスタムのモデル オブジェクトから JSON 形式へのシリアル化や JSON 形式からの逆シリアル化を行います。 必要に応じてこのシリアル化をカスタマイズできます。 詳細については、「 [Azure Search .NET SDK バージョン 1.1 へのアップグレード](search-dotnet-sdk-migration.md#WhatsNew)」を参照してください。 一例として、上記のサンプル コードで `DescriptionFr` プロパティに `[JsonProperty]` 属性を使用できます。
+> Azure Search .NET SDK は、 [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) ライブラリを使用して、カスタムのモデル オブジェクトから JSON 形式へのシリアル化や JSON 形式からの逆シリアル化を行います。 必要に応じてこのシリアル化をカスタマイズできます。 詳細については、「[JSON.NET を使用したシリアル化のカスタマイズ](search-howto-dotnet-sdk.md#JsonDotNet)」を参照してください。 一例として、上記のサンプル コードで `DescriptionFr` プロパティに `[JsonProperty]` 属性を使用できます。
 > 
 > 
 
-`Hotel` クラスに関する 2 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`DataType.String` 型の `category` フィールドにマップします。 `bool?` と `DataType.Boolean`、`DateTimeOffset?` と `DataType.DateTimeOffset` などの間にも、同じような型のマッピングがあります。型のマッピングの具体的なルールについては、[MSDN](https://msdn.microsoft.com/library/azure/dn931291.aspx) で `Documents.Get` メソッドを参照してください。
+`Hotel` クラスに関する 2 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`DataType.String` 型の `category` フィールドにマップします。 `bool?` と `DataType.Boolean`、`DateTimeOffset?` と `DataType.DateTimeOffset` などの間にも、同じような型のマッピングがあります。型のマッピングの具体的なルールについては、[Azure Search .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)で `Documents.Get` メソッドを参照してください。
 
 独自のクラスをドキュメントとして使用するこの方法は、どちらの方向でも機能します。また、[次の記事](search-query-dotnet.md)で示すように、検索結果を取得し、SDK で自動的に任意の型に逆シリアル化することもできます。
 
 > [!NOTE]
-> Azure Search .NET SDK は、`Document` クラスを使用して動的に型指定されたドキュメントもサポートします。これは、フィールドの値に対するフィールド名のキー/値マッピングです。 この機能は、設計時にインデックス スキーマがわからない場合、または特定のモデル クラスにバインドすると不都合な場合に便利です。 ドキュメントを処理する SDK のすべてのメソッドには、`Document` クラスを使用するオーバーロード、およびジェネリック型パラメーターを使用する厳密な型指定のオーバーロードがあります。 この記事のサンプル コードでは、後者のみを使用しています。 `Document` クラスの詳細については、[MSDN のこちらの記事](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.document.aspx)を参照してください。
+> Azure Search .NET SDK は、`Document` クラスを使用して動的に型指定されたドキュメントもサポートします。これは、フィールドの値に対するフィールド名のキー/値マッピングです。 この機能は、設計時にインデックス スキーマがわからない場合、または特定のモデル クラスにバインドすると不都合な場合に便利です。 ドキュメントを処理する SDK のすべてのメソッドには、`Document` クラスを使用するオーバーロード、およびジェネリック型パラメーターを使用する厳密な型指定のオーバーロードがあります。 この記事のサンプル コードでは、後者のみを使用しています。
 > 
 > 
 
-**データ型に関する重要な注意事項**
+**null 許容のデータ型を使用する理由**
 
 Azure Search インデックスにマップする独自のモデル クラスを設計するときは、`bool` や `int` などの値型のプロパティを null 許容型として宣言することをお勧めします (たとえば、`bool` ではなく `bool?` を使用する)。 null 非許容プロパティを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が **保証する** 必要があります。 SDK または Azure Search サービスで、これを強制することはできません。
 
@@ -226,6 +240,6 @@ Azure Search インデックスにデータを読み込んだら、ドキュメ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

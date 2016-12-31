@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/24/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
+ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
+ms.openlocfilehash: 99dfabcfcfcef69a43b45994cb4c729bd7faecff
 
 
 ---
-# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multibitrate-streams-with-the-azure-portal"></a>Azure Media Services を使用してライブ ストリーミングを実行し、Azure Portal でマルチビットレートのストリームを作成する方法
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Azure Media Services を使用してライブ ストリーミングを実行し、Azure Portal でマルチビットレートのストリームを作成する方法
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -82,7 +82,7 @@ ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
 * シングル ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
 
 ## <a name="configure-streaming-endpoints"></a>ストリーミング エンドポイントの構成
-Media Services には動的パッケージ化機能があり、マルチビットレート MP4 でエンコードされたコンテンツを、MPEG DASH、HLS、スムーズ ストリーミング、HDS のストリーミング形式でそのまま配信することができます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
+Media Services にはダイナミック パッケージ機能があり、マルチビットレート MP4 でエンコードされたコンテンツを、MPEG DASH、HLS、Smooth Streaming のストリーミング形式でそのまま配信することができます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
 動的パッケージ化機能を活用するには、コンテンツの配信元となるストリーミング エンドポイントのストリーミング ユニットを 1 つ以上取得する必要があります。  
 
@@ -229,6 +229,6 @@ Media Services のラーニング パスを確認します。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 
