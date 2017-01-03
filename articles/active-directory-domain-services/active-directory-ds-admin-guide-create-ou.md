@@ -75,6 +75,6 @@ Azure AD ドメイン サービスの管理対象ドメインは、Active Direct
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/07/2016
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2e78382b4cbfe7623eec1b2cd32a9eaea61e4709
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c70e80c413d0637f956c43686df29b8073daaa3b
 
 
 ---
@@ -86,6 +86,6 @@ Azure AD ドメイン サービスを使用することで、次の恩恵を享�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

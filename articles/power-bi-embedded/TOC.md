@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Power BI Embedded とは](power-bi-embedded-what-is-power-bi-embedded.md)
 ## [Power BI Embedded の新機能](power-bi-embedded-whats-new.md)
 

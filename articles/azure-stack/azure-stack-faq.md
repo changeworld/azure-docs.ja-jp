@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 12/16/2016
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5a8c2544634c484347942e8baa645b0acc9573ad
+ms.sourcegitcommit: ce8036b3daf1dc07922cc934b5f269eb0b67b2d3
+ms.openlocfilehash: 789717906481e80c815536ff42cec8bf2fa875a9
 
 
 ---
@@ -46,10 +46,10 @@ if ($pools -ne $null) {
 ```
 
 ### <a name="can-i-use-all-ssd-disks-for-the-storage-pool-in-the-poc-installation"></a>Can I use all SSD disks for the storage pool in the POC installation?
-This configuration is not supported in this release.  For more information, see the [requirements guide](azure-stack-deploy.md) for more information.
+For more information on storage configurations, see the [requirements guide](azure-stack-deploy.md).
 
 ### <a name="can-i-use-nvme-data-disks-for-the-microsoft-azure-stack-poc"></a>Can I use NVMe data disks for the Microsoft Azure Stack POC?
-While Storage Spaces Direct supports NVMe disks, Azure Stack only supports a subset of the possible drive types and combinations possible for Storage Spaces Direct. 
+While Storage Spaces Direct supports NVMe disks, Azure Stack only supports a subset of the possible drive types and combinations possible for Storage Spaces Direct.  See the [requirements guide](azure-stack-deploy.md) for more information. 
 
 ### <a name="how-can-i-reinstall-azure-stack"></a>How can I reinstall Azure Stack?
 You can follow the steps in the [redeployment guide](azure-stack-redeploy.md).  
@@ -72,6 +72,6 @@ Azure Stack does not support dynamic disks.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

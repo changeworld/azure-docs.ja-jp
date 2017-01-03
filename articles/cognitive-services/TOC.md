@@ -1,5 +1,5 @@
 
-# Overview
+# 概要
 ## [Cognitive Services とは](https://azure.microsoft.com/services/cognitive-services/)
 # 作業の開始
 ## [Text Analytics クイック スタート](cognitive-services-text-analytics-quick-start.md)

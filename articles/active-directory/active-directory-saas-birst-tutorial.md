@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Birst Agile Business Analytics の統合 | Microsoft Docs'
-description: Azure Active Directory と Birst Agile Business Analytics の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Birst Agile Business Analytics の統合 | Microsoft Docs"
+description: "Azure Active Directory と Birst Agile Business Analytics の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 677183b1-5348-4302-88cc-5c8ab63a3c6c
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 23a30a9d1630bd2cb0a8009751bd41b44675403f
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-birst-agile-business-analytics"></a>チュートリアル: Azure Active Directory と Birst Agile Business Analytics の統合
+# <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>チュートリアル: Azure Active Directory と Birst Agile Business Analytics の統合
 このチュートリアルの目的は、Birst Agile Business Analytics と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Birst Agile Business Analytics と Azure AD の統合には、次の利点があります。
@@ -118,7 +122,7 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. **[次へ]** をクリックします。
+    b. **[次へ]**をクリックします。
 2. お使いのアプリケーション用に構成された SSO を取得するには、ダウンロードした証明書ファイルを電子メールに添付して、Birst Agile Business Analytics サポート チーム ([info@birst.com](emailTo:info@birst.com)) に問い合わせます。 SAML SSO URL、サインアウト URL、発行元 URL もお知らせください。サポート チームが SSO 統合で設定します。
 
 > [!NOTE]
@@ -156,16 +160,16 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-birst-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-birst-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -173,7 +177,7 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-birst-tutorial/create_aaduser_07.png) 
@@ -181,7 +185,7 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-birst-tutorial/create_aaduser_08.png) 
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
     b. **[完了]** をクリックします。   
 
@@ -189,7 +193,7 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 このセクションの目的は、Birst Agile Business Analytics で Britta Simon というユーザーを作成することです。 Birst Agile Business Analytics サポート チームと連携し、Birst アカウントにユーザーを追加してください。 
 
 > [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、Birst Agile Business Analytics サポート チームにお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、Birst Agile Business Analytics のサポート チームにお問い合わせください。
 > 
 > 
 
@@ -243,6 +247,6 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO5-->
 
 

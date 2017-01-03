@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ##[Azure Analysis Services とは](analysis-services-overview.md)
 # 作業開始
 ##[サーバーの作成](analysis-services-create-server.md)

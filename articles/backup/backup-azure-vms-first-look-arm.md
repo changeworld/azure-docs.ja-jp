@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 11/10/2016
 ms.author: markgal; jimpark
 translationtype: Human Translation
-ms.sourcegitcommit: 85b291e3916d1274fefc71bc0c1f12cac2920bb4
-ms.openlocfilehash: 77b4f6e5ee18cb3772487820bc72d7794f82162f
+ms.sourcegitcommit: d18cd2c117ced64e407e87bcc96da38b0351a341
+ms.openlocfilehash: 0b3409074e0b4929fdf1f5a6b915e3814facedf6
 
 
 ---
@@ -49,26 +49,27 @@ Premium Storage VM の保護の詳細については、「 [Premium Storage VM �
 
 ## <a name="configure-backup-from-vm-management-blade"></a>VM 管理ブレードからのバックアップの構成
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. ハブ メニューの **[その他のサービス]** をクリックし、リソースの一覧で「**Virtual machines**」と入力します。  仮想マシンの一覧が表示されます。 仮想マシンの一覧で、バックアップする仮想マシンを選択します。 これにより、仮想マシン管理ブレードが開きます。 
+2. ハブ メニューの **[その他のサービス]** をクリックし、リソースの一覧で「**Virtual machines**」と入力します。  仮想マシンの一覧が表示されます。 仮想マシンの一覧で、バックアップする仮想マシンを選択します。 これにより、仮想マシン管理ブレードが開きます。
  ![VM 管理ブレード](./media/backup-azure-vms-first-look-arm/vm-management-blade.png)
- 
+
 3. VM 管理ブレードで、左側にある [設定] の [バックアップ] オプションをクリックします。
 ![VM 管理ブレードの [バックアップ] オプション](./media/backup-azure-vms-first-look-arm/backup-option-vm-management-blade.png)
 
-4. これにより、[バックアップの有効化] ブレードが開きます。 このブレードでは、2 つの入力が必要です。1 つは、Recovery Services コンテナー (VM のバックアップを格納するための Azure Backup リソース) です。もう 1 つは、バックアップ ポリシーです (バックアップ ポリシーでは、バックアップのスケジュールと、バックアップ コピーのリテンション期間を指定します)。 このブレードには、既定のオプションがあります。 バックアップの要件に従って、カスタマイズできます。 
-![バックアップの有効化ウィザード](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
+4. これにより、[バックアップの有効化] ブレードが開きます。 このブレードでは、2 つの入力が必要です。1 つは、Recovery Services コンテナー (VM のバックアップを格納するための Azure Backup リソース) です。もう 1 つは、バックアップ ポリシーです (バックアップ ポリシーでは、バックアップのスケジュールと、バックアップ コピーのリテンション期間を指定します)。 このブレードには、既定のオプションがあります。 バックアップの要件に従って、カスタマイズできます。
 
-5. Recovery Services コンテナーについては、既存のコンテナーを選択するか、新しいコンテナーを作成することができます。 新しいコンテナーを作成すると、仮想マシンと同じリソース グループと場所に作成されます。 異なる値で Recovery Services コンテナーを作成する場合は、手順 3. で [バックアップ] オプションをクリックする前に [Recovery Services コンテナーを作成](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm)し、このブレードでそのコンテナーを選択します。 
+  ![バックアップの有効化ウィザード](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
+
+5. Recovery Services コンテナーについては、既存のコンテナーを選択するか、新しいコンテナーを作成することができます。 新しいコンテナーを作成すると、仮想マシンと同じリソース グループと場所に作成されます。 異なる値で Recovery Services コンテナーを作成する場合は、手順 3. で [バックアップ] オプションをクリックする前に [Recovery Services コンテナーを作成](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm)し、このブレードでそのコンテナーを選択します。
 
 6. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選択し、 **[OK]**をクリックします。
     ![バックアップ ポリシーの選択](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
 
     既定のポリシーの詳細が一覧表示されます。 ポリシーを作成する場合は、ドロップダウン メニューの **[新規作成]** を選択します。 このドロップダウン メニューでは、スナップショットの作成時刻を切り替えることもできます。 バックアップ ポリシーを定義する手順については、「 [バックアップ ポリシーの定義](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)」を参照してください。 **[OK]** をクリックすると、バックアップ ポリシーが仮想マシンに関連付けられます。
-    
-7. [バックアップの有効化] をクリックして、仮想マシンのバックアップを構成します。 これにより、デプロイが開始されます。 
+
+7. [バックアップの有効化] をクリックして、仮想マシンのバックアップを構成します。 これにより、デプロイが開始されます。
 ![[バックアップの有効化] ボタン](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-button.png)
 
-8. 通知によって構成の進行状況を追跡できます。 
+8. 通知によって構成の進行状況を追跡できます。
 ![バックアップの有効化の通知](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-notification.png)
 
 9. バックアップの構成のデプロイが完了した後、VM 管理ブレードの [バックアップ] オプションをクリックすると、バックアップ対象の VM に対応するバックアップ項目ブレードが開きます。
@@ -245,6 +246,6 @@ Azure VM のバックアップは、"保護されたインスタンス" モデ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

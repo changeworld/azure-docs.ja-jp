@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [エディション](biztalk-editions-feature-chart.md)
 ## [ハイブリッド接続について](integration-hybrid-connection-overview.md)
 

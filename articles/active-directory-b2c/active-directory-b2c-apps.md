@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/22/2016
+ms.date: 12/06/2016
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: a977cb509fb64d7c986e2e0f7e2b5e4e3e45dec0
-ms.openlocfilehash: a7c95f9219920932d56487c0e9b96499cc963af0
+ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
+ms.openlocfilehash: 7d582960e615962a3952dd2f58c74ed91e5c450d
 
 
 ---
@@ -122,9 +122,6 @@ Azure AD B2C を使用して Web API をセキュリティ保護する方法の�
 ## <a name="current-limitations"></a>現時点での制限事項
 Azure AD B2C では、現時点で以下の種類のアプリはサポートしていませんが、今後サポート対象に含まれる予定です。 Azure AD B2C に関するその他の制限および制約事項については、 [制限事項と制約事項](active-directory-b2c-limitations.md)に関するページを参照してください。
 
-### <a name="single-page-apps-javascript"></a>シングル ページ アプリ (JavaScript)
-最新アプリの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあります。 多くの場合、AngularJS、Ember.js、Durandal などのフレームワークを使用します。 一般に利用可能な Azure AD サービスは、OAuth 2.0 の暗黙的なフローを使用して、これらのアプリをサポートします。 ただし、このフローは Azure AD B2C ではまだ使用できません。
-
 ### <a name="daemonsserver-side-apps"></a>デーモン/サーバー側アプリ
 長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリは、(ユーザーの委任 ID ではなく) アプリの ID と OAuth 2.0 のクライアント資格情報フローを使用して、認証を行い、トークンを取得することができます。
 
@@ -137,6 +134,6 @@ Azure AD B2C では、現時点で以下の種類のアプリはサポートし�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

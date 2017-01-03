@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8ed4bc4c02c16c6a130c7b80c79664be11c5f0ed
+ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
+ms.openlocfilehash: f3154968710384e3f6186b277c4cae33b25c77d2
 
 
 ---
@@ -51,6 +51,6 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Amazon 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

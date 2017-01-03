@@ -16,8 +16,8 @@ ms.workload: identity
 ms.date: 05/09/2016
 ms.author: viviali
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ed32c23b8c69664dd75eae9c831341c93e57ebb3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f972fa0f8322ee33e1d198738f35d800564b4ddf
 
 
 ---
@@ -84,6 +84,6 @@ Azure AD B2B コラボレーションに関する他の記事をご覧くださ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

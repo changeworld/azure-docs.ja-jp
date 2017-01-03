@@ -1,16 +1,22 @@
- (バックアップ コンテナー<properties
-   pageTitle="Azure Backup に関する制限の表p limits table"
-   description="Azure Backup に関するシステムの制限について説明します。" Azure Backup."
-   services="backup"
-   documentationCenter="NA"
-   authors="Jim-Parker"
-   manager="jwhit"
-   editor="" />
-
 ---
-{}
+title: "Azure Backup に関する制限の表"
+description: "Azure Backup に関するシステムの制限について説明します。"
+services: backup
+documentationcenter: NA
+author: Jim-Parker
+manager: jwhit
+editor: 
+ms.service: backup
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: TBD
+ms.date: 10/05/2015
+ms.author: trinadhk
+translationtype: Human Translation
+ms.sourcegitcommit: 4b234af8249a64e8d56e9f4c41815749f154af3e
+ms.openlocfilehash: e7147f7712fd22fc07d7af551a12a07808bca9b9
 
-ms.service: backup ms.devlang: NA ms.topic: article ms.tgt_pltfrm: NA ms.workload: TBD ms.date: 10/05/2015 ms.author: trinadhk ;"jimpark";: '' "\"aashishr\"": ''
 
 ---
 次の制限は、Azure Backup に適用されます。
@@ -27,6 +33,7 @@ ms.service: backup ms.devlang: NA ms.topic: article ms.tgt_pltfrm: NA ms.workloa
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO3-->
 
 

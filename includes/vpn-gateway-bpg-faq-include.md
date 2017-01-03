@@ -40,14 +40,14 @@ Azure VPN ゲートウェイでは、オンプレミスの BGP デバイスに�
 ### <a name="does-azure-vpn-gateway-support-bgp-transit-routing"></a>Azure VPN ゲートウェイでは、BGP トランジット ルーティングをサポートしていますか。
 はい。BGP トランジット ルーティングはサポートされています。ただし、Azure VPN Gateway は既定のルートを他の BGP ピアにアドバタイズ**しません**。 複数の Azure VPN ゲートウェイでトランジット ルーティングを有効にするには、中間にあるすべての VNet 接続で BGP を有効にする必要があります。
 
-### <a name="can-i-have-more-than-one-tunnels-between-azure-vpn-gateway-and-my-on-premises-network"></a>Azure VPN ゲートウェイとオンプレミス ネットワークの間で複数のトンネルを確立することはできますか。
-はい、Azure VPN ゲートウェイとオンプレミス ネットワークの間に複数の S2S VPN トンネルを確立することができます。 これらのトンネルはすべて Azure VPN ゲートウェイのトンネルの合計数にカウントされる点に注意してください。 たとえば、Azure VPN ゲートウェイとオンプレミス ネットワークのいずれかの間に 2 つの冗長トンネルがある場合は、Azure VPN ゲートウェイの合計クォータ (Standard の場合は 10、HighPerformance の場合は 30) から 2 つのトンネルが消費されることになります
+### <a name="can-i-have-more-than-one-tunnel-between-azure-vpn-gateway-and-my-on-premises-network"></a>Azure VPN ゲートウェイとオンプレミス ネットワークの間で複数のトンネルを確立することはできますか。
+はい、Azure VPN ゲートウェイとオンプレミス ネットワークの間に複数の S2S VPN トンネルを確立することができます。 これらのトンネルはすべて Azure VPN ゲートウェイのトンネルの合計数にカウントされる点に注意してください。 たとえば、Azure VPN ゲートウェイとオンプレミス ネットワークのいずれかの間に 2 つの冗長トンネルがある場合は、Azure VPN ゲートウェイの合計クォータ (Standard の場合は 10、HighPerformance の場合は 30) から 2 つのトンネルが消費されることになります。
 
 ### <a name="can-i-have-multiple-tunnels-between-two-azure-vnets-with-bgp"></a>BGP で 2 つの Azure Vnet の間に複数のトンネルを確立することはできますか。
 いいえ、一組の仮想ネットワーク間に冗長トンネルを確立することはできません。
 
 ### <a name="can-i-use-bgp-for-s2s-vpn-in-an-expressroutes2s-vpn-co-existence-configuration"></a>ExpressRoute/S2S VPN 共存構成で S2S VPN に BGP を使用することはできますか。
-現時点ではありません。
+はい。 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Azure VPN ゲートウェイでは、BGP ピア IP にどのようなアドレスが使用されますか。
 Azure VPN ゲートウェイでは、仮想ネットワークに対して定義されている GatewaySubnet 範囲から 1 つの IP アドレスを割り当てます。 既定では、範囲内で最後から 2 つ目のアドレスが使用されます。 たとえば、GatewaySubnet が 10.12.255.0/27 で、範囲が 10.12.255.0 から 10.12.255.31 となる場合、Azure VPN ゲートウェイの BGP ピア IP アドレスは 10.12.255.30 になります。 Azure VPN ゲートウェイの情報を表示すると、この情報を確認できます。
@@ -63,6 +63,6 @@ IPsec S2S VPN トンネルを示す Azure BGP ピア IP アドレスのホスト
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

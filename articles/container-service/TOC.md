@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure Container Service とは](container-service-intro.md)
 # 作業の開始
 ## [ACS クラスターをデプロイする](container-service-deployment.md)
@@ -17,8 +17,13 @@
 ### [OMS で監視する (DC/OS)](container-service-monitoring-oms.md)
 ### [Datadog で監視する (DC/OS)](container-service-monitoring.md)
 ### [Sysdig で監視する (DC/OS)](container-service-monitoring-sysdig.md)
-## [Kubernetes による管理](container-service-kubernetes-walkthrough.md)
+### [Dynatrace (DC/OS) で監視する](container-service-monitoring-dynatrace.md)
+## Kubernetes で監視する
+### [Kubernetes の概要](container-service-kubernetes-walkthrough.md)
+### [Kubernetes Web UI の操作](container-service-kubernetes-ui.md)
 ## [Docker Swarm による管理](container-service-docker-swarm.md)
+### [Docker および Docker Compose](container-service-docker-swarm.md)
+### [Docker Swarm 継続的インテグレーション](container-service-docker-swarm-setup-ci-cd.md)
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.compute/v2.3.0/azurerm.compute)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute.models)
@@ -29,6 +34,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

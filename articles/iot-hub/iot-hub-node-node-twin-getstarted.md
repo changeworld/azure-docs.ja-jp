@@ -1,12 +1,12 @@
 ---
-title: ツインの概要 | Microsoft Docs
-description: このチュートリアルでは、ツインの使用方法について説明します。
+title: "デバイス ツインの概要 | Microsoft Docs"
+description: "このチュートリアルでは、デバイス ツインの使用方法について説明します。"
 services: iot-hub
 documentationcenter: node
 author: fsautomata
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 314c88e4-cce1-441c-b75a-d2e08e39ae7d
 ms.service: iot-hub
 ms.devlang: node
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
+translationtype: Human Translation
+ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
+ms.openlocfilehash: d7b615476bb5e9ed08e1e84f63c1a40c11154b23
+
 
 ---
-# <a name="tutorial:-get-started-with-device-twins-(preview)"></a>チュートリアル: デバイス ツインの概要 (プレビュー)
+# <a name="tutorial-get-started-with-device-twins"></a>チュートリアル: デバイス ツインの概要
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
 このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリケーションが完成します。
@@ -25,19 +29,21 @@ ms.author: elioda
 * **TwinSimulatedDevice.js**: 以前作成したデバイス ID を使用して IoT Hub に接続するデバイスをシミュレートする Node.js アプリで、接続の状態を報告します。
 
 > [!NOTE]
-> デバイス アプリケーションとバックエンド アプリケーション両方の作成に利用できる各種 SDK に関する情報は、「[IoT Hub SDK][lnk-hub-sdks]」の記事で取り上げています。
+> デバイス アプリケーションとバックエンド アプリケーション両方の作成に利用できる Azure IoT SDK に関する情報は、「[Azure IoT SDKs (Azure IoT SDK)][lnk-hub-sdks]」の記事で取り上げています。
 > 
 > 
 
 このチュートリアルを完了するには、以下が必要です。
 
 * Node.js バージョン 0.10.x 以降。
-* アクティブな Azure アカウント。 アカウントがない場合は、無料試用版アカウントを数分で作成することができます。 詳細については、[Azure の無料試用版][lnk-free-trial]のサイトをご覧ください。
+* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
-[!INCLUDE [iot-hub-get-started-create-hub-pp](../../includes/iot-hub-get-started-create-hub-pp.md)]
+[!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
+
+[!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-the-service-app"></a>サービス アプリケーションを作成する
-このセクションでは、**myDeviceId** に関連付けられたツインに場所のメタデータを追加する Node.js コンソール アプリを作成します。 その後、米国にあるデバイスで、携帯ネットワーク接続を報告しているものを選択して、ハブに格納されているツインに対してクエリを実行します。
+このセクションでは、**myDeviceId** に関連付けられたデバイス ツインに場所のメタデータを追加する Node.js コンソール アプリを作成します。 その後、米国にあるデバイスで、携帯ネットワーク接続を報告しているものを選択して、IoT ハブに格納されているデバイス ツインに対してクエリを実行します。
 
 1. **addtagsandqueryapp** という名前の新しい空のフォルダーを作成します。 **addtagsandqueryapp** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
    
@@ -47,7 +53,7 @@ ms.author: elioda
 2. コマンド プロンプトで、**addtagsandqueryapp** フォルダーに移動し、次のコマンドを実行して、**azure-iothub** パッケージをインストールします。
    
     ```
-    npm install azure-iothub@dtpreview --save
+    npm install azure-iothub --save
     ```
 3. テキスト エディターを使用して、**addtagsandqueryapp** フォルダーに新しい **AddTagsAndQuery.js** ファイルを作成します。
 4. **AddTagsAndQuery.js** ファイルに次のコードを追加し、**{service connection string}** プレースホルダーを、ハブの作成時にコピーした接続文字列で置き換えます。
@@ -81,7 +87,7 @@ ms.author: elioda
             }
         });
    
-    **Registry** オブジェクトに、サービスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、まず **Registry** オブジェクトを初期化し、**myDeviceId** のツインを取得して、最後にタグを目的の位置情報で更新します。
+    **Registry** オブジェクトに、サービスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、まず **Registry** オブジェクトを初期化し、**myDeviceId** のデバイス ツインを取得して、最後にタグを目的の位置情報で更新します。
    
     タグの更新後、**queryTwins** 関数を呼び出します。
 5. **AddTagsAndQuery.js** の末尾に次のコードを追加して、**queryTwins** 関数を実装します。
@@ -120,10 +126,10 @@ ms.author: elioda
 次のセクションでは、接続情報を報告し、前のセクションのクエリの結果を変更するデバイス アプリを作成します。
 
 ## <a name="create-the-device-app"></a>サービス アプリを作成する
-このセクションでは、**myDeviceId** としてハブに接続し、ツインの報告されたプロパティに携帯ネットワークを使用しているという情報を含めるよう更新する Node.js コンソール アプリを作成します。
+このセクションでは、**myDeviceId** としてハブに接続し、デバイス ツインの報告されるプロパティに携帯ネットワークを使用しているという情報を含めるよう更新する Node.js コンソール アプリを作成します。
 
 > [!NOTE]
-> 現在のところ、デバイス ツインには MQTT プロトコルを使用して IoT Hub に接続するデバイスからのみアクセスできます。 既存のデバイス アプリを変換して MQTT を使用する方法については、[MQTT サポート][lnk-devguide-mqtt]の記事をご覧ください。
+> 現在のところ、デバイス ツインには MQTT プロトコルを使用して IoT Hub に接続するデバイスからのみアクセスできます。 既存のデバイス アプリを変換して MQTT を使用する方法については、[MQTT サポート][lnk-devguide-mqtt]の記事を参照してください。
 > 
 > 
 
@@ -135,7 +141,7 @@ ms.author: elioda
 2. コマンド プロンプトで、**reportconnectivity** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** と **azure-iot-device-mqtt** パッケージをインストールします。
    
     ```
-    npm install azure-iot-device@dtpreview azure-iot-device-mqtt@dtpreview --save
+    npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 3. テキスト エディターを使用して、**reportconnectivity** フォルダーに新しい**ReportConnectivity.js** ファイルを作成します。
 4. **ReportConnectivity.js** ファイルに次のコードを追加し、**{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーした接続文字列で置き換えます。
@@ -176,7 +182,7 @@ ms.author: elioda
         }
         });
    
-    **Client** オブジェクトに、デバイスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、**Client** オブジェクトを初期化したあと、**myDeviceId** のツインを取得して、報告されたプロパティに接続情報を含めるよう更新します。
+    **Client** オブジェクトに、デバイスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、**Client** オブジェクトを初期化した後、**myDeviceId** のデバイス ツインを取得して、報告されるプロパティに接続情報を含めるよう更新します。
 5. デバイス アプリを実行する
    
         node ReportConnectivity.js
@@ -191,13 +197,13 @@ ms.author: elioda
     ![][3]
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、ポータルで新しい IoT Hub を構成し、ハブの ID レジストリにデバイス ID を作成しました。 バックエンド アプリケーションからデバイスのメタデータをタグとして追加し、シミュレートされたデバイス アプリでデバイス ツインのデバイスの接続情報を報告するよう記述しました。 さらには、IoT Hub SQL に似たクエリ言語を使用してこの情報を照会する方法も学習しました。
+このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 バックエンド アプリケーションからデバイスのメタデータをタグとして追加し、シミュレートされたデバイス アプリでデバイス ツインのデバイスの接続情報を報告するよう記述しました。 さらに、SQL に似た IoT Hub クエリ言語を使用してこの情報を照会する方法も学習しました。
 
 詳細については、次のリソースをご覧ください。
 
-* [IoT Hub の概要][lnk-iothub-getstarted] チュートリアルでデバイスからテレメトリを送信する。
-* [Use desired properties to configure devices (目的のプロパティを使用してデバイスを構成する)][lnk-twin-how-to-configure] チュートリアルで、ツインの目的のプロパティを使用してデバイスを構成する
-* [ダイレクト メソッドの使用][lnk-methods-tutorial] チュートリアルで、デバイスの対話形式を制御する (ユーザー制御アプリからファンをオンにするなど)。
+* [IoT Hub の概要][lnk-iothub-getstarted]に関するチュートリアルでデバイスからテレメトリを送信する。
+* 「[Use desired properties to configure devices (目的のプロパティを使用してデバイスを構成する)][lnk-twin-how-to-configure]」チュートリアルで、デバイス ツインの必要なプロパティを使用してデバイスを構成する。
+* [ダイレクト メソッドの使用][lnk-methods-tutorial]に関するチュートリアルで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。
 
 <!-- images -->
 [1]: media/iot-hub-node-node-twin-getstarted/service1.png
@@ -214,17 +220,18 @@ ms.author: elioda
 [lnk-identity]: iot-hub-devguide-identity-registry.md
 
 [lnk-iothub-getstarted]: iot-hub-node-node-getstarted.md
-[lnk-device-management]: iot-hub-device-management-get-started.md
+[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
 [lnk-twin-how-to-configure]: iot-hub-node-node-twin-how-to-configure.md
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
 
-[lnk-methods-tutorial]: iot-hub-c2d-methods.md
+[lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO5-->
 
 

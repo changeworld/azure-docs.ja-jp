@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Hadoop](hdinsight-hadoop-introduction.md)
 ## [HDInsight の Hadoop コンポーネント](hdinsight-component-versioning.md)
 ## [R Server](hdinsight-hadoop-r-server-overview.md)
@@ -10,7 +10,6 @@
 
 # 作業の開始
 ## [Hadoop の開始](hdinsight-hadoop-linux-tutorial-get-started.md)
-## [対話型 Hive を開始する (プレビュー)](hdinsight-hadoop-use-interactive-hive.md)
 ## [R Server の開始](hdinsight-hadoop-r-server-get-started.md)
 ## [Spark の開始](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [HBase & NoSQL の開始](hdinsight-hbase-tutorial-get-started-linux.md)
@@ -225,6 +224,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

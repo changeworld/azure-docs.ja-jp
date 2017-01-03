@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure DNS とは](dns-overview.md)
 ## [DNS ゾーンとレコード](dns-zones-records.md)
 

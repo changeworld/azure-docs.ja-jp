@@ -44,7 +44,7 @@ ms.openlocfilehash: 145e60d078b3b4c1d554d2613c5fcaced004d303
 ## <a name="1-register-the-directorysearcher-application"></a>*1.DirectorySearcher アプリケーションを登録する*
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 右上にある自分のアカウントをクリックして、**[ディレクトリ]** 一覧の下で、管理者アクセス許可を持つ Active Directory テナントを選択します。
 3. 左側のナビゲーションで **[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックして、**[追加]** を選択します。
@@ -170,6 +170,6 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure Resource Manager とは](resource-group-overview.md)
 ## [サポートされているサービス、リージョン、API バージョン](resource-manager-supported-services.md)
 ## [Resource Manager とクラシック デプロイメントを理解する](resource-manager-deployment-model.md)

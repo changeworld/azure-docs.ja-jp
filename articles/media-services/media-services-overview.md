@@ -12,15 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/12/2016
+ms.date: 12/14/2016
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2a4395385ab0e6e71e5139883a544add0a081cf2
+ms.sourcegitcommit: 0d83c6e444d74ce7f95f796ec6c53abc43c37766
+ms.openlocfilehash: 7daf4bfa80fae2aee156af5cdb3588725aebd311
 
 
 ---
 # <a name="azure-media-services-overview-and-common-scenarios"></a>Azure Media Services の概要と一般的なシナリオ
+
 Microsoft Azure Media Services は拡張可能なクラウド ベースのプラットフォームです。これにより、開発者はスケーラブルなメディア管理の構築、アプリケーションの配信を実行できます。 Media Services は、オンデマンド、また各種クライアント (TV、PC、モバイル デバイスなど) へのライブ ストリーム配信の両方でのビデオやオーディオの安全なアップロード、格納、エンコード、パッケージ化を可能にする REST API に基づいています。
 
 Media Services を使いこなして、エンド ツー エンドのワークフローを構築できます。 ワークフローの一部にサード パーティのコンポーネントを使用することもできます。 たとえば、サード パーティのエンコーダーを使用してエンコードしてから、 Media Services を使用してアップロード、保護、パッケージ化、配信などを行うことができます。
@@ -28,17 +29,28 @@ Media Services を使いこなして、エンド ツー エンドのワークフ
 コンテンツをライブ ストリーム配信したり、オンデマンドで配信したりできます。 このトピックでは、コンテンツの[ライブ](media-services-overview.md#live_scenarios)配信と[オンデマンド](media-services-overview.md#vod_scenarios)配信の共通シナリオを紹介します。 このトピックでは、その他の関連トピックのリンクも提供します。
 
 ## <a name="sdks-and-tools"></a>SDK とツール
+
 Media Services ソリューションを構築するために、以下を使用できます。
 
 * [Media Services REST API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
 * 使用可能な次のいずれかの SDK:
-* [Azure Media Services SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)
-* [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)
-* [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
-* [Azure Media Services for Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (これは、Node.js SDK の Microsoft 以外のバージョンです。 コミュニティによって管理されており、現在 AMS API を 100% カバーしてはいません。)
+    * [Azure Media Services SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)
+    * [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)
+    * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
+    * [Azure Media Services for Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (これは、Node.js SDK の Microsoft 以外のバージョンです。 コミュニティによって管理されており、現在 AMS API を 100% カバーしてはいません。)
 * 既存のツール:
-* [Azure ポータル](https://portal.azure.com/)
-* [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer (AMSE) は Windows 用の Winforms/C# アプリケーションです)
+    * [Azure ポータル](https://portal.azure.com/)
+    * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer (AMSE) は Windows 用の Winforms/C# アプリケーションです)
+
+次の図は、Media Services OData モデルに対する開発時に最もよく使用されるオブジェクトの一部を示しています。 
+
+画像をクリックすると、フル サイズで表示されます。  
+
+<a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
+
+
+モデル全体は、[こちら](https://media.windows.net/API/$metadata?api-version=2.14)で確認できます。  
+
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 AMS のラーニング パスについては、以下を参照してください。
@@ -47,27 +59,28 @@ AMS のラーニング パスについては、以下を参照してください
 * [AMS のオンデマンド ストリーミング ワークフロー](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 ## <a name="prerequisites"></a>前提条件
+
 Azure Media Services を使用するには、次が必要です。
 
 1. Azure アカウント。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com)を参照してください。
 2. Azure Media Services アカウントを作成します。 Azure Media Services アカウントを作成するには、Azure Portal、.NET、REST API を使用します。 詳細については、[アカウントの作成](media-services-portal-create-account.md)に関するページを参照してください。
 3. (省略可能) 開発環境をセットアップします。 開発環境の .NET または REST API を選択します。 詳細については、「 [環境を設定する](media-services-dotnet-how-to-use.md)」を参照してください。
 
-また、プログラミングによる[接続](media-services-dotnet-connect-programmatically.md)方法についても確認してください。
+    また、プログラミングによる[接続](media-services-dotnet-connect-programmatically.md)方法についても確認してください。
 
-1. (推奨) 1 つまたは複数のスケール単位を割り当てます。 実稼働環境でのアプリケーションの 1 つ以上のスケール単位を割り当てることをお勧めします。   詳細については、「 [ストリーミング エンドポイントの管理](media-services-portal-manage-streaming-endpoints.md)」を参照してください。
+4. (推奨) 1 つまたは複数のスケール単位を割り当てます。 実稼働環境でのアプリケーションの 1 つ以上のスケール単位を割り当てることをお勧めします。   詳細については、「 [ストリーミング エンドポイントの管理](media-services-portal-manage-streaming-endpoints.md)」を参照してください。
 
 ## <a name="concepts-and-overview"></a>概念と概要
 Azure Media Services の概念については、「 [概念](media-services-concepts.md)」を参照してください。
 
 Azure Media Services のすべての主要コンポーネントを紹介する入門シリーズについては、 [Azure Media Services のステップバイステップ チュートリアル](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)に関するページを参照してください。 このシリーズでは、概念の概要をわかりやすく示し、AMSE ツールを使用して AMS タスクについて説明しています。 AMSE ツールは Windows ツールです。 このツールは、[AMS SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、または [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) を使用してプログラムで実行できるほとんどのタスクをサポートしています。
 
-## <a name="a-idvodscenariosadelivering-media-ondemand-with-azure-media-services-common-scenarios-and-tasks"></a><a id="vod_scenarios"></a>Azure Media Services によるメディアのオンデマンド配信: 共通のシナリオとタスク
+## <a name="a-idvodscenariosadelivering-media-on-demand-with-azure-media-services-common-scenarios-and-tasks"></a><a id="vod_scenarios"></a>Azure Media Services によるメディアのオンデマンド配信: 共通のシナリオとタスク
 このセクションでは、一般的なシナリオについて説明し、関連するトピックへのリンクを提供します。 次の図は、コンテンツのオンデマンド配信に関連する Media Services プラットフォームの主要な部分を示しています。 
 
 ![VoD ワークフロー](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
-### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-nonencrypted"></a>ストレージのコンテンツを保護し、ストリーミング メディアを平文 (暗号化されていない) で配信する
+### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>ストレージのコンテンツを保護し、ストリーミング メディアを平文 (暗号化されていない) で配信する
 1. 高品質な中間ファイルを資産にアップロードします。
    
     ストレージ暗号化オプションを資産に適用し、アップロード中のコンテンツとストレージ内のコンテンツを保護することをお勧めします。
@@ -129,11 +142,11 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
 * (省略可) ストリームをアダプティブ ビットレート ストリームにエンコードする。
 * ライブ ストリームをプレビューする。
 * 後でストリーミングするために、取り込んだコンテンツを記録して保存する (ビデオ オン デマンド)。
-* コンテンツを一般的なストリーミング プロトコル (MPEG DASH、Smooth、HLS、HDS など) を使用して顧客に配信したり、再配布のための Content Delivery Network (CDN) に直接配信する。
+* コンテンツを一般的なストリーミング プロトコル (MPEG DASH、Smooth、HLS など) を使用して顧客に配信したり、再配布のための Content Delivery Network (CDN) に直接配信する。
 
 **Microsoft Azure Media Services** (AMS) は、ライブ ストリーミング コンテンツの取り込み、エンコード、プレビュー、保存、配信を行う機能を提供します。
 
-コンテンツを顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあります。 品質とネットワーク条件に対応するには、ライブ エンコーダーを使用して、ストリームをマルチビットレート (アダプティブ ビットレート) ビデオ ストリームにエンコードします。  異なるデバイスでのストリーミングに対応するには、Media Services の [動的パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します。 Media Services で配信がサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
+コンテンツを顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあります。 品質とネットワーク条件に対応するには、ライブ エンコーダーを使用して、ストリームをマルチビットレート (アダプティブ ビットレート) ビデオ ストリームにエンコードします。  異なるデバイスでのストリーミングに対応するには、Media Services の [動的パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します。 Media Services でサポートされるアダプティブ ビットレート ストリーミング配信テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、および MPEG DASH です。
 
 Azure Media Services では、**チャネル**、**プログラム**、**ストリーミング エンドポイント**で、取り込み、書式設定、DVR、セキュリティ、スケーラビリティ、冗長性などのすべてのライブ ストリーミングの機能を処理します。
 
@@ -142,13 +155,13 @@ Azure Media Services では、**チャネル**、**プログラム**、**スト�
 * オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、**パススルー**配信用に設定されたチャネルに送信します。 **パススルー**配信とは、取り込んだストリームが、追加の処理なしで**チャネル**を通過することをいいます。 マルチ ビットレートのスムーズ ストリーミングを出力するライブ エンコーダーとして、Elemental、Envivio、Cisco を使用できます。  Adobe Flash Live、Telestream Wirecast、Tricaster トランスコーダーは、RTMP を出力するライブ エンコーダーです。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 > [!NOTE]
-> 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。 詳しくは、 [価格情報](/pricing/details/media-services/) ページを参照してください。
+> 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。 詳しくは、 [価格情報](https://azure.microsoft.com/pricing/details/media-services/) ページを参照してください。
 > 
 > 
 
 * オンプレミスのライブ エンコーダーは、RTP (MPEG-TS)、RTMP、スムーズ ストリーミング (Fragmented MP4) のいずれかの形式で、シングル ビットレート ストリームを Media Services による Live Encoding が有効なチャネルに送信します。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
-### <a name="working-with-channels-that-receive-multibitrate-live-stream-from-onpremises-encoders-passthrough"></a>オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルを操作する (パススルー)
+### <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルを操作する (パススルー)
 次の図は、 **パススルー** ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
 
 ![ライブ ワークフロー][live-overview2]
@@ -201,6 +214,6 @@ Media Services では、Azure CDN との統合をサポートしています。 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Data Catalog とは](data-catalog-what-is-data-catalog.md)
 ## [一般的なシナリオ](data-catalog-common-scenarios.md)
 ## [サポートされるデータ ソース](data-catalog-dsr.md)

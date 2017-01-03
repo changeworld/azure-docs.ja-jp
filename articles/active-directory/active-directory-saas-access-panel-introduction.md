@@ -1,19 +1,23 @@
 ---
-title: アクセス パネルの概要 | Microsoft Docs
-description: アクセス パネルの各種構成 (Web ブラウザー、Android アプリ、iPhone および iPad アプリ) を使用して、割り当てられている SaaS アプリにアクセスするする方法について説明します。
+title: "アクセス パネルの概要 | Microsoft Docs"
+description: "アクセス パネルの各種構成 (Web ブラウザー、Android アプリ、iPhone および iPad アプリ) を使用して、割り当てられている SaaS アプリにアクセスするする方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: c0252d01-7e6e-4f79-a70e-600479577dfd
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: markusvi
+ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
+ms.openlocfilehash: 2dd9c96e1c15e424588869b61eb26501b1b66be3
+
 
 ---
 # <a name="introduction-to-the-access-panel"></a>アクセス パネルの概要
@@ -38,7 +42,7 @@ ms.author: markusvi
 サインイン ページ用にカスタム ブランドを構成している場合は、次のように URL の末尾に組織のドメインを追加することで、このブランドを既定で読み込むことができます。 <br> 
 **http://myapps.microsoft.com/contosobuild.com**
 
-この場合は、次のスクリーン ショットに示すように、Microsoft Azure 管理ポータルのディレクトリの ［ドメイン］ タブで構成されている、アクティブまたは確認済みのドメイン名を使用できます。
+この場合は、次のスクリーン ショットに示すように、Microsoft Azure 管理ポータルのディレクトリの [ドメイン] タブで構成されている、アクティブまたは確認済みのドメイン名を使用できます。
 
 ![Wingtip toys][2]  
 
@@ -93,12 +97,12 @@ Azure 管理者がディレクトリのアカウントを使用して Microsoft 
 
 ユーザーは、Office 365 アプリケーションのアプリケーション タイルをクリックすると、アプリケーションにリダイレクトされ自動的にサインインされます。
 
-### <a name="microsoft-and-thirdparty-applications-configured-with-federationbased-sso"></a>フェデレーション ベースの SSO で構成されたマイクロソフトとサード パーティのアプリケーション
+### <a name="microsoft-and-third-party-applications-configured-with-federation-based-sso"></a>フェデレーション ベースの SSO で構成されたマイクロソフトとサード パーティのアプリケーション
 これらは、管理者がシングル サインオン モードを "*Azure AD のシングル サインオン*" に設定することで、Microsoft Azure 管理ポータルの Active Directory セクションに追加したアプリケーションです。 ユーザーには、管理者によって明示的にアクセス権が付与されてい場合にのみ、これらのアプリケーションが表示されます。
 
 ユーザーは、これらのアプリケーションの 1 つのアプリケーション タイルをクリックすると、アプリケーションにリダイレクトされ自動的にサインインされます。
 
-### <a name="passwordbased-sso-without-identity-provisioning"></a>パスワード ベースの SSO (ID プロビジョニングなし)
+### <a name="password-based-sso-without-identity-provisioning"></a>パスワード ベースの SSO (ID プロビジョニングなし)
 これらは、管理者がシングル サインオン モードを "*パスワードベースのシングル サインオン*" に設定することで、Microsoft Azure 管理ポータルの Active Directory セクションに追加したアプリケーションです。 <br> ディレクトリ内のすべてのユーザーに、このモードで構成されているすべてのアプリケーションが表示されます。
 
 これらのアプリケーションの 1 つのアプリケーション タイルをユーザーがはじめてクリックすると、Internet Explorer または Chrome のパスワード SSO プラグインをインストールするように求められます。インストールには、Web ブラウザーを再起動する必要があります。 アクセス パネルに戻り、アプリケーション タイルを再度クリックすると、アプリケーションのユーザー名とパスワードを求められます。 ユーザー名とパスワードを入力すると、この資格情報は Azure AD にセキュリティで保護されて格納され、Azure AD のアカウントにリンクされます。アクセス パネルにより、これらの資格情報を使用するアプリケーションへのユーザーのサインインが自動化されます。
@@ -107,7 +111,7 @@ Azure 管理者がディレクトリのアカウントを使用して Microsoft 
 
 ユーザーは、ターゲットのサードパーティのアプリケーションでユーザーの資格情報を変更した場合は、Azure AD に格納されている資格情報も更新する必要があります。 資格情報を更新するには、ユーザーは、アプリケーション タイル右下のアイコンを選択し、[資格情報の更新] を選択して、そのアプリケーションのユーザー名とパスワードを再入力する必要があります。
 
-### <a name="passwordbased-sso-with-identity-provisioning"></a>パスワード ベースの SSO (ID プロビジョニングあり)
+### <a name="password-based-sso-with-identity-provisioning"></a>パスワード ベースの SSO (ID プロビジョニングあり)
 これらは、管理者がシングル サインオン モードを "*パスワードベースのシングル サインオン*" に設定し、ID プロビジョニングを設定することで、Microsoft Azure 管理ポータルの Active Directory セクションに追加したアプリケーションです。
 
 これらのアプリケーションの 1 つのアプリケーション タイルをユーザーがはじめてクリックすると、Internet Explorer または Chrome のパスワード SSO プラグインをインストールするように求められます。インストールには、Web ブラウザーを再起動する必要があります。 アクセス パネルに戻り、アプリケーション タイルを再度クリックすると、アプリケーションに自動的にサインインされます。
@@ -131,6 +135,6 @@ Microsoft Azure 管理ポータルでアプリケーションのシングル サ
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO5-->
 
 

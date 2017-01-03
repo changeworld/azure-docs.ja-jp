@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/22/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 01c62e1e3074d7f9addd75ba51d6131921a4ecc7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fe96fb2159a7d0dba0ad391d25f38f79cf8aeeb3
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 01c62e1e3074d7f9addd75ba51d6131921a4ecc7
 ## <a name="enabling-access"></a>アクセスの実現
 アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。 アプリケーション プロキシ コネクタを機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、これは、コネクタのインストール時にポップアップ ダイアログ ボックスに入力します。 または、Windows PowerShell を使用して資格情報オブジェクトを作成することで登録情報を入力することも、独自のトークンを作成して、登録情報の入力に使用することもできます。
 
-## <a name="step-1-install-the-connector-without-registration"></a>手順 1: 登録せずにコネクタをインストールする
+## <a name="step-1--install-the-connector-without-registration"></a>手順 1: 登録せずにコネクタをインストールする
 次のように、コネクタを登録せずにコネクタ MSI をインストールします。
 
 1. コマンド プロンプトを開きます。
@@ -127,6 +127,6 @@ ms.openlocfilehash: 01c62e1e3074d7f9addd75ba51d6131921a4ecc7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

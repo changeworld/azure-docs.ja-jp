@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Anaplan の統合 | Microsoft Docs'
-description: Azure Active Directory と Anaplan の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Anaplan の統合 | Microsoft Docs"
+description: "Azure Active Directory と Anaplan の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 4a9c2914-6c8c-4a88-93e3-3753afb40e6b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 95369b2a0c1172e072aed33d075255fdcafe8a9c
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-anaplan"></a>チュートリアル: Azure Active Directory と Anaplan の統合
+# <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>チュートリアル: Azure Active Directory と Anaplan の統合
 このチュートリアルの目的は、Anaplan と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Anaplan と Azure AD の統合には、次の利点があります。
@@ -117,7 +121,7 @@ Anaplan で Azure AD のシングル サインオンを構成してテストす�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-anaplan-tutorial/tutorial_anaplan_05.png)
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
 2. アプリケーション用に構成された SSO を入手するには、 [support@anaplan.com](mailto:support@anaplan.com) を使用して Anaplan サポート チームに連絡して、次の情報を提供してください。
@@ -154,16 +158,16 @@ Anaplan で Azure AD のシングル サインオンを構成してテストす�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-anaplan-tutorial/create_aaduser_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-anaplan-tutorial/create_aaduser_06.png)
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -179,7 +183,7 @@ Anaplan で Azure AD のシングル サインオンを構成してテストす�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-anaplan-tutorial/create_aaduser_08.png)
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
     b. **[完了]** をクリックします。   
 
@@ -236,6 +240,6 @@ Anaplan で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO5-->
 
 

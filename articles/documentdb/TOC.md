@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [DocumentDB とは](documentdb-introduction.md)
 ## [主要な概念](documentdb-resources.md)
 ## [グローバル配信](documentdb-distribute-data-globally.md)
@@ -18,6 +18,7 @@
 ### [Java Web アプリ](documentdb-java-application.md)
 ### [Python Flask Web アプリ](documentdb-python-application.md)
 ## [ローカルでの開発](documentdb-nosql-local-emulator.md)
+### [Emulator 証明書のエクスポート](documentdb-nosql-local-emulator-export-ssl-certificates.md)
 ## [FAQ](documentdb-faq.md)
 
 # 方法
@@ -41,21 +42,28 @@
 ### [リソース クォータ](documentdb-limits.md)
 ### [クォータの増加](documentdb-increase-limits.md)
 ### [要求ユニット](documentdb-request-units.md)
-### [Azure CLI と Azure Resource Manager](documentdb-automation-resource-manager-cli.md)
+### Azure CLI
+#### [アカウントの作成](documentdb-automation-resource-manager-cli.md)
+#### [リージョンの追加または削除](documentdb-automation-region-management.md)
+### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 ### [ファイアウォールのサポート](documentdb-firewall-support.md)
 ### [アカウントのパワーアップ](documentdb-supercharge-your-account.md)
 
 ## 開発
 ### [SQL query](documentdb-sql-query.md)
 ### [ストアド プロシージャ、トリガー、UDF](documentdb-programming.md)
+### [変更フィードによる変更の追跡](documentdb-change-feed.md)
 ### [パフォーマンス テスト](documentdb-performance-testing.md)
 ### [パフォーマンスに関するヒント](documentdb-performance-tips.md)
-### MongoDB 開発者向け DocumentDB
-#### [MongoDB のプロトコル サポート](documentdb-protocol-mongodb.md)
-#### [アカウントの作成](documentdb-create-mongodb-account.md)
-#### [アカウントに接続する](documentdb-connect-mongodb-account.md)
-#### [MongoChef の使用](documentdb-mongodb-mongochef.md)
-#### [プロトコル サポートのサンプル](documentdb-mongodb-samples.md)
+
+## MongoDB 向けの DocumentDB サポートを使用する
+### [MongoDB のプロトコル サポート](documentdb-protocol-mongodb.md)
+### [アカウントの作成](documentdb-create-mongodb-account.md)
+### [アカウントに接続する](documentdb-connect-mongodb-account.md)
+### [データの移行](documentdb-mongodb-migrate.md)
+### [Robomongo の使用](documentdb-mongodb-robomongo.md)
+### [MongoChef の使用](documentdb-mongodb-mongochef.md)
+### [プロトコル サポートのサンプル](documentdb-mongodb-samples.md)
 
 ## ポータルの使用
 ### [データベース アカウントの作成](documentdb-create-account.md)
@@ -112,6 +120,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

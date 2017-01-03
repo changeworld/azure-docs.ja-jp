@@ -16,15 +16,15 @@ ms.topic: get-started-article
 ms.date: 10/28/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: d2109a45249e4e362cd87f730683ef87f1411b86
+ms.sourcegitcommit: 8056e7ece1942c9090a7c36447a96829febaf1a4
+ms.openlocfilehash: a6d632ed43580b9773c0e416e22a743f8bc60834
 
 
 ---
 # <a name="get-started-create-apache-spark-cluster-on-hdinsight-linux-and-run-interactive-queries-using-spark-sql"></a>概要: HDInsight Linux の Apache Spark クラスターの作成と Spark SQL を使用した対話型クエリの実行
 HDInsight で Apache Spark クラスターを作成し、Spark クラスターで [Jupyter](https://jupyter.org) Notebook を使用して Spark SQL の対話型クエリを実行する方法について説明します。
 
-   ![HDInsight で Apache Spark を使用します](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.getstartedflow.png "Get started using Apache Spark in HDInsight tutorial. Steps illustrated: create a storage account; create a cluster; run Spark SQL statements")
+   ![HDInsight で Apache Spark の使用を開始](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.getstartedflow.png "HDInsight チュートリアルで Apache Spark の使用を開始します。図に示されている手順: ストレージ アカウントを作成し、クラスターを作成して、Spark SQL ステートメントを実行します")
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -47,9 +47,9 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 ## <a name="create-spark-cluster"></a>Spark クラスターを作成する
 このセクションでは、Azure Resource Manager テンプレートを使用して HDInsight バージョン 3.4 クラスター (Spark バージョン 1.6.1) を作成します。 HDInsight バージョンとその SLA については、「 [HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。 その他のクラスター作成方法については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
-1. 次の画像をクリックして Azure Portal でテンプレートを開きます。         
+1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。         
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-spark-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-spark-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apache-spark-jupyter-spark-sql/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
     テンプレートはパブリック BLOB コンテナー (*https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-spark-cluster-in-hdinsight.json*) 内にあります。
 2. [パラメーター] ブレードで、次の各項目を入力します。
@@ -93,7 +93,7 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 * SQL または Hive クエリの出力は、自動的に視覚化されます。
 
 ### <a name="create-jupyter-notebook-with-pyspark-kernel"></a>PySpark カーネルを使用した Jupyter Notebook の作成
-1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 2. Spark クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
    > [!NOTE]
@@ -104,17 +104,17 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
    >
 3. 新しい Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
 
-    ![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "Create a new Jupyter notebook")
+    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook の作成")
 4. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
 
-    ![Notebook の名前を指定します](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.notebook.name.png "Provide a name for the notebook")
+    ![Notebook の名前を指定](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定")
 5. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。 このシナリオに必要な種類をインポートすることから始めることができます。 このためには、次のコード スニペットをセルに貼り付けて、 **Shift + Enter**キーを押します。
 
         from pyspark.sql.types import *
 
     Jupyter でジョブを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。 また、右上隅にある **PySpark** というテキストの横に塗りつぶされた円も表示されます。 ジョブが完了すると、白抜きの円に変化します。
 
-     ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.jupyter.job.status.png "Status of a Jupyter notebook job")
+     ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.jupyter.job.status.png "Jupyter Notebook ジョブのステータス")
 6. サンプル データを一時テーブルに読み込みます。 HDInsight の Spark クラスターを作成すると、サンプル データ ファイル **hvac.csv** が、関連するストレージ アカウントの **\HdiSamples\HdiSamples\SensorSampleData\hvac** にコピーされます。
 
     次のコード サンプルを空のセルに貼り付けて、 **Shift + Enter**キーを押します。 このコード サンプルは、 **hvac**という一時テーブルにデータを登録します。
@@ -133,18 +133,18 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 
         # Register the data fram as a table to run queries against
         hvacdf.registerTempTable("hvac")
-7. PySpark カーネルを使用しているため、`%%sql` マジックを使用して作成した一時テーブル **hvac** で SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-pyspark-or-spark-kernels)に関する記事を参照してください。
+7. PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-pyspark-or-spark-kernels)に関する記事を参照してください。
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
 8. ジョブが正常に完了すると、既定で次の出力が表示されます。
 
-     ![クエリ結果のテーブル出力](./media/hdinsight-apache-spark-jupyter-spark-sql/tabular.output.png "Table output of query result")
+     ![クエリ結果のテーブル出力](./media/hdinsight-apache-spark-jupyter-spark-sql/tabular.output.png "クエリ結果のテーブル出力")
 
     他の視覚化でも結果を表示できます。 たとえば、ある出力の領域グラフは次のようになります。
 
-    ![クエリ結果の領域グラフ](./media/hdinsight-apache-spark-jupyter-spark-sql/area.output.png "Area graph of query result")
-9. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[閉じて停止]** をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
+    ![クエリ結果の領域グラフ](./media/hdinsight-apache-spark-jupyter-spark-sql/area.output.png "クエリ結果の領域グラフ")
+9. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -188,6 +188,6 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -11,11 +11,11 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 12/08/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: c8e745f7e1385c5ca569a9b8fbc3f5db070f102e
+ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
+ms.openlocfilehash: 96e8177f57977f88c5a4a1ec0b9243b5b348f078
 
 ---
 
@@ -29,14 +29,14 @@ ms.openlocfilehash: c8e745f7e1385c5ca569a9b8fbc3f5db070f102e
 >
 >
 
-この記事では、 [Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)を使用してインデックスを照会する方法について説明します。
+この記事では、 [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/)を使用してインデックスを照会する方法について説明します。
 
 このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)し、[インデックスにデータを読み込んで](search-what-is-data-import.md)います。
 
 ## <a name="i-identify-your-azure-search-services-query-api-key"></a>I. Azure Search サービスのクエリ API キーの識別
 Azure Search REST API に対するすべての検索操作で鍵となるコンポーネントは、プロビジョニングしたサービスに対して生成された *API キー* です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-1. サービスの API キーを探すには、 [Azure ポータル](https://portal.azure.com/)
+1. サービスの API キーを探すには、[Azure Portal](https://portal.azure.com/) にログインする必要があります。
 2. Azure Search サービスのブレードに移動します。
 3. "キー" アイコンをクリックします。
 
@@ -48,7 +48,7 @@ Azure Search REST API に対するすべての検索操作で鍵となるコン�
 インデックスを照会する目的では、いずれかのクエリ キーを使用できます。 クエリには管理者キーを使うこともできますが、アプリケーション コードではクエリ キーを使うようにしてください。この方が、[最少権限の原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege)に適っています。
 
 ## <a name="ii-formulate-your-query"></a>II. クエリの作成
-[REST API を使用してインデックスを検索する](https://msdn.microsoft.com/library/azure/dn798927.aspx)方法は 2 とおりあります。 その 1 つは、要求本文の JSON オブジェクトにクエリ パラメーターが定義される HTTP POST 要求を発行する方法です。 もう 1 つは、要求 URL にクエリ パラメーターが定義される HTTP GET 要求を発行する方法です。 POST の方が GET よりもクエリ パラメーターのサイズの [制限が緩やか](https://msdn.microsoft.com/library/azure/dn798927.aspx) です。 そのため、GET の方が便利である特殊な状況を除いて、POST を使用することをお勧めします。
+[REST API を使用してインデックスを検索する](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)方法は 2 とおりあります。 その 1 つは、要求本文の JSON オブジェクトにクエリ パラメーターが定義される HTTP POST 要求を発行する方法です。 もう 1 つは、要求 URL にクエリ パラメーターが定義される HTTP GET 要求を発行する方法です。 POST の方が GET よりもクエリ パラメーターのサイズの [制限が緩やか](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) です。 そのため、GET の方が便利である特殊な状況を除いて、POST を使用することをお勧めします。
 
 POST でも GET でも、*サービス名*、*インデックス名*、適切な *API バージョン* (このドキュメントが書かれた時点で最新の API バージョンは `2016-09-01`) を要求 URL に指定する必要があります。 GET の場合は、URL の末尾の *クエリ文字列* でクエリ パラメーターを指定します。 この URL の形式については、以下を参照してください。
 
@@ -162,10 +162,10 @@ api-key: [query key]
 }
 ```
 
-詳細については、「 [Search Documents (Azure Search Service REST API) (ドキュメントの検索 (Azure Search Service REST API))](https://msdn.microsoft.com/library/azure/dn798927.aspx)」の「Response (応答)」セクションを参照してください。 エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「 [HTTP status codes (Azure Search) (HTTP 状態コード (Azure Search))](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。
+詳細については、「 [Search Documents (Azure Search Service REST API) (ドキュメントの検索 (Azure Search Service REST API))](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」の「Response (応答)」セクションを参照してください。 エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「 [HTTP status codes (Azure Search) (HTTP 状態コード (Azure Search))](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)」を参照してください。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

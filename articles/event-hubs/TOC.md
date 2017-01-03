@@ -1,4 +1,4 @@
-# Overview
+# 概要
 
 ## [Event Hubs とは](event-hubs-what-is-event-hubs.md)
 ## [Event Hubs の概要](event-hubs-overview.md)

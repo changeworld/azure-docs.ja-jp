@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Load Balancer とは](load-balancer-overview.md)
 ## [インターネットに接続するロード バランサー](load-balancer-internet-overview.md)
 ## [内部ロード バランサー](load-balancer-internal-overview.md)

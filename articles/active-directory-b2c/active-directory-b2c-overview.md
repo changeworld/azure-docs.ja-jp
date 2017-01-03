@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/24/2016
+ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 217ffc63e07d66de522accc42c246125d01713c8
+ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
+ms.openlocfilehash: 37c9d6808b3282d86583f6305672405775a7f306
 
 
 ---
@@ -40,7 +40,7 @@ Azure Active Directory B2C サービス対応のアプリケーションを作�
 * 現在の [サービスの制限事項および制約事項](active-directory-b2c-limitations.md)を参照してください。
 * 最後に、Azure AD B2C と ASP.NET Core を使用した[コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c)を参照してください。
 
-## <a name="howto-articles"></a>ハウツー記事
+## <a name="how-to-articles"></a>ハウツー記事
 以下に示す Azure Active Directory B2C の各機能の使用方法について確認してください。
 
 * コンシューマー向けアプリケーションで使用するアカウント ([Facebook](active-directory-b2c-setup-fb-app.md)、[Google+](active-directory-b2c-setup-goog-app.md)、[Microsoft アカウント](active-directory-b2c-setup-msa-app.md)、[Amazon](active-directory-b2c-setup-amzn-app.md)、[LinkedIn](active-directory-b2c-setup-li-app.md)) を構成する。
@@ -67,6 +67,6 @@ Azure Active Directory B2C サービス対応のアプリケーションを作�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

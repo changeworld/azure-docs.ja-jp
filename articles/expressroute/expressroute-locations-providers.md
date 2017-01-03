@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/02/2016
+ms.date: 12/08/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 53a301bd501f223aa8489ba6592c8428c1fcd530
-ms.openlocfilehash: 877a70c162f23ced4606ee8a5c51db5e4eeaa89a
+ms.sourcegitcommit: cbbc9f29fc4dea49807f1093b673bebac628314b
+ms.openlocfilehash: e886f9c1984003d1bd1391012b26eea39d4a0b76
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 877a70c162f23ced4606ee8a5c51db5e4eeaa89a
 ## <a name="a-namepartnersaexpressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute 接続プロバイダー
 ExpressRoute は、すべての Azure のリージョンと場所でサポートされています。 次のマップは Azure のリージョンと ExpressRoute の場所を一覧しています。 ExpressRoute の場所は、Microsoft がいくつかのサービス プロバイダーと接続している場所を示します。
 
-![Location map][0]
+![場所のマップ][0]
 
 地理的リージョン内の少なくとも 1 つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。 
 
@@ -37,7 +37,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | --- | --- | --- |
 | **北米** |米国東部、米国西部、米国東部 2、米国中部、米国中南部、米国中北部、カナダ中部、カナダ東部 |アトランタ、シカゴ、ダラス、ラスベガス、ロサンゼルス、ニューヨーク、シアトル、シリコン バレー、ワシントン DC、モントリオール+、ケベックシティ+、トロント |
 | **南アメリカ** |ブラジル南部 |サンパウロ |
-| **ヨーロッパ** |北ヨーロッパ、西ヨーロッパ、英国西部、英国南部 |アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)+、パリ |
+| **ヨーロッパ** |北ヨーロッパ、西ヨーロッパ、英国西部、英国南部 |アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)、パリ |
 | **アジア** |東アジア、東南アジア |香港、シンガポール |
 | **日本** |西日本、東日本 |大阪、東京 |
 | **オーストラリア** |オーストラリア東部、オーストラリア南東部 |メルボルン、シドニー |
@@ -76,7 +76,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ロサンゼルス** |CoreSite、Equinix、Megaport、NTT、Zayo Group |
 | **メルボルン** |AARNet、Equinix、Megaport、NEXTDC、Telstra Corporation |
 | **ニューヨーク** |Equinix、Megaport、Zayo Group |
-| **Newport(Wales)+** |Next Generation Data+ |
+| **ニューポート (ウェールズ)** |Next Generation Data |
 | **モントリオール** |Cologix+ |
 | **ムンバイ** |Tata Communications |
 | **大阪** |Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、Softbank |
@@ -87,7 +87,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **シンガポール** |Aryaka Networks、AT&T NetBond、British Telecom、Equinix、InterCloud、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Verizon |
 | **シドニー** |AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、Orange、Telstra Corporation、Verizon |
 | **東京** |Aryaka Networks、British Telecom、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、Softbank、Verizon |
-| **トロント** |Cologix、Equinix、Zayo Group |
+| **トロント** |Cologix、Equinix、Megaport、Zayo Group |
 | **ワシントン DC** |Aryaka Networks、AT&T NetBond、British Telecom、Comcast、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、Verizon、Zayo Group |
 
  **+** は近日対応予定を表します
@@ -120,13 +120,13 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 接続プロバイダーが上記のセクションの一覧にない場合でも、接続を作成できます。
 
 * 接続プロバイダーが上の表に記載されているいずれかの Exchange に接続されているかどうかをその接続プロバイダーに確認します。 次のリンクから、Exchange プロバイダーが提供するサービスの詳細情報を収集できます。 一部の接続プロバイダーは既にイーサネット Exchange に接続されています。
-  
+  * [Cologix](http://www.cologix.com/)
+  * [CoreSite](http://www.coresite.com/)
   * [Equinix Cloud Exchange](http://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
-  * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
   * [InterXion](http://www.interxion.com/)
   * [NextDC](http://www.nextdc.com/)
-  * [CoreSite](http://www.coresite.com/)
-  * [Cologix](http://www.cologix.com/)
+  * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
+  * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
 * その接続プロバイダーに、選択したピアリングの場所までネットワークを拡張してもらいます。
   * 単一障害点がないように、接続プロバイダーが可用性の高い方法で接続を拡張していることを確認します。
 * Microsoft に接続するために、接続プロバイダーとしてその Exchange で ExpressRoute 回線を要求します。
@@ -134,11 +134,13 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 | **場所** | **Exchange** | **接続プロバイダー** |
 | --- | --- | --- |
+| **ロンドン** | Equinix | Exponential E |
 | **ニューヨーク** |Equinix |Lightower |
 | **シアトル** |Equinix |Alaska Communications |
 | **シリコン バレー** |Equinix |XO Communications |
 | **シンガポール** |Equinix |1CLOUDSTAR |
-| **ワシントン DC** |Equinix |Lightower |
+| **シドニー** | Megaport | Macquarie |
+| **ワシントン DC** |Equinix | Lightower、Masergy |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute システム インテグレーター
 ネットワークの規模によっては、ニーズに合わせてプライベート接続を有効にするのは難しい場合があります。 次の表のいずれかのシステム インテグレーターを使用すると、ExpressRoute の利用開始に役立ちます。
@@ -158,6 +160,6 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

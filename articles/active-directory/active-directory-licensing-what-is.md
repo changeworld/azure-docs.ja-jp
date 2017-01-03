@@ -16,8 +16,8 @@ ms.workload: identity
 ms.date: 08/23/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 23763662967c9f41c20cfb86dae19bb87fbd11a9
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: de0de775c551e5b7b7f5c42d09a40b35a282f891
 
 
 ---
@@ -155,6 +155,6 @@ Azure AD Premium の一部の機能を構成し、使用する準備ができま
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

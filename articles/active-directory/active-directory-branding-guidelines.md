@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 06/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 42bd2b7b5eb9f47f61e90b61943f57c03552bde0
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6fe83fe1c9e1064256797b90bbaa9f6aaebef756
 
 
 ---
@@ -91,6 +91,6 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

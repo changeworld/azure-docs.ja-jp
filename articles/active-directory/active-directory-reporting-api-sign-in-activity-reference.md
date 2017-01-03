@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 09/25/2016
 ms.author: dhanyahk;markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4c60c0fd364400c881f1b8b96598725f6bd11d26
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: dce65678f9fc96d5802a7b705689cc63e6532c84
 
 
 ---
@@ -184,6 +184,6 @@ loginStatus には 2 つのオプション (0 - 成功、1 - 失敗) があり�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

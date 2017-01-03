@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と PerformanceCentre の統合 | Microsoft Docs'
-description: Azure Active Directory と PerformanceCentre の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と PerformanceCentre の統合 | Microsoft Docs"
+description: "Azure Active Directory と PerformanceCentre の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 65288c32-f7e6-4eb3-a6dc-523c3d748d1c
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9b8c63d512f49a9b1478642f9f6733c849e3f48d
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-performancecentre"></a>チュートリアル: Azure Active Directory と PerformanceCentre の統合
+# <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>チュートリアル: Azure Active Directory と PerformanceCentre の統合
 このチュートリアルの目的は、PerformanceCentre と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
 PerformanceCentre と Azure AD の統合には、次の利点があります。 
 
@@ -127,7 +131,7 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 10. **[Entity Base URL]** と **[Entity ID URL]** の値が正しいことを確認します。
     
      ![Azure AD のシングル サインオン][14]
-11. Azure AD クラシック ポータルで、[single sign-on configuration confirmation](シングル サインオンの構成の確認.md) を選択し、 **[次へ]**をクリックします。 
+11. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。 
     
      ![Azure AD のシングル サインオン][15]
 12. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
@@ -155,16 +159,16 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_05.png)  
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -278,6 +282,6 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

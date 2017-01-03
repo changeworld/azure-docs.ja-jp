@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Stream Analytics とは](stream-analytics-introduction.md)
 ## [Storm と Stream Analytics を比較する](stream-analytics-comparison-storm.md)
 

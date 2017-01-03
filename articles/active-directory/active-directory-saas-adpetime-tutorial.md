@@ -150,7 +150,7 @@ SAML アサーションを構成する前に、ADP eTime サポート チーム�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_10.png)
    
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[検索]** ボックスに「**ADP eTime**」と入力し、関連リンクをクリックします。 
+    f. **[検索]** ボックスに「**ADP eTime**」と入力し、関連リンクをクリックします。 
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_11.png)
    
@@ -226,7 +226,7 @@ SAML アサーションを構成する前に、ADP eTime サポート チーム�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-a-adp-etime-test-user"></a>ADP eTime テスト ユーザーの作成
 このセクションの目的は、ADP eTime で Britta Simon というユーザーを作成することです。 ADP eTime サポート チームと協力し、ADP eTime アカウントにユーザーを追加してください。 
@@ -285,6 +285,6 @@ SAML アサーションを構成する前に、ADP eTime サポート チーム�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

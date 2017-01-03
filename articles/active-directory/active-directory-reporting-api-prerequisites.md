@@ -168,6 +168,6 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

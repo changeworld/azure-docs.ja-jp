@@ -1,4 +1,4 @@
-# Overview
+# 概要
 
 ## [Container Registry とは](container-registry-intro.md)
 

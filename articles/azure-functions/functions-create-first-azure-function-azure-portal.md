@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 638054fb49ace081a7d67817d9dcecb8f5ca1a94
-ms.openlocfilehash: b2ad194b62b61e3b16d660718aee155ff2dbf197
+ms.sourcegitcommit: 8d7823b6ecbc1a762839fc620f76d0bf4687d8fa
+ms.openlocfilehash: 5b33a36a3415efd2bc4673999806aa797f4a1c9f
 
 
 ---
@@ -35,9 +35,9 @@ Function App は、Azure での関数の実行をホストします。 次の手
 1. [Azure Portal](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 2. **[+新規]** > **[Compute]** > **[Function App]** をクリックし、**[サブスクリプション]** を選択します。Function App を識別する一意の**アプリ名**を入力し、次の設定を指定します。
    
-   * **[[リソース グループ]](../azure-resource-manager/resource-group-overview.md)**: **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 既存のリソース グループを選択することもできますが、Function App の動的 App Service プランを作成できない場合があります。
+   * **[[リソース グループ]](../azure-resource-manager/resource-group-overview.md)**: **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 既存のリソース グループを選択することもできますが、関数アプリ用の使用量ベースの App Service プランを作成できない場合があります。
    * **[ホスティング プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)**は、次のいずれかになります。 
-     * **動的プラン**: Azure Functions の既定のプランの種類です。 動的プランを選択したときは、**[場所]** の選択と **[メモリ割り当て]** (MB 単位) の設定も行う必要があります。 メモリ割り当てのコストへの影響については、 [Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページをご覧ください。 
+     * **従量課金プラン**: Azure Functions の既定のプランの種類です。 従量課金プランを選択した場合は、**[場所]** の選択と **[メモリ割り当て]** (MB 単位) の設定も行う必要があります。 メモリ割り当てのコストへの影響については、 [Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページをご覧ください。 
      * **App Service プラン**: App Service プランの場合、**App Service プラン/場所**を作成するか、既存のものを選択する必要があります。 これらの設定により、アプリに関連付けられる [場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/) が決まります。  
    * **[ストレージ アカウント]**: 各 Function App には、ストレージ アカウントが必要です。 既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。 
      
@@ -77,7 +77,7 @@ Azure Functions クイック スタートには機能コードが含まれてい
 * [Azure Functions のテスト](functions-test-a-function.md)  
    関数をテストするための各種ツールと手法について説明します。
 * [Azure Functions のスケーリング方法](functions-scale.md)  
-  Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。 
+  Azure Functions で利用できるサービス プラン (使用量ベースの App Service プランを含む) と、適切なプランを選択する方法について説明します。 
 * [Azure App Service とは](../app-service/app-service-value-prop-what-is.md)  
    Azure Functions では、デプロイ、環境変数、診断などの主要機能に Azure App Service プラットフォームを使用します。 
 

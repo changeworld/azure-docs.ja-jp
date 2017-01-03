@@ -1,4 +1,4 @@
-# Overview
+# 概要
 
 ## [はじめに](storage-introduction.md)
 
@@ -107,8 +107,43 @@
 ## データの転送
 ### [Storage との間でデータを移動する](storage-moving-data.md)
 ### [AzCopy コマンドライン ユーティリティ](storage-use-azcopy.md)
-### [Blob Storage 用の Import/Export サービス](storage-import-export-service.md)
-
+### [インポート/エクスポート サービスを使用する](storage-import-export-service.md)
+### [インポート/エクスポート ツールを使用する](storage-import-export-tool-how-to.md)
+#### [インポート/エクスポート ツールを設定する](storage-import-export-tool-setup.md)
+#### [インポート ジョブ用のハード ドライブを準備する](storage-import-export-tool-preparing-hard-drives-import.md)
+##### [インポート処理中にプロパティとメタデータを設定する](storage-import-export-tool-setting-properties-metadata-import.md)
+##### [インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
+##### [インポート ジョブで頻繁に使用するコマンドのクイック リファレンス](storage-import-export-tool-quick-reference.md)
+#### [エクスポート ジョブのドライブ使用率のプレビュー](storage-import-export-tool-previewing-drive-usage-export-v1.md)
+#### [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)
+#### [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)
+#### [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)
+#### [インポート/エクスポート ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
+#### [インポート/エクスポート サービスのマニフェスト ファイルの形式](storage-import-export-file-format-manifest.md)
+#### [インポート/エクスポート サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)
+#### [インポート/エクスポート サービスのログ ファイルの形式](storage-import-export-file-format-log.md)
+### [インポート/エクスポート ツール (v1) を使用する](storage-import-export-tool-how-to-v1.md)
+#### [インポート/エクスポート ツールを設定する](storage-import-export-tool-setup-v1.md)
+#### [インポート ジョブ用のハード ドライブを準備する](storage-import-export-tool-preparing-hard-drives-import-v1.md)
+##### [インポート処理中にプロパティとメタデータを設定する](storage-import-export-tool-setting-properties-metadata-import-v1.md)
+##### [インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)
+##### [インポート ジョブで頻繁に使用するコマンドのクイック リファレンス](storage-import-export-tool-quick-reference-v1.md)
+#### [エクスポート ジョブのドライブ使用率のプレビュー](storage-import-export-tool-previewing-drive-usage-export-v1.md)
+#### [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)
+#### [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)
+#### [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)
+#### [インポート/エクスポート ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
+#### [インポート/エクスポート サービスのマニフェスト ファイルの形式](storage-import-export-file-format-manifest.md)
+#### [インポート/エクスポート サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)
+#### [インポート/エクスポート サービスのログ ファイルの形式](storage-import-export-file-format-log.md)
+### [Azure Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)
+#### [インポート ジョブの作成](storage-import-export-creating-an-import-job.md)
+#### [エクスポート ジョブの作成](storage-import-export-creating-an-export-job.md)
+#### [ジョブの状態情報の取得](storage-import-export-retrieving-state-info-for-a-job.md)
+#### [ジョブの列挙](storage-import-export-enumerating-jobs.md)
+#### [ジョブのキャンセルと削除](storage-import-export-cancelling-and-deleting-jobs.md)
+#### [ドライブ マニフェストのバックアップ](storage-import-export-backing-up-drive-manifests.md)
+#### [インポート/エクスポート ジョブの診断とエラーからの回復](storage-import-export-diagnostics-and-error-recovery.md)
 # リファレンス
 ## [PowerShell](/powershell/storage)
 ## [Azure CLI](/cli/azure/storage)
@@ -166,6 +201,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

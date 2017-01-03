@@ -12,14 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 11/07/2016
+ms.date: 12/15/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 645fa2574efb9501da173f8ac8aea146d1e79ff8
+ms.sourcegitcommit: e048e70714c260fcb13ec5ca53434173026eb8d8
+ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 
 
 ---
+
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>.NET SDK を使用したオンデマンド コンテンツ配信の概要
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
@@ -33,7 +34,18 @@ ms.openlocfilehash: 645fa2574efb9501da173f8ac8aea146d1e79ff8
 
 チュートリアルでは Media Services の基本的なワークフローや、Media Services 開発に必要となる一般的なプログラミング オブジェクトやタスクについて紹介します。 このチュートリアルを完了すると、サンプル メディア ファイルをアップロード、エンコード、ダウンロードして、ストリーミングやプログレッシブ ダウンロードを実行できます。
 
+### <a name="ams-model"></a>AMS モデル
+
+次の図は、Media Services OData モデルに対する VoD アプリケーションの開発時に最もよく使用されるオブジェクトの一部を示しています。 
+
+画像をクリックすると、フル サイズで表示されます。  
+
+<a href="./media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
+
+モデル全体は、[こちら](https://media.windows.net/API/$metadata?api-version=2.14)で確認できます。  
+
 ## <a name="what-youll-learn"></a>学習内容
+
 このチュートリアルでは、次のタスクの実行方法を示します。
 
 1. Media Services アカウントの作成 (Azure ポータルを使用)
@@ -54,9 +66,6 @@ ms.openlocfilehash: 645fa2574efb9501da173f8ac8aea146d1e79ff8
 * オペレーティング システム: Windows 8 以降、Windows 2008 R2、Windows 7。
 * .NET Framework 4.0 以降
 * Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降のバージョン。
-
-## <a name="download-sample"></a>サンプルのダウンロード
-[ここ](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)からサンプルを取得し、実行します。
 
 ## <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>Azure Portal を使用した Azure Media Services アカウントの作成
 このセクションでは、AMS アカウントを作成する方法について説明します。
@@ -86,9 +95,9 @@ ms.openlocfilehash: 645fa2574efb9501da173f8ac8aea146d1e79ff8
     AMS アカウントを管理するには (ビデオのアップロード、資産のエンコード、ジョブの進行の監視など)、 **[設定]** ウィンドウを使用します。
 
 ## <a name="configure-streaming-endpoints-using-the-azure-portal"></a>Azure Portal を使用したストリーミング エンドポイントの構成
-クライアントに対するアダプティブ ビットレート ストリーミングでのビデオ配信は、Azure Media Services の代表的な用途の 1 つです。 Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
+クライアントに対するアダプティブ ビットレート ストリーミングでのビデオ配信は、Azure Media Services の代表的な用途の 1 つです。 Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、および MPEG DASH です。
 
-Media Services にはダイナミック パッケージ機能があり、アダプティブ ビットレート MP4 でエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、スムーズ ストリーミング、HDS) でそのまますぐに配信することができます。つまり、事前にパッケージされたこれらのストリーミング形式のバージョンを保存しておく必要がありません。
+Media Services にはダイナミック パッケージ機能があり、アダプティブ ビットレート MP4 でエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまますぐに配信することができます。つまり、事前にパッケージされたこれらのストリーミング形式のバージョンを保存しておく必要がありません。
 
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
@@ -145,7 +154,7 @@ Media Services にはダイナミック パッケージ機能があり、アダ�
         using System.Threading;
         using System.IO;
         using Microsoft.WindowsAzure.MediaServices.Client;
-6. プロジェクト ディレクトリに新しいフォルダーを作成し、エンコード、ストリーミング、プログレッシブ ダウンロードの対象となる .mp4 ファイルか .wmv ファイルをコピーします。 この例では、"C:\VideoFiles" というパスを使用しています。
+6. 新しいフォルダーをローカル ドライブの任意の場所に作成し、エンコードしてストリーミングするかプログレッシブ ダウンロードする .mp4 ファイルをコピーします。 この例では、"C:\VideoFiles" というパスを使用しています。
 
 ## <a name="connect-to-the-media-services-account"></a>Media Services アカウントへの接続
 
@@ -153,6 +162,7 @@ Media Services を .NET で使用するとき、Media Services に関連した�
 
 既定の Program クラスを次のコードで上書きします。 このコードは、App.config ファイルから接続値を読み取り、 **CloudMediaContext** オブジェクトを作成して Media Services に接続する方法を示しています。 Media Services への接続の詳細については、「 [Media Services SDK for .NET を使用した Media Services への接続](http://msdn.microsoft.com/library/azure/jj129571.aspx)」をご覧ください。
 
+メディア ファイルのある場所に合わせて、ファイル名とパスを更新してください。
 
 **Main** 関数で呼び出すメソッドは、この後、定義していきます。
 
@@ -183,7 +193,7 @@ Media Services を .NET で使用するとき、Media Services に関連した�
                 _context = new CloudMediaContext(_cachedCredentials);
 
                 // Add calls to methods defined in this section.
-
+        // Make sure to update the file name and path to where you have your media file.
                 IAsset inputAsset =
                     UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.None);
 
@@ -246,7 +256,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a>一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
 Media Services に取り込んだ資産には、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。 高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。 これらのアクティビティはジョブと呼ばれ、各ジョブは、資産ファイルの実際の作業を実行するアトミック タスクで構成されます。
 
-冒頭で述べたように、Azure Media Services の代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。 Media Services では、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) のいずれかの形式に一連のアダプティブ ビットレート MP4 ファイルを動的にパッケージ化することができます。
+冒頭で述べたように、Azure Media Services の代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。 Media Services では、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG DASH のいずれかの形式に一連のアダプティブ ビットレート MP4 ファイルを動的にパッケージ化することができます。
 
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
@@ -255,9 +265,8 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 
 以下のコードは、エンコーディング ジョブの送信方法を示したものです。 このジョブには、 **Media Encoder Standard**を使用して mezzanine ファイルを一連のアダプティブ ビットレート MP4 にトランスコードするよう指定するタスクが 1 つ存在します。 このコードは、ジョブを送信してその完了を待機します。
 
-ジョブが完了したら、資産をストリーミングしたり、コード変換によって作成された MP4 ファイルをプログレッシブにダウンロードしたりできます。
-MP4 ファイルをプログレッシブにダウンロードするためにオンデマンド ストリーミング ユニットを取得する必要はありません。
-
+エンコード ジョブが完了したら、資産を発行し、MP4 ファイルのストリーミングまたはプログレッシブ ダウンロードを行うことができるようになります。
+ 
 次のメソッドを Program クラスに追加します。
 
     static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
@@ -298,23 +307,26 @@ MP4 ファイルをプログレッシブにダウンロードするためにオ�
 
 資産をストリーミングまたはダウンロードするにはまず、ロケーターを作成して資産を「発行」する必要があります。 資産に含まれているファイルには、ロケーターを通じてアクセスできます。 Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に、Access Signature (SAS) ロケーターはメディア ファイルのダウンロードに使用します (SAS ロケーターの詳細については、[こちら](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/)のブログをご覧ください)。
 
-ロケーターを作成したら、対象ファイルのストリーミングやダウンロードに使用する URL を作成します。
+### <a name="some-details-about-url-formats"></a>URL 形式の詳細
 
-スムーズ ストリーミングのストリーミング URL の形式は次のとおりです。
+ロケーターを作成したら、対象ファイルのストリーミングやダウンロードに使用する URL を作成できます。 このチュートリアルのサンプルでは、適切なブラウザーに貼り付けることができる URL を出力します。 このセクションでは、さまざまな形式の簡単な例を示します。 
 
-     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
+#### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>MPEG DASH のストリーミング URL の形式は次のとおりです。
 
-HLS のストリーミング URL の形式は次のとおりです。
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest**(format=mpd-time-csf)**
 
-     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+#### <a name="a-streaming-url-for-hls-has-the-following-format"></a>HLS のストリーミング URL の形式は次のとおりです。
 
-MPEG DASH のストリーミング URL の形式は次のとおりです。
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest**(format=m3u8-aapl)**
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+#### <a name="a-streaming-url-for-smooth-streaming-has-the-following-format"></a>スムーズ ストリーミングのストリーミング URL の形式は次のとおりです。
+
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest
+
 
 ファイルをダウンロードするための SAS URL の形式は次のとおりです。
 
-    {blob container name}/{asset name}/{file name}/{SAS signature}
+{BLOB コンテナー名}/{資産名}/{ファイル名}/{SAS 署名}
 
 Media Services .NET SDK Extensions には、発行済みの資産の URL を正しい形式で取得できるヘルパー メソッドが用意されています。
 
@@ -388,6 +400,7 @@ Media Services .NET SDK Extensions には、発行済みの資産の URL を正�
     }
 
 ## <a name="test-by-playing-your-content"></a>コンテンツを再生することでテストする
+
 前のセクションで定義したプログラムを実行すると、コンソール ウィンドウに次のような URL が表示されます。
 
 アダプティブ ストリーミングの URL:
@@ -423,9 +436,18 @@ MPEG DASH
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
 
-ビデオをストリーミングするには、 [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)を使用します。
+ビデオをストリーミングするには、[Azure Media Services プレーヤー](http://amsplayer.azurewebsites.net/azuremediaplayer.html)の URL テキスト ボックスに URL を貼り付けます。
 
 プログレッシブ ダウンロードをテストするには、ブラウザー (Internet Explorer、Chrome、Safari など) に URL を貼り付けます。
+
+詳細については、次のトピックを参照してください。
+
+- [既存のプレーヤーによるコンテンツの再生](media-services-playback-content-with-existing-players.md)
+- [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
+- [DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み](media-services-embed-mpeg-dash-in-html5.md)
+
+## <a name="download-sample"></a>サンプルのダウンロード
+このチュートリアルで作成したコードは、[このサンプル コード](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)に含まれています。
 
 ## <a name="next-steps-media-services-learning-paths"></a>次のステップ: Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -445,6 +467,6 @@ MPEG DASH
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

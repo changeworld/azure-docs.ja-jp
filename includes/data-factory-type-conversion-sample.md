@@ -5,43 +5,44 @@ BLOB のデータセットは CSV 形式で、3 つの列を含んでいると�
 
 次のように、列の種類と、コピー元のBLOB データセットを定義します。
 
+```json
+{
+    "name": "AzureBlobTypeSystemInput",
+    "properties":
     {
-        "name": "AzureBlobTypeSystemInput",
-        "properties":
-        {
-             "structure": 
-              [
-                    { "name": "userid", "type": "Int64"},
-                    { "name": "name", "type": "String"},
-                    { "name": "lastlogindate", "type": "Datetime", "culture": "fr-fr", "format": "ddd-MM-YYYY"}
-              ],
-            "type": "AzureBlob",
-            "linkedServiceName": "StorageLinkedService",
-            "typeProperties": {
-                "folderPath": "mycontainer/myfolder",
-                "fileName":"myfile.csv",
-                "format":
-                {
-                    "type": "TextFormat",
-                    "columnDelimiter": ","
-                }
-            },
-            "external": true,
-            "availability":
+         "structure": 
+          [
+                { "name": "userid", "type": "Int64"},
+                { "name": "name", "type": "String"},
+                { "name": "lastlogindate", "type": "Datetime", "culture": "fr-fr", "format": "ddd-MM-YYYY"}
+          ],
+        "type": "AzureBlob",
+        "linkedServiceName": "StorageLinkedService",
+        "typeProperties": {
+            "folderPath": "mycontainer/myfolder",
+            "fileName":"myfile.csv",
+            "format":
             {
-                "frequency": "Hour",
-                "interval": 1
-            },
-            "policy": {
-                "externalData": {
-                    "retryInterval": "00:01:00",
-                    "retryTimeout": "00:10:00",
-                    "maximumRetry": 3
-                }
+                "type": "TextFormat",
+                "columnDelimiter": ","
+            }
+        },
+        "external": true,
+        "availability":
+        {
+            "frequency": "Hour",
+            "interval": 1
+        },
+        "policy": {
+            "externalData": {
+                "retryInterval": "00:01:00",
+                "retryTimeout": "00:10:00",
+                "maximumRetry": 3
             }
         }
     }
-
+}
+```
 上部で SQL タイプが .NET 型マッピング テーブルに指定されるので、次のスキーマで Azure SQL テーブルを定義します。
 
 | 列名 | SQL 型 |
@@ -50,27 +51,32 @@ BLOB のデータセットは CSV 形式で、3 つの列を含んでいると�
 | name |テキスト |
 | lastlogindate |datetime |
 
-続いて、次のように Azure SQL のデータセットを定義します。 注: 基になるデータ ストアで既に指定されているため、“structure” セクションのタイプ情報を指定する必要はありません。
+続いて、次のように Azure SQL のデータセットを定義します。 
 
-    {
-        "name": "AzureSQLOutput",
-        "properties": {
-            "type": "AzureSqlTable",
-            "linkedServiceName": "AzureSqlLinkedService",
-            "typeProperties": {
-                "tableName": "MyTable"
-            },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            }
+> [!NOTE]
+> 基になるデータ ストアで既に指定されているため、**structure** セクションのタイプ情報を指定する必要はありません。
+
+```json
+{
+    "name": "AzureSQLOutput",
+    "properties": {
+        "type": "AzureSqlTable",
+        "linkedServiceName": "AzureSqlLinkedService",
+        "typeProperties": {
+            "tableName": "MyTable"
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
         }
     }
+}
+```
 
 ここでは、データを BLOB から Azure SQL に移動するときに、データ ファクトリはカスタム日付/時刻を持つ Datetime フィールドを含むタイプ変換を、fr-fr カルチャを使用して自動的に実行します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

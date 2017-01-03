@@ -1,23 +1,28 @@
 ---
-title: Azure SQL Database のアクティブ geo レプリケーション
-description: アクティブ Geo レプリケーションにより、任意の Azure データ センターでデータベースのレプリカを 4 つ設定できます。
+title: "Azure SQL Database のアクティブ geo レプリケーション"
+description: "アクティブ Geo レプリケーションにより、任意の Azure データ センターでデータベースのレプリカを 4 つ設定できます。"
 services: sql-database
 documentationcenter: na
-author: stevestein
+author: anosov1960
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 2a29f657-82fb-4283-9a83-e14a144bfd93
 ms.service: sql-database
+ms.custom: business continuity
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 09/26/2016
-ms.author: sstein
+ms.author: sashan;carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 521bdc1bc13451210ccc3f5eefcfa903166031bc
+ms.openlocfilehash: ad5172865becf203cc42d84805ecaf40b046bd98
+
 
 ---
-# <a name="overview:-sql-database-active-geo-replication"></a>概要: Azure SQL Database のアクティブ geo レプリケーション
-アクティブ geo レプリケーションにより、同じまたは異なるデータ センターの場所 (リージョン) に最大 4 つの読み取り可能なセカンダリ データベースを構成できます。 セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合のクエリとフェールオーバーに使用できます。
+# <a name="overview-sql-database-active-geo-replication"></a>概要: Azure SQL Database のアクティブ geo レプリケーション
+アクティブ geo レプリケーションにより、同じまたは異なるデータ センターの場所 (リージョン) に最大 4 つの読み取り可能なセカンダリ データベースを構成できます。 セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合のクエリとフェールオーバーに使用できます。 アクティブ geo レプリケーションは、同じサブスクリプション内のデータベース間である必要があります。
 
 > [!NOTE]
 > すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。 2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
@@ -97,7 +102,7 @@ ms.author: sstein
 * **Azure Resource Manager API とロール ベース セキュリティ**: アクティブ geo レプリケーションには、管理のための [Azure Resource Manager API](https://msdn.microsoft.com/library/azure/mt163571.aspx) 一式 ([Azure Resource Manager ベースの PowerShell コマンドレット](sql-database-geo-replication-powershell.md)など) が含まれています。 これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、 [Azure のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)に関するページをご覧ください。
 
 > [!NOTE]
-> アクティブ geo レプリケーションの多くの新機能は [Azure Resource Manager](../resource-group-overview.md) ベースの [Azure SQL REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) と [Azure SQL Database PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)を使用する場合のみサポートされます。 (クラシック) REST API (https://msdn.microsoft.com/library/azure/dn505719.aspx) と [Azure SQL Database (クラシック) コマンドレット](https://msdn.microsoft.com/library/azure/dn546723.aspx)では、下位互換性がサポートされているため、Azure Resource Manager ベースの API の使用が推奨されています。 
+> アクティブ geo レプリケーションの多くの新機能は [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) ベースの [Azure SQL REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) と [Azure SQL Database PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)を使用する場合のみサポートされます。 (クラシック) REST API (https://msdn.microsoft.com/library/azure/dn505719.aspx) と [Azure SQL Database (クラシック) コマンドレット](https://msdn.microsoft.com/library/azure/dn546723.aspx)では、下位互換性がサポートされているため、Azure Resource Manager ベースの API の使用が推奨されています。 
 > 
 > 
 
@@ -141,6 +146,9 @@ ms.author: sstein
 * 自動バックアップを使用したアーカイブについては、 [データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 * 新しいプライマリ サーバーとデータベースの認証要件については、 [障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関する記事を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

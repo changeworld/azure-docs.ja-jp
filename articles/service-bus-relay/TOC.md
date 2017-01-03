@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [リレーとは](relay-what-is-it.md)
 ## [FAQ](relay-faq.md)
 

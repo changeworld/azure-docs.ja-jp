@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 10/26/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
-ms.openlocfilehash: 94a212b88d080510ad8a96bb40bb2c48d7f88a4f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fbc03ebf0c66950ae92ca75cf34da86dfb15a349
 
 
 ---
@@ -111,6 +111,6 @@ Microsoft Office 365 ID プラットフォームの AD FS 証明書利用者信�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

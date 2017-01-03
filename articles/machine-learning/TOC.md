@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Machine Learning とは](machine-learning-what-is-machine-learning.md)
 ## Machine Learning Studio
 ### [Studio とは](machine-learning-what-is-ml-studio.md)

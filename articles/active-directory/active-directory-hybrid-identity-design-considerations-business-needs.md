@@ -1,12 +1,12 @@
 ---
-title: Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ID 要件の決定 | Microsoft Docs
-description: ハイブリッド ID 設計の要件を定義するための会社のビジネス ニーズを特定します。
-documentationcenter: ''
+title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ID 要件の決定 | Microsoft Docs"
+description: "ハイブリッド ID 設計の要件を定義するための会社のビジネス ニーズを特定します。"
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: de690978-84ef-41ad-9dfe-785722d343a1
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/08/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 73b5a52b143d17283f677ce3181d8381db41d3c4
+
 
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの ID 要件の決定
@@ -105,6 +109,9 @@ ms.author: billmath
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Service Bus メッセージングとは](service-bus-queues-topics-subscriptions.md)
 ## [Azure キューと Service Bus キューを比較する](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 ## [FAQ](service-bus-faq.md)

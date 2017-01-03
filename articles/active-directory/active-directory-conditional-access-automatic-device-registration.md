@@ -1,12 +1,12 @@
 ---
-title: Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録 | Microsoft Docs
-description: IT 管理者は、ドメイン参加済みの Windows デバイスをサイレント モードで自動的に Azure Active Directory (Azure AD) に登録できます。
+title: "Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録 | Microsoft Docs"
+description: "IT 管理者は、ドメイン参加済みの Windows デバイスをサイレント モードで自動的に Azure Active Directory (Azure AD) に登録できます。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5c387c5355957fea0ccffe58e707fae3d2e77c34
+
 
 ---
-# <a name="automatic-device-registration-with-azure-active-directory-for-windows-domainjoined-devices"></a>Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録
+# <a name="automatic-device-registration-with-azure-active-directory-for-windows-domain-joined-devices"></a>Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録
 IT 管理者は、ドメイン参加済みの Windows デバイスをサイレント モードで自動的に Azure Active Directory (Azure AD) に登録できます。 これは、デバイスに基づいて条件付きでアクセスを許可するポリシーを Office 365 アプリケーションまたは AD FS によってオンプレミスで管理されているアプリケーションに対して構成している場合に役立ちます。 デバイス登録のシナリオの詳細については、「 [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)」を参照してください。
 
 > AZURE.NOTE デバイスの自動登録をセットアップする最新手順については、「 [Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の設定方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。
@@ -93,6 +97,9 @@ AD FS を使用したデバイス登録のデプロイに関する詳細につ�
 * [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 * [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 
