@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: 48821a3b2b7da4646c4569cc540d867f02a4a32f
-ms.openlocfilehash: 6dc23714a4a052c7bf0bb5162fe1568ec272b5e3
+ms.sourcegitcommit: 4e2508883998b1435d7c4f099bd6ef0e00bd885e
+ms.openlocfilehash: 4f9127ca06668884e6b6f5dbc81aad0a2b1ea9df
 
 
 ---
@@ -185,7 +185,7 @@ ms.openlocfilehash: 6dc23714a4a052c7bf0bb5162fe1568ec272b5e3
   > 古いバージョンの Windows Server 2008 または 2008 R2 を実行している場合でもこの機能を使用できますが、クラウドでローカル AD パスワード ポリシーを適用するには、 [KB 2386717 をダウンロードおよびインストール](https://support.microsoft.com/kb/2386717) する必要があります。
   > 
   > 
-* Azure AD Connect ツールをインストールし、クラウドに同期するための AD 環境が準備されている。  詳細については、 [クラウド内のオンプレミスの ID インフラストラクチャの使用](active-directory-aadconnect.md)を参照してください。
+* Azure AD Connect ツールをインストールし、クラウドに同期するための AD 環境が準備されている。  詳細については、 [クラウド内のオンプレミスの ID インフラストラクチャの使用](connect/active-directory-aadconnect.md)を参照してください。
   
   > [!NOTE]
   > パスワード ライトバックをテストする前に、Azure AD Connect で AD と Azure AD の両方から、フル インポートと完全同期を完了していることを確認してください。
@@ -199,7 +199,7 @@ ms.openlocfilehash: 6dc23714a4a052c7bf0bb5162fe1568ec272b5e3
   > 
 
 ### <a name="step-1-download-the-latest-version-of-azure-ad-connect"></a>手順 1: Azure AD Connect の最新バージョンをダウンロードする
-パスワード ライトバックは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0419.0911** 以降の Azure AD Sync ツールで使用できます。  アカウントが自動的にロック解除されるパスワード ライトバックが使用できるのは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0485.0222** 以降の Azure AD Sync ツールです。 以前のバージョンを実行している場合は、続行する前に、少なくともこのバージョンにアップグレードしてください。 [ここをクリックすると、Azure AD Connect の最新バージョンをダウンロードできます。](active-directory-aadconnect.md#install-azure-ad-connect)
+パスワード ライトバックは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0419.0911** 以降の Azure AD Sync ツールで使用できます。  アカウントが自動的にロック解除されるパスワード ライトバックが使用できるのは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0485.0222** 以降の Azure AD Sync ツールです。 以前のバージョンを実行している場合は、続行する前に、少なくともこのバージョンにアップグレードしてください。 [ここをクリックすると、Azure AD Connect の最新バージョンをダウンロードできます。](connect/active-directory-aadconnect.md#install-azure-ad-connect)
 
 #### <a name="to-check-the-version-of-azure-ad-sync"></a>Azure AD Sync のバージョンを確認するには
 1. **%ProgramFiles%\Azure Active Directory Sync\** に移動します。
@@ -393,6 +393,6 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

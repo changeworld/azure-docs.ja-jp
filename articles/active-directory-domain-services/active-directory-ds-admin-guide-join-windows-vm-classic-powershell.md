@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
-ms.openlocfilehash: 6f952fc8ae2ab065c3e1aa5f1a5622ee894d6fd1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4eb9a5c4087fc7e91d79a7789a261d590485555a
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 6f952fc8ae2ab065c3e1aa5f1a5622ee894d6fd1
 
 これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。 この方法は、PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。 PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
-まだ完了していない場合は、 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md) に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。 次に、Windows PowerShell コマンド プロンプトを開きます。
+まだ完了していない場合は、 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs) に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。 次に、Windows PowerShell コマンド プロンプトを開きます。
 
 ## <a name="step-1-add-your-account"></a>手順 1: アカウントを追加する
 1. PowerShell プロンプトで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。
@@ -160,6 +160,6 @@ VM のサブネットを設定します。
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO5-->
 
 

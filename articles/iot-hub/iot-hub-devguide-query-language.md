@@ -1,12 +1,12 @@
 ---
-title: 開発者ガイド - クエリ言語 | Microsoft Docs
-description: Azure IoT Hub 開発者ガイド - ツイン、メソッド、ジョブに関する情報を IoT Hub から取得するためのクエリ言語の説明
+title: "開発者ガイド - IoT Hub クエリ言語 | Microsoft Docs"
+description: "Azure IoT Hub 開発者ガイド - デバイス ツインとジョブに関する情報を IoT Hub から取得するための、SQL のような IoT HUb クエリ言語の説明"
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 851a9ed3-b69e-422e-8a5d-1d79f91ddf15
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -14,18 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2016
 ms.author: elioda
+translationtype: Human Translation
+ms.sourcegitcommit: 627de0ca1647e98e08165521e7d3a519e1950296
+ms.openlocfilehash: 8007c6864368868d9cb489236d958eeada8789bd
+
 
 ---
-# <a name="reference---query-language-for-twins-and-jobs"></a>リファレンス - ツインとジョブのクエリ言語
-## <a name="overview"></a>概要
+# <a name="reference---iot-hub-query-language-for-device-twins-and-jobs"></a>リファレンス - デバイス ツインとジョブの IoT HUb クエリ言語
+## <a name="overview"></a>Overview
 IoT Hub には SQL に似た強力な言語が備わっており、[デバイス ツイン][lnk-twins]や[ジョブ][lnk-jobs]に関する情報を取得できます。 この記事で取り扱う内容は次のとおりです。
 
 * IoT Hub のクエリ言語の主な機能の説明
 * 言語の詳しい説明
 
-## <a name="getting-started-with-twin-queries"></a>ツインのクエリの概要
+## <a name="getting-started-with-device-twin-queries"></a>デバイス ツインのクエリの概要
 [デバイス ツイン][lnk-twins]には、任意の JSON オブジェクトをタグおよびプロパティとして含めることができます。 IoT Hub では、デバイス ツインに関するすべての情報を含む 1 つの JSON ドキュメントとしてデバイス ツインにクエリを実行できます。
-たとえば、IoT Hub ツインが次の構造を持っていると仮定します。
+たとえば、IoT Hub デバイス ツインが次の構造を持っていると仮定します。
 
         {                                                                      
             "deviceId": "myDeviceId",                                            
@@ -70,28 +74,33 @@ IoT Hub はデバイス ツインを **devices** という名前のドキュメ�
         SELECT * FROM devices
 
 > [!NOTE]
-> [IoT Hub SDK][lnk-hub-sdks] では、大量の結果をページングできます。
-> 
-> 
+> [Azure IoT Hub SDK][lnk-hub-sdks] では、大量の結果をページングできます。
+>
+>
 
-IoT Hub は、任意の条件でフィルター処理してツインを取得できます。 たとえば、
+IoT Hub は、任意の条件でフィルター処理してデバイス ツインを取得できます。 たとえば、
 
         SELECT * FROM devices
         WHERE tags.location.region = 'US'
 
-の場合、**US** に設定された **location.region** タグを取得します。
+の場合、**US** に設定された **location.region** タグの付いたデバイス ツインを取得します。
 ブール演算子と算術比較も同様にサポートされています。たとえば、
 
         SELECT * FROM devices
         WHERE tags.location.region = 'US'
             AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 
-の場合、米国にあり、テレメトリの送信頻度が 1 分未満に設定されているすべてのツインが取得されます。 必要に応じて、**IN** や **NIN** (含まれない) 演算子とともに配列定数も使用できます。 たとえば、
+の場合、米国にあり、テレメトリの送信頻度が 1 分未満に設定されているすべてのデバイス ツインが取得されます。 必要に応じて、**IN** や **NIN** (含まれない) 演算子とともに配列定数も使用できます。 たとえば、
 
         SELECT * FROM devices
         WHERE property.reported.connectivity IN ['wired', 'wifi']
 
-の場合、Wi-Fi 接続か有線接続を報告したツインをすべて取得します。 フィルター処理機能の詳細なリファレンスは、「[WHERE 句][lnk-query-where]」セクションをご覧ください。
+の場合、Wi-Fi 接続か有線接続を報告したデバイス ツインをすべて取得します。 特定のプロパティを含むすべてのデバイス ツインを識別する必要がある場合があります。 IoT Hub では、この目的で関数 `is_defined()` がサポートされています。 たとえば、
+
+        SELECT * FROM devices
+        WHERE is_defined(property.reported.connectivity)
+
+の場合、`connectivity` 報告プロパティを定義するデバイス ツインをすべて取得します。 フィルター処理機能の詳細なリファレンスは、「[WHERE 句][lnk-query-where]」セクションをご覧ください。
 
 グループ化と集計もサポートされています。 たとえば、
 
@@ -119,7 +128,7 @@ IoT Hub は、任意の条件でフィルター処理してツインを取得で
 
 上述の例では、3 つのデバイスが正常な構成を報告し、2 つは構成を適用中であり、1 つがエラーを報告しています。
 
-### <a name="c#-example"></a>C# の例
+### <a name="c-example"></a>C# の例
 クエリ機能は **RegistryManager** クラスの [C# service SDK][lnk-hub-sdks] で公開されます。
 簡単なクエリの使用例を次に示します。
 
@@ -127,14 +136,14 @@ IoT Hub は、任意の条件でフィルター処理してツインを取得で
         while (query.HasMoreResults)
         {
             var page = await query.GetNextAsTwinAsync();
-            foreach (var twin in page) 
+            foreach (var twin in page)
             {
                 // do work on twin object
             }
         }
 
 **query** オブジェクトがページ サイズ (最大 1000) でインスタンス化され、**GetNextAsTwinAsync** メソッドを複数回呼び出すことによって複数のページを取得できる様子をご確認ください。
-クエリ オブジェクトは、クエリが必要とする非シリアル化オプション (ツインやジョブ オブジェクト) や、プロジェクションを使用する際に使うプレーン JSON に応じて、複数の **Next\*** を公開します。
+クエリ オブジェクトは、クエリが必要とする非シリアル化オプション (デバイス ツインやジョブ オブジェクトなど) や、プロジェクションを使用する際に使うプレーン JSON に応じて、複数の **Next\*** を公開します。
 
 ### <a name="node-example"></a>ノードの例
 クエリ機能は **Registry** オブジェクトの [Node service SDK][lnk-hub-sdks] で公開されます。
@@ -158,10 +167,10 @@ IoT Hub は、任意の条件でフィルター処理してツインを取得で
         query.nextAsTwin(onResults);
 
 **query** オブジェクトがページ サイズ (最大 1000) でインスタンス化され、**nextAsTwin** メソッドを複数回呼び出すことによって複数のページを取得できる様子をご確認ください。
-クエリ オブジェクトは、クエリが必要とする非シリアル化オプション (ツインやジョブ オブジェクト) や、プロジェクションを使用する際に使うプレーン JSON に応じて、複数の **next\*** を公開します。
+クエリ オブジェクトは、クエリが必要とする非シリアル化オプション (デバイス ツインやジョブ オブジェクトなど) や、プロジェクションを使用する際に使うプレーン JSON に応じて、複数の **Next\*** を公開します。
 
 ### <a name="limitations"></a>制限事項
-現在のところ、プロジェクションは集計を使用する場合にのみサポートされます。集計されないクエリの場合は `SELECT *` のみを使用できます。 また、集計はグループ化と組み合わせた場合にのみサポートされます。
+現時点では、比較はプリミティブ型間 (オブジェクトなし) でのみサポートされます。たとえば、`... WHERE properties.desired.config = properties.reported.config` は、これらのプロパティがプリミティブ値を持つ場合にのみサポートされます。
 
 ## <a name="getting-started-with-jobs-queries"></a>ジョブのクエリの概要
 [ジョブ][lnk-jobs]には、一連のデバイスで演算子を実行する機能が備わっています。 各デバイス ツインにはジョブに関する情報が含まれます。これは、**jobs**.という名前のコレクションの一部です。
@@ -177,7 +186,7 @@ IoT Hub は、任意の条件でフィルター処理してツインを取得で
                 ...                                                                 
             },
             "jobs": [
-                { 
+                {
                     "deviceId": "myDeviceId",
                     "jobId": "myJobId",    
                     "jobType": "scheduleTwinUpdate",            
@@ -196,6 +205,11 @@ IoT Hub は、任意の条件でフィルター処理してツインを取得で
 
 現在のところ、このコレクションには IoT Hub のクエリ言語の **devices.jobs** でクエリを実行できます。
 
+> [!IMPORTANT]
+> 現時点では、デバイス ツインにクエリを実行した場合 (クエリに 'FROM devices' が含まれる場合)、ジョブのプロパティは返されません。 `FROM devices.jobs` を使用したクエリによる直接のアクセスのみが可能です。
+>
+>
+
 たとえば、1 つのデバイスに影響を与えるすべてのジョブ (過去のジョブおよびスケジュールが設定されたジョブ) を取得するには、次のクエリを使用することができます。
 
         SELECT * FROM devices.jobs
@@ -211,7 +225,7 @@ IoT Hub は、任意の条件でフィルター処理してツインを取得で
             AND devices.jobs.status = 'completed'
             AND devices.jobs.createdTimeUtc > '2016-09-01'
 
-この場合、デバイス **myDeviceId** に対して 2016 年 9 月以降に作成された、すべての完了したツインの更新ジョブが取得されます。
+この場合、デバイス **myDeviceId** に対して 2016 年 9 月以降に作成された、すべての完了したデバイス ツインの更新ジョブが取得されます。
 
 また、1 つのジョブによるデバイスごとの結果を取得することもできます。
 
@@ -258,15 +272,15 @@ SELECT 句 (**SELECT <select_list>**) は必須であり、クエリで取得す
             | <aggregate>
 
         <aggregate> :==
-            count(<projection_element>) | count()
-            | avg(<projection_element>) | avg()
-            | sum(<projection_element>) | sum()
-            | min(<projection_element>) | min()
-            | max(<projection_element>) | max()
+            count()
+            | avg(<projection_element>)
+            | sum(<projection_element>)
+            | min(<projection_element>)
+            | max(<projection_element>)
 
 この場合、**attribute_name** は FROM コレクションの JSON ドキュメントのプロパティを参照します。 SELECT 句の例は、「[ツインのクエリの概要][lnk-query-getstarted]」セクションに記載されています。
 
-現在のところ、**SELECT \*** 以外の選択句は、ツインの集計クエリでのみサポートされます。
+現在のところ、**SELECT \*** 以外の選択句は、デバイス ツインの集計クエリでのみサポートされています。
 
 ## <a name="group-by-clause"></a>GROUP BY 句
 **GROUP BY <group_specification>** 句はオプションの手順であり、WHERE 句で指定したフィルターの後か、SELECT で指定したプロジェクションの前で実行できます。 属性の値に基づいてドキュメントをグループ化します。 これらのグループを使用すると、SELECT 句で指定した方法で、集計された値が生成されます。
@@ -285,34 +299,37 @@ GROUP BY の正式な構文は次のとおりです。
             attribute_name
             | < group_by_element > '.' attribute_name
 
-この場合、**attribute_name** は FROM コレクションの JSON ドキュメントのプロパティを参照します。 
+この場合、**attribute_name** は FROM コレクションの JSON ドキュメントのプロパティを参照します。
 
-現在のところ、GROUP BY 句はツインに対するクエリの場合にのみサポートされます。
+現在のところ、GROUP BY 句はデバイス ツインに対するクエリの場合にのみサポートされています。
 
 ## <a name="expressions-and-conditions"></a>式と条件
 *式* とはおおまかに次のように言い表すことができます。
 
-* JSON 型 (ブール値、数値、文字列、配列、オブジェクト) のインスタンスに対して評価を行う
+* JSON 型 (ブール値、数値、文字列、配列、オブジェクトなど) のインスタンスに対して評価を行う
 * 組み込みの演算子と関数を使用するデバイス JSON ドキュメントと定数からくるデータの操作として定義される
 
-*条件*はブール値に対して評価する式のことです。つまり、ブール値 **true** と異なる定数はすべて **false** (**null**、**undefined**、オブジェクトまたは配列インスタンス、文字列、明らかなブール値 **false** を含む) と見なされます。
+*条件*はブール値に対して評価する式のことです。そのため、ブール値 **true** と異なる定数はすべて **false** (**null**、**undefined**、オブジェクトまたは配列インスタンス、文字列、明らかなブール値 **false** を含む) と見なされます。
 
 式の構文は次のとおりです。
 
         <expression> ::=
             <constant> |
             attribute_name |
-            unary_operator <expression> |
+            <function_call> |
             <expression> binary_operator <expression> |
             <create_array_expression> |
             '(' <expression> ')'
 
+        <function_call> ::=
+            <function_name> '(' expression ')'
+
         <constant> ::=
             <undefined_constant>
-            | <null_constant> 
-            | <number_constant> 
-            | <string_constant> 
-            | <array_constant> 
+            | <null_constant>
+            | <number_constant>
+            | <string_constant>
+            | <array_constant>
 
         <undefined_constant> ::= undefined
         <null_constant> ::= null
@@ -325,8 +342,8 @@ GROUP BY の正式な構文は次のとおりです。
 | シンボル | 定義 |
 | --- | --- |
 | attribute_name |FROM コレクションの JSON ドキュメントのプロパティ。 |
-| unary_operator |「演算子」セクションの単項演算子。 |
 | binary_operator |「演算子」セクションの 2 項演算子。 |
+| function_name| サポートされている関数は `is_defined()` のみです。 |
 | decimal_literal |10 進表記で表される浮動小数点数。 |
 | hexadecimal_literal |文字列 ‘0x’ の後に 16 進数の文字列を続けて表された数値。 |
 | string_literal |文字列リテラルは、0 個以上の Unicode 文字のシーケンスまたはエスケープ シーケンスによって表される Unicode 文字列です。 文字列リテラルは、単一引用符 (アポストロフィ: ') または二重引用符 (引用符:") で囲みます。 使用できるエスケープ: 4 つの 16 進数字によって定義された Unicode 文字の `\'`、`\"`、`\\`、`\uXXXX`。 |
@@ -341,11 +358,11 @@ GROUP BY の正式な構文は次のとおりです。
 | 比較 |=、!=、<、>、<=、>=、<> |
 
 ## <a name="next-steps"></a>次のステップ
-[IoT Hub SDK][lnk-hub-sdks] を使用して、アプリでクエリを実行する方法を学習します。
+[Azure IoT Hub SDK][lnk-hub-sdks] を使用して、アプリでクエリを実行する方法を説明します。
 
 [lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
 [lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions
-[lnk-query-getstarted]: iot-hub-devguide-query-language.md#getting-started-with-twin-queries
+[lnk-query-getstarted]: iot-hub-devguide-query-language.md#getting-started-with-device-twin-queries
 
 [lnk-twins]: iot-hub-devguide-device-twins.md
 [lnk-jobs]: iot-hub-devguide-jobs.md
@@ -356,6 +373,7 @@ GROUP BY の正式な構文は次のとおりです。
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO5-->
 
 

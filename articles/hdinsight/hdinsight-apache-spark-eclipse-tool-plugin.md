@@ -200,7 +200,7 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
    
    ![Spark Application local run result](./media/hdinsight-apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
-## <a name="feedback-known-issues"></a>フィードバックと既知の問題
+## <a name="feedback--known-issues"></a>フィードバックと既知の問題
 現在、Spark の出力を直接表示することはサポートされておらず、その実現に取り組んでいます。
 
 ご提案やフィードバックがある場合、またはこのツールを使用していて問題が発生した場合は、hdivstool@microsoft.com に電子メールをお送りください。

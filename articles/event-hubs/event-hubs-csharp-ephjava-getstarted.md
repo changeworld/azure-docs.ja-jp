@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 09/27/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 51d880650ab8059f3346b5c1272c232b49be33e9
+ms.sourcegitcommit: c9aa7cebab12eafe71476ee45ef578d3201e69e5
+ms.openlocfilehash: e7c38aa5a778d5e8a653e753e5794d7c7da31dc1
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 51d880650ab8059f3346b5c1272c232b49be33e9
 ## <a name="introduction"></a>はじめに
 Event Hubs は、接続されているデバイスとアプリケーションからの大量のイベント データ (テレメトリ) を処理するサービスです。 Event Hubs にデータを収集した後、ストレージ クラスターを使用してデータを格納したり、リアルタイムの分析プロバイダーを使用して転送できます。 この大規模なイベントの収集と処理の機能は、モノのインターネット (IoT) など最新アプリケーション アーキテクチャの重要なコンポーネントです。
 
-このチュートリアルでは、Azure クラシック ポータルを使用してイベント ハブを作成する方法を説明します。 また、C# に記述されるコンソール アプリケーションを使用して Event Hub にメッセージを収集し、Java のイベント プロセッサ ホスト ライブラリを使用して並列で取得する方法を学習します。
+このチュートリアルでは、Azure ポータルを使用して Event Hub を作成する方法を説明します。 また、C# に記述されるコンソール アプリケーションを使用して Event Hub にメッセージを収集し、Java のイベント プロセッサ ホスト ライブラリを使用して並列で取得する方法を学習します。
 
 このチュートリアルを完了するには、次のものが必要です。
 
@@ -52,22 +52,22 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 ## <a name="next-steps"></a>次のステップ
 Event Hub を作成し、データを送受信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
-* [Event Hubs を使用する完全なサンプル アプリケーション][Event Hubs を使用する完全なサンプル アプリケーション]。
-* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張]のサンプル。
-* [Event Hubs の概要][Event Hubs の概要]
+* [Event Hubs を使用する完全なサンプル アプリケーション][sample application that uses Event Hubs]
+* [Event Hubs でのイベント処理のスケールアウト][Scale out Event Processing with Event Hubs] サンプル
+* [Event Hubs の概要][Event Hubs overview]
 
 <!-- Images. -->
 [21]: ./media/event-hubs-csharp-ephjava-getstarted/ephjava.png
 [22]: ./media/event-hubs-csharp-ephjava-getstarted/cs-send.png
 
 <!-- Links -->
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
-[Event Hubs の概要]: event-hubs-overview.md
-[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Azure classic portal]: https://manage.windowsazure.com/
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

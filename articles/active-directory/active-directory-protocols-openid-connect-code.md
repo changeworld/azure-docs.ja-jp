@@ -1,12 +1,12 @@
 ---
-title: Azure AD .NET プロトコルの概要 | Microsoft Docs
-description: この記事では、Azure Active Directory と OpenID Connect を利用してテナントの Web アプリケーションと Web API へのアクセスを承認するために HTTP メッセージを使用する方法について説明します。
+title: "Azure AD .NET プロトコルの概要 | Microsoft Docs"
+description: "この記事では、Azure Active Directory と OpenID Connect を利用してテナントの Web アプリケーションと Web API へのアクセスを承認するために HTTP メッセージを使用する方法について説明します。"
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: 29142f7e-d862-4076-9a1a-ecae5bcd9d9b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: priyamo
+translationtype: Human Translation
+ms.sourcegitcommit: f1ad2206f1b2da35d4a442beb91c5fcf7cbcddf6
+ms.openlocfilehash: 37673952137b3fb7f4bca2759795ce1c96a9916d
+
 
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect と Azure Active Directory を使用する Web アプリケーションへのアクセスの承認
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 プロトコル上に構築された単純な ID 層です。 OAuth 2.0 では保護されたリソースにアクセスするための**アクセス トークン**を取得して使用するためのメカニズムを定義しますが、ID 情報を提供するための標準的な方法は定義しません。 OpenID Connect は OAuth 2.0 承認プロセスの拡張機能として認証を実装します。これにより、エンド ユーザーに関する基本的なプロファイル情報を提供するだけでなく、ユーザーの ID を検証する `id_token` 形式のユーザーに関する情報を提供します。
 
 OpenID Connect は、サーバーでホストされ、ブラウザーでアクセスされる Web アプリケーションを構築している場合に推奨されます。
+
+[!INCLUDE [active-directory-protocols-getting-started](../../includes/active-directory-protocols-getting-started.md)]
 
 ## <a name="authentication-flow-using-openid-connect"></a>OpenID Connect を使用する認証フロー
 最も基本的なサインイン フローには次の手順が含まれています。各手順についてはこの後詳しく説明します。
@@ -90,7 +96,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーターが含まれる必要があります。 | Description |
+|  パラメーターが含まれる必要があります。 | Description |
 | --- | --- |
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -108,7 +114,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 | temporarily_unavailable |サーバーが一時的にビジー状態であるため、要求を処理できません。 |要求をやり直してください。 クライアント アプリケーションは、一時的な状況が原因で応答が遅れることをユーザーに説明できます。 |
 | invalid_resource |対象のリソースは、存在しない、Azure AD が見つけられない、または正しく構成されていないために無効です。 |これは、リソース (存在する場合) がテナントで構成されていないことを示します。 アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
 
-## <a name="validate-the-id_token"></a>id_token を検証する
+## <a name="validate-the-idtoken"></a>id_token を検証する
 単に `id_token` を受け取るだけでは、ユーザーを認証するには不十分です。`id_token` の署名を検証し、要求をアプリの要件に従って確認する必要があります。 Azure AD エンドポイントは、JSON Web トークン (JWT) と公開キー暗号を使用してトークンに署名し、それらが有効であることを確認します。
 
 クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。 `id_token`の署名を検証した後に、確認の必要な要求がいくつか存在します。
@@ -146,14 +152,14 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 // Line breaks for legibility only
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/authorize?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e      // Your registered Application Id
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application Id
 &response_type=id_token+code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F       // Your registered Redirect Uri, url encoded
 &response_mode=form_post                              // form_post', or 'fragment'
 &scope=openid
-&resource=https%3A%2F%2Fservice.contoso.com%2F                                   
-&state=12345                                         // Any value, provided by your app
-&nonce=678910                                        // Any value, provided by your app
+&resource=https%3A%2F%2Fservice.contoso.com%2F                                     
+&state=12345                                          // Any value, provided by your app
+&nonce=678910                                         // Any value, provided by your app
 ```
 
 アクセス許可スコープを要求に組み込み、`response_type=code+id_token` を使うことによって、`authorize` エンドポイントはユーザーが `scope` クエリ パラメーターで示されているアクセス許可に同意したことを確認し、アクセス トークンと引き換えに承認コードをアプリに返します。
@@ -169,7 +175,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&state=12345
 ```
 
-| パラメーターが含まれる必要があります。 | Description |
+|  パラメーターが含まれる必要があります。 | Description |
 | --- | --- |
 | id_token |アプリが要求した `id_token` 。 この `id_token` を使用してユーザーの身元を確認し、そのユーザーとのセッションを開始することができます。 |
 | code |アプリが要求した authorization_code。 アプリは承認コードを使用して、対象リソースのアクセス トークンを要求します。 承認コードは有効期間が非常に短く、通常 10 分後には期限切れとなります。 |
@@ -186,15 +192,17 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーターが含まれる必要があります。 | Description |
+|  パラメーターが含まれる必要があります。 | Description |
 | --- | --- |
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
 想定されるエラー コードとクライアントに推奨される対処法については、「 [承認エンドポイント エラーのエラー コード](#error-codes-for-authorization-endpoint-errors)」を参照してください。
 
-承認の `code` と `id_token` を取得した後は、ユーザーをサインインさせ、代わりにアクセス トークンを取得できます。  ユーザーをサインインさせるには、前に説明したように `id_token` を厳密に検証する必要があります。 アクセス トークンは、 [OAuth プロトコルのドキュメント](active-directory-protocols-oauth-code.md#Use-the-Authorization-Code-to-Request-an-Access-Token)に記載されている手順に従って取得できます。
+承認の `code` と `id_token` を取得した後は、ユーザーをサインインさせ、代わりにアクセス トークンを取得できます。  ユーザーをサインインさせるには、前に説明したように `id_token` を厳密に検証する必要があります。 アクセス トークンを取得するには、[OAuth プロトコルのドキュメント](active-directory-protocols-oauth-code.md)の「承認コードを使用してアクセス トークンを要求する」セクションで説明されているステップに従うことができます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Dec16_HO5-->
 
 

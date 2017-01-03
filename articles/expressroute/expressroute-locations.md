@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/02/2016
+ms.date: 12/14/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 53a301bd501f223aa8489ba6592c8428c1fcd530
-ms.openlocfilehash: 89ed8b2b51641f2b9754f78dba34cf126c9cb88c
+ms.sourcegitcommit: 10c350247593c806d2c4e66248dedf5f42734628
+ms.openlocfilehash: 2227ab467aca534c5a8783dfdfa3084cb1c3a126
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 89ed8b2b51641f2b9754f78dba34cf126c9cb88c
 ## <a name="a-namepartnersaexpressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute 接続プロバイダー
 ExpressRoute は、すべての Azure のリージョンと場所でサポートされています。 次のマップは Azure のリージョンと ExpressRoute の場所を一覧しています。 ExpressRoute の場所は、Microsoft がいくつかのサービス プロバイダーと接続している場所を示します。
 
-![Location map][0]
+![場所のマップ][0]
 
 地理的リージョン内の少なくとも 1 つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。 
 
@@ -37,7 +37,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | --- | --- | --- |
 | **北米** |米国東部、米国西部、米国東部 2、米国中部、米国中南部、米国中北部、カナダ中部、カナダ東部 |アトランタ、シカゴ、ダラス、ラスベガス、ロサンゼルス、ニューヨーク、シアトル、シリコン バレー、ワシントン DC、モントリオール+、ケベックシティ+、トロント |
 | **南アメリカ** |ブラジル南部 |サンパウロ |
-| **ヨーロッパ** |北ヨーロッパ、西ヨーロッパ、英国西部、英国南部 |アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)+、パリ |
+| **ヨーロッパ** |北ヨーロッパ、西ヨーロッパ、英国西部、英国南部 |アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)、パリ |
 | **アジア** |東アジア、東南アジア |香港、シンガポール |
 | **日本** |西日本、東日本 |大阪、東京 |
 | **オーストラリア** |オーストラリア東部、オーストラリア南東部 |メルボルン、シドニー |
@@ -64,11 +64,11 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 ### <a name="production-azure"></a>運用 Azure
 | **サービス プロバイダー** | **Microsoft Azure** | **Office 365 と CRM Online** | **場所** |
 | --- | --- | --- | --- |
-| **AARNet** |サポートされています |サポートされています |メルボルン、シドニー |
+| **[AARNet](https://www.aarnet.edu.au/network-and-services/cloud-services-applications/azure-expressroute/)** |サポートされています |サポートされています |メルボルン、シドニー |
 | **[Aryaka Networks](http://www.aryaka.com/)** |サポートされています |サポートされています |アムステルダム、ダラス、シリコン バレー、シンガポール、東京、ワシントン DC |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ロンドン、シリコン バレー、シンガポール、シドニー、ワシントン DC |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** |サポートされています |サポートされています |アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
-| **CenturyLink** |近日対応予定 |近日対応予定 |シリコン バレー |
+| **[CenturyLink](http://www.centurylink.com/business/enterprise/services/data-network/mpls-vpn.html)** |近日対応予定 |近日対応予定 |シリコン バレー |
 | **China Telecom Global** |サポートされています |サポートされていません |香港特別行政区 |
 | **[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** |サポートされています |近日対応予定 |ダラス、モントリオール+、トロント |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |サポートされています |サポートされています |アムステルダム、ダブリン、ロンドン、東京 |
@@ -83,23 +83,23 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/colocated-hybrid-cloud/microsoft-azure/)** |サポートされています |サポートされています |アムステルダム、ロンドン、パリ |
 | **Jisc** |サポートされています |サポートされています |ロンドン |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ラスベガス+、ロンドン、シアトル、シリコン バレー、ワシントン DC |
-| **Megaport** |サポートされています |サポートされています |ダラス、香港、ラスベガス、ロサンゼルス、メルボルン、ニューヨーク、シアトル、シンガポール、シドニー、ワシントン DC |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています |サポートされています |ダラス、香港、ラスベガス、ロサンゼルス、メルボルン、ニューヨーク、シアトル、シンガポール、シドニー、トロント、ワシントン DC |
 | **MTN** |サポートされています |サポートされています |ロンドン |
-| **Next Generation Data** |近日対応予定 |近日対応予定 |Newport(Wales)+ |
+| **[Next Generation Data](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |サポートされています |サポートされています |ニューポート (ウェールズ) |
 | **NEXTDC** |サポートされています |サポートされています |メルボルン、シドニー |
 | **NTT Communications** |サポートされています |サポートされています |ロンドン、ロサンゼルス、大阪、シンガポール、東京、ワシントン DC |
 | **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** |サポートされています |サポートされています |アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、シドニー、ワシントン DC |
 | **PCCW Global Limited** |サポートされています |サポートされています |香港特別行政区 |
-| **SIFY** |サポートされています |サポートされています |チェンナイ |
+| **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |サポートされています |サポートされています |チェンナイ |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |サポートされています |サポートされています |シンガポール |
 | **ソフトバンク** |サポートされています |サポートされています |大阪、東京 |
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |サポートされています |サポートされています |アムステルダム、チェンナイ、香港、ロンドン、ムンバイ、シリコン バレー、シンガポール、ワシントン DC |
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** |サポートされています |サポートされています |アムステルダム、ダブリン、ロンドン |
-| **Telefonica** |サポートされています |サポートされています |サンパウロ |
+| **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |サポートされています |サポートされています |サンパウロ |
 | **Telenor** |サポートされています |サポートされています |アムステルダム、ロンドン |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |サポートされています |サポートされています |メルボルン、シドニー |
 | **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** |サポートされています |サポートされています |アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
-| **Vodafone** |サポートされています |サポートされていません |ロンドン |
+| **[Vodafone](http://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |サポートされています |サポートされていません |ロンドン |
 | **[Zayo Group](http://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |サポートされています |サポートされています |シカゴ、ロサンゼルス、ニューヨーク、シリコン バレー、トロント、ワシントン DC |
 
  **+** は近日対応予定を表します
@@ -133,13 +133,13 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 接続プロバイダーが上記のセクションの一覧にない場合でも、接続を作成できます。
 
 * 接続プロバイダーが上の表に記載されているいずれかの Exchange に接続されているかどうかをその接続プロバイダーに確認します。 次のリンクから、Exchange プロバイダーが提供するサービスの詳細情報を収集できます。 一部の接続プロバイダーは既にイーサネット Exchange に接続されています。
-  
-  * [Equinix Cloud Exchange](http://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
-  * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
-  * [Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/colocated-hybrid-cloud/microsoft-azure/)
-  * [NextDC](http://www.nextdc.com/)
-  * [CoreSite](http://www.coresite.com/)
   * [Cologix](http://www.cologix.com/)
+  * [CoreSite](http://www.coresite.com/)
+  * [Equinix Cloud Exchange](http://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
+  * [Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/colocated-hybrid-cloud/microsoft-azure/)
+  * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
+  * [NextDC](http://www.nextdc.com/)
+  * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
 * その接続プロバイダーに、選択したピアリングの場所までネットワークを拡張してもらいます。
   * 単一障害点がないように、接続プロバイダーが可用性の高い方法で接続を拡張していることを確認します。
 * Microsoft に接続するために、接続プロバイダーとしてその Exchange で ExpressRoute 回線を要求します。
@@ -148,8 +148,11 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **接続プロバイダー** | **Exchange** | **場所** |
 | --- | --- | --- |
 | **[1CLOUDSTAR](http://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |シンガポール |
-| **Alaska Communications** |Equinix |シアトル |
+| **[Alaska Communications](http://www.alaskacommunications.com/For-Your-Business/Direct-Cloud-Service)** |Equinix |シアトル |
+| **[Exponential E](http://www.exponential-e.com/services/connectivity-services/cloud-connect-exchange)** | Equinix | ロンドン |
 | **[Lightower](http://www.lightower.com/network-solutions/cloud-connect/#microsoft-azure)** |Equinix |ニューヨーク、ワシントン DC |
+| **[Macquarie](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | シドニー |
+| **[Masergy](https://www.masergy.com/solutions/hybrid-networking/cloud-marketplace/microsoft-azure)** | Equinix | ワシントン DC |
 | **[XO Communications](http://www.xo.com/)** |Equinix |シリコン バレー |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute システム インテグレーター
@@ -164,6 +167,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** |US |
 | **[Project Leadership](http://www.projectleadership.net/azure)** |US |
 
+
 ## <a name="next-steps"></a>次のステップ
 * ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 * すべての前提条件を満たしていることを確認します。 「 [Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
@@ -173,6 +177,6 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

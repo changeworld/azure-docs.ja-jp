@@ -1,6 +1,6 @@
 ---
 title: "C# での Event Hubs の使用 | Microsoft Docs"
-description: "このチュートリアルでは、C# による Azure Event Hubs と EventProcessorHost の使用方法について説明します。"
+description: "このチュートリアルでは、C# による Azure Event Hubs とイベント プロセッサ ホストの使用方法について説明します。"
 services: event-hubs
 documentationcenter: 
 author: jtaubensee
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/02/2016
+ms.date: 12/07/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 35a7e4693ef979dfb947714f2fe5ce5599991189
+ms.sourcegitcommit: 015dbab81f807cd05d1fedb97f5fc62a012f2084
+ms.openlocfilehash: 54aaf68864fc83501b860ecc3daef1c0216c0140
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 35a7e4693ef979dfb947714f2fe5ce5599991189
 ## <a name="introduction"></a>はじめに
 Event Hubs は、接続されているデバイスとアプリケーションからの大量のイベント データ (テレメトリ) を処理するサービスです。 Event Hubs にデータを収集した後、ストレージ クラスターを使用してデータを格納したり、リアルタイムの分析プロバイダーを使用して転送できます。 この大規模なイベントの収集と処理の機能は、モノのインターネット (IoT) など最新アプリケーション アーキテクチャの重要なコンポーネントです。
 
-このチュートリアルでは、Azure クラシック ポータルを使用してイベント ハブを作成する方法を説明します。 また、C# に記述されるコンソール アプリケーションを使用して Event Hub にメッセージを収集し、C# の[イベント プロセッサ ホスト][イベント プロセッサ ホスト] ライブラリを使用して並列で取得する方法を学習します。
+このチュートリアルでは、Azure ポータルを使用して Event Hub を作成する方法を説明します。 また、C# で記述されたコンソール アプリケーションを使用してイベント ハブにメッセージを収集し、C# での[イベント プロセッサ ホスト][Event Processor Host] ライブラリを使用して並列で取得する方法を学習します。
 
 このチュートリアルを完了するには、次のものが必要です。
 
@@ -65,9 +65,10 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 ## <a name="next-steps"></a>次のステップ
 Event Hub を作成し、データを送受信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
-* [Event Hubs を使用する完全なサンプル アプリケーション][Event Hubs を使用する完全なサンプル アプリケーション]。
-* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張]のサンプル。
-* [Event Hubs の概要][Event Hubs の概要]
+* [Event Hubs を使用する完全なサンプル アプリケーション][sample application that uses Event Hubs]
+* [イベント プロセッサ ホスト](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
+* [Event Hubs でのイベント処理のスケールアウト][Scale out Event Processing with Event Hubs] サンプル
+* [Event Hubs の概要][Event Hubs overview]
 
 <!-- Images. -->
 [19]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj1.png
@@ -76,16 +77,15 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
 
 <!-- Links -->
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
-[イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[Event Hubs の概要]: event-hubs-overview.md
-[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[キューに格納されたメッセージング ソリューション]: ../service-bus-messaging/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+[Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[queued messaging solution]: ../service-bus-messaging/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

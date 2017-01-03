@@ -1,22 +1,26 @@
 ---
-title: Log Analytics のコンテナー ソリューション | Microsoft Docs
-description: Log Analytics のコンテナー ソリューションを使えば、Docker コンテナー ホストを 1 か所で表示および管理するのに役立ちます。
+title: "Log Analytics のコンテナー ソリューション | Microsoft Docs"
+description: "Log Analytics のコンテナー ソリューションを使えば、Docker コンテナー ホストを 1 か所で表示および管理するのに役立ちます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: e1e4b52b-92d5-4bfa-8a09-ff8c6b5a9f78
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 11/28/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 6cdc0730d7632e41b393c4abb17badc255e21a8d
+ms.openlocfilehash: 0bc5366417f08c63f5fd5588c94381faf6a2397d
+
 
 ---
-# <a name="containers-(preview)-solution-log-analytics"></a>Log Analytics のコンテナー (プレビュー) ソリューション
+# <a name="containers-preview-solution-log-analytics"></a>Log Analytics のコンテナー (プレビュー) ソリューション
 この記事では、Docker コンテナー ホストを 1 か所で表示および管理するのに役立つ Log Analytics のコンテナー ソリューションを設定して使用する方法について説明します。 Docker は、IT インフラストラクチャへのソフトウェアのデプロイを自動化するコンテナーを作成するために使用されるソフトウェア仮想化システムです。
 
 このソリューションを使用すれば、コンテナー ホストで実行されているコンテナーとコンテナー内で実行されているイメージを確認できます。 コンテナーで使用されるコマンドを示す詳細な監査情報を確認できます。 また、リモートで Docker ホストを確認しなくても、一元化されたログを表示および検索して、コンテナーのトラブルシューティングを行うことができます。 ホストで余分なリソースを使用しているコンテナーや、ノイズが大きいコンテナーを特定できます。 また、コンテナーについて、CPU、メモリ、ストレージ、ネットワークの使用量とパフォーマンスに関する情報を一元的に確認できます。
@@ -29,75 +33,42 @@ ms.author: banders
 OMS と共に Docker をインストールして使用する方法は、2 とおりあります。
 
 * サポートされている Linux オペレーティング システムで Docker をインストールして実行し、OMS Agent for Linux をインストールして構成する
-* CoreOS で Docker をインストールして実行し、コンテナー内で実行されるように OMSAgent を構成する
+* CoreOS では、OMS Agent for Linux を実行できません。 代わりに、OMS Agent for Linux のコンテナー化されたバージョンを実行します。
 
 [GitHub](https://github.com/Microsoft/OMS-docker) で、お使いのコンテナー ホストでサポートされている Docker および Linux オペレーティング システムのバージョンを確認してください。
 
 > [!IMPORTANT]
 > Docker は、[OMS Agent for Linux](log-analytics-linux-agents.md) をコンテナー ホストにインストールする**前**に実行しておく必要があります。 Docker をインストールするより先にエージェントをインストールしてある場合は、OMS Agent for Linux を再インストールする必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
-> 
-> 
+>
+>
 
 コンテナーを監視するには、コンテナー ホストで次の設定を構成しておくことが必要です。
 
 ## <a name="configure-settings-for-the-linux-container-host"></a>Linux コンテナー ホストの設定の構成
-Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 CoreOS は、この構成方法をサポートしていません。
 
-### <a name="to-configure-settings-for-the-container-host---systemd-(suse,-opensuse,-centos-7.x,-rhel-7.x,-and-ubuntu-15.x-and-higher)"></a>コンテナー ホストの設定を構成するには - systemd (SUSE、openSUSE、CentOS 7.x、RHEL 7.x、Ubuntu 15.x 以上)
-1. docker.service を編集して以下を追加します。
-   
-    ```
-    [Service]
-    ...
-    Environment="DOCKER_OPTS=--log-driver=fluentd --log-opt fluentd-address=localhost:25225"
-    ...
-    ```
-2. docker.service ファイルの &quot;ExecStart=/usr/bin/docker daemon&quot; に $DOCKER\_OPTS を追加します。 次の例を使用してください。
-   
-    ```
-    [Service]
-    Environment="DOCKER_OPTS=--log-driver=fluentd --log-opt fluentd-address=localhost:25225"
-    ExecStart=/usr/bin/docker daemon -H fd:// $DOCKER_OPTS
-    ```
-3. Docker サービスを再起動します。 次に例を示します。
-   
-    ```
-    sudo systemctl restart docker.service
-    ```
+次の x64 Linux ディストリビューションは、コンテナー ホストとしてサポートされます。
 
-### <a name="to-configure-settings-for-the-container-host---upstart-(ubuntu-14.x)"></a>コンテナー ホストの設定を構成するには - Upstart (Ubuntu 14.x)
-1. /etc/default/docker を編集し、以下を追加します。
-   
-    ```
-    DOCKER_OPTS="--log-driver=fluentd --log-opt fluentd-address=localhost:25225"
-    ```
-2. ファイルを保存し、Docker および OMS サービスを再起動します。
-   
-    ```
-    sudo service docker restart
-    ```
+- Ubuntu 14.04 LTS、16.04 LTS
+- CoreOS (Stable)
+- Amazon Linux 2016.03
+- openSUSE 13.2
+- CentOS 7
+- SLES 12
+- RHEL 7.2
 
-### <a name="to-configure-settings-for-the-container-host---amazon-linux"></a>コンテナー ホストの設定を構成するには - Amazon Linux
-1. /etc/sysconfig/docker を編集し、以下を追加します。
-   
-    ```
-    OPTIONS="--log-driver=fluentd --log-opt fluentd-address=localhost:25225"
-    ```
-2. ファイルを保存し、Docker サービスを再起動します。
-   
-    ```
-    sudo service docker restart
-    ```
+Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 [OMS ワークスペース ID とキー](log-analytics-linux-agents.md)が必要になります。
 
-## <a name="configure-settings-for-coreos-containers"></a>CoreOS コンテナーの設定の構成
-Docker をインストールした後で、CoreOS の次の設定を使用して Docker を実行し、コンテナーを作成します。 この構成方法では、CoreOS を含め、サポートされているどのバージョンの Linux でも使用できます。 [OMS ワークスペース ID とキー](log-analytics-linux-agents.md)が必要になります。
+### <a name="for-all-container-hosts-except-coreos"></a>CoreOS を除くすべてのコンテナー ホスト
 
-### <a name="to-use-oms-for-all-containers-with-coreos"></a>CoreOS ですべてのコンテナーに OMS を使用するには
-* 監視する OMS コンテナーを起動します。 次の例に変更を加えて使用してください。
-  
-  ```
-  sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25224:25224/udp -p 127.0.0.1:25225:25225 --name="omsagent" --log-driver=none --restart=always microsoft/oms
-  ```
+- 「[Steps to install the OMS Agent for Linux (OMS Agent for Linux のインストール手順)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md)」に従って操作します。
+
+### <a name="for-all-container-hosts-including-coreos"></a>CoreOS を含むすべてのコンテナー ホスト
+
+監視する OMS コンテナーを起動します。 次の例に変更を加えて使用してください。
+
+```
+sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
+```
 
 ### <a name="switching-from-using-an-installed-agent-to-one-in-a-container"></a>インストール済みのエージェントからコンテナー内のエージェントの使用への切り替え
 これまで直接インストールされたエージェントを使用しており、今後はコンテナーで実行されているエージェントを使用したい場合は、まず OMSAgent を削除する必要があります。 [OMS Agent for Linux のインストール手順](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md)に関するページを参照してください。
@@ -111,15 +82,15 @@ Docker をインストールした後で、CoreOS の次の設定を使用して
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |![[はい]](./media/log-analytics-containers/oms-bullet-green.png) |![なし](./media/log-analytics-containers/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![なし](./media/log-analytics-containers/oms-bullet-red.png) |3 分おき |
 
-次の表は、コンテナー ソリューションによって収集されるデータ型の例を示しています。
+次の表に、コンテナー ソリューションによって収集されるデータ型およびログ検索と結果に使用されるデータ型の例を示します。
 
-| データ型 | フィールド |
-| --- | --- |
-| ホストとコンテナーのパフォーマンス |Computer、ObjectName、CounterName (%Processor Time、Disk Reads MB、Disk Writes MB、Memory Usage MB、Network Receive Bytes、Network Send Bytes、Processor Usage sec、Network)、CounterValue、TimeGenerated、CounterPath、SourceSystem |
-| コンテナー インベントリ |TimeGenerated、Computer、container name、ContainerHostname、Image、ImageTag、ContinerState、ExitCode、EnvironmentVar、Command、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
-| コンテナー イメージ インベントリ |TimeGenerated、Computer、Image、ImageTag、ImageSize、VirtualSize、Running、Paused、Stopped、Failed、SourceSystem、ImageID、TotalContainer |
-| コンテナー ログ |TimeGenerated、Computer、image ID、container name、LogEntrySource、LogEntry、SourceSystem、ContainerID |
-| コンテナー サービス ログ |TimeGenerated、Computer、TimeOfCommand、Image、Command、SourceSystem、ContainerID |
+| データ型 | ログ検索のデータ型 | フィールド |
+| --- | --- | --- |
+| ホストとコンテナーのパフォーマンス | `Type=Perf` | Computer、ObjectName、CounterName (%Processor Time、Disk Reads MB、Disk Writes MB、Memory Usage MB、Network Receive Bytes、Network Send Bytes、Processor Usage sec、Network)、CounterValue、TimeGenerated、CounterPath、SourceSystem |
+| コンテナー インベントリ | `Type=ContainerInventory` | TimeGenerated、Computer、container name、ContainerHostname、Image、ImageTag、ContinerState、ExitCode、EnvironmentVar、Command、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
+| コンテナー イメージ インベントリ | `Type=ContainerImageInventory` | TimeGenerated、Computer、Image、ImageTag、ImageSize、VirtualSize、Running、Paused、Stopped、Failed、SourceSystem、ImageID、TotalContainer |
+| コンテナー ログ | `Type=ContainerLog` | TimeGenerated、Computer、image ID、container name、LogEntrySource、LogEntry、SourceSystem、ContainerID |
+| コンテナー サービス ログ | `Type=ContainerServiceLog`  | TimeGenerated、Computer、TimeOfCommand、Image、Command、SourceSystem、ContainerID |
 
 ## <a name="monitor-containers"></a>コンテナーの監視
 OMS ポータルでソリューションを有効にすると、コンテナー ホストとホストで実行されているコンテナーに関する情報が **[コンテナー]** タイルに表示されます。
@@ -180,7 +151,7 @@ OMS ポータルでソリューションを有効にすると、コンテナー 
 ### <a name="to-search-logs-for-container-data"></a>コンテナー データのログを検索するには
 * 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、**ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、`Type=ContainerInventory ubuntu Failed` を検索します。  
     ![Ubuntu コンテナーの検索](./media/log-analytics-containers/search-ubuntu.png)
-  
+
   **[名前]** の横にあるコンテナーの名前をメモし、そのログを検索します。 この例では `Type=ContainerLog adoring_meitner` です。
 
 **パフォーマンス情報の表示**
@@ -220,6 +191,8 @@ Type=Perf <containerName>
 ## <a name="next-steps"></a>次のステップ
 * [ログを検索](log-analytics-log-searches.md) して、詳細なコンテナー データ レコードを確認します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO5-->
 
 

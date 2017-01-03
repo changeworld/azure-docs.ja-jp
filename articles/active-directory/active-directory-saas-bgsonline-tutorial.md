@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b42fe210ecfe2243aa2461bd542e73f7b9aa25cc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 42911ac76e2aa887460abd44e462a8d288d55f91
 
 
 ---
@@ -176,7 +176,7 @@ BGS Online で Azure AD のシングル サインオンを構成してテスト�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-an-bgs-online-test-user"></a>BGS Online のテスト ユーザーの作成
 このセクションでは、BGS Online で Britta Simon というユーザーを作成します。 BGS Online [サポート チーム](mailTo:bgsdashboardteam@millwardbrown.com)と連携し、BGS Online プラットフォームにユーザーを追加してください。
@@ -231,6 +231,6 @@ BGS Online で Azure AD のシングル サインオンを構成してテスト�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

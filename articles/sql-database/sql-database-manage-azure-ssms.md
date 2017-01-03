@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 09/29/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b4dc2137ce42e3ed8e85d57dacc1acecc6de243e
+ms.sourcegitcommit: d9ff74a49742fa77f5989b8b05e0567e3ca81dc5
+ms.openlocfilehash: 89cb8827745b31b3a77b64d5cafd586957d60d30
 
 
 ---
@@ -30,6 +30,10 @@ ms.openlocfilehash: b4dc2137ce42e3ed8e85d57dacc1acecc6de243e
 > 
 
 SQL Server Management Studio (SSMS) を使用して Azure SQL Database のサーバーとデータベースを管理できます。 このトピックでは、SSMS を使用した一般的なタスクの手順について説明します。 始める前に、Azure SQL Database にサーバーとデータベースを作成しておく必要があります。 詳細については、「[SQL Database チュートリアル: Azure Portal を使用して数分で SQL Database を作成する](sql-database-get-started.md)」と「[SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)」をご覧ください。
+
+> [!TIP]
+> サーバーの作成、サーバーベースのファイアウォールの作成、サーバー プロパティの表示、SQL Server Management Studio を使用した接続、master データベースに対するクエリ実行、サンプル データベースと空のデータベースの作成、データベース プロパティに対するクエリ実行、SQL Server Management Studio を使用した接続、およびサンプル データベースに対するクエリ実行の方法を示すチュートリアルについては、[入門用チュートリアル](sql-database-get-started.md)を参照してください。
+>
 
 Azure SQL Database を操作する際は、常に最新バージョンの SSMS を使用することをお勧めします。 
 
@@ -142,6 +146,6 @@ SQL データベースでは、個々のデータベースを監視するのに�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

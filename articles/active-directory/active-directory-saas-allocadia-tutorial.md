@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/12/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d7307d4d1823f6422e62ebf2969c3d57bbe6f931
+ms.sourcegitcommit: 69473976eb0a9b6a0e9aa929581c0a7cf0c8d188
+ms.openlocfilehash: e9d59c593c3637d72611516fd8a6b03f3f5f917b
 
 
 ---
@@ -61,19 +61,25 @@ Azure AD への Allocadia の統合を構成するには、ギャラリーから
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
    
     ![Active Directory][1]
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![[アプリケーション]][2]
+
 4. ページの下部にある **[追加]** をクリックします。
    
     ![アプリケーション][3]
+
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
     ![アプリケーション][4]
+
 6. [検索] ボックスに、「 **Allocadia**」と入力します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_01.png)
+
 7. 結果ウィンドウで **[Allocadia]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_06.png)
@@ -104,18 +110,18 @@ Allocadia アプリケーションは、特定の形式で構成された SAML �
 1. Azure クラシック ポータルの **[Allocadia]** アプリケーション統合ページで、上部のメニューから **[属性]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-allocadia-tutorial/tutorial_general_80.png) 
+
 2. **[Saml トークン属性]** ダイアログで、以下の表の各行について、次の手順を実行します。
    
-   | 属性名 | 属性値 |
-   | --- | --- |
-   | firstname |User.givenname |
-   | lastname |User.surname |
-   | email |User.mail |
+    | 属性名 | 属性値 |
+    | --- | --- |
+    | firstname |User.givenname |
+    | lastname |User.surname |
+    | email |User.mail |
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー属性の追加]** をクリックして、**[ユーザー属性の追加]** ダイアログを開きます。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-allocadia-tutorial/tutorial_general_81.png) 
-
 
     b. **[属性名]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -127,9 +133,11 @@ Allocadia アプリケーションは、特定の形式で構成された SAML �
 1. 上部のメニューで **[クイック スタート]**をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-allocadia-tutorial/tutorial_general_83.png)  
+
 2. **[ユーザーの Allocadia へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_03.png) 
+
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_04.png) 
@@ -137,22 +145,26 @@ Allocadia アプリケーションは、特定の形式で構成された SAML �
     a. [識別子] ボックスには、テスト環境での使用の場合は **"https://na2standby.allocadia.com"** のパターンで、運用環境での使用の場合は **"https://na2.allocadia.com"** のパターンで URL を入力します。
    
     b. [応答 URL] には、テスト環境での使用の場合は **"https://na2standby.allocadia.com/allocadia/saml/SSO"** のパターンで、運用環境での使用の場合は **"https://na2.allocadia.com/allocadia/saml/SSO"** のパターンで URL を入力します。
+
 4. **[Allocadia でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
     ![Configure Single Sign-On](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_05.png) 
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある [次へ]」を参照してください。
+    b. **[次へ]**をクリックします。
+
 5. 自分のアプリケーション向けに SSO を構成する場合は、 [Allocadia のサポート](mailTo:support@allocadia.com) チームに問い合わせると、SSO 構成のサポートを受けられます。 Allocadia 側の SSO を構成するには、ダウンロードしたメタデータ ファイルをメールに添付して送信する必要があることに注意してください。
    
-   > [!NOTE]
-   > Allocadia が識別子の値を、テスト環境の場合は **"https://na2standby.allocadia.com"** に、運用環境の場合は **"https://na2.allocadia.com"** に設定したことを確認してください。
-   > 
-   > 
+    > [!NOTE]
+    > Allocadia が識別子の値を、テスト環境の場合は **"https://na2standby.allocadia.com"** に、運用環境の場合は **"https://na2.allocadia.com"** に設定したことを確認してください。
+    > 
+    > 
+
 6. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
+
 7. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
    
     ![Azure AD のシングル サインオン][11]
@@ -168,13 +180,17 @@ Allocadia アプリケーションは、特定の形式で構成された SAML �
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-allocadia-tutorial/create_aaduser_09.png) 
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
 3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-allocadia-tutorial/create_aaduser_03.png) 
+
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-allocadia-tutorial/create_aaduser_04.png) 
+
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-allocadia-tutorial/create_aaduser_05.png) 
@@ -184,22 +200,25 @@ Allocadia アプリケーションは、特定の形式で構成された SAML �
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
+
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-allocadia-tutorial/create_aaduser_06.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-allocadia-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]**をクリックします。
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-allocadia-tutorial/create_aaduser_07.png) 
+
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-allocadia-tutorial/create_aaduser_08.png) 
@@ -226,13 +245,17 @@ Allocadia アプリケーションは、特定の形式で構成された SAML �
 1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![ユーザーの割り当て][201] 
+
 2. アプリケーションの一覧で **[Allocadia]**を選択します。
    
     ![Configure Single Sign-On](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_50.png) 
+
 3. 上部のメニューで **[ユーザー]**をクリックします。
    
     ![ユーザーの割り当て][203] 
+
 4. ユーザーの一覧で **[Britta Simon]**を選択します。
+
 5. 下部にあるツール バーで **[割り当て]**をクリックします。
    
     ![ユーザーの割り当て][205]
@@ -265,6 +288,6 @@ Allocadia アプリケーションは、特定の形式で構成された SAML �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

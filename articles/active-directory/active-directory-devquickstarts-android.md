@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 276207411fcfd6906cb99da3d291decf7e2566d1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: aab76d97d494c09bf66ea3442128cd961f0393f7
 
 
 ---
@@ -433,6 +433,6 @@ ADAL バージョン 1.1.0 は、WebViewClient からの onReceivedHttpAuthReque
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

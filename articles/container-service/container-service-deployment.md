@@ -7,7 +7,7 @@ author: rgardler
 manager: timlt
 editor: 
 tags: acs, azure-container-service
-keywords: "Docker、コンテナー、マイクロ サービス、Mesos、Azure"
+keywords: "Docker, コンテナー, マイクロサービス, Mesos, Azure, dcos, swarm, kubernetes, Azure Container Service, acs"
 ms.assetid: 696a736f-9299-4613-88c6-7177089cfc23
 ms.service: container-service
 ms.devlang: na
@@ -17,13 +17,13 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c8c06906a5f99890295ff2b2433ff6f7e02dece5
+ms.sourcegitcommit: 52f158fd50ee8427cf567889d584e342ea42abb3
+ms.openlocfilehash: b52f7b36a28a345e8693ecbafd3771c27c683a37
 
 
 ---
 # <a name="deploy-an-azure-container-service-cluster"></a>Azure コンテナー サービス クラスターのデプロイ
-Azure コンテナー サービスでは、人気のオープン ソースのコンテナー クラスタリングやオーケストレーション ソリューションを短期間でデプロイできます。 Azure コンテナー サービスと、Azure Resource Manager テンプレートまたは Azure ポータルを利用し、DC/OS クラスターと Docker Swarm クラスターをデプロイできます。 これらのクラスターは Azure 仮想マシン スケール セットでデプロイされ、Azure ネットワーキングとストレージ サービスが活用されます。 Azure コンテナー サービスにアクセスするには、Azure サブスクリプションが必要です。 サブスクリプションがない場合でも、 [無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップできます。
+Azure コンテナー サービスでは、人気のオープン ソースのコンテナー クラスタリングやオーケストレーション ソリューションを短期間でデプロイできます。 Azure Container Service のほか、Azure Resource Manager テンプレートまたは Azure Portal を利用することで、DC/OS クラスター、Kubernetes クラスター、Docker Swarm クラスターをデプロイできます。 これらのクラスターは Azure 仮想マシン スケール セットでデプロイされ、Azure ネットワーキングとストレージ サービスが活用されます。 Azure コンテナー サービスにアクセスするには、Azure サブスクリプションが必要です。 サブスクリプションがない場合でも、 [無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップできます。
 
 このドキュメントでは、[Azure Portal](#creating-a-service-using-the-azure-portal)、[Azure コマンド ライン インターフェイス (CLI)](#creating-a-service-using-the-azure-cli)、[Azure PowerShell モジュール](#creating-a-service-using-powershell)を使用して、Azure Container Service クラスターをデプロイする方法を段階的に説明します。  
 
@@ -52,15 +52,20 @@ Azure Portal にサインインし、**[新規]** を選択して、Azure Market
 
 * **[DC/OS]**: DC/OS クラスターをデプロイします。
 * **[Swarm]**: Docker Swarm クラスターをデプロイします。
+* **[Kubernetes]**: Kubernetes クラスターをデプロイします。
 
 準備が完了したら、 **[OK]** をクリックします。
 
-![Create deployment 4](media/acs-portal4.png)  <br />
+![Create deployment 4](media/acs-portal4-new.png)  <br />
+
+ドロップダウン ボックスの一覧で **[Kubernetes]** を選択した場合は、サービス プリンシパルのクライアント ID とクライアント シークレットを入力する必要があります。 詳細については、[Kubernetes クラスターのサービス プリンシパル](container-service-kubernetes-service-principal.md)に関するページを参照してください。 
+
+![デプロイ 4.5 の作成](media/acs-portal10.PNG)  <br />
 
 次の情報を入力します。
 
-* **[Master count (マスター数)]**: クラスターのマスター数。
-* **[Agent count (エージェント数)]**: Docker Swarm の場合、エージェント スケール セットのエージェントの初期数です。 DC/OS の場合、プライベート スケール セットのエージェントの初期数です。 また、事前に決められた数のエージェントを含むパブリック スケール セットが作成されます。 このパブリック スケール セットのエージェント数は、クラスターに作成されたマスター数によって決まります (1 マスターに 1 パブリック エージェント、3 または 5 マスターに 2 パブリック エージェント)。
+* **[Master count (マスター数)]**: クラスターのマスター数。 [Kubernetes] を選択すると、マスターの数は既定の 1 に設定されます。
+* **[Agent count (エージェント数)]**: Docker Swarm と Kubernetes の場合、エージェント スケール セットのエージェントの初期数になります。 DC/OS の場合、プライベート スケール セットのエージェントの初期数です。 また、事前に決められた数のエージェントを含むパブリック スケール セットが作成されます。 このパブリック スケール セットのエージェント数は、クラスターに作成されたマスター数によって決まります (1 マスターに 1 パブリック エージェント、3 または 5 マスターに 2 パブリック エージェント)。
 * **[Agent virtual machine size (エージェント仮想マシン サイズ)]**: エージェント仮想マシンのサイズ。
 * **[DNS プレフィックス]**: サービス名の完全修飾ドメイン名の主要部分の先頭に付ける世界で一意の名前。
 
@@ -85,10 +90,11 @@ Azure Portal にサインインし、**[新規]** を選択して、Azure Market
 ## <a name="create-a-service-by-using-the-azure-cli"></a>Azure CLI を使用してサービスを作成する
 コマンド ラインを使用して Azure コンテナー サービスのインスタンスを作成するには、Azure サブスクリプションが必要です。 サブスクリプションがない場合でも、 [無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップできます。 また、Azure CLI を[インストール](../xplat-cli-install.md)し、[構成](../xplat-cli-connect.md)する必要があります。
 
-DC/OS または Docker Swarm クラスターをデプロイするには、GitHub から次のテンプレートのいずれかを選択します。 既定のオーケストレーターの選択を除き、これらのテンプレートは同じです。
+DC/OS、Docker Swarm、または Kubernetes のクラスターをデプロイするには、GitHub から次のテンプレートのいずれかを選択します。 
 
 * [DC/OS テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
 * [Swarm テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+* [Kubernetes テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)
 
 次に、Azure CLI が Azure サブスクリプションに接続されたことを確認します。 この処理には、次のコマンドを使用できます。
 
@@ -140,10 +146,11 @@ azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMP
 ## <a name="create-a-service-by-using-powershell"></a>PowerShell を使用してサービスを作成する
 PowerShell を使用して Azure コンテナー サービス クラスターをデプロイすることもできます。 このドキュメントはバージョン 1.0 の [Azure PowerShell モジュール](https://azure.microsoft.com/blog/azps-1-0/)に基づいています。
 
-DC/OS または Docker Swarm クラスターをデプロイするには、次のテンプレートのいずれかを選択します。 既定のオーケストレーターの選択を除き、これらのテンプレートは同じです。
+DC/OS、Docker Swarm、または Kubernetes のクラスターをデプロイするには、次のテンプレートのいずれかを選択します。 既定のオーケストレーターの選択を除き、これらのテンプレートは同じです。
 
 * [DC/OS テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
 * [Swarm テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+* [Kubernetes テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)
 
 Azure サブスクリプションでクラスターを作成する前に、PowerShell セッションが Azure にサインインしていることを確認します。 そのためには、 `Get-AzureRMSubscription` コマンドを使用します。
 
@@ -184,10 +191,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-Templa
 * [Azure コンテナー サービス クラスターに接続する](container-service-connect.md)
 * [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
 * [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
+* [Azure Container Service と Kubernetes の使用](container-service-kubernetes-walkthrough.md)
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

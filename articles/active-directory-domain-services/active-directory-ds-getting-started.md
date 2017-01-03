@@ -1,12 +1,12 @@
 ---
-title: 'Azure AD ドメイン サービス: AAD DC 管理者グループの作成 | Microsoft Docs'
-description: Azure Active Directory ドメイン サービスの概要
+title: "Azure AD ドメイン サービス: AAD DC 管理者グループの作成 | Microsoft Docs"
+description: "Azure Active Directory ドメイン サービスの概要"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f6160c560b951c1355bf956a392dda5b41ac9cd7
+
 
 ---
 # <a name="get-started-with-azure-ad-domain-services"></a>Azure AD ドメイン サービスの使用開始
 この記事では、Azure AD テナントの Azure AD ドメイン サービスを有効にするために必要な構成タスクについて説明します。
 
-## <a name="task-1:-create-the-'aad-dc-administrators'-group"></a>タスク 1: "AAD DC 管理者" グループの作成
+## <a name="task-1-create-the-aad-dc-administrators-group"></a>タスク 1: "AAD DC 管理者" グループの作成
 最初のタスクは、Azure Active Directory テナントでの管理グループの作成です。 この特別な管理グループは、 **AAD DC 管理者**と呼ばれます。 このグループのメンバーには、Azure AD ドメイン サービス管理対象ドメインにドメイン参加するコンピューターへの管理特権が付与されます。 ドメインに参加しているコンピューターでは、このグループは、’Administrators’ グループに追加されます。 さらに、このグループのメンバーは、リモート デスクトップを使用して、ドメインに参加しているコンピューターにリモート接続できます。  
 
 > [!NOTE]
@@ -56,9 +60,12 @@ ms.author: maheshu
 
 <br>
 
-## <a name="task-2:-create-or-select-an-azure-virtual-network"></a>タスク 2: Azure 仮想ネットワークの作成または選択
+## <a name="task-2-create-or-select-an-azure-virtual-network"></a>タスク 2: Azure 仮想ネットワークの作成または選択
 次の構成タスクでは、 [Azure 仮想ネットワークを作成または選択します](active-directory-ds-getting-started-vnet.md)。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

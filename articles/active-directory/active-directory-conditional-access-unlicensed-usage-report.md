@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 88a8678b81b875a6839f5747c29eeedfd88771b3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3400d00112b4b66cceef602dba5cb8666e49e0e4
 
 
 ---
@@ -49,6 +49,6 @@ ms.openlocfilehash: 88a8678b81b875a6839f5747c29eeedfd88771b3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

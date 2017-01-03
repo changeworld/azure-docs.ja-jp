@@ -1,6 +1,6 @@
 ---
 title: "DocumentDB の NoSQL Node.js チュートリアル | Microsoft Docs"
-description: "DocumentDB Node.js SDK を使用してノード データベースとコンソール アプリケーションを作成する NoSQL Node.js チュートリアル。 DocumentDB は、JSON 用の NoSQL データベースです。"
+description: "DocumentDB Node.js SDK を使用して NoSQL データベースとコンソール アプリケーションを作成する NoSQL Node.js チュートリアル。 DocumentDB は、JSON 用の NoSQL データベースです。"
 keywords: "Node.js チュートリアル, ノード データベース"
 services: documentdb
 documentationcenter: node.js
@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: hero-article
-ms.date: 11/16/2016
+ms.date: 12/16/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
-ms.openlocfilehash: 9d4d49e1a05487a06e071c54008a333dc88c4a50
+ms.sourcegitcommit: a1cd22bb4d5719493e32071879f1dc601901941f
+ms.openlocfilehash: 481e5d664ae4ae029135e06350e8c053eb6832c1
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 9d4d49e1a05487a06e071c54008a333dc88c4a50
 > * [C++](documentdb-cpp-get-started.md)
 > 
 
-Azure DocumentDB Node.js SDK の Node.js チュートリアルへようこそ。 このチュートリアルでは、Node データベースなどの DocumentDB リソースを作成してクエリするコンソール アプリケーションを作成します。
+Azure DocumentDB Node.js SDK の Node.js チュートリアルへようこそ。 このチュートリアルに従うことで、DocumentDB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
 
 ここで説明する操作は以下のとおりです。
 
@@ -67,10 +67,10 @@ DocumentDB アカウントを作成しましょう。 使用するアカウン�
 3. 次のコマンドを使用して、2 つの空の JavaScript ファイルを作成します。
    * Windows:
      * ```fsutil file createnew app.js 0```
-       * ```fsutil file createnew config.js 0```
+     * ```fsutil file createnew config.js 0```
    * Linux/OS X:
      * ```touch app.js```
-       * ```touch config.js```
+     * ```touch config.js```
 4. npm で documentdb モジュールをインストールします。 次のコマンドを使用します。
    * ```npm install documentdb --save```
 
@@ -265,7 +265,7 @@ NOTFOUND の HTTP ステータス、データベースの URL、コレクショ�
 
 [コレクション](documentdb-resources.md#collections)は、**DocumentClient** クラスの [createCollection](https://azure.github.io/azure-documentdb-node/DocumentClient.html) 関数を使用して作成できます。 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。
 
-```config``` オブジェクトに指定された ```id``` で新しいコレクションを作成するために、**getCollection** 関数をコピーして **getDatabase** 関数の下に貼り付けます。 ここでも、同じ ID を持つ ```FamilyCollection``` が存在しないことが確認されます。 存在する場合は、新しいコレクションを作成する代わりに、そのコレクションが返されます。
+```config``` オブジェクトに指定された ```id``` で新しいコレクションを作成するために、**getCollection** 関数をコピーして app.js ファイルの **getDatabase** 関数の下に貼り付けます。 ここでも、同じ ID を持つ ```FamilyCollection``` が存在しないことが確認されます。 存在する場合は、新しいコレクションを作成する代わりに、そのコレクションが返されます。
 
                 } else {
                     resolve(result);
@@ -368,7 +368,7 @@ NOTFOUND の HTTP ステータス、データベースの URL、コレクショ�
 ## <a name="a-idqueryastep-8-query-documentdb-resources"></a><a id="Query"></a>手順 8: DocumentDB リソースをクエリする
 DocumentDB では、各コレクションに格納された JSON ドキュメントに対する [リッチ クエリ](documentdb-sql-query.md) をサポートしています。 次のサンプル コードは、コレクションでドキュメントに対して実行できるクエリを示しています。
 
-**queryCollection** 関数をコピーして **getFamilyDocument** 関数の下に貼り付けます。 以下のとおり、DocumentDB は SQL に似たクエリをサポートしています。 複雑なクエリを構築する方法の詳細については、[Query Playground](https://www.documentdb.com/sql/demo) および[クエリに関するドキュメント](documentdb-sql-query.md)を参照してください。
+**queryCollection** 関数をコピーして app.js ファイルの **getFamilyDocument** 関数の下に貼り付けます。 以下のとおり、DocumentDB は SQL に似たクエリをサポートしています。 複雑なクエリを構築する方法の詳細については、[Query Playground](https://www.documentdb.com/sql/demo) および[クエリに関するドキュメント](documentdb-sql-query.md)を参照してください。
 
                 } else {
                     resolve(result);
@@ -425,7 +425,7 @@ DocumentDB クエリのスコープは既に 1 つのコレクションに設定
 ## <a name="a-idreplacedocumentastep-9-replace-a-document"></a><a id="ReplaceDocument"></a>手順 9: ドキュメントを置換する
 DocumentDB は、JSON ドキュメントの置換をサポートします。
 
-**replaceDocument** 関数をコピーして **queryCollection** 関数の下に貼り付けます。
+**replaceFamilyDocument** 関数をコピーして app.js ファイルの **queryCollection** 関数の下に貼り付けます。
 
                     }
                     console.log();
@@ -472,7 +472,7 @@ DocumentDB は、JSON ドキュメントの置換をサポートします。
 ## <a name="a-iddeletedocumentastep-10-delete-a-document"></a><a id="DeleteDocument"></a>手順 10: ドキュメントを削除する
 DocumentDB は、JSON ドキュメントの削除をサポートしています。
 
-**deleteDocument** 関数をコピーして **replaceDocument** 関数の下に貼り付けます。
+**deleteFamilyDocument** 関数をコピーして **replaceFamilyDocument** 関数の下に貼り付けます。
 
                 else {
                     resolve(result);
@@ -516,7 +516,7 @@ DocumentDB は、JSON ドキュメントの削除をサポートしています�
 ## <a name="a-iddeletedatabaseastep-11-delete-the-node-database"></a><a id="DeleteDatabase"></a>手順 11: ノード データベースを削除する
 作成したデータベースを削除すると、データベースとすべての子リソース (コレクション、ドキュメントなど) が削除されます。
 
-次のコード スニペット (**cleanup** 関数) をコピーして貼り付けます。この関数によって、データベースとすべての子リソースが削除されます。
+**cleanup** 関数をコピーして **deleteFamilyDocument** 関数の下に貼り付けます。この関数によって、データベースとすべての子リソースが削除されます。
 
                 else {
                     resolve(result);
@@ -537,7 +537,7 @@ DocumentDB は、JSON ドキュメントの削除をサポートしています�
         });
     }
 
-**deleteDocument** の呼び出しの下に、**cleanup** 関数を実行するためのコードをコピーして貼り付けます。
+**deleteFamilyDocument** の呼び出しの下に、**cleanup** 関数を実行するためのコードをコピーして貼り付けます。
 
     .then(() => deleteFamilyDocument(config.documents.Andersen))
 
@@ -600,7 +600,9 @@ DocumentDB は、JSON ドキュメントの削除をサポートしています�
 ご利用ありがとうございます。 以上で Node.js チュートリアルが完了し、初めての DocumentDB コンソール アプリケーションが完成しました。
 
 ## <a name="a-idgetsolutionaget-the-complete-nodejs-tutorial-solution"></a><a id="GetSolution"></a>完全な Node.js チュートリアル ソリューションを入手する
-この記事のすべてのサンプルを含む GetStarted ソリューションをビルドするには、以下が必要です。
+このチュートリアルの手順を実行する時間がない場合や、コードをダウンロードするだけの場合は、[Github](https://github.com/Azure-Samples/documentdb-node-getting-started) から入手できます。
+
+この記事のすべてのサンプルを含む GetStarted ソリューションを実行するには、以下が必要です。
 
 * [DocumentDB アカウント][documentdb-create-account]。
 * GitHub で入手可能な [GetStarted](https://github.com/Azure-Samples/documentdb-node-getting-started) ソリューション。
@@ -609,7 +611,11 @@ npm で **documentdb** モジュールをインストールします。 次の�
 
 * ```npm install documentdb --save```
 
-次に、 ```config.js``` ファイルで、「 [手順 3: アプリの構成を設定する](#Config)」の説明に従って、config.endpoint と config.authKey の値を更新します。
+次に、 ```config.js``` ファイルで、「 [手順 3: アプリの構成を設定する](#Config)」の説明に従って、config.endpoint と config.authKey の値を更新します。 
+
+次に、ターミナルで ```app.js``` ファイルを見つけ、コマンド ```node app.js``` を実行します。
+
+以上です。ビルドすれば完了です。 
 
 ## <a name="next-steps"></a>次のステップ
 * さらに複雑な Node.js のサンプルが必要ですか。 「 [DocumentDB を使用した Node.js Web アプリケーションの作成](documentdb-nodejs-application.md)」を参照してください。
@@ -624,6 +630,6 @@ npm で **documentdb** モジュールをインストールします。 次の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

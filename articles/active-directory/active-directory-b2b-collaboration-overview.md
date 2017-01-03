@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/09/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
-ms.openlocfilehash: 8207aa4a028b47335cb249805f7bdb362bef14a9
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 7c56dee52201c95c2a0677355e2b4edd2f113259
 
 
 ---
@@ -57,6 +57,6 @@ Azure AD B2B コラボレーションに関する他の記事をご覧くださ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

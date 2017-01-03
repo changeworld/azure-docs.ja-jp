@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cb06c1c743a43be573b59614f40779999a0a6113
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a681699c081422e5ea0da34ca56e17e786c221d1
 
 
 ---
@@ -81,6 +81,6 @@ Azure AD Domain Services を使用できる Azure リージョンの一覧につ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

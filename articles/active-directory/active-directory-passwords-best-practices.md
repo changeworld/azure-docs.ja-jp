@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/12/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0c2783aabc66eb5eeae7d11a3487307986a61426
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 59f4cd3de4524a5ed51b7ef434b7b21c151dd2e0
 
 
 ---
@@ -162,6 +162,6 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

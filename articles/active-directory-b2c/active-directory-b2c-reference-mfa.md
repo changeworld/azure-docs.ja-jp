@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4a6136b76dfa829cb20eacdf68a4a2bd4c7ae054
+ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
+ms.openlocfilehash: 4226075affd1ae03c7bd258b244718f7bb72f127
 
 
 ---
@@ -61,6 +61,6 @@ Multi-Factor Authentication の手順が実行される前に、コンシュー�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

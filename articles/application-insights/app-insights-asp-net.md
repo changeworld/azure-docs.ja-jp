@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 10/13/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: a97e20b208d92e03bd4458605aaa48ef7c389e32
+ms.sourcegitcommit: dc95c922b71d18cf791ea98f4ab1a02d2bac2c3b
+ms.openlocfilehash: 5103c28047e6d5e7be5f4f3b7933196de7045eeb
 
 
 ---
@@ -59,7 +59,9 @@ Visual Studio で、ログに記録されたイベントの数が表示されま
 
 ![Visual Studio では、Application Insights ボタンはデバッグ時に表示されます。](./media/app-insights-asp-net/55.png)
 
-このビューには、アプリのサーバー側で生成されたテレメトリが表示されます。 フィルターを試したり、任意のイベントをクリックして詳細を表示したりしてみましょう。
+このビュー (デバッグ セッションのデータ) には、アプリのサーバー側で生成されたテレメトリが表示されます。 フィルターを試したり、任意のイベントをクリックして詳細を表示したりしてみましょう。
+
+* "*データが表示されない場合は、時間範囲が正しいかどうかを確認し、検索アイコンをクリックします。*"
 
 [Visual Studio の Application Insights ツールの詳細については、こちらを参照してください](app-insights-visual-studio.md)。
 
@@ -70,15 +72,34 @@ Visual Studio で、ログに記録されたイベントの数が表示されま
 
 ポータルには、Visual Studio より多くのグラフ、分析ツール、ダッシュボードが用意されています。 
 
-[Azure ポータル](https://portal.azure.com/)に Application Insights のリソースを開きます。
+Application Insights リソースを開きます。[Azure Portal](https://portal.azure.com/) にサインインすると、そこに表示されます。または、Visual Studio でプロジェクトを右クリックし、メニューから表示します。
 
 ![プロジェクトを右クリックして Azure ポータルを開く](./media/app-insights-asp-net/appinsights-04-openPortal.png)
 
-ポータルを開くと、アプリのテレメトリが表示されます。 ![](./media/app-insights-asp-net/66.png)
+* "*アクセス エラーが発生した場合、Microsoft 資格情報のセットを複数持っているのであれば、正しくないセットでサインインしている可能性があります。ポータルでサインアウトし、もう一度サインインしてください。*"
 
-* [ライブ メトリック ストリーム](app-insights-metrics-explorer.md#live-metrics-stream)に最初のテレメトリが表示されます。
-* **[検索]** (1) に個々のイベントが表示されます。 データが表示されるまでに数分かかることがあります。 イベントのプロパティを表示するには、イベントをクリックします。 
-* メトリックの集計値はグラフ (2) に表示されます。 データがここに表示されるまで、1 ～ 2 分かかる場合があります。 グラフをクリックすると、詳細を含むブレードが開きます。
+ポータルを開くと、アプリのテレメトリが表示されます。![Application Insights の [概要] ページ](./media/app-insights-asp-net/66.png)
+
+詳細を表示するには、任意のタイルまたはグラフをクリックします。
+
+### <a name="more-detail-in-the-portal"></a>ポータルでの詳細
+
+* [**ライブ メトリック ストリーム**](app-insights-metrics-explorer.md#live-metrics-stream)には、ほぼ瞬時にテレメトリが表示されます。
+
+    ![概要ブレードで [ライブ ストリーム] をクリックする](./media/app-insights-asp-net/livestream.png)
+
+    アプリの実行と同時にライブ ストリームを開いて、接続を許可します。
+
+    ライブ ストリームでは、送信後 1 分間だけ、テレメトリが表示されます。 それより前の履歴を調査するには、検索、メトリックス エクスプローラー、Analytics を使用してください。 データがこれらの場所に表示されるまでに数分かかる場合があります。
+
+* [**検索**](app-insights-diagnostic-search.md)では、要求、例外、ページ ビューなど、個々のイベントが表示されます。 イベントの種類、語句の一致、およびプロパティ値でフィルター処理することができます。 イベントをクリックすると、そのプロパティと関連イベントが表示されます。 
+
+    ![概要ブレードで [検索] をクリックする](./media/app-insights-asp-net/search.png)
+
+ * 開発モードでは、多くの依存関係 (AJAX) イベントが表示されることがあります。 これらは、ブラウザーとサーバー エミュレーター間の同期です。 これらを非表示にするには、依存関係のフィルターをクリックします。
+* 要求や失敗率などの[**集計メトリック**](app-insights-metrics-explorer.md)は、グラフに表示されます。 グラフをクリックすると、詳細を含むブレードが開きます。 グラフの **[編集]** タグをクリックすると、フィルターやサイズなどを設定できます。
+    
+    ![概要ブレードで任意のグラフをクリックする](./media/app-insights-asp-net/metrics.png)
 
 [Azure ポータルでの Application Insights の使用方法の詳細については、こちらを参照してください](app-insights-dashboards.md)。
 
@@ -175,6 +196,6 @@ Visual Studio Team Services を使用する場合は、新しいバージョン�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/27/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 92f97b2ebff344e8ce70d983be74c3790ba608a8
+ms.sourcegitcommit: 8835427415e8e01e851796eaf323bce7d1918c8c
+ms.openlocfilehash: 8c7ea2e7131f69bc43f2e82b816efdfbda59e85d
 
 
 ---
@@ -110,6 +110,7 @@ azure vm image list --location WestUS --publisher Canonical --offer UbuntuServer
 
 * [Azure での動作保証済みディストリビューション](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [カスタム ディスク イメージをアップロードして Linux VM を作成する](virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法](virtual-machines-linux-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   
   * 既存の VM をキャプチャするクイック スタート コマンドの例:
@@ -128,6 +129,6 @@ azure vm image list --location WestUS --publisher Canonical --offer UbuntuServer
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 
