@@ -44,11 +44,11 @@ Power BI Embedded は Azure のサービスの 1 つです。 Azure Portal を�
 
 Power BI Embedded の各ワークスペースは、各顧客 (テナント) のワークスペースであり、各ワークスペース コレクションに多数のワークスペースを追加できます。 各ワークスペース コレクションで同じアクセス キーを使用します。 実質的に、ワークスペース コレクションは、Power BI Embedded のセキュリティ境界です。
 
-![](media\\power-bi-embedded-iframe\\create-workspace.png)
+![](media/power-bi-embedded-iframe/create-workspace.png)
 
 ワークスペース コレクションの作成が完了したら、Azure ポータルからアクセス キーをコピーします。
 
-![](media\\power-bi-embedded-iframe\\copy-access-key.png)
+![](media/power-bi-embedded-iframe/copy-access-key.png)
 
 > [!NOTE]
 > ワークスペース コレクションをプロビジョニングし、REST API 経由でアクセス キーを取得することもできます。 詳細については、「 [Power BI Resource Provider APIs (Power BI リソース プロバイダー API)](https://msdn.microsoft.com/library/azure/mt712306.aspx)」を参照してください。
@@ -60,7 +60,7 @@ Power BI Embedded の各ワークスペースは、各顧客 (テナント) の�
 このタスクでは、プログラミングやコードは必要ありません。 使用するのは Power BI Desktop のみです。
 この記事では、Power BI Desktop を使用する方法の詳細は説明しません。 サポートが必要な場合は、「 [Power BI Desktop の概要](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)」を参照してください。 こちらの例では、「 [小売の分析のサンプル](https://powerbi.microsoft.com/documentation/powerbi-sample-datasets/)」のみを使用します。
 
-![](media\\power-bi-embedded-iframe\\power-bi-desktop-1.png)
+![](media/power-bi-embedded-iframe/power-bi-desktop-1.png)
 
 ## <a name="create-a-power-bi-workspace"></a>Power BI ワークスペースを作成する
 プロビジョニングがすべて完了したので、REST API 経由でワークスペース コレクション内に顧客のワークスペースを作成しましょう。 次の HTTP POST 要求 (REST) は、既存のワークスペース コレクションに新しいワークスペースを作成します。 この例のワークスペース コレクション名は **mypbiapp**です。
@@ -260,7 +260,7 @@ Content-Type: application/json; charset=utf-8
 
 Web ページにレポートを埋め込むときは、アクセス キー **AppKey**ではなく、計算されたトークンを使用する必要があります。 アプリケーションでは、要求と計算されたデジタル署名で構成される、OAuth JSON Web トークン \(JWT) を作成する必要があります。 下図のように、この OAuth JWT は、ドットで区切られ、エンコードされた文字列トークンです。
 
-![](media\\power-bi-embedded-iframe\\oauth-jwt.png)
+![](media/power-bi-embedded-iframe/oauth-jwt.png)
 
 最初に、入力値を準備する必要があります。 この値は、次の JSON の Base64 でエンコードされた URL (RFC4648) 文字列であり、ドット \(.) 文字で区切られます。 後ほど、レポート ID を取得する方法について説明します。
 
@@ -461,7 +461,7 @@ RequestId: d4099022-405b-49d3-b3b7-3c60cf675958
 
 結果を次に示します。
 
-![](media\\power-bi-embedded-iframe\\view-report.png)
+![](media/power-bi-embedded-iframe/view-report.png)
 
 現時点で、Power BI Embedded では、Iframe のレポートのみが表示されます。 ただし、[Power BI ブログ]()に今後もご注目ください。 今後の機能強化により、新しいクライアント側の API を使用できます。この API では、Iframe に情報を送信するだけでなく、情報を取得することもできます。 魅力的な機能です。
 

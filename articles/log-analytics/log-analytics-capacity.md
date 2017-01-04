@@ -4,7 +4,7 @@ description: "Log Analytics の容量計画ソリューションを利用して�
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 57e7fbdaa393e078b62a6d6a0b181b67d532523d
@@ -27,8 +27,8 @@ Log Analytics の容量管理ソリューションを利用して、Hyper-V サ�
 
 > [!NOTE]
 > 容量管理ソリューションはワークスペースに追加できません。 容量管理ソリューションをインストールしているお客様は、引き続きソリューションを利用できます。  
-> 
-> 
+>
+>
 
 置換用の容量とパフォーマンスのソリューションはプライベート プレビュー段階です。 この置換ソリューションは、元の容量管理ソリューションについてユーザーから報告されている次の問題に対処するためのものです。
 
@@ -173,7 +173,6 @@ OMS を使用すると、ディスク領域の使用状況の履歴傾向を見�
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md) を使用して、詳細な容量管理データを確認してください。
-
 
 
 

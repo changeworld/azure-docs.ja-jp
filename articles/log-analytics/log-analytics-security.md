@@ -4,7 +4,7 @@ description: "Log Analytics でプライバシーを保護し、データをセ�
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: d0f4323c22858300d95af7407cdb14995507ee60
@@ -116,7 +116,7 @@ OMS Log Analytics は、次の要件を満たしています。
 * Microsoft の信頼できるコンピューティング
 * Azure のサービスとしては、OMS で使用されるコンポーネントは、Azure の準拠要件に従います。 詳細については、[Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/en-us/TrustCenter/Compliance/default.aspx)を参照してください。
 
-> [!NOTE] 
+> [!NOTE]
 > Log Analytics は、一部の認定および認証において、以前の名前である *Operational Insights* として表示されています。
 >
 >

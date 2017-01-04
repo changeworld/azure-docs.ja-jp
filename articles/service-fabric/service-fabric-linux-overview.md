@@ -37,6 +37,7 @@ Linux 上の Service Fabric は、概念的には Windows 上の Service Fabric 
 > 
 > 
 
+
 ## <a name="supported-tooling"></a>サポートされているツール
 プレビューでは、Azure CLI を介したクラスターの対話操作がサポートされています。 Java 開発者のために、Eclipse および Yeoman との統合が提供されており、Eclipse は Linux および OSX 上でサポートされています。 OSX の統合では、内部的には vagrant を介して Linux VM を使用します。 C# 開発者のためには、アプリケーション テンプレートを生成できるように、Yeoman との統合が提供されています。
 

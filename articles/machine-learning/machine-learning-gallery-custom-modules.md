@@ -39,9 +39,9 @@ ms.openlocfilehash: 889f68c774bc9da8465e597afe0508d69b060574
 ### <a name="comment-and-share"></a>コメントと共有
  任意のカスタム モジュールをクリックし、モジュールの詳細ページを開いて、モジュールの機能とその使用方法に関する詳細を参照します。 このページで、コメント セクションから、意見を述べたり、フィードバックを提供したり、質問したりできます。 LinkedIn や Twitter アカウントの共有機能を使用して、友人や同僚とを共有することもできます。 カスタム モジュールへのリンクを電子メールで送信し、他のユーザーを招待してそのページを表示することもできます。
 
-![この項目を友人と共有する](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![この項目を友人と共有する](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![独自のコメントを追加する](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![独自のコメントを追加する](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="download"></a>ダウンロード
 独自の実験において、ギャラリーで任意のカスタム モジュールを使用できます。
@@ -55,7 +55,7 @@ ms.openlocfilehash: 889f68c774bc9da8465e597afe0508d69b060574
 1. 新しい実験を作成するか既存の実験を開く
 2. モジュール パレットの実験キャンバスの左側で、**[カスタム]** をクリックし、ワークスペース内のカスタム モジュールの一覧を展開する
    
-    ![Studio パレットのカスタム モジュール一覧](media\\machine-learning-gallery-custom-modules\\custom-module-in-studio-palette.png)
+    ![Studio パレットのカスタム モジュール一覧](media/machine-learning-gallery-custom-modules/custom-module-in-studio-palette.png)
 3. インポートしたモジュールを選択し、実験までドラッグする
 
 ### <a name="from-the-gallery"></a>ギャラリーから
@@ -64,7 +64,7 @@ ms.openlocfilehash: 889f68c774bc9da8465e597afe0508d69b060574
 1. ギャラリーで、モジュールの詳細ページを開く
 2. **[Studio で開く]** をクリックする
    
-    ![ギャラリーからカスタム モジュールを開く](media\\machine-learning-gallery-custom-modules\\open-custom-module-from-gallery.png)
+    ![ギャラリーからカスタム モジュールを開く](media/machine-learning-gallery-custom-modules/open-custom-module-from-gallery.png)
    
     各カスタム モジュールには、モジュールを使用する方法を示したサンプル実験が含まれています。 **[Studio で開く]** をクリックすると、このサンプル実験が Machine Learning Studio ワークスペースに読み込まれ、開きます (Studio にサインインしていない場合は、実験がワークスペースにコピーされる前に、Microsoft アカウントを使用してサインインするよう求められます)。
 
@@ -77,7 +77,7 @@ Machine Learning Studio で作業している間は、ギャラリーから同�
 2. **[モジュール]** を選択する: 表示されるギャラリー モジュールの一覧から選択するか、検索ボックスを使用して特定のモジュールを検索できます
 3. マウスをモジュールでポイントし、**[モジュールのインポート]** を選択します (モジュールについての詳細を参照するには、**[ギャラリーで表示]** を選択して、ギャラリー内のモジュールの詳細ページに移動します)
    
-    ![Machine Learning Studio にカスタム モジュールをインポートする](media\\machine-learning-gallery-custom-modules\\add-custom-module-in-studio.png)
+    ![Machine Learning Studio にカスタム モジュールをインポートする](media/machine-learning-gallery-custom-modules/add-custom-module-in-studio.png)
 
 カスタム モジュールは、ワークスペースにコピーされ、他のすべての組み込みまたはカスタム Studio モジュールと共に、モジュール パレットに配置されます。 ワークスペース内の他のモジュールと同様に使用できるようになります。
 

@@ -4,7 +4,7 @@ description: "Active Directory 評価ソリューションを使用して、サ�
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -41,11 +41,11 @@ Active Directory 評価ソリューションを使用して、サーバー環境
 * エージェントは、評価されるドメインのメンバーであるドメイン コントローラーにインストールする必要があります。
 * Active Directory 評価ソリューションには、OMS エージェントがある各コンピューターにインストールされている .NET Framework 4 が必要です。
 * 「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」で説明されている手順に従って、Active Directory 評価ソリューションを OMS ワークスペースに追加します。  さらに手動で構成する必要はありません。
-  
+
   > [!NOTE]
   > ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの OMS サービスに送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
-  > 
-  > 
+  >
+  >
 
 ## <a name="active-directory-assessment-data-collection-details"></a>Active Directory 評価データ収集の詳細
 Active Directory 評価では、有効になっているエージェントを使用して、WMI データ、レジストリ データ、パフォーマンス データを収集します。
@@ -99,11 +99,11 @@ OMS の評価ソリューションを使用するには、ソリューション�
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>無視する推奨事項を識別するには
 1. ワークスペースにサインインして、ログ検索を開きます。 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
-   
+
    ```
    Type=ADAssessmentRecommendation RecommendationResult=Failed | select  Computer, RecommendationId, Recommendation | sort  Computer
    ```
-   
+
    ログ検索のクエリを示すスクリーン ショットを次に示します。![失敗した推奨事項](./media/log-analytics-ad-assessment/ad-failed-recommendations.png)
 2. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
 
@@ -118,7 +118,7 @@ OMS の評価ソリューションを使用するには、ソリューション�
 次回スケジュールされている評価 (既定では 7 日おき) の実行後、推奨事項は *Ignored* とマークされ、評価ダッシュボードには表示されません。
 
 1. 次のログ検索クエリを使用して、無視されるすべての推奨事項の一覧を表示します。
-   
+
     ```
     Type=ADAssessmentRecommendation RecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
     ```
@@ -170,7 +170,6 @@ OMS の評価ソリューションを使用するには、ソリューション�
 
 ## <a name="next-steps"></a>次のステップ
 * 「 [Log Analytics におけるログの検索](log-analytics-log-searches.md) 」を参照し、詳細な AD 評価データと推奨事項を確認してください。
-
 
 
 

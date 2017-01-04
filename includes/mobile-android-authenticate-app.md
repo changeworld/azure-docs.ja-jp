@@ -34,7 +34,8 @@
 
     これで、認証プロセスを処理する新しいメソッドが作成されます。 ユーザーは、Google サインインを使用して認証されます。 ダイアログに認証されたユーザーの ID が表示されます。 認証が成功しないと、次に進むことはできません。
 
-    > [!NOTE] Google 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、_MicrosoftAccount_、_Facebook_、_Twitter_、_windowsazureactivedirectory_ のいずれかに変更します。
+    > [!NOTE]
+    > Google 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、_MicrosoftAccount_、_Facebook_、_Twitter_、_windowsazureactivedirectory_ のいずれかに変更します。
 
 3. **onCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
 

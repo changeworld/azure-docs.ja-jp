@@ -38,18 +38,18 @@ ms.openlocfilehash: 6b1f72a6d6f5084e804078a4deb984ebace0ac58
 
  任意のコンペティションをクリックし、コンペティションの詳細ページを開いて詳細情報を参照します。 このページで、コメント セクションから、意見を述べたり、フィードバックを提供したり、質問したりできます。 LinkedIn や Twitter アカウントの共有機能を使用して、友人や同僚とを共有することもできます。 コンペティションへのリンクを電子メールで送信し、他のユーザーを招待してそのページを表示することもできます。
 
-![この項目を友人と共有する](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![この項目を友人と共有する](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![独自のコメントを追加する](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![独自のコメントを追加する](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="enter-a-competition"></a>コンペティションに参加する
 コンペティションが開かれている場合は、詳細ページのステータスが **[アクティブ]** になります。 コンペティションに参加するには、**[コンペティションに参加する]** をクリックすると、必要なリソースおよび手順についての指示が表示されます。
 
-![コンペティションが完了した](media\\machine-learning-gallery-competitions\\open-competition.png)
+![コンペティションが完了した](media/machine-learning-gallery-competitions/open-competition.png)
 
 コンペティションがもはや開かれていない場合は、詳細ページのステータスが **[完了]** になり、**[コンペティションに参加する]** のリンクは **[完了]** という語に置き換えられます。
 
-![コンペティションが完了した](media\\machine-learning-gallery-competitions\\completed-competition.png)
+![コンペティションが完了した](media/machine-learning-gallery-competitions/completed-competition.png)
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
