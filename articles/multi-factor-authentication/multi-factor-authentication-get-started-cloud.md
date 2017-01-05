@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/17/2016
+ms.date: 01/04/2017
 ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -25,8 +25,6 @@ ms.openlocfilehash: c6fe00b72d95a3eb40d91f6f7989b7163518c46f
 
 > [!NOTE]
 > 次のドキュメントでは、 **Azure クラシック ポータル**を使用してユーザーを有効にする方法について説明しています。 Office 365 ユーザー向けに Azure Multi-Factor Authentication を設定する方法についての情報をお探しの場合は、「[Office 365 ユーザー用の多要素認証を設定する](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=en-US&rs=en-US&ad=US)」を参照してください。
-> 
-> 
 
 ![MFA in the Cloud](./media/multi-factor-authentication-get-started-cloud/mfa_in_cloud.png)
 
@@ -38,8 +36,6 @@ ms.openlocfilehash: c6fe00b72d95a3eb40d91f6f7989b7163518c46f
 
 > [!NOTE]
 > ライセンスの使用は、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite (EMS) を所有するユーザーが対象となります。  MFA は Azure AD Premium と EMS に含まれています。 ライセンスが足りている場合は、認証プロバイダーの作成は不要です。
-> 
-> 
 
 ## <a name="turn-on-two-step-verification-for-users"></a>ユーザーに対する 2 段階認証をオンにする
 あるユーザーに対して新たに 2 段階認証を必須とするには、そのユーザーの状態を [無効] から [有効] に変更します。  ユーザーの状態の詳細については、「[Azure Multi-Factor Authentication におけるユーザーの状態](multi-factor-authentication-get-started-user-states.md)」を参照してください。
@@ -75,13 +71,11 @@ ms.openlocfilehash: c6fe00b72d95a3eb40d91f6f7989b7163518c46f
 
 > [!IMPORTANT]
 > ユーザーの状態を [無効] から [強制] に直接変更することはお勧めしていません。 ユーザーが MFA の登録を終えておらず、[アプリのパスワード](multi-factor-authentication-whats-next.md#app-passwords)を取得していない場合には、ブラウザーベースでないアプリが動作を停止してしまうからです。 ブラウザーベースでないアプリを使用しており、アプリのパスワードを必要とする場合は、状態を一度 [無効] から [有効] に変更することをお勧めします。 これにより、ユーザーが登録とアプリのパスワードの取得を行うことができるようになります。 パスワードの取得が終わったら、状態を [強制] に移行してください。
-> 
-> 
 
 ユーザーを一括で有効にする方法の 1 つとして、PowerShell を使用します。 現在、Azure ポータルには一括有効化の機能がないため、各ユーザーを個別に選択する必要があります。 そのため、ユーザーの数が多いと作業量が膨大になることがあります。 以下のように PowerShell スクリプトを作成することで、ユーザーのリストをループ処理して各ユーザーを有効にすることができます。
 
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-        $st.RelyingParty = "\*"
+        $st.RelyingParty = "*"
         $st.State = “Enabled”
         $sta = @($st)
         Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
@@ -92,7 +86,7 @@ ms.openlocfilehash: c6fe00b72d95a3eb40d91f6f7989b7163518c46f
     foreach ($user in $users)
     {
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-        $st.RelyingParty = "\*"
+        $st.RelyingParty = "*"
         $st.State = “Enabled”
         $sta = @($st)
         Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
