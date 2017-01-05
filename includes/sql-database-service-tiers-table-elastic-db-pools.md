@@ -31,7 +31,7 @@ sql-database-service-tiers.md
 | データベースあたりの最大 eDTU 数 | {10,20,<br>50} | {10,20,<br>50,100} | {10,20,<br>50,100} | {10,20,<br>50,100} | {10,20,<br>50,100} | {10,20,<br>50,100} | 
 ||||||||
 
-### <a name="standard-elastic-pool-limits-continued-"></a>Standard エラスティック プールの制限 (続き) **
+### <a name="standard-elastic-pool-limits-continued"></a>Standard エラスティック プールの制限 (続き) 
 
 | プール サイズ (DTU)  |  **1200** | **1600** | **2000** | **2500** | **3000** |
 |:---|---:|---:|---:| ---: | ---: |
@@ -57,7 +57,7 @@ sql-database-service-tiers.md
 | データベースあたりの最大 eDTU 数 | {25,50,75,<br>125} | {25,50,75,<br>125,250} | {25,50,75,<br>125,250,500} | {25,50,75,<br>125,250,500,<br>1000} | {25,50,75,<br>125,250,500,<br>1000,1500} |  
 ||||||||
 
-### <a name="premium-elastic-pool-limits-continued-"></a>Premium エラスティック プールの制限 (続き) **
+### <a name="premium-elastic-pool-limits-continued"></a>Premium エラスティック プールの制限 (続き) 
 
 | プール サイズ (DTU)  |  **2000** | **2500** | **3000** | **3500** | **4000** |
 |:---|---:|---:|---:| ---: | ---: | 
@@ -72,9 +72,8 @@ sql-database-service-tiers.md
 
 \* エラスティック データベースではプール ストレージが共有されるため、データベース ストレージは、残りのプール ストレージとデータベースあたりの最大ストレージのどちらか小さい方に制限されます。
 
-\** 現在、PowerShell と REST API を介して使用できるのは、Standard エラスティック プールの場合は 3000 eDTU、Premium エラスティック プールの場合は 4000 eDTU というプール サイズのみです。 これらのプール サイズは、間もなく、Azure Portal で使用可能になる予定です。 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

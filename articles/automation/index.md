@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "時間を節約し、普段の管理タスクの信頼性を向上するために、Automation を使用してプロセスと構成管理を自動化する方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: c9444c341bc5746c96719e6ebfa464f294adf2f8
+ms.sourcegitcommit: 9f7b84331bd0575062518834ce1cd3db60fa6289
+ms.openlocfilehash: 98ddde79d422b692a1ded866fb12061bf942fc8a
 
 ---
 # <a name="automation-documentation"></a>Automation のドキュメント
 
-ユーザーは Azure Automation を使用すると、クラウド環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を入手できます。 時間を節約し、普段の管理タスクの信頼性が向上し、一定の間隔で自動的に実行されるようにスケジュールを設定します。
+Automation を使用して、クラウド環境で実行される普段の管理タスクの信頼性を向上し、時間を節約する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Runbook を使用してプロセスを自動化したり、Desired State Configuration を使用して構成管理を自動化したりする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -175,6 +176,6 @@ Automation のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 
