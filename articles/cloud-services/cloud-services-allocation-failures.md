@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 1/6/2017
 ms.author: v-six
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -27,7 +27,7 @@ ms.openlocfilehash: c91a34eb34a73abe5c5ac2bb6aeb08c818a97856
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-### <a name="background-how-allocation-works"></a>背景情報 – 割り当てのしくみ
+### <a name="background--how-allocation-works"></a>背景情報 – 割り当てのしくみ
 Azure データセンターのサーバーは、クラスターにパーティション分割されています。 複数のクラスターで、新しいクラウド サービスの割り当て要求が試みられます。 最初のインスタンスを (ステージング環境または運用環境の) クラウド サービスにデプロイすると、このクラウド サービスは 1 つのクラスターに固定されます。 このクラウド サービスでさらにデプロイすると、すべて同じクラスターで処理されます。 この記事では、このことを "クラスターに固定されている" と言います。 次の図 1 は、複数のクラスターで試行される通常の割り当てを示しています。図 2 は、クラスター 2 に固定されている割り当てを示しています。これは、既存のクラウド サービス CS_1 がクラスター 2 でホストされているためです。
 
 ![Allocation Diagram](./media/cloud-services-allocation-failure/Allocation1.png)
@@ -53,25 +53,24 @@ Azure データセンターのサーバーは、クラスターにパーティ�
 
 ## <a name="solutions"></a>解決方法
 1. 新しいクラウド サービスに再デプロイする - この解決方法ではそのリージョン内のすべてのクラスターからプラットフォームを選択できるため、成功する可能性が最も高くなります。
-   
+
    * 新しいクラウド サービスにワークロードをデプロイします  
    * 新しいクラウド サービスへのトラフィックを指すように CNAME または A レコードを更新します
    * 以前のサイトに送信されるトラフィックが 0 個になると、以前のクラウド サービスを削除できます。 この解決方法ではダウンタイムは発生しません。
 2. 運用スロットとステージング スロットの両方を削除する - この解決方法では、既存の DNS 名が維持されますが、アプリケーションでダウンタイムが発生します。
-   
+
    * 既存のクラウド サービスの運用スロットとステージング スロットを削除し、クラウド サービスを空にします。
    * 次に、既存のクラウド サービスに新しいデプロイを作成します。 これにより、リージョン内のすべてのクラスターで割り当てが再度試行されます。 クラウド サービスがアフィニティ グループに関連付けられていないことを確認します。
 3. 予約済み IP - この解決方法では、既存の IP アドレスが維持されますが、アプリケーションでダウンタイムが発生します。  
-   
+
    * Powershell を使用して既存のデプロイ用の ReservedIP を作成します
-     
+
      ```
      New-AzureReservedIP -ReservedIPName {new reserved IP name} -Location {location} -ServiceName {existing service name}
      ```
    * 上の 2. の手順に従って、サービスの CSCFG で新しい ReservedIP を確実に指定します。
 4. 新しいデプロイのアフィニティ グループを削除する - アフィニティ グループは推奨されなくなりました。 上の 1. の手順に従って、新しいクラウド サービスをデプロイしてください。 クラウド サービスがアフィニティ グループ内にないことを確認します。
 5. リージョン Virtual Network に変換する - 「 [アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)」を参照してください。
-
 
 
 
