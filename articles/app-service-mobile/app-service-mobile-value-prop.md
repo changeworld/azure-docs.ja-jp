@@ -93,8 +93,8 @@ Azure App Service プラットフォームの詳細については、 [Azure App
 [iOS および Android 用 Xamarin]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[auto scaling]: ../app-service-web/web-sites-scale.md
-[staging environments]: ../app-service-web/web-sites-staged-publishing.md
+[自動スケール]: ../app-service-web/web-sites-scale.md
+[ステージング環境]: ../app-service-web/web-sites-staged-publishing.md
 [デプロイ オプション]: ../app-service-web/web-sites-deploy.md
 [ハイブリッド接続]: ../app-service-web/web-sites-hybrid-connection-get-started.md
 [仮想ネットワーク]: ../app-service-web/web-sites-integrate-with-vnet.md
