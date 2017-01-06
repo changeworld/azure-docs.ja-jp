@@ -18,8 +18,8 @@ ms.workload: data-management
 ms.date: 11/23/2016
 ms.author: rickbyh;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: c9764e3a61ed22a2596da19dd92ef8eca395b82b
-ms.openlocfilehash: ae61359240e38e5d380fc65b5a77bf6c3e369091
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: ae1cacf0ff003e69a16d6beac48abc36a7f18896
 
 
 ---
@@ -142,7 +142,7 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
 データベースに移動する方法については、 [データベースへのアクセスとログイン セキュリティの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
-* [データベースの保護](sql-database-security.md)
+* [データベースの保護](sql-database-security-overview.md)
 * [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
 
 <!--Image references-->
@@ -150,6 +150,6 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

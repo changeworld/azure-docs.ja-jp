@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: 4e2508883998b1435d7c4f099bd6ef0e00bd885e
-ms.openlocfilehash: 4f9127ca06668884e6b6f5dbc81aad0a2b1ea9df
+ms.sourcegitcommit: e2e5c302d04a41386bfc98dd4e3f8546265dd9f3
+ms.openlocfilehash: e686952a7363e4758f8a3532b54cf5e7f05ce865
 
 
 ---
@@ -236,7 +236,7 @@ Azure AD Connect ツールをダウンロードしたので、パスワード �
 #### <a name="to-enable-password-writeback-using-windows-powershell"></a>Windows PowerShell を使用して、パスワード ライトバックを有効にするには
 1. **ディレクトリ同期コンピューター**上で、新しい**管理者特権の Windows PowerShell ウィンドウ**を開きます。
 2. モジュールがまだ読み込まれていない場合は、`import-module ADSync` コマンドを入力して、Azure AD Connect コマンドレットを現在のセッションに読み込みます。
-3. `Get-ADSyncConnector` コマンドレットを実行してシステム内の Azure AD コネクタの一覧を取得し、その結果を `$connectors = ADSyncConnector|where-object {$\_.name -like "\*AAD"}` などの `$aadConnectorName` に保存します。
+3. `Get-ADSyncConnector` コマンドレットを実行してシステム内の Azure AD コネクタの一覧を取得し、その結果を `$connectors = Get-ADSyncConnector|where-object {$\_.name -like "\*AAD"}` などの `$aadConnectorName` に保存します。
 4. 次のコマンドレットを実行して、現在のコネクタについてライトバックの現在の状態を取得します。`Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name`
 5. 次のコマンドレットを実行して、パスワード ライトバックを有効にします。 `Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name –Enable $true`
 
@@ -393,6 +393,6 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

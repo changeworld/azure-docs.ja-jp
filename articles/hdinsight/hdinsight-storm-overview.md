@@ -16,12 +16,12 @@ ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e2fa11046adf828497b142e1043ac1c2a15443ef
+ms.sourcegitcommit: bccec1e4078c38e1cc9205a36d3a5df579df35b6
+ms.openlocfilehash: d5ff397e947a7edc8310da59ff9fe8896829e35d
 
 
 ---
-# <a name="introduction-to-apache-storm-on-hdinsight-realtime-analytics-for-hadoop"></a>HDInsight での Apache Storm の概要: Hadoop のリアルタイム分析
+# <a name="introduction-to-apache-storm-on-hdinsight-real-time-analytics-for-hadoop"></a>HDInsight での Apache Storm の概要: Hadoop のリアルタイム分析
 HDInsight の Apache Stormでは、 [Apache Hadoop](http://hadoop.apache.org)を使用して Azure 環境に分散型の分析ソリューションをリアルタイムで作成できます。
 
 ## <a name="what-is-apache-storm"></a>Apache Storm とは
@@ -36,8 +36,9 @@ HDInsight の Apache Storm  は、管理されるクラスターとして、Azur
   * さまざまなプログラミング言語をサポートしています: Java を使用してデータを読み取り、C を使用して処理できます。#
     
     > [!NOTE]
-    > C# トポロジは、Windows ベースの HDInsight クラスターでのみサポートされています。
+    > C# トポロジを Linux ベースのクラスターで使うには、プロジェクトによって使われる Microsoft.SCP.Net.SDK NuGet パッケージをバージョン 0.10.0.6 以降に更新する必要があります。 また、パッケージのバージョンは、HDInsight にインストールされている Storm のメジャー バージョンと一致する必要もあります。 たとえば、HDInsight バージョン 3.3 および 3.4 上の Storm は Storm バージョン 0.10.x を使いますが、HDInsight 3.5 は Storm 1.0.x を使います。
     > 
+    > Linux ベースのクラスターの C# トポロジは、.NET 4.5 を使い、Mono を使って HDInsight クラスターで実行する必要があります。 ほとんどの機能は動作しますが、[Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)のドキュメントで可能性のある非互換性について確認する必要があります。
     > 
   * **Trident** Java インターフェイスを使用して、メッセージの「厳密に 1 回」処理、「トランザクション」のデータストア永続化、一般的なストリーム分析操作のセットをサポートする Storm トポロジを作成します。
 * 組み込みのスケールアップとスケールダウン機能 が含まれています。Storm トポロジの実行に影響を及ぼさずに、HDInsight クラスターを拡張します。
@@ -47,13 +48,13 @@ HDInsight の Apache Storm  は、管理されるクラスターとして、Azur
 
 リアルタイムの分析ソリューション用の Apache Storm を使用している企業の一覧については、「 [Companies Using Apache Storm (Apache Stormを使用している企業)](https://storm.apache.org/documentation/Powered-By.html)」をご覧ください。
 
-Storm の使用方法については、[HDInsight での Storm の使用][gettingstarted]に関するページをご覧ください。
+Storm の使用方法については、[HDInsight での Storm の使用][gettingstarted]に関する記事を参照してください。
 
 ### <a name="ease-of-provisioning"></a>プロビジョニングのしやすさ
 HDInsight クラスター上に新しい Storm を数分でプロビジョニングできます。 クラスター名、サイズ、管理者アカウント、ストレージ アカウントを指定します。 Azure は、トポロジのサンプルや Web 管理ダッシュボードを含む、クラスターを作成します。
 
 > [!NOTE]
-> [Azure CLI](../xplat-cli-install.md) または [Azure PowerShell](../powershell-install-configure.md) を使用して、Storm クラスターをプロビジョニングすることもできます。
+> [Azure CLI](../xplat-cli-install.md) または [Azure PowerShell](/powershell/azureps-cmdlets-docs) を使用して、Storm クラスターをプロビジョニングすることもできます。
 > 
 > 
 
@@ -107,7 +108,7 @@ Apache Storm の既定の構成では、Nimbus ノードは 1 つだけです。
 ### <a name="support"></a>サポート
 HDInsight の Storm には、完全なエンタープライズ レベルの 24 時間 365 日のサポートが付属します。 HDInsight の Storm では、99.9% の SLA も保証されています。 つまり、クラスターは、99.9% 以上の時間において外部に接続されることを保証します。
 
-## <a name="common-use-cases-for-realtime-analytics"></a>リアルタイム分析の一般的なユース ケース
+## <a name="common-use-cases-for-real-time-analytics"></a>リアルタイム分析の一般的なユース ケース
 以下に、HDInsight で Apache Storm を使用する一般的なシナリオをいくつか示します。 実際のシナリオの詳細については、「 [how companies are using Storm (企業での Storm の使用事例)](https://storm.apache.org/documentation/Powered-By.html)」をご覧ください。
 
 * モノのインターネット(IoT)
@@ -207,6 +208,6 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

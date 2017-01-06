@@ -13,21 +13,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 11/16/2016
+ms.date: 12/25/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
-ms.openlocfilehash: 3b756b11ce762cbbc56650ea9d49715d899bfbdb
+ms.sourcegitcommit: 16bff1b5708652a75ea603f596c864901b12a88d
+ms.openlocfilehash: 9b24fe8139d50b7c37a380fcc52b7ac302f5ee5d
 
 
 ---
 # <a name="a-nametoc395809351aaspnet-mvc-tutorial-web-application-development-with-documentdb"></a><a name="_Toc395809351"></a>ASP.NET MVC のチュートリアル: DocumentDB を使用した Web アプリケーションの開発
 > [!div class="op_single_selector"]
-> * [.NET](documentdb-dotnet-application.md)
-> * [Node.js](documentdb-nodejs-application.md)
-> * [Java](documentdb-java-application.md)
-> * [Python](documentdb-python-application.md) 
-> 
+> * [.NET](documentdb-get-started.md)
+> * [.NET Core](documentdb-dotnetcore-get-started.md)
+> * [Java](documentdb-java-get-started.md)
+> * [Node.JS](documentdb-nodejs-get-started.md)
+> * [C++](documentdb-cpp-get-started.md)
+>  
 > 
 
 この記事では、Azure DocumentDB を効果的に活用して、JSON ドキュメントの保存とクエリを行う方法を説明します。ToDo アプリを Azure DocumentDB を使って構築するエンド ツー エンドの手順を説明します。 対象となるタスクは、JSON ドキュメントとして Azure DocumentDB に保存するものとします。
@@ -37,7 +38,7 @@ ms.openlocfilehash: 3b756b11ce762cbbc56650ea9d49715d899bfbdb
 このチュートリアルでは、Azure で提供される DocumentDB サービスを使用して、Azure にホストされている ASP.NET MVC Web アプリケーションからデータを保存したりデータにアクセスしたりする方法を説明します。 ASP.NET MVC コンポーネントに関する説明が不要で、DocumentDB のみを重点的に取り上げた解説をお探しの方は、「 [DocumentDB C# コンソール アプリケーションの作成](documentdb-get-started.md)」を参照してください。
 
 > [!TIP]
-> このチュートリアルでは、ASP.NET MVC と Azure Websites の使用経験がある読者を想定しています。 ASP.NET や[前提条件となるツール](#_Toc395637760)を初めて扱う方は、完全なサンプル プロジェクトを [GitHub][GitHub] からダウンロードして、この例の指示に従うことをお勧めします。 プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
+> このチュートリアルでは、ASP.NET MVC と Azure Websites の使用経験がある読者を想定しています。 ASP.NET や[前提条件となるツール](#_Toc395637760)を初めて扱う方は、完全なサンプル プロジェクトを [GitHub][GitHub] からダウンロードし、この例の指示に従うことをお勧めします。 プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
 > 
 > 
 
@@ -50,7 +51,7 @@ ms.openlocfilehash: 3b756b11ce762cbbc56650ea9d49715d899bfbdb
 
     [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) のローカル インストール。
 * [Visual Studio 2015](http://www.visualstudio.com/) または Visual Studio 2013 Update 4 以降。 Visual Studio 2013 を使用している場合は、 [Microsoft.Net.Compilers NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Net.Compilers/) をインストールして、C# 6.0 のサポートを追加する必要があります。 
-* Azure SDK for .NET Version 2.5.1 以降 ([Microsoft Web プラットフォーム インストーラー][Microsoft Web プラットフォーム インストーラー] にて提供)。
+* Azure SDK for .NET Version 2.5.1 以降 ([Microsoft Web Platform Installer][Microsoft Web Platform Installer] にて提供)。
 
 この記事に掲載されているすべてのスクリーン ショットは、Visual Studio 2013 Update 4 および Azure SDK for .NET Version 2.5.1 で撮影しました。 ご利用のシステムにインストールされているバージョンと異なる場合、画面やオプション設定が一部異なる可能性もありますが、上記の前提条件を満たしていれば、アプリケーションの動作に支障はありません。
 
@@ -430,9 +431,9 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
    
     このコードは DocumentDBRepository を呼び出し、CreateItemAsync メソッドを使用して新しい todo 項目をデータベースに保存します。 
    
-    **セキュリティに関する注意**: **ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。 この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。 この詳細と正しい実装方法については、「[Preventing Cross-Site Request Forgery][Preventing Cross-Site Request Forgery](クロスサイト リクエスト フォージェリの防止)」を参照してください。 [GitHub][GitHub] で提供されるソース コードには、完全な実装が組み込まれています。
+    **セキュリティに関する注意**: **ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。 この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。 この詳細と正しい実装方法については、[クロスサイト リクエスト フォージェリの防止][Preventing Cross-Site Request Forgery]に関するページを参照してください。 [GitHub][GitHub] で提供されるソース コードには、完全な実装が組み込まれています。
    
-    **セキュリティに関する注意**: メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。 詳細については、「[ASP.NET MVC での基本的な CRUD 操作][ASP.NET MVC での基本的な CRUD 操作]」を参照してください。
+    **セキュリティに関する注意**: メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。 詳細については、[ASP.NET MVC での基本的な CRUD 操作][Basic CRUD Operations in ASP.NET MVC]に関するページを参照してください。
 
 データベースに新しい項目を追加するために必要なコードは以上です。
 
@@ -569,13 +570,13 @@ Web アプリをデプロイするときに "要求の処理中にエラーが�
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Web プラットフォーム インストーラー]: http://www.microsoft.com/web/downloads/platform.aspx
+[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 [Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
-[ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

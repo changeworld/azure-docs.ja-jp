@@ -69,7 +69,7 @@
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
-## [Resource Manager テンプレートの作成](../../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## [Resource Manager テンプレートの作成](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [コミュニティ テンプレート](https://azure.microsoft.com/documentation/templates)
 ## [コンピューティング REST](/rest/api/compute)
 ## [ネットワーク REST](/rest/api)
@@ -83,6 +83,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

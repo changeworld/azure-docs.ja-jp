@@ -173,8 +173,7 @@
 #### [Azure Marketplace に関する FAQ](machine-learning-marketplace-faq.md)
 
 # リファレンス
-## [PowerShell](/azure/machine-learning/machine-learning-powershell-module)
-## [Machine Learning 用 PowerShell モジュール](machine-learning-powershell-module.md)
+## [PowerShell](machine-learning-powershell-module.md)
 ## [アルゴリズムとモジュールのリファレンス](https://msdn.microsoft.com/library/azure/dn905974.aspx)
 ## [REST ()](/rest/api/machinelearning)
 
@@ -223,6 +222,6 @@
 ## [ライブ チャットからヘルプを表示する](machine-learning-live-chat.md)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 
