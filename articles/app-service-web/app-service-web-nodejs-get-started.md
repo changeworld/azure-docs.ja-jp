@@ -1,5 +1,5 @@
 ---
-title: "Azure App Service での Node.js Web アプリの使用"
+title: "Azure App Service での Node.js Web アプリの使用 | Microsoft Docs"
 description: "Node.js アプリケーションを Azure App Service の Web アプリにデプロイする方法を説明します。"
 services: app-service\web
 documentationcenter: nodejs
@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: get-started-article
-ms.date: 07/01/2016
+ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2050bda9c1a4390232d32370863e8d6a62ed5c2b
-ms.openlocfilehash: 66f1a0987960c9251922f1d22ed647d10bb0d10e
+ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
+ms.openlocfilehash: 9667d805fee3277275a71e6907d0abffb35a3c48
 
 
 ---
@@ -25,24 +25,35 @@ ms.openlocfilehash: 66f1a0987960c9251922f1d22ed647d10bb0d10e
 
 このチュートリアルでは、簡単な [Node.js] アプリケーションを作成し、cmd.exe や bash などのコマンド ライン環境を使用して [Azure App Service] にデプロイする方法について説明します。 このチュートリアルの手順は、Node.js を実行できる任意のオペレーティング システムで使用できます。
 
-> [!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
-> 
-> 
+[!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
 
 <a name="prereq"></a>
+
+## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
+
+次のいずれかの CLI バージョンを使用してタスクを完了できます。
+
+- [Azure CLI 1.0](app-service-web-nodejs-get-started-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
+- [Azure CLI 2.0 (プレビュー)](app-service-web-nodejs-get-started.md) - Resource Manager デプロイメント モデル用の次世代 CLI
 
 ## <a name="prerequisites"></a>前提条件
 * [Node.js]
 * [Bower]
 * [Yeoman]
 * [Git]
-* [Azure CLI]
-* Microsoft Azure アカウント。 アカウントを持っていない場合は、[無料試用版にサインアップする]か [Visual Studio サブスクライバー特典を有効]にしてください。
+* [Azure CLI 2.0 プレビュー](/cli/azure/install-az-cli2)
+* Microsoft Azure アカウント。 アカウントを持っていない場合は、[無料試用版にサインアップ]するか [Visual Studio サブスクライバー特典を有効]にしてください。
 
-## <a name="create-and-deploy-a-simple-nodejs-web-app"></a>単純な Node.js Web アプリの作成とデプロイ
+> [!NOTE]
+> Azure アカウントがなくても、[App Service を試用](http://go.microsoft.com/fwlink/?LinkId=523751)できます。 スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
+> 
+> 
+
+## <a name="create-and-configure-a-simple-nodejs-app-for-azure"></a>Azure の単純な Node.js アプリの作成と構成
 1. 任意のコマンド ライン ターミナルを開いて、 [Express generator for Yeoman]をインストールします。
    
         npm install -g generator-express
+
 2. `CD` で作業ディレクトリに移動し、次の構文を使用して、express アプリを生成します。
    
         yo express
@@ -56,22 +67,13 @@ ms.openlocfilehash: 66f1a0987960c9251922f1d22ed647d10bb0d10e
     `? Select a css preprocessor to use (Sass Requires Ruby):` **None**  
     `? Select a database to use:` **None**  
     `? Select a build tool to use:` **Grunt**
+
 3. `CD` で新しいアプリのルート ディレクトリに移動し、アプリを起動して開発環境で動作することを確認します。
    
         npm start
    
     ブラウザーで <http://localhost:3000> に移動し、Express のホーム ページが表示されることを確認します。 アプリが適切に実行されることを確認したら、 `Ctrl-C` を使用してアプリを停止します。
-4. ASM モードに切り替え、Azure にログインします ( [Azure CLI](#prereq)が必要です)。
-   
-        azure config mode asm
-        azure login
-   
-    画面の指示に従い、Azure サブスクリプションのある Microsoft アカウントを使用してブラウザーでログイン操作を進めます。
-5. まだアプリのルート ディレクトリにいることを確認し、次のコマンドを使用して、一意のアプリ名で Azure に App Service アプリ リソースを作成します。 http://{appname}.azurewebsites.net の例を次に示します。
-   
-        azure site create --git {appname}
-   
-    プロンプトに従って、デプロイ先の Azure リージョンを選択します。 まだ Azure サブスクリプションに Git/FTP デプロイの資格情報を設定していない場合は、資格情報を作成するように求められます。
+
 6. アプリケーションのルートから ./config/config.js ファイルを開き、運用環境のポートを `process.env.port` に変更します。`config` オブジェクトの `production` プロパティは次の例のようになります。
    
         production: {
@@ -82,23 +84,73 @@ ms.openlocfilehash: 66f1a0987960c9251922f1d22ed647d10bb0d10e
             port: process.env.port,
         }
    
-    これにより Node.js アプリは、iisnode がリッスンする既定のポートで Web 要求に応答できるようになります。
+    > [!NOTE] 
+    > 既定では、Azure App Service は、`production` 環境変数 (`process.env.NODE_ENV="production"`) を使用して Node.js アプリケーションを実行します。
+    > そのため、ここでの構成により、Azure の Node.js アプリは iisnode がリッスンする既定のポートで Web 要求に応答できるようになります。
+    >
+    >
+
 7. ./package.json を開き、[必要な Node.js バージョンを指定する](#version)ために `engines` プロパティを追加します。
    
         "engines": {
-            "node": "6.6.0"
+            "node": "6.9.1"
         }, 
-8. 変更内容を保存し、git を使用してアプリを Azure にデプロイします。
+
+8. 変更内容を保存し、アプリケーションのルートにある Git リポジトリを初期化して、コードをコミットします。
    
         git add .
         git add -f config
         git commit -m "{your commit message}"
+
+## <a name="deploy-your-nodejs-app-to-azure"></a>Azure への Node.js アプリのデプロイ
+
+1. Azure にログインします ([Azure CLI 2.0 プレビュー](#prereq)が必要です)。
+   
+        az login
+   
+    画面の指示に従い、Azure サブスクリプションのある Microsoft アカウントを使用してブラウザーでログイン操作を進めます。
+
+3. App Service のデプロイ ユーザーを設定します。 後で、これらの資格情報を使用してコードをデプロイします。
+   
+        az appservice web deployment user set --user-name <username> --password <password>
+
+3. 新しい[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 この PHP チュートリアルでは、実際にその内容を把握している必要はありません。
+
+        az group create --location "<location>" --name my-nodejs-app-group
+
+    `<location>` に使用できる値を確認するには、CLI コマンド `az appservice list-locations` を使用してください。
+
+3. 新しい "Free" [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)を作成します。 この PHP チュートリアルでは、このプランの Web アプリに対しては課金されないことを把握しておくだけでかまいません。
+
+        az appservice plan create --name my-nodejs-appservice-plan --resource-group my-nodejs-app-group --sku FREE
+
+4. `<app_name>` に一意の名前を指定して新しい Web アプリを作成します。
+
+        az appservice web create --name <app_name> --resource-group my-nodejs-app-group --plan my-nodejs-appservice-plan
+
+5. 次のコマンドを使用して、新しい Web アプリのローカル Git デプロイを構成します。
+
+        az appservice web source-control config-local-git --name <app_name> --resource-group my-nodejs-app-group
+
+    次のような JSON 出力が表示されます。これは、リモート Git リポジトリが構成されていることを意味します。
+
+        {
+        "url": "https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git"
+        }
+
+6. この URL を、ローカル リポジトリの Git リモートとして JSON に追加します (Git リモートは、わかりやすくするために `azure` という名前にしています)。
+
+        git remote add azure https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git
+   
+7. サンプル コードを `azure` Git リモートにデプロイします。 入力を求められたら、前に構成したデプロイ資格情報を使用します。
+
         git push azure master
    
     Express ジェネレーターによって .gitignore ファイルがあらかじめ提供されているため、`git push` が node_modules/ ディレクトリのアップロードを試みることによる帯域幅の消費は発生しません。
+
 9. 最後に、ブラウザーでライブ Azure アプリを起動します。
    
-        azure site browse
+        az appservice web browse --name <app_name> --resource-group my-nodejs-app-group
    
     これで対象の Node.js Web アプリが Azure App Service でライブ実行されていることを確認できます。
    
@@ -108,9 +160,9 @@ ms.openlocfilehash: 66f1a0987960c9251922f1d22ed647d10bb0d10e
 App Service で実行されている Node.js Web アプリを更新するには、最初にデプロイしたときと同様に、`git add`、`git commit`、`git push` を実行します。
 
 ## <a name="how-app-service-deploys-your-nodejs-app"></a>App Service における Node.js アプリのデプロイ
-Azure App Service では、Node.js アプリを実行するために [iisnode] が使用されます。 Node.js アプリの開発とデプロイは、Azure CLI と Kudu エンジン (Git デプロイ) を組み合わせることでコマンド ラインから効率的に行うことができます。 
+Azure App Service では、Node.js アプリを実行するために [iisnode] が使用されます。 Node.js アプリの開発とデプロイは、Azure CLI 2.0 プレビューと Kudu エンジン (Git デプロイ) を組み合わせることでコマンド ラインから効率的に行うことができます。 
 
-* `azure site create --git` は、server.js または app.js の一般的な Node.js パターンを認識し、iisnode.yml をルート ディレクトリに作成します。 このファイルを使用して iisnode をカスタマイズできます。
+* iisnode.yml ファイルをルート ディレクトリに作成し、それを使用して iisnode のプロパティをカスタマイズすることができます。 構成可能なすべての設定に関するドキュメントは、[こちら](https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/iisnode.yml)にあります。
 * `git push azure master` では、次のデプロイ タスクが Kudu によって自動化されます。
   
   * package.json がリポジトリのルートに存在する場合、`npm install --production` を実行します。
@@ -133,7 +185,7 @@ Azure App Service では、Node.js アプリを実行するために [iisnode] �
 次に例を示します。
 
     "engines": {
-        "node": "6.6.0"
+        "node": "6.9.1"
     }, 
 
 Kudu デプロイ エンジンは、使用する Node.js エンジンを次の順序で決定します。
@@ -141,6 +193,10 @@ Kudu デプロイ エンジンは、使用する Node.js エンジンを次の�
 * まず iisnode.yml を参照し、`nodeProcessCommandLine` が指定されているかどうかを確認します。 指定されている場合はそれを使用します。
 * 次に package.json を参照し、`engines` オブジェクトに `"node": "..."` が指定されているかどうかを確認します。 指定されている場合はそれを使用します。
 * 特に指定されていない場合、既定の Node.js バージョンを選択します。
+
+Azure App Service でサポートされているすべての Node.js/NPM バージョンの更新された一覧については、アプリに応じて次の URL にアクセスします。
+
+    https://<app_name>.scm.azurewebsites.net/api/diagnostics/runtime
 
 > [!NOTE]
 > 必要な Node.js エンジンを明示的に定義することをお勧めします。 既定の Node.js バージョンは変更できます。既定の Node.js バージョンがアプリに適していないことが理由で Azure Web アプリでエラーが発生する場合があります。
@@ -157,7 +213,7 @@ iisnode ログを読み取るには、次の手順を実行します。
 > 
 > 
 
-1. Azure CLI に用意されている iisnode.yml ファイルを開きます。
+1. Azure CLI 2.0 プレビューに用意されている iisnode.yml ファイルを開きます。
 2. 次の 2 つのパラメーターを設定します。 
    
         loggingEnabled: true
@@ -221,7 +277,6 @@ Node-Inspector を有効にするには、次の手順を実行します。
 
 <!-- URL List -->
 
-[Azure CLI]: ../xplat-cli-install.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [Visual Studio サブスクライバー特典を有効]: http://go.microsoft.com/fwlink/?LinkId=623901
 [Bower]: http://bower.io/
@@ -235,7 +290,7 @@ Node-Inspector を有効にするには、次の手順を実行します。
 [MEANJS]: http://meanjs.org/
 [Node.js]: http://nodejs.org
 [SAILSJS]: http://sailsjs.org/
-[無料試用版にサインアップする]: http://go.microsoft.com/fwlink/?LinkId=623901
+[無料試用版にサインアップ]: http://go.microsoft.com/fwlink/?LinkId=623901
 [web app]: ./app-service-web-overview.md
 [Yeoman]: http://yeoman.io/
 
@@ -248,6 +303,6 @@ Node-Inspector を有効にするには、次の手順を実行します。
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

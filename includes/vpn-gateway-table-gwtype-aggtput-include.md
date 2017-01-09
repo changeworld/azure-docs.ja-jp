@@ -16,6 +16,6 @@ UltraPerformance ゲートウェイ SKU はこの表には示されていませ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

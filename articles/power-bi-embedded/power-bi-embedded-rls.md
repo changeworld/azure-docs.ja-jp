@@ -24,7 +24,7 @@ ms.openlocfilehash: a98185bf44af2271f5ded04c05d3134321db536a
 # <a name="row-level-security-with-power-bi-embedded"></a>Power BI Embedded の行レベルのセキュリティ
 行レベルのセキュリティ (RLS) を使用すると、レポートやデータセット内の特定のデータへのユーザー アクセスを制限できるため、同じレポートを使用する複数のユーザーにそれぞれ異なるデータを表示することが可能になります。 Power BI Embedded では、RLS を使用して構成されたデータセットがサポートされるようになりました。
 
-![](media\\power-bi-embedded-rls\\pbi-embedded-rls-flow-1.png)
+![](media/power-bi-embedded-rls/pbi-embedded-rls-flow-1.png)
 
 RLS を利用するには、ユーザー、ロール、ルールの 3 つの主要概念を理解しておくことが重要です。 各概念について詳しく見てみましょう。
 
@@ -37,13 +37,13 @@ RLS を利用するには、ユーザー、ロール、ルールの 3 つの主�
 ### <a name="example"></a>例
 この記事の残りの部分では、RLS を作成し、埋め込みアプリケーション内でその RLS を使用する例を紹介します。 この例では、 [Retail Analysis Sample](http://go.microsoft.com/fwlink/?LinkID=780547) PBIX ファイルを使用します。
 
-![](media\\power-bi-embedded-rls\\pbi-embedded-rls-scenario-2.png)
+![](media/power-bi-embedded-rls/pbi-embedded-rls-scenario-2.png)
 
 Retail Analysis Sample では、特定の小売チェーンのすべての店舗の売上が示されます。 RLS を使用しない場合、どの地区マネージャーがサインインしてレポートを表示しても、同じデータが表示されます。 上級管理職が、各地区マネージャーに対して、それぞれが管理する店舗の売上だけが表示されるようにすることを決定しました。これを実現するために RLS を使用します。
 
 RLS は Power BI Desktop で作成されます。 データセットとレポートが開いたら、ダイアグラム ビューに切り替えてスキーマを確認できます。
 
-![](media\\power-bi-embedded-rls\\pbi-embedded-rls-diagram-view-3.png)
+![](media/power-bi-embedded-rls/pbi-embedded-rls-diagram-view-3.png)
 
 このスキーマでは、次の点に注意してください。
 
@@ -52,34 +52,34 @@ RLS は Power BI Desktop で作成されます。 データセットとレポー
 * リレーションシップの線上の矢印は、テーブル間のフィルターの方向を示しています。 たとえば、**Time[Date]** にフィルターを配置すると、現在のスキーマでは **Sales** テーブルの値だけがフィルター処理されます。 リレーションシップの線上のすべての矢印が Sales テーブルを指しているため、他のテーブルはこのフィルターの影響を受けません。
 * **District** テーブルは、次のように各地区の担当マネージャーを示しています。
   
-  ![](media\\power-bi-embedded-rls\\pbi-embedded-rls-district-table-4.png)
+  ![](media/power-bi-embedded-rls/pbi-embedded-rls-district-table-4.png)
 
 このスキーマに基づいて、District テーブルの **District Manager** 列にフィルターを適用し、そのフィルターがレポートを表示するユーザーに一致した場合、フィルターによって **Store** テーブルと **Sales** テーブルもフィルター処理され、該当する地区マネージャーにのみデータが表示されます。
 
 その方法は次のとおりです。
 
 1. [モデリング] タブで **[ロールの管理]**をクリックします。  
-   ![](media\\power-bi-embedded-rls\\pbi-embedded-rls-modeling-tab-5.png)
+   ![](media/power-bi-embedded-rls/pbi-embedded-rls-modeling-tab-5.png)
 2. **Manager**という新しいロールを作成します。  
-   ![](media\\power-bi-embedded-rls\\pbi-embedded-rls-manager-role-6.png)
+   ![](media/power-bi-embedded-rls/pbi-embedded-rls-manager-role-6.png)
 3. **District** テーブルで、**[District Manager] = USERNAME()** という DAX 式を入力します。  
-   ![](media\\power-bi-embedded-rls\\pbi-embedded-rls-manager-role-7.png)
+   ![](media/power-bi-embedded-rls/pbi-embedded-rls-manager-role-7.png)
 4. ルールが機能していることを確認するには、**[モデリング]** タブで **[ロールとして表示]** をクリックし、次のように入力します。  
-   ![](media\\power-bi-embedded-rls\\pbi-embedded-rls-view-as-roles-8.png)
+   ![](media/power-bi-embedded-rls/pbi-embedded-rls-view-as-roles-8.png)
    
    これで、 **Andrew Ma**としてサインインした場合と同様に、レポートにデータが表示されるようになります。
 
 ここで設定したフィルターを適用すると、**District**、**Store**、**Sales** の各テーブルのすべてのレコードがフィルター処理されます。 ただし、**Sales** と **Time**、**Sales** と **Item**、**Item** と **Time** の各テーブル間のリレーションシップでのフィルターの方向から、Item テーブルのレコードはフィルター処理されません。
 
-![](media\\power-bi-embedded-rls\\pbi-embedded-rls-diagram-view-9.png)
+![](media/power-bi-embedded-rls/pbi-embedded-rls-diagram-view-9.png)
 
 これはこの要件では問題ありません。ただし、マネージャーに売上のない商品を表示しない場合は、リレーションシップで双方向のクロス フィルターを有効にし、両方向にセキュリティ フィルターを適用することができます。 これを実行するには、**Sales** と **Item** 間のリレーションシップを次のように編集します。
 
-![](media\\power-bi-embedded-rls\\pbi-embedded-rls-edit-relationship-10.png)
+![](media/power-bi-embedded-rls/pbi-embedded-rls-edit-relationship-10.png)
 
 これで、Sales テーブルから **Item** テーブルの方向にもフィルターを適用できます。
 
-![](media\\power-bi-embedded-rls\\pbi-embedded-rls-diagram-view-11.png)
+![](media/power-bi-embedded-rls/pbi-embedded-rls-diagram-view-11.png)
 
 **注** : データに DirectQuery モードを使用している場合は、次の 2 つのオプションを選択して、双方向のクロス フィルターを有効にする必要があります。
 
@@ -97,11 +97,11 @@ username プロパティが存在する場合は、roles にも 1 つ以上の�
 
 完全なアプリ トークンは次のようになります。
 
-![](media\\power-bi-embedded-rls\\pbi-embedded-rls-app-token-string-12.png)
+![](media/power-bi-embedded-rls/pbi-embedded-rls-app-token-string-12.png)
 
 これですべてが揃いました。ユーザーは、アプリケーションにログインしてこのレポートを表示したときに、行レベルのセキュリティでの定義に従って、表示が許可されているデータだけを表示することができます。
 
-![](media\\power-bi-embedded-rls\\pbi-embedded-rls-dashboard-13.png)
+![](media/power-bi-embedded-rls/pbi-embedded-rls-dashboard-13.png)
 
 ## <a name="see-also"></a>関連項目
 [Power の行レベルのセキュリティ (RLS)](https://powerbi.microsoft.com/en-us/documentation/powerbi-admin-rls/)

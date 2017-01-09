@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/18/2016
+ms.date: 12/16/2016
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4686051dbc6d6468e5c8b1cfb0221179c4735da1
+ms.sourcegitcommit: cce67587977c1fb2906ba34c16d672a6bfe6d2a7
+ms.openlocfilehash: 4e46dfdd91a17b53b2a684c68ca7b51a34ceb081
 
 
 ---
@@ -31,10 +31,11 @@ With a Remote Desktop connection, a single concurrent user can work with the por
 
 1. Log in to the Azure Stack POC physical machine.
 2. Open a Remote Desktop Connection and connect to MAS-CON01. Enter **AzureStack\AzureStackAdmin** as the username, and the administrative password you provided during Azure Stack setup.  
-3. On the MAS-CON01 desktop, double-click **Microsoft Azure Stack Portal** icon (https://portal.azurestack.local/) to open the [portal](azure-stack-key-features.md#portal).
+3. On the MAS-CON01 desktop, open Server Manager, click **Local Server**, turn off Internet Explorer Enhanced Security, and then close Server Manager.
+4. Double-click **Microsoft Azure Stack Portal** icon (https://portal.azurestack.local/) to open the [portal](azure-stack-key-features.md#portal).
    
    ![Azure stack portal icon](media/azure-stack-connect-azure-stack/image2.png)
-4. Log in using the Azure Active Directory credentials specified during installation.
+5. Log in using the Azure Active Directory credentials specified during installation.
 
 ## <a name="connect-with-vpn"></a>Connect with VPN
 Virtual Private Network connections let multiple concurrent users connect from clients outside of the Azure Stack infrastructure. You can use the portal to manage resoures. You can also use tools, such as Visual Studio and PowerShell, on your local client.
@@ -112,6 +113,6 @@ Virtual Private Network connections let multiple concurrent users connect from c
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

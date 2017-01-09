@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
-ms.openlocfilehash: cd5d47aa012b21a283e3d6482fe0afddcfa14033
+ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
+ms.openlocfilehash: cc0faa49daaafe19c71d2c765b8e865be04f81e2
 
 
 ---
@@ -39,7 +39,7 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 > 
 
 ## <a name="manage-server-level-firewall-rules-through-rest-api"></a>REST API を使用してサーバー レベルのファイアウォール規則を管理する
-1. REST API を介してファイアウォール規則を管理する場合、認証される必要があります。 詳細については、「 [Azure Resource Manager API を使用した承認の開発者ガイド](../resource-manager-api-authentication.md)」をご覧ください。
+1. REST API を介してファイアウォール規則を管理する場合、認証される必要があります。 詳細については、「 [Azure Resource Manager API を使用した承認の開発者ガイド](../azure-resource-manager/resource-manager-api-authentication.md)」をご覧ください。
 2. サーバーレベルの規則は、REST API を使用して、作成、更新、または削除できます。
    
     サーバーレベルのファイアウォール規則を作成または更新するには、次を使用して PUT メソッドを実行します。
@@ -79,7 +79,7 @@ Transact-SQL を使用して、サーバー レベルとデータベース レ�
 データベースに移動する方法については、 [データベースへのアクセスとログイン セキュリティの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
-* [データベースの保護](sql-database-security.md)
+* [データベースの保護](sql-database-security-overview.md)
 * [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
 
 <!--Image references-->
@@ -91,6 +91,6 @@ Transact-SQL を使用して、サーバー レベルとデータベース レ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

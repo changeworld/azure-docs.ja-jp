@@ -4,7 +4,7 @@
 # 作業開始
 ## [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
 ## [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
-## [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)
+## [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)
 
 # 方法
 ## [Azure AD Connect Health エージェントをインストールする](active-directory-aadconnect-health-agent-install.md)
@@ -20,10 +20,10 @@
 ## [ハイブリッド ID 設計ガイド](../active-directory-hybrid-identity-design-considerations-overview.md)
 
 # リソース
-##[Azure AD Connect の FAQ](active-directory-aadconnect-health-faq.md)
+##[Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

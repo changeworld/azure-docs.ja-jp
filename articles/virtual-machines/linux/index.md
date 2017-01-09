@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "選択した Linux ディストリビューションを使用して仮想マシンを作成する方法について説明します。 ドキュメントでは、VM テンプレートを作成するさまざまな方法を紹介します。"
 translationtype: Human Translation
-ms.sourcegitcommit: f368f2700bd349e106169d1828af7a148daa5cc2
-ms.openlocfilehash: f87947ed5f072ba4f0927ade1b1d3ec0e1424f3c
+ms.sourcegitcommit: eabfc16b3714006f74cdaec68efb46f651ee1b97
+ms.openlocfilehash: 4ae49635b13d564a4bf03ea12e233c1b18985cce
 
 ---
-#<a name="linux-virtual-machine-documentation"></a>Linux 仮想マシンのドキュメント
+# <a name="linux-virtual-machine-documentation"></a>Linux 仮想マシンのドキュメント
 
-Azure Virtual Machines により、Azure のコンピューティング、ネットワーク、ストレージ インフラストラクチャ上で Linux 仮想マシンを作成して実行することができます。  数千台のマシンに規模を拡大してインターネット全体にデプロイすることも、1 台のマシンを実行してある程度重要な計算を数分間で行うことも可能です。どちらの場合でも、高速かつ一貫性が保たれます。
+選択した Linux ディストリビューションを使用して Azure Virtual Machines を実行する方法について説明します。 ドキュメント、API リファレンス、サンプルでは、VM テンプレートを作成してデプロイするさまざまな方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -140,6 +141,6 @@ Linux 仮想マシンのドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

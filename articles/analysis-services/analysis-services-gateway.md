@@ -64,8 +64,8 @@ ms.openlocfilehash: 90584f60864589744888817ea71d0eb0d4d170ff
 2. インストールする場所を選んで、ライセンス条項に同意します。
 3. Azure にサインインします。
 4. Azure の分析サーバーの名前を指定します。 指定できるサーバーはゲートウェイごとに 1 つだけです。 **[構成]** をクリックして構成します。
-   
-    ![Azure にサインインする](./media\\analysis-services-gateway\\aas-gateway-configure-server.png)
+
+    ![Azure にサインインする](./media/analysis-services-gateway/aas-gateway-configure-server.png)
 
 ## <a name="how-it-works"></a>動作のしくみ
 ゲートウェイは、組織のネットワーク内のコンピューターで Windows サービス "**オンプレミスのデータ ゲートウェイ**" として実行します。 Azure Analysis Services で使うためにインストールするゲートウェイは、Power BI などの他のサービスに使用されるものと同じゲートウェイに基づいていますが、構成方法にいくつか違いがあります。
@@ -93,8 +93,8 @@ ms.openlocfilehash: 90584f60864589744888817ea71d0eb0d4d170ff
 
 > [!NOTE]
 > Azure データセンターの IP リストには、IP アドレスが CIDR 表記法で記載されています。 たとえば、10.0.0.0/24 は 10.0.0.0 ～ 10.0.0.24 の意味ではありません。 [CIDR の表記法に関するページ](http://whatismyipaddress.com/cidr)をご覧ください。
-> 
-> 
+>
+>
 
 ゲートウェイで使われる完全修飾ドメイン名を次に示します。
 
@@ -132,7 +132,6 @@ ms.openlocfilehash: 90584f60864589744888817ea71d0eb0d4d170ff
 ## <a name="next-steps"></a>次のステップ
 * [Analysis Services を管理する](analysis-services-manage.md)
 * [Azure Analysis Services からデータを取得する](analysis-services-connect.md)
-
 
 
 

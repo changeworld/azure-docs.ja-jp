@@ -4,7 +4,7 @@ description: "このガイドでは、環境をわかりやすく表示できる
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -83,7 +83,6 @@ OMS ポータルで作成するカスタム ダッシュボードはすべて、
 
 ## <a name="next-steps"></a>次のステップ
 * Log Analytics で[アラート](log-analytics-alerts.md)を作成して、通知を生成し、問題を修正します。
-
 
 
 

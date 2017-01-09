@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 38d59a49abeabd0a517bb5bf275618126e908181
-ms.openlocfilehash: be51882b9b562c877ce00620ee9b357028095296
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: 1ae89bc2b58df6bcc830ded940821ab2348f55cd
 
 
 ---
@@ -37,7 +37,7 @@ ms.openlocfilehash: be51882b9b562c877ce00620ee9b357028095296
 ## <a name="prerequisites"></a>前提条件
 * [チュートリアルの概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に目を通し、**前提条件**の手順を完了します。
 * 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。 このチュートリアルでは、PowerShell を使用して Data Factory エンティティをデプロイします。
-* (省略可能)「[Azure Resource Manager テンプレートの作成](../resource-group-authoring-templates.md)」を参照して、Azure Resource Manager テンプレートについて学びます。
+* (省略可能)「[Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照して、Azure Resource Manager テンプレートについて学びます。
 
 ## <a name="in-this-tutorial"></a>このチュートリアルの内容
 このチュートリアルでは、次の Data Factory エンティティを含むデータ ファクトリを作成します。
@@ -557,6 +557,6 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

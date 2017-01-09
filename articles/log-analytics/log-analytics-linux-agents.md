@@ -4,7 +4,7 @@ description: "Log Analytics を使用すると、Linux コンピューターか�
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: ab5b76d8-9ab5-406e-8768-76fb0632d830
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -87,8 +87,8 @@ OMS Agent for Linux のパッケージをインストールした後、システ
 
 > [!NOTE]
 > syslog メッセージを収集するには、rsyslog または syslog-ng が必要となります。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、rsyslog デーモンをインストールし、sysklog を置き換えるように構成する必要があります。
-> 
-> 
+>
+>
 
 ## <a name="quick-install"></a>クイック インストール
 omsagent をダウンロードしてチェックサムを検証し、エージェントをインストールして利用できる状態にするためには、以下のコマンドを実行します。 コマンドは 64 ビット用です。 ワークスペース ID とプライマリ キーは OMS ポータルの **[Settings (設定)]** の **[Connected Sources (接続されているソース)]** タブで確認できます。
@@ -215,8 +215,8 @@ omsagent バンドルをインストールするときに、コンピュータ�
 
 > [!NOTE]
 > 資格情報ファイルの読み取りが omsagent アカウントに対して許可されている必要があります。 mycimprovauth コマンドは、omsgent として実行することをお勧めします。
-> 
-> 
+>
+>
 
 ```
 sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
@@ -280,8 +280,8 @@ OMS エージェントの既定の syslog 構成では、重要度が警告以�
 
 > [!NOTE]
 > syslog 構成を編集した場合、変更を有効にするには、syslog デーモンを再起動する必要があります。
-> 
-> 
+>
+>
 
 OMS Agent for Linux の既定の syslog 構成は次のとおりです。
 
@@ -331,12 +331,12 @@ Nagios または Zabbix を使用して Linux マシンを管理している場�
 Nagios サーバーからアラートを収集するには、次のように構成を変更する必要があります。
 
 1. Nagios ログ ファイル (/var/log/nagios/nagios.log/var/log/nagios/nagios.log) の読み取りアクセス権をユーザー **omsagent** に追加します。 たとえば nagios.log ファイルをグループ **nagios** が所有している場合、ユーザー **omsagent** を **nagios** グループに追加します。
-   
+
     ```
     sudo usermod –a -G nagios omsagent
     ```
 2. omsagent.confconfiguration ファイル (/etc/opt/microsoft/omsagent/conf/omsagent.conf) に変更を加えます。 次のエントリが存在し、コメント アウトされていないことを確認します。
-   
+
     ```
     <source>
     type tail
@@ -345,13 +345,13 @@ Nagios サーバーからアラートを収集するには、次のように構�
     format none
     tag oms.nagios
     </source>
-   
+
     <filter oms.nagios>
     type filter_nagios_log
     </filter>
     ```
 3. omsagent デーモンを再起動します。
-   
+
     ```
     sudo service omsagent restart
     ```
@@ -383,7 +383,7 @@ Type=Alert
 #### <a name="to-view-all-nagios-alerts-with-log-analytics"></a>Log Analytics ですべての Nagios アラートを表示するには
 1. Operations Management Suite ポータルで、 **[Log Search]** (ログの検索) タイルをクリックします。
 2. クエリ バーに、次の検索クエリを入力します。
-   
+
     ```
     Type=Alert SourceSystem=Nagios
     ```
@@ -394,7 +394,7 @@ Type=Alert
 ### <a name="to-view-all-zabbix-alerts-with-log-analytics"></a>Log Analytics ですべての Zabbix アラートを表示するには
 1. Operations Management Suite ポータルで、 **[Log Search]** (ログの検索) タイルをクリックします。
 2. クエリ バーに、次の検索クエリを入力します。
-   
+
     ```
     Type=Alert SourceSystem=Zabbix
     ```
@@ -407,14 +407,14 @@ OMS Agent for Linux は、エージェントのバイナリを System Center Ope
 
 > [!NOTE]
 > OMS Agent for Linux のインストール先となるコンピューターが現在は Operations Manager によって管理されていないものの、将来的には Operations Manager で管理することを予定している場合、そのコンピューターを検出するには、OMI の構成に変更を加える必要があります。 **Operations Manager エージェントが OMS Agent for Linux より先にインストールされている場合、この手順は不要です。**
-> 
-> 
+>
+>
 
 ### <a name="to-enable-the-oms-agent-for-linux-to-communicate-with-operations-manager"></a>Operations Manager と連携できるように OMS Agent for Linux を設定するには
 1. /etc/opt/omi/conf/omiserver.conf ファイルを編集します。
 2. **httpsport=** で始まる行にポート 1270 が定義されていることを確認します  (例: `httpsport=1270`)
 3. 次のコマンドで OMI サーバーを再起動します。
-   
+
     ```
     service omiserver restart or systemctl restart omiserver
     ```
@@ -541,8 +541,8 @@ OMS Agent for Linux の omsconfig (エージェント構成) プログラムの�
 
 > [!NOTE]
 > 編集しているパフォーマンス カウンターおよび syslog の構成ファイルは、OMS ポータル構成が有効になると上書きされます。 OMS ポータルで、すべてのノードの構成を無効にすることができます。1 つのノードの場合は、次のように実行します。
-> 
-> 
+>
+>
 
 ```
 sudo su omsagent -c /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable
@@ -701,11 +701,11 @@ OMS Agent for Linux の構成エージェントである `omsconfig` は、OMS �
 
 * 場合によっては、OMS Agent for Linux 構成エージェントがポータル構成サービスと通信できず、最新の構成が適用されないことがあります。
 * 次のようにして、`omsconfig` エージェントがインストールされていることを確認してください。
-  
+
   * `dpkg --list omsconfig` または `rpm -qi omsconfig`
   * インストールされていない場合は、OMS Agent for Linux の最新バージョンを再インストールします
 * `omsconfig` エージェントが OMS サービスと通信できることを確認します
-  
+
   * `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` コマンドを実行します
     * 上記のコマンドは、エージェントがポータルから取得した構成を返します。この構成には、Syslog 設定、Linux のパフォーマンス カウンター、カスタム ログなどが含まれています
     * 上記のコマンドが失敗した場合は、`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py` コマンドを実行します。 このコマンドは、omsconfig エージェントに OMS サービスと通信して最新の構成を取得するように強制します。
@@ -726,7 +726,7 @@ OMS Agent for Linux の構成エージェントである `omsconfig` は、OMS �
 * OMS ポータルの **[Settings (設定)]** の **[Data (データ)]** タブで、**[Apply the following configuration to my Linux Servers (次の構成を Linux サーバーに適用する)]** 設定がオンになっていることを確認します  
   ![構成の適用](./media/log-analytics-linux-agents/customloglinuxenabled.png)
 * `omsconfig` エージェントが OMS サービスと通信できることを確認します
-  
+
   * `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` コマンドを実行します
   * 上記のコマンドは、エージェントがポータルから取得した構成を返します。この構成には、Syslog 設定、Linux のパフォーマンス カウンター、カスタム ログなどが含まれています
   * 上記のコマンドが失敗した場合は、`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py` コマンドを実行します。 このコマンドは、omsconfig エージェントに OMS サービスと通信して最新の構成を取得するように強制します。
@@ -782,7 +782,6 @@ syslog メッセージを収集するには、rsyslog または syslog-ng が必
 * [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) 」 (ソリューションギャラリーから Log Analytics ソリューションを追加する) を参照してください。
 * [ログ検索](log-analytics-log-searches.md) について理解を深め、ソリューションによって収集された情報の詳細を確認します。
 * カスタム検索結果を保存および表示するには、 [ダッシュボード](log-analytics-dashboards.md) を使用します。
-
 
 
 

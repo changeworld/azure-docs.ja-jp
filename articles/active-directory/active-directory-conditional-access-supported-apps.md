@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 10/26/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fbc03ebf0c66950ae92ca75cf34da86dfb15a349
+ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
+ms.openlocfilehash: 94a212b88d080510ad8a96bb40bb2c48d7f88a4f
 
 
 ---
@@ -72,18 +72,18 @@ Exchange で用意されているプロトコルは大きく 2 つのカテゴ�
 Microsoft Office 365 ID プラットフォームの AD FS 証明書利用者信頼に次の 3 つの規則を適用すると、Exchange ActiveSync トラフィック、ブラウザー トラフィック、先進認証トラフィックにアクセス権が与えられます。 エクストラネットからのレガシ アプリケーションはブロックされます。
 
 ##### <a name="rule-1"></a>規則 1
-    @RuleName = “Allow all intranet traffic”
+    @RuleName = "Allow all intranet traffic"
     c1:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork", Value == "true"]
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
 ##### <a name="rule-2"></a>規則 2
-    @RuleName = “Allow Exchange ActiveSync ”
+    @RuleName = "Allow Exchange ActiveSync"
     c1:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-client-application", Value == "Microsoft.Exchange.ActiveSync"]
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
 ##### <a name="rule-3"></a>規則 3
-    @RuleName = “Allow extranet browser and browser dialog traffic”
-    c1:[Type == " http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork", Value == "false"] &&
+    @RuleName = "Allow extranet browser and browser dialog traffic"
+    c1:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork", Value == "false"] &&
     c2:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-endpoint-absolute-path", Value =~ "(/adfs/ls)|(/adfs/oauth2)"]
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
@@ -91,26 +91,26 @@ Microsoft Office 365 ID プラットフォームの AD FS 証明書利用者信�
 Microsoft Office 365 ID プラットフォームの AD FS 証明書利用者信頼に次の 3 つの規則を適用すると、Exchange ActiveSync トラフィック、ブラウザー トラフィック、先進認証トラフィックにアクセス権が与えられます。 レガシ アプリケーションは、どの場所からもブロックされます。
 
 ##### <a name="rule-1"></a>規則 1
-    @RuleName = “Allow all intranet traffic only for browser and modern authentication clients”
+    @RuleName = "Allow all intranet traffic only for browser and modern authentication clients"
     c1:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork", Value == "true"] &&
     c2:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-endpoint-absolute-path", Value =~ "(/adfs/ls)|(/adfs/oauth2)"]
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
 
 ##### <a name="rule-2"></a>規則 2
-    @RuleName = “Allow Exchange ActiveSync”
+    @RuleName = "Allow Exchange ActiveSync"
     c1:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-client-application", Value == "Microsoft.Exchange.ActiveSync"]
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
 
 ##### <a name="rule-3"></a>規則 3
-    @RuleName = “Allow extranet browser and browser dialog traffic”
-    c1:[Type == " http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork", Value == "false"] &&
+    @RuleName = "Allow extranet browser and browser dialog traffic"
+    c1:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork", Value == "false"] &&
     c2:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-endpoint-absolute-path", Value =~ "(/adfs/ls)|(/adfs/oauth2)"]
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Nov16_HO3-->
 
 

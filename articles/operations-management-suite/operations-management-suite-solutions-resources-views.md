@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/17/2016
+ms.date: 01/04/2017
 ms.author: bwren
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -59,7 +59,7 @@ ms.openlocfilehash: ae4e75c7ac318a414672cf791bb35d1615f45dea
         "type": "Microsoft.OperationalInsights/workspaces/views",
         "location": "[parameters('workspaceregionId')]",
         "id": "[Concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'),'/views/', variables('ViewName'))]",
-        dependson": [
+        "dependson": [
             ],
         "properties": {
             "Id": "[variables('ViewName')]",

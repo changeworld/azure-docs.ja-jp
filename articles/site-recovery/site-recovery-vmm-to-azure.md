@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 1268d29b0d9c4368f62918758836a73c757c0c8d
-ms.openlocfilehash: 3727972c544bb8c2724e9f38953882a7f2251a60
+ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
+ms.openlocfilehash: 8de917236d1dcbfdf0c1232380879a33d9425291
 
 
 ---
@@ -115,13 +115,13 @@ Azure で必要なものを次に示します。
 * ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。
 * フェールオーバーされた Azure VM に使用するリソース モデルに応じて、Azure ネットワークを [Resource Manager モード](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)または[クラシック モード](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)でセットアップします。
 * ネットワークをセットアップしてから、以下の作業を開始することをお勧めします。 行わない場合は、Site Recovery のデプロイ中に行う必要があります。
-Site Recovery に使用されている Azure ネットワークは、同じまたは異なるサブスクリプション内で[移動](../resource-group-move-resources.md)できないことに注意してください。
+Site Recovery に使用されている Azure ネットワークは、同じまたは異なるサブスクリプション内で[移動](../azure-resource-manager/resource-group-move-resources.md)できないことに注意してください。
 
 ### <a name="set-up-an-azure-storage-account"></a>Azure Storage アカウントを設定
 * Azure にレプリケートされたデータを保持するために Standard Azure ストレージ アカウントが必要になります。 アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。
 * フェールオーバーされた Azure VM に使用するリソース モデルに応じて、アカウントを [Resource Manager モード](../storage/storage-create-storage-account.md)または[クラシック モード](../storage/storage-create-storage-account-classic-portal.md)でセットアップします。
 * アカウントをセットアップしてから、以下の作業を開始することをお勧めします。 行わない場合は、Site Recovery のデプロイ中に行う必要があります。
-- Site Recovery で使用されているストレージ アカウントは、同じまたは異なるサブスクリプション内で[移動](../resource-group-move-resources.md)できないことに注意してください。
+- Site Recovery で使用されているストレージ アカウントは、同じまたは異なるサブスクリプション内で[移動](../azure-resource-manager/resource-group-move-resources.md)できないことに注意してください。
 
 ### <a name="prepare-the-vmm-server"></a>VMM サーバーを準備する
 * VMM サーバーが [前提条件](#on-premises-prerequisites)に準拠しているかどうかを確認します。
@@ -144,7 +144,7 @@ Site Recovery のデプロイ中にネットワーク マッピングをセッ�
 
     ![新しいコンテナー](./media/site-recovery-vmm-to-azure/new-vault3.png)
 3. **[名前]**に、コンテナーを識別するフレンドリ名を入力します。 複数のサブスクリプションがある場合は、いずれかを選択します。
-4. [リソース グループを作成](../resource-group-template-deploy-portal.md)するか、既存のリソース グループを選択します。 Azure リージョンを指定します。 マシンは、このリージョンにレプリケートされます。 サポートされているリージョンを確認するには、「 [Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)
+4. [リソース グループを作成](../azure-resource-manager/resource-group-template-deploy-portal.md)するか、既存のリソース グループを選択します。 Azure リージョンを指定します。 マシンは、このリージョンにレプリケートされます。 サポートされているリージョンを確認するには、「 [Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)
 5. ダッシュボードからコンテナーにすばやくアクセスするには、**[ダッシュボードにピン留めする]** > **[コンテナーの作成]** をクリックします。
 
     ![新しいコンテナー](./media/site-recovery-vmm-to-azure/new-vault-settings.png)
@@ -509,6 +509,6 @@ Site Recovery デプロイメントの構成設定、状態、および正常性
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

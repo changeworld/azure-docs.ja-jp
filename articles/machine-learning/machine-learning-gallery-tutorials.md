@@ -39,9 +39,9 @@ Machine Learning のテクノロジと概念を紹介するか、Machine Learnin
  任意のチュートリアルをクリックし、チュートリアルの詳細ページを開いて、それについての詳細情報を参照します。
 このページで、コメント セクションから、意見を述べたり、フィードバックを提供したり、質問したりできます。 LinkedIn や Twitter アカウントの共有機能を使用して、友人や同僚とを共有することもできます。 チュートリアルへのリンクを電子メールで送信し、他のユーザーを招待してそのページを表示することもできます。
 
-![この項目を友人と共有する](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![この項目を友人と共有する](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![独自のコメントを追加する](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![独自のコメントを追加する](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="contribute"></a>投稿
 チュートリアルをギャラリーに投稿して、問題解決や概念を学ぶ他のユーザーを支援できます。
@@ -52,16 +52,16 @@ Machine Learning のテクノロジと概念を紹介するか、Machine Learnin
 * Microsoft アカウントを使用して、ギャラリーにサインインします
 * ウィンドウの上部にあるイメージをクリックしてから、ユーザー名をクリックする
   
-    ![アカウント名をクリックする](media\\machine-learning-gallery-tutorials\\click-account-name.png)
+    ![アカウント名をクリックする](media/machine-learning-gallery-tutorials/click-account-name.png)
 * **[新しい項目]** をクリックする
   
-    ![[新しい項目] をクリックする](media\\machine-learning-gallery-collections\\click-new-item.png)
+    ![[新しい項目] をクリックする](media/machine-learning-gallery-collections/click-new-item.png)
 * **[項目タイプ]** の **[コレクション]** を選択してから、コレクションの名前、簡単な概要、説明、およびユーザーがコレクションを検索する際に役立つタグを設定する
   
-    ![新しいコレクションの情報を入力する](media\\machine-learning-gallery-tutorials\\create-tutorial-page-1.png)
+    ![新しいコレクションの情報を入力する](media/machine-learning-gallery-tutorials/create-tutorial-page-1.png)
 * **[次へ]** をクリックする: イメージ ファイルをアップロードするか、コレクションで表示されるストック イメージを選択できます。選択されたものは、ユーザーがコレクションの内容や目的を特定するのに役立ちま
   
-    ![新しいコレクションの情報を入力する](media\\machine-learning-gallery-tutorials\\create-tutorial-page-2.png)
+    ![新しいコレクションの情報を入力する](media/machine-learning-gallery-tutorials/create-tutorial-page-2.png)
 * **[次へ]** をクリックする: チュートリアルを **[公開]** (任意のユーザーに表示できる) にするか **[非公開]** (ダイレクト リンクを使用するユーザーのみ、チュートリアルを表示できる) にするかを決定できます
   
   > [!IMPORTANT]
@@ -69,7 +69,7 @@ Machine Learning のテクノロジと概念を紹介するか、Machine Learnin
   > 
   > 
   
-    ![公開または非公開を選択する](media\\machine-learning-gallery-tutorials\\create-tutorial-page-3.png)
+    ![公開または非公開を選択する](media/machine-learning-gallery-tutorials/create-tutorial-page-3.png)
 *  **[作成]**
 
 これで、チュートリアルが Cortana Intelligence ギャラリーの一部になりました。 **[項目]** タブの下のアカウント ページに表示されます。

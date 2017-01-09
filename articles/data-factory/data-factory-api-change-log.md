@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 12/21/2016
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: c2350ae447ccebf1a6b85a563e7fa1d7c12b16d7
@@ -163,17 +163,19 @@ ms.openlocfilehash: 01ef15db6e62443a2d34bae8bc133f21f4d874f0
 
 * **List** メソッドでページングされた結果が返されるようになりました。 応答に空でない **NextLink** プロパティが含まれている場合、クライアント アプリケーションは、すべてのページが返されるまで次のページを取得し続ける必要があります。  たとえば次のようになります。
 
-        PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
-        var pipelines = new List<Pipeline>(response.Pipelines);
+    ```csharp
+    PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
+    var pipelines = new List<Pipeline>(response.Pipelines);
 
-        string nextLink = response.NextLink;
-        while (string.IsNullOrEmpty(response.NextLink))
-        {
-            PipelineListResponse nextResponse = client.Pipelines.ListNext(nextLink);
-            pipelines.AddRange(nextResponse.Pipelines);
+    string nextLink = response.NextLink;
+    while (string.IsNullOrEmpty(response.NextLink))
+    {
+        PipelineListResponse nextResponse = client.Pipelines.ListNext(nextLink);
+        pipelines.AddRange(nextResponse.Pipelines);
 
-            nextLink = nextResponse.NextLink;
-        }
+        nextLink = nextResponse.NextLink;
+    }
+    ```
 * **List** パイプライン API では、全詳細ではなく、パイプラインの概要だけが返されます。 たとえば、パイプライン概要のアクティビティには、名前と種類だけが含まれます。
 
 ### <a name="feature-additions"></a>機能の追加

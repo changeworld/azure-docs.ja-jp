@@ -38,14 +38,14 @@ ms.openlocfilehash: d1020d153c283a7c0bcf71c479e6109f354de173
 
  任意のソリューションをクリックし、ソリューションの詳細ページを開いて詳細情報を参照します。 このページで、コメント セクションから、意見を述べたり、フィードバックを提供したり、質問したりできます。 LinkedIn や Twitter アカウントの共有機能を使用して、友人や同僚とを共有することもできます。 ソリューションへのリンクを電子メールで送信し、他のユーザーを招待してそのページを表示することもできます。
 
-![この項目を友人と共有する](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![この項目を友人と共有する](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![独自のコメントを追加する](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![独自のコメントを追加する](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="deploy"></a>デプロイ
 ソリューションを使用する場合は、**[デプロイ]** をクリックします。 表示される手順に従って、ワークスペースにソリューションを構成しデプロイします。
 
-![ギャラリーのソリューションをデプロイする](media\\machine-learning-gallery-solutions\\deploy-solution.png)
+![ギャラリーのソリューションをデプロイする](media/machine-learning-gallery-solutions/deploy-solution.png)
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 

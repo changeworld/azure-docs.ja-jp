@@ -48,15 +48,15 @@ ms.openlocfilehash: 1d825277b63e00d93136161d50d780daa95ea8a7
 
 > [!NOTE]
 > アプリケーションに対してどのようにデータを統合するかについて記述するドキュメントを資産に追加することもできます。 [データ ソースの文書化の方法](data-catalog-how-to-documentation.md)を参照してください。
-> 
-> 
+>
+>
 
 <a name="howto"/>
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>データ ソースの登録時にデータ プロファイルを含める方法
 データ ソースのプロファイルは簡単に追加できます。 データ ソースを登録するときに、データ ソース登録ツールの **[登録されるオブジェクト]** パネルで **[データ プロファイルを含める]** を選択します。
 
-![](media\\data-catalog-data-profile\\data-catalog-register-profile.png)
+![](media/data-catalog-data-profile/data-catalog-register-profile.png)
 
 データ ソースを登録する方法の詳細については、「[データ ソースの登録方法](data-catalog-how-to-register.md)」と「[Azure Data Catalog の概要](data-catalog-get-started.md)」を参照してください。
 
@@ -65,13 +65,13 @@ ms.openlocfilehash: 1d825277b63e00d93136161d50d780daa95ea8a7
 
 > [!NOTE]
 > データソース登録ツールで **[データ プロファイルを含める]** を選択すると、テーブル レベルと列レベルのプロファイル情報の両方が含まれます。 ただし、Data Catalog API では、1 つのプロファイル情報セットのみを含むデータ資産を登録できます。
-> 
-> 
+>
+>
 
 ## <a name="viewing-data-profile-information"></a>データ プロファイル情報の表示
 プロファイルを含んだ適切なデータ ソースが見つかったら、そのデータ プロファイルの詳細を表示できます。 データ プロファイルを表示するには、[Data Catalog ポータル] ウィンドウでデータ資産を選択し、 **[データ プロファイル]** を選択します。
 
-![](media\\data-catalog-data-profile\\data-catalog-view.png)
+![](media/data-catalog-data-profile/data-catalog-view.png)
 
 **Azure Data Catalog** のデータ プロファイルに、テーブルと列のプロファイル情報が表示されます。それぞれ表示される情報は以下のとおりです。
 
@@ -92,7 +92,6 @@ ms.openlocfilehash: 1d825277b63e00d93136161d50d780daa95ea8a7
 ## <a name="see-also"></a>関連項目
 * [データ ソースの登録方法](data-catalog-how-to-register.md)
 * [Azure Data Catalog の概要](data-catalog-get-started.md)
-
 
 
 

@@ -55,61 +55,66 @@ Cassandra データベースから、サポートされているシンク デー
 
 この例では、 **Cassandra** のリンクされたサービスを使用します。 このリンクされたサービスでサポートされているプロパティについては、 [Cassandra のリンクされたサービス](#onpremisescassandra-linked-service-properties) に関するセクションをご覧ください。  
 
+```JSON
+{
+    "name": "CassandraLinkedService",
+    "properties":
     {
-        "name": "CassandraLinkedService",
-        "properties":
+        "type": "OnPremisesCassandra",
+        "typeProperties":
         {
-            "type": "OnPremisesCassandra",
-            "typeProperties":
-            {
-                "authenticationType": "Basic",
-                "host": "mycassandraserver",
-                "port": 9042,
-                "username": "user",
-                "password": "password",
-                "gatewayName": "mygateway"
-            }
+            "authenticationType": "Basic",
+            "host": "mycassandraserver",
+            "port": 9042,
+            "username": "user",
+            "password": "password",
+            "gatewayName": "mygateway"
         }
     }
-
+}
+```
 
 **Azure Storage のリンクされたサービス**
 
-    {
-        "name": "AzureStorageLinkedService",
-        "properties": {
-        "type": "AzureStorage",
-            "typeProperties": {
-                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+```JSON
+{
+    "name": "AzureStorageLinkedService",
+    "properties": {
+    "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         }
     }
+}
+```
 
 **Cassandra の入力データセット**
 
-    {
-        "name": "CassandraInput",
-        "properties": {
-            "linkedServiceName": "CassandraLinkedService",
-            "type": "CassandraTable",
-            "typeProperties": {
-                "tableName": "mytable",
-                "keySpace": "mykeyspace"
-            },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            },
-            "external": true,
-            "policy": {
-                "externalData": {
-                    "retryInterval": "00:01:00",
-                    "retryTimeout": "00:10:00",
-                    "maximumRetry": 3
-                }
+```JSON
+{
+    "name": "CassandraInput",
+    "properties": {
+        "linkedServiceName": "CassandraLinkedService",
+        "type": "CassandraTable",
+        "typeProperties": {
+            "tableName": "mytable",
+            "keySpace": "mykeyspace"
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {
+            "externalData": {
+                "retryInterval": "00:01:00",
+                "retryTimeout": "00:10:00",
+                "maximumRetry": 3
             }
         }
     }
+}
+```
 
 **external** を **true** に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
@@ -117,24 +122,25 @@ Cassandra データベースから、サポートされているシンク デー
 
 データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。
 
+```JSON
+{
+    "name": "AzureBlobOutput",
+    "properties":
     {
-        "name": "AzureBlobOutput",
-        "properties":
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties":
         {
-            "type": "AzureBlob",
-            "linkedServiceName": "AzureStorageLinkedService",
-            "typeProperties":
-            {
-                "folderPath": "adfgetstarted/fromcassandra"
-            },
-            "availability":
-            {
-                "frequency": "Hour",
-                "interval": 1
-            }
+            "folderPath": "adfgetstarted/fromcassandra"
+        },
+        "availability":
+        {
+            "frequency": "Hour",
+            "interval": 1
         }
     }
-
+}
+```
 
 **コピー アクティビティのあるパイプライン**
 
@@ -142,51 +148,54 @@ Cassandra データベースから、サポートされているシンク デー
 
 RelationalSource でサポートされるプロパティの一覧については、「 [RelationalSource type プロパティ](#cassandrasource-type-properties) 」をご覧ください。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-            "start":"2016-06-01T18:00:00",
-            "end":"2016-06-01T19:00:00",
-            "description":"pipeline with copy activity",
-            "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+        "start":"2016-06-01T18:00:00",
+        "end":"2016-06-01T19:00:00",
+        "description":"pipeline with copy activity",
+        "activities":[  
+        {
+            "name": "CassandraToAzureBlob",
+            "description": "Copy from Cassandra to an Azure blob",
+            "type": "Copy",
+            "inputs": [
             {
-                "name": "CassandraToAzureBlob",
-                "description": "Copy from Cassandra to an Azure blob",
-                "type": "Copy",
-                "inputs": [
-                {
-                    "name": "CassandraInput"
-                }
-                ],
-                "outputs": [
-                {
-                    "name": "AzureBlobOutput"
-                }
-                ],
-                "typeProperties": {
-                    "source": {
-                        "type": "CassandraSource",
-                        "query": "select id, firstname, lastname from mykeyspace.mytable"
-
-                    },
-                    "sink": {
-                        "type": "BlobSink"
-                    }
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                },
-                "policy": {
-                    "concurrency": 1,
-                    "executionPriorityOrder": "OldestFirst",
-                    "retry": 0,
-                    "timeout": "01:00:00"
-                }
+                "name": "CassandraInput"
             }
-            ]    
+            ],
+            "outputs": [
+            {
+                "name": "AzureBlobOutput"
+            }
+            ],
+            "typeProperties": {
+                "source": {
+                    "type": "CassandraSource",
+                    "query": "select id, firstname, lastname from mykeyspace.mytable"
+
+                },
+                "sink": {
+                    "type": "BlobSink"
+                }
+            },
+            "scheduler": {
+                "frequency": "Hour",
+                "interval": 1
+            },
+            "policy": {
+                "concurrency": 1,
+                "executionPriorityOrder": "OldestFirst",
+                "retry": 0,
+                "timeout": "01:00:00"
+            }
         }
+        ]    
     }
+}
+```
+
 ## <a name="onpremisescassandra-linked-service-properties"></a>OnPremisesCassandra のリンクされたサービスのプロパティ
 次の表は、Cassandra のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 

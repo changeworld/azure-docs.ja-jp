@@ -13,6 +13,6 @@ Azure DNS に DNS ゾーンを作成する場合:
 > 
 > 詳細については、「[Azure DNS へのドメインの委任](../articles/dns/dns-domain-delegation.md)」を参照してください。
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

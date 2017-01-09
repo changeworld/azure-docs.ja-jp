@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/16/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4e86c1c1460f7b6eb312f10a0666f92b33697763
-ms.openlocfilehash: 02ad2ab42f121a915a6fbb98c9a0411b24f8a401
+ms.sourcegitcommit: 05e61d2fc751c4239aef4b10ad897765c59fe928
+ms.openlocfilehash: c8f87489e4df8038694430d16fd21c8ac7a90b9d
 
 
 ---
@@ -125,8 +125,8 @@ Git を使用してプロジェクト (リポジトリ) のルートからプッ
 
 > [!div class="op_single_selector"]
 > * [.NET](web-sites-dotnet-get-started.md)
-> * [PHP](app-service-web-php-get-started.md)
-> * [Node.JS](app-service-web-nodejs-get-started.md)
+> * [PHP](app-service-web-php-get-started-cli-nodejs.md)
+> * [Node.JS](app-service-web-nodejs-get-started-cli-nodejs.md)
 > * [Python](web-sites-python-ptvs-django-mysql.md)
 > * [Java](web-sites-java-get-started.md)
 > 
@@ -140,6 +140,6 @@ Git を使用してプロジェクト (リポジトリ) のルートからプッ
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

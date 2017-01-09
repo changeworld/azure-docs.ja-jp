@@ -40,16 +40,17 @@ Azure Table Storage との間でデータをコピーするパイプラインを
 
 **Azure Storage のリンクされたサービス:**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+  }
+}
+```
 Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。 前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。 詳細については、「 [リンクされたサービス](#linked-services) 」をご覧ください。  
 
 **Azure テーブルの入力データセット:**
@@ -58,135 +59,141 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 
 ”external” を ”true” に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
-    {
-      "name": "AzureTableInput",
-      "properties": {
-        "type": "AzureTable",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "tableName": "MyTable"
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
+```JSON
+{
+  "name": "AzureTableInput",
+  "properties": {
+    "type": "AzureTable",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "tableName": "MyTable"
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
       }
     }
+  }
+}
+```
 
 **Azure BLOB の出力データセット:**
 
 データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
-    {
-      "name": "AzureBlobOutput",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
-          "partitionedBy": [
-            {
-              "name": "Year",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyy"
-              }
-            },
-            {
-              "name": "Month",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "MM"
-              }
-            },
-            {
-              "name": "Day",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "dd"
-              }
-            },
-            {
-              "name": "Hour",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HH"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": "\t",
-            "rowDelimiter": "\n"
+```JSON
+{
+  "name": "AzureBlobOutput",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
           }
         },
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "MM"
+          }
+        },
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "dd"
+          }
+        },
+        {
+          "name": "Hour",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "HH"
+          }
         }
+      ],
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": "\t",
+        "rowDelimiter": "\n"
       }
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
+  }
+}
+```
 
 **コピー アクティビティのあるパイプライン:**
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **AzureTableSource** に設定され、**sink** 型が **BlobSink** に設定されています。 **AzureTableSourceQuery** プロパティで指定された SQL クエリにより、コピーするデータが 1 時間ごとにデフォルト パーティションから選択されます。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-            "start":"2014-06-01T18:00:00",
-            "end":"2014-06-01T19:00:00",
-            "description":"pipeline for copy activity",
-            "activities":[  
-                {
-                    "name": "AzureTabletoBlob",
-                    "description": "copy activity",
-                    "type": "Copy",
-                    "inputs": [
-                          {
-                            "name": "AzureTableInput"
-                        }
-                    ],
-                    "outputs": [
-                          {
-                                "name": "AzureBlobOutput"
-                          }
-                    ],
-                    "typeProperties": {
-                          "source": {
-                            "type": "AzureTableSource",
-                            "AzureTableSourceQuery": "PartitionKey eq 'DefaultPartitionKey'"
-                          },
-                          "sink": {
-                            "type": "BlobSink"
-                          }
-                    },
-                    "scheduler": {
-                          "frequency": "Hour",
-                          "interval": 1
-                    },                
-                    "policy": {
-                          "concurrency": 1,
-                          "executionPriorityOrder": "OldestFirst",
-                          "retry": 0,
-                          "timeout": "01:00:00"
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+        "start":"2014-06-01T18:00:00",
+        "end":"2014-06-01T19:00:00",
+        "description":"pipeline for copy activity",
+        "activities":[  
+            {
+                "name": "AzureTabletoBlob",
+                "description": "copy activity",
+                "type": "Copy",
+                "inputs": [
+                      {
+                        "name": "AzureTableInput"
                     }
+                ],
+                "outputs": [
+                      {
+                            "name": "AzureBlobOutput"
+                      }
+                ],
+                "typeProperties": {
+                      "source": {
+                        "type": "AzureTableSource",
+                        "AzureTableSourceQuery": "PartitionKey eq 'DefaultPartitionKey'"
+                      },
+                      "sink": {
+                        "type": "BlobSink"
+                      }
+                },
+                "scheduler": {
+                      "frequency": "Hour",
+                      "interval": 1
+                },                
+                "policy": {
+                      "concurrency": 1,
+                      "executionPriorityOrder": "OldestFirst",
+                      "retry": 0,
+                      "timeout": "01:00:00"
                 }
-             ]    
-        }
+            }
+         ]    
     }
+}
+```
 
 ## <a name="sample-copy-data-from-azure-blob-to-azure-table"></a>サンプル: Azure BLOB から Azure テーブルにデータをコピーする
 次のサンプルは以下を示しています。
@@ -200,15 +207,17 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 
 **Azure Storage のリンクされたサービス (Azure テーブルと BLOB の両方で使用):**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
+  }
+}
+```
 
 Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。 前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。 詳細については、「 [リンクされたサービス](#linked-services) 」をご覧ください。
 
@@ -216,137 +225,143 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 
 データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
-    {
-      "name": "AzureBlobInput",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}",
-          "fileName": "{Hour}.csv",
-          "partitionedBy": [
-            {
-              "name": "Year",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyy"
-              }
-            },
-            {
-              "name": "Month",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "MM"
-              }
-            },
-            {
-              "name": "Day",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "dd"
-              }
-            },
-            {
-              "name": "Hour",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HH"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ",",
-            "rowDelimiter": "\n"
+```JSON
+{
+  "name": "AzureBlobInput",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}",
+      "fileName": "{Hour}.csv",
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
           }
         },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "MM"
+          }
         },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "dd"
+          }
+        },
+        {
+          "name": "Hour",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "HH"
           }
         }
+      ],
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ",",
+        "rowDelimiter": "\n"
+      }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
       }
     }
+  }
+}
+```
 
 **Azure テーブルの出力データセット:**
 
 このサンプルは Azure テーブルの「MyTable」というテーブルにデータをコピーします。 BLOB CSV ファイルに含める予定の数の列を持つ Azure テーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
 
-    {
-      "name": "AzureTableOutput",
-      "properties": {
-        "type": "AzureTable",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "tableName": "MyOutputTable"
-        },
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        }
-      }
+```JSON
+{
+  "name": "AzureTableOutput",
+  "properties": {
+    "type": "AzureTable",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "tableName": "MyOutputTable"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
+  }
+}
+```
 
 **コピー アクティビティのあるパイプライン:**
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **BlobSource** に設定され、**sink** 型が **AzureTableSink** に設定されています。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-        "start":"2014-06-01T18:00:00",
-        "end":"2014-06-01T19:00:00",
-        "description":"pipeline with copy activity",
-        "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+    "start":"2014-06-01T18:00:00",
+    "end":"2014-06-01T19:00:00",
+    "description":"pipeline with copy activity",
+    "activities":[  
+      {
+        "name": "AzureBlobtoTable",
+        "description": "Copy Activity",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "AzureBlobtoTable",
-            "description": "Copy Activity",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "AzureBlobInput"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "AzureTableOutput"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "BlobSource"
-              },
-              "sink": {
-                "type": "AzureTableSink",
-                "writeBatchSize": 100,
-                "writeBatchTimeout": "01:00:00"
-              }
-            },
-            "scheduler": {
-              "frequency": "Hour",
-              "interval": 1
-            },                        
-            "policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "OldestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "AzureBlobInput"
           }
-          ]
-       }
-    }
+        ],
+        "outputs": [
+          {
+            "name": "AzureTableOutput"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "AzureTableSink",
+            "writeBatchSize": 100,
+            "writeBatchTimeout": "01:00:00"
+          }
+        },
+        "scheduler": {
+          "frequency": "Hour",
+          "interval": 1
+        },                        
+        "policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "OldestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
+      }
+      ]
+   }
+}
+```
 
 ## <a name="linked-services"></a>リンクされたサービス
 Azure BLOB ストレージを Azure Data Factory にリンクするために使用できるリンクされたサービスは 2 種類あります。 それらは、**AzureStorage** のリンクされたサービスと **AzureStorageSas** のリンクされたサービスです。 Azure Storage のリンクされたサービスは、Azure Storage へのグローバル アクセスを Data Factory に提供します。 一方、Azure Storage SAS (Shared Access Signature) のリンクされたサービスは、Azure Storage への制限付き/期限付きアクセスを Data Factory に提供します。 これら 2 つのリンクされたサービスには、これ以外の相違点はありません。 ニーズに適したリンクされたサービスを選択します。 以下のセクションで、これら 2 つのリンクされたサービスについて詳しく説明します。
@@ -385,12 +400,15 @@ Azure Table などのスキーマのないデータ ストアの場合、Data Fa
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery の例
 Azure テーブルの列が文字列型の場合:
 
-    azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00_9999}\\'', SliceStart)"
+```JSON
+azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00_9999}\\'', SliceStart)"
+```
 
 Azure テーブルの列が datetime 型の場合:
 
-    "azureTableSourceQuery": "$$Text.Format('DeploymentEndTime gt datetime\\'{0:yyyy-MM-ddTHH:mm:ssZ}\\' and DeploymentEndTime le datetime\\'{1:yyyy-MM-ddTHH:mm:ssZ}\\'', SliceStart, SliceEnd)"
-
+```JSON
+"azureTableSourceQuery": "$$Text.Format('DeploymentEndTime gt datetime\\'{0:yyyy-MM-ddTHH:mm:ssZ}\\' and DeploymentEndTime le datetime\\'{1:yyyy-MM-ddTHH:mm:ssZ}\\'', SliceStart, SliceEnd)"
+```
 
 **AzureTableSink** の typeProperties セクションでは次のプロパティがサポートされます。
 
@@ -408,20 +426,22 @@ azureTablePartitionKeyName として宛先列を使用する前に、translator 
 
 次の例では、ソース列の DivisionID が宛先列の DivisionID にマップされます。  
 
-    "translator": {
-        "type": "TabularTranslator",
-        "columnMappings": "DivisionID: DivisionID, FirstName: FirstName, LastName: LastName"
-    }
-
+```JSON
+"translator": {
+    "type": "TabularTranslator",
+    "columnMappings": "DivisionID: DivisionID, FirstName: FirstName, LastName: LastName"
+}
+```
 DivisionID は、パーティション キーとして指定されます。
 
-    "sink": {
-        "type": "AzureTableSink",
-        "azureTablePartitionKeyName": "DivisionID",
-        "writeBatchSize": 100,
-        "writeBatchTimeout": "01:00:00"
-    }
-
+```JSON
+"sink": {
+    "type": "AzureTableSink",
+    "azureTablePartitionKeyName": "DivisionID",
+    "writeBatchSize": 100,
+    "writeBatchTimeout": "01:00:00"
+}
+```
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -451,43 +471,44 @@ BLOB のデータセットは CSV 形式で、3 つの列を含んでいると�
 
 次のようにコピー元の BLOB データセットと列の型を定義します。
 
+```JSON
+{
+    "name": " AzureBlobInput",
+    "properties":
     {
-        "name": " AzureBlobInput",
-        "properties":
-        {
-             "structure":
-              [
-                    { "name": "userid", "type": "Int64"},
-                    { "name": "name", "type": "String"},
-                    { "name": "lastlogindate", "type": "Datetime", "culture": "fr-fr", "format": "ddd-MM-YYYY"}
-              ],
-            "type": "AzureBlob",
-            "linkedServiceName": "StorageLinkedService",
-            "typeProperties": {
-                "folderPath": "mycontainer/myfolder",
-                "fileName":"myfile.csv",
-                "format":
-                {
-                    "type": "TextFormat",
-                    "columnDelimiter": ","
-                }
-            },
-            "external": true,
-            "availability":
+         "structure":
+          [
+                { "name": "userid", "type": "Int64"},
+                { "name": "name", "type": "String"},
+                { "name": "lastlogindate", "type": "Datetime", "culture": "fr-fr", "format": "ddd-MM-YYYY"}
+          ],
+        "type": "AzureBlob",
+        "linkedServiceName": "StorageLinkedService",
+        "typeProperties": {
+            "folderPath": "mycontainer/myfolder",
+            "fileName":"myfile.csv",
+            "format":
             {
-                "frequency": "Hour",
-                "interval": 1,
-            },
-            "policy": {
-                "externalData": {
-                    "retryInterval": "00:01:00",
-                    "retryTimeout": "00:10:00",
-                    "maximumRetry": 3
-                }
+                "type": "TextFormat",
+                "columnDelimiter": ","
+            }
+        },
+        "external": true,
+        "availability":
+        {
+            "frequency": "Hour",
+            "interval": 1,
+        },
+        "policy": {
+            "externalData": {
+                "retryInterval": "00:01:00",
+                "retryTimeout": "00:10:00",
+                "maximumRetry": 3
             }
         }
     }
-
+}
+```
 Azure テーブル OData 型から .NET 型への型マッピングを所与として、次のスキーマで Azure テーブルのテーブルを定義します。
 
 **Azure テーブル スキーマ:**
@@ -500,20 +521,22 @@ Azure テーブル OData 型から .NET 型への型マッピングを所与と�
 
 続いて、次のように Azure テーブルのデータセットを定義します。 基になるデータ ストアで既に指定されているため、“structure” セクションのタイプ情報を指定する必要はありません。
 
-    {
-      "name": "AzureTableOutput",
-      "properties": {
-        "type": "AzureTable",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "tableName": "MyOutputTable"
-        },
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        }
-      }
+```JSON
+{
+  "name": "AzureTableOutput",
+  "properties": {
+    "type": "AzureTable",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "tableName": "MyOutputTable"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
+  }
+}
+```
 
 ここでは、データを BLOB から Azure テーブルに移動するときに、Data Factory はカスタム日付/時刻を持つ Datetime フィールドを含むタイプ変換を "fr-fr" カルチャを使用して自動的に実行します。
 

@@ -44,7 +44,7 @@ Azure Machine Learning Studio は "*予測分析モデル*" の開発とデプ�
 ## <a name="developing-and-deploying-a-predictive-web-service"></a>予測 Web サービスの開発とデプロイ
 Machine Learning Studio を使用して予測 Web サービスを開発し、デプロイする場合、一般的なソリューションがたどる段階は次のようになります。
 
-![デプロイ フロー](media\\machine-learning-model-progression-experiment-to-web-service\\model-stages-from-experiment-to-web-service.png)
+![デプロイ フロー](media/machine-learning-model-progression-experiment-to-web-service/model-stages-from-experiment-to-web-service.png)
 
 *図 1 - 一般的な予測分析モデルの段階*
 
