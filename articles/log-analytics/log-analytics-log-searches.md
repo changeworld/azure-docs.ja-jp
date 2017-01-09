@@ -4,7 +4,7 @@ description: "ユーザーはログの検索を通じて、環境内のさまざ
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 0d7b6712-1722-423b-a60f-05389cde3625
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -180,8 +180,8 @@ Type=Event EventLog="Operations Manager" EventID:[2100..2199]
 
 > [!NOTE]
 > 使用する必要がある範囲構文は、コロン (:) 区切り記号であり (field:value)、等号 (=) は使用 "*しません*"。 範囲の下限と上限を 2 つのピリオド(..) で区切り、全体を角かっこで囲みます。
-> 
-> 
+>
+>
 
 ## <a name="manipulate-search-results"></a>検索結果を操作する
 データを検索しているときに、検索クエリを調整して結果を適切なレベルに制御できます。 結果が取得されたら、コマンドを適用して結果を変換できます。
@@ -574,7 +574,6 @@ Type=WireData | measure avg(ReceivedBytes), avg(SentBytes) by Direction interval
 
 * ログの検索を拡張するには、 [Log Analytics でカスタム フィールド](log-analytics-custom-fields.md) を使用します。
 * Log Analytics で使用できるすべての検索フィールドとファセットは、 [Log Analytics のログ検索のリファレンス](log-analytics-search-reference.md) でご覧いただけます。
-
 
 
 

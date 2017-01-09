@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 09/08/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 32feb93bf6b6b77d0b14206802c776da3a8eac91
+ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
+ms.openlocfilehash: a6bb1c4b3a4972cdab9b99c548ef918a4d1070a0
 
 
 ---
-# <a name="azure-ad-connect-in-microsoft-cloud-germany-public-preview"></a>Microsoft Cloud Germany の Azure AD Connect - パブリック プレビュー
+# <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Microsoft Cloud Germany の Azure AD Connect - パブリック プレビュー
 ## <a name="introduction"></a>はじめに
 Azure AD Connect は、オンプレミス Active Directory と Azure Active Directory の間の同期を実現します。
 現在、 [Microsoft Cloud Germany](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) の多くのシナリオは、オペレーターが行う必要があります。 Microsoft Cloud Germany を使用する場合は、以下の点に注意する必要があります。
@@ -49,7 +49,7 @@ Azure Portal にサインインしたら、次の操作を行います。
 
 次のように表示されます。
 
-![Azure AD Connect Blade](media\\active-directory-aadconnect-germany\\germany1.png)
+![Azure AD Connect Blade](media/active-directory-aadconnect-germany/germany1.png)
 
 次の表は、ブレードに表示される機能の説明です。
 
@@ -68,6 +68,6 @@ Azure AD Connect をインストールする場合は、 [こちら](active-dire
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

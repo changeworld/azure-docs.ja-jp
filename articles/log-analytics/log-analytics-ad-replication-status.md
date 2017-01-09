@@ -4,7 +4,7 @@ description: "Active Directory レプリケーションの状態ソリューシ�
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -45,15 +45,15 @@ AD レプリケーションの状態ソリューション パックは、レプ�
 1. コンピューターが、AD レプリケーションの状態ソリューションを使用して監視するドメインのメンバーであることを確認します。
 2. まだ接続されていない場合は、[Windows コンピューターを OMS に接続する](log-analytics-windows-agents.md)か、[既存の Operations Manager 環境を使用してそれを OMS に接続します](log-analytics-om-agents.md)。
 3. そのコンピューターで、次のレジストリ キーを設定します。
-   
+
    * キー: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
    * 値: **IsTarge**
    * 値のデータ: **true**
-   
+
    > [!NOTE]
    > これらの変更は、Microsoft Monitoring Agent サービス (HealthService.exe) を再起動するまで反映されません。
-   > 
-   > 
+   >
+   >
 
 ## <a name="understanding-replication-errors"></a>レプリケーションの問題を理解する
 AD レプリケーションの状態データが OMS に送信されたら、OMS ダッシュボードには現在のレプリケーション エラー数を示す、次のようなタイルが表示されます。  
@@ -97,8 +97,8 @@ AD レプリケーションの状態データが OMS に送信されたら、OMS
 
 > [!NOTE]
 > 廃棄 (tombstone) の有効期間のすべてのパーセンテージの計算は、Active Directory フォレストの実際の廃棄 (tombstone) の有効期限に基づいています。したがって廃棄 (tombstone) の有効期間の値をカスタマイズしている場合でも、それらのパーセンテージは正確であると信頼できます。
-> 
-> 
+>
+>
 
 ### <a name="ad-replication-status-details"></a>AD レプリケーションの状態の詳細
 一覧のいずれかの任意の項目をクリックすると、ログ検索にその詳細を表示できます。 その項目に関連するエラーのみが表示されるよう、結果はフィルター処理されます。 たとえば、[ **移行先サーバーの状態 (ADDC02)**] 下の最初のドメイン コントローラーをクリックすると、移行先サーバーであるそのドメイン コントローラーのエラーがフィルター処理された検索結果が表示されます。
@@ -150,7 +150,6 @@ AD レプリケーションの状態ソリューション パックでデータ�
 
 ## <a name="next-steps"></a>次のステップ
 * Active Directory のレプリケーション状態の詳細データを参照するには、「 [Log Analytics におけるログの検索](log-analytics-log-searches.md) 」を使用してください。
-
 
 
 

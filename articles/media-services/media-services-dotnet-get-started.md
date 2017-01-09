@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/15/2016
+ms.date: 12/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e048e70714c260fcb13ec5ca53434173026eb8d8
-ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
+ms.sourcegitcommit: f01cd8d3a68776dd12d2930def1641411e6a4994
+ms.openlocfilehash: a9f77a58cdb13c357b6c3734bd9e3efa4ff5087b
 
 
 ---
@@ -25,9 +25,9 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 
-> 
-> 
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
+>
+>
 
 ## <a name="overview"></a>Overview
 このチュートリアルでは、Azure Media Services (AMS) SDK for .NET を使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順について説明します。
@@ -36,11 +36,11 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 
 ### <a name="ams-model"></a>AMS モデル
 
-次の図は、Media Services OData モデルに対する VoD アプリケーションの開発時に最もよく使用されるオブジェクトの一部を示しています。 
+次の図は、Media Services OData モデルに対する VoD アプリケーションの開発時に最もよく使用されるオブジェクトの一部を示しています。
 
 画像をクリックすると、フル サイズで表示されます。  
 
-<a href="./media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
+<a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
 
 モデル全体は、[こちら](https://media.windows.net/API/$metadata?api-version=2.14)で確認できます。  
 
@@ -60,8 +60,8 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 ## <a name="prerequisites"></a>前提条件
 チュートリアルを完了するには次のものが必要です。
 
-* このチュートリアルを完了するには、Azure アカウントが必要です。 
-  
+* このチュートリアルを完了するには、Azure アカウントが必要です。
+
     アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
 * オペレーティング システム: Windows 8 以降、Windows 2008 R2、Windows 7。
 * .NET Framework 4.0 以降
@@ -72,26 +72,26 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. **[+新規]** > **[メディア + CDN]** > **[Media Services]** の順にクリックします。
-   
+
     ![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new1.png)
 3. **[CREATE MEDIA SERVICES ACCOUNT (Media Services アカウントの作成)]** に必要な値を入力します。
-   
+
     ![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new3.png)
-   
+
    1. **[アカウント名]** に新しい AMS アカウントの名前を入力します。 Media Services アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 ～ 24 文字です。
    2. [サブスクリプション] ボックスで、アクセス権のある別の Azure サブスクリプションを選択します。
    3. **[リソース グループ]**ボックスで、新規または既存のリソースを選択します。  リソース グループとは、ライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。 [こちら](../azure-resource-manager/resource-group-overview.md#resource-groups)をご覧ください。
-   4. **[場所]** ボックスで、この Media Services アカウントのメディアとメタデータのレコードを保存するリージョンを選択します。 このリージョンでメディアの処理とストリーミングが行われます。 ドロップダウン リストのボックスには、利用可能な Media Services リージョンのみが表示されます。 
+   4. **[場所]** ボックスで、この Media Services アカウントのメディアとメタデータのレコードを保存するリージョンを選択します。 このリージョンでメディアの処理とストリーミングが行われます。 ドロップダウン リストのボックスには、利用可能な Media Services リージョンのみが表示されます。
    5. **[ストレージ アカウント]**ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。 Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、ストレージ アカウントを作成することもできます。 新しいストレージ アカウントは同じリージョンに作成されます。 ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
-      
+
        ストレージの詳細については、 [こちら](../storage/storage-introduction.md)を参照してください。
    6. **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、アカウントのデプロイの進行状況を確認します。
 4. フォームの下部にある **[作成]** をクリックします。
-   
-    アカウントの作成に成功すると、ステータスが **[実行中]**に変化します。 
-   
+
+    アカウントの作成に成功すると、ステータスが **[実行中]**に変化します。
+
     ![Media Services settings](./media/media-services-portal-vod-get-started/media-services-settings.png)
-   
+
     AMS アカウントを管理するには (ビデオのアップロード、資産のエンコード、ジョブの進行の監視など)、 **[設定]** ウィンドウを使用します。
 
 ## <a name="configure-streaming-endpoints-using-the-azure-portal"></a>Azure Portal を使用したストリーミング エンドポイントの構成
@@ -108,19 +108,19 @@ Media Services にはダイナミック パッケージ機能があり、アダ�
 
 ストリーミング予約ユニットを作成したり、数を変更したりするには、以下の手順を実行します。
 
-1. **[設定]** ウィンドウで **[ストリーミング エンドポイント]** をクリックします。 
-2. 既定のストリーミング エンドポイントをクリックします。 
-   
+1. **[設定]** ウィンドウで **[ストリーミング エンドポイント]** をクリックします。
+2. 既定のストリーミング エンドポイントをクリックします。
+
     **[DEFAULT STREAMING ENDPOINT DETAILS (既定のストリーミング エンドポイントの詳細)]** ウィンドウが表示されます。
 3. ストリーミング ユニットの数を指定するには、 **[ストリーミング ユニット]** のスライダーを動かします。
-   
+
     ![[ストリーミング ユニット]](./media/media-services-portal-vod-get-started/media-services-streaming-units.png)
 4. **[保存]** をクリックして、変更を保存します。
-   
+
    > [!NOTE]
    > 新しいユニットの割り当てが完了するまでに最大 20 分かかる場合があります。
-   > 
-   > 
+   >
+   >
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
 
@@ -131,20 +131,20 @@ Media Services にはダイナミック パッケージ機能があり、アダ�
 
 3. System.Configuration アセンブリへの参照を追加します。 このアセンブリには、構成ファイル (App.config など) にアクセスするための **System.Configuration.ConfigurationManager** クラスが含まれています。
 
-    参照を追加するには、ソリューション エクスプローラーで、プロジェクト名を右クリックし、**[追加]** > **[参照]** の順に選択し、検索ボックスに「configuration」と入力します。 
+    参照を追加するには、ソリューション エクスプローラーで、プロジェクト名を右クリックし、**[追加]** > **[参照]** の順に選択し、検索ボックスに「configuration」と入力します。
 
 4. App.config ファイルを開き (既定で追加されていない場合はファイルをプロジェクトに追加してください)、ファイルに *appSettings* セクションを追加します。 Azure Media Services のアカウント名とアカウント キーの値を設定します。次の例をご覧ください。 アカウント名とキーの情報を取得するには、[Azure Portal](https://portal.azure.com/) に移動して AMS アカウントを選択します。 次に、**[設定]** > **[キー]** の順に選択します。 [キーの管理] ウィンドウに、アカウント名、プライマリ キー、セカンダリ キーが表示されます。 アカウント名とプライマリ キーの値をコピーします。
-   
+
         <configuration>
         ...
           <appSettings>
             <add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
             <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
           </appSettings>
-   
+
         </configuration>
 5. Program.cs ファイルの先頭にある既存の **using** ステートメントを次のコードで上書きします。
-   
+
         using System;
         using System.Collections.Generic;
         using System.Linq;
@@ -266,7 +266,7 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 以下のコードは、エンコーディング ジョブの送信方法を示したものです。 このジョブには、 **Media Encoder Standard**を使用して mezzanine ファイルを一連のアダプティブ ビットレート MP4 にトランスコードするよう指定するタスクが 1 つ存在します。 このコードは、ジョブを送信してその完了を待機します。
 
 エンコード ジョブが完了したら、資産を発行し、MP4 ファイルのストリーミングまたはプログレッシブ ダウンロードを行うことができるようになります。
- 
+
 次のメソッドを Program クラスに追加します。
 
     static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
@@ -309,7 +309,7 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 
 ### <a name="some-details-about-url-formats"></a>URL 形式の詳細
 
-ロケーターを作成したら、対象ファイルのストリーミングやダウンロードに使用する URL を作成できます。 このチュートリアルのサンプルでは、適切なブラウザーに貼り付けることができる URL を出力します。 このセクションでは、さまざまな形式の簡単な例を示します。 
+ロケーターを作成したら、対象ファイルのストリーミングやダウンロードに使用する URL を作成できます。 このチュートリアルのサンプルでは、適切なブラウザーに貼り付けることができる URL を出力します。 このセクションでは、さまざまな形式の簡単な例を示します。
 
 #### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>MPEG DASH のストリーミング URL の形式は次のとおりです。
 
@@ -324,7 +324,7 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest
 
 
-ファイルをダウンロードするための SAS URL の形式は次のとおりです。
+#### <a name="a-sas-url-used-to-download-files-has-the-following-format"></a>ファイルをダウンロードするための SAS URL の形式は次のとおりです。
 
 {BLOB コンテナー名}/{資産名}/{ファイル名}/{SAS 署名}
 
@@ -449,14 +449,14 @@ MPEG DASH
 ## <a name="download-sample"></a>サンプルのダウンロード
 このチュートリアルで作成したコードは、[このサンプル コード](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)に含まれています。
 
-## <a name="next-steps-media-services-learning-paths"></a>次のステップ: Media Services のラーニング パス
+## <a name="next-steps"></a>次のステップ 
+
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### <a name="looking-for-something-else"></a>他の情報をお探しですか。
-このトピックに必要な情報が含まれておらず、情報が不足している場合、またはニーズが満たされていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
+
 
 <!-- Anchors. -->
 
@@ -467,6 +467,6 @@ MPEG DASH
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -4,7 +4,7 @@ description: "Log Analytics は、Table Storage に診断情報を出力する A
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -47,8 +47,8 @@ Log Analytics でこれらの Azure 診断ログを収集するためには、�
 
 > [!NOTE]
 > 現在、Azure Websites からの IIS ログはサポートされていません。
-> 
-> 
+>
+>
 
 仮想マシンの場合、[Log Analytics エージェント](log-analytics-azure-vm-extension.md)を仮想マシンにインストールして、追加のインサイトを有効にすることもできます。 IIS ログとイベント ログを分析できるだけでなく、構成の変更の追跡、SQL の評価、更新の評価などの追加の分析を実行することもできます。
 
@@ -57,12 +57,12 @@ Log Analytics でこれらの Azure 診断ログを収集するためには、�
 
 ### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンで Azure 診断を有効にするには
 1. 仮想マシンを作成する際に、VM エージェントをインストールします。 仮想マシンが既に存在する場合は、VM エージェントが既にインストールされていることを確認します。
-   
+
    * Azure Portal で仮想マシンに移動し、**[オプションの構成]**、**[診断]** の順に選択して、**[状態]** を **[オン]** に設定します。
-     
+
      操作が完了すると、VM に Azure 診断の拡張機能がインストールされ、実行されます。 この拡張機能により、診断データが収集されます。
 2. 既存の VM で監視を有効にし、イベント ログを構成します。 診断は VM レベルで有効にすることができます。 診断を有効にして、イベント ログを構成するには、次の手順を実行します。
-   
+
    1. VM を選択します。
    2. **[監視]**をクリックします。
    3. **[診断]**をクリックします。
@@ -143,8 +143,8 @@ Log Analytics で収集する他のストレージ アカウントとデータ�
 
 > [!NOTE]
 > ストレージ アカウントにソースが存在するかどうかや、新しいデータが書き込まれているかどうかの確認は、ポータルでは実行されません。
-> 
-> 
+>
+>
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>イベント ログと IIS ログの収集のために PowerShell を使用して仮想マシンで Azure 診断を有効にする
 「[Azure 診断で収集されたデータのインデックスを作成するように Log Analytics を構成する](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics)」の手順に従い、PowerShell を使用してテーブル ストレージに書き込まれた Azure 診断データから読み取ります。
@@ -195,7 +195,6 @@ Azure PowerShell を使用すると、Azure Storage に書き込むイベント�
 * JSON 形式の診断情報を Blob Storage に出力する Azure サービスからのログを [Blob Storage 内の JSON ファイルを使用](log-analytics-azure-storage-json.md)して読み取ります。
 * [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。
 * [検索クエリを使用](log-analytics-log-searches.md) して、データを分析します。
-
 
 
 

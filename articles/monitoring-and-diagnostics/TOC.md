@@ -30,7 +30,7 @@
 ### [アクティビティ ログ アラートで webhook を構成する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
 ### [アクティビティ ログをアーカイブする](../monitoring-and-diagnostics/monitoring-archive-activity-log.md)
 ### [アクティビティ ログの Event Hubs へのストリーム](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
-### [リソース マネージャーの監査操作](../resource-group-audit.md)
+### [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)
 ## 診断ログの管理
 ### [アーカイブ](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 ### [Event Hubs へのストリーム](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
@@ -49,6 +49,6 @@
 ## [Azure CLI 2.0 (プレビュー) のサンプル](../monitoring-and-diagnostics/insights-cli-samples.md)
 ## [サポートされるメトリックスの一覧](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

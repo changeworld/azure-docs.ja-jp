@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2016
+ms.date: 01/04/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7fba0338f6a61998b1c103210cd60c1d37eeffd5
+ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
+ms.openlocfilehash: d9915ecbfca1eab7515b4879ae2b947c59f3ea2b
 
 
 ---
@@ -111,6 +111,6 @@ ms.openlocfilehash: 7fba0338f6a61998b1c103210cd60c1d37eeffd5
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

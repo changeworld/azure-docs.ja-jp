@@ -48,10 +48,12 @@ ms.openlocfilehash: 370b2212be8d5f7a537b8fadbfa05355844dcb96
 
 次のサンプルでは、JSON ファイルの **sqlReaderQuery** プロパティは、**Text.Format** 関数から返される値に割り当てられます。 また、**WindowStart** というシステム変数も使用されます。この変数は、アクティビティ実行ウィンドウの開始時刻を表します。
 
-    {
-        "Type": "SqlSource",
-        "sqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartTime = \\'{0:yyyyMMdd-HH}\\'', WindowStart)"
-    }
+```JSON
+{
+    "Type": "SqlSource",
+    "sqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartTime = \\'{0:yyyyMMdd-HH}\\'', WindowStart)"
+}
+```
 
 ### <a name="functions"></a>関数
 次の表は、Azure Data Factory の全関数の一覧です。
@@ -78,12 +80,15 @@ ms.openlocfilehash: 370b2212be8d5f7a537b8fadbfa05355844dcb96
 | Text |Format(X) |X: String 変数 |テキストの書式を設定します。 |
 
 #### <a name="textformat-example"></a>Text.Format の例
-    "defines": { 
-        "Year" : "$$Text.Format('{0:yyyy}',WindowStart)",
-        "Month" : "$$Text.Format('{0:MM}',WindowStart)",
-        "Day" : "$$Text.Format('{0:dd}',WindowStart)",
-        "Hour" : "$$Text.Format('{0:hh}',WindowStart)"
-    }
+
+```JSON
+"defines": { 
+    "Year" : "$$Text.Format('{0:yyyy}',WindowStart)",
+    "Month" : "$$Text.Format('{0:MM}',WindowStart)",
+    "Day" : "$$Text.Format('{0:dd}',WindowStart)",
+    "Hour" : "$$Text.Format('{0:hh}',WindowStart)"
+}
+```
 
 使用できるさまざまな書式設定オプション (例: yy と yyyy) については、「 [カスタム日時書式指定文字列](https://msdn.microsoft.com/library/8kb3ddd4.aspx) 」をご覧ください。 
 

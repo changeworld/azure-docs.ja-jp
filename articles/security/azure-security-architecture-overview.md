@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 01/04/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 354648461adf77ccf753cf24721ab7dd82b34d3c

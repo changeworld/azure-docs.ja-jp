@@ -64,7 +64,7 @@ Visual Studio Code で `arm-template-param.json` ファイルを更新します�
 `arm-template-param.json` ファイルの更新後、次のコマンドを実行してリソースを Azure にデプロイします。
 
 ```bash
-az resource group deployment create --template-file arm-template.json --parameters @arm-template-param.json -g iot-sample
+az group deployment create --template-file arm-template.json --parameters @arm-template-param.json -g iot-sample
 ```
 
 これらのリソースの作成には約 5 分かかります。 リソースの作成の進行中に、次の記事に進むことができます。

@@ -1,6 +1,6 @@
 ---
-title: "PowerShell による新しいエラスティック データベース プールの作成 | Microsoft Docs"
-description: "PowerShell を使用し、複数のデータベースを管理するスケーラブルなエラスティック データベース プールを作成して、Azure SQL Database リソースをスケールアウトする方法について説明します。"
+title: "PowerShell による新しいエラスティック プールの作成 | Microsoft Docs"
+description: "PowerShell を使用し、複数のデータベースを管理するスケーラブルなエラスティック プールを作成して、Azure SQL Database リソースをスケールアウトする方法について説明します。"
 services: sql-database
 documentationcenter: 
 author: srinia
@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 37a707ee-9223-43ae-8c35-1ccafde8b83e
 ms.service: sql-database
+ms.custom: multiple databases
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
@@ -15,38 +16,38 @@ ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: daf8bd6421ae563e542b0874a6e7748a3ca52738
+ms.sourcegitcommit: 6c8420a154d998aa95c0220049ee54b3039a872b
+ms.openlocfilehash: 679cdacc3782f667635a586df4cd77a9af7884d9
 
 
 ---
-# <a name="create-a-new-elastic-database-pool-with-powershell"></a>PowerShell による新しい Elastic Database プールの作成
+# <a name="create-a-new-elastic-pool-with-powershell"></a>PowerShell による新しいエラスティック プールの作成
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
 > * [C#](sql-database-elastic-pool-create-csharp.md)
-> 
-> 
+>
+>
 
-PowerShell コマンドレットを使った [エラスティック データベース プール](sql-database-elastic-pool.md) の作成方法について説明します。 
+PowerShell コマンドレットを使った[エラスティック プール](sql-database-elastic-pool.md)の作成方法について説明します。
 
-一般的なエラー コードについては、「 [SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」を参照してください。
+一般的なエラー コードについては、「 [SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」をご覧ください。
 
 > [!NOTE]
 > エラスティック プールは、現在プレビュー段階にある米国中北部とインド西部を除くすべての Azure リージョンで一般公開 (GA) されています。  プレビュー段階のリージョンでも、できるだけ早く一般公開される予定です。 また、現在のところ、エラスティック プールでは、 [インメモリ OLTP またはインメモリ分析](sql-database-in-memory.md)を使用するデータベースをサポートしていません。
-> 
-> 
+>
+>
 
-Azure PowerShell 1.0 以降を実行している必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+Azure PowerShell 1.0 以降を実行している必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
 
 ## <a name="create-a-new-pool"></a>新しいプールの作成
-プールの新規作成は、[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378\(v=azure.300\).aspx) コマンドレットで行います。 プールあたりの eDTU、最小 DTU、最大 DTU は、サービス レベルの値 (Basic、Standard、Premium) によって制限されます。 「 [エラスティック プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
+プールの新規作成は、[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378\(v=azure.300\).aspx) コマンドレットで行います。 プールあたりの eDTU、最小 DTU、最大 DTU は、サービス レベルの値 (Basic、Standard、Premium) によって制限されます。 「 [エラスティック プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)」を参照してください。
 
     New-AzureRmSqlElasticPool -ResourceGroupName "resourcegroup1" -ServerName "server1" -ElasticPoolName "elasticpool1" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 
 
 ## <a name="create-a-new-elastic-database-in-a-pool"></a>プールに新しいエラスティック データベースを作成する
-[New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339\(v=azure.300\).aspx) コマンドレットを使用して **ElasticPoolName** パラメーターを対象のプールに設定します。 既存のデータベースをプールに移動する方法については、「 [エラスティック プールへのデータベースの移動](sql-database-elastic-pool-manage-powershell.md#Move-a-database-into-an-elastic-pool)」を参照してください。
+[New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339\(v=azure.300\).aspx) コマンドレットを使用して **ElasticPoolName** パラメーターを対象のプールに設定します。 既存のデータベースをプールに移動する方法については、「 [エラスティック プールへのデータベースの移動](sql-database-elastic-pool-manage-powershell.md#move-a-database-into-an-elastic-pool)」を参照してください。
 
     New-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
@@ -83,7 +84,6 @@ Azure PowerShell 1.0 以降を実行している必要があります。 詳細�
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

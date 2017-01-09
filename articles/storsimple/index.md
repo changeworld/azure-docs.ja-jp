@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "オンプレミスのデバイスと Azure クラウド ストレージの間のストレージ タスクを管理する統合ストレージ ソリューション、Azure StorSimple の使用方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 42f5ac0bae68b967378b5e1a090f3b17e4efad20
+ms.sourcegitcommit: 24d70182b209126a71c6a9846136d4d31ab3b7ce
+ms.openlocfilehash: 4eb0e15f1030b4b1e987edc4fc2fa64e302b5851
 
 ---
 #<a name="storsimple-documentation"></a>StorSimple のドキュメント
 
-StorSimple と Microsoft Azure は、プライマリ ストレージをアーカイブするユニークで統合された機能を提供し、オンプレミス ストレージの拡張機能として Azure に障害復旧ソリューションを提供します。 ここでは、StorSimple ソリューションをデプロイして管理する方法をご紹介します。
+オンプレミスのデバイスと Azure クラウド ストレージの間のストレージ タスクを管理する統合ストレージ ソリューション、Azure StorSimple の使用方法について説明します。 チュートリアルなどのドキュメントでは、ストレージ管理、場所に依存しないバックアップ、および障害復旧を設定する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -147,6 +148,6 @@ StorSimple のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

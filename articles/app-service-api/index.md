@@ -1,14 +1,14 @@
 ---
 layout: LandingPage
+description: "Azure App Service の API Apps を使用して、クラウドとオンプレミスで API を開発、ホスト、使用する方法について説明します。 チュートリアル、ビデオ、その他のドキュメントを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: ac7a22bd592cbb1e8cdee2e6d2896c0b8ad6ea26
-
+ms.sourcegitcommit: 410479b746b5911d1ebcb51c92a6de74686cffbe
+ms.openlocfilehash: e5b9d9322bcf5860debb93fe579665f778a41e7b
 
 ---
 # <a name="app-service---api-apps-documentation"></a>App Service - API Apps のドキュメント
 
-API Apps は、Azure App Service によって提供される 4 種類のアプリの中の 1 つです。 Azure App Service の API Apps は、クラウドとオンプレミスでの API の開発、ホスト、使用に役立つ機能を豊富に備えています。 Azure App Service は、Web、モバイル、および統合シナリオのための完全に管理されたプラットフォームです。
+Azure App Service の API Apps を使用して、クラウドとオンプレミスで API を開発、ホスト、使用する方法について説明します。 チュートリアル、ビデオ、その他のドキュメントでは、API アプリを作成してデプロイする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -121,28 +121,6 @@ API Apps は、Azure App Service によって提供される 4 種類のアプ�
     </li>     
 </ul>
 
----
-
-<h2>リファレンス</h2>
-<ul class="panelContent cardsW">
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>リソース</h3>
-                        <p><a href="/azure/app-service-web/app-service-web-app-azure-portal?toc=%2fazure%2fapp-service-api%2ftoc.json">Azure ポータル</a></p>
-                        <p><a href="/azure/app-service-web/app-service-changes-existing-services?toc=%2fazure%2fapp-service-api%2ftoc.json">App Service のリファレンス</a></p>
-                        <p><a href="/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started?toc=%2fazure%2fapp-service-api%2ftoc.json">WebJobs SDK</a></p>
-                   </div>
-                </div>
-            </div>
-        </div>
-    </li>
-</ul>
-
----
-
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-api.pdf">
         <div class="img"></div>
@@ -153,6 +131,6 @@ Mobile Apps のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/26/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 36fd6b01dae6aa9a48985a252766d3f2d0b19342
+ms.sourcegitcommit: c5479dd817e8929ff5e9129d4643d49758e7ab16
+ms.openlocfilehash: 82d4d74a14ec31453f0d3eb9a18140c3569f806c
 
 
 ---
@@ -245,7 +245,7 @@ RRS の場合は通常、Web サービスの応答に結果が表示されます
 
 **トレーニングに使用できるデータの量はどれくらいですか?**
 
-Machine Learning Studio のモジュールは、一般的に、最大 10 GB の高密度数値データのデータセットをサポートしています。 モジュールが 1 つ以上の入力を受け取る場合、10 GB はすべての入力の合計です。 取り込みの前に、Hive または Azure SQL Database のクエリ経由で、または[カウントを使用した学習][counts]モジュールで前処理することにより、さらに大きなデータセットをサンプリングすることもできます。  
+Machine Learning Studio のモジュールは、一般的に、最大 10 GB の高密度数値データのデータセットをサポートしています。 モジュールが 1 つ以上の入力を受け取る場合、10 GB はすべての入力の合計です。 インジェストの前に、Hive または Azure SQL Database のクエリ経由で、または[カウントを使用した学習][counts]モジュールで前処理することにより、さらに大きなデータセットをサンプリングすることもできます。  
 
 次の種類のデータは、特徴の正規化の際により大きなデータセットに展開でき、10 GB 未満に制限されています。
 
@@ -289,9 +289,6 @@ Machine Learning Studio は、ワークフローを実行する際の中間デ�
 
 ストレージ アカウントのアクセス キーを変更した場合は、Azure クラシック ポータルを使用してワークスペースのアクセス キーを再同期します。  
 
-## <a name="azure-marketplace"></a>Azure Marketplace
-[Machine Learning Marketplace でのアプリの公開と使用に関する FAQ](machine-learning-marketplace-faq.md)のページを参照してください。
-
 ## <a name="support-and-training"></a>サポートとトレーニング
 **どこで Azure Machine Learning のトレーニングを受講できますか?**
 
@@ -332,7 +329,7 @@ Standard レベルでは、Machine Learning Studio で定義するワークス�
 
  Azure Machine Learning には、無料サブスクリプションのオプション (詳細については、「[Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)」を参照) が用意されており、Machine Learning Studio では、8 時間の簡易評価用の試用版が利用できます (この試用版を利用するには、[Machine Learning Studio](https://studio.azureml.net/?selectAccess=true&o=2) にログインしてください)。
 
- さらに、Azure の無料試用版にサインアップすると、1 か月間すべての Azure サービスを試すことができます。 Azure 無料試用版の詳細については、「 [Azure 無料試用版の FAQ](/pricing/free-trial-faq/)」を参照してください。
+ さらに、Azure の無料試用版にサインアップすると、1 か月間すべての Azure サービスを試すことができます。 Azure 無料試用版の詳細については、「 [Azure 無料試用版の FAQ](https://azure.microsoft.com/pricing/free-trial-faq/)」を参照してください。
 
 **トランザクションとは何ですか?**
 
@@ -432,7 +429,7 @@ Standard S1 レベルから開始して、サービスの使用状況を監視�
 
 はい。 プランの価格設定はリージョンによって異なります。 Web サービスを別のリージョンにデプロイするときは、そのリージョンに固有のプランを割り当てる必要があります。
 
-### <a name="new-web-services-overages"></a>新しい Web サービス - 超過料金
+### <a name="new-web-services---overages"></a>新しい Web サービス - 超過料金
 **Web サービスの使用量が超過料金に達しているかどうかを確認するには、どうすればよいですか?**
 
 Azure Machine Learning Web サービス ポータルの [プラン] ページで、すべてのプランの使用状況を確認することができます。 ポータルにサインインして、[プラン] メニュー オプションをクリックします。
@@ -545,6 +542,6 @@ Machine Learning サービスはマルチテナント サービスです。バ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
