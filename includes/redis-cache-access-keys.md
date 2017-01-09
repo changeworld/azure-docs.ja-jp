@@ -14,6 +14,6 @@ Azure Redis Cache のインスタンスに接続するには、キャッシュ �
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
