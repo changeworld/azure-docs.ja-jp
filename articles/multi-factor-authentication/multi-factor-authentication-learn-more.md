@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2016
+ms.date: 01/09/2017
 ms.author: kgremban
+robots: noindex, nofollow
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 853a298237bf0a1fea04ed6d51df08d2fafce064
-
 
 ---
 # <a name="learn-more-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の詳細について

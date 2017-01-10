@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/16/2016
+ms.date: 01/09/2017
 ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: 0821ec479f21ddcc6dc370070d9a40221054877f
@@ -47,7 +47,6 @@ Azure には、ソリューションを構築できるセキュリティで保�
 * そのベスト プラクティスを実践する方法
 
 マイクロソフトでは、Azure のセキュリティ アーキテクチャとベスト プラクティスに関する記事を今後さらに拡充させていく予定です。 ご希望のテーマがあればぜひ、このページの一番下にあるコメント欄でお知らせください。
-
 
 
 
