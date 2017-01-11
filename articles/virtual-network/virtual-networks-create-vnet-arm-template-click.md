@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: c3b96b583260bc8975082b952929d524e4040730
-ms.openlocfilehash: 08041e873df1850d459aea1b49440956de1d4748
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: bec644c851d4d2bfbcdda87bd9f8d795dc343afc
 
 
 ---
@@ -110,7 +110,7 @@ Github から既存のテンプレートをダウンロードして VNet と 2 �
 
 PowerShell を使用してダウンロードしたテンプレートをデプロイするには、次の手順に従います。
 
-1. 「[Azure PowerShell のインストールと構成](../powershell-install-configure.md) 」の手順を実行し、PowerShell をインストールして構成します。
+1. 「[Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) 」の手順を実行し、PowerShell をインストールして構成します。
 2. 次のコマンドを実行して、新しいリソース グループを作成します。
 
     ```powershell
@@ -244,6 +244,6 @@ Microsoft によって管理され、コミュニティにも公開されてい�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

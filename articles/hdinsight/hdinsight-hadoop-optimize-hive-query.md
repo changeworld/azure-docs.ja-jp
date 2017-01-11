@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 07/28/2015
 ms.author: rashimg
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 21f70dca7b4b5b2c55d043137c13565763ef03d3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5054865a4321bb5d2c188e485b033b16f49cb525
 
 
 ---
@@ -215,6 +215,6 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

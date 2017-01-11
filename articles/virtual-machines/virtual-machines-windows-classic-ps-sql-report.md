@@ -1,13 +1,13 @@
 ---
-title: ネイティブ モードのレポート サーバーを実行する VM を PowerShell を使用して作成する | Microsoft Docs
-description: 'このトピックでは、Azure 仮想マシンで SQL Server Reporting Services ネイティブ モードのレポート サーバーをデプロイおよび構成する手順について説明します。 '
+title: "ネイティブ モードのレポート サーバーを実行する VM を PowerShell を使用して作成する | Microsoft Docs"
+description: "このトピックでは、Azure 仮想マシンで SQL Server Reporting Services ネイティブ モードのレポート サーバーをデプロイおよび構成する手順について説明します。 "
 services: virtual-machines-windows
 documentationcenter: na
 author: guyinacube
 manager: erikre
 editor: monicar
 tags: azure-service-management
-
+ms.assetid: 553af55b-d02e-4e32-904c-682bfa20fa0f
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: f2912582bf4255bc24a64f996244948444f9ab93
+
 
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
 このトピックでは、Azure 仮想マシンで SQL Server Reporting Services ネイティブ モードのレポート サーバーをデプロイおよび構成する手順について説明します。 このドキュメントの手順では、仮想マシンを手動で作成する手順と、VM で Reporting Services を構成する Windows PowerShell スクリプトを組み合わせて使用しています。 構成スクリプトでは、HTTP または HTTPS のファイアウォール ポートを開きます。
 
@@ -33,13 +38,13 @@ ms.author: asaxton
 * **Azure サブスクリプション**: Azure サブスクリプションで使用できるコアの数を確認します。 推奨 VM サイズである **A3** で作成する場合は、使用可能なコアが **4 個**必要です。 VM サイズとして **A2** を使用する場合は、使用可能なコアが **2** 個必要です。
   
   * サブスクリプションのコアの上限を確認するには、Azure クラシック ポータルの左側のウィンドウで [設定] をクリックし、上部のメニューの [使用状況] をクリックします。
-  * コア クォータを増やすには、 [Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 VM サイズについては、「 [Azure の仮想マシンのサイズ](virtual-machines-linux-sizes.md)」をご覧ください。
+  * コア クォータを増やすには、 [Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 VM サイズについては、「 [Azure の仮想マシンのサイズ](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 * **Windows PowerShell スクリプト**: このトピックは、Windows PowerShell の使用方法に関する基本的な知識があることを前提としています。 Windows PowerShell の使用方法の詳細については、次のトピックをご覧ください。
   
   * [Starting Windows PowerShell on Windows Server (Windows Server での Windows PowerShell の起動)](https://technet.microsoft.com/library/hh847814.aspx)
   * [Getting Started with Windows PowerShell (Windows PowerShell の概要)](https://technet.microsoft.com/library/hh857337.aspx)
 
-## <a name="step-1:-provision-an-azure-virtual-machine"></a>手順 1: Azure 仮想マシンをプロビジョニングする
+## <a name="step-1-provision-an-azure-virtual-machine"></a>手順 1: Azure 仮想マシンをプロビジョニングする
 1. Azure クラシック ポータルに移動します。
 2. 左側のウィンドウで、 **[Virtual Machines]** をクリックします。
    
@@ -74,13 +79,13 @@ ms.author: asaxton
    * **[エンドポイント]**: **[リモート デスクトップ]** エンドポイントと **[PowerShell]** エンドポイントを保持し、環境に応じて HTTP または HTTPS エンドポイントを追加します。
      
      * **[HTTP]**: 既定のパブリック ポートとプライベート ポートは **80** です。 80 以外のプライベート ポートを使用する場合は、HTTP スクリプトの **$HTTPport = 80** を変更します。
-     * **[HTTPS]**: 既定のパブリック ポートとプライベート ポートは **443** です。 セキュリティのベスト プラクティスとして、プライベート ポートを変更し、そのプライベート ポートを使用するようにファイアウォールとレポート サーバーを構成することをお勧めします。 エンドポイントの詳細については、「 [仮想マシンに対してエンドポイントを設定する方法](virtual-machines-windows-classic-setup-endpoints.md)」をご覧ください。 443 以外のポートを使用する場合は、HTTPS スクリプトの **$HTTPsport = 443** パラメーターを変更します。
+     * **[HTTPS]**: 既定のパブリック ポートとプライベート ポートは **443** です。 セキュリティのベスト プラクティスとして、プライベート ポートを変更し、そのプライベート ポートを使用するようにファイアウォールとレポート サーバーを構成することをお勧めします。 エンドポイントの詳細については、「 [仮想マシンに対してエンドポイントを設定する方法](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。 443 以外のポートを使用する場合は、HTTPS スクリプトの **$HTTPsport = 443** パラメーターを変更します。
    * [次へ] をクリックします。 ![[次へ]](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. ウィザードの最後のページでは、既定の **[VM エージェントのインストール]** が選択されている状態のままにしておきます。 このトピックの手順では、VM エージェントを使用しませんが、この VM を保持する場合は、VM エージェントと拡張機能により CM を機能強化することができます。  VM エージェントの詳細については、「[VM エージェントと拡張機能 - パート 1](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/)」をご覧ください。 インストールされ、実行されている既定の拡張機能の 1 つに "BGINFO" 拡張機能があります。この機能により、内部 IP やドライブの空き領域などのシステム情報が VM デスクトップに表示されます。
 9. [完了] をクリックします。 ![Ok](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. プロビジョニング処理の実行中、VM の **[状態]** に **[開始中 (プロビジョニング)]** と表示されます。VM がプロビジョニングされ、使用準備が完了すると、**[実行中]** と表示されます。
 
-## <a name="step-2:-create-a-server-certificate"></a>手順 2: サーバー証明書を作成する
+## <a name="step-2-create-a-server-certificate"></a>手順 2: サーバー証明書を作成する
 > [!NOTE]
 > レポート サーバーで HTTPS を使用する必要がない場合は、**手順 2 をスキップ**し、「**スクリプトを使用してレポート サーバーと HTTP を構成する**」に進んでください。 HTTP スクリプトを使用すると、レポート サーバーが迅速に構成され、レポート サーバーの使用準備が完了します。
 > 
@@ -91,7 +96,7 @@ VM で HTTPS を使用するには、信頼済み SSL 証明書が必要です�
 * 証明機関 (CA) が発行し、Microsoft が信頼する有効な SSL 証明書。 CA ルート証明書が Microsoft ルート証明書プログラムによって配布されている必要があります。 このプログラムの詳細については、「[Windows and Windows Phone 8 SSL Root Certificate Program (Member CAs)](http://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx)」 (Windows および Windows Phone 8 SSL ルート証明書プログラム (メンバー CA))、および「[Introduction to The Microsoft Root Certificate Program](http://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx)」 (Microsoft ルート証明書プログラムの概要) を参照してください。
 * 自己署名証明書。 運用環境では、自己署名証明書を使用しないことをお勧めします。
 
-### <a name="to-use-a-certificate-created-by-a-trusted-certificate-authority-(ca)"></a>信頼された証明機関 (CA) によって作成された証明書を使用するには
+### <a name="to-use-a-certificate-created-by-a-trusted-certificate-authority-ca"></a>信頼された証明機関 (CA) によって作成された証明書を使用するには
 1. **証明機関に Web サイトのサーバー証明書を要求します**。 
    
     Web サーバー証明書ウィザードを使用して、証明機関に送信する証明書要求ファイル (Certreq.txt) を生成することも、オンライン証明機関  (Windows Server 2012 の Microsoft 証明書サービスなど) への要求を生成することもできます。 サーバー証明書が提供する ID 保証レベルに応じて、証明機関によって要求が承認され、証明書ファイルが送られてくるまで数日から数か月かかります。 
@@ -140,7 +145,7 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
 
 自己署名 SSL 証明書を使用している場合は、証明書の名前が VM のホスト名と既に一致しています。 したがって、マシンの DNS は既にグローバルに登録されており、どのクライアントからでもアクセスできます。
 
-## <a name="step-3:-configure-the-report-server"></a>手順 3: レポート サーバーを構成する
+## <a name="step-3-configure-the-report-server"></a>手順 3: レポート サーバーを構成する
 ここでは、Reporting Services ネイティブ モードのレポート サーバーとして VM を構成する手順を説明します。 レポート サーバーは、次のいずれかの方法を使用して構成できます。
 
 * スクリプトを使用してレポート サーバーを構成する
@@ -519,7 +524,7 @@ Windows PowerShell を使用してレポート サーバーを構成するには
 8. 左側のウィンドウで、 **[レポート マネージャー URL]**をクリックします。 **[仮想ディレクトリ]** を既定の **[Reports]** のままにし、**[適用]** をクリックします。
 9. **[終了]** をクリックして、Reporting Services 構成マネージャーを閉じます。
 
-## <a name="step-4:-open-windows-firewall-port"></a>手順 4: Windows ファイアウォール ポートを開く
+## <a name="step-4-open-windows-firewall-port"></a>手順 4: Windows ファイアウォール ポートを開く
 > [!NOTE]
 > いずれかのスクリプトを使用してレポート サーバーを構成した場合は、このセクションをスキップしてかまいません。 スクリプトにファイアウォール ポートを開く手順が含まれていました。 既定のポートは、HTTP では 80、HTTPS では 443 です。
 > 
@@ -601,15 +606,18 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 ### <a name="resources"></a>リソース
 * SQL Server Business Intelligence と SharePoint 2013 のシングル サーバー デプロイに関する類似コンテンツについては、「 [Use Windows PowerShell to Create an Azure VM With SQL Server BI and SharePoint 2013 (SQL Server BI と SharePoint 2013 を実行する Azure VM を Windows PowerShell を使用して作成する)](https://msdn.microsoft.com/library/azure/dn385843.aspx)」をご覧ください。
 * SQL Server Business Intelligence と SharePoint 2013 のマルチサーバー デプロイに関する類似コンテンツについては、「 [Deploy SQL Server Business Intelligence in Azure Virtual Machines (Azure Virtual Machines の SQL Server Business Intelligence のデプロイ)](https://msdn.microsoft.com/library/dn321998.aspx)」をご覧ください。
-* Azure Virtual Machines の SQL Server Business Intelligence のデプロイに関する一般情報については、「 [SQL Server Business Intelligence in Azure Virtual Machines (Azure Virtual Machines の SQL Server Business Intelligence)](virtual-machines-windows-classic-ps-sql-bi.md)」をご覧ください。
+* Azure Virtual Machines の SQL Server Business Intelligence のデプロイに関する一般情報については、「 [SQL Server Business Intelligence in Azure Virtual Machines (Azure Virtual Machines の SQL Server Business Intelligence)](virtual-machines-windows-classic-ps-sql-bi.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
 * Azure Compute のコストの詳細については、「 [Azure 価格計算ツール](https://azure.microsoft.com/pricing/calculator/?scenario=virtual-machines)」の [Virtual Machines] タブをご覧ください。
 
 ### <a name="community-content"></a>コミュニティ コンテンツ
 * スクリプトを使用せずに Reporting Services ネイティブ モードのレポート サーバーを作成する方法の詳しい手順については、「 [Hosting SQL Reporting Service on Azure Virtual Machine (Azure Virtual Machine での SQL Reporting Services のホスト)](http://adititechnologiesblog.blogspot.in/2012/07/hosting-sql-reporting-service-on-azure.html)」をご覧ください。
 
 ### <a name="links-to-other-resources-for-sql-server-in-azure-vms"></a>Azure VM の SQL Server に関するその他のリソースへのリンク
-[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)
+[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO1-->
 
 

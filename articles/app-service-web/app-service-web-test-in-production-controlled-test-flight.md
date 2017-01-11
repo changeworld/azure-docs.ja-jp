@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/02/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 1a95c3589d5843635667007aaca8209eeae894c2
-ms.openlocfilehash: 4c5b76ec652035e8357765de87cb240e94b59a56
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 705d548661fd0a33a077aab563af415d959b6ebf
 
 
 ---
@@ -53,8 +53,8 @@ ms.openlocfilehash: 4c5b76ec652035e8357765de87cb240e94b59a56
 > [!NOTE]
 > このチュートリアルを完了するには、Azure アカウントが必要です。
 >
-> * 無料で [Azure アカウントを開く](/pricing/free-trial/)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
-> * [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/) こともできます - Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
+> * 無料で [Azure アカウントを開く](https://azure.microsoft.com/pricing/free-trial/)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
+> * [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) こともできます - Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 >
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 >
@@ -354,11 +354,11 @@ Azure App Service を使用すると、中小規模の企業が顧客向けの�
 * [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
 * [JSONLint - JSON Validator に関するページ](http://jsonlint.com/)
 * [Git のブランチ機能 - 基本的なブランチとマージに関するページ](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
-* [Azure PowerShell](../powershell-install-configure.md)
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 * [Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

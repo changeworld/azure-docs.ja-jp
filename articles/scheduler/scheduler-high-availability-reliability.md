@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/16/2016
 ms.author: deli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f8c8f7e2b6655ae2bf6bd53f17b55aa708182f5c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 7e7fe49de7814b6058468d630f8638720e5864f3
 
 
 ---
@@ -82,6 +82,6 @@ Azure Scheduler ジョブの対象のエンドポイントにアクセスでき�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

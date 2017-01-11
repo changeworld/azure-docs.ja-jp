@@ -16,17 +16,16 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8f32ad29c105c3713b8e3138914f8fc1a781cd75
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 954e971878f8ece5d67247e65f11ff9242f9f621
 
 
 ---
 # <a name="how-to-set-up-tomcat7-on-a-linux-virtual-machine-with-microsoft-azure"></a>Microsoft Azure で Linux 仮想マシンに Tomcat7 を設定する方法
 Apache Tomcat (または単に Tomcat、以前は Jakarta Tomcat) は Apache Software Foundation (ASF) によって開発されたオープン ソース Web サーバーであり、サーブレット コンテナーです。 Tomcat は、Sun Microsystems の Java Servlet および JavaServer Pages (JSP) 仕様を実装し、純粋な Java HTTP Web サーバー環境を提供して Java コードを実行します。 最も単純な構成では Tomcat は単一のオペレーティング システムのプロセスで実行されます。 このプロセスは、Java 仮想マシン (JVM) を実行します。 ブラウザーからの Tomcat に対するすべての HTTP 要求は、Tomcat プロセスで個別のスレッドとして処理されます。  
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-Open JDK と Tomcat を使用して Ubuntu VM をデプロイするための Resource Manager テンプレートについては、[こちら](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/)を参照してください。
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Open JDK と Tomcat を使用して Ubuntu VM をデプロイするための Resource Manager テンプレートについては、[こちら](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/)を参照してください。
 
 このガイドでは、Linux イメージ上に Tomcat7 をインストールして Microsoft Azure にデプロイすることができます。  
 
@@ -128,9 +127,8 @@ SSH ツールを選択すると、仮想マシンに接続できます。 この
 ### <a name="java-runtime-environment"></a>Java ランタイム環境
 Tomcat は Java で記述します。 Java 開発キットには 2 種類 (JDK と、OpenJDK および Oracle JDK) があり、必要なものを選択できます。  
 
-> AZURE.NOTE: どちらの JDK も Java API のクラスにほぼ同じコードを持っていますが、仮想マシンのコードは実際には異なります。 ライブラリに関しては、Oracle が閉じているライブラリを使用する傾向がある一方で、OpenJDK は開いているライブラリを使用する傾向があります。 Oracle JDK はより多くのクラスを持ち、いくつかのバグを修正していて、OpenJDK よりも安定しています。
-> 
-> 
+> [!NOTE] 
+> どちらの JDK も Java API のクラスにほぼ同じコードを持っていますが、仮想マシンのコードは実際には異なります。 ライブラリに関しては、Oracle が閉じているライブラリを使用する傾向がある一方で、OpenJDK は開いているライブラリを使用する傾向があります。 Oracle JDK はより多くのクラスを持ち、いくつかのバグを修正していて、OpenJDK よりも安定しています。
 
 次のコマンドで、さまざまな JDK をダウンロードします。  
 
@@ -211,9 +209,8 @@ Tomcat サービスを再起動するには:
 たとえば次のようになります。  
 ![][17]  
 
-> AZURE.NOTE: admin ユーザー名の強力なパスワードを作成してください。  
-> 
-> 
+> [!NOTE] 
+> admin ユーザー名の強力なパスワードを作成します。  
 
 このファイルの編集後に、次のコマンドで Tomcat7 サービスを再起動し、変更が有効になっていることを確認する必要があります。  
 
@@ -313,6 +310,6 @@ Tomcat サービスを再起動するには:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

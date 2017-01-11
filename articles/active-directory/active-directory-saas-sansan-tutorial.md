@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2533338698478a4d9aa07aace93c9bbecb0b3350
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a21fb8c22b5c429fc768e128162836275ff18bf1
 
 
 ---
@@ -124,15 +124,15 @@ SanSan で Microsoft Azure AD のシングル サインオンを構成してテ�
     | モバイル ブラウザーの設定 | `https://ap.sansan.com/s/saml2/<company name>` |
 
 
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 
 1. **[SanSan でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. **[次へ]** をクリックします。
+    b. **[次へ]**をクリックします。
 2. アプリケーション用に構成された SSO を入手するには、SanSan のサポート チームに問い合わせてください。SSO 構成のサポートを受けられます。 次のものを情報として提供してください。
    
    • ダウンロードした **証明書**
@@ -263,6 +263,6 @@ SanSan で Microsoft Azure AD のシングル サインオンを構成してテ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

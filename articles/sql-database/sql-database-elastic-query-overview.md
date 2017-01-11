@@ -7,6 +7,7 @@ manager: jhubbard
 author: torsteng
 ms.assetid: a8bf0e2c-bc74-44d0-9b1e-bcc9a6aa2e33
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,8 +15,8 @@ ms.topic: article
 ms.date: 04/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b86649db4afb6208212647c4858fe25ed2398170
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 06d1d0e4b72a50c093aaa1337b518a9f11ffbaa0
 
 
 ---
@@ -67,7 +68,7 @@ T-SQL で Azure SQL Database 間の完全なクエリを実行します。 こ�
 > 
 
 ## <a name="elastic-database-query-topologies"></a>エラスティック データベース クエリのトポロジ
-### <a name="topology-1-vertical-partitioning-cross-database-queries"></a>トポロジ 1: 列方向のパーティション分割 – データベース間クエリ
+### <a name="topology-1-vertical-partitioning--cross-database-queries"></a>トポロジ 1: 列方向のパーティション分割 – データベース間クエリ
 コード作成を開始するには、 [データベース間クエリの概要 (列方向のパーティション分割)](sql-database-elastic-query-getting-started-vertical.md)に関するページを参照してください。
 
 エラスティック クエリを使用すると、SQLDB データベースにあるデータを他の SQLDB データベースで利用できます。 これにより、あるデータベースに対するクエリで他のリモート SQLDB データベース内のテーブルを参照することができます。 まず、各リモート データベースの外部データ ソースを定義します。 外部データ ソースは、リモート データベース上にあるテーブルにアクセスするローカル データベースに定義します。 リモート データベースに変更を加える必要はありません。 スキーマがデータベースごとに異なる一般的な列方向のパーティション分割シナリオでは、エラスティック クエリを使用して、参照データへのアクセスや、データベース間クエリなどの一般的なユース ケースを実装できます。
@@ -84,7 +85,7 @@ T-SQL で Azure SQL Database 間の完全なクエリを実行します。 こ�
 
 ![ 列方向のパーティション分割 - エラスティック クエリを使用して複数のデータベースにまたがって照会する][4]
 
-### <a name="topology-2-horizontal-partitioning-sharding"></a>トポロジ 2: 行方向のパーティション分割 - シャーディング
+### <a name="topology-2-horizontal-partitioning--sharding"></a>トポロジ 2: 行方向のパーティション分割 - シャーディング
 エラスティック クエリを使用してシャーディングされた (行方向にパーティション分割された) データ層に対してレポート タスクを実行するには、データ層のデータベースを表す [エラスティック データベース シャード マップ](sql-database-elastic-scale-shard-map-management.md) が必要です。 一般に、このシナリオではシャード マップが 1 つだけ使用され、エラスティック クエリ機能を備えた専用のデータベースがレポート クエリのエントリ ポイントとして機能します。 シャード マップにアクセスする必要があるのは、この専用のデータベースのみです。 図 4 に、このトポロジと、エラスティック クエリ データベースおよびシャード マップを使用した構成を示します。 データ層では、Azure SQL Database の任意のバージョンまたはエディションのデータベースを使用できます。 エラスティック データベース クライアント ライブラリの概要とシャード マップの作成方法の詳細については、「 [シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)」を参照してください。
 
 **図 4** 行方向のパーティション分割: シャーディングされたデータ層に対してエラスティック クエリを使用する
@@ -173,6 +174,6 @@ DDL ステートメントを実行すると、ローカル テーブルである
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

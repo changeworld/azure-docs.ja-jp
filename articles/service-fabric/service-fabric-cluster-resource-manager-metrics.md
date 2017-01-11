@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 08/19/2016
 ms.author: masnider
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1a409c3edbf6abc59c94685de37b98a043ff4acf
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ad2588b75e41da25e5c76855849f0086ed3aa14f
 
 
 ---
@@ -208,6 +208,6 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
