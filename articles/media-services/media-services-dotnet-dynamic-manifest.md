@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: juliako;cenkdin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3fb58dc98d7e9b943116760a401a4118df3e7424
+ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
+ms.openlocfilehash: 76ad2de236c4691523db9a897d99312b721b48d2
 
 
 ---
@@ -125,11 +125,6 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
 
 
-**HDS**
-
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f, filter=MyFilter)
-
-
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -142,6 +137,6 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

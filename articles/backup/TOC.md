@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure Backup とは](backup-introduction-to-azure-backup.md)
 # 作業開始
 ## [ファイルとフォルダーのバックアップ](backup-try-azure-backup-in-10-mins.md)
@@ -53,8 +53,8 @@
 ### [Azure Backup でファイルとフォルダーのバックアップが遅い](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup)
-## [.NET](/dotnet/api/microsoft.azure.management.backupservices)
+## [PowerShell](/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/azurerm.recoveryservices.backup)
+## [.NET](/dotnet/api/microsoft.azure.management.recoveryservices.backup)
 
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/backup/)
@@ -63,6 +63,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=backup)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

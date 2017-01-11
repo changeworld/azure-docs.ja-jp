@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 23e9c07934b0f4e74fa365de4c13fb978c8b6b84
-ms.openlocfilehash: b8268775b09c6b8b50f3f7e089b239240e95c516
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: c9f8493eb39f0c519825cdaa1c06bbb24b0f478f
 
 ---
 # <a name="mobile-engagement-documentation"></a>Mobile Engagement のドキュメント
@@ -29,7 +29,7 @@ Azure Mobile Engagement は、サービスとしてのソフトウェア (SaaS) 
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=mobile-engagement">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=mobile-engagement">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -176,6 +176,24 @@ Azure Mobile Engagement は、サービスとしてのソフトウェア (SaaS) 
 
 ---
 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Engagement">.NET</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+---
+
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/mobile-engagement.pdf">
         <div class="img"></div>
@@ -187,6 +205,6 @@ Azure Mobile Engagement のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

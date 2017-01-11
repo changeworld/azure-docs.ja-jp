@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: e48fea077e09518ab5005518c8e8a413df458b93
-ms.openlocfilehash: a661fc1e3946709058e0d2f32122732ba8a32b41
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: acf8bdbd4938583f8259c30cb253ee33b4c971ad
 
 ---
 #<a name="batch-documentation"></a>Batch のドキュメント
@@ -112,34 +112,34 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
                 <div class="card">
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.batch/v2.3.0/azurerm.batch">PowerShell コマンドレット</a></p>
+                        <p><a href="/powershell/resourcemanager/azurerm.batch/v2.3.0/azurerm.batch">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>言語</h3>
-                        <p><a href="/dotnet/api/microsoft.azure.batch">.NET API</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.batch">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.azure.batch">Java</a></p>
                         <p><a href="http://azure.github.io/azure-sdk-for-node/azure-batch/latest.azure.batch">Node.js</a></p>
-                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch">Python SDK</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch">Python</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p><a href="/rest/api/batchservice">REST API</a></p>
+                        <p><a href="/rest/api/batchservice">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
             </div>

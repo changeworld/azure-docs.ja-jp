@@ -9,16 +9,16 @@ manager: jhubbard
 editor: 
 ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
-ms.custom: sharded databases pool
+ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 12/06/2016
+ms.date: 12/14/2016
 ms.author: CarlRabeler
 ms.workload: data-management
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 829229542c05477d427b15a9d862f414d9c730d6
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 2c0ee201e719c542cf801372e6a270a7b88598fb
 
 
 ---
@@ -37,24 +37,24 @@ SaaS アプリケーションの一般的なパターンは、シングル テ�
 >
 >
 
-SQL Database では、リソースの需要に対処するデータベースの能力の相対尺度は、単一のデータベースのデータベース トランザクション ユニット (DTU) とエラスティック プール内のエラスティック データベースの エラスティック DTU (eDTU) で表されます。 DTU と eDTU の詳細については、 [SQL Database の概要](sql-database-technical-overview.md) に関するページをご覧ください。
+SQL Database では、リソースの需要に対処するデータベースの能力の相対尺度は、スタンドアロン データベースのデータベース トランザクション ユニット (DTU) とエラスティック プール内のエラスティック データベースのエラスティック DTU (eDTU) で表されます。 DTU と eDTU の詳細については、 [SQL Database の概要](sql-database-technical-overview.md) に関するページをご覧ください。
 
-プールには、設定価格に合わせて、設定された eDTU 数が与えられます。 プール内で、個々のデータベースには、設定されたパラメーターの範囲内で自動的にスケーリングを行う柔軟性が与えられます。 データベースは負荷が大きい場合、eDTU の使用量を増やして需要に対応します。 負荷が小さい場合、データベースは eDTU の使用量を減らし、負荷がなくなると eDTU を使用しません。 Single Database ではなく、プール全体に対してリソースをプロビジョニングすることで、管理タスクの簡略化を実現します。 さらに、プールにかかる予算を予測することができます。
+プールには、設定価格に合わせて、設定された eDTU 数が与えられます。 プール内で、個々のデータベースには、設定されたパラメーターの範囲内で自動的にスケーリングを行う柔軟性が与えられます。 データベースは負荷が大きい場合、eDTU の使用量を増やして需要に対応します。 負荷が小さい場合、データベースは eDTU の使用量を減らし、負荷がなくなると eDTU を使用しません。 スタンドアロン データベースではなくプール全体に対してリソースをプロビジョニングすることで、管理タスクの簡略化を実現します。 さらに、プールにかかる予算を予測することができます。
 
 データベースを停止することなく、またはエラスティック プール内のデータベースに影響を及ぼすことなく、既存のプールに eDTU をさらに追加できます。 同様に、余分な eDTU が不要になった場合は、いつでも既存のプールから削除できます。
 
 プールへのデータベースの追加、またはプールからの削除ができます。 データベースのリソース使用率が低いと予測できる場合は、プールから削除します。
 
 ## <a name="which-databases-go-in-a-pool"></a>どのデータベースをプールに移動しますか?
-![エラスティック データベース プール内で eDTU を共有する SQL データベース][1]
+![エラスティック プール内で eDTU を共有する SQL データベース。][1]
 
-エラスティック プールの候補として最適であるデータベースには通常、決まった期間のアクティビティがあり、その他の期間はアイドル状態です。 上図は、1 つのデータベース、4 つのデータベース、20 のデータベースによるエラスティック プールのアクティビティをそれぞれ示しています。 これらのデータベースは時間の経過と共にさまざまなアクティビティを行いますが、同時にアクティブにならず、eDTU を共有できるため、エラスティック プールの候補として最適です。 すべてのデータベースが、このパターンに適合するわけではありません。 リソースに常に一定の負荷があるデータベースは、リソースが個別に割り当てられる Basic、Standard、Premium サービス階層に適しています。
+エラスティック プールの候補として最適であるデータベースには通常、決まった期間のアクティビティがあり、その他の期間はアイドル状態です。 上図は、1 つのスタンドアロン データベース、4 つのデータベース、20 のデータベースによるエラスティック プールのアクティビティをそれぞれ示しています。 これらのデータベースは時間の経過と共にさまざまなアクティビティを行いますが、同時にアクティブにならず、eDTU を共有できるため、エラスティック プールの候補として最適です。 すべてのデータベースが、このパターンに適合するわけではありません。 リソースに常に一定の負荷があるデータベースは、リソースが個別に割り当てられる Basic、Standard、Premium サービス階層に適しています。
 
 [エラスティック プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)。
 
 ## <a name="edtu-and-storage-limits-for-elastic-pools-and-elastic-databases"></a>エラスティック プールとエラスティック データベースの eDTU と記憶域の上限
 
-次の表では、Basic、Standard、および Premium のエラスティック データベース プールの特性について説明します。
+次の表では、Basic、Standard、および Premium のエラスティック プールの特性について説明します。
 
 [!INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
@@ -88,7 +88,7 @@ SQL Database では、リソースの需要に対処するデータベースの�
 その他のエラスティック データベース ツールの詳細については、「[Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
 ## <a name="business-continuity-features-for-databases-in-a-pool"></a>プール内のデータベースのビジネス継続性機能
-エラスティック データベースは、一般的に、V12 サーバーの単一のデータベースで使用できるのと同じ [ビジネス継続性機能](sql-database-business-continuity.md) をサポートしています。
+エラスティック データベースは、一般的に、スタンドアロン データベースで使用できるのと同じ[ビジネス継続性機能](sql-database-business-continuity.md)をサポートしています。
 
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 ポイントインタイム リストアは、自動データベース バックアップを使用して、プール内のデータベースを特定の時点に復元します。 「 [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)

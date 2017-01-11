@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 3273e748265fa23efadd010bb5f0bc9ce43223b6
-ms.openlocfilehash: dae331e93ab1682741a34758172d7c8cdb38aec5
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: 680083cd9df823bf0ff89a0b4099c411fa0be078
 
 ---
 # <a name="azure-search-documentation"></a>Azure Search のドキュメント
@@ -29,7 +29,7 @@ Azure Search は、強力な検索エクスペリエンスをカスタム アプ
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=search">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=search">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -120,69 +120,38 @@ Azure Search は、強力な検索エクスペリエンスをカスタム アプ
     </li>
 </ul>
 
-
 ---
 
-## <a name="reference"></a>リファレンス
-
+<h2>リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/dotnet/api/microsoft.azure.search">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>サービス .NET API</p>
-                    </div>
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.search">.NET</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.management.search">.NET 管理</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.search">Java</a></p>
+                   </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api/microsoft.azure.management.search">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>管理 .NET API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/rest/api/searchservice/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p>サービス REST API</p>
+                        <p><a href="/rest/api/searchservice">REST API リファレンスに関するページ</a></p>
+                        <p><a href="/rest/api/searchmanagement">REST (Management) API リファレンス</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-    <li>
-        <a href="/rest/api/searchmanagement/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST ()</h3>
-                        <p>管理 REST API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-<ul>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/search.pdf">
@@ -194,6 +163,6 @@ Azure Search のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

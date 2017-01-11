@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [API Management とは](api-management-key-concepts.md)
 # 作業開始
 ## [Azure API Management での最初の API の管理](api-management-get-started.md)
