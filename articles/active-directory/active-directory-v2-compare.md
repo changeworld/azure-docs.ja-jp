@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
 ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
@@ -113,7 +113,7 @@ v2.0 エンドポイントでは、アプリのよく知られた新しいアク
 
 OAuth 2.0、refresh_tokens、および access_tokens の詳細については、[v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)を参照してください。
 
-#### <a name="openid-profile-email"></a>OpenID、プロファイル、および電子メール
+#### <a name="openid-profile--email"></a>OpenID、プロファイル、および電子メール
 元の Azure Active Directory サービスでは、結果の id_token のユーザーに関する情報は、最も基本的な OpenID Connect サインイン フローで多数提供されていました。  id_token 内の要求には、ユーザー名、推奨ユーザー名、電子メール アドレス、オブジェクト ID などを含めることができます。
 
 今は、アプリで `openid` のスコープでアクセスできる情報が制限されるようになりました。  ‘openid’ スコープでは、ユーザーのサインインの許可と、ユーザーのアプリ固有の ID の受信のみをアプリに許可します。  アプリ内のユーザーの個人を特定できる情報 (PII) を取得するには、アプリからユーザーに追加のアクセス許可を要求する必要があります。  それを実行できる 2 つの新しいスコープ、`email` と `profile` スコープが導入されました。

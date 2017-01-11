@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/16/2016
+ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: baf71c579edbb087cc16a8291cf502f90f31a49c
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: db21b02535242485439f2914b5f9ab7ef5a90d5b
 
 
 ---
@@ -29,7 +29,7 @@ Azure Active Directory でのシングル サインオンをサポートする�
 各モードの要件は次のとおりです。
 
 ## <a name="openid-connect-integration"></a>OpenID Connect 統合
-アプリケーションを Azure AD と統合するには、 [開発者向けの手順](active-directory-authentication-scenarios.md)に従ってください。 また、次の情報を記載し、waadpartners@microsoft.com に送信してください。
+アプリケーションを Azure AD と統合するには、 [開発者向けの手順](active-directory-authentication-scenarios.md)に従ってください。 また、次の情報を記載し、 waadpartners@microsoft.com.
 
 * Azure AD チームが統合のテストに使用できるアプリケーションのテスト テナントまたはアカウントの資格情報を記載してください。  
 * [Azure AD Consent フレームワーク](active-directory-integrating-applications.md#overview-of-the-consent-framework)を使用して Azure AD チームがサインインし、Azure AD のインスタンスをアプリケーションに接続する手順を説明してください。 
@@ -97,6 +97,6 @@ SAML 2.0 をサポートするすべてのアプリケーションは、 [この
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Nov16_HO3-->
 
 

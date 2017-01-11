@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/06/2016
+ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
 ms.sourcegitcommit: dc74b712953a545608a3107388a761c9c7ba84cf

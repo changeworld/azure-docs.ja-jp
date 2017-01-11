@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -150,7 +150,7 @@ Android と Windows では、アカウント セレクターがアプリケー�
 3. 各アプリケーション用に同じキーチェーン エンタイトルメントを要求します。
 4. Microsoft Identity SDK に、使用することを希望する共有されたキーチェーンについて知らせます。
 
-#### <a name="using-the-same-client-id-application-id-for-all-the-applications-in-your-suite-of-apps"></a>アプリ スイートのすべてのアプリケーションで、同じクライアント ID/アプリケーション ID を使用する
+#### <a name="using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>アプリ スイートのすべてのアプリケーションで、同じクライアント ID/アプリケーション ID を使用する
 Microsoft Identity プラットフォームが複数のアプリケーションでのトークンの共有を許可されていることが判断できるように、各アプリケーションは同じクライアント ID またはアプリケーション ID を共有する必要があります。 これは、ポータルで最初のアプリケーションを登録したときに提供された一意の識別子です。
 
 各アプリが同じアプリケーション ID を使用しているのであれば、Microsoft Identity サービスはどのようにしてアプリケーションを識別できるのでしょうか。 答えは、 **リダイレクト URI**にあります。 各アプリケーションには、オンボード ポータルで、複数のリダイレクト URI を登録することができます。 スイートの各アプリは、異なるリダイレクト URI を持ちます。 次の例は、これがどのようになっているかを示しています。

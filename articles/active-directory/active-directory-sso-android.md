@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -150,7 +150,7 @@ Android と Windows では、アカウント セレクターがアプリケー�
 2. すべてのアプリケーションが同じ SharedUserID セットを持っていることを確認します。
 3. ストレージを共有できるように、すべてのアプリケーションが Google Play ストアの同じ署名証明書を共有していることを確認します。
 
-#### <a name="step-1-using-the-same-client-id-application-id-for-all-the-applications-in-your-suite-of-apps"></a>手順 1: アプリ スイートのすべてのアプリケーションで、同じクライアント ID/アプリケーション ID を使用する
+#### <a name="step-1-using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>手順 1: アプリ スイートのすべてのアプリケーションで、同じクライアント ID/アプリケーション ID を使用する
 Microsoft Identity プラットフォームが複数のアプリケーションでのトークンの共有を許可されていることが判断できるように、各アプリケーションは同じクライアント ID またはアプリケーション ID を共有する必要があります。 これは、ポータルで最初のアプリケーションを登録したときに提供された一意の識別子です。
 
 各アプリが同じアプリケーション ID を使用しているのであれば、Microsoft Identity サービスはどのようにしてアプリケーションを識別できるのでしょうか。 答えは、 **リダイレクト URI**にあります。 各アプリケーションには、オンボード ポータルで、複数のリダイレクト URI を登録することができます。 スイートの各アプリは、異なるリダイレクト URI を持ちます。 次の例は、これがどのようになっているかを示しています。
