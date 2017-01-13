@@ -12,7 +12,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2016
+ms.date: 01/12/2017
 ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
@@ -194,7 +194,7 @@ ms.openlocfilehash: 9f70fbaeef95edd6740d54be7650f39a17090bc5
 
     1. FIPS モードを有効にするには、次のコマンドレットを実行します。
 
-        `Enter-HcsFIPSMode`
+        `Enable-HcsFIPSMode`
     2. FIPS モードを有効にした後はデバイスを再起動して、暗号化の検証が有効になるようにします。
 
        > [!NOTE]

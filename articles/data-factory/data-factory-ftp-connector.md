@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 01/12/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
@@ -258,7 +258,7 @@ FTP サーバーとの間でデータをコピーするパイプラインを作�
 ```
 
 ### <a name="using-port-enablessl-enableservercertificatevalidation"></a>ポート、enableSsl、enableServerCertificateValidation を使用
- 
+
 ```JSON
 {
     "name": "FTPLinkedService",
@@ -278,7 +278,7 @@ FTP サーバーとの間でデータをコピーするパイプラインを作�
 ```
 
 ### <a name="using-encryptedcredential-for-authentication-and-gateway"></a>認証およびゲートウェイに encryptedCredential を使用
-    
+
 ```JSON
 {
     "name": "FTPLinkedService",
