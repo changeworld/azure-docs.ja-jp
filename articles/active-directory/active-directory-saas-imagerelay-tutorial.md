@@ -100,7 +100,7 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
 1. Azure クラシック ポータルの **Image Relay** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
      ![[シングル サインオンの構成]][6] 
-2. **[ユーザーの Image Relay へのアクセスを設定してください]** ページで、**[Azure AD Single Sign-On] (Azure AD のシングル サインオン)** を選択し、**[次へ]** をクリックします。
+2. **[ユーザーの Image Relay へのアクセスを設定してください]** ページで、**[Azure AD Single Sign-On] \(Azure AD のシングル サインオン)** を選択し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_03.png) 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
@@ -114,7 +114,7 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
 5. 別のブラウザー ウィンドウで、管理者として Image Relay 企業サイトにサインインします。
@@ -217,7 +217,7 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_08.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+    a. **[新しいパスワード]** の値を書き留めます。
    
     b. ページの下部にある **[完了]**」を参照してください。   
 

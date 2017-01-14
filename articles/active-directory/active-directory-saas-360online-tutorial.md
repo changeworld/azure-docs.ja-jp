@@ -101,7 +101,7 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
 1. Azure クラシック ポータルの **360 Online** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![[シングル サインオンの構成]][13] 
-2. **[ユーザーの 360 Online へのアクセスを設定してください]** ページで、**[Azure AD Single Sign-on] (Azure AD のシングル サインオン)** を選択し、**[次へ]** をクリックします。
+2. **[ユーザーの 360 Online へのアクセスを設定してください]** ページで、**[Azure AD Single Sign-on] \(Azure AD のシングル サインオン)** を選択し、**[次へ]** をクリックします。
    
     ![Configure Single Sign-On](./media/active-directory-saas-360online-tutorial/tutorial_360online_03.png) 
 3. **[アプリケーション URL の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
@@ -110,12 +110,12 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
    
     a. **[サインオン URL]** ボックスに、`https://<company name>.public360online.com` のパターンに従って、ユーザーが 360 Online アプリケーションへのサインオンに使用する URL を入力します。
    
-    b.  **[次へ]**
+    b. **[次へ]**
 4. **[アプリケーション URL の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-360online-tutorial/tutorial_360online_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
 5. お使いのアプリケーション用に構成された SSO を取得するために、ダウンロードしたメタデータ ファイルをメールに添付して、360 Online のサポート チーム ([360online@software-innovation.com](mailto:360online@software-innovation.com)) に問い合わせます。
@@ -147,7 +147,7 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-360online-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザーの種類]** として **[組織内の新しいユーザー]** を選択します。
+    a. **[ユーザーの種類]** として **[組織内の新しいユーザー]** を選択します。
    
     b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
    
@@ -173,7 +173,7 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-360online-tutorial/create_aaduser_08.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+    a. **[新しいパスワード]** の値を書き留めます。
    
     b. ページの下部にある **[完了]**」を参照してください。   
 
