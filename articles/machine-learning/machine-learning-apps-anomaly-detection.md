@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 10/11/2016
-ms.author: alokkirpal
+ms.author: alok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9b900e3febd3ba945250b52ff4b878f22eae33f3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cbcd469f39b42d741d73f9d96daf17d011b7ebc7
 
 
 ---
@@ -210,6 +210,6 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

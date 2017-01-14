@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 766fbfebe4a69efe5eac097d2cbc017bf4d74940
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e5f09fb3716303bb21fe7442aa6fa8832174838e
 
 
 ---
@@ -157,6 +157,6 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

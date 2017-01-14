@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: mcollier
 translationtype: Human Translation
-ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
-ms.openlocfilehash: 81564726dd03dbbb93629ebd296e288290d37778
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9a1114fb61990cf2c590a28bce97ff4b7a425ae5
 
 
 ---
@@ -30,7 +30,7 @@ Monitor API では、さまざまなメトリック データ ポイントを処
 ## <a name="authenticating-azure-monitor-requests"></a>Azure Monitor 要求の認証
 まず、要求を認証します。
 
-Azure Monitor API に対して実行されるすべてのタスクが、Azure Resource Manager 認証モデルを使用します。 したがって、すべての要求を Azure Active Directory (Azure AD) で認証する必要があります。 クライアント アプリケーションを認証する 1 つの方法が、Azure AD サービス プリンシパルを作成し、認証 (JWT) トークンを取得することです。 次のサンプル スクリプトは、PowerShell を使用して、Azure AD サービス プリンシパルを作成しています。 さらに詳細なチュートリアルについては、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../resource-group-authenticate-service-principal.md#create-service-principal-with-password)」のドキュメントを参照してください。 [Azure ポータルを使用してサービス プリンシパルを作成](../resource-group-create-service-principal-portal.md)することもできます。
+Azure Monitor API に対して実行されるすべてのタスクが、Azure Resource Manager 認証モデルを使用します。 したがって、すべての要求を Azure Active Directory (Azure AD) で認証する必要があります。 クライアント アプリケーションを認証する 1 つの方法が、Azure AD サービス プリンシパルを作成し、認証 (JWT) トークンを取得することです。 次のサンプル スクリプトは、PowerShell を使用して、Azure AD サービス プリンシパルを作成しています。 さらに詳細なチュートリアルについては、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-password)」のドキュメントを参照してください。 [Azure ポータルを使用してサービス プリンシパルを作成](../resource-group-create-service-principal-portal.md)することもできます。
 
 ```PowerShell
 $subscriptionId = "{azure-subscription-id}"
@@ -219,6 +219,6 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/provide
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

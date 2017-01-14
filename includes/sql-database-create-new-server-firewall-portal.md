@@ -10,7 +10,7 @@ articles/sql-database/sql-database-configure-firewall-settings
 articles/sql-data-warehouse-get-started-provision.md
 
 -->
-## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure Portal でサーバーレベルのファイアウォール規則を作成する
+### <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure Portal でサーバーレベルのファイアウォール規則を作成する
 
 1. [SQL Server] ブレードで、[設定] の下にある **[ファイアウォール]** をクリックして、SQL Server のファイアウォール ブレードを開きます。
 

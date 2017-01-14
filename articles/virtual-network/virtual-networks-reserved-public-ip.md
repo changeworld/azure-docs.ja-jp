@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 536cb4cd7975283dd61c8c4f2fe1a707a735504e
-ms.openlocfilehash: 9b55a6e994e94257fd506a9d759a820dcd5d84e3
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: 66c42ad7ba6339c7d3c537290f0b6349a16f20d8
 
 
 ---
@@ -57,7 +57,7 @@ Azure における IP アドレスの詳細については、[IP アドレス](v
 
 ## <a name="manage-reserved-vips"></a>予約済み VIP を管理する
 
-[PowerShell のインストールと構成](../powershell-install-configure.md)に関する記事の手順を実行して、PowerShell をインストールし、構成していることを確認します。 
+[PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関する記事の手順を実行して、PowerShell をインストールし、構成していることを確認します。 
 
 予約済み IP アドレスは、使用する前にサブスクリプションに追加する必要があります。 *米国中部*で使用できるパブリック IP アドレスのプールから予約済み IP を作成するには、次のコマンドを実行します。
 
@@ -168,6 +168,6 @@ Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestSer
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

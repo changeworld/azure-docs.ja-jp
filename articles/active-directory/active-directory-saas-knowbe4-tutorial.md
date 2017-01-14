@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 49767ad0e8fb9222c088217f1c349ed8a1d4f67e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1dfcc57a23a473bae9417496bfbe4c0c209de564
 
 
 ---
@@ -112,7 +112,7 @@ KnowBe4 で Azure AD のシングル サインオンを構成してテストす�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-knowbe4-tutorial/tutorial_knowbe4_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
 2. お使いのアプリケーション用に構成された SSO を取得するために、 [KnowBe4 のサポート チーム](mailto:support@knowbe4.com)に問い合わせます。 KnowBe4 チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (エンティティ ID、SSO サインイン URL、およびサインアウト URL) をチームと共有してください。
@@ -232,6 +232,6 @@ KnowBe4 で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

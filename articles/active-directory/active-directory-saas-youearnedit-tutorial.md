@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/07/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0965d6b12e556be60e25a8880432572ee3dceae7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 370f81a618da4605581b70443fd0cf3641185ca0
 
 
 ---
@@ -120,9 +120,9 @@ YouEarnedIt で Azure AD のシングル サインオンを構成してテスト
    
     ![Configure Single Sign-On](./media/active-directory-saas-youearnedit-tutorial/tutorial_youearnedit_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある **[次へ]**」を参照してください。
+    b. **[次へ]**をクリックします。
 5. アプリケーション用に構成された SSO を入手するには、YouEarnedIt サポート チームに連絡し、次のものを情報として提供してください。
    
     • ダウンロードした **証明書**
@@ -154,14 +154,14 @@ YouEarnedIt で Azure AD のシングル サインオンを構成してテスト
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-youearnedit-tutorial/create_aaduser_04.png) 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-youearnedit-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. ページの下部にある **[次へ]**」を参照してください。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-youearnedit-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a. **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -239,6 +239,6 @@ YouEarnedIt で Azure AD のシングル サインオンを構成してテスト
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

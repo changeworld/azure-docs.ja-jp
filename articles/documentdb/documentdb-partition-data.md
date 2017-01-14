@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/20/2016
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: e285ffa003cd2d946403cc3d657a851762b41adc
-ms.openlocfilehash: cadc0dcc313513bb3731018166d583c361a711bb
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1d65fbb7278adc014ba6a655385396ace87f568e
 
 
 ---
@@ -352,6 +352,6 @@ DocumentDB を使用したマルチテナント アプリケーションを実�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

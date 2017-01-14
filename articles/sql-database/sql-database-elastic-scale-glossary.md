@@ -8,6 +8,7 @@ author: ddove
 editor: 
 ms.assetid: a23a4e81-6706-452d-afc1-a550e5e47af9
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9a07ef9a2599f49a1cffa933920665e5c18e30e3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ebd5224caa41efe61bdea14b4570005880f4411c
 
 
 ---
@@ -37,7 +38,7 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 
 **ローカル シャード マップ**: ローカル シャード マップは、シャードに格納され、シャードに存在するシャードレットのマッピングを含みます。
 
-**マルチシャード クエリ**: 複数のシャードに対してクエリを発行する機能。結果セットは、UNION ALL セマンティクス (「ファンアウト クエリ」とも呼ばれます) を使用して返されます。  data dependent routingが含まれます。
+**マルチシャード クエリ**: 複数のシャードに対してクエリを発行する機能。結果セットは、UNION ALL セマンティクス (「ファンアウト クエリ」とも呼ばれます) を使用して返されます。  **data dependent routing**が含まれます。
 
 **マルチテナント**と**シングルテナント**: これは、シングルテナント データベースとマルチテナント データベースを示します。
 
@@ -94,6 +95,6 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

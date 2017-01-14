@@ -7,6 +7,7 @@ manager: jhubbard
 author: ddove
 ms.assetid: 0a546510-76e7-465e-9271-f15ff0cfa959
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3396bdbb907d3da1a80f77928566d8a144ba3241
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 44c2c181b1ca463c5d2bd92b77e4b92604964ba2
 
 
 ---
@@ -80,6 +81,6 @@ ms.openlocfilehash: 3396bdbb907d3da1a80f77928566d8a144ba3241
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

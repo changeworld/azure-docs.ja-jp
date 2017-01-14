@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c6cd93277aaf5abecefa842904e14c561f659205
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a5f4a164d7d0bfd3b574e94bb3d4a46cb91548df
 
 
 ---
@@ -118,7 +118,7 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある [次へ]」を参照してください。
+    b. **[次へ]**をクリックします。
 2. お使いのアプリケーション用に構成された SSO を取得するために、ダウンロードしたメタデータ ファイルを電子メールに添付して、Condesco のサポート チーム ( supportna@condecosoftware.com ) に問い合わせます。
 3. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
@@ -175,7 +175,7 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-a-condeco-test-user"></a>Condeco テスト ユーザーの作成
 このセクションの目的は、Condeco で Britta Simon というユーザーを作成することです。 Condeco では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
@@ -236,6 +236,6 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
