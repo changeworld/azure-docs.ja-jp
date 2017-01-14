@@ -16,15 +16,15 @@ ms.topic: hero-article
 ms.date: 07/05/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
+ms.sourcegitcommit: 84d3aa963f8538c0721f6c0a02cee5b8e7269770
+ms.openlocfilehash: 33433fb4e71ea6a88522c0bd50695d271fee1884
 
 
 ---
 # <a name="sending-push-notifications-to-android-with-azure-notification-hubs"></a>Azure Notification Hubs から Android へのプッシュ通知の送信
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 > [!IMPORTANT]
 > このトピックでは、Google Cloud Messaging (GCM) を使用したプッシュ通知について説明します。 Google の Firebase Cloud Messaging (FCM) を使用している場合は、 [Azure Notification Hubs と FCM を使用した Android へのプッシュ通知の送信](notification-hubs-android-push-notification-google-fcm-get-started.md)に関する記事を参照してください。
 > 
@@ -63,10 +63,10 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 ### <a name="create-a-new-android-project"></a>新しい Android プロジェクトを作成する
 1. Android Studio で新しい Android Studio プロジェクトを開始する
    
-       ![Android Studio - new project][13]
+     ![Android Studio - new project][13]
 2. **[Phone and Tablet (電話とタブレット)]** フォーム ファクターを選択し、サポートする **[Minimum SDK (最低限の SDK)]** を選択します。 その後、 **[次へ]**をクリックします。
    
-       ![Android Studio - project creation workflow][14]
+     ![Android Studio - project creation workflow][14]
 3. メイン アクティビティに **[Empty Activity (空のアクティビティ)]** を選択し、**[Next (次へ)]** をクリックして、**[Finish (完了)]** をクリックします。
 
 ### <a name="add-google-play-services-to-the-project"></a>プロジェクトへの Google Play Services の追加
@@ -660,10 +660,10 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 
 
 <!-- URLs. -->
-[Mobile Services でのプッシュ通知の使用]: ../mobile-services-javascript-backend-android-get-started-push.md  
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md  
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[ライブラリ プロジェクトの参照]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
+[Azure Classic Portal]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
@@ -671,6 +671,6 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
