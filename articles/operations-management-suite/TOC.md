@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Operations Management Suite とは](operations-management-suite-overview.md)
 ## [OMS アーキテクチャ](operations-management-suite-architecture.md)
 ## [管理ソリューション](operations-management-suite-solutions.md)
