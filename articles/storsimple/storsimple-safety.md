@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2016
+ms.date: 11/16/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7ab38d9fb438a5629e0a9c2388a2ce296ab7ba03
+ms.sourcegitcommit: aaef3322fc98b0874222e4a3728d54a38a34b602
+ms.openlocfilehash: 4dca50c6a0e6809876357edee8c6475796984c70
 
 
 ---
@@ -112,7 +112,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 けが、感電、または死亡事故を招く可能性を低減する方法
 
-* PCM からカバーを取り外さないでください。 内部で感電する危険性があります。 PCM を返却して交換品を受け取るには、 [Microsoft サポートに連絡](https://msdn.microsoft.com/library/azure/dn757750.aspx)してください。
+* PCM からカバーを取り外さないでください。 内部で感電する危険性があります。 PCM を返却して交換品を受け取るには、 [Microsoft サポートに連絡](storsimple-contact-microsoft-support.md)してください。
 
 ![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**
 

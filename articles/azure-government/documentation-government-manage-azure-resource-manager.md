@@ -14,15 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
 ms.date: 10/10/2016
-ms.author: brendalee
+ms.author: brendal
 translationtype: Human Translation
-ms.sourcegitcommit: 4febeb038f1007e1e20981d120debe4db1d7731a
-ms.openlocfilehash: dd511273e8ce3b9dd98b3d26534a9ddb7aee8ebf
+ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
+ms.openlocfilehash: 89aa44df74effec7da2eb008faf8f01dda0d27ca
 
 
 ---
 # <a name="azure-resource-manager"></a>Azure リソース マネージャー
-Resource Manager のプロバイダー、API のバージョン、およびスキーマの詳細については、[こちら](../resource-manager-supported-services.md)を参照してください。 次の表では、Azure Government の Resource Manager でサポートされているサービスを一覧表示しています。
+Resource Manager のプロバイダー、API のバージョン、およびスキーマの詳細については、[こちら](../azure-resource-manager/resource-manager-supported-services.md)を参照してください。 次の表では、Azure Government の Resource Manager でサポートされているサービスを一覧表示しています。
 
 ## <a name="compute"></a>計算
 | サービス | リソース マネージャーが有効 |
@@ -46,7 +46,7 @@ Resource Manager のプロバイダー、API のバージョン、およびス�
 | Virtual Networks |はい |
 | VPN Gateway |はい |
 
-## <a name="data-storage"></a>データ + ストレージ
+## <a name="data--storage"></a>データ + ストレージ
 | サービス | リソース マネージャーが有効 |
 | --- | --- |
 | DocumentDB |なし |
@@ -57,7 +57,7 @@ Resource Manager のプロバイダー、API のバージョン、およびス�
 | SQL Data Warehouse |はい |
 | StorSimple |なし |
 
-## <a name="web-mobile"></a>Web とモバイル
+## <a name="web--mobile"></a>Web とモバイル
 | サービス | リソース マネージャーが有効 |
 | --- | --- |
 | API Apps |○ |
@@ -90,7 +90,7 @@ Resource Manager のプロバイダー、API のバージョン、およびス�
 | IoTHubs |いいえ |
 | Notification Hubs |なし |
 
-## <a name="media-cdn"></a>メディアと CDN
+## <a name="media--cdn"></a>メディアと CDN
 | サービス | リソース マネージャーが有効 |
 | --- | --- |
 | CDN |なし |
@@ -132,6 +132,6 @@ Resource Manager のプロバイダー、API のバージョン、およびス�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

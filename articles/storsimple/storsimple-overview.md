@@ -15,13 +15,13 @@ ms.workload: TBD
 ms.date: 10/05/2016
 ms.author: v-sharos@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 96779fef9604a12609c53561e2591dfded3ef616
+ms.sourcegitcommit: aaef3322fc98b0874222e4a3728d54a38a34b602
+ms.openlocfilehash: 34b09279785d87f75d16e3baf320ffb66cf9b682
 
 
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Microsoft Azure StorSimple へようこそ。StorSimple は、オンプレミスのデバイスと Microsoft Azure クラウド ストレージとの間で実行されるストレージ タスクを管理する統合ストレージ ソリューションです。 StorSimple は、企業のストレージとデータ保護に伴う多くの問題を解消し、費用を削減する、効率と経済性、管理性に優れた記憶域ネットワーク (SAN) ソリューションです。 クラウド サービスと連携し、独自開発の StorSimple 8000 シリーズ デバイス、管理ツールを使用して、クラウド ストレージを含め、企業が保有するすべてのストレージをシームレスに表示します。 (Microsoft Azure の Web サイトで発行されている StorSimple のデプロイメントに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。 StorSimple 5000/7000 シリーズ デバイスをご利用の場合、[StorSimple ヘルプ](http://onlinehelp.storsimple.com/)にお進みください。)
 
 StorSimple では、 [ストレージ階層化](#automatic-storage-tiering) を使用し、さまざまなストレージ メディアに格納されているデータを管理します。 現在作業中のセットはオンプレミスのソリッド ステート ドライブ (SSD) へ、あまり頻繁に使用しないデータはハード ディスク ドライブ (HDD) へ格納され、アーカイブ化したデータはクラウドへプッシュされます。 また、StorSimple 圧縮を使用して、データが消費するストレージの量を削減します。 詳細については、「 [重複除去と圧縮](#deduplication-and-compression)」を参照してください。 StorSimple 8000 シリーズの文書で使用されている他の用語と概念の定義については、本記事の終わりに収録されている「 [StorSimple 用語集](#storsimple-terminology) 」を参照してください。
@@ -133,7 +133,7 @@ StorSimple 用 Windows PowerShell には、(デバイスに直接接続されて
 詳細については、「 [Windows PowerShell for StorSimple を使用してデバイスを管理する](storsimple-windows-powershell-administration.md)」を参照してください。
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>StorSimple 用 Azure PowerShell コマンドレット
-StorSimple 用 Azure PowerShell コマンドレットは、コマンド ラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。 StorSimple 用の Azure PowerShell コマンドレットの詳細については、「 [コマンドレット リファレンス](https://msdn.microsoft.com/library/dn920427.aspx)」を参照してください。
+StorSimple 用 Azure PowerShell コマンドレットは、コマンド ラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。 StorSimple 用の Azure PowerShell コマンドレットの詳細については、「 [コマンドレット リファレンス](https://docs.microsoft.com/powershell/servicemanagement/azure.storsimple/v3.1.0/azure.storsimple)」を参照してください。
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 StorSimple Snapshot Manager は、ローカル データとクラウド データについて、一貫性のある特定の時点のバックアップ コピーを作成するために使用できる Microsoft 管理コンソール (MMC) スナップインです。 スナップインは、Windows Server ベースのホストで動作します。 StorSimple Snapshot Manager には、次の機能があります。
