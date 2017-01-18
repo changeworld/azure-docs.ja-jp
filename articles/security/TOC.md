@@ -51,6 +51,6 @@
 ## [Channel 9 で配信中のセキュリティに関するビデオ](security-channel-nine.md)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

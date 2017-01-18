@@ -158,6 +158,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=app-service) 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

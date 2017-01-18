@@ -157,6 +157,6 @@ Microsoft patterns & practices チームは、Azure Customer Advisory Team の�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

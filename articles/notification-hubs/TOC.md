@@ -71,6 +71,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=notification-hubs)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

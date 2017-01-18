@@ -27,6 +27,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 
