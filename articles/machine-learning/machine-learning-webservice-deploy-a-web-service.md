@@ -1,23 +1,27 @@
 ---
-title: 新しい Web サービスのデプロイ
-description: ARM ベースの Web サービスをデプロイするワークフロー
+title: "新しい Web サービスのデプロイ"
+description: "ARM ベースの Web サービスをデプロイするワークフロー"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: vDonGlover
 manager: raymondl
-editor: ''
-
+editor: 
+ms.assetid: a358b04f-0d08-4d50-820e-eeac971854cf
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/11/2017
 ms.author: v-donglo
+translationtype: Human Translation
+ms.sourcegitcommit: 201b07536bcee58e2b7102379dff1c1c93c4b675
+ms.openlocfilehash: 70db87762757c42790047362ded24263157e6ae7
+
 
 ---
 # <a name="deploy-a-new-web-service"></a>新しい Web サービスのデプロイ
-Microsoft Azure Machine Learning で、新しい課金プラン オプションが可能で Web サービスを複数のリージョンにデプロイできる [Azure Resource Manager](../resource-group-overview.md) に基づく Web サービスが提供されるようになりました。
+Microsoft Azure Machine Learning で、新しい課金プラン オプションが可能で Web サービスを複数のリージョンにデプロイできる [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) に基づく Web サービスが提供されるようになりました。
 
 Microsoft Azure Machine Learning Web サービスを使用して Web サービスをデプロイする一般的なワークフローは次のとおりです。
 
@@ -37,7 +41,7 @@ Microsoft Azure Machine Learning Web サービスを使用して Web サービ�
 
 **注**: 従来の Web サービスとして実験を既にデプロイしている場合は、新しい Web サービスとしてデプロイすることはできません。
 
-実験キャンバスの下部にある **[実行]** をクリックし、**[Web サービスのデプロイ]** と **[Deploy Web Service [New](Web サービスのデプロイ \[新規\].md)]** をクリックします。 Machine Learning Web サービス マネージャの [デプロイ] ページが開きます。
+実験キャンバスの下部にある **[実行]** をクリックし、**[Web サービスのデプロイ]** と **[Deploy Web Service [New](Web サービスのデプロイ [新規])]** をクリックします。 Machine Learning Web サービス マネージャの [デプロイ] ページが開きます。
 
 ## <a name="machine-learning-web-service-manager-deploy-experiment-page"></a>Machine Learning Web サービス マネージャの [Deploy Experiment (実験のデプロイ)] ページ
 [Deploy Experiment (実験のデプロイ]) ページで、Web サービスの名前を入力します。
@@ -99,6 +103,6 @@ Web サービスの使用方法の詳細については、以下を参照して�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

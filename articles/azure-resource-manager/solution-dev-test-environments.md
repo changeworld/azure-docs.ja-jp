@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/22/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: e5a090acb88db0139ad1cea627060e5076ece1b4
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 01a554815a48cf1b81037eaa2f55bc4f07838721
 
 
 ---
@@ -235,7 +235,7 @@ CLI のコマンドラインから次のコマンドを入力し、開発環境�
     data:    requestedServiceObjectiveName  String        S0
     info:    group deployment create command OKx
 
-成功しなかった場合は、すべてのエラー メッセージを解決して、再度実行してください。  よくある問題として、Azure リソースの名前付けに関する制約に準拠していないパラメーター値の使用があります。 「 [Azure でのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-cli.md) 」に、その他のトラブルシューティング ヒントが記載されています。
+成功しなかった場合は、すべてのエラー メッセージを解決して、再度実行してください。  よくある問題として、Azure リソースの名前付けに関する制約に準拠していないパラメーター値の使用があります。 「 [Azure でのリソース グループのデプロイのトラブルシューティング](resource-manager-common-deployment-errors.md) 」に、その他のトラブルシューティング ヒントが記載されています。
 
 CLI のコマンドラインから次のコマンドを入力し、テスト環境用に作成したリソース グループにリソースをデプロイします。コマンド内の [path] は、前の手順で保存したファイルへのパスに置き換えてください。
 
@@ -278,7 +278,7 @@ Azure PowerShell (バージョン 1.01 以降) のコマンド プロンプト�
 
     Outputs           :
 
-  成功しなかった場合は、すべてのエラー メッセージを解決して、再度実行してください。  よくある問題として、Azure リソースの名前付けに関する制約に準拠していないパラメーター値の使用があります。 「 [Azure でのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-powershell.md) 」に、その他のトラブルシューティング ヒントが記載されています。
+  成功しなかった場合は、すべてのエラー メッセージを解決して、再度実行してください。  よくある問題として、Azure リソースの名前付けに関する制約に準拠していないパラメーター値の使用があります。 「 [Azure でのリソース グループのデプロイのトラブルシューティング](resource-manager-common-deployment-errors.md) 」に、その他のトラブルシューティング ヒントが記載されています。
 
   PowerShell のコマンド プロンプトから次のコマンドを入力し、テスト環境用に作成したリソース グループにリソースをデプロイします。コマンド内の [path] は、前の手順で保存したファイルへのパスに置き換えてください。
 
@@ -364,6 +364,6 @@ Azure PowerShell (バージョン 1.01 以降) のコマンド プロンプト�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

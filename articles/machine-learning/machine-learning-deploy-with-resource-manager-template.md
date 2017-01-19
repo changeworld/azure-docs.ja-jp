@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: ahgyger
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 72ec470c5539ad2e239836aa91d7afe43341b19a
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: e0a06c070159a87932cda4b31d9363e54c008a35
 
 
 ---
@@ -139,7 +139,7 @@ Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |
 ワークスペースをプロビジョニングしたら、 [Azure Machine Learning の PowerShell モジュール](http://aka.ms/amlps)を使用して、Azure Machine Learning Studio タスクを自動化することもできます。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Resource Manager テンプレートの作成](../resource-group-authoring-templates.md)について確認します。 
+* [Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)について確認します。 
 * [Azure クイックスタート テンプレート リポジトリ](https://github.com/Azure/azure-quickstart-templates)を確認します。 
 * [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39)のビデオを見ます。 
 
@@ -152,6 +152,6 @@ Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 08/11/2016
 ms.author: chkuhtz
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 0cedf46bd0b8c352c8a8d87407ed7fbbc58e3b46
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: e9ffa674363b250a5e286c6e34200fa2b3323173
 
 ---
 
@@ -65,8 +65,8 @@ DIP は受信フローの宛先です。 バックエンド プールで、各 V
 
 | ルール | フロントエンドのマッピング | バックエンド プールへ |
 | --- | --- | --- |
-| 1 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  VIP1:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80、 ![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  VIP2:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81、 ![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  DIP2:81 |
+| 1 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80、 ![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81、 ![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Azure Load Balancer の完全なマッピングは次のようになりました。
 
@@ -113,8 +113,8 @@ Floating IP は、Direct Server Return (DSR) と呼ばれるものの一部で�
 
 | ルール | フロントエンドのマッピング | バックエンド プールへ |
 | --- | --- | --- |
-| 1 |![ルール](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  VIP1:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  VIP1:80 (VM1 と VM2 で) |
-| 2 |![ルール](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  VIP2:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  VIP2:80 (VM1 と VM2 で) |
+| 1 |![ルール](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80 (VM1 と VM2 で) |
+| 2 |![ルール](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 (VM1 と VM2 で) |
 
 次の表は、ロード バランサーの完全なマッピングを示します。
 
@@ -127,7 +127,7 @@ Floating IP は、Direct Server Return (DSR) と呼ばれるものの一部で�
 
 この例では、宛先ポートが変わらないことに注意してください。 これは Floating IP のシナリオですが、Azure Load Balancer はバックエンドの宛先ポートを書き換える規則の定義もサポートし、フロントエンドの宛先ポートとは異なる規則にします。
 
-Floating IP 規則タイプは、いくつかのロード バランサーの構成パターンの基盤になります。 現在利用できる例の 1 つは、 [複数リスナーによる SQL AlwaysOn](../virtual-machines/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の構成です。 他のシナリオについては、徐々に文書化します。
+Floating IP 規則タイプは、いくつかのロード バランサーの構成パターンの基盤になります。 現在利用できる例の 1 つは、 [複数リスナーによる SQL AlwaysOn](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) の構成です。 他のシナリオについては、徐々に文書化します。
 
 ## <a name="limitations"></a>制限事項
 
@@ -138,6 +138,6 @@ Floating IP 規則タイプは、いくつかのロード バランサーの構�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

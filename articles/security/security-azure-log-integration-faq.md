@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2016
+ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 2f0dc39815e9fbed86e22109cdf7b289af1f836e
+ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
+ms.openlocfilehash: aa1e59a38b37c5e78b61ad7fe10f7c8461b7fe1d
 
 
 ---
@@ -72,7 +72,7 @@ ms.openlocfilehash: 2f0dc39815e9fbed86e22109cdf7b289af1f836e
 ## <a name="where-can-i-find-the-definition-of-the-properties-in-audit-log"></a>監査ログのプロパティの定義はどこで確認できますか。
 参照:
 
-* [リソース マネージャーの監査操作](../resource-group-audit.md)
+* [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)
 * [Azure Monitor REST API でサブスクリプションの管理イベントの一覧を表示](https://msdn.microsoft.com/library/azure/dn931934.aspx)
 
 ## <a name="where-can-i-find-details-on-azure-security-center-alerts"></a>Azure Security Center の警告の詳細はどこで確認できますか。
@@ -111,6 +111,6 @@ Azure ログ統合に関する質問がある場合は、 [AzSIEMteam@microsoft.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

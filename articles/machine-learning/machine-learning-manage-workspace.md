@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a5d98d804697a9b5c745d4fa236cb0ee5b7c456b
+ms.sourcegitcommit: c5479dd817e8929ff5e9129d4643d49758e7ab16
+ms.openlocfilehash: 32e74821309507fed4a20b005dbfbba12ffb0703
 
 
 ---
@@ -111,11 +111,9 @@ Web サービス エンドポイントの名前をクリックして開きます
 * **ログ記録** エンドポイントに関するエラー ログ記録を有効または無効にすることができます。 ログ記録の詳細については、「[Machine Learning Web サービスのログ記録の有効化](machine-learning-web-services-logging.md)」をご覧ください。
 * **サンプル データの有効化** 要求応答サービスのテストに使用できるサンプル データを提供することができます。 Machine Learning Studio で Web サービスを作成した場合は、サンプル データはモデルのトレーニングに使用したデータから取得されます。 サービスをプログラムで作成した場合は、データは JSON パッケージの一部として提供したサンプル データから取得されます。
 
-[使用]: machine-learning-consume-web-services.md
-[Marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 
