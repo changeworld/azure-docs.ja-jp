@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 412483cfbce7621612a7283b8a72c24d23b851b5
+ms.sourcegitcommit: 57df4ab0b2a1df6631eb6e67a90f69cebb1dfe75
+ms.openlocfilehash: ad9cc8765f1a8b83c9dbf5caca573811c6e7f10e
 
 
 ---
@@ -52,7 +52,7 @@ Log Analytics の **[設定]** の **[データ]** メニューからデータ �
 ## <a name="data-collection"></a>データ収集
 データ ソースの構成は、数分以内に OMS に直接接続されたエージェントに配信されます。  指定されたデータがエージェントから収集され、各データ ソースに固有の間隔で Log Analytics に直接配信されます。  詳しくは、各データ ソースのドキュメントを参照してください。
 
-接続された管理グループ内の System Center Operations Manager (SCOM) エージェントの場合、データ ソースの構成は管理パックに変換され、既定で 5 分ごとに管理グループに配信されます。  このエージェントは、他のエージェントと同じように管理パックをダウンロードし、指定されたデータを収集します。 データは、そのソースに応じて、管理サーバーに送信されてそこから Log Analytics に転送されるか、またはエージェントが管理サーバーを介さずに Log Analytics に送信します。 詳細については、「[OMS の機能とソリューションにおけるデータ収集の詳細](log-analytics-add-solutions.md#data-collection-details-for-oms-features-and-solutions)」を参照してください。  SCOM および OMS と接続し、構成の配信頻度を変更する方法の詳細については、[System Center Operations Manager との統合の構成](log-analytics-om-agents.md)に関するページを参照してください。
+接続された管理グループ内の System Center Operations Manager (SCOM) エージェントの場合、データ ソースの構成は管理パックに変換され、既定で 5 分ごとに管理グループに配信されます。  このエージェントは、他のエージェントと同じように管理パックをダウンロードし、指定されたデータを収集します。 データは、そのソースに応じて、管理サーバーに送信されてそこから Log Analytics に転送されるか、またはエージェントが管理サーバーを介さずに Log Analytics に送信します。 詳細については、「[OMS の機能とソリューションにおけるデータ収集の詳細](log-analytics-add-solutions.md#data-collection-details)」を参照してください。  SCOM および OMS と接続し、構成の配信頻度を変更する方法の詳細については、[System Center Operations Manager との統合の構成](log-analytics-om-agents.md)に関するページを参照してください。
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 Log Analytics によって収集されたデータはすべて、レコードとして OMS リポジトリに保存されます。  さまざまなデータ ソースから収集されたレコードは、独自のプロパティ セットを持ち、 **Type** プロパティによって識別されます。  各レコードの種類の詳細については、各データ ソースのドキュメントおよびソリューションを参照してください。
@@ -64,7 +64,6 @@ Log Analytics によって収集されたデータはすべて、レコードと
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

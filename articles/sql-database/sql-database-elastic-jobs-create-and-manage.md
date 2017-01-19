@@ -8,6 +8,7 @@ author: ddove
 editor: 
 ms.assetid: f858344d-085b-4022-935e-1b5fa20adbac
 ms.service: sql-database
+ms.custom: jobs
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 923bc7102e5cc506307da25ee8125780076167ab
+ms.sourcegitcommit: 7b3c6d29ad7ded2ea65f378a1f807235c688d738
+ms.openlocfilehash: 2e652979d56e8f14179102a946761874553219df
 
 
 ---
@@ -113,6 +114,6 @@ ms.openlocfilehash: 923bc7102e5cc506307da25ee8125780076167ab
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

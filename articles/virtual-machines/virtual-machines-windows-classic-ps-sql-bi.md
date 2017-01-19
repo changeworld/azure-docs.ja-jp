@@ -1,13 +1,13 @@
 ---
 title: SQL Server Business Intelligence | Microsoft Docs
-description: このトピックでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、Azure Virtual Machines (VM) 上で実行される SQL Server で使用できる Business Intelligence (BI) 機能について説明します。
+description: "このトピックでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、Azure Virtual Machines (VM) 上で実行される SQL Server で使用できる Business Intelligence (BI) 機能について説明します。"
 services: virtual-machines-windows
 documentationcenter: na
 author: guyinacube
 manager: erikre
 editor: monicar
 tags: azure-service-management
-
+ms.assetid: c681e7a7-eeda-48aa-bc35-6277f4828244
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: f88fc3390f819ce6952b3249c1a7a8ef286bc4ec
+
 
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Business Intelligence
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
 Microsoft Azure 仮想マシン ギャラリーには、SQL Server インストールを含むイメージが用意されています。 ギャラリー イメージでサポートされている SQL Server のエディションは、オンプレミスのコンピューターにも仮想マシンにもインストールできるインストール ファイルです。 このトピックでは、イメージにインストールされている SQL Server Business Intelligence (BI) 機能の概要と、仮想マシンのプロビジョニング後に必要な構成手順について説明します。 また、BI 機能用にサポートされているデプロイ トポロジとベスト プラクティスについても説明します。
 
@@ -85,13 +90,13 @@ SQL Server でサポートされているエディションと機能の詳細に
 ## <a name="general-recommendations-and-best-practices"></a>一般的な推奨事項とベスト プラクティス
 * SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは **A3** です。 Analysis Services と Reporting Services の SQL Server BI デプロイでは、推奨される仮想マシン サイズは **A4** です。
   
-    最新の VM サイズについては、「 [仮想マシンのサイズ](virtual-machines-linux-sizes.md)」をご覧ください。
+    最新の VM サイズについては、「 [仮想マシンのサイズ](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 * ディスク管理のベスト プラクティスとして、データ ファイル、ログ ファイル、バックアップ ファイルは **C**: および **D**: 以外のドライブに保存することをお勧めします。 たとえば、データ ディスク **E**: と **F**: を作成します。
   
   * 既定の **C**: ドライブのドライブ キャッシュ ポリシーは、データ操作に最適でありません。
   * **D**: ドライブは、主にページ ファイルに使用される一時ドライブです。 **D**: ドライブは永続化されず、BLOB ストレージには保存されません。 仮想マシンのサイズ変更などの管理タスクを行うと、 **D**: ドライブはリセットされます。 tempdb も含め、データベース ファイルには** D**: ドライブを使用**しない**ことをお勧めします。
     
-    ディスクの作成と接続の詳細については、「 [データ ディスクを Windows 仮想マシンに接続する方法](virtual-machines-windows-classic-attach-disk.md)」をご覧ください。
+    ディスクの作成と接続の詳細については、「 [データ ディスクを Windows 仮想マシンに接続する方法](virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
 * 使用する予定がないサービスは、停止またはアンインストールします。 たとえば、仮想マシンを Reporting Services だけに使用する場合は、Analysis Services と SQL Server Integration Services を停止またはアンインストールします。 次の図は、既定で開始されるサービスの例を示しています。
   
     ![SQL Server サービス](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
@@ -118,13 +123,13 @@ Microsoft Azure Virtual Machines を使用するデプロイの例を以下に�
 
 ![2 つの仮想マシンを使用する BI IaaS シナリオ](./media/virtual-machines-windows-classic-ps-sql-bi/IC650109.gif)
 
-### <a name="mixed-azure-–-data-on-azure-sql-database"></a>Azure が混在 - Azure SQL Database 上のデータ
+### <a name="mixed-azure--data-on-azure-sql-database"></a>Azure が混在 - Azure SQL Database 上のデータ
 * 1 つの仮想マシン上の Analysis Services、Reporting Services、SQL Server データベース エンジン。 このデプロイには、レポート サーバー データベースが含まれます。
 * データ ソースは Azure SQL Database です。
 
 ![VM とデータ ソースとして Azure SQL を使用する BI IaaS シナリオ](./media/virtual-machines-windows-classic-ps-sql-bi/IC650110.gif)
 
-### <a name="hybrid-–data-on-premises"></a>ハイブリッド - オンプレミスのデータ
+### <a name="hybrid-data-on-premises"></a>ハイブリッド - オンプレミスのデータ
 * このデプロイ例では、1 つの仮想マシン上で Analysis Services、Reporting Services、SQL Server データベース エンジンが実行されます。 仮想マシンは、レポート サーバー データベースをホストします。 仮想マシンは、Azure Virtual Networking またはその他の VPN トンネリング ソリューションを使用して、オンプレミス ドメインに参加しています。
 * データ ソースはオンプレミスです。
 
@@ -134,7 +139,7 @@ Microsoft Azure Virtual Machines を使用するデプロイの例を以下に�
 SQL Server の仮想マシン ギャラリー イメージには、Reporting Services ネイティブ モードがインストールされていますが、レポート サーバーは構成されていません。 このセクションの手順では、Reporting Services レポート サーバーを構成します。 Reporting Services ネイティブ モードの構成の詳細については、「 [Reporting Services ネイティブ モードのレポート サーバーのインストール](https://msdn.microsoft.com/library/ms143711.aspx)」をご覧ください。
 
 > [!NOTE]
-> Windows PowerShell スクリプトを使用したレポート サーバーの構成に関する類似コンテンツについては、「 [ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する](virtual-machines-windows-classic-ps-sql-report.md)」をご覧ください。
+> Windows PowerShell スクリプトを使用したレポート サーバーの構成に関する類似コンテンツについては、「 [ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する](virtual-machines-windows-classic-ps-sql-report.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
 > 
 > 
 
@@ -192,9 +197,9 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 4. **[サーバー名]** を確認し、**[接続テスト]** をクリックします。
 5. **"接続テストに成功しました"** というメッセージが表示されたら、**[OK]** をクリックし、**[次へ]** をクリックします。
 6. データベース名が **[ReportServer]**、**[レポート サーバー モード]** が **[ネイティブ]** であることを確認し、**[次へ]** をクリックします。
-7. **[次へ]** on the **[次へ]** をクリックします。
-8. **[次へ]** on the **[次へ]** をクリックします。
-9. **[次へ]** on the **[次へ]** をクリックします。
+7.  **[次へ]** on the **[次へ]** をクリックします。
+8.  **[次へ]** on the **[次へ]** をクリックします。
+9.  **[次へ]** on the **[次へ]** をクリックします。
 
 **Web ポータル URL または 2012 および 2014 用のレポート マネージャ URL:**
 
@@ -211,7 +216,7 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 1. VM で、管理者特権を使用して Internet Explorer を起動します。
 2. VM 上の http://localhost/reports を参照します。
 
-### <a name="to-connect-to-remote-web-portal,-or-report-manager-for-2014-and-2012"></a>リモート Web ポータル、または 2014 および 2012 用のレポート マネージャーに接続するには
+### <a name="to-connect-to-remote-web-portal-or-report-manager-for-2014-and-2012"></a>リモート Web ポータル、または 2014 および 2012 用のレポート マネージャーに接続するには
 リモート コンピューターから仮想マシン上の Web ポータル、または 2014 および 2012 用のレポート マネージャーに接続する場合は、新しい仮想マシン TCP エンドポイントを作成します。 既定では、レポート サーバーは **ポート 80**で HTTP 要求をリッスンします。 別のポートを使用するようにレポート サーバーの URL を構成した場合は、次の手順でそのポート番号を指定する必要があります。
 
 1. TCP ポート 80 の仮想マシンのエンドポイントを作成します。 詳細については、このドキュメントの「 [仮想マシン エンドポイントとファイアウォール ポート](#virtual-machine-endpoints-and-firewall-ports) 」をご覧ください。
@@ -240,7 +245,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
   
   1. ローカル コンピューター上で、レポートを格納する .VHD ハード ドライブを作成します。
   2. 管理証明書を作成し、インストールします。
-  3. Add-AzureVHD コマンドレットを使用して、VHD ファイルを Azure にアップロードします (「 [Windows Server VHD の作成と Azure へのアップロード](virtual-machines-windows-classic-createupload-vhd.md)」を参照)。
+  3. Add-AzureVHD コマンドレットを使用して、VHD ファイルを Azure にアップロードします (「 [Windows Server VHD の作成と Azure へのアップロード](virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照)。
   4. ディスクを仮想マシンに接続します。
 
 ## <a name="install-other-sql-server-services-and-features"></a>SQL Server のその他のサービスと機能のインストール
@@ -309,19 +314,19 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
   * アスタリスク (*) が付いているポートの仮想マシン エンドポイントを作成します。
 * 仮想マシンが Azure Virtual Networking などの VPN トンネルを使用してドメインに参加している場合、エンドポイントは不要です。 ただし、VM 上のファイアウォールでポートを開いてください。
   
-      |ポート|型|Description|
-  |---|---|---|
-  |**80**|TCP|レポート サーバー リモート アクセス (*)。|
-  |**1433**|TCP|SQL Server Management Studio (*)。|
-  |**1434**|UDP|SQL Server Browser。 これは、VM がドメインに参加しているときに必要となります。|
-  |**2382**|TCP|SQL Server Browser。|
-  |**2383**|TCP|SQL Server Analysis Services の既定のインスタンスとクラスター化された名前付きインスタンス。|
-  |**ユーザー定義**|TCP|選択したポート番号で Analysis Services の名前付きインスタンスの静的ポートを作成し、ファイアウォールでそのポート番号のブロックを解除します。|
+  | ポート | 型 | Description |
+  | --- | --- | --- |
+  | **80** |TCP |レポート サーバー リモート アクセス (*)。 |
+  | **1433** |TCP |SQL Server Management Studio (*)。 |
+  | **1434** |UDP |SQL Server Browser。 これは、VM がドメインに参加しているときに必要となります。 |
+  | **2382** |TCP |SQL Server Browser。 |
+  | **2383** |TCP |SQL Server Analysis Services の既定のインスタンスとクラスター化された名前付きインスタンス。 |
+  | **ユーザー定義** |TCP |選択したポート番号で Analysis Services の名前付きインスタンスの静的ポートを作成し、ファイアウォールでそのポート番号のブロックを解除します。 |
 
 エンドポイントの作成の詳細については、次のトピックをご覧ください。
 
-* エンドポイントの作成:[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-windows-classic-setup-endpoints.md)
-* SQL Server: 「 [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」の「別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する」をご覧ください。
+* エンドポイントの作成:[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* SQL Server: 「 [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」の「別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する」をご覧ください。
 
 次の図は、VM 上の機能とコンポーネントへのリモート アクセスを可能にするために、VM のファイアウォールで開くポートを示しています。
 
@@ -329,11 +334,11 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
 
 ## <a name="resources"></a>リソース
 * Azure 仮想マシン環境で使用される、マイクロソフト サーバー ソフトウェアのサポート ポリシーを確認します。 BitLocker、フェールオーバー クラスタリング、ネットワーク負荷分散などの機能のサポートについては、 「[Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](http://support.microsoft.com/kb/2721672)」を参照してください。
-* [Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)
-* [データ ディスクを仮想マシンに接続する方法](virtual-machines-windows-classic-attach-disk.md)
-* [Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)
+* [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [データ ディスクを仮想マシンに接続する方法](virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Analysis Services インスタンスのサーバー モードの決定](https://msdn.microsoft.com/library/gg471594.aspx)
 * [多次元モデリング (Adventure Works チュートリアル)](https://technet.microsoft.com/library/ms170208.aspx)
 * [Azure ドキュメント センター](https://azure.microsoft.com/documentation/)
@@ -347,6 +352,9 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
 ### <a name="community-content"></a>コミュニティ コンテンツ
 * [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO1-->
 
 

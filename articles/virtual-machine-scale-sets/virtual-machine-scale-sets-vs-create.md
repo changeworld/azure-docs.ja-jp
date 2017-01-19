@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 06/13/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 172659089e0ed3bf06444699036f3cebcd082ae3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 038259ad4e1c7c6623426f9476ea96d02043fbf9
 
 
 ---
@@ -98,6 +98,6 @@ Visual Studio を使って VM スケール セットを正常にデプロイし�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e2e17f1b93f127286e2c558b18c97de7cc17bdb1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ee734cd99ad6aca31ab9350a0c2702ed9cc956fb
 
 
 ---
@@ -124,7 +124,7 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. ページの下部にある [次へ]」を参照してください。
 2. HackerOne テナントに管理者としてサインオンします。
@@ -136,7 +136,7 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
     ![[シングル サインオンの構成]](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_003.png) 
 5. **[SAML Settings (SAML の設定)]** ダイアログで、次の手順を実行します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_004.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_004.png) 
    
     a. 登録されているドメインを **[電子メール ドメイン]** ボックスに入力します。
    
@@ -271,6 +271,6 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

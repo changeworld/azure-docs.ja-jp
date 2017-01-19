@@ -1,11 +1,11 @@
 ---
-title: Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成 | Microsoft Docs
-description: SAML およびパスワード ベースの SSO を使用して、Azure Active Directory にアプリをセルフサービス接続する方法について説明します。
+title: "Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成 | Microsoft Docs"
+description: "SAML およびパスワード ベースの SSO を使用して、Azure Active Directory にアプリをセルフサービス接続する方法について説明します。"
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
 manager: femila
-
+ms.assetid: 0d42eb0c-6d3f-4557-9030-e88e86709a19
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,6 +13,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/09/2016
 ms.author: asmalser
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8274e47e99998b735e7252ce72bb3ac7c2ecc672
+
 
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成
@@ -23,7 +27,7 @@ ms.author: asmalser
 [Azure Active Directory Premium](active-directory-editions.md) ライセンスを所有するお客様も、これらの追加機能を使用できます。
 
 * SAML 2.0 ID プロバイダーをサポートする任意のアプリケーションのセルフサービス統合 (SP または IdP によって開始)
-* [パスワードベースの SSO](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
+*  [パスワードベースの SSO](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
 * ユーザー プロビジョニング用の SCIM プロトコルを使用するアプリケーションのセルフサービス接続 ([ここで説明](active-directory-scim-provisioning.md))
 * [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)での任意のアプリケーションへのリンクの追加機能
 
@@ -138,6 +142,6 @@ HTML サインイン ページがある Web アプリケーションの [パス�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

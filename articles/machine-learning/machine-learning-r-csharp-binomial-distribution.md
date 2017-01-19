@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: ireiter
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 82e679e1565bfb18c09ffd30c8b49a69b67e0aeb
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3f274408b370466af4eb9bd6e2ecbce32ce03857
 
 
 ---
@@ -289,6 +289,6 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

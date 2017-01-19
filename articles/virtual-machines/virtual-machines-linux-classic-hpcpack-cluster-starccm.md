@@ -16,8 +16,8 @@ ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 666b9e47953674b17be6cc84dbc6aeec28e28b57
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 94a6a0968336f74ff116bf71aaa2e7c2ee135105
 
 
 ---
@@ -31,7 +31,7 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 ## <a name="set-up-an-hpc-pack-cluster"></a>HPC Pack クラスターをセットアップする
 HPC Pack IaaS デプロイ スクリプトを [ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=44949) からダウンロードして、ローカルに抽出します。
 
-Azure PowerShell は必須です。 Azure PowerShell をローカル コンピューターでまだ構成していない場合は、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」の記事を参照してください。
+Azure PowerShell は必須です。 Azure PowerShell をローカル コンピューターでまだ構成していない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」の記事を参照してください。
 
 Azure Marketplace から入手できる Linux イメージ (Azure 用の InfiniBand ドライバーを含んでいる) は、本記事の執筆時点では SLES 12、CentOS 6.5、CentOS 7.1 用となります。 この記事は SLES 12 の使用を前提としています。 HPC をサポートしているすべての Linux イメージの名前を Marketplace から取得するには、次の PowerShell コマンドを実行します。
 
@@ -336,6 +336,6 @@ Azure 上の Intel MPI では、MPI 関連のオプションを次のように�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

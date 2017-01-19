@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 08/19/2016
 ms.author: masnider
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cc136c567279ff9da655ed3536fae6d2ae7be3df
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f4daec67cd35de60568ffd22010164f10785a5d4
 
 
 ---
@@ -100,7 +100,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 では、これらの構成を地理的に分散していないクラスターのサービスに構成することはできるでしょうか。 もちろん、できます。 しかし、あまり利点はありません。特に、必要な、無効な、および優先ドメインの構成は、実際に地理的に分散しているクラスターを実行していない場合は、避ける必要があります。特定のワークロードを単一のラックで実行したり、ローカル クラスターのセグメントを他のものより優先することは、異なる種類のハードウェアまたはワークロード セグメンテーションを使用しているのでない限り意味がありません。また、これらのケースは通常の配置の制約が対処します。
 
 ## <a name="next-steps"></a>次のステップ
-* サービスの構成に利用できるその他のオプションの詳細については、 [サービスの構成の詳細に関する記事](service-fabric-cluster-resource-manager-configure-services.md)
+* サービスの構成に利用できるその他のオプションの詳細については、「 [サービスの構成について学習する](service-fabric-cluster-resource-manager-configure-services.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png
@@ -108,6 +108,6 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

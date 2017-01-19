@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a2d2fba76850d6dfcff7545d6646f45c12e05c3f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d8ba034936f4d9ec14c1214575486ddbb709907a
 
 
 ---
@@ -242,6 +242,6 @@ Icertis Contract Management Platform で Azure AD のシングル サインオ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

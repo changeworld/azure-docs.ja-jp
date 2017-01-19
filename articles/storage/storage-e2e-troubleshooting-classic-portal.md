@@ -4,25 +4,25 @@ description: "Azure Storage Analytics、AzCopy、Microsoft Message Analyzer を�
 services: storage
 documentationcenter: dotnet
 author: robinsh
-manager: carmonm
+manager: timlt
 ms.assetid: 6b23cba5-0d53-439e-870b-de8e406107d8
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: f2032f3a4fa559b9772ee63d39d66408b3f92175
-ms.openlocfilehash: 5a07c355259c61cfde9f2c1e5f056a0b7f794861
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 82f0e5b9d0bfca1921367a2fd91259eeb4254285
 
 
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../includes/storage-selector-portal-e2e-troubleshooting.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 診断とトラブルシューティングは、Microsoft Azure Storage を使用してクライアント アプリケーションを構築し、サポートするうえでの重要なスキルです。 Azure アプリケーションの分散型の性質により、エラーやパフォーマンスの問題に対する診断とトラブルシューティングは、従来の環境で実施するよりも複雑になる場合があります。
 
 このチュートリアルでは、クライアント アプリケーションの最適化を目的に、パフォーマンスに影響する可能性のあるクライアントのエラーを特定すると共に、Microsoft と Azure Storage が提供するツールを使用して、これらのエラーについてエンド ツー エンドのトラブルシューティングを実施する方法を説明します。 
@@ -103,7 +103,7 @@ BLOB またはコンテナーが見つからないことが原因で、それら
 
 **PowerShell を使用**
 
-Azure の PowerShell を使用するには、 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)に関するページを参照してください。
+Azure の PowerShell を使用するには、 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)に関するページを参照してください。
 
 1. [Add-AzureAccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) コマンドレットを使用して、Azure ユーザー アカウントを PowerShell ウィンドウに追加します。
    
@@ -383,6 +383,6 @@ Azure Storage におけるエンド ツー エンド シナリオのトラブル
 * [Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

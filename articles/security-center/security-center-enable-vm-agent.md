@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/17/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2084bce2529aaf65194f69b463cb0a1b480e5769
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 83328eb874485d4541ff2131f736a30f350a0eb6
 
 
 ---
@@ -53,6 +53,6 @@ VM エージェントは、 [データ収集を有効にする](security-center-
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

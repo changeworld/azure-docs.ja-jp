@@ -4,7 +4,7 @@ description: "この記事では、Azure セキュリティ サービスとテ�
 services: security
 documentationcenter: na
 author: TomShinder
-manager: StevenPo
+manager: MBaldwin
 editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
 ms.service: security
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 12/02/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 354648461adf77ccf753cf24721ab7dd82b34d3c
-ms.openlocfilehash: 5d2d8503657269a7792667603e8b23d0183561ff
+ms.sourcegitcommit: 41239b5164de0d51848431f45f45958af29a9706
+ms.openlocfilehash: 09e078c8f806b91f8a4de55bc3abbb271823c203
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 5d2d8503657269a7792667603e8b23d0183561ff
 
 クラウド サービス プロバイダーの技術的なオプションを評価している場合、このようなリストがあると、適切な時期を深く掘り下げるために使用できて便利なことを理解しています。
 
-手始めとして、次のリストを用意しました。 時間の経過と共に、このリストは Azure と同様に変更および増加します。 リストは分類されています。カテゴリのリストも徐々に増えていきます。 セキュリティ関連のサービスとテクノロジを最新の状態に維持するために、定期的にこのページを確認してください。 
+手始めとして、次のリストを用意しました。 時間の経過と共に、このリストは Azure と同様に変更および増加します。 リストは分類されています。カテゴリのリストも徐々に増えていきます。 セキュリティ関連のサービスとテクノロジを最新の状態に維持するために、定期的にこのページを確認してください。
 
 ## <a name="azure-security---general"></a>Azure セキュリティ- 全般
 * [[Azure Security Center] (Azure Security Center)](https://azure.microsoft.com/documentation/services/security-center/)
@@ -57,7 +57,7 @@ ms.openlocfilehash: 5d2d8503657269a7792667603e8b23d0183561ff
 * [Azure のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
-* [Azure Active Directory ドメイン サービス](https://azure.microsoft.com/documentation/services/active-directory-ds/)
+* [Azure Active Directory ドメイン サービス](../active-directory-domain-services/active-directory-ds-overview.md)
 * [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 
 ## <a name="backup-and-disaster-recovery"></a>バックアップと障害復旧
@@ -75,7 +75,6 @@ ms.openlocfilehash: 5d2d8503657269a7792667603e8b23d0183561ff
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

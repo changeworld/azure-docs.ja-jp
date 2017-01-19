@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: db541e94-abc8-4578-bae0-9b8c8ad0170e
 ms.service: sql-database
+ms.custom: V11; elastic database pool
 ms.devlang: NA
 ms.date: 09/28/2016
 ms.author: sstein
@@ -15,8 +16,8 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 47b4890482752d8954a84c59b333b6607d997da3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8a197799de3fcb898f6fa9a7c90b63b3311150ee
 
 
 ---
@@ -33,7 +34,7 @@ ms.openlocfilehash: 47b4890482752d8954a84c59b333b6607d997da3
 ## <a name="prerequisites"></a>前提条件
 スクリプトの実行前に、次をインストールしてください。
 
-* 最新の Azure PowerShell。 詳細については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+* 最新の Azure PowerShell。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
 * [SQL Server 2014 Feature Pack](https://www.microsoft.com/download/details.aspx?id=42295)。
 
 ## <a name="script-details"></a>スクリプトの詳細
@@ -276,6 +277,6 @@ $data | %{'{0}' -f $_[0]}
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
