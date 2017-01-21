@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 11/18/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: ec3384dd68a28117cc00de20e4c08ad0ccd67bad
-ms.openlocfilehash: a7516a98cbe25f9ed458131083a18899d3d50004
+ms.sourcegitcommit: b9fda8b5f4ffa6679cc8ca9696a4c51084c80645
+ms.openlocfilehash: 7c3d73ca6f4f567247ec9796199e68f764a52808
 
 
 ---
@@ -80,7 +80,7 @@ Apache Storm チュートリアルを正常に完了するには、次の条件�
      > * [HDInsight の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
      > * [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-3. __[上記の使用条件に同意する]__ を選択し、**[OK]** をクリックして、__[Pin to dashbaord (ダッシュボードにピン留め)]__ を選択します。
+3. __[上記の使用条件に同意する]__ を選択し、**[OK]** をクリックして、__[ダッシュボードにピン留めする]__ を選択します。
 
 6. **[購入]** をクリックします。 "Submitting deployment for Template deployment" という新しいタイルが表示されます。 クラスターの作成には約 20 分かかります。
 
@@ -216,6 +216,6 @@ HDInsight 上の Storm で使用できるトポロジの例については、以
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "CLI を使用して DNS ゾーンのレコード セットとレコードを作成する | Microsoft Docs"
+title: "Azure CLI を使用して DNS レコードを作成する | Microsoft Docs"
 description: "Azure DNS のホスト レコードを作成する方法。CLI を使用したレコード セットとレコードの設定"
 services: dns
 documentationcenter: na
@@ -11,62 +11,63 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/09/2016
+ms.date: 12/21/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: bfbffe7843bc178cdf289c999925c690ab82e922
-ms.openlocfilehash: e377f176fe24a8e7e42d409f86d6b0093ce5e7c4
+ms.sourcegitcommit: 18a21cdc0f9641356dfaf6f6d93edfcac11af210
+ms.openlocfilehash: 790af1544ed86155f5f864f3914b5fd1c4f42f4b
 
 ---
 
-# <a name="create-dns-record-sets-and-records-by-using-cli"></a>CLI を使用した DNS レコード セットとレコードの作成
+# <a name="create-dns-records-using-the-azure-cli"></a>Azure CLI を使用して DNS レコードを作成する
 
 > [!div class="op_single_selector"]
 > * [Azure ポータル](dns-getstarted-create-recordset-portal.md)
 > * [PowerShell](dns-getstarted-create-recordset.md)
 > * [Azure CLI](dns-getstarted-create-recordset-cli.md)
 
-この記事では、CLI を使用してレコードとレコード セットを作成する手順を説明します。 そのために、まずは DNS レコードとレコード セットについて理解することが必要です。
+この記事では、Azure CLI を使用してレコードとレコード セットを作成する手順を説明します。
+
+## <a name="introduction"></a>はじめに
+
+Azure DNS で DNS レコードを作成する前に、まず、Azure DNS における DNS レコード セットでの DNS レコードの編成方法を理解する必要があります。
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
+
+Azure DNS における DNS レコードの詳細については、「[DNS ゾーンとレコード](dns-zones-records.md)」を参照してください。
+
+## <a name="create-a-record-set-and-record"></a>レコード セットとレコードの作成
 
 このセクションでは、Azure DNS に DNS レコードを作成する方法について説明します。 これらの例では、[Azure CLI のインストール、サインイン、DNS ゾーンの作成](dns-getstarted-create-dnszone-cli.md)が既に完了していることを前提としています。
 
 このページのすべての例では、DNS レコードの種類として "A" を使用します。 その他のレコードの種類の説明および DNS レコードとレコード セットの管理方法の詳細については、[Azure CLI を使用した DNS レコードとレコード セットの管理](dns-operations-recordsets-cli.md)に関する記事を参照してください。
 
-## <a name="create-a-record-set-and-record"></a>レコード セットとレコードの作成
+## <a name="create-a-dns-record"></a>DNS レコードの作成
 
-このセクションでは、レコード セットとレコードの作成方法を説明します。 この例では、DNS ゾーン "contoso.com" に相対名 "www" を持つレコード セットを作成します。 レコードの完全修飾名は、"www.contoso.com" になります。 レコードの種類は "A" で、Time to Live (TTL) は 60 秒です。 この手順を完了すると、空のレコード セットが作成されます。
+DNS レコードを作成するには、`azure network dns record-set add-record` コマンドを使用します。 `azure network dns record-set add-record -h` を使用すると、ヘルプが表示されます。
 
-ゾーンの頂点 (この例では "contoso.com") にレコード セットを作成するには、レコード名 "@", (引用符を含みます) を使用します。 これは、一般的な DNS の規則です。
+レコードの作成時に、リソース グループ名、ゾーン名、レコード セット名、レコードの種類、および作成するレコードの詳細を指定する必要があります。
 
-### <a name="1-create-a-record-set"></a>1.レコード セットの作成
+レコード セットがまだ存在していない場合は、このコマンドによって作成されます。 レコード セットが既に存在する場合、このコマンドは、指定されたレコードを既存のレコード セットに追加します。 
 
-新しいレコードの名前と種類が既存のレコードと同じ場合は、そのレコードを既存のレコード セットに追加する必要があります。 この手順を省略して、次の「[レコードの追加](#add-records)」に進んでください。 また、新しいレコードの名前と種類が既存のすべてのレコードと異なる場合は、新しいレコード セットを作成する必要があります。
+新しいレコード セットが作成される場合は、既定の Time-to-Live (TTL) である 3600 が使用されます。 別の TTL を使用するための手順については、[Azure CLI を使用した Azure DNS の DNS レコードの管理](dns-operations-recordsets-cli.md)に関するページを参照してください。
 
-レコード セットは、`azure network dns record-set create` コマンドを使用して作成します。 `azure network dns record-set create -h` を使用すると、ヘルプが表示されます。  
-
-レコード セットを作成するとき、レコード セット名、ゾーン、time to live (TTL)、レコードの種類を指定する必要があります。 
+次の例では、リソース グループ *MyResourceGroup* のゾーン *contoso.com* に *www* という A レコードを作成します。 A レコードの IP アドレスは、*1.2.3.4* です。
 
 ```azurecli
-azure network dns record-set create myresourcegroup contoso.com www A 60
+azure network dns record-set add-record MyResourceGroup contoso.com www A -a 1.2.3.4
 ```
 
-この手順を完了すると、空の "www" レコード セットが作成されます。 新しく作成した "www" レコード セットを使用するには、最初にレコードを追加する必要があります。
-
-### <a name="2-add-records"></a>2.レコードの追加
-
-`azure network dns record-set add-record`を使用して、レコードをレコード セットに追加します。 `azure network dns record-set add-record -h` を使用すると、ヘルプが表示されます。
-
-レコード セットにレコードを追加するためのパラメーターは、レコード セットの種類によって異なります。 たとえば、"A" という種類のレコード セットを使用する場合、レコードの指定に使用できるのは、`-a <IPv4 address>` パラメーターのみです。 他のレコードの種類のパラメーターを一覧表示するには、`azure network dns record-set add-record -h` を使用します。
-
-次のコマンドを使用して、上記の手順で作成した "www" レコード セットに A レコードを追加できます。
+ゾーンの頂点 (この例では "contoso.com") にレコード セットを作成するには、レコード名 "@", (引用符を含みます) を使用します。
 
 ```azurecli
-azure network dns record-set add-record myresourcegroup contoso.com  www A  -a 1.2.3.4
+azure network dns record-set add-record MyResourceGroup contoso.com "@" A -a 1.2.3.4
 ```
 
-### <a name="verify-name-resolution"></a>名前解決の確認
+レコード データを指定するためのパラメーターは、レコードの種類によって異なります。 たとえば、種類 "A" のレコードの場合は、パラメーター `-a <IPv4 address>` に IPv4 アドレスを指定します。 他のレコードの種類のパラメーターを一覧表示するには、`azure network dns record-set add-record -h` を使用します。 レコードの種類ごとの例については、[Azure CLI を使用した DNS レコードとレコード セットの管理](dns-operations-recordsets-cli.md)に関するページを参照してください。
+
+
+## <a name="verify-name-resolution"></a>名前解決の確認
 
 Azure DNS ネーム サーバーに DNS レコードが存在することをテストするには、nslookup、dig、[Resolve-DnsName PowerShell コマンドレット](https://technet.microsoft.com/library/jj590781.aspx)などの DNS ツールを使用します。
 
@@ -94,6 +95,6 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

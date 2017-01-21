@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2016
+ms.date: 01/03/2017
 ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
-ms.openlocfilehash: e04763fa711eed4c699f2bc3f20834849dfe52e0
+ms.sourcegitcommit: 4f67c67639eaf33bb1f2aa236164e98030f5b555
+ms.openlocfilehash: c76471f4c0f4e1b751d623f691578d354008d863
 
 
 ---
@@ -126,9 +126,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 
 地理的リージョン、関連付けられている Azure リージョン、および対応する ExpressRoute のピアリングの場所の詳細な一覧については、「 [ExpressRoute パートナーとピアリングの場所](expressroute-locations.md) 」を参照してください。
 
-地理的リージョンごとに複数の ExpressRoute 回線を購入できます。 複数の接続を持つことで、geo 冗長性による高可用性が確保される大きなメリットがあります。 複数の ExpressRoute 回線がある場合、パブリック ピアリングおよび Microsoft ピアリング パスで Microsoft からアドバタイズされたプレフィックスの同じセットを受け取ります。 これは、ネットワークから Microsoft へのパスが複数あることを意味します。 これは、ネットワーク内で十分に最適化されないルーティングの決定が行われる可能性があることを示します。 その結果、さまざまなサービスの接続エクスペリエンスが十分に最適化されない可能性があります。 
-
-Microsoft は、パブリック ピアリングと Microsoft ピアリングを介してアドバタイズされるプレフィックスに適切な BGP コミュニティ値をタグ付けして、プレフィックスがホストされるリージョンを示します。 ユーザーは、このコミュニティ値に依存して、 [最適なルーティングを顧客に](expressroute-optimize-routing.md)提供するための適切なルーティングの決定を行うことができます。
+地理的リージョンごとに複数の ExpressRoute 回線を購入できます。 複数の接続を持つことで、geo 冗長性による高可用性が確保される大きなメリットがあります。 複数の ExpressRoute 回線がある場合、パブリック ピアリングおよび Microsoft ピアリング パスで Microsoft からアドバタイズされたプレフィックスの同じセットを受け取ります。 これは、ネットワークから Microsoft へのパスが複数あることを意味します。 これは、ネットワーク内で十分に最適化されないルーティングの決定が行われる可能性があることを示します。 その結果、さまざまなサービスの接続エクスペリエンスが十分に最適化されない可能性があります。 ユーザーは、このコミュニティ値に依存して、[最適なルーティングをユーザーに](expressroute-optimize-routing.md)提供するための適切なルーティングの決定を行うことができます。
 
 | **Microsoft Azure リージョン** | **BGP コミュニティ値** |
 | --- | --- |
@@ -214,6 +212,6 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
