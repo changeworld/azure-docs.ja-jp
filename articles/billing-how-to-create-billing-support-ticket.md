@@ -4,7 +4,7 @@ description: "Azure の請求とサブスクリプションの問題について
 services: 
 documentationcenter: 
 author: genlin
-manager: mbaldwin
+manager: narmstr
 editor: 
 tags: billing
 ms.assetid: 4d379f1b-e4bf-4495-b4b4-c8a7b3b60462
