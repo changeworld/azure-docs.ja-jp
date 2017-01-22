@@ -1,12 +1,12 @@
 ---
-redirect_url: /azure/azure-resource-manager/resource-manager-troubleshoot-deployments-portal
+redirect_url: /azure/azure-resource-manager/resource-manager-deployment-operations
 translationtype: Human Translation
-ms.sourcegitcommit: b97c464b4f3478fbb7f61fe04655c6f3677a81a4
-ms.openlocfilehash: 90e8314fc25c822249684d22fa386bcc6728a147
+ms.sourcegitcommit: 6cb7e3bd29208f0e4270aafb8d24fdb6ae08ff28
+ms.openlocfilehash: 17c84d670b95b66a6e125617411da56addc40c71
 
 ---
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 
