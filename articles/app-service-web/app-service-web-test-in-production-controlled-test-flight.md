@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/02/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 705d548661fd0a33a077aab563af415d959b6ebf
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 152b08cf72c48109f17b5c4715e4ca5fafbb1b7b
 
 
 ---
@@ -351,7 +351,7 @@ Azure App Service を使用すると、中小規模の企業が顧客向けの�
 * [Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)
 * [Azure App Service の Web アプリのステージング環境を設定する](web-sites-staged-publishing.md)
 * [Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
-* [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
+* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
 * [JSONLint - JSON Validator に関するページ](http://jsonlint.com/)
 * [Git のブランチ機能 - 基本的なブランチとマージに関するページ](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 * [Azure PowerShell](/powershell/azureps-cmdlets-docs)
@@ -359,6 +359,6 @@ Azure App Service を使用すると、中小規模の企業が顧客向けの�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/15/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: febc8fef864f88fa07accf91efc9b87727a48b32
-ms.openlocfilehash: 4d4d49801c84fa585b5e54bb16a9604a4891acc9
+ms.sourcegitcommit: 6b50b65fa1ad86c8e80fff0fb92352b1be52632e
+ms.openlocfilehash: d4589b5e9ca7f08b2152605dc26a96d4b5d656c8
 
 
 ---
@@ -29,9 +29,15 @@ ms.openlocfilehash: 4d4d49801c84fa585b5e54bb16a9604a4891acc9
 
 1. Azure PowerShell を起動します。
 2. 次のコマンドを使用して、Azure アカウントにログインします。
-        Login-AzureRmAccount
+
+    ```powershell
+    Login-AzureRmAccount
+    ```
 3. 次のコマンドを実行して、Azure Data Factory プロバイダーを登録します。
-        Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    
+    ```powershell        
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>問題: Data Factory コマンドレットを実行する際の認証エラー
 Azure PowerShell で使用する Azure アカウントまたはサブスクリプションが正しくない可能性があります。 次のコマンドレットを使用して、Azure PowerShell で使用する適切な Azure アカウントとサブスクリプションを選択してください。
@@ -60,29 +66,31 @@ Data Management Gateway の高速セットアップを起動するには、Inter
 
 このプロパティの詳細については、 [データセット](data-factory-create-datasets.md) に関する記事を参照してください。
 
-    {
-      "name": "CustomerTable",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "MyLinkedService",
-        "typeProperties": {
-          "folderPath": "MyContainer/MySubFolder/",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ",",
-            "rowDelimiter": ";"
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        },
-        "policy": {
-          }
-        }
+```json
+{
+  "name": "CustomerTable",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "MyLinkedService",
+    "typeProperties": {
+      "folderPath": "MyContainer/MySubFolder/",
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ",",
+        "rowDelimiter": ";"
+      }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
       }
     }
+  }
+}
+```
 
 このエラーを解決するには、入力テーブルの JSON 定義に **external** プロパティと **externalData** セクション (省略可能) を追加し、テーブルをもう一度作成します。
 
@@ -92,7 +100,9 @@ Data Management Gateway を使用したオンプレミス データ ストアへ
 ### <a name="problem-on-demand-hdinsight-provisioning-fails"></a>問題: オンデマンドの HDInsight プロビジョニングが失敗する
 種類が HDInsightOnDemand のリンクされたサービスを使用する場合、Azure Blob Storage を指す linkedServiceName を指定する必要があります。 Data Factory サービスは、このストレージを使用して、オンデマンド HDInsight クラスターのログとサポート ファイルを格納します。  たまに、オンデマンド HDInsight クラスターのプロビジョニングが失敗し、次のエラー メッセージが表示されることがあります。
 
-        Failed to create cluster. Exception: Unable to complete the cluster create operation. Operation failed with code '400'. Cluster left behind state: 'Error'. Message: 'StorageAccountNotColocated'.
+```
+Failed to create cluster. Exception: Unable to complete the cluster create operation. Operation failed with code '400'. Cluster left behind state: 'Error'. Message: 'StorageAccountNotColocated'.
+```
 
 通常、このエラーは、linkedServiceName で指定されたストレージ アカウントの場所が、HDInsight のプロビジョニングが行われているのと同じデータ センターの場所でないことを示します。 たとえば、Azure Data Factory の場所が米国西部で、Azure ストレージが米国東部の場合、米国西部でのオンデマンド プロビジョニングは失敗します。
 
@@ -143,6 +153,6 @@ Data Management Gateway を使用したオンプレミス データ ストアへ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

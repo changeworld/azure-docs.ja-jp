@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: acfdd1cef10b1b09150a7917eb4b8c4118f42a42
+ms.sourcegitcommit: 0b87ec728891d4f64bb7b2e4b7b4f0f2276b1ffc
+ms.openlocfilehash: ca75ddf8d099f411c4ae1af00e922f26e145f939
 
 
 ---
@@ -63,6 +63,6 @@ B2C 機能ブレードがスタート画面にピン留めされている場合�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

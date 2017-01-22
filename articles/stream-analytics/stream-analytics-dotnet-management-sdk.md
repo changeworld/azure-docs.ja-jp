@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 09/26/2016
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: 3fd3387ec44e00d6f357b4ea4ef81914e43a6d0e
+ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
+ms.openlocfilehash: 55fc17009a31c84f7ef23140b31bf53858e56ec7
 
 
 ---
@@ -85,42 +85,45 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
         using Microsoft.Azure.Management.StreamAnalytics.Models;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
 2. 次の認証ヘルパー メソッドを追加します。
+
+   ```   
+   public static string GetAuthorizationHeader()
+   {
    
-     public static string GetAuthorizationHeader()   {
+       AuthenticationResult result = null;
+       var thread = new Thread(() =>
+       {
+           try
+           {
+               var context = new AuthenticationContext(
+                   ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
+                   ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
    
-         AuthenticationResult result = null;
-         var thread = new Thread(() =>
-         {
-             try
-             {
-                 var context = new AuthenticationContext(
-                     ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
-                     ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+               result = context.AcquireToken(
+                   resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
+                   clientId: ConfigurationManager.AppSettings["AsaClientId"],
+                   redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
+                   promptBehavior: PromptBehavior.Always);
+           }
+           catch (Exception threadEx)
+           {
+               Console.WriteLine(threadEx.Message);
+           }
+       });
    
-                 result = context.AcquireToken(
-                     resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
-                     clientId: ConfigurationManager.AppSettings["AsaClientId"],
-                     redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
-                     promptBehavior: PromptBehavior.Always);
-             }
-             catch (Exception threadEx)
-             {
-                 Console.WriteLine(threadEx.Message);
-             }
-         });
+       thread.SetApartmentState(ApartmentState.STA);
+       thread.Name = "AcquireTokenThread";
+       thread.Start();
+       thread.Join();
    
-         thread.SetApartmentState(ApartmentState.STA);
-         thread.Name = "AcquireTokenThread";
-         thread.Start();
-         thread.Join();
+       if (result != null)
+       {
+           return result.AccessToken;
+       }
    
-         if (result != null)
-         {
-             return result.AccessToken;
-         }
-   
-         throw new InvalidOperationException("Failed to acquire token");
-     }  
+       throw new InvalidOperationException("Failed to acquire token");
+   }
+   ```  
 
 ## <a name="create-a-stream-analytics-management-client"></a>Stream Analytics の管理クライアントの作成
 **StreamAnalyticsManagementClient** オブジェクトを使用すると、入力、出力、変換などのジョブおよびジョブ コンポーネントを管理することができます。
@@ -144,7 +147,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 **resourceGroupName** 変数の値は、前の手順で作成または選択したリソース グループの名前と同じである必要があります。
 
-ジョブの作成で資格情報の提示部分を自動化する場合は、「 [Azure リソース マネージャーでのサービス プリンシパルの認証](../resource-group-authenticate-service-principal.md)」をご覧ください。
+ジョブの作成で資格情報の提示部分を自動化する場合は、「 [Azure リソース マネージャーでのサービス プリンシパルの認証](../azure-resource-manager/resource-group-authenticate-service-principal.md)」をご覧ください。
 
 この記事の以降のセクションでは、このコードが **Main** メソッドの先頭にあることを前提としています。
 
@@ -350,6 +353,6 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

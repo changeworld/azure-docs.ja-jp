@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/05/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: 00d2c2cb2d5f65880f79603954ac23c7efa253a4
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: bc303bb08366f5bcf86b2ae84db5751ea620d05c
 
 
 ---
@@ -87,10 +87,6 @@ ms.openlocfilehash: 00d2c2cb2d5f65880f79603954ac23c7efa253a4
 
 [クラシック Windows 仮想マシンのカスタム スクリプト拡張機能](virtual-machines-windows-classic-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-sql-automated-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-
-[Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-classic-sql-automated-patching.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-
 [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 
 ## <a name="configure"></a>構成
@@ -144,7 +140,7 @@ ms.openlocfilehash: 00d2c2cb2d5f65880f79603954ac23c7efa253a4
 
 [SAP](virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[SQL Server](virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[SQL Server](./windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 [Tomcat](virtual-machines-windows-classic-java-run-tomcat-app-server.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
@@ -170,6 +166,6 @@ ms.openlocfilehash: 00d2c2cb2d5f65880f79603954ac23c7efa253a4
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

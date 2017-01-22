@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/07/2016
+ms.date: 01/07/2017
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5d58210a155666642cec8c180249c4e43b69fb9c
+ms.sourcegitcommit: 36e0a52013b8d12c7e66c5955756a61a2c72b7dc
+ms.openlocfilehash: c3507aed3cc44d6360b8ba3ddf172e1437c1227a
 
 
 ---
@@ -71,8 +71,8 @@ Azure Key Vault は、Azure Resource Manager デプロイメント モデルを�
 ## <a name="management-plane-access-control"></a>管理プレーンのアクセス制御
 管理プレーンは、キー コンテナー自体に影響を与える操作で構成されています。 たとえば、キー コンテナーを作成または削除できます。 サブスクリプション内のコンテナーの一覧を取得できます。 キー コンテナーのプロパティ (SKU、タグなど) を取得することや、キー コンテナー内のキーやシークレットにアクセスできるユーザーとアプリケーションを制御する Key Vault アクセス ポリシーを設定することができます。 管理プレーンのアクセス制御では、RBAC を使用します。 管理プレーンを介して実行できるキー コンテナーの操作の完全な一覧については、前のセクションの表を参照してください。 
 
-### <a name="rolebased-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC)
-各 Azure サブスクリプションには Azure Active Directory があります。 このディレクトリのユーザー、グループ、アプリケーションに対して、Azure Resource Manager デプロイメント モデルを使用する Azure サブスクリプション内にあるリソースを管理するためのアクセス権を付与できます。 この種のアクセス制御は、ロールベースのアクセス制御 (RBAC) と呼ばれます。 このアクセスを管理するには、[Azure Portal](https://portal.azure.com/)、[Azure CLI ツール](../xplat-cli-install.md)、[PowerShell](../powershell-install-configure.md)、または [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx) を使用できます。
+### <a name="role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC)
+各 Azure サブスクリプションには Azure Active Directory があります。 このディレクトリのユーザー、グループ、アプリケーションに対して、Azure Resource Manager デプロイメント モデルを使用する Azure サブスクリプション内にあるリソースを管理するためのアクセス権を付与できます。 この種のアクセス制御は、ロールベースのアクセス制御 (RBAC) と呼ばれます。 このアクセスを管理するには、[Azure Portal](https://portal.azure.com/)、[Azure CLI ツール](../xplat-cli-install.md)、[PowerShell](/powershell/azureps-cmdlets-docs)、または [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx) を使用できます。
 
 Azure Resource Manager モデルでは、リソース グループにキー コンテナーを作成し、Azure Active Directory を使用してこのキー コンテナーの管理プレーンに対するアクセス権を制御します。 たとえば、ユーザーまたはグループに対して、特定のリソース グループのキー コンテナーを管理する権限を付与できます。
 
@@ -89,7 +89,7 @@ Azure Resource Manager モデルでは、リソース グループにキー コ�
 データ プレーンのアクセス権は、キー コンテナーのアクセス ポリシーを設定することで付与します。 キー コンテナーのアクセス ポリシーを設定するには、ユーザー、グループ、またはアプリケーションにそのキー コンテナーの管理プレーンに対する共同作成者権限 (RBAC) が必要です。 ユーザー、グループ、またはアプリケーションには、キー コンテナー内のキーやシークレットに対して特定の操作を実行するためのアクセス権を付与できます。 Key Vault では、1 つのキー コンテナーに対して最大 16 個のアクセス ポリシー エントリをサポートしています。 Azure Active Directory セキュリティ グループを作成し、そのグループにユーザーを追加して、キー コンテナーに対するデータ プレーンのアクセス権を複数のユーザーに付与します。
 
 ### <a name="key-vault-access-policies"></a>Key Vault アクセス ポリシー
-Key Vault アクセス ポリシーでは、キー、シークレット、証明書へのアクセス権を個別に付与します。 たとえば、ユーザーにキーのみのアクセス権を付与し、シークレットのアクセス権は付与しないようにすることができます。 ただし、キー、シークレット、または証明書へのアクセス権は、コンテナー レベルで付与されます。 つまり、Key Vault アクセス ポリシーでは、オブジェクト レベルの権限をサポートしていません。 キー コンテナーのアクセス ポリシーを設定するには、[Azure Portal](https://portal.azure.com/)、[Azure CLI ツール](../xplat-cli-install.md)、[PowerShell](../powershell-install-configure.md)、または [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx) を使用できます。
+Key Vault アクセス ポリシーでは、キー、シークレット、証明書へのアクセス権を個別に付与します。 たとえば、ユーザーにキーのみのアクセス権を付与し、シークレットのアクセス権は付与しないようにすることができます。 ただし、キー、シークレット、または証明書へのアクセス権は、コンテナー レベルで付与されます。 つまり、Key Vault アクセス ポリシーでは、オブジェクト レベルの権限をサポートしていません。 キー コンテナーのアクセス ポリシーを設定するには、[Azure Portal](https://portal.azure.com/)、[Azure CLI ツール](../xplat-cli-install.md)、[PowerShell](/powershell/azureps-cmdlets-docs)、または [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx) を使用できます。
 
 > [!IMPORTANT]
 > Key Vault アクセス ポリシーはコンテナー レベルで適用されることに注意してください。 たとえば、キーを作成および削除するためのアクセス許可を付与されたユーザーは、そのキー コンテナー内のすべてのキーに対してそれらの操作を実行できます。
@@ -210,7 +210,7 @@ ContosoAppRG リソース グループが作成されるサブスクリプショ
 * [RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)
   
   この記事では、RBAC で使用できるすべての組み込みロールについて詳しく説明しています。
-* [リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)
+* [リソース マネージャー デプロイと従来のデプロイを理解する](../azure-resource-manager/resource-manager-deployment-model.md)
   
   この記事では、Resource Manager デプロイとクライアント デプロイ モデル、Resource Manager とリソース グループを使用する利点について説明しています。
 * [Azure PowerShell を使用したロールベースのアクセス制御の管理](../active-directory/role-based-access-control-manage-access-powershell.md)
@@ -233,10 +233,10 @@ ContosoAppRG リソース グループが作成されるサブスクリプショ
   Key Vault REST API のリファレンス ドキュメントへのリンクです。
 * [Key access control (キーのアクセス制御)](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)
   
-  キーのアクセス制御のリファレンス ドキュメントへのリンクです。
+  シークレットのアクセス制御のリファレンス ドキュメントへのリンクです。
 * [Secret access control (シークレットのアクセス制御)](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
   
-  シークレットのアクセス制御のリファレンス ドキュメントへのリンクです。
+  キーのアクセス制御のリファレンス ドキュメントへのリンクです。
 * PowerShell を使用した Key Vault アクセス ポリシーの[設定](https://msdn.microsoft.com/library/mt603625.aspx)と[削除](https://msdn.microsoft.com/library/mt619427.aspx)
   
   Key Vault アクセス ポリシーを管理するための PowerShell コマンドレットのリファレンス ドキュメントへのリンクです。
@@ -253,6 +253,6 @@ Key Vault に関する質問がある場合は、[Azure Key Vault フォーラ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

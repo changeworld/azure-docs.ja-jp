@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1fcba586e44396378849d5162e75387e84fca905
+ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
+ms.openlocfilehash: fe295cb9b79593f7fd4635d142ec86d1c6897192
 
 
 ---
@@ -45,7 +45,7 @@ Azure Active Directory を使用するようにアプリケーションを登録
       - 委任されたアクセス許可 (任意のユーザー) 例: Azure AD、サインイン、プロファイルの読み取り
 
 > [!NOTE]
-> 既定では、すべてのメンバーがアプリケーションを登録できます。 アプリケーションを登録するためのアクセス許可を特定のメンバーに制限する方法については、 [アプリケーションを Azure AD に追加する方法に関する記事](active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)を参照してください。
+> 既定では、すべてのメンバーがアプリケーションを登録できます。 アプリケーションを登録するためのアクセス許可を特定のメンバーに制限する方法については、 [アプリケーションを Azure AD に追加する方法に関する記事](develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)を参照してください。
 > 
 > 
 
@@ -84,6 +84,6 @@ Azure AD Premium または Enterprise Mobility Suite (EMS) のサブスクライ
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

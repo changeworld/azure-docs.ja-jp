@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6031391dddc9f5c283974bd22ad22d60d0697a4d
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 775578cb4e89f561449eea10b21a300f20646424
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 6031391dddc9f5c283974bd22ad22d60d0697a4d
 
 このトピックでは、.NET を使用して、Media Encoder Standard (MES) で資産をエンコードする方法について説明します。 Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
-中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後 [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。 動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。 詳細については、「 [Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」を参照してください。
+中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後 [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。 
 
 出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。 詳細については、「 [方法: アセットの配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)」を参照してください。
 
@@ -43,9 +43,9 @@ Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=61
 ### <a name="input-and-output-metadata"></a>入力メタデータと出力メタデータ
 MES を使用して 1 つ (または複数) の入力資産をエンコードし、そのエンコード タスクが正常に終了すると、出力資産が得られます。 出力資産には、使用するエンコード プリセットに基づいて、ビデオ、オーディオ、サムネイル、マニフェストなどが含まれます。
 
-この出力資産には、入力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ XML ファイルの名前は、<asset_id>_metadata.xml という形式になっています (たとえば、41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml)。ここで、<asset_id> は入力資産の AssetId の値です。 この入力メタデータ XML のスキーマについては、[こちら](http://msdn.microsoft.com/library/azure/dn783120.aspx)で説明されています。
+この出力資産には、入力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ XML ファイルの名前は、<asset_id>_metadata.xml という形式になっています (たとえば、41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml)。ここで、<asset_id> は入力資産の AssetId の値です。 この入力メタデータ XML のスキーマについては、[こちら](media-services-input-metadata-schema.md)で説明されています。
 
-出力資産には、出力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ XML ファイルの名前は、<source_file_name>_manifest.xml という形式になっています (たとえば、BigBuckBunny_manifest.xml)。 この出力メタデータ XML のスキーマについては、 [こちら](http://msdn.microsoft.com/library/azure/dn783217.aspx)で説明されています。
+出力資産には、出力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ XML ファイルの名前は、<source_file_name>_manifest.xml という形式になっています (たとえば、BigBuckBunny_manifest.xml)。 この出力メタデータ XML のスキーマについては、 [こちら](media-services-output-metadata-schema.md)で説明されています。
 
 2 つのメタデータ ファイルのいずれかを確認したい場合は、SAS ロケータ―を作成してファイルをローカル コンピューターにダウンロードできます。 Media Services .NET SDK Extensions を使って SAS ロケータ―を作成し、ファイルをダウンロードする方法の例をご覧ください。
 
@@ -150,6 +150,6 @@ MES を使用して 1 つ (または複数) の入力資産をエンコードし
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: juliako;cenkdin
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 76ad2de236c4691523db9a897d99312b721b48d2
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 07239a392438afd9807ce69fba657c27e853a219
 
 
 ---
@@ -38,10 +38,10 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 ## <a name="types-used-to-create-filters"></a>フィルターの作成に使用する種類
 次の種類の REST API を使用してフィルターを作成します。 
 
-* **IStreamingFilter**。  この種類は次の REST API [Filter](http://msdn.microsoft.com/library/azure/mt149056.aspx)
-* **IStreamingAssetFilter**。 この種類は次の REST API [AssetFilter](http://msdn.microsoft.com/library/azure/mt149053.aspx)
-* **PresentationTimeRange**。 この種類は次の REST API [PresentationTimeRange](http://msdn.microsoft.com/library/azure/mt149052.aspx)
-* **FilterTrackSelectStatement** と **IFilterTrackPropertyCondition**。 これらの種類は次の REST API [FilterTrackSelect と FilterTrackPropertyCondition](http://msdn.microsoft.com/library/azure/mt149055.aspx)
+* **IStreamingFilter**。  この種類は次の REST API [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
+* **IStreamingAssetFilter**。 この種類は次の REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**。 この種類は次の REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** と **IFilterTrackPropertyCondition**。 これらの種類は次の REST API [FilterTrackSelect と FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
 ## <a name="createupdatereaddelete-global-filters"></a>グローバル フィルターの作成、更新、読み取り、削除
 次のコードは .NET を使用し、資産フィルターを作成、更新、読み取り、削除する方法を示しています。
@@ -137,6 +137,6 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

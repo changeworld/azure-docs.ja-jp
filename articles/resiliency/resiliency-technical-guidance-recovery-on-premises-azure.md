@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 2890efbfec90ef0e8e205a801c6e9cf6166985f0
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: c3a6df9f91af5227526e06fe7e9ebb3006bd6948
 
 
 ---
@@ -69,7 +69,7 @@ AlwaysOn 可用性グループは、オンプレミスとクラウドの両方�
 
 ![Back up SQL Server to Azure Blob storage in a hybrid cloud architecture](./media/resiliency-technical-guidance-recovery-on-premises-azure/SQL_Server_Disaster_Recovery-6.png)
 
-詳細については、「[Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Azure Virtual Machines における SQL Server のバックアップと復元](../virtual-machines/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+詳細については、「[Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)」と「[Azure Virtual Machines における SQL Server のバックアップと復元](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md)」を参照してください。
 
 ## <a name="checklists-for-on-premises-recovery-in-microsoft-azure"></a>Microsoft Azure でのオンプレミスの回復のためのチェックリスト
 ### <a name="networking"></a>Network
@@ -99,6 +99,6 @@ AlwaysOn 可用性グループは、オンプレミスとクラウドの両方�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ab66e07f293b3efc156829659b805c17b06ebea6
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 727891d92c047abe405415ea544db6f77a0db9f9
 
 
 ---
@@ -263,7 +263,7 @@ Git Shell で、次のコマンドを実行します。
 * [Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
 * [Agile Development in Practice: Tips and Tricks for Modernized Development Cycle (アジャイル開発の実践: 最新の開発サイクルのためのヒント)](http://channel9.msdn.com/Events/Ignite/2015/BRK3707)
 * [Advanced deployment strategies for Azure Web Apps using Resource Manager templates (Resource Manager テンプレートを使用した Azure Web Apps 向けの高度なデプロイ戦略)](http://channel9.msdn.com/Events/Build/2015/2-620)
-* [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
+* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
 * [JSONLint - JSON Validator に関するページ](http://jsonlint.com/)
 * [ARMClient – サイトへの GitHub のパブリッシュの設定に関するページ](https://github.com/projectKudu/ARMClient/wiki/Setup-GitHub-publishing-to-Site)
 * [Git のブランチ機能 - 基本的なブランチとマージに関するページ](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
@@ -276,6 +276,6 @@ Git Shell で、次のコマンドを実行します。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

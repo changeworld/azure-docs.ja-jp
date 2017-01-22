@@ -16,8 +16,8 @@ ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: ce8244bbad3aa73f98ab9bd7e967cd69309c80da
+ms.sourcegitcommit: 0dee2c3b92adc4098a51014dd7379aa3d53c1627
+ms.openlocfilehash: 6f352b000ce4e284a1f1cc9ba9b384827ee62003
 
 
 ---
@@ -255,7 +255,7 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 
 `copyIndex` 関数は、ミュージック ストア サンプル テンプレート内で何度も使われています。 `copyIndex` を利用するリソースや関数としては、仮想マシンの 1 つのインスタンスに固有のネットワーク インターフェイスやロード バランサー規則などが挙げられます。いずれも関数に依存します。 
 
-コピー関数について詳しくは、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](../resource-group-create-multiple.md)」をご覧ください。
+コピー関数について詳しくは、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](../azure-resource-manager/resource-group-create-multiple.md)」をご覧ください。
 
 ## <a name="next-step"></a>次のステップ
 <hr>
@@ -265,6 +265,6 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 04c80dddd1d42f923233eae49d3c1501cdfa5051
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 0f66bb4291d4e8c457f592734437513a727ecc29
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: 04c80dddd1d42f923233eae49d3c1501cdfa5051
 > 
 > 
 
-ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 ジョブの状態プロパティを使用して、ジョブの状態を調べることができます。 状態プロパティの詳細については、 [Job Entity Properties (Job エンティティのプロパティ)](https://msdn.microsoft.com/library/azure/5100ddd7-92ff-4c37-84d2-4f84fee250a7#job_entity_properties)をご覧ください。
+ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 ジョブの状態プロパティを使用して、ジョブの状態を調べることができます。 状態プロパティの詳細については、 [Job Entity Properties (Job エンティティのプロパティ)](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties)をご覧ください。
 
 要求:
 
@@ -69,6 +69,6 @@ ms.openlocfilehash: 04c80dddd1d42f923233eae49d3c1501cdfa5051
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

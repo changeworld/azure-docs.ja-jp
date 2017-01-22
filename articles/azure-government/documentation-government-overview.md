@@ -16,8 +16,8 @@ ms.workload: azure-government
 ms.date: 08/25/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 628536e90ee682a1a1e64444f490fdaace6b125f
+ms.sourcegitcommit: 48f19f5085108b87d22951da049223ef9d4cd188
+ms.openlocfilehash: ea01213d375d93c47b9fa1e710f1e225adb85f92
 
 
 ---
@@ -69,7 +69,7 @@ Azure Government への接続用に用意されている基本的な暗号化は
 * IaaS VM: Azure Disk Encryption を使用します。 ディスクを Azure Storage にバックアップする際に使用する VHD ファイルは、Storage Service Encryption を有効にすることで暗号化します。ただし、その場合、暗号化されるのは、新しく書き込まれたデータだけです。 つまり、VM を作成してから、VHD ファイルを保持するストレージ アカウントで Storage Service Encryption を有効にすると、元の VHD ファイルではなく、変更のみが暗号化されます。
 * クライアント側の暗号化: データは転送前に暗号化され、保存データも暗号化されるので、データを暗号化するうえで最も安全な方法といえます。 ただし、ストレージを使用してアプリケーションにコードを追加する必要があります。 ストレージを追加したくない場合は、転送中のデータに HTTPS を使用し、Storage Service Encryption を使用して保存データを暗号化する方法があります。 クライアント側の暗号化は、クライアントにかかる負荷が増加するため、スケーラビリティの計画でこの点を考慮する必要があります。特に、大量のデータを暗号化したり転送したりする場合に重要です。
 
-Azure における暗号化オプションの詳細については、「 [Storage Security Guide (ストレージ セキュリティ ガイド)](/storage-security-guide)」を参照してください。
+Azure における暗号化オプションの詳細については、「 [Storage Security Guide (ストレージ セキュリティ ガイド)](https://docs.microsoft.com/en-us/azure/storage/storage-security-guide)」を参照してください。
 
 ## <a name="protecting-customer-data-by-managing-secrets"></a>シークレットを管理することでお客様のデータを保護する
 クラウドにあるデータを保護するうえで、安全なキー管理は不可欠です。 キーの管理を省力化すると共に、クラウド アプリケーションやクラウド サービスでデータを暗号化する際に使用されるキーの管理に絶えず気を配るよう努めてください。
@@ -99,6 +99,6 @@ Microsoft Azure における分離の詳細については、 [Azure セキュ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

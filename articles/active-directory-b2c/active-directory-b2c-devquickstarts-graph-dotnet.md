@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 271e2bd40fb605dc6be229bea8fb479effae4298
+ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
+ms.openlocfilehash: a932b617d57184ef714bf18f1e1e23599db52487
 
 
 ---
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C テナントは非常に大規模になる
 B2C テナントでは、主に 2 つのモードで Graph API と通信します。
 
 * 対話型の一度だけ実行されるタスクでは、タスクの実行時に B2C テナントの管理者アカウントとして実行する必要があります。 このモードでは、Graph API を呼び出す前に管理者が資格情報でサインインする必要があります。
-* 自動化された継続的なタスクでは、必要な権限を付与した何らかの種類のサービス アカウントを使用し、管理タスクを実行する必要があります。 Azure AD では、アプリケーションを登録して、Azure AD に認証することでそれを実行できます。 その際、 **OAuth 2.0 クライアント資格情報付与** を利用する [アプリケーション ID](../active-directory/active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)を使用します。 この場合、アプリケーションはユーザーとしてではなくアプリケーション自体として Graph API を呼び出します。
+* 自動化された継続的なタスクでは、必要な権限を付与した何らかの種類のサービス アカウントを使用し、管理タスクを実行する必要があります。 Azure AD では、アプリケーションを登録して、Azure AD に認証することでそれを実行できます。 その際、 **OAuth 2.0 クライアント資格情報付与** を利用する [アプリケーション ID](../active-directory/develop/active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)を使用します。 この場合、アプリケーションはユーザーとしてではなくアプリケーション自体として Graph API を呼び出します。
 
 この記事では、自動化された事例を実行する方法を示します。 実演として、ユーザーの CRUD (作成、読み取り、更新、削除) 操作を実行する .NET 4.5 `B2CGraphClient` を構築します。 クライアントにはさまざまなメソッドを呼び出すことができる Windows コマンド ライン インターフェイス (CLI) を与えます。 ただし、コードは、非対話型の自動化された方法で動作するように記述されます。
 
@@ -364,6 +364,6 @@ B2C テナントで Graph API を利用して実行するアクションに関�
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

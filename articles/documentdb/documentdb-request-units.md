@@ -1,19 +1,23 @@
 ---
-title: DocumentDB の要求ユニット | Microsoft Docs
-description: DocumentDB の要求ユニット要件を確認、指定、推定する方法について説明します。
+title: "DocumentDB の要求ユニット | Microsoft Docs"
+description: "DocumentDB の要求ユニット要件を確認、指定、推定する方法について説明します。"
 services: documentdb
 author: syamkmsft
 manager: jhubbard
 editor: mimig
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: d0a3c310-eb63-4e45-8122-b7724095c32f
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2016
+ms.date: 11/16/2016
 ms.author: syamk
+translationtype: Human Translation
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: 8b2d13dd16f629fbb2108856cd1e1b2954ece8bf
+
 
 ---
 # <a name="request-units-in-documentdb"></a>DocumentDB の要求ユニット
@@ -35,6 +39,12 @@ DocumentDB の [要求ユニット計算ツール](https://www.documentdb.com/ca
 DocumentDB を使用して、アプリケーションのスループット ニーズを満たすリソースを *予約する* ことで、高速の予測可能なパフォーマンスが得られます。  アプリケーション負荷とアクセス パターンは時間と共に変化するため、DocumentDB はアプリケーションで利用できる予約済みスループットの量を簡単に増減できる機能を備えています。
 
 DocumentDB では、1 秒間に処理する要求ユニットで、予約済みスループットを指定します。  要求ユニットはスループットの通貨と考えることができます。この通貨によって、アプリケーションで利用できる保証された要求ユニット量を秒単位で "*予約*" できます。  ドキュメントの作成、クエリの実行、ドキュメントの更新など、DocumentDB での各操作は、CPU、メモリ、IOPS を消費します。  つまり、それぞれの操作により、"*要求の使用量*" が発生し、それが "*要求ユニット*" で表されます。  アプリケーションのスループット要件と共に、要求ユニット使用量に影響を及ぼす要因を理解しておくと、できるだけコスト効率の高い方法でアプリケーションを実行できます。 
+
+まずは以下のビデオを見ることをお勧めします。このビデオでは、Aravind Ramachandran が要求ユニットと DocumentDB での予測可能なパフォーマンスについて説明しています。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Predictable-Performance-with-DocumentDB/player]
+> 
+> 
 
 ## <a name="specifying-request-unit-capacity"></a>要求ユニット量の指定
 DocumentDB コレクションの作成時に、そのコレクション用に予約する 1 秒ごとの要求ユニット数 (RU) を指定します。  コレクションを作成した後、そのコレクションで使用するために、指定された RU の完全な割り当てが予約されます。  各コレクションは、専用の分離されたスループット特性を持つことが保証されます。  
@@ -114,50 +124,50 @@ DocumentDB サービスからの各応答には、要求で使用される要求
 
     {
      "id": "08259",
-    "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
-    "tags": [
+      "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
+      "tags": [
         {
-        "name": "cereals ready-to-eat"
+          "name": "cereals ready-to-eat"
         },
         {
-        "name": "kellogg"
+          "name": "kellogg"
         },
         {
-        "name": "kellogg's crispix"
+          "name": "kellogg's crispix"
         }
     ],
-    "version": 1,
-    "commonName": "Includes USDA Commodity B855",
-    "manufacturerName": "Kellogg, Co.",
-    "isFromSurvey": false,
-    "foodGroup": "Breakfast Cereals",
-    "nutrients": [
+      "version": 1,
+      "commonName": "Includes USDA Commodity B855",
+      "manufacturerName": "Kellogg, Co.",
+      "isFromSurvey": false,
+      "foodGroup": "Breakfast Cereals",
+      "nutrients": [
         {
-        "id": "262",
-        "description": "Caffeine",
-        "nutritionValue": 0,
-        "units": "mg"
+          "id": "262",
+          "description": "Caffeine",
+          "nutritionValue": 0,
+          "units": "mg"
         },
         {
-        "id": "307",
-        "description": "Sodium, Na",
-        "nutritionValue": 611,
-        "units": "mg"
+          "id": "307",
+          "description": "Sodium, Na",
+          "nutritionValue": 611,
+          "units": "mg"
         },
         {
-        "id": "309",
-        "description": "Zinc, Zn",
-        "nutritionValue": 5.2,
-        "units": "mg"
+          "id": "309",
+          "description": "Zinc, Zn",
+          "nutritionValue": 5.2,
+          "units": "mg"
         }
-    ],
-    "servings": [
+      ],
+      "servings": [
         {
-        "amount": 1,
-        "description": "cup (1 NLEA serving)",
-        "weightInGrams": 29
+          "amount": 1,
+          "description": "cup (1 NLEA serving)",
+          "weightInGrams": 29
         }
-    ]
+      ]
     }
 
 > [!NOTE]
@@ -199,7 +209,7 @@ DocumentDB サービスからの各応答には、要求で使用される要求
 
 この例では、平均スループット要件を 1,275 RU/s と想定しています。  100 の位で丸めて、このアプリケーションのコレクションに 1,300 RU/s をプロビジョニングすることになります。
 
-## <a name="<a-id="requestratetoolarge"></a>-exceeding-reserved-throughput-limits"></a><a id="RequestRateTooLarge"></a> 予約されたスループット上限の超過
+## <a name="a-idrequestratetoolargea-exceeding-reserved-throughput-limits"></a><a id="RequestRateTooLarge"></a> 予約されたスループット上限の超過
 要求ユニットの消費は、1 秒あたりのレートとして評価されることを思い出してください。 コレクションに対してプロビジョニングされた要求単位レートをアプリケーションが超過した場合、そのレートが予約されたレベルを下回るまで、コレクションに対する要求は制限されます。 スロットルが発生すると、サーバーはいち早く RequestRateTooLargeException (HTTP 状態コード 429) で要求を終了させ、x-ms-retry-after-ms ヘッダーを返して、ユーザーが要求の試行を再開できるまでに待機しなければならない時間をミリ秒で示します。
 
     HTTP Status 429
@@ -214,7 +224,6 @@ DocumentDB サービスからの各応答には、要求で使用される要求
 Azure DocumentDB データベースの予約済みスループットの詳細については、以下のリソースを参照してください。
 
 * [DocumentDB の料金](https://azure.microsoft.com/pricing/details/documentdb/)
-* [DocumentDB の容量の管理](documentdb-manage.md) 
 * [DocumentDB のデータのモデル化](documentdb-modeling-data.md)
 * [DocumentDB のパフォーマンス レベル](documentdb-partition-data.md)
 
@@ -230,6 +239,6 @@ DocumentDB に関するスケールとパフォーマンスのテストを始め
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

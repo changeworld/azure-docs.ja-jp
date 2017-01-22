@@ -1,3 +1,4 @@
+
 ---
 title: "グループ ポリシーと MDM の設定 | Microsoft Docs"
 description: "会社所有のデバイスで使用すべきグループ ポリシーとモバイル デバイス管理 (MDM) 設定に関する情報を提供します。 これらのポリシーはユーザーのデバイス全体に適用されます。"
@@ -16,8 +17,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1b9e0ab4be96bec6deeaf50ec411c37b9379598a
+ms.sourcegitcommit: 6bdec7bf35bb4a233200def36c0e697baaf15fec
+ms.openlocfilehash: 5ca48cf3cc4b2f4d86463e36c73de47e386cff25
 
 
 ---
@@ -57,10 +58,11 @@ MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適�
 * [Azure Active Directory の Enterprise State Roaming を有効にする](active-directory-windows-enterprise-state-roaming-enable.md)
 * [設定とデータのローミングに関する FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
+* [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

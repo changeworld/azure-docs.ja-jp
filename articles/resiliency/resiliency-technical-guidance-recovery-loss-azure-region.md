@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 15f0183d8ada59227a412788f1d53a9db0e712c8
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 0062dc90d8e1a823e17183e96a91a9f224e8cf48
 
 
 ---
@@ -97,7 +97,7 @@ Azure SQL Database には、geo リストアとアクティブ geo レプリケ�
 [アクティブ geo レプリケーション](../sql-database/sql-database-geo-replication-overview.md) は、すべてのデータベース レベルで使用できます。 アクティブ geo レプリケーションは、geo リストアよりもアグレッシブな復旧要件があるアプリケーション用に設計されています。 アクティブ geo レプリケーションを使用して、別のリージョン内のサーバーで最大 4 つの読み取り可能なセカンダリを作成できます。 いずれかのセカンダリへのフェールオーバーを開始できます。 さらに、アクティブ geo レプリケーションを使用すると、アプリケーションのアップグレードや再配置のシナリオをサポートするだけでなく読み取り専用ワークロードの負荷を分散することができます。 詳細については、[geo レプリケーションの構成](../sql-database/sql-database-geo-replication-portal.md)に関するページと、[セカンダリ データベースへのフェールオーバー](../sql-database/sql-database-geo-replication-failover-portal.md)に関するページをご覧ください。 アプリケーションを設計して実装する方法と、ダウンタイムなしのアプリケーション アップグレードの詳細については、「[SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)」と「[SQL Database アクティブ geo レプリケーションを使用したクラウド アプリケーションのローリング アップグレードの管理](../sql-database/sql-database-manage-application-rolling-upgrade.md)」をご覧ください。
 
 ### <a name="sql-server-on-virtual-machines"></a>Virtual Machines 上の SQL Server
-SQL Server 2012 (以降) を Azure Virtual Machines で実行した場合、復旧および高可用性のためのさまざまなオプションを利用できます。 詳細については、「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+SQL Server 2012 (以降) を Azure Virtual Machines で実行した場合、復旧および高可用性のためのさまざまなオプションを利用できます。 詳細については、「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
 
 ## <a name="other-azure-platform-services"></a>その他の Azure プラットフォーム サービス
 複数の Azure リージョンでクラウド サービスを実行しようとする場合、依存関係ごとに影響について検討する必要があります。 以下のセクションにおいて、サービスに固有のガイダンスでは代替の Azure データセンターにおいては同じ Azure サービスを使用する必要があると想定されています。 これには、構成タスクとデータ レプリケーション タスクの両方があります。
@@ -188,6 +188,6 @@ Azure Media Services には、エンコードとストリーミングのため�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

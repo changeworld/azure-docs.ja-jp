@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
-ms.openlocfilehash: c7cb4b872723e07b720c87ecef9d9d8f136c25eb
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: c153f09741b9b063d67459bbb127f9c4e7942a5b
 
 
 ---
@@ -156,11 +156,11 @@ V12 には継続的に機能が追加されます。 したがって、Azure の
 - Azure SQL Database の概要については、[SQL Database の概要](sql-database-overview.md)に関する記事を参照してください。
 - Transact-SQL のサポートおよび違いについては、「[Azure SQL Database の Transact-SQL の相違点](sql-database-transact-sql-information.md)」を参照してください。
 - サービス階層に基づく特定のリソース クォータと制限については、**サービス階層**に関する記事を参照してください。 サービス レベルの概要については、「 [SQL Database のサービス階層](sql-database-service-tiers.md)」を参照してください。
-- セキュリティ関連のガイドラインについては、「 [Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md)」を参照してください。
+- セキュリティの概要については、[Azure SQL Database のセキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。
 - SQL Database の利用可能なドライバーとサポートの詳細については、「 [SQL Database および SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

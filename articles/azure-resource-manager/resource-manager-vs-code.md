@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2016
+ms.date: 01/03/2017
 ms.author: chmatsk;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f839784aaef511c60ec1c3eea0b64bfdd5f67a4f
+ms.sourcegitcommit: 10c7051c9b1218081d95cb10403006bfd95126ba
+ms.openlocfilehash: 2ac1c2cce7a9e045990894b0bbaa045df3d48954
 
 
 ---
 # <a name="working-with-azure-resource-manager-templates-in-visual-studio-code"></a>Visual Studio Code で Azure Resource Manager テンプレートを操作する
-Azure Resource Manager テンプレートは、リソースおよび関連する依存関係を記述する JSON ファイルです。 これらのファイルは大きく複雑になることがあるため、ツールのサポートが重要です。 Visual Studio Code は新しく軽量なオープン ソースのクロスプラットフォーム コード エディターです。 [新たな拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)で Resource Manager テンプレートの作成と編集をサポートします。 VS Code はどこででも実行が可能です。Resource Manager テンプレートをデプロイする場合を除き、インターネットへのアクセスを必要としません。
+Azure Resource Manager テンプレートは、リソースおよび関連する依存関係を記述する JSON ファイルです。 これらのファイルは大きく複雑になることがあるため、ツールのサポートが重要です。 Visual Studio Code は新しく軽量なオープン ソースのクロスプラットフォーム コード エディターです。 [新たな拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)で Resource Manager テンプレートの作成と編集をサポートします。 VS Code はどこでも実行でき、インターネット アクセスを必要とするのは Resource Manager テンプレートを Azure サブスクリプションにデプロイするときのみです。
 
 まだ VS Code を入手していない場合は、 [https://code.visualstudio.com/](https://code.visualstudio.com/)からインストールできます。
 
@@ -42,7 +42,7 @@ VS Code で JSON テンプレートを操作するには、拡張機能のイン
 
 1. ファイルの内容を [azure-xplat-arm-tooling](https://raw.githubusercontent.com/Azure/azure-xplat-arm-tooling/master/VSCode/armsnippets.json) リポジトリからクリップボードにコピーします。
 2. VS Code を起動します。 
-3. VS Code では、JSON スニペットは 2 とおりの方法で開くことができます。**[ファイル]** -> **[ユーザー設定]** -> **[User Snippets (ユーザー スニペット)]** -> **[JSON]** の順にクリックして移動するか、**F1** キーを押し、"**Preferences: Snippets**" を選択できるようになるまで「**preferences**」と入力してください。
+3. VS Code では、2 とおりの方法で JSON スニペットを開くことができます。1 つ目の方法は、**[ファイル]** -> **[ユーザー設定]** -> **[User Snippets (ユーザー スニペット)]** -> **[JSON]** の順に移動します。 2 つ目の方法は、**F1** キーを押し、"**Preferences: Snippets**" を選択できるようになるまで「**preferences**」と入力します。
    
     ![preference snippets](./media/resource-manager-vs-code/preferences-snippets.png)
    
@@ -61,19 +61,19 @@ Resource Manager スニペットの使用を開始するために必要な作業
 1. リソース グループからテンプレートをエクスポートした場合は、抽出したファイルを VS Code で開きます。
    
     ![show files](./media/resource-manager-vs-code/show-files.png)
-2. template.json ファイルを開き、編集とリソースの追加ができるようにします。 " **"resources": [** " の後で Enter キーを押し、新しい行を開始します。 「 **arm**」と入力すると、オプションの一覧が表示されます。 これらのオプションは、インストールしたテンプレートのスニペットです。 次のようになります。 
+2. template.json ファイルを開き、編集とリソースの追加ができるようにします。 `"resources": [` の後で Enter キーを押し、新しい行を開始します。 「**arm**」と入力すると、オプションの一覧が表示されます。 これらのオプションは、インストールしたテンプレートのスニペットです。 
    
     ![show snippets](./media/resource-manager-vs-code/type-snippets.png)
-3. 使用するスニペットを選択してください。 この記事では、新しいパブリック IP アドレスを作成するために " **arm-ip** " を選択します。 新しく作成されたリソースの右中かっこ "}" の後ろにコンマを入力し、テンプレートの構文が有効であることを確認します。
+3. 使用するスニペットを選択してください。 この記事では、新しいパブリック IP アドレスを作成するために " **arm-ip** " を選択します。 新しく作成されたリソースの右中かっこ `}` の後ろにコンマを入力し、テンプレートの構文が有効であることを確認します。
    
      ![add comma](./media/resource-manager-vs-code/add-comma.png)
-4. VS Code には IntelliSense が組み込まれています。 テンプレートの編集の際、VS Code は使用可能な値を提案します。 たとえば、変数のセクションをテンプレートに追加するには、**""** (2 つの二重引用符) を追加し、この引用符の間で **Ctrl + Space** キーを押します。 " **variables**" を含むオプションが表示されます。
+4. VS Code には IntelliSense が組み込まれています。 テンプレートの編集の際、VS Code は使用可能な値を提案します。 たとえば、テンプレートに変数のセクションを追加するには、`""` (2 つの二重引用符) を追加し、この引用符の間で **Ctrl + Space** キーを押します。 "**variables**" を含むオプションが表示されます。
    
     ![add variables](./media/resource-manager-vs-code/add-variables.png)
-5. IntelliSense は、使用可能な値または関数も提示します。 パラメーターの値にプロパティを設定するには、**"[]"** と **Ctrl + Space** キーを使って式を作成します。 関数名の入力を開始します。 使用する関数を見つけたら、 **Tab** キーを押します。
+5. IntelliSense は、使用可能な値または関数も提示します。 パラメーターの値にプロパティを設定するには、`"[]"` と **Ctrl + Space** キーを使って式を作成します。 関数名の入力を開始します。 使用する関数を見つけたら、 **Tab** キーを押します。
    
     ![add parameter](./media/resource-manager-vs-code/select-parameters.png)
-6. 関数内でもう一度 **Ctrl + Space** キーを押し、そのテンプレートで使用可能なパラメーターの一覧を表示します。
+6. テンプレートで使用可能なパラメーターの一覧を表示するには、関数内でもう一度 **Ctrl + Space** キーを押します。
    
     ![add parameter](./media/resource-manager-vs-code/select-avail-parameters.png)
 7. テンプレートのスキーマ検証で問題があった場合、エディターにはいつもの波線が表示されます。 エラーと警告の一覧を見るには、 **Ctrl + Shift + M** キーを押すか、左下のステータス バーのグリフを選択します。
@@ -89,31 +89,47 @@ Resource Manager スニペットの使用を開始するために必要な作業
 
 ### <a name="windows"></a>Windows
 1. PowerShell コマンド プロンプトを開きます。 
-2. 次のとおり入力してログインします。 
+2. ログインするには、次のように入力します。 
    
-        Login-AzureRmAccount 
+  ```powershell
+  Login-AzureRmAccount
+  ```
+
 3. 複数のサブスクリプションがある場合は、次のように入力して、サブスクリプションの一覧を取得します。
-   
-        Get-AzureRmSubscription
+
+  ```powershell 
+  Get-AzureRmSubscription
+  ```
    
     その後、使用するサブスクリプションを選択します。
-   
-        Select-AzureRmSubscription -SubscriptionId <Subscription Id>
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionId <Subscription Id>
+  ```
+
 4. parameters.json ファイルのパラメーターを更新します。
 5. Deploy.ps1 を実行して、Azure 上にテンプレートをデプロイします。
 
 ### <a name="osxlinux"></a>OSX/Linux
 1. ターミナル ウィンドウを開きます。 
-2. 次のとおり入力してログインします。
-   
-        azure login 
+2. ログインするには、次のように入力します。
+
+  ```azurecli
+  azure login
+  ```
+
 3. 複数のサブスクリプションがある場合は、次のようにして適切なサブスクリプションを選択します。
-   
-        azure account set <subscriptionNameOrId> 
+
+  ```azurecli
+  azure account set <subscriptionNameOrId> 
+  ```
+
 4. parameters.json ファイルのパラメーターを更新します。
 5. 次のコマンドを実行して、テンプレートをデプロイします。
-   
-        azure group deployment create -f <PathToTemplate> 
+
+  ```azurecli 
+  azure group deployment create -f <PathToTemplate>
+  ``` 
 
 ## <a name="next-steps"></a>次のステップ
 * テンプレートの詳細については、「 [Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
@@ -123,6 +139,6 @@ Resource Manager スニペットの使用を開始するために必要な作業
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

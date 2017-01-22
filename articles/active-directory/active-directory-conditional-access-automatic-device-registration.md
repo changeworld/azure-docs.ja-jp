@@ -5,25 +5,25 @@ services: active-directory
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 01/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5c387c5355957fea0ccffe58e707fae3d2e77c34
+ms.sourcegitcommit: b621a1716b731c99f9ad54d2e29006fb7bddadbb
+ms.openlocfilehash: 8fb880a03548540059ad896925adb57577d1aed2
 
 
 ---
 # <a name="automatic-device-registration-with-azure-active-directory-for-windows-domain-joined-devices"></a>Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録
 IT 管理者は、ドメイン参加済みの Windows デバイスをサイレント モードで自動的に Azure Active Directory (Azure AD) に登録できます。 これは、デバイスに基づいて条件付きでアクセスを許可するポリシーを Office 365 アプリケーションまたは AD FS によってオンプレミスで管理されているアプリケーションに対して構成している場合に役立ちます。 デバイス登録のシナリオの詳細については、「 [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)」を参照してください。
 
-> AZURE.NOTE デバイスの自動登録をセットアップする最新手順については、「 [Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の設定方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。
+> [!NOTE]
+>  デバイスの自動登録をセットアップする最新手順については、「 [Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の設定方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。
 > 
 > 
 
@@ -31,7 +31,6 @@ Azure Active Directory への自動デバイス登録は、Active Directory ド�
 
 ドメイン参加済みの Windows デバイスの Azure AD への登録を開始するには、次の前提条件に従います。 前提条件を満たしたら、ドメイン参加済みの Windows デバイスの自動デバイス登録を構成します。
 
-## <a name="prerequisites-for-automatic-device-registration-of-domain-joined-windows-devices-with-azure-active-directory"></a>ドメイン参加済みの Windows デバイスを Azure Active Directory に自動デバイス登録するための前提条件
 ## <a name="deploy-ad-fs-and-connect-to-azure-active-directory-using-azure-active-directory-connect"></a>Azure Active Directory Connect を使用して、AD FS をデプロイして Azure Active Directory に接続する
 1. Azure Active Directory Connect を使用して Active Directory フェデレーション サービス (AD FS) を Windows Server 2012 R2 にデプロイし、Azure Active Directory とのフェデレーション関係をセットアップします。
 2. 追加の Azure Active Directory 証明書利用者信頼の要求規則を構成する
@@ -100,6 +99,6 @@ AD FS を使用したデバイス登録のデプロイに関する詳細につ�
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.date: 09/26/2016
 ms.author: jackma
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: cfd53c8240244ffbcf34380acb25657fcc8c9562
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 2150735fbf1e1438feeef70f0ea92ed041d0cd24
 
 
 ---
@@ -50,8 +50,8 @@ Azure Search には、パブリック インターネット接続経由のすべ
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>VM で SQL Server への接続を構成する
 Azure Search に必要な、暗号化された接続を設定した後は、Azure VM 上の SQL Server に固有の追加の構成手順があります。 その構成手順をまだ実行していない場合は、以下のいずれかの記事を参照して構成を実行します。
 
-* **Resource Manager** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure using Resource Manager](../virtual-machines/virtual-machines-windows-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」(Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続) をご覧ください。 
-* **クラシック** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure Classic](../virtual-machines/virtual-machines-windows-classic-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」(Azure クラシックでの SQL Server 仮想マシンへの接続) をご覧ください。
+* **Resource Manager** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure using Resource Manager](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md)」(Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続) をご覧ください。 
+* **クラシック** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure Classic](../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect.md)」(Azure クラシックでの SQL Server 仮想マシンへの接続) をご覧ください。
 
 特に、各記事の、インターネット経由での接続に関するセクションを確認してください。
 
@@ -91,6 +91,6 @@ Azure Portal を使用してインデクサーを作成する場合は、作成�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

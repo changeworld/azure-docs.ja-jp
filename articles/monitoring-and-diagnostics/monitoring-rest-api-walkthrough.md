@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: mcollier
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9a1114fb61990cf2c590a28bce97ff4b7a425ae5
+ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
+ms.openlocfilehash: 6d66a8fa6eac5bc0ecdddc12b67697045556bf46
 
 
 ---
@@ -30,7 +30,7 @@ Monitor API では、さまざまなメトリック データ ポイントを処
 ## <a name="authenticating-azure-monitor-requests"></a>Azure Monitor 要求の認証
 まず、要求を認証します。
 
-Azure Monitor API に対して実行されるすべてのタスクが、Azure Resource Manager 認証モデルを使用します。 したがって、すべての要求を Azure Active Directory (Azure AD) で認証する必要があります。 クライアント アプリケーションを認証する 1 つの方法が、Azure AD サービス プリンシパルを作成し、認証 (JWT) トークンを取得することです。 次のサンプル スクリプトは、PowerShell を使用して、Azure AD サービス プリンシパルを作成しています。 さらに詳細なチュートリアルについては、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-password)」のドキュメントを参照してください。 [Azure ポータルを使用してサービス プリンシパルを作成](../resource-group-create-service-principal-portal.md)することもできます。
+Azure Monitor API に対して実行されるすべてのタスクが、Azure Resource Manager 認証モデルを使用します。 したがって、すべての要求を Azure Active Directory (Azure AD) で認証する必要があります。 クライアント アプリケーションを認証する 1 つの方法が、Azure AD サービス プリンシパルを作成し、認証 (JWT) トークンを取得することです。 次のサンプル スクリプトは、PowerShell を使用して、Azure AD サービス プリンシパルを作成しています。 さらに詳細なチュートリアルについては、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-password)」のドキュメントを参照してください。 [Azure ポータルを使用してサービス プリンシパルを作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)することもできます。
 
 ```PowerShell
 $subscriptionId = "{azure-subscription-id}"
@@ -191,12 +191,12 @@ Azure ポータルからリソース ID を取得することもできます。 
 ### <a name="azure-powershell"></a>Azure PowerShell
 リソース ID は、Azure PowerShell コマンドレットを使用して取得することもできます。 たとえば Azure Web アプリのリソース ID を取得するには、次のスクリーンショットのように、Get-AzureRmWebApp コマンドレットを実行します。
 
-![Alt "PowerShell 取得したリソース ID"](./media\\monitoring-rest-api-walkthrough\\resourceid_powershell.png)
+![Alt "PowerShell 取得したリソース ID"](./media/monitoring-rest-api-walkthrough/resourceid_powershell.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 Azure CLI を使用してリソース ID を取得するには、次のスクリーンショットのように、"-json" オプションを指定して "azure webapp show" コマンドを実行します。
 
-![Alt "PowerShell 取得したリソース ID"](./media\\monitoring-rest-api-walkthrough\\resourceid_azurecli.png)
+![Alt "PowerShell 取得したリソース ID"](./media/monitoring-rest-api-walkthrough/resourceid_azurecli.png)
 
 ## <a name="retrieve-activity-log-data"></a>アクティビティ ログ データの取得
 メトリック定義と関連する値を処理するだけでなく、Azure リソースに関連するその他の興味深い洞察を取得することもできです。 たとえば、 [アクティビティ ログ](https://msdn.microsoft.com/library/azure/dn931934.aspx) データにクエリを実行できます。 次の例は、Azure Monitor REST API を使用して、Azure サブスクリプションの特定の日付範囲にあるアクティビティ ログ データにクエリを実行しています。
@@ -219,6 +219,6 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/provide
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: e3e07066d5fc8fd9ceb45cb4b397e7a1e2869c38
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 6df92e3c43a9e7ae2e13f21b05cbb94088c46516
 
 
 ---
@@ -128,13 +128,13 @@ Azure に高可用性ソリューションを実装した場合、Azure 内の�
 ### <a name="azure-only-high-availability-solutions"></a>Azure のみ: 高可用性ソリューション
 Azure 内の SQL Server データベースの高可用性ソリューションを実現するには、AlwaysOn 可用性グループまたはデータベース ミラーリングを使用します。
 
-次の図は、Azure Virtual Machines で実行している AlwaysOn 可用性グループのアーキテクチャを示しています。 この図は、このテーマについての詳細な解説記事「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」から引用したものです。
+次の図は、Azure Virtual Machines で実行している AlwaysOn 可用性グループのアーキテクチャを示しています。 この図は、このテーマについての詳細な解説記事「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)」から引用したものです。
 
 ![Microsoft Azure AlwaysOn 可用性グループ](./media/resiliency-technical-guidance-recovery-local-failures/high_availability_solutions-1.png)
 
 また、Azure ポータルの AlwaysOn テンプレートを使用して、Azure VM で AlwaysOn 可用性グループのデプロイをエンドツーエンドで自動的にプロビジョニングすることもできます。 詳細については、 [Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](https://blogs.technet.microsoft.com/dataplatforminsider/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery/)に関する記事を参照してください。
 
-次の図は、Azure Virtual Machines でのデータベース ミラーリングの使用方法を示しています。 この図も、 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する詳細な解説記事から引用したものです。
+次の図は、Azure Virtual Machines でのデータベース ミラーリングの使用方法を示しています。 この図も、 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)に関する詳細な解説記事から引用したものです。
 
 ![Database mirroring in Microsoft Azure](./media/resiliency-technical-guidance-recovery-local-failures/high_availability_solutions-2.png)
 
@@ -197,6 +197,6 @@ Azure HDInsight に関連付けられているデータは、既定では Azure 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

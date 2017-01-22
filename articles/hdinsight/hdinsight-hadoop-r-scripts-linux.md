@@ -12,11 +12,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 01/09/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: fb8a8563d41827ce22604e2fb485c84a1441efa2
-ms.openlocfilehash: 651d759ac489c6e42a70cbf4bf21a8722771e668
+ms.sourcegitcommit: 2df17cddf629cb72b7fa4d590dfaa69311c96aa4
+ms.openlocfilehash: c63c8215e2075af43f4f0cb46930dd0844a4e489
 
 
 ---
@@ -139,6 +139,6 @@ HDInsight クラスターへの R のインストールに使用するスクリ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

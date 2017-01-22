@@ -1,7 +1,7 @@
 ---
 title: "Azure Portal による新しいエラスティック プールの作成 | Microsoft Docs"
 description: "SQL データベース構成にスケーラブルなエラスティック プールを追加して、多数のデータベースでの管理とリソース共有を簡単にする方法。"
-keywords: "スケーラブルなデータベース、データベースの構成"
+keywords: "スケーラブルなデータベース, データベースの構成"
 services: sql-database
 documentationcenter: 
 author: ninarn
@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 16f4e287a955b787a08cc6949094bd0f5224421a
-ms.openlocfilehash: 29488482f3e6c5f3dcf0eac04fe7e5e33fb832ce
+ms.sourcegitcommit: 6c8420a154d998aa95c0220049ee54b3039a872b
+ms.openlocfilehash: 4be8e4f81965fa4d872e29fdb9aaa45909d18c37
 
 
 ---
@@ -89,7 +89,7 @@ ms.openlocfilehash: 29488482f3e6c5f3dcf0eac04fe7e5e33fb832ce
 
     使用するデータベースに過去の使用状況テレメトリが十分にある場合、構成の決定に役立つ **[Estimated eDTU and GB usage (推定される eDTU と GB の使用状況)]** グラフと **[Actual eDTU usage (実際の eDTU 使用量)]** 棒グラフが更新されます。 また、プールの適切なサイズ設定に役立つ推奨事項に関するメッセージが表示される場合もあります。 詳細については、「 [動的な推奨事項](#dynamic-recommendations)」を参照してください。
 
-3. **[プールの構成]** ページにあるコントロールを使用して設定を確認し、プールを構成します。 各サービス レベルの上限の詳細については、[エラスティック プールの上限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)に関するトピックを参照してください。プールの適切なサイズ設定に関する詳細なガイダンスについては、[エラスティック プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)に関する記事を参照してください。 プールの設定の詳細については、[エラスティック データベースのプロパティ](sql-database-elastic-pool.md#elastic-pool-and-elastic-database-properties)に関するページを参照してください。
+3. **[プールの構成]** ページにあるコントロールを使用して設定を確認し、プールを構成します。 各サービス レベルの上限の詳細については、[エラスティック プールの上限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)に関するトピックを参照してください。プールの適切なサイズ設定に関する詳細なガイダンスについては、[エラスティック プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)に関する記事を参照してください。 プールの設定の詳細については、[エラスティック データベースのプロパティ](sql-database-elastic-pool.md#elastic-pool-properties)に関するページを参照してください。
 
     ![エラスティック プールの構成](./media/sql-database-elastic-pool-create-portal/configure-performance.png)
 
@@ -129,6 +129,6 @@ SQL Database サービスでは使用状況の履歴を評価し、単一のデ�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 
