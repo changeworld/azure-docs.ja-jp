@@ -15,16 +15,14 @@ ms.topic: article
 ms.date: 02/05/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 1eaea8001477be2ef2ef788bdf1f1bffcf19efe9
+ms.sourcegitcommit: 8a7ca492d846f274019eb228fc027defac0aa390
+ms.openlocfilehash: 98688632c6aaba14b71923dc217f6b0368ae76d8
 
 
 ---
 # <a name="install-and-use-spark-on-hdinsight-hadoop-clusters-using-script-action"></a>スクリプト アクションを使用して、HDInsight Hadoop クラスターで Spark をインストールして使用する
 > [!IMPORTANT]
 > この記事は現在、推奨されていません。 現在、HDInsight は、Spark を Windows ベースのクラスターに対する最上位のクラスターの種類として提供します。つまり、現在、スクリプト アクションを使用して Hadoop クラスターを変更しなくても、Spark クラスターを直接作成できます。 Spark クラスターの種類を使用して、Spark バージョン 1.3.1 の HDInsight バージョン 3.2 クラスターを取得します。  Spark のさまざまなバージョンをインストールするために、スクリプト アクションを使用できます。 HDInsight には、スクリプト アクションのサンプル スクリプトがあります。
->
->
 
 スクリプト アクションを使用して Windows ベースの HDInsight に Spark をインストールし、HDInsight クラスターで Spark クエリを実行する方法について説明します。
 
@@ -32,7 +30,7 @@ ms.openlocfilehash: 1eaea8001477be2ef2ef788bdf1f1bffcf19efe9
 
 * [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報。
 * [HDInsight での Apache Spark の使用](hdinsight-apache-spark-jupyter-spark-sql.md): HDInsight の Spark クラスターを作成します。
-* [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]: Script Action を使用した HDInsight クラスターのカスタマイズに関する一般情報。
+* [スクリプト アクションを使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]: スクリプト アクションを使用した HDInsight クラスターのカスタマイズに関する一般情報。
 * [HDInsight 用のスクリプト アクションのスクリプトを開発する](hdinsight-hadoop-script-actions.md)。
 
 ## <a name="what-is-spark"></a>Spark とは
@@ -52,16 +50,14 @@ HDInsight クラスターに Spark をインストールするためのサンプ
 
 > [!NOTE]
 > サンプル スクリプトは、HDInsight 3.1 と 3.2 クラスターでのみ機能します。 HDInsight クラスター バージョンの詳細については、「 [HDInsight クラスター バージョン](hdinsight-component-versioning.md)」を参照してください。
->
->
 
 1. 「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)」の説明に基づき、**CUSTOM CREATE** オプションを使用してクラスターの作成を開始します。 次に基づいてクラスター バージョンを選択します。
 
    * **Spark 1.2.0**をインストールする場合は、HDInsight 3.2 クラスターを作成します。
    * **Spark 1.0.2**をインストールする場合は、HDInsight 3.1 クラスターを作成します。
-2. ウィザードの **[スクリプト アクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
+2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
-    ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-spark-install/HDI.CustomProvision.Page6.png "Use Script Action to customize a cluster")
+    ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-spark-install/HDI.CustomProvision.Page6.png "スクリプト アクションを使ってクラスターをカスタマイズする")
 
     <table border='1'>
         <tr><th>プロパティ</th><th>値</th></tr>
@@ -187,19 +183,15 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 
         libraryDependencies += "org.apache.spark" %% "spark-core" % "1.2.0"
 
-
-
-    >[AZURE.NOTE] 必ずファイル内に空の行を保持してください。
-
+    > [!NOTE]
+    > 必ずファイル内に空の行を保持してください。
 
 1. **SimpleScalaApp** フォルダーの下にディレクトリ構造 **\src\main\scala** を作成し、前に作成した Scala プログラム (**SimpleApp.scala**) を \src\main\scala フォルダーの下に貼り付けます。
 2. コマンド プロンプトを開き、SimpleScalaApp ディレクトリに移動して、次のコマンドを入力します。
 
         sbt package
 
-
     アプリケーションがコンパイルされると、ルート SimpleScalaApp フォルダー内の **\target\scala-2.10** ディレクトリの下に **simpleapp_2.10-1.0.jar** ファイルが作成されます。
-
 
 #### <a name="run-the-job-on-the-cluster"></a>クラスター上でジョブを実行する
 このセクションでは、Spark がインストールされているクラスターにリモート接続し、SimpleScalaApp プロジェクトの対象フォルダーをコピーします。 次に、 **spark-submit** コマンドを使用して、クラスター上のジョブを送信します。
@@ -215,33 +207,41 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
         Lines with a: 21374, Lines with b: 11430
 
 ## <a name="install-spark-using-azure-powershell"></a>Azure PowerShell を使用した Spark のインストール
-このセクションでは、 **<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptAction</a>** コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。 次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。
+このセクションでは、 **<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptAction</a>** コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。 次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」を参照してください。
 
 次の手順に従います。
 
 1. Azure PowerShell ウィンドウを開き、次の変数を宣言します。
 
-        # Provide values for these variables
-        $subscriptionName = "<SubscriptionName>"        # Name of the Azure subscription
-        $clusterName = "<HDInsightClusterName>"            # HDInsight cluster name
-        $storageAccountName = "<StorageAccountName>"    # Azure Storage account that hosts the default container
-        $storageAccountKey = "<StorageAccountKey>"      # Key for the Storage account
-        $containerName = $clusterName
-        $location = "<MicrosoftDataCenter>"                # Location of the HDInsight cluster. It must be in the same data center as the Storage account.
-        $clusterNodes = <ClusterSizeInNumbers>            # Number of nodes in the HDInsight cluster
-        $version = "<HDInsightClusterVersion>"          # For example, "3.2"
+    ```powershell
+    # Provide values for these variables
+    $subscriptionName = "<SubscriptionName>"        # Name of the Azure subscription
+    $clusterName = "<HDInsightClusterName>"            # HDInsight cluster name
+    $storageAccountName = "<StorageAccountName>"    # Azure Storage account that hosts the default container
+    $storageAccountKey = "<StorageAccountKey>"      # Key for the Storage account
+    $containerName = $clusterName
+    $location = "<MicrosoftDataCenter>"                # Location of the HDInsight cluster. It must be in the same data center as the Storage account.
+    $clusterNodes = <ClusterSizeInNumbers>            # Number of nodes in the HDInsight cluster
+    $version = "<HDInsightClusterVersion>"          # For example, "3.2"
+    ```
+
 2. クラスター内のノードや使用する既定のストレージなどの構成値を指定します。
 
-        # Specify the configuration options
-        Select-AzureSubscription $subscriptionName
-        $config = New-AzureHDInsightClusterConfig -ClusterSizeInNodes $clusterNodes
-        $config.DefaultStorageAccount.StorageAccountName="$storageAccountName.blob.core.windows.net"
-        $config.DefaultStorageAccount.StorageAccountKey=$storageAccountKey
-        $config.DefaultStorageAccount.StorageContainerName=$containerName
+    ```powershell
+    # Specify the configuration options
+    Select-AzureSubscription $subscriptionName
+    $config = New-AzureHDInsightClusterConfig -ClusterSizeInNodes $clusterNodes
+    $config.DefaultStorageAccount.StorageAccountName="$storageAccountName.blob.core.windows.net"
+    $config.DefaultStorageAccount.StorageAccountKey=$storageAccountKey
+    $config.DefaultStorageAccount.StorageContainerName=$containerName
+    ```
+
 3. **Add-AzureHDInsightScriptAction** コマンドレットを使用して、スクリプト アクションをクラスター構成に追加します。 その後、クラスターの作成時に、このスクリプト アクションが実行されます。
 
-        # Add a script action to the cluster configuration
-        $config = Add-AzureHDInsightScriptAction -Config $config -Name "Install Spark" -ClusterRoleCollection HeadNode -Uri https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1
+    ```powershell
+    # Add a script action to the cluster configuration
+    $config = Add-AzureHDInsightScriptAction -Config $config -Name "Install Spark" -ClusterRoleCollection HeadNode -Uri https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1
+    ```
 
     **Add-AzureHDInsightScriptAction** コマンドレットには次のパラメーターが必要です。
 
@@ -266,10 +266,12 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
     <td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">スクリプトで必要なパラメーター。 このトピックで使用するサンプル スクリプトでは、パラメーターは必要ありません。そのため、このパラメーターは上記のスニペットに含まれません。
     </td></tr>
     </table>
-4. 最後に、Spark がインストールされているカスタマイズされたクラスターの作成を開始します。  
+4. 最後に、Spark がインストールされているカスタマイズされたクラスターの作成を開始します。
 
-        # Start creating a cluster with Spark installed
-        New-AzureHDInsightCluster -Config $config -Name $clusterName -Location $location -Version $version
+    ```powershell
+    # Start creating a cluster with Spark installed
+    New-AzureHDInsightCluster -Config $config -Name $clusterName -Location $location -Version $version
+    ```
 
 入力を求められたら、クラスターの資格情報を入力します。 クラスターが作成されるまでに数分かかる場合があります。
 
@@ -282,19 +284,19 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 ## <a name="see-also"></a>関連項目
 * [HDInsight で Hadoop を作成する](hdinsight-provision-clusters.md): HDInsight クラスターを作成します。
 * [HDInsight で Apache Spark を使用する](hdinsight-apache-spark-jupyter-spark-sql.md): HDInsight で Spark を使用します。
-* [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]: Script Action を使用して HDInsight クラスターをカスタマイズします。
+* [スクリプト アクションを使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]: スクリプト アクションを使用して HDInsight クラスターをカスタマイズします。
 * [HDInsight 用のスクリプト アクションのスクリプトを開発する](hdinsight-hadoop-script-actions.md): スクリプト アクションのスクリプトを開発します。
-* [HDInsight Hadoop クラスターでの R のインストール][hdinsight-install-r]に関するページでは、HDInsight Hadoop クラスターで R をインストールして使用するためのクラスター カスタマイズの使用法に関する手順が説明されています。 R は、統計計算用のオープン ソースの言語および環境です。 R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。 また、広範なグラフィカル機能も提供します。
+* 「[HDInsight Hadoop クラスターに R をインストールして使用する][hdinsight-install-r]」では、HDInsight Hadoop クラスターで R をインストールして使用するためのクラスター カスタマイズの使用法に関する手順が説明されています。 R は、統計計算用のオープン ソースの言語および環境です。 R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。 また、広範なグラフィカル機能も提供します。
 * [HDInsight クラスターに Giraph をインストールする](hdinsight-hadoop-giraph-install.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。 Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
 * [HDInsight クラスターに Solr をインストールする](hdinsight-hadoop-solr-install.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。 Solr は、格納されたデータに対して強力な検索操作を実行することができます。
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
-[powershell-install-configure]: powershell-install-configure.md
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

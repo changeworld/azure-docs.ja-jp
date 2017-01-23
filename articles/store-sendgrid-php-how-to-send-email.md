@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 15d830e418e08c388039d9ee6b9af212bfdf310e
+ms.sourcegitcommit: 9b2d456d8dba33af224ea147f5f8ec49ba7397f9
+ms.openlocfilehash: 523b986f66a2e48685e9707903194856f0dcf4a2
 
 
 ---
@@ -34,7 +34,7 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 * 顧客の問い合わせを転送する
 * アプリケーションからの電子メール通知
 
-詳しくは、[https://sendgrid.com][https://sendgrid.com] をご覧ください。
+詳細については、[https://sendgrid.com][https://sendgrid.com] を参照してください。
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid アカウントの作成
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -54,9 +54,9 @@ SendGrid SMTP API を使用して電子メールを送信するには、*Swift M
       * Create the body of the message (a plain-text and an HTML version).
       * $text is your plain-text email
       * $html is your html version of the email
-      * If the reciever is able to view html emails then only the html
+      * If the receiver is able to view html emails then only the html
       * email will be displayed
-      */ 
+      */
      $text = "Hi!\nHow are you?\n";
      $html = "<html>
            <head></head>
@@ -95,7 +95,7 @@ SendGrid SMTP API を使用して電子メールを送信するには、*Swift M
      $message->setTo($to);
      $message->addPart($text, 'text/plain');
 
-     // send message 
+     // send message
      if ($recipients = $swift->send($message, $failures))
      {
          // This will let us know how many users received this message
@@ -109,13 +109,13 @@ SendGrid SMTP API を使用して電子メールを送信するには、*Swift M
      }
 
 ### <a name="web-api"></a>Web API
-PHP の [curl 関数][curl 関数]で SendGrid Web API を使用して電子メールを送信します。
+PHP の [curl 関数][curl function]で SendGrid Web API を使用して電子メールを送信します。
 
     <?php
 
      $url = 'https://api.sendgrid.com/';
      $user = 'USERNAME';
-     $pass = 'PASSWORD'; 
+     $pass = 'PASSWORD';
 
      $params = array(
           'api_user' => $user,
@@ -205,7 +205,7 @@ SMTP API を使用して添付ファイルを送信するには、この例の�
      $message->addPart($text, 'text/plain');
      $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName("file_name"));
 
-     // send message 
+     // send message
      if ($recipients = $swift->send($message, $failures))
      {
           // This will let us know how many users received this message
@@ -311,7 +311,7 @@ SendGrid では、'フィルター' を使用することでその他の電子�
      // Specify that this is an initial contact message
      $email->addCategory("initial");
 
-     // You can optionally setup individual filters here, in this example, we have 
+     // You can optionally setup individual filters here, in this example, we have
      // enabled the footer filter
      $email->addFilter('footer', 'enable', 1);
      $email->addFilter('footer', "text/plain", "Thank you for your business");
@@ -320,16 +320,16 @@ SendGrid では、'フィルター' を使用することでその他の電子�
      // The subject of your email
      $subject = 'Example SendGrid Email';
 
-     // Where is this message coming from. For example, this message can be from 
+     // Where is this message coming from. For example, this message can be from
      // support@yourcompany.com, info@yourcompany.com
      $from = 'someone@example.com';
 
-     // If you do not specify a sender list above, you can specifiy the user here. If 
+     // If you do not specify a sender list above, you can specifiy the user here. If
      // a sender list IS specified above, this email address becomes irrelevant.
      $to = 'john@contoso.com';
 
-     # Create the body of the message (a plain-text and an HTML version). 
-     # text is your plain-text email 
+     # Create the body of the message (a plain-text and an HTML version).
+     # text is your plain-text email
      # html is your html version of the email
      # if the receiver is able to view html emails then only the html
      # email will be displayed
@@ -344,7 +344,7 @@ SendGrid では、'フィルター' を使用することでその他の電子�
      Fred";
 
      $html = "
-     <html> 
+     <html>
      <head></head>
      <body>
      <p>Hello -name-,<br>
@@ -390,10 +390,10 @@ SendGrid では、'フィルター' を使用することでその他の電子�
 
 [https://sendgrid.com]: https://sendgrid.com
 [https://sendgrid.com/transactional-email/pricing]: https://sendgrid.com/transactional-email/pricing
-[特別プラン]: https://www.sendgrid.com/windowsazure.html
-[Azure に対する PHP アプリケーションのパッケージ化と配置]: http://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx
+[special offer]: https://www.sendgrid.com/windowsazure.html
+[Packaging and Deploying PHP Applications for Azure]: http://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx
 [http://swiftmailer.org/download]: http://swiftmailer.org/download
-[curl 関数]: http://php.net/curl
+[curl function]: http://php.net/curl
 [クラウドベースの電子メール サービス]: https://sendgrid.com/email-solutions
 [トランザクション メール配信]: https://sendgrid.com/transactional-email
 [sendgrid-php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
@@ -401,6 +401,6 @@ SendGrid では、'フィルター' を使用することでその他の電子�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

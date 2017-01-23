@@ -3,7 +3,7 @@ title: "Azure RemoteApp のクラウド コレクションの作成方法 | Micr
 description: "Azure クラウドにデータを保存する Azure RemoteApp のデプロイを作成する方法について説明します。"
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: mbaldwin
 editor: 
 ms.assetid: 4d7c6956-7e4a-4a41-b7f2-7e5832bf01e3
@@ -12,11 +12,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 21d6cabf44d2a2b63b158f1ebd567cc8945e0333
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 59619d78959f9fcc3144a30af883021a8f5f3044
 
 
 ---
@@ -94,7 +94,7 @@ Azure RemoteApp コレクションには複数のアプリケーションを発�
    
    **注:** 
    
-   必ず “user@domain.com” 形式を使用してください。
+   必ず *user@domain.com* 形式を使用してください。
    
    コレクションで Office 365 ProPlus を使用している場合は、ユーザーの Active Directory ID を使用する必要があります。 これにより,ライセンスを検証できます。 
 3. ユーザーが検証されたら、 **[保存]**をクリックします。
@@ -108,6 +108,6 @@ Azure RemoteApp コレクションには複数のアプリケーションを発�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

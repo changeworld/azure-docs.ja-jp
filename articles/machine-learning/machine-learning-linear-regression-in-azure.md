@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/09/2016
 ms.author: kbaroni;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: eb6fc4b1451d9c1ba17d1787bc8a77507b694258
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b519769502f9883c5be59dc453bce872660774b5
 
 
 ---
@@ -53,7 +53,7 @@ Excel 回帰は、Excel Analysis ToolPak で見つかった標準的な線形回
 
 1. データセットを csv ファイルとして Azure ML にアップロードしました (非常に小さいファイル)
 2. Excel で使用したのと同じデータ特徴を選ぶために、新しい実験を作成し、[データセット内の列の選択][select-columns]モジュールを使用しました   
-3. [データ分割][split]モジュール (*相対式*モードで) を使用して、Excel で実行されたのと同じトレーニング セットにデータを分割しました  
+3. [データ分割][split]モジュール ("*相対式*"モードで) を使用して、Excel で実行されたのと同じトレーニング セットにデータを分割しました  
 4. [線形回帰][linear-regression]モジュール (既定のオプションのみ) で実験、文書化し、Excel の回帰モデルと結果を比較しました
 
 ### <a name="review-initial-results"></a>最初の結果を確認する
@@ -63,13 +63,13 @@ Excel 回帰は、Excel Analysis ToolPak で見つかった標準的な線形回
 | --- |:---:|:---:|
 | パフォーマンス | | |
 | <ul style="list-style-type: none;"><li>自由度調整済み決定係数</li></ul> |0.96 |該当なし |
-| <ul style="list-style-type: none;"><li>決定 <br />係数</li></ul> |該当なし |0.78<br />(低精度) |
+| <ul style="list-style-type: none;"><li>決定係数 <br />Determination</li></ul> |該当なし |0.78<br />(低精度) |
 | 平均絶対誤差 |$9.5M |$ 19.4M |
 | 平均絶対誤差 (%) |6.03% |12.2% |
 
 Azure ML チームの開発者とデータ サイエンティストによってプロセスと結果が実行されると、有益な情報がすぐに提供されました。  
 
-* Azure ML で[線形回帰][linear-regression]モジュールを使用する場合は、次の 2 つの方法が用意されています。
+* Azure ML で[線形回帰][linear-regression]モジュールを使用する場合は、次の 2 つ方法が用意されています。
   * オンライン勾配降下: 大規模な問題に適しています。
   * 通常の最小二乗法: これは、線形回帰と聞くと多くの人が考える方法です。 小さなデータセットの場合は、通常の最小二乗法が最適な選択肢です。
 * パフォーマンスを向上させるために、L2 正則化重みパラメーターを調整することを検討します。 既定では 0.001 に設定されていますが、小さなデータ セットでは、パフォーマンスを向上させるために 0.005 に設定しました。    
@@ -159,6 +159,6 @@ Excel の回帰と Azure Machine Learning の実験を並行して実行する�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

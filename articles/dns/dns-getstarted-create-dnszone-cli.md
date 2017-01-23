@@ -123,6 +123,6 @@ DNS ゾーンを作成した後は、ゾーンで [DNS レコード セットと
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

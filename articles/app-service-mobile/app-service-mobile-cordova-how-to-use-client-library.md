@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 10/30/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 31632f9c88810d5cd26ad314dde2c28a4012dc75
+ms.sourcegitcommit: 314170f8d1ef228817543a80b99f4c2ff282866f
+ms.openlocfilehash: 8c783fc8e789ec31f0b8f4db90b5fa67334d95ab
 
 
 ---
@@ -30,7 +30,6 @@ ms.openlocfilehash: 31632f9c88810d5cd26ad314dde2c28a4012dc75
 
 * Android API 19 ～ 24 (KitKat から Nougat)
 * iOS バージョン 8.0 以降
-* Windows Phone 8.0
 * Windows Phone 8.1
 * ユニバーサル Windows プラットフォーム
 
@@ -67,19 +66,19 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 
 ローカル設定を構成に追加するには、以下の手順に従います。
 
-1.  [Azure ポータル]
+1. [Azure ポータル]
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
-3.  **[ツール]**
+3. **[ツール]**
 4. [監視] メニューの **[リソース エクスプローラー]** をクリックし、**[実行]** をクリックします。  新しいウィンドウまたはタブが開きます。
 5. 左側のナビゲーションで、サイトの **[config]** ノード、**[authsettings]** ノードの順に展開します。
-6.  **[編集]**
+6. **[編集]**
 7. "allowedExternalRedirectUrls" 要素を探します。  この要素は、null または値の配列に設定できます。  値を次の値に変更します。
-   
+
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
-   
+
     URL をご使用のサービスの URL に置き換えます。  例には、"http://localhost:3000" (Node.js サンプル サービス用)、または "http://localhost:4400" (Ripple サービス用) が含まれています。  ただし、これらの URL は例にすぎません。例に示されているサービスの状況など、状況が異なる場合があります。
 8. 画面の右上隅にある **[読み取り/書き込み]** ボタンをクリックします。
 9. 緑色の **[PUT]** ボタンをクリックします。
@@ -87,7 +86,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 この時点で設定が保存されます。  設定の保存が完了するまで、ブラウザー ウィンドウを閉じないでください。
 また、App Service の CORS 設定に、これらのループバック URL を追加します。
 
-1.  [Azure ポータル]
+1. [Azure ポータル]
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
 3. [設定] ブレードが自動的に開きます。  開かない場合は、 **[すべての設定]**をクリックします。
 4. API メニューの **[CORS]** をクリックします。
@@ -139,11 +138,15 @@ pushHandler.on('error', function (error) {
 
 プッシュ通知は、Notification Hubs SDK を使用してサーバーから送信します。  プッシュ通知をクライアントから直接送信しないでください。 この操作は、Notification Hubs または PNS に対するサービス拒否攻撃のトリガーに使用される可能性があります。  このような攻撃が発生すると、PNS はトラフィックを禁止する可能性があります。
 
+## <a name="more-information"></a>詳細情報
+
+API の詳細については、[API に関するドキュメント](http://azure.github.io/azure-mobile-apps-js-client/)を参照してください。
+
 <!-- URLs. -->
 [Azure ポータル]: https://portal.azure.com
 [Apache Cordova アプリの作成]: app-service-mobile-cordova-get-started.md
 [モバイル サービスでの認証の使用]: app-service-mobile-cordova-get-started-users.md
-[アプリへの認証の追加]: app-service-mobile-cordova-get-started-users.md
+[Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Azure Mobile Apps 向け Apache Cordova プラグイン]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
 [こちら]: http://cordova.apache.org/#getstarted
@@ -151,10 +154,10 @@ pushHandler.on('error', function (error) {
 [phonegap-plugin-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
-[Query オブジェクトのドキュメント]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
+[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

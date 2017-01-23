@@ -1,6 +1,6 @@
 ---
-title: "デバイス ツインの概要 | Microsoft Docs"
-description: "このチュートリアルでは、デバイス ツインの使用方法について説明します。"
+title: "Azure IoT Hub デバイス ツインの使用 (Node) | Microsoft Docs"
+description: "Azure IoT Hub デバイス ツインを使用してタグを追加し、IoT Hub クエリを使用する方法。 Azure IoT SDK for Node.js を使用して、シミュレートされたデバイス アプリと、タグを追加して IoT Hub クエリを実行するサービス アプリを実装します。"
 services: iot-hub
 documentationcenter: node
 author: fsautomata
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: d7b615476bb5e9ed08e1e84f63c1a40c11154b23
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 527aed57517f04d1b0fdcad5feac5488123b89c7
 
 
 ---
-# <a name="tutorial-get-started-with-device-twins"></a>チュートリアル: デバイス ツインの概要
+# <a name="get-started-with-device-twins-node"></a>デバイス ツインの使用 (Node)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリケーションが完成します。
+このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
 
-* **AddTagsAndQuery.js**： バックエンドから実行される Node.js アプリで、タグを追加してデバイス ツインのクエリを実行します。
+* **AddTagsAndQuery.js**: Node.js バックエンド アプリで、タグを追加してデバイス ツインのクエリを実行します。
 * **TwinSimulatedDevice.js**: 以前作成したデバイス ID を使用して IoT Hub に接続するデバイスをシミュレートする Node.js アプリで、接続の状態を報告します。
 
 > [!NOTE]
-> デバイス アプリケーションとバックエンド アプリケーション両方の作成に利用できる Azure IoT SDK に関する情報は、「[Azure IoT SDKs (Azure IoT SDK)][lnk-hub-sdks]」の記事で取り上げています。
+> デバイス アプリとバックエンド アプリの両方の作成に利用できる Azure IoT SDK に関する情報は、「[Azure IoT SDKs (Azure IoT SDK)][lnk-hub-sdks]」の記事で取り上げています。
 > 
 > 
 
@@ -56,11 +56,11 @@ ms.openlocfilehash: d7b615476bb5e9ed08e1e84f63c1a40c11154b23
     npm install azure-iothub --save
     ```
 3. テキスト エディターを使用して、**addtagsandqueryapp** フォルダーに新しい **AddTagsAndQuery.js** ファイルを作成します。
-4. **AddTagsAndQuery.js** ファイルに次のコードを追加し、**{service connection string}** プレースホルダーを、ハブの作成時にコピーした接続文字列で置き換えます。
+4. **AddTagsAndQuery.js** ファイルに次のコードを追加し、**{iot hub connection string}** プレースホルダーを、ハブの作成時にコピーした IoT Hub 接続文字列で置き換えます。
    
         'use strict';
         var iothub = require('azure-iothub');
-        var connectionString = '{service hub connection string}';
+        var connectionString = '{iot hub connection string}';
         var registry = iothub.Registry.fromConnectionString(connectionString);
    
         registry.getTwin('myDeviceId', function(err, twin){
@@ -144,7 +144,7 @@ ms.openlocfilehash: d7b615476bb5e9ed08e1e84f63c1a40c11154b23
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 3. テキスト エディターを使用して、**reportconnectivity** フォルダーに新しい**ReportConnectivity.js** ファイルを作成します。
-4. **ReportConnectivity.js** ファイルに次のコードを追加し、**{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーした接続文字列で置き換えます。
+4. **ReportConnectivity.js** ファイルに次のコードを追加し、**{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーしたデバイス接続文字列で置き換えます。
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -197,7 +197,7 @@ ms.openlocfilehash: d7b615476bb5e9ed08e1e84f63c1a40c11154b23
     ![][3]
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 バックエンド アプリケーションからデバイスのメタデータをタグとして追加し、シミュレートされたデバイス アプリでデバイス ツインのデバイスの接続情報を報告するよう記述しました。 さらに、SQL に似た IoT Hub クエリ言語を使用してこの情報を照会する方法も学習しました。
+このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 バックエンド アプリからデバイスのメタデータをタグとして追加し、シミュレート対象デバイス アプリでデバイス ツインのデバイスの接続情報を報告するよう記述しました。 さらに、SQL に似た IoT Hub クエリ言語を使用してこの情報を照会する方法も学習しました。
 
 詳細については、次のリソースをご覧ください。
 
@@ -225,13 +225,13 @@ ms.openlocfilehash: d7b615476bb5e9ed08e1e84f63c1a40c11154b23
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
 [lnk-twin-how-to-configure]: iot-hub-node-node-twin-how-to-configure.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

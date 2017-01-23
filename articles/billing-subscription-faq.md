@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2016
+ms.date: 12/06/2016
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: a38f4a1742748deb11967b9f06a4726e57963d92
+ms.sourcegitcommit: 7583a1c81802bdedabdb70c125aac536b879204d
+ms.openlocfilehash: 38531c1b3cb7c7de9b832b4fbedd8991f40e3424
 
 
 ---
@@ -145,7 +145,7 @@ Azure サービス レベル アグリーメントは、オンプレミスのマ
 これにはいくつかの理由が考えられます。
 
 * Azure にサブスクライブした日から 30 日以上経過していない。
-* サブスクリプションの種類が無料試用版であるか、メンバー プラン (MSDN/Open/BizSpark/DreamSpark) のいずれかである (クレジット カードまたはクレジット カードに関連付けられた他の支払い方法が使用されていない)。
+* サブスクリプションの種類が無料試用版であるか、メンバー プラン (Visual Studio サブスクライバー向けの月単位のクレジット/Open/BizSpark/Imagine) のいずれかである (クレジット カードまたはクレジット カードに関連付けられた他の支払い方法が使用されていない)。
 * まだ請求書の生成日になっていない。
 
 ### <a name="i-am-unable-to-log-in-to-the-azure-portal"></a>Azure ポータルにログインできません
@@ -195,7 +195,7 @@ Azure サポート プランをオンラインで購入すると、直ちに、�
 Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用して、開発チーム内で職務を分離し、職務に必要なアクセス権のみをユーザーに付与します。 詳細については、「[Azure のロールベースのアクセス制御](active-directory/role-based-access-control-configure.md)」を参照してください。
 
 ### <a name="how-do-i-transfer-ownership-of-my-subscriptions"></a>自分のサブスクリプションの所有権を譲渡するにはどうすればよいですか。
-従量課金、MSDN、Action Pack、または BizSpark のサブスクリプションについては、Microsoft Azure アカウント センターで今すぐ簡単に実行できます。 サブスクリプションを別のユーザーに譲渡する機能が追加されました。 つまり、所有する任意の従量課金、MSDN、Action Pack、または BizSpark のサブスクリプションでアカウント管理者を変更できるようになりました。 ただし、譲渡先のユーザー アカウントが同じ国内にある必要があります。また、Marketplace での購入物に関連付けられているサブスクリプションを譲渡することはできません。
+従量課金、Visual Studio サブスクライバー向けの月単位のクレジット、Microsoft Partner Network、または BizSpark のサブスクリプションについては、Microsoft Azure アカウント センターで今すぐ簡単に実行できます。 サブスクリプションを別のユーザーに譲渡する機能が追加されました。 つまり、所有する任意の従量課金、Visual Studio サブスクライバー向けの月単位のクレジット、Microsoft Partner Network、または BizSpark のサブスクリプションでアカウント管理者を変更できるようになったということです。 ただし、譲渡先のユーザー アカウントが同じ国内にある必要があります。また、Marketplace での購入物に関連付けられているサブスクリプションを譲渡することはできません。
 詳細については、「[Azure サブスクリプションの所有権の譲渡](billing-subscription-transfer.md)」を参照してください。
 
 ### <a name="can-i-use-my-existing-windows-licenses-that-i-bought-outside-of-azure"></a>Azure 以外で購入した既存の Windows ライセンスは使用できますか。
@@ -242,14 +242,14 @@ Azure アカウント情報を表示して編集するには、Azure アカウ�
 Azure は、クラウド規模のアプリケーションとサービスを構築する事業者による使用を想定していますが、 Azure サービスは、どなたでも購入していただけます。
 
 ### <a name="can-i-try-azure-for-free-without-any-risk-of-being-charged"></a>Azure の試用は無料ですか。課金される可能性はありませんか。
-はい。 [使用制限機能](https://azure.microsoft.com/pricing/spending-limits/)を利用すると、その機能を有効にしている限り、無料試用版、MSDN、MPN、または BizSpark プランにご契約いただいたお客様は、課金される心配なしに Azure をご利用いただけます。 これらのプランにサインアップした新しいお客様はすべて、価格が $0 として使用制限が有効になります。
+はい。 [使用制限機能](https://azure.microsoft.com/pricing/spending-limits/)を利用すると、その機能を有効にしている限り、無料試用版、Visual Studio サブスクライバー向けの月単位のクレジット、Microsoft Partner Network、または BizSpark プランにご契約いただいたお客様は、課金される心配なしに Azure をご利用いただけます。 これらのプランにサインアップした新しいお客様はすべて、価格が $0 として使用制限が有効になります。
 
 ### <a name="can-i-turn-the-spending-limit-back-on-if-i-turn-off-it"></a>使用制限を無効にした場合、再度有効にすることはできますか。
-メンバー特典プラン (MSDN など) のお客様は、次の請求サイクルの始めに使用制限機能を再度有効にすることができます。 使用制限は、一度無効にすると、現在の請求期間に対して再度有効にすることはできません。
+メンバー特典プラン (Visual Studio サブスクライバー向けの月単位のクレジットなど) の場合は、次の請求サイクルの始めに使用制限機能を再度有効にできます。 使用制限は、一度無効にすると、現在の請求期間に対して再度有効にすることはできません。
 詳細については、「 [Azure 使用制限の変更](https://msdn.microsoft.com/library/azure/dn465781.aspx)」を参照してください。
 
 ### <a name="can-i-adjust-the-amount-of-the-spending-limit"></a>使用制限の量は調整できますか。
-この機能の初回リリースでは、使用制限は $0 に設定されており、調整はできません。 この機能は、無料試用版、MSDN、MPN、または BizSpark プランのお客様が、課金されないという完全な保証付きで Azure を利用できるように設計されています。
+この機能の初回リリースでは、使用制限は $0 に設定されており、調整はできません。 この機能は、無料試用版、Visual Studio サブスクライバー向けの月単位のクレジット、Microsoft Partner Network、または BizSpark プランのお客様が、課金されないという完全な保証付きで Azure を利用できるように設計されています。
 詳細については、「 [Azure 使用制限](https://azure.microsoft.com/pricing/spending-limits/)」を参照してください。
 
 ### <a name="in-which-countries-and-regions-is-microsoft-azure-commercially-available-and-what-currencies-can-be-used-to-purchase-azure"></a>Microsoft Azure が販売されている国と地域および Azure の購入に使用できる通貨
@@ -297,6 +297,6 @@ Azure 無料試用版サブスクリプションは、新規ユーザーを対�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

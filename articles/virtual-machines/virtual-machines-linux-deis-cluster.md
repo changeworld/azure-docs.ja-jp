@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 06/24/2015
 ms.author: hbai
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 1c45d0ad8431b5cfff7859817fe57c3168f2dc7f
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 8e69e791128710e640cba0c9edfbbadc0ea70ef5
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: 1c45d0ad8431b5cfff7859817fe57c3168f2dc7f
 
 * 有効な Azure サブスクリプション 有効なサブスクリプションがない場合は、[azure.com](https://azure.microsoft.com/) から無償の試用版を取得できます。
 * Azure リソース グループを使用する職場または学校の ID 。 個人のアカウントをお持ちの場合で、Microsoft id を使用してログインする場合 [個人の アカウントから作業の ID を作成する](virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことができます。
-* クライアント オペレーティング システムに応じて、[Azure PowerShell](../powershell-install-configure.md) または [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md)。
+* クライアント オペレーティング システムに応じて、[Azure PowerShell](/powershell/azureps-cmdlets-docs) または [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md)。
 * [OpenSSL](https://www.openssl.org/)。 OpenSSL を使用して、必要な証明書が生成されます。
 * [Git Bash](https://git-scm.com/)などの Git クライアント。
 * サンプル アプリケーションをテストするには、DNS サーバーが必要です。 任意の DNS サーバーまたはワイルドカードの A レコードをサポートするサービスを使用することもできます。
@@ -246,7 +246,7 @@ Deis クラスタをコントロールする **deisctl** が必要となりま�
 
 [Azure Resource Manager の概要][resource-group-overview]  
 [Azure CLI の使い方][azure-command-line-tools]  
-[Azure Resource Manager での Azure PowerShell の使用][powershell-azure-resource-manager]  
+[Azure リソース マネージャーでの Azure PowerShell の使用][powershell-azure-resource-manager]  
 
 [azure-command-line-tools]: ../xplat-cli-install.md
 [resource-group-overview]: ../azure-resource-manager/resource-group-overview.md
@@ -254,6 +254,6 @@ Deis クラスタをコントロールする **deisctl** が必要となりま�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

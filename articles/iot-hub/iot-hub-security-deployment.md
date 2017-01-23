@@ -1,6 +1,6 @@
 ---
-title: "IoT デプロイのセキュリティ保護 | Microsoft Docs"
-description: "この記事では、IoT デプロイを保護する方法を詳しく説明します。"
+title: "Azure IoT デプロイのセキュリティ保護 | Microsoft Docs"
+description: "IoT デプロイをセキュリティで保護する方法 デバイスのプロビジョニング、接続、および IoT Hub サービスへのアクセスをセキュリティで保護するためのガイドラインが含まれます。"
 services: iot-hub
 documentationcenter: 
 author: YuriDio
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/17/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0fe48b3d8d9e2d8f167788cbbca7a9e564dfa51b
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 12bb5b1b5f5ec860de347c1ea806da29eda3f88f
 
 
 ---
@@ -31,6 +31,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

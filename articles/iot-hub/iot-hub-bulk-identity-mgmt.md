@@ -1,6 +1,6 @@
 ---
-title: "IoT Hub デバイス ID のインポートとエクスポート | Microsoft Docs"
-description: "IoT Hub デバイス ID の一括管理に関する概念および .NET コード スニペット"
+title: "Azure IoT Hub デバイス ID のインポートとエクスポート | Microsoft Docs"
+description: "Azure IoT service SDK を使用して ID レジストリに対して一括操作を実行し、デバイス ID をインポートおよびエクスポートする方法。 インポート操作を実行すると、デバイス ID を一括で作成、更新、および削除できます。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 10/05/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 7c50b4bd32d32ec33f35c2484a3c86e944830725
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: baadc7d9adfdb110c5814e51747c64f8086234e5
 
 
 ---
-# <a name="bulk-management-of-iot-hub-device-identities"></a>IoT Hub デバイス ID の一括管理
+# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID を一括で管理する
 各 IoT Hub には、サービスのデバイスごとのリソース (クラウドからデバイスへの転送中のメッセージを含むキューなど) を作成するために使用できる ID レジストリがあります。 この ID レジストリを使って、デバイス向けエンドポイントへのアクセスを制御することもできます。 この記事では、ID レジストリとの間でデバイス ID を一括でインポートおよびエクスポートする方法について説明します。
 
 インポートおよびエクスポート操作は、IoT Hub に対する一括サービス操作を実行するのを可能にする "*ジョブ*" のコンテキストで行われます。
@@ -342,12 +342,12 @@ static string GetContainerSasUri(CloudBlobContainer container)
 ## <a name="next-steps"></a>次のステップ
 この記事では、IoT Hub の ID レジストリに対して一括操作を実行する方法について説明しました。 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
-* [使用状況のメトリック][lnk-metrics]
+* [IoT Hub メトリック][lnk-metrics]
 * [操作の監視][lnk-monitor]
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [開発者ガイド][lnk-devguide]
+* [IoT Hub 開発者ガイド][lnk-devguide]
 * [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 
 [lnk-metrics]: iot-hub-metrics.md
@@ -358,6 +358,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

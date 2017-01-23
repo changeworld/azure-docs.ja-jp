@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a14da5bb0df25a2370e2a6a29b770f8673330a3c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cf3df8eb82fa0aa7c5848ea5da91734226a62b3e
 
 
 ---
@@ -44,7 +44,7 @@ ms.openlocfilehash: a14da5bb0df25a2370e2a6a29b770f8673330a3c
 ## <a name="what-the-script-does"></a>スクリプトの機能
 このスクリプトは、HDInsight クラスターに次のような変更を加えます。
 
-*  `/usr/hdp/current/solr`
+* `/usr/hdp/current/solr`
 * Solr サービスの実行に使用される新しいユーザー、**solrusr** を作成します
 * **solruser** を `/usr/hdp/current/solr` の所有者として設定します
 * クラスター ノードの再起動時に Solr を開始する [Upstart](http://upstart.ubuntu.com/) 構成を追加します。 Solr は、インストール後にもクラスター ノード上で自動的に開始されます。
@@ -312,6 +312,6 @@ Solr のバックアップと復元の操作の詳細については、 [SolrCor
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

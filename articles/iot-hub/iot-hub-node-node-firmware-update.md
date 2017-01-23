@@ -1,6 +1,6 @@
 ---
-title: "ファームウェア更新の実行方法 | Microsoft Docs"
-description: "このチュートリアルでは、ファームウェアの更新プログラムを実行する方法を示します"
+title: "Azure IoT Hub を使用したデバイス ファームウェアの更新 (Node) | Microsoft Docs"
+description: "Azure IoT Hub でデバイス管理を使用してデバイス ファームウェアの更新を開始する方法。 Azure IoT SDK for Node.js を使用して、シミュレートされたデバイス アプリと、ファームウェアの更新をトリガーするサービス アプリを実装します。"
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,23 +15,23 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: fdc8dca46f5bd0feb8e6ce24af32327be4c8ebb6
 
 
 ---
-# <a name="tutorial-how-to-do-a-firmware-update"></a>チュートリアル: ファームウェアを更新する方法
+# <a name="use-device-management-to-initiate-a-device-firmware-update-node"></a>デバイス管理を使用してデバイス ファームウェアの更新を開始する (Node)
 ## <a name="introduction"></a>はじめに
 [デバイス管理の開始][lnk-dm-getstarted]に関するチュートリアルでは、[デバイス ツイン][lnk-devtwin]と[ダイレクト メソッド][lnk-c2dmethod] プリミティブを使用してリモートでデバイスを再起動する方法を説明しました。 このチュートリアルでは、同じ IoT Hub プリミティブを使用して、エンド ツー エンドでシミュレートされたファームウェア更新を実行する方法を示します。  このパターンは、Intel Edison デバイス サンプルのファームウェア更新プログラムの実装で使用されます。
 
 このチュートリアルでは、次の操作方法について説明します。
 
-* シミュレートされたデバイス アプリで firmwareUpdate ダイレクト メソッドを IoT ハブ経由で呼び出すコンソール アプリケーションを作成します。
+* シミュレート対象デバイス アプリで firmwareUpdate ダイレクト メソッドを IoT Hub 経由で呼び出す Node.js コンソール アプリを作成します。
 * firmwareUpdate ダイレクト メソッドを実装するシミュレートされたデバイス アプリを作成します。これは、ファームウェア イメージのダウンロードを待機し、ファームウェア イメージをダウンロードしてから、ファームウェア イメージを適用するというマルチステージ プロセスを経由します。  各ステージの実行中、デバイスは報告されるプロパティを使用して進捗状況を更新します。
 
-このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリケーションが完成します。
+このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
 
-**dmpatterns_fwupdate_service.js**: シミュレートされたデバイス アプリでダイレクト メソッドを呼び出し、応答を表示して、更新された報告されるプロパティを定期的に表示します (500 ミリ秒ごと)。
+**dmpatterns_fwupdate_service.js**: シミュレート対象デバイス アプリでダイレクト メソッドを呼び出し、応答を表示して、更新された報告されるプロパティを定期的に表示します (500 ミリ秒ごと)。
 
 **dmpatterns_fwupdate_device.js**: IoT Hub とすでに作成したデバイス ID をつなげ、farmwareUpdate ダイレクト メソッドを受信し、イメージのダウンロードの待機、新しいイメージのダウンロード、イメージの適用というマルチステートメント プロセスを経由してファームウェアの更新をシミュレーションします。
 
@@ -40,7 +40,7 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
 * Node.js バージョン 0.12.x 以降。 <br/>  「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
-「[デバイス管理の開始](iot-hub-node-node-device-management-get-started.md)」の記事を参照して、IoT Hub を作成し、接続文字列を取得します。
+「[デバイス管理の開始](iot-hub-node-node-device-management-get-started.md)」の記事を参照して、IoT Hub を作成し、IoT Hub 接続文字列を取得します。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -49,9 +49,9 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
 ## <a name="create-a-simulated-device-app"></a>シミュレーション対象デバイス アプリの作成
 このセクションでは、次の作業を行います。
 
-* クラウドによって呼び出されたダイレクト メソッドに応答する Node.js コンソール アプリを作成します。
+* クラウドによって呼び出されたダイレクト メソッドに応答する Node.js コンソール アプリを作成する
 * シミュレートされたファームウェアの更新をトリガーする
-* 報告されるプロパティを使用して、デバイス ツイン クエリで、デバイスと最後にファームウェアの更新が完了した日時を識別できるようにします。
+* 報告されるプロパティを使用して、デバイス ツイン クエリで、デバイスと最後にファームウェアの更新が完了した日時を識別できるようにする
 
 1. 「**manageddevice**」という名前の新しい空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**manageddevice** フォルダー内に新しい package.json ファイルを作成します。  次の既定値をすべてそのまま使用します。
    
@@ -72,13 +72,13 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. **connectionString** 変数を追加し、それを使用してデバイス クライアントを作成します。  
+5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
-6. 報告されるプロパティの更新に使用する、次の関数を追加します。
+6. 報告されるプロパティを更新するために使用する次の関数を追加します。
    
     ```
     var reportFWUpdateThroughTwin = function(twin, firmwareUpdateValue) {
@@ -94,7 +94,7 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
       });
     };
     ```
-7. ファームウェア イメージのダウンロードと適用をシミュレートする、次の関数を追加します。
+7. ファームウェア イメージのダウンロードと適用をシミュレートする次の関数を追加します。
    
     ```
     var simulateDownloadImage = function(imageUrl, callback) {
@@ -116,7 +116,7 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
       callback(error);
     }
     ```
-8. 報告されるプロパティを介してファームウェアの更新状態を "ダウンロードの待機中" に更新する、次の関数を追加します。  通常、利用可能な更新プログラムがあるとデバイスに通知され、管理者が定義したポリシーによって更新のダウンロードと適用が開始されます。  ここで、そのポリシーを実行するためのロジックが働きます。  わかりやすいように、4 秒間の遅延を生じさせてから、ファームウェア イメージのダウンロードに進みます。 
+8. 報告されるプロパティを介してファームウェアの更新状態を "ダウンロードの待機中" に更新する次の関数を追加します。  通常、利用可能な更新プログラムがあるとデバイスに通知され、管理者が定義したポリシーによって更新のダウンロードと適用が開始されます。  ここで、そのポリシーを実行するためのロジックが働きます。  わかりやすいように、4 秒間の遅延を生じさせてから、ファームウェア イメージのダウンロードに進みます。 
    
     ```
     var waitToDownload = function(twin, fwPackageUriVal, callback) {
@@ -131,7 +131,7 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
       setTimeout(callback, 4000);
     };
     ```
-9. 報告されるプロパティを介してファームウェアの更新状態を "ファームウェア イメージのダウンロード中" に更新する、次の関数を追加します。  続いてファームウェアのダウンロードをシミュレートし、ファームウェア更新の状態を更新してダウンロードが成功したかどうかを知らせます。
+9. 報告されるプロパティを介してファームウェアの更新状態を "ファームウェア イメージのダウンロード中" に更新する次の関数を追加します。  続いてファームウェアのダウンロードをシミュレートし、ファームウェア更新の状態を更新してダウンロードが成功したかどうかを知らせます。
    
     ```
     var downloadImage = function(twin, fwPackageUriVal, callback) {
@@ -168,7 +168,7 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
       }, 4000);
     }
     ```
-10. 報告されるプロパティを介してファームウェアの更新状態を "ファームウェア イメージの適用中" に更新する、次の関数を追加します。  続いてファームウェア イメージの適用をシミュレートし、ファームウェア更新の状態を更新して、適用が成功したかどうかを知らせます。
+10. 報告されるプロパティを介してファームウェアの更新状態を "ファームウェア イメージの適用中" に更新する次の関数を追加します。  続いてファームウェア イメージの適用をシミュレートし、ファームウェア更新の状態を更新して、適用が成功したかどうかを知らせます。
     
     ```
     var applyImage = function(twin, imageData, callback) {
@@ -342,7 +342,7 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
     ```
     node dmpatterns_fwupdate_device.js
     ```
-2. コマンド プロンプトで、**triggerfwupdateondevice** フォルダーに移動し、次のコマンドを実行してデバイス ツインのリモート再起動とクエリを開始して最後の再起動時刻を検索します。
+2. コマンド プロンプトで、**triggerfwupdateondevice** フォルダーに移動し、次のコマンドを実行してデバイス ツインのリモート再起動とクエリをトリガーして最後の再起動時刻を検索します。
    
     ```
     node dmpatterns_fwupdate_service.js
@@ -359,12 +359,12 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 [lnk-dm-getstarted]: iot-hub-node-node-device-management-get-started.md
 [lnk-tutorial-jobs]: iot-hub-node-node-schedule-jobs.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

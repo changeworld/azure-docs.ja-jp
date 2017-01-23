@@ -1,5 +1,5 @@
 ---
-title: "Application Insights による利用状況分析"
+title: "Azure Application Insights による利用状況分析 | Microsoft docs"
 description: "Application Insights による利用状況分析の概要"
 services: application-insights
 documentationcenter: 
@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/08/2016
+ms.date: 12/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff52467bb9634de2c58a7e87323abe4014cc4a29
+ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
+ms.openlocfilehash: 94b619cfce15f93bc50f10266c6dc21da78e3481
 
 
 ---
@@ -27,7 +27,7 @@ Application Insights を使用すると、アプリケーションの利用状�
 Application Insights は、スタンドアロン アプリ (iOS、Android Windows) でも、Web アプリ (.NET または J2EE でホストされた) でも機能します。 
 
 ## <a name="add-application-insights-to-your-project"></a>アプリケーションの正常性と利用状況の監視
-作業を開始するには、 [Microsoft Azure](https://azure.com)で無料アカウントを取得します。 (この試用期間が終了しても、サービスの無料の層は引き続きご利用いただけます)。
+作業を開始するには、[Microsoft Azure](https://azure.com) のアカウントを取得します  (従量課金制のみ、試験段階の一定量には課金されません)。
 
 [Azure ポータル](https://portal.azure.com)で、Application Insights のリソースを作成します。 アプリに関する使用状況とパフォーマンス データはここに表示されます。
 
@@ -195,13 +195,13 @@ Web セッションは、非アクティブな状態が 30 分続いた後でカ
 
 診断検索で、イベントのそれぞれの発生箇所をクリックしてプロパティを表示します。
 
-![イベントの一覧で、イベントを開き、[...]  をクリックしてその他のプロパティを表示します](./media/app-insights-overview-usage/11-details.png)
+![イベントの一覧で、イベントを開き、[...] をクリックして その他のプロパティを表示します](./media/app-insights-overview-usage/11-details.png)
 
 [検索] ボックスを使用して、特定のプロパティ値を持つイベントを表示します。
 
 ![[検索] ボックスに値を入力します](./media/app-insights-overview-usage/12-searchEvents.png)
 
-## <a name="a-b-testing"></a>A | B テスト
+## <a name="a--b-testing"></a>A | B テスト
 ある機能のどちらのバージョンが成功するかわからない場合は、その両方をリリースして、それぞれを異なるユーザーが利用できるようにします。 各バージョンの成功の度合いを測定してから、統合したバージョンに移行します。
 
 この手法では、アプリの各バージョンから送信されるすべてのテレメトリに異なるタグをアタッチします。 これは、アクティブな TelemetryContext のプロパティを定義することで実行できます。 このような既定のプロパティは、カスタム メッセージだけでなく、標準のテレメトリも同様に、アプリケーションから送信されるすべてのテレメトリ メッセージに追加されます。
@@ -271,6 +271,6 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

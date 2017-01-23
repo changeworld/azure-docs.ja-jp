@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/27/2016
+ms.date: 1/10/2017
 ms.author: jimpark;trinadhk;markgal
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -45,7 +45,7 @@ Backup スケジュールは、バックアップ操作の頻度を示します�
 
 このポリシーで指定された「保有ポイント」の合計数は、90 (1 日のポイント) + 40 (10 年間の四半期ごとに 1 つ) = 130 です。
 
-## <a name="example-putting-both-together"></a>例 - 両方を一緒にまとめる
+## <a name="example--putting-both-together"></a>例 - 両方を一緒にまとめる
 ![サンプル画面](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
 1. **日ごとの保持ポリシー**: 毎日バックアップが作成され、7 日間保持されます。
@@ -64,8 +64,8 @@ Backup スケジュールは、バックアップ操作の頻度を示します�
 
 > [!NOTE]
 > Azure のバックアップでは、回復ポイントの数に制限はありません。
-> 
-> 
+>
+>
 
 ## <a name="advanced-configuration"></a>詳細な構成
 前の画面の **[変更]** をクリックすることによって、顧客はより柔軟に保持スケジュールを指定することができます。
@@ -77,7 +77,6 @@ Azure Backup の詳細については、以下をご覧ください。
 
 * [Azure Backup の概要](backup-introduction-to-azure-backup.md)
 * [Azure Backup を試す](backup-try-azure-backup-in-10-mins.md)
-
 
 
 

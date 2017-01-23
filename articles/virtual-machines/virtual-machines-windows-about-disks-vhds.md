@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: a800d23208c190a381689a2417bbe9952343bc16
+ms.sourcegitcommit: 3549272a74ebf7b5e37a70dbb8d7ce3b539c8103
+ms.openlocfilehash: b5161e7e4b8b0127d63804161bfd82e3b057e3f0
 
 
 ---
@@ -69,6 +69,23 @@ Azure は VHD フォーマットの固定ディスクをサポートしていま
 > 
 > 
 
+## <a name="use-trim-with-standard-storage"></a>Standard Storage での TRIM の使用
+
+Standard Storage (HDD) を使用する場合は、TRIM を有効にする必要があります。 TRIM はディスク上の未使用のブロックを破棄するため、実際に使用しているストレージにのみ課金されます。 これにより、サイズの大きいファイルを作成した後に削除した場合、コストを節約できます。 
+
+次のコマンドを実行すると、TRIM の設定を確認できます。 Windows VM 上でコマンド プロンプトを開いて、次のように入力します。
+
+```
+fsutil behavior query DisableDeleteNotify
+```
+
+このコマンドが 0 を返す場合、TRIM は適切に有効化されています。 1 が返される場合は、次のコマンドを実行して TRIM を有効にします。
+```
+fsutil behavior set DisableDeleteNotify 0
+```
+
+
+
 ## <a name="next-steps"></a>次のステップ
 * [ディスクのアタッチ](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) による VM 用のストレージの追加。
 * [Windows VM イメージを Azure にアップロード](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) します。
@@ -77,6 +94,6 @@ Azure は VHD フォーマットの固定ディスクをサポートしていま
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
