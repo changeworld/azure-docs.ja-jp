@@ -1,5 +1,5 @@
 # StorSimple Virtual Array
-## Overview
+## 概要
 ### [ソリューションとは](storsimple-ova-overview.md)
 
 ## 作業開始
@@ -61,7 +61,7 @@
 
 # StorSimple 8000 シリーズ
 
-## Overview
+## 概要
 ### [ソリューションとは](storsimple-overview.md)
 ### [StorSimple 学習マップ](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [セキュリティに関する考慮事項](storsimple-security.md)
@@ -138,6 +138,9 @@
 ##### [StorSimple Snapshot Manager で MMC アクションを使用する](storsimple-snapshot-manager-mmc-menu.md)
 
 ### ソリューションを構築する
+#### [StorSimple と Veeam](storsimple-configure-backup-target-veeam.md)
+#### [StorSimple と Veritas Backup Exec](storsimple-configure-backup-target-using-backup-exec.md)
+#### [StorSimple と Veritas NetBackup](storsimple-configure-backuptarget-netbackup.md)
 #### [Azure へのファイル サーバー DR を自動化する](storsimple-disaster-recovery-using-azure-site-recovery.md)
 #### [Express Route を使用した StorSimple](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
 #### [StorSimple と VMware](https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463)
@@ -191,7 +194,7 @@
 
 # StorSimple Data Manager (プライベート プレビュー)
 
-## Overview
+## 概要
 ### [ソリューションとは](storsimple-data-manager-overview.md)
 
 ## 作業開始
@@ -217,6 +220,6 @@
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

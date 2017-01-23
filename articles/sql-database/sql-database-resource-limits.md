@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 12/06/2016
+ms.date: 12/14/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: b5306d864593898246d0e7ba81ed3f93253fab74
-ms.openlocfilehash: 81746a6f893eab4fe2b951fb0d52bd1645d2a56c
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 4f4d5a4f3c401974157182afa9575f6f28a0673b
 
 
 ---
@@ -51,7 +51,7 @@ Basic、Standard、および Premium サービス プランの設計目標の 1 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
 ### <a name="elastic-pools"></a>エラスティック プール
-[エラスティック プール](sql-database-elastic-pool.md) は、プール内のデータベース全体のリソースを共有します。 次の表では、Basic、Standard、および Premium のエラスティック データベース プールの特性について説明します。
+[エラスティック プール](sql-database-elastic-pool.md) は、プール内のデータベース全体のリソースを共有します。 次の表では、Basic、Standard、および Premium のエラスティック プールの特性について説明します。
 
 [!INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
@@ -74,6 +74,6 @@ Basic、Standard、および Premium サービス プランの設計目標の 1 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

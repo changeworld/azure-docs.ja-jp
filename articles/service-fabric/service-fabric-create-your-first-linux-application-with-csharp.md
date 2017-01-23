@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 10/04/2016
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9486fcb56b05b22120aef5a8373c6558b2d88d6c
+ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
+ms.openlocfilehash: e3632d89501c1c25b76e9160f0ad82f2b76327d7
 
 
 ---
@@ -50,7 +50,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
 ## <a name="build-the-application"></a>アプリケーションのビルド
 Service Fabric Yeoman テンプレートには、ビルド スクリプトが含まれています。(アプリケーションのフォルダーへの移動後に) これを使用してターミナルからアプリをビルドできます。
 
-  ```bash
+  ```sh
  cd myapp 
  ./build.sh 
   ```
@@ -60,7 +60,7 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
 
 1. ローカルの Service Fabric クラスターに接続します。
    
-    ```bash
+    ```sh
     azure servicefabric cluster connect
     ```
 2. テンプレートに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
@@ -83,11 +83,18 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
 2. Service Fabric Explorer で、アクター サービスのプライマリ レプリカをホストしているノードを見つけます。 次のスクリーンショットでは、ノード 3 です。
    
     ![Finding the primary replica in Service Fabric Explorer][sfx-primary]
-3. 前の手順で見つけたノードをクリックし、[アクション] メニューの **[非アクティブにする (再起動)]** を選択します。 このアクションによって、ローカル クラスターの 5 つのノードのいずれかが再起動され、別のノードで実行されているセカンダリ レプリカに強制的にフェールオーバーされます。 このアクションを行うときは、テスト クライアントからの出力に注意してください。また、フェールオーバーにかかわらず、カウンターが増加していることに注意してください。
+3. 前の手順で見つけたノードをクリックし、[アクション] メニューの **[非アクティブにする (再起動)]** を選択します。 このアクションによって、ローカル クラスターのノードのいずれかが再起動され、別のノードで実行されているセカンダリ レプリカに強制的にフェールオーバーされます。 このアクションを行うときは、テスト クライアントからの出力に注意してください。また、フェールオーバーにかかわらず、カウンターが増加していることに注意してください。
+
+## <a name="adding-more-services-to-an-existing-application"></a>既存アプリケーションへのサービスの追加
+
+`yo` を使用して作成したアプリケーションにサービスを追加するには、次の手順を実行します。 
+1. ディレクトリを既存アプリケーションのルートに変更します。  たとえば、Yeoman で作成したアプリケーションが `MyApplication` の場合は、`cd ~/YeomanSamples/MyApplication` です。
+2. `yo azuresfcsharp:AddService` を実行します。
 
 ## <a name="next-steps"></a>次のステップ
 * [Service Fabric Reliable Actors の概要](service-fabric-reliable-actors-introduction.md)
 * [Azure CLI を使用した Service Fabric クラスターの対話操作](service-fabric-azure-cli.md)
+* [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-csharp/yeoman-csharp.png
@@ -95,6 +102,6 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 87f62d99ae8671fb3732806d8cd8bd7d9aa101e1
+ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
+ms.openlocfilehash: 819b40302f158d1d6224878c164cf7ff71947887
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 87f62d99ae8671fb3732806d8cd8bd7d9aa101e1
 仮想マシンを作成するには、この記事のすべての手順を実施する必要があります。所要時間は約 30 分です。 コマンド内のサンプルのパラメーター値は、ご自分の環境に適した名前に置き換えてください。
 
 ## <a name="step-1-install-azure-powershell"></a>手順 1: Azure PowerShell をインストールする
-最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 
 ## <a name="step-2-create-a-resource-group"></a>手順 2: リソース グループを作成する
 すべてのリソースがリソース グループに含まれている必要があるため、最初に作成しましょう。  
@@ -134,7 +134,7 @@ ms.openlocfilehash: 87f62d99ae8671fb3732806d8cd8bd7d9aa101e1
     ```powershell
     $myVM = Add-AzureRmVMNetworkInterface -VM $myVM -Id $myNIC.Id
     ```
-6. VM ハード ディスクの名前と場所を定義します。 仮想ハード ディスク ファイルは、コンテナーに格納されます。 次のコマンドにより、作成したストレージ アカウントに **vhds/WindowsVMosDisk.vhd** という名前のコンテナーにディスクが作成されます。
+6. VM ハード ディスクの名前と場所を定義します。 仮想ハード ディスク ファイルは、コンテナーに格納されます。 次のコマンドにより、作成したストレージ アカウントの **vhds/myOsDisk1.vhd** という名前のコンテナーにディスクが作成されます。
    
     ```powershell
     $blobPath = "vhds/myOsDisk1.vhd"
@@ -143,7 +143,7 @@ ms.openlocfilehash: 87f62d99ae8671fb3732806d8cd8bd7d9aa101e1
 7. オペレーティング システム ディスクの情報を VM 構成に追加します。 **$diskName** の値を、オペレーティング システム ディスクの名前に置き換えます。 変数を作成し、ディスクの情報を構成に追加します。
    
     ```powershell
-    $vm = Set-AzureRmVMOSDisk -VM $myVM -Name "myOsDisk1" -VhdUri $osDiskUri -CreateOption fromImage
+    $myVM = Set-AzureRmVMOSDisk -VM $myVM -Name "myOsDisk1" -VhdUri $osDiskUri -CreateOption fromImage
     ```
 8. 最後に、仮想マシンを作成します。
    
@@ -159,6 +159,6 @@ ms.openlocfilehash: 87f62d99ae8671fb3732806d8cd8bd7d9aa101e1
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

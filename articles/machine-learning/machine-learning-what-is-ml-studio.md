@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/09/2016
+ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2a5bcc177d298aecd9fd474bd15fc0331b26e887
+ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
+ms.openlocfilehash: b8115f1fb72b0ba89fd0c8afa3358878a0fab92b
 
 
 ---
@@ -33,25 +33,30 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 
 **Azure Machine Learning Studio** では、予測分析モデルの作成、テスト、反復作業を支援する、視覚的操作に対応した対話型ワークスペースが提供されます。 "***データセット***" と分析 "***モジュール***" を対話型のキャンバスにドラッグ アンド ドロップし、それらを相互に接続して "***実験***" を完成させ、Machine Learning Studio で実行できます。 モデルのさまざまな設計を試す際は、実験を編集して必要に応じて保存し、再度実行できます。 準備が整ったら、"***トレーニング実験***" を "***予測実験***" に変換します。さらに、"***Web サービス***" として発行し、第三者が利用できるようにそのモデルを公開します。
 
-> [!TIP]
-> Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「 [Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」参照してください。
-> 
-> 
-
 データセットとモジュールを視覚的に接続すれば予測分析モデルが完成するため、プログラミングは必要ありません。
+
+> [!TIP]
+> Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「 [Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」ご覧ください。
+> 
+> 
 
 ![Azure ML Studio の図: 実験の作成、各種ソースのデータの読み取り、スコア付けされたデータの書き込み、モデルの書き込み][ml-studio-overview]
 
 ## <a name="get-started-with-machine-learning-studio"></a>Machine Learning Studio の概要
 [Machine Learning Studio](https://studio.azureml.net) を初めて起動したときには、 **ホーム** ページが表示されます。 そこからドキュメントやビデオ、ウェビナーなど、有益なリソースにアクセスすることができます。
 
-最上部には、**[ホーム]** (開始位置)、**[スタジオ]**、**[ギャラリー]** の 3 つのタブが並んでいます。
+左上のメニュー  ![メニュー](media/machine-learning-what-is-ml-studio/menu.png)  をクリックすると、いくつかのオプションが表示されます。
 
-### <a name="studio"></a>スタジオ
-**[スタジオ]** タブをクリックすると、Microsoft アカウントを使用するか職場または学校アカウントを使用してサインインするように求められます。 サインインすると、次のタブが左側に表示されます。
+### <a name="cortana-intelligence"></a>Cortana Intelligence
+**[Cortana Intelligence]** をクリックすると、[Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite) のホーム ページが表示されます。 Cortana Intelligence Suite は、データをインテリジェントなアクションに変換するための、完全管理型ビッグ データおよび高度な分析スイートです。 顧客事例を含む完全なドキュメントについては、Cortana Intelligence Suite のホーム ページを参照してください。
+
+### <a name="azure-machine-learning"></a>Azure Machine Learning
+ここには、**[ホーム]** (最初のページ) と **[Studio]** の 2 つのオプションがあります。
+
+**[Studio]** をクリックすると、**Azure Machine Learning Studio** に移動します。 最初に、Microsoft アカウントを使用するか職場または学校アカウントを使用してサインインするように求められます。 サインインすると、次のタブが左側に表示されます。
 
 * **[PROJECTS (プロジェクト)]** - 単一のプロジェクトを表す実験、データセット、ノートブック、およびその他のリソースがまとめられています。
-* **実験** - 作成済み、実行済み、ドラフトとして保存済みの実験です。
+* **[EXPERIMENTS (実験)]** - 作成済み、実行済み、ドラフトとして保存済みの実験です。
 * **[Web サービス]** - 実験からデプロイした Web サービスです。
 * **[ノートブック]** - 作成済みの Jupyter ノートブックです。
 * **[データセット]** - Studio にアップロード済みのデータセット。
@@ -59,7 +64,7 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 * **設定** - アカウントとリソースを構成するための各種設定がまとめられています。
 
 ### <a name="gallery"></a>[ギャラリー]
-**[Gallery (ギャラリー)]** タブをクリックすると、Cortana Intelligence ギャラリーに移動します。 ギャラリーは、データ サイエンティストや開発者のコミュニティが、Cortana Intelligence Suite のコンポーネントを使用してソリューションを共有できる場です。
+**[ギャラリー]** をクリックすると、**[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)**に移動します。 ギャラリーは、データ サイエンティストや開発者のコミュニティが、Cortana Intelligence Suite のコンポーネントを使用して作成したソリューションを共有する場です。
 
 ギャラリーの詳細については、「 [Cortana Intelligence ギャラリーでソリューションを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」を参照してください。
 
@@ -116,6 +121,6 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 
