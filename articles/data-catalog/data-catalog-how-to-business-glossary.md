@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -38,8 +38,8 @@ Azure Data Catalog が果たす機能はデータ ソースの検出です。分
 
 > [!NOTE]
 > この記事で説明されている機能は、Azure Data Catalog の Standard Edition でのみ利用できます。 無料エディションには、管理タグ付けまたはビジネス用語集の機能がありません。
-> 
-> 
+>
+>
 
 ## <a name="glossary-availability-and-privileges"></a>用語集の可用性と特権
 "*ビジネス用語集は、Azure Data Catalog の Standard Edition で使用できます。Data Catalog の Free Edition に用語集はありません。*"
@@ -74,8 +74,8 @@ Data Catalog のビジネス用語集では、用語の階層としてビジネ�
 
 > [!NOTE]
 > ユーザー タグは、無料エディションの Data Catalog でサポートされる唯一のタグの種類です。
-> 
-> 
+>
+>
 
 ### <a name="hover-behavior-on-tags"></a>タグのホバー動作
 Data Catalog ポータルでは、2 種類のタグは区別して表示され、ホバー動作も異なります。 ユーザー タグにマウスを移動すると、タグ テキストと、タグを追加した 1 人以上のユーザーが表示されます。 用語集タグにマウスを移動すると、用語集の用語の定義と、ビジネス用語集を開き、用語の詳細な定義を表示するリンクが表示されます。
@@ -88,7 +88,6 @@ Azure Data Catalog のビジネス用語集と、それで有効になる管理�
 
 ## <a name="see-also"></a>関連項目
 * [ビジネス用語集操作の REST API ドキュメント](https://msdn.microsoft.com/library/mt708855.aspx)
-
 
 
 

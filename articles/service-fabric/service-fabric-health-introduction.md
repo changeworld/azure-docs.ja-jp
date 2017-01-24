@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2016
+ms.date: 01/12/2017
 ms.author: oanapl
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6ec1e341bc87475251161521e808dcbb821c2939
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 240ae97458747099bde6807bf13e0ce6fd9452d1
 
 
 ---
@@ -24,6 +24,10 @@ ms.openlocfilehash: 6ec1e341bc87475251161521e808dcbb821c2939
 Azure Service Fabric に導入している正常性モデルは、機能が豊富で、柔軟性と拡張可能性を備えた正常性評価とレポートを提供します。 このモデルを使用すると、クラスターの状態とその内部で実行されているサービスの状態をほぼリアルタイムで監視することができます。 正常性の情報を容易に取得でき、潜在的な問題を事前に解決できるため、問題が連鎖的に発生して大規模なサービス停止を引き起こす事態を防げます。 一般的なモデルでは、サービスがローカルのビューに基づくレポートを送信し、その情報が集計されて、クラスター レベル全体のビューが提供されます。
 
 Service Fabric のコンポーネントは、この豊富な機能を持つ正常性モデルを使用して、現在の状態を報告します。 アプリケーションからの正常性レポートにも同じメカニズムを使用できます。 カスタム条件をキャプチャする高品質の正常性レポートに投資すれば、実行中のアプリケーションの問題をより簡単に検出し、修正できます。
+
+次の Microsoft Virtual Academy のビデオでは、Service Fabric の正常性モデルとその使用方法について説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
+<img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
+</a></center>
 
 > [!NOTE]
 > 正常性サブシステムは、そもそも監視付きアップグレードの必要性から生まれました。 Service Fabric では、アプリケーションとクラスターのアップグレードを監視し、完全な可用性、ダウンタイムの防止、ユーザー操作の最小化を実現できます。 これらの目的を達成するために、アップグレードでは構成済みアップグレード ポリシーに基づいて正常性を確認し、正常性が希望のしきい値を満たす場合にのみアップグレードの続行が許可されます。 それ以外の場合、アップグレードは自動的にロールバックするか、一時停止して管理者に問題を解決する機会を提供します。 アプリケーションのアップグレードの詳細については、 [この記事](service-fabric-application-upgrade.md)を参照してください。
@@ -41,7 +45,7 @@ Service Fabric のコンポーネントは、この豊富な機能を持つ正�
 正常性エンティティと階層により、クラスターとアプリケーションのレポート作成、デバッグ、および監視が効果的に行えます。 正常性モデルにより、クラスター内にある数多くの変動要素の正常性を正確かつ *詳細に* 表すことができます。
 
 ![正常性エンティティ。][1]
- 正常性エンティティは、親子関係に基づいて、階層に整理されます。
+正常性エンティティは、親子関係に基づいて、階層に整理されます。
 
 [1]: ./media/service-fabric-health-introduction/servicefabric-health-hierarchy.png
 
@@ -318,6 +322,6 @@ HealthEvents                    :
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

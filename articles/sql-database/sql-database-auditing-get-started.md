@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
 ms.service: sql-database
+ms.custom: secure and protect
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: CarlRabeler; ronitr; giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 80680647559fe8b42cfa09985b9da3713b9c9305
-ms.openlocfilehash: cf0152b0cbcc85befa1b753b92f1593af958dd89
+ms.sourcegitcommit: 7b3c6d29ad7ded2ea65f378a1f807235c688d738
+ms.openlocfilehash: 9f51fcdb291021064dc02a71afdf849f1f4a3d85
 
 
 ---
-# <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
+# <a name="get-started-with-sql-database--auditing"></a>SQL Database 監査の使用
 Azure SQL Database の監査では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。
 
 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
@@ -183,7 +184,7 @@ Geo レプリケーション対応データベースを使用するとき、監�
 3. [監査の構成] ブレードに戻り、**[ストレージ アクセス キー]** を *[セカンダリ]* から *[プライマリ]* に切り替え、一番下にある **[OK]** をクリックします。 [監査構成] ブレードの上部の **[保存]** をクリックします。
 4. [ストレージの構成] ブレードに戻り、*セカンダリ アクセス キー*を**再生成** (次のキー更新サイクルの準備として) します。
 
-## <a name="a-idsubheading-7aautomation-powershell-rest-api"></a><a id="subheading-7"></a>Automation (PowerShell / REST API)
+## <a name="a-idsubheading-7aautomation-powershell--rest-api"></a><a id="subheading-7"></a>Automation (PowerShell / REST API)
 次の自動化ツールを利用し、Azure SQL Database で監査を構成することもできます。
 
 1. **PowerShell コマンドレット**
@@ -213,8 +214,8 @@ Geo レプリケーション対応データベースを使用するとき、監�
 [Azure SQL Database の監査の概要]: #subheading-1
 [データベースに対する監査を設定する]: #subheading-2
 [監査ログとレポートを分析する]: #subheading-3
-[運用環境での使用手法]: #subheading-5
-[ストレージ キーの再生成]: #subheading-6
+[Practices for usage in production]: #subheading-5
+[Storage Key Regeneration]: #subheading-6
 [Automation (PowerShell / REST API)]: #subheading-7
 
 
@@ -241,6 +242,6 @@ Geo レプリケーション対応データベースを使用するとき、監�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "IoT Gateway SDK で物理デバイスを使用する | Microsoft Docs"
-description: "Texas Instruments SensorTag デバイスを使用して Raspberry Pi 3 で動作するゲートウェイを介して IoT Hub にデータを送信する Azure IoT Gateway SDK チュートリアル"
+title: "Azure IoT Gateway SDK で物理デバイスを使用する | Microsoft Docs"
+description: "Texas Instruments SensorTag デバイスを使用して Raspberry Pi 3 デバイスで動作するゲートウェイを介して IoT Hub にデータを送信する方法。 ゲートウェイのビルドには Azure IoT Gateway SDK を使用します。"
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 9c8ab5b54644c3fa7999e7250825fba5d8532082
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 05c82a87e839a0a95e7050092d6f6867e76fb316
 
 
 ---
-# <a name="azure-iot-gateway-sdk--send-device-to-cloud-messages-with-a-physical-device-using-linux"></a>Azure IoT Gateway SDK - Linux を使用した物理デバイスで D2C メッセージを送信する
+# <a name="use-the-azure-iot-gateway-sdk-to-send-device-to-cloud-messages-with-a-physical-device-linux"></a>Azure IoT Gateway SDK を使用して物理デバイス (Linux) で D2C メッセージを送信する
 この [Bluetooth 低エネルギー サンプル][lnk-ble-samplecode]のチュートリアルでは、[Azure IoT Gateway SDK][lnk-sdk] を使用して、物理デバイスから IoT Hub に D2C テレメトリを転送する方法と、IoT Hub から物理デバイスにコマンドをルーティングする方法について説明します。
 
 このチュートリアルでは、次の項目について説明します。
@@ -218,7 +218,7 @@ BLE サンプルを実行するには、次の 3 つのタスクを完了する�
 
 ### <a name="configure-two-sample-devices-in-your-iot-hub"></a>IoT Hub に 2 つのサンプル デバイスを構成する
 * Azure サブスクリプションで [IoT ハブを作成][lnk-create-hub]します。このチュートリアルを実行するには、ハブの名前が必要です。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます。
-* **SensorTag_01** という名前の 1 つのデバイスを IoT Hub に追加し、その ID とデバイス キーをメモしておきます。 [デバイス エクスプローラーまたは iothub-explorer][lnk-explorer-tools] ツールを使用すると、前の手順で作成した IoT ハブにこのデバイスを追加し、デバイスのキーを取得することができます。 このデバイスは、ゲートウェイの構成時に SensorTag デバイスにマップします。
+* **SensorTag_01** という名前の 1 つのデバイスを IoT Hub に追加し、その ID とデバイス キーをメモしておきます。 [デバイス エクスプローラーまたは iothub-explorer][lnk-explorer-tools] ツールを使用すると、前の手順で作成した IoT Hub にこのデバイスを追加し、デバイスのキーを取得することができます。 このデバイスは、ゲートウェイの構成時に SensorTag デバイスにマップします。
 
 ### <a name="build-the-azure-iot-gateway-sdk-on-your-raspberry-pi-3"></a>Raspberry Pi 3 デバイスで Azure IoT Gateway SDK をビルドする
 
@@ -239,7 +239,7 @@ git submodule update --init --recursive
 IoT Gateway SDK リポジトリの完全なコピーを Raspberry Pi 3 上に用意したら、SDK が含まれているフォルダーから次のコマンドを使用してビルドすることができます。
 
 ```
-./tools/build.sh --skip-unittests --skip-e2e-tests
+./tools/build.sh --skip-unittests
 ```
 
 ### <a name="configure-and-run-the-ble-sample-on-your-raspberry-pi-3"></a>Raspberry Pi 3 で BLE サンプルを構成して実行する
@@ -429,7 +429,7 @@ SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **Sensor
 サンプルを実行する際に[デバイス エクスプローラーまたは iothub-explorer][lnk-explorer-tools] ツールを使用すると、ゲートウェイによって SensorTag デバイスから転送されるメッセージを監視することができます。
 
 ## <a name="send-cloud-to-device-messages"></a>C2D メッセージの送信
-BLE モジュールでは、Azure IoT Hub からデバイスへの命令の送信もサポートしています。 [Azure IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) または [IoT Hub Explorer](https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer) を使用して JSON メッセージを送信し、BLE ゲートウェイ モジュールから BLE デバイスに渡すことができます。
+BLE モジュールでは、Azure IoT Hub からデバイスへの命令の送信もサポートしています。 [デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) または [iothub-explorer](https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer) ツールを使用して BLE ゲートウェイ モジュールから BLE デバイスに渡す JSON メッセージを送信することができます。
 Texas Instruments の SensorTag デバイスを使用している場合、IoT Hub からコマンドを送信して、赤色の LED、緑色の LED、またはブザーをオンにすることができます。 これを行うには、最初に次の 2 つの JSON メッセージをこの順序で送信します。 次に、いずれかのコマンドを送信して、LED またはブザーをオンにすることができます。
 
 1 すべての LED とブザーをリセットする (オフにする)
@@ -485,7 +485,7 @@ IoT Gateway SDK に関する理解をさらに深め、実際にコード例に�
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [開発者ガイド][lnk-devguide]
+* [IoT Hub 開発者ガイド][lnk-devguide]
 
 <!-- Links -->
 [lnk-ble-samplecode]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/ble_gateway
@@ -501,6 +501,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

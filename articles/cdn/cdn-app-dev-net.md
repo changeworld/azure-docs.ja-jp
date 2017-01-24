@@ -3,7 +3,7 @@ title: ".NET 向け Azure CDN ライブラリの概要 | Microsoft Docs"
 description: "Visual Studio を使用して Azure CDN を管理するための .NET アプリケーションを記述する方法について説明します。"
 services: cdn
 documentationcenter: .net
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 63cf4101-92e7-49dd-a155-a90e54a792ca
@@ -12,8 +12,8 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d2d7b2f5feefc4d25c36a5fd30ca1d666b904f58

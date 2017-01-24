@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -57,8 +57,8 @@ Azure Data Catalog のデータ プロファイルとは、登録済みのデー
 
 > [!NOTE]
 > 大規模なテーブルおよびビューでデータ プロファイルを抽出する場合、リソースは大量に消費され、データ ソースの登録に必要な時間が大幅に増加する可能性があります。
-> 
-> 
+>
+>
 
 ## <a name="user-perspective"></a>ユーザーの観点
 Azure Data Catalog では、登録されているデータ資産を説明するメタデータを指定できます。 各ユーザーは、データとその使用方法について独自の観点を持っています。 たとえば、サーバーを担当する管理者は、サービス レベル アグリーメント (SLA) またはバックアップの詳細情報を指定し、データ スチュワードは、データがサポートするビジネス プロセスに関するドキュメントのリンクを指定し、アナリストは、他の分析に最も関連性が高く、データを検索して理解する必要があるユーザーにとって最も価値がある用語で記述を指定することができます。
@@ -73,8 +73,8 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 
 > [!NOTE]
 > 所有権と管理は、Azure Data Catalog の Standard Edition でのみ使用できます。
-> 
-> 
+>
+>
 
 ## <a name="registration"></a>登録
 登録は、データ資産メタデータをデータ ソースから抽出し、Azure Data Catalog サービスにコピーする操作です。 登録されたデータ資産は、注釈を付けて検索することができます。
@@ -82,7 +82,6 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 ## <a name="see-also"></a>関連項目
 * [Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md)  - この記事では、Azure Data Catalog サービス、もたらされる価値、およびサポートしているシナリオの概要について説明します。
 * [GAzure Data Catalog の概要](data-catalog-get-started.md) - この記事は、データ ソースの検出に Azure Data Catalog を使用する方法を示す総合的なチュートリアルです。  
-
 
 
 

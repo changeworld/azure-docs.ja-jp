@@ -1,12 +1,12 @@
 ---
-title: セキュリティ境界環境で使用するサンプル アプリケーション | Microsoft Docs
-description: トラフィック フローのシナリオをテストするには、DMZ を作成した後で、この簡単な Web アプリケーションをデプロイします。
+title: "セキュリティ境界環境で使用するサンプル アプリケーション | Microsoft Docs"
+description: "トラフィック フローのシナリオをテストするには、DMZ を作成した後で、この簡単な Web アプリケーションをデプロイします。"
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-
+editor: 
+ms.assetid: 60340ab7-b82b-40e0-bd87-83e41fe4519c
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 416fb49a9ec2972c3a03fb883888fb9dc679d4d0
+
 
 ---
-# セキュリティ境界環境で使用するサンプル アプリケーション
+# <a name="sample-application-for-use-with-security-boundary-environments"></a>セキュリティ境界環境で使用するサンプル アプリケーション
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
 
 以下に示す PowerShell スクリプトを IIS01 および AppVM01 サーバーでローカルに実行すると、バックエンドの AppVM01 サーバーからのコンテンツを持つフロントエンドのサーバー IIS01 からの html ページを表示する非常に単純な Web アプリケーションをインストールしセットアップすることができます。
 
 ここでは、多くの DMZ 例で使用する単純なテスト環境を提供すると共に、エンドポイント、NSG、UDR、およびファイアウォールのルールに加えた変更がトラフィック フローに与える影響について説明します。
 
-## ICMP を許可するファイアウォール ルール
-この単純な PowerShell ステートメントを任意の Windows VM で実行することで、ICMP (Ping) トラフィックを許可することができます。これにより、ping プロトコルが Windows ファイアウォールを通過するのを許可して、テストやトラブルシューティングを容易にすることができます (ほとんどの Linux ディストリビューションでは、ICMP が既定でオンになっています)。
+## <a name="firewall-rule-to-allow-icmp"></a>ICMP を許可するファイアウォール ルール
+この単純な PowerShell ステートメントを任意の Windows VM で実行することで、ICMP (Ping) トラフィックを許可することができます。 これにより、ping プロトコルが Windows ファイアウォールを通過するのを許可して、テストやトラブルシューティングを容易にすることができます (ほとんどの Linux ディストリビューションでは、ICMP が既定でオンになっています)。
 
     # Turn On ICMPv4
     New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
@@ -32,7 +36,7 @@ ms.author: jonor
 
 **注:** 以下のスクリプトを使用した場合は、最初のステートメントで、このファイアウォール ルールが追加されます。
 
-## IIS01 - Web アプリケーションのインストール スクリプト
+## <a name="iis01---web-application-installation-script"></a>IIS01 - Web アプリケーションのインストール スクリプト
 このスクリプトでは、次のことが行われます。
 
 1. テストを簡単にするために、ローカル サーバーの Windows ファイアウォールで IMCPv4 (Ping) を開きます。
@@ -138,8 +142,8 @@ ms.author: jonor
         Write-Host
 
 
-## AppVM01 - ファイル サーバーのインストール スクリプト
-このスクリプトでは、この簡単なアプリケーションのためにバックエンドをセットアップします。このスクリプトでは、次のことが行われます。
+## <a name="appvm01---file-server-installation-script"></a>AppVM01 - ファイル サーバーのインストール スクリプト
+このスクリプトでは、この簡単なアプリケーションのためにバックエンドをセットアップします。 このスクリプトでは、次のことが行われます。
 
 1. テストを簡単にするために、ファイアウォールで IMCPv4 (Ping) を開きます。
 2. 新しいディレクトリを作成します。
@@ -148,11 +152,11 @@ ms.author: jonor
 5. [IE セキュリティ強化の構成] をオフにして、このサーバーから簡単に参照できるようにします。 
 
 > [!IMPORTANT]
-> **ベスト プラクティス**: 運用サーバーでは [IE セキュリティ強化の構成] をオフにしないでください。運用サーバーから Web を閲覧することは一般的にお勧めできません。さらに、匿名アクセス用にファイル アクセスを開くことはお勧めできませんが、ここでは、便宜上、開いています。
+> **ベスト プラクティス**: 運用サーバーでは [IE セキュリティ強化の構成] をオフにしないでください。運用サーバーから Web を閲覧することは一般的にお勧めできません。 さらに、匿名アクセス用にファイル アクセスを開くことはお勧めできませんが、ここでは、便宜上、開いています。
 > 
 > 
 
-この PowerShell スクリプトは、RDP が AppVM01 に転送されるときに、ローカルに実行する必要があります。PowerShell は、正常に実行されるように、管理者として実行する必要があります。
+この PowerShell スクリプトは、RDP が AppVM01 に転送されるときに、ローカルに実行する必要があります。 PowerShell は、正常に実行されるように、管理者として実行する必要があります。
 
     # AppVM01 Server Post Build Config Script
     # PowerShell must be run as Administrator for Net Share commands to work
@@ -184,10 +188,14 @@ ms.author: jonor
         Write-Host
 
 
-## DNS01 - DNS サーバーのインストール スクリプト
-このサンプル アプリケーションには、DNS サーバーをセットアップするためのスクリプトは含まれていません。ファイアウォール ルール、NSG、または UDR のテストに DNS トラフィックを含める必要がある場合は、DNS01 サーバーを手動でセットアップする必要があります。両方の例で使用するネットワーク構成 xml ファイルには、プライマリ DNS サーバーとして DNS01 が含まれ　バックアップ DNS サーバーとして、レベル 3 でホストされるパブリック DNS サーバーが含まれています。レベル 3 の DNS サーバーの場合は非ローカル トラフィックで使用される実際の DNS サーバーとなります。DNS01 がセットアップされていない場合、ローカル DNS は発生しません。
+## <a name="dns01---dns-server-installation-script"></a>DNS01 - DNS サーバーのインストール スクリプト
+このサンプル アプリケーションには、DNS サーバーをセットアップするためのスクリプトは含まれていません。 ファイアウォール ルール、NSG、または UDR のテストに DNS トラフィックを含める必要がある場合は、DNS01 サーバーを手動でセットアップする必要があります。 両方の例で使用するネットワーク構成 xml ファイルには、プライマリ DNS サーバーとして DNS01 が含まれ　バックアップ DNS サーバーとして、レベル 3 でホストされるパブリック DNS サーバーが含まれています。 レベル 3 の DNS サーバーの場合は非ローカル トラフィックで使用される実際の DNS サーバーとなります。DNS01 がセットアップされていない場合、ローカル DNS は発生しません。
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md
 
-<!---HONumber=AcomDC_0525_2016-->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 08/30/2016
 ms.author: amanbha
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: 0ce3808e44d715aca5f335aa93a3c9425810b03f
+ms.sourcegitcommit: e39c130b1abb0b2c31511abdd51f02446d3898f6
+ms.openlocfilehash: 681c9aa628ea9364f73e6a41f0f71139d3b983d7
 
 
 ---
@@ -83,7 +83,7 @@ public class Program
 
 各アクティブ アクターについて、アクター ランタイムはアクターがアイドル (つまり、未使用) 状態だった時間を追跡します。 アクター ランタイムは、`ScanIntervalInSeconds` ごとにアクターをそれぞれチェックして、ガベージ コレクションが可能かどうかを確認し、`IdleTimeoutInSeconds` の間アイドル状態だった場合はアクターを収集します。
 
-アクターが使用されるたびに、そのアイドル時間は 0 にリセットされます。 その後、アクターをガベージ コレクトできるのは、再び `IdleTimeoutInSeconds`の間アイドル状態のままになった場合のみです。 アクター インターフェイス メソッドまたはアクター アラーム コールバックが実行された場合、アクターは使用されていると見なされることを思い出してください。 タイマー コールバックが実行された場合、アクターは使用されていると見なされ **ません** 。
+アクターが使用されるたびに、そのアイドル時間は 0 にリセットされます。 その後、アクターをガベージ コレクトできるのは、再び `IdleTimeoutInSeconds`の間アイドル状態のままになった場合のみです。 アクター インターフェイス メソッドまたはアクター アラーム コールバックが実行された場合、アクターが使用されていると見なされることを思い出してください。 タイマー コールバックが実行された場合、アクターは使用されていると見なされ **ません** 。
 
 次の図は、これらの概念を表す 1 つのアクターのライフ サイクルを示しています。
 
@@ -137,6 +137,6 @@ await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -37,8 +37,8 @@ Azure Active Directory (Azure AD) は、企業がクラウドとオンプレミ�
 
 > [!NOTE]
 > [Azure Portal](http://portal.azure.com/) では、個人の Microsoft アカウント、または Azure Active Directory の職場や学校のアカウントを使用してサインインできます。 Azure Portal または [Data Catalog ポータル](http://www.azuredatacatalog.com) を使用して Azure Data Catalog を設定するには、個人用アカウントではなく、Azure Active Directory アカウントを使用してログインする必要があります。
-> 
-> 
+>
+>
 
 ## <a name="active-directory-policy-configuration"></a>Active Directory ポリシーの構成
 場合によっては、ユーザーは、Azure Data Catalog ポータルにログオンできる状況が発生することがありますが、データ ソース登録ツールにログオンしようとすると、ログオンを妨げるエラー メッセージが表示されます。 ユーザーが企業ネットワーク上にいる場合のみ、またはユーザーが企業ネットワークの外部から接続している場合のみ、このエラー動作が発生することがあります。
@@ -50,7 +50,6 @@ Azure Active Directory (Azure AD) は、企業がクラウドとオンプレミ�
  ![Active Directory グローバル認証ポリシー](./media/data-catalog-prerequisites/global-auth-policy.png)
 
 詳細については、「 [認証ポリシーの構成](https://technet.microsoft.com/library/dn486781.aspx)」を参照してください。
-
 
 
 

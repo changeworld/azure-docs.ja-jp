@@ -3,7 +3,7 @@ title: "Azure VM に基づく Azure RemoteApp イメージの作成 | Microsoft 
 description: "Azure 仮想マシンを使用することで Azure RemoteApp のイメージを作成する方法について説明します。"
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: mbaldwin
 ms.assetid: d41583ef-6cd8-4115-8dcb-b2cd5b3d301a
 ms.service: remoteapp
@@ -11,11 +11,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 8b02336b05b78d7787caabd59347814af4337ec3
+ms.sourcegitcommit: 310cb63756806c8fab208c47bce6c7292ea5e5d7
+ms.openlocfilehash: 61e8a49475129486505111bd595f98af955ed809
 
 
 ---
@@ -32,7 +32,7 @@ Azure VM に基づく独自のイメージを作成するには、イメージ�
 ## <a name="create-a-custom-image-based-on-an-azure-vm"></a>Azure VM に基づくカスタム イメージの作成
 次の手順を使用して、Azure VM に基づくイメージを作成します。
 
-1. Azure 仮想マシンを作成します。 Azure 仮想マシン イメージ ギャラリーの “Windows Server Remote Desktop Session Host” イメージまたは "Windows Server Remote Desktop Session Host with Microsoft Office 365 ProPlus" イメージを使用できます。 このイメージは、Azure RemoteApp テンプレート イメージのすべての要件を満たしています。
+1. Azure 仮想マシンを作成します。 Azure 仮想マシン イメージ ギャラリーの "Windows Server Remote Desktop Session Host" イメージまたは "Windows Server Remote Desktop Session Host with Microsoft Office 365 ProPlus" イメージを使用できます。 このイメージは、Azure RemoteApp テンプレート イメージのすべての要件を満たしています。
    
     詳細については、[Windows を実行する VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 2. VM に接続し、RemoteApp を使用して共有するアプリをインストールして構成します。 アプリに必要な追加の Windows の構成も実行してください。
@@ -62,6 +62,6 @@ Azure VM に基づく独自のイメージを作成するには、イメージ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

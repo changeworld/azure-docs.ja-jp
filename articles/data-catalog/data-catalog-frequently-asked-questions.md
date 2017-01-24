@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/04/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -77,15 +77,15 @@ Standard Edition の Azure Data Catalog は、最大 100,000 の登録済みの�
 
 > [!IMPORTANT]
 > データ資産を Azure Data Catalog に登録しても、クラウドへのデータの移動もコピーも行われません。 データ ソースから資産を登録すると、資産のメタデータが Azure にコピーされますが、データは、既存のデータ ソースの場所に残ります。 このルールの唯一の例外は、ユーザーが資産の登録時に、プレビュー レコードまたはデータ プロファイルをアップロードするように選択した場合です。 プレビューを含む場合、最大 20 のレコードが各資産からコピーされ、Azure Data Catalog にスナップショットとして格納されます。 データ プロファイルを含む場合、集計情報 (テーブルのサイズ、列あたりの null 値の割合、および列の最小、最大、および平均値など) が計算され、カタログ内に格納されたメタデータに含められます。
-> 
-> 
+>
+>
 
 <br/>
 
 > [!NOTE]
 > ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、Azure Data Catalog 発行アプリケーションはそのプロパティ値を抽出します。 ファーストクラス **Description** プロパティがない SQL Server リレーショナル データベースに対しては、Azure Data Catalog 発行アプリケーションはオブジェクトと列の ms_description 拡張プロパティから値を抽出します。 詳細については、TechNet 「 [データベース オブジェクトでの拡張プロパティの使用](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)」を参照してください。
-> 
-> 
+>
+>
 
 ## <a name="q-how-long-should-it-take-for-newly-registered-assets-to-appear-in-azure-data-catalog"></a>Q: 新しく登録された資産が Azure Data Catalog に表示されるまでにどのくらいの時間がかかりますか。
 Azure Data Catalog に資産を登録した後に、それらが Azure Data Catalog ポータルに表示されるまで、5 ～ 10 秒の時間がかかる可能性があります。
@@ -116,7 +116,7 @@ Azure Data Catalog 登録ツールを実行するユーザーは、データ ソ
 ## <a name="q-will-azure-data-catalog-be-made-available-for-on-premises-deployment-as-well"></a>Q: Azure Data Catalog は、オンプレミスのデプロイメントにも使用できますか。
 Azure Data Catalog は、クラウドとオンプレミスの両方のデータ ソースを操作できるクラウド サービスであり、ハイブリッド データ ソース検出ソリューションを提供します。 現在オンプレミスで実行する Azure Data Catalog のバージョンの計画はありません。
 
-## <a name="q-can-we-extract-more-richer-metadata-from-the-data-sources-we-register"></a>Q: 登録するデータ ソースから抽出するメタデータを追加したり、強化したりできますか。
+## <a name="q-can-we-extract-more--richer-metadata-from-the-data-sources-we-register"></a>Q: 登録するデータ ソースから抽出するメタデータを追加したり、強化したりできますか。
 Azure Data Catalog の機能の拡張に積極的に取り組んでいるところです。 登録時にデータ ソースから抽出したいと考える追加のメタデータがある場合は、 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)で、それを提案して (または既に提案されている場合は、賛成票を投じて) ください。 将来、サード パーティが、拡張 API によって、新しいデータ ソースの種類を追加できるようにします。
 
 ## <a name="q-how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>Q: 特定のユーザーだけが検出できるように、登録されているデータ資産の可視性を制限するにはどうすればいいですか。
@@ -125,9 +125,8 @@ A: Azure Data Catalog で、データ資産を選択し、[所有権の取得] �
 ## <a name="q-how-do-i-update-the-registration-for-a-data-asset-to-that-changes-in-the-data-source-are-reflected-in-the-catalog"></a>Q: データ ソースの変更がカタログに反映されるように、データ資産の登録を更新するにはどうすればいいですか。
 A: カタログに既に登録されているデータ資産のメタデータを更新するには、その資産を含むデータ ソースを再登録するだけです。 テーブルまたはビューの列の追加や削除などのデータ ソースのすべての変更は、カタログで更新されますが、ユーザーによって提供されたすべての注釈は維持されます。
 
-## <a name="q-my-question-isnt-answered-here-what-should-i-do"></a>Q: ここに質問の答えがありません。どうすればいいですか。
+## <a name="q-my-question-isnt-answered-here--what-should-i-do"></a>Q: ここに質問の答えがありません。どうすればいいですか。
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。 そこで寄せられている質問に、ここでの方法が見つかります。
-
 
 
 

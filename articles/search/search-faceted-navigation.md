@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/17/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0a044412d138478cf8ebd8ed8768fd4764b8a551
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f70240f2bebca76872194e556cf9cae9130b56db
 
 
 ---
@@ -77,9 +77,9 @@ Azure Search では、要求は 1 つまたは複数のクエリ パラメータ
 一般に関係のないヒットを除外する能力として理解される正確さは、以下の式の一方または両方によって実現されます。
 
 * **search=**<br/>
-   このパラメーターの値は、検索式を構成します。 単一のテキスト、または複数の語句と演算子を含む複雑な検索式を指定できます。 サーバーでは、検索式を使用してフルテキスト検索が実行され、インデックスの検索可能なフィールドで一致する語句がクエリされて、ランクの順序で結果が返されます。 `search` を null に設定した場合は、インデックス全体に対してクエリが実行されます (つまり `search=*`)。 この場合、`$filter` やスコアリング プロファイルなどのクエリの他の要素は、返されるドキュメント (`($filter`) およびその順序 (`scoringProfile` または `$orderb`y) に影響を与える基本要素になります。
+  このパラメーターの値は、検索式を構成します。 単一のテキスト、または複数の語句と演算子を含む複雑な検索式を指定できます。 サーバーでは、検索式を使用してフルテキスト検索が実行され、インデックスの検索可能なフィールドで一致する語句がクエリされて、ランクの順序で結果が返されます。 `search` を null に設定した場合は、インデックス全体に対してクエリが実行されます (つまり `search=*`)。 この場合、`$filter` やスコアリング プロファイルなどのクエリの他の要素は、返されるドキュメント (`($filter`) およびその順序 (`scoringProfile` または `$orderb`y) に影響を与える基本要素になります。
 * **$filter=**<br/>
-   フィルターは、特定のドキュメント属性の値に基づいて検索結果のサイズを制限するための強力なメカニズムです。 `$filter` が最初に評価され、その後で使用可能な値および各値に対応する数を生成するファセット ロジックが評価されます。
+  フィルターは、特定のドキュメント属性の値に基づいて検索結果のサイズを制限するための強力なメカニズムです。 `$filter` が最初に評価され、その後で使用可能な値および各値に対応する数を生成するファセット ロジックが評価されます。
 
 複雑な検索式は、クエリのパフォーマンスを低下させます。 可能な限り、正確さとクエリのパフォーマンスが向上するように、適切に構成されたフィルター式を使用してください。
 
@@ -185,13 +185,13 @@ Azure Search では、検索コーパスはインデックスを生成するド�
 ベスト プラクティスを次にまとめます。
 
 * **精度**<br/>
-   フィルターを使用します。 検索式にのみ依存すると、どのフィールドにも正確なファセット値が含まれないドキュメントが語幹検索で返される可能性があります。 
+  フィルターを使用します。 検索式にのみ依存すると、どのフィールドにも正確なファセット値が含まれないドキュメントが語幹検索で返される可能性があります。 
 * **対象フィールド**<br/>
-   ファセットのドリル ダウンでは、通常、すべての検索可能フィールドのどこかではなく、特定の (ファセット) フィールドにファセット値が存在するドキュメントのみが含まれるように意図します。 フィルターを追加すると、ファセット フィールドでのみ一致する値を検索するようにサービスに指示されて、ターゲット フィールドがいっそう限定されます。
+  ファセットのドリル ダウンでは、通常、すべての検索可能フィールドのどこかではなく、特定の (ファセット) フィールドにファセット値が存在するドキュメントのみが含まれるように意図します。 フィルターを追加すると、ファセット フィールドでのみ一致する値を検索するようにサービスに指示されて、ターゲット フィールドがいっそう限定されます。
 * **インデックスの効率性**<br/>
   アプリケーションでファセット ナビゲーションだけを使用する場合は (つまり、検索ボックスを使用しません)、フィールドを `searchable=false`、`facetable=true` と指定することによって、いっそうコンパクトなインデックスを生成できます。 さらに、インデックスの作成はファセット値全体に対してのみ行われ、単語の区切りや、複数の単語からなる値のコンポーネント部分のインデックス作成は行われません。
 * **パフォーマンス**<br/>
-   フィルターは検索の候補ドキュメントのセットを絞り込み、それらをランキングから除外します。 ドキュメント セットが大きい場合、非常に限定的なファセット ドリルダウンを使用すると、パフォーマンスが著しく向上することがよくあります。
+  フィルターは検索の候補ドキュメントのセットを絞り込み、それらをランキングから除外します。 ドキュメント セットが大きい場合、非常に限定的なファセット ドリルダウンを使用すると、パフォーマンスが著しく向上することがよくあります。
 
 <a name="tips"></a> 
 
@@ -235,11 +235,11 @@ Azure Search では、検索コーパスはインデックスを生成するド�
 > 
 
 * `@colorFacet.count`<br/>
-   プレゼンテーション コードでは、ファセットの count パラメーターはファセット結果の数を表示するために使用されます。 ファセットの結果では、count はファセットの語句または範囲に一致するドキュメントの数を示します。
+  プレゼンテーション コードでは、ファセットの count パラメーターはファセット結果の数を表示するために使用されます。 ファセットの結果では、count はファセットの語句または範囲に一致するドキュメントの数を示します。
 * `&facet=City,count:12`<br/>
-   ファセット クエリでは、count に値を設定できます。  既定値は 10 ですが、これより大きい値または小さい値を設定できます。 `count:12` と設定すると、ドキュメント数によるファセットの結果から上位 12 個の一致が取得されます。
+  ファセット クエリでは、count に値を設定できます。  既定値は 10 ですが、これより大きい値または小さい値を設定できます。 `count:12` と設定すると、ドキュメント数によるファセットの結果から上位 12 個の一致が取得されます。
 * "`@odata.count`"<br/>
-   クエリの応答では、この値は検索結果において一致する項目の数を示します。 検索語句とは一致しても、ファセット値とは一致しない項目が存在するため、平均すると、この値はすべてのファセット結果を組み合わせた合計より大きくなります。
+  クエリの応答では、この値は検索結果において一致する項目の数を示します。 検索語句とは一致しても、ファセット値とは一致しない項目が存在するため、平均すると、この値はすべてのファセット結果を組み合わせた合計より大きくなります。
 
 **ファセット ナビゲーションでのレベル** 
 
@@ -272,7 +272,7 @@ Azure Search では、範囲を計算する 2 つの方法が提供されてお�
 $10 刻みの価格ファセットを設定するには、`&facet=price,interval:10` と指定します
 
 **方法 2: 値のリストを使用する**<br/>
- 数値データの場合、値のリストを使用できます。  次のように表示される ListPrice のファセット範囲について考えます。
+数値データの場合、値のリストを使用できます。  次のように表示される ListPrice のファセット範囲について考えます。
 
   ![][5]
 
@@ -339,15 +339,15 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 また、「 [Azure Search Deep Dive (Azure Search の詳細)](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)」もご覧ください。 45:25 の部分に、ファセットの実装方法のデモがあります。
 
 <!--Anchors-->
-[構築方法]: #howtobuildit
-[プレゼンテーション層の構築]: #presentationlayer
-[インデックスの作成]: #buildindex
-[データ品質のチェック]: #checkdata
-[クエリの作成]: #buildquery
-[ファセット ナビゲーションの制御方法に関するヒント]: #tips
-[範囲の値に基づくファセット ナビゲーション]: #rangefacets
-[GeoPoints に基づくファセット ナビゲーション]: #geofacets
-[試してみる]: #tryitout
+[How to build it]: #howtobuildit
+[Build the presentation layer]: #presentationlayer
+[Build the index]: #buildindex
+[Check for data quality]: #checkdata
+[Build the query]: #buildquery
+[Tips on how to control faceted navigation]: #tips
+[Faceted navigation based on range values]: #rangefacets
+[Faceted navigation based on GeoPoints]: #geofacets
+[Try it out]: #tryitout
 
 <!--Image references-->
 [1]: ./media/search-faceted-navigation/Facet-1-slide.PNG
@@ -362,18 +362,18 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 [10]: ./media/search-faceted-navigation/Facet-10-appTitle.png
 
 <!--Link references-->
-[ファセット検索のための設計に関する記事]: http://www.uie.com/articles/faceted_search/
-[ファセット ナビゲーションの設計パターンに関する記事]: http://alistapart.com/article/design-patterns-faceted-navigation
-[最初のアプリケーションの作成]: search-create-first-solution.md
-[Azure Search の OData 式の構文]: http://msdn.microsoft.com/library/azure/dn798921.aspx
-[Azure Search Adventure Works のデモ]: https://azuresearchadventureworksdemo.codeplex.com/
+[Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
+[Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
+[Create your first application]: search-create-first-solution.md
+[OData expression syntax (Azure Search)]: http://msdn.microsoft.com/library/azure/dn798921.aspx
+[Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
 [http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
-[Azure Search フォーラムの投稿のファセット]: ../faceting-on-azure-search.md?forum=azuresearch
-[Search Documents (Azure Search API) (ドキュメントの検索 (Azure Search API)) (ドキュメントの検索 (Azure Search API))]: http://msdn.microsoft.com/library/azure/dn798927.aspx
+[Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
+[Search Documents (Azure Search API)]: http://msdn.microsoft.com/library/azure/dn798927.aspx
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

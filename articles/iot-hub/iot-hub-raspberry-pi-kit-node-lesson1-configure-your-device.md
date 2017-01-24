@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: ad1b0eb76d9d82af1ea5f8f1c7bda13656b1ab47
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 68647c83f30fddd69aa920cae6f407f2728e14c8
 
 
 ---
@@ -50,7 +50,7 @@ Pi の初回使用時の構成を行い、Raspbian オペレーティング シ�
 以下も必要です。
 
 * Pi を接続するためのワイヤード (有線) またはワイヤレス接続。
-* USB-SD アダプターまたは miniSD カード (microSD カードに OS イメージを書き込むため)。
+* USB-SD アダプターまたは miniSD カード (microSD カードに オペレーティング システム イメージを書き込むため)。
 * Windows、Mac、または Linux を実行しているコンピューター。 このコンピューターを使って、microSD カードに Raspbian をインストールします。
 * インターネット接続 (必要なツールとソフトウェアをダウンロードするため)。
 
@@ -117,6 +117,6 @@ LED の極性が重要であることに注意してください。 この極性
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

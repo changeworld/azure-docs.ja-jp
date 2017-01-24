@@ -1,6 +1,6 @@
 ---
-title: "開発者ガイド - IoT Hub クエリ言語 | Microsoft Docs"
-description: "Azure IoT Hub 開発者ガイド - デバイス ツインとジョブに関する情報を IoT Hub から取得するための、SQL のような IoT HUb クエリ言語の説明"
+title: "Azure IoT Hub クエリ言語について | Microsoft Docs"
+description: "開発者ガイド - デバイス ツインとジョブに関する情報を IoT Hub から取得するための、SQL のような IoT Hub クエリ言語の説明。"
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 627de0ca1647e98e08165521e7d3a519e1950296
-ms.openlocfilehash: 8007c6864368868d9cb489236d958eeada8789bd
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f89a895a0277783bd28a8ceff3a735a129f20658
 
 
 ---
@@ -145,8 +145,8 @@ IoT Hub は、任意の条件でフィルター処理してデバイス ツイ�
 **query** オブジェクトがページ サイズ (最大 1000) でインスタンス化され、**GetNextAsTwinAsync** メソッドを複数回呼び出すことによって複数のページを取得できる様子をご確認ください。
 クエリ オブジェクトは、クエリが必要とする非シリアル化オプション (デバイス ツインやジョブ オブジェクトなど) や、プロジェクションを使用する際に使うプレーン JSON に応じて、複数の **Next\*** を公開します。
 
-### <a name="node-example"></a>ノードの例
-クエリ機能は **Registry** オブジェクトの [Node service SDK][lnk-hub-sdks] で公開されます。
+### <a name="nodejs-example"></a>Node.js の使用例
+クエリ機能は **Registry** オブジェクトの [Azure IoT service SDK for Node.js][lnk-hub-sdks] で公開されます。
 簡単なクエリの使用例を次に示します。
 
         var query = registry.createQuery('SELECT * FROM devices', 100);
@@ -374,6 +374,6 @@ GROUP BY の正式な構文は次のとおりです。
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

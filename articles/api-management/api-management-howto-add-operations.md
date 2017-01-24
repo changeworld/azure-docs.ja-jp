@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 12/15/2016
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1bc391f5be5e41c6b6691950241ba5f3abdbf538
+ms.sourcegitcommit: d8b2f91a4d47513572fc5a56c60524d8338c8df4
+ms.openlocfilehash: 4527e27f760a7a0685f92a7108c4e8ff9759d33c
 
 
 ---
@@ -28,7 +28,7 @@ API Management 内の API を使用するためには、操作を追加する必
 
 ![パブリッシャー ポータル][api-management-management-console]
 
-> API Management サービス インスタンスをまだ作成していない場合は、[API Management インスタンスの作成][API Management インスタンスの作成]に関するチュートリアルの [API Management サービス インスタンスの作成][API Management サービス インスタンスの作成]に関するセクションをご覧ください。
+> まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の概要][Get started with Azure API Management]に関するチュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」を参照してください。
 > 
 > 
 
@@ -47,6 +47,8 @@ API Management 内の API を使用するためには、操作を追加する必
 <a name="url-template"></a>
 
 1 つ以上の URL パス セグメントと 0 個以上のクエリ文字列パラメーターから構成される URL フラグメントを入力して、URL テンプレートを定義します。 URL テンプレートは、API のベース URL に付加され、単一の HTTP 操作を識別します。 URL テンプレートには、中かっこで識別される 1 つまたは複数の名前付き変数部分を含めることができます。 テンプレート パラメーターと呼ばれるこれらの変数部分には、要求が API Management プラットフォームによって処理されるときに要求の URL から抽出された値が動的に割り当てられます。
+
+> URL テンプレートには、ワイルドカード パターンを含めることができます。 たとえば、`/*` を指定すると、その HTTP メソッドのすべての要求がバックエンド サービスに転送されます。
 
 ![URL テンプレート][api-management-url-template]
 
@@ -75,7 +77,7 @@ API Management 内の API を使用するためには、操作を追加する必
 
 キャッシュ キーは、それぞれ異なるキャッシュ キーに対応する応答が別個のキャッシュ値を受け取るように、応答を区別するために使用されます。 オプションで、**[クエリ文字列パラメーターごとにキャッシュ]** ボックスと **[ヘッダーごとにキャッシュ]** ボックスに、特定のクエリ文字列パラメーターとキャッシュ キー値の計算に使用する HTTP ヘッダーを入力します。 これらの値を指定しない場合、完全な要求 URL と HTTP ヘッダー値 **Accept** および **Accept-Charset** がキャッシュ キーの生成に使用されます。
 
-> キャッシュおよびキャッシュ ポリシーの詳細については、「[Azure API Management で操作の結果をキャッシュする方法][Azure API Management で操作の結果をキャッシュする方法]」を参照してください。
+> キャッシュおよびキャッシュ ポリシーの詳細については、「[Azure API Management で操作の結果をキャッシュする方法][How to cache operation results in Azure API Management]」を参照してください。
 > 
 > 
 
@@ -129,7 +131,7 @@ API Management 内の API を使用するためには、操作を追加する必
 ## <a name="next-steps"> </a>次のステップ
 これで、操作が API に追加されました。次のステップでは、API を成果物に関連付けた後で発行して、開発者が操作を呼び出すことができるようにします。
 
-* [Azure API Management で成果物を作成して発行する方法][Azure API Management で成果物を作成して発行する方法]
+* [成果物を作成して発行する方法][How to create and publish a product]
 
 [api-management-management-console]: ./media/api-management-howto-add-operations/api-management-management-console.png
 [api-management-operations]: ./media/api-management-howto-add-operations/api-management-operations.png
@@ -154,22 +156,22 @@ API Management 内の API を使用するためには、操作を追加する必
 [api-management-api-summary]: ./media/api-management-howto-add-operations/api-management-api-summary.png
 [api-management-echo-operations]: ./media/api-management-howto-add-operations/api-management-echo-operations.png
 
-[操作の追加]: #add-operation
-[操作のキャッシュ]: #operation-caching
-[要求パラメーター]: #request-parameters
-[要求本文]: #request-body
-[応答]: #responses
-[次のステップ]: #next-steps
+[Add an operation]: #add-operation
+[Operation caching]: #operation-caching
+[Request parameters]: #request-parameters
+[Request body]: #request-body
+[Responses]: #responses
+[Next steps]: #next-steps
 
-[API Management インスタンスの作成]: api-management-get-started.md
-[API Management サービス インスタンスの作成]: api-management-get-started.md#create-service-instance
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
-[API に操作を追加する方法]: api-management-howto-add-operations.md
-[Azure API Management で成果物を作成して発行する方法]: api-management-howto-add-products.md
-[Azure API Management で操作の結果をキャッシュする方法]: api-management-howto-cache.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create and publish a product]: api-management-howto-add-products.md
+[How to cache operation results in Azure API Management]: api-management-howto-cache.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
