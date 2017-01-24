@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e0057a5e8ab3d2fa3c9f201ec88246db7a53cc4a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c0c9362f1c2e15c947aaaf7187f3383ad243140f
 
 
 ---
@@ -26,24 +26,24 @@ ms.openlocfilehash: e0057a5e8ab3d2fa3c9f201ec88246db7a53cc4a
 > 
 > 
 
-手順 1 の「[アカウントの作成および登録](marketplace-publishing-accounts-creation-registration.md)」では、Azure Marketplace のデータ サービス オファーの[技術以外の一般的な要件](marketplace-publishing-pre-requisites.md)と[技術的な要件](marketplace-publishing-data-service-creation-prerequisites.md)について説明しました。 ここでは、Azure Marketplace 向けの[発行ポータル][link-pubportal]で、データ サービス オファーを作成する手順について説明します。
+手順 1 の「[アカウントの作成および登録](marketplace-publishing-accounts-creation-registration.md)」では、Azure Marketplace のデータ サービス オファーの[技術以外の一般的な要件](marketplace-publishing-pre-requisites.md)と[技術的な要件](marketplace-publishing-data-service-creation-prerequisites.md)について説明しました。 ここでは、Azure Marketplace 向けの[発行ポータル][link-pubportal]で、データ サービス プランを作成する手順について説明します。
 
-## <a name="1-login-to-the-publishing-portal"></a>1.  発行ポータルにログインします。
- [https://publish.windowsazure.com](https://publish.windowsazure.com.)
+## <a name="1----login-to-the-publishing-portal"></a>1.  発行ポータルにログインします。
+[https://publish.windowsazure.com](https://publish.windowsazure.com.)
 
-**初めて発行ポータルにログインする場合は、デベロッパー センターに会社の販売者プロファイルファイルを登録したときに使用したものと同じアカウントを使用します。**   発行ポータルでは、他の従業員を共同管理者として後で追加できます。
+**初めて発行ポータルにログインする場合は、デベロッパー センターに会社の販売者プロファイルファイルを登録したときに使用したものと同じアカウントを使用します。**  発行ポータルでは、他の従業員を共同管理者として後で追加できます。
 
 初めて発行ポータルにログインする場合は、 **[Data Services の発行]** タイルをクリックします。
 
-## <a name="2-choose-data-services-in-the-navigation-menu-on-the-left-side"></a>2.  左側のナビゲーション メニューの **[Data Services]** を選択します。
+## <a name="2----choose-data-services-in-the-navigation-menu-on-the-left-side"></a>2.  左側のナビゲーション メニューの **[Data Services]** を選択します。
   ![図](media/marketplace-publishing-data-service-creation/pubportal-main-nav.png)
 
-## <a name="3-create-a-new-data-service"></a>手順 3.  新しいデータ サービスを作成します。
+## <a name="3----create-a-new-data-service"></a>手順 3.  新しいデータ サービスを作成します。
 新しいデータ サービス オファーのタイトルを入力し、右側の [+] をクリックします。
 
   ![図](media/marketplace-publishing-data-service-creation/step-3.png)
 
-## <a name="4-review-the-sub-menu-under-the-newly-created-data-service-in-the-navigation-menu"></a>4.  ナビゲーション メニューで新しく作成したデータ サービスのサブメニューを確認します。
+## <a name="4----review-the-sub-menu-under-the-newly-created-data-service-in-the-navigation-menu"></a>4.  ナビゲーション メニューで新しく作成したデータ サービスのサブメニューを確認します。
 **[チュートリアル]** タブをクリックし、Azure Marketplace に適切にデータ サービスを発行するために必要なすべての手順を確認します。
 
 > [!TIP]
@@ -51,7 +51,7 @@ ms.openlocfilehash: e0057a5e8ab3d2fa3c9f201ec88246db7a53cc4a
 > 
 > 
 
-## <a name="5-create-a-new-plan"></a>5.  新しいオファーを作成します。
+## <a name="5----create-a-new-plan"></a>5.  新しいオファーを作成します。
 ### <a name="offers-plans-transactions"></a>オファー、プラン、トランザクション。
 各オファーには複数のプランを含めることができます。また、少なくとも 1 つのプランを含める必要があります。 エンドユーザーがオファーにサブスクライブする場合、オファーのプランのいずれかにサブスクライブします。 各プランには、エンドユーザーがサービスを使用できる方法が定義されています。
 
@@ -110,10 +110,10 @@ ms.openlocfilehash: e0057a5e8ab3d2fa3c9f201ec88246db7a53cc4a
 | **このプランの購入にプロモーション コードは必要ですか。** |発行元は、"プロモーション コード" という特殊なコードを特定のユーザーに提供することで、サービス プランへのアクセスを制限することができます。 このプロモーション コードを持っているエンドユーザーのみが、プランにサブスクライブできるようになります。 [いいえ] を選択すると、オファーを使用できるリージョンの全ユーザー (詳細については、 [Marketplace マーケティング コンテンツガイド](marketplace-publishing-push-to-staging.md) を参照してください) が、このプランにサブスクライブできるようになります。 追加の質問は表示されません。 |
 | **有効なプロモーション コードを持っていないユーザーにこのプランを表示しないことはできますか。** |前の質問に対する回答が「はい」の場合、発行元には、Marketplace の UI にこのプランが完全に表示されないようにするオプションがあります。 つまり、オファーの詳細ページにこのプランが表示されなくなります。 プロモーション コードを受け取って購入したエンドユーザーは、そのプロモーション コードを使用してサブスクライブできます。 |
 
-## <a name="6-create-your-marketplace-marketing-content"></a>6.  Marketplace のマーケティング コンテンツを作成します。
+## <a name="6----create-your-marketplace-marketing-content"></a>6.  Marketplace のマーケティング コンテンツを作成します。
 **[マーケティング]、[価格]、[サポート]、[カテゴリ]** の各タブに必要な情報を提供する方法については、「[Marketplace マーケティング コンテンツ ガイド](marketplace-publishing-push-to-staging.md)」を参照してください。このガイドは、Azure Marketplace で発行されているすべてのアーティファクトに共通しています。  
 
-## <a name="7-connect-your-offer-to-your-service-sql-azure-based-or-web-service-based"></a>7.  サービス (SQL Azure ベースまたは Web サービス ベース) にオファーを接続します。
+## <a name="7----connect-your-offer-to-your-service-sql-azure-based-or-web-service-based"></a>7.  サービス (SQL Azure ベースまたは Web サービス ベース) にオファーを接続します。
 **[Data Services]** サブメニューをクリックします。
 
 ページの上部で、オファーの **[名前空間]**を指定するように求められます。  
@@ -156,12 +156,12 @@ Web サービスの場合
 * [Getting Started: How to publish an offer to the Azure Marketplace (概要: Azure Marketplace へのプランの発行方法)](marketplace-publishing-getting-started.md)
 * 全体的な OData マッピングのプロセスと目的を理解したい場合は、こちらの [データ サービスの OData マッピング](marketplace-publishing-data-service-creation-odata-mapping.md) に関する記事を読んで、定義、構造、手順を確認してください。
 * 特定のノードとそのパラメーターについて知りたい場合は、定義と説明、例、ユース ケースのコンテキストなどが記載された、この [データ サービスの OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) に関する記事を参照してください。
-* 例を確認したい場合は、 [データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md) に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
+* 例に関心がある場合は、 [データ サービス OData マッピング例](marketplace-publishing-data-service-creation-odata-mapping-examples.md) に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
 
 [link-pubportal]:https://publish.windowsazure.com
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

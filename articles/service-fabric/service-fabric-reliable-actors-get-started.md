@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2016
+ms.date: 01/04/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4d3d7c05e6def1ad8ec6f30fa96655eb8f6b2fda
+ms.sourcegitcommit: 2304a9433bb382c0c7ddcf36733838ac769b9584
+ms.openlocfilehash: 98e519df244e9ae934b8100ea9820a7f765b1ee3
 
 
 ---
@@ -155,6 +155,6 @@ Visual Studio 用の Service Fabric ツールは、ローカル マシンでの�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

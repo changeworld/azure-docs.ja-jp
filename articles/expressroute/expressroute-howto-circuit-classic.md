@@ -1,13 +1,13 @@
 ---
-title: クラシック デプロイメント モデルと PowerShell を使用して ExpressRoute 回線を作成および変更する | Microsoft Docs
-description: この記事では、ExpressRoute 回線の作成およびプロビジョニング手順について説明します。 この記事では回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
+title: "クラシック デプロイメント モデルと PowerShell を使用して ExpressRoute 回線を作成および変更する | Microsoft Docs"
+description: "この記事では、ExpressRoute 回線の作成およびプロビジョニング手順について説明します。 この記事では回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。"
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: 0134d242-6459-4dec-a2f1-4657c3bc8b23
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,13 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: ganesr;cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 4acb64838288d36f0dc1b1eb9736b00faef21a0c
+ms.openlocfilehash: 5c803ff58a1f0e058c2f219320219c1cbf3ebfe7
+
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
-> [Azure Portal - Resource Manager](expressroute-howto-circuit-portal-resource-manager.md)
-> [PowerShell - Resource Manager](expressroute-howto-circuit-arm.md)
-> [PowerShell - クラシック](expressroute-howto-circuit-classic.md)
+> * [Azure ポータル - Resource Manager](expressroute-howto-circuit-portal-resource-manager.md)
+> * [PowerShell - Resource Manager](expressroute-howto-circuit-arm.md)
+> * [PowerShell - クラシック](expressroute-howto-circuit-classic.md)
 > 
 > 
 
@@ -32,13 +36,13 @@ ms.author: ganesr;cherylmc
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
-### <a name="1.-review-the-prerequisites-and-workflow-articles"></a>1.前提条件とワークフローに関する記事を確認する
+### <a name="1-review-the-prerequisites-and-workflow-articles"></a>1.前提条件とワークフローに関する記事を確認する
 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。  
 
-### <a name="2.-install-the-latest-versions-of-the-azure-powershell-modules"></a>2.Azure PowerShell モジュールの最新バージョンをインストールする
-Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md) 」の手順に従ってください。
+### <a name="2-install-the-latest-versions-of-the-azure-powershell-modules"></a>2.Azure PowerShell モジュールの最新バージョンをインストールする
+Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs) 」の手順に従ってください。
 
-### <a name="3.-log-in-to-your-azure-account-and-select-a-subscription"></a>3.Azure アカウントにログインしてサブスクリプションを選択する
+### <a name="3-log-in-to-your-azure-account-and-select-a-subscription"></a>3.Azure アカウントにログインしてサブスクリプションを選択する
 1. 管理者特権の Windows PowerShell プロンプトで、次のコマンドレットを実行します。
    
         Add-AzureAccount
@@ -51,13 +55,13 @@ Azure PowerShell モジュールを使用するようにコンピューターを
         Select-AzureSubscription -SubscriptionName "mysubscriptionname"
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>ExpressRoute 回線の作成とプロビジョニング
-### <a name="1.-import-the-powershell-modules-for-expressroute"></a>1.ExpressRoute 用の PowerShell モジュールをインポートする
+### <a name="1-import-the-powershell-modules-for-expressroute"></a>1.ExpressRoute 用の PowerShell モジュールをインポートする
  ExpressRoute コマンドレットの使用を開始するには、PowerShell セッションに Azure および ExpressRoute のモジュールをインポートする必要があります (インポートがまだの場合)。 ローカル コンピューター上のインストールされた場所からモジュールをインポートします。 モジュールのインストールに使用した方法によっては、次の例で示す場所と異なる場合があります。 必要に応じて例を変更します。  
 
     Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
     Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
 
-### <a name="2.-get-the-list-of-supported-providers,-locations,-and-bandwidths"></a>2.サポートされるプロバイダー、場所、帯域幅のリストを取得する
+### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2.サポートされるプロバイダー、場所、帯域幅のリストを取得する
 ExpressRoute 回線を作成する前に、サポートされている接続プロバイダー、場所、帯域幅オプションのリストが必要になります。
 
 PowerShell コマンドレット `Get-AzureDedicatedCircuitServiceProvider` を実行すると、この情報が返されます。この情報は、後のステップで使用します。
@@ -72,7 +76,7 @@ PowerShell コマンドレット `Get-AzureDedicatedCircuitServiceProvider` を�
 
 これで、ExpressRoute 回線を作成する準備が整いました。         
 
-### <a name="3.-create-an-expressroute-circuit"></a>3.ExpressRoute 回線の作成
+### <a name="3-create-an-expressroute-circuit"></a>3.ExpressRoute 回線の作成
 以下の例では、Silicon Valley の Equinix を通じて 200 Mbps の ExpressRoute 回線を作成する方法を示します。 別のプロバイダーと設定を使用する場合は、要求を実行するときにその情報に置き換えてください。
 
 > [!IMPORTANT]
@@ -98,7 +102,7 @@ PowerShell コマンドレット `Get-AzureDedicatedCircuitServiceProvider` を�
 
     get-help new-azurededicatedcircuit -detailed
 
-### <a name="4.-list-all-the-expressroute-circuits"></a>4.すべての ExpressRoute 回線を一覧表示する
+### <a name="4-list-all-the-expressroute-circuits"></a>4.すべての ExpressRoute 回線を一覧表示する
 作成したすべての ExpressRoute 回線の一覧を取得するには、`Get-AzureDedicatedCircuit` コマンドを実行します。
 
     Get-AzureDedicatedCircuit
@@ -131,7 +135,7 @@ PowerShell コマンドレット `Get-AzureDedicatedCircuitServiceProvider` を�
 
     get-help get-azurededicatedcircuit -detailed
 
-### <a name="5.-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5.プロビジョニングのためにサービス キーを接続プロバイダーに送信する
+### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5.プロビジョニングのためにサービス キーを接続プロバイダーに送信する
 *ServiceProviderProvisioningState* は、サービス プロバイダー側でのプロビジョニングの現在の状態に関する情報を提供します。 *Status* は、Microsoft 側での状態を提供します。 回線のプロビジョニング状態に関する詳細については、 [ワークフロー](expressroute-workflows.md#expressroute-circuit-provisioning-states) に関する記事を参照してください。
 
 新しい ExpressRoute 回線を作成する場合、この回線は次の状態になります。
@@ -151,7 +155,7 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
     Status                           : Enabled
 
 
-### <a name="6.-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6.回線キーのステータスと状態を定期的に確認する
+### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6.回線キーのステータスと状態を定期的に確認する
 これにより、プロバイダーがいつ回線を有効にしたのかが分かります。 回線が構成されると、以下の例に示すように、*ServiceProviderProvisioningState* に *Provisioned* が表示されます。
 
     Get-AzureDedicatedCircuit
@@ -165,7 +169,7 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
     Sku                              : Standard
     Status                           : Enabled
 
-### <a name="7.-create-your-routing-configuration"></a>7.ルーティング構成を作成する
+### <a name="7-create-your-routing-configuration"></a>7.ルーティング構成を作成する
 詳しい手順については、 [ExpressRoute 回線のルーティング構成 (回線ピアリングの作成と変更)](expressroute-howto-routing-classic.md) に関する記事を参照してください。
 
 > [!IMPORTANT]
@@ -173,7 +177,7 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 > 
 > 
 
-### <a name="8.-link-a-virtual-network-to-an-expressroute-circuit"></a>8.ExpressRoute 回線への仮想ネットワークのリンク
+### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8.ExpressRoute 回線への仮想ネットワークのリンク
 次に、ExpressRoute 回線に仮想ネットワークをリンクします。 詳細な手順については、「 [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-classic.md) 」を参照してください。 ExpressRoute のクラシック デプロイメント モデルを使用して仮想ネットワークを作成する必要がある場合、手順については、「 [クラシック ポータルでの ExpressRoute 用の Virtual Network の構成](expressroute-howto-vnet-portal-classic.md) 」をご覧ください。
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>ExpressRoute 回線の状態の取得
@@ -325,6 +329,9 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 * [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-classic.md)
 * [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-classic.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO1-->
 
 

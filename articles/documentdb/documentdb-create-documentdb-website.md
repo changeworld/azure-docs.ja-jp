@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2016
+ms.date: 12/08/2016
 ms.author: hawong
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ea624ffc9a33fe89aea065de8c96efd79d6c2b9a
+ms.sourcegitcommit: 08b101f42558280d8ffa690829570257d8d6deca
+ms.openlocfilehash: 6f519ac78d28fac69171b083f18d783cf1d9b24a
 
 
 ---
@@ -73,6 +73,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
       
       ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 5. 既存のリソース グループを選択するか、名前を指定して新しいリソース グループを作成し、リソース グループの場所を選択します。
+
     ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
 6. **[法律条項を確認してください]**、**[購入]**、**[作成]** の順にクリックして、デプロイを開始します。  **[ダッシュボードにピン留めする]** を選択すると、Azure ポータルのホーム ページで生成されたデプロイメントが見つけやすくなります。
    ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
@@ -113,6 +114,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
       
       ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 5. 既存のリソース グループを選択するか、名前を指定して新しいリソース グループを作成し、リソース グループの場所を選択します。
+
     ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
 6. **[法律条項を確認してください]**、**[購入]**、**[作成]** の順にクリックして、デプロイを開始します。  **[ダッシュボードにピン留めする]** を選択すると、Azure ポータルのホーム ページで生成されたデプロイメントが見つけやすくなります。
    ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
@@ -121,6 +123,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 8. リソースの一覧で Web アプリのリソースをクリックし、**[アプリケーション設定]** 
      ![[リソース グループのスクリーンショット]](./media/documentdb-create-documentdb-website/TemplateDeployment9.png) をクリックします。  
 9. DocumentDB エンドポイントおよびそれぞれの DocumentDB マスター キーに関するアプリケーションの設定がどのように表示されているかを確認します。
+
     ![アプリケーションの設定のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment10.png)  
 10. 引き続き、Azure ポータルの操作を確認したり、DocumentDB の [サンプル](http://go.microsoft.com/fwlink/?LinkID=402386) に従って独自の DocumentDB アプリケーションを作成したり、自由に試してみてください。
 
@@ -145,6 +148,6 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

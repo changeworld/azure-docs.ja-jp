@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 10/19/2016
+ms.date: 12/22/2016
 ms.author: rachelap;robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b073958fd41fec05b473594b23b586d561e996f3
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 26f2fba953870564292ef3e986a3151373f6babf
 
 
 ---
@@ -168,13 +168,11 @@ swagger.io オンライン エディターを使用して、API の構造を表�
         package io.swagger.api.impl;
    
         import io.swagger.api.*;
-        import io.swagger.model.*;
+        
         import io.swagger.model.Contact;
         import java.util.*;
         import io.swagger.api.NotFoundException;
-        import java.io.InputStream;
-        import com.sun.jersey.core.header.FormDataContentDisposition;
-        import com.sun.jersey.multipart.FormDataParam;
+               
         import javax.ws.rs.core.Response;
         import javax.ws.rs.core.SecurityContext;
    
@@ -271,7 +269,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
     ![Using your Java Contacts REST API live in Azure][postman-calling-azure-contacts]
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、初めに Swagger JSON ファイルを使用し、Swagger.io エディターでスキャフォールディングされた Java コードを作成しました。 そこから、単純な変更と Git デプロイ プロセスにより、Java で記述された機能的な API アプリを作成しました。 次のチュートリアルでは、[CORS を使用して、JavaScript クライアントから API アプリを使用する方法][App Service API CORS]について説明します。 それ以降のチュートリアルでは、認証と承認を実装する方法について説明します。
+この記事では、初めに Swagger JSON ファイルを使用し、Swagger.io エディターでスキャフォールディングされた Java コードを作成しました。 そこから、単純な変更と Git デプロイ プロセスにより、Java で記述された機能的な API アプリを作成しました。 次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する][App Service API CORS]方法について説明します。 それ以降のチュートリアルでは、認証と承認を実装する方法について説明します。
 
 [Storage SDK for Java] についての理解を深めれば、このサンプルを応用して JSON BLOB を永続化することができます。 または、 [Document DB Java SDK] を使用して、Azure Document DB に Contact データを保存することもできます。 
 
@@ -285,7 +283,7 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [App Service API CORS]: app-service-api-cors-consume-javascript.md
 [Azure Portal]: https://portal.azure.com/
 [Document DB Java SDK]: ../documentdb/documentdb-java-application.md
-[無料試用版]: https://azure.microsoft.com/pricing/free-trial/
+[Microsoft Azure]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: http://www.git-scm.com/
 [Azure Java デベロッパー センター]: /develop/java/
 [Java Development Kit 8]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
@@ -295,7 +293,7 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [オンライン Swagger Editor]: http://editor.swagger.io/
 [Postman]: https://www.getpostman.com/
 [Storage SDK for Java]: ../storage/storage-java-how-to-use-blob-storage.md
-[Swagger]: http://swagger.io/
+[Swagger Editor]: http://swagger.io/
 [Swagger]: http://editor.swagger.io/
 [Visual Studio Code]: https://code.visualstudio.com
 
@@ -319,6 +317,6 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 10/19/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: c387472d961fa42d1fc085c1c83d0095fb965f71
+ms.sourcegitcommit: 72ca562c53f813599f19069cfac7ef3ac1957968
+ms.openlocfilehash: 14cd1d8a9e278fa54168efb3c66cf6d693b57054
 
 
 ---
@@ -108,7 +108,7 @@ Resource Manager テンプレートの詳細については、以下を参照し
 
     PowerShell スクリプトは、クラスター名とストレージ アカウント名のみを構成します。  Resource Manager テンプレートのその他の値は設定可能です。
 
-詳細については、「[PowerShell でデプロイする](../resource-group-template-deploy.md#deploy-with-powershell)」を参照してください。
+詳細については、「[PowerShell でデプロイする](../azure-resource-manager/resource-group-template-deploy.md#deploy)」を参照してください。
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ
 次のサンプルでは、Resource Manager テンプレートを呼び出すことによって、クラスターとその依存ストレージ アカウントとコンテナーが作成されます:
@@ -290,6 +290,6 @@ Visual Studio とリソース グループの使用の概要については、�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

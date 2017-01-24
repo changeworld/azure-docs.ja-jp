@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 8d7823b6ecbc1a762839fc620f76d0bf4687d8fa
-ms.openlocfilehash: 5b33a36a3415efd2bc4673999806aa797f4a1c9f
+ms.sourcegitcommit: 91e19b321026840a062078d7af2a55967fb3904b
+ms.openlocfilehash: 417c545e34f1d652594c8527a3c8b0a845a4e8fa
 
 
 ---
@@ -30,7 +30,7 @@ Azure Functions は、他の Azure サービス、SaaS 製品、オンプレミ�
 ## <a name="create-a-function-app"></a>Function App を作成する
 Function App は、Azure での関数の実行をホストします。 次の手順に従って、Azure Portal で Function App を作成します。
 
-初めての関数を作成するには、アクティブな Azure アカウントを用意しておく必要があります。 Azure アカウントがまだない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。
+関数アプリは Azure での関数の実行をホストします。 Azure アカウントがない場合は、[Functions の試用](https://functions.azure.com/try)に関するエクスペリエンスを確認するか、[無料の Azure アカウントを作成](https://azure.microsoft.com/free/)します。 
 
 1. [Azure Portal](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 2. **[+新規]** > **[Compute]** > **[Function App]** をクリックし、**[サブスクリプション]** を選択します。Function App を識別する一意の**アプリ名**を入力し、次の設定を指定します。
@@ -86,6 +86,6 @@ Azure Functions クイック スタートには機能コードが含まれてい
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

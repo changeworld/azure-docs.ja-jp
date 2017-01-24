@@ -111,11 +111,11 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/IC769497.png "Configure app URL")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[ServiceNow Sign On URL (ServiceNow サインオン URL)]** ボックスに、`https://<instance-name>.service-now.com` というパターンで、ServiceNow アプリケーションへのサインオンにユーザーが使用する URL を入力します。
+    a. **[ServiceNow Sign On URL (ServiceNow サインオン URL)]** ボックスに、`https://<instance-name>.service-now.com` というパターンで、ServiceNow アプリケーションへのサインオンにユーザーが使用する URL を入力します。
    
     b. **[識別子]** ボックスに、`https://<instance-name>.service-now.com` というパターンで、ServiceNow アプリケーションへのサインオンにユーザーが使用する URL を入力します。
    
-    c.  **[次へ]**
+    c. **[次へ]**
 
 4. SAML ベースの認証用に Azure AD で ServiceNow を自動的に構成するには、 **[シングル サインオンの自動構成]** フォームに ServiceNow のインスタンス名、管理者のユーザー名、管理者パスワードを入力し、 *[構成]*をクリックします。 ここで指定する管理者のユーザー名には、ServiceNow で **security_admin** ロールが割り当てられている必要があります。 Azure AD を SAML ID プロバイダーとして使用するよう ServiceNow を手動で構成するには、**[シングル サインオン用にこのアプリケーションを手動で構成する]** をクリックして **[次へ]** をクリックし、次の手順を完了します。
    
@@ -129,7 +129,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 
 7. *[Integration - Multiple Provider Single Sign-On Installer (統合 - 複数プロバイダーのシングル サインオン インストーラー)]* プラグインをアクティブ化するには、次の手順に従います。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 左側のナビゲーション ウィンドウで **[System Definition (システム定義)]** セクションに移動し、**[Plugins (プラグイン)]** をクリックします。
+    a. 左側のナビゲーション ウィンドウで **[System Definition (システム定義)]** セクションに移動し、**[Plugins (プラグイン)]** をクリックします。
    
     ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_03.png "Activate plugin")
    
@@ -237,7 +237,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 
     p. **[Submit]**をクリックします。 
 
-1. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。 
+1. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。 
    
     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
 
@@ -258,11 +258,11 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/IC769497.png "Configure app URL")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[ServiceNow Sign On URL (ServiceNow サインオン URL)]** ボックスに、`https://<instance-name>.service-now.com` というパターンで、ServiceNow アプリケーションへのサインオンにユーザーが使用する URL を入力します。
+    a. **[ServiceNow Sign On URL (ServiceNow サインオン URL)]** ボックスに、`https://<instance-name>.service-now.com` というパターンで、ServiceNow アプリケーションへのサインオンにユーザーが使用する URL を入力します。
    
     b. **[発行者の URL]** ボックスに、`https://<instance-name>.service-now.com` というパターンで、ServiceNow アプリケーションへのサインオンにユーザーが使用する URL を入力します。
    
-    c.  **[次へ]**
+    c. **[次へ]**
 
 4. **[シングル サインオン用にこのアプリケーションを手動で構成する]** をクリックし、**[次へ]** をクリックして、次の手順を実行します。
    
@@ -282,7 +282,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/ic7694981ex.png "Configure app URL")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[Enable multiple provider SSO (複数プロバイダー SSO を有効にする)]** を右に切り替えます。
+    a. **[Enable multiple provider SSO (複数プロバイダー SSO を有効にする)]** を右に切り替えます。
    
     b. **[Enable debug logging for the multiple provider SSO integration (複数プロバイダー SSO 統合でのデバッグ ログの有効化)]** を右に切り替えます。
    
@@ -294,7 +294,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
     
     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Configure single sign-on")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[Name]** ボックスに、構成の名前を入力します (例: **TestSAML2.0**)。
+    a. **[Name]** ボックスに、構成の名前を入力します (例: **TestSAML2.0**)。
     
     b. **[アクティブ]**を選択します。
     
@@ -319,7 +319,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
     
     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/ic7694982ex.png "Configure single sign-on")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[Name (名前)]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
+    a. **[Name (名前)]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
 
     b. Azure AD クラシック ポータルで、**[プロバイダー ID の識別]** の値をコピーし、**[Identity Provider URL]** ボックスに貼り付けます。
 
@@ -334,7 +334,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/ic7694983ex.png "Configure single sign-on")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[Protocol Binding for the IDP's SingleLogoutRequest]** ボックスに、「**urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect**」と入力します。
+    a. **[Protocol Binding for the IDP's SingleLogoutRequest]** ボックスに、「**urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect**」と入力します。
    
     b. **[NameID Policy (NameID ポリシー)]** ボックスに「**urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified**」と入力します。    
    
@@ -346,7 +346,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/ic7694984ex.png "Configure single sign-on")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[ServiceNow Homepage]** ボックスに ServiceNow インスタンス ホームページの URL を入力します。
+    a. **[ServiceNow Homepage]** ボックスに ServiceNow インスタンス ホームページの URL を入力します。
    
     > [!NOTE]
     > ServiceNow インスタンス ホームページは、**ServiceNow テナント URL** と **/navpage.do** を連結した形式です (例: `https://fabrikam.service-now.com/navpage.do`)。
@@ -368,7 +368,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 [ **Save**] をクリックします。 
 
-3. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。 
+3. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。 
    
     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
 
@@ -455,7 +455,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-servicenow-tutorial/create_aaduser_08.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+    a. **[新しいパスワード]** の値を書き留めます。
    
     b. ページの下部にある [完了]」を参照してください。   
 

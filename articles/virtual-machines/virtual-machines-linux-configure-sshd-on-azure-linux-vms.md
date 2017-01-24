@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/21/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: fa6c9b6b60aef689568c58699eeb89d14b1ae2bf
-ms.openlocfilehash: 73c47bcfbe018947930bb23fbbcc201b91a49944
+ms.sourcegitcommit: 08499c4242fdc59ef932d6b8f2e8442e5cdc55b2
+ms.openlocfilehash: a606f06de55b1db4392d066a3e1d026eb3b54d74
 
 
 ---
@@ -77,7 +77,7 @@ ClientAliveCountMax 0
 
 SSHD は Linux VM で実行されている SSH Server です。  SSH は、MacBook および Linux ワークステーションのシェルまたは Windows の Bash から実行するクライアントです。  SSH は、ワークステーションと、VPN (仮想プライベート ネットワーク) にも SSH 接続する Linux VM 間の通信のセキュリティ保護と暗号化に使用されるプロトコルでもあります。
 
-この記事では、チュートリアル全体を通して Linux VM への 1 つのログインを常に開いておくことが非常に重要です。  SSH 接続が確立されると、ウィンドウを閉じない限り、開いているセッションとして接続が保持されます。  ログインしているターミナルが 1 つあれば、重大な変更を行う場合に、ロックアウトされることなく SSHD サービスに変更を加えることができます。  SSHD 構成の破損によって Linux VM からロックアウトされた場合、Azure では [Azure VM アクセス拡張機能](virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して破損した SSHD 構成をリセットできます。
+この記事では、チュートリアル全体を通して Linux VM への 1 つのログインを常に開いておくことが非常に重要です。  SSH 接続が確立されると、ウィンドウを閉じない限り、開いているセッションとして接続が保持されます。  ログインしているターミナルが 1 つあれば、重大な変更を行う場合に、ロックアウトされることなく SSHD サービスに変更を加えることができます。  SSHD 構成の破損によって Linux VM からロックアウトされた場合、Azure では [Azure VM アクセス拡張機能](virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して破損した SSHD 構成をリセットできます。
 
 そのため、2 つのターミナルを開き、その両方から Linux VM に SSH 接続します。  一方のターミナルを使用して SSHD 構成ファイルを変更し、SSHD サービスを再起動します。  サービスが再起動したら、もう一方のターミナルを使用して変更をテストします。  SSH パスワードを無効にして SSH キーだけに依存するようにするので、SSH キーが正しくない場合、VM への接続を閉じると、VM は永続的にロックされて誰もログインできなくなり、削除して再作成することが必要になります。
 
@@ -177,14 +177,14 @@ azure vm reset-access \
 
 Linux VM で SSH サーバーを構成し、サーバーをロックダウンできました。従うことができるセキュリティのベスト プラクティスはほかにもあります。  
 
-* [VMAccess 拡張機能を使用して、Azure Linux VM 上のユーザー、SSH を管理し、ディスクをチェックまたは修復する](virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [VMAccess 拡張機能を使用して、Azure Linux VM 上のユーザー、SSH を管理し、ディスクをチェックまたは修復する](virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-* [Azure CLI を使って Linux VM のディスクを暗号化する](virtual-machines-linux-encrypt-disks?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure CLI を使って Linux VM のディスクを暗号化する](virtual-machines-linux-encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-* [Azure Resource Manager テンプレートでのアクセスとセキュリティ](virtual-machines-linux-dotnet-core-3-access-security?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure Resource Manager テンプレートでのアクセスとセキュリティ](virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

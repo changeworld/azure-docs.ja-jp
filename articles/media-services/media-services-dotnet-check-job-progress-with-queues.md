@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: 8eea2b930c9182f43cb1f1e416652ce8378d70b0
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 876b6a81c5fba7cd9567f913860dd5bdc2391c15
 
 
 ---
@@ -35,8 +35,8 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 
 * キュー サービスでは、先入先出法 (FIFO) の順次配送を保証しません。 詳細については、「 [Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」をご覧ください。
 * Azure ストレージ キューはプッシュ サービスではありません。キューをポーリングする必要があります。
-* キューの数に制限はありません。 詳細については、「 [Queue サービスの REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)」をご覧ください。
-* Azure Storage キューには、いくつかの制限事項や特性があります。詳細については、「[Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」を参照してください。
+* キューの数に制限はありません。 詳細については、「 [Queue サービスの REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/Queue-Service-REST-API)」をご覧ください。
+* Azure Storage キューには、いくつかの制限事項や特性があります。詳細については、「[Azure キューと Service Bus キューの比較](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)」を参照してください。
 
 ### <a name="code-example"></a>コード例
 このセクションのコード例では、次の処理を行います。
@@ -354,6 +354,6 @@ Media Services のラーニング パスを確認します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

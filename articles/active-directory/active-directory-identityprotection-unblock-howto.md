@@ -6,14 +6,13 @@ keywords: "Azure Active Directory Identity Protection, ユーザーのブロッ�
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: a953d425-a3ef-41f8-a55d-0202c3f250a7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 01/10/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441

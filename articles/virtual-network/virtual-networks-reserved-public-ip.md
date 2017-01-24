@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 536cb4cd7975283dd61c8c4f2fe1a707a735504e
-ms.openlocfilehash: 9b55a6e994e94257fd506a9d759a820dcd5d84e3
+ms.sourcegitcommit: c934f78e514230958fad8b2aa9be4d2e56a3a835
+ms.openlocfilehash: 55071ffe1bcc17b2181b4c52f51d28571a2f0eff
 
 
 ---
@@ -34,7 +34,7 @@ Azure での IP アドレスは、動的と予約済みという 2 つのカテ�
 IP アドレスが変更されないようにするには、IP アドレスを予約します。 予約済み IP は VIP としてのみ使用できるため、リソースがシャット ダウンしたり割り当てが解除されたりした場合でも、クラウド サービスの IP アドレスは変わりません。 さらに、VIP として使用されている既存の動的 IP を、予約済み IP アドレスに変換できます。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](virtual-network-ip-addresses-overview-arm.md)を使用して静的パブリック IP アドレスを予約する方法を確認してください。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](virtual-network-ip-addresses-overview-arm.md)を使用して静的パブリック IP アドレスを予約する方法を確認してください。
 
 Azure における IP アドレスの詳細については、[IP アドレス](virtual-network-ip-addresses-overview-classic.md)に関する記事をご覧ください。
 
@@ -57,7 +57,7 @@ Azure における IP アドレスの詳細については、[IP アドレス](v
 
 ## <a name="manage-reserved-vips"></a>予約済み VIP を管理する
 
-[PowerShell のインストールと構成](../powershell-install-configure.md)に関する記事の手順を実行して、PowerShell をインストールし、構成していることを確認します。 
+[PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関する記事の手順を実行して、PowerShell をインストールし、構成していることを確認します。 
 
 予約済み IP アドレスは、使用する前にサブスクリプションに追加する必要があります。 *米国中部*で使用できるパブリック IP アドレスのプールから予約済み IP を作成するには、次のコマンドを実行します。
 
@@ -168,6 +168,6 @@ Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestSer
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

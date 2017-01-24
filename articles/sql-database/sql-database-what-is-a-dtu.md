@@ -17,8 +17,8 @@ ms.workload: NA
 ms.date: 09/06/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: ad6fb631f05b1e88e8cbaaca83f9863cfb643269
-ms.openlocfilehash: e5a6c17117e0c79d86c45a07f69433a96fdb9052
+ms.sourcegitcommit: 3d619f5d6959594ee9b139d611d7e45390a40c55
+ms.openlocfilehash: d9b0eaa48d71f3ecf0a23f3bddb3c777c98afea7
 
 
 ---
@@ -37,9 +37,9 @@ eDTU とは、1 つの Azure SQL サーバー ( [エラスティック プール
 
 ![Intro to SQL Database: eDTUs by tier and level](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-プールには、設定価格に合わせて、設定された eDTU 数が与えられます。 プール内で、個々のデータベースには、設定されたパラメーターの範囲内で自動的にスケーリングを行う柔軟性が与えられます。 データベースは負荷が大きい場合、eDTU の使用量を増やして需要に対応します。 負荷が小さい場合、データベースは eDTU の使用量を減らし、負荷がなくなると eDTU を使用しません。 Single Database ではなく、プール全体に対してリソースをプロビジョニングすることで、管理タスクの簡略化を実現します。 さらに、プールにかかる予算を予測することができます。
+プールには、設定価格に合わせて、設定された eDTU 数が与えられます。 エラスティック プール内の個々のデータベースには、構成された境界内で自動スケールを行う柔軟性が与えられます。 負荷が大きい場合、データベースは需要に対応するためにより多くの eDTU を使用し、負荷の少ないデータベースでは使用を抑え、負荷がまったくないデータベースでは eDTU を使用しないようにすることができます。 データベースごとではなく、プール全体のリソースをプロビジョニングすることにより、管理タスクが簡素化され、プールの予算が予測可能になります。
 
-データベースを停止することなく、またはエラスティック プール内のデータベースに影響を及ぼすことなく、既存のプールに eDTU をさらに追加できます。 同様に、余分な eDTU が不要になった場合は、いつでも既存のプールから削除できます。 プールへのデータベースの追加、またはプールからの削除ができます。 データベースのリソース使用率が低いと予測できる場合は、プールから削除します。
+データベースを停止せず、プール内のデータベースに影響を及ぼさずに、既存のプールに eDTU を追加できます。 同様に、不要になった eDTU は、いつでも既存のプールから削除できます。 プールのデータベースを増減できるほか、負荷が大きいときにデータベースが使用できる eDTU の量を制限して、他のデータベース用の eDTU を確保することもできます。 データベースのリソース使用率が低いと予測できる場合は、プールから削除して、必要と予想される量のリソースを備えた単一データベースとして構成できます。
 
 ## <a name="how-can-i-determine-the-number-of-dtus-needed-by-my-workload"></a>ワークロードで必要とされる DTU の数を判断する方法
 既に存在するオンプレミスのワークロードや、SQL Server 仮想マシンのワークロードを Azure SQL Database に移行することを検討している場合には、[DTU Calculator](http://dtucalculator.azurewebsites.net/) を使用すると、必要な DTU のおおよその数がわかります。 既存の Azure SQL Database ワークロードについては、[SQL Database Query Performance Insight](sql-database-query-performance.md) を使えばデータベース リソースの消費量 (DTU) を把握でき、ワークロードの最適化に関する深い洞察が得られます。 このほか、過去 1 時間のリソース消費量を確認する場合には、[sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) DMV も使用できます。 また、カタログ ビュー [sys.resource_stats](http://msdn.microsoft.com/library/dn269979.aspx) を対象にクエリを実行する方法でも、過去 14 日間のリソース消費量を確認できます。ただし、こちらはデータの精度がやや低く、5 分間の平均となります。
@@ -58,6 +58,6 @@ eDTU とは、1 つの Azure SQL サーバー ( [エラスティック プール
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

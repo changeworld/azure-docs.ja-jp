@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 5aaf6bcd-3839-49b5-8c77-cbdf786e359b
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
 ms.date: 10/24/2016
 ms.author: sstein; sashan
@@ -15,8 +16,8 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3e6152f6539962653a582ba4921af82e4447fd76
+ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
+ms.openlocfilehash: c4f0b7eab07aa6a23bbb5489130d5cb92e18e5e2
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: 3e6152f6539962653a582ba4921af82e4447fd76
 > 
 > 
 
-Azure [SQL Database 自動バックアップ](sql-database-automated-backups.md) を使用して、 SQL データベースのコピーを作成できます。 データベースのコピーでは、geo レプリケーション機能と同じテクノロジを使用します。 ただし、geo レプリケーションとは異なり、シード処理の段階が完了するとレプリケーション リンクが切断されます。 そのため、データベースのコピーとは、コピーが要求された時点でのソース データベースのスナップショットのことです。  
+Azure の[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)機能を使用して、SQL Database のコピーを作成できます。 ただし、geo レプリケーションとは異なり、シード処理の段階が完了するとレプリケーション リンクが切断されます。 そのため、データベースのコピーとは、コピーが要求された時点でのソース データベースのスナップショットのことです。  
 同じサーバーまたは別のサーバーのいずれかで、データベースのコピーを作成できます。 データベース コピーのサービス レベルとパフォーマンス レベル (価格レベル) は、既定でコピー元のデータベースと同じになります。 API を使用している場合は、同じサービス レベル (エディション) 内のさまざまなパフォーマンス レベルを選択できます。 コピーの完了後、コピーは完全に機能する独立したデータベースになります。 この時点では、任意のエディションにアップグレードまたはダウン グレードできます。 ログイン、ユーザー、アクセス許可は非依存で管理できます。  
 
 データベースを同じ論理サーバーにコピーすると、両方のデータベースで同じログインを利用できます。 データベースをコピーするために使用するセキュリティ プリンシパルが、新しいデータベースのデータベース所有者 (DBO) になります。 すべてのデータベース ユーザー、アクセス許可、セキュリティ識別子 (SID) がデータベースのコピーにコピーされます。  
@@ -57,6 +58,6 @@ SQL Database をコピーするには、以下が必要です。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

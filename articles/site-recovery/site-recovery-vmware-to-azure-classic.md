@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 15654731e0658532c52e67c0119b07f7e7ecc5e2
+ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
+ms.openlocfilehash: 70ccb773b70f1b58f039ea5f4aca488d91fa3dad
 
 
 ---
@@ -126,7 +126,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 * キャッシュ ディスクの測定には、RAID 10 で 10,000 RPM の SAS ドライブが 8 個というベンチマーク用ストレージを使用しました。
 
 ### <a name="network-bandwidth-from-source-to-target"></a>ソースからターゲットまでのネットワーク帯域幅
- [容量計画ツール](site-recovery-capacity-planner.md)
+[容量計画ツール](site-recovery-capacity-planner.md)
 
 #### <a name="throttling-bandwidth-used-for-replication"></a>レプリケーションに使用される帯域幅のスロットル
 Azure にレプリケートされる VMware トラフィックは、特定のプロセス サーバーを経由します。 プロセス サーバー上の Site Recovery レプリケーションに使用できる帯域幅は、次の手順でスロットルできます。
@@ -219,7 +219,7 @@ Linux VM のみ - VMware で VM の構成パラメーターに disk.enableUUID=t
 [こちら](../virtual-network/virtual-networks-overview.md) をご覧ください。
 
 > [!NOTE]
-> Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ネットワークの移行](../resource-group-move-resources.md)はサポートされていません。
+> Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ネットワークの移行](../azure-resource-manager/resource-group-move-resources.md)はサポートされていません。
 >
 >
 
@@ -249,7 +249,8 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 >
 >
 
-[!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Enhanced-VMware-to-Azure-Setup-Registration/player]
+
+>[!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Enhanced-VMware-to-Azure-Setup-Registration/player]
 
 
 1. **[クイック スタート]** ページで、統合インストール ファイルをサーバーにダウンロードします。
@@ -382,7 +383,7 @@ VMware VM をレプリケートする場合、vCenter サーバー (または ES
 
 保護グループは、同じ保護設定を使用して保護する仮想マシンまたは物理サーバーの論理グループです。 保護設定を保護グループに適用すると、これらの設定はグループに追加するすべての仮想マシンおよび物理コンピューターに適用されます。
 
-1.  **[保護された項目]** > **[保護グループ]** の順に開き、保護グループを追加するためにクリックします。
+1. **[保護された項目]** > **[保護グループ]** の順に開き、保護グループを追加するためにクリックします。
 
     ![[保護グループの作成]](./media/site-recovery-vmware-to-azure-classic/protection-groups1.png)
 2. **[保護グループ設定の指定]** ページで、グループの名前を指定し、**[ソース]** で、グループを作成する構成サーバーを選択します。 **[ターゲット]** は Azure です。
@@ -507,7 +508,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <Installation Di
 
 **次のようにコマンド ラインからインストールすることもできます**。
 
-1. 管理サーバーの C:\Program Files (x86)\InMage Systems\private\connection のパスフレーズをコピーし、管理サーバーに "passphrase.txt" というファイル名で保存します。 次のコマンドを実行します。 この例で、管理サーバーの IP アドレスは 104.40.75.37、HTTPS ポートは 443 です。
+管理サーバーの C:\Program Files (x86)\InMage Systems\private\connection のパスフレーズをコピーし、管理サーバーに "passphrase.txt" というファイル名で保存します。 次のコマンドを実行します。 この例で、管理サーバーの IP アドレスは 104.40.75.37、HTTPS ポートは 443 です。
 
 運用サーバーにインストールするには:
 
@@ -544,7 +545,8 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <Installation Di
 4. **[ターゲット リソースの指定]** で、レプリケーションを使用しているストレージ アカウントを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。 現在、Premium Storage アカウントはサポートされていません。
 
    > [!NOTE]
-   > 1.[新しい Azure Portal](../storage/storage-create-storage-account.md) を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。                           2.Site Recovery のデプロイ用のストレージ アカウントについては、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ストレージ アカウントの移行](../resource-group-move-resources.md)はサポートされていません。
+   > 1. [新しい Azure ポータル](../storage/storage-create-storage-account.md) を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。                           
+   > 2. Site Recovery のデプロイ用のストレージ アカウントについては、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ストレージ アカウントの移行](../azure-resource-manager/resource-group-move-resources.md)はサポートされていません。
    >
    >
 
@@ -691,7 +693,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <Installation Di
 2. **[プロセス サーバー]** ボックスの一覧で、変更するサーバーの **[プロセスのサーバーの変更]** をクリックします。
 
     ![プロセス サーバーの更新](./media/site-recovery-vmware-to-azure-classic/update-process-server2.png)
-3.  **[プロセスのサーバーの変更]** > **[ターゲット プロセス サーバー]** で、新しい管理サーバーを選択し、新しいプロセス サーバーが処理する仮想マシンを選択します。 サーバーに関する情報を確認するには、情報アイコンをクリックします。 負荷の決定に役立つように、選択されている各仮想マシンを新しいプロセス サーバーにレプリケートするために必要な平均容量が表示されます。 チェック マークをクリックして、新しいプロセス サーバーへのレプリケーションを開始します。
+3. **[プロセスのサーバーの変更]** > **[ターゲット プロセス サーバー]** で、新しい管理サーバーを選択し、新しいプロセス サーバーが処理する仮想マシンを選択します。 サーバーに関する情報を確認するには、情報アイコンをクリックします。 負荷の決定に役立つように、選択されている各仮想マシンを新しいプロセス サーバーにレプリケートするために必要な平均容量が表示されます。 チェック マークをクリックして、新しいプロセス サーバーへのレプリケーションを開始します。
 
     ![プロセス サーバーの更新](./media/site-recovery-vmware-to-azure-classic/update-process-server3.png)
 
@@ -720,6 +722,6 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -8,6 +8,7 @@ author: ddove
 editor: 
 ms.assetid: cbe0aa2b-17e3-4b6f-a16f-6ebc1f5a66af
 ms.service: sql-database
+ms.custom: elastic
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 56f8270666f4d132c5e07053f5a6d476878c9b5f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fb40d7d98486ddd74bc6f0151a816c171efa4ba4
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 56f8270666f4d132c5e07053f5a6d476878c9b5f
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 無料評価版については、「 [無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
-* Azure PowerShell。 [Web Platform インストーラー](http://go.microsoft.com/fwlink/p/?linkid=320376)を使用して最新バージョンをインストールします。 詳細については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+* Azure PowerShell。 [Web Platform インストーラー](http://go.microsoft.com/fwlink/p/?linkid=320376)を使用して最新バージョンをインストールします。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
 * [NuGet Command-line Utility](https://nuget.org/nuget.exe) を使用して、Elastic Database ジョブ パッケージをインストールします。 詳細については、http://docs.nuget.org/docs/start-here/installing-nuget を参照してください。
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Elastic Database ジョブ PowerShell パッケージをダウンロードしてインストールする
@@ -180,6 +181,6 @@ ms.openlocfilehash: 56f8270666f4d132c5e07053f5a6d476878c9b5f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

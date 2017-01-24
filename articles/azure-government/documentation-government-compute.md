@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 09/29/2016
+ms.date: 11/18/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: a0374d6aeae42641e906a7f8e39bfc58eaacf096
-ms.openlocfilehash: b351229c474e84a9e385d2ed81f2eb73267d9fd1
+ms.sourcegitcommit: ca01baebd755e92aff1ef080af1fcd4606b9a2ec
+ms.openlocfilehash: 200caac4b480495b0bbb8f10cc89fdd73c42dbe2
 
 
 ---
@@ -26,16 +26,18 @@ ms.openlocfilehash: b351229c474e84a9e385d2ed81f2eb73267d9fd1
 このサービスとその使用方法について詳しくは、「[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 ### <a name="variations"></a>バリエーション
-次の VM SKU が Azure Government で一般公開されています。
+次の製品 (VM) が Azure Government で一般公開されています。
 
-| VM の SKU | 米国政府バージニア州 | 米国政府アイオワ州 | メモ |
-| --- | --- | --- | --- |
-| A |一般公開 |一般公開 |なし |
-| Dv1 |一般公開 |- |なし |
-| DSv1 |一般公開 |- |なし |
-| Dv2 |一般公開 |一般公開 |15 は近日対応予定 |
-| F |一般公開 |一般公開 |なし |
-| G |対応予定 |- |なし |
+| 製品 (VM) | 米国政府バージニア州 | 米国政府アイオワ州 |
+| --- | --- | --- |
+| A0-A7 |Y |Y |
+| D シリーズ |Y |N |
+| Dv2 シリーズ |Y |Y |
+| DS シリーズ |Y |N |
+| F シリーズ |Y |Y |
+| FS シリーズ |N |N |
+| G シリーズ |Y |N |
+| GS シリーズ |Y |N |
 
 ### <a name="data-considerations"></a>データに関する考慮事項
 以下の情報は、Azure Virtual Machines に関する Azure Government の機能領域について記述したものです。
@@ -50,6 +52,6 @@ ms.openlocfilehash: b351229c474e84a9e385d2ed81f2eb73267d9fd1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

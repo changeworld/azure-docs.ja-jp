@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 09/14/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7ac66acf154cde7f5241666c4c5dab0c482a0ab1
+ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
+ms.openlocfilehash: 6e8239199edb40813081094b4efa680346685b42
 
 
 ---
@@ -104,7 +104,7 @@ SQL Server Integration Services (SSIS) を利用して Pig ジョブを実行す
 * [Azure HDInsight Pig タスク][pigtask]
 * [Azure サブスクリプション接続マネージャー][connectionmanager]
 
-Azure Feature Pack for SSIS の詳細については、[こちら][ssispack] を参照してください。
+Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を参照してください。
 
 ## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
 これで、HDInsight で Pig を使用する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
@@ -135,7 +135,7 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack] を
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md#mapreduce-sdk
 
-[Powershell-install-configure]: ../powershell-install-configure.md
+[Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 
@@ -146,6 +146,6 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack] を
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

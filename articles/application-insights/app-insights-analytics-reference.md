@@ -1,27 +1,30 @@
 ---
-title: Application Insights の Analytics のリファレンス | Microsoft Docs
-description: 'Application Insights の強力な検索ツールである Analytics の正規表現のリファレンス。 '
+title: "Azure Application Insights の Analytics のリファレンス | Microsoft Docs"
+description: "Application Insights の強力な検索ツールである Analytics の正規表現のリファレンス。 "
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: alancameronwills
-manager: douge
-
+manager: carmonm
+ms.assetid: eea324de-d5e5-4064-9933-beb3a97b350b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 11/23/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 8c5324742e42a1f82bb3031af4380fc5f0241d7f
+ms.openlocfilehash: 1b153af33ef2f7c112336a2de2a3710613ad3887
+
 
 ---
 # <a name="reference-for-analytics"></a>Analytics のリファレンス
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Analytics のクエリ言語について説明します。
 
-> [!NOTE]
-> [シミュレーション データで Analytics を試す](https://analytics.applicationinsights.io/demo) (ご使用のアプリからまだ Application Insights にデータが送信されていない場合)。
-> 
-> 
+* [SQL ユーザーのチート シート](https://aka.ms/sql-analytics)では、最も一般的な言語の対応付けを確認できます。
+* [シミュレーション データで Analytics を試す](https://analytics.applicationinsights.io/demo) (ご使用のアプリからまだ Application Insights にデータが送信されていない場合)。
+ 
 
 ## <a name="index"></a>Index
 **Let** [let](#let-clause)
@@ -36,7 +39,7 @@ ms.author: awills
 
 **日付と時刻** [日付と時刻の式](#date-and-time-expressions) | [日付と時刻のリテラル](#date-and-time-literals) | [ago](#ago) | [datepart](#datepart) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth) | [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
-**文字列** [GUID](#guids) | [難読化された文字列リテラル](#obfuscated-string-literals) | [文字列リテラル](#string-literals) | [文字列の比較](#string-comparisons) | [countof](#countof) | [extract](#extract) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
+**文字列** [GUID](#guids) | [難読化された文字列リテラル](#obfuscated-string-literals) | [文字列リテラル](#string-literals) | [文字列の比較](#string-comparisons) | [countof](#countof) | [extract](#extract) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty)| [parseurl](#parseurl) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
 
 **配列、オブジェクト、動的** [配列とオブジェクトのリテラル](#array-and-object-literals) | [動的オブジェクトの関数](#dynamic-object-functions) | [let 句の動的オブジェクト](#dynamic-objects-in-let-clauses) | [JSON パス式](#json-path-expressions) | [名前](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
 
@@ -58,8 +61,14 @@ ms.author: awills
        (interval:timespan) { requests | where timestamp > ago(interval) };
     Recent(3h) | count
 
-    let us_date = (t:datetime) { strcat(getmonth(t),'/',dayofmonth(t),'/',getyear(t)) }; 
-    requests | summarize count() by bin(timestamp, 1d) | project count_, day=us_date(timestamp)
+    let us_date = (t:datetime)
+    {
+      strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ", 
+      bin((t-1h)%12h+1h,1s), iff(t%24h<12h, "AM", "PM"))
+    };
+    requests 
+    | summarize count() by bin(timestamp, 1h) 
+    | project count_, pacificTime=us_date(timestamp-8h)
 
 let 句は、[名前](#names)を表形式の結果、スカラー値、または関数にバインドします。 この句はクエリのプレフィックスであり、バインドのスコープはそのクエリです (let では、セッションの後の方で使用するものに名前を付けることはできません)。
 
@@ -86,12 +95,12 @@ let 句は、[名前](#names)を表形式の結果、スカラー値、または
 
     let Recent = events | where timestamp > ago(7d);
     Recent | where name contains "session_started" 
-      | project start = timestamp, session_id
-      | join (Recent 
+    | project start = timestamp, session_id
+    | join (Recent 
         | where name contains "session_ended" 
         | project stop = timestamp, session_id)
       on session_id
-      | extend duration = stop - start 
+    | extend duration = stop - start 
 
 
 ## <a name="queries-and-operators"></a>クエリと演算子
@@ -395,11 +404,15 @@ traces
 
 **ヒント**
 
+結果のテーブルには 64 MB という制限があります。
+
 パフォーマンスを最大限高めるためのヒントを示します。
 
 * 入力テーブルの行と列の数を減らすには、`join` の前に `where` と `project` を使います。 
 * 一方のテーブルがもう一方よりも常に小さい場合は、それを結合の左側 (パイプされる側) として使います。
 * 一致した場合に結合する列は、同じ名前を持つ必要があります。 いずれかのテーブルの列の名前を変更する必要がある場合は、project 演算子を使います。
+
+
 
 **例**
 
@@ -408,13 +421,13 @@ traces
 ```AIQL
     let Events = MyLogTable | where type=="Event" ;
     Events
-      | where Name == "Start"
-      | project Name, City, ActivityId, StartTime=timestamp
-      | join (Events
+    | where Name == "Start"
+    | project Name, City, ActivityId, StartTime=timestamp
+    | join (Events
            | where Name == "Stop"
            | project StopTime=timestamp, ActivityId)
         on ActivityId
-      | project City, ActivityId, StartTime, StopTime, Duration, StopTime, StartTime
+    | project City, ActivityId, StartTime, StopTime, Duration, StopTime, StartTime
 
 ```
 
@@ -493,7 +506,7 @@ traces
 **例**
 
     exceptions | take 1 
-      | mvexpand details[0]
+    | mvexpand details[0]
 
 例外のレコードを詳細フィールドの項目ごとに行に分割します。
 
@@ -507,7 +520,7 @@ traces
     with * "got" counter:long " " present "for" * "was" year:long * 
 
     T |  parse kind=regex "I got socks for my 63rd birthday" 
-    with "(I|She) got" present "for .*?" year:long * 
+    with "(I|She) got " present " for .*?" year:long * 
 
 文字列から値を抽出します。 単純な照合または正規表現の照合を使用できます。
 
@@ -603,21 +616,21 @@ traces
 // Run a test without reading a table:
 range x from 1 to 1 step 1 
 // Test string:
-| extend s = "Event: NotifySliceRelease (resourceName=Scheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)" 
+| extend s = "Event: NotifySliceRelease (resourceName=Scheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 07:31, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 06:20:00 ) }" 
 // Parse it:
 | parse kind=regex s 
-  with ".*?[a-zA-Z]*=" resource 
+  with ".*?=" resource 
        ", total.*?sliceNumber=" slice:long *
        "lockTime=" lock
        ",.*?releaseTime=" release 
        ",.*?previousLockTime=" previous:date 
-       ".*\\)"
+       @".*\)" *
 | project-away x, s
 ```
 
 | resource | slice | lock | release | previous |
 | --- | --- | --- | --- | --- |
-| Scheduler |16 |02/17/2016 08:41:00 |02/17/2016 08:41 |2016-02-17T08:40:00Z |
+| Scheduler |16 |02/17/2016 07:31:00 |02/17/2016 08:41 |2016-02-17T06:20:00Z |
 
 ### <a name="project-operator"></a>project 演算子
     T | project cost=price*quantity, price
@@ -791,7 +804,7 @@ Traces
 入力テーブルの内容を集計したテーブルを生成します。
 
     requests
-      | summarize count(), avg(duration), makeset(client_City) 
+    | summarize count(), avg(duration), makeset(client_City) 
       by client_CountryOrRegion
 
 数、平均要求期間、各国の都市のセットを示すテーブルです。 出力には国ごとの行が含まれます。 出力列には、数、平均期間、都市、国が示されます。 他のすべての入力列は無視されます。
@@ -852,10 +865,10 @@ Traces
 
 ### <a name="top-nested-operator"></a>top-nested 演算子
     requests 
-      | top-nested 5 of name by count()  
+    | top-nested 5 of name by count()  
     , top-nested 3 of performanceBucket by count() 
     , top-nested 3 of client_CountryOrRegion by count()
-      | render barchart 
+    | render barchart 
 
 各レベルが前のレベルからのドリルダウンである、階層型の結果を生成します。 これは、"上位 5 件のリクエストは何か。そのそれぞれについて、上位 3 つのパフォーマンス バケットはどのようなものか。さらにそのそれぞれについて、リクエストの出された上位 3 つの国はどこか" というような質問に答える場合に便利です。
 
@@ -895,35 +908,51 @@ Traces
 
 すべての入力テーブルに存在する行と同数の行と、入力に存在する一意の列名と同数の列を含むテーブル。
 
-**例**
-
-```AIQL
-
-let ttrr = requests | where timestamp > ago(1h);
-let ttee = exceptions | where timestamp > ago(1h);
-union tt* | count
-```
-名前が "tt" から始まるすべてのテーブルの和集合。
+行の順序は保証されていません。
 
 **例**
 
+名前が "tt" から始まるすべてのテーブルの和集合:
+
 ```AIQL
 
-union withsource=SourceTable kind=outer Query, Command
-| where Timestamp > ago(1d)
-| summarize dcount(UserId)
+    let ttrr = requests | where timestamp > ago(1h);
+    let ttee = exceptions | where timestamp > ago(1h);
+    union tt* | count
 ```
+
+**例**
+
 過去 1 日で `exceptions` イベントまたは `traces` イベントを発生させた個別のユーザーの数。 結果の "SourceTable" 列は "Query" または "Command" を指します。
 
 ```AIQL
-exceptions
-| where Timestamp > ago(1d)
-| union withsource=SourceTable kind=outer 
-   (Command | where Timestamp > ago(1d))
-| summarize dcount(UserId)
+
+    union withsource=SourceTable kind=outer Query, Command
+    | where Timestamp > ago(1d)
+    | summarize dcount(UserId)
 ```
 
 より効率的なこのバージョンでも同じ結果が生成されます。 和集合を作成する前に各テーブルをフィルター処理します。
+
+```AIQL
+
+    exceptions
+    | where Timestamp > ago(1d)
+    | union withsource=SourceTable kind=outer 
+       (Command | where Timestamp > ago(1d))
+    | summarize dcount(UserId)
+```
+
+### <a name="forcing-an-order-of-results"></a>結果の順序を強制する
+
+和集合では、結果の行で特定の順序が保証されるものではありません。
+クエリを実行するたびに同じ順序にするには、各入力テーブルにタグ列を付加します。
+
+    let r1 = (traces | count | extend tag = 'r1');
+    let r2 = (requests | count| extend tag = 'r2');
+    let r3 = (pageViews | count | extend tag = 'r3');
+    r1 | union r2,r3 | sort by tag
+
 
 ### <a name="where-operator"></a>where 演算子
      requests | where resultCode==200
@@ -1011,7 +1040,7 @@ traces
 <a name="argmin"></a>
 <a name="argmax"></a>
 
-### <a name="argmin,-argmax"></a>argmin、argmax
+### <a name="argmin-argmax"></a>argmin、argmax
     argmin(ExprToMinimize, * | ExprToReturn  [ , ... ] )
     argmax(ExprToMaximize, * | ExprToReturn  [ , ... ] ) 
 
@@ -1033,7 +1062,7 @@ traces
 タイムスタンプと他のデータと共に、各メトリックの最小値を検索する場合は、次のように指定します。
 
     metrics 
-      | summarize minValue=argmin(value, *) 
+    | summarize minValue=argmin(value, *) 
       by name
 
 
@@ -1167,7 +1196,7 @@ traces
 **例**
 
     pageViews 
-      | summarize cities=dcount(client_City) 
+    | summarize cities=dcount(client_City) 
       by client_CountryOrRegion
 
 ![](./media/app-insights-analytics-reference/dcount.png)
@@ -1186,7 +1215,7 @@ traces
 **例**
 
     pageViews 
-      | summarize cities=dcountif(client_City, client_City startswith "St") 
+    | summarize cities=dcountif(client_City, client_City startswith "St") 
       by client_CountryOrRegion
 
 
@@ -1207,14 +1236,14 @@ traces
 **例**
 
     pageViews 
-      | summarize cities=makeset(client_City) 
+    | summarize cities=makeset(client_City) 
       by client_CountryOrRegion
 
 ![](./media/app-insights-analytics-reference/makeset.png)
 
 逆の処理を実行する [`mvexpand` 演算子](#mvexpand-operator) も参照してください。
 
-### <a name="max,-min"></a>max、min
+### <a name="max-min"></a>max、min
     max(Expr)
 
 *式*の最大値を計算します。
@@ -1230,7 +1259,7 @@ traces
 <a name="percentilew"></a>
 <a name="percentilesw"></a>
 
-### <a name="percentile,-percentiles,-percentilew,-percentilesw"></a>percentile、percentiles、percentilew、percentilesw
+### <a name="percentile-percentiles-percentilew-percentilesw"></a>percentile、percentiles、percentilew、percentilesw
     percentile(Expression, Percentile)
 
 グループ内にある指定されたパーセンタイルの *式* の推定値を返します。 精度は、パーセンタイル リージョンの人口密度によって異なります。
@@ -1252,7 +1281,7 @@ traces
 以下の場合、 `duration` の値は、要求名ごとに計算され、サンプル セットの 95% より大きく、サンプル セットの 5% より小さくなります。
 
     request 
-      | summarize percentile(duration, 95)
+    | summarize percentile(duration, 95)
       by name
 
 "by..." を省略すると、テーブル全体に対して計算が行われます。
@@ -1260,7 +1289,7 @@ traces
 異なる要求名のいくつかのパーセンタイルを同時に計算する場合は以下のようになります。
 
     requests 
-      | summarize 
+    | summarize 
         percentiles(duration, 5, 20, 50, 80, 95) 
       by name
 
@@ -1271,7 +1300,7 @@ traces
 複数の統計値を計算する場合は次のようになります。
 
     requests 
-      | summarize 
+    | summarize 
         count(), 
         avg(Duration),
         percentiles(Duration, 5, 50, 95)
@@ -1459,7 +1488,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 <a name="isnotnull"/></a>
 <a name="notnull"/></a>
 
-### <a name="isnull,-isnotnull,-notnull"></a>isnull、isnotnull、notnull
+### <a name="isnull-isnotnull-notnull"></a>isnull、isnotnull、notnull
     isnull(parsejson("")) == true
 
 1 つの引数を受け取り、null かどうかを判定します。
@@ -1515,7 +1544,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
         | where floor(timestamp, 1d) == floor(ago(5d),1d) | count);
     // List the counts relative to that baseline:
     requests | summarize daycount = count() by floor(timestamp, 1d)  
-      | extend relative = daycount - baseline
+    | extend relative = daycount - baseline
 ```
 
 
@@ -1551,7 +1580,6 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 | * |乗算 |
 | / |/ (除算) |
 | % |剰余 |
-|  | |
 | `<` |小さい |
 | `<=` |小さいまたは等しい |
 | `>` |大きい |
@@ -1574,7 +1602,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 <a name="bin"></a><a name="floor"></a>
 
-### <a name="bin,-floor"></a>bin、floor
+### <a name="bin-floor"></a>bin、floor
 値を切り捨てて、指定された bin サイズの倍数である整数にします。 [`summarize by`](#summarize-operator) クエリでよく使用されます。 値が分散している場合に、特定の値ごとの小さなセットにグループ化されます。
 
 エイリアス `floor`。
@@ -1672,7 +1700,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 **戻り値**
 
-* `sqrt(x) * sqrt(x) == x`
+*  `sqrt(x) * sqrt(x) == x`
 * 引数が負であるか、`real` 値に変換できない場合は `null`。 
 
 ### <a name="toint"></a>toint
@@ -1836,7 +1864,7 @@ dayofweek(1970-05-11)           // time(1.00:00:00), indicating Monday
 
 <a name="endofday"></a><a name="endofweek"></a><a name="endofmonth"></a><a name="endofyear"></a>
 
-### <a name="endofday,-endofweek,-endofmonth,-endofyear"></a>endofday、endofweek、endofmonth、endofyear
+### <a name="endofday-endofweek-endofmonth-endofyear"></a>endofday、endofweek、endofmonth、endofyear
     dt = datetime("2016-05-23 12:34")
 
     endofday(dt) == 2016-05-23T23:59:59.999
@@ -1893,7 +1921,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 <a name="startofday"></a><a name="startofweek"></a><a name="startofmonth"></a><a name="startofyear"></a>
 
-### <a name="startofday,-startofweek,-startofmonth,-startofyear"></a>startofday、startofweek、startofmonth、startofyear
+### <a name="startofday-startofweek-startofmonth-startofyear"></a>startofday、startofweek、startofmonth、startofyear
     date=datetime("2016-05-23 12:34:56")
 
     startofday(date) == datetime("2016-05-23")
@@ -1935,7 +1963,7 @@ T | where ... | extend Elapsed=now() - timestamp
 整数の結果は、ISO 8601 標準での週数を表します。 週の最初の曜日は日曜日で、年の最初の週はその年の最初の木曜日を含む週です (したがって、年の最後の数日に次の年の第 1 週の数日が含まれるか、年の最初の数日に前の年の第 52 週と第 53 週の数日が含まれる可能性があります)。
 
 ## <a name="string"></a>String
-[countof](#countof) | [extract](#extract) | [extractjson](#extractjson)  | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [tostring](#tostring) | [toupper](#toupper)
+[countof](#countof) | [extract](#extract) | [extractjson](#extractjson)  | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [parseurl](#parseurl) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [tostring](#tostring) | [toupper](#toupper)
 
 ### <a name="string-literals"></a>文字列リテラル
 規則は JavaScript の場合と同様です。
@@ -1960,7 +1988,7 @@ h"hello"
 ```
 
 ### <a name="string-comparisons"></a>文字列の比較
-| 演算子 | Description | 大文字と小文字の区別 | 実際の例 |
+|  演算子 | Description | 大文字と小文字の区別 | 実際の例 |
 | --- | --- | --- | --- |
 | `==` |等しい |はい |`"aBc" == "aBc"` |
 | `<>` `!=` |等しくない |はい |`"abc" <> "ABC"` |
@@ -2066,7 +2094,7 @@ extract("^.{2,2}(.{4,4})", 1, Text)
 <a name="isnotempty"></a>
 <a name="isempty"></a>
 
-### <a name="isempty,-isnotempty,-notempty"></a>isempty、isnotempty、notempty
+### <a name="isempty-isnotempty-notempty"></a>isempty、isnotempty、notempty
     isempty("") == true
 
 引数が空の文字列または null である場合は True です。
@@ -2099,7 +2127,35 @@ extract("^.{2,2}(.{4,4})", 1, Text)
     T | where isempty(fieldName) | count
 
 
+### <a name="parseurl"></a>parseurl
+URL を各部分に分割します。
 
+**構文**
+
+    parseurl(urlstring)
+
+**引数**
+
+* *urlstring:* URL。
+
+**戻り値**
+
+文字列として各部分を含むオブジェクト。
+
+**例**
+
+    parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
+
+    {
+    "Scheme" : "http",
+    "Host" : "contoso.com",
+    "Port" : "80",
+    "Path" : "/icecream/buy.aspx",
+    "Username" : "user",
+    "Password" : "pass",
+    "Query Parameters" : {"a":"1","b":"2"},
+    "Fragment" : "tag"
+    }
 
 ### <a name="replace"></a>replace
 正規表現のすべての一致を別の文字列に置き換えます。
@@ -2221,7 +2277,7 @@ substring("ABCD", 0, 2)       // AB
     guid(00000000-1111-2222-3333-055567f333de)
 
 
-## <a name="arrays,-objects-and-dynamic"></a>配列、オブジェクト、動的
+## <a name="arrays-objects-and-dynamic"></a>配列、オブジェクト、動的
 [リテラル](#dynamic-literals) | [キャスト](#casting-dynamic-objects) | [演算子](#operators) | [let 句](#dynamic-objects-in-let-clauses)
 <br/>
 [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic) | [zip](#zip)
@@ -2233,7 +2289,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 **インデックス作成:** JavaScript と同様に、配列やオブジェクトのインデックスを作成できます。
 
     exceptions | take 1
-      | extend 
+    | extend 
         line = details[0].parsedStack[0].line,
         stackdepth = arraylength(details[0].parsedStack)
 
@@ -2242,11 +2298,11 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 **キャスト:** 場合によっては、オブジェクトから抽出する要素をキャストする必要があります。これは、オブジェクトの型が一様ではないためです。 たとえば、`summarize...to` には次のように特定の型が必要です。
 
     exceptions 
-      | summarize count() 
+    | summarize count() 
       by toint(details[0].parsedStack[0].line)
 
     exceptions 
-      | summarize count() 
+    | summarize count() 
       by tostring(details[0].parsedStack[0].assembly)
 
 **リテラル:** 明示的な配列またはプロパティ バッグ オブジェクトを作成するには、次のように、JSON 文字列として記述し、キャストします。
@@ -2257,7 +2313,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 **mvexpand:** オブジェクトのプロパティを個々の行に分解するには、次のように、mvexpand を使用します。
 
     exceptions | take 1 
-      | mvexpand details[0].parsedStack[0]
+    | mvexpand details[0].parsedStack[0]
 
 
 ![](./media/app-insights-analytics-reference/410.png)
@@ -2265,8 +2321,8 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 **treepath:** 複合オブジェクト内のすべてのパスを検索するには、次のようにします。
 
     exceptions | take 1 | project timestamp, details 
-      | extend path = treepath(details) 
-      | mvexpand path
+    | extend path = treepath(details) 
+    | mvexpand path
 
 
 ![](./media/app-insights-analytics-reference/420.png)
@@ -2405,7 +2461,7 @@ arraylength(parsejson('21')) == null
 
 **パフォーマンスに関するヒント**
 
-* `extractjson()`
+*  `extractjson()`
 * 代わりに、 [extract](#extract) による正規表現の一致を使用することを検討してください。 こちらの方が実行速度が非常に速く、JSON がテンプレートから生成される場合に効率的です。
 * JSON から複数の値を抽出する必要がある場合は、 `parsejson()` を使用してください。
 * 列の型が動的になるように宣言することによって、取り込み時に JSON が解析されるようにすることを検討してください。
@@ -2548,6 +2604,9 @@ range(1, 8, 3)
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

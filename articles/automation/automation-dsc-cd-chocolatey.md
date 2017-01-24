@@ -3,9 +3,9 @@ title: "Chocolatey を使用した Azure Automation DSC の継続的なデプロ
 description: "Azure Automation DSC と Chocolatey パッケージ マネージャーを使用した DevOps の継続的なデプロイメント。  完全な JSON の ARM テンプレートと PowerShell ソースの例です。"
 services: automation
 documentationcenter: 
-author: sebastus
-manager: stevenka
-editor: 
+author: eslesar
+manager: carmonm
+editor: tysonn
 ms.assetid: c0baa411-eb76-4f91-8d14-68f68b4805b6
 ms.service: automation
 ms.devlang: na

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/05/2016
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 7ae3af29a21611a4c6e7c8630d8fcea4f2baaf0b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0dafae2cf2c3972fc09ffc67f76f6757bcc641fa
 
 
 ---
@@ -30,7 +30,7 @@ Data Factory を使用すると、データ ドリブンのワークフローを
 詳細については、「[概要と主要な概念](data-factory-introduction.md)」を参照してください。
 
 ### <a name="where-can-i-find-pricing-details-for-azure-data-factory"></a>Azure Data Factory の料金の詳細はどこで確認できますか。
-Azure Data Factory の料金の詳細については、[Data Factory の料金詳細に関するページ][adf-pricing-details]をご覧ください。  
+Azure Data Factory の料金の詳細については、[Data Factory の価格の詳細][adf-pricing-details]に関するページをご覧ください。  
 
 ### <a name="how-do-i-get-started-with-azure-data-factory"></a>Azure Data Factory の利用はどのように開始するのですか。
 * Azure Data Factory の概要については、 [Azure Data Factory サービスの概要](data-factory-introduction.md)に関するページをご覧ください。
@@ -51,11 +51,11 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 * **Visual Studio**
     : Visual Studio を使用して、Azure Data Factory を作成することができます。 詳細については、「 [Visual Studio を使用した初めての Azure Data Factory パイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md) 」を参照してください。
 * **Azure PowerShell**
-   : PowerShell を使用する Data Factory の作成に関するチュートリアルについては、[Azure PowerShell を使用した Azure Data Factory の作成と監視](data-factory-build-your-first-pipeline-using-powershell.md) に関するページを参照してください。 Data Factory コマンドレットの包括的なドキュメントについては、MSDN ライブラリの [Data Factory コマンドレット リファレンス][adf-powershell-reference] に関するコンテンツをご覧ください。
+   : PowerShell を使用する Data Factory の作成に関するチュートリアルについては、[Azure PowerShell を使用した Azure Data Factory の作成と監視](data-factory-build-your-first-pipeline-using-powershell.md) に関するページを参照してください。 Data Factory コマンドレットの包括的なドキュメントについては、MSDN ライブラリの [Data Factory コマンドレット リファレンス][adf-powershell-reference]をご覧ください。
 * **.NET クラス ライブラリ**
-   : Data Factory .NET SDK を使用すると、プログラムでデータ ファクトリを作成できます。 .NET SDK を使用したデータ ファクトリの作成のチュートリアルについては、 [.NET SDK を使用したデータ ファクトリの作成、監視、管理](data-factory-create-data-factories-programmatically.md) に関するページをご覧ください。 Data Factory .NET SDK の包括的なドキュメントについては、[Data Factory クラス ライブラリ リファレンス][msdn-class-library-reference] に関するページをご覧ください。
+   : Data Factory .NET SDK を使用すると、プログラムでデータ ファクトリを作成できます。 .NET SDK を使用したデータ ファクトリの作成のチュートリアルについては、 [.NET SDK を使用したデータ ファクトリの作成、監視、管理](data-factory-create-data-factories-programmatically.md) に関するページをご覧ください。 Data Factory .NET SDK の包括的なドキュメントについては、[Data Factory クラス ライブラリ リファレンス][msdn-class-library-reference]をご覧ください。
 * **REST API**
-   : Azure Data Factory サービスで公開されている REST API を使用して、データ ファクトリを作成およびデプロイすることもできます。 Data Factory REST API の包括的なドキュメントについては、[Data Factory REST API リファレンス][msdn-rest-api-reference] に関するページをご覧ください。
+   : Azure Data Factory サービスで公開されている REST API を使用して、データ ファクトリを作成およびデプロイすることもできます。 Data Factory REST API の包括的なドキュメントについては、[Data Factory REST API リファレンス][msdn-rest-api-reference]をご覧ください。
 * **Azure Resource Manager テンプレート**
   : 詳細については、「 [チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-arm.md) 」を参照してください。
 
@@ -101,7 +101,7 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 
 ## <a name="hdinsight-activity---faq"></a>HDInsight アクティビティ - FAQ
 ### <a name="what-regions-are-supported-by-hdinsight"></a>HDInsight でサポートされているリージョンはどこですか。
-次の記事の利用可能な地域に関するセクションをご覧ください。[HDInsight の料金詳細][hdinsight-supported-regions]
+[HDInsight の価格詳細][hdinsight-supported-regions]に関する記事で、利用可能な地域に関するセクションをご覧ください。
 
 ### <a name="what-region-is-used-by-an-on-demand-hdinsight-cluster"></a>オンデマンドの HDInsight クラスターはどのリージョンで使用されますか。
 オンデマンドの HDInsight クラスターは、クラスターで使用するように指定したストレージが存在するのと同じリージョンに作成されます。    
@@ -109,25 +109,26 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 ### <a name="how-to-associate-additional-storage-accounts-to-your-hdinsight-cluster"></a>追加のストレージ アカウントを HDInsight クラスターに関連付けるにはどうすればよいですか。
 独自の HDInsight クラスター (BYOC - Bring Your Own Cluster: クラスターを自分で用意する) を使用している場合は、次のトピックをご覧ください。
 
-* [Using an HDInsight Cluster with Alternate Storage Accounts and Metastores (代替のストレージ アカウントおよびメタストアでの HDInsight クラスターの使用)][hdinsight-alternate-storage]
-* [HDInsight ハイブでの追加のストレージ アカウントの使用][hdinsight-alternate-storage-2]
+* [代替のストレージ アカウントとメタストアでの HDInsight クラスターの使用][hdinsight-alternate-storage]
+* [HDInsight Hive での追加ストレージ アカウントの使用][hdinsight-alternate-storage-2]
 
 Data Factory サービスで作成されたオンデマンド クラスターを使用している場合は、Data Factory で自動的に登録できるように、HDInsight のリンクされたサービス用に追加のストレージ アカウントを指定します。 オンデマンドのリンクされたサービスの JSON 定義内で、次の JSON のスニペットに示すように、 **additionalLinkedServiceNames** プロパティを使用して、代替のストレージ アカウントを指定します。
 
+```JSON
+{
+    "name": "MyHDInsightOnDemandLinkedService",
+    "properties":
     {
-        "name": "MyHDInsightOnDemandLinkedService",
-        "properties":
-        {
-            "type": "HDInsightOnDemandLinkedService",
-            "typeProperties": {
-                "clusterSize": 1,
-                "timeToLive": "00:01:00",
-                "linkedServiceName": "LinkedService-SampleData",
-                "additionalLinkedServiceNames": [ "otherLinkedServiceName1", "otherLinkedServiceName2" ]
-            }
+        "type": "HDInsightOnDemandLinkedService",
+        "typeProperties": {
+            "clusterSize": 1,
+            "timeToLive": "00:01:00",
+            "linkedServiceName": "LinkedService-SampleData",
+            "additionalLinkedServiceNames": [ "otherLinkedServiceName1", "otherLinkedServiceName2" ]
         }
     }
-
+}
+```
 上記の例において、otherLinkedServiceName1 と otherLinkedServiceName2 は、HDInsight クラスターが代替ストレージ アカウントにアクセスするために必要な資格情報がその定義に含まれているリンクされたサービスを表します。
 
 ## <a name="slices---faq"></a>スライス - FAQ
@@ -148,13 +149,14 @@ external プロパティが適切に設定されている場合は、入力デ�
 ### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>スライスを毎日生成している場合、午前 0 時以外の時刻にスライスを実行するにはどうすればよいですか。
 **offset** プロパティを使用して、スライスを生成する時刻を指定します。 このプロパティの詳細については、「 [データセットの可用性](data-factory-create-datasets.md#Availability) 」セクションをご覧ください。 以下に簡単な例を示します。
 
-    "availability":
-    {
-        "frequency": "Day",
-        "interval": 1,
-        "offset": "06:00:00"
-    }
-
+```json
+"availability":
+{
+    "frequency": "Day",
+    "interval": 1,
+    "offset": "06:00:00"
+}
+```
 既定の設定である真夜中ではなく、毎日 **午前 6 時** にスライスを開始する例です。     
 
 ### <a name="how-can-i-rerun-a-slice"></a>スライスを再実行するにはどうすればよいですか。
@@ -164,8 +166,9 @@ external プロパティが適切に設定されている場合は、入力デ�
 * Azure Portal のスライスの **[データ スライス]** ブレードで、コマンド バーの **[実行]** をクリックします。
 * スライスの状態を **Waiting** に設定して、**Set-AzureRmDataFactorySliceStatus** コマンドレットを実行します。   
 
-        Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
-
+    ```PowerShell
+    Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
+    ```
 コマンドレットの詳細については、[Set-AzureRmDataFactorySliceStatus][set-azure-datafactory-slice-status] に関するページをご覧ください。
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>スライスの処理にかかった時間を調べるにはどうすればよいですか。
@@ -186,12 +189,12 @@ external プロパティが適切に設定されている場合は、入力デ�
 すべての実行をすぐに停止するには、パイプラインをいったん削除した後で再作成するしかありません。 パイプラインを削除する場合は、パイプラインによって使用されているテーブルとリンクされたサービスを削除する必要はありません。
 
 [create-factory-using-dotnet-sdk]: data-factory-create-data-factories-programmatically.md
-[msdn-class-library-reference]: https://msdn.microsoft.com/library/dn883654.aspx
-[msdn-rest-api-reference]: https://msdn.microsoft.com/library/dn906738.aspx
+[msdn-class-library-reference]: /dotnet/api/microsoft.azure.management.datafactories.models
+[msdn-rest-api-reference]: /rest/api/datafactory/
 
-[adf-powershell-reference]: https://msdn.microsoft.com/library/dn820234.aspx
+[adf-powershell-reference]: /powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories
 [azure-portal]: http://portal.azure.com
-[set-azure-datafactory-slice-status]: https://msdn.microsoft.com/library/mt603522.aspx
+[set-azure-datafactory-slice-status]: /powershell/resourcemanager/azurerm.datafactories/v2.3.0/set-azurermdatafactoryslicestatus
 
 [adf-pricing-details]: http://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: http://azure.microsoft.com/pricing/details/hdinsight/
@@ -200,6 +203,6 @@ external プロパティが適切に設定されている場合は、入力デ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 54033264fa515dcb61c2273fb6eff71c887bc007
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b31782934b824fa8c67dea95974a3ba07bc94367
 
 
 ---
@@ -112,7 +112,7 @@ Cimpl で Azure AD のシングル サインオンを構成してテストする
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-cimpl-tutorial/tutorial_cimpl_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
 2. お使いのアプリケーション用に構成された SSO を取得するために、ダウンロードした証明書ファイルを電子メールに添付して、Cimpl のサポート チーム (+1 866-982-8250) に問い合わせます。 SSO 統合用に構成できるように、ID プロバイダー ID とリモート ログイン URL もお知らせください。
@@ -171,7 +171,7 @@ Cimpl で Azure AD のシングル サインオンを構成してテストする
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-a-cimpl-test-user"></a>Cimpl テスト ユーザーの作成
 このセクションの目的は、Cimpl で Britta Simon というユーザーを作成することです。 Cimpl サポート チームと連携し、Cimpl アカウントにユーザーを追加してください。 
@@ -229,6 +229,6 @@ Cimpl で Azure AD のシングル サインオンを構成してテストする
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
-ms.openlocfilehash: 90c83d286047bcfa7563d75e380559154ca36f5b
+ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
+ms.openlocfilehash: ab33a7610b8e7bbf64e9f1bfde3753f95956a82f
 
 
 ---
@@ -34,9 +34,9 @@ OMS の管理ソリューションには、特定の管理シナリオをサポ�
 たとえば、管理ソリューションには、[スケジュール](../automation/automation-schedules.md)を使って Log Analytics リポジトリにデータを収集する [Azure Automation Runbook](../automation/automation-intro.md) と、収集したデータのさまざまな視覚エフェクトを提供する[ビュー](../log-analytics/log-analytics-view-designer.md)を含めることができます。  同じスケジュールを、別のソリューションに使用することもできます。  管理ソリューションの作成者としては、3 つすべてのリソースを定義して、ソリューション削除時には Runbook とビューは自動的に削除されるように指定することもできます。    スケジュールも定義しますが、他のソリューションで使われている可能性を考慮して、ソリューション削除時にでもそのまま残すように指定することもあるでしょう。
 
 ## <a name="management-solution-files"></a>管理ソリューション ファイル
-管理ソリューションは[リソース管理テンプレート](../resource-manager-template-walkthrough.md)として実装されています。  管理ソリューションの作成を理解するには、[テンプレートを作成する](../resource-group-authoring-templates.md)方法を参照してください。  この記事では、ソリューションに使用するテンプレートと、典型的なソリューション リソース定義の方法について、詳細を説明します。
+管理ソリューションは[リソース管理テンプレート](../azure-resource-manager/resource-manager-template-walkthrough.md)として実装されています。  管理ソリューションの作成を理解するには、[テンプレートを作成する](../azure-resource-manager/resource-group-authoring-templates.md)方法を参照してください。  この記事では、ソリューションに使用するテンプレートと、典型的なソリューション リソース定義の方法について、詳細を説明します。
 
-管理ソリューション ファイルの基本的な構造は、次のような [Resource Manager テンプレート](../resource-group-authoring-templates.md#template-format)と同じです。  以下の各セクションでは、最上位レベルの要素と、ソリューションにおけるその内容について説明します。  
+管理ソリューション ファイルの基本的な構造は、次のような [Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md#template-format)と同じです。  以下の各セクションでは、最上位レベルの要素と、ソリューションにおけるその内容について説明します。  
 
     {
        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -48,7 +48,7 @@ OMS の管理ソリューションには、特定の管理シナリオをサポ�
     }
 
 ## <a name="parameters"></a>パラメーター
-[パラメーター](../resource-group-authoring-templates.md#parameters)は、管理ソリューションをインストールするときに、ユーザーから必要とする値です。  すべてのソリューションが持つ標準のパラメーターがありますが、特定のソリューションに必要な追加のパラメーターを加えることができます。  ソリューションのインストール時にユーザーがパラメーター値を設定する方法は、特定のパラメーターおよびソリューションのインストール方法によって異なります。
+[パラメーター](../azure-resource-manager/resource-group-authoring-templates.md#parameters)は、管理ソリューションをインストールするときに、ユーザーから必要とする値です。  すべてのソリューションが持つ標準のパラメーターがありますが、特定のソリューションに必要な追加のパラメーターを加えることができます。  ソリューションのインストール時にユーザーがパラメーター値を設定する方法は、特定のパラメーターおよびソリューションのインストール方法によって異なります。
 
 ユーザーが [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) または [Azure クイック スタート テンプレート](operations-management-suite-solutions.md#finding-and-installing-management-solutions) から管理ソリューションをインストールすると、[OMS ワークスペースと Automation アカウント](operations-management-suite-solutions-creating.md#oms-workspace-and-automation-account)を選択するよう求めるメッセージが表示されます。  これらは、各標準パラメーターの値の設定に使用されます。  ユーザーは、標準パラメーターに値を直接入力することは求められませんが、追加のパラメーターには値を入力することが求められます。
 
@@ -181,7 +181,7 @@ OMS の管理ソリューションには、特定の管理シナリオをサポ�
     ]
 
 ### <a name="dependencies"></a>依存関係
-**dependsOn** 要素は、他のリソースの[依存関係](../resource-group-define-dependencies.md)を指定します。  ソリューションをインストールすると、すべての依存関係が作成されるまでリソースは作成されません。  たとえば、[ジョブ リソース](operations-management-suite-solutions-resources-automation.md#automation-jobs)を使用してソリューションをインストールすると、ソリューションが [Runbook を開始する](operations-management-suite-solutions-resources-automation.md#runbooks)ことがあります。  ジョブ リソースは、ジョブが作成される前に Runbook が作成されたことを確認するために Runbook リソースに依存します。
+**dependsOn** 要素は、他のリソースの[依存関係](../azure-resource-manager/resource-group-define-dependencies.md)を指定します。  ソリューションをインストールすると、すべての依存関係が作成されるまでリソースは作成されません。  たとえば、[ジョブ リソース](operations-management-suite-solutions-resources-automation.md#automation-jobs)を使用してソリューションをインストールすると、ソリューションが [Runbook を開始する](operations-management-suite-solutions-resources-automation.md#runbooks)ことがあります。  ジョブ リソースは、ジョブが作成される前に Runbook が作成されたことを確認するために Runbook リソースに依存します。
 
 ### <a name="oms-workspace-and-automation-account"></a>OMS ワークスペースと Automation アカウント
 管理ソリューションでは、ビューを格納するために [OMS ワークスペース](../log-analytics/log-analytics-manage-access.md)が、Runbook と関連リソースを格納するために [Automation アカウント](../automation/automation-security-overview.md#automation-account-overview)が必要です。  これらはソリューションのリソースが作成される前に使用できるようにする必要があり、ソリューションそのもので定義すべきではありません。  ユーザーはソリューションのデプロイ時に[ワークスペースとアカウントを指定](operations-management-suite-solutions.md#oms-workspace-and-automation-account)しますが、作成者としては、次の点を考慮する必要があります。
@@ -228,7 +228,7 @@ OMS の管理ソリューションには、特定の管理シナリオをサポ�
 
 
 ### <a name="dependencies"></a>依存関係
-ソリューション リソースは、ソリューションが作成される前に存在している必要があるため、ソリューションの別のリソースごとに[依存関係](../resource-group-define-dependencies.md)を持つ必要があります。  このために、**dependsOn** 要素にある各リソースにエントリを追加します。
+ソリューション リソースは、ソリューションが作成される前に存在している必要があるため、ソリューションの別のリソースごとに[依存関係](../azure-resource-manager/resource-group-define-dependencies.md)を持つ必要があります。  このために、**dependsOn** 要素にある各リソースにエントリを追加します。
 
 ### <a name="properties"></a>プロパティ
 このソリューション リソースには、次の表のプロパティがあります。  これには、ソリューションに含まれ参照されるリソースが含まれます。ソリューションをインストールした後に、どのようにリソースを管理するかを定義しています。  ソリューション内の各リソースは、**referencedResources** または **containedResources** プロパティのいずれかに表示される必要があります。
@@ -258,16 +258,16 @@ OMS の管理ソリューションには、特定の管理シナリオをサポ�
 * [Automation リソース](operations-management-suite-solutions-resources-automation.md)
 
 ## <a name="testing-a-management-solution"></a>管理ソリューションのテスト
-管理ソリューションをデプロイする前に、[Test-AzureRmResourceGroupDeployment](../resource-group-template-deploy.md#deploy-with-powershell) を使ってテストすることをお勧めします。  これにより、ソリューション ファイルを検証し、デプロイする前に問題を検出することができます。
+管理ソリューションをデプロイする前に、[Test-AzureRmResourceGroupDeployment](../azure-resource-manager/resource-group-template-deploy.md#deploy) を使ってテストすることをお勧めします。  これにより、ソリューション ファイルを検証し、デプロイする前に問題を検出することができます。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)の詳細について
+* [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)の詳細について
 * Resource Manager テンプレートの様々なサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates) で検索できます。
 * [管理ソリューションにビューを追加する方法](operations-management-suite-solutions-resources-views.md)の詳細を参照する。
 * [管理ソリューションに Automation リソースを追加する方法](operations-management-suite-solutions-resources-automation.md)の詳細を参照する。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

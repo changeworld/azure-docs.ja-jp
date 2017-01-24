@@ -4,7 +4,7 @@ description: "RBAC、Storage Service Encryption、クライアント側の暗号
 services: storage
 documentationcenter: .net
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 6f931d94-ef5a-44c6-b1d9-8a3c9c327fb2
 ms.service: storage
@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8f674c34cfbfd5c107258d7acd33583947cd61d6
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: c5e6c3a63a7dbe0a598136a32990f65f7ee077d9
 
 
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。 ストレージ アカウント自体は、ロールベースのアクセス制御と Azure Active Directory を使用して保護できます。 アプリケーションと Azure の間で送信されるデータを、 [クライアント側暗号化](storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。 [Storage Service Encryption (SSE)](storage-service-encryption.md)を使用して Azure Storage に書き込むときに、データが自動的に暗号化されるように設定することができます。 仮想マシンに使用する OS とデータ ディスクは、 [Azure Disk Encryption](../security/azure-security-disk-encryption.md)を使用して暗号化されるように設定できます。 Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権は、 [Shared Access Signature](storage-dotnet-shared-access-signature-part-1.md)を使用して付与できます。
 
 この記事では、Azure Storage で使用できる各セキュリティ機能の概要について説明します。 また、各トピックの詳細を簡単に調べられるように、各機能の詳細を説明した記事のリンクも紹介します。
@@ -55,7 +55,7 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 このガイドでは、ストレージ アカウント作成で推奨される手法である Resource Manager モデルを中心に説明します。 Resource Manager ストレージ アカウントでは、サブスクリプション全体にアクセス権を付与するのではなく、ロールベースのアクセス制御 (RBAC) を使用して、より細かいレベルで管理プレーンに対するアクセス権を制御できます。
 
 ### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法
-それでは、RBAC の概要と、その使用方法について説明します。 各 Azure サブスクリプションには Azure Active Directory があります。 そのディレクトリのユーザー、グループ、アプリケーションに対して、Resource Manager デプロイ モデルを使用する Azure サブスクリプション内にあるリソースを管理するアクセス権を付与できます。 これは、ロールベースのアクセス制御 (RBAC) と呼ばれます。 このアクセスを管理するには、[Azure Portal](https://portal.azure.com/)、[Azure CLI ツール](../xplat-cli-install.md)、[PowerShell](../powershell-install-configure.md)、または [Azure Storage Resource Provider REST API](https://msdn.microsoft.com/library/azure/mt163683.aspx) を使用できます。
+それでは、RBAC の概要と、その使用方法について説明します。 各 Azure サブスクリプションには Azure Active Directory があります。 そのディレクトリのユーザー、グループ、アプリケーションに対して、Resource Manager デプロイ モデルを使用する Azure サブスクリプション内にあるリソースを管理するアクセス権を付与できます。 これは、ロールベースのアクセス制御 (RBAC) と呼ばれます。 このアクセスを管理するには、[Azure Portal](https://portal.azure.com/)、[Azure CLI ツール](../xplat-cli-install.md)、[PowerShell](/powershell/azureps-cmdlets-docs)、または [Azure Storage Resource Provider REST API](https://msdn.microsoft.com/library/azure/mt163683.aspx) を使用できます。
 
 Resource Manager モデルでは、Azure Active Directory を使用して、リソース グループにストレージ アカウントを追加し、特定のストレージ アカウントの管理プレーンに対するアクセス権を制御します。 たとえば、ストレージ アカウント キーへのアクセス権を特定のユーザーに付与し、他のユーザーはそのストレージ アカウントに関する情報を読み取ることはできても、ストレージ アカウント キーにはアクセスでないようにすることができます。
 
@@ -89,7 +89,7 @@ Resource Manager モデルでは、Azure Active Directory を使用して、リ�
 * [RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)
   
   この記事では、RBAC で使用できるすべての組み込みロールについて詳しく説明しています。
-* [リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)
+* [リソース マネージャー デプロイと従来のデプロイを理解する](../azure-resource-manager/resource-manager-deployment-model.md)
   
   この記事では、Resource Manager デプロイとクライアント デプロイ モデル、Resource Manager とリソース グループを使用する利点について説明しています。 また、Resource Manager モデルでの Azure Compute、Network、Storage プロバイダーの動作についても説明します。
 * [REST API を使用したロールベースのアクセス制御の管理](../active-directory/role-based-access-control-manage-access-rest.md)
@@ -259,7 +259,7 @@ Shared Access Signature と Stored Access Policy の詳細な使用方法と例�
   * [SAS の概要チュートリアル](https://github.com/Azure-Samples/storage-dotnet-sas-getting-started)
 
 ## <a name="encryption-in-transit"></a>転送中の暗号化
-### <a name="transport-level-encryption-using-https"></a>トランスポートレベルの暗号化 - HTTPS の使用
+### <a name="transport-level-encryption--using-https"></a>トランスポートレベルの暗号化 - HTTPS の使用
 Azure Storage データのセキュリティを確保するために推奨されるもう 1 つの手順は、クライアントと Azure Storage 間のデータを暗号化することです。 最初の推奨事項は、 [HTTPS](https://en.wikipedia.org/wiki/HTTPS) プロトコルを常に使用して、パブリック インターネット上の安全な通信を確保することです。
 
 REST API を呼び出すときや、ストレージ内のオブジェクトにアクセスするときは、常に HTTPS を使用することをお勧めします。 また、Azure Storage オブジェクトへのアクセス権を委任するときに使用できる **Shared Access Signature**には、Shared Access Signature の使用時には HTTPS プロトコルのみを使用できると指定するオプションがあるので、誰でも SAS トークンを指定したリンクを送信すると適切なプロトコルが使用されます。
@@ -527,6 +527,6 @@ CORS と CORS を有効にする方法については、次のリソースを参
   この記事では、旧バージョンの Windows コンピューターで FIPS モードを使用する場合について説明しています。
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -12,26 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2016
+ms.date: 12/13/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: d5af6e3d9ba35558e0d7850820f4b9a479a259be
-ms.openlocfilehash: 7c73de46500ac565680f2d16da05b4821507cd93
+ms.sourcegitcommit: 803d295f0d9f08fdfe7ee4550bd093b98bd80631
+ms.openlocfilehash: 594f8c79e6e98a3e727416b0bf1867481b33dd2c
 
 
 ---
 # <a name="request-increased-documentdb-account-quotas"></a>DocumentDB アカウント クォータの引き上げを要求する
-[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) には、Azure サポートに問い合わせて調整できる既定のクォータのセットがあります。  この記事では、クォータの引き上げを要求する方法について説明します。
+[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)は世界規模のデータベースであり、アプリケーションで要求されることをすべて処理するようにスループットとストレージをスケールできます。 DocumentDB が提供するスケールについて質問がある場合は、askdocdb@microsoft.com. に電子メールをお送りください。
 
-この記事を読むと、次の質問に回答できるようになります。  
-
-* Azure サポートに問い合わせて調整できるのは、どの DocumentDB データベース クォータか。
-* DocumentDB アカウント クォータの調整を要求するにはどうすればよいか。
-
-## <a name="a-idquotasa-documentdb-account-quotas"></a><a id="Quotas"></a> DocumentDB アカウント クォータ
-次の表で、DocumentDB クォータについて説明します。 アスタリスク (*) が付いているクォータを調整する場合は、Azure サポートまでお問い合わせください。
-
-[!INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
+この記事では、Azure のサポートによるクォータの引き上げを要求する方法について説明します。
 
 ## <a name="a-idrequestquotaincreasea-request-a-quota-adjustment"></a><a id="RequestQuotaIncrease"></a> クォータ調整の要求
 クォータ調整を要求するには、次の手順を実行します。
@@ -45,7 +37,7 @@ ms.openlocfilehash: 7c73de46500ac565680f2d16da05b4821507cd93
 3. **[新しいサポート要求]** ブレードで、**[基本]** をクリックします。 次に、**[問題の種類]** を **[クォータ]** に、**[サブスクリプション]** を自分の DocumentDB アカウントをホストするサブスクリプションに、**[クォータの種類]** を **[DocumentDB]** に、**[サポート プラン]** を **[Quota SUPPORT - Included (クォータ サポート - 含む)]** に設定します。 次に、 **[次へ]**をクリックします。
    
     ![サポート チケットのリクエストの種類のスクリーンショット](media/documentdb-increase-limits/supportrequest1.png)
-4. **[問題]** ブレードで重大度を選択し、クォータの増大に関する情報を **[詳細]** に入力します。 ページの下部にある [次へ]」を参照してください。
+4. **[問題]** ブレードで重大度を選択し、クォータの増大に関する情報を **[詳細]** に入力します。 **[次へ]**をクリックします。
    
     ![サポート チケットのサブスクリプション選択のスクリーンショット](media/documentdb-increase-limits/supportrequest2.png)
 5. 最後に、連絡先情報を **[連絡先情報]** ブレードに入力し、**[作成]** をクリックします。
@@ -60,6 +52,6 @@ ms.openlocfilehash: 7c73de46500ac565680f2d16da05b4821507cd93
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

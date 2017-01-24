@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/09/2016
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 4f5c7208cabc565c4f5dddc917c4756ae4776c33
+ms.sourcegitcommit: 57df4ab0b2a1df6631eb6e67a90f69cebb1dfe75
+ms.openlocfilehash: 2334540ec0eeec32d0c4b3a6d9597a290bad6ec0
 
 
 ---
 # <a name="network-performance-monitor-preview-solution-in-oms"></a>OMS のネットワーク パフォーマンス モニター (プレビュー) ソリューション
 > [!NOTE]
-> これは[プレビュー ソリューション](log-analytics-add-solutions.md#log-analytics-preview-solutions-and-features)です。
+> これは[プレビュー ソリューション](log-analytics-add-solutions.md#preview-management-solutions-and-features)です。
 >
 >
 
@@ -246,6 +246,6 @@ ms.openlocfilehash: 4f5c7208cabc565c4f5dddc917c4756ae4776c33
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

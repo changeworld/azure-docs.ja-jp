@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4c8982461142223f0b339fa542b0bfb6b4ce68a8
+ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
+ms.openlocfilehash: a58aa47c21b34f3b54877bb12ceb1b6e20953ea7
 
 
 ---
@@ -43,7 +43,7 @@ ms.openlocfilehash: 4c8982461142223f0b339fa542b0bfb6b4ce68a8
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>名前用の変数
-このテンプレートでは、リソースの名前を作成する変数を使用します。 [uniqueString](../resource-group-template-functions.md#uniquestring) 関数を使用し、リソース グループの ID に基づく値を構築します。
+このテンプレートでは、リソースの名前を作成する変数を使用します。 [uniqueString](../azure-resource-manager/resource-group-template-functions.md#uniquestring) 関数を使用し、リソース グループの ID に基づく値を構築します。
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -58,7 +58,7 @@ ms.openlocfilehash: 4c8982461142223f0b339fa542b0bfb6b4ce68a8
 ### <a name="redis-cache"></a>Redis Cache
 Web アプリで使用される Azure Redis Cache を作成します。 キャッシュの名前は **cacheName** 変数で指定されます。
 
-テンプレートによって、リソース グループと同じ場所にキャッシュが作成されます。 
+テンプレートによって、リソース グループと同じ場所にキャッシュが作成されます。
 
     {
       "name": "[variables('cacheName')]",
@@ -128,8 +128,6 @@ Redis Cache との連動を可能にするアプリ設定プロパティで Web 
 
 
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

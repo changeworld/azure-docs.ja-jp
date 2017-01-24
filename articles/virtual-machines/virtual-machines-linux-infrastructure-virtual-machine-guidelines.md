@@ -1,5 +1,5 @@
 ---
-title: "Linux 仮想マシンのガイドライン |Microsoft Docs"
+title: "Azure Linux 仮想マシンのガイドライン | Microsoft Docs"
 description: "Linux 仮想マシンの Azure へのデプロイに関する主要な設計と実装のガイドラインについて説明します。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 186abaff67bf4435e0ceb4490e600052e728428f
+ms.sourcegitcommit: a99ab839ec9ade0049e1cc59054e333048e0208c
+ms.openlocfilehash: 80044c0b16a16a214b4d8879a2d7f38012608ba0
 
 
 ---
-# <a name="virtual-machines-guidelines"></a>仮想マシンのガイドライン
+# <a name="azure-virtual-machines-guidelines-for-linux"></a>Linux 用 Azure 仮想マシンのガイドライン
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 この記事は、ご使用の Azure 環境内で仮想マシン (VM) を作成および管理するために必要な計画について説明します。
@@ -41,7 +41,7 @@ ms.openlocfilehash: 186abaff67bf4435e0ceb4490e600052e728428f
 * Azure CLI、Web ポータル、または Resource Manager テンプレートを使用して VM を作成する
 
 ## <a name="virtual-machines"></a>仮想マシン
-Azure 環境内の主要なコンポーネントの 1 つは VM です。 ここでアプリケーション、データベース、認証サービスなどを実行します。
+Azure 環境内の主要なリソースの 1 つは VM です。 このリソースでアプリケーション、データベース、認証サービスなどを実行します。
 
 パフォーマンスとコストの観点から環境のサイズを設定するには、 [さまざまなサイズの VM](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) について理解しておくことが重要です。 VM に十分な量のメモリや CPU コアがない場合、どれほど適切に設計、開発してもアプリケーションのパフォーマンスは低下します。 インフラストラクチャの各コンポーネントに対して使用する VM のサイズを決定する際の出発点として、各 VM シリーズの推奨ワークロードを確認します。 デプロイ後、 [VM のサイズを変更](virtual-machines-linux-change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) できます。
 
@@ -59,6 +59,6 @@ Azure 環境内の主要なコンポーネントの 1 つは VM です。 ここ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

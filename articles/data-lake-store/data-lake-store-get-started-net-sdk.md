@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 11/21/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
+ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
+ms.openlocfilehash: 03faf2594c9c3d7612127d46bdaa99b937c78475
 
 
 ---
@@ -29,7 +29,8 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Node.JS](data-lake-store-manage-use-nodejs.md)
-> 
+> * [Python](data-lake-store-get-started-python.md)
+>
 > 
 
 [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) を使用して、フォルダーの作成、データ ファイルのアップロードとダウンロードなどの基本操作を実行する方法について説明します。Data Lake の詳細については、[Azure Data Lake Store](data-lake-store-overview.md) に関する記事をご覧ください。
@@ -61,7 +62,7 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
       * `Microsoft.Azure.Management.DataLake.StoreUploader` - このチュートリアルでは、v0.10.6-preview を使用します。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.2.8-preview を使用します。
         
-        ![Nuget ソースの追加](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "Create a new Azure Data Lake account")
+        ![Nuget ソースの追加](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "新しい Azure Data Lake アカウントの作成")
    4. **NuGet パッケージ マネージャー**を閉じます。
 6. **Program.cs**を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
    
@@ -103,7 +104,7 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 記事の以降のセクションでは、認証、ファイルのアップロードなどの操作を実行する .NET メソッドの使用方法について説明します。
 
 ## <a name="authentication"></a>認証
-### <a name="if-you-are-using-enduser-authentication-recommended-for-this-tutorial"></a>エンド ユーザー認証を使用している場合 (このチュートリアルではこちらを推奨)
+### <a name="if-you-are-using-end-user-authentication-recommended-for-this-tutorial"></a>エンド ユーザー認証を使用している場合 (このチュートリアルではこちらを推奨)
 既存の Azure AD "ネイティブ クライアント" アプリケーションと共に、次に記載されているスニペットを使用します。 このチュートリアルは、できるだけ短時間で終了できるよう、このアプローチの使用を推奨しています。
 
     // User login via interactive popup
@@ -117,15 +118,15 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 このスニペットに関して、以下の 2 点に留意してください。
 
 * できるだけ短時間でチュートリアルを終了できるよう、このスニペットでは、すべての Azure サブスクリプションから既定で利用できる Azure AD ドメインとクライアント ID を使用しています。 そのため、**このスニペットを実際のアプリケーションで使用するときは、現状のままで使用**してください。
-* ただし、独自の Azure AD ドメインとアプリケーション クライアント ID を使う必要がある場合は、Azure AD ネイティブ アプリケーションを作成したうえで、Azure AD ドメイン、クライアント ID、リダイレクト URI を、作成したアプリケーションに使用する必要があります。 手順については、「 [Active Directory アプリケーションを作成する](../resource-group-create-service-principal-portal.md#create-an-active-directory-application) 」を参照してください。
+* ただし、独自の Azure AD ドメインとアプリケーション クライアント ID を使う必要がある場合は、Azure AD ネイティブ アプリケーションを作成したうえで、Azure AD ドメイン、クライアント ID、リダイレクト URI を、作成したアプリケーションに使用する必要があります。 手順については、「 [Active Directory アプリケーションを作成する](data-lake-store-end-user-authenticate-using-active-directory.md) 」を参照してください。
 
 > [!NOTE]
 > 上記のリンクの手順は、Azure AD Web アプリケーションのためのものです。 しかし、ネイティブ クライアント アプリケーションを作成する場合でも、手順はまったく同じです。 
 > 
 > 
 
-### <a name="if-you-are-using-servicetoservice-authentication-with-client-secret"></a>クライアント シークレットによるサービス間認証を使用している場合
-次のスニペットは、アプリケーション/サービス プリンシパルのクライアント シークレット/キーを使用して、アプリケーションを非対話的に認証するために使用できます。 これは、既存の [Azure AD "Web アプリ" アプリケーション](../resource-group-create-service-principal-portal.md)と共に使用します。
+### <a name="if-you-are-using-service-to-service-authentication-with-client-secret"></a>クライアント シークレットによるサービス間認証を使用している場合
+次のスニペットは、アプリケーション/サービス プリンシパルのクライアント シークレット/キーを使用して、アプリケーションを非対話的に認証するために使用できます。 これは、既存の [Azure AD "Web アプリ" アプリケーション](../azure-resource-manager/resource-group-create-service-principal-portal.md)と共に使用します。
 
     // Service principal / appplication authentication with client secret / key
     // Use the client ID and certificate of an existing AAD "Web App" application.
@@ -136,8 +137,8 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
     var clientCredential = new ClientCredential(webApp_clientId, clientSecret);
     var creds = ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential).Result;
 
-### <a name="if-you-are-using-servicetoservice-authentication-with-certificate"></a>証明書によるサービス間認証を使用している場合
-3 つ目のオプションとして、次のスニペットは、アプリケーション/サービス プリンシパルの証明書を使用して、アプリケーションを非対話的に認証するためにも使用できます。 これは、既存の [Azure AD "Web アプリ" アプリケーション](../resource-group-create-service-principal-portal.md)と共に使用します。
+### <a name="if-you-are-using-service-to-service-authentication-with-certificate"></a>証明書によるサービス間認証を使用している場合
+3 つ目のオプションとして、次のスニペットは、アプリケーション/サービス プリンシパルの証明書を使用して、アプリケーションを非対話的に認証するためにも使用できます。 これは、既存の [Azure AD "Web アプリ" アプリケーション](../azure-resource-manager/resource-group-create-service-principal-portal.md)と共に使用します。
 
     // Service principal / application authentication with certificate
     // Use the client ID and certificate of an existing AAD "Web App" application.
@@ -260,6 +261,6 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

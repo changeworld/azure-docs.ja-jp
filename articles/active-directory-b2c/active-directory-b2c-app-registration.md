@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/30/2016
+ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9078d36789c3cc653b298b7a4eaee1cbe888b85f
+ms.sourcegitcommit: 0b87ec728891d4f64bb7b2e4b7b4f0f2276b1ffc
+ms.openlocfilehash: ca75ddf8d099f411c4ae1af00e922f26e145f939
 
 
 ---
@@ -63,6 +63,6 @@ B2C 機能ブレードがスタート画面にピン留めされている場合�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

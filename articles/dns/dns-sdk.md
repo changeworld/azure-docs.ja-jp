@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 02d720a04fdc0fa302c2cb29b0af35ee92c14b3b
-ms.openlocfilehash: 93048e5789480fbb3c5d2ac6e799685fbf6f888f
+ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
+ms.openlocfilehash: c0fb0be8da1c0ca48a4d43ea027d30a0bc17fe30
 
 ---
 
@@ -27,8 +27,8 @@ DNS ゾーン、レコードセット、レコードを作成、削除、更新�
 
 通常、Azure リソースへのプログラムによるアクセスは、ユーザー自身の資格情報ではなく、専用アカウント経由で許可されます。 これらの専用アカウントは、"サービス プリンシパル" アカウントと呼ばれます。 Azure DNS SDK のサンプル プロジェクトを使用するには、まずサービス プリンシパル アカウントを作成し、作成したアカウントに適切なアクセス許可を割り当てる必要があります。
 
-1. [こちらの手順](../resource-group-authenticate-service-principal.md) に従い、サービス プリンシパル アカウントを作成します (Azure DNS SDK のサンプル プロジェクトではパスワードベースの認証を前提としています)。
-2. リソース グループを作成します ([手順はこちら](../resource-group-template-deploy-portal.md))。
+1. [こちらの手順](../azure-resource-manager/resource-group-authenticate-service-principal.md) に従い、サービス プリンシパル アカウントを作成します (Azure DNS SDK のサンプル プロジェクトではパスワードベースの認証を前提としています)。
+2. リソース グループを作成します ([手順はこちら](../azure-resource-manager/resource-group-template-deploy-portal.md))。
 3. Azure RBAC を使用して、サービス プリンシパル アカウント "DNS Zone Contributor" にリソース グループへのアクセス許可を付与します ([手順はこちら](../active-directory/role-based-access-control-configure.md))。
 4. Azure DNS SDK のサンプル プロジェクトを使用する場合、"program.cs" ファイルを次のように編集します。
 
@@ -168,6 +168,6 @@ while (page.NextPageLink != null)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

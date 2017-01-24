@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/31/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: fb25351de7f4b64ab36d5a1f2629677f0acece47
-ms.openlocfilehash: 3d1d6ea9ea933c5aaf27b58b9f49a5b845f610ce
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: c1fd18ad8889033cba8a92f6ae255ba6478e6595
 
 
 ---
@@ -169,7 +169,7 @@ VNet 間構成を作成するときは、ローカル ネットワーク サイ�
 2. **[アドレス空間の指定]** ページで、変更を何も行わずに右下にあるチェックマークをクリックします。
 
 ## <a name="step-7---create-the-vpn-connection"></a>手順 7 - VPN 接続を作成する
-以上の手順がすべて完了したら、IPsec/IKE 事前共有キーを設定して接続を作成します。 この一連の手順には、PowerShell を使用します。ポータルで構成することはできません。 Azure PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。 かならず、最新バージョンのサービス管理 (SM) コマンドレットをダウンロードしてください。 
+以上の手順がすべて完了したら、IPsec/IKE 事前共有キーを設定して接続を作成します。 この一連の手順には、PowerShell を使用します。ポータルで構成することはできません。 Azure PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。 かならず、最新バージョンのサービス管理 (SM) コマンドレットをダウンロードしてください。 
 
 1. Windows PowerShell 開いてログインします。
    
@@ -200,6 +200,6 @@ VNet 間構成を作成するときは、ローカル ネットワーク サイ�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

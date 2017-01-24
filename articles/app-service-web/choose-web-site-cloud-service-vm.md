@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 07/07/2016
 ms.author: tdykstra
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ef47e420a55164277b70dd504daa14ed12718853
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2f5e6d100effee99b1a1576c0e21f1a311f8131b
 
 
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure には、Web サイトをホストするための方法がいくつかあります ([Azure App Service][Azure App Service]、[Virtual Machines][Virtual Machines]、[Service Fabric][Service Fabric]、[Cloud Services][Cloud Services])。 それぞれの選択肢についてこの記事で理解を深め、実際の Web アプリケーションに適した方法をお選びください。
 
-Azure App Service は、ほとんどの Web アプリに適しています。 デプロイと管理機能がそのプラットフォームに統合され、トラフィックの負荷に応じてサイトのスケールを機敏に調整できるほか、組み込みの負荷分散機能と Traffic Manager によって高い可用性が得られます。 既にあるサイトは、[オンライン移行ツール](https://www.migratetoazure.net/)を使用して簡単に Azure App Service に移行することができます。Web アプリケーション ギャラリーからオープン ソースのアプリケーションを使用したり、好きなフレームワークとツールを使用して新しいサイトを作成したりできます。 [Web ジョブ][Web ジョブ]機能を使用すると、バックグラウンド ジョブの処理を簡単に、App Service Web アプリに追加できます。
+Azure App Service は、ほとんどの Web アプリに適しています。 デプロイと管理機能がそのプラットフォームに統合され、トラフィックの負荷に応じてサイトのスケールを機敏に調整できるほか、組み込みの負荷分散機能と Traffic Manager によって高い可用性が得られます。 既にあるサイトは、[オンライン移行ツール](https://www.migratetoazure.net/)を使用して簡単に Azure App Service に移行することができます。Web アプリケーション ギャラリーからオープン ソースのアプリケーションを使用したり、好きなフレームワークとツールを使用して新しいサイトを作成したりできます。 [Web ジョブ][WebJobs]機能を使用すると、バックグラウンド ジョブの処理を簡単に、App Service Web アプリに追加できます。
 
 Service Fabric は、新しいアプリを作成する場合やマイクロサービス アーキテクチャを使用するように既存のアプリを書き換える場合にお勧めします。 共有プールのマシン上で動作するアプリは、小規模から開始し、必要に応じて数百または数千ものコンピューターを含む非常に大きなスケールまで拡張することができます。 ステートフル サービスによってアプリの状態を一貫して確実に格納することが容易になり、Service Fabric はサービスのパーティション分割、スケーリング、可用性を自動的に管理します。  また、Service Fabric は、Open Web Interface for .NET (OWIN) と ASP.NET Core を使用した Web API もサポートします。  App Service に比べて、Service Fabric は基になるインフラストラクチャへのより細かい制御 (直接アクセス) も提供します。 サーバーにリモート接続したり、サーバーのスタートアップ タスクを構成したりできます。 Cloud Services は、制御の程度と使いやすさにおいて Service Fabric と似ていますが、現在ではレガシ サービスになりつつあり、新しい開発には Service Fabric をお勧めします。
 
@@ -54,8 +54,8 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 | Visual Studio 統合 |○ |○ |○ |○ | |
 | リモート デバッグ |○ |○ |○ | | |
 | TFS によるコードのデプロイ |○ |○ |○ |○ | |
-|  [Azure Virtual Network](/services/virtual-network/) |○ |○ |○ |○ |「 [Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](/blog/2014/09/15/azure-websites-virtual-network-integration/) |
-|  [Azure Traffic Manager](/services/traffic-manager/) |○ |○ |○ |○ | |
+| [Azure Virtual Network](/services/virtual-network/) |○ |○ |○ |○ |「 [Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
+| [Azure Traffic Manager](/services/traffic-manager/) |○ |○ |○ |○ | |
 | 統合エンドポイント監視 |○ |○ |○ | | |
 | サーバーへのリモート デスクトップ アクセス | |○ |○ |○ | |
 | カスタム MSI のインストール | |○ |○ |○ |Service Fabric を使用すると、任意の実行可能ファイルを [ゲスト実行可能ファイル](../service-fabric/service-fabric-deploy-existing-app.md) としてホストしたり、任意のアプリを VM にインストールしたりできます。 |
@@ -77,7 +77,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 * [モバイル クライアント向けの REST API や Web サービスをホストします。](#mobile)
 
 ### <a name="a-idonprema-i-need-a-web-front-end-with-background-processing-and-database-backend-to-run-business-applications-integrated-with-on-premise-assets"></a><a id="onprem"></a> Web フロント エンドとバックエンド (バックグラウンド処理とデータベース) を組み合わせて、ビジネス アプリケーションをオンプレミスの資産と連係させたいのですが。
-そのような複合的なビジネス アプリケーションには、Azure App Service が最適です。 Azure Websites 向けにアプリケーションを開発することで、負荷分散プラットフォーム上でスケールを自動的に調整し、Active Directory でセキュリティを確保しながら、オンプレミスのリソースに接続することが可能です。 それらのアプリケーションは、ワールドクラスのポータルと API によって簡単に管理できます。さらに、そのアプリケーションが顧客によってどのように利用されているかを、アプリケーション洞察ツールで深く見通すことができます。 [Web ジョブ][Web ジョブ]機能を使用すると、バックグラウンドのプロセスとタスクを Web 階層の中で実行すると共に、ハイブリッド接続と VNET 機能を使ってオンプレミスのリソースに対して簡単に接続できます。 Azure App Service は Web アプリの 99.9% の稼働率が SLA で保証されています。Azure App Service でできることを次に示します。
+そのような複合的なビジネス アプリケーションには、Azure App Service が最適です。 Azure Websites 向けにアプリケーションを開発することで、負荷分散プラットフォーム上でスケールを自動的に調整し、Active Directory でセキュリティを確保しながら、オンプレミスのリソースに接続することが可能です。 それらのアプリケーションは、ワールドクラスのポータルと API によって簡単に管理できます。さらに、そのアプリケーションが顧客によってどのように利用されているかを、アプリケーション洞察ツールで深く見通すことができます。 [Web ジョブ][Webjobs]機能を使用すると、バックグラウンドのプロセスとタスクを Web 階層の中で実行すると共に、ハイブリッド接続と VNET 機能を使ってオンプレミスのリソースに対して簡単に接続できます。 Azure App Service は Web アプリの 99.9% の稼働率が SLA で保証されています。Azure App Service でできることを次に示します。
 
 * 自己復旧機能と自動修正機能を備えたクラウド プラットフォーム上でアプリケーションを実行し、高い信頼性を確保する。
 * グローバルなデータセンターのネットワークを活かしてスケールを自動的に調整する。
@@ -113,10 +113,10 @@ Azure App Service は、過去の IIS6 アプリケーションの移行に伴�
 ### <a name="a-iddesignera-im-a-web-or-graphic-designer-and-i-want-to-design-and-build-websites-for-my-customers"></a><a id="designer"></a> Web デザイナーまたはグラフィック デザイナーです。顧客の Web サイトをデザインおよび構築する必要があります。
 Web 開発者とデザイナーのために、Azure App Service は、Git や FTP でのデプロイに対応するなど、さまざまなフレームワークおよびツールと容易に連係できるようになっているほか、Visual Studio や SQL Database などのツールやサービスと緊密に統合されています。 App Service を使用すると、次のことができます。
 
-* [タスクの自動化][scripting]のためのコマンドライン ツールを使用できます。
-* [.Net][dotnet]、[PHP][PHP]、[Node.js][nodejs]、[Python][Python] などの一般的な言語で作業できます。
+* [タスクの自動化][scripting]のためのコマンド ライン ツールを使用できます。
+* [.Net][dotnet]、[PHP][PHP]、[Node.js][nodejs]、[Python][Python] など、一般的な言語で作業できます。
 * 非常に高い容量に拡張するための 3 つの異なる拡張レベルを選択できます。
-* [SQL Database][sqldatabase]、[Service Bus][servicebus]、[Storage][Storage] などの他の Azure サービスや、[Azure ストア][azurestore]からの MySQL や MongoDB などのパートナー製品と統合できます。
+* [SQL Database][sqldatabase]、[Service Bus][servicebus]、[Storage][Storage] などの他の Azure サービスや、MySQL、MongoDB など、[Azure Store][azurestore] からのパートナーの製品と統合できます。
 * Visual Studio、Git、WebMatrix、WebDeploy、TFS、FTP などのツールと統合できます。
 
 ### <a name="a-idmultitieraim-migrating-my-multi-tier-application-with-a-web-front-end-to-the-cloud"></a><a id="multitier"></a>Web フロント エンドを含む多層アプリケーションをクラウドに移行しています。
@@ -135,7 +135,7 @@ Web 開発者とデザイナーのために、Azure App Service は、Git や FT
 ### <a name="a-idossamy-site-uses-open-source-software-and-i-want-to-host-it-in-azure"></a><a id="oss"></a>自分のサイトではオープン ソース ソフトウェアを使用しており、そのソフトウェアを Azure でホストする必要があります。
 そのオープン ソース フレームワークが App Service でサポートされている場合、ご利用のアプリケーションに必要な言語とフレームワークが自動的に構成されます。 App Service を使用すると、次のことができます。
 
-* [.NET][dotnet]、[PHP][PHP]、[Node.js][nodejs]、[Python][Python] などの多くの一般的なオープン ソース言語を使用できます。
+* [.NET][dotnet]、[PHP][PHP]、[Node.js][nodejs]、[Python][Python] など、多くの一般的なオープン ソース言語を使用できます。
 * WordPress、Drupal、Umbraco、DNN、および多くのサード パーティ製 Web アプリケーションをセットアップできます。
 * 既存のアプリケーションを移行することも、アプリケーション ギャラリーから新規アプリケーションを作成することもできます。
 
@@ -174,8 +174,8 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 [Virtual Machines]: http://go.microsoft.com/fwlink/?LinkID=306053
 [Service Fabric]: /services/service-fabric
 [ClearDB]: http://www.cleardb.com/
-[Web ジョブ]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
-[Azure Web サイトの SSL 証明書の構成]: http://www.windowsazure.com/develop/net/common-tasks/enable-ssl-web-site/
+[WebJobs]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
+[Configuring an SSL certificate for an Azure Website]: http://www.windowsazure.com/develop/net/common-tasks/enable-ssl-web-site/
 [azurestore]: http://www.windowsazure.com/gallery/store/
 [scripting]: http://www.windowsazure.com/documentation/scripts/?services=web-sites
 [dotnet]: http://www.windowsazure.com/develop/net/
@@ -192,6 +192,6 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

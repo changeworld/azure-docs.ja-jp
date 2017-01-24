@@ -12,24 +12,23 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/26/2016
+ms.date: 12/13/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7ae0fcc689d51479a92c506ea48ab8af2003acfe
+ms.sourcegitcommit: 04092b735fa77c72ffe6c492a3fc975eac2e99fd
+ms.openlocfilehash: a71b77a320e9321eaa857acfcfae8822de0ac9e5
 
 
 ---
 # <a name="prepare-your-development-environment"></a>開発環境を準備する
 > [!div class="op_single_selector"]
-> -[Windows](service-fabric-get-started.md)
-> 
+> * [Windows](service-fabric-get-started.md) 
 > * [Linux](service-fabric-get-started-linux.md)
 > * [OSX](service-fabric-get-started-mac.md)
 > 
 > 
 
- 開発コンピューターで [Azure Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、ツールをインストールする必要があります。 また、SDK に含まれる Windows PowerShell スクリプトの実行を有効にする必要があります。
+ 開発コンピューターで [Azure Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、およびツールをインストールしてください。 また、SDK に含まれる Windows PowerShell スクリプトの実行を有効にする必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 ### <a name="supported-operating-system-versions"></a>サポートされるオペレーティング システムのバージョン
@@ -46,10 +45,30 @@ ms.openlocfilehash: 7ae0fcc689d51479a92c506ea48ab8af2003acfe
 > 
 
 ## <a name="install-the-runtime-sdk-and-tools"></a>ランタイム、SDK、およびツールのインストール
-Web Platform Installer には、Service Fabric 開発用に、次の 3 つの構成が用意されています。
+Web Platform Installer には、Service Fabric 開発用に、次の 2 つの構成が用意されています。
 
-* [Visual Studio 2015 のための Service Fabric ランタイム、SDK、ツールをインストールする (Visual Studio 2015 Update 2 以降が必要)][full-bundle-vs2015]
-* [Service Fabric ランタイムと SDK のみをインストールする (Visual Studio ツールはインストールしない)][core-sdk]
+Visual Studio 2017 (Azure 開発および管理ワークロードをインストールする必要があります):
+
+* [Service Fabric ランタイムと SDK をインストールする (Visual Studio Tools はインストールしない)][core-sdk]
+
+Visual Studio 2015 (Visual Studio 2015 Update 2 以降が必要):
+
+* [Service Fabric ランタイム、SDK、ツールをインストールする][full-bundle-vs2015]
+* [Service Fabric ランタイムと SDK のみをインストールする (Visual Studio Tools はインストールしない)][core-sdk]
+
+> [!WARNING]
+> これらの起動リンクを使用した場合、または Chrome ブラウザーでこれらのリンクを使用した場合、インストール中にエラーが発生することが報告されています。 これらは Web Platform Installer の既知の問題であり、現在対処中です。  この問題を回避するには、次のことをお試しください。
+>- Internet Explorer または Edge ブラウザーで上記のリンクを開く
+>- [スタート] メニューから Web Platform Installer を起動し、"Service Fabric" を検索して、SDK をインストールする
+> 
+> ご不便をおかけして申し訳ありません。 
+
+現在のバージョンは次のとおりです。
+* Service Fabric SDK 2.4.145
+* Service Fabric ランタイム 5.4.145
+* Visual Studio 2015 Tools 1.4.41209
+
+サポートされているバージョンの一覧については、[Service Fabric のサポート](service-fabric-support.md)に関するページを参照してください。
 
 ## <a name="enable-powershell-script-execution"></a>PowerShell スクリプトの実行の有効化
 Service Fabric は、ローカル開発クラスターの作成、および Visual Studio からのアプリケーションのデプロイに、Windows PowerShell スクリプトを使用します。 既定では、Windows はこれらのスクリプトの実行をブロックします。 これらを有効にするには、PowerShell 実行ポリシーを変更する必要があります。 管理者として PowerShell を開き、次のコマンドを入力します。
@@ -67,16 +86,17 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 * [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
 * [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 * [Service Fabric のラーニング パスに沿ってプラットフォームの広範な概要を理解する](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
+* [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 
 [1]: http://azure.microsoft.com/en-us/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [full-bundle-vs2015]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI のリンク"
 [full-bundle-dev15]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI のリンク"
-[core-sdk]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "コア SDK WebPI のリンク"
+[core-sdk]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI のリンク"
 [powershell5-download]:https://www.microsoft.com/en-us/download/details.aspx?id=50395
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 12/14/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 3b7bbd63a0bd87ee45a387bc0612541f0d82208b
-ms.openlocfilehash: 73f7235686435300d18fe518c08adbd6c3904f39
+ms.sourcegitcommit: a344a3a05c2a27e6b6500a6560c7fbb2096c9bfc
+ms.openlocfilehash: 0303145ba0ce611242f218cdf6a2274e9e393fb4
 
 
 ---
@@ -60,14 +60,14 @@ Linux ベースの HDInsight クラスターに空のエッジ ノードを追�
 エッジ ノードを作成した後、SSH を使用してエッジ ノードに接続し、クライアント ツールを実行して HDInsight の Hadoop クラスターにアクセスすることができます。
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>既存のクラスターにエッジ ノードを追加する
-このセクションでは、Resource Manager テンプレートを使用して既存の HDInsight クラスターにエッジ ノードを追加します。  Resource Manager テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-with-edge-node/) にあります。 Resource Manager テンプレートは、https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh にあるスクリプト アクションのスクリプトを呼び出します。 このスクリプトでは操作は実行されません。  これは、Resource Manager テンプレートからのスクリプト アクションの呼び出しを説明するためのものです。
+このセクションでは、Resource Manager テンプレートを使用して既存の HDInsight クラスターにエッジ ノードを追加します。  Resource Manager テンプレートは、[GitHub](https://github.com/hdinsight/Iaas-Applications/tree/master/EmptyNode)にあります。 Resource Manager テンプレートは、https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/EmptyNode/scripts/EmptyNodeSetup.sh にあるスクリプト アクションのスクリプトを呼び出します。 このスクリプトでは操作は実行されません。  これは、Resource Manager テンプレートからのスクリプト アクションの呼び出しを説明するためのものです。
 
 **既存のクラスターに空のエッジ ノードを追加するには**
 
 1. HDInsight クラスターがない場合は作成します。  「 [Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」を参照してください。
 2. 次の画像をクリックして Azure にサインインし、Azure Portal で Azure Resource Manager テンプレートを開きます。 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FEmptyNode%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
 3. 次のプロパティを構成します。
    
    * **サブスクリプション**: クラスターの作成に使用する Azure サブスクリプションを選択します。
@@ -86,7 +86,7 @@ Linux ベースの HDInsight クラスターに空のエッジ ノードを追�
 1. HDInsight クラスターがない場合は作成します。  「 [Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」を参照してください。
 2. 次の画像をクリックして Azure にサインインし、Azure Portal で Azure Resource Manager テンプレートを開きます。 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
 3. 次のプロパティを構成します。
    
    * **サブスクリプション**: クラスターの作成に使用する Azure サブスクリプションを選択します。
@@ -103,7 +103,7 @@ Linux ベースの HDInsight クラスターに空のエッジ ノードを追�
 4. エッジ ノードを使用してクラスターを作成するには、**[上記の使用条件に同意する]** をオンにし、**[購入]** をクリックします。
 
 ## <a name="access-an-edge-node"></a>エッジ ノードにアクセスする
-エッジ ノードの SSH エンドポイントは、<EdgeNodeName> <ClusterName>-ssh.azurehdinsight.net:22 です。  たとえば、new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22 のようになります。
+エッジ ノードの SSH エンドポイントは、&lt;エッジ ノード名>.&lt;クラスター名>-ssh.azurehdinsight.net:22 です。  たとえば、new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22 のようになります。
 
 エッジ ノードは、Azure Portal ではアプリケーションとして表示されます。  Portal には、SSH を使用してエッジ ノードにアクセスするための情報が表示されます。
 
@@ -148,6 +148,6 @@ Azure Portal からエッジ ノードを削除できます。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

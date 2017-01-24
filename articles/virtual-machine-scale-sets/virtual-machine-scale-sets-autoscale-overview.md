@@ -1,20 +1,24 @@
 ---
-title: 自動スケールと仮想マシン スケール セット | Microsoft Docs
-description: 診断機能と自動スケール リソースを使用してスケール セット内の仮想マシンを自動的にスケールする方法を説明します。
+title: "自動スケールと仮想マシン スケール セット | Microsoft Docs"
+description: "診断機能と自動スケール リソースを使用してスケール セット内の仮想マシンを自動的にスケールする方法を説明します。"
 services: virtual-machine-scale-sets
-documentationcenter: ''
-author: davidmu1
+documentationcenter: 
+author: Thraka
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: davidmu
+ms.date: 10/18/2016
+ms.author: adegeo
+translationtype: Human Translation
+ms.sourcegitcommit: 090374b057a62251e40ccc41f60f61e84e08a03f
+ms.openlocfilehash: ff137ead5e3490a129b36c959040d3571bff7669
+
 
 ---
 # <a name="automatic-scaling-and-virtual-machine-scale-sets"></a>自動スケールと仮想マシン スケール セット
@@ -22,10 +26,10 @@ ms.author: davidmu
 
 自動スケールは、管理オーバーヘッドを軽減するための自動化されたプロセスです。 オーバーヘッドを減らすことで、システム パフォーマンスを継続的に監視する必要がなくなるだけでなく、リソースの管理方法を決める必要性もなくなります。 スケールはエラスティック プロセスです。 負荷が増加したときにはより多くのリソースを追加できます。一方、需要が減ったときには、リソースを削除してコストを軽減しながらも、適切なパフォーマンスを維持できます。
 
-スケール セットに対する自動スケールは、Azure Resource Manager テンプレート、Azure PowerShell、または Azure CLI を使用して設定します。
+スケール セットに対する自動スケールは、Azure Resource Manager テンプレート、Azure PowerShell、Azure CLI、Azure ポータルを使用して設定します。
 
 ## <a name="set-up-scaling-by-using-resource-manager-templates"></a>Resource Manager テンプレートを使用したスケール設定
-アプリケーションの各リソースを個別にデプロイして管理するのではなく、1 回の連携した操作ですべてのリソースをデプロイするテンプレートを使用します。 このテンプレートでは、アプリケーションのリソースを定義し、さまざまな環境に対応するデプロイ パラメーターを指定します。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 詳細については、「 [Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+アプリケーションの各リソースを個別にデプロイして管理するのではなく、1 回の連携した操作ですべてのリソースをデプロイするテンプレートを使用します。 このテンプレートでは、アプリケーションのリソースを定義し、さまざまな環境に対応するデプロイ パラメーターを指定します。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 詳細については、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
 テンプレートでは、容量 (capacity 要素) を指定します。
 
@@ -193,14 +197,17 @@ autoscaleSettings リソースは、スケール セット内の仮想マシン�
 5 分間のクールダウン期間の後で、仮想マシンの平均スレッド数がまだ 600 を超えている場合には、セットに仮想マシンがもう 1 つ追加されます。 平均スレッド数が 550 を下回ったままになると、スケール セットの容量が 1 削減され、セットから 1 つの仮想マシンが削除されます。
 
 ## <a name="set-up-scaling-using-azure-powershell"></a>Azure PowerShell を使用したスケール設定
-PowerShell を使用して自動スケールを設定する例については、「 [Azure Insights の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)」を参照してください。
+PowerShell を使用して自動スケールを設定する例については、「[Azure Insights の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)」をご覧ください。
 
 ## <a name="set-up-scaling-using-azure-cli"></a>Azure CLI を使用したスケール設定
-Azure CLI を使用して自動スケールを設定する例については、「 [Azure Insights クロスプラットフォーム CLI のクイック スタート サンプル](../monitoring-and-diagnostics/insights-cli-samples.md)」を参照してください。
+Azure CLI を使用して自動スケールを設定する例については、「[Azure Insights クロスプラットフォーム CLI のクイック スタート サンプル](../monitoring-and-diagnostics/insights-cli-samples.md)」をご覧ください。
+
+## <a name="set-up-scaling-using-the-azure-portal"></a>Azure ポータルを使用したスケール設定
+Azure ポータルを使用して自動スケーリングを設定する例については、「[Azure ポータルを使用して仮想マシン スケール セットを作成する](virtual-machine-scale-sets-portal-create.md)」をご覧ください。
 
 ## <a name="investigate-scaling-actions"></a>スケール操作に関する情報
-* [Azure ポータル]() - 現在、ポータルを使用して入手できる情報の量は限られています。
-* [Azure リソース エクスプローラー]() - このツールは、スケール セットの現在の状態を調査するうえで最適なツールです。 次のパスに従うと、作成したスケール セットのインスタンス ビューが表示されます: [subscriptions]、{該当するサブスクリプション}、[resourceGroups]、{該当するリソース グループ}、[providers]、[Microsoft.Compute]、[virtualMachineScaleSets]、{該当するスケール セット}、[virtualMachines]
+* Azure Portal - 現在、ポータルを使用して入手できる情報の量は限られています。
+* Azure リソース エクスプローラー - このツールは、スケール セットの現在の状態を調査するうえで最適なツールです。 次のパスに従うと、作成したスケール セットのインスタンス ビューが表示されます: [ubscriptions]、{該当するサブスクリプション}、[resourceGroups]、{該当するリソース グループ}、[providers]、[Microsoft.Compute]、[virtualMachineScaleSets]、{該当するスケール セット}、[virtualMachines]
 * Azure PowerShell - 次のコマンドを使用して一部の情報を得ることができます。
   
         Get-AzureRmResource -name vmsstest1 -ResourceGroupName vmsstestrg1 -ResourceType Microsoft.Compute/virtualMachineScaleSets -ApiVersion 2015-06-15
@@ -209,11 +216,14 @@ Azure CLI を使用して自動スケールを設定する例については、�
 
 ## <a name="next-steps"></a>次のステップ
 * 自動スケールを構成したスケール セットの作成方法の例については、「 [仮想マシン スケール セットでのマシンの自動スケール](virtual-machine-scale-sets-windows-autoscale.md) 」を参照してください。
-* Azure Insights の監視機能の例を「 [Azure Insights の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)
-* 通知機能の詳細については、「 [Azure Insights で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」を参照してください。
-* [Azure Insights で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
+* Azure Monitor の監視機能の例については、「[Azure Insights の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)」をご覧ください。
+* 通知機能の詳細については、「[Azure Insights で自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。
+* [Azure Monitor で監査ログを使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)方法をご確認ください。
 * [高度な自動スケールのシナリオ](virtual-machine-scale-sets-advanced-autoscale.md)を紹介します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO2-->
 
 

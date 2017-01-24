@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2016
+ms.date: 01/13/2017
 ms.author: tiandert; bwren
 translationtype: Human Translation
 ms.sourcegitcommit: ff1acafaacc40dd8a04b008df7cd479c811a7af0
@@ -29,8 +29,8 @@ ms.openlocfilehash: 62b6c09f749aa36307206e23d36bd86b5b8ce455
 ## <a name="deploy-amazon-web-services-powershell-module"></a>Amazon Web Services PowerShell モジュールをデプロイする
 VM プロビジョニング Runbook は、AWS PowerShell モジュールを利用して処理を実行します。 次の手順を実行して、AWS サブスクリプションの資格情報で構成した Automation アカウントにモジュールを追加してください。  
 
-1. Web ブラウザーを開き、[PowerShell ギャラリー](http://www.powershellgallery.com/packages/AWSPowerShell/)に移動し、**[Deploy to Azure Automation (Azure Automation にデプロイする)]** ボタンをクリックします。<br> ![AWS PS モジュールのインポート](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
-2. Azure ログイン ページが表示され、認証が終わると Azure Portal に移動し、次のブレードが表示されます。<br> ![[モジュールのインポート] ブレード](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
+1. Web ブラウザーを開き、[PowerShell ギャラリー](http://www.powershellgallery.com/packages/AWSPowerShell/)に移動し、**[Deploy to Azure Automation (Azure Automation にデプロイする)]** ボタンをクリックします。<br><br> ![AWS PS モジュールのインポート](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
+2. Azure ログイン ページが表示され、認証が終わると Azure Portal に移動し、次のブレードが表示されます。<br><br> ![[モジュールのインポート] ブレード](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
 3. **[リソース グループ]** ボックスの一覧からリソース グループを選択し、[パラメーター] ブレードで次の情報を指定します。
    
    * **[New or Existing Automation Account (string) (新規または既存の Automation アカウント (文字列))]** ボックスの一覧から **[既存]** を選択します。  
@@ -53,30 +53,28 @@ AWS PowerShell モジュールのデプロイが終わったら、PowerShell ス
 > [!NOTE]
 > このスクリプトに関する他のオプションと情報については、 [PowerShell ギャラリー](https://www.powershellgallery.com/packages/New-AwsVM/DisplayScript)を参照してください。
 > 
-> 
 
 1. PowerShell セッションを開き、次のように入力して、PowerShell ギャラリーから PowerShell スクリプト New-AwsVM をダウンロードします。<br>
    ```
-   Save-Script -Name New-AwsVM -Path \<path\>
+   Save-Script -Name New-AwsVM -Path <path>
    ```
    <br>
 2. Azure Portal で Automation アカウントを開き、**[Runbook]** タイルをクリックします。  
 3. **[Runbook]** ブレードで、**[Runbook の追加]** を選択します。
 4. **[Runbook の追加]** ブレードで、**[簡易作成]** を選択します (新しい Runbook を作成します)。
-5. **Runbook** のプロパティ ブレードで、[名前] ボックスに Runbook の名前を入力し、**[Runbook の種類]** ボックスの一覧から **[PowerShell]** を選択した後、**[作成]** をクリックします。<br> ![[モジュールのインポート] ブレード](./media/automation-scenario-aws-deployment/runbook-quickcreate-properties.png)
-6. [PowerShell Runbook の編集] ブレードが表示されたら、PowerShell スクリプトをコピーして Runbook 作成キャンバスに貼り付けます。<br> ![Runbook PowerShell スクリプト](./media/automation-scenario-aws-deployment/runbook-powershell-script.png)<br>
+5. **Runbook** のプロパティ ブレードで、[名前] ボックスに Runbook の名前を入力し、**[Runbook の種類]** ボックスの一覧から **[PowerShell]** を選択した後、**[作成]** をクリックします。<br><br> ![[モジュールのインポート] ブレード](./media/automation-scenario-aws-deployment/runbook-quickcreate-properties.png)
+6. [PowerShell Runbook の編集] ブレードが表示されたら、PowerShell スクリプトをコピーして Runbook 作成キャンバスに貼り付けます。<br><br> ![Runbook PowerShell スクリプト](./media/automation-scenario-aws-deployment/runbook-powershell-script.png)<br>
    
-   > [!NOTE]
-   > このサンプル PowerShell スクリプトを使用するときは、次の点に注意してください。
-   > 
-   > * この Runbook には、パラメーターの既定値が多数含まれています。 すべての既定値に目を通して適宜変更してください。
-   > * AWS 資格情報を **AWScred**以外の資格情報資産の名前で保存している場合は、スクリプトの 57 行をその名前で更新する必要があります。  
-   > * PowerShell の AWS CLI コマンドを使用する場合、特にこのサンプル Runbook では、AWS リージョンを指定する必要があります。 指定しなかった場合、コマンドレットは失敗します。  詳細については、AWS Tools for PowerShell ドキュメントの AWS トピック「 [Specify AWS Region (AWS リージョンを指定する)](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) 」を参照してください。  
-   >   <br>
-   > 
-   > 
-7. AWS サブスクリプションからイメージ名の一覧を取得するため、PowerShell ISE を起動し、AWS PowerShell モジュールをインポートします。  ISE 環境の **Get-AutomationPSCredential** を **AWScred = Get-Credential** に置き換えることで、AWS に対する認証を実行します。  これにより、資格情報の入力を求めるプロンプトが表示され、ユーザー名として**アクセス キー ID** を、パスワードとして**シークレット アクセス キー**を指定できます。  次の例を見てください。
-   
+    > [!NOTE]
+    > このサンプル PowerShell スクリプトを使用するときは、次の点に注意してください。
+    > 
+    > * この Runbook には、パラメーターの既定値が多数含まれています。 すべての既定値に目を通して適宜変更してください。
+    > * AWS 資格情報を **AWScred**以外の資格情報資産の名前で保存している場合は、スクリプトの 57 行をその名前で更新する必要があります。  
+    > * PowerShell の AWS CLI コマンドを使用する場合、特にこのサンプル Runbook では、AWS リージョンを指定する必要があります。 指定しなかった場合、コマンドレットは失敗します。  詳細については、AWS Tools for PowerShell ドキュメントの AWS トピック「 [Specify AWS Region (AWS リージョンを指定する)](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) 」を参照してください。  
+    >
+
+7. AWS サブスクリプションからイメージ名の一覧を取得するため、PowerShell ISE を起動し、AWS PowerShell モジュールをインポートします。  ISE 環境の **Get-AutomationPSCredential** を **AWScred = Get-Credential** に置き換えることで、AWS に対する認証を実行します。  これにより、資格情報の入力を求めるプロンプトが表示され、ユーザー名として**アクセス キー ID** を、パスワードとして**シークレット アクセス キー**を指定できます。  次の例を見てください。  
+
         #Sample to get the AWS VM available images
         #Please provide the path where you have downloaded the AWS PowerShell module
         Import-Module AWSPowerShell
@@ -90,24 +88,25 @@ AWS PowerShell モジュールのデプロイが終わったら、PowerShell ス
         Set-DefaultAWSRegion -Region $AwsRegion
    
         Get-EC2ImageByName -ProfileName AWSProfile
-   次の出力が返されます。<br>
-   ![AWS イメージの取得](./media/automation-scenario-aws-deployment/powershell-ise-output.png)  
-8. Runbook で **$InstanceType**として参照される Automation 変数に、いずれかのイメージ名をコピーして貼り付けます。 この例では、無料の AWS 階層型サブスクリプションを使用しているため、サンプル Runbook では **t2.micro** を使用します。
+
+    次の出力が返されます。<br><br>
+   ![AWS イメージの取得](./media/automation-scenario-aws-deployment/powershell-ise-output.png)<br>  
+8. Runbook で **$InstanceType**として参照される Automation 変数に、いずれかのイメージ名をコピーして貼り付けます。 この例では、無料の AWS 階層型サブスクリプションを使用しているため、サンプル Runbook では **t2.micro** を使用します。  
 9. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。
 
 ### <a name="testing-the-aws-vm-runbook"></a>AWS VM Runbook のテスト
-Runbook のテストに進む前に、確認する必要がある事柄がいくつかあります。 具体的には次の処理が行われます。
+Runbook のテストに進む前に、確認する必要がある事柄がいくつかあります。 具体的には次の処理が行われます。  
 
-* AWS に対して認証される **AWScred** という資産を作成したこと、または使用中の資格情報資産の名前を参照するようにスクリプトを更新したこと。  
-* AWS PowerShell モジュールを Azure Automation にインポートしたこと。
-* 新しい Runbook を作成し、パラメーターの値を確認して適宜更新したこと。
-* Runbook 設定の **[ログ記録とトレース]** で **[詳細レコードの記録]** と (必要に応じて) **[進行状況レコードの記録]** を **[オン]** に設定したこと。<br> ![Runbook のログ記録とトレース](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png)
+* AWS に対して認証される **AWScred** という資産を作成したこと、または使用中の資格情報資産の名前を参照するようにスクリプトを更新したこと。    
+* AWS PowerShell モジュールを Azure Automation にインポートしたこと。  
+* 新しい Runbook を作成し、パラメーターの値を確認して適宜更新したこと。  
+* Runbook 設定の **[ログ記録とトレース]** で **[詳細レコードの記録]** と (必要に応じて) **[進行状況レコードの記録]** を **[オン]** に設定したこと。<br><br> ![Runbook のログ記録とトレース](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png)  
 
 1. Runbook を開始するために **[開始]** をクリックし、[Runbook の開始] ブレードが開いたら **[OK]** をクリックします。
-2. [Runbook の開始] ブレードで、**[VMname]** を指定します。  スクリプトに事前構成してある他のパラメーターの既定値をそのまま使用します。  **[OK]** をクリックして Runbook ジョブを開始します。<br> ![New-AwsVM runbook の開始](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
+2. [Runbook の開始] ブレードで、**[VMname]** を指定します。  スクリプトに事前構成してある他のパラメーターの既定値をそのまま使用します。  **[OK]** をクリックして Runbook ジョブを開始します。<br><br> ![New-AwsVM runbook の開始](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
 3. 作成した Runbook ジョブのジョブ ウィンドウが開かれます。 このウィンドウを閉じます。
-4. Runbook ジョブ ブレードで **[すべてのログ]** タイルを選択することで、ジョブの進行状況と出力**ストリーム**を確認できます。<br> ![Stream output](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png)
-5. VM がプロビジョニングされたことを確認するために AWS Management Console にログインします (まだログインしていない場合)。<br> ![AWS console deployed VM](./media/automation-scenario-aws-deployment/aws-instances-status.png)
+4. Runbook ジョブ ブレードで **[すべてのログ]** タイルを選択することで、ジョブの進行状況と出力**ストリーム**を確認できます。<br><br> ![Stream output](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png)
+5. VM がプロビジョニングされたことを確認するために AWS Management Console にログインします (まだログインしていない場合)。<br><br> ![AWS console deployed VM](./media/automation-scenario-aws-deployment/aws-instances-status.png)
 
 ## <a name="next-steps"></a>次のステップ
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)

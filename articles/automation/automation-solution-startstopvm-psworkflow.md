@@ -13,13 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/06/2016
-ms.author: bwren
+ms.author: magoedte;bwren
+redirect_url: https://docs.microsoft.com/azure/automation/automation-solution-vm-management
+redirect_document_id: FALSE
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 820ef7238593cd99d41cc3fe5d1d7a29699397fc
 
-
 ---
+
 # <a name="azure-automation-scenario---starting-and-stopping-virtual-machines"></a>Azure Automation シナリオ - 仮想マシンの起動と停止
 この Azure Automation シナリオには、クラシック仮想マシンを起動および停止するための Runbook が含まれています。  このシナリオは、次のいずれかの場合に使用できます。  
 

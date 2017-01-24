@@ -16,15 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 205812cdd4aa7cd5858075c642188a37de456ba7
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: 0daa75e1d4fccf7d7c7785422a9607787e55ca8b
 
 
 ---
 # <a name="using-the-docker-vm-extension-from-the-azure-command-line-interface-azure-cli"></a>Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-Resource Manager モデルを使用した Docker VM 拡張機能の使用方法については、[こちら](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した Docker VM 拡張機能の使用方法については、[こちら](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
 
 このトピックでは、任意のプラットフォーム上のサービス管理 (asm) モードの Azure CLI で Docker VM 拡張機能を使用して VM を作成する方法について説明します。 [Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。 Docker VM 拡張機能と [Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して、Azure 上でアプリケーション用に任意の数のコンテナーをホストする Docker VM を作成することができます。 コンテナーとその利点に関する概要については、「 [Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
 
@@ -162,21 +161,21 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 * Azure の Docker VM 拡張機能は、Docker Compose もサポートします。Docker Compose は、宣言型 YAML ファイルを使用して、開発者が構築したアプリケーションを環境全体で有効にし、一貫性のあるデプロイを生成します。 「[Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する]」をご覧ください。  
 
 <!--Anchors-->
-[小見出し 1]: #subheading-1
-[小見出し 2]: #subheading-2
-[小見出し 3]: #subheading-3
-[次のステップ]: #next-steps
+[Subheading 1]: #subheading-1
+[Subheading 2]: #subheading-2
+[Subheading 3]: #subheading-3
+[Next steps]: #next-steps
 
-[Azure で Docker VM 拡張機能を使用する方法]: #How-to-use-the-Docker-VM-Extension-with-Azure
-[Linux および Windows 向けの仮想マシン拡張機能]: #Virtual-Machine-Extensions-For-Linux-and-Windows
-[Azure 向けのコンテナーおよびコンテナー管理リソース]: #Container-and-Container-Management-Resources-for-Azure
+[How to use the Docker VM Extension with Azure]: #How-to-use-the-Docker-VM-Extension-with-Azure
+[Virtual Machine Extensions for Linux and Windows]: #Virtual-Machine-Extensions-For-Linux-and-Windows
+[Container and Container Management Resources for Azure]: #Container-and-Container-Management-Resources-for-Azure
 
 
 
 <!--Link references-->
-[別の azure.microsoft.com ドキュメント トピックへのリンク 1]: virtual-machines-windows-hero-tutorial.md
-[別の azure.microsoft.com ドキュメント トピックへのリンク 2]: ../web-sites-custom-domain-name.md
-[別の azure.microsoft.com ドキュメント トピックへのリンク 3]: ../storage-whatis-account.md
+[Link 1 to another azure.microsoft.com documentation topic]: virtual-machines-windows-hero-tutorial.md
+[Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
+[Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
 [Using the Docker VM Extension with the Azure Portal (Azure ポータルでの Docker VM 拡張機能の使用)]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
 
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
@@ -185,6 +184,6 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

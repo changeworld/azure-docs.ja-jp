@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2016
+ms.date: 12/01/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 64f6f245b86d9194a52e40ed226de9960a36f3f9
-ms.openlocfilehash: 96e0c65dd57505b816843ac6290ea19ca02c88f9
+ms.sourcegitcommit: aa0193e741b1a84c03230b2458eec96b5504f031
+ms.openlocfilehash: add539351066f9ff94febeebfd5334773b360e8f
 
 
 ---
@@ -43,7 +43,7 @@ Linux のマルチパスは、次の表のように、カーネル コンポー�
 
 * **カーネル**: 主なコンポーネントは、*device-mapper* です。これは、I/O を経路変更し、パスとパス グループのフェールオーバーをサポートします。
 
-1. **ユーザースペース**: device-mapper マルチパス モジュールに指示してマルチパス デバイスを管理する *multipath-tools* です。 このツールは次の要素で構成されます。
+* **ユーザースペース**: device-mapper マルチパス モジュールに指示してマルチパス デバイスを管理する *multipath-tools* です。 このツールは次の要素で構成されます。
    
    * **Multipath**: マルチパス デバイスを一覧表示および構成します。
    * **Multipathd**: マルチパスを実行し、パスを監視するデーモンです。
@@ -56,12 +56,11 @@ Linux のマルチパスは、次の表のように、カーネル コンポー�
 
 multipath.conf には次の 5 つのセクションがあります。
 
-* **システム レベルの既定値** *(defaults)*: システム レベルの既定値を上書きすることができます。
-
-1. **ブラックリストに載っているデバイス** *(blacklist)*: device-mapper で制御してはいけないデバイスの一覧を指定することができます。
-2. **ブラックリストの例外** *(blacklist_exceptions)*: ブラックリストに載っている場合でもマルチパス デバイスとして扱う特定のデバイスを指定することができます。
-3. **記憶域コントローラー固有の設定** *(devices)*: 仕入先および製品の情報を持つデバイスに適用する構成設定を指定することができます。
-4. **デバイス固有の設定** *(multipaths)*: このセクションは、個々の LUN の構成設定を微調整するために使用することができます。
+- **システム レベルの既定値** *(defaults)*: システム レベルの既定値を上書きすることができます。
+- **ブラックリストに載っているデバイス** *(blacklist)*: device-mapper で制御してはいけないデバイスの一覧を指定することができます。
+- **ブラックリストの例外** *(blacklist_exceptions)*: ブラックリストに載っている場合でもマルチパス デバイスとして扱う特定のデバイスを指定することができます。
+- **記憶域コントローラー固有の設定** *(devices)*: 仕入先および製品の情報を持つデバイスに適用する構成設定を指定することができます。
+- **デバイス固有の設定** *(multipaths)*: このセクションは、個々の LUN の構成設定を微調整するために使用することができます。
 
 ## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Linux ホストに接続されている StorSimple でマルチパスを構成する
 Linux ホストに接続されている StorSimple デバイスを構成して、高可用性と負荷分散を実現することができます。 たとえば、SAN に接続されている 2 つのインターフェイスが Linux ホストに存在し、デバイスには SAN に接続する 2 つのインターフェイスがあり、これらのインターフェイスが同じサブネット上にある場合、4 つのパスを利用できるようになります。 ただし、デバイス上の各 DATA インターフェイスとホスト インターフェイスが別の IP サブネット上にある (およびルーティングできない) 場合、利用できるのは 2 つのパスのみです。 マルチパスを構成して、使用可能なすべてのパスの自動検出、これらのパスの負荷分散アルゴリズムの選択、StorSimple 専用ボリュームの特定の構成設定の適用、マルチパスの有効化と確認を実行することができます。
@@ -155,8 +154,7 @@ StorSimple デバイスに必要なものは次のとおりです。
      2. ネットワーク インターフェイスの速度が同じで、両方が 1 GbE または 10 GbE になるようにします。
      3. iSCSI 対応インターフェイスの IPv4 アドレスをメモし、ホスト上で後ほど使用するために保存します。
 * StorSimple デバイスの iSCSI インターフェイスは、CentOS サーバーから到達できる必要があります。
-  
-    これを確認するには、ホスト サーバーの StorSimple iSCSI 対応ネットワーク インターフェイスの IP アドレスを指定する必要があります。 使用するコマンドと DATA2 (10.126.162.25) および DATA3 (10.126.162.26) の対応する出力を次に示します。
+      これを確認するには、ホスト サーバーの StorSimple iSCSI 対応ネットワーク インターフェイスの IP アドレスを指定する必要があります。 使用するコマンドと DATA2 (10.126.162.25) および DATA3 (10.126.162.26) の対応する出力を次に示します。
   
         [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
         10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
@@ -190,12 +188,12 @@ StorSimple デバイスに必要なものは次のとおりです。
 
 1. `/etc/multipath.conf` ファイルを初期化します。 次のコマンドを入力します。
    
-     `Copy mpathconf --enable`
+     `mpathconf --enable`
    
     上のコマンドによって、 `sample/etc/multipath.conf` ファイルが作成されます。
 2. マルチパス サービスを開始します。 次のコマンドを入力します。
    
-    ``Copy service multipathd start``
+    `service multipathd start`
    
     次の出力が表示されます。
    
@@ -300,38 +298,37 @@ StorSimple デバイスに必要なものは次のとおりです。
 
     ここに表示されているのが 1 つのホスト インターフェイスと 2 つのパスのみの場合は、iSCSI 用にホストの両方のインターフェイスを有効にする必要があります。 [Linux ドキュメントの詳細な手順](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)を参照してください。
 
+2. ボリュームは、StorSimple デバイスから CentOS サーバーに公開されます。 詳細については、「 [手順 6. ボリュームを作成する](storsimple-deployment-walkthrough.md#step-6-create-a-volume) 」 (StorSimple デバイス上で Azure クラシック ポータルを使用して) を参照してください。
 
-   c. ボリュームは、StorSimple デバイスから CentOS サーバーに公開されます。 詳細については、「 [手順 6. ボリュームを作成する](storsimple-deployment-walkthrough.md#step-6-create-a-volume) 」 (StorSimple デバイス上で Azure クラシック ポータルを使用して) を参照してください。
+3. 使用可能なパスを確認します。 次のコマンドを入力します。
 
-   d. 使用可能なパスを確認します。 次のコマンドを入力します。
+      ```
+      multipath –l
+      ```
 
-   ```
-   multipath –l
-   ```
+      次の例は、2 つの使用可能なパスで 1 つのホスト ネットワーク インターフェイスに接続されている StorSimple デバイスの、2 つのネットワーク インターフェイスの出力を示しています。
 
-   次の例は、2 つの使用可能なパスで 1 つのホスト ネットワーク インターフェイスに接続されている StorSimple デバイスの、2 つのネットワーク インターフェイスの出力を示しています。
-
-   ```
-    mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
-    size=100G features='0' hwhandler='0' wp=rw
-    `-+- policy='round-robin 0' prio=0 status=active
+        ```
+        mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
+        size=100G features='0' hwhandler='0' wp=rw
+        `-+- policy='round-robin 0' prio=0 status=active
         |- 7:0:0:1 sdc 8:32 active undef running
         `- 6:0:0:1 sdd 8:48 active undef running
-   ```
+        ```
 
-   次の例は、4 つの使用可能なパスで 2 つのホスト ネットワーク インターフェイスに接続されている StorSimple デバイスの、2 つのネットワーク インターフェイスの出力を示しています。
+        The following example shows the output for two network interfaces on a StorSimple device connected to two host network interfaces with four available paths.
 
-   ```
-    mpathb (36486fd27a23feba1b096226f11420f6b) dm-2 MSFT,STORSIMPLE 8100
-    size=100G features='0' hwhandler='0' wp=rw
-    `-+- policy='round-robin 0' prio=0 status=active
+        ```
+        mpathb (36486fd27a23feba1b096226f11420f6b) dm-2 MSFT,STORSIMPLE 8100
+        size=100G features='0' hwhandler='0' wp=rw
+        `-+- policy='round-robin 0' prio=0 status=active
         |- 17:0:0:0 sdb 8:16 active undef running
         |- 15:0:0:0 sdd 8:48 active undef running
         |- 14:0:0:0 sdc 8:32 active undef running
         `- 16:0:0:0 sde 8:64 active undef running
-   ```
+        ```
 
-   パスを構成した後で、このボリュームをマウントしてフォーマットするには、ホスト オペレーティング システム (Centos 6.6) の具体的な手順を参照してください。
+        After the paths are configured, refer to the specific instructions on your host operating system (Centos 6.6) to mount and format this volume.
 
 ## <a name="troubleshoot-multipathing"></a>マルチパスのトラブルシューティング
 このセクションでは、マルチパスの構成中に問題が発生した場合に役に立つヒントを紹介します。
@@ -358,7 +355,8 @@ A. 通常、マルチパスのパスが表示されないのはマルチパス �
 * 次のコマンドを入力します。
   
     `$ dmesg | grep sd*`
-* または
+     
+     または
   
     `$ fdisk –l`
   
@@ -452,6 +450,6 @@ Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

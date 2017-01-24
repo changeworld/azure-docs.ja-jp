@@ -1,28 +1,32 @@
 ---
-title: Azure App Service での Web アプリの構成
-description: Azure App Service での Web アプリの構成方法
+title: "Azure App Service での Web アプリの構成"
+description: "Azure App Service での Web アプリの構成方法"
 services: app-service\web
-documentationcenter: ''
+documentationcenter: 
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: bca182190933253d5b2741b2835983909fb24a1b
+
 
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Azure App Service での Web アプリの構成
-このトピックでは、 [Azure ポータル]を使用して Web アプリを構成する方法について説明します。
+このトピックでは、 [Azure Portal]を使用して Web アプリを構成する方法について説明します。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="application-settings"></a>アプリケーションの設定
-1. [Azure ポータル]で、Web アプリのブレードを開きます。
+1. [Azure Portal]で、Web アプリのブレードを開きます。
 2. **[すべての設定]**をクリックします。
 3. **[アプリケーションの設定]**をクリックします。
 
@@ -48,9 +52,9 @@ ms.author: robmcm
 <a name="alwayson"></a>
 **常時接続**。 既定では、アイドル状態がしばらく続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 基本モードと標準モードでは、**[常時接続]** を有効にすると、アプリが常に読み込まれた状態になります。 アプリで継続的な Web ジョブを実行する場合は、**[常時接続]** を有効にする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。
 
-**マネージ パイプライン バージョン**。 IIS [パイプライン モード]を設定します。 この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合](既定.md) のままにしておきます。
+**マネージ パイプライン バージョン**。 IIS [パイプライン モード]を設定します。 この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合] (既定) のままにしておきます。
 
-**自動スワップ**。 デプロイ スロットの自動スワップを有効にした場合、App Service は、スロットに対して更新をプッシュしたときに、Web アプリを運用環境に自動的にスワップします。 詳細については、「Azure App Service の Web アプリのステージング環境を設定する」(web-sites-staged-publishing.md) を参照してください。
+**自動スワップ**。 デプロイ スロットの自動スワップを有効にした場合、App Service は、スロットに対して更新をプッシュしたときに、Web アプリを運用環境に自動的にスワップします。 詳細については、 [Azure App Service の Web アプリに対するステージング スロットへのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
 
 ### <a name="debugging"></a>デバッグ
 **リモート デバッグ**。 リモート デバッグを有効にします。 これを有効にすると、Visual Studio でリモート デバッガーを使用して、Web アプリに直接接続できます。 リモート デバッグは 48 時間有効です。 
@@ -157,7 +161,7 @@ Web アプリのカスタム ドメイン名を追加します。 詳細につ�
 <!-- URL List -->
 
 [ASP.NET SignalR]: http://www.asp.net/signalr
-[Azure App Service で Java Web アプリ]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Azure App Service のカスタム ドメイン名の構成]: ./web-sites-custom-domain-name.md
 [Azure App Service の Web アプリのステージング環境を設定する]: ./web-sites-staged-publishing.md
 [アプリに対する HTTPS を Azure App Service で有効にする]: ./web-sites-configure-ssl-certificate.md
@@ -176,6 +180,6 @@ Web アプリのカスタム ドメイン名を追加します。 詳細につ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

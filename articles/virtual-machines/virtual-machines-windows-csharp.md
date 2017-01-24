@@ -1,13 +1,13 @@
 ---
-title: C# を使用して Azure リソースをデプロイする | Microsoft Docs
-description: C# および Azure Resource Manager を使用して Microsoft Azure リソースを作成する方法について説明します。
+title: "C# を使用して Azure リソースをデプロイする | Microsoft Docs"
+description: "C# および Azure Resource Manager を使用して Microsoft Azure リソースを作成する方法について説明します。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: davidmu1
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-
+ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
@@ -15,20 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/06/2016
 ms.author: davidmu
+translationtype: Human Translation
+ms.sourcegitcommit: 37ab64cb40def50342eb31c240aa301e9d751055
+ms.openlocfilehash: 6fa33715484a4bb371148410b43c5ac606744160
+
 
 ---
-# <a name="deploy-azure-resources-using-c#"></a>C を使用した Azure リソースのデプロイ
+# <a name="deploy-azure-resources-using-c"></a>C を使用した Azure リソースのデプロイ# #
 この記事では、C# を使用して Azure リソースを作成する方法について説明します。
 
 まず、以下のタスクを行っているかどうかを確認する必要があります。
 
 * [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
 * [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855) のインストールの検証
-* [認証トークン](../resource-group-authenticate-service-principal.md)
+* [認証トークン](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 これらの手順を実行するには約 30 分かかります。
 
-## <a name="step-1:-create-a-visual-studio-project-and-install-the-libraries"></a>手順 1: Visual Studio プロジェクトの作成とライブラリのインストール
+## <a name="step-1-create-a-visual-studio-project-and-install-the-libraries"></a>手順 1: Visual Studio プロジェクトの作成とライブラリのインストール
 NuGet パッケージを使用すると、このチュートリアルを完了するために必要なライブラリを簡単にインストールできます。 Visual Studio で必要なライブラリを入手するには、次の手順に従います。
 
 1. **[ファイル]** > **[新規]** > **[プロジェクト]** の順にクリックします。
@@ -42,7 +46,7 @@ NuGet パッケージを使用すると、このチュートリアルを完了�
 
 これで、ライブラリを使用してアプリケーションの作成を開始する準備が整いました。
 
-## <a name="step-2:-create-the-credentials-that-are-used-to-authenticate-requests"></a>手順 2: 要求の認証に使用する資格情報の作成
+## <a name="step-2-create-the-credentials-that-are-used-to-authenticate-requests"></a>手順 2: 要求の認証に使用する資格情報の作成
 次に、形式に前に作成してアプリケーション情報を Azure Resource Manager に対する認証要求に使用する資格情報の形式に書式設定します。
 
 1. 作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
@@ -79,7 +83,7 @@ NuGet パッケージを使用すると、このチュートリアルを完了�
         var credential = new TokenCredentials(token.Result.AccessToken);
 4. Program.cs ファイルを保存します。
 
-## <a name="step-3:-register-the-resource-providers-and-create-the-resources"></a>手順 3: リソース プロバイダーの登録とリソースの作成
+## <a name="step-3-register-the-resource-providers-and-create-the-resources"></a>手順 3: リソース プロバイダーの登録とリソースの作成
 ### <a name="register-the-providers-and-create-a-resource-group"></a>プロバイダーを登録し、リソース グループを作成する
 すべてのリソースは、リソース グループに含まれる必要があります。 リソースをグループに追加する前に、リソース プロバイダーにサブスクリプションを登録する必要があります。
 
@@ -428,7 +432,7 @@ NuGet パッケージを使用すると、このチュートリアルを完了�
         }
    
    > [!NOTE]
-   > このチュートリアルでは、Windows Server オペレーティング システムのバージョンを実行する仮想マシンを作成します。 他のイメージの選択の詳細については、 [Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](virtual-machines-linux-cli-ps-findimage.md)に関する記事をご覧ください。
+   > このチュートリアルでは、Windows Server オペレーティング システムのバージョンを実行する仮想マシンを作成します。 他のイメージの選択の詳細については、 [Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
    > 
    > 
 2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
@@ -447,30 +451,35 @@ NuGet パッケージを使用すると、このチュートリアルを完了�
         Console.WriteLine(vmResult.Result.ProvisioningState);
         Console.ReadLine();
 
-## <a name="step-4:-delete-the-resources"></a>手順 4: リソースを削除する
+## <a name="step-4-delete-the-resources"></a>手順 4: リソースを削除する
 Azure で使用されるリソースに対して課金されるため、不要になったリソースは削除することを常にお勧めします。 仮想マシンとすべての関連リソースを削除する場合、必要な操作はリソース グループの削除だけです。
 
 1. リソース グループを削除するために、次のメソッドを Program クラスに追加します。
    
-       public static async void DeleteResourceGroupAsync(
-         TokenCredentials credential,
-         string groupName,
-         string subscriptionId)
-       {
-         Console.WriteLine("Deleting resource group...");
-         var resourceManagementClient = new ResourceManagementClient(credential)
-           { SubscriptionId = subscriptionId };
-         await resourceManagementClient.ResourceGroups.DeleteAsync(groupName);
-       }
+   ```
+   public static async void DeleteResourceGroupAsync(
+     TokenCredentials credential,
+     string groupName,
+     string subscriptionId)
+   {
+     Console.WriteLine("Deleting resource group...");
+     var resourceManagementClient = new ResourceManagementClient(credential)
+       { SubscriptionId = subscriptionId };
+     await resourceManagementClient.ResourceGroups.DeleteAsync(groupName);
+   }
+   ```
+
 2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
    
-       DeleteResourceGroupAsync(
-         credential,
-         groupName,
-         subscriptionId);
-       Console.ReadLine();
+   ```   
+   DeleteResourceGroupAsync(
+     credential,
+     groupName,
+     subscriptionId);
+   Console.ReadLine();
+   ```
 
-## <a name="step-5:-run-the-console-application"></a>手順 5: コンソール アプリケーションの実行
+## <a name="step-5-run-the-console-application"></a>手順 5: コンソール アプリケーションの実行
 1. コンソール アプリケーションを実行するには、Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
 2. 各状態コードが返されたら **Enter** キーを押して各リソースを作成します。 仮想マシンが作成されたら、次の手順を実行した後、Enter キーを押してすべてのリソースを削除します。
    
@@ -480,9 +489,12 @@ Azure で使用されるリソースに対して課金されるため、不要�
     ![Azure ポータルでの監査ログの参照](./media/virtual-machines-windows-csharp/crpportal.png)
 
 ## <a name="next-steps"></a>次のステップ
-* テンプレートを使用して仮想マシンを作成する方法については、「 [C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ](virtual-machines-windows-csharp-template.md)」を参照してください。
-* 「[Resource Manager と PowerShell を使用した Azure Virtual Machines の管理](virtual-machines-windows-csharp-manage.md)」で、作成した仮想マシンを管理する方法を確認します。
+* テンプレートを使用して仮想マシンを作成する方法については、「 [C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ](virtual-machines-windows-csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+* 「[Resource Manager と PowerShell を使用した Azure Virtual Machines の管理](virtual-machines-windows-csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」で、作成した仮想マシンを管理する方法を確認します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

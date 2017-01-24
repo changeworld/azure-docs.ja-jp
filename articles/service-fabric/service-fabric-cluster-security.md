@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2016
+ms.date: 12/06/2016
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 21f7735767b6655046b354d2a782b2730f117976
+ms.sourcegitcommit: 628df1df8f5de99a5c18d0df5b7ee41e2fb747df
+ms.openlocfilehash: c3ff370b105a1f9bdacd1bdb4b32d6209e150be2
 
 
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric クラスターのセキュリティに関するシナリオ
-Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。 クラスターは、特に運用ワークロードが実行されている場合などに、許可なくユーザーがクラスターに接続するのを防ぐために常にセキュリティで保護する必要があります。 セキュリティ保護されていないクラスターを作成することはできますが、これを行うと、パブリック インターネットへの管理エンドポイントを公開している場合、すべての匿名ユーザーがこのクラスターに接続できるようになります。 
+Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。 クラスターは、特に運用ワークロードが実行されている場合に、未承認ユーザーがクラスターに接続するのを防ぐためにセキュリティで保護する必要があります。 セキュリティで保護されていないクラスターを作成することはできますが、これを行うと、パブリック インターネットに管理エンドポイントを公開している場合に、匿名ユーザーがそのクラスターに接続できるようになります。 
 
 この記事では、Azure またはスタンドアロンで実行されるクラスターのセキュリティに関するシナリオと、そのようなシナリオを実装するために使用するさまざまなテクノロジの概要を示します。 クラスターのセキュリティに関するシナリオは次のとおりです。
 
@@ -109,7 +109,11 @@ Azure クラスターについては、クライアントの認証に AAD セキ
 
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、クラスターのセキュリティに関する概念的な情報について説明します。 次に、[Azure でクラスターを作成します。Resource Manager テンプレート](service-fabric-cluster-creation-via-arm.md)または [Azure Portal](service-fabric-cluster-creation-via-portal.md) を使用します。
+この記事では、クラスターのセキュリティに関する概念的な情報について説明します。 次に、
+
+
+1.  [Resource Manager テンプレートを使用して Azure でクラスターを作成する](service-fabric-cluster-creation-via-arm.md) 
+2.  [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 
 <!--Image references-->
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
@@ -117,6 +121,6 @@ Azure クラスターについては、クライアントの認証に AAD セキ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

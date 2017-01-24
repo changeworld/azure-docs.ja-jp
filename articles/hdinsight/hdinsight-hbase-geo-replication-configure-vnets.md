@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 06/28/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4c5b3b8d4e5e35aaef1a61530ee148db9e67e5a7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f9b2192dfb40e2dd3cd2afa308f1cf84491e0580
 
 
 ---
@@ -42,10 +42,10 @@ Azure 仮想ネットワークのサイト間接続では、VPN ゲートウェ�
 > 
 > 
 
-このチュートリアルは、HBase geo レプリケーションの作成に関する[シリーズ][hdinsight-hbase-replication]の一部です。 
+このチュートリアルは、HBase geo レプリケーションの作成に関する[シリーズ][hdinsight-hbase-replication]の第 1 部です。 
 
 * 2 つの仮想ネットワーク間に VPN 接続を構成します (このチュートリアル)
-* [仮想ネットワーク用の DNS の構成][hdinsight-hbase-geo-replication-dns]
+* [仮想ネットワーク用に DNS を構成します][hdinsight-hbase-geo-replication-dns]
 * [HBase geo レプリケーションの構成][hdinsight-hbase-geo-replication]
 
 次の図は、このチュートリアルで作成する 2 つの仮想ネットワークを示したものです。
@@ -76,7 +76,7 @@ Azure 仮想ネットワークのサイト間接続では、VPN ゲートウェ�
 ## <a name="create-two-azure-vnets"></a>2 つの Azure Vnet の作成
 **北ヨーロッパに Contoso-VNet-EU という名前の仮想ネットワークを作成するには**
 
-1. [Azure クラシック ポータル][azure-portal]にサインインします。
+1. [[Azure クラシック ポータル]][azure-portal] にサインインします。
 2. **[新規]**、**[NETWORK SERVICES]**、**[仮想ネットワーク]**、**[カスタム作成]** の順にクリックします。
 3. 次のように入力します。
    
@@ -239,6 +239,6 @@ VNet に VM をデプロイすることなく、Azure クラシック ポータ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/09/2017
 ms.author: onewth
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -209,8 +209,7 @@ Text Analytics サービスでは、センチメントとキー フレーズの�
         "Errors":[]
     }
 
----
-
+- - -
 ### <a name="getlanguagebatch"></a>GetLanguageBatch
 
 下の POST 呼び出しでは、2 つのテキスト入力の言語検出を要求しています。
@@ -249,14 +248,14 @@ Text Analytics サービスでは、センチメントとキー フレーズの�
        }],
        "Errors": []
     }
----
 
+- - -
 ## <a name="topic-detection-apis"></a>トピック検出 API
 これは新しくリリースされた API であり、送信されたテキスト レコードの一覧に基づき検出されたトピックの上位を返します。 トピックはキー フレーズ、つまり、1 つまたは複数の関連単語で特定されます。 この API では、送信されるテキスト レコードあたり 1 トランザクションが請求されることに注意してください。
 
 この API を利用するには、100 件以上のテキスト レコードを送信する必要がありますが、数百から数千単位のレコードからトピックを検出するように設計されています。
 
-### <a name="topics-submit-job"></a>トピック – 送信ジョブ
+### <a name="topics--submit-job"></a>トピック – 送信ジョブ
 **URL**
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/StartTopicDetection
@@ -287,7 +286,7 @@ Text Analytics サービスでは、センチメントとキー フレーズの�
 
 トピックとして返すべきではない 1 つの単語または複数の語句の一覧を利用し、 非常に一般的なトピックを除外できます。 たとえば、ホテルのレビューに関するデータセットで、"hotel" と "hostel" は理にかなったストップ フレーズとなります。  
 
-### <a name="topics-poll-for-job-results"></a>トピック – ジョブ結果のポーリング
+### <a name="topics--poll-for-job-results"></a>トピック – ジョブ結果のポーリング
 **URL**
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetTopicDetectionResult

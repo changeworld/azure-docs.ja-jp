@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/22/2016
 ms.author: asirveda;robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 804edd8cd0e9648e6a61ef39a2a71dc2b8a239c6
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 50db8f7d1d514d076af453a34ca3a147e357e905
 
 
 ---
@@ -45,7 +45,7 @@ IntelliJ でデバッグする場合、このチュートリアルの完了時�
 3. **[Run/Debug Configurations (実行/デバッグ構成)]** ダイアログ ボックスが開いたら、次の手順を実行します。 
    
    1. **[Azure Web App (Azure Web アプリ)]**を選択します。
-   2.  **+** をクリックして新しい構成を追加します。
+   2. **+** をクリックして新しい構成を追加します。
    3. 構成の **[Name (名前)]** を入力します。
    4. Azure Toolkit によって入力されている残りの既定値をそのまま使用し、 **[OK]**をクリックします。
       
@@ -97,6 +97,6 @@ Azure Web Apps の作成の詳細については、「 [Web Apps の概要]」�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

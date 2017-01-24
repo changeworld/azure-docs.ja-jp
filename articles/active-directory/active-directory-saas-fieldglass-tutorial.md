@@ -110,14 +110,14 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_04.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、「`https://www.fieldglass.com`」と入力するか、`https://<company name>.fgvms.com` 形式の URL を入力します。
+    a. **[識別子]** ボックスに、「`https://www.fieldglass.com`」と入力するか、`https://<company name>.fgvms.com` 形式の URL を入力します。
    
     b. **[応答 URL]** ボックスに、次の形式で URL を入力します。 
    
     - `https://<company name>.fgvms.com/<company name>`
     - `https://www.fieldglass.net/<company name>`
      
-    c.  **[次へ]**
+    c. **[次へ]**
      
     > [!NOTE]
     > これは実際の値ではないので注意してください。 実際の識別子と応答 URL で値を更新する必要があります。 これらの値の取得については、 [FieldGlass](http://www.fieldglass.com/solutions/support)にお問い合わせください。
@@ -128,16 +128,16 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
    
     ![Configure Single Sign-On](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
 5. お使いのアプリケーション用に構成された SSO を取得するには、Fieldglass サポート チームに連絡し、次のものを情報として提供します。 
    
-    • **ダウンロードした証明書** ファイル
+    -**ダウンロードした証明書** ファイル
    
-    • **エンティティ ID**
+    - **エンティティ ID**
    
-    • **シングル サインアウト サービス URL**
+    - **シングル サインアウト サービス URL**
 6. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
@@ -192,7 +192,7 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_08.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+    a. **[新しいパスワード]** の値を書き留めます。
    
     b. ページの下部にある **[完了]**」を参照してください。   
 

@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/16/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 2168147972184e14705781765b9afb3f2ee902e3
+ms.sourcegitcommit: 4ef2546b34461a8303c5ced22adec0d1e36dfa96
+ms.openlocfilehash: 47849e2700d5da391a5cc3b3f1dbf00dd8c8deea
 
 
 ---
@@ -32,7 +32,7 @@ HDInsight .NET SDK を使用して Hive クエリを送信する方法につい�
 > 
 
 ## <a name="prerequisites"></a>前提条件
-この記事を読み始める前に、次の項目を用意する必要があります。
+この記事の操作を始める前に、以下を用意する必要があります。
 
 * **HDInsight の Hadoop クラスター**。 詳細については、[HDInsight での Linux ベース Hadoop の使用](hdinsight-use-sqoop.md#create-cluster-and-sql-database)に関するページを参照してください。
 * **Visual Studio 2012/2013/2015**。
@@ -132,12 +132,16 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
     ```
 4. **F5** キーを押してアプリケーションを実行します。
 
+アプリケーションの出力は、次のようになります。
+
+![HDInsight Hadoop Hive ジョブの出力](./media/hdinsight-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
+
 ## <a name="next-steps"></a>次のステップ
 この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure HDInsight の概要][hdinsight-get-started]
 * [HDInsight で Hadoop クラスターを作成する][hdinsight-provision]
-* [Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md)
+* [Azure Portal を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md)
 * [HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での Sqoop の使用](hdinsight-use-sqoop-mac-linux.md)
@@ -150,6 +154,6 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

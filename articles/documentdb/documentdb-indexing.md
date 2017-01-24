@@ -2,9 +2,9 @@
 title: "DocumentDB での自動インデックス作成 | Microsoft Docs"
 description: "Azure DocumentDB で自動インデックス作成が機能するしくみについて説明します。"
 services: documentdb
-author: arramac
+author: mimig1
 manager: jhubbard
-editor: mimig
+editor: mimig1
 documentationcenter: 
 ms.assetid: 126bfd36-9332-4127-8747-1a1c806760f7
 ms.service: documentdb
@@ -13,10 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
-ms.author: arramac
+ms.author: mimig
+redirect_url: https://azure.microsoft.com/services/documentdb/
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 9b88c62a7ea76d61ff593217392c3225624bb886
+
 
 
 ---

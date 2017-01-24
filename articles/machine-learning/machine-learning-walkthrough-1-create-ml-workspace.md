@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 12/16/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4a2d71016eee5dfee1085be0380d79ba4a4f8d8f
+ms.sourcegitcommit: a9ebbbdc431a34553de04e920efbbc8c2496ce5f
+ms.openlocfilehash: 116dbf0ee30497d82c984b10e61ae02301e820a4
 
 
 ---
 # <a name="walkthrough-step-1-create-a-machine-learning-workspace"></a>チュートリアル手順 1: Machine Learning ワークスペースの作成
-これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](machine-learning-walkthrough-develop-predictive-solution.md)」の最初の手順です。
+これは、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](machine-learning-walkthrough-develop-predictive-solution.md)」の最初の手順です。
 
 1. **Machine Learning ワークスペースの作成**
 2. [既存のデータをアップロードする](machine-learning-walkthrough-2-upload-data.md)
@@ -35,17 +35,25 @@ ms.openlocfilehash: 4a2d71016eee5dfee1085be0380d79ba4a4f8d8f
 
 Machine Learning Studio を使用するには、Microsoft Azure Machine Learning ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。  
 
-## <a name="to-create-a-workspace"></a>ワークスペースを作成するには
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
-2. Azure サービス パネルで、**[MACHINE LEARNING]** をクリックします。  
+<!--
+## To create a workspace
+1. Sign in to the [Azure classic portal](https://manage.windowsazure.com).
+2. In the  Azure services panel, click **MACHINE LEARNING**.  
    ![Create workspace][1]
-3. **[ML ワークスペースを作成]**をクリックします。
-4. **[簡易作成]** ページにワークスペースの情報を入力して、**[ML ワークスペースの作成]** をクリックします。
+3. Click **CREATE AN ML WORKSPACE**.
+4. On the **QUICK CREATE** page, enter your workspace information and then click **CREATE AN ML WORKSPACE**.
+-->
 
-Machine Learning ワークスペースが作成されると、Azure クラシック ポータルの **機械学習** ページの一覧に表示されます。 ワークスペースの作成方法の詳細については、「 [Azure Machine Learning ワークスペースの作成](machine-learning-create-workspace.md)」をご覧ください。
+ワークスペースの作成と、所有者または共同作成者としてのユーザーの追加は、Azure サブスクリプションの管理者が実行する必要があります。 詳細については、「[Azure Machine Learning ワークスペースの作成と共有](machine-learning-create-workspace.md)」を参照してください。
+
+ワークスペースが作成された後、Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)) を開きます。 ユーザーのワークスペースが 1 つだけある場合は、そのワークスペースが Studio によって自動的に開きます。 複数ある場合は、ウィンドウの右上隅のツールバーでワークスペースを選択できます。
+
+![Studio でのワークスペースの選択][2]
 
 > [!TIP]
-> ワークスペースに招待することで、作業中の実験を自分以外のユーザーと共有できます。 これは、Machine Learning Studio の **[設定]** ページから実行でき、 必要な情報は各ユーザーの Microsoft アカウントまたは組織アカウントだけです。
+> 自分がワークスペースの所有者になっている場合は、自分以外のユーザーを後からワークスペースに招待することで、作業中の実験を共有することができます。 これは、Machine Learning Studio の **[設定]** ページから実行でき、 必要な情報は各ユーザーの Microsoft アカウントまたは組織アカウントだけです。
+> 
+> **[設定]** ページで **[ユーザー]** をクリックします。次に、ウィンドウの下部にある **[INVITE MORE USERS]** をクリックします。
 > 
 > 
 
@@ -53,9 +61,10 @@ Machine Learning ワークスペースが作成されると、Azure クラシッ
 **次: [既存のデータをアップロードする](machine-learning-walkthrough-2-upload-data.md)**
 
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
+[2]: ./media/machine-learning-walkthrough-1-create-ml-workspace/open-workspace.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

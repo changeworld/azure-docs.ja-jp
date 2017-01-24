@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/12/2016
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 18125dd8c522d72a4d3626542c45ea9aba6ceec1
+ms.sourcegitcommit: a2b54da41b822a0b164c962087ce3110ed6f5623
+ms.openlocfilehash: 7b3d078504d5a41fee9c2af0940865db4047f117
 
 
 ---
@@ -61,13 +61,13 @@ Sample OEM configurations are available.
 ## <a name="operating-system"></a>Operating system
 |  | **Requirements** |
 | --- | --- |
-| **OS Version** |Windows Server 2012 R2 or later. The operating system version isn’t critical before the deployment starts, as you'll boot the host computer into the VHD that's included in Azure Stack installation zip. The OS and all required patches are already integrated into the image. Don’t use any keys to activate any Windows Server instances used in the POC. |
+| **OS Version** |Windows Server 2012 R2 or later. The operating system version isn’t critical before the deployment starts, as you'll boot the host computer into the VHD that's included in the Azure Stack installation. The OS and all required patches are already integrated into the image. Don’t use any keys to activate any Windows Server instances used in the POC. |
 
 ## <a name="deployment-requirements-check-tool"></a>Deployment requirements check tool
 After installing the operating system, you can use the [Deployment Checker for Azure Stack Technical Preview 2](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) to confirm that your hardware meets all the requirements.
 
 ## <a name="microsoft-azure-active-directory-accounts"></a>Microsoft Azure Active Directory accounts
-The Microsoft Azure Stack POC deployment must be connected to Azure. Therefore, you must prepare a Microsoft Azure Active Directory account before running the deployment PowerShell script. This account becomes the Global Admin for the Azure Active Directory tenant. It will be used to provision and delegate applications and service principals for all Azure Stack services that interact with Azure Active Directory and Graphic API. It will also be used as the owner of the default provider subscription (which you can later change). You can log in to your Azure Stack system’s admin portal by using this account.
+The Microsoft Azure Stack POC deployment must be connected to Azure. Therefore, you must prepare a Microsoft Azure Active Directory account before running the deployment PowerShell script. This account becomes the Global Admin for the Azure Active Directory tenant. It will be used to provision and delegate applications and service principals for all Azure Stack services that interact with Azure Active Directory and Graph API. It will also be used as the owner of the default provider subscription (which you can later change). You can log in to your Azure Stack system’s admin portal by using this account.
 
 1. Create an Azure AD account that is the directory administrator for at least one Azure Active Directory. If you already have one, you can use that. Otherwise, you can create one for free at [http://azure.microsoft.com/en-us/pricing/free-trial/](http://azure.microsoft.com/pricing/free-trial/) (in China, visit <http://go.microsoft.com/fwlink/?LinkID=717821> instead.)
    
@@ -119,6 +119,6 @@ To support telemetry data flow, port 443 (HTTPS) must be open in your network. T
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

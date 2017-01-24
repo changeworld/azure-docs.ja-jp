@@ -1,13 +1,13 @@
 ---
-title: Azure Windows VM のイメージをキャプチャする | Microsoft Docs
-description: クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする
+title: "Azure Windows VM のイメージをキャプチャする | Microsoft Docs"
+description: "クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-
+ms.assetid: a5986eac-4cf3-40bd-9b79-7c811806b880
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,22 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: 6b68d41daeea780d70b5ce1389d05f1f4fdf65ea
+
 
 ---
-# <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model."></a>クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-リソース マネージャー モデルについては、「[Create a copy Windows VM running in Azure](virtual-machines-windows-vhd-copy.md)」 (Azure で実行されている Windows VM のコピーを作成する) を参照してください。
+# <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 リソース マネージャー モデルについては、「[Create a copy Windows VM running in Azure」 (Azure で実行されている Windows VM のコピーを作成する)](virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 ここでは、Windows を実行する Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際にイメージとして使用する方法を示します。 このイメージには、オペレーティング システム ディスクと、仮想マシンに接続されているすべてのデータ ディスクが含まれます。 ネットワーク構成は含まれないため、イメージを使用する他の仮想マシンを作成するときは、ネットワーク構成を行う必要があります。
 
-Azure では、イメージは **[マイ イメージ]**に格納されます。 この場所は、アップロードしたイメージが格納される場所と同じです。 イメージの詳細については、「 [仮想マシン イメージについて](virtual-machines-linux-classic-about-images.md)」を参照してください。
+Azure では、イメージは **[マイ イメージ]**に格納されます。 この場所は、アップロードしたイメージが格納される場所と同じです。 イメージの詳細については、「 [仮想マシン イメージについて](virtual-machines-linux-classic-about-images.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。
 
-## <a name="before-you-begin##"></a>開始する前に
+## <a name="before-you-begin"></a>開始する前に
 これらの手順は、すでに Azure 仮想マシンを作成し、データ ディスクの接続を含め、オペレーティング システムの構成が完了していることを前提としています。 まだ完了していない場合は、下記の手順を確認してください。
 
-* [イメージから仮想マシンを作成](virtual-machines-windows-classic-createportal.md)
-* [データ ディスクを仮想マシンに接続する方法](virtual-machines-windows-classic-attach-disk.md)
+* [イメージから仮想マシンを作成](virtual-machines-windows-classic-createportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [データ ディスクを仮想マシンに接続する方法](virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * サーバー ロールが Sysprep でサポートされていることを確認してください。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。
 
 > [!WARNING]
@@ -41,12 +44,12 @@ Azure では、イメージは **[マイ イメージ]**に格納されます。
 Azure 仮想マシンのイメージをキャプチャする前に、ターゲット仮想マシンをバックアップしておくことをお勧めします。 Azure 仮想マシンは、Azure Backup を使用してバックアップできます。 詳細については、「 [Back up Azure virtual machines (Azure 仮想マシンのバックアップ)](../backup/backup-azure-vms.md)」を参照してください。 その他のソリューションは認定パートナーから利用できます。 利用可能なソリューションについては、Azure Marketplace を検索して確認してください。
 
 ## <a name="capture-the-virtual-machine"></a>仮想マシンをキャプチャする
-1. [Azure クラシック ポータル](http://manage.windowsazure.com)で仮想マシンに **接続** します。 詳細については、「[Windows Server が実行されている仮想マシンにサインインする方法][Windows Server が実行されている仮想マシンにサインインする方法]」を参照してください。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com)で仮想マシンに **接続** します。 詳細については、[Windows Server が実行されている仮想マシンにサインインする方法][How to sign in to a virtual machine running Windows Server]に関するページを参照してください。
 2. 管理者としてコマンド プロンプト ウィンドウを開きます。
 3. ディレクトリを `%windir%\system32\sysprep`に変更し、sysprep.exe を実行します。
 4. **[システム準備ツール]** ダイアログ ボックスが表示されます。 以下の手順を実行します。
    
-   * **[システム クリーンアップ アクション]** で **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。 Sysprep の使い方の詳細については、「 [Sysprep の使用方法: 紹介][Sysprep の使用方法: 紹介]」を参照してください。
+   * **[システム クリーンアップ アクション]** で **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。 Sysprep の使い方の詳細については、「[Sysprep の使用方法: 紹介][How to Use Sysprep: An Introduction]」を参照してください。
    * **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
    * **[OK]**をクリックします。
    
@@ -65,20 +68,20 @@ Azure 仮想マシンのイメージをキャプチャする前に、ターゲ�
     ![イメージのキャプチャの成功](./media/virtual-machines-windows-classic-capture-image/VMCapturedImageAvailable.png)
 
 ## <a name="next-steps"></a>次のステップ
-イメージを使用して仮想マシンを作成する準備ができました。 これを行うには、 **[ギャラリーから]** メニュー項目を使用して先ほど作成したイメージを選択し、仮想マシンを作成します。 手順については、「 [イメージから仮想マシンを作成](virtual-machines-windows-classic-createportal.md)」を参照してください。
+イメージを使用して仮想マシンを作成する準備ができました。 これを行うには、 **[ギャラリーから]** メニュー項目を使用して先ほど作成したイメージを選択し、仮想マシンを作成します。 手順については、「 [イメージから仮想マシンを作成](virtual-machines-windows-classic-createportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
-[Windows Server が実行されている仮想マシンにサインインする方法]: virtual-machines-windows-classic-connect-logon.md
-[Sysprep の使用方法: 紹介]: http://technet.microsoft.com/library/bb457073.aspx
-[Sysprep.exe の実行]: ./media/virtual-machines-capture-image-windows-server/SysprepCommand.png
-[Sysprep.exe オプションの入力]: ./media/virtual-machines-windows-classic-capture-image/SysprepGeneral.png
-[仮想マシンの停止]: ./media/virtual-machines-capture-image-windows-server/SysprepStopped.png
-[仮想マシンのイメージのキャプチャ]: ./media/virtual-machines-windows-classic-capture-image/CaptureVM.png
-[イメージの名前の入力]: ./media/virtual-machines-capture-image-windows-server/Capture.png
-[イメージのキャプチャの成功]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
-[キャプチャしたイメージの使用]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
+[How to sign in to a virtual machine running Windows Server]: virtual-machines-windows-classic-connect-logon.md
+[How to Use Sysprep: An Introduction]: http://technet.microsoft.com/library/bb457073.aspx
+[Run Sysprep.exe]: ./media/virtual-machines-capture-image-windows-server/SysprepCommand.png
+[Enter Sysprep.exe options]: ./media/virtual-machines-windows-classic-capture-image/SysprepGeneral.png
+[The virtual machine is stopped]: ./media/virtual-machines-capture-image-windows-server/SysprepStopped.png
+[Capture an image of the virtual machine]: ./media/virtual-machines-windows-classic-capture-image/CaptureVM.png
+[Enter the image name]: ./media/virtual-machines-capture-image-windows-server/Capture.png
+[Image capture successful]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
+[Use the captured image]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

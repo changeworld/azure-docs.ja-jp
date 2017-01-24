@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: c3b96b583260bc8975082b952929d524e4040730
-ms.openlocfilehash: ba8bfc32b6662f629fc2203f605f8d9f51b3b559
+ms.sourcegitcommit: 1de0827c01c772a4298b7b568363e89f08910ff7
+ms.openlocfilehash: 46dce57f509872580c57bb1d8d93af51623211ac
 
 
 ---
@@ -120,17 +120,11 @@ NSG は、使用しているデプロイ モデルに応じて、VM、NIC、お�
 
 | デプロイ ツール | クラシック | リソース マネージャー |
 | --- | --- | --- |
-| クラシック ポータル |![いいえ](./media/virtual-network-nsg-overview/red.png) |![いいえ](./media/virtual-network-nsg-overview/red.png) |
-| Azure ポータル |![はい](./media/virtual-network-nsg-overview/green.png) |[![はい][緑]](virtual-networks-create-nsg-arm-pportal.md) |
-| PowerShell |[![はい][緑]](virtual-networks-create-nsg-classic-ps.md) |[![はい][緑]](virtual-networks-create-nsg-arm-ps.md) |
-| Azure CLI |[![はい][緑]](virtual-networks-create-nsg-classic-cli.md) |[![はい][緑]](virtual-networks-create-nsg-arm-cli.md) |
-| ARM テンプレート |![いいえ](./media/virtual-network-nsg-overview/red.png) |[![はい][緑]](virtual-networks-create-nsg-arm-template.md) |
-
-**キー**
-
-![はい](./media/virtual-network-nsg-overview/green.png)  サポートされています。
-
-![いいえ](./media/virtual-network-nsg-overview/red.png)  サポートされていません。
+| クラシック ポータル | いいえ  | いいえ |
+| Azure ポータル   | はい | [はい](virtual-networks-create-nsg-arm-pportal.md) |
+| PowerShell     | [はい](virtual-networks-create-nsg-classic-ps.md) | [はい](virtual-networks-create-nsg-arm-ps.md) |
+| Azure CLI      | [はい](virtual-networks-create-nsg-classic-cli.md) | [はい](virtual-networks-create-nsg-arm-cli.md) |
+| ARM テンプレート   | いいえ  | [はい](virtual-networks-create-nsg-arm-template.md) |
 
 ## <a name="planning"></a>計画
 NSG を実装する前に、次の質問への回答を用意する必要があります。
@@ -265,12 +259,8 @@ NSG はサブネットに適用できるため、リソースをサブネット�
 * [リソース マネージャーで NSG をデプロイします](virtual-networks-create-nsg-arm-pportal.md)。
 * [NSG のログを管理します](virtual-network-nsg-manage-log.md)。
 
-[緑]: ./media/virtual-network-nsg-overview/green.png
-[黄]: ./media/virtual-network-nsg-overview/yellow.png
-[赤]: ./media/virtual-network-nsg-overview/red.png
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

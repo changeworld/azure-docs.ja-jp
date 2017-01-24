@@ -13,22 +13,22 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2016
+ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 28cc7f8ac707068b5517f7dfe45687fff5a0eed3
+ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
+ms.openlocfilehash: 6e6f7793e03930cc002183172ccfbed6305378bd
 
 
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>HDInsight での Hadoop ジョブ用データのアップロード
-Azure の HDInsight では、Azure BLOB ストレージ上でフル機能の Hadoop 分散ファイル システム (HDFS) を利用できます。 HDFS 拡張機能として、シームレスなエクスペリエンスを顧客に提供するように設計されています。 Hadoop エコシステムのすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure BLOB ストレージと HDFS は、データの保管と計算処理のために最適化された別個のファイル システムです。 Azure BLOB ストレージを使用するメリットの詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」をご覧ください。
+Azure の HDInsight では、Azure BLOB ストレージ上でフル機能の Hadoop 分散ファイル システム (HDFS) を利用できます。 HDFS 拡張機能として、シームレスなエクスペリエンスを顧客に提供するように設計されています。 Hadoop エコシステムのすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure BLOB ストレージと HDFS は、データの保管と計算処理のために最適化された別個のファイル システムです。 Azure BLOB ストレージを使用するメリットの詳細については、[HDInsight での Azure Blob Storage の使用][hdinsight-storage]に関する記事をご覧ください。
 
 **前提条件**
 
 開始する前に、次の要件にご注意ください。
 
-* Azure HDInsight クラスター。 手順については、[Azure HDInsight の概要に関する記事][hdinsight-get-started]または [HDInsight クラスターのプロビジョニングに関する記事][hdinsight-provision]をご覧ください。
+* Azure HDInsight クラスター。 手順については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。
 
 ## <a name="why-blob-storage"></a>BLOB ストレージを使用する理由
 通常、Azure の HDInsight クラスターは MapReduce ジョブを実行するためにデプロイされ、それらのジョブが完了すると削除されます。 計算処理が完了した後もデータを HDFS クラスターに保持しておくと、このデータの格納コストがかさんでしまいます。 Azure BLOB ストレージは、可用性と拡張性に優れ、大容量、低コストの共有可能なデータ ストレージ手段であり、HDInsight で処理されるデータも格納できます。 BLOB ストレージにデータを格納すれば、データを失うことなく、計算処理で使用した HDInsight クラスターを安全に解放できます。
@@ -98,13 +98,13 @@ Azure CLI は、Azure サービスを管理できるクロスプラットフォ�
 >
 
 ### <a name="a-idpowershellaazure-powershell"></a><a id="powershell"></a>Azure PowerShell
-Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できるスクリプティング環境です。 ワークステーションを構成して Azure PowerShell を実行する方法については、「 [Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。
+Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できるスクリプティング環境です。 ワークステーションを構成して Azure PowerShell を実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」をご覧ください。
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
 
 **ローカル ファイルを Azure BLOB ストレージにアップロードするには**
 
-1. Azure PowerShell コンソールを開きます。手順については「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。
+1. Azure PowerShell コンソールを開きます。手順については「[Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」をご覧ください。
 2. 次のスクリプトで最初の 5 つの変数の値を設定します。
 
         $resourceGroupName = "<AzureResourceGroupName>"
@@ -132,7 +132,7 @@ AzCopy の構文は次のとおりです。
 
     AzCopy <Source> <Destination> [filePattern [filePattern...]] [Options]
 
-詳しくは、[AzCopy を使った Azure BLOB のファイルのアップロード/ダウンロードに関する記事][azure-azcopy]をご覧ください。
+詳細については、「[AzCopy - Uploading/Downloading files for Azure Blobs (AzCopy - Azure BLOB のファイルのアップロード/ダウンロードについて)][azure-azcopy]」をご覧ください。
 
 ### <a name="a-idcommandlineahadoop-command-line"></a><a id="commandline"></a>Hadoop コマンド ライン
 Hadoop コマンド ラインは、クラスターのヘッド ノードに既にデータが存在している場合に、BLOB ストレージにデータを格納する際にのみ役立ちます。
@@ -140,7 +140,7 @@ Hadoop コマンド ラインは、クラスターのヘッド ノードに既�
 Hadoop コマンドを使用するためには、まず、次の方法のいずれかを使用してヘッドノードに接続する必要があります。
 
 * **Windows ベースの HDInsight**: [リモート デスクトップを使用して接続する](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **Linux ベースの HDInsight**: SSH を使って接続する ([SSH コマンド](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)または [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster))
+* **Linux ベースの HDInsight**: SSH を使って接続する ([SSH コマンド](hdinsight-hadoop-linux-use-ssh-unix.md)または [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md))
 
 接続したら、次の構文を使用してファイルをストレージにアップロードすることができます。
 
@@ -181,7 +181,7 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 ### <a name="a-idstorageexploreraazure-storage-explorer"></a><a id="storageexplorer"></a>Azure Storage Explorer
 *Azure Storage エクスプローラー* は、BLOB 内のデータを調べたり、変更したりするときに役立つツールです。 これは、 [http://storageexplorer.com/](http://storageexplorer.com/)からダウンロードできる無料のオープン ソース ツールです。 このリンクからソース コードも入手できます。
 
-Azure Storage エクスプローラーを使用するには、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。 この情報を取得する方法については、[ストレージ アカウントの作成、管理、削除に関する記事][azure-create-storage-account]の、ストレージ アクセス キーを表示、コピー、再生成する方法に関するセクションをご覧ください。  
+Azure Storage エクスプローラーを使用するには、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。 この情報を取得する方法については、「[ストレージ アカウントの作成、管理、削除][azure-create-storage-account]」の「方法:ストレージ アクセス キーを表示、コピー、再生成する」をご覧ください。
 
 1. Azure Storage エクスプローラーを実行します。 ストレージ エクスプローラーを初めて実行した場合は、**ストレージ アカウント名**と**ストレージ アカウント キー**の入力を求められます。 ストレージ エクスプローラーを以前に実行したことがある場合は、**[追加]** ボタンをクリックして、新しいストレージ アカウント名とストレージ アカウント キーを追加します。
 
@@ -212,7 +212,7 @@ Azure Data Factory は、Azure BLOB ストレージへのデータの移動や�
 ### <a name="a-idsqoopaapache-sqoop"></a><a id="sqoop"></a>Apache Sqoop
 Sqoop は、Hadoop とリレーショナル データベース間でデータを転送するためのツールです。 このツールを使用して、SQL、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Hive を使用して Hadoop のデータを変換し、そのデータを RDBMS へ取り込んだりできます。
 
-詳しくは、「[HDInsight での Sqoop の使用][hdinsight-use-sqoop]」をご覧ください。
+詳細については、[HDInsight での Sqoop の使用][hdinsight-use-sqoop]に関するページを参照してください。
 
 ## <a name="development-sdks"></a>開発 SDK
 Azure BLOB ストレージには、次のプログラミング言語で Azure SDK を使用してアクセスできます。
@@ -299,7 +299,7 @@ Ambari の使用について詳しくは、「[Ambari Web UI を使用した HDI
 
 [apache-sqoop-guide]: http://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-[Powershell-install-configure]: ../powershell-install-configure.md
+[Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 [azurecli]: ../xplat-cli-install.md
 
@@ -310,6 +310,6 @@ Ambari の使用について詳しくは、「[Ambari Web UI を使用した HDI
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

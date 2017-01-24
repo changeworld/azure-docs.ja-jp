@@ -13,11 +13,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.date: 01/05/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1e7529de2968b2745b42001cc16b54d70b2a5b86
+ms.sourcegitcommit: aec8fd057bd31fc933d19996567437b2a897623b
+ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
 
 
 ---
@@ -54,7 +54,7 @@ Azure ポータルからの Automation アカウントの作成方法を紹介�
 このセクションでは、以下の手順に従って、Azure Portal から新しい Azure Automation アカウントを作成します。  実行アカウントとクラシック実行アカウントの両方を作成します。  
 
 > [!NOTE]
-> この手順を実行するユーザーは、"*必ず*" サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者 (ユーザーにサブスクリプションへのアクセスを付与できるユーザー) である必要があります。  さらにこのユーザーは、そのサブスクリプションの既定の Active Directory にユーザーとして追加される必要があります。アカウントを特権ロールに割り当てる必要はありません。
+> この手順を実行するユーザーは、サービス管理者ロールのメンバーであるか、ユーザーにサブスクリプションへのアクセスを付与できるサブスクリプションの共同管理者である必要があります。 さらにこのユーザーは、そのサブスクリプションの既定の Active Directory にユーザーとして追加される必要があります。アカウントを特権ロールに割り当てる必要はありません。 サブスクリプションの共同管理者ロールに追加されるまでサブスクリプションの Active Directory のメンバーではなかったユーザーは、Active Directory にゲストとして追加され、作成するためのアクセス許可がないことを示す 警告が **[Add Automation Account (Automation アカウントの追加)]** ブレードに表示されます。 先に共同管理者ロールに追加されていたユーザーは、サブスクリプションの Active Directory から削除した後、Active Directory の完全なユーザーとして再度追加できます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、**[ユーザーとグループ]**、**[すべてのユーザー]**、特定のユーザー、**[プロファイル]** の順に選択します。  ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、**[ゲスト]** と一致しないようにする必要があります。  
 > 
 > 
 
@@ -63,7 +63,7 @@ Azure ポータルからの Automation アカウントの作成方法を紹介�
 3. [Automation アカウント] ブレードで **[追加]** をクリックします。<br>![[Automation アカウントの追加]](media/automation-sec-configure-azure-runas-account/create-automation-account-properties-b.png)
    
    > [!NOTE]
-   > お使いのアカウントが、サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者ではない場合、**[Automation アカウントの追加]** ブレードに次の警告が表示されます。<br>![Add Automation Account Warning](media/automation-sec-configure-azure-runas-account/create-account-without-perms.png)
+   > お使いのアカウントが、サブスクリプション管理ロールのメンバーではなく、サブスクリプションの共同管理者でもない場合、**[Add Automation Account (Automation アカウントの追加)]** ブレードに次の警告が表示されます。<br>![Add Automation Account Warning](media/automation-sec-configure-azure-runas-account/create-account-without-perms.png)
    > 
    > 
 4. **[Automation アカウントの追加]** ブレードの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。
@@ -137,7 +137,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 
 1. Windows 7 を実行している場合は、 [Windows Management Framework (WMF) 4.0](https://www.microsoft.com/download/details.aspx?id=40855) をダウンロードしてインストール済みであること。   
     Windows Server 2012 R2、Windows Server 2012、Windows 2008 R2、Windows 8.1、および Windows 7 SP1 を実行している場合は、 [Windows Management Framework 5.0](https://www.microsoft.com/download/details.aspx?id=50395) をインストールできます。
-2. Azure PowerShell 1.0 このリリースとそのインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+2. Azure PowerShell 1.0 このリリースとそのインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 3. Automation アカウントが作成済みであること。  このアカウントは、以下の両方のスクリプトの –AutomationAccountName パラメーターと -ApplicationDisplayName パラメーターの値として参照されます。
 
 スクリプトの必須パラメーターである *SubscriptionID*、*ResourceGroup*、*AutomationAccountName* の値を取得するには、Azure Portal の **[Automation アカウント]** ブレードからお使いの Automation アカウントを選択し、**[すべての設定]** を選択します。  **[すべての設定]** ブレードで、**[アカウント設定]** の **[プロパティ]** を選択します。  **[プロパティ]** ブレードで、値をメモすることができます。<br> ![Automation Account properties](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
@@ -394,6 +394,6 @@ Runbook での認証に使用されるコマンドレット ( **Add-AzureRmAccou
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

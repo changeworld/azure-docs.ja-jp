@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 10/30/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7705670592c353032740bd80d03bc8f174028e39
+ms.sourcegitcommit: d6e68497cf0a4c48e6f611834089224b50b9bd5e
+ms.openlocfilehash: 79743cab91f8c22d06796803eb7e31681a581233
 
 
 ---
@@ -39,12 +39,6 @@ Azure Mobile Apps JavaScript SDK のインストールは、次の `npm` コマ�
 npm install azure-mobile-apps-client --save
 ```
 
-インストール後、ライブラリが `node_modules/azure-mobile-apps-client/dist/MobileServices.Web.min.js`に配置されます。  このファイルを Web エリアにコピーします。
-
-```
-<script src="path/to/MobileServices.Web.min.js"></script>
-```
-
 ライブラリは、Browserify や Webpack などの CommonJS 環境では ES2015 モジュールとして使用できるほか、AMD ライブラリとしても使用できます。  次に例を示します。
 
 ```
@@ -52,6 +46,12 @@ npm install azure-mobile-apps-client --save
 var WindowsAzure = require('azure-mobile-apps-client');
 # For ES2015 modules
 import * as WindowsAzure from 'azure-mobile-apps-client';
+```
+
+CDN から直接ダウンロードして、SDK のビルド済みバージョンを使用することもできます。
+
+```html
+<script src="https://zumo.blob.core.windows.net/sdk/azure-mobile-apps-client.min.js"></script>
 ```
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
@@ -72,7 +72,7 @@ Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter 
 
 既定では、App Service 認証は、モバイル アプリ バックエンドからのアクセスだけを許可するように構成されているため、ローカルで実行すると、問題が発生する可能性があります。 App Service 設定を変更して、サーバーがローカルで実行されているときに認証を有効にするには、次の手順を実行します。
 
-1.  [Azure ポータル]
+1. [Azure ポータル]
 2. モバイル アプリ バックエンドに移動します。
 3. **[開発ツール]** メニューの **[リソース エクスプローラー]** を選択します。
 4. **[移動]** をクリックして、新しいタブまたはウィンドウでモバイル アプリ バックエンドのリソース エクスプローラーを開きます。
@@ -94,22 +94,22 @@ CORS のホワイトリスト設定にも、同じループバック URL を追�
 2. モバイル アプリ バックエンドに移動します。
 3. **API** メニューの **[CORS]** をクリックします。
 4. 空の **[許可される元のドメイン]** ボックスに各 URL を入力します。  新しいテキスト ボックスが作成されます。
-5.  **[保存]**
+5. **[保存]**
 
 バックエンドの更新が済むと、アプリケーションで新しいループバック URL を使用できるようになります。
 
 <!-- URLs. -->
 [Apache Cordova アプリの作成]: app-service-mobile-cordova-get-started.md
 [モバイル サービスでの認証の使用]: app-service-mobile-cordova-get-started-users.md
-[アプリへの認証の追加]: app-service-mobile-cordova-get-started-users.md
+[Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Azure ポータル]: https://portal.azure.com/
 [Azure Mobile Apps 向け JavaScript SDK]: https://www.npmjs.com/package/azure-mobile-apps-client
-[Query オブジェクトのドキュメント]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
+[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

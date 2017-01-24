@@ -1,6 +1,6 @@
 ---
-title: "C 用 Azure IoT device SDK の使用 | Microsoft Docs"
-description: "C 用 Azure IoT デバイス SDK のサンプル コードについて説明し、操作を開始します。"
+title: "C 用 Azure IoT device SDK | Microsoft Docs"
+description: "C 用 Azure IoT device SDK を使用し、IoT Hub と通信するデバイス アプリを作成する方法について説明します。"
 services: iot-hub
 documentationcenter: 
 author: olivierbloch
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 38dd351fb6acf5b754eb8fd4b768262241ab24c3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 953bc766fca590a4c1517f3671333e537407c241
 
 
 ---
-# <a name="introducing-the-azure-iot-device-sdk-for-c"></a>C 用 Azure IoT デバイス SDK の概要
+# <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 **Azure IoT device SDK** は、**Azure IoT Hub** サービスとのイベントの送信とメッセージの受信のプロセスを簡略化するために設計された一連のライブラリです。 SDK にはさまざまなバリエーションがあり、それぞれが特定のプラットフォームを対象としていますが、この記事では、 **C 用 Azure IoT device SDK**について説明します。
 
 C 用 Azure IoT デバイス SDK は、移植性を最大限まで高めるために ANSI C (C99) で記述されています。 これにより、さまざまなプラットフォームとデバイス、特にディスクとメモリの量を最小限に抑えることが優先される環境で操作する場合に適しています。  
@@ -75,7 +75,7 @@ SDK に含まれている [readme ファイル](https://github.com/Azure/azure-i
   ![](media/iot-hub-device-sdk-c-intro/08-CMake.PNG)
 * **開発者コマンド プロンプト for VS2015**を開く前に、Git コマンド ライン ツールをインストールします。 これらのツールをインストールするには、次の手順を実行します。
   
-  1. **Visual Studio 2015** セットアップ プログラムを起動します (または **[プログラムと機能]** コントロール パネルの **[Microsoft Visual Studio 2015]** を選択して **[変更]** をクリックします)。
+  1. **Microsoft Visual Studio 2015** セットアップ プログラムを起動します (または **[プログラムと機能]** コントロール パネルの **[Microsoft Visual Studio 2015]** を選択して **[変更]** をクリックします)。
   2. インストーラーで **[Git for Windows]** 機能が選択されていることを確認します。ただし、IDE 統合機能を使用するために、**[Visual Studio 向け GitHub 拡張]** オプションもオンにすることができます。
      
         ![](media/iot-hub-device-sdk-c-intro/10-GitTools.PNG)
@@ -89,15 +89,15 @@ SDK に含まれている [readme ファイル](https://github.com/Azure/azure-i
 ### <a name="obtaining-device-credentials"></a>デバイスの資格情報の取得
 これで開発環境がセットアップできましたので、次にデバイスの資格情報のセットを取得します。  デバイスを IoT ハブにアクセスできるようにするには、まず、そのデバイスを IoT Hub ID レジストリに追加する必要があります。 デバイスを追加すると、そのデバイスを IoT Hub に接続するために必要な、デバイスの資格情報のセットが得られます。 次のセクションで確認するサンプル アプリケーションでは、これらの資格情報は **デバイスの接続文字列**の形式であると想定されています。
 
-SDK のオープン ソース リポジトリで提供されるツールがいくつかあり、IoT Hub を管理するために役立ちます。 その 1 つは、デバイス エクスプローラーと呼ばれる Windows アプリケーションです。もう 1 つは、iothub-explorer と呼ばれる node.js ベースのクロス プラットフォーム CLI ツールです。 これらのツールの詳細については、[こちら](https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md)を参照してください。
+SDK のオープン ソース リポジトリで提供されるツールがいくつかあり、IoT Hub を管理するために役立ちます。 その 1 つは、*デバイス エクスプローラー*と呼ばれる Windows アプリケーションです。もう 1 つは、*iothub-explorer* と呼ばれる node.js ベースのクロス プラットフォーム CLI ツールです。 これらのツールの詳細については、[こちら](https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md)を参照してください。
 
-この記事では、Windows のサンプルの実行を説明するときに、デバイス エクスプ ローラー ツールを使用しています。 ただし、CLI ツールを使用する場合は、iothub-explorer を使用することもできます。
+この記事では、Windows のサンプルの実行を説明するときに、デバイス エクスプローラー ツールを使用しています。 ただし、CLI ツールを使用する場合は、iothub-explorer を使用することもできます。
 
-[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdks/tree/master/tools/DeviceExplorer) ツールは、Azure IoT サービス ライブラリを使用して、デバイスの追加など、IoT Hub のさまざまな機能を実行します。 デバイス エクスプローラーを使用してデバイスを追加すると、対応する接続文字列が表示されます。 この接続文字列は、サンプル アプリケーションを実行するために必要です。
+[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdks/tree/master/tools/DeviceExplorer) ツールは、Azure IoT サービス ライブラリを使用して、デバイスの追加など、IoT Hub のさまざまな機能を実行します。 デバイス エクスプローラー ツールを使用してデバイスを追加すると、対応する接続文字列が表示されます。 この接続文字列は、サンプル アプリケーションを実行するために必要です。
 
-このプロセスにまだ詳しくない方のために、次の手順で、デバイス エクスプローラーを使用してデバイスを追加し、デバイスの接続文字列を取得する方法について説明します。
+このプロセスにまだ詳しくない方のために、次の手順で、デバイス エクスプローラー ツールを使用してデバイスを追加し、デバイスの接続文字列を取得する方法について説明します。
 
-デバイス エクスプローラー ツールの Windows インストーラーは、 [SDK リリース ページ](https://github.com/Azure/azure-iot-sdks/releases)にあります。 ただし、**Visual Studio 2015** で **[DeviceExplorer.sln](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/DeviceExplorer.sln)** を開いてソリューションをビルドすることにより、コードから直接ツールを実行することもできます。
+デバイス エクスプローラー ツールの Windows インストーラーは、[SDK リリース ページ](https://github.com/Azure/azure-iot-sdks/releases)にあります。 ただし、**Microsoft Visual Studio 2015** で **[DeviceExplorer.sln](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/DeviceExplorer.sln)** を開いてソリューションをビルドすることにより、コードから直接ツールを実行することもできます。
 
 プログラムを実行すると、次のインターフェイスが表示されます。
 
@@ -119,7 +119,7 @@ IoT Hub の接続文字列を構成したら、 **[Management (管理)]** タブ
 
   ![](media/iot-hub-device-sdk-c-intro/06-RightClickDevice.PNG)
 
-**[Copy connection string for selected device (選択したデバイスの接続文字列のコピー)]** オプションを選択すると、デバイスの接続文字列がクリップボードにコピーされます。 接続文字列のコピーを保存しておきます。 次のセクションで説明するサンプル アプリケーションを実行するときにこれが必要になります。
+**[Copy connection string for selected device (選択したデバイスの接続文字列のコピー)]** オプションを選択すると、デバイス接続文字列がクリップボードにコピーされます。 デバイス接続文字列のコピーを保存しておきます。 次のセクションで説明するサンプル アプリケーションを実行するときにこれが必要になります。
 
 前の手順が完了すると、コードを実行する準備が整います。 どちらのサンプルにも、メインのソース ファイルの上部に、接続文字列を入力するための定数が使用されています。 たとえば、**iothub\_client\_sample\_amqp** アプリケーションの対応する行は次のとおりです。
 
@@ -162,7 +162,7 @@ IOTHUB_CLIENT_HANDLE iotHubClientHandle;
 iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
 ```
 
-この関数 (デバイス エクスプローラーから取得したもの) にデバイスの接続文字列のコピーを渡していることに注意してください。 また、使用するプロトコルを指定します。 この例では AMQP を使用しますが、MQTT と HTTP も使用できます。
+この関数 (デバイス エクスプローラー ツールから取得したもの) にデバイスの接続文字列のコピーを渡していることに注意してください。 また、使用するプロトコルを指定します。 この例では AMQP を使用しますが、MQTT と HTTP も使用できます。
 
 有効な **IOTHUB\_CLIENT\_HANDLE** がある場合、最初にその API を呼び出して、IoT Hub とのイベントの送信とメッセージの受信を実行することができます。 次で確認します。
 
@@ -466,6 +466,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

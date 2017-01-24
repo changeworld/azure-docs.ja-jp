@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b75c910312c342c33b7dfb0a3ffa0a86b7192319
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: ea0b54a1041c0008071a9b11afc81e1b91f3e409
 
 
 ---
@@ -57,7 +57,7 @@ XML は、PlayReady ライセンス テンプレートの XML スキーマのセ
 
 Media Services は、XML へのシリアル化および XML からの逆シリアル化に使用できる一連の .NET クラスも定義します。 主要なクラスについては、「[Media Services の .NET クラス](media-services-playready-license-template-overview.md#classes)」を参照してください。 これらのクラスは、ライセンス テンプレートの構成に使用されます。
 
-エンドツーエンドでの .NET クラスを使用した PlayReady ライセンス テンプレートの構成例については、「 [PlayReady 動的暗号化とライセンス提供サービスの使用](https://msdn.microsoft.com/library/azure/dn783467.aspx)」を参照してください。
+エンドツーエンドでの .NET クラスを使用した PlayReady ライセンス テンプレートの構成例については、「 [PlayReady 動的暗号化とライセンス提供サービスの使用](media-services-protect-with-drm.md)」を参照してください。
 
 ## <a name="a-idclassesamedia-services-net-classes-that-are-used-to-configure-license-templates"></a><a id="classes"></a>ライセンス テンプレートの構成に使用する Media Services の .NET クラス
 Media Services PlayReady ライセンス テンプレートの設定に使用する主な .NET クラスを以下に示します。 これらのクラスは、 [PlayReady ライセンス テンプレート XML スキーマ](media-services-playready-license-template-overview.md#schema)で定義された型にマップされます。
@@ -315,6 +315,6 @@ Silverlight でサポートされる保護レベルの例については、「 [
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

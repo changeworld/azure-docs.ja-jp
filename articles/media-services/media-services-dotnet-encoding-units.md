@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
+ms.date: 01/10/2017
 ms.author: juliako;milangada;gtrifonov
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3dc67791d7bfd7221ad484e967b5e9bf49ed8c02
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: ad0cf996390a792495c492e4205d5be3d27ffa9b
 
 
 ---
@@ -24,13 +24,13 @@ ms.openlocfilehash: 3dc67791d7bfd7221ad484e967b5e9bf49ed8c02
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-scale-media-processing.md)
 > * [.NET](media-services-dotnet-encoding-units.md)
-> * [REST ()](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+> * [REST ()](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
 > 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 > [!IMPORTANT]
 > メディア処理のスケール設定の詳細については、 [概要](media-services-scale-media-processing-overview.md) に関するトピックを必ず確認してください。
 > 
@@ -73,6 +73,6 @@ ms.openlocfilehash: 3dc67791d7bfd7221ad484e967b5e9bf49ed8c02
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

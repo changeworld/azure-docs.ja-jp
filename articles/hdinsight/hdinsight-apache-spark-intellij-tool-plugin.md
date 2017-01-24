@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/09/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 53346b6f9e7b5a172ecc343883f55409d5ca8057
+ms.sourcegitcommit: 70fbc8f973a341f818cb5958931a199021b7dc46
+ms.openlocfilehash: 4e63cb94d9bd39f0621eb0dc07c60335a91324d8
 
 
 ---
@@ -48,8 +48,8 @@ IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属し
 1. IntelliJ IDE を起動し、Azure Explorer を開きます。 IDE の **[表示]** メニューで、**[ツール ウィンドウ]** をクリックし、**[Azure Explorer]** をクリックします。
    
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/show-azure-explorer.png)
-2. **Azure Explorer** で **[Azure]** ノードを右クリックし、**[Manage Subscriptions (サブスクリプションの管理)]** をクリックします。
-3. **[Manage Subscriptions (サブスクリプションの管理)]** ダイアログ ボックスで **[Sign in (サインイン)]** をクリックし、Azure 資格情報を入力します。
+2. **Azure Explorer** で **[Azure]** ノードを右クリックし、**[Manage Subscriptions]** (サブスクリプションの管理) をクリックします。
+3. **[Manage Subscriptions] (サブスクリプションの管理)** ダイアログ ボックスで **[Sign in] (サインイン)** をクリックし、Azure 資格情報を入力します。
    
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-2.png)
 4. ログイン後、 **[Manage Subscriptions (サブスクリプションの管理)]** ダイアログ ボックスには、資格情報に関連付けられているすべての Azure サブスクリプションの一覧が表示されます。 ダイアログ ボックスの **[Close (閉じる)]** をクリックします。
@@ -71,11 +71,13 @@ IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属し
 2. 次のウィンドウで、プロジェクトの詳細を指定します。
    
    * プロジェクト名とプロジェクトの場所を指定します。
-   * **Project SDK**の場合、Java のバージョンは必ず 7 より新しいものを指定します。
-   * **Scala SDK** の場合、**[Create (作成)]** をクリックし、**[Download (ダウンロード)]** をクリックして、使用する Scala のバージョンを選択します。 **バージョン 2.11.x は使用しないでください**。 このサンプルでは、バージョン **2.10.6**を使用します。
-     
-       ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
-   * **Spark SDK** の場合は、[ここ](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)から SDK をダウンロードして使用してください。 これを無視し、代わりに [Spark Maven リポジトリ](http://mvnrepository.com/search?q=spark)を使用することもできますが、Spark アプリケーションの開発に適した maven リポジトリがインストールされていることを確認してください。 (たとえば、Spark ストリーミングを使用する場合は、Spark ストリーミング部分がインストールされていることを確認する必要があります。また、Scala 2.10 とマークされているリポジトリを使用していることを確認してください。Scala 2.11 とマークされているリポジトリは使用しないでください)。
+   * **Project SDK** の場合、Spark 1.6 クラスターの場合は Java 1.7 以降、Spark 2.0 クラスターの場合は Java 1.8。
+   * **Scala SDK** の場合、**[Create (作成)]** をクリックし、**[Download (ダウンロード)]** をクリックして、使用する Scala のバージョンを選択します。
+   * * ジョブを Spark 2.0 クラスターに送信する場合は、**JDK 1.8 および Scala 2.11.x** を選択します。
+   * * ジョブを Spark 1.6 クラスターに送信する場合は、**JDK 1.7 以降および Scala 2.10.x** を選択します。
+
+        ![](./media/hdinsight-apache-spark-intellij-tool-plugin/show-scala2.11.x-select.png)
+   * **Spark SDK** については、[こちら](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)から SDK をダウンロードして使用します (spark-assembly-2.0.0-hadoop2.7.0-SNAPSHOT.jar は Spark 2.0 クラスターを、spark-assembly-x.jar は Spark 1.6 クラスターを対象としています)。 これを無視し、代わりに [Spark Maven リポジトリ](http://mvnrepository.com/search?q=spark)を使用することもできますが、Spark アプリケーションの開発に適した maven リポジトリがインストールされていることを確認してください。 (たとえば、Spark ストリーミングを使用する場合は、Spark ストリーミング部分がインストールされていることを確認する必要があります。また、Spark 1.6 クラスターの場合は、Scala 2.10 とマークされているリポジトリを、Spark 2.0 クラスターの場合は、Scala 2.11 とマークされているリポジトリ使用していることを確認してください。)
      
        ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-project-details.png)
    * **[完了]**をクリックします。
@@ -87,7 +89,7 @@ IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属し
        ![JAR の作成](./media/hdinsight-apache-spark-intellij-tool-plugin/default-artifact.png)
       
       上の図で強調表示されている **+** アイコンをクリックして、独自のアーティファクトを作成することもできます。
-4. **[Project Structure (プロジェクトの構造)]** ダイアログ ボックスの **[Project (プロジェクト)]** をクリックします。 **[Project SDK (プロジェクト SDK)]** が 1.8 に設定されている場合、**[Project language level (プロジェクト言語レベル)]** が **[7 - Diamonds, ARM, multi-catch, etc (7 - Diamonds、ARM、マルチキャッチなど)]** に設定されていることを確認してください。
+4. **[Project Structure (プロジェクトの構造)]** ダイアログ ボックスの **[Project (プロジェクト)]** をクリックします。 **[Project SDK (プロジェクト SDK)]** が 1.8 に設定されている場合、**[Project language level (プロジェクト言語レベル)]** が **[7 - Diamonds, ARM, multi-catch, etc (7 - Diamonds、ARM、マルチキャッチなど)]** に設定されていることを確認してください (これは Spark 2.0 クラスターのオプションです)。
    
     ![Set project language level](./media/hdinsight-apache-spark-intellij-tool-plugin/set-project-language-level.png)
 5. アプリケーション ソース コードを追加します。
@@ -160,7 +162,7 @@ Azure Toolkit for IntelliJ の一部である HDInsight ツールを使用して
 **Azure Explorer** で、**HDInsight** を展開します。Spark クラスター名を右クリックし、**[Open Cluster Management Portal (Ambari) (クラスター管理ポータルを開く (Ambari))]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。 これらは、クラスターのプロビジョニング時に指定済みである必要があります。
 
 ### <a name="manage-azure-subscriptions"></a>Azure サブスクリプションの管理
-既定では、HDInsight ツールは、すべての Azure サブスクリプションからの Spark クラスターを一覧表示します。 必要に応じて、クラスターにアクセスするサブスクリプションを指定できます。 **Azure Explorer** で、**[Azure]** ルート ノードを右クリックし、**[Manage Subscriptions (サブスクリプションの管理)]** をクリックします。 ダイアログ ボックスで、アクセスしないサブスクリプションのチェック ボックスをオフにし、 **[Close (閉じる)]**をクリックします。 Azure サブスクリプションからログオフする場合は、 **[Sign Out (サインアウト)]** をクリックすることもできます。
+既定では、HDInsight ツールは、すべての Azure サブスクリプションからの Spark クラスターを一覧表示します。 必要に応じて、クラスターにアクセスするサブスクリプションを指定できます。 **Azure Explorer** で、**[Azure]** ルート ノードを右クリックし、**[Manage Subscriptions] (サブスクリプションの管理)** をクリックします。 ダイアログ ボックスで、アクセスしないサブスクリプションのチェック ボックスをオフにし、 **[Close (閉じる)]**をクリックします。 Azure サブスクリプションからログオフする場合は、 **[Sign Out (サインアウト)]** をクリックすることもできます。
 
 ## <a name="run-a-spark-scala-application-locally"></a>Spark Scala アプリケーションのローカルでの実行
 Azure Toolkit for IntelliJ の HDInsight ツールを使用すると、ワークステーション上で Spark Scala アプリケーションをローカルに実行することができます。 通常、そのようなアプリケーションは、ストレージ コンテナーなどのクラスター リソースにアクセスする必要がなく、ローカルで実行しテストすることができます。
@@ -180,10 +182,10 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
    
    * プロジェクト名とプロジェクトの場所を指定します。
    * **Project SDK**の場合、Java のバージョンは必ず 7 より新しいものを指定します。
-   * **Scala SDK** の場合、**[Create (作成)]** をクリックし、**[Download (ダウンロード)]** をクリックして、使用する Scala のバージョンを選択します。 **バージョン 2.11.x は使用しないでください**。 このサンプルでは、バージョン **2.10.6**を使用します。
+   * **Scala SDK** の場合、**[Create (作成)]** をクリックし、**[Download (ダウンロード)]** をクリックして、使用する Scala のバージョン (**Spark 2.0 の場合は Scala 2.11.x、Spark 1.6 の場合は Scala 2.10.x**) を選択します。
      
        ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
-   * **Spark SDK** の場合は、[ここ](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)から SDK をダウンロードして使用してください。 これを無視し、代わりに [Spark Maven リポジトリ](http://mvnrepository.com/search?q=spark)を使用することもできますが、Spark アプリケーションの開発に適した maven リポジトリがインストールされていることを確認してください。 (たとえば、Spark ストリーミングを使用する場合は、Spark ストリーミング部分がインストールされていることを確認する必要があります。また、Scala 2.10 とマークされているリポジトリを使用していることを確認してください。Scala 2.11 とマークされているリポジトリは使用しないでください)。
+   * **Spark SDK** の場合は、[ここ](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)から SDK をダウンロードして使用してください。 これを無視し、代わりに [Spark Maven リポジトリ](http://mvnrepository.com/search?q=spark)を使用することもできますが、Spark アプリケーションの開発に適した maven リポジトリがインストールされていることを確認してください。 (たとえば、Spark ストリーミングを使用する場合は、Spark ストリーミング部分がインストールされていることを確認する必要があります。また、Spark 1.6 クラスターの場合は、Scala 2.10 とマークされているリポジトリを、Spark 2.0 クラスターの場合は、Scala 2.11 とマークされているリポジトリ使用していることを確認してください。)
      
        ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-create-project.png)
    * **[完了]**をクリックします。
@@ -231,7 +233,7 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 
 ![Spark Application local run result](./media/hdinsight-apache-spark-intellij-tool-plugin/change-heap-size.png)
 
-## <a name="feedback-known-issues"></a>フィードバックと既知の問題
+## <a name="feedback--known-issues"></a>フィードバックと既知の問題
 現在、Spark の出力を直接表示することはサポートされておらず、その実現に取り組んでいます。
 
 ご提案やフィードバックがある場合、またはこのツールを使用していて問題が発生した場合は、hdivstool@microsoft.com に電子メールをお送りください。
@@ -265,6 +267,6 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

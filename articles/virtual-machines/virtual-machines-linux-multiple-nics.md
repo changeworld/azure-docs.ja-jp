@@ -15,8 +15,8 @@ ms.workload: infrastructure
 ms.date: 10/27/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: b2cd533ab24feb3ce521db5f8406576f86e460d9
+ms.sourcegitcommit: d4fa4187b25dcbb7cf3b75cb9186b5d245c89227
+ms.openlocfilehash: 12da49e49782869153dcecbf6e4ca0ec24fa5960
 
 
 ---
@@ -145,7 +145,7 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 }
 ```
 
-詳細については、[*copy* を使用した複数のインスタンスの作成](../resource-group-create-multiple.md)に関する記事を参照してください。 
+詳細については、[*copy* を使用した複数のインスタンスの作成](../azure-resource-manager/resource-group-create-multiple.md)に関する記事を参照してください。 
 
 `copyIndex()` を使用してリソース名に数値を追加することもできます。これにより、`myNic1`、`myNic2` などを作成することができます。インデックス値を追加する例を次に示します。
 
@@ -163,6 +163,6 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

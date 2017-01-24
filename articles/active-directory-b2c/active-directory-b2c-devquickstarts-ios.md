@@ -3,7 +3,7 @@ title: "Azure Active Directory B2C: サード パーティ ライブラリを使
 description: "この記事では、OAuth 2.0 ベアラー トークンとサード パーティ ライブラリを使用して、Node.js Web API を呼び出す iOS の &quot;To-Do List&quot; アプリを作成する方法について説明します。"
 services: active-directory-b2c
 documentationcenter: ios
-author: brandwe
+author: xerners
 manager: mbaldwin
 editor: 
 ms.assetid: d818a634-42c2-4cbd-bf73-32fa0c8c69d3
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: objectivec
 ms.topic: hero-article
-ms.date: 07/26/2016
+ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1b570e66afb7a4d3f7fc9b65600bfa7dc0fcc4b5
+ms.sourcegitcommit: 0175f4e83aace12d8e4607f2ad924893093c6734
+ms.openlocfilehash: cc5e199816668a5a0f936019ab8096e93a7a2f5a
 
 
 ---
-# <a name="azure-ad-b2c-call-a-web-api-from-an-ios-application-using-a-third-party-library"></a>Azure AD B2C: サード パーティ ライブラリを使用して iOS アプリケーションから Web API を呼び出す
+# <a name="azure-ad-b2c--call-a-web-api-from-an-ios-application-using-a-third-party-library"></a>Azure AD B2C: サード パーティ ライブラリを使用して iOS アプリケーションから Web API を呼び出す
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。 そのため開発者は、好きなライブラリを活用して Microsoft のサービスと連携させることができます。 Microsoft では、そのプラットフォームを他のライブラリから使用する開発者のために、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を紹介するチュートリアルを作成しています。この記事もそうしたチュートリアルの一つです。 Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
@@ -28,9 +28,9 @@ Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect と�
 ここで紹介する構成サンプルは OAuth2 や OpenID Connect に精通している読者を想定しており、それ以外の方にとっては、あまり参考にならない可能性があります。 その場合は、 [対応プロトコルについて簡単に解説したこちらの記事](active-directory-b2c-reference-protocols.md)に目を通すことをお勧めします。
 
 > [!NOTE]
-> Microsoft のプラットフォーム機能のうち、これらの標準に含まれている式が使われているいくつかの機能 (条件付きアクセスや Intune ポリシー管理) については、オープン ソースの Microsoft Azure Identity Libraries を使用する必要があります。 
-> 
-> 
+> Microsoft のプラットフォーム機能のうち、これらの標準に含まれている式が使われているいくつかの機能 (条件付きアクセスや Intune ポリシー管理) については、オープン ソースの Microsoft Azure Identity Libraries を使用する必要があります。
+>
+>
 
 Azure Active Directory のシナリオおよび機能のすべてが B2C プラットフォームでサポートされているわけではありません。  B2C プラットフォームを使用する必要があるかどうかを判断するには、 [B2C の制限事項](active-directory-b2c-limitations.md)に関するページをお読みください。
 
@@ -46,7 +46,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>ポリシーの作成
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、このポリシーを種類ごとに作成する必要があります。 ポリシーを作成するときは、以下の操作を必ず実行してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、このポリシーを種類ごとに作成する必要があります。 ポリシーを作成するときは、以下の操作を必ず実行してください。
 
 * ポリシーで、 **[表示名]** とサインアップ属性を選択します。
 * すべてのポリシーで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** を選択します。 その他のクレームも選択できます。
@@ -63,7 +63,7 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポ�
 git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
 ```
 
-または、完成済みのコードをダウンロードして、すぐに開始することもできます。 
+または、完成済みのコードをダウンロードして、すぐに開始することもできます。
 
 ```
 git clone --branch complete git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
@@ -240,7 +240,7 @@ AccountStore を作成し、それに `settings.plist` ファイルから読み�
 
 B2C サービスに関して、この時点で把握しておくべき点がいくつかあります。それらを把握しておけば、コードの内容もより理解しやすくなります。
 
-1. Azure AD B2C では、クエリ パラメーターによって指定される " *ポリシー* " を使用して、要求を処理します。 これにより、Azure Active Directory はアプリケーション専用の独立したサービスとして機能できます。 このような追加のクエリ パラメーターを指定するには、カスタム ポリシー パラメーターを使用して `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:` メソッドを指定する必要があります。 
+1. Azure AD B2C では、クエリ パラメーターによって指定される " *ポリシー* " を使用して、要求を処理します。 これにより、Azure Active Directory はアプリケーション専用の独立したサービスとして機能できます。 このような追加のクエリ パラメーターを指定するには、カスタム ポリシー パラメーターを使用して `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:` メソッドを指定する必要があります。
 2. Azure AD B2C では、他の OAuth2 サーバーとほぼ同じ方法でスコープを使用します。 ただし、B2C はリソースへのアクセスにも、ユーザーの認証にも使用されることから、フローを正しく機能させるためには、いくつかのスコープが欠かせません。 その 1 つが `openid` スコープです。 Microsoft Identity SDK では、自動的に `openid` スコープが指定されるため、SDK 構成にこのスコープを含める必要はありません。 ただし、ここではサード パーティのライブラリを使用するため、このスコープを指定する必要があります。
 
 ```objc
@@ -274,7 +274,7 @@ B2C サービスに関して、この時点で把握しておくべき点がい�
                                         forAccountType:data.accountIdentifier];
 }
 ```
-次に、これを AppDelegate の `didFinishLaunchingWithOptions:` メソッドの下で呼び出すようにします。 
+次に、これを AppDelegate の `didFinishLaunchingWithOptions:` メソッドの下で呼び出すようにします。
 
 ```
 [self setupOAuth2AccountStore];
@@ -299,16 +299,16 @@ B2C サービスに関して、この時点で把握しておくべき点がい�
 
 > [!NOTE]
 > `loginView` はストーリーボード内の実際の Web ビューにバインドしてください。 そうしないと、認証時にポップアップ表示できる Web ビューが存在しない状態になります。
-> 
-> 
+>
+>
 
 * `LoginViewController.m` クラスを作成します。
 * 認証時に状態を保持するいくつかの変数を追加します。
 
 ```objc
-NSURL *myRequestedUrl; \\ The URL request to Azure Active Directory 
+NSURL *myRequestedUrl; \\ The URL request to Azure Active Directory
 NSURL *myLoadedUrl; \\ The URL loaded for Azure Active Directory
-bool loginFlow = FALSE; 
+bool loginFlow = FALSE;
 bool isRequestBusy; \\ A way to give status to the thread that the request is still happening
 NSURL *authcode; \\ A placeholder for our auth code.
 ```
@@ -387,7 +387,7 @@ NSURL *authcode; \\ A placeholder for our auth code.
 
 * OAuth2 要求の結果を処理するコードを記述する
 
-WebView から返された redirectURL を処理するコードが必要です。 OAuth2 要求に失敗した場合は、再試行します。 このときライブラリから生成されたエラーをコンソールに表示したり、非同期で処理したりすることができます。 
+WebView から返された redirectURL を処理するコードが必要です。 OAuth2 要求に失敗した場合は、再試行します。 このときライブラリから生成されたエラーをコンソールに表示したり、非同期で処理したりすることができます。
 
 ```objc
 - (void)handleOAuth2AccessResult:(NSURL *)accessResult {
@@ -487,7 +487,7 @@ WebView から返された redirectURL を処理するコードが必要です�
 これで、サインインのためにアプリケーションを操作する際の主な手段が作成できました。 サインインした後は、受け取ったトークンを使用する必要があります。 そのため、このライブラリを使用して REST API を呼び出すヘルパー コードをいくつか作成します。
 
 ## <a name="create-a-graphapicaller-class-to-handle-our-requests-to-a-rest-api"></a>REST API への要求を処理する `GraphAPICaller` クラスを作成する
-アプリを読み込むたびに、構成が読み込まれます。 トークンを取得したら、この構成に少し手を加える必要があります。 
+アプリを読み込むたびに、構成が読み込まれます。 トークンを取得したら、この構成に少し手を加える必要があります。
 
 * `GraphAPICaller.h` ファイルを作成します。
 
@@ -511,7 +511,7 @@ completionBlock:(void (^)(bool, NSError *error))completionBlock;
 ```objc
 @implementation GraphAPICaller
 
-// 
+//
 // Gets the tasks from our REST endpoint we specified in settings
 //
 
@@ -564,7 +564,7 @@ completionBlock:(void (^)(bool, NSError *error))completionBlock;
       }];
 }
 
-// 
+//
 // Adds a task from our REST endpoint we specified in settings
 //
 
@@ -631,7 +631,6 @@ API でタスクがユーザーごとに保存されたことを確認します�
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

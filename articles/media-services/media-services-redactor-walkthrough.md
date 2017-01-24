@@ -1,5 +1,5 @@
 ---
-title: "顔編集のチュートリアル | Microsoft Docs"
+title: "Azure Media Analytics での顔編集チュートリアル | Microsoft Docs"
 description: "このトピックでは、Azure Media Services Explorer (AMSE) と Azure Media Redactor Visualizer (オープン ソース ツール) を使用して編集ワークフロー全体を実行する方法について詳しく説明します。"
 services: media-services
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 11/30/2016
 ms.author: rli; juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: d693bc0de2f8a03d67b346f3b2d4693284ae4d71
-ms.openlocfilehash: b9bd117d2b2a4bb710c98d4a8771727d3f5d06b6
+ms.sourcegitcommit: 8d8575decb177001cefbb7f159841b64c3f84f41
+ms.openlocfilehash: d9bb513a7f5acc0ba41902795b159564b2562842
 
 
 ---
-# <a name="face-redaction-walkthrough"></a>顔編集のチュートリアル
+# <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics での顔編集チュートリアル
 
 ## <a name="overview"></a>概要
 
@@ -67,7 +67,7 @@ Redactor の使用を開始する最も簡単な方法は、github のオープ�
 
     ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
-2. (省略可能) 修正する ID の改行区切りリストを含む ‘idlist.txt’ ファイルをアップロードします。 
+2. (省略可能) 修正する ID の改行区切りリストを含む "Dance_idlist.txt" ファイルをアップロードします。 
 
     ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
@@ -132,6 +132,6 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

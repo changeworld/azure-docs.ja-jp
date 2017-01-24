@@ -1,13 +1,13 @@
 ---
-title: Windows VM への MongoDB のインストール | Microsoft Docs
-description: Windows Server を実行するクラシック デプロイ モデルで作成された Azure VM に MongoDB をインストールする方法について説明します。
+title: "Windows VM への MongoDB のインストール | Microsoft Docs"
+description: "Windows Server を実行するクラシック デプロイ モデルで作成された Azure VM に MongoDB をインストールする方法について説明します。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-
+ms.assetid: 4095df41-bb69-4bbe-9c1c-70923b0d84ba
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,12 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
+translationtype: Human Translation
+ms.sourcegitcommit: f198d295272c8c860bc455cfa300cad3ff375c5d
+ms.openlocfilehash: cb618cbc47748a002351caa3a5935c9824c2bc32
+
 
 ---
 # <a name="install-mongodb-on-a-windows-vm"></a>Windows VM への MongoDB のインストール
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-リソース マネージャーのデプロイ モデルを使用して MongoDB を構成するには、「[この記事](virtual-machines-windows-classic-install-mongodb.md)」を参照してください。
+> [!IMPORTANT]
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)の 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 リソース マネージャーのデプロイ モデルを使用して MongoDB をインストールおよび構成する方法については、[この記事](virtual-machines-windows-install-mongodb.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。
 
 [MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事の手順に従って、[Azure クラシック ポータル][AzurePortal] を使用して Windows Server 仮想マシン (VM) を作成します。 その後で、MongoDB をインストールして構成する前に、データ ディスクを作成して VM に接続します。 使用する VM が Azure に既に存在する場合は、 [MongoDB のインストールと構成](#install-and-run-mongodb-on-the-virtual-machine)を直接開始できます。
 
@@ -39,13 +42,13 @@ ms.author: iainfou
 
 [!INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-windows-linux.md)]
 
-ディスクを初期化する方法については、「 [データ ディスクを Windows 仮想マシンに接続する方法](virtual-machines-windows-classic-attach-disk.md)」の「方法: Windows Server での新しいデータ ディスクの初期化」を参照してください。
+ディスクを初期化する方法については、「 [データ ディスクを Windows 仮想マシンに接続する方法](virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」の「方法: Windows Server での新しいデータ ディスクの初期化」を参照してください。
 
 ## <a name="install-and-run-mongodb-on-the-virtual-machine"></a>仮想マシンへの MongoDB のインストールと実行
 [!INCLUDE [install-and-run-mongo-on-win2k8-vm](../../includes/install-and-run-mongo-on-win2k8-vm.md)]
 
 ## <a name="summary"></a>概要
-このチュートリアルでは、Windows Server を実行する仮想マシンを作成する方法、リモートから仮想マシンに接続する方法、データ ディスクを接続する方法について学習しました。  Windows ベースの仮想マシンに MongoDB をインストールして構成する方法も学習しました。 [MongoDB のドキュメント][MongoDocs] の高度なトピックに従って Windows ベースの仮想マシンで MongoDB に今すぐアクセスすることができます。
+このチュートリアルでは、Windows Server を実行する仮想マシンを作成する方法、リモートから仮想マシンに接続する方法、データ ディスクを接続する方法について学習しました。  Windows ベースの仮想マシンに MongoDB をインストールして構成する方法も学習しました。 [MongoDB のドキュメント] [MongoDocs] の高度なトピックに従って Windows ベースの仮想マシンで MongoDB に今すぐアクセスすることができます。
 
 [MongoDocs]: http://docs.mongodb.org/manual/
 [MongoDB]: http://www.mongodb.org/
@@ -53,6 +56,6 @@ ms.author: iainfou
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 10/19/2016
+ms.date: 12/20/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
+ms.sourcegitcommit: 18054a72c3ead02311465d97dc13b7b5e4d87321
+ms.openlocfilehash: 401b3c931fa046ee2bdf0a12e9e837b820ec5464
 
 
 ---
@@ -24,14 +24,14 @@ ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 ## <a name="setting-up-an-azure-account-for-media-services"></a>Media Services 用の Azure アカウントの設定
-Media Services アカウントを設定するには、Azure クラシック ポータルを使用します。 「[メディア サービス アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。 Azure クラシック ポータルでアカウントを作成すると、Media Services 開発用にコンピューターをセットアップできるようになります。
+Media Services アカウントを設定するには、Azure Portal を使用します。 「[メディア サービス アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。 Azure Portal でアカウントを作成すると、Media Services 開発用にコンピューターをセットアップできるようになります。
 
 ## <a name="setting-up-for-media-services-development"></a>Media Services 開発のための設定
 このセクションでは、Media Services SDK for Java を使用したメディア サービス開発の大まかな前提条件について説明します。
 
 ### <a name="prerequisites"></a>前提条件
 * 新規または既存の Azure サブスクリプションで作成した Media Services アカウント。 「[メディア サービス アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
-* Azure Libraries for Java。[Azure Java デベロッパー センター][Azure Java デベロッパー センター]からインストールできます。
+* Azure Libraries for Java。[Azure Java デベロッパー センター][Azure Java Developer Center]からインストールできます。
 
 ## <a name="how-to-use-media-services-with-java"></a>方法: Java で Media Services を使用する
 次のコードは、資産を作成してメディア ファイルを資産にアップロードし、資産の変換タスクを伴うジョブを実行して、ビデオをストリーミングするためのロケーターを作成する方法を示しています。
@@ -260,16 +260,16 @@ Media Services アカウントを設定するには、Azure クラシック ポ�
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="additional-resources"></a>その他のリソース
-Media Services に関する Javadoc ドキュメントについては、[Azure Libraries for Java のドキュメント][Azure Libraries for Java のドキュメント]を参照してください。
+Media Services に関する Javadoc ドキュメントについては、[Azure Libraries for Java のドキュメント][Azure Libraries for Java documentation]を参照してください。
 
 <!-- URLs. -->
 
-[Azure Java デベロッパー センター]: http://azure.microsoft.com/develop/java/
-[Azure Libraries for Java のドキュメント]: http://dl.windowsazure.com/javadoc/
-[Media Services クライアント開発]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
+[Azure Java Developer Center]: http://azure.microsoft.com/develop/java/
+[Azure Libraries for Java documentation]: http://dl.windowsazure.com/javadoc/
+[Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -5,7 +5,7 @@ keywords: "azure サブスクリプションの無効化"
 services: 
 documentationcenter: 
 author: genlin
-manager: mbaldwin
+manager: narmstr
 editor: 
 tags: billing
 ms.assetid: 4529d685-3a87-49d9-8d7a-49baad552d76
@@ -14,7 +14,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/07/2017
 ms.author: genli
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f

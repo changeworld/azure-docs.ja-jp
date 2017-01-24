@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/28/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 267b281c33049e65e82a5e5b2453ff1a80983453
-ms.openlocfilehash: 744e5a093cb99463224d42a69711f41f6132a2ee
+ms.sourcegitcommit: e82cc23dac2b765ee3dc8ae2eb1e4f7f2e49675a
+ms.openlocfilehash: 9e7dbb2b218796e3484bee05c6026c801c7780b7
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: 744e5a093cb99463224d42a69711f41f6132a2ee
 | データ操作 - 認証プロトコル |OAuth 2.0。 呼び出しには、Azure Active Directory によって発行された有効な JWT (JSON Web トークン) が含まれている必要があります。 |ハッシュベース メッセージ認証コード (HMAC)。 呼び出しには、HTTP 要求の一部に対する Base64 でエンコードされた SHA-256 ハッシュが含まれている必要があります。 |
 | データ操作 - 承認 |POSIX アクセス制御リスト (ACL)。  Azure Active Directory ID に基づく ACL は、ファイルおよびフォルダー レベルで設定できます。 |アカウントレベルの承認には、[アカウント アクセス キー](../storage/storage-create-storage-account.md#manage-your-storage-account)を使用します<br>アカウント、コンテナー、または BLOB の承認には、[Shared Access Signature キー](../storage/storage-dotnet-shared-access-signature-part-1.md)を使用します |
 | データ操作 - 監査 |使用可能。 詳細については、 [こちら](data-lake-store-diagnostic-logs.md) をご覧ください。 |使用可能 |
-| 保存データの暗号化 |透過的、サーバー側 (近日対応予定)<ul><li>サービスによって管理されるキーを使用</li><li>ユーザーによって Azure KeyVault で管理されるキーを使用</li></ul> |<ul><li>透過的、サーバー側</li> <ul><li>サービスによって管理されるキーを使用</li><li>ユーザーによって Azure KeyVault で管理されるキーを使用 (近日対応予定)</li></ul><li>クライアント側暗号化</li></ul> |
+| 保存データの暗号化 |透過的、サーバー側 <ul><li>サービスによって管理されるキーを使用</li><li>ユーザーによって Azure KeyVault で管理されるキーを使用</li></ul> |<ul><li>透過的、サーバー側</li> <ul><li>サービスによって管理されるキーを使用</li><li>ユーザーによって Azure KeyVault で管理されるキーを使用 (近日対応予定)</li></ul><li>クライアント側暗号化</li></ul> |
 | 管理操作 (アカウントの作成など) |[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md) (RBAC) |[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md) (RBAC) |
 | Developer SDK |.NET、Java、Node.js |.Net、Java、Python、Node.js、C++、Ruby |
 | 分析ワークロードのパフォーマンス |並列分析ワークロードに最適化されたパフォーマンス。 高スループットおよび高 IOPS。 |分析ワークロードに最適化されていません。 |
@@ -53,6 +53,6 @@ ms.openlocfilehash: 744e5a093cb99463224d42a69711f41f6132a2ee
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

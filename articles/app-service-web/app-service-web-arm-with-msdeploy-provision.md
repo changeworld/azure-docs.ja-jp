@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 05/31/2016
 ms.author: jodehavi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9c748f4f65ec4a2ba32bca97648fb7ccdbb8d749
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: f836bffd0610224b5cb69f4f6836dbc55e0721a3
 
 
 ---
 # <a name="deploy-a-web-app-with-msdeploy-custom-hostname-and-ssl-certificate"></a>MSDeploy、カスタム ホスト名、SSL 証明書を使用した Web アプリケーションのデプロイ
 このガイドでは、MSDeploy を利用し、カスタム ホスト名と SSL 証明書を ARM テンプレートに追加して、Azure Web アプリのエンド ツー エンドのデプロイを作成する手順について説明します。
 
-テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
+テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
 ### <a name="create-sample-application"></a>サンプル アプリケーションの作成
 ここでは、ASP.NET Web アプリケーションをデプロイします。 まず、シンプルな Web アプリケーションを作成します (既存の Web アプリケーションを使用することもできます。その場合は、この手順を省略してかまいません)。
@@ -200,6 +200,6 @@ MSDeploy リソースは、次のように定義された **packageUri** プロ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

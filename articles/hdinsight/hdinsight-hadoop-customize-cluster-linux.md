@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/14/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 170f61a210bef470aa79dc75ebd096be9d847f70
-ms.openlocfilehash: 47d107441b0c0adfc9551545d524ea87ba1968c6
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: 4bebf59070e4047f083a5e92de1cfeb9d520e41f
 
 
 ---
@@ -66,7 +66,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
     * **Blob Storage アカウント** (HDInsight クラスターのプライマリ ストレージ アカウントまたはセカンダリ ストレージ アカウント)。 HDInsight には、両方のタイプのストレージ アカウントに対するアクセス権がクラスターの作成時に付与されます。これによりパブリックではないスクリプト アクションの使用が可能となります。
 
-    * https://review.docs.microsoft.com/en-us/azure/service-bus/?branch=master (Azure Blob, GitHub, OneDrive, Dropbox など)。
+    * https://docs.microsoft.com/en-us/azure/service-bus/ (Azure Blob、GitHub、OneDrive、Dropbox など)。
 
         BLOB コンテナーに保存されたスクリプト用の (パブリックに読み取り可能な) URI の例については、「 [スクリプト アクションのサンプル スクリプト](#example-script-action-scripts) 」セクションを参照してください。
 
@@ -154,7 +154,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 | 名前 | スクリプト |
 | --- | --- |
-| **Azure のストレージ アカウントの追加** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh。 「 [実行中のクラスターにスクリプト アクションを適用する](#apply-a-script-action-to-a-running-cluster)」を参照してください。 |
+| **Azure のストレージ アカウントの追加** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh。 「[HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)」を参照してください。 |
 | **Hue のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh。 [HDInsight クラスターでの Hue のインストールおよび使用](hdinsight-hadoop-hue-linux.md)に関する記事を参照してください。 |
 | **R のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh。 [HDInsight クラスターでの R のインストールと使用](hdinsight-hadoop-r-scripts-linux.md)に関する記事を参照してください。 |
 | **Solr のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh。 「 [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)」をご覧ください。 |
@@ -191,7 +191,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 #### <a name="before-you-begin"></a>開始する前に
 
-* コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。
+* コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」をご覧ください。
 * テンプレートを作成する方法の手順については、「 [Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」をご覧ください。
 * リソース マネージャーで Azure PowerShell を使用したことがない場合は、「 [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
@@ -401,7 +401,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>クラスターの作成時に Azure PowerShell からスクリプト アクションを使用する
 
-このセクションでは、 [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。 次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 ワークステーションを構成して HDInsight PowerShell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。
+このセクションでは、 [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。 次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 ワークステーションを構成して HDInsight PowerShell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」を参照してください。
 
 次の手順に従います。
 
@@ -509,7 +509,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>実行中のクラスターに Azure PowerShell からスクリプト アクションを適用する
 
-次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 ワークステーションを構成して HDInsight PowerShell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。
+次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 ワークステーションを構成して HDInsight PowerShell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」を参照してください。
 
 1. Azure PowerShell コンソールを開き、次のコマンドレットを使用して Azure サブスクリプションにログインし、PowerShell 変数をいくつか宣言します。
 
@@ -755,11 +755,12 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 * [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions-linux.md)
 * [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
 * [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
+* [HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター作成時の段階"
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
