@@ -15,26 +15,26 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4e86a871222def32f7779f07eab5668d366ecec4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6dcc79a2adf81c82d245c99116f28eb4db983396
 
 
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>メディア エンコーダー プレミアム ワークフローでの高度なエンコード
 > [!NOTE]
 > このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。
-> 
-> 
+>
+>
 
 プレミアム エンコーダーに関する質問がある場合は、mepd@microsoft.com まで電子メールでお送りください。
 
-## <a name="overview"></a>Overview
-Microsoft Azure Media Services には、 **メディア エンコーダー プレミアム ワークフロー** メディア プロセッサが導入されています。 このプロセッサでは、プレミアム オンデマンド ワークフローの高度なエンコード機能が提供されます。 
+## <a name="overview"></a>概要
+Microsoft Azure Media Services には、 **メディア エンコーダー プレミアム ワークフロー** メディア プロセッサが導入されています。 このプロセッサでは、プレミアム オンデマンド ワークフローの高度なエンコード機能が提供されます。
 
-次のトピックでは、 **メディア エンコーダー プレミアム ワークフロー**に関連する詳細の概要を説明します。 
+次のトピックでは、 **メディア エンコーダー プレミアム ワークフロー**に関連する詳細の概要を説明します。
 
 * [メディア エンコーダー プレミアム ワークフローでサポートされる形式](media-services-premium-workflow-encoder-formats.md) – **メディア エンコーダー プレミアム ワークフロー**でサポートされるファイルの形式とコーデックについて説明します。
-* 「[エンコーダーの比較](media-services-encode-asset.md#compare_encoders)」では、**Media Encoder Premium Workflow** と **Media Encoder Standard** のエンコード機能を比較しています。
+* 「[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md)」では、**Media Encoder Premium Workflow** と **Media Encoder Standard** のエンコード機能を比較しています。
 
 このトピックでは、.NET を使用して **メディア エンコーダー プレミアム ワークフロー** でエンコードする方法を示します。
 
@@ -47,29 +47,29 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
 
 ワークフロー ファイルは、アセットとして Media Services アカウントにアップロードする必要があり、このアセットをエンコード タスクに渡す必要があります。
 
-次の例では、 **メディア エンコーダー プレミアム ワークフロー**でエンコードする方法を示しています。 
+次の例では、 **メディア エンコーダー プレミアム ワークフロー**でエンコードする方法を示しています。
 
-次の手順を実行します。 
+次の手順を実行します。
 
-1. アセットを作成し、ワークフロー ファイルをアップロードします。 
+1. アセットを作成し、ワークフロー ファイルをアップロードします。
 2. アセットを作成し、ソース メディア ファイルをアップロードします。
 3. "メディア エンコーダー プレミアム ワークフロー" メディア プロセッサを取得します。
-4. ジョブとタスクを作成します。 
-   
+4. ジョブとタスクを作成します。
+
     ほとんどの場合、次の例と同様にタスクの構成文字列は空です。 (ランタイム プロパティを動的に設定する必要がある) 高度なシナリオでは、エンコード タスクに XML 文字列を提供します。 このようなシナリオの例として、オーバーレイの作成、メディアの並列または順次合成、字幕の作成があります。
 5. 2 つの入力アセットをタスクに追加します。
-   
+
     a. 1 – ワークフロー アセット。
-   
+
     b. 2 - ビデオ アセット。
-   
-    **注**: ワークフロー アセットは、メディア アセットの前にタスクに追加する必要あります。 
-   このタスクの構成文字列は空にする必要があります。 
+
+    **注**: ワークフロー アセットは、メディア アセットの前にタスクに追加する必要あります。
+   このタスクの構成文字列は空にする必要があります。
 6. エンコード ジョブを送信します。
 
 完全な例を次に示します。 Media Services の .NET 開発を使用して設定する方法の詳細については、「 [Media Services development with .NET (.NET での Media Services 開発)](media-services-dotnet-how-to-use.md)」を参照してください
 
-     using System; 
+     using System;
     using System.Linq;
     using System.Configuration;
     using System.IO;
@@ -116,7 +116,7 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
 
                 var workflowAsset = CreateAssetAndUploadSingleFile(_workflowFilePath);
                 var videoAsset = CreateAssetAndUploadSingleFile(_singleMP4InputFilePath);
-                IAsset outputAsset = CreateEncodingJob(workflowAsset, videoAsset); 
+                IAsset outputAsset = CreateEncodingJob(workflowAsset, videoAsset);
 
             }
 
@@ -151,7 +151,7 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
             {
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("Premium Workflow encoding job");
-                // Get a media processor reference, and pass to it the name of the 
+                // Get a media processor reference, and pass to it the name of the
                 // processor to use for the specific task.
                 IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Premium Workflow");
 
@@ -164,9 +164,9 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
                 // Specify the input asset to be encoded.
                 task.InputAssets.Add(workflow);
                 task.InputAssets.Add(video); // we add one asset
-                // Add an output asset to contain the results of the job. 
-                // This output is specified as AssetCreationOptions.None, which 
-                // means the output asset is not encrypted. 
+                // Add an output asset to contain the results of the job.
+                // This output is specified as AssetCreationOptions.None, which
+                // means the output asset is not encrypted.
                 task.OutputAssets.AddNew("Output asset",
                     AssetCreationOptions.None);
 
@@ -177,12 +177,12 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
                 // Launch the job.
                 job.Submit();
 
-                // Check job execution and wait for job to finish. 
+                // Check job execution and wait for job to finish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
                 progressJobTask.Wait();
 
-                // If job state is Error the event handling 
-                // method for job progress should log errors.  Here we check 
+                // If job state is Error the event handling
+                // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)
                 {
@@ -279,7 +279,6 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

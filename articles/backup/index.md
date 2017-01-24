@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 3fb1fc0e1198733d47378ec149082330b6350abc
-ms.openlocfilehash: db1ba8a832b9b5efa380adf804a55b5ca67ef1a2
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: 4c3a00fe82ec903bcd756e8cd2ef940fc10e8af2
 
 ---
 #<a name="backup-documentation"></a>Backup のドキュメント
@@ -119,20 +119,18 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>言語</h3>
-                        <p><a href="/dotnet/api/microsoft.azure.management.backupservices">/dotnet/api/microsoft.azure.management.backupservices</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
 </ul>
-
-
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/backup.pdf">

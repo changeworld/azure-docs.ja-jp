@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f9ecc2f7a67a2cee6f02c0010a2b54404cbb6f82
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 78382cf83ed5e94507854d41293a95fd529964c1
 
 
 ---
@@ -34,14 +34,14 @@ ms.openlocfilehash: f9ecc2f7a67a2cee6f02c0010a2b54404cbb6f82
 
 * **Ranger 管理者**: このアカウントは、ローカルの Apache Ranger 管理者アカウントです。 これは、Active Directory ドメイン ユーザーではありません。 このアカウントは、ポリシーのセットアップや、他のユーザー管理者または代理管理者の作成に使用することができます (それらの管理者がポリシーを管理できるようにするため)。 既定では、ユーザー名は *admin* で、パスワードは Ambari 管理者パスワードと同じです。 パスワードは、Ranger の [Settings (設定)] ページで更新することができます。
 * **クラスター管理者ドメイン ユーザー**: このアカウントは、Ambari と Ranger を含む Hadoop クラスター管理者として指定された Active Directory ドメイン ユーザーです。 クラスターの作成中に、このユーザーの資格情報を指定する必要があります。 このユーザーは、次の特権を持ちます。
-  
+
   * コンピューターをドメインに参加させ、クラスターの作成中に指定する OU 内に配置します。
-  * クラスターの作成中に指定する OU 内にサービス プリンシパルを作成します。 
+  * クラスターの作成中に指定する OU 内にサービス プリンシパルを作成します。
   * 逆引き DNS エントリを作成します。
-    
-    他の AD ユーザーもこれらの特権を持つことに注意してください。 
-    
-    クラスター内には、Ranger によって管理されないエンドポイント (たとえば Templeton) がいくつかあります。そのため、それらは安全ではありません。 これらのエンドポイントは、クラスター管理者ドメイン ユーザーを除くすべてのユーザーに対してロックダウンされます。 
+
+    他の AD ユーザーもこれらの特権を持つことに注意してください。
+
+    クラスター内には、Ranger によって管理されないエンドポイント (たとえば Templeton) がいくつかあります。そのため、それらは安全ではありません。 これらのエンドポイントは、クラスター管理者ドメイン ユーザーを除くすべてのユーザーに対してロックダウンされます。
 * **レギュラー**: クラスターの作成中に、複数の Active Directory グループを指定することができます。 これらのグループのユーザーは、Ranger と Ambari に同期されます。 これらのユーザーはドメイン ユーザーであり、Ranger によって管理されているエンドポイント (たとえば Hiveserver2) のみにアクセスできます。 すべての RBAC ポリシーと監査は、これらのユーザーに適用できます。
 
 ## <a name="roles-of-domain-joined-hdinsight-clusters"></a>ドメイン参加済み HDInsight クラスターのロール
@@ -58,7 +58,7 @@ ms.openlocfilehash: f9ecc2f7a67a2cee6f02c0010a2b54404cbb6f82
 1. Ambari Management UI を開きます。  「[Ambari Management UI を開く](#open-the-ambari-management-ui)」を参照してください。
 2. 左側のメニューで **[Roles (ロール)]** をクリックします。
 3. 青い疑問符をクリックして、アクセス許可を表示します。
-   
+
     ![ドメイン参加済み HDInsight のロールのアクセス許可](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
 
 ## <a name="open-the-ambari-management-ui"></a>Ambari Management UI を開く
@@ -67,36 +67,36 @@ ms.openlocfilehash: f9ecc2f7a67a2cee6f02c0010a2b54404cbb6f82
 3. 上部のメニューで **[ダッシュボード]** をクリックして、Ambari を開きます。
 4. クラスター管理者のドメイン ユーザー名とパスワードを使用して、Ambari にログオンします。
 5. 右上隅のドロップダウン メニューで **[Admin (管理者)]** をクリックし、**[Manage Ambari (Ambari の管理)]** をクリックします。
-   
+
     ![ドメイン参加済み HDInsight での Ambari の管理](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
-   
+
     次のような UI になります。
-   
+
     ![ドメイン参加済み HDInsight での Ambari Management UI](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Active Directory から同期されているドメイン ユーザーの一覧表示
 1. Ambari Management UI を開きます。  「[Ambari Management UI を開く](#open-the-ambari-management-ui)」を参照してください。
 2. 左側のメニューで **[ユーザー]**をクリックします。 Active Directory から HDInsight クラスターに同期されているすべてのユーザーが表示されます。
-   
+
     ![ドメイン参加済み HDInsight での Ambari Management UI によるユーザーの一覧表示](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>Active Directory から同期されているドメイン グループの一覧表示
 1. Ambari Management UI を開きます。  「[Ambari Management UI を開く](#open-the-ambari-management-ui)」を参照してください。
 2. 左側のメニューで **[Groups (グループ)]** をクリックします。 Active Directory から HDInsight クラスターに同期されているすべてのグループが表示されます。
-   
+
     ![ドメイン参加済み HDInsight での Ambari Management UI によるグループの一覧表示](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
 
 ## <a name="configure-hive-views-permissions"></a>Hive ビューのアクセス許可の構成
 1. Ambari Management UI を開きます。  「[Ambari Management UI を開く](#open-the-ambari-management-ui)」を参照してください。
 2. 左側のメニューで **[Views (ビュー)]** をクリックします。
 3. **[HIVE]** をクリックして、詳細を表示します。
-   
+
     ![ドメイン参加済み HDInsight での Ambari Management UI による Hive ビュー](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
 4. **[Hive View (Hive ビュー)]** リンクをクリックして、Hive ビューを構成します。
 5. **[Permissions (アクセス許可)]** セクションまで下へスクロールします。
-   
+
     ![ドメイン参加済み HDInsight での Ambari Management UI による Hive ビューのアクセス許可の構成](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
-6. **[Add User (ユーザーの追加)]** または **[Add Group (グループの追加)]** をクリックし、Hive ビューを使用するユーザーまたはグループを指定します。 
+6. **[Add User (ユーザーの追加)]** または **[Add Group (グループの追加)]** をクリックし、Hive ビューを使用するユーザーまたはグループを指定します。
 
 ## <a name="configure-users-for-the-roles"></a>ロールのユーザーの構成
  ロールとそのアクセス許可の一覧を表示するには、「[ドメイン参加済み HDInsight クラスターのロール](#roles-of-domain---joined-hdinsight-clusters)」を参照してください。
@@ -108,11 +108,10 @@ ms.openlocfilehash: f9ecc2f7a67a2cee6f02c0010a2b54404cbb6f82
 ## <a name="next-steps"></a>次のステップ
 * ドメイン参加済み HDInsight クラスターの構成については、[ドメイン参加済み HDInsight クラスターの構成](hdinsight-domain-joined-configure.md)に関する記事を参照してください。
 * Hive ポリシーの構成と Hive クエリの実行については、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)に関するページを参照してください。
-* ドメイン参加済み HDInsight クラスターで SSH を使用して Hive クエリを実行する方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-domain-joined-hdinsight-cluster)」を参照してください。
+* ドメイン参加済み HDInsight クラスターで SSH を使用して Hive クエリを実行する方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)」を参照してください。
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

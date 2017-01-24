@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/16/2016
+ms.date: 01/12/2017
 ms.author: yushwang
 translationtype: Human Translation
-ms.sourcegitcommit: 5f270d383750dc6308f01807e04469e3873d70f9
-ms.openlocfilehash: 6d2a72831726f59ff79a7f4c1ff0e258275bfe4f
+ms.sourcegitcommit: 5961c73c3f147ab6b3eca4e9d920003df1ca2c82
+ms.openlocfilehash: 298eab8ad562cfb32edf8609ac29052dc403f406
 
 
 ---
@@ -35,11 +35,6 @@ BGP の使用に関して、いくつかの利点と新しい機能がありま�
 BGP を使用する場合は、IPsec S2S VPN トンネル経由で特定の BGP ピアに最小限のプレフィックスを宣言するだけで済みます。 オンプレミス VPN デバイスの BGP ピア IP アドレスのホスト プレフィックス (/32) のような小さいプレフィックスも指定できます。 どのオンプレミス ネットワーク プレフィックスを Azure にアドバタイズして、Azure 仮想ネットワーク (VNet) にアクセスを許可するかを制御できます。
 
 また、大規模なプライベート IP アドレス空間 (例: 10.0.0.0/8) など、VNet アドレス プレフィックスがいくつか含まれた大規模なプレフィックスをアドバタイズすることもできます。 ただし、このプレフィックスを VNet プレフィックスのいずれかと同じにすることはできませんので注意してください。 VNet プレフィックスと同一のルートは拒否されます。
-
-> [!IMPORTANT]
-> 現在、Azure VPN ゲートウェイへの既定ルート (0.0.0.0/0) のアドバタイズはブロックされます。 この機能が有効になったら、追加の更新プログラムが提供されます。
-> 
-> 
 
 ### <a name="support-multiple-tunnels-between-a-vnet-and-an-on-premises-site-with-automatic-failover-based-on-bgp"></a>BGP ベースの自動フェールオーバーを使用した VNet とオンプレミス サイト間の複数のトンネルのサポート
 同じ場所にある複数のオンプレミス VPN デバイスと Azure VNet の間に複数の接続を確立できます。 この機能により、2 つのネットワークの間に複数のトンネル (パス) がアクティブ/アクティブ構成で提供されます。 トンネルの 1 つが切断された場合は、対応するルートが BGP によって無効にされ、トラフィックが残りのトンネルに自動的に移行されます。
@@ -64,6 +59,6 @@ BGP では、接続が直接か間接的かにかかわらず、複数のゲー�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: sutalasi
 translationtype: Human Translation
-ms.sourcegitcommit: 740c03f7785017e8c778c034491585b3addb765d
-ms.openlocfilehash: 151234a5a357cec808ad5deeef0d4150cb794f8e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 82d46a833c5aa36b1526e6ae7a2a9a6ebc76dc77
 
 
 ---
@@ -77,7 +77,7 @@ VMM ネットワークの構成の詳細については、次の記事を参照�
 [こちら](site-recovery-network-mapping.md) をご覧ください。
 
 ### <a name="powershell-prerequisites"></a>PowerShell の前提条件
-Azure PowerShell を使用する準備が整っていることを確認してください。 PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。 PowerShell の設定については、 [Azure PowerShell のインストールと構成](../powershell-install-configure.md)に関するページをご覧ください。 PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを [ここ](https://msdn.microsoft.com/library/dn850420.aspx)に表示できます。 
+Azure PowerShell を使用する準備が整っていることを確認してください。 PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。 PowerShell の設定については、 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関するページをご覧ください。 PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを [ここ](https://msdn.microsoft.com/library/dn850420.aspx)に表示できます。 
 
 Azure PowerShell でのパラメーター値、入力、出力の一般的な処理方法など、コマンドレットの使用に役立つヒントについては、「 [Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」をご覧ください。
 
@@ -323,6 +323,6 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

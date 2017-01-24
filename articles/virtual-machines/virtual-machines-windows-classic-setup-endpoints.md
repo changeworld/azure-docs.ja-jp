@@ -1,13 +1,13 @@
 ---
-title: クラシック Windows VM でのエンドポイントのセットアップ | Microsoft Docs
-description: Azure 上で Windows 仮想マシンとの通信を許可するように Azure クラシック ポータルで Windows VM のエンドポイントをセットアップする方法について説明します。
+title: "クラシック Windows VM でのエンドポイントのセットアップ | Microsoft Docs"
+description: "Azure 上で Windows 仮想マシンとの通信を許可するように Azure クラシック ポータルで Windows VM のエンドポイントをセットアップする方法について説明します。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: 8afc21c2-d3fb-43a3-acce-aa06be448bb6
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,14 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: f022bd4d430fbb94ca9e52f03fd7e5bf69e336ad
+
 
 ---
 # <a name="how-to-set-up-endpoints-on-a-classic-windows-virtual-machine-in-azure"></a>Azure 上でクラシック Windows 仮想マシンにエンドポイントをセットアップする方法
-クラシック デプロイメント モデルを使用して Azure で作成したすべての Windows 仮想マシンが、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。 ただし、インターネットまたは他の仮想ネットワークにあるコンピューターと通信するには、仮想マシンへの着信ネットワーク トラフィックを転送するエンドポイントが必要になります。 この記事は、 [Linux 仮想マシン](virtual-machines-linux-classic-setup-endpoints.md)にも利用できます。
+クラシック デプロイメント モデルを使用して Azure で作成したすべての Windows 仮想マシンが、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。 ただし、インターネットまたは他の仮想ネットワークにあるコンピューターと通信するには、仮想マシンへの着信ネットワーク トラフィックを転送するエンドポイントが必要になります。 この記事は、 [Linux 仮想マシン](virtual-machines-linux-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)にも利用できます。
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
-**Resource Manager** デプロイメント モデルでは、エンドポイントは **ネットワーク セキュリティ グループ (NSG)** を使用して構成します。 詳細については、「Azure Portal を使用して VM への外部アクセスを許可する」 (virtual-machines-windows-nsg-quickstart-portal.md) を参照してください。
+**Resource Manager** デプロイ モデルでは、エンドポイントは**ネットワーク セキュリティ グループ (NSG)** を使用して構成します。 詳しくは、[Azure Portal を使用して VM への外部アクセスを許可する方法](virtual-machines-windows-nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
 Azure クラシック ポータルで Windows 仮想マシンを作成すると、共通エンドポイント (リモート デスクトップや Windows PowerShell リモート処理用のエンドポイントなど) が通常は自動的に作成されます。 必要に応じて、仮想マシンの作成中や作成後に、追加のエンドポイントを構成できます。
 
@@ -33,6 +38,9 @@ Azure クラシック ポータルで Windows 仮想マシンを作成すると�
 * Azure PowerShell コマンドレットを使用してエンドポイントの ACL を管理するには、「 [PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](../virtual-network/virtual-networks-acl-powershell.md)」をご覧ください。
 * Resource Manager デプロイメント モデルで仮想マシンを作成した場合は、Azure PowerShell を使用して、VM へのトラフィックを制御する [ネットワーク セキュリティ グループを作成](../virtual-network/virtual-networks-create-nsg-arm-ps.md) できます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO1-->
 
 

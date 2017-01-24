@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2016
+ms.date: 01/12/2017
 ms.author: oanapl
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5e940cd05a5e3d368f42cf3457f0a4b12e86440a
+ms.sourcegitcommit: d20b8d5848d1a11326c60d998099571a4ab8056e
+ms.openlocfilehash: 0306b8c38a7dd86dff56f6cc7bb9eab7e0428762
 
 
 ---
@@ -685,6 +685,6 @@ HealthEvents          :
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

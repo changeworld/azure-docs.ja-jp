@@ -1,5 +1,5 @@
 ---
-title: "ネットワーク インフラストラクチャのガイドライン | Microsoft Docs"
+title: "Azure ネットワーク インフラストラクチャのガイドライン | Microsoft Docs"
 description: "Azure インフラストラクチャ サービスでの 仮想ネットワークのデプロイに関する主要な設計と実装のガイドラインについて説明します。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7bf465a884a5adcf86d0039d096a3ba8663b6979
+ms.sourcegitcommit: 70e52cefccee4b963e512724b96525bcbacf330c
+ms.openlocfilehash: 906ea9308ffee9dc719e1f17171deaba394a26d6
 
 
 ---
-# <a name="networking-infrastructure-guidelines"></a>ネットワーク インフラストラクチャのガイドライン
+# <a name="azure-networking-infrastructure-guidelines"></a>Azure ネットワーク インフラストラクチャのガイドライン
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 この記事は、Azure 内の仮想ネットワークと、既存のオンプレミス環境間の接続に必要な計画について説明します。
@@ -106,6 +106,6 @@ ms.openlocfilehash: 7bf465a884a5adcf86d0039d096a3ba8663b6979
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

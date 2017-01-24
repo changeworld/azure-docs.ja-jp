@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 09/02/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 427ddb00988b2ac6c2701c909d338942ae6a4352
+ms.sourcegitcommit: 58212ae80ef2b930661e739aeb4779c6f9bd1bec
+ms.openlocfilehash: c1faf24f1f11eba9bfa3042f5d1cd279363e4eca
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 427ddb00988b2ac6c2701c909d338942ae6a4352
 [Apache Phoenix](http://phoenix.apache.org/) を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。 Phoenix の詳細については、 [Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。 Phoenix の文法については、 [Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
 
 > [!NOTE]
-> HDInsight での Phoenix のバージョンの情報については、[HDInsight で提供される Hadoop クラスター バージョンの新機能][hdinsight-versions]に関するページを参照してください。
+> HDInsight での Phoenix のバージョンの情報については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。
 >
 > このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux ベースの HDInsight での Phoenix の使用については、「 [HDinsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hdinsight-hbase-phoenix-squirrel-linux.md)」を参照してください。
 >
@@ -36,8 +36,8 @@ ms.openlocfilehash: 427ddb00988b2ac6c2701c909d338942ae6a4352
 ### <a name="prerequisites"></a>前提条件
 SQLLine を使用するには、以下のものが必要です。
 
-* **HDInsight 環境の HBase クラスター**。 HBase クラスターのプロビジョニングについては、[HDInsight での Apache HBase の使用開始][hdinsight-hbase-get-started]に関するページを参照してください。
-* **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。 方法については、[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]に関するページを参照してください。
+* **HDInsight 環境の HBase クラスター**。 HBase クラスターのプロビジョニングについては、「[HDInsight での Apache HBase の使用][hdinsight-hbase-get-started]」を参照してください。
+* **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。 方法については、「[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。
 
 **ホスト名を確認するには**
 
@@ -78,7 +78,7 @@ SQLLine を使用するには、以下のものが必要です。
 ### <a name="prerequisites"></a>前提条件
 手順を実行する前に、以下のものが必要です。
 
-* DNS 仮想マシンで Azure 仮想ネットワークにデプロイされた HBase クラスター。  方法については、[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]に関するページを参照してください。
+* DNS 仮想マシンで Azure 仮想ネットワークにデプロイされた HBase クラスター。  方法については、「[Azure Virtual Network での HBase クラスターの作成][hdinsight-hbase-provision-vnet]」を参照してください。
 
   > [!IMPORTANT]
   > 仮想ネットワークに DNS サーバーをインストールする必要があります。 方法については、「[2 つの Azure 仮想ネットワーク間の DNS の構成](hdinsight-hbase-geo-replication-configure-dns.md)」を参照してください。
@@ -106,10 +106,10 @@ Azure 仮想ネットワークに HBase クラスターをプロビジョニン�
 
 1. [Azure クラシック ポータル][azure-portal]にサインインします。
 2. 左側の **[ネットワーク]**をクリックします。
-3. 作成してある仮想ネットワークをクリックします ([Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]に関するページを参照してください)。
+3. 作成してある仮想ネットワークをクリックします (「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」を参照)。
 4. 上部にある **[構成]** をクリックします。
 5. **[ポイント対サイト接続]** セクションで、**[ポイント対サイト接続の構成]** を選択します。
-6. **[開始 IP]** と **[CIDR]** を構成し、接続時に VPN クライアントが IP アドレスを受け取る IP アドレスの範囲を指定します。 この範囲は、オンプレミスのネットワークに存在する範囲および接続先の Azure 仮想ネットワークと重複することはできません。 たとえば次のようになります。 仮想ネットワークに対して 10.0.0.0/20 を選択した場合、クライアント アドレス空間には 10.1.0.0/24 を選択できます。 詳細については、[ポイント対サイトの接続][vnet-point-to-site-connectivity]に関するページを参照してください。
+6. **[開始 IP]** と **[CIDR]** を構成し、接続時に VPN クライアントが IP アドレスを受け取る IP アドレスの範囲を指定します。 この範囲は、オンプレミスのネットワークに存在する範囲および接続先の Azure 仮想ネットワークと重複することはできません。 たとえば次のようになります。 仮想ネットワークに対して 10.0.0.0/20 を選択した場合、クライアント アドレス空間には 10.1.0.0/24 を選択できます。 詳細については、「[[ポイント対サイト接続]][vnet-point-to-site-connectivity] ページ」を参照してください。
 7. 仮想ネットワーク アドレス空間セクションで **[ゲートウェイ サブネットの追加]**をクリックします。
 8. ページの下部にある **[保存]** をクリックします。
 9. **[はい]** をクリックして変更を確定します。 システムが変更を完了するまで待ってから、次の手順に進みます。
@@ -199,9 +199,11 @@ X.509 証明書を作成する方法の 1 つは、 [Microsoft Visual Studio Exp
 2. jar ファイルを開くか実行します。 [Java ランタイム環境](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)が必要です。
 3. **[次へ]** を 2 回クリックします。
 4. 書き込みアクセス許可のあるパスを指定し、 **[次へ]**をクリックします。
-    >[AZURE.NOTE] 既定のインストール フォルダーは、C:\Program Files\squirrel-sql-3.6 です。  このパスに書き込むには、インストーラーに管理者特権を付与する必要があります。 管理者としてコマンド プロンプトを開き、Java の bin フォルダーに移動して実行します。
-    >
-    >     java.exe -jar [the path of the SQuirreL jar file]
+
+  > [!NOTE]
+  > 既定のインストール フォルダーは、C:\Program Files\squirrel-sql-3.6 です。  このパスに書き込むには、インストーラーに管理者特権を付与する必要があります。 管理者としてコマンド プロンプトを開き、Java の bin フォルダーに移動して実行します。
+  >
+  >     java.exe -jar [the path of the SQuirreL jar file]
 5. **[OK]** をクリックして、ターゲット ディレクトリの作成を確認します。
 6. 既定の設定では、Base および Standard パッケージがインストールされます。  **[次へ]**をクリックします。
 7. **[次へ]** を 2 回クリックし、**[完了]** をクリックします。
@@ -265,10 +267,10 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 ## <a name="next-steps"></a>次のステップ
 この記事では、HDInsight で Apache Phoenix を使用する方法を説明しました。  詳細については、次を参照してください。
 
-* [HDInsight HBase の概要][hdinsight-hbase-overview]: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと厳密な整合性を実現します。
-* [Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]: アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
-* 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-geo-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
-* [HDInsight の HBase を使った Twitter の感情分析][hbase-twitter-sentiment]: HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[感情分析](http://en.wikipedia.org/wiki/Sentiment_analysis)を実施する方法について説明します。
+* [HDInsight HBase の概要][hdinsight-hbase-overview]: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
+* 「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」: アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
+* 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
+* 「[HDInsight 環境の HBase で Twitter のセンチメントを分析する][hbase-twitter-sentiment]」: HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[感情分析](http://en.wikipedia.org/wiki/Sentiment_analysis)を実行する方法について説明します。
 
 [azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
@@ -290,6 +292,6 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

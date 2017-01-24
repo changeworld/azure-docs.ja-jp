@@ -1,6 +1,6 @@
 ---
-title: "仮想マシンでの Docker および Compose | Microsoft Docs"
-description: "Azure の Linux 仮想マシンでの Compose と Docker の操作を簡単に紹介します。"
+title: "Azure の Linux VM で Docker Compose を使用する | Microsoft Docs"
+description: "Azure の Linux 仮想マシンで Docker と Compose を使用する方法"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -13,23 +13,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/22/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 6433922d1acfad4e84f57a51d6ebb5b6fdea31b1
+ms.sourcegitcommit: 3295120664e409440641818b13dd1abab6f2f72f
+ms.openlocfilehash: 06ad7f9267f24ee1f2fe417ad4aa0bf1096832d6
 
 
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-on-an-azure-virtual-machine"></a>Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する
-Docker と [Compose](http://github.com/docker/compose) を使用して、Azure の Linux 仮想マシンで複雑なアプリケーションを定義し、実行します。 Compose では、単純なテキスト ファイルを使用して、複数の Docker コンテナーで構成されるアプリケーションを定義します。 次に、定義された環境をデプロイするためのあらゆる操作を実行する単一のコマンドで、アプリケーションを起動します。 
-
-たとえば、この記事では、Ubuntu VM のバックエンド MariaDB SQL Database で WordPress ブログをすばやくセットアップする方法を示します。 Compose を使用してさらに複雑なアプリケーションをセットアップすることもできます。
+[Compose](http://github.com/docker/compose) では、単純なテキスト ファイルを使用して、複数の Docker コンテナーで構成されるアプリケーションを定義します。 次に、定義された環境をデプロイするためのあらゆる操作を実行する単一のコマンドで、アプリケーションを起動します。 たとえば、この記事では、Ubuntu VM のバックエンド MariaDB SQL Database で WordPress ブログをすばやくセットアップする方法を示します。 Compose を使用してさらに複雑なアプリケーションをセットアップすることもできます。
 
 ## <a name="step-1-set-up-a-linux-vm-as-a-docker-host"></a>手順 1: Docker ホストとしての Linux VM のセットアップ
 Azure のさまざまな手順と Azure Marketplace で入手できるイメージまたは Resource Manager テンプレートを使用して、Linux VM を作成し、Docker ホストとしてセットアップできます。 たとえば、[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)を使って Azure Docker VM 拡張機能で Ubuntu VM を簡単に作成する方法については、「[Docker VM 拡張機能を使用した環境のデプロイ](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 
 
-Docker VM 拡張機能を使用すると、VM が自動的に Docker ホストとしてセットアップされ、Compose が既にインストールされた状態になります。 前述の記事の例では、Resource Manager モードで [Mac、Linux、Windows 用の Azure コマンド ライン インターフェイス](../xplat-cli-install.md) (Azure CLI) を使用して、VM を作成する方法を示しています。
+Docker VM 拡張機能を使用すると、VM が自動的に Docker ホストとしてセットアップされ、Compose が既にインストールされた状態になります。 前述の記事の例では、Resource Manager モードで [Azure CLI 1.0](../xplat-cli-install.md) を使用して VM を作成する方法を示しています。
 
 上記のドキュメントの基本的なコマンドは、`myResourceGroup` という名前のリソース グループを場所 `West US` に作成し、Azure Docker VM 拡張機能がインストールされた VM をデプロイします。
 
@@ -37,6 +35,14 @@ Docker VM 拡張機能を使用すると、VM が自動的に Docker ホスト�
 azure group create --name myResourceGroup --location "West US" \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
 ```
+
+Azure CLI は数秒でプロンプトに戻りますが、Docker ホストの作成と構成はまだ行われています。 デプロイが完了するには数分かかります。 `azure vm show` コマンドを使うと、Docker ホストの詳細な状態を確認できます。 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myDockerVM` という名前 (テンプレートによる既定の名前 - この名前は変更しないでください) の VM の状態を確認します。 前の手順で作成したリソース グループの名前を入力します。
+
+```azurecli
+azure vm show --resource-group myResourceGroup --name myDockerVM
+```
+
+出力の先頭付近に VM の `ProvisioningState` が表示されます。 ここで " `Succeeded`" と表示されている場合デプロイは完了しており、VM に SSH で接続できます。
 
 ## <a name="step-2-verify-that-compose-is-installed"></a>手順 2: Compose がインストールされていることを確認する
 デプロイが完了したら、デプロイ時に指定した DNS 名を使用して、SSH で新しい Docker ホストに接続します。 `azure vm show -g myDockerResourceGroup -n myDockerVM` を使うと、DNS 名など、VM の詳細を見ることができます。
@@ -51,8 +57,7 @@ docker-compose --version
 
 > [!TIP]
 > 別の方法で作成した Docker ホストに Compose を自分でインストールする必要がある場合は、 [Compose のドキュメント](https://github.com/docker/compose/blob/882dc673ce84b0b29cd59b6815cb93f74a6c4134/docs/install.md)をご覧ください。
-> 
-> 
+
 
 ## <a name="step-3-create-a-docker-composeyml-configuration-file"></a>手順3: docker-compose.yml 構成ファイルの作成
 次に、 `docker-compose.yml` というテキスト構成ファイルを作成して、VM 上で実行される Docker コンテナーを定義します。 このファイルでは、各コンテナーで実行するイメージ (イメージは Dockerfile からのビルドも使用できます)、必要な環境変数と依存関係、ポート、コンテナー間のリンクを指定します。 yml ファイルの構文の詳細については、 [Compose ファイルのリファレンス](http://docs.docker.com/compose/yml/)をご覧ください。
@@ -90,7 +95,6 @@ db:
 
 ```bash
 docker-compose up -d
-
 ```
 
 このコマンドにより、 `docker-compose.yml`で指定された Docker コンテナーが起動されます。 この手順は、完了までに 1 ～ 2 分かかります。 次の例のような出力が表示されます。
@@ -103,8 +107,7 @@ Creating wordpress_wordpress_1...
 
 > [!NOTE]
 > コンテナーがバックグラウンドで継続的に実行されるように、必ず起動時に **-d** オプションを使用してください。
-> 
-> 
+
 
 コンテナーが起動していることを確認するために、「 `docker-compose ps`」と入力します。 次のような結果が表示されます。
 
@@ -134,6 +137,6 @@ ess_1              apache2-for ...                       /tcp
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

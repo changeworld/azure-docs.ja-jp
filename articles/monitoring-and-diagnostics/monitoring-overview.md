@@ -1,28 +1,31 @@
 ---
-title: "Microsoft Azure での監視の概要 | Microsoft Docs"
-description: "アラート、webhook、自動スケールなど Microsoft Azure での監視と診断の最上位レベルの概要。"
+title: "Azure 監視の概要 | Microsoft Docs"
+description: "アラート、webhook、自動スケールなど、Microsoft Azure における Azure Monitor 機能の最上位レベルの概要。"
 author: rboucher
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 1b962c74-8d36-4778-b816-a893f738f92d
 ms.service: monitoring-and-diagnostics
-l: 
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2016
+ms.date: 12/05/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4a9e92330081bcf56b7e3755597f76d3530a823d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2f8ff117966b11e7415abaa5e7a0735742d7ef99
 
 
 ---
+
 # <a name="overview-of-monitoring-in-microsoft-azure"></a>Microsoft Azure での監視の概要
 この記事では、Azure リソースの監視の概念の概要を説明します。 特定の種類に該当するリソースについては、詳しい情報のある場所も紹介しています。  Azure 以外の観点からアプリケーションを監視する場合の概要については、「[監視と診断のガイダンス](../best-practices-monitoring.md)」をご覧ください。
+
+Azure Monitor のビデオ チュートリアルは、  
+[Microsoft Azure 監視と診断の詳細](https://channel9.msdn.com/Blogs/Azure-Monitoring/Get-Started-with-Azure-Monitor)に関するページから確認できます。 この [Microsoft Azure 監視と診断の詳細](https://channel9.msdn.com/events/Ignite/2016/BRK2234)に関するページには、Azure Monitor の使用シナリオについて説明する追加ビデオもあります。  
 
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 監視では、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 そのような知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
 
@@ -145,7 +148,6 @@ Azure では、ベアメタル インフラストラクチャからアプリケ�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

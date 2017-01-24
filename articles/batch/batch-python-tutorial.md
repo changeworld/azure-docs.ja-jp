@@ -3,7 +3,7 @@ title: "チュートリアル - Azure Batch Python クライアントの概要 |
 description: "Azure Batch の基本的な概念と、単純なシナリオで Batch サービスを開発する方法について説明します。"
 services: batch
 documentationcenter: python
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 42cae157-d43d-47f8-88f5-486ccfd334f4
@@ -12,11 +12,11 @@ ms.devlang: python
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 09/27/2016
-ms.author: marsma
+ms.date: 11/30/2016
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: a72a726b9c5ac2b3698d79aff00591c444c26594
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 3c1efaa277c6fba7965d6fe10cc5991cb02281d7
 
 
 ---
@@ -24,12 +24,12 @@ ms.openlocfilehash: a72a726b9c5ac2b3698d79aff00591c444c26594
 > [!div class="op_single_selector"]
 > * [.NET](batch-dotnet-get-started.md)
 > * [Python](batch-python-tutorial.md)
-> 
-> 
+>
+>
 
 Python で作成された小さな Batch アプリケーションについて考察しながら [Azure Batch][azure_batch] と [Batch Python][py_azure_sdk] クライアントの基礎を取り上げます。 2 つのサンプル スクリプトが、Batch サービスを利用してクラウド上の Linux 仮想マシンで並列ワークロードを処理するようすや、それらのスクリプトから [Azure Storage](../storage/storage-introduction.md) とやり取りしてファイルを転送したり取得したりする方法について見ていきましょう。 また、一般的な Batch アプリケーション ワークフローと、ジョブ、タスク、プール、コンピューティング ノードなど、Batch の主なコンポーネントの基本も理解できます。
 
-![Batch solution workflow (basic)][11]<br/>
+![Batch ソリューションのワークフロー (基本)][11]<br/>
 
 ## <a name="prerequisites"></a>前提条件
 この記事は、Python の実務知識を持ち、Linux に精通している読者を想定しています。 また、以下で指定されている、Azure、Batch サービス、Storage サービスのアカウント作成要件を満たせることも前提としています。
@@ -40,7 +40,7 @@ Python で作成された小さな Batch アプリケーションについて考
 * **ストレージ アカウント**: 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 
 ### <a name="code-sample"></a>サンプル コード
-Python チュートリアルの[コード サンプル][github_article_samples]は、GitHub の [azure-batch-samples][github_samples] リポジトリに多数存在する Batch コード サンプルの 1 つです。 リポジトリのホーム ページから **[Clone or download (複製またはダウンロード)] > [Download ZIP (Zip のダウンロード)]** の順にクリックするか、[azure-batch-samples-master.zip][github_samples_zip] というダウンロード リンクを直接クリックすると、すべてのサンプルをダウンロードできます。 ZIP ファイルの内容を抽出すると、このチュートリアルで使う 2 つのスクリプトが `article_samples` ディレクトリに展開されます。
+Python チュートリアルの[コード サンプル][github_article_samples]は、GitHub の [azure-batch-samples][github_samples] リポジトリに置かれている多数の Batch コード サンプルの 1 つです。 リポジトリのホーム ページから **[Clone or download (複製またはダウンロード)]、[Download ZIP (ZIP のダウンロード)]** の順にクリックするか、[azure-batch-samples-master.zip][github_samples_zip] というダウンロード リンクを直接クリックすると、すべてのサンプルをダウンロードできます。 ZIP ファイルの内容を抽出すると、このチュートリアルで使う 2 つのスクリプトが `article_samples` ディレクトリに展開されます。
 
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_client.py`<br/>
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_task.py`
@@ -49,28 +49,28 @@ Python チュートリアルの[コード サンプル][github_article_samples]�
 サンプル スクリプト *python_tutorial_client.py* をローカル ワークステーションで実行するには、バージョン **2.7** または **3.3+** と互換性のある **Python インタープリター**が必要です。 このスクリプトは、Linux と Windows の両方でテストされています。
 
 ### <a name="cryptography-dependencies"></a>暗号化の依存関係
-`azure-batch` パッケージと `azure-storage` Python パッケージに必要な、[暗号化][crypto]依存関係をインストールする必要があります。 プラットフォームに適した次のいずれかの操作を実行するか、[暗号化インストール][crypto_install]の詳細を参照してください。
+`azure-batch` と `azure-storage` の Python パッケージに必要な、[暗号化][crypto]ライブラリの依存関係をインストールする必要があります。 プラットフォームに適した次のいずれかの操作を実行するか、[暗号化インストール][crypto_install]の詳細を参照してください。
 
 * Ubuntu
-  
+
     `apt-get update && apt-get install -y build-essential libssl-dev libffi-dev libpython-dev python-dev`
 * CentOS
-  
+
     `yum update && yum install -y gcc openssl-dev libffi-devel python-devel`
 * SLES/OpenSUSE
-  
+
     `zypper ref && zypper -n in libopenssl-dev libffi48-devel python-devel`
 * Windows
-  
+
     `pip install cryptography`
 
 > [!NOTE]
 > Linux に Python 3.3+ をインストールする場合は、Python 依存関係には python3 に対応するものを使用します。 たとえば、Ubuntu では次のようになります: `apt-get update && apt-get install -y build-essential libssl-dev libffi-dev libpython3-dev python3-dev`
-> 
-> 
+>
+>
 
 ### <a name="azure-packages"></a>Azure パッケージ
-次に、**Azure Batch** と **Azure Storage** の Python パッケージをインストールします。 それには、 **pip** と次の場所にある *requirements.txt* を使います。
+次に、**Azure Batch** と **Azure Storage** の Python パッケージをインストールします。 両方のパッケージをインストールするには、**pip** と、ここにある *requirements.txt* を使用します。
 
 `/azure-batch-samples/Python/Batch/requirements.txt`
 
@@ -84,9 +84,9 @@ Batch パッケージと Storage パッケージをインストールするに�
 `pip install azure-storage`
 
 > [!TIP]
-> 特権のないアカウントを使用する場合、コマンドの前に「`sudo`」を入力する必要があります。 たとえば、「 `sudo pip install -r requirements.txt`」のように入力します。 Python パッケージのインストールの詳細については、readthedocs.io の「[Installing Packages (パッケージのインストール)][pypi_install]」を参照してください。
-> 
-> 
+> 特権のないアカウントを使用する場合、コマンドの前に「`sudo`」を入力する必要があります。 たとえば、「 `sudo pip install -r requirements.txt`」のように入力します。 Python パッケージのインストールの詳細については、python.org の「[Installing Packages (パッケージのインストール)][pypi_install]」を参照してください。
+>
+>
 
 ## <a name="batch-python-tutorial-code-sample"></a>Batch Python チュートリアルのコード サンプル
 Batch Python チュートリアルのコード サンプルは、2 つの Python スクリプトといくつかのデータ ファイルで構成されています。
@@ -177,8 +177,8 @@ Batch には、Azure Storage とやり取りするための組み込みのサポ
 
 > [!TIP]
 > 「[Python から Azure BLOB ストレージを使用する方法](../storage/storage-python-how-to-use-blob-storage.md)」に、Azure Storage コンテナーと BLOB の操作がわかりやすく示されています。 Batch を扱う場合は、この記事を早い段階で読むことをお勧めします。
-> 
-> 
+>
+>
 
 ## <a name="step-2-upload-task-script-and-data-files"></a>手順 2: タスク スクリプトとデータ ファイルをアップロードする
 ![タスク アプリケーションと入力 (データ) ファイルをコンテナーにアップロードする][2]
@@ -266,8 +266,8 @@ Shared Access Signature (SAS) は、Azure Storage のコンテナーと BLOB へ
 
 > [!TIP]
 > Storage アカウントのデータに安全なアクセスを提供する方法については、Shared Access Signature に関する 2 つの記事、[第 1 部: SAS モデルの概要](../storage/storage-dotnet-shared-access-signature-part-1.md)と[第 2 部: BLOB service での SAS の作成と使用](../storage/storage-dotnet-shared-access-signature-part-2.md)に関するページをご覧ください。
-> 
-> 
+>
+>
 
 ## <a name="step-3-create-batch-pool"></a>手順 3: Batch プールを作成する
 ![Batch プールを作成する][3]
@@ -288,7 +288,7 @@ Batch **プール**は複数のコンピューティング ノード (仮想マ�
      base_url=_BATCH_ACCOUNT_URL)
 ```
 
-次に `create_pool`を呼び出して、Batch アカウントにコンピューティング ノードのプールを作成します。
+次に、 `create_pool`を呼び出してコンピューティング ノードのプールが Batch アカウントに作成されます。
 
 ```python
 def create_pool(batch_service_client, pool_id,
@@ -371,8 +371,8 @@ def create_pool(batch_service_client, pool_id,
 
 > [!TIP]
 > Batch プールのコンピューティング ノードで使用できる環境変数と、タスクの作業ディレクトリの詳細については、[Azure Batch 機能の概要](batch-api-basics.md)に関するページの「**タスクの環境設定**」と「**ファイルとディレクトリ**」を参照してください。
-> 
-> 
+>
+>
 
 ## <a name="step-4-create-batch-job"></a>手順 4: Batch ジョブを作成する
 ![Batch ジョブを作成する][4]<br/>
@@ -460,8 +460,8 @@ def add_tasks(batch_service_client, job_id, input_files,
 
 > [!IMPORTANT]
 > `$AZ_BATCH_NODE_SHARED_DIR` などの環境変数にアクセスする場合や、ノードの `PATH` にないアプリケーションを実行する場合は、`/bin/sh -c MyTaskApplication $MY_ENV_VAR` を使用するなど、タスク コマンド ラインからシェルを明示的に呼び出す必要があります。 タスクがノードの `PATH` 内にあるアプリケーションを実行し、環境変数を参照しない場合、この要件は不要です。
-> 
-> 
+>
+>
 
 上記のコード スニペットの `for` ループ内では、5 つのコマンド ライン引数を *python_tutorial_task.py* が受け取るようにタスクのコマンド ラインが構成されています。
 
@@ -525,7 +525,7 @@ def wait_for_tasks_to_complete(batch_service_client, job_id, timeout):
 ```
 
 ## <a name="step-7-download-task-output"></a>手順 7: タスクの出力をダウンロードする
-![Storage からタスク出力をダウンロードします][7]<br/>
+![Storage からタスク出力をダウンロードする][7]<br/>
 
 これでジョブが完了したので、タスクの出力を Azure Storage からダウンロードできます。 ダウンロードするには、*python_tutorial_client.py* 内の `download_blobs_from_container` を呼び出します。
 
@@ -563,8 +563,8 @@ def download_blobs_from_container(block_blob_client,
 
 > [!NOTE]
 > *python_tutorial_client.py* では、ファイルのダウンロード先がホーム ディレクトリとなるように `download_blobs_from_container` を呼び出しています。 この出力場所は自由に変更できます。
-> 
-> 
+>
+>
 
 ## <a name="step-8-delete-containers"></a>手順 8: コンテナーを削除する
 Azure Storage にあるデータは課金対象なので、Batch ジョブに使用しなくなった BLOB がある場合は削除することをお勧めします。 *python_tutorial_client.py* では、[BlockBlobService.delete_container][py_delete_container] を 3 回呼び出すことによってこの処理を行います。
@@ -593,16 +593,16 @@ if query_yes_no('Delete pool?') == 'yes':
 
 > [!IMPORTANT]
 > コンピューティング リソースは課金対象であるため、使用していないプールを削除することでコストを最小限に抑えられることを覚えておいてください。 また、プールを削除すると、そのプール内のすべてのコンピューティング ノードが削除され、プールの削除後はノード上のデータを復元できなくなる点にも注意してください。
-> 
-> 
+>
+>
 
 ## <a name="run-the-sample-script"></a>サンプル スクリプトの実行
-チュートリアルの[コード サンプル][github_article_samples]にある *python_tutorial_client.py* スクリプトを実行すると、コンソールの出力は次のようになります。 プールのコンピューティング ノードを作成するときや起動するとき、またはプールの起動タスクのコマンドを実行しているときに、画面に `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` と表示されて待機状態になります。 実行中と実行後のプール、コンピューティング ノード、ジョブ、タスクを監視するには、[Azure Portal][azure_portal] を使用します。 アプリケーションで作成された Storage リソース (コンテナーと BLOB) を表示するには、[Azure Portal][azure_portal] か [Microsoft Azure Storage エクスプローラー][storage_explorer]を使用します。
+チュートリアルの[コード サンプル][github_article_samples]にある *python_tutorial_client.py* スクリプトを実行すると、コンソールの出力は次のようになります。 プールのコンピューティング ノードを作成するときや起動するとき、またはプールの起動タスクのコマンドを実行しているときに、画面に `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` と表示されて待機状態になります。 実行中と実行後のプール、コンピューティング ノード、ジョブ、タスクを監視するには、[Azure Portal][azure_portal] を使用します。 アプリケーションで作成された Storage リソース (コンテナーと BLOB) を表示するには、[Azure Portal][azure_portal] または [Microsoft Azure ストレージ エクスプローラー][storage_explorer]を使用します。
 
 > [!TIP]
 > `azure-batch-samples/Python/Batch/article_samples` ディレクトリ内から *python_tutorial_client.py* スクリプトを実行してください。 `common.helpers` モジュール インポートの相対パスが使用されるため、このディレクトリ内からスクリプトを実行しなかった場合に `ImportError: No module named 'common'` が表示されることがあります。
-> 
-> 
+>
+>
 
 既定の構成でサンプルを実行する場合、通常の実行時間は **約 5 ～ 7 分間** です。
 
@@ -689,8 +689,7 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [py_vm_config]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.VirtualMachineConfiguration
 [pypi_batch]: https://pypi.python.org/pypi/azure-batch
 [pypi_storage]: https://pypi.python.org/pypi/azure-storage
-
-[pypi_install]: http://python-packaging-user-guide.readthedocs.io/en/latest/installing/
+[pypi_install]: https://packaging.python.org/installing/
 [storage_explorer]: http://storageexplorer.com/
 [visual_studio]: https://www.visualstudio.com/products/vs-2015-product-editions
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
@@ -709,6 +708,6 @@ Batch ソリューションの基本的なワークフローを理解したと�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

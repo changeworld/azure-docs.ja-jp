@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/21/2016
 ms.author: v-jeana; hascipio; v-dabosl
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3849aa88b5314d36a98d3caf5f3307e656e1a931
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
 
 
 ---
@@ -101,7 +101,7 @@ ms.openlocfilehash: 3849aa88b5314d36a98d3caf5f3307e656e1a931
 4. 追加または削除する共同管理者の電子メール アドレスを追加します。
 5. [ **保存**] を選択します。
 
-## <a name="next-steps-other-support-queries"></a>次の手順: その他のサポート クエリ
+## <a name="next-steps--other-support-queries"></a>次の手順: その他のサポート クエリ
 次の問題については、 [https://portal.azure.com](https://portal.azure.com)に問題を記録してください。
 
 * 課金エラーを報告する方法を教えてください。
@@ -124,6 +124,6 @@ ms.openlocfilehash: 3849aa88b5314d36a98d3caf5f3307e656e1a931
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

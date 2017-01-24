@@ -1,28 +1,32 @@
 ---
-title: サンプルのインフラストラクチャによるチュートリアル | Microsoft Docs
-description: Azure でのサンプルのインフラストラクチャのデプロイに関する主要な設計と実装のガイドラインについて説明します。
-documentationcenter: ''
+title: "サンプルの Azure インフラストラクチャによるチュートリアル | Microsoft Docs"
+description: "Azure でのサンプルのインフラストラクチャのデプロイに関する主要な設計と実装のガイドラインについて説明します。"
+documentationcenter: 
 services: virtual-machines-windows
 author: iainfoulds
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 7032b586-e4e5-4954-952f-fdfc03fc1980
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
+translationtype: Human Translation
+ms.sourcegitcommit: 1e52ae69951b6b1feee6207033a85a583d13bcc2
+ms.openlocfilehash: 851dd4a2a76eff0e2f95c9a0a7280986cfb3e26a
+
 
 ---
-# サンプルの Azure インフラストラクチャによるチュートリアル
+# <a name="example-azure-infrastructure-walkthrough"></a>サンプルの Azure インフラストラクチャによるチュートリアル
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
-この記事では、サンプルのアプリケーション インフラストラクチャの構築について説明します。ここでは、名前付け規則、可用性セット、仮想ネットワークおよびロード バランサーに関するガイドラインと意思決定のすべてをまとめたシンプルなオンライン ストア向けインフラストラクチャを設計し、実際に仮想マシン (VM) をデプロイする方法について説明します。
+この記事では、サンプルのアプリケーション インフラストラクチャの構築について説明します。 ここでは、名前付け規則、可用性セット、仮想ネットワークおよびロード バランサーに関するガイドラインと意思決定のすべてをまとめたシンプルなオンライン ストア向けインフラストラクチャを設計し、実際に仮想マシン (VM) をデプロイする方法について説明します。
 
-## ワークロードの例
+## <a name="example-workload"></a>ワークロードの例
 Adventure Works Cycles では、以下の項目で構成されるオンライン ストア アプリケーションを Azure に構築する必要があります。
 
 * Web 層でクライアント フロントエンドを実行する 2 台の IIS サーバー
@@ -30,12 +34,12 @@ Adventure Works Cycles では、以下の項目で構成されるオンライン
 * データベース層で製品のデータと注文を格納するための AlwaysOn 可用性グループ (2 つの SQL Server とマジョリティ ノード監視) を含む 2 つの Microsoft SQL Server インスタンス
 * 認証層の顧客アカウントとサプライヤー用の 2 つの Active Directory ドメイン コントローラー
 * すべてのサーバーは次の 2 つのサブネットに配置されています。
-  * フロント エンド サブネット: Web サーバー用
+  * フロント エンド サブネット: Web サーバー用 
   * バック エンド サブネット: アプリケーション サーバー、SQL クラスター、およびドメイン コントローラー用
 
 ![アプリケーション インフラストラクチャのさまざまなレベルの図](./media/virtual-machines-common-infrastructure-service-guidelines/example-tiers.png)
 
-セキュリティで保護された着信 Web トラフィックについては、顧客がオンライン ストアを閲覧する際に Web サーバー間で負荷を分散する必要があります。Web サーバーからの HTTP 要求の形式での注文処理トラフィックについては、アプリケーション サーバー間で負荷を分散する必要があります。さらに、インフラストラクチャは高可用性対応で設計する必要があります。
+セキュリティで保護された着信 Web トラフィックについては、顧客がオンライン ストアを閲覧する際に Web サーバー間で負荷を分散する必要があります。 Web サーバーからの HTTP 要求の形式での注文処理トラフィックについては、アプリケーション サーバー間で負荷を分散する必要があります。 さらに、インフラストラクチャは高可用性対応で設計する必要があります。
 
 結果として得られる設計には、次のものが組み込まれる必要があります。
 
@@ -56,16 +60,16 @@ Adventure Works Cycles では、以下の項目で構成されるオンライン
 * 可用性セットは、azos-use-as-**[ロール]** を使用します。
 * 仮想マシン名は、azos-use-vm-**[仮想マシン名]** を使用します。
 
-## Azure サブスクリプションとアカウント
+## <a name="azure-subscriptions-and-accounts"></a>Azure サブスクリプションとアカウント
 Adventure Works Cycles は、Adventure Works Enterprise Subscription という名前のエンタープライズ サブスクリプションを使用して、この IT ワークロードに対する課金を行います。
 
-## ストレージ アカウント
+## <a name="storage-accounts"></a>ストレージ アカウント
 Adventure Works Cycles は、次の 2 つのストレージ アカウントが必要であると判断しました。
 
-* **adventureazosusesawebapp**: Web サーバー、アプリケーション サーバー、ドメイン コントローラーとそれらのデータ ディスクの Standard Storage 用。
-* **adventureazosusesasql**: SQL Server VM とそのデータ ディスクの Premium Storage 用。
+* **adventureazosusesawebapp** : Web サーバー、アプリケーション サーバー、ドメイン コントローラーとそれらのデータ ディスクの Standard Storage 用。
+* **adventureazosusesasql** : SQL Server VM とそのデータ ディスクの Premium Storage 用。
 
-## 仮想ネットワークとサブネット
+## <a name="virtual-network-and-subnets"></a>仮想ネットワークとサブネット
 仮想ネットワークを Adventure Work Cycles のオンプレミス ネットワークに常時接続している必要はないので、Adventure Work Cycles はクラウド専用の仮想ネットワークに決定しました。
 
 Contoso は、Azure ポータルを使用して次の設定でクラウド専用仮想ネットワークを作成しました。
@@ -80,25 +84,25 @@ Contoso は、Azure ポータルを使用して次の設定でクラウド専用
   * 名前: BackEnd
   * アドレス空間: 10.0.2.0/24
 
-## 可用性セット
+## <a name="availability-sets"></a>可用性セット
 オンライン ストアの 4 つの階層すべてで高可用性を維持するため、Adventure Works Cycles は次の 4 つの可用性セットを採用しました。
 
-* **azos-use-as-web**: Web サーバー用
-* **azos-use-as-app**: アプリケーション サーバー用
-* **azos-use-as-sql**: SQL Server 用
-* **azos-use-as-dc**: ドメイン コントローラー用
+* **azos-use-as-web** : Web サーバー用
+* **azos-use-as-app** : アプリケーション サーバー用
+* **azos-use-as-sql** : SQL Server 用
+* **azos-use-as-dc** : ドメイン コントローラー用
 
-## 仮想マシン
+## <a name="virtual-machines"></a>仮想マシン
 Adventure Works Cycles は、各 Azure VM に対して次の名前を決定しました。
 
-* **azos-use-vm-web01**: 1 番目の Web サーバー用
-* **azos-use-vm-web02**: 2 番目の Web サーバー用
-* **azos-use-vm-app01**: 1 番目のアプリケーション サーバー用
-* **azos-use-vm-app02**: 2 番目のアプリケーション サーバー用
-* **azos-use-vm-sql01**: クラスター内の 1 番目の SQL Server サーバー用
-* **azos-use-vm-sql02**: クラスター内の 2 番目の SQL Server サーバー用
-* **azos-use-vm-dc01**: 1 番目のドメイン コントローラー用
-* **azos-use-vm-dc02**: 2 番目のドメイン コントローラー用
+* **azos-use-vm-web01** : 1 番目の Web サーバー用
+* **azos-use-vm-web02** : 2 番目の Web サーバー用
+* **azos-use-vm-app01** : 1 番目のアプリケーション サーバー用
+* **azos-use-vm-app02** : 2 番目のアプリケーション サーバー用
+* **azos-use-vm-sql01** : クラスター内の 1 番目の SQL Server サーバー用
+* **azos-use-vm-sql02** : クラスター内の 2 番目の SQL Server サーバー用
+* **azos-use-vm-dc01** : 1 番目のドメイン コントローラー用
+* **azos-use-vm-dc02** : 2 番目のドメイン コントローラー用
 
 完成すると次のような構成になります。
 
@@ -114,7 +118,12 @@ Adventure Works Cycles は、各 Azure VM に対して次の名前を決定し�
 * Web サーバーからアプリケーション サーバーへの暗号化されていない Web トラフィック用の内部負荷分散セット
 * 単一リソース グループ
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Dec16_HO3-->
+
+

@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 09/27/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
-ms.openlocfilehash: f4150149cea4fa31e7b991e15ffcbefa8a202ada
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: c0c9d107ff1642d66e96de5409863e4e894d1b6b
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: f4150149cea4fa31e7b991e15ffcbefa8a202ada
 Azure での SQL データベースのパフォーマンスの監視は、選択したデータベース パフォーマンスのレベルに対するリソース使用率を監視することから始めます。 監視することで、データベースに余分な容量があるかどうかや、リソースが上限に達したことで問題が発生しているかどうかを判断できます。また、データベースのパフォーマンス レベルと[サービス レベル](sql-database-service-tiers.md)を調整する必要があるかどうかを判断することもできます。 データベースの監視には、[Azure Portal](https://portal.azure.com) のグラフィカル ツールや SQL の[動的管理ビュー](https://msdn.microsoft.com/library/ms188754.aspx)を使用できます。
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Azure ポータルを使用したデータベースの監視
-[Azure Portal](https://portal.azure.com/) では、データベースを選択して **[監視]** グラフをクリックすると、単一のデータベースの使用率を監視することができます。 これにより、**[メトリック]** ウィンドウが表示されます。**[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
+[Azure Portal](https://portal.azure.com/) では、データベースを選択して **[監視]** グラフをクリックすると、スタンドアロン データベースの使用率を監視することができます。 これにより、**[メトリック]** ウィンドウが表示されます。**[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
 
 * CPU の割合
 * DTU の割合
@@ -55,6 +55,6 @@ Portal で公開されているものと同じメトリックを、システム 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

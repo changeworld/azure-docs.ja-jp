@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
-ms.author: milangada;cenkdin;juliako
+ms.author: milanga;cenkdin;juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: a979519dc617f40e6f090a412d17aa7778cbcf69
+ms.sourcegitcommit: 63669ba827771c75937568276f32b130980f3f65
+ms.openlocfilehash: e236c31e7fbce304ceaa069235b23efb180fb111
 
 
 ---
@@ -37,7 +37,7 @@ Media Services は、指定されたストレージ キーに依存します。 
 ## <a name="step-1-regenerate-secondary-storage-access-key"></a>手順 1: セカンダリ ストレージ アクセス キーを再生成する
 セカンダリ ストレージ キーの再生成から開始します。 既定では、セカンダリ キーは Media Services で使用されません。  ストレージ キーをローリングする方法の詳細については、「 [方法: ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
 
-## <a name="a-idstep2astep-2-update-media-services-to-use-the-new-secondary-storage-key"></a><a id="step2"></a>手順 2: Media Services を更新して新しいセカンダリ ストレージ キーを使用する
+## <a name="a-idstep2astep-2--update-media-services-to-use-the-new-secondary-storage-key"></a><a id="step2"></a>手順 2: Media Services を更新して新しいセカンダリ ストレージ キーを使用する
 Media Services を更新してセカンダリ ストレージ アクセス キーを使用します。 再生成されたストレージ キーを Media Services と同期するには、次の 2 つの方法のどちらかを使用できます。
 
 * Azure Portal を使用します。 名前とキーの値を検索するには、Azure Portal に移動してアカウントを選択します。 [設定] ウィンドウが右側に表示されます。 [設定] ウィンドウで、[キー] を選択します。 Media Services で同期するストレージ キーに応じて、同期するキーをプライマリ キーとセカンダリ キーのどちらかに指定します。 この例では、セカンダリ キーを使用します。
@@ -103,13 +103,25 @@ SAS ロケーターを更新 (または再作成) するときに、URL は常�
 
 以下の .NET の例は、同じ ID のロケーターを再作成する方法を示しています。
 
-private static ILocator RecreateLocator(CloudMediaContext context, ILocator locator) { // Save properties of existing locator.
-var asset = locator.Asset; var accessPolicy = locator.AccessPolicy; var locatorId = locator.Id; var startDate = locator.StartTime; var locatorType = locator.Type; var locatorName = locator.Name;
+    private static ILocator RecreateLocator(CloudMediaContext context, ILocator locator)
+    {
+    // Save properties of existing locator.
+    var asset = locator.Asset;
+    var accessPolicy = locator.AccessPolicy;
+    var locatorId = locator.Id;
+    var startDate = locator.StartTime;
+    var locatorType = locator.Type;
+    var locatorName = locator.Name;
 
-// Delete old locator.
-locator.Delete();
+    // Delete old locator.
+    locator.Delete();
 
-if (locator.ExpirationDateTime <= DateTime.UtcNow) { throw new Exception(String.Format( "Cannot recreate locator Id={0} because its locator expiration time is in the past", locator.Id)); }
+    if (locator.ExpirationDateTime <= DateTime.UtcNow)
+        {
+            throw new Exception(String.Format(
+                "Cannot recreate locator Id={0} because its locator expiration time is in the past",
+                locator.Id));
+        }
 
         // Create new locator using saved properties.
         var newLocator = context.Locators.CreateLocator(
@@ -126,7 +138,7 @@ if (locator.ExpirationDateTime <= DateTime.UtcNow) { throw new Exception(String.
     }
 
 
-## <a name="step-5-regenerate-primary-storage-access-key"></a>手順 5: プライマリ ストレージ アクセス キーを再生成する
+## <a name="step-5-regenerate--primary-storage-access-key"></a>手順 5: プライマリ ストレージ アクセス キーを再生成する
 プライマリ ストレージ アクセス キーを再生成します。 ストレージ キーをローリングする方法の詳細については、「 [方法: ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
 
 ## <a name="step-6-update-media-services-to-use-the-new-primary-storage-key"></a>手順 6: Media Services を更新して新しいプライマリ ストレージ キーを使用する
@@ -153,6 +165,6 @@ if (locator.ExpirationDateTime <= DateTime.UtcNow) { throw new Exception(String.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

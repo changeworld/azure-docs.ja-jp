@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/02/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: 70a4c5ee79a5c74d63d461371f70b49a23d5cf25
+ms.sourcegitcommit: 1116ae1c699f59b7f75f25bed105a53b508801b2
+ms.openlocfilehash: f3fd30791d9110ec0a72e9ec9e51b5e762020fe7
 
 
 ---
@@ -91,7 +91,7 @@ SAS トークン内の [KeyName](https://msdn.microsoft.com/library/azure/micros
 構成を説明して SAS 承認を使用する、Service Bus アプリケーションの完全に動作するサンプルについては、 [Service Bus による Shared Access Signature 認証](http://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)に関するページを参照してください。 Service Bus サブスクリプションをセキュリティで保護するために名前空間またはトピックに構成された SAS 承認規則の使用を示す関連のサンプルについては、 [Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)に関するページを参照してください。
 
 ## <a name="access-shared-access-authorization-rules-on-a-namespace"></a>名前空間の共有アクセス承認規則へのアクセス
-Service Bus 名前空間のルートに対する操作では、証明書の認証が必要です。 Azure サブスクリプションの管理証明書をアップロードする必要があります。 管理証明書をアップロードするには、[Azure クラシック ポータル][[設定]]の左側のウィンドウにある **[設定]** をクリックします。 Azure 管理証明書の詳細については、 [Azure 証明書の概要](../cloud-services/cloud-services-certs-create.md#what-are-management-certificates)に関するセクションを参照してください。
+Service Bus 名前空間のルートに対する操作では、証明書の認証が必要です。 Azure サブスクリプションの管理証明書をアップロードする必要があります。 管理証明書をアップロードするには、[Azure クラシック ポータル][Azure classic portal]の左側のウィンドウにある **[設定]** をクリックします。 Azure 管理証明書の詳細については、 [Azure 証明書の概要](../cloud-services/cloud-services-certs-create.md#what-are-management-certificates)に関するセクションを参照してください。
 
 Service Bus 名前空間の共有アクセス承認規則にアクセスするためのエンドポイントは次のようになります。
 
@@ -208,7 +208,7 @@ Service Bus リレーで SAS 承認を使用するには、Service Bus 名前空
 | キューを作成する |Manage |任意の名前空間アドレス |
 | キューを削除する |Manage |任意の有効なキュー アドレス |
 | キューを列挙する |Manage |/$Resources/Queues |
-| キューの説明を取得する |管理または送信 |任意の有効なキュー アドレス |
+| キューの説明を取得する |管理 |任意の有効なキュー アドレス |
 | キューの承認規則を構成する |Manage |任意の有効なキュー アドレス |
 | キューに送信する |送信 |任意の有効なキュー アドレス |
 | キューからメッセージを受信する |リッスン |任意の有効なキュー アドレス |
@@ -221,38 +221,33 @@ Service Bus リレーで SAS 承認を使用するには、Service Bus 名前空
 | トピックを作成する |Manage |任意の名前空間アドレス |
 | トピックを削除する |Manage |任意の有効なトピック アドレス |
 | トピックを列挙する |Manage |/$Resources/Topics |
-| トピックの説明を取得する |管理または送信 |任意の有効なトピック アドレス |
+| トピックの説明を取得する |管理 |任意の有効なトピック アドレス |
 | トピックの承認規則を構成する |Manage |任意の有効なトピック アドレス |
 | トピックに送信する |送信 |任意の有効なトピック アドレス |
 | **サブスクリプション** | | |
 | サブスクリプションを作成する |Manage |任意の名前空間アドレス |
 | サブスクリプションを削除する |Manage |../myTopic/Subscriptions/mySubscription |
 | サブスクリプションを列挙する |Manage |../myTopic/Subscriptions |
-| サブスクリプションの説明を取得する |管理またはリッスン |../myTopic/Subscriptions/mySubscription |
+| サブスクリプションの説明を取得する |管理 |../myTopic/Subscriptions/mySubscription |
 | ピーク ロック モードでメッセージを受信した後にそのメッセージを破棄または終了する |リッスン |../myTopic/Subscriptions/mySubscription |
 | 後で取得するためにメッセージを保留する |リッスン |../myTopic/Subscriptions/mySubscription |
 | メッセージを配信不能にする |リッスン |../myTopic/Subscriptions/mySubscription |
 | トピック セッションに関連付けられた状態を取得する |リッスン |../myTopic/Subscriptions/mySubscription |
 | トピック セッションに関連付けられた状態を設定する |リッスン |../myTopic/Subscriptions/mySubscription |
-| **ルール** | | |
+| **規則** | | |
 | 規則を作成する |Manage |../myTopic/Subscriptions/mySubscription |
 | 規則を削除する |Manage |../myTopic/Subscriptions/mySubscription |
 | 規則を列挙する |管理またはリッスン |../myTopic/Subscriptions/mySubscription/Rules |
-| **Notification Hubs** | | |
-| 通知ハブを作成する |Manage |任意の名前空間アドレス |
-| アクティブなデバイスの登録を作成または更新する |リッスンまたは管理 |../notificationHub/tags/{tag}/registrations |
-| PNS 情報を更新する |リッスンまたは管理 |../notificationHub/tags/{tag}/registrations/updatepnshandle |
-| 通知ハブに送信する |送信 |../notificationHub/messages |
 
 ## <a name="next-steps"></a>次のステップ
 Service Bus における SAS の概要については、「 [Shared Access Signature](service-bus-sas-overview.md)」を参照してください。
 
 Service Bus 認証の背景の詳細については、「 [Service Bus の認証と承認](service-bus-authentication-and-authorization.md) 」を参照してください。
 
-[[設定]]: http://manage.windowsazure.com
+[Azure classic portal]: http://manage.windowsazure.com
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

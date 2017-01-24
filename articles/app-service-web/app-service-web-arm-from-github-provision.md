@@ -1,5 +1,5 @@
 ---
-title: "GitHub リポジトリにリンクされる Web アプリのデプロイ"
+title: "GitHub リポジトリにリンクされる Web アプリのデプロイ | Microsoft Docs"
 description: "GitHub リポジトリのプロジェクトを含む Web アプリをデプロイするには、Azure Resource Manager テンプレートを使用します。"
 services: app-service
 documentationcenter: 
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bcd39d5c4d837815daf0789744c2845a1e2e84f8
+ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
+ms.openlocfilehash: a2f0cbd56ebb90411de882f5b80b80c21d2ce884
 
 
 ---
 # <a name="deploy-a-web-app-linked-to-a-github-repository"></a>GitHub リポジトリにリンクされる Web アプリのデプロイ
 このトピックでは、GitHub リポジトリ内のプロジェクトにリンクされる Web アプリをデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。 デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
+テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
 完全なテンプレートについては、「 [Web App Linked to GitHub template (GitHub にリンクされる Web アプリ用のテンプレート)](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.json)」を参照してください。
 
@@ -101,13 +101,21 @@ GitHub 内のプロジェクトにリンクされる Web アプリを作成し�
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json -siteName ExampleSite -hostingPlanName ExamplePlan -siteLocation "West US" -ResourceGroupName ExampleDeployGroup
 
 ### <a name="azure-cli"></a>Azure CLI
-    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json
+
+    azure group deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json
+
+### <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー)
+
+    az group deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json --parameters '@azuredeploy.parameters.json'
+
+> [!NOTE] 
+> パラメーター JSON ファイルの内容については、[azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.parameters.json) をご覧ください。
+>
+>
 
 
 
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

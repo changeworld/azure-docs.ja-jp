@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 09/06/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 049ae836fae651edb0ce45eabd6d7eec64308b75
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: 96779ca2f6719fd3e55f9be0fea716c46f662bf0
 
 
 ---
@@ -140,11 +140,11 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 [hdinsight-upload-data]: hdinsight-upload-data.md
 
 
-[Powershell-install-configure]: ../powershell-install-configure.md
+[Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/09/2016
 ms.author: hangzh;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6eb9fd3750eaf03547f93462d97bc30d30a9a8bc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4b466878831b9a8d78c03738397f2119a6d5e13d
 
 
 ---
@@ -736,7 +736,7 @@ Azure Machine Learning の[データのインポート][import-data] モジュ�
 **Azure コンテナー名**: クラスターの既定のコンテナー名。通常はクラスター名と同じです。 "abc123" というクラスターの場合、これは abc123 になります。
 
 > [!IMPORTANT]
-> **Azure Machine Learning で[データのインポート][import-data] モジュールを使ってクエリするすべてのテーブルは、内部テーブルである必要があります。**  D.db データベース内のテーブル T が内部テーブルかどうかを判断するヒントを次に示します。
+> **Azure Machine Learning で[データのインポート][import-data] モジュールを使ってクエリするすべてのテーブルは、内部テーブルである必要があります。** D.db データベース内のテーブル T が内部テーブルかどうかを判断するヒントを次に示します。
 > 
 > 
 
@@ -748,7 +748,7 @@ Hive ディレクトリ プロンプトで次のコマンドを発行します�
 
 Hive クエリと[データのインポート][import-data] モジュールのスナップショットを次に示します。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/1eTYf52.png)
+![データのインポート モジュールの Hive クエリ](./media/machine-learning-data-science-process-hive-walkthrough/1eTYf52.png)
 
 ここでは、ダウンサンプリングされたデータは既定のコンテナーに存在するため、Azure Machine Learning の Hive クエリは、"SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data" という非常に単純なものになります。
 
@@ -761,39 +761,39 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 
 **使用する学習者:** 2 クラスのロジスティック回帰
 
-a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 この問題では、ターゲット (またはクラス) ラベルは "tipped" です 元のダウンサンプリングされたデータセットには、この分類実験用のターゲット リークであるいくつかの列があります。 具体的には、tip\_class、tip\_amount、total\_amount では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択モジュール][select-columns]を使ってこれらの列を考慮事項から除外します。
+a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 この問題では、ターゲット (またはクラス) ラベルは "tipped" です 元のダウンサンプリングされたデータセットには、この分類実験用のターゲット リークであるいくつかの列があります。 具体的には、tip\_class、tip\_amount、total\_amount では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を考慮事項から除外します。
 
 次のスナップショットは、特定の乗車でチップが支払われたかどうかを予測するための実験を示しています。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/QGxRz5A.png)
+![実験のスナップショット](./media/machine-learning-data-science-process-hive-walkthrough/QGxRz5A.png)
 
 b. この実験では、ターゲット ラベルの分布がほぼ 1:1 です。
 
 次のスナップショットは、二項分類の問題のための、チップのクラス ラベルの分布を示しています。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/9mM4jlD.png)
+![チップのクラス ラベルの分布](./media/machine-learning-data-science-process-hive-walkthrough/9mM4jlD.png)
 
 その結果、次の図に示す 0.987 の AUC を取得します。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/8JDT0F8.png)
+![AUC 値](./media/machine-learning-data-science-process-hive-walkthrough/8JDT0F8.png)
 
 **2.多クラス分類**: 以前に定義したクラスを使用して、乗車で支払われたチップの金額の範囲を予測します。
 
 **使用する学習者:** 多クラスのロジスティック回帰
 
-a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 この問題では、ターゲット (またはクラス) ラベルは、5 つの値 (0,1,2,3,4) のいずれかを取ることができる "tip\_class" になります。 二項分類の場合と同様に、この実験用のターゲット リークであるいくつかの列があります。 具体的には、tipped、tip\_amount、total\_amount では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択モジュール][select-columns]を使ってこれらの列を削除します。
+a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 この問題では、ターゲット (またはクラス) ラベルは、5 つの値 (0,1,2,3,4) のいずれかを取ることができる "tip\_class" になります。 二項分類の場合と同様に、この実験用のターゲット リークであるいくつかの列があります。 具体的には、tipped、tip\_amount、total\_amount では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を削除します。
 
 次のスナップショットは、チップが少なくなる可能性の高い箱 ( クラス 0: チップ = $0、クラス 1 : チップ > $0 とチップ <= $5、クラス 2 : チップ > $5 とチップ <= $10、クラス 3 : チップ > $10 とチップ <= $20、クラス 4 : チップ > $20) を予測する実験を示しています。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/5ztv0n0.png)
+![実験のスナップショット](./media/machine-learning-data-science-process-hive-walkthrough/5ztv0n0.png)
 
 実際のテスト クラスの分布がどのようになるかを次に示します。 クラス 0 とクラス 1 は一般的ですが、他のクラスはまれであることがわかります。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/Vy1FUKa.png)
+![テスト クラスの分布](./media/machine-learning-data-science-process-hive-walkthrough/Vy1FUKa.png)
 
 b. この実験では、混同行列を使って、予測精度を確認します。 一般的なイメージを以下に示します。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/cxFmErM.png)
+![混同行列](./media/machine-learning-data-science-process-hive-walkthrough/cxFmErM.png)
 
 一般的なクラスのクラス精度がかなり良い一方で、そのモデルはまれなクラスでは "学習" がうまくいっていないことに注意してください。
 
@@ -801,15 +801,15 @@ b. この実験では、混同行列を使って、予測精度を確認しま�
 
 **使用する学習者:** ブースト デシジョン ツリー
 
-a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 この問題では、ターゲット (またはクラス) ラベルは "tip\_amount" です。 この場合のターゲット リークは、tipped、tip\_class、total\_amount です。これらの変数はすべて、通常はテスト時に利用できないチップの金額についての情報を表示します。 ここでは、[データセット内の列の選択モジュール][select-columns]を使ってこれらの列を削除します。
+a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 この問題では、ターゲット (またはクラス) ラベルは "tip\_amount" です。 この場合のターゲット リークは、tipped、tip\_class、total\_amount です。これらの変数はすべて、通常はテスト時に利用できないチップの金額についての情報を表示します。 ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を削除します。
 
 次のスナップショットは、支払われるチップの金額を予測する実験を示しています。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/11TZWgV.png)
+![実験のスナップショット](./media/machine-learning-data-science-process-hive-walkthrough/11TZWgV.png)
 
 b. 回帰の問題については、予測や決定係数での二乗誤差を見ることで予測の精度を測定します。 これらについて以下に示します。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/Jat9mrz.png)
+![予測の統計情報](./media/machine-learning-data-science-process-hive-walkthrough/Jat9mrz.png)
 
 決定係数が 0.709 であり、これは約 71% という分散がモデル係数で説明されていることを意味しています。
 
@@ -839,6 +839,6 @@ b. 回帰の問題については、予測や決定係数での二乗誤差を�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

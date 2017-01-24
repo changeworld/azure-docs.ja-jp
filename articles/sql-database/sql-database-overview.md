@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 6d5f4640556f98f9601139c318ffc578e9df2539
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: 315fb49ba25c46afaa6571d9249ecd1c8da13e91
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 6d5f4640556f98f9601139c318ffc578e9df2539
 ## <a name="what-is-azure-sql-database"></a>Azure SQL Database とは
 Azure SQL Database 内の各データベースは、論理サーバーに関連付けられています。 データベースには以下の種類があります。
 
-- スタンドアロン データベースとその[独自のリソースのセット](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTU)
+- 単一のデータベースとその[独自のリソースのセット](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTU)
 - [一連のリソースを共有する](sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus)[エラスティック プール](sql-database-elastic-pool.md)の一部 (eDTU)
 - [シャード化されたデータベースのスケール アウトされたセット](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling)の一部 (単一またはプールされたデータベースのいずれか)
 - [マルチテナント SaaS デザイン パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)に参加しているデータベースのセットの一部 (これらのデータベースは、単一またはプールされたデータベースのいずれか (またはその両方)) 
@@ -65,12 +65,12 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 - Azure SQL 論理サーバーの概要については、「[SQL Database 論理サーバーの概要](sql-database-server-overview.md)」を参照してください。
 - Transact-SQL のサポートおよび違いについては、「[Azure SQL Database の Transact-SQL の相違点](sql-database-transact-sql-information.md)」を参照してください。
 - サービス階層に基づく特定のリソース クォータと制限については、**サービス階層**に関する記事を参照してください。 サービス レベルの概要については、「 [SQL Database のサービス階層](sql-database-service-tiers.md)」を参照してください。
-- セキュリティ関連のガイドラインについては、「[Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md)」を参照してください。
+- セキュリティの概要については、[Azure SQL Database のセキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。
 - SQL Database の利用可能なドライバーとサポートの詳細については、「 [SQL Database および SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

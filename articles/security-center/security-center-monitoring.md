@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2016
+ms.date: 01/03/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
+ms.sourcegitcommit: 7f074883c2330c5814eef415f193e1775caec432
+ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
 
 ![[Resources security health (リソース セキュリティの正常性)] タイル](./media/security-center-monitoring/security-center-monitoring-fig1-new4.png)
 
-セキュリティ更新プログラムが適用されていない仮想マシンや[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)がないサブネットなど、対処する必要がある脆弱性が Security Center によって特定された場合、ここに表示されます。
+セキュリティ更新プログラムが適用されていない仮想マシンや[ネットワーク セキュリティ グループ](/virtual-network/virtual-networks-nsg.md)がないサブネットなど、対処する必要がある脆弱性が Security Center によって特定された場合、ここに表示されます。
 
 ### <a name="monitor-virtual-machines"></a>仮想マシンの監視
 **[Resources security health (リソース セキュリティの正常性)]** タイルで **[仮想マシン]** をクリックすると、**[仮想マシン]** ブレードが開き、以下のスクリーンショットのように、利用開始手順と問題の予防手順の詳細に加え、Security Center で監視されるすべての仮想マシンの一覧が表示されます。
@@ -162,22 +162,22 @@ ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
 * オレンジ: 優先度は中程度で、できるだけ早く対処する必要があります
 * 緑 (最下位): 正常な状態です
 
-このトポロジ ビューでは、最初のレベルに[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)、[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-site-to-site-create.md)、[仮想ネットワーク (クラシック)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) が表示されます。 2 番目のレベルにはサブネット、3 番目のレベルにはそれらのサブネットに属している仮想マシンが置かれます。 右側の列には、これらのリソースのネットワーク セキュリティ グループの現在の状態が表示されます。以下に例を示します。
+このトポロジ ビューでは、最初のレベルに[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)、[仮想ネットワーク ゲートウェイ](/vpn-gateway/vpn-gateway-site-to-site-create.md)、[仮想ネットワーク (クラシック)](/virtual-network/virtual-networks-create-vnet-classic-pportal.md) が表示されます。 2 番目のレベルにはサブネット、3 番目のレベルにはそれらのサブネットに属している仮想マシンが置かれます。 右側の列には、これらのリソースのネットワーク セキュリティ グループの現在の状態が表示されます。以下に例を示します。
 
 ![[ネットワーク トポロジ] セクションに表示されるネットワーク セキュリティ グループの状態](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
 
 このブレードの下部には、この仮想マシンに対する推奨事項が表示されます。推奨事項の内容は、前に説明したものとほぼ同じです。 ここでは、推奨事項をクリックして詳細を確認したり、必要なセキュリティ制御または構成を適用したりできます。
 
 ### <a name="monitor-data"></a>データの監視
-**[Resources security health (リソース セキュリティの正常性)]** タイルの **[データ]** をクリックすると、**[SQL]** ブレードが開き、監査や透過的なデータ暗号化が有効になっていないなどの問題に関する推奨事項が示されます。 また、データベースの全般的な正常性状態に関する [推奨事項](security-center-sql-service-recommendations.md) も示されます。
+**[Resources security health (リソースのセキュリティ正常性)]** タイルの **[データ]** をクリックすると、**[Data Resources (データ リソース)]** ブレードが開いて SQL とストレージの推奨事項が表示されます。 また、データベースの全般的な正常性状態に関する [推奨事項](security-center-sql-service-recommendations.md) も示されます。 ストレージの暗号化の詳細については、Azure Security Center で、Azure ストレージ アカウントの暗号化の有効化に関するページを参照してください。
 
-![SQL リソースの正常性](./media/security-center-monitoring/security-center-monitoring-fig13-ga.png)
+![データ リソース](./media/security-center-monitoring/security-center-monitoring-fig13-ga-new.png)
 
-推奨事項をクリックすると、問題解決のためのアクションの詳細を確認できます。 次の例では、**[データベースの監査が有効ではありません]** という推奨事項を展開した状態を示しています。
+**[SQL Recommendations (SQL の推奨事項)]** で任意の推奨事項をクリックすると、問題解決のためのアクションの詳細を確認できます。 次の例では、**[Database Auditing & Threat detection on SQL databases (データベースの監査と SQL Database の脅威の検出)]** という推奨事項を展開した状態を示しています。
 
-![SQL の推奨事項の詳細](./media/security-center-monitoring/security-center-monitoring-fig14-ga.png)
+![SQL の推奨事項の詳細](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
 
-**[SQL データベースの監査を有効にする]** ブレードには、次の情報が表示されます。
+**[Enable Auditing & Threat detection on SQL databases (SQL データベースの監査と脅威の検出を有効にする)]** ブレードには、次の情報が表示されます。
 
 * SQL データベースの一覧
 * SQL データベースが配置されているサーバー
@@ -185,14 +185,15 @@ ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
 * 現在の状態
 * 問題の重大度
 
-この推奨事項に対処するためにデータベースをクリックすると、以下のスクリーンショットに示した **[監査と脅威検出]** ブレードが開きます。
+この推奨事項に対処するためにデータベースをクリックすると、以下に示す **[監査と脅威検出]** ブレードが開きます。
 
 ![[監査と脅威検出] ブレード](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
 
 監査を有効にするには、**[監査]** オプションの **[オン]** を選択します。
 
 ### <a name="monitor-applications"></a>アプリケーションの監視
-Azure ワークロードに、[(Azure Resource Manager で作成した) 仮想マシン](../resource-manager-deployment-model.md)に配置されたアプリケーションがあり、Web ポート (TCP ポート 80 および 443) が公開されている場合、Security Center ではこれらを監視して、潜在的なセキュリティ問題を特定し、修復手順を推奨することができます。 **[アプリケーション]** タイル内をクリックすると、**[アプリケーション]** ブレードが開き、**問題の予防手順**のセクションに一連の推奨事項が示されます。 さらに、以下のスクリーンショットのように、ホスト/仮想 IP ごとのアプリケーションの内訳も示されます。
+
+Azure ワークロードに、[(Azure Resource Manager で作成した) 仮想マシン](../azure-resource-manager/resource-manager-deployment-model.md)に配置されたアプリケーションがあり、Web ポート (TCP ポート 80 および 443) が公開されている場合、Security Center ではこれらを監視して、潜在的なセキュリティ問題を特定し、修復手順を推奨することができます。 **[アプリケーション]** タイル内をクリックすると、**[アプリケーション]** ブレードが開き、**アプリケーションの推奨事項**のセクションに一連の推奨事項が示されます。 さらに、以下のスクリーンショットのように、ホスト/仮想 IP ごとのアプリケーションの内訳も示されます。
 
 ![アプリケーションのセキュリティのヘルス](./media/security-center-monitoring/security-center-monitoring-fig16-ga.png)
 
@@ -216,6 +217,6 @@ Azure ワークロードに、[(Azure Resource Manager で作成した) 仮想�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

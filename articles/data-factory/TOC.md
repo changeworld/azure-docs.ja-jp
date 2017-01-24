@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure Data Factory の概要](data-factory-introduction.md)
 ## 概念
 ### [データセット](data-factory-create-datasets.md)
@@ -9,7 +9,7 @@
 # 作業の開始
 ## [チュートリアル: パイプラインを作成してデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 ### [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-### [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+### [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
 ### [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 ### [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 ### [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -29,30 +29,31 @@
 #### [1 TB を 15 分以内に読み込む](data-factory-load-sql-data-warehouse.md)
 ### [コピー アクティビティ](data-factory-data-movement-activities.md)
 #### [パフォーマンスとチューニングのガイド](data-factory-copy-activity-performance.md)
-#### [Azure Blob Storage](data-factory-azure-blob-connector.md)
-#### [Azure テーブル](data-factory-azure-table-connector.md)
-#### [Azure Data Lake Store](data-factory-azure-datalake-connector.md)
-#### [Azure DocumentDB](data-factory-azure-documentdb-connector.md)
-#### [Azure SQL Database](data-factory-azure-sql-connector.md)
-#### [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
-#### [SQL Server](data-factory-sqlserver-connector.md)
-#### [Oracle](data-factory-onprem-oracle-connector.md)
-#### [MySQL](data-factory-onprem-mysql-connector.md)
-#### [DB2](data-factory-onprem-db2-connector.md)
-#### [Teradata](data-factory-onprem-teradata-connector.md)
-#### [PostgreSQL](data-factory-onprem-postgresql-connector.md)
-#### [Sybase](data-factory-onprem-sybase-connector.md)
-#### [Cassandra](data-factory-onprem-cassandra-connector.md)
-#### [MongoDB](data-factory-on-premises-mongodb-connector.md)
 #### [Amazon Redshift](data-factory-amazon-redshift-connector.md)
 #### [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)
+#### [Azure Blob Storage](data-factory-azure-blob-connector.md)
+#### [Azure Data Lake Store](data-factory-azure-datalake-connector.md)
+#### [Azure DocumentDB](data-factory-azure-documentdb-connector.md)
+#### [Azure Search](data-factory-azure-search-connector.md)
+#### [Azure SQL Database](data-factory-azure-sql-connector.md)
+#### [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
+#### [Azure Table Storage](data-factory-azure-table-connector.md)
+#### [Cassandra](data-factory-onprem-cassandra-connector.md)
+#### [DB2](data-factory-onprem-db2-connector.md)
 #### [ファイル システム](data-factory-onprem-file-system-connector.md)
+#### [FTP](data-factory-ftp-connector.md)
 #### [HDFS](data-factory-hdfs-connector.md)
-#### [Salesforce](data-factory-salesforce-connector.md)
-#### [Web テーブル](data-factory-web-table-connector.md)
+#### [MongoDB](data-factory-on-premises-mongodb-connector.md)
+#### [MySQL](data-factory-onprem-mysql-connector.md)
 #### [OData ソース](data-factory-odata-connector.md)
 #### [ODBC データ ストア](data-factory-odbc-connector.md)
-#### [FTP](data-factory-ftp-connector.md)
+#### [Oracle](data-factory-onprem-oracle-connector.md)
+#### [PostgreSQL](data-factory-onprem-postgresql-connector.md)
+#### [Salesforce](data-factory-salesforce-connector.md)
+#### [SQL Server](data-factory-sqlserver-connector.md)
+#### [Sybase](data-factory-onprem-sybase-connector.md)
+#### [Teradata](data-factory-onprem-teradata-connector.md)
+#### [Web テーブル](data-factory-web-table-connector.md)
 ### [Data Management Gateway](data-factory-data-management-gateway.md)
 ### [オンプレミスとクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)
 
@@ -101,6 +102,6 @@
 ## [機能のリクエスト](https://feedback.azure.com/forums/270578-azure-data-factory)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: trinadhk; jimpark; markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8b22f1a70c516ae2b1a9d095670d1b6719590eaa
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8216106cf44016d355885d9117b6ac69127341c0
 
 
 ---
@@ -34,7 +34,8 @@ ms.openlocfilehash: 8b22f1a70c516ae2b1a9d095670d1b6719590eaa
 
 いずれの場合も、データは Azure Backup コンテナーから取得されます。
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT]
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
 ## <a name="recover-data-to-the-same-machine"></a>同じコンピューターへのデータの回復
 ファイルを誤って削除してしまったため、バックアップを実行したのと同じコンピューターにそのファイルを復元するには、次の手順でデータを回復できます。
@@ -120,6 +121,6 @@ ms.openlocfilehash: 8b22f1a70c516ae2b1a9d095670d1b6719590eaa
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

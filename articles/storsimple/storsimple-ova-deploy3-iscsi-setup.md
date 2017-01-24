@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 07/18/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a5d3d1c9afd8023b201ff37318a3905b5fe791a2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 715720d22b58ddd3d0e5042de151219e49549c5e
 
 
 ---
-# <a name="deploy-storsimple-virtual-array-set-up-your-virtual-device-as-an-iscsi-server"></a>StorSimple Virtual Array をデプロイする – 仮想デバイスを iSCSI サーバーとしてセットアップする
+# <a name="deploy-storsimple-virtual-array--set-up-your-virtual-device-as-an-iscsi-server"></a>StorSimple Virtual Array をデプロイする – 仮想デバイスを iSCSI サーバーとしてセットアップする
 ![iscsi セットアップ プロセス フロー](./media/storsimple-ova-deploy3-iscsi-setup/iscsi4.png)
 
 ## <a name="overview"></a>概要
@@ -52,7 +52,7 @@ StorSimple 仮想デバイスをセットアップして構成するには、次
     前の手順に記載されている接続 URL を使用します。 Web サイトのセキュリティ証明書に問題があることを知らせるエラーが表示されます。 **[続行]**をクリックして、この Web ページに進みます。
    
     ![セキュリティ証明書エラー](./media/storsimple-ova-deploy3-iscsi-setup/image3.png)
-2. 仮想デバイスの Web UI に **StorSimpleAdmin**としてサインインします。 「[StorSimple Virtual Array をデプロイする - Hyper-V で仮想デバイスをプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[StorSimple Virtual Array をデプロイする - VMware で仮想デバイスをプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の仮想デバイスを起動する手順 3 で変更したデバイス管理者のパスワードを入力します。
+2. 仮想デバイスの Web UI に **StorSimpleAdmin**としてサインインします。 「[StorSimple Virtual Array をデプロイする - Hyper-V で仮想デバイスをプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[StorSimple Virtual Array をデプロイする - VMware で仮想デバイスをプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の「手順 3: 仮想デバイスを起動する」で変更したデバイス管理者のパスワードを入力します。
    
     ![サインイン ページ](./media/storsimple-ova-deploy3-iscsi-setup/image4.png)
 3. **[ホーム]** ページが表示されます。 このページは、仮想デバイスを StorSimple Manager サービスに構成、登録するのに必要なさまざまな設定を掲載しています。 **ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションであることに注意してください。 必須の設定は、**デバイスの設定**と**クラウドの設定**のみです。
@@ -91,7 +91,7 @@ StorSimple 仮想デバイスをセットアップして構成するには、次
    
     **[Web プロキシ設定]** ページで、以下のことを実行します。
    
-   1. *http://host-IP アドレス*または *FDQN:ポート番号*の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
+   1. *http://*host-IP アドレスまたは FDQN*:ポート番号*の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
    2. **[認証]** に **[基本]** または **[なし]** を指定します。
    3. 認証を使用する場合は、**[ユーザー名]** と **[パスワード]** も指定する必要があります。
    4. **[Apply]**をクリックします。 これにより、構成済みの Web プロキシ設定が検証され、適用されます。
@@ -163,7 +163,7 @@ StorSimple デバイスのデバイス構成を完了するには、次の手順
    4. ボリュームのプロビジョニング容量を指定します。 利用できる容量より小さい容量を指定する必要があります。 階層化ボリュームを作成する場合、サイズは 500 GB ～ 5 TB にする必要があります。 ローカル固定ボリュームの場合、50 ～ 500 GB のボリューム サイズを指定します。 利用できる容量を、ボリュームのプロビジョニングのガイドとして使用します。 利用可能なローカル容量が 0 GB の場合、ローカル固定ボリュームまたは階層化ボリュームをプロビジョニングすることはできません。
       
        ![[基本設定]](./media/storsimple-ova-deploy3-iscsi-setup/image17.png)
-   5. 矢印アイコン  ![矢印アイコン](./media/storsimple-ova-deploy3-iscsi-setup/image18.png)  をクリックして、次のページに進みます。
+   5. 矢印アイコン  ![矢印アイコン](./media/storsimple-ova-deploy3-iscsi-setup/image18.png) をクリックして、次のページに進みます。
 3. **[追加設定]** ページで、新しい Access Control レコード (ACR) を追加します。
    
    1. ACR の **[名前]** を入力します。
@@ -214,7 +214,7 @@ StorSimple デバイスのデバイス構成を完了するには、次の手順
 12. ドライブ文字をボリュームに割り当て、 **[次へ]**をクリックします。
     
     ![新しいボリューム ウィザード 2](./media/storsimple-ova-deploy3-iscsi-setup/image30.png)
-13. ボリュームをフォーマットするパラメーターを入力します。 **Windows Server では、NTFS のみがサポートされています。**  AUS を 64K に設定します。 ボリュームのラベルを指定します。 ベスト プラクティスとして、この名前を StorSimple 仮想デバイスに指定したボリューム名と同じにすることをお勧めします。 **[次へ]**をクリックします。
+13. ボリュームをフォーマットするパラメーターを入力します。 **Windows Server では、NTFS のみがサポートされています。** AUS を 64K に設定します。 ボリュームのラベルを指定します。 ベスト プラクティスとして、この名前を StorSimple 仮想デバイスに指定したボリューム名と同じにすることをお勧めします。 **[次へ]**をクリックします。
     
     ![新しいボリューム ウィザード 3](./media/storsimple-ova-deploy3-iscsi-setup/image31.png)
 14. ボリュームの値を確認し、 **[完了]**をクリックします。
@@ -246,6 +246,6 @@ Windows Server 2012 を実行する Windows ホストの iSCSI 修飾名 (IQN) �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

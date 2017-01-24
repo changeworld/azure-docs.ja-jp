@@ -17,8 +17,8 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 04833ac3adae6ed7dd8c1c61c2ca5b63ea97660b
+ms.sourcegitcommit: d4fa4187b25dcbb7cf3b75cb9186b5d245c89227
+ms.openlocfilehash: fe07622d3a3e60c6d3520b6983195b410c3edc6a
 
 
 ---
@@ -109,14 +109,14 @@ SUSE VM をオンプレミスから Azure にアップロードする手順に�
    azure group deployment create "<deployment name>" -g "<resource group name>" --template-file "<../../filename.json>"
 
    ```
-JSON テンプレート ファイルの詳細については、「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」および「[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」を参照してください。
+JSON テンプレート ファイルの詳細については、「[Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」および「[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」を参照してください。
 
 CLI と Azure Resource Manager の詳細については、「[Azure Resource Manager での、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」を参照してください。
 
 ## <a name="sap-license-and-hardware-key"></a>SAP のライセンスとハードウェア キー
 正式な SAP-Azure 証明書のために、SAP ライセンスに使用される SAP ハードウェア キーを計算するための新しいメカニズムが導入されました。 SAP カーネルはこれを利用するように適合させる必要がありました。 Linux 向けの SAP カーネルの以前のバージョンには、このコード変更が含まれていませんでした。 そのため、特定の状況 (Azure VM のサイズ変更など) では、SAP ハードウェア キーが変更され、SAP のライセンスが無効になりました。 これは、最新の SAP Linux のカーネルで解決されています。 詳細については、SAP Note 1928533 を確認してください。
 
-## <a name="suse-sapconf-package-tuned-adm"></a>SUSE の sapconf パッケージ / tuned-adm
+## <a name="suse-sapconf-package--tuned-adm"></a>SUSE の sapconf パッケージ / tuned-adm
 SUSE には、一連の SAP 固有の設定を管理する、"sapconf" と呼ばれるパッケージが用意されています。 このパッケージの実行内容、インストール方法、使用方法の詳細については、「[Using sapconf to prepare a SUSE Linux Enterprise Server to run SAP systems (SAP システムを実行するために sapconf を使用して SUSE Linux Enterprise Server を準備する)](https://www.suse.com/communities/blog/using-sapconf-to-prepare-suse-linux-enterprise-server-to-run-sap-systems/)」および「[What is sapconf or how to prepare a SUSE Linux Enterprise Server for running SAP systems? (sapconf の説明と SAP システムの実行用に SUSE Linux Enterprise Server を準備する方法)](http://scn.sap.com/community/linux/blog/2014/03/31/what-is-sapconf-or-how-to-prepare-a-suse-linux-enterprise-server-for-running-sap-systems)」を参照してください。
 
 また、sapconf に代わる新しいツール tuned-adm もあります。 このツールの詳細については、次の 2 つのリンク先をご覧ください。
@@ -159,6 +159,6 @@ Gnome デスクトップを使用して、1 つの VM 内に SAP GUI、ブラウ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

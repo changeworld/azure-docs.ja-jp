@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/09/2016
+ms.date: 12/14/2016
 ms.author: ryanwi;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 515daddf2c118f26721a557b0caf5d5415cb22c5
+ms.sourcegitcommit: efe9845280de3bcd882a7c879b53576600aae0a7
+ms.openlocfilehash: 1bc418f3cadfc83fbec0f2e2c508c77d97b84285
 
 
 ---
@@ -56,7 +56,7 @@ SDK では、2 つの方法でローカル クラスターをセットアップ�
 ## <a name="deploy-an-application"></a>アプリケーションをデプロイする
 Service Fabric SDK には、アプリケーションを作成するための豊富なフレームワークと開発者向ツールが含まれています。 Visual Studio でアプリケーションを作成する方法について理解を深めるには、「 [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)」を参照してください。
 
-このチュートリアルでは、プラットフォームの管理面 (デプロイメント、監視、およびアップグレードなど) に集中できるように、既存のサンプル アプリケーション (名前は WordCount) を使用します。
+このチュートリアルでは、プラットフォームの管理面 (デプロイ、監視、およびアップグレードなど) に集中できるように、既存のサンプル アプリケーション (名前は WordCount) を使用します。
 
 1. 管理者として、新しい PowerShell ウィンドウを起動します。
 2. Service Fabric SDK PowerShell モジュールをインポートします。
@@ -82,14 +82,14 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
    Publish-NewServiceFabricApplication -ApplicationPackagePath c:\ServiceFabric\WordCountV1.sfpkg -ApplicationName "fabric:/WordCount"
     ```
    
-    すべて成功すると、出力は次のように表示されます。
+    すべて成功すると、次のような出力が表示されます。
    
     ![アプリケーションをローカル クラスターにデプロイする][deploy-app-to-local-cluster]
 7. アプリケーションの動作を確認するには、ブラウザーを起動し、 [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html)に移動します。 次のような結果が表示されます。
    
     ![デプロイされたアプリケーション UI][deployed-app-ui]
    
-    WordCount アプリケーションは非常に単純です。 これには、ランダムな 5 文字の "単語" を生成するクライアント側の JavaScript コードが含まれます。生成された単語は ASP.NET Web API 経由でアプリケーションに中継されます。 ステートフル サービスは、単語のカウントを追跡します。 単語の最初の文字に基づいてパーティション分割されます。 [入門サンプル](https://azure.microsoft.com/documentation/samples/service-fabric-dotnet-getting-started/)で WordCount アプリケーションのソース コードを見つけることができます。
+    WordCount アプリケーションは単純です。 これには、ランダムな 5 文字の "単語" を生成するクライアント側の JavaScript コードが含まれます。生成された単語は ASP.NET Web API 経由でアプリケーションに中継されます。 ステートフル サービスは、単語のカウントを追跡します。 単語の最初の文字に基づいてパーティション分割されます。 [入門サンプル](https://azure.microsoft.com/documentation/samples/service-fabric-dotnet-getting-started/)で WordCount アプリケーションのソース コードを見つけることができます。
    
     デプロイしたアプリケーションには 4 つのパーティションがあります。 このため、A ～ G で始まる単語は最初のパーティションに格納され、H ～ N で始まる単語は 2 番目のパーティションに格納されるといった具合になります。
 
@@ -134,21 +134,21 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
    > 
 
 ## <a name="upgrade-an-application"></a>アプリケーションのアップグレード
-Service Fabric では、クラスター全体にロールアウトされるときにアプリケーションの正常性を監視することにより、ダウンタイムのないアップグレードを実現します。 WordCount アプリケーションの簡単なアップグレードを実行してみましょう。
+Service Fabric では、クラスター全体にロールアウトされるときにアプリケーションの正常性を監視することにより、ダウンタイムのないアップグレードを実現します。 WordCount アプリケーションのアップグレードを実行してみましょう。
 
 アプリケーションの新しいバージョンでは、母音で始まる単語のみをカウントするようになります。 アップグレードがロールアウトされると、アプリケーションの動作に 2 つの変化が現れます。 第 1 に、カウント数の増加のスピードが低下します。前よりもカウント対象の単語が少なくなっているためです。 第 2 に、1 番目のパーティションには 2 つの母音 (A と E) が含められ、他のすべてのパーティションにはそれぞれ 1 つの母音が含められるので、1 番目のパーティションのカウント数は最終的に、他のパーティションの値を上回るようになります。
 
-1. [WordCount v2 パッケージをダウンロード](http://aka.ms/servicefabric-wordcountappv2) します。
+1. バージョン 1 パッケージをダウンロードしたのと同じ場所に、[WordCount バージョン 2 パッケージをダウンロード](http://aka.ms/servicefabric-wordcountappv2)します。
 2. PowerShell ウィンドウに戻り、SDK のアップグレード コマンドを使用して、新しいバージョンをクラスターに登録します。 その後、fabric:/WordCount アプリケーションのアップグレードを開始します。
    
     ```powershell
     Publish-UpgradedServiceFabricApplication -ApplicationPackagePath C:\ServiceFabric\WordCountV2.sfpkg -ApplicationName "fabric:/WordCount" -UpgradeParameters @{"FailureAction"="Rollback"; "UpgradeReplicaSetCheckTimeout"=1; "Monitored"=$true; "Force"=$true}
     ```
    
-    アップグレードが始まると、PowerShell に次のような出力が表示されます。
+    アップグレードが始まると、PowerShell に次の出力が表示されます。
    
     ![PowerShell でのアップグレードの進行状況][ps-appupgradeprogress]
-3. アップグレードの進行中は、Service Fabric Explorer でその状態を監視するのが簡単な場合もあります。 ブラウザー ウィンドウを起動して、 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)に移動します。 左側のツリーで **[アプリケーション]** を展開し、**[WordCount]** を選択して、最後に **[fabric:/WordCount]** を選択します。 [基本] タブには、クラスターのアップグレード ドメインごとにアップグレードの進行状況が表示されます。
+3. アップグレードの進行中は、Service Fabric Explorer でその状態を監視するのが簡単な場合もあります。 ブラウザー ウィンドウを起動して、 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)に移動します。 左側のツリーで **[アプリケーション]** を展開し、**[WordCount]** を選択して、最後に **[fabric:/WordCount]** を選択します。 [essentials (基礎)] タブには、クラスターのアップグレード ドメインごとにアップグレードの進行状況が表示されます。
    
     ![Service Fabric Explorer でのアップグレードの進行状況][sfx-upgradeprogress]
    
@@ -161,7 +161,7 @@ Service Fabric では、クラスター全体にロールアウトされると�
    
     ![アップグレード後にアプリケーション サービスのクエリを実行する][ps-getsfsvc-postupgrade]
    
-    これは、Service Fabric のアプリケーションのアップグレードの管理方法に焦点を当てています。 この方法では変更されたサービス セット (またはそれらのサービス内のコード/構成パッケージ) のみを対象とし、アップグレード処理にかかる時間を短縮し、アップグレード処理の信頼性を高めます。
+    この例では、Service Fabric のアプリケーションのアップグレードの管理方法に焦点を当てています。 この方法では変更されたサービス セット (またはそれらのサービス内のコード/構成パッケージ) のみを対象とし、アップグレード処理にかかる時間を短縮し、アップグレード処理の信頼性を高めます。
 5. 最後に、ブラウザーに戻り、アプリケーションの新しいバージョンの動作を確認します。 予想通り、カウント数の増加のスピードは緩やかで、最終的に 1 番目のパーティションのカウント数がやや大きくなります。
    
     ![ブラウザーでアプリケーションの新しいバージョンを表示する][deployed-app-ui-v2]
@@ -169,7 +169,7 @@ Service Fabric では、クラスター全体にロールアウトされると�
 ## <a name="cleaning-up"></a>クリーンアップしています
 まとめに入る前に、ローカル クラスターが現実のものであることを思い出してください。 アプリケーションは削除されるまで、バックグラウンドで実行され続けます。  アプリの性質によっては、実行中のアプリがコンピューター上の大量のリソースを占有する場合があります。 アプリケーションとクラスターは、いくつかの方法で管理できます。
 
-1. 個々のアプリケーションとそのデータすべてを削除するには、次の手順を実行します。
+1. 個々のアプリケーションとそのデータすべてを削除するには、次のコマンドを実行します。
    
     ```powershell
     Unpublish-ServiceFabricApplication -ApplicationName "fabric:/WordCount"
@@ -178,7 +178,7 @@ Service Fabric では、クラスター全体にロールアウトされると�
     または、Service Fabric Explorer の **[アクション]** メニューか、左側のウィンドウにあるアプリケーション リスト ビューのコンテキスト メニューからアプリケーションを削除します。
    
     ![Delete an application is Service Fabric Explorer][sfe-delete-application]
-2. クラスターからアプリケーションを削除すると、WordCount アプリケーションの種類のバージョン 1.0.0 と 2.0.0 の登録を解除できます。 削除を実行すると、コードと構成を含むアプリケーション パッケージがクラスターのイメージ ストアから削除されます。
+2. クラスターからアプリケーションを削除した後、WordCount アプリケーションの種類のバージョン 1.0.0 と 2.0.0 の登録を解除します。 削除を実行すると、コードと構成を含むアプリケーション パッケージがクラスターのイメージ ストアから削除されます。
    
     ```powershell
     Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 2.0.0
@@ -189,19 +189,21 @@ Service Fabric では、クラスター全体にロールアウトされると�
 3. クラスターをシャットダウンしても、アプリケーションのデータとトレースは保持するという場合は、システム トレイ アプリで **[Stop Local Cluster (ローカル クラスターの停止)]** をクリックします。
 4. クラスターを完全に削除するには、システム トレイ アプリで **[Remove Local Cluster (ローカル クラスターの削除)]** をクリックします。 このオプションを使用すると、次回 Visual Studio で F5 キーを押したときにも、デプロイが遅くなります。 しばらく使用しない場合や、リソースを解放する必要がある場合にのみ、ローカル クラスターを削除してください。
 
-## <a name="1-node-and-5-node-cluster-mode"></a>1 ノードと 5 ノードのクラスター モード
-ローカル クラスターを操作してアプリケーションを開発している場合、コードを記述してデバッグし、コードを変更してデバッグするという繰り返しが頻繁に発生します。このプロセスを最適化するために、ローカル クラスターは 2 つのモードで実行できます。1 ノード モードと 5 ノード モードです。 各モードに、それぞれの利点があります。
-5 ノード クラスター モードでは、実際のクラスターを操作できます。 フェールオーバーのシナリオをテストし、サービスのより多くのインスタンスとレプリカを操作できます。
-1 ノード クラスター モードは、サービスをすばやくデプロイおよび登録できるように最適化されています。Service Fabric ランタイムを使用して、すばやくコードを検証できます。
+## <a name="one-node-and-five-node-cluster-mode"></a>1 ノード クラスター モードと 5 ノード クラスター モード
+アプリケーションの開発時は、コードを記述してデバッグし、コードを変更してデバッグするという作業を頻繁に繰り返します。 このプロセスを最適化するために、ローカル クラスターは 2 つのモードで実行できます。1 ノード モードと 5 ノード モードです。 各モードに、それぞれの利点があります。 5 ノード クラスター モードでは、実際のクラスターを操作できます。 フェールオーバーのシナリオをテストし、サービスのより多くのインスタンスとレプリカを操作できます。 1 ノード クラスター モードは、サービスをすばやくデプロイおよび登録できるように最適化されています。Service Fabric ランタイムを使用して、すばやくコードを検証できます。
 
-1 ノード クラスター モードも 5 ノード クラスター モードも、エミュレーターやシミュレーターではありません。 これは、複数のコンピューターから成るクラスターで検出されるのと同じプラットフォーム コードを実行します。
+1 ノード クラスター モードも 5 ノード クラスター モードもエミュレーターまたはシミュレーターではありません。 ローカル開発クラスターは、複数のコンピューターから成るクラスターで使用されるのと同じプラットフォーム コードを実行します。
 
-> [!NOTE]
-> この機能は、SDK version 5.2 以降で使用できます。
+> [!WARNING]
+> クラスター モードを変更すると、現在のクラスターがシステムから削除され、新しいクラスターが作成されます。 クラスターに保存されているデータは、クラスター モードを変更すると削除されます。
 > 
 > 
 
-クラスター モードを 1 ノード クラスターに変更するには、Service Fabric ローカル クラスター マネージャーを使用するか、次のように PowerShell を使用します。
+モードを 1 ノード クラスターに変更するには、Service Fabric ローカル クラスター マネージャーの **[Switch Cluster Mode (クラスター モードの切り替え)]** を選択します。
+
+![クラスター モードを切り替える][switch-cluster-mode]
+
+または、PowerShell を使用してクラスター モードを変更します。
 
 1. 管理者として、新しい PowerShell ウィンドウを起動します。
 2. SDK フォルダーからクラスター セットアップ スクリプトを実行します。
@@ -213,15 +215,6 @@ Service Fabric では、クラスター全体にロールアウトされると�
     クラスターのセットアップには、しばらく時間がかかります。 セットアップが完了すると、次のような出力が表示されます。
    
     ![クラスターのセットアップに関する出力][cluster-setup-success-1-node]
-
-Service Fabric ローカル クラスター マネージャーを使用している場合:
-
-![クラスター モードを切り替える][switch-cluster-mode]
-
-> [!WARNING]
-> クラスター モードを変更すると、現在のクラスターがシステムから削除され、新しいクラスターが作成されます。 クラスターに保存したデータは、クラスター モードを変更すると、削除されます。
-> 
-> 
 
 ## <a name="next-steps"></a>次のステップ
 * いくつかのビルド済みのアプリケーションをデプロイし、アップグレードしたので、今度は [Visual Studio で自身のアプリケーションをビルドしてみます](service-fabric-create-your-first-application-in-visual-studio.md)。
@@ -250,6 +243,6 @@ Service Fabric ローカル クラスター マネージャーを使用してい
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

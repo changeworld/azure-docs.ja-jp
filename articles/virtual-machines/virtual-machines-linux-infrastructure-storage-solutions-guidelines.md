@@ -1,5 +1,5 @@
 ---
-title: "ストレージ ソリューションのガイドライン | Microsoft Docs"
+title: "Azure Storage ソリューションのガイドライン | Microsoft Docs"
 description: "Azure インフラストラクチャ サービスでのストレージ ソリューションのデプロイに関する主要な設計と実装のガイドラインについて説明します。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: ad01dd5585eab70404d476e234b8d2dcee93f2a9
+ms.sourcegitcommit: a99ab839ec9ade0049e1cc59054e333048e0208c
+ms.openlocfilehash: 8b4ee1634981a449d9968f9156df10a9d40baae9
 
 
 ---
-# <a name="storage-infrastructure-guidelines"></a>ストレージ インフラストラクチャのガイドライン
+# <a name="azure-storage-infrastructure-guidelines"></a>Azure Storage インフラストラクチャのガイドライン
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 この記事は、最適な仮想マシン (VM) のパフォーマンスを実現するための、ストレージのニーズと設計に関する考慮事項について説明します。
@@ -59,7 +59,7 @@ Azure で作成される VM には、オペレーティング システム デ�
 
 オペレーティング システム ディスクとデータ ディスクの最大サイズは 1023 ギガバイト (GB) です。 BLOB の最大サイズは 1024 GB で、VHD ファイルのメタデータ (フッター) を含める必要があります (1 GB は 1024<sup>3</sup> バイト)。 論理ボリューム マネージャー (LVM) を使用してデータ ディスクをプールし、1023 GB を超える論理ボリュームを VM に割り当てることで、この制限を超えることができます。
 
-Azure Storage のデプロイを設計する場合、スケーラビリティ制限がいくつか適用されます。詳細については、[Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#storage-limits)に関するページをご覧ください。 また、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md)」もご覧ください。
+Azure Storage のデプロイを設計する場合、スケーラビリティ制限がいくつか適用されます。詳しくは、[Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#storage-limits)に関するページをご覧ください。 また、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md)」もご覧ください。
 
 アプリケーション ストレージについては、BLOB ストレージを使用して、ドキュメント、イメージ、バックアップ、構成データ、ログなどの非構造化データを 保存できます。 アプリケーションが VM に接続されている仮想ディスクに書き込むのではなく、アプリケーションが Azure BLOB ストレージに直接書き込むことができます。 BLOB ストレージには、可用性ニーズとコスト面の制約に応じて、[ホット ストレージ層とクール ストレージ層](../storage/storage-blob-storage-tiers.md)のオプションも用意されています。
 
@@ -88,6 +88,6 @@ Azure Storage 環境を設計するとき、デプロイする VM の増加に�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

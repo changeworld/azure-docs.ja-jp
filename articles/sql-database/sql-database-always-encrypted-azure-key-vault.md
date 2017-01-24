@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 6ca16644-5969-497b-a413-d28c3b835c9b
 ms.service: sql-database
+ms.custom: secure and protect
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,8 +17,8 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6a14169076eeb26749d6d1e362fe0301c4da77f2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6b4cf5a1c6b764280488b07cf2dc98ecf78fda21
 
 
 ---
@@ -49,7 +50,7 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 * [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) バージョン 13.0.700.242 以降。
 * [.NET framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) 以降 (クライアント コンピューター上)。
 * [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)。
-* [Azure PowerShell](../powershell-install-configure.md)バージョン 1.0 以降。 「 **(Get-Module azure -ListAvailable).Version** 」 と入力し、実行している PowerShell のバージョンを確認します。
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs)バージョン 1.0 以降。 「 **(Get-Module azure -ListAvailable).Version** 」 と入力し、実行している PowerShell のバージョンを確認します。
 
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>クライアント アプリケーションから SQL Database サービスにアクセスできるようにする
 必要な認証を設定し、以下のコードでアプリケーションを認証するために使用する *ClientId* と *Secret* を取得して、クライアント アプリケーションから SQL Database サービスにアクセスできるようにする必要があります。
@@ -649,6 +650,6 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

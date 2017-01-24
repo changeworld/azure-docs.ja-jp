@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 151b6ec79024a3a269bb37620ba3855a138395a7
-ms.openlocfilehash: cc2ba72de51d3cd37209ae3a9d60b852cf904239
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: caa4f001871beeb83cc0406bd2f89c5aa026cd97
 
 
 ---
@@ -172,6 +172,6 @@ Azure サブスクリプションとリソース グループのポリシーは�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

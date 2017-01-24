@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4788235f470fafb043f72dfb44dbe96ebb595df9
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 4ea07a1cade7e3007b0f85214b4d41a61b527001
 
 
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
-この記事では、 [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md) を使用して Azure メトリック アラートを構成する方法について説明します。 これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。
+この記事では、 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md) を使用して Azure メトリック アラートを構成する方法について説明します。 これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。
 
 基本的な手順は次のとおりです。
 
 1. アラートの作成方法が記述された JSON ファイルとしてテンプレートを作成します。
-2. [任意のデプロイ方法を使用してテンプレートをデプロイ](../resource-group-template-deploy.md)します。
+2. [任意のデプロイ方法を使用してテンプレートをデプロイ](../azure-resource-manager/resource-group-template-deploy.md)します。
 
 ここでは、Resource Manager テンプレートを作成して 1 つのアラートを作成する方法を説明してから、他のリソースを作成しながらアラートを作成する方法を説明します。
 
@@ -407,6 +407,6 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

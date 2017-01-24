@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と HireVue の統合 | Microsoft Docs'
-description: Azure Active Directory と HireVue の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と HireVue の統合 | Microsoft Docs"
+description: "Azure Active Directory と HireVue の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: aadfc342-14db-4d74-a83d-f0c76f0cf63c
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0cb121d54310c518795269dee68f24ab21f7d31b
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-hirevue"></a>チュートリアル: Azure Active Directory と HireVue の統合
+# <a name="tutorial-azure-active-directory-integration-with-hirevue"></a>チュートリアル: Azure Active Directory と HireVue の統合
 このチュートリアルでは、HireVue と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
 HireVue と Azure AD の統合には、次の利点があります。
@@ -108,19 +112,19 @@ HireVue で Azure AD のシングル サインオンを構成してテストす�
    
     a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが HireVue アプリケーションへのサインオンに使用する URL を入力します。 
 
-      | 環境 | URL |
-      |---|---|
-      | Production | `https://<company name>.hirevue.com` |
-      | ステージング| `https://<company name>.stghv.com` |
+    | 環境 | URL |
+    |---|---|
+    | Production | `https://<company name>.hirevue.com` |
+    | ステージング| `https://<company name>.stghv.com` |
 
 
     b. **[識別子]** ボックスに、次のパターンを使用して URN を入力します。
 
 
-      | 環境 | URN |
-      |---|---|
-      |Production | `urn:federation:hirevue.com:saml:sp:prod` |
-      |ステージング | `urn:federation:hirevue.com:saml:sp:staging` |
+    | 環境 | URN |
+    |---|---|
+    |Production | `urn:federation:hirevue.com:saml:sp:prod` |
+    |ステージング | `urn:federation:hirevue.com:saml:sp:staging` |
 
 
 
@@ -130,9 +134,9 @@ HireVue で Azure AD のシングル サインオンを構成してテストす�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-hirevue-tutorial/tutorial_hirevue_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. **[次へ]** をクリックします。
+    b. **[次へ]**をクリックします。
 2. アプリケーション用に構成された SSO を入手するには、HireVue サポート チーム ( [samlsupport@hirevue.com](mailTo:samlsupport@hirevue.com) ) に連絡し、次のものを情報として提供してください。
    
     • ダウンロードした **証明書**
@@ -168,22 +172,22 @@ HireVue で Azure AD のシングル サインオンを構成してテストす�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hirevue-tutorial/create_aaduser_04.png) 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hirevue-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. ページの下部にある **[次へ]**」を参照してください。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hirevue-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a. **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに、「**Britta Simon**」と入力します。
+   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hirevue-tutorial/create_aaduser_07.png) 
@@ -248,6 +252,6 @@ HireVue で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

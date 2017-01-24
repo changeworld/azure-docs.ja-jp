@@ -16,15 +16,14 @@ ms.topic: article
 ms.date: 09/22/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 614adbd3536d6740e6a46895b36575f0f4c66a8c
+ms.sourcegitcommit: cff4e05de2a9e2f0603fd4beebe26e44b4652dc8
+ms.openlocfilehash: d168c6e477eff07b8f499c1be869f85506c2fabc
 
 
 ---
 # <a name="azure-cli-commands-in-azure-service-management-asm-mode"></a>Azure サービス管理 (asm) モードでの Azure CLI コマンド
-[!INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)]
-
-[Resource Manager モデルのすべてのコマンドに関する記事](virtual-machines/azure-cli-arm-commands.md)を確認し、CLI を使用して、クラシックから Resource Manager モデルへの[リソースの移行](virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)を行うこともできます。
+> [!IMPORTANT]
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../articles/azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルのすべてのコマンドに関する記事](virtual-machines/azure-cli-arm-commands.md)を確認し、CLI を使用して、クラシックから Resource Manager モデルへの[リソースの移行](virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)を行うこともできます。
 
 この記事では、クラシック デプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure CLI コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、Azure サービス管理 (asm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 
 
@@ -2354,6 +2353,6 @@ Virtual Network の詳細を表示します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

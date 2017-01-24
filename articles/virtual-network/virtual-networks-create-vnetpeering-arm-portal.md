@@ -14,10 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
-ms.author: narayanannamalai;annahar
+ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 2ae62a2e657e3b20e258b5afaa1d03b6825e8019
-ms.openlocfilehash: e40af1e363f7add88ead6e552290926abe4db328
+ms.sourcegitcommit: ed7c37ee5482b3ec91489b7aba9b5a9d5df5c97e
+ms.openlocfilehash: 06130f18bad86dbbe009548ac95ac0e6c4953db2
 
 
 ---
@@ -82,8 +82,7 @@ ms.openlocfilehash: e40af1e363f7add88ead6e552290926abe4db328
 4. [アクセスを追加] ブレードで、ロールを選択し、[ネットワーク作成協力者] を選択して、[ユーザーの追加] をクリックし、UserB のサインイン名を入力して [OK] をクリックします。
    
     ![RBAC](./media/virtual-networks-create-vnetpeering-arm-portal/figure10.png)
-   
-    これは必須ではありません。ユーザーが個々の VNet に対して個別にピアリング要求を行った場合でも、双方の要求が合致すればピアリングは確立されます。 相手側 VNet の特権ユーザーをローカル VNet のユーザーとして追加すると、ポータルでの設定が簡単になります。
+
 5. 次に、SubscriptionB の特権ユーザーである UserB で Azure ポータルにログインします。 前述の手順に従って UserA をネットワーク作成協力者として追加します。
    
     ![RBAC2](./media/virtual-networks-create-vnetpeering-arm-portal/figure11.png)
@@ -138,6 +137,6 @@ ms.openlocfilehash: e40af1e363f7add88ead6e552290926abe4db328
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/26/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: 841d44bbd7e5d345a154bb7a29cd313e6c5f2e20
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cf2f6a82df28047ba7b50dc2cfd6fc2f0dfad794
 
 
 ---
@@ -415,6 +415,6 @@ ms.openlocfilehash: 841d44bbd7e5d345a154bb7a29cd313e6c5f2e20
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

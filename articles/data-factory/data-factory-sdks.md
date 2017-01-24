@@ -12,8 +12,10 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 01/17/2017
 ms.author: spelluru
+redirect_url: https://azure.microsoft.com/services/data-factory/
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 9d330c5ad6179576a9b955a6e5ef11286ea1bf33

@@ -12,23 +12,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: fashah;garye;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 66eddd40d3aa5156762acd1b1783a527e9ab463d
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: 7873ad084c9d77eea556ae3fec846bebd4c99ebd
 
 
 ---
 # <a name="a-nameheadingasample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure BLOB ストレージのデータをサンプリングする
 このドキュメントでは、Azure Blob Storage に格納されたデータのサンプリングについて説明します。プログラムからデータをダウンロードし、Python で記述されたプロシージャを使ってそのデータをサンプリングします。
 
-**データをサンプリングする理由**
- 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。 これにより、データの理解、探索、および特徴エンジニアリングが容易になります。 Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
-
-次の **メニュー** は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。 
+次の**メニュー**は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。 
 
 [!INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
+
+**データをサンプリングする理由**
+分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。 これにより、データの理解、探索、および特徴エンジニアリングが容易になります。 Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
 
 このサンプリング タスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
 
@@ -50,12 +50,14 @@ ms.openlocfilehash: 66eddd40d3aa5156762acd1b1783a527e9ab463d
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
         print(("It takes %s seconds to download "+blobname) % (t2 - t1))
+
 2. 上記でダウンロードしたファイルから、Pandas データ フレームにデータを読み取ります。
    
         import pandas as pd
    
         #directly ready from file on disk
         dataframe_blobdata = pd.read_csv(LOCALFILE)
+
 3. 次のように、`numpy` の `random.choice` を使用してデータをダウンサンプリングします。
    
         # A 1 percent sample
@@ -67,11 +69,12 @@ ms.openlocfilehash: 66eddd40d3aa5156762acd1b1783a527e9ab463d
 これで、上記の 1 パーセントのサンプルのデータ フレームを操作して、さらなる探索および特徴の生成を行えるようになりました。
 
 ## <a name="a-nameheadingaupload-data-and-read-it-into-azure-machine-learning"></a><a name="heading"></a>データをアップロードし、Azure Machine Learning で読み取る
-次のサンプル コードを使用すると、次のようにデータをダウンサンプリングして、 Azure ML で直接使用することができます。
+次のサンプル コードを使用すると、次のようにデータをダウンサンプリングして、 Azure Machine Learning で直接使用できます。
 
 1. データ フレームをローカル ファイルに書き込む
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
+
 2. 次のサンプル コードを使用してローカル ファイルを Azure BLOB にアップロードする
    
         from azure.storage.blob import BlobService
@@ -93,13 +96,14 @@ ms.openlocfilehash: 66eddd40d3aa5156762acd1b1783a527e9ab463d
    
         except:            
             print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
-3. 次のスクリーン ショットに示すように、Azure ML の [データのインポート](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) を使用して Azure BLOB からデータを読み取ります。
+
+3. 次のスクリーン ショットに示すように、Azure Machine Learning の[データのインポート](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)を使用して Azure BLOB からデータを読み取ります。
 
 ![リーダー BLOB](./media/machine-learning-data-science-sample-data-blob/reader_blob.png)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

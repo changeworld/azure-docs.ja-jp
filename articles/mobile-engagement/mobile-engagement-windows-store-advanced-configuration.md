@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: piyushjo;ricksal
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6fbb542a7887151bbfa2b13ec8fe7874d1f455de
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cb9454212c94cf65093219c3d24c71277ede7877
 
 
 ---
@@ -74,11 +74,11 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 > 
 > 
 
-[ここ]:http://www.nuget.org/packages/Capptain.WindowsCS
-[NuGet の Web サイト]:http://docs.nuget.org/docs/start-here/overview
+[here]:http://www.nuget.org/packages/Capptain.WindowsCS
+[NuGet website]:http://docs.nuget.org/docs/start-here/overview
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

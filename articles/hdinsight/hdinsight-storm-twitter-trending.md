@@ -13,7 +13,7 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -22,14 +22,14 @@ ms.openlocfilehash: 53c18f6bb294c42456a0a4cd3c2a83812e9b13d0
 
 ---
 # <a name="determine-twitter-trending-topics-with-apache-storm-on-hdinsight"></a>HDInsight での Apache Storm を使用した Twitter のトレンディング トピックの確認
+
 Trident を使用して、Twitter のトレンディング トピック (ハッシュタグ) を見つける Storm トポロジを作成する方法について説明します。
 
 Trident は、結合、集計、グループ化、関数、フィルタリングなどのツールを提供する大枠の抽象概念です。 さらに、Trident はステートフルな増分処理を行うためのプリミティブを追加します。 この例では、カスタムのスパウト、関数、Trident で提供される複数のビルトイン関数を用いてトポロジを構築する方法を示しています。
 
 > [!NOTE]
 > この例は、Juan Alonso による [Trident Storm](https://github.com/jalonsoramos/trident-storm) の例に基づいています。
-> 
-> 
+
 
 ## <a name="requirements"></a>必要条件
 * <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">Java と JDK 1.7</a>
@@ -49,8 +49,7 @@ Trident は、結合、集計、グループ化、関数、フィルタリング
 
 > [!NOTE]
 > これは、トポロジの簡略化されたビューです。 コンポーネントの複数のインスタンスが、クラスター内のノード全体に配布されます。
-> 
-> 
+
 
 トポロジを実装する Trident コードは次のとおりです。
 

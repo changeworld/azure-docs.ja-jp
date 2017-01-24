@@ -12,10 +12,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/08/2016
+ms.date: 01/19/2017
 ms.author: motanv
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.sourcegitcommit: 1a9bec270650223cd40b3b60e5bc9fc7e212a207
 ms.openlocfilehash: 2b533be6bc7aa0fac0a6b0e4f5aee1df3714acd7
 
 

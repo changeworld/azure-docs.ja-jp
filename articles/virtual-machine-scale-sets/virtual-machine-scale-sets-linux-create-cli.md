@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/22/2016
-ms.author: gatneil
+ms.author: negat
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1e0ea955db98589c0a29df871a3995e21bccdcaa
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: 89e8e1dd9524c80e76aea8927bbd0578d475fc39
 
 
 ---
@@ -27,6 +27,6 @@ ms.openlocfilehash: 1e0ea955db98589c0a29df871a3995e21bccdcaa
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

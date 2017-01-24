@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
+ms.date: 11/30/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6e0056af13bfa064d740205746a93afeef9b33ab
+ms.sourcegitcommit: 1a2ff324cfa65977685f6a0eee9cd398b0717519
+ms.openlocfilehash: dba809c8d7021357142ec2832b4660c6fb10ec96
 
 
 ---
@@ -135,14 +135,13 @@ Ceridian Dayforce HCM アプリケーションでは、特定の形式での SAM
     テスト環境では、 `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2`  
     テスト環境では以下を使用します： `https://fs-test.dayforcehcm.com/sp/ACS.saml2`  
 
-
 1. **[Ceridian Dayforce HCM でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
     ![Configure Single Sign-On](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある [次へ]」を参照してください。
+    b. **[次へ]**をクリックします。
 2. アプリケーション用に構成された SSO を入手するには、Ceridian Dayforce HCM サポート チームにメールで連絡し、次のものを情報として提供してください。
    
    * ダウンロードした証明書ファイル
@@ -184,17 +183,18 @@ Ceridian Dayforce HCM アプリケーションでは、特定の形式での SAM
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ceridiandayforcehcm-tutorial/create_aaduser_06.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ceridiandayforcehcm-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]**をクリックします。
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ceridiandayforcehcm-tutorial/create_aaduser_07.png) 
@@ -260,6 +260,6 @@ Ceridian Dayforce HCM サポート チームと協力して、Ceridian Dayforce 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

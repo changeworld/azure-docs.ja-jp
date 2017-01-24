@@ -4,7 +4,7 @@ description: "Azure にサインアップしようとしたときにクレジッ
 services: 
 documentationcenter: 
 author: JiangChen79
-manager: mbaldwin
+manager: adpick
 editor: 
 tags: billing,top-support-issue
 keywords: "クレジット カードの拒否、デビット カードの拒否、クレジット カードが拒否された、クレジット カードを使用できない"

@@ -3,7 +3,7 @@ title: "Linux 仮想マシン スケール セットの自動スケール | Micr
 description: "Azure CLI を利用し、Linux 仮想マシン スケール セットの自動スケールを設定する"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: davidmu1
+author: Thraka
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
-ms.author: davidmu
+ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 744be588b3ff731fb983d3eddb50056e8bba0e4f
+ms.sourcegitcommit: 655bb950ad21ab2df0e88db52b8f54b89d35f871
+ms.openlocfilehash: d095814e32b7354419d454d0d7bd3df772b6f01e
 
 
 ---
 # <a name="automatically-scale-linux-machines-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットでの Linux マシンの自動スケール
 仮想マシン スケール セットを使用すると、まったく同じ仮想マシンを簡単にまとめてデプロイし、管理することができます。 スケール セットは、最高水準のスケーラビリティが要求されるアプリケーションのための、拡張性が高くカスタマイズしやすいコンピューティング レイヤーです。Windows プラットフォーム イメージのほか、Linux プラットフォーム イメージ、カスタム イメージ、拡張機能をサポートしています。 詳細については、「[仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」をご覧ください。
 
-このチュートリアルでは、Ubuntu Linux の最新のバージョンを使用する Linux 仮想マシンのスケール セットを作成する方法を紹介します。 さらにこのチュートリアルでは、セット内のマシンを自動的にスケールする方法も紹介します。 スケール セットを作成し、スケール処理を設定するには、Azure Resource Manager テンプレートを作成し、Azure CLI を使ってそれをデプロイする必要があります。 テンプレートの詳細については、「 [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」をご覧ください。 スケール セットの自動スケールに関する詳細については、「 [Automatic scaling and Virtual Machine Scale Sets (自動スケールと仮想マシン スケール セット)](virtual-machine-scale-sets-autoscale-overview.md)」を参照してください。
+このチュートリアルでは、Ubuntu Linux の最新のバージョンを使用する Linux 仮想マシンのスケール セットを作成する方法を紹介します。 さらにこのチュートリアルでは、セット内のマシンを自動的にスケールする方法も紹介します。 スケール セットを作成し、スケール処理を設定するには、Azure Resource Manager テンプレートを作成し、Azure CLI を使ってそれをデプロイする必要があります。 テンプレートの詳細については、「 [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」をご覧ください。 スケール セットの自動スケールに関する詳細については、「 [Automatic scaling and Virtual Machine Scale Sets (自動スケールと仮想マシン スケール セット)](virtual-machine-scale-sets-autoscale-overview.md)」を参照してください。
 
 このチュートリアルでは、次のリソースと拡張機能をデプロイします。
 
@@ -38,7 +38,7 @@ ms.openlocfilehash: 744be588b3ff731fb983d3eddb50056e8bba0e4f
 * Microsoft.Insights.VMDiagnosticsSettings
 * Microsoft.Insights/autoscaleSettings
 
-Resource Manager のリソースの詳細については、「[Azure Resource Manager vs. classic deployment (Azure Resource Manager 対クラシック デプロイ)](../resource-manager-deployment-model.md)」を参照してください。
+Resource Manager のリソースの詳細については、「[Azure Resource Manager vs. classic deployment (Azure Resource Manager 対クラシック デプロイ)](../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
 
 このチュートリアルの手順を開始する前に、 [Azure CLI をインストール](../xplat-cli-install.md)してください。
 
@@ -513,6 +513,6 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: multiple
 ms.date: 07/29/2016
 ms.author: cawa
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2dbf8ea0ddde2e308dc0e65dba701578cd2bce43
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e7bd4398503566684187831bde1e82f334a59f32
 
 
 ---
@@ -116,6 +116,6 @@ Visual Studio の発行機能は、ご利用の Azure サブスクリプショ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

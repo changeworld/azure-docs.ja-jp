@@ -4,7 +4,7 @@ description: "この記事では、Configuration Manager を Log Analytics に�
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: f2298bd7-18d7-4371-b24a-7f9f15f06d66
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 240db424645778c0fcd0f8abd17411e58bd95ab9
+ms.sourcegitcommit: 820a9463c0e58054cf70324b680c5af8fdcacade
+ms.openlocfilehash: 18479c3680aa46113e59d25b6e034830f78a1859
 
 
 ---
@@ -25,7 +25,7 @@ System Center Configuration Manager を OMS の Log Analytics に接続して、
 
 Configuration Manager を OMS に接続するには長い手順が必要であるため、ここではプロセス全体を簡単に示します。
 
-1. Azure 管理ポータルで Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、Azure Active Directory への登録によるクライアント ID およびクライアント秘密鍵を持っていることを確認します。 この手順の詳細については、「[リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../resource-group-create-service-principal-portal.md)」を参照してください。
+1. Azure 管理ポータルで Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、Azure Active Directory への登録によるクライアント ID およびクライアント秘密鍵を持っていることを確認します。 この手順の詳細については、「[リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)」を参照してください。
 2. Azure 管理ポータルで、[Configuration Manager (登録した Web アプリ) に OMS へのアクセス許可を付与](#provide-configuration-manager-with-permissions-to-oms)します。
 3. Configuration Manager で、[OMS 接続の追加ウィザードを使用して接続を追加](#add-an-oms-connection-to-configuration-manager)します。
 4. パスワードまたはクライアント秘密鍵が期限切れになるか、それらを紛失した場合は、Configuration Manager で、[接続プロパティを更新](#update-oms-connection-properties)できます。
@@ -132,6 +132,6 @@ OMS 接続を Configuration Manager に追加し、Configuration Manager サー�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

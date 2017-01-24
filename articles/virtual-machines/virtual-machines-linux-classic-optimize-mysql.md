@@ -16,17 +16,16 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: d10b07bf35975009dd1a442272a3f0be84c615eb
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: c49c3ed165117e41aee2993a0f9f38c622f84360
 
 
 ---
 # <a name="optimizing-mysql-performance-on-azure-linux-vms"></a>Azure Linux VM 上での MySQL のパフォーマンスを最適化する
 Azure では、仮想ハードウェアの選択、およびソフトウェアの構成の両方で MySQL のパフォーマンスに影響を与える多くの要素があります。 この記事では、ストレージ、システム、およびデータベースの構成でのパフォーマンスの最適化について説明します。
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-Resource Manager モデルを使用した Linux VM の最適化については、[こちら](virtual-machines-linux-optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください。
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した Linux VM の最適化については、[こちら](virtual-machines-linux-optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください。
 
 ## <a name="utilizing-raid-on-an-azure-virtual-machine"></a>Azure の仮想マシン上での RAID の使用
 ストレージは、クラウド環境でデータベースのパフォーマンスに影響を与える重要な要素です。  RAID は、1 つのディスクと比較して、同時実行制御を使用して高速アクセスを提供できます。  詳細については、 [標準の RAID レベル](http://en.wikipedia.org/wiki/Standard_RAID_levels) に関するページを参照してください。   
@@ -355,6 +354,6 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

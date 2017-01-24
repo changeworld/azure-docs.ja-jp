@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 649984be9aee5253dcd1f3ed3be31795212aa3ae
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 24d6a25e872eabb7d64d57d5ee66969401e4f1cd
 
 
 ---
-# <a name="example-3-build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>例 3 - ファイアウォール、UDR、NSG から成る DMZ を構築してネットワークを保護する
+# <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>例 3 - ファイアウォール、UDR、NSG から成る DMZ を構築してネットワークを保護する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
 
 この例では、ファイアウォールと 4 台の Windows Server、ユーザー定義ルーティング、ネットワーク セキュリティ グループから成る DMZ を作成します。 また、各手順をより深く理解できるように、関連するコマンドを順に説明します。 さらに、「トラフィックに関するシナリオ」セクションでは、DMZ の防御層におけるトラフィックの進行過程を詳しく説明しています。 最後の「参照」セクションでは、さまざまなシナリオでテストおよび実験ができるように、この環境を構築するための完全なコードと手順を紹介します。 
@@ -958,7 +958,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>サンプル アプリケーション スクリプト
-これに対応するサンプル アプリケーションやその他の DMZ の例をインストールする場合は、[サンプル アプリケーション スクリプト][SampleApp]をご利用ください。
+これに対応するサンプル アプリケーション、およびその他の DMZ の例をインストールしたい場合は、[サンプル アプリケーション スクリプト][SampleApp]をご利用ください。
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3design.png "双方向 DMZ + NVA、NSG、および UDR"
@@ -969,7 +969,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 [6]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpb.png "AppVM01 ルール"
 [7]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconapplicationredirect.png "アプリケーション リダイレクト アイコン"
 [8]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/icondestinationnat.png "送信先 NAT アイコン"
-[9]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconpass.png "パス アイコン"
+[9]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconpass.png "Pass アイコン"
 [10]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulefirewall.png "ファイアウォール管理ルール"
 [11]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulerdp.png "ファイアウォール RDP ルール"
 [12]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleweb.png "ファイアウォール Web ルール"
@@ -986,6 +986,6 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

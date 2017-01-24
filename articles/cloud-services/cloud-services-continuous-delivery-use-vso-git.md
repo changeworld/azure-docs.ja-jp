@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d2f59846a5c14de6ddac9cd315df0609ff1bc3a4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 91e061820e8edc81bca395dc78d3e1e840b21438
 
 
 ---
@@ -235,6 +235,6 @@ Visual Studio Team Services で Git を使用する場合のその他のヒン�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

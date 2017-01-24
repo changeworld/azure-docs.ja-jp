@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/13/2016
 ms.author: masashin
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 8d149069c95b5b68904ab6a5a47b1fa6215da23d
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 0eb72af5c0f904655fc4a0d8fd44d6e481c73645
 
 
 ---
@@ -256,7 +256,7 @@ SLA には、しばしば次の条件が定義されます。
 アラートを生成するため、システムは、高レベルのインジケーターが指定されたしきい値を超えた場合はイベントを発生できる必要があります。 高レベルのインジケーターを構成するさまざまな要因の下位レベルの詳細は、アラート システムに対するコンテキスト データとして使用できる必要があります。
 
 ### <a name="data-sources-instrumentation-and-data-collection-requirements"></a>データ ソース、インストルメンテーション、およびデータ収集の要件
-SLA の監視をサポートするために必要な生データは、パフォーマンスの監視に必要な生データに似ており、ある面では、正常性の監視と可用性の監視で必要なデータに似ています  (詳細については該当するセクションを参照してください)。このデータは、以下を行うことでキャプチャできます。
+SLA の監視をサポートするために必要な生データは、パフォーマンスの監視に必要な生データに似ており、ある面では、正常性の監視と可用性の監視で必要なデータに似ています (詳細については該当するセクションを参照してください)。このデータは、以下を行うことでキャプチャできます。
 
 * エンドポイントの監視の実行。
 * 例外、エラー、および警告のロギング。
@@ -690,7 +690,7 @@ Azure のアプリケーションとサービスでは、Azure Diagnostics が�
 * ユーザー操作の監査。 これには、各ユーザーが実行した個々の要求とその日時を記録する必要があります。 データは、特定のユーザーが特定の期間に実行した一連の操作を管理者がすぐに再構築できるように構築されている必要があります。
 * ユーザーによるリソース使用率の追跡。 これには、ユーザーの各要求が、システムを構成する各種リソースにどのように、どの程度の時間アクセスしたかを記録する必要があります。 管理者はこのデータを使って、主に課金のために、指定した期間におけるユーザーごとの使用率レポートを作成できる必要があります。
 
-多くの場合、レポートは定義されたスケジュールに従ってバッチ処理によって生成されます   (待機時間は通常問題になりません)。しかし、必要に応じてアドホック ベースで生成することもできます。 たとえば、データを Azure SQL Database などのリレーショナル データベースに格納している場合、SQL Server Reporting Services などのツールを使ってデータを抽出してフォーマットし、それをレポートのセットとして表示することもできます。
+多くの場合、レポートは定義されたスケジュールに従ってバッチ処理によって生成されます  (待機時間は通常問題になりません)。しかし、必要に応じてアドホック ベースで生成することもできます。 たとえば、データを Azure SQL Database などのリレーショナル データベースに格納している場合、SQL Server Reporting Services などのツールを使ってデータを抽出してフォーマットし、それをレポートのセットとして表示することもできます。
 
 ## <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 * [自動スケールのガイダンス](best-practices-auto-scaling.md) では、オペレーターがシステムのパフォーマンスを継続的に監視してリソースの追加や削除に関して判断を行う必要性を軽減することで、管理オーバーヘッドを削減する方法について説明しています。
@@ -703,13 +703,13 @@ Azure のアプリケーションとサービスでは、Azure Diagnostics が�
 * [Azure のクラウド サービスおよび仮想マシンの診断機能](cloud-services/cloud-services-dotnet-diagnostics.md)
 * [Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)、および [HDInsight](https://azure.microsoft.com/services/hdinsight/)
 * [Service Bus キューの使用方法](service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
-* [Azure Virtual Machines での SQL Server Business Intelligence](virtual-machines/virtual-machines-windows-classic-ps-sql-bi.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Azure Virtual Machines での SQL Server Business Intelligence](virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-bi.md)
 * [アラート通知の受信](monitoring-and-diagnostics/insights-receive-alert-notifications.md)[サービス正常性を追跡する](monitoring-and-diagnostics/insights-service-health.md)
 * [Application Insights](application-insights/app-insights-overview.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

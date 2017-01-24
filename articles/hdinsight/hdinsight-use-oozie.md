@@ -13,18 +13,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ba93904f61f2472851e7cc170c77ab6b58101463
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: e6749bdf73acc9c05e71c85410bb3d95c57a0a9f
 
 
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-HDInsight で Apache Oozie を使用して、ワークフローを定義する方法と実行する方法について説明します。 Oozie コーディネーターの説明については、「[HDInsight での時間ベースの Hadoop Oozie コーディネーターの使用][hdinsight-oozie-coordinator-time]」を参照してください。 Azure Data Factory については、「[Data Factory で Pig と Hive を使用する][azure-data-factory-pig-hive]」をご覧ください。
+HDInsight で Apache Oozie を使用して、ワークフローを定義する方法と実行する方法について説明します。 Oozie コーディネーターについては、「[HDInsight での時間ベースの Hadoop Oozie コーディネーターの使用][hdinsight-oozie-coordinator-time]」を参照してください。 Azure Data Factory については、「[Data Factory で Pig および Hive を使用する][azure-data-factory-pig-hive]」を参照してください。
 
 Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Hadoop スタックと統合されていて、Apache MapReduce、Apache Pig、Apache Hive、Apache Sqoop の Hadoop ジョブをサポートしています。 Java プログラムやシェル スクリプトのような、システム特有のジョブのスケジュールを設定するのに使用することもできます。
 
@@ -48,11 +48,11 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
         [TRACE] 816
         [WARN]  4
    
-    Hive の詳細については、「[HDInsight での Hive の使用][hdinsight-use-hive]」をご覧ください。
-2. Sqoop アクションは、Azure SQL データベースのテーブルに HiveQL 出力をエクスポートします。 Sqoop の詳細については、「[HDInsight での Hadoop Sqoop の使用][hdinsight-use-sqoop]」をご覧ください。
+    Hive の詳細については、[HDInsight での Hive の使用][hdinsight-use-hive]に関するページを参照してください。
+2. Sqoop アクションは、Azure SQL データベースのテーブルに HiveQL 出力をエクスポートします。 Sqoop の詳細については、「[HDInsight での Hadoop Sqoop の使用][hdinsight-use-sqoop]」を参照してください。
 
 > [!NOTE]
-> HDInsight クラスターでサポートされている Oozie のバージョンについては、[HDInsight で提供される Hadoop クラスター バージョンの新機能][hdinsight-versions]をご覧ください。
+> HDInsight クラスターでサポートされている Oozie のバージョンについては、「[HDInsight で提供される Hadoop クラスター バージョンの新機能][hdinsight-versions]」を参照してください。
 > 
 > 
 
@@ -61,9 +61,9 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 * **Azure PowerShell を実行できるワークステーション**。 
   
-    [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+
+[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
   
-    Windows PowerShell スクリプトを実行するには、管理者として実行し、実行ポリシーを *RemoteSigned*に設定する必要があります。 詳細については、「[Windows PowerShell スクリプトの実行][powershell-script]」を参照してください。
 
 ## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Oozie ワークフローと関連 HiveQL スクリプトを定義する
 Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書かれています。 既定のワークフロー ファイル名は *workflow.xml*です。 このチュートリアルで使用するワークフロー ファイルを次に示します。
@@ -148,7 +148,7 @@ RunHiveScript には、変数がいくつかあります。 その値は、Azure
 <tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダーを指定します。 これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
 </table>
 
-Oozie ワークフローとワークフロー アクションの使用法の詳細については、[Apache Oozie 4.0 のマニュアル][apache-oozie-400] (HDInsight クラスター Version 3.0) または [Apache Oozie 3.3.2 のマニュアル][apache-oozie-332] (HDInsight クラスター Version 2.1) をご覧ください。
+Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight バージョン 2.1 の場合) を参照してください。
 
 ワークフローの Hive アクションは、HiveQL スクリプト ファイルを呼び出します。 このスクリプト ファイルは HiveQL ステートメントを 3 つ含んでいます。
 
@@ -171,7 +171,7 @@ Oozie ワークフローとワークフロー アクションの使用法の詳�
 ワークフロー ファイルと HiveQL ファイルは、どちらも BLOB コンテナーに格納されます。  このチュートリアルで後ほど使用する PowerShell スクリプトでは、両方のファイルを既定のストレージ アカウントにコピーします。 
 
 ## <a name="submit-oozie-jobs-using-powershell"></a>PowerShell を使用して Oozie ジョブを送信する
-現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。 **Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。 Oozie Web サービス API は、HTTP REST JSON API です。 Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のマニュアル][apache-oozie-400] (HDInsight Version 3.0) または [Apache Oozie 3.3.2 のマニュアル][apache-oozie-332] (HDInsight Version 2.1) を参照してください。
+現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。 **Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。 Oozie Web サービス API は、HTTP REST JSON API です。 Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight クラスター バージョン 2.1 の場合) を参照してください。
 
 このセクションの PowerShell スクリプトでは、次の手順を実行します。
 
@@ -619,7 +619,7 @@ Oozie ワークフローとワークフロー アクションの使用法の詳�
 このチュートリアルでは、Oozie ワークフローを定義する方法と、PowerShell を使用して Oozie ジョブを実行する方法について説明しました。 詳細については、次の記事を参照してください。
 
 * [HDInsight での時間ベースの Oozie コーディネーターの使用][hdinsight-oozie-coordinator-time]
-* [HDInsight で Hive と Hadoop を使用したモバイル ハンドセットの使用状況の分析][hdinsight-get-started]
+* [HDInsight で Hive と Hadoop を使用し、モバイル ハンドセットの使用状況を分析する][hdinsight-get-started]
 * [HDInsight での Azure Blob Storage の使用][hdinsight-storage]
 * [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 * [HDInsight での Hadoop ジョブ用データのアップロード][hdinsight-upload-data]
@@ -663,7 +663,7 @@ Oozie ワークフローとワークフロー アクションの使用法の詳�
 
 [powershell-download]: http://azure.microsoft.com/downloads/
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
-[powershell-install-configure]: ../powershell-install-configure.md
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 [powershell-script]: https://technet.microsoft.com/en-us/library/ee176961.aspx
 
@@ -677,6 +677,6 @@ Oozie ワークフローとワークフロー アクションの使用法の詳�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

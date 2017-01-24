@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/06/2017
 ms.author: garye;raymondl
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c115ba524a8a87a3ba5349a668079d8bc817f794
+ms.sourcegitcommit: 52153526fb5b127823316b86fa05c0528151e18f
+ms.openlocfilehash: 971edaa8a4aeb20f740e723c32d0b74315aa4c00
 
 
 ---
@@ -118,16 +118,16 @@ BES Web アプリ テンプレートは、RRS テンプレートと同じよう�
 * Machine Learning の実験を Web サービスとしてデプロイする方法については、「 [Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
 * Web サービスにアクセスするための別の方法については、「 [Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)
 
-[Image1]: media\machine-learning-consume-web-service-with-web-app-template\rrs-web-template-flow.png
-[image2]: media\machine-learning-consume-web-service-with-web-app-template\bes-web-template-flow.png
-[image3]: media\machine-learning-consume-web-service-with-web-app-template\api-key.png
-[image4]: media\machine-learning-consume-web-service-with-web-app-template\post-uri.png
-[image5]: media\machine-learning-consume-web-service-with-web-app-template\create-web-app.png
-[image6]: media\machine-learning-consume-web-service-with-web-app-template\web-service-info.png
-[image7]: media\machine-learning-consume-web-service-with-web-app-template\storage.png
+[image1]: media/machine-learning-consume-web-service-with-web-app-template/rrs-web-template-flow.png
+[image2]: media/machine-learning-consume-web-service-with-web-app-template/bes-web-template-flow.png
+[image3]: media/machine-learning-consume-web-service-with-web-app-template/api-key.png
+[image4]: media/machine-learning-consume-web-service-with-web-app-template/post-uri.png
+[image5]: media/machine-learning-consume-web-service-with-web-app-template/create-web-app.png
+[image6]: media/machine-learning-consume-web-service-with-web-app-template/web-service-info.png
+[image7]: media/machine-learning-consume-web-service-with-web-app-template/storage.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

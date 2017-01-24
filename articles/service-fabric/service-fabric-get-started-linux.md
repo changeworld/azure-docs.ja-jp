@@ -15,27 +15,27 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 567a998102558626df73878865b317b830ba1faa
+ms.sourcegitcommit: 206b958b4c266b9977a9beb8ffb6a0576f068a9a
+ms.openlocfilehash: cc4fbb67baf14f4a104a5de6dbf11ad195a42d15
 
 
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
-> -[Windows](service-fabric-get-started.md)
-> 
+> * [Windows](service-fabric-get-started.md) 
 > * [Linux](service-fabric-get-started-linux.md)
 > * [OSX](service-fabric-get-started-mac.md)
 > 
-> 
+>  
 
  Linux の開発コンピューターに [Azure Service Fabric アプリケーション](service-fabric-application-model.md) をデプロイして実行するには、ランタイムと共通 SDK をインストールする必要があります。 また、必要に応じて Java 用 SDK と .NET Core 用 SDK をインストールすることもできます。
 
 ## <a name="prerequisites"></a>前提条件
+
 ### <a name="supported-operating-system-versions"></a>サポートされるオペレーティング システムのバージョン
 開発では、次のオペレーティング システムのバージョンがサポートされます。
 
-* Ubuntu 16.04 (Xenial Xerus)
+* Ubuntu 16.04 ("Xenial Xerus")
 
 ## <a name="update-your-apt-sources"></a>apt ソースを更新する
 apt get を実行して SDK および関連付けられたランタイム パッケージをインストールするために、まず apt ソースを更新する必要があります。
@@ -71,7 +71,8 @@ apt get を実行して SDK および関連付けられたランタイム パッ
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
 
-## <a name="set-up-the-azure-crossplatform-cli"></a>Azure クロスプラットフォーム CLI をセットアップする
+
+## <a name="set-up-the-azure-cross-platform-cli"></a>Azure クロスプラットフォーム CLI をセットアップする
 [Azure クロスプラットフォーム CLI][azure-xplat-cli-github] には、クラスターやアプリケーションなどの Service Fabric エンティティを操作するコマンドが含まれています。 この CLI は Node.js をベースにしているため、[Node がインストールされていることを確認][install-node]してから、以下の手順に進んでください。
 
 1. 開発用コンピューターに GitHub リポジトリをクローンします。
@@ -110,7 +111,13 @@ apt get を実行して SDK および関連付けられたランタイム パッ
    
     ![Service Fabric Explorer on Linux][sfx-linux]
 
-これで、構築済みの Service Fabric アプリケーション パッケージか、ゲスト コンテナーやゲスト実行可能ファイルをベースに新規作成したパッケージをデプロイできるようになりました。 Java 用 SDK または .NET Core 用 SDK を使用して新しいサービスを構築する場合は、次のセットアップ手順を実行します。
+これで、構築済みの Service Fabric アプリケーション パッケージか、ゲスト コンテナーやゲスト実行可能ファイルをベースに新規作成したパッケージをデプロイできるようになりました。 Java 用 SDK または .NET Core 用 SDK を使用して新しいサービスを構築するには、後続のセクションに示す設定手順を実行します。
+
+
+> [!NOTE]
+> スタンドアロン クラスターは Linux でサポートされていません。プレビューでは、ワン ボックスと Azure Linux マルチマシン クラスターのみがサポートされています。
+> 
+> 
 
 ## <a name="install-the-java-sdk-and-eclipse-neon-plugin-optional"></a>Java SDK と Eclipse Neon プラグインをインストールする (省略可能)
 Java SDK には、Java を使用して Service Fabric サービスを構築するために必要なライブラリとテンプレートが用意されています。
@@ -142,18 +149,32 @@ Eclipse Neon IDE 内から Service Fabric 用 Eclipse プラグインをイン�
 
 1. .NET Core SDK パッケージをインストールします。
    
-    ```bash
-    sudo apt-get install servicefabricsdkcsharp
-    ```
+   ```bash
+   sudo apt-get install servicefabricsdkcsharp
+   ```
+
 2. SDK のセットアップ スクリプトを実行します。
    
-    ```bash
-    sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
-    ```
+   ```bash
+   sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
+   ```
+
+## <a name="updating-the-sdk-and-runtime"></a>SDK とランタイムの更新
+
+SDK とランタイムを最新バージョンに更新するには、次の手順を実行します (更新やインストールを行わない SDK はリストから削除します)。
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install servicefabric, servicefabricsdkcommon, servicefabricsdkcsharp, servicefabricsdkjava
+   ```
+
+CLI を更新する場合は、CLI をクローンしたディレクトリに移動し、`git pull` を実行して更新します。 
 
 ## <a name="next-steps"></a>次のステップ
 * [Linux で最初の Java アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-java.md)
+* [Linux で最初の CSharp アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [OSX で開発環境を準備する](service-fabric-get-started-mac.md)
+* [Azure CLI を使用した Service Fabric アプリケーションの管理](service-fabric-azure-cli.md)
 
 <!-- Links -->
 
@@ -168,6 +189,6 @@ Eclipse Neon IDE 内から Service Fabric 用 Eclipse プラグインをイン�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2204034d9a39f9773a6e12ca5ed9504939a6ebf6
+ms.sourcegitcommit: f57b400dc20dc08221c0a8a770fd78f5885f634c
+ms.openlocfilehash: 0beb98220f043dc7c66cc494c3de00e0993798a6
 
 
 ---
@@ -52,16 +52,6 @@ Power BI Embedded には、Azure 標準 SLA が適用されます。 詳細に�
 ## <a name="how-is-this-service-priced"></a>このサービスはどのように課金されますか?
 価格については、「 [Power BI Embedded の価格](http://go.microsoft.com/fwlink/?LinkId=760527) 」をご覧ください。
 
-## <a name="what-is-a-render-and-how-is-it-billed"></a>レンダーとは何ですか? また、レンダーはどのように請求されますか?
-> [!NOTE]
-> Power BI Embedded のプレビュー期間中には、レンダーごとの割引価格が適用されていましたが、ユーザーのフィードバックではセッションごとの価格が好評だったため、これは終了します。 レンダーごとの価格からセッションごとの価格への移行は、2016 年 9 月 1 日に実施されます。
-> 
-> 
-
-レンダーとは、エンド ユーザーに表示される視覚要素であり、サービスに対するクエリです。 たとえば、ユーザーが 4 つの視覚要素を含むレポートを表示した場合、レンダーは 4 つになります。 そのユーザーがレポートの表示を更新し、クエリがさらにサービスに送信されると、レンダーはさらに 4 つ増えます。 サービス所有者は、エンドユーザーが有料のレンダーにつながる新しいクエリを実行する範囲を制御し、コストの公開を限定し、静的データのシナリオにおけるコストを最小化することができます。
-
-レンダーは 1,000 レンダー単位で請求されます。 1,000 未満のレンダー量の請求は按分計算されます。 月々 1,000 レンダーは無料で使用できます。 ボリューム ライセンス契約から購入された場合、料金情報については Microsoft パートナーまたは販売元にお問い合わせください。
-
 ## <a name="what-is-a-report-session-and-how-is-it-billed"></a>レポート セッションとは何ですか。また、どのように課金されますか。
 セッションとは、エンド ユーザーと Power BI Embedded レポートとの一連のやり取りです。 Power BI Embedded レポートがユーザーに表示されるたびに、セッションが開始され、サブスクリプション所有者にセッション分が課金されます。 セッションは、レポート内の視覚要素の数やレポート コンテンツの更新頻度に関係なく、均一料金で請求されます。 セッションは、ユーザーがレポートを閉じたときか、1 時間後にセッションがタイムアウトになったときに終了します。
 
@@ -85,7 +75,7 @@ Power BI Embedded サービスでは、明示的なエンドユーザー認証�
 アプリケーション トークンを作成して送信し、要求されたレポートをレンダリングするようサービスに伝えます。 この設計では、アプリケーションでユーザーの認証と承認に Azure AD を使用する必要はありません (ただし、Azure AD を使用することもできます)。 アプリケーション トークンの詳細については、 [こちら](power-bi-embedded-app-token-flow.md)をご覧ください。 Power BI Embedded では、高度なセキュリティ フィルター処理シナリオに対応するために、行レベルのセキュリティ機能 (RLS) も導入されました。
 
 ## <a name="what-data-sources-are-currently-supported-with-power-bi-embedded"></a>Power BI Embedded では現在どのようなデータ ソースがサポートされていますか?
-基本的な資格情報を使用するクラウド データ ソースへの直接クエリによるアクセスがサポートされます。 これは、Azure SQL DB や Azure SQL DW などのソースが現在サポートされていることを意味します。 今後数か月で、その他のデータ ソースのサポートおよびアクセスの種類を追加します。 新たにサポートされるデータ ソースについては、Power BI 開発者フォーラム ([https://dev.powerbi.com](https://dev.powerbi.com/)) でお知らせします。
+基本的な資格情報を使用するクラウド データ ソースへの直接クエリによるアクセスがサポートされます。 これは、Azure SQL DB や Azure SQL DW などのソースが現在サポートされていることを意味します。 今後数か月で、その他のデータ ソースのサポートおよびアクセスの種類を追加します。 詳細については、「[データ ソースへの接続](power-bi-embedded-connect-datasource.md)」を参照してください。
 
 ## <a name="how-does-the-tenancy-model-work-for-power-bi-embedded"></a>Power BI Embedded において、テナント モデルはどのように機能しますか?
 Power BI Embedded モデルでは、Azure AD テナントを顧客向けに使用するための明示的な要件はありません。 顧客向けに Azure AD を提供するかどうか選択することができます。 結果として、アプリケーションとインフラストラクチャのアーキテクチャによって、Power BI Embedded でテナント モデルが必要となるかが決定されます。
@@ -102,9 +92,11 @@ Power BI Embedded モデルでは、Azure AD テナントを顧客向けに使�
 * [Microsoft Power BI Embedded とは](power-bi-embedded-what-is-power-bi-embedded.md)
 * [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 
+ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO3-->
 
 

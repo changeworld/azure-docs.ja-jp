@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: 7ee42899d1f50d562a8e776c840f0cbde12b13fe
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b67594033bfa89fc6ff8d80dd064d766c4048a3b
 
 
 ---
@@ -45,7 +45,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 ## <a name="requirements-and-considerations"></a>要件と考慮事項
 * AMS を使用して FairPlay で暗号化された HLS を配信し、FairPlay ライセンスを配信するには、次のものが必要です。
 
-  * Azure アカウント。 詳細については、 [Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
+  * Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
   * Media Services アカウント。 Media Services アカウントを作成するには、「[アカウントの作成](media-services-portal-create-account.md)」を参照してください。
   * [Apple 開発プログラム](https://developer.apple.com/)にサインアップします。
   * コンテンツ所有者による[デプロイ パッケージ](https://developer.apple.com/contact/fps/)の取得が Apple によって求められます。 要求には、Azure Media Services で KSM (キー セキュリティ モジュール) が既に実装されていること、および最終的な FPS パッケージを要求していることを明記してください。 最終的な FPS パッケージに含まれるのは、証明書を生成し、ASK を取得するための指示です。これを使用して FairPlay を構成します。
@@ -566,6 +566,6 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

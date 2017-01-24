@@ -1,6 +1,6 @@
 ---
-title: "IoT Hub の MQTT サポート | Microsoft Docs"
-description: "IoT Hub レベルでの MQTT サポートに関する説明"
+title: "Azure IoT Hub の MQTT サポートについて | Microsoft Docs"
+description: "開発者ガイド - MQTT プロトコルを使用して IoT Hub デバイスに接続されているエンドポイントに接続するデバイスのサポート。 Azure IoT デバイス SDK での組み込み MQTT サポートについての情報も含まれます。"
 services: iot-hub
 documentationcenter: .net
 author: kdotchkoff
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/24/2016
 ms.author: kdotchko
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: cb771818a437fdacd20fe192a087ebc0c8952f21
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 97317edb8f97360281a0bfcc6d8c11f70b204897
 
 
 ---
@@ -47,7 +47,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 これを行う際は、次の項目をご確認ください。
 
 * AMQP では、MQTT 接続を終了するときに、多くの条件のエラーが返されます。 そのため、例外処理のロジックを一部変更する必要が生じることがあります。
-* MQTT は、[クラウドからデバイスへのメッセージ][lnk-messaging]の受信時の "*拒否*" 操作をサポートしていません。 バックエンドでデバイス アプリからの応答を受信する必要がある場合は、[ダイレクト メソッド][lnk-methods]の使用をご検討ください。
+* MQTT は、[クラウドからデバイスへのメッセージ][lnk-messaging]の受信時の "*拒否*" 操作をサポートしていません。 バックエンド アプリでデバイス アプリからの応答を受信する必要がある場合は、[ダイレクト メソッド][lnk-methods]の使用をご検討ください。
 
 ## <a name="using-the-mqtt-protocol-directly"></a>MQTT プロトコルの直接使用
 デバイスでデバイス SDK を使用できない場合でも、MQTT プロトコルを使用してデバイスをパブリックのデバイス エンドポイントに接続できます。 **接続** パケットで、デバイスは次の値を使用する必要があります。
@@ -62,7 +62,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
     テストするときは、[デバイス エクスプローラー][lnk-device-explorer] ツールを使用して SAS トークンをすばやく生成し、それをコピーして独自のコードに貼り付けることもできます。
 
-  1. デバイス エクスプローラーで **[管理]** タブに移動します。
+  1. **デバイス エクスプローラー**で **[管理]** タブに移動します。
   2. **[SAS トークン]** (右上) をクリックします。
   3. **[SASTokenForm]** の **[DeviceID]** ドロップダウンでデバイスを選択します。 **[TTL]**を設定します。
   4. **[生成]** をクリックしてトークンを作成します。
@@ -85,10 +85,10 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 >
 >
 
-また、デバイス クライアント アプリケーションは、 `devices/{device_id}/messages/events/{property_bag}` を **Will トピック名** として使用することで、テレメトリ メッセージとして転送される *Will メッセージ* を定義することもできます。
+また、デバイス アプリは、`devices/{device_id}/messages/events/{property_bag}` を **Will トピック名**として使用することで、テレメトリ メッセージとして転送される "*Will メッセージ*" を定義することもできます。
 
-IoT Hub では、QoS 2 メッセージはサポートされません。 デバイス クライアントが **QoS 2** メッセージを発行した場合、IoT Hub はネットワーク接続を閉じます。
-IoT Hub では、Retain メッセージは保持されません。 デバイスが **RETAIN** フラグを 1 に設定してメッセージを送信すると、IoT Hub はそのメッセージに **x-opt-retain** アプリケーション プロパティを追加します。 この場合、IoT Hub は、Retain メッセージを保持するのではなく、バックエンド アプリケーションにそのメッセージを渡します。
+IoT Hub では、QoS 2 メッセージはサポートされません。 デバイス アプリから **QoS 2** を使用したメッセージが発行されると、IoT Hub はネットワーク接続を閉じます。
+IoT Hub では、Retain メッセージは保持されません。 デバイスが **RETAIN** フラグを 1 に設定してメッセージを送信すると、IoT Hub はそのメッセージに **x-opt-retain** アプリケーション プロパティを追加します。 この場合、IoT Hub は、Retain メッセージを保持するのではなく、バックエンド アプリにそのメッセージを渡します。
 
 詳細については、[メッセージ開発者ガイド][lnk-messaging]を参照してください。
 
@@ -99,7 +99,7 @@ IoT Hub からメッセージを受信するには、デバイスで、`devices/
 
 IoT Hub は、**トピック名** `devices/{device_id}/messages/devicebound/` またはメッセージ プロパティがある場合は `devices/{device_id}/messages/devicebound/{property_bag}` のメッセージを配信します。 `{property_bag}` には、メッセージ プロパティの URL でエンコードされた値/キーのペアが含まれています。 プロパティ バッグに含められるのは、アプリケーション プロパティとユーザーが設定可能なシステム プロパティ (**messageId**、**correlationId** など) のみです。 システム プロパティの名前にはプレフィックス **$** が付きます。アプリケーション プロパティでは、プレフィックスのない元々のプロパティ名が使用されます。
 
-デバイス クライアントが **QoS 2** を使用してトピックをサブスクライブしている場合、IoT Hub は **SUBACK** パケットに最大の QoS レベル 1 を許可します。 その後、IoT Hub は QoS 1 を使用してデバイスにメッセージを配信します。
+デバイス アプリが **QoS 2** を使用してトピックをサブスクライブしている場合、IoT Hub は **SUBACK** パケットに最大の QoS レベル 1 を許可します。 その後、IoT Hub は QoS 1 を使用してデバイスにメッセージを配信します。
 
 ### <a name="retrieving-a-device-twins-properties"></a>デバイス ツインのプロパティの取得
 
@@ -134,7 +134,7 @@ ID レジストリ エントリの本文は "properties" メンバーに限定�
 
 詳細については、[デバイス ツイン開発者ガイド][lnk-devguide-twin]を参照してください。
 
-### <a name="update-twins-reported-properties"></a>ツインの報告されるプロパティの更新
+### <a name="update-device-twins-reported-properties"></a>デバイス ツインの報告されるプロパティの更新
 
 デバイスは最初に、操作の応答を受信するために、`$iothub/twin/res/#` にサブスクライブする必要があります。 次に、デバイス ツインの更新を含むメッセージを `$iothub/twin/PATCH/properties/reported/?$rid={request id}` に送信します (**request id** に値を指定します)。 その後サービスが、要求と同じ **request id** を使用して、トピック `$iothub/twin/res/{status}/?$rid={request id}` のデバイス ツイン データを含む応答メッセージを送信します。
 
@@ -148,7 +148,7 @@ JSON ドキュメントの各メンバーは、デバイス ツインのドキ�
 
 使用できる状態コードは次のとおりです。
 
-|状態 | Description |
+|状態 | 説明 |
 | ----- | ----------- |
 | 200 | 成功 |
 | 400 | 正しくない要求。 無効な形式の JSON |
@@ -159,7 +159,7 @@ JSON ドキュメントの各メンバーは、デバイス ツインのドキ�
 
 ### <a name="receiving-desired-properties-update-notifications"></a>必要なプロパティの更新通知の受信
 
-デバイスが接続されると、IoT Hub は、バックエンドによって実行された更新の内容を含むトピック `$iothub/twin/PATCH/properties/desired/?$version={new version}` に通知を送信します。 たとえば、
+デバイスが接続されると、IoT Hub は、ソリューション バックエンドによって実行された更新の内容を含むトピック `$iothub/twin/PATCH/properties/desired/?$version={new version}` に通知を送信します。 たとえば、
 
         {
             "telemetrySendFrequency": "5m",
@@ -184,7 +184,7 @@ JSON ドキュメントの各メンバーは、デバイス ツインのドキ�
 最後の考慮事項として、MQTT プロトコルの動作をクライアント側でカスタマイズする必要がある場合は、[Azure IoT プロトコル ゲートウェイ][lnk-azure-protocol-gateway]に関するページを確認してください。IoT Hub と直接やり取りする高性能のカスタム プロトコル ゲートウェイをデプロイできます。 Azure IoT プロトコル ゲートウェイでは、ブラウンフィールド MQTT デプロイメントまたは他のカスタム プロトコルに応じてデバイス プロトコルをカスタマイズすることができます。 ただし、このアプローチでは、カスタム プロトコル ゲートウェイを実行して運用する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
-詳細については、Azure IoT Hub 開発者ガイドの「[MQTT サポートに関する留意事項][lnk-mqtt-devguide]」を参照してください。
+詳細については、IoT Hub 開発者ガイドの「[MQTT サポートに関する留意事項][lnk-mqtt-devguide]」を参照してください。
 
 MQTT プロトコルの詳細については、[MQTT のドキュメント][lnk-mqtt-docs]を参照してください。
 
@@ -197,7 +197,7 @@ IoT Hub のデプロイの計画に関する詳細については、以下をご
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [開発者ガイド][lnk-devguide]
+* [IoT Hub 開発者ガイド][lnk-devguide]
 * [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
@@ -209,7 +209,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device/samples
 [lnk-sample-python]: https://github.com/Azure/azure-iot-sdks/tree/master/python/device/samples
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/readme.md
-[lnk-sas-tokens]: iot-hub-devguide-security.md#use-sas-tokens-in-a-device-client
+[lnk-sas-tokens]: iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app
 [lnk-mqtt-devguide]: iot-hub-devguide-messaging.md#notes-on-mqtt-support
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 
@@ -228,6 +228,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-devguide-twin]: iot-hub-devguide-device-twins.md
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

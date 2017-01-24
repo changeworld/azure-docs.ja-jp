@@ -3,8 +3,8 @@ title: "無料 Azure サブスクリプションを従量課金制にアップ�
 description: "無料サブスクリプションから従量課金制にアップグレードするためのプロセスと要件を説明します。"
 services: 
 documentationcenter: 
-author: jlian
-manager: mbaldwin
+author: adpick
+manager: adpick
 editor: 
 tags: billing
 ms.assetid: 0b4ac8f3-3df0-478a-8a07-b18b40f0cf5f

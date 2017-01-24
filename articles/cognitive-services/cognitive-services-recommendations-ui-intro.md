@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/11/2016
 ms.author: luisca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 74cba2d29dec0c302fb969371f7b8fa58e4e4603
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5f98395e2beba671192e50f8e53c6198e1efed29
 
 
 ---
@@ -113,6 +113,6 @@ ms.openlocfilehash: 74cba2d29dec0c302fb969371f7b8fa58e4e4603
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

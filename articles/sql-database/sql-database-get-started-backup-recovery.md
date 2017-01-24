@@ -17,8 +17,8 @@ ms.topic: hero-article
 ms.date: 12/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: bc36f38c0089940e8f4f53a0abb13d9bb756eb1e
+ms.sourcegitcommit: 7f26cd0f6c5f9c7a2fe692bfcdc6ef60d1b2200f
+ms.openlocfilehash: d4ea089ed4b5d29c261b25e95f4d304611f9a857
 
 
 ---
@@ -104,11 +104,10 @@ Sentence #2 Explains what users will learn and the benefit.
 
 * 「[Azure Portal と SQL Server Management Studio を使用して Azure SQL Database のサーバー、データベース、ファイアウォール規則を使ってみる](sql-database-get-started.md)」またはこのチュートリアルの [PowerShell バージョン](sql-database-get-started-powershell.md)を完了している。 完了していない場合は、次に進む前に、この前提条件のチュートリアルを完了するか、このチュートリアルの [PowerShell バージョン](sql-database-get-started-powershell.md)の最後にある PowerShell スクリプトを実行してください。
 
-<!------------------
+
 > [!TIP]
-> You can perform these same tasks in a getting started tutorial by using either [C#](sql-database-get-started-csharp.md) or [PowerShell](sql-database-get-started-powershell.md).
->
--------------------->
+> これらのタスクは、概要チュートリアルで [PowerShell](sql-database-get-started-backup-recovery-powershell.md) を使用して実行することができます。
+
 
 ## <a name="sign-in-by-using-your-existing-account"></a>既存のアカウントを使用してサインインする
 [既存のサブスクリプション](https://account.windowsazure.com/Home/Index)を使用して、次の手順に従って Azure Portal に接続します。
@@ -179,6 +178,11 @@ Sentence #2 Explains what users will learn and the benefit.
 ## <a name="configure-long-term-retention-of-automated-backups-in-an-azure-recovery-services-vault"></a>Azure Recovery Services コンテナーの自動バックアップの長期的な保有期間を構成する 
 
 チュートリアルのこのセクションでは、ご利用のサービス レベルの保有期間より長い間、[自動バックアップを保持するよう Azure Recovery Services コンテナーを構成](sql-database-long-term-retention.md)します。 
+
+
+> [!TIP]
+> バックアップを削除するには、「[Delete long-term retention backups (長期的な保有期間のバックアップの削除)](sql-database-long-term-retention-delete.md)」を参照してください。
+
 
 1. サーバー **sqldbtutorialserver** の **[SQL Server]** ブレードを開きます。
 
@@ -299,12 +303,12 @@ Sentence #2 Explains what users will learn and the benefit.
 
 ## <a name="next-steps"></a>次のステップ
 
-- サービスによって生成された自動バックアップについては、[自動バックアップ](: https://azure.microsoft.com/en-us/documentation/articles/)sql-database-automated-backups.MD)に関する記事を参照してください。
+- サービスによって生成された自動バックアップについては、[自動バックアップ](sql-database-automated-backups.md)に関する記事を参照してください。
 - バックアップの長期保存については、[バックアップの長期保存](sql-database-long-term-retention.md)に関する記事を参照してください。
 - バックアップからの復元については、[バックアップからの復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

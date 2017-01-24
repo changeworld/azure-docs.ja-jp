@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c1e8a4befdf4d233bf00d1697ea3d9ff64cc6bbd
+ms.sourcegitcommit: 0c77ee0f612c1cbef551a129a22cf3f125e6f29d
+ms.openlocfilehash: 69fa0a7802ca39f86ada0af47b7a99e56436f973
 
 
 ---
@@ -60,12 +60,7 @@ ms.openlocfilehash: c1e8a4befdf4d233bf00d1697ea3d9ff64cc6bbd
   
     rtp://test2-amstest009.rtp.channel.mediaservices.windows.net:2010/ 
   
-    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle10.png)
-
-### <a name="problem-unable-to-playback-the-published-stream"></a>問題: 発行されたストリームを再生できない
-* **潜在的な問題**: 実行中のストリーミング エンドポイントがないか、割り当てられているストリーミング ユニット (スケール単位) がありません。 
-  
-    **トラブルシューティングの手順**: AMSE ツールで、[ストリーミング エンドポイント] タブに移動し、1 つのストリーミング ユニットで実行されているストリーミング エンドポイントがあることを確認します。 
+    ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle10.png)
 
 > [!NOTE]
 > このトラブルシューティングの手順に従っても正常にストリーミングできない場合は、Azure Portal を使用して、サポート チケットを送信してください。
@@ -81,6 +76,6 @@ ms.openlocfilehash: c1e8a4befdf4d233bf00d1697ea3d9ff64cc6bbd
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

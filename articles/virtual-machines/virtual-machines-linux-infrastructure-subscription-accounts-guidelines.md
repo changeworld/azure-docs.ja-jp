@@ -1,5 +1,5 @@
 ---
-title: "サブスクリプションとアカウントのガイドライン | Microsoft Docs"
+title: "Azure サブスクリプションとアカウントのガイドライン | Microsoft Docs"
 description: "Azure サブスクリプションとアカウントに関する主要な設計と実装のガイドラインについて説明します。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2b22f5fe87e1bf741e59ed71a3f57e756e2fad88
+ms.sourcegitcommit: a99ab839ec9ade0049e1cc59054e333048e0208c
+ms.openlocfilehash: df7291a93af5185d3bd18259a37233f7910fcabf
 
 
 ---
-# <a name="subscription-and-accounts-guidelines"></a>サブスクリプションとアカウントのガイドライン
+# <a name="azure-subscription-and-accounts-guidelines"></a>Azure サブスクリプションとアカウントのガイドライン
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 この記事は、環境とユーザー ベースの拡大に合わせたサブスクリプションとアカウント管理の方法について説明します。
@@ -57,7 +57,7 @@ Azure を使用するには、1 つまたは複数の Azure サブスクリプ�
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
 
-組織は次のようになります。
+組織は次の例のようになります。
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
 
@@ -69,6 +69,6 @@ Azure を使用するには、1 つまたは複数の Azure サブスクリプ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

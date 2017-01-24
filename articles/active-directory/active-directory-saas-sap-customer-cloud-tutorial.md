@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2016
+ms.date: 12/02/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b4fc3598489ae11a85a0e7259a2236446cffd6b0
+ms.sourcegitcommit: f454e7e218764e00cc19ca67b0edade213834b75
+ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
 
 
 ---
@@ -63,19 +63,25 @@ Azure AD への SAP Cloud for Customer の統合を構成するには、ギャ�
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
     ![Active Directory][1]
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![[アプリケーション]][2]
+
 4. ページの下部にある **[追加]** をクリックします。
    
     ![アプリケーション][3]
+
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
     ![アプリケーション][4]
+
 6. 検索ボックスに、「 **SAP Cloud for Customer**」と入力します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_01.png)
+
 7. 結果ウィンドウで **[SAP Cloud for Customer]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
     ![Active Directory](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_02.png)
@@ -101,9 +107,11 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 1. Azure クラシック ポータルの **[SAP Cloud for Customer]** アプリケーション統合ページで、上部のメニューから **[属性]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_80.png) 
+
 2. [SAML トークンの属性] 一覧で、nameidentifier 属性を選択して **[編集]**をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_84.png) 
+
 3. **[ユーザー属性の編集]** ダイアログで、次の手順を実行します。
    
     ![Configure Single Sign-On](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_85.png) 
@@ -119,9 +127,11 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 1. クラシック ポータルの **SAP Cloud for Customer** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックします。
    
     ![Configure Single Sign-On][6] 
+
 2. **[ユーザーの SAP Cloud for Customer へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択してから **[次へ]** をクリックします。
    
     ![Configure Single Sign-On](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_03.png) 
+
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_04.png) 
@@ -129,13 +139,15 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
     a. **[サインオン URL]** ボックスに、`https://<server name>.crm.ondemand.com` という形式で、ユーザーが SAP Cloud for Customer アプリケーションへのサインオンに使用する URL を入力します。
    
     b. click **[次へ]**
+
 4. **[SAP Cloud for Customer でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_05.png)
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある [次へ]」を参照してください。
+    b. **[次へ]**をクリックします。
+
 5. 構成された SSO を取得するには、次の手順を実行します。
    
     a. SAP Cloud for Customer ポータルに管理者権限でログインします。
@@ -178,12 +190,14 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
     SSO が有効ではない場合、システムの通常の URL が従業員に送信されます。 SSO が有効である場合は、従業員がパスワードを持っているかどうかがシステムによってチェックされます。 パスワードを持っていた場合は、SSO の URL と非 SSO の URL の両方が従業員に送信されます。 一方、従業員がパスワードを持っていない場合は、SSO の URL だけが従業員に送信されます。
    
     k. 変更を保存します。
+
 6. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
+
 7. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
    
-   ![Azure AD のシングル サインオン][11]
+    ![Azure AD のシングル サインオン][11]
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションでは、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
@@ -195,41 +209,50 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_09.png) 
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
 3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_03.png) 
+
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_04.png) 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_05.png) 
+
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. ページの下部にある **[次へ]**」を参照してください。
-6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_06.png) 
+
+6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a. **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]**をクリックします。
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_07.png) 
+
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_08.png) 
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-an-sap-cloud-for-customer-test-user"></a>SAP Cloud for Customer のテスト ユーザーの作成
 このセクションでは、SAP Cloud for Customer で Britta Simon というユーザーを作成します。 SAP Cloud for Customer プラットフォームにユーザーを追加する方法についてご不明な点がある場合は、SAP Cloud for Customer サポート チームにお問い合わせください。 
@@ -249,13 +272,17 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![ユーザーの割り当て][201] 
+
 2. アプリケーションの一覧で **[SAP Cloud for Customer]**を選択します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_50.png) 
+
 3. 上部のメニューで **[ユーザー]**をクリックします。
    
     ![ユーザーの割り当て][203]
+
 4. ユーザーの一覧で **[Britta Simon]**を選択します。
+
 5. 下部にあるツール バーで **[割り当て]**をクリックします。
    
     ![ユーザーの割り当て][205]
@@ -289,6 +316,6 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

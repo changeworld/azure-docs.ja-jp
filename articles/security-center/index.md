@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 7ac552010e41d59e07f2881750540206ffa24f5b
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: 8091c1c7cbf6617725bf7620fe0c2232e4e47cec
 
 ---
 # <a name="security-center-documentation"></a>Security Center のドキュメント
@@ -29,7 +29,7 @@ Security Center は、Azure リソースのセキュリティを高度に視覚�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=security-center">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=security-center">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -67,26 +67,23 @@ Security Center は、Azure リソースのセキュリティを高度に視覚�
 </ul>
 
 ---
-## <a name="reference"></a>リファレンス
 
+<h2>リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="https://msdn.microsoft.com/en-US/library/mt704034(Azure.100)">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p>Security Center REST API</p>
+                        <p><a href="https://msdn.microsoft.com/library/mt704034(Azure.100).aspx">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-<ul>    
+</ul>   
 
----
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/security-center.pdf">
         <div class="img"></div>

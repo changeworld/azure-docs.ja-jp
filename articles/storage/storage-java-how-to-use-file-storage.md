@@ -23,7 +23,7 @@ ms.openlocfilehash: 60d4bcafa51a6eedea06901a0557d13b4e85ec7a
 # <a name="how-to-use-file-storage-from-java"></a>Java からファイル ストレージを使用する方法
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-files.md)]
+[!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="overview"></a>Overview
 このガイドでは、Microsoft Azure ファイル ストレージ サービスで基本的な操作を実行する方法を紹介します。 Java で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。 Microsoft Azure のファイル ストレージ サービスを初めて利用する場合、各セクションのコンセプトをお読みください。サンプルを理解する上で非常に役立ちます。

@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Yardi eLearning の統合 | Microsoft Docs'
-description: Azure Active Directory と Yardi eLearning の間でシングル サインオンを構成する方法について確認します。
+title: "チュートリアル: Azure Active Directory と Yardi eLearning の統合 | Microsoft Docs"
+description: "Azure Active Directory と Yardi eLearning の間でシングル サインオンを構成する方法について確認します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 7ea58b54-ec5b-4576-8586-814b11d0f4fb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4a249f25aa9331d8f8669f553b6aae21ee5620c0
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-yardi-elearning"></a>チュートリアル: Azure Active Directory と Yardi eLearning の統合
+# <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>チュートリアル: Azure Active Directory と Yardi eLearning の統合
 このチュートリアルの目的は、Yardi eLearning と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Yardi eLearning と Azure AD の統合には、次の利点があります。
@@ -117,7 +121,7 @@ Yardi eLearning で Azure AD のシングル サインオンを構成してテ�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある **[次へ]**」を参照してください。
+    b. **[次へ]**をクリックします。
 2. お使いのアプリケーション用に構成された SSO を取得するために、ダウンロードしたメタデータ ファイルを電子メールに添付して、Yardi eLearning のサポート チーム ( [elearning@yardi.com](mailto:elearning@yardi.com) ) に問い合わせます。
 3. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
@@ -147,11 +151,11 @@ Yardi eLearning で Azure AD のシングル サインオンを構成してテ�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-yardielearning-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. ページの下部にある **[次へ]**」を参照してください。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-yardielearning-tutorial/create_aaduser_06.png) 
@@ -164,7 +168,7 @@ Yardi eLearning で Azure AD のシングル サインオンを構成してテ�
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. ページの下部にある **[次へ]**」を参照してください。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-yardielearning-tutorial/create_aaduser_07.png) 
@@ -236,6 +240,6 @@ Yardi eLearning で Azure AD のシングル サインオンを構成してテ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

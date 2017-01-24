@@ -1,13 +1,13 @@
 ---
-title: プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行 | Microsoft Docs
-description: この記事では、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について説明します
+title: "プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行 | Microsoft Docs"
+description: "この記事では、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について説明します"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: singhkays
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,10 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2016
 ms.author: kasing
+translationtype: Human Translation
+ms.sourcegitcommit: 66b1bcdf0f79ff4743f466c3737696f53ef6a44c
+ms.openlocfilehash: 8eb70339785ca15131b5ce8debd6a232a8a693b9
+
 
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行
-この記事では、クラシックから Resoure Manager デプロイメント モデル への、サービスとしてのインフラストラクチャ (IaaS) リソースの移行を有効にする方法について説明します。 [Azure Resource Manager の機能と利点](../resource-group-overview.md)の詳細を参照してください。 仮想ネットワーク サイト間ゲートウェイを使用して、サブスクリプション内で共存する 2 つのデプロイメント モデルのリソースを接続する方法について詳しく説明します。 
+この記事では、クラシックから Resoure Manager デプロイメント モデル への、サービスとしてのインフラストラクチャ (IaaS) リソースの移行を有効にする方法について説明します。 [Azure Resource Manager の機能と利点](../azure-resource-manager/resource-group-overview.md)の詳細を参照してください。 仮想ネットワーク サイト間ゲートウェイを使用して、サブスクリプション内で共存する 2 つのデプロイメント モデルのリソースを接続する方法について詳しく説明します。
 
 ## <a name="goal-for-migration"></a>移行の目的
 Resource Manager では、テンプレートを使用して複雑なアプリケーションをデプロイできます。また、VM の拡張機能を使用して仮想マシンを構成し、アクセス管理とタグ付けを統合します。 Azure Resource Manager には、仮想マシンの可用性セットへのスケーラブルな並列デプロイも含まれます。 さらに、新しいモデルでは、計算、ネットワーク、ストレージの個別のライフサイクル管理が提供されます。 最後に、仮想ネットワークでの仮想マシンの実行によって、セキュリティが既定で有効になることが重要視されています。
@@ -36,13 +40,13 @@ Resource Manager では、テンプレートを使用して複雑なアプリケ
 
 > [!NOTE]
 > 一部の移行シナリオでは、Azure Platform が仮想マシンを停止および割り当て解除してから再起動します。 これにより、短時間のデータ プレーン ダウンタイムが発生します。
-> 
-> 
+>
+>
 
 ## <a name="supported-scopes-of-migration"></a>移行のサポート対象範囲
-主に計算、ネットワーク、およびストレージの 3 つの移行範囲を対象としています。 
+主に計算、ネットワーク、およびストレージの 3 つの移行範囲を対象としています。
 
-### <a name="migration-of-virtual-machines-(not-in-a-virtual-network)"></a>仮想マシンの移行 (仮想ネットワーク外)
+### <a name="migration-of-virtual-machines-not-in-a-virtual-network"></a>仮想マシンの移行 (仮想ネットワーク外)
 Resource Manager デプロイメント モデルでは、既定でアプリケーションのセキュリティが適用されます。 すべての VM が Resource Manager モデルの仮想ネットワーク内にある必要があります。 Azure Platform は移行の一環として、仮想マシンを再起動 (`Stop`、`Deallocate`、および `Start`) します。 仮想ネットワークについては、2 つのオプションがあります。
 
 * まず、新しい仮想ネットワークを作成し、仮想マシンをその新しい仮想ネットワークに移行するようにプラットフォームに要求できます。
@@ -50,10 +54,10 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 
 > [!NOTE]
 > この移行範囲では、移行中のある期間、管理プレーンおよびデータ プレーンのいずれの操作も許可されない場合があります。
-> 
-> 
+>
+>
 
-### <a name="migration-of-virtual-machines-(in-a-virtual-network)"></a>仮想マシンの移行 (仮想ネットワーク内)
+### <a name="migration-of-virtual-machines-in-a-virtual-network"></a>仮想マシンの移行 (仮想ネットワーク内)
 ほとんどの VM 構成では、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの間でメタデータのみが移行されます。 基になる VM は、同じネットワーク内の同じストレージを使用する同じハードウェアで実行されます。 移行中の一定期間は、管理プレーン操作が許可されない場合があります。 ただし、データ プレーンは引き続き機能します。 つまり、移行中は VM (クラシック) 上で実行されているアプリケーションでダウンタイムが発生することはありません。
 
 次の構成は現在サポートされていません。 今後、これらのサポートが追加されたときに、この構成の一部の VM でダウンタイムが発生する場合があります (VM の動作の停止、割り当て解除、再起動が行われます)。
@@ -63,16 +67,16 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 
 > [!NOTE]
 > 単一のクラウド サービスに 1 つ以上の可用性セットと、可用性セットに属さない VM がある 上記の特定の構成の場合は、データ プレーン ダウンタイムが発生します。
-> 
-> 
+>
+>
 
 ### <a name="storage-accounts-migration"></a>ストレージ アカウントの移行
-シームレスに移行できるように、クラシック ストレージ アカウントで Resource Manager VM をデプロイできます。 この機能により、ストレージ アカウントとは関係なく、コンピューティングおよびネットワーク リソースを移行できます。また、移行する必要があります。 仮想マシンおよび仮想ネットワークを移行したら、ストレージ アカウントを移行して、移行プロセスを完了する必要があります。 
+シームレスに移行できるように、クラシック ストレージ アカウントで Resource Manager VM をデプロイできます。 この機能により、ストレージ アカウントとは関係なく、コンピューティングおよびネットワーク リソースを移行できます。また、移行する必要があります。 仮想マシンおよび仮想ネットワークを移行したら、ストレージ アカウントを移行して、移行プロセスを完了する必要があります。
 
 > [!NOTE]
-> Resource Manager デプロイメント モデルには、従来のイメージおよびディスクという概念がありません。 クラシック イメージやディスクは、ストレージ アカウントを移行すると Resource Manager スタックには表示されなくなりますが、バッキング VHD はストレージ アカウントに残ります。 
-> 
-> 
+> Resource Manager デプロイメント モデルには、従来のイメージおよびディスクという概念がありません。 クラシック イメージやディスクは、ストレージ アカウントを移行すると Resource Manager スタックには表示されなくなりますが、バッキング VHD はストレージ アカウントに残ります。
+>
+>
 
 ## <a name="unsupported-features-and-configurations"></a>サポートされていない機能と構成
 現時点では、一部の機能および構成セットはサポートされていません。 以下のセクションでは、こうした機能や構成セットに関する推奨事項について説明します。
@@ -85,8 +89,8 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 | 計算 |関連付けのない仮想マシン ディスク。 |
 | 計算 |仮想マシン イメージ。 |
 | ネットワーク |エンドポイント ACL。 |
-| ネットワーク |仮想ネットワーク ゲートウェイ (サイト間、Azure ExpressRoute、アプリケーション ゲートウェイ、ポイント対サイト)。 |
-| ネットワーク |VNet ピアリングを使用した仮想ネットワーク (VNet から ARM に移行した後、ピアリング)。 (VNet から ARM に移行した後、ピアリング)。詳しくは、「VNet ピアリング」を参照してください (../virtual-network/virtual-network-peering-overview.md)。 |
+| ネットワーク |仮想ネットワーク ゲートウェイ (Azure ExpressRoute ゲートウェイ、アプリケーション ゲートウェイ)。 |
+| ネットワーク |VNet ピアリングを使用した仮想ネットワーク (VNet から ARM に移行した後、ピアリング)。 詳しくは、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。 |
 | ネットワーク |Traffic Manager プロファイル。 |
 
 ### <a name="unsupported-configurations"></a>サポートされていない構成
@@ -105,7 +109,8 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 | Azure App Service |App Service 環境を含む仮想ネットワーク |現在これはサポートされていません。 |
 | Azure HDInsight |HDInsight サービスを含む仮想ネットワーク |現在これはサポートされていません。 |
 | Microsoft Dynamics Lifecycle Services |Dynamics Lifecycle Services によって管理される仮想マシンを含む仮想ネットワーク |現在これはサポートされていません。 |
-| 計算 |オンプレミスの DNS サーバーへの VPN ゲートウェイまたは ER ゲートウェイがある VNET を使用する Azure Security Center の拡張機能 |Azure Security Center では、セキュリティを監視し、アラートを生成するために、仮想マシンに拡張機能を自動的にインストールします。 サブスクリプションで Azure Security Center のポリシーが有効になっている場合、通常はこれらの拡張機能が自動的にインストールされます。 ゲートウェイの移行は現在サポートされていないため、移行のコミットを進める前にゲートウェイを削除する必要があります。ゲートウェイを削除すると、VM のストレージ アカウントへのインターネット アクセスが失われます。 この場合、ゲスト エージェントの状態 BLOB を設定できないので、移行を続行できなくなります。 移行を進める 3 時間前に、サブスクリプションで Azure Security Center のポリシーを無効にしておくことをお勧めします。 |
+| Azure AD Domain Services |Azure AD ドメイン サービスを含む仮想ネットワーク |現在これはサポートされていません。 |
+| 計算 |オンプレミスの DNS サーバーへの VPN ゲートウェイ (トランジット接続を使用) または ExpressRoute ゲートウェイがある VNET を使用する Azure Security Center の拡張機能 |Azure Security Center では、セキュリティを監視し、アラートを生成するために、仮想マシンに拡張機能を自動的にインストールします。 サブスクリプションで Azure Security Center のポリシーが有効になっている場合、通常はこれらの拡張機能が自動的にインストールされます。 ExpressRoute ゲートウェイの移行は現在サポートされておらず、VPN ゲートウェイ (トランジット接続を使用) ではオンプレミスのアクセスが失われます。 ExpressRoute ゲートウェイを削除したり、VPN ゲートウェイ (トランジット接続を使用) を移行したりすると、移行のコミットを進める際に VM のストレージ アカウントへのインターネット アクセスが失われます。 この場合、ゲスト エージェントの状態 BLOB を設定できないので、移行を続行できなくなります。 移行を進める 3 時間前に、サブスクリプションで Azure Security Center のポリシーを無効にしておくことをお勧めします。 |
 
 ## <a name="the-migration-experience"></a>移行エクスペリエンス
 移行エクスペリエンスを開始する前に、以下をお勧めします。
@@ -123,8 +128,8 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 
 > [!NOTE]
 > 次のセクションのすべての操作がべき等です。 サポートされていない機能や構成エラー以外の問題が発生した場合は、準備、中止、またはコミット操作を再試行することをお勧めします。 Azure Platform では、操作が再試行されます。
-> 
-> 
+>
+>
 
 ### <a name="validate"></a>検証
 検証操作は、移行プロセスの最初の手順です。 この手順の目標は、移行対象のリソースのデータをバックグラウンドで分析し、リソースを移行できるかどうかを示すコード (成功/失敗) を返すことです。
@@ -147,10 +152,10 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 
 > [!NOTE]
 > 従来の仮想ネットワークにない仮想マシンは、この移行フェーズで "停止済みかつ割り当て解除済み" になります。
-> 
-> 
+>
+>
 
-### <a name="check-(manual-or-scripted)"></a>チェック (手動またはスクリプト)
+### <a name="check-manual-or-scripted"></a>チェック (手動またはスクリプト)
 このチェック手順では、必要に応じて、移行が正しく行われていることを検証するために、前の手順でダウンロードした構成を使用できます。 また、ポータルにサインインし、プロパティとリソースをスポット チェックして、メタデータが正しく移行されていることを検証することもできます。
 
 仮想ネットワークを移行する場合、仮想マシンの構成のほとんどが再開されません。 これらの VM のアプリケーションの場合、アプリケーションがまだ稼働していることを検証できます。
@@ -165,17 +170,17 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 中止は省略可能な手順です。この手順により、クラシック デプロイメント モデルへの変更を元に戻し、移行を中止できます。
 
 > [!NOTE]
-> コミット操作をトリガーしたら、この操作は実行できません。  
-> 
-> 
+> コミット操作をトリガーしたら、この操作は実行できません。     
+>
+>
 
 ### <a name="commit"></a>コミット
 検証が完了したら、移行をコミットできます。 リソースは Resource Manager デプロイメント モデルでのみ使用できるようになります。クラシックには表示されません。 つまり、移行されたリソースは新しいポータルでのみ管理できます。
 
 > [!NOTE]
 > これはべき等操作です。 失敗した場合は、操作を再試行することをお勧めします。 失敗が続く場合は、サポート チケットを作成するか、 [VM フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WAVirtualMachinesforWindows)でフォーラム投稿を作成し、ClassicIaaSMigration タグを付けてください。
-> 
-> 
+>
+>
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 **この移行計画は Azure 仮想マシン上で実行されている既存のサービスやアプリケーションに影響しますか?**
@@ -184,7 +189,7 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 
 **近日中に移行する予定がない場合、VM はどうなりますか?**
 
-既存のクラシック API やリソース モデルが廃止されることはありません。 Resource Manager デプロイメント モデルで使用できる高度な機能により、移行が簡単になります。 Resource Manager の IaaS に含まれる [機能強化をいくつか](virtual-machines-windows-compare-deployment-models.md) 確認することを強くお勧めします。
+既存のクラシック API やリソース モデルが廃止されることはありません。 Resource Manager デプロイメント モデルで使用できる高度な機能により、移行が簡単になります。 Resource Manager の IaaS に含まれる [機能強化をいくつか](../azure-resource-manager/resource-manager-deployment-model.md) 確認することを強くお勧めします。
 
 **既存のツールにとって、この移行計画はどのような意味がありますか?**
 
@@ -212,7 +217,7 @@ Resource Manager デプロイメント モデルへのツールの更新は、�
 
 **現在、Azure Site Recovery または Azure Backup サービスを使用している場合はどうすればよいですか?**
 
-バックアップが有効になっている仮想マシンを移行する場合は、「[私はクラシック VM を Backup コンテナーにバックアップしてあります」をご覧ください。VM をクラシック モードから Resource Manager モードに移行したいのですが、Recovery Services コンテナーにバックアップするにはどうすればよいですか。](../backup/backup-azure-backup-ibiza-faq.md#i-have-backed-up-my-classic-vms-in-backup-vault-now-i-want-to-migrate-my-vms-from-classic-mode-to-resource-manager-mode-how-can-i-backup-them-in-recovery-services-vault)
+バックアップが有効になっている仮想マシンを移行する場合は、「[私はクラシック VM を Backup コンテナーにバックアップしてあります」をご覧ください。VM をクラシック モードから Resource Manager モードに移行したいのですが、Recovery Services コンテナーにバックアップするにはどうすればよいですか。](../backup/backup-azure-backup-ibiza-faq.md)私はクラシック VM を Backup コンテナーにバックアップしてあります。 VM をクラシック モードから Resource Manager モードに移行したいのですが、  Recovery Services コンテナーにバックアップするにはどうすればよいですか。
 
 **サブスクリプションまたはリソースを検証し、移行が可能かどうかを確認できますか?**
 
@@ -240,8 +245,11 @@ Resource Manager デプロイメント モデルへのツールの更新は、�
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 * [PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](virtual-machines-windows-ps-migration-classic-resource-manager.md)
 * [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](virtual-machines-linux-cli-migration-classic-resource-manager.md)
-* [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md)
+* [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [移行の一般的なエラーを確認する](virtual-machines-migration-errors.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO4-->
 
 

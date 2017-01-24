@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/14/2016
+ms.date: 11/18/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3a2795fd08b838edcf255e518f705683cc2df15e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4d3609ae1ea5fba89a9c0222586f578fdaeea757
 
 
 ---
@@ -39,7 +39,7 @@ Update 3 では、主に次の機能強化とバグ修正が行われていま�
 
 * **領域回復の自動変更** – Update 3 以降、領域回復アルゴリズムがシステムのスタンバイ コントローラーで実行され、実行が高速化されます。 領域回復の操作に必要なポートについて詳しくは、「 [StorSimple のネットワーク要件](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)」をご覧ください。
 * **パフォーマンスの強化** – Update 3 では、クラウドへの読み取り/書き込みパフォーマンスが強化されています。
-* **移行関連の強化** – 今回のリリースでは、5000/7000 シリーズ デバイスから 8000 シリーズ デバイスへの移行機能について、いくつかのバグ修正と機能強化が行われました。 移行機能の使用方法については、[5000/7000 シリーズ デバイスから 8000 シリーズ デバイスへの移行](https://www.microsoft.com/en-us/download/details.aspx?id=47322)に関するページをご覧ください。 
+* **移行関連の強化** – 今回のリリースでは、5000/7000 シリーズ デバイスから 8000 シリーズ デバイスへの移行機能について、いくつかのバグ修正と機能強化が行われました。 移行機能の使用方法については、[5000/7000 シリーズ デバイスから 8000 シリーズ デバイスへの移行](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)に関するページをご覧ください。 
 * **監視関連の修正** - 今回のリリースでは、監視グラフ、サービス ダッシュボード、デバイス ダッシュボードに関連するバグが修正されました。
 
 ## <a name="issues-fixed-in-update-3"></a>Update 3 で修正された問題
@@ -94,6 +94,6 @@ StorSimple デバイスに [Update 3 をインストールする](storsimple-ins
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 69dc7a150fa78d178b7b63b3b6f33558f5d5f1a9
+ms.sourcegitcommit: aa794e073bd6c4965a8f2918eab7a4669fc39171
+ms.openlocfilehash: 4b7246f4780b1485985e54b4eb2ae1f3d022a3f1
 
 
 ---
@@ -49,7 +49,7 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 * **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 * **Azure ストレージ アカウント**。 このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account) 」を参照してください。 ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。 「[ストレージ アクセス キーの管理](../storage/storage-create-storage-account.md#manage-your-storage-access-keys)」を参照してください。
 * **Azure VM 上に SQL Server**がプロビジョニングされていること。 手順については、「 [高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する](machine-learning-data-science-setup-sql-server-virtual-machine.md)」を参照してください。
-* **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+* **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 
 ## <a name="a-namefilesourcetosqlonazurevma-moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a> フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する
 データがフラット ファイル (行と列の形式で配置されている) に存在する場合は、次の方法を使用して Azure の SQL Server VM にデータを移動できます。
@@ -63,7 +63,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 
 > [!NOTE]
 > **BCP 用のデータの場所**  
->  必須ではありませんが、ターゲットの SQL Server と同じマシン上にソース データを含むファイルがある場合、高速転送 (ネットワークの速度とローカル ディスク IO の速度の差) を使用できます。 さまざまなファイル コピー ツール ([AZCopy](../storage/storage-use-azcopy.md)、[Azure ストレージ エクスプローラー](http://storageexplorer.com/)、またはリモート デスクトップ プロトコル (RDP) を介した Windows のコピーと貼り付けなど) を使って、データを含むフラット ファイルを SQL Server がインストールされているマシンに移動できます。
+> 必須ではありませんが、ターゲットの SQL Server と同じマシン上にソース データを含むファイルがある場合、高速転送 (ネットワークの速度とローカル ディスク IO の速度の差) を使用できます。 さまざまなファイル コピー ツール ([AZCopy](../storage/storage-use-azcopy.md)、[Azure ストレージ エクスプローラー](http://storageexplorer.com/)、またはリモート デスクトップ プロトコル (RDP) を介した Windows のコピーと貼り付けなど) を使って、データを含むフラット ファイルを SQL Server がインストールされているマシンに移動できます。
 >
 >
 
@@ -189,7 +189,7 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
     SQL Server に対して BCP をリモート実行する場合のフォーマット ファイルの生成
 
         bcp dbname..tablename format nul -c -x -f  exportformatfilename.xml  -U username@servername.database.windows.net -S tcp:servername -P password  --t \t -r \n
-4. 「 [ファイル ソースからのデータの移動](#filesource_to_sqlonazurevm) 」セクションで説明されているいずれかの方法を使用して、フラット ファイルのデータを SQL Server に移動します。
+4. 「[ファイル ソースからのデータの移動](#filesource_to_sqlonazurevm) 」セクションで説明されているいずれかの方法を使用して、フラット ファイルのデータを SQL Server に移動します。
 
 ### <a name="a-namesql-migrationasql-database-migration-wizard"></a><a name="sql-migration"></a>SQL Database 移行ウィザード
 [SQL Server データベース移行ウィザード](http://sqlazuremw.codeplex.com/) は、2 つの SQL server インスタンス間でデータを移動するための使いやすい方法を提供します。 これにより、ユーザーはソースと移動先テーブル間でデータ スキーマをマップし、列の型と他のさまざまな機能を選択できます。 これは、内部で一括コピー (BCP) を使用します。 次に、SQL データベースの移行ウィザードのようこそ画面のスクリーン ショットを示します。  
@@ -216,6 +216,6 @@ SQL Server Management Studio のデータベースのバックアップ/復元�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

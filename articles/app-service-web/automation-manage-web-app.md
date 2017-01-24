@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/29/2016
 ms.author: magoedte;csand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d9b12c074417e51057dea68e8cff04df5081e111
+ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
+ms.openlocfilehash: 4fcfa2e7ec2e8257407026ed4cca0e15fd0b5bb6
 
 
 ---
@@ -31,7 +31,7 @@ Azure Automation は、ニーズに対応可能な信頼性と可用性の高い
 Azure Automation でクラウド管理タスクを自動実行すれば、運用上のオーバーヘッドが削減され、IT と DevOps スタッフの負担が軽減されるため、ビジネス価値の向上にフォーカスすることができます。
 
 ## <a name="how-can-azure-automation-help-manage-azure-web-app"></a>Azure Automation を Azure Web App の管理に役立てる方法
-[Azure PowerShell モジュール](../powershell-install-configure.md)で利用可能な PowerShell コマンドレットを使用することにより、Azure Automation で Web アプリを管理できます。 [こうした Azure Web App PowerShell コマンドレットを Azure Automation にインストール](https://azure.microsoft.com/blog/announcing-azure-resource-manager-support-azure-automation-runbooks/)することで、サービス内ですべての Web App 管理タスクを実行できます。 Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスとサード パーティ システム全体の複雑なタスクを自動化することもできます。
+[Azure PowerShell モジュール](/powershell/azureps-cmdlets-docs)で利用可能な PowerShell コマンドレットを使用することにより、Azure Automation で Web アプリを管理できます。 [こうした Azure Web App PowerShell コマンドレットを Azure Automation にインストール](https://azure.microsoft.com/blog/announcing-azure-resource-manager-support-azure-automation-runbooks/)することで、サービス内ですべての Web App 管理タスクを実行できます。 Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスとサード パーティ システム全体の複雑なタスクを自動化することもできます。
 
 Automation で App Services を管理する例については、
 
@@ -45,6 +45,6 @@ Automation で App Services を管理する例については、
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

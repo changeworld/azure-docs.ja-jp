@@ -15,8 +15,8 @@ ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: d5623b9d9e87731d99d12c6445722acefdc3ff66
-ms.openlocfilehash: 3ac48dba5d4dbb28f06c0cea6ff0526f75cb33ae
+ms.sourcegitcommit: 08499c4242fdc59ef932d6b8f2e8442e5cdc55b2
+ms.openlocfilehash: 4edfcbfb011c2296ad499d4ff62a07f0c388432a
 
 
 ---
@@ -174,11 +174,11 @@ VM の削除が完了するまで待ってから、仮想ハード ディスク�
 ![ブート診断設定を更新する](./media/virtual-machines-linux-troubleshoot-recovery-disks/reenable-boot-diagnostics.png)
 
 ## <a name="next-steps"></a>次のステップ
-VM への接続の問題が発生した場合は、[Azure VM への SSH 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。 VM で実行されているアプリケーションへのアクセスに関する問題については、[Linux VM でのアプリケーションの接続の問題のトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
+VM への接続の問題が発生した場合は、[Azure VM への SSH 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。 VM で実行されているアプリケーションへのアクセスに関する問題については、[Linux VM でのアプリケーションの接続の問題のトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 
-Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

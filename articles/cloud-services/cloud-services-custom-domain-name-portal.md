@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2016
+ms.date: 12/14/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eb9c106a9d4cf30e0fabc79a09c3eae356ad01f0
+ms.sourcegitcommit: 2b020004762125aad201cf7eb454da5cf73288ae
+ms.openlocfilehash: 7d509e9606c0a2f599f511c011ab775b2ea6f7b0
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: eb9c106a9d4cf30e0fabc79a09c3eae356ad01f0
 
 ただし、 **contoso.com**のような独自のドメイン名を使用してアプリケーションを公開することもできます。 この記事では、クラウド サービス Web ロールのカスタム ドメイン名を予約または構成する方法について説明します
 
-CNAME レコードと A レコードについて既に理解している場合は、 [説明を読まずに次に進みます](#add-a-cname-record-for-your-custom-domain)。
+CNAME レコードと A レコードについてすでに理解している場合は、 [説明を読まずに次に進みます](#add-a-cname-record-for-your-custom-domain)。
 
 > [!NOTE]
 > このタスクの手順は、Azure Cloud Services に適用されます。 App Services については、 [こちら](../app-service-web/web-sites-custom-domain-name.md)をご覧ください。 ストレージ アカウントについては、 [こちら](../storage/storage-custom-domain-name.md)をご覧ください。
@@ -76,7 +76,7 @@ CNAME レコードを作成するには、レジストラーから提供され�
        ![サイトの URL を表示する [概要] セクション][csurl]
      
        **OR**
-   * [Azure Powershell](../powershell-install-configure.md)をインストールして構成し、次のコマンドを使用します。
+   * [Azure Powershell](/powershell/azureps-cmdlets-docs)をインストールして構成し、次のコマンドを使用します。
      
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -111,7 +111,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
        ![VIP を表示する [概要] セクション][vip]
      
        **OR**
-   * [Azure Powershell](../powershell-install-configure.md)をインストールして構成し、次のコマンドを使用します。
+   * [Azure Powershell](/powershell/azureps-cmdlets-docs)をインストールして構成し、次のコマンドを使用します。
      
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
@@ -145,17 +145,17 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 * 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
 
-[アプリケーションをカスタム ドメイン上で公開する]: #access-app
+[Expose Your Application on a Custom Domain]: #access-app
 [Add a CNAME Record for Your Custom Domain]: #add-cname
-[データをカスタム ドメイン上で公開する]: #access-data
-[VIP スワップ]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
-[サブドメインをストレージ アカウントに関連付ける CNAME レコードを作成する]: #create-cname
+[Expose Your Data on a Custom Domain]: #access-data
+[VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
+[Create a CNAME record that associates the subdomain with the storage account]: #create-cname
 [Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

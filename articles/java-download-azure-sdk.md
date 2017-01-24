@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 25b7e591172ea810ce370f946eb46258c801ba36
+ms.sourcegitcommit: 9b2d456d8dba33af224ea147f5f8ec49ba7397f9
+ms.openlocfilehash: 8d4042a270af2ba143b45d23c3f0c01f836c4592
 
 
 ---
@@ -39,15 +39,15 @@ Eclipse でのビルド パスの設定方法については、Eclipse Web サ�
 
 ## <a name="azure-libraries-for-java---building-with-maven"></a>Azure Libraries for Java - Maven によるビルド
 ### <a name="step-1---set-up-your-project-to-use-maven-for-build"></a>手順 1 - ビルドに Maven を使用するようにプロジェクトを設定する
-Java 用 Azure ライブラリを使用する Maven プロジェクトを Eclipse で作成するには、「[Getting Started with Azure Management Libraries for Java (Java 用 Azure 管理ライブライの概要)][maven-getting-started]」に記載された手順に従ってください。 
+Java 用 Azure ライブラリを使用する Maven プロジェクトを Eclipse で作成するには、「[Getting Started with Azure Management Libraries for Java (Java 用 Azure 管理ライブラリの概要)][maven-getting-started]」に記載された手順に従ってください。
 
 ### <a name="step-2---configure-your-maven-settings-with-the-requisite-dependencies"></a>手順 2 - 必要な依存関係を持つ Maven 設定を構成する
 ビルドに Maven を使用するようにプロジェクトを構成したら、必要な依存関係を、次の例のような構文を使用する pom.xml ファイルに追加できます。 次の例に表示されたすべての依存関係を追加する必要はありません。追加する必要があるのは、プロジェクトに必要な特定の依存関係のみです。
 
 > [!NOTE]
 > 次のサンプルの各 `<version>` 要素内で、この例の "n.n.n" プレースホルダーを有効なバージョン番号に置き換えてください。有効なバージョン番号は、[Maven の Azure ライブラリ リポジトリ]から入手できます。
-> 
-> 
+>
+>
 
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -113,7 +113,7 @@ Azure Toolkit for Eclipse では、最新バージョンの Azure SDK を使用�
 ## <a name="see-also"></a>関連項目
 [Azure Toolkit for Eclipse]
 
-[Azure Toolkit for Eclipse のインストール] 
+[Azure Toolkit for Eclipse のインストール]
 
 [Azure 向け Hello World アプリケーションを Eclipse で作成する]
 
@@ -134,6 +134,6 @@ Java での Azure の使用方法の詳細については、「 [Azure Java Deve
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

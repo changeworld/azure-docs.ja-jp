@@ -10,14 +10,14 @@ tags: azure-resource-manager
 ms.assetid: 75f8d10e-23e8-44bd-9972-aab74048cf38
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
-ms.author: narayanannamalai;annahar
+ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5af02963f139648d9f1b662f2da913ffa0d6f128
+ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
+ms.openlocfilehash: 547a2c0ab49c0b79d85bab1bd3abd800c9288ccf
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: 5af02963f139648d9f1b662f2da913ffa0d6f128
 
 Resource Manager テンプレートを使用して VNET ピアリングを作成するには、次の手順に従います。
 
-1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
    
    > [!NOTE]
    > VNet ピアリングを管理するための PowerShell コマンドレットは、 [Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0)
@@ -101,7 +101,7 @@ Resource Manager テンプレートを使用して VNET ピアリングを作成
    | UseRemoteGateways |ピアの VNet ゲートウェイを使用します。 ピア VNET でゲートウェイが構成され、かつ AllowGatewayTransit が選択されている必要があります。 ゲートウェイをローカルで構成した場合、このオプションは使用できません。 |いいえ |
    
     上記の一連のプロパティは、VNET ピアリングの各リンクに存在します。 たとえば、AllowVirtualNetworkAccess は、VNet1 から VNet2 への VNET ピアリング リンクの場合は True に、逆方向の VNET ピアリング リンクの場合は False に設定します。
-4. テンプレート ファイルをデプロイするには、New-AzureRmResourceGroupDeployment コマンドレットを実行してデプロイを作成または更新します。 Resource Manager テンプレートの使用方法の詳細については、こちらの [記事](../resource-group-template-deploy.md)を参照してください。
+4. テンプレート ファイルをデプロイするには、New-AzureRmResourceGroupDeployment コマンドレットを実行してデプロイを作成または更新します。 Resource Manager テンプレートの使用方法の詳細については、こちらの [記事](../azure-resource-manager/resource-group-template-deploy.md)を参照してください。
    
         New-AzureRmResourceGroupDeployment -ResourceGroupName <resource group name> -TemplateFile <template file path> -DeploymentDebugLogLevel all
    
@@ -308,26 +308,34 @@ Resource Manager テンプレートを使用して VNET ピアリングを作成
 1. 以下のテキストは、このシナリオにおける VNET1 から VNET2 への VNet ピアリング リンクの定義です。 クラシック仮想ネットワークから Azure Resource Manager 仮想ネットワークへのピアリングに必要なリンクは 1 つだけです。
    
     クラシック仮想ネットワーク (VNET2) が属しているサブスクリプションのサブスクリプション ID を入力し、MyResouceGroup を適切なリソース グループ名に変更してください。
-   
-    {  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",  "contentVersion": "1.0.0.0",  "parameters": {  },  "variables": {  },  "resources": [
-   
+
         {
-        "apiVersion": "2016-06-01",
-        "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-        "name": "VNET1/LinkToVNET2",
-        "location": "[resourceGroup().location]",
-        "properties": {
-        "allowVirtualNetworkAccess": true,
-        "allowForwardedTraffic": false,
-        "allowGatewayTransit": false,
-        "useRemoteGateways": false,
-            "remoteVirtualNetwork": {
-            "id": "[resourceId('Microsoft.ClassicNetwork/virtualNetworks', 'VNET2')]"
-    }
-   
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+        },
+        "variables": {
+        },
+        "resources": [
+
+            {
+            "apiVersion": "2016-06-01",
+            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+            "name": "VNET1/LinkToVNET2",
+            "location": "[resourceGroup().location]",
+            "properties": {
+            "allowVirtualNetworkAccess": true,
+            "allowForwardedTraffic": false,
+            "allowGatewayTransit": false,
+            "useRemoteGateways": false,
+                "remoteVirtualNetwork": {
+                "id": "[resourceId('Microsoft.ClassicNetwork/virtualNetworks', 'VNET2')]"
         }
+
+            }
+            }
+        ]
         }
-    ]  }
 2. テンプレート ファイルをデプロイするには、次のコマンドレットを実行して、デプロイを作成または更新します。
    
         New-AzureRmResourceGroupDeployment -ResourceGroupName MyResourceGroup -TemplateFile .\VnetPeering.json -DeploymentDebugLogLevel all
@@ -374,6 +382,6 @@ Resource Manager テンプレートを使用して VNET ピアリングを作成
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

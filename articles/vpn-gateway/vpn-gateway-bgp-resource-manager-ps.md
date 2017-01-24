@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 04/15/2016
 ms.author: yushwang
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: d6d9834bca2a7248ebec0a614a6edfbb8657e895
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: e999970954d199fa75ad4a3e4d8916d4aea4048e
 
 
 ---
@@ -53,7 +53,7 @@ BGP の利点の詳しい説明と、BGP を使用する場合の技術的な要
 
 ### <a name="before-you-begin"></a>開始する前に
 * Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
-* Azure リソース マネージャー PowerShell コマンドレットをインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md) 」を参照してください。
+* Azure リソース マネージャー PowerShell コマンドレットをインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
 
 ### <a name="step-1---create-and-configure-vnet1"></a>手順 1 - VNet1 を作成して構成する
 #### <a name="1-declare-your-variables"></a>1.変数を宣言する
@@ -275,6 +275,6 @@ AS 番号で VPN ゲートウェイを作成します。 Azure VPN ゲートウ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

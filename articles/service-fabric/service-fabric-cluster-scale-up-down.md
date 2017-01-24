@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/09/2016
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8fa523b8ff02d5a1304540f58e8fdb097d31ae21
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 17c8c9aee01e8a991259ee23279d2a659fa60de3
 
 
 ---
@@ -122,6 +122,6 @@ VM が削除されたときに、ノードが削除されるようにするに�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

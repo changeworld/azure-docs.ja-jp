@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 125833947af591d4f8995d803b5ee922679f6c8e
+ms.sourcegitcommit: 9f944edcafb55634c9338bc8dd518a5f032f56e0
+ms.openlocfilehash: edab3b3058a2e28ce74e62434b85b1643f267493
 
 
 ---
@@ -220,7 +220,7 @@ Azure Resource Manager のテンプレートは、ビルドする環境を定義
           }
 ```
 
-[この既存のテンプレートを使用してカスタム イメージから VM を作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)するか、[独自の Azure Resource Manager テンプレートの作成](../resource-group-authoring-templates.md)に関するページを確認できます。 
+[この既存のテンプレートを使用してカスタム イメージから VM を作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)するか、[独自の Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)に関するページを確認できます。 
 
 テンプレートを構成したら、 `azure group deployment create` コマンドを使用して VM を作成します。 `--template-uri` パラメーターを使用して JSON テンプレートの URI を指定します。
 
@@ -243,6 +243,6 @@ azure group deployment create --resource-group myResourceGroup
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

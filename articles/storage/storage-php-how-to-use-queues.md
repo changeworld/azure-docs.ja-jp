@@ -4,7 +4,7 @@ description: "Azure Queue ストレージを使用して、キューの作成と
 documentationcenter: php
 services: storage
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 7582b208-4851-4489-a74a-bb952569f55b
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0bc91ff65c3bff54bc341a23be987a30a1ccf454
+ms.sourcegitcommit: 1fea38ed4caacfee0c69d024b1ea6dbdcbccaf1d
+ms.openlocfilehash: 3c8f799a917cfc9d74412d90f27f2ea8c21265d4
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 0bc91ff65c3bff54bc341a23be987a30a1ccf454
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Windows SDK for PHP のクラスを経由して記述されています。 キュー メッセージの挿入、ピーク、取得、削除のシナリオ、キューの作成と削除のシナリオについて説明します。
 
 [!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
@@ -398,11 +398,11 @@ catch(ServiceException $e){
 
 [download]: http://go.microsoft.com/fwlink/?LinkID=252473
 [require_once]: http://www.php.net/manual/en/function.require-once.php
-[Azure App Service で Java Web アプリ]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 07/12/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a4310e365148e94a7d9b61df354e7328863f8662
+ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
+ms.openlocfilehash: fa364ff88d449ec8efb318d26049c2e046ee42b8
 
 
 ---
@@ -622,11 +622,11 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
 * その他さまざまなシナリオでバッチ処理を実装するための手段として、バッファー サイズや経過時間によって作動するバッファリングを検討する。
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、バッチ処理に関連したデータベースの設計とコーディングの手法によってアプリケーションのパフォーマンスとスケーラビリティを高める方法を重点的に取り上げました。 しかしこれは、全体的な戦略の中の一要素にすぎません。 パフォーマンスとスケーラビリティを高めるその他の方法については、「[データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)」と「[Elastic Database プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」をご覧ください。
+この記事では、バッチ処理に関連したデータベースの設計とコーディングの手法によってアプリケーションのパフォーマンスとスケーラビリティを高める方法を重点的に取り上げました。 しかしこれは、全体的な戦略の中の一要素にすぎません。 パフォーマンスとスケーラビリティを高めるその他の方法については、「[データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)」と「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」をご覧ください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

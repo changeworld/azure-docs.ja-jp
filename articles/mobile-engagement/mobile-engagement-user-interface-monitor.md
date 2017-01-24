@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 838079ed1317aca19ee8e5c5721efb0d93dd97e6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a2971c3b66b31e2936ca7ebc95d103ff5daf5881
 
 
 ---
@@ -38,14 +38,14 @@ UI の [監視] セクションは、リアルタイムの分析情報を提供�
 ## <a name="troubleshooting-with-monitor---events---details"></a>「監視 - イベント - 詳細」によるトラブルシューティング
 テスト デバイスからアプリケーションのイベントを生成し、これを [監視] - [イベント] - [詳細] で検出することは、テスト デバイスのデバイス ID を検索し、分析、監視、セグメント化の Azure モバイル エンゲージメント統合が機能していることをアプリケーションから確認する最も簡単な方法の 1 つです。 テスト デバイスのデバイス ID を検索したら、[マイ アカウント] - [デバイス] でこれをテスト デバイスに追加できます。 イベントを生成できない場合は、Azure モバイル エンゲージメントが Android/iOS/Web/Windows/Windows Phone の各アプリで、SDK と正しく統合されているかご確認ください。
 
-詳細については、[SDK ドキュメント][リンク 5]を参照してください。
+詳細については、[SDK ドキュメント][Link 5]を参照してください
 
 ![Monitor2][15]  
 
 ## <a name="troubleshooting-with-monitor---crashes---details"></a>「監視 - クラッシュ - 詳細」によるトラブルシューティング
 [監視] - [クラッシュ] - [詳細] からアプリに関するクラッシュ情報を確認すると、アプリがクラッシュした理由を特定するのに役立ちます。 Android/iOS/Web/Windows/Windows Phone 用の SDK の各バージョンのリリース ノートで、それぞれの既知の問題を確認する必要もあります。
 
-詳細については、[SDK ドキュメント - リリース ノート][リンク 5]を参照してください。
+詳細については、[SDK ドキュメント - リリース ノート][Link 5]を参照してください
 
 ![Monitor3][16]
 
@@ -57,8 +57,8 @@ UI の [監視] セクションは、リアルタイムの分析情報を提供�
 ![Monitor4][17]
 
 ## <a name="see-also"></a>関連項目
-* [概念][リンク 6]
-* [サービスの問題に関するトラブルシューティング ガイド][リンク 24]
+* [概念][Link 6]
+* [トラブルシューティング ガイド - サービス][Link 24]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -121,42 +121,42 @@ UI の [監視] セクションは、リアルタイムの分析情報を提供�
 [58]: ./media/mobile-engagement-user-interface-settings/settings13.png
 
 <!--Link references-->
-[リンク 1]: mobile-engagement-user-interface.md
-[リンク 2]: mobile-engagement-troubleshooting-guide.md
-[リンク 3]: mobile-engagement-how-tos.md
-[リンク 4]: http://go.microsoft.com/fwlink/?LinkID=525553
-[リンク 5]: http://go.microsoft.com/fwlink/?LinkID=525554
-[リンク 6]: http://go.microsoft.com/fwlink/?LinkId=525555
-[リンク 7]: https://account.windowsazure.com/PreviewFeatures
-[リンク 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
-[リンク 9]: http://azure.microsoft.com/services/mobile-engagement/
-[リンク 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
-[リンク 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
-[リンク 12]: mobile-engagement-user-interface-navigation.md
-[リンク 13]: mobile-engagement-user-interface-home.md
-[リンク 14]: mobile-engagement-user-interface-my-account.md
-[リンク 15]: mobile-engagement-user-interface-analytics.md
-[リンク 16]: mobile-engagement-user-interface-monitor.md
-[リンク 17]: mobile-engagement-user-interface-reach.md
-[リンク 18]: mobile-engagement-user-interface-segments.md
-[リンク 19]: mobile-engagement-user-interface-dashboard.md
-[リンク 20]: mobile-engagement-user-interface-settings.md
-[リンク 21]: mobile-engagement-troubleshooting-guide-analytics.md
-[リンク 22]: mobile-engagement-troubleshooting-guide-apis.md
-[リンク 23]: mobile-engagement-troubleshooting-guide-push-reach.md
-[リンク 24]: mobile-engagement-troubleshooting-guide-service.md
-[リンク 25]: mobile-engagement-troubleshooting-guide-sdk.md
-[リンク 26]: mobile-engagement-troubleshooting-guide-sr-info.md
-[リンク 27]: ../mobile-engagement-how-tos-first-push.md
-[リンク 28]: ../mobile-engagement-how-tos-test-campaign.md
-[リンク 29]: ../mobile-engagement-how-tos-personalize-push.md
-[リンク 30]: ../mobile-engagement-how-tos-differentiate-push.md
-[リンク 31]: ../mobile-engagement-how-tos-schedule-campaign.md
-[リンク 32]: ../mobile-engagement-how-tos-text-view.md
-[リンク 33]: ../mobile-engagement-how-tos-web-view.md
+[Link 1]: mobile-engagement-user-interface.md
+[Link 2]: mobile-engagement-troubleshooting-guide.md
+[Link 3]: mobile-engagement-how-tos.md
+[Link 4]: http://go.microsoft.com/fwlink/?LinkID=525553
+[Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
+[Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
+[Link 7]: https://account.windowsazure.com/PreviewFeatures
+[Link 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
+[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
+[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
+[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
+[Link 12]: mobile-engagement-user-interface-navigation.md
+[Link 13]: mobile-engagement-user-interface-home.md
+[Link 14]: mobile-engagement-user-interface-my-account.md
+[Link 15]: mobile-engagement-user-interface-analytics.md
+[Link 16]: mobile-engagement-user-interface-monitor.md
+[Link 17]: mobile-engagement-user-interface-reach.md
+[Link 18]: mobile-engagement-user-interface-segments.md
+[Link 19]: mobile-engagement-user-interface-dashboard.md
+[Link 20]: mobile-engagement-user-interface-settings.md
+[Link 21]: mobile-engagement-troubleshooting-guide-analytics.md
+[Link 22]: mobile-engagement-troubleshooting-guide-apis.md
+[Link 23]: mobile-engagement-troubleshooting-guide-push-reach.md
+[Link 24]: mobile-engagement-troubleshooting-guide-service.md
+[Link 25]: mobile-engagement-troubleshooting-guide-sdk.md
+[Link 26]: mobile-engagement-troubleshooting-guide-sr-info.md
+[Link 27]: ../mobile-engagement-how-tos-first-push.md
+[Link 28]: ../mobile-engagement-how-tos-test-campaign.md
+[Link 29]: ../mobile-engagement-how-tos-personalize-push.md
+[Link 30]: ../mobile-engagement-how-tos-differentiate-push.md
+[Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
+[Link 32]: ../mobile-engagement-how-tos-text-view.md
+[Link 33]: ../mobile-engagement-how-tos-web-view.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
