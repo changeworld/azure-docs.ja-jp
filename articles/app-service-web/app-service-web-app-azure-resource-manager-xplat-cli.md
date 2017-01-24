@@ -15,21 +15,24 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: 11a9e0a67b71e7ce4adf9713c825511ade4ff7d7
-ms.openlocfilehash: 36a6863990e3c4cb87bc4f3a1207ab552c836c20
+ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
+ms.openlocfilehash: 6f75781af24d1ad4cb6460f0dfd528684aaad57f
 
 
 ---
-# <a name="using-azure-resource-manager-based-xplat-cli-for-azure-web-app"></a>Azure Resource Manager ベースの XPlat CLI を使用して Azure Web アプリを管理する
+# <a name="using-azure-resource-manager-based-xplat-cli-for-azure-app-service"></a>Azure Resource Manager ベースの XPlat CLI を使用して Azure App Service を管理する
 > [!div class="op_single_selector"]
 > * [Azure CLI](app-service-web-app-azure-resource-manager-xplat-cli.md)
 > * [Azure PowerShell](app-service-web-app-azure-resource-manager-powershell.md)
-> 
-> 
 
-Microsoft Azure クロスプラットフォーム コマンドライン ツール バージョン 0.10.5 のリリースに伴い、新しいコマンドが追加されました。 それにより、Azure Resource Manager ベースの PowerShell コマンドを使って Web Apps を管理することができます。
+Microsoft Azure クロスプラットフォーム コマンドライン ツール バージョン 0.10.5 のリリースに伴い、新しいコマンドが追加されました。 それにより、Azure Resource Manager ベースの PowerShell コマンドを使って App Service を管理することができます。
 
-リソース グループの管理の詳細については、「[Use the Azure CLI to manage Azure resources and resource groups (Azure CLI を使用して Azure のリソースとリソース グループを管理する)](../xplat-cli-azure-resource-manager.md)」を参照してください。 
+リソース グループの管理の詳細については、「[Use the Azure CLI to manage Azure resources and resource groups (Azure CLI を使用して Azure のリソースとリソース グループを管理する)](../azure-resource-manager/xplat-cli-azure-resource-manager.md)」を参照してください。 
+
+> [!NOTE] 
+> また、[Azure CLI 2.0 (プレビュー)](https://github.com/Azure/azure-cli) もお試しいただけます。これは、Python で記述された次世代 CLI であり、Resource Manager デプロイメント モデルに使用できます。
+>
+>
 
 ## <a name="managing-app-service-plans"></a>App Service プランの管理
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
@@ -40,7 +43,7 @@ App Service プランを作成するには、**azure appserviceplan create** コ
 * **--resource-group**: 新たに作成された App Service プランが属するリソース グループ。
 * **--name**: App Service プランの名前。
 * **--location**: App Service プランの場所。
-* **--tier**: 目的の価格 SKU (選択肢: F1 (Free)、 D1 (Shared)、 B1 (Basic Small)、B2 (Basic Medium)、B3 (Basic Large)、 S1 (Standard Small)、S2 (Standard Medium)、S3 (Standard Large)、 P1 (Premium Small)、P2 (Premium Medium)、P3 (Premium Large))。
+* **--sku**: 目的の価格 SKU (選択肢: F1 (Free)、 D1 (Shared)、 B1 (Basic Small)、B2 (Basic Medium)、B3 (Basic Large)、 S1 (Standard Small)、S2 (Standard Medium)、S3 (Standard Large)、 P1 (Premium Small)、P2 (Premium Medium)、P3 (Premium Large))。
 * **--instances**: App Service プランの worker の数 (既定値は 1 です)。
 
 コマンドレットの使用例:
@@ -65,26 +68,26 @@ App Service プランを作成するには、**azure appserviceplan create** コ
 ### <a name="configure-an-existing-app-service-plan"></a>既存の App Service プランの構成
 既存の App Service プランの設定を変更するには、**azure appserviceplan config** コマンドを使用します。 SKU のほか、worker の数を変更することができます。 
 
-    azure appserviceplan config --nameContosoAppServicePlan --resource-group ContosoAzureResourceGroup --sku S1 --instances 9
+    azure appserviceplan config --name ContosoAppServicePlan --resource-group ContosoAzureResourceGroup --sku S1 --instances 9
 
 #### <a name="scaling-an-app-service-plan"></a>App Service プランのスケーリング
 既存の App Service プランをスケーリングするには、次のように入力します。
 
-    azure appserviceplan config --nameContosoAppServicePlan --resource-group ContosoAzureResourceGroup --instances 9
+    azure appserviceplan config --name ContosoAppServicePlan --resource-group ContosoAzureResourceGroup --instances 9
 
 #### <a name="changing-the-sku-of-an-app-service-plan"></a>App Service プランの SKU の変更
 既存の App Service プランの SKU を変更するには、次のように入力します。
 
-    azure appserviceplan config --nameContosoAppServicePlan --resource-group ContosoAzureResourceGroup --sku S1
+    azure appserviceplan config --name ContosoAppServicePlan --resource-group ContosoAzureResourceGroup --sku S1
 
 
 ### <a name="delete-an-existing-app-service-plan"></a>既存の App Service プランの削除
-既存の App Service プランを削除するにはまず、割り当てられているすべての Web アプリを移動するか削除する必要があります。 その後、**azure webapp delete** コマンドを使用して App Service プランを削除できます。
+既存の App Service プランを削除するにはまず、割り当てられているすべてのアプリを移動するか削除する必要があります。 その後、**azure webapp delete** コマンドを使用して App Service プランを削除できます。
 
     azure appserviceplan delete --name ContosoAppServicePlan --resource-group southeastasia
 
-## <a name="managing-app-service-web-apps"></a>App Service Web Apps の管理
-### <a name="create-a-web-app"></a>Web アプリの作成
+## <a name="managing-app-service-apps"></a>App Service アプリの管理
+### <a name="create-a-web-app"></a>Web アプリを作成する
 Web アプリを作成するには、**azure webapp create** コマンドを使用します。
 
 以下、各パラメーターについて説明します。
@@ -98,26 +101,26 @@ Web アプリを作成するには、**azure webapp create** コマンドを使�
 
     azure webapp create --name ContosoWebApp --resource-group ContosoAzureResourceGroup --plan ContosoAppServicePlan --location "South Central US"
 
-### <a name="delete-an-existing-web-app"></a>既存の Web アプリの削除
-既存の Web アプリを削除するには、**azure webapp delete** コマンドを使用します。Web アプリの名前とリソース グループの名前を指定する必要があります。
+### <a name="delete-an-existing-app"></a>既存のアプリを削除する
+既存のアプリを削除するには、**azure webapp delete** コマンドを使用できます。 アプリの名前とリソース グループ名を指定する必要があります。
 
     azure webapp delete --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-### <a name="list-existing-web-apps"></a>既存の Web アプリの一覧表示
-既存の Web アプリを一覧表示するには、**azure webapp list** コマンドを使用します。
+### <a name="list-existing-apps"></a>既存のアプリを一覧表示する
+既存のアプリを一覧表示するには、**azure webapp list** コマンドを使用します。
 
-特定のリソース グループのすべての Web アプリを一覧表示するには、次のように入力します。
+特定のリソース グループ内のすべてのアプリを一覧表示するには、次のように入力します。
 
     azure webapp list --resource-group ContosoAzureResourceGroup
 
-特定の Web アプリを取得するには、**azure webapp show** コマンドを使用します。
+特定のアプリを取得するには、**azure webapp show** コマンドを使用します。
 
     azure webapp show --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-### <a name="configure-an-existing-web-app"></a>既存の Web アプリの構成
-既存の Web アプリの設定と構成を変更するには、**azure webapp config set** コマンドを使用します。
+### <a name="configure-an-existing-app"></a>既存のアプリを構成する
+既存のアプリの設定と構成を変更するには、**azure webapp config set** コマンドを使用します。
 
-例 (1): Web アプリの php のバージョンを変更する 
+例 (1): アプリの php のバージョンを変更する 
 
     azure webapp config set --name ContosoWebApp --resource-group ContosoAzureResourceGroup --phpversion 5.6
 
@@ -127,42 +130,42 @@ Web アプリを作成するには、**azure webapp create** コマンドを使�
 
 変更可能な他の設定を調べるには、**azure webapp config -h** コマンドを使用します。
 
-### <a name="change-the-state-of-an-existing-web-app"></a>既存の Web アプリの状態を変更する
-#### <a name="restart-a-web-app"></a>Web アプリの再起動
-Web アプリを再起動するには、Web アプリの名前とリソース グループを指定する必要があります。
+### <a name="change-the-state-of-an-existing-app"></a>既存のアプリの状態を変更する
+#### <a name="restart-an-app"></a>アプリを再起動する
+アプリを再起動するには、アプリの名前とリソース グループを指定する必要があります。
 
     azure webapp restart --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-#### <a name="stop-a-web-app"></a>Web アプリの停止
-Web アプリを停止するには、Web アプリの名前とリソース グループを指定する必要があります。
+#### <a name="stop-an-app"></a>アプリを停止する
+アプリを停止するには、アプリの名前とリソース グループを指定する必要があります。
 
     azure webapp stop --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-#### <a name="start-a-web-app"></a>Web アプリの起動
-Web アプリを起動するには、Web アプリの名前とリソース グループを指定する必要があります。
+#### <a name="start-an-app"></a>アプリを起動する
+アプリを起動するには、アプリの名前とリソース グループを指定する必要があります。
 
     azure webapp start --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-### <a name="manage-web-app-publishing-profiles"></a>Web アプリの発行プロファイルの管理
-それぞれの Web アプリには、アプリを発行するために使用できる発行プロファイルがあります。
+### <a name="manage-publishing-profiles-of-an-app"></a>アプリの発行プロファイルを管理する
+それぞれのアプリには、コードを発行するために使用できる発行プロファイルがあります。
 
 #### <a name="get-publishing-profile"></a>発行プロファイルの取得
-Web アプリの発行プロファイルを取得するには、次のように入力します。
+アプリの発行プロファイルを取得するには、次のように入力します。
 
     azure webapp publishingprofile --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
 このコマンドは、発行プロファイルのユーザー名とパスワードをコマンド ラインにエコーします。
 
-### <a name="manage-web-app-hostnames"></a>Web アプリのホスト名の管理
-Web アプリのホスト名のバインドを管理するには、**azure webapp config hostnames** コマンドを使用します。  
+### <a name="manage-app-hostnames"></a>アプリのホスト名を管理する
+アプリのホスト名のバインドを管理するには、**azure webapp config hostnames** コマンドを使用します  
 
 #### <a name="list-hostname-bindings"></a>ホスト名のバインドの一覧表示
-Web アプリの現在のホスト名のバインドを取得するには、次のように入力します。
+アプリの現在のホスト名のバインドを取得するには、次のように入力します。
 
     azure webapp config hostnames list --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
 #### <a name="add-hostname-bindings"></a>ホスト名のバインドの追加
-Web アプリにホスト名のバインドを追加するには、次のように入力します。
+アプリにホスト名のバインドを追加するには、次のように入力します。
 
     azure webapp config hostnames add --name ContosoWebApp --resource-group ContosoAzureResourceGroup --hostname www.contoso.com
 
@@ -171,13 +174,13 @@ Web アプリにホスト名のバインドを追加するには、次のよう�
 
     azure webapp config hostnames delete --name ContosoWebApp --resource-group ContosoAzureResourceGroup --hostname www.contoso.com
 
-### <a name="next-steps"></a>次のステップ
-* Azure Resource Manager の CLI のサポートについては、「[Use the Azure CLI to manage Azure resources and resource groups (Azure CLI を使用して Azure のリソースとリソース グループを管理する)](../xplat-cli-azure-resource-manager.md)」を参照してください。
+## <a name="next-steps"></a>次のステップ
+* Azure Resource Manager の CLI のサポートについては、「[Use the Azure CLI to manage Azure resources and resource groups (Azure CLI を使用して Azure のリソースとリソース グループを管理する)](../azure-resource-manager/xplat-cli-azure-resource-manager.md)」を参照してください。
 * PowerShell を使用した App Service の管理については、「[Azure Resource Manager ベースの PowerShell を使用して Azure Web アプリを管理する](app-service-web-app-azure-resource-manager-powershell.md)」を参照してください。
 * Linux での Azure App Service の詳細については、「[Introduction to App Service on Linux (App Service on Linux の概要)](app-service-linux-intro.md)」を参照してください。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

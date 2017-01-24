@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/10/2016
+ms.date: 12/13/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 06be4297bd805a77c2901296071bfa344d076c82
+ms.sourcegitcommit: 1832e584c599384948e7174b377552703ce8bbcd
+ms.openlocfilehash: 11a03d932fc70164640c30acb9808c08e3354de8
 
 
 ---
@@ -86,6 +86,13 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 オンプレミスのサイト間で仮想マシンと物理サーバーをレプリケートする場合には、転送中の暗号化がサポートされます。 Azure に仮想マシンと物理サーバーをレプリケートする場合には、転送中の暗号化と (Azure での) 保管データの暗号化の両方がサポートされます。
 
 ## <a name="replication"></a>レプリケーション
+
+### <a name="can-i-replicate-over-a-site-to-site-vpn-to-azure"></a>Azure にサイト間 VPN 経由でレプリケートできますか。
+Azure Site Recovery は、パブリック エンドポイント経由で Azure ストレージ アカウントにデータをレプリケートします。 そのため、サイト間 VPN 経由のレプリケーションはできません。 Azure 仮想ネットワークを使用してサイト間 VPN を作成すれば、ASR レプリケーションに干渉することはありません。 
+
+### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>ExpressRoute を使用して Azure に仮想マシンをレプリケートできますか。
+はい。ExpressRoute を使用して Azure に仮想マシンをレプリケートできます。 Azure Site Recovery は、パブリック エンドポイント経由で Azure ストレージ アカウントにデータをレプリケートします。 ExpressRoute を使用して ASR レプリケーションを行うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#public-peering)のセットアップが必要です。 仮想マシンが Azure 仮想ネットワークにフェールオーバーされた後は、その Azure 仮想ネットワークでセットアップされた[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#private-peering)を使用して、それらのマシンにアクセスできます。 
+
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>仮想マシンを Azure にレプリケートするための前提条件はありますか。
 Azure にレプリケートする仮想マシンは、 [Azure 要件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に適合している必要があります。
 
@@ -186,11 +193,11 @@ Azure パック、クラウド プラットフォーム システム、および
 はい。Hyper-V 仮想マシンを Azure にレプリケートできます。または、サービス プロバイダー サイト間でレプリケートできます。  サービス プロバイダー サイト間でレプリケートする場合は、Azure Runbook 統合が使用できないことに注意してください。
 
 ## <a name="next-steps"></a>次のステップ
-*  [Azure Site Recovery の概要](site-recovery-overview.md)
+* [Azure Site Recovery の概要](site-recovery-overview.md)
 * こちら [Site Recovery アーキテクチャ](site-recovery-components.md)  
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

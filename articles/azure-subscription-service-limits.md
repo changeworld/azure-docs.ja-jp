@@ -13,23 +13,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2016
+ms.date: 12/19/2016
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: c98484a754943ad0ea5b1098a9a6c06cbf5f8814
+ms.sourcegitcommit: 18c8997d8ee77c9c3005aa765a64ae82dce8c70c
+ms.openlocfilehash: fc519c242b2676e20c1b19bfb2b5edae73b0b926
 
 
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
-## <a name="overview"></a>Overview
-本書では、Microsoft Azure での最も一般的な制限について具体的に説明しています。 すべての Azure サービスを網羅してはいません。 今後、Azure Platform 全体を広くカバーするように制限を展開し、更新していく予定です。
+このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、プラットフォームを広くカバーするように一覧を拡大し、更新していく予定です。
 
 Azure の価格については、 [Azure の価格の概要](https://azure.microsoft.com/pricing/) に関するページを参照してください。 価格の概要に関するページでは、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用したり、サービス (たとえば、[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) の価格の詳細ページに移動したりして、費用を見積もることができます。
 
 > [!NOTE]
-> 「 **既定の制限**」を超える制限の引き上げを希望される場合は、 [オンライン カスタマー サポートに申請 (無料)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)してください。 以下の表の「 **上限** 」の値を超える制限の引き上げはできません。 「 **上限** 」列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
+> **既定の制限**を超える制限またはクォータの引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) してください。 次のテーブルにある**上限**の値を超える制限の引き上げはできません。 **上限**列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。 
 > 
+> 無料試用版サブスクリプションは、制限およびクォータ引き上げの適用対象外です。 無料試用版をお持ちの場合、 [従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/) のサブスクリプションにアップグレードしてください。 詳細については、「[Azure 無料試用版を従量課金制にアップグレード](billing-upgrade-azure-subscription.md)」を参照してください。
 > 
 
 ## <a name="limits-and-the-azure-resource-manager"></a>制限と Azure リソース マネージャー
@@ -170,9 +170,7 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="documentdb-limits"></a>DocumentDB の制限
-[!INCLUDE [azure-documentdb-limits](../includes/azure-documentdb-limits.md)]
-
-アスタリスク (*) 付きで表示されているクォータは、 [Azure サポートに問い合わせて調整できます](documentdb/documentdb-increase-limits.md)。
+DocumentDB は世界規模のデータベースであり、アプリケーションで要求されることをすべて処理するようにスループットとストレージをスケールできます。 DocumentDB が提供するスケールについてご質問がある場合は、askdocdb@microsoft.com に電子メールをお送りください。
 
 ### <a name="mobile-engagement-limits"></a>Mobile Engagement の制限
 [!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
@@ -276,6 +274,6 @@ SQL Database の制限については、「 [SQL Database のリソース制限]
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

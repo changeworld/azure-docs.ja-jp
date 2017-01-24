@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: hangzh;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b42658bde128dec9bdc54ffc59c624e957527d5b
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: 0f3264abf6216270aa9cdd62ce3acf8640e2375a
 
 
 ---
@@ -27,12 +27,12 @@ ms.openlocfilehash: b42658bde128dec9bdc54ffc59c624e957527d5b
 * グループごとのランダム サンプリング
 * 階層サンプリング
 
-**データをサンプリングする理由**
- 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。 これにより、データの理解、探索、および特徴エンジニアリングが容易になります。 Team Data Science Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
-
-次の **メニュー** は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。
+次の**メニュー**は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。
 
 [!INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
+
+**データをサンプリングする理由**
+分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。 これにより、データの理解、探索、および特徴エンジニアリングが容易になります。 Team Data Science Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
 
 このサンプリング タスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
 
@@ -111,6 +111,6 @@ Hive で使用できるより高度なサンプリング方法については、
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

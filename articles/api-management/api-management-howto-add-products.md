@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 12/15/2016
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4d9c5e52bc42116b03983ed3a9f5b4a7d9e87977
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 1568bbba999018e26493654e0286a6b8d93f3ae7
 
 
 ---
@@ -28,7 +28,7 @@ Azure API Management の成果物には、少なくとも 1 つの API に加え
 
 ![パブリッシャー ポータル][api-management-management-console]
 
-> API Management サービス インスタンスをまだ作成していない場合は、[API Management インスタンスの作成][API Management インスタンスの作成]に関するチュートリアルの [API Management サービス インスタンスの作成][API Management サービス インスタンスの作成]に関するセクションをご覧ください。
+> まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の概要][Get started with Azure API Management]に関するチュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」を参照してください。
 > 
 > 
 
@@ -42,7 +42,7 @@ Azure API Management の成果物には、少なくとも 1 つの API に加え
 
 API Management の成果物は、**[開く]** ことや **[保護]** することが可能です。 保護された成果物を使用するには、事前にサブスクライブする必要があります。一方、オープンな成果物は、サブスクライブせずに使用できます。 **[サブスクリプションが必要]** チェックボックスをオンにし、サブスクリプションが必要な保護された成果物を作成します。 これは、既定の設定です。
 
-この成果物に対するサブスクリプションの申し込みを管理者の審査の下で承認または拒否する場合は、 **[サブスクリプションの承認を必須とする]** チェック ボックスをオンにします。 チェック ボックスがオフの場合、サブスクリプションの申し込みは自動承認されます。 サブスクリプションの詳細については、「[成果物のサブスクライバーの表示][成果物のサブスクライバーの表示]」をご覧ください。
+この成果物に対するサブスクリプションの申し込みを管理者の審査の下で承認または拒否する場合は、 **[サブスクリプションの承認を必須とする]** チェック ボックスをオンにします。 チェック ボックスがオフの場合、サブスクリプションの申し込みは自動承認されます。 サブスクリプションの詳細については、「[成果物のサブスクライバーの表示][View subscribers to a product]」をご覧ください。
 
 開発者のアカウントで複数回成果物にサブスクライブできるようにするには、 **[複数のサブスクリプションを許可する]** チェック ボックスをオンにします。 このボックスがオンになっていない場合、各開発者アカウントは、成果物に 1 回だけサブスクライブできます。
 
@@ -98,7 +98,7 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 
 グループ内の開発者に対して成果物の可視性を有効または無効にするには、グループの横のチェック ボックスをオンまたはオフにし、 **[保存]**をクリックします。
 
-> 詳細については、「[Azure API Management でグループを作成および使用して開発者アカウントを管理する方法][Azure API Management でグループを作成および使用して開発者アカウントを管理する方法]」をご覧ください。
+> 詳細については、「[Azure API Management でグループを作成および使用して開発者アカウントを管理する方法][How to create and use groups to manage developer accounts in Azure API Management]」をご覧ください。
 > 
 > 
 
@@ -108,7 +108,7 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 ![開発者][api-management-developer-list]
 
 ## <a name="next-steps"> </a>次のステップ
-目的の API を追加して成果物を発行すると、開発者が成果物をサブスクライブして API を呼び出せるようになります。 これらの操作とより高度な成果物の構成を説明するチュートリアルについては、「[Azure API Management で成果物を作成して詳細設定を行う方法][Azure API Management で成果物を作成して詳細設定を行う方法]」をご覧ください。
+目的の API を追加して成果物を発行すると、開発者が成果物をサブスクライブして API を呼び出せるようになります。 これらの操作とより高度な成果物の構成を説明するチュートリアルについては、「[Azure API Management で成果物を作成して詳細設定を行う方法][How create and configure advanced product settings in Azure API Management]」をご覧ください。
 
 製品の操作の詳細については、次のビデオをご覧ください。
 
@@ -116,13 +116,13 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 > 
 > 
 
-[成果物の作成]: #create-product
-[成果物への API の追加]: #add-apis
-[成果物への説明情報の追加]: #add-description
-[成果物の発行]: #publish-product
-[開発者への成果物の公開]: #make-visible
-[成果物のサブスクライバーの表示]: #view-subscribers
-[次のステップ]: #next-steps
+[Create a product]: #create-product
+[Add APIs to a product]: #add-apis
+[Add descriptive information to a product]: #add-description
+[Publish a product]: #publish-product
+[Make a product visible to developers]: #make-visible
+[View subscribers to a product]: #view-subscribers
+[Next steps]: #next-steps
 
 [api-management-management-console]: ./media/api-management-howto-add-products/api-management-management-console.png
 [api-management-add-product]: ./media/api-management-howto-add-products/api-management-add-product.png
@@ -144,16 +144,16 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 [api-management-]: ./media/api-management-howto-add-products/
 
 
-[API に操作を追加する方法]: api-management-howto-add-operations.md
-[成果物を作成して発行する方法]: api-management-howto-add-products.md
-[API Management インスタンスの作成]: api-management-get-started.md
-[API Management サービス インスタンスの作成]: api-management-get-started.md#create-service-instance
-[次のステップ]: #next-steps
-[Azure API Management でグループを作成および使用して開発者アカウントを管理する方法]: api-management-howto-create-groups.md
-[Azure API Management で成果物を作成して詳細設定を行う方法]: api-management-howto-product-with-rules.md 
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create and publish a product]: api-management-howto-add-products.md
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Next steps]: #next-steps
+[How to create and use groups to manage developer accounts in Azure API Management]: api-management-howto-create-groups.md
+[How create and configure advanced product settings in Azure API Management]: api-management-howto-product-with-rules.md 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

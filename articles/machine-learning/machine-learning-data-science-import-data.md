@@ -13,27 +13,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: garye;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3d9cceb28de1cfd43a2d2de79de3a59517908ec9
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: a35bc89044ebe8ea8e4a0e4a883c30fb8e8d879a
 
 
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>さまざまなデータ ソースから Azure Machine Learning Studio にトレーニング データをインポートする
 Machine Learning Studio で独自のデータを使用して予測分析ソリューションを開発し、トレーニングする場合、次の操作を実行できます。 
 
-* ハード ドライブの **ローカル ファイル** を事前にアップロードし、ワークスペースにデータセット モジュールを作成する。  
-* [データのインポート][import-data] モジュールで実験を実行している間に、いずれかの**オンライン データ ソース**からデータにアクセスする。 
-* **データセット**として保存された他の Azure Machine Learning 実験のデータを使用する。 
+* ハード ドライブの **ローカル ファイル** を事前にアップロードし、ワークスペースにデータセット モジュールを作成する
+* [データのインポート][import-data] モジュールで実験を実行している間に、いずれかの**オンライン データ ソース**からデータにアクセスする 
+* **データセット**として保存された他の Azure Machine Learning 実験のデータを使用する
+* オンプレミスの **SQL Server Database** からデータをコピーする
+
+これらの各オプションについては、下にあるメニューの各トピックを参照してください。 各トピックでは、多様なデータ ソースのデータをインポートして Machine Learning Studio で使用する方法が説明されています。 
 
 [!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
 
-これらの各オプションについては、上にあるメニューの各トピックを参照してください。 各トピックでは、多様なデータ ソースのデータをインポートして Machine Learning Studio で使用する方法が説明されています。 
-
 > [!NOTE]
-> Machine Learning Studio には、この用途に使用できるさまざまなサンプル データセットが用意されています。 詳細については、「 [Azure Machine Learning Studio におけるサンプル データセットの使用](machine-learning-use-sample-datasets.md)」を参照してください。
+> Machine Learning Studio には、トレーニング データで使用できるさまざまなサンプル データセットが用意されています。 詳細については、「 [Azure Machine Learning Studio におけるサンプル データセットの使用](machine-learning-use-sample-datasets.md)」を参照してください。
 > 
 > 
 
@@ -50,7 +51,7 @@ Machine Learning Studio は、区切られたテキスト データやデータ�
 
 ただし、Machine Learning Studio には、実験内でデータを操作できるモジュールが用意されています。 使用する機械学習アルゴリズムに応じて、値の欠落やスパース データなどのデータ構造上の問題を処理する際に、その対処方法を決定する必要があります。そのような場合に、これらのモジュールが役に立ちます。 これらの関数を実行するモジュールは、モジュール パレットの **[Data Transformation]** セクションで確認します。
 
-実験中は、出力ポートを右クリックして、モジュールで生成されたデータをいつでも表示、ダウンロードできます。 モジュールによっては、使用可能なダウンロードのオプションが異なる場合があります。また、Machine Learning Studio 上でデータを Web ブラウザーに表示できる場合もあります。
+実験中は、出力ポートをクリックすることで、モジュールで生成されたデータをいつでも表示またはダウンロードできます。 モジュールによっては、使用可能なダウンロードのオプションが異なる場合があります。また、Web ブラウザーのデータを Machine Learning Studio で視覚化できる場合もあります。
 
 ## <a name="data-formats-and-data-types-supported"></a>サポートされるデータ形式とデータ型
 データのインポートに使用するメカニズムや、データの送信元に応じて、さまざまなデータ型を実験にインポートできます。
@@ -72,7 +73,7 @@ Machine Learning Studio は、区切られたテキスト データやデータ�
 
 このメタデータが含まれていない TSV や CSV 形式などのデータをインポートする場合、Machine Learning Studio は、データをサンプリングすることによって、各列のデータ型を推論します。 また、データに列見出しがない場合、Machine Learning Studio は既定の名前を提供します。
 
-[メタデータの編集][edit-metadata]を使用して、列の見出しやデータ型を明示的に指定、変更できます。
+[メタデータの編集][edit-metadata]を使用して、列の見出しやデータ型を明示的に指定または変更できます。
 
 次の **データ型** は、Machine Learning Studio によって認識されます。
 
@@ -83,7 +84,7 @@ Machine Learning Studio は、区切られたテキスト データやデータ�
 * DateTime
 * TimeSpan
 
-Machine Learning Studio は***データ テーブル***と呼ばれる内部データ型を使用し、モジュール間でデータを渡します。 [データセットへの変換][convert-to-dataset] モジュールを使用して、データ テーブル形式にデータを明示的に変換できます。
+Machine Learning Studio は***データ テーブル***と呼ばれる内部データ型を使用し、モジュール間でデータを渡します。 [データセットへの変換][convert-to-dataset]モジュールを使用して、データ テーブル形式にデータを明示的に変換できます。
 
 データ テーブル以外の形式を受け取るどのモジュールでも、次のモジュールに渡す前に、サイレント モードでデータをデータ テーブルに変換します。
 
@@ -97,6 +98,6 @@ Machine Learning Studio は***データ テーブル***と呼ばれる内部デ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

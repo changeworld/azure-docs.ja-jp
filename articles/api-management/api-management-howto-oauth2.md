@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 12/15/2016
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5041b2e4102bf8aaf72358e0812a7b045c804048
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 8650ad41d1d6ef3ee94c2792f435b84676a72d27
 
 
 ---
@@ -37,7 +37,7 @@ ms.openlocfilehash: 5041b2e4102bf8aaf72358e0812a7b045c804048
 ![パブリッシャー ポータル][api-management-management-console]
 
 > [!NOTE]
-> API Management サービス インスタンスをまだ作成していない場合は、[API Management インスタンスの作成][API Management インスタンスの作成]に関するチュートリアルの [API Management サービス インスタンスの作成][API Management サービス インスタンスの作成]に関するセクションをご覧ください。
+> まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の概要][Get started with Azure API Management]に関するチュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」を参照してください。
 > 
 > 
 
@@ -66,7 +66,7 @@ ms.openlocfilehash: 5041b2e4102bf8aaf72358e0812a7b045c804048
 
 **[Authorization endpoint URL (認証エンドポイント URL)]** を入力します。 Azure Active Directory では、この URL は以下の URL のようになります。ここで、`<client_id>` は、使用するアプリケーションを OAuth 2.0 サーバーが識別するためのクライアント ID に置き換えてください。
 
-    https://login.windows.net/<client_id>/oauth2/authorize
+`https://login.windows.net/<client_id>/oauth2/authorize`
 
 **[認証要求方式 (Authorization request method)]** は、認証要求が OAuth 2.0 サーバーに送信される方法を指定します。 既定では **[GET]** が選択されています。
 
@@ -76,7 +76,7 @@ ms.openlocfilehash: 5041b2e4102bf8aaf72358e0812a7b045c804048
 
 Azure Active Directory OAuth 2.0 サーバーでは、**[Token endpoint URL (トークン エンドポイント URL)]** の形式が以下のようになります。ここで、`<APPID>` の形式は `yourapp.onmicrosoft.com` です。
 
-    https://login.windows.net/<APPID>/oauth2/token
+`https://login.windows.net/<APPID>/oauth2/token`
 
 既定の設定は、**[Client authentication methods (クライアント認証方式)]** が **[Basic (基本)]**、**[Access token sending method (アクセス トークン送信方式)]** が **[Authorization header (承認ヘッダー)]** です。 これらの値は、 **[既定のスコープ (Default scope)]**と共に、フォームのこのセクションで構成されます。
 
@@ -155,28 +155,28 @@ OAuth 2.0 と API Management の詳細については、次のビデオとこの
 [api-management-apis-echo-api]: ./media/api-management-howto-oauth2/api-management-apis-echo-api.png
 
 
-[API に操作を追加する方法]: api-management-howto-add-operations.md
-[成果物を追加して発行する方法]: api-management-howto-add-products.md
-[監視と分析]: api-management-monitoring.md
-[成果物への API の追加]: api-management-howto-add-products.md#add-apis
-[成果物の発行]: api-management-howto-add-products.md#publish-product
-[API Management インスタンスの作成]: api-management-get-started.md
-[API Management ポリシー リファレンス]: api-management-policy-reference.md
-[キャッシュ ポリシー]: api-management-policy-reference.md#caching-policies
-[API Management サービス インスタンスの作成]: api-management-get-started.md#create-service-instance
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[Get started with Azure API Management]: api-management-get-started.md
+[API Management policy reference]: api-management-policy-reference.md
+[Caching policies]: api-management-policy-reference.md#caching-policies
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
 [http://oauth.net/2/]: http://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 
-[前提条件]: #prerequisites
-[API Management で OAuth 2.0 認証サーバーを構成する]: #step1
-[OAuth 2.0 ユーザー認証を使用するように API を構成する]: #step2
-[開発者ポータルで OAuth 2.0 ユーザー認証をテストする]: #step3
-[次のステップ]: #next-steps
+[Prerequisites]: #prerequisites
+[Configure an OAuth 2.0 authorization server in API Management]: #step1
+[Configure an API to use OAuth 2.0 user authorization]: #step2
+[Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
+[Next steps]: #next-steps
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

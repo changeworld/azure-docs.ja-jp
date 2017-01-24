@@ -1,43 +1,52 @@
 ---
-title: Data Factory を使用して Salesforce からデータを移動する | Microsoft Docs
-description: Azure Data Factory を使用して Salesforce からデータを移動する方法を説明します。
+title: "Data Factory を使用して Salesforce からデータを移動する | Microsoft Docs"
+description: "Azure Data Factory を使用して Salesforce からデータを移動する方法を説明します。"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: linda33wj
 manager: jhubbard
 editor: monicar
-
+ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 12/20/2016
 ms.author: jingwang
+translationtype: Human Translation
+ms.sourcegitcommit: ff7ab2560e544beb8110af9f78074aa184227885
+ms.openlocfilehash: cc74dd3400018a09433b83cd62b8d893fe118f04
+
 
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータを移動する
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Salesforce から、 [サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores) に関する表のシンクの欄に一覧表示されているデータ ストアにデータをコピーする方法について説明します。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Salesforce から、 [サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関する表のシンクの欄に一覧表示されているデータ ストアにデータをコピーする方法について説明します。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
-現在のところ、Azure Data Factory は、Salesforce から、[サポートされているシンク データ ストア](data-factory-data-movement-activities.md#supported-data-stores)へのデータの移動のみに対応しており、他のデータ ストアから Salesforce にデータを移動することはできません。
+現在のところ、Azure Data Factory は、Salesforce から、[サポートされているシンク データ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats) へのデータの移動のみに対応しており、他のデータ ストアから Salesforce にデータを移動することはできません。
+
+## <a name="supported-versions"></a>サポートされているバージョン
+このコネクタは、Salesforce の Developer Edition、Professional Edition、Enterprise Edition、Unlimited Edition の各エディションをサポートしています。 また、Salesforce 運用、サンドボックス、およびカスタム ドメインからのコピーをサポートしています。
 
 ## <a name="prerequisites"></a>前提条件
-* Salesforce の Developer Edition、Professional Edition、Enterprise Edition、Unlimited Edition のいずれかのエディションを使用する必要があります。
 * API アクセス許可を有効にする必要があります。 「 [How do I enable API access in Salesforce by permission set? (権限セットで Salesforce の API アクセスを有効にする方法)](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
 * Salesforce からオンプレミスのデータ ストアにデータをコピーするには、バージョン 2.0 以降の Data Management Gateway がオンプレミス環境にインストールされている必要があります。
+
+## <a name="salesforce-request-limits"></a>Salesforce の要求の制限
+Salesforce では、API 要求数の合計と、API の同時要求数に上限が設けられています。 詳細については、[Salesforce Developer の制限](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「API Request Limits (API 要求の制限)」をご覧ください。 同時要求の数が制限を超えると、調整が行われてランダムなエラーが発生します。要求の合計数が制限を超えると、Salesforce アカウントは 24 時間のあいだブロックされます。また、どちらのシナリオにおいても “REQUEST_LIMIT_EXCEEDED“ エラーが発生することがあります。
 
 ## <a name="copy-data-wizard"></a>データのコピー ウィザード
 Salesforce から、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」を参照してください。
 
-次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Salesforce から Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores) に記載されているシンクのいずれかにデータをコピーすることができます。   
+次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Salesforce から Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。   
 
-## <a name="sample:-copy-data-from-salesforce-to-an-azure-blob"></a>サンプル: Salesforce から Azure BLOB にデータをコピーする
-このサンプルでは、1 時間おきに Salesforce から Azure BLOB にデータがコピーされます。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。 Azure Data Factory のコピー アクティビティを使用して、 [データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores) に関する記事に記載されているシンクのいずれかにデータを直接コピーすることができます。
+## <a name="sample-copy-data-from-salesforce-to-an-azure-blob"></a>サンプル: Salesforce から Azure BLOB にデータをコピーする
+このサンプルでは、1 時間おきに Salesforce から Azure BLOB にデータがコピーされます。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。 Azure Data Factory のコピー アクティビティを使用して、 [データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関する記事に記載されているシンクのいずれかにデータを直接コピーすることができます。
 
 このシナリオの実現にあたって作成する必要のある Data Factory のアーティファクトは次のとおりです。 これらの手順については、箇条書きの後に続く各セクションで詳しく説明します。
 
 * [Salesforce](#salesforce-linked-service-properties)
-* [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
+* [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service)
 * [RelationalTable](#salesforce-dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)
 * [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)
 * [RelationalSource](#relationalsource-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)
@@ -101,8 +110,8 @@ Salesforce から、サポートされているシンク データ ストアに�
 
 > [!IMPORTANT]
 > カスタム オブジェクトには、API 名の "__c" の部分が必要となります。
-> 
-> 
+>
+>
 
 ![Data Factory - Salesforce の接続 - API 名](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
@@ -159,7 +168,7 @@ RelationalSource でサポートされるプロパティの一覧については
                 "typeProperties": {
                     "source": {
                         "type": "RelationalSource",
-                        "query": "SELECT Id, Col_AutoNumber__c, Col_Checkbox__c, Col_Currency__c, Col_Date__c, Col_DateTime__c, Col_Email__c, Col_Number__c, Col_Percent__c, Col_Phone__c, Col_Picklist__c, Col_Picklist_MultiSelect__c, Col_Text__c, Col_Text_Area__c, Col_Text_AreaLong__c, Col_Text_AreaRich__c, Col_URL__c, Col_Text_Encrypt__c, Col_Lookup__c FROM AllDataType__c"             
+                        "query": "SELECT Id, Col_AutoNumber__c, Col_Checkbox__c, Col_Currency__c, Col_Date__c, Col_DateTime__c, Col_Email__c, Col_Number__c, Col_Percent__c, Col_Phone__c, Col_Picklist__c, Col_Picklist_MultiSelect__c, Col_Text__c, Col_Text_Area__c, Col_Text_AreaLong__c, Col_Text_AreaRich__c, Col_URL__c, Col_Text_Encrypt__c, Col_Lookup__c FROM AllDataType__c"                
                     },
                     "sink": {
                         "type": "BlobSink"
@@ -182,8 +191,7 @@ RelationalSource でサポートされるプロパティの一覧については
 
 > [!IMPORTANT]
 > カスタム オブジェクトには、API 名の "__c" の部分が必要となります。
-> 
-> 
+>
 
 ![Data Factory - Salesforce の接続 - API 名](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
@@ -193,7 +201,8 @@ RelationalSource でサポートされるプロパティの一覧については
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティを **Salesforce**に設定する必要があります。 |はい |
-| ユーザー名 |ユーザー アカウントのユーザー名を指定します。 |はい |
+| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定では "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、"https://[domain].my.salesforce.com" を指定します。 |なし |
+| username |ユーザー アカウントのユーザー名を指定します。 |はい |
 | パスワード |ユーザー アカウントのパスワードを指定します。 |はい |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 |はい |
 
@@ -208,8 +217,8 @@ RelationalSource でサポートされるプロパティの一覧については
 
 > [!IMPORTANT]
 > カスタム オブジェクトには、API 名の "__c" の部分が必要となります。
-> 
-> 
+>
+>
 
 ![Data Factory - Salesforce の接続 - API 名](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
@@ -225,20 +234,27 @@ RelationalSource でサポートされるプロパティの一覧については
 | query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリ。 たとえば、「`select * from MyTable__c`」のように入力します。 |いいえ (**dataset** の **tableName** が指定されている場合) |
 
 > [!IMPORTANT]
-> カスタム オブジェクトには、API 名の "__c" の部分が必要となります。<br>
-> DateTime 列に対する **where** 句を含むクエリを指定するときは、SOQL を使用してください。 たとえば、「 `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd), or SQL query e.g. $$Text.Format('SELECT * FROM Account  WHERE LastModifiedDate   >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate  < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`」のように入力します
-> 
-> 
+> カスタム オブジェクトには、API 名の "__c" の部分が必要となります。
+>
+>
 
 ![Data Factory - Salesforce の接続 - API 名](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
-## <a name="retrieving-data-from-salesforce-report"></a>Salesforce レポートからのデータの取得
+## <a name="query-tips"></a>クエリのヒント
+### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>DateTime 列に対して where 句を 使ってデータを取得する
+SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の相違点に注意してください。 For example:
+
+* **SOQL サンプル**: $$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)
+* **SQL サンプル**: $$Text.Format('SELECT * FROM Account  WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate  < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
+
+### <a name="retrieving-data-from-salesforce-report"></a>Salesforce レポートからのデータの取得
 `{call "<report name>"}` というクエリ (例: `"query": "{call \"TestReport\"}"`) を指定することで、Salesforce レポートからデータを取得できます。
 
-## <a name="salesforce-request-limits"></a>Salesforce の要求の制限
-Salesforce では、API 要求数の合計と、API の同時要求数に上限が設けられています。 詳細については、[Salesforce Developer の制限](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「API Request Limits (API 要求の制限)」をご覧ください。
+### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>削除済みレコードを Salesforce のごみ箱から取得する
+論理的に削除されたレコードを Salesforce のごみ箱から検索するには、クエリで **"IsDeleted = 1"** と指定します。 たとえば、次のように入力します。
 
-同時要求数が上限を超えると調整が発生し、ランダムにエラーが表示されます。 要求数の合計が上限を超えると、Salesforce アカウントが 24 時間ブロックされます。 また、どちらの場合も、"REQUEST_LIMIT_EXCEEDED" エラーが表示されることがあります。  
+* 削除されたレコードのみを検索するには、"select * from MyTable__c **where IsDeleted= 1**" と指定します。
+* 既存および削除済みを含むすべてのレコードを検索するには、"select * from MyTable__c **where IsDeleted = 0 or IsDeleted = 1**" と指定します。
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -272,6 +288,8 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md) 」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Dec16_HO3-->
 
 

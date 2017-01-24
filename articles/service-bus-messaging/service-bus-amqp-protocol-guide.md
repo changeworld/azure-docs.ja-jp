@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 07/01/2016
 ms.author: clemensv;jotaub;hillaryc;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 946384b5986ee56f16f5b3fe3be07d09f9837076
+ms.sourcegitcommit: 3cd9b1e94bde10b4da8fcb91c39abdcc2591d5ba
+ms.openlocfilehash: a93eb9a3afa0ceaa42b42b4274f2164da2d7faa8
 
 
 ---
@@ -48,7 +48,7 @@ AMQP 1.0 プロトコルでは拡張性を意図した設計が採用され、�
 ## <a name="basic-amqp-scenarios"></a>基本的な AMQP のシナリオ
 このセクションでは、Azure Service Bus での AMQP 1.0 の基本的な処理について説明します。接続やセッション、リンクを作成したり、Service Bus の各種エンティティ (キュー、トピック、サブスクリプションなど) との間でメッセージをやり取りしたりする方法を見ていきましょう。
 
-AMQP の動作について最も権威のある情報源は AMQP 1.0 仕様です。しかし仕様の目的は、実装上の指針を厳密に記述することであり、プロトコルについてわかりやすく解説することではありません。 このセクションでは、Service Bus での AMQP 1.0 の使われ方を理解するうえで最低限必要な用語のみを紹介することに重点を置いています。 AMQP についてより包括的な入門情報が必要な場合や、AMQP 1.0 についての広範な解説が必要である場合は、[こちらのビデオ コース][このビデオ コース] をご覧ください。
+AMQP の動作について最も権威のある情報源は AMQP 1.0 仕様です。しかし仕様の目的は、実装上の指針を厳密に記述することであり、プロトコルについてわかりやすく解説することではありません。 このセクションでは、Service Bus での AMQP 1.0 の使われ方を理解するうえで最低限必要な用語のみを紹介することに重点を置いています。 AMQP について大局的に扱った入門情報が必要な場合や、AMQP 1.0 についての広範な解説が必要である場合は、[こちら][this video course]のビデオ コースをご覧ください。
 
 ### <a name="connections-and-sessions"></a>接続とセッション
 ![][1]
@@ -301,7 +301,7 @@ AMQP の詳細については、次のリンクを参照してください。
 * [パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]
 * [Windows Server 用 Service Bus の AMQP]
 
-[このビデオ コース]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
+[this video course]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
 [1]: ./media/service-bus-amqp/amqp1.png
 [2]: ./media/service-bus-amqp/amqp2.png
 [3]: ./media/service-bus-amqp/amqp3.png
@@ -313,6 +313,6 @@ AMQP の詳細については、次のリンクを参照してください。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

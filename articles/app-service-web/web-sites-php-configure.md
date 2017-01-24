@@ -1,19 +1,23 @@
 ---
-title: Azure App Service Web Apps での PHP の構成 | Microsoft Docs
-description: Azure App Service の Web Apps 用に既定の PHP インストールを構成する方法、またはカスタム PHP インストールを追加する方法を説明します。
+title: "Azure App Service Web Apps での PHP の構成 | Microsoft Docs"
+description: "Azure App Service の Web Apps 用に既定の PHP インストールを構成する方法、またはカスタム PHP インストールを追加する方法を説明します。"
 services: app-service
 documentationcenter: php
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/16/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 03b74607227aed68c6df01e80e4bb87e906ecf31
+ms.openlocfilehash: 402670a16b5dabc653c943737abdf2621db6a50b
+
 
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Azure App Service Web Apps での PHP の構成方法
@@ -22,7 +26,7 @@ ms.author: robmcm
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="how-to-change-the-builtin-php-version"></a>方法: ビルトインの PHP バージョンを変更する
+## <a name="how-to-change-the-built-in-php-version"></a>方法: ビルトインの PHP バージョンを変更する
 既定では、App Service Web アプリを作成すると PHP 5.4 がインストールされ、直ちに使用できる状態になります。 使用可能なリリース リビジョン、既定の構成、および有効な拡張機能を確認するには、 [phpinfo()] 関数を呼び出すスクリプトをデプロイします。
 
 PHP 5.5 および PHP 5.6 も使用できますが、既定では有効になっていません。 PHP バージョンを更新するには、次のいずれかの方法に従います。
@@ -44,12 +48,12 @@ PHP 5.5 および PHP 5.6 も使用できますが、既定では有効になっ
         PS C:\> Login-AzureRmAccount
 2. Web アプリの PHP バージョンを設定します。
    
-        PS C:\> Set-AzureWebsite -PhpVersion [5.4 | 5.5 | 5.6] -Name {site-name}
+        PS C:\> Set-AzureWebsite -PhpVersion {5.4 | 5.5 | 5.6} -Name {app-name}
 3. PHP バージョンが設定されました。 これらの設定を確認できます。
    
-        PS C:\> Get-AzureWebsite -Name {site-name} | findstr PhpVersion
+        PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
 
-### <a name="azure-commandline-interface-linux-mac-windows"></a>Azure コマンド ライン インターフェイス (Mac、Linux、Windows)
+### <a name="azure-command-line-interface-linux-mac-windows"></a>Azure コマンド ライン インターフェイス (Mac、Linux、Windows)
 Azure コマンド ライン インターフェイスを使用するには、 **Node.js** をコンピューターにインストールする必要があります。
 
 1. ターミナルを開いてアカウントにログインします。
@@ -57,12 +61,22 @@ Azure コマンド ライン インターフェイスを使用するには、 **
         azure login
 2. Web アプリの PHP バージョンを設定します。
    
-        azure site set --php-version [5.4 | 5.5] {site-name}
+        azure site set --php-version {5.4 | 5.5 | 5.6} {app-name}
+
 3. PHP バージョンが設定されました。 これらの設定を確認できます。
    
-        azure site show {site-name}
+        azure site show {app-name}
 
-## <a name="how-to-change-the-builtin-php-configurations"></a>方法: ビルトインの PHP 構成を変更する
+> [!NOTE] 
+> 上記に相当する [Azure CLI 2.0 (プレビュー)](https://github.com/Azure/azure-cli) のコマンドは次のとおりです。
+>
+>
+
+    az login
+    az appservice web config update --php-version {5.5 | 5.6 | 7.0} -g {resource-group-name} -n {app-name}
+    az appservice web config show -g {resource-group-name} -n {app-name}
+
+## <a name="how-to-change-the-built-in-php-configurations"></a>方法: ビルトインの PHP 構成を変更する
 次の手順に従うと、いずれのビルトイン PHP ランタイムについても、任意の構成オプションを変更できます (php.ini ディレクティブについては、[php.ini ディレクティブの一覧]を参照してください)。
 
 ### <a name="changing-phpiniuser-phpiniperdir-phpiniall-configuration-settings"></a>PHP\_INI\_USER、PHP\_INI\_PERDIR、PHP\_INI\_ALL 構成設定の変更
@@ -193,6 +207,6 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

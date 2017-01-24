@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4b827760c2095ace72831ed579b9c309b4d8991b
+ms.sourcegitcommit: 5c4b5e09ac5e336504be32533ad011aad102af75
+ms.openlocfilehash: fdc0d76741d5078978e1bfeadd156e84cac3a48a
 
 
 ---
@@ -31,6 +31,19 @@ ms.openlocfilehash: 4b827760c2095ace72831ed579b9c309b4d8991b
 | テーブル、列、 *およびデータ* がレポートのデータセットにインポートまたはコピーされます。 基になるデータに加えられた変更を表示するには、更新する (現在の完全なデータセットをもう一度インポートする) 必要があります。 |*テーブルと列* のみがレポートのデータセットにインポートまたはコピーされます。 常に最新のデータが表示されます。 |
 
 Power BI Embedded を使用して、クラウドのデータ ソースで DirectQuery を使用することができますが、現時点ではオンプレミスのデータ ソースを使用することはできません。
+
+> [!NOTE]
+> 現時点では、Power BI Embedded ではオンプレミスのデータ ゲートウェイはサポートされていません。 つまり、オンプレミスの データ ソースで DirectQuery を使用することはできません。
+
+## <a name="supported-data-sources"></a>サポートされるデータ ソース
+
+**DirectQuery**
+* Azure SQL データベース
+* Azure SQL Data Warehouse
+
+**インポート**
+
+Power BI Desktop 内で、使用可能なすべてのデータソースをインポートできます。 インポートしたデータは、Power BI Embedded 内では**更新できません**。 PBIX ファイルに対する変更を Power BI Embedded にアップロードする必要があります。 これは、使用可能なゲートウェイがないためです。 
 
 ## <a name="benefits-of-using-directquery"></a>DirectQuery を使用する利点
 **DirectQuery**を使用する場合、2 つの主な利点があります。
@@ -56,9 +69,11 @@ Power BI Embedded を使用して、クラウドのデータ ソースで Direct
 * [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 * [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
+ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO3-->
 
 
