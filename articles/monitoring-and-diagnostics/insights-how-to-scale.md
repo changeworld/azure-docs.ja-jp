@@ -2,7 +2,7 @@
 title: "Azure Portal での手動または自動によるインスタンス数のスケール変更 | Microsoft Docs"
 description: "Azure のサービスのスケールを変更する方法について説明します。"
 author: rboucher
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
