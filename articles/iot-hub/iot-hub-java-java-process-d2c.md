@@ -1,6 +1,6 @@
 ---
-title: "IoT Hub のデバイスからクラウドへのメッセージの処理 (Java) | Microsoft Docs"
-description: "この Java のチュートリアルでは、IoT Hub のデバイスからクラウドへのメッセージの処理に便利なパターンを学習します。"
+title: "Azure IoT Hub のデバイスからクラウドへのメッセージの処理 (Java) | Microsoft Docs"
+description: "IoT Hub のイベント ハブと互換性のあるエンドポイントから読み取ることで、IoT Hub デバイスからクラウドへのメッセージを処理する方法。 EventProcessorHost インスタンスを使用する Java サービス アプリを作成します。"
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -12,24 +12,24 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/01/2016
+ms.date: 12/06/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: f94d28836e75416743533c99257885e2d7b3ee38
+ms.sourcegitcommit: 2abfeebeac222f4371b0945e1aeb6fcf8e51595d
+ms.openlocfilehash: ef0982f15b04c3ae05517b538d68743789db9dc8
 
 
 ---
-# <a name="tutorial-how-to-process-iot-hub-device-to-cloud-messages-using-java"></a>チュートリアル: Java を使用して IoT Hub のデバイスからクラウドへのメッセージを処理する方法
+# <a name="process-iot-hub-device-to-cloud-messages-java"></a>IoT Hub のデバイスからクラウドへのメッセージの処理 (Java)
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
 ## <a name="introduction"></a>はじめに
-Azure IoT Hub は、何百万ものデバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立できる、完全に管理されたサービスです。 他のチュートリアル ([IoT Hub の使用]と [IoT Hub を使用したクラウドからデバイスへのメッセージの送信][lnk-c2d]に関するチュートリアル) では、IoT Hub のデバイスからクラウドおよびクラウドからデバイスのメッセージングについて、基本的な機能の使用方法を説明しています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バック エンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。 他のチュートリアル ([IoT Hub の使用]と [IoT Hub を使用したクラウドからデバイスへのメッセージの送信][lnk-c2d]に関するチュートリアル) では、IoT Hub のデバイスからクラウドおよびクラウドからデバイスのメッセージングについて、基本的な機能の使用方法を説明しています。
 
 このチュートリアルは、 [IoT Hub の使用] に関するチュートリアルに示されているコードを基に作成されており、デバイスからクラウドへのメッセージを処理するために使用できる 2 つのスケーラブルなパターンについて説明しています。
 
 * [Azure BLOB Storage] のデバイスからクラウドへのメッセージの信頼性の高いストレージ。 一般的なシナリオとしては*コールド パス*分析があります。このシナリオでは、分析プロセスへの入力として使用するテレメトリ データを BLOB に格納します。 これらのプロセスは、[Azure Data Factory] や [HDInsight (Hadoop)] スタックなどのツールによって実行できます。
-* *対話型* のデバイスからクラウドへのメッセージの信頼性の高い処理。 デバイスからクラウドへのメッセージは、アプリケーション バックエンドでの一連のアクションの即時トリガーである場合に対話型となります。 たとえば、デバイスは、CRM システムへのチケットの挿入をトリガーするアラーム メッセージを送信する場合があります。 これに対して、 *データポイント* メッセージは、分析エンジンにフィードされるだけです。 たとえば、後の分析用に保存されるデバイスの温度テレメトリはデータポイント メッセージです。
+* *対話型* のデバイスからクラウドへのメッセージの信頼性の高い処理。 デバイスからクラウドへのメッセージは、ソリューション バックエンドでの一連のアクションの即時トリガーである場合に対話型となります。 たとえば、デバイスは、CRM システムへのチケットの挿入をトリガーするアラーム メッセージを送信する場合があります。 これに対して、 *データポイント* メッセージは、分析エンジンにフィードされるだけです。 たとえば、後の分析用に保存されるデバイスの温度テレメトリはデータポイント メッセージです。
 
 IoT Hub はデバイスからクラウドへのメッセージを受信するために [Event Hub][lnk-event-hubs] と互換性のあるエンドポイントを公開することから、このチュートリアルでは [EventProcessorHost] インスタンスを使用します。 このインスタンスは次のような性質があります。
 
@@ -54,7 +54,7 @@ Service Bus は、メッセージごとのチェックポイントと期間ベ�
 > 
 > 
 
-このチュートリアルは、[HDInsight (Hadoop)] プロジェクトなど、Event Hub と互換性のあるメッセージを使用する他の方法に直接適用できます。 詳細については、「Azure IoT Hub 開発者ガイド」の「 [D2C (デバイスからクラウド)]」を参照してください。
+このチュートリアルは、[HDInsight (Hadoop)] プロジェクトなど、Event Hub と互換性のあるメッセージを使用する他の方法に直接適用できます。 詳細については、「[IoT Hub 開発者ガイド - デバイスからクラウド]」を参照してください。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -65,7 +65,7 @@ Service Bus は、メッセージごとのチェックポイントと期間ベ�
 
 [Azure Storage] と [Azure Service Bus] について、ある程度の基礎知識が必要です。
 
-## <a name="send-interactive-messages-from-a-simulated-device-app"></a>シミュレートされたデバイス アプリからの対話型メッセージの送信
+## <a name="send-interactive-messages-from-a-simulated-device-app"></a>シミュレート対象デバイス アプリからの対話型メッセージの送信
 このセクションでは、[IoT Hub の使用]に関するチュートリアルで作成したシミュレートされたデバイス アプリを変更して、デバイスからクラウドへの対話型メッセージが IoT ハブに送信されるようにします。
 
 1. テキスト エディターを使用し、simulated-device\src\main\java\com\mycompany\app\App.java ファイルを開きます。 このファイルには、 **IoT Hub の概要** のチュートリアルで作成した [IoT Hub の使用] アプリのコードが含まれています。
@@ -128,7 +128,7 @@ Service Bus は、メッセージごとのチェックポイントと期間ベ�
     ```
 
 ## <a name="process-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの処理
-このセクションでは、IoT Hub のデバイスからクラウドへのメッセージを処理する Java コンソール アプリケーションを作成します。 IoT Hub は、アプリケーションでデバイスからクラウドへのメッセージを読み取ることができるように、Event Hub と互換性のあるエンドポイントを公開します。 このチュートリアルでは [EventProcessorHost] クラスを使用して、コンソール アプリでこれらのメッセージを処理します。 Event Hubs からのメッセージを処理する方法の詳細については、「 [Event Hubs の使用] 」のチュートリアルを参照してください。
+このセクションでは、IoT Hub のデバイスからクラウドへのメッセージを処理する Java コンソール アプリケーションを作成します。 IoT Hub は、アプリケーションでデバイスからクラウドへのメッセージを読み取ることができるように、Event Hub と互換性のあるエンドポイントを公開します。 このチュートリアルでは [EventProcessorHost] クラスを使用して、Java コンソール アプリでこれらのメッセージを処理します。 Event Hubs からのメッセージを処理する方法の詳細については、「 [Event Hubs の使用] 」のチュートリアルを参照してください。
 
 データポイント メッセージの信頼性の高いストレージを実装する場合や、対話型メッセージを転送する場合の主な課題は、イベント処理がその進行状況のチェックポイントを提供するメッセージ コンシューマーに依存することです。 また、高いスループットを達成するためには、Event Hubs から読み取るときに大きなバッチでチェックポイントを提供する必要があります。 このアプローチでは、エラーが発生して前のチェックポイントに戻すときに、大量のメッセージが重複処理される可能性が生まれます。 このチュートリアルでは、**EventProcessorHost** のチェックポイントを使用して、Azure Storage の書き込みと Service Bus の重複除去期間を同期する方法を示します。
 
@@ -158,7 +158,7 @@ Service Bus は、メッセージごとのチェックポイントと期間ベ�
 > 
 > 
 
-Service Bus キューで対話型メッセージの信頼性の高い処理を有効にする必要もあります。  [Service Bus キューの使用方法][Service Bus キュー] を使用できます。 あるいは、[Azure クラシック ポータル][lnk-classic-portal]を使用し、以下の手順に従って作成することもできます。
+Service Bus キューで対話型メッセージの信頼性の高い処理を有効にする必要もあります。 [Service Bus キューの使用方法][Service Bus キュー] を使用できます。 あるいは、[Azure クラシック ポータル][lnk-classic-portal]を使用し、以下の手順に従って作成することもできます。
 
 1. 右下隅にある **[新規]** をクリックします。 次に、**[App Services]** > **[Service Bus]** > **[キュー]** > **[カスタム作成]** の順にクリックします。 **d2ctutorial**という名前を入力し、リージョンを選択し、既存の名前空間を使用するか名前空間を新規に作成します。 名前空間名をメモしておきます。このチュートリアルの後半で必要になります。 次のページで、**[重複データ検出の有効化]** を選択し、**[重複データ検出の履歴時間枠]** を 1 時間に設定します。 右下隅にあるチェック マークをクリックして、キューの構成を保存します。
    
@@ -172,7 +172,7 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
 
 最初のタスクは、**process-d2c-messages** という名前の Maven プロジェクトを追加することです。これはデバイスからクラウドへのメッセージを Event Hub と互換性のある IoT Hub エンドポイントから受信し、他のバックエンド サービスにそのメッセージをルーティングします。
 
-1. コマンド プロンプトで次のコマンドを実行して、 [IoT Hub の使用] に関するチュートリアルで作成した iot-java-get-started フォルダーに **process-d2c-messages** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
+1. コマンド プロンプトで次のコマンドを実行して、[IoT Hub の使用]に関するチュートリアルで作成した iot-java-get-started フォルダーに **process-d2c-messages** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=process-d2c-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -535,7 +535,7 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
 
 最初のタスクは、**EventProcessor** インスタンスから Service Bus キューに送信されたメッセージを受信する **process-interactive-messages** という名前の Maven プロジェクトを追加することです。
 
-1. コマンド プロンプトで次のコマンドを実行して、 [IoT Hub の使用] に関するチュートリアルで作成した iot-java-get-started フォルダーに **process-interactive-messages** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
+1. コマンド プロンプトで次のコマンドを実行して、[IoT Hub の使用]に関するチュートリアルで作成した iot-java-get-started フォルダーに **process-interactive-messages** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=process-interactive-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -673,18 +673,18 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
    ![simulated-device の実行][simulateddevice]
 
 > [!NOTE]
-> BLOBの更新内容を表示するために、**StoreEventProcessor** クラスの **MAX_BLOCK_SIZE** 定数を、より小さい値 (**1024** など) に設定することが必要になる場合があります。 シミュレートされたデバイス アプリによって送信されたデータのブロック サイズの制限に達するまでに時間がかかるため、この変更が役立ちます。 ブロック サイズを小さくすることで、作成および更新される BLOB を表示するために長時間待機する必要がなくなります。 ただし、より大きなブロック サイズを使用すると、アプリケーションの拡張性が向上します。
+> BLOBの更新内容を表示するために、**StoreEventProcessor** クラスの **MAX_BLOCK_SIZE** 定数を、より小さい値 (**1024** など) に設定することが必要になる場合があります。 シミュレート対象デバイス アプリによって送信されたデータのブロック サイズの制限に達するまでに時間がかかるため、この変更が役立ちます。 ブロック サイズを小さくすることで、作成および更新される BLOB を表示するために長時間待機する必要がなくなります。 ただし、より大きなブロック サイズを使用すると、アプリケーションの拡張性が向上します。
 > 
 > 
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、 [EventProcessorHost] クラスを使用して、データポイント メッセージとデバイスからクラウドへの対話型メッセージを確実に処理する方法について学習しました。
 
-[IoT Hub でクラウドからデバイスへのメッセージを送信する方法][lnk-c2d]に関するページでは、バックエンドからデバイスにメッセージを送信する方法を説明しています。
+[IoT Hub でクラウドからデバイスへのメッセージを送信する方法][lnk-c2d]に関するページでは、ソリューション バックエンドからデバイスにメッセージを送信する方法を説明しています。
 
 IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT Suite][lnk-suite] に関するドキュメントを参照してください。
 
-IoT Hub を使用したソリューションの開発に関する詳細については、 [IoT Hub 開発者ガイド]をご覧ください。
+IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド]をご覧ください。
 
 <!-- Images. -->
 [simulateddevice]: ./media/iot-hub-java-java-process-d2c/runsimulateddevice.png
@@ -701,7 +701,7 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [HDInsight (Hadoop)]: https://azure.microsoft.com/documentation/services/hdinsight/
 [Service Bus キュー]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
 
-[D2C (デバイスからクラウド)]: iot-hub-devguide-messaging.md
+[IoT Hub 開発者ガイド - デバイスからクラウド]: iot-hub-devguide-messaging.md
 
 [Azure Storage]: https://azure.microsoft.com/documentation/services/storage/
 [Azure Service Bus]: https://azure.microsoft.com/documentation/services/service-bus/
@@ -732,6 +732,6 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 
