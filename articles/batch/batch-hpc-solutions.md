@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: big-compute
-ms.date: 07/27/2016
+ms.date: 01/23/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6a91c56d774ea81e175fa170e09b39548c6ae4d2
+ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
+ms.openlocfilehash: c3e80bc18e4d1007146d9d3c80c2618400480046
 
 
 ---
@@ -32,7 +32,7 @@ Azure では、Batch とハイ パフォーマンス コンピューティング
 この記事で扱う範囲を超えていますが、Azure では、大規模なカスタム計算ワークフローを構築するための機能、アーキテクチャの選択肢、および開発ツールのフルセットも開発者とパートナーに提供します。 拡大するパートナー エコシステムは、Azure クラウドでビッグ コンピューティング ワークロードを生産的にすることを支援する準備ができています。
 
 ## <a name="batch-and-hpc-applications"></a>Batch および HPC アプリケーション
-Web アプリケーションや多くの基幹業務アプリケーションとは異なり、Batch および HPC アプリケーションには定義された開始と終了があり、スケジュールに従って、またはオンデマンドで実行でき、場合によっては何時間もかかります。 ほとんどは 2 つの主なカテゴリ、"*本質的に並列*" (解決する問題の性質上、複数のコンピューターまたはプロセッサで並列に実行されるため「並列性がきわめて高い」とも呼ばれます) および "*密結合*" に分類されます。 これらのアプリケーションの種類の詳細については、次の表を参照してください。 一部の Azure ソリューション アプローチは、どちらか一方の種類に適しています。
+Web アプリケーションや多くの基幹業務アプリケーションとは異なり、Batch および HPC アプリケーションには定義された開始と終了があり、スケジュールに従って、またはオンデマンドで実行でき、場合によっては何時間もかかります。 ほとんどは&2; つの主なカテゴリ、"*本質的に並列*" (解決する問題の性質上、複数のコンピューターまたはプロセッサで並列に実行されるため「並列性がきわめて高い」とも呼ばれます) および "*密結合*" に分類されます。 これらのアプリケーションの種類の詳細については、次の表を参照してください。 一部の Azure ソリューション アプローチは、どちらか一方の種類に適しています。
 
 > [!NOTE]
 > Batch および HPC ソリューションでは、通常、アプリケーションの実行中インスタンスは "*ジョブ*" と呼ばれ、各ジョブは "*タスク*" に分かれている場合があります。 アプリケーションのクラスター化されたコンピューティング リソースは、 *コンピューティング ノード*と呼ばれることがよくあります。
@@ -65,12 +65,12 @@ Web アプリケーションや多くの基幹業務アプリケーションと�
 * **クラスター マネージャー** - コンピューティング リソース (または計算ノード) をプロビジョニング、リリース、および管理します。 クラスター マネージャーは、コンピューティング ノードへのオペレーティング システム イメージおよびアプリケーションのインストールを自動化し、必要に応じてコンピューティング リソースを拡張し、ノードのパフォーマンスを監視します。
 * **ジョブ スケジューラ** - アプリケーションで必要なリソース (プロセッサ、メモリなど) のほか、アプリケーションが実行する条件を指定します。 ジョブ スケジューラは、ジョブのキューを保持し、割り当てられた優先度またはその他の特性に基づいてジョブにリソースを割り当てます。
 
-Windows ベースおよび Linux ベースのクラスター用のクラスタリングおよびジョブ スケジューリング ツールは、Azure に問題なく移行できます。 たとえば、Windows と Linux の HPC ワークロード用の Microsoft の無料のコンピューティング クラスター ソリューションである [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029)には、Azure で実行するためのさまざまなオプションがあります。 Linux クラスターを構築し、Torque や SLURM などのオープンソース ツールを実行することもできます。 また、[TIBCO DataSynapse GridServer](http://www.tibco.com/company/news/releases/2016/tibco-to-accelerate-cloud-adoption-of-banking-and-capital-markets-customers-via-microsoft-collaboration) や [IBM Platform Symphony](http://www-01.ibm.com/support/docview.wss?uid=isg3T1023592)、[Univa Grid Engine](http://www.univa.com/products/grid-engine) などの商用グリッド ソリューションを Azure に持ち込むこともできます。
+Windows ベースおよび Linux ベースのクラスター用のクラスタリングおよびジョブ スケジューリング ツールは、Azure に問題なく移行できます。 たとえば、Windows と Linux の HPC ワークロード用の Microsoft の無料のコンピューティング クラスター ソリューションである [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029)には、Azure で実行するためのさまざまなオプションがあります。 Linux クラスターを構築し、Torque や SLURM などのオープンソース ツールを実行することもできます。 [TIBCO DataSynapse GridServer](https://azure.microsoft.com/blog/tibco-datasynapse-comes-to-the-azure-marketplace/)、[IBM Spectrum Symphony や Symphony LSF](https://azure.microsoft.com/blog/ibm-and-microsoft-azure-support-spectrum-symphony-and-spectrum-lsf/)、[Univa Grid Engine](http://www.univa.com/products/grid-engine) などの商用グリッド ソリューションを Azure に持ち込むこともできます。
 
 次のセクションに示すように、Azure サービスを活用して、従来のクラスター管理ツールなしで (またはそれらに加えて) コンピューティング リソースの管理とジョブのスケジュールを実行できます。
 
 ## <a name="scenarios"></a>シナリオ
-既存の HPC クラスター ソリューション、Azure サービス、またはこれら 2 つの組み合わせを利用して、Azure でビッグ コンピューティング ワークロードを実行する 3 つの一般的なシナリオを次に示します。 各シナリオを選択するための重要な考慮事項は示されていますが、完全ではありません。 ソリューションで利用できる Azure サービスについては、記事の後半で詳しく説明します。
+既存の HPC クラスター ソリューション、Azure サービス、またはこれら&2; つの組み合わせを利用して、Azure でビッグ コンピューティング ワークロードを実行する&3; つの一般的なシナリオを次に示します。 各シナリオを選択するための重要な考慮事項は示されていますが、完全ではありません。 ソリューションで利用できる Azure サービスについては、記事の後半で詳しく説明します。
 
 | シナリオ | これを選択する理由 |
 | --- | --- | --- |
@@ -87,10 +87,10 @@ Windows ベースおよび Linux ベースのクラスター用のクラスタ�
 > 
 
 ### <a name="compute-services"></a>Compute Services
-Azure Compute Services はビッグ コンピューティング ソリューションの中核であり、さまざまなコンピューティング サービスによって多様なシナリオに利点を提供します。 基本的なレベルでは、これらのサービスは、Windows Server Hyper-V テクノロジを使用して Azure が提供する仮想マシン ベースのコンピューティング インスタンスでアプリケーションが実行するためのさまざまなモードを提供します。 これらのインスタンスは、標準およびカスタムの Linux および Windows オペレーティング システムとツールを実行できます。 Azure では、CPU コア、メモリ、ディスク容量などの特性の構成が異なる [さまざまなインスタンス サイズ](../virtual-machines/virtual-machines-windows-sizes.md) から選択できます。 ニーズに応じて何千ものコアまでインスタンスをスケールし、必要なリソースが減ったらスケールダウンできます。
+Azure Compute Services はビッグ コンピューティング ソリューションの中核であり、さまざまなコンピューティング サービスによって多様なシナリオに利点を提供します。 基本的なレベルでは、これらのサービスは、Windows Server Hyper-V テクノロジを使用して Azure が提供する仮想マシン ベースのコンピューティング インスタンスでアプリケーションが実行するためのさまざまなモードを提供します。 これらのインスタンスは、標準およびカスタムの Linux および Windows オペレーティング システムとツールを実行できます。 Azure では、CPU コア、メモリ、ディスク容量などの特性の構成が異なる [さまざまなインスタンス サイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) から選択できます。 ニーズに応じて何千ものコアまでインスタンスをスケールし、必要なリソースが減ったらスケールダウンできます。
 
 > [!NOTE]
-> Azure のコンピューティング集中型インスタンスを活用して、HPC ワークロードのパフォーマンスとスケーラビリティを向上させることができます。たとえば、低待機時間と高スループットのアプリケーション ネットワークを必要とする並列 MPI アプリケーションなどです。 「[H シリーズとコンピューティング集中型 A シリーズの VM について](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)」を参照してください。  
+> Azure で [H シリーズなどのコンピューティング集中型インスタンス](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を活用すれば、HPC ワークロードのパフォーマンスとスケーラビリティを改善できます。 これらのインスタンスでは、待機時間が短くスループットの高いアプリケーション ネットワークが必要とされる並列 MPI アプリケーションもサポートされています。 NVIDIA GPU と共に [N シリーズ](https://azure.microsoft.com/blog/azure-n-series-general-availability-on-december-1/) VM を使用することもできるため、Azure におけるコンピューティングと視覚化のシナリオの幅が広がります。  
 > 
 > 
 
@@ -124,7 +124,7 @@ Azure Compute Services はビッグ コンピューティング ソリューシ�
 
 ## <a name="next-steps"></a>次のステップ
 * ソリューションを構築するためのテクニカル ガイダンスについては、 [Batch とハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース](big-compute-resources.md) に関する記事を参照してください。
-* Cycle Computing や UberCloud などのパートナーと Azure のオプションを検討します。
+* Cycle Computing、Rescale、UberCloud などのパートナーと Azure のオプションを検討します。
 * [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222)、[Altair](https://azure.microsoft.com/blog/availability-of-altair-radioss-rdma-on-microsoft-azure/)、[ANSYS](https://azure.microsoft.com/blog/ansys-cfd-and-microsoft-azure-perform-the-best-hpc-scalability-in-the-cloud/)、[d3VIEW](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088) の Azure ビッグ コンピューティング ソリューションに関する記事を読みます。
 * 最新情報については、[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)と[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)をご覧ください。
 
@@ -137,6 +137,6 @@ Azure Compute Services はビッグ コンピューティング ソリューシ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 
