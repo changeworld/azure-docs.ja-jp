@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 01/12/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
-ms.openlocfilehash: d9915ecbfca1eab7515b4879ae2b947c59f3ea2b
+ms.sourcegitcommit: fc82aaf3300a8d40fe00a2ae4dc008ccee6e2a66
+ms.openlocfilehash: 66cdc1fbe5afea4790e5c8ef34b4fcf2d7e89d84
 
 
 ---
@@ -50,7 +50,7 @@ ms.openlocfilehash: d9915ecbfca1eab7515b4879ae2b947c59f3ea2b
    > サブスクリプションごとにデータ収集を有効にすることをお勧めします。これにより、既存および新規のすべての VM でセキュリティの監視を利用できるようになります。 データ収集を有効にすると、監視エージェントがインストールされます。 この場所からのデータ収集を今すぐ有効にしない場合は、後で **[正常性]** ビューと **[推奨事項]** ビューから有効にできます。 また、特定のサブスクリプションのみ、または選択した VM でデータ収集を有効にすることもできます。 サポートされる VM に関する詳細は、[Azure Security Center に関する FAQ](security-center-faq.md) のページを参照してください。
    > 
    > 
-5. ストレージ アカウントをまだ構成していない場合は、 **[セキュリティ ポリシー]**を開いたときに、次のスクリーンショットに示すような警告が表示されることがあります。
+5. ストレージ アカウントをまだ構成していない場合は、**[セキュリティ ポリシー]** を開いたときに、次のスクリーンショットに示すような警告が表示されることがあります。 ストレージ アカウントを選択しないと、リージョンごとに自動的に作成されます。
    
     ![Storage の選択](./media/security-center-policies/security-center-policies-fig2.png)
 6. この警告が表示された場合は、このオプションをクリックして、次のスクリーンショットに示すようにリージョンを選択します。
@@ -111,6 +111,6 @@ ms.openlocfilehash: d9915ecbfca1eab7515b4879ae2b947c59f3ea2b
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

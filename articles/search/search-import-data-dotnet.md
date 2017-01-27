@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 12/08/2016
+ms.date: 01/13/2017
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: 724edc7894cabfb31f6e43a291f98ab60c0a9981
+ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
+ms.openlocfilehash: 3c8f30583ebcb5b4e4182bd2770079882c088c50
 
 
 ---
@@ -41,7 +41,7 @@ ms.openlocfilehash: 724edc7894cabfb31f6e43a291f98ab60c0a9981
 2. 追加、変更、または削除するドキュメントを含む `IndexBatch` オブジェクトを作成します。
 3. `SearchIndexClient` の `Documents.Index` メソッドを呼び出して、`IndexBatch` を検索インデックスに送信します。
 
-## <a name="i-create-an-instance-of-the-searchindexclient-class"></a>I. SearchIndexClient クラスのインスタンスの作成
+## <a name="create-an-instance-of-the-searchindexclient-class"></a>SearchIndexClient クラスのインスタンスの作成
 Azure Search .NET SDK を使用してインデックスにデータをインポートするには、 `SearchIndexClient` クラスのインスタンスを作成する必要があります。 このインスタンスは自分で作成することもできますが、既に `SearchServiceClient` インスタンスがある場合は、`Indexes.GetClient` メソッドを呼び出すほうが簡単に済みます。 たとえば、`serviceClient` という名前の `SearchServiceClient` から "hotels" という名前のインデックスの `SearchIndexClient` を取得する方法は次のようになります。
 
 ```csharp
@@ -55,7 +55,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 
 `SearchIndexClient` には `Documents` プロパティがあります。 このプロパティは、インデックスの追加、変更、削除、クエリに必要なすべてのメソッドを提供します。
 
-## <a name="ii-decide-which-indexing-action-to-use"></a>II. 利用するインデックス作成アクションの決定
+## <a name="decide-which-indexing-action-to-use"></a>利用するインデックス作成アクションの決定
 .NET SDK を使用してデータをインポートするには、データを `IndexBatch` オブジェクトにパッケージ化する必要があります。 `IndexBatch` は複数の `IndexAction` オブジェクトをカプセル化したものです。このオブジェクトにはそれぞれ、ドキュメント 1 つと、Azure Search にそのドキュメントへのアクション (アップロード、マージ、削除など) を指示するプロパティが 1 つ含まれています。 以下のアクションのうちどれを選ぶかに応じて、各ドキュメントに含める必要のあるフィールドは異なります。
 
 | アクション | Description | 各ドキュメントに必要なフィールド | メモ |
@@ -67,7 +67,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 
 `IndexBatch` クラスと `IndexAction` クラスの各種静的メソッドで使用するアクションを指定できます。詳しくは、次のセクションで説明します。
 
-## <a name="iii-construct-your-indexbatch"></a>III. IndexBatch の作成
+## <a name="construct-your-indexbatch"></a>IndexBatch の作成
 ドキュメントに対して実行するアクションを特定したら、`IndexBatch` を作成できます。 次の例は、いくつかのアクションでバッチを作成する方法を示しています。 この例では、"hotels" インデックス内でドキュメントにマップされている `Hotel` という名前のカスタム クラスを使用している点に注目してください。
 
 ```csharp
@@ -130,7 +130,7 @@ var batch = IndexBatch.New(actions);
 > 
 > 
 
-## <a name="iv-import-data-to-the-index"></a>IV. インデックスへのデータのインポート
+## <a name="import-data-to-the-index"></a>インデックスへのデータのインポート
 `IndexBatch` オブジェクトが初期化されたので、`SearchIndexClient` オブジェクトで `Documents.Index` を呼び出してインデックスに送信できます。 次の例は、 `Index`を呼び出す方法と、実行が必要な追加手順を示しています。
 
 ```csharp
@@ -215,7 +215,7 @@ public partial class Hotel
 > 
 > 
 
-`Hotel` クラスに関する 2 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`DataType.String` 型の `category` フィールドにマップします。 `bool?` と `DataType.Boolean`、`DateTimeOffset?` と `DataType.DateTimeOffset` などの間にも、同じような型のマッピングがあります。型のマッピングの具体的なルールについては、[Azure Search .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)で `Documents.Get` メソッドを参照してください。
+`Hotel` クラスに関する 2 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`DataType.String` 型の `category` フィールドにマップします。 `bool?` と `DataType.Boolean`、`DateTimeOffset?` と `DataType.DateTimeOffset` などの間にも、同じような型のマッピングがあります。 型のマッピングの具体的なルールについては、[Azure Search .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)で `Documents.Get` メソッドを参照してください。
 
 独自のクラスをドキュメントとして使用するこの方法は、どちらの方向でも機能します。また、[次の記事](search-query-dotnet.md)で示すように、検索結果を取得し、SDK で自動的に任意の型に逆シリアル化することもできます。
 
@@ -234,12 +234,12 @@ Azure Search インデックスにマップする独自のモデル クラスを
 
 このため、ベスト プラクティスとして、モデル クラスでは null 許容型を使用することをお勧めします。
 
-## <a name="next"></a>次へ
+## <a name="next-steps"></a>次のステップ
 Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。 詳細については、「 [Azure Search インデックスの照会](search-query-overview.md) 」を参照してください。
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

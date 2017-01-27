@@ -1,10 +1,10 @@
 ---
 title: "Virtual Network VPN Gateway の FAQ | Microsoft Docs"
-description: "VPN Gateway に関する FAQ です。 Microsoft Azure Virtual Network のクロスプレミス接続、ハイブリッド構成接続、および VPN Gateway の FAQ"
+description: "VPN Gateway に関する FAQ です。 Microsoft Azure Virtual Network のクロスプレミス接続、ハイブリッド構成接続、および VPN Gateway の FAQ。"
 services: vpn-gateway
 documentationcenter: na
-author: yushwang
-manager: rossort
+author: cherylmc
+manager: timlt
 editor: 
 ms.assetid: 6ce36765-250e-444b-bfc7-5f9ec7ce0742
 ms.service: vpn-gateway
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2016
-ms.author: yushwang
+ms.date: 01/10/2017
+ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: d653865993d75cf926151a14cc4f059e4eaba035
-ms.openlocfilehash: f0e7c08a0783452665028ea3479c14b02a27258f
+ms.sourcegitcommit: 2dda1cd384cf365504811a260872703f2c5c484e
+ms.openlocfilehash: ccb0dc6172b234412558b9175f3872d690d4ea3a
 
 
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 ## <a name="connecting-to-virtual-networks"></a>仮想ネットワークへの接続
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>仮想ネットワークは異なる Azure リージョン間でも接続できますか。
-はい。 リージョンにより制限されることはありません。 特定の仮想ネットワークから、同一リージョン内の別の仮想ネットワーク、または別の Azure リージョンに存在する別の仮想ネットワークに接続できます。
+はい。 リージョンにより制限されることはありません。 特定の仮想ネットワークから、同一リージョン内の別の仮想ネットワーク、または別の Azure リージョンに存在する別の仮想ネットワークに接続できます。 
 
 ### <a name="can-i-connect-virtual-networks-in-different-subscriptions"></a>異なるサブスクリプションの仮想ネットワークに接続することはできますか。
 はい。
@@ -102,7 +102,7 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 ポイント対サイト VPN では、自動再接続と DDNS は現時点ではサポートされていません。
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network"></a>サイト間接続およびポイント対サイト接続の構成は、同一仮想ネットワークに共存させることはできますか。
-はい。 ゲートウェイの VPN の種類が RouteBased の場合は、どちらのソリューションも機能します。 クラシック デプロイメント モデルの場合は、動的ゲートウェイが必要です。 静的ルーティング VPN ゲートウェイと、VPN の種類がルート ベースのゲートウェイでは、ポイント対サイト接続はサポートされません。
+はい。 ゲートウェイの VPN の種類が RouteBased の場合は、どちらのソリューションも機能します。 クラシック デプロイメント モデルの場合は、動的ゲートウェイが必要です。 静的ルーティング VPN ゲートウェイと、`-VpnType PolicyBased` コマンドレットを使用するゲートウェイでは、ポイント対サイト接続はサポートされません。
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワークに接続するように構成することはできますか。
 はい、できます。 ただし、仮想ネットワーク内で重複する IP プレフィックスを使用することはできません。また、ポイント対サイト接続のアドレス空間は仮想ネットワーク内で重複しないようにする必要があります。
@@ -129,7 +129,7 @@ Azure の VPN では PSK (事前共有キー) の認証を使用します。 事
 ### <a name="can-i-use-other-authentication-options"></a>ほかの認証オプションを使用することはできますか
 事前共有キー (PSK) による認証のみに制限されています。
 
-### <a name="what-is-the-gateway-subnet-and-why-is-it-needed"></a>「ゲートウェイ サブネット」とは何ですか。また、これが必要な理由を教えてください。
+### <a name="what-is-the-gatewaysubnet-and-why-is-it-needed"></a>"ゲートウェイ サブネット" とは何ですか。また、これが必要な理由を教えてください。
 クロスプレミス接続を有効にするために実行されているゲートウェイ サービスです。
 
 VPN ゲートウェイを構成するには、VNet のゲートウェイ サブネットを作成する必要があります。 すべてのゲートウェイ サブネットを正常に動作させるには、GatewaySubnet という名前を付ける必要があります。 ゲートウェイ サブネットに他の名前を付けないでください。 また、ゲートウェイ サブネットには VM などをデプロイしないでください。
@@ -140,7 +140,14 @@ VPN ゲートウェイを構成するには、VNet のゲートウェイ サブ�
 いいえ。
 
 ### <a name="how-do-i-specify-which-traffic-goes-through-the-vpn-gateway"></a>VPN ゲートウェイを通過するトラフィックの種類は、どのようにすれば指定できますか。
-Azure クラシック ポータルを使用している場合、[ローカル ネットワーク] の [ネットワーク] ページで、仮想ネットワークのゲートウェイを経由して送信する範囲をそれぞれ追加します。
+
+####<a name="resource-manager-deployment-model"></a>リソース マネージャーのデプロイ モデル
+* PowerShell: "AddressPrefix" を使用してローカル ネットワーク ゲートウェイのトラフィックを指定します。
+* Azure Portal: ローカル ネットワーク ゲートウェイ、[構成]、[アドレス空間] の順に移動します。
+
+####<a name="classic-deployment-model"></a>クラシック デプロイ モデル
+* Azure Portal: クラシック仮想ネットワーク、[VPN 接続]、[サイト対サイト VPN 接続]、ローカル サイト名、[ローカル サイト]、[クライアント アドレス空間] の順に移動します。 
+* クラシック ポータル: [ローカル ネットワーク] の [ネットワーク] ページで、仮想ネットワークのゲートウェイを経由して送信する範囲をそれぞれ追加します。 
 
 ### <a name="can-i-configure-forced-tunneling"></a>強制トンネリングを構成できますか。
 はい。 [強制トンネリングについて](vpn-gateway-about-forced-tunneling.md)を参照してください。
@@ -167,7 +174,7 @@ VPN ゲートウェイは、基本的に、1 つの NIC が顧客のプライベ
 はい、IPsec/IKE 暗号化で保護されます。
 
 ### <a name="does-vnet-to-vnet-traffic-travel-over-the-azure-backbone"></a>VNet 間のトラフィックは、Azure のバックボーンを経由して送信されますか。
-はい。
+はい。このトラフィックは、Azure のバックボーンを経由します。 インターネットは経由しません。
 
 ### <a name="how-many-on-premises-sites-and-virtual-networks-can-one-virtual-network-connect-to"></a>1 つの仮想ネットワークから接続できるオンプレミス サイトと仮想ネットワークの数を教えてください。
 最大で、基本および標準の動的ルーティング ゲートウェイでは合計 10 個の接続が可能です。 高性能の VPN ゲートウェイでは最大で 30 個まで可能です。
@@ -176,7 +183,7 @@ VPN ゲートウェイは、基本的に、1 つの NIC が顧客のプライベ
 はい、ポイント対サイト (P2S) VPN は複数のオンプレミス サイトおよび他の仮想ネットワークに接続されている VPN ゲートウェイで使用できます。
 
 ### <a name="can-i-configure-multiple-tunnels-between-my-virtual-network-and-my-on-premises-site-using-multi-site-vpn"></a>仮想ネットワークとオンプレミス サイトの間に、マルチサイト VPN を使用して複数のトンネルを構成できますか。
-いいえ、Azure の仮想ネットワークと、オンプレミス サイトの間で冗長なトンネルを構成することはできません。
+はい。ただし、両方のトンネルの BGP を同じ場所に構成する必要があります。
 
 ### <a name="can-there-be-overlapping-address-spaces-among-the-connected-virtual-networks-and-on-premises-local-sites"></a>接続されている仮想ネットワークとオンプレミスのローカル サイトで、重複するアドレス空間を使用できますか。
 いいえ。 アドレス空間が重複すると、ネットワーク構成ファイルのアップロードまたは "仮想ネットワークの作成" でエラーが発生します。
@@ -185,10 +192,12 @@ VPN ゲートウェイは、基本的に、1 つの NIC が顧客のプライベ
 いいえ、ポイント対サイト VPN を含むすべての VPN トンネルは、同一の Azure VPN Gateway とそこで利用可能な帯域幅を共有します。
 
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>オンプレミス サイトや別の仮想ネットワークに向けてトラフィックを通過させるときに、Azure VPN Gateway を使用できますか。
-**クラシック デプロイメント モデル**<br>
+
+####<a name="resource-manager-deployment-model"></a>リソース マネージャーのデプロイ モデル
+はい。 詳細については、「[BGP](#bgp)」セクションを参照してください。
+
+####<a name="classic-deployment-model"></a>クラシック デプロイ モデル
 クラシック デプロイメント モデルを使用して Azure VPN Gateway 経由でトラフィックを通過させることは可能です。この場合、ネットワーク構成ファイル内の静的に定義されたアドレス空間が使用されます。 BGP はまだ、クラシック デプロイメント モデルを使用した Azure Virtual Network と VPN Gateway ではサポートされていません。 BGP が使用できない場合、手動で通過アドレス空間を定義すると非常にエラーが発生しやすいため、これは推奨していません。<br>
-**Resource Manager デプロイメント モデル**<br>
-Resource Manager デプロイメント モデルを使用している場合は、詳細について「[BGP](#bgp)」セクションをご覧ください。
 
 ### <a name="does-azure-generate-the-same-ipsecike-pre-shared-key-for-all-my-vpn-connections-for-the-same-virtual-network"></a>Azure では、同一仮想ネットワークのすべての VPN 接続に対して同一の IPsec/IKE 事前共有キーが生成されるのですか。
 いいえ、既定では、Azure は異なる VPN 接続に対してそれぞれ異なる事前共有キーを生成します。 ただし、Set VPN Gateway Key REST API または PowerShell コマンドレットを使用すると、お好みのキー値を設定することができます。 キーは、1 ～ 128 文字の長さの英数字の文字列である必要があります。
@@ -216,6 +225,6 @@ Resource Manager デプロイメント モデルを使用している場合は�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

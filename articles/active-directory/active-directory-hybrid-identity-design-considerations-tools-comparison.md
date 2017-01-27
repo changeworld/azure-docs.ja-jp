@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/08/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2fb248f3e71b248ce0b5ae02ebeff291bbd28dce
+ms.sourcegitcommit: facdbff229eaf5ee20d98214c62c8b2b46acc0fd
+ms.openlocfilehash: 80617b203bf5efa4cd6bed590ea937b2e68db9e1
 
 
 ---
@@ -57,7 +57,7 @@ PP = パブリック プレビュー
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | デバイスの書き戻し |● | |● | | |
 | 属性の書き戻し (Exchange ハイブリッド デプロイの場合) |● |● |● |● |● |
-| ユーザー オブジェクトとグループ オブジェクトの書き戻し |● | | | | |
+| グループ オブジェクトの書き戻し |● | | | | |
 | (セルフ サービスによるパスワードのリセット (SSPR) とパスワードの変更による) パスワードの書き戻し |● |● | | | |
 
 ## <a name="authentication-feature-support"></a>認証機能のサポート
@@ -95,6 +95,6 @@ PP = パブリック プレビュー
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

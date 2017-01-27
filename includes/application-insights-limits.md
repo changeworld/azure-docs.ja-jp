@@ -4,8 +4,9 @@
 
 | **リソース** | **既定の制限** | **注**
 | --- | --- | --- |
-| 1 日あたりの合計データ量 | 100 GB | 上限を設定することで削減できます。 さらに必要な場合は、AIDataCap@microsoft.com まで電子メールでご連絡ください。 
+| 1 日あたりの合計データ量 | 500 GB | 上限を設定することで削減できます。 さらに必要な場合は、AIDataCap@microsoft.com まで電子メールでご連絡ください。 
 | 1 月あたりの無料データ量<br/> (Basic 料金プラン) | 1 GB | 超過分については、GB 単位で課金されます
+| 調整 | 16,000 件のイベント/秒 | 1 分以上にわたって測定されます。 
 | データの保持 | 90 日間 | 用途: [Search](../articles/application-insights/app-insights-diagnostic-search.md)、[Analytics](../articles/application-insights/app-insights-analytics.md)、[メトリックス エクスプローラー](../articles/application-insights/app-insights-metrics-explorer.md)
 | [可用性の複数手順のテスト](../articles/application-insights/app-insights-monitor-web-app-availability.md#multi-step-web-tests)の詳細な結果の保持 | 90 日間 | 各手順の詳細な結果
 | [プロパティ](../articles/application-insights/app-insights-api-custom-events-metrics.md#properties)と[メトリック](../articles/application-insights/app-insights-api-custom-events-metrics.md#properties)<sup>2</sup> 名の数 | 200 | 
@@ -23,6 +24,6 @@
 
 [Application Insights の価格とクォータについて](../articles/application-insights/app-insights-pricing.md)
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

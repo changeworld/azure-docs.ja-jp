@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;mausher;kevin;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff2d30fcf53028754fc5e1a4b6b52323855a48b4
+ms.sourcegitcommit: 6241eb0e7ea091dffcb0ae770f8d89f24a19eb67
+ms.openlocfilehash: ff2f688d42924edb1596cb2db474a58748f2b44c
 
 
 ---
@@ -25,7 +25,7 @@ Azure SQL Data Warehouse は、クラウドベースのスケールアウト デ
 
 SQL Data Warehouse では、次の処理が行われます。
 
-* SQL Server リレーショナル データベースを、Azure クラウド スケールアウト機能と組み合わせます。 コンピューティングの増加、減少、一時停止、再開を数秒で行うことができます。 必要なときに CPU をスケールアウトし、非ピーク時には使用量を低減させることで、コストを削減できます。
+* SQL Server リレーショナル データベースを、Azure クラウド スケールアウト機能と組み合わせます。 コンピューティングの増加、減少、一時停止、再開を数分から数秒で行うことができます。 必要なときに CPU をスケールアウトし、非ピーク時には使用量を低減させることで、コストを削減できます。
 * Azure プラットフォームを活用します。 デプロイが簡単で、シームレスに管理できます。自動バックアップのおかげで、完全なフォールト トレランスを実現できます。
 * SQL Server エコシステムを補完します。 使い慣れた SQL Server Transact-SQL (T-SQL) と各種ツールを使って開発を行うことができます。
 
@@ -96,21 +96,21 @@ SQL Data Warehouse は SQL Server リレーショナル データベース エ�
 
 * SQL Data Warehouse では、多くの操作で T-SQL 構文を使用します。 また、従来の広範な SQL コンストラクト セット (ストアド プロシージャ、ユーザー定義関数、テーブルのパーティション分割、インデックス、照合順序など) もサポートされています。
 * SQL Data Warehouse には、クラスター化 **列ストア** インデックス、PolyBase 統合、データ監査 (脅威の評価による) など、最新の SQL Server 機能も複数用意されています。
-* データ ウェアハウス ワークロードであまり一般的でないか、SQL Server にとって新しい特定の T-SQL 言語要素は、現時点では利用できない場合があります。 詳細については、[移行に関するドキュメント][移行に関するドキュメント]を参照してください。
+* データ ウェアハウス ワークロードであまり一般的でないか、SQL Server にとって新しい特定の T-SQL 言語要素は、現時点では利用できない場合があります。 詳細については、[移行に関するドキュメント][Migration documentation]を参照してください。
 
 Transact-SQL と、SQL Server、SQL Data Warehouse、SQL Database、および Analytics Platform System 間の共通する機能を使用して、データのニーズに合ったソリューションを作成できます。 パフォーマンス、セキュリティ、およびスケール要件に基づいて、データを保持する場所を決定し、必要に応じてデータをさまざまなシステム間で転送することができます。
 
 ## <a name="data-protection"></a>データ保護
-SQL Data Warehouse は、Azure Premium のローカル冗長ストレージにすべてのデータを格納します。 複数の同期されたデータ コピーがローカル データ センターに保持され、ローカルで障害が発生した場合には透過的なデータ保護が保証されます。 さらに、SQL Data Warehouse では、Azure Storage Snapshots を使用して、アクティブな (一時停止されていない) データベースが定期的に自動でバックアップされます。 バックアップと復元のしくみについては、[バックアップと復元の概要][バックアップと復元の概要]に関するページを参照してください。
+SQL Data Warehouse は、Azure Premium のローカル冗長ストレージにすべてのデータを格納します。 複数の同期されたデータ コピーがローカル データ センターに保持され、ローカルで障害が発生した場合には透過的なデータ保護が保証されます。 さらに、SQL Data Warehouse では、Azure Storage Snapshots を使用して、アクティブな (一時停止されていない) データベースが定期的に自動でバックアップされます。 バックアップと復元のしくみについては、[バックアップと復元の概要][Backup and restore overview]に関するページを参照してください。
 
 ## <a name="integrated-with-microsoft-tools"></a>Microsoft のツールとの統合
 また、SQL Data Warehouse には、SQL Server ユーザーが使い慣れている多くのツールが統合されています。 学習した内容は次のとおりです。
 
 **従来の SQL Server ツール:** SQL Data Warehouse は、SQL Server Analysis Services、Integration Services、Reporting Services と完全に統合されています。
 
-**クラウドベースのツール:** SQL Data Warehouse は、Data Factory、Stream Analytics、Machine Learning、Power BI など、Azure の新しい各種ツールと共に使用できます。 詳細な一覧については、[統合されているツールの概要][統合されているツールの概要]に関するページを参照してください。
+**クラウドベースのツール:** SQL Data Warehouse は、Data Factory、Stream Analytics、Machine Learning、Power BI など、Azure の新しい各種ツールと共に使用できます。 詳細な一覧については、[統合されているツールの概要][Integrated tools overview]に関するページを参照してください。
 
-**サード パーティ製のツール:** 多数のサード パーティ ツール プロバイダーが自社のツールと SQL Data Warehouse との統合を認定しています。 完全な一覧については、[SQL Data Warehouse ソリューション パートナー][SQL Data Warehouse ソリューション パートナー]に関するページを参照してください。
+**サード パーティ製のツール:** 多数のサード パーティ ツール プロバイダーが自社のツールと SQL Data Warehouse との統合を認定しています。 完全な一覧については、[SQL Data Warehouse ソリューション パートナー][SQL Data Warehouse solution partners]に関するページを参照してください。
 
 ## <a name="hybrid-data-sources-scenarios"></a>ハイブリッド データ ソースのシナリオ
 SQL Data Warehouse と PolyBase を併用することで、ユーザーは従来とは異なる方法でエコシステム全体でデータを移動できるようになります。非リレーショナル データ ソースとオンプレミス データ ソースを使用して高度なハイブリッド シナリオをセットアップできます。
@@ -122,10 +122,10 @@ Polybase では、使い慣れている T-SQL コマンドを使用してさま�
 * PolyBase は、HD Insight クラスターのストレージとしても使われている Blob Storage にアクセスするのに使用できます。 これにより、リレーショナル ツールと非リレーショナル ツールを使用して同じデータにアクセスできます。
 
 ## <a name="sla"></a>SLA
-SQL Data Warehouse には、Microsoft Online Services の SLA の一部として、製品レベルのサービス レベル アグリーメント (SLA) が用意されています。 詳細については、「[SQL Data Warehouse の SLA][SQL Data Warehouse の SLA]」を参照してください。 その他すべての製品の SLA については、Azure の[サービス レベル アグリーメント]のページにアクセスするか、[ボリューム ライセンス][ボリューム ライセンス]のページからダウンロードしてください。 
+SQL Data Warehouse には、Microsoft Online Services の SLA の一部として、製品レベルのサービス レベル アグリーメント (SLA) が用意されています。 詳細については、「[SQL Data Warehouse の SLA][SLA for SQL Data Warehouse]」を参照してください。 その他すべての製品の SLA については、Azure の[サービス レベル アグリーメント]のページにアクセスするか、[ボリューム ライセンス][Volume Licensing]のページからダウンロードしてください。 
 
 ## <a name="next-steps"></a>次のステップ
-SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][SQL Data Warehouse の作成]し、[サンプル データを読み込む][サンプル データを読み込む]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure 用語集]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
+SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][create a SQL Data Warehouse]し、[サンプル データを読み込む][load sample data]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure glossary]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
 
 * [顧客の成功事例]
 * [ブログ]
@@ -142,13 +142,13 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 
 <!--Article references-->
 [サポート チケットを作成する]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[サンプル データを読み込む]: ./sql-data-warehouse-load-sample-databases.md
-[SQL Data Warehouse の作成]: ./sql-data-warehouse-get-started-provision.md
-[移行に関するドキュメント]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse ソリューション パートナー]: ./sql-data-warehouse-partner-business-intelligence.md
-[統合されているツールの概要]: ./sql-data-warehouse-overview-integrate.md
-[バックアップと復元の概要]: ./sql-data-warehouse-restore-database-overview.md
-[Azure 用語集]: ../azure-glossary-cloud-terminology.md
+[load sample data]: ./sql-data-warehouse-load-sample-databases.md
+[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
+[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
+[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
+[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
+[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md
 
 <!--MSDN references-->
 
@@ -161,12 +161,12 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 [Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SQL Data Warehouse の SLA]: https://azure.microsoft.com/en-us/support/legal/sla/sql-data-warehouse/v1_0/
-[ボリューム ライセンス]: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
+[SLA for SQL Data Warehouse]: https://azure.microsoft.com/en-us/support/legal/sla/sql-data-warehouse/v1_0/
+[Volume Licensing]: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [サービス レベル アグリーメント]: https://azure.microsoft.com/en-us/support/legal/sla/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 
