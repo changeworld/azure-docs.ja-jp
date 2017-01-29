@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 531927178699d6534c37dca6616fe8fdaa19e5fe
 
 
 ---
@@ -114,7 +114,7 @@ ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
 * **概要** - アプリの概要ブレードに戻ります。
 * **アクティビティ ログ** - アラートと Azure 管理イベントです。
 * [**アクセス制御**](app-insights-resources-roles-access-control.md) - チーム メンバーと他のユーザーにアクセスを提供します。
-* [**タグ**](../resource-group-using-tags.md) - タグを使用して、自分のアプリと他のアプリをグループ化します。
+* [**タグ**](../azure-resource-manager/resource-group-using-tags.md) - タグを使用して、自分のアプリと他のアプリをグループ化します。
 
 調査
 
@@ -141,7 +141,7 @@ ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
 
 設定
 
-* [**ロック**](../resource-group-lock-resources.md) - Azure リソースをロックします。
+* [**ロック**](../azure-resource-manager/resource-group-lock-resources.md) - Azure リソースをロックします。
 * [**Automation スクリプト**](app-insights-powershell.md) - 新しいリソースを作成する際にテンプレートとして使用できるように、Azure リソースの定義をエクスポートします。
 
 サポート
@@ -157,6 +157,6 @@ ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

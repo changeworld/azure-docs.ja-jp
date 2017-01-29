@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3ee46dc265669d3520677b474181c9c7c720644c
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: eae360dd3e627a82986cef32ef39860f60ffe51f
 
 
 ---
@@ -33,13 +33,13 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
   > .NET または Java Sdk を使用して Media Services に接続する場合は、Media Services に対して何らかのアクションの実行を試行するたびに、API バージョンが指定されます。
   > 
   > 
-* 未定義のプロパティが指定されています。 プロパティ名は、エラー メッセージ内にあります。 特定のエンティティのメンバーであるプロパティのみを指定することができます。 エンティティとそのプロパティの一覧については、「[Azure Media Services REST API リファレンス](http://msdn.microsoft.com/library/azure/hh973617.aspx)」を参照してください。
+* 未定義のプロパティが指定されています。 プロパティ名は、エラー メッセージ内にあります。 特定のエンティティのメンバーであるプロパティのみを指定することができます。 エンティティとそのプロパティの一覧については、「[Azure Media Services REST API リファレンス](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)」を参照してください。
 * 無効なプロパティ値が指定されています。 プロパティ名は、エラー メッセージ内にあります。 有効なプロパティ タイプと値については、以前のリンクを参照してください。
 * プロパティ値が欠落しているので、必要です。
 * 指定された URL の一部には、無効な値が含まれています。
 * WriteOnce プロパティの更新が試行されました。
 * 指定されなかったか特定できなかったプライマリ AssetFile を使用して、入力資産のジョブの作成が試行されました。
-* SAS ロケーターの更新が試行されました。 SAS ロケーターの作成または削除のみできます。 ストリーミング ロケーターを更新できます。 詳細については、「[ロケーター](http://msdn.microsoft.com/library/azure/hh974308.aspx)」を参照してください。
+* SAS ロケーターの更新が試行されました。 SAS ロケーターの作成または削除のみできます。 ストリーミング ロケーターを更新できます。 詳細については、「[ロケーター](https://docs.microsoft.com/rest/api/media/operations/locator)」を参照してください。
 * サポートされていない操作またはクエリが送信されました。
 
 ## <a name="401-unauthorized"></a>401 権限がありません
@@ -127,6 +127,6 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -12,18 +12,18 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 01/06/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
-ms.openlocfilehash: a58aa47c21b34f3b54877bb12ceb1b6e20953ea7
+ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
+ms.openlocfilehash: 20af9a9bfa1086d13a770e4cd7cd8c58a8060b0b
 
 
 ---
 # <a name="create-a-web-app-plus-redis-cache-using-a-template"></a>テンプレートを使用し、Web アプリと Redis Cache を作成する
 このトピックでは、Azure Web アプリと Redis Cache をデプロイする Azure リソース マネージャーのテンプレートを作成する方法について説明します。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
+テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
 完全なテンプレートについては、「 [Web アプリと Redis Cache のテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json)」を参照してください。
 
@@ -128,6 +128,6 @@ Redis Cache との連動を可能にするアプリ設定プロパティで Web 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: milanga;cenkdin;juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 63669ba827771c75937568276f32b130980f3f65
-ms.openlocfilehash: e236c31e7fbce304ceaa069235b23efb180fb111
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 8321f677d344109e35da3d8ba1109d8bece70db1
 
 
 ---
@@ -43,7 +43,7 @@ Media Services を更新してセカンダリ ストレージ アクセス キ�
 * Azure Portal を使用します。 名前とキーの値を検索するには、Azure Portal に移動してアカウントを選択します。 [設定] ウィンドウが右側に表示されます。 [設定] ウィンドウで、[キー] を選択します。 Media Services で同期するストレージ キーに応じて、同期するキーをプライマリ キーとセカンダリ キーのどちらかに指定します。 この例では、セカンダリ キーを使用します。
 * Media Services Management REST API を使用します。
 
-次のコード例は、指定したストレージ キーを Media Services と同期するために、https://endpoint/*subscriptionId*/services/mediaservices/Accounts/*accountName*/StorageAccounts/*storageAccountName*/Key 要求を作成する方法を示しています。 この例では、セカンダリ ストレージ キーの値が使用されます。 詳細については、「 [方法: Media Services Management REST API の使用](http://msdn.microsoft.com/library/azure/dn167656.aspx)」を参照してください。
+次のコード例は、指定したストレージ キーを Media Services と同期するために、https://endpoint/*subscriptionId*/services/mediaservices/Accounts/*accountName*/StorageAccounts/*storageAccountName*/Key 要求を作成する方法を示しています。 この例では、セカンダリ ストレージ キーの値が使用されます。 詳細については、「 [方法: Media Services Management REST API の使用](https://docs.microsoft.com/rest/api/media/management/how-to-use-media-services-management-rest-api)」を参照してください。
 
     public void UpdateMediaServicesWithStorageAccountKey(string mediaServicesAccount, string storageAccountName, string storageAccountKey)
     {
@@ -165,6 +165,6 @@ SAS ロケーターを更新 (または再作成) するときに、URL は常�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

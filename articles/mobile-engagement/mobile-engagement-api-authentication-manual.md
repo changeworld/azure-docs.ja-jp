@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 458140eb9491950a8cbd04a2702da5d7ac637129
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 9d6132e1a01be489b8e8e28a0219cf8a0b50b318
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 458140eb9491950a8cbd04a2702da5d7ac637129
 これは、「 [Azure Mobile Engagement - 認証への API の使用](mobile-engagement-api-authentication.md)」の付録のドキュメントです。 このドキュメントを先に読み、内容を把握してください。 このドキュメントでは、Azure ポータルを使用して Mobile Engagement REST API の認証を設定するために 1 回限りの設定を行う代替の方法について説明します。 
 
 > [!NOTE]
-> 以下の手順はこの [Active Directory ガイド](../resource-group-create-service-principal-portal.md) に基づいており、Mobile Engagement API の認証に必要なものに対応してカスタマイズしています。 そのため、以下の手順を詳しく理解したい場合は、このガイドを参照してください。 
+> 以下の手順はこの [Active Directory ガイド](../azure-resource-manager/resource-group-create-service-principal-portal.md) に基づいており、Mobile Engagement API の認証に必要なものに対応してカスタマイズしています。 そのため、以下の手順を詳しく理解したい場合は、このガイドを参照してください。 
 > 
 > 
 
@@ -46,7 +46,7 @@ ms.openlocfilehash: 458140eb9491950a8cbd04a2702da5d7ac637129
 5. **[追加]**をクリックします。 
    
      ![アプリケーションの追加][4]
-6.  **[組織で開発中のアプリケーションを追加]**
+6. **[組織で開発中のアプリケーションを追加]**
    
      ![新規アプリケーション][5]
 7. アプリケーションの名前を入力し、アプリケーションの種類を **[WEB アプリケーションや WEB API]** として選択し、[次へ] ボタンをクリックします。
@@ -94,10 +94,10 @@ ms.openlocfilehash: 458140eb9491950a8cbd04a2702da5d7ac637129
 20. [設定] ブレードの **[ユーザー]** をクリックし、**[追加]** をクリックして、ユーザーを追加します。 
     
     ![][17]
-21.  **[ロールの選択]**
+21. **[ロールの選択]**
     
     ![][18]
-22.  **[所有者]**
+22. **[所有者]**
     
     ![][19]
 23. 検索ボックスで、アプリケーションの名前 **AD\_APP\_NAME** を検索します。 既定では、これは表示されません。 見つかったら、それを選択し、ブレードの下部の **[選択]** をクリックします。 
@@ -137,6 +137,6 @@ ms.openlocfilehash: 458140eb9491950a8cbd04a2702da5d7ac637129
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

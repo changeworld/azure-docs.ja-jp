@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b67594033bfa89fc6ff8d80dd064d766c4048a3b
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 09c4c9d43d6e29872ed6484b27334c8e9aa428b5
 
 
 ---
@@ -43,6 +43,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 >
 
 ## <a name="requirements-and-considerations"></a>要件と考慮事項
+
 * AMS を使用して FairPlay で暗号化された HLS を配信し、FairPlay ライセンスを配信するには、次のものが必要です。
 
   * Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
@@ -162,8 +163,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
                 <add key="Audience" value="urn:test"/>
               </appSettings>
         </configuration>
-5. コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。 詳細については、「 [ストリーミング エンドポイントの構成](media-services-dotnet-get-started.md#configure-streaming-endpoints-using-the-azure-portal)」を参照してください。
-6. Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
+7. Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
 
         using System;
         using System.Collections.Generic;
@@ -566,6 +566,6 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 
