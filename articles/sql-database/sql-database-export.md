@@ -3,20 +3,21 @@ title: "Azure ポータルを使用して BACPAC ファイルに Azure SQL Datab
 description: "Azure Portal を使用して BACPAC ファイルに Azure SQL Database をアーカイブする"
 services: sql-database
 documentationcenter: 
-author: stevestein
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: 41d63a97-37db-4e40-b652-77c2fd1c09b7
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
-ms.date: 08/15/2016
-ms.author: sstein
+ms.date: 12/20/2016
+ms.author: sstein;carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 035a4b394c446d3b92e17ec6d938690504f463c5
-ms.openlocfilehash: 8fbc4febad665d66c857876eb60f0165c5fc5c8e
+ms.sourcegitcommit: df14225e6c2a1b9bf83623df172b9be9b5777add
+ms.openlocfilehash: 33699b00d50c623661292e5a9b21a97726c47611
 
 
 ---
@@ -32,7 +33,11 @@ ms.openlocfilehash: 8fbc4febad665d66c857876eb60f0165c5fc5c8e
 
 Azure SQL Database のアーカイブを作成する必要がある場合は、BACPAC ファイルにデータベース スキーマとデータをエクスポートできます。 BACPAC ファイルは、単に BACPAC の拡張子を持つ ZIP ファイルです。 BACPAC ファイルは、後で Azure Blob Storage またはオンプレミスの場所にあるローカル ストレージに格納することや、後で Azure SQL Database またはオンプレミス SQL Server インストールに戻ってインポートすることができます。 
 
-***考慮事項***
+> [!IMPORTANT]
+> Azure SQL Database の自動エクスポート機能は現在プレビュー段階であり、2017 年 3 月 1 日に廃止されます。 2016 年 12 月 1 日から、SQL データベースの自動エクスポートを構成することはできなくなります。 既存のエクスポート ジョブは、引き続き 2017 年 3 月 1 日まで実行されます。 2016 年 12 月 1 日以降は、[長期のバックアップ リテンション期間](sql-database-long-term-retention.md)または [Azure Automation](../automation/automation-intro.md) を使用してください。PowerShell を使用して、選択したスケジュールに従って定期的に SQL データベースをアーカイブできます。 サンプル スクリプトは [GitHub からダウンロード](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export)できます。 
+>
+
+## <a name="considerations"></a>考慮事項
 
 * アーカイブにトランザクション一貫性を持たせるために、書き込みアクティビティがエクスポート中に行われないようにするか、または Azure SQL Database の [トランザクション一貫性のあるコピー](sql-database-copy.md) からエクスポートする必要があります。
 * Azure Blob Storage にアーカイブできる BACPAC ファイルの最大サイズは 200 GB です。 より大きな BACPAC ファイルをローカル ストレージにアーカイブするには、 [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) コマンドプロンプト ユーティリティを使用します。 このユーティリティは、Visual Studio と SQL Server の両方に含まれます。 SQL Server Data Tools の最新版を [ダウンロード](https://msdn.microsoft.com/library/mt204009.aspx) し、このユーティリティを入手することもできます。
@@ -43,8 +48,7 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
   * すべての大きなテーブルに null 以外の値を持つ [クラスター化インデックス](https://msdn.microsoft.com/library/ms190457.aspx) を使用する。 クラスター化インデックスがないと、エクスポートが 6 ～ 12 時間よりも時間が長くかかる場合には失敗することがあります。 これは、エクスポート サービスがテーブル スキャンを実行してテーブル全体をエクスポートしようとする必要があることが原因です。 テーブルがエクスポート向けに最適化されているかを判断するための適切な方法として、**DBCC SHOW_STATISTICS** を実行し、*RANGE_HI_KEY* が null 以外の値であり、分布が適切であることを確認する方法があります。 詳細については、「[DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)」を参照してください。
 
 > [!NOTE]
-> BACPAC はバックアップおよび復元操作に使用するためのものでありません。 Azure SQL Database では、すべてのユーザー データベースのバックアップが自動的に作成されます。 詳細については、「 [ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
-> 
+> BACPAC はバックアップおよび復元操作に使用するためのものでありません。 Azure SQL Database では、すべてのユーザー データベースのバックアップが自動的に作成されます。 詳細については、「 [ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。  
 > 
 
 この記事を完了するには、以下が必要です。
@@ -57,7 +61,7 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 エクスポートするデータベースの [SQL Database] ブレードを開きます。
 
 > [!IMPORTANT]
-> トランザクションに関する BACPAC ファイルの一貫性を保証するには、最初に [データベースのコピーを作成](sql-database-copy.md) してエクスポートする必要があります。 
+> トランザクションに関する BACPAC ファイルの一貫性を保証するには、最初に[データベースのコピーを作成](sql-database-copy.md)してエクスポートする必要があります。 
 > 
 > 
 
@@ -72,7 +76,7 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
    ![[データベースのエクスポート]][2]
 6. 認証の種類を選択します。 
 7. エクスポートするデータベースを含む Azure SQL Server の適切な認証資格情報を入力します。
-8. **[OK]** をクリックしてデータベースをアーカイブします。 **[OK]** をクリックすると、データベースのエクスポート要求が作成され、それがサービスに送信されます。 エクスポートの所要時間の長さは、サイズ、データベースの複雑さ、およびサービス レベルによって異なります。 通知を受信します。
+8. **[OK]** をクリックしてデータベースをアーカイブします。 **[OK]** をクリックすると、データベースのエクスポート要求が作成され、それがサービスに送信されます。 エクスポートの所要時間の長さは、サイズ、データベースの複雑さ、およびサービス レベルによって異なります。 受信した通知を確認します。
    
    ![通知のエクスポート][3]
 
@@ -105,6 +109,6 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

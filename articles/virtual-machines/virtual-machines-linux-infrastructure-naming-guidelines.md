@@ -1,5 +1,5 @@
 ---
-title: "インフラストラクチャの名前付けガイドライン | Microsoft Docs"
+title: "Azure インフラストラクチャの名前付けガイドライン | Microsoft Docs"
 description: "Azure インフラストラクチャ サービスでの名前付けに関する主要な設計と実装のガイドラインについて説明します。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8eaca7d1f942af7b36891f7ee0d9a455283bfc36
+ms.sourcegitcommit: a99ab839ec9ade0049e1cc59054e333048e0208c
+ms.openlocfilehash: 16447489a2923851a0f404c247d7b8132d68fe4c
 
 
 ---
-# <a name="infrastructure-naming-guidelines"></a>インフラストラクチャの名前付けガイドライン
+# <a name="azure-infrastructure-naming-guidelines"></a>Azure インフラストラクチャの名前付けのガイドライン
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 この記事は、お使いの環境で論理的かつ簡単に識別できる一連のリソースを構築するための、Azure のすべてのリソースに対する名前付け規則について説明します。
@@ -95,7 +95,7 @@ Azure で作成作業を始める前に、適切な名前付け規則を用意�
 Azure VM の名前と、基になるオペレーティング システムのコンピューター名を同じにすることをお勧めします。
 
 ## <a name="storage-account-names"></a>ストレージ アカウント名
-ストレージ アカウン名の管理には特別な規則があります。 小文字と数字のみを使用できます。 詳細については、「 [ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。 また、ストレージ アカウント名は、core.windows.net と組み合わせ、グローバルで有効な一意の DNS 名にする必要があります。 たとえば、ストレージ アカウントの名前が「mystorageaccount」の場合、次の DNS 名が一意となります。
+ストレージ アカウン名の管理には特別な規則があります。 小文字と数字のみを使用できます。 詳しくは、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。 また、ストレージ アカウント名は、core.windows.net と組み合わせ、グローバルで有効な一意の DNS 名にする必要があります。 たとえば、ストレージ アカウントの名前が「mystorageaccount」の場合、次の DNS 名が一意となります。
 
 * mystorageaccount.blob.core.windows.net
 * mystorageaccount.table.core.windows.net
@@ -107,6 +107,6 @@ Azure VM の名前と、基になるオペレーティング システムのコ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

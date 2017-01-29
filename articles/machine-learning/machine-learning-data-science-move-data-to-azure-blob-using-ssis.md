@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: a67f2e77d3bc7da35a03b68d7f32fd3a2a42bfcd
-ms.openlocfilehash: f650555f5ca00ca44426e4d863dd2cf01f14d89c
+ms.sourcegitcommit: 179cac8856cd42cfad4a4d4aaa6301afb2c58329
+ms.openlocfilehash: 6d802148cec5b12004d1d374485f56af8eae64f8
 
 
 ---
-# <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS コネクタを使用して Azure BLOB ストレージとの間でデータを移動する
+# <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS コネクタを使用して Azure Blob Storage 間でデータを移動する
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) には、Azure への接続、Azure とオンプレミスのデータ ソースとの間でのデータ転送、Azure に格納したデータの処理に必要なコンポーネントが用意されています。
 
 [!INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
@@ -66,7 +66,7 @@ SSIS 機能パックを使用して、データをオンプレミスから Azure
 
 タスクで使用されるパラメーターについて、ここで説明します。
 
-| フィールド | Description |
+| フィールド | 説明 |
 | --- | --- |
 | **AzureStorageConnection** |既存の Azure Storage 接続マネージャーを指定するか、BLOB ファイルがホストされる場所を指す Azure ストレージ アカウントを参照する、新しい Azure Storage 接続マネージャーを作成します。 |
 | **BlobContainer** |アップロードしたファイルを BLOB として保持する BLOB コンテナーの名前を指定します。 |
@@ -84,7 +84,7 @@ SSIS 機能パックを使用して、データをオンプレミスから Azure
 SSIS を使用して Azure BLOB ストレージからオンプレミスのストレージにデータをダウンロードするには、 [Azure BLOB アップロード タスク](https://msdn.microsoft.com/library/mt146779.aspx)のインスタンスを使用します。
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>さらに高度な SSIS と Azure のシナリオ
-SSIS 機能パックでは、複数のタスクを 1 つにパッケージ化することで、さらに複雑なフローを処理することができます。 たとえば、BLOB データを HDInsight クラスターに直接フィードし、HDInsight クラスターの出力を BLOB にダウンロードしてから、さらにオンプレミス ストレージにダウンロードすることができます。 SSIS は、追加の SSIS コネクタを使用することで、HDInsight クラスター上で Hive ジョブおよび Pig ジョブを実行できます。
+SSIS 機能パックでは、複数のタスクを 1 つにパッケージ化することで、さらに複雑なフローを処理できます。 たとえば、BLOB データを HDInsight クラスターに直接フィードし、HDInsight クラスターの出力を BLOB にダウンロードしてから、さらにオンプレミス ストレージにダウンロードすることができます。 SSIS は、追加の SSIS コネクタを使用することで、HDInsight クラスター上で Hive ジョブおよび Pig ジョブを実行できます。
 
 * SSIS を使用して Azure HDInsight クラスター上で Hive スクリプトを実行するには、 [Azure HDInsight Hive タスク](https://msdn.microsoft.com/library/mt146771.aspx)を使用します。
 * SSIS を使用して Azure HDInsight クラスター上で Pig スクリプトを実行するには、 [Azure HDInsight Pig タスク](https://msdn.microsoft.com/library/mt146781.aspx)を使用します。
@@ -92,6 +92,6 @@ SSIS 機能パックでは、複数のタスクを 1 つにパッケージ化す
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -16,14 +16,27 @@ ms.workload: azure-government
 ms.date: 10/13/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: 004860b319b7b32955415ac2d6c7308c32037848
-ms.openlocfilehash: 36312ce195e931d174e00d54cab4cb071a85b618
+ms.sourcegitcommit: e9287ab74e9bed8681b66fa9a168c8d7c403c63b
+ms.openlocfilehash: 8c9488e302540ca0c67926f6aa6fad591c6ce037
 
 
 ---
 # <a name="azure-government-storage"></a>Azure Government ストレージ
 ## <a name="azure-storage"></a>Azure Storage (Azure Storage)
 このサービスとその使用方法について詳しくは、[Azure Storage のパブリック ドキュメント](../storage/index.md)をご覧ください。
+
+### <a name="storage-service-availability-by-azure-government-region"></a>Azure Government リージョン別ストレージ サービスの可用性
+
+| サービス | 米国政府バージニア州 | 米国政府アイオワ州 | メモ
+| --- | --- | --- | --- |
+| [Blob Storage] (../storage/storage-introduction.md#blob-storage) |一般公開 |一般公開 |
+| [Table Storage] (../storage/storage-introduction.md#table-storage) |一般公開  |一般公開 |
+| [Queue Storage] (../storage/storage-introduction.md#queue-storage) |一般公開 | 一般公開 |
+| [File Storage] (../storage/storage-introduction.md#file-storage) |一般公開 |一般公開 |
+| [Hot/Cool Blob Storage] (../storage/storage-blob-storage-tiers.md) |該当なし |該当なし |
+| [ストレージ サービスの暗号化] (../storage/storage-service-encryption.md) |一般公開 |一般公開 |
+| [Premium Storage] (../storage/storage-premium-storage.md) |一般公開 |該当なし | DS シリーズの Virtual Machines を含みます。 |
+| [BLOB のインポート/エクスポート] (../storage/storage-import-export-service.md) |一般公開 |一般公開 | 現時点ではクラシック ストレージ アカウントのみサポートされています。 |
 
 ### <a name="variations"></a>バリエーション
 Azure Government では、ストレージ アカウントの URL が異なります。
@@ -33,6 +46,7 @@ Azure Government では、ストレージ アカウントの URL が異なりま
 | BLOB ストレージ |*.blob.core.windows.net |*.blob.core.usgovcloudapi.net |
 | キュー ストレージ |*.queue.core.windows.net |*.queue.core.usgovcloudapi.net |
 | Table Storage |*.table.core.windows.net |*.table.core.usgovcloudapi.net |
+| File Storage |*.file.core.windows.net |*.file.core.usgovcloudapi.net | 
 
 > [!NOTE]
 > スクリプトやコードでは必ず、適切なエンドポイントを考慮する必要があります。  「[Azure Storage の接続文字列を構成する](../storage/storage-configure-connection-string.md)」を参照してください。 
@@ -43,6 +57,17 @@ API の詳細については、<a href="https://msdn.microsoft.com/en-us/library
 
 これらのオーバーロードに使用するエンドポイント サフィックスは、core.usgovcloudapi.net です。
 
+> [!NOTE]
+> [Microsoft Azure Storage Explorer] (../vs-azure-tools-storage-manage-with-storage-explorer.md) は、現時点では、Azure Government へのアカウントの追加による [サブスクリプションへの接続] (../vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-an-azure-subscription) はサポートしていません。 その他の [ストレージ アカウントへの接続] (../vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service) 方法を使用してください。
+[外部ストレージ アカウントに接続する] (../vs-azure-tools-storage-manage-with-storage-explorer.md#attach-to-an-external-storage-account) 場合は、**手順 3** で、ストレージ エンドポイント ドメインとして **[その他 (以下に指定してください)]** を選択し、Azure Government 用の「**core.usgovcloudapi.net**」を指定します。
+>
+>
+
+> [!NOTE]
+> エラー 53 "ネットワーク パスが見つかりませんでした。" が返された ([ファイル共有のマウント中] (../storage/storage-dotnet-how-to-use-files.md#mount-the-file-share)) 場合は、 ファイアウォールによって送信ポートがブロックされている可能性があります。 ストレージ アカウントと同じ Azure サブスクリプション内の VM でのファイル共有のマウントを試してください。
+>
+>
+
 ### <a name="considerations"></a>考慮事項
 以下の情報は、Azure Storage に関する Azure Government の機能領域について記述したものです。
 
@@ -50,20 +75,11 @@ API の詳細については、<a href="https://msdn.microsoft.com/en-us/library
 | --- | --- |
 | Azure Storage 製品内で入力、保存、処理されるデータには、輸出規制対象データが含まれていてもかまいません。 静的な認証コード (Azure のプラットフォーム コンポーネントにアクセスするためのパスワード、スマートカードの PIN など)。 Azure のプラットフォーム コンポーネントを管理する際に使用する証明書の秘密キー。 その他、Azure サービスに格納される各種セキュリティ情報/シークレット (証明書、暗号化キー、マスター キー、ストレージ キーなど)。 |Azure Storage のメタデータに、輸出規制対象データを含めることは許可されません。 このメタデータには、ストレージ製品を作成したり管理したりする際に入力するあらゆる構成データが含まれます。  リソース グループ、デプロイ名、リソース名、リソース タグの各フィールドには規制対象データを入力しないでください。 |
 
-## <a name="premium-storage"></a>Premium Storage
-このサービスとその使用方法について詳しくは、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」をご覧ください。
-
-### <a name="variations"></a>バリエーション
-Premium Storage は、米国政府バージニア州で一般提供中となっています。 これには、DS シリーズの仮想マシンが含まれます。
-
-### <a name="considerations"></a>考慮事項
-ストレージ データに関して上に挙げた考慮事項は、Premium ストレージ アカウントにも適用されます。
-
 ## <a name="next-steps"></a>次のステップ
 補足情報と最新情報については、<a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government ブログ</a>を講読してください。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

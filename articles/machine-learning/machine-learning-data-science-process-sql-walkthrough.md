@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: fashah;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e9ceeecb3a603cd029117e1b7003aed16628f04f
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: 76fe2f70ca297be153d1223a219c9a2b18203a96
 
 
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
-このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイする方法を説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
+このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
 
 ## <a name="a-namedatasetanyc-taxi-trips-dataset-description"></a><a name="dataset"></a>NYC タクシー乗車データセットの説明
 NYC タクシー乗車データは、約 20GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) です。1 億 7300 万以上の個々の乗車と、各乗車に支払われた料金で構成されています。 各旅行レコードには、pickup (乗車) と drop-off (降車) の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、および medallion (タクシーの一意の ID) 番号が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
@@ -266,7 +266,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 
 Azure Machine Learning に進む準備ができたら、次のいずれかを実行します。  
 
-1. データを抽出してサンプリングする最終的な SQL クエリを保存し、このクエリをコピーして直接 Azure Machine Learning の[データのインポート][import-data] モジュールに貼り付けます。 この方法は、「 [Azure Machine Learning でのモデルの作成](#mlmodel) 」セクションで説明しています。    
+1. データを抽出してサンプリングする最終的な SQL クエリを保存し、そのクエリをコピーして、直接 Azure Machine Learning の[データのインポート][import-data] モジュールに貼り付けます。 この方法は、「 [Azure Machine Learning でのモデルの作成](#mlmodel) 」セクションで説明しています。    
 2. 構築するモデルに使用する予定のサンプリング データとエンジニア リング データを新しいデータベースのテーブルに保持し、新しいテーブルを[データのインポート][import-data] モジュールで使用します。
 
 いくつかのデータの探索、データの視覚化、および特徴エンジニアリングの例を次に示します。 その他の例については、 **Sample IPython Notebooks** フォルダーにあるサンプルの SQL IPython Notebook を参照してください。
@@ -574,7 +574,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
 この演習では、SQL Server でデータの探索とエンジニアリングを既に実行し、Azure Machine Learning に取り込むサンプルのサイズを決定しました。 決定した 1 つ以上の予測モデルを作成するには、
 
-1. **[データの入力と出力]** セクションにある [データのインポート][import-data] モジュール を使用して、Azure Machine Learning にデータを取得します。 詳細については、[データのインポート][import-data] モジュールのリファレンスのページをご覧ください。
+1. **[データの入力と出力]** セクションにある [[データのインポート]][import-data] モジュール を使用して、Azure Machine Learning にデータを取得します。 詳細については、[データのインポート][import-data] モジュールのリファレンスのページをご覧ください。
    
     ![Azure Machine Learning の [データのインポート]][17]
 2. **[プロパティ]** パネルで、**Azure SQL Database** を**データ ソース**として選択します。
@@ -656,6 +656,6 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 
