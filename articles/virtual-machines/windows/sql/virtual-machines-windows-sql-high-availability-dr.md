@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/15/2016
-ms.author: MikeRayMSFT
+ms.author: mikeray
 translationtype: Human Translation
 ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
 ms.openlocfilehash: fbde757e44d05bf14f9337b47865edfb53894f10
