@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
-ms.author: cabailey
+ms.date: 11/30/2016
+ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d410dd8b7baf852212707d0fa9bffd6e45c23eff
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3de8751c58870fceee2575608982a5b36eca7478
 
 
 ---
@@ -77,7 +77,7 @@ Azure Key Vault の Bring Your Own Key (BYOK) の前提条件の一覧につい�
 ### <a name="step-11-install-azure-powershell"></a>手順 1.1: Azure PowerShell をインストールする
 インターネット接続ワークステーションから、Azure Key Vault を管理するためのコマンドレットを含む Azure PowerShell をダウンロードしてインストールします。 この作業には 0.8.13 以降のバージョンが必要です。
 
-インストール指示については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
+インストール指示については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>手順 1.2: Azure サブスクリプション ID を取得する
 Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。
@@ -94,76 +94,84 @@ Azure PowerShell ウィンドウを閉じないでください。
 Microsoft ダウンロード センターにアクセスし、自分の地域リージョンまたは Azure のインスタンスの [Azure Key Vault BYOK ツールセットをダウンロード](http://www.microsoft.com/download/details.aspx?id=45345) します。 以下の情報を利用して、ダウンロードするパッケージの名前とそれに対応する SHA-256 パッケージ ハッシュを特定してください。
 
 - - -
-**北米:**
+**米国:**
 
 KeyVault-BYOK-Tools-UnitedStates.zip
 
-305F44A78FEB750D1D478F6A0C345B097CD5551003302FA465C73D9497AB4A03
+760EE9BD6445C87CFF0E8B032577118704B3BEAA045AA55977C10EF68BC67E2B
 
 - - -
 **ヨーロッパ:**
 
 KeyVault-BYOK-Tools-Europe.zip
 
-C73BB0628B91471CA7F9ADFCE247561C6016A5103EF1A315D49C3EA23AFC0B9C
+7A64B94225F59B847C5C27C2200BAD7D16C901E1687767EDBBB8B09BB285011D
 
 - - -
 **アジア:**
 
 KeyVault-BYOK-Tools-AsiaPacific.zip
 
-BE9A84B6C76661929F9FDAD627005D892B3B8F9F19F351220BB4F9C356694192
+813DC94B23079CF7A5CEA71D5B444E86B292F463C53EE47AED25D4F7CD58E7D8
 
 - - -
 **ラテン アメリカ:**
 
 KeyVault-BYOK-Tools-LatinAmerica.zip
 
-9E8EE11972DECE8F05CD898AF64C070C375B387CED716FDCB788544AE27D3D23
+3F29069E3500F95C0E156F4B8914E1DC60C20FB64B464306A299EA5145D755C0
 
 - - -
 **日本:**
 
 KeyVault-BYOK-Tools-Japan.zip
 
-E6B88C111D972A02ABA3325F8969C4E36FD7565C467E9D7107635E3DDA11A8B2
+453FFEA2F8F410720B68B8BAC4CF79135A7F37F4E491FF840BE9E69E88A98C90
 
 - - -
 **オーストラリア:**
 
 KeyVault-BYOK-Tools-Australia.zip
 
-7660D7A675506737857B14F527232BE51DC269746590A4E5AB7D50EDD220675D
+4AD893396E86F2D2A71682876A6A8EA59E3C7895BEAD2F7E7C8516682582C34B
 
 - - -
 [**Azure Government:**](https://azure.microsoft.com/features/gov/)
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
-53801A3043B0F8B4A50E8DC01A935C2BFE61F94EE027445B65C52C1ACC2B5E80
+3AAE1A96B9D15B899B8126CFC0380719EB54FDF2EA94489B43FAD21ECC745F64
 
 - - -
 **カナダ:**
 
 KeyVault-BYOK-Tools-Canada.zip
 
-A42D9407B490E97693F8A5FA6B60DC1B06B1D1516EDAE7C9A71AA13E12CF1345
+30B87A0BA8208F6B7241C30C794FED1C370D7445ACA179685816E4E156CD2AF7
 
 - - -
 **ドイツ:**
 
 KeyVault-BYOK-Tools-Germany.zip
 
-4795DA855E027B2CA8A2FF1E7AE6F03F772836C7255AFC68E576410BDD28B48E
+5E3E4AA54715E4F93C3C145035B18275B7C6815A06D7ABB212E7FADBF2929261
 
 - - -
 **インド:**
 
 KeyVault-BYOK-Tools-India.zip
 
-26853511EB767A33CF6CD880E78588E9BBE04E619B17FBC77A6B00A5111E800C
+136733A6C6A71D75571BB80819B3D55A9B83CCAD5C996C686BC5682A3F369BF7
 
 - - -
+**英国:**
+
+KeyVault-BYOK-Tools-UnitedKingdom.zip
+
+ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
+
+- - -
+
 ダウンロードした BYOK ツールセットの整合性を検証するには、Azure PowerShell セッションから、 [Get FileHash](https://technet.microsoft.com/library/dn520872.aspx) コマンドレットを使用します。
 
     Get-FileHash KeyVault-BYOK-Tools-*.zip
@@ -403,6 +411,6 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

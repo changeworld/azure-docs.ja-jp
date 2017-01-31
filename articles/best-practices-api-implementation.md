@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/13/2016
 ms.author: masashin
 translationtype: Human Translation
-ms.sourcegitcommit: f5bdbd801107650f87993b395338adfb1b26d17e
-ms.openlocfilehash: f4ad13e7674f7af28b22f55dbbb76ccc5d5d26f8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ea75a14232c010ebea31273856f21cb0e02067a7
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: f4ad13e7674f7af28b22f55dbbb76ccc5d5d26f8
 
 このガイダンスの一部のトピックは審議中であり、今後変更される場合があります。 ご意見をお待ちしております。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 入念に設計された REST ベースの Web API では、リソース、関係、およびクライアント アプリケーションにアクセスできるナビゲーション スキームを定義します。 Web API を実装し、デプロイするときは、データの論理構造ではなく、Web API をホストする環境の物理的な要件と、Web API を構成する方法を検討する必要があります。 このガイダンスでは、Web API を実装し、Web API を公開してクライアント アプリケーションで使用できるようにするためのベスト プラクティスに重点を置いて説明します。 セキュリティ上の問題については、API セキュリティ ガイダンスで別途説明しています。 Web API の設計の詳細については、API 設計ガイダンスをご覧ください。
 
 ## <a name="considerations-for-implementing-a-restful-web-api"></a>REST ベースの Web API の実装に関する考慮事項
@@ -1150,6 +1150,6 @@ API Management サービスを使用して Web API を公開した場合、Micro
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

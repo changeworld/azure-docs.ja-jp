@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/20/2016
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 0d13f6ae1b68b27f54ce9ffb10454b35cc6cdf29
-ms.openlocfilehash: a897e725855aa6651898a58ef3830c22b8ae7621
+ms.sourcegitcommit: 635cc1300f25b7820a0abe4d6f3a6f9e4a2ce8c8
+ms.openlocfilehash: 44a14988119cc121b111718e1c03a788e819dbbe
 
 
 ---
@@ -138,6 +138,6 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

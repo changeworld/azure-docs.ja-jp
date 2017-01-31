@@ -1,19 +1,18 @@
 ---
 title: "Azure Government ITAR の概要 | Microsoft Docs"
 description: "Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: kydeeds
 manager: zakramer
-editor: 
 ms.assetid: e8c2c89e-d397-46f2-9b86-fd22049ffabf
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/05/2016
+ms.date: 11/14/2016
 ms.author: kydeeds
 translationtype: Human Translation
 ms.sourcegitcommit: 8a690fd5fd960053f2f4df6b4014643932a422a8

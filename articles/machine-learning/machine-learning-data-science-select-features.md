@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: zhangya;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6ec9a07a26f6c0cd100d963063304d96b75d71dd
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: a30620c8a6ec52fd9b3268c4c83f89181cf6d9f5
 
 
 ---
@@ -25,9 +25,7 @@ ms.openlocfilehash: 6ec9a07a26f6c0cd100d963063304d96b75d71dd
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-このトピックでは、特徴選択の目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。 例は、Azure Machine Learning Studio で描画しています。 
-
-特徴のエンジニアリングと選択は TDSP の一部です。TDSP の概要については、「[Team Data Science Process (TDSP) について](data-science-process-overview.md)」をご覧ください。 特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。
+特徴のエンジニアリングと選択は Team Data Science Process (TDSP) の一部です。TDSP の概要については、[Team Data Science Process ](data-science-process-overview.md) に関する記事を参照してください。 特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。
 
 * **特徴エンジニアリング**: このプロセスは、データ内の既存の生の特徴から、関連する特徴を作成し、学習アルゴリズムの予測力を高めようとします。
 * **特徴選択**: このプロセスは、トレーニング問題の次元を削減するために、元のデータの特徴のキーのサブセットを選択します。
@@ -60,7 +58,7 @@ Azure Machine Learning Studio には、特徴選択に提供されるモジュ�
 
 ![特徴選択の例](./media/machine-learning-data-science-select-features/feature-Selection3.png)
 
-この[フィルターに基づく特徴選択][filter-based-feature-selection]モジュールを適用すると、256 のうち 50 の特徴が選択されます。これらの特性は、"ピアソンの相関関係" スコアリング メソッドに基づいて、対象の属性 "Col1" を持つ最も関連性が高い特徴であるためです。
+この[フィルターに基づく特徴選択][filter-based-feature-selection]を適用すると、256 のうち 50 の特徴が選択されます。これらの特性は、"ピアソンの相関関係" スコアリング メソッドに基づいて、対象の属性 "Col1" を持つ最も関連性が高い特徴であるためです。
 
 ## <a name="conclusion"></a>まとめ
 特徴エンジニアリングと特徴選択は、2 つの一般的にエンジニアリングされ、選択された特徴です。データに含まれるキー情報の抽出を試みるトレーニング プロセスの効率を高めます。 また、入力データを正確に分類して、関心のある結果をより確実に予測するために、これらのモデルのパワーを向上させます。 特徴エンジニアリングと特徴選択は、学習を計算的により扱いやすくするために組み合わせることもできます。 これは、強化した後、モデルの調整やトレーニングに必要な特徴の数を減らすことによって行われます。 数学的に言うと、モデルのトレーニングに選択される特徴は、データのパターンを説明し、正常に結果を予測する独立変数の最小セットです。
@@ -75,6 +73,6 @@ Azure Machine Learning Studio には、特徴選択に提供されるモジュ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 60d3225f276b54e08946744838a5028a02666149
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a853b4dbd1952ba4ea8ee68ea3ca98f588bb71a2
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: 60d3225f276b54e08946744838a5028a02666149
 ## <a name="what-is-a-csdl-and-its-structure"></a>CSDL とその構造
 CSDL (Conceptual Schema Definition Language) は、Azure Marketplace に対して共通の XML 表現で Web サービスまたはデータベース サービスを記述する方法を定義した仕様です。
 
- **要求フロー**
+**要求フロー**
 
   `Client -> Azure Marketplace -> Content Provider’s Web Service (Get, Post, Delete, Put)`
 
@@ -321,6 +321,6 @@ CSDL は、Web サービスを記述するための XML 文法です。 CSDL の
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

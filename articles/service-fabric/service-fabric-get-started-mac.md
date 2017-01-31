@@ -65,8 +65,8 @@ Service Fabric は、OS X ではネイティブに実行されません。Micros
   
    この手順を実行すると、事前構成済みの VM イメージがダウンロードされてローカルで起動され、ローカル Service Fabric クラスターがセットアップされます。 この処理には数分かかります。 セットアップが正常に完了すると、クラスターが開始されていることを示すメッセージが出力に表示されます。
    
-
     ![Cluster setup starting following VM provisioning][cluster-setup-script]
+    
 5. クラスターが正しくセットアップされていることをテストするために、Service Fabric Explorer (http://192.168.50.50:19080/Explorer) に移動します (プライベート ネットワーク IP アドレスが既定値のままであると仮定しています)。
 
     ![Service Fabric Explorer viewed from the host Mac][sfx-mac]

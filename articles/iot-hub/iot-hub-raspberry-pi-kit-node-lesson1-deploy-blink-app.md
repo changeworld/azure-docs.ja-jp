@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: aee1ef8c4275f64865ff830739fc818d6bf02bd2
+ms.sourcegitcommit: 09554b64f31c909e413f5a93dfd6d74186bf6e21
+ms.openlocfilehash: b9e49d3637b3e3aff1a89e57c125a59877544e01
 
 
 ---
@@ -124,7 +124,7 @@ npm install
 お疲れさまでした。 Pi の最初のサンプル アプリケーションを正常に作成できました。
 
 ## <a name="deploy-and-run-the-sample-application"></a>サンプル アプリケーションのデプロイと実行
-### <a name="install-nodejs-and--on-pi"></a>Pi への Node.js と NPM のインストール
+### <a name="install-nodejs-and-npm-on-pi"></a>Pi への Node.js と NPM のインストール
 次のコマンドを実行して、Pi に Node.js と NPM をインストールします。
 
 ```bash
@@ -153,6 +153,6 @@ Pi を操作するために必要なツールをインストールし、Pi に�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

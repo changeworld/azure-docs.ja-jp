@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: a425de26cacc9525d0dc9a6842b5060f8c37a462
+ms.sourcegitcommit: c5e80c3cd3caac07e250d296c61fb3813e0000dd
+ms.openlocfilehash: 2c19472c93d097f29692af18063404f3bf28b6bd
 
 
 ---
-# <a name="designing-your-network-infrastructure-for-disaster-recovery"></a>障害復旧に対応したネットワーク インフラストラクチャの設計
+# <a name="designing-your-network-for-disaster-recovery"></a>障害復旧に対応したネットワークの設計
 この記事は IT プロフェッショナルを読者として想定しています。ビジネス継続性と障害復旧 (BCDR: Business Continuity and Disaster Recovery) インフラストラクチャの構築、実装、サポートを担当する方や、BCDR サービスのサポートと強化に Microsoft Azure Site Recovery (ASR) を活用したいと考えている方が対象となります。 ここでは、System Center Virtual Machine Manager サーバーのデプロイ、拡張サブネットとサブネット フェールオーバーの長所と欠点、Microsoft Azure 内の仮想サイトに障害復旧を構築する方法について実際的な見地から考察します。
 
 ## <a name="overview"></a>概要
@@ -83,9 +83,8 @@ Contoso という架空の企業を例に、サブネット全体をフェール
 
 ![Retain IP address](./media/site-recovery-network-design/network-design4.png)
 
-Figure 5
 
-図 5 は、レプリカ仮想マシン用のフェールオーバー TCP/IP 設定を Hyper-V コンソールで表示したところです。 フェールオーバー後、仮想マシンが起動する直前にこれらの設定が反映されます。
+上の図は、レプリカ仮想マシン用のフェールオーバー TCP/IP 設定 (Hyper-V コンソールでの) を示します。 フェールオーバー後、仮想マシンが起動する直前にこれらの設定が反映されます。
 
 同じ IP が利用できない場合、ASR は、定義されている IP アドレス プールから他に利用できる IP アドレスを取得して割り当てます。
 
@@ -137,15 +136,13 @@ Woodgrove がビジネス要件を満たすためには、次のワークフロ�
 
 ![Different IP - Before Failover](./media/site-recovery-network-design/network-design10.png)
 
-図 11
 
-図 11 では、一部のアプリケーションが、プライマリ サイトのサブネット 192.168.1.0/24 でホストされ、フェールオーバー後は復旧サイトのサブネット 172.16.1.0/24 でアップ状態になるように構成されています。 VPN 接続/ネットワーク ルートは、3 つのサイトすべてが相互にアクセスできるように適切に構成されています。
+上の図では、一部のアプリケーションが、プライマリ サイトのサブネット 192.168.1.0/24 でホストされ、フェールオーバー後は復旧サイトのサブネット 172.16.1.0/24 でアップ状態になるように構成されています。 VPN 接続/ネットワーク ルートは、3 つのサイトすべてが相互にアクセスできるように適切に構成されています。
 
-アプリケーションは、フェールオーバーされた後、復旧サブネットで復元されます (図 12)。 このケースでは、必ずしもサブネット全体を同時にフェールオーバーする必要はありません。 VPN やネットワーク ルートを再構成するための変更は不要です。 フェールオーバーと何回かの DNS 更新で、アプリケーションにアクセスできる状態が維持されます。 動的更新を許可するように DNS が構成されている場合、仮想マシンは、フェールオーバー後に起動すると、新しい IP アドレスを使用して自身を登録します。
+アプリケーションは、フェールオーバーされた後、復旧サブネットで復元されます (上図)。 このケースでは、必ずしもサブネット全体を同時にフェールオーバーする必要はありません。 VPN やネットワーク ルートを再構成するための変更は不要です。 フェールオーバーと何回かの DNS 更新で、アプリケーションにアクセスできる状態が維持されます。 動的更新を許可するように DNS が構成されている場合、仮想マシンは、フェールオーバー後に起動すると、新しい IP アドレスを使用して自身を登録します。
 
 ![Different IP - After Failover](./media/site-recovery-network-design/network-design11.png)
 
-図 12
 
 フェールオーバー後、レプリカ仮想マシンは、プライマリ仮想マシンの IP アドレスと異なる IP アドレスを保有する場合があります。 仮想マシンは起動後に使用されている DNS サーバーを更新します。 DNS エントリは、通常、ネットワーク全体で変更またはフラッシュする必要あります。ネットワーク テーブル内のキャッシュされたエントリも更新またはフラッシュする必要があります。したがって、これらの状態が変更が発生している間、ダウンタイムが発生するのは珍しいことではありません。 この問題は以下の方法で軽減できます。
 
@@ -162,7 +159,7 @@ Woodgrove がビジネス要件を満たすためには、次のワークフロ�
         $newrecord.RecordData[0].IPv4Address  =  $IP
         Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
 
-### <a name="changing-the-ip-addresses-dr-to-azure"></a>IP アドレスの変更 (Azure への DR)
+### <a name="changing-the-ip-addresses--dr-to-azure"></a>IP アドレスの変更 (Azure への DR)
 「 [Networking Infrastructure Setup for Microsoft Azure as a Disaster Recovery Site (障害復旧サイトとして Microsoft Azure を使用するためのネットワーク インフラストラクチャのセットアップ)](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) 」ブログ投稿では、IP アドレスを維持することが要件になっていない場合に、必要な Azure ネットワーク インフラストラクチャをセットアップする方法について説明します。 まず、アプリケーションについて説明したうえで、オンプレミスと Azure におけるネットワークの設定を紹介し、最後に、テスト フェールオーバーと計画フェールオーバーを実行する方法について取り上げています。
 
 ## <a name="next-steps"></a>次のステップ
@@ -170,6 +167,6 @@ Woodgrove がビジネス要件を満たすためには、次のワークフロ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

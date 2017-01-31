@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: bd85b9eae0e1cb281116748edcad6643b1ec537f
-ms.openlocfilehash: 6ad20a246fce996e6a11ce6fa4715c0d734c4323
+ms.sourcegitcommit: 889776269aa3d722115ea0632b7c3db2775924eb
+ms.openlocfilehash: cc3bc8a0463842ba11b9cdcc996319e2d811ce8a
 
 
 ---
@@ -60,7 +60,7 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
      Premier サポート プランを持っている場合は、[Microsoft Premier オンライン ポータル][Microsoft Premier online portal]でも SQL Data Warehouse 関連の問題を連絡できます。  サポートの範囲、応答時間、価格など各プランの詳細については、[Azure サポート プラン][Azure support plan]に関するページを参照してください。Azure のサポートに関してよく寄せられる質問については、「[Azure サポートに関する FAQ][Azure support FAQs]」を参照してください。  
      
      ![サポート プラン](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
-8. **問題の種類**と**カテゴリ**を選択します。
+8. **問題の種類**と**カテゴリ**を選択します。 この例では、問題の種類として [ツール]、カテゴリとして [クライアント ツール] を選択しました。 
    
     ![問題の種類のカテゴリ](./media/sql-data-warehouse-get-started-create-support-ticket/problem-type-category.png)
 9. 問題を記述し、業務への影響のレベルを選択します。
@@ -101,6 +101,6 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

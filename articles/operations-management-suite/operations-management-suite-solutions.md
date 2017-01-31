@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/17/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
 ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad

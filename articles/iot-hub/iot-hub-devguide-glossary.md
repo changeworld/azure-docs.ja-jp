@@ -1,6 +1,6 @@
 ---
-title: "開発者ガイド - 用語集 | Microsoft Docs"
-description: "IoT Hub に関連する一般用語の用語集"
+title: "Azure IoT Hub 用語集 | Microsoft Docs"
+description: "開発者ガイド - Azure IoT Hub に関連する一般用語の用語集。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: d4bf4e03321255385dbb15d7559ea94f191183b5
+ms.sourcegitcommit: 1f795dd5b3d99731b2e683085d889ed7943d6281
+ms.openlocfilehash: 3661ad7374fd91cf7bbc485b8ce0805b78518899
 
 
 ---
@@ -42,7 +42,7 @@ ms.openlocfilehash: d4bf4e03321255385dbb15d7559ea94f191183b5
 Azure リソースのプロビジョニングと管理は、[Microsoft Azure Portal](https://portal.azure.com) を使って 1 か所で行うことができます。 Azure Portal は、_ブレード_を使用してそのコンテンツを整理します。 IoT Hub チュートリアルの一部では、[Azure クラシック ポータル](https://manage.windowsazure.com)を使用することが求められる場合があります。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell](../powershell-install-configure.md) は、Windows PowerShell で Azure を管理するために使用できるコマンドレットのコレクションです。 このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。
+[Azure PowerShell](/powershell/azureps-cmdlets-docs) は、Windows PowerShell で Azure を管理するために使用できるコマンドレットのコレクションです。 このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。
 
 ## <a name="azure-resource-manager"></a>Azure リソース マネージャー
 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。
@@ -63,7 +63,9 @@ Azure リソースのプロビジョニングと管理は、[Microsoft Azure Por
 IoT Hub から接続されたデバイスに送信されるメッセージを指します。 多くの場合、これらのメッセージは、デバイスにアクションを実行することを指示するコマンドです。 詳細については、「[IoT Hub でのメッセージの送受信](iot-hub-devguide-messaging.md)」を参照してください。
 
 ## <a name="connection-string"></a>接続文字列
-アプリのコード内の接続文字列を使用して、エンドポイントへの接続に必要な情報をカプセル化します。 通常、接続文字列には、エンドポイントのアドレスとセキュリティ情報が含まれますが、接続文字列の形式はサービス間で異なります。
+アプリのコード内の接続文字列を使用して、エンドポイントへの接続に必要な情報をカプセル化します。 通常、接続文字列には、エンドポイントのアドレスとセキュリティ情報が含まれますが、接続文字列の形式はサービス間で異なります。 IoT Hub サービスに関連付けられた接続文字列には次の 2 種類があります。
+- *デバイス接続文字列* を使用すると、IoT Hub 上のデバイス向けエンドポイントにデバイスを接続できます。
+- *接続文字列* を使用すると、IoT Hub 上のサービス向けエンドポイントにバックエンド アプリを接続できます。
 
 ## <a name="custom-gateway"></a>カスタム ゲートウェイ
 ゲートウェイは、[IoT Hub](#iot-hub) に直接接続できないデバイスの接続を有効にします。 [Azure IoT Gateway SDK](#azure-iot-gateway-sdk) を使用して、メッセージとカスタム プロトコル変換を処理するためのカスタム ロジックを実装する、カスタムのゲートウェイを構築できます。
@@ -78,7 +80,7 @@ IoT Hub から接続されたデバイスに送信されるメッセージを指
 [デバイス ツイン](iot-hub-devguide-device-twins.md)においては、必要なプロパティは、デバイスの構成や状態を同期するために[報告されるプロパティ](#reported-properties)とともに使用される、デバイス ツインのサブセクションです。 必要なプロパティは[バックエンド アプリ](#back-end-app)のみで設定でき、[デバイス アプリ](#device-app)によって監視されます。
 
 ## <a name="device-to-cloud"></a>デバイスからクラウドへ
-接続されたデバイスから [IoT Hub](#iot-hub) に送信されるメッセージを指します。 これらのメッセージは、[データ ポイント](#data-point-message)または[対話型](#interactive-message)メッセージが可能です。 詳細については、「[IoT Hub でのメッセージの送受信](iot-hub-devguide-messaging.md)」を参照してください。
+接続されたデバイスから [IoT Hub](#iot-hub) に送信されるメッセージを指します。 これらのメッセージは、[データ ポイント](#data-point-message)または[対話型](#interactive-message)メッセージの場合があります。 詳細については、「[IoT Hub でのメッセージの送受信](iot-hub-devguide-messaging.md)」を参照してください。
 
 ## <a name="device"></a>デバイス
 IoT においては、デバイスは、通常は、データの収集や他のデバイスの制御を実行できる、小規模なスタンドアロン コンピューティング デバイスです。 環境監視デバイス (温室の散水システムや換気システムのコントローラー) はデバイスの一例です。 [デバイス カタログ](https://catalog.azureiotsuite.com/)は、[IoT Hub](#iot-hub) で機能することが認定されたハードウェア デバイスの一覧を示します。
@@ -147,13 +149,13 @@ IoT Hub に送信される[デバイスからクラウドへ](#device-to-cloud)�
 [ID レジストリ](iot-hub-devguide-identity-registry.md)は、IoT Hub に接続することを許可された個々のデバイスに関する情報を保存する IoT Hub の組み込みコンポーネントです。
 
 ## <a name="interactive-message"></a>対話型メッセージ
-対話型メッセージは、アプリケーションのバック エンドの即時動作をトリガーする[クラウドからデバイスへ](#cloud-to-device)のメッセージです。 たとえば、デバイスは、CRM システムに自動的に記録される必要がある障害に関するアラームを送信できます。
+対話型メッセージは、ソリューション バックエンドの即時動作をトリガーする[クラウドからデバイスへ](#cloud-to-device)のメッセージです。 たとえば、デバイスは、CRM システムに自動的に記録される必要がある障害に関するアラームを送信できます。
 
 ## <a name="iot-hub"></a>IoT Hub
 IoT Hub は、何百万ものデバイスとソリューションのバックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理された Azure サービスです。 詳細については、「[Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)」を参照してください。 [Azure サブスクリプション](#subscription)を使用して、IoT メッセージングのワークロードを処理する IoT Hub を作成できます。
 
 ## <a name="iot-hub-metrics"></a>IoT Hub メトリック
-[IoT Hub メトリック](iot-hub-metrics.md)は、[Azure サブスクリプション](#subscription)内の IoT Hub の状態に関するデータを提供します。 メトリックにより、ユーザーはサービスとそれに接続されたデバイスの全体的な正常性を評価することができます。 メトリックは、IoT Hub で起こっていることを確認するため、また、Azure サポートに連絡することなく問題の根本原因を調査するための有用な情報となります。
+[IoT Hub メトリック](iot-hub-metrics.md)は、[Azure サブスクリプション](#subscription)内の IoT Hub の状態に関するデータを提供します。 IoT Hub メトリックにより、ユーザーはサービスとそれに接続されたデバイスの全体的な正常性を評価することができます。 IoT Hub メトリックは、IoT Hub で起こっていることを確認するため、また、Azure サポートに連絡することなく問題の根本原因を調査するための有用な情報となります。
 
 ## <a name="iot-hub-query-language"></a>IoT Hub クエリ言語
 [IoT Hub クエリ言語](iot-hub-devguide-query-language.md)は SQL に似た言語であり、[ジョブ](#job)とデバイス ツインにクエリを実行できます。
@@ -225,7 +227,7 @@ Azure サブスクリプションでは、課金が発生します。 作成す�
 [デバイス ツイン](iot-hub-devguide-device-twins.md)においては、システム プロパティは読み取り専用であり、最後のアクティビティの時刻や接続状態などのデバイスの使用状況に関する情報が含まれています。
 
 ## <a name="tags"></a>タグ
-[デバイス ツイン](iot-hub-devguide-device-twins.md)においては、タグは、アプリケーションのバック エンドによって JSON ドキュメントの形式で保存および取得されるデバイスのメタデータです。 タグは、デバイス上のアプリが認識することはありません。
+[デバイス ツイン](iot-hub-devguide-device-twins.md)においては、タグは、ソリューション バックエンドによって JSON ドキュメントの形式で保存および取得されるデバイスのメタデータです。 タグは、デバイス上のアプリが認識することはありません。
 
 ## <a name="telemetry"></a>テレメトリ
 デバイスは風速や温度などのテレメトリ データを収集し、[データ ポイント メッセージ](#data-point-messages)を使用して IoT Hub にテレメトリを送信します。
@@ -237,6 +239,6 @@ Azure サブスクリプションでは、課金が発生します。 作成す�
 デバイスは X.509 証明書を使用して [IoT Hub](#iot-hub) で認証を受けることができます。 [SAS トークン](#shared-access-signature)の代わりに X.509 証明書を使用できます。
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

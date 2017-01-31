@@ -1,6 +1,6 @@
 ---
-title: "Linux、Unix、または OS X から Linux ベースの Hadoop で SSH キーを使用する | Microsoft Docs"
-description: " Secure Shell (SSH) を使用して Linux ベースの HDInsight にアクセスできます。 このドキュメントでは、Linux、Unix、または OS X の各クライアントから HDInsight で SSH を使用する方法について説明します。"
+title: "Windows、Linux、Unix、または OS X から HDInsight (Hadoop) で SSH を使用する | Microsoft Docs"
+description: " Secure Shell (SSH) を使用して HDInsight にアクセスできます。 このドキュメントでは、Windows、Linux、Unix、または OS X の各クライアントから HDInsight で SSH を使用する方法について説明します。."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,27 +13,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/13/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 3c3944118ca986009711aee032b45c302b63e63b
-ms.openlocfilehash: 93bf35edd2173c147f48512d92bc8e4734cd1dbd
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: 37409ad3f50cdd4a7a384c96a57a35ef8c83fb8f
 
 
 ---
-# <a name="use-ssh-with-linux-based-hadoop-on-hdinsight-from-linux-unix-or-os-x"></a>Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する
+# <a name="use-ssh-with-hdinsight-hadoop-from-windows-linux-unix-or-os-x"></a>Windows、Linux、Unix、または OS X から HDInsight (Hadoop) で SSH を使用する
 
 > [!div class="op_single_selector"]
-> * [Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-> * [Linux、Unix、OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-> 
-> 
+> * [PuTTY (Windows)](hdinsight-hadoop-linux-use-ssh-windows.md)
+> * [SSH (Windows、Linux、Unix、OS X)](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) を使えば、コマンド ライン インターフェイスで Linux ベースの HDInsight クラスターにログインし、コマンドを実行できます。 このドキュメントでは、SSH に関する基本的な情報のほか、HDInsight での SSH の使用に関する特定の情報を提供します。
 
 ## <a name="what-is-ssh"></a>SSH とは
 
-SSH は、セキュリティで保護されていないネットワーク経由でリモート サーバーと安全に通信できるようにする暗号化ネットワーク プロトコルです。 SSH は、リモート サーバーへの安全なコマンド ライン ログインを実現するために使用されます。 この場合は、HDInsight クラスターのヘッド ノードまたはエッジ ノードです。 
+SSH は、セキュリティで保護されていないネットワーク経由でリモート サーバーと安全に通信できるようにする暗号化ネットワーク プロトコルです。 SSH は、リモート サーバーへの安全なコマンド ライン ログインを実現するために使用されます。 この場合は、HDInsight クラスターのヘッド ノードまたはエッジ ノードです。
 
 また、SSH を使用すれば、クライアントから HDInsight クラスターへのネットワーク トラフィックをトンネリングすることもできます。 トンネルを使用すると、インターネットに直接公開されていない HDInsight クラスター上のサービスにアクセスできます。 HDInsight での SSH トンネリングの使用の詳細については、[HDInsight での SSH トンネリングの使用](hdinsight-linux-ambari-ssh-tunnel.md)に関するページを参照してください。
 
@@ -76,7 +74,7 @@ SSH 接続は、パスワードまたは[公開キー暗号化 (https://en.wikip
 > MobaXTerm や puTTY などの GUI SSH クライアントを使用している場合は、そのクライアントのドキュメントでキーの生成方法を調べてください。
 
     ssh-keygen -t rsa -b 2048
-   
+
 次の情報の入力を求められます。
 
 * ファイルの場所: 場所は既定で `~/.ssh/id_rsa` に設定されます。
@@ -91,7 +89,7 @@ SSH 接続は、パスワードまたは[公開キー暗号化 (https://en.wikip
 コマンドが終了すると、2 つの新しいファイルが生成されます。
 
 * __id\_rsa__: このファイルには秘密キーが含まれています。
-    
+
     > [!WARNING]
     > 公開キーによって保護されたサービスへの不正アクセスを防止するには、このファイルへのアクセスを制限する必要があります。
 
@@ -171,29 +169,30 @@ SSH アカウントがパスワードを使用してセキュリティ保護さ�
 1. テキスト エディターを使用して `~/.ssh/config`を開きます。 このファイルが存在しない場合は、コマンド ラインで「`touch ~/.ssh/config`」と入力して作成できます。
 
 2. このファイルに次のコードを追加します。 *CLUSTERNAME* を、使用する HDInsight クラスターの名前に置き換えます。
-   
+
         Host CLUSTERNAME-ssh.azurehdinsight.net
           ForwardAgent yes
-   
+
     このエントリにより、HDInsight クラスターに SSH エージェント転送が構成されます。
 
 3. 端末から次のコマンドを使用して、SSH エージェント転送をテストします。
-   
+
         echo "$SSH_AUTH_SOCK"
-   
+
     このコマンドでは、次のテキストのような情報が返されます。
-   
+
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
-   
+
     何も返されない場合は、`ssh-agent` が実行されていないことを示します。 「[Using ssh-agent with ssh (ssh での ssh-agent の使用)](http://mah.everybody.org/docs/ssh)」(http://mah.everybody.org/docs/ssh) でエージェントのスタートアップ スクリプト情報を参照するか、お使いの SSH クライアントのドキュメントで `ssh-agent` をインストールして構成する手順を確認してください。
 
 4. **ssh-agent** が実行していることを確認したら、次のコマンドを使用して SSH 秘密キーをエージェントに追加します。
-   
+
         ssh-add ~/.ssh/id_rsa
-   
+
     秘密キーを別のファイルに格納している場合は、 `~/.ssh/id_rsa` をそのファイルのパスに置き換えます。
 
-###<a name="a-iddomainjoineda-domain-joined-hdinsight"></a><a id="domainjoined"></a> ドメイン参加済み HDInsight
+<a id="domainjoined"></a>
+### <a name="domain-joined-hdinsight"></a>ドメイン参加済み HDInsight
 
 [ドメインに参加している HDInsight](hdinsight-domain-joined-introduction.md) は、Kerberos を HDInsight の Hadoop と統合します。 SSH ユーザーは Active Directory ドメイン ユーザーではないため、Active Directory で認証されるまで Hadoop コマンドを実行することはできません。 次の手順を使用して、Active Directory で SSH セッションを認証してください。
 
@@ -232,6 +231,6 @@ SSH トンネルの作成と使用の詳細については、「[SSH トンネ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

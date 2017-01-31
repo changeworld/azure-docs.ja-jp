@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 12/13/2016
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f6747a80773cd76b0821edfd2ebcd6af84bed233
+ms.sourcegitcommit: 066ff1d2c8255c895fbfcb0ad8c0b1fef298f8c7
+ms.openlocfilehash: d0decc1da1444254c319e7c2e1bbe4f567ef386e
 
 
 ---
@@ -77,7 +77,7 @@ Web サービスのデプロイの詳細については、「[Azure Machine Lear
     Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
 ## <a name="update-the-reference-to-the-ilearner-blob-in-the-json"></a>JSON で ilearner BLOB への参照を更新します。
-資産で、[<トレーニング済みモデル>] を見つけ、ilearner BLOB の URI で *locationInfo* の *uri* の値を更新します。 URI は BES 再トレーニング呼び出しの出力からの *BaseLocation* と *RelativeLocation* を組み合わせて作成します。
+資産で、[<トレーニング済みモデル>] を見つけ、ilearner BLOB の URI で *locationInfo* の *uri* の値を更新します。 URI は BES 再トレーニング呼び出しの出力からの *BaseLocation* と *RelativeLocation* を組み合わせて作成します。 これにより、新しいトレーニング済みモデルを参照するパスが更新されます。
 
      "asset3": {
         "name": "Retrain Samp.le [trained model]",
@@ -93,13 +93,13 @@ Web サービスのデプロイの詳細については、「[Azure Machine Lear
       },
 
 ## <a name="import-the-json-into-a-web-service-definition"></a>JSON を Web サービス定義にインポートします。
-[Import-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) コマンドレットを使用して、変更された JSON ファイルを予測実験の更新に使用できる Web サービス定義に変換します。
+[Import-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) コマンドレットを使用して、変更された JSON ファイルを Web サービス定義を更新するために使用できる Web サービス定義に変換します。
 
     $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 
 ## <a name="update-the-web-service-with-new-web-service-definition"></a>Web サービスを新しい Web サービス定義で更新します
-最後に、 [Update-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) コマンドレットを使用して、予測実験を更新します。
+最後に、[Update-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) コマンドレットを使用して、Web サービス定義を更新します。
 
     Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'  -ServiceUpdates $wsd
 
@@ -112,6 +112,6 @@ Machine Learning PowerShell 管理コマンドレットを使用して、予測 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

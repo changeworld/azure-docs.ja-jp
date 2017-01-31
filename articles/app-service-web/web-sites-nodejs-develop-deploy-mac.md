@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c63b2b59143b57d6666910e701d8810bd517a42d
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 4b8eb863a1fcb65c307870619ea9d8942c57a906
 
 
 ---
@@ -47,7 +47,7 @@ ms.openlocfilehash: c63b2b59143b57d6666910e701d8810bd517a42d
 > [!NOTE]
 > このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。 アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/en-us/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 > 
-> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。 有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページにアクセスしてください。 有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -75,7 +75,7 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
    
     ![][portal-quick-create2]
    
-    短時間 (通常は 1 分未満) で、新しい Web アプリの作成が完了します。
+    短時間 (通常は&1; 分未満) で、新しい Web アプリの作成が完了します。
 9. **[Web アプリ]、{作成した新しい Web アプリ}** の順にクリックします。
    
     ![](./media/web-sites-nodejs-develop-deploy-mac/gotowebapp.png)
@@ -186,7 +186,7 @@ Node.js は、アプリケーションで使用できるモジュールのリッ
 
 Azure へのデプロイ後にアプリケーションで問題が発生した場合、問題の診断については、「 [Azure App Service で Node.js Web アプリをデバッグする方法](web-sites-nodejs-debug.md) 」を参照してください。
 
-この記事では、Web アプリの作成に Azure ポータルを使用しています。 [Azure コマンド ライン インターフェイス](../xplat-cli-install.md)または [Azure PowerShell](../powershell-install-configure.md) を使用して、同じ操作を行うこともできます。
+この記事では、Web アプリの作成に Azure ポータルを使用しています。 [Azure コマンド ライン インターフェイス](../xplat-cli-install.md)または [Azure PowerShell](/powershell/azureps-cmdlets-docs) を使用して、同じ操作を行うこともできます。
 
 Azure で Node.js アプリケーションを開発する方法の詳細については、 [Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
@@ -202,6 +202,6 @@ Azure で Node.js アプリケーションを開発する方法の詳細につ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

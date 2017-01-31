@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
-ms.author: sdanie
+ms.author: apipm
 translationtype: Human Translation
 ms.sourcegitcommit: a7ff82a47b4e972db96929acb47fcce760b244b3
 ms.openlocfilehash: 73bb12643a5c94e364ac4040f6e1678cb1495fb2

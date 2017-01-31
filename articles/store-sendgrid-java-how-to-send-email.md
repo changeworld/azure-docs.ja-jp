@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf39b922e51dd60b5b2c51cb7030436c60232a5
-ms.openlocfilehash: 721cd52b37826c1880a94d8f95a0c70302c8f0b5
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
 
 
 ---
@@ -131,7 +131,7 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
     multipart.addBodyPart(attachmentPart);
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>方法: フィルターを使用してフッター、追跡、および分析を有効にする
-SendGrid では、 *フィルター*を使用することでその他の電子メール機能も利用することができます。 その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。 すべてのフィルターの一覧については、[フィルター設定][フィルター設定]に関するページを参照してください。
+SendGrid では、 *フィルター*を使用することでその他の電子メール機能も利用することができます。 その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。 すべてのフィルターの一覧については、[フィルター設定][Filter Settings]に関するページを参照してください。
 
 * 次のコードでは、フッター フィルターを挿入して、送信される電子メールの 下部に HTML テキストが追加されるようにしています。
 
@@ -174,7 +174,7 @@ SendGrid では、 *フィルター*を使用することでその他の電子�
     InternetAddress("john@contoso.com"));
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>方法: その他の SendGrid サービスを使用する
-SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。 詳細については、[SendGrid API に関するドキュメント][SendGrid API に関するドキュメント]を参照してください。
+SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。 詳細については、[SendGrid API に関するドキュメント][SendGrid API documentation]を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 これで、SendGrid 電子メール サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
@@ -189,14 +189,14 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
 [http://www.sendgrid.com/azure.html]: https://www.sendgrid.com/windowsazure.html
 [http://sendgrid.com/features]: https://sendgrid.com/features
 [http://www.oracle.com/technetwork/java/javamail]: http://www.oracle.com/technetwork/java/javamail/index.html
-[フィルター設定]: https://sendgrid.com/docs/API_Reference/Web_API/filter_settings.html
-[SendGrid API に関するドキュメント]: https://sendgrid.com/docs/API_Reference/index.html
+[Filter Settings]: https://sendgrid.com/docs/API_Reference/Web_API/filter_settings.html
+[SendGrid API documentation]: https://sendgrid.com/docs/API_Reference/index.html
 [http://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html
 [クラウドベースの電子メール サービス]: https://sendgrid.com/email-solutions
 [トランザクション メール配信]: https://sendgrid.com/transactional-email
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

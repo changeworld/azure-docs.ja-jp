@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
-ms.openlocfilehash: e8be3cd9aeb3ff39c808f5ee39bdf3091d45feec
+ms.sourcegitcommit: cea81f16ecc6203f487fdf15310638b123312dde
+ms.openlocfilehash: caee6a14bd988f2355c9683519b5f5480428a709
 
 
 ---
@@ -43,8 +43,8 @@ ms.openlocfilehash: e8be3cd9aeb3ff39c808f5ee39bdf3091d45feec
 >
 
 ## <a name="create-a-sql-data-warehouse"></a>SQL Data Warehouse の作成
-1. [Azure Portal](https://portal.azure.com)にサインインします。
-2. **[+ 新規]** > **[データ + ストレージ]** > **[SQL Data Warehouse]** をクリックします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. **[+ 新規]** > **[Databases]** > **[SQL Data Warehouse]** の順にクリックします。
 
     ![作成](./media/sql-data-warehouse-get-started-provision/create-sample.gif)
 3. **[SQL Data Warehouse]** ブレードで必要な情報を入力し、[作成] を押して作成します。
@@ -102,6 +102,6 @@ TRANSACT-SQL を使用して、ファイアウォール規則を構成するこ�
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

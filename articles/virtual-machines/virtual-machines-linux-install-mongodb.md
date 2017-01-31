@@ -1,5 +1,5 @@
 ---
-title: "Linux VM に MongoDB をインストールする | Microsoft AzureLinux VM に MongoDB をインストールする | Microsoft Docs"
+title: "Azure 上の Linux VM に MongoDB をインストールする | Microsoft Docs"
 description: "Resource Manager デプロイメント モデルを使って Azure の Linux 仮想マシンに MongoDB をインストールして構成する方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/29/2016
+ms.date: 12/20/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: bec9f1fb0797b0c073dde9e65ab6bbffe8e3b5c2
+ms.sourcegitcommit: 370bcf5189c855185f11277518e0cbd5377993ab
+ms.openlocfilehash: fd323a828ee879d6093e2473accbea883f861420
 
 
 ---
@@ -35,10 +35,10 @@ ms.openlocfilehash: bec9f1fb0797b0c073dde9e65ab6bbffe8e3b5c2
 * Azure CLI は、`azure config mode arm` を使う Azure Resource Manager モードである "*必要があります*"。
 
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>VM に MongoDB を手動でインストールして構成する
-MongoDB では、Red Hat/CentOS、SUSE、Ubuntu、Debian などの Linux ディストリビューション用の[インストール手順が提供](https://docs.mongodb.com/manual/administration/install-on-linux/)されています。 次の例では、`.ssh/azure_id_rsa.pub` に格納されている SSH キーを使って `CoreOS` VM を作成します。 メッセージに従ってストレージ アカウント名、DNS 名、および管理者の資格情報を入力します。
+MongoDB では、Red Hat/CentOS、SUSE、Ubuntu、Debian などの Linux ディストリビューション用の[インストール手順が提供](https://docs.mongodb.com/manual/administration/install-on-linux/)されています。 次の例では、`~/.ssh/id_rsa.pub` に格納されている SSH キーを使って `CentOS` VM を作成します。 メッセージに従ってストレージ アカウント名、DNS 名、および管理者の資格情報を入力します。
 
 ```azurecli
-azure vm quick-create --ssh-publickey-file .ssh/azure_id_rsa.pub --image-urn CentOS
+azure vm quick-create --ssh-publickey-file ~/.ssh/id_rsa.pub --image-urn CentOS
 ```
 
 前の VM 作成手順の最後に表示されるパブリック IP アドレスを使って VM にログオンします。
@@ -127,7 +127,7 @@ azure group create --name myResourceGroup --location WestUS \
 デプロイが完了したら、VM に SSH 接続します。 次の例のように、`azure vm show` コマンドを使って VM の IP アドレスを取得します。
 
 ```azurecli
-azure vm show --resource-group myResourceGroup --name myVM
+azure vm show --resource-group myResourceGroup --name myLinuxVM
 ```
 
 出力の末尾近くに、`Public IP address` が表示されます。 VM の IP アドレスを使って VM に SSH 接続します。
@@ -186,6 +186,6 @@ Azure Resource Manager テンプレートは、カスタム スクリプト拡�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/10/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -79,7 +79,6 @@ Azure Data Catalog ポータルのホーム ページには [マイ アセット
 
 ## <a name="summary"></a>概要
 Azure Data Catalog には、ユーザーが必要なデータ ソースをより簡単に検出できるようにする機能が用意されています。その結果、ユーザーは、データの検索にかかる時間を短縮し、データの処理により多くの時間を費やすことができるようになりました。 保存した検索条件とピン留めされたデータ資産は、このような中核となる機能に基づいているため、ユーザーは繰り返し使用するデータ ソースを簡単に特定できます。
-
 
 
 

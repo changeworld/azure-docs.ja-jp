@@ -11,14 +11,14 @@ keywords: "コンテナー, DC/OS, Azure"
 ms.assetid: 91d9a28a-3a52-4194-879e-30f2fa3d946b
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2016
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6df2b6ee0064a2baa79a154641f097b11cb55059
+ms.sourcegitcommit: 5da28eecf2df764f71906897450ebe67b3048b3f
+ms.openlocfilehash: d57212a8c858c4fb53cc619a578b59da92176bb2
 
 
 ---
@@ -54,9 +54,10 @@ Sysdig は監視サービスです。クラスター内のコンテナーを監�
 
 パッケージをインストールしたら、Sysdig の UI に戻ります。クラスター内のコンテナーの使用状況に関する各種メトリックを詳しく調査できる状態になっています。 
 
+[新しいダッシュボード ウィザード](https://app.sysdigcloud.com/#/dashboards/new)を使用して、Mesos と Marathon 固有のダッシュボードをインストールすることもできます。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

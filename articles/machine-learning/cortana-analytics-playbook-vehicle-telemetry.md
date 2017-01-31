@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 55c85d95a16e0c0ea7bb11d6f47ae85aeb80577d
+ms.sourcegitcommit: 307ed83dc1f47bb86af4a476acbb51876012ff25
+ms.openlocfilehash: e4311a740ccb4cac2c1d6e7e1197a736d3a4a777
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 55c85d95a16e0c0ea7bb11d6f47ae85aeb80577d
 [!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 ## <a name="overview"></a>Overview
-スーパー コンピューターをラボからガレージに持ち出しました。 これらの最先端の自動車には、毎秒数百万というイベントを追跡、監視するためのおびただしい数のセンサーが搭載されています。 2020 年までには、これらの車の大半がインターネットに接続されていることが予測されます。 この豊富なデータを利用して、クラス最高の安全性、信頼性、そして運転体験を実現することを想像してみてください。 Microsoft は Cortana Intelligence により、この夢を現実のものにしました。
+スーパー コンピューターをラボからガレージに持ち出しました。 これらの最先端の自動車には、毎秒数百万というイベントを追跡、監視するためのおびただしい数のセンサーが搭載されています。 2020 年までには、これらの車の大半がインターネットに接続されていることが予測されます。 この豊富なデータを利用して、向上された安全性、信頼性、そしてより良い運転体験を実現することを想像してみてください。 Microsoft は Cortana Intelligence により、この夢を現実のものにしました。
 
 Microsoft の Cortana Intelligence は、データをインテリジェントなアクションに変換できる、完全管理型ビッグ データおよび高度な分析一式です。 ここでは、Cortana Intelligence 車両テレメトリ分析ソリューション テンプレートを紹介します。 このソリューションでは、車の販売代理店、自動車メーカー、保険会社が Cortana Intelligence の機能を使用して、車両の状態や運転の習慣などに関するリアルタイムの予測分析をどのように実現できるかについて説明します。 
 
@@ -41,10 +41,10 @@ Microsoft の Cortana Intelligence は、データをインテリジェントな
 * Power BI を使用して、このソリューションに機能豊富なダッシュボードを提供し、リアルタイム データと予測分析を視覚化する
 
 ## <a name="architecture"></a>アーキテクチャ
-![](./media/cortana-analytics-playbook-vehicle-telemetry/fig1-vehicle-telemetry-annalytics-solution-architecture.png)
-"*図 1 – 車両テレメトリ分析ソリューション アーキテクチャ*"
+![ソリューションのアーキテクチャ ダイアグラム](./media/cortana-analytics-playbook-vehicle-telemetry/fig1-vehicle-telemetry-annalytics-solution-architecture.png)
+*図 1 – 車両テレメトリ分析ソリューション アーキテクチャ*
 
-このソリューションは次の **Cortana Intelligence コンポーネント** を含み、エンド ツー エンドの統合を説明します
+このソリューションは、次の **Cortana Intelligence コンポーネント**を含み、エンド ツー エンドの統合を説明します。
 
 * **Event Hubs** 数百万の車両テレメトリ イベントを Azure に取り込みます。
 * **Stream Analytics** 車両の状態に関するリアルタイムの洞察を得て、より高度な一括分析のために長期的なストレージにそのデータを保持します。
@@ -61,6 +61,6 @@ Microsoft の Cortana Intelligence は、データをインテリジェントな
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

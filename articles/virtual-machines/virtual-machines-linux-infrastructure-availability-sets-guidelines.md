@@ -1,5 +1,5 @@
 ---
-title: "可用性セットのガイドライン | Microsoft Docs"
+title: "Azure 可用性セットのガイドライン | Microsoft Docs"
 description: "Azure インフラストラクチャ サービスでの可用性セットのデプロイに関する主要な設計と実装のガイドラインについて説明します。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: c8d4f1c83d1f719122b90a205534b5ae4c1b03bd
+ms.sourcegitcommit: a99ab839ec9ade0049e1cc59054e333048e0208c
+ms.openlocfilehash: 93d1421fb8afdc5e6e7d20de25774eb580a0e8da
 
 
 ---
-# <a name="availability-sets-guidelines"></a>可用性セットのガイドライン
+# <a name="azure-availability-sets-guidelines"></a>Azure 可用性セットのガイドライン
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 この記事では、計画内または計画外のイベント中にユーザーがアプリケーションを利用できるようにするために必要な可用性セットの計画手順について中心に説明します。
@@ -44,9 +44,11 @@ Azure では、可用性セットと呼ばれる論理的なグループに仮�
 
 Azure における基になるインフラストラクチャは、更新ドメインと障害ドメインに分けられます。 これらのドメインは、共通の一般的な更新サイクルを共有するホスト、または類似の物理インフラストラクチャ (電源やネットワークなど) を共有するホストで定義されます。 Azure は、ドメイン間で可用性セット内に VM を自動的に分散し、可用性とフォールト トレランスを維持します。 可用性セット内のアプリケーションのサイズと VM の数に応じて、使用するドメインの数を調整できます。 詳細については、[更新ドメインと障害ドメインの可用性と使用の管理](virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
 
-アプリケーション インフラストラクチャを設計する場合は、使用するアプリケーション層について計画する必要もあります。 目的が同じ VM を、可用性セットごとにグループ化します (nginx または Apache が実行されているフロントエンド VM の可用性セットなど)。 MongoDB または MySQL が実行されているバックエンド VM 用に、別の可用性セットを作成します。 目標は、アプリケーションの各コンポーネントを可用性セットで保護することで、少なくとも 1 つのインスタンスが常に実行されているようにすることです。
+アプリケーション インフラストラクチャを設計する場合は、使用するアプリケーション層について計画します。 目的が同じ VM を、可用性セットごとにグループ化します (nginx または Apache が実行されているフロントエンド VM の可用性セットなど)。 MongoDB または MySQL が実行されているバックエンド VM 用に、別の可用性セットを作成します。 目標は、アプリケーションの各コンポーネントを可用性セットで保護することで、少なくとも 1 つのインスタンスが常に実行されているようにすることです。
 
 ロード バランサーを可用性セットと併せて各アプリケーション層の前で使用することで、実行中のインスタンスにトラフィックが常にルーティングされるようにすることができます。 ロード バランサーを使用しなくても、計画内および計画外のメンテナンス イベント時に VM を実行し続けることはできますが、エンド ユーザーは、プライマリ VM が利用できない場合にそれらのイベントを解決できない可能性があります。
+
+ストレージ層での高可用性を実現するようにアプリケーションを設計します。 ベスト プラクティスは、可用性セット内の VM ごとに個別のストレージ アカウントを使うことです。 VM に関連付けられているすべてのディスク (OS とデータ) を同じストレージ アカウント内に保持します。 ストレージ アカウントに VHD を追加する場合は、ストレージ アカウントの[制限](../storage/storage-scalability-targets.md)を考慮します。
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
@@ -54,6 +56,6 @@ Azure における基になるインフラストラクチャは、更新ドメ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

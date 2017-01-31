@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 12/19/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1ad39ddd622573b4842e1e231b0b00685cff83e4
+ms.sourcegitcommit: 0a711ee4118973b21d47f1c3e63301f0dfac879d
+ms.openlocfilehash: b746462e382cb5c065417940a80b00c31f440e9b
 
 
 ---
 # <a name="get-help-from-machine-learning-live-chat-support"></a>機械学習のライブ チャット サポートを利用する
-[Azure Machine Learning Studio](machine-learning-what-is-ml-studio.md) では、機械学習モデルをビルドするための直感的なインターフェイスを提供します。 使用するうえで役立つ[ギャラリー](machine-learning-gallery-how-to-use-contribute-publish.md)と[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)が用意されています。 
+[Azure Machine Learning Studio](machine-learning-what-is-ml-studio.md) では、機械学習モデルをビルドするための直感的なインターフェイスを提供します。 コミュニティによって寄稿された、開始するために役立つサンプル [ギャラリー](machine-learning-gallery-how-to-use-contribute-publish.md)があります。 さらに、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)で、先に進むための質問をすることができます。 
 
-ただし、短い質問をするだけで問題が解決する場合もあります。 [Studio](machine-learning-what-is-ml-studio.md) の上部ナビゲーションに、チャット アイコンがあります。  このアイコンが表示されているときは、製品チームのメンバーによるリアルタイムのサポートがオンラインで受けられることを意味します。
+ただし、短い質問をするだけで問題が解決する場合もあります。 [Machine Learning Studio](http://studio.azureml.net/Home) の上部ナビゲーションに、チャット アイコンがあります。  このアイコンが表示されているときは、製品チームのメンバーによるリアルタイムのサポートがオンラインで受けられることを意味します。
 
 ![Azure ML チャット](./media/machine-learning-live-chat/AzureMLChatNavBar.png)
 
@@ -32,13 +32,13 @@ ms.openlocfilehash: 1ad39ddd622573b4842e1e231b0b00685cff83e4
 ![Azure ML チャット ダイアログ](./media/machine-learning-live-chat/AzureMLChat.png)
 
 ## <a name="dont-see-the-live-chat-icon"></a>ライブ チャット アイコンが表示されない場合
-チームのメンバーが実際に質問に回答しています。 ライブ チャット アイコンが表示されていないのは、業務時間外には表示されないためです。 
+ライブ チャットは、Machine Learning チームのメンバーが担当しています。 ライブ チャット アイコンが表示されないのは、その時点ではチームが対応できないためです。 たとえば、通常の業務時間ではない可能性があります。 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 
