@@ -17,8 +17,8 @@ ms.workload: NA
 ms.date: 10/13/2016
 ms.author: carlrab;sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 9e331f3536bfde96d15ff5bb3a21683f67b25da2
-ms.openlocfilehash: d726a886717826368693cda6ca4141c136ea236d
+ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
+ms.openlocfilehash: d04eb659bcf4df53c5f44c1a4b01763844476267
 
 
 ---
@@ -77,7 +77,7 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 * アクティブ geo レプリケーションの追加コストが、潜在的な財務責任と関連するビジネス損失を下回る。
 
 >
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
 
 ## <a name="recover-a-database-after-a-user-or-application-error"></a>ユーザーまたはアプリケーション エラーの発生後にデータベースを復旧する
@@ -158,6 +158,6 @@ Geo 冗長ストレージ レプリケーションによる自動バックアッ
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

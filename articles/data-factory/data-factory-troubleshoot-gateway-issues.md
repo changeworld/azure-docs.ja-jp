@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 01/25/2017
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 03e15660e04e192d9035c25f1a8030310413c118

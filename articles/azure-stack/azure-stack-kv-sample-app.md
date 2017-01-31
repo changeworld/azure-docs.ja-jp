@@ -1,5 +1,5 @@
 ---
-title: Allow application to revtrieve Azure Stack Key Vault secrets  | Microsoft Docs
+title: Allow application to retrieve Azure Stack Key Vault secrets  | Microsoft Docs
 description: Use a sample app to work with Azure Stack Key Vault
 services: azure-stack
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: ricardom
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 05de639f55510db3b49385bf5d24b4e1b6bc2ff8
+ms.sourcegitcommit: a3a8b9ff522369ed0f03817585e1666507c95c6e
+ms.openlocfilehash: 9f2f6230ddd2ba303ad5be9f4691895e7828033d
 
 
 ---
@@ -30,7 +30,7 @@ Extract the contents of the .zip file to your local computer.
 
 Read the **README.md** file (this is a text file), and then follow the instructions.
 
-## <a name="run-sample-1hellokeyvault"></a>Run Sample #1--HelloKeyVault
+## <a name="run-sample-1--hellokeyvault"></a>Run Sample #1--HelloKeyVault
 HelloKeyVault is a console application that walks through the key scenarios that are supported by Key Vault:
 
 1. Create/import a key (HSM or software key)
@@ -56,6 +56,6 @@ That console application should run with no changes, except that the appropriate
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

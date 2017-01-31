@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 4e288e17-bc3e-4255-9fbe-0a2ac0dbd7dd
 ms.service: sql-database
-ms.custom: sharded databases pool; how to
+ms.custom: multiple databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -16,12 +16,12 @@ ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 17ec1ad8218824048179e32ae5059b6a6d77a367
+ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
+ms.openlocfilehash: 9688c3b402b7961675e06e804a68ff454126d5f3
 
 
 ---
-# <a name="monitor-and-manage-an-elastic-database-pool-with-transact-sql"></a>Transact-SQL を使用したエラスティック データベース プールの監視と管理
+# <a name="monitor-and-manage-an-elastic-pool-with-transact-sql"></a>Transact-SQL を使用したエラスティック プールの監視と管理
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-database-elastic-pool-manage-portal.md)
 > * [PowerShell](sql-database-elastic-pool-manage-powershell.md)
@@ -74,16 +74,16 @@ ALTER DATABASE コマンドを使用し、SERVICE_OBJECTIVE をいずれかの�
     ORDER BY end_time DESC;
 
 ## <a name="get-resource-usage-for-an-elastic-database"></a>Elastic Database のリソース使用状況を取得する
-エラスティック プール内のデータベースのリソース使用量の統計を確認するには、[sys.dm\_ db\_ resource\_stats ビュー](https://msdn.microsoft.com/library/dn800981.aspx)または [sys.resource \_stats ビュー](https://msdn.microsoft.com/library/dn269979.aspx)を使用します。 このプロセスは、任意の 1 つのデータベースのリソース使用量を照会する操作に似ています。
+エラスティック プール内のデータベースのリソース使用量の統計を確認するには、[sys.dm\_ db\_ resource\_stats ビュー](https://msdn.microsoft.com/library/dn800981.aspx)または [sys.resource \_stats ビュー](https://msdn.microsoft.com/library/dn269979.aspx)を使用します。 このプロセスは、1 つのデータベースのリソース使用量を照会する操作に似ています。
 
 ## <a name="next-steps"></a>次のステップ
-エラスティック データベース プールを作成した後は、エラスティック ジョブを作成してプール内のエラスティック データベース を管理できます。 エラスティック ジョブはプールのデータベースの任意の数に対して T-SQL スクリプトの実行を容易にします。 詳細については、「 [エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。 
+エラスティック プールを作成した後、弾力性ジョブを作成してプールの弾力性データベースを管理できます。 エラスティック ジョブはプールのデータベースの任意の数に対して T-SQL スクリプトの実行を容易にします。 詳細については、「 [エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。 
 
 Elastic Database のツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「 [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

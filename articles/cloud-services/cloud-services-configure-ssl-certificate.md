@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 12/14/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1bfb0841ce6ad151d863d4635cb10d3ef1b1e06b
+ms.sourcegitcommit: cca4d126a5c5f012af6afb9a31d0aedc0f7eb155
+ms.openlocfilehash: edb9aaf6dae11c9b8a171b22bc8a17003f80d86b
 
 
 ---
@@ -59,27 +59,29 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 1. お使いの開発環境で、サービス定義ファイル (CSDEF) を開き、**WebRole** セクション内に  **Certificates** セクションを追加し、証明書 (および中間証明書) に関する次の情報を含めます。
    
-       <WebRole name="CertificateTesting" vmsize="Small">
-       ...
-           <Certificates>
-               <Certificate name="SampleCertificate" 
-                            storeLocation="LocalMachine" 
-                            storeName="My"
-                            permissionLevel="limitedOrElevated" />
-               <!-- IMPORTANT! Unless your certificate is either
-               self-signed or signed directly by the CA root, you
-               must include all the intermediate certificates
-               here. You must list them here, even if they are
-               not bound to any endpoints. Failing to list any of
-               the intermediate certificates may cause hard-to-reproduce
-               interoperability problems on some clients.-->
-               <Certificate name="CAForSampleCertificate"
-                            storeLocation="LocalMachine"
-                            storeName="CA"
-                            permissionLevel="limitedOrElevated" />
-           </Certificates>
-       ...
-       </WebRole>
+    ```xml
+    <WebRole name="CertificateTesting" vmsize="Small">
+    ...
+        <Certificates>
+            <Certificate name="SampleCertificate" 
+                        storeLocation="LocalMachine" 
+                        storeName="My"
+                        permissionLevel="limitedOrElevated" />
+            <!-- IMPORTANT! Unless your certificate is either
+            self-signed or signed directly by the CA root, you
+            must include all the intermediate certificates
+            here. You must list them here, even if they are
+            not bound to any endpoints. Failing to list any of
+            the intermediate certificates may cause hard-to-reproduce
+            interoperability problems on some clients.-->
+            <Certificate name="CAForSampleCertificate"
+                        storeLocation="LocalMachine"
+                        storeName="CA"
+                        permissionLevel="limitedOrElevated" />
+        </Certificates>
+    ...
+    </WebRole>
+    ```
    
    **Certificates** セクションでは、証明書の名前、場所、およびこの証明書があるストアの名前を定義します。
    
@@ -91,43 +93,50 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
    | elevated |引き上げられたプロセスだけが秘密キーにアクセスできます。 |
 2. サービス定義ファイルで、**Endpoints** セクション内に **InputEndpoint** 要素を追加し、HTTPS を有効にします。
    
-       <WebRole name="CertificateTesting" vmsize="Small">
-       ...
-           <Endpoints>
-               <InputEndpoint name="HttpsIn" protocol="https" port="443" 
-                   certificate="SampleCertificate" />
-           </Endpoints>
-       ...
-       </WebRole>
+    ```xml
+    <WebRole name="CertificateTesting" vmsize="Small">
+    ...
+        <Endpoints>
+            <InputEndpoint name="HttpsIn" protocol="https" port="443" 
+                certificate="SampleCertificate" />
+        </Endpoints>
+    ...
+    </WebRole>
+    ```
+
 3. サービス定義ファイルで、**Sites** セクション内に **Binding** 要素を追加します。 このセクションは、エンドポイントをサイトにマップするための HTTPS バインドを追加します。
    
-       <WebRole name="CertificateTesting" vmsize="Small">
-       ...
-           <Sites>
-               <Site name="Web">
-                   <Bindings>
-                       <Binding name="HttpsIn" endpointName="HttpsIn" />
-                   </Bindings>
-               </Site>
-           </Sites>
-       ...
-       </WebRole>
+    ```xml   
+    <WebRole name="CertificateTesting" vmsize="Small">
+    ...
+        <Sites>
+            <Site name="Web">
+                <Bindings>
+                    <Binding name="HttpsIn" endpointName="HttpsIn" />
+                </Bindings>
+            </Site>
+        </Sites>
+    ...
+    </WebRole>
+    ```
    
    サービス定義ファイルに対して必要な変更はすべて完了しましたが、サービス構成ファイルに証明書の情報を追加する必要もあります。
 4. サービス構成ファイル (CSCFG) である ServiceConfiguration.Cloud.cscfg で、**Role** セクション内に **Certificates** セクションを追加し、次に示す拇印値のサンプルを証明書の拇印値に置き換えます。
    
-       <Role name="Deployment">
-       ...
-           <Certificates>
-               <Certificate name="SampleCertificate" 
-                   thumbprint="9427befa18ec6865a9ebdc79d4c38de50e6316ff" 
-                   thumbprintAlgorithm="sha1" />
-               <Certificate name="CAForSampleCertificate"
-                   thumbprint="79d4c38de50e6316ff9427befa18ec6865a9ebdc" 
-                   thumbprintAlgorithm="sha1" />
-           </Certificates>
-       ...
-       </Role>
+    ```xml   
+    <Role name="Deployment">
+    ...
+        <Certificates>
+            <Certificate name="SampleCertificate" 
+                thumbprint="9427befa18ec6865a9ebdc79d4c38de50e6316ff" 
+                thumbprintAlgorithm="sha1" />
+            <Certificate name="CAForSampleCertificate"
+                thumbprint="79d4c38de50e6316ff9427befa18ec6865a9ebdc" 
+                thumbprintAlgorithm="sha1" />
+        </Certificates>
+    ...
+    </Role>
+    ```
 
 (上記の例では、拇印アルゴリズムに **sha1** を使用しています。 証明書の拇印アルゴリズムに適切な値を指定してください。)
 
@@ -136,15 +145,17 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 ## <a name="step-3-upload-a-certificate"></a>ステップ 3: 証明書のアップロード
 デプロイメント パッケージがこの証明書を使用するように更新され、HTTPS エンドポイントが追加されました。 これで、Azure クラシック ポータルを使用して Azure にパッケージと証明書をアップロードできるようになりました。
 
-1. [Azure クラシック ポータル][Azure クラシック ポータル]にログインします。 
+1. [Azure クラシック ポータル][Azure classic portal]にログインします。 
 2. 左側のナビゲーション ウィンドウで、**[Cloud Services]** をクリックします。
 3. 目的のクラウド サービスをクリックします。
 4. **[証明書]** タブをクリックします。
    
     ![[証明書] タブをクリックします。](./media/cloud-services-configure-ssl-certificate/click-cert.png)
+
 5. **[アップロード]** ボタンをクリックします。
    
     ![[アップロード]](./media/cloud-services-configure-ssl-certificate/upload-button.png)
+    
 6. **[ファイル]**、**[パスワード]** を指定し、**[完了]** (チェック マーク) をクリックします。
 
 ## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>ステップ 4: HTTPS を使用してロール インスタンスに接続する
@@ -170,7 +181,7 @@ Azure でデプロイメントを実行できるようになったため、HTTPS
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name.md)
 * [クラウド サービスを管理する](cloud-services-how-to-manage.md)
 
-[Azure クラシック ポータル]: http://manage.windowsazure.com
+[Azure classic portal]: http://manage.windowsazure.com
 [0]: ./media/cloud-services-configure-ssl-certificate/CreateCloudService.png
 [1]: ./media/cloud-services-configure-ssl-certificate/AddCertificate.png
 [2]: ./media/cloud-services-configure-ssl-certificate/CopyURL.png
@@ -179,6 +190,6 @@ Azure でデプロイメントを実行できるようになったため、HTTPS
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

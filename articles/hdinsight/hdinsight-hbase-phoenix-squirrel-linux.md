@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 09/02/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 88b59176d219622fe28289c015d004fe675be0eb
+ms.sourcegitcommit: 58212ae80ef2b930661e739aeb4779c6f9bd1bec
+ms.openlocfilehash: ceb33327ec2ced7c1ffad89696e64538c7fd4a5d
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 88b59176d219622fe28289c015d004fe675be0eb
 HDInsight での [Apache Phoenix](http://phoenix.apache.org/) の使用方法、およびSQLLine の使用方法について説明します。 Phoenix の詳細については、 [Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。 Phoenix の文法については、 [Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
 
 > [!NOTE]
-> HDInsight での Phoenix のバージョンの情報については、[HDInsight で提供される Hadoop クラスター バージョンの新機能][hdinsight-versions]に関するページを参照してください。
+> HDInsight での Phoenix のバージョンの情報については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。
 >
 >
 
@@ -34,8 +34,8 @@ HDInsight での [Apache Phoenix](http://phoenix.apache.org/) の使用方法、
 ### <a name="prerequisites"></a>前提条件
 SQLLine を使用するには、以下のものが必要です。
 
-* **HDInsight 環境の HBase クラスター**。 HBase クラスターのプロビジョニングについては、[HDInsight での Apache HBase の使用開始][hdinsight-hbase-get-started]に関するページを参照してください。
-* **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。 方法については、[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]に関するページを参照してください。
+* **HDInsight 環境の HBase クラスター**。 HBase クラスターのプロビジョニングについては、「[HDInsight での Apache HBase の使用][hdinsight-hbase-get-started]」を参照してください。
+* **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。 方法については、「[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。
 
 HBase クラスターに接続するときは、いずれかの Zookeeper に接続する必要があります。 各 HDInsight クラスターには 3 つの Zookeeper があります。
 
@@ -70,15 +70,14 @@ HBase クラスターに接続するときは、いずれかの Zookeeper に接
 ## <a name="next-steps"></a>次のステップ
 この記事では、HDInsight で Apache Phoenix を使用する方法を説明しました。  詳細については、次を参照してください。
 
-* [HDInsight HBase の概要][hdinsight-hbase-overview]: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと厳密な整合性を実現します。
-* [Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]: アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
-* 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-geo-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
-* [HDInsight の HBase を使った Twitter の感情分析][hbase-twitter-sentiment]: HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[感情分析](http://en.wikipedia.org/wiki/Sentiment_analysis)を実施する方法について説明します。
+* [HDInsight HBase の概要][hdinsight-hbase-overview]: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
+* 「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」: アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
+* 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
+* 「[HDInsight 環境の HBase で Twitter のセンチメントを分析する][hbase-twitter-sentiment]」: HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[感情分析](http://en.wikipedia.org/wiki/Sentiment_analysis)を実行する方法について説明します。
 
 [azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
 
-[hdinsight-versions]: hdinsight-component-versioning.md
 [hdinsight-hbase-get-started]: hdinsight-hbase-tutorial-get-started.md
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
@@ -95,6 +94,6 @@ HBase クラスターに接続するときは、いずれかの Zookeeper に接
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/09/2016
 ms.author: huvalo;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b1efa86208ef45f84de5143a6a906c871d958e9d
+ms.sourcegitcommit: 045e40bccad59586987c0a18253dafff2f955a93
+ms.openlocfilehash: ea5005e7cff775c798b030748324781ef7dcfe7d
 
 
 ---
@@ -78,7 +78,7 @@ Python クライアント ライブラリで使用するために Studio で提�
 
 * 所有者からトークンをリクエストします。 所有者は Studio のワークスペースの [設定] ページから認証トークンを確認できます。 左側のウィンドウから **[設定]** を選択し、**[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。  プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
 
-![](./media/machine-learning-python-data-access/ml-python-access-settings-tokens.png)
+![認証トークン](./media/machine-learning-python-data-access/ml-python-access-settings-tokens.png)
 
 * 所有者への役割の昇格を申請する  そのためにはまず、ワークスペースの現在の所有者にワークスペースから削除してもらい、その後所有者としてに再度招待してもらう必要があります。
 
@@ -114,7 +114,7 @@ Machine Learning Studio で実験が実行されると、モジュールの出�
 
 モジュールの出力ノードの上にカーソルを置くと、形式を確認できます。 ヒントにノード名とともに表示されます。
 
-[分割][split]モジュールなど一部のモジュールでは、Python クライアント ライブラリでサポートされない `Dataset` 名の形式で出力されます。
+[[分割]][split] モジュールなど一部のモジュールでは、Python クライアント ライブラリでサポートされない `Dataset` 名の形式で出力されます。
 
 ![データセット形式][dataset-format]
 
@@ -126,7 +126,7 @@ Machine Learning Studio で実験が実行されると、モジュールの出�
 
 1. 新しい実験を作成する
 2. **[米国国勢調査局提供の、成人収入に関する二項分類データセット]** モジュールを挿入します。
-3.  [[分割]][split] モジュールを挿入して、その入力値をデータ セット モジュール出力に接続します。
+3. [[分割]][split] モジュールを挿入して、その入力値をデータ セット モジュール出力に接続します。
 4. [[CSV に変換]][convert-to-csv] モジュールを挿入して、その入力値を [[分割]][split] モジュール出力の 1 つに接続します。
 5. 実験を保存して実行し、実行が完了するまで待機します。
 6. [[CSV に変換]][convert-to-csv] モジュールで出力ノードをクリックします。
@@ -338,6 +338,6 @@ Python クライアント ライブラリは、Pandas DataFrame を次の形式�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

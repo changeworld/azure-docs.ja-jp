@@ -1,14 +1,13 @@
 ---
 title: "Azure Government のコンピューティング | Microsoft Docs"
 description: "Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: 
 ms.assetid: fb11f60c-5a70-46a9-82a0-abb2a4f4239b
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na

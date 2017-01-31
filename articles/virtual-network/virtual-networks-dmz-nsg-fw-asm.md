@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 178771fb235e8b2786e4b6d0ac117d5c90540c67
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
 
 
 ---
-# <a name="example-2-build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>例 2 - ファイアウォールと NSG から成る DMZ を構築してアプリケーションを保護する
+# <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>例 2 - ファイアウォールと NSG から成る DMZ を構築してアプリケーションを保護する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
 
 この例では、ファイアウォールと 4 台の Windows Server、ネットワーク セキュリティ グループから成る DMZ を作成します。 また、各手順をより深く理解できるように、関連するコマンドを順に説明します。 さらに、「トラフィックに関するシナリオ」セクションでは、DMZ の防御層におけるトラフィックの進行過程を詳しく説明しています。 最後の「参照」セクションでは、さまざまなシナリオでテストおよび実験ができるように、この環境を構築するための完全なコードと手順を紹介します。 
@@ -79,7 +79,7 @@ ms.openlocfilehash: 178771fb235e8b2786e4b6d0ac117d5c90540c67
 
 これらのルールが各サブネットにバインドされている状態で、インターネットから Web サーバーへの HTTP 要求が受信された場合、ルール 3 (Allow) とルール 5 (Deny) の両方が該当しますが、ルール 3 の方が優先度が高いので、ルール 3 のみが適用され、ルール 5 は作用しません。 したがって、ファイアウォールへの HTTP 要求は許可されます。 同じトラフィックが DNS01 サーバーに到達しようとしている場合は、ルール 5 (Deny) が最初に適用されるので、トラフィックはサーバーに到達できません。 フロントエンド サブネットからバックエンド サブネットへの通信は、ルール 6 (Deny) によってブロックされます (ルール 1 とルール 4 で許可されたトラフィックを除く)。これによって、フロントエンドにある Web アプリケーションのセキュリティが攻撃者によって侵害されたとしてもバックエンド ネットワークは保護されるため、バックエンドの "保護された" ネットワークに対する攻撃者のアクセスは (AppVM01 サーバー上で公開されているリソースに) 限定されます。
 
-インターネットへ向かうトラフィックは、既定の送信ルールによって許可されています。 この例では、送信トラフィックを許可していますが、送信ルールに対する変更は一切行っていません。 トラフィックを双方向でロックダウンするには、ユーザー定義ルーティングが必要です。ユーザー定義ルーティングについては、別の例で詳しく説明しています。[メインのセキュリティ境界ドキュメントを参照してください][HOME]。
+インターネットへ向かうトラフィックは、既定の送信ルールによって許可されています。 この例では、送信トラフィックを許可していますが、送信ルールに対する変更は一切行っていません。 トラフィックを双方向でロックダウンするには、ユーザー定義ルーティングが必要です。ユーザー定義ルーティングについては、別の例で詳しく説明しています。[メインのセキュリティ境界ドキュメント][HOME]を参照してください。
 
 上に挙げた NSG ルールは、「[例 1 - NSG を使用して単純な DMZ を構築する][Example1]」で使用した NSG ルールとよく似ています。 個々の NSG ルールとその属性について詳しくは、そのドキュメントで NSG の説明を再確認してください。
 
@@ -218,7 +218,7 @@ Web サーバー (IIS01) とファイアウォールは同じクラウド サー
 ## <a name="conclusion"></a>まとめ
 アプリケーションをファイアウォールで保護したり、バックエンド サブネットを受信トラフィックから切り離したりする方法として、これは比較的わかりやすい部類に入ります。
 
-その他の例とネットワーク セキュリティ境界の概要については、[こちら][HOME]をご覧ください。
+その他の例およびネットワーク セキュリティ境界の概要については、[こちら][HOME]を参照してください。
 
 ## <a name="references"></a>参照
 ### <a name="main-script-and-network-config"></a>主要なスクリプトとネットワーク構成
@@ -567,13 +567,13 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>サンプル アプリケーション スクリプト
-これに対応するサンプル アプリケーションやその他の DMZ の例をインストールする場合は、[サンプル アプリケーション スクリプト][SampleApp]をご利用ください。
+これに対応するサンプル アプリケーション、およびその他の DMZ の例をインストールしたい場合は、[サンプル アプリケーション スクリプト][SampleApp]をご利用ください。
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "NSG での受信 DMZ"
-[2]: ./media/virtual-networks-dmz-nsg-fw-asm/dstnaticon.png "Destination NAT Icon"
-[3]: ./media/virtual-networks-dmz-nsg-fw-asm/firewallrule.png "Firewall Rule"
-[4]: ./media/virtual-networks-dmz-nsg-fw-asm/firewallruleactivate.png "Firewall Rule Activation"
+[2]: ./media/virtual-networks-dmz-nsg-fw-asm/dstnaticon.png "送信先 NAT アイコン"
+[3]: ./media/virtual-networks-dmz-nsg-fw-asm/firewallrule.png "ファイアウォール ルール"
+[4]: ./media/virtual-networks-dmz-nsg-fw-asm/firewallruleactivate.png "ファイアウォール ルールのアクティブ化"
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md
@@ -582,6 +582,6 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

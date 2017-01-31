@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: xibingao;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 353f09a8a6fa3798d764d41618a8f0b3ba83e3d0
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: 777dc11be139b20363e2060776ac0227883591ff
 
 
 ---
 # <a name="set-up-an-azure-sql-server-virtual-machine-as-an-ipython-notebook-server-for-advanced-analytics"></a>高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する
-このトピックでは、クラウド ベースのデータ サイエンス環境の一部として使われる SQL Server 仮想マシンをプロビジョニングおよび構成する方法について説明します。 IPython Notebook、Azure ストレージ エクスプローラーおよび AzCopy などのサポート ツールに加えて、データ サイエンス プロジェクトに役立つ他のユーティリティのある Windows 仮想マシンを構成します。 たとえば Azure ストレージ エクスプローラーおよび AzCopy には、ローカル マシンから Azure BLOB ストレージにデータをアップロードしたり、BLOB ストレージからローカル マシンにデータをダウンロードしたりするための便利な機能が備わっています。
+このトピックでは、クラウド ベースのデータ サイエンス環境の一部として使われる SQL Server 仮想マシンをプロビジョニングおよび構成する方法について説明します。 IPython Notebook、Azure ストレージ エクスプローラー、AzCopy などのサポート ツールに加えて、データ サイエンス プロジェクトに役立つ他のユーティリティのある Windows 仮想マシンを構成します。 たとえば Azure ストレージ エクスプローラーおよび AzCopy には、ローカル マシンから Azure BLOB ストレージにデータをアップロードしたり、BLOB ストレージからローカル マシンにデータをダウンロードしたりするための便利な機能が備わっています。
 
 Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Server を含むイメージがいくつか用意されています。 実際のデータ要件に適した SQL Server VM イメージを選択してください。 推奨されるイメージは、次のとおりです。
 
@@ -36,7 +36,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 ## <a name="a-nameprovisionaconnect-to-the-azure-classic-portal-and-provision-an-sql-server-virtual-machine"></a><a name="Provision"></a>Azure クラシック ポータルに接続し、SQL Server 仮想マシンをプロビジョニングする
 1. アカウントを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/) にログインします。
    Azure アカウントを持っていない場合は、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
-2. Azure クラシック ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+2. Azure クラシック ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 3. **[仮想マシンの作成]** ページで、実際のデータ要件に応じた SQL Server を含む仮想マシン イメージを 1 つ選択し、ページの右下にある次へ進む矢印をクリックします。 Azure でサポートされる SQL Server イメージの最新情報については、「[Azure Virtual Machines における SQL Server](http://go.microsoft.com/fwlink/p/?LinkId=294719)」ドキュメント セットの「[Azure Virtual Machines における SQL Server の概要](http://go.microsoft.com/fwlink/p/?LinkId=294720)」トピックを参照してください。
    
    ![SQL Server VM の選択][1]
@@ -233,7 +233,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 3. **[サーバーのユーザー アカウント名]** テキスト ボックスに SQL ユーザー名を入力します。
 4. **[サーバーのユーザー アカウント パスワード]** テキスト ボックスに SQL ユーザーのパスワードを入力します。
    
-   ![Azure ML データのインポート][13]
+   ![Azure Machine Learning の [データのインポート]][13]
 
 ## <a name="a-nameshutdownashutdown-and-deallocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>使用されていないときは仮想マシンをシャット ダウンし割り当てを解除する
 Azure Virtual Machines の料金は **従量課金制**です。 仮想マシンを使用しないときに課金されないようにするには、 **[停止 (割り当て解除)]** 状態にする必要があります。
@@ -277,6 +277,6 @@ Azure Virtual Machines の料金は **従量課金制**です。 仮想マシン
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

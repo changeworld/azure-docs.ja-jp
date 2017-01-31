@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a4230f1dc65e0b5bb5c4904a1c2780f0c3c907f1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a8c557ea07cbccb913bc47c510f6759dd832c861
 
 
 ---
@@ -47,15 +47,15 @@ SQL Server Integration Services (SSIS) は、SQL Data Warehouse に接続し、�
 
 1. ADO NET 変換先を使用して、SQL Data Warehouse に接続する。 このチュートリアルでは、使用する構成オプションが最小限のため、ADO NET 変換先を使用します。
 2. OLE DB 変換先を使用して、SQL Data Warehouse に接続する。 このオプションは、ADO NET 変換先よりもパフォーマンスが若干高くなる場合があります。
-3. Azure BLOB アップロード タスクを使用して Azure Blob Storage でデータをステージングした後、 SSIS の SQL 実行タスクを使用して、SQL Data Warehouse にデータを読み込む Polybase スクリプトを起動する。 このオプションを使用すると、ここに示した 3 つのオプションの中で最も高いパフォーマンスが得られます。 Azure BLOB アップロード タスクを取得するには、[Microsoft SQL Server 2016 Integration Services Feature Pack for Azure][Microsoft SQL Server 2016 Integration Services Feature Pack for Azure] をダウンロードします。 Polybase の詳細については、[PolyBase ガイド][PolyBase ガイド] をご覧ください。
+3. Azure BLOB アップロード タスクを使用して Azure Blob Storage でデータをステージングした後、 SSIS の SQL 実行タスクを使用して、SQL Data Warehouse にデータを読み込む Polybase スクリプトを起動する。 このオプションを使用すると、ここに示した 3 つのオプションの中で最も高いパフォーマンスが得られます。 Azure BLOB アップロード タスクを取得するには、[Microsoft SQL Server 2016 Integration Services Feature Pack for Azure][Microsoft SQL Server 2016 Integration Services Feature Pack for Azure] をダウンロードします。 Polybase の詳細については、[PolyBase ガイド][PolyBase Guide]をご覧ください。
 
 ## <a name="before-you-start"></a>開始する前に
 このチュートリアルを進めるには、次が必要です。
 
-1. **SQL Server Integration Services (SSIS)**。 SSIS は SQL Server のコンポーネントであるため、SQL Server の評価版またはライセンス版が必要です。 SQL Server 2016 Preview の評価版を入手するには、[「SQL Server 評価版ソフトウェア」][SQL Server 評価版ソフトウェア]を参照してください。
-2. **Visual Studio**。 無料の Visual Studio 2015 Community Edition を入手するには、[「Visual Studio Community」][Visual Studio Community]を参照してください。
-3. **SQL Server Data Tools for Visual Studio (SSDT)**。 SQL Server Data Tools for Visual Studio 2015 を入手するには、[SQL Server Data Tools のダウンロード][SQL Server Data Tools のダウンロード] に関するページを参照してください。
-4. **サンプル データ**。 このチュートリアルでは、SQL Data Warehouse に読み込むソース データとして SQL Server の AdventureWorks サンプル データベースに格納されているサンプル データを使用します。 AdventureWorks サンプル データベースを入手するには、[「AdventureWorks 2014 サンプル データベース」][AdventureWorks 2014 Sample Databases (AdventureWorks 2014 サンプル データベース) (AdventureWorks 2014 サンプル データベース)]を参照してください。
+1. **SQL Server Integration Services (SSIS)**。 SSIS は SQL Server のコンポーネントであるため、SQL Server の評価版またはライセンス版が必要です。 SQL Server 2016 Preview の評価版を入手するには、「[SQL Server 評価版ソフトウェア][SQL Server Evaluations]」をご覧ください。
+2. **Visual Studio**。 無料の Visual Studio 2015 Community Edition を入手するには、「[Visual Studio Community][Visual Studio Community]」をご覧ください。
+3. **SQL Server Data Tools for Visual Studio (SSDT)**。 SQL Server Data Tools for Visual Studio 2015 を入手するには、「[SQL Server Data Tools (SSDT) のダウンロード][Download SQL Server Data Tools (SSDT)]」をご覧ください。
+4. **サンプル データ**。 このチュートリアルでは、SQL Data Warehouse に読み込むソース データとして SQL Server の AdventureWorks サンプル データベースに格納されているサンプル データを使用します。 AdventureWorks サンプル データベースを入手するには、「[AdventureWorks 2014 Sample Databases (AdventureWorks 2014 サンプル データベース)][AdventureWorks 2014 Sample Databases]」をご覧ください。
 5. **SQL Data Warehouse データベースとアクセス許可**。 このチュートリアルでは、SQL Data Warehouse インスタンスに接続し、そのインスタンスにデータを読み込みます。 テーブルを作成し、データを読み込むためのアクセス許可が必要です。
 6. **ファイアウォール規則**。 SQL Data Warehouse にデータをアップロードする前に、SQL Data Warehouse でローカル コンピューターの IP アドレスを指定したファイアウォール規則を作成する必要があります。
 
@@ -144,7 +144,7 @@ Visual Studio で、新しい Integration Services (SSIS) プロジェクトが�
    
    1. 変換先テーブルの名前を **SalesOrderDetail**に変更します。
    2. **rowguid** 列を削除します。 **uniqueidentifier** データ型は、SQL Data Warehouse ではサポートされていません。
-   3. **LineTotal** 列のデータ型を **money** に変更します。 **decimal** データ型は、SQL Data Warehouse ではサポートされていません。 サポートされているデータ型については、[「CREATE TABLE (Azure SQL Data Warehouse, Parallel Data Warehouse)」][CREATE TABLE (Azure SQL Data Warehouse, Parallel Data Warehouse) (CREATE TABLE (Azure SQL Data Warehouse、Parallel Data Warehouse)) (CREATE TABLE (Azure SQL Data Warehouse、Parallel Data Warehouse))]を参照してください。
+   3. **LineTotal** 列のデータ型を **money** に変更します。 **decimal** データ型は、SQL Data Warehouse ではサポートされていません。 サポートされるデータ型については、「[CREATE TABLE (Azure SQL Data Warehouse, Parallel Data Warehouse) (CREATE TABLE (Azure SQL Data Warehouse、Parallel Data Warehouse))][CREATE TABLE (Azure SQL Data Warehouse, Parallel Data Warehouse)]」をご覧ください。
       
        ![][12b]
    4. **[OK]** をクリックして、テーブルを作成し、**[ADO.NET 変換先エディター]** に戻ります。
@@ -167,9 +167,9 @@ Visual Studio で、新しい Integration Services (SSIS) プロジェクトが�
 ご利用ありがとうございます。 SQL Server Integration Services を使用して、Azure SQL Data Warehouse にデータを問題なく読み込むことができました。
 
 ## <a name="next-steps"></a>次のステップ
-* SSIS データ フローの詳細を確認します。 まずは、[「データ フロー」][[データ フロー]]を参照してください。
-* デザイン環境で直接パッケージのデバッグおよびトラブルシューティングを行う方法について確認します。 [「パッケージ開発のトラブルシューティング ツール」][パッケージ開発のトラブルシューティング ツール] から始めてください。
-* Integration Services サーバーまたは別のストレージの場所に SSIS プロジェクトとパッケージをデプロイする方法について確認します。 [「プロジェクトとパッケージの展開」][プロジェクトとパッケージの展開] から始めてください。
+* SSIS データ フローの詳細を確認します。 まずは、「[データ フロー][Data Flow]」をご覧ください。
+* デザイン環境で直接パッケージのデバッグおよびトラブルシューティングを行う方法について確認します。 まずは、「[パッケージ開発のトラブルシューティング ツール][Troubleshooting Tools for Package Development]」をご覧ください。
+* Integration Services サーバーまたは別のストレージの場所に SSIS プロジェクトとパッケージをデプロイする方法について確認します。 まずは、「[プロジェクトとパッケージの展開][Deployment of Projects and Packages]」をご覧ください。
 
 <!-- Image references -->
 [01]:  ./media/sql-data-warehouse-load-from-sql-server-with-integration-services/ssis-designer-01.png
@@ -192,21 +192,21 @@ Visual Studio で、新しい Integration Services (SSIS) プロジェクトが�
 <!-- Article references -->
 
 <!-- MSDN references -->
-[PolyBase ガイド]: https://msdn.microsoft.com/library/mt143171.aspx
-[SQL Server Data Tools のダウンロード]: https://msdn.microsoft.com/library/mt204009.aspx
-[CREATE TABLE (Azure SQL Data Warehouse, Parallel Data Warehouse) (CREATE TABLE (Azure SQL Data Warehouse、Parallel Data Warehouse)) (CREATE TABLE (Azure SQL Data Warehouse、Parallel Data Warehouse))]: https://msdn.microsoft.com/library/mt203953.aspx
-[[データ フロー]]: https://msdn.microsoft.com/library/ms140080.aspx
-[パッケージ開発のトラブルシューティング ツール]: https://msdn.microsoft.com/library/ms137625.aspx
-[プロジェクトとパッケージの展開]: https://msdn.microsoft.com/library/hh213290.aspx
+[PolyBase Guide]: https://msdn.microsoft.com/library/mt143171.aspx
+[Download SQL Server Data Tools (SSDT)]: https://msdn.microsoft.com/library/mt204009.aspx
+[CREATE TABLE (Azure SQL Data Warehouse, Parallel Data Warehouse)]: https://msdn.microsoft.com/library/mt203953.aspx
+[Data Flow]: https://msdn.microsoft.com/library/ms140080.aspx
+[Troubleshooting Tools for Package Development]: https://msdn.microsoft.com/library/ms137625.aspx
+[Deployment of Projects and Packages]: https://msdn.microsoft.com/library/hh213290.aspx
 
 <!--Other Web references-->
 [Microsoft SQL Server 2016 Integration Services Feature Pack for Azure]: http://go.microsoft.com/fwlink/?LinkID=626967
-[SQL Server 評価版ソフトウェア]: https://www.microsoft.com/en-us/evalcenter/evaluate-sql-server-2016
+[SQL Server Evaluations]: https://www.microsoft.com/en-us/evalcenter/evaluate-sql-server-2016
 [Visual Studio Community]: https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx
-[AdventureWorks 2014 Sample Databases (AdventureWorks 2014 サンプル データベース) (AdventureWorks 2014 サンプル データベース)]: https://msftdbprodsamples.codeplex.com/releases/view/125550
+[AdventureWorks 2014 Sample Databases]: https://msftdbprodsamples.codeplex.com/releases/view/125550
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

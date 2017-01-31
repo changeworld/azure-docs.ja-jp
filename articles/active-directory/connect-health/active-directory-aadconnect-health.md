@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: fbb95696d8b9267d59d04769d3d7f48c29a8e4dd
+ms.sourcegitcommit: c9ebe21acbe06aa25bcadb3b500c34cf89154388
+ms.openlocfilehash: 9abdfa7349bee74b89a23663969904110c730395
 
 
 ---
@@ -63,7 +63,7 @@ Azure AD Connect Health for Sync は、オンプレミスの Active Directory �
 >
 
 ## <a name="azure-ad-connect-health-for-ad-ds-previewactive-directory-aadconnect-health-addsmd"></a>[Azure AD Connect Health for AD DS (プレビュー)](active-directory-aadconnect-health-adds.md)
-Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 にインストールされているドメイン コントローラーは、Azure AD Connect Health for AD DS で監視することができます。 手軽で経済的な正常性エージェントをインストールすることによって、オンプレミスの AD DS 環境をクラウドから直接監視することができます。 Azure AD Connect Health for AD DS の主な機能は次のとおりです。
+Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016 にインストールされているドメイン コントローラーは、Azure AD Connect Health for AD DS で監視することができます。 手軽で経済的な正常性エージェントをインストールすることによって、オンプレミスの AD DS 環境をクラウドから直接監視することができます。 Azure AD Connect Health for AD DS の主な機能は次のとおりです。
 
 * ドメイン コントローラーの異常を検出する監視アラートと重大なアラートを知らせる電子メール通知。
 * [ドメイン コントローラー] ダッシュボード。ドメイン コントローラーの正常性と運用状態を把握できるクイック ビューアーが用意されています。
@@ -81,7 +81,7 @@ Azure AD Connect Health は簡単に使用を開始できます。 次の手順�
 
 1. [Azure AD Premium](../active-directory-get-started-premium.md) を入手するか、[試用版の利用を開始](https://azure.microsoft.com/trial/get-started-active-directory/)します。
 2. [Azure AD Connect Health エージェントをダウンロードし、ID サーバーにインストール](#download-and-install-azure-ad-connect-health-agent) します。
-3.  [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)
+3. [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)
 
 > [!NOTE]
 > Azure AD Connect Health ダッシュボードでデータを表示するためには、あらかじめ対象サーバーに Azure AD Connect Health エージェントをインストールしておく必要があります。
@@ -121,6 +121,6 @@ Azure AD Connect Health ポータルを使用すると、アラート、パフ�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

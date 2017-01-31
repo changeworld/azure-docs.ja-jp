@@ -1,19 +1,18 @@
 ---
 title: "Azure Government のデータベース | Microsoft Docs"
 description: "Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: 
 ms.assetid: a1e173a9-996a-4091-a2e3-6b1e36da9ae1
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/18/2016
+ms.date: 11/14/2016
 ms.author: ryansoc
 translationtype: Human Translation
 ms.sourcegitcommit: c94e643565374f852633254a94c2138713cc290e

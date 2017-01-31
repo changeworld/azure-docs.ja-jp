@@ -13,7 +13,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2016
+ms.date: 01/25/2017
 ms.author: shlo
 translationtype: Human Translation
 ms.sourcegitcommit: a4121f8857fa9eaeb1cf1bca70e29666f6a04f63

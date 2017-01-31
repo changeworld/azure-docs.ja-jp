@@ -1,5 +1,5 @@
 ---
-title: Deploy a VM using a password stored in Azure Stack Key Vault | Microsoft Docs
+title: Deploy a VM with securely stored password on Azure Stack | Microsoft Docs
 description: Learn how to deploy a VM using a password stored in Azure Stack Key Vault
 services: azure-stack
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/26/2016
+ms.date: 01/23/2017
 ms.author: ricardom
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 91077d36cd1355ba1f2c731e200cf717152cdb5b
+ms.sourcegitcommit: a3a8b9ff522369ed0f03817585e1666507c95c6e
+ms.openlocfilehash: fe44b7c36b1527b6008e20e6f29c41d662222a1e
 
 
 ---
@@ -48,6 +48,6 @@ You reference the secret from within a parameters file, which passes values to y
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 05e9e10d9a37f90b679175a3ed9d78ed05d9e447
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: cab40991e5b0628f422b9eb91130d8135c1434f1
 
 
 ---
@@ -121,7 +121,7 @@ Azure Resource Manager で、アプリケーションのデプロイと構成を
 
 Log Analytics エージェントを Resource Manager テンプレートの一部として含めることで、Log Analytics ワークスペースにレポートするように各仮想マシンを事前構成することができます。
 
-Resource Manager テンプレートの詳細については、「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+Resource Manager テンプレートの詳細については、「[Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
 以下の Resource Manager テンプレートは、Microsoft Monitoring Agent 拡張機能がインストールされた状態で Windows 仮想マシンをデプロイする例です。 これは典型的な仮想マシン テンプレートですが、以下のものが追加されています。
 
@@ -161,7 +161,7 @@ Resource Manager テンプレートの詳細については、「[Azure Resource
     "workspaceName": {
       "type": "string",
       "metadata": {
-         "description": "OMD workspace name"
+         "description": "OMS workspace name"
       }
     },
     "windowsOSVersion": {
@@ -404,6 +404,6 @@ Azure 以外の場所にあるコンピューターについては、以下の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

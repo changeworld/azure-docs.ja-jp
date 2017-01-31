@@ -1,6 +1,6 @@
 ---
-title: "ハブの作成と Raspberry Pi 3 の登録 | Microsoft Docs"
-description: "リソース グループと Azure IoT ハブを作成し、Azure CLI を使用して Pi を IoT ハブに登録します。"
+title: "Azure IoT Hub の作成と Raspberry Pi 3 の登録 | Microsoft Docs"
+description: "Azure CLI を使用してリソース グループと Azure IoT Hub を作成し、Pi を IoT Hub ID レジストリに登録します。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: d93b7b67ee0727f45c3f4b93459b013b16805bf6
-ms.openlocfilehash: fcfb90a385a68e863b3c1d3d0fa3bb24fe778291
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 1f22ab6a97427f3be521c69e308386ad0b1b286b
 
 
 ---
@@ -65,7 +65,7 @@ Azure IoT Hub は、何百万台もの IoT 資産を接続、監視、管理す�
 4. 次のコマンドを実行して、米国西部のリージョンに iot-sample という名前のリソース グループを作成します。
 
    ```bash
-   az resource group create --name iot-sample --location westus
+   az group create --name iot-sample --location westus
    ```
 
    `westus` は、リソース グループを作成する場所です。 別の場所を使用する場合は、`az account list-locations -o table` を実行して、Azure でサポートされているすべての場所を確認します。
@@ -103,6 +103,6 @@ IoT ハブを作成し、デバイス ID を使用して IoT ハブに Pi を登
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -16,22 +16,22 @@ ms.workload: na
 ms.date: 10/31/2016
 ms.author: araguila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 12f8fa60fd5da8dcb7ce8f429f6bc47595a0f9d6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a010e0dff76390020b74ada6d6144e411e304268
 
 
 ---
 # <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>チュートリアル: ロジック アプリを Azure IoT Suite リモート監視構成済みソリューションに接続する
 [Microsoft Azure IoT Suite][lnk-internetofthings] リモート監視構成済みソリューションは、IoT ソリューションを例示するエンド ツー エンド機能をすぐに使い始められる優れた方法です。 このチュートリアルでは、Logic App を Microsoft Azure IoT Suite リモート監視構成済みソリューションに追加する方法を説明します。 これらの手順は、IoT ソリューションをビジネス プロセスに接続してさらに活用できる方法を示すものです。
 
-*リモート監視構成済みソリューションのプロビジョニング方法のチュートリアルについては、「[チュートリアル: IoT 事前構成済みソリューションの使用][lnk-getstarted]」を参照してください。*
+"*リモート監視構成済みソリューションのプロビジョニング方法のチュートリアルについては、「[チュートリアル: IoT 事前構成済みソリューションの使用][lnk-getstarted]」を参照してください。*"
 
 このため、このチュートリアルの前に、以下を行う必要があります。
 
 * Azure サブスクリプションでリモート監視の事前構成済みソリューションのプロビジョニングを行います。
 * SendGrid アカウントを作成し、ビジネス プロセスをトリガーする電子メールを送信できるようにします。 [SendGrid](https://sendgrid.com/) で **[無料で試す]**をクリックし、無料試用版アカウントにサインアップできます。 無料試用版アカウントに登録したら、SendGrid でメールを送信するアクセス許可を付与する [API キー](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) を作成する必要があります。 この API キーはチュートリアルの後半で必要になります。
 
-リモート監視構成済みソリューションを既にプロビジョニングしていることを前提とし、[Azure ポータル][lnk-azureportal]でそのソリューションのリソース グループに移動します。 リソース グループの名前は、リモート監視ソリューションのプロビジョニング時に選択したソリューション名と同じです。 リソース グループには、Azure クラシック ポータルにある Azure Active Directory アプリケーション以外の、ソリューション用にプロビジョニングされている Azure リソースがすべて表示されます。 次のスクリーンショットには、リモート監視構成済みソリューションの **[リソース グループ]** ブレードの例が示されています。
+リモート監視構成済みソリューションを既にプロビジョニングしていることを前提とし、[Azure Portal][lnk-azureportal] でそのソリューションのリソース グループに移動します。 リソース グループの名前は、リモート監視ソリューションのプロビジョニング時に選択したソリューション名と同じです。 リソース グループには、Azure クラシック ポータルにある Azure Active Directory アプリケーション以外の、ソリューション用にプロビジョニングされている Azure リソースがすべて表示されます。 次のスクリーンショットには、リモート監視構成済みソリューションの **[リソース グループ]** ブレードの例が示されています。
 
 ![](media/iot-suite-logic-apps-tutorial/resourcegroup.png)
 
@@ -125,7 +125,7 @@ ms.openlocfilehash: 12f8fa60fd5da8dcb7ce8f429f6bc47595a0f9d6
 ## <a name="deploy-from-the-command-line"></a>コマンドラインからデプロイする
 このセクションでは、更新されたバージョンのリモート監視ソリューションをデプロイして、Azure で現在実行中のバージョンを置き換えます。
 
-1. [開発環境のセットアップ][lnk-devsetup]の手順に従って、デプロイ用に環境をセットアップします。
+1. [デプロイのセットアップ][lnk-devsetup]手順に従って、デプロイ用に環境をセットアップします。
 2. ローカルでデプロイする場合は、[ローカル デプロイ][lnk-localdeploy]の手順に従ってください。
 3. クラウドにデプロイし、既存のクラウド デプロイを更新する場合は、[クラウド デプロイ][lnk-clouddeploy]の手順に従ってください。 デプロイ名として、元のデプロイの名前を使用します。 たとえば、元のデプロイ名が **demologicapp**の場合は、以下のコマンドを使用します。
    
@@ -144,7 +144,7 @@ ms.openlocfilehash: 12f8fa60fd5da8dcb7ce8f429f6bc47595a0f9d6
 気温ルールは **Raise Alarm** アクションをトリガーし、湿度ルールは **SendMessage** アクションをトリガーします。 両方のアクション ( **ActionRepository** クラス) で同じ URL を使用したと仮定した場合、ロジック アプリはいずれかのルールをトリガーします。 両方のルールで、SendGrid を使用して **宛先** アドレスにアラートの詳細を含むメールを送信します。
 
 > [!NOTE]
-> ロジック アプリはしきい値が満たされるたびにトリガーし続けます。 不要なメールが送信されないようにするために、ソリューション ポータルでルールを無効にするか、[Azure ポータル][lnk-azureportal]でロジック アプリを無効にすることができます。
+> ロジック アプリはしきい値が満たされるたびにトリガーし続けます。 不要なメールが送信されないようにするために、ソリューション ポータルでルールを無効にするか、[Azure Portal][lnk-azureportal] でロジック アプリを無効にすることができます。
 > 
 > 
 
@@ -172,6 +172,6 @@ ms.openlocfilehash: 12f8fa60fd5da8dcb7ce8f429f6bc47595a0f9d6
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

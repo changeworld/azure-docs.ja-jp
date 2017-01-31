@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/28/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
-ms.openlocfilehash: 69f3bd4759e879c6f3b55d8126f34e8ebf4be52d
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 18959934c53e2e1c719cc627ffa286acbdcaa967
 
 
 ---
@@ -58,13 +58,25 @@ Web Apps に適用されるいくつかの App Service の主要機能を次に�
 App Service の Web Apps に加え、Azure では Web サイトと Web アプリケーションをホストするために利用できるサービスを他にも提供しています。 ほとんどの場合は、Web Apps が最適な方法になります。  マイクロサービス アーキテクチャ向けには、[Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) を検討してください。また、コードの実行に使用する VM をより細かく制御する必要がある場合は、[Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) の利用をご検討ください。 これらの Azure サービスから適切なサービスを選択する方法の詳細については、「[Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較](choose-web-site-cloud-service-vm.md)」を参照してください。
 
 ## <a name="getting-started"></a>使用の開始
-まず App Service で新しい Web アプリにサンプル コードをデプロイするには、チュートリアル「 [5 分で初めての Web アプリを Azure にデプロイする](app-service-web-get-started.md) 」に従ってください。 無料の Azure アカウントが必要になります。
+まず App Service で新しい Web アプリにサンプル コードをデプロイするには、次のドロップダウン ボックスにあるチュートリアルのいずれかに従ってください。 無料の Azure アカウントが必要になります。
 
-Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> [!div class="op_single_selector"]
+> * [初めての HTML サイトを Azure に 5 分でデプロイする](app-service-web-get-started-html-cli-nodejs.md)
+> * [初めての ASP.NET Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-dotnet-cli-nodejs.md)
+> * [初めての PHP Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-php-cli-nodejs.md)
+> * [初めての Node.js Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-nodejs-cli-nodejs.md)
+> * [初めての Python Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-python-cli-nodejs.md)
+> * [初めての Java Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-java.md)
+> 
+> 
+
+> [!NOTE]
+> Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大&1; 時間使用できます。クレジット カードも契約も不要です。
+> 
+> 
 
 
 
-
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

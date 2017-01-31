@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 12/15/2016
 ms.author: pengxia
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c702fda88e0af40084958b1ad51e7156c7f4aee3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: baf4a5e27febb0a26c4bee860957a4e740bd3275
 
 
 ---
@@ -158,6 +158,6 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

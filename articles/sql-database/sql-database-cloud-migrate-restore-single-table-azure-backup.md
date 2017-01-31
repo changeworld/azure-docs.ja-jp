@@ -8,6 +8,7 @@ manager: felixwu
 editor: 
 ms.assetid: 340b41bd-9df8-47fb-adfc-03216de38a5e
 ms.service: sql-database
+ms.custom: migrate and move
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 08/31/2016
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f792ad3da0037c55a41e50710cedcbcdf8ef0d74
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: dbdcfc9760df41ec1f52406b91cc211fc5ad8ef7
 
 
 ---
@@ -26,27 +27,34 @@ SQL Database のデータを誤って変更してしまい、影響を受けた 
 ## <a name="preparation-steps-rename-the-table-and-restore-a-copy-of-the-database"></a>準備手順: テーブルの名前を変更し、データベースのコピーを復元する
 1. Azure SQL Database で、復元したコピーで置き換えるテーブルを識別します。 テーブルの名前を変更するには、Microsoft SQL Management Studio を使用します。 たとえば、&lt;テーブル名&gt;_old のような名前に変更します。
    
-    **注意** ブロックされるのを防ぐため、名前を変更するテーブルでアクティビティが実行されていないことを確認します。 問題が発生する場合は、メンテナンス期間中にこの手順を実行するようにしてください。
+   > [!NOTE]
+   > ブロックされるのを防ぐため、名前を変更するテーブルでアクティビティが実行されていないことを確認します。 問題が発生する場合は、メンテナンス期間中にこの手順を実行するようにしてください。
+   >
+
 2. [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)手順を使用して、データベースのバックアップを復元したい時点に復元します。
    
-    **注**:
+   > [!NOTE]
+   > 復元されたデータベースの名前は、"データベース名 + タイムスタンプ" という形式になります (例: **Adventureworks2012_2016-01-01T22-12Z**)。 この手順では、サーバー上の既存のデータベース名は上書きされません。 これは安全のためであり、ユーザーは現在のデータベースを削除して実稼働用に復元されたデータベースの名前を変更する前に、復元されたデータベースを確認できます。
    
-   * 復元されたデータベースの名前は、"データベース名 + タイムスタンプ" という形式になります (例: **Adventureworks2012_2016-01-01T22-12Z**)。 この手順では、サーバー上の既存のデータベース名は上書きされません。 これは安全のためであり、ユーザーは現在のデータベースを削除して実稼働用に復元されたデータベースの名前を変更する前に、復元されたデータベースを確認できます。
-   * Basic から Premium までのすべてのパフォーマンス レベルが、サービスによって自動的にバックアップされます。バックアップ リテンション期間メトリックは、レベルによって異なります。
-
-| DB 復元 | Basic レベル | Standard レベル | Premium レベル |
-|:--- |:--- |:--- |:--- |
-| ポイントインタイム リストア |7 日間以内のあらゆる復元ポイント |35 日間以内のあらゆる復元ポイント |35 日間以内のあらゆる復元ポイント |
-
 ## <a name="copying-the-table-from-the-restored-database-by-using-the-sql-database-migration-tool"></a>SQL Database 移行ツールを使用して、復元されたデータベースからテーブルをコピーする
+
 1. [SQL Database 移行ウィザード](https://sqlazuremw.codeplex.com)をダウンロードしてインストールします。
 2. SQL Database 移行ウィザードを開き、**[処理の選択]** ページの **[分析と移行] の下にある [データベース]** を選択して、**[次へ]** をクリックします。
+
    ![SQL Database 移行ウィザード - プロセスの選択](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/1.png)
+
 3. **[サーバーへの接続]** ダイアログで、次の設定を適用します。
-   * **[サーバー名]**: SQL Azure インスタンス
-   * **認証**: **SQL Server 認証**。 ログイン資格情報を入力します。
-   * **[Database]**: **[Master DB (データベース一覧を表示する)]**。
-   * **注意** 既定では、ウィザードによってログイン情報が保存されます。 保存したくない場合は、 **[ログイン情報を忘れてください]**を選択します。
+
+   * [サーバー名]: **SQL Server 名**
+   * [認証]: **[SQL Server 認証]**
+   * [ログイン]: **ログイン名**
+   * [パスワード]: **パスワード**
+   * [データベース]: **[Master DB (データベース一覧を表示する)]**
+   
+   > [!NOTE]
+   > 既定では、ウィザードによってログイン情報が保存されます。 保存したくない場合は、 **[ログイン情報を忘れてください]**を選択します。
+   >
+   
      ![SQL Database 移行ウィザード - ソースの選択 - ステップ 1](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/2.png)
 4. **[移行元の選択]** ダイアログ ボックスで、「**準備手順**」セクションで復元したデータベースの名前を移行元として選択し、**[次へ]** をクリックします。
    
@@ -67,7 +75,8 @@ SQL Database のデータを誤って変更してしまい、影響を受けた 
 9. **[接続]** をクリックし、テーブルの移行先とする対象データベースを選択して、**[次へ]** をクリックします。 以前に生成されたスクリプトの実行が終了し、ターゲット データベースに新たにコピーされたテーブルが表示されます。
 
 ## <a name="verification-step"></a>確認手順
-1. 新しくコピーしたテーブルをクエリしてテストし、データが正しいことを確認します。 確認できたら、「**準備手順**」セクションで名前を変更したテーブルを削除できます  (例: &lt;テーブル名&gt;_old)。
+
+- 新しくコピーしたテーブルをクエリしてテストし、データが正しいことを確認します。 確認できたら、「**準備手順**」セクションで名前を変更したテーブルを削除できます  (例: &lt;テーブル名&gt;_old)。
 
 ## <a name="next-steps"></a>次のステップ
 [SQL Database 自動バックアップ](sql-database-automated-backups.md)
@@ -75,6 +84,6 @@ SQL Database のデータを誤って変更してしまい、影響を受けた 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

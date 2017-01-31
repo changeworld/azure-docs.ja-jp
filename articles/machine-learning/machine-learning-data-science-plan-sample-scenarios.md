@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 97cadfc4e94e425abf2b6b2268fe3478e92ef47f
 
 
 ---
@@ -80,7 +80,7 @@ ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
 ## <a name="a-namesmalllocaltodbascenario-4-small-to-medium-dataset-of-local-files-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="smalllocaltodb"></a>シナリオ \#4: ローカル ファイルの小規模から中規模のデータセット (Azure VM の SQL Server を対象)
 ![Azure の SQL DB への小規模から中規模のローカル ファイル][4]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server-ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
 1. SQL Server と IPython Notebook を実行する Azure 仮想マシンを作成します。
 2. Azure ストレージ コンテナーにデータをアップロードします。
 3. IPython Notebook を使用して、Azure ストレージ コンテナーでデータの前処理とクリーニングを行います。
@@ -110,7 +110,7 @@ ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
 ## <a name="a-namelargelocaltodbascenario-5-large-dataset-in-a-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>シナリオ \#5: ローカル ファイルの大規模データセット (Azure VM の SQL Server を対象)
 ![Azure の SQL DB への大規模なローカル ファイル][5]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server-ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
 1. SQL Server と IPython Notebook サーバーを実行する Azure 仮想マシンを作成します。
 2. Azure ストレージ コンテナーにデータをアップロードします。
 3. (省略可能) データの前処理とクリーニングを行います。
@@ -151,7 +151,7 @@ ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
 ## <a name="a-namelargedbtodbascenario-6-large-dataset-in-a-sql-server-database-on-prem-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>シナリオ \#6: オンプレミスの SQL Server データベースの大規模データセット (Azure 仮想マシンの SQL Server を対象)
 ![Azure の SQL DB へのオンプレミスの大規模な SQL DB][6]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server-ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
 1. SQL Server と IPython Notebook サーバーを実行する Azure 仮想マシンを作成します。
 2. いずれかのデータ エクスポート方法を使用して、SQL Server からダンプ ファイルにデータをエクスポートします。
    
@@ -184,10 +184,10 @@ ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
 8. [データのインポート][import-data] モジュールを使用して、SQL Server から直接データを読み取ります。 フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 9. データセットのアップロードから始まる Azure Machine Learning の単純な実験フローを構築します。
 
-### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises-sql-server-to-azure-sql-database"></a>オンプレミス SQL Server から Azure SQL Database に完全なデータベースをコピーする別の方法
+### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>オンプレミス SQL Server から Azure SQL Database に完全なデータベースをコピーする別の方法
 ![ローカル DB をデタッチし、Azure の SQL DB にアタッチする][7]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server-ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
 SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを 1 つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。 これは、SQL Server Management Studio のオブジェクト エクスプローラーか、同等の Transact-SQL コマンドを使用して行います。
 
 1. ソースの場所にあるデータベースをデタッチします。 詳細については、「[データベースのデタッチ](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx)」をご覧ください。
@@ -268,6 +268,6 @@ Advanced Analytics Process and Technology とパブリック データセット�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

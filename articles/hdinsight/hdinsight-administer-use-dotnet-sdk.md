@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aa0f2dd07ffa8437ff224c278135744202adcd73
+ms.sourcegitcommit: ec710057c2016175f65578a9d6884f7273b65169
+ms.openlocfilehash: f2a762ad64feeef91802429cdd959cec67b73473
 
 
 ---
@@ -33,6 +33,7 @@ ms.openlocfilehash: aa0f2dd07ffa8437ff224c278135744202adcd73
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 ## <a name="connect-to-azure-hdinsight"></a>Azure HDInsight への接続
+
 次の Nuget パッケージが必要です。
 
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
@@ -79,10 +80,6 @@ ms.openlocfilehash: aa0f2dd07ffa8437ff224c278135744202adcd73
             /// <summary>
             /// Authenticate to an Azure subscription and retrieve an authentication token
             /// </summary>
-            /// <param name="TenantId">The AAD tenant ID</param>
-            /// <param name="ClientId">The AAD client ID</param>
-            /// <param name="SubscriptionId">The Azure subscription ID</param>
-            /// <returns></returns>
             static TokenCloudCredentials Authenticate(string TenantId, string ClientId, string SubscriptionId)
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + TenantId);
@@ -113,7 +110,7 @@ ms.openlocfilehash: aa0f2dd07ffa8437ff224c278135744202adcd73
 このプログラムを実行すると、プロンプトが表示されます。  プロンプトを表示しない場合は、「 [非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)」をご覧ください。
 
 ## <a name="create-clusters"></a>クラスターの作成
- [.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
+[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
 
 ## <a name="list-clusters"></a>クラスターの一覧表示
 次のコード スニペットは、クラスターと一部のプロパティを一覧表示します。
@@ -136,7 +133,7 @@ ms.openlocfilehash: aa0f2dd07ffa8437ff224c278135744202adcd73
 クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用される worker ノードの数を、クラスターを再作成することなく、変更できます。
 
 > [!NOTE]
-> HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。 クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。  「 [クラスターの一覧と表示](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)」をご覧ください。
+> HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。 クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。  「[クラスターの一覧と表示](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)」を参照してください。
 > 
 > 
 
@@ -167,14 +164,14 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
     
     Storm Web UI は、HDInsight クラスターで使用できます。
     
-    ![HDInsight Storm の規模のバランス調整](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.storm.rebalance.png)
+    ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.storm.rebalance.png)
     
     CLI コマンドを使用して Storm トポロジのバランスを再調整する方法を次の例で示します。
     
-    ## <a name="reconfigure-the-topology-mytopology-to-use-5-worker-processes"></a>Reconfigure the topology "mytopology" to use 5 worker processes,
-    ## <a name="the-spout-blue-spout-to-use-3-executors-and"></a>the spout "blue-spout" to use 3 executors, and
-    ## <a name="the-bolt-yellow-bolt-to-use-10-executors"></a>the bolt "yellow-bolt" to use 10 executors
-      $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+        ## Reconfigure the topology "mytopology" to use 5 worker processes,
+        ## the spout "blue-spout" to use 3 executors, and
+        ## the bolt "yellow-bolt" to use 10 executors
+        $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
 次のコード スニペットは、同期または非同期でクラスターのサイズを変更する方法を示しています。
 
@@ -217,7 +214,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 > 
 > 
 
-これは、ポータルを使用して行うこともできます。 [Azure Portal を使用した HDInsight の管理][hdinsight-admin-portal]に関する記事を参照してください。
+これは、ポータルを使用して行うこともできます。 [Azure ポータルを使用した HDInsight の管理][hdinsight-admin-portal]に関するページを参照してください。
 
 ## <a name="update-http-user-credentials"></a>HTTP ユーザーの資格情報の更新
 [HTTP アクセス許可の付与/取り消し](#grant/revoke-access)と同じ手順です。HTTP アクセスがクラスターで許可されている場合、最初に取り消す必要があります。  次に、新しい HTTP ユーザーの資格情報を使用してアクセス許可を付与してください。
@@ -254,11 +251,11 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 「 [HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行](hdinsight-use-oozie-linux-mac.md)」を参照してください。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Azure BLOB ストレージにデータをアップロードする
-データを [HDInsight へデータのアップロード][hdinsight-upload-data]に関するページを参照してください。
+[HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
 * [HDInsight .NET SDK リファレンス ドキュメント](https://msdn.microsoft.com/library/mt271028.aspx)
-* [Azure Portal を使用した HDInsight の管理][hdinsight-admin-portal]
+* [Azure ポータルを使用した HDInsight の管理][hdinsight-admin-portal]
 * [コマンド ライン インターフェイスを使用した HDInsight の管理][hdinsight-admin-cli]
 * [HDInsight クラスターの作成][hdinsight-provision]
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
@@ -285,6 +282,6 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

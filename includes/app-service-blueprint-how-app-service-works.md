@@ -2,7 +2,7 @@
   * [Web アプリ](../articles/app-service-web/app-service-web-overview.md)
   * [モバイル アプリ](../articles/app-service-mobile/app-service-mobile-value-prop.md)
   * [API アプリ](../articles/app-service-api/app-service-api-apps-why-best-platform.md)
-  * [ロジック アプリ](../articles/app-service-logic/app-service-logic-what-are-logic-apps.md)
+  * [ロジック アプリ](../articles/logic-apps/logic-apps-what-are-logic-apps.md)
 * [Azure App Service (プレゼンテーション)](http://www.slideshare.net/maartenba/windows-azure-web-sites-things-they-dont-teach-kids-in-school-comunity-day-2013)
 * [Azure App Service、Cloud Services、および Virtual Machines の比較](../articles/app-service-web/choose-web-site-cloud-service-vm.md)
 * [App Service プランについて](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)
@@ -15,6 +15,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: v-sharos
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ad6693598cffd5aec7554f5612bc75d7c61d80dd
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5086fa86149e4d8133df339b1261d3792fa66b4c
 
 
 ---
@@ -48,7 +48,7 @@ StorSimple ボリュームをマウントし、初期化してフォーマット
 
 #### <a name="to-mount-volumes"></a>ボリュームをマウントするには
 1. ホスト コンピューターで、Microsoft iSCSI イニシエーターを開始します。
-2. ターゲット ポータルとしてインターフェイス IP アドレスのいずれかを入力するか、検出 IP アドレスを入力し、デバイスに接続します。 デバイスに接続したら、ボリュームは Windows システムにアクセスできるようになります。 Microsoft iSCSI イニシエーターの使用方法の詳細については、「[Microsoft iSCSI イニシエーターのインストールと構成][1]」の「iSCSI ターゲット デバイスへの接続」をご覧ください。
+2. ターゲット ポータルとしてインターフェイス IP アドレスのいずれかを入力するか、検出 IP アドレスを入力し、デバイスに接続します。 デバイスに接続したら、ボリュームは Windows システムにアクセスできるようになります。 Microsoft iSCSI イニシエーターの使用方法の詳細については、「[Installing and Configuring Microsoft iSCSI Initiator (Microsoft iSCSI イニシエーターのインストールと構成)][1]」の「Connecting to an iSCSI target device (iSCSI ターゲット デバイスへの接続)」をご覧ください。
 3. 次のいずれかの方法を使用して、ディスクの管理を起動します。
    
    * **[ファイル名を指定して実行]** ボックスに「Diskmgmt.msc」と入力します。
@@ -215,6 +215,6 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Application Insights に関するトラブルシューティングと Q & A"
+title: "Azure Application Insights に関するトラブルシューティングと Q & A | Microsoft Docs"
 description: "Azure Application Insights について不明な点や問題点はありませんか。 ここで解決してください。"
 services: application-insights
 documentationcenter: .net
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 0d860856b4c871c2c8e3622597ba3753bf62cf4f
+ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
+ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
 
 
 ---
@@ -36,20 +36,16 @@ ms.openlocfilehash: 0d860856b4c871c2c8e3622597ba3753bf62cf4f
 * [Java サーバーのセットアップ](app-insights-java-agent.md)
 
 ## <a name="can-i-use-application-insights-with-"></a>Application Insights と共に使用できるもの
-[プラットフォームを確認する][platforms]
+[プラットフォームを確認][platforms]
 
 ## <a name="is-it-free"></a>これは無料ですか。
-* はい、無料 [価格レベル](app-insights-pricing.md)を選択した場合は、無料です。 ほとんどの機能と大量のデータが手に入ります。
-* Microsoft Azure に登録するには、クレジット カード データを登録する必要がありますが、他の有料の Azure のサービスを使用するか、明示的に有料レベルにアップグレードしない限り、料金は発生しません。
-* アプリが Free レベルの月間クォータより多くのデータを送信すると、ログの記録を停止します。 このような場合は、料金の支払いを開始するか、月末にクォータがリセットされるまでお待ちください。
-* 基本的な使用とセッション データは、クォータの対象になりません。
-* 30 日間の無料試用版が用意されています。この期間中、有料の機能を無料でご利用いただけます。
-* 各アプリケーション リソースには、個別のクォータがあり、それぞれに個別に価格レベルを設定します。
 
-#### <a name="what-do-i-get-if-i-pay"></a>料金を払うと何ができますか。
-* より大きな [データの月間クォータ](https://azure.microsoft.com/pricing/details/application-insights/)。
-* 月間クォータを超えてデータの収集を続行するための、「超過」支払いオプション。 データがクォータを超えた場合は、1 MB ごとに課金されます。
-* [連続エクスポート](app-insights-export-telemetry.md)。
+はい、試験段階用です。 既定の価格プランでは、アプリケーションは毎月無料で一定のデータ許容量を送信できます。 無料許容量は、開発や、少数のユーザー向けにアプリを発行するのに十分な大きさです。 指定した以上のデータ量が処理されることを防ぐために上限を設定できます。
+
+連続エクスポートなどの特定の機能を取得するには、エンタープライズ プランを使用する必要があります。 エンタープライズ プランを使用すると、1 日あたりの料金が発生します。
+
+[価格プランを参照してください](https://azure.microsoft.com/pricing/details/application-insights/)。
+
 
 ## <a name="a-nameq14awhat-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Application Insights によってどのような変更がプロジェクトに加えられますか?
 詳細は、プロジェクトの種類によって異なります。 Web アプリケーションの場合:
@@ -71,7 +67,7 @@ ms.openlocfilehash: 0d860856b4c871c2c8e3622597ba3753bf62cf4f
   
   * web.config
   * packages.config
-* (新しいプロジェクトのみ。[Application Insights を既存のプロジェクトに追加している場合][start]は、手動でこの操作を行う必要があります。)これらを Application Insights リソース ID で初期化するためのスニペットを、クライアントとサーバーのコードに挿入します。 たとえば、MVC アプリでは、Views/Shared/_Layout.cshtml マスター ページにコードが挿入されます。
+* (新しいプロジェクトのみ。[Application Insights を既存のプロジェクトに追加している場合][start]は、手動でこの操作を行う必要があります)。これらを Application Insights リソース ID で初期化するためのスニペットを、クライアントとサーバーのコードに挿入します。 たとえば、MVC アプリでは、Views/Shared/_Layout.cshtml マスター ページにコードが挿入されます。
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>以前のバージョンの SDK からアップグレードする方法。
 お使いのアプリケーションに適切な SDK については、「 [リリース ノート](app-insights-release-notes.md) 」をご覧ください。
@@ -80,7 +76,7 @@ ms.openlocfilehash: 0d860856b4c871c2c8e3622597ba3753bf62cf4f
 ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、[ **Application Insights の更新**] を選択します。 Azure の既存または新規のリソースにデータを送信できます。 更新ウィザードでは、サーバー SDK のデータの送信先を決定する、ApplicationInsights.config のインストルメンテーション キーを変更します。 [すべて更新] を選択解除している場合を除き、Web ページ内のキーが表示される場所でもキーが変更されます。
 
 #### <a name="a-namedataahow-long-is-data-retained-in-the-portal-is-it-secure"></a><a name="data"></a>ポータルでのデータ保持期間はどのくらいですか? セキュリティで保護されていますか?
-[データの保持とプライバシー][データ]に関するページをご覧ください。
+[データの保持とプライバシー][data]に関するページをご覧ください。
 
 ## <a name="logging"></a>ログの記録
 #### <a name="a-namepostahow-do-i-see-post-data-in-diagnostic-search"></a><a name="post"></a>診断検索で POST データを表示する方法を教えてください。
@@ -88,7 +84,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 
 ## <a name="security"></a>セキュリティ
 #### <a name="is-my-data-secure-in-the-portal-how-long-is-it-retained"></a>ポータルのデータはセキュリティで保護されていますか? 保持期間はどれくらいですか?
-[データの保持とプライバシー][データ]に関する記事をご覧ください。
+[データの保持とプライバシー][data]に関するページを参照してください。
 
 ## <a name="a-nameq17a-have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Application Insights の機能をすべて有効にしているでしょうか?
 | 表示内容 | 表示方法 | 用途 |
@@ -110,13 +106,13 @@ Application Insights リソースを作成および更新するための [PowerS
 
 <!--Link references-->
 
-[データ]: app-insights-data-retention-privacy.md
+[data]: app-insights-data-retention-privacy.md
 [platforms]: app-insights-platforms.md
 [start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

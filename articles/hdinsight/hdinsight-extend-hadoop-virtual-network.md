@@ -12,20 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/29/2016
+ms.date: 12/01/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8da20d44ca2688ba1b97be6dd33b3da81a658c66
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: 7038c19a4419aa3569a931e393f3d94896740209
 
 
 ---
 # <a name="extend-hdinsight-capabilities-by-using-azure-virtual-network"></a>Azure Virtual Network を使用した HDInsight 機能の拡張
 Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL Server などのオンプレミスのリソースに組み込むことや、複数の種類の HDInsight クラスターを組み合わせることや、クラウドのリソース間にセキュリティで保護されたプライベート ネットワークを作成することができます。
 
-[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
+## <a name="prerequisites"></a>前提条件
+
+* Azure CLI 2.0 (プレビュー): 詳細については、[Azure CLI 2.0 のインストールおよび構成](https://docs.microsoft.com/cli/azure/install-az-cli2)に関するページをご覧ください。
+
+* Azure PowerShell: 詳細については、「[Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」を参照してください。
+
+> [!NOTE]
+> このドキュメントには、Azure CLI および Azure PowerShell の最新バージョンが必要です。 以前のバージョンを使用している場合は、コマンドが異なる場合があります。 適切に実行するためには、前のリンクを使用して最新バージョンをインストールします。
 
 ## <a name="a-idwhatisawhat-is-azure-virtual-network"></a><a id="whatis"></a>Azure Virtual Network とは
+
 [Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。 仮想ネットワークでは、次のことが可能になります。
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
@@ -34,9 +42,10 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
   
     Virtual Network を使用して Azure サービスと Azure HDInsight を連携させることで、以下のシナリオが実現できるようになります。
   
-  * **HDInsight サービスまたはジョブを呼び出す** 。
-  * **データを直接転送する** 。
-  * **複数の HDInsight サーバーを結合して単一のソリューションにする。** HDInsight クラスターにはさまざまな種類があり、それぞれ適したワークロードやテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。 仮想ネットワークを使用することで、複数のクラスターが互いに直接通信することができます。
+    * **HDInsight サービスまたはジョブを呼び出す** 。
+    * **データを直接転送する** 。
+    * **複数の HDInsight サーバーを結合して単一のソリューションにする。** HDInsight クラスターにはさまざまな種類があり、それぞれ適したワークロードやテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。 仮想ネットワークを使用することで、複数のクラスターが互いに直接通信することができます。
+
 * 仮想プライベート ネットワーク (VPN) を使用したローカル データセンター ネットワークへのクラウド リソースの接続 (サイト間またはポイント対サイト)。
   
     サイト間構成では、ハードウェア VPN を使用するか、ルーティングとリモート アクセス サービスを使用して、データセンターから複数のリソースを Azure Virtual Network に接続できます。
@@ -49,36 +58,37 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
   
     Virtual Network を使用してクラウドとデータ センターをリンクすると、クラウドのみの構成と同様のシナリオを実現できます。 ただし、クラウド内のリソースの操作に制限されるのではなく、データ センターのリソースも使用できます。
   
-  * **データを直接転送する** 。 たとえば、Sqoop を使用して SQL Server に、または SQL Server からデータを転送したり、基幹業務 (LOB) アプリケーションで生成されたデータを読み取ったりします。
-  * **LOB アプリケーションから HDInsight サービスを呼び出す。** たとえば、HBase Java API を使用して HDInsight HBase クラスターにデータを格納したり、クラスターからデータを取得したりします。
+    * **データを直接転送する** 。 たとえば、Sqoop を使用して SQL Server に、または SQL Server からデータを転送したり、基幹業務 (LOB) アプリケーションで生成されたデータを読み取ったりします。
+    * **LOB アプリケーションから HDInsight サービスを呼び出す。** たとえば、HBase Java API を使用して HDInsight HBase クラスターにデータを格納したり、クラスターからデータを取得したりします。
 
 Virtual Network の機能、利点の詳細については、「 [Azure 仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
 > [!NOTE]
 > HDInsight クラスターをプロビジョニングする前に、Azure Virtual Network を作成する必要があります。 詳細については、「 [仮想ネットワークの構成タスク](https://azure.microsoft.com/documentation/services/virtual-network/)」を参照してください。
-> 
-> 
 
 ## <a name="virtual-network-requirements"></a>Virtual Network に関する要件
+
 > [!IMPORTANT]
 > Virtual Network で HDInsight クラスターを作成するには、このセクションで説明する、特定の Virtual Network 構成が必要です。
-> 
-> 
 
 ### <a name="location-based-virtual-networks"></a>場所ベースの仮想ネットワーク
+
 Azure HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在取り扱っていません。
 
 ### <a name="classic-or-v2-virtual-network"></a>クラシックまたは v2 Virtual Network
+
 Windows ベースのクラスターでは、クラシック Virtual Network が必要であり、Linux ベースのクラスターでは、Azure Resource Manager Virtual Network が必要です。 ネットワークの種類が正しくない場合、クラスターの作成には使用できません。
 
 作成を計画しているクラスターでは使用できない Virtual Network 上にリソースがある場合、クラスターで使用できる新しい Virtual Network を作成し、それを互換性のない Virtual Network に接続できます。 その後、必要なネットワーク バージョンでクラスターを作成し、2 つは結合されているので別のネットワークのリソースにアクセスが可能となります。 従来の Virtual Network と新しい Virtual Network を接続する方法の詳細については、「 [従来の Vnet を新しい Vnet に接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)」を参照してください。
 
 ### <a name="custom-dns"></a>カスタム DNS
+
 仮想ネットワークを作成するとき、そのネットワークにインストールされている Azure サービス (HDInsight) には Azure によって既定の名前解決が行われます。 ただしクロス ネットワーク ドメイン名解決など、状況によっては独自のドメイン ネーム システム (DNS) を使用しなければならないこともあります。 たとえば、参加している 2 つの仮想ネットワークに置かれているサービス間の通信が挙げられます。 HDInsight は、Azure Virtual Network との組み合わせで、Azure の既定の名前解決に加え、カスタム DNS もサポートしています。
 
 Azure Virtual Network で独自の DNS サーバーを使用する方法の詳細については、「 **VM とロール インスタンスの名前解決** 」の「 [独自 DNS サーバー使用の名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) 」をご覧ください。
 
 ### <a name="secured-virtual-networks"></a>セキュリティで保護された Virtual Networks
+
 HDInsight サービスは管理されたサービスで、プロビジョニング中や実行中にインターネット アクセスが必要です。 これは、クラスターの正常性を監視する、クラスター リソースのフェールオーバーを開始する、スケーリング操作によりノード数を変更するなどの管理タスクを Azure が監視できるようにすることが目的です。
 
 セキュリティで保護された仮想ネットワークに HDInsight をインストールする必要がある場合は、次の IP アドレスのポート 443 上で着信アクセスを許可する必要があります。これにより、Azure が HDInsight クラスターを管理できるようになります。
@@ -92,8 +102,6 @@ HDInsight サービスは管理されたサービスで、プロビジョニン�
 
 > [!IMPORTANT]
 > HDInsight では、送信トラフィックの制限をサポートしていません。受信トラフィックのみをサポートしています。 HDInsight が含まれているサブネットのネットワーク セキュリティ グループ規則を定義するときは、受信規則だけを使用します。
-> 
-> 
 
 次の例では、必要なアドレスを許可し、Virtual Network内のサブネットにセキュリティ グループを適用する、新しいネットワーク セキュリティ グループを作成する方法を示します。 これらの手順では、HDInsight をインストールする Virtual Network とサブネットを既に作成していることを前提としています。
 
@@ -103,8 +111,7 @@ HDInsight サービスは管理されたサービスで、プロビジョニン�
 > 着信トラフィックを幅広くブロックするカスタム ルール (**すべて拒否**のルールなど) がある場合は、これらの例での優先順位値またはカスタム ルールを調整して、アクセスをブロックするルールよりも前に、これらの例のルールが実行されるようにする必要があります。 そうしないと、**すべて拒否**のルールが最初にテストされて、この例のルールが適用されないことになります。 また、Azure Virtual Network の既定のルールをブロックしないようにする必要があります。 たとえば、既定の **ALLOW VNET INBOUND** ルール (優先順位 65000) よりも前に適用される、**すべて拒否**のルールを作成するべきではありません。
 > 
 > ルールの適用方法、および受信と送信の既定のルールの詳細については、「[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)」を参照してください。
-> 
-> 
+
 
 **Azure PowerShell の使用**
 
@@ -182,20 +189,28 @@ HDInsight サービスは管理されたサービスで、プロビジョニン�
 
 1. 次のコマンドを使用して、 `hdisecure`という名前の新しいネットワーク セキュリティ グループを作成します。 **RESOURCEGROUPNAME** と **LOCATION** を、Azure Virtual Network を含むリソース グループと、そのグループの作成場所 (リージョン) に置き換えます。
    
-        azure network nsg create RESOURCEGROUPNAME hdisecure LOCATION
-   
-    グループが作成されたら、新しいグループに関する情報が表示されます。 次のような行を検索し、 `/subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure` の情報を保存します。 これは、後の手順で使用します。
-   
-        data:    Id                              : /subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure
+        az network nsg create -g RESOURCEGROUPNAME -n hdisecure -l LOCATION
+
+    グループが作成されたら、新しいグループに関する情報が表示されます。
+
 2. ポート 443 上で Azure HDInsight の正常性と管理サービスからのインバウンド通信を許可する新しいネットワーク セキュリティ グループにルールを追加するには、次を使用します。 **RESOURCEGROUPNAME** を、Azure Virtual Network が含まれているリソース グループの名前に置き換えます。
+    
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.49.99" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 301 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule3 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 302 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
+
+3. ルールが作成されたら、次を使用してこのネットワーク セキュリティ グループの一意の識別子を取得します。
+
+        az network nsg show -g RESOURCEGROUPNAME -n hdisecure --query 'id'
+
+    次のテキストのような値が返されます。
+
+        "/subscriptions/55b1016c-0f27-43d2-b908-b8c373d6d52e/resourceGroups/mygroup/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+
+4. 次のコマンドを使用して、ネットワーク セキュリティ グループをサブネットに適用します。 __GUID__ と __RESOURCEGROUPNAME__ の値を、前の手順で返された値に置き換えます。 __VNETNAME__ と __SUBNETNAME__ を、HDInsight クラスターの作成時に使用する仮想ネットワーク名とサブネット名に置き換えます。
    
-        azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule1 -p "*" -o "*" -u "443" -f "168.61.49.99" -e "VirtualNetwork" -c "Allow" -y 300 -r "Inbound"
-        azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule2 -p "*" -o "*" -u "443" -f "23.99.5.239" -e "VirtualNetwork" -c "Allow" -y 301 -r "Inbound"
-        azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule3 -p "*" -o "*" -u "443" -f "168.61.48.131" -e "VirtualNetwork" -c "Allow" -y 302 -r "Inbound"
-        azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "443" -f "138.91.141.162" -e "VirtualNetwork" -c "Allow" -y 303 -r "Inbound"
-3. ルールが作成されたら、次を使用して新しいネットワーク セキュリティ グループをサブネットに適用します。 **RESOURCEGROUPNAME** を、Azure Virtual Network が含まれているリソース グループの名前に置き換えます。 **VNETNAME** と **SUBNETNAME** を、Azure Virtual Network の名前と HDInsight のインストール時に使用するサブネットの名前に置き換えます。
-   
-        azure network vnet subnet set RESOURCEGROUPNAME VNETNAME SUBNETNAME -w "/subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+        az network vnet subnet update -g RESOURCEGROUPNAME --vnet-name VNETNAME --name SUBNETNAME --set networkSecurityGroup.id="/subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
    
     このコマンドが完了すると、これらの手順で使用されるサブネット上のセキュリティで保護された Virtual Network に、HDInsight を正常にインストールできます。
 
@@ -205,35 +220,31 @@ HDInsight サービスは管理されたサービスで、プロビジョニン�
 > たとえば、インターネットからの SSH アクセスを許可するには、次のようなルールを追加する必要があります。 
 > 
 > * Azure PowerShell - ```Add-AzureRmNetworkSecurityRuleConfig -Name "SSSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 304 -Direction Inbound```
-> * Azure CLI - ```azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "22" -f "*" -e "VirtualNetwork" -c "Allow" -y 304 -r "Inbound"```
-> 
-> 
+> * Azure CLI - ```az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"```
 
 ネットワーク セキュリティ グループの詳細については、 [ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md)に関する記事を参照してください。 Azure Virtual Network におけるルーティングの制御については、 [ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)に関する記事を参照してください。
 
 ## <a name="a-idtasksatasks-and-information"></a><a id="tasks"></a>タスクと情報
+
 このセクションでは、仮想ネットワークで HDInsight を使用する場合の一般的なタスクに関する情報と、必要になる可能性がある情報を記載しています。
 
 ### <a name="determine-the-fqdn"></a>FQDN の決定
+
 HDInsight クラスターには、Virtual Network インターフェイスを表す特定の完全修飾ドメイン名 (FQDN) が割り当てられます。 これは、仮想ネットワーク上の他のリソースからクラスターに接続するときに使用する必要があるアドレスです。 FQDN を確認するには、次の URL を使用して Ambari 管理サービスを照会します。
 
     https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/<servicename>/components/<componentname>
 
 > [!NOTE]
 > HDInsight での Ambari の使用の詳細については、「 [Ambari API を使用した HDInsight の Hadoop クラスターの監視](hdinsight-monitor-use-ambari-api.md)」を参照してください。
-> 
-> 
 
 クラスター名およびクラスターで実行するサービスとコンポーネント (YARN リソース マネージャーなど) を指定する必要があります。
 
 > [!NOTE]
 > 返されるデータは、コンポーネントに関する多くの情報を含む JavaScript Object Notation (JSON) ドキュメントです。 FQDN のみを抽出するには、JSON のパーサーを使用して、 `host_components[0].HostRoles.host_name` の値を取得する必要があります。
-> 
-> 
 
 たとえば、HDInsight Hadoop クラスターから FQDN を取得するには、次のいずれかのメソッドを使用して、YARN リソース マネージャーのデータを取得します。
 
-* [Azure PowerShell](../powershell-install-configure.md)
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
   
         $ClusterDnsName = <clustername>
         $Username = <cluster admin username>
@@ -249,16 +260,18 @@ HDInsight クラスターには、Virtual Network インターフェイスを表
         $JsonObject = $Response | ConvertFrom-Json
         $FQDN = $JsonObject.host_components[0].HostRoles.host_name
         Write-host $FQDN
+
 * [cURL](http://curl.haxx.se/) および [jq](http://stedolan.github.io/jq/)
   
         curl -G -u <username>:<password> https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/yarn/components/resourcemanager | jq .host_components[0].HostRoles.host_name
 
 ### <a name="connecting-to-hbase"></a>HBase への接続
+
 Java API を使用して HBase にリモート接続するには、HBase クラスターの ZooKeeper クォーラム アドレスを確認し、これをアプリケーションで指定する必要があります。
 
 ZooKeeper クォーラム アドレスを取得するには、次のいずれかのメソッドを使用して、Ambari 管理サービスに問い合わせます。
 
-* [Azure PowerShell](../powershell-install-configure.md)
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
   
         $ClusterDnsName = <clustername>
         $Username = <cluster admin username>
@@ -273,20 +286,19 @@ ZooKeeper クォーラム アドレスを取得するには、次のいずれか
         $Response = $webclient.DownloadString($Url)
         $JsonObject = $Response | ConvertFrom-Json
         Write-host $JsonObject.items[0].properties.'hbase.zookeeper.quorum'
+
 * [cURL](http://curl.haxx.se/) および [jq](http://stedolan.github.io/jq/)
   
         curl -G -u <username>:<password> "https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/configurations?type=hbase-site&tag=default&fields=items/properties/hbase.zookeeper.quorum" | jq .items[0].properties[]
 
 > [!NOTE]
 > HDInsight での Ambari の使用の詳細については、「 [Ambari API を使用した HDInsight の Hadoop クラスターの監視](hdinsight-monitor-use-ambari-api.md)」を参照してください。
-> 
-> 
 
 クォーラムの情報を取得したら、それをクライアント アプリケーションで使用します。
 
 たとえば、HBase API を使用する Java アプリケーションでは、 **hbase-site.xml** ファイルをプロジェクトに追加し、次のようにそのファイル内にクォーラム情報を指定します。
 
-```
+```xml
 <configuration>
   <property>
     <name>hbase.cluster.distributed</name>
@@ -304,11 +316,13 @@ ZooKeeper クォーラム アドレスを取得するには、次のいずれか
 ```
 
 ### <a name="verify-network-connectivity"></a>ネットワーク接続の確認
+
 SQL Server などの一部のサービスでは、着信ネットワーク接続数が制限される場合があります。 そのようなサービスでは HDInsight が正常に機能しません。
 
 HDInsight からサービスへのアクセスで問題が発生した場合は、サービスのドキュメントを参照して、ネットワーク アクセスが有効になっていることを確認してください。 ネットワーク アクセスを確認するもう 1 つの方法では、同じ仮想ネットワーク上に Azure の仮想マシンを作成し、クライアント ユーティリティを使用して、VM から仮想ネットワーク経由でサービスに接続できることを確認します。
 
 ## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+
 次の例は、Azure Virtual Network で HDInsight を使用する方法を示しています。
 
 * [HDInsight での、Storm および HBase を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.md) - 仮想ネットワークでの Storm および HBase の構成方法と、Storm から HBase にリモートでデータを書き込む方法を示しています。
@@ -320,6 +334,6 @@ Azure のかそうネットワークの詳細については、 [Azure Virtual N
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/20/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 676f0aec3bdbeae7f5522847a9676fd832b271f6
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: 0d2743f10d828aaf5ef401ac5378c94384e0a46b
 
 
 ---
@@ -27,8 +27,8 @@ HDInsight で Apache Storm を使用して Azure イベント ハブからのセ
 
 > [!NOTE]
 > このドキュメントの情報と示されている例は、Linux ベースの HDInsight 3.3 および 3.4 クラスター バージョンを使用してテスト済みです。
-> 
-> 
+>
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 [Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
@@ -82,7 +82,7 @@ HDInsight で Apache Storm を使用して Azure イベント ハブからのセ
   * [D3.js](http://d3js.org/) は、Web サイトに送信されるデータのグラフ化に使用します。
 
 > [!IMPORTANT]
-> Storm と HBase の両方に対して 1 つの HDInsight クラスターを作成するメソッドはサポートされていないため、2 つのクラスターが必要です。
+> Storm と HBase の両方に対して&1; つの HDInsight クラスターを作成するメソッドはサポートされていないため、2 つのクラスターが必要です。
 > 
 > 
 
@@ -110,7 +110,7 @@ HDInsight で Apache Storm を使用して Azure イベント ハブからのセ
 * **ParserBolt.java**: スパウトによって出力されるデータは未加工の JSON で、一度に複数のイベントが生成されることがあります。 このボルトでは、スパウトによって送出されたデータを読み込み方法とそれを複数のフィールドを含むタプルとして新しいストリームに出力する方法を示します。
 * **DashboardBolt.java**: Java の Socket.io クライアント ライブラリを使用して、Web ダッシュボードにリアルタイムでデータを送信する方法を示します。
 
-この例では、 [Flux](https://storm.apache.org/releases/0.10.0/flux.html) フレームワークが使用されているため、トポロジの定義は YAML ファイルに含まれます。 YAML ファイルは 2 つあります。
+この例では、 [Flux](https://storm.apache.org/releases/0.10.0/flux.html) フレームワークが使用されているため、トポロジの定義は YAML ファイルに含まれます。 YAML ファイルは&2; つあります。
 
 * **no-hbase.yaml** - 開発環境でトポロジをテストするときに使用します。 クラスターの存在する仮想ネットワークの外部から HBase Java API にアクセスできないため、HBase コンポーネントは使用されません。
 * **with-hbase.yaml** - トポロジを Storm クラスターにデプロイするときに使用します。 HBase クラスターと同じ仮想ネットワークで実行されるため、HBase コンポーネントが使用されます。
@@ -272,7 +272,7 @@ Event Hub は、この例のデータ ソースです。 新しい Event Hub を
 3. この動作を確認したら、Ctrl + C キーを押してトポロジを停止します。 Ctrl + C を使用して、ローカル Web サーバーも停止できます。
 
 ## <a name="create-a-storm-and-hbase-cluster"></a>Storm クラスターと HBase クラスターの作成
-HDInsight でトポロジを実行し、HBase ボルトを有効にするには、新しい Storm クラスターと HBase クラスターを作成する必要があります。 このセクションの手順では、 [Azure Resource Manager テンプレート](../resource-group-template-deploy.md) を使用して、新しい Azure 仮想ネットワークを作成し、その仮想ネットワーク上に Storm クラスターと HBase クラスターを作成します。 また、このテンプレートは Azure Web アプリを作成し、それにダッシュボードのコピーをデプロイします。
+HDInsight でトポロジを実行し、HBase ボルトを有効にするには、新しい Storm クラスターと HBase クラスターを作成する必要があります。 このセクションの手順では、 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-template-deploy.md) を使用して、新しい Azure 仮想ネットワークを作成し、その仮想ネットワーク上に Storm クラスターと HBase クラスターを作成します。 また、このテンプレートは Azure Web アプリを作成し、それにダッシュボードのコピーをデプロイします。
 
 > [!NOTE]
 > 仮想ネットワークは、Storm クラスターで実行されているトポロジが HBase Java API を使用して HBase クラスターと直接通信できるように使用されます。
@@ -283,7 +283,7 @@ HDInsight でトポロジを実行し、HBase ボルトを有効にするには�
 
 1. 次のボタンをクリックして Azure にサインインし、Azure ポータルで Resource Manager テンプレートを開きます。
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-storm-cluster-in-vnet.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-storm-cluster-in-vnet.json" target="_blank"><img src="./media/hdinsight-storm-sensor-data-analysis/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. **[パラメーター]** ブレードで、次の各項目を入力します。
    
     ![HDInsight parameters](./media/hdinsight-storm-sensor-data-analysis/parameters.png)
@@ -365,7 +365,7 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
         scp USERNAME@storm-BASENAME-ssh.azurehdinsight.net:/usr/hdp/current/storm-client/contrib/storm-hbase/storm-hbase*.jar .
    
     これで、`storm-hbase-####.jar` という名前のファイルがダウンロードされます。#### は、このクラスターの Storm のバージョン番号です。 この番号は、後で使用するのでメモしておいてください。
-2. 次のコマンドを使用して、開発環境のローカルの Maven リポジトリにこのコンポーネントをインストールします。 これで、Maven は、プロジェクトをコンパイルするときにパッケージを検出できるようになります。  **####** は、ファイル名に含まれているバージョン番号に置き換えます。
+2. 次のコマンドを使用して、開発環境のローカルの Maven リポジトリにこのコンポーネントをインストールします。 これで、Maven は、プロジェクトをコンパイルするときにパッケージを検出できるようになります。 **####** は、ファイル名に含まれているバージョン番号に置き換えます。
    
         mvn install:install-file -Dfile=storm-hbase-####.jar -DgroupId=org.apache.storm -DartifactId=storm-hbase -Dversion=#### -Dpackaging=jar
    
@@ -380,7 +380,7 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
         end comment for hbase-bolt section -->
    
    > [!IMPORTANT]
-   > 削除するのは上記の 2 行のみです。この 2 つの行の間にある行は削除しないでください。
+   > 削除するのは上記の&2; 行のみです。この&2; つの行の間にある行は削除しないでください。
    > 
    > 
    
@@ -493,12 +493,12 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
 * Socket.IO の詳細については、 [socket.io](http://socket.io/) サイトをご覧ください。
 * D3.js の詳細については、「[D3.js - Data Driven Documents (D3.js - データ駆動ドキュメント)](http://d3js.org/)」をご覧ください。
 * Java でトポロジを作成する方法の詳細については、「[HDInsight での Apache Storm の Java ベース トポロジの開発](hdinsight-storm-develop-java-topology.md)」をご覧ください。
-* .NET でトポロジを作成する方法の詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
+* .NET でトポロジを作成する方法の詳細については、「 [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
 
 [azure-portal]: https://portal.azure.com
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

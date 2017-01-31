@@ -1,13 +1,13 @@
 ---
-title: Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する | Microsoft Docs
-description: Azure リソース マネージャー テンプレートを使用して Azure 診断の拡張機能を含む新しい Windows 仮想マシンを作成する
+title: "Azure Resource Manager テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する | Microsoft Docs"
+description: "Azure リソース マネージャー テンプレートを使用して Azure 診断の拡張機能を含む新しい Windows 仮想マシンを作成する"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: sbtron
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 8cde8fe7-977b-43d2-be74-ad46dc946058
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,10 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
+translationtype: Human Translation
+ms.sourcegitcommit: 7167048a287bee7c26cfc08775dcb84f9e7c2eed
+ms.openlocfilehash: b84b4c0bd31d2e0bebafa2053a725e5e78bc3c9f
+
 
 ---
 # <a name="create-a-windows-virtual-machine-with-monitoring-and-diagnostics-using-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する
-Azure 診断の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure リソース マネージャー テンプレートの一部として拡張機能を含めることによって、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](virtual-machines-windows-extensions-authoring-templates.md) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure 診断の拡張機能を追加する方法について説明します。  
+Azure 診断の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure リソース マネージャー テンプレートの一部として拡張機能を含めることによって、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](virtual-machines-windows-extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure 診断の拡張機能を追加する方法について説明します。  
 
 ## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>VM のリソースの定義に Azure 診断の拡張機能を追加する
 Windows 仮想マシンで診断の拡張機能を有効にするには、リソース マネージャー テンプレートで拡張機能を VM のリソースとして追加する必要があります。
@@ -88,7 +92,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
             "type": "string",
             "metadata": {
         "description": "The resource group for the storage account specified in existingdiagnosticsStorageAccountName"
-            }
+              }
         }
 
 診断ストレージ アカウントは仮想マシンのリソース グループとは異なるリソース グループに指定することをお勧めします。 リソース グループは、独自の有効期間を持つデプロイメント単位と見なすことができます。新しい構成の更新により、仮想マシンはデプロイされたり、再デプロイされたりしますが、診断データを、仮想マシンのデプロイメント全体の同じストレージ アカウントに保存したい場合もあります。 異なるリソースにストレージ アカウントがあると、そのストレージ アカウントがさまざまな仮想マシンのデプロイメントからデータを受け入れられるようになり、異なるバージョンでの問題のトラブルシューティングが簡単になります。
@@ -161,9 +165,12 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 
 ## <a name="next-steps"></a>次のステップ
 * 診断の拡張機能を含む Windows 仮想マシンの完全なサンプル テンプレートは、「 [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* [Azure PowerShell](virtual-machines-windows-ps-manage.md) または [Azure コマンド ライン](virtual-machines-linux-cli-deploy-templates.md)を使用してリソース マネージャー テンプレートをデプロイします
-* [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
+* [Azure PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) または [Azure コマンド ライン](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用してリソース マネージャー テンプレートをデプロイします
+* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

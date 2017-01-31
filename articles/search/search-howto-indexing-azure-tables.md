@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 12/15/2016
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 031667b3a6f0265e57568706e5454cd275ec9ecc
+ms.sourcegitcommit: 714045750ab16364ecd1095f1f346d3da1d4c4a5
+ms.openlocfilehash: 4bfcf719cb071a28421c64dbb4d6c132f45ba9f9
 
 ---
 
@@ -34,7 +34,7 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
 
 1. データ ソースを作成する
    * `type` パラメーターを `azuretable` に設定します。
-   * ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして指定します。
+   * ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして渡します。 この接続文字列は、ストレージ アカウント ブレードに移動し、**[設定]**  >  **[キー]** (クラシック ストレージ アカウントの場合) を選択するか、**[設定]**  >  **[アクセス キー]** を選択する (ARM ストレージ アカウントの場合) ことで Azure ポータルから取得できます。 Azure Search では、現在、Shared Access Signature 資格情報をサポートしていません。 SAS の使用を希望する場合は、[こちらの UserVoice の提案](https://feedback.azure.com/forums/263029-azure-search/suggestions/12368244-support-shared-access-signature-for-blob-datasourc)にご投票ください。
    * `container.name` パラメーターを使用して、テーブル名を指定します。
    * 必要に応じて `container.query` パラメーターを使用して、クエリを指定します。 可能な場合は、PartitionKey でフィルターを使用して、パフォーマンスを最大限に高めます。他のクエリを実行すると、フル テーブル スキャンが発生し、大きなテーブルの場合はパフォーマンスが低下する可能性があります。
 2. インデックスを作成するテーブルの列に対応するスキーマを使用して検索インデックスを作成します。
@@ -48,7 +48,7 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
     {
         "name" : "table-datasource",
         "type" : "azuretable",
-        "credentials" : { "connectionString" : "<my storage connection string>" },
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
 
@@ -123,6 +123,6 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e63da27c70ed171251cef21a361e04c6c0641fc8
+ms.sourcegitcommit: e6c45f4be168cef1a05958624f666097779e76f6
+ms.openlocfilehash: 2486a00482ca873ccb5198b5ca13cdc104bd1505
 
 
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>SQL パーティション テーブルを使用した並列の一括データ インポート
-このドキュメントでは、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。 SQL Database へのビッグ データの読み込み/転送では、" *パーティション テーブルとビュー*" を使用することによって、SQL DB へのデータのインポートと以降のクエリを向上させることができます。 
+このドキュメントでは、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。 SQL Database へのビッグ データの読み込み/転送では、"*パーティション テーブルとビュー*" を使用することによって、SQL DB へのデータのインポートと以降のクエリを向上させることができます。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>新しいデータベースとファイル グループのセットの作成
 * [新しいデータベースを作成する](https://technet.microsoft.com/library/ms176061.aspx) (データベースが存在しない場合)
 * パーティション分割された物理ファイルを格納するデータベースにデータベース ファイル グループを追加する
   
-  注: 新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用してこれを行うことができます。
+  新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用してこれを行うことができます。
 * 1 つまたは複数のファイル (必要に応じて) を各データベース ファイル グループに追加する
   
   > [!NOTE]
@@ -35,7 +35,7 @@ ms.openlocfilehash: e63da27c70ed171251cef21a361e04c6c0641fc8
   > 
   > 
 
-次の例では、それぞれに 1 つの物理ファイルが含まれている、プライマリとログ グループ以外に 3 つのファイル グループを持つ新しいデータベースを作成します。 データベース ファイルは、SQL Server インスタンスで構成されているとおりに、既定の SQL Server データ フォルダーに作成されます。 既定のファイルの場所の詳細については、「 [SQL Server の既定のインスタンスおよび名前付きインスタンスのファイルの場所](https://msdn.microsoft.com/library/ms143547.aspx)」を参照してください。
+次の例では、それぞれに 1 つの物理ファイルが含まれている、プライマリとログ グループ以外に 3 つのファイル グループを持つ新しいデータベースを作成します。 データベース ファイルは、SQL Server インスタンスで構成されているとおりに、既定の SQL Server データ フォルダーに作成されます。 既定のファイルの場所の詳細については、「[SQL Server の既定のインスタンスおよび名前付きインスタンスのファイルの場所](https://msdn.microsoft.com/library/ms143547.aspx)」を参照してください。
 
     DECLARE @data_path nvarchar(256);
     SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
@@ -76,7 +76,7 @@ ms.openlocfilehash: e63da27c70ed171251cef21a361e04c6c0641fc8
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
   
-  ヒント: 関数/構成に従って各パーティションで有効な範囲を確認するには、次のクエリを実行します。
+  関数/構成に従って各パーティションで有効な範囲を確認するには、次のクエリを実行します。
   
         SELECT psch.name as PartitionScheme,
             prng.value AS ParitionValue,
@@ -185,6 +185,6 @@ ms.openlocfilehash: e63da27c70ed171251cef21a361e04c6c0641fc8
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

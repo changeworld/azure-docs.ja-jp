@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 32e48964cb8b6dabac74d0f07e04a151ab444728
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5749b37408be8eeab6a3fba40d6768ca1d035096
 
 
 ---
@@ -38,12 +38,12 @@ ms.openlocfilehash: 32e48964cb8b6dabac74d0f07e04a151ab444728
 * コンピューティングの一時停止
 * コンピューティングの再開
 
-これについては、[コンピューティングの管理の概要][コンピューティングの管理の概要] に関するページをご覧ください。
+これについては、[コンピューティングの管理の概要][Manage compute overview]に関する記事をご覧ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 ### <a name="install-the-latest-version-of-azure-powershell"></a>Azure PowerShell の最新バージョンのインストール
 > [!NOTE]
-> SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell バージョン 1.0.3 以降が必要です。  現在のバージョンを確認するには、 **Get-Module -ListAvailable -Name Azure**コマンドを実行します。 最新バージョンは、[Microsoft Web プラットフォーム インストーラー][Microsoft Web プラットフォーム インストーラー] からインストールできます。  インストールの詳細については、[「Azure PowerShell のインストールおよび構成方法」][Azure PowerShell のインストールおよび構成方法]を参照してください。
+> SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell バージョン 1.0.3 以降が必要です。  現在のバージョンを確認するには、 **Get-Module -ListAvailable -Name Azure**コマンドを実行します。 最新バージョンは、[Microsoft Web Platform Installer][Microsoft Web Platform Installer] からインストールできます。  詳細については、[Azure PowerShell をインストールして構成する方法][How to install and configure Azure PowerShell]に関する記事をご覧ください。
 > 
 > 
 
@@ -120,15 +120,15 @@ $resultDatabase
 <a name="next-steps-bk"></a>
 
 ## <a name="next-steps"></a>次のステップ
-他の管理タスクについては、[管理の概要][管理の概要] に関する記事をご覧ください。
+他の管理タスクについては、[管理の概要][Management overview]に関する記事をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[サービス容量制限]: ./sql-data-warehouse-service-capacity-limits.md
-[管理の概要]: ./sql-data-warehouse-overview-manage.md
-[Azure PowerShell のインストールおよび構成方法]: ../powershell-install-configure.md
-[コンピューティングの管理の概要]: ./sql-data-warehouse-manage-compute-overview.md
+[Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
+[Management overview]: ./sql-data-warehouse-overview-manage.md
+[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[Manage compute overview]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 [Resume-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619347.aspx
@@ -136,11 +136,11 @@ $resultDatabase
 [Set-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619433.aspx
 
 <!--Other Web references-->
-[Microsoft Web プラットフォーム インストーラー]: https://aka.ms/webpi-azps
-[Azure Portal]: http://portal.azure.com/
+[Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
+[Azure portal]: http://portal.azure.com/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/13/2016
 ms.author: masashin
 translationtype: Human Translation
-ms.sourcegitcommit: f5bdbd801107650f87993b395338adfb1b26d17e
-ms.openlocfilehash: 28f0a833ca410a518291c99b308ac52a1318761e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d408b5affc166ae4fae6b94ab3e069b51ecfdd3c
 
 
 ---
@@ -694,7 +694,7 @@ var conn = ConnectionMultiplexer.Connect("redis0:6380,redis1:6380,connectRetry=3
 
 次の表は、組み込み再試行ポリシーの既定の設定を示しています。
 
-| **コンテキスト** | **設定** | **既定値**<br /> (v1.0.331) | **意味** |
+| **コンテキスト** | **設定** | **既定値**<br />(v1.0.331) | **意味** |
 | --- | --- | --- | --- |
 | 構成オプション |ConnectRetry<br /><br />ConnectTimeout<br /><br />SyncTimeout |3<br /><br />最大 5,000 ミリ秒に SyncTimeout を加算<br />1,000 |初期接続操作中に接続試行を繰り返す回数。<br />接続操作のタイムアウト (ミリ秒)。 再試行間の遅延ではありません。<br />同期操作が許容される時間 (ミリ秒)。 |
 
@@ -883,10 +883,10 @@ Azure Search は、Web サイトまたはアプリケーションへの強力で
 Azure Search SDK の再試行動作は、[SearchServiceClient] クラスと [SearchIndexClient] クラスの `SetRetryPolicy` メソッドで制御されます。 既定のポリシーでは、Azure Search から 5xx または 408 (要求タイムアウト) の応答が返された場合に、指数関数的バックオフによる再試行が行われます。
 
 ### <a name="telemetry"></a>テレメトリ
-ETW を使用してトレースするか、カスタム トレース プロバイダーを登録してトレースします。 詳細については、AutoRest ドキュメントの「[Tracing (トレース)][autorest-tracing]」を参照してください。
+ETW を使用してトレースするか、カスタム トレース プロバイダーを登録してトレースします。 詳細については、AutoRest ドキュメントの[トレース][autorest-tracing]に関するページを参照してください。
 
-### <a name="more-information"></a>詳細
-* AutoRest ドキュメントの「[Automatic Retries (自動再試行)][autorest-retry]」を参照してください。
+### <a name="more-information"></a>詳細情報
+* AutoRest ドキュメントの[自動再試行][autorest-retry]に関するページ
 
 ## <a name="azure-active-directory-retry-guidelines"></a>Azure Active Directory の再試行ガイドライン
 Azure Active Directory (AD) は、コアなディレクトリ サービス、拡張 ID 制御、セキュリティ、およびアプリケーション アクセス管理を結合した、包括的な ID 管理とアクセス管理のクラウド ソリューションです。 Azure AD は、一元化されたポリシーとルールに基づいてアプリケーションへのアクセス制御を実現するための、ID 管理プラットフォームを開発者に提供します。
@@ -1101,6 +1101,6 @@ Azure またはサード パーティ提供のサービスにアクセスする�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

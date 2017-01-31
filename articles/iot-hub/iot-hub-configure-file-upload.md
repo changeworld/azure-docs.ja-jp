@@ -1,6 +1,6 @@
 ---
 title: "Azure Portal を使用してファイルのアップロードを構成する | Microsoft Docs"
-description: "Azure Portal を使用してファイルのアップロードを構成する方法の概要"
+description: "Azure Portal を使用して IoT Hub を構成し、接続されているデバイスからファイルのアップロードを有効にする方法。 対象の Azure ストレージ アカウントの構成に関する情報が含まれています。"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/05/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e3ac3e8cee2724b76f51423d1a6757382cca04f0
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: aadbee1388e2c2aafaf0a5c50d2af195284d2bec
 
 
 ---
-# <a name="configure-file-uploads-using-the-azure-portal"></a>Azure Portal を使用してファイルのアップロードを構成する
+# <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub ファイルのアップロードを構成する
 ## <a name="file-upload"></a>ファイルのアップロード
-[IoT Hub でファイルのアップロード機能][lnk-upload]を使用するには、最初に Azure Storage アカウントとハブを関連付ける必要があります。 **[ファイルのアップロード]** 設定を選択して、変更対象の IoT Hub のファイル アップロード プロパティのリストを表示します。
+[IoT Hub でファイルのアップロード機能][lnk-upload]を使用するには、最初に Azure ストレージ アカウントとハブを関連付ける必要があります。 **[ファイルのアップロード]** 設定を選択して、変更対象の IoT Hub のファイル アップロード プロパティのリストを表示します。
 
 ![][13]
 
@@ -41,17 +41,17 @@ ms.openlocfilehash: e3ac3e8cee2724b76f51423d1a6757382cca04f0
 ![][15]
 
 ## <a name="next-steps"></a>次のステップ
-IoT Hub のファイルのアップロード機能に関する詳細については、開発者ガイドの「[Upload files from a device][lnk-upload]」(デバイスからのファイルのアップロード) をご覧ください。
+IoT Hub のファイルのアップロード機能に関する詳細については、IoT Hub 開発者ガイドの [Upload files from a device (デバイスからのファイルのアップロード)][lnk-upload] に関する記事をご覧ください。
 
 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
 * [IoT デバイスの一括管理][lnk-bulk]
-* [使用状況メトリック][lnk-metrics]
+* [IoT Hub メトリック][lnk-metrics]
 * [操作の監視][lnk-monitor]
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [開発者ガイド][lnk-devguide]
+* [IoT Hub 開発者ガイド][lnk-devguide]
 * [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 * [IoT ソリューションの徹底的なセキュリティ保護][lnk-securing]
 
@@ -71,6 +71,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

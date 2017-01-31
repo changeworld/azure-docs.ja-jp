@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 60343b409c734bcc9bb50d6216ff2295aede783b
-ms.openlocfilehash: f4f56614bab80849820c31127b190953e2ef8b87
+ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
+ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
 
 
 ---
@@ -27,13 +27,13 @@ ms.openlocfilehash: f4f56614bab80849820c31127b190953e2ef8b87
 > * [ポータル](virtual-network-manage-nsg-arm-portal.md)
 > * [PowerShell](virtual-network-manage-nsg-arm-ps.md)
 > * [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
-> 
+>
 
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
 > Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
-> 
+>
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
@@ -68,7 +68,7 @@ ms.openlocfilehash: f4f56614bab80849820c31127b190953e2ef8b87
 
 ### <a name="list-all-rules-for-an-nsg"></a>NSG のすべての規則を一覧表示する
 
-**NSG-FrontEnd**という NSG の規則を表示するには、次の手順を実行します。 
+**NSG-FrontEnd**という NSG の規則を表示するには、次の手順を実行します。
 
 1. **[ネットワーク セキュリティ グループ]** ブレードまたは上の **[リソース]** ブレードの **[NSG-FrontEnd]** をクリックします。
 
@@ -84,7 +84,7 @@ ms.openlocfilehash: f4f56614bab80849820c31127b190953e2ef8b87
 
     > [!NOTE]
     > 既定の規則を表示するには、規則が表示されたブレードの上部にある **[既定の規則]** アイコンをクリックします。
-    > 
+    >
 
 ### <a name="view-nsgs-associations"></a>NSG の関連付けを表示する
 
@@ -182,7 +182,7 @@ NSG をサブネットと NIC に関連付けることができます。 また�
 
 > [!NOTE]
 > NSG の **[設定]** ブレードから、NSG をサブネットに関連付けることもできます。
-> 
+>
 
 ## <a name="delete-an-nsg"></a>NSG の削除
 NSG に関連付けられているリソースがない場合にのみ、NSG を削除できます。 NSG を削除するには、次の手順を実行します。
@@ -195,13 +195,13 @@ NSG に関連付けられているリソースがない場合にのみ、NSG を
 6. サブネットが表示される場合は、サブネットをクリックし、「 [NSG とサブネットの関連付けを解除する](#Dissociate-an-NSG-from-a-subnet)」の手順 2 と 3 を実行します。
 7. 左側で **[NSG-FrontEnd]** ブレードまでスクロールし、**[削除]** > **[はい]** をクリックします。
 
-    [Azure ポータル - NSG](./media/virtual-network-manage-nsg-arm-portal/figure16.png)
+    ![Azure ポータル - NSG](./media/virtual-network-manage-nsg-arm-portal/figure16.png)
 
 ## <a name="next-steps"></a>次のステップ
 * [ログを有効にします](virtual-network-nsg-manage-log.md) 。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

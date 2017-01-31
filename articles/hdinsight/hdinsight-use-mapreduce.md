@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: b72443c0ca60196535ac093a6ac03df456f776ea
-ms.openlocfilehash: 068cd703d0d06206b3caa72e765dbe51b819ff17
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: 04ed02c07c10b74c60169eb895a448109650817a
 
 
 ---
@@ -163,10 +163,10 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 
 | **使用する方法** | **目的** | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:--- |:--- |:--- |
-| [SSH](hdinsight-hadoop-use-mapreduce-ssh.md) | **SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
-| [Curl](hdinsight-hadoop-use-mapreduce-curl.md) | **REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
-| [Windows PowerShell](hdinsight-hadoop-use-mapreduce-powershell.md) | **Windows PowerShell** |Linux または Windows |Windows |
-| [リモート デスクトップ](hdinsight-hadoop-use-mapreduce-remote-desktop.md) | **リモート デスクトップ** |Windows |Windows |
+| [SSH](hdinsight-hadoop-use-mapreduce-ssh.md) |**SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
+| [Curl](hdinsight-hadoop-use-mapreduce-curl.md) |**REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
+| [Windows PowerShell](hdinsight-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** |Linux または Windows |Windows |
+| [リモート デスクトップ](hdinsight-hadoop-use-mapreduce-remote-desktop.md) |**リモート デスクトップ** |Windows |Windows |
 
 ## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
 
@@ -177,7 +177,7 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 * [HDInsight での Apache Hadoop による Scalding MapReduce ジョブの開発](hdinsight-hadoop-mapreduce-scalding.md)
 * [HDInsight での Hive の使用][hdinsight-use-hive]
 * [HDInsight での Pig の使用][hdinsight-use-pig]
-* [HDInsight のサンプルを実行する][hdinsight-samples]
+* [HDInsight のサンプルの実行][hdinsight-samples]
 
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
@@ -187,12 +187,12 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 [hdinsight-samples]: hdinsight-run-samples.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
 
-[powershell-install-configure]: ../powershell-install-configure.md
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

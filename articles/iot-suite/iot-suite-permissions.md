@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/24/2016
 ms.author: araguila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 61985bf2e112fe7b0a46ece07fd56eb14ccc3d45
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d06ec1c7a643c92fd11b532abc26fb1597d969f5
 
 
 ---
@@ -45,12 +45,12 @@ AAD での管理者ロールの詳細については、「[Azure AD での管理
 詳細については、次のリソースを参照してください。
 
 * [Azure AD でのユーザーの作成または編集][lnk-create-edit-users]
-* [AAD でアプリ ロールの割り当て][lnk-assign-app-roles]
+* [AAD でのアプリ ロールの割り当て][lnk-assign-app-roles]
 
 ## <a name="azure-subscription-administrator-roles"></a>Azure サブスクリプション管理者ロール
 Azure 管理者ロールは、Azure サブスクリプションを AD テナントにマップする機能を制御します。
 
-Azure 共同管理者、サービス管理者、アカウント管理者のロールの詳細については、[Azure 共同管理者、サービス管理者、アカウント管理者を追加または変更する方法][lnk-admin-roles]に関するページをご覧ください。
+Azure 共同管理者、サービス管理者、アカウント管理者のロールの詳細については、「[Azure 共同管理者、サービス管理者、アカウント管理者を追加または変更する方法][lnk-admin-roles]」を参照してください。
 
 ## <a name="application-roles"></a>アプリケーション ロール
 アプリケーション ロールは、構成済みソリューション内のデバイスへのアクセスを制御します。
@@ -112,7 +112,7 @@ Azure 共同管理者、サービス管理者、アカウント管理者のロ�
 Azure サブスクリプションが確かにある場合は、サブスクリプションのテナント マッピングを調べ、ドロップダウンで正しいテナントが選択されていることを確認してください。 目的のテナントが正しいことを確認できた場合は、上の図に従って、サブスクリプションとこの AAD テナントのマッピングを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
-IoT Suite について引き続き学習するには、[構成済みソリューションをカスタマイズする][lnk-customize]方法に関するページを参照してください。
+IoT Suite について引き続き学習するには、[構成済みソリューションをカスタマイズする][lnk-customize]方法を参照してください。
 
 [img-flowchart]: media/iot-suite-permissions/flowchart.png
 
@@ -131,6 +131,6 @@ IoT Suite について引き続き学習するには、[構成済みソリュー
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

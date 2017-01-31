@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/10/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: c2b0a0554b2899b082079f75e9d235edc0f71042
+ms.sourcegitcommit: 42e682eb8e0a740393648e9fe49244c3a02a9867
+ms.openlocfilehash: eb6bce9be34467e472fbae6cbf154f3b789b6ddc
 
 
 ---
@@ -32,14 +32,14 @@ J2EE サーバーで既に実行されている Web アプリケーションが�
 > 
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1.Application Insights のインストルメンテーション キーを取得する
-1.  [Microsoft Azure ポータル](https://portal.azure.com)
-2. 新しい Application Insights リソースを作成します。
-   
-    ![[+] をクリックし、[Application Insights] を選択します](./media/app-insights-java-live/01-create.png)
-3. アプリケーションの種類を [Java Web アプリケーション] に設定します。
+1. [Microsoft Azure ポータル](https://portal.azure.com)
+2. 新しい Application Insights リソースを作成し、アプリケーション タイプを Java Web アプリケーションに設定します。
    
     ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/app-insights-java-live/02-create.png)
-4. 新しいリソースのインストルメンテーション キーを見つけます。 このキーは、後でコード プロジェクトに貼り付けます。
+
+    数秒後にリソースが作成されます。
+
+4. 新しいリソースを開き、インストルメンテーション キーを取得します。 このキーは、後でコード プロジェクトに貼り付けます。
    
     ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-live/03-key.png)
 
@@ -53,6 +53,8 @@ J2EE サーバーで既に実行されている Web アプリケーションが�
 SDK を追加したフォルダーに ApplicationInsights.xml を作成します。 そのファイルに次の XML を入力します。
 
 インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。
+
+```XML
 
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
@@ -83,7 +85,7 @@ SDK を追加したフォルダーに ApplicationInsights.xml を作成します
 
       </TelemetryInitializers>
     </ApplicationInsights>
-
+```
 
 * インストルメンテーション キーは、テレメトリのすべての項目と共に送信されます。インストルメンテーション キーを受け取った Application Insights は、リソース内にこのキーを表示します。
 * HTTP 要求コンポーネントはオプションです。 このコンポーネントは、要求と応答時間に関するテレメトリをポータルに自動的に送信します。
@@ -93,6 +95,8 @@ SDK を追加したフォルダーに ApplicationInsights.xml を作成します
 プロジェクトの web.xml ファイルを見つけて開きます。アプリケーション フィルターが構成されている web-app ノードの下に次のコード スニペットをマージします。
 
 最も正確な結果を得るためには、他のすべてのフィルターの前にこのフィルターをマップする必要があります。
+
+```XML
 
     <filter>
       <filter-name>ApplicationInsightsWebFilter</filter-name>
@@ -104,6 +108,7 @@ SDK を追加したフォルダーに ApplicationInsights.xml を作成します
        <filter-name>ApplicationInsightsWebFilter</filter-name>
        <url-pattern>/*</url-pattern>
     </filter-mapping>
+```
 
 ## <a name="5-check-firewall-exceptions"></a>5.ファイアウォール例外を確認する
 必要に応じて [送信データを送信する例外を設定](app-insights-ip-addresses.md)します。
@@ -135,6 +140,6 @@ HTTP 要求に関するテレメトリが概要ブレードに表示されます
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

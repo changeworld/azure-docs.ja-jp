@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 11/28/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8a971b0dc1f216deaa93045857d6220d0fcbf8c1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ebbd4166bc3f76c91823ee17b8b9c460feb9e194
 
 
 ---
@@ -72,7 +72,7 @@ Dynatrace OneAgent は、対応する Azure 拡張機能メカニズムによっ
 ## <a name="opsgenie"></a>OpsGenie
 OpsGenie は、Azure によって生成されたアラートのディスパッチャーとして動作します。 この OpsGenie では、対応スケジュールとエスカレーションに基づいて適切な通知先を特定し、電子メール、テキスト メッセージ (SMS)、電話、プッシュ通知を使用して通知します。 検出された問題のアラートを Azure が生成するだけで、OpsGenie は、その問題に対応する適切な担当者を確保してくれます。
 
-[ドキュメントを確認する。][opsgenie doc]
+[ドキュメントを確認する。][opsgenie-doc]
 
 ## <a name="pagerduty"></a>PagerDuty
 トップクラスのインシデント管理ソリューション PagerDuty は、メトリックに関して、最高レベルのAzure アラート サポートを提供します。 現時点で PagerDuty がサポートするのは、Azure サービスのプラットフォーム レベルのメトリックに関する通知のほか、Azure アプリケーションの Azure Monitor アラートの通知、自動スケールの通知、および監査ログ イベントの通知です。 こうした拡張機能により、ユーザーは、Azure コア プラットフォームを高度に視覚化しながら、PagerDuty のインシデント管理機能を最大限に利用し、リアルタイムな応答を得ることができます。 Azure 統合の強化することで、webhook を使用して、すばやく簡単に設定やカスタマイズを行うことができます。
@@ -85,6 +85,8 @@ Microsoft Cloud Services 用の Splunk アドオンは、[こちらの Splunkbas
 [ドキュメントを確認する。][splunk-doc]
 
 ## <a name="sumo-logic"></a>Sumo Logic
+Sumo Logic は、セキュリティで保護されたクラウド ネイティブのコンピューター データ分析サービスで、アプリケーション ライフサイクルおよびスタック全体にわたる構造化、半構造化、および非構造化データから、リアルタイム インテリジェンスを継続的に提供します。 世界中の 1,000 を超える顧客が分析および洞察に Sumo Logic を使用して、最新のアプリケーションやクラウド インフラストラクチャを、構築、実行したり、セキュリティで保護したりしています。 Sumo Logic を使用すると、マルチ テナント サービス モデルの利点により、継続的な技術革新を促進し、競争上の優位性のほか、ビジネスの価値と成長を高めることができます。
+
 [詳細情報。][sumologic-doc]
 
 ## <a name="next-steps"></a>次のステップ
@@ -103,7 +105,7 @@ Microsoft Cloud Services 用の Splunk アドオンは、[こちらの Splunkbas
 [opsgenie-anchor]: #opsgenie "OpsGenie"
 [pagerduty-anchor]: #pagerduty "PagerDuty"
 [splunk-anchor]: #splunk-add-on-for-microsoft-cloud-services "Splunk"
-[sumologic-anchor]: #sumologic "Sumo Logic"
+[sumologic-anchor]: #sumo-logic "Sumo Logic"
 
 <!--Icon references-->
 [alertlogic-logo]: ./media/partner-logos/alertlogic.png
@@ -120,21 +122,21 @@ Microsoft Cloud Services 用の Splunk アドオンは、[こちらの Splunkbas
 [sumologic-logo]: ./media/partner-logos/sumologic.png
 
 <!--Partner Documentation-->
-[alertlogic-doc]: https://docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic のドキュメント。"
-[appdynamics-doc]: https://docs.appdynamics.com/display/PRO42/Register+for+AppDynamics+for+Windows+Azure "AppDynamics のドキュメント。"
+[alertlogic-doc]: https://docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic ドキュメント。"
+[appdynamics-doc]: https://docs.appdynamics.com/display/PRO42/Register+for+AppDynamics+for+Windows+Azure "AppDynamics ドキュメント。"
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "CloudMonix の概要。"
 [cloudyn-doc]: https://www.cloudyn.com/azure-monitoring "Cloudyn の概要。"
-[datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "DataDog のドキュメント。"
-[dynatrace-doc]: https://blog.ruxit.com/ruxit-monitoring-azure-web-apps/ "Dynatraceのドキュメント。"
-[newrelic-doc]: https://newrelic.com/azure "NewRelicのドキュメント。"
-[opsgenie doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie のドキュメント。"
-[pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty のドキュメント。"
-[splunk-doc]: http://docs.splunk.com/Documentation/AddOns/released/MSCloudServices/About "Splunk のドキュメント。"
-[sumologic-doc]: https://www.sumologic.com/azure "SumoLogic のドキュメント。"
+[datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "DataDog ドキュメント。"
+[dynatrace-doc]: https://blog.ruxit.com/ruxit-monitoring-azure-web-apps/ "Dynatrace ドキュメント。"
+[newrelic-doc]: https://newrelic.com/azure "NewRelic ドキュメント。"
+[opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie ドキュメント。"
+[pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty ドキュメント"
+[splunk-doc]: http://docs.splunk.com/Documentation/AddOns/released/MSCloudServices/About "Splunk ドキュメント。"
+[sumologic-doc]: https://www.sumologic.com/azure "SumoLogic ドキュメント"
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
