@@ -45,10 +45,10 @@ M-Files と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの M-Files の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -123,7 +123,7 @@ Azure AD への M-Files の統合を構成するには、ギャラリーから�
 4. **[M-Files デスクトップ設定]** ウィンドウを開きます。 **[追加]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-m-files-tutorial/tutorial_m_files_10.png)
-5. **[Document Vault Connection Properties] (資格情報コンテナーの接続プロパティのドキュメント化)** ウィンドウで、次の手順を実行します。
+5. **[Document Vault Connection Properties] \(資格情報コンテナーの接続プロパティのドキュメント化)** ウィンドウで、次の手順を実行します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-m-files-tutorial/tutorial_m_files_11.png)
    
@@ -137,7 +137,7 @@ Azure AD への M-Files の統合を構成するには、ギャラリーから�
    
     d. **[認証]** フィールドで、**[特定の Windows ユーザー]** を選択すると 、署名の入力を求められます。 Azure AD の資格情報を入力してください。
    
-    e. **[Vault on Server] (サーバーの資格情報コンテナー)** は、サーバー上の対応する資格情報コンテナーを選択します。
+    e. **[Vault on Server] \(サーバーの資格情報コンテナー)** は、サーバー上の対応する資格情報コンテナーを選択します。
    
     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[OK]**をクリックします。
 
