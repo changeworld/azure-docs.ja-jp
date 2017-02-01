@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/25/2016
+ms.date: 12/09/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2966e0e59eef09f5a29945cc1e00bede6a8ade81
+ms.sourcegitcommit: 50d8d4d97c637b396e2ca9a9c4b16754f1c13a6a
+ms.openlocfilehash: f4f03ebbb595484978e4cd7ce91fc7c892e70754
 
 
 ---
@@ -25,18 +25,17 @@ ms.openlocfilehash: 2966e0e59eef09f5a29945cc1e00bede6a8ade81
 
 | オープン ソース ソフトウェア | ディストリビューション |
 | --- | --- |
-| [Apache Sqoop](http://sqoop.apache.org/) |HDInsight 3.2 と 3.4 |
-| [MapReduce](http://hadoop.apache.org/docs/r1.0.4/mapred_tutorial.html) |HDInsight 3.2 と 3.4 |
-| [Apache Storm](https://storm.apache.org/) |HDInsight 3.2 と 3.4 |
-| [Apache Hive](http://hive.apache.org/) |HDInsight 3.2 と 3.4 |
-| [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) |HDInsight 3.2 と 3.4 |
-| [Apache Mahout](http://mahout.apache.org/) |HDInsight 3.2 と 3.4 |
-| [Apache Pig/Pig Latin](http://pig.apache.org/) |HDInsight 3.2 と 3.4 |
-| [Apache Oozie](http://oozie.apache.org/) |HDInsight 3.2 と 3.4 |
-| [Apache Zookeeper](http://zookeeper.apache.org/) |HDInsight 3.2 と 3.4 |
-| [Apache HBase](http://hbase.apache.org/) |HDInsight 3.2 と 3.4 |
-| [Apache Tez](http://tez.apache.org/) |HDInsight 3.2 と 3.4 |
-| [Apache Spark](http://spark.apache.org/) |HDInsight 3.4 |
+| [Apache Sqoop](http://sqoop.apache.org/) |HDInsight 3.2、3.4、3.5 |
+| [MapReduce](http://hadoop.apache.org/docs/r1.0.4/mapred_tutorial.html) |HDInsight 3.2、3.4、3.5 |
+| [Apache Storm](https://storm.apache.org/) |HDInsight 3.2、3.4、3.5 |
+| [Apache Hive](http://hive.apache.org/) |HDInsight 3.2、3.4、3.5 |
+| [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) |HDInsight 3.2、3.4、3.5 |
+| [Apache Mahout](http://mahout.apache.org/) |HDInsight 3.2、3.4、3.5 |
+| [Apache Pig/Pig Latin](http://pig.apache.org/) |HDInsight 3.2、3.4、3.5 |
+| [Apache Oozie](http://oozie.apache.org/) |HDInsight 3.2、3.4、3.5 |
+| [Apache Zookeeper](http://zookeeper.apache.org/) |HDInsight 3.2、3.4、3.5 |
+| [Apache Tez](http://tez.apache.org/) |HDInsight 3.2、3.4、3.5 |
+| [Apache Spark](http://spark.apache.org/) |HDInsight 3.4、3.5 |
 
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)
@@ -44,6 +43,6 @@ ms.openlocfilehash: 2966e0e59eef09f5a29945cc1e00bede6a8ade81
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

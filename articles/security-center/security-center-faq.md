@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 12/09/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: b8a69d89f335c00c5ddc3c201e33a66e1dea1da5
-ms.openlocfilehash: fc45634baec1fe5af6cf8f718fb78025dff88a7e
+ms.sourcegitcommit: 0135732e95279f2e717334d3dd39902b56b0aa90
+ms.openlocfilehash: 30a327f59b8149f41c3b5206e0b0c2fc859934a0
 
 
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure セキュリティ センターのよく寄せられる質問 (FAQ)
-この FAQ は、Azure セキュリティ センターについて寄せられる質問とその回答です。Azure セキュリティ センターは、Microsoft Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応可能にするサービスです。
+この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
 
 ## <a name="general-questions"></a>一般的な質問
 ### <a name="what-is-azure-security-center"></a>Azure セキュリティ センターとは
@@ -36,13 +36,20 @@ Azure Security Center は Free と Standard の 2 つのプランで提供され
 
 Free レベルでは、セキュリティ ポリシーを設定できるほか、必要なコントロールの構成プロセスを紹介するセキュリティ アラート、インシデント、推奨事項を受け取ることができます。 また、Free レベルでは、Azure リソースと、Azure サブスクリプションに統合済みのパートナー ソリューションのセキュリティ状態を監視することもできます。
 
-Standard レベルでは、Free レベルの機能に加えて、高度な検出機能 (脅威インテリジェンス、行動分析、クラッシュ分析、異常検出) を使用できます。 Standard レベルについては 90 日間の無料評価版を利用可能です。 アップグレードを行うには、 [セキュリティ ポリシー](security-center-policies.md#set-security-policies-for-subscriptions)で価格レベルを選択してください。 詳細については、「[セキュリティ センターの価格](security-center-pricing.md)」を参照してください。
+Standard レベルでは、Free レベルの機能に加えて、高度な検出機能 (脅威インテリジェンス、行動分析、クラッシュ分析、異常検出) を使用できます。 Standard レベルについては 90 日間の無料評価版を利用可能です。 アップグレードを行うには、 [セキュリティ ポリシー](security-center-policies.md#set-security-policies-for-subscriptions)で価格レベルを選択してください。 詳細については、[Security Center の価格](security-center-pricing.md)に関する記事を参照してください。
+
+## <a name="permissions"></a>アクセス許可
+Azure Security Center では、[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) が使用されています。RBAC が提供する[組み込みのロール](../active-directory/role-based-access-built-in-roles.md)は、Azure でユーザー、グループ、サービスに割り当てることができます。
+
+Security Center は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Security Center では、リソースが属するサブスクリプションまたはリソース グループの所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているときにリソースに関連した情報のみが表示されます。
+
+Security Center のロールと許可されているアクションの詳細については、「[Permissions in Azure Security Center (Azure Security Center のアクセス許可)](security-center-permissions.md)」を参照してください。
 
 ## <a name="data-collection"></a>データ収集
-セキュリティ センターでは、仮想マシンのセキュリティ状態へのアクセス、セキュリティ推奨事項の提供、脅威についての警告を行うために、その仮想マシンからデータを収集します。 最初にセキュリティ センターにアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。 データ収集は有効にしておくことをお勧めしますが、セキュリティ センター ポリシーで [データ収集を無効](#how-do-i-disable-data-collection) にして、オプトアウトすることもできます。
+Security Center では、仮想マシンからデータを収集して、そのセキュリティ状態の評価、セキュリティ推奨事項の提供、脅威についての警告を行います。 最初にセキュリティ センターにアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。 データ収集は有効にしておくことをお勧めしますが、セキュリティ センター ポリシーで [データ収集を無効](#how-do-i-disable-data-collection) にして、オプトアウトすることもできます。
 
 ### <a name="how-do-i-disable-data-collection"></a>データ収集を無効にするにはどうしたらよいですか。
-サブスクリプションの**データ収集**は、セキュリティ ポリシーでいつでも無効にできます  ([Azure Portal にサインイン](https://portal.azure.com)して、**[参照]**、**[セキュリティ センター]**、**[ポリシー]** の順に選択します)。サブスクリプションを選択すると、新しいブレードが開き、**データ収集**をオフにするオプションが表示されます。 上部のリボンにある **[エージェントを削除]** オプションを選択し、既存の仮想マシンからエージェントを削除します。
+サブスクリプションの**データ収集**は、セキュリティ ポリシーでいつでも無効にできます  ([Azure Portal にサインイン](https://portal.azure.com)して、**[参照]**、**[セキュリティ センター]**、**[ポリシー]** の順に選択します)。サブスクリプションを選択すると、新しいブレードが開き、**データ収集**をオフにするオプションが表示されます。 既存の仮想マシンからエージェントを削除するには、上部のリボンにある **[Delete agents (エージェントを削除)]** オプションを選択します。
 
 > [!NOTE]
 > セキュリティ ポリシーは Azure サブスクリプション レベルとリソース グループ レベルで設定できますが、データの収集をオフにするにはサブスクリプションを選択する必要があります。
@@ -58,13 +65,13 @@ Azure サブスクリプションのデータ収集の有効化は、セキュ�
 >
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>データ収集を有効にするとどうなりますか。
-データ収集は、Azure Monitoring Agent と Azure セキュリティの監視拡張機能を使用して有効にします。 Azure セキュリティの監視拡張機能では、さまざまなセキュリティ関連の構成をスキャンして、 [Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) トレースに送信します。 さらに、オペレーティング システムでは、イベント ログ エントリが作成されます。  Azure Monitoring Agent は、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをストレージ アカウントにコピーします。  これは、セキュリティ ポリシーで構成したストレージ アカウントです。 ストレージ アカウントの詳細については、質問「[データはどこに格納されますか](#where-is-my-data-stored)」を参照してください。
+データ収集は、Azure Monitoring Agent と Azure セキュリティの監視拡張機能を使用して有効にします。 Azure セキュリティの監視拡張機能では、さまざまなセキュリティ関連の構成をスキャンして、[Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) トレースに送信します。 さらに、オペレーティング システムでは、イベント ログ エントリが作成されます。  Azure Monitoring Agent は、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをストレージ アカウントにコピーします。  これは、セキュリティ ポリシーで構成したストレージ アカウントです。 ストレージ アカウントの詳細については、質問「[データはどこに格納されますか](#where-is-my-data-stored)」を参照してください。
 
 ### <a name="does-the-monitoring-agent-or-security-monitoring-extension-impact-the-performance-of-my-servers"></a>Monitoring Agent やセキュリティの監視拡張機能は、サーバーのパフォーマンスに影響しますか。
 エージェントと拡張機能は、システム リソースのわずかな量しか消費しないため、パフォーマンスにほとんど影響しません。 パフォーマンスの影響と、エージェントおよび拡張機能の詳細については、[計画および運用ガイド](security-center-planning-and-operations-guide.md#data-collection-and-storage)を参照してください。
 
 ### <a name="where-is-my-data-stored"></a>データはどこに格納されますか。
-実行している仮想マシンがある各リージョンに対し、これらの仮想マシンから収集されたデータが格納されているストレージ アカウントを選択します。 これにより、プライバシーとデータ主権目的で、同じ地域にデータを保持することが容易になります。 サブスクリプションのストレージ アカウントはセキュリティ ポリシーで選択します ([Azure Portal にサインイン](https://portal.azure.com)して、**[参照]**、**[セキュリティ センター]**、**[ポリシー]** の順に選択します)。サブスクリプションをクリックすると、新しいブレードが開きます。 **[ストレージ アカウントを選ぶ]** を選択してリージョンを選択します。
+実行している仮想マシンがある各リージョンに対し、これらの仮想マシンから収集されたデータが格納されているストレージ アカウントを選択します。 これにより、プライバシーとデータ主権目的で、同じ地域にデータを保持することが容易になります。 サブスクリプションのストレージ アカウントはセキュリティ ポリシーで選択します ([Azure Portal にサインイン](https://portal.azure.com)して、**[参照]**、**[セキュリティ センター]**、**[ポリシー]** の順に選択します)。サブスクリプションを選択すると、新しいブレードが開きます。 リージョンを選択するには、**[Choose storage accounts (ストレージ アカウントの選択)]** を選択します。
 
 > [!NOTE]
 > セキュリティ ポリシーは Azure サブスクリプション レベルとリソース グループ レベルで設定可能ですが、ストレージ アカウントのリージョンの選択はサブスクリプション レベルでのみ行うことができます。
@@ -77,10 +84,10 @@ Azure Storage とストレージ アカウントの詳細については、「[S
 ### <a name="what-is-a-security-policy"></a>セキュリティ ポリシーとは何ですか。
 セキュリティ ポリシーは、指定されたサブスクリプションまたはリソース グループ内のリソースに推奨されるコントロールのセットを定義します。 Azure Security Center では、セキュリティに関する会社の要件、および各サブスクリプションでのアプリケーションのタイプやデータの機密度に合わせて、Azure サブスクリプションとリソース グループのポリシーを定義できます。
 
-たとえば、開発またはテストに使用されるリソースには、実稼働アプリケーションで使われるものと異なるセキュリティ要件があります。 同様に、PII (個人情報) のような規制されたデータを持つアプリケーションには、より高いレベルのセキュリティが必要です。 Azure セキュリティ センターで有効になっているセキュリティ ポリシーが、セキュリティに関する推奨事項と監視を促進します。 セキュリティ ポリシーの詳細については、「 [Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」を参照してください。
+たとえば、開発またはテストに使用されるリソースには、実稼働アプリケーションで使われるものと異なるセキュリティ要件があります。 同様に、PII (個人情報) のような規制されたデータを持つアプリケーションには、より高いレベルのセキュリティが必要です。 Azure Security Center で有効になっているセキュリティ ポリシーが、セキュリティに関する推奨事項と監視を促進します。 セキュリティ ポリシーの詳細については、「 [Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」を参照してください。
 
 > [!NOTE]
-> サブスクリプション レベルのポリシーとリソース グループ レベルのポリシーが競合する場合は、リソース グループ レベルのポリシーが優先されます。
+> サブスクリプション レベルのポリシーとリソース グループ レベルのポリシーとの間に競合がある場合は、リソース グループ レベルのポリシーが優先されます。
 >
 >
 
@@ -104,7 +111,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 **[セキュリティ センター]** ブレードの **[リソース ヘルス]** タイルには、ご使用の環境の全体的なセキュリティ対策が、仮想マシン、Web アプリケーション、およびその他のリソースごとに示されます。 各リソースには、潜在的なセキュリティの脆弱性が確認されたことを示すインジケーターがあります。 [リソース ヘルス] タイルをクリックすると、リソースが表示され、注意が必要な場所または問題が存在する可能性のある場所が識別されます。
 
 ### <a name="what-triggers-a-security-alert"></a>セキュリティの警告をトリガーするものは何ですか。
-Azure セキュリティ センターは、Azure のリソース、ネットワーク、およびマルウェア対策とファイアウォールのようなパートナー ソリューションから、自動的にログ データを収集して分析し、結合します。 脅威が検出されると、セキュリティの警告が作成されます。 例には次の検出が含まれます。
+Azure Security Center は、Azure のリソース、ネットワーク、パートナー ソリューション (マルウェア対策やファイアウォールなど) から、自動的にログ データを収集して分析し、結合します。 脅威が検出されると、セキュリティの警告が作成されます。 例には次の検出が含まれます。
 
 * 既知の悪意のある IP アドレスと通信する、セキュリティ侵害された仮想マシン
 * Windows エラー報告を使用して検出された高度なマルウェア
@@ -116,18 +123,6 @@ Microsoft Security Response Center (MSRC) では、Azure のネットワーク�
 
 Security Center は、顧客の Azure 環境を継続的に監視し、分析を適用して悪意のある可能性があるさまざまなアクティビティを自動的に検出する Azure サービスです。 検出されたアクティビティは、Security Center のダッシュボードにセキュリティの警告として表示されます。
 
-### <a name="how-are-permissions-handled-in-azure-security-center"></a>Azure セキュリティ センターではアクセス許可はどのように処理されますか。
-Azure Security Center では、ロール ベースのアクセスをサポートしています。 ロールベースのアクセス制御 (RBAC) の詳細については、「 [Azure Active Directory のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
-
-ユーザーが Azure Security Center を開くと、ユーザーがアクセス権を持つリソースに関する推奨事項とアラートだけが表示されます。 つまり、ユーザーが閲覧できるのは、サブスクリプションまたはリソースが属するリソース グループに対して所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているリソースに関連する項目のみです。
-
-各操作に必要な条件を次に示します。
-
-* **セキュリティ ポリシーの編集**: そのサブスクリプションの所有者または共同作業者である必要があります。
-* **推奨事項の適用**: そのサブスクリプションの所有者または共同作業者である必要があります。
-* **すべてのサブスクリプションのセキュリティ状態を可視化する**: 各サブスクリプションの所有者、共同作業者、または閲覧者 (IT 管理者、セキュリティ チーム)である必要があります。
-* **リソースのセキュリティ状態を可視化する**: リソース グループの所有者、共同作業者、または閲覧者 (DevOps) である必要があります。
-
 ### <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Azure Security Center の監視対象になる Azure リソースは何ですか。
 Azure Security Center は、次の Azure リソースを監視します。
 
@@ -136,8 +131,8 @@ Azure Security Center は、次の Azure リソースを監視します。
 * Azure SQL サービス
 * Azure サブスクリプションに統合済みのパートナー ソリューション (VM 上および [App Service](../app-service/app-service-app-service-environments-readme.md)
 
-## <a name="virtual-machines"></a>Virtual Machines
-### <a name="what-types-of-virtual-machines-will-be-supported"></a>サポートされる仮想マシンのタイプは何ですか。
+## <a name="virtual-machines"></a>[Virtual Machines]
+### <a name="what-types-of-virtual-machines-are-supported"></a>サポートされる仮想マシンのタイプは何ですか。
 セキュリティ正常性の監視と推奨事項は、 [クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-classic-rm.md)のどちらで作成された仮想マシン (VM) でも利用できます。
 
 サポートされる Windows VM:
@@ -161,13 +156,13 @@ Azure Security Center は、次の Azure リソースを監視します。
 Azure Security Center で可視化できるのは、Azure 拡張機能によりインストールされたマルウェア対策ソリューションのみです。 たとえば、Azure Security Center では、お客様のイメージにプレインストールされていたマルウェア対策ソリューションや、お客様が独自のプロセス (構成管理システムなど) で仮想マシンにインストールしたマルウェア対策ソリューションは検出できません。
 
 ### <a name="why-do-i-get-the-message-missing-scan-data-for-my-vm"></a>VM で "スキャン データがありません" というメッセージが表示されるのはなぜですか。
-Azure Security Center でのデータ収集後、スキャン データが取り込まれるまでには、ある程度の時間 (通常は 1 時間未満) がかかります。 停止状態の VM のスキャン データは取り込まれません。
+Azure Security Center でデータ収集が有効になると、スキャン データが取り込まれるまでにある程度の時間 (1 時間未満) がかかる場合があります。 停止状態の VM のスキャン データは取り込まれません。
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>"VM Agent is Missing? (VM エージェントが見つかりません)" というメッセージが表示されるのはなぜですか。
-データ収集を有効にするためには、VM エージェントを VM にインストールする必要があります。 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 他の VM への VM エージェントのインストール方法については、 [VM エージェントと拡張機能](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)に関するブログ投稿を参照してください。
+データ収集を有効にするには、VM エージェントが VM にインストールされている必要があります。 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 他の VM への VM エージェントのインストール方法については、 [VM エージェントと拡張機能](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)に関するブログ投稿を参照してください。
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 
