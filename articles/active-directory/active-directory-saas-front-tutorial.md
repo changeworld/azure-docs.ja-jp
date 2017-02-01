@@ -114,14 +114,14 @@ Front で Azure AD のシングル サインオンを構成してテストする
    
     b. **[応答 URL]** ボックスに、`https://<company name>.frontapp.com/sso/saml/callback` のパターンを使用して URL を入力します。
    
-    c.  **[次へ]**
+    c. **[次へ]**
 4. **[アプリケーション設定の構成]** ダイアログ ページで、**SP 開始モード**でアプリケーションを構成する場合は、**[詳細設定を表示します (オプション)]** をクリックし、**サインオン URL** を入力して、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-front-tutorial/tutorial_front_05.png)
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.frontapp.com` のパターンを使用して URL を入力します。
    
-    b.  **[次へ]**
+    b. **[次へ]**
    
    > [!NOTE]
    > これは実際の値ではないので注意してください。 実際のサインオン URL、識別子、および応答 URL で値を更新する必要があります。 これらの値を取得するには、 **手順 12** で詳細を参照するか、 [support@frontapp.com](emailTo:support@frontapp.com)」を参照してください。
@@ -135,7 +135,7 @@ Front で Azure AD のシングル サインオンを構成してテストする
    
     b. ページの下部にある **[次へ]**」を参照してください。
 6. Front テナントに管理者としてサインオンします。
-7. **[Settings (設定)] (左のサイド バーの下にある歯車アイコン)、[Preferences (ユーザー設定)]** の順に移動します。
+7. **[Settings (設定)] \(左のサイド バーの下にある歯車アイコン)、[Preferences (ユーザー設定)]** の順に移動します。
    
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_000.png)
 8. **[シングル サインオン]** のリンクをクリックします。
