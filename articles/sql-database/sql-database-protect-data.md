@@ -116,12 +116,12 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ## <a name="compliance"></a>コンプライアンス
 アプリケーションがさまざまなセキュリティ コンプライアンスの要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database は定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)」をご覧ください。ここから最新の [SQL Database コンプライアンス証明書](https://azure.microsoft.com/support/trust-center/services/)の一覧を入手できます。
 
+
 ## <a name="next-steps"></a>次のステップ
 
 - すべての SQL Database セキュリティ機能の概要については、[SQL セキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。
 - SQL Database でのアクセス制御機能の使用については、[アクセス制御](sql-database-control-access.md)に関するページを参照してください。
 - プロアクティブな監視の詳細については、「[SQL Database 監査の使用](sql-database-auditing-get-started.md)」と「[SQL Database 脅威の検出の概要](sql-database-threat-detection-get-started.md)」を参照してください。
-
 
 
 
