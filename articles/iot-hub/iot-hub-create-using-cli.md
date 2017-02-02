@@ -1,115 +1,125 @@
 ---
-title: "Azure CLI を使用して IoT Hub を作成する | Microsoft Docs"
-description: "Azure コマンド ライン インターフェイスを使用して IoT Hub を作成するには、この記事に従ってください。"
+title: "Azure CLI (az.py) を使用して IoT ハブを作成する | Microsoft Docs"
+description: "クロスプラットフォームの Azure CLI 2.0 (プレビュー) (az.py) を使用して Azure IoT Hub を作成する方法。"
 services: iot-hub
 documentationcenter: .net
-author: BeatriceOltean
+author: dominicbetts
 manager: timlt
 editor: 
-ms.assetid: 46a17831-650c-41d9-b228-445c5bb423d3
+ms.assetid: 
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2016
-ms.author: boltean
+ms.date: 12/02/2016
+ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 637cdc4763cd0caa9f75e25015c0c12e9db629cb
+ms.sourcegitcommit: 39c8c4944ef19379dc04e04a717ab60d305593c4
+ms.openlocfilehash: c52d9a5fadf494cc066bee773543c9d67bb8334b
 
 
 ---
-# <a name="create-an-iot-hub-using-azure-cli"></a>Azure CLI を使用して IoT Hub を作成する
+# <a name="create-an-iot-hub-using-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) を使用して IoT ハブを作成する
+
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 ## <a name="introduction"></a>はじめに
-Azure コマンド ライン インターフェイスを使って、Azure IoT Hub をプログラムで作成、管理できます。 この記事では、Azure CLI を使用して IoT Hub を作成する方法を説明します。
+
+Azure CLI 2.0 (プレビュー) (az.py) を使用して、Azure IoT Hub をプログラムで作成、管理できます。 この記事では、Azure CLI 2.0 (プレビュー) (az.py) を使用して IoT ハブを作成する方法を説明します。
+
+次のいずれかの CLI バージョンを使用してタスクを完了できます。
+
+* [Azure CLI (azure.js)](iot-hub-create-using-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
+* Azure CLI 2.0 (プレビュー) (az.py) - この記事で説明している、Resource Manager デプロイメント モデル用の次世代 CLI
 
 このチュートリアルを完了するには、以下が必要です。
 
 * アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
-* [Azure CLI 0.10.4][lnk-CLI-install] 以降。 既に Azure CLI がある場合は、コマンド プロンプトで次のコマンドを使用して、現在のバージョンを確認できます。
-  ```
-    azure --version
-  ```
+* [Azure CLI 2.0 (プレビュー)][lnk-CLI-install]。
 
-> [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 Azure CLI は、Azure Resource Manager モードである必要があります。
-> 
-> ```
-> azure config mode arm
-> ```
-> 
-> 
+## <a name="sign-in-and-set-your-azure-account"></a>サインインして Azure アカウントを設定する
 
-## <a name="set-your-azure-account-and-subscription"></a>Azure アカウントとサブスクリプションを設定する
-1. コマンド プロンプトで、次のコマンドを入力してログインします。
-   
-   ```
-    azure login
-   ```
-   認証には、推奨される Web ブラウザーとコードを使用します。
-2. 複数の Azure サブスクリプションがある場合は、Azure に接続すると、資格情報に関連付けられているすべての Azure サブスクリプションへのアクセスが許可されます。 次のコマンドを使用すると、すべての Azure サブスクリプションを表示でき、既定のサブスクリプションも確認できます。
-   
-   ```
-    azure account list 
-   ```
+Azure アカウントにサインインし、IoT Hub リソースを操作する Azure CLI を構成します。
 
-   コマンドの残りの部分を実行するサブスクリプションのコンテキストを設定するには、次を使用します。
+1. コマンド プロンプトで、[ログイン コマンド][lnk-login-command]を実行します。
+    
+    ```azurecli
+    az login
+    ```
 
-   ```
-    azure account set <subscription name>
-   ```
+    指示に従って、コードを使用して認証し、Web ブラウザーで Azure アカウントにサインインします。
 
-3. リソース グループがない場合は、**exampleResourceGroup** という名前のリソース グループを作成できます。 
-   ```
-    azure group create -n exampleResourceGroup -l westus
-   ```
+2. 複数の Azure サブスクリプションがある場合は、Azure にサインインすると、資格情報に関連付けられているすべてのAzure アカウントへのアクセスが許可されます。 以下の、利用できる [Azure アカウントを一覧表示するコマンド][lnk-az-account-command] を使用します。
+    
+    ```azurecli
+    az account list 
+    ```
 
-> [!TIP]
-> 「[Azure CLI を使用して Azure のリソースとリソース グループを管理する][lnk-CLI-arm]」の記事には、Azure CLI を使用して Azure リソースを管理する方法の詳細が記載されています。 
-> 
-> 
+    以下のコマンドを使用して、コマンドを実行して IoT ハブを作成するために使用するサブスクリプションを選択します。 前のコマンドの出力から、サブスクリプション名または ID のいずれかを使用できます。
+
+    ```azurecli
+    az account set --subscription {your subscription name or id}
+    ```
+
+3. IoT リソースをデプロイする前に、IoT プロバイダーを登録する必要があります。 以下の、[IoT プロバイダーを登録するコマンド][lnk-az-register-command]を実行します。
+    
+    ```azurecli
+    az provider register -namespace "Microsoft.Devices"
+    ```
+
+4. 場合によっては、Azure CLI _IoT コンポーネント_をインストールする必要があります。 以下の、[IoT コンポーネントを追加するコマンド][lnk-az-addcomponent-command]を実行します。
+    
+    ```azurecli
+    az component update --add iot
+    ```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
-必要なパラメーターは以下のとおりです。
 
-```
- azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u <units>  
-    - <resourceGroup> The resource group name (case insensitive alphanumeric, underscore and hyphen, 1-64 length)
-    - <name> (The name of the IoT hub to be created. The format is case insensitive alphanumeric, underscore and hyphen, 3-50 length )
-    - <location> (The location (azure region/datacenter) where the IoT hub will be provisioned.
-    - <sku-name> (The name of the sku, one of: [F1, S1, S2, S3] etc. For the latest full list refer to the pricing page for IoT Hub.
-    - <units> (The number of provisioned units. Range : F1 [1-1] : S1, S2 [1-200] : S3 [1-10]. IoT Hub units are based on your total message count and the number of devices you want to connect.)
-```
-作成に使用できるすべてのパラメーターを表示するには、コマンド プロンプトでヘルプ コマンドを使用します。
+Azure CLI を使用してリソース グループを作成してから、IoT ハブを追加します。
 
-```
-    azure iothub create -h 
-```
-簡単な例:
+1. IoT ハブを作成するときは、リソース グループの中に作成する必要があります。 既存のリソース グループを使用するか、以下の、[リソース グループを作成するコマンド][lnk-az-resource-command]を実行します。
+    
+    ```azurecli
+     az resource group create --name {your resource group name} --location westus
+    ```
 
- リソース グループ **exampleResourceGroup** に **exampleIoTHubName** という名前の IoT Hub を作成するには、次のコマンドを実行します。
+    > [!TIP]
+    > 上の例では、West US という場所にリソース グループを作成します。 `az account list-locations -o table` コマンドを実行すると、利用できる場所を一覧表示できます。
+    >
+    >
 
-```
-    azure iothub create -g exampleResourceGroup -n exampleIoTHubName -l westus -k s1 -u 1
-```
+2. 以下の、リソース グループに[IoT ハブを作成するコマンド][lnk-az-iot-command]を実行します。
+    
+    ```azurecli
+    az iot hub create --name {your iot hub name} --resource-group {your resource group name} --sku S1
+    ```
 
 > [!NOTE]
-> この Azure CLI コマンドでは、課金の対象とする S1 Standard IoT Hub を作成します。 次のコマンドを使用すると、IoT Hub **exampleIoTHubName** を削除できます。 
-> 
-> ```
-> azure iothub delete -g exampleResourceGroup -n exampleIoTHubName
-> ```
-> 
-> 
-> 
+> IoT ハブの名前は、グローバルに一意である必要があります。 上のコマンドは、課金の対象となる S1 価格レベルに IoT ハブを作成します。 詳細については、「[Azure IoT Hub の価格][lnk-iot-pricing]」をご覧ください。
+>
+>
+
+## <a name="remove-an-iot-hub"></a>IoT Hub の削除
+
+Azure CLI を使用して、IoT Hub など、[個々のリソースを削除][lnk-az-resource-command]することも、リソース グループとそのすべてのリソース (IoT Hub など) を削除をすることもできます。
+
+IoT Hub を削除するには、次のコマンドを実行します。
+
+```azurecli
+az resource delete --name {your iot hub name} --resource-group {your resource group name} --resource-type Microsoft.Devices/IotHubs
+```
+
+リソース グループとそのすべてのリソースを削除するには、次のコマンドを実行します。
+
+```azurecli
+az resource group delete --name {your resource group name}
+```
 
 ## <a name="next-steps"></a>次のステップ
 IoT Hub の開発に関する詳細については、以下を参照してください
 
-* [IoT SDK][lnk-sdks]
+* [IoT Hub 開発者向けガイド][lnk-devguide]
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
@@ -117,17 +127,19 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[lnk-azure-portal]: https://portal.azure.com/
-[lnk-status]: https://azure.microsoft.com/status/
-[lnk-CLI-install]: ../xplat-cli-install.md
-[lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
-[lnk-CLI-arm]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
-
-[lnk-sdks]: iot-hub-devguide-sdks.md
+[lnk-CLI-install]: https://docs.microsoft.com/cli/azure/install-az-cli2
+[lnk-login-command]: https://docs.microsoft.com/cli/azure/get-started-with-az-cli2
+[lnk-az-account-command]: https://docs.microsoft.com/cli/azure/account
+[lnk-az-register-command]: https://docs.microsoft.com/cli/azure/provider
+[lnk-az-addcomponent-command]: https://docs.microsoft.com/cli/azure/component
+[lnk-az-resource-command]: https://docs.microsoft.com/cli/azure/resource
+[lnk-az-iot-command]: https://docs.microsoft.com/cli/azure/iot
+[lnk-iot-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
+[lnk-devguide]: iot-hub-devguide.md
 [lnk-portal]: iot-hub-create-through-portal.md 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

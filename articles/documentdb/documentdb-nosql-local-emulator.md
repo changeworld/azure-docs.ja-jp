@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 0d0264857f552b65f5934eea686329e8d36a1204
-ms.openlocfilehash: e86b1990ea38f9f8af4e5401fe37eec321075e64
+ms.sourcegitcommit: 6c5bf8907a5f69e45e7b62fb466bdc53460e9029
+ms.openlocfilehash: 86a5911e99e7631b09604afcb0f53ed2887b576b
 
 
 ---
@@ -122,9 +122,9 @@ X.509 証明書を Java 証明書ストアにインポートする場合は、�
 
 ### <a name="command-line-syntax"></a>コマンドライン構文
 
-    DocumentDB.LocalEmulator.exe [/shutdown] [/datapath] [/port] [/mongoport] [/directports] [/key] [/?]
+    DocumentDB.Emulator.exe [/shutdown] [/datapath] [/port] [/mongoport] [/directports] [/key] [/?]
 
-オプションの一覧を表示するには、コマンド プロンプトで「 `DocumentDB.LocalEmulator.exe /?` 」と入力します。
+オプションの一覧を表示するには、コマンド プロンプトで「 `DocumentDB.Emulator.exe /?` 」と入力します。
 
 <table>
 <tr>
@@ -136,61 +136,61 @@ X.509 証明書を Java 証明書ストアにインポートする場合は、�
 <tr>
   <td>[引数なし]</td>
   <td>既定の設定で DocumentDB Emulator を起動します</td>
-  <td>DocumentDB.LocalEmulator.exe</td>
+  <td>DocumentDB.Emulator.exe</td>
   <td></td>
 </tr>
 <tr>
   <td>Shutdown</td>
   <td>DocumentDB Emulator をシャットダウンします</td>
-  <td>DocumentDB.LocalEmulator.exe /Shutdown</td>
+  <td>DocumentDB.Emulator.exe /Shutdown</td>
   <td></td>
 </tr>
 <tr>
   <td>[ヘルプ]</td>
   <td>コマンドライン引数の一覧を表示します</td>
-  <td>DocumentDB.LocalEmulator.exe /?</td>
+  <td>DocumentDB.Emulator.exe /?</td>
   <td></td>
 </tr>
 <tr>
   <td>Datapath</td>
   <td>データ ファイルを格納するパスを指定します</td>
-  <td>DocumentDB.LocalEmulator.exe /datapath=&lt;datapath&gt;</td>
+  <td>DocumentDB.Emulator.exe /datapath=&lt;datapath&gt;</td>
   <td>&lt;datapath&gt;: アクセスできるパス</td>
 </tr>
 <tr>
   <td>ポート</td>
   <td>エミュレーターで使用するポート番号を指定します。  既定値は 8081 です</td>
-  <td>DocumentDB.LocalEmulator.exe /port=&lt;port&gt;</td>
+  <td>DocumentDB.Emulator.exe /port=&lt;port&gt;</td>
   <td>&lt;port&gt;: 単一のポート番号</td>
 </tr>
 <tr>
   <td>MongoPort</td>
   <td>MongoDB 互換性 API に使用するポート番号を指定します。 既定値は 10250 です</td>
-  <td>DocumentDB.LocalEmulator.exe /mongoport=&lt;mongoport&gt;</td>
+  <td>DocumentDB.Emulator.exe /mongoport=&lt;mongoport&gt;</td>
   <td>&lt;mongoport&gt;: 単一のポート番号</td>
 </tr>
 <tr>
   <td>DirectPorts</td>
   <td>直接接続に使用するポートを指定します。 既定値は、10251、10252、10253、10254 です。</td>
-  <td>DocumentDB.LocalEmulator.exe /directports:&lt;directports&gt;</td>
+  <td>DocumentDB.Emulator.exe /directports:&lt;directports&gt;</td>
   <td>&lt;directports&gt;: 4 つのポートのコンマ区切りリスト</td>
 </tr>
 <tr>
   <td>キー</td>
   <td>エミュレーターの承認キーです。 キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります</td>
-  <td>DocumentDB.LocalEmulator.exe /key:&lt;key&gt;</td>
+  <td>DocumentDB.Emulator.exe /key:&lt;key&gt;</td>
   <td>&lt;key&gt;: キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります。</td>
 </tr>
 <tr>
   <td>EnableThrottling</td>
   <td>要求スロットル動作の有効化を指定します</td>
-  <td>DocumentDB.LocalEmulator.exe /enablethrottling</td>
+  <td>DocumentDB.Emulator.exe /enablethrottling</td>
   <td></td>
 </tr>
 <tr>
   <td>DisableThrottling</td>
   <td>要求スロットル動作の無効化を指定します</td>
-  <td>DocumentDB.LocalEmulator.exe /disablethrottling</td>
+  <td>DocumentDB.Emulator.exe /disablethrottling</td>
   <td></td>
 </tr>
 </table>
@@ -211,6 +211,6 @@ DocumentDB Emulator は開発者のローカル ワークステーションで�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

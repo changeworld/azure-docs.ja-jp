@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2016
+ms.date: 12/09/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: f6436e7682c6fd9fdfb1c787a6040f5aa67ac8fa
-ms.openlocfilehash: 1d4506b59ebf13c1bdb7cebcc035a0230d79062d
+ms.sourcegitcommit: f946ef41f0fc5ab39351d85c37ed24715b92b882
+ms.openlocfilehash: cd58f24c356e6d1ec0ebe77b1c336ee8370a4a9a
 
 
 ---
@@ -28,8 +28,8 @@ Azure ログ統合は、HP ArcSight、Splunk、IBM Qradar などで動作しま�
 ## <a name="what-logs-can-i-integrate"></a>統合できるログ
 Azure では、すべてのサービスの広範なログ記録を作成します。 これらのログは、次のように分類されます。
 
-* **コントロール/管理ログ** は、Azure Resource Manager の CREATE、UPDATE、および DELETE 操作の可視性を提供します。
-* **データ プレーン ログ** は、Azure のリソースを使用する場合に発生するイベントの可視性を提供します。 仮想マシンの Windows イベント ログ (セキュリティ ログとアプリケーション ログ) はその例です。
+* **コントロール/管理ログ**。Azure Resource Manager の CREATE、UPDATE、および DELETE 操作の可視性を提供します。
+* **データ プレーン ログ**。Azure リソースの使用時に発生したイベントの可視性を提供します。 仮想マシンの Windows イベント ログ (セキュリティ ログとアプリケーション ログ) はその例です。
 
 Azure ログ統合では、現在、次のログの統合をサポートしています。
 
@@ -66,7 +66,7 @@ Azure ログ統合サービスは、インストール先のマシンから利�
 3. **azlog authorize <SubscriptionID>** コマンドを実行して、手順 2 で作成したサービス プリンシパルにサブスクリプションでの閲覧者アクセス許可を割り当てます。 **SubscriptionID** を指定しない場合は、作成者がアクセスできるすべてのサブスクリプションに対する閲覧者のロールが、サービス プリンシパルに割り当てられます。
 
    > [!NOTE]
-   > **authorize** コマンドを、**createazureid** コマンドの直後に実行すると警告が表示されることがあります。これは、Azure AD のアカウントの作成からアカウントが使用できるようになるまでに一定の待機時間があるためです。 **createazureid** コマンドを実行した後で約 10 秒間待ってから **authorize** コマンドを実行すれば、この警告が表示されることはありません。
+   > **createazureid** コマンドの実行後すぐに **authorize** コマンドを実行すると、警告が表示される可能性があります。 Azure AD アカウントが作成されてから、そのアカウントが使用できるようになるまで、少し時間がかかります。 **createazureid** コマンドを実行した後で約 10 秒間待ってから **authorize** コマンドを実行すれば、この警告が表示されることはありません。
    >
    >
 4. 次のフォルダーを調べて、監査ログの JSON ファイルがあることを確認します。
@@ -95,6 +95,6 @@ Azure 監査ログとプロパティ定義の詳細については、次をご�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
