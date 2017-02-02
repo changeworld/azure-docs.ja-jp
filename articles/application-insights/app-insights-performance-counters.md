@@ -62,7 +62,7 @@ Application Insights Status Monitor がサーバー コンピューターにま�
    * Status Monitor を使って実行時に Web アプリケーションをインストルメント化した場合は、IIS のアプリのルート ディレクトリで ApplicationInsights.config を探します。 各サーバー インスタンスでファイルを更新します。
 3. パフォーマンス コレクター ディレクティブを編集します。
    
-   ```XML
+```XML
    
     <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
       <Counters>
@@ -84,17 +84,23 @@ Application Insights Status Monitor がサーバー コンピューターにま�
 ### <a name="collecting-performance-counters-in-code"></a>コードによるパフォーマンス カウンターの収集
 システム パフォーマンス カウンターを収集し、それらを Application Insights に送信する場合は、次のスニペットを使用できます。
 
+
+``` C#
+
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\.NET CLR Memory([replace-with-application-process-name])\# GC Handles", "GC Handles")));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
+```
 
 作成したカスタム メトリックの場合も同様です。
 
+``` C#
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\Sales(photo)\# Items Sold", "Photo sales"));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
+```
 
 ## <a name="performance-counters-in-analytics"></a>Analytics のパフォーマンス カウンター
 [Analytics](app-insights-analytics.md) でパフォーマンス カウンター レポートを検索して表示できます。
