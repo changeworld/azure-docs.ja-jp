@@ -4,7 +4,7 @@ description: "データベース間データベース クエリを使用する�
 services: sql-database
 documentationcenter: 
 manager: jhubbard
-author: SilviaDoomra
+author: ddove
 ms.assetid: c81ef5e3-41e9-4fd2-8631-868f2e168147
 ms.service: sql-database
 ms.custom: multiple databases
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
-ms.author: SilviaDoomra
+ms.author: ddove
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: e39f2bb273bee9719f8f87cd27a1e1c92b6c4b53

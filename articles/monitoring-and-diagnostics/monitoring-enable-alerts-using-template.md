@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 2/2/2017
 ms.author: johnkem
 translationtype: Human Translation
 ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
@@ -153,9 +153,9 @@ Resource Manager テンプレートを使用してアラートを作成するに
                     "dataSource": {
                         "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
                         "resourceUri": "[parameters('resourceId')]",
-                        "metricName": "[parameters('metricName')]",
-                        "operator": "[parameters('operator')]"
+                        "metricName": "[parameters('metricName')]"
                     },
+                    "operator": "[parameters('operator')]",
                     "threshold": "[parameters('threshold')]",
                     "windowSize": "[parameters('windowSize')]",
                     "timeAggregation": "[parameters('aggregation')]"
@@ -375,9 +375,9 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
                     "dataSource": {
                         "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
                         "resourceUri": "[variables('vmID')]",
-                        "metricName": "[variables('metricName')]",
-                        "operator": "[variables('operator')]"
+                        "metricName": "[variables('metricName')]"
                     },
+                    "operator": "[parameters('operator')]",
                     "threshold": "[variables('threshold')]",
                     "windowSize": "[variables('windowSize')]",
                     "timeAggregation": "[variables('aggregation')]"
