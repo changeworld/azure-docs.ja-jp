@@ -62,7 +62,7 @@ using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 [!INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### <a name="create-the-blob-service-client"></a>BLOB サービス クライアントの作成
-**CloudBlobClient** クラスを使用すると、Blob Storage 内に格納されているコンテナーと BLOB を取得できます。 サービス クライアントを作成する方法の 1 つを次に示します。
+**CloudBlobClient** クラスを使用すると、Blob Storage 内に格納されているコンテナーと BLOB を取得できます。 サービス クライアントを作成する方法の&1; つを次に示します。
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();

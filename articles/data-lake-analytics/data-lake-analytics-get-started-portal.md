@@ -47,7 +47,7 @@ Azure Portal を使用して Azure Data Lake Analytics アカウントを作成�
 
    * **名前**: Data Lake Analytics アカウント名を指定します。
    * **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
-   * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。 Azure リソース マネージャーを使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
+   * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。 Azure リソース マネージャーを使用すると、アプリケーション内の複数リソースを&1; つのグループと見なして作業できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
    * **場所**:  Data Lake Analytics アカウントの Azure データ センターを選択します。
    * **Data Lake Store**: 各 Data Lake Analytics アカウントには、従属する Data Lake Store アカウントがあります。 Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。 以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。
 4. **[作成]**をクリックします。 ポータルのホーム画面が表示されます。 新しいタイルはスタート画面に追加され、"Azure Data Lake Analytics のデプロイ" を示すラベルが付けられます。 Data Lake Analytics アカウントの作成にはしばらく時間がかかります。 アカウントが作成されると、ポータルの新しいブレードにアカウントが開きます。
@@ -70,7 +70,7 @@ Azure Portal には、検索ログ ファイルを含むサンプル データ �
 
     ![Azure Data Lake Analytics データ エクスプローラーのボタン](./media/data-lake-analytics-get-started-portal/data-lake-analytics-data-explorer-button.png)
 
-    2 つのブレードが開きます。 1 つは **データ エクスプ ローラー**、もう 1 つは既定の Data Lake Store アカウントです。
+    2 つのブレードが開きます。 1 つは **データ エクスプ ローラー**、もう&1; つは既定の Data Lake Store アカウントです。
 5. 既定の Data Lake Store アカウント ブレードで、**[サンプル]** をクリックしてフォルダーを展開し、**[データ]** をクリックしてフォルダーを展開します。 次のファイルとフォルダーが表示されます。
 
    * AmbulanceData/
@@ -123,7 +123,7 @@ Azure Portal には、検索ログ ファイルを含むサンプル データ �
     U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」および「[U-SQL Language Reference (U-SQL 言語リファレンス)](http://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
 
 1. 上部の **[ジョブの送信]** をクリックします。   
-2. ジョブの状態が **[成功]**に変わるまで待機します。 ジョブが完了するまで約 1 分かかる場合があります。
+2. ジョブの状態が **[成功]**に変わるまで待機します。 ジョブが完了するまで約&1; 分かかる場合があります。
 
     ジョブが失敗した場合は、[Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)に関する記事をご覧ください。
 3. ブレードの下部にある **[出力]** タブをクリックし、**SearchLog-from-Data-Lake.csv** をクリックします。 出力ファイルはプレビュー、ダウンロード、名前変更、削除できます。

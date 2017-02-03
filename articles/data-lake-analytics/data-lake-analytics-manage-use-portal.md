@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/06/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 289f6e91458a1a4799941ccea46f7ee6d1a296c4
+ms.sourcegitcommit: 86711ba89442c3569b570bbf3ea2d1661a469011
+ms.openlocfilehash: 34be29749075b9953950ffd64d2526430307d33e
 
 
 ---
@@ -46,7 +46,7 @@ Data Lake Analytics ジョブを実行するには、Data Lake Analytics アカ�
    
    * **名前**: Data Lake Analytics アカウント名を指定します。
    * **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
-   * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。 Azure リソース マネージャーを使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
+   * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。 Azure リソース マネージャーを使用すると、アプリケーション内の複数リソースを&1; つのグループと見なして作業できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
    * **場所**:  Data Lake Analytics アカウントの Azure データ センターを選択します。 
    * **Data Lake Store**: 各 Data Lake Analytics アカウントには、従属する Data Lake Store アカウントがあります。 Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。 以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。
 4. **[作成]**をクリックします。 ポータルのホーム画面が表示されます。 新しいタイルはスタート画面に追加され、"Azure Data Lake Analytics のデプロイ" を示すラベルが付けられます。 Data Lake Analytics アカウントの作成にはしばらく時間がかかります。 アカウントが作成されると、ポータルの新しいブレードにアカウントが開きます。
@@ -148,7 +148,9 @@ Azure Active Directory ユーザーとセキュリティ グループの作成�
 3. **[ユーザー]** ブレードで、**[追加]** をクリックします。
 4. ロールを選択し、ユーザーを追加してから **[OK]**をクリックします。
 
-**注: このユーザーまたはセキュリティ グループは、ジョブを送信する必要がある場合、Data Lake Store に対するアクセス許可も与えられている必要があります。詳細については、[Data Lake Store に格納されているデータのセキュリティ保護](../data-lake-store/data-lake-store-secure-data.md)に関する記事を参照してください。**
+>[!NOTE]
+>このユーザーまたはセキュリティ グループは、ジョブを送信する必要がある場合、Data Lake Store に対するアクセス許可も与えられている必要があります。 詳細については、[Data Lake Store に格納されているデータのセキュリティ保護](../data-lake-store/data-lake-store-secure-data.md)に関する記事を参照してください。
+>
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -223,7 +225,7 @@ U-SQL ジョブを実行するには、Data Lake Analytics アカウントが必
 <!-- ################################ -->
 <!-- ################################ -->
 ## <a name="use-azure-resource-manager-groups"></a>Azure リソース マネージャー グループの使用
-アプリケーションは通常、Web アプリ、データベース、データベース サーバー、ストレージ、サードパーティのサービスなどの、複数のコンポーネントで構成されます。 Azure Resource Manager を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
+アプリケーションは通常、Web アプリ、データベース、データベース サーバー、ストレージ、サードパーティのサービスなどの、複数のコンポーネントで構成されます。 Azure Resource Manager を使用すると、アプリケーション内の複数のリソースを&1; つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
 
 Data Lake Analtyics サービスには、次のコンポーネントを含めることができます。
 
@@ -232,7 +234,7 @@ Data Lake Analtyics サービスには、次のコンポーネントを含める
 * 追加の Azure Data Lake Store アカウント
 * 追加の Azure Storage アカウント
 
-管理しやすくするために 1 つの Resource Management グループの下にこれらすべてのコンポーネントを作成することができます。
+管理しやすくするために&1; つの Resource Management グループの下にこれらすべてのコンポーネントを作成することができます。
 
 ![Azure Data Lake Analytics のアカウントとストレージ](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
 
@@ -248,6 +250,6 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
