@@ -42,13 +42,14 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 **Azure ポータル**
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューで **[サブスクリプション]** > *管理者にアクセス権を与えるサブスクリプション*でのサービスの管理が許可されます。
+
+2. ハブ メニューで **[サブスクリプション]** > *管理者を追加したいサブスクリプション*を選択します。
    
     ![newselectsub](./media/billing-add-change-azure-subscription-administrator/newselectsub.png)
-3. サブスクリプション ブレードで、**[設定]** > **[ユーザー]** の順に選択します。
+3. サブスクリプション ブレードで、**[アクセス制御 (IAM)]** > **[追加]** の順に選択します。
    
     ![newsettings](./media/billing-add-change-azure-subscription-administrator/newsettings.png)
-4. [ユーザー] ブレードで、**[追加]** > **[役割を選択]** > **[所有者]** の順に選択します。
+4. [アクセスを追加] ブレードで、**[役割を選択]** > **[所有者]** の順に選択します。
    
     ![newselectrole](./media/billing-add-change-azure-subscription-administrator/newselectrole.png)
    
