@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 ms.assetid: 5eb2d256-025d-4f5a-99d4-17f702b37f14
 ms.service: sql-database
-ms.custom: business continuity; how to
+ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
-ms.date: 08/29/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1c471d2218433d5b10bab658814709f78a29d94d
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 473d6195acf7867c3dd1348ff8644d0c3a26f986
 
 
 ---
@@ -47,9 +47,9 @@ ms.openlocfilehash: 1c471d2218433d5b10bab658814709f78a29d94d
 コマンドによって、次のワークフローが実行されます。
 
 1. 一時的にレプリケーションを同期モードに切り替えます。未処理のトランザクションはすべてセカンダリにフラッシュされ、新しいトランザクションはすべてブロックされます。
-2. geo レプリケーション パートナーシップにおける 2 つのデータベースのロールを切り替えます。  
+2. geo レプリケーション パートナーシップにおける&2; つのデータベースのロールを切り替えます。  
 
-このシーケンスにより、ロールの切り替えの前に 2 つのデータベースが同期されることが保証されるため、データ損失は発生しません。 ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。 プライマリ データベースに複数のセカンダリ データベースがある場合は、コマンドによって、新しいプライマリに接続するように他のセカンダリが自動的に再構成されます。  通常の状況では、操作全体が完了するのに 1 分かかりません。 詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](sql-database-service-tiers.md)に関するページをご覧ください。
+このシーケンスにより、ロールの切り替えの前に&2; つのデータベースが同期されることが保証されるため、データ損失は発生しません。 ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。 プライマリ データベースに複数のセカンダリ データベースがある場合は、コマンドによって、新しいプライマリに接続するように他のセカンダリが自動的に再構成されます。  通常の状況では、操作全体が完了するのに&1; 分かかりません。 詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](sql-database-service-tiers.md)に関するページをご覧ください。
 
 計画されたフェールオーバーを開始するには、次の手順に従います。
 
@@ -93,12 +93,12 @@ ms.openlocfilehash: 1c471d2218433d5b10bab658814709f78a29d94d
 * 復旧前および復旧後の手順、障害復旧訓練の実施など、アクティブ geo レプリケーションを使用した障害復旧については、 [障害復旧](sql-database-disaster-recovery.md)
 * アクティブ geo レプリケーションについては、Sasha Nosov の [geo レプリケーションの新機能](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 * アクティブ geo レプリケーションを使用したクラウド アプリケーションの設計については、 [geo レプリケーションを使用したビジネス継続性のためのクラウド アプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-* エラスティック データベース プールでのアクティブ geo レプリケーションの使用については、 [エラスティック プールの障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
+* エラスティック プールでのアクティブ geo レプリケーションの使用については、「[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)」をご覧ください。
 * ビジネス継続性の概要については、 [ビジネス継続性の概要](sql-database-business-continuity.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

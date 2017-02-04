@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Application Insights とは何か?](app-insights-overview.md)
 ## [DevOps サイクルにおけるパフォーマンス監視](app-insights-detect-triage-diagnose.md)
 
@@ -128,7 +128,7 @@
 
 # リファレンス
 ## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
-## [Java](http://dl.windowsazure.com/applicationinsights/javadoc/)
+## [Java](/java/api/com.microsoft.applicationinsights)
 ## [REST ()](https://dev.applicationinsights.io/)
 
 # リソース
@@ -153,6 +153,6 @@
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

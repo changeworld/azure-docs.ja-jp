@@ -3,8 +3,8 @@ title: "Blob Storage での SAS の作成と使用 | Microsoft Docs"
 description: "このチュートリアルでは、BLOB ストレージで使用する共有アクセス署名を作成する方法と、クライアント アプリケーションから共有アクセス署名を使用する方法について説明します。"
 services: storage
 documentationcenter: 
-author: tamram
-manager: carmonm
+author: mmacy
+manager: timlt
 editor: tysonn
 ms.assetid: 491e0b3c-76d4-4149-9a80-bbbd683b1f3e
 ms.service: storage
@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: tamram
+ms.date: 12/08/2016
+ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf65af15bc3b71baf92aec93eb1a599b9f931c2
-ms.openlocfilehash: f0e84beb6086fc098564de9f0c82846f386136c2
+ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
+ms.openlocfilehash: 62ad4d3edeca07f1c4fe11fb6904dcbfb8f91435
 
 
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 [第 1 部](storage-dotnet-shared-access-signature-part-1.md) では、共有アクセス署名 (SAS) を紹介し、そのベスト プラクティスについて説明しました。 第 2 部では、BLOB ストレージで共有アクセス署名を生成し、使用する方法を説明します。 例は C# で記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。 説明しているシナリオには、共有アクセス署名を使用する場合の次の側面が含まれます。
 
 * コンテナーでの共有アクセス署名の生成
@@ -35,7 +35,7 @@ ms.openlocfilehash: f0e84beb6086fc098564de9f0c82846f386136c2
 ## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>第 1 部 : コンソール アプリケーションの作成と共有アクセス署名の生成
 まず、Azure .NET 用ストレージ クライアント ライブラリがインストールされていることを確認します。 クライアント ライブラリの最新アセンブリを含む [NuGet package](http://nuget.org/packages/WindowsAzure.Storage/ "NuGet パッケージ")をインストールできます。最新の修正プログラムが確実に含まれるように、この方法をお勧めします。 また、[Azure SDK for .NET](https://azure.microsoft.com/downloads/) の最新バージョンの一部として、クライアント ライブラリをダウンロードすることもできます。
 
-Visual Studio で、新しい Windows コンソール アプリケーションを作成し、 **GenerateSharedAccessSignatures**という名前を付けます。 次の方法のいずれかを使用して、**Microsoft.WindowsAzure.Configuration.dll** および **Microsoft.WindowsAzure.Storage.dll** への参照を追加します。
+Visual Studio で、新しい Windows コンソール アプリケーションを作成し、 **GenerateSharedAccessSignatures**という名前を付けます。 次の方法のいずれかを使用して、**Microsoft.WindowsAzure.Configuration.dll** と **Microsoft.WindowsAzure.Storage.dll** への参照を追加します。
 
 * NuGet パッケージをインストールする場合は、まず [NuGet クライアント](https://docs.nuget.org/consume/installing-nuget)をインストールします。 Visual Studio で、**[プロジェクト]、[NuGet パッケージの管理]** の順に選択し、オンラインで "**Azure のストレージ**" を検索して、見つかったインストール手順に従います。
 * または、インストールした Azure SDK でアセンブリを探し、そのアセンブリへの参照を追加することもできます。
@@ -43,7 +43,7 @@ Visual Studio で、新しい Windows コンソール アプリケーション�
 Program.cs ファイルの先頭に、次の **using** ステートメントを追加します。
 
 ```csharp
-using System.IO;    
+using System.IO;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -115,11 +115,11 @@ Console.WriteLine("Container SAS URI: " + GetContainerSasUri(container));
 Console.WriteLine();
 ```
 
-コンパイルし、実行して、新しいコンテナーの共有アクセス署名 URI を出力します。 URI は、次の URI のようになります。       
+コンパイルし、実行して、新しいコンテナーの共有アクセス署名 URI を出力します。 URI は、次の URI のようになります。
 
 `https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2013-04-13T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3D`
 
-コードを実行すると、コンテナーで作成した共有アクセス署名が 24 時間だけ有効になります。 署名によってクライアントには、コンテナー内の BLOB の一覧を表示し、新しい BLOB をコンテナーに書き込むアクセス許可が付与されます。
+コードを実行すると、コンテナーで作成した共有アクセス署名が&24; 時間だけ有効になります。 署名によってクライアントには、コンテナー内の BLOB の一覧を表示し、新しい BLOB をコンテナーに書き込むアクセス許可が付与されます。
 
 ### <a name="generate-a-shared-access-signature-uri-for-a-blob"></a>BLOB の共有アクセス署名 URI の生成
 次に、同様のコードを作成して、新しい BLOB をコンテナー内に作成し、その共有アクセス署名を生成します。 この共有アクセス署名は、保存されているアクセス ポリシーに関連付けられておらず、開始時刻、有効期限、およびアクセス許可情報が URI に含まれています。
@@ -158,7 +158,7 @@ static string GetBlobSasUri(CloudBlobContainer container)
 }
 ```
 
-**Main()** メソッドの末尾で、**Console.ReadLine()** の呼び出しの前に、**GetBlobSasUri()** を呼び出す次の行を追加し、共有アクセス署名 URI をコンソール ウィンドウに書き込みます。    
+**Main()** メソッドの末尾で、**Console.ReadLine()** の呼び出しの前に、**GetBlobSasUri()** を呼び出す次の行を追加し、共有アクセス署名 URI をコンソール ウィンドウに書き込みます。
 
 ```csharp
 //Generate a SAS URI for a blob within the container, without a stored access policy.
@@ -175,7 +175,7 @@ Console.WriteLine();
 
 前の例で、共有アクセス署名 URI 自体の開始時刻 (暗黙の、または明示的な)、有効期限、およびアクセス許可を指定しました。 次の例では、これらを、共有アクセス署名ではなく、保存されているアクセス ポリシーで指定します。 こうすると、共有アクセス署名を再発行せずに、これらの制約を変更できます。
 
-共有アクセス署名に 1 つ以上の制約を指定し、保存されているアクセス ポリシーに残りの制約を指定することができます。 ただし、開始時刻、有効期限、およびアクセス許可はどちらか一方にだけ指定できます。たとえば、アクセス許可を共有アクセス署名に指定し、保存されているアクセス ポリシーにも指定することはできません。
+共有アクセス署名に&1; つ以上の制約を指定し、保存されているアクセス ポリシーに残りの制約を指定することができます。 ただし、開始時刻、有効期限、およびアクセス許可はどちらか一方にだけ指定できます。たとえば、アクセス許可を共有アクセス署名に指定し、保存されているアクセス ポリシーにも指定することはできません。
 
 アクセス ポリシーをコンテナーに追加するときは、コンテナーの既存のアクセス許可を取得し、新しいアクセス ポリシーを追加した後、コンテナーのアクセス許可を設定する必要があります。
 
@@ -201,7 +201,7 @@ static void CreateSharedAccessPolicy(CloudBlobClient blobClient, CloudBlobContai
 }
 ```
 
-**Main()** メソッドの末尾にある **Console.ReadLine()** の呼び出しの前に次の行を追加します。このコードは、最初に既存のアクセス ポリシーを消去してから、**CreateSharedAccessPolicy()** メソッドを呼び出します。    
+**Main()** メソッドの末尾にある **Console.ReadLine()** の呼び出しの前に次の行を追加します。このコードは、最初に既存のアクセス ポリシーを消去してから、**CreateSharedAccessPolicy()** メソッドを呼び出します。
 
 ```csharp
 //Clear any existing access policies on container.
@@ -272,7 +272,7 @@ static string GetBlobSasUriWithPolicy(CloudBlobContainer container, string polic
 }
 ```
 
-**Main()** メソッドの末尾で、**Console.ReadLine()** の呼び出しの前に次の行を追加します。これで、**GetBlobSasUriWithPolicy** メソッドを呼び出します。    
+**Main()** メソッドの末尾で、**Console.ReadLine()** の呼び出しの前に次の行を追加します。これで、**GetBlobSasUriWithPolicy** メソッドを呼び出します。
 
 ```csharp
 //Generate a SAS URI for a blob within the container, using a stored access policy to set constraints on the SAS.
@@ -280,7 +280,7 @@ Console.WriteLine("Blob SAS URI using stored access policy: " + GetBlobSasUriWit
 Console.WriteLine();
 ```
 
-**Main()** メソッドは、全体として、次のようになります。 これを実行して、共有アクセス署名 URI をコンソール ウィンドウに書き込み、それをコピーしてテキスト ファイルに貼り付けます。これは、このチュートリアルの第 2 部で使用します。
+**Main()** メソッドは、全体として、次のようになります。 これを実行して、共有アクセス署名 URI をコンソール ウィンドウに書き込み、それをコピーしてテキスト ファイルに貼り付けます。これは、このチュートリアルの第&2; 部で使用します。
 
 ```csharp
 static void Main(string[] args)
@@ -330,12 +330,12 @@ GenerateSharedAccessSignatures コンソール アプリケーションを実行
 ![sas-console-output-1][sas-console-output-1]
 
 ## <a name="part-2-create-a-console-application-to-test-the-shared-access-signatures"></a>第 2 部 : コンソール アプリケーションの作成と共有アクセス署名のテスト
-前の例で作成した共有アクセス署名をテストするために、署名を使用して、コンテナーと BLOB で操作を実行する、もう 1 つのコンソール アプリケーションを作成します。
+前の例で作成した共有アクセス署名をテストするために、署名を使用して、コンテナーと BLOB で操作を実行する、もう&1; つのコンソール アプリケーションを作成します。
 
 > [!NOTE]
-> チュートリアルの第 1 部の完了後、24 時間を超える時間が経過している場合、生成した署名は無効になっています。 その場合は、最初のコンソール アプリケーションでコードを実行して、チュートリアルの第 2 部で使用するための新しい共有アクセス署名を生成する必要があります。
-> 
-> 
+> チュートリアルの第 1 部の完了後、24 時間を超える時間が経過している場合、生成した署名は無効になっています。 その場合は、最初のコンソール アプリケーションでコードを実行して、チュートリアルの第&2; 部で使用するための新しい共有アクセス署名を生成する必要があります。
+>
+>
 
 Visual Studio で、新しい Windows コンソール アプリケーションを作成し、 **ConsumeSharedAccessSignatures**という名前を付けます。 前に追加した場合と同様に、**Microsoft.WindowsAzure.Configuration.dll** および **Microsoft.WindowsAzure.Storage.dll** への参照を追加します。
 
@@ -448,7 +448,7 @@ static void UseContainerSAS(string sas)
         Console.WriteLine("Delete operation failed for SAS " + sas);
         Console.WriteLine("Additional error information: " + e.Message);
         Console.WriteLine();
-    }        
+    }
 }
 ```
 
@@ -543,7 +543,7 @@ static void UseBlobSAS(string sas)
         Console.WriteLine("Delete operation failed for SAS " + sas);
         Console.WriteLine("Additional error information: " + e.Message);
         Console.WriteLine();
-    }        
+    }
 }
 ```
 
@@ -587,6 +587,6 @@ static void Main(string[] args)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
