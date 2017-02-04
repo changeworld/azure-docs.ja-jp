@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -27,8 +27,8 @@ VM エージェントは、 [データ収集を有効にする](security-center-
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。 ステップ バイ ステップ ガイドではありません。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
 1. **[推奨事項]** ブレードで、**[VM エージェントを有効にする]** を選択します。

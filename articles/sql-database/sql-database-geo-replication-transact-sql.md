@@ -3,7 +3,7 @@ title: "Transact-SQL を使用して Azure SQL Database の geo レプリケー�
 description: "Transact-SQL を使用した Azure SQL Database の geo レプリケーションの構成"
 services: sql-database
 documentationcenter: 
-author: anosov1960
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: d94d89a6-3234-46c5-8279-5eb8daad10ac
@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2016
-ms.author: sashan
+ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 7b9803d7d0b4982dece276d6f5a7ec8293ce4361
 ms.openlocfilehash: 37725b1abe0ad13124b9206c9aa6fcf1185b6db4

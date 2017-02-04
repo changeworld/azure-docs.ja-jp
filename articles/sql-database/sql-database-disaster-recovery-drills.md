@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 07/31/2016
-ms.author: sstein; sashan
+ms.author: sashan
 translationtype: Human Translation
 ms.sourcegitcommit: d3456b190d78560dc9380d5ecb56e0e82006e2ea
 ms.openlocfilehash: 209446ae6b1a4f951bc141d95ff481f2f5ab43b0
