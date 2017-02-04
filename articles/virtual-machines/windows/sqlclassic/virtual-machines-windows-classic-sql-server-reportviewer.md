@@ -8,29 +8,27 @@ manager: erikre
 editor: monicar
 tags: azure-service-management
 ms.assetid: 78b76318-d9bf-48ef-9d9e-d1b7d8cf3042
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: infrastructure-services
-ms.date: 10/04/2016
+ms.workload: iaas-sql-server
+ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: c1df69b37b85544f00fc6ed68827f4817d766443
+ms.sourcegitcommit: 4f7527119f0e0955303858a52b638f6dbf483267
+ms.openlocfilehash: 084200ba25f0eb213100c638d164441c2618efe0
 
 
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Azure でホストされる Web サイトで ReportViewer を使用する
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
 Microsoft Azure 仮想マシンに保存されたレポートを表示する Visual Studio ReportViewer コントロールを使用して、Microsoft Azure Web サイトを作成できます。 ReportViewer コントロールは、ASP.NET Web アプリケーション テンプレートを使用して作成する Web アプリケーション内にあります。
 
 > [!IMPORTANT]
 > ASP.NET MVC Web アプリケーション テンプレートでは、ReportViewer コントロールはサポートされません。
-> 
-> 
 
 ReportViewer を Microsoft Azure Web サイトに組み込むには、次のタスクを完了する必要があります。
 
@@ -45,10 +43,6 @@ ReportViewer を Microsoft Azure Web サイトに組み込むには、次のタ�
 > ReportViewer コントロールは、Standard Edition 以上のエディションの Visual Studio に含まれています。 Web Developer Express Edition を使用している場合、ReportViewer ランタイム機能を使用するには、 [Microsoft Report Viewer 2012 Runtime](https://www.microsoft.com/download/details.aspx?id=35747) をインストールする必要があります。
 > 
 > Microsoft Azure では、ローカル処理モードで構成された ReportViewer はサポートされません。
-> 
-> 
-
-ホワイト ペーパー「 [Reporting Services report viewer control and Microsoft Azure virtual machine based report servers (Reporting Services レポート ビューアー コントロールと Microsoft Azure 仮想マシン ベースのレポート サーバー)](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx)」を参照してください。
 
 ## <a name="adding-assemblies-to-the-deployment-package"></a>デプロイ パッケージにアセンブリを追加する
 ASP.NET アプリケーションをオンプレミスでホストする場合、ReportViewer アセンブリは通常、Visual Studio のインストール時に IIS サーバーのグローバル アセンブリ キャッシュ (GAC) 内にインストールされるため、アプリケーションから直接アクセスが可能です。 ただし、ASP.NET アプリケーションをクラウドでホストする場合、Microsoft Azure では GAC へのインストールが許可されないため、ReportViewer アセンブリがアプリケーションでローカルで使用できるようにしておく必要があります。 このためには、プロジェクトにアセンブリへの参照を追加し、これらがローカルでコピーされるように構成します。
@@ -88,7 +82,7 @@ ASP.NET Web アプリケーションを Azure に発行する手順について�
 > [!IMPORTANT]
 > [Azure デプロイ プロジェクトの追加] または [Azure クラウド サービス プロジェクトの追加] コマンドがソリューション エクスプローラーのショートカット メニューに表示されない場合は、必要に応じてプロジェクトの [ターゲット フレームワーク] を .NET Framework 4 に変更してください。
 > 
-> これら 2 つのコマンド機能は、実質的には同じです。 インストールされている Microsoft Azure SDK のバージョンに合わせて応じて、いずれか一方のコマンドがショートカット メニューに表示されます。
+> これら&2; つのコマンド機能は、実質的には同じです。 インストールされている Microsoft Azure SDK のバージョンに合わせて応じて、いずれか一方のコマンドがショートカット メニューに表示されます。
 > 
 > 
 
@@ -99,11 +93,9 @@ ASP.NET Web アプリケーションを Azure に発行する手順について�
 
 [ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する](virtual-machines-windows-classic-ps-sql-report.md)
 
-[Reporting Services のレポート ビューアー制御と Microsoft Azure 仮想マシン ベースのレポート サーバー](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx)
 
 
 
-
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
-ms.openlocfilehash: e65a655bc9e85b4797d795c9be6ded9ef253ed86
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 169366535ed15d40de22bf71f444df7569562c8a
 
 
 ---
 # <a name="secure-an-app-in-azure-app-service"></a>Azure App Service でのアプリのセキュリティ保護
 この記事は、Azure App Service で Web アプリ、モバイル アプリ バックエンド、API アプリをセキュリティで保護するときに役立ちます。 
 
-Azure App Service のセキュリティには、次の 2 つのレベルがあります。 
+Azure App Service のセキュリティには、次の&2; つのレベルがあります。 
 
 * **インフラストラクチャとプラットフォームのセキュリティ** - 実際にクラウドで安全に操作を行うために必要な Azure のサービスを信頼して利用します。
 * **アプリケーションのセキュリティ** - アプリ自体を安全に設計する必要があります。 これには、Azure Active Directory と統合する方法、証明書を管理する方法、さまざまなサービスと安全に通信できることを確認する方法が含まれます。 
@@ -110,7 +110,7 @@ App Service アプリの **web.config** ファイルまたは **applicationhost.
 攻撃の検出に役立つことのある、App Service アプリのログ情報については、「 [Azure App Service の Web アプリの診断ログの有効化](web-sites-enable-diagnostic-log.md)」を参照してください。
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -120,6 +120,6 @@ App Service アプリの **web.config** ファイルまたは **applicationhost.
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

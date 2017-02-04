@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/02/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: 152b08cf72c48109f17b5c4715e4ca5fafbb1b7b
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 84b5f28fcd0640fd85b5f8c9d655105790c70d62
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 152b08cf72c48109f17b5c4715e4ca5fafbb1b7b
 
 * **更新されたアプリを運用環境にリリースする "*前に*" リアルなフィードバックを得る** - フィードバックを得るタイミングとして、リリース直後に勝るものがあるとすれば、リリース前しかありません。 製品ライフ サイクルの中でいつでも自由に、実際のユーザーのトラフィックと振る舞いに基づいて更新版をテストすることができます。
 * **[CTDD (Continuous Test-Driven Development: 継続的テスト駆動開発)](https://en.wikipedia.org/wiki/Continuous_test-driven_development) が強化される** - 運用環境におけるテストに、Application Insights を使った継続的統合とインストルメンテーションを組み合わせることで、製品ライフ サイクルの初期段階で自動的にユーザーによる検証を実施することができます。 テストを手動で実施するよりも短時間で済みます。
-* **テストのワークフローを最適化する** - 継続的に監視するインストルメント (計器) を実装し、運用環境におけるテストを自動化することで、[統合](https://en.wikipedia.org/wiki/Integration_testing)、[回帰](https://en.wikipedia.org/wiki/Regression_testing)、[ユーザビリティ](https://en.wikipedia.org/wiki/Usability_testing)、アクセシビリティ、ローカリゼーション、[パフォーマンス](https://en.wikipedia.org/wiki/Software_performance_testing)、[セキュリティ](https://en.wikipedia.org/wiki/Security_testing)、[受け入れ](https://en.wikipedia.org/wiki/Acceptance_testing)など、さまざまな種類のテストを 1 つのプロセスで実行することができます。
+* **テストのワークフローを最適化する** - 継続的に監視するインストルメント (計器) を実装し、運用環境におけるテストを自動化することで、[統合](https://en.wikipedia.org/wiki/Integration_testing)、[回帰](https://en.wikipedia.org/wiki/Regression_testing)、[ユーザビリティ](https://en.wikipedia.org/wiki/Usability_testing)、アクセシビリティ、ローカリゼーション、[パフォーマンス](https://en.wikipedia.org/wiki/Software_performance_testing)、[セキュリティ](https://en.wikipedia.org/wiki/Security_testing)、[受け入れ](https://en.wikipedia.org/wiki/Acceptance_testing)など、さまざまな種類のテストを&1; つのプロセスで実行することができます。
 
 フライト デプロイの目的は単にライブ トラフィックをルーティングすることではありません。 この環境が目指しているのは、予期しないバグやパフォーマンスの低下、ユーザー エクスペリエンスの課題など、あらゆる問題の本質を短時間で捉えることです。 注目すべき点は、実際の利用者を対象にテストが実施されることです。 そのため次の段階でしかるべき情報に基づく判断を行うために必要なデータをすべて収集するようにフライト デプロイをセットアップする必要があります。 このチュートリアルでは、Application Insights でデータを収集する方法を紹介していますが、実際のシナリオに合わせて New Relic などのテクノロジを使用することもできます。
 
@@ -56,7 +56,7 @@ ms.openlocfilehash: 152b08cf72c48109f17b5c4715e4ca5fafbb1b7b
 > * 無料で [Azure アカウントを開く](https://azure.microsoft.com/pricing/free-trial/)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
 > * [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) こともできます - Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 >
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 >
 >
 
@@ -64,7 +64,7 @@ ms.openlocfilehash: 152b08cf72c48109f17b5c4715e4ca5fafbb1b7b
 > [!NOTE]
 > このチュートリアルで使用するスクリプトは、GitHub リポジトリからの継続的パブリッシングを自動的に構成します。 これを行うには、GitHub 資格情報が既に Azure に保存されている必要があります。保存されていない場合、スクリプト化されたデプロイは、Web アプリに対するソース管理設定を構成しようとした時点で失敗します。
 >
-> GitHub 資格情報を Azure に保存するには、Web アプリを [Azure Portal](https://portal.azure.com/) で作成し、[GitHub のデプロイを構成](app-service-continuous-deployment.md)します。 この操作を行うのは 1 回だけです。
+> GitHub 資格情報を Azure に保存するには、Web アプリを [Azure Portal](https://portal.azure.com/) で作成し、[GitHub のデプロイを構成](app-service-continuous-deployment.md)します。 この操作を行うのは&1; 回だけです。
 >
 >
 
@@ -92,7 +92,7 @@ ms.openlocfilehash: 152b08cf72c48109f17b5c4715e4ca5fafbb1b7b
 7. スクリプトが終了したら、フロントエンドのアドレス (http://ToDoApp*&lt;your_suffix>*.azurewebsites.net/) を参照して、アプリケーションが運用環境で実行されていることを確認します。
 8. [Azure ポータル](https://portal.azure.com/) にログインして、何が作成されたかを調べます。
 
-   同じリソース グループ内に 2 つの Web アプリがあり、1 つは名前に `Api` サフィックスが付いていることを確認できます。 リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。 さまざまなリソースを参照し、それらを *&lt;repository_root>*\ARMTemplates\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
+   同じリソース グループ内に&2; つの Web アプリがあり、1 つは名前に `Api` サフィックスが付いていることを確認できます。 リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。 さまざまなリソースを参照し、それらを *&lt;repository_root>*\ARMTemplates\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
 
    ![](./media/app-service-web-test-in-production-controlled-test-flight/00.3-resource-group-view.png)
 
@@ -175,7 +175,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 
 ここでの収集の対象となるのはクライアントの動作に関するデータであるため、index.cshtml の [JavaScript コードにテレメトリ初期化子を追加](../application-insights/app-insights-api-filtering-sampling.md) します。 サーバー側のパフォーマンスをテストする場合は、同様の作業をサーバー側のコードに対しても行ってください ( [カスタムのイベントとメトリックのための Application Insights API](../application-insights/app-insights-api-custom-events-metrics.md)に関するページを参照)。
 
-1. まず、先ほど `<heading>` タグに追加した JavaScript ブロックに、以下の 2 つの `//` コメントに挟まれたコードを追加します。
+1. まず、先ほど `<heading>` タグに追加した JavaScript ブロックに、以下の&2; つの `//` コメントに挟まれたコードを追加します。
 
         window.appInsights = appInsights;
 
@@ -298,7 +298,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 変更内容がベータ スロットで実行されていることを確認できたら、フライト デプロイを実行することができます。
 
 ## <a name="validate-route-traffic-to-the-beta-app"></a>検証: ベータ版アプリにトラフィックをルーティングする
-このセクションでは、ベータ版のアプリにトラフィックをルーティングします。 デモンストレーションを単純化するために、ここではユーザー トラフィックの大部分をベータ版アプリにルーティングします。 実際には、ルーティングするトラフィックの量は、具体的な条件によって異なります。 たとえば、microsoft.com と同等の規模があるサイトでは、トラフィック全体の 1% 未満でも、有益なデータを集めることが可能です。
+このセクションでは、ベータ版のアプリにトラフィックをルーティングします。 デモンストレーションを単純化するために、ここではユーザー トラフィックの大部分をベータ版アプリにルーティングします。 実際には、ルーティングするトラフィックの量は、具体的な条件によって異なります。 たとえば、microsoft.com と同等の規模があるサイトでは、トラフィック全体の&1;% 未満でも、有益なデータを集めることが可能です。
 
 1. 運用環境のトラフィックをベータ スロットにルーティングするには、Git Shell セッションから次のコマンドを実行します。
 
@@ -359,6 +359,6 @@ Azure App Service を使用すると、中小規模の企業が顧客向けの�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

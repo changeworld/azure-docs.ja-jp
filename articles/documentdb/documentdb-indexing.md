@@ -1,24 +1,9 @@
 ---
-title: "DocumentDB での自動インデックス作成 | Microsoft Docs"
-description: "Azure DocumentDB で自動インデックス作成が機能するしくみについて説明します。"
-services: documentdb
-author: mimig1
-manager: jhubbard
-editor: mimig1
-documentationcenter: 
-ms.assetid: 126bfd36-9332-4127-8747-1a1c806760f7
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/27/2016
-ms.author: mimig
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9b88c62a7ea76d61ff593217392c3225624bb886
+ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
+ms.openlocfilehash: 4c7b8965b7fe5de7a8ff839be2b9e555bd8d502c
 
 
 
@@ -55,7 +40,7 @@ DocumentDB のインデックス作成は、JSON 文法によりドキュメン�
 
 自動インデックス作成を使用すると、(1) ドキュメント ツリー内のすべてのパスにインデックスが作成されます (開発者が特定のパス パターンを除外するインデックス作成ポリシーを明示的に設定しない場合)。 (2) ドキュメントを DocumentDB コレクションに更新するたびに、インデックスの構造も更新されます (つまり、ノードが追加、削除されます)。 ドキュメントの自動インデックス作成における主な要件の 1 つは、深く入れ子になった構造 (10 レベルなど) を持つドキュメントのインデックス作成とクエリ実行のコストが、主要な値のペアで構成された 1 階層のみのフラットな JSON ドキュメントのコストと同じになることを保証することです。 そのため、正規化されたパス表現は、自動インデックス作成とクエリ サブシステムの両方がビルドされる基礎となります。
 
-スキーマとインスタンスの値をパス上で均等に扱うことは、上図に示す 2 つのドキュメントのパス間のマップを保持するインデックスと、そのパスを含むドキュメント ID も、個々のドキュメントと同様に論理的にツリーとして表現できる点で、重要な意味を持ちます。 DocumentDB はこのしくみを利用して、コレクション内の個々 のドキュメントを表現するすべてのツリーの和集合から構成されたインデックス ツリーをビルドします。 DocumentDB コレクションのインデックスのツリーは、時間の経過と共に新しいドキュメントがコレクションに追加、更新されていくため、増大します。
+スキーマとインスタンスの値をパス上で均等に扱うことは、上図に示す&2; つのドキュメントのパス間のマップを保持するインデックスと、そのパスを含むドキュメント ID も、個々のドキュメントと同様に論理的にツリーとして表現できる点で、重要な意味を持ちます。 DocumentDB はこのしくみを利用して、コレクション内の個々 のドキュメントを表現するすべてのツリーの和集合から構成されたインデックス ツリーをビルドします。 DocumentDB コレクションのインデックスのツリーは、時間の経過と共に新しいドキュメントがコレクションに追加、更新されていくため、増大します。
 
 **ツリーとしての DocumentDB インデックス:**
 
@@ -75,6 +60,6 @@ DocumentDB のインデックス作成は、ストレージの効率性とマル
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

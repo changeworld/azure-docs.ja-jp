@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/09/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: e1c99bbe9d6317d83cc5e71ca4f79d862223aa0a
-ms.openlocfilehash: 080def517b9a443d33148354226a394494a66e03
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: c6171ad4077e833162bfad31b01abbc9947f8e45
 
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>HDInsight での Strom に Apache Kafka (プレビュー) を使用する
@@ -29,8 +29,6 @@ Apache Kafka は、HDInsight で利用可能な発行/サブスクライブ メ�
 > このドキュメントの手順を完了したら、余分に課金されないようにするためにクラスターは削除してください。
 
 ## <a name="prerequisites"></a>前提条件
-
-* Azure サブスクリプション
 
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 1.8 以上。 または同等の [OpenJDK](http://openjdk.java.net/) など。
   
@@ -324,6 +322,6 @@ Linux ベースの HDInsight でトポロジをデプロイおよび監視する
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

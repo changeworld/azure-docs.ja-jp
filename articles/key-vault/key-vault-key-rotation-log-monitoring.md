@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
 translationtype: Human Translation
-ms.sourcegitcommit: 4115a3638519896c3710ddc33dd0caa2e8d9d720
-ms.openlocfilehash: 05e33c56e6aa6bedfa2e6b8ff18fe182d87ed80e
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: cc872e8d9bc0662f46d5f394f9c98885e34fe67a
 
 
 ---
@@ -40,7 +40,7 @@ Login-AzureRmAccount
 
 ポップアップ ブラウザー ウィンドウで、Azure アカウントのユーザー名とパスワードを入力します。 PowerShell は、このアカウントに関連付けられているすべてのサブスクリプションを取得します。 PowerShell は既定で最初のサブスクリプションを使用します。
 
-複数のサブスクリプションをお持ちの場合は、Key Vault を作成するときに使用した 1 つを指定することが必要なことがあります。 アカウントのサブスクリプションを確認するには、次を入力します。
+複数のサブスクリプションをお持ちの場合は、Key Vault を作成するときに使用した&1; つを指定することが必要なことがあります。 アカウントのサブスクリプションを確認するには、次を入力します。
 
 ```powershell
 Get-AzureRmSubscription
@@ -411,12 +411,12 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 
 種類が *Azure Blob Storage* の出力を追加します。 これは、入力で定義した sync.txt ファイルを指します。 これは、参照される最後のイベントのタイムスタンプを書き込むときに、関数によって使用されます。 上記のコードでは、このパラメーターは *outputBlob* と呼ばれます。
 
-これで関数の準備ができました。 **[開発]** タブに切り替えて、コードを 保存します。 出力ウィンドウでコンパイル エラーがないかどうかを確認し、エラーがある場合は修正します。 コードをコンパイルすると、コードは 1 分ごとに Key Vault ログを確認し、新しいイベントすべてを定義済み Service Bus キューにプッシュします。 関数がトリガーされるたびに、ログ情報がログ ウィンドウに書き出されることがわかります。
+これで関数の準備ができました。 **[開発]** タブに切り替えて、コードを 保存します。 出力ウィンドウでコンパイル エラーがないかどうかを確認し、エラーがある場合は修正します。 コードをコンパイルすると、コードは&1; 分ごとに Key Vault ログを確認し、新しいイベントすべてを定義済み Service Bus キューにプッシュします。 関数がトリガーされるたびに、ログ情報がログ ウィンドウに書き出されることがわかります。
 
 ### <a name="azure-logic-app"></a>Azure Logic App
 次に、Azure Logic App を作成する必要があります。このアプリは、関数が Service Bus キューにプッシュするイベントを取得し、コンテンツを解析して、一致する条件に基づいて電子メールを送信します。
 
-**[新規] > [Logic App]** の順に移動し、[Logic App を作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+**[新規] > [Logic App]** の順に移動し、[Logic App を作成](../logic-apps/logic-apps-create-a-logic-app.md)します。
 
 Logic App が作成されたら、そのアプリに移動し、**[編集]** を選択します。 Logic App エディターで、**[Service Bus キュー]** を選択し、Service Bus 資格情報を入力して、キューに接続します。
 
@@ -440,6 +440,6 @@ Logic App が作成されたら、そのアプリに移動し、**[編集]** を
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

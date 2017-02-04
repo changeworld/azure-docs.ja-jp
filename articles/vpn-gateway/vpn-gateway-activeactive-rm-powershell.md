@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/26/2016
 ms.author: yushwang
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: 397928e851524fb43d3ffa114b45024b0158a410
+ms.sourcegitcommit: b8b663d802fde83f3435f2d97ceb51d5b5c802bb
+ms.openlocfilehash: ef17c0226528fef35c0317cebbaa14b7bbe28b1d
 
 
 ---
@@ -48,7 +48,7 @@ ms.openlocfilehash: 397928e851524fb43d3ffa114b45024b0158a410
 ## <a name="a-name-aagatewayapart-1---create-and-configure-active-active-vpn-gateways"></a><a name ="aagateway"></a>パート 1 - アクティブ/アクティブの VPN ゲートウェイを作成、構成する
 次の手順では、Azure VPN ゲートウェイをアクティブ/アクティブ モードで構成します。 アクティブ/アクティブ ゲートウェイとアクティブ/スタンバイ ゲートウェイの主な違い:
 
-* 2 つのパブリック IP アドレスを使用して 2 つのゲートウェイ IP 構成を作成する必要がある
+* 2 つのパブリック IP アドレスを使用して&2; つのゲートウェイ IP 構成を作成する必要がある
 * EnableActiveActiveFeature フラグを設定する必要がある
 * ゲートウェイ SKU を HighPerformance に設定する必要がある
 
@@ -95,7 +95,7 @@ PowerShell コンソールを開き、アカウントに接続します。 接�
     New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 
 #### <a name="3-create-testvnet1"></a>3.TestVNet1 を作成する
-下の例では、TestVNet1 という名前の仮想ネットワークと 3 つのサブネットを作成します。サブネットの名前は GatewaySubnet、FrontEnd、Backend です。 値を代入するときは、ゲートウェイの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、接続を作成できません。 
+下の例では、TestVNet1 という名前の仮想ネットワークと&3; つのサブネットを作成します。サブネットの名前は GatewaySubnet、FrontEnd、Backend です。 値を代入するときは、ゲートウェイの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、接続を作成できません。 
 
     $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
     $besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
@@ -105,7 +105,7 @@ PowerShell コンソールを開き、アカウントに接続します。 接�
 
 ### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-active-active-mode"></a>手順 2 - アクティブ/アクティブ モードで TestVNet1 に VPN ゲートウェイを作成する
 #### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1.パブリック IP アドレスとゲートウェイの IP 構成を作成する
-VNet 用に作成するゲートウェイに割り当てるパブリック IP アドレスを 2 つ要求します。 必要なサブネットと IP の構成も定義します。 
+VNet 用に作成するゲートウェイに割り当てるパブリック IP アドレスを&2; つ要求します。 必要なサブネットと IP の構成も定義します。 
 
     $gw1pip1    = New-AzureRmPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
     $gw1pip2    = New-AzureRmPublicIpAddress -Name $GW1IPName2 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
@@ -116,7 +116,7 @@ VNet 用に作成するゲートウェイに割り当てるパブリック IP �
     $gw1ipconf2 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GW1IPconf2 -Subnet $subnet1 -PublicIpAddress $gw1pip2
 
 #### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2.アクティブ/アクティブ構成で VPN ゲートウェイを作成する
-TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。 GatewayIpConfig エントリが 2 つあり、EnableActiveActiveFeature フラグが設定されている点にご注意ください。 アクティブ/アクティブ モードでは、HighPerformance SKU のルート ベースの VPN ゲートウェイが必要です。 ゲートウェイの作成には時間がかかります (完了に 30 分以上必要とします)。
+TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。 GatewayIpConfig エントリが&2; つあり、EnableActiveActiveFeature フラグが設定されている点にご注意ください。 アクティブ/アクティブ モードでは、HighPerformance SKU のルート ベースの VPN ゲートウェイが必要です。 ゲートウェイの作成には時間がかかります (完了に&30; 分以上必要とします)。
 
     New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance -Asn $VNet1ASN -EnableActiveActiveFeature -Debug
 
@@ -127,7 +127,7 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
     $gw1pip2 = Get-AzureRmPublicIpAddress -Name $GW1IPName2 -ResourceGroupName $RG1
     $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 
-次のコマンドレットを使用し、VPN ゲートウェイに割り当てられる 2 つのパブリック IP アドレスを表示し、各ゲートウェイ インスタンスに対応する BGP ピア IP アドレスを表示します。
+次のコマンドレットを使用し、VPN ゲートウェイに割り当てられる&2; つのパブリック IP アドレスを表示し、各ゲートウェイ インスタンスに対応する BGP ピア IP アドレスを表示します。
 
     PS D:\> $gw1pip1.IpAddress
     40.112.190.5
@@ -149,7 +149,7 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
 ゲートウェイが作成されたら、このゲートウェイを使用して、アクティブ/アクティブのクロスプレミス接続または VNet 間接続を確立できます。 以降のセクションでは、演習を終了する手順について説明します。
 
 ## <a name="a-name-aacrosspremapart-2---establish-an-active-active-cross-premises-connection"></a><a name ="aacrossprem"></a>パート 2 - アクティブ/アクティブのクロスプレミス接続を確立する
-クロスプレミス接続を確立するには、オンプレミス VPN デバイスを表すローカル ネットワーク ゲートウェイと、Azure VPN ゲートウェイをローカル ネットワーク ゲートウェイにつなげる接続を作成する必要があります。 この例では、Azure VPN ゲートウェイがアクティブ/アクティブ モードになっています。 その結果、オンプレミス デバイスが 1 つだけで (ローカル ネットワーク ゲートウェイ)、接続リソースが 1 つの場合であっても、両方の Azure VPN ゲートウェイ インスタンスによって、オンプレミス デバイスで S2S VPN トンネルが構築されます。
+クロスプレミス接続を確立するには、オンプレミス VPN デバイスを表すローカル ネットワーク ゲートウェイと、Azure VPN ゲートウェイをローカル ネットワーク ゲートウェイにつなげる接続を作成する必要があります。 この例では、Azure VPN ゲートウェイがアクティブ/アクティブ モードになっています。 その結果、オンプレミス デバイスが&1; つだけで (ローカル ネットワーク ゲートウェイ)、接続リソースが&1; つの場合であっても、両方の Azure VPN ゲートウェイ インスタンスによって、オンプレミス デバイスで S2S VPN トンネルが構築されます。
 
 次に進む前に、この演習の [パート 1](#aagateway) を完了していることを確認してください。
 
@@ -168,7 +168,7 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
 ローカル ネットワーク ゲートウェイのパラメーターに関する注意点がいくつかあります。
 
 * ローカル ネットワーク ゲートウェイは、VPN ゲートウェイと同じ場所またはリソース グループに配置することも、別の場所またはリソース グループに配置することもできます。 この例では、同じ Azure の場所にある別のリソース グループに配置します。
-* 上述のようにオンプレミス VPN デバイスが 1 つのみの場合は、BGP プロトコルの有無に関係なく、アクティブ/アクティブ接続が機能します。 この例では、クロスプレミス接続に BGP を使用します。
+* 上述のようにオンプレミス VPN デバイスが&1; つのみの場合は、BGP プロトコルの有無に関係なく、アクティブ/アクティブ接続が機能します。 この例では、クロスプレミス接続に BGP を使用します。
 * BGP が有効な場合、ローカル ネットワーク ゲートウェイ用に宣言する必要があるプレフィックスは、VPN デバイスの BGP ピア IP アドレスのホスト アドレスです。 この場合は、"10.52.255.253/32" の /32 プレフィックスです。
 * 既に説明したように、オンプレミス ネットワークと Azure VNet では、異なる BGP ASN を使用する必要があります。 これらが同じ場合、オンプレミス VPN デバイスが既に ASN を使用して他の BGP 近隣ノードとピアリングしているのであれば、VNet ASN を変更する必要があります。
 
@@ -183,7 +183,7 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
     $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
     $lng5gw1 = Get-AzureRmLocalNetworkGateway   -Name $LNGName51 -ResourceGroupName $RG5
 
-#### <a name="2-create-the-testvnet1-to-site5-connection"></a>手順 2.TestVNet1 から Site5 への接続を作成する
+#### <a name="2-create-the-testvnet1-to-site5-connection"></a>手順&2;.TestVNet1 から Site5 への接続を作成する
 この手順では、"EnableBGP" を $True に設定して TestVNet1 から Site5_1 への接続を作成します。
 
     New-AzureRmVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw1 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP True
@@ -200,14 +200,14 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
     - Static routes        : Destination 10.12.255.4/32, nexthop the VPN tunnel interface to 40.112.190.5                        Destination 10.12.255.5/32, nexthop the VPN tunnel interface to 138.91.156.129
     - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
 
-接続は数分後に確立されます。IPsec 接続が確立されると、BGP ピアリング セッションが開始されます。 この例では、以下の図のようにオンプレミス デバイスが 1 つだけ構成されています。
+接続は数分後に確立されます。IPsec 接続が確立されると、BGP ピアリング セッションが開始されます。 この例では、以下の図のようにオンプレミス デバイスが&1; つだけ構成されています。
 
 ![active-active-crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
 
 ### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>パート 3 - アクティブ/アクティブの VPN ゲートウェイに 2 つのオンプレミス VPN デバイスを接続する
-同じオンプレミス ネットワークに VPN デバイスが 2 つある場合は、Azure VPN ゲートウェイを 2 番目の VPN デバイスに接続することによって、デュアル冗長性を実現できます。
+同じオンプレミス ネットワークに VPN デバイスが&2; つある場合は、Azure VPN ゲートウェイを&2; 番目の VPN デバイスに接続することによって、デュアル冗長性を実現できます。
 
-#### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1.Site5 用の 2 番目のローカル ネットワーク ゲートウェイを作成する
+#### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1.Site5 用の&2; 番目のローカル ネットワーク ゲートウェイを作成する
 2 番目のローカル ネットワーク ゲートウェイ用の、ゲートウェイ IP アドレス、アドレス プレフィックス、BGP ピアリング アドレスは、同じオンプレミス ネットワークの前のローカル ネットワーク ゲートウェイと重複させることができないことにご注意ください。 
 
     $LNGName52     = "Site5_2"
@@ -217,7 +217,7 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
 
     New-AzureRmLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP52 -AddressPrefix $LNGPrefix52 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP52
 
-#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2.VNet ゲートウェイと 2 番目のローカル ネットワーク ゲートウェイを接続する
+#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2.VNet ゲートウェイと&2; 番目のローカル ネットワーク ゲートウェイを接続する
 "EnableBGP" を $True に設定し、TestVNet1 から Site5_2 への接続を作成します。
 
     $lng5gw2 = Get-AzureRmLocalNetworkGateway   -Name $LNGName52 -ResourceGroupName $RG5
@@ -227,14 +227,15 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
 #### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3.2 番目のオンプレミス VPN デバイスの VPN と BGP パラメーター
 同様に、一覧の下にあるのは、2 番目のデバイスに入力するパラメーターです。
 
-    - Site5 ASN            : 65050
-    - Site5 BGP IP         : 10.52.255.254
-    - Prefixes to announce : (for example) 10.51.0.0/16 and 10.52.0.0/16
-    - Azure VNet ASN       : 65010
-    - Azure VNet BGP IP 1  : 10.12.255.4 for tunnel to 40.112.190.5
-    - Azure VNet BGP IP 2  : 10.12.255.5 for tunnel to 138.91.156.129
-    - Static routes        : Destination 10.12.255.4/32, nexthop the VPN tunnel interface to 40.112.190.5                        Destination 10.12.255.5/32, nexthop the VPN tunnel interface to 138.91.156.129
-    - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
+      - Site5 ASN            : 65050
+      - Site5 BGP IP         : 10.52.255.254
+      - Prefixes to announce : (for example) 10.51.0.0/16 and 10.52.0.0/16
+      - Azure VNet ASN       : 65010
+      - Azure VNet BGP IP 1  : 10.12.255.4 for tunnel to 40.112.190.5
+      - Azure VNet BGP IP 2  : 10.12.255.5 for tunnel to 138.91.156.129
+      - Static routes        : Destination 10.12.255.4/32, nexthop the VPN tunnel interface to 40.112.190.5
+                             Destination 10.12.255.5/32, nexthop the VPN tunnel interface to 138.91.156.129
+      - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
 
 接続 (トンネル) が確立されると、デュアル冗長 VPN デバイスと、オンプレミス ネットワークと Azure を接続するトンネルが作成されます。
 
@@ -283,8 +284,8 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
 
     New-AzureRmVirtualNetwork -Name $VNetName2 -ResourceGroupName $RG2 -Location $Location2 -AddressPrefix $VNetPrefix21,$VNetPrefix22 -Subnet $fesub2,$besub2,$gwsub2
 
-#### <a name="3-create-the-active-active-vpn-gateway-for-testvnet2"></a>手順 3.TestVNet2 のアクティブ/アクティブの VPN ゲートウェイを作成する
-VNet 用に作成するゲートウェイに割り当てるパブリック IP アドレスを 2 つ要求します。 必要なサブネットと IP の構成も定義します。 
+#### <a name="3-create-the-active-active-vpn-gateway-for-testvnet2"></a>手順&3;.TestVNet2 のアクティブ/アクティブの VPN ゲートウェイを作成する
+VNet 用に作成するゲートウェイに割り当てるパブリック IP アドレスを&2; つ要求します。 必要なサブネットと IP の構成も定義します。 
 
     $gw2pip1    = New-AzureRmPublicIpAddress -Name $GW2IPName1 -ResourceGroupName $RG2 -Location $Location2 -AllocationMethod Dynamic
     $gw2pip2    = New-AzureRmPublicIpAddress -Name $GW2IPName2 -ResourceGroupName $RG2 -Location $Location2 -AllocationMethod Dynamic
@@ -381,6 +382,6 @@ AS 番号と "EnableActiveActiveFeature" フラグを使用して、VPN ゲー�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

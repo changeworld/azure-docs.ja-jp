@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3df3dfa25bc438cfe4a340ba50868d2f2263b44a
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: cee2c702c705e1451c0a6d01b140e6291b1e5ce1
 
 
 ---
@@ -29,7 +29,7 @@ MailChimp は、電子メール マーケティング活動を管理および自
 > 
 > 
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事を参照してください。
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事を参照してください。
 
 ## <a name="triggers-and-actions"></a>トリガーとアクション
 MailChimp コネクタは、アクションとして使用できます。MailChimp コネクタにはトリガーがあります。 すべてのコネクタは、JSON および XML 形式のデータに対応します。
@@ -592,11 +592,11 @@ MailChimp を使用してロジック アプリを作成するには、まず**�
 | _links |array |なし |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3d2ce46a66079ef2737b7ca6fbe46ff988e2bc84
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: 92c0892128655141f29380890c31451e62ca8853
 
 
 ---
@@ -37,7 +37,7 @@ Office 365 Outlook では、次のことができます。
 > 
 > 
 
-Logic Apps の詳細については、「[Logic Apps とは](../app-service-logic/app-service-logic-what-are-logic-apps.md)」と[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページを参照してください。
+Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic-apps-what-are-logic-apps.md)」と[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関するページを参照してください。
 
 ## <a name="connect-to-office-365"></a>Office 365 への接続
 ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。 接続により、ロジック アプリと別のサービスとの接続が実現します。 たとえば、Office 365 Outlook に接続するには、最初に Office 365 "*接続*" が必要になります。 接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。 そのため、Office 365 Outlook の場合は、Office 365 アカウントの資格情報を入力して接続を作成します。
@@ -48,7 +48,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../app-service-logi
 > 
 
 ## <a name="use-a-trigger"></a>トリガーを使用する
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーは、指定された間隔と頻度でサービスを "ポーリング" します。 トリガーの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーは、指定された間隔と頻度でサービスを "ポーリング" します。 トリガーの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。
 
 1. ロジック アプリで「office 365」と入力して、トリガーの一覧を取得します。  
    
@@ -69,7 +69,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../app-service-logi
 4. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。 ロジック アプリが保存され、場合によっては、自動的に有効になります。
 
 ## <a name="use-an-action"></a>アクションを使用する
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。
 
 1. プラス記号を選択します。 **[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
    
@@ -96,7 +96,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../app-service-logi
 ## <a name="office-365-triggers"></a>Office 365 トリガー
 | トリガー | Description |
 | --- | --- |
-| [[Office 365 Outlook - When an upcoming event is starting soon (Office 365 Outlook - 予定しているイベントが間もなく開始されるとき)]](connectors-create-api-office365-outlook.md#when-an-upcoming-event-is-starting-soon) |この操作では、予定表イベントが間もなく開始されるときにフローをトリガーします。 |
+| [[Office&365; Outlook - When an upcoming event is starting soon (Office&365; Outlook - 予定しているイベントが間もなく開始されるとき)]](connectors-create-api-office365-outlook.md#when-an-upcoming-event-is-starting-soon) |この操作では、予定表イベントが間もなく開始されるときにフローをトリガーします。 |
 | [[When a new email arrives (新しい電子メールが届いたとき)]](connectors-create-api-office365-outlook.md#when-a-new-email-arrives) |この操作では、新しい電子メールが届いたときにフローをトリガーします。 |
 | [[When a new event is created (新しいイベントが作成されたとき)]](connectors-create-api-office365-outlook.md#when-a-new-event-is-created) |この操作では、予定表に新しいイベントが作成されたときにフローをトリガーします。 |
 | [[When an event is modified (イベントが変更されたとき)]](connectors-create-api-office365-outlook.md#when-an-event-is-modified) |この操作では、予定表のイベントが変更されたときにフローをトリガーします。 |
@@ -128,7 +128,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../app-service-logi
 ### <a name="trigger-and-action-details"></a>トリガーとアクションの詳細
 このセクションでは、必須または任意の入力プロパティ、コネクタに関連付けられた対応する出力など、各トリガーとアクションに関する具体的な詳細について説明します。
 
-#### <a name="when-an-upcoming-event-is-starting-soon"></a>[Office 365 Outlook - When an upcoming event is starting soon (Office 365 Outlook - 予定しているイベントが間もなく開始されるとき)]
+#### <a name="when-an-upcoming-event-is-starting-soon"></a>[Office&365; Outlook - When an upcoming event is starting soon (Office&365; Outlook - 予定しているイベントが間もなく開始されるとき)]
 この操作では、予定表イベントが間もなく開始されるときにフローをトリガーします。 
 
 | プロパティ名 | Displayname Settings | Description |
@@ -720,7 +720,7 @@ ContactList: 連絡先の一覧
 | DateTimeLastModified |string |連絡先が変更された日時。 |
 
 ## <a name="http-responses"></a>HTTP 応答
-上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。 
+上記のアクションとトリガーは、次の HTTP 状態コードを&1; つ以上返す場合があります。 
 
 | 名前 | 説明 |
 | --- | --- |
@@ -734,11 +734,11 @@ ContactList: 連絡先の一覧
 | default |操作に失敗しました。 |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
+[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

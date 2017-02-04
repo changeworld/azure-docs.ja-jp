@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 11/08/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 1589b1150df47aa5e436aa5d538b6a98706f97ae
-ms.openlocfilehash: 3e53aa3ed3c1612c76aec349e4dabfc064842cb9
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: 477c766afbfaccd70313e73e5d2ec5873c12d105
 
 
 ---
@@ -35,6 +35,10 @@ ms.openlocfilehash: 3e53aa3ed3c1612c76aec349e4dabfc064842cb9
 この記事の手順を完了するには、次のものが必要です。
 
 * Linux ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
+
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * SSH クライアント。 SSH クライアントを備えた Linux、Unix、Mac オペレーティング システム Windows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
 ## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>SSH を使用した接続
@@ -79,7 +83,7 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
    
         hdfs dfs -ls wasbs:///example/data/WordCountOutput
    
-    ここでは、**_SUCCESS** と **part-r-00000** の 2 つのファイルが表示されます。 **part-r-00000** ファイルには、このジョブの出力が含まれています。
+    ここでは、**_SUCCESS** と **part-r-00000** の&2; つのファイルが表示されます。 **part-r-00000** ファイルには、このジョブの出力が含まれています。
    
     > [!NOTE]
     > 一部の MapReduce ジョブでは、複数の **part-r-#####** ファイルに結果が分割される場合があります。 このとき、ファイルの順番を特定するには ##### サフィックスを使用します。
@@ -116,6 +120,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 09/08/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: a06126707ad9942ba3b269b0e2e2a52f9cf0c61e
-ms.openlocfilehash: 4d6735772ff36a730ccb369f7fce653a91bc9d4f
+ms.sourcegitcommit: ee94e074c574bc2e6e1a52dbfd6bd0ae102cb342
+ms.openlocfilehash: 0d007bf2a0f5a40fcb7ac6dfe5beff05a4310701
 
 
 ---
@@ -48,15 +48,15 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 | --- | --- | --- |
 | オーディエンス |オフィスの従業員、ビジネス ユーザー |IT プロフェッショナル、開発者 |
 | シナリオ |セルフ サービス |ミッション クリティカル |
-| デザイン ツール |ブラウザー上、UI のみ |ブラウザー上のほか、[Visual Studio](../app-service-logic/app-service-logic-deploy-from-vs.md)、[コード ビュー](../app-service-logic/app-service-logic-author-definitions.md)が利用可能 |
-| DevOps |実稼働環境でのアドホックな開発 | [Azure リソース管理](../app-service-logic/app-service-logic-arm-provision.md) |
+| デザイン ツール |ブラウザー上、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
+| DevOps |実稼働環境でのアドホックな開発 |[Azure リソース管理](../logic-apps/logic-apps-arm-provision.md) |
 | 管理者向けエクスペリエンス |[https://flow.microsoft.com](https://flow.microsoft.com) |[https://portal.azure.com](https://portal.azure.com) |
 | セキュリティ |標準的な実務慣行: [データの主権性の確保](https://wikipedia.org/wiki/Technological_Sovereignty)、[機密性の高い保存データの暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |
 
 <a name="function"></a>
 
 ## <a name="functions-vs-webjobs"></a>Functions とWeb ジョブ
-Azure Functions と Azure App Service WebJobs はどちらも開発者向けに設計された " *コード第一* " の統合サービスであるため、ここで一緒に説明します。 この 2 つのサービスでは、[新しいストレージ BLOB](functions-bindings-storage.md) や [webhook 要求](functions-bindings-http-webhook.md)など、さまざまなイベントに対する応答としてスクリプトまたはコードを実行できます。 この 2 つは、以下の点がよく似ています。 
+Azure Functions と Azure App Service WebJobs はどちらも開発者向けに設計された " *コード第一* " の統合サービスであるため、ここで一緒に説明します。 この&2; つのサービスでは、[新しいストレージ BLOB](functions-bindings-storage.md) や [webhook 要求](functions-bindings-http-webhook.md)など、さまざまなイベントに対する応答としてスクリプトまたはコードを実行できます。 この&2; つは、以下の点がよく似ています。 
 
 * どちらも [Azure App Service](../app-service/app-service-value-prop-what-is.md) の上に構築されたものであり、[ソース管理](../app-service-web/app-service-continuous-deployment.md)、[認証](../app-service/app-service-authentication-overview.md)、[監視](../app-service-web/web-sites-monitor.md)などの機能を利用可能
 * どちらも開発者向けのサービスである
@@ -101,13 +101,13 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 * 統合のシナリオが高度で Flow では対応できない場合、または DevOps 機能やセキュリティ コンプライアンス機能が必要な場合には、Logic Apps を使用します。
 * 統合シナリオのどこかのステップで大幅なカスタマイズまたは特殊なコードの使用が必要になる場合には、Function App を作成し、ロジック アプリ内のアクションとして関数をトリガーします。
 
-フローでは、ロジック アプリを呼び出すことができます。 また、ロジック アプリで関数を呼び出したり、関数でロジック アプリを呼び出したりすることもできます。 Flow、Logic Apps、Functions の統合は、今後ますます強まっていきます。 あるサービスで作成したものは、別のサービスで使用できます。 このため、これら 3 つのテクノロジに対する投資が無駄になることはありません。
+フローでは、ロジック アプリを呼び出すことができます。 また、ロジック アプリで関数を呼び出したり、関数でロジック アプリを呼び出したりすることもできます。 Flow、Logic Apps、Functions の統合は、今後ますます強まっていきます。 あるサービスで作成したものは、別のサービスで使用できます。 このため、これら&3; つのテクノロジに対する投資が無駄になることはありません。
 
 ## <a name="next-steps"></a>次のステップ
 最初のフロー、ロジック アプリ、Function App、または Web ジョブを作成して、それぞれのサービスを使ってみましょう。 以下のリンクのなかから、お好きなものをクリックしてください。
 
 * [Get started with Microsoft Flow (Microsoft Flow の概要)](https://flow.microsoft.com/en-us/documentation/getting-started/)
-* [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+* [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 * [初めての Azure 関数の作成](functions-create-first-azure-function.md)
 * [Visual Studio を使用して Web ジョブを展開する](../app-service-web/websites-dotnet-deploy-webjobs.md)
 
@@ -122,6 +122,6 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 
