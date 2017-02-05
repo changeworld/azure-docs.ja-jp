@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a582941b06fa7f81d7db188f2a9feba837b9bfd8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b7e47a469127d2a06aa1be07f46ef04a2c23d351
 
 
 ---
-# <a name="expressroute-prerequisites-checklist"></a>ExpressRoute の前提条件とチェック リスト
+# <a name="expressroute-prerequisites--checklist"></a>ExpressRoute の前提条件とチェック リスト
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、以下のセクションにある前提条件を満たしていることを確認する必要があります。
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
@@ -67,6 +67,6 @@ ExpressRoute で CRM Online を有効にする予定がある場合は、以下�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 
