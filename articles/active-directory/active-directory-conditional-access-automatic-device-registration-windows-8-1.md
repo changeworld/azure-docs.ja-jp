@@ -1,12 +1,12 @@
 ---
-title: Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成 | Microsoft Docs
-description: " 自動的に Azure AD に登録する Windows 8.1 ドメイン参加済みデバイスを構成する手順 "
+title: "Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成 | Microsoft Docs"
+description: " 自動的に Azure AD に登録する Windows 8.1 ドメイン参加済みデバイスのグループ ポリシーを構成する手順. "
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: femila
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: 402271c6-d577-4264-8b75-fe78030b18e9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2016
 ms.author: Markvi
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2117267c409afed40094fadf546d53bf9f5d1ec3
+
 
 ---
-# <a name="configure-automatic-device-registration-for-windows-8.1-domain-joined-devices"></a>Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成
+# <a name="configure-automatic-device-registration-for-windows-81-domain-joined-devices"></a>Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成
 Active Directory グループ ポリシーを使用すると、自動的に Azure AD に登録する Windows 8.1 ドメイン参加済みデバイスを構成できます。 グループ ポリシーを構成するには、グループ ポリシーの管理機能がインストールされたドメイン参加済みの Windows Server 2012 R2 または Windows 8.1 コンピューターが 1 つ以上必要です。 このグループ ポリシーがドメインに対して有効になると、コンピューターにログインするすべてのドメイン ユーザーが Azure AD のデバイス オブジェクトを使用して自動的かつ暗黙的に登録されます。 Azure AD には、物理デバイスの登録ユーザーごとに 1 つのデバイス オブジェクトが作成されます。「Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録」の前提条件を確認し、それらが満たされているようにしてください。
 
 > [!NOTE]
@@ -24,7 +28,7 @@ Active Directory グループ ポリシーを使用すると、自動的に Azur
 > 
 > 
 
-## <a name="configure-the-group-policy-for-your-windows-8.1-domain-joined-devices"></a>Windows 8.1 ドメイン参加済みデバイスのグループ ポリシーの構成
+## <a name="configure-the-group-policy-for-your-windows-81-domain-joined-devices"></a>Windows 8.1 ドメイン参加済みデバイスのグループ ポリシーの構成
 1. サーバー マネージャーを開き、**[ツール]**  >  **[グループ ポリシーの管理]** に移動します。
 2. [グループ ポリシーの管理] から、 **自動社内参加**を有効にするドメインに対応するドメインのノードに移動します。
 3. **[グループ ポリシー オブジェクト]** を右クリックし、**[新規]** を選択します。 グループ ポリシー オブジェクトに **Automatic Workplace Join**などの名前を付けます。 **[OK]**をクリックします。
@@ -34,7 +38,7 @@ Active Directory グループ ポリシーを使用すると、自動的に Azur
 7. [有効] を選択し、[適用] をクリックします。 **[OK]**をクリックします。
 8. これで、グループ ポリシー オブジェクトを選択した場所にリンクできるようになりました。 組織内のすべての Windows 8.1 ドメイン参加済みデバイスに対してこのポリシーを有効にするには、グループ ポリシーをドメインにリンクします。
 
-## <a name="unregistering-your-windows-8.1-domain-joined-devices"></a>Windows 8.1 ドメイン参加済みデバイスの登録解除
+## <a name="unregistering-your-windows-81-domain-joined-devices"></a>Windows 8.1 ドメイン参加済みデバイスの登録解除
 ドメイン参加済みの Windows 8.1 デバイスの登録を解除するには、前のセクションで作成した社内参加グループ ポリシーの設定を変更します。 [クライアント コンピューターを自動的に社内参加する] のポリシーを無効に設定します。 こうすることで、新しいデバイスが自動的に社内参加することがなくなります。
 
 既存のドメイン参加済みの Windows 8.1 マシンの登録を解除するには、次の 2 つのオプションのいずれかに従います。
@@ -46,11 +50,11 @@ Active Directory グループ ポリシーを使用すると、自動的に Azur
      このプロセスは、マシンにサインインしている、自動的に社内参加したドメイン ユーザーごとに繰り返す必要があります。
 * オプション 2: スクリプトを使用して、Windows 8.1 ドメイン参加済みデバイスを登録解除する
   
-  1. Windows 8.1 マシンでコマンド プロンプトを開き、次のコマンドを実行します。` %SystemRoot%\System32\AutoWorkplace.exe leave`
+      1. Windows 8.1 マシンでコマンド プロンプトを開き、次のコマンドを実行します。` %SystemRoot%\System32\AutoWorkplace.exe leave`
 
 このコマンドは、マシンにサインインしている各ドメイン ユーザーのコンテキストで実行する必要があります。
 
-## <a name="event-viewer-&-errors-for-windows-8.1-domain-joined-devices"></a>Windows 8.1 ドメイン参加済みデバイス用のイベント ビューアーとエラー
+## <a name="event-viewer--errors-for-windows-81-domain-joined-devices"></a>Windows 8.1 ドメイン参加済みデバイス用のイベント ビューアーとエラー
 Windows 8.1 コンピューターの Windows イベント ログには、デバイスの登録に関連するメッセージが表示されます。 成功したイベントと失敗したイベントの両方のメッセージが表示されます。 
 
 イベント ログは、イベント ビューアーの [アプリケーションとサービス] の **[ログ]**  >  **[Microsoft]**  >  **[Windows] > [社内参加]** にあります。
@@ -63,6 +67,9 @@ Windows 8.1 コンピューターの Windows イベント ログには、デバ�
 * [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)
 * [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

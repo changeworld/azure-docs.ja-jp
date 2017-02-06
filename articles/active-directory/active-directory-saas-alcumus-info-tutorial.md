@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
+ms.date: 11/30/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97834f5d3b9bf466f867d5cc7bcaa825983b252f
+ms.sourcegitcommit: 1a2ff324cfa65977685f6a0eee9cd398b0717519
+ms.openlocfilehash: 4c22b52d1c86fefbccd452967c6250fdecaac6dd
 
 
 ---
@@ -238,6 +238,6 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成し�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

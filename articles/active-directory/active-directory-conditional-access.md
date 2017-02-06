@@ -13,15 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/21/2016
+ms.date: 12/16/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2cd4a7536bcdde717221a8f2d25eadadee03dd4d
+ms.sourcegitcommit: af104d47d316b3e46108e7e2ed0771bd06f360af
+ms.openlocfilehash: 6c3b547b052bca6999e47ddc10fcce5e1e56fe09
 
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
+
+> [!div class="op_single_selector"]
+> * [Azure クラシック ポータル](active-directory-conditional-access.md)
+> * [Azure ポータル](active-directory-conditional-access-azure-portal.md)
+
 Azure Active Directory (Azure AD) の条件付きアクセス制御機能を使用すると、クラウドとオンプレミスのリソースを簡単に保護することができます。 多要素認証のような条件付きアクセス ポリシーを使用すると、資格情報の盗難やフィッシングの危険性から保護できます。 その他の条件付きアクセス ポリシーは、組織のデータを安全に保つのに役立ちます。 たとえば、資格情報を要求することに加え、Microsoft Intune などのモバイル デバイス管理システムに登録されているデバイスのみが組織の機密性の高いサービスにアクセスできるようにするポリシーを適用できます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -94,6 +99,6 @@ Azure AD でデバイスベースの証明機関ポリシーを構成する方�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

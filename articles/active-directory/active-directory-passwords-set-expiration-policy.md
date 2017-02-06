@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ad4bbbb226746e809d6c101e7bebc91f878d69bf
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 331f6dbd7c2dea343185bdb4b947b33ef7b7a366
 
 
 ---
@@ -67,6 +67,6 @@ Windows PowerShell コマンドレットを使用するには、最初に Window
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 
