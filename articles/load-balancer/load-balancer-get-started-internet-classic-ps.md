@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 04/05/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
-ms.openlocfilehash: 16ebe82b866565f676fb33bfa915465c08a5ea89
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 3855b32c8ff13f73cf91ea8973ed40a34a062224
 
 ---
 
@@ -39,7 +39,7 @@ ms.openlocfilehash: 16ebe82b866565f676fb33bfa915465c08a5ea89
 
 PowerShell を使用してロード バランサーを設定するには、次の手順に従います。
 
-1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 2. 仮想マシンを作成した後は、PowerShell コマンドレットを使用し、同じクラウド サービス内の仮想マシンにロード バランサーを追加できます。
 
 次の例では、クラウド サービス "mytestcloud" (または myctestcloud.cloudapp.net) に "webfarm" というロード バランサーのセットを、"web1" および" web2" という名前の仮想マシンにロード バランサーのエンドポイントに追加して追加します。 ロード バランサーはポート 80 でネットワーク トラフィックを受信し、TCP を利用して (この場合はポート 80 の) ローカル エンドポイントで定義されている仮想マシン間の負荷を分散します。
@@ -76,6 +76,6 @@ Get-azureVM -ServiceName mytestcloud  -Name web1 |Remove-AzureEndpoint -Name htt
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

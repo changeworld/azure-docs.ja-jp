@@ -1,20 +1,24 @@
 ---
-title: Windows VM のクラシック デプロイメントのトラブルシューティング | Microsoft Docs
-description: Azure での新しい Windows 仮想マシンの作成に関するクラシック デプロイメントの問題のトラブルシューティング
+title: "Windows VM のクラシック デプロイメントのトラブルシューティング | Microsoft Docs"
+description: "Azure での新しい Windows 仮想マシンの作成に関するクラシック デプロイメントの問題のトラブルシューティング"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: JiangChen79
 manager: felixwu
-editor: ''
+editor: 
 tags: top-support-issue
-
+ms.assetid: 9f01d237-ba39-4c32-b72d-18f5f505d43a
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 12/16/2016
 ms.author: cjiang
+translationtype: Human Translation
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: 7a921e2a36d10f515a97e3196875db29988d550e
+
 
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-windows-virtual-machine-in-azure"></a>Azure での新しい Windows 仮想マシンの作成に関するクラシック デプロイメントの問題のトラブルシューティング
@@ -22,7 +26,8 @@ ms.author: cjiang
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンについては、[こちら](virtual-machines-windows-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -45,7 +50,7 @@ Azure ポータルで、**[参照]** > **[仮想マシン]** > *対象の Window
 
 **解決策:**
 
-これらのエラーを解決するには、OS と同じ設定 (一般化/特殊化) を使用して、オンプレミスで使用可能な元の VHD をアップロードします。 一般化された OS としてアップロードするには、まず sysprep を必ず実行してください。 詳細については、「 [Windows Server VHD の作成と Azure へのアップロード](virtual-machines-windows-classic-createupload-vhd.md) 」を参照してください。
+これらのエラーを解決するには、OS と同じ設定 (一般化/特殊化) を使用して、オンプレミスで使用可能な元の VHD をアップロードします。 一般化された OS としてアップロードするには、まず sysprep を必ず実行してください。 詳細については、「 [Windows Server VHD の作成と Azure へのアップロード](virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) 」を参照してください。
 
 **キャプチャ エラー:**
 
@@ -55,9 +60,9 @@ Azure ポータルで、**[参照]** > **[仮想マシン]** > *対象の Window
 
 **解決策:**
 
-これらのエラーを解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で [現在の VHD からイメージをキャプチャし直します](virtual-machines-windows-classic-capture-image.md) 。
+これらのエラーを解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で [現在の VHD からイメージをキャプチャし直します](virtual-machines-windows-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) 。
 
-## <a name="issue:-custom/-gallery/-marketplace-image;-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
 このエラーは、新しい VM 要求が、要求に対応するのに十分な空き領域がないか、要求されている VM サイズをサポートできないクラスターに新しい VM 要求が送信された場合に発生します。 同じクラウド サービスに別シリーズの VM を混在させることはできません。 したがって、クラウド サービスでサポートできるのとは異なるサイズの新しい VM を作成したい場合は、コンピューティング要求は失敗します。
 
 新しい VM の作成に使用したクラウド サービスの制約により、次の 2 つのいずれかの状況が原因のエラーが発生します。
@@ -84,8 +89,11 @@ Azure ポータルで、**[参照]** > **[仮想マシン]** > *対象の Window
 * [、既存の仮想ネットワークを接続](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/) します。 詳細については、「 [リージョン仮想ネットワーク](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」を参照してください。 または、 [アフィニティ グループ ベースの仮想ネットワークをリージョン仮想ネットワークに移行](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)し、その後に新しい VM を作成します。
 
 ## <a name="next-steps"></a>次のステップ
-Azure での停止していた Windows VM の再起動または既存の Windows VM のサイズ変更に問題が発生する場合は、 [Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)を参照してください。
+Azure での停止していた Windows VM の再起動または既存の Windows VM のサイズ変更に問題が発生する場合は、 [Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](windows/classic/virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO1-->
 
 
