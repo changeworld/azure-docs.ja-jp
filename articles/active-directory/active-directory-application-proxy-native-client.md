@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/22/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8892d5c7bd45c1c1f4c8cad0f3baaafc7cc583be
+ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
+ms.openlocfilehash: 34cacff4e8b13fa9d91387ca8762439908ed01fd
 
 
 ---
@@ -25,7 +25,7 @@ Azure Active Directory アプリケーション プロキシは、SharePoint、O
 
 ![エンド ユーザー、Azure Active Directory、および発行済みアプリケーション間の関係](./media/active-directory-application-proxy-native-client/richclientflow.png)
 
-このようなアプリケーションを発行するために推奨される方法は、すべての認証ハッスルに対応し、多様なクライアント環境をサポートする Azure AD 認証ライブラリを使用することです。 アプリケーション プロキシは、 [ネイティブ アプリケーションから Web API のシナリオ](active-directory-authentication-scenarios.md#native-application-to-web-api)に適しています。 その手順は次のとおりです。
+このようなアプリケーションを発行するために推奨される方法は、すべての認証ハッスルに対応し、多様なクライアント環境をサポートする Azure AD 認証ライブラリを使用することです。 アプリケーション プロキシは、 [ネイティブ アプリケーションから Web API のシナリオ](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)に適しています。 その手順は次のとおりです。
 
 ## <a name="step-1-publish-your-application"></a>手順 1: アプリケーションの発行
 他のアプリケーションと同様にプロキシ アプリケーションを発行し、ユーザーを割り当てて Premium または Basic ライセンスを付与します。 詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)」を参照してください。
@@ -74,7 +74,7 @@ Active Directory Authentication Library (ADAL) の認証コンテキストのネ
 
 ![新しいネイティブ アプリケーションの構成ページのスクリーン ショット](./media/active-directory-application-proxy-native-client/new_native_app.png)
 
-ネイティブ アプリケーション フローの詳細については、「 [ネイティブ アプリケーション対 Web API](active-directory-authentication-scenarios.md#native-application-to-web-api)」をご覧ください。
+ネイティブ アプリケーション フローの詳細については、「 [ネイティブ アプリケーション対 Web API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)」をご覧ください。
 
 ## <a name="see-also"></a>関連項目
 * [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
@@ -87,6 +87,6 @@ Active Directory Authentication Library (ADAL) の認証コンテキストのネ
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,8 +1,8 @@
 ---
 title: "Import/Export サービスのマニフェスト ファイルの形式 | Microsoft Docs"
 description: "Azure Blob Storage の BLOB と Import/Export サービスのインポートまたはエクスポート ジョブにおけるドライブ上のファイル間のマッピングを表すドライブ マニフェスト ファイルの形式について説明します"
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
-ms.author: renash
+ms.date: 01/15/2017
+ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 78abb839badf99c6251673ee9914955df8c950bc
-ms.openlocfilehash: c79d4e4b088bab056459ed4add442acfb0176692
+ms.sourcegitcommit: 54b2d4d50cda5c2cdb602bd8d471a8c75f88cd3b
+ms.openlocfilehash: db684f836d5a28c7c6ba188c22029ab84f031bb7
 
 
 ---
@@ -100,7 +100,7 @@ block-list ::=
 |`Drive`|入れ子になった XML 要素|各ドライブのマニフェストが含まれています。|  
 |`DriveId`|String|ドライブの一意のドライブ識別子です。 ドライブ識別子は、そのドライブのシリアル番号を照会して確認します。 ドライブのシリアル番号は通常、ドライブの外側にも印刷されています。 `DriveID` 要素は、マニフェスト ファイルで `BlobList` 要素の前に表示される必要があります。|  
 |`StorageAccountKey`|String|`ContainerSas` が指定されていない場合に限り、インポート ジョブで必須となります。 ジョブに関連した Azure Storage アカウントのアカウント キーです。<br /><br /> この要素は、エクスポート操作ではマニフェストから省略されます。|  
-|`ContainerSas`|String|`StorageAccountKey` が指定されていない場合に限り、インポート ジョブで必須となります。 ジョブに関連付けられている BLOB にアクセスするためのコンテナー SAS です。 形式については「[Put Job](/rest/api/storageservices/importexport/Put-Job)」をご覧ください。この要素は、エクスポート操作ではマニフェストから省略されます。|  
+|`ContainerSas`|String|`StorageAccountKey` が指定されていない場合に限り、インポート ジョブで必須となります。 ジョブに関連付けられている BLOB にアクセスするためのコンテナー SAS です。 形式については「[Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)」をご覧ください。この要素は、エクスポート操作ではマニフェストから省略されます。|  
 |`ClientCreator`|String|XML ファイルを作成したクライアントを指定します。 この値は Import/Export サービスによって解釈されることはありません。|  
 |`BlobList`|入れ子になった XML 要素|インポート ジョブまたはエクスポート ジョブの 一部である BLOB の一覧が含まれています。 BLOB 一覧内の各 BLOB は、同じメタデータとプロパティを共有します。|  
 |`BlobList/MetadataPath`|String|省略可能。 インポート操作の BLOB 一覧で、BLOB に設定される既定のメタデータを含むディスク上のファイルの相対パスを指定します。 このメタデータは、必要に応じて BLOB ごとに上書きできます。<br /><br /> この要素は、エクスポート操作ではマニフェストから省略されます。|  
@@ -131,10 +131,10 @@ block-list ::=
 |`Blob/PropertiesPath/@Hash`|属性、String|BLOB のプロパティ ファイルの Base16 エンコード MD5 ハッシュを指定します。|  
   
 ## <a name="see-also"></a>関連項目  
-[ストレージの Import/Export REST](/rest/api/storageservices/importexport/Storage-Import-Export-Service-REST-API-Reference)
+[ストレージの Import/Export REST](/rest/api/storageimportexport/)
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

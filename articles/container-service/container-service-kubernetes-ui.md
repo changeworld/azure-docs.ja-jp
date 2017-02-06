@@ -8,7 +8,7 @@ manager: timlt
 editor: 
 tags: acs, azure-container-service, kubernetes
 keywords: 
-ms.assetid: what-goes-here?
+ms.assetid: 
 ms.service: container-service
 ms.devlang: na
 ms.topic: article
@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 translationtype: Human Translation
-ms.sourcegitcommit: ba0848c14344f137a7032a0098d2c1e07e387960
-ms.openlocfilehash: 6ede8e11361c9df2a83c71d97cf47e2306d25371
+ms.sourcegitcommit: bcc2d3468c8a560105aa2c2feb0d969ec3cccdcb
+ms.openlocfilehash: 9ae6e606bf215d9f53f725899b8ac7c466b781f1
 
 
 ---
@@ -27,6 +27,10 @@ ms.openlocfilehash: 6ede8e11361c9df2a83c71d97cf47e2306d25371
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルでは、[Azure Container Service を使用して Kubernetes クラスターを作成](container-service-kubernetes-walkthrough.md)したことを想定します。
+
+> [!NOTE]
+> Azure Container Service での Kubernetes のサポートは、現在はプレビューの段階です。
+>
 
 また、azure cli と kubectl ツールをインストールしていることも想定します。
 
@@ -67,7 +71,7 @@ Kubernetes Web UI では、右上のウィンドウで [作成] ボタンが表�
 ![Kubernetes [作成] UI](media/k8s/create.png)
 
 これにより、ダイアログ ボックスが開き、アプリケーションの作成を開始できます。
-`hello-nginx` と名付けます。 [Docker からの `nginx` コンテナー](https://hub.docker.com/_/nginx/)を使用して、この Web サービスの 3 つのレプリカをデプロイします。
+`hello-nginx` と名付けます。 [Docker からの `nginx` コンテナー](https://hub.docker.com/_/nginx/)を使用して、この Web サービスの&3; つのレプリカをデプロイします。
 
 ![Kubernetes ポッドの [作成] ダイアログ](media/k8s/nginx.png)
 
@@ -105,7 +109,7 @@ Pod 固有のビューでは、Pod でコンテナーについての情報を確
 ### <a name="viewing-your-service"></a>サービスを表示する
 コンテナーを実行するほかにも、Kubernetes UI は外部 `Service` を作成しました。これにより、クラスターにあるコンテナーにトラフィックを運ぶロード バランサーがプロビジョニングされます。
 
-左側のナビゲーション ウィンドウで [Services] をクリックして、すべてのサービスを表示できます (通常は 1 つのみ表示されます)
+左側のナビゲーション ウィンドウで [Services] をクリックして、すべてのサービスを表示できます (通常は&1; つのみ表示されます)
 
 ![Kubernetes サービス](media/k8s/service-deployed.png)
 
@@ -125,7 +129,7 @@ UI でオブジェクトを表示するだけではなく、Kubernetes API オ�
 
 `spec.replicas` フィールドを "2" に編集して [更新] を押します。
 
-これで、Pod のいずれかを削除することにより、レプリカの数を 2 つに下げます。
+これで、Pod のいずれかを削除することにより、レプリカの数を&2; つに下げます。
 
  
 

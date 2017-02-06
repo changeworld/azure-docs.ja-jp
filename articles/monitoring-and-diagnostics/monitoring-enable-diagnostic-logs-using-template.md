@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 11/22/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 30b023429cfdc671ac68175f94ffb48379c58dda
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 00f4ddd7173affb9e557e8c993c9f7432a3152cd
 
 
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してリソースの作成時に診断設定を自動的に有効にする
-この記事では、 [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md) を使用して、リソースの作成時にリソースの診断設定を構成する方法について説明します。 これにより、リソースの作成時に、診断ログとメトリックの Event Hubs へのストリーミング、ストレージ アカウントへのアーカイブ、または Log Analytics への送信を自動的に開始できます。
+この記事では、 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md) を使用して、リソースの作成時にリソースの診断設定を構成する方法について説明します。 これにより、リソースの作成時に、診断ログとメトリックの Event Hubs へのストリーミング、ストレージ アカウントへのアーカイブ、または Log Analytics への送信を自動的に開始できます。
 
 Resource Manager テンプレートを使用して診断ログを有効にする方法は、リソースの種類によって異なります。
 
@@ -33,12 +33,12 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 基本的な手順は次のとおりです。
 
 1. リソースを作成し、診断を有効にする方法を記述した JSON ファイルとしてテンプレートを作成します。
-2. [任意のデプロイ方法を使用してテンプレートをデプロイ](../resource-group-template-deploy.md)します。
+2. [任意のデプロイ方法を使用してテンプレートをデプロイ](../azure-resource-manager/resource-group-template-deploy.md)します。
 
 生成する必要がある、非コンピューティング リソースおよびコンピューティング リソースのテンプレート JSON ファイルの例を以下に示します。
 
 ## <a name="non-compute-resource-template"></a>非コンピューティング リソース テンプレート
-非コンピューティング リソースの場合、次の 2 つの手順を実行する必要があります。
+非コンピューティング リソースの場合、次の&2; つの手順を実行する必要があります。
 
 1. (ストレージ アカウントへの診断ログのアーカイブ、Event Hubs へのログのストリーミング、Log Analytics へのログの送信を有効にするために) パラメーター BLOB に、ストレージ アカウント名、Service Bus 規則 ID、OMS Log Analytics ワークスペース ID のパラメーターを追加します。
    
@@ -86,13 +86,23 @@ Resource Manager テンプレートを使用して診断ログを有効にする
                 "enabled": false
               }
             }
+          ],
+          "metrics": [
+            {
+              "timeGrain": "PT1M",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
           ]
         }
       }
     ]
     ```
 
-診断設定のプロパティ BLOB は、 [こちらの記事で説明する形式](https://msdn.microsoft.com/library/azure/dn931931.aspx)に従います。
+診断設定のプロパティ BLOB は、 [こちらの記事で説明する形式](https://msdn.microsoft.com/library/azure/dn931931.aspx)に従います。 `metrics` プロパティを追加して、リソース メトリックをこれらの同じ出力に送信することもできます。
 
 ネットワーク セキュリティ グループを作成し、Event Hubs およびストレージ アカウント内のストレージへのストリーミングを有効にする例を次に示します。
 
@@ -166,6 +176,16 @@ Resource Manager テンプレートを使用して診断ログを有効にする
                   "enabled": false
                 }
               }
+            ],
+            "metrics": [
+              {
+                "timeGrain": "PT1M",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
             ]
           }
         }
@@ -198,6 +218,6 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

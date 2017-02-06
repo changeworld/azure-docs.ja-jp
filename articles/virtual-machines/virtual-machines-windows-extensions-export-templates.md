@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 015b6387491e0347b3a3a0ac87bb6b91b06387f0
-ms.openlocfilehash: fb1cdfee5094198e3380e120f409175c89d23b6d
+ms.sourcegitcommit: 7167048a287bee7c26cfc08775dcb84f9e7c2eed
+ms.openlocfilehash: 73eec3322f8ee027c68ede89501b8b9fb00961a6
 
 ---
 
@@ -65,7 +65,7 @@ Azure Resource Manager の Automation スクリプトは、Resource Manager テ�
 
 ### <a name="step-1---remove-template-parameter"></a>手順 1. テンプレート パラメーターを削除する
 
-リソース グループをエクスポートする場合、エクスポートされる保護された設定に値を指定するテンプレート パラメーターが 1 つ作成されます。 このパラメーターは削除できます。 このパラメーターを削除するには、パラメーターの一覧を調べて、次に示す JSON の例に類似したパラメーターを削除します。
+リソース グループをエクスポートする場合、エクスポートされる保護された設定に値を指定するテンプレート パラメーターが&1; つ作成されます。 このパラメーターは削除できます。 このパラメーターを削除するには、パラメーターの一覧を調べて、次に示す JSON の例に類似したパラメーターを削除します。
 
 ```json
 "extensions_extensionname_protectedSettings": {
@@ -148,7 +148,7 @@ Azure Resource Manager の Automation スクリプトは、Resource Manager テ�
 }
 ```
 
-テンプレート パラメーターを使用してプロパティ値を指定する場合は、これらを作成する必要があります。 保護された設定の値用のテンプレート パラメーターを作成するときは、機密性の高い値が保護されるように、`SecureObject` パラメーター型を使用してください。 パラメーターの使用の詳細については、「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+テンプレート パラメーターを使用してプロパティ値を指定する場合は、これらを作成する必要があります。 保護された設定の値用のテンプレート パラメーターを作成するときは、機密性の高い値が保護されるように、`SecureObject` パラメーター型を使用してください。 パラメーターの使用の詳細については、「[Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
 この `IaasDiagnostic` 拡張機能の例では、Resource Manager テンプレートのパラメーター セクションに次のパラメーターが作成されます。
 
@@ -167,6 +167,6 @@ Azure Resource Manager の Automation スクリプトは、Resource Manager テ�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

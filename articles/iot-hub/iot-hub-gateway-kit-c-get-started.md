@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/21/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: bda9854b5ed05eaaf71f4cbd98b51e3634c66450
+ms.sourcegitcommit: ab8f4f7bbb823cc56783a0cb39bb22157c74087f
+ms.openlocfilehash: fb45ef6239827ea2860b707b2bb5016ea680ad17
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: bda9854b5ed05eaaf71f4cbd98b51e3634c66450
 ***
 
 ## <a name="lesson-1-configure-your-nuc"></a>レッスン 1: NUC を構成する
-![レッスン 1 のエンド ツー エンド ダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-lesson1.png)
+![レッスン&1; のエンド ツー エンド ダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-lesson1.png)
 
 このレッスンでは、キットの Intel NUC (Next Unit of Computing) を Azure IoT ゲートウェイとして設定し、Azure IoT Gateway SDK パッケージを NUC にインストールし、サンプル アプリを実行してゲートウェイの機能を検証します。
 
@@ -44,7 +44,7 @@ ms.openlocfilehash: bda9854b5ed05eaaf71f4cbd98b51e3634c66450
 「[IoT ゲートウェイとしての Intel NUC のセットアップ](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)」に移動する
 
 ## <a name="lesson-2-create-your-iot-hub"></a>レッスン 2: IoT Hub を作成する
-![レッスン 2 のエンド ツー エンド ダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-lesson2.png)
+![レッスン&2; のエンド ツー エンド ダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-lesson2.png)
 
 このレッスンでは、ツールとソフトウェアをホスト コンピューターにインストールします。 その後、無料の Azure アカウントを作成し、Azure IoT ハブをプロビジョニングし、IoT ハブに最初のデバイスを作成します。
 
@@ -83,7 +83,7 @@ IoT ハブからメッセージを読み取るには、ホスト コンピュー
 
 「[IoT ハブからのメッセージの読み取り](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md)」に移動する
 
-## <a name="lesson-4-save-messages-to-azure-table-storage"></a>レッスン 4: メッセージを Azure Table ストレージに保存する
+## <a name="lesson-4-save-messages-to-azure-table-storage"></a>レッスン 4: メッセージを Azure Table Storage に保存する
 受信メッセージを IoT ハブから取得して Azure Table Storage に書き込む Azure Function App を作成します。
 
 ![レッスン 4 のエンド ツー エンドのダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-lesson4.png)
@@ -106,9 +106,9 @@ Azure Table Storage に書き込まれるゲートウェイからクラウドへ
 レッスン中に問題が発生した場合は、「[トラブルシューティング](iot-hub-gateway-kit-c-troubleshooting.md)」で解決策を探してください。
 
 ## <a name="explore-more"></a>さらに詳しく
-詳細については、[Intel IoT Gateway Kit developer zone](https://software.intel.com/en-us/iot/hardware/gateways/dev-kit) (Intel IoT Gateway Kit デベロッパー ゾーン) を参照してください。
+詳細については、[Intel IoT Gateway Kit developer zone](http://software.intel.com/iot/microsoft-azure) (Intel IoT Gateway Kit デベロッパー ゾーン) を参照してください。
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 
