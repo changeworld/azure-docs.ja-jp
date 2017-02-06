@@ -1,21 +1,25 @@
 ---
-title: Android の証明書ベースの認証の使用 | Microsoft Docs
-description: Android デバイスでソリューションの証明書ベースの認証を構成する方法について説明します。
+title: "Android の証明書ベースの認証の使用 | Microsoft Docs"
+description: "Android デバイスでソリューションの証明書ベースの認証を構成する方法について説明します。"
 services: active-directory
 author: MarkusVi
 documentationcenter: na
 manager: femila
-
+ms.assetid: c6ad7640-8172-4541-9255-770f39ecce0e
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/10/2016
+ms.date: 01/10/2017
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: ce9474f2926a856673efbab5103a308d31001343
+ms.openlocfilehash: ed1c66f72b09a14a14c6ecd0bf39cd92f2bd22b8
+
 
 ---
-# <a name="get-started-with-certificate-based-authentication-on-android-public-preview"></a>Android の証明書ベースの認証の使用 - パブリック プレビュー
+# <a name="get-started-with-certificate-based-authentication-on-android"></a>Android の証明書ベースの認証の使用
 > [!div class="op_single_selector"]
 > * [iOS](active-directory-certificate-based-authentication-ios.md)
 > * [Android](active-directory-certificate-based-authentication-android.md)
@@ -46,7 +50,7 @@ CBA では、Exchange online アカウントを次に接続する場合、Azure 
 | アプリケーション | サポート |
 | --- | --- |
 | Word/Excel/PowerPoint |![○][1] |
-| OneNote |近日対応予定 |
+| OneNote |![○][1] |
 | OneDrive |![○][1] |
 | Outlook |![○][1] |
 | Yammer |![○][1] |
@@ -60,15 +64,20 @@ CBA では、Exchange online アカウントを次に接続する場合、Azure 
 Azure Active Directory でクライアント証明書を失効させるには、ADFS トークンに次の要求が必要です。  
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`  
-  (クライアント証明書のシリアル番号) 
+   (クライアント証明書のシリアル番号) 
 * `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`  
-  (クライアント証明書の発行者の文字列) 
+   (クライアント証明書の発行者の文字列) 
 
 Azure Active Directory は、ADFS トークン (またはその他の SAML トークン) で利用できる場合に、これらの要求を更新トークンに追加します。 更新トークンを検証する必要がある場合、この情報を使用して失効を確認します。 
 
-ベスト プラクティスとして、ユーザー証明書を取得する手順で ADFS エラー ページを更新することをお勧めします。 
-
+ベスト プラクティスとして、ユーザー証明書を取得する手順で ADFS エラー ページを更新することをお勧めします。  
 詳細については、「 [AD FS サインイン ページのカスタマイズ](https://technet.microsoft.com/library/dn280950.aspx)」を参照してください。  
+
+(先進認証が有効になった) 一部の Office アプリは、要求で *prompt=login* を Azure AD に送信します。 既定では、Azure AD は、ADFS への要求でこれを *wauth=usernamepassworduri* (ADFS に U/P 認証を実行するように要求) と *wfresh=0* (ADFS に SSO 状態を無視して、新しい認証を実行するように要求) に変換します。 これらのアプリに対して証明書ベースの認証を有効にするには、既定の Azure AD の動作を変更する必要があります。 フェデレーション ドメイン設定の '*PromptLoginBehavior*' を '*無効*' に設定するだけです。 このタスクを実行するには、[MSOLDomainFederationSettings](https://docs.microsoft.com/en-us/powershell/msonline/v1/set-msoldomainfederationsettings) コマンドレットを使用します。
+
+`Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
+
+
 
 ### <a name="exchange-activesync-clients-support"></a>Exchange ActiveSync クライアントのサポート
 Android 5.0 (Lollipop) 以降の特定の Exchange ActiveSync アプリケーションがサポートされています。 電子メール アプリケーションがこの機能をサポートするかどうかを確認するには、アプリケーション開発者にお問い合わせください。 
@@ -109,9 +118,9 @@ Android 5.0 (Lollipop) 以降の特定の Exchange ActiveSync アプリケーシ
 
 ### <a name="configuring-your-azure-ad-tenant-for-certificate-based-authentication"></a>証明書ベースの認証に使用する Azure AD テナントの構成
 1. Windows PowerShell を管理者特権で起動します。 
-2. Azure AD モジュールをインストールします。 バージョン [1.1.143.0](http://www.powershellgallery.com/packages/AzureADPreview/1.1.143.0) 以降をインストールする必要があります。  
+2. Azure AD モジュールをインストールします。 バージョン [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 以降をインストールする必要があります。  
    
-        Install-Module -Name AzureADPreview –RequiredVersion 1.1.143.0 
+        Install-Module -Name AzureAD –RequiredVersion 2.0.0.33 
 3. ターゲット テナントに接続します。 
    
         Connect-AzureAD 
@@ -137,7 +146,7 @@ Android 5.0 (Lollipop) 以降の特定の Exchange ActiveSync アプリケーシ
 ### <a name="removing-a-certificate-authority"></a>証明機関の削除
 1. 証明機関を取得します。 
    
-       $c=Get-AzureADTrustedCertificateAuthority 
+     $c=Get-AzureADTrustedCertificateAuthority 
 2. 証明機関の証明書を削除します。 
    
         Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2] 
@@ -145,7 +154,7 @@ Android 5.0 (Lollipop) 以降の特定の Exchange ActiveSync アプリケーシ
 ### <a name="modfiying-a-certificate-authority"></a>証明機関の変更
 1. 証明機関を取得します。 
    
-       $c=Get-AzureADTrustedCertificateAuthority 
+     $c=Get-AzureADTrustedCertificateAuthority 
 2. 証明機関のプロパティを変更します。 
    
         $c[0].AuthorityType=1 
@@ -192,11 +201,10 @@ Android 5.0 (Lollipop) 以降のアプリケーションで証明書認証をテ
         connect-msolservice -credential $msolcred 
 2. ユーザーの現在の StsRefreshTokensValidFrom 値を取得します。 
    
-       $user = Get-MsolUser -UserPrincipalName test@yourdomain.com` 
-       $user.StsRefreshTokensValidFrom 
+     $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`   $user.StsRefreshTokensValidFrom 
 3. 現在のタイムスタンプと等しいユーザーの新しい StsRefreshTokensValidFrom 値を構成します。 
    
-       Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
+     Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 
 設定する日付は、現在より後の日付にする必要があります。 日付を現在より後の日付にしないと、 **StsRefreshTokensValidFrom** プロパティは設定されません。 日付を現在より後の日付にすると、 **StsRefreshTokensValidFrom** は、現在の時刻に設定されます (Set-MsolUser コマンドで指定した日付ではありません)。 
 
@@ -204,6 +212,7 @@ Android 5.0 (Lollipop) 以降のアプリケーションで証明書認証をテ
 [1]: ./media/active-directory-certificate-based-authentication-android/ic195031.png
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Dec16_HO5-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
+ms.date: 11/30/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e5ed7edef886c9a3308f3f30f983124c46db3452
+ms.sourcegitcommit: b1dded643a2526b7df799eddaca071c95ea35442
+ms.openlocfilehash: fbc47fe42fabbe65233364d86252d2e722600975
 
 
 ---
@@ -111,7 +111,8 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
     b. **[識別子]** ボックスに、「`https://app.10000ft.com/saml/metadata`」と入力します。
 
-    > [AZURE.NOTE] カスタム ドメインがある場合は、 **[識別子]** の値が異なります。 サポートが必要な場合は、 [10,000ft Plans サポート チーム](mailto:support@10000ft.com)にお問い合わせください。  
+    > [!NOTE] 
+    > カスタム ドメインがある場合は、 **[識別子]** の値が異なります。 サポートが必要な場合は、 [10,000ft Plans サポート チーム](mailto:support@10000ft.com)にお問い合わせください。  
 
     c.  **[次へ]**
 
@@ -122,7 +123,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある **[次へ]** を参照してください。
+    b. **[次へ]**をクリックします。
 2. お使いのアプリケーション用に構成された SSO を取得するには、[10,000ft Plans サポート チーム](mailto:support@10000ft.com)に問い合わせます。その際、ダウンロードした証明書を添付し、発行元 URL、SAML SSO URL、サインアウト URL を含めて提示してください。
 3. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
@@ -159,17 +160,18 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_06.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]**をクリックします。
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_07.png) 
@@ -240,6 +242,6 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 
