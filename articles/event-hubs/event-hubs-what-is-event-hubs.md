@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.date: 11/30/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fcc3e2cb76a06607d0bfbbad810968b70d67e4f4
+ms.sourcegitcommit: 05ca343cfdfc602759eb3ea30a7186a0bb47bd74
+ms.openlocfilehash: eddc3e7c4914936a8a83a042dc0f7d528b91f059
 
 
 ---
@@ -38,14 +38,14 @@ Event Hubs の詳細については、次のトピックを参照してくださ
 * [Event Hubs の概要](event-hubs-overview.md)
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [イベント ハブの可用性とサポートに関する FAQ](event-hubs-availability-and-support-faq.md)
-* [Event Hubs の使用][Event Hubs の使用]
-* [Event Hubs を使用する完全なサンプル アプリケーション][Event Hubs を使用する完全なサンプル アプリケーション]
+* [Event Hubs の使用に関するチュートリアル][Event Hubs tutorial]
+* [Event Hubs を使用する完全なサンプル アプリケーション][sample application that uses Event Hubs]
 
-[Event Hubs の使用]: event-hubs-csharp-ephcs-getstarted.md
-[Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Event Hubs tutorial]: event-hubs-csharp-ephcs-getstarted.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 
