@@ -4,7 +4,7 @@ description: "このドキュメントでは、Azure Security Center で利用�
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
 ms.service: security-center
@@ -12,7 +12,7 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2016
+ms.date: 02/06/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -25,8 +25,8 @@ ms.openlocfilehash: bdd7d3d6e532efe7c3ed8225dd29a895725f2ff9
 
 > [!NOTE]
 > 高度な検出を有効にするには、Azure Security Center Standard にアップグレードしてください。 90 日間の無料試用版が提供されています。 アップグレードするには、 [[セキュリティ ポリシー]](security-center-policies.md)の [価格レベル] を選択してください。 詳細については、 [価格のページ](https://azure.microsoft.com/pricing/details/security-center/) を参照してください。
-> 
-> 
+>
+>
 
 ## <a name="what-type-of-alerts-are-available"></a>使用できる警告の種類
 Azure Security Center では、サイバー キル チェーンの各段階に応じた各種の警告が用意されています。 次の図は、これらの段階のいくつかに関連するさまざまな警告の例を部分的に示したものです。
@@ -65,8 +65,8 @@ Azure Security Center は動作分析を使用し、(プロセス作成イベン
 
 > [!NOTE]
 > Security Center の検出機能に関する詳細については、「 [Azure Security Center の検出機能](security-center-detection-capabilities.md)」を参照してください。
-> 
-> 
+>
+>
 
 ### <a name="crash-analysis"></a>クラッシュ分析
 クラッシュ ダンプ メモリ分析は、従来のセキュリティ ソリューションを回避することができる高度なマルウェアの検出に使用される方法です。 さまざまな形式のマルウェアは、ディスクへの書き込みを行わないことや、ディスクに書き込まれたソフトウェア コンポーネントを暗号化することで、ウイルス対策製品によって検出される可能性を減らすよう試みます。 このことが、従来のマルウェア対策手法を使ったマルウェア検出を困難にしています。 しかし、マルウェアが機能するためにはメモリに痕跡を残す必要があるので、メモリ分析を使用すればそのようなマルウェアを検出することができます。
@@ -88,7 +88,7 @@ Azure Security Center は動作分析を使用し、(プロセス作成イベン
 
 このタイプの警告の例を次に示します。
 
-![Shellcode alert](./media/security-center-alerts-type/security-center-alerts-type-fig2.png) 
+![Shellcode alert](./media/security-center-alerts-type/security-center-alerts-type-fig2.png)
 
 ### <a name="module-hijacking-discovered"></a>モジュールのハイジャックの検出
 Windows システムの共通の機能をソフトウェアから利用できるようにするために、Windows にはダイナミック リンク ライブラリ (DLL) が使用されています。 DLL ハイジャックは、マルウェアが DLL の読み込み順序を改変することによって行われます。このときメモリに悪質なペイロードが読み込まれ、任意のコードを実行できる状態となります。 この警告は、2 つの異なるパスから同様の名前のモジュールが読み込まれた (なおかつ読み込み元となったパスのいずれかが Windows システムの共通のバイナリ ファイルの格納場所である) ことをクラッシュ ダンプ分析が検出したことを意味します。
@@ -104,7 +104,7 @@ Windows システムの共通の機能をソフトウェアから利用できる
 
 このタイプの警告の例を次に示します。
 
-![Module hijacking alert](./media/security-center-alerts-type/security-center-alerts-type-fig3.png) 
+![Module hijacking alert](./media/security-center-alerts-type/security-center-alerts-type-fig3.png)
 
 ### <a name="masquerading-windows-module-detected"></a>Windows モジュールのなりすましの検出
 マルウェアには、Windows システムに共通するバイナリ名 (SVCHOST.EXE など) やモジュール名 (NTDLL.DLL など) が使用されている場合があります。悪質なソフトウェアを "紛れ込ませる" ことで、その正体をシステム管理者に見破られないようにするためです。 この警告は、Windows システムのモジュール名と同じ名前のモジュールがクラッシュ ダンプ ファイルに含まれているものの、それ以外の点は一般的な Windows モジュールの基準をそのモジュールは満たしていないことが、クラッシュ ダンプ分析によって検出されたことを意味します。 そのモジュールが悪質なものであるかどうかについては、ディスク上のなりすましモジュールのコピーを分析することによって、さらに詳しい情報を得ることができます。 実行される分析の例を次に示します。
@@ -123,7 +123,7 @@ Windows システムの共通の機能をソフトウェアから利用できる
 
 このタイプの警告の例を次に示します。
 
-![Masquerading Windows alert](./media/security-center-alerts-type/security-center-alerts-type-fig4.png) 
+![Masquerading Windows alert](./media/security-center-alerts-type/security-center-alerts-type-fig4.png)
 
 ### <a name="modified-system-binary-discovered"></a>システム バイナリの改変の検出
 マルウェアは、侵入したシステム上でこっそりデータにアクセスしたり人目に付かないよう常駐したりするために、主要なシステム バイナリを改変する場合があります。 この警告は、Windows OS の主要なバイナリがメモリ内またはディスク上で改変されたことがクラッシュ ダンプ分析によって検出されたことを意味します。
@@ -136,7 +136,7 @@ Windows システムの共通の機能をソフトウェアから利用できる
 
 このタイプの警告の例を次に示します。
 
-![System binary alert](./media/security-center-alerts-type/security-center-alerts-type-fig5.png) 
+![System binary alert](./media/security-center-alerts-type/security-center-alerts-type-fig5.png)
 
 ### <a name="suspicious-process-executed"></a>疑わしいプロセスの実行
 Security Center は、ターゲット仮想マシンで実行されている疑わしいプロセスを識別し、警告をトリガーします。 検出は、特定の名前を探して行われるのではなく、パラメーターによって行われます。このため、攻撃者が実行できるものに名前を変更したとしても、Security Center は依然として疑わしいプロセスを検出できます。
@@ -158,7 +158,7 @@ Security Center のネットワーク脅威検出は、Azure IPFIX (Internet Pro
 ### <a name="suspicious-outgoing-traffic-detected"></a>疑わしい送信トラフィックの検出
 ネットワーク デバイスは、他の種類のシステムとほぼ同じように検出、プロファイリングされることがあります。 通常、攻撃者は初めにポート スキャンまたはポート スイープを行います。 次の例では、VM からの疑わしい SSH トラフィックが存在しており、外部リソースに対する SSH ブルート フォース攻撃またはポート スイープ攻撃が行われている可能性があります。
 
-![Suspicious outgoing traffic alert](./media/security-center-alerts-type/security-center-alerts-type-fig8.png) 
+![Suspicious outgoing traffic alert](./media/security-center-alerts-type/security-center-alerts-type-fig8.png)
 
 この警告では、攻撃の開始に使用されたリソース、セキュリティが侵害されたコンピューター、検出の日時、使用されたプロトコルとポートを特定できる情報が表示されます。 このブレードでは、問題を軽減するために使用できる修復手順の一覧も表示されます。
 
@@ -169,7 +169,10 @@ Azure Security Center は、悪意のある IP アドレス (多くの場合、�
 
 この警告では、この攻撃の開始に使用されたリソース、攻撃されたリソース、被害を受けた IP、攻撃者の IP、検出の日時を特定できる情報が表示されます。
 
-[AZURE.NOTE] ライブ IP アドレスは、プライバシー保護の目的でこのスクリーンショットからは削除しています。
+> [!NOTE]
+> ライブ IP アドレスは、プライバシー保護の目的でこのスクリーンショットからは削除しています。
+>
+>
 
 ### <a name="possible-outgoing-denial-of-service-attack-detected"></a>送信サービス拒否攻撃の可能性の検出
 ある仮想マシンによって送信された異常なネットワーク トラフィックが原因で、Security Center が潜在的なサービス拒否型の攻撃をトリガーする場合があります。
@@ -184,8 +187,8 @@ Security Center リソース分析は、 [Azure SQL Db 脅威の検出](../sql-d
 ### <a name="potential-sql-injection"></a>SQL インジェクションの可能性
 SQL インジェクションとは、後で SQL Server のインスタンスに渡して解析と実行の対象とする文字列に、悪意のあるコードが挿入される攻撃です。 SQL ステートメントを構成するすべてのプロシージャにおいて、挿入に対する脆弱性を確認する必要があります。SQL Server は、受け取った有効な構文のクエリをすべて実行してしまうからです。 SQL 脅威の検出では、機械学習、動作分析、異常検出を使用して、Azure SQL データベースで発生しているおそれのある疑わしいイベントを特定します。 次に例を示します。
 
-* 以前の従業員によるデータベース アクセスの試行 
-* SQL インジェクション攻撃 
+* 以前の従業員によるデータベース アクセスの試行
+* SQL インジェクション攻撃
 * 在宅中のユーザーからの運用データベースへの不自然なアクセス
 
 ![Potential SQL Injection alert](./media/security-center-alerts-type/security-center-alerts-type-fig11.png)
@@ -210,7 +213,6 @@ SQL インジェクションとは、後で SQL Server のインスタンスに�
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
-
 
 
 

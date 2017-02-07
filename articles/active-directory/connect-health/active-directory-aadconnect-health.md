@@ -12,8 +12,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/18/2016
-ms.author: vakarand
+ms.date: 02/06/2017
+ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: c9ebe21acbe06aa25bcadb3b500c34cf89154388
 ms.openlocfilehash: 9abdfa7349bee74b89a23663969904110c730395
