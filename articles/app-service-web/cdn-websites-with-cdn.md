@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9c52dcd46b8a293d7540bd1d00cfaeda3f8202a0
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 0b1f13f816c7836557cd6f646f2d9b38f7bc5b14
 
 
 ---
@@ -44,10 +44,10 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 > [!NOTE]
 > このチュートリアルを完了するには、Azure アカウントが必要です。
 > 
-> * 無料で [Azure アカウントを開く](/pricing/free-trial/)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
-> * [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/) こともできます - Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
+> * 無料で [Azure アカウントを開く](https://azure.microsoft.com/pricing/free-trial/)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
+> * [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) こともできます - Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 > 
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -69,7 +69,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 5. **[作成]** をクリックして、Web アプリを作成します。
    
     ![](media/cdn-websites-with-cdn/5-create-website.png)
-6. ASPに移動し、新しい ASP.NET Web アプリケーションを作成します。NET アプリケーションが作成されたら、[Azure App Service アクティビティ] ウィンドウで **[発行] `<app name>` をこの Web アプリに発行する]**に移動し、新しい ASP.NET Web アプリケーションを作成します。 **[発行]** をクリックしてプロセスを完了します。
+6. ASPに移動し、新しい ASP.NET Web アプリケーションを作成します。NET アプリケーションが作成されたら、Azure App Service アクティビティ ウィンドウで **発行 `<app name>` をこの Web アプリに発行する**に移動し、新しい ASP.NET Web アプリケーションを作成します。 **[発行]** をクリックしてプロセスを完了します。
    
     ![](media/cdn-websites-with-cdn/6-publish-website.png)
    
@@ -101,7 +101,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 > 
 > 
 
-1. 次に、CDN エンドポイントのアドレスに移動します。 エンドポイントの準備が完了している場合、Web アプリが表示されます。 **HTTP 404** エラーが表示された場合は、CDN エンドポイントの準備ができていません。 CDN の構成がすべてのエッジ ノードに反映されるまで、最大で 1 時間待機することが必要になる場合があります。 
+1. 次に、CDN エンドポイントのアドレスに移動します。 エンドポイントの準備が完了している場合、Web アプリが表示されます。 **HTTP 404** エラーが表示された場合は、CDN エンドポイントの準備ができていません。 CDN の構成がすべてのエッジ ノードに反映されるまで、最大で&1; 時間待機することが必要になる場合があります。 
    
     ![](media/cdn-websites-with-cdn/11-access-success.png)
 2. 次に、ASP.NET プロジェクトで **~/Content/bootstrap.css** ファイルにアクセスしてみます。 ブラウザーのウィンドウで **http://*&lt;CDN 名>*.azureedge.net/Content/bootstrap.css** に移動します。 この設定では、次の URL を使用します。
@@ -353,7 +353,7 @@ Azure Web アプリでこの Razor コードが実行されると、次のよう
 
     <script src="/bundles/jquery?v=FVs3ACwOLIVInrAl5sdzR2jrCDmVOWFbZMY6g6Q0ulE1"></script>
 
-ただし、`F5` キーを押してこのコードを Visual Studio 内で実行した場合は、バンドル内の各スクリプト ファイルが個別にレンダリングされます (上記のケースでは、バンドルに含まれているスクリプト ファイルは 1 つだけです)。
+ただし、`F5` キーを押してこのコードを Visual Studio 内で実行した場合は、バンドル内の各スクリプト ファイルが個別にレンダリングされます (上記のケースでは、バンドルに含まれているスクリプト ファイルは&1; つだけです)。
 
     <script src="/Scripts/jquery-1.10.2.js"></script>
 
@@ -400,7 +400,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
         new ScriptBundle("~/bundles/jquery", string.Format(cdnUrl, "http://<yourCDNName>.azureedge.net/bundles/jquery?<W.X.Y.Z>"))
 
-    このコンストラクターは、ASP.NET のバンドルおよび縮小機能に対して、ローカルにデバッグされたときに個々のスクリプト ファイルをレンダリングする一方で、指定された CDN アドレスを使用して対象のスクリプトにアクセスすることを指定しています。 ここで、この巧妙に作成された CDN URL の 2 つの重要な特性に注意してください。
+    このコンストラクターは、ASP.NET のバンドルおよび縮小機能に対して、ローカルにデバッグされたときに個々のスクリプト ファイルをレンダリングする一方で、指定された CDN アドレスを使用して対象のスクリプトにアクセスすることを指定しています。 ここで、この巧妙に作成された CDN URL の&2; つの重要な特性に注意してください。
 
     - この CDN URL のオリジンは、実際には Web アプリケーション内のスクリプト バンドルの仮想ディレクトリである `http://<yourSiteName>.azurewebsites.net/bundles/jquery?<W.X.Y.Z>`です。
     - CDN コンストラクターを使用しているため、バンドルのための CDN スクリプト タグには、レンダリングされた URL 内の自動生成されたバージョン文字列が含まれません。 Azure CDN でキャッシュ ミスを強制的に発生させるには、スクリプト バンドルを変更するたびに一意のバージョン文字列を手動で生成する必要があります。 また、この一意のバージョン文字列は、バンドルがデプロイされた後の Azure CDN でのキャッシュ ヒットを最大化するために、デプロイの有効期間を通じて一定に保たれる必要があります。
@@ -438,7 +438,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 [Bundle](http://msdn.microsoft.com/library/system.web.optimization.bundle.aspx) クラスには、CDN 障害に対するフォールバック メカニズムを構成するための [CdnFallbackExpression](http://msdn.microsoft.com/library/system.web.optimization.bundle.cdnfallbackexpression.aspx) プロパティがあります。 このプロパティを使用するには、次の手順に従います。
 
-1. ASP.NET プロジェクトで、それぞれの [Bundle コンストラクター](http://msdn.microsoft.com/library/jj646464.aspx)に CDN URL を追加した *App_Start\BundleConfig.cs* を開き、示されたているように 4 か所に `CdnFallbackExpression` コードを追加して、フォールバック メカニズムを既定のバンドルに追加します。  
+1. ASP.NET プロジェクトで、それぞれの [Bundle コンストラクター](http://msdn.microsoft.com/library/jj646464.aspx)に CDN URL を追加した *App_Start\BundleConfig.cs* を開き、示されたているように&4; か所に `CdnFallbackExpression` コードを追加して、フォールバック メカニズムを既定のバンドルに追加します。  
    
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -548,6 +548,6 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

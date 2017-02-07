@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 10/17/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 46acf298a489aae34866c90126f3df00fd10c6e3
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: bd1c31c669bacf9e44b13d5a676dffc8a9176046
 
 
 ---
@@ -32,6 +32,10 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 この記事の手順を完了するには、次のものが必要です。
 
 * Azure HDInsight (HDInsight の Hadoop) クラスター (Windows または Linux ベース)
+
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * Visual Studio 2012/2013/2015
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
@@ -136,6 +140,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

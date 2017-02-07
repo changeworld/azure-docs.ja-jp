@@ -4,7 +4,7 @@ description: "OMS サービスに送信されているデータの量は、Log A
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/14/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 92083407c2d2902227842e4320e9ad2ae6a3fa0b
-ms.openlocfilehash: 9ee0a8a01a335cc7a97375e65e1bbc77b1aa76e5
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 668cde23cb717fcad52fd7823561d10735e6df1b
 
 
 ---
@@ -66,6 +66,6 @@ Log Analytics は、データを収集して OMS サービスに定期的に送�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

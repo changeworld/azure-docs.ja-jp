@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/18/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 003cd98347c2a461f2a3ce78ae7f6a0e6fb2e4a2
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: ce3a622db8667df8b3f1d1391c2aa0d7e1e012a5
 
 
 ---
@@ -36,7 +36,7 @@ SQL Database では次のことを行います。
 > 
 > 
 
-Logic Apps の詳細については、「[Logic Apps とは](../app-service-logic/app-service-logic-what-are-logic-apps.md)」と[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページを参照してください。
+Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic-apps-what-are-logic-apps.md)」と[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関するページを参照してください。
 
 ## <a name="connect-to-azure-sql-database"></a>Azure SQL Database に接続する
 ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。 接続により、ロジック アプリと別のサービスとの接続が実現します。 たとえば、SQL Database に接続するには、まず SQL Database "*接続*" を作成します。 接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。 そのため、SQL Database の場合は、SQL Database の資格情報を入力して接続を作成します。 
@@ -47,10 +47,10 @@ Logic Apps の詳細については、「[Logic Apps とは](../app-service-logi
 > 
 
 ## <a name="use-a-trigger"></a>トリガーを使用する
-このコネクタにはトリガーがありません。 定期実行のトリガー、HTTP Webhook トリガー、他のコネクタで使用可能なトリガーなど、他のトリガーを使用してロジック アプリを起動します。 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事に例が記載されています。
+このコネクタにはトリガーがありません。 定期実行のトリガー、HTTP Webhook トリガー、他のコネクタで使用可能なトリガーなど、他のトリガーを使用してロジック アプリを起動します。 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事に例が記載されています。
 
 ## <a name="use-an-action"></a>アクションを使用する
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。
 
 1. プラス記号を選択します。 **[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
    
@@ -66,7 +66,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../app-service-logi
     接続情報の入力を求められたら、詳細を入力して接続を作成します。 これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-sqlazure.md#create-the-connection)」を参照してください。 
    
    > [!NOTE]
-   > この例では、テーブルから 1 行が返されます。 この行のデータを確認するには、テーブルのフィールドを使用してファイルを作成する別のアクションを追加してください。 たとえば、FirstName フィールドと LastName フィールドを使用してクラウド ストレージ アカウントに新しいファイルを作成する OneDrive アクションを追加します。 
+   > この例では、テーブルから&1; 行が返されます。 この行のデータを確認するには、テーブルのフィールドを使用してファイルを作成する別のアクションを追加してください。 たとえば、FirstName フィールドと LastName フィールドを使用してクラウド ストレージ アカウントに新しいファイルを作成する OneDrive アクションを追加します。 
    > 
    > 
 5. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。 ロジック アプリが保存され、場合によっては、自動的に有効になります。
@@ -78,7 +78,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../app-service-logi
 | [操作] | 説明 |
 | --- | --- |
 | [ExecuteProcedure](connectors-create-api-sqlazure.md#execute-stored-procedure) |SQL でストアド プロシージャを実行します。 |
-| [GetRow](connectors-create-api-sqlazure.md#get-row) |SQL テーブルから 1 行を取得します。 |
+| [GetRow](connectors-create-api-sqlazure.md#get-row) |SQL テーブルから&1; 行を取得します。 |
 | [GetRows](connectors-create-api-sqlazure.md#get-rows) |SQL テーブルから複数の行を取得します。 |
 | [InsertRow](connectors-create-api-sqlazure.md#insert-row) |SQL テーブルに新しい行を挿入します。 |
 | [DeleteRow](connectors-create-api-sqlazure.md#delete-row) |SQL テーブルから行を削除します。 |
@@ -94,7 +94,7 @@ SQL でストアド プロシージャを実行します。
 | プロパティ名 | Displayname Settings | 説明 |
 | --- | --- | --- |
 | procedure * |プロシージャ名 |実行するストアド プロシージャの名前 |
-| parameters * |入力パラメーター |パラメーターは動的で、選択したストアド プロシージャに基づいています。 <br/><br/> たとえば、Adventure Works サンプル データベースを使用している場合は、*ufnGetCustomerInformation* ストアド プロシージャを選択します。 **Customer ID** 入力パラメーターが表示されます。 「6」または他の顧客 ID の 1 つを入力します。 |
+| parameters * |入力パラメーター |パラメーターは動的で、選択したストアド プロシージャに基づいています。 <br/><br/> たとえば、Adventure Works サンプル データベースを使用している場合は、*ufnGetCustomerInformation* ストアド プロシージャを選択します。 **Customer ID** 入力パラメーターが表示されます。 「6」または他の顧客 ID の&1; つを入力します。 |
 
 アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
@@ -108,7 +108,7 @@ ProcedureResult: ストアド プロシージャの実行結果を示します�
 | ResultSets |オブジェクト |結果セット |
 
 #### <a name="get-row"></a>行を取得する
-SQL テーブルから 1 行を取得します。  
+SQL テーブルから&1; 行を取得します。  
 
 | プロパティ名 | Displayname Settings | Description |
 | --- | --- | --- |
@@ -219,11 +219,11 @@ SQL テーブルの既存の行を更新します。
 | default |操作に失敗しました。 |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
+[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

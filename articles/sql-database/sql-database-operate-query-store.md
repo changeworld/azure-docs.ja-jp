@@ -4,7 +4,7 @@ description: "Azure SQL Database でクエリ ストアがどのように動作�
 keywords: 
 services: sql-database
 documentationcenter: 
-author: CarlRabeler
+author: bonova
 manager: jhubbard
 editor: 
 ms.assetid: 0cccf6bd-1327-44f7-a6f9-8eff0c210463
@@ -15,7 +15,7 @@ ms.topic: article
 ms.tgt_pltfrm: sqldb-performance
 ms.workload: data-management
 ms.date: 11/08/2016
-ms.author: carlrab
+ms.author: bonova
 translationtype: Human Translation
 ms.sourcegitcommit: 46d33a7b2dbaeb447452d8c94e897e59ec915dcc
 ms.openlocfilehash: 104a2d91ee9ca657fcc431d947d6a4be5d57a056

@@ -3,7 +3,7 @@ title: "セキュリティ アラートを構成する方法 | Microsoft Docs"
 description: "Azure Privileged Identity Management 拡張機能のセキュリティ通知の構成方法を説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 4e0c911a-36c6-42a0-8f79-a01c03d2d04f
@@ -12,8 +12,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/02/2016
-ms.author: kgremban
+ms.date: 02/03/2017
+ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: dd8987a05c71643b49e0ac9e3c8ae43d47743225
@@ -59,7 +59,6 @@ ms.openlocfilehash: dd8987a05c71643b49e0ac9e3c8ae43d47743225
 
 * **日数**: ユーザーがロールをアクティブ化しないままでいられる日数を 0 ～ 100 で指定します。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

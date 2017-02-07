@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2e988c717eabff71a47556eaf37aac10b081fc1e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4ca129307925c0a4fa8207e2c92ae7b9290e1446
 
 
 ---
@@ -218,11 +218,11 @@ Blackboard Learn アプリケーションは、ジャスト イン タイム ユ
 2. アプリケーションの一覧で **[Blackboard Learn]**を選択します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_50.png) 
-3. 上部のメニューで **[ユーザー]** をクリックします。
+3. 上部のメニューで **[ユーザー]**をクリックします。
    
     ![ユーザーの割り当て][203]
 4. ユーザーの一覧で **[Britta Simon]**を選択します。
-5. 下部にあるツール バーで **[割り当て]** をクリックします。
+5. 下部にあるツール バーで **[割り当て]**をクリックします。
    
     ![ユーザーの割り当て][205]
 
@@ -255,6 +255,6 @@ Blackboard Learn アプリケーションのサポート。アクセス パネ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

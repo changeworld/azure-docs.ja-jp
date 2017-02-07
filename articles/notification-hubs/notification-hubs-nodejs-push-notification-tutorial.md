@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 40b1c0870bca02fd6d948dfc1f67ba5c76c698aa
+ms.sourcegitcommit: 88e8ead2b22bf53510c9c6008e34647272326690
+ms.openlocfilehash: 32d93f1ff6cf4ae78051b7208e38b6915509210f
 
 
 ---
@@ -45,7 +45,7 @@ ms.openlocfilehash: 40b1c0870bca02fd6d948dfc1f67ba5c76c698aa
 Azure Notification Hubs によって、モバイル デバイスにプッシュ通知を送信するための、使いやすくスケーラブルなマルチプラットフォーム インフラストラクチャが提供されます。 サービス インフラストラクチャの詳細については、「 [Azure Notification Hubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx) 」のページを参照してください。
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
-このチュートリアルの最初の手順では、新しい空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js Web サイトの構築と Azure へのデプロイ][nodejswebsite]」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ (Windows PowerShell の使用)][Node.js クラウド サービス]」または「[WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ]」を参照してください。
+このチュートリアルの最初の手順では、新しい空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][nodejswebsite]、[Node.js クラウド サービス][Node.js Cloud Service] (Windows PowerShell の使用)、または [WebMatrix を使用した Web サイト]に関する各ページをご覧ください。
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>アプリケーションを構成して Notification Hubs を使用する
 Azure Notification Hubs を使用するには、Node.js [azure パッケージ](https://www.npmjs.com/package/azure)をダウンロードして使用する必要があります。このパッケージには、プッシュ通知 REST サービスと通信するためのヘルパー ライブラリの組み込みのセットが含まれています。
@@ -80,7 +80,7 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 ![Azure ポータル - Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> また、[Azure PowerShell](../powershell-install-configure.md) に用意されている **Get-AzureSbNamespace** コマンドレット、または [Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli-install.md) で **azure sb namespace show** コマンドを使用して、接続文字列を取得することもできます。
+> また、[Azure PowerShell](/powershell/azureps-cmdlets-docs) に用意されている **Get-AzureSbNamespace** コマンドレット、または [Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli-install.md) で **azure sb namespace show** コマンドを使用して、接続文字列を取得することもできます。
 > 
 > 
 
@@ -183,20 +183,20 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 
 [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
 [Next Steps]: #nextsteps
-[Service Bus トピックとサブスクリプションとは]: #what-are-service-bus-topics
-[サービス名前空間の作成]: #create-a-service-namespace
-[名前空間の既定の管理資格情報の取得]: #obtain-default-credentials
-[Node.js アプリケーションの作成]: #Create_a_Nodejs_Application
-[Service Bus を使用するようにアプリケーションを構成する]: #Configure_Your_Application_to_Use_Service_Bus
-[トピックの作成方法]: #How_to_Create_a_Topic
-[サブスクリプションの作成方法]: #How_to_Create_Subscriptions
-[メッセージをトピックに送信する方法]: #How_to_Send_Messages_to_a_Topic
-[サブスクリプションからメッセージを受信する方法]: #How_to_Receive_Messages_from_a_Subscription
-[アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法]: #How_to_Handle_Application_Crashes_and_Unreadable_Messages
-[トピックとサブスクリプションを削除する方法]: #How_to_Delete_Topics_and_Subscriptions
+[What are Service Bus Topics and Subscriptions?]: #what-are-service-bus-topics
+[Create a Service Namespace]: #create-a-service-namespace
+[Obtain the Default Management Credentials for the Namespace]: #obtain-default-credentials
+[Create a Node.js Application]: #Create_a_Nodejs_Application
+[Configure Your Application to Use Service Bus]: #Configure_Your_Application_to_Use_Service_Bus
+[How to: Create a Topic]: #How_to_Create_a_Topic
+[How to: Create Subscriptions]: #How_to_Create_Subscriptions
+[How to: Send Messages to a Topic]: #How_to_Send_Messages_to_a_Topic
+[How to: Receive Messages from a Subscription]: #How_to_Receive_Messages_from_a_Subscription
+[How to: Handle Application Crashes and Unreadable Messages]: #How_to_Handle_Application_Crashes_and_Unreadable_Messages
+[How to: Delete Topics and Subscriptions]: #How_to_Delete_Topics_and_Subscriptions
 [1]: #Next_Steps
-[トピックの概念]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-topics-01.png
-[Azure クラシック ポータル]: http://manage.windowsazure.com
+[Topic Concepts]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-topics-01.png
+[Azure Classic Portal]: http://manage.windowsazure.com
 [image]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-03.png
 [2]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-04.png
 [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
@@ -205,16 +205,16 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
 [SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
-[WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ]: /develop/nodejs/tutorials/web-site-with-webmatrix/
-[Node.js クラウド サービス]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[以前の管理ポータル]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
+[WebMatrix を使用した Web サイト]: /develop/nodejs/tutorials/web-site-with-webmatrix/
+[Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+[Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
 [nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
-[ストレージを使用する Node.js クラウド サービス]: /develop/nodejs/tutorials/web-app-with-storage/
-[ストレージを使用する Node.js Web アプリケーション]: /develop/nodejs/tutorials/web-site-with-storage/
+[Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
+[Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 [Azure ポータル]: https://portal.azure.com
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

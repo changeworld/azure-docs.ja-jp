@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: d0cae49b3d45be153daf53cd3ff352e25c447ed1
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 7618f94574fd02d29a55ccbe8723a0228ad64f7f
 
 
 ---
@@ -49,11 +49,11 @@ ms.openlocfilehash: d0cae49b3d45be153daf53cd3ff352e25c447ed1
   この記事は Azure サービスの索引となっており、障害復旧ガイドとデザイン ガイドの両方へのリンクがあります。
 * [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](../sql-database/sql-database-business-continuity.md)。
   この記事では、可用性に関する Azure SQL Database の手法について説明しています。 バックアップと復元の戦略を中心に説明します。 クラウド サービスで Azure SQL Database を使用する場合は、この記事および関連するリソースを確認してください。
-* [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)
   この記事では、サービスとしてのインフラストラクチャ (IaaS) を使用してデータベース サービスをホストする場合に利用できる可用性オプションについて説明しています。 説明する内容は、AlwaysOn 可用性グループ、データベース ミラーリング、ログ配布、およびバックアップ/復元です。 いくつかのチュートリアルで、これらの手法の使用方法を示しています。
 * [Azure Cloud Services で大規模なサービスを設計するためのベスト プラクティス](https://azure.microsoft.com//blog/best-practices-for-designing-large-scale-services-on-windows-azure/)に関する記事。
   この記事では、非常にスケーラブルなクラウド アーキテクチャの開発について重点的に説明しています。 スケーラビリティ向上のために使用する手法の多くは、可用性の向上ももたらします。 また、負荷の増加に応じてアプリケーションを拡張できない場合、スケーラビリティは可用性の問題になります。
-* [Azure Virtual Machines おける SQL Server のバックアップと復元](../virtual-machines/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Virtual Machines おける SQL Server のバックアップと復元](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md)
   この記事は、Azure Virtual Machines で実行されている Microsoft SQL Server のバックアップと復元の方法に関する技術的なガイダンスです。
 * [Failsafe: Guidance for resilient cloud architectures (フェールセーフ: 回復力のあるクラウド アーキテクチャに関するガイダンス)](https://channel9.msdn.com/Series/FailSafe)。
   この記事では、回復力のあるクラウド アーキテクチャに関するガイダンスと、Microsoft テクノロジを基盤とするこのようなアーキテクチャの実装に関するガイダンスを示し、特定のシナリオに沿ってこのようなアーキテクチャを実装する手順を説明しています。
@@ -66,6 +66,6 @@ ms.openlocfilehash: d0cae49b3d45be153daf53cd3ff352e25c447ed1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

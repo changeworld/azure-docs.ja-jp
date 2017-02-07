@@ -16,15 +16,15 @@ ms.workload: integration
 ms.date: 07/22/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f08180c196a1f573529c9fed52c7ae5c3869da6d
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: 2634d0101c1cd4535922e8844f0beb6b523e2dea
 
 
 ---
 # <a name="get-started-with-the-ftp-connector"></a>FTP コネクタの使用
 FTP コネクタを使用して、FTP サーバー上のファイルを監視、管理、作成します。 
 
-[任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)から始めることができます。
+[任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)から始めることができます。
 
 ## <a name="connect-to-ftp"></a>FTP に接続する
 ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの*接続*を作成する必要があります。 [接続](connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。  
@@ -35,7 +35,7 @@ FTP コネクタを使用して、FTP サーバー上のファイルを監視、
 > 
 
 ## <a name="use-a-ftp-trigger"></a>FTP トリガーを使用する
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。  
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。  
 
 > [!IMPORTANT]
 > FTP コネクタを使用するには、インターネットからアクセスできる、パッシブ モードで動作するように構成されている FTP サーバーが必要です。 また、FTP コネクタは、**暗黙的 FTPS (FTP over SSL)** に対応していません。 FTP コネクタは、明示的 FTPS (FTP over SSL) のみをサポートしています。  
@@ -56,12 +56,12 @@ FTP コネクタを使用して、FTP サーバー上のファイルを監視、
 これで、特定の FTP フォルダーでファイルが変更または作成されたときにワークフローの他のトリガーおよびアクションの実行を開始するトリガーがロジック アプリに構成されました。 
 
 > [!NOTE]
-> ロジック アプリを機能させるためには、少なくとも 1 つのトリガーとアクションを含まなければなりません。 アクションを追加するには、次のセクションの手順に従います。  
+> ロジック アプリを機能させるためには、少なくとも&1; つのトリガーとアクションを含まなければなりません。 アクションを追加するには、次のセクションの手順に従います。  
 > 
 > 
 
 ## <a name="use-a-ftp-action"></a>FTP アクションを使用する
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。  
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。  
 
 トリガーを追加した後は、次の手順に従って、トリガーによって検出された新しいファイルまたは変更されたファイルの内容を取得するアクションを追加します。    
 
@@ -356,7 +356,7 @@ BlobMetadata
 | FileLocator |string |
 
 ## <a name="http-responses"></a>HTTP 応答
-上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。 
+上記のアクションとトリガーは、次の HTTP 状態コードを&1; つ以上返す場合があります。 
 
 | 名前 | 説明 |
 | --- | --- |
@@ -370,11 +370,11 @@ BlobMetadata
 | default |操作に失敗しました。 |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

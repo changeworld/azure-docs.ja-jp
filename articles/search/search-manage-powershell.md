@@ -16,8 +16,8 @@ ms.tgt_pltfrm: powershell
 ms.date: 08/15/2016
 ms.author: seasa
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b611bf4d5fadd6755b97dcaee441e13ae7e62481
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 618d067bf3b4ab279c7d4fcc72454fe4e69d0364
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: b611bf4d5fadd6755b97dcaee441e13ae7e62481
 以下のコマンドにより、 [Azure Search 管理 REST API](http://msdn.microsoft.com/library/dn832684.aspx)で使用できる管理オプションを並列実行します。
 
 ## <a name="prerequisites"></a>前提条件
-* Azure PowerShell 1.0 以降をインストールする必要があります。 手順については、 [Azure PowerShell のインストールおよび構成に関するページ](../powershell-install-configure.md)を参照してください。
+* Azure PowerShell 1.0 以降をインストールする必要があります。 手順については、 [Azure PowerShell のインストールおよび構成に関するページ](/powershell/azureps-cmdlets-docs)を参照してください。
 * 以下に示すように、PowerShell で Azure サブスクリプションにログインする必要があります。
 
 まず、次のコマンドで Azure にログインする必要があります。
@@ -42,7 +42,7 @@ ms.openlocfilehash: b611bf4d5fadd6755b97dcaee441e13ae7e62481
 
 Microsoft Azure のログイン ダイアログで、Azure アカウントの電子メール アドレスとパスワードを指定します。
 
-または、 [サービス プリンシパルを使用して非対話的にログイン](../resource-group-authenticate-service-principal.md)できます。
+または、 [サービス プリンシパルを使用して非対話的にログイン](../azure-resource-manager/resource-group-authenticate-service-principal.md)できます。
 
 Azure サブスクリプションが複数ある場合は、使用する Azure サブスクリプションを設定する必要があります。 現在のサブスクリプションを一覧表示するには、次のコマンドを実行します。
 
@@ -142,6 +142,6 @@ Azure サブスクリプションが複数ある場合は、使用する Azure �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

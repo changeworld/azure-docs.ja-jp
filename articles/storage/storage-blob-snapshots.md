@@ -3,8 +3,8 @@ title: "BLOB の読み取り専用スナップショットの作成 | Microsoft 
 description: "BLOB のスナップショットを作成して、特定の時点での BLOB データをバックアップする方法について説明します。 スナップショットの課金方法と、スナップショットを使用して容量使用料金を最小限に抑える方法を理解します。"
 services: storage
 documentationcenter: 
-author: tamram
-manager: carmonm
+author: mmacy
+manager: timlt
 editor: tysonn
 ms.assetid: 3710705d-e127-4b01-8d0f-29853fb06d0d
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
-ms.author: tamram
+ms.date: 12/07/2016
+ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 664f03a8492178daf342b659595f035b7cccec5a
+ms.sourcegitcommit: cedc76bc46137a5d53fd76c0fdb6ff2db79566a4
+ms.openlocfilehash: 05e999d62d3ffdde708c9898807e79fabcff992e
 
 
 ---
@@ -24,12 +24,12 @@ ms.openlocfilehash: 664f03a8492178daf342b659595f035b7cccec5a
 ## <a name="overview"></a>Overview
 スナップショットは、ある時点で作成された読み取り専用の BLOB です。 スナップショットは BLOB をバックアップするのに便利です。 作成したスナップショットの読み取り、コピー、削除はできますが、変更はできません。
 
-スナップショットが作成された日時を示す **DateTime** 値が BLOB の URI に追加される点を除き、BLOB のスナップショットはベース BLOB とまったく同じです。 たとえば、ページ BLOB の URI が `http://storagesample.core.blob.windows.net/mydrives/myvhd` の場合、スナップショットの URI は `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z` のようになります。 
+スナップショットが作成された日時を示す **DateTime** 値が BLOB の URI に追加される点を除き、BLOB のスナップショットはベース BLOB とまったく同じです。 たとえば、ページ BLOB の URI が `http://storagesample.core.blob.windows.net/mydrives/myvhd` の場合、スナップショットの URI は `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z` のようになります。
 
 > [!NOTE]
 > すべてのスナップショットがベース BLOB の URI を共有します。 ベース BLOB とスナップショットの唯一の違いは、追加される **DateTime** 値です。
-> 
-> 
+>
+>
 
 BLOB に対するスナップショットの数に制限はありません。 スナップショットは、明示的に削除されるまで保持されます。 スナップショットは、ベース BLOB よりも長く保持することはできません。 ベース BLOB に関連付けられたスナップショットを列挙して、現在のスナップショットを追跡できます。
 
@@ -98,7 +98,6 @@ Premium Storage でスナップショットを使うには次のルールに従�
 
 * Premium Storage アカウントにおけるページ BLOB あたりのスナップショットの最大数は 100 です。 上限を超えると、スナップショット BLOB の操作でエラー コード 409 (**SnapshotCountExceeded**) が返されます。
 * Premium Storage アカウントのページ BLOB のスナップショットは 10 分ごとに作成できます。 この頻度を超えると、スナップショット BLOB の操作でエラー コード 409 (**SnaphotOperationRateExceeded**) が返されます。
-* Get Blob を呼び出して、Premium Storage アカウントのページ BLOB のスナップショットを読み取ることはできません。 Premium Storage アカウントのスナップショットで Get Blob を呼び出すと、エラー コード 400 (**InvalidOperation**) が返されます。 ただし、Premium Storage アカウントのスナップショットに対して、Get Blob Properties と Get Blob Metadata は呼び出すことができます。
 * スナップショットを読み込むには、Copy Blob を操作してアカウントの別のページ BLOB にスナップショットをコピーします。 すでにスナップショットがある BLOB にはスナップショットをコピーできません。 コピー先の BLOB にスナップショットがある場合、Copy Blob 操作でエラー コード 409 (**SnapshotsPresent**) が返されます。
 
 ## <a name="return-the-absolute-uri-to-a-snapshot"></a>スナップショットに絶対 URI を返す
@@ -137,11 +136,11 @@ Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 
 > [!NOTE]
 > 不要な料金を避けるためにも、スナップショットは慎重に管理してください。 スナップショットは次のように管理することをお勧めします。
-> 
+>
 > * まったく同じデータで更新する場合も含め、BLOB を更新するときは必ずその BLOB に関連付けられているスナップショットを削除してから作成し直すようにします (アプリケーションの設計上、スナップショットを維持しなければならない場合を除く)。 BLOB のスナップショットを削除してから作成し直すことにより、BLOB とスナップショットの分化を確実に防ぐことができます。
 > * BLOB のスナップショットを維持する場合は、**UploadFile**、**UploadText**、**UploadStream**、または **UploadByteArray** を呼び出して BLOB を更新しないようにしてください。 これらのメソッドを呼び出すと、BLOB 内のすべてのブロックが置き換えられるため、ベース BLOB とスナップショットが大幅に分化します。 代わりに、**PutBlock** メソッドと **PutBlockList** メソッドを使用して、最小数のブロックのみを更新するようにしてください。
-> 
-> 
+>
+>
 
 ### <a name="snapshot-billing-scenarios"></a>スナップショットの課金シナリオ
 ブロック BLOB とそのスナップショットについて料金が発生するしくみを次のシナリオで説明します。
@@ -163,11 +162,11 @@ Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 ![Azure Storage のリソース](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
 ## <a name="next-steps"></a>次のステップ
-BLOB ストレージのその他の使用例については、「 [Azure のコード サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)」をご覧ください。 サンプル アプリケーションをダウンロードして実行することも、GitHub でコードを参照することもできます。 
+BLOB ストレージのその他の使用例については、「 [Azure のコード サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)」をご覧ください。 サンプル アプリケーションをダウンロードして実行することも、GitHub でコードを参照することもできます。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

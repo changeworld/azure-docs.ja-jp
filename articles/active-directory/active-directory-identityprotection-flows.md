@@ -6,18 +6,17 @@ keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, ア�
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d264d63aeeff584fca96595f1d2f2d5a2f7ba792
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e81ef1d182108114305291273227ce2ac4dacf3f
 
 
 ---
@@ -115,6 +114,6 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

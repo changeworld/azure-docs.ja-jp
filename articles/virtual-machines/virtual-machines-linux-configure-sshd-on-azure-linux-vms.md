@@ -77,7 +77,7 @@ ClientAliveCountMax 0
 
 SSHD は Linux VM で実行されている SSH Server です。  SSH は、MacBook および Linux ワークステーションのシェルまたは Windows の Bash から実行するクライアントです。  SSH は、ワークステーションと、VPN (仮想プライベート ネットワーク) にも SSH 接続する Linux VM 間の通信のセキュリティ保護と暗号化に使用されるプロトコルでもあります。
 
-この記事では、チュートリアル全体を通して Linux VM への 1 つのログインを常に開いておくことが非常に重要です。  SSH 接続が確立されると、ウィンドウを閉じない限り、開いているセッションとして接続が保持されます。  ログインしているターミナルが 1 つあれば、重大な変更を行う場合に、ロックアウトされることなく SSHD サービスに変更を加えることができます。  SSHD 構成の破損によって Linux VM からロックアウトされた場合、Azure では [Azure VM アクセス拡張機能](virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して破損した SSHD 構成をリセットできます。
+この記事では、チュートリアル全体を通して Linux VM への&1; つのログインを常に開いておくことが非常に重要です。  SSH 接続が確立されると、ウィンドウを閉じない限り、開いているセッションとして接続が保持されます。  ログインしているターミナルが&1; つあれば、重大な変更を行う場合に、ロックアウトされることなく SSHD サービスに変更を加えることができます。  SSHD 構成の破損によって Linux VM からロックアウトされた場合、Azure では [Azure VM アクセス拡張機能](virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して破損した SSHD 構成をリセットできます。
 
 そのため、2 つのターミナルを開き、その両方から Linux VM に SSH 接続します。  一方のターミナルを使用して SSHD 構成ファイルを変更し、SSHD サービスを再起動します。  サービスが再起動したら、もう一方のターミナルを使用して変更をテストします。  SSH パスワードを無効にして SSH キーだけに依存するようにするので、SSH キーが正しくない場合、VM への接続を閉じると、VM は永続的にロックされて誰もログインできなくなり、削除して再作成することが必要になります。
 

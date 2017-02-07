@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2016
+ms.date: 12/02/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bdb422396ddde1d6f232173ad57551a1e9ccfc36
+ms.sourcegitcommit: f454e7e218764e00cc19ca67b0edade213834b75
+ms.openlocfilehash: 0fd15c1d01959194ff25ac7f93c015a8edd38057
 
 
 ---
@@ -63,19 +63,25 @@ Azure AD への Blackboard Learn - Shibboleth の統合を構成するには、�
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
     ![Active Directory][1]
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![[アプリケーション]][2]
+
 4. ページの下部にある **[追加]** をクリックします。
    
     ![アプリケーション][3]
+
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
     ![アプリケーション][4]
+
 6. 検索ボックスに、「 **Blackboard Learn - Shibboleth**」と入力します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_01.png)
+
 7. 結果ウィンドウで **[Blackboard Learn - Shibboleth]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_02.png)
@@ -103,9 +109,11 @@ Blackboard Learn - Shibboleth で Azure AD のシングル サインオンを構
 1. クラシック ポータルの **Blackboard Learn - Shibboleth** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![[シングル サインオンの構成]][6] 
+
 2. **[ユーザーの Blackboard Learn - Shibboleth へのアクセスを設定してください]** ページで、**[Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_03.png) 
+
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_04.png) 
@@ -116,12 +124,13 @@ Blackboard Learn - Shibboleth で Azure AD のシングル サインオンを構
    
     c. **[応答 URL]** ボックスに、**https://\<yourblackoardlearnserver\>.blackboardlearn.com/Shibboleth.sso/SAML2/POST** の形式で URL を入力します。
    
-   > [!NOTE]
-   > これらの値はすべて、Blackboard Learn パートナーによって提供されるフェデレーション メタデータ ドキュメントで取得できます。
-   > 
-   > 
+    > [!NOTE]
+    > これらの値はすべて、Blackboard Learn パートナーによって提供されるフェデレーション メタデータ ドキュメントで取得できます。
+    > 
+    > 
    
     d. click **[次へ]**
+
 4. **[Blackboard Learn - Shibboleth でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
     ![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_05.png)
@@ -129,6 +138,7 @@ Blackboard Learn - Shibboleth で Azure AD のシングル サインオンを構
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
+
 5. アプリケーション用に構成された SSO を入手するには、Blackboard Learn - Shibboleth パートナーに連絡し、次のものを情報として提供してください。
    
     • ダウンロードした **メタデータ**
@@ -138,9 +148,11 @@ Blackboard Learn - Shibboleth で Azure AD のシングル サインオンを構
     • **SAML SSO URL**
    
     • **シングル サインアウト サービス URL**
+
 6. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
+
 7. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
    
     ![Azure AD のシングル サインオン][11]
@@ -155,34 +167,43 @@ Blackboard Learn - Shibboleth で Azure AD のシングル サインオンを構
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_09.png) 
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
 3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_03.png) 
+
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_04.png) 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_05.png) 
+
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. ページの下部にある **[次へ]**」を参照してください。
-6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_06.png) 
+
+6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]**をクリックします。
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_07.png) 
+
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_08.png) 
@@ -204,13 +225,17 @@ Blackboard Learn - Shibboleth で Azure AD のシングル サインオンを構
 1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![ユーザーの割り当て][201] 
+
 2. アプリケーションの一覧で **[Blackboard Learn - Shibboleth]**を選択します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_50.png) 
+
 3. 上部のメニューで **[ユーザー]**をクリックします。
    
     ![ユーザーの割り当て][203]
+
 4. ユーザーの一覧で **[Britta Simon]**を選択します。
+
 5. 下部にあるツール バーで **[割り当て]**をクリックします。
    
     ![ユーザーの割り当て][205]
@@ -244,6 +269,6 @@ Blackboard Learn - Shibboleth で Azure AD のシングル サインオンを構
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

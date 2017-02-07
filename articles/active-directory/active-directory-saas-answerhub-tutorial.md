@@ -43,14 +43,14 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
 ### <a name="to-enable-the-application-integration-for-answerhub-perform-the-following-steps"></a>AnswerHub のアプリケーション統合を有効にするには、次の手順に従います。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-   ![[Active Directory]](./media/active-directory-saas-answerhub-tutorial/IC700993.png "Active Directory")
+   ![Active Directory](./media/active-directory-saas-answerhub-tutorial/IC700993.png "Active Directory")
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-   ![[アプリケーション]](./media/active-directory-saas-answerhub-tutorial/IC700994.png "Applications")
+   ![アプリケーション](./media/active-directory-saas-answerhub-tutorial/IC700994.png "Applications")
 4. ページの下部にある **[追加]** をクリックします。
    
-   ![[アプリケーションの追加]](./media/active-directory-saas-answerhub-tutorial/IC749321.png "Add application")
+   ![アプリケーションの追加](./media/active-directory-saas-answerhub-tutorial/IC749321.png "Add application")
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-answerhub-tutorial/IC749322.png "Add an application from gallerry")
@@ -69,16 +69,16 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **AnswerHub** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
-   ![Configure single sign-on](./media/active-directory-saas-answerhub-tutorial/IC785168.png "Configure single sign-on")
+   ![シングル サインオンの構成](./media/active-directory-saas-answerhub-tutorial/IC785168.png "Configure single sign-on")
 2. **[ユーザーの AnswerHub へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-   ![Configure single sign-on](./media/active-directory-saas-answerhub-tutorial/IC785169.png "Configure single sign-on")
+   ![シングル サインオンの構成](./media/active-directory-saas-answerhub-tutorial/IC785169.png "Configure single sign-on")
 3. **[アプリケーション URL の構成]** ページで、**[AnswerHub サインイン URL]** ボックスに、"*https://company.answerhub.com*" のパターンを使用して URL を入力し、**[次へ]** をクリックします。
    
-   ![Configure App URL](./media/active-directory-saas-answerhub-tutorial/IC785170.png "Configure App URL")
+   ![アプリケーション URL の構成](./media/active-directory-saas-answerhub-tutorial/IC785170.png "Configure App URL")
 4. **[AnswerHub でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターのローカルに保存します。
    
-   ![Configure single sign-on](./media/active-directory-saas-answerhub-tutorial/IC785171.png "Configure single sign-on")
+   ![シングル サインオンの構成](./media/active-directory-saas-answerhub-tutorial/IC785171.png "Configure single sign-on")
 5. 別の Web ブラウザーのウィンドウで、管理者として AnswerHub 企業サイトにログインします。
    
    > [!NOTE]
@@ -91,7 +91,7 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
 9. [ **IDP Config** ] タブをクリックします。
 10. [ **IDP Config** ] タブで、次の手順を実行します。
     
-    ![[SAML 設定]](./media/active-directory-saas-answerhub-tutorial/IC785172.png "SAML Setup")
+    ![SAML のセットアップ](./media/active-directory-saas-answerhub-tutorial/IC785172.png "SAML Setup")
     
     1. Azure クラシック ポータルで、**[AnswerHub でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[IDP Login URL]** ボックスに貼り付けます。
     2. Azure クラシック ポータルで、**[AnswerHub でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[IDP Logout URL]** ボックスに貼り付けます。
@@ -99,7 +99,7 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
     4. [ **Keys and Certificates**] をクリックします。
 11. [Keys and Certificates] タブでは、次の手順を実行します。
     
-    ![Keys and Certificates](./media/active-directory-saas-answerhub-tutorial/IC785173.png "Keys and Certificates")
+    ![Keys and Certificates (キーと証明書)](./media/active-directory-saas-answerhub-tutorial/IC785173.png "Keys and Certificates")
     
     1. ダウンロードした証明書から **base-64 でエンコードされた** ファイルを作成します。  
        
@@ -112,7 +112,7 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
 12. **[IDP Config]** タブで、**[Save]** をクリックします。
 13. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
     
-    ![Configure single sign-on](./media/active-directory-saas-answerhub-tutorial/IC785174.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-answerhub-tutorial/IC785174.png "Configure single sign-on")
 
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 Azure AD ユーザーが AnswerHub にログインできるようにするには、そのユーザーを AnswerHub にプロビジョニングする必要があります。  
@@ -124,7 +124,7 @@ AnswerHub の場合、プロビジョニングは手動で行います。
 3. **[Users & Groups]** タブをクリックします。
 4. 左側のナビゲーション ウィンドウで、**[Manage Users]** セクションの **[Create or import users]** をクリックします。
    
-   ![Users & Groups](./media/active-directory-saas-answerhub-tutorial/IC785175.png "Users & Groups")
+   ![Users & Groups (ユーザーとグループ)](./media/active-directory-saas-answerhub-tutorial/IC785175.png "Users & Groups")
 5. プロビジョニングする有効な Azure Active Directory ユーザー アカウントの**電子メール アドレス**、**ユーザー名**、**パスワード**を対応するボックスに入力し、**[Save]** をクリックします。
 
 > [!NOTE]
@@ -139,7 +139,7 @@ AnswerHub の場合、プロビジョニングは手動で行います。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **AnswerHub** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-   ![[ユーザーの割り当て]](./media/active-directory-saas-answerhub-tutorial/IC785176.png "Assign users")
+   ![ユーザーの割り当て](./media/active-directory-saas-answerhub-tutorial/IC785176.png "Assign users")
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
    ![はい](./media/active-directory-saas-answerhub-tutorial/IC767830.png "Yes")
@@ -149,6 +149,6 @@ AnswerHub の場合、プロビジョニングは手動で行います。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

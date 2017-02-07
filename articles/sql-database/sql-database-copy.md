@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
-ms.openlocfilehash: c4f0b7eab07aa6a23bbb5489130d5cb92e18e5e2
+ms.sourcegitcommit: 3686f262a0a3fc01abd179aef337c272e97c0b3c
+ms.openlocfilehash: b12bf1a08780c6888f518a800aea1065fd1283c5
 
 
 ---
@@ -40,7 +40,7 @@ Azure の[アクティブ geo レプリケーション](sql-database-geo-replica
 SQL Database をコピーするには、以下が必要です。
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合、このページの上部の **無料評価版** をクリックしてからこの記事に戻り、最後まで完了してください。
-* コピーする SQL データベース。 SQL Database がない場合は、「 [最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
+* コピーする SQL データベース。 SQL Database がない場合は、「 [最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って&1; つ作成してください。
 
 ## <a name="next-steps"></a>次のステップ
 * Azure ポータルを使用してデータベースをコピーするには、「 [Azure ポータルを使用した Azure SQL Database のコピー](sql-database-copy-portal.md) 」を参照してください。
@@ -58,6 +58,6 @@ SQL Database をコピーするには、以下が必要です。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

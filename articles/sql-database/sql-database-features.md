@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 11/28/2016
+ms.date: 02/01/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
 ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f

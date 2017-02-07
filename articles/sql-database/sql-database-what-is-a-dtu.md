@@ -14,7 +14,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: NA
-ms.date: 09/06/2016
+ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 3d619f5d6959594ee9b139d611d7e45390a40c55

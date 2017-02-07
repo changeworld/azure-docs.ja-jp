@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7a43c010945c6b1601fac5b2fbf934c3d48811e5
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 5e13e126fecda66a453b4ced619016121af98b2c
 
 
 ---
@@ -29,7 +29,7 @@ RSS は、ブログ記事やニュースのヘッドラインのように、頻�
 > 
 > 
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事を参照してください。
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事を参照してください。
 
 ## <a name="triggers-and-actions"></a>トリガーとアクション
 RSS コネクタは、アクションとして使用できます。RSS コネクタにはトリガーがあります。 すべてのコネクタは、JSON および XML 形式のデータに対応します。 
@@ -119,11 +119,11 @@ RSS コネクタは、アクションとして使用できます。RSS コネク
 | updatedOn |string |なし |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 01/12/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: d693bc0de2f8a03d67b346f3b2d4693284ae4d71
-ms.openlocfilehash: ad5f303473a87d62464d7be500412d6d01f6bd52
+ms.sourcegitcommit: 534fa3718d22eb17a99b654b5f5cb404de53eceb
+ms.openlocfilehash: b7511746a234186cd9027f1cc272cd5d0a1c49e8
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: ad5f303473a87d62464d7be500412d6d01f6bd52
   
 - 監視構成を取得する
 
-    監視するサービスの監視構成設定を作成します。 許可される監視構成設定は 1 つだけです。 
+    監視するサービスの監視構成設定を作成します。 許可される監視構成設定は&1; つだけです。 
 
 - 監視構成を追加する
 
@@ -99,7 +99,11 @@ ms.openlocfilehash: ad5f303473a87d62464d7be500412d6d01f6bd52
     Strict-Transport-Security: max-age=31536000; includeSubDomains
     Date: Wed, 02 Dec 2015 05:10:40 GMT
     
-    {"d":{"results":[]}}
+    {  
+        "d":{  
+            "results":[]
+        }
+    }
  
 ## <a name="create-a-notification-endpoint-for-monitoring"></a>監視するための通知エンドポイントを作成する
 
@@ -115,7 +119,11 @@ ms.openlocfilehash: ad5f303473a87d62464d7be500412d6d01f6bd52
     Host: wamsbnp1clus001rest-hs.cloudapp.net
     Content-Length: 115
     
-    {"Name":"monitoring","EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/","EndPointType":2}
+    {  
+        "Name":"monitoring",
+        "EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/",
+        "EndPointType":2
+    }
 
 >[!NOTE]
 >"https://telemetryvalidationstore.table.core.windows.net" 値は、必ず実際に使用するストレージ アカウントに変更してください。
@@ -183,7 +191,15 @@ ms.openlocfilehash: ad5f303473a87d62464d7be500412d6d01f6bd52
     Host: wamsbnp1clus001rest-hs.cloudapp.net
     Content-Length: 133
     
-    {"NotificationEndPointId":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Settings":[{"Component":"Channel","Level":"Normal"}]}
+    {  
+       "NotificationEndPointId":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4",
+       "Settings":[  
+          {  
+         "Component":"Channel",
+         "Level":"Normal"
+          }
+       ]
+    }
 
 ### <a name="response"></a>応答
 
@@ -204,7 +220,20 @@ ms.openlocfilehash: ad5f303473a87d62464d7be500412d6d01f6bd52
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.MonitoringConfiguration"},"Id":"nb:mcid:UUID:1a8931ae-799f-45fd-8aeb-9641740295c2","NotificationEndPointId":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Created":"2015-12-02T05:10:43.7680396Z","LastModified":"2015-12-02T05:10:43.7680396Z","Settings":{"__metadata":{"type":"Collection(Microsoft.Cloud.Media.Vod.Rest.Data.Models.ComponentMonitoringSettings)"},"results":[{"Component":"Channel","Level":"Normal"},{"Component":"StreamingEndpoint","Level":"Disabled"}]}}}
 
-## <a name="consuming-telemetry-information"></a>こちら
+## <a name="stop-telemetry"></a>テレメトリを停止する
+
+###<a name="request"></a>要求
+
+    DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
+    x-ms-version: 2.13
+    DataServiceVersion: 3.0
+    MaxDataServiceVersion: 3.0
+    Accept: application/json; odata=verbose
+    Authorization: (redacted)
+    Content-Type: application/json; charset=utf-8
+    Host: wamsbnp1clus001rest-hs.cloudapp.net
+
+## <a name="consuming-telemetry-information"></a>テレメトリ情報の使用
 
 テレメトリ情報の使用については、[こちら](media-services-telemetry-overview.md)のトピックを参照してください。
 
@@ -217,6 +246,7 @@ ms.openlocfilehash: ad5f303473a87d62464d7be500412d6d01f6bd52
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
-<!--HONumber=Nov16_HO5-->
+
+<!--HONumber=Jan17_HO3-->
 
 

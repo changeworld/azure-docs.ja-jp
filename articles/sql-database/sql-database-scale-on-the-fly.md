@@ -17,19 +17,23 @@ ms.workload: data-management
 ms.date: 10/13/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 98333c8721274c207ed3d7f2bd05cc20bcd10562
+ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
+ms.openlocfilehash: be19590bca7c7fb45e32f5a5e29c88ab5dd21deb
 
 
 ---
 # <a name="azure-sql-database-scales-on-the-fly"></a>Azure SQL Database の即時スケール
 ## <a name="when-your-app-grows-from-a-small-number-of-customers-to-just-about-everyone-azure-sql-database-can-scale-on-the-fly-with-minimal-app-downtime"></a>アプリの顧客が少数から多数に増加した場合、Azure SQL Database はアプリのダウンタイムを最小限に抑えながら即時にスケールできます
-Microsoft Azure で SQL Database を実行する利点の 1 つは、パフォーマンスをスケールアップまたはスケールダウンし、変化するワークロードの需要にすばやく対応できることです。 SQL Database は、アプリケーションの特定のニーズに合わせて多様なパフォーマンス レベルを用意しています。 各レベルはパフォーマンスを保証しているので、アプリ ユーザーはパフォーマンスの感覚を予測できます。
+Microsoft Azure で SQL Database を実行する利点の&1; つは、パフォーマンスをスケールアップまたはスケールダウンし、変化するワークロードの需要にすばやく対応できることです。 SQL Database は、アプリケーションの特定のニーズに合わせて多様なパフォーマンス レベルを用意しています。 各レベルはパフォーマンスを保証しているので、アプリ ユーザーはパフォーマンスの感覚を予測できます。
 
 ![scale-on-the-fly](./media/sql-database-scale-on-the-fly/sql-database-scale-on-the-fly.png)
 
 ## <a name="when-your-app-is-an-overnight-success"></a>アプリの成功が一夜で終わった場合
 SQL Database は、直ちに簡単にスケールできます。 そのため、アプリの成功が一夜で終わった場合、1 回のクリックだけで、新しいパフォーマンスのニーズに合わせて調整できます。 さらに、ダウンタイムを最小限に抑えられるため、スケールアップまたはスケールダウン時のアプリへの打撃を心配する必要がありません。
+
+>
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
+>
 
 [ドキュメントを参照する](http://go.microsoft.com/fwlink/?LinkID=787569)
 
@@ -57,6 +61,6 @@ SQL Database の他の機能についてはホーム ページを
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

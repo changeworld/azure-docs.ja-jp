@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: 727891d92c047abe405415ea544db6f77a0db9f9
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c214e37fb4211e8a2686a2beb18cf84ee77d5783
 
 
 ---
@@ -44,9 +44,9 @@ ms.openlocfilehash: 727891d92c047abe405415ea544db6f77a0db9f9
 
 図の説明は次のとおりです。
 
-* デプロイ アーキテクチャは 3 つの個別の環境 (Azure では[リソース グループ](../azure-resource-manager/resource-group-overview.md)と言います) に分割され、それぞれに独自の [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)、[スケーリング設定](web-sites-scale.md)、および SQL Database があります。 
+* デプロイ アーキテクチャは&3; つの個別の環境 (Azure では[リソース グループ](../azure-resource-manager/resource-group-overview.md)と言います) に分割され、それぞれに独自の [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)、[スケーリング設定](web-sites-scale.md)、および SQL Database があります。 
 * 各環境は別々に管理できます。 異なるサブスクリプションで存在することもできます。
-* ステージングと実稼働は、同じ App Service アプリの 2 つのスロットとして実装されます。 マスター ブランチは、ステージング スロットとの継続的インテグレーションを行うようにセットアップされます。
+* ステージングと実稼働は、同じ App Service アプリの&2; つのスロットとして実装されます。 マスター ブランチは、ステージング スロットとの継続的インテグレーションを行うようにセットアップされます。
 * マスター ブランチへのコミットが (実稼働データを使用して) ステージング スロットで検証されると、検証されたステージング アプリは、 [ダウンタイムなしで](web-sites-staged-publishing.md)実稼働スロットにスワップされます。
 
 ステージング/運用環境は、[*&lt;repository_root>*/ARMTemplates/ProdandStage.json](https://github.com/azure-appservice-samples/ToDoApp/blob/master/ARMTemplates/ProdAndStage.json) テンプレートによって定義されます。
@@ -73,7 +73,7 @@ ms.openlocfilehash: 727891d92c047abe405415ea544db6f77a0db9f9
 > * 無料で [Azure アカウントを開く](https://azure.microsoft.com/pricing/free-trial/)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
 > * [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) こともできます - Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 > 
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -81,7 +81,7 @@ ms.openlocfilehash: 727891d92c047abe405415ea544db6f77a0db9f9
 > [!NOTE]
 > このチュートリアルで使用するスクリプトは、GitHub リポジトリからの継続的パブリッシングを自動的に構成します。 これを行うには、GitHub 資格情報が既に Azure に保存されている必要があります。保存されていない場合、スクリプト化されたデプロイは、Web アプリに対するソース管理設定を構成しようとした時点で失敗します。 
 > 
-> GitHub 資格情報を Azure に保存するには、Web アプリを [Azure Portal](https://portal.azure.com/) で作成し、[GitHub のデプロイを構成](app-service-continuous-deployment.md)します。 この操作を行うのは 1 回だけです。 
+> GitHub 資格情報を Azure に保存するには、Web アプリを [Azure Portal](https://portal.azure.com/) で作成し、[GitHub のデプロイを構成](app-service-continuous-deployment.md)します。 この操作を行うのは&1; 回だけです。 
 > 
 > 
 
@@ -115,7 +115,7 @@ ms.openlocfilehash: 727891d92c047abe405415ea544db6f77a0db9f9
 7. スクリプトが終了したら、フロントエンドのアドレス (http://ToDoApp*&lt;unique_string>*master.azurewebsites.net/) を参照して、アプリケーションが運用環境で実行されていることを確認します。
 8. [Azure ポータル](https://portal.azure.com/) にログインして、何が作成されたかを調べます。
    
-   同じリソース グループ内に 2 つの Web アプリがあり、1 つは名前に `Api` サフィックスが付いていることを確認できます。 リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。 さまざまなリソースを参照し、それらを *&lt;repository_root>*\ARMTemplates\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
+   同じリソース グループ内に&2; つの Web アプリがあり、1 つは名前に `Api` サフィックスが付いていることを確認できます。 リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。 さまざまなリソースを参照し、それらを *&lt;repository_root>*\ARMTemplates\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
    
    ![](./media/app-service-agile-software-development/production-3-resource-group-view.png)
 
@@ -157,11 +157,11 @@ Azure の運用環境で実行されている複雑なアプリケーション�
 > 
 > 
 
-操作が完了すると、GitHub フォークには 3 つのブランチが存在します。
+操作が完了すると、GitHub フォークには&3; つのブランチが存在します。
 
 ![](./media/app-service-agile-software-development/test-1-github-view.png)
 
-さらに、3 つの別々のリソース グループに 6 つの Web アプリケーション (2 つで 1 セットが 3 セット) が存在します。
+さらに、3 つの別々のリソース グループに&6; つの Web アプリケーション (2 つで&1; セットが&3; セット) が存在します。
 
 ![](./media/app-service-agile-software-development/test-2-all-webapps.png)
 
@@ -276,6 +276,6 @@ Git Shell で、次のコマンドを実行します。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

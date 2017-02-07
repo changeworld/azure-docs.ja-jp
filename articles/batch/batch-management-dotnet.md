@@ -3,7 +3,7 @@ title: "Batch Management .NET でのアカウント リソース管理 | Microso
 description: "Batch Management .NET ライブラリを使用して Azure Batch アカウント リソースを作成、削除、変更します。"
 services: batch
 documentationcenter: .net
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 10/19/2016
-ms.author: marsma
+ms.date: 01/20/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d2a2bf6c6046aa1de67d85b23b0c11bf7f9d4400
+ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
+ms.openlocfilehash: ce2b316c9e04c46c1b45139b2ba84c1ca8843f29
 
 
 ---
@@ -28,20 +28,20 @@ ms.openlocfilehash: d2a2bf6c6046aa1de67d85b23b0c11bf7f9d4400
 > 
 > 
 
-[Batch Management .NET][api_mgmt_net] ライブラリを使用して Batch アカウントの作成、削除、キー管理、クォータ検出を自動化することにより、Azure Batch アプリケーションにおける保守の負担が減ります。
+[Batch Management .NET][api_mgmt_net] ライブラリを使用して Batch アカウントの作成、削除、キー管理、およびクォータ検出を自動化することにより、Azure Batch アプリケーションにおける保守の負担が減ります。
 
 * **Batch アカウントを作成および削除します** 。 たとえば、独立系ソフトウェア ベンダー (ISV) が課金のためにクライアントごとに異なる Batch アカウントを割り当てる場合、顧客ポータルにアカウントの作成および削除機能を追加できます。
 * **アカウント キーを取得および再生成します** 。 これは、アカウント キーの定期的なロールオーバーまたは失効を実施するセキュリティ ポリシーに準拠するうえで役に立ちます。 さまざまな Azure リージョンに複数の Batch アカウントがある場合、このロールオーバー プロセスを自動化するとソリューションの効率が向上します。
 * **アカウントのクォータを確認し** 、Batch アカウントに対する制限の決定から試行錯誤の当て推量を排除します。 ジョブ開始前にアカウントのクォータをチェックしたり、プールを作成したり、コンピューティング ノードを追加したりすることで、いつどこでコンピューティング リソースが作成されるのかを事前に調整できます。 アカウントに追加リソースを割り当てる前に、クォータの増量が必要なアカウントを特定できます。
-* Batch Management .NET、[Azure Active Directory][aad_about]、[Azure Resource Manager][resman_overview] を同じアプリケーションで使用することで、完全な機能を備えた管理エクスペリエンスのために**他の Azure サービスの機能を組み合わせ**ます。 これらの機能とその API を使用して、摩擦のない認証エクスペリエンスや、リソース グループの作成と削除の機能、そして既に説明した機能によってエンド ツー エンドの管理ソリューションを実現できます。
+* Batch Management .NET、[Azure Active Directory][aad_about]、[Azure Resource Manager][resman_overview] を同じアプリケーションで使用することにより、完全な機能を備えた管理エクスペリエンスのために**他の Azure サービスの機能を組み合わせます**。 これらの機能とその API を使用して、摩擦のない認証エクスペリエンスや、リソース グループの作成と削除の機能、そして既に説明した機能によってエンド ツー エンドの管理ソリューションを実現できます。
 
 > [!NOTE]
-> この記事では、プログラムによる Batch アカウント、キー、クォータの管理に重点を置いて説明しますが、これらのアクティビティの多くは [Azure Portal][azure_portal] を使用して実行できます。 詳細については、「[Azure Portal を使用して Azure Batch アカウントを作成する](batch-account-create-portal.md)」と「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
+> この記事では、プログラムによる Batch アカウント、キー、およびクォータの管理に重点を置いて説明しますが、これらのアクティビティの多くは [Azure Portal][azure_portal] を使用して実行できます。 詳細については、「[Azure Portal を使用して Azure Batch アカウントを作成する](batch-account-create-portal.md)」と「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 > 
 > 
 
 ## <a name="create-and-delete-batch-accounts"></a>Batch アカウントを作成および削除します
-前述のように、Batch Management API の主要な機能の 1 つは、Azure リージョン内の Batch アカウントの作成と削除です。 これらを行うには、[BatchManagementClient.Account.CreateAsync][net_create] と [DeleteAsync][net_delete]、またはこれらの同期版を使用します。
+前述のように、Batch Management API の主要な機能の&1; つは、Azure リージョン内の Batch アカウントの作成と削除です。 これらを行うには、[BatchManagementClient.Account.CreateAsync][net_create] および [DeleteAsync][net_delete]、またはこれらの同期版を使用します。
 
 次のコード例では、アカウントを作成し、新しく作成されたアカウントを Batch サービスから取得して、削除します。 次のスニペットとこの記事の他のスニペットでは、`batchManagementClient` は [BatchManagementClient][net_mgmt_client] の完全に初期化されたインスタンスです。
 
@@ -61,12 +61,12 @@ await batchManagementClient.Account.DeleteAsync("MyResourceGroup", account.Name)
 ```
 
 > [!NOTE]
-> Batch Management .NET ライブラリとその BatchManagementClient クラスを使用するアプリケーションでは、管理対象の Batch アカウントを所有するサブスクリプションに対する**サービス管理者**または**共同管理者**のアクセスが必要です。 詳細については、「[Azure Active Directory](#azure-active-directory)」セクションのほか、[AccountManagement][acct_mgmt_sample] コード サンプルを参照してください。
+> Batch Management .NET ライブラリとその BatchManagementClient クラスを使用するアプリケーションでは、管理対象の Batch アカウントを所有するサブスクリプションに対する**サービス管理者**または**共同管理者**のアクセスが必要です。 詳細については、「[Azure Active Directory](#azure-active-directory)」セクションおよび [AccountManagement][acct_mgmt_sample] コード サンプルを参照してください。
 > 
 > 
 
 ## <a name="retrieve-and-regenerate-account-keys"></a>アカウント キーを取得および再生成します
-サブスクリプション内の Batch アカウントからプライマリとセカンダリのアカウント キーを取得するには [ListKeysAsync][net_list_keys] を使用します。 アカウント キーを再生成するには [RegenerateKeyAsync][net_regenerate_keys] を使用します。
+サブスクリプション内の Batch アカウントからプライマリおよびセカンダリのアカウント キーを取得するには [ListKeysAsync][net_list_keys] を使用します。 アカウント キーを再生成するには [RegenerateKeyAsync][net_regenerate_keys] を使用します。
 
 ```csharp
 // Get and print the primary and secondary keys
@@ -122,7 +122,7 @@ Console.WriteLine("Accounts in {0}: {1}", region, accountsInRegion);
 Console.WriteLine("You can create {0} accounts in the {1} region.", quotaResponse.AccountQuota - accountsInRegion, region);
 ```
 
-上記のスニペットで、`creds` は [TokenCloudCredentials][azure_tokencreds] のインスタンスです。 このオブジェクトを作成する例については、GitHub の [AccountManagement][acct_mgmt_sample] コード サンプルを参照してください。
+上のスニペットで、`creds` は [TokenCloudCredentials][azure_tokencreds] のインスタンスです。 このオブジェクトを作成する例については、GitHub の[AccountManagement][acct_mgmt_sample] コード サンプルを参照してください。
 
 ### <a name="check-a-batch-account-for-compute-resource-quotas"></a>Batch アカウントでのコンピューティング リソース クォータの確認
 Batch ソリューションでコンピューティング リソースを増やす前に、割り当てるつもりのリソースがアカウントのクォータを上回らないことを確認できます。 次のコード スニペットでは `mybatchaccount` という名前の Batch アカウントのクォータ情報を出力しています。 実際のアプリケーションでは、このような情報を使用して、作成する追加のリソースをアカウントが処理できるかどうかを判断できます。
@@ -140,7 +140,7 @@ Console.WriteLine("Active job and job schedule quota: {0}", account.Properties.A
 ```
 
 > [!IMPORTANT]
-> Azure サブスクリプションとサービスには既定のクォータがありますが、これらの制限の多くは、[Azure Portal][azure_portal] で要求を発行することで増やすことができます。 たとえば、Batch アカウントのクォータを増やす方法については、「 [Azure Batch サービスのクォータと制限](batch-quota-limit.md) 」を参照してください。
+> Azure サブスクリプションおよびサービスには既定のクォータがありますが、[Azure Portal][azure_portal] で要求を発行することによってこれらの制限の多くを増やすことができます。 たとえば、Batch アカウントのクォータを増やす方法については、「 [Azure Batch サービスのクォータと制限](batch-quota-limit.md) 」を参照してください。
 > 
 > 
 
@@ -152,13 +152,13 @@ Azure AD は、顧客、サービス管理者、組織のユーザーを認証�
 
 以下で説明するサンプル プロジェクトでは、Azure の [Active Directory Authentication Library][aad_adal] (ADAL) を使用して、ユーザーに Microsoft の資格情報の入力を求めます。 サービス管理者または共同管理者の資格情報が提供されると、それにより、アプリケーションは Azure にサブスクリプションのリストを照会し、リソース グループと Batch アカウントの両方を作成および削除できます。
 
-### <a name="resource-manager"></a>Resource Manager
-Batch Management .NET ライブラリで Batch アカウントを作成するときは、[リソース グループ][resman_overview]内で作成するのが普通です。 リソース グループは、プログラムから [Resource Manager .NET][resman_api] ライブラリの [ResourceManagementClient][resman_client] クラスを使用して作成できます。 または、[Azure Portal][azure_portal] を使用して過去に作成した既存のリソース グループにアカウントを追加することもできます。
+### <a name="resource-manager"></a>リソース マネージャー
+Batch Management .NET ライブラリで Batch アカウントを作成するときは通常、[リソース グループ][resman_overview]内でそれらを作成します。 リソース グループは、プログラムから [Resource Manager .NET][resman_api] ライブラリの [ResourceManagementClient][resman_client] クラスを使用して作成できます。 または、[Azure Portal][azure_portal] を使用して過去に作成した既存のリソース グループにアカウントを追加することもできます。
 
 ## <a name="sample-project-on-github"></a>GitHub のサンプル プロジェクト
 Batch Management .NET の動作を確認するには、GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクトを確認してください。 このコンソール アプリケーションでは、[BatchManagementClient][net_mgmt_client] と [ResourceManagementClient][resman_client] の作成と使用を示しています。 また、両方のクライアントで必要な Azure [Active Directory Authentication Library][aad_adal] (ADAL) の使用も示しています。
 
-サンプル アプリケーションを正常に実行するには、最初に Azure ポータルを使用して Azure AD にアプリケーションを登録する必要があります。 「[Azure Active Directory とアプリケーションの統合][aad_integrate]」の「[アプリケーションの追加](../active-directory/active-directory-integrating-applications.md#adding-an-application)」の手順に従って、独自のアカウントで既定のディレクトリ内にサンプル アプリケーションを登録してください。 アプリケーションの種類には必ず **[ネイティブ クライアント アプリケーション]** を選択してください。**[リダイレクト URI]** には任意の有効な URI を指定できます (`http://myaccountmanagementsample` など)。リアル エンドポイントにする必要はありません。
+サンプル アプリケーションを正常に実行するには、最初に Azure ポータルを使用して Azure AD にアプリケーションを登録する必要があります。 「[Azure Active Directory とアプリケーションの統合][aad_integrate]」の「[アプリケーションの追加](../active-directory/develop/active-directory-integrating-applications.md#adding-an-application)」の手順に従って、独自のアカウントで既定のディレクトリ内にサンプル アプリケーションを登録してください。 アプリケーションの種類には必ず **[ネイティブ クライアント アプリケーション]** を選択してください。**[リダイレクト URI]** には任意の有効な URI を指定できます (`http://myaccountmanagementsample` など)。リアル エンドポイントにする必要はありません。
 
 アプリケーションを追加したら、ポータルのアプリケーションの設定で、 **Windows Azure サービス管理 API** アプリケーションに「 *組織として Azure サービス管理にアクセスする* 」許可を委任します。
 
@@ -178,7 +178,7 @@ Batch Management .NET の動作を確認するには、GitHub の [AccountManagm
 1. [ADAL][aad_adal] を使用して Azure AD からセキュリティ トークンを取得します。 ユーザーがまだサインインしていない場合は、Azure 資格情報の入力を求められます。
 2. Azure AD から取得したセキュリティ トークンを使用して、[SubscriptionClient][resman_subclient] を作成し、Azure に対して、アカウントに関連付けられているサブスクリプションの一覧を照会します。 サブスクリプションが複数見つかった場合はいずれかを選択できます。
 3. 選択したサブスクリプションに関連付けられた資格情報オブジェクトを作成します。
-4. 資格情報を使用して [ResourceManagementClient][resman_client] を作成します。
+4. 資格情報を使用して、[ResourceManagementClient][resman_client] を作成します。
 5. [ResourceManagementClient][resman_client] を使用して、リソース グループを作成します。
 6. [BatchManagementClient][net_mgmt_client] を使用して、いくつかの Batch アカウント操作を実行します。
    * 新しいリソース グループに Batch アカウントを作成します。
@@ -191,7 +191,7 @@ Batch Management .NET の動作を確認するには、GitHub の [AccountManagm
    * 新しく作成されたアカウントを削除します。
 7. リソース グループを削除します。
 
-新しく作成した Batch アカウントとリソース グループを削除する前に、[Azure Portal][azure_portal] で両方を調べることができます。
+新しく作成した Batch アカウントおよびリソース グループを削除する前に、[Azure Portal][azure_portal] で両方を調べることができます。
 
 ![リソース グループと Batch アカウントが表示された Azure Portal][1]
 <br />
@@ -228,6 +228,6 @@ Batch Management .NET の動作を確認するには、GitHub の [AccountManagm
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

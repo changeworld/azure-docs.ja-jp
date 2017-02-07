@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: aa794e073bd6c4965a8f2918eab7a4669fc39171
-ms.openlocfilehash: 4b7246f4780b1485985e54b4eb2ae1f3d022a3f1
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 7ce5ba3c1a844104b4c14c73e05843becd69eb5f
 
 
 ---
@@ -33,8 +33,8 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 
 | <b>ソース</b> | <b>移動先: Azure VM 上の SQL Server</b> |
 | --- | --- |
-| <b>フラット ファイル</b> |1.<a href="#insert-tables-bcp">コマンド ライン一括コピー ユーティリティ (BCP) </a><br> 2.<a href="#insert-tables-bulkquery">一括挿入 SQL クエリ </a><br> 手順 3.<a href="#sql-builtin-utilities">SQL Server のグラフィカル組み込みユーティリティ</a> |
-| <b>オンプレミスの SQL Server</b> |1.<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード</a><br> 2.<a href="#export-flat-file">フラット ファイルへのエクスポート</a><br> 手順 3.<a href="#sql-migration">SQL Database 移行ウィザード </a> <br> 4.<a href="#sql-backup">データベースのバックアップと復元 </a><br> |
+| <b>フラット ファイル</b> |1.<a href="#insert-tables-bcp">コマンド ライン一括コピー ユーティリティ (BCP) </a><br> 2.<a href="#insert-tables-bulkquery">一括挿入 SQL クエリ </a><br> 手順&3;.<a href="#sql-builtin-utilities">SQL Server のグラフィカル組み込みユーティリティ</a> |
+| <b>オンプレミスの SQL Server</b> |1.<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード</a><br> 2.<a href="#export-flat-file">フラット ファイルへのエクスポート</a><br> 手順&3;.<a href="#sql-migration">SQL Database 移行ウィザード </a> <br> 4.<a href="#sql-backup">データベースのバックアップと復元 </a><br> |
 
 このドキュメントでは、SQL Server Management Studio または Visual Studio のデータベース エクスプローラーから SQL コマンドが実行されることを想定していることに注意してください。
 
@@ -59,7 +59,7 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 3. [SQL Server のグラフィカル組み込みユーティリティ (インポート/エクスポート、SSIS)](#sql-builtin-utilities)
 
 ### <a name="a-nameinsert-tables-bcpacommand-line-bulk-copy-utility-bcp"></a><a name="insert-tables-bcp"></a>コマンド ライン一括コピー ユーティリティ (BCP)
-BCP は、SQL Server と一緒にインストールされるコマンド ライン ユーティリティであり、データを移動する最も簡単な方法の 1 つです。 これは、3 つの異なる SQL Server (オンプレミスの SQL Server、SQL Azure、および Azure での SQL Server VM) すべて機能します。
+BCP は、SQL Server と一緒にインストールされるコマンド ライン ユーティリティであり、データを移動する最も簡単な方法の&1; つです。 これは、3 つの異なる SQL Server (オンプレミスの SQL Server、SQL Azure、および Azure での SQL Server VM) すべて機能します。
 
 > [!NOTE]
 > **BCP 用のデータの場所**  
@@ -155,7 +155,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 
 ### <a name="a-namesql-builtin-utilitiesabuilt-in-utilities-in-sql-server"></a><a name="sql-builtin-utilities"></a>
 SQL Server 統合サービス (SSIS) を使用して、フラット ファイルから Azure の SQL Server VM にデータをインポートすることができます。
-SSIS は 2 つの Studio 環境で使用できます。 詳細については、「 [統合サービス (SSIS) と Studio 環境](https://technet.microsoft.com/library/ms140028.aspx)」を参照してください:。
+SSIS は&2; つの Studio 環境で使用できます。 詳細については、「 [統合サービス (SSIS) と Studio 環境](https://technet.microsoft.com/library/ms140028.aspx)」を参照してください:。
 
 * SQL Server データ ツールの詳細については、「 [Microsoft SQL Server データ ツール](https://msdn.microsoft.com/data/tools.aspx)  
 * インポート/エクスポート ウィザードの詳細については、「 [SQL Server のインポートおよびエクスポート ウィザード](https://msdn.microsoft.com/library/ms141209.aspx)
@@ -171,7 +171,7 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
 それぞれの方法について以下で説明します。
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード
-**Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード** は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。 詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+**Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード** は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。 詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)」を参照してください。
 
 ### <a name="a-nameexport-flat-fileaexport-to-flat-file"></a><a name="export-flat-file"></a>フラット ファイルへのエクスポート
 「 [データの一括インポートと一括エクスポート (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) 」のトピックで説明されているように、さまざまな方法を使用してオンプレミスの SQL Server からデータを一括エクスポートできます。 このドキュメントでは、一例として一括コピー プログラム (BCP) について説明します。 データをフラット ファイルにエクスポートした後は、一括インポートを使用して別の SQL Server にそのデータをインポートできます。
@@ -207,15 +207,15 @@ SQL Server Management Studio のデータベースのバックアップ/復元�
 ![SQL Server インポート ツール][1]
 
 ## <a name="resources"></a>リソース
-[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
 
-[Azure Virtual Machines における SQL Server の概要](../virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Azure Virtual Machines における SQL Server の概要](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -43,14 +43,14 @@ ms.openlocfilehash: 64a7ff2552d2ccc97b1ec90cf524aed6b62ecb82
 ### <a name="to-enable-the-application-integration-for-abintegro-perform-the-following-steps"></a>Abintegro のアプリケーション統合を有効にするには、次の手順に従います。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-   ![[Active Directory]](./media/active-directory-saas-abintegro-tutorial/IC700993.png "Active Directory")
+   ![Active Directory](./media/active-directory-saas-abintegro-tutorial/IC700993.png "Active Directory")
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-   ![[アプリケーション]](./media/active-directory-saas-abintegro-tutorial/IC700994.png "Applications")
+   ![アプリケーション](./media/active-directory-saas-abintegro-tutorial/IC700994.png "Applications")
 4. ページの下部にある **[追加]** をクリックします。
    
-   ![[アプリケーションの追加]](./media/active-directory-saas-abintegro-tutorial/IC749321.png "Add application")
+   ![アプリケーションの追加](./media/active-directory-saas-abintegro-tutorial/IC749321.png "Add application")
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-abintegro-tutorial/IC749322.png "Add an application from gallerry")
@@ -74,7 +74,7 @@ ms.openlocfilehash: 64a7ff2552d2ccc97b1ec90cf524aed6b62ecb82
    ![シングル サインオンの構成](./media/active-directory-saas-abintegro-tutorial/IC790080.png "Configure Single SignOn")
 3. **[アプリケーション URL の構成]** ページの **[Abintegro サインオン URL]** ボックスに、ユーザーが Abintegro アプリケーションのサインオンに使用する URL (例: `https://dev.abintegro.com/Shibboleth.sso/Login?entityID=<Issuer>&target=https://dev.abintegro.com/secure/`) を入力して、**[次へ]** をクリックします。
    
-   ![Configure App URL](./media/active-directory-saas-abintegro-tutorial/IC790081.png "Configure App URL")
+   ![アプリケーション URL の構成](./media/active-directory-saas-abintegro-tutorial/IC790081.png "Configure App URL")
 4. **[Abintegro でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにメタデータ ファイルを保存します。
    
    ![シングル サインオンの構成](./media/active-directory-saas-abintegro-tutorial/IC790082.png "Configure Single SignOn")
@@ -101,7 +101,7 @@ Abintegro へのユーザー プロビジョニングの構成にあたって必
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **Abintegro** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-   ![[ユーザーの割り当て]](./media/active-directory-saas-abintegro-tutorial/IC790084.png "Assign Users")
+   ![ユーザーの割り当て](./media/active-directory-saas-abintegro-tutorial/IC790084.png "Assign Users")
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
    ![はい](./media/active-directory-saas-abintegro-tutorial/IC767830.png "Yes")
@@ -111,6 +111,6 @@ Abintegro へのユーザー プロビジョニングの構成にあたって必
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

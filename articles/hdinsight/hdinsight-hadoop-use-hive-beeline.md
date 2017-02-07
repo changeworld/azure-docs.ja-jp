@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/10/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 685d77363c451fbc28c39a34241dc34f796f7a77
+ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
+ms.openlocfilehash: c4fb98946a41ee37d8676eca52ff26f81d0ff56a
 
 
 ---
@@ -28,13 +28,15 @@ ms.openlocfilehash: 685d77363c451fbc28c39a34241dc34f796f7a77
 
 > [!NOTE]
 > Beeline は Hive への接続に JDBC を使用します。 Hive の JDBC 使用に関する詳細については、「 [Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続する](hdinsight-connect-hive-jdbc-driver.md)」を参照してください。
-> 
-> 
 
 ## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * HDInsight クラスターでの Linux ベースの Hadoop
+
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * SSH クライアント SSH クライアントを備えた Linux、Unix、および Mac OS Windows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
 ## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>SSH を使用した接続
@@ -65,7 +67,7 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
     コマンドが完了すると、`jdbc:hive2://localhost:10001/>` プロンプトが表示されます。
 2. Beeline コマンドは、通常、`!` 文字で始まります。たとえば、「`!help`」でヘルプが表示されます。 ただし、多くの場合、`!` は省略できます。 たとえば、「`help`」も機能します。
    
-    ヘルプを表示すると、「`!sql`」が表示されます。これは HiveQL ステートメントの実行に使用されます。 ただし、HiveQL が一般的に使用されるので、先行する `!sql` を省略できます。 次の 2 つのステートメントはまったく同じ結果となります。Hive で現在利用可能なテーブルが表示されます。
+    ヘルプを表示すると、「`!sql`」が表示されます。これは HiveQL ステートメントの実行に使用されます。 ただし、HiveQL が一般的に使用されるので、先行する `!sql` を省略できます。 次の&2; つのステートメントはまったく同じ結果となります。Hive で現在利用可能なテーブルが表示されます。
    
         !sql show tables;
         show tables;
@@ -108,7 +110,7 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
    * **CREATE EXTERNAL TABLE** : Hive に新しく '外部' テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
    * **ROW FORMAT** - Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
    * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
-   * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が 3 行あるため、 **3** という値が返されています。
+   * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が&3; 行あるため、 **3** という値が返されています。
    * **INPUT__FILE__NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。 通常、Hive でクエリを実行するとき、同じフォルダー内ではデータのスキーマが同じになりますが、このサンプル ログ ファイルは他のデータ形式で格納されます。
      
      > [!NOTE]
@@ -247,6 +249,6 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

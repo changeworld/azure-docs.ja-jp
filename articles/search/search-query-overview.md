@@ -33,7 +33,7 @@ Azure Search に検索要求を送信する際には、アプリケーション�
 以下の一覧で、Azure Search におけるクエリ パラメーターの一般的な使用方法について簡単に説明します。 クエリ パラメーターとその動作を網羅した説明については、[REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) および [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters#microsoft_azure_search_models_searchparameters#properties_summary) 向けの詳細ページを参照してください。
 
 ## <a name="types-of-queries"></a>クエリの種類
-Azure Search では、非常に強力なクエリを作成できる多くのオプションが用意されています。 主に使用するクエリの種類は、`search` と `filter` の 2 種類です。 `search` クエリは、インデックスのすべての*検索可能*フィールドで 1 つ以上の語句を検索し、Google や Bing などの検索エンジンに期待するのと同様に機能します。 `filter` クエリは、インデックスのすべての *フィルター処理可能* フィールドでブール式を評価します。 `search` クエリとは異なり、`filter` クエリはフィールドの内容を厳密に照合します。つまり、文字列フィールドでは大文字と小文字が区別されます。
+Azure Search では、非常に強力なクエリを作成できる多くのオプションが用意されています。 主に使用するクエリの種類は、`search` と `filter` の&2; 種類です。 `search` クエリは、インデックスのすべての*検索可能*フィールドで&1; つ以上の語句を検索し、Google や Bing などの検索エンジンに期待するのと同様に機能します。 `filter` クエリは、インデックスのすべての *フィルター処理可能* フィールドでブール式を評価します。 `search` クエリとは異なり、`filter` クエリはフィールドの内容を厳密に照合します。つまり、文字列フィールドでは大文字と小文字が区別されます。
 
 検索とフィルターは、一緒に使用することも、別々に使用することもできます。 一緒に使用した場合、フィルターが最初にインデックス全体に適用され、次にフィルター処理の結果に対して検索が実行されます。 フィルターはクエリのパフォーマンス向上に役立つ手法です。フィルターを使うと、検索クエリで処理が必要なドキュメントの数が減ります。
 

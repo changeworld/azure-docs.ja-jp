@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2016
+ms.date: 12/08/2016
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fea73e15543b2d0284c94118e01415870b5396ff
+ms.sourcegitcommit: aba17fb9f7a07b4d67092875a119ab463da5d273
+ms.openlocfilehash: ffd85e1df173fdbc392339cd169281c1ae3fbb5d
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: fea73e15543b2d0284c94118e01415870b5396ff
 > 
 
 ## <a name="set-up-powershell"></a>PowerShell のセットアップ
-コンピューターで実行するために PowerShell をセットアップします (まだセットアップしていない場合)。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」をご覧ください。
+コンピューターで実行するために PowerShell をセットアップします (まだセットアップしていない場合)。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」をご覧ください。
 
 ## <a name="examples-in-this-article"></a>この記事の例
 この記事の各例は、Azure Monitor コマンドレットの使用方法を示しています。 「[Azure Monitor (Insights) Cmdlets (Azure Monitor (Insights) コマンドレット)](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx)」で、Azure Monitor PowerShell コマンドレットのすべてのリストを確認することもできます。
@@ -54,7 +54,7 @@ Set-AzureRmContext -SubscriptionId <subscriptionid>
 ```
 
 
-## <a name="retrieve-audit-logs-for-a-subscription"></a>サブスクリプションの監査ログの取得
+## <a name="retrieve-activity-log-for-a-subscription"></a>サブスクリプションのアクティビティ ログの取得
 `Get-AzureRmLog` コマンドレットを使用します。  一般的な例を以下に示します。
 
 指定した日時のログ エントリを取得します。
@@ -96,7 +96,7 @@ Get-AzureRmLog -MaxEvents 1000
 `Get-AzureRmLog` は、他にも多くのパラメーターをサポートしています。 詳細については、 `Get-AzureRmLog` のリファレンスをご覧ください。
 
 > [!NOTE]
-> `Get-AzureRmLog` は、15 日間の履歴のみを提供します。 **-MaxEvents** パラメーターを使用すると、15 日間を超えて最後の N 件のイベントを照会できます。 15 日より前のイベントにアクセスするには、REST API または SDK (SDK を使用した C# のサンプル) を使用します。 **StartTime** を指定しない場合、既定値は **EndTime** から 1 時間引いた値になります。 **EndTime**を指定しない場合、既定値は現在の時刻です。 時刻はすべて UTC 形式です。
+> `Get-AzureRmLog` は、15 日間の履歴のみを提供します。 **-MaxEvents** パラメーターを使用すると、15 日間を超えて最後の N 件のイベントを照会できます。 15 日より前のイベントにアクセスするには、REST API または SDK (SDK を使用した C# のサンプル) を使用します。 **StartTime** を指定しない場合、既定値は **EndTime** から&1; 時間引いた値になります。 **EndTime**を指定しない場合、既定値は現在の時刻です。 時刻はすべて UTC 形式です。
 > 
 > 
 
@@ -190,7 +190,7 @@ Add アラート コマンドレットは、指定されたプロパティのア
 
 ### <a name="alert-on-activity-log-event"></a>アクティビティ ログのイベントのアラート
 > [!NOTE]
-> この機能はプレビュー段階にあります。
+> この機能はプレビュー段階で、今後ある時点で削除されます (置き換えられます)。
 > 
 > 
 
@@ -238,7 +238,7 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 `Get-AzureRmMetricDefinition` で使用できるオプションの詳細な一覧については、「 [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)」を参照してください。
 
 ## <a name="create-and-manage-autoscale-settings"></a>自動スケール設定の作成と管理
-Web Apps、VM、Cloud Services、VM Scale Set などのリソースは、そのリソース用に構成された自動スケール設定を 1 つだけ使用できます。
+Web Apps、VM、Cloud Services、VM Scale Set などのリソースは、そのリソース用に構成された自動スケール設定を&1; つだけ使用できます。
 ただし、各自動スケール設定では複数のプロファイルを使用できます。 たとえば、パフォーマンス ベースのスケール プロファイルを使用し、2 つ目のプロファイルとしてスケジュール ベースのプロファイルを使用できます。 各プロファイルには、複数のルールを構成できます。 自動スケールの詳細については、 [アプリケーションの自動スケールの方法](../cloud-services/cloud-services-how-to-scale.md)に関する記事を参照してください。
 
 ここでは、次の手順を使用します。
@@ -326,7 +326,7 @@ Remove-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>アクティビティ ログのログ プロファイルの管理
-"*ログ プロファイル*" を作成し、アクティビティ ログのデータをストレージ アカウントにエクスポートできます。また、ストレージ アカウントのデータ リテンション期間を構成することもできます。 必要に応じて、データをイベント ハブにストリーミングすることもできます。 この機能は現在プレビュー段階にあり、サブスクリプションごとに作成できるログ プロファイルは 1 つに限られます。 現在のサブスクリプションで以下のコマンドレットを使用して、ログ プロファイルを作成し、管理できます。 また、特定のサブスクリプションを選択することもできます。 PowerShell では現在のサブスクリプションが既定で使用されますが、`Set-AzureRmContext` を使用してサブスクリプションをいつでも変更できます。 そのサブスクリプション内の任意のストレージ アカウントまたはイベント ハブにデータをルーティングするようにアクティビティ ログを構成できます。 データは、JSON 形式で BLOB ファイルとして書き込まれます。
+"*ログ プロファイル*" を作成し、アクティビティ ログのデータをストレージ アカウントにエクスポートできます。また、ストレージ アカウントのデータ リテンション期間を構成することもできます。 必要に応じて、データをイベント ハブにストリーミングすることもできます。 この機能は現在プレビュー段階にあり、サブスクリプションごとに作成できるログ プロファイルは&1; つに限られます。 現在のサブスクリプションで以下のコマンドレットを使用して、ログ プロファイルを作成し、管理できます。 また、特定のサブスクリプションを選択することもできます。 PowerShell では現在のサブスクリプションが既定で使用されますが、`Set-AzureRmContext` を使用してサブスクリプションをいつでも変更できます。 そのサブスクリプション内の任意のストレージ アカウントまたはイベント ハブにデータをルーティングするようにアクティビティ ログを構成できます。 データは、JSON 形式で BLOB ファイルとして書き込まれます。
 
 ### <a name="get-a-log-profile"></a>ログ プロファイルの取得
 既存のログ プロファイルを取得するには、 `Get-AzureRmLogProfile` コマンドレットを使用します。
@@ -356,7 +356,7 @@ Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s
 ```
 
 ## <a name="configure-diagnostics-logs"></a>診断ログの構成
-Azure Network Security Groups、Software Load Balancers、Key Vault、Azure Search Services、Logic Apps など、多数の Azure サービスで追加のログとテレメトリが提供されます。Azure ストレージ アカウントにデータを保存するようにこれらのサービスを構成できます。 この操作はリソース レベルでのみ実行できます。ストレージ アカウントは、診断設定が構成されているターゲット リソースと同じリージョンに存在する必要があります。
+多数の Azure サービスで追加のログとテレメトリが提供されます。Azure ストレージ アカウントへのデータの保存、Event Hubs への送信、OMS Log Analytics ワークスペースへの送信を行うようにこれらのサービスを構成できます。 この操作はリソース レベルでのみ実行できます。ストレージ アカウントまたはイベント ハブは、診断設定が構成されているターゲット リソースと同じリージョンに存在する必要があります。
 
 ### <a name="get-diagnostic-setting"></a>診断設定の取得
 ```PowerShell
@@ -387,8 +387,21 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/sakteststorage -Categories NetworkSecurityGroupEvent -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
+Event Hubs の診断設定を有効にする
+
+```PowerShell
+Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Enable $true
+```
+
+OMS の診断設定を有効にする
+
+```PowerShell
+Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -WorkspaceId 76d785fd-d1ce-4f50-8ca3-858fc819ca0f -Enabled $true
+
+```
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO2-->
 
 

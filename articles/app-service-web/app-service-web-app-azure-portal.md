@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/26/2016
 ms.author: jaime-espinosa
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4d5b580977f0104cb45e8b304183abd0607a1342
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 00617f4d508c843000d69c02464a1bef36320a8e
 
 
 ---
@@ -49,7 +49,7 @@ Web アプリを作成するときは、クラシック ポータルの場合と
 さらに、ポータルでは、その他の共通設定を定義できます。 たとえば、[リソース グループ](../azure-resource-manager/resource-group-overview.md)は、関連する Azure リソースの表示と管理を単純化します。 
 
 ## <a name="navigation-example-settings-and-features"></a>移動の例: 設定と機能
-すべての設定と機能は、今では 1 つのブレードへと合理的にグループ化されており、そこから移動を開始することができます。
+すべての設定と機能は、今では&1; つのブレードへと合理的にグループ化されており、そこから移動を開始することができます。
 
 ![](./media/app-service-web-app-azure-portal/WebAppSettings.png)
 
@@ -74,11 +74,11 @@ Web アプリを作成するときは、クラシック ポータルの場合と
 ![](./media/app-service-web-app-azure-portal/AppSettings.png)
 
 ## <a name="more-resources"></a>その他のリソース
-[Azure App Service で Java Web アプリ]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [Azure Marketplace]: /marketplace/
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -88,6 +88,6 @@ Web アプリを作成するときは、クラシック ポータルの場合と
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

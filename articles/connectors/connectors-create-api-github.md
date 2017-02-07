@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e6468b7e9cde47ca4caf9be14d0ad780a431e6f2
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 6f336db8c8719b99420b353dca82e36a0d837769
 
 
 ---
@@ -29,7 +29,7 @@ GitHub は、 web ベースの Git リポジトリホスティングサービス
 > 
 > 
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事を参照してください。
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事を参照してください。
 
 ## <a name="triggers-and-actions"></a>トリガーとアクション
 GitHub コネクタは、アクションとして使用できます。GitHub コネクタにはトリガーがあります。 すべてのコネクタは、JSON および XML 形式のデータに対応します。 
@@ -167,11 +167,11 @@ GitHub を使用してロジック アプリを作成するには、まず**接�
 | repository_url |string |なし |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

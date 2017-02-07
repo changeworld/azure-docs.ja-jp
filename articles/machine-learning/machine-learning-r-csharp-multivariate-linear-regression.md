@@ -1,6 +1,6 @@
 ---
-title: "多変量線形回帰 | Microsoft Docs"
-description: "多変量線形回帰"
+title: "(非推奨) 多変量線形回帰 - Azure | Microsoft Docs"
+description: "(非推奨) 多変量線形回帰"
 services: machine-learning
 documentationcenter: 
 author: jaymathe
@@ -11,23 +11,30 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/21/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: jaymathe
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 01d90591f61920769dbdca360f69156281145517
+ms.sourcegitcommit: b1ee1eae91185c1893b55be2046343d78dd6c48b
+ms.openlocfilehash: 96780fccdf887548b0f6e525736f1d507cf30486
 
 
 ---
-# <a name="multivariate-linear-regression"></a>多変量線形回帰
+# <a name="deprecated-multivariate-linear-regression"></a>(非推奨) 多変量線形回帰
+
+> [!NOTE]
+> Microsoft DataMarket は間もなく提供終了となる予定です。この API は推奨されていません。 
+> 
+> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が多数提供されています。 ギャラリーの詳細については、「[Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
+
 データセットを用意し、独立変数に基づいて各個人 (i) に対する従属変数 y を短時間で予測するとします。 線形回帰は、このような予測に使用される一般的な統計手法です。 ここでは、従属変数 y は連続値と見なされます。  
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 単純なシナリオとしては、研究者が個人の身長 (x) に基づいてその体重 (y) を予測しようとする場合などがあります。 より高度なシナリオであれば、個人の詳細情報 (体重、性別、人種など) からその体重を予測することもできます。 この [Web サービス](https://datamarket.azure.com/dataset/aml_labs/multivariate_regression) は、データの線形回帰モデルに適合し、データ内の観測ごとに予測値 (y) を出力します。
 
-> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。  
+> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう&1; つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。  
 > 
 > 
 
@@ -79,7 +86,7 @@ ms.openlocfilehash: 01d90591f61920769dbdca360f69156281145517
 > 
 > 
 
-Azure Machine Learning 内で、新しい空白の実験が作成され、ワークスペース上に 2 つの [R スクリプトの実行][execute-r-script]モジュールが取得されました。 この Web サービスは、基になる R スクリプトで Azure Machine Learning の実験を実行します。 つまり、この実験には、スキーマ定義とモデルのトレーニング + スコア付けの 2 つの部分があります。 最初のモジュールは、入力されたデータセットに必要な構造を定義します。最初の変数を従属変数、残りを独立変数とします。 2 番目のモジュールは、入力データの汎用線形回帰モデルに適合させます。  
+Azure Machine Learning 内で、新しい空白の実験が作成され、ワークスペース上に&2; つの [R スクリプトの実行][execute-r-script]を取得しました。 この Web サービスは、基になる R スクリプトで Azure Machine Learning の実験を実行します。 つまり、この実験には、スキーマ定義とモデルのトレーニング + スコア付けの 2 つの部分があります。 最初のモジュールは、入力されたデータセットに必要な構造を定義します。最初の変数を従属変数、残りを独立変数とします。 2 番目のモジュールは、入力データの汎用線形回帰モデルに適合させます。  
 
 ![実験フロー][3]
 
@@ -121,6 +128,6 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

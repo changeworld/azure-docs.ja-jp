@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/22/2016
+ms.date: 01/07/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e20618b60f8bb517618a994cdb5c2fde18c10e43
+ms.sourcegitcommit: f9c1e41c423cc0d638d5c1d273d58b2fe713fa1c
+ms.openlocfilehash: 2aeb1f20255264ca97b8aff6bd506b5fa1832e28
 
 
 ---
@@ -64,14 +64,6 @@ Azure BLOB ストレージを使用してページのコンテンツをホスト
 6. コンテナーの **[名前]** ("b2c" など) を指定し、**[アクセスの種類]** として **[BLOB]** を選択します。 **[OK]**をクリックします。
 7. 作成したコンテナーは、 **[BLOB]** ブレードに一覧表示されます。 コンテナーの URL ( `https://contoso.blob.core.windows.net/b2c`のような形式) をメモしておきます。 **[BLOB]** ブレードを閉じます。
 8. [ストレージ アカウント] のブレードで、**[キー]** をクリックし、**[ストレージ アカウント名]** および **[プライマリ アクセス キー]** フィールドの値をメモしておきます。
-9. [Azure Portal](https://portal.azure.com/) にサインインします。
-10. **[+ 新規]** > **[データ + ストレージ]** > **[ストレージ アカウント]** の順にクリックします。 Azure BLOB ストレージ アカウントを作成するには、Azure サブスクリプションが必要です。 [Azure Web サイト](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップできます。
-11. **[アカウントの種類]** で **[BLOB ストレージ]** を選択し、その他の値は既定値のままにします。  必要に応じて、リソース グループと場所を編集できます。  **[作成]**をクリックします。
-12. スタート画面に戻り、作成したストレージ アカウントをクリックします。
-13. **[概要]** セクションで、**[+ コンテナー]** をクリックします。
-14. コンテナーの **[名前]** ("b2c" など) を指定し、**[アクセスの種類]** として **[BLOB]** を選択します。 **[OK]**をクリックします。
-15. コンテナーの**プロパティ**を開き、コンテナーの URL (`https://contoso.blob.core.windows.net/b2c` のような形式) をメモしておきます。 コンテナー ブレードを閉じます。
-16. [ストレージ アカウント] のブレードで、**キー アイコン**をクリックし、**[ストレージ アカウント名]** および **[プライマリ アクセス キー]** フィールドの値をメモしておきます。
 
 > [!NOTE]
 > **プライマリ アクセス キー** は、重要なセキュリティ資格情報です。
@@ -98,6 +90,6 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

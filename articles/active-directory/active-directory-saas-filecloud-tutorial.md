@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/12/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5368e5a3e75e488487613c76bb4895668d3c3e0e
+ms.sourcegitcommit: 69473976eb0a9b6a0e9aa929581c0a7cf0c8d188
+ms.openlocfilehash: 49779d5d15e81a50e32b87255152d996600d23eb
 
 
 ---
@@ -45,12 +45,12 @@ FileCloud と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの FileCloud の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -63,19 +63,25 @@ Azure AD への FileCloud の統合を構成するには、ギャラリーから
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
    
     ![Active Directory][1]
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![[アプリケーション]][2]
+
 4. ページの下部にある **[追加]** をクリックします。
    
     ![アプリケーション][3]
+
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
     ![アプリケーション][4]
+
 6. 検索ボックスに、「**FileCloud**」と入力します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_01.png)
+
 7. 結果ウィンドウで **[FileCloud]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
     ![ギャラリーでアプリを選択する](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_0001.png)
@@ -103,9 +109,11 @@ FileCloud で Azure AD のシングル サインオンを構成してテスト�
 1. クラシック ポータルの **FileCloud** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![[シングル サインオンの構成]][6] 
+
 2. **[How would you like users to sign on to FileCloud (ユーザーの FileCloud へのアクセスを設定してください)]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_03.png)
+
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_04.png)
@@ -114,12 +122,13 @@ FileCloud で Azure AD のシングル サインオンを構成してテスト�
    
     b. **[識別子]** ボックスに、「`https://<subdomain>.filecloudhosted.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`」と入力します。
    
-    c.  **[次へ]**
+    c. **[次へ]**
    
-   > [!NOTE]
-   > 実際のサインオン URL と識別子でこれらの値を更新する必要があることに注意してください。 これらの値を取得するには、 FileCloud サポート チームに問い合わせてください (<mailto:support@codelathe.com>)。
-   > 
-   > 
+    > [!NOTE]
+    > 実際のサインオン URL と識別子でこれらの値を更新する必要があることに注意してください。 これらの値を取得するには、 FileCloud サポート チームに問い合わせてください (<mailto:support@codelathe.com>)。
+    > 
+    > 
+
 4. **[FileCloud でのシングル サインオンの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_05.png)
@@ -127,26 +136,35 @@ FileCloud で Azure AD のシングル サインオンを構成してテスト�
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
+
 5. 別の Web ブラウザーのウィンドウで、管理者として FileCloud テナントにサインオンします。
+
 6. 左側のナビゲーション ウィンドウで、 **[Settings (設定)]**をクリックします。 
    
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_000.png)
+
 7. [Settings (設定)] セクションの **[SSO]** タブをクリックします。 
    
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_001.png)
+
 8. **[Single Sign On (SSO) Settings (シングル サインオン (SSO) 設定)]** パネルで、**[Default SSO Type (既定の SSO タイプ)]** として **[SAML]** を選択します。
    
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_002.png)
+
 9. **[SAML Settings (SAML 設定)]** パネルで、**[IdP End Point URL (IdP エンド ポイント URL)]** ボックスに、Azure AD アプリケーション構成ウィザードの**エンティティ ID** の値を入力します。
    
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_003.png)
+
 10. ダウンロードしたメタデータ ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[SAML Settings (SAML 設定)]** パネルの **[IdP Meta Data (IdP メタ データ)]** ボックスに貼りつけます。
     
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_004.png)
+
 11. **[保存]** ボタンをクリックします。
+
 12. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
     
     ![Azure AD のシングル サインオン][10]
+
 13. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
     
     ![Azure AD のシングル サインオン][11]
@@ -161,13 +179,17 @@ FileCloud で Azure AD のシングル サインオンを構成してテスト�
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-filecloud-tutorial/create_aaduser_09.png)
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
 3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-filecloud-tutorial/create_aaduser_03.png)
+
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-filecloud-tutorial/create_aaduser_04.png)
+
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-filecloud-tutorial/create_aaduser_05.png)
@@ -177,29 +199,32 @@ FileCloud で Azure AD のシングル サインオンを構成してテスト�
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
+
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-filecloud-tutorial/create_aaduser_06.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-filecloud-tutorial/create_aaduser_06.png)
    
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]**をクリックします。
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-filecloud-tutorial/create_aaduser_07.png)
+
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-filecloud-tutorial/create_aaduser_08.png)
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-a-filecloud-test-user"></a>FileCloud テスト ユーザーの作成
 このセクションの目的は、FileCloud で Britta Simon というユーザーを作成することです。 FileCloud では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
@@ -221,13 +246,17 @@ FileCloud で Azure AD のシングル サインオンを構成してテスト�
 1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![ユーザーの割り当て][201]
+
 2. アプリケーションの一覧で **[FileCloud]**を選択します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_50.png)
+
 3. 上部のメニューで **[ユーザー]**をクリックします。
    
     ![ユーザーの割り当て][203]
+
 4. ユーザーの一覧で **[Britta Simon]**を選択します。
+
 5. 下部にあるツール バーで **[割り当て]**をクリックします。
    
     ![ユーザーの割り当て][205]
@@ -261,6 +290,6 @@ FileCloud で Azure AD のシングル サインオンを構成してテスト�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
