@@ -39,7 +39,8 @@ Azure Active Directory のロールベースのアクセス制御 (RBAC) では�
 Azure Portal でユーザーをサブスクリプションの管理者として追加するには、そのユーザーに所有者ロールを付与します。 所有者ロールでは、割り当てられたサブスクリプション内のリソースのみを管理できます。 このロールには、他のサブスクリプションへのアクセス権がありません。 [Azure Portal](https://portal.azure.com) を通じて追加した所有者は、[Azure クラシック ポータル](https://manage.windowsazure.com)でリソースを管理できません。 
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューで **[サブスクリプション]** > *管理者にアクセス権を与えるサブスクリプション*でのサービスの管理が許可されます。
+
+2. ハブ メニューで **[サブスクリプション]** > *管理者を追加したいサブスクリプション*を選択します。
 
     ![newselectsub](./media/billing-add-change-azure-subscription-administrator/newselectsub.png)
 3. サブスクリプション ブレードで、**[アクセス制御 (IAM)]** > **[追加]** の順に選択します。
