@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/21/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 44b61dbdad51e3d6b5505477c97de75c8fc5a1a4
-ms.openlocfilehash: ade52e99fd054ac79106742fc9a65769f6ff9893
+ms.sourcegitcommit: e3e4ad430d8941a09543ce2dc97f8e449a39bced
+ms.openlocfilehash: 1c747085e47e997f549eff36a9f8d96cb243e228
 
 
 ---
@@ -140,7 +140,7 @@ Azure CLI で Azure IoT ハブを正常にプロビジョニングしている�
 
 ### <a name="device-explorer"></a>デバイス エクスプローラー
 
-[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md)は、Windows ローカル コンピューターで実行され、Azure の IoT Hub に接続するツールです。 このツールでは、以下の [IoT Hub エンドポイント](https://azure.microsoft.com/en-us/documentation/articles/iot-hub-devguide/) と通信します。
+[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer)は、Windows ローカル コンピューターで実行され、Azure の IoT Hub に接続するツールです。 このツールでは、以下の [IoT Hub エンドポイント](https://azure.microsoft.com/en-us/documentation/articles/iot-hub-devguide/) と通信します。
 
 - デバイス ID 管理: IoT Hub に登録されているデバイスのプロビジョニングと管理を実行できます。
 - デバイスからクラウドへのメッセージ受信: デバイスから IoT ハブに送信されるメッセージを監視できます。
@@ -150,7 +150,7 @@ Azure CLI で Azure IoT ハブを正常にプロビジョニングしている�
 
 ### <a name="iothub-explorer"></a>iothub-explorer
 
-[iothub-explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/iothub-explorer/readme.md) は、デバイス クライアントを管理するためのサンプル マルチプラットフォーム CLI ツールです。 このツールを使うと、ID レジストリにあるデバイスの管理、デバイスからクラウドへのメッセージの監視、クラウドからデバイスへのコマンドの送信が可能になります。
+[iothub-explorer](https://github.com/Azure/iothub-explorer) は、デバイス クライアントを管理するためのサンプル マルチプラットフォーム CLI ツールです。 このツールを使うと、ID レジストリにあるデバイスの管理、デバイスからクラウドへのメッセージの監視、クラウドからデバイスへのコマンドの送信が可能になります。
 
 iothub-explorer ツールの最新版 (プレリリース版) をインストールするには、次のコマンドを実行します。
 
@@ -174,6 +174,6 @@ iothub-explorer help
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,13 +1,13 @@
 ---
-title: Azure AD でのグループ管理用の Azure Active Directory PowerShell プレビューのコマンドレット | Microsoft Docs
-description: このページでは、Azure Active Directory でグループを管理するための PowerShell の例を示します。
-keywords: Azure AD、Azure Active Directory、PowerShell、グループ、グループ管理
+title: "Azure AD でのグループ管理用の Azure Active Directory PowerShell プレビューのコマンドレット |Microsoft Docs"
+description: "このページでは、Azure Active Directory でグループを管理するための PowerShell の例を示します。"
+keywords: "Azure AD、Azure Active Directory、PowerShell、グループ、グループ管理"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 7a5023dc-2727-4c25-8254-b531fc3244ac
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,13 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4f12fdf6732d44903fb1e971f05d0233d7aff08e
+
 
 ---
 # <a name="azure-active-directory-preview-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory プレビューのコマンドレット
 > [!div class="op_single_selector"]
 > * [Azure Portal](active-directory-groups-create-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-accessmanagement-manage-groups.md)
-> * [PowerShell](active-directory-accessmanagement-groups-v2-cmdlets.md)
+> * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 > 
 > 
 
@@ -45,7 +49,7 @@ Azure AD PowerShell プレビューのモジュールをインストールする
 ## <a name="connecting-to-the-directory"></a>ディレクトリへの接続
 Azure AD PowerShell プレビューのコマンドレットを使用してグループの管理を開始するには、管理するディレクトリに PowerShell セッションを接続する必要があります。 これを行うには、次のコマンドを使用します。
 
-    PS C:\Windows\system32> Connect-AzureAD -Force
+    PS C:\Windows\system32> Connect-AzureAD
 
 このコマンドレットでは、ディレクトリへのアクセスに使用する資格情報の入力を求められます。 この例では、 karen@drumkit.onmicrosoft.com を使用してデモンストレーション ディレクトリにアクセスします。 コマンドレットは、セッションがディレクトリに正常に接続されたことを表示する確認メッセージを返します。
 
@@ -173,8 +177,8 @@ Azure AD PowerShell コマンドレットは OData クエリの標準を実装�
 
     DeletionTimeStamp ObjectId                             ObjectType
     ----------------- --------                             ----------
-                        72cd4bbd-2594-40a2-935c-016f3cfeeeea User
-                        8120cc36-64b4-4080-a9e8-23aa98e8b34f User
+                          72cd4bbd-2594-40a2-935c-016f3cfeeeea User
+                          8120cc36-64b4-4080-a9e8-23aa98e8b34f User
 
 グループに以前追加したメンバーを削除するには、ここに示したように、Remove-AzureADGroupMember コマンドレットを使用します。
 
@@ -192,8 +196,8 @@ Azure AD PowerShell コマンドレットは OData クエリの標準を実装�
 
     PS C:\Windows\system32> Select-AzureADGroupIdsUserIsMemberOf -ObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea -GroupIdsForMembershipCheck $g
 
-    OdataMetadata                                                                                               Value
-    -------------                                                                                               -----
+    OdataMetadata                                                                                                 Value
+    -------------                                                                                                  -----
     https://graph.windows.net/85b5ff1e-0402-400c-9e3c-0f9e965325d1/$metadata#Collection(Edm.String)             {31f1ff6c-d48c-4f8a-b2e1-abca7fd399df}
 
 
@@ -214,7 +218,7 @@ Azure AD PowerShell コマンドレットは OData クエリの標準を実装�
 
     DeletionTimeStamp ObjectId                             ObjectType
     ----------------- --------                             ----------
-                        e831b3fd-77c9-49c7-9fca-de43e109ef67 User
+                          e831b3fd-77c9-49c7-9fca-de43e109ef67 User
 
 グループから所有者を削除する場合は、Remove-AzureADGroupOwner を使用します。
 
@@ -226,6 +230,9 @@ Azure Active Directory PowerShell のその他のドキュメントについて�
 * [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

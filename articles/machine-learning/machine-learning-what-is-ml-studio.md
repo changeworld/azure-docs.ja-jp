@@ -1,5 +1,5 @@
 ---
-title: "Azure Machine Learning Studio とは  | Microsoft Docs"
+title: "Azure Machine Learning Studio とは | Microsoft Docs"
 description: "そのまま使うことのできるアルゴリズムやモジュールを含んだライブラリから、ドラッグ アンド ドロップでモデルをすばやく構築できるツール Azure ML Studio の概要です。"
 keywords: "azure machine learning、azure ml、ml studio"
 services: machine-learning
@@ -45,13 +45,13 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 ## <a name="get-started-with-machine-learning-studio"></a>Machine Learning Studio の概要
 [Machine Learning Studio](https://studio.azureml.net) を初めて起動したときには、 **ホーム** ページが表示されます。 そこからドキュメントやビデオ、ウェビナーなど、有益なリソースにアクセスすることができます。
 
-左上のメニュー  ![メニュー](media/machine-learning-what-is-ml-studio/menu.png)  をクリックすると、いくつかのオプションが表示されます。
+左上のメニュー  ![メニュー](media/machine-learning-what-is-ml-studio/menu.png) をクリックすると、いくつかのオプションが表示されます。
 
 ### <a name="cortana-intelligence"></a>Cortana Intelligence
 **[Cortana Intelligence]** をクリックすると、[Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite) のホーム ページが表示されます。 Cortana Intelligence Suite は、データをインテリジェントなアクションに変換するための、完全管理型ビッグ データおよび高度な分析スイートです。 顧客事例を含む完全なドキュメントについては、Cortana Intelligence Suite のホーム ページを参照してください。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-ここには、**[ホーム]** (最初のページ) と **[Studio]** の 2 つのオプションがあります。
+ここには、**[ホーム]** (最初のページ) と **[Studio]** の&2; つのオプションがあります。
 
 **[Studio]** をクリックすると、**Azure Machine Learning Studio** に移動します。 最初に、Microsoft アカウントを使用するか職場または学校アカウントを使用してサインインするように求められます。 サインインすると、次のタブが左側に表示されます。
 
@@ -71,7 +71,7 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 ## <a name="components-of-an-experiment"></a>実験の構成要素
 実験にはデータセットが含まれます。データセットからデータが分析モジュールに提供され、分析モジュールを接続することで予測分析モデルが完成します。 有効な実験に求められる具体的な条件を以下に示します。
 
-* 実験には少なくとも 1 つのデータセットと 1 つのモジュールがある。
+* 実験には少なくとも&1; つのデータセットと&1; つのモジュールがある。
 * データセットはモジュールにのみ接続できる。
 * モジュールはデータセットにも別のモジュールにも接続できる。
 * モジュールのすべての入力ポートが、何らかの形でデータ フローに接続されている。

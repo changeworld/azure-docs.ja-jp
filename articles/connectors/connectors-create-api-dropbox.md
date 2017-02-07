@@ -8,7 +8,7 @@ manager: erikre
 editor: 
 tags: connectors
 ms.assetid: cb0ae033-aba7-4ac9-beaa-be561a0f0cac
-ms.service: app-service-logic
+ms.service: logic-apps
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,15 +16,15 @@ ms.workload: integration
 ms.date: 07/15/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0038c582d1a597dfcbb1fe8255b3a0fac1235e25
+ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
+ms.openlocfilehash: a8ecad3552f35c02c07fe33aa8531fb462b27002
 
 
 ---
 # <a name="get-started-with-the-dropbox-connector"></a>Dropbox コネクタの使用
 Dropbox に接続してファイルを管理します。 Dropbox のファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。
 
-[任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)から始めることができます。
+[任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)から始めることができます。
 
 ## <a name="connect-to-dropbox"></a>Dropbox に接続する
 ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの*接続*を作成する必要があります。 接続により、ロジック アプリと別のサービスとの接続が実現します。 たとえば、Dropbox に接続するには、最初に Dropbox "*接続*" を作成する必要があります。 接続を作成するには、接続先のサービスへのアクセスに通常使用する資格情報を入力する必要があります。 たとえば、Dropbox の場合は、Dropbox への接続を作成するために Dropbox アカウントの資格情報が必要になります。 接続の詳細については、[こちら]()をご覧ください。
@@ -35,7 +35,7 @@ Dropbox に接続してファイルを管理します。 Dropbox のファイル
 > 
 
 ## <a name="use-a-dropbox-trigger"></a>Dropbox トリガーを使用する
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。
 
 この例では、**[When a file is created (ファイルの作成時)]** トリガーを使用します。 このトリガーが発生したら、**[Get file content using path (パスを使用してファイルの内容を取得する)]** Dropbox アクションを呼び出します。 
 
@@ -45,7 +45,7 @@ Dropbox に接続してファイルを管理します。 Dropbox のファイル
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)  
 
 ## <a name="use-a-dropbox-action"></a>Dropbox アクションを使用する
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。
 
 トリガーを追加した後は、次の手順に従って、新しいファイルの内容を取得するアクションを追加します。
 
@@ -340,7 +340,7 @@ BlobMetadata
 | FileLocator |string |
 
 ## <a name="http-responses"></a>HTTP 応答
-上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。 
+上記のアクションとトリガーは、次の HTTP 状態コードを&1; つ以上返す場合があります。 
 
 | 名前 | 説明 |
 | --- | --- |
@@ -354,11 +354,11 @@ BlobMetadata
 | default |操作に失敗しました。 |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

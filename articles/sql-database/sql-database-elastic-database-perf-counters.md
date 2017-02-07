@@ -4,7 +4,7 @@ description: "ShardMapManager クラスとデータ依存ルーティング パ�
 services: sql-database
 documentationcenter: 
 manager: jhubbard
-author: SilviaDoomra
+author: ddove
 editor: 
 ms.assetid: b090aba0-2e30-454c-96b3-dffa281f539a
 ms.service: sql-database
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
-ms.author: SilviaDoomra
+ms.author: ddove
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 7e5d43ca318337626734f9460780764150314f9c

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 02/02/2016
 ms.author: stephpr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 044007fc099007ea64d958fb6c15a6ed29eccdcc
+ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
+ms.openlocfilehash: 0de0314902805a2bdb37ce3c6f79ec221f3aed31
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: 044007fc099007ea64d958fb6c15a6ed29eccdcc
 > 
 > GitHub アカウントをお持ちでない場合は、 [こちら](https://github.com/join)でサインアップできます。
 > 
-> [Microsoft Azure ](https://azure.microsoft.com/)アカウントをお持ちでない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップできます。 ここでは、 [Microsoft アカウント](http://account.microsoft.com) をお持ちでない場合にはそのサインアップ プロセスについても説明します。 また、Visual Studio サブスクライバーである場合は、 [MSDN の特典を利用](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)できます。
+> [Microsoft Azure ](https://azure.microsoft.com/)アカウントをお持ちでない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップできます。 ここでは、 [Microsoft アカウント](http://account.microsoft.com) をお持ちでない場合にはそのサインアップ プロセスについても説明します。 また、Visual Studio サブスクライバーである場合は、 [MSDN の特典を利用](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)できます。
 > 
 > お使いの開発用コンピューターに Git がなく、使用しているコンピューターが Macintosh または Windows の場合は、 [こちら](http://www.git-scm.com)から Git をインストールしてください。 Linux を使用している場合は、 `sudo apt-get install git`などの最適なメカニズムを使用して Git をインストールしてください。
 > 
@@ -261,6 +261,6 @@ Azure で Node.js アプリケーションを開発する方法の詳細につ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

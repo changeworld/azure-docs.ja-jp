@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2016
+ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 76d82d5bfc9c57583ea722e76f13bdd4b17ec444
+ms.sourcegitcommit: 8ba7633f7d5c4bf9e7160b27f5d5552676653d55
+ms.openlocfilehash: ad632fd894a56a490b48c81ae63d641412368f35
 
 
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-**重要**: Azure プラットフォームの SLA は、 [動作保証済みディストリビューション](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。 Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
+Azure プラットフォームの SLA は、[動作保証済みディストリビューション](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。 Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
 
 * [Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Microsoft Azure での Linux イメージのサポート](https://support.microsoft.com/kb/2941892)
@@ -80,6 +80,7 @@ Azure の VHD イメージは、1 MB に整列された仮想サイズが必要�
 1. `qemu-img` や `vbox-manage` などのツールを使用して直接 VHD のサイズを変更すると、VHD が起動できなくなる可能性があります。  そのため、最初に VHD を RAW ディスク イメージに変換することをお勧めします。  既に VM イメージを RAW ディスク イメージとして作成している場合は (KVM などの一部のハイパーバイザーでは既定)、この手順を省略できます。
    
        # qemu-img convert -f vpc -O raw MyLinuxVM.vhd MyLinuxVM.raw
+
 2. ディスク イメージの必要なサイズを計算して、仮想サイズが 1 MB に整列されていることを確認します。  次の bash シェル スクリプトは、これを行うのに役立ちます。  このスクリプトは "`qemu-img info`" を使用してディスク イメージの仮想サイズを決定し、次の 1 MB までサイズを計算します。
    
        rawdisk="MyLinuxVM.raw"
@@ -91,12 +92,18 @@ Azure の VHD イメージは、1 MB に整列された仮想サイズが必要�
    
        rounded_size=$((($size/$MB + 1)*$MB))
        echo "Rounded Size = $rounded_size"
+
 3. 上記のスクリプトのセットとして $rounded_size を使用して RAW ディスクのサイズを変更します。
    
        # qemu-img resize MyLinuxVM.raw $rounded_size
+
 4. 次に、RAW ディスク を固定サイズの VHD に変換します。
    
        # qemu-img convert -f raw -o subformat=fixed -O vpc MyLinuxVM.raw MyLinuxVM.vhd
+
+   または、qemu のバージョン **2.6 以降**を使用して `force_size` オプションを含めます。
+
+       # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc MyLinuxVM.raw MyLinuxVM.vhd
 
 ## <a name="linux-kernel-requirements"></a>Linux カーネルの要件
 Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、アップストリームの Linux カーネルに直接提供されています。 最新の Linux カーネル バージョン (つまり 3.x) を含む多くのディストリビューションでこれらのドライバーが含まれています。含まれていない場合は、これらのドライバーのバックポートされたバージョンがカーネルと共に提供されます。  これらのドライバーは、アップストリームのカーネル内で新しい修正と機能を含んだ形で常に更新されているため、可能な場合は、これらの修正と更新を含む[動作保証済みディストリビューション](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を実行することをお勧めします。
@@ -136,6 +143,7 @@ Red Hat Enterprise Linux バージョン **6.0-6.3**の変形を実行する場�
 * Azure Linux エージェントは NetworkManager と互換性がない場合があります。 ディストリビューションによって提供される多くの RPM/Deb パッケージでは、NetworkManager が waagent パッケージに対する競合として構成されるため、Linux エージェント パッケージをインストールすると NetworkManager がアンインストールされます。
 
 ## <a name="general-linux-system-requirements"></a>Linux システムの一般的な要件
+
 * GRUB または GRUB2 でカーネルのブート行を変更して次のパラメーターを含めます。 これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
   
         console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300
@@ -146,13 +154,14 @@ Red Hat Enterprise Linux バージョン **6.0-6.3**の変形を実行する場�
   
         rhgb quiet crashkernel=auto
   
-    クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。
-  
-    必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
+    クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。 必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
+
 * Azure Linux エージェントをインストールします。
   
     Azure Linux エージェントは、Azure で Linux イメージをプロビジョニングするために必要です。  多くのディストリビューションでは、このエージェントを RPM または Deb パッケージとして提供しています (パッケージは、通常 'WALinuxAgent' または 'walinuxagent' と呼ばれます)。  このエージェントは、 [Linux エージェント ガイド](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)の手順に従って手動でもインストールできます。
+
 * SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。  通常これが既定です。
+
 * OS ディスクにスワップ領域を作成しないでください。
   
     Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。 ローカル リソース ディスクは *一時* ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。 Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
@@ -162,6 +171,7 @@ Red Hat Enterprise Linux バージョン **6.0-6.3**の変形を実行する場�
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+
 * 最後の手順として、次のコマンドを実行して仮想マシンをプロビジョニング解除します。
   
         # sudo waagent -force -deprovision
@@ -172,11 +182,12 @@ Red Hat Enterprise Linux バージョン **6.0-6.3**の変形を実行する場�
   > Virtualbox では、'waagent -force -deprovision' の実行後に次のエラーが表示される場合があります: `[Errno 5] Input/output error`。 このエラー メッセージは重要ではないため、無視してかまいません。
   > 
   > 
+
 * その後、仮想マシンをシャットダウンし、Azure に VHD をアップロードする必要があります。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

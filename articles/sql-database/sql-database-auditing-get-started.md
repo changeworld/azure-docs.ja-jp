@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
-ms.author: CarlRabeler; ronitr; giladm
+ms.author: ronitr; giladm
 translationtype: Human Translation
 ms.sourcegitcommit: 7b3c6d29ad7ded2ea65f378a1f807235c688d738
 ms.openlocfilehash: 9f51fcdb291021064dc02a71afdf849f1f4a3d85

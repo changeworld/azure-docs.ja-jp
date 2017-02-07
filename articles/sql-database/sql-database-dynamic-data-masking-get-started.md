@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 11/22/2016
-ms.author: ronitr; ronmat; carlrab
+ms.author: ronitr; ronmat
 translationtype: Human Translation
 ms.sourcegitcommit: e8513a520d4aa012dcc0ee2ee0dd53828886280d
 ms.openlocfilehash: c28f444fcfc7361f02218b7866e15b77769232e5

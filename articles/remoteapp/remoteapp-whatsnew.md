@@ -1,5 +1,5 @@
 ---
-title: "Azure RemoteApp の新機能。  | Microsoft Docs"
+title: "Azure RemoteApp の新機能。 | Microsoft Docs"
 description: "Azure RemoteApp の変更点と改善点について説明します。"
 services: remoteapp
 documentationcenter: 
@@ -25,7 +25,7 @@ ms.openlocfilehash: 05487c4bbdce24ea9f31ed451026531c16ead7c4
 > 
 > 
 
-Azure RemoteApp の利点の 1 つは、常に改善の努力がされていることです。 改善を行うたびに、どのような変更を加えたかをここでお知らせします。
+Azure RemoteApp の利点の&1; つは、常に改善の努力がされていることです。 改善を行うたびに、どのような変更を加えたかをここでお知らせします。
 
 ## <a name="future-updates"></a>今後の更新
 Azure RemoteApp チームが RDS ブログを毎月更新していることをご存知でしたか? Azure RemoteApp の変更点だけでなく、RDS の使用方法に関する他の情報も確認できます。 詳細については、Azure RemoteApp チームのブログ、 [Remote Desktop Services Blog](https://blogs.msdn.microsoft.com/rds/)をご覧ください。 たとえば、数週間前に、 [Azure RemoteApp と Azure AD を使用したワークロードのリフト アンド シフト](https://blogs.msdn.microsoft.com/rds/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services/)に関するエントリが投稿されました。
@@ -50,7 +50,7 @@ Azure RemoteApp チームが RDS ブログを毎月更新していることを�
 * Azure RemoteApp コレクションの [アプリとデータを守る](remoteapp-secure.md) 方法を詳述しました。
 
 ## <a name="july-2015"></a>2015 年 7 月
-7 月は 8 月に予定されている変更の準備をしているため、現時点でお知らせはほとんどなく、大半はドキュメントの更新です。 最新の変更内容を次に示します。
+7 月は&8; 月に予定されている変更の準備をしているため、現時点でお知らせはほとんどなく、大半はドキュメントの更新です。 最新の変更内容を次に示します。
 
 * ポータルに **[サポート]** タブが追加されました。これにより、フォーラムなどのサポート リソースにアクセスしやすくなりました。
 * ハイブリッド コレクションの作成に関するトラブルシューティング情報が修正されました。 VNET 用に構成するための適切なポートを特定する方法などのトラブルシューティングのヒントについては、 [最新情報](remoteapp-hybridtrouble.md) をご覧ください。
@@ -71,7 +71,7 @@ Azure RemoteApp チームが RDS ブログを毎月更新していることを�
 7 月にさらに多くの変更点をロールアウトします。近いうちに新しい更新で戻ってきます。
 
 ## <a name="may-2015"></a>2015 年 5 月
-最初にこのトピックを作ってから長い時間が経過し、さまざまな機能が追加されました。そのため、このリストは少し異なり、3 月の初めから 5 月の終わりまでを対象にしています。 新しい機能:
+最初にこのトピックを作ってから長い時間が経過し、さまざまな機能が追加されました。そのため、このリストは少し異なり、3 月の初めから&5; 月の終わりまでを対象にしています。 新しい機能:
 
 * すべてを自動化 - Azure RemoteApp に [Azure PowerShell モジュールのコマンドレット](remoteapp-tutorial-arawithpowershell.md)が与えられました。
 * [Azure 仮想マシンから Azure RemoteApp イメージを作成します](remoteapp-image-on-azurevm.md)。 カスタム イメージを Azure にアップロードする作業が大幅に速くなりました。

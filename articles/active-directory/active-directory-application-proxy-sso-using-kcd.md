@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2016
+ms.date: 12/01/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 74c932301fdeb0956933dd23a331efa3d36a24a1
-
+ms.sourcegitcommit: 1eada96773b1d9c6adb9326c9100da7cde8abf77
+ms.openlocfilehash: 8df936a03868412adf34672108f40829c41f33ab
 
 ---
+
 # <a name="single-sign-on-with-application-proxy"></a>アプリケーション プロキシを使用したシングル サインオン
 シングル サインオンは、Azure AD アプリケーション プロキシの重要な要素です。 次の手順で、最適なユーザー エクスペリエンスを提供できます。
 
@@ -54,7 +54,7 @@ Azure AD アプリケーション プロキシによって、ユーザーにシ�
 * 対象のアプリ (SharePoint Web アプリなど) が統合 Windows 認証を使用するように設定されていること。 詳細については、「[Kerberos 認証のサポートを有効にする](https://technet.microsoft.com/library/dd759186.aspx)」を参照してください。SharePoint の場合は、「[SharePoint 2013 で Kerberos 認証を計画する](https://technet.microsoft.com/library/ee806870.aspx)」を参照してください。
 * 対象となるすべてのアプリにサービス プリンシパル名があること。
 * コネクタを実行するサーバーとアプリを実行するサーバーがドメインに参加し、かつ同じドメインまたは信頼する側のドメインに属していること。 ドメインへの参加の詳細については、「 [コンピューターをドメインに参加させる](https://technet.microsoft.com/library/dd807102.aspx)」を参照してください。
-* Connector を実行しているサーバーに、ユーザーの TokenGroupsGlobalAndUniversal を読み取るためのアクセス権があること。 既定ではそのように設定されていますが、環境のセキュリティを強化する過程で変更されている可能性があります。 この点について詳しくは、[KB2009157](https://support.microsoft.com/en-us/kb/2009157) をご覧ください。
+* Connector を実行しているサーバーに、ユーザーの TokenGroupsGlobalAndUniversal を読み取るためのアクセス権があること。 既定ではそのように設定されていますが、環境のセキュリティを強化する過程で変更されている可能性があります。 この設定について詳しくは、[KB2009157](https://support.microsoft.com/en-us/kb/2009157) をご覧ください。
 
 ### <a name="active-directory-configuration"></a>Active Directory の構成
 Active Directory の構成は、アプリケーション プロキシ コネクタと公開されたサーバーが同じドメイン内にあるかどうかによって異なります。
@@ -63,7 +63,7 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 1. Active Directory で、**[ツール]** > **[ユーザーとコンピューター]** の順に移動します。
 2. コネクタを実行しているサーバーを選択します。
 3. 右クリックし、**[プロパティ]** > **[委任]** を選択します。
-4. **[指定されたサービスへの委任でのみこのコンピューターを信頼する]** を選択し、**[このアカウントが委任された資格情報を提示できるサービス]** の下で、アプリケーション サーバーの SPN ID の値を追加します。
+4. **[指定されたサービスへの委任でのみこのコンピューターを信頼する]** をクリックします。 **[このアカウントが委任された資格情報を提示できるサービス]** の下で、アプリケーション サーバーの SPN ID の値を追加します。
 5. これで、アプリケーション プロキシ コネクタは、AD において、リストで定義されたアプリケーションに対してユーザーの代理となることができるようになります。
 
 ![Connector-SVR のプロパティ ウィンドウのスクリーン ショット](./media/active-directory-application-proxy-sso-using-kcd/Properties.jpg)
@@ -71,17 +71,17 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 #### <a name="connector-and-published-server-in-different-domains"></a>それぞれ異なるドメインにあるコネクタと公開されたサーバー
 1. ドメイン間の KCD を使用するための前提条件の一覧については、「 [ドメイン間の Kerberos の制約付き委任](https://technet.microsoft.com/library/hh831477.aspx)」を参照してください。
 2. Windows 2012 R2 で、コネクタ サーバーの `principalsallowedtodelegateto` プロパティを使用してアプリケーション プロキシを有効にして、コネクタ サーバーを委任します。ここで、公開先サーバーは `sharepointserviceaccount` で、委任元サーバーは `connectormachineaccount` です。
-   
+
         $connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
-   
+
         Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
-   
+
         Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
 
 > [!NOTE]
 > `sharepointserviceaccount` には、SPS コンピューター アカウントか、SPS アプリ プールの実行に使用されているサービス アカウントを指定できます。
-> 
-> 
+>
+>
 
 ### <a name="azure-classic-portal-configuration"></a>Azure クラシック ポータルの構成
 1. 「 [アプリケーション プロキシを使用したアプリケーションの発行](active-directory-application-proxy-publish.md)」で説明されている手順に従って、アプリケーションを発行します。 **[事前認証方法]** で **[Azure Active Directory]** が選択されていることを確認してください。
@@ -91,9 +91,9 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 4. アプリケーション サーバーの **[内部アプリケーション SPN]** を入力します。 この例では、公開されたアプリケーションの SPN は、http/lob.contoso.com です。  
 
 > [!IMPORTANT]
-> オンプレミスの UPN と Azure Active Directory の UPN が同一でない場合は、事前認証が機能するように [委任されたログイン ID](#delegated-login-identity) を構成する必要があります。
-> 
-> 
+> オンプレミスの UPN と Azure Active Directory の UPN が同一でない場合は、事前認証が機能するように[委任されたログイン ID](#delegated-login-identity) を構成する必要があります。
+>
+>
 
 |  |  |
 | --- | --- |
@@ -108,7 +108,7 @@ Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がク�
 ### <a name="delegated-login-identity"></a>委任されたログイン ID
 委任されたログイン ID を使用すると、2 つの異なるログイン シナリオに対応できるようになります。
 
-* ユーザー ID をメール アドレス (username@domain) ではなく、ユーザー名または SAM アカウント名の形式で通常取得する Windows 以外のアプリケーション。
+* ユーザー ID を電子メール アドレス (username@domain) ではなく、ユーザー名またはソフトウェア アセット管理アカウント名の形式で通常取得する Windows 以外のアプリケーション。
 * Azure AD の UPN とオンプレミスの Active Directory の UPN が異なる代替ログイン構成。
 
 アプリケーション プロキシを使用すると、Kerberos チケットの取得に使用する ID を選択できます。 この設定は、アプリケーションごとに行います。 これらのオプションの中には、電子メール アドレスの形式を受け入れないシステムに適したものもあれば、代替ログイン用に設計されたものもあります。
@@ -122,7 +122,7 @@ Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がク�
 
 この機能により、オンプレミス ID とクラウド ID が異なる多くの組織で、ユーザーに別のユーザー名とパスワードの入力を要求することなく、クラウドからオンプレミスのアプリに SSO させることができます。 次のような組織が含まれます。
 
-* 内部に複数のドメインがあり (joe@us.contoso.com, joe@eu.contoso.com)、クラウドに 1 つのドメインがある (joe@contoso.com).。
+* 内部に複数のドメインがあり (joe@us.contoso.com, joe@eu.contoso.com)、クラウドに 1 つのドメインがある (joe@contoso.com)。
 * 内部にルーティングできないドメイン名があり (joe@contoso.usa)、クラウドに法的なドメイン名がある。
 * 内部でドメイン名を使用していない (joe)。
 * オンプレミスとクラウドで異なるエイリアスを使用している。 例: joe-johns@contoso.com vs. joej@contoso.com  
@@ -130,21 +130,21 @@ Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がク�
 これは、Windows 以外のバックエンド サーバーで非常に一般的なシナリオである電子メール アドレス形式のアドレスを受け入れないアプリケーションでも役立ちます。
 
 ### <a name="setting-sso-for-different-cloud-and-on-prem-identities"></a>クラウド ID とオンプレミス ID が異なる場合の SSO の設定
-1. Azure AD Connect の設定を、メイン ID が電子メール アドレス (mail) になるように構成します。 これはカスタマイズ プロセスの一部として、同期設定の **[ユーザー プリンシパル名]** フィールドを変更することで実行します。 これらの設定は、ユーザーが Office365、Windows10 デバイス、および Azure AD を ID ストアとして使用する他のアプリケーションにログインする方法も決定することに注意してください。  
+1. Azure AD Connect の設定を、メイン ID が電子メール アドレス (mail) になるように構成します。 これはカスタマイズ プロセスの一部として、同期設定の **[ユーザー プリンシパル名]** フィールドを変更することで実行します。 これらの設定は、ユーザーが Office365、Windows10 デバイス、および Azure AD を ID ストアとして使用する他のアプリケーションにログインする方法も決定します。  
    ![ユーザーを識別するスクリーンショット - [ユーザー プリンシパル名] ドロップダウン リスト](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_connect_settings.png)  
 2. 変更するアプリケーションの [アプリケーションの構成] 設定で、使用する **[委任されたログイン ID]** を選択します。
-   
+
    * ユーザー プリンシパル名: joe@contoso.com  
    * 代替ユーザー プリンシパル名: joed@contoso.local  
    * ユーザー プリンシパル名のユーザー名部分: joe  
    * 代替ユーザー プリンシパル名のユーザー名部分: joed  
    * オンプレミスのソフトウェア アセット管理アカウント名: オンプレミスのドメイン コント ローラーの構成に依存
-   
+
    ![[委任されたログインID] ドロップダウン メニューのスクリーン ショット](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_upn.png)  
 
 ### <a name="troubleshooting-sso-for-different-identities"></a>ID が異なる場合の SSO のトラブルシューティング
-SSO プロセスにエラーがある場合は、「 [トラブルシューティング](active-directory-application-proxy-troubleshoot.md)」で説明するように、コネクタ コンピューターのイベント ログに表示されます。
-ただし、場合によっては、バックエンド アプリケーションが他のさまざまなHTTP 応答に応答している間に、要求が正常に送信されることがあります。 このような場合のトラブルシューティングは、アプリケーション プロキシ セッションのイベント ログで、コネクタ コンピューターのイベント番号 24029 を調べることから始める必要があります。 委任のために使用されたユーザー ID は、イベント詳細の [ユーザー] フィールドに表示されます。 セッション ログを有効にするには、イベント ビューアーで [表示] メニューの **[分析およびデバッグ ログの表示]** を選択します。
+SSO プロセスにエラーがある場合は、「[トラブルシューティング](active-directory-application-proxy-troubleshoot.md)」で説明するように、コネクタ コンピューターのイベント ログに表示されます。
+ただし、場合によっては、バックエンド アプリケーションが他のさまざまな HTTP 応答に応答している間に、要求が正常に送信されることがあります。 このような場合のトラブルシューティングは、アプリケーション プロキシ セッションのイベント ログで、コネクタ コンピューターのイベント番号 24029 を調べることから始める必要があります。 委任のために使用されたユーザー ID は、イベント詳細の [ユーザー] フィールドに表示されます。 セッション ログを有効にするには、イベント ビューアーで [表示] メニューの **[分析およびデバッグ ログの表示]** を選択します。
 
 ## <a name="see-also"></a>関連項目
 * [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
@@ -152,7 +152,7 @@ SSO プロセスにエラーがある場合は、「 [トラブルシューテ�
 * [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
 * [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
 
-最新のニュースと更新情報については、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
+最新のニュースと更新プログラムについては、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
 
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png
@@ -160,6 +160,6 @@ SSO プロセスにエラーがある場合は、「 [トラブルシューテ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

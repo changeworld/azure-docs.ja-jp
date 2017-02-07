@@ -4,7 +4,7 @@ description: "エージェントや OMS サービスで特定のポートを使�
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: b55ebd80-efd4-4220-971b-c18aea1b1ab2
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/11/2016
+ms.date: 01/02/2017
 ms.author: banders;magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: adbf803f2c3b34948bcc37c7fcceb1c3af2e6dc7
-ms.openlocfilehash: 741e83f3ce790378d5f699bb27775457f8a63256
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 16af0b801cd6955a8edc88aae5dd5199f4f2a713
 
 
 ---
@@ -177,6 +177,6 @@ OMS にソリューションを追加した場合、ソリューションは Ope
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

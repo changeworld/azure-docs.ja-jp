@@ -15,22 +15,19 @@ ms.workload: data-services
 ms.date: 09/21/2016
 ms.author: lakshmir;barbkess;sonyama
 translationtype: Human Translation
-ms.sourcegitcommit: 7216b064f5d0e9a1f4b7e3966e98a0bac485dd73
-ms.openlocfilehash: dcf4bab6c28d2b353fd458687fc04f7a92857d33
+ms.sourcegitcommit: 763ae02d1196a924bbf89e423871af2ec22e9e6c
+ms.openlocfilehash: 84f582e8d767466ce9dec83203ec78047648caea
 
 
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>Azure SQL Data Warehouse の復元 (Portal)
 > [!div class="op_single_selector"]
 > * [概要][Overview]
-> * [Portal][Portal]
+> * [ポータル][Portal]
 > * [PowerShell][PowerShell]
 > * [REST][REST]
 >
 >
-> [!NOTE]
-> 2016 年 12 月 1 日現在、Microsft は Azure Portal からの復元時に発生する問題の修正に取り組んでいます。 復元には [PowerShell] を使用してください (https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell)。
-
 この記事では、Azure Portal を使用して Azure SQL Data Warehouse を復元する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に

@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ad35f6590a39972ec9be7168059738b6daae0574
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: e30231bd576436ae69f4fa42d0e2ab312c3938d6
 
 
 ---
@@ -29,7 +29,7 @@ SendGrid 接続プロバイダーを使用して、電子メールを送信し�
 > 
 > 
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事を参照してください。
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事を参照してください。
 
 ## <a name="triggers-and-actions"></a>トリガーとアクション
 SendGrid コネクタは、アクションとして使用できます。SendGrid コネクタにはトリガーがあります。 すべてのコネクタは、JSON および XML 形式のデータに対応します。 
@@ -157,11 +157,11 @@ SendGrid を使用してロジック アプリを作成するには、まず**�
 | id |string |なし |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

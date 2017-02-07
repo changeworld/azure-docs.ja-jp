@@ -147,7 +147,7 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 いいえ。ただし、Machine Learning Studio には、各アルゴリズムの結果を比較して問題に合ったアルゴリズムを決定できるさまざまな方法があります。
 
 **提供されているアルゴリズムから 1 つのアルゴリズムを選ぶ際のガイドラインはありますか。**
- [アルゴリズムの選択方法](machine-learning-algorithm-choice.md)」に関するページをご覧ください。
+[アルゴリズムの選択方法](machine-learning-algorithm-choice.md)」に関するページをご覧ください。
 
 **提供されているアルゴリズムは、R または Python で記述されていますか。**
 
@@ -204,7 +204,7 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。 詳細
 
 **すべての Web サービスで予測される基本的な遅延はありますか。**
 
- [Azure サブスクリプションの制限](../azure-subscription-service-limits.md)
+[Azure サブスクリプションの制限](../azure-subscription-service-limits.md)
 
 ### <a name="use"></a>最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、
 **バッチ実行サービスと要求応答サービスとして予測モデルを実行するのはいつがいいですか。**
@@ -527,7 +527,7 @@ Machine Learning サービスはマルチテナント サービスです。バ�
 ### <a name="guest-access"></a>ゲスト アクセス
 **Azure Machine Learning Studio に対するゲスト アクセスとは何ですか?**
 
-ゲスト アクセスとは機能が制限された試用版エクスペリエンスであり、費用をかけず、認証もせずに、Azure Machine Learning Studio で実験を作成して実行できます。 ゲスト セッションは非永続で保存ができず、利用できる時間は 8 時間に制限されます。 他にも、R と Python がサポートされていない、ステージング API がない、データセットのサイズとストレージの容量が制限されている、などの制限事項があります。 一方 Microsoft アカウントでサインインしたユーザーの場合には、前述した Machine Learning Studio の Free レベルへのフル アクセスが提供され、永続ワークスペースやさらに包括的な機能を使用できます。 **https://studio.azureml.net** の [[Get started (開始)]](https://studio.azureml.net)をクリックして [Guest Access (ゲスト アクセス)] または [Sign In with Microsoft account (Microsoft アカウントでサインイン)] を選択し、無料の Machine Learning の機能をお試しください。
+ゲスト アクセスとは機能が制限された試用版エクスペリエンスであり、費用をかけず、認証もせずに、Azure Machine Learning Studio で実験を作成して実行できます。 ゲスト セッションは非永続で保存ができず、利用できる時間は 8 時間に制限されます。 他にも、R と Python がサポートされていない、ステージング API がない、データセットのサイズとストレージの容量が制限されている、などの制限事項があります。 一方 Microsoft アカウントでサインインしたユーザーの場合には、前述した Machine Learning Studio の Free レベルへのフル アクセスが提供され、永続ワークスペースやさらに包括的な機能を使用できます。 [https://studio.azureml.net](https://studio.azureml.net) の** [Get started (開始)]** をクリックして [Guest Access (ゲスト アクセス)] または [Sign In with Microsoft account (Microsoft アカウントでサインイン)] を選択し、無料の Machine Learning の機能をお試しください。
 
 <!-- Module References -->
 [image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/

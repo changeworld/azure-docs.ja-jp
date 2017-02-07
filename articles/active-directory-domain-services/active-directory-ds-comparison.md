@@ -1,12 +1,12 @@
 ---
-title: 'Azure AD Domain Services: Azure AD Domain Services と自作のドメイン コント ローラーの比較 | Microsoft Docs'
-description: Azure Active Directory Domain Services と自作のドメイン コント ローラーの比較
+title: "Azure AD Domain Services: Azure AD Domain Services と自作のドメイン コント ローラーの比較 | Microsoft Docs"
+description: "Azure Active Directory Domain Services と自作のドメイン コント ローラーの比較"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 67575bbbb7d99ffeef3cb5dab74f4a68065bacc1
+
 
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Azure AD Domain Services がユースケースに適しているかを判断する方法
@@ -87,7 +91,7 @@ Azure AD Domain Services で管理されているドメインのベースのス�
 #### <a name="geo-dispersed-deployments"></a>地理的に分散したデプロイ
 Azure AD Domain Services の管理対象ドメインは、Azure の 1 つの仮想ネットワーク内のみで使用できます。 ドメイン コントローラーを世界の複数の Azure リージョンで使用できるようにする必要がある場合は、Azure IaaS VM でドメイン コントローラーをセットアップするのが良いかもしれません。
 
-## <a name="'do-it-yourself'-(diy)-ad-deployment-options"></a>'自作' (DIY) AD デプロイ オプション
+## <a name="do-it-yourself-diy-ad-deployment-options"></a>'自作' (DIY) AD デプロイ オプション
 お客様のデプロイ ユースケースでは、Windows Server AD インストールで提供される機能の一部が必要かもしれません。 このような場合は、次の自作 (DIY) オプションのいずれかを検討してください。
 
 * **スタンドアロン クラウド ドメイン:** ドメイン コントローラーとして構成されている Azure 仮想マシンを使用して、スタンドアロンの ‘クラウド ドメイン’ をセットアップする。 このインフラストラクチャは、オンプレミスの AD 環境には統合されません。 このオプションでは、クラウドの VM にログインする、または VM を管理するために、’クラウド資格情報’ の別のセットが必要になります。
@@ -106,6 +110,9 @@ Azure AD Domain Services の管理対象ドメインは、Azure の 1 つの仮�
 * [デプロイ シナリオ - Azure AD Domain Services](active-directory-ds-scenarios.md)
 * [Azure Virtual Machines での Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

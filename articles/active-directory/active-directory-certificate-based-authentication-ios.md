@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/21/2016
+ms.date: 01/10/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b6fde282a50dff4b3d9f0ac22a88728e30b5bc44
+ms.sourcegitcommit: ce9474f2926a856673efbab5103a308d31001343
+ms.openlocfilehash: fe00603de855e621b751004fdbd74acafaee017f
 
 
 ---
-# <a name="get-started-with-certificate-based-authentication-on-ios---public-preview"></a>iOS の証明書ベースの認証の使用 - パブリック プレビュー
+# <a name="get-started-with-certificate-based-authentication-on-ios"></a>iOS の証明書ベースの認証の使用
 > [!div class="op_single_selector"]
 > * [iOS](active-directory-certificate-based-authentication-ios.md)
 > * [Android](active-directory-certificate-based-authentication-android.md)
@@ -77,7 +77,12 @@ Azure Active Directory は、ADFS トークン (またはその他の SAML ト�
 * iOS に Azure Authenticator をインストールするための要件
 * ユーザー証明書を取得する手順 
 
-詳細については、「 [AD FS サインイン ページのカスタマイズ](https://technet.microsoft.com/library/dn280950.aspx)」を参照してください。  
+詳細については、「 [AD FS サインイン ページのカスタマイズ](https://technet.microsoft.com/library/dn280950.aspx)」を参照してください。
+
+(先進認証が有効になった) 一部の Office アプリは、要求で *prompt=login* を Azure AD に送信します。 既定では、Azure AD は、ADFS への要求でこれを *wauth=usernamepassworduri* (ADFS に U/P 認証を実行するように要求) と *wfresh=0* (ADFS に SSO 状態を無視して、新しい認証を実行するように要求) に変換します。 これらのアプリに対して証明書ベースの認証を有効にするには、既定の Azure AD の動作を変更する必要があります。 フェデレーション ドメイン設定の *PromptLoginBehavior* を '*無効*' に設定するだけです。 このタスクを実行するには、[MSOLDomainFederationSettings](https://docs.microsoft.com/en-us/powershell/msonline/v1/set-msoldomainfederationsettings) コマンドレットを使用します。
+
+`Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
+  
 
 ### <a name="exchange-activesync-clients-support"></a>Exchange ActiveSync クライアントのサポート
 iOS 9 以降では、ネイティブの iOS メール クライアントがサポートされます。 その他の Exchange ActiveSync アプリケーションについては、この機能のサポート状況をアプリケーションの開発者にお問い合わせください。  
@@ -118,9 +123,9 @@ iOS 9 以降では、ネイティブの iOS メール クライアントがサ�
 
 ### <a name="configuring-your-azure-ad-tenant-for-certificate-based-authentication"></a>証明書ベースの認証に使用する Azure AD テナントの構成
 1. Windows PowerShell を管理者特権で起動します。 
-2. Azure AD モジュールをインストールします。 バージョン [1.1.143.0](http://www.powershellgallery.com/packages/AzureADPreview/1.1.143.0) 以降をインストールする必要があります。  
+2. Azure AD モジュールをインストールします。 バージョン [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 以降をインストールする必要があります。  
    
-        Install-Module -Name AzureADPreview –RequiredVersion 1.1.143.0 
+        Install-Module -Name AzureAD –RequiredVersion 2.0.0.33 
 3. ターゲット テナントに接続します。 
    
         Connect-AzureAD 
@@ -214,6 +219,6 @@ iOS 9 以降のネイティブ メール アプリケーションで証明書認
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

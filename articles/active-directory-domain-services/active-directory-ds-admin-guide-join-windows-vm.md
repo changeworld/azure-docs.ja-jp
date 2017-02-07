@@ -90,7 +90,7 @@ Windows Server 仮想マシンを AAD DS の管理対象ドメインに参加さ
     ![ドメインへの参加の資格情報を指定する](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-credentials.png)
 6. 次のいずれかの方法で、資格情報を指定できます。
    
-   * UPN 形式: Azure AD で構成されたユーザー アカウントの UPN サフィックスを指定します。 この例では、ユーザー 'bob' の UPN サフィックスは、'bob@domainservicespreview.onmicrosoft.com' です。
+   * UPN 形式: Azure AD で構成されたユーザー アカウントの UPN サフィックスを指定します。 この例では、ユーザー 'bob' の UPN サフィックスは 'bob@domainservicespreview.onmicrosoft.com' です。
    * SAMAccountName 形式: SAMAccountName 形式でアカウント名を指定することができます。 この例では、ユーザー 'bob' は、「CONTOSO100\bob」を入力する必要があります。
      
      > [!NOTE]
@@ -128,6 +128,6 @@ Windows Server 仮想マシンを AAD DS の管理対象ドメインに参加さ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

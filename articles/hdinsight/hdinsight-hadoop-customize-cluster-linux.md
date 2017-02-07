@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/14/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: 4bebf59070e4047f083a5e92de1cfeb9d520e41f
+ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
+ms.openlocfilehash: a7febd4af48a28daace9f267c8ddd1440cbedabf
 
 
 ---
@@ -33,7 +33,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 ## <a name="permissions"></a>アクセス許可
 
-ドメイン参加済みの HDInsight クラスターを使用している場合、このクラスターでスクリプト アクションを使用するには次の 2 つの Ambari アクセス許可が必要になります。
+ドメイン参加済みの HDInsight クラスターを使用している場合、このクラスターでスクリプト アクションを使用するには次の&2; つの Ambari アクセス許可が必要になります。
 
 * **AMBARI.RUN\_CUSTOM\_COMMAND**: Ambari の管理者ロールは、既定でこのアクセス許可を持っています。
 * **CLUSTER.RUN\_CUSTOM\_COMMAND**: HDInsight クラスターの管理者および Ambari の管理者は、既定でこのアクセス許可を持っています。
@@ -192,8 +192,8 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 #### <a name="before-you-begin"></a>開始する前に
 
 * コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」をご覧ください。
-* テンプレートを作成する方法の手順については、「 [Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」をご覧ください。
-* リソース マネージャーで Azure PowerShell を使用したことがない場合は、「 [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+* テンプレートを作成する方法の手順については、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」をご覧ください。
+* リソース マネージャーで Azure PowerShell を使用したことがない場合は、「 [Azure リソース マネージャーでの Azure PowerShell の使用](../azure-resource-manager/powershell-azure-resource-manager.md)」を参照してください。
 
 #### <a name="create-clusters-using-script-action"></a>スクリプト アクションを使用してクラスターを作成する
 
@@ -715,7 +715,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
     * **Zookeeper ノード** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
-* 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。 各スクリプト アクションに対して、**output-\*.txt** と **errors-\*.txt** が 1 つずつあります。 output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。 たとえば、次のように入力します。
+* 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。 各スクリプト アクションに対して、**output-\*.txt** と **errors-\*.txt** が&1; つずつあります。 output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。 たとえば、次のように入力します。
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
@@ -727,7 +727,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 * 同じ日に同じ名前のスクリプト アクション クラスターを作成する場合は、一意のプレフィックスを使用して該当するログ ファイルを識別できます。
 
-* 1 日の最後にクラスターを作成すると、ログ ファイルが 2 日間にまたがる場合があります。 そのような場合は、同じクラスターに日付が異なる 2 つのフォルダーが作成されます。
+* 1 日の最後にクラスターを作成すると、ログ ファイルが&2; 日間にまたがる場合があります。 そのような場合は、同じクラスターに日付が異なる&2; つのフォルダーが作成されます。
 
 * 既定のコンテナーへのログ ファイルのアップロードは、特に大きなクラスターの場合、最大 5 分かかることがあります。 そのため、ログにアクセスする必要がある場合は、スクリプト アクションが失敗したときにクラスターをすぐに削除しないでください。
 
@@ -740,7 +740,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 クラスターが 2016 年 3 月 15 日より前に作成された場合、クラスターの作成時に使用されたスクリプトのスクリプト アクション履歴にエントリが表示されない可能性があります。 ただし、2016 年 3 月 15 日より後にそのクラスターのサイズを変更すると、スクリプトはサイズ変更操作の一部としてクラスター内の新しいノードに適用されるため、クラスター作成時のスクリプトの使用は履歴に表示されます。
 
-ただし、例外が 2 つあります。
+ただし、例外が&2; つあります。
 
 * クラスターが 2015 年 9 月 1 日より前に作成された場合。 スクリプト アクションが導入される前であるため、この日付より前に作成されたクラスターについては、作成時にスクリプト アクションを使用できませんでした。
 
@@ -761,6 +761,6 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

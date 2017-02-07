@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: 3f27488c8c0173f695edc98da01345d14ff64698
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 08b4cd3fe4a246bc62fb4a6cc596630968d7f9d7
 
 
 ---
@@ -49,7 +49,7 @@ Sails.js の実用的な知識が必要です。 このチュートリアルは�
 * Microsoft Azure アカウント。 アカウントを持っていない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)するか [Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
 
 > [!NOTE]
-> Azure アカウントがなくても、[App Service を試用](http://go.microsoft.com/fwlink/?LinkId=523751)できます。 スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
+> Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大&1; 時間使用できます。クレジット カードも契約も不要です。
 > 
 > 
 
@@ -91,7 +91,7 @@ Sails.js の実用的な知識が必要です。 このチュートリアルは�
    * iisnode.yml ファイルがルート ディレクトリに作成されます。 このファイルを使用して [iisnode](https://github.com/tjanczuk/iisnode) を構成できます。iisnode は Node.js アプリを実行するために App Service で使用されます。
 
 ## <a name="step-3-configure-and-deploy-your-sailsjs-app"></a>手順 3: Sails.js アプリを構成およびデプロイする
- App Service での Sails.js アプリの使用は、次の 3 つの主要な手順で構成されます。
+ App Service での Sails.js アプリの使用は、次の&3; つの主要な手順で構成されます。
 
 * App Service で実行するようにアプリを構成する
 * アプリを App Service にデプロイする
@@ -99,7 +99,7 @@ Sails.js の実用的な知識が必要です。 このチュートリアルは�
 
 次の手順に従います。
 
-1. ルート ディレクトリに新しい iisnode.yml ファイルを開いて、次の 2 行を追加します。
+1. ルート ディレクトリに新しい iisnode.yml ファイルを開いて、次の&2; 行を追加します。
 
         loggingEnabled: true
         logDirectory: iisnode
@@ -249,7 +249,7 @@ Azure のデータベースに接続するには、Azure SQL Database、MySQL、
          git commit -m "<your commit message>"
          git push azure master
          azure site browse
-11. Azure Web アプリの blueprint API にアクセスします。 次に例を示します。
+11. Azure Web アプリの blueprint API にアクセスします。 For example:
 
          http://<appname>.azurewebsites.net/mywidget/create
 
@@ -261,6 +261,6 @@ Azure のデータベースに接続するには、Azure SQL Database、MySQL、
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

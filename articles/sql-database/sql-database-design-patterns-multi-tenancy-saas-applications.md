@@ -4,7 +4,7 @@ description: "この記事では、クラウド環境で実行されるマルチ
 keywords: 
 services: sql-database
 documentationcenter: 
-author: CarlRabeler
+author: srinia
 manager: jhubbard
 editor: 
 ms.assetid: 1dd20c6b-ddbb-40ef-ad34-609d398d008a
@@ -14,8 +14,8 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-design
-ms.date: 11/08/2016
-ms.author: carlrab
+ms.date: 02/01/2017
+ms.author: srinia
 translationtype: Human Translation
 ms.sourcegitcommit: 7ee06d20ba56402fad86adf321c7c5a4996d7e19
 ms.openlocfilehash: 92dd94db5885bc24655cf2af3247528901f10720

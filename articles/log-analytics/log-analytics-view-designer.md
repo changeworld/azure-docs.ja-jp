@@ -1,19 +1,23 @@
 ---
-title: Log Analytics ビュー デザイナー | Microsoft Docs
-description: Log Analytics のビュー デザイナーを使用すると、OMS コンソールで、OMS リポジトリのデータをさまざまに視覚化するカスタム ビューを作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
+title: "Log Analytics ビュー デザイナー | Microsoft Docs"
+description: "Log Analytics のビュー デザイナーを使用すると、OMS コンソールで、OMS リポジトリのデータのさまざまな視覚エフェクトを含むカスタム ビューを作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 12/09/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: efe0eeb6c9389545f51f22bbf0a2d6389939c375
+
 
 ---
 # <a name="log-analytics-view-designer"></a>Log Analytics ビュー デザイナー
@@ -62,7 +66,7 @@ OMS のメイン ダッシュボードでビュー デザイナー タイルを�
 ![ビューの削除](media/log-analytics-view-designer/edit-menu-delete.png)
 
 ### <a name="export-an-existing-view"></a>既存のビューをエクスポートする
-ビューを JSON ファイルにエクスポートして、別のワークスペースにインポートしたり、[Azure Resource Manager テンプレート](../resource-group-authoring-templates.md) で使用したりできます。  既存のビューをエクスポートするには、OMS のメイン ダッシュボードで該当するタイルをクリックしてビューを開きます。  次に、**[エクスポート]** ボタンをクリックして、ブラウザーのダウンロード フォルダーの中にファイルを作成します。  ファイルの名前は、ビューの名前に拡張子 *omsview* が付加されたものになります。
+ビューを JSON ファイルにエクスポートして、別のワークスペースにインポートしたり、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md) で使用したりできます。  既存のビューをエクスポートするには、OMS のメイン ダッシュボードで該当するタイルをクリックしてビューを開きます。  次に、**[エクスポート]** ボタンをクリックして、ブラウザーのダウンロード フォルダーの中にファイルを作成します。  ファイルの名前は、ビューの名前に拡張子 *omsview* が付加されたものになります。
 
 ![ビューのエクスポート](media/log-analytics-view-designer/edit-menu-export.png)
 
@@ -92,6 +96,9 @@ OMS のメイン ダッシュボードでビュー デザイナー タイルを�
 * [タイル](log-analytics-view-designer-tiles.md)をカスタム ビューに追加します。
 * [視覚化パーツ](log-analytics-view-designer-parts.md)をカスタム ビューに追加します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO4-->
 
 

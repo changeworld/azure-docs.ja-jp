@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/17/2016
+ms.date: 02/02/2017
 ms.author: magoedte;bwren
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -54,8 +54,7 @@ Runbook を発行する場合、呼び出される子 Runbook はすべて発行
 次に示すのは、子として PowerShell Runbook を使用する場合の例です。
 
     $vm = Get-AzureRmVM –ResourceGroupName "LabRG" –Name "MyVM"
-    $output = .\PS-ChildRunbook –VM $vm –RepeatCount 2 –Restart $true
-
+    $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 
 ## <a name="starting-a-child-runbook-using-cmdlet"></a>コマンドレットを使用して子 Runbook を開始する

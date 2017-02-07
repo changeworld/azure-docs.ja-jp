@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/29/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e2e814559282de3e5409e3215d824e1309debe5a
+ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
+ms.openlocfilehash: ce70835a4f8f39d320b1effdb0dee11abd22cd81
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: e2e814559282de3e5409e3215d824e1309debe5a
 
 1. シェルを開きます。
 2. **azure-iot-gateway-sdk** リポジトリのローカル コピーのルート フォルダーに移動します。
-3. **tools/build.sh --skip-unittests** スクリプトを実行します。 このスクリプトでは、**cmake** ユーティリティを使用して、**azure-iot-gateway-sdk** リポジトリのローカル コピーのルート フォルダーに **ビルド** という名前のフォルダーを作成し、メイクファイルを生成します。 スクリプトは、次にソリューションをビルドし、単体テストはスキップします。 単体テストをビルドして実行する場合は、**--skip-unittests** パラメーターを削除します。 
+3. **tools\build.sh** スクリプトを実行します。 このスクリプトでは、**cmake** ユーティリティを使用して、**azure-iot-gateway-sdk** リポジトリのローカル コピーのルート フォルダーに **ビルド** という名前のフォルダーを作成し、メイクファイルを生成します。 スクリプトは、次にソリューションをビルドし、単体テストとエンド ツー エンド テストはスキップします。 単体テストをビルドして実行する場合は、**--run-unittests** パラメーターを追加します。 エンド ツー エンド テストをビルドして実行する場合は、**--run-e2e-tests** を追加します。 
 
 > [!NOTE]
 > **build.sh** スクリプトを実行するたびに **ビルド** フォルダーが削除され、**azure-iot-gateway-sdk** リポジトリのローカル コピーのルート フォルダーに再作成されます。
@@ -45,8 +45,8 @@ ms.openlocfilehash: e2e814559282de3e5409e3215d824e1309debe5a
 
 テキスト エディターで、**azure-iot-gateway-sdk** リポジトリのローカル コピーにある **samples/simulated_device_cloud_upload/src/simulated_device_cloud_upload_lin.json** ファイルを開きます。 このファイルでは、サンプル ゲートウェイの各モジュールを構成します。
 
-* **IoTHub** モジュールは、IoT Hub に接続します。 データを IoT Hub に送信するようにモジュールを構成する必要があります。 具体的には、**IoTHubName** 値を実際の IoT Hub の名前に設定し、**IoTHubSuffix** 値を **azure-devices.net** に設定します。 **Transport** の値を "HTTP"、"AMQP"、または "MQTT" のいずれかに設定します。 現在、すべてのデバイス メッセージで 1 つの TCP 接続を共有するのは "HTTP" のみです。 値を "AMQP" または "MQTT" に設定すると、ゲートウェイは各デバイスで IoT Hub に対する TCP 接続を別個に維持します。
-* **mapping** モジュールは、シミュレートされたデバイスの MAC アドレスを IoT Hub のデバイス ID にマップします。 **deviceId** 値が IoT Hub に追加した 2 つのデバイスの ID と一致し、**deviceKey** 値に 2 つのデバイスのキーが含まれていることを確認します。
+* **IoTHub** モジュールは、IoT Hub に接続します。 データを IoT Hub に送信するようにモジュールを構成する必要があります。 具体的には、**IoTHubName** 値を実際の IoT Hub の名前に設定し、**IoTHubSuffix** 値を **azure-devices.net** に設定します。 **Transport** の値を "HTTP"、"AMQP"、または "MQTT" のいずれかに設定します。 現在、すべてのデバイス メッセージで&1; つの TCP 接続を共有するのは "HTTP" のみです。 値を "AMQP" または "MQTT" に設定すると、ゲートウェイは各デバイスで IoT Hub に対する TCP 接続を別個に維持します。
+* **mapping** モジュールは、シミュレートされたデバイスの MAC アドレスを IoT Hub のデバイス ID にマップします。 **deviceId** 値が IoT Hub に追加した&2; つのデバイスの ID と一致し、**deviceKey** 値に&2; つのデバイスのキーが含まれていることを確認します。
 * **BLE1** モジュールと **BLE2** モジュールは、シミュレートされたデバイスです。 これらのモジュールの MAC アドレスが **mapping** モジュールの MAC アドレスとどのように一致しているかに注意してください。
 * **Logger** モジュールは、ゲートウェイのアクティビティをファイルに記録します。
 * 次に示す **module path** の値は、**azure-iot-gateway-sdk** リポジトリのローカル コピーのルートからサンプルを実行することを前提としています。
@@ -185,6 +185,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

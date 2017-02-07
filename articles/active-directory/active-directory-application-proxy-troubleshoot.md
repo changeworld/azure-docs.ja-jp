@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 12/01/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 654acd092f9e8469d7014e1ff15cb7d812918e8b
-
+ms.sourcegitcommit: 1eada96773b1d9c6adb9326c9100da7cde8abf77
+ms.openlocfilehash: e3143d787104ffbba9fb0c3806b187382d9d5c5b
 
 ---
+
+
 # <a name="troubleshoot-application-proxy"></a>アプリケーション プロキシのトラブルシューティング
 発行されたアプリケーションへのアクセス中、またはアプリケーションの発行中にエラーが発生する場合は、Microsoft Azure AD アプリケーション プロキシが正しく機能しているかどうかを次のオプションで確認します。
 
@@ -78,7 +79,7 @@ ms.openlocfilehash: 654acd092f9e8469d7014e1ff15cb7d812918e8b
 * [シングル サインオンの有効化](active-directory-application-proxy-sso-using-kcd.md)
 * [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
 
-最新のニュースと更新情報については、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
+最新のニュースと更新プログラムについては、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
 
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-troubleshoot/connectorproperties.png
@@ -86,6 +87,6 @@ ms.openlocfilehash: 654acd092f9e8469d7014e1ff15cb7d812918e8b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

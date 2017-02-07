@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: curtand;jeffsta
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d323eb986a6317130d847f61bc10cad6da1ca101
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 77d857e8d692f8bf47e00d655071a825533290b6
 
 
 ---
@@ -70,6 +70,6 @@ Azure Active Directory のドメイン名に関する管理作業の多くは、
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -16,15 +16,15 @@ ms.workload: big-data
 ms.date: 10/19/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 72ca562c53f813599f19069cfac7ef3ac1957968
-ms.openlocfilehash: 14cd1d8a9e278fa54168efb3c66cf6d693b57054
+ms.sourcegitcommit: 756369d219c34e5530edc91de0dc74cbf88c02c5
+ms.openlocfilehash: 9fb4862f3ba38058bd07d5a2e0bebcf78477e2d1
 
 
 ---
 # <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成
 [!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-Azure Resource Manager テンプレートを使用して HDInsight クラスターを作成する方法について説明します。 詳細については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)」を参照してください。 その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「 [クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
+Azure Resource Manager テンプレートを使用して HDInsight クラスターを作成する方法について説明します。 詳細については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)」を参照してください。 その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「 [クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -34,7 +34,7 @@ Azure Resource Manager テンプレートを使用して HDInsight クラスタ�
 * [Azure サブスクリプション](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * Azure PowerShell または Azure CLI
 
-    [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
+[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ### <a name="access-control-requirements"></a>アクセス制御の要件
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
@@ -46,8 +46,8 @@ HDInsight クラスターと依存 Azure Storage アカウントを作成する�
 
 Resource Manager テンプレートの詳細については、以下を参照してください。
 
-* [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
-* [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)
+* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 次の手順では、HDInsight クラスターを作成します。
@@ -123,7 +123,7 @@ Resource Manager テンプレートの詳細については、以下を参照し
 
 
 ## <a name="deploy-with-rest-api"></a>REST API でのデプロイ
-「 [REST API でデプロイする](../resource-group-template-deploy-rest.md)」を参照してください。
+「 [REST API でデプロイする](../azure-resource-manager/resource-group-template-deploy-rest.md)」を参照してください。
 
 ## <a name="deploy-with-visual-studio"></a>Visual Studio でのデプロイ
 Visual Studio では、リソース グループ プロジェクトを作成して、それをユーザー インターフェイスから Azure にデプロイできます。 プロジェクトに含めるリソースの種類を選択すると、それらのリソースがリソース マネージャー テンプレートに自動的に追加されます。 プロジェクトでは、テンプレートをデプロイするための PowerShell スクリプトも提供されます。
@@ -136,8 +136,8 @@ Visual Studio とリソース グループの使用の概要については、�
 * .NET クライアント ライブラリを使用したリソースのデプロイの例については、「 [Deploy resources using .NET libraries and a template](../virtual-machines/virtual-machines-windows-csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」 (.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ) を参照してください。
 * アプリケーションのデプロイの詳細な例については、「 [Azure でマイクロサービスを予測どおりにデプロイする](../app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
 * ソリューションを別の環境にデプロイする方法については、「 [Microsoft Azure の開発環境とテスト環境](../solution-dev-test-environments.md)」を参照してください。
-* Azure Resource Manager のテンプレートのセクションについては、「 [Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
-* Azure Resource Manager のテンプレートで使用できる関数の一覧については、「 [Azure Resource Manager のテンプレートの関数](../resource-group-template-functions.md)」を参照してください。
+* Azure Resource Manager のテンプレートのセクションについては、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
+* Azure Resource Manager のテンプレートで使用できる関数の一覧については、「 [Azure Resource Manager のテンプレートの関数](../azure-resource-manager/resource-group-template-functions.md)」を参照してください。
 
 ## <a name="appx-a-resource-manager-template"></a>付録 A: Resource Manager テンプレート
 次に示す Azure リソース マネージャーのテンプレートは、Azure ストレージ アカウントに依存する Windows ベースの Hadoop クラスターを作成します。
@@ -290,6 +290,6 @@ Visual Studio とリソース グループの使用の概要については、�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -16,15 +16,15 @@ ms.workload: integration
 ms.date: 07/20/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 93b77197d69d8c6261ea786aecb653c69129dc9d
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: 2977404fb408ea5301c88caa7ce6767a906ca9c7
 
 
 ---
 # <a name="get-started-with-the-sftp-connector"></a>SFTP コネクタの使用
 SFTP コネクタを使用すると、SFTP アカウントにアクセスしてファイルを送受信できます。 ファイルの作成、更新、取得、削除など、さまざまな操作を実行できます。  
 
-[任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)から始めることができます。
+[任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)から始めることができます。
 
 ## <a name="connect-to-sftp"></a>SFTP への接続
 ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの*接続*を作成する必要があります。 [接続](connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。  
@@ -35,7 +35,7 @@ SFTP コネクタを使用すると、SFTP アカウントにアクセスして�
 > 
 
 ## <a name="use-an-sftp-trigger"></a>SFTP トリガーの使用
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。  
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。  
 
 この例では、**[SFTP - When a file is added or modified (SFTP - ファイルの追加または変更時)]** トリガーを使用して、SFTP サーバー上でファイルが追加または変更されたときにロジック アプリ ワークフローを開始する方法について説明します。 また、新しいファイルまたは変更されたファイルの内容をチェックする際の条件を追加し、ファイルの内容が、内容を使用する前にファイルを抽出する必要があることを示している場合にファイルの抽出を決定する方法についても説明します。 最後に、ファイルの内容を抽出し、抽出した内容を SFTP サーバー上のフォルダーに配置するアクションを追加する方法を説明します。 
 
@@ -51,7 +51,7 @@ SFTP コネクタを使用すると、SFTP アカウントにアクセスして�
 > 
 
 ## <a name="use-an-sftp-action"></a>SFTP アクションの使用
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。  
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。  
 
 > [!INCLUDE [Steps to create an SFTP action](../../includes/connectors-create-api-sftp-action.md)]
 > 
@@ -327,7 +327,7 @@ BlobMetadata
 | FileLocator |string |
 
 ## <a name="http-responses"></a>HTTP 応答
-上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。 
+上記のアクションとトリガーは、次の HTTP 状態コードを&1; つ以上返す場合があります。 
 
 | 名前 | 説明 |
 | --- | --- |
@@ -341,11 +341,11 @@ BlobMetadata
 | default |操作に失敗しました。 |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

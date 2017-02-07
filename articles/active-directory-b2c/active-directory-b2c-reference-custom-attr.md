@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 490e4584e4428f265a0a2c2a5d14b6383c81c71d
+ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
+ms.openlocfilehash: f7b21cc941f17d0815316dfe7013e9f97a95c223
 
 
 ---
@@ -58,6 +58,6 @@ Azure Active Directory (Azure AD) B2C ディレクトリには、組み込みの
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

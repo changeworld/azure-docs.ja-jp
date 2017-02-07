@@ -4,7 +4,7 @@ description: "Azure Active Directory B2C のサポート要求を提出する方
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
-manager: msmbaldwin
+manager: mbaldwin
 editor: bryanla
 ms.assetid: 51922008-6fbd-487c-b2c7-a5db57d154b4
 ms.service: active-directory-b2c

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/09/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
-ms.openlocfilehash: 62358ef4d02515a2625fb5f78421f71e581944e9
+ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
+ms.openlocfilehash: 534373f72a4181914e3b7ea98ded507418e3d299
 
 
 ---
@@ -32,12 +32,13 @@ ms.openlocfilehash: 62358ef4d02515a2625fb5f78421f71e581944e9
   * [パスワード ライトバックのしくみ](#how-password-writeback-works)
   * [パスワード ライトバックでサポートされているシナリオ](#scenarios-supported-for-password-writeback)
   * [パスワード ライトバックのセキュリティ モデル](#password-writeback-security-model)
+  * [パスワード ライトバックの帯域幅の使用](#password-writeback-bandwidth-usage)
 * [**パスワード リセット ポータルのしくみ**](#how-does-the-password-reset-portal-work)
   * [パスワードのリセットで使用されるデータ](#what-data-is-used-by-password-reset)
   * [ユーザーのパスワード リセット データにアクセスする方法](#how-to-access-password-reset-data-for-your-users)
 
 ## <a name="password-writeback-overview"></a>パスワード ライトバックの概要
-パスワード ライトバックは [Azure Active Directory Connect](active-directory-aadconnect.md) コンポーネントです。Azure Active Directory Premium の現在のサブスクライバーによって有効にされ、使用されます。 詳細については、 [Azure Active Directory のエディション](active-directory-editions.md)を参照してください。
+パスワード ライトバックは [Azure Active Directory Connect](connect/active-directory-aadconnect.md) コンポーネントです。Azure Active Directory Premium の現在のサブスクライバーによって有効にされ、使用されます。 詳細については、 [Azure Active Directory のエディション](active-directory-editions.md)を参照してください。
 
 パスワード ライトバックを使用すると、オンプレミスの Active Directory にパスワードを書き戻すようにクラウド テナントを構成できます。  これにより、複雑なオンプレミスのセルフサービス パスワード リセット ソリューションを設定して管理する必要がなくなります。ユーザーはどこにいても、便利なクラウドベースの方法で自分のオンプレミスのパスワードをリセットできます。  次に、パスワード ライトバックの主な機能を示します。
 
@@ -75,7 +76,7 @@ ms.openlocfilehash: 62358ef4d02515a2625fb5f78421f71e581944e9
 10. パスワードの設定操作に失敗した場合は、エラーが返され、やり直す必要があります。  サービスがダウンした、選択したパスワードが組織のポリシーを満たしていない、ローカル AD でユーザーが見つからないなど、さまざまな原因で操作に失敗する可能性があります。  多くの場合、特定のメッセージが表示され、問題解決の手段がユーザーに通知されます。
 
 ### <a name="scenarios-supported-for-password-writeback"></a>パスワード ライトバックでサポートされているシナリオ
-次の表では、同期機能のバージョンでサポートされているシナリオについて説明します。  通常、パスワード ライトバックを使用する場合は、最新バージョンの [Azure AD Connect](active-directory-aadconnect.md#install-azure-ad-connect) をインストールすることを強くお勧めします。
+次の表では、同期機能のバージョンでサポートされているシナリオについて説明します。  通常、パスワード ライトバックを使用する場合は、最新バージョンの [Azure AD Connect](connect/active-directory-aadconnect.md#install-azure-ad-connect) をインストールすることを強くお勧めします。
 
   ![][002]
 
@@ -86,6 +87,21 @@ ms.openlocfilehash: 62358ef4d02515a2625fb5f78421f71e581944e9
 * **ロックダウンされ、暗号強度の高いパスワード暗号化キー** – Service Bus Relay が作成されると、強力な非対称キー ペアが作成され、ネットワーク経由でパスワードが渡されるときに暗号化に使用されます。  このキーは、クラウド内の会社のシークレット ストアのみに存在し、厳重にロックダウンされ、ディレクトリ内のパスワードと同様に監査されます。
 * **業界標準の TLS** – クラウド内でパスワードのリセットや変更操作が行われる場合は、プレーン テキスト パスワードが取得され、公開キーを使用して暗号化されます。  次に、これを HTTPS メッセージにして、マイクロソフトの SSL 証明書を使用して暗号化されたチャネルを介して Service Bus Relay に送信されます。  このメッセージが Service Bus に到着すると、オンプレミスのエージェントがアクティブになり、前に生成された強力なパスワードを使用して Service Bus に認証され、暗号化されたメッセージを取得し、生成された秘密キーを使用して復号化され、AD DS SetPassword API を使用してパスワードの設定を試みます。  この手順に従うと、クラウドで AD オンプレミスのパスワード ポリシー (複雑さ、年齢、履歴、フィルターなど) を適用できます。
 * **メッセージの有効期限ポリシー** - 最後に、何らかの理由でオンプレミス サービスが停止しているために Service Bus でメッセージが表示される場合は、セキュリティをさらに強化するために数分後にタイムアウトになり、削除されます。
+
+### <a name="password-writeback-bandwidth-usage"></a>パスワード ライトバックの帯域幅の使用
+
+パスワード ライトバックは、次の状況でのみ、要求をオンプレミスのエージェントに戻す、きわめて低い帯域幅のサービスです。
+
+1. Azure AD Connect を通じて機能を有効または無効にしたときに 2 つのメッセージが送信されます。
+2. サービスのハートビートとして 5 分おきに 1 回 1 つのメッセージが、サービスを実行している間中、送信されます。
+3. 新しいパスワードが送信されるたびに 2 つのメッセージが送信されます。1 つは要求として操作を実行するメッセージです。後続のメッセージには、操作の結果が含まれます。 これらのメッセージは、次の状況で送信されます。
+4. ユーザーのセルフサービスのパスワードのリセット時に新しいパスワードが送信された場合
+5. ユーザーのパスワード変更操作時に新しいパスワードが送信された場合
+6. 管理者によるユーザー パスワードのリセット時に新しいパスワードが送信された場合 (Azure 管理ポータルからのみ)
+
+#### <a name="message-size-and-bandwidth-considerations"></a>メッセージ サイズと帯域幅に関する考慮事項
+
+上記で説明したメッセージの各サイズは、通常 1 kb 未満です。つまり、負荷が大きい場合でも、パスワード ライトバック サービス自体で 1 秒間に最大でも数キロビットの帯域幅しか消費されないことを意味します。 各メッセージは、パスワードの更新操作で必要になった場合にのみリアルタイムで送信されるため、またメッセージのサイズが非常に小さいため、ライトバック機能の帯域幅は実質的に非常に小さく、実際に測定可能な影響を及ぼすには至りません。
 
 ## <a name="how-does-the-password-reset-portal-work"></a>パスワード リセット ポータルのしくみ
 ユーザーがパスワード リセット ポータルに移動すると、そのユーザー アカウントは有効か、そのユーザーはどの組織に属しているか、そのユーザーのパスワードはどこに管理されているか、ユーザーは機能を使用するライセンスが付与されているかを判断するためのワークフローが開始されます。  パスワード リセット ページの背後にあるロジックの詳細については、次の手順をお読みください。
@@ -391,6 +407,6 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

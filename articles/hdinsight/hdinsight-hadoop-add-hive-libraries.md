@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/20/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 5f398dbc4390e300df3647093339ead6f927a833
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: a918737c762fe93cd8472f51dfdd945ceff6c877
 
 
 ---
 # <a name="add-hive-libraries-during-hdinsight-cluster-creation"></a>HDInsight クラスター作成時の Hive ライブラリの追加
+
 HDInsight の Hive で頻繁に使用するライブラリがある場合、このドキュメントに含まれている情報を参考にし、スクリプト アクションを使用して、クラスターの作成時にライブラリを事前に読み込むことができます。 そうすると、Hive でライブラリをグローバルに利用できるようになります ( [ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) を使用して読み込む必要がありません)。
 
 ## <a name="how-it-works"></a>動作のしくみ
-クラスターの作成時に、必要に応じて、作成中のクラスター ノードに対してスクリプトを実行するスクリプト アクションを指定できます。 このドキュメントのスクリプトが受け取るパラメーターは 1 つで、事前に読み込むライブラリ (jar ファイルとして格納されている) が含まれている WASB の場所を指定します。
+
+クラスターの作成時に、必要に応じて、作成中のクラスター ノードに対してスクリプトを実行するスクリプト アクションを指定できます。 このドキュメントのスクリプトが受け取るパラメーターは&1; つで、事前に読み込むライブラリ (jar ファイルとして格納されている) が含まれている WASB の場所を指定します。
 
 クラスターの作成時に、そのスクリプトによってファイルが列挙され、ヘッド ノードとワーカー ノードの `/usr/lib/customhivelibs/` ディレクトリにコピーされて、`core-site.xml` ファイルの `hive.aux.jars.path` プロパティに追加されます。 Linux ベースのクラスターでは、それらのファイルの場所に合わせて `hive-env.sh` ファイルも更新されます。
 
@@ -43,11 +45,14 @@ HDInsight の Hive で頻繁に使用するライブラリがある場合、こ�
 
 **Windows ベースのクラスター**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
+> [!IMPORTANT]
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 **要件**
 
 * このスクリプトは、**ヘッド ノード**と**ワーカー ノード**の両方に適用する必要があります。
 * インストールする jar は、Azure Blob Storage の **単一のコンテナー**に格納する必要があります。
-* jar ファイルのライブラリを含むストレージ アカウントを、作成時に HDInsight クラスターにリンクする**必要があります**。 これは、次の 2 つの方法のどちらかで行うことができます。
+* jar ファイルのライブラリを含むストレージ アカウントを、作成時に HDInsight クラスターにリンクする**必要があります**。 これは、次の&2; つの方法のどちらかで行うことができます。
 
   * コンテナーをクラスターの既定のストレージ アカウントに配置する。
   * コンテナーをリンクされたストレージ コンテナーに配置する。 たとえば、ポータルでは、**[オプションの構成]**、**[リンクされたストレージ アカウント]** を使用して、ストレージを追加できます。
@@ -89,6 +94,6 @@ HDInsight の Hive で頻繁に使用するライブラリがある場合、こ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2e30909f2917fc01f6066d8489961ca94f34f429
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 77e106d9170fc49d66d322bd9c92bf0e14869259
 
 
 ---
@@ -29,7 +29,7 @@ Project Online は、プロジェクト ポートフォリオ管理 (PPM) や日
 > 
 > 
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事を参照してください。
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事を参照してください。
 
 ## <a name="triggers-and-actions"></a>トリガーとアクション
 ProjectOnline コネクタは、アクションとして使用できます。ProjectOnline コネクタにはトリガーがあります。 すべてのコネクタは、JSON および XML 形式のデータに対応します。 
@@ -444,11 +444,11 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 | 連絡先 |string |なし |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

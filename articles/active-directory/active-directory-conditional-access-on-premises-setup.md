@@ -1,12 +1,12 @@
 ---
-title: Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定 | Microsoft Docs
-description: Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順。
+title: "Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定 | Microsoft Docs"
+description: "Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: femila
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: femila
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 02d8de2e37af9ccbf79bb77180b0eda0d187eb5c
+
 
 ---
 # <a name="setting-up-on-premises-conditional-access-using-azure-active-directory-device-registration"></a>Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定
@@ -52,7 +56,7 @@ ms.author: femila
 ## <a name="scenario-assumptions"></a>シナリオの前提条件
 このシナリオでは、Azure AD テナントとオンプレミスの Active Directory で構成されたハイブリッド環境があることを前提としています。 これらのテナントは、Azure AD の接続を使用して、確認済みドメインと SSO 対応 AD FS を介して接続されている必要があります。 次のチェックリストを使用すると、上記で説明した段階に環境を構成できます。
 
-## <a name="checklist:-prerequisites-for-conditional-access-scenario"></a>チェックリスト: 条件付きアクセスのシナリオの前提条件
+## <a name="checklist-prerequisites-for-conditional-access-scenario"></a>チェックリスト: 条件付きアクセスのシナリオの前提条件
 オンプレミスの Active Directory と Azure AD テナントを接続します。
 
 ## <a name="configure-azure-active-directory-device-registration-service"></a>Azure Active Directory Device Registration サービスの構成
@@ -62,7 +66,7 @@ ms.author: femila
 
 Azure Active Directory Device Registration サービスを Azure Active Directory テナントと一緒にデプロイするには、以下のチェックリストに示す作業を順番に実行します。 参照リンクをクリックして概要に関するトピックに移動した場合は、そのトピックを確認した後、このチェックリストに戻って、チェックリストの残りの作業に進んでください。 一部のタスクには、手順が正常に完了したことを確認できるシナリオの検証手順が含まれています。
 
-## <a name="part-1:-enable-azure-active-directory-device-registration"></a>パート 1: Azure Active Directory Device Registration を有効にする
+## <a name="part-1-enable-azure-active-directory-device-registration"></a>パート 1: Azure Active Directory Device Registration を有効にする
 以下のチェックリストに従って、Azure Active Directory Device Registration サービスを有効にして構成します。
 
 | タスク | リファレンス |
@@ -70,21 +74,21 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 | Azure Active Directory テナント内の [デバイスの登録] を有効にして、デバイスがワークプレースに参加できるようにします。 既定では、サービスに対して Multi-Factor Authentication は有効になっていません。 ただし、デバイスを登録するときは Multi-Factor Authentication をお勧めします。 ADRS で Multi-Factor Authentication を有効にする前に、Multi-Factor Authentication プロバイダー用に AD FS が構成されていることを確認します。 |[Azure Active Directory Device Registration を有効にする](active-directory-conditional-access-device-registration-overview.md) |
 | デバイスは既知の DNS レコードを探すことにより、Azure Active Directory Device Registration サービスを検出します。 デバイスが Azure Active Directory Device Registration サービスを検出できるように、会社の DNS を構成する必要があります。 |[Azure Active Directory Device Registration の検出を構成する](active-directory-conditional-access-device-registration-overview.md) |
 
-## <a name="part-2:-deploy-and-configure-windows-server-2012-r2-active-directory-federation-services-and-set-up-a-federation-relationship-with-azure-ad"></a>パート 2: Windows Server 2012 R2 Active Directory フェデレーション サービスをデプロイおよび構成し、Azure AD とのフェデレーション関係をセットアップする
+## <a name="part-2-deploy-and-configure-windows-server-2012-r2-active-directory-federation-services-and-set-up-a-federation-relationship-with-azure-ad"></a>パート 2: Windows Server 2012 R2 Active Directory フェデレーション サービスをデプロイおよび構成し、Azure AD とのフェデレーション関係をセットアップする
 | タスク | リファレンス |
 | --- | --- |
 | Windows Server 2012 R2 スキーマ拡張で Active Directory ドメイン サービス ドメインをデプロイします。 ドメイン コント ローラーを Windows Server 2012 R2 にアップグレードする必要はありません。 スキーマのアップグレードのみが必要です。 |[Active Directory ドメイン サービス スキーマをアップグレードする](#upgrade-your-active-directory-domain-services-schema) |
 | デバイスは既知の DNS レコードを探すことにより、Azure Active Directory Device Registration サービスを検出します。 デバイスが Azure Active Directory Device Registration サービスを検出できるように、会社の DNS を構成する必要があります。 |[Active Directory をサポートするデバイスの準備](#prepare-your-active-directory-to-support-devices) |
 
-## <a name="part-3:-enable-device-writeback-in-azure-ad"></a>パート 3: Azure AD でのデバイスの書き戻しを有効にする
+## <a name="part-3-enable-device-writeback-in-azure-ad"></a>パート 3: Azure AD でのデバイスの書き戻しを有効にする
 | タスク | リファレンス |
 | --- | --- |
 | 「Azure AD Connect でのデバイスの書き戻しの有効化」のパート 2 を完了します。 完了したら、このガイドに戻ります。 |[Azure AD Connect でのデバイスの書き戻しの有効化](#upgrade-your-active-directory-domain-services-schema) |
 
-## <a name="[optional]-part-4:-enable-multi-factor-authentication"></a>[省略可能] パート 4: 多要素認証を有効にする
+## <a name="optional-part-4-enable-multi-factor-authentication"></a>[省略可能] パート 4: 多要素認証を有効にする
 多要素認証に関するいくつかのオプションのいずれかを構成することを強くお勧めします。 MFA が必要な場合は、「 [ユーザーに適した多要素のセキュリティ ソリューションの選択](../multi-factor-authentication/multi-factor-authentication-get-started.md)」をご覧ください。 これには、各ソリューションの説明と、選択したソリューションの構成に役立つリンクが含まれています。
 
-## <a name="part-5:-verification"></a>パート 5: 検証
+## <a name="part-5-verification"></a>パート 5: 検証
 これでデプロイは完了しました。 いくつかのシナリオを試せるようになりました。 以下のリンクに従って、サービスを試し、機能をよく理解してください。
 
 | タスク | リファレンス |
@@ -104,7 +108,7 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 5. **デプロイと管理**に関するセクションで、手順 1. ～ 3. に従って、Azure Active Directory をオンプレミスのディレクトリと統合します。
    
    1. ドメインを追加します。
-   2. Azure AD Connect のインストールと実行: 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールします。
+   2. Azure AD Connect のインストールと実行: 「[Azure AD Connect のカスタム インストール](connect/active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールします。
    3. ディレクトリの同期を確認および管理します。 この手順では、シングル サインオンの手順を利用できます。
    
    > [!NOTE]
@@ -136,7 +140,7 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 > 
 
 ### <a name="prepare-your-active-directory-forest"></a>Active Directory フォレストを準備する
-1. フェデレーション サーバーで、Windows PowerShell コマンド ウィンドウを開き、「Initialize-ADDeviceRegistration」と入力します
+1. フェデレーション サーバーで、Windows PowerShell コマンド ウィンドウを開き、「Initialize-ADDeviceRegistration」と入力します。
 2. **ServiceAccountName**が要求されたら、AD FS のサービス アカウントとして選択したサービス アカウントの名前を入力します。 gMSA アカウントである場合は、**domain\accountname$** の形式でアカウントを入力します。 ドメイン アカウントである場合は、**domain\accountname** の形式を使用します。
 
 ### <a name="enable-device-authentication-in-ad-fs"></a>AD FS でデバイス認証を有効にする
@@ -163,9 +167,9 @@ Azure Active Directory Device Registration では、iOS デバイスに対して
 
 この URL は、さまざまな方法ユーザーに伝えることができます。 その 1 つとして、AD FS 内のカスタム アプリケーション アクセス拒否メッセージで、この URL を発行する方法が推奨されます。 これについては、以降の「 [アプリケーションのアクセス ポリシーとカスタム アクセス拒否メッセージを作成する](#create-an-application-access-policy-and-custom-access-denied-message)」セクションで説明します。
 
-### <a name="join-a-windows-8.1-device-using-azure-active-directory-device-registration"></a>Azure Active Directory Device Registration を使用して Windows 8.1 デバイスを参加させる
+### <a name="join-a-windows-81-device-using-azure-active-directory-device-registration"></a>Azure Active Directory Device Registration を使用して Windows 8.1 デバイスを参加させる
 1. Windows 8.1 デバイスで、**[PC 設定]**  >  **[ネットワーク]**  >  **[社内]** の順に移動します。
-2. ユーザー名を UPN 形式で入力します。 たとえば、「dan@contoso.com」のように入力します。
+2. ユーザー名を UPN 形式で入力します。 たとえば、「 dan@contoso.com.」のように入力します。
 3. **[参加]**を選択します。
 4. メッセージが表示されたら、資格情報でサインインします。 これでデバイスが参加します。
 
@@ -231,6 +235,9 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 ## <a name="related-articles"></a>関連記事
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

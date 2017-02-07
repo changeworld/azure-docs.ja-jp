@@ -16,7 +16,7 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 11/23/2016
-ms.author: rickbyh;carlrab
+ms.author: rickbyh
 translationtype: Human Translation
 ms.sourcegitcommit: 2f24c1c43300a3c5035fbb4e90c3d13f73c1bc74
 ms.openlocfilehash: a0c4cfb127934f86a7ce272c1aec2fd01331e17c

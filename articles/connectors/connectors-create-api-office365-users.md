@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1f9877f6bbf57da525ad988a6f6dafa6822a7503
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 2e4af1c9369a97d518d027dc4679b9f01ca53d4c
 
 
 ---
@@ -34,7 +34,7 @@ Office 365 ユーザーは、次のことを行えます。
 * Office 365 ユーザーから取得したデータに基づいてビジネス フローを構築できます。 
 * 直属の部下の取得、上司のユーザーのプロファイルの取得などのアクションを使用できます。 また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。 たとえば、ユーザーの直属の部下を取得し、この情報を利用して、SQL Azure Database を更新します。 
 
-ロジック アプリに操作を追加する方法については、「 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)」を参照してください。
 
 ## <a name="triggers-and-actions"></a>トリガーとアクション
 Office 365 Users コネクタでは、次のアクションを使用できます。 トリガーはありません。
@@ -173,7 +173,7 @@ Office 365 Users コネクタでは、次のアクションを使用できます
 | MobilePhone |string |× |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。
 
 [API リスト](apis-list.md)に戻ります。
 
@@ -187,6 +187,6 @@ Office 365 Users コネクタでは、次のアクションを使用できます
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 
