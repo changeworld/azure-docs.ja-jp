@@ -13,16 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 12/08/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: 8c295a4207e9d12eb0cb978205a75d536d6a55e7
+ms.sourcegitcommit: 5a9b3e94faee1db7c38b9f60045637640d820208
+ms.openlocfilehash: b11d9d67234c85af8f9fcb9992864ef9e1662a79
 
 
 ---
 # <a name="import-data-to-documentdb-with-the-database-migration-tool"></a>データベース移行ツールを使用した DocumentDB へのデータのインポート
 この記事では、公式オープンソースの DocumentDB データ以降ツールを使用して、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、DocumentDB コレクションなど、さまざまなソースからデータを [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) にインポートする方法について説明します。
+
+MongoDB 対応の DocumentDB アカウントにデータをインポートする場合は、「[Migrate data to DocumentDB with protocol support for MongoDB (MongoDB のプロトコル対応 DocumentDB にデータを移行する)](documentdb-mongodb-migrate.md)」に記載されている指示に従ってください。
 
 この記事を読むと、次の質問に回答できるようになります。  
 
@@ -78,6 +80,12 @@ JSON ファイルをインポートするためのコマンド ライン サン�
     dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionThroughput:2500
 
 ## <a name="a-idmongodbaimport-from-mongodb"></a><a id="MongoDB"></a>MongoDB からのインポート
+
+> [!IMPORTANT]
+> MongoDB 対応の DocumentDB アカウントにインポートする場合は、こちらの[指示](documentdb-mongodb-migrate.md)に従ってください。
+> 
+> 
+
 MongoDB ソース インポーター オプションを使用して、個々の MongoDB コレクションからインポートできます。必要に応じて、クエリを使用してドキュメントをフィルター処理したり、プロジェクションを使用してドキュメント構造を変更したりすることもできます。  
 
 ![MongoDB ソース オプションのスクリーンショット - documentdb と mongodb](./media/documentdb-import-data/mongodbsource.png)
@@ -91,7 +99,7 @@ MongoDB ソース インポーター オプションを使用して、個々の 
 > 
 > 
 
-データのインポート元となるコレクションの名前を入力します。 必要に応じて、クエリ (例: {pop: {$gt: 5000}}) やプロジェクション (例: {loc:0}) を直接入力するか、そのためのファイルを指定して、インポートするデータのフィルター処理と整形を実行できます。
+データのインポート元となるコレクションの名前を入力します。 必要に応じて、クエリ (例: {pop: {$gt:&5000;}}) やプロジェクション (例: {loc:0}) を直接入力するか、そのためのファイルを指定して、インポートするデータのフィルター処理と整形を実行できます。
 
 MongoDB からインポートするためのコマンド ライン サンプルを以下にいくつか示します。
 
@@ -102,7 +110,13 @@ MongoDB からインポートするためのコマンド ライン サンプル�
     dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionThroughput:2500
 
 ## <a name="a-idmongodbexportaimport-mongodb-export-files"></a><a id="MongoDBExport"></a>MongoDB エクスポート ファイルのインポート
-MongoDB エクスポート JSON ファイル ソース インポーター オプションを使用して、mongoexport ユーティリティによって生成された 1 つ以上の JSON ファイルをインポートできます。  
+
+> [!IMPORTANT]
+> MongoDB 対応の DocumentDB アカウントにインポートする場合は、こちらの[指示](documentdb-mongodb-migrate.md)に従ってください。
+> 
+> 
+
+MongoDB エクスポート JSON ファイル ソース インポーター オプションを使用して、mongoexport ユーティリティによって生成された&1; つ以上の JSON ファイルをインポートできます。  
 
 ![MongoDB エクスポート ソース オプションのスクリーンショット - documentdb と mongodb](./media/documentdb-import-data/mongodbexportsource.png)
 
@@ -159,7 +173,7 @@ DomainInfo.Domain_Name や RedirectInfo.Redirecting などのエイリアスに�
 
 インポート ツールは、CSV ファイル内の引用符なしの値の型情報を推測しようとします (引用符で囲まれた値は、常に文字列として扱われます)。  型は、数値型、DateTime 型、ブール型の順に識別されます。  
 
-CSV のインポートに関して注意することが他に 2 つあります。
+CSV のインポートに関して注意することが他に&2; つあります。
 
 1. 既定では、引用符なしの値は常にタブやスペースで切られますが、引用符で囲まれた値はそのまま保持されます。 この動作は、[引用符付きの値をトリミングする] チェック ボックスかコマンド ライン オプション /s.TrimQuoted を使用して上書きすることができます。
 2. 既定では、引用符なしの null は、null 値として扱われます。 この動作は、[引用符なしの NULL を文字列として扱う] チェック ボックスかコマンド ライン オプション /s.NoUnquotedNulls を使用して上書きすることができます (つまり、引用符なしの null を "null" 文字列として扱います)。
@@ -218,7 +232,7 @@ Amazon DynamoDB からインポートするためのコマンド ライン サ�
     dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:catalogCollection /t.CollectionThroughput:2500
 
 ## <a name="a-idblobimportaimport-files-from-azure-blob-storage"></a><a id="BlobImport"></a>Azure BLOB ストレージからのファイルのインポート
-JSON ファイル、MongoDB のエクスポート ファイル、および CSV ファイル ソースのインポーター オプションを使用すると、Azure BLOB ストレージから 1 つ以上のファイルをインポートできます。 BLOB コンテナーの URL とアカウント キーを指定した後に、正規表現を使用してインポートするファイルを選択してください。
+JSON ファイル、MongoDB のエクスポート ファイル、および CSV ファイル ソースのインポーター オプションを使用すると、Azure BLOB ストレージから&1; つ以上のファイルをインポートできます。 BLOB コンテナーの URL とアカウント キーを指定した後に、正規表現を使用してインポートするファイルを選択してください。
 
 ![BLOB ファイル ソース オプションのスクリーンショット](./media/documentdb-import-data/blobsource.png)
 
@@ -247,7 +261,7 @@ DocumentDB アカウントの接続文字列は、「[DocumentDB アカウント
 1 つの DocumentDB コレクションからインポートするには、データのインポート元のコレクション名を入力します。 複数の DocumentDB コレクションからインポートするには、1 つ以上のコレクション名に一致する正規表現を指定します (例: collection01 | collection02 | collection03)。 必要に応じて、クエリを直接入力するか、そのためのファイルを指定して、インポートするデータのフィルター処理と整形を実行できます。
 
 > [!NOTE]
-> コレクション フィールドは正規表現に対応しているため、コレクション名に正規表現文字を含む 1 つのコレクションからインポートする場合は、これらの文字を適宜エスケープする必要があります。
+> コレクション フィールドは正規表現に対応しているため、コレクション名に正規表現文字を含む&1; つのコレクションからインポートする場合は、これらの文字を適宜エスケープする必要があります。
 > 
 > 
 
@@ -340,7 +354,7 @@ DocumentDB アカウントの接続文字列は、「[DocumentDB アカウント
 
  ![DocumentDB 一括挿入オプションのスクリーンショット](./media/documentdb-import-data/bulkinsertsp.png)
 
-また、日付型をインポートする際に (例: SQL Server や MongoDB から)、次の 3 つのインポート オプションから選択できます。
+また、日付型をインポートする際に (例: SQL Server や MongoDB から)、次の&3; つのインポート オプションから選択できます。
 
  ![DocumentDB 日付型インポート オプションのスクリーンショット](./media/documentdb-import-data/datetimeoptions.png)
 
@@ -389,7 +403,7 @@ DocumentDB アカウントの接続文字列は、「[DocumentDB アカウント
 2. 省略構文を使用することができます。collection[3] は、手順 1. で説明したのと同じコレクションのセットを生成します。
 3. 複数の代入値を指定することができます。 たとえば、collection[0-1] [0-9] と指定すると、0 か 1 で始まる 20 のコレクション名を生成します (collection01、..02、..03)。
 
-コレクション名を指定したら、コレクションのひつよなスループット (400 RU ～ 250,000 RU) を選択します。 インポートのパフォーマンスを最大限に高めるには、高いスループットを選択してください。 パフォーマンス レベルの詳細については、「 [DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」をご覧ください。 コレクションへのインポートでスループットの設定が 10,000 RU を超える場合にはパーティション キーが必要になります。 250,000 RU を超えるように選択する場合は、「[DocumentDB アカウント制限の引き上げを要求する](documentdb-increase-limits.md)」をご覧ください。
+コレクション名を指定したら、コレクションのひつよなスループット (400 RU ～ 250,000 RU) を選択します。 インポートのパフォーマンスを最大限に高めるには、高いスループットを選択してください。 パフォーマンス レベルの詳細については、「 [DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」をご覧ください。 コレクションへのインポートでスループットの設定が&10;,000 RU を超える場合にはパーティション キーが必要になります。 250,000 RU を超えるように選択する場合は、「[DocumentDB アカウント制限の引き上げを要求する](documentdb-increase-limits.md)」をご覧ください。
 
 > [!NOTE]
 > スループットの設定は、コレクションの作成にのみ適用されます。 指定されたコレクションが既に存在する場合、そのスループットは変更されません。
@@ -400,7 +414,7 @@ DocumentDB アカウントの接続文字列は、「[DocumentDB アカウント
 
 必要に応じて、インポートする際に DocumentDB ドキュメントの ID プロパティとして使用するインポート ソースのフィールドを指定できます (ドキュメントにこのプロパティが含まれていない場合は、ID プロパティの値として GUID が生成されます)。
 
-インポート時に利用できる詳細オプションは多数あります。 まず、日付型をインポートする際に (例: SQL Server や MongoDB から)、次の 3 つのインポート オプションから選択できます。
+インポート時に利用できる詳細オプションは多数あります。 まず、日付型をインポートする際に (例: SQL Server や MongoDB から)、次の&3; つのインポート オプションから選択できます。
 
  ![DocumentDB 日付型インポート オプションのスクリーンショット](./media/documentdb-import-data/datetimeoptions.png)
 
@@ -512,6 +526,6 @@ DocumentDB JSON エクスポーターを使用して、使用可能な任意の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
