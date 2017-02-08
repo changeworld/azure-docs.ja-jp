@@ -111,6 +111,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId 
         }
 ```
 
+[!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>Azure 診断からストレージ経由で Log Analytics に
 

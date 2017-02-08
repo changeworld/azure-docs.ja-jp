@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 02/07/2017
 ms.author: genli
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -56,13 +56,13 @@ Resource Manager デプロイメントでストレージ アカウントを削�
 ### <a name="step-1-identify-the-problem-vhd-and-the-associated-vm"></a>手順 1. 問題の VHD および関連付けられている VM を特定する
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. **ハブ** メニューで、**[すべてのリソース]** を選択します。 削除するストレージ アカウントに移動し、**[BLOB]** > **[VHD]** を選択します。
-   
+
     ![ストレージ アカウントと "vhds" コンテナーが強調表示されている、Portal のスクリーンショット](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/opencontainer.png)
 3. コンテナー内の各 VHD のプロパティを確認します。 状態が **[リース中]** の VHD を見つけます。 次に、この VHD を使用している VM を特定します。 通常、VHD の名前を確認することで、VHD を保持する VM を特定できます。
-   
+
    * OS ディスクは通常、"VMNameYYYYMMDDHHMMSS.vhd" という名前付け規則に従います。
    * データ ディスクは通常、"VMName-YYYYMMDD-HHMMSS.vhd" という名前付け規則に従います。
-     
+
      ![VM の名前、[ロック済み] のリース ステータス、[リース中] のリース状態が強調表示されている、Portal のコンテナー情報のスクリーンショット](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/locatevm.png)
 
 ### <a name="step-2-remove-the-lease-from-the-vhd"></a>手順 2. VHD からリースを削除する
@@ -96,7 +96,6 @@ VHD を使用している VM から VHD を切断するには (データ ディ�
 ## <a name="next-steps"></a>次のステップ
 * [ストレージ アカウントの削除](storage-create-storage-account.md#delete-a-storage-account)
 * [How to break the locked lease of blob storage in Microsoft Azure (PowerShell) (Microsoft Azure (PowerShell) で BLOB ストレージのロックされているリースを解除する方法)](https://gallery.technet.microsoft.com/scriptcenter/How-to-break-the-locked-c2cd6492)
-
 
 
 
