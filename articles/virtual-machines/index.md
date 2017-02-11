@@ -1,14 +1,26 @@
 ---
 layout: LandingPage
 toc_rel: breadcrumb.json
+description: "Windows または Linux 仮想マシンを作成、デプロイ、管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
+title: "Azure Virtual Machines のドキュメント | Microsoft Docs"
+services: virtual-machines
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machines-windows
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: c086dc37b8665017de0dbbad9c7ac82931932a72
-ms.openlocfilehash: 57994a1476186696b81b05e0ce7ae645337d35b2
+ms.sourcegitcommit: 0b803da9d1cfefababd18b48fd39efc9895331bf
+ms.openlocfilehash: 2cbeaebcd79944511bbd2532b533acf1b98bef06
 
 ---
-#<a name="virtual-machines-documentation"></a>Virtual Machines のドキュメント
+# <a name="virtual-machines-documentation"></a>Virtual Machines のドキュメント
 
-Azure Virtual Machine は、仮想マシンを実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 ただし、仮想マシンのメンテナンス、つまり仮想マシン上で動作するソフトウェアの構成、修正プログラムの適用、保守は必要です。
+Azure 仮想マシンの作成方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Windows と Linux 仮想マシンのほか、複雑な VM テンプレートを作成してデプロイする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -49,16 +61,10 @@ Azure Virtual Machine は、仮想マシンを実行する物理的なハード�
     </li>    
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines.pdf">
-        <div class="img"></div>
-        <div class="text">
-仮想マシンのドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

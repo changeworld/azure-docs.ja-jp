@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Power BI のデータ視覚化と対話型レポートをアプリに埋め込む方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: b15e8e9676cba8969505728e6b9f7f2db4559e9a
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: c18bbb0b1e40d03be35c7d6375bb7520f0e0d4e4
 
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded のドキュメント
 
-Power BI Embedded は、アプリケーション開発者が自分のアプリケーションに対話型の Power BI レポートを追加できるようにする Azure サービスです。 Power BI Embedded を既存のアプリケーションと連携させるために、ユーザーのサインイン方法を再設計したり変更したりする必要はありません。
+Power BI Embedded を使用して、データの視覚化と対話型のレポートをアプリケーションに埋め込む方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Power BI のレポートとダッシュボードをアプリにシームレスに埋め込む方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -128,15 +129,9 @@ Power BI Embedded は、アプリケーション開発者が自分のアプリ�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/power-bi-embedded.pdf">
-        <div class="img"></div>
-        <div class="text">
-Power BI Embedded のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

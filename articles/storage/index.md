@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "クラウド上で Azure Storage (BLOB、テーブル、キュー、ファイル、仮想マシン ディスクの各ストレージ) を使用する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: df6bc6a92950efeed61db2f2ef7fd5f65189e0fa
-ms.openlocfilehash: 130a9a105ac7ff50fbc3b5baefd080f272e77d0b
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 1e9cc940d681893abbc351ef440c90f579e6c40a
 
 ---
 
@@ -109,11 +109,11 @@ ms.openlocfilehash: 130a9a105ac7ff50fbc3b5baefd080f272e77d0b
                 <div class="card">
                     <div class="cardText">
                         <h3>言語</h3>
-                        <p><a href="/dotnet/api/microsoft.azure.management.storage">.NET: Resource Manager</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.management.storage">.NET: リソース マネージャー</a></p>
                         <p><a href="https://msdn.microsoft.com/en-us/library/azure/mt684990.aspx">.NET: データの移動</a></p>
                         <p><a href="https://msdn.microsoft.com/library/azure/mt347887.aspx">.NET: BLOB、キュー、テーブル、ファイル</a></p>
                         <p><a href="/java/api/">Java</a></p>
-                        <p><a href="http://azure.github.io/azure-storage-node">Node.js</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-node">Node.JS</a></p>
                         <p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p>
                         <p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p>
                         <p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p>
@@ -130,9 +130,9 @@ ms.openlocfilehash: 130a9a105ac7ff50fbc3b5baefd080f272e77d0b
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p><a href="/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference">BLOB、キュー、テーブル、ファイル</a></p>
-                        <p><a href="/rest/api/storagerp">REST: リソース プロバイダー</a></p>
-                        <p><a href="/rest/api/storageimportexport">REST: Import/Export</a></p>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">BLOB、キュー、テーブル、ファイル</a></p>
+                        <p><a href="/rest/api/storagerp">リソース プロバイダー</a></p>
+                        <p><a href="/rest/api/storageimportexport">Import/Export</a></p>
                    </div>
                 </div>
             </div>
@@ -140,16 +140,10 @@ ms.openlocfilehash: 130a9a105ac7ff50fbc3b5baefd080f272e77d0b
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/storage.pdf">
-        <div class="img"></div>
-        <div class="text">
-Storage のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Jan17_HO1-->
+
+<!--HONumber=Jan17_HO3-->
 
 

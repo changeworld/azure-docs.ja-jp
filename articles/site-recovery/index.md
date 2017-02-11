@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "レプリケーションのデプロイと管理を通じて、クラウドベースの障害復旧とビジネス継続性を物理サーバーと仮想マシンに設定する方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: e13f18042677dd1cea5913d7f6658f0c5d3e1d98
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: b8fe2704e7c68c1fe815d204d424f28fcbdfe75c
 
 ---
 # <a name="site-recovery-documentation"></a>Site Recovery のドキュメント
 
-Azure Site Recovery は、オンプレミスの仮想マシンと物理サーバーのレプリケーションを調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。 サーバーと VM を、オンプレミスのプライマリ データセンターから Azure またはセカンダリ データセンターにレプリケートします。 プライマリ サイトで障害が発生した場合は、セカンダリ サイトにフェールオーバーして、ワークロードのアクセス性と可用性を維持します。
+Site Recovery を使用して、プライベート クラウドのビジネス継続性と障害復旧に関する戦略を確立する方法について説明します。 チュートリアルなどのドキュメントでは、オンプレミスの物理サーバーと仮想マシンをクラウドまたはセカンダリ データセンターにレプリケートするオーケストレーションを計画、デプロイ、管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -79,16 +80,10 @@ Azure Site Recovery は、オンプレミスの仮想マシンと物理サーバ
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/site-recovery.pdf">
-        <div class="img"></div>
-        <div class="text">
-Site Recovery のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

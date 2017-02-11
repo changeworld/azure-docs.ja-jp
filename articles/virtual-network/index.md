@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
 +toc_rel: breadcrumb.json
+description: "クラウド内で仮想ネットワークを使用する方法について説明します。 ドキュメントでは、VNet のデプロイ、VNet を使用したリソースの起動、オンプレミス ネットワークとの統合の方法を紹介します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: c285a2be335bed0adada1877f94c7999d7c8b7e5
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 2c3ce9081d456dcedd61ba85f2d023526aa5fa49
 
 ---
 # <a name="virtual-network-documentation"></a>Virtual Network のドキュメント
 
-Azure 仮想ネットワーク (VNet) は、クラウド上に構築されたお客様用のネットワークを論理的に表したものです。  VNet では、ネットワークの各種要素を完全に制御できるだけでなく、VNet を複数のサブネットに分割し、そのサブネットを使用して Azure Virtual Machines や Cloud Services の利用を開始できます。  また、Azure に用意されている接続オプションのいずれかを使用して VNet をオンプレミスのネットワークに接続し、リソースの制御を維持したまま自社ネットワークをクラウドに拡張することができます。
+クラウド内のユーザーのネットワークを論理的に表した Virtual Network (VNet) の使用方法について説明します。 ドキュメントでは、VNet のセットアップと管理、VNet を使用した Virtual Machines または Cloud Services の起動、オンプレミス ネットワークへの VNet の接続、リソースの制御を維持した状態でのクラウドへのネットワークの拡張の方法について紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -148,16 +149,10 @@ Azure 仮想ネットワーク (VNet) は、クラウド上に構築されたお
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-network.pdf">
-        <div class="img"></div>
-        <div class="text">
-Virtual Network のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

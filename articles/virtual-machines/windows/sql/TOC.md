@@ -12,10 +12,14 @@
 # 方法
 ## 高可用性の構成
 ### [高可用性のオプション](virtual-machines-windows-sql-high-availability-dr.md) 
-### [AlwaysOn 可用性グループを自動的に構成する](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-### [AlwaysOn 可用性グループを手動で構成する](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
-### [可用性グループ向けの内部ロード バランサーの構成](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-### [1 つ以上の AlwaysOn 可用性グループ リスナーの構成](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+### [AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-availability-group-overview.md)
+#### [自動 - テンプレート使用](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [手動 - 前提条件](virtual-machines-windows-portal-sql-availability-group-prereq.md)
+#### [手動 - チュートリアル](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+#### [Load Balancer - ポータル](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+#### [Load Balancer - PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [複数リージョン](virtual-machines-windows-portal-sql-availability-group-dr.md)
+
 ## 管理
 ### [SQL Server IaaS Agent 拡張機能の使用](virtual-machines-windows-sql-server-agent-extension.md)
 ### [自動修正](virtual-machines-windows-sql-automated-patching.md)
@@ -45,6 +49,6 @@
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

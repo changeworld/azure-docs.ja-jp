@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "カスタムの Web アプリケーションやモバイル アプリケーションに、アクティビティ監視などの強力な検索機能を追加する方法について説明します。 API リファレンスなどのドキュメントを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 680083cd9df823bf0ff89a0b4099c411fa0be078
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: c99d4b8d8db7739f615d566afa4617221b1c34a0
 
 ---
 # <a name="azure-search-documentation"></a>Azure Search のドキュメント
 
-Azure Search は、強力な検索エクスペリエンスをカスタム アプリに組み込んで、ポータルのビューからサービス、インデックス、クエリ アクティビティを監視できる、管理されたクラウド検索サービスです。 主な機能として、複数の言語でのスケーラブルなフルテキスト検索、地理空間検索、フィルタリングとファセット ナビゲーション、先行入力クエリ、検索結果の強調表示、カスタム アナライザーなどがあります。
+管理されたクラウド検索サービスである Azure Search を使用して、カスタムの Web アプリやモバイル アプリに検索機能を追加する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、複数の言語でのスケーラブルなフルテキスト検索、地理空間検索、フィルタリングとファセット ナビゲーション、先行入力クエリ、検索結果の強調表示、カスタム アナライザーを追加する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -131,8 +132,8 @@ Azure Search は、強力な検索エクスペリエンスをカスタム アプ
                     <div class="cardText">
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.search">.NET</a></p>
-                        <p><a href="/dotnet/api/microsoft.azure.management.search">.NET 管理</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.management.search">Java</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.management.search">.NET (管理)</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html">Python (管理)</a></p>
                    </div>
                 </div>
             </div>
@@ -153,16 +154,10 @@ Azure Search は、強力な検索エクスペリエンスをカスタム アプ
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/search.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure Search のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

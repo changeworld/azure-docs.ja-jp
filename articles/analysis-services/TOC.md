@@ -6,18 +6,19 @@
 # 方法 
 ##[サーバーへのデプロイ](analysis-services-deploy.md)
 ##[クライアントからの接続](analysis-services-connect.md)
-
 ##[サーバーの管理](analysis-services-manage.md)
+##[ユーザーの管理](analysis-services-manage-users.md)
 ##[オンプレミスのデータ ゲートウェイの統合](analysis-services-gateway.md)
 
 # リファレンス
-##[PowerShell](/powershell/resourcemanager)
+##[PowerShell](analysis-services-powershell.md)
 ##[REST ()](/rest/api/analysisservices)
 
 # リソース
 ##[データ ソースの接続](analysis-services-datasource.md)
+##[データ プロバイダー](analysis-services-data-providers.md) 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

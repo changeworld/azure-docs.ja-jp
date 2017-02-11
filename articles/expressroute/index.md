@@ -1,14 +1,14 @@
 ---
 layout: LandingPage
+description: "オンプレミス インフラストラクチャまたは共用施設から Microsoft クラウド サービスへのプライベート ExpressRoute 接続を構成および管理する方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 551759d87b6c697aa1f28810fe32815aec66f269
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: ecb42e7a0abc5a0438bff39bddddac25d005eb77
 
 ---
 #<a name="expressroute-documentation"></a>ExpressRoute のドキュメント
 
-Azure ExpressRoute を利用すれば、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。
-
+ExpressRoute を使用して、オンプレミス インフラストラクチャや共用施設から Microsoft クラウド サービスへの高速なプライベート接続を設定する方法について説明します。 チュートリアルや REST API などのドキュメントは、ExpressRoute 回線の構成と管理に役立ちます。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -90,7 +90,7 @@ Azure ExpressRoute を利用すれば、接続プロバイダーが提供する�
                     <div class="cardText">
                         <h3>REST ()</h3>
                         <p><a href="https://msdn.microsoft.com/library/azure/mt586720">REST API リファレンスに関するページ</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/azure/dn606310">クラシック REST API リファレンス</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn606310">Classic REST API リファレンス</a></p>
                     </div>
                 </div>
             </div>
@@ -98,16 +98,10 @@ Azure ExpressRoute を利用すれば、接続プロバイダーが提供する�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/expressroute.pdf">
-        <div class="img"></div>
-        <div class="text">
-ExpressRoute ドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

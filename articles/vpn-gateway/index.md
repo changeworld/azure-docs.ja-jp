@@ -1,13 +1,26 @@
 ---
+title: "VPN Gateway のドキュメント - チュートリアルと API リファレンス | Microsoft Docs"
+description: "クラウドの仮想ネットワークとオンプレミスの間またはクラウドの VNet 間のトラフィックを管理するように仮想プライベート ネットワーク (VPN) ゲートウェイを構成する方法について説明します。"
+services: vpn-gateway
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: vpn-gateway
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: ff8e5a68ada52f93c1f50e73a1a7857273d7f9c3
+ms.sourcegitcommit: 2e7486833ae23cdfed037aa1afb930997586a158
+ms.openlocfilehash: e3179c060380c07dde9058597b0d77861d14d848
+
 
 ---
-#<a name="vpn-gateway-documentation"></a>VPN Gateway のドキュメント
+# <a name="vpn-gateway-documentation"></a>VPN Gateway のドキュメント
 
-Azure VPN Gateway は、Azure 仮想ネットワークとオンプレミスの場所の間のほか、Azure 内の仮想ネットワーク間 (VNet 間) のネットワーク トラフィックの送信にも使用される仮想プライベート ネットワーク (VPN) です。  
+仮想プライベート ネットワーク ゲートウェイである VPN Gateway を構成する方法について説明します。 ドキュメントでは、Azure 仮想ネットワークとオンプレミスの場所または他の Azure 仮想ネットワーク (VNet) の間でネットワーク トラフィックを送信する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -152,16 +165,10 @@ Azure VPN Gateway は、Azure 仮想ネットワークとオンプレミスの�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/vpn-gateway.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure VPN Gateway のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

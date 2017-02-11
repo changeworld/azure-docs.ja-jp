@@ -19,8 +19,7 @@
 ### [ソース管理の統合](automation-source-control-integration.md)
 ## Runbook の自動化
 ### [Runbook を開始する](automation-starting-a-runbook.md)
-### [Web 呼び出しから Runbook を開始する](automation-webhooks.md)
-### [Runbook のスケジュール](automation-scheduling-a-runbook.md)
+### [webhook から Runbook を開始する](automation-webhooks.md)
 ### [データセンターでの Runbook の実行](automation-hybrid-runbook-worker.md)
 ### [Runbook の入力パラメーターを構成する](automation-runbook-input-parameters.md)
 ### [グラフィック Runbook でのエラー処理](automation-runbook-graphical-error-handling.md)
@@ -60,7 +59,7 @@
 ### [Automation アカウントを移動する](automation-migrate-account-subscription.md)
 ## トラブルシューティング
 ### [一般的なエラーのトラブルシューティング](automation-troubleshooting-automation-errors.md)
-### [Runbook ジョブが中断されました](automation-troubleshooting-hrw-runbook-terminates-suspended.md)
+### [Hybrid Runbook Worker のトラブルシューティング](automation-troubleshooting-hybrid-runbook-worker.md)
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
 ## [PowerShell (クラシック)](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
@@ -79,6 +78,6 @@
 ## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

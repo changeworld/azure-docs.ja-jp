@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Event Hubs を使用して、さまざまなプラットフォーム上にある接続された IoT デバイスやアプリケーションから毎秒数百万のイベントを取り込む方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 8244f410fa3337ae161657fe11ae5db2a2f378cd
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 29d6165596d3e98264285b6471c8f54b66aa2c3a
 
 ---
 #<a name="event-hubs-documentation"></a>Event Hubs のドキュメント
 
-Event Hubs は、1 秒間に数百万件のイベントを取り込むことができる非常にスケーラブルなデータ受信サービスであり、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。 Event Hubs はイベント パイプラインの "玄関" として機能し、データはイベント ハブに収集されると、任意のリアルタイム分析プロバイダーまたはバッチ処理/ストレージ アダプターを使用して変換および格納できます。
+Event Hubs を使用して、接続された IoT デバイスやアプリケーションから毎秒数百万のイベントを収集して管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、さまざまなプラットフォームからのスケーラブルなイベント取り込みをセットアップする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -115,16 +116,10 @@ Event Hubs は、1 秒間に数百万件のイベントを取り込むことが�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/event-hubs.pdf">
-        <div class="img"></div>
-        <div class="text">
-Event Hubs のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,13 +1,17 @@
 ---
 layout: LandingPage
+description: "アプリケーションで予測分析を使用するデータ サイエンティストと開発者向けのクラウド サービス、Machine Learning に関するドキュメント、ビデオ、サンプル モデル。"
+author: garyericson
+ms.date: 01/18/2017
+ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: d8c4cf777402393667a521dcff780e839d02e734
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 3247e45c44f63c529c84de5dd31eadc5a9552952
 
 ---
 #<a name="azure-machine-learning-documentation"></a>Azure Machine Learning のドキュメント
 
-Azure Machine Learning は、モデルの予測分析ツールを提供するだけでなく、予測モデルをすぐに使用できる Web サービスとしてデプロイするための、完全に管理されたサービスを提供します。
+データ サイエンティストと開発者が Machine Learning を使って予測分析をアプリケーションに組み込む方法について説明します。 チュートリアル、ビデオ、サンプル モデルでは、機械学習モデルを構築してデプロイする方法を紹介しています。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -94,8 +98,8 @@ Azure Machine Learning は、モデルの予測分析ツールを提供するだ
                 <div class="card">
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
-                        <p><a href="/azure/machine-learning/machine-learning-powershell-module">PowerShell</a></p>
-                        <p><a href="/azure/machine-learning/machine-learning-powershell-module">Machine Learning 用 PowerShell モジュール</a></p>
+                        <p><a href="/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning">PowerShell (新規)</a></p>
+                        <p><a href="/azure/machine-learning/machine-learning-powershell-module">PowerShell (クラシック)</a></p>
                     </div>
                 </div>
             </div>
@@ -127,16 +131,10 @@ Azure Machine Learning は、モデルの予測分析ツールを提供するだ
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/machine-learning.pdf">
-        <div class="img"></div>
-        <div class="text">
-Machine Learning ドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

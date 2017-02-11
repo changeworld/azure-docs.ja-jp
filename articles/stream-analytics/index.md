@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "完全に管理されたイベント処理によってクラウド内で IoT 分析を実行する方法について説明します。 アプリケーション、センサー、デバイスなどからリアルタイムでデータを分析します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: c57faa7c307420bb92bec2f661e6739a7cfca7ee
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 7095a55d9ea79bfd11b429d4fa53e04c482fbbea
 
 ---
 
 # <a name="stream-analytics-documentation"></a>Stream Analytics のドキュメント
 
-Azure Stream Analytics は、完全に管理された、リアルタイムのイベント処理エンジンです。データから深い洞察を明らかにするうえで役立ちます。  Stream Analytics では、デバイス、センサー、Web サイト、ソーシャル メディア、アプリケーション、インフラストラクチャ システムなどのデータ ストリーミングのリアルタイム分析の計算を簡単に設定できます。
+完全管理型のイベント処理エンジンである Stream Analytics を使用してクラウド内で IoT (モノのインターネット) 分析を実行する方法について説明します。 チュートリアルなどのドキュメントでは、アプリケーション、センサー、デバイス、ソーシャル メディアなどからリアルタイムでデータを分析する方法を紹介します。 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -161,16 +162,10 @@ Azure Stream Analytics は、完全に管理された、リアルタイムのイ
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/stream-analytics.pdf">
-        <div class="img"></div>
-        <div class="text">
-Stream Analytics のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

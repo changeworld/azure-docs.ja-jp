@@ -21,7 +21,7 @@
 ### [5: Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)
 ### [6: Web サービスにアクセスする](machine-learning-walkthrough-6-access-web-service.md)
 ## 初心者向けデータ サイエンス解説
-### [1: 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
+### [1:&5; つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
 ### [2: データは準備できていますか](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
 ### [3: 適切な質問を投稿する](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
 ### [4: 回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
@@ -128,7 +128,6 @@
 #### [Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
 #### [外部データを取得する](machine-learning-web-services-that-use-import-export-modules.md)
 #### [複数の地域にデプロイする](machine-learning-how-to-deploy-to-multiple-regions.md)
-#### [Marketplace に発行する](machine-learning-publish-web-service-to-azure-marketplace.md)
 #### [Web サービス パラメーターを使用する](machine-learning-web-service-parameters.md)
 #### [ログ記録を有効化する](machine-learning-web-services-logging.md)
 ### Web サービスを管理する
@@ -157,23 +156,10 @@
 #### [1 TB で Hadoop を使用する](machine-learning-data-science-process-hive-criteo-walkthrough.md)
 #### [SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)
 #### [SQL Data Warehouse を使用する](machine-learning-data-science-process-sqldw-walkthrough.md)
-### Web サービスの例
-#### [R を使用した例](machine-learning-r-csharp-web-service-examples.md)
-#### [バイナリ分類器](machine-learning-r-csharp-binary-classifier.md)
-#### [クラスター モデル](machine-learning-r-csharp-cluster-model.md)
-#### [多変量線形回帰](machine-learning-r-csharp-multivariate-linear-regression.md)
-#### [予測指数平滑法](machine-learning-r-csharp-forecasting-exponential-smoothing.md)
-#### [予測 - ETS + STL](machine-learning-r-csharp-retail-demand-forecasting.md)
-#### [予測 - ARIMA](machine-learning-r-csharp-arima.md)
-#### [生存分析](machine-learning-r-csharp-survival-analysis.md)
-#### [辞書ベースのセンチメント分析](machine-learning-r-csharp-lexicon-based-sentiment-analysis.md)
-#### [比率検定での相違](machine-learning-r-csharp-difference-in-two-proportions.md)
-#### [正規分布スイート](machine-learning-r-csharp-normal-distribution.md)
-#### [二項分布スイート](machine-learning-r-csharp-binomial-distribution.md)
-#### [Azure Marketplace に関する FAQ](machine-learning-marketplace-faq.md)
 
 # リファレンス
-## [PowerShell](machine-learning-powershell-module.md)
+## [PowerShell モジュール (新規)](/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning)
+## [PowerShell モジュール (クラシック)](machine-learning-powershell-module.md)
 ## [アルゴリズムとモジュールのリファレンス](https://msdn.microsoft.com/library/azure/dn905974.aspx)
 ## [REST ()](/rest/api/machinelearning)
 
@@ -222,6 +208,6 @@
 ## [ライブ チャットからヘルプを表示する](machine-learning-live-chat.md)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

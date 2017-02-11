@@ -1,13 +1,25 @@
 ---
 layout: LandingPage
+description: "Virtual Machine Scale Sets を使用して、大規模なコンピューティング、ビッグ データ、コンテナー化されたソリューション向けに自動スケールの Windows または Linux VM を作成する方法について説明します。"
+title: "Azure Virtual Machines Scale Sets のドキュメント、チュートリアル、API リファレンス | Microsoft Docs"
+services: virtual-machine-scale-sets
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machine-scale-sets
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: ace473bea761bd5219a3ca7facdf681dea04a7ff
+ms.sourcegitcommit: 7b2af8e58e050100b1778d977dabe25538b84cfe
+ms.openlocfilehash: 3bb6307cee24c80cbf8d621a49d2304d9b9b5c99
 
 ---
 #<a name="virtual-machine-scale-sets-documentation"></a>Virtual Machine Scale Sets のドキュメント
 
-仮想マシン スケール セットは、同一の VM のセットをデプロイおよび管理するための Azure コンピューティング リソースです。  すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。 そのため、ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードなどを対象にした大規模サービスを簡単に構築できます。
+Virtual Machine Scale Sets を使用して、同一の自動スケールの Windows または Linux VM のセットをデプロイおよび管理する方法について説明します。 ドキュメントでは、Scale Sets を使用して、大規模なコンピューティング、ビッグ データ、コンテナー化されたソリューションを対象としたサービスをサポートする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -98,16 +110,10 @@ ms.openlocfilehash: ace473bea761bd5219a3ca7facdf681dea04a7ff
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machine-scale-sets.pdf">
-        <div class="img"></div>
-        <div class="text">
-Virtual Machine Scale Sets のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

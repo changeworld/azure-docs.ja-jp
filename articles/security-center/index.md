@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Azure リソースのセキュリティの監視とポリシーの管理の設定方法について説明します。 チュートリアルや REST API リファレンスなどのドキュメントを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 8091c1c7cbf6617725bf7620fe0c2232e4e47cec
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 5600b20d3c04547e2002a779fde70769bb6a5e59
 
 ---
 # <a name="security-center-documentation"></a>Security Center のドキュメント
 
-Security Center は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+Security Center を使用して、Azure リソースのセキュリティの可視化と制御を行う方法について説明します。  チュートリアルや REST API リファレンスなどのドキュメントでは、セキュリティ ソリューションの広範なエコシステムと連動する、セキュリティの監視とポリシーの管理を設定する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -84,15 +85,10 @@ Security Center は、Azure リソースのセキュリティを高度に視覚�
     </li>
 </ul>   
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/security-center.pdf">
-        <div class="img"></div>
-        <div class="text">
-Security Center のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 
