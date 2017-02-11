@@ -247,6 +247,6 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

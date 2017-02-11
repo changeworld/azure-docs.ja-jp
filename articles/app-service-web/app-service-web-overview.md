@@ -77,6 +77,6 @@ App Service の Web Apps に加え、Azure では Web サイトと Web アプリ
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

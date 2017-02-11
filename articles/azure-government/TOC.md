@@ -39,6 +39,6 @@
 ## [Azure Government の Web サイト](https://azure.microsoft.com/overview/clouds/government/)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

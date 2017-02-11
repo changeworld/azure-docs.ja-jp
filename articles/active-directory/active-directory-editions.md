@@ -146,7 +146,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 * [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md)
 
-#### <a name="connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>接続 (オンプレミスのディレクトリを Azure Active Directory に拡張する同期エンジン)
+#### <a name="connect--sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>接続 (オンプレミスのディレクトリを Azure Active Directory に拡張する同期エンジン)
 **種類:** 共通機能
 
 **可用性:**
@@ -273,7 +273,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 * [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)
 
 
-#### <a name="a-namemim-cal-mim-serveramim-cal-mim-server"></a><a name="mim-cal-mim-server"></a>MIM CAL + MIM サーバー
+#### <a name="a-namemim-cal-mim-serveramim-cal--mim-server"></a><a name="mim-cal-mim-server"></a>MIM CAL + MIM サーバー
 Microsoft Identity Manager サーバー ソフトウェアの使用権は、Windows Server ライセンス (任意のエディション) と共に付与されます。 Microsoft Identity Manager は Windows Server オペレーティング システム上で実行されるので、サーバーで Windows Server の有効なライセンス版が実行されていれば、そのサーバーに Microsoft Identity Manager をインストールして使用できます。 Microsoft Identity Manager サーバーに他の個別のライセンスは不要です。
 
 **種類:** Premium の機能
@@ -333,7 +333,7 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 |:---:|:---:|:---:|:---:|
 | &nbsp; | &nbsp; | ![○][12] | &nbsp; |
 
-## <a name="azure-active-directory-join-windows-10-only-related-features"></a>Azure Active Directory Join – Windows 10 のみの関連機能
+## <a name="azure-active-directory-join--windows-10-only--related-features"></a>Azure Active Directory Join – Windows 10 のみの関連機能
 #### <a name="join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery"></a>Azure AD へのデバイスの参加、デスクトップ SSO、Azure AD 用の Microsoft Passport、管理者による Bitlocker 回復
 **種類:** Azure Active Directory Join – Windows 10 のみの関連機能
 
@@ -387,6 +387,6 @@ Azure AD には、Free、Basic、Premium (P1 および P2) の各エディショ
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

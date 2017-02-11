@@ -67,6 +67,6 @@ Azure AD 参加には、次の機能があります。
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

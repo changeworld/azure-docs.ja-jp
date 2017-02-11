@@ -193,6 +193,6 @@ Python Tools for Visual Studio、Bottle および Azure テーブル ストレ�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

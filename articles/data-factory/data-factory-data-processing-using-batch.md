@@ -914,6 +914,6 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 
