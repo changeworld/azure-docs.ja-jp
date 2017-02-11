@@ -1,12 +1,12 @@
 ---
-title: Spark を使用したデータ探索とモデリング | Microsoft Docs
-description: Spark MLlib ツールキットのデータ探索およびモデリング機能を紹介します。
+title: "Spark を使用したデータ探索とモデリング | Microsoft Docs"
+description: "Spark MLlib ツールキットのデータ探索およびモデリング機能を紹介します。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: b989b918-5ba5-4696-b8d0-76ae510a23f4
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: deguhath;bradsev;gokuma
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b3d594fe60204c3e6e595d0f20a47510b1785847
+
 
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Spark を使用したデータ探索とモデリング
@@ -43,7 +47,7 @@ Azure アカウントと HDInsight Spark が必要となります。このチュ
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="setup:-storage-locations,-libraries,-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
+## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
 Spark は、Azure Storage BLOB (WASB とも呼ばれます) に対する読み取りと書き込みを実行できます。 そのため、WASB に保存されている既存のデータは Spark を使用して処理することができ、結果も WASB に保存できます。
 
 WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、"wasb///" で始まるパスを使用して参照できます。 他の場所は "wasb://" で参照します。
@@ -166,7 +170,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 上記のセルの実行に要した時間: 51.72 秒
 
-## <a name="data-exploration-&-visualization"></a>データの探索と視覚化
+## <a name="data-exploration--visualization"></a>データの探索と視覚化
 データが Spark に取り込まれたら、次に、探索と視覚化によってデータの理解を深めます。 このセクションでは、SQL クエリを使用してタクシー データを調べ、視覚化するためにターゲット変数と予想される特徴をプロットします。 具体的には、タクシー乗車における乗客数の頻度、チップの金額の頻度、支払金額と支払の種類によるチップの変化をプロットします。
 
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>タクシー乗車データのサンプルで乗客数の頻度のヒストグラムをプロットする
@@ -225,7 +229,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 視覚化にはいくつかの種類 (表、円グラフ、折れ線グラフ、面グラフ、棒グラフ) があり、Notebook の **[Type (タイプ)]** メニュー ボタンで選択できます。 ここに示したのは棒グラフによるプロットです。
 
-### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts."></a>チップの金額と、乗客数別および料金別のチップ金額の変化のヒストグラムをプロットする
+### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>チップの金額と、乗客数別および料金別のチップ金額の変化のヒストグラムをプロットする
 SQL クエリを使用してデータをサンプリングします。
 
     #PLOT HISTOGRAM OF TIP AMOUNTS AND VARIATION BY PASSENGER COUNT AND PAYMENT TYPE
@@ -281,7 +285,7 @@ SQL クエリを使用してデータをサンプリングします。
 
 ![料金別チップの金額](./media/machine-learning-data-science-spark-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
-## <a name="feature-engineering,-transformation-and-data-preparation-for-modeling"></a>モデリングのための特徴エンジニアリング、変換、およびデータの準備
+## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>モデリングのための特徴エンジニアリング、変換、およびデータの準備
 このセクションでは、ML モデリングで使用するデータを準備する手順について説明し、手順を実行するコードを示します。 次のタスクを実行する方法を示します。
 
 * 時間を乗車時間のバケットにビン分割して新しい特徴を作成する
@@ -1054,13 +1058,16 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0317_06_51.737282"
 
-## <a name="what's-next?"></a>次の手順
+## <a name="whats-next"></a>次の手順
 Spark MlLib を使用して回帰モデルと分類モデルを作成しました。これで、これらのモデルにスコアを付け、評価する方法を学習する準備ができました。 高度なデータの探索と Notebook のモデリングでは、クロス検証、ハイパー パラメーター スイープやモデルの評価などに深く踏み込みます。 
 
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、 [Spark で構築した機械学習モデルのスコア付けと評価](machine-learning-data-science-spark-model-consumption.md)に関するページをご覧ください。
 
 **クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「 [Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) 」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

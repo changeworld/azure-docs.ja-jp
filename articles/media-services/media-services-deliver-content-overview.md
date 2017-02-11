@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/07/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0af1ca64301e2fb0a3af30e1da8b5d5277f14146
+ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
+ms.openlocfilehash: 42428d9456c5ea00192a981265bd50263cbf66ba
 
 
 ---
@@ -26,19 +26,19 @@ ms.openlocfilehash: 0af1ca64301e2fb0a3af30e1da8b5d5277f14146
 この目標を実現するために、次の手順を実行することができます。
 
 * ストリームをマルチビットレート (アダプティブ ビットレート) ビデオ ストリームにエンコードします。 この手順では、品質とネットワークの条件が考慮されます。
-* Microsoft Azure Media Services の [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します。 この手順では、さまざまなデバイスでのストリーミングが考慮されます。 Media Services で配信がサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG-DASH、HDS (Adobe Primetime/Access のライセンスが必要) です。
+* Microsoft Azure Media Services の [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します。 この手順では、さまざまなデバイスでのストリーミングが考慮されます。 Media Services でサポートされるアダプティブ ビットレート ストリーミング配信テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH です。
 
 この記事では、コンテンツ配信の重要な概念の概要を説明します。
 
 既知の問題を確認するには、「 [既知の問題](media-services-deliver-content-overview.md#known-issues)」をご覧ください。
 
 ## <a name="dynamic-packaging"></a>動的パッケージ
-Media Services が提供するダイナミック パッケージを使用すると、アダプティブ ビットレートの MP4 または Smooth Streaming でエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG-DASH、HLS、Smooth Streaming、HDS) でそのまま配信することができます。つまり、これらのストリーミング形式に再パッケージ化する必要がありません。 ダイナミック パッケージを使用してコンテンツを配信することをお勧めします。
+Media Services が提供するダイナミック パッケージを使用すると、アダプティブ ビットレートの MP4 または スムーズ ストリーミング でエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG-DASH、HLS、スムーズ ストリーミング) でそのまま配信できます。つまり、これらのストリーミング形式に再パッケージ化する必要がありません。 ダイナミック パッケージを使用してコンテンツを配信することをお勧めします。
 
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
 * mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルやアダプティブ ビットレート Smooth Streaming ファイルにエンコードします。
-* コンテンツ配信元となるストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。 詳細については、「 [オンデマンド ストリーミング予約ユニットのスケールの変更方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
+* コンテンツ配信元となるストリーミング エンドポイントの&1; つ以上のオンデマンド ストリーミング ユニットを取得します。 詳細については、「 [オンデマンド ストリーミング予約ユニットのスケールの変更方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 
 ダイナミック パッケージを使用すると、単一のストレージ形式のファイルに対して保存と支払を行います。 Media Services は要求に応じて適切な応答を作成して返します。
 
@@ -47,7 +47,7 @@ Media Services が提供するダイナミック パッケージを使用する�
 詳細については、「 [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)」を参照してください。
 
 ## <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
-Media Services を使用すると、資産にフィルターを定義できます。 これらのフィルターは、ビデオの特定セクションのみの再生や、顧客のデバイスで処理できるオーディオやビデオ演奏のサブセットの特定 (資産に関連付けられているすべての演奏ではなく) などを顧客が実行できるようにする、サーバー側のルールです。 このフィルター処理は "*動的マニフェスト*" によって実行されます。これは、顧客が 1 つまたは複数の指定したフィルターに基づいてビデオをストリーミングするようにリクエストした場合に作成されます。
+Media Services を使用すると、資産にフィルターを定義できます。 これらのフィルターは、ビデオの特定セクションのみの再生や、顧客のデバイスで処理できるオーディオやビデオ演奏のサブセットの特定 (資産に関連付けられているすべての演奏ではなく) などを顧客が実行できるようにする、サーバー側のルールです。 このフィルター処理は "*動的マニフェスト*" によって実行されます。これは、顧客が&1; つまたは複数の指定したフィルターに基づいてビデオをストリーミングするようにリクエストした場合に作成されます。
 
 詳細については、「 [フィルターと動的マニフェスト](media-services-dynamic-manifest-overview.md)」を参照してください。
 
@@ -73,7 +73,7 @@ Media Services を使用すると、資産にフィルターを定義できま�
 ロケーターを作成する際、Azure Storage に必要な記憶域や伝達プロセスの関係上 30 秒の遅延が生じる場合があります。
 
 ## <a name="adaptive-streaming"></a>アダプティブ ストリーミング
-アダプティブ ビットレート テクノロジにより、ビデオ再生アプリケーションでネットワークの状態を判断し、複数のビットレートから選択することができます。 ネットワーク通信のパフォーマンスが低下した場合、低い画質レベルでビデオの再生を継続できるように、クライアントは以前より低いビットレートを選択することができます。 ネットワークの状態が改善したら、クライアントはより高画質なより高いビットレートに切り替えることができます。 Azure Media Services でサポートされるアダプティブ ビットレート テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG-DASH、HDS です。
+アダプティブ ビットレート テクノロジにより、ビデオ再生アプリケーションでネットワークの状態を判断し、複数のビットレートから選択することができます。 ネットワーク通信のパフォーマンスが低下した場合、低い画質レベルでビデオの再生を継続できるように、クライアントは以前より低いビットレートを選択することができます。 ネットワークの状態が改善したら、クライアントはより高画質なより高いビットレートに切り替えることができます。 Azure Media Services でサポートされるアダプティブ ビットレート テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG-DASH です。
 
 ユーザーにストリーミング URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、ストリーミングするコンテンツが含まれている資産の基本パスが提供されます。 ただし、このコンテンツをストリーミングするためには、このパスをさらに変更する必要があります。 ストリーミング マニフェスト ファイルの完全な URL を構築するには、ロケーターのパスの値とマニフェスト ファイル (filename.ism) の名前を連結する必要があります。 その後、 **/Manifest** と適切な形式 (必要な場合) をロケーターのパスに付加します。
 
@@ -120,11 +120,6 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=fmp4-v20)
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
-
-### <a name="hds-for-adobe-primetimeaccess-licensees-only"></a>HDS (Adobe PrimeTime/Access ライセンスのみ)
-{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=f4m-f4f)
-
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f)
 
 ## <a name="progressive-download"></a>プログレッシブ ダウンロード
 プログレッシブ ダウンロードでは、ファイル全体がダウンロードされる前に、メディアの再生を開始できます。 .ism* (ismv、isma、ismt、ismc) ファイルのプログレッシブ ダウンロードはできません。
@@ -189,6 +184,6 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

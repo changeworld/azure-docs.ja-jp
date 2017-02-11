@@ -1,12 +1,12 @@
 ---
-title: C および C# でのイベント ハブの使用 | Microsoft Docs
-description: このチュートリアルでは、C でイベントを送信し、EventProcessorHost を使用して C# でそのイベントを受信するための Azure Event Hubs の使用方法について説明します。
+title: "C および C# での Event Hubs の使用 | Microsoft Docs"
+description: "このチュートリアルでは、C でイベントを送信し、EventProcessorHost を使用して C# でそのイベントを受信するための Azure Event Hubs の使用方法について説明します。"
 services: event-hubs
-documentationcenter: ''
+documentationcenter: 
 author: jtaubensee
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 5170c138-39ec-4eea-9925-e6902e5c425a
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: c
@@ -14,6 +14,10 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 08/16/2016
 ms.author: jotaub;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: 30ef95eebb2d260198d56af1832f897a0e8e8001
+
 
 ---
 # <a name="get-started-with-event-hubs"></a>Event Hubs の使用
@@ -22,13 +26,13 @@ ms.author: jotaub;sethm
 ## <a name="introduction"></a>はじめに
 Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。 Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して転送と格納できます。
 
-詳細については、「 [Event Hubs の概要][Event Hubs の概要]」をご覧ください。
+詳細については、[Event Hubs の概要][Event Hubs の概要]に関するページを参照してください。
 
-このチュートリアルでは、C のコンソール アプリケーションを使用してイベント ハブにメッセージをインジェストし、C# [イベント プロセッサ ホスト][イベント プロセッサ ホスト] ライブラリを使用して並列で取得する方法を学習します。
+このチュートリアルでは、C のコンソール アプリケーションを使用して Event Hub にメッセージを取り込み、C# [イベント プロセッサ ホスト][イベント プロセッサ ホスト] ライブラリを使用して並列で取得する方法を学習します。
 
 このチュートリアルを最後まで行うには、以下のものが必要です。
 
-* C の開発環境。 このチュートリアルでは、Ubuntu 14.04 での [Azure Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md) 上の GCC スタックを想定しています。 他の環境用の手順は、外部リンクで提供されます。
+* C の開発環境。 このチュートリアルでは、Ubuntu 14.04 での [Azure Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 上の GCC スタックを想定しています。 他の環境用の手順は、外部リンクで提供されます。
 * Microsoft Visual Studio Express for Windows
 * アクティブな Azure アカウント。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
@@ -51,8 +55,8 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 ## <a name="next-steps"></a>次のステップ
 Event Hub を作成し、データを送受信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
-* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]
-* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張] サンプル
+* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]。
+* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張]のサンプル。
 * [Event Hubs の概要][Event Hubs の概要]
 
 <!-- Images. -->
@@ -68,6 +72,6 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

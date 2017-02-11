@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/02/2017
+ms.date: 01/06/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b78199a672528c475f4f299faaf6406089e95d01
+ms.sourcegitcommit: 6862723b774951fe4cca0303ee2a39a0d5f2089d
+ms.openlocfilehash: eec688e33ff55334ebe0c1bc6d08e4753aadb85c
 
 
 ---
@@ -60,7 +60,7 @@ System Center Operations Manager を使用している場合、各 Operations Ma
 
 #### <a name="view-workspace-information-the-azure-portal"></a>Azure Portal でワークスペース情報を表示する
 
-1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com) にサインインします。
+1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com) にサインインします。
 2. **ハブ** メニューで **[その他のサービス]** をクリックし、リソースの一覧で「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** をクリックします。  
     ![Azure のハブ](./media/log-analytics-manage-access/hub.png)  
 3. Log Analytics サブスクリプションのブレードで、ワークスペースを選択します。
@@ -242,6 +242,24 @@ Azure サブスクリプションがリンクされているエンタープラ�
 6. Azure Portal でビューを更新すると、選択したプランの**価格レベル**が更新されます。  
     ![updated plan](./media/log-analytics-manage-access/manage-access-change-plan04.png)
 
+## <a name="change-how-long-log-analytics-stores-data"></a>Log Analytics でのデータの保持期間を変更する
+
+Free 価格レベルでは、Log Analytics によって直近の 7 日間のデータが保持されます。
+Standard 価格レベルでは、Log Analytics によって直近の 30 日間のデータが保持されます。
+Premium 価格レベルでは、Log Analytics によって直近の 365 日間のデータが保持されます。
+Standalone および OMS 価格レベルでは、Log Analytics によって既定で直近の 31 日間のデータが保持されます。
+
+Standalone および OMS 価格レベルをご利用の場合、データは最長 2 年間 (730 日間) 保持できます。 既定の 31 日間を超えてデータを保存した場合は、データ保持の料金が発生します。 価格の詳細については、[超過料金](https://azure.microsoft.com/pricing/details/log-analytics/)に関するセクションをご覧ください。
+
+データ保持の期間を変更するには、次の手順に従います。
+
+1. [Azure ポータル](http://portal.azure.com)にサインインします。
+2. **[Log Analytics]** を探して選択します。
+3. 既存のワークスペースの一覧が表示されます。 ワークスペースを選択します。  
+4. ワークスペース ブレードの **[全般]** で、**[リテンション期間]** をクリックします。  
+5. スライダーを使用して保持期間の日数を増減し、**[保存]** をクリックします。
+![保持期間の変更](./media/log-analytics-manage-access/manage-access-change-retention01.png)
+
 ## <a name="change-an-azure-active-directory-organization-for-a-workspace"></a>ワークスペースの Azure Active Directory 組織を変更する
 
 ワークスペースの Azure Active Directory 組織を変更できます。 Azure Active Directory の組織を変更すると、そのディレクトリに存在するユーザーとグループをワークスペースに追加できます。
@@ -275,6 +293,6 @@ Log Analytics ワークスペースを削除すると、そのワークスペー
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と FreshGrade の統合 | Microsoft Docs'
-description: Azure Active Directory と FreshGrade の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と FreshGrade の統合 | Microsoft Docs"
+description: "Azure Active Directory と FreshGrade の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 1055bba6-f4df-462e-bc9b-1ad5ada0f638
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 04c401cbb0b073a791d074f795085e3bd0b8cd8e
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-freshgrade"></a>チュートリアル: Azure Active Directory と FreshGrade の統合
+# <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>チュートリアル: Azure Active Directory と FreshGrade の統合
 このチュートリアルでは、FreshGrade と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
 FreshGrade と Azure AD の統合には、次の利点があります。
@@ -140,14 +144,14 @@ FreshGrade で Azure AD のシングル サインオンを構成してテスト�
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-freshgrade-tutorial/create_aaduser_04.png) 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-freshgrade-tutorial/create_aaduser_05.png) 
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-freshgrade-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
-6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-freshgrade-tutorial/create_aaduser_06.png) 
+    c. ページの下部にある **[次へ]**」を参照してください。
+6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-freshgrade-tutorial/create_aaduser_06.png) 
    
    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
@@ -157,7 +161,7 @@ FreshGrade で Azure AD のシングル サインオンを構成してテスト�
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-freshgrade-tutorial/create_aaduser_07.png) 
@@ -224,6 +228,6 @@ FreshGrade で Azure AD のシングル サインオンを構成してテスト�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

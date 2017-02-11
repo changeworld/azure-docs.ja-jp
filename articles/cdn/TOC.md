@@ -50,6 +50,10 @@
 ## [REST ()](/rest/api/cdn/)
 
 # リソース
+##  [ルール エンジンのリファレンス](cdn-rules-engine-reference.md)
+### [ルール エンジンの条件式](cdn-rules-engine-reference-conditional-expressions.md)
+### [ルール エンジンの一致条件](cdn-rules-engine-reference-match-conditions.md)
+### [ルール エンジンの機能](cdn-rules-engine-reference-features.md)
 ## [Azure CDN の POP の場所](cdn-pop-locations.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cdn)
 ## [料金](https://azure.microsoft.com/pricing/details/cdn/)
@@ -58,6 +62,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 158a0a74c7997b28d652c3eed049daa8faf39d94
 
 
 ---
-# <a name="how-to-perform-live-streaming-with-onpremise-encoders-using-the-azure-portal"></a>Azure ポータルを使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
+# <a name="how-to-perform-live-streaming-with-on-premise-encoders-using-the-azure-portal"></a>Azure ポータルを使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -34,7 +34,7 @@ ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
 チュートリアルを完了するには次のものが必要です。
 
 * Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
-* Media Services アカウント。    Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
+* Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
 * Web カメラ。 たとえば、 [Telestream Wirecast エンコーダー](http://www.telestream.net/wirecast/overview.htm)。
 
 次の記事の確認を強くお勧めします。
@@ -46,6 +46,9 @@ ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
 ## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>一般的なライブ ストリーミング シナリオ
 次の手順では、パススルー配信用に構成されたチャネルを使用する、一般的なライブ ストリーミング アプリケーションの作成に関連するタスクについて説明します。 このチュートリアルでは、パススルー チャネルとライブ イベントを作成、管理する方法について説明します。
 
+>[!NOTE]
+>コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。 
+    
 1. ビデオ カメラをコンピューターに接続します。 マルチビットレート RTMP またはフラグメント化 MP4 ストリームを出力するオンプレミスのライブ エンコーダーを起動して構成します。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](http://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
    
     この手順は、チャネルを作成した後でも実行できます。
@@ -59,11 +62,7 @@ ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
 5. ライブ イベントまたはライブ プログラムを作成します。 
    
     Azure ポータルを使用する場合、ライブ イベントを作成すると資産も作成されます。 
-   
-   > [!NOTE]
-   > コンテンツをストリームするストリーミング エンドポイントに少なくとも 1 つのストリーミング予約ユニットがあることを確認します。
-   > 
-   > 
+
 6. ストリーミングとアーカイブを開始する準備ができたら、イベントまたはプログラムを開始します。
 7. 必要に応じて、ライブ エンコーダーは、広告の開始を信号通知できます。 広告が出力ストリームに挿入されます。
 8. イベントのストリーミングとアーカイブを停止するには、任意のタイミングでイベントまたはプログラムを停止します。
@@ -79,29 +78,7 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 
 ![通知](./media/media-services-portal-passthrough-get-started/media-services-notifications.png)
 
-## <a name="configure-streaming-endpoints"></a>ストリーミング エンドポイントの構成
-Media Services にはダイナミック パッケージが用意されており、マルチビットレート MP4 でエンコードされたコンテンツを、MPEG DASH、HLS、スムーズ ストリーミング、HDS のストリーミング形式でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。 ダイナミック パッケージを使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
-
-動的パッケージ化機能を活用するには、コンテンツの配信元となるストリーミング エンドポイントのストリーミング ユニットを 1 つ以上取得する必要があります。  
-
-ストリーミング予約ユニットを作成したり、数を変更したりするには、以下の手順を実行します。
-
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
-2. **[設定]** ウィンドウで **[ストリーミング エンドポイント]** をクリックします。 
-3. 既定のストリーミング エンドポイントをクリックします。 
-   
-    **[DEFAULT STREAMING ENDPOINT DETAILS (既定のストリーミング エンドポイントの詳細)]** ウィンドウが表示されます。
-4. ストリーミング ユニットの数を指定するには、 **[ストリーミング ユニット]** のスライダーを動かします。
-   
-    ![[ストリーミング ユニット]](./media/media-services-portal-passthrough-get-started/media-services-streaming-units.png)
-5. **[保存]** をクリックして、変更を保存します。
-   
-   > [!NOTE]
-   > 新しいユニットの割り当てが完了するまでに最大 20 分かかる場合があります。
-   > 
-   > 
-
-## <a name="create-and-start-passthrough-channels-and-events"></a>パススルー チャネルとイベントの作成と開始
+## <a name="create-and-start-pass-through-channels-and-events"></a>パススルー チャネルとイベントの作成と開始
 チャネルは、ライブ ストリームのセグメントの発行と保存を管理できるイベントまたはプログラムに関連付けられています。 イベントはチャネルによって管理されます。 
 
 プログラムの **アーカイブ ウィンドウ** の長さを設定することで、録画されたコンテンツの保持時間を指定できます。 この値は、最小 5 分から最大 25 時間までの範囲で設定できます。 クライアントが現在のライブ位置からさかのぼって検索できる最長時間も、Archive Window (アーカイブ ウィンドウ)の長さによって決まります。 イベントは、指定された時間の長さまでは放送できますが、アーカイブ ウィンドウの長さを過ぎたコンテンツは絶えず破棄されていきます。 さらに、このプロパティの値によって、クライアント マニフェストが肥大した場合の最大サイズも決まります。
@@ -180,6 +157,6 @@ Media Services のラーニング パスを確認します。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

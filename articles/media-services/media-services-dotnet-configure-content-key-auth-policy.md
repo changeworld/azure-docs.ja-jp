@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2016
+ms.date: 12/07/2016
 ms.author: juliako;mingfeiy
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7a90634ecc8712b7b94567c3b1cea574d544075b
+ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
+ms.openlocfilehash: 39f4f0b7e9bbe28a36471558c8535ee9f3cd17ff
 
 
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>動的暗号化: コンテンツ キー承認ポリシーを構成する
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Microsoft Azure Media Services を使用すると、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) または [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/)で保護された MPEG DASH、Smooth Streaming、HTTP ライブ ストリーミング (HLS) のストリームを配信できます。 AMS では、Widevine DRM で暗号化された DASH ストリームを配信することもできます。 PlayReady と Widevine はいずれも共通暗号化 (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。
 
 Media Services では、クライアントが暗号化されたコンテンツを再生するために AES キーまたは PlayReady/Widevine ライセンスを取得できる **キー/ライセンス配信サービス** も提供します。
@@ -45,13 +45,13 @@ Media Services では、Secure Token Services は提供されません。 トー
 [Azure ACS を使用してトークンを発行する](http://mingfeiy.com/acs-with-key-services)。
 
 ### <a name="some-considerations-apply"></a>いくつかの考慮事項が適用されます。
-* 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。 詳細については、「 [Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
+* 動的パッケージングや動的暗号化を使用するには、少なくとも&1; つのストリーミング予約ユニットが必要です。 詳細については、「 [Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 * 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート Smooth Streaming ファイルが含まれている必要があります。 詳細については、「 [資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
 * **AssetCreationOptions.StorageEncrypted** オプションを使用して、資産をアップロードしてエンコードします。
 * 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
 * キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。  ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
 * 資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
-* 現在、HDS ストリーミング形式およびプログレッシブ ダウンロードは暗号化できません。
+* 現時点では、プログレッシブ ダウンロードは暗号化できません。
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 動的暗号化
 ### <a name="open-restriction"></a>オープン制限
@@ -226,7 +226,7 @@ List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKe
 ## <a name="playready-dynamic-encryption"></a>PlayReady 動的暗号化
 Media Services により、ユーザーが保護されたコンテンツを再生する際に、PlayReady DRM ランタイムに適用される権限と制限を構成できます。 
 
-PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の 1 つとして、 [PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。 Media Services SDK for .NET では、**PlayReadyLicenseResponseTemplate** クラスと **PlayReadyLicenseTemplate** クラスを利用して、PlayReady ライセンス テンプレートを定義できます。
+PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の&1; つとして、 [PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。 Media Services SDK for .NET では、**PlayReadyLicenseResponseTemplate** クラスと **PlayReadyLicenseTemplate** クラスを利用して、PlayReady ライセンス テンプレートを定義できます。
 
 [このトピック](media-services-protect-with-drm.md)では、**PlayReady** と **Widevine** を使用してコンテンツを暗号化する方法を説明しています。
 
@@ -424,6 +424,6 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -8,11 +8,8 @@
 ### [IoT Hub (.NET) を使ってみる](iot-hub-csharp-csharp-getstarted.md)
 ### [IoT Hub (Java) を使ってみる](iot-hub-java-java-getstarted.md)
 ### [IoT Hub (ノード) を使ってみる](iot-hub-node-node-getstarted.md)
-## IoT device SDK を使ってみる
-### [Azure IoT device SDK for C の概要](iot-hub-device-sdk-c-intro.md)
-### [IoT device SDK for C: IoTHubClient の詳細](iot-hub-device-sdk-c-iothubclient.md)
-### [IoT device SDK for C: シリアライザー](iot-hub-device-sdk-c-serializer.md)
-## Raspberry Pi を使ってみる
+
+## Raspberry Pi (Node) を使ってみる
 ### [Raspberry Pi 3 を使ってみる](iot-hub-raspberry-pi-kit-node-get-started.md)
 ### レッスン 1: デバイスの構成
 #### [デバイスの構成](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
@@ -33,10 +30,123 @@
 #### [サンプル アプリケーションを実行してメッセージを受信する](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md)
 #### [省略可能: LED の動作を変更する](iot-hub-raspberry-pi-kit-node-lesson4-change-led-behavior.md)
 ### [トラブルシューティング](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
+
+## Raspberry Pi (C) を使ってみる
+### [Raspberry Pi 3 を使ってみる](iot-hub-raspberry-pi-kit-c-get-started.md)
+### レッスン 1: デバイスの構成
+#### [デバイスの構成](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md)
+#### [ツールを入手する (Windows 7 以降)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
+#### [ツールを入手する (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-ubuntu.md)
+#### [ツールを入手する (macOS 10.10)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-mac.md)
+#### [点滅アプリケーションを作成してデプロイする](iot-hub-raspberry-pi-kit-c-lesson1-deploy-blink-app.md)
+### レッスン 2: IoT Hub の作成
+#### [Azure ツールを入手する (Windows 7+)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-win32.md)
+#### [Azure ツールを入手する (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-ubuntu.md)
+#### [Azure ツールを入手する (macOS 10.10)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-mac.md)
+#### [IoT Hub を作成して Raspberry Pi を登録する](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md)
+### レッスン 3: デバイスからクラウドへのメッセージの送信
+#### [Azure Function App とストレージ アカウントを作成する](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md)
+#### [サンプル アプリケーションを実行してメッセージを送信する](iot-hub-raspberry-pi-kit-c-lesson3-run-azure-blink.md)
+#### [ストレージに保持されたメッセージを読み取る](iot-hub-raspberry-pi-kit-c-lesson3-read-table-storage.md)
+### レッスン 4: クラウドからデバイスへのメッセージの送信
+#### [サンプル アプリケーションを実行してメッセージを受信する](iot-hub-raspberry-pi-kit-c-lesson4-send-cloud-to-device-messages.md)
+#### [省略可能: LED の動作を変更する](iot-hub-raspberry-pi-kit-c-lesson4-change-led-behavior.md)
+### [トラブルシューティング](iot-hub-raspberry-pi-kit-c-troubleshooting.md)
+
+## Intel Edison (Node) を使ってみる
+### [Intel Edison を使ってみる](iot-hub-intel-edison-kit-node-get-started.md)
+### レッスン 1: デバイスの構成
+#### [デバイスの構成](iot-hub-intel-edison-kit-node-lesson1-configure-your-device.md)
+#### [ツールを入手する (Windows 7 以降)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md)
+#### [ツールを入手する (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-ubuntu.md)
+#### [ツールを入手する (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-mac.md)
+#### [点滅アプリケーションを作成してデプロイする](iot-hub-intel-edison-kit-node-lesson1-deploy-blink-app.md)
+### レッスン 2: IoT Hub の作成
+#### [Azure ツールを入手する (Windows 7+)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-win32.md)
+#### [Azure ツールを入手する (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-ubuntu.md)
+#### [Azure ツールを入手する (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-mac.md)
+#### [IoT Hub を作成して Raspberry Pi を登録する](iot-hub-intel-edison-kit-node-lesson2-prepare-azure-iot-hub.md)
+### レッスン 3: デバイスからクラウドへのメッセージの送信
+#### [Azure Function App とストレージ アカウントを作成する](iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
+#### [サンプル アプリケーションを実行してメッセージを送信する](iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md)
+#### [ストレージに保持されたメッセージを読み取る](iot-hub-intel-edison-kit-node-lesson3-read-table-storage.md)
+### レッスン 4: クラウドからデバイスへのメッセージの送信
+#### [サンプル アプリケーションを実行してメッセージを受信する](iot-hub-intel-edison-kit-node-lesson4-send-cloud-to-device-messages.md)
+#### [省略可能: LED の動作を変更する](iot-hub-intel-edison-kit-node-lesson4-change-led-behavior.md)
+### [トラブルシューティング](iot-hub-intel-edison-kit-node-troubleshooting.md)
+
+## Intel Edison (C) を使ってみる
+### [Intel Edison を使ってみる](iot-hub-intel-edison-kit-c-get-started.md)
+### レッスン 1: デバイスの構成
+#### [デバイスの構成](iot-hub-intel-edison-kit-c-lesson1-configure-your-device.md)
+#### [ツールを入手する (Windows 7 以降)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md)
+#### [ツールを入手する (Ubuntu 16.04)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-ubuntu.md)
+#### [ツールを入手する (macOS 10.10)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-mac.md)
+#### [点滅アプリケーションを作成してデプロイする](iot-hub-intel-edison-kit-c-lesson1-deploy-blink-app.md)
+### レッスン 2: IoT Hub の作成
+#### [Azure ツールを入手する (Windows 7+)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-win32.md)
+#### [Azure ツールを入手する (Ubuntu 16.04)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-ubuntu.md)
+#### [Azure ツールを入手する (macOS 10.10)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-mac.md)
+#### [IoT Hub を作成して Raspberry Pi を登録する](iot-hub-intel-edison-kit-c-lesson2-prepare-azure-iot-hub.md)
+### レッスン 3: デバイスからクラウドへのメッセージの送信
+#### [Azure Function App とストレージ アカウントを作成する](iot-hub-intel-edison-kit-c-lesson3-deploy-resource-manager-template.md)
+#### [サンプル アプリケーションを実行してメッセージを送信する](iot-hub-intel-edison-kit-c-lesson3-run-azure-blink.md)
+#### [ストレージに保持されたメッセージを読み取る](iot-hub-intel-edison-kit-c-lesson3-read-table-storage.md)
+### レッスン 4: クラウドからデバイスへのメッセージの送信
+#### [サンプル アプリケーションを実行してメッセージを受信する](iot-hub-intel-edison-kit-c-lesson4-send-cloud-to-device-messages.md)
+#### [省略可能: LED の動作を変更する](iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md)
+### [トラブルシューティング](iot-hub-intel-edison-kit-c-troubleshooting.md)
+
 ## [Gateway SDK を使ってみる (Linux)](iot-hub-linux-gateway-sdk-get-started.md)
 ## [Gateway SDK を使ってみる (Windows)](iot-hub-windows-gateway-sdk-get-started.md)
 
+## IoT Gateway Starter Kit を使ってみる
+### シミュレートされたデバイス
 
+#### [シミュレートされたデバイスを使ってみる](iot-hub-gateway-kit-c-sim-get-started.md)
+#### レッスン 1: NUC の構成
+##### [Intel NUC を IoT ゲートウェイとしてセットアップする](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md)
+
+#### レッスン 2: IoT ハブの作成
+##### [ツールを入手する (Windows 7 以降)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
+##### [ツールを入手する (Ubuntu 16.04)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-ubuntu.md)
+##### [ツールを入手する (macOS 10.10)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-mac.md)
+##### [IoT ハブを作成してデバイスを登録する](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
+
+#### レッスン 3: シミュレートされたデバイスからのメッセージの受信
+##### [BLE サンプル アプリの構成と実行](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
+##### [IoT ハブからのメッセージの読み取り](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)
+
+#### レッスン 4: Azure Table ストレージへのメッセージの保存
+##### [Azure Function App と Azure ストレージ アカウントの作成](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md)
+##### [Azure Storage ストレージに保持されたメッセージの読み取り](iot-hub-gateway-kit-c-sim-lesson4-read-table-storage.md)
+
+#### [トラブルシューティング](iot-hub-gateway-kit-c-sim-troubleshooting.md)
+
+### SensorTag デバイス
+#### [SensorTag デバイスを使ってみる](iot-hub-gateway-kit-c-get-started.md)
+#### レッスン 1: NUC の構成
+##### [Intel NUC を IoT ゲートウェイとしてセットアップする](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
+
+#### レッスン 2: IoT ハブの作成
+##### [ツールを入手する (Windows 7 以降)](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md)
+##### [ツールを入手する (Ubuntu 16.04)](iot-hub-gateway-kit-c-lesson2-get-the-tools-ubuntu.md)
+##### [ツールを入手する (macOS 10.10)](iot-hub-gateway-kit-c-lesson2-get-the-tools-mac.md)
+##### [IoT ハブを作成してデバイスを登録する](iot-hub-gateway-kit-c-lesson2-register-device.md)
+
+#### レッスン 3: シミュレートされたデバイスからのメッセージの受信
+##### [BLE サンプル アプリの構成と実行](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md)
+##### [IoT ハブからのメッセージの読み取り](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md)
+
+#### レッスン 4: Azure Table ストレージへのメッセージの保存
+##### [Azure Function App と Azure ストレージ アカウントの作成](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md)
+##### [Azure Storage ストレージに保持されたメッセージの読み取り](iot-hub-gateway-kit-c-lesson4-read-table-storage.md)
+
+##### [トラブルシューティング](iot-hub-gateway-kit-c-troubleshooting.md)
+## IoT device SDK を使ってみる
+### [Azure IoT device SDK for C の概要](iot-hub-device-sdk-c-intro.md)
+### [IoT device SDK for C: IoTHubClient の詳細](iot-hub-device-sdk-c-iothubclient.md)
+### [IoT device SDK for C: シリアライザー](iot-hub-device-sdk-c-serializer.md)
 # 方法
 ## [デバイスからクラウドへのメッセージの処理に関するチュートリアル (.NET)](iot-hub-csharp-csharp-process-d2c.md)
 ## [デバイスからクラウドへのメッセージの処理に関するチュートリアル (Java)](iot-hub-java-java-process-d2c.md)
@@ -130,6 +240,6 @@
 ## [IoT デバイス カタログ向けの Azure 認定](https://catalog.azureiotsuite.com/)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

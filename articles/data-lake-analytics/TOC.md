@@ -10,12 +10,15 @@
 ## [Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 ## [Azure CLI](data-lake-analytics-get-started-cli.md)
 ## [REST API](data-lake-analytics-get-started-rest-api.md)
+## [Python](data-lake-analytics-get-started-python.md)
 
 # 方法
 ## 開発
 ### [U-SQL](data-lake-analytics-u-sql-get-started.md)
 ### [U-SQL ウィンドウ機能](data-lake-analytics-use-window-functions.md)
 ### [U-SQL ユーザー定義演算子](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+### [U-SQL Python 拡張機能](data-lake-analytics-u-sql-python-extensions.md)
+### [U-SQL Cognitive 機能](data-lake-analytics-u-sql-cognitive.md)
 
 ## ソリューションを作成する
 ### [Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)
@@ -52,6 +55,6 @@
 ## [Azure Data Lake のブログ](https://blogs.msdn.microsoft.com/azuredatalake/)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

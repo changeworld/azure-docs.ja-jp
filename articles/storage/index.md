@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "クラウド上で Azure Storage (BLOB、テーブル、キュー、ファイル、仮想マシン ディスクの各ストレージ) を使用する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: a6c333ae45868d5c29ce2f2587f1417fa9fafc0b
-ms.openlocfilehash: 27fd664b69ca4467daa2b0abc6e53c9cece221ae
+ms.sourcegitcommit: df6bc6a92950efeed61db2f2ef7fd5f65189e0fa
+ms.openlocfilehash: 130a9a105ac7ff50fbc3b5baefd080f272e77d0b
 
 ---
 
 # <a name="storage-documentation"></a>Storage のドキュメント
 
-Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。  これは、拡張性に優れ、柔軟性があり、グローバルにアクセスでき、トラフィックに基づいて自動的にデータの負荷を分散します。  Azure Storage には、アプリケーションのニーズを満たす 5 つのサービスとして、Blob Storage、Table Storage、Queue Storage、Disk Storage、File Storage が用意されています。
+耐久性、可用性、拡張性に優れたクラウド ストレージ サービスである Azure Storage の使用方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、BLOB、テーブル、キュー、ファイル、仮想マシン ディスクの各ストレージをセットアップして管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -129,8 +130,9 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p><a href="/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference">REST: Import/Export</a></p>
+                        <p><a href="/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference">BLOB、キュー、テーブル、ファイル</a></p>
                         <p><a href="/rest/api/storagerp">REST: リソース プロバイダー</a></p>
+                        <p><a href="/rest/api/storageimportexport">REST: Import/Export</a></p>
                    </div>
                 </div>
             </div>
@@ -148,6 +150,6 @@ Storage のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

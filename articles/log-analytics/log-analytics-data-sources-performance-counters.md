@@ -1,12 +1,12 @@
 ---
-title: Log Analytics での Windows および Linux のパフォーマンス カウンター | Microsoft Docs
-description: Log Analytics では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、OMS リポジトリに格納されたそれらの詳細、および OMS ポータルでのそれらの分析方法について説明します。
+title: "Log Analytics での Windows および Linux のパフォーマンス カウンター |Microsoft Docs"
+description: "Log Analytics では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、OMS リポジトリに格納されたそれらの詳細、および OMS ポータルでのそれらの分析方法について説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b4d326064059b42cf2bf059184066c9acb4dcfd0
+
 
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics での Windows および Linux のパフォーマンス データ ソース
@@ -98,6 +102,9 @@ Log Analytics は、カウンターがインストールされているすべて
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * 詳細な視覚化および分析を行うために、収集されたデータを [Power BI](log-analytics-powerbi.md) にエクスポートします。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

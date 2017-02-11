@@ -1,21 +1,21 @@
 ---
-title: "Application Insights を使用した Java トレース ログの探索"
+title: "Azure Application Insights を使用した Java トレース ログの探索 | Microsoft Docs"
 description: "Application Insights を使用して Log4J または Logback のトレースを検索します"
 services: application-insights
 documentationcenter: java
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 12/12/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
+ms.sourcegitcommit: 086091bb3be6659436ec8e371acbe4b8e86bfacb
+ms.openlocfilehash: 3ef5f6240d7e4704118b86fb0cfee8cf502859ff
 
 
 ---
@@ -39,6 +39,8 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
 
 *Logback*
 
+```XML
+
     <dependencies>
        <dependency>
           <groupId>com.microsoft.azure</groupId>
@@ -46,8 +48,11 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
           <version>[1.0,)</version>
        </dependency>
     </dependencies>
+```
 
 *Log4J v2.0*
+
+```XML
 
     <dependencies>
        <dependency>
@@ -56,8 +61,11 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
           <version>[1.0,)</version>
        </dependency>
     </dependencies>
+```
 
 *Log4J v1.2*
+
+```XML
 
     <dependencies>
        <dependency>
@@ -66,6 +74,7 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
           <version>[1.0,)</version>
        </dependency>
     </dependencies>
+```
 
 #### <a name="if-youre-using-gradle"></a>Gradle を使用している場合:
 プロジェクトが既に Gradle を使用してビルドする設定になっている場合は、次のいずれかの行を build.gradle ファイルの `dependencies` グループに追加します。
@@ -74,15 +83,22 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
 
 **Logback**
 
+```
+
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '1.0.+'
+```
 
 **Log4J v2.0**
 
+```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '1.0.+'
+```
 
 **Log4J v1.2**
 
+```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '1.0.+'
+```
 
 #### <a name="otherwise-"></a>それ以外の場合:
 適切なアペンダーをダウンロードして展開し、適切なライブラリをプロジェクトに追加します。
@@ -98,15 +114,19 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
 
 *Logback*
 
+```XML
+
     <appender name="aiAppender" 
       class="com.microsoft.applicationinsights.logback.ApplicationInsightsAppender">
     </appender>
     <root level="trace">
       <appender-ref ref="aiAppender" />
     </root>
-
+```
 
 *Log4J v2.0*
+
+```XML
 
     <Configuration packages="com.microsoft.applicationinsights.Log4j">
       <Appenders>
@@ -118,9 +138,11 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
         </Root>
       </Loggers>
     </Configuration>
-
+```
 
 *Log4J v1.2*
+
+```XML
 
     <appender name="aiAppender" 
          class="com.microsoft.applicationinsights.log4j.v1_2.ApplicationInsightsAppender">
@@ -129,26 +151,27 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
       <priority value ="trace" />
       <appender-ref ref="aiAppender" />
     </root>
+```
 
 Application Insights のアペンダーは、上記のコード サンプルに示されているように、構成済みの任意のロガーによって参照でき、必ずしもルート ロガーを使用する必要はありません。
 
 ## <a name="explore-your-traces-in-the-application-insights-portal"></a>Application Insights ポータルでのトレースの探索
-これで、Application Insights にトレースを送信するようにプロジェクトが構成されました。これらのトレースは、Application Insights ポータルの [[検索]][診断] ブレードで表示および検索できます。
+これで、Application Insights にトレースを送信するようにプロジェクトが構成されました。これらのトレースは、Application Insights ポータルの [[検索]][diagnostic] ブレードで表示して検索できます。
 
 ![Application Insights ポータルで [検索] を開きます](./media/app-insights-java-trace-logs/10-diagnostics.png)
 
 ## <a name="next-steps"></a>次のステップ
-[診断検索][診断]
+[診断検索][diagnostic]
 
 <!--Link references-->
 
-[診断]: app-insights-diagnostic-search.md
+[diagnostic]: app-insights-diagnostic-search.md
 [java]: app-insights-java-get-started.md
 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

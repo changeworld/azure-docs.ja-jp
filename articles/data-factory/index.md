@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: b23fd70f2941898524a848d5c0f353542f416e59
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: 5742326de5bbe91340df69402bc551f87dafca78
 
 ---
 # <a name="azure-data-factory-documentation"></a>Azure Data Factory のドキュメント
@@ -85,7 +85,7 @@ Azure Data Factory は、データの移動や変換を自動化するクラウ�
 </ul>
 
 ---
- 
+
 <h2>リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>
@@ -101,25 +101,25 @@ Azure Data Factory は、データの移動や変換を自動化するクラウ�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.datafactories.models">.NET</a></p>
                         <p><a href="/azure/data-factory/data-factory-sdks">Azure Data Factory の開発者用リファレンス</a></p>
-                    </div>
+                   </div>
                 </div>
             </div>
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p><a href="/rest/api/datafactory/">REST API</a></p>
+                        <p><a href="/rest/api/datafactory/">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
             </div>

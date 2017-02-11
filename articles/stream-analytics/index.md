@@ -1,11 +1,12 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: c75352e633f069597e7bc62650205f3c389b6909
+ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
+ms.openlocfilehash: c57faa7c307420bb92bec2f661e6739a7cfca7ee
 
 ---
-#<a name="stream-analytics-documentation"></a>Stream Analytics のドキュメント
+
+# <a name="stream-analytics-documentation"></a>Stream Analytics のドキュメント
 
 Azure Stream Analytics は、完全に管理された、リアルタイムのイベント処理エンジンです。データから深い洞察を明らかにするうえで役立ちます。  Stream Analytics では、デバイス、センサー、Web サイト、ソーシャル メディア、アプリケーション、インフラストラクチャ システムなどのデータ ストリーミングのリアルタイム分析の計算を簡単に設定できます。
 
@@ -122,66 +123,43 @@ Azure Stream Analytics は、完全に管理された、リアルタイムのイ
 
 ---
 
-## <a name="reference"></a>リファレンス
-
+<h2>リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell リファレンス</p>
+                    <div class="Command-Line</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.streamanalytics/v2.3.0/azurerm.streamanalytics">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET に関する管理リファレンス</p>
+                    <div class="Languages</h3>
+                        <p><a href="/dotnet/api/streamanalytics.tests.operationtests">.NET</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn834998">クエリ言語</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="https://msdn.microsoft.com/library/azure/dn834998">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardText">
-                        <h3>クエリ言語</h3>
-                        <p>Stream Analytics クエリ言語リファレンス</p>
+                    <div class="REST</h3>
+                        <p><a href="/rest/api/streamanalytics">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-    <li>
-        <a href="/rest/api/streamanalytics">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST ()</h3>
-                        <p>Stream Analytics REST API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-</ul>   
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/stream-analytics.pdf">

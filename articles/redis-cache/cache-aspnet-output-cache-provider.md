@@ -1,27 +1,31 @@
 ---
-title: Cache ASP.NET 出力キャッシュ プロバイダー
-description: Azure Redis Cache を使用して ASP.NET ページ出力をキャッシュする方法について説明します。
+title: "Cache ASP.NET 出力キャッシュ プロバイダー"
+description: "Azure Redis Cache を使用して ASP.NET ページ出力をキャッシュする方法について説明します。"
 services: redis-cache
 documentationcenter: na
 author: steved0x
 manager: douge
 editor: tysonn
-
+ms.assetid: 78469a66-0829-484f-8660-b2598ec60fbf
 ms.service: cache
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 09/27/2016
+ms.date: 01/06/2017
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: bf282f9f17c7a651c9229d262db3c61fcb92c799
+
 
 ---
-# <a name="asp.net-output-cache-provider-for-azure-redis-cache"></a>Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー
+# <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー
 Redis 出力キャッシュ プロバイダーは、出力キャッシュ データ用のプロセス外ストレージ メカニズムです。 このデータは、完全な HTTP 応答専用です (ページ出力キャッシュ)。 プロバイダーは、ASP.NET 4 で導入された新しい出力キャッシュ プロバイダー拡張機能ポイントに接続します。
 
 Redis 出力キャッシュ プロバイダーを使用するには、まず対象のキャッシュを構成し、Redis 出力キャッシュ プロバイダー NuGet パッケージを使用して ASP.NET アプリケーションを構成します。 このトピックでは、Redis 出力キャッシュ プロバイダーを使用するようにアプリケーションを構成する手順について説明します。 Azure Redis Cache インスタンスを作成および構成する方法の詳細については、 [キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)に関するページを参照してください。
 
-## <a name="store-asp.net-page-output-in-the-cache"></a>ASP.NET ページ出力をキャッシュに格納する
+## <a name="store-aspnet-page-output-in-the-cache"></a>ASP.NET ページ出力をキャッシュに格納する
 Visual Studio で Redis 出力キャッシュ プロバイダー NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
 ![Azure Redis Cache Manage NuGet パッケージ](./media/cache-aspnet-output-cache-provider/redis-cache-manage-nuget-menu.png)
@@ -34,25 +38,27 @@ Redis 出力キャッシュ プロバイダー NuGet パッケージは、StackE
 
 NuGet パッケージによって、必要なアセンブリ参照がダウンロードされて追加されます。さらに、web.config ファイルには、ASP.NET アプリケーションが Redis 出力キャッシュ プロバイダーを使用するために必要な構成を記述した次のセクションが追加されます。
 
-    <caching>
-      <outputCachedefault Provider="MyRedisOutputCache">
-        <providers>
-          <!--
-          <add name="MyRedisOutputCache"
-            host = "127.0.0.1" [String]
-            port = "" [number]
-            accessKey = "" [String]
-            ssl = "false" [true|false]
-            databaseId = "0" [number]
-            applicationName = "" [String]
-            connectionTimeoutInMilliseconds = "5000" [number]
-            operationTimeoutInMilliseconds = "5000" [number]
-          />
-          -->
-          <add name="MyRedisOutputCache" type="Microsoft.Web.Redis.RedisOutputCacheProvider" host="127.0.0.1" accessKey="" ssl="false"/>
-        </providers>
-      </outputCache>
-    </caching>
+```xml
+<caching>
+  <outputCachedefault Provider="MyRedisOutputCache">
+    <providers>
+      <!--
+      <add name="MyRedisOutputCache"
+        host = "127.0.0.1" [String]
+        port = "" [number]
+        accessKey = "" [String]
+        ssl = "false" [true|false]
+        databaseId = "0" [number]
+        applicationName = "" [String]
+        connectionTimeoutInMilliseconds = "5000" [number]
+        operationTimeoutInMilliseconds = "5000" [number]
+      />
+      -->
+      <add name="MyRedisOutputCache" type="Microsoft.Web.Redis.RedisOutputCacheProvider" host="127.0.0.1" accessKey="" ssl="false"/>
+    </providers>
+  </outputCache>
+</caching>
+```
 
 コメント化されたセクションには、属性の例と各属性のサンプル設定が記述されています。
 
@@ -70,7 +76,9 @@ NuGet パッケージによって、必要なアセンブリ参照がダウン�
 
 出力をキャッシュする各ページに、OutputCache ディレクティブを追加します。
 
-    <%@ OutputCache Duration="60" VaryByParam="*" %>
+```
+<%@ OutputCache Duration="60" VaryByParam="*" %>
+```
 
 この例では、キャッシュされたページ データが 60 秒間キャッシュに保持され、パラメーターの組み合わせごとに異なるバージョンのページがキャッシュされます。 OutputCache ディレクティブの詳細については、「 [@OutputCache](http://go.microsoft.com/fwlink/?linkid=320837)に関するページを参照してください。
 
@@ -79,6 +87,9 @@ NuGet パッケージによって、必要なアセンブリ参照がダウン�
 ## <a name="next-steps"></a>次のステップ
 「 [Azure Redis Cache の ASP.NET セッション状態プロバイダー](cache-aspnet-session-state-provider.md)」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 12/09/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fc01f4dd55e1f933243bc23424b54767870374d1
+ms.sourcegitcommit: 5a73ee6865a09af68a9ab55f17c85136608c4d84
+ms.openlocfilehash: cfe10bc9c86835d228b09550cc98a846ee1a78ad
 
 
 ---
@@ -39,13 +39,15 @@ Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API �
 * [**PowerBI コンテンツ パック**](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)を使用して、アクティビティ ログを PowerBI で分析する。
 * サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、アクティビティ ログを [**Event Hubs** にストリーミング](monitoring-stream-activity-logs-event-hubs.md)する。
 
+設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントまたはイベント ハブ名前空間は、ログを出力するのと同じサブスクリプションに属している必要はありません。
+
 ## <a name="export-the-activity-log-with-log-profiles"></a>ログ プロファイルを使用したアクティビティ ログのエクスポート
 **ログ プロファイル** は、アクティビティ ログをエクスポートする方法を制御します。 ログ プロファイルを使用して、以下を構成できます。
 
 * アクティビティ ログの送信先 (ストレージ アカウントまたは Event Hubs)
 * 送信するイベント カテゴリ (Write、Delete、Action)
 * エクスポートするリージョン (場所)
-* アクティビティ ログをストレージ アカウントに保持する期間。 リテンション期間が 0 日の場合、ログは永続的に保持されます。 リテンション期間ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
+* アクティビティ ログをストレージ アカウントに保持する期間。 リテンション期間が 0 日の場合、ログは永続的に保持されます。 リテンション期間ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。
 
 ここに挙げた設定は、ポータルの [アクティビティ ログ] ブレードの [エクスポート] オプションで構成できます。 さらに、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell コマンドレット、または CLI を使えば、プログラムを使って構成することもできます。 1 つのサブスクリプションで使用できるログ プロファイルは 1 つだけです。
 
@@ -237,6 +239,6 @@ azure insights logprofile delete --name my_log_profile
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

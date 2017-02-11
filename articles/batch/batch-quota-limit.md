@@ -3,7 +3,7 @@ title: "Batch サービスのクォータと制限 | Microsoft Docs"
 description: "既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法について説明します"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
@@ -12,11 +12,11 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2016
-ms.author: marsma
+ms.date: 01/05/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3433ce8b664fb02c5c267ea4b21e678fdc1accfe
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 1a530bf6e9afca9a7cdc1f68e8eefdbf077dc516
 
 
 ---
@@ -41,7 +41,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 ## <a name="other-limits"></a>その他の制限
 | **リソース** | **上限** |
 | --- | --- |
-| [同時実行タスク数](batch-parallel-node-tasks.md)  |ノードのコア数 x 4 |
+| [同時実行タスク数](batch-parallel-node-tasks.md)  |ノードのコア数 x&4; |
 | [アプリケーション](batch-application-packages.md) 数 |20 |
 | アプリケーションあたりのアプリケーション パッケージ数 |40 |
 | 各アプリケーション パッケージのサイズ |約 195 GB<sup>1</sup> |
@@ -75,7 +75,7 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
     **[次へ]**をクリックします。
 4. **[Problem (問題)]** ブレードで、次の操作を行います。
    
-    a. [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
+    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
    
     b. **[詳細]** で、変更する個々のクォータ、Batch アカウント名、および新しい制限値を指定します。
    
@@ -103,6 +103,6 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

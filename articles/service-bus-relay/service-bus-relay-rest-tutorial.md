@@ -1,32 +1,36 @@
 ---
-title: リレー型メッセージングを使用した Service Bus REST チュートリアル | Microsoft Docs
-description: REST ベースのインターフェイスを表示する簡易な Service Bus Relay ホスト アプリケーションを構築します。
-services: service-bus
+title: "リレー型メッセージングを使用した Service Bus REST チュートリアル | Microsoft Docs"
+description: "REST ベースのインターフェイスを表示する簡易な Service Bus Relay ホスト アプリケーションを構築します。"
+services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
+ms.service: service-bus-relay
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7ba69a1a5f363fe5034e3fc7946b1584c9d77b50
+
 
 ---
-# <a name="service-bus-relay-rest-tutorial"></a>Service Bus Relay REST のチュートリアル
+# <a name="service-bus-wcf-relay-rest-tutorial"></a>Service Bus WCF Relay REST のチュートリアル
 このチュートリアルでは、REST ベースのインターフェイスを表示する簡易な Service Bus ホスト アプリケーションを構築する方法について説明します。 REST を使用すると、Web ブラウザーなどの Web クライアントから HTTP 要求を介して Service Bus API にアクセスできるようになります。
 
 このチュートリアルでは、Windows Communication Foundation (WCF) REST プログラミング モデルを使用して、Service Bus に REST サービスを構築します。 詳細については、WCF ドキュメントの[「WCF Web HTTP プログラミング モデル」](https://msdn.microsoft.com/library/bb412169.aspx)と [「サービスの設計と実装」](https://msdn.microsoft.com/library/ms729746.aspx) を参照してください。
 
-## <a name="step-1:-create-a-service-namespace"></a>手順 1: サービス名前空間の作成
+## <a name="step-1-create-a-service-namespace"></a>手順 1: サービス名前空間の作成
 最初の手順では、名前空間を作成し、Shared Access Signature (SAS) キーを取得します。 名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。 サービス名前空間が作成された時点で、SAS キーが生成されます。 サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="step-2:-define-a-rest-based-wcf-service-contract-to-use-with-service-bus"></a>手順 2: Service Bus で使用する REST ベースの WCF サービス コントラクトを定義する
+## <a name="step-2-define-a-rest-based-wcf-service-contract-to-use-with-service-bus"></a>手順 2: Service Bus で使用する REST ベースの WCF サービス コントラクトを定義する
 他の Service Bus Service と同様に、REST スタイルのサービスを作成するときは、コントラクトを定義する必要があります。 コントラクトには、ホストがサポートする操作を指定します。 サービス操作は、Web サービス メソッドと考えることができます。 コントラクトを作成するには、C++、C#、または Visual Basic インターフェイスを定義します。 インターフェイスの各メソッドは、特定のサービス操作に対応しています。 [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) 属性を各インターフェイスに適用する必要があります。また、[OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) 属性を各操作に適用する必要があります。 [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) があるインターフェイスのメソッドに [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) がない場合、そのメソッドは公開されません。 これらのタスクに使用されるコードの例を手順に従って説明します。
 
 基本の Service Bus コントラクトと REST スタイルのコントラクトの主な違いは、REST スタイルの [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) にプロパティ [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx) がある点です。 このプロパティを使用すると、インターフェイス内のメソッドを相手側のインターフェイスのメソッドにマップすることができます。 ここでは、[WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx) を使用してメソッドを HTTP GET にリンクします。 その結果、Service Bus は、インターフェイスに送信されたコマンドをより正確に取得および解釈できるようになります。
@@ -53,7 +57,7 @@ ms.author: sethm
     [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) は、WCF の基本機能にプログラムでアクセスできる名前空間です。 Service Bus は、サービス コントラクトの定義に WCF の多くのオブジェクトと属性を使用します。 ほとんどの場合、Service Bus Relay アプリケーションにはこの名前空間を使用することになります。 同様に、[System.ServiceModel.Channels](https://msdn.microsoft.com/library/system.servicemodel.channels.aspx) はチャネルの定義に役立ちます。チャネルは、Service Bus とクライアント Web ブラウザーとの通信を経由するオブジェクトです。 最後に、[System.ServiceModel.Web](https://msdn.microsoft.com/library/system.servicemodel.web.aspx) には、Web ベースのアプリケーションを作成できる型が含まれています。
 7. `ImageListener`名前空間の名前を **Microsoft.ServiceBus.Samples** に変更します。
    
-    ```
+     ```
     namespace Microsoft.ServiceBus.Samples
     {
         ...
@@ -129,7 +133,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="step-3:-implement-a-rest-based-wcf-service-contract-to-use-service-bus"></a>手順 3: Service Bus を使用する REST ベースの WCF サービス コントラクトを実装する
+## <a name="step-3-implement-a-rest-based-wcf-service-contract-to-use-service-bus"></a>手順 3: Service Bus を使用する REST ベースの WCF サービス コントラクトを実装する
 REST スタイルの Service Bus Service を作成するには、まずコントラクトを作成する必要があります。コントラクトは、インターフェイスを使用して定義します。 次の手順はインターフェイスの実装です。 ユーザー定義の **IImageContract** インターフェイスを実装する **ImageService** というクラスを作成します。 コントラクトを実装したら、App.config ファイルを使用してインターフェイスを構成します。 構成ファイルには、サービス名、コントラクト名、Service Bus との通信に使用するプロトコルの種類など、アプリケーションに必要な情報が含まれています。 以下の手順では、これらのタスクに使用するコード例を示します。
 
 これまでの手順と同様に、REST スタイルのコントラクトと基本の Service Bus コントラクトの実装にはほとんど違いがありません。
@@ -236,7 +240,7 @@ REST スタイルの Service Bus Service を作成するには、まずコント
     ```
    
     この手順では、以前に定義した既定の **webHttpRelayBinding** を使用するサービスを構成します。 また、既定の **sbTokenProvider** を使用します。この値は次の手順で定義します。
-4. `<services>` 要素の後に、次の内容の `<behaviors>` 要素を作成します。このとき、"SAS_KEY" キーを、手順 1 で [Azure Portal][] から取得した *Shared Access Signature* (SAS) に置き換えます。
+4. `<services>` 要素の後に、次の内容の `<behaviors>` 要素を作成します。このとき、"SAS_KEY" キーを、手順 1 で [Azure ポータル][Azure ポータル] から取得した *Shared Access Signature* (SAS) に置き換えます。
    
     ```
     <behaviors>
@@ -260,8 +264,8 @@ REST スタイルの Service Bus Service を作成するには、まずコント
    
     ```
     <appSettings>
-    <!-- Service Bus specific app settings for messaging connections -->
-    <add key="Microsoft.ServiceBus.ConnectionString"
+       <!-- Service Bus specific app settings for messaging connections -->
+       <add key="Microsoft.ServiceBus.ConnectionString"
            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
     </appSettings>
     ```
@@ -423,7 +427,7 @@ namespace Microsoft.ServiceBus.Samples
 </configuration>
 ```
 
-## <a name="step-4:-host-the-rest-based-wcf-service-to-use-service-bus"></a>手順 4: Service Bus を使用する REST ベースの WCF サービスをホストする
+## <a name="step-4-host-the-rest-based-wcf-service-to-use-service-bus"></a>手順 4: Service Bus を使用する REST ベースの WCF サービスをホストする
 この手順では、Service Bus でコンソール アプリケーションを使用して、Web サービスを実行する方法について説明します。 この手順で作成するコードの詳細については、手順に従って例を使用して説明します。
 
 ### <a name="to-create-a-base-address-for-the-service"></a>サービスのベース アドレスを作成するには
@@ -554,12 +558,13 @@ namespace Microsoft.ServiceBus.Samples
 ## <a name="next-steps"></a>次のステップ
 ここでは、Service Bus Relay サービスを使用するアプリケーションを構築しました。リレー型メッセージングの詳細については、次の記事を参照してください。
 
-* [Azure Service Bus アーキテクチャの概要](../service-bus/service-bus-fundamentals-hybrid-solutions.md#relays)
-* [Service Bus Relay サービスの使用方法](service-bus-dotnet-how-to-use-relay.md)
+* [Azure Service Bus アーキテクチャの概要](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#relays)
+* [Service Bus WCF Relay サービスの使用方法](service-bus-dotnet-how-to-use-relay.md)
 
 [Azure ポータル]: https://portal.azure.com
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

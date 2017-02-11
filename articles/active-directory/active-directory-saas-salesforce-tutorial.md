@@ -41,13 +41,13 @@ Salesforce Sandbox 環境を使用している場合は、 [Salesforce Sandbox �
 
 **ビデオ チュートリアル第&1; 部: シングル サインオンを有効にする方法**
 
-> [!ビデオ https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Integrating-Salesforce-with-Azure-AD-How-to-enable-Single-Sign-On-12/player]
+> [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Integrating-Salesforce-with-Azure-AD-How-to-enable-Single-Sign-On-12/player]
 > 
 > 
 
 **ビデオ チュートリアル第&2; 部: ユーザー プロビジョニングを自動化する方法**
 
-> [!ビデオ https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Integrating-Salesforce-with-Azure-AD-How-to-automate-User-Provisioning-22/player]
+> [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Integrating-Salesforce-with-Azure-AD-How-to-automate-User-Provisioning-22/player]
 > 
 > 
 

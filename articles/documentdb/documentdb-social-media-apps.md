@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 12/09/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6c9e285834707b668086ceab7fdde582f0cd87cc
+ms.sourcegitcommit: d9f6c8c73cb7803547053ec495812f993eb44c43
+ms.openlocfilehash: b2f8683be1dea938cba84766efe32287eeebb712
 
 
 ---
@@ -38,12 +38,12 @@ ms.openlocfilehash: 6c9e285834707b668086ceab7fdde582f0cd87cc
 
 誤解しないでください。私は SQL データベースを長年使用してきました。SQL データベースは優れていますが、他のあらゆるパターン、手法、ソフトウェア プラットフォームと同様に、すべてのシナリオに最適というわけではありません。
 
-このシナリオで SQL が最適な選択肢でないのはなぜでしょうか。 1 つの投稿の構造を見てみましょう。Web サイトやアプリケーションでその投稿を表示する場合、たった 1 つの投稿を表示するために  8 つのテーブルを結合してクエリを実行しなければなりません。動的に読み込まれ、画面に表示される投稿のストリームを想像してみてください。そうすれば、私が目指しているものがおわかりいただけると思います。
+このシナリオで SQL が最適な選択肢でないのはなぜでしょうか。 1 つの投稿の構造を見てみましょう。Web サイトやアプリケーションでその投稿を表示する場合、たった&1; つの投稿を表示するために  8 つのテーブルを結合してクエリを実行しなければなりません。動的に読み込まれ、画面に表示される投稿のストリームを想像してみてください。そうすれば、私が目指しているものがおわかりいただけると思います。
 
 コンテンツを提供するために、こうした多数の結合を使用する何千ものクエリを解決できるだけの能力を備えた巨大な SQL インスタンスを使用することもできますが、実際のところ、よりシンプルなソリューションが存在するのに、そのようなインスタンスをわざわざ使用する必要があるでしょうか。
 
 ## <a name="the-nosql-road"></a>NoSQL への道
-[Azure で実行](http://neo4j.com/developer/guide-cloud-deployment/#_windows_azure) できる特殊なグラフ データベースがありますが、これらは安価ではなく、IaaS サービス (サービスとしてのインフラストラクチャ、主に Virtual Machines) とメンテナンスを必要とします。 この記事では、Azure の NoSQL データベースである [DocumentDB](https://azure.microsoft.com/services/documentdb/)で実行され、ほとんどのシナリオに対応できる低コストのソリューションに照準を合わせます。 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) のアプローチの採用、JSON 形式でのデータの保存、[非正規化](https://en.wikipedia.org/wiki/Denormalization)の適用により、これまで複雑であった投稿を次のような 1 つの[ドキュメント](https://en.wikipedia.org/wiki/Document-oriented_database)に変換できます。
+[Azure で実行](http://neo4j.com/developer/guide-cloud-deployment/#_windows_azure) できる特殊なグラフ データベースがありますが、これらは安価ではなく、IaaS サービス (サービスとしてのインフラストラクチャ、主に Virtual Machines) とメンテナンスを必要とします。 この記事では、Azure の NoSQL データベースである [DocumentDB](https://azure.microsoft.com/services/documentdb/)で実行され、ほとんどのシナリオに対応できる低コストのソリューションに照準を合わせます。 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) のアプローチの採用、JSON 形式でのデータの保存、[非正規化](https://en.wikipedia.org/wiki/Denormalization)の適用により、これまで複雑であった投稿を次のような&1; つの[ドキュメント](https://en.wikipedia.org/wiki/Document-oriented_database)に変換できます。
 
     {
         "id":"ew12-res2-234e-544f",
@@ -62,7 +62,7 @@ ms.openlocfilehash: 6c9e285834707b668086ceab7fdde582f0cd87cc
         ]
     }
 
-また、投稿を 1 つのクエリで結合なしに取得できます。 これははるかにシンプルでわかりやすい方法です。予算的にも、必要なリソースを減らして大きな成果を上げることができます。
+また、投稿を&1; つのクエリで結合なしに取得できます。 これははるかにシンプルでわかりやすい方法です。予算的にも、必要なリソースを減らして大きな成果を上げることができます。
 
 Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)も可能な[自動インデックス作成機能](documentdb-indexing.md)によって、すべてのプロパティのインデックスが作成されます。 このスキーマフリーのアプローチにより、さまざまな動的構造でドキュメントを保存できます。将来的には、カテゴリのリストや投稿に関連付けられたハッシュタグを投稿に含めたいと考えています。DocumentDB では、余分な作業を必要とせずに、追加された属性を使用して新しいドキュメントを処理します。
 
@@ -102,13 +102,13 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-作成日順に並べ替えられた投稿を含む "最新の" ストリームや、過去 24 時間により多くの「いいね」を獲得した投稿を含む "最もホットな" ストリームを取得することもできます。また、フォロワーや関心事などのロジックに基づいたユーザーごとのカスタム ストリームも実装できますが、やはり投稿のリストに過ぎません。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN 演算子](documentdb-sql-query.md#where-clause)を使用して DocumentDB に対して 1 つのクエリを発行し、投稿のページを一度に取得します。
+作成日順に並べ替えられた投稿を含む "最新の" ストリームや、過去 24 時間により多くの「いいね」を獲得した投稿を含む "最もホットな" ストリームを取得することもできます。また、フォロワーや関心事などのロジックに基づいたユーザーごとのカスタム ストリームも実装できますが、やはり投稿のリストに過ぎません。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN 演算子](documentdb-sql-query.md#where-clause)を使用して DocumentDB に対して&1; つのクエリを発行し、投稿のページを一度に取得します。
 
 フィードのストリームは、[Azure App Services](https://azure.microsoft.com/services/app-service/) のバックグラウンド プロセス ([Webjobs](../app-service-web/web-sites-create-web-jobs.md)) を使用して構築できました。 投稿が作成されたら、[Azure Storage](https://azure.microsoft.com/services/storage/) [Queues](../storage/storage-dotnet-how-to-use-queues.md) を使用してバックグラウンド処理をトリガーし、[Azure Webjobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) を使用して Webjobs をトリガーすることで、独自のカスタム ロジックに基づいてストリーム内での投稿の伝達を実装できます。 
 
 この同じ手法を使用して最終的に一貫した環境を構築することで、投稿に対する評価と「いいね」を遅延的に処理できます。
 
-フォロワーの処理はさらに複雑です。 DocumentDB には 512 KB のドキュメント サイズ制限があるため、次のような構造のドキュメントとしてフォロワーを保存する方法が考えられます。
+フォロワーの処理はさらに複雑です。 DocumentDB にはドキュメントの最大サイズの制限があり、サイズの大きいドキュメントの読み取りと書き込みは、アプリケーションのスケーラビリティに影響を与えます。 よって次のような構造のドキュメントとしてフォロワーを保存する方法が考えられます。
 
     {
         "id":"234d-sd23-rrf2-552d",
@@ -121,7 +121,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
         ]
     }
 
-この方法では、フォロワーが数千人のユーザーであれば問題なく機能しますが、セレブのユーザーを加えることになった場合、最終的にはドキュメント サイズの制限に達することになります。
+この方法では、フォロワーが数千人のユーザーであれば問題なく機能しますが、セレブのユーザーを加えることになった場合、ドキュメント サイズが大きくなり、最終的にはドキュメント サイズの制限に達することになります。
 
 これを解決するには、混成方式を使います。 ユーザー統計情報ドキュメントの一部として、次のようにフォロワーの数を保存します。
 
@@ -196,7 +196,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
 ## <a name="the-search-box"></a>検索ボックス
 ユーザーは、幸いにも大量のコンテンツを生成します。 コンテンツのストリームに直接存在しない可能性のあるコンテンツを検索して見つける機能を提供できる必要があります。作成者をフォローするのではなく、6 か月前に行われた古い投稿を見つけようとしているだけだからです。
 
-Azure DocumentDB を使用しているので、 [Azure Search](https://azure.microsoft.com/services/search/) を使用して、(検索プロセスと UI 以外の) コードを 1 行も入力せずに検索エンジンを数分で簡単に実装できます。
+Azure DocumentDB を使用しているので、 [Azure Search](https://azure.microsoft.com/services/search/) を使用して、(検索プロセスと UI 以外の) コードを&1; 行も入力せずに検索エンジンを数分で簡単に実装できます。
 
 これが非常に簡単なのはなぜでしょうか。
 
@@ -234,6 +234,6 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

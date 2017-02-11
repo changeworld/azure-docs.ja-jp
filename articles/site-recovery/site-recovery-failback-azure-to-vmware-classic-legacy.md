@@ -1,12 +1,12 @@
 ---
-title: VMware 仮想マシンと物理サーバーを Azure から VMware にフェールバックする (レガシ) | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して Azure にレプリケートされている VMware 仮想マシンをフェールバックする方法について説明します。
+title: "VMware 仮想マシンと物理サーバーを Azure から VMware にフェールバックする (レガシ) | Microsoft Docs"
+description: "この記事では、Azure Site Recovery を使用して Azure にレプリケートされている VMware 仮想マシンをフェールバックする方法について説明します。"
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: ruturaj
 manager: mkjain
-editor: ''
-
+editor: 
+ms.assetid: a63524bf-990c-42ee-8554-e017e6e67e68
 ms.service: site-recovery
 ms.devlang: na
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 10/05/2016
 ms.author: ruturajd@microsoft.com
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 45695926bce3ec3460a572c0c01ffa4038f73ea5
+
 
 ---
-# <a name="fail-back-vmware-virtual-machines-and-physical-servers-from-azure-to-vmware-with-azure-site-recovery-(legacy)"></a>Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure から VMware にフェールバックする (レガシ)
+# <a name="fail-back-vmware-virtual-machines-and-physical-servers-from-azure-to-vmware-with-azure-site-recovery-legacy"></a>Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure から VMware にフェールバックする (レガシ)
 > [!div class="op_single_selector"]
 > * [Azure ポータル](site-recovery-failback-azure-to-vmware.md)
 > * [Azure クラシック ポータル](site-recovery-failback-azure-to-vmware-classic.md)
@@ -48,7 +52,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 1. **フェールバック コンポーネントをセットアップする**: オンプレミスで vContinuum サーバーをセットアップし、Azure の構成サーバー VM を参照する必要があります。 また、プロセス サーバーを Azure VM としてセットアップし、データをオンプレミスのマスター ターゲット サーバーに送信するように設定します。 フェールオーバーを処理した構成サーバーにプロセス サーバーを登録します。 マスター ターゲット サーバーをオンプレミスにインストールします。 Windows マスター ターゲット サーバーが必要な場合は、vContinuum をインストールすると自動的にセットアップされます。 Linux が必要な場合は、別のサーバーに手動でセットアップする必要があります。
 2. **保護とフェールバックを有効にする**: コンポーネントをセットアップしたら、vContinuum で、フェールオーバーした Azure VM の保護を有効にする必要があります。 VM で適合性チェックを実行し、Azure からオンプレミス サイトへのフェールオーバーを実行します。 フェールバックの完了後、Azure へのレプリケートが開始されるように、オンプレミスのマシンを再保護します。
 
-## <a name="step-1:-install-vcontinuum-on-premises"></a>手順1: vContinuum をオンプレミスにインストールする
+## <a name="step-1-install-vcontinuum-on-premises"></a>手順1: vContinuum をオンプレミスにインストールする
 vContinuum サーバーをオンプレミスにインストールし、構成サーバーをポイントする必要があります。
 
 1. [vContinuum をダウンロードします](http://go.microsoft.com/fwlink/?linkid=526305)。 
@@ -72,7 +76,7 @@ vContinuum サーバーをオンプレミスにインストールし、構成サ
 9. インストールが完了したら、vContinuum を起動することができます。
     ![](./media/site-recovery-failback-azure-to-vmware/image8.png)
 
-## <a name="step-2:-install-a-process-server-in-azure"></a>手順 2: Azure にプロセス サーバーをインストールする
+## <a name="step-2-install-a-process-server-in-azure"></a>手順 2: Azure にプロセス サーバーをインストールする
 Azure の VM がデータをオンプレミスのマスター ターゲット サーバーに戻せるようにするために、プロセス サーバーを Azure 上にインストールする必要があります。 
 
 1. Azure の **[構成サーバー]** ページで、新しいプロセス サーバーの追加を選択します。
@@ -94,7 +98,7 @@ Azure の VM がデータをオンプレミスのマスター ターゲット �
 > 
 > 
 
-## <a name="step-3:-install-a-master-target-server-on-premises"></a>手順 3: マスター ターゲット サーバーをオンプレミスにインストールする
+## <a name="step-3-install-a-master-target-server-on-premises"></a>手順 3: マスター ターゲット サーバーをオンプレミスにインストールする
 ソースの仮想マシンのオペレーティング システムに応じて、オンプレミスに Linux または Windows のマスター ターゲット サーバーをインストールすることが必要になります。
 
 ### <a name="deploy-a-windows-master-target-server"></a>Windows のマスター ターゲット サーバーをデプロイする
@@ -221,7 +225,7 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 > 
 > 
 
-## <a name="step-4:-protect-the-virtual-machines-to-the-on-premises-site"></a>手順 4: オンプレミスのサイトに仮想マシンを保護する
+## <a name="step-4-protect-the-virtual-machines-to-the-on-premises-site"></a>手順 4: オンプレミスのサイトに仮想マシンを保護する
 フェールバックする前に、オンプレミスのサイトに VM を保護する必要があります。
 
 ### <a name="before-you-begin"></a>開始する前に
@@ -357,6 +361,9 @@ VM は Azure にフェールオーバーするときに、ページ ファイル
 ## <a name="next-steps"></a>次のステップ
 * [強化されたデプロイを使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md) 方法についての記事をお読みください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

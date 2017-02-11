@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 689f413ebcab734024322d4c6f46c0c824840017
+ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
+ms.openlocfilehash: dc0753faefa59eef42046e0297a58276db086d18
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 689f413ebcab734024322d4c6f46c0c824840017
 
 ## <a name="prerequisites"></a>前提条件
 * 既に[一般化されている VM](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) が必要です。 VM の一般化とは、特に重要なこととして、すべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。
-* Azure PowerShell Version 1.0.x 以降がインストールされている必要があります。 PowerShell がインストールされていない場合、インストール手順については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」を参照してください。
+* Azure PowerShell Version 1.0.x 以降がインストールされている必要があります。 PowerShell がインストールされていない場合、インストール手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
 
 ## <a name="log-in-to-azure-powershell"></a>Azure PowerShell へのログイン
 1. Azure PowerShell を開き、Azure アカウントにサインインします。
@@ -86,6 +86,6 @@ ms.openlocfilehash: 689f413ebcab734024322d4c6f46c0c824840017
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

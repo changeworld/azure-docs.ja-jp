@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "HDInsight での Hadoop の概要。 ドキュメントでは、Hadoop、Spark、HBase、R-Server などを使用して、ビッグ データを処理、分析し、洞察を得る方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 28b6ebfae16a5c2e119fc4f1af0dcee6a348d47f
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: d78d12c6844e88da8b5d8b7cd99a38d6f4d36774
 
 ---
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight のドキュメント
 
-Azure HDInsight は、クラウドによって機能強化された Apache Hadoop ディストリビューションです。  Azure HDInsight は、Hortonworks Data Platform (HDP) ディストリビューションの Hadoop コンポーネントをクラウドで使用できるようにし、信頼性と可用性を備えた管理されたクラスターをデプロイしてプロビジョニングします。  Azure HDInsight には、Apache Hadoop、Spark、HBase、Storm のクラスター構成が用意されています。  また、スクリプト アクションを使用してカスタム クラスターを使用することもできます。  
+HDInsight のクラウドで Hadoop を使用して、ストリーミング データや履歴データを分析する方法について説明します。 チュートリアルなどのドキュメントでは、クラスターの作成、ビッグ データの処理と分析、Hadoop エコシステムでの Hadoop、Spark、HBase、R-Server、Storm などのテクノロジによるソリューションの開発を行う方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -166,16 +167,10 @@ Azure HDInsight は、クラウドによって機能強化された Apache Hadoo
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/hdinsight.pdf">
-        <div class="img"></div>
-        <div class="text">
-HDInsight のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

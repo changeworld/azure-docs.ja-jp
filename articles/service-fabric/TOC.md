@@ -4,6 +4,7 @@
 ## [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
 ## [アーキテクチャ](service-fabric-architecture.md)
 ## [用語集](service-fabric-technical-overview.md)
+## [コンテンツ ロードマップ](service-fabric-content-roadmap.md)
 
 # 作業の開始
 ## 開発環境を設定する
@@ -18,17 +19,23 @@
 
 # 方法
 ## アプリケーションのビルド
+### [パターンとシナリオ](service-fabric-patterns-and-scenarios.md)
 ### 基本
 #### [プログラミング モデル](service-fabric-choose-framework.md)
 #### [アプリケーション モデル](service-fabric-application-model.md)
 #### [サービス通信](service-fabric-connect-and-communicate-with-services.md)
+#### [サービス マニフェスト リソース](service-fabric-service-manifest-resources.md)
 #### [ツール](service-fabric-manage-application-in-visual-studio.md)
-#### [デバッグ](service-fabric-debugging-your-application.md)
+#### デバッグ
+##### [VS での C# サービスのデバッグ](service-fabric-debugging-your-application.md)
+##### [Eclipse での Java サービスのデバッグ](service-fabric-debugging-your-application-java.md)
 #### 監視と診断
 ##### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 ##### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
-#### [アプリケーションのセキュリティ ポリシーの構成](service-fabric-application-runas-security.md)
-#### [複数環境向けアプリケーションの構成](service-fabric-manage-multiple-environment-app-configuration.md)
+#### [アプリケーション シークレットの管理](service-fabric-application-secret-management.md)  
+#### [アプリケーションのセキュリティ ポリシーの構成](service-fabric-application-runas-security.md)  
+#### [複数環境向けアプリケーションの構成](service-fabric-manage-multiple-environment-app-configuration.md)  
+#### [一般的なエラーと例外](service-fabric-errors-and-exceptions.md) 
 
 ### Reliable Service アプリケーション
 #### [概要](service-fabric-reliable-services-introduction.md)
@@ -36,12 +43,14 @@
 ##### [Windows での C# ](service-fabric-reliable-services-quick-start.md)
 ##### [Linux での Java](service-fabric-reliable-services-quick-start-java.md)
 #### [アーキテクチャ](service-fabric-reliable-services-platform-architecture.md)
+#### [Reliable Services のライフサイクル](service-fabric-reliable-services-lifecycle.md)
 #### [Reliable Collection](service-fabric-reliable-services-reliable-collections.md)
 #### [Reliable Collections の使用](service-fabric-work-with-reliable-collections.md)
 #### [構成](service-fabric-reliable-services-configuration.md)
 #### [Notifications](service-fabric-reliable-services-notifications.md)
 #### [バックアップと復元](service-fabric-reliable-services-backup-restore.md)
 #### [Reliable Services を使用した通信](service-fabric-reliable-services-communication.md)
+#### [Reliable Services を使用した通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
 ##### [ASP.NET](service-fabric-reliable-services-communication-webapi.md)
 ##### [サービスのリモート処理](service-fabric-reliable-services-communication-remoting.md)
 ##### [WCF](service-fabric-reliable-services-communication-wcf.md)
@@ -62,6 +71,7 @@
 #### [状態管理](service-fabric-reliable-actors-state-management.md)
 #### [状態プロバイダーの構成](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
 #### [型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
+#### [通信の設定の構成](service-fabric-reliable-actors-fabrictransportsettings.md) 
 
 ### ゲスト実行可能アプリケーション
 #### [ゲスト実行可能ファイルをデプロイする](service-fabric-deploy-existing-app.md)
@@ -84,6 +94,7 @@
 #### [容量計画](service-fabric-cluster-capacity.md)
 #### [クラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 #### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
+#### [Azure CLI を使用したクラスターの管理](service-fabric-azure-cli.md) 
 #### [セキュリティ](service-fabric-cluster-security.md)
 #### [障害復旧](service-fabric-disaster-recovery.md)
 
@@ -97,15 +108,19 @@
 #### [クラスターの削除](service-fabric-cluster-delete.md)
 #### [アクセス制御](service-fabric-cluster-security-roles.md)
 #### [クラスターの構成](service-fabric-cluster-fabric-settings.md)
+#### [クラスター証明書の追加またはロールオーバー](service-fabric-cluster-security-update-certs-azure.md) 
 #### [Party Cluster を無料で試す](http://aka.ms/tryservicefabric)
 
 ### スタンドアロンのクラスター
 #### [スタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
+#### [Azure Virtual Machines でのスタンドアロン クラスターの作成](service-fabric-cluster-creation-with-windows-azure-vms.md)
 #### [クラスターを拡張する](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [クラスターのアップグレード](service-fabric-cluster-upgrade-windows-server.md)
 #### [クラスターの保護](service-fabric-windows-cluster-x509-security.md)
 #### [アクセス制御](service-fabric-cluster-security-roles.md)
 #### [クラスターの構成](service-fabric-cluster-manifest.md)
+#### [証明書を使用したクラスターの保護](service-fabric-windows-cluster-x509-security.md)  
+#### [Windows セキュリティを使用したクラスターの保護](service-fabric-windows-cluster-windows-security.md) 
 
 ## クラスター リソースを管理および調整する
 ### [Cluster Resource Manager の概要](service-fabric-cluster-resource-manager-introduction.md)
@@ -137,7 +152,6 @@
 ### [アプリケーション アップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
 ### [アプリケーション アップグレードでのデータのシリアル化](service-fabric-application-upgrade-data-serialization.md)
 ### [アプリケーション アップグレードの高度なトピック](service-fabric-application-upgrade-advanced.md)
-### [REST ベース アプリケーション ライフサイクルのサンプル](service-fabric-rest-based-application-lifecycle-sample.md)
 
 ## アプリケーションとクラスターの正常性の確認
 ### [Service Fabric の正常性の監視](service-fabric-health-introduction.md)
@@ -153,7 +167,7 @@
 ### Azure 診断ログ
 #### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
 #### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
-### [Service Fabric アプリケーションの追跡](service-fabric-diagnostic-how-to-use-elasticsearch.md)
+### [サービス プロセスからのログの収集](service-fabric-diagnostic-collect-logs-without-an-agent.md)
 ### [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
 ### [ステートフル Reliable Services における診断](service-fabric-reliable-services-diagnostics.md)
 ### [ローカル クラスターのトラブルシューティング](service-fabric-troubleshoot-local-cluster-setup.md)
@@ -174,6 +188,7 @@
 #### [ワークロード中](service-fabric-testability-workload-tests.md)
 #### [データ損失を呼び出す](service-fabric-use-data-loss-api.md)
 #### [テスト シナリオの使用](service-fabric-testability-scenarios.md)
+#### [Node Transition API の使用](service-fabric-node-transition-apis.md)
 ### [アプリケーションのロード テスト](service-fabric-vso-load-test.md)
 
 # リファレンス
@@ -183,6 +198,8 @@
 ## [REST ()](/rest/api/servicefabric)
 
 # リソース
+## [Service Fabric に関する一般的な質問](service-fabric-common-questions.md)
+## [Service Fabric のサポート オプション](service-fabric-support.md)
 ## [コード サンプル](http://aka.ms/servicefabricsamples)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 ## [料金](https://azure.microsoft.com/pricing/details/service-fabric/)

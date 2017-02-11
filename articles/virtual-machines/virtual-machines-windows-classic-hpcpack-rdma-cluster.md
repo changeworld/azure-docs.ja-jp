@@ -187,7 +187,7 @@ Azure で HPC Pack を使用して MPI アプリケーションを実行する�
 * Azure RDMA ネットワークにアクセスする Linux MPI ワークロードを実行する場合は、「 [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。
 
 <!--Image references-->
-[Burst to Azure]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/burst.png
+[burst]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/burst.png
 [iaas]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/iaas.png
 [pingpong1]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/pingpong1.png
 [pingpong2]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/pingpong2.png

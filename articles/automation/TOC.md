@@ -23,6 +23,7 @@
 ### [Runbook のスケジュール](automation-scheduling-a-runbook.md)
 ### [データセンターでの Runbook の実行](automation-hybrid-runbook-worker.md)
 ### [Runbook の入力パラメーターを構成する](automation-runbook-input-parameters.md)
+### [グラフィック Runbook でのエラー処理](automation-runbook-graphical-error-handling.md)
 ### [Runbook ジョブの追跡](automation-runbook-execution.md)
 ### [Runbook の設定を変更する](automation-runbook-settings.md)
 ### [Azure Automation データの管理](automation-managing-data.md)
@@ -78,6 +79,6 @@
 ## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

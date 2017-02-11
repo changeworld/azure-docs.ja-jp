@@ -192,7 +192,7 @@
 ### [カスタム モジュール](machine-learning-gallery-custom-modules.md)
 ## Cortana Analytics
 ### API
-#### [異常の検出](machine-learning-apps-anomaly-detection.md)
+#### [異常の検出](machine-learning-apps-anomaly-detection-api.md)
 #### [テキスト分析](machine-learning-apps-text-analytics.md)
 #### [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
 #### 推奨事項
@@ -222,6 +222,6 @@
 ## [ライブ チャットからヘルプを表示する](machine-learning-live-chat.md)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング | Microsoft Docs"
-description: "このトピックでは、内部設置型のエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの設定方法について説明します。 次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH、HDS のいずれかを使用してクライアントの再生アプリケーションに送信できます。"
+description: "このトピックでは、内部設置型のエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの設定方法について説明します。 次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH のいずれかを使用してクライアントの再生アプリケーションに送信できます。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 10/12/2016
-ms.author: cenkdin;juliako
+ms.author: cenkd;juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: e41af7a8d2c5c0a0e8813aedb7aa86b58abcf873
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: d3a3204ee7690d501722031dea3f35bf55bfec00
 
 
 ---
 # <a name="live-streaming-with-on-premise-encoders-that-create-multi-bitrate-streams"></a>オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure Media Services では、 **チャネル** は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 **チャネル** は、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
 * オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、AMS によるライブ エンコードの実行が無効なチャネルに送信します。 取り込んだストリームは、追加の処理なしで **チャネル**を通過します。 この方式は、 **パススルー**と呼ばれます。 マルチ ビットレートのスムーズ ストリーミングを出力するライブ エンコーダーとして、Elemental、Envivio、Cisco を使用できます。  Adobe Flash Live、Telestream Wirecast、Tricaster トランスコーダーは、RTMP を出力するライブ エンコーダーです。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
@@ -253,6 +253,6 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

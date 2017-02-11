@@ -22,7 +22,7 @@ ms.openlocfilehash: a094f6dccd93712c2effef60fdac0cea1a68bcb1
 
 ---
 # <a name="create-a-windows-virtual-machine-with-a-resource-manager-template"></a>リソース マネージャー テンプレートで Windows 仮想マシンを作成する
-この記事では、Azure Resource Manager テンプレートを紹介し、PowerShell を使用してテンプレートをデプロイする方法を示します。 このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに、Windows Server を実行する 1 つの仮想マシンをデプロイします。
+この記事では、Azure Resource Manager テンプレートを紹介し、PowerShell を使用してテンプレートをデプロイする方法を示します。 このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに、Windows Server を実行する&1; つの仮想マシンをデプロイします。
 
 この記事の手順を実行するには、約 20 分かかります。
 

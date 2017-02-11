@@ -64,7 +64,7 @@ using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
 [!INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### <a name="create-the-table-service-client"></a>Table サービス クライアントを作成する
-**CloudTableClient** クラスを使用すると、Table Storage に格納されているテーブルとエンティティを取得できます。 サービス クライアントを作成する方法の 1 つを次に示します。
+**CloudTableClient** クラスを使用すると、Table Storage に格納されているテーブルとエンティティを取得できます。 サービス クライアントを作成する方法の&1; つを次に示します。
 
 ```csharp
 // Create the table client.
@@ -140,7 +140,7 @@ table.Execute(insertOperation);
 ## <a name="insert-a-batch-of-entities"></a>エンティティのバッチを挿入する
 1 回の書き込み操作でエンティティのバッチをテーブルに挿入できます。 バッチ操作に関しては、次の事項にも留意してください。
 
-* 更新、削除、および挿入を同じ 1 回のバッチ操作で実行できます。
+* 更新、削除、および挿入を同じ&1; 回のバッチ操作で実行できます。
 * 1 つのバッチ操作には、最大 100 個のエンティティを含めることができます。
 * 1 つのバッチ操作に含まれるすべてのエンティティのパーティション キーが同じである必要があります。
 * クエリをバッチ操作として実行することもできますが、バッチ内の唯一の操作である必要があります。

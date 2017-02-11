@@ -4,20 +4,20 @@
 ##[サーバーの作成](analysis-services-create-server.md)
 
 # 方法 
-## [デプロイする](analysis-services-deploy.md)
-## 管理
-###[サーバーへの接続](analysis-services-connect.md)
-###[サーバーの管理](analysis-services-manage.md)
-## 統合
-###[オンプレミス データ ゲートウェイ](analysis-services-gateway.md)
+##[サーバーへのデプロイ](analysis-services-deploy.md)
+##[クライアントからの接続](analysis-services-connect.md)
+
+##[サーバーの管理](analysis-services-manage.md)
+##[オンプレミスのデータ ゲートウェイの統合](analysis-services-gateway.md)
 
 # リファレンス
 ##[PowerShell](/powershell/resourcemanager)
-##[REST ()](/rest/api/analysisservices/)
+##[REST ()](/rest/api/analysisservices)
 
-# 関連項目
+# リソース
 ##[データ ソースの接続](analysis-services-datasource.md)
 
-<!--HONumber=Dec16_HO1-->
+
+<!--HONumber=Jan17_HO1-->
 
 

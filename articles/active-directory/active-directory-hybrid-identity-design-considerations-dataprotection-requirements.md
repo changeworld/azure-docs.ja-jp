@@ -1,12 +1,12 @@
 ---
-title: Azure Active Directory ハイブリッド ID の設計上の考慮事項 - データ保護要件の決定 | Microsoft Docs
-description: ハイブリッド ID ソリューションを計画する場合、ビジネスのデータ保護要件と、その要件に最適な選択肢を特定します。
-documentationcenter: ''
+title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - データ保護要件の決定 | Microsoft Docs"
+description: "ハイブリッド ID ソリューションを計画する場合、ビジネスのデータ保護要件と、その要件に最適な選択肢を特定します。"
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 40dc4baa-fe82-4ab6-a3e4-f36fa9dcd0df
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/08/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 797b467e480ba51c531ea6eddf3ad2447ec16f1a
+
 
 ---
 # <a name="plan-for-enhancing-data-security-through-strong-identity-solution"></a>強力な ID ソリューションによりデータ セキュリティを強化するための計画を立てる
@@ -81,6 +85,9 @@ IT が各段階でデータ自体を保護できるようにする技術制御�
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

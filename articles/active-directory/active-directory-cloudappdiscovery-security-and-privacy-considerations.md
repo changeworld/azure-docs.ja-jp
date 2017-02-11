@@ -1,19 +1,23 @@
 ---
-title: Cloud App Discovery のセキュリティとプライバシーの考慮事項 | Microsoft Docs
-description: このトピックでは、Cloud App Discovery に関連するセキュリティとプライバシーの考慮事項について説明します。
+title: "Cloud App Discovery のセキュリティとプライバシーの考慮事項 | Microsoft Docs"
+description: "このトピックでは、Cloud App Discovery に関連するセキュリティとプライバシーの考慮事項について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 2fce5c82-d3de-4097-808f-40214768df9e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: markusvi
+ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f03d933f2f02c6c5309b32f41f3d318a3cfb22fd
+
 
 ---
 # <a name="cloud-app-discovery-security-and-privacy-considerations"></a>Cloud App Discovery のセキュリティとプライバシーの考慮事項
@@ -28,7 +32,7 @@ Microsoft においてデータの保護は最優先事項になります。
 Cloud App Discovery は Azure AD の機能であり、Microsoft Azure でホストされます。 <br>
 Cloud App Discovery Endpoint Agent は、IT で管理されているコンピューターからアプリケーション検出データを収集するために使用します。 <br>
 収集したデータは、暗号化されたチャネル経由でセキュリティで保護されて Azure AD Cloud App Discovery サービスに送信されます。 <br>
-その後、組織の Cloud App Discovery データは、Azure ポータルに表示されます。 <br>
+その後、組織の Cloud App Discovery データは、Azure Portal に表示されます。 <br>
 
 <center>![Cloud App Discovery のしくみ](./media/active-directory-cloudappdiscovery-security-and-privacy-considerations/cad01.png) </center> <br>
 
@@ -37,7 +41,7 @@ Cloud App Discovery Endpoint Agent は、IT で管理されているコンピュ
 ## <a name="collecting-data-from-your-organization"></a>組織からのデータの収集
 Azure Active Directory の Cloud App Discovery 機能を使用して組織内の従業員が使用するアプリケーションに関する洞察を得るには、まず Azure AD Cloud App Discovery Endpoint Agent を組織のコンピューターにデプロイする必要があります。
 
-Azure Active Directory テナントの管理者 (またはその代理人) は、Azure ポータルから、このエージェントのインストール パッケージをダウンロードできます。 エージェントは、手動でインストールすることも、SCCM またはグループ ポリシーを使用して組織内の複数のコンピューターにインストールすることもできます。
+Azure Active Directory テナントの管理者 (またはその代理人) は、Azure Portal から、このエージェントのインストール パッケージをダウンロードできます。 エージェントは、手動でインストールすることも、SCCM またはグループ ポリシーを使用して組織内の複数のコンピューターにインストールすることもできます。
 
 デプロイ オプションの詳細については、 [Cloud App Discovery Group Policy Deployment Guide (Cloud App Discovery のグループ ポリシーのデプロイ ガイド)](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)をご覧ください。
 <br>
@@ -150,8 +154,8 @@ Cloud App Discovery サービスの分析パイプラインは、分析パイプ
 未処理のメタデータと分析されたメタデータは、最大 180 日間保存されます。 さらに、お客様は、自分で選択した Azure BLOB ストレージ アカウントに、分析されたメタデータをキャプチャすることができます。
 これは、メタデータのオフライン分析や、データの保存期間の延長として役立ちます。
 
-## <a name="accessing-the-data-using-the-azure-portal"></a>Azure ポータルを使用するデータ アクセス
-収集されたメタデータのセキュリティ保護を確保するために、既定では、テナントのグローバル管理者のみが Azure ポータルで Cloud App Discovery 機能にアクセスできます。 <br>
+## <a name="accessing-the-data-using-the-azure-portal"></a>Azure Portal を使用するデータ アクセス
+収集されたメタデータのセキュリティ保護を確保するために、既定では、テナントのグローバル管理者のみが Azure Portal で Cloud App Discovery 機能にアクセスできます。 <br>
 ただし管理者は、他のユーザーやグループにこのアクセスを委任できます。
 
 > [!NOTE]
@@ -166,6 +170,9 @@ Cloud App Discovery サービスの分析パイプラインは、分析パイプ
 * [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

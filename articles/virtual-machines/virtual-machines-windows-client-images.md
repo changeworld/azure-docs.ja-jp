@@ -1,12 +1,12 @@
 ---
-title: Windows クライアント イメージを開発/テスト シナリオに使用する | Microsoft Docs
-description: Visual Studio サブスクリプションの特典を使用して、Azure で Windows 7/8/10 を開発/テストのシナリオにデプロイする方法
+title: "Windows クライアント イメージを開発およびテスト シナリオに使用する | Microsoft Docs"
+description: "Visual Studio サブスクリプションの特典を使用して、Azure で Windows 7/8/10 を開発/テストのシナリオにデプロイする方法"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: iainfoulds
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -14,18 +14,22 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2016
 ms.author: iainfou
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: d95dad55ad2f9feaf1e62f671adbf3187adf8cca
+
 
 ---
-# <a name="using-windows-client-in-azure-for-dev/test-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
+# <a name="using-windows-client-in-azure-for-devtest-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
 適切な Visual Studio (以前は MSDN) サブスクリプションがある場合は、Azure で Windows 7、Windows 8、または Windows 10 を開発/テストのシナリオに使用できます。 この記事では、Azure で実行中の Windows クライアントの資格要件と、Azure ギャラリーのイメージの使用について説明します。
 
 ## <a name="subscription-eligibility"></a>サブスクリプションの資格
 アクティブな Visual Studio サブスクライバー (Visual Studio サブスクリプション ライセンスを取得したユーザー) は、Windows クライアントを開発とテストに使用できます。 Windows クライアントは、独自のハードウェアと、任意の種類の Azure サブスクリプションを実行している Azure Virtual Machines で使用できます。 Windows クライアントは、通常の運用環境での使用のために Azure 上でデプロイまたは使用したり、アクティブな Visual Studio サブスクライバーではないユーザーが使用したりすることはできません。
 
-参考までに、 [対象となる開発/テスト プラン](#eligible-offers)内にある Azure ギャラリーから特定の Windows 10 イメージを使用できます。 また、任意の種類のプラン内にあるVisual Studio サブスクライバーは、64 ビットの Windows 7、Windows 8、または Windows 10 イメージを[適切に準備および作成](virtual-machines-windows-prepare-for-upload-vhd-image.md)し、[Azure にアップロード](virtual-machines-windows-upload-image.md)することもできます。 その使用は、アクティブな Visual Studio サブスクライバーによって開発/テストに引き続き限定されます。
+参考までに、 [対象となる開発/テスト プラン](#eligible-offers)内にある Azure ギャラリーから特定の Windows 10 イメージを使用できます。 また、任意の種類のプラン内にあるVisual Studio サブスクライバーは、64 ビットの Windows 7、Windows 8、または Windows 10 イメージを[適切に準備および作成](virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)し、[Azure にアップロード](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)することもできます。 その使用は、アクティブな Visual Studio サブスクライバーによって開発/テストに引き続き限定されます。
 
 ## <a name="eligible-offers"></a>対象となるプラン
-次の表に、Azure ギャラリーから Windows 10 をデプロイするための対象となるプラン ID の詳細を示します。 Windows 10 イメージは、次のプランにのみ表示されます。 別のプランの種類で Windows クライアントを実行する必要がある Visual Studio サブスクライバーは、64 ビットの Windows 7、Windows 8、または Windows 10 イメージを[適切に準備および作成](virtual-machines-windows-prepare-for-upload-vhd-image.md)し、[Azure にアップロード](virtual-machines-windows-upload-image.md)する必要があります。
+次の表に、Azure ギャラリーから Windows 10 をデプロイするための対象となるプラン ID の詳細を示します。 Windows 10 イメージは、次のプランにのみ表示されます。 別のプランの種類で Windows クライアントを実行する必要がある Visual Studio サブスクライバーは、64 ビットの Windows 7、Windows 8、または Windows 10 イメージを[適切に準備および作成](virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)し、[Azure にアップロード](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)する必要があります。
 
 | プラン名 | プラン番号 | 使用可能なクライアント イメージ |
 |:--- |:---:|:---:|
@@ -50,8 +54,11 @@ ms.author: iainfou
 ![Azure アカウント ポータルからのプラン ID の詳細](./media/virtual-machines-windows-client-images/offer_id_azure_account_portal.png) 
 
 ## <a name="next-steps"></a>次のステップ
-これで、[PowerShell](virtual-machines-windows-ps-create.md)、[Resource Manager テンプレート](virtual-machines-windows-ps-template.md)、または [Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) を使用して VM をデプロイすることができます。
+これで、[PowerShell](virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)、[Resource Manager テンプレート](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)、または [Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) を使用して VM をデプロイすることができます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -8,7 +8,7 @@ manager: drasumic
 editor: 
 ms.assetid: 76cfa06a-e758-453e-942c-9f1ed6a38c2a
 ms.service: sql-database
-ms.custom: db development
+ms.custom: development
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -16,8 +16,8 @@ ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bb68239d36203e74faa54859b20a4198ce3cba91
+ms.sourcegitcommit: 239d009a1fc7273a50d335a0d55d61f414d99b11
+ms.openlocfilehash: dac4a96f9b62f390aeb84fe237788350c70ea5cd
 
 
 ---
@@ -42,7 +42,7 @@ SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ````
 
-データベースのフラグ **is_temporal_history_retention_enabled**は既定でオンに設定されていますが、ALTER DATABASE ステートメントを使って変更できます。 また、[ポイントインタイム リストア](sql-database-point-in-time-restore-portal.md) 操作後は、自動的にオフに設定されます。 データベースのテンポラル履歴リテンション期間のクリーンアップを有効にするには、次のステートメントを実行します。
+データベースのフラグ **is_temporal_history_retention_enabled**は既定でオンに設定されていますが、ALTER DATABASE ステートメントを使って変更できます。 また、[ポイントインタイム リストア](sql-database-point-in-time-restore.md) 操作後は、自動的にオフに設定されます。 データベースのテンポラル履歴リテンション期間のクリーンアップを有効にするには、次のステートメントを実行します。
 
 ````
 ALTER DATABASE <myDB>
@@ -169,7 +169,7 @@ SELECT * FROM dbo.WebsiteUserInfo FROM SYSTEM_TIME ALL;
 一貫性のない結果や予期しない結果を得ることがあるため、ビジネス ロジックが保有期間を超える履歴テーブルの読み取りに依存することのないようにしてください。 テンポラル テーブルのデータの分析には、FOR SYSTEM_TIME 句を使ったテンポラル クエリを使用することをお勧めします。
 
 ## <a name="point-in-time-restore-considerations"></a>ポイントインタイム リストアの考慮事項
-[既存のデータベースを特定の時点に復元](sql-database-point-in-time-restore-portal.md)して新しいデータベースを作成するときは、データベース レベルのテンポラル リテンション期間が無効になります  (**is_temporal_history_retention_enabled** フラグがオフに設定されます)。 この機能では、復元時にすべての履歴列を確認できるため、クエリを実行する前に期限切れの行が削除されることはありません。 この機能を使用すると、*構成された保有期間を超える履歴データを検査*できます。
+[既存のデータベースを特定の時点に復元](sql-database-point-in-time-restore.md)して新しいデータベースを作成するときは、データベース レベルのテンポラル リテンション期間が無効になります  (**is_temporal_history_retention_enabled** フラグがオフに設定されます)。 この機能では、復元時にすべての履歴列を確認できるため、クエリを実行する前に期限切れの行が削除されることはありません。 この機能を使用すると、*構成された保有期間を超える履歴データを検査*できます。
 
 テンポラル テーブルに 1 か月のリテンション期間が指定されているとします。 Premium サービス階層でデータベースが作成されている場合、過去 35 日間までの状態のデータベースのコピーを作成できます。 履歴テーブルにクエリを直接実行することにより、実質的に、最大 65 日間の履歴行を分析できます。
 
@@ -190,6 +190,6 @@ Channel 9 にアクセスして、[テンポラル テーブル導入による�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

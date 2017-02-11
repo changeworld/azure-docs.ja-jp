@@ -2,13 +2,13 @@
 layout: LandingPage
 toc_rel: breadcrumb.json
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 3bd265e2376180e5285c81b011b469b6a46353b0
+ms.sourcegitcommit: c086dc37b8665017de0dbbad9c7ac82931932a72
+ms.openlocfilehash: 57994a1476186696b81b05e0ce7ae645337d35b2
 
 ---
 #<a name="virtual-machines-documentation"></a>Virtual Machines のドキュメント
 
-Azure Virtual Machine は、仮想マシンを実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 ただし仮想マシンのメンテナンス &mdash; つまり仮想マシン上で動作するソフトウェアの構成、修正プログラムの適用、保守は必要です。
+Azure Virtual Machine は、仮想マシンを実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 ただし、仮想マシンのメンテナンス、つまり仮想マシン上で動作するソフトウェアの構成、修正プログラムの適用、保守は必要です。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -47,69 +47,6 @@ Azure Virtual Machine は、仮想マシンを実行する物理的なハード�
         </div>
         </a>
     </li>    
-</ul>
-
----
-
-## <a name="reference"></a>リファレンス
-
-<ul class="panelContent cardsW">
-    <li>
-        <a href="/dotnet/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Virtual Machines に関する管理リファレンス API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/rest/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST ()</h3>
-                        <p>Virtual Machine REST API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/cli/azure/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>Virtual Machines 向け Azure CLI</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/java/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Virtual Machines の PowerShell コマンドレット</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
 </ul>
 
 <div class="downloadHolder">

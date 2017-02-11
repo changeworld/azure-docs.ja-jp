@@ -1,13 +1,13 @@
 ---
-title: Azure VPN Gateway のリセット | Microsoft Docs
-description: この記事では、Azure VPN Gateway をリセットする方法を紹介します。 この記事は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方の VPN ゲートウェイに適用されます。
+title: "Azure VPN Gateway のリセット | Microsoft Docs"
+description: "この記事では、Azure VPN Gateway をリセットする方法を紹介します。 この記事は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方の VPN ゲートウェイに適用されます。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager,azure-service-management
-
+ms.assetid: 79d77cb8-d175-4273-93ac-712d7d45b1fe
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 97ee3599f2eded9800dbb441af7299547c502397
+
 
 ---
 # <a name="reset-an-azure-vpn-gateway-using-powershell"></a>PowerShell を使用して Azure VPN Gateway をリセットする
@@ -63,6 +67,9 @@ Azure VPN Gateway をリセットするための PowerShell コマンドレッ�
 ## <a name="next-steps"></a>次のステップ
 詳細は、[PowerShell Service Management コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/mt617104.aspx)と [PowerShell Resource Manager コマンドレット リファレンス](http://go.microsoft.com/fwlink/?LinkId=828732)をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

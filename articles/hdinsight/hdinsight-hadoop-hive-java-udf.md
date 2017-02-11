@@ -1,12 +1,12 @@
 ---
-title: HDInsight で Hive と Java のユーザー定義関数 (UDF) を使用する | Microsoft Docs
-description: HDInsight で Hive から Java ユーザー定義関数 (UDF) を作成して使用する方法について説明します。
+title: "HDInsight で Hive と Java のユーザー定義関数 (UDF) を使用する | Microsoft Docs"
+description: "HDInsight で Hive から Java ユーザー定義関数 (UDF) を作成して使用する方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
 ms.service: hdinsight
 ms.devlang: java
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 240ba2289ededf7a65c71e2f5007cf3a52ca4f84
+
 
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>HDInsight で Hive と Java UDF を使用する
@@ -32,7 +36,7 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
 * テキスト エディターまたは Java IDE
   
   > [!IMPORTANT]
-  > Linux ベースの HDInsight サーバーを使用している一方で、Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。 エディターで LF と CRLF のどちらが使用されているかが不明な場合は、「 [トラブルシューティング](#troubleshooting) 」セクションで、ユーティリティを使用して HDInsight クラスターで CR 文字を削除する手順をご覧ください。
+  > Linux ベースの HDInsight サーバーを使用している一方で、Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。 エディターで LF と CRLF のどちらが使用されているかが不明な場合は、「[トラブルシューティング](#troubleshooting)」セクションで、ユーティリティを使用して HDInsight クラスターで CR 文字を削除する手順をご覧ください。
   > 
   > 
 
@@ -42,7 +46,7 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
         mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    
    > [!NOTE]
-   > PowerShell を使用している場合は、パラメーターを引用符で囲む必要があります。 たとえば、「 `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`」のように入力します。
+   > PowerShell を使用している場合は、パラメーターを引用符で囲む必要があります。 たとえば、「`mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`」のように入力します。
    > 
    > 
    
@@ -155,7 +159,7 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
    
         mvn compile package
    
-    これで、UDF がビルドされ、 __exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar__にパッケージ化されます。
+    これで、UDF がビルドされ、 **exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar**にパッケージ化されます。
 2. `scp` コマンドを使用して、ファイルを HDInsight クラスターにコピーします。
    
         scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
@@ -209,6 +213,9 @@ Hive の他の使用方法について [HDInsight での Hive の使用](hdinsig
 
 Hive のユーザー定義関数の詳細について、apache.org で Hive wiki の [Hive 演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) のセクションを参照します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

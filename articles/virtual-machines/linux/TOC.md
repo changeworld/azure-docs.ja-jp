@@ -11,7 +11,7 @@
 ### [VM の可用性](../virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [Security Center](../../security-center/security-center-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [Resource Manager](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [デプロイ モデル](../../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### [デプロイ モデル](../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [VM Scale Sets](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [コンテナー](../virtual-machines-linux-containers.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [FAQ](../virtual-machines-linux-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -22,9 +22,10 @@
 ## [Linux VM へのファイルのコピー](../virtual-machines-linux-copy-files-to-linux-vm-using-scp.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [VM を作成するさまざまな方法](../virtual-machines-linux-creation-choices.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [Azure CLI のインストール](../../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [Azure CLI 2.0 (Preview) を使用した VM の作成](../virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [Azure CLI を使用した VM の作成](../virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [テンプレート チュートリアル](../../resource-manager-template-walkthrough.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## Azure CLI を使用した VM の作成
+### [Azure CLI 1.0](../virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### [Azure CLI 2.0 (プレビュー)](../virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## [テンプレート チュートリアル](../../azure-resource-manager/resource-manager-template-walkthrough.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [複雑な VM テンプレートを作成してデプロイする](../virtual-machines-linux-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [アプリケーションのアーキテクチャ](../virtual-machines-linux-dotnet-core-2-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [アクセスとセキュリティ](../virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -34,15 +35,17 @@
 # 方法
 ## 計算
 ### [Azure テンプレートから VM を作成する](../virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [CLI を使用して完全な環境を作成する](../virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### Azure CLI を使用した完全な環境の作成
+#### [Azure CLI 1.0](../virtual-machines-linux-create-cli-complete-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure CLI 2.0 (プレビュー)](../virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [スケール セットを使用した複数の VM の作成](../virtual-machines-linux-cli-vmss-create.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [CLI を使用してデータ ディスクを接続する](../virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [ポータルを使用してデータ ディスクを接続する](../virtual-machines-linux-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [ポートとエンドポイントを開く](../virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Linux VM のサイズを変更する方法](../virtual-machines-linux-change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### 既存の仮想ネットワークへの VM のデプロイ
-#### [Azure CLI の使用](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure Portal の使用](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure CLI](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure ポータル](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [VM イメージを検索する](../virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [cloud-init を使用する](../virtual-machines-linux-using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [SSH アクセスのリセット、ユーザーの管理、ディスクのチェックを実行する](../virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -52,6 +55,7 @@
 ### [Azure Docker VM 拡張機能で Docker ホストを作成する](../virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Azure で Docker Compose を使用する](../virtual-machines-linux-docker-compose-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Azure Container Registry を使用する](/azure/container-registry/?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### [リモート デスクトップをインストールして Linux VM に接続するように構成する](../virtual-machines-linux-use-remote-desktop.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## ストレージの使用
 ### [ディスクと VHD](../virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -60,9 +64,12 @@
 ### [ソフトウェア RAID を構成する](../virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [LVM を構成する](../virtual-machines-linux-configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Azure ファイルの使用](../../storage/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### [SMB を使用して Azure File Storage をマウントする](../virtual-machines-linux-mount-azure-file-storage-on-linux-using-smb.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## [ネットワーク](../virtual-machines-linux-azure-vm-network-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [CLI を使用して VM へのアクセスを許可する](../virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### CLI を使用して VM へのアクセスを許可する
+#### [Azure CLI 1.0](../virtual-machines-linux-nsg-quickstart-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure CLI 2.0 (プレビュー)](../virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [VM の名前解決に内部 DNS を使用する](../virtual-machines-linux-static-dns-name-resolution-for-linux-on-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [ポータルを使用して FQDN を作成する](../virtual-machines-linux-portal-create-fqdn.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [複数 NIC を持つ VM の作成](../virtual-machines-linux-multiple-nics.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -94,7 +101,7 @@
 
 ## 構成
 ### [サブスクリプション間で VM を移動する](../virtual-machines-linux-move-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [タグを使用する](../../resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### [タグを使用する](../../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [VM にタグを付ける](../virtual-machines-linux-tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## 管理
@@ -184,7 +191,7 @@
 ## [REST ()](/rest/api/compute)
 
 # リソース
-## [Resource Manager テンプレートの作成](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## [Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [コミュニティ テンプレート](https://azure.microsoft.com/documentation/templates)
 ## [料金](https://azure.microsoft.com/pricing/details/#Linux)
 ## [リージョン別の提供状況](https://azure.microsoft.com/regions/services/)
@@ -192,6 +199,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

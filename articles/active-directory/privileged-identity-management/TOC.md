@@ -1,9 +1,10 @@
-# Overview
+# 概要
 ## [特権アクセスのセキュリティ保護](active-directory-securing-privileged-access.md)
 ## [Azure AD PIMとは](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [ロール](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 
 # 作業開始
+## [サブスクリプションの要件](subscription-requirements.md)
 ## [ポータルでの作業開始](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [セキュリティ ウィザード](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [PIM へのアクセス権の付与](../active-directory-privileged-identity-management-how-to-give-access-to-pim.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
@@ -26,6 +27,6 @@
 ## [ロールベースのアクセス制御](../role-based-access-control-what-is.md)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 12/11/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 274537c60cef2d1f5068b8713e29fc8cf97d9cd2
+ms.sourcegitcommit: 24d324a724792051eb6d86026da7b41ee9ff87b1
+ms.openlocfilehash: fb244491ec243399393320d0dbefb078273448d9
 
 
 ---
@@ -43,22 +43,23 @@ Media Services では、キーを要求するユーザーを承認する複数�
 このトピックには、保護されたメディアを配信するアプリケーションの開発に取り組む開発者にとって有用な情報が含まれています。 このトピックでは、認証ポリシーを使用するキー配信サービスの構成方法を説明します。これにより、許可されたクライアントのみが暗号化キーを受け取ることができるようになります。 また、動的暗号化の使用方法についても説明します。
 
 > [!NOTE]
-> 動的暗号化を使用するには、まず、スケール ユニット (ストリーミング ユニットとも呼ばれる) を少なくとも 1 つ取得する必要があります。 詳細については、「 [Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
+> 動的暗号化を使用するには、まず、スケール ユニット (ストリーミング ユニットとも呼ばれる) を少なくとも&1; つ取得する必要があります。 詳細については、「 [Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 > 
 > 
 
 ## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>AES-128 動的暗号化とキー配信サービスのワークフロー
+
 以下では、Media Services キー配信サービスと動的暗号化を使用して、AES で資産を暗号化する際に実行する必要のある一般的な手順について説明します。
 
 1. [資産を作成し、その資産にファイルをアップロードする](media-services-protect-with-aes128.md#create_asset)
 2. [ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードする](media-services-protect-with-aes128.md#encode_asset)
 3. [コンテンツ キーを作成し、それをエンコードした資産に関連付ける](media-services-protect-with-aes128.md#create_contentkey)」を参照してください。 Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。
 4. [コンテンツ キー承認ポリシーの構成](media-services-protect-with-aes128.md#configure_key_auth_policy)コンテンツ キー承認ポリシーを構成する必要があります。 コンテンツ キーがクライアントに配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。
-5. [資産の配信ポリシーを構成します](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。 配信ポリシーの構成には、次の内容が含まれます。キー取得 URL と初期化ベクトル (IV) (AES 128 では、暗号化と暗号化解除の際に同じ IV を指定する必要があります)、配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはすべて)、動的暗号化の種類 (たとえば、エンベロープ暗号化、または動的暗号化を行わない)。
+5. [資産の配信ポリシーを構成します](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。 配信ポリシーの構成には、次の内容が含まれます。キー取得 URL と初期化ベクトル (IV) (AES 128 では、暗号化と暗号化解除の際に同じ IV を指定する必要があります)、配信プロトコル (たとえば、MPEG DASH、HLS、Smooth Streaming、またはすべて)、動的暗号化の種類 (たとえば、エンベロープ暗号化、または動的暗号化を行わない)。
 
-同じ資産の各プロトコルに異なるポリシーを適用できます。 たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES Envelope を HLS に適用できます。 配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。 ただし、資産配信ポリシーをまったく定義していない場合は例外となります。 この場合、すべてのプロトコルが平文で許可されます。
+    同じ資産の各プロトコルに異なるポリシーを適用できます。 たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES Envelope を HLS に適用できます。 配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する&1; つのポリシーを追加した場合) は、ストリーミングからブロックされます。 ただし、資産配信ポリシーをまったく定義していない場合は例外となります。 この場合、すべてのプロトコルが平文で許可されます。
 
-1. [OnDemand ロケーターを作成](media-services-protect-with-aes128.md#create_locator) します。
+6. [OnDemand ロケーターを作成](media-services-protect-with-aes128.md#create_locator) します。
 
 このトピックでは、 [クライアント アプリケーションがキー配信サービスにキーを要求する方法](media-services-protect-with-aes128.md#client_request)についても説明します。
 
@@ -98,7 +99,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 * キー取得 URL。 
 * エンベロープ暗号化に使用する初期化ベクトル (IV)。 AES 128 では、暗号化と暗号化解除に同一の IV が必要です。 
-* 資産配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはすべて)。
+* 資産配信プロトコル (たとえば、MPEG DASH、HLS、Smooth Streaming、またはすべて)。
 * 動的暗号化の種類 (AES エンベロープなど) または動的暗号化なし。 
 
 詳細については、 [資産の配信ポリシーの構成 ](media-services-rest-configure-asset-delivery-policy.md)に関するページを参照してください。
@@ -630,6 +631,6 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

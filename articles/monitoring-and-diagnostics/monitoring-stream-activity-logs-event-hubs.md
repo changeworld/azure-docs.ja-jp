@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 11/28/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c0b974707eadf7d2c3d624c04a4ec94e35c92cbe
+ms.sourcegitcommit: 51a7a274c0cdbec169154bd1100abb4534283cff
+ms.openlocfilehash: ac478dc5c6691ef9f6c4829bd47a81912774d032
 
 
 ---
@@ -30,7 +30,9 @@ ms.openlocfilehash: c0b974707eadf7d2c3d624c04a4ec94e35c92cbe
 * **カスタムのテレメトリおよびログ プラットフォームを構築する** - カスタム構築されたテレメトリ プラットフォームが既にある場合や構築を検討している場合は、Event Hubs の非常にスケーラブルな発行/サブスクライブの特性により、アクティビティ ログを柔軟に取り込むことができます。 [グローバル規模のテレメトリ プラットフォームで Event Hubs を使用する方法については、Dan Rosanova によるガイドをご覧ください。](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)
 
 ## <a name="enable-streaming-of-the-activity-log"></a>アクティビティ ログのストリーミングの有効化
-アクティビティ ログのストリーミングは、プログラムによって有効にすることも、ポータルで有効にすることもできます。 どちらの方法でも、Service Bus 名前空間と、その名前空間の共有アクセス ポリシーを選択します。この名前空間には、新しいアクティビティ ログ イベントが初めて発生したときに、Event Hub が作成されます。 Service Bus 名前空間が存在しない場合は、最初に作成する必要があります。 この Service Bus 名前空間にアクティビティ ログ イベントをストリーミングしたことがある場合は、以前に作成された Event Hub が再利用されます。 共有アクセス ポリシーでは、ストリーミング メカニズムのアクセス許可が定義されます。 現在、Event Hubs にストリーミングするには、**管理**、**読み取り**、**送信**の各アクセス許可が必要です。 Service Bus 名前空間の共有アクセス ポリシーは、クラシック ポータルの Service Bus 名前空間の [構成] タブで作成または変更できます。 アクティビティ ログのログ プロファイルを更新してストリーミングを含めるには、その Service Bus の承認規則に対する ListKey アクセス許可が、変更を行うユーザーに必要です。
+アクティビティ ログのストリーミングは、プログラムによって有効にすることも、ポータルで有効にすることもできます。 どちらの方法でも、Service Bus 名前空間と、その名前空間の共有アクセス ポリシーを選択します。この名前空間には、新しいアクティビティ ログ イベントが初めて発生したときに、Event Hub が作成されます。 Service Bus 名前空間が存在しない場合は、最初に作成する必要があります。 この Service Bus 名前空間にアクティビティ ログ イベントをストリーミングしたことがある場合は、以前に作成された Event Hub が再利用されます。 共有アクセス ポリシーでは、ストリーミング メカニズムのアクセス許可が定義されます。 現在、Event Hubs にストリーミングするには、**管理**、**送信**、**リッスン**の各アクセス許可が必要です。 Service Bus 名前空間の共有アクセス ポリシーは、クラシック ポータルの Service Bus 名前空間の [構成] タブで作成または変更できます。 アクティビティ ログのログ プロファイルを更新してストリーミングを含めるには、その Service Bus の承認規則に対する ListKey アクセス許可が、変更を行うユーザーに必要です。
+
+設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、Service Bus またはイベント ハブ名前空間は、ログを出力するのと同じサブスクリプションに属している必要はありません。
 
 ### <a name="via-azure-portal"></a>Azure ポータルの使用
 1. ポータルの左側のメニューを使用して、 **[アクティビティ ログ]** ブレードに移動します。
@@ -81,6 +83,6 @@ Service Bus 規則 ID は、 `{service bus resource ID}/authorizationrules/{key 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

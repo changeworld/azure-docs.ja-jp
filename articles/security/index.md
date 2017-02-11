@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "クラウド内でのサービスやデータのデプロイの要件を満たすように Azure サービスのセキュリティ オプションをカスタマイズする方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: d06c292b36ef6dd6bd4f858603debfe93d498cb6
-ms.openlocfilehash: 622e8ccb62538110991c4f882ada9014ea03ffb4
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 349a83224dd154cf81f641cac33baa020adc0b77
 
 ---
 # <a name="security-documentation"></a>Security のドキュメント
 
-Azure のインフラストラクチャでは、数百万の顧客を同時にホストできるように施設からアプリケーションまでが設計されており、ビジネスのセキュリティ ニーズを満たす信頼性の高い基盤となっています。 また、Azure には構成可能な幅広いセキュリティ オプションが用意されており、デプロイの独自の要件を満たすようにセキュリティをカスタマイズできます。
+Azure のセキュリティを使用して、クラウド内のサービスやデータを保護する方法について説明します。 チュートリアルなどのドキュメントは、デプロイの要件を満たすように Azure サービスのセキュリティ オプションをカスタマイズするのに役立ちます。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -104,16 +105,10 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/security.pdf">
-        <div class="img"></div>
-        <div class="text">
-Security のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO3-->
 
 

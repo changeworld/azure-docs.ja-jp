@@ -1,12 +1,12 @@
 ---
-title: Premium Encoder での複数の入力ファイルとコンポーネント プロパティの使用 | Microsoft Docs
-description: このトピックでは、setRuntimeProperties を使って複数の入力ファイルを使用し、カスタム データを、メディア エンコーダー プレミアム ワークフロー メディア プロセッサに渡す方法について説明します。
+title: "Premium Encoder での複数の入力ファイルとコンポーネント プロパティの使用 | Microsoft Docs"
+description: "このトピックでは、setRuntimeProperties を使って複数の入力ファイルを使用し、カスタム データを、メディア エンコーダー プレミアム ワークフロー メディア プロセッサに渡す方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: xpouyat
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 7fb35bdd-9891-4401-a65b-ef3cc8190e8a
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: xpouyat;anilmur;juliako
+translationtype: Human Translation
+ms.sourcegitcommit: f8b0917b6eb0295641360c4e0a80e81100809f6e
+ms.openlocfilehash: 1d7f5aeb5fcdb6b80289bbd77c12957148d03732
+
 
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Premium Encoder での複数の入力ファイルとコンポーネント プロパティの使用
@@ -105,8 +109,8 @@ XML 値が想定されるプロパティを設定するには、 `<![CDATA[ and 
 
 > [!NOTE]
 > `<![CDATA[` の直後には復帰 (CR) を配置しないでください
-> 
-> 
+>
+>
 
 ### <a name="propertypath-value"></a>propertyPath 値
 前の例では、propertyPath は、"/Media File Input/filename"、"/inactiveTimeout"、"clipListXml" のいずれかでした。
@@ -262,8 +266,8 @@ Configuration:
 
 > [!NOTE]
 > ビデオ ファイル名は、primarySourceFile プロパティに送信されます。 その理由は、ワークフローでは、たとえば、式を使用して正しい出力ファイル名を構築するために、このプロパティが使用されるためです。
-> 
-> 
+>
+>
 
 ### <a name="step-by-step-workflow-creation-that-overlays-a-logo-on-top-of-the-video"></a>ビデオにロゴを重ね合わせるワークフローの作成手順
 ここでは、ビデオとイメージの 2 つのファイルを入力として受け取るワークフローの作成手順について説明します。 このワークフローは、ビデオにイメージを重ね合わせます。
@@ -354,8 +358,8 @@ AAC エンコーダーを設定し、オーディオ形式の変換/プリセッ
 
 > [!NOTE]
 > アセット (メイン ビデオ ファイル) では必ずプライマリ ファイルを設定してください。
-> 
-> 
+>
+>
 
 !["AMSE のアセット ファイル"](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture18_assetinamse.png)
 
@@ -399,7 +403,7 @@ AAC エンコーダーを設定し、オーディオ形式の変換/プリセッ
 ## <a name="see-also"></a>関連項目
 * [Azure Media Services の Premium Encoding の紹介 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [Azure Media Services で Premium Encoding を使用する方法 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
-* [Azure Media Services を使用してオンデマンド コンテンツをエンコードする](media-services-encode-asset.md#media_encoder_premium_workflow)
+* [Azure Media Services を使用してオンデマンド コンテンツをエンコードする](media-services-encode-asset.md#media-encoder-premium-workflow)
 * [メディア エンコーダー プレミアム ワークフローの形式とコーデック](media-services-premium-workflow-encoder-formats.md)
 * [サンプルのワークフロー ファイル](https://github.com/AzureMediaServicesSamples/Encoding-Presets/tree/master/VoD/MediaEncoderPremiumWorkfows)
 * [Azure Media Services Explorer ツール](http://aka.ms/amse)
@@ -410,6 +414,8 @@ AAC エンコーダーを設定し、オーディオ形式の変換/プリセッ
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

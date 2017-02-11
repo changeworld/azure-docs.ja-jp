@@ -1,6 +1,6 @@
 ---
-title: "C# での Elastic Database プールの監視と管理 | Microsoft Docs"
-description: "C# データベース開発技術を使用して Azure SQL Database エラスティック データベース プールを管理します。"
+title: "C# でのエラスティック プールの監視と管理 | Microsoft Docs"
+description: "C# データベース開発技術を使用して Azure SQL Database エラスティック プールを管理します。"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: f6e6ff3b-6b60-43c1-afe9-575991e38237
 ms.service: sql-database
-ms.custom: sharded databases pool; how to
+ms.custom: multiple databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: csharp
@@ -16,12 +16,12 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 62e13424d8dd652bc20c5746f81df7958963c43a
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: a6d5b0ccb1b160be4f8f3c09814202634759c8c6
 
 
 ---
-# <a name="monitor-and-manage-an-elastic-database-pool-with-cx23"></a>C&#x23; でのエラスティック データベース プールの監視と管理
+# <a name="monitor-and-manage-an-elastic-pool-with-cx23"></a>C&#x23; でのエラスティック プールの監視と管理
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-database-elastic-pool-manage-portal.md)
 > * [PowerShell](sql-database-elastic-pool-manage-powershell.md)
@@ -30,7 +30,7 @@ ms.openlocfilehash: 62e13424d8dd652bc20c5746f81df7958963c43a
 > 
 > 
 
-C&#x23; を使用して[エラスティック データベース プール](sql-database-elastic-pool.md)を管理する方法について説明します。 
+C&#x23; を使用して[エラスティック プール](sql-database-elastic-pool.md)を管理する方法について説明します。 
 
 > [!NOTE]
 > SQL Database の新機能の多くは、[Azure Resource Manager デプロイメント モデル](../azure-resource-manager/resource-group-overview.md)を使用している場合にのみサポートされます。そのため、常に最新の **Azure SQL Database Management Library for .NET ([ドキュメント](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))** を使用する必要があります。 以前の[クラシック デプロイメント モデル ベースのライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql)は互換性のためだけにサポートされているため、より新しい Resource Manager ベースのライブラリを使用することをお勧めします。
@@ -39,7 +39,7 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
 
 この記事の手順を完了するには、次のものが必要です。
 
-* エラスティック プール (管理するプール)。 プールを作成するには、「[C# を使用したエラスティック データベース プールの作成](sql-database-elastic-pool-create-csharp.md)」を参照してください。
+* エラスティック プール (管理するプール)。 プールを作成するには、「[C# を使用したエラスティック プールの作成](sql-database-elastic-pool-create-csharp.md)」をご覧ください。
 * 見ることができます。 Visual Studio の無償版については、 [Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs) に関するページを参照してください。
 
 ## <a name="move-a-database-into-an-elastic-pool"></a>エラスティック プールへのデータベースの移動
@@ -107,13 +107,13 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
 * [SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)。
 * [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 * [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
-* [C# による新しいエラスティック データベース プールの作成](sql-database-elastic-pool-create-csharp.md)
-* [エラスティック データベース プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
+* [C# による新しいエラスティック プールの作成](sql-database-elastic-pool-create-csharp.md)
+* [エラスティック プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
 * エラスティック データベース ツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「 [Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Azure Site Recovery で VMM を使用して Hyper-V 仮想マシンを保護するために、ネットワーク マッピングを準備する | Microsoft Docs
-description: オンプレミスのデータセンターから Azure またはセカンダリ サイトに Hyper-V 仮想マシンをレプリケートするためのネットワーク マッピングを設定します。
+title: "Azure Site Recovery で VMM を使用して Hyper-V 仮想マシンを保護するために、ネットワーク マッピングを準備する | Microsoft Docs"
+description: "オンプレミスのデータセンターから Azure またはセカンダリ サイトに Hyper-V 仮想マシンをレプリケートするためのネットワーク マッピングを設定します。"
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: rayne-wiselman
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: a798580b-b166-426b-bdca-573167b0e451
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/05/2016
 ms.author: raynew
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8023643345812a9bc18dcca43cfc0ecff31a5007
+
 
 ---
 # <a name="prepare-network-mapping-for-hyper-v-virtual-machine-protection-with-vmm-in-azure-site-recovery"></a>Azure Site Recovery で VMM を使用して Hyper-V 仮想マシンを保護するために、ネットワーク マッピングを準備する
@@ -106,6 +110,9 @@ VMM でネットワークが正しくセットアップされている場合、�
 ## <a name="next-steps"></a>次のステップ
 ネットワーク マッピングに関する理解が深まったところで、 [Site Recovery をデプロイしてみましょう](site-recovery-best-practices.md)。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

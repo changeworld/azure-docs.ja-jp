@@ -14,11 +14,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
-ms.date: 08/24/2016
+ms.date: 12/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: 5584c728100c2b7ccba7cf2ca79f888bdf08be64
+ms.sourcegitcommit: 0b200aff6a38a76abd1abaa742006f3d75e7121e
+ms.openlocfilehash: 0cbde2e33517e46e49824d9f66f75e4e2f384d97
 
 
 ---
@@ -31,13 +31,29 @@ ms.openlocfilehash: 5584c728100c2b7ccba7cf2ca79f888bdf08be64
 > [!IMPORTANT]
 > 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。 [SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
 >
->
 
 | チュートリアル | Description |
 | --- | --- | --- |
-| [サーバー レベルのプリンシパル ログインを使用して Azure SQL Database に接続する](sql-database-get-started-security.md#connect-to-azure-sql-database-using-sql-server-authentication) |このチュートリアルでは、サーバー レベルのプリンシパル ログインを使用して Azure SQL Database に接続する方法を学習します。 |
+| [サーバー レベルのプリンシパル ログインを使用して Azure SQL Database に接続する](sql-database-get-started-security.md#connect-to-azure-sql-database-using-sql-server-authentication) |このチュートリアルでは、SQL サーバー レベルのプリンシパル ログインを使用して Azure SQL Database に接続する方法を学習します。 |
 | [Azure SQL Database にユーザーとして接続する](sql-database-get-started-security.md#connect-to-azure-sql-database-as-a-user) |このチュートリアルでは、データベース レベルのユーザー アカウントを使用して Azure SQL Database に接続する方法を学習します。 |
 |  | |
+
+## <a name="create-servers-databases-and-server-level-firewall-rules"></a>サーバー、データベース、サーバーレベルのファイアウォール規則を作成する
+以下のチュートリアルでは、サーバー、データベース、サーバーレベルのファイアウォール規則を作成します。また、サーバーやデータベースへの接続とクエリの実行について学習します。
+
+| チュートリアル | Description |
+| --- | --- | --- |
+| [Azure Portal と SQL Server Management Studio を使用して Azure SQL Database のサーバー、データベース、ファイアウォール規則を使ってみる](sql-database-get-started.md) | このチュートリアルでは、Azure Portal と SQL Server Management Studio を使用して、Azure SQL Database 論理サーバーの作成、論理サーバーのプロパティの表示、サーバーレベルのファイアウォールの作成、master データベースへの接続、サンプル データベースの作成、サンプル データベースのプロパティの表示、サンプル データベースへの接続、空のデータベースの作成を実行します。 |
+| [Get started with Azure SQL Database servers, databases, and firewall rules by using Azure PowerShell (Azure PowerShell を使用して Azure SQL Database のサーバー、データベース、ファイアウォール規則を使ってみる)](sql-database-get-started-powershell.md) | このチュートリアルでは、PowerShell を使用して、Azure SQL Database 論理サーバーの作成、論理サーバーのプロパティの表示、サーバーレベルのファイアウォールの作成、master データベースへの接続、サンプル データベースの作成、サンプル データベースのプロパティの表示、サンプル データベースへの接続、空のデータベースの作成を実行します。 |
+| [Use C# to create a SQL database with the SQL Database Library for .NET (C# を使用して SQL Database Library for .NET で SQL データベースを作成する)](sql-database-get-started-csharp.md)| このチュートリアルでは、C# を使用して、SQL Database サーバー、ファイアウォール規則、SQL データベースを作成します。 また、Active Directory (AD) アプリケーションと、C# アプリの認証に必要なサービス プリンシパルも作成します。 |
+
+## <a name="backup-and-recovery"></a>バックアップと回復
+次のチュートリアルでは、特定の時点へのデータベースの復元、長期的なバックアップの保有期間の構成、Azure Recovery Services コンテナーの保有期間からのデータベースの復元を実行します。 
+
+| チュートリアル | Description |
+| --- | --- | --- |
+| [Get Started with Backup and Restore for Data Protection and Recovery (データの保護と回復ためのバックアップと復元の概要)](sql-database-get-started-backup-recovery.md) | このチュートリアルでは、Azure Portal を使用して、特定の時点へのデータベースの復元、長期的なバックアップの保有期間の構成、Azure Recovery Services コンテナーの保有期間からのデータベースの復元を実行します。 |
+
 
 ## <a name="elastic-pools"></a>エラスティック プール
 次のチュートリアルでは、 [エラスティック プール](sql-database-elastic-pool.md) を使用して、多種多様な予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理する方法を学習します。
@@ -72,7 +88,7 @@ ms.openlocfilehash: 5584c728100c2b7ccba7cf2ca79f888bdf08be64
 |  | |
 
 ## <a name="performance-optimization"></a>パフォーマンスの最適化
-以下のチュートリアルでは、 [単一のデータベースのパフォーマンス](sql-database-performance-guidance.md)の最適化について学習します。 複数のデータベースのパフォーマンスの最適化については、「 [エラスティック プール](#elastic-pools)」を参照してください。
+以下のチュートリアルでは、[スタンドアロン データベースのパフォーマンス](sql-database-performance-guidance.md)の最適化について学習します。 複数のデータベースのパフォーマンスの最適化については、「 [エラスティック プール](#elastic-pools)」を参照してください。
 
 | チュートリアル | Description |
 | --- | --- | --- |
@@ -153,8 +169,8 @@ ms.openlocfilehash: 5584c728100c2b7ccba7cf2ca79f888bdf08be64
 
 | チュートリアル | Description |
 | --- | --- | --- |
-| [Azure ポータルで以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore-portal.md) |このチュートリアルでは、Azure ポータルを使用して以前の時点にデータベースを復元する方法を学習します。 |
-| [PowerShell で以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore-powershell.md) |このチュートリアルでは、PowerShell を使用して以前の時点にデータベースを復元する方法を学習します。 |
+| [Azure ポータルで以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore.md) |このチュートリアルでは、Azure ポータルを使用して以前の時点にデータベースを復元する方法を学習します。 |
+| [PowerShell で以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore.md) |このチュートリアルでは、PowerShell を使用して以前の時点にデータベースを復元する方法を学習します。 |
 | [Azure ポータルを使用した、削除済み Azure SQL データベースの復元](sql-database-restore-deleted-database-portal.md) |このチュートリアルでは、Azure ポータルを使用して、削除済みのデータベースを復元する方法を学習します。 |
 | [PowerShell を使用して削除済み Azure SQL Database を復元する](sql-database-restore-deleted-database-powershell.md) |このチュートリアルでは、PowerShell を使用して、削除済みのデータベースを復元する方法を学習します。 |
 | [Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-portal.md) |このチュートリアルでは、Azure ポータルを使用してアクティブ geo レプリケーションを構成する方法を学習します。 |
@@ -178,6 +194,6 @@ ms.openlocfilehash: 5584c728100c2b7ccba7cf2ca79f888bdf08be64
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

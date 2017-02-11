@@ -2,6 +2,7 @@
 ## [DocumentDB とは](documentdb-introduction.md)
 ## [主要な概念](documentdb-resources.md)
 ## [グローバル配信](documentdb-distribute-data-globally.md)
+## [NoSQL TCO 分析](https://aka.ms/documentdb-tco-paper)
 ## シナリオ
 ### [一般的なユース ケース](documentdb-use-cases.md)
 ### [DocumentDB によるソーシャル化](documentdb-social-media-apps.md)
@@ -10,6 +11,7 @@
 ## 最初のアプリを記述する
 ### [.NET コンソール アプリ](documentdb-get-started.md)
 ### [.NET Core コンソール アプリ](documentdb-dotnetcore-get-started.md)
+### [Java コンソール アプリ](documentdb-java-get-started.md)
 ### [Node.js コンソール アプリ](documentdb-nodejs-get-started.md)
 ### [C++ コンソール アプリ](documentdb-cpp-get-started.md)
 ## Web アプリを構築する
@@ -24,7 +26,6 @@
 # 方法
 
 ## プラン
-### [ストレージとパフォーマンス](documentdb-manage.md)
 ### [パーティション分割とスケーリング](documentdb-partition-data.md)
 ### [整合性](documentdb-consistency-levels.md)
 ### [NoSQL 対 SQL](documentdb-nosql-vs-sql.md)
@@ -39,8 +40,6 @@
 ### [データへのアクセスをセキュリティで保護する](documentdb-secure-access-to-data.md)
 ### [バックアップおよび復元](documentdb-online-backup-and-restore.md)
 ### [パフォーマンス レベル](documentdb-performance-levels.md)
-### [リソース クォータ](documentdb-limits.md)
-### [クォータの増加](documentdb-increase-limits.md)
 ### [要求ユニット](documentdb-request-units.md)
 ### Azure CLI
 #### [アカウントの作成](documentdb-automation-resource-manager-cli.md)
@@ -120,6 +119,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

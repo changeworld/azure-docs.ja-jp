@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Halogen Software の統合'
-description: Azure Active Directory と Halogen Software の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Halogen Software の統合"
+description: "Azure Active Directory と Halogen Software の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 2ca2298d-9a0c-4f14-925c-fa23f2659d28
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 21d31eb33a838d42b4ba8f4191b89e6094206f6e
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-halogen-software"></a>チュートリアル: Azure Active Directory と Halogen Software の統合
+# <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>チュートリアル: Azure Active Directory と Halogen Software の統合
 このチュートリアルの目的は、Halogen Software と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Halogen Software と Azure AD の統合には、次の利点があります。 
@@ -63,7 +67,7 @@ Azure AD への Halogen Software の統合を構成するには、ギャラリ�
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![[アプリケーション]][2]
-4. ページの下部にある **[追加]** をクリックします。 
+4. ページの下部にある **[追加]** をクリックします。    
    
     ![アプリケーション][3]
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
@@ -161,7 +165,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザーの種類]** として **[組織内の新しいユーザー]** を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. [次へ] をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
@@ -172,11 +176,11 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに、「**Britta Simon**」と入力します。
+   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD Connect とは][105]  
@@ -276,6 +280,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 [301]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_301.png
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

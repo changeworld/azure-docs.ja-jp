@@ -3,8 +3,8 @@ title: "Java から Azure Blob Storage (オブジェクト ストレージ) を�
 description: "Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 services: storage
 documentationcenter: java
-author: tamram
-manager: carmonm
+author: mmacy
+manager: timlt
 editor: tysonn
 ms.assetid: 2e223b38-92de-4c2f-9254-346374545d32
 ms.service: storage
@@ -12,28 +12,28 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 11/17/2016
-ms.author: tamram
+ms.date: 12/08/2016
+ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 3e1994888816047f0097d21072c1ebb4e9277061
-ms.openlocfilehash: d679218de355d6f0f2b43fae9ab1745e13ae0431
+ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
+ms.openlocfilehash: 1dd0736634c23658b8e3fc0f2ff4dbf9740db47f
 
 
 ---
 # <a name="how-to-use-blob-storage-from-java"></a>Java から BLOB ストレージを使用する方法
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
+[!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="overview"></a>Overview
 Azure Blob Storage は、非構造化データをクラウド内にオブジェクト/BLOB として格納するサービスです。 Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。 Blob Storage は、オブジェクト ストレージとも呼ばれます。
 
-この記事では、Microsoft Azure BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Java で記述され、[Azure Storage SDK for Java][Azure Storage SDK for Java] を利用しています。 紹介するシナリオは、BLOB の**アップロード**、**一覧の取得**、**ダウンロード**、および**削除**です。 BLOB の詳細については、「 [次のステップ](#Next-Steps) 」のセクションを参照してください。
+この記事では、Microsoft Azure BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Java で記述され、 [Azure Storage SDK for Java][Azure Storage SDK for Java]を利用しています。 紹介するシナリオは、BLOB の**アップロード**、**一覧の取得**、**ダウンロード**、および**削除**です。 BLOB の詳細については、「 [次のステップ](#Next-Steps) 」のセクションを参照してください。
 
 > [!NOTE]
-> SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。 詳細については、[Azure Storage SDK for Android に関するページ に関するページ][Azure Storage SDK for Android に関するページ に関するページ] に関するページを参照してください。
-> 
-> 
+> SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。 詳細については、「[Azure Storage SDK for Android に関するページ][Azure Storage SDK for Android]｣をご覧ください。
+>
+>
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
@@ -72,15 +72,15 @@ String storageConnectionString =
     RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 ```
 
-次のサンプルでは、これら 2 つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。
+次のサンプルでは、これら&2; つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 **CloudBlobClient** オブジェクトを使用すると、コンテナーと BLOB の参照オブジェクトを取得できます。 次のコードでは、 **CloudBlobClient** オブジェクトを作成しています。
 
 > [!NOTE]
 > **CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳しくは、「[Azure Storage クライアント SDK リファレンス]」の **CloudStorageAccount** をご覧ください。
-> 
-> 
+>
+>
 
 [!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
@@ -277,19 +277,19 @@ catch (Exception e)
 * [Azure Storage SDK for Java][Azure Storage SDK for Java]
 * [Azure Storage クライアント SDK リファレンス][Azure Storage クライアント SDK リファレンス]
 * [Azure Storage REST API][Azure Storage REST API]
-* [Azure Storage チーム ブログ][Azure Storage チーム ブログ]
+* [Azure Storage チーム ブログ][Azure Storage Team Blog]
 
 詳細については、 [Java デベロッパー センター](/develop/java/)も参照してください。
 
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
-[Azure Storage SDK for Android に関するページ に関するページ]: https://github.com/azure/azure-storage-android
+[Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Azure Storage クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
-[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

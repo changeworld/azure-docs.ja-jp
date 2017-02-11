@@ -1,41 +1,45 @@
 ---
-title: Resource Manager テンプレートを使用した Service Bus 名前空間の作成 | Microsoft Docs
-description: Azure Resource Manager テンプレートを使用して Service Bus 名前空間を作成します。
-services: service-bus
+title: "Resource Manager テンプレートを使用した Service Bus 名前空間の作成 | Microsoft Docs"
+description: "Azure Resource Manager テンプレートを使用して Service Bus 名前空間を作成します。"
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: dc0d6482-6344-4cef-8644-d4573639f5e4
+ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sethm;shvija
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 39907193d006d6060152c9ac737a082d655c2256
+
 
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成
 この記事では、Azure Resource Manager テンプレートを使用し、Standard/Basic の SKU で **Messaging** タイプの Service Bus 名前空間を作成する方法について説明します。 また、デプロイの実行用に指定するパラメーターについても取り上げます。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成][Azure Resource Manager のテンプレートの作成]」を参照してください。
+テンプレートの作成の詳細については、[「Azure Resource Manager のテンプレートの作成」][Azure Resource Manager のテンプレートの作成]を参照してください。
 
-完全なテンプレートについては、GitHub の [Service Bus 名前空間テンプレート][Service Bus 名前空間テンプレート] を参照してください。
+完全なテンプレートについては、GitHub の[「Service Bus 名前空間テンプレート」][Service Bus 名前空間テンプレート]を参照してください。
 
 > [!NOTE]
 > 次の Azure Resource Manager テンプレートは、ダウンロードしてデプロイすることができます。 
 > 
-> * [イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を作成する](../event-hubs/event-hubs-resource-manager-namespace-event-hub.md)
 > * [キューを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-queue.md)
 > * [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
 > * [キューと承認規則を含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-auth-rule.md)
+> * [トピック、サブスクリプション、ルールを含んだ Service Bus の名前空間を作成する](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> 最新のテンプレートを確認する場合は、「 [Azure クイックスタート テンプレート][Azure クイックスタート テンプレート] 」ギャラリーで "Service Bus" を検索してください。
+> 最新のテンプレートを確認する場合は、[「Azure クイックスタート テンプレート」][Azure クイックスタート テンプレート]ギャラリーで "Service Bus" を検索してください。
 > 
 > 
 
-## <a name="what-will-you-deploy?"></a>デプロイの対象
+## <a name="what-will-you-deploy"></a>デプロイの対象
 このテンプレートでは、[Basic、Standard、または Premium](https://azure.microsoft.com/pricing/details/service-bus/) の SKU で Service Bus 名前空間をデプロイします。
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
@@ -79,7 +83,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 
 テンプレートには、このパラメーターに指定できる値 (Basic、Standard、または Premium) を定義します。値が指定されない場合は既定値 (Standard) が割り当てられます。
 
-Service Bus の料金の詳細については、[「Service Bus の料金と課金」][]を参照してください。
+Service Bus の価格の詳細については、[「Service Bus の料金と課金」][Service Bus の料金と課金]を参照してください。
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
 テンプレートの Service Bus API バージョン。
@@ -133,7 +137,7 @@ azure group deployment create <my-resource-group> <my-deployment-name> --templat
 ## <a name="next-steps"></a>次のステップ
 Azure Resource Manager を使ってリソースを作成し、デプロイしたら、それらのリソースの管理方法を次の記事で確認してください。
 
-* [PowerShell で Service Bus を管理する](../service-bus/service-bus-powershell-how-to-provision.md)
+* [PowerShell で Service Bus を管理する](service-bus-powershell-how-to-provision.md)
 * [Service Bus リソースを Service Bus Explorer で管理する](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 
 [Azure Resource Manager のテンプレートの作成]: ../resource-group-authoring-templates.md
@@ -145,6 +149,6 @@ Azure Resource Manager を使ってリソースを作成し、デプロイした
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

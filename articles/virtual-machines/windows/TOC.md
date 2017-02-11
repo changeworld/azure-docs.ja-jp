@@ -138,27 +138,7 @@
 ### [ハイパフォーマンス コンピューティング (HPC)](../virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [MATLAB](../virtual-machines-windows-matlab-mdcs-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [MongoDB](../virtual-machines-windows-install-mongodb.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [SQL](../virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure Portal で VM をプロビジョニングする](../virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure PowerShell を使用して VM をプロビジョニングする](../virtual-machines-windows-ps-sql-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [VM に接続する](../virtual-machines-windows-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [SQL Server データベースを移行する](../virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [AlwaysOn 可用性グループを手動で構成する](../virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [AlwaysOn 可用性グループを自動的に構成する](../virtual-machines-windows-portal-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [AlwaysOn 可用性グループに使用する内部ロード バランサーの構成](../virtual-machines-windows-portal-sql-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [1 つ以上の AlwaysOn 可用性グループ リスナーの構成](../virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure Key Vault 統合の構成](../virtual-machines-windows-ps-sql-keyvault.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [高可用性と障害復旧](../virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [自動化されたバックアップ](../virtual-machines-windows-sql-automated-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [バックアップと復元](../virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure Storage を使用したバックアップと復元](../virtual-machines-windows-use-storage-sql-server-backup-restore.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [自動修正](../virtual-machines-windows-sql-automated-patching.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [パフォーマンスのベスト プラクティス](../virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [セキュリティに関する考慮事項](../virtual-machines-windows-sql-security.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [SQL Server Agent 拡張機能](../virtual-machines-windows-sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [アプリのパターンと戦略](../virtual-machines-windows-sql-server-app-patterns-dev-strategies.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure Virtual Machines における SQL Server に関する FAQ](../virtual-machines-windows-sql-server-iaas-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [SQL Server VM のストレージの構成](../virtual-machines-windows-sql-server-storage-configuration.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [SQL Server](./sql/virtual-machines-windows-sql-server-iaas-overview.md)
 ### [Microsoft Azure での SAP ERP 6.0 向け SAP IDES EHP7 SP3 のデプロイ](../virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [計画および実装ガイド](../virtual-machines-windows-sap-planning-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [高可用性ガイド](../virtual-machines-windows-sap-high-availability-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -202,6 +182,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

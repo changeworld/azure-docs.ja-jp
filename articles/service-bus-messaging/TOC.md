@@ -1,6 +1,6 @@
 # 概要
-## [Service Bus メッセージングとは](service-bus-queues-topics-subscriptions.md)
-## [Azure キューと Service Bus キューを比較する](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+## [Service Bus メッセージングとは](service-bus-messaging-overview.md)
+## [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 ## [FAQ](service-bus-faq.md)
 
 # 作業の開始
@@ -20,61 +20,61 @@
 ### [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
 ### [Python](service-bus-python-how-to-use-topics-subscriptions.md)
 ### [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)
-## [Shared Access Signature の生成](service-bus-sas-overview.md)
+## [多層 Service Bus アプリケーションを構築する](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
 # 方法
 ## 計画と設計
+### [Premium メッセージング](service-bus-premium-messaging.md)
+### [Azure キューと Service Bus キューを比較する](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 ### [パフォーマンスを最適化する](service-bus-performance-improvements.md)
 ### [非同期メッセージングと高可用性](service-bus-async-messaging.md)
 ### [故障と障害の扱い](service-bus-outages-disasters.md)
+### [自動転送によるエンティティのチェーン](service-bus-auto-forwarding.md)
 
 ## 開発
+### [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 ### [キューを使用するアプリ](service-bus-create-queues.md)
 ### [トピック/サブスクリプションを使用するアプリ](service-bus-create-topics-subscriptions.md)
-### [認証と権限承認](service-bus-authentication-and-authorization.md)
-### [Premium メッセージング](service-bus-premium-messaging.md)
+### [認証と権限承認](service-bus-sas.md)
 ### [パーティション分割されたキューとトピック](service-bus-partitioning.md)
 ### [配達不能キュー](service-bus-dead-letter-queues.md)
 ### [トランザクション処理](service-bus-transactions.md)
-### [AMQP 開発者ガイド]
+### AMQP
 #### [.NET](service-bus-amqp-dotnet.md)
 #### [Java](service-bus-amqp-java.md)
-#### [PHP](service-bus-amqp-php.md)
-#### [Python](service-bus-amqp-python.md)
-#### [Apache](service-bus-amqp-apache.md)
-### [.NET API で AMQP を使用する](service-bus-dotnet-advanced-message-queuing.md)
-### [パーティション分割されたキューとトピックで AMQP を使用する](service-bus-partitioned-queues-and-topics-amqp-overview.md)
-### [ペアの名前空間](service-bus-paired-namespaces.md)
-### [自動転送によるエンティティのチェーン](service-bus-auto-forwarding.md)
+#### [AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)
+#### [AMQP 要求応答ベースの操作](service-bus-amqp-request-response.md)
+
 ## 管理
+### [Service Bus 管理ライブラリ](service-bus-management-libraries.md)
 ### [Azure Resource Manager テンプレートを使用する](service-bus-resource-manager-overview.md)
 ### [PowerShell を使用したエンティティのプロビジョニング](service-bus-powershell-how-to-provision.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.scheduler/v0.11.1/azurerm.scheduler)
-## [.NET](/dotnet/api/microsoft.azure.management.servicebus)
-## [Java](/java/api/com.microsoft.azure.servicebus.amqp)
+## .NET
+### [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
+### [Microsoft.Azure.Management.ServiceBus](/dotnet/api/microsoft.azure.management.servicebus)
+## [PowerShell](service-bus-powershell-how-to-provision.md)
 ## [REST ()](/rest/api/servicebus)
-
-# リソース
-## [SQLFilter 構文](service-bus-messaging-sql-filter.md)
-## [SQLRuleAction 構文](service-bus-messaging-sql-rule-action.md)
-## [AMQP1.0 プロトコル ガイド](service-bus-amqp-protocol-guide.md)
-### [AMQP 1.0 要求応答ベースの操作](service-bus-amqp-request-response.md)
-## [価格の詳細](service-bus-pricing-billing.md)
-## [サンプル](service-bus-samples.md)
 ## [例外](service-bus-messaging-exceptions.md)
 ## [クォータ](service-bus-quotas.md)
+## [SQLFilter 構文](service-bus-messaging-sql-filter.md)
+## [SQLRuleAction 構文](service-bus-messaging-sql-rule-action.md)
+
+# リソース
+## [価格の詳細](service-bus-pricing-billing.md)
+## [サンプル](service-bus-samples.md)
 ## [ブログ](https://blogs.msdn.microsoft.com/servicebus/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/home?forum=servbus)
 ## [料金](https://azure.microsoft.com/pricing/details/service-bus/)
-## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
 ## [Service Bus エクスプローラー](https://github.com/paolosalvatori/ServiceBusExplorer)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-bus)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Jan17_HO4-->
 
 

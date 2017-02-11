@@ -29,12 +29,12 @@ ms.openlocfilehash: 5da4b087131b0adef49f7019297db834d7bb9416
 > * [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
-Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。 サポートされている機能の完全な一覧については、「 [Application Gateway の概要](application-gateway-introduction.md)
+Azure Application Gateway はレイヤー&7; のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。 サポートされている機能の完全な一覧については、「 [Application Gateway の概要](application-gateway-introduction.md)
 
 この記事では、Application Gateway を作成、構成、起動、および削除する手順について説明します。
 
 > [!IMPORTANT]
-> Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイメント モデルと従来のデプロイメント モデルの 2 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイメント モデルとツール](../azure-classic-rm.md) について理解しておいてください。 この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。 このドキュメントでは、Azure Resource Manager を使用したアプリケーション ゲートウェイの作成について説明します。 クラシック バージョンを使用する場合は、 [PowerShell を使用したアプリケーション ゲートウェイ クラシック デプロイメントの作成](application-gateway-create-gateway.md)に関するページを参照してください。
+> Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイメント モデルと従来のデプロイメント モデルの&2; 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイメント モデルとツール](../azure-classic-rm.md) について理解しておいてください。 この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。 このドキュメントでは、Azure Resource Manager を使用したアプリケーション ゲートウェイの作成について説明します。 クラシック バージョンを使用する場合は、 [PowerShell を使用したアプリケーション ゲートウェイ クラシック デプロイメントの作成](application-gateway-create-gateway.md)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -145,7 +145,7 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name publicI
 
 ### <a name="step-1"></a>手順 1
 
-**gatewayIP01** という名前のアプリケーション ゲートウェイの IP 構成を作成します。 Application Gateway が起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。 各インスタンスが IP アドレスを 1 つ取得することに注意してください。
+**gatewayIP01** という名前のアプリケーション ゲートウェイの IP 構成を作成します。 Application Gateway が起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。 各インスタンスが IP アドレスを&1; つ取得することに注意してください。
 
 ```powershell
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet

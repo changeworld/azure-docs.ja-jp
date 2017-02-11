@@ -1,13 +1,13 @@
 ---
-title: Azure MFA の概要 | Microsoft Docs
-description: 'Multi-Factor Authentication とは、MFA を使用する理由、Multi-factor Authentication クライアントに関する詳細、使用可能なさまざまな認証方法とバージョン。 '
-keywords: MFA の概要, mfaの概要, mfa とは
+title: "Azure MFA の概要 | Microsoft Docs"
+description: "Multi-Factor Authentication とは、MFA を使用する理由、Multi-factor Authentication クライアントに関する詳細、使用可能なさまざまな認証方法とバージョン。 "
+keywords: "MFA の概要, mfaの概要, mfa とは"
 services: multi-factor-authentication
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
 editor: yossib
-
+ms.assetid: c40d7a34-1274-4496-96b0-784850c06e9b
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a510763fe70d90a328c835cb123e78f455796850
+
 
 ---
-# <a name="what-is-azure-multi-factor-authentication?"></a>Azure Multi-Factor Authentication とは
+# <a name="what-is-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication とは
 2 段階認証は、複数の確認方法を要求することで、ユーザーのサインインとトランザクションにさらなる重要なセキュリティ レイヤーを追加する認証方法です。 これらは、次の確認方法のうち 2 つ以上を要求することで機能します。
 
 * ユーザーが知っているもの (通常はパスワード)
@@ -32,7 +36,7 @@ Azure Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリ
 > 
 > 
 
-## <a name="why-use-azure-multi-factor-authentication?"></a>Azure Multi-Factor Authentication を使う理由
+## <a name="why-use-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使う理由
 インターネットの接続人口は今やかつてない水準にまで増加しています。 スマート フォン、タブレット、ノート PC、デスクトップ PC など、インターネットへの接続手段は多様化し、常時接続していることが当たり前の時代となりました。 人々は、どこにいても、自分のアカウントやアプリケーションにアクセスすることができます。そのことが生産性とサービスの質の向上につながっているといえるでしょう。
 
 Azure Multi-Factor Authentication は、認証手段の多層化によってユーザーを絶えず保護することができる、使いやすくスケーラブルで信頼性の高いソリューションです。
@@ -122,6 +126,9 @@ Azure Multi-Factor Authentication では、クラウドとサーバーの両方�
 ## <a name="next-steps"></a>次のステップ
 Azure Multi-Factor Authentication の使用を開始するには、まず、 [クラウドでの MFA か、オンプレミスの MFA かを選択](multi-factor-authentication-get-started.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

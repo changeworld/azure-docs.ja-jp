@@ -1,13 +1,13 @@
 ---
-title: テンプレートを使用した Windows VM のカスタム スクリプト | Microsoft Docs
-description: カスタム スクリプト拡張機能と Resource Manager テンプレートを使用して Windows VM 構成タスクを自動化する
+title: "テンプレートを使用した Windows VM のカスタム スクリプト | Microsoft Docs"
+description: "カスタム スクリプト拡張機能と Resource Manager テンプレートを使用して Windows VM 構成タスクを自動化する"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: kundanap
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: f4181fee-7a9d-4a1c-b517-52956f5b7fa1
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -15,12 +15,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: ac63fd346f158d52b359f2d6b398d0d00ea0c67e
+
 
 ---
-# Azure Resource Manager テンプレートでの Windows VM のカスタム スクリプト拡張機能の使用
+# <a name="windows-vm-custom-script-extensions-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでの Windows VM のカスタム スクリプト拡張機能の使用
 [!INCLUDE [virtual-machines-common-extensions-customscript](../../includes/virtual-machines-common-extensions-customscript.md)]
 
-## Windows VM のテンプレートの例
+## <a name="template-example-for-a-windows-vm"></a>Windows VM のテンプレートの例
 テンプレートの Resource セクションで、次のリソースを定義します。
 
        {
@@ -45,11 +49,12 @@ ms.author: kundanap
        }
      }
 
-上記の例で、ファイルの URL とファイル名を独自の設定に置き換えます。テンプレートを作成したら、Azure PowerShell を使用してそのテンプレートをデプロイできます。
+上記の例で、ファイルの URL とファイル名を独自の設定に置き換えます。
+テンプレートを作成したら、Azure PowerShell を使用してそのテンプレートをデプロイできます。
 
-スクリプトの URL とパラメーターを公開しない場合は、スクリプトの URL を **private** に設定します。スクリプトの URL が **private** に設定されている場合には、保護された設定としてストレージ アカウント名とキーを送信しないとアクセスできません。また、バージョン 1.7 以降のカスタム スクリプト拡張機能では、保護された設定としてスクリプト パラメーターを指定することもできます。
+スクリプトの URL とパラメーターを公開しない場合は、スクリプトの URL を **private**に設定します。 スクリプトの URL が **private**に設定されている場合には、保護された設定としてストレージ アカウント名とキーを送信しないとアクセスできません。 また、バージョン 1.7 以降のカスタム スクリプト拡張機能では、保護された設定としてスクリプト パラメーターを指定することもできます。
 
-## 保護された設定を持つ Windows VM テンプレートの例
+## <a name="template-example-for-a-windows-vm-with-protected-settings"></a>保護された設定を持つ Windows VM テンプレートの例
         {
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
@@ -65,8 +70,13 @@ ms.author: kundanap
         "storageAccountKey": "yourStorageAccountKey"
         }
         }
-カスタム スクリプト拡張機能の最新バージョンのスキーマについては、「[Azure Windows VM 拡張機能の構成サンプル](virtual-machines-windows-extensions-configuration-samples.md)」を参照してください。
+カスタム スクリプト拡張機能の最新バージョンのスキーマについては、「[Azure Windows VM 拡張機能の構成サンプル](virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
-カスタム スクリプト拡張機能を使用して、VM でアプリケーションを構成するサンプルについては、「[Windows 仮想マシンでのカスタムのスクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)」を参照してください。
+カスタム スクリプト拡張機能を使用して、VM でアプリケーションを構成するサンプルについては、「 [Windows 仮想マシンでのカスタムのスクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)」を参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

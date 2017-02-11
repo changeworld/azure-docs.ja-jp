@@ -1,12 +1,12 @@
 ---
-title: Azure モバイル エンゲージメント ユーザー インターフェイス - Settings (設定)
-description: Azure モバイル エンゲージメントを使用してアプリケーションのグローバル設定を管理する方法について説明します。
+title: "Azure モバイル エンゲージメント ユーザー インターフェイス - Settings (設定)"
+description: "Azure モバイル エンゲージメントを使用してアプリケーションのグローバル設定を管理する方法について説明します。"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 858f4cb4-14de-4bb5-826f-28cadbfc928b
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
@@ -14,81 +14,85 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1e8ff1a27941984ae3fcd16dc8648cd8dc9b5e7c
+
 
 ---
-# アプリケーションのグローバル設定を管理する方法
-アプリケーションで利用可能な **[設定]** メニューのオプションは、アプリケーションのプラットフォームやアプリケーションで付与されているユーザーの権限によって異なります。設定には、詳細、プロジェクト、ネイティブのプッシュ、プッシュの速度、タグ (アプリ情報)、コマーシャル プレッシャーの項目があります。[設定] セクションの [タグ (アプリ情報)] メニュー オプションはアプリケーション (SDK 使用) またはバックエンド (デバイス API 使用) で管理できます。
+# <a name="how-to-manage-the-global-settings-of-your-application"></a>アプリケーションのグローバル設定を管理する方法
+アプリケーションで利用可能な **[設定]** メニューのオプションは、アプリケーションのプラットフォームやアプリケーションで付与されているユーザーの権限によって異なります。 設定には、詳細、プロジェクト、ネイティブのプッシュ、プッシュの速度、タグ (アプリ情報)、コマーシャル プレッシャーの項目があります。 [設定] セクションの [タグ (アプリ情報)] メニュー オプションはアプリケーション (SDK 使用) またはバックエンド (デバイス API 使用) で管理できます。 
 
 > [!NOTE]
-> **Mobile Engagement** ポータル UI の多くのセクションには、**[ヘルプの表示]** ボタンが含まれています。このボタンを押すと、セクションに関する文脈上の情報が表示されます。
+> **Mobile Engagement** ポータル UI の多くのセクションには、**[ヘルプの表示]** ボタンが含まれています。 このボタンを押すと、セクションに関する文脈上の情報が表示されます。
 > 
 > 
 
-## 詳細
-アプリケーションの名前と説明を変更できます。アプリケーションの所有者とユーザーのロール権限を表示します。
+## <a name="details"></a>詳細
+アプリケーションの名前と説明を変更できます。アプリケーションの所有者とユーザーのロール権限を表示します。 
 
 分析構成: 週の開始日、保管日数を表示、変更できます。
 
   ![settings1][46]
 
-## プロジェクト
-アプリケーションを表示するすべてのプロジェクトを選択できます。
+## <a name="projects"></a>プロジェクト
+アプリケーションを表示するすべてのプロジェクトを選択できます。 
 
 また、プロジェクトを検索したり、アプリケーションが包括されているプロジェクトの名前、説明、所有者、ユーザーの権限を表示したりすることもできます。
 
-詳細については、「[UI ドキュメント - ホーム][Link 13]」を参照してください。
+詳細については、「[UI ドキュメント - ホーム][リンク 13]」を参照してください。
 
   ![settings3][48]
 
-## Native Push (ネイティブのプッシュ)
-ネイティブ プッシュで使用する新しい証明書を登録したり、既存の証明書を削除したりできます。ネイティブのプッシュでは、Azure モバイル エンゲージメントが実行していないときでもいつでもアプリケーションをプッシュできるようになります。
+## <a name="native-push"></a>Native Push (ネイティブのプッシュ)
+ネイティブ プッシュで使用する新しい証明書を登録したり、既存の証明書を削除したりできます。 ネイティブのプッシュでは、Azure モバイル エンゲージメントが実行していないときでもいつでもアプリケーションをプッシュできるようになります。 
 
 少なくとも 1 つ以上のネイティブ プッシュ サービスの資格情報や証明書を指定すると、リーチ キャンペーンの作成時に [Any time (いつでも)] を選択できるようになり、また PUSH API で "notifier" パラメーターを使用できるようになります。
 
-### Apple プッシュ通知サービス (APNS)
-Apple プッシュ通知サービスを使用してネイティブのプッシュを有効にするには、証明書の登録が必要です。証明書の種類を、開発 (DEV) または実稼働 (PROD) のいずれかに指定する必要があります。その後、証明書とパスワードをアップロードします。
+### <a name="apple-push-notification-service-apns"></a>Apple プッシュ通知サービス (APNS)
+Apple プッシュ通知サービスを使用してネイティブのプッシュを有効にするには、証明書の登録が必要です。 証明書の種類を、開発 (DEV) または実稼働 (PROD) のいずれかに指定する必要があります。 その後、証明書とパスワードをアップロードします。
 
-詳細については、「[SDK ドキュメント - iOS - Apple プッシュ通知用にアプリケーションを準備する][Link 5]」を参照してください。
+詳細については、「[SDK ドキュメント - iOS - Apple プッシュ通知用にアプリケーションを準備する][リンク 5]」を参照してください。
 
 ![settings4][49]
 
-### Windows プッシュ通知サービス (WPNS)
-Windows 通知サービスを使用してネイティブのプッシュを有効にするには、アプリケーションの資格情報を指定する必要があります。パッケージ セキュリティ ID (SID) とシークレット キーが必要です。
+### <a name="windows-push-notification-service-wpns"></a>Windows プッシュ通知サービス (WPNS)
+Windows 通知サービスを使用してネイティブのプッシュを有効にするには、アプリケーションの資格情報を指定する必要があります。 パッケージ セキュリティ ID (SID) とシークレット キーが必要です。
 
 ![settings5][50]
 
-### Google Cloud Messaging for Android (GCM)
-GCM を使用してネイティブのプッシュを有効にするには、Google の指示に従う必要があります。その後、IP の制限なしで構成された、サーバーの SimpleAPI キーを貼り付ける必要があります。Android v1.12.0 以上では、SDK との統合が必要です。
+### <a name="google-cloud-messaging-for-android-gcm"></a>Google Cloud Messaging for Android (GCM)
+GCM を使用してネイティブのプッシュを有効にするには、Google の指示に従う必要があります。 その後、IP の制限なしで構成された、サーバーの SimpleAPI キーを貼り付ける必要があります。 Android v1.12.0 以上では、SDK との統合が必要です。
 
-詳細については、次を参照してください。
+詳細については、次を参照してください。 
 
-* [SDK ドキュメント - Android - GCM の統合方法][Link 5]
+* [SDK ドキュメント - Android - GCM の統合方法][リンク 5]
 * [Google 開発者 GCM ガイド](http://developer.android.com/guide/google/gcm/gs.html)
 
-### 「Amazon Device Messaging for Android (ADM)
-ADM を使用してネイティブのプッシュを有効にするには、クライアント ID とクライアント シークレットで構成される Amazon <OAuth 資格情報> を指定する必要があります (Android v2.1.0 以上では SDK との統合が必要)。
+### <a name="amazon-device-messaging-for-android-adm"></a>「Amazon Device Messaging for Android (ADM)
+ADM を使用してネイティブのプッシュを有効にするには、クライアント ID とクライアント シークレットで構成される Amazon <OAuth credentials> を指定する必要があります (Android v2.1.0 以上では SDK との統合が必要)。
 
-詳細については、次を参照してください。
+詳細については、次を参照してください。 
 
-* [SDK ドキュメント - Android - ADM の統合方法][Link 5]
+* [SDK ドキュメント - Android - ADM の統合方法][リンク 5]
 * [Amazon 開発者 ADM ドキュメント](https://developer.amazon.com/sdk/adm/credentials.html#Getting)
 
 ![settings6][51]
 
-## Push Speed (プッシュの速度)
+## <a name="push-speed"></a>Push Speed (プッシュの速度)
 アプリケーションの現在のプッシュ速度を表示したり、アプリケーションのプッシュ速度を定義したりできます。
 
   ![settings7][52]
 
-## タグ (アプリ情報)
+## <a name="tag-app-info"></a>タグ (アプリ情報)
 ![settings11][56]
 
-## Commercial Pressure (コマーシャル プレッシャー)
+## <a name="commercial-pressure"></a>Commercial Pressure (コマーシャル プレッシャー)
 ![settings12][57]
 
-## 関連項目
-* [概念][Link 6]
-* [トラブルシューティング ガイド - サービス][Link 24]
+## <a name="see-also"></a>関連項目
+* [概念][リンク 6]
+* [サービスの問題に関するトラブルシューティング ガイド][リンク 24]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -151,39 +155,43 @@ ADM を使用してネイティブのプッシュを有効にするには、ク�
 [58]: ./media/mobile-engagement-user-interface-settings/settings13.png
 
 <!--Link references-->
-[Link 1]: mobile-engagement-user-interface.md
-[Link 2]: mobile-engagement-troubleshooting-guide.md
-[Link 3]: mobile-engagement-how-tos.md
-[Link 4]: http://go.microsoft.com/fwlink/?LinkID=525553
-[Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
-[Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
-[Link 7]: https://account.windowsazure.com/PreviewFeatures
-[Link 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
-[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
-[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
-[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
-[Link 12]: mobile-engagement-user-interface-navigation.md
-[Link 13]: mobile-engagement-user-interface-home.md
-[Link 14]: mobile-engagement-user-interface-my-account.md
-[Link 15]: mobile-engagement-user-interface-analytics.md
-[Link 16]: mobile-engagement-user-interface-monitor.md
-[Link 17]: mobile-engagement-user-interface-reach.md
-[Link 18]: mobile-engagement-user-interface-segments.md
-[Link 19]: mobile-engagement-user-interface-dashboard.md
-[Link 20]: mobile-engagement-user-interface-settings.md
-[Link 21]: mobile-engagement-troubleshooting-guide-analytics.md
-[Link 22]: mobile-engagement-troubleshooting-guide-apis.md
-[Link 23]: mobile-engagement-troubleshooting-guide-push-reach.md
-[Link 24]: mobile-engagement-troubleshooting-guide-service.md
-[Link 25]: mobile-engagement-troubleshooting-guide-sdk.md
-[Link 26]: mobile-engagement-troubleshooting-guide-sr-info.md
-[Link 27]: ../mobile-engagement-how-tos-first-push.md
-[Link 28]: ../mobile-engagement-how-tos-test-campaign.md
-[Link 29]: ../mobile-engagement-how-tos-personalize-push.md
-[Link 30]: ../mobile-engagement-how-tos-differentiate-push.md
-[Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
-[Link 32]: ../mobile-engagement-how-tos-text-view.md
-[Link 33]: ../mobile-engagement-how-tos-web-view.md
+[リンク 1]: mobile-engagement-user-interface.md
+[リンク 2]: mobile-engagement-troubleshooting-guide.md
+[リンク 3]: mobile-engagement-how-tos.md
+[リンク 4]: http://go.microsoft.com/fwlink/?LinkID=525553
+[リンク 5]: http://go.microsoft.com/fwlink/?LinkID=525554
+[リンク 6]: http://go.microsoft.com/fwlink/?LinkId=525555
+[リンク 7]: https://account.windowsazure.com/PreviewFeatures
+[リンク 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
+[リンク 9]: http://azure.microsoft.com/services/mobile-engagement/
+[リンク 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
+[リンク 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
+[リンク 12]: mobile-engagement-user-interface-navigation.md
+[リンク 13]: mobile-engagement-user-interface-home.md
+[リンク 14]: mobile-engagement-user-interface-my-account.md
+[リンク 15]: mobile-engagement-user-interface-analytics.md
+[リンク 16]: mobile-engagement-user-interface-monitor.md
+[リンク 17]: mobile-engagement-user-interface-reach.md
+[リンク 18]: mobile-engagement-user-interface-segments.md
+[リンク 19]: mobile-engagement-user-interface-dashboard.md
+[リンク 20]: mobile-engagement-user-interface-settings.md
+[リンク 21]: mobile-engagement-troubleshooting-guide-analytics.md
+[リンク 22]: mobile-engagement-troubleshooting-guide-apis.md
+[リンク 23]: mobile-engagement-troubleshooting-guide-push-reach.md
+[リンク 24]: mobile-engagement-troubleshooting-guide-service.md
+[リンク 25]: mobile-engagement-troubleshooting-guide-sdk.md
+[リンク 26]: mobile-engagement-troubleshooting-guide-sr-info.md
+[リンク 27]: ../mobile-engagement-how-tos-first-push.md
+[リンク 28]: ../mobile-engagement-how-tos-test-campaign.md
+[リンク 29]: ../mobile-engagement-how-tos-personalize-push.md
+[リンク 30]: ../mobile-engagement-how-tos-differentiate-push.md
+[リンク 31]: ../mobile-engagement-how-tos-schedule-campaign.md
+[リンク 32]: ../mobile-engagement-how-tos-text-view.md
+[リンク 33]: ../mobile-engagement-how-tos-web-view.md
 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

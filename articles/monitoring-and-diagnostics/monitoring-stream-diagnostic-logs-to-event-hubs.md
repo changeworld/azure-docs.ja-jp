@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2016
+ms.date: 12/09/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4ff5fb57cba6dea1bee9d2e2d25f6fcf8354ce79
+ms.sourcegitcommit: c9063fcc59d83cb2a6a159cf3a69234417138a5c
+ms.openlocfilehash: 5cadc3ea77ba13d40876c7bc11d2aa1d6abe6b87
 
 
 ---
@@ -54,6 +54,8 @@ CROSS APPLY GetArrayElements(e.records) AS records
 > 
 > 
 
+設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、Service Bus またはイベント ハブ名前空間は、ログを出力するリソースと同じサブスクリプションに属している必要はありません。
+
 ### <a name="via-powershell-cmdlets"></a>PowerShell コマンドレットの使用
 [Azure PowerShell コマンドレット](insights-powershell-samples.md)を使用してストリーミングを有効にするには、次のパラメーターを指定して `Set-AzureRmDiagnosticSetting` コマンドレットを使用します。
 
@@ -77,7 +79,7 @@ Azure ポータルを使用してストリーミングを有効にするには�
 
 ![ポータルの [Event Hubs にエクスポート]](./media/monitoring-stream-diagnostic-logs-to-event-hubs/portal-export.png)
 
-これを構成するには、既存の Service Bus 名前空間を選択します。 診断ログを初めてストリーミングする場合は、選択した名前空間に Event Hubs が作成されます。そのログ カテゴリを選択した名前空間にストリーミングするリソースが既に存在する場合は、その名前空間に Event Hubs がストリーミングされます。また、ストリーミング メカニズムで使用するアクセス許可をポリシーで定義します。 現在、Event Hubs にストリーミングするには、管理、読み取り、送信の各アクセス許可が必要です。 Service Bus 名前空間の共有アクセス ポリシーは、クラシック ポータルの Service Bus 名前空間の [構成] タブで作成または変更できます。 これらの診断設定のいずれかを更新するには、クライアントに Service Bus の承認規則に対する ListKey アクセス許可が必要です。
+これを構成するには、既存の Service Bus 名前空間を選択します。 診断ログを初めてストリーミングする場合は、選択した名前空間に Event Hubs が作成されます。そのログ カテゴリを選択した名前空間にストリーミングするリソースが既に存在する場合は、その名前空間に Event Hubs がストリーミングされます。また、ストリーミング メカニズムで使用するアクセス許可をポリシーで定義します。 現在、Event Hubs にストリーミングするには、管理、送信、リッスンの各アクセス許可が必要です。 Service Bus 名前空間の共有アクセス ポリシーは、クラシック ポータルの Service Bus 名前空間の [構成] タブで作成または変更できます。 これらの診断設定のいずれかを更新するには、クライアントに Service Bus の承認規則に対する ListKey アクセス許可が必要です。
 
 ## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Event Hubs からログ データを使用する方法
 Event Hubs からのサンプル出力データを次に示します。
@@ -155,6 +157,9 @@ Event Hubs からのサンプル出力データを次に示します。
 
 Event Hubs へのストリーミングをサポートするすべてのリソース プロバイダーの一覧については、 [こちら](monitoring-overview-of-diagnostic-logs.md)をご覧ください。
 
+## <a name="stream-data-from-compute-resources"></a>Compute リソースからのデータのストリーミング
+診断ログは、Windows Azure Diagnositcs エージェントを使用して Compute リソースからストリーミングすることもできます。 その設定方法については、[この記事を参照してください](../event-hubs/event-hubs-streaming-azure-diags-data.md)。
+
 ## <a name="next-steps"></a>次のステップ
 * [Azure 診断ログの詳細を確認する](monitoring-overview-of-diagnostic-logs.md)
 * [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
@@ -162,6 +167,6 @@ Event Hubs へのストリーミングをサポートするすべてのリソー
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

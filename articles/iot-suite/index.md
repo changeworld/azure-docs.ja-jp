@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: f59615ce37aa83a99a058775d4e1705e016baf07
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: ceade1ccba2d1328faf548f43f51b4fa3a5343b0
 
 ---
 # <a name="iot-suite-documentation"></a>IoT Suite のドキュメント
@@ -87,15 +87,7 @@ Microsoft Azure IoT Suite はすぐに使い始められます。 事前に構�
     </li>
 </ul>
 
----
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/iot-suite.pdf">
-        <div class="img"></div>
-        <div class="text">
-IoT Suite のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 

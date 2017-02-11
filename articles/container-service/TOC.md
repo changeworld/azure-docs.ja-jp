@@ -20,8 +20,9 @@
 ### [Dynatrace (DC/OS) で監視する](container-service-monitoring-dynatrace.md)
 ## Kubernetes で監視する
 ### [Kubernetes の概要](container-service-kubernetes-walkthrough.md)
+### [サービス プリンシパルの構成](container-service-kubernetes-service-principal.md)
 ### [Kubernetes Web UI の操作](container-service-kubernetes-ui.md)
-## [Docker Swarm による管理](container-service-docker-swarm.md)
+## Docker Swarm による管理
 ### [Docker および Docker Compose](container-service-docker-swarm.md)
 ### [Docker Swarm 継続的インテグレーション](container-service-docker-swarm-setup-ci-cd.md)
 # リファレンス
@@ -34,6 +35,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

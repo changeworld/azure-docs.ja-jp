@@ -31,7 +31,7 @@ ms.openlocfilehash: d9da484755041ca13410db84447576145bc7308f
 <br>
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)方法について説明します。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)方法について説明します。
 
 以下の手順では、構成ブロック手法を使用して、Azure PowerShell コマンド セットをカスタマイズする方法を示します。このコマンド セットでは、Windows ベースの Azure 仮想マシンを作成および事前構成します。 このプロセスを使用すると、新しい Windows ベースの仮想マシンのコマンド セットを迅速に作成して既存のデプロイメントを拡張することや、複数のコマンド セットを作成してカスタムの開発とテスト環境または IT プロの環境をすばやく構築することもできます。
 
@@ -82,9 +82,9 @@ Windows ベースのコンピューターで使用する ImageFamily 値の例�
     $image = Get-AzureVMImage | where { $_.Label -eq $label } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 
 ## <a name="step-4-build-your-command-set"></a>手順 4. コマンド セットを構築する
-残りのコマンド セットを構築します。具体的には、下の該当するブロック セットを新しいテキスト ファイルまたは ISE にコピーし、変数の値を入力した後、< および > を削除します。 この記事の末尾にある 2 つの [例](#examples) を、最終結果のアイデアとしてご覧ください。
+残りのコマンド セットを構築します。具体的には、下の該当するブロック セットを新しいテキスト ファイルまたは ISE にコピーし、変数の値を入力した後、< および > を削除します。 この記事の末尾にある&2; つの [例](#examples) を、最終結果のアイデアとしてご覧ください。
 
-この 2 つのコマンド ブロックのいずれかを選択することからコマンド セットを開始します (必須)。
+この&2; つのコマンド ブロックのいずれかを選択することからコマンド セットを開始します (必須)。
 
 オプション 1. 仮想マシンの名前とサイズを指定します。
 
@@ -157,7 +157,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
     $probepath="<URL path for probe traffic>"
     $vm1 | Add-AzureEndpoint -Name $endpointname -Protocol $protocol -LocalPort $localport -PublicPort $pubport -LBSetName $lbsetname -ProbeProtocol $probeprotocol -ProbePort $probeport -ProbePath $probepath
 
-最後に、仮想マシンの作成に必要な以下のコマンド ブロックの 1 つを選択します。
+最後に、仮想マシンの作成に必要な以下のコマンド ブロックの&1; つを選択します。
 
 オプション 1. 既存のクラウド サービスに仮想マシンを作成します。
 
@@ -182,7 +182,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 * Azure クラシック ポータルの **[Automation]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
 
 ## <a name="a-idexamplesaexamples"></a><a id="examples"></a>例
-次に、Windows ベースの Azure Virtual Machines を作成するために、前の手順を使用して Azure PowerShell コマンド セットを構築する例を 2 つ示します。
+次に、Windows ベースの Azure Virtual Machines を作成するために、前の手順を使用して Azure PowerShell コマンド セットを構築する例を&2; つ示します。
 
 ### <a name="example-1"></a>例 1
 次の条件で Active Directory ドメイン コントローラーに最初の仮想マシンを作成する PowerShell コマンド セットが必要な場合。

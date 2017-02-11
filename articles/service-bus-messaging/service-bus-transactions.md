@@ -1,19 +1,23 @@
 ---
-title: Service Bus トランザクション | Microsoft Docs
-description: Azure Service Bus のアトミック トランザクションと経由送信の概要
-services: service-bus
+title: "Service Bus トランザクション |Microsoft Docs"
+description: "Azure Service Bus のアトミック トランザクションと経由送信の概要"
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 64449247-1026-44ba-b15a-9610f9385ed8
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: clemensv;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 926eeec8186b8136f41355030e5382911bfc0322
+
 
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Service Bus のトランザクション処理の概要
@@ -36,7 +40,7 @@ Service Bus は、トランザクションのスコープ内の単一メッセ�
 
 その後、メッセージの処理 (完了、破棄、配信不能、延期) がトランザクションのスコープ内で発生します。この処理の発生は、トランザクションの全体的な結果に依存します。
 
-## <a name="transfers-and-"send-via""></a>転送および "経由送信"
+## <a name="transfers-and-send-via"></a>転送および "経由送信"
 キューからプロセッサ、そこから別のキューへのデータのトランザクションの移行を有効にするために、Service Bus は "*転送*" をサポートしています。 転送操作では、送信者がまず "転送キュー" にメッセージを送信すると、転送キューが、自動転送機能で使用されているものと同じ堅牢な転送実装を使用して、すぐに目的の送信先キューにメッセージを移動します。 メッセージは、転送キューのコンシューマーに表示されるようになる方法で、転送キューのログにコミットされることはありません。
 
 転送キュー自体が送信者の入力メッセージの送信元である場合は、このトランザクションの機能の能力が明らかになります。 つまり、Service Bus は、入力メッセージの完了 (または延期や配信不能) 操作を実行しながら、転送キューを "経由" してメッセージを送信先キューに転送できる、オールインワンのアトミック操作です。 
@@ -76,6 +80,9 @@ Service Bus キューの詳細については、次の記事を参照してく�
 * [Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 * [Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

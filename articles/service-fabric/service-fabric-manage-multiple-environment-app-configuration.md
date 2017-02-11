@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 11/01/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8cbeaaf6bfba41bbf52f26aa0e408b7b1ac9405e
+ms.sourcegitcommit: cd256c403cc8094a135157cdc69dbdd3971978ca
+ms.openlocfilehash: 9f8a898f265bc27fc47ea2e3d00d123f3f47dad6
 
 
 ---
 # <a name="manage-application-parameters-for-multiple-environments"></a>複数の環境のアプリケーション パラメーターを管理する
 Azure Service Fabric クラスターは、1 台～ 数千台のコンピューターで作成することができます。 アプリケーション バイナリは、変更を行わなくても、このようなさまざまな環境で実行することができます。しかし、アプリケーションをデプロイするコンピューターの台数に応じて異なる方法でアプリケーションを構成したいということもしばしばあります。
 
-簡単な例として、ステートレス サービスの `InstanceCount` について検討します。 Azure でアプリケーションを実行する場合は、通常、このパラメーターを特殊な値である "-1" に設定します。 これにより、サービスがクラスター (または、配置の制約を設定している場合は、ノードの種類のすべてのノード) 内の各ノードで確実に実行されます。 ただし、コンピューターが 1 台のクラスターには適してしません。理由は、1 台のコンピューター上の同じエンドポイントで複数のプロセスをリッスン状態にしておくことができないからです。 そこで、通常は `InstanceCount` を "1" に設定します。
+簡単な例として、ステートレス サービスの `InstanceCount` について検討します。 Azure でアプリケーションを実行する場合は、通常、このパラメーターを特殊な値である "-1" に設定します。 これにより、サービスがクラスター (または、配置の制約を設定している場合は、ノードの種類のすべてのノード) 内の各ノードで確実に実行されます。 ただし、コンピューターが&1; 台のクラスターには適してしません。理由は、1 台のコンピューター上の同じエンドポイントで複数のプロセスをリッスン状態にしておくことができないからです。 そこで、通常は `InstanceCount` を "1" に設定します。
 
 ## <a name="specifying-environment-specific-parameters"></a>環境固有のパラメーターを指定する
 この構成の問題に対するソリューションとして、パラメーター化された既定のサービス セットと、特定の環境のパラメーター値を含むアプリケーション パラメーター ファイルがあります。 既定のサービスとアプリケーションのパラメーターは、アプリケーション マニフェストとサービス マニフェストで構成します。 ServiceManifest.xml と ApplicationManifest.xml ファイルのスキーマ定義は、Service Fabric SDK およびツールと共に *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* にインストールされます。
@@ -31,6 +31,7 @@ Azure Service Fabric クラスターは、1 台～ 数千台のコンピュー�
 ### <a name="default-services"></a>既定のサービス
 Service Fabric アプリケーションは、サービス インスタンスのコレクションで構成されています。 空のアプリケーションを作成してからすべてのサービス インスタンスを動的に作成することができますが、ほとんどのアプリケーションには、アプリケーションのインスタンス化の際に必ず作成されるコア サービス セットがあります。 これらは "既定のサービス" と呼ばれます。 これらはアプリケーション マニフェスト内に指定され、環境ごとの構成のプレース ホルダーは角かっこで囲まれます。
 
+```xml
     <DefaultServices>
         <Service Name="Stateful1">
             <StatefulService
@@ -46,14 +47,17 @@ Service Fabric アプリケーションは、サービス インスタンスの�
         </StatefulService>
     </Service>
   </DefaultServices>
+```
 
 それぞれの名前付きパラメーターは、アプリケーション マニフェストの Parameters 要素内に定義する必要があります。
 
+```xml
     <Parameters>
         <Parameter Name="Stateful1_MinReplicaSetSize" DefaultValue="2" />
         <Parameter Name="Stateful1_PartitionCount" DefaultValue="1" />
         <Parameter Name="Stateful1_TargetReplicaSetSize" DefaultValue="3" />
     </Parameters>
+```
 
 DefaultValue 属性では、特定の環境に対して具体的なパラメーターがない場合に使用される値が指定されます。
 
@@ -67,12 +71,14 @@ DefaultValue 属性では、特定の環境に対して具体的なパラメー�
 
 `Stateful1` サービスの Config\Settings.xml ファイル内に次の設定があると仮定します。
 
+```xml
     <Section Name="MyConfigSection">
       <Parameter Name="MaxQueueSize" Value="25" />
     </Section>
-
+```
 特定のアプリケーション/環境ペアのこの値をオーバーライドするには、アプリケーション マニフェストにサービス マニフェストをインポートするときに `ConfigOverride` を作成します。
 
+```xml
     <ConfigOverrides>
      <ConfigOverride Name="Config">
         <Settings>
@@ -82,17 +88,18 @@ DefaultValue 属性では、特定の環境に対して具体的なパラメー�
         </Settings>
      </ConfigOverride>
   </ConfigOverrides>
-
+```
 このパラメーターは上記のように環境ごとに構成することができます。 そのためには、アプリケーション マニフェストのパラメーター セクションでこのパラメーターを宣言し、アプリケーション パラメーター ファイルに環境固有の値を指定します。
 
 > [!NOTE]
-> サービス構成設定の場合は、キーの値を設定できる場所が 3 箇所あります。サービス構成パッケージ、アプリケーション マニフェスト、およびアプリケーション パラメーター ファイルの 3 つです。 Service Fabric は常に、まずアプリケーション パラメーター ファイル (指定されている場合) から選択し、次にアプリケーション マニフェスト、最後に構成パッケージの順に選択します。
+> サービス構成設定の場合は、キーの値を設定できる場所が&3; 箇所あります。サービス構成パッケージ、アプリケーション マニフェスト、およびアプリケーション パラメーター ファイルの&3; つです。 Service Fabric は常に、まずアプリケーション パラメーター ファイル (指定されている場合) から選択し、次にアプリケーション マニフェスト、最後に構成パッケージの順に選択します。
 > 
 > 
 
 ### <a name="application-parameter-files"></a>アプリケーション パラメーター ファイル
 Service Fabric アプリケーション プロジェクトには、1 つまたは複数のアプリケーション パラメーター ファイルを含めることができます。 各ファイルでは、アプリケーション マニフェストで定義されているパラメーターに対して特定の値を定義します。
 
+```xml
     <!-- ApplicationParameters\Local.xml -->
 
     <Application Name="fabric:/Application1" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -102,8 +109,8 @@ Service Fabric アプリケーション プロジェクトには、1 つまた�
             <Parameter Name="Stateful1_TargetReplicaSetSize" Value="3" />
         </Parameters>
     </Application>
-
-既定では、新しいアプリケーションに Local.1Node.xml、Local.5Node.xml、Cloud.xml という名前の 3 つのパラメーター ファイルが含まれています。
+```
+既定では、新しいアプリケーションに Local.1Node.xml、Local.5Node.xml、Cloud.xml という名前の&3; つのパラメーター ファイルが含まれています。
 
 ![ソリューション エクスプローラーのアプリケーション パラメーター ファイル][app-parameters-solution-explorer]
 
@@ -134,6 +141,6 @@ Visual Studio でアプリケーションを発行する場合は、使用可能
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

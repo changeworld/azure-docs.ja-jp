@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: e17065b92c3bce2463df283f82efae5965c5c02e
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: b15e8e9676cba8969505728e6b9f7f2db4559e9a
 
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded のドキュメント
@@ -29,7 +29,7 @@ Power BI Embedded は、アプリケーション開発者が自分のアプリ�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=power-bi-embedded">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=power-bi-embedded">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -86,54 +86,47 @@ Power BI Embedded は、アプリケーション開発者が自分のアプリ�
 
 ---
 
-## <a name="reference"></a>リファレンス
-
+<h2>リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/resourcemanager/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Power BI Embedded PowerShell コマンドレット</p>
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.powerbiembedded/v2.3.0/azurerm.powerbiembedded">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
-    </li>
-     <li>
-        <a href="/dotnet/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Power BI Embedded に関する管理リファレンス</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
     </li>
     <li>
-        <a href="/rest/api/powerbiembedded/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.powerbiembedded">.NET</a></p>
+                        <p><a href="https://www.nuget.org/profiles/powerbi">.NET SDK ダウンロード</a></p>
+                        <p><a href="https://github.com/Microsoft/PowerBI-JavaScript">JavaScript</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p>Power BI Embedded REST API</p>
+                        <p><a href="/rest/api/powerbiembedded/">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-<ul>
-
-
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/power-bi-embedded.pdf">

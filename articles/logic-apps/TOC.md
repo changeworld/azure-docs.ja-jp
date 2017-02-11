@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [ロジック アプリの概要](../app-service-logic/app-service-logic-what-are-logic-apps.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ## [コネクタの一覧](../connectors/apis-list.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ## [Enterprise Integration Pack](../app-service-logic/app-service-logic-enterprise-integration-overview.md?toc=%2fazure%2flogic-apps%2ftoc.json)
@@ -7,7 +7,7 @@
 ## [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ## [ロジック アプリの機能を使用する](../app-service-logic/app-service-logic-use-logic-app-features.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ## [テンプレートの概要](../app-service-logic/app-service-logic-use-logic-app-templates.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [カスタム テンプレートを作成する](../app-service-logic/app-service-logic-arm-provision.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+## [テンプレートを使用したアプリの作成](../app-service-logic/app-service-logic-arm-provision.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ## [例とシナリオ](../app-service-logic/app-service-logic-examples-and-scenarios.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ## [Service Bus のシナリオ](../app-service-logic/app-service-logic-scenario-function-sb-trigger.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ## [B2B の処理](../app-service-logic/app-service-logic-enterprise-integration-b2b.md?toc=%2fazure%2flogic-apps%2ftoc.json)

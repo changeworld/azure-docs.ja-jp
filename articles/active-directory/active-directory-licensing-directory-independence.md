@@ -1,19 +1,23 @@
 ---
-title: 複数の Azure Active Directory ディレクトリの追加と管理 | Microsoft Docs
-description: Azure Active Directory ディレクトリの追加と管理のための手順とベスト プラクティスについて説明します。ディレクトリを完全に独立したリソースとして説明しています。
+title: "複数の Azure Active Directory ディレクトリの追加と管理 | Microsoft Docs"
+description: "Azure Active Directory ディレクトリの追加と管理のための手順とベスト プラクティスについて説明します。ディレクトリを完全に独立したリソースとして説明しています。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 2b862b75-14df-45f2-a8ab-2a3ff1e2eb08
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/23/2016
+ms.date: 11/09/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
+ms.openlocfilehash: fff714765508285f4c074b3a7287701a538fbf95
+
 
 ---
 # <a name="add-and-manage-multiple-azure-active-directory-directories"></a>複数の Azure Active Directory ディレクトリの追加と管理
@@ -40,11 +44,13 @@ Azure クラシック ポータルで Azure AD ディレクトリを追加する
 
 > [!NOTE]
 > 他の Azure リソースとは異なり、ディレクトリは Azure サブスクリプションの子リソースではありません。 Azure サブスクリプションを取り消した場合や、期限切れを許可した場合でも、Azure PowerShell、Azure Graph API、Office 365 管理センターなどの他のインターフェイスを使用して、ディレクトリ データに引き続きアクセスできます。 また、ディレクトリに別のサブスクリプションを関連付けることもできます。
-> 
-> 
+>
+>
 
 Azure AD のライセンスに関する問題とベスト プラクティスの概要については、 [Azure Active Directory ライセンス](active-directory-licensing-what-is.md)に関するページを参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Dec16_HO5-->
 
 

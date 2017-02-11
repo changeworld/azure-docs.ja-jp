@@ -1,10 +1,10 @@
 ---
 title: "Azure Backup とは  | Microsoft Docs"
-description: "Azure Backup と Recovery Services を利用すると、Windows Server、Windows クライアント コンピューター、System Center DPM サーバー、Azure 仮想マシンのデータとアプリケーションをバックアップして、復元できます。"
+description: "Azure Backup と Recovery Services を利用すると、Windows Server、Windows コンピューター、System Center DPM サーバー、Azure 仮想マシンのデータとアプリケーションをバックアップして、復元できます。"
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keywords: "バックアップと復元, 復元サービス, バックアップ ソリューション"
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/7/2016
+ms.date: 1/4/2017
 ms.author: jimpark; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 9de8032bc69b054d5d13857159ff994f505497a6
-ms.openlocfilehash: 08e7d4402ad52835d193b2083e3c9b2776e0332e
+ms.sourcegitcommit: 0eb7b5c283c95503d076da486ba08df833f1acbd
+ms.openlocfilehash: 5235a09822dc14040ca6d4353d00e938fefd0e43
 
 
 ---
@@ -53,8 +53,8 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 | コンポーネント | メリット | 制限 | 保護対象 | バックアップの保存場所 |
 | --- | --- | --- | --- | --- |
 | Azure Backup (MARS) エージェント |<li>物理または仮想 Windows OS でファイルとフォルダーをバックアップ (VM はオンプレミスまたは Azure に配置できます)<li>個別のバックアップ サーバーが不要。 |<li>バックアップは 1 日に 3 回 <li>アプリケーション非対応。ファイル、フォルダー、およびボリューム レベルの復元のみ。 <li>  Linux は未サポート。 |<li>ファイル、 <li>フォルダー |Azure Backup コンテナー |
-| System Center DPM |<li>アプリ対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Azure Backup コンテナーを使用可能<li>Hyper-V と VMware VM での Linux のサポート <li>DPM 2012 R2 を使用して VMware 仮想マシンを保護 |Oracle ワークロードをバックアップできない。|<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Azure Backup コンテナー、<li> ローカルに接続されたディスク、<li>  テープ (オンプレミスのみ) |
-| Azure Backup Server |<li>アプリ対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Azure Backup コンテナーを使用可能<li>Linux に対応 (Hyper-V でホストされている場合)<li>DPM 2012 R2 を使用して VMware 仮想マシンを保護<li>System Center ライセンスは不要 |<li>Oracle ワークロードをバックアップできない。<li>必ずライブ Azure サブスクリプションが必要<li>テープ バックアップには非対応 |<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Azure Backup コンテナー、<li> ローカルに接続されたディスク |
+| System Center DPM |<li>アプリケーション対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Azure Backup コンテナーを使用可能<li>Hyper-V と VMware VM での Linux のサポート <li>DPM 2012 R2 を使用した VMware VM のバックアップと復元 |Oracle ワークロードをバックアップできない。|<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Azure Backup コンテナー、<li> ローカルに接続されたディスク、<li>  テープ (オンプレミスのみ) |
+| Azure Backup Server |<li>アプリ対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Azure Backup コンテナーを使用可能<li>Hyper-V と VMware VM での Linux のサポート<li>VMware VM のバックアップと復元 <li>System Center ライセンスは不要 |<li>Oracle ワークロードをバックアップできない。<li>必ずライブ Azure サブスクリプションが必要<li>テープ バックアップには非対応 |<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Azure Backup コンテナー、<li> ローカルに接続されたディスク |
 | Azure IaaS VM のバックアップ |<li>Windows/Linux のネイティブ バックアップ<li>特定のエージェント インストールが不要<li>バックアップ インフラストラクチャを必要としないファブリック レベルのバックアップ |<li>1 日に 1 回 VM をバックアップ <li>ディスク レベルでのみ VM を復元<li>オンプレミスでバックアップできない |<li>VM、 <li>すべてのディスク (PowerShell を使用) |<p>Azure Backup コンテナー</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>各コンポーネントのデプロイ シナリオ
@@ -234,6 +234,6 @@ Windows Server でのデータ保護の詳細な段階的手順、または Azur
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

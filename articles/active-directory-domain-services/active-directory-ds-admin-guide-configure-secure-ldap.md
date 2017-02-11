@@ -1,12 +1,12 @@
 ---
-title: Azure AD ドメイン サービスでのセキュリティで保護された LDAP (LDAPS) の構成 | Microsoft Docs
-description: Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
+title: "Azure AD ドメイン サービスでのセキュリティで保護された LDAP (LDAPS) の構成 | Microsoft Docs"
+description: "Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 53cf596d1c1df77872696f2a55363cf3a83d5efe
+
 
 ---
-# <a name="configure-secure-ldap-(ldaps)-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
+# <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
 この記事では、Azure AD ドメイン サービスの管理対象ドメインに対して、セキュリティで保護されたライトウェイト ディレクトリ アクセス プロトコル (LDAPS) を有効にする方法について説明します。 セキュリティで保護された LDAP は、「Secure Sockets Layer (SSL)/トランスポート層セキュリティ (TLS) 経由のライトウェイト ディレクトリ アクセス プロトコル (LDAP)」としても知られています。
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -49,7 +53,7 @@ ms.author: maheshu
 * 証明機関から証明書を取得する。 機関は、組織のエンタープライズ証明機関または公開証明機関のいずれかです。
 * 自己署名証明書を作成します。
 
-### <a name="option-a-(recommended)---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>オプション A (推奨) - セキュリティで保護された LDAP 証明書を証明機関から取得する
+### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>オプション A (推奨) - セキュリティで保護された LDAP 証明書を証明機関から取得する
 組織でエンタープライズ公開キー基盤 (PKI) をデプロイする場合は、組織のエンタープライズ証明機関 (CA) から証明書を取得する必要があります。 組織が公開証明機関から証明書を取得する場合は、その公開証明機関からセキュリティで保護された LDAP の証明書を取得する必要があります。
 
 証明書を請求する場合は、「 [セキュリティで保護された LDAP 証明書の要件](#requirements-for-the-secure-ldap-certificate)」で説明されている要件に従ってください。
@@ -79,7 +83,7 @@ Windows コンピューターで **管理者** として新しい PowerShell ウ
 
 新しく作成した自己署名証明書は、ローカル コンピューターの証明書ストアに配置されます。
 
-## <a name="task-2---export-the-secure-ldap-certificate-to-a-.pfx-file"></a>タスク 2 - セキュリティで保護された LDAP 証明書を .PFX ファイルにエクスポートする
+## <a name="task-2---export-the-secure-ldap-certificate-to-a-pfx-file"></a>タスク 2 - セキュリティで保護された LDAP 証明書を .PFX ファイルにエクスポートする
 このタスクを開始する前に、エンタープライズ証明機関または公開証明機関からセキュリティで保護された LDAP 証明書を取得していること、または自己署名証明書を作成していることを確認します。
 
 次の手順を実行して、LDAPS 証明書を .PFX ファイルにエクスポートします。
@@ -225,6 +229,9 @@ Windows コンピューターで **管理者** として新しい PowerShell ウ
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

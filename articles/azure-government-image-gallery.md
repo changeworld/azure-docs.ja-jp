@@ -1,23 +1,22 @@
 ---
 title: "Azure Government イメージ ギャラリー | Microsoft Docs"
 description: "この記事では、Azure Government イメージ ギャラリーと、含まれるイメージの概要について説明します。"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: brendalee
 manager: zakramer
-editor: 
 ms.assetid: f6dd4386-7b79-448a-8ae3-409258cc257b
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
 ms.date: 10/20/2016
-ms.author: brendalee
+ms.author: brendal
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 77bc39ea6bcb2114df92f964ff2e2f106d1ef776
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: 1b325a849cc3d7f97a1b2b3f4612e2cbc72ad06b
 
 
 ---
@@ -81,9 +80,9 @@ Azure Government Marketplace 内で利用できるイメージの一覧を次に
 | Bitnami |Nginx Stack 1.6 |Bitnami Nginx Stack は、包括的で、完全に統合された、すぐに使用できる PHP、MySQL、Nginx の開発環境です。 さらに、phpMyAdmin、SQLite、ImageMagick、FastCGI,、Memcache、GD... |Linux |30 GB |
 | Bitnami |LAMP Stack 5.6 |Bitnami LAMPStack は、PHP アプリケーションの開発やデプロイの手間を大幅に削減します。 すぐに使用できる Apache、MySQL、PHP、phpMyAdmin、他のソフトウェアが含まれ... |Linux |30 GB |
 | Bitnami |LAMP Stack 5.4 |Bitnami LAMPStack は、PHP アプリケーションの開発やデプロイの手間を大幅に削減します。 すぐに使用できる Apache、MySQL、PHP、phpMyAdmin、他のソフトウェアが含まれ... |Linux |30 GB |
-| Bitnami |Drupal 8 |Bitnami が提要する Drupal は、Microsoft Azure で Drupal を実行するための事前構成されたすぐに使用できるイメージです。 Drupal は、最も汎用性の高いオープン ソースのコンテンツ管理システムの 1 つです。 次の... |Linux |30 GB |
-| Bitnami |Drupal 7 |Bitnami が提要する Drupal は、Microsoft Azure で Drupal を実行するための事前構成されたすぐに使用できるイメージです。 Drupal は、最も汎用性の高いオープン ソースのコンテンツ管理システムの 1 つです。 次の... |Linux |30 GB |
-| Bitnami |Drupal 6 |Bitnami が提要する Drupal は、Microsoft Azure で Drupal を実行するための事前構成されたすぐに使用できるイメージです。 Drupal は、最も汎用性の高いオープン ソースのコンテンツ管理システムの 1 つです。 次の... |Linux |30 GB |
+| Bitnami |Drupal 8 |Bitnami が提要する Drupal は、Microsoft Azure で Drupal を実行するための事前構成されたすぐに使用できるイメージです。 Drupal は、最も汎用性の高いオープン ソースのコンテンツ管理システムの&1; つです。 次の... |Linux |30 GB |
+| Bitnami |Drupal 7 |Bitnami が提要する Drupal は、Microsoft Azure で Drupal を実行するための事前構成されたすぐに使用できるイメージです。 Drupal は、最も汎用性の高いオープン ソースのコンテンツ管理システムの&1; つです。 次の... |Linux |30 GB |
+| Bitnami |Drupal 6 |Bitnami が提要する Drupal は、Microsoft Azure で Drupal を実行するための事前構成されたすぐに使用できるイメージです。 Drupal は、最も汎用性の高いオープン ソースのコンテンツ管理システムの&1; つです。 次の... |Linux |30 GB |
 | BizTalk |BizTalk Server 2016 Community Technology Preview 2 |Windows Server 2016 Technical Preview 4 の Microsoft BizTalk Server 2016 Community Technology Preview 2 です。 このリリースでは、多くの重要な機能強化に重点が置かれています。 SQL Server 2016 AlwaysOn 可用性グループのサポート... |Windows |128 GB |
 | Canonical |Ubuntu Server 12.04.5-LTS |Microsoft Azure 用 Ubuntu Server 12.04.5-LTS (amd64 20160315)。 Ubuntu Server は、クラウド環境の世界で最も人気のある Linux です。 Ubuntu 12.04.5-LTS の更新とパッチを入手できます... |Linux |30 GB |
 | Canonical |Ubuntu Server 14.04.4-LTS |Microsoft Azure 用 Ubuntu Server 14.04.4-LTS (amd64 20160314)。 Ubuntu Server は、クラウド環境の世界で最も人気のある Linux です。 Ubuntu 14.04.4-LTS の更新とパッチを入手できます... |Linux |30 GB |
@@ -94,9 +93,9 @@ Azure Government Marketplace 内で利用できるイメージの一覧を次に
 | CloudLink |CloudLink SecureVM |CloudLink® SecureVM は、仮想マシンのボリュームの暗号化と VM イメージの整合性の検証による起動前の承認を提供します。これにより、仮想マシンを起動するタイミングと場所を制御できます。 SecureVM は、ネイティブの Windows のロックを解除... |Linux |30 GB |
 | coreos |CoreOS Stable |運用クラスターは Stable チャネルを使用する必要があります。 CoreOS のバージョンは、昇格される前に、ベータおよびアルファ チャネル内で実証済みです。 |Linux |31 GB |
 | coreos |CoreOS Stable |運用クラスターは Stable チャネルを使用する必要があります。 CoreOS のバージョンは、昇格される前に、ベータおよびアルファ チャネル内で実証済みです。 |Linux |31 GB |
-| credativ |Debian 7 "Wheezy" |Microsoft Azure 用 Debian 7 "Wheezy" (20160628.0)。 Debian GNU/Linux は最も人気のある Linux ディストリビューションの 1 つです。 |Linux |30 GB |
-| credativ |Debian 8 "Jessie" |Microsoft Azure 用 Debian 8 "Jessie" (20160628.0)。 Debian GNU/Linux は最も人気のある Linux ディストリビューションの 1 つです。 |Linux |30 GB |
-| credativ |Debian 9 "Stretch" DAILY |Microsoft Azure 用 Debian 9 "Stretch" ( 20160816.0)。 Debian GNU/Linux は最も人気のある Linux ディストリビューションの 1 つです。 |Linux |30 GB |
+| credativ |Debian 7 "Wheezy" |Microsoft Azure 用 Debian 7 "Wheezy" (20160628.0)。 Debian GNU/Linux は最も人気のある Linux ディストリビューションの&1; つです。 |Linux |30 GB |
+| credativ |Debian 8 "Jessie" |Microsoft Azure 用 Debian 8 "Jessie" (20160628.0)。 Debian GNU/Linux は最も人気のある Linux ディストリビューションの&1; つです。 |Linux |30 GB |
+| credativ |Debian 9 "Stretch" DAILY |Microsoft Azure 用 Debian 9 "Stretch" ( 20160816.0)。 Debian GNU/Linux は最も人気のある Linux ディストリビューションの&1; つです。 |Linux |30 GB |
 | Dynamics NAV |Windows Server 2012 R2 の Microsoft Dynamics NAV 2016 |Microsoft Dynamics NAV は、迅速に実装して簡単に使用できる Microsoft のビジネス ソリューションです。お客様のビジネスにおけるご要望を強力にサポートします。 このイメージには、事前構成された... |Windows |128 GB |
 | Esri |ArcGIS 10.3.1 for Server (Windows) |世界で最も汎用的な GIS サーバーである ArcGIS for Server 、組織の重要な geo 資産およびデータを完全に制御します。 |Windows |128 GB |
 | Microsoft Hybrid Cloud Storage Group |StorSimple Virtual Appliance 1100、May 2015 |Microsoft StorSimple Virtual Appliance 1100 |Windows |32 GB |
@@ -191,7 +190,7 @@ Azure Government Marketplace 内で利用できるイメージの一覧を次に
 | Visual Studio |Windows Server 2012 R2 の Visual Studio Community 2015 Update 2 with Azure SDK 2.9 |Visual Studio Community 2015 Update 2 は、エンタープライズ以外のアプリケーション開発向けの、機能豊富で拡張可能な無料 IDE です。 このイメージには、Windows Server 2012 R2 と Visual Studio Community... |Windows |128 GB |
 | Visual Studio |Windows Server 2012 R2 の Visual Studio Enterprise 2015 with Azure SDK 2.9 |Visual Studio Enterprise では、開発環境が一貫した単一のソリューションを使用して、デバイスおよびサービスでアプリケーションを作成できます。  ツールを入手して、デスクトップ... |Windows |128 GB |
 | Visual Studio |Windows Server 2012 R2 の Visual Studio Enterprise 2015 Update 3 with Azure SDK 2.9.1 |Visual Studio Enterprise 2015 Update 3 では、開発環境が一貫した単一のソリューションを使用して、デバイスおよびサービスでアプリケーションを作成できます。 ツールを入手して、実行する必要があります... |Windows |128 GB |
-| Visual Studio |Windows Server 2012 R2 の Visual Studio Community 2013 Update 5 with Azure 2.9 |Visual Studio Community 2013 Update 5 with Azure 2.9 のこのイメージを使用すると、Visual Studio の全機能を最大限まで活用して、クロスプラットフォーム ソリューションを開発することができます。  統合された 1 つの IDE でアプリを作成し... |Windows |128 GB |
+| Visual Studio |Windows Server 2012 R2 の Visual Studio Community 2013 Update 5 with Azure 2.9 |Visual Studio Community 2013 Update 5 with Azure 2.9 のこのイメージを使用すると、Visual Studio の全機能を最大限まで活用して、クロスプラットフォーム ソリューションを開発することができます。  統合された&1; つの IDE でアプリを作成し... |Windows |128 GB |
 | Visual Studio |Visual Studio Enterprise 2015 Update 2 with Azure SDK 2.9 on Windows Server 2012 R2 |Visual Studio Enterprise 2015 Update 2 では、開発環境が一貫した単一のソリューションを使用して、デバイスおよびサービスでアプリケーションを作成できます。  ツールを入手して、実行する必要があります... |Windows |128 GB |
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged -->
@@ -249,12 +248,12 @@ Readme ファイルで、ページの上部にある [Deploy to Azure Government
 [2]: ./media/azure-government-overview/azure-gov-overview.jpg
 
 <!--Link references-->
-[別の azure.microsoft.com ドキュメント トピックへのリンク 1]: virtual-machines/virtual-machines-windows-hero-tutorial.md
-[別の azure.microsoft.com ドキュメント トピックへのリンク 2]: app-service-web/web-sites-custom-domain-name.md
-[別の azure.microsoft.com ドキュメント トピックへのリンク 3]: storage-whatis-account.md
+[Link 1 to another azure.microsoft.com documentation topic]: virtual-machines/virtual-machines-windows-hero-tutorial.md
+[Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
+[Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

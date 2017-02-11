@@ -1,14 +1,14 @@
 ---
-title: VM の可用性セットを作成する | Microsoft Docs
-description: Azure ポータル、またはResource Manager のデプロイ モデルを使用した PowerShell を使用して仮想マシンに対する可用性セットを作成する方法について説明します。
-keywords: 可用性セット
+title: "VM の可用性セットを作成する | Microsoft Docs"
+description: "Azure ポータル、またはResource Manager のデプロイ モデルを使用した PowerShell を使用して仮想マシンに対する可用性セットを作成する方法について説明します。"
+keywords: "可用性セット"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: a3db8659-ace8-4e78-8b8c-1e75c04c042c
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -16,12 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 19f22b9e38e472b56fc9abecc6c14b63b521a58b
+
 
 ---
 # <a name="create-an-availability-set"></a>可用性セットの作成
 ポータルを使用しているときに、VM を可用性セットに含める場合は、まずその可用性セットを作成する必要があります。
 
-可用性セットの作成と使用の詳細については、「 [仮想マシンの可用性管理](virtual-machines-windows-manage-availability.md)」を参照してください。
+可用性セットの作成と使用の詳細については、「 [仮想マシンの可用性管理](virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 ## <a name="use-the-portal-to-create-an-availability-set-before-creating-your-vms"></a>ポータルを使用して、VM を作成する前に可用性セットを作成する
 1. ハブ メニューで **[参照]** をクリックして、**[可用性セット]** を選択します。
@@ -61,8 +65,11 @@ ms.author: cynthn
 * VM を作成するときに、必要な可用性セットがポータルのドロップダウン リストにない場合は、可用性セットが別のリソース グループに作成された可能性があります。 可用性セットのリソース グループがわからない場合は、ハブ メニューに移動し、[参照]、[可用性セット] をクリックして、可用性セットが属するリソース グループの一覧を確認します。
 
 ## <a name="next-steps"></a>次のステップ
-[データ ディスク](virtual-machines-windows-attach-disk-portal.md)を追加して、記憶域を VM にさらに追加します。
+[データ ディスク](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を追加して、記憶域を VM にさらに追加します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

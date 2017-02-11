@@ -1,13 +1,15 @@
 ---
 layout: LandingPage
+description: "クエリやアプリケーションを変更することなく、SQL Server Stretch Database を使用してコールド データを安全に Azure に移行する方法について説明します。 チュートリアルなどのドキュメントを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: d237f5116f81d0977a96a325ee66f2e7c3ee5c41
-ms.openlocfilehash: bf45461eafbb010d99b61f2f67a763e25f374b30
+ms.sourcegitcommit: abbb8f04239f633fad5c90cfec8b0037a8e6ae3d
+ms.openlocfilehash: 5febfd07ef0a976b8213e5c71e8e88db2bc108e2
 
 ---
 #<a name="sql-server-stretch-database-documentation"></a>SQL Server Stretch Database のドキュメント
 
-SQL Server Stretch Database を使用して、透過的かつ安全にコールド データを Microsoft Azure クラウドに移行できます。 SQL Server Stretch Database には普段使用しないデータを低コストで格納でき、クエリやアプリケーションに変更を加える必要がなく、移行中もデータを安全に保護できます。 Stretch Database は、使用頻度の少ない大量のデータ (通常は少数のテーブルに格納されている) があるトランザクション データベースを対象としています。
+SQL Server Stretch Database を使用して、透過的かつ安全にコールド データを Azure クラウドに移行する方法について説明します。 チュートリアルなどのドキュメントは、既存のクエリやアプリケーションに変更を加える必要なく、使用頻度の低いデータを含むデータベース用にコスト効率の高い可用性を設定するのに役立ちます。
+
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -96,6 +98,6 @@ SQL Server Stretch Database のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO4-->
 
 

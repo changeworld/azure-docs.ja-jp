@@ -51,8 +51,6 @@
 ### [VM 拡張機能を管理する](../../virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [VM 用カスタム スクリプト拡張機能](../../virtual-machines-windows-classic-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [Azure VM へのカスタム データの挿入](../../virtual-machines-windows-classic-inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-### [SQL Server の自動バックアップ](../../virtual-machines-windows-classic-sql-automated-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-### [SQL Server の自動修正](../../virtual-machines-windows-classic-sql-automated-patching.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## プラン
 ### [イメージについて](../../virtual-machines-windows-classic-about-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
@@ -78,20 +76,7 @@
 ####[イメージに関するその他の考慮事項](../../virtual-machines-windows-classic-oracle-considerations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ####[Oracle VM イメージの一覧](../../virtual-machines-windows-classic-oracle-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [SAP](../../virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-### [SQL Server](../../virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[SQL Server Business Intelligence](../../virtual-machines-windows-classic-ps-sql-bi.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[Azure PowerShell を使用した SQL Server VM のプロビジョニング (クラシック)](../../virtual-machines-windows-classic-ps-sql-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[クラシック ポータルを使用した AlwaysOn 可用性グループの構成](../../virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成](../../virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[Azure での AlwaysOn 可用性グループの外部リスナーの構成](../../virtual-machines-windows-classic-ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](../../virtual-machines-windows-classic-ps-sql-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[Azure VM 上の SQL Server 向け Azure Key Vault 統合の構成 (クラシック)](../../virtual-machines-windows-classic-ps-sql-keyvault.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する](../../virtual-machines-windows-classic-ps-sql-report.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[Azure での SQL Server 仮想マシンへの接続 (クラシック デプロイ)](../../virtual-machines-windows-classic-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[オンプレミスの AlwaysOn 可用性グループの Azure への拡張](../../virtual-machines-windows-classic-sql-onprem-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[SQL Server VM 用 SQL Server Agent 拡張機能 (クラシック)](../../virtual-machines-windows-classic-sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[仮想マシン上での Azure Premium Storage と SQL Server の使用](../../virtual-machines-windows-classic-sql-server-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[Azure でホストされる Web サイトで ReportViewer を使用する](../../virtual-machines-windows-classic-sql-server-reportviewer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+### [SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 ### [Tomcat](../../virtual-machines-windows-classic-java-run-tomcat-app-server.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## トラブルシューティング
@@ -119,6 +104,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

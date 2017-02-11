@@ -151,7 +151,7 @@ Azure CLI を使用して、プール、計算ノード、ジョブ、タスク�
 
 Batch サービスに計算ノードのプールを作成します。
 
-[Batch 機能の概要](batch-api-basics.md#pool)のページで説明したように、プール内のノードに使用するオペレーティング システムには、**仮想マシンの構成**と **Cloud Services の構成**という 2 つのオプションがあります。 仮想マシンの構成のプールを作成するには `--image-*` オプション、Cloud Services の構成のプールを作成するには `--os-family` オプションを使用します。 `--os-family` オプションと `--image-*` オプションの両方を指定することはできません。
+[Batch 機能の概要](batch-api-basics.md#pool)のページで説明したように、プール内のノードに使用するオペレーティング システムには、**仮想マシンの構成**と **Cloud Services の構成**という&2; つのオプションがあります。 仮想マシンの構成のプールを作成するには `--image-*` オプション、Cloud Services の構成のプールを作成するには `--os-family` オプションを使用します。 `--os-family` オプションと `--image-*` オプションの両方を指定することはできません。
 
 プールの[アプリケーション パッケージ](batch-application-packages.md)と、[開始タスク](batch-api-basics.md#start-task)のコマンド ラインを指定できます。 ただし、開始タスクのリソース ファイルを指定するには、代わりに [JSON ファイル](#json-files)を使用する必要があります。
 
@@ -192,11 +192,11 @@ Batch アカウントにジョブを追加して、そのタスクを実行す�
 
     azure batch task list --job-id "job001" --filter-clause "startswith(id, 'renderTask')"
 
-Batch CLI は、Batch サービスがサポートしている 3 つの句すべてをサポートします。
+Batch CLI は、Batch サービスがサポートしている&3; つの句すべてをサポートします。
 
 * `--select-clause [select-clause]` 各エンティティのプロパティのサブセットを返します
 * `--filter-clause [filter-clause]` 指定した OData 式に一致するエンティティのみを返します
-* `--expand-clause [expand-clause]` 基になる 1 つの REST 呼び出しのエンティティ情報を取得します。 現時点では、expand 句は `stats` プロパティのみをサポートしています。
+* `--expand-clause [expand-clause]` 基になる&1; つの REST 呼び出しのエンティティ情報を取得します。 現時点では、expand 句は `stats` プロパティのみをサポートしています。
 
 3 つの句とこれらを使用したリスト クエリの詳細については、「 [効率的な Azure Batch サービスのクエリ](batch-efficient-list-queries.md)」を参照してください。
 
@@ -222,7 +222,7 @@ Batch CLI は、Batch サービスがサポートしている 3 つの句すべ�
     azure batch application set "resgroup001" "batchaccount001" "MyTaskApplication" --default-version "1.10-beta3"
 
 ### <a name="deploy-an-application-package"></a>アプリケーション パッケージをデプロイする
-新しいプールの作成時に、デプロイ用の 1 つ以上のアプリケーション パッケージを指定できます。 プールの作成時にパッケージを指定すると、ノードがプールに参加する際にパッケージが各ノードにデプロイされます。 ノードが再起動または再イメージ化されるときにも、パッケージがデプロイされます。
+新しいプールの作成時に、デプロイ用の&1; つ以上のアプリケーション パッケージを指定できます。 プールの作成時にパッケージを指定すると、ノードがプールに参加する際にパッケージが各ノードにデプロイされます。 ノードが再起動または再イメージ化されるときにも、パッケージがデプロイされます。
 
 プールのノードがそこに参加するタイミングでアプリケーション パッケージをデプロイするには、`--app-package-ref` オプションを指定してプールを作成します。 `--app-package-ref` オプションには、コンピューティング ノードにデプロイする一連のアプリケーションの ID をセミコロン区切りで指定できます。
 

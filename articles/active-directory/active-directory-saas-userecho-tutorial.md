@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と UserEcho の統合 | Microsoft Docs'
-description: Azure Active Directory と UserEcho の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と UserEcho の統合 | Microsoft Docs"
+description: "Azure Active Directory と UserEcho の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: bedd916b-8f69-4b50-9b8d-56f4ee3bd3ed
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a59878b0cb6f33af27f5008faf828cd4eb0eb537
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-userecho"></a>チュートリアル: Azure Active Directory と UserEcho の統合
+# <a name="tutorial-azure-active-directory-integration-with-userecho"></a>チュートリアル: Azure Active Directory と UserEcho の統合
 このチュートリアルの目的は、UserEcho と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
 UserEcho と Azure AD の統合には、次の利点があります。 
 
@@ -164,23 +168,23 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_05.png)  
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_07.png) 
@@ -277,6 +281,6 @@ Britta に招待状が送信され、UserEcho の使用を開始できるよう�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

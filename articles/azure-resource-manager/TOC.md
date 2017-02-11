@@ -28,6 +28,7 @@
 ### [ポータル](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
 ### [開発環境とテスト環境](solution-dev-test-environments.md)
+### [Visual Studio Team Services を使用した継続的インテグレーション](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## 管理
 ### [PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
@@ -41,7 +42,7 @@
 ### [PowerShell でサービス プリンシパルを作成する](resource-group-authenticate-service-principal.md)
 ### [Azure CLI でサービス プリンシパルを作成する](resource-group-authenticate-service-principal-cli.md)
 ### [ポータルでサービス プリンシパルを作成する](resource-group-create-service-principal-portal.md)
-### [サブスクリプションへのアプリ アクセス](resource-manager-api-authentication.md)
+### [サブスクリプションにアクセスするための認証 API](resource-manager-api-authentication.md)
 ### [管理ポリシーを設定する](resource-manager-policy.md)
 ### [リソースのロック](resource-group-lock-resources.md)
 ### [セキュリティに関する考慮事項](best-practices-resource-manager-security.md)
@@ -69,6 +70,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

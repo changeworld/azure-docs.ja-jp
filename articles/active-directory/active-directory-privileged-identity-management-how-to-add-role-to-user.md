@@ -3,7 +3,7 @@ title: "ユーザー ロールを追加または削除する方法 | Microsoft D
 description: "Azure Active Directory Privileged Identity Management アプリケーションで特権 ID にロールを追加する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 6a47ced8-cf34-4ce8-bea2-e4fc548cfe22
@@ -12,8 +12,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2016
-ms.author: kgremban
+ms.date: 02/03/2017
+ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5dde6b98f72306d6fe78f3c12377d3ce2ec5ddea
@@ -32,8 +32,6 @@ Privileged Identity Management を使用してロール内のユーザーを追�
 
 > [!NOTE]
 > まだ Azure Portal で PIM を有効にしていない場合は、「 [Azure AD Privileged Identity Management の使用](active-directory-privileged-identity-management-getting-started.md) 」を参照してください。
-> 
-> 
 
 PIM 自体へのユーザー アクセス権を追加で付与する必要がある場合は、「 [PIM へのアクセス権を付与する方法](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)」で、PIM にアクセスするユーザーに必要なロールを確認してください。
 
@@ -49,8 +47,6 @@ PIM 自体へのユーザー アクセス権を追加で付与する必要があ
 > [!NOTE]
 > 既定では、ロールに新しく追加されたユーザーは、そのロールのみの候補になります。 ロールを永続的にする場合は、一覧のユーザーをクリックします。 ユーザーの情報が新しいブレードに表示されます。 ユーザー情報メニューで **[永続化]** を選択します。  
 > ユーザーが Azure Multi-Factor Authentication (MFA) に登録できない場合、または Microsoft アカウント (例: @outlook.com), を使用している場合は、すべてのロールでこのユーザーを永続化する必要があります。 管理者候補は、アクティブ化時に MFA への登録が求められます。
-> 
-> 
 
 これで、ユーザーがロールの候補者になりました。[ロールをアクティブ化または非アクティブ化する方法](active-directory-privileged-identity-management-how-to-activate-role.md)に関するページの指示に従ってロールをアクティブ化できることを、ユーザーに通知してください。
 
@@ -66,7 +62,6 @@ PIM 自体へのユーザー アクセス権を追加で付与する必要があ
 
 どのユーザーに引き続きロールの割り当てが必要であるかわからない場合は、 [ロールのアクセス レビューを開始](active-directory-privileged-identity-management-how-to-start-security-review.md)してください。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

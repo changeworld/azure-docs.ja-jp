@@ -1,19 +1,23 @@
 ---
-title: Azure Marketplace の使用量ベース レポートおよび Seller Insights レポートの概要 | Microsoft Docs
-description: Azure Marketplace の販売者は、Seller Insights レポートとも呼ばれる使用量ベース レポートを理解してください
+title: "Azure Marketplace の使用量ベース レポートおよび Seller Insights レポートの概要 | Microsoft Docs"
+description: "Azure Marketplace の販売者は、Seller Insights レポートとも呼ばれる使用量ベース レポートを理解してください"
 services: Azure Marketplace
 documentationcenter: na
 author: v-jeana
 manager: lakoch
-editor: ''
-
+editor: 
+ms.assetid: f1ffde66-98f0-4c3e-ad94-fee1f97cae03
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/05/2016
-ms.author: v-jeana; hascipio
+ms.date: 10/03/2016
+ms.author: v-jeana; hascipio; v-dabosl
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 51452ce98a02f3bcea9914b741c611b00f862cc6
+
 
 ---
 # <a name="understand-your-seller-insights-report"></a>Seller Insights レポートの概要
@@ -26,7 +30,7 @@ ms.author: v-jeana; hascipio
 * **ウェルカム メール:** 新しい公開元は、Seller Insights マンスリー レポートの提供が始まることを通知するウェルカム メールを受け取ります。
 * **マンスリー売上レポート:** 使用実績がある場合は、レポートとパスワードにアクセスする方法が含まれる 2 番目の電子メールを受け取ります。
   
-  * VM がある場合、または使用量ベース課金制開発者サービス SKU の使用実績ある場合は、BYOL (ライセンス持ち込み) 以外の提供品の注文、使用量、市場、顧客に関する詳細がマンスリー レポートで示されます。
+  * VM がある場合、または使用量ベース課金制開発者サービス SKU の使用実績ある場合は、提供品の注文、使用量、市場、顧客に関する詳細がマンスリー レポートで示されます。
   * レポートは、顧客データを保護するため、パブリッシャーと Microsoft だけが知っているパスワードによってロックされています。
   * 該当月にどの提供品にも使用実績がない場合、レポートは送られません。
 
@@ -113,6 +117,6 @@ URL で公開元 ID を探します。
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

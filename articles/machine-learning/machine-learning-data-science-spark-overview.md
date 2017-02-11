@@ -1,12 +1,12 @@
 ---
-title: Azure HDInsight 上の Spark を使用したデータ サイエンスの概要| Microsoft Docs
-description: Spark MLlib ツールキットによって、かなりの Machine Learning モデリング機能がこの分散 HDInsight 環境にもたらされます。
+title: "Azure HDInsight 上の Spark を使用したデータ サイエンスの概要 | Microsoft Docs"
+description: "Spark MLlib ツールキットによって、かなりの Machine Learning モデリング機能がこの分散 HDInsight 環境にもたらされます。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: a4e1de99-a554-4240-9647-2c6d669593c8
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,6 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: deguhath;bradsev;gokuma
+translationtype: Human Translation
+ms.sourcegitcommit: ca799d03076175d6a7193c0e58b349a6cb61693b
+ms.openlocfilehash: 35f07fba1421af1db9c8b6190737c3c220a911e1
+
+
 
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Azure HDInsight 上の Spark を使用したデータ サイエンスの概要
@@ -29,6 +34,7 @@ ms.author: deguhath;bradsev;gokuma
 
 ## <a name="prerequisites"></a>前提条件
 1. Azure サブスクリプションが必要です。 Azure サブスクリプションがない場合は、 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+
 2. このチュートリアルを実行するためには HDInsight 3.4 Spark 1.6 クラスターが必要です。 クラスターを作成するには、 [Azure HDInsight での Apache Spark クラスターの作成](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)に関するページの手順を参照してください。 クラスターの種類とバージョンは、 **[クラスターの種類の選択]** メニューから指定します。 
 
 ![](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
@@ -136,7 +142,7 @@ Jupyter ファイルの一覧にファイル名が **[アップロード]** ボ�
 
 ![Logistic regression ROC curve for generic approach](./media/machine-learning-data-science-spark-overview/pyspark-jupyter-autovisualization.png)
 
-## <a name="what's-next?"></a>次の手順
+## <a name="whats-next"></a>次の手順
 HDInsight Spark クラスターが設定され、Jupyter Notebook がアップロードされると、これら 3 つの PySpark ノートブックに関連するトピックに進むことができます。 これらのトピックには、データの探索方法、モデルの作成方法および使用方法が示されています。 高度なデータの探索と Notebook のモデリングでは、クロス検証、ハイパー パラメーター スイープ、モデルの評価を使用する方法を示します。 
 
 **Spark を使用したデータ探索とモデリング**: [Spark MLlib ツールキットを使用したデータの二項分類と回帰モデルの作成](machine-learning-data-science-spark-data-exploration-modeling.md)に関するトピックで、データセットの詳細を確認し、Machine Learning モデルの作成、スコア付け、評価を行います。
@@ -145,6 +151,9 @@ HDInsight Spark クラスターが設定され、Jupyter Notebook がアップ�
 
 **クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「 [Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) 」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

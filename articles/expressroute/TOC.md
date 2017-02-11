@@ -45,9 +45,9 @@
 ### [非対称ルーティング](expressroute-asymmetric-routing.md)
 
 ## トラブルシューティング
+### [ExpressRoute 接続の確認](expressroute-troubleshooting-expressroute-overview.md)
 ### [ARP テーブルの取得](expressroute-troubleshooting-arp-resource-manager.md)
 ### [ARP テーブルの取得 (クラシック)](expressroute-troubleshooting-arp-classic.md)
-
 
 # リファレンス
 ## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
@@ -80,6 +80,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=expressroute)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

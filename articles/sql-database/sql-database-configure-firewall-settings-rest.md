@@ -1,6 +1,6 @@
 ---
-title: "REST API を使用した、Azure SQL Database のサーバー レベルのファイアウォール規則 | Microsoft Docs"
-description: "Azure SQL データベースにアクセスする IP アドレス用のファイアウォールの構成方法を説明します。"
+title: "REST API: Azure SQL Database のサーバーレベルのファイアウォール規則 | Microsoft Docs"
+description: "REST API を使用して、Azure SQL データベースにアクセスする IP アドレス用にサーバーレベルのファイアウォール規則を構成する方法について説明します。"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
-ms.openlocfilehash: cc0faa49daaafe19c71d2c765b8e865be04f81e2
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: 6ac9bdf34e8cf0a8ca8e06ae3ed6cd2dd1cf408b
 
 
 ---

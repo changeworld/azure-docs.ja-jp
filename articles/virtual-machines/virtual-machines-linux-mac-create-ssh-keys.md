@@ -1,6 +1,6 @@
 ---
-title: "Linux VM 用の SSH キー ペアの作成 | Microsoft Docs"
-description: "Linux VM 用の SSH 公開キーと秘密キーのペアを安全に作成します。"
+title: "Linux VM 用の SSH 公開キーと秘密キーのペアの作成 | Microsoft Docs"
+description: "Linux VM 用の SSH 公開キーと秘密キーのペアを作成します。"
 services: virtual-machines-linux
 documentationcenter: 
 author: vlivech
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2016
+ms.date: 12/12/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: a920041c323e69cc3c41f08eb156732f04cdd021
-ms.openlocfilehash: 312f15ec56c1e227a65469bd5a5f013424a37c7b
+ms.sourcegitcommit: 330637f5b69ad95aef149d9fbde16f2151cde837
+ms.openlocfilehash: 5c515dbe8e3030abf079e5ff47884fb04b9048ba
 
 
 ---
@@ -30,15 +30,28 @@ ms.openlocfilehash: 312f15ec56c1e227a65469bd5a5f013424a37c7b
 
 例を独自の値に置き換えて、Bash シェルから次のコマンドを実行します。
 
-SSH キーは既定で `~/.ssh` ディレクトリに保持されます。  `~/.ssh` ディレクトリがない場合、`ssh-keygen` コマンドによって、適切なアクセス許可で作成されます。  CLI フラグ `-N` は、秘密 SSH キーを暗号化するためのパスワードであり、ユーザー パスワードでは "*ありません*"。
+SSH キーは既定で `.ssh` ディレクトリに保持されます。  
 
 ```bash
-ssh-keygen \
--t rsa \
--b 2048 \
--C "ahmet@myserver" \
--f ~/.ssh/id_rsa \
--N mypassword
+cd ~/.ssh/
+```
+
+`~/.ssh` ディレクトリがない場合、`ssh-keygen` コマンドによって、適切なアクセス許可で作成されます。
+
+```bash
+ssh-keygen -t rsa -b 2048 -C "ahmet@myserver"
+```
+
+`~/.ssh/` ディレクトリに保存される秘密キー ファイルの名前を入力します。
+
+```bash
+~/.ssh/id_rsa
+```
+
+id_rsa のパスフレーズを入力します。
+
+```bash
+correct horse battery staple
 ```
 
 これで、`id_rsa` および `id_rsa.pub` SSH キー ペアが `~/.ssh` ディレクトリに配置されました。
@@ -47,19 +60,14 @@ ssh-keygen \
 ls -al ~/.ssh
 ```
 
-`ssh-agent` が実行されていることを確認します。
-
-```bash
-eval "$(ssh-agent -s)"
-```
-
 新しく作成されたキーを `ssh-agent` に追加します。
 
 ```bash
+eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 ```
 
-既に VM を作成済みの場合は、次のようにして、Linux VM に新しい SSH 公開キーをインストールできます。
+SSH 公開キーを Linux VM にコピーします。
 
 ```bash
 ssh-copy-id -i ~/.ssh/id_rsa.pub ahmet@myserver
@@ -79,65 +87,48 @@ SSH 秘密キーのパスワードまたは VM へのログイン パスワー�
 
 Linux サーバーにログインするための最も簡単な方法は、SSH の公開キーと秘密キーを使用する方法です。 [公開キー暗号化](https://en.wikipedia.org/wiki/Public-key_cryptography) を使用した方が安全です。
 
-公開キーはだれとでも共有できますが、秘密キーを所有するのは自分 (またはローカル セキュリティ インフラストラクチャ) だけです。  SSH 秘密キーには、それを保護するための、[セキュリティで高度に保護されたパスワード](https://www.xkcd.com/936/) (ソース: [xkcd.com](https://xkcd.com)) が必要です。  このパスワードは、秘密 SSH キーにアクセスするためだけのものであり、ユーザー アカウント パスワード **ではありません** 。  SSH キーにパスワードを追加すると、128 ビット AES を使用して秘密キーが暗号化されるため、暗号化解除するパスワードなしでは秘密キーを使用できなくなります。  攻撃者によって盗まれた秘密キーにパスワードがないと、その秘密キーが使用され、対応する公開キーを持つ任意のサーバーにログインされてしまいます。  秘密キーがパスワードで保護されている場合、攻撃者は秘密キーを使用できないため、Azure 上のインフラストラクチャにセキュリティ レイヤーが追加されたことになります。
+公開キーはだれとでも共有できますが、秘密キーを所有するのは自分 (またはローカル セキュリティ インフラストラクチャ) だけです。  SSH 秘密キーには、それを保護するための、[セキュリティで高度に保護されたパスワード](https://www.xkcd.com/936/) (ソース: [xkcd.com](https://xkcd.com)) が必要です。  このパスワードは、秘密 SSH キーにアクセスするためだけのものであり、ユーザー アカウント パスワード **ではありません** 。  SSH キーにパスワードを追加すると、そのパスワードで秘密キーが暗号化されるため、ロックを解除するパスワードなしでは秘密キーを使用できなくなります。  攻撃者によって盗まれた秘密キーにパスワードがないと、その秘密キーが使用され、対応する公開キーを持つ任意のサーバーにログインされてしまいます。  秘密キーがパスワードで保護されている場合、攻撃者は秘密キーを使用できないため、Azure 上のインフラストラクチャにセキュリティ レイヤーが追加されたことになります。
 
-この記事では、*ssh-rsa* 形式のキー ファイルを作成します。このファイルは、Resource Manager でのデプロイに推奨されています。  *ssh-rsa* キーは、クラシック デプロイと Resource Manager デプロイの両方の[ポータル](https://portal.azure.com)で必要です。
+この記事では、*ssh-rsa* 形式のキー ファイルを作成します。このファイルは、Resource Manager でのデプロイに推奨されています。  *ssh-rsa* キーは、クラシック デプロイと Resource Manager デプロイの両方の[ポータル](https://portal.azure.com)
 
 ## <a name="disable-ssh-passwords-by-using-ssh-keys"></a>SSH キーを使用して SSH パスワードを無効にする
 
-Azure では、長さ 2,048 ビット以上の ssh-rsa 形式の公開キーと秘密キーを必須としています。 このキーを作成するには、`ssh-keygen` を使用します。一連の質問に答えることによって、秘密キーと対応する公開キーが出力されます。 Azure VM が作成されると、公開キーが `~/.ssh/authorized_keys` にコピーされます。  `~/.ssh/authorized_keys` の SSH キーは、クライアントが SSH ログイン接続の対応する秘密キーと一致することを確認するために使用されます。  認証に SSH キーを使用する Azure Linux VM が作成されると、Azure は、パスワード ログインを禁止して SSH キーのみを許可するよう SSHD サーバーを構成します。  そのため、SSH キーで Azure Linux VM を作成すると、VM のデプロイをセキュリティで保護し、一般的なデプロイ後の構成手順である sshd_config 構成ファイルでのパスワードの無効化を省略することができます。
+Azure では、長さ 2,048 ビット以上の ssh-rsa 形式の公開キーと秘密キーを必須としています。 このキーを作成するには、`ssh-keygen` を使用します。一連の質問に答えることによって、秘密キーと対応する公開キーが出力されます。 Azure VM が作成されると、公開キーが `~/.ssh/authorized_keys` にコピーされます。  `~/.ssh/authorized_keys` の SSH キーは、クライアントが SSH ログイン接続の対応する秘密キーと一致することを確認するために使用されます。  認証に SSH キーを使用する Azure Linux VM が作成されると、Azure は、パスワード ログインを禁止して SSH キーのみを許可するよう SSHD サーバーを構成します。  したがって、SSH キーを持つ Azure Linux VM を作成すると、 VM は既定で安全にデプロイされ、`sshd_config` 構成ファイルでパスワードを無効にする一般的なデプロイ後の構成手順が省略されます。
 
 ## <a name="using-ssh-keygen"></a>ssh-keygen の使用
 
 次に示すのは、2,048 ビット RSA を使用してパスワードで保護された (暗号化された) SSH キー ペアを作成するコマンドです。識別しやすいようにコメントを付けています。  
 
-SSH キーは既定で `~/.ssh` ディレクトリに保持されます。  `~/.ssh` ディレクトリがない場合、`ssh-keygen` コマンドによって、適切なアクセス許可で作成されます。
+最初に、ディレクトリを変更すると、すべての SSH キーがそのディレクトリに作成されます。
 
 ```bash
-ssh-keygen \
--t rsa \
--b 2048 \
--C "ahmet@myserver" \
--f ~/.ssh/id_rsa \
--N mypassword
+cd ~/.ssh
+```
+
+`~/.ssh` ディレクトリがない場合、`ssh-keygen` コマンドによって、適切なアクセス許可で作成されます。
+
+```bash
+ssh-keygen -t rsa -b 2048 -C "myusername@myserver"
 ```
 
 *コマンドの説明*
 
 `ssh-keygen` = キーの作成に使用するプログラム。
 
-`-t rsa` = 作成するキーの種類。RSA 形式 [wikipedia](https://en.wikipedia.org/wiki/RSA_(cryptosystem) で指定します。
+`-t rsa` = 作成するキーの種類。ここでは [RSA 形式](https://en.wikipedia.org/wiki/RSA_(cryptosystem)を指定します。
 
 `-b 2048` = キーのビット数。
 
 `-C "myusername@myserver"` = 識別しやすいように公開キー ファイルの末尾に追記されたコメント。  通常は電子メール アドレスがコメントとして使用されますが、インフラストラクチャに最適な他の文字列を使用してもかまいません。
 
-## <a name="classic-portal-and-x509-certs"></a>クラシック ポータルと X.509 証明書
+### <a name="using-pem-keys"></a>PEM キーの使用
 
-Azure [クラシック ポータル](https://manage.windowsazure.com/)を使用している場合は、SSH キーのために X.509 証明書が必要です。  他の種類の SSH 公開キーは許可されず、X.509 証明書である "*必要があります*"。
+クラシック デプロイメント モデル (Azure クラシック ポータルまたは Azure サービス管理 CLI `asm`) を使用している場合は、Linux VM にアクセスするために PEM 形式の SSH キーを使用しなければならないことがあります。  既存の SSH 公開キーと既存の x509 証明書から PEM キーを作成する方法は、次のとおりです。
 
-既存の SSH-RSA 秘密キーから X.509 証明書を作成するには、次のようにします。
-
-```bash
-openssl req -x509 \
--key ~/.ssh/id_rsa \
--nodes \
--days 365 \
--newkey rsa:2048 \
--out ~/.ssh/id_rsa.pem
-```
-
-## <a name="classic-deploy-using-asm"></a>`asm` を使用するクラシック デプロイ
-
-クラシック デプロイメント モデル (Azure サービス管理 CLI `asm`) を使用している場合は、pem コンテナーで SSH-RSA 公開キーまたは RFC4716 形式のキーを使用できます。  SSH-RSA 公開キーは、この記事の前半で `ssh-keygen` を使用して作成したものです。
-
-既存の SSH 公開キーから RFC4716 形式のキーを作成するには、次のようにします。
+既存の SSH 公開キーから PEM 形式のキーを作成するには、次のコマンドを使用します。
 
 ```bash
-ssh-keygen \
--f ~/.ssh/id_rsa.pub \
--e \
--m RFC4716 > ~/.ssh/id_ssh2.pem
+ssh-keygen -f ~/.ssh/id_rsa.pub -e > ~/.ssh/id_ssh2.pem
 ```
 
 ## <a name="example-of-ssh-keygen"></a>ssh-keygen の例
@@ -152,7 +143,7 @@ Your identification has been saved in id_rsa.
 Your public key has been saved in id_rsa.pub.
 The key fingerprint is:
 14:a3:cb:3e:78:ad:25:cc:55:e9:0c:08:e5:d1:a9:08 ahmet@myserver
-The keys randomart image is:
+The key's randomart image is:
 +--[ RSA 2048]----+
 |        o o. .   |
 |      E. = .o    |
@@ -168,17 +159,16 @@ The keys randomart image is:
 
 保存するキー ファイル:
 
-`Enter file in which to save the key (/home/ahmet/.ssh/id_rsa): ~/.ssh/id_rsa`
+`Enter file in which to save the key (/home/ahmet/.ssh/id_rsa): id_rsa`
 
-この記事で使用するキー ペアの名前です。  既定では、キー ペアの名前に **id_rsa** が割り当てられます。秘密キーのファイル名として **id_rsa** を想定しているツールもあるため、そのようにすることをお勧めします。 ディレクトリ `~/.ssh/` は、SSH キー ペアと SSH 構成ファイルの既定の場所です。  完全パスで指定されていない場合、`ssh-keygen` は、既定の `~/.ssh` ではなく、現在の作業ディレクトリにキーを作成します。
-
-`~/.ssh` ディレクトリの一覧です。
+この記事で使用するキー ペアの名前です。  既定では、キー ペアの名前に **id_rsa** が割り当てられます。秘密キーのファイル名として **id_rsa** を想定しているツールもあるため、そのようにすることをお勧めします。 ディレクトリ `~/.ssh/` は、SSH キー ペアと SSH 構成ファイルの既定の場所です。
 
 ```bash
 ls -al ~/.ssh
 -rw------- 1 ahmet staff  1675 Aug 25 18:04 id_rsa
 -rw-r--r-- 1 ahmet staff   410 Aug 25 18:04 rsa.pub
 ```
+`~/.ssh` ディレクトリの一覧です。 `ssh-keygen` は、`~/.ssh` ディレクトリが存在しない場合は作成したうえで、適切な所有権とファイル モードを設定します。
 
 キーのパスワード:
 
@@ -190,7 +180,7 @@ ls -al ~/.ssh
 
 SSH ログインのたびに秘密キー ファイルのパスワードを入力しなくて済むように、 `ssh-agent` を使用して秘密キー ファイルのパスワードをキャッシュできます。 Mac を使用している場合、 `ssh-agent`を呼び出すと、秘密キーのパスワードは OSX キーチェーンによって安全に保存されます。
 
-パスフレーズを対話的に使用しなくてもよいように、キー ファイルに関する情報を SSH システムに伝えるには、ssh-agent および ssh-add を確認して使用します。
+最初に、`ssh-agent` が実行されていることを確認します。
 
 ```bash
 eval "$(ssh-agent -s)"
@@ -203,13 +193,6 @@ ssh-add ~/.ssh/id_rsa
 ```
 
 これで、秘密キーのパスワードが `ssh-agent` に格納されました。
-
-## <a name="using-ssh-copy-id-to-install-the-new-key"></a>`ssh-copy-id` を使用した新しいキーのインストール
-既に VM を作成済みの場合は、次のようにして、Linux VM に新しい SSH 公開キーをインストールできます。
-
-```bash
-ssh-copy-id -i ~/.ssh/id_rsa.pub ahmet@myserver
-```
 
 ## <a name="create-and-configure-an-ssh-config-file"></a>SSH 構成ファイルの作成と構成
 
@@ -285,6 +268,6 @@ ssh fedora22
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
