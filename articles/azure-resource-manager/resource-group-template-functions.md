@@ -28,7 +28,7 @@ ms.openlocfilehash: 971a154170c5deb08e4aa5f061a53d120e6dead6
 ## <a name="numeric-functions"></a>数値関数
 リソース マネージャーには、整数を操作する次の関数が用意されています。
 
-* [追加](#add)
+* [add](#add)
 * [copyIndex](#copyindex)
 * [div](#div)
 * [int](#int)
