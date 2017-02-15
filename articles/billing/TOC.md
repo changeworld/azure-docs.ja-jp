@@ -1,7 +1,5 @@
-# 作業開始
-## [無料アカウントの作成](https://azure.microsoft.com/free/)
+# [作業開始](billing-getting-started.md)
 ## [Office 365 アカウントでサインアップする](../billing-use-existing-office-365-account-azure-subscription.md)
-## [サブスクリプションの料金](https://azure.microsoft.com/pricing/)
 ## [サポートされる国および通貨](../billing-countries-and-currencies.md)
 ## [制限とクォータ](../azure-subscription-service-limits.md)
 ## [よく寄せられる質問](../billing-subscription-faq.md)
@@ -17,7 +15,7 @@
 ### [サブスクリプションの所有権を転送する](../billing-subscription-transfer.md)
 ### [無効にしたサブスクリプションを再びアクティブにする](../billing-subscription-become-disable.md)
 ### [無料サブスクリプションからアップグレードする](../billing-upgrade-azure-subscription.md)
-### [別のサブスクリプションに切り替える](../billing-how-to-switch-azure-offer.md)
+### [サブスクリプション プランの切り替え](../billing-how-to-switch-azure-offer.md)
 ### [サブスクリプションを取り消す](../billing-how-to-cancel-azure-subscription.md)
 ## アカウントを管理する
 ### [プロファイルを編集する](../billing-how-to-change-azure-account-profile.md)
@@ -37,6 +35,6 @@
 # リソース
 ## [サポートにお問い合せください](../billing-how-to-create-billing-support-ticket.md)
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Spark を使用した高度なデータ探索とモデリング | Microsoft Docs
-description: HDInsight Spark を使用して、データ探索を実行し、二項分類モデルと回帰モデルのトレーニングを行います。クロス検証とハイパーパラメーターの最適化を使用しています。
+title: "Spark を使用した高度なデータ探索とモデリング | Microsoft Docs"
+description: "HDInsight Spark を使用して、データ探索を実行し、二項分類モデルと回帰モデルのトレーニングを行います。クロス検証とハイパーパラメーターの最適化を使用しています。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: f90d9a80-4eaf-437b-a914-23514390cd60
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: deguhath;bradsev;gokuma
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c844eeb0e01422dac468484a8458f243a2afb87d
+
 
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Spark を使用した高度なデータ探索とモデリング
@@ -51,7 +55,7 @@ Azure アカウントと HDInsight Spark が必要となります。このチュ
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="setup:-storage-locations,-libraries,-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
+## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
 Spark は、Azure Storage BLOB (WASB とも呼ばれます) に対する読み取りと書き込みを実行できます。 そのため、WASB に保存されている既存のデータは Spark を使用して処理することができ、結果も WASB に保存できます。
 
 WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、"wasb///" で始まるパスを使用して参照できます。 他の場所は "wasb://" で参照します。
@@ -109,7 +113,7 @@ PySpark カーネルには、"マジック"、つまり、%% で呼び出すこ�
 
 Jupyter Notebook のカーネルと、それによって提供される定義済みの "マジック" (例: %%local) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)」をご覧ください。
 
-## <a name="data-ingestion-from-public-blob:"></a>パブリック BLOB からのデータの取り込み:
+## <a name="data-ingestion-from-public-blob"></a>パブリック BLOB からのデータの取り込み:
 データ サイエンス プロセスでは、まず、分析するデータをソースからデータ探索およびモデリング環境に取り込みます。 このチュートリアルでは、この環境が Spark です。 ここでは、次の一連のタスクを実行するコードを示します。
 
 * モデル化するデータ サンプルの取り込み
@@ -180,7 +184,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 上記のセルの実行に要した時間: 276.62 秒
 
-## <a name="data-exploration-&-visualization"></a>データの探索と視覚化
+## <a name="data-exploration--visualization"></a>データの探索と視覚化
 データが Spark に取り込まれたら、次に、探索と視覚化によってデータの理解を深めます。 このセクションでは、SQL クエリを使用してタクシー データを調べ、視覚化するためにターゲット変数と予想される特徴をプロットします。 具体的には、タクシー乗車における乗客数の頻度、チップの金額の頻度、支払金額と支払の種類によるチップの変化をプロットします。
 
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>タクシー乗車データのサンプルで乗客数の頻度のヒストグラムをプロットする
@@ -236,7 +240,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 視覚化にはいくつかの種類 (表、円グラフ、折れ線グラフ、面グラフ、棒グラフ) があり、Notebook の **[Type (タイプ)]** メニュー ボタンで選択できます。 ここに示したのは棒グラフによるプロットです。
 
-### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts."></a>チップの金額と、乗客数別および料金別のチップ金額の変化のヒストグラムをプロットする
+### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>チップの金額と、乗客数別および料金別のチップ金額の変化のヒストグラムをプロットする
 SQL クエリを使用してデータをサンプリングします。
 
     # SQL SQUERY
@@ -291,7 +295,7 @@ SQL クエリを使用してデータをサンプリングします。
 
 ![Tip amount by fare Amount](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
-## <a name="feature-engineering,-transformation-and-data-preparation-for-modeling"></a>モデリングのための特徴エンジニアリング、変換、およびデータの準備
+## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>モデリングのための特徴エンジニアリング、変換、およびデータの準備
 このセクションでは、ML モデリングで使用するデータを準備する手順について説明し、手順を実行するコードを示します。 次のタスクを実行する方法を示します。
 
 * 時間を乗車時間のバケットにビン分割して新しい特徴を作成する
@@ -791,7 +795,7 @@ F1 スコア = 0.984174341679
 
 上記のセルの実行に要した時間: 34.57 秒
 
-### <a name="use-mllib's-crossvalidator-pipeline-function-with-logistic-regression-(elastic-regression)-model"></a>ロジスティック回帰 (Elastic 回帰) モデルでの MLlib の CrossValidator パイプライン関数の使用
+### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>ロジスティック回帰 (Elastic 回帰) モデルでの MLlib の CrossValidator パイプライン関数の使用
 このセクションのコードでは、NYC タクシーの乗車と料金のデータセットで、乗車でチップが支払われるかどうかを予測するロジスティック回帰モデル ( [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) を使用) をトレーニング、評価し、保存する方法を示します。 モデルは、CV とパラメーター スイープを組み合わせる MLlib CrossValidator パイプライン関数で実装されたクロス検証 (CV) とハイパーパラメーター スイープを使用してトレーニングされます。   
 
 > [!NOTE]
@@ -978,7 +982,7 @@ ROC 下面積 = 0.985336538462
 
 上記のセルの実行に要した時間: 28.13 秒
 
-## <a name="predict-tip-amount-with-regression-models-(not-using-cv)"></a>回帰モデルを使用して (CV を使用せずに) チップの金額を予測する
+## <a name="predict-tip-amount-with-regression-models-not-using-cv"></a>回帰モデルを使用して (CV を使用せずに) チップの金額を予測する
 このセクションでは、チップの他の特徴に基づいて、タクシーの乗車で支払われるチップの金額を予測する回帰タスクで 3 つのモデルを使用する方法を示します。 使用するモデルは次のとおりです。
 
 * 正規化線形回帰
@@ -1191,7 +1195,7 @@ Jupyter サーバーを使用してデータをプロットするコードを次
 
 ![Actual-vs-predicted-tip-amounts](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/actual-vs-predicted-tips.png)
 
-## <a name="appendix:-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>付録: クロス検証とパラメーター スイープを使用するその他の回帰タスク
+## <a name="appendix-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>付録: クロス検証とパラメーター スイープを使用するその他の回帰タスク
 この付録には、線形回帰に対して Elastic Net を使用して CV を実行する方法と、ランダム フォレスト回帰に対してカスタム コードを使用してパラメーター スイープと共に CV を実行する方法を示すコードが記載されています。
 
 ### <a name="cross-validation-using-elastic-net-for-linear-regression"></a>線形回帰に対して Elastic Net を使用したクロス検証
@@ -1428,11 +1432,14 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52_18.827237"
 
-## <a name="what's-next?"></a>次の手順
+## <a name="whats-next"></a>次の手順
 Spark MlLib を使用して回帰モデルと分類モデルを作成しました。これで、これらのモデルにスコアを付け、評価する方法を学習する準備ができました。
 
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、 [Spark で構築した機械学習モデルのスコア付けと評価](machine-learning-data-science-spark-model-consumption.md)に関するページをご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

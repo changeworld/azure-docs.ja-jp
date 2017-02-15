@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/26/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f01cd8d3a68776dd12d2930def1641411e6a4994
-ms.openlocfilehash: a9f77a58cdb13c357b6c3734bd9e3efa4ff5087b
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: e7ac4b87370b5a9fa3a063ba02a1171e6830e075
 
 
 ---
@@ -42,20 +42,8 @@ ms.openlocfilehash: a9f77a58cdb13c357b6c3734bd9e3efa4ff5087b
 
 <a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
 
-モデル全体は、[こちら](https://media.windows.net/API/$metadata?api-version=2.14)で確認できます。  
+モデル全体は、[こちら](https://media.windows.net/API/$metadata?api-version=2.15)で確認できます。  
 
-## <a name="what-youll-learn"></a>学習内容
-
-このチュートリアルでは、次のタスクの実行方法を示します。
-
-1. Media Services アカウントの作成 (Azure ポータルを使用)
-2. ストリーミング エンドポイントの構成 (Azure Portal を使用)
-3. Visual Studio プロジェクトの作成と構成
-4. Media Services アカウントに接続します。
-5. 新しい資産を作成し、ビデオ ファイルをアップロードします。
-6. 一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
-7. 資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得します。
-8. コンテンツを再生することでテストします。
 
 ## <a name="prerequisites"></a>前提条件
 チュートリアルを完了するには次のものが必要です。
@@ -88,39 +76,31 @@ ms.openlocfilehash: a9f77a58cdb13c357b6c3734bd9e3efa4ff5087b
    6. **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、アカウントのデプロイの進行状況を確認します。
 4. フォームの下部にある **[作成]** をクリックします。
 
-    アカウントの作成に成功すると、ステータスが **[実行中]**に変化します。
+    アカウントが正常に作成されると、概要ページが読み込まれます。 ストリーミング エンドポイントのテーブルで、アカウントには既定のストリーミング エンドポイントが**停止**状態で示されます。
+
+    >[!NOTE]
+    >AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
 
     ![Media Services settings](./media/media-services-portal-vod-get-started/media-services-settings.png)
 
     AMS アカウントを管理するには (ビデオのアップロード、資産のエンコード、ジョブの進行の監視など)、 **[設定]** ウィンドウを使用します。
 
-## <a name="configure-streaming-endpoints-using-the-azure-portal"></a>Azure Portal を使用したストリーミング エンドポイントの構成
-クライアントに対するアダプティブ ビットレート ストリーミングでのビデオ配信は、Azure Media Services の代表的な用途の 1 つです。 Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、および MPEG DASH です。
+## <a name="start-streaming-endpoints-using-the-azure-portal"></a>Azure Portal を使用したストリーミング エンドポイントの開始
 
-Media Services にはダイナミック パッケージ機能があり、アダプティブ ビットレート MP4 でエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまますぐに配信することができます。つまり、事前にパッケージされたこれらのストリーミング形式のバージョンを保存しておく必要がありません。
+アダプティブ ビットレート ストリーミングでのビデオ配信は、Azure Media Services の代表的な用途の 1 つです。 Media Services にはダイナミック パッケージ機能があり、アダプティブ ビットレート MP4 でエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまますぐに配信することができます。つまり、事前にパッケージされたこれらのストリーミング形式のバージョンを保存しておく必要がありません。
 
-動的パッケージ化機能を利用するには、次の作業が必要となります。
+>[!NOTE]
+>AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
 
-* メザニン (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルにエンコードする (エンコードの手順は、このチュートリアルで後ほど説明します)。  
-* コンテンツ配信元となる " *ストリーミング エンドポイント* " のストリーミング ユニットを少なくとも 1 つ作成する。 以下の手順で、ストリーミング ユニットの数を変更する方法を示します。
+ストリーミング エンドポイントを開始するには、次の操作を行います。
 
-ダイナミック パッケージを使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
+1. [設定] ウィンドウで [ストリーミング エンドポイント] をクリックします。 
+2. 既定のストリーミング エンドポイントをクリックします。 
 
-ストリーミング予約ユニットを作成したり、数を変更したりするには、以下の手順を実行します。
+    [DEFAULT STREAMING ENDPOINT DETAILS (既定のストリーミング エンドポイントの詳細)] ウィンドウが表示されます。
 
-1. **[設定]** ウィンドウで **[ストリーミング エンドポイント]** をクリックします。
-2. 既定のストリーミング エンドポイントをクリックします。
-
-    **[DEFAULT STREAMING ENDPOINT DETAILS (既定のストリーミング エンドポイントの詳細)]** ウィンドウが表示されます。
-3. ストリーミング ユニットの数を指定するには、 **[ストリーミング ユニット]** のスライダーを動かします。
-
-    ![[ストリーミング ユニット]](./media/media-services-portal-vod-get-started/media-services-streaming-units.png)
-4. **[保存]** をクリックして、変更を保存します。
-
-   > [!NOTE]
-   > 新しいユニットの割り当てが完了するまでに最大 20 分かかる場合があります。
-   >
-   >
+3. [開始] アイコンをクリックします。
+4. [保存] をクリックして、変更を保存します。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
 
@@ -258,15 +238,12 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 
 冒頭で述べたように、Azure Media Services の代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。 Media Services では、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG DASH のいずれかの形式に一連のアダプティブ ビットレート MP4 ファイルを動的にパッケージ化することができます。
 
-動的パッケージ化機能を利用するには、次の作業が必要となります。
-
-* mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする。  
-* コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。
+ダイナミック パッケージを活用するには、mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする必要があります。  
 
 以下のコードは、エンコーディング ジョブの送信方法を示したものです。 このジョブには、 **Media Encoder Standard**を使用して mezzanine ファイルを一連のアダプティブ ビットレート MP4 にトランスコードするよう指定するタスクが 1 つ存在します。 このコードは、ジョブを送信してその完了を待機します。
 
-エンコード ジョブが完了したら、資産を発行し、MP4 ファイルのストリーミングまたはプログレッシブ ダウンロードを行うことができるようになります。
-
+ジョブが完了したら、資産をストリーミングしたり、コード変換によって作成された MP4 ファイルをプログレッシブにダウンロードしたりできます。
+ 
 次のメソッドを Program クラスに追加します。
 
     static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
@@ -467,6 +444,6 @@ MPEG DASH
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

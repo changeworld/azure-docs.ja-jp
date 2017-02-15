@@ -1,5 +1,5 @@
 ---
-title: "SQL Database を試す: C# を使用して SQL Database を作成する | Microsoft Docs"
+title: "C#: Azure SQL Database の概要 | Microsoft Docs"
 description: "SQL Database で SQL および C# アプリケーションを開発し、C# と SQL Database Library for .NET を使用して、Azure SQL Database を作成します。"
 keywords: "sql を試す, sql c#"
 services: sql-database
@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
-ms.openlocfilehash: 32c18821ac9cf5516fba9762ca5bb834194dcdc9
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: 7ffc593ee262f55a3fff6a2cd9cf62c691722478
 
 
 ---
@@ -287,6 +287,6 @@ C# を使用して SQL データベースを作成するために、( [パッケ
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

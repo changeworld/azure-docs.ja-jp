@@ -1,6 +1,6 @@
 ---
-title: "Linux VM へのポートとエンドポイントの開放 | Microsoft Docs"
-description: "Azure Resource Manager デプロイメント モデルと Azure CLI を使用して、Linux VM へのポートを開き、エンドポイントを作成する方法について説明します。"
+title: "Azure の Linux VM へのポートとエンドポイントの開放 | Microsoft Docs"
+description: "Azure Resource Manager デプロイメント モデルと Azure CLI 2.0 (プレビュー) を使用して、Linux VM へのポートを開き、エンドポイントを作成する方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -12,55 +12,59 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 12/8/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 5dd20630580f09049c88ffd9107f7fa8e8e43816
-ms.openlocfilehash: 0e5e7b2c0637db3d20cbe2e6f00a23cb9d7fb51f
+ms.sourcegitcommit: e4512dd4d818b1c7bea7e858a397728ce48a5362
+ms.openlocfilehash: 40f399c339e31d9d008230449d7f559ae01afba3
 
 
 ---
 # <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure"></a>Azure での Linux VM へのポートとエンドポイントの開放
-サブネットまたは仮想マシン (VM) ネットワーク インターフェイスでネットワーク フィルターを作成して、Azure で VM へのポートを開くか、エンドポイントを作成します。 着信および発信の両方のトラフィックを制御するこれらのフィルターを、トラフィックを受信するリソースに接続されているネットワーク セキュリティ グループに配置します。 ポート 80 での Web トラフィックの一般的な例を使用して説明します。
+サブネットまたは仮想マシン (VM) ネットワーク インターフェイスでネットワーク フィルターを作成して、Azure で VM へのポートを開くか、エンドポイントを作成します。 着信および発信の両方のトラフィックを制御するこれらのフィルターを、トラフィックを受信するリソースに接続されているネットワーク セキュリティ グループに配置します。 ポート 80 での Web トラフィックの一般的な例を使用して説明します。 この記事では、Azure CLI 2.0 (プレビュー) を使用して VM へのポートを開く方法を説明します。
+
+
+## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
+次のいずれかの CLI バージョンを使用してタスクを完了できます。
+
+- [Azure CLI 1.0](virtual-machines-linux-nsg-quickstart-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
+- [Azure CLI 2.0 (プレビュー)](#quick-commands) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
+
 
 ## <a name="quick-commands"></a>クイック コマンド
-ネットワーク セキュリティ グループと規則を作成するには、[Azure CLI](../xplat-cli-install.md) をインストールし、Resource Manager モードで使用する必要があります。
+ネットワーク セキュリティ グループとルールを作成するには、最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
+
+次の例では、パラメーター名を独自の値を置き換えます。 `myResourceGroup`、`myNetworkSecurityGroup`、`myVnet` などは、例として使われているパラメーター名です。
+
+[az network nsg create](/cli/azure/network/nsg#create) で、ネットワーク セキュリティ グループを作成します。 次の例では、`myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループを `westus` の場所に作成します。
 
 ```azurecli
-azure config mode arm
-```
-
-次の例では、パラメーター名を独自の値を置き換えます。 パラメーター名の例には、`myResourceGroup`、`myNetworkSecurityGroup`、および `myVnet` が含まれています。
-
-独自の名前と場所を適宜入力してネットワーク セキュリティ グループを作成します。 次の例では、`myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループを `WestUS` の場所に作成します。
-
-```azurecli
-azure network nsg create --resource-group myResourceGroup --location westus \
+az network nsg create --resource-group myResourceGroup --location westus \
     --name myNetworkSecurityGroup
 ```
 
-Web サーバーへの HTTP トラフィックを許可する規則を追加します (または SSH アクセス、データベース接続など、独自のシナリオに合わせて調整します)。 次の例では、`myNetworkSecurityGroupRule` という名前の規則を作成して、ポート 80 での TCP トラフィックを許可します。
+[az network nsg rule create](/cli/azure/network/nsg/rule#create) を使用して、Web サーバーへの HTTP トラフィックを許可する規則を追加します (または SSH アクセス、データベース接続など、独自のシナリオに合わせて調整します)。 次の例では、`myNetworkSecurityGroupRule` という名前の規則を作成して、ポート 80 での TCP トラフィックを許可します。
 
 ```azurecli
-azure network nsg rule create --resource-group myResourceGroup \
+az network nsg rule create --resource-group myResourceGroup \
     --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
     --protocol tcp --direction inbound --priority 1000 \
-    --destination-port-range 80 --access allow
+    --source-address-prefix '*' --source-port-range '*' \
+    --destination-address-prefix '*' --destination-port-range 80 --access allow
 ```
 
-ネットワーク セキュリティ グループと仮想マシンのネットワーク インターフェイス (NIC) を関連付けます。 次の例では、`myNic` という名前の既存の NIC を `myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループに関連付けます。
+[az network nic update](/cli/azure/network/nic#update)を使用して、ネットワーク セキュリティ グループと仮想マシンのネットワーク インターフェイス (NIC) を関連付けます。 次の例では、`myNic` という名前の既存の NIC を `myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループに関連付けます。
 
 ```azurecli
-azure network nic set --resource-group myResourceGroup \
-    --network-security-group-name myNetworkSecurityGroup --name myNic
+az network nic update --resource-group myResourceGroup --name myNic \
+    --network-security-group myNetworkSecurityGroup
 ```
 
-また、ネットワーク セキュリティ グループは、単一の VM のネットワーク インターフェイスに関連付けるのではなく、仮想ネットワークのサブネットに関連付けることもできます。 次の例では、`myVnet` 仮想ネットワーク内の `mySubnet` という名前の既存のサブネットを `myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループに関連付けます。
+また、ネットワーク セキュリティ グループは、単一の VM のネットワーク インターフェイスに関連付けるのではなく、[az network vnet subnet update](/cli/azure/network/vnet/subnet#update) を使用して、仮想ネットワークのサブネットに関連付けることもできます。 次の例では、`myVnet` 仮想ネットワーク内の `mySubnet` という名前の既存のサブネットを `myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループに関連付けます。
 
 ```azurecli
-azure network vnet subnet set --resource-group myResourceGroup \
-    --network-security-group-name myNetworkSecurityGroup \
-    --vnet-name myVnet --name mySubnet
+az network vnet subnet update --resource-group myResourceGroup \
+    --vnet-name myVnet --name mySubnet --network-security-group myNetworkSecurityGroup
 ```
 
 ## <a name="more-information-on-network-security-groups"></a>ネットワーク セキュリティ グループの詳細
@@ -80,6 +84,6 @@ azure network vnet subnet set --resource-group myResourceGroup \
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

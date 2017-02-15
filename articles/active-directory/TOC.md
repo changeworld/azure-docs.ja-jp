@@ -139,12 +139,15 @@
 
 ### [アプリへのリモート アクセス権の付与](active-directory-application-proxy-get-started.md)
 #### [アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
-#### [アプリを発行する](active-directory-application-proxy-publish.md)
+#### アプリを発行する
+##### [Azure ポータル](application-proxy-publish-azure-portal.md)
+##### [クラシック ポータル](active-directory-application-proxy-publish.md)
 #### 異なるネットワークに発行する
 ##### [Azure Portal](active-directory-application-proxy-connectors-azure-portal.md)
 ##### [クラシック ポータル](active-directory-application-proxy-connectors.md)
 #### [カスタム ドメイン](active-directory-application-proxy-custom-domains.md)
 #### [シングル サインオン](active-directory-application-proxy-sso-using-kcd.md)
+##### [Azure ポータル](application-proxy-sso-azure-portal.md)
 #### [要求に対応するアプリケーション](active-directory-application-proxy-claims-aware-apps.md)
 #### [ネイティブ クライアント アプリ](active-directory-application-proxy-native-client.md)
 #### [条件付きアクセス](active-directory-application-proxy-conditional-access.md)
@@ -212,7 +215,7 @@
 #### [CSV ファイル形式](active-directory-b2b-references-csv-file-format.md)
 #### [ユーザー オブジェクト](active-directory-b2b-references-external-user-object-attribute-changes.md)
 #### [ユーザー トークン](active-directory-b2b-references-external-user-token-format.md)
-### [Azure AD Connect を使用してオンプレミスの ID を統合する](active-directory-aadconnect.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [Azure AD Connect を使用してオンプレミスの ID を統合する](./connect/active-directory-aadconnect.md)
 
 
 ## リソースへのアクセスを委任する
@@ -237,12 +240,12 @@
 ## ID をセキュリティで保護する
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)
-#### [サインイン エクスペリエンス](active-directory-identityprotection-flows.md)
-#### [ユーザーのブロックを解除する](active-directory-identityprotection-unblock-howto.md)
 #### [脆弱性を検出する](active-directory-identityprotection-vulnerabilities.md)
-#### [リスク イベントの種類](active-directory-identityprotection-risk-events-types.md)
-#### [リスク イベントをシミュレートする](active-directory-identityprotection-playbook.md)
+#### [リスク イベント](active-directory-identity-protection-risk-events.md)
 #### [Notifications](active-directory-identityprotection-notifications.md)
+#### [サインイン エクスペリエンス](active-directory-identityprotection-flows.md)
+#### [リスク イベントをシミュレートする](active-directory-identityprotection-playbook.md)
+#### [ユーザーのブロックを解除する](active-directory-identityprotection-unblock-howto.md)
 #### [用語集](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
@@ -284,7 +287,8 @@
 
 # 関連項目
 ## [Multi-Factor Authentication](/azure/multi-factor-authentication/)
-## [Azure AD Connect](active-directory-aadconnect.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Azure AD Connect](./connect/active-directory-aadconnect.md)
+## [Azure AD Connect Health](./connect-health/active-directory-aadconnect-health.md)
 ## [開発者向け Azure AD](./develop/active-directory-how-to-integrate.md)
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
@@ -297,6 +301,6 @@
 ## [Azure フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "Log Analytics を使用して、物理的な場所の制約を受けずに、クラウド環境とオンプレミス環境にあるリソースによって生成されたデータの収集と分析の方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: c086dc37b8665017de0dbbad9c7ac82931932a72
-ms.openlocfilehash: bd819da72cbfdd58323321eb41ab28441e043c84
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: ffb5ebc79807a81e53c2bca3fa5672a11e777663
 
 ---
 
 # <a name="log-analytics-documentation"></a>Log Analytics のドキュメント
 
-Log Analytics は、Operations Management Suite (OMS) のサービスであり、クラウドおよびオンプレミスの環境内にあるリソースで生成されたデータを収集して分析するのに役立ちます。 統合検索とカスタム ダッシュボードによるリアルタイムの洞察が得られるため、物理的な場所に関係なくワークロードおよびサーバー全体の無数のレコードをただちに分析できます。
+Operations Management Suite の Log Analytics を使用して、クラウド環境とオンプレミス環境にあるリソースによって生成されたデータの収集と分析の方法について説明します。 チュートリアルなどのドキュメントでは、物理的な場所の制約を受けずに、複数のワークロードやサーバーからリアルタイムの分析を取得する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -85,16 +86,10 @@ Log Analytics は、Operations Management Suite (OMS) のサービスであり�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/log-analytics.pdf">
-        <div class="img"></div>
-        <div class="text">
-Log Analytics のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

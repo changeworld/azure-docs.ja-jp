@@ -16,6 +16,7 @@
 ## [ストレージ アカウントの作成](azure-stack-provision-storage-account.md)
 ## [CLI で接続する](azure-stack-connect-cli.md)
 ## [PowerShell で接続する](azure-stack-connect-powershell.md)
+## [Visual Studio のインストール](azure-stack-install-visual-studio.md)
 ## [よく寄せられる質問](azure-stack-faq.md)
 
 # サービスをテナントに提供する
@@ -28,6 +29,7 @@
 # テンプレートの使用
 ## [テンプレートの概要](azure-stack-arm-templates.md)
 ## [テンプレートの開発](azure-stack-develop-templates.md)
+## [テンプレートの確認](azure-stack-validate-templates.md)
 ## [ポータルを使用してテンプレートをデプロイする](azure-stack-deploy-template-portal.md)
 ## [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
 ## [Visual Studio を使用したテンプレートのデプロイ](azure-stack-deploy-template-visual-studio.md)
@@ -86,6 +88,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stack)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

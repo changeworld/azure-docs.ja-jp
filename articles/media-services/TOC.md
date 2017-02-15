@@ -24,7 +24,9 @@
 ### プログラムによる接続
 #### [.NET](media-services-dotnet-connect-programmatically.md)
 #### [REST ()](media-services-rest-connect-programmatically.md)
-### [ポータルでストリーミング エンドポイントを管理する](media-services-portal-manage-streaming-endpoints.md)
+### [ストリーミング エンドポイントの管理](media-services-streaming-endpoints-overview.md)
+#### [ポータル](media-services-portal-manage-streaming-endpoints.md)
+#### [.NET](media-services-dotnet-manage-streaming-endpoints.md)
 ### [方法: ストレージ アクセス キーをローリングした後に Media Services を更新する](media-services-roll-storage-access-keys.md)
 ### [クォータと制限](media-services-quotas-and-limitations.md)
 
@@ -92,6 +94,9 @@
 
 ## [ライブ ストリーミング](media-services-manage-channels-overview.md)
 ### [オンプレミス エンコーダー](media-services-live-streaming-with-onprem-encoders.md)
+#### [ポータル](media-services-portal-live-passthrough-get-started.md)
+#### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
+#### [REST ()](https://docs.microsoft.com/rest/api/media/operations/channel)
 ### [クラウド エンコーダーを使用したライブ ストリーミング](media-services-manage-live-encoder-enabled-channels.md)
 ### クラウド エンコーダーのチュートリアル
 #### [ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
@@ -207,6 +212,6 @@
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -4,7 +4,7 @@ description: "Log Analytics 検索リファレンスでは、検索言語につ�
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 402615a2-bed0-4831-ba69-53be49059718
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: d3abf62e590b5e9466c69f971f4cc6490a7e0d6e
-ms.openlocfilehash: fbbf8c75fa78bf94f0ad84401013d37327329028
+ms.sourcegitcommit: b7c13d4b4e205fda1e5ba44fbf5eb50a96601d2e
+ms.openlocfilehash: 113dd20f1a5ac42eb7155d693f66053adea57078
 
 
 ---
@@ -45,8 +45,8 @@ system
 
 > [!NOTE]
 > すべてのフィールドがこのようにインデックス設定されているわけではありませんが、最も一般的なテキスト フィールド (説明や名前など) には通常は設定されています。
-> 
-> 
+>
+>
 
 ```
 system error
@@ -62,8 +62,8 @@ system error | sort ManagementGroupName, TimeGenerated desc | top 10
 
 > [!IMPORTANT]
 > すべてのフィールド名と、文字列フィールドとテキスト フィールドの値では、大文と字小文字が区別されます。
-> 
-> 
+>
+>
 
 ## <a name="filter-expression"></a>フィルター式
 以降のサブセクションでは、フィルター式について説明します。
@@ -253,6 +253,29 @@ TimeGenerated:[NOW..NOW+1DAY]
 SampleValue:[0..2]
 ```
 
+### <a name="regular-expressions"></a>正規表現
+Regex キーワードを使用することで、正規表現でフィールドの検索条件を指定できます。
+
+**構文**
+
+```
+field:Regex("Regular Expression")
+```
+
+```
+field=Regex("Regular Expression")
+```
+
+**例**
+
+```
+Computer=Regex("C.*")
+```
+
+```
+Computer=Regex("^C.*")
+```
+
 ### <a name="logical-operators"></a>論理演算子
 クエリ言語では、論理演算子 (*AND*、*OR*、*NOT*) と、C スタイルのエイリアス (*&&*、*||*、*!*) をサポートしています。 かっこを使用して、これらの演算子をグループ化できます。
 
@@ -287,16 +310,16 @@ Type=Event Computer=*SQL*
 
 > [!NOTE]
 > 現在、ワイルドカードを引用符で囲んで使用することはできません。 Message=`"*This text*"` では、(\*) をリテラル文字の (\*) として使用していると見なされます。
-> 
+>
 > ## <a name="commands"></a>コマンド
-> 
+>
 
 コマンドは、クエリによって返された結果に適用されます。 取得された結果にコマンドを適用するには、パイプ文字 (|) を使用します。 複数のコマンドは、パイプ文字で区切る必要があります。
 
 > [!NOTE]
 > コマンド名は、フィールド名とデータとは異なり、大文字でも小文字でも記述できます。
-> 
-> 
+>
+>
 
 ### <a name="sort"></a>並べ替え
 構文:
@@ -790,7 +813,6 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 
 
 
-
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

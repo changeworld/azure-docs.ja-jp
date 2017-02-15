@@ -2,6 +2,7 @@
 ## [DocumentDB とは](documentdb-introduction.md)
 ## [主要な概念](documentdb-resources.md)
 ## [グローバル配信](documentdb-distribute-data-globally.md)
+## [NoSQL TCO 分析](https://aka.ms/documentdb-tco-paper)
 ## シナリオ
 ### [一般的なユース ケース](documentdb-use-cases.md)
 ### [DocumentDB によるソーシャル化](documentdb-social-media-apps.md)
@@ -10,6 +11,7 @@
 ## 最初のアプリを記述する
 ### [.NET コンソール アプリ](documentdb-get-started.md)
 ### [.NET Core コンソール アプリ](documentdb-dotnetcore-get-started.md)
+### [Java コンソール アプリ](documentdb-java-get-started.md)
 ### [Node.js コンソール アプリ](documentdb-nodejs-get-started.md)
 ### [C++ コンソール アプリ](documentdb-cpp-get-started.md)
 ## Web アプリを構築する
@@ -24,7 +26,6 @@
 # 方法
 
 ## プラン
-### [ストレージとパフォーマンス](documentdb-manage.md)
 ### [パーティション分割とスケーリング](documentdb-partition-data.md)
 ### [整合性](documentdb-consistency-levels.md)
 ### [NoSQL 対 SQL](documentdb-nosql-vs-sql.md)
@@ -34,13 +35,12 @@
 ### [データのモデル化](documentdb-modeling-data.md)
 ### [地理空間のデータを使用する](documentdb-geospatial.md)
 ### [マルチリージョン向けの開発](documentdb-developing-with-multiple-regions.md)
+### [リージョン間フェールオーバー](documentdb-regional-failovers.md)
 ### [データを自動的に期限切れにする](documentdb-time-to-live.md)
 ### [インデックスのカスタマイズ](documentdb-indexing-policies.md)
 ### [データへのアクセスをセキュリティで保護する](documentdb-secure-access-to-data.md)
 ### [バックアップおよび復元](documentdb-online-backup-and-restore.md)
 ### [パフォーマンス レベル](documentdb-performance-levels.md)
-### [リソース クォータ](documentdb-limits.md)
-### [クォータの増加](documentdb-increase-limits.md)
 ### [要求ユニット](documentdb-request-units.md)
 ### Azure CLI
 #### [アカウントの作成](documentdb-automation-resource-manager-cli.md)
@@ -55,6 +55,9 @@
 ### [変更フィードによる変更の追跡](documentdb-change-feed.md)
 ### [パフォーマンス テスト](documentdb-performance-testing.md)
 ### [パフォーマンスに関するヒント](documentdb-performance-tips.md)
+### ベスト プラクティス
+#### [複数のマスターのセットアップ](documentdb-multi-region-writers.md)
+#### [DateTime](documentdb-working-with-dates.md)
 
 ## MongoDB 向けの DocumentDB サポートを使用する
 ### [MongoDB のプロトコル サポート](documentdb-protocol-mongodb.md)
@@ -79,10 +82,10 @@
 
 ## 統合
 ### [Azure App Service で Web アプリをデプロイする](documentdb-create-documentdb-website.md)
-### [Logic Apps を使用したアプリケーション ログ記録](../app-service-logic/app-service-logic-scenario-error-and-exception-handling.md)
+### [Logic Apps を使用したアプリケーション ログ記録](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 ### [Azure Functions へのバインド](../azure-functions/functions-bindings-documentdb.md)
 ### [Hadoop によるデータの分析](documentdb-run-hadoop-with-hdinsight.md)
-### [Azure Search との統合](documentdb-search-indexer.md)
+### [Azure Search との統合](../search/search-howto-index-documentdb.md)
 ### [Azure Data Factory を使用したデータ移動](../data-factory/data-factory-azure-documentdb-connector.md)
 ### [Azure Stream Analytics でリアルタイム データを分析する](../stream-analytics/stream-analytics-define-outputs.md#documentdb)
 ### [Logic Apps を使用した通知の取得](documentdb-change-notification.md)
@@ -120,6 +123,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

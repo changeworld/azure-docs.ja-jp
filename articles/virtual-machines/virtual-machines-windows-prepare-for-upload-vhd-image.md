@@ -1,13 +1,13 @@
 ---
-title: Windows VHD の Azure へのアップロードの準備 | Microsoft Docs
-description: Azure へのアップロード前に Windows VHD を準備するために推奨されるヒントを紹介します。
+title: "Windows VHD の Azure へのアップロードの準備 | Microsoft Docs"
+description: "Azure へのアップロード前に Windows VHD を準備するために推奨されるヒントを紹介します。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: genlin
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 7802489d-33ec-4302-82a4-91463d03887a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2016
 ms.author: glimoli;genli
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: 98aa7935322c873a9de6414090daab2e04ea19fe
+
 
 ---
 # <a name="prepare-a-windows-vhd-to-upload-to-azure"></a>Windows VHD の Azure へのアップロードの準備
@@ -265,8 +269,8 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
    * [KB2904100](https://support.microsoft.com/kb/2904100) System freezes during disk I/O in Windows (Windows でディスク I/O 時にシステムがフリーズする) <a id="step23"></a>
 2. 複数のマシンをデプロイするためのイメージを作成するには、VHD を Azure にアップロードする前に `sysprep` を実行してイメージを一般化する必要があります。 専用 VHD を使用する場合は、 `sysprep` を実行する必要はありません。 一般化されたイメージを作成する方法については、次の記事を参照してください。
    
-   * [Resource Manager デプロイメント モデルを使用した既存の Azure VM からの VM イメージの作成に関する記事](virtual-machines-windows-capture-image.md)
-   * [クラシック デプロイメント モデルを使用した既存の Azure VM からの VM イメージの作成に関する記事](virtual-machines-windows-classic-capture-image.md)
+   * [Resource Manager デプロイメント モデルを使用した既存の Azure VM からの VM イメージの作成に関する記事](virtual-machines-windows-create-vm-generalized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+   * [クラシック デプロイメント モデルを使用した既存の Azure VM からの VM イメージの作成に関する記事](virtual-machines-windows-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
    * [Sysprep Support for Server Roles (Sysprep でのサーバー ロールのサポート)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 ## <a name="suggested-extra-configurations"></a>推奨される追加の構成
@@ -293,8 +297,11 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
     ```
 
 ## <a name="next-steps"></a>次のステップ
-* [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](virtual-machines-windows-upload-image.md)
+* [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

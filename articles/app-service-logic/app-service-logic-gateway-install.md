@@ -1,12 +1,12 @@
 ---
-title: オンプレミス データ ゲートウェイへの Logic Apps のインストール | Microsoft Docs
-description: ロジック アプリで使用するためにオンプレミス データ ゲートウェイをインストールする方法
+title: "オンプレミス データ ゲートウェイへの Logic Apps のインストール | Microsoft Docs"
+description: "ロジック アプリで使用するためにオンプレミス データ ゲートウェイをインストールする方法"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 47e3024e-88a0-4017-8484-8f392faec89d
 ms.service: logic-apps
 ms.devlang: multiple
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/05/2016
 ms.author: jehollan
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ddd62d3112a2c93ea3c935ce89ff387049899c09
+
 
 ---
 # <a name="install-the-on-premises-data-gateway-for-logic-apps"></a>Logic Apps 向けのオンプレミス データ ゲートウェイのインストール
@@ -82,7 +86,7 @@ TcpTestSucceeded       : True
 ### <a name="configure-ports"></a>ポートの構成
 ゲートウェイは、Azure Service Bus への送信接続を作成します。 通信を行う送信ポートは、TCP 443 (既定)、5671、5672、9350 - 9354 です。 ゲートウェイでは受信ポートは必要ありません。
 
-[ハイブリッド ソリューション](../service-bus/service-bus-fundamentals-hybrid-solutions.md)の詳細についてはこちらをご覧ください。
+[ハイブリッド ソリューション](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)の詳細についてはこちらをご覧ください。
 
 | ドメイン名 | 送信ポート | Description |
 | --- | --- | --- |
@@ -142,7 +146,7 @@ TcpTestSucceeded       : True
 **質問**: 自分の資格情報はどこに格納されますか? <br/>
 **回答**: データ ソース用に入力した資格情報は、暗号化されてゲートウェイ クラウド サービスに格納されます。 資格情報はオンプレミス ゲートウェイで復号化されます。
 
-### <a name="high-availability/disaster-recovery"></a>高可用性と障害復旧
+### <a name="high-availabilitydisaster-recovery"></a>高可用性と障害復旧
 **質問**: ゲートウェイで高可用性のシナリオを有効にする予定はありますか? <br/>
 **回答**: 計画は存在していますが、具体的な時期は決まっていません。
 
@@ -175,7 +179,7 @@ TcpTestSucceeded       : True
 ### <a name="update-to-the-latest-version"></a>最新バージョンへの更新
 多くの問題は、ゲートウェイのバージョンが古い場合に現れます。  一般的な方法として、最新のバージョンかどうかを確認することをお勧めします。  1 か月またはそれ以上ゲートウェイを更新していない場合は、最新バージョンのゲートウェイをインストールしても、問題が発生するかを確認してください。
 
-### <a name="error:-failed-to-add-user-to-group.-(-2147463168-pbiegwservice-performance-log-users-)"></a>エラー: ユーザーをグループに追加できませんでした。 (-2147463168 PBIEgwService Performance Log Users )
+### <a name="error-failed-to-add-user-to-group--2147463168-pbiegwservice-performance-log-users-"></a>エラー: ユーザーをグループに追加できませんでした。 (-2147463168 PBIEgwService Performance Log Users )
 ドメイン コントローラー (サポート対象外) にゲートウェイをインストールしようとすると、このエラーを受け取ることがあります。 ドメイン コントローラー以外のコンピューターにゲートウェイをデプロイする必要があります。
 
 ## <a name="tools"></a>ツール
@@ -202,6 +206,9 @@ TcpTestSucceeded       : True
 * [エンタープライズ統合機能](app-service-logic-enterprise-integration-overview.md)
 * [Logic Apps コネクタ](../connectors/apis-list.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5b7f1533aca3b5391252e4195e2edeb6443827fd
+ms.sourcegitcommit: e1f9c62765e414e194330419f26c2b7437da21b3
+ms.openlocfilehash: 79cfe90bb883b5cadf707272d31a990c8886dbe4
 
 
 ---
@@ -63,7 +63,7 @@ Status Monitor をサーバー コンピューターにインストールする�
 クライアントのブラウザーからテレメトリを取得するには、それぞれの Web ページに Application Insights の JavaScript スニペットを追加します。
 
 1. Azure で、アプリの Application Insights リソースを開きます。
-2. [作業の開始]、[Monitor Client Side (クライアント側の監視)] の順に開き、スニペットをコピーします。
+2. [作業の開始]、[MONITOR AND DIAGNOSE CLIENT SIDE APPLICATION (クライアント側アプリケーションの監視と診断)] の順に開き、スニペットをコピーします。
 3. コピーしたスニペットを、各 Web ページの先頭に表示されるように貼り付けます。通常、これを行うには、マスター レイアウト ページに貼り付けます。
 
 ![Extend in Azure](./media/app-insights-asp-net-more/100.png)
@@ -133,6 +133,6 @@ MSBuild プロセスで `buildinfo.config` が生成されていることを確�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

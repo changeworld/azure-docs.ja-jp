@@ -275,6 +275,6 @@ DevOps では、反復性と予測可能性が、マイクロサービスで構�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

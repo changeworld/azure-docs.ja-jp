@@ -15,24 +15,24 @@ ms.workload: infrastructure
 ms.date: 09/26/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 2bd363e3c22f4cf4daf2e0fa352fd4a131d1675f
-ms.openlocfilehash: 89db2c9f388b8a5496a306ba0a152ab57481ea50
+ms.sourcegitcommit: 95b924257c64a115728c66956d5ea38eb8764a35
+ms.openlocfilehash: 70592ac773aced0bfcec5c7418a6dc53555fab33
 
 
 ---
 
-# <a name="create-a-linux-vm-using-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) を使用した Linux VM の作成
+# <a name="create-a-linux-vm-using-the-azure-cli-20-preview-azpy"></a>Azure CLI 2.0 プレビュー (az.py) を使用した Linux VM の作成
 この記事では、Azure CLI 2.0 (プレビュー) で [az vm create](/cli/azure/vm#create) コマンドを使用して、Azure に Linux 仮想マシン (VM) をすばやくデプロイする方法を説明します。 
 
 > [!NOTE] 
-> Azure CLI 2.0 (プレビュー) は、次世代マルチプラットフォーム CLI です。 試してみて、[GitHub プロジェクト ページ](https://github.com/Azure/azure-cli)でご意見をお聞かせください。
+> Azure CLI 2.0 (プレビュー) は、次世代マルチプラットフォーム CLI です。 [実際に使ってみてください。](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)
 >
-> ドキュメントの残りの部分では、既存の Azure CLI を使用します。 Azure CLI 2.0 (プレビュー) ではなく、既存の Azure CLI を使用して VM を作成するには、[Azure CLI を使用した VM の作成](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
+> ドキュメントの残りの部分では、既存の Azure CLI を使用します。 Azure CLI 2.0 プレビューではなく、既存の Azure CLI 1.0 を使用して VM を作成するには、[Azure CLI を使用した VM の作成](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事を参照してください。
 
 VM を作成するには、以下が必要です。 
 
 * Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/))。
-* [Azure CLI v.2.0 (プレビュー)](https://github.com/Azure/azure-cli#installation) をインストールする
+* [Azure CLI v.2.0 (プレビュー)](/cli/azure/install-az-cli2) をインストールする
 * Azure アカウントにログインする (「[az login](/cli/azure/#login)」と入力します)
 
 ([Azure Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して、Linux VM をすばやくデプロイすることもできます。)
@@ -41,10 +41,10 @@ VM を作成するには、以下が必要です。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-まず、「[az resource group create](/cli/azure/resource/group#create)」と入力して、デプロイされたリソースをすべて含むリソース グループを作成します。
+まず、「[az group create](/cli/azure/group#create)」と入力して、デプロイされたリソースをすべて含むリソース グループを作成します。
 
 ```azurecli
-az resource group create -n myResourceGroup -l westus
+az group create -n myResourceGroup -l westus
 ```
 
 出力は次のようになります (必要に応じて、別の `--output` オプションを選択できます)。
@@ -127,6 +127,6 @@ bin  boot  dev  etc  home  initrd.img  lib  lib64  lost+found  media  mnt  opt  
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

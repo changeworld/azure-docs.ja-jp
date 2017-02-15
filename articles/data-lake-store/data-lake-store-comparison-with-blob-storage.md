@@ -32,7 +32,7 @@ ms.openlocfilehash: 9e7dbb2b218796e3484bee05c6026c801c7780b7
 | API |HTTPS 経由の REST API |HTTP/HTTPS 経由の REST API |
 | サーバー側 API |[WebHDFS 互換の REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure BLOB ストレージ REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
 | Hadoop ファイル システム クライアント |はい |はい |
-| データ操作 - 認証 | [Azure Active Directory ID](../active-directory/active-directory-authentication-scenarios.md) |共有シークレット ([アカウント アクセス キー](../storage/storage-create-storage-account.md#manage-your-storage-account)と [Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md) キー) に基づきます。 |
+| データ操作 - 認証 |[Azure Active Directory ID](../active-directory/active-directory-authentication-scenarios.md) |共有シークレット ([アカウント アクセス キー](../storage/storage-create-storage-account.md#manage-your-storage-account)と [Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md) キー) に基づきます。 |
 | データ操作 - 認証プロトコル |OAuth 2.0。 呼び出しには、Azure Active Directory によって発行された有効な JWT (JSON Web トークン) が含まれている必要があります。 |ハッシュベース メッセージ認証コード (HMAC)。 呼び出しには、HTTP 要求の一部に対する Base64 でエンコードされた SHA-256 ハッシュが含まれている必要があります。 |
 | データ操作 - 承認 |POSIX アクセス制御リスト (ACL)。  Azure Active Directory ID に基づく ACL は、ファイルおよびフォルダー レベルで設定できます。 |アカウントレベルの承認には、[アカウント アクセス キー](../storage/storage-create-storage-account.md#manage-your-storage-account)を使用します<br>アカウント、コンテナー、または BLOB の承認には、[Shared Access Signature キー](../storage/storage-dotnet-shared-access-signature-part-1.md)を使用します |
 | データ操作 - 監査 |使用可能。 詳細については、 [こちら](data-lake-store-diagnostic-logs.md) をご覧ください。 |使用可能 |

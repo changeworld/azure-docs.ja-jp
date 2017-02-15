@@ -88,7 +88,7 @@
     topicHref: /azure/batch/batch-technical-overview
   - name: "課金"
     tocHref: /azure/billing/
-    topicHref: /azure/billing/../billing-use-existing-office-365-account-azure-subscription
+    topicHref: /azure/billing/billing-getting-started
   - name: "BizTalk Services"
     tocHref: /azure/biztalk-services/
     topicHref: /azure/biztalk-services/integration-hybrid-connection-overview

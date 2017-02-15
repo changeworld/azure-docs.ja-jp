@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Scheduler を使用して、定期的なアプリケーション アクションや日常的なメンテナンスなどのジョブをスケジュールして呼び出す方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: ee469905e6b1f55def062c1d7291bde47a5518ea
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 008c96351a252737178c9e45e92de3f0106a2a2b
 
 ---
 # <a name="scheduler-documentation"></a>Scheduler のドキュメント
 
-Azure Scheduler では、クラウドで実行するアクションを宣言的に記述することができます。  その後スケジュールを設定し、アクションを自動的に実行します。  その後、Scheduler にはジョブの実行結果の履歴が保存され、それを表示することができます。
+Scheduler を使用して、クラウドで繰り返し発生するジョブをスケジュールして自動的に呼び出す方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、定期的なアプリケーション アクションや日常的なメンテナンスなどのジョブをスケジュールして監視する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -96,15 +97,10 @@ Azure Scheduler では、クラウドで実行するアクションを宣言的�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/scheduler.pdf">
-        <div class="img"></div>
-        <div class="text">
-Scheduler のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

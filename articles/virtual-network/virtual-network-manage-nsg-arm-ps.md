@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 93e806457de136d773de2c8121b91491c0cf3de1
-ms.openlocfilehash: f25daf68920c6fe54e739104233173b14bc27f84
+ms.sourcegitcommit: 8ecda7d59b3631b07e807ee018017c75b963dac5
+ms.openlocfilehash: 8eaca4e52363e577c015d9d183f200abedbf4d43
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: f25daf68920c6fe54e739104233173b14bc27f84
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
 >
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
@@ -379,25 +379,19 @@ NSG をサブネットと NIC に関連付けることができます。 また�
 ### <a name="dissociate-an-nsg-from-a-nic"></a>NSG と NIC の関連付けを解除する
 **NSG-FrontEnd** NSG と **TestNICWeb1** NIC の関連付けを解除するには、次の手順を実行します。
 
-1. 次のコマンドを実行して既存の NSG を取得し、変数に格納します。
-
-    ```powershell
-    $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
-    ```
-
-2. 次のコマンドを実行して既存の NIC を取得し、変数に格納します。
+1. 次のコマンドを実行して既存の NIC を取得し、変数に格納します。
 
     ```powershell
     $nic = Get-AzureRmNetworkInterface -ResourceGroupName RG-NSG -Name TestNICWeb1
     ```
 
-3. 次のコマンドを実行して、**NIC** 変数の **NetworkSecurityGroup** プロパティを **$null** に設定します。
+2. 次のコマンドを実行して、**NIC** 変数の **NetworkSecurityGroup** プロパティを **$null** に設定します。
 
     ```powershell
     $nic.NetworkSecurityGroup = $null
     ```
 
-4. NIC に対する変更を保存するには、次のコマンドを実行します。
+3. NIC に対する変更を保存するには、次のコマンドを実行します。
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $nic
@@ -523,6 +517,6 @@ NSG に関連付けられているリソースがない場合にのみ、NSG を
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

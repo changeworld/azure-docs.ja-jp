@@ -3,7 +3,7 @@ title: "トランザクション レプリケーションを使用して SQL Dat
 description: "Microsoft Azure SQL Database、データベースの移行、データベースのインポート、トランザクション レプリケーション"
 services: sql-database
 documentationcenter: 
-author: CarlRabeler
+author: jognanay
 manager: jhubbard
 editor: 
 ms.assetid: eebdd725-833d-4151-9b2b-a0303f39e30f
@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-migrate
-ms.date: 11/08/2016
-ms.author: carlrab
+ms.date: 12/09/2016
+ms.author: carlrab; jognanay;
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 891c10b2f8e560a3c97f93198c742f657a92e927
+ms.sourcegitcommit: 8baeadbf7ef24e492c4115745c0d384e4f526188
+ms.openlocfilehash: 8380925a56d39bd53fe737bed539b862cc835fad
 
 
 ---
@@ -41,19 +41,41 @@ ms.openlocfilehash: 891c10b2f8e560a3c97f93198c742f657a92e927
 
  ![SeedCloudTR ダイアグラム](./media/sql-database-cloud-migrate/SeedCloudTR.png)
 
+## <a name="how-transactional-replication-works"></a>トランザクション レプリケーションのしくみ
+
+トランザクション レプリケーションは、主に 3 つのコンポーネントで構成されます。 それは、パブリッシャー、ディストリビューター、サブスクライバーです。 これらのコンポーネントが連携してレプリケーションが実行されます。 ディストリビューターは、サーバー間でデータを移動するプロセスを制御する役割を担います。 ディストリビューションを設定すると、SQL によってディストリビューション データベースが作成されます。 各パブリッシャーは、ディストリビューション データベースに関連付けられる必要があります。 ディストリビューション データベースは、関連付けられた各パブリケーションのメタデータと、各レプリケーションの進捗状況に関するデータを保持します。 トランザクション レプリケーションの場合、これは、サブスクライバーで実行する必要があるすべてのトランザクションを保持します。
+
+パブリッシャーとは、移行対象のすべてのデータの発行元であるデータベースです。 パブリッシャーの中には、多くのパブリケーションが存在する場合があります。 このようなパブリケーションには、すべてのテーブルにマップされるアーティクルと、レプリケートする必要のあるデータが含まれています。 パブリケーションとアーティクルを定義する方法に応じて、データベースのすべてまたは一部をレプリケートすることができます。 
+
+レプリケーションにおいて、サブスクライバーとは、パブリケーションからデータとトランザクションすべてを受け取るサーバーのことです。 各パブリケーションには、多数のレプリケーションを含めることができます。
+
 ## <a name="transactional-replication-requirements"></a>トランザクション レプリケーションの要件
-トランザクション レプリケーションは、SQL Server 6.5 以降、SQL Server に内蔵された技術です。 成熟した証明済みのテクノロジであり、ほとんどの DBA に運用経験があります。 [SQL Server 2016](https://www.microsoft.com/sql-server/sql-server-2016) では、Azure SQL Database をオンプレミス パブリケーションの[トランザクション レプリケーション サブスクライバー](https://msdn.microsoft.com/library/mt589530.aspx)として構成できるようになりました。 Management Studio の設定は、オンプレミス サーバーでトランザクション レプリケーション サブスクライバーを設定する場合と同じです。 このシナリオは、パブリッシャーとディストリビューターの SQL Server のバージョンが次のいずれか以上である場合にサポートされます。
-
-* SQL Server 2016 以降 
-* SQL Server 2014 SP1 CU3 以降
-* SQL Server 2014 RTM CU10 以降
-* SQL Server 2012 SP2 CU8 以降
-* SQL Server 2012 SP3 以降
-
+[最新の要件の一覧については、こちらのリンクを参照してください。](https://msdn.microsoft.com/en-US/library/mt589530.aspx)
 > [!IMPORTANT]
 > 最新バージョンの SQL Server Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持します。 以前のバージョンの SQL Server Management Studio では、サブスクライバーとして SQL Database を設定できません。 [SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
 > 
-> 
+
+## <a name="migration-to-sql-database-using-transaction-replication-workflow"></a>トランザクション レプリケーション ワークフローを使用した SQL Database への移行
+
+1. ディストリビューションの設定
+   -  [SQL Server Management Studio (SSMS) を使用する](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_1)
+   -  [Transact-SQL を使用する](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_2)
+2. パブリケーションの作成
+   -  [SQL Server Management Studio (SSMS) を使用する](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_1)
+   -  [Transact-SQL を使用する](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
+3. サブスクリプションの作成
+   -  [SQL Server Management Studio (SSMS) を使用する](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_0)
+   -  [Transact-SQL を使用する](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
+
+## <a name="some-tips-and-differences-for-migrating-to-sql-database"></a>SQL Database への移行に関するヒントと相違点
+
+1. ローカル ディストリビューターを使用します。 
+   - これにより、サーバーのパフォーマンスに影響が生じます。 
+   - パフォーマンスの影響を許容できない場合は、別のサーバーを使用できますが、管理がさらに複雑になります。
+2. スナップショット フォルダーを選択する際は、選択したフォルダーが、レプリケートするすべてのテーブルの BCP を保持するのに十分な大きさであることを確認してください。 
+3. スナップショットをスケジュールする際は、スナップショットの作成によって、その処理が完了するまで関連付けられたテーブルがロックされることに注意してください。 
+4. Azure SQL Database でサポートされているのは、プッシュ サブスクリプションのみです。
+   - サブスクライバーを追加できるのは、オンプレミス データベース側からのみです。
 
 ## <a name="next-steps"></a>次のステップ
 * [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
@@ -61,14 +83,11 @@ ms.openlocfilehash: 891c10b2f8e560a3c97f93198c742f657a92e927
 * [SQL Server 2016 ](https://www.microsoft.com/sql-server/sql-server-2016)
 
 ## <a name="additional-resources"></a>その他のリソース
-* [トランザクション レプリケーション](https://msdn.microsoft.com/library/mt589530.aspx)
-* [SQL Database の機能](sql-database-features.md)
-* [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
-* [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
+* トランザクション レプリケーションの詳細については、[トランザクション レプリケーション](https://msdn.microsoft.com/library/mt589530.aspx)に関するページを参照してください。
+* 移行プロセス全体とオプションについては、「[SQL Server データベースのクラウド内の SQL Database への移行](sql-database-cloud-migrate.md)」を参照してください。
 
 
 
-
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

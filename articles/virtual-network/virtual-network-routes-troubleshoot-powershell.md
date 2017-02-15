@@ -1,13 +1,13 @@
 ---
-title: ルートのトラブルシューティング - PowerShell | Microsoft Docs
-description: Azure Resource Manager のデプロイメント モデルで、Azure PowerShell を使用してルートをトラブルシューティングする方法について説明します。
+title: "ルートのトラブルシューティング - PowerShell | Microsoft Docs"
+description: "Azure Resource Manager のデプロイメント モデルで、Azure PowerShell を使用してルートをトラブルシューティングする方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: bf7dc5e7-9399-460e-8e0d-8992dbed98a6
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ecdf6e68a8d2bf7c034b92b57b45ae496a063713
+
 
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>Azure PowerShell を使用してルートのトラブルシューティングを行う
@@ -132,6 +136,9 @@ VM に適用されている集約ルートを表示するには、次の手順�
   * 新しく確立されたピアリングのリンクの場合は、数秒待ってから再度実行してください。 サブネット内のすべてのネットワーク インターフェイスにルートを反映させるのに時間がかかる場合がります。
   * ネットワーク セキュリティ グループ (NSG) の規則が、トラフィック フローに影響を与える可能性があります。 詳細については、「 [ネットワーク セキュリティ グループのトラブルシューティング](virtual-network-nsg-troubleshoot-powershell.md) 」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

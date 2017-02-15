@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "アプリケーションのパフォーマンスを最適にするために着信トラフィックを管理する方法について説明します。 ドキュメントでは、Azure または外部サービス エンドポイントにトラフィックを分散する方法を紹介します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 07d7e13862c252db61136110e04559e51a53e4b7
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: a915eb8aca8a547036a13f3cc2128d205e83fdf2
 
 ---
 #<a name="traffic-manager-documentation"></a>Traffic Manager のドキュメント
 
-Azure Traffic Manager では、さまざまなリージョンのサービス エンドポイントへのユーザー トラフィックの分散を制御できます。 Traffic Manager では、ドメイン ネーム システム (DNS) を使用して、選択されたトラフィック ルーティング方法とエンドポイントの正常性に基づいて最適なエンドポイントにクライアント要求を送信することで、アプリケーションの可用性と応答性を高めます。
+最適なアプリケーション パフォーマンスと信頼性のために、Traffic Manager を使用して着信トラフィックをルーティングする方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Azure または外部サービス エンドポイントに対するトラフィックを管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -119,16 +120,10 @@ Azure Traffic Manager では、さまざまなリージョンのサービス エ
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/traffic-manager.pdf">
-        <div class="img"></div>
-        <div class="text">
-Traffic Manager のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

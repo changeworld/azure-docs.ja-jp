@@ -45,7 +45,7 @@ ms.openlocfilehash: a71b77a320e9321eaa857acfcfae8822de0ac9e5
 > 
 
 ## <a name="install-the-runtime-sdk-and-tools"></a>ランタイム、SDK、およびツールのインストール
-Web Platform Installer には、Service Fabric 開発用に、次の 2 つの構成が用意されています。
+Web Platform Installer には、Service Fabric 開発用に、次の&2; つの構成が用意されています。
 
 Visual Studio 2017 (Azure 開発および管理ワークロードをインストールする必要があります):
 

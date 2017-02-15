@@ -1,15 +1,14 @@
 ---
 layout: LandingPage
+description: "Notification Hubs を使ってバックエンドからモバイル デバイスにプッシュ通知を送信する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: b40dd058986a3dbe47709776a27ac949d3c4c491
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: c99636cdb412f1144f2dbe078379b89b6841bd9b
 
 ---
 #<a name="notification-hubs-documentation"></a>Notification Hubs のドキュメント
 
-Azure Notification Hubs は、任意のバックエンド (クラウドまたはオンプレミス内) から任意のモバイル プラットフォームにモバイル プッシュ通知を送信できるようにする、使いやすい、マルチプラットフォームのスケールアウトされたプッシュ インフラストラクチャです。
-
-Notification Hubs を使用すると、異なるプラットフォーム通知システム (PNS: Platform Notification System) の詳細を抽象化して、クロスプラットフォームの個人用プッシュ通知を簡単に送信できます。 単一の API 呼び出しで、すべてのデバイスの個々のユーザー、または数百万のユーザーを含むセグメント全体を対象にすることができます。
+数百万のメッセージを迅速に送信できる、マルチプラットフォームのスケーラブルなプッシュ通知エンジンである Notification Hubs の使用方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、プッシュ通知を設定してバックエンドからモバイル デバイスに送信する方法を紹介します。 
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -202,16 +201,10 @@ Notification Hubs を使用すると、異なるプラットフォーム通知�
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/notification-hubs.pdf">
-        <div class="img"></div>
-        <div class="text">
-Notification Hubs のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

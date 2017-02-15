@@ -1,13 +1,26 @@
 ---
 layout: LandingPage
+description: "Windows 仮想マシンを作成する方法について説明します。 ドキュメントでは、クラウド上の仮想マシン コンピューティング環境を計画、デプロイ、管理する方法を紹介します。"
+title: "Windows 向けの Azure Virtual Machines のドキュメント、チュートリアル、API リファレンス | Microsoft Docs"
+services: virtual-machines
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machines
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: cd8dfa8b436cd165b3438a1823a571feebb0f4f4
-ms.openlocfilehash: 0a2b4c08e5da4d9c16e12f33c5f1a3f9ae863498
+ms.sourcegitcommit: c3b5f79fe9ee312b5f45eff460b43224b9c254fe
+ms.openlocfilehash: 927fb368a7d0e0c7c996a591dfe8536ea3509164
+
 
 ---
-#<a name="windows-virtual-machines-documentation"></a>Windows 仮想マシンのドキュメント
+# <a name="windows-virtual-machines-documentation"></a>Windows 仮想マシンのドキュメント
 
-Azure Virtual Machines (VM) は、Azure が提供するスケーラブルなオンデマンド コンピューティング リソースの 1 つです。 通常、コンピューティング環境を他の手段より細かく管理する必要がある場合に、VM を選択します。 Azure VM は、VM を実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 また、VM で実行されるソフトウェアの構成、修正プログラムの適用、インストールを管理します。
+Windows 仮想マシンを作成する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、クラウド上の仮想マシン コンピューティング環境を計画、デプロイ、管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -127,7 +140,7 @@ Azure Virtual Machines (VM) は、Azure が提供するスケーラブルなオ�
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p>
                         <p><a href="/java/api">Java</a></p>
-                        <p><a href="https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk">Node.js</a></p>
+                        <p><a href="https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk">Node.JS</a></p>
                         <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html">Python</a></p>
                     </div>
                 </div>
@@ -140,7 +153,7 @@ Azure Virtual Machines (VM) は、Azure が提供するスケーラブルなオ�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p><a href="/rest/api/compute">REST API リファレンスのコンピューティング</a></p>
+                        <p><a href="/rest/api/compute">Compute REST API リファレンス</a></p>
                     </div>
                 </div>
             </div>
@@ -148,16 +161,10 @@ Azure Virtual Machines (VM) は、Azure が提供するスケーラブルなオ�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/windows.pdf">
-        <div class="img"></div>
-        <div class="text">
-Windows 仮想マシンのドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

@@ -286,7 +286,7 @@ $workspace = Select-Workspace
 $storageAccount = Select-StorageAccount
 ```
 
-ご使用のストレージ アカウントの Azure テーブルから読み取るように OMS ワークスペースを構成したら、Azure Portal にログインして、**すべてのリソース**から OMS ワークスペースを選択します。 選択すると、OMS ワークスペースに接続されているストレージ アカウントのログ数が表示されます。 **[Storage account logs] (ストレージ アカウント ログ)** タイルを選択して、ストレージ アカウント ログの一覧から、ご使用のストレージ アカウントが OMS ワークスペースに接続されていることを確認します。
+ご使用のストレージ アカウントの Azure テーブルから読み取るように OMS ワークスペースを構成したら、Azure Portal にログインして、**すべてのリソース**から OMS ワークスペースを選択します。 選択すると、OMS ワークスペースに接続されているストレージ アカウントのログ数が表示されます。 **[Storage account logs] \(ストレージ アカウント ログ)** タイルを選択して、ストレージ アカウント ログの一覧から、ご使用のストレージ アカウントが OMS ワークスペースに接続されていることを確認します。
 
 ![ストレージ アカウント ログ](./media/log-analytics-service-fabric/sf1.png)
 
@@ -368,7 +368,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $workspace.Res
 | Windows |![なし](./media/log-analytics-malware/oms-bullet-red.png) |![いいえ](./media/log-analytics-malware/oms-bullet-red.png) |![あり](./media/log-analytics-malware/oms-bullet-green.png) |![なし](./media/log-analytics-malware/oms-bullet-red.png) |![なし](./media/log-analytics-malware/oms-bullet-red.png) |10 分 |
 
 > [!NOTE]
-> ダッシュボードの上部にある **[Data based on last 7 days](過去 7 日間に基づくデータ)** をクリックして、Service Fabric ソリューションのこれらのイベントの範囲を変更することができます。 また、過去 7 日、過去 1 日、過去 6 時間のいずれかの時間範囲内に生成されたイベントを表示できます。 **[Custom]** (カスタム) を選択して、独自の日付範囲を指定することもできます。
+> ダッシュボードの上部にある **[Data based on last 7 days] \(過去 7 日間に基づくデータ)** をクリックして、Service Fabric ソリューションのこれらのイベントの範囲を変更することができます。 また、過去 7 日、過去 1 日、過去 6 時間のいずれかの時間範囲内に生成されたイベントを表示できます。 **[Custom]** (カスタム) を選択して、独自の日付範囲を指定することもできます。
 > 
 > 
 

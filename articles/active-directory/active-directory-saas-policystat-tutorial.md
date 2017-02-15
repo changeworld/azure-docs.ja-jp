@@ -1,11 +1,11 @@
 ---
-title: 'チュートリアル: Azure Active Directory と PolicyStat の統合 | Microsoft Docs'
-description: Azure Active Directory で PolicyStat を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。
+title: "チュートリアル: Azure Active Directory と PolicyStat の統合 | Microsoft Docs"
+description: "Azure Active Directory で PolicyStat を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。"
 services: active-directory
 author: jeevansd
 documentationcenter: na
 manager: femila
-
+ms.assetid: af5eb0f1-1c8e-4809-b0c4-8ccfb915ca42
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,9 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 738184f4a253201a9aa7581e03d269a06d7cf48a
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-policystat"></a>チュートリアル: Azure Active Directory と PolicyStat の統合
+# <a name="tutorial-azure-active-directory-integration-with-policystat"></a>チュートリアル: Azure Active Directory と PolicyStat の統合
 このチュートリアルでは、Azure と PolicyStat の統合について説明します。  
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
@@ -36,7 +40,7 @@ ms.author: jeedes
 ## <a name="enabling-the-application-integration-for-policystat"></a>PolicyStat のアプリケーション統合の有効化
 このセクションでは、PolicyStat のアプリケーション統合を有効にする方法を説明します。
 
-### <a name="to-enable-the-application-integration-for-policystat,-perform-the-following-steps:"></a>PolicyStat のアプリケーション統合を有効にするには、次の手順に従います。
+### <a name="to-enable-the-application-integration-for-policystat-perform-the-following-steps"></a>PolicyStat のアプリケーション統合を有効にするには、次の手順に従います。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
    ![[Active Directory]](./media/active-directory-saas-policystat-tutorial/IC700993.png "Active Directory")
@@ -65,7 +69,7 @@ PolicyStat アプリケーションは、特定の形式の SAML アサーショ
 
 ![属性](./media/active-directory-saas-policystat-tutorial/IC808628.png "Attributes")
 
-### <a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>シングル サインオンを構成するには、次の手順を実行します。
+### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **PolicyStat** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
    ![Configure Single Sign-On](./media/active-directory-saas-policystat-tutorial/IC808629.png "Configure Single Sign-On")
@@ -129,7 +133,7 @@ PolicyStat は、ジャストインタイム ユーザー プロビジョニン�
 ## <a name="assigning-users"></a>ユーザーの割り当て
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-policystat,-perform-the-following-steps:"></a>ユーザーを PolicyStat に割り当てるには、次の手順に従います。
+### <a name="to-assign-users-to-policystat-perform-the-following-steps"></a>ユーザーを PolicyStat に割り当てるには、次の手順に従います。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **PolicyStat** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
@@ -140,6 +144,9 @@ PolicyStat は、ジャストインタイム ユーザー プロビジョニン�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

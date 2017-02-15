@@ -1,5 +1,5 @@
 ---
-title: " Azure Portal での Azure Media Services アカウントの作成 | Microsoft Docs"
+title: " Azure Portal での Azure Media Services アカウントの作成 | Microsoft Docss"
 description: "このチュートリアルでは、Azure Portal で Azure Media Services アカウントを作成する手順について説明します。"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8e03f7b3d4b9c17b08aca033f44ebfc5f3332eec
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 01c1297a6b107f91d8e6e73f17d76499d67849de
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 8e03f7b3d4b9c17b08aca033f44ebfc5f3332eec
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-create-account.md)
 > * [PowerShell](media-services-manage-with-powershell.md)
-> * [REST ()](http://msdn.microsoft.com/library/azure/dn194267.aspx)
+> * [REST ()](https://docs.microsoft.com/rest/api/media/mediaservice)
 > 
 > [!NOTE]
 > このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
@@ -54,10 +54,10 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. **[+新規]** > **[Web + モバイル]** > **[Media Services]** の順にクリックします。
    
-    ![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new1.png)
+    ![Media Services Create](./media/media-services-create-account/media-services-new1.png)
 3. **[CREATE MEDIA SERVICES ACCOUNT (Media Services アカウントの作成)]** に必要な値を入力します。
    
-    ![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new3.png)
+    ![Media Services Create](./media/media-services-create-account/media-services-new3.png)
    
    1. **[アカウント名]** に新しい AMS アカウントの名前を入力します。 Media Services アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 ～ 24 文字です。
    2. [サブスクリプション] ボックスで、アクセス権のある別の Azure サブスクリプションを選択します。
@@ -69,9 +69,12 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
    6. **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、アカウントのデプロイの進行状況を確認します。
 4. フォームの下部にある **[作成]** をクリックします。
    
-    アカウントの作成に成功すると、ステータスが **[実行中]**に変化します。 
+    アカウントが正常に作成されると、概要ページが読み込まれます。 ストリーミング エンドポイントのテーブルで、アカウントには既定のストリーミング エンドポイントが**停止**状態で示されます。 
+
+    >[!NOTE]
+    >AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
    
-    ![Media Services settings](./media/media-services-portal-vod-get-started/media-services-settings.png)
+    ![Media Services settings](./media/media-services-create-account/media-services-settings.png)
    
     AMS アカウントを管理するには (ビデオのアップロード、資産のエンコード、ジョブの進行の監視など)、 **[設定]** ウィンドウを使用します。
 
@@ -86,7 +89,7 @@ Media Services アカウントにプログラムからアクセスするには�
     **[キーの管理]** ウィンドウに、アカウント名、プライマリ キー、セカンダリ キーが表示されます。 
 3. コピー ボタンをクリックして値をコピーします。
    
-    ![Media Services Keys](./media/media-services-portal-vod-get-started/media-services-keys.png)
+    ![Media Services Keys](./media/media-services-create-account/media-services-keys.png)
 
 ## <a name="next-steps"></a>次のステップ
 これで、ファイルを AMS アカウントにアップロードできるようになりました。 詳細については、 [ファイルのアップロード](media-services-portal-upload-files.md)に関するページを参照してください。
@@ -100,6 +103,6 @@ Media Services アカウントにプログラムからアクセスするには�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

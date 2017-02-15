@@ -15,24 +15,24 @@ ms.workload: data-services
 ms.date: 07/12/2016
 ms.author: jrj;barbkess;sonyama
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 01eb26ff4528faabdbc7b4d482190148b52f67d4
+ms.sourcegitcommit: f1a24e4ee10593514f44d83ad5e9a46047dafdee
+ms.openlocfilehash: f132af2966e2ac59e77dc0fa8113eb83089c68dd
 
 
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのインデックス作成
 > [!div class="op_single_selector"]
-> * [概要][概要]
-> * [データ型][データ型]
-> * [分散][分散]
-> * [Index][Index]
-> * [Partition][Partition]
-> * [統計][統計]
-> * [一時的な][一時]
+> * [概要][Overview]
+> * [データ型][Data Types]
+> * [分散][Distribute]
+> * [インデックス][Index]
+> * [パーティション][Partition]
+> * [統計][Statistics]
+> * [一時][Temporary]
 > 
 > 
 
-SQL Data Warehouse では、[クラスター化列ストア インデックス] [クラスター化列ストア インデックス]、[クラスター化インデックスおよび非クラスター化インデックス] [クラスター化インデックスおよび非クラスター化インデックス]を含む、いくつかのインデックス作成オプションが提供されています。  さらに、[ヒープ][ヒープ]とも呼ばれるインデックスなしのオプションもあります。  この記事では、インデックスの各種類のメリットだけでなく、インデックスのパフォーマンスを最大限まで高めるためのヒントについて説明します。 SQL Data Warehouse でテーブルを作成する方法の詳細については、[CREATE TABLE 構文] [CREATE TABLE 構文]に関するページをご覧ください。
+SQL Data Warehouse には、[クラスター化列ストア インデックス][clustered columnstore indexes]、[クラスター化インデックスと非クラスター化インデックス][clustered indexes and nonclustered indexes]を含む、いくつかのインデックス作成オプションが用意されています。  さらに、[ヒープ][heap]とも呼ばれるインデックスなしのオプションもあります。  この記事では、インデックスの各種類のメリットだけでなく、インデックスのパフォーマンスを最大限まで高めるためのヒントについて説明します。 SQL Data Warehouse でテーブルを作成する方法の詳細については、[CREATE TABLE 構文][create table syntax]に関するページを参照してください。
 
 ## <a name="clustered-columnstore-indexes"></a>クラスター化列ストア インデックス
 既定では、SQL Data Warehouse では、テーブルにインデックス オプションが指定されていない場合、クラスター化列ストア インデックスが作成されます。 クラスター化列ストア テーブルは、クエリの全体的なパフォーマンスを最適化するだけでなく、最上位のレベルのデータ圧縮が可能になります。  クラスター化列ストア テーブルは、一般的にクラスター化インデックスまたはヒープ テーブルより優れており、大きなテーブルの選択肢として通常最適です。  こうした理由から、テーブルのインデックスを作成する方法に確信がない場合は、クラスター化列ストアを使用することをお勧めします。  
@@ -57,7 +57,7 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 * 1 億行未満を格納する小さなテーブルの場合、  ヒープ テーブルを検討してください。
 
 ## <a name="heap-tables"></a>ヒープ テーブル
-データを一時的に SQL Data Warehouse に読み込む際は、ヒープ テーブルを使用すると、プロセス全体が高速になる場合があります。  これは、ヒープの読み込みがインデックス テーブルの読み込みより高速になり、場合によってはキャッシュから後続の読み取りを実行できる場合があるためです。  さまざまな変換を実行する前にデータをステージングするためにのみ読み込む場合は、ヒープ テーブルにテーブルを読み込むと、データをクラスター化列ストア テーブルに読み込む場合よりもはるかに高速に読み込まれます。 さらに、テーブルを永続記憶域に読み込むよりも、データを [一時テーブル][一時] に読み込んだ方が読み込み速度が大幅に向上します。  
+データを一時的に SQL Data Warehouse に読み込む際は、ヒープ テーブルを使用すると、プロセス全体が高速になる場合があります。  これは、ヒープの読み込みがインデックス テーブルの読み込みより高速になり、場合によってはキャッシュから後続の読み取りを実行できる場合があるためです。  さまざまな変換を実行する前にデータをステージングするためにのみ読み込む場合は、ヒープ テーブルにテーブルを読み込むと、データをクラスター化列ストア テーブルに読み込む場合よりもはるかに高速に読み込まれます。 さらに、テーブルを永続記憶域に読み込むよりも、データを[一時テーブル][Temporary]に読み込んだ方が読み込み速度が大幅に向上します。  
 
 1 億行未満の小さなルックアップ テーブルでは、多くの場合、ヒープ テーブルが役立ちます。  クラスター列ストア テーブルは、1 億行を超えて初めて最適な圧縮が実現されます。
 
@@ -74,7 +74,7 @@ WITH ( HEAP );
 ```
 
 ## <a name="clustered-and-nonclustered-indexes"></a>クラスター化インデックスと非クラスター化インデックス
-クラスター化インデックスは、1 つの行をすばやく取得する必要がある場合に、クラスター化列ストア テーブルを上回る可能性があります。  極めて高速で実行するために 1 行または極めて少数の行の検索が必要とされるクエリの場合、クラスター化インデックスまたは非クラスター化セカンダリ インデックスを検討してください。  クラスター化インデックスを使用するデメリットは、クラスター化インデックスの列で非常に選択的なフィルターを使用するクエリのみに効果が得られることです。  他の列のフィルターを改善するには、非クラスター化インデックスを他の列に追加できます。  ただし、テーブルに各インデックスを追加すると、領域と読み込みの処理時間の両方が増加します。
+クラスター化インデックスは、1 つの行をすばやく取得する必要がある場合に、クラスター化列ストア テーブルを上回る可能性があります。  極めて高速で実行するために&1; 行または極めて少数の行の検索が必要とされるクエリの場合、クラスター化インデックスまたは非クラスター化セカンダリ インデックスを検討してください。  クラスター化インデックスを使用するデメリットは、クラスター化インデックスの列で非常に選択的なフィルターを使用するクエリのみに効果が得られることです。  他の列のフィルターを改善するには、非クラスター化インデックスを他の列に追加できます。  ただし、テーブルに各インデックスを追加すると、領域と読み込みの処理時間の両方が増加します。
 
 クラスター化インデックス テーブルを作成するには、単純に WITH 句で CLUSTERED INDEX を指定します。
 
@@ -93,11 +93,6 @@ WITH ( CLUSTERED INDEX (id) );
 ```SQL
 CREATE INDEX zipCodeIndex ON t1 (zipCode);
 ```
-
-> [!NOTE]
-> 非クラスター化インデックスは、既定では、CREATE INDEX を使用したときに作成されます。 さらに、非クラスター化インデックスは行のストレージ テーブル (HEAP または CLUSTERED INDEX) でのみ許可されます。 現時点では、CLUSTERED COLUMNSTORE INDEX での非クラスター化インデックスは許可されていません。
-> 
-> 
 
 ## <a name="optimizing-clustered-columnstore-indexes"></a>クラスター化列ストア インデックスの最適化
 クラスター化列ストア テーブルは、データ内のセグメントにまとめられます。  セグメントの品質を高くすることは、列ストア テーブルで最適なクエリ パフォーマンスを実現するために不可欠です。  セグメントの品質は、圧縮後の行グループに含まれる行の数を使って判断できます。  セグメントの品質が最も最適化されるのは、圧縮された行グループごとに少なくとも 10 万行が存在するときで、行グループごとの行数が 1,048, 576 行に近づくほどパフォーマンスが向上します。この行数は、行グループに含むことができる最大の行数です。
@@ -171,9 +166,9 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 | [COMPRESSED_rowgroup_rows_AVG] |平均行数が行グループの最大行数を大幅に下回る場合は、CTAS または ALTER INDEX REBUILD を使用してデータを再圧縮することを検討してください。 |
 | [COMPRESSED_rowgroup_count] |列ストア形式の行グループの数。 この数がテーブルに対して非常に多い場合は、列ストアの密度が低いことを示します。 |
 | [COMPRESSED_rowgroup_rows_DELETED] |行が列ストア形式で論理的に削除されます。 この数がテーブル サイズと比べて多い場合は、パーティションを再作成するか、インデックスを再構築して、行を物理的に削除することを検討してください。 |
-| [COMPRESSED_rowgroup_rows_MIN] |この値と、AVG 列および MAX 列を組み合わせて使用して、列ストアの行グループに対する値の範囲を把握します。 読み込みのしきい値 (パーティションに合わせて整列されたディストリビューションあたり 102,400) をわずかに上回っている場合は、データ読み込みで最適化が可能であることを示します。 |
+| [COMPRESSED_rowgroup_rows_MIN] |この値と、AVG 列および MAX 列を組み合わせて使用して、列ストアの行グループに対する値の範囲を把握します。 読み込みのしきい値 (パーティションに合わせて整列されたディストリビューションあたり&102;,400) をわずかに上回っている場合は、データ読み込みで最適化が可能であることを示します。 |
 | [COMPRESSED_rowgroup_rows_MAX] |上記と同じ。 |
-| [OPEN_rowgroup_count] |開いている行グループは正常です。 テーブル ディストリビューションごとに 1 つの行グループが開いていることが期待できます (60)。 数が多すぎる場合は、パーティションをまたいでデータを読み込むことをお勧めします。 パーティション分割の計画が適切であることを再確認してください。 |
+| [OPEN_rowgroup_count] |開いている行グループは正常です。 テーブル ディストリビューションごとに&1; つの行グループが開いていることが期待できます (60)。 数が多すぎる場合は、パーティションをまたいでデータを読み込むことをお勧めします。 パーティション分割の計画が適切であることを再確認してください。 |
 | [OPEN_rowgroup_rows] |各行グループには最大で 1,048,576 行を含めることができます。 この値は、開いている行グループの使用率を確認するときに使用します。 |
 | [OPEN_rowgroup_rows_MIN] |開いているグループは、テーブルに読み込まれたデータが少量であることか、以前の読み込みで残りの行がこの行グループにあふれたことを示します。 MIN、MAX、AVG の各列を使用して、開いている行グループに含まれるデータ量を確認します。 テーブルが小さい場合は、100% になることもあります。 この場合は、ALTER INDEX REBUILD でデータを列ストアに強制的に移動します。 |
 | [OPEN_rowgroup_rows_MAX] |上記と同じ。 |
@@ -213,15 +208,15 @@ SQL Data Warehouse にフローする小規模な読み込みは、少量の読�
 こうした状況では、多くの場合、データを最初に Azure BLOB ストレージに配置し、読み込む前に蓄積する方が適切です。 この手法は、多くの場合に *"マイクロ バッチ処理"*と呼ばれます。
 
 ### <a name="too-many-partitions"></a>多すぎるパーティション
-考慮する必要があるもう 1 つの点は、クラスター化列ストア テーブルへのパーティション分割の影響です。  パーティション分割する前に、SQL Data Warehouse では、データが 60 個のデータベースに分割されます。  パーティション分割で、データはさらに分割されます。  データをパーティション分割する場合、クラスター化列ストア インデックスの恩恵を得るには、 **各** パーティションに少なくとも 100 万行が必要なことを考慮に入れる必要があります。  テーブルを 100 個のパーティションにパーティション分割する場合、クラスター化列ストア インデックスの恩恵を受けるには、テーブルに少なくとも 60 億行必要です (60 個のディストリビューション x * "100 個のパーティション" * x 100 万行)。 100 個のパーティション テーブルに 60 億行もない場合は、パーティションの数を減らすか、代わりにヒープ テーブルを使用することを検討してください。
+考慮する必要があるもう&1; つの点は、クラスター化列ストア テーブルへのパーティション分割の影響です。  パーティション分割する前に、SQL Data Warehouse では、データが 60 個のデータベースに分割されます。  パーティション分割で、データはさらに分割されます。  データをパーティション分割する場合、クラスター化列ストア インデックスの恩恵を得るには、 **各** パーティションに少なくとも 100 万行が必要なことを考慮に入れる必要があります。  テーブルを 100 個のパーティションにパーティション分割する場合、クラスター化列ストア インデックスの恩恵を受けるには、テーブルに少なくとも 60 億行必要です (60 個のディストリビューション x * "100 個のパーティション" * x 100 万行)。 100 個のパーティション テーブルに 60 億行もない場合は、パーティションの数を減らすか、代わりにヒープ テーブルを使用することを検討してください。
 
 テーブルが一部のデータと共に読み込まれたら、以下の手順に従って、最適化されていないクラスター化列ストア インデックスを持つテーブルを特定して再構築します。
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>セグメントの品質を向上させるためのインデックスの再構築
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>手順 1： 適切なリソース クラスを使用しているユーザーを特定または作成する
-セグメントの品質を簡単に高める方法の 1 つが、インデックスの再構築です。  上記のビューが返す SQL によって、インデックスを再構築するために使用できる ALTER INDEX REBUILD ステートメントが返されます。  インデックスを再構築するときは、インデックスを再構築するセッションに必ず十分なメモリを割り当ててください。  これを実行するには、次のテーブルのインデックスを再構築するためのアクセス許可を持っているユーザーのリソース クラスを、推奨される最小値に変更します。  データベース所有者のユーザーのリソース クラスは変更できないため、システムにユーザーを作成していない場合は、最初にこのように対応する必要があります。  お勧めの最小値は、DW300 かそれ未満を使用している場合は xlargerc、DW400 から DW600 を使用している場合は largerc、DW1000 かそれ以上を使用している場合は mediumrc です。
+セグメントの品質を簡単に高める方法の&1; つが、インデックスの再構築です。  上記のビューが返す SQL によって、インデックスを再構築するために使用できる ALTER INDEX REBUILD ステートメントが返されます。  インデックスを再構築するときは、インデックスを再構築するセッションに必ず十分なメモリを割り当ててください。  これを実行するには、次のテーブルのインデックスを再構築するためのアクセス許可を持っているユーザーのリソース クラスを、推奨される最小値に変更します。  データベース所有者のユーザーのリソース クラスは変更できないため、システムにユーザーを作成していない場合は、最初にこのように対応する必要があります。  お勧めの最小値は、DW300 かそれ未満を使用している場合は xlargerc、DW400 から DW600 を使用している場合は largerc、DW1000 かそれ以上を使用している場合は mediumrc です。
 
-次に、リソース クラスを増やすことでより多くのメモリをユーザーに割り当てる方法の例を示します。  リソース クラスと新しいユーザーの作成方法について詳しくは、[同時実行とワークロード管理][同時実行]に関する記事をご覧ください。
+次に、リソース クラスを増やすことでより多くのメモリをユーザーに割り当てる方法の例を示します。  リソース クラスと、新しいユーザーの作成方法の詳細については、[同時実行とワークロード管理][Concurrency]に関する記事を参照してください。
 
 ```sql
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
@@ -230,7 +225,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>手順 2： より高いリソース クラス ユーザーでクラスター化列ストア インデックスを再構築する
 手順 1 でリソース クラスを上位に変更したユーザー (たとえば LoadUser) としてログオンし、ALTER INDEX ステートメントを実行します。  このユーザーは、インデックスが再構築されるテーブルに対して ALTER 権限を持っている必要があるのでご注意ください。  これらの例では、列ストア インデックス全体を再構築する方法や単一のパーティションを再構築する方法を示します。 大規模なテーブルでは、単一のパーティションとインデックスを同時に再構築すると、より実用的です。
 
-または、インデックスを再構築せずに、[CTAS] [CTAS] を使用してテーブルを新しいテーブルにコピーできます。  最良の方法はどちらでしょうか。 大量のデータでは、通常、[CTAS] [CTAS] の方が [ALTER INDEX] [ALTER INDEX] より高速です。 少量のデータでは、[ALTER INDEX] [ALTER INDEX] を簡単に使用できるため、テーブルを入れ替える必要はありません。  CTAS を使用してインデックスを再構築する方法の詳細については、後の「 **CTAS とパーティションの切り替えを使用したインデックスの再構築** 」を参照してください。
+または、インデックスを再構築せずに、[CTAS][CTAS] を使用してテーブルを新しいテーブルにコピーできます。  最良の方法はどちらでしょうか。 大量のデータの場合は、通常、[CTAS][CTAS] の方が [ALTER INDEX][ALTER INDEX] より高速です。 少量のデータの場合は、[ALTER INDEX][ALTER INDEX] を簡単に使用できるため、テーブルを入れ替える必要はありません。  CTAS を使用してインデックスを再構築する方法の詳細については、後の「 **CTAS とパーティションの切り替えを使用したインデックスの再構築** 」を参照してください。
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,13 +247,13 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-SQL Data Warehouse でのインデックスの再構築は、オフライン操作です。  インデックスの再構築の詳細については、「[列ストア インデックスの最適化]」「[列ストア インデックスの最適化]」の ALTER INDEX REBUILD のセクション、および構文トピック「[ALTER INDEX]」「[ALTER INDEX]」をご覧ください。
+SQL Data Warehouse でのインデックスの再構築は、オフライン操作です。  インデックスの再構築の詳細については、「[列ストア インデックスの最適化][Columnstore Indexes Defragmentation]」の ALTER INDEX REBUILD に関するセクションと、構文トピック「[ALTER INDEX][ALTER INDEX]」を参照してください。
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>手順 3. クラスター化列ストア セグメントの品質改善を確認する
 セグメントの品質が低いテーブルを特定するクエリを再実行し、セグメントの品質が改善したことを確認します。  セグメントの品質が改善されていない場合は、テーブル内の行の幅が余分である可能性があります。  インデックスを再構築するときに、より高いリソース クラスまたは DWU の使用を検討してください。
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>CTAS とパーティションの切り替えを使用したインデックスの再構築
-この例では、[CTAS] [CTAS] とパーティション切り替えを使用して、テーブル パーティションを再構築します。 
+この例では、[CTAS][CTAS] とパーティション切り替えを使用して、テーブル パーティションを再構築します。 
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS
@@ -298,37 +293,37 @@ ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternet
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
 ```
 
-`CTAS` を使用してパーティションを再作成する方法の詳細については、[Partition][Partition] に関する記事をご覧ください。
+`CTAS` を使用したパーティションの再作成の詳細については、[パーティション][Partition]に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-[テーブルの概要][概要]、[テーブルのデータ型][データ型]、[テーブルの分散][分散]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][統計]、[一時テーブル][一時]に関する各記事で詳細をご覧ください。  その他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス] [SQL Data Warehouse のベスト プラクティス] に関するページをご覧ください。
+詳細については、[テーブルの概要][Overview]、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのパーティション分割][Partition]、[テーブルの統計の管理][Statistics]、[一時テーブル][Temporary]に関する各記事を参照してください。  ベスト プラクティスの詳細については、[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事を参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[概要]: ./sql-data-warehouse-tables-overview.md
-[データ型]: ./sql-data-warehouse-tables-data-types.md
-[分散]: ./sql-data-warehouse-tables-distribute.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[統計]: ./sql-data-warehouse-tables-statistics.md
-[一時]: ./sql-data-warehouse-tables-temporary.md
-[同時実行]: ./sql-data-warehouse-develop-concurrency.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[Concurrency]: ./sql-data-warehouse-develop-concurrency.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
-[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 [ALTER INDEX]: https://msdn.microsoft.com/library/ms188388.aspx
-[ヒープ]: https://msdn.microsoft.com/library/hh213609.aspx
-[クラスター化インデックスおよび非クラスター化インデックス]: https://msdn.microsoft.com/library/ms190457.aspx
-[CREATE TABLE 構文]: https://msdn.microsoft.com/library/mt203953.aspx
-[列ストア インデックスの最適化]: https://msdn.microsoft.com/library/dn935013.aspx#Anchor_1
-[クラスター化列ストア インデックス]: https://msdn.microsoft.com/library/gg492088.aspx
+[heap]: https://msdn.microsoft.com/library/hh213609.aspx
+[clustered indexes and nonclustered indexes]: https://msdn.microsoft.com/library/ms190457.aspx
+[create table syntax]: https://msdn.microsoft.com/library/mt203953.aspx
+[Columnstore Indexes Defragmentation]: https://msdn.microsoft.com/library/dn935013.aspx#Anchor_1
+[clustered columnstore indexes]: https://msdn.microsoft.com/library/gg492088.aspx
 
 <!--Other Web references-->
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

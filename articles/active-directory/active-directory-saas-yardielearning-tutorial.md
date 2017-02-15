@@ -240,6 +240,6 @@ Yardi eLearning で Azure AD のシングル サインオンを構成してテ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

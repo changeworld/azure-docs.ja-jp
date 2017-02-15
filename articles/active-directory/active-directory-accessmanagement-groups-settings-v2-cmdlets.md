@@ -13,7 +13,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -26,8 +26,8 @@ ms.openlocfilehash: 4f12fdf6732d44903fb1e971f05d0233d7aff08e
 > * [Azure Portal](active-directory-groups-create-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-accessmanagement-manage-groups.md)
 > * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-> 
-> 
+>
+>
 
 次のドキュメントでは、PowerShell を使用して、Azure Active Directory (Azure AD) でグループを管理する方法の例について説明します。  また、Azure AD PowerShell プレビューのモジュールを使用して設定する方法についても説明します。 最初に、 [Azure AD PowerShell モジュールをダウンロード](http://go.microsoft.com/fwlink/p/?LinkId=828627)する必要があります。
 
@@ -229,7 +229,6 @@ Azure Active Directory PowerShell のその他のドキュメントについて�
 
 * [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
 
 
 

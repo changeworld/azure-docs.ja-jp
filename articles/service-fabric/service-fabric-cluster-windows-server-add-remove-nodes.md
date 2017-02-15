@@ -3,7 +3,7 @@ title: "スタンドアロン Service Fabric クラスターでノードを追�
 description: "Windows Server を実行する物理コンピューターまたは仮想マシン上で、Azure Service Fabric クラスターにノードを追加または削除する方法について説明します。追加先または削除元は、オンプレミスでも、任意のクラウドでもかまいません。"
 services: service-fabric
 documentationcenter: .net
-author: dsk-2015
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: bc6b8fc0-d2af-42f8-a164-58538be38d02
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2016
-ms.author: dkshir;chackdan
+ms.date: 12/06/2016
+ms.author: ryanwi;chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 335ab9d3746b089e9e7a8d640a89a2d381295b46
+ms.sourcegitcommit: 3f7d2861512ba02e3b158db78fbee771da1c788b
+ms.openlocfilehash: 0d15e9a68c91c85e6a9250cc31e03e24b32cf7bf
 
 
 ---
@@ -29,20 +29,22 @@ ms.openlocfilehash: 335ab9d3746b089e9e7a8d640a89a2d381295b46
 3. クラスターに追加する VM/マシンにリモート デスクトップ (RDP) 接続します。
 4. この VM/マシンに [Windows Server 用の Service Fabric のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690) またはコピーし、パッケージを解凍します。
 5. 管理者として Powershell を実行し、解凍したパッケージのある場所に移動します。
-6. 追加する新しいノードを記述したパラメーターを指定して、 *AddNode.ps1* Powershell を実行します。 次の例では、名前が VM5、タイプが NodeType0、IP アドレスが 182.17.34.52 の新しいノードを UD1 と FD1 に追加します。 *ExistingClusterConnectionEndPoint* は、既存のクラスターに既にあるノードの接続エンドポイントです。 このエンドポイントでは、クラスター内の " *任意* " のノードの IP アドレスを選択できます。
+6. 追加する新しいノードを記述したパラメーターを指定して、 *AddNode.ps1* Powershell を実行します。 次の例では、名前が VM5、タイプが NodeType0、IP アドレスが 182.17.34.52 の新しいノードを UD1 と fd:/dc1/r0 に追加します。 *ExistingClusterConnectionEndPoint* は、既存のクラスターに既にあるノードの接続エンドポイントです。 このエンドポイントでは、クラスター内の " *任意* " のノードの IP アドレスを選択できます。
 
 ```
-.\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain FD1 -AcceptEULA
+.\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
 
 ```
+新しいノードが追加されたかどうかは、[Get-ServiceFabricNode](https://docs.microsoft.com/powershell/servicefabric/vlatest/Get-ServiceFabricNode) コマンドレットを実行して確認できます。
+
 
 ## <a name="remove-nodes-from-your-cluster"></a>クラスターからのノードの削除
-1. クラスターに対して選択した信頼性レベルによっては、プライマリ ノード タイプの最初の n (3/5/7/9) ノードを削除することができません。
-2. 開発用クラスターで RemoveNode コマンドを実行することはサポートされていません。
-3. クラスターから削除する VM/マシンにリモート デスクトップ (RDP) 接続します。
-4. [Windows Server 用の Service Fabric のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690) またはコピーし、この VM/マシンにパッケージを解凍します。
-5. 管理者として Powershell を実行し、解凍したパッケージのある場所に移動します。
-6. Powershell で *RemoveNode.ps1* を実行します。 次の例では、現在のノードをクラスターから削除します。 *ExistingClientConnectionEndpoint* は、クラスター内に残るすべてのノードに対するクライアント接続エンドポイントです。 クラスター内にある*任意の* **他のノード** の IP アドレスとエンドポイント ポートを選択します。 この**他のノード**はさらに、削除されたノードのクラスターの構成を更新します。 
+クラスターに対して選択した信頼性レベルによっては、プライマリ ノード タイプの最初の n (3/5/7/9) ノードを削除することができません。 また、開発用クラスターでの RemoveNode コマンドの実行はサポートされていません。
+
+1. クラスターから削除する VM/マシンにリモート デスクトップ (RDP) 接続します。
+2. [Windows Server 用の Service Fabric のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690) またはコピーし、この VM/マシンにパッケージを解凍します。
+3. 管理者として Powershell を実行し、解凍したパッケージのある場所に移動します。
+4. Powershell で *RemoveNode.ps1* を実行します。 次の例では、現在のノードをクラスターから削除します。 *ExistingClientConnectionEndpoint* は、クラスター内に残るすべてのノードに対するクライアント接続エンドポイントです。 クラスター内にある*任意の* **他のノード** の IP アドレスとエンドポイント ポートを選択します。 この**他のノード**はさらに、削除されたノードのクラスターの構成を更新します。 
 
 ```
 .\RemoveNode.ps1 -ExistingClientConnectionEndpoint 182.17.34.50:19000
@@ -64,6 +66,6 @@ ms.openlocfilehash: 335ab9d3746b089e9e7a8d640a89a2d381295b46
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,7 +15,7 @@ ms.devlang: dotnet
 ms.date: 02/20/2016
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.sourcegitcommit: 146d1377a017becdcdcd7fed7b97f07c2cb2bb39
 ms.openlocfilehash: 349633ed039f3af2ee04d10e944eba404bb30950
 
 

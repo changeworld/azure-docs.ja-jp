@@ -1,13 +1,13 @@
 ---
-title: Azure コマンド ライン インターフェイスのインストール | Microsoft Docs
-description: Mac、Linux、および Windows に Azure コマンド ライン インターフェイス (CLI) をインストールして Azure サービスの利用を開始する
-editor: ''
+title: "Azure コマンド ライン インターフェイスのインストール | Microsoft Docs"
+description: "Mac、Linux、および Windows に Azure コマンド ライン インターフェイス (CLI) をインストールして Azure サービスの利用を開始する"
+editor: 
 manager: timlt
-documentationcenter: ''
+documentationcenter: 
 author: squillace
 services: virtual-machines-linux,virtual-network,storage,azure-resource-manager
 tags: azure-resource-manager,azure-service-management
-
+ms.assetid: bdb776c8-7a76-4f3a-887c-236b4fffee10
 ms.service: multiple
 ms.workload: multiple
 ms.tgt_pltfrm: command-line-interface
@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: rasquill
+translationtype: Human Translation
+ms.sourcegitcommit: a3b1b65ff1d61adfbbcc70bece938f71a83d0812
+ms.openlocfilehash: dce83b58c7127362232dce9af3a0a6f97044602a
+
 
 ---
 # <a name="install-the-azure-cli"></a>Azure CLI のインストール
 > [!div class="op_single_selector"]
 > * [PowerShell](powershell-install-configure.md)
 > * [Azure CLI](xplat-cli-install.md)
-> 
-> 
 
 Azure コマンド ライン インターフェイス (Azure CLI) を簡単にインストールすると、コマンド ライン シェルからオープン ソースのコマンドを使って Microsoft Azure 上のリソースを作成したり管理したりすることができます。 お使いのコンピューターにこれらのクロスプラットフォーム ツールをインストールするオプションは複数あります。 
 
@@ -34,25 +36,29 @@ Azure コマンド ライン インターフェイス (Azure CLI) を簡単に�
 
 Azure CLI をインストールした後、 [Azure サブスクリプションに接続](xplat-cli-connect.md) し、コマンド ライン インターフェイス (Bash、ターミナル、コマンド プロンプトなど) から **azure** コマンドを実行して、Azure リソースを操作します。
 
-## <a name="option-1:-install-an-npm-package"></a>オプション 1: npm パッケージのインストール
+## <a name="option-1-install-an-npm-package"></a>オプション 1: npm パッケージのインストール
 CLI を npm パッケージからインストールするには、[最新の Node.js と npm](https://nodejs.org/en/download/package-manager/) をダウンロードし、インストールしていることを確認してください。 次に、**npm install** を実行して、azure-cli パッケージをインストールします。 
 
-    npm install -g azure-cli
+```bash
+npm install -g azure-cli
+```
 
 Linux ディストリビューションの場合、**npm** コマンドを正常に実行するには、次のように **sudo** の使用が必要になる場合があります。
 
-    sudo npm install -g azure-cli
+```bash
+sudo npm install -g azure-cli
+```
 
 > [!NOTE]
 > Node.js と npm を Linux ディストリビューションまたは OS にインストールまたは更新する必要がある場合は、最新の Node.js LTS バージョン (4.x) をインストールすることをお勧めします。 以前のバージョンを使用すると、インストール エラーが発生する場合があります。 
-> 
-> 
 
 必要に応じて、npm パッケージの最新の Linux [tar ファイル][linux-installer]をローカルにダウンロードします。 その後、ダウンロードした npm パッケージを次のようにインストールします (Linux ディストリビューションでは **sudo**を使用しなければならないことがあります)。
 
-    npm install -g <path to downloaded tar file>
+```bash
+npm install -g <path to downloaded tar file>
+```
 
-## <a name="option-2:-use-an-installer"></a>オプション 2: インストーラーの使用
+## <a name="option-2-use-an-installer"></a>オプション 2: インストーラーの使用
 Mac または Windows コンピューターを使用する場合、次の CLI インストーラーをダウンロードに使用できます。
 
 * [Mac OS X インストーラー][mac-installer]
@@ -60,35 +66,31 @@ Mac または Windows コンピューターを使用する場合、次の CLI �
 
 > [!TIP]
 > Windows では、 [Web プラットフォーム インストーラー](https://go.microsoft.com/?linkid=9828653) をダウンロードして CLI をインストールすることもできます。 このインストーラーを使用すると、CLI をインストールした後で、その他の Azure SDK とコマンド ライン ツールをインストールすることもできます。 
-> 
-> 
 
-## <a name="option-3:-use-a-docker-container"></a>オプション 3: Docker コンテナーの使用
+## <a name="option-3-use-a-docker-container"></a>オプション 3: Docker コンテナーの使用
 お使いのコンピューターを [Docker](https://docs.docker.com/engine/understanding-docker/) ホストとして設定すると、Docker コンテナーで最新の Azure CLI を実行できるようになります。 次のコマンドを実行します (Linux ディストリビューションの場合、**sudo** の使用が必要になる場合があります)。
 
-```
+```bash
 docker run -it microsoft/azure-cli
 ```
-
 
 ## <a name="run-azure-cli-commands"></a>Azure CLI コマンドの実行
 Azure CLI をインストールした後、コマンド ライン ユーザー インターフェイス (Bash、ターミナル、コマンド プロンプトなど) から **azure** コマンドを実行します。 たとえば、ヘルプ コマンドを実行するには、次のように入力します。
 
-```
+```azurecli
 azure help
 ```
+
 > [!NOTE]
 > 一部の Linux ディストリビューションでは、`/usr/bin/env: ‘node’: No such file or directory` のようなエラーが表示されることがあります。 このエラーは、/usr/bin/nodejs に最近インストールされた Node.js が原因で発生します。 このエラーを修正するには、次のコマンドを実行して /usr/bin/node へのシンボリック リンクを作成します。
-> 
-> 
 
-```
+```bash
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
 インストールした Azure CLI のバージョンを確認するには、次のように入力します。
 
-```
+```azurecli
 azure --version
 ```
 
@@ -96,13 +98,11 @@ azure --version
 
 > [!NOTE]
 > Azure CLI を初めて使用する場合、Microsoft が使用状況についての情報を収集することを許可するかどうかをたずねるメッセージが表示されます。 参加は任意です。 参加した後でも、 `azure telemetry --disable`を実行するといつでも停止できます。 参加を有効にするには、任意のタイミングで `azure telemetry --enable`を実行します。
-> 
-> 
 
 ## <a name="update-the-cli"></a>CLI の更新
 マイクロソフトは、Azure CLI の更新バージョンを頻繁にリリースしています。 ご使用のオペレーティング システム用のインストーラーを使用するか、最新の Docker コンテナーを実行して、CLI を再インストールします。 または、最新の Node.js と npm がインストールされている場合は、次のコマンドを入力して更新します (Linux ディストリビューションでは、 **sudo**の使用が必要になる場合があります)。
 
-```
+```bash
 npm update -g azure-cli
 ```
 
@@ -111,13 +111,13 @@ Mac と Linux では、CLI コマンドのタブ補完がサポートされま�
 
 zsh で有効化する場合は、次のコマンドを実行します。
 
-```
+```bash
 echo '. <(azure --completion)' >> .zshrc
 ```
 
 bash で有効化する場合は、次のコマンドを実行します。
 
-```
+```bash
 azure --completion >> ~/azure.completion.sh
 echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 ```
@@ -137,6 +137,6 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

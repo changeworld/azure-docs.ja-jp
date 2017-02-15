@@ -1,13 +1,15 @@
 ---
 layout: LandingPage
+description: "完全に管理されたイベント処理によってクラウド内で IoT 分析を実行する方法について説明します。 アプリケーション、センサー、デバイスなどからリアルタイムでデータを分析します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: c75352e633f069597e7bc62650205f3c389b6909
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 7095a55d9ea79bfd11b429d4fa53e04c482fbbea
 
 ---
-#<a name="stream-analytics-documentation"></a>Stream Analytics のドキュメント
 
-Azure Stream Analytics は、完全に管理された、リアルタイムのイベント処理エンジンです。データから深い洞察を明らかにするうえで役立ちます。  Stream Analytics では、デバイス、センサー、Web サイト、ソーシャル メディア、アプリケーション、インフラストラクチャ システムなどのデータ ストリーミングのリアルタイム分析の計算を簡単に設定できます。
+# <a name="stream-analytics-documentation"></a>Stream Analytics のドキュメント
+
+完全管理型のイベント処理エンジンである Stream Analytics を使用してクラウド内で IoT (モノのインターネット) 分析を実行する方法について説明します。 チュートリアルなどのドキュメントでは、アプリケーション、センサー、デバイス、ソーシャル メディアなどからリアルタイムでデータを分析する方法を紹介します。 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -122,77 +124,48 @@ Azure Stream Analytics は、完全に管理された、リアルタイムのイ
 
 ---
 
-## <a name="reference"></a>リファレンス
-
+<h2>リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell リファレンス</p>
+                    <div class="Command-Line</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.streamanalytics/v2.3.0/azurerm.streamanalytics">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET に関する管理リファレンス</p>
+                    <div class="Languages</h3>
+                        <p><a href="/dotnet/api/streamanalytics.tests.operationtests">.NET</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn834998">クエリ言語</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="https://msdn.microsoft.com/library/azure/dn834998">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardText">
-                        <h3>クエリ言語</h3>
-                        <p>Stream Analytics クエリ言語リファレンス</p>
+                    <div class="REST</h3>
+                        <p><a href="/rest/api/streamanalytics">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-    <li>
-        <a href="/rest/api/streamanalytics">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST ()</h3>
-                        <p>Stream Analytics REST API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-</ul>   
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/stream-analytics.pdf">
-        <div class="img"></div>
-        <div class="text">
-Stream Analytics のドキュメントのダウンロード </div>
-    </a>
-</div>
+</ul>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

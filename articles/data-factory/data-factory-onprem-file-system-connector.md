@@ -1,32 +1,36 @@
 ---
-title: ファイル システムとの間でのデータの移動 | Microsoft Docs
-description: Azure Data Factory を使用して、オンプレミスのファイル システムとの間でデータを移動する方法について説明します。
+title: "ファイル システムとの間でのデータの移動 | Microsoft Docs"
+description: "Azure Data Factory を使用して、オンプレミスのファイル システムとの間でデータを移動する方法について説明します。"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: linda33wj
 manager: jhubbard
 editor: monicar
-
+ms.assetid: ce19f1ae-358e-4ffc-8a80-d802505c9c84
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
+ms.date: 12/07/2016
 ms.author: jingwang
+translationtype: Human Translation
+ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
+ms.openlocfilehash: e715588edb60dbe19449474e89da841e8b375878
+
 
 ---
 # <a name="move-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する
-この記事では、Azure Data Factory のコピー アクティビティを使用してオンプレミスのファイル システムとの間でデータを移動する方法について説明します。 オンプレミスのファイル システムと共にソースまたはシンクとして使用できるデータ ストアの一覧については、 [サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores) に関するセクションを参照してください。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+この記事では、Azure Data Factory のコピー アクティビティを使用してオンプレミスのファイル システムとの間でデータを移動する方法について説明します。 オンプレミスのファイル システムと共にソースまたはシンクとして使用できるデータ ストアの一覧については、 [サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関するセクションを参照してください。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
 Data Factory は、Data Management Gateway を使用してオンプレミスのファイル システムとの間の接続をサポートします。 Data Management Gateway の詳細およびゲートウェイの設定手順については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
 
 > [!NOTE]
 > Data Management Gateway 以外に、オンプレミスのファイル システムとの間で通信するために他のバイナリ ファイルをインストールする必要はありません。
-> 
-> 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues)に関するセクションをご覧ください。
-> 
-> 
+>
+> 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)に関するセクションをご覧ください。
+>
+>
 
 ## <a name="linux-file-share"></a>Linux ファイル共有
 次の 2 つの手順を実行して、ファイル サーバーのリンクされているサービスで Linux ファイル共有を使用します。
@@ -37,15 +41,15 @@ Data Factory は、Data Management Gateway を使用してオンプレミスの�
 ## <a name="copy-wizard"></a>コピー ウィザード
 オンプレミスのファイル システムとの間でデータをコピーするパイプラインを作成する最も簡単な方法は、コピー ウィザードを使用することです。 [コピー ウィザードを使用してパイプラインを作成するチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関する記事で、簡単なチュートリアルをご覧いただけます。
 
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できる、サンプルの JSON 定義です。 これらの例は、オンプレミスのファイル システムと Azure Blob Storage の間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、[サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores)に記載されているいずれかのシンクに、任意のソースからデータを*直接*コピーできます。
+以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できる、サンプルの JSON 定義です。 これらの例は、オンプレミスのファイル システムと Azure Blob Storage の間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、[サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に記載されているいずれかのシンクに、任意のソースからデータを*直接*コピーできます。
 
-## <a name="sample:-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>サンプル: オンプレミスのファイル システムから Azure Blob Storage へのデータのコピー
+## <a name="sample-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>サンプル: オンプレミスのファイル システムから Azure Blob Storage へのデータのコピー
 このサンプルは、オンプレミスのファイル システムから Azure Blob Storage にデータをコピーする方法を示しています。
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
-* [OnPremisesFileServer](data-factory-onprem-file-system-connector.md#onpremisesfileserver-linked-service-properties)型のリンクされたサービス。
-* [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)型のリンクされたサービス。
+* [OnPremisesFileServer](data-factory-onprem-file-system-connector.md#on-premises-file-server-linked-service-properties)型のリンクされたサービス。
+* [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service)型のリンクされたサービス。
 * [FileShare](data-factory-onprem-file-system-connector.md#on-premises-file-system-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
 * [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 * [FileSystemSource](data-factory-onprem-file-system-connector.md#file-share-copy-activity-type-properties) および [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
@@ -56,32 +60,36 @@ Data Factory は、Data Management Gateway を使用してオンプレミスの�
 
 **オンプレミスのファイル サーバーのリンクされたサービス:**
 
-    {
-      "Name": "OnPremisesFileServerLinkedService",
-      "properties": {
-        "type": "OnPremisesFileServer",
-        "typeProperties": {
-          "host": "\\\\Contosogame-Asia.<region>.corp.<company>.com",
-          "userid": "Admin",
-          "password": "123456",
-          "gatewayName": "mygateway"
-        }
-      }
+```JSON
+{
+  "Name": "OnPremisesFileServerLinkedService",
+  "properties": {
+    "type": "OnPremisesFileServer",
+    "typeProperties": {
+      "host": "\\\\Contosogame-Asia.<region>.corp.<company>.com",
+      "userid": "Admin",
+      "password": "123456",
+      "gatewayName": "mygateway"
     }
+  }
+}
+```
 
 **userid** や **password** プロパティを使用するのではなく、**encryptedCredential** プロパティを使用することをお勧めします。 このリンクされたサービスの詳細については、[ファイル サーバーのリンクされたサービス](#onpremisesfileserver-linked-service-properties)に関するページを参照してください。
 
 **Azure Storage のリンクされたサービス:**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
+  }
+}
+```
 
 **オンプレミスのファイル システムの入力データセット:**
 
@@ -89,171 +97,177 @@ Data Factory は、Data Management Gateway を使用してオンプレミスの�
 
 `"external": "true"` の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory に通知されます。
 
-    {
-      "name": "OnpremisesFileSystemInput",
-      "properties": {
-        "type": " FileShare",
-        "linkedServiceName": " OnPremisesFileServerLinkedService ",
-        "typeProperties": {
-          "folderPath": "mysharedfolder/yearno={Year}/monthno={Month}/dayno={Day}",
-          "fileName": "{Hour}.csv",
-          "partitionedBy": [
-            {
-              "name": "Year",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyy"
-              }
-            },
-            {
-              "name": "Month",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "MM"
-              }
-            },
-            {
-              "name": "Day",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "dd"
-              }
-            },
-            {
-              "name": "Hour",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HH"
-              }
-            }
-          ]
+```JSON
+{
+  "name": "OnpremisesFileSystemInput",
+  "properties": {
+    "type": " FileShare",
+    "linkedServiceName": " OnPremisesFileServerLinkedService ",
+    "typeProperties": {
+      "folderPath": "mysharedfolder/yearno={Year}/monthno={Month}/dayno={Day}",
+      "fileName": "{Hour}.csv",
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
+          }
         },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "MM"
+          }
         },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "dd"
+          }
+        },
+        {
+          "name": "Hour",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "HH"
           }
         }
+      ]
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
       }
     }
+  }
+}
+```
 
 **Azure Blob Storage の出力データセット:**
 
 データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
-    {
-      "name": "AzureBlobOutput",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
-          "partitionedBy": [
-            {
-              "name": "Year",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyy"
-              }
-            },
-            {
-              "name": "Month",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "MM"
-              }
-            },
-            {
-              "name": "Day",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "dd"
-              }
-            },
-            {
-              "name": "Hour",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HH"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": "\t",
-            "rowDelimiter": "\n"
+```JSON
+{
+  "name": "AzureBlobOutput",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
           }
         },
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "MM"
+          }
+        },
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "dd"
+          }
+        },
+        {
+          "name": "Hour",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "HH"
+          }
         }
+      ],
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": "\t",
+        "rowDelimiter": "\n"
       }
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
+  }
+}
+```
 
 **コピー アクティビティ:**
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **FileSystemSource** に設定され、**sink** 型が **BlobSink** に設定されています。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-        "start":"2015-06-01T18:00:00",
-        "end":"2015-06-01T19:00:00",
-        "description":"Pipeline for copy activity",
-        "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+    "start":"2015-06-01T18:00:00",
+    "end":"2015-06-01T19:00:00",
+    "description":"Pipeline for copy activity",
+    "activities":[  
+      {
+        "name": "OnpremisesFileSystemtoBlob",
+        "description": "copy activity",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "OnpremisesFileSystemtoBlob",
-            "description": "copy activity",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "OnpremisesFileSystemInput"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "AzureBlobOutput"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "FileSystemSource"
-              },
-              "sink": {
-                "type": "BlobSink"
-              }
-            },
-           "scheduler": {
-              "frequency": "Hour",
-              "interval": 1
-            },
-            "policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "OldestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "OnpremisesFileSystemInput"
           }
-         ]
-       }
-    }
+        ],
+        "outputs": [
+          {
+            "name": "AzureBlobOutput"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "FileSystemSource"
+          },
+          "sink": {
+            "type": "BlobSink"
+          }
+        },
+       "scheduler": {
+          "frequency": "Hour",
+          "interval": 1
+        },
+        "policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "OldestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
+      }
+     ]
+   }
+}
+```
 
-## <a name="sample:-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>サンプル: Azure SQL Database からオンプレミスのファイル システムへのデータのコピー
+## <a name="sample-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>サンプル: Azure SQL Database からオンプレミスのファイル システムへのデータのコピー
 次のサンプルは以下を示しています。
 
 * AzureSqlDatabase 型のリンクされたサービス。
@@ -266,30 +280,34 @@ Data Factory は、Data Management Gateway を使用してオンプレミスの�
 
 **Azure SQL のリンクされたサービス:**
 
-    {
-      "name": "AzureSqlLinkedService",
-      "properties": {
-        "type": "AzureSqlDatabase",
-        "typeProperties": {
-          "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-      }
+```JSON
+{
+  "name": "AzureSqlLinkedService",
+  "properties": {
+    "type": "AzureSqlDatabase",
+    "typeProperties": {
+      "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
     }
+  }
+}
+```
 
 **オンプレミスのファイル サーバーのリンクされたサービス:**
 
-    {
-      "Name": "OnPremisesFileServerLinkedService",
-      "properties": {
-        "type": "OnPremisesFileServer",
-        "typeProperties": {
-          "host": "\\\\Contosogame-Asia.<region>.corp.<company>.com",
-          "userid": "Admin",
-          "password": "123456",
-          "gatewayName": "mygateway"
-        }
-      }
+```JSON
+{
+  "Name": "OnPremisesFileServerLinkedService",
+  "properties": {
+    "type": "OnPremisesFileServer",
+    "typeProperties": {
+      "host": "\\\\Contosogame-Asia.<region>.corp.<company>.com",
+      "userid": "Admin",
+      "password": "123456",
+      "gatewayName": "mygateway"
     }
+  }
+}
+```
 
 **userid** や **password** プロパティを使用するのではなく、**encryptedCredential** プロパティを使用することをお勧めします。 このリンクされたサービスの詳細については、 [ファイル システムのリンクされたサービス](#onpremisesfileserver-linked-service-properties) に関するページを参照してください。
 
@@ -299,139 +317,145 @@ Data Factory は、Data Management Gateway を使用してオンプレミスの�
 
 ``“external”: ”true”`` の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory に通知されます。
 
-    {
-      "name": "AzureSqlInput",
-      "properties": {
-        "type": "AzureSqlTable",
-        "linkedServiceName": "AzureSqlLinkedService",
-        "typeProperties": {
-          "tableName": "MyTable"
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
+```JSON
+{
+  "name": "AzureSqlInput",
+  "properties": {
+    "type": "AzureSqlTable",
+    "linkedServiceName": "AzureSqlLinkedService",
+    "typeProperties": {
+      "tableName": "MyTable"
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
       }
     }
+  }
+}
+```
 
 **オンプレミスのファイル システムの出力データセット:**
 
 データが 1 時間おきに新しいファイルにコピーされます。 BLOB のフォルダー パスとファイル名は、スライスの開始時間に基づいて決定されます。
 
-    {
-      "name": "OnpremisesFileSystemOutput",
-      "properties": {
-        "type": "FileShare",
-        "linkedServiceName": " OnPremisesFileServerLinkedService ",
-        "typeProperties": {
-          "folderPath": "mysharedfolder/yearno={Year}/monthno={Month}/dayno={Day}",
-          "fileName": "{Hour}.csv",
-          "partitionedBy": [
-            {
-              "name": "Year",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyy"
-              }
-            },
-            {
-              "name": "Month",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "MM"
-              }
-            },
-            {
-              "name": "Day",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "dd"
-              }
-            },
-            {
-              "name": "Hour",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HH"
-              }
-            }
-          ]
+```JSON
+{
+  "name": "OnpremisesFileSystemOutput",
+  "properties": {
+    "type": "FileShare",
+    "linkedServiceName": " OnPremisesFileServerLinkedService ",
+    "typeProperties": {
+      "folderPath": "mysharedfolder/yearno={Year}/monthno={Month}/dayno={Day}",
+      "fileName": "{Hour}.csv",
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
+          }
         },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "MM"
+          }
         },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "dd"
+          }
+        },
+        {
+          "name": "Hour",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "HH"
           }
         }
+      ]
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
       }
     }
+  }
+}
+```
 
 **コピー アクティビティのあるパイプライン:**
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **SqlSource** に設定され、**sink** 型が **FileSystemSink** に設定されています。 **SqlReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-        "start":"2015-06-01T18:00:00",
-        "end":"2015-06-01T20:00:00",
-        "description":"pipeline for copy activity",
-        "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+    "start":"2015-06-01T18:00:00",
+    "end":"2015-06-01T20:00:00",
+    "description":"pipeline for copy activity",
+    "activities":[  
+      {
+        "name": "AzureSQLtoOnPremisesFile",
+        "description": "copy activity",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "AzureSQLtoOnPremisesFile",
-            "description": "copy activity",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "AzureSQLInput"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "OnpremisesFileSystemOutput"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "SqlSource",
-                "SqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd}\\'', WindowStart, WindowEnd)"
-              },
-              "sink": {
-                "type": "FileSystemSink"
-              }
-            },
-           "scheduler": {
-              "frequency": "Hour",
-              "interval": 1
-            },
-            "policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "OldestFirst",
-              "retry": 3,
-              "timeout": "01:00:00"
-            }
+            "name": "AzureSQLInput"
           }
-         ]
-       }
-    }
+        ],
+        "outputs": [
+          {
+            "name": "OnpremisesFileSystemOutput"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "SqlSource",
+            "SqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd}\\'', WindowStart, WindowEnd)"
+          },
+          "sink": {
+            "type": "FileSystemSink"
+          }
+        },
+       "scheduler": {
+          "frequency": "Hour",
+          "interval": 1
+        },
+        "policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "OldestFirst",
+          "retry": 3,
+          "timeout": "01:00:00"
+        }
+      }
+     ]
+   }
+}
+```
 
 ## <a name="on-premises-file-server-linked-service-properties"></a>オンプレミスのファイル サーバーのリンクされたサービス プロパティ
 オンプレミスのファイル サーバーのリンクされているサービスで、オンプレミスのファイル システムを Azure Data Factory にリンクできます。 次の表は、オンプレミスのファイル サーバーのリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
@@ -445,52 +469,56 @@ Data Factory は、Data Management Gateway を使用してオンプレミスの�
 | encryptedCredential |New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します。 |いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合) |
 | gatewayName |Data Factory が、オンプレミスのファイル サーバーへの接続に使用するゲートウェイの名前を指定します。 |はい |
 
-オンプレミスのファイル システム データ ソースの資格情報の設定について詳しくは、「 [資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security) 」をご覧ください。
+オンプレミスのファイル システム データ ソースの資格情報の設定について詳しくは、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>サンプルのリンクされたサービスとデータセットの定義
-| シナリオ | リンクされたサービス定義のホスト | データセット定義の folderPath |
+| シナリオ | リンクされたサービス定義のホスト | データセット定義の folderPath  |
 | --- | --- | --- |
 | Data Management Gateway コンピューター上のローカル フォルダー:  <br/><br/>例: D:\\\* または D:\folder\subfolder\\* |D:\\\\ (Data Management Gateway 2.0 以降のバージョンの場合) <br/><br/> localhost (Data Management Gateway 2.0 より以前のバージョン) |.\\\\ またはフォルダー\\\\サブフォルダー (Data Management Gateway 2.0 以降のバージョン) <br/><br/>D:\\\\ または D:\\\\フォルダー\\\\サブフォルダー (バージョン 2.0 より前のゲートウェイ) |
 | リモート共有フォルダー:  <br/><br/>例: \\\\myserver\\share\\\* または \\\\myserver\\share\\フォルダー\\サブフォルダー\\* |\\\\\\\\myserver\\\\share |.\\\\ またはフォルダー\\\\サブフォルダー |
 
 **ゲートウェイのバージョンを確認するには:**
 
-1. お使いのコンピューターで [Data Management Gateway 構成マネージャー](data-factory-data-management-gateway.md#data-management-gateway-configuration-manager) を起動します。
+1. お使いのコンピューターで [Data Management Gateway 構成マネージャー](data-factory-data-management-gateway.md#configuration-manager) を起動します。
 2. **[ヘルプ]** タブに切り替えます。
 
 > [!NOTE]
-> 最新の機能や修正を活用するために、[ゲートウェイを Data Management Gateway 2.0 以降にアップグレード](data-factory-data-management-gateway.md#update-data-management-gateway)することをお勧めします。
-> 
-> 
+> 最新の機能や修正を活用するために、[ゲートウェイを Data Management Gateway 2.0 以降にアップグレード](data-factory-data-management-gateway.md#update)することをお勧めします。
+>
+>
 
 **例: プレーン テキストでのユーザー名とパスワードの使用**
 
-    {
-      "Name": "OnPremisesFileServerLinkedService",
-      "properties": {
-        "type": "OnPremisesFileServer",
-        "typeProperties": {
-          "host": "\\\\Contosogame-Asia",
-          "userid": "Admin",
-          "password": "123456",
-          "gatewayName": "mygateway"
-        }
-      }
+```JSON
+{
+  "Name": "OnPremisesFileServerLinkedService",
+  "properties": {
+    "type": "OnPremisesFileServer",
+    "typeProperties": {
+      "host": "\\\\Contosogame-Asia",
+      "userid": "Admin",
+      "password": "123456",
+      "gatewayName": "mygateway"
     }
+  }
+}
+```
 
 **例: encryptedcredential の使用**
 
-    {
-      "Name": " OnPremisesFileServerLinkedService ",
-      "properties": {
-        "type": "OnPremisesFileServer",
-        "typeProperties": {
-          "host": "D:\\",
-          "encryptedCredential": "WFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5xxxxxxxxxxxxxxxxx",
-          "gatewayName": "mygateway"
-        }
-      }
+```JSON
+{
+  "Name": " OnPremisesFileServerLinkedService ",
+  "properties": {
+    "type": "OnPremisesFileServer",
+    "typeProperties": {
+      "host": "D:\\",
+      "encryptedCredential": "WFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5xxxxxxxxxxxxxxxxx",
+      "gatewayName": "mygateway"
     }
+  }
+}
+```
 
 ## <a name="on-premises-file-system-dataset-type-properties"></a>オンプレミス ファイル システムのデータセットの type プロパティ
 データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)をご覧ください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型でほぼ同じです。
@@ -508,33 +536,39 @@ typeProperties セクションは、データセットの型ごとに異なり�
 
 > [!NOTE]
 > fileName と fileFilter は、同時に使用することができません。
-> 
-> 
+>
+>
 
 ### <a name="using-partitionedby-property"></a>partitionedBy プロパティの使用
 前のセクションで説明したように、partitionedBy を使用して時系列データに動的な folderPath および fileName を指定できます。 これは、Data Factory のマクロ、および指定したデータ スライスの論理的な期間を示すシステム変数 SliceStart と SliceEnd で行うことができます。
 
 時系列データセット、スケジュール作成、スライスに関する詳細を理解するには、[データセットの作成](data-factory-create-datasets.md)、[スケジュールと実行](data-factory-scheduling-and-execution.md)、および[パイプラインの作成](data-factory-create-pipelines.md)に関するページを参照してください。
 
-#### <a name="sample-1:"></a>サンプル 1:
-    "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
-    "partitionedBy":
-    [
-        { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
-    ],
+#### <a name="sample-1"></a>サンプル 1:
+
+```JSON
+"folderPath": "wikidatagateway/wikisampledataout/{Slice}",
+"partitionedBy":
+[
+    { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
+],
+```
 
 この例では、{Slice} は、形式 (YYYYMMDDHH) で、Data Factory システム変数の SliceStart の値に置き換えられます。 SliceStart はスライスの開始時刻です。 folderPath はスライスごとに異なります。 例: wikidatagateway/wikisampledataout/2014100103 または wikidatagateway/wikisampledataout/2014100104
 
-#### <a name="sample-2:"></a>サンプル 2:
-    "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
-    "fileName": "{Hour}.csv",
-    "partitionedBy":
-     [
-        { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
-        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
-        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
-        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
-    ],
+#### <a name="sample-2"></a>サンプル 2:
+
+```JSON
+"folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+"fileName": "{Hour}.csv",
+"partitionedBy":
+ [
+    { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+    { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+    { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
+    { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
+],
+```
 
 この例では、SliceStart の年、月、日、時刻が folderPath プロパティと fileName プロパティの使用する個別の変数に抽出されます。
 
@@ -574,6 +608,8 @@ typeProperties セクションは、データセットの型ごとに異なり�
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
  Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

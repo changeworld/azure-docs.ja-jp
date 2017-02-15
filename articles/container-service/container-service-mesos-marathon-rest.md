@@ -3,7 +3,7 @@ title: "REST API を使用した Azure Container Service のコンテナー管�
 description: "Marathon REST API を使用して、Azure コンテナー サービス Mesos クラスターにコンテナーをデプロイします。"
 services: container-service
 documentationcenter: 
-author: neilpeterson
+author: dlepow
 manager: timlt
 editor: 
 tags: acs, azure-container-service
@@ -11,14 +11,14 @@ keywords: "Docker、コンテナー、マイクロ サービス、Mesos、Azure"
 ms.assetid: c7175446-4507-4a33-a7a2-63583e5996e3
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
-ms.author: timlt
+ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7b9358183d884dfeda3d200ef5ae8beb60d3957e
+ms.sourcegitcommit: 54832afbc9a7bf1d660de3fd898ad5c97715ca5d
+ms.openlocfilehash: a01993eb01b9e05b4848d5a81b841fe10ccae035
 
 
 ---
@@ -33,7 +33,7 @@ DC/OS はクラスター化されたワークロードをデプロイし、ス�
 Azure Container Service クラスターに接続したら、http://localhost:local-port を通じて DC/OS と関連の REST API にアクセスできます。 このドキュメントの例では、ポート 80 にトンネリングしていることを前提としています。 たとえば、Marathon エンドポイントには、 `http://localhost/marathon/v2/`で到達できます。 さまざまな API の詳細については、[Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) と [Chronos API](https://mesos.github.io/chronos/docs/api.html) に関する Mesosphere ドキュメントと [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) に関する Apache ドキュメントを参照してください。
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>DC/OS と Marathon から情報を収集する
-DC/OS クラスターにコンテナーをデプロイする前に、DC/OS エージェントの名前や現在の状態など、DC/OS クラスターに関する情報を収集します。 DC/OS REST API の `master/slaves` エンドポイントに情報を照会してください。 問題がなければ、DC/OS エージェントの一覧と各エージェントのプロパティが表示されます。
+DC/OS クラスターにコンテナーをデプロイする前に、DC/OS エージェントの名前や現在の状態など、DC/OS クラスターに関する情報を収集します。 DC/OS REST API の `master/slaves` エンドポイントに情報を照会してください。 問題がなければ、DC/OS エージェントの一覧と各エージェントのプロパティが返されます。
 
 ```bash
 curl http://localhost/mesos/master/slaves
@@ -47,8 +47,8 @@ curl localhost/marathon/v2/apps
 {"apps":[]}
 ```
 
-## <a name="deploy-a-dockerformatted-container"></a>Docker 形式のコンテナーのデプロイ
-Docker 形式のコンテナーは、意図するデプロイについて記述した JSON ファイルを利用して、Marathon 経由でデプロイします。 次のサンプルでは Nginx コンテナーがデプロイされます。DC/OS エージェントのポート 80 をコンテナーのポート 80 に関連付けます。 また、"acceptedResourceRoles" プロパティが "slave_public" に設定されることにも注意してください。 この設定により、パブリックに公開されたエージェント スケール セット内のエージェントにコンテナーがデプロイされます。
+## <a name="deploy-a-docker-formatted-container"></a>Docker 形式のコンテナーのデプロイ
+Docker 形式のコンテナーは、意図するデプロイについて記述した JSON ファイルを利用して、Marathon 経由でデプロイします。 次のサンプルでは、Nginx コンテナーがデプロイされます。併せて、DC/OS エージェントのポート 80 がコンテナーのポート 80 に関連付けられます。 また、"acceptedResourceRoles" プロパティが "slave_public" に設定されることにも注意してください。 この設定により、パブリックに公開されたエージェント スケール セット内のエージェントにコンテナーがデプロイされます。
 
 ```json
 {
@@ -91,7 +91,7 @@ curl localhost/marathon/v2/apps
 ```
 
 ## <a name="scale-your-containers"></a>コンテナーのスケール
-Marathon API を利用して、アプリケーションのデプロイをスケールアウトまたはスケールインすることもできます。 前の例では、アプリケーションの 1 つのインスタンスをデプロイしました。 それをアプリケーションの 3 つのインスタンスにスケールアウトしてみましょう。 これを行うには、次の JSON テキストを使って JSON ファイルを作成し、それをアクセス可能な場所に保存します。
+Marathon API を利用して、アプリケーションのデプロイをスケールアウトまたはスケールインすることもできます。 前の例では、アプリケーションの&1; つのインスタンスをデプロイしました。 それをアプリケーションの&3; つのインスタンスにスケールアウトしてみましょう。 これを行うには、次の JSON テキストを使って JSON ファイルを作成し、それをアクセス可能な場所に保存します。
 
 ```json
 { "instances": 3 }
@@ -100,7 +100,7 @@ Marathon API を利用して、アプリケーションのデプロイをスケ�
 次のコマンドを実行してアプリケーションをスケールアウトします。
 
 > [!NOTE]
-> URI は、http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID を追加したものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
+> URI は、http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
 > 
 > 
 
@@ -123,7 +123,7 @@ curl localhost/marathon/v2/apps
 Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 ```
 
-Docker 形式のコンテナーは、意図するデプロイについて記述した JSON ファイルを利用して、Marathon 経由でデプロイします。 次のサンプルでは Nginx コンテナーがデプロイされます。DC/OS エージェントのポート 80 をコンテナーのポート 80 に関連付けます。
+Docker 形式のコンテナーは、意図するデプロイについて記述した JSON ファイルを利用して、Marathon 経由でデプロイします。 次のサンプルでは、Nginx コンテナーがデプロイされます。併せて、DC/OS エージェントのポート 80 がコンテナーのポート 80 に関連付けられます。
 
 ```json
 {
@@ -150,7 +150,7 @@ Docker 形式のコンテナーは、意図するデプロイについて記述�
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
-Marathon API を利用して、アプリケーションのデプロイをスケールアウトまたはスケールインすることもできます。 前の例では、アプリケーションの 1 つのインスタンスをデプロイしました。 それをアプリケーションの 3 つのインスタンスにスケールアウトしてみましょう。 これを行うには、次の JSON テキストを使って JSON ファイルを作成し、それをアクセス可能な場所に保存します。
+Marathon API を利用して、アプリケーションのデプロイをスケールアウトまたはスケールインすることもできます。 前の例では、アプリケーションの&1; つのインスタンスをデプロイしました。 それをアプリケーションの&3; つのインスタンスにスケールアウトしてみましょう。 これを行うには、次の JSON テキストを使って JSON ファイルを作成し、それをアクセス可能な場所に保存します。
 
 ```json
 { "instances": 3 }
@@ -159,7 +159,7 @@ Marathon API を利用して、アプリケーションのデプロイをスケ�
 次のコマンドを実行してアプリケーションをスケールアウトします。
 
 > [!NOTE]
-> URI は、http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID を追加したものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
+> URI は、http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
 > 
 > 
 
@@ -174,6 +174,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,12 +16,12 @@ ms.workload: azure-government
 ms.date: 10/31/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: 722c53f819126791073575da04eded2ec5465764
-ms.openlocfilehash: 9d4ba4eff1c9768a11c18cbf531b252d767bc9f2
+ms.sourcegitcommit: 3e460dd2aaf51ef2ba9840513d236ce313320c80
+ms.openlocfilehash: 39a87bdbef7c532f9e50f1e71e9c12797bc9a33c
 
 
 ---
-# <a name="azure-government-monitoring-management"></a>Azure Government の監視と管理
+# <a name="azure-government-monitoring--management"></a>Azure Government の監視と管理
 この記事では、Azure Government 環境での監視と管理に関するサービスのバリエーションと、考慮事項の概要を紹介します。
 
 ## <a name="automation"></a>Automation
@@ -44,6 +44,37 @@ Automation の機能のうち以下のものは、Azure Government では現在�
 
 * Azure Resource Manager のコンテナー
 * Azure Portal を使用した管理 (Azure クラシック ポータルはサポートされています)
+
+Azure Government では、Backup の URL が異なります。
+
+## <a name="site-recovery"></a>Site Recovery
+Site Recovery (ASR) は、Azure Government で一般提供されています。
+
+詳細については、[Site Recovery のパブリック ドキュメント](../site-recovery/site-recovery-overview.md)をご覧ください。
+
+### <a name="variations"></a>バリエーション
+Site Recovery の機能のうち以下のものは、Azure Government では現在使用できません。
+
+* Azure Resource Manager の Site Recovery コンテナー
+
+| Site Recovery | クラシック | リソース マネージャー | 
+| --- | --- | --- |
+| VMware/物理  | 一般公開 | 対応予定 |
+| Hyper-V | 一般公開 | 対応予定 |
+| サイト間 | 一般公開 | 対応予定 |
+
+注意: この表はバージニア州とアイオワ州に適用されます。 
+
+Azure Government では、ASR の次の URL が異なります。
+
+| Azure Public | Azure Government | メモ |
+| --- | --- | --- |
+| *.hypervrecoverymanager.windowsazure.com | *.hypervrecoverymanager.windowsazure.us | Site Recovery サービスへのアクセス |
+| *. backup.windowsazure.com  | *.backup.windowsazure.us | 保護サービスへのアクセス |
+| *.blob.core.windows.net | *.blob.core.usgovcloudapi.net | VM スナップショットの格納用 |
+| http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | MySQL のダウンロード用 |
+
+
 
 ## <a name="log-analytics"></a>Log Analytics
 Log Analytics は、Azure Government で一般提供されています。
@@ -111,6 +142,6 @@ Site Recovery の機能のうち以下のものは、Azure Government では現�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

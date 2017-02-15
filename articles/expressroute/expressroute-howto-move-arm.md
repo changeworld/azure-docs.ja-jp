@@ -1,13 +1,13 @@
 ---
-title: クラシックから Resource Manager への ExpressRoute 回線の移行 | Microsoft Docs
-description: このページでは、クラシックの回線を Resource Manager デプロイ モデルに移行する方法について説明します。
+title: "クラシックから Resource Manager への ExpressRoute 回線の移行 | Microsoft Docs"
+description: "このページでは、クラシックの回線を Resource Manager デプロイ モデルに移行する方法について説明します。"
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 08152836-23e7-42d1-9a56-8306b341cd91
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: ganesr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1c3bd8e01e02fb66bf5e04c307863bbe54176128
+
 
 ---
 # <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行
@@ -28,7 +32,7 @@ ms.author: ganesr
 ## <a name="move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
 ExpressRoute 回線をクラシック デプロイ モデルと Resource Manager デプロイ モデルの両方で使用できるようにするには、ExpressRoute 回線を Resource Manager デプロイ モデルに移行する必要があります。 その際、次の PowerShell コマンドを実行します。
 
-### <a name="step-1:-gather-circuit-details-from-the-classic-deployment-model"></a>手順 1: クラシック デプロイ モデルからの回線の詳細を収集する
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>手順 1: クラシック デプロイ モデルからの回線の詳細を収集する
 まず、ExpressRoute 回線に関する情報を収集する必要があります。
 
 Azure クラシック環境にサインインし、サービス キーを収集します。 次の PowerShell スニペットを使用して、情報を収集できます。
@@ -48,7 +52,7 @@ Azure クラシック環境にサインインし、サービス キーを収集�
 
 Resource Manager デプロイ モデルに移行する回線の **サービス キー** をコピーします。
 
-### <a name="step-2:-sign-in-to-the-resource-manager-environment,-and-create-a-new-resource-group"></a>手順 2: Resource Manager 環境にサインインし、新しいリソース グループを作成する
+### <a name="step-2-sign-in-to-the-resource-manager-environment-and-create-a-new-resource-group"></a>手順 2: Resource Manager 環境にサインインし、新しいリソース グループを作成する
 新しいリソース グループを作成するには、次のスニペットを使用します。
 
     # Sign in to your Azure Resource Manager environment
@@ -62,7 +66,7 @@ Resource Manager デプロイ モデルに移行する回線の **サービス �
 
 既存のリソース グループがある場合は、それを使用できます。
 
-### <a name="step-3:-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>手順 3: Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
+### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>手順 3: Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
 これで、クラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する準備が整いました。 先に進む前に、「 [クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-move.md) 」に記載されている情報を確認してください。
 
 その際、次のスニペットを実行します。
@@ -119,6 +123,9 @@ ExpressRoute 回線の詳細を取得するには、次のコマンドを実行�
 * [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-arm.md)
 * [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

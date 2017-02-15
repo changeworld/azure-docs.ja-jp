@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と CloudPassage の統合 | Microsoft Docs'
-description: Azure Active Directory と CloudPassage の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と CloudPassage の統合 | Microsoft Docs"
+description: "Azure Active Directory と CloudPassage の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: bfe1f14e-74e4-4680-ac9e-f7355e1c94cc
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 01676cbaf2b677b43a223cf33699710c77da41fa
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-cloudpassage"></a>チュートリアル: Azure Active Directory と CloudPassage の統合
+# <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>チュートリアル: Azure Active Directory と CloudPassage の統合
 このチュートリアルの目的は、CloudPassage と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
 CloudPassage と Azure AD の統合には、次の利点があります。 
 
@@ -52,7 +56,7 @@ CloudPassage と Azure AD の統合を構成するには、次のものが必要
 ## <a name="adding-cloudpassage-from-the-gallery"></a>ギャラリーからの CloudPassage の追加
 Azure AD への CloudPassage の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に CloudPassage を追加する必要があります。
 
-### <a name="to-add-cloudpassage-from-the-gallery,-perform-the-following-steps:"></a>ギャラリーから CloudPassage を追加するには、次の手順に従います。
+### <a name="to-add-cloudpassage-from-the-gallery-perform-the-following-steps"></a>ギャラリーから CloudPassage を追加するには、次の手順に従います。
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
    
     ![Active Directory][1]
@@ -140,7 +144,7 @@ CloudPassage アプリケーションでは、特定の形式の SAML アサー�
     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 [ **Save**] をクリックします。
 
 
-1. Azure AD クラシック ポータルで、[single sign-on configuration confirmation](シングル サインオンの構成の確認.md) を選択し、 **[次へ]**をクリックします。 
+1. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。 
    
     ![Configure Single Sign-On][15]
 2. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。 
@@ -193,16 +197,16 @@ CloudPassage アプリケーションでは、特定の形式の SAML アサー�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. [次へ] をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -210,7 +214,7 @@ CloudPassage アプリケーションでは、特定の形式の SAML アサー�
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_07.png) 
@@ -225,7 +229,7 @@ CloudPassage アプリケーションでは、特定の形式の SAML アサー�
 ### <a name="creating-a-cloudpassage-test-user"></a>CloudPassage テスト ユーザーの作成
 このセクションの目的は、CloudPassage で Britta Simon というユーザーを作成することです。
 
-#### <a name="to-create-a-user-called-britta-simon-in-cloudpassage,-perform-the-following-steps:"></a>CloudPassage で Britta Simon というユーザーを作成するには、次の手順に従います。
+#### <a name="to-create-a-user-called-britta-simon-in-cloudpassage-perform-the-following-steps"></a>CloudPassage で Britta Simon というユーザーを作成するには、次の手順に従います。
 1. **CloudPassage** 企業サイトに管理者としてサインオンします。 
 2. 上部にあるツールバーの **[Settings (設定)]** をクリックし、**[Site Administration (サイトの管理)]** をクリックします。 
    
@@ -331,6 +335,6 @@ CloudPassage アプリケーションでは、特定の形式の SAML アサー�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

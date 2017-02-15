@@ -128,6 +128,6 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

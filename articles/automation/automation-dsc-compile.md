@@ -1,6 +1,6 @@
 ---
 title: "Azure Automation DSC での構成のコンパイル | Microsoft Docs"
-description: "Desired State Configuration (DSC) 構成をコンパイルする 2 つの方法 (Azure ポータルで行う方法と Windows PowerShell を使用する方法) の概要。 "
+description: "Desired State Configuration (DSC) 構成をコンパイルする&2; つの方法 (Azure ポータルで行う方法と Windows PowerShell を使用する方法) の概要。 "
 services: automation
 documentationcenter: na
 author: eslesar
@@ -74,7 +74,7 @@ $CompilationJob | Get-AzureRmAutomationDscCompilationJobOutput –Stream Any
 ## <a name="basic-parameters"></a>基本パラメーター
 DSC 構成のパラメーターの宣言 (パラメーターの種類、プロパティなど) は、Azure Automation Runbook と同じように動作します。 Runbook のパラメーターの詳細については、「 [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md) 」を参照してください。
 
-次の例では、コンパイル時に生成される、**ParametersExample.sample** ノード構成のプロパティの値を指定するために、**FeatureName** と **IsPresent** という 2 つのパラメーターを使用します。
+次の例では、コンパイル時に生成される、**ParametersExample.sample** ノード構成のプロパティの値を指定するために、**FeatureName** と **IsPresent** という&2; つのパラメーターを使用します。
 
 ```powershell
 Configuration ParametersExample
@@ -155,7 +155,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-上記の DSC 構成は PowerShell を使用してコンパイルできます。 以下の PowerShell では、**ConfigurationDataSample.MyVM1** と **ConfigurationDataSample.MyVM3** という 2 つのノード構成が Azure Automation DSC プル サーバーに追加されます。
+上記の DSC 構成は PowerShell を使用してコンパイルできます。 以下の PowerShell では、**ConfigurationDataSample.MyVM1** と **ConfigurationDataSample.MyVM3** という&2; つのノード構成が Azure Automation DSC プル サーバーに追加されます。
 
 ```powershell
 $ConfigData = @{
@@ -197,7 +197,7 @@ Azure Automation の DSC 構成では **Get-AzureRmAutomationCredential**を使�
 
 ノード構成 (MOF 構成ドキュメント) で資格情報を安全に保持するには、ノード構成 MOF ファイルで資格情報を暗号化する必要があります。 Azure Automation ではさらに、MOF ファイル全体を暗号化します。 ただし、現時点では、ノード構成 MOF 作成時に資格情報をプレーンテキストで出力することを許可するように PowerShell DSC に指定する必要があります。PowerShell DSC は、コンパイル ジョブによって生成された MOF ファイル全体を Azure Automation が暗号化することを認識していないためです。
 
- [**ConfigurationData**](#configurationdata)をクリックします。 DSC 構成に表示され、資格情報を使用する各ノード ブロックの名前に対して、**ConfigurationData** を使用して `PSDscAllowPlainTextPassword = $true` を渡す必要があります。
+[**ConfigurationData**](#configurationdata)をクリックします。 DSC 構成に表示され、資格情報を使用する各ノード ブロックの名前に対して、**ConfigurationData** を使用して `PSDscAllowPlainTextPassword = $true` を渡す必要があります。
 
 次の例は、Automation 資格情報資産を使用する DSC 構成の例です。
 
@@ -218,7 +218,7 @@ Configuration CredentialSample
 }
 ```
 
-上記の DSC 構成は PowerShell を使用してコンパイルできます。 以下の PowerShell では、**CredentialSample.MyVM1** と **CredentialSample.MyVM2** という 2 つのノード構成が Azure Automation DSC プル サーバーに追加されます。
+上記の DSC 構成は PowerShell を使用してコンパイルできます。 以下の PowerShell では、**CredentialSample.MyVM1** と **CredentialSample.MyVM2** という&2; つのノード構成が Azure Automation DSC プル サーバーに追加されます。
 
 ```powershell
 $ConfigData = @{

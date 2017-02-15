@@ -73,6 +73,6 @@ Windows の数値は、Windows Server 上で [SPECint 2006](https://www.spec.org
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

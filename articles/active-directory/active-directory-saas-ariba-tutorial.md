@@ -243,6 +243,6 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

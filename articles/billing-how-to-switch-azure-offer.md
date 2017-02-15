@@ -4,7 +4,7 @@ description: "サブスクリプション管理ポータルを使用して Azure
 services: 
 documentationcenter: 
 author: genlin
-manager: mbaldwin
+manager: jlian
 editor: 
 tags: billing,top-support-issue
 ms.assetid: aae227b3-6d64-4550-a5b6-d359f53f0a59
@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 12/6/2016
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c7fdfb6e915269d171f1a9fa1a397faefd8b8a99
+ms.sourcegitcommit: c18614f1c096eb76c6a28a9038dab079e04cd4db
+ms.openlocfilehash: 91ad4b1a661e110f7ce8f0ca4cfc7697d86f6c58
 
 
 ---
@@ -90,9 +90,8 @@ ms.openlocfilehash: c7fdfb6e915269d171f1a9fa1a397faefd8b8a99
 ## <a name="can-i-migrate-from-pay-as-you-go-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>従量課金制から [Cloud Solution Provider](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) または [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA) に移行することはできますか?
 現時点では、アカウント センターでプランを CSP または EA に切り替えることはできません。 既存のサブスクリプションを EA に移行するには、登録管理者に依頼してアカウントを EA に追加してもらう必要があります。 そうすると、招待メールが届きます。 手順に従って招待を受け入れると、サブスクリプションはエンタープライズ契約に自動的に移行されます。 CSP に移行するには、「[Azure Subscription Migration to CSP (CSP への Azure サブスクリプションの移行)](https://blogs.technet.microsoft.com/hybridcloudbp/2016/08/26/azure-subscription-migration-to-csp/)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
-* サブスクリプションの [管理者ロールを管理する](billing-add-change-azure-subscription-administrator.md) 方法を確認する
-*  [使用状況データと請求書をダウンロード](billing-download-azure-invoice-daily-usage-date.md)
+## <a name="can-i-migrate-data-and-services-for-my-azure-subscription-to-a-new-subscription"></a>Azure サブスクリプションのデータとサービスを新しいサブスクリプションに移行できますか。
+はい。 詳細については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](./azure-resource-manager/resource-group-move-resources.md)」を参照してください。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
@@ -100,6 +99,6 @@ ms.openlocfilehash: c7fdfb6e915269d171f1a9fa1a397faefd8b8a99
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

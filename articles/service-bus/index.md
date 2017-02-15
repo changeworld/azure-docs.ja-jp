@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "オンプレミスとクラウド環境の間でアプリケーションやサービスを接続するメッセージングを設定する方法について説明します。  チュートリアル、ビデオ、API リファレンスなどを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 0ecc51f19240ecfa49852ed1eafcf78d1227af16
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: fe4c303bb0e944e5abb26f8baa394d0df71240a5
 
 ---
 #<a name="service-bus-documentation"></a>Service Bus のドキュメント
 
-Service Bus は、エンタープライズ メッセージングと中継通信の機能を持つクラウド対応通信で、オンプレミスのソリューションをクラウドに接続するのに役立ちます。 
+Service Bus を使用して、オンプレミスとクラウド環境間で接続する方法について説明します。 チュートリアル、ビデオ、API リファレンスなどのドキュメントでは、アプリケーションやサービス間のクラウド メッセージングを設定する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -225,7 +226,7 @@ Service Bus は、エンタープライズ メッセージングと中継通信�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>他の</h3>
+                        <h3>その他</h3>
                         <p><a href="/dotnet/api/">管理リファレンス API</a></p>
                    </div>
                 </div>
@@ -234,16 +235,10 @@ Service Bus は、エンタープライズ メッセージングと中継通信�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-bus.pdf">
-        <div class="img"></div>
-        <div class="text">
-Service Bus のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

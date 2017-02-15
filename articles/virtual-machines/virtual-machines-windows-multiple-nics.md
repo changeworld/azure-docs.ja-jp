@@ -160,6 +160,6 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

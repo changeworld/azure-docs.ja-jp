@@ -33,7 +33,7 @@ ms.openlocfilehash: 052a9e6a511875dcb2a79ecad89ee09b32948d06
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-この記事では、リソース マネージャーのデプロイ モデルについて説明します。  [従来のデプロイを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-classic-portal.md)
+この記事では、リソース マネージャーのデプロイ モデルについて説明します。 [従来のデプロイを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -54,7 +54,7 @@ Azure Resource Manager でのロード バランサー コンポーネントの�
 ## <a name="set-up-a-load-balancer-in-azure-portal"></a>Azure ポータルでロード バランサーを設定する
 
 > [!IMPORTANT]
-> この例では、 **myVNet**という名前の仮想ネットワークが存在すことを前提としています。 そのためには、 [仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) に関するページを参照してください。 また、**myVNet** 内に **LB-Subnet-BE** という名前のサブネットがあり、**web1** と **web2** という名前の 2 つの VM が **myVNet** の **myAvailSet** という名前の同じ可用性セット内に存在することも前提としています。 VM を作成するには、 [このリンク](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を参照してください。
+> この例では、 **myVNet**という名前の仮想ネットワークが存在すことを前提としています。 そのためには、 [仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) に関するページを参照してください。 また、**myVNet** 内に **LB-Subnet-BE** という名前のサブネットがあり、**web1** と **web2** という名前の&2; つの VM が **myVNet** の **myAvailSet** という名前の同じ可用性セット内に存在することも前提としています。 VM を作成するには、 [このリンク](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を参照してください。
 
 1. ブラウザーから Azure ポータル ( [http://portal.azure.com](http://portal.azure.com) ) に移動し、Azure アカウントでログインします。
 2. 画面の左上で、**[新規]** > **[ネットワーク]** > **[ロード バランサー]** の順に選択します。
@@ -68,7 +68,7 @@ Azure Resource Manager でのロード バランサー コンポーネントの�
 ## <a name="create-a-back-end-address-pool"></a>バックエンド アドレス プールを作成する
 
 1. ロード バランサーが正常にデプロイされたら、リソースからそのロード バランサーを選択します。 [設定] で、[バックエンド プール] を選択します。 バックエンド プールの名前を入力します。 表示されたブレードの上部にある **[追加]** ボタンをクリックします。
-2. **[バックエンド プールの追加]** ブレードで **[仮想マシンの追加]** をクリックします。  **[可用性セット]** で **[可用性セットの選択]** を選択し、**[myAvailSet]** を選択します。 次に、このブレードの [仮想マシン] セクションで **[仮想マシンの選択]** を選択し、**[web1]** と **[web2]** (負荷分散用に作成した 2 つのVM) をクリックします。 次の図に示すように、両方の左側に青色のチェック マークが付いていることを確認します。 このブレードで **[選択]** をクリックしてから **[仮想マシンの選択]** ブレードで [OK] をクリックし、**[バックエンド プールの追加]** ブレードで **[OK]** をクリックします。
+2. **[バックエンド プールの追加]** ブレードで **[仮想マシンの追加]** をクリックします。  **[可用性セット]** で **[可用性セットの選択]** を選択し、**[myAvailSet]** を選択します。 次に、このブレードの [仮想マシン] セクションで **[仮想マシンの選択]** を選択し、**[web1]** と **[web2]** (負荷分散用に作成した&2; つのVM) をクリックします。 次の図に示すように、両方の左側に青色のチェック マークが付いていることを確認します。 このブレードで **[選択]** をクリックしてから **[仮想マシンの選択]** ブレードで [OK] をクリックし、**[バックエンド プールの追加]** ブレードで **[OK]** をクリックします。
 
     ![バックエンド アドレス プールへの追加 ](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
 
@@ -80,7 +80,7 @@ Azure Resource Manager でのロード バランサー コンポーネントの�
 
     ロード バランサーの [設定] で [プローブ] を選択します。 次に、ブレード上部の **[追加]** をクリックします。
 
-    プローブは、HTTP と TCP の 2 とおりの方法で構成できます。 この例では HTTP を紹介しますが、TCP も同様の方法で構成できます。
+    プローブは、HTTP と TCP の&2; とおりの方法で構成できます。 この例では HTTP を紹介しますが、TCP も同様の方法で構成できます。
     必要な情報を更新します。 既に説明したように、 **myLoadBalancer** は、ポート 80 のトラフィックを負荷分散します。 選択したパスは HealthProbe.aspx、[間隔] は 15 秒、[異常しきい値] は 2 です。 完了したら、 **[OK]** をクリックしてプローブを作成します。
 
     これらの個々の構成と、要件に応じてこれらを変更する方法を確認するには、[i] アイコン上にポインターを置いてください。

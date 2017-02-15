@@ -1,9 +1,20 @@
 ---
 layout: LandingPage
 description: "選択した Linux ディストリビューションを使用して仮想マシンを作成する方法について説明します。 ドキュメントでは、VM テンプレートを作成するさまざまな方法を紹介します。"
+title: "Linux 向けの Azure Virtual Machines のドキュメント、チュートリアル、API リファレンス | Microsoft Docs"
+services: virtual-machines-linux
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machines-linux
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: eabfc16b3714006f74cdaec68efb46f651ee1b97
-ms.openlocfilehash: 4ae49635b13d564a4bf03ea12e233c1b18985cce
+ms.sourcegitcommit: 9bb4fb611c4f936317460040c4fbeff1a01f2c5c
+ms.openlocfilehash: 2728b18011e712d9f23f7645f8c83b053b3cf381
 
 ---
 # <a name="linux-virtual-machine-documentation"></a>Linux 仮想マシンのドキュメント
@@ -110,7 +121,7 @@ ms.openlocfilehash: 4ae49635b13d564a4bf03ea12e233c1b18985cce
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p>
                         <p><a href="/java/api">Java</a></p>
-                        <p><a href="https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk">Node.js</a></p>
+                        <p><a href="https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk">Node.JS</a></p>
                         <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html">Python</a></p>
                     </div>
                 </div>
@@ -131,16 +142,10 @@ ms.openlocfilehash: 4ae49635b13d564a4bf03ea12e233c1b18985cce
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/linux.pdf">
-        <div class="img"></div>
-        <div class="text">
-Linux 仮想マシンのドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Jan17_HO4-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 58c0d6590e2fd1684ebeee473029ca4544e223f6
+ms.sourcegitcommit: 02247d679c9bffa01b8d2827ea57eba38894107e
+ms.openlocfilehash: 698384bb5079feb937f423f9b6365dff20cfa3be
 
 
 ---
@@ -25,10 +25,10 @@ ms.openlocfilehash: 58c0d6590e2fd1684ebeee473029ca4544e223f6
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
 ## <a name="build-and-run-the-nodejs-sample-solution"></a>node.js サンプル ソリューションのビルドと実行
-1. *Azure IoT SDK* GitHub リポジトリのクローンを作成し、*Microsoft Azure IoT device SDK for Node.js* をデスクトップ環境にインストールするには、「[Prepare your development environment (開発環境を準備する)][lnk-github-prepare]」の指示に従います。
-2. [azure-iot-sdks][lnk-github-repo] リポジトリの node/device/samples フォルダーのローカル コピーからデバイス上のフォルダーに、次の 2 つのファイルをコピーします。
+1. *Microsoft Azure IoT SDK for Node.js* GitHub リポジトリのクローンを作成し、デスクトップ環境にインストールするには、「[Prepare your development environment (開発環境を準備する)][lnk-github-prepare]」の手順に従います。
+2. [azure-iot-sdk-node][lnk-github-repo] リポジトリの device/samples フォルダーのローカル コピーから、次の&2; つのファイルをデバイス上のフォルダーにコピーします。
    
-   * packages.json
+   * package.json
    * remote_monitoring.js
 3. remote_monitoring.js ファイルを開き、次の変数を探します。
    
@@ -55,11 +55,11 @@ ms.openlocfilehash: 58c0d6590e2fd1684ebeee473029ca4544e223f6
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 
-[lnk-github-repo]: https://github.com/azure/azure-iot-sdks
-[lnk-github-prepare]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-github-repo]: https://github.com/azure/azure-iot-sdk-node
+[lnk-github-prepare]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

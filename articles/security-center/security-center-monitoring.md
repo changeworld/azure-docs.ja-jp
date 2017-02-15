@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2017
+ms.date: 01/10/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 7f074883c2330c5814eef415f193e1775caec432
-ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
+ms.sourcegitcommit: b0694222548e39718f6626c1b1666584445f8398
+ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 
 **[Resources security health (リソース セキュリティの正常性)]** タイルでは、リソースのセキュリティの状態を監視することができます。 以下の例では、重大度が高レベルと中レベルの問題が多数あります。いずれも、注意が必要な問題です。 有効になっているセキュリティ ポリシーが、監視されているコントロールのタイプに影響します。
 
-![[Resources security health (リソース セキュリティの正常性)] タイル](./media/security-center-monitoring/security-center-monitoring-fig1-new4.png)
+![[Resources security health (リソース セキュリティの正常性)] タイル](./media/security-center-monitoring/security-center-monitoring-fig1-new4-2017.png)
 
 セキュリティ更新プログラムが適用されていない仮想マシンや[ネットワーク セキュリティ グループ](/virtual-network/virtual-networks-nsg.md)がないサブネットなど、対処する必要がある脆弱性が Security Center によって特定された場合、ここに表示されます。
 
@@ -169,7 +169,8 @@ ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 このブレードの下部には、この仮想マシンに対する推奨事項が表示されます。推奨事項の内容は、前に説明したものとほぼ同じです。 ここでは、推奨事項をクリックして詳細を確認したり、必要なセキュリティ制御または構成を適用したりできます。
 
 ### <a name="monitor-data"></a>データの監視
-**[Resources security health (リソースのセキュリティ正常性)]** タイルの **[データ]** をクリックすると、**[Data Resources (データ リソース)]** ブレードが開いて SQL とストレージの推奨事項が表示されます。 また、データベースの全般的な正常性状態に関する [推奨事項](security-center-sql-service-recommendations.md) も示されます。 ストレージの暗号化の詳細については、Azure Security Center で、Azure ストレージ アカウントの暗号化の有効化に関するページを参照してください。
+
+**[Resources security health (リソースのセキュリティ正常性)]** タイルの **[SQL & Data (SQL & データ)]** をクリックすると、**[Data Resources (データ リソース)]** ブレードが開いて SQL とストレージの推奨事項が表示されます。 また、データベースの全般的な正常性状態に関する [推奨事項](security-center-sql-service-recommendations.md) も示されます。 ストレージの暗号化の詳細については、「[Enable encryption for Azure storage account in Azure Security Center (Azure Security Center における Azure ストレージ アカウントの暗号化の有効化)](security-center-enable-encryption-for-storage-account.md)」を参照してください。
 
 ![データ リソース](./media/security-center-monitoring/security-center-monitoring-fig13-ga-new.png)
 
@@ -217,6 +218,6 @@ Azure ワークロードに、[(Azure Resource Manager で作成した) 仮想�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

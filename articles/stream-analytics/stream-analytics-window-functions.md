@@ -1,20 +1,24 @@
 ---
-title: Stream Analytics ウィンドウ関数の概要 | Microsoft Docs
-description: Stream Analytics の 3 つのウィンドウ関数 (タンブリング、ホッピング、スライディング) について説明します。
-keywords: タンブリング ウィンドウ, スライディング ウィンドウ, ホッピング ウィンドウ
-documentationcenter: ''
+title: "Stream Analytics ウィンドウ関数の概要 | Microsoft Docs"
+description: "Stream Analytics の 3 つのウィンドウ関数 (タンブリング、ホッピング、スライディング) について説明します。"
+keywords: "タンブリング ウィンドウ, スライディング ウィンドウ, ホッピング ウィンドウ"
+documentationcenter: 
 services: stream-analytics
 author: jeffstokes72
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 0d8d8717-5d23-43f0-b475-af078ab4627d
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 561a3b3f9c90274cfff95ab27c6cd745582f15e0
+
 
 ---
 # <a name="introduction-to-stream-analytics-window-functions"></a>Stream Analytics ウィンドウ関数の概要
@@ -47,6 +51,9 @@ ms.author: jeffstok
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

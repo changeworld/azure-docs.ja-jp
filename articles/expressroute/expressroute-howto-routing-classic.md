@@ -1,13 +1,13 @@
 ---
-title: PowerShell を使用して、クラシック デプロイメント モデルの ExpressRoute 回線のルーティングを構成する方法 | Microsoft Docs
-description: この記事では、ExpressRoute 回線のプライベート、パブリックおよび Microsoft ピアリングを作成し、プロビジョニングする手順について説明します。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
+title: "PowerShell を使用して、クラシック デプロイメント モデルの ExpressRoute 回線のルーティングを構成する方法 | Microsoft Docs"
+description: "この記事では、ExpressRoute 回線のプライベート、パブリックおよび Microsoft ピアリングを作成し、プロビジョニングする手順について説明します。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。"
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: a4bd39d2-373a-467a-8b06-36cfcc1027d2
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,13 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: ganesr
+translationtype: Human Translation
+ms.sourcegitcommit: e7931f1b08d09fbe1fa5a5a2d4a11da01e736462
+ms.openlocfilehash: 1442295477760e7f528621be42b72f1c02625c50
+
 
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>ExpressRoute 回線のルーティングの作成と変更を行う
 > [!div class="op_single_selector"]
-> [Azure Portal - Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
-> [PowerShell - Resource Manager](expressroute-howto-routing-arm.md)
-> [PowerShell - クラシック](expressroute-howto-routing-classic.md)
+> * [Azure ポータル - Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
+> * [PowerShell - Resource Manager](expressroute-howto-routing-arm.md)
+> * [PowerShell - クラシック](expressroute-howto-routing-classic.md)
 > 
 > 
 
@@ -303,6 +307,9 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 * ワークフローの詳細については、「 [ExpressRoute ワークフロー](expressroute-workflows.md)」を参照してください。
 * 回路ピアリングの詳細については、「 [ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

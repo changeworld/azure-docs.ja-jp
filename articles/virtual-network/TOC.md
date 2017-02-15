@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [仮想ネットワーク](virtual-networks-overview.md)
 ## [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)
 ## [仮想ネットワーク ピアリング](virtual-network-peering-overview.md)
@@ -110,15 +110,17 @@
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
 #### [CLI](virtual-network-manage-nsg-arm-cli.md)
 #### [ログ](virtual-network-nsg-manage-log.md)
-#### トラブルシューティング
-##### [ポータル](virtual-network-nsg-troubleshoot-portal.md)
-##### [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
-### ルートのトラブルシューティング
-#### [ポータル](virtual-network-routes-troubleshoot-portal.md)
-#### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 ### 仮想マシン
 #### [ホスト名の表示および変更](virtual-networks-viewing-and-modifying-hostnames.md)
 #### [VM を別のサブネットに移動する](virtual-networks-move-vm-role-to-subnet.md)
+
+## トラブルシューティング
+### ネットワーク セキュリティ グループ
+#### [ポータル](virtual-network-nsg-troubleshoot-portal.md)
+#### [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
+### ルート
+#### [ポータル](virtual-network-routes-troubleshoot-portal.md)
+#### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 
 # リファレンス
 ## [PowerShell (Resource Manager)](https://msdn.microsoft.com/library/mt163510(v=azure.300))

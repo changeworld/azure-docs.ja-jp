@@ -1,6 +1,6 @@
 ---
-title: "Azure Mobile Apps を使用して Android アプリにプッシュ通知を追加する"
-description: "Azure Mobile Apps を使用して Android アプリにプッシュ通知を送信する方法について説明します。"
+title: "Mobile Apps を使用した Android アプリへのプッシュ通知の追加 | Microsoft Docs"
+description: "Mobile Apps を使用して Android アプリにプッシュ通知を送信する方法について説明します。"
 services: app-service\mobile
 documentationcenter: android
 manager: erikre
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ac50b4986d6abd6f3a4af660560f4252b8c99fdb
+ms.sourcegitcommit: ef43d1df2a64d85f256b28cd7db5a4f4356a7ec0
+ms.openlocfilehash: 055f55966de1e5c1bb41a6e0bf1c0da1758a3ed0
 
 
 ---
@@ -32,10 +32,10 @@ ms.openlocfilehash: ac50b4986d6abd6f3a4af660560f4252b8c99fdb
 以下のものが必要になります。
 
 * プロジェクトのバックエンドに応じた IDE:
-  
+
   * アプリに Node.js バックエンドがある場合は [Android Studio](https://developer.android.com/sdk/index.html)。
-  * アプリに .Net バックエンドがある場合は [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) 以降。
-* Firebase Cloud Messaging 用に Android 2.3 以降、Google Repository リビジョン 27 以上、Google Play Services 9.0.2 以降。
+  * アプリに Microsoft .NET バックエンドがある場合は [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) 以降。
+* Firebase Cloud Messaging 用に Android 2.3 以降、Google Repository リビジョン 27 以降、Google Play Services 9.0.2 以降。
 * [Android クイック スタート]を完了すること。
 
 ## <a name="create-a-project-that-supports-firebase-cloud-messaging"></a>Firebase Cloud Messaging をサポートするプロジェクトを作成する
@@ -58,7 +58,7 @@ ms.openlocfilehash: ac50b4986d6abd6f3a4af660560f4252b8c99fdb
 
 次の手順は、Google Play サービスをインストールすることです。 Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
 
-古いデバイスを使用している場合は、[Google Play Services SDK のセットアップに関するページ]を参考に、どれだけ小さな値を設定できるか判断し、適切に設定してください。
+古いデバイスを使用してテストしている場合は、[Google Play Services SDK のセットアップ]に関するページを参考に、どれだけ小さな値を設定できるか判断し、適切に設定してください。
 
 ### <a name="add-google-play-services-to-the-project"></a>プロジェクトへの Google Play Services の追加
 [!INCLUDE [Add Play Services](../../includes/app-service-mobile-add-google-play-services.md)]
@@ -69,14 +69,21 @@ ms.openlocfilehash: ac50b4986d6abd6f3a4af660560f4252b8c99fdb
 ## <a name="test-the-app-against-the-published-mobile-service"></a>発行されたモバイル サービスに対してアプリケーションをテストする
 Android フォンを USB ケーブルで直接接続するか、エミュレーターで仮想デバイスを使用する方法により、アプリケーションをテストできます。
 
-## <a name="more"></a>詳細
+## <a name="next-steps"></a>次のステップ
+これでこのチュートリアルは終了です。次のいずれかのチュートリアルに進むことを検討してください。
+
+* [Android アプリに認証を追加する](app-service-mobile-android-get-started-users.md)。
+  サポートされている ID プロバイダーを使用して、Android で todolist クイック スタート プロジェクトに認証を追加する方法について説明します。
+* [Android アプリのオフライン同期を有効にする](app-service-mobile-android-get-started-offline-data.md)。
+  Mobile Apps バックエンドを使用してオフライン サポートをアプリに追加する方法について説明します。 オフライン同期を使用すると、ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
+
 <!-- URLs -->
 [Android クイック スタート]: app-service-mobile-android-get-started.md
 
-[Google Play Services SDK のセットアップに関するページ]:https://developers.google.com/android/guides/setup
+[Google Play Services SDK のセットアップ]:https://developers.google.com/android/guides/setup
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

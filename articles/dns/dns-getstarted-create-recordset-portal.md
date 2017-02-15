@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 42d47741e414b2de177f1fd75b3e1ac3fde96579
-ms.openlocfilehash: 194da45bade88c2866aaf6066d312d125f1ac2cb
+ms.sourcegitcommit: bfbffe7843bc178cdf289c999925c690ab82e922
+ms.openlocfilehash: b3951106fe2e8607e65bd0ae47fa2ea3346b8ca5
 
 ---
 
@@ -28,17 +28,21 @@ ms.openlocfilehash: 194da45bade88c2866aaf6066d312d125f1ac2cb
 > * [PowerShell](dns-getstarted-create-recordset.md)
 > * [Azure CLI](dns-getstarted-create-recordset-cli.md)
 
-この記事では、Azure ポータルを使用してレコードとレコード セットを作成する手順を説明します。 DNS ゾーンを作成した後は、ドメインの DNS レコードを追加します。 そのために、まずは DNS レコードとレコード セットについて理解することが必要です。
+この記事では、Azure ポータルを使用してレコードとレコード セットを作成する手順を説明します。 そのために、まずは DNS レコードとレコード セットについて理解することが必要です。
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
-## <a name="create-a-record-set-and-record"></a>レコード セットとレコードの作成
+このページのすべての例では、DNS レコードの種類として "A" を使用します。 他のレコード タイプのプロセスも同様です。
 
-次の例では、Azure ポータルを使用してレコードとレコード セットを作成する手順を説明します。 ここでは DNS "A" レコードを使用します。
+新しいレコードの名前とタイプが既存のレコードと同じ場合は、その新しいレコードを既存のレコード セットに追加する必要があります。「&mdash;[Azure ポータルを使用した DNS レコードとレコード セットの管理](dns-operations-recordsets-portal.md)」をご覧ください。 新しいレコードの名前とタイプが既存のすべてのレコードと異なる場合は、以下で説明するように、新しいレコード セットを作成する必要があります。
+
+## <a name="create-records-in-a-new-record-set"></a>新しいレコード セットのレコードの作成
+
+次の例では、Azure ポータルを使用してレコードとレコード セットを作成する手順を説明します。
 
 1. ポータルにサインインします。
 2. レコード セットを作成する **DNS ゾーン** のブレードに移動します。
-3. **[DNS ゾーン]** ブレードの上部にある **[レコード セット]** を選択して **[レコード セットの追加]** ブレードを開きます。
+3. **[DNS ゾーン]** ブレードの上部にある **[+ レコード セット]** を選択して **[レコード セットの追加]** ブレードを開きます。
 
     ![新しいレコード セット](./media/dns-getstarted-create-recordset-portal/newrecordset500.png)
 
@@ -48,17 +52,34 @@ ms.openlocfilehash: 194da45bade88c2866aaf6066d312d125f1ac2cb
 
 5. 作成するレコードの種類を選択します。 たとえば、 **[A]**を選択します。
 6. **TTL**を設定します。 ポータルの既定の有効期間は、1 時間です。
-7. IP アドレスを 1 行に 1 つずつ追加します。 上記のレコード セット名とレコードの種類を使用すると、www レコード セットの **A** レコードに IPv4 IP アドレスが追加されます。
+7. レコード セットの各レコードの詳細を追加します。 この場合、レコード タイプが "A" であるため、A レコードの IP アドレス (1 行に&1; つの IP アドレス) を追加する必要があります。
 8. IP アドレスの追加が完了したら、ブレードの下部にある **[OK]** を選択します。 これで、DNS レコード セットが作成されます。
+
+### <a name="verify-name-resolution"></a>名前解決の確認
+
+Azure DNS ネーム サーバーに DNS レコードが存在することをテストするには、nslookup、dig、[Resolve-DnsName PowerShell コマンドレット](https://technet.microsoft.com/library/jj590781.aspx)などの DNS ツールを使用します。
+
+Azure DNS の新しいゾーンを使用するためのドメインの委任をまだ行っていない場合は、[ゾーンのネーム サーバーの&1; つに DNS クエリを直接送信する](dns-getstarted-create-dnszone.md#test-name-servers)必要があります。 次のコマンドを実際のレコード ゾーンの正しい値に置き換えてください。
+
+    nslookup
+    > set type=A
+    > server ns1-01.azure-dns.com
+    > www.contoso.com
+
+    Server:  ns1-01.azure-dns.com
+    Address:  40.90.4.1
+
+    Name:    www.contoso.com
+    Address:  1.2.3.4
 
 ## <a name="next-steps"></a>次のステップ
 
+[ドメイン名を Azure DNS ネーム サーバーに委任する](dns-domain-delegation.md)方法を確認します。
+
 レコード セットとレコードを管理する方法については、 [Azure ポータルを使用した DNS レコードとレコード セットの管理](dns-operations-recordsets-portal.md)に関するページを参照してください。
 
-Azure DNS の詳細については、「 [Azure DNS の概要](dns-overview.md)」を参照してください。
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

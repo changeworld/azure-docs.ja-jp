@@ -1,6 +1,6 @@
 ---
-title: "SQL Database チュートリアル: サーバー、サーバーレベルのファイアウォール規則、サンプル データベース、データベースレベルのファイアウォール規則を作成し、SQL Server Management Studio と接続する | Microsoft Docs"
-description: "SQL Database 論理サーバー、サーバー ファイアウォール規則、SQL データベース、サンプル データを設定する方法について説明します。 また、クライアント ツールによる接続方法、ユーザーの構成方法、データベース ファイアウォール規則の設定方法について説明します。"
+title: "Azure Portal: Azure SQL Database の概要 | Microsoft Docs"
+description: "Azure Portal を使用して、SQL Database の論理サーバー、サーバーレベルのファイアウォール規則、およびデータベースを作成する方法について説明します。 また、SQL Server Management Studio を使用してデータベースに対してクエリを実行する方法についても説明します。"
 keywords: "SQL データベース チュートリアル, SQL データベースの作成"
 services: sql-database
 documentationcenter: 
@@ -9,7 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: aeb8c4c3-6ae2-45f7-b2c3-fa13e3752eed
 ms.service: sql-database
-ms.custom: overview
+ms.custom: single databases
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: d772dabf84fc3b6c061c0f4607c989aabf9dd272
-ms.openlocfilehash: 6d15839ce4084a808d9ecd5900a39a4f67dec822
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: 8eb4b280104cc4f05b9ed25985d0c336f15b6d0f
 
 
 ---
-# <a name="get-started-with-azure-sql-database-servers-databases-and-firewall-rules-by-using-the-azure-portal-and-sql-server-management-studio"></a>Azure Portal と SQL Server Management Studio を使用して Azure SQL Database のサーバー、データベース、ファイアウォール規則を使ってみる
+# <a name="sql-database-tutorial-get-started-with-azure-sql-database-servers-databases-and-firewall-rules-using-the-azure-portal-and-sql-server-management-studio"></a>SQL Database チュートリアル: Azure Portal と SQL Server Management Studio を使用して Azure SQL Database のサーバー、データベース、ファイアウォール規則を使ってみる
 
 この入門用チュートリアルでは、Azure Portal を使用して次のことを行う方法を学習します。
 
@@ -30,15 +30,15 @@ ms.openlocfilehash: 6d15839ce4084a808d9ecd5900a39a4f67dec822
 * Azure SQL 論理サーバーを作成する
 * Azure SQL 論理サーバーのプロパティを表示する
 * サーバーレベルのファイアウォール規則を作成する
-* Adventure Works LT サンプル データベースを作成する
+* Adventure Works LT サンプル データベースを単一データベースとして作成する
 * Azure で Adventure Works LT サンプル データベースのプロパティを表示する
 
 このチュートリアルでは、SQL Server Management Studio の最新のバージョンを使用して次のことも行います。
 
 * 論理サーバーとその master データベースに接続する
-* master データベースのプロパティを表示する
+* master データベースに対してクエリを実行する
 * サンプル データベースに接続する
-* ユーザー データベースのプロパティを表示する
+* サンプル データベースに対してクエリを実行する
 
 このチュートリアルを完了すると、サンプル データベースと空のデータベースが Azure リソース グループで実行され、論理サーバーに接続された状態になります。 また、サーバーレベルのプリンシパルが指定の IP アドレス (または IP アドレス範囲) からサーバーにログインできるようにサーバーレベルのファイアウォール規則が構成されます。 
 
@@ -208,7 +208,7 @@ ms.openlocfilehash: 6d15839ce4084a808d9ecd5900a39a4f67dec822
     ![サーバー資格情報](./media/sql-database-get-started/server-credentials.png)
 
     > [!NOTE]
-    > サーバーにデータベースを追加する際は、1 つのデータベースとして追加する (既定) か、SQL エラスティック プールに追加することができます。 エラスティック プールの詳細については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事を参照してください。
+    > データベースは、サーバーに追加するときに、単一データベースとして追加すること (既定) も、エラスティック プールに追加することもできます。 エラスティック プールの詳細については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事を参照してください。
     >
 
 7. [価格レベル] で、価格レベルを **Basic** に変更します (価格レベルは、必要に応じて後から引き上げ可能ですが、学習目的の場合は、最もコストの低いレベルを使用することをお勧めします)。
@@ -299,11 +299,13 @@ ms.openlocfilehash: 6d15839ce4084a808d9ecd5900a39a4f67dec822
 * テーブルやその他のオブジェクトの作成を開始する場合は、「[テーブルの作成](https://msdn.microsoft.com/library/ms365315.aspx)」の「テーブルを作成するには」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
-[SQL Database とは](sql-database-technical-overview.md)
+
+- 技術の概要については、[SQL Database の概要](sql-database-technical-overview.md)に関するページを参照してください。
+- 料金情報については、[Azure SQL Database の料金](https://azure.microsoft.com/pricing/details/sql-database/)に関するページを参照してください。
 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

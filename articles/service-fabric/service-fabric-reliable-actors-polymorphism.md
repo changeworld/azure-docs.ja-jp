@@ -12,19 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/07/2016
+ms.date: 12/13/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1f1f486fdd08c6b817b4486fa815ae536bdcebd3
+ms.sourcegitcommit: 2fbce8754a5e3162e3f8c999b34ff25284911021
+ms.openlocfilehash: 731c6542ba6d1385eeffa89a6f62e5bcf57a5c1e
 
 
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors フレームワークにおけるポリモーフィズム
-Reliable Actors フレームワークでは、オブジェクト指向設計で使用する手法の多くを使用してアクターを作成できます。 このような手法の 1 つがポリモーフィズムで、型とインターフェイスが汎用性の高い親から継承できるようにします。 Reliable Actors フレームワークにおける継承は、一般に .NET モデルに従いますが、追加の制約がいくつかあります。
+Reliable Actors フレームワークでは、オブジェクト指向設計で使用する手法の多くを使用してアクターを作成できます。 このような手法の&1; つがポリモーフィズムで、型とインターフェイスが汎用性の高い親から継承できるようにします。 Reliable Actors フレームワークにおける継承は、一般に .NET モデルに従いますが、追加の制約がいくつかあります。
 
 ## <a name="interfaces"></a>インターフェイス
-Reliable Actors フレームワークでは、アクター型によって実装される 1 つ以上のインターフェイスを定義する必要があります。 このインターフェイスを使用して、クライアントがアクターとの通信に使用できるプロキシ クラスを生成します。 アクター型によって実装されるすべてのインターフェイスとそのすべての親が、最終的に IActor から派生していれば、インターフェイスは他のインターフェイスから継承できます。 IActor は、プラットフォームで定義されているアクターの基本インターフェイスです。 したがって、図形を使用する従来のポリモーフィズムの例は次のようになります。
+Reliable Actors フレームワークでは、アクター型によって実装される&1; つ以上のインターフェイスを定義する必要があります。 このインターフェイスを使用して、クライアントがアクターとの通信に使用できるプロキシ クラスを生成します。 アクター型によって実装されるすべてのインターフェイスとそのすべての親が、最終的に IActor から派生していれば、インターフェイスは他のインターフェイスから継承できます。 IActor は、プラットフォームで定義されているアクターの基本インターフェイスです。 したがって、図形を使用する従来のポリモーフィズムの例は次のようになります。
 
 ![図形アクターのインターフェイス階層][shapes-interface-hierarchy]
 
@@ -75,6 +75,6 @@ public class Circle : Shape, ICircle
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

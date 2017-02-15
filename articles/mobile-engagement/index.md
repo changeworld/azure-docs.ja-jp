@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "モバイル アプリの使用量とリアルタイムでのユーザーのセグメント化を把握する方法と、コンテキスト感知のプッシュ通知とアプリ内メッセージングを有効にする方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: c9f8493eb39f0c519825cdaa1c06bbb24b0f478f
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 37f08d8a03845b86d382d4c0b49b58f633cc1b0c
 
 ---
 # <a name="mobile-engagement-documentation"></a>Mobile Engagement のドキュメント
 
-Azure Mobile Engagement は、サービスとしてのソフトウェア (SaaS) 型のユーザー エンゲージメント プラットフォームで、これによりデータ主導のアプリ使用状況分析、ユーザーのセグメント化、プッシュ通知とアプリ内メッセージングが可能になります。
+Mobile Engagement を使用して、モバイル アプリの使用量、リテンション、および収益化を高める方法について説明します。 チュートリアルや SDK などのドキュメントでは、モバイル アプリの使用量とリアルタイムでのユーザーのセグメント化を把握する方法と、コンテキスト感知のプッシュ通知とアプリ内メッセージングを有効にする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -194,17 +195,10 @@ Azure Mobile Engagement は、サービスとしてのソフトウェア (SaaS) 
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/mobile-engagement.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure Mobile Engagement のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

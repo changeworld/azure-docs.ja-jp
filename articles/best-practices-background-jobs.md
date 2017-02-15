@@ -1,13 +1,13 @@
 ---
-title: バックグラウンド ジョブのガイダンス | Microsoft Docs
-description: ユーザー インターフェイスとは無関係に実行されるバックグラウンド タスクに関するガイダンスです。
-services: ''
+title: "バックグラウンド ジョブのガイダンス | Microsoft Docs"
+description: "ユーザー インターフェイスとは無関係に実行されるバックグラウンド タスクに関するガイダンスです。"
+services: 
 documentationcenter: na
 author: dragon119
 manager: christb
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: f6040f8c-4cbb-4c21-a886-8d54a5868421
 ms.service: best-practice
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2016
 ms.author: masashin
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: 3bc7d30a8d702fd219c7fccfc241f32147c90009
+
 
 ---
 # <a name="background-jobs-guidance"></a>バックグラウンド ジョブのガイダンス
@@ -175,7 +179,7 @@ Azure 仮想マシンにバックグラウンド タスクをデプロイする�
 
 ### <a name="more-information"></a>詳細
 * [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) 
-* [Azure Virtual Machines に関する FAQ](virtual-machines/virtual-machines-linux-classic-faq.md)
+* [Azure Virtual Machines に関する FAQ](virtual-machines/virtual-machines-linux-classic-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 ## <a name="design-considerations"></a>設計上の考慮事項
 バックグラウンド タスクを設計する際は、基本的な考慮事項がいくつかあります。 以降のセクションで、パーティション分割、競合、調整について説明します。
@@ -209,7 +213,7 @@ Azure 仮想マシンにバックグラウンド タスクをデプロイする�
 * **タスクのステップの実行を管理する**。 アプリケーションで実行するタスクが、多数のステップから成り立っていて、その中でリモート サービスを呼び出したり、リモート リソースにアクセスしたりする場合があります。 それぞれのステップは互いに独立しているかもしれませんが、それらを指揮するのは、タスクを実装するアプリケーションのロジックです。 詳細については、 [Scheduler Agent Supervisor パターン](http://msdn.microsoft.com/library/dn589780.aspx)に関するページを参照してください。
 * **タスクのステップの障害復旧を管理する**。 一連のステップによって実行される作業は、最終的にそれらが集まって整合の取れた操作となるものであり、そのいずれかのステップで障害が発生した場合は、アプリケーション側で元に戻す必要があります。 詳細については、 [Compensating Transaction パターン](http://msdn.microsoft.com/library/dn589804.aspx)に関するページを参照してください。
 
-## <a name="lifecycle-(cloud-services)"></a>ライフサイクル (Cloud Services)
+## <a name="lifecycle-cloud-services"></a>ライフサイクル (Cloud Services)
  Web ロールと worker ロールを使用する Cloud Services アプリケーションで、 **RoleEntryPoint** クラスを使ってバックグラウンド ジョブを実装する場合、このクラスのライフサイクルを理解しておくことが正しく使用するうえで大切です。
 
 Web ロールと worker ロールが開始、実行、停止される過程には、明確に区別されたいくつかの段階が存在します。 これらの各段階に到達したタイミングを通知する一連のイベントが、 **RoleEntryPoint** クラスに定義されています。 それらのイベントを利用して、カスタム バックグラウンド タスクの初期化、実行、停止を行うことができます。 その全体のサイクルは次のとおりです。
@@ -241,7 +245,7 @@ Web ロールと worker ロールが開始、実行、停止される過程に�
     if (freeze != null)
     {
      if (Boolean.Parse(freeze))
-     {
+       {
          Thread.Sleep(System.Threading.Timeout.Infinite);
      }
     }
@@ -293,6 +297,9 @@ Web ロールと worker ロールが開始、実行、停止される過程に�
 * [Azure キューと Service Bus キューの比較](service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 * [クラウド サービスの診断を有効にする方法](cloud-services/cloud-services-dotnet-diagnostics.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

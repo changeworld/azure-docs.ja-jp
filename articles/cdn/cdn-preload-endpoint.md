@@ -1,12 +1,12 @@
 ---
-title: Azure CDN エンドポイント上のアセットを事前に読み込む | Microsoft Docs
-description: CDN エンドポイント上のキャッシュされたコンテンツを事前に読み込む方法について説明します。
+title: "Azure CDN エンドポイント上のアセットを事前に読み込む | Microsoft Docs"
+description: "CDN エンドポイント上のキャッシュされたコンテンツを事前に読み込む方法について説明します。"
 services: cdn
-documentationcenter: ''
+documentationcenter: 
 author: camsoper
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 5ea3eba5-1335-413e-9af3-3918ce608a83
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2016
 ms.author: casoper
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e54ab1d1e1d363f92c05772a5367b28c46fe4038
+
 
 ---
-# Azure CDN エンドポイント上の資産を事前に読み込む
+# <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN エンドポイント上の資産を事前に読み込む
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-既定では、資産は要求されたときに初めてキャッシュされます。つまり、各リージョンからの最初の要求は時間がかかる場合があります。これは、エッジ サーバーにキャッシュされたコンテンツがなく、配信元サーバーに要求を転送する必要があるためです。コンテンツを事前に読み込んでおくと、この最初のヒットの待機時間を回避できます。
+既定では、資産は要求されたときに初めてキャッシュされます。 つまり、各リージョンからの最初の要求は時間がかかる場合があります。これは、エッジ サーバーにキャッシュされたコンテンツがなく、配信元サーバーに要求を転送する必要があるためです。 コンテンツを事前に読み込んでおくと、この最初のヒットの待機時間を回避できます。
 
 カスタマー エクスペリエンスの向上に加え、キャッシュされた資産を事前に読み込んでおくと、配信元サーバーのネットワーク トラフィックを減少させることもできます。
 
@@ -30,9 +34,9 @@ ms.author: casoper
 
 このチュートリアルでは、すべての Azure CDN エッジ ノード上のキャッシュされたコンテンツを事前に読み込む方法について説明します。
 
-## チュートリアル
-1. [Azure ポータル](https://portal.azure.com)で、事前に読み込むエンドポイントを含む CDN プロファイルを参照します。プロファイル ブレードが開きます。
-2. リスト内のエンドポイントをクリックします。エンドポイント ブレードが開きます。
+## <a name="walkthrough"></a>チュートリアル
+1. [Azure ポータル](https://portal.azure.com)で、事前に読み込むエンドポイントを含む CDN プロファイルを参照します。  プロファイル ブレードが開きます。
+2. リスト内のエンドポイントをクリックします。  エンドポイント ブレードが開きます。
 3. CDN エンドポイント ブレードで、[読み込み] ボタンをクリックします。
    
     ![CDN エンドポイント ブレード](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
@@ -43,9 +47,9 @@ ms.author: casoper
 4. 読み込む各資産の完全パスを **[パス]** テキストボックスに入力します (`/pictures/kitten.png` など)。
    
    > [!TIP]
-   > テキストを入力すると、**[パス]** テキストボックスが追加され、複数の資産の一覧を作成できます。一覧から資産を削除するには、省略記号 (...) ボタンをクリックします。
+   > テキストを入力すると、 **[パス]** テキストボックスが追加され、複数の資産の一覧を作成できます。  一覧から資産を削除するには、省略記号 (...) ボタンをクリックします。
    > 
-   > パスは[正規表現](https://msdn.microsoft.com/library/az24scfc.aspx)、`^(?:\/[a-zA-Z0-9-_.\u0020]+)+$` に準拠する相対 URL にする必要があります。資産ごとに独自のパスが必要です。資産を事前に読み込むためのワイルドカード機能はありません。
+   > パスは[正規表現](https://msdn.microsoft.com/library/az24scfc.aspx)、`^(?:\/[a-zA-Z0-9-_.\u0020]+)+$` に準拠する相対 URL にする必要があります。  資産ごとに独自のパスが必要です。  資産を事前に読み込むためのワイルドカード機能はありません。
    > 
    > 
    
@@ -59,8 +63,13 @@ ms.author: casoper
 > 
 > 
 
-## 関連項目
+## <a name="see-also"></a>関連項目
 * [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 * [Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](https://msdn.microsoft.com/library/mt634451.aspx)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

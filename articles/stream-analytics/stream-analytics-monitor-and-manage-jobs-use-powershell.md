@@ -1,13 +1,13 @@
 ---
-title: PowerShell | Microsoft Docs
-description: Azure PowerShell およびコマンドレットを使用して Stream Analytics ジョブを監視および管理する方法について説明します。
-keywords: azure powershell、azure powershell コマンドレット、powershell コマンド、powershell スクリプト
+title: "PowerShell を使用した Stream Analytics ジョブの監視および管理 | Microsoft Docs"
+description: "Azure PowerShell およびコマンドレットを使用して Stream Analytics ジョブを監視および管理する方法について説明します。"
+keywords: "azure powershell、azure powershell コマンドレット、powershell コマンド、powershell スクリプト"
 services: stream-analytics
-documentationcenter: ''
+documentationcenter: 
 author: jeffstokes72
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 514f454e-d18c-4081-8304-ab48577e15e8
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 09/26/2016
 ms.author: jeffstok
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 9616197bd2b1587290b3beb14cb883e2dba8fb4e
+
 
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Azure PowerShell コマンドレットを使用した Stream Analytics ジョブの監視および管理
@@ -25,7 +29,7 @@ ms.author: jeffstok
 
 Azure PowerShell 0.9.8:  
 
-        # Log in to your Azure account
+         # Log in to your Azure account
         Add-AzureAccount
 
         # Select the Azure subscription you want to use to create the resource group if you have more than one subscription on your account.
@@ -39,7 +43,7 @@ Azure PowerShell 0.9.8:
 
 Azure PowerShell 1.0:  
 
-        # Log in to your Azure account
+         # Log in to your Azure account
         Login-AzureRmAccount
 
         # Select the Azure subscription you want to use to create the resource group.
@@ -62,7 +66,7 @@ Azure PowerShell 1.0:
 次の Azure PowerShell コマンドレットは、Azure Stream Analytics ジョブの監視と管理に使用できます。 Azure PowerShell にはさまざまなバージョンがあります。 
 **ここに示す各例では、最初が Azure PowerShell 0.9.8 のコマンド、2 番目が Azure PowerShell 1.0 のコマンドです。**  Azure PowerShell 1.0 のコマンドには、常に "AzureRM" が含まれます。
 
-### <a name="get-azurestreamanalyticsjob-|-get-azurermstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzureRMStreamAnalyticsJob
+### <a name="get-azurestreamanalyticsjob--get-azurermstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzureRMStreamAnalyticsJob
 Azure サブスクリプションまたは指定したリソースグループに定義されているすべての Stream Analytics ジョブを一覧表示したり、リソース グループ内の特定のジョブに関するジョブ情報を取得したりします。
 
 **例 1**
@@ -101,7 +105,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは、リソース グループ StreamAnalytics-Default-Central-US の Stream Analytics ジョブ StreamingJob に関する情報を返します。
 
-### <a name="get-azurestreamanalyticsinput-|-get-azurermstreamanalyticsinput"></a>Get-AzureStreamAnalyticsInput | Get-AzureRMStreamAnalyticsInput
+### <a name="get-azurestreamanalyticsinput--get-azurermstreamanalyticsinput"></a>Get-AzureStreamAnalyticsInput | Get-AzureRMStreamAnalyticsInput
 指定した Stream Analytics ジョブに定義されたすべての入力を一覧表示したり、特定の入力に関する情報を取得したりします。
 
 **例 1**
@@ -128,7 +132,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは、ジョブ StreamingJob に定義された EntryStream という名前の入力に関する情報を返します。
 
-### <a name="get-azurestreamanalyticsoutput-|-get-azurermstreamanalyticsoutput"></a>Get-AzureStreamAnalyticsOutput | Get-AzureRMStreamAnalyticsOutput
+### <a name="get-azurestreamanalyticsoutput--get-azurermstreamanalyticsoutput"></a>Get-AzureStreamAnalyticsOutput | Get-AzureRMStreamAnalyticsOutput
 指定した Stream Analytics ジョブに定義されたすべての出力を一覧表示したり、特定の出力に関する情報を取得したりします。
 
 **例 1**
@@ -155,7 +159,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは、ジョブ StreamingJob に定義された Output という名前の出力に関する情報を返します。
 
-### <a name="get-azurestreamanalyticsquota-|-get-azurermstreamanalyticsquota"></a>Get-AzureStreamAnalyticsQuota | Get-AzureRMStreamAnalyticsQuota
+### <a name="get-azurestreamanalyticsquota--get-azurermstreamanalyticsquota"></a>Get-AzureStreamAnalyticsQuota | Get-AzureRMStreamAnalyticsQuota
 指定したリージョンのストリーミング ユニットのクォータに関する情報を取得します。
 
 **例 1**
@@ -170,7 +174,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは、米国中部リージョンのストリーミング ユニットのクォータと使用状況に関する情報を返します。
 
-### <a name="get-azurestreamanalyticstransformation-|-getazurermstreamanalyticstransformation"></a>Get-AzureStreamAnalyticsTransformation | GetAzureRMStreamAnalyticsTransformation
+### <a name="get-azurestreamanalyticstransformation--getazurermstreamanalyticstransformation"></a>Get-AzureStreamAnalyticsTransformation | GetAzureRMStreamAnalyticsTransformation
 Stream Analytics ジョブに定義されている特定の変換に関する情報を取得します。
 
 **例 1**
@@ -185,7 +189,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは、StreamingJob ジョブ上の StreamingJob という名前の変換に関する情報を返します。
 
-### <a name="new-azurestreamanalyticsinput-|-new-azurermstreamanalyticsinput"></a>New-AzureStreamAnalyticsInput | New-AzureRMStreamAnalyticsInput
+### <a name="new-azurestreamanalyticsinput--new-azurermstreamanalyticsinput"></a>New-AzureStreamAnalyticsInput | New-AzureRMStreamAnalyticsInput
 Stream Analytics ジョブ内に新しい入力を作成したり、指定した既存の入力を更新したりします。
 
 入力の名前は .json ファイルまたはコマンド ラインで指定できます。 その両方で名前を指定する場合は、コマンド ラインで指定する名前をファイル内の名前と同じものにする必要があります。
@@ -232,7 +236,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは EntryStream という名前の既存の入力ソースの定義をファイルの定義に置き換えます。
 
-### <a name="new-azurestreamanalyticsjob-|-new-azurermstreamanalyticsjob"></a>New-AzureStreamAnalyticsJob | New-AzureRMStreamAnalyticsJob
+### <a name="new-azurestreamanalyticsjob--new-azurermstreamanalyticsjob"></a>New-AzureStreamAnalyticsJob | New-AzureRMStreamAnalyticsJob
 Microsoft Azure に新しい Stream Analytics ジョブを作成したり、指定した既存のジョブの定義を更新したりします。
 
 ジョブの名前は .json ファイルまたはコマンド ラインで指定できます。 その両方で名前を指定する場合は、コマンド ラインで指定する名前をファイル内の名前と同じものにする必要があります。
@@ -267,7 +271,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは StreamingJob のジョブ定義を置き換えます。
 
-### <a name="new-azurestreamanalyticsoutput-|-new-azurermstreamanalyticsoutput"></a>New-AzureStreamAnalyticsOutput | New-AzureRMStreamAnalyticsOutput
+### <a name="new-azurestreamanalyticsoutput--new-azurermstreamanalyticsoutput"></a>New-AzureStreamAnalyticsOutput | New-AzureRMStreamAnalyticsOutput
 Stream Analytics ジョブ内に新しい出力を作成したり、既存の出力を更新したりします。  
 
 出力の名前は .json ファイルまたはコマンド ラインで指定できます。 その両方で名前を指定する場合は、コマンド ラインで指定する名前をファイル内の名前と同じものにする必要があります。
@@ -302,7 +306,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは、ジョブ StreamingJob の "output" の定義を置き換えます。
 
-### <a name="new-azurestreamanalyticstransformation-|-new-azurermstreamanalyticstransformation"></a>New-AzureStreamAnalyticsTransformation | New-AzureRMStreamAnalyticsTransformation
+### <a name="new-azurestreamanalyticstransformation--new-azurermstreamanalyticstransformation"></a>New-AzureStreamAnalyticsTransformation | New-AzureRMStreamAnalyticsTransformation
 Stream Analytics ジョブ内に新しい変換を作成したり、既存の変換を更新したります。
 
 変換の名前は .json ファイルまたはコマンド ラインで指定できます。 その両方で名前を指定する場合は、コマンド ラインで指定する名前をファイル内の名前と同じものにする必要があります。
@@ -337,7 +341,7 @@ Azure PowerShell 1.0:
 
  この PowerShell コマンドは、ジョブ StreamingJob の StreamingJobTransform の定義を置き換えます。
 
-### <a name="remove-azurestreamanalyticsinput-|-remove-azurermstreamanalyticsinput"></a>Remove-AzureStreamAnalyticsInput | Remove-AzureRMStreamAnalyticsInput
+### <a name="remove-azurestreamanalyticsinput--remove-azurermstreamanalyticsinput"></a>Remove-AzureStreamAnalyticsInput | Remove-AzureRMStreamAnalyticsInput
 Microsoft Azure 内の Stream Analytics ジョブの特定の入力を非同期的に削除します。  
 –Force パラメーターを指定すると、確認を求められることなく、入力が削除されます。
 
@@ -353,7 +357,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは、ジョブ StreamingJob 内の入力 EventStream を削除します。  
 
-### <a name="remove-azurestreamanalyticsjob-|-remove-azurermstreamanalyticsjob"></a>Remove-AzureStreamAnalyticsJob | Remove-AzureRMStreamAnalyticsJob
+### <a name="remove-azurestreamanalyticsjob--remove-azurermstreamanalyticsjob"></a>Remove-AzureStreamAnalyticsJob | Remove-AzureRMStreamAnalyticsJob
 Microsoft Azure 内の特定の Stream Analytics ジョブを非同期的に削除します。  
 –Force パラメーターを指定すると、確認を求められることなく、ジョブが削除されます。
 
@@ -369,7 +373,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドはジョブ StreamingJob を削除します。  
 
-### <a name="remove-azurestreamanalyticsoutput-|-remove-azurermstreamanalyticsoutput"></a>Remove-AzureStreamAnalyticsOutput | Remove-AzureRMStreamAnalyticsOutput
+### <a name="remove-azurestreamanalyticsoutput--remove-azurermstreamanalyticsoutput"></a>Remove-AzureStreamAnalyticsOutput | Remove-AzureRMStreamAnalyticsOutput
 Microsoft Azure 内の Stream Analytics ジョブの特定の出力を非同期的に削除します。  
 –Force パラメーターを指定すると、確認を求められることなく、出力が削除されます。
 
@@ -385,7 +389,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは、ジョブ StreamingJob 内の出力 Output を削除します。  
 
-### <a name="start-azurestreamanalyticsjob-|-start-azurermstreamanalyticsjob"></a>Start-AzureStreamAnalyticsJob | Start-AzureRMStreamAnalyticsJob
+### <a name="start-azurestreamanalyticsjob--start-azurermstreamanalyticsjob"></a>Start-AzureStreamAnalyticsJob | Start-AzureRMStreamAnalyticsJob
 Microsoft Azure に Stream Analytics ジョブを非同期的に展開し開始します。
 
 **例 1**
@@ -400,7 +404,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは、カスタム出力の開始時刻が UTC の 2012 年 12 月 12 日 12:12:12 に設定された StreamingJob ジョブを開始します。
 
-### <a name="stop-azurestreamanalyticsjob-|-stop-azurermstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzureRMStreamAnalyticsJob
+### <a name="stop-azurestreamanalyticsjob--stop-azurermstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzureRMStreamAnalyticsJob
 Microsoft Azure で実行中の Stream Analytics ジョブを非同期的に停止し、使用していたリソースの割り当てを解除します。 ジョブを編集したり再開したりできるように、Azure Portal と管理 API を使えば、ジョブ定義とメタデータをサブスクリプション内で引き続き利用できます。 停止状態のジョブに対しては課金されません。
 
 **例 1**
@@ -415,7 +419,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドはジョブ StreamingJob を停止します。  
 
-### <a name="test-azurestreamanalyticsinput-|-test-azurermstreamanalyticsinput"></a>Test-AzureStreamAnalyticsInput | Test-AzureRMStreamAnalyticsInput
+### <a name="test-azurestreamanalyticsinput--test-azurermstreamanalyticsinput"></a>Test-AzureStreamAnalyticsInput | Test-AzureRMStreamAnalyticsInput
 指定した入力に接続するために、Stream Analytics の機能をテストします。
 
 **例 1**
@@ -430,7 +434,7 @@ Azure PowerShell 1.0:
 
 この PowerShell コマンドは、StreamingJob 内の入力 EntryStream の接続状態をテストします。  
 
-### <a name="test-azurestreamanalyticsoutput-|-test-azurermstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzureRMStreamAnalyticsOutput
+### <a name="test-azurestreamanalyticsoutput--test-azurermstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzureRMStreamAnalyticsOutput
 指定した出力に接続するために、Stream Analytics の機能をテストします。
 
 **例 1**
@@ -472,6 +476,6 @@ Azure PowerShell 1.0:
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

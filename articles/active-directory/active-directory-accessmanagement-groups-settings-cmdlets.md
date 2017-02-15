@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -35,23 +35,23 @@ ms.openlocfilehash: c18ef38661e31e16114b88bdfad36320776ef12b
 次の手順では、ディレクトリ内のすべての Office グループに適用される設定をディレクトリ レベルで作成します。
 
 1. 使用する SettingTemplate を把握していない場合、このコマンドレットでは、Settings テンプレートの一覧が返されます。
-   
+
     `Get-MsolAllSettingTemplate`
-   
+
     ![設定テンプレートの一覧](./media/active-directory-accessmanagement-groups-settings-cmdlets/list-of-templates.png)
 2. 使用ガイドラインの URL を追加するには、まず使用ガイドラインの URL 値を定義する SettingsTemplate オブジェクト、つまり、Group.Unified テンプレートを取得する必要があります。
-   
+
     `$template = Get-MsolSettingTemplate –TemplateId 62375ab9-6b52-47ed-826b-58e47e0e304b`
 3. 次に、そのテンプレートに基づいて新しい Settings オブジェクトを作成します。
-   
+
     `$setting = $template.CreateSettingsObject()`
 4. その後、使用ガイドラインの値を更新します。
-   
+
     `$setting["UsageGuidelinesUrl"] = "<https://guideline.com>"`
 5. 最後に、設定を適用します。
-   
+
     `New-MsolSettings –SettingsObject $setting`
-   
+
     ![使用ガイドラインの URL の追加](./media/active-directory-accessmanagement-groups-settings-cmdlets/add-usage-guideline-url.png)
 
 Group.Unified SettingsTemplate で定義される設定は次のとおりです。
@@ -67,31 +67,31 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 次の手順では、ディレクトリ内のすべての Office グループに適用される設定をディレクトリ レベルで読み取ります。
 
 1. 既存のディレクトリ設定をすべて読み取ります。
-   
+
     `Get-MsolAllSettings`
 2. 特定のグループの設定をすべて読み取ります。
-   
+
     `Get-MsolAllSettings -TargetType Groups -TargetObjectId <groupObjectId>`
 3. SettingId GUID を使用して、特定のディレクトリ設定を読み取ります。
-   
+
     `Get-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c`
-   
+
     ![設定 ID の GUID](./media/active-directory-accessmanagement-groups-settings-cmdlets/settings-id-guid.png)
 
 ## <a name="update-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の更新
 次の手順では、ディレクトリ内のすべての Office グループに適用される設定をディレクトリ レベルで更新します。
 
 1. 既存の Settings オブジェクトを取得します。
-   
+
     `$setting = Get-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c`
 2. 更新する値を取得します。
-   
+
     `$value = $Setting.GetSettingsValue()`
 3. 値を更新します。
-   
+
     `$value["AllowToAddGuests"] = "false"`
 4. 設定を更新します。
-   
+
     `Set-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c –SettingsValue $value`
 
 ## <a name="remove-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の削除
@@ -122,7 +122,6 @@ Azure Active Directory PowerShell のその他のドキュメントについて�
 
 * [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
 
 
 

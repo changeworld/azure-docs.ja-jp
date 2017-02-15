@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と 8x8 Virtual Office の統合 | Microsoft Docs'
-description: Azure Active Directory と 8x8 Virtual Office の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と 8x8 Virtual Office の統合 | Microsoft Docs"
+description: "Azure Active Directory と 8x8 Virtual Office の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: b34a6edf-e745-4aec-b0b2-7337473d64c5
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2f8d126b9c2cfe5aaa6ef8f72f23ae7d66d6c524
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-8x8-virtual-office"></a>チュートリアル: Azure Active Directory と 8x8 Virtual Office の統合
+# <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>チュートリアル: Azure Active Directory と 8x8 Virtual Office の統合
 このチュートリアルの目的は、8x8 Virtual Office と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 8x8 Virtual Office と Azure AD の統合には、次の利点があります。
@@ -169,14 +173,14 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
    
     a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-8x8virtualoffice-tutorial/create_aaduser_06.png)
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -184,7 +188,7 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-8x8virtualoffice-tutorial/create_aaduser_07.png)
@@ -256,6 +260,6 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

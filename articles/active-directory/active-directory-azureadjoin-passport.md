@@ -1,13 +1,13 @@
 ---
-title: Microsoft Passport 経由でのパスワードを使用しない ID の認証 | Microsoft Docs
-description: Microsoft Passport の概要と、Microsoft Passport のデプロイに関する詳細情報について説明します。
+title: "Microsoft Passport 経由でのパスワードを使用しない ID の認証 | Microsoft Docs"
+description: "Microsoft Passport の概要と、Microsoft Passport のデプロイに関する詳細情報について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: femila
 manager: swadhwa
-editor: ''
+editor: 
 tags: azure-classic-portal
-
+ms.assetid: f907bb90-8776-46ca-9e12-279949af66ff
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: femila
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: cfe729f56ce0d1e4bc7f1fe7eedefd736c8ca0d0
+
 
 ---
 # <a name="authenticating-identities-without-passwords-through-microsoft-passport"></a>Microsoft Passport 経由でのパスワードを使用しない ID の認証
@@ -67,6 +71,9 @@ Microsoft Passport を有効にすると、次の操作によって会社のリ�
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

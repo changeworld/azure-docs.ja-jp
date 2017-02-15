@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 12/14/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
-ms.openlocfilehash: 76b6934950354f94f4f68e7cfef00e890d9391a6
+ms.sourcegitcommit: eea184fecef089d14d2c13e4528baea30037b638
+ms.openlocfilehash: 2e5e37b4d009cade5f0a919fa64ec2ec48348571
 
 
 ---
@@ -131,6 +131,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
 ## <a name="next-steps"></a>次のステップ
 * [Azure でのクラスター](service-fabric-cluster-creation-via-portal.md)または [Windows でのスタンドアロン クラスター](service-fabric-cluster-creation-for-windows-server.md)を作成する方法を学びます。
 * [Reliable Services](service-fabric-reliable-services-quick-start.md) または [Reliable Actors](service-fabric-reliable-actors-get-started.md) プログラミング モデルを使用してサービスを作成してみます。
+* [Windows コンテナー](service-fabric-deploy-container.md)または既存のアプリを[ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)としてデプロイしてみます。
 * [Web サービス フロントエンド](service-fabric-add-a-web-frontend.md)を使用してインターネットにサービスを公開する方法を学びます。
 * [ハンズオン ラボ](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx) を参照し、ステートレス サービスの作成、監視と正常性レポートの構成、アプリケーションのアップグレードを実行します。
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
@@ -152,6 +153,6 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

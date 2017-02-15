@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Load Balancer を使用して、アプリのネットワーク パフォーマンスを向上させる方法について説明します。 仮想マシンとクラウド リソースのトラフィックやクロスプレミス仮想ネットワーク内のトラフィックを管理できます。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 8b95ce7f93293a25db4df5858209902ba6347591
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 53a3e534f9c93c73ef6d28696c5a9d6430a7a258
 
 ---
 #<a name="load-balancer-documentation"></a>Load Balancer のドキュメント
 
-Azure Load Balancer は、アプリケーションに高可用性と優れたネットワーク パフォーマンスを提供します。  Load Balancer は、仮想マシンへの着信インターネット トラフィック、クラウド リソース間のトラフィック、クロスプレミス仮想ネットワーク内のトラフィック、または特定の仮想マシンへの外部トラフィックを負荷分散するように構成できます。
+Load Balancer を構成して、高い可用性と優れたネットワーク パフォーマンスをアプリケーションに提供する方法について説明します。 ドキュメントでは、仮想マシンやクラウド リソースの間のトラフィックと、クロスプレミス仮想ネットワーク内のトラフィックを負荷分散する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -109,7 +110,7 @@ Azure Load Balancer は、アプリケーションに高可用性と優れたネ
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.network.models">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
-                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html">Node.js</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html">Node.JS</a></p>
                         <p><a href="http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers">Ruby</a></p>
                         <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations#azure.mgmt.network.operations.LoadBalancersOperations">Python</a></p>
                    </div>
@@ -131,16 +132,10 @@ Azure Load Balancer は、アプリケーションに高可用性と優れたネ
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/load-balancer.pdf">
-        <div class="img"></div>
-        <div class="text">
-Load Balancer のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

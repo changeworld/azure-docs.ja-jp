@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2016
+ms.date: 12/06/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4d7900a30d2489dac345dcd8977f48e07d2ee963
+ms.sourcegitcommit: 49352a5e8255468bbc54c02e0cd9242d49002dbd
+ms.openlocfilehash: 2275daf25fd916932dbf54a7b069ecbfcf3e68cf
 
 
 ---
@@ -61,19 +61,25 @@ Azure AD への Optimizely の統合を構成するには、ギャラリーか�
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
    
     ![Active Directory][1]
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![[アプリケーション]][2]
+
 4. ページの下部にある **[追加]** をクリックします。
    
     ![アプリケーション][3]
+
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
     ![アプリケーション][4]
+
 6. 検索ボックスに、「 **Optimizely**」と入力します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_01.png)
+
 7. 結果ウィンドウで **[Optimizely]** を選び、**[完了]** をクリックしてアプリケーションを追加します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_02.png)
@@ -104,6 +110,7 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
 1. Azure クラシック ポータルの **Optimizely** アプリケーション統合ページで、上部のメニューから **[属性]** をクリックします。
    
     ![[シングル サインオンの構成]][5]
+
 2. [Saml トークン属性] ダイアログで、"email" 属性を追加します。
    
     a. **[ユーザー属性の追加]** をクリックして **[ユーザー属性の追加]** ダイアログを開きます。 
@@ -115,15 +122,19 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
     c. **[属性値]** リストから、属性値 "userprincipalname" または Azure AD および Optimizely で認識される電子メールを含む任意の値を選択します。
    
     d. ページの下部にある [完了]」を参照してください。
+
 3. 上部のメニューで **[クイック スタート]**をクリックします。
    
     ![[シングル サインオンの構成]][6]
+
 4. クラシック ポータルの **Optimizely** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![[シングル サインオンの構成]][7] 
+
 5. **[ユーザーの Optimizely へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
     ![Configure Single Sign-On](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_06.png)
+
 6. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。 
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_07.png)
@@ -134,22 +145,24 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
 
     c. **[次へ]**をクリックします。 
 
-
-    > [AZURE.NOTE] **[サインオン URL]** と **[識別子]** の値は、実際の値の単なるプレースホルダーです。 このチュートリアルの後半で Optimizely から実際の値を取得するための手順を確認できます。
+    > [!NOTE] 
+    > **[サインオン URL]** と **[識別子]** の値は、実際の値の単なるプレースホルダーです。 このチュートリアルの後半で Optimizely から実際の値を取得するための手順を確認できます。
 
 1. **[Optimizely でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_08.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[シングル サインオン サービス URL]** をコピーします。
+
 2. アプリケーション用に構成された SSO を入手するには、Optimizely アカウント マネージャーに連絡し、次の情報を提供してください。
    
    * ダウンロードした証明書 
    * シングル サインオン サービス URL
      
      電子メールに応じて、Optimizely では、[サインオン URL] (SP によって開始された SSO) と [識別子] (サービス プロバイダーのエンティティ ID) の値が提供されます。
+
 3. **[アプリケーション設定の構成]** ダイアログ ページに戻り、次の手順を実行します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_07.png)
@@ -159,23 +172,28 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
     b. **[識別子]** ボックスに、Optimizely が提供する**サービス プロバイダーのエンティティ ID** を入力します。
    
     c. **[次へ]**をクリックします。
+
 4. **[Optimizely でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
-   ![Azure AD のシングル サインオン][10]
+    ![Azure AD のシングル サインオン][10]
    
-   a. シングル サインオンの構成確認を選択します。
+    a. シングル サインオンの構成確認を選択します。
    
-   b. **[次へ]**をクリックします。
+    b. **[次へ]**をクリックします。
+
 5. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
    
-   ![Azure AD のシングル サインオン][11]
+    ![Azure AD のシングル サインオン][11]
+
 6. 別のブラウザー ウィンドウで、Optimizely アプリケーションにサインオンします。
+
 7. 右上隅のアカウント名をクリックし、 **[アカウント設定]**に移動します。
    
-   ![Azure AD のシングル サインオン](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_09.png)
+    ![Azure AD のシングル サインオン](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_09.png)
+
 8. [アカウント] タブで、**[概要]** セクションの [シングル サインオン] にある **[Enable SSO (SSO の有効化)]** チェック ボックスをオンにします。
    
-   ![Azure AD のシングル サインオン](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_10.png)
+    ![Azure AD のシングル サインオン](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_10.png)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
@@ -188,13 +206,17 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-optimizely-tutorial/create_aaduser_09.png) 
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
 3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-optimizely-tutorial/create_aaduser_03.png) 
+
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-optimizely-tutorial/create_aaduser_04.png) 
+
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-optimizely-tutorial/create_aaduser_05.png) 
@@ -204,22 +226,25 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
+
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-optimizely-tutorial/create_aaduser_06.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-optimizely-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]**をクリックします。
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-optimizely-tutorial/create_aaduser_07.png) 
+
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-optimizely-tutorial/create_aaduser_08.png) 
@@ -232,14 +257,16 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
 このセクションでは、Optimizely で Britta Simon というユーザーを作成します。
 
 1. ホーム ページで、 **[コラボレーター]** タブを選択します。
+
 2. **[New Collaborator (新しいコラボレーター)]** クリックし、新しいコラボレーターをプロジェクトに追加します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-optimizely-tutorial/create_aaduser_10.png)
+
 3. 電子メール アドレスを入力して、役割を割り当てます。 **[招待]**をクリックします。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-optimizely-tutorial/create_aaduser_11.png)
 
-1. 電子メールの招待を受信します。 電子メール アドレスを使用します。 Optimizely にログインする必要があります。
+1. 電子メールの招待を受信します。 メール アドレスを使用すると、Optimizely にログインする必要があります。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 このセクションでは、Britta Simon に Optimizely へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
@@ -251,13 +278,17 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
 1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![ユーザーの割り当て][201] 
+
 2. アプリケーションの一覧で **[Optimizely]**を選択します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_50.png) 
+
 3. 上部のメニューで **[ユーザー]**をクリックします。
    
     ![ユーザーの割り当て][203] 
+
 4. [すべてのユーザー] の一覧で **[Britta Simon]**を選択します。
+
 5. 下部にあるツール バーで **[割り当て]**をクリックします。
    
     ![ユーザーの割り当て][205]
@@ -294,6 +325,6 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

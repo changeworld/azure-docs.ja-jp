@@ -1,13 +1,13 @@
 ---
-title: Cloud Cruiser と Microsoft Azure Billing API の統合 | Microsoft Docs
-description: Microsoft Azure 課金パートナーの Cloud Cruiser が Azure Billing API を製品に統合した独自の事例について説明します。  この記事は、Microsoft Azure Pack の使用/試用に関心を持っている Azure と Cloud Cruiser のユーザーには特に役立ちます。
-services: ''
-documentationcenter: ''
+title: "Cloud Cruiser と Microsoft Azure Billing API の統合 | Microsoft Docs"
+description: "Microsoft Azure 課金パートナーの Cloud Cruiser が Azure Billing API を製品に統合した独自の事例について説明します。  この記事は、Microsoft Azure Pack の使用/試用に関心を持っている Azure と Cloud Cruiser のユーザーには特に役立ちます。"
+services: 
+documentationcenter: 
 author: BryanLa
 manager: mbaldwin
-editor: ''
+editor: 
 tags: billing
-
+ms.assetid: b65128cf-5d4d-4cbd-b81e-d3dceab44271
 ms.service: billing
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 09/08/2016
 ms.author: mobandyo;sirishap;bryanla
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b1783823218a883fc9fdec05e835fb7249eed97d
+
 
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cloud Cruiser と Microsoft Azure Billing API の統合
@@ -40,7 +44,7 @@ RateCard API は、Azure の料金情報を提供します。 適切な資格情
         "MeterStatus": "Active"
     },
 
-### <a name="cloud-cruiser’s-interface-to-azure-ratecard-api"></a>Azure RateCard API に対する Cloud Cruiser のインターフェイス
+### <a name="cloud-cruisers-interface-to-azure-ratecard-api"></a>Azure RateCard API に対する Cloud Cruiser のインターフェイス
 Cloud Cruiser は、RateCard API をさまざまな方法で利用できます。 この記事では、IaaS ワークロード コストのシミュレーションと分析に使用する方法を説明します。
 
 この使用事例を読むにあたって、Microsoft Azure Pack (WAP) でいくつかのインスタンスが実行されているワークロードを想定してください。 目標は、この同じワークロードを Azure でシミュレートし、移行した場合のコストを見積もることです。 このシミュレーションを作成するために、主に次の 2 つの作業を実行します。
@@ -166,7 +170,7 @@ Azure Usage API を介して使用できるデータには、消費量の情報�
 ### <a name="import-data-from-the-usage-api-into-cloud-cruiser"></a>Usage API から Cloud Cruiser へのデータのインポート
 Cloud Cruiser のブックには、Usage API の情報の収集と処理を自動化する機能があります。 ETL (抽出-変換-読み込み) ブックを使用して、データのコレクション、変換、および Cloud Cruiser データベースへの発行を構成できます。
 
-各ブックには、1 つ以上のコレクションを含めることができます。 そのため、複数のソースの情報を関連付けて、使用状況データの補完と拡大を行うことができます。 この例では、Azure テンプレート ブックに新しいシート (*UsageAPI*) を作成し、新しい_コレクション_を設定して Usage API から情報をインポートします。
+各ブックには、1 つ以上のコレクションを含めることができます。 そのため、複数のソースの情報を関連付けて、使用状況データの補完と拡大を行うことができます。 この例では、Azure テンプレート ブックに新しいシート (*UsageAPI*) を作成し、新しい*コレクション*を設定して Usage API から情報をインポートします。
 
 ![図 3 - UsageAPI シートにインポートする Usage API データ][12]
 
@@ -181,7 +185,7 @@ Cloud Cruiser のブックには、Usage API の情報の収集と処理を自�
 
 "Networking" サービスにはタグ情報がありません (黄色のボックス) が、 *ResourceGroupName* フィールドを見れば、このサービスは同じリソース グループの一部であることを確認できます。 このリソース グループの他のリソースにはタグがあるため、以降のプロセスでは、この情報を使用して、不足しているタグをこのリソースに適用できます。
 
-次の手順では、タグの情報を _ResourceGroupName_に関連付けるルックアップ テーブルを作成します。 このルックアップ テーブルは、次の手順でタグ情報を使用して、消費データを強化するために使用します。
+次の手順では、タグの情報を *ResourceGroupName*に関連付けるルックアップ テーブルを作成します。 このルックアップ テーブルは、次の手順でタグ情報を使用して、消費データを強化するために使用します。
 
 ### <a name="adding-the-tag-information-to-the-consumption-data"></a>消費データへのタグ情報の追加
 ここからは、*PublishData* シートを使用できます。このシートでは、Billing API の消費情報を処理して、タグから抽出されるフィールドを追加します。 このプロセスは、前の手順で作成したルックアップ テーブルを参照して実行します。その際、参照のキーとして *ResourceGroupName* を使用します。
@@ -201,7 +205,7 @@ Cloud Cruiser のブックには、Usage API の情報の収集と処理を自�
 * サンプル コードをすぐに確認するには、「 [Azure コード サンプル](https://azure.microsoft.com/documentation/samples/?term=billing)」の「Microsoft Azure Billing API コード サンプル」を参照してください。
 
 ### <a name="learn-more"></a>詳細情報
-* Azure リソース マネージャーの詳細については、「 [Azure リソース マネージャーの概要](resource-group-overview.md) 」を参照してください。
+* Azure リソース マネージャーの詳細については、「 [Azure リソース マネージャーの概要](azure-resource-manager/resource-group-overview.md) 」を参照してください。
 
 <!--Image references-->
 
@@ -222,6 +226,6 @@ Cloud Cruiser のブックには、Usage API の情報の収集と処理を自�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

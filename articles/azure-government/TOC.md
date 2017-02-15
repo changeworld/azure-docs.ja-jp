@@ -18,6 +18,9 @@
 ### [リソース マネージャー](documentation-government-manage-azure-resource-manager.md)
 ### [Operations Management Suite](documentation-government-manage-oms.md)
 ### [サブスクリプション](documentation-government-manage-subscriptions.md)
+## デプロイ
+### Web + モバイル
+#### [App Services](documentation-government-howto-deploy-webandmobile.md)
 
 # リファレンス
 ## [サービス](documentation-government-services.md)
@@ -32,8 +35,10 @@
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/)
 ## [試用版](https://azuregov.microsoft.com/trial/azuregovtrial)
+## [ブログ](https://blogs.msdn.microsoft.com/azuregov/)
+## [Azure Government の Web サイト](https://azure.microsoft.com/overview/clouds/government/)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

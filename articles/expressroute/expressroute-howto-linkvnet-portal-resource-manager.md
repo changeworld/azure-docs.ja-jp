@@ -13,21 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/13/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6a3604b95179d1a88f832ed45d9a6b85931187b1
+ms.sourcegitcommit: b3a8cdab9e609994b1c4c4d50e9571718e8091de
+ms.openlocfilehash: 8043f0d5a4c9fbd301e7565e7d62be09dd77abd8
 
 
 ---
-# <a name="link-a-virtual-network-to-an-expressroute-circuit"></a>ExpressRoute 回線への仮想ネットワークのリンク
+# <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続する
 > [!div class="op_single_selector"]
-> * [Azure ポータル - Resource Manager](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [PowerShell - Resource Manager](expressroute-howto-linkvnet-arm.md)
-> * [PowerShell - クラシック](expressroute-howto-linkvnet-classic.md)
+> * [Resource Manager - Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-linkvnet-arm.md)
+> * [クラシック - PowerShell](expressroute-howto-linkvnet-classic.md)
+> * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > 
-> 
+>  
 
 この記事では、Resource Manager デプロイメント モデルと Azure ポータルを使用して Azure ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。
 
@@ -77,6 +78,6 @@ ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 5849b600-89cb-4995-ae9f-0188a17b4e1b
 ms.service: sql-database
-ms.custom: business continuity; how to
+ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 08/29/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a16d278262f6fb645163f8d94139c86019df0cde
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 2f63098e2087e9bc96493f98bdb5900671e659a1
 
 
 ---
@@ -37,9 +37,9 @@ ms.openlocfilehash: a16d278262f6fb645163f8d94139c86019df0cde
 コマンドによって、次のワークフローが実行されます。
 
 1. 一時的にレプリケーションを同期モードに切り替えます。 これにより、すべての未完了のトランザクションがセカンダリ データベースにフラッシュされます。
-2. geo レプリケーション パートナーシップで 2 つのデータベースのロールを切り替えます。  
+2. geo レプリケーション パートナーシップで&2; つのデータベースのロールを切り替えます。  
 
-このシーケンスにより、ロールの切り替えの前に 2 つのデータベースが同期されることが保証されるため、データ損失は発生しません。 ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。 通常の状況では、操作全体が完了するのに 1 分かかりません。 詳細については、「[Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393\(v=azure.300\).aspx)」をご覧ください。
+このシーケンスにより、ロールの切り替えの前に&2; つのデータベースが同期されることが保証されるため、データ損失は発生しません。 ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。 通常の状況では、操作全体が完了するのに&1; 分かかりません。 詳細については、「[Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393\(v=azure.300\).aspx)」をご覧ください。
 
 このコマンドレットは、セカンダリ データベースをプライマリに切り替えるプロセスが完了すると、戻ります。
 
@@ -66,7 +66,7 @@ ms.openlocfilehash: a16d278262f6fb645163f8d94139c86019df0cde
 > 
 > 
 
-プライマリ データベースに複数のセカンダリ データベースがある場合、コマンドは部分的に成功します。 コマンドが実行されたセカンダリ データベースがプライマリ データベースになります。 ただし、古いプライマリ データベースはプライマリ データベースのままです。すなわち、2 つのプライマリ データベースは不整合の状態になり、中断されたレプリケーション リンクによって接続されます。 ユーザーは、この 2 つのプライマリ データベースのいずれかで “remove secondary” API を使用して、この構成を手動で修復する必要があります。
+プライマリ データベースに複数のセカンダリ データベースがある場合、コマンドは部分的に成功します。 コマンドが実行されたセカンダリ データベースがプライマリ データベースになります。 ただし、古いプライマリ データベースはプライマリ データベースのままです。すなわち、2 つのプライマリ データベースは不整合の状態になり、中断されたレプリケーション リンクによって接続されます。 ユーザーは、この&2; つのプライマリ データベースのいずれかで “remove secondary” API を使用して、この構成を手動で修復する必要があります。
 
 次のコマンドでは、プライマリが利用できない場合に、"mydb" という名前のデータベースのロールをプライマリに切り替えます。 "mydb" の接続先であった元のプライマリ データベースは、それがオンラインに戻ると、セカンダリ データベースに切り替わります。 その時点で、同期化によってデータが失われる可能性があります。
 
@@ -81,12 +81,12 @@ ms.openlocfilehash: a16d278262f6fb645163f8d94139c86019df0cde
 * 復旧前後の手順や障害復旧訓練の実施など、アクティブ geo レプリケーションを使用した障害後の復旧については、 [障害復旧の訓練](sql-database-disaster-recovery.md)
 * アクティブ geo レプリケーションについては、Sasha Nosov の [geo レプリケーションの新機能](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 * アクティブ geo レプリケーションを使用したクラウド アプリケーションの設計については、 [geo レプリケーションを使用したビジネス継続性のためのクラウド アプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-* エラスティック データベース プールでのアクティブ geo レプリケーションの使用については、 [エラスティック プールの障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
+* エラスティック プールでのアクティブ geo レプリケーションの使用については、[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
 * ビジネス継続性の概要については、 [ビジネス継続性の概要](sql-database-business-continuity.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -224,6 +224,6 @@ Azure ポータルを使用して自動スケーリングを設定する例に�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

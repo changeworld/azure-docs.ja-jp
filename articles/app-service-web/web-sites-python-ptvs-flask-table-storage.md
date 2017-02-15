@@ -193,6 +193,6 @@ Python Tools for Visual Studio、Flask および Azure テーブル ストレー
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

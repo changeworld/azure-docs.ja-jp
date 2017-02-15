@@ -37,7 +37,7 @@ ms.openlocfilehash: 21ec1f15dc7055cdd3b281216abfbac8554abad0
 * **Microsoft Office ライセンス** - Microsoft Excel を含む Marketplace HPC Pack VM イメージを使用してコンピューティング ノードをデプロイすると、30 日間の評価バージョンの Microsoft Excel Professional Plus 2013 がインストールされます。 評価期間の後もワークロードを引き続き実行するには、有効な Microsoft Office ライセンスを使用して Excel をアクティブ化する必要があります。 この記事で後述する [Excel のアクティブ化](#excel-activation) を参照してください。 
 
 ## <a name="step-1-set-up-an-hpc-pack-cluster-in-azure"></a>手順 1. Azure で HPC Pack クラスターをセットアップする
-クラスターをセットアップする 2 つの方法を説明します。1 つめは Azure クイックスタート テンプレートと Azure ポータルを使用する方法で、2 つめは Azure PowerShell デプロイ スクリプトを使用する方法です。
+クラスターをセットアップする&2; つの方法を説明します。1 つめは Azure クイックスタート テンプレートと Azure ポータルを使用する方法で、2 つめは Azure PowerShell デプロイ スクリプトを使用する方法です。
 
 ### <a name="option-1-use-a-quickstart-template"></a>方法 1. クイックスタート テンプレートを使用する
 Azure クイックスタート テンプレートを使用すると、Azure ポータルで HPC Pack クラスターをすばやく簡単にデプロイできます。 ポータルでテンプレートを開くと表示される簡単な UI で、クラスターの設定を入力します。 手順は次のようになります。 
@@ -82,7 +82,7 @@ Azure クイックスタート テンプレートを使用すると、Azure ポ�
    ![証明書をエクスポートする][cert]
 
 ### <a name="option-2-use-the-hpc-pack-iaas-deployment-script"></a>方法 2. HPC Pack IaaS デプロイ スクリプトを使用する
-HPC Pack IaaS デプロイ スクリプトは、HPC Pack クラスターをデプロイするためのもう 1 つの汎用性の高い方法です。 クラシック デプロイ モデルでクラスターを作成しながら、テンプレートに Azure リソース マネージャー デプロイ モデルを使用します。 また、スクリプトは Azure Global サービスまたは Azure China サービスのサブスクリプションと互換性があります。
+HPC Pack IaaS デプロイ スクリプトは、HPC Pack クラスターをデプロイするためのもう&1; つの汎用性の高い方法です。 クラシック デプロイ モデルでクラスターを作成しながら、テンプレートに Azure リソース マネージャー デプロイ モデルを使用します。 また、スクリプトは Azure Global サービスまたは Azure China サービスのサブスクリプションと互換性があります。
 
 **追加の前提条件**
 
@@ -183,7 +183,7 @@ HPC Pack IaaS デプロイ スクリプトは、HPC Pack クラスターをデ�
    .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
    ```
 
-HPC Pack デプロイ スクリプトの実行には少し時間がかかります。 スクリプトでの処理の 1 つとして、クラスター証明書がエクスポートされてダウンロードされ、クライアント コンピューター上の現在のユーザーの Documents フォルダーに保存されます。 スクリプトでは、次のようなメッセージが生成されます。 次の手順では、適切な証明書ストアに証明書をインポートします。    
+HPC Pack デプロイ スクリプトの実行には少し時間がかかります。 スクリプトでの処理の&1; つとして、クラスター証明書がエクスポートされてダウンロードされ、クライアント コンピューター上の現在のユーザーの Documents フォルダーに保存されます。 スクリプトでは、次のようなメッセージが生成されます。 次の手順では、適切な証明書ストアに証明書をインポートします。    
 
     You have enabled REST API or web portal on HPC Pack head node. Please import the following certificate in the Trusted Root Certification Authorities certificate store on the computer where you are submitting job or accessing the HPC web portal:
     C:\Users\hpcuser\Documents\HPCWebComponent_HPCExcelHN004_20150707162011.cer
@@ -192,7 +192,7 @@ HPC Pack デプロイ スクリプトの実行には少し時間がかかりま�
 ### <a name="excel-activation"></a>Excel のアクティブ化
 運用ワークロードに ComputeNodeWithExcel VM イメージを使用する場合、有効な Microsoft Office ライセンス キーを使用して計算ノードの Excel をアクティブ化する必要があります。 アクティブ化しないと、評価版の Excel は 30 日後に期限が切れ、実行中の Excel ブックは COMException (0x800AC472) で失敗するようになります。 
 
-Excel の評価期間を 30 日間延長できます。ヘッド ノードにログオンし、HPC Cluster Manager を使用してすべての Excel コンピューティング ノードで clusrun `%ProgramFiles(x86)%\Microsoft Office\Office15\OSPPREARM.exe` を実行します。 この処理は最大 2 回実行できます。 その後は、有効な Office ライセンス キーを入力する必要があります。
+Excel の評価期間を 30 日間延長できます。ヘッド ノードにログオンし、HPC Cluster Manager を使用してすべての Excel コンピューティング ノードで clusrun `%ProgramFiles(x86)%\Microsoft Office\Office15\OSPPREARM.exe` を実行します。 この処理は最大&2; 回実行できます。 その後は、有効な Office ライセンス キーを入力する必要があります。
 
 VM イメージにインストールされる Office Professional Plus 2013 は、汎用ボリューム ライセンス キー (GVLK) を使用したボリューム エディションです。 アクティブ化には、キー管理サービス (KMS)/Active Directory ベースのアクティブ化 (AD-BA) またはマルチ ライセンス認証キー (MAK) を使用できます。 
 

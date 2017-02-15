@@ -16,13 +16,13 @@ ms.workload: azure-government
 ms.date: 10/06/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: 601945c05affc350eba111dcec969e6504b91611
-ms.openlocfilehash: e26f1c182869dee58b0ab26da1aa65f99ba8faaa
+ms.sourcegitcommit: 5be95e2deda3bcc36494ba51eeb050d5c4e2894b
+ms.openlocfilehash: 3c1e610412ec043a62f3c389bd239a4225111e61
 
 
 ---
 # <a name="azure-government-compliance"></a>Azure Government のコンプライアンス
-## <a name="blueprint-customer-responsibilities-matrix-streamlining-ato-processes"></a>Blueprint Customer Responsibilities Matrix: ATO プロセスの合理化
+## <a name="blueprint-customer-responsibilities-matrix--streamlining-ato-processes"></a>Blueprint Customer Responsibilities Matrix: ATO プロセスの合理化
 Azure Blueprint プログラムでは、お客様の機関またはシステムに固有の運用承認 (ATO) プロセスを支援するためのドキュメントに、お客さまがアクセスできます。 この記事では、Azure Blueprint Customer Responsibilities Matrix (CRM) と、セキュリティ担当者によるこのドキュメントの活用方法について詳しく説明します。
 
 Azure Blueprint CRM は実用目的で設計されています。 制御要件のみを定義しているスプレッドシート形式のドキュメントであり、Azure でシステム構築を行うお客様は、この制御要件を満たすセキュリティ制御を実装する必要があります。
@@ -48,6 +48,6 @@ CRM についてのフィードバックは、お客様の ATO プロセスを�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,20 +1,24 @@
 ---
-title: Windows VM の RM デプロイメントのトラブルシューティング | Microsoft Docs
-description: Azure で新しい Windows 仮想マシンを作成するときに発生する Resource Manager デプロイメントの問題のトラブルシューティング
+title: "Windows VM の RM デプロイメントのトラブルシューティング | Microsoft Docs"
+description: "Azure で新しい Windows 仮想マシンを作成するときに発生する Resource Manager デプロイメントの問題のトラブルシューティング"
 services: virtual-machines-windows, azure-resource-manager
-documentationcenter: ''
+documentationcenter: 
 author: JiangChen79
 manager: felixwu
-editor: ''
+editor: 
 tags: top-support-issue, azure-resource-manager
-
+ms.assetid: afc6c1a4-2769-41f6-bbf9-76f9f23bcdf4
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2016
+ms.date: 12/16/2016
 ms.author: cjiang
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: bec8c8347b3e29e2d87d7565a29187f22bd10652
+
 
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-windows-virtual-machine-in-azure"></a>Azure での新しい Windows 仮想マシンの作成に関する Resource Manager デプロイメントの問題のトラブルシューティング
@@ -53,9 +57,9 @@ ms.author: cjiang
 
 **解決策**
 
-これらのエラーの両方を解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で[現在の VHD からイメージをキャプチャし直します](virtual-machines-windows-vhd-copy.md)。
+これらのエラーの両方を解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で[現在の VHD からイメージをキャプチャし直します](virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-## <a name="issue:-custom/gallery/marketplace-image;-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
 このエラーは、新しい VM 要求が、要求されている VM サイズをサポートできないか、要求に対応するための使用可能な空き領域がないクラスターに固定されている場合に発生します。
 
 **原因 1:** クラスターが要求された VM サイズをサポートできない。
@@ -79,8 +83,11 @@ ms.author: cjiang
   * 新しい VM を同じ仮想ネットワークに追加します。
 
 ## <a name="next-steps"></a>次のステップ
-Azure での停止していた Windows VM の再起動または既存の Windows VM のサイズ変更に問題が発生する場合は、 [Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング](virtual-machines-windows-restart-resize-error-troubleshooting.md)を参照してください。
+Azure での停止していた Windows VM の再起動または既存の Windows VM のサイズ変更に問題が発生する場合は、 [Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング](virtual-machines-windows-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

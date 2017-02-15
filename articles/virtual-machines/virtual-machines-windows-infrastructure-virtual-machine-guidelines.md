@@ -59,6 +59,6 @@ Azure 環境内の主要なリソースの 1 つは VM です。 このリソー
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

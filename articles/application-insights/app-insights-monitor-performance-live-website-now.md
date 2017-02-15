@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 10/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 79819619ff7f25ba1097fe12f2da7453a1fcb4f1
+ms.sourcegitcommit: ee9ebc23ce805bb4665669077a4d3fddf4c43e32
+ms.openlocfilehash: a190b1990a4ae4e7ad52cc1a7e802c8002522917
 
 
 ---
@@ -28,7 +28,7 @@ Azure Application Insights を使用すれば、ライブ Web アプリケーシ
 
 Application Insights を .NET Web アプリケーションに適用する方法には、次の 3 つがあります。
 
-* **ビルド時:** Web アプリ コードに [Application Insights SDK][greenbrown] を追加します。
+* **ビルド時**: Web アプリ コードに [Application Insights SDK を追加][greenbrown]します。
 * **実行時:** 後述するように、コードのリビルドと再デプロイを行うことなく、サーバー上の Web アプリをインストルメント化します。
 * **両方:** SDK を Web アプリ コードの中にビルドします。また、実行時の拡張機能を適用します。 両方のオプションの長所を活かせます。
 
@@ -39,7 +39,7 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 | 要求と例外 |はい |はい |
 | [より詳細な例外](app-insights-asp-net-exceptions.md) | |はい |
 | [依存関係の診断](app-insights-asp-net-dependencies.md) |.NET 4.6 以降 (詳細レベルは低い) |はい。全詳細。結果コード、SQL コマンド テキスト、HTTP 動詞|
-| [システム パフォーマンス カウンター](app-insights-performance-counters.md) | |IIS または Azure Cloud Services (Azure Web アプリは除く) |
+| [システム パフォーマンス カウンター](app-insights-performance-counters.md) |はい |はい |
 | [カスタム テレメトリの API][api] |はい | |
 | [トレース ログ統合](app-insights-asp-net-trace-logs.md) |はい | |
 | [ページ ビューとユーザー データ](app-insights-javascript.md) |はい | |
@@ -55,29 +55,23 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 
 ### <a name="if-your-app-is-hosted-on-your-iis-server"></a>アプリが IIS サーバーでホストされている場合
 1. IIS Web サーバーで、管理者の資格情報を使用してサインインします。
-2. [Status Monitor インストーラー](http://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードし、実行します。
-3. インストール ウィザードで、Microsoft Azure にサインインします。
-
-    ![Microsoft アカウントの資格情報で Azure にサインインする](./media/app-insights-monitor-performance-live-website-now/appinsights-035-signin.png)
-
-    *接続エラーが発生した場合は、「[トラブルシューティング](#troubleshooting)」を参照してください。*
-4. 監視するインストール済みの Web アプリケーションまたは Web サイトを選択し、Application Insights ポータルで結果を表示するときに使用するリソースを構成します。
+2. [Status Monitor インストーラー](http://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードし、実行します。  
+3. 監視するインストール済みの Web アプリケーションまたは Web サイトを選択し、Application Insights ポータルで結果を表示するときに使用するリソースを構成します。 Microsoft Azure にサインインしている必要があります。
 
     ![アプリとリソースを選択します。](./media/app-insights-monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
     通常は、新しいリソースと[リソース グループ][roles]を構成します。
 
     サイトの [Web テスト][availability]や [Web クライアントの監視][client]を既に設定している場合は、既存のリソースを使用します。
-5. IIS を再起動します。
+4. IIS を再起動します。
 
     ![ダイアログの上部にある [再起動] を選択します。](./media/app-insights-monitor-performance-live-website-now/appinsights-036-restart.png)
 
     少しの間、Web サービスが中断されます。
-6. 監視対象の Web アプリに ApplicationInsights.config が挿入されます。
+5. 監視対象の Web アプリに ApplicationInsights.config が挿入されます。
 
     ![Web アプリのコード ファイルの横にある、.config ファイルを見つけます。](./media/app-insights-monitor-performance-live-website-now/appinsights-034-aiconfig.png)
-
-   これ以外にも、web.config にいくつかの変更が加えられます。
+   
 
 #### <a name="want-to-reconfigure-later"></a>後で (再) 構成する
 ウィザードを完了した後、いつでも必要に応じてエージェントを再構成できます。 この方法は、エージェントをインストールした際の初期設定に問題があった場合にも使用できます。
@@ -105,7 +99,7 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 ![依存関係](./media/app-insights-monitor-performance-live-website-now/23-dep.png)
 
 ## <a name="performance-counters"></a>パフォーマンス カウンター
-(Azure Web Apps 用ではありません。) 概要ブレードで [サーバー] をクリックすると、CPU 占有率やメモリ使用量などのサーバー パフォーマンス カウンターのグラフが表示されます。
+概要ブレードで [サーバー] をクリックすると、CPU 占有率やメモリ使用量などのサーバー パフォーマンス カウンターのグラフが表示されます。
 
 サーバー インスタンスが複数ある場合、グラフを編集してロール インスタンスでグループ化します。
 
@@ -146,10 +140,11 @@ Status Monitor が動作するように、サーバーのファイアウォー�
 * Windows Server 2008 R2
 * Windows Server 2012
 * Windows Server 2012 R2
+* Windows Server 2016
 
-最新の SP、.NET Framework 4.0 と 4.5
+最新の SP、.NET Framework 4.5
 
-クライアント側: .NET Framework 4.0 と 4.5 がインストールされた Windows 7、8、8.1
+クライアント側: .NET Framework 4.5 がインストールされた Windows 7、8、8.1、10
 
 IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 
@@ -232,6 +227,6 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

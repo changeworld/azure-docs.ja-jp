@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Pluralsight の統合 | Microsoft Docs'
-description: Azure Active Directory と Pluralsight の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Pluralsight の統合 | Microsoft Docs"
+description: "Azure Active Directory と Pluralsight の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 4c3f07d2-4e1f-4ea3-9025-c663f1f2b7b4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e6b71ba7f928871768851357bcb4bce1fbf4fed3
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-pluralsight"></a>チュートリアル: Azure Active Directory と Pluralsight の統合
+# <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>チュートリアル: Azure Active Directory と Pluralsight の統合
 このチュートリアルの目的は、Pluralsight と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Pluralsight と Azure AD の統合には、次の利点があります。
@@ -126,7 +130,7 @@ Pluralsight アプリケーションは、特定の形式の SAML アサーシ�
 
     c. **[属性値]** 一覧から、その行に対して表示される属性値を選択します。
 
-    d. **[完了]** をクリックします。  
+    d. **[完了]** をクリックします。    
 
 
 
@@ -187,9 +191,9 @@ Pluralsight アプリケーションは、特定の形式の SAML アサーシ�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
@@ -204,7 +208,7 @@ Pluralsight アプリケーションは、特定の形式の SAML アサーシ�
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_07.png) 
@@ -220,7 +224,7 @@ Pluralsight アプリケーションは、特定の形式の SAML アサーシ�
 このセクションの目的は、Pluralsight で Britta Simon というユーザーを作成することです。 Pluralsight サポート チームと連携し、Pluralsight アカウントにユーザーを追加してください。 
 
 > [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、Pluralsight サポート チームにお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、Pluralsight のサポート チームにお問い合わせください。
 > 
 > 
 
@@ -274,6 +278,6 @@ Pluralsight アプリケーションは、特定の形式の SAML アサーシ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

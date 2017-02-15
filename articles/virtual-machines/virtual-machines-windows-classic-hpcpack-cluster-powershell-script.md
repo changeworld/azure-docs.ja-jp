@@ -1,13 +1,13 @@
 ---
-title: PowerShell スクリプトで Windows HPC クラスターをデプロイする | Microsoft Docs
-description: PowerShell スクリプトを実行し、Azure 仮想マシンで Windows HPC Pack クラスターをデプロイします。
+title: "PowerShell スクリプトで Windows HPC クラスターをデプロイする | Microsoft Docs"
+description: "PowerShell スクリプトを実行し、Azure 仮想マシンで Windows HPC Pack クラスターをデプロイします。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: dlepow
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management,hpc-pack
-
+ms.assetid: 286b2be8-2533-40df-b02a-26156b1f1133
 ms.service: virtual-machines-windows
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/07/2016
 ms.author: danlep
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: f2c3121cf6fed47a5dd844c06de3dd9175fbcd5a
+
 
 ---
-# <a name="create-a-windows-high-performance-computing-(hpc)-cluster-with-the-hpc-pack-iaas-deployment-script"></a>HPC Pack IaaS デプロイ スクリプトを使用し、Windows VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する
-HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワークロード用に完全な HPC クラスターを Azure 仮想マシンにデプロイします。 このクラスターは、Windows Server と Microsoft HPC Pack を実行する Active Directory に参加するヘッド ノードと、別途指定した Windows コンピューティング リソースとから成ります。 Linux ワークロード用に Azure で HPC Pack クラスターをデプロイする必要がある場合は、「 [HPC Pack IaaS デプロイ スクリプトを使用し、Linux VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md)」をご覧ください。 Azure リソース マネージャーのテンプレートを使用して HPC Pack クラスターをデプロイすることもできます。 例については、「[Create an HPC cluster](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)」 (HPC クラスターを作成する) および「[Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)」 (カスタム コンピューティング ノード イメージを使用して HPC クラスターを作成する) を参照してください。
+# <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>HPC Pack IaaS デプロイ スクリプトを使用し、Windows VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する
+HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワークロード用に完全な HPC クラスターを Azure 仮想マシンにデプロイします。 このクラスターは、Windows Server と Microsoft HPC Pack を実行する Active Directory に参加するヘッド ノードと、別途指定した Windows コンピューティング リソースとから成ります。 Linux ワークロード用に Azure で HPC Pack クラスターをデプロイする必要がある場合は、「 [HPC Pack IaaS デプロイ スクリプトを使用し、Linux VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。 Azure リソース マネージャーのテンプレートを使用して HPC Pack クラスターをデプロイすることもできます。 例については、「[Create an HPC cluster](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)」 (HPC クラスターを作成する) および「[Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)」 (カスタム コンピューティング ノード イメージを使用して HPC クラスターを作成する) を参照してください。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
@@ -263,10 +267,13 @@ Windows 更新プログラムの自動インストールはドメイン フォ�
 
 ## <a name="next-steps"></a>次のステップ
 * クラスターでテスト ワークロードを実行してみます。 たとえば、HPC Pack [ファースト ステップ ガイド](https://technet.microsoft.com/library/jj884144)を参照してください。
-* クラスターのデプロイ スクリプトを作成して HPC ワークロードを実行するチュートリアルについては、「 [Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する](virtual-machines-windows-excel-cluster-hpcpack.md)」をご覧ください。
-* HPC Pack のツールを試し、作成したクラスターからコンピューティング ノードを開始、停止、追加、削除してください。 「 [Manage compute nodes in an HPC Pack cluster in Azure (Azure の HPC Pack クラスターでコンピューティング ノードを管理する)](virtual-machines-windows-classic-hpcpack-cluster-node-manage.md)」をご覧ください。
-* ローカル コンピューターからクラスターにジョブを送信するための設定については、「 [オンプレミス コンピューターから Azure にデプロイされた HPC Pack クラスターに HPC ジョブを送信する](virtual-machines-windows-hpcpack-cluster-submit-jobs.md)」を参照してください。
+* クラスターのデプロイ スクリプトを作成して HPC ワークロードを実行するチュートリアルについては、「 [Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する](virtual-machines-windows-excel-cluster-hpcpack.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+* HPC Pack のツールを試し、作成したクラスターからコンピューティング ノードを開始、停止、追加、削除してください。 「 [Manage compute nodes in an HPC Pack cluster in Azure (Azure の HPC Pack クラスターでコンピューティング ノードを管理する)](virtual-machines-windows-classic-hpcpack-cluster-node-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
+* ローカル コンピューターからクラスターにジョブを送信するための設定については、「 [オンプレミス コンピューターから Azure にデプロイされた HPC Pack クラスターに HPC ジョブを送信する](virtual-machines-windows-hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

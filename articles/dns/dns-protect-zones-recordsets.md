@@ -43,14 +43,14 @@ RBAC アクセス許可の割り当ては、[Azure Portal](../active-directory/r
 
 ```powershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
-New-AzureRmRoleAssignment -SignInName <user email address> -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName <resource group name>
+New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
 また、同じ目的を果たせるコマンドを [Azure CLI から実行する](../active-directory/role-based-access-control-manage-access-azure-cli.md)こともできます。
 
-```powershell
+```azurecli
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
-azure role assignment create --signInName  <user email address> --roleName "DNS Zone Contributor" --resourceGroup <resource group name>
+azure role assignment create --signInName "<user email address>" --roleName "DNS Zone Contributor" --resourceGroup "<resource group name>"
 ```
 
 ### <a name="zone-level-rbac"></a>ゾーン レベルの RBAC
@@ -67,12 +67,12 @@ Azure RBAC のルールは、サブスクリプション、リソース グル�
 
 ```powershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
-New-AzureRmRoleAssignment -SignInName <user email address> -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName <resource group name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones
+New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
 また、同じ目的を果たせるコマンドを [Azure CLI から実行する](../active-directory/role-based-access-control-manage-access-azure-cli.md)こともできます。
 
-```powershell
+```azurecli
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 azure role assignment create --signInName <user email address> --roleName "DNS Zone Contributor" --resource-name <zone name> --resource-type Microsoft.Network/DNSZones --resource-group <resource group name>
 ```
@@ -89,14 +89,14 @@ RBAC のレベルにはもう 1 つあります。 Contoso Corporation のメー
 
 ```powershell
 # Grant permissions to a specific record set
-New-AzureRmRoleAssignment -SignInName <user email address> -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
 また、同じ目的を果たせるコマンドを [Azure CLI から実行する](../active-directory/role-based-access-control-manage-access-azure-cli.md)こともできます。
 
-```powershell
+```azurecli
 # Grant permissions to a specific record set
-azure role assignment create --signInName <user email address> --roleName "DNS Zone Contributor" --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+azure role assignment create --signInName "<user email address>" --roleName "DNS Zone Contributor" --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
 ### <a name="custom-roles"></a>カスタム ロール
@@ -150,7 +150,7 @@ New-AzureRmRoleDefinition -InputFile <file path>
 
 また、Azure CLI を使用して作成することもできます。
 
-```powershell
+```azurecli
 # Create new role definition based on input file
 azure role create -inputfile <file path>
 ```
@@ -193,7 +193,7 @@ New-AzureRmResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceN
 
 ```powershell
 # Lock a DNS record set
-New-AzureRmResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name>/<record set name> -ResourceType Microsoft.Network/DNSZones/<record type> -ResourceGroupName <resource group name>
+New-AzureRmResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
 ```
 
 ### <a name="protecting-against-zone-deletion"></a>ゾーンの削除に対する保護
@@ -208,7 +208,7 @@ Azure DNS ゾーンを削除すると、ゾーン内のレコード セットも
 
 ```powershell
 # Protect against zone delete with DoNotDelete lock on the record set
-New-AzureRmResourceLock -LockLevel DoNotDelete -LockName <lock name> -ResourceName <zone name>/@ -ResourceType Microsoft.Network/DNSZones/SOA -ResourceGroupName <resource group name>
+New-AzureRmResourceLock -LockLevel DoNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
 意図せずゾーンが削除されることを防ぐもう 1 つの方法として、カスタム ロールを使用し、ゾーンの管理に使われるオペレーター アカウントとサービス アカウントにゾーンの削除アクセス許可が付与されないようにするという方法があります。 ゾーンの削除が必要な場合は、まずゾーンの削除アクセス許可を付与 (誤ったゾーンを削除しないように、ゾーン スコープでのアクセス許可を付与) し、次にゾーンを削除するという、2 段階の削除操作を強制することができます。
