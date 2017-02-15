@@ -1,12 +1,12 @@
 ---
-title: Azure Service Fabric で作成されたサービスをローカルで監視および診断する | Microsoft Docs
-description: ローカルの開発用コンピューターで Microsoft Azure Service Fabric を使用して作成されたサービスを監視および診断する方法について説明します。
+title: "Azure Service Fabric で作成されたサービスをローカルで監視および診断する | Microsoft Docs"
+description: "ローカルの開発用コンピューターで Microsoft Azure Service Fabric を使用して作成されたサービスを監視および診断する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: ms-toddabel
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: edcc0631-ed2d-45a3-851d-2c4fa0f4a326
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2016
 ms.author: toddabel
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 57e281b5e3a86b2a7bc78d47163b0475898869f0
+
 
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
@@ -46,7 +50,7 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 
 **サービス テンプレート**から作成されるプロジェクト (ステートレスまたはステートフル) の場合は、単に `RunAsync` の実装を検索します:
 
-1. `ServiceEventSource.Current.ServiceMessage` in the `RunAsync` を呼び出すと、アプリケーション コードからのカスタムの ETW トレースの例が表示されます。
+1.  `ServiceEventSource.Current.ServiceMessage` in the `RunAsync` を呼び出すと、アプリケーション コードからのカスタムの ETW トレースの例が表示されます。
 2. **ServiceEventSource.cs** ファイルには、パフォーマンス上の理由により頻度の高いイベントに使用する必要がある、`ServiceEventSource.ServiceMessage` メソッドのオーバーロードが見つかります。
 
 **アクター テンプレート** から作成されるプロジェクトの場合 (ステートレスまたはステートフル):
@@ -63,6 +67,9 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 * [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)
 * [Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する](service-fabric-diagnostic-how-to-use-elasticsearch.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

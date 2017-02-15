@@ -3,8 +3,8 @@ title: "Ruby から Azure Table Storage を使用する方法 | Microsoft Docs"
 description: "NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。"
 services: storage
 documentationcenter: ruby
-author: tamram
-manager: carmonm
+author: mmacy
+manager: timlt
 editor: 
 ms.assetid: 047cd9ff-17d3-4c15-9284-1b5cc61a3224
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 11/28/2016
-ms.author: tamram
+ms.date: 12/08/2016
+ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: c05d8d244f22998113b0fa9c7508ecc287bdbd64
-ms.openlocfilehash: d43160bf1fa7dd08bb6c3fd5e2d0f3111134239b
+ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
+ms.openlocfilehash: e1df2fcf4478ef7f58c5686e85abd6ae94b5a2d3
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: d43160bf1fa7dd08bb6c3fd5e2d0f3111134239b
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このガイドでは、Azure Table サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Ruby API を使用して記述されています。 紹介するシナリオは、 **テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
@@ -62,15 +62,15 @@ Azure ポータルでクラシックまたは Resource Manager ストレージ �
 1. [Azure ポータル](https://portal.azure.com)にログインします。
 2. 使用するストレージ アカウントを表示します。
 3. 右側の [設定] ブレードで、 **[アクセス キー]**をクリックします。
-4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。 このいずれかを使用できます。 
-5. コピー アイコンをクリックしてキーをクリップボードにコピーします。 
+4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。 このいずれかを使用できます。
+5. コピー アイコンをクリックしてキーをクリップボードにコピーします。
 
 Azure ポータルでクラシック ストレージ アカウントからこれらの値を取得するには:
 
-1. [従来の Azure ポータル](https://manage.windowsazure.com)にログインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にログインします。
 2. 使用するストレージ アカウントを表示します。
 3. ナビゲーション ウィンドウの下部にある **[アクセス キーの管理]** をクリックします。
-4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。 アクセス キーには、プライマリとセカンダリのどちらでも使用できます。 
+4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。 アクセス キーには、プライマリとセカンダリのどちらでも使用できます。
 5. コピー アイコンをクリックしてキーをクリップボードにコピーします。
 
 ## <a name="create-a-table"></a>テーブルを作成する
@@ -143,8 +143,8 @@ result, token = azure_table_service.query_entities("testtable", query)
 
 > [!NOTE]
 > 結果セットが大きすぎて単一のクエリで返すことができない場合は、継続トークンが返されます。この継続トークンを使用して、後続のページを取得できます。
-> 
-> 
+>
+>
 
 ## <a name="query-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを照会する
 テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。 "プロジェクション" と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。 select 句を使用して、クライアントに渡すプロパティの名前を指定します。
@@ -178,6 +178,6 @@ azure_table_service.delete_table("testtable")
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

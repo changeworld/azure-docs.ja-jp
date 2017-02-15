@@ -121,6 +121,6 @@ Samsung 製 Android デバイスでは、Azure Authenticator アプリをアン�
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

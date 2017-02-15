@@ -1,30 +1,27 @@
 ---
-title: "送信する | Microsoft Azure"
-description: "送信する。"
-services: 
-documentationcenter: 
-author: squillace
-manager: timlt
-editor: 
-tags: billing
-ms.assetid: 7a0dfb9b-fae0-4470-8b83-7ea48b5725d8
-ms.service: value
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/21/2016
-ms.author: tysonn
-translationtype: Human Translation
-ms.sourcegitcommit: 3f93555ba158778acc3fd67ed63ef8c3b7f7a5e6
-ms.openlocfilehash: 317cf298f87867c381d002884677e40f4383ebda
 
+layout: LandingPage
+description: "クラシック デプロイメントを使用して Windows 仮想マシンを作成する方法について説明します。"
+title: "Windows 向けの Azure Virtual Machines のドキュメント | Microsoft Docs"
+services: virtual-machines
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machines-windows
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 0b803da9d1cfefababd18b48fd39efc9895331bf
+ms.openlocfilehash: bb4088e42fcd577ef1c7af0f5a631cf4ec4b0c70
 
 ---
 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

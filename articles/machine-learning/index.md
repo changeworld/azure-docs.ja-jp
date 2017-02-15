@@ -1,13 +1,17 @@
 ---
 layout: LandingPage
+description: "アプリケーションで予測分析を使用するデータ サイエンティストと開発者向けのクラウド サービス、Machine Learning に関するドキュメント、ビデオ、サンプル モデル。"
+author: garyericson
+ms.date: 01/18/2017
+ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 2328b831e3d04b2d974dbc1520f79dcbdcd80128
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 3247e45c44f63c529c84de5dd31eadc5a9552952
 
 ---
 #<a name="azure-machine-learning-documentation"></a>Azure Machine Learning のドキュメント
 
-Azure Machine Learning は、モデルの予測分析ツールを提供するだけでなく、予測モデルをすぐに使用できる Web サービスとしてデプロイするための、完全に管理されたサービスを提供します。
+データ サイエンティストと開発者が Machine Learning を使って予測分析をアプリケーションに組み込む方法について説明します。 チュートリアル、ビデオ、サンプル モデルでは、機械学習モデルを構築してデプロイする方法を紹介しています。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -86,63 +90,51 @@ Azure Machine Learning は、モデルの予測分析ツールを提供するだ
 
 ---
 
-## <a name="reference"></a>リファレンス
-
+<h2>リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell リファレンス</p>
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning">PowerShell (新規)</a></p>
+                        <p><a href="/azure/machine-learning/machine-learning-powershell-module">PowerShell (クラシック)</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/rest/api/machinelearning">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">アルゴリズムとモジュールのリファレンス</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p>Machine Learning REST API</p>
+                        <p><a href="/rest/api/machinelearning">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-    <li>
-        <a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>アルゴリズム</h3>
-                        <p>アルゴリズムおよびモジュール リファレンス</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-<ul>
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/machine-learning.pdf">
-        <div class="img"></div>
-        <div class="text">
-Machine Learning ドキュメントのダウンロード </div>
-    </a>
-</div>
+</ul>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

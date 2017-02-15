@@ -14,10 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2016
-ms.author: mikewasson
+ms.author: mwasson
 translationtype: Human Translation
-ms.sourcegitcommit: 0f8bc125855bc5a5b67fde5b0b742c73b5da7610
-ms.openlocfilehash: 0032c330288ea37508c919b50a41a5e58fc28e90
+ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
+ms.openlocfilehash: 788efb5d1cbbd5fd20096c54ca702b99eb2b5a18
 
 
 ---
@@ -64,7 +64,7 @@ VM のサイズを変更するには、次の手順を実行します。
    > 
 
 ## <a name="next-steps"></a>次のステップ
-スケーラビリティを高めるには、複数の VM インスタンスを実行してスケール アウトします。 詳細については、「[仮想マシン スケール セット[scale-set]での Linux マシンの自動スケール]」を参照してください。 
+スケーラビリティを高めるには、複数の VM インスタンスを実行してスケール アウトします。 詳細については、「[仮想マシン スケール セットでの Linux マシンの自動スケール][scale-set]」をご覧ください。 
 
 <!-- links -->
 
@@ -75,6 +75,6 @@ VM のサイズを変更するには、次の手順を実行します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

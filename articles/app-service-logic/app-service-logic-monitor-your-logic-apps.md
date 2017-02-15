@@ -1,12 +1,12 @@
 ---
-title: Azure App Service でロジック アプリを監視する | Microsoft Docs
-description: ロジック アプリの作業内容を表示する方法
+title: "Azure App Service でロジック アプリを監視する | Microsoft Docs"
+description: "ロジック アプリの作業内容を表示する方法"
 author: jeffhollan
 manager: erikre
-editor: ''
+editor: 
 services: logic-apps
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: jehollan
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: cc73caf6ffdc47199369112a5310a3f4dd0cc9bf
+
 
 ---
 # <a name="monitor-your-logic-apps"></a>ロジック アプリを監視する
@@ -49,7 +53,7 @@ REST API で必要となる実行の**関連付け ID** など、さらに詳し
 これまでに挙げた Azure ポータルと REST API から得られる情報に加え、Azure 診断を使って、さらに踏み込んだ情報の入手やデバッグを行うようにロジック アプリを構成することができます。
 
 1. ロジック アプリ ブレードの **[診断]** セクションをクリックします。
-2. **[診断設定]**
+2.  **[診断設定]**
 3. データの出力先となるイベント ハブまたはストレージ アカウントを構成します。
    
     ![Azure 診断の設定](./media/app-service-logic-monitor-your-logic-apps/diagnostics.png)
@@ -134,6 +138,9 @@ REST API で必要となる実行の**関連付け ID** など、さらに詳し
 * [ロジック アプリ デプロイ テンプレートの作成](app-service-logic-create-deploy-template.md)
 * [エンタープライズ統合機能](app-service-logic-enterprise-integration-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

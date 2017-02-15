@@ -3,7 +3,7 @@ title: "Azure Batch 診断ログ | Microsoft Docs"
 description: "プールやタスクなど Azure Batch アカウント リソースの診断ログ イベントを記録して分析します。"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: e14e611d-12cd-4671-91dc-bc506dc853e5
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 10/12/2016
-ms.author: marsma
+ms.date: 01/20/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2c66486f9716ed8ac093685b10e9294beb43c381
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: f1aa23d2865ec8401a59b2370c8157d2458c60f7
 
 
 ---
@@ -44,7 +44,7 @@ ms.openlocfilehash: 2c66486f9716ed8ac093685b10e9294beb43c381
 
 [診断ログの収集を有効にする方法](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs)
 
-「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をすべて読み、ログを有効化する方法だけではなく、さまざまな Azure サービスでサポートされるログ カテゴリについて理解することをお勧めします。 たとえば、Azure Batch で現在サポートされている 1 つのログ カテゴリは**サービス ログ**です。
+「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をすべて読み、ログを有効化する方法だけではなく、さまざまな Azure サービスでサポートされるログ カテゴリについて理解することをお勧めします。 たとえば、Azure Batch で現在サポートされている&1; つのログ カテゴリは**サービス ログ**です。
 
 ## <a name="service-logs"></a>サービス ログ
 Azure Batch サービス ログには、プールやタスクなどの Batch リソースの存続期間中に Azure Batch サービスが出力するイベントが含まれます。 Batch が出力する各イベントは、指定のストレージ アカウントに JSON 形式で格納されます。 たとえば、次に示すのはサンプルの**プール作成イベント**の本文です。
@@ -78,14 +78,14 @@ Azure Batch サービス ログには、プールやタスクなどの Batch リ
 
 | **サービス ログ イベント** |
 | --- |
-| [プールの作成][pool_create] |
-| [プールの削除開始][pool_delete_start] |
-| [プールの削除完了][pool_delete_complete] |
-| [プールのサイズ変更開始][pool_resize_start] |
-| [プールのサイズ変更完了][pool_resize_complete] |
-| [タスクの開始][task_start] |
-| [タスクの完了][task_complete] |
-| [タスクの失敗][task_fail] |
+| [プール作成][pool_create] |
+| [プール削除の開始][pool_delete_start] |
+| [プール削除の完了][pool_delete_complete] |
+| [プールのサイズ変更の開始][pool_resize_start] |
+| [プールのサイズ変更の完了][pool_resize_complete] |
+| [タスク開始][task_start] |
+| [タスク完了][task_complete] |
+| [タスク失敗][task_fail] |
 
 ## <a name="next-steps"></a>次のステップ
 診断ログ イベントを Azure Storage アカウントに格納する他に、Batch サービス ログ イベントを [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) にストリーミングし、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) に送信することもできます。
@@ -108,6 +108,6 @@ Azure Batch サービス ログには、プールやタスクなどの Batch リ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

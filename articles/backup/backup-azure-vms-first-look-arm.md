@@ -45,7 +45,7 @@ Premium Storage VM の保護の詳細については、「 [Premium Storage VM �
 
 [!INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
 
-保護する VM の数に応じて、異なる開始点から開始できます。1 回の操作で複数の仮想マシンをバックアップする場合は、Recovery Services コンテナーに移動し、コンテナーのダッシュボードからバックアップを開始します。 VM が 1 つで、その VM をバックアップする場合は、VM 管理ブレードから直接バックアップできます。
+保護する VM の数に応じて、異なる開始点から開始できます。1 回の操作で複数の仮想マシンをバックアップする場合は、Recovery Services コンテナーに移動し、コンテナーのダッシュボードからバックアップを開始します。 VM が&1; つで、その VM をバックアップする場合は、VM 管理ブレードから直接バックアップできます。
 
 ## <a name="configure-backup-from-vm-management-blade"></a>VM 管理ブレードからのバックアップの構成
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
@@ -55,11 +55,11 @@ Premium Storage VM の保護の詳細については、「 [Premium Storage VM �
 3. VM 管理ブレードで、左側にある [設定] の [バックアップ] オプションをクリックします。
 ![VM 管理ブレードの [バックアップ] オプション](./media/backup-azure-vms-first-look-arm/backup-option-vm-management-blade.png)
 
-4. これにより、[バックアップの有効化] ブレードが開きます。 このブレードでは、2 つの入力が必要です。1 つは、Recovery Services コンテナー (VM のバックアップを格納するための Azure Backup リソース) です。もう 1 つは、バックアップ ポリシーです (バックアップ ポリシーでは、バックアップのスケジュールと、バックアップ コピーのリテンション期間を指定します)。 このブレードには、既定のオプションがあります。 バックアップの要件に従って、カスタマイズできます。
+4. これにより、[バックアップの有効化] ブレードが開きます。 このブレードでは、2 つの入力が必要です。1 つは、Recovery Services コンテナー (VM のバックアップを格納するための Azure Backup リソース) です。もう&1; つは、バックアップ ポリシーです (バックアップ ポリシーでは、バックアップのスケジュールと、バックアップ コピーのリテンション期間を指定します)。 このブレードには、既定のオプションがあります。 バックアップの要件に従って、カスタマイズできます。
 
   ![バックアップの有効化ウィザード](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-5. Recovery Services コンテナーについては、既存のコンテナーを選択するか、新しいコンテナーを作成することができます。 新しいコンテナーを作成すると、仮想マシンと同じリソース グループと場所に作成されます。 異なる値で Recovery Services コンテナーを作成する場合は、手順 3. で [バックアップ] オプションをクリックする前に [Recovery Services コンテナーを作成](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm)し、このブレードでそのコンテナーを選択します。
+5. Recovery Services コンテナーについては、既存のコンテナーを選択するか、新しいコンテナーを作成することができます。 新しいコンテナーを作成すると、仮想マシンと同じリソース グループと場所に作成されます。 異なる値で Recovery Services コンテナーを作成する場合は、手順&3;. で [バックアップ] オプションをクリックする前に [Recovery Services コンテナーを作成](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm)し、このブレードでそのコンテナーを選択します。
 
 6. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選択し、 **[OK]**をクリックします。
     ![バックアップ ポリシーの選択](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
@@ -86,7 +86,7 @@ Premium Storage VM の保護の詳細については、「 [Premium Storage VM �
 Recovery Services コンテナーは、経時的に作成されたすべてのバックアップと復旧ポイントを格納するエンティティです。 Recovery Services コンテナーには、保護される VM に適用されるバックアップ ポリシーも含まれます。
 
 > [!NOTE]
-> VM のバックアップはローカルの処理です。 別の場所にある Recovery Services コンテナーに VM をバックアップすることはできません。 そのため、バックアップする VM がある Azure の場所ごとに、少なくとも 1 つの Recovery Services コンテナーが存在する必要があります。
+> VM のバックアップはローカルの処理です。 別の場所にある Recovery Services コンテナーに VM をバックアップすることはできません。 そのため、バックアップする VM がある Azure の場所ごとに、少なくとも&1; つの Recovery Services コンテナーが存在する必要があります。
 >
 >
 

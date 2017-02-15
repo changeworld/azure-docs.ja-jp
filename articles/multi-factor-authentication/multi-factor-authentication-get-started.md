@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/15/2016
+ms.date: 01/06/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: b160a4f4ad4d1e383b460a3d17078908da1f4ef1
-ms.openlocfilehash: bcf8a709b9c457f517386b4a4baf9fdf5864cc65
+ms.sourcegitcommit: 07e2a62ee63a8f9ef3d660fff8c6269654e2b448
+ms.openlocfilehash: 3e10becd802dfe8934063727f2f7fb0e9e8b420b
 
 
 ---
@@ -67,7 +67,7 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 | PIN モード | | ● |
 | 不正アクセスのアラート |● | ● |
 | MFA レポート |● | ● |
-| ワンタイム バイパス | ● | ● |
+| ワンタイム バイパス | | ● |
 | 音声通話のカスタムあいさつ文 | ● | ● |
 | 音声通話のカスタマイズ可能な発信元 ID | ● | ● |
 | 信頼できる IP | ● | ● |
@@ -87,6 +87,6 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,35 +1,63 @@
 ---
-title: MongoDB のプロトコル対応の DocumentDB アカウントに接続する | Microsoft Docs
-description: 現在プレビューとして提供されている MongoDB のプロトコル対応の DocumentDB アカウントに接続する方法について説明します。 接続には、既存の MongoDB 接続文字列を使用します。
-keywords: mongodb 接続文字列
+title: "DocumentDB アカウントの MongoDB 接続文字列 | Microsoft Docs"
+description: "MongoDB 接続文字列を使用して MongoDB アプリを Azure DocumentDB アカウントに接続する方法を確認します。"
+keywords: "mongodb 接続文字列"
 services: documentdb
 author: AndrewHoh
 manager: jhubbard
-editor: ''
-documentationcenter: ''
-
+editor: 
+documentationcenter: 
+ms.assetid: e36f7375-9329-403b-afd1-4ab49894f75e
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2016
+ms.date: 11/22/2016
 ms.author: anhoh
+translationtype: Human Translation
+ms.sourcegitcommit: 91474f61ab724d3fd7a70c51dcd097fade8953dd
+ms.openlocfilehash: 3789079412932d56be1c9697fc23c56de5afba6f
+
 
 ---
-# <a name="how-to-connect-to-a-documentdb-account-with-protocol-support-for-mongodb"></a>MongoDB のプロトコル対応の DocumentDB アカウントに接続する方法
-MongoDB の標準的な接続文字列の URI 形式を使用して、MongoDB のプロトコル対応の Azure DocumentDB アカウントに接続する方法について説明します。  
 
-## <a name="get-the-account's-connection-string-information"></a>アカウントの接続文字列情報を取得する
-1. 新しいウィンドウで、 [Azure ポータル](https://portal.azure.com)にサインインします。
-2. [アカウント] ブレードの**左側のナビゲーション** バーで、**[接続文字列]** をクリックします。 **[アカウント]** ブレードに移動するには、ジャンプバーで **[その他のサービス]** をクリックし、**[DocumentDB (NoSQL)]** をクリックして、MongoDB のプロトコル対応の DocumentDB アカウントを選択します。
-   
-    ![Screen shot of the All Settings blade](./media/documentdb-connect-mongodb-account/SettingsBlade.png)
-3. **[接続文字列情報]** ブレードが表示され、MongoDB のドライバーを使用してこのアカウントに接続するために必要なすべての情報 (あらかじめ構築された接続文字列も含む) が表示されます。
-   
+# <a name="connect-a-mongodb-app-to-an-documentdb-account-using-a-mongodb-connection-string"></a>MongoDB 接続文字列を使用して MongoDB アプリを Azure DocumentDB アカウントに接続する
+MongoDB 接続文字列を使用して MongoDB アプリを Azure DocumentDB アカウントに接続する方法を確認します。 MongoDB アプリを Azure DocumentDB データベースに接続することで、DocumentDB データベースを MongoDB アプリのデータ ストアとして使用できます。 
+
+このチュートリアルでは、接続文字列情報を取得する&2; とおりの方法を説明します。
+
+- [クイック スタートを使う方法](#QuickStartConnection)。.NET、Node.js、MongoDB シェル、Java、Python のドライバー向けの方法です。
+- [カスタム接続文字列を使う方法](#GetCustomConnection)。その他のドライバー向けの方法です。
+
+## <a name="prerequisites"></a>前提条件
+
+- Azure アカウント。 Azure アカウントがない場合は、[無料の Azure アカウント](https://azure.microsoft.com/free/)を今すぐ作成できます。 
+- DocumentDB アカウント。 手順については、「[MongoDB アプリで使用するための DocumentDB アカウントの作成](documentdb-create-mongodb-account.md)」を参照してください。
+
+## <a name="a-idquickstartconnectionaget-the-mongodb-connection-string-using-the-quick-start"></a><a id="QuickStartConnection"></a> クイック スタートを使用した MongoDB 接続文字列の取得
+1. インターネット ブラウザーで [Azure Portal](https://portal.azure.com) にサインインします。
+2. **[NoSQL (DocumentDB)]** ブレードで、MongoDB のプロトコルに対応した DocumentDB アカウントを選択します。 
+3. [アカウント] ブレードの**左側のナビゲーション** バーで、**[クイック スタート]** をクリックします。 
+4. プラットフォームを選択します ("*.NET ドライバー*"、"*Node.js ドライバー*"、"*MongoDB シェル*"、"*Java ドライバー*"、"*Python ドライバー*")。 ドライバーまたはツールの一覧が表示されなくても、接続コード スニペットは継続的に文書化されますので心配はいりません。 表示を希望するものを下部のコメント欄に記入してください。また、独自の接続を行う方法については、[アカウントの接続文字列情報の取得](#GetCustomConnection)に関するセクションを参照してください。
+5. コード スニペットを MongoDB アプリにコピーして貼り付ければ、準備は完了です。
+
+    ![[クイック スタート] ブレードのスクリーン ショット](./media/documentdb-connect-mongodb-account/QuickStartBlade.png)
+
+## <a name="a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize"></a><a id="GetCustomConnection"></a> MongoDB 接続文字列を取得してカスタマイズする
+1. インターネット ブラウザーで [Azure Portal](https://portal.azure.com) にサインインします。
+2. **[NoSQL (DocumentDB)]** ブレードで、MongoDB のプロトコルに対応した DocumentDB アカウントを選択します。 
+3. [アカウント] ブレードの**左側のナビゲーション** バーで、**[接続文字列]** をクリックします。 
+4. **[接続文字列情報]** ブレードが表示され、MongoDB のドライバーを使用してこのアカウントに接続するために必要なすべての情報 (あらかじめ構築された接続文字列も含む) が表示されます。
+
     ![Screen shot of the connection string blade](./media/documentdb-connect-mongodb-account/ConnectionStringBlade.png)
 
 ## <a name="connection-string-requirements"></a>接続文字列の要件
+> [!Important]
+> DocumentDB には、厳密なセキュリティ要件や基準が存在します。 DocumentDB アカウントでは、**SSL** による認証と安全な通信が要求されます。
+>
+>
+
 DocumentDB は、MongoDB の標準的な接続文字列の URI 形式をサポートしていますが、特殊な要件がいくつかあることに注意してください。たとえば DocumentDB アカウントには、SSL による安全な通信と認証が要求されます。  そのため接続文字列は次の形式となります。
 
     mongodb://username:password@host:port/[database]?ssl=true
@@ -45,37 +73,19 @@ DocumentDB は、MongoDB の標準的な接続文字列の URI 形式をサポ�
 * ポート (必須)
   * 10250
 * データベース (省略可)
-  * 対応する接続で使用される既定のデータベース
+  * 対応する接続で使用される既定のデータベース (データベースが指定されていない場合は、既定のデータベースは "test" になります)
 * ssl=true (必須)
 
 たとえば、上の [接続文字列情報] に表示されているアカウントの場合、  有効な接続文字列は次のようになります。
 
-    mongodb://contoso123:<password@contoso123.documents.azure.com:10250/mydatabase?ssl=true
-
-## <a name="connecting-with-the-c#-driver-for-mongodb"></a>MongoDB の C# ドライバーでの接続
-既に述べたように、すべての DocumentDB アカウントには、SSL による安全な通信と認証が要求されます。 MongoDB 接続文字列の URI 形式は、ssl=true のクエリ文字列パラメーターをサポートしていますが、MongoDB の C# ドライバーを使用する場合は、MongoClient を作成するときに MongoClientSettings オブジェクトを使用する必要があります。  次のコード スニペットは、先ほどのアカウント情報を使ってアカウントに接続し、"Tasks" データベースを操作する方法を示しています。
-
-            MongoClientSettings settings = new MongoClientSettings();
-            settings.Server = new MongoServerAddress("contoso123.documents.azure.com", 10250);
-            settings.UseSsl = true;
-            settings.SslSettings = new SslSettings();
-            settings.SslSettings.EnabledSslProtocols = SslProtocols.Tls12;
-
-            MongoIdentity identity = new MongoInternalIdentity("Tasks", "contoso123");
-            MongoIdentityEvidence evidence = new PasswordEvidence("<password>");
-
-            settings.Credentials = new List<MongoCredential>()
-            {
-                new MongoCredential("SCRAM-SHA-1", identity, evidence)
-            };
-            MongoClient client = new MongoClient(settings);
-            var database = client.GetDatabase("Tasks",);
-
+    mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@anhohmongo.documents.azure.com:10250/mydatabase?ssl=true
 
 ## <a name="next-steps"></a>次のステップ
 * MongoDB のプロトコル対応の DocumentDB アカウントで [MongoChef を使用](documentdb-mongodb-mongochef.md) する方法を確認します。
 * MongoDB のプロトコル対応 DocumentDB の [サンプル](documentdb-mongodb-samples.md)を体験します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Dec16_HO2-->
 
 

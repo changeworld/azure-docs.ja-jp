@@ -116,6 +116,6 @@ STA は、その Azure Search の観点から待機時間の割合を把握す�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

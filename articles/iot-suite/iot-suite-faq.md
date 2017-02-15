@@ -39,7 +39,7 @@ ms.openlocfilehash: 5cbbebfcc41ef8c45366c04ddd9a5697f7b91b61
 1. [Azure ポータル][lnk-azure-portal]から Bing Maps API for Enterprise の QueryKey を取得してください。 
    
    1. [Azure ポータル][lnk-azure-portal]で、Bing Maps API for Enterprise が含まれるリソース グループに移動します。
-   2. [All Settings] (すべての設定)、[Key Management] (キーの管理) の順にクリックします。 
+   2. [All Settings] \(すべての設定)、[Key Management] \(キーの管理) の順にクリックします。 
    3. MasterKey と QueryKey という 2 つのキーが表示されます。 QueryKey の値をコピーします。
       
       > [!NOTE]

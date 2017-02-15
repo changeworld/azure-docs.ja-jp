@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Novatus の統合 | Microsoft Docs'
-description: Azure Active Directory と SECURE DELIVER の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Novatus の統合 | Microsoft Docs"
+description: "Azure Active Directory と SECURE DELIVER の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: fccd5668-fe6f-4e6d-a9ce-ba4f321c33d1
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8885f776250d44419e73bcfecaa4c49359f198bf
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-secure-deliver"></a>チュートリアル: Azure Active Directory と SECURE DELIVER の統合
+# <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>チュートリアル: Azure Active Directory と SECURE DELIVER の統合
 このチュートリアルの目的は、SECURE DELIVER と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
 SECURE DELIVER と Azure AD の統合には、次の利点があります。
 
@@ -154,16 +158,16 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -171,7 +175,7 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_07.png) 
@@ -179,7 +183,7 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_08.png) 
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
     b. **[完了]** をクリックします。   
 
@@ -240,6 +244,6 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

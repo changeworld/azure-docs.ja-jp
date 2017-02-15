@@ -3,8 +3,8 @@ title: "Ruby から Blob Storage (オブジェクト ストレージ) を使用�
 description: "Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 services: storage
 documentationcenter: ruby
-author: tamram
-manager: carmonm
+author: mmacy
+manager: timlt
 editor: tysonn
 ms.assetid: e2fe4c45-27b0-4d15-b3fb-e7eb574db717
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 11/28/2016
-ms.author: tamram
+ms.date: 12/08/2016
+ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: b6eb8c68402a18a66f9d227a1a835bcee81f73cc
-ms.openlocfilehash: 78d07dbcd11692fc29518a29c64507940971bc6a
+ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
+ms.openlocfilehash: cc42e6629c256d1fe6e5b082c88ebb2497484318
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 78d07dbcd11692fc29518a29c64507940971bc6a
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure Blob Storage は、非構造化データをクラウド内にオブジェクト/BLOB として格納するサービスです。 Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。 Blob Storage は、オブジェクト ストレージとも呼ばれます。
 
 このガイドでは、BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Ruby API を使用して記述されています。 紹介するシナリオは、BLOB の**アップロード、一覧の取得、ダウンロード**、**削除**です。
@@ -51,7 +51,7 @@ Azure Storage を使用するには、Ruby azure パッケージをダウンロ�
 require "azure"
 ```
 
-## <a name="setup-an-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
+## <a name="set-up-an-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
 azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** と **AZURE\_STORAGE\_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、 **Azure::Blob::BlobService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 ```ruby
@@ -64,15 +64,15 @@ Azure ポータルでクラシックまたは Resource Manager ストレージ �
 1. [Azure ポータル](https://portal.azure.com)にログインします。
 2. 使用するストレージ アカウントを表示します。
 3. 右側の [設定] ブレードで、 **[アクセス キー]**をクリックします。
-4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。 このいずれかを使用できます。 
-5. コピー アイコンをクリックしてキーをクリップボードにコピーします。 
+4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。 このいずれかを使用できます。
+5. コピー アイコンをクリックしてキーをクリップボードにコピーします。
 
 Azure ポータルでクラシック ストレージ アカウントからこれらの値を取得するには:
 
 1. [従来の Azure ポータル](https://manage.windowsazure.com)にログインします。
 2. 使用するストレージ アカウントを表示します。
 3. ナビゲーション ウィンドウの下部にある **[アクセス キーの管理]** をクリックします。
-4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。 アクセス キーには、プライマリとセカンダリのどちらでも使用できます。 
+4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。 アクセス キーには、プライマリとセカンダリのどちらでも使用できます。
 5. コピー アイコンをクリックしてキーをクリップボードにコピーします。
 
 ## <a name="create-a-container"></a>コンテナーを作成する
@@ -168,6 +168,6 @@ azure_blob_service.delete_blob(container.name, "image-blob")
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

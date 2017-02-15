@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/21/2016
-ms.author: darosa,sethm
+ms.date: 1/06/2016
+ms.author: darosa,sethm,jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: d36b40444af4ba68b016351f9ff016351e9fe58c
-ms.openlocfilehash: a4ccfdbc079a989477a80af7ac701dc77dce5a4f
+ms.sourcegitcommit: ed1469b7d12af84970d0675ac2af29580e319042
+ms.openlocfilehash: 11bac0e1877fa2c1cacc9a0a6e6d7870a17a44a2
 
 
 ---
@@ -31,9 +31,9 @@ Service Bus メッセージングに *Premium* レベルを導入して、ミッ
 | --- | --- |
 | 高スループット |変わりやすいスループット |
 | 予測可能なパフォーマンス |変わりやすい待機時間 |
-| 予測可能な料金 |従量性の変わりやすい料金 |
-| ワークロードを上下に設定する機能 |該当なし |
-| メッセージ サイズは 256 KB を超える |メッセージ サイズは 256 KB |
+| 固定価格 |従量性の変わりやすい料金 |
+| ワークロードをスケールアップおよびスケールダウンする機能 |該当なし |
+| 最大 1 MB のメッセージ サイズ |最大 256 KB のメッセージ サイズ |
 
 **Service Bus Premium メッセージング**では、各顧客のワークロードが分離した状態で実行されるように、CPU およびメモリ層でリソースが分離されます。 このリソースのコンテナーを、*メッセージング ユニット*と呼びます。 各 Premium 名前空間には、1 つ以上のメッセージング ユニットが割り当てられます。 Service Bus の Premium 名前空間ごとに、1 個、2 個、または 4 個のメッセージング ユニットを購入できます。 1 つのワークロードまたはエンティティは、複数のメッセージング ユニットにまたがることができます。課金は 24 時間単位、すなわち日単位ですが、メッセージング ユニットの数は自由に変更できます。 その結果、Service Bus ベースのソリューションのパフォーマンスは、予測可能で反復可能になります。
 
@@ -43,10 +43,19 @@ Service Bus メッセージングに *Premium* レベルを導入して、ミッ
 Premium および Standard メッセージング レベルの間でのいくつかの違いを次に示します。
 
 ### <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
-パーティション分割されたキューとトピックは Premium メッセージングでサポートされますが、Standard レベルと Basic レベルの Service Bus メッセージングと同様には機能しません。 Premium メッセージングは SQL をデータ ストアとして使用しないため、共有プラットフォームに関連するリソース競合が発生する可能性がなくなりました。 その結果、パーティション分割は必要ありません。 さらに、パーティション数は、Standard メッセージングでの 16 から、Premium メッセージングでは 2 に変更されました。 2 個のパーティションによって可用性が確保されます。また、Premium の実行時環境にとって、2 個というのはより適切なパーティション数です。 パーティション分割の詳細については、「[パーティション分割されたキューとトピック](service-bus-partitioning.md)」を参照してください。
+パーティション分割されたキューとトピックは Premium メッセージングでサポートされますが、Standard レベルと Basic レベルの Service Bus メッセージングと同様には機能しません。 Premium メッセージングは SQL をデータ ストアとして使用しないため、共有プラットフォームに関連するリソース競合が発生する可能性がなくなりました。 その結果、パフォーマンスのためのパーティション分割は必要ありません。 さらに、パーティション数は、Standard メッセージングでの 16 から、Premium メッセージングでは 2 に変更されました。 2 個のパーティションによって可用性が確保されます。また、Premium の実行時環境にとって、2 個というのはより適切なパーティション数です。 パーティション分割の詳細については、「[パーティション分割されたキューとトピック](service-bus-partitioning.md)」を参照してください。
 
 ### <a name="express-entities"></a>エクスプレス エンティティ
 完全に分離された実行時環境で Premium メッセージングが実行されるため、Premium 名前空間ではエクスプレス エンティティがサポートされません。 エクスプレス機能の詳細については、[QueueDescription.EnableExpress](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) プロパティを参照してください。
+
+## <a name="get-started-with-premium-messaging"></a>Premium メッセージングを使ってみる
+
+Premium メッセージングの使用は簡単に始めることができ、そのプロセスは Standard メッセージングと似ています。 まず、[名前空間を作成します](service-bus-create-namespace-portal.md)。 [価格レベル] で *[Premium]* を選択します。
+
+![create-premium-namespace][create-premium-namespace]
+
+[Azure Resource Manager テンプレートを使用して Premium 名前空間](https://azure.microsoft.com/en-us/resources/templates/101-servicebus-pn-ar/)を作成することもできます。
+
 
 ## <a name="next-steps"></a>次のステップ
 Service Bus メッセージングの詳細については、次のトピックを参照してください。
@@ -56,9 +65,12 @@ Service Bus メッセージングの詳細については、次のトピック�
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 * [Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)
 
+<!--Image references-->
+
+[create-premium-namespace]: ./media/service-bus-premium-messaging/select-premium-tier.png
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

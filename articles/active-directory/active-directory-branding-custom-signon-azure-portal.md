@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -45,10 +45,10 @@ ms.openlocfilehash: 48f85fd7e50c1cb3ece7f8b75779fe7cde92c7da
 > [!NOTE]
 > * ドメイン名は、ブランドを構成した Azure Portal の **[ドメイン]** 部分に "アクティブ" として表示される必要があります。 詳細については、 [カスタム ドメイン名の追加](active-directory-domains-add-azure-portal.md)に関する記事をご覧ください。
 > * サインイン ページのブランド化は、Microsoft のコンシューマー向けサインイン ページには継承されません。 Microsoft アカウントでサインインすると、Azure AD によってレンダリングされるユーザー タイルのブランド化された一覧が表示されることがありますが、組織のブランドは Microsoft アカウントのサインイン ページには適用されません。
-> 
-> 
+>
+>
 
-サインイン ページで **[サインインしたままにする]** チェック ボックスをオンにすると、ユーザーはブラウザーを閉じて開き直したときにもサインインしたままにしておくことができます。 
+サインイン ページで **[サインインしたままにする]** チェック ボックスをオンにすると、ユーザーはブラウザーを閉じて開き直したときにもサインインしたままにしておくことができます。
 
    ![サインインしたままにする](./media/active-directory-branding-custom-signon-azure-portal/01.png)
 
@@ -57,22 +57,22 @@ ms.openlocfilehash: 48f85fd7e50c1cb3ece7f8b75779fe7cde92c7da
 
    ![サインインしたままにする](./media/active-directory-branding-custom-signon-azure-portal/02.png)
 
-チェック ボックスを非表示にするには、この設定を **[はい]** に構成します。 
+チェック ボックスを非表示にするには、この設定を **[はい]** に構成します。
 
 > [!NOTE]
 > SharePoint Online と Office 2010 の一部の機能は、ユーザーがこのチェック ボックスをオンにできるかどうかに依存します。 この設定を非表示に構成する場合、ユーザーにサインインを求める追加のメッセージが予期せず表示されることがあります。
-> 
-> 
+>
+>
 
 **ディレクトリに会社のブランドを追加するには**
 
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
-   
+
    ![ユーザー管理を開く](./media/active-directory-branding-custom-signon-azure-portal/user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[会社のブランド]** を選択します。
 4. **[Users and groups - Company branding (ユーザーとグループ - 会社のブランド)]** ブレードで、**[編集]** をクリックします。
-   
+
     ![カスタム ブランドを編集する](./media/active-directory-branding-custom-signon-azure-portal/edit-branding.png)
 5. カスタマイズする要素に変更を加えます。 すべての要素は省略できます。
 6. [ **Save**] をクリックします。
@@ -81,7 +81,6 @@ ms.openlocfilehash: 48f85fd7e50c1cb3ece7f8b75779fe7cde92c7da
 
 ## <a name="next-steps"></a>次のステップ
 [言語固有の会社のブランドを追加する](active-directory-branding-localize-azure-portal.md)
-
 
 
 

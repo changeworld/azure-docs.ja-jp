@@ -3,7 +3,7 @@ title: "スタンドアロン クラスターの構成 | Microsoft Docs"
 description: "この記事では、スタンドアロンまたはプライベート Service Fabric クラスターを構成する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
-author: dsk-2015
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
@@ -12,18 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2016
-ms.author: dkshir
+ms.date: 12/12/2016
+ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b19d1ed96cf8e294cb105fa62f8623b28e3cc7fc
+ms.sourcegitcommit: 4fb6ef56d694aff967840ab26b75b66a2e799cc1
+ms.openlocfilehash: 977de9160be63a91b5926daa45528e5ee205e448
 
 
 ---
 # <a name="configuration-settings-for-standalone-windows-cluster"></a>スタンドアロン Windows クラスターの構成設定
 この記事では、***ClusterConfig.JSON*** ファイルを使用して、スタンドアロン Service Fabric クラスターを構成する方法について説明します。 このファイルを使って、Service Fabric ノードとその IP アドレス、クラスターの各種ノード、セキュリティ構成などの情報と、障害/アップグレード ドメインの観点でのスタンドアロン クラスターのネットワーク トポロジを指定できます。
 
-[スタンドアロン Service Fabric パッケージをダウンロード](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)すると、ClusterConfig.JSON ファイルのサンプルが作業コンピューターにダウンロードされます。 名前に *DevCluster* が含まれているサンプルを使用すると、論理ノードのように、同じコンピューター上に 3 つのノードすべてが配置されたクラスターを作成できます。 これらのうち、少なくとも 1 つのノードをプライマリ ノードとしてマークする必要があります。 このクラスターは、開発またはテスト環境で役立ちますが、運用環境のクラスターとしてはサポートされていません。 名前に *MultiMachine* が含まれているサンプルでは、それぞれのノードが別々のマシン上に配置された運用環境品質クラスターを作成できます。 これらのクラスターのプライマリ ノードの数は、[信頼性レベル](#reliability)に基づきます。
+[スタンドアロン Service Fabric パッケージをダウンロード](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)すると、ClusterConfig.JSON ファイルのサンプルが作業コンピューターにダウンロードされます。 名前に *DevCluster* が含まれているサンプルを使用すると、論理ノードのように、同じコンピューター上に&3; つのノードすべてが配置されたクラスターを作成できます。 これらのうち、少なくとも&1; つのノードをプライマリ ノードとしてマークする必要があります。 このクラスターは、開発またはテスト環境で役立ちますが、運用環境のクラスターとしてはサポートされていません。 名前に *MultiMachine* が含まれているサンプルでは、それぞれのノードが別々のマシン上に配置された運用環境品質クラスターを作成できます。 これらのクラスターのプライマリ ノードの数は、[信頼性レベル](#reliability)に基づきます。
 
 1. *ClusterConfig.Unsecure.DevCluster.JSON* と *ClusterConfig.Unsecure.MultiMachine.JSON* は、それぞれ、セキュリティ保護されていないテストと運用クラスターを作成する方法を示しています。 
 2. *ClusterConfig.Windows.DevCluster.JSON* と *ClusterConfig.Windows.MultiMachine.JSON* は、[Windows セキュリティ](service-fabric-windows-cluster-windows-security.md)を使用してセキュリティで保護されたテストまたは運用環境のクラスターを作成する方法を示しています。
@@ -36,7 +36,7 @@ ms.openlocfilehash: b19d1ed96cf8e294cb105fa62f8623b28e3cc7fc
 
     "name": "SampleCluster",
     "clusterConfigurationVersion": "1.0.0",
-    "apiVersion": "2015-01-01-alpha",
+    "apiVersion": "2016-09-26",
 
 **name** 変数にフレンドリ名を割り当てることで、Service Fabric クラスターにフレンドリ名を付けることができます。 **clusterConfigurationVersion** はクラスターのバージョン番号です。Service Fabric クラスターをアップグレードするたびに増やす必要があります。 ただし、**apiVersion** は既定値のままにしなければいけません。
 
@@ -123,7 +123,7 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
 <a id="nodetypes"></a>
 
 ### <a name="node-types"></a>ノード タイプ
-**nodeTypes** セクションでは、クラスターのノードのタイプを記述します。 次のスニペットに示すように、クラスターにはノード タイプを少なくとも 1 つは指定する必要があります。 
+**nodeTypes** セクションでは、クラスターのノードのタイプを記述します。 次のスニペットに示すように、クラスターにはノード タイプを少なくとも&1; つは指定する必要があります。 
 
     "nodeTypes": [{
         "name": "NodeType0",
@@ -132,6 +132,7 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
         "leaseDriverEndpointPort": "19002"
         "serviceConnectionEndpointPort": "19003",
         "httpGatewayEndpointPort": "19080",
+        "reverseProxyEndpointPort": "19081",
         "applicationPorts": {
             "startPort": "20575",
             "endPort": "20605"
@@ -143,7 +144,7 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
         "isPrimary": true
     }]
 
-**name** はこのノード タイプのフレンドリ名です。 このノード タイプのノードを作成するには、[上記](#clusternodes)で説明したように、そのフレンドリ名をそのタイプの **nodeTypeRef** 変数に指定します。 ノード タイプごとに、使用する接続エンドポイントを定義します。 このクラスターの他のエンドポイントと競合しない限り、これらの接続エンドポイントの任意のポート番号を選択できます。 マルチノード クラスターでは、プライマリ ノードは、[**reliabilityLevel**](#reliability) に応じて 1 つまたは複数 (すなわち **isPrimary** が *true* に設定されている) 存在します。 **nodeTypes** と **reliabilityLevel** の値の詳細、およびプライマリ ノード タイプと非プライマリ ノード タイプについては、「[Service Fabric クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」を参照してください。 
+**name** はこのノード タイプのフレンドリ名です。 このノード タイプのノードを作成するには、[上記](#clusternodes)で説明したように、そのフレンドリ名をそのタイプの **nodeTypeRef** 変数に指定します。 ノード タイプごとに、使用する接続エンドポイントを定義します。 このクラスターの他のエンドポイントと競合しない限り、これらの接続エンドポイントの任意のポート番号を選択できます。 マルチノード クラスターでは、プライマリ ノードは、[**reliabilityLevel**](#reliability) に応じて&1; つまたは複数 (すなわち **isPrimary** が *true* に設定されている) 存在します。 **nodeTypes** と **reliabilityLevel** の値の詳細、およびプライマリ ノード タイプと非プライマリ ノード タイプについては、「[Service Fabric クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」を参照してください。 
 
 #### <a name="endpoints-used-to-configure-the-node-types"></a>ノード タイプの構成に使用するエンドポイント
 * *clientConnectionEndpointPort* は、クライアント API の使用時にクライアントがクラスターへの接続に使用するポートです。 
@@ -168,14 +169,14 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
             "value": "C:\\ProgramData\\SF\\Log"
     }]
 
-非 OS ドライブは OS のクラッシュに対する信頼性が高いため、FabricDataRoot および FabricLogRoot として使用することをお勧めします。 データ ルートだけをカスタマイズすると、ログ ルートはデータ ルートの 1 つ下のレベルに配置されます。
+非 OS ドライブは OS のクラッシュに対する信頼性が高いため、FabricDataRoot および FabricLogRoot として使用することをお勧めします。 データ ルートだけをカスタマイズすると、ログ ルートはデータ ルートの&1; つ下のレベルに配置されます。
 
 ## <a name="next-steps"></a>次のステップ
-スタンドアロン クラスターのセットアップに従って、ClusterConfig.JSON ファイルの構成を完了したら、[オンプレミスまたはクラウドでの Azure Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md) に関するページに従ってクラスターをデプロイした後、[「Service Fabric Explorer を使用したクラスターの視覚化」](service-fabric-visualizing-your-cluster.md)に進むことができます。
+スタンドアロン クラスターのセットアップに従って ClusterConfig.JSON ファイルの構成が完了したら、[スタンドアロンの Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関する記事に従ってクラスターをデプロイした後、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」に進むことができます。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

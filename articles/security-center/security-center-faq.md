@@ -32,7 +32,7 @@ Azure Security Center は、Microsoft Azure サブスクリプションで有効
 
 ## <a name="billing"></a>課金
 ### <a name="how-does-billing-work-for-azure-security-center"></a>Azure セキュリティ センターの課金のしくみを教えてください。
-Azure Security Center は Free と Standard の 2 つのプランで提供されます。
+Azure Security Center は Free と Standard の&2; つのプランで提供されます。
 
 Free レベルでは、セキュリティ ポリシーを設定できるほか、必要なコントロールの構成プロセスを紹介するセキュリティ アラート、インシデント、推奨事項を受け取ることができます。 また、Free レベルでは、Azure リソースと、Azure サブスクリプションに統合済みのパートナー ソリューションのセキュリティ状態を監視することもできます。
 

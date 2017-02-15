@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 12/20/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 18054a72c3ead02311465d97dc13b7b5e4d87321
-ms.openlocfilehash: 401b3c931fa046ee2bdf0a12e9e837b820ec5464
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: b36dc7bc2d4d1a8565bc6eb823e830a62d36bf34
 
 
 ---
@@ -24,9 +24,9 @@ ms.openlocfilehash: 401b3c931fa046ee2bdf0a12e9e837b820ec5464
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 ## <a name="setting-up-an-azure-account-for-media-services"></a>Media Services 用の Azure アカウントの設定
-Media Services アカウントを設定するには、Azure Portal を使用します。 「[メディア サービス アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。 Azure Portal でアカウントを作成すると、Media Services 開発用にコンピューターをセットアップできるようになります。
 
-## <a name="setting-up-for-media-services-development"></a>Media Services 開発のための設定
+Media Services アカウントを設定するには、Azure Portal を使用します。 「[メディア サービス アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。 Azure Portal でアカウントを作成すると、Media Services 開発用にコンピューターをセットアップできるようになります。
+ 
 このセクションでは、Media Services SDK for Java を使用したメディア サービス開発の大まかな前提条件について説明します。
 
 ### <a name="prerequisites"></a>前提条件
@@ -34,6 +34,10 @@ Media Services アカウントを設定するには、Azure Portal を使用し�
 * Azure Libraries for Java。[Azure Java デベロッパー センター][Azure Java Developer Center]からインストールできます。
 
 ## <a name="how-to-use-media-services-with-java"></a>方法: Java で Media Services を使用する
+
+>[!NOTE]
+>AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
+
 次のコードは、資産を作成してメディア ファイルを資産にアップロードし、資産の変換タスクを伴うジョブを実行して、ビデオをストリーミングするためのロケーターを作成する方法を示しています。
 
 このコードを使用する前に、Media Services アカウントを設定する必要があります。 アカウントの設定方法については、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
@@ -270,6 +274,6 @@ Media Services に関する Javadoc ドキュメントについては、[Azure L
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

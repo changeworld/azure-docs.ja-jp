@@ -1,43 +1,47 @@
 ---
-title: Azure Resource Manager と C# を使用した VM の管理 | Microsoft Docs
-description: Azure Resource Manager と C# を使用して、仮想マシンを管理します。
+title: "Azure Resource Manager と C# を使用した VM の管理 | Microsoft Docs"
+description: "Azure Resource Manager と C# を使用して、仮想マシンを管理します。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: davidmu1
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 93898bad-b861-4359-9a4b-348e1d491822
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/24/2016
+ms.date: 09/27/2016
 ms.author: davidmu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4d0c334a0b1e047208f6f61e5181864b1c2e3a6a
+
 
 ---
-# Azure Resource Manager と C を使用した Azure 仮想マシンの管理
-この記事にあるタスクでは、開始、停止、および更新など、仮想マシンを管理する方法について説明します。
+# <a name="manage-azure-virtual-machines-using-azure-resource-manager-and-c"></a>Azure Resource Manager と C を使用した Azure 仮想マシンの管理
+この記事にあるタスクでは、開始、停止、および更新など、仮想マシンを管理する方法について説明します。 この記事のタスクを完了するには、リソース グループに仮想マシンが存在している必要があります。
 
 この記事のタスクを完了するには、以下が必要です。
 
 * [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
 * [認証トークン](../resource-group-authenticate-service-principal.md)
 
-## Visual Studio プロジェクトの作成とパッケージのインストール
-NuGet パッケージを使用すると、この記事のタスクを完了するために必要なライブラリを簡単にインストールできます。Azure Active Directory 認証ライブラリとコンピューター リソース プロバイダー ライブラリをインストールする必要があります。Visual Studio でこれらのライブラリを入手するには、次の手順に従います。
+## <a name="create-a-visual-studio-project-and-install-packages"></a>Visual Studio プロジェクトの作成とパッケージのインストール
+NuGet パッケージを使用すると、この記事のタスクを完了するために必要なライブラリを簡単にインストールできます。 この記事でインストールする必要があるライブラリは、Azure Active Directory 認証ライブラリと Compute リソース プロバイダー ライブラリです。 Visual Studio でこれらのライブラリを入手するには、次の手順を実行します。
 
-1. **[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします。
-2. **[テンプレート]** の **[Visual C#]** で **[コンソール アプリケーション]** を選択し、プロジェクトの名前と場所を入力して、**[OK]** をクリックします。
-3. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[NuGet パッケージの管理]** をクリックします。
-4. 検索ボックスに「*Active Directory*」と入力し、Active Directory Authentication Library パッケージの **[インストール]** をクリックして、パッケージのインストール手順に従います。
-5. ページの上部で、**[リリース前のパッケージを含める]** を選択します。検索ボックスに「*Microsoft.Azure.Management.Compute*」と入力し、Compute .NET ライブラリの **[インストール]** をクリックして、パッケージのインストール手順に従います。
+1. **[ファイル]** > **[新規]** > **[プロジェクト]** の順にクリックします。
+2. **[テンプレート]** > の **[Visual C#]** で **[コンソール アプリケーション]** を選択し、プロジェクトの名前と場所を入力して、**[OK]** をクリックします。
+3. ソリューション エクスプローラーでプロジェクト名を右クリックし、 **[NuGet パッケージの管理]**をクリックします。
+4. 検索ボックスに「 *Active Directory* 」と入力し、Active Directory Authentication Library パッケージの **[インストール]** をクリックして、パッケージのインストール手順に従います。
+5. ページの上部で、 **[リリース前のパッケージを含める]**を選択します。 検索ボックスに「 *Microsoft.Azure.Management.Compute* 」と入力し、Compute .NET ライブラリの **[インストール]** をクリックして、パッケージのインストール手順に従います。
 
 これで、ライブラリを使用して仮想マシンを管理する準備が整いました。
 
-## プロジェクトのセットアップ
-Azure Active Directory アプリケーションを作成し、認証ライブラリをインストールしたので、次にアプリケーションの情報を使用して、Azure リソース マネージャーへの要求の認証に使用される資格情報を作成します。
+## <a name="set-up-the-project"></a>プロジェクトのセットアップ
+これでアプリケーションが作成され、ライブラリがインストールされました。次は、アプリケーションの情報を使用してトークンを作成します。 このトークンは、Azure Resource Manager への要求を認証するのに使用されます。
 
 1. 作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
    
@@ -46,36 +50,35 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
         using Microsoft.Azure.Management.Compute;
         using Microsoft.Azure.Management.Compute.Models;
         using Microsoft.Rest;
-2. Program クラスの Main メソッドに変数を追加し、管理するリソースの名前、リソースの場所 ("Central US" など)、およびサブスクリプション ID を指定します。
+2. Program クラスの Main メソッドに変数を追加し、リソース グループの名前、仮想マシンの名前、およびサブスクリプション ID を指定します。
    
         var groupName = "resource group name";
         var vmName = "virtual machine name";  
-        var location = "location name";
         var subscriptionId = "subsciption id";
    
-    すべての変数の値を、使用する名前と ID で置き換えます。サブスクリプション ID は Get-AzureRmSubscription を実行して確認できます。
-3. 資格情報の作成に必要なトークンを取得するために、次のメソッドを Program クラスに追加します。
+    サブスクリプション ID は Get-AzureRmSubscription を実行して確認できます。
+3. 資格情報の作成に必要なトークンを取得するために、このメソッドを Program クラスに追加します。
    
         private static async Task<AuthenticationResult> GetAccessTokenAsync()
         {
           var cc = new ClientCredential("{client-id}", "{client-secret}");
           var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
-          var result = await context.AcquireTokenAsync("https://management.azure.com/", cc);
-          if (result == null)
+          var token = await context.AcquireTokenAsync("https://management.azure.com/", cc);
+          if (token == null)
           {
             throw new InvalidOperationException("Could not get the token");
           }
-          return result;
+          return token;
         }
    
-    {client-id} を Azure Active Directory アプリケーションの ID に、{client-secret} を AD アプリケーションのアクセス キーに、および {tenant-id} をサブスクリプションのテナントID に置き換えます。テナント ID は Get-AzureRmSubscription を実行して確認できます。アクセス キーは、Azure ポータルで確認できます。
-4. 資格情報を作成するには、Program.cs の Main メソッドに次のコードを追加します。
+    {client-id} を Azure Active Directory アプリケーションの ID に、{client-secret} を AD アプリケーションのアクセス キーに、および {tenant-id} をサブスクリプションのテナントID に置き換えます。 テナント ID は Get-AzureRmSubscription を実行して確認できます。 アクセス キーは、Azure ポータルで確認できます。
+4. 資格情報を作成するには、Program.cs の Main メソッドにこのコードを追加します。
    
         var token = GetAccessTokenAsync();
         var credential = new TokenCredentials(token.Result.AccessToken);
 5. Program.cs ファイルを保存します。
 
-## 仮想マシンに関する情報の表示
+## <a name="display-information-about-a-virtual-machine"></a>仮想マシンに関する情報の表示
 1. 前に作成したプロジェクトの Program クラスに、次のメソッドを追加します。
    
         public static async void GetVirtualMachineAsync(
@@ -174,7 +177,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 3. Program.cs ファイルを保存します。
 4. Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
    
-    このメソッドを実行すると、次のように表示されます。
+    このメソッドを実行すると、次の例のように表示されます。
    
         Getting information about the virtual machine...
         hardwareProfile
@@ -237,7 +240,42 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
               level: Info
               displayStatus: VM running
 
-## 仮想マシンの起動
+## <a name="stop-a-virtual-machine"></a>仮想マシンの停止
+仮想マシンを停止するには、2 つの方法があります。 仮想マシンを停止してそのすべての設定を保持する (引き続き課金されます)、または仮想マシンを停止して割り当てを解除します。 仮想マシンの割り当てを解除すると、それに関連付けられているすべてのリソースの割り当ても解除され、仮想マシンに対する課金が終了します。
+
+1. 前に Main メソッドに追加したコードを、資格情報を取得するコードを除いて、すべてコメントアウトします。
+2. Program クラスに次のメソッドを追加します。
+   
+        public static async void StopVirtualMachineAsync(
+          TokenCredentials credential, 
+          string groupName, 
+          string vmName, 
+          string subscriptionId)
+        {
+          Console.WriteLine("Stopping the virtual machine...");
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          await computeManagementClient.VirtualMachines.PowerOffAsync(groupName, vmName);
+        }
+   
+    仮想マシンの割り当てを解除する場合は、PowerOff 呼び出しを次のコードに変更します。
+   
+        computeManagementClient.VirtualMachines.Deallocate(groupName, vmName);
+3. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
+   
+        StopVirtualMachineAsync(
+          credential,
+          groupName,
+          vmName,
+          subscriptionId);
+        Console.WriteLine("\nPress enter to continue...");
+        Console.ReadLine();
+4. Program.cs ファイルを保存します。
+5. Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
+   
+    仮想マシンの状態が [停止済み] に変化することを確認します。 Deallocate を呼び出すメソッドを実行した場合は、状態が [停止済み (割り当て解除)] になります。
+
+## <a name="start-a-virtual-machine"></a>仮想マシンの起動
 1. 前に Main メソッドに追加したコードを、資格情報を取得するコードを除いて、すべてコメントアウトします。
 2. Program クラスに次のメソッドを追加します。
    
@@ -266,42 +304,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
    
     仮想マシンの状態が [実行中] に変化することを確認します。
 
-## 仮想マシンの停止
-仮想マシンを停止するには、2 つの方法があります。仮想マシンを停止し、すべての設定を保持して、課金も継続する方法と、仮想マシンを停止し、割り当て解除する方法です。割り当て解除の場合、関連付けられているすべてのリソースも割り当て解除され、仮想マシンへの課金は終了します。
-
-1. 前に Main メソッドに追加したコードを、資格情報を取得するコードを除いて、すべてコメントアウトします。
-2. Program クラスに次のメソッドを追加します。
-   
-        public static void StopVirtualMachineAsync(
-          TokenCredentials credential, 
-          string groupName, 
-          string vmName, 
-          string subscriptionId)
-        {
-          Console.WriteLine("Stopping the virtual machine...");
-          var computeManagementClient = new ComputeManagementClient(credential)
-            { SubscriptionId = subscriptionId };
-          await computeManagementClient.VirtualMachines.PowerOffAsync(groupName, vmName);
-        }
-   
-    仮想マシンの割り当てを解除する場合は、PowerOff 呼び出しを次のように変更します。
-   
-        computeManagementClient.VirtualMachines.Deallocate(groupName, vmName);
-3. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
-   
-        StopVirtualMachineAsync(
-          credential,
-          groupName,
-          vmName,
-          subscriptionId);
-        Console.WriteLine("\nPress enter to continue...");
-        Console.ReadLine();
-4. Program.cs ファイルを保存します。
-5. Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
-   
-    仮想マシンの状態が [停止済み] に変化することを確認します。Deallocate を呼び出すメソッドを実行した場合は、状態が [停止済み (割り当て解除)] になります。
-
-## 仮想マシンの実行の再開
+## <a name="restart-a-running-virtual-machine"></a>仮想マシンの実行の再開
 1. 前に Main メソッドに追加したコードを、資格情報を取得するコードを除いて、すべてコメントアウトします。
 2. Program クラスに次のメソッドを追加します。
    
@@ -328,34 +331,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 4. Program.cs ファイルを保存します。
 5. Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
 
-## 仮想マシンの削除
-1. 前に Main メソッドに追加したコードを、資格情報を取得するコードを除いて、すべてコメントアウトします。
-2. Program クラスに次のメソッドを追加します。
-   
-        public static async void DeleteVirtualMachineAsync(
-          TokenCredentials credential, 
-          string groupName, 
-          string vmName, 
-          string subscriptionId)
-        {
-          Console.WriteLine("Deleting the virtual machine...");
-          var computeManagementClient = new ComputeManagementClient(credential)
-            { SubscriptionId = subscriptionId };
-          await computeManagementClient.VirtualMachines.DeleteAsync(groupName, vmName);
-        }
-3. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
-   
-        DeleteVirtualMachineAsync(
-          credential,
-          groupName,
-          vmName,
-          subscriptionId);
-        Console.WriteLine("\nPress enter to continue...");
-        Console.ReadLine();
-4. Program.cs ファイルを保存します。
-5. Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
-
-## 仮想マシンの更新
+## <a name="resize-a-virtual-machine"></a>仮想マシンのサイズ変更
 この例では、実行中の仮想マシンのサイズを変更する方法を示します。
 
 1. 前に Main メソッドに追加したコードを、資格情報を取得するコードを除いて、すべてコメントアウトします。
@@ -386,9 +362,84 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 4. Program.cs ファイルを保存します。
 5. Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
    
-    仮想マシンのサイズが [Standard\_A1] に変化することを確認します。
+    仮想マシンのサイズが [Standard_A1] に変化することを確認します。
 
-## 次のステップ
-デプロイに問題がある場合は、[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)に関する記事をご覧ください。
+## <a name="add-a-data-disk-to-a-virtual-machine"></a>データ ディスクを仮想マシンに追加する
+この例では、実行中の仮想マシンにデータ ディスクを追加する方法を示します。
 
-<!---HONumber=AcomDC_0720_2016-->
+1. 前に Main メソッドに追加したコードを、資格情報を取得するコードを除いて、すべてコメントアウトします。
+2. Program クラスに次のメソッドを追加します。
+   
+        public static async void AddDataDiskAsync(
+          TokenCredentials credential, 
+          string groupName, 
+          string vmName, 
+          string subscriptionId)
+        {
+          Console.WriteLine("Adding the disk to the virtual machine...");
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          var vmResult = await computeManagementClient.VirtualMachines.GetAsync(groupName, vmName);
+          vmResult.StorageProfile.DataDisks.Add(
+            new DataDisk
+              {
+                Lun = 0,
+                Name = "mydatadisk1",
+                Vhd = new VirtualHardDisk
+                  {
+                    Uri = "https://mystorage1.blob.core.windows.net/vhds/mydatadisk1.vhd"
+                  },
+                CreateOption = DiskCreateOptionTypes.Empty,
+                DiskSizeGB = 2,
+                Caching = CachingTypes.ReadWrite
+              });
+          await computeManagementClient.VirtualMachines.CreateOrUpdateAsync(groupName, vmName, vmResult);
+        }
+3. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
+   
+        AddDataDiskAsync(
+          credential,
+          groupName,
+          vmName,
+          subscriptionId);
+        Console.WriteLine("\nPress enter to continue...");
+        Console.ReadLine();
+4. Program.cs ファイルを保存します。
+5. Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
+
+## <a name="delete-a-virtual-machine"></a>仮想マシンの削除
+1. 前に Main メソッドに追加したコードを、資格情報を取得するコードを除いて、すべてコメントアウトします。
+2. Program クラスに次のメソッドを追加します。
+   
+        public static async void DeleteVirtualMachineAsync(
+          TokenCredentials credential, 
+          string groupName, 
+          string vmName, 
+          string subscriptionId)
+        {
+          Console.WriteLine("Deleting the virtual machine...");
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          await computeManagementClient.VirtualMachines.DeleteAsync(groupName, vmName);
+        }
+3. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
+   
+        DeleteVirtualMachineAsync(
+          credential,
+          groupName,
+          vmName,
+          subscriptionId);
+        Console.WriteLine("\nPress enter to continue...");
+        Console.ReadLine();
+4. Program.cs ファイルを保存します。
+5. Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
+
+## <a name="next-steps"></a>次のステップ
+デプロイに問題がある場合は、[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)に関する記事をご覧ください。
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

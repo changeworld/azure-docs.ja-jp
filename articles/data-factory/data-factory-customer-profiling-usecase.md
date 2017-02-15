@@ -71,6 +71,6 @@ Contoso の目標は、プレーヤーのゲーム履歴プロファイルに基
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

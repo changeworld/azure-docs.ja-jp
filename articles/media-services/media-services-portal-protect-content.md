@@ -1,19 +1,23 @@
 ---
-title: Azure ポータルを使用したコンテンツ保護ポリシーの構成 | Microsoft Docs
-description: この記事では、Azure ポータルを使用してコンテンツ保護ポリシーを構成する方法を説明します。 また、資産に対して動的な暗号化を有効にする方法についても説明します。
+title: "Azure Portal を使用したコンテンツ保護ポリシーの構成 | Microsoft Docs"
+description: "この記事では、Azure ポータルを使用してコンテンツ保護ポリシーを構成する方法を説明します。 また、資産に対して動的な暗号化を有効にする方法についても説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 10/24/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0f9b0cf4e88a1ab27546063ae89cde8de7761609
+
 
 ---
 # <a name="configuring-content-protection-policies-using-the-azure-portal"></a>Azure ポータルを使用したコンテンツ保護ポリシーの構成
@@ -39,12 +43,12 @@ AMS は、承認されたクライアントに DRM ライセンスと AES クリ
 ## <a name="start-configuring-content-protection"></a>コンテンツ保護の構成を開始する
 ポータルを使用して AMS アカウントに対してグローバルなコンテンツ保護の構成を開始するには、次の操作を実行します。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
 2. **[設定]**  >  **[コンテンツ保護]** の順に選択します。
 
 ![コンテンツの保護](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
-## <a name="key/license-authorization-policy"></a>キー/ライセンス承認ポリシー
+## <a name="keylicense-authorization-policy"></a>キー/ライセンス承認ポリシー
 AMS では、キーまたはライセンスを要求するユーザーを承認する複数の方法がサポートされています。 キー/ライセンスがクライアントに配信されるには、自身で、またはクライアントがこのコンテンツ キー承認ポリシーを構成する必要があります。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (**オープン**または**トークン**制限) を指定できます。
 
 Azure ポータルでは、すべてのタイプの暗号化に対して 1 つの **キー/ライセンス承認ポリシー** を作成できます。
@@ -130,6 +134,9 @@ Media Services のラーニング パスを確認します。
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

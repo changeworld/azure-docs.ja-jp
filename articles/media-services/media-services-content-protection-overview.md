@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 576d3a1c242c74715e7a6dc33ec0a4adebcc9959
+ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
+ms.openlocfilehash: 9d3718cf80e023f4c5b9c523375b77083a9d7be7
 
 
 ---
@@ -37,7 +37,7 @@ Microsoft Azure Media Services を使用すると、メディアがコンピュ�
 ## <a name="dynamic-encryption"></a>動的な暗号化
 Microsoft Azure Media Services では、AES クリア キーまたは DRM 暗号化 (Microsoft PlayReady、Google Widevine、および Apple FairPlay) を使用して動的に暗号化されたコンテンツを配信できます。
 
-現時点では、以下のストリーミング形式を暗号化できます。HLS、MPEG DASH、およびスムーズ ストリーミング。 HDS 形式のストリーミングやプログレッシブ ダウンロードは暗号化できません。
+現時点では、以下のストリーミング形式を暗号化できます。HLS、MPEG DASH、およびスムーズ ストリーミング。 プログレッシブ ダウンロードを暗号化することはできません。
 
 Media Services で資産を暗号化する場合は、暗号化キー (CommonEncryption か EnvelopeEncryption) を資産に関連付ける必要があります。また、キーの承認ポリシーを構成する必要があります。
 
@@ -119,6 +119,6 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

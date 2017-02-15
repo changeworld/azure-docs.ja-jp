@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "クラウドでのサービスとしてのデータベースである SQL Database について説明します。 チュートリアル、ビデオ、およびその他のドキュメントでは、リレーショナル データベースの設定、接続、管理方法を紹介します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: 07cbe71fc9330724dd8b92c5321d4fca9ecde512
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 2dfb79cc8f2aa2e2ca63b905666f519e083aa69d
 
 ---
 
 # <a name="sql-database-documentation"></a>SQL Database のドキュメント
 
-Azure SQL Database は、Microsoft SQL Server エンジンに基づいたミッション クリティカルな機能が組み込まれた、クラウド内のリレーショナル データベース サービスです。 これは、予測可能なパフォーマンス、ダウンタイムなしの拡張性、ビジネス継続性、データ保護を提供し、いずれも管理は最小限となります。 SQL Database は、SQL Server エンジンを基盤としているため、既存の SQL Server ツール、ライブラリ、および API をサポートしており、クラウドへの移行およびクラウドへの拡張が簡単になります。
+Microsoft SQL Server エンジンをベースに構築された、クラウドでのサービスとしてのリレーショナル データベースである SQL Database の使用方法を紹介します。 チュートリアル、ビデオ、その他のドキュメントでは、SQL データベースの設定、接続、管理方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -128,7 +129,7 @@ Azure SQL Database は、Microsoft SQL Server エンジンに基づいたミッ�
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.JS</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p>
                         <p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p>
@@ -152,16 +153,10 @@ Azure SQL Database は、Microsoft SQL Server エンジンに基づいたミッ�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-database.pdf">
-        <div class="img"></div>
-        <div class="text">
-SQL Database のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

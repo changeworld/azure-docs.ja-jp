@@ -10,22 +10,25 @@ tags: azure-resource-manager
 ms.assetid: 0a036d51-77ae-4fee-9ddb-35f040fbdcdf
 ms.service: expressroute
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/05/2016
+ms.date: 12/13/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 5da660fc36ac0ebef26ed815da6dbba6668643d3
-ms.openlocfilehash: 57e8ee6f067a61c1262a8902dd56393e4803c3c6
+ms.sourcegitcommit: ec5e547b88bedd50f451997616c7d72b0b1b4bd4
+ms.openlocfilehash: 2a1215b5065fc690e539000aa1e89049617f8902
 
 
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>ExpressRoute 回線のルーティングの作成と変更を行う
 > [!div class="op_single_selector"]
-> * [Azure ポータル - Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
-> * [PowerShell - Resource Manager](expressroute-howto-routing-arm.md)
-> * [PowerShell - クラシック](expressroute-howto-routing-classic.md)
+> * [Resource Manager - Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-routing-arm.md)
+> * [クラシック- PowerShell](expressroute-howto-routing-classic.md)
+> * [ビデオ - プライベート ピアリング](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [ビデオ - パブリック ピアリング](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [ビデオ - Microsoft ピアリング](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > 
 > 
 
@@ -47,7 +50,7 @@ ms.openlocfilehash: 57e8ee6f067a61c1262a8902dd56393e4803c3c6
 > 
 > 
 
-ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリング (Azure プライベート、Azure パブリックおよび Microsoft) を構成することができます。 ピアリングは任意の順序で構成することができます。 ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。 
+ExpressRoute 回線用に&1; つ、2 つ、または&3; つすべてのピアリング (Azure プライベート、Azure パブリックおよび Microsoft) を構成することができます。 ピアリングは任意の順序で構成することができます。 ただし、各ピアリングの構成は必ず一度に&1; つずつ完了するようにしてください。 
 
 ## <a name="azure-private-peering"></a>Azure プライベート ピアリング
 このセクションでは、ExpressRoute 回線用の Azure プライベート ピアリング構成を作成、取得、更新、および削除する方法について説明します。 
@@ -264,7 +267,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 ### <a name="to-update-azure-public-peering-configuration"></a>Azure パブリック ピアリング構成を更新するには
 次のコマンドレットを使用して、構成のどの部分も更新することができます。
 
-    Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600 
+    Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600 
 
     Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
@@ -389,6 +392,6 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

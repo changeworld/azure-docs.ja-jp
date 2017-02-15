@@ -1,6 +1,6 @@
 ---
-title: "T-SQL を使用した、Azure SQL Database のサーバー レベルおよびデータベース レベルのファイアウォール規則 | Microsoft Docs"
-description: "Azure SQL データベースにアクセスする IP アドレス用のファイアウォールの構成方法を説明します。"
+title: "T-SQL: Azure SQL Database ファイアウォール規則 | Microsoft Docs"
+description: "Transact-SQL を使用して、Azure SQL データベースにアクセスする IP アドレス用にサーバーレベルおよびデータベースレベルのファイアウォール規則を構成する方法について説明します。"
 services: sql-database
 documentationcenter: 
 author: BYHAM
@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: a49bc9cd8fb50dcc753fbb04bf7f2d96cf79f3ab
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: 0f91e59a72b033c0a0dc52b4f127478b73c66ff1
 
 
 ---
@@ -94,6 +94,6 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

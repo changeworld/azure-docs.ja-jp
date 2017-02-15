@@ -55,9 +55,9 @@ DocumentDB Emulator には Azure DocumentDB データ エクスプローラー�
 > DocumentDB Emulator のあるバージョンで作成したデータは、他のバージョンを使用してアクセスできない可能性があります。 データを永続化して長期にわたって保持する必要がある場合、そのデータは DocumentDB Emulator ではなく Azure DocumentDB アカウントに格納することをお勧めします。 
 
 ## <a name="how-the-documentdb-emulator-works"></a>DocumentDB Emulator の機能
-DocumentDB Emulator には、DocumentDB サービスを忠実に再現するエミュレーションが用意されています。 JSON ドキュメントの作成とクエリ、コレクションのプロビジョニングとスケーリング、ストアド プロシージャとトリガーの実行のサポートなど、Azure DocumentDB と同じ機能がサポートされています。 DocumentDB Emulator を使用してアプリケーションの開発とテストを行い、DocumentDB の接続エンドポイントの構成を 1 つ変更するだけで、世界規模で Azure にデプロイすることができます。
+DocumentDB Emulator には、DocumentDB サービスを忠実に再現するエミュレーションが用意されています。 JSON ドキュメントの作成とクエリ、コレクションのプロビジョニングとスケーリング、ストアド プロシージャとトリガーの実行のサポートなど、Azure DocumentDB と同じ機能がサポートされています。 DocumentDB Emulator を使用してアプリケーションの開発とテストを行い、DocumentDB の接続エンドポイントの構成を&1; つ変更するだけで、世界規模で Azure にデプロイすることができます。
 
-Microsoft は実際の DocumentDB サービスを忠実に再現したローカル エミュレーションを作成しましたが、DocumentDB Emulator の実装は実際のサービスのそれとは異なります。 たとえば DocumentDB Emulator では、永続化用のローカル ファイル システムや接続用の HTTPS プロトコル スタックなど、標準的な OS コンポーネントが使用されます。 つまり、グローバル レプリケーション、読み取り/書き取りの 10 ミリ秒を下回る待機時間、調整可能な一貫性レベルなど、Azure インフラストラクチャを使用する一部の機能は、DocumentDB Emulator では使用できません。
+Microsoft は実際の DocumentDB サービスを忠実に再現したローカル エミュレーションを作成しましたが、DocumentDB Emulator の実装は実際のサービスのそれとは異なります。 たとえば DocumentDB Emulator では、永続化用のローカル ファイル システムや接続用の HTTPS プロトコル スタックなど、標準的な OS コンポーネントが使用されます。 つまり、グローバル レプリケーション、読み取り/書き取りの&10; ミリ秒を下回る待機時間、調整可能な一貫性レベルなど、Azure インフラストラクチャを使用する一部の機能は、DocumentDB Emulator では使用できません。
 
 
 ## <a name="authenticating-requests-against-the-documentdb-emulator"></a>DocumentDB Emulator に対する要求の認証

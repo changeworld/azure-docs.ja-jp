@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: f8e9579f15c79eef6a90c6a583b3f9ba2599d55d
-ms.openlocfilehash: d51a62cd3b0320beb7996d1b472ad500cfddd1d1
+ms.sourcegitcommit: ef5c1f296a0a4ee6476db663e85c49c351f826b9
+ms.openlocfilehash: 53a2012a1d928c961cbfbdcea485ae18d776360f
 
 
 ---
@@ -64,7 +64,7 @@ Data Management Gateway を使用すると、Azure IaaS 仮想マシン (VM) で
 コピー アクティビティでサポートされていないデータ ストアとの間でデータを移動する必要がある場合は、データのコピーと移動に独自のロジックを使用した、Data Factory の **カスタム アクティビティ** を使用します。 カスタム アクティビティの作成と使用の詳細については、「 [Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md)」をご覧ください。
 
 ### <a name="supported-file-formats"></a>サポートされるファイル形式
-コピー アクティビティを使用すると、Azure BLOB、Azure Data Lake Store、Amazon S3、FTP、ファイル システム、HDFS などを含む 2 つのファイル ベース データ ストアの間で**ファイルをそのままコピー**できます。 これを行うには、入力と出力の両方のデータセット定義で [format セクション](data-factory-create-datasets.md) をスキップします。 これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。
+コピー アクティビティを使用すると、Azure BLOB、Azure Data Lake Store、Amazon S3、FTP、ファイル システム、HDFS などを含む&2; つのファイル ベース データ ストアの間で**ファイルをそのままコピー**できます。 これを行うには、入力と出力の両方のデータセット定義で [format セクション](data-factory-create-datasets.md) をスキップします。 これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。
 
 また、コピー アクティビティは、指定された形式 (**テキスト、Avro、ORC、Parquet、JSON**) でのファイルの読み取りと書き込みも行います。 コピー アクティビティの例をいくつか示します。
 
@@ -80,28 +80,28 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 
 | コピー先データ ストアの地理的な場所 | コピー先データ ストアのリージョン | データ移動に使用するリージョン |
 |:--- |:--- |:--- |
-| 米国 | 米国東部 |米国東部 |
-| に関するページを参照してください。 | 米国東部 2 |米国東部 2 |
-| に関するページを参照してください。 | 米国中央部 |米国中央部 |
-| に関するページを参照してください。 | 米国中北部 |米国中北部 |
-| に関するページを参照してください。 | 米国中南部 |米国中南部 |
-| に関するページを参照してください。 | 米国中西部 |米国中央部 |
-| に関するページを参照してください。 | 米国西部 |米国西部 |
-| に関するページを参照してください。 | 米国西部 2 |米国西部 |
+| 米国 | 米国東部 | 米国東部 |
+| に関するページを参照してください。 | 米国東部 2 | 米国東部 2 |
+| に関するページを参照してください。 | 米国中央部 | 米国中央部 |
+| に関するページを参照してください。 | 米国中北部 | 米国中北部 |
+| に関するページを参照してください。 | 米国中南部 | 米国中南部 |
+| に関するページを参照してください。 | 米国中西部 | 米国中西部 |
+| 」の説明どおりに仮想デバイスをプロビジョニングして接続していること。 | 米国西部 | 米国西部 |
+| に関するページを参照してください。 | 米国西部 2 | 米国西部 |
 | カナダ | カナダ東部 | カナダ中部 |
 | に関するページを参照してください。 | カナダ中部 | カナダ中部 |
-| ブラジル | ブラジル南部 |ブラジル南部 |
-| ヨーロッパ | 北ヨーロッパ |北ヨーロッパ |
-| に関するページを参照してください。 | 西ヨーロッパ |西ヨーロッパ |
-| アジア太平洋 | 東南アジア |東南アジア |
-| に関するページを参照してください。 | 東アジア |東南アジア |
-| オーストラリア | オーストラリア東部 |オーストラリア東部 |
-| に関するページを参照してください。 | オーストラリア南東部 |オーストラリア南東部 |
-| 日本 | 東日本 |東日本 |
-| に関するページを参照してください。 | 西日本 |東日本 |
-| インド | インド中部 |インド中部 |
-| に関するページを参照してください。 | インド西部 |インド中部 |
-| に関するページを参照してください。 | インド南部 |インド中部 |
+| ブラジル | ブラジル南部 | ブラジル南部 |
+| ヨーロッパ | 北ヨーロッパ | 北ヨーロッパ |
+| に関するページを参照してください。 | 西ヨーロッパ | 西ヨーロッパ |
+| アジア太平洋 | 東南アジア | 東南アジア |
+| に関するページを参照してください。 | 東アジア | 東南アジア |
+| オーストラリア | オーストラリア東部 | オーストラリア東部 |
+| に関するページを参照してください。 | オーストラリア南東部 | オーストラリア南東部 |
+| 日本 | 東日本 | 東日本 |
+| に関するページを参照してください。 | 西日本 | 東日本 |
+| インド | インド中部 | インド中部 |
+| に関するページを参照してください。 | インド西部 | インド中部 |
+| に関するページを参照してください。 | インド南部 | インド中部 |
 
 
 > [!NOTE]
@@ -127,47 +127,48 @@ JSON プロパティ (名前、説明、入力テーブル、出力テーブル�
 
 JSON 定義のサンプルを次に示します。
 
-    {
-      "name": "ADFTutorialPipeline",
-      "properties": {
-        "description": "Copy data from Azure blob to Azure SQL table",
-        "activities": [
+```json
+{
+  "name": "ADFTutorialPipeline",
+  "properties": {
+    "description": "Copy data from Azure blob to Azure SQL table",
+    "activities": [
+      {
+        "name": "CopyFromBlobToSQL",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "CopyFromBlobToSQL",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "InputBlobTable"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "OutputSQLTable"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "BlobSource"
-              },
-              "sink": {
-                "type": "SqlSink",
-                "writeBatchSize": 10000,
-                "writeBatchTimeout": "60:00:00"
-              }
-            },
-            "Policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "NewestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "InputBlobTable"
           }
         ],
-        "start": "2016-07-12T00:00:00Z",
-        "end": "2016-07-13T00:00:00Z"
+        "outputs": [
+          {
+            "name": "OutputSQLTable"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "SqlSink",
+            "writeBatchSize": 10000,
+            "writeBatchTimeout": "60:00:00"
+          }
+        },
+        "Policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "NewestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
       }
-    }
-
+    ],
+    "start": "2016-07-12T00:00:00Z",
+    "end": "2016-07-13T00:00:00Z"
+  }
+}
+```
 出力データセットで定義されているスケジュールに従って、アクティビティが実行されるタイミングが決まります (たとえば、frequency を **day**、interval を **1** に設定すると、**日単位**で実行されます)。 コピー アクティビティでは、入力データセット (**ソース**) から出力データセット (**シンク**) にデータがコピーされます。
 
 コピー アクティビティには複数の入力データセットを指定できます。 この複数の入力データセットを使用して、アクティビティが実行される前に依存関係が検証されます。 ただし、コピーされるのは、最初のデータセットのデータだけです。 詳細については、「 [スケジュールと実行](data-factory-scheduling-and-execution.md)」を参照してください。  
@@ -176,10 +177,10 @@ JSON 定義のサンプルを次に示します。
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。 このガイドでは、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法についても説明します。
 
 ## <a name="scheduling-and-sequential-copy"></a>スケジュール設定と順次コピー
-Data Factory でのスケジュール設定と実行のしくみに関する詳細については、 [スケジュール設定と実行のしくみ](data-factory-scheduling-and-execution.md) に関するページをご覧ください。 複数のコピー操作を、順番にまたは順序を指定して 1 つずつ実行できます。 [順次コピー](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)に関するセクションを参照してください。
+Data Factory でのスケジュール設定と実行のしくみに関する詳細については、 [スケジュール設定と実行のしくみ](data-factory-scheduling-and-execution.md) に関するページをご覧ください。 複数のコピー操作を、順番にまたは順序を指定して&1; つずつ実行できます。 [順次コピー](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)に関するセクションを参照してください。
 
 ## <a name="type-conversions"></a>型の変換
-データ ストアが異なると、ネイティブな型システムも異なります。 コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
+データ ストアが異なると、ネイティブな型システムも異なります。 コピー アクティビティは次の&2; 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する。
 2. .NET 型からネイティブの sink 型に変換する。
@@ -192,6 +193,6 @@ Data Factory でのスケジュール設定と実行のしくみに関する詳�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

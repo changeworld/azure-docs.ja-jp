@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "App Service Web Apps を使用して、Web サイトや Web アプリケーションを構築してホストする方法について説明します。 チュートリアル、ビデオ、API リファレンスなどを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: d6fc4fe4f47571cbb8114b3de5ed9bc9466123fe
+ms.sourcegitcommit: 74579a5e96c26f130c0c1cc59e8cf4d6975ea89d
+ms.openlocfilehash: e5bb9e8ea35411f159ddf342fe0fda0ba1759fb5
 
 ---
 # <a name="azure-web-apps-documentation"></a>Azure Web Apps ドキュメント
 
-App Service Web Apps は、Web サイトと Web アプリケーションをホストするために最適化された、完全に管理されたコンピューティング プラットフォームです。 Microsoft Azure のこのサービスとしてのプラットフォーム (PaaS) サービスを使用すると、アプリの実行とスケーリングのためのインフラストラクチャは Azure で管理されるため、お客様はビジネス ロジックに集中できます。
+App Service Web Apps を使用して、Web サイトや Web アプリケーションを構築してホストする方法について説明します。 チュートリアル、ビデオ、API リファレンスなどのドキュメントでは、この完全に管理されたコンピューティング プラットフォームで開発する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -65,7 +66,7 @@ App Service Web Apps は、Web サイトと Web アプリケーションをホ�
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-web/web-sites-dotnet-get-started">
+        <a href="/azure/app-service-web/app-service-web-get-started-dotnet">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -83,7 +84,7 @@ App Service Web Apps は、Web サイトと Web アプリケーションをホ�
         </a>
     </li> 
      <li>
-        <a href="/azure/app-service-web/web-sites-java-get-started">
+        <a href="/azure/app-service-web/app-service-web-get-started-java">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -101,7 +102,7 @@ App Service Web Apps は、Web サイトと Web アプリケーションをホ�
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-web/app-service-web-nodejs-get-started">
+        <a href="/azure/app-service-web/app-service-web-get-started-nodejs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -119,7 +120,7 @@ App Service Web Apps は、Web サイトと Web アプリケーションをホ�
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-web/web-sites-python-ptvs-django-mysql">
+        <a href="/azure/app-service-web/app-service-web-get-started-python">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -138,7 +139,7 @@ App Service Web Apps は、Web サイトと Web アプリケーションをホ�
     </li>
    
      <li>
-        <a href="/azure/app-service-web/app-service-web-php-get-started">
+        <a href="/azure/app-service-web/app-service-web-get-started-php">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -219,16 +220,10 @@ App Service Web Apps は、Web サイトと Web アプリケーションをホ�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-web.pdf">
-        <div class="img"></div>
-        <div class="text">
-Web Apps のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

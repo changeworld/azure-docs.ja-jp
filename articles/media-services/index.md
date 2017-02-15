@@ -1,15 +1,14 @@
 ---
 layout: LandingPage
+description: "拡張可能なクラウド プラットフォームである Media Services を使用して、ブロードキャスト品質のビデオ ストリーミングをオンデマンドやライブで安全に行う方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 78433e8f6d66d55f7917e4abbbbe1c24e662a400
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 3e029a72b1918636ede33db1445ce0550d40ede6
 
 ---
 # <a name="media-services-documentation"></a>Media Services のドキュメント
 
-Azure Media Services は拡張可能なクラウドベースのプラットフォームです。これにより、開発者はスケーラブルなメディア管理の構築、アプリケーションの配信を実行できます。 Media Services は、オンデマンド、また各種クライアント (TV、PC、モバイル デバイスなど) へのライブ ストリーム配信の両方でのビデオやオーディオの安全なアップロード、格納、エンコード、パッケージ化を可能にする REST API に基づいています。
-
-Media Services を使いこなして、エンド ツー エンドのワークフローを構築できます。 ワークフローの一部にサード パーティのコンポーネントを使用することもできます。 たとえば、サードパーティのエンコーダーを使ってエンコードした後、Media Services を使用してアップロード、保護、パッケージ化、配信を実行できます。
+拡張可能なクラウド プラットフォーム、Media Services を使用して、ブロードキャスト品質のビデオ ストリーミングを行う方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -200,16 +199,9 @@ Media Services を使いこなして、エンド ツー エンドのワークフ
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/media-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-Media Services のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

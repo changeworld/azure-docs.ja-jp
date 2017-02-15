@@ -59,7 +59,7 @@
 ### [テーブル設計ガイド](storage-table-design-guide.md)
 ### [サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
 ## ファイルの使用
-### [概要](https://msdn.microsoft.com/en-us/library/dn166972.aspx)
+### [概要](/rest/api/storageservices/fileservices/File-Service-Concepts)
 ### [Azure Files のトラブルシューティング](storage-troubleshoot-file-connection-problems.md)
 ### [サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
 ## 仮想マシン ディスクの使用
@@ -75,13 +75,17 @@
 ### [パフォーマンスと拡張性のチェックリスト](storage-performance-checklist.md)
 ### [同時実行](storage-concurrency.md)
 ## 開発
-### [サンプル](storage-samples.md)
+### サンプル
+#### [.NET](storage-samples-dotnet.md)
+#### [Java](storage-samples-java.md)
+### [RA-GRS を使用して HA アプリを設計する](storage-designing-ha-apps-with-ragrs.md)
 ### [接続文字列を構成する](storage-configure-connection-string.md)
 ### [ストレージ エミュレーターを使用する](storage-use-emulator.md)
 ### [プロパティおよびメタデータを設定および取得する](storage-properties-metadata.md)
 ## 管理
 ### [PowerShell](storage-powershell-guide-full.md)
-### [Azure CLI](storage-azure-cli.md)
+### [Azure CLI 2.0 (プレビュー)](storage-azure-cli.md)
+### [Azure CLI 1.0](storage-azure-cli-nodejs.md)
 ### [Azure Automation](automation-manage-storage.md)
 ## セキュリティ保護
 ### [セキュリティ ガイド](storage-security-guide.md)
@@ -148,8 +152,8 @@
 ## [PowerShell](/powershell/storage)
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
-### [Resource Manager](/dotnet/api/microsoft.azure.management.storage)
-### [データの移動](https://msdn.microsoft.com/en-us/library/azure/mt684990.aspx)
+### [リソース マネージャー](/dotnet/api/microsoft.azure.management.storage)
+### [データの移動](https://msdn.microsoft.com/library/azure/mt684990.aspx)
 ### [BLOB、キュー、テーブル、ファイル](https://msdn.microsoft.com/library/azure/mt347887.aspx)
 ## [Java](/java/api/)
 ## [Node.JS](http://azure.github.io/azure-storage-node)
@@ -159,7 +163,7 @@
 ## [iOS](https://github.com/Azure/azure-storage-ios)
 ## [Android](http://azure.github.io/azure-storage-android)
 ## REST ()
-### [BLOB、キュー、テーブル、ファイル](/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference)
+### [BLOB、キュー、テーブル、ファイル](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
 ### [リソース プロバイダー](/rest/api/storagerp)
 ### [Import/Export](/rest/api/storageimportexport)
 
@@ -201,6 +205,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

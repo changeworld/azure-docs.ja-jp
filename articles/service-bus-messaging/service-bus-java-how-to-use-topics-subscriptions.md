@@ -1,19 +1,23 @@
 ---
-title: Java で Service Bus トピックを使用する方法 | Microsoft Docs
-description: Azure での Service Bus のトピックとサブスクリプションの使用方法について説明します。 コード サンプルは Java アプリケーション向けに作成されています。
-services: service-bus
+title: "Java で Service Bus トピックを使用する方法 | Microsoft Docs"
+description: "Azure での Service Bus のトピックとサブスクリプションの使用方法について説明します。 コード サンプルは Java アプリケーション向けに作成されています。"
+services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
+ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 08/23/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8d49567f5efe212852d6f9dc4008d616b8191184
+
 
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions"></a>Service Bus のトピックとサブスクリプションの使用方法
@@ -21,7 +25,7 @@ ms.author: sethm
 
 このガイドでは、Service Bus のトピックとサブスクリプションの使用方法について説明します。 サンプルは Java で記述され、[Azure SDK for Java][Azure SDK for Java] を利用しています。 ここでは、**トピックとサブスクリプションの作成**、**サブスクリプション フィルターの作成**、**トピックへのメッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。
 
-## <a name="what-are-service-bus-topics-and-subscriptions?"></a>Service Bus トピックとサブスクリプションとは
+## <a name="what-are-service-bus-topics-and-subscriptions"></a>Service Bus トピックとサブスクリプションとは
 Service Bus のトピックとサブスクリプションは、メッセージ通信の *発行/サブスクライブ* モデルをサポートします。 トピックとサブスクリプションを使用すると、分散アプリケーションのコンポーネントが互いに直接通信することがなくなり、仲介者の役割を果たすトピックを介してメッセージをやり取りすることになります。
 
 ![TopicConcepts](./media/service-bus-java-how-to-use-topics-subscriptions/sb-topics-01.png)
@@ -92,7 +96,7 @@ Service Bus トピックの管理操作は、**ServiceBusContract** クラスを
 ## <a name="create-subscriptions"></a>サブスクリプションを作成する
 トピックのサブスクリプションも **ServiceBusService** クラスで作成します。 サブスクリプションを指定し、サブスクリプションの仮想キューに渡すメッセージを制限するフィルターを設定できます。
 
-### <a name="create-a-subscription-with-the-default-(matchall)-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
+### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 **MatchAll** フィルターは、新しいサブスクリプションの作成時にフィルターが指定されていない場合に使用される既定のフィルターです。 **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、"AllMessages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
 
     SubscriptionInfo subInfo = new SubscriptionInfo("AllMessages");
@@ -102,9 +106,9 @@ Service Bus トピックの管理操作は、**ServiceBusContract** クラスを
 ### <a name="create-subscriptions-with-filters"></a>フィルターを適用したサブスクリプションの作成
 トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージに絞り込めるフィルターを作成することもできます。
 
-サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する [SqlFilter][SqlFilter] です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SQL フィルターで使用できる式の詳細については、[SqlFilter.SqlExpression][SqlFilter.SqlExpression] 構文の説明を参照してください。
+サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する [SqlFilter][SqlFilter] です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SQL フィルターで使用できる式の詳細については、[SqlFilter.SqlExpression][SqlFilter.SqlExpression] 構文の説明をご覧ください。
 
-次の例では、`HighMessages` という名前のサブスクリプションを作成し、[SqlFilter][SqlFilter] オブジェクトを適用します。このフィルターでは、カスタム **MessageNumber** プロパティが 3 を超えるメッセージのみが選択されます。
+次の例では、`HighMessages` という名前のサブスクリプションを作成し、[SqlFilter][SqlFilter] オブジェクトを適用します。カスタム **MessageNumber** プロパティが 3 を超えるメッセージのみが選択されます。
 
 ```
 // Create a "HighMessages" filtered subscription  
@@ -117,7 +121,7 @@ CreateRuleResult ruleResult = service.createRule("TestTopic", "HighMessages", ru
 service.deleteRule("TestTopic", "HighMessages", "$Default");
 ```
 
-同様に、次の例では `LowMessages` という名前のサブスクリプションを作成し、[SqlFilter][SqlFilter] オブジェクトを適用します。このフィルターでは、**MessageNumber** プロパティが 3 以下のメッセージのみが選択されます。
+同様に、次の例では `LowMessages` という名前のサブスクリプションを作成し、[SqlFilter][SqlFilter] オブジェクトを適用します。**MessageNumber** プロパティが 3 以下のメッセージのみが選択されます。
 
 ```
 // Create a "LowMessages" filtered subscription
@@ -140,7 +144,7 @@ BrokeredMessage message = new BrokeredMessage("MyMessage");
 service.sendTopicMessage("TestTopic", message);
 ```
 
-Service Bus トピックに送信されたメッセージは、[BrokeredMessage][BrokeredMessage] クラスのインスタンスです。 [BrokeredMessage][BrokeredMessage]* オブジェクトには、一連の標準的なメソッド (**setLabel** や **TimeToLive** など)、アプリケーション固有のカスタム プロパティの保持に使用されるディクショナリ、任意のアプリケーション データの本体が含まれます。アプリケーションでは、[BrokeredMessage][BrokeredMessage]のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切な **DataContractSerializer** を使用してオブジェクトをシリアル化します。別の方法として、**java.io.InputStream** を使用することもできます。
+Service Bus トピックに送信されたメッセージは、[BrokeredMessage][BrokeredMessage] クラスのインスタンスです。 [BrokeredMessage][BrokeredMessage]* オブジェクトには、一連の標準的なメソッド (**setLabel** や **TimeToLive** など)、アプリケーション固有のカスタム プロパティの保持に使用されるディクショナリ、任意のアプリケーション データの本体が含まれます。アプリケーションでは、[BrokeredMessage][BrokeredMessage] のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切な **DataContractSerializer** を使用してオブジェクトをシリアル化します。別の方法として、**java.io.InputStream** を使用することもできます。
 
 次の例では、前に示したコード スニペットで取得した `TestTopic` **MessageSender** に 5 通のテスト メッセージを送信する方法を示しています。
 各メッセージの **MessageNumber** プロパティの値がループの反復回数に応じてどのように変化するのかに注目してください (これによってメッセージを受信するサブスクリプションが決定されます)。
@@ -241,7 +245,7 @@ service.deleteTopic("TestTopic");
 ```
 
 ## <a name="next-steps"></a>次のステップ
-これで、Service Bus キューの基本を学習できました。詳細については、「[Service Bus のキュー、トピック、サブスクリプション][Service Bus のキュー、トピック、サブスクリプション]」をご覧ください。
+これで、Service Bus キューの基本を学習できました。詳細については、[「Service Bus のキュー、トピック、サブスクリプション」][Service Bus のキュー、トピック、サブスクリプション]を参照してください。
 
 [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
 [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
@@ -257,6 +261,6 @@ service.deleteTopic("TestTopic");
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

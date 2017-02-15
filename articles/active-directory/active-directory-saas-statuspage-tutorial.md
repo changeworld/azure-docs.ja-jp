@@ -1,12 +1,12 @@
 ---
-title: 'チュートリアル: Azure Active Directory と StatusPage の統合 | Microsoft Docs'
-description: Azure Active Directory と StatusPage の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と StatusPage の統合 | Microsoft Docs"
+description: "Azure Active Directory と StatusPage の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: f6ee8bb3-df43-4c0d-bf84-89f18deac4b9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: accfb64dfe167de9c6481954e00af6c8f732ab1d
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-statuspage"></a>チュートリアル: Azure Active Directory と StatusPage の統合
+# <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>チュートリアル: Azure Active Directory と StatusPage の統合
 このチュートリアルの目的は、StatusPage と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 StatusPage と Azure AD の統合には、次の利点があります。 
@@ -169,16 +173,16 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-statuspage-tutorial/create_aaduser_05.png)  
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-statuspage-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -273,6 +277,6 @@ StatusPage では、ジャストインタイム プロビジョニングがサ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

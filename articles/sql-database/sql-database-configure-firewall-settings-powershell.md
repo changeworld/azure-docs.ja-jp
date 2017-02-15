@@ -1,6 +1,6 @@
 ---
-title: "PowerShell を使用して Azure SQL Database のサーバーレベルのファイアウォール規則を構成する | Microsoft Docs"
-description: "Azure SQL データベースにアクセスする IP アドレス用のファイアウォールの構成方法を説明します。"
+title: "PowerShell: Azure SQL Database ファイアウォール規則の構成 | Microsoft Docs"
+description: "PowerShell を使用して、Azure SQL データベースにアクセスする IP アドレス用にサーバーレベルのファイアウォール規則を構成する方法について説明します。"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 1f7a1f6f4cc970cf12851e48d0f1b3c6ae46279c
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: d80bd1fbb5cdb0492e521a4d600f657fac0e3325
 
 
 ---
@@ -49,11 +49,11 @@ Azure PowerShell を使用すると、サーバーレベルのファイアウォ
 
 既存のサーバーレベルのファイアウォール規則を変更するには、[Set-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603789\(v=azure.300\).aspx) コマンドレットを実行します。 次の例では、ContosoFirewallRule という名前の規則で許容される IP アドレスの範囲を変更します。
 
-    Set-AzureRmSqlServerFirewallRule -ResourceGroupName 'resourcegroup1' –StartIPAddress 192.168.1.4 –EndIPAddress 192.168.1.10 –FirewallRuleName 'ContosoFirewallRule' –ServerName 'Contoso'
+    Set-AzureRmSqlServerFirewallRule -ResourceGroupName 'resourcegroup1' -StartIPAddress 192.168.1.4 -EndIPAddress 192.168.1.10 -FirewallRuleName 'ContosoFirewallRule' -ServerName 'Contoso'
 
 既存のサーバーレベルのファイアウォール規則を削除するには、[Remove-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603588\(v=azure.300\).aspx) コマンドレットを実行します。 次の例では、ContosoFirewallRule という名前の規則を削除します。
 
-    Remove-AzureRmSqlServerFirewallRule –FirewallRuleName 'ContosoFirewallRule' –ServerName 'Contoso'
+    Remove-AzureRmSqlServerFirewallRule -FirewallRuleName 'ContosoFirewallRule' -ServerName 'Contoso'
 
 
 ## <a name="manage-firewall-rules-by-using-powershell"></a>PowerShell を使用したファイアウォール規則の管理
@@ -87,6 +87,6 @@ Transact-SQL を使用して、サーバーレベルおよびデータベース�
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

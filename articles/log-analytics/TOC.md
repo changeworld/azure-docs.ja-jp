@@ -10,8 +10,8 @@
 ## [Log Analytics FAQ](log-analytics-faq.md)
 
 # 方法
-## 統合
-### 接続されたソース
+## データを収集する
+### 接続先ソース
 #### [Windows エージェント](log-analytics-windows-agents.md)
 #### [Linux エージェント](log-analytics-linux-agents.md)
 #### [Azure Virtual Machines](log-analytics-azure-vm-extension.md)
@@ -27,11 +27,15 @@
 #### [IIS ログ](log-analytics-data-sources-iis-logs.md)
 #### [カスタム ログ](log-analytics-data-sources-custom-logs.md)
 #### [カスタム フィールド](log-analytics-custom-fields.md)
-## 開発
+## データのクエリを実行する
 ### [ログ検索の概要](log-analytics-log-searches.md)
 ### [検索リファレンス](log-analytics-search-reference.md)
 ### [コンピューター グループ](log-analytics-computer-groups.md)
 ### [アラート](log-analytics-alerts.md)
+## データを分析する
+### [ダッシュボード](log-analytics-dashboards.md)
+### [ビュー デザイナー](log-analytics-view-designer.md)
+### [Power BI](log-analytics-powerbi.md)
 ### 解決方法
 #### [ソリューションの概要](log-analytics-add-solutions.md)
 #### [AD 評価](log-analytics-ad-assessment.md)
@@ -52,11 +56,7 @@
 #### [VMware](log-analytics-vmware.md)
 #### [ワイヤ データ](log-analytics-wire-data.md)
 #### [SCOM 評価](log-analytics-scom-assessment.md)
-## 分析
-### [ダッシュボード](log-analytics-dashboards.md)
-### [ビュー デザイナー](log-analytics-view-designer.md)
-### [Power BI](log-analytics-powerbi.md)
-## 自動化
+## 開発
 ### [データ コレクター API](log-analytics-data-collector-api.md)
 ### [PowerShell コマンドレット](log-analytics-powershell-workspace-configuration.md)
 ### [ログ検索 API](log-analytics-log-search-api.md)

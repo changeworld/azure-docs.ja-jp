@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2016
+ms.date: 12/13/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 764270f66a512efe5341361925845f671ea2b815
+ms.sourcegitcommit: 1761ee404e355d41170a5684a1a0ca6d2629f1e3
+ms.openlocfilehash: 5b6819a583f5161854be0f71bbc5164afd57d6f9
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 764270f66a512efe5341361925845f671ea2b815
 HDInsight が提供する各種サービス レベルと、HDInsight に含まれる各 hadoop コンポーネントのバージョンをご確認ください。
 
 ## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard と HDInsight Premium
-Azure HDInsight では、**Standard** と **Premium** の 2 つのカテゴリでビッグ データ クラウド サービスを提供します。 以下の表に、**Premium でのみ**利用できる機能を示します。 この表に明示的に書かれていない機能は、Standard の機能として提供されています。
+Azure HDInsight では、**Standard** と **Premium** の&2; つのカテゴリでビッグ データ クラウド サービスを提供します。 以下の表に、**Premium でのみ**利用できる機能を示します。 この表に明示的に書かれていない機能は、Standard の機能として提供されています。
 
 > [!NOTE]
 > HDInsight Premium は現在プレビューの段階で、Linux クラスターでのみ利用できます。
@@ -79,7 +79,7 @@ Azure HDInsight は、いつでもデプロイできる Hadoop クラスター �
 
 **現在のコンポーネントのバージョンの取得**
 
-HDInsight クラスターのバージョンに関連付けられたコンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。 利用可能なコンポーネントを特定し、どのバージョンがクラスターに使用されているかどうかを確認する 1 つの方法は、Ambari REST API を使用することです。 **GetComponentInformation** コマンドを使用すると、サービス コンポーネントに関する情報を取得できます。 詳細については、「[Ambari のドキュメント][ambari-docs]」を参照してください。 この情報を取得するもう 1 つの方法は、リモート デスクトップを使用してクラスターにログインし、"C:\apps\dist\" ディレクトリの内容を直接確認することです。
+HDInsight クラスターのバージョンに関連付けられたコンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。 利用可能なコンポーネントを特定し、どのバージョンがクラスターに使用されているかどうかを確認する&1; つの方法は、Ambari REST API を使用することです。 **GetComponentInformation** コマンドを使用すると、サービス コンポーネントに関する情報を取得できます。 詳細については、[Ambari のドキュメント][ambari-docs]を参照してください。 この情報を取得するもう&1; つの方法は、リモート デスクトップを使用してクラスターにログインし、"C:\apps\dist\" ディレクトリの内容を直接確認することです。
 
 **リリース ノート**
 
@@ -94,15 +94,16 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 | HDInsight のバージョン | HDP のバージョン | VM の OS | 高可用性 | リリース日 | Azure ポータルでの利用 | サポート有効期限 | 非推奨となる日 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDI 3.5 |HDP 2.5 |Ubuntu 16 |はい |9/30/2016 |はい | | |
-| HDI 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |あり |2016 年 3 月 29 日 |はい |12/29/2016 |1/9/2018 |
-| HDI 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS または Windows Server 2012R2 |あり |2015 年 12 月 2 日 |あり |2016 年 6 月 27 日 |2017 年 7 月 31 日 |
-| HDI 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012R2 |あり |2015 年 2 月 18 日 |あり |2016 年 3 月 1 日 |2017 年 4 月 1 日 |
-| HDI 3.1 |HDP 2.1 |Windows Server 2012R2 |あり |2014 年 6 月 24 日 |いいえ |2015 年 5 月 18 日 |2016 年 6月 30 日 |
+| HDI 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |あり |2016 年&3; 月&29; 日 |はい |12/29/2016 |1/9/2018 |
+| HDI 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS または Windows Server 2012R2 |あり |2015 年&12; 月&2; 日 |あり |2016 年&6; 月&27; 日 |2017 年&7; 月&31; 日 |
+| HDI 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012R2 |あり |2015 年&2; 月&18; 日 |あり |2016 年&3; 月&1; 日 |2017 年&4; 月&1; 日 |
+| HDI 3.1 |HDP 2.1 |Windows Server 2012R2 |あり |2014 年&6; 月&24; 日 |いいえ |2015 年&5; 月&18; 日 |2016 年&6;月&30; 日 |
 | HDI 3.0 |HDP 2.0 |Windows Server 2012R2 |あり |02/11/2014 |いいえ |09/17/2014 |06/30/2015 |
 | HDI 2.1 |HDP 1.3 |Windows Server 2012R2 |あり |10/28/2013 |いいえ |05/12/2014 |05/31/2015 |
 | HDI 1.6 |HDP 1.1 | |いいえ |10/28/2013 |いいえ |04/26/2014 |05/31/2015 |
 
-**既定以外のクラスターのデプロイメント**
+##<a name="hdi-version-32-and-33-nearing-deprecation-date"></a>非推奨となる日が近づいている HDI バージョン 3.2 および 3.3
+HDI 3.2 クラスターは、2016 年 3 月 1 日にサポート期間が終了しており、2017 年 4 月 1 日に非推奨となります。 HDI 3.3 クラスターは、2016 年 6 月 27 日にサポート期間が終了しており、2017 年 7 月 31 日に非推奨となります。 HDI 3.2 または HDI 3.3 クラスターを利用している場合は、すぐにクラスターを HDI 3.5 (最新バージョン) にアップグレードしてください。 
 
 ### <a name="the-service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight クラスター バージョンのサービス レベル アグリーメント
 SLA は、"サポート ウィンドウ" の条件で定義されます。 サポート ウィンドウとは、HDInsight クラスターのバージョンが Microsoft カスタマー サービス & サポートによってサポートされる期間を指しています。 HDInsight クラスターは、そのバージョンの **サポート有効期限** が現在の日付を過ぎている場合、サポート対象外となります。 サポートされている HDInsight クラスターのバージョンの一覧は上記のテーブルに示されています。 所定の HDInsight Version X (新しい X+1 バージョンが利用可能なった後) のサポート有効期限は、次の数式で計算した日付のうち、遅い方とされます。  
@@ -116,6 +117,17 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。 サ�
 > Windows ベースの HDInsight クラスター (バージョン 2.1、3.0、3.1、3.2、および 3.3 を含む) は Azure ゲスト OS ファミリ 4 で実行されます。この OS は Windows Server 2012 R2 の 64 ビット版を使用し、.NET Framework 4.0、4.5、4.5.1、および 4.5.2 をサポートします。
 > 
 > 
+
+##<a name="hdinsight-deprecation-on-windows"></a>Windows 向けの HDInsight の廃止
+HDI バージョン 3.4 以降については、HDInsight は Linux OS でのみリリースされています。 HDInsight 向けのサービスの一部は Linux でのみ利用できます (Apache Ranger、HDInsight アプリケーション、プライマリ FS としての Azure Data Lake Store など)。これには、お客様にとってさまざまなメリットがあります。
+
+* HDInsight サービスにより、オープン ソースのビッグ データ テクノロジをより早く市場に提供できる
+* サポートを目的とした大規模なコミュニティとエコシステムがある
+* Hadoop および最新のビッグ データ テクノロジのオープン ソース コミュニティにより、開発が活発に行われる 
+* HDInsight サービスをオープン ソースのビッグ データ テクノロジに集中させることができる 
+
+オープン ソースのビッグ データ テクノロジへの投資を継続するために、HDInsight の今後のリリースは Linux OS でのみ提供されます。 Windows OS 向けの HDInsight は今後リリースされません。 Windows 向けの HDInsight の最終リリースは HDI 3.3 です。 HDI 3.3 は 2016 年 6 月 27 日にサポート期間が終了しており、2017 年 7 月 31 日に非推奨となります。 Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行については、[こちら](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux)を参照してください。
+
 
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>HDInsight バージョンに対応する Hortonworks リリース ノート
 * HDInsight クラスター Version 3.4 は、 [Hortonworks Data Platform 2.4](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)を基盤とする Hadoop ディストリビューションを使用します。 これが、ポータルの使用時に作成される **既定** の Hadoop クラスターです。
@@ -155,6 +167,6 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。 サ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,17 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 12/07/2016
 ms.author: adsolank;juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 17571acfab870974186af9849d030e9702f3be76
+ms.sourcegitcommit: 7065d5e87dbf47153bc89b37b56af81927b8b92b
+ms.openlocfilehash: 902e872b224b267c989f741345efdd8ef3fa8ce3
 
 
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成
-## <a name="overview"></a>Overview
-**Azure Media Indexer 2 プレビュー** メディア プロセッサー (MP) を使用して、メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックを生成できます。 前のバージョンの [Azure Media Indexer](media-services-index-content.md)と比較すると、 **Azure Media Indexer 2 プレビュー** は、インデックス作成が高速化され、より多くの言語をサポートします。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語、ポルトガル語、アラビア語などがサポートされています。
+## <a name="overview"></a>概要
+**Azure Media Indexer 2 プレビュー** メディア プロセッサー (MP) を使用して、メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックを生成できます。 前のバージョンの [Azure Media Indexer](media-services-index-content.md)と比較すると、 **Azure Media Indexer 2 プレビュー** は、インデックス作成が高速化され、より多くの言語をサポートします。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (標準、簡体字)、ポルトガル語、アラビア語、日本語などがサポートされています。
 
 **Azure Media Indexer 2 プレビュー** MP は現在プレビュー段階です。
 
@@ -32,8 +32,6 @@ ms.openlocfilehash: 17571acfab870974186af9849d030e9702f3be76
 > 次の考慮事項が適用されます。
 > 
 > Indexer 2 は、Azure China と Azure Government ではサポートされません。
-> 
-> このプレビューは最大 10 分の処理に制限されていますが、すべてのお客様が無料で使用できます。
 > 
 > コンテンツのインデックスを作成する場合は、クリアな (バック グラウンド ミュージック、ノイズ、特殊効果、またはマイク ヒスノイズなどがない) 音声機能を持つメディア ファイルを使用してください。 適切なコンテンツの例としては、記録された会議、講義またはプレゼンテーションなどがあります。 ムービー、テレビ番組、混合音声とサウンド効果を含むもの、バックグラウンド ノイズ (ヒスノイズ) を含む記録状態が良好でないコンテンツは、インデックス作成に適しません。
 > 
@@ -78,14 +76,16 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 
 * 英語 [EnUs]
 * スペイン語 [EsEs]
-* 中国語 [ZhCn]
+* 中国語 (標準、簡体字) [ZhCn]
 * フランス語 [FrFr]
 * ドイツ語 [DeDe]
 * イタリア語 [ItIt]
 * ポルトガル語 [PtBr]
 * アラビア語 (エジプト語) [ArEg]
+* 日本語 [JaJp]
 
 ## <a name="sample-code"></a>サンプル コード
+
 このプログラムでは次の方法を示します。
 
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
@@ -282,6 +282,6 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

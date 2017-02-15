@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/22/2016
+ms.date: 12/06/2016
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3885733b67933f331f65760474649fba18adce12
+ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
+ms.openlocfilehash: 140bee520dd8de0d9303a7d80e10cae407c8b10d
 
 
 ---
@@ -30,7 +30,7 @@ Azure でのクラスターの作成は、リソース モデル テンプレー
 クラスターは、次のオペレーティング システムが実行されている VM 上に作成できます。
 
 * Windows Server 2012 R2
-* Windows Server 2016 (一般公開として発表された後)
+* Windows Server 2016 
 * Linux Ubuntu 16.04 (パブリック プレビュー中) 
 
 ## <a name="create-service-fabric-standalone-clusters-on-premise-or-with-any-cloud-provider"></a>オンプレミスまたはクラウド プロバイダーでの Service Fabric スタンドアロン クラスターの作成
@@ -53,7 +53,7 @@ Windows Server におけるスタンドアロン Service Fabric クラスター�
 クラスターは、次のオペレーティング システムが実行されている VM 上またはコンピューター上に作成できます。
 
 * Windows Server 2012 R2
-* Windows Server 2016 (一般公開として発表された後)
+* Windows Server 2016 
 * Linux (近日対応予定)
 
 ## <a name="advantages-of-service-fabric-clusters-on-azure-over-standalone-service-fabric-clusters-created-on-premises"></a>オンプレミスに作成されたスタンドアロンの Service Fabric クラスターと比較した場合の Azure 上の Service Fabric クラスターのメリット
@@ -67,13 +67,14 @@ Windows Server におけるスタンドアロン Service Fabric クラスター�
 * **自動スケール** : Azure 上のクラスターの場合、仮想マシン スケール セットであるため、組み込みの自動スケール機能が提供されます。 オンプレミスおよび他のクラウド環境では、自動スケール機能を独自に構築するか、Service Fabric で公開されているクラスター スケーリング用 API を手動で使用してスケールする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
-Windows Server を実行する VM またはコンピューターでのクラスターの作成: [Windows Server での Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
 
-Linux を実行している VM またはコンピューターでのクラスターの作成: [Linux 上の Service Fabric](service-fabric-linux-overview.md)
+* Windows Server を実行する VM またはコンピューターでのクラスターの作成: [Windows Server での Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
+* Linux を実行している VM またはコンピューターでのクラスターの作成: [Linux 上の Service Fabric](service-fabric-linux-overview.md)
+* [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

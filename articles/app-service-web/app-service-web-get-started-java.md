@@ -1,5 +1,5 @@
 ---
-title: "初めての Java Web アプリを Azure に 5 分でデプロイする | Microsoft Docs"
+title: "初めての Java Web アプリを Azure に 5 分でデプロイする (CLI 2.0 プレビュー) | Microsoft Docs"
 description: "サンプル アプリをデプロイして、App Service での Web アプリの実行がいかに簡単であるかを説明します。 実際の開発を速やかに開始し、すぐに成果を確認できます。"
 services: app-service\web
 documentationcenter: 
@@ -12,15 +12,26 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/13/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 90c1099f7970fc490ca01f2d815679f967c46187
+ms.sourcegitcommit: 05e61d2fc751c4239aef4b10ad897765c59fe928
+ms.openlocfilehash: e15a67ee0568c52f5fb81110b0ad6d2c53ec8fae
 
 
 ---
-# <a name="deploy-your-first-java-web-app-to-azure-in-five-minutes"></a>初めての Java Web アプリを Azure に 5 分でデプロイする
+# <a name="deploy-your-first-java-web-app-to-azure-in-five-minutes-cli-20-preview"></a>初めての Java Web アプリを Azure に 5 分でデプロイする (CLI 2.0 プレビュー)
+
+> [!div class="op_single_selector"]
+> * [初めての HTML サイト](app-service-web-get-started-html-cli-nodejs.md)
+> * [初めての .NET アプリ](app-service-web-get-started-dotnet-cli-nodejs.md)
+> * [初めての PHP アプリ](app-service-web-get-started-php-cli-nodejs.md)
+> * [初めての Node.js アプリ](app-service-web-get-started-nodejs-cli-nodejs.md)
+> * [初めての Python アプリ](app-service-web-get-started-python-cli-nodejs.md)
+> * [初めての Java アプリ](app-service-web-get-started-java.md)
+> 
+> 
+
 このチュートリアルでは、シンプルな Java Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md)にデプロイします。
 App Service を使用すると、Web アプリ、[モバイル アプリ バックエンド](/documentation/learning-paths/appservice-mobileapps/)、および [API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)を作成できます。
 
@@ -73,7 +84,7 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
     ![](./media/app-service-web-get-started-languages/set-java-application-settings.png)
 2. **[Java バージョン]** で、**[Java 8]** を選択して **[保存]** をクリックします。
    
-    ![](./media/app-service-web-get-started-languages/set-java-application-settings.png)
+    ![](./media/app-service-web-get-started-languages/set-java.png)
    
     **[Web アプリ設定が正常に更新されました]** という通知が表示されたら、http://*&lt;appname>*.azurewebsites.net に移動して、アクティブな既定の JSP サーブレットを確認します。
 3. [Web アプリ] ブレードに戻り、下にスクロールして **[デプロイ資格情報]** を表示するかこれを探してクリックします。
@@ -120,6 +131,6 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

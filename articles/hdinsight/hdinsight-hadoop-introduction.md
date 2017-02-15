@@ -175,7 +175,7 @@ HDInsight の Hadoop は、Azure クラウド エコシステムの一部とし�
 HDInsight の Hadoop を使うその他のメリットについては、[HDInsight 向けの Azure の機能][marketing-page]に関するページを参照してください。
 
 ## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard と HDInsight Premium
-HDInsight は、ビッグ データのクラウド サービスを Standard と Premium の 2 つのカテゴリで提供します。 HDInsight Standard では、組織がビッグ データのワークロードの実行に使用できる、エンタープライズ規模のクラスターが用意されています。 HDInsight Premium では、これに加えて HDInsight クラスター用の高度な分析機能やセキュリティ機能が用意されています。 詳細については、 [Azure HDInsight Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)
+HDInsight は、ビッグ データのクラウド サービスを Standard と Premium の&2; つのカテゴリで提供します。 HDInsight Standard では、組織がビッグ データのワークロードの実行に使用できる、エンタープライズ規模のクラスターが用意されています。 HDInsight Premium では、これに加えて HDInsight クラスター用の高度な分析機能やセキュリティ機能が用意されています。 詳細については、 [Azure HDInsight Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)
 
 ## <a name="a-idresourcesaresources-for-learning-more-about-big-data-analysis-hadoop-and-hdinsight"></a><a id="resources"></a>ビッグ データ分析、Hadoop、HDInsight に関する情報の収集に役立つリソース
 クラウドおよびビッグ データ分析での Hadoop への入門は、次のリソースを使用して作成されました。

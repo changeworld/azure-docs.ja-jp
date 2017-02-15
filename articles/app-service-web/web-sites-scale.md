@@ -143,6 +143,6 @@ Azure SQL Database や Azure Storage などの他のサービスにアプリが�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

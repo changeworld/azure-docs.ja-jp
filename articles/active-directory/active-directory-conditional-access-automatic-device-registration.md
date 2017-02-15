@@ -99,6 +99,6 @@ AD FS を使用したデバイス登録のデプロイに関する詳細につ�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

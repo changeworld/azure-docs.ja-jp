@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2016
-ms.author: ahmedelnably
+ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7b0daaee1f9017ade049909341100a4d0e5f4a59
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: 9ebfa91c7972ab3c264032ead8376c23c1197a4b
 
 
 ---
@@ -73,6 +73,6 @@ Web アプリの複製を作成するには、その Web アプリが **Premium*
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

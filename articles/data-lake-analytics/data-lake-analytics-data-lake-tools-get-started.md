@@ -37,7 +37,7 @@ U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析す�
 * **Data Lake Analytics アカウントとサンプル データ** Data Lake Tools では、Data Lake Analytics アカウントの作成はサポートしていません。 そのため、Azure Portal、Azure PowerShell、.NET SDK、または Azure CLI を使ってアカウントを作成する必要があります。
 参考までに、Data Lake Analytics サービスを作成し、ソース データ ファイルをアップロードするための PowerShell スクリプトについては、「[付録 A: チュートリアルの準備のための PowerShell サンプル](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial)」を参照してください。
 
-    このほか、「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」の次の 2 つのセクションに示した方法でも、アカウントを作成して手動でデータをアップロードできます。
+    このほか、「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」の次の&2; つのセクションに示した方法でも、アカウントを作成して手動でデータをアップロードできます。
 
     1. [Azure Data Lake Analytics アカウントの作成](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)
     2. [既定の Data Lake ストレージ アカウントへの SearchLog.tsv のアップロード](data-lake-analytics-get-started-portal.md#prepare-source-data)
@@ -166,7 +166,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
 
    * [ジョブの概要]。 現在のジョブの概要情報が表示されます (状態、進行状況、実行時間、ランタイムの名前、送信者など)。   
    * [ジョブの詳細]。 このジョブに関する詳細情報が表示されます (スクリプト、リソース、頂点実行ビューなど)。
-   * [ジョブ グラフ]。 ジョブの情報 (進行状況、データの読み取り、データの書き込み、実行時間、ノードごとの平均実行時間、入力スループット、出力スループット) が 4 つのグラフで視覚的に提供されます。
+   * [ジョブ グラフ]。 ジョブの情報 (進行状況、データの読み取り、データの書き込み、実行時間、ノードごとの平均実行時間、入力スループット、出力スループット) が&4; つのグラフで視覚的に提供されます。
    * [メタデータ操作]。 すべてのメタデータ操作が表示されます。
    * [状態の履歴]。
    * [診断]。 Data Lake Tools for Visual Studio がジョブの実行を自動的に診断します。 エラーやパフォーマンスの問題がジョブにある場合、アラートが表示されます。 詳細についてはジョブの診断 (リンクは TBD) を参照してください。
@@ -233,7 +233,7 @@ U-SQL スクリプトの開発方法については、「[U-SQL スクリプト�
 スクリプトを右クリックし、コンテキスト メニューの **[ローカル プラン実行]** をクリックするか、**CTRL + F5** キーを押してローカル実行をトリガーします。
 
 ### <a name="use-assemblies-in-local-run"></a>ローカル実行でアセンブリを使用する
-カスタマイズされた C# ファイルを実行する方法は 2 つあります。
+カスタマイズされた C# ファイルを実行する方法は&2; つあります。
 
 * 分離コード ファイルにアセンブリを記述します。アセンブリは自動的に登録され、スクリプトが完了すると削除されます。
 * C# アセンブリ プロジェクトを作成し、下のようなスクリプトを利用し、ローカル アカウントに出力 dll を登録します。 パスは、DataRoot フォルダーではなく、スクリプトに相対となることに注意してください。

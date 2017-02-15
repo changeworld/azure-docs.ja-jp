@@ -61,10 +61,13 @@
 ### [HVAC パフォーマンスを予測する](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 ### [食品検査の結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 ### [Web サイトのログを分析する](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+### [Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 ### [Jupyter Notebook カーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-### [Jupyter Notebook 向けパッケージ](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [cell magic を使用して Jupyter で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [Script Action を使用して Jupyter で外部のパッケージを使用する](hdinsight-apache-spark-python-package-installation.md)
 ### [ローカルの Jupyter Notebook を使用する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [Livy を使用したリモート ジョブ](hdinsight-apache-spark-livy-rest-interface.md)
+### [Eclipse を使用してアプリを開発する](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [IntelliJ を使用してアプリを開発する](hdinsight-apache-spark-intellij-tool-plugin.md)
 ### [IntelliJ でリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 ### [リソースの管理](hdinsight-apache-spark-resource-manager.md)
@@ -156,6 +159,7 @@
 #### [Azure CLI の使用](hdinsight-administer-use-command-line.md)
 ### [Ambari Web UI を使用してクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
 #### [Ambari REST API を使用する](hdinsight-hadoop-manage-ambari-rest-api.md)
+### [ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)
 ### [Hadoop ジョブのデータをアップロードする](hdinsight-upload-data.md)
 ### [Sqoop でデータをインポートおよびエクスポートする](hdinsight-use-sqoop.md)
 #### [SSH を使用した接続](hdinsight-use-sqoop-mac-linux.md)
@@ -224,6 +228,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

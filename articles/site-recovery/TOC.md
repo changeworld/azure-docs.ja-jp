@@ -17,8 +17,9 @@
 ### [ネットワーク マッピング (VMM)](site-recovery-network-mapping.md)
 ### [オンプレミス サイト間のストレージ マッピング](site-recovery-storage-mapping.md)
 ## レプリケート
-### [VMware VM とサーバーを Azure に](site-recovery-vmware-to-azure.md)
-### [VMware VM とサーバーをセカンダリ サイトに](site-recovery-vmware-to-vmware.md)
+### [VMWare VM と物理サーバーを Azure へ](site-recovery-vmware-to-azure.md)
+### [VMWare VM と物理サーバーをセカンダリ サイトへ](site-recovery-vmware-to-vmware.md)
+### [CSP プログラムを使用して Azure のマルチテナントをサポートしている VMware VM](site-recovery-multi-tenant-support-vmware-using-csp.md)
 ### [Hyper-V VM を Azure に (VMM を使用)](site-recovery-vmm-to-azure.md)
 ### [Hyper-V VM を Azure に (VMM なし)](site-recovery-hyper-v-site-to-azure.md)
 ### [Hyper-V VM をセカンダリ サイトに](site-recovery-vmm-to-vmm.md)
@@ -64,6 +65,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

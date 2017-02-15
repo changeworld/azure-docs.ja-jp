@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "IoT Hub を使用して、何十億台ものモノのインターネット資産 (IoT) を接続、監視、制御する方法について説明します。 チュートリアル、API リファレンス、ビデオ、その他のドキュメントを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 62cc285a4dc0b85f364a6306e3fc4b0727c439db
-ms.openlocfilehash: 4a165d2f3e4447d2490296a76934cba98b9dcd79
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: da0387255c538afd5490f313c10509a1b40e6dd9
 
 ---
 #<a name="iot-hub-documentation"></a>IoT Hub のドキュメント
 
-Azure IoT Hub は、何百万もの IoT デバイスとソリューション バックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。  また、デバイス接続の詳細な監視を実現し、よく使われる言語とプラットフォーム向けのデバイス ライブラリが含まれています。 
+IoT Hub を使用して、何十億台ものモノのインターネット資産 (IoT) を接続、監視、制御する方法について説明します。 チュートリアル、API リファレンス、ビデオ、その他のドキュメントでは、IoT デバイスとソリューション バック エンド間に信頼性のある双方向通信をデプロイする方法を紹介します。 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -141,9 +142,10 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p><a href="/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest">REST API (リソース プロバイダー)</a></p>
-                        <p><a href="/rest/api/iothub/device-identities-rest">REST API (デバイス ID)</a></p>
-                        <p><a href="/rest/api/iothub/device-messaging-rest-apis">REST API (Device Messaging)</a></p>
+                        <p><a href="/rest/api/iothub/iothubresource">REST (リソース プロバイダー)</a></p>
+                        <p><a href="/rest/api/iothub/deviceapi">REST (デバイス ID)</a></p>
+                        <p><a href="/rest/api/iothub/httpruntime">REST (デバイス メッセージング)</a></p>
+                        <p><a href="/rest/api/iothub/jobapi">REST (ジョブ)</a></p>
                     </div>
                 </div>
             </div>
@@ -151,16 +153,10 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/iot-hub.pdf">
-        <div class="img"></div>
-        <div class="text">
-IoT Hub のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

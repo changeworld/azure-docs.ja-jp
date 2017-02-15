@@ -68,6 +68,6 @@ Docker クライアントを構成するには、Windows PowerShell を開き、
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

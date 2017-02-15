@@ -87,7 +87,7 @@ azure vm create \
     --vm-size Standard_DS2_v2 \
     --storage-account-name mystorageaccount \
     --image-urn UbuntuLTS \
-    --admin-username ops \
+    --admin-username azureuser \
     --ssh-publickey-file ~/.ssh/id_rsa.pub
 ```
 
@@ -131,7 +131,7 @@ azure vm create \
     --vm-size Standard_DS2_v2 \
     --storage-account-name mystorageaccount \
     --image-urn UbuntuLTS \
-    --admin-username ops \
+    --admin-username azureuser \
     --ssh-publickey-file ~/.ssh/id_rsa.pub
 ```
 

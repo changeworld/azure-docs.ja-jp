@@ -7,12 +7,13 @@
 # 作業開始
 
 ## Web Apps
-### [.NET](web-sites-dotnet-get-started.md)
-### [Node.js](app-service-web-nodejs-get-started.md)
-### [Python](web-sites-python-ptvs-django-mysql.md)
-### [Java](web-sites-java-get-started.md)
+### [HTML](app-service-web-get-started-html.md)
+### [.NET](app-service-web-get-started-dotnet.md)
+### [Node.js](app-service-web-get-started-nodejs.md)
+### [Python](app-service-web-get-started-python.md)
+### [Java](app-service-web-get-started-java.md)
 ### [Marketplace アプリ](web-sites-php-web-site-gallery.md)
-### [PHP](app-service-web-php-get-started.md)   
+### [PHP](app-service-web-get-started-php.md)   
 
 ## API Apps
 ### [.NET](../app-service-api/app-service-api-dotnet-get-started.md)
@@ -60,11 +61,12 @@
 ### [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)
 
 ### ASP.NET アプリ
-#### [初めての .NET Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-dotnet.md)
+#### [Visual Studio を使用して Azure で ASP.NET アプリを作成する](web-sites-dotnet-get-started.md)
 #### [ASP.NET Web API を使用して REST サービスを作成する](web-sites-dotnet-rest-service-aspnet-api-sql-database.md)
 #### [Visual Studio Code を使用した ASP.NET 5 Web アプリの作成](web-sites-create-web-app-using-vscode.md)
 
 ### Node.js アプリ
+#### [App Service 用の Node.js を開発する](app-service-web-nodejs-get-started.md)
 #### [Node.js Web アプリを作成する](web-sites-nodejs-develop-deploy-mac.md)
 #### [Socket.IO で Node.js チャット アプリケーションを作成する](web-sites-nodejs-chat-app-socketio.md)
 #### [Azure Web Apps での io.js の使用方法](web-sites-nodejs-iojs.md)
@@ -72,14 +74,13 @@
 #### [WebMatrix を使用して構築およびデプロイする](web-sites-nodejs-use-webmatrix.md)
 
 ### PHP アプリ
-#### [初めての PHP Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-php.md)
+#### [App Service 用の PHP アプリを開発する](app-service-web-php-get-started.md) 
 #### [PHP-SQL Web アプリを作成して Git でデプロイする](web-sites-php-sql-database-deploy-use-git.md)
 #### [Azure App Service での WordPress Web アプリの作成](web-sites-php-web-site-gallery.md)
 #### [Azure で MySQL データベースを作成して接続する](../store-php-create-mysql-database.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [Azure App Service のエンタープライズ クラスの WordPress](web-sites-php-enterprise-wordpress.md)
 
 ### Java アプリ
-#### [初めての Java Web アプリを Azure に 5 分でデプロイする](web-sites-java-get-started.md)
 #### Hello World アプリを作成する
 ##### [Eclipse](app-service-web-eclipse-create-hello-world-web-app.md)
 ##### [IntelliJ](app-service-web-intellij-create-hello-world-web-app.md)
@@ -98,7 +99,7 @@
 #### [Python Tools 2.2 for Visual Studio を使用した Azure 上の Django と MySQL](web-sites-python-ptvs-django-mysql.md)
 #### [Python Tools 2.2 for Visual Studio を使用した Azure 上の Django と SQL Database](web-sites-python-ptvs-django-sql.md)
 
-### [初めての基本的な Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-html.md)
+### [初めての基本的な Web アプリを Azure に&5; 分でデプロイする](app-service-web-get-started-html.md)
 ### [Web Apps の運用環境におけるテストの基本](app-service-web-test-in-production-get-start.md)
 
 ### [Web ジョブ](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)

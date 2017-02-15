@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
@@ -26,16 +26,16 @@ Azure ポータルでは、Azure Active Directory (Azure AD) プレビュー グ
 ## <a name="to-create-the-advanced-rule"></a>高度なルールを作成するには
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
-   
+
    ![ユーザー管理を開く](./media/active-directory-groups-dynamic-membership-azure-portal/search-user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[すべてのグループ]** を選択します。
-   
+
    ![グループ ブレードを開く](./media/active-directory-groups-dynamic-membership-azure-portal/view-groups-blade.png)
 4. **[Users and groups - All groups (ユーザーとグループ - すべてのグループ)]** ブレードで、**[追加]** をクリックします。
-   
+
    ![新しいグループを追加する](./media/active-directory-groups-dynamic-membership-azure-portal/add-group-type.png)
 5. **[グループ]** ブレードで、新しいグループの名前と説明を入力します。 **[メンバーシップの種類]** で、ユーザーとデバイスのどちらのルールを作成するかに応じて、**[動的ユーザー]** または **[動的デバイス]** を選択し、**[動的クエリの追加]** をクリックします。 デバイスのルールに使用する属性については、「 [属性を使用したデバイス オブジェクトのルールの作成](#using-attributes-to-create-rules-for-device-objects)」をご覧ください。
-   
+
    ![動的メンバーシップのルールを追加する](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
 6. **[動的メンバーシップ ルール]** ブレードで、**[動的メンバーシップの高度な規則の追加]** ボックスにルールを入力し、ブレードの下部にある **[作成]** をクリックします。
 7.  **[作成]** on the **[グループ]** をクリックして、グループを作成します。
@@ -61,8 +61,8 @@ Azure ポータルでは、Azure Active Directory (Azure AD) プレビュー グ
 > [!NOTE]
 > 文字列演算と正規表現演算は、大文字と小文字が区別されません。 定数に $null を使用することで Null チェックを実行することもできます (例: user.department -eq $null)。
 > 二重引用符 (") を含んだ文字列は、バック クォート文字 (`) でエスケープする必要があります (例: user.department -eq \`"Sales")。
-> 
-> 
+>
+>
 
 ## <a name="supported-expression-rule-operators"></a>サポートされている式のルール演算子
 次の表に、高度なルール本体で使用できる、サポートされているすべての式のルール演算子とその構文を示します。
@@ -174,11 +174,11 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 1. 「[高度なルールを作成するには](#to-create-the-advanced-rule)」の手順 1. ～ 5. に従い、**[メンバーシップの種類]** で **[動的ユーザー]** を選択します。
 2. **[Dynamic membership rules (動的メンバーシップのルール)]** ブレードで、次の構文を使用してルールを入力します。
-   
+
     直属の部下用の場合は、*Direct Reports for {obectID_of_manager}* です。 直属の部下の有効なルールの例を示します。
-   
+
                     Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
-   
+
     ここで、"62e19b97-8b3d-4d4a-a106-4ce66896a863" はマネージャーのオブジェクト ID を示しています。 オブジェクト ID は、Azure AD にある、マネージャーであるユーザーのユーザー ページの **[プロファイル] タブ** で確認できます。
 3. このルールを保存すると、ルールに該当するすべてのユーザーがグループのメンバーとして結合されます。 最初は、グループを設定するのに数分かかることがあります。
 
@@ -202,7 +202,6 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 * [グループの設定の管理](active-directory-groups-settings-azure-portal.md)
 * [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
 * [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
-
 
 
 

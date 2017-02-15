@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "監視と診断のサービスを使用して、パフォーマンスの追跡、セキュリティの維持、傾向の把握を行う方法について説明します。 API リファレンスやベスト プラクティスなどを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 23978b98ce1ffab18f4fb843ca8904062bf4253e
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: e59d88dbd538aad3e21a31fd721361cd9ffd4919
 
 ---
 
 # <a name="monitoring-and-diagnostics-documentation"></a>Monitoring and Diagnostics のドキュメント
 
-Monitoring and Diagnostics は、スケーラブルで信頼性の高いマイクロサービスを簡単にパッケージ化、デプロイ、管理できる分散システム プラットフォームであり、クラウド アプリケーションの開発や管理での大きな課題に対処します。  Monitoring and Diagnostics は、これらのエンタープライズ クラスの Tier-1 クラウド スケール アプリケーションを構築して管理するための次世代ミドルウェア プラットフォームです。
+Azure の監視と診断のサービスを使用して、パフォーマンスの追跡、セキュリティの維持、傾向の把握を行う方法について説明します。 チュートリアル、API リファレンス、ベスト プラクティスなどのドキュメントでは、監視と診断の使用方法や、スケーラブルで信頼性の高いソリューションを計画してデプロイする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -145,15 +146,10 @@ Monitoring and Diagnostics は、スケーラブルで信頼性の高いマイ�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/monitoring-and-diagnostics.pdf">
-        <div class="img"></div>
-        <div class="text">
-Monitoring and Diagnostics のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

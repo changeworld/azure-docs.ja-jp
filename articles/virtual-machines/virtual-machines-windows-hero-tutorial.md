@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/16/2016
+ms.date: 01/03/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 22156a9f3c5a57e10cad96661f50531b309c3a04
-ms.openlocfilehash: a25d394e83d7945f0ea50de1fc65a68a96190a34
+ms.sourcegitcommit: 425637599df40ac3be23984785e4f3292d72978d
+ms.openlocfilehash: 7c7a300b620b1e7bd0cd1b816e575f2d57fee80a
 
 
 ---
@@ -28,28 +28,32 @@ ms.openlocfilehash: a25d394e83d7945f0ea50de1fc65a68a96190a34
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 ## <a name="choose-the-vm-image-from-the-marketplace"></a>Marketplace から VM イメージを選択する
-例として Windows Server 2012 R2 Datacenter イメージを使用しますが、Azure では他にも使用可能なイメージが多数あります。 イメージの選択肢は、サブスクリプションによって異なります。 たとえば、 [MSDN サブスクライバー](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)はデスクトップ イメージをいくつか使用できます。
+例として Windows Server 2016 Datacenter イメージを使用しますが、Azure では他にも使用可能なイメージが多数あります。 イメージの選択肢は、サブスクリプションによって異なります。 たとえば、 [MSDN サブスクライバー](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)はデスクトップ イメージをいくつか使用できます。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューで、**[新規]** > **[Compute]** > **[Windows Server 2012 R2 Datacenter]** の順にクリックします。
+2. 左上で、**[新規]** > **[Compute]** > **[Windows Server 2016 Datacenter]** の順にクリックします。
    
     ![ポータルで使用できる Azure VM イメージを示すスクリーンショット](./media/virtual-machines-windows-hero-tutorial/marketplace-new.png)
-3. **[Windows Server 2012 R2 Datacenter]** ブレードの **[デプロイ モデルの選択]** で、**[リソース マネージャー]** が選択されていることを確認します。 **[作成]**をクリックします。
+3. **[Windows Server 2016 Datacenter]** ブレードの **[デプロイ モデルの選択]** で、**[リソース マネージャー]** が選択されていることを確認します。 ページの下部にある **[Create]**」を参照してください。
    
     ![Screenshot that shows the deployment model to select for the VM](./media/virtual-machines-windows-hero-tutorial/deployment-model.png)
 
 ## <a name="create-the-windows-virtual-machine"></a>Windows 仮想マシンの作成
 イメージを選択したら、既定の設定を使用して仮想マシンをすぐに作成できます。
 
-1. **[基本]** ブレードで、仮想マシンの**名前**を入力します。 名前は 1 ～ 15 文字とし、特殊文字を含めることはできません。
-2. VM にローカル アカウントを作成する際に使用する**ユーザー名**と強力な**パスワード**を入力します。 VM へのサインインと VM の管理にはローカル アカウントを使用します。 
+1. **[基本]** ブレードで、仮想マシンの**名前**を入力します。 この例では、*HeroVM* が仮想マシンの名前です。 名前は 1 ～ 15 文字とし、特殊文字を含めることはできません。
+2. VM にローカル アカウントを作成する際に使用する**ユーザー名**と強力な**パスワード**を入力します。 VM へのサインインと VM の管理にはローカル アカウントを使用します。 この例では、*azureuser* がユーザー名です。
    
     パスワードは、8 ～ 123 文字で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 要件のうち、3 つを満たしている必要があります。 [ユーザー名とパスワードの要件](virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページで詳細を確認してください。
-3. 既存の[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)を選択するか、新しいリソース グループの名前を入力します。 Azure データセンターの**場所** (**米国西部**など) を入力します。 
+
+3. 既存の[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)を選択するか、新しいリソース グループの名前を入力します。 この例では、*HeroVMRG* がリソース グループの名前です。
+
+4. Azure データセンターの**場所**を選択します。 この例では、*米国東部** が場所です。 
+
 4. 完了したら、 **[OK]** をクリックして次のセクションに進みます。 
    
     ![Azure VM を構成するための **[基本]** ブレードの設定が示されているスクリーンショット](./media/virtual-machines-windows-hero-tutorial/basics-blade.png)
-5. VM の [サイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を選び、 **[選択]** をクリックして続行します。 
+5. VM の [サイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を選び、 **[選択]** をクリックして続行します。 この例では、*DS1_V2 Standard* が VM サイズです。
    
     ![Screenshot of the Size blade that shows the Azure VM sizes that you can select](./media/virtual-machines-windows-hero-tutorial/size-blade.png)
 6. **[設定]** ブレードでは、ストレージとネットワークのオプションを変更できます。 このチュートリアルでは、既定の設定をそのまま使用します。 Premium Storage がサポートされる仮想マシンのサイズを選択した場合は、**[ディスクの種類]** の **[Premium (SSD)]** を選択することで、Azure Premium Storage をお試しいただくことができます。 変更が済んだら **[OK]**をクリックします。
@@ -58,10 +62,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 7. **[概要]** をクリックして、選択内容を確認します。 **"検証に成功しました"** というメッセージが表示されたら、**[OK]** をクリックします。
    
     ![Screenshot of the Summary page that shows the configuration choices made for the Azure VM](./media/virtual-machines-windows-hero-tutorial/summary-blade.png)
-8. Azure によって仮想マシンが作成されている間の進捗状況は、ハブ メニューの **[仮想マシン]** で追跡できます。 
+8. Azure によって仮想マシンが作成されている間の進捗状況は、左側の **[Virtual Machines]** をクリックして追跡できます。 VM が作成されると、状態は **[実行中]** に変わります。
 
 ## <a name="connect-to-the-virtual-machine-and-sign-on"></a>仮想マシンへの接続とサインオン
-1. ハブ メニューで **[仮想マシン]**をクリックします。
+1. 左側で、**[Virtual Machines]** をクリックします。
 2. 一覧から仮想マシンを選択します。
 3. 仮想マシンのブレードで、 **[接続]**をクリックします。 リモート デスクトップ プロトコル ファイル (.rdp ファイル) が作成され、ダウンロードされます。このファイルは、自分のマシンに接続するためのショートカットのように使用できます。 簡単にアクセスできるようデスクトップにファイルを保存してください。 このファイルを**開いて** VM に接続します。
    
@@ -95,6 +99,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Java での Event Hubs の使用 | Microsoft Docs
-description: このチュートリアルでは、Java でイベントを送信し、EventProcessorHost を使用して受信するための Azure Event Hubs の使用方法について説明します。
+title: "Java での Event Hubs の使用 | Microsoft Docs"
+description: "このチュートリアルでは、Java でイベントを送信し、EventProcessorHost を使用して受信するための Azure Event Hubs の使用方法について説明します。"
 services: event-hubs
-documentationcenter: ''
+documentationcenter: 
 author: jtaubensee
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 38e3be53-251c-488f-a856-9a500f41b6ca
 ms.service: event-hubs
 ms.workload: core
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: jotaub;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f71c6f337efaab7ae497eb6c3334e33d9531ec57
+
 
 ---
 # <a name="get-started-with-event-hubs"></a>Event Hubs の使用
@@ -22,14 +26,14 @@ ms.author: jotaub;sethm
 ## <a name="introduction"></a>はじめに
 Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。 Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して転送と格納できます。
 
-詳細については、「 [Event Hubs の概要][Event Hubs の概要]」を参照してください。
+詳細については、[Event Hubs の概要][Event Hubs の概要]に関するページを参照してください。
 
 このチュートリアルでは、Java のコンソール アプリケーションを使用して Event Hubs にメッセージを取り込み、Java のイベント プロセッサ ホスト ライブラリを使用して並列で取得する方法を学習します。
 
 このチュートリアルを完了するには、以下が必要です。
 
 * Java 開発環境。 このチュートリアルでは、 [Eclipse](https://www.eclipse.org/)を想定しています。
-* アクティブな Azure アカウント。 <br/>アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」をご覧ください。
+* アクティブな Azure アカウント。 <br/>アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>を参照してください。
 
 [!INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
@@ -50,8 +54,8 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 ## <a name="next-steps"></a>次のステップ
 Event Hub を作成し、データを送受信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
-* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]
-* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張] サンプル
+* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]。
+* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張]のサンプル。
 
 詳細については、 [Java デベロッパー センター](/develop/java/)を参照してください。
 
@@ -67,6 +71,6 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

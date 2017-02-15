@@ -14,16 +14,16 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 02/07/2017
 ms.author: v-shysun
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: df8b72c18dfaf85de07d0cf575fad0a7ef1935bf
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 298c5289a9e58127de208c26fd8bbbbdfd715024
 
 
 ---
 # <a name="sql-database-performance-tuning-tips"></a>SQL Database のパフォーマンスのチューニングのヒント
-単一データベースの [サービス レベル](sql-database-service-tiers.md) を変更するか、エラスティック データベース プールの eDTU を増やすことで、いつでもパフォーマンスを高めることができますが、最初にクエリのパフォーマンスを改善または最適化する機会を特定する必要があります。 データベースのパフォーマンスが悪い一般的な理由は、インデックスの欠落や最適化が不十分なクエリです。 この記事では、SQL Database でのパフォーマンス チューニングに関するガイダンスを提供します。
+スタンドアロン データベースの [サービス レベル](sql-database-service-tiers.md) を変更するか、エラスティック プールの eDTU を増やすことで、いつでもパフォーマンスを高めることができますが、最初にクエリのパフォーマンスを改善または最適化する機会を特定する必要があります。 データベースのパフォーマンスが悪い一般的な理由は、インデックスの欠落や最適化が不十分なクエリです。 この記事では、SQL Database でのパフォーマンス チューニングに関するガイダンスを提供します。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -32,16 +32,17 @@ ms.openlocfilehash: df8b72c18dfaf85de07d0cf575fad0a7ef1935bf
 2. [Query Performance Insight](sql-database-query-performance.md) を使用して DTU を使用するクエリを評価し、その後 [SQL Database Advisor](sql-database-advisor.md) を使用して、インデックスの作成と削除、クエリのパラメーター化、およびスキーマの問題の解決に関する推奨事項を表示します。
 3. 動的管理ビュー (DMV)、拡張イベント (Xevent)、および SSMS のクエリ ストアを使用すると、リアルタイムでパフォーマンス パラメーターを取得できます。 詳細な監視とチューニングに関するヒントについては、 [パフォーマンス ガイダンス トピック](sql-database-performance-guidance.md) を参照してください。
 
-    > [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。 [SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
-
+> [!IMPORTANT] 
+> 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。 [SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+>
 
 ## <a name="steps-to-improve-database-performance-with-more-resources"></a>その他のリソースを含むデータベースのパフォーマンスを改善する手順
-1. 単一のデータベースの場合は、 [サービス レベルの変更](sql-database-scale-up.md) をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。
-2. 複数のデータベースの場合は、リソースを自動的にスケーリングするための [エラスティック データベース プール](sql-database-elastic-pool-guidance.md) の使用を検討してください。
+1. スタンドアロン データベースの場合は、[サービス レベルの変更](sql-database-scale-up.md) をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。
+2. 複数のデータベースの場合は、リソースを自動的にスケーリングするための [エラスティック プール](sql-database-elastic-pool-guidance.md) の使用を検討してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

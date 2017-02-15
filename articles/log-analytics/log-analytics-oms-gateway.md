@@ -4,7 +4,7 @@ description: "OMS で管理されたデバイスと Operations Manager で監視
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: dc6cdf1630407d1c4439d89aca5a8254bb806eba
-ms.openlocfilehash: 41382ba85fee1c3f5b1570748cd3d5b0641b9593
+ms.sourcegitcommit: a3d79c2df96c21d1af77c8ea1f53a2cc4e28343e
+ms.openlocfilehash: 30b1a9144e06db92ba12030dfe37a83e79d62857
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 41382ba85fee1c3f5b1570748cd3d5b0641b9593
 
 個々の各エージェントがインターネットに直接接続して OMS にデータを直接送信するのではなく、すべてのエージェント データはインターネットに接続している単一のコンピューターを通して送信されます。 そのコンピューターにゲートウェイをインストールして使います。 このシナリオでは、データを収集する任意のコンピューターにエージェントをインストールできます。 ゲートウェイは、エージェントから OMS にデータを直接転送します。ゲートウェイが転送されるデータを分析することはありません。
 
-OMS ゲートウェイを監視し、ゲートウェイがインストールされているサーバーのパフォーマンスやイベント データを分析するには、ゲートウェイがインストールされているコンピューターに OMS エージェントもインストールする必要があります。
+OMS エージェントは、ゲートウェイもインストールされているコンピューター上にインストールする必要があります。 これにより、OMS ゲートウェイの監視のほか、OMS ゲートウェイがインストールされたサーバーのパフォーマンスとイベント データの分析も可能になります。 さらに、このエージェントにより、OMS ゲートウェイが通信する必要があるサービス エンドポイントを特定できるようになります。
 
 OMS にデータをアップロードするには、ゲートウェイはインターネットにアクセスできる必要があります。 また、各エージェントは、ゲートウェイとの間で双方向にデータを自動的に転送できるように、ゲートウェイにネットワーク接続する必要があります。 最善の結果を得るには、ドメイン コントローラーでもあるコンピューターにゲートウェイをインストールしないでください。
 
@@ -41,26 +41,72 @@ OMS にデータをアップロードするには、ゲートウェイはイン�
 
 ![Operations Manager の図](./media/log-analytics-oms-gateway/scom-mgt-server.png)
 
+## <a name="language-availability"></a>利用可能な言語
+
+OMS ゲートウェイは、次の言語で利用できます。
+
+- 中国語 (簡体字)
+- 中国語 (繁体字)
+- チェコ語
+- オランダ語
+- 英語
+- フランス語
+- ドイツ語
+- ハンガリー語
+- イタリア語
+- 日本語
+- 韓国語
+- ポーランド語
+- ポルトガル語 (ブラジル)
+- ポルトガル語 (ポルトガル)
+- ロシア語
+- スペイン語 (インターナショナル)
+
+## <a name="download-the-oms-gateway"></a>OMS ゲートウェイをダウンロードする
+
+OMS ゲートウェイのセットアップ ファイルの入手方法は&3; とおりあります。
+
+### <a name="microsoft-download-center"></a>Microsoft ダウンロード センター
+
+- [Microsoft ダウンロード センター](http://download.microsoft.com/download/2/5/C/25CF992A-0347-4765-BD7D-D45D5B27F92C/OMS%20Gateway.msi)から最新バージョンの OMS ゲートウェイをダウンロードします。
+
+### <a name="oms-portal"></a>OMS ポータル
+
+1.  OMS ワークスペースにログインします。
+2.  **[設定]** > **[Connected Sources (接続されたソース)]** > **[Windows Servers (Windows Server)]** の順に選択します。
+3.  **[Download OMS Gateway (OMS ゲートウェイのダウンロード)]** をクリックします。
+
+
+### <a name="azure-portal"></a>Azure ポータル
+
+1. [Azure Portal](https://portal.azure.com) に移動してサインインし、サービスの一覧から **[Log Analytics]** を選択します。
+2. ワークスペースを選択します。
+3. **[全般]** のワークスペース ブレードで、**[クイック スタート]** をクリックします。
+4. **[Choose a data source to connect to the workspace (ワークスペースに接続するデータ ソースの選択)]** で、**[Computers (コンピューター)]** をクリックします。
+4. **[Direct Agent (直接エージェント)]** ブレードで、**[Download OMS Gateway (OMS ゲートウェイのダウンロード)]** をクリックします。  
+    ![OMS ゲートウェイのダウンロード](./media/log-analytics-oms-gateway/download-gateway.png)
+
+
 ## <a name="install-the-oms-gateway"></a>OMS ゲートウェイをインストールする
 このゲートウェイをインストールすると、インストールされていた前のバージョンのゲートウェイ (Log Analytics フォワーダー) が置き換えられます。
 
 前提条件: .Net Framework 4.5、Windows Server 2012 R2 SP1 以降
 
-1. [Microsoft ダウンロード センター](http://download.microsoft.com/download/2/5/C/25CF992A-0347-4765-BD7D-D45D5B27F92C/OMS%20Gateway.msi)から最新バージョンの OMS ゲートウェイをダウンロードします。
-2. インストールを始めるには、**OMS Gateway.msi** をダブルクリックします。
-3. [ようこそ] ページで **[次へ]** をクリックします。  
+
+1. インストールを始めるには、**OMS Gateway.msi** をダブルクリックします。
+2. [ようこそ] ページで **[次へ]** をクリックします。  
     ![ゲートウェイ セットアップ ウィザード](./media/log-analytics-oms-gateway/gateway-wizard01.png)
-4. 使用許諾契約書ページで、**[使用許諾契約書に同意します]** を選んで使用許諾契約書に同意し、**[次へ]** をクリックします。
-5. ポートとプロキシ アドレスのページで次のようにします。
+3. 使用許諾契約書ページで、**[使用許諾契約書に同意します]** を選んで使用許諾契約書に同意し、**[次へ]** をクリックします。
+4. ポートとプロキシ アドレスのページで次のようにします。
    1. ゲートウェイに使う TCP ポートの番号を入力します。 セットアップは Windows ファイアウォールからこのポート番号を開きます。 既定値は 8080 です。
       有効なポート番号の範囲は、1 ～ 65535 です。 この範囲の値を入力しないと、エラー メッセージが表示されます。
    2. ゲートウェイがインストールされているサーバーでプロキシを使う必要がある場合は、ゲートウェイが接続する必要のあるプロキシ アドレスを入力します。 たとえば、`http://myorgname.corp.contoso.com:80` などです。ブランクにすると、ゲートウェイはインターネットに直接接続を試みます。 指定すると、ゲートウェイはプロキシに接続します。 プロキシ サーバーで認証が必要な場合は、ユーザー名とパスワードを入力します。
        ![ゲートウェイ ウィザードのプロキシの構成](./media/log-analytics-oms-gateway/gateway-wizard02.png)  
-   3.  **[次へ]**
-6. Microsoft Update が有効になっていない場合は、Microsoft Update のページが表示され、Microsoft Update を有効にできます。 選択を行い、**[次へ]** をクリックします。 使用する場合は、次の手順に進みます。
-7. [インストール先のフォルダー] ページでは、既定のフォルダー **%ProgramFiles%\OMS Gateway** のままにするか、またはゲートウェイをインストールする場所を入力して、**[次へ]** をクリックします。
-8. [インストールの準備完了] ページで **[インストール]** をクリックします。 [ユーザー アカウント制御] が表示され、インストールのためのアクセス許可が要求される場合があります。 その場合は、**[はい]** をクリックします。
-9. セットアップが完了した後、**[完了]** をクリックします。 services.msc スナップインを開いて **[OMS Gateway]** (OMS ゲートウェイ) がサービスの一覧に表示されることを確認することで、サービスが実行していることを確認できます。  
+   3. **[次へ]**
+5. Microsoft Update が有効になっていない場合は、Microsoft Update のページが表示され、Microsoft Update を有効にできます。 選択を行い、**[次へ]** をクリックします。 使用する場合は、次の手順に進みます。
+6. [インストール先のフォルダー] ページでは、既定のフォルダー **%ProgramFiles%\OMS Gateway** のままにするか、またはゲートウェイをインストールする場所を入力して、**[次へ]** をクリックします。
+7. [インストールの準備完了] ページで **[インストール]** をクリックします。 [ユーザー アカウント制御] が表示され、インストールのためのアクセス許可が要求される場合があります。 その場合は、**[はい]** をクリックします。
+8. セットアップが完了した後、**[完了]** をクリックします。 services.msc スナップインを開いて **[OMS Gateway]** (OMS ゲートウェイ) がサービスの一覧に表示されることを確認することで、サービスが実行していることを確認できます。  
     ![サービス – OMS ゲートウェイ](./media/log-analytics-oms-gateway/gateway-service.png)
 
 ## <a name="install-an-agent-on-devices"></a>デバイスにエージェントをインストールする
@@ -184,7 +230,7 @@ OMS ゲートウェイの構成設定の更新に必要なタスクを実行す�
 | `Get-OMSGatewayAllowedClientCertificate` | |現在許可されているクライアント証明書のサブジェクトを取得します (ローカルに構成されている許可サブジェクトだけであり、自動的にダウンロードされた許可サブジェクトは含みません) |`Get-OMSGatewayAllowedClientCertificate` |
 
 ## <a name="troubleshoot"></a>トラブルシューティング
-ゲートウェイがインストールされているコンピューターに OMS エージェントをインストールすることをお勧めします。 そうすれば、エージェントを使って、ゲートウェイによってログに記録されるイベントを収集できます。
+ゲートウェイがインストールされているコンピューターに OMS エージェントをインストールする必要があります。 そうすれば、エージェントを使って、ゲートウェイによってログに記録されるイベントを収集できます。
 
 ![イベント ビューアー – OMS ゲートウェイ ログ](./media/log-analytics-oms-gateway/event-viewer.png)
 
@@ -234,6 +280,6 @@ Azure Portal にサインインすると、OMS ゲートウェイまたは他の
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

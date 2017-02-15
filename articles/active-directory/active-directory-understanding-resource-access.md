@@ -1,12 +1,12 @@
 ---
-title: Azure でのリソース アクセスについて | Microsoft Docs
-description: このトピックでは、完全な Azure ポータルでのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。
+title: "Azure でのリソース アクセスについて | Microsoft Docs"
+description: "このトピックでは、完全な Azure Portal でのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 174f1706-b959-4230-9a75-bf651227ebf6
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: markusvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 04c89fb831036af37ba381d13d45526327125540
+
 
 ---
 # <a name="understanding-resource-access-in-azure"></a>Azure でのリソース アクセスについて
 > [!NOTE]
-> このトピックでは、完全な Azure ポータルでのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。 Azure プレビュー ポータルで [ロール ベースのアクセス制御](role-based-access-control-configure.md) を使用して、Azure リソースをさらに細かく管理することもできます。
+> このトピックでは、完全な Azure Portal でのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。 Azure プレビュー ポータルで [ロール ベースのアクセス制御](role-based-access-control-configure.md) を使用して、Azure リソースをさらに細かく管理することもできます。
 > 
 > 
 
@@ -65,6 +69,6 @@ Azure クラシック ポータル内では、Microsoft アカウントを使用
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

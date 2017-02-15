@@ -32,7 +32,7 @@ VS Code で JSON テンプレートを操作するには、拡張機能のイン
 2. クイック オープンを行います (Ctrl + P キーを押します)。 
 3. 次のコマンドを実行します。 
    
-        ext install azurerm-vscode-tools
+        ext install msazurermtools.azurerm-vscode-tools
 4. 拡張機能を有効にするように求められたら、VS Code を再起動します。 
    
    これで完了です。

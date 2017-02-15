@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d650181bffce4bd21b9f738c962f0066751024b6
+ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
+ms.openlocfilehash: e00c18be79eb5f7ee4d1dcb8f5e9a5b084afe60f
 
 
 ---
@@ -49,7 +49,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 * 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
 * キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。  ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
 * 資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
-* 現在、HDS ストリーミング形式およびプログレッシブ ダウンロードは暗号化できません。
+* 現時点では、プログレッシブ ダウンロードは暗号化できません。
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 動的暗号化
 > [!NOTE]
@@ -450,6 +450,6 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

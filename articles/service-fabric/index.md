@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Service Fabric ミドルウェア プラットフォームを使用して、クラウド規模のアプリケーション用のマイクロサービスのパッケージ化とデプロイを実行する方法について説明します。 チュートリアル、API リファレンス、コード サンプルがあります。"
 translationtype: Human Translation
-ms.sourcegitcommit: 6d6459646a269212364822ef6797b5850c2b0c2a
-ms.openlocfilehash: 0598e5ea3dc95853a21a56326241a82854477cbe
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: d9b4e3b3df6760b15e151c5eab37c9f534784de8
 
 ---
 #<a name="service-fabric-documentation"></a>Service Fabric のドキュメント
 
-Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における重要な課題にも対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 
+Service Fabric を使用して、拡張性と信頼性の高いマイクロサービスをパッケージ化、デプロイ、管理する方法について説明します。 チュートリアル、API リファレンス、コード サンプルでは、このミドルウェア プラットフォームを使用してクラウド規模のアプリケーションを構築および管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -148,16 +149,10 @@ Azure Service Fabric は、拡張性と信頼性に優れたマイクロサー�
 </ul>   
 
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-fabric.pdf">
-        <div class="img"></div>
-        <div class="text">
-Service Fabric のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

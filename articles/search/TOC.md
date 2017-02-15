@@ -44,7 +44,7 @@
 ### [Azure Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)
 ### [Azure Table Storage インデクサー](search-howto-indexing-azure-tables.md)
 ### [Azure SQL インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-### [Azure DocumentDB インデクサー](../documentdb/documentdb-search-indexer.md?toc=%2fazure%2fsearch%2ftoc.json)
+### [Azure DocumentDB インデクサー](search-howto-index-documentdb.md)
 ### [CSV BLOB のインデックスを作成する](search-howto-index-csv-blobs.md)
 ### [JSON BLOB のインデックスを作成する](search-howto-index-json-blobs.md)
 ### [Azure VM で SQL Server へのインデクサーの接続を構成する](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
@@ -61,14 +61,13 @@
 
 # リファレンス
 ## [.NET](/dotnet/api/microsoft.azure.search)
-## [.NET 管理](/dotnet/api/microsoft.azure.management.search)
-## [Java](/java/api/com.microsoft.azure.management.search)
+## [.NET (管理)](/dotnet/api/microsoft.azure.management.search)
+## [Python (管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
 ## [REST ()](/rest/api/searchservice)
 ## [REST (管理)](/rest/api/searchmanagement)
 
 # リソース
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=search)
-## 検索 API の使用
 ## [API のバージョン](search-api-versions.md)
 ## [サービス REST (プレビュー)](search-api-2015-02-28-preview.md)
 ## [料金](https://azure.microsoft.com/pricing/details/search/)
@@ -87,6 +86,6 @@
 ### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

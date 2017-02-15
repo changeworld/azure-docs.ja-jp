@@ -29,6 +29,13 @@
 ### [サービス間認証](data-lake-store-authenticate-using-active-directory.md)
 ### [エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)
 
+## パフォーマンス
+### [Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-guidance.md)
+### [HDInsight のSpark と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-spark.md)
+### [HDInsight の Hive と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-hive.md)
+### [HDInsight の MapReduce と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-mapreduce.md)
+### [HDInsight の Storm と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-storm.md)
+
 ## Azure サービスと統合する
 ### [Azure VNET 内の VM からアクセスする](data-lake-store-connectivity-from-vnets.md)
 ### [Data Lake Analytics で使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
@@ -64,6 +71,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

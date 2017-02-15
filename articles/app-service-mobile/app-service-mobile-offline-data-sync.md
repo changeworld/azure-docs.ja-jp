@@ -105,6 +105,6 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,33 +1,37 @@
 ---
-title: AMQP 1.0 での Service Bus と .NET | Microsoft Docs
-description: AMQP で .NET から Service Bus を使用する
-services: service-bus
+title: "AMQP 1.0 での Service Bus と .NET | Microsoft Docs"
+description: "AMQP で .NET から Service Bus を使用する"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0cf8282d40c60fe9887dcbf43e2a526ffe34cc22
+
 
 ---
-# <a name="using-service-bus-from-.net-with-amqp-1.0"></a>AMQP 1.0 で .NET から Service Bus を使用する
+# <a name="using-service-bus-from-net-with-amqp-10"></a>AMQP 1.0 で .NET から Service Bus を使用する
 [!INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
 ## <a name="downloading-the-service-bus-sdk"></a>Service Bus SDK のダウンロード
 AMQP 1.0 は、Service Bus SDK Version 2.1 以降でサポートされています。 [NuGet][NuGet] から Service Bus ビットをダウンロードすることによって確実に最新バージョンを入手できます。
 
-## <a name="configuring-.net-applications-to-use-amqp-1.0"></a>AMQP 1.0 を使用するように .NET アプリケーションを構成する
+## <a name="configuring-net-applications-to-use-amqp-10"></a>AMQP 1.0 を使用するように .NET アプリケーションを構成する
 既定では、Service Bus .NET クライアント ライブラリは SOAP ベースの専用プロトコルを使ってサービス バス サービスと通信します。 既定のプロトコルの代わりに AMQP 1.0 を使用するには、次のセクションの説明に従って、Service Bus 接続文字列を明示的に構成する必要があります。 AMQP 1.0 を使用する場合、アプリケーション コードはこの変更以外は変更されません。
 
 現在のリリースでは、AMQP を使用する際にサポートされていない API 機能がいくつかあります。 サポートされていない機能については、後ほど「[サポートされていない機能、制限、および動作の違い](#unsupported-features-restrictions-and-behavioral-differences)」セクションに一覧表示します。 そのほか、AMQP を使用すると意味が変わる詳細な構成設定もいくつかあります。
 
-### <a name="configuration-using-app.config"></a>App.config を使用した構成
+### <a name="configuration-using-appconfig"></a>App.config を使用した構成
 アプリケーションの設定は、App.config 構成ファイルを使って保存することをお勧めします。 Service Bus アプリケーションの場合、App.config を使って Service Bus の **ConnectionString** 値の設定を保存できます。 App.config ファイルの例は次のとおりです。
 
     <?xml version="1.0" encoding="utf-8" ?>
@@ -42,7 +46,7 @@ AMQP 1.0 は、Service Bus SDK Version 2.1 以降でサポートされていま�
 
     Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp
 
-`[namespace]` と `SharedAccessKey` は、[Azure ポータル][Azure ポータル]から取得されます。 詳細については、[Service Bus キューの使用][Service Bus キューの使用]に関するページをご覧ください。
+`[namespace]` と `SharedAccessKey` は、[Azure ポータル][Azure ポータル] から取得されます。 詳細については、[「Service Bus キューの使用」][Service Bus キューの使用]を参照してください。
 
 AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付加します。 この表記により、クライアント ライブラリに対して、AMQP 1.0 を使用して Service Bus に接続するように通知します。
 
@@ -87,7 +91,7 @@ AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付�
 | Datetimeoffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
 | TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
 
-## <a name="unsupported-features,-restrictions,-and-behavioral-differences"></a>サポートされていない機能、制限、および動作の違い
+## <a name="unsupported-features-restrictions-and-behavioral-differences"></a>サポートされていない機能、制限、および動作の違い
 AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サポートされていません。
 
 * トランザクション
@@ -97,6 +101,7 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 
 * [OperationTimeout][OperationTimeout] プロパティは無視されます。
 * `MessageReceiver.Receive(TimeSpan.Zero)` は `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` として実装されます。
+* ロック トークンによるメッセージの完了は、最初にメッセージを受信したメッセージ レシーバーでのみ実行できます。
 
 ## <a name="controlling-amqp-protocol-settings"></a>AMQP プロトコル設定を制御する
 .NET API では、AMQP プロトコルの動作を制御するいくつかの設定が公開されています。
@@ -126,6 +131,7 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,13 +1,25 @@
 ---
 layout: LandingPage
+description: "Virtual Machine Scale Sets を使用して、大規模なコンピューティング、ビッグ データ、コンテナー化されたソリューション向けに自動スケールの Windows または Linux VM を作成する方法について説明します。"
+title: "Azure Virtual Machines Scale Sets のドキュメント、チュートリアル、API リファレンス | Microsoft Docs"
+services: virtual-machine-scale-sets
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machine-scale-sets
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 693dcfd3c20ce373f093108b4d5f8b63aa30f8df
+ms.sourcegitcommit: 7b2af8e58e050100b1778d977dabe25538b84cfe
+ms.openlocfilehash: 3bb6307cee24c80cbf8d621a49d2304d9b9b5c99
 
 ---
 #<a name="virtual-machine-scale-sets-documentation"></a>Virtual Machine Scale Sets のドキュメント
 
-仮想マシン スケール セットは、同一の VM のセットをデプロイおよび管理するための Azure コンピューティング リソースです。  すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。 そのため、ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードなどを対象にした大規模サービスを簡単に構築できます。
+Virtual Machine Scale Sets を使用して、同一の自動スケールの Windows または Linux VM のセットをデプロイおよび管理する方法について説明します。 ドキュメントでは、Scale Sets を使用して、大規模なコンピューティング、ビッグ データ、コンテナー化されたソリューションを対象としたサービスをサポートする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -69,64 +81,39 @@ ms.openlocfilehash: 693dcfd3c20ce373f093108b4d5f8b63aa30f8df
 
 ---
 
-## <a name="reference"></a>リファレンス
-
+<h2>リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>仮想マシン スケール セットの PowerShell</p>
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
+                        <p><a href="/azure/virtual-machines/azure-cli-arm-commands">Azure CLI</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/cli/azure/vmss">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>Azure CLI を使用した仮想マシン スケール セット</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/rest/api/compute">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p>Virtual Machine Scale Sets REST API</p>
+                        <p><a href="/rest/api/compute/">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machine-scale-sets.pdf">
-        <div class="img"></div>
-        <div class="text">
-Virtual Machine Scale Sets のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,19 +1,23 @@
 ---
-title: Azure Redis Cache を管理する方法 | Microsoft Docs
-description: Azure Redis Cache の管理タスク (再起動、更新のスケジュールなど) を実行する方法について説明します
+title: "Azure Redis Cache を管理する方法 | Microsoft Docs"
+description: "Azure Redis Cache の管理タスク (再起動、更新のスケジュールなど) を実行する方法について説明します"
 services: redis-cache
 documentationcenter: na
 author: steved0x
 manager: douge
 editor: tysonn
-
+ms.assetid: 8c915ae6-5322-4046-9938-8f7832403000
 ms.service: cache
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 09/27/2016
+ms.date: 01/06/2017
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c0a0c113c73c1d77a79989d9cddef90cd370fd19
+
 
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>Azure Redis Cache を管理する方法
@@ -62,10 +66,10 @@ Azure Redis Cache の **管理** 設定を使用すると、Premium キャッシ
 * [PowerShell、CLI、またはその他の管理ツールを使用して、キャッシュを再起動できますか。](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
 * [どの価格レベルで再起動機能を使用できますか。](#what-pricing-tiers-can-use-the-reboot-functionality)
 
-### <a name="which-node-should-i-reboot-to-test-my-application?"></a>アプリケーションのテストでは、どのノードを再起動する必要がありますか。
+### <a name="which-node-should-i-reboot-to-test-my-application"></a>アプリケーションのテストでは、どのノードを再起動する必要がありますか。
 キャッシュのプライマリ ノードの障害に対するアプリケーションの回復性をテストするには、 **マスター** ノードを再起動します。 セカンダリ ノードの障害に対するアプリケーションの回復性をテストするには、 **スレーブ** ノードを再起動します。 キャッシュの全体的な障害に対するアプリケーションの回復性をテストするには、 **両方** のノードを再起動します。
 
-### <a name="can-i-reboot-the-cache-to-clear-client-connections?"></a>キャッシュを再起動することでクライアント接続を消去できますか。
+### <a name="can-i-reboot-the-cache-to-clear-client-connections"></a>キャッシュを再起動することでクライアント接続を消去できますか。
 はい、できます。キャッシュを再起動すると、すべてのクライアント接続がクリアされます。 これは、たとえば、ロジック エラーやクライアント アプリケーションのバグによって、すべてのクライアント接続が使い果たされているときに便利です。 価格レベルごとに、さまざまなサイズに対するさまざまな[クライアント接続の制限](cache-configure.md#default-redis-server-configuration)があり、こうした制限に達すると、それ以上のクライアント接続は受け入れられなくなります。 キャッシュを再起動することで、すべてのクライアント接続がクリアされます。
 
 > [!IMPORTANT]
@@ -73,15 +77,15 @@ Azure Redis Cache の **管理** 設定を使用すると、Premium キャッシ
 > 
 > 
 
-### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot?"></a>再起動すると、キャッシュのデータは失われますか。
+### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>再起動すると、キャッシュのデータは失われますか。
 **マスター** ノードと**スレーブ** ノードの両方を再起動すると、キャッシュまたはそのシャード (クラスタリングが有効になっている Premium キャッシュを使用している場合) のすべてのデータが失われます。 [データの永続化](cache-how-to-premium-persistence.md)を構成した場合は、キャッシュがオンラインに戻ったときに、最新のバックアップが復元されます。 そのバックアップの作成後に発生したキャッシュ書き込みは失われるので注意してください。
 
 ノードのいずれかを 1 つだけ再起動しても、通常、データが失われることはありませんが、失われる可能性もあります。 たとえば、マスター ノードが再起動されたときに、キャッシュの書き込みが実行中だと、そのキャッシュの書き込みのデータは失われます。 また、一方のノードを再起動した場合に、もう一方のノードが偶然同じタイミングで故障しダウンした場合もやはりデータが失われます。 データが失われるさまざまな原因について詳しくは、「 [What happened to my data in Redis? (Redis からデータが消えた)](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)」を参照してください。
 
-### <a name="can-i-reboot-my-cache-using-powershell,-cli,-or-other-management-tools?"></a>PowerShell、CLI、またはその他の管理ツールを使用して、キャッシュを再起動できますか。
+### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>PowerShell、CLI、またはその他の管理ツールを使用して、キャッシュを再起動できますか。
 PowerShell での手順については、「 [To reboot a Redis cache (Redis Cache を再起動するには)](cache-howto-manage-redis-cache-powershell.md#to-reboot-a-redis-cache)」をご覧ください。
 
-### <a name="what-pricing-tiers-can-use-the-reboot-functionality?"></a>どの価格レベルで再起動機能を使用できますか。
+### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>どの価格レベルで再起動機能を使用できますか。
 再起動は Premium 価格レベルでのみ使用できます。
 
 ## <a name="schedule-updates"></a>更新のスケジュール
@@ -102,13 +106,13 @@ PowerShell での手順については、「 [To reboot a Redis cache (Redis Cac
 * [PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか。](#can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools)
 * [どの価格レベルで更新スケジュール機能を使用できますか。](#what-pricing-tiers-can-use-the-schedule-updates-functionality)
 
-### <a name="when-do-updates-occur-if-i-don't-use-the-schedule-updates-feature?"></a>更新スケジュール機能を使用しない場合、更新はどのタイミングで実行されますか。
+### <a name="when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature"></a>更新スケジュール機能を使用しない場合、更新はどのタイミングで実行されますか。
 メンテナンス時間を指定しない場合は、いつでも更新を実行できます。
 
-### <a name="what-type-of-updates-are-made-during-the-scheduled-maintenance-window?"></a>スケジュールされたメンテナンス時間に行われるのは、どのような更新ですか。
+### <a name="what-type-of-updates-are-made-during-the-scheduled-maintenance-window"></a>スケジュールされたメンテナンス時間に行われるのは、どのような更新ですか。
 スケジュールされたメンテナンス時間に行われるのは、Redis サーバーの更新だけです。 メンテナンス時間は、Azure の更新や、VM のオペレーティング システムへの更新には適用されません。
 
-### <a name="can-i-managed-scheduled-updates-using-powershell,-cli,-or-other-management-tools?"></a>PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか。
+### <a name="can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools"></a>PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか。
 はい、次の PowerShell コマンドレットを使用して、スケジュールされている更新を管理できます。
 
 * [Get-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763835.aspx)
@@ -116,12 +120,15 @@ PowerShell での手順については、「 [To reboot a Redis cache (Redis Cac
 * [New-AzureRmRedisCacheScheduleEntry](https://msdn.microsoft.com/library/azure/mt763833.aspx)
 * [Remove-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763837.aspx)
 
-### <a name="what-pricing-tiers-can-use-the-schedule-updates-functionality?"></a>どの価格レベルで更新スケジュール機能を使用できますか。
+### <a name="what-pricing-tiers-can-use-the-schedule-updates-functionality"></a>どの価格レベルで更新スケジュール機能を使用できますか。
 更新のスケジュールは Premium 価格レベルでのみ使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Redis Cache Premium レベル](cache-premium-tier-intro.md) の機能を確認します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

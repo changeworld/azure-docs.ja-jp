@@ -1,37 +1,44 @@
 ---
-title: DocumentDB との間でのデータの移動 | Microsoft Docs
-description: Azure Data Factory を使用して Azure DocumentDB コレクションに、または Azure DocumentDB コレクションからデータを移動する方法を説明します。
+title: "DocumentDB との間でのデータの移動 | Microsoft Docs"
+description: "Azure Data Factory を使用して Azure DocumentDB コレクションに、または Azure DocumentDB コレクションからデータを移動する方法を説明します。"
 services: data-factory, documentdb
-documentationcenter: ''
+documentationcenter: 
 author: linda33wj
 manager: jhubbard
 editor: monicar
-
+ms.assetid: c9297b71-1bb4-4b29-ba3c-4cf1f5575fac
 ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 11/02/2016
 ms.author: jingwang
+translationtype: Human Translation
+ms.sourcegitcommit: a86d5fb7c0215293e281a52d0f805053bb7b7c11
+ms.openlocfilehash: 935de6643bbfdc8674836a33ce0dfe77df0e2d1e
+
 
 ---
 # <a name="move-data-to-and-from-documentdb-using-azure-data-factory"></a>Azure Data Factory を使用した DocumentDB との間でのデータの移動
 この記事では、Azure Data Factory のコピー アクティビティを使用し、別のデータ ストアから Azure DocumentDB へのデータ移動および DocumentDB から別のデータ ストアへのデータ移動の方法について説明します。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
-次のサンプルは、Azure DocumentDB と Azure BLOB ストレージとの間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して **ここ** から開始したいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores) コピーすることができます。  
+次のサンプルは、Azure DocumentDB と Azure BLOB ストレージとの間でデータをコピーする方法を示します。 ただし、任意のソースのデータを、サポートされている任意のシンクに**直接**コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」のセクションを参照してください。  
 
 > [!NOTE]
 > オンプレミス/Azure IaaS データ ストアと Azure DocumentDB 間でのデータのコピーは、Data Management Gateway バージョン 2.1 以降でサポートされています。
-> 
-> 
+>
+>
 
-## <a name="sample:-copy-data-from-documentdb-to-azure-blob"></a>サンプル: Azure DocumentDB から Azure BLOB にデータをコピーする
+## <a name="supported-versions"></a>サポートされているバージョン
+この DocumentDB コネクタでは、DocumentDB の単一パーティション コレクションとパーティション分割コレクションとの間のデータのコピーをサポートします。 [MongoDB 用 DocDB](../documentdb/documentdb-protocol-mongodb.md) はサポートされていません。
+
+## <a name="sample-copy-data-from-documentdb-to-azure-blob"></a>サンプル: Azure DocumentDB から Azure BLOB にデータをコピーする
 下のサンプルで確認できる要素:
 
 1. [DocumentDB](#azure-documentdb-linked-service-properties)型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)型のリンクされたサービス。 
-3. [DocumentDbCollection](#azure-documentdb-dataset-type-properties)型の入力[データセット](data-factory-create-datasets.md)。 
+2. [AzureStorage](data-factory-azure-blob-connector.md)型のリンクされたサービス。
+3. [DocumentDbCollection](#azure-documentdb-dataset-type-properties)型の入力[データセット](data-factory-create-datasets.md)。
 4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [DocumentDbCollectionSource](#azure-documentdb-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む [パイプライン](data-factory-create-pipelines.md)。
 
@@ -108,7 +115,7 @@ ms.author: jingwang
       }
     }
 
-DocumentDB データベースの「Person」コレクションのサンプル JSON 文書: 
+DocumentDB データベースの「Person」コレクションのサンプル JSON 文書:
 
     {
       "PersonId": 2,
@@ -119,9 +126,13 @@ DocumentDB データベースの「Person」コレクションのサンプル JS
       }
     }
 
-DocumentDB では、階層的な JSON 文書に SQL タイプの構文を使用し、文書にクエリを実行できます。 
+DocumentDB では、階層的な JSON 文書に SQL タイプの構文を使用し、文書にクエリを実行できます。
 
-例: SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person
+例: 
+
+```sql
+SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person
+```
 
 次のパイプラインは DocumentDB データベースの「Person」コレクションから Azure BLOB にデータをコピーします。 コピー アクティビティの一部として、入力データセットと出力データセットが指定されています。  
 
@@ -165,13 +176,13 @@ DocumentDB では、階層的な JSON 文書に SQL タイプの構文を使用�
       }
     }
 
-## <a name="sample:-copy-data-from-azure-blob-to-azure-documentdb"></a>Sample: Azure BLOB から Azure DocumentDB にデータをコピーします。
+## <a name="sample-copy-data-from-azure-blob-to-azure-documentdb"></a>Sample: Azure BLOB から Azure DocumentDB にデータをコピーします。
 下のサンプルで確認できる要素:
 
 1. [DocumentDB](#azure-documentdb-linked-service-properties)型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)型のリンクされたサービス。
+2. [AzureStorage](data-factory-azure-blob-connector.md)型のリンクされたサービス。
 3. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4. [DocumentDbCollection](#azure-documentdb-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。 
+4. [DocumentDbCollection](#azure-documentdb-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) と [DocumentDbCollectionSink](#azure-documentdb-copy-activity-type-properties) を使用するコピー アクティビティを含む [パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルでは、Azure BLOB から Azure DocumentDB にデータがコピーされます。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
@@ -279,7 +290,7 @@ DocumentDB では、階層的な JSON 文書に SQL タイプの構文を使用�
       }
     }
 
-次のパイプラインは Azure BLOB から DocumentDB データベースの「Person」コレクションにデータをコピーします。 コピー アクティビティの一部として、入力データセットと出力データセットが指定されています。 
+次のパイプラインは Azure BLOB から DocumentDB データベースの「Person」コレクションにデータをコピーします。 コピー アクティビティの一部として、入力データセットと出力データセットが指定されています。
 
     {
       "name": "BlobToDocDbPipeline",
@@ -323,7 +334,7 @@ DocumentDB では、階層的な JSON 文書に SQL タイプの構文を使用�
       }
     }
 
-サンプル BLOB 入力が次の場合 
+サンプル BLOB 入力が次の場合
 
     1,John,,Doe
 
@@ -342,7 +353,7 @@ DocumentDB の JSON は次のようになります。
 DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、**nestingSeparator** で階層を示すことができます。 この例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。
 
 ## <a name="azure-documentdb-linked-service-properties"></a>Azure DocumentDB のリンクされたサービスのプロパティ
-次の表は、Azure DocumentDB のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。 
+次の表は、Azure DocumentDB のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
@@ -402,35 +413,46 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | --- | --- | --- | --- |
-| nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>上記の例の場合: 出力テーブルの `Name.First` は、DocumentDB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/>  "First":"John"<br/>}, |入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 |入れ子レベルの分割に使用される文字。 <br/><br/>既定値は `.` (ドット) です。 |
-| writeBatchSize |DocumentDB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使用して、DocumentDB との間でコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすとパフォーマンスが良くなります。DocumentDB に送信される並列要求の数が増えるためです。 ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。 |Integer |いいえ (既定値: 10000) |
-| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |timespan<br/><br/>  例: "00:30:00" (30 分)。 |いいえ |
+| nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>上記の例の場合: 出力テーブルの `Name.First` は、DocumentDB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 |入れ子レベルの分割に使用される文字。 <br/><br/>既定値は `.` (ドット) です。 |
+| writeBatchSize |DocumentDB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使用して、DocumentDB との間でコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすとパフォーマンスが良くなります。DocumentDB に送信される並列要求の数が増えるためです。 ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。 |Integer |いいえ (既定値: 5) |
+| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |timespan<br/><br/>  例: "00:30:00" (30 分)。 |なし |
+
+## <a name="importexport-json-documents"></a>JSON ドキュメントのインポート/エクスポート
+この DocumentDB コネクタを使用して、次の作業を簡単に実行できます。
+
+* Azure BLOB、Azure Data Lake、オンプレミスのファイル システム、Azure Data Factory でサポートされているその他のファイル ベースのストアなど、さまざまなソースから DocumentDB に JSON ドキュメントをインポートする
+* JSON ドキュメントを DocumentDB コレクションからさまざまなファイル ベースのストアにエクスポートする
+* 2 つの DocumentDB コレクション間でそのままデータを移行する
+
+スキーマに依存しないこのようなコピーを実現するには、コピー アクティビティで、入力データセットの "structure" セクションまたは DocumentDB ソース/シンクの "nestingSeparator" プロパティを指定しないでください。 JSON 形式の構成の詳細については、対応するファイル ベースのコネクタのトピックで、"形式の指定" に関するセクションを参照してください。
 
 ## <a name="appendix"></a>付録
-1. **質問:** 
+1. **質問:**
     コピー アクティビティは、既存のレコードの更新をサポートしていますか?
-   
-    **回答:** 
+
+    **回答:**
     いいえ。
-2. **質問:** 
+2. **質問:**
     DocumentDB へのコピーを再試行すると、既にコピーしたレコードはどのように扱われますか?
-   
-    **回答:** 
+
+    **回答:**
     レコードに "ID" フィールドがあり、コピー操作で同じ ID のレコードが挿入される場合、そのコピー操作はエラーをスローします。  
 3. **質問:**
-    Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)をサポートしていますか? 
-   
+    Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)をサポートしていますか?
+
     **回答:**
-    いいえ。 
+    いいえ。
 4. **質問:**
     1 つのテーブルに複数の DocumentDB コレクションを指定できますか?
-   
+
     **回答:**
     いいえ。 現時点では、1 つのコレクションだけを指定できます。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

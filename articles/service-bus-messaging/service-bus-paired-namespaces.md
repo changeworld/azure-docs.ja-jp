@@ -1,19 +1,23 @@
 ---
-title: Service Bus のペアの名前空間 | Microsoft Docs
-description: ペアの名前空間の実装の詳細とコスト
-services: service-bus
+title: "Service Bus のペアの名前空間 | Microsoft Docs"
+description: "ペアの名前空間の実装の詳細とコスト"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 2440c8d3-ed2e-47e0-93cf-ab7fbb855d2e
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3e384611b598f4e5256f2957227927ffd7c4e5ff
+
 
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>ペアの名前空間の実装の詳細とコストの問題
@@ -47,9 +51,9 @@ ms.author: sethm
 このトピックの残りの部分では、これらの部分のしくみの具体的な詳細を説明します。
 
 ## <a name="creation-of-backlog-queues"></a>バックログ キューの作成
-[PairNamespaceAsync][PairNamespaceAsync] メソッドに渡される [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions] オブジェクトは、使用するバックログ キューの数を示します。 次のプロパティが明示的に設定された各バックログ キューが作成されます (その他のすべての値は、[QueueDescription][QueueDescription]の既定値に設定されます)。
+[PairNamespaceAsync][PairNamespaceAsync] メソッドに渡される [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions] オブジェクトは、使用するバックログ キューの数を示します。 次のプロパティが明示的に設定された各バックログ キューが作成されます (その他のすべての値は、[QueueDescription][QueueDescription] の既定値に設定されます)。
 
-| パス | [primary namespace]/x-servicebus-transfer/[index] ここで [index] は [0, BacklogQueueCount) の値 |
+| path | [primary namespace]/x-servicebus-transfer/[index] ここで [index] は [0, BacklogQueueCount) の値 |
 | --- | --- |
 | MaxSizeInMegabytes |5120 |
 | MaxDeliveryCount |int.MaxValue |
@@ -61,13 +65,13 @@ ms.author: sethm
 
 たとえば、名前空間 **contoso** 用に作成された最初のバックログ キューの名前は `contoso/x-servicebus-transfer/0` になります。
 
-キューが作成される際、コードはそのようなキューが存在するかどうかをまず確認します。 キューが存在しない場合、キューは作成されます。 コードは "余分な" バックログ キューをクリーンアップしません。 具体的には、プライマリ名前空間 **contoso** のアプリケーションがバックログ キューを 5 つ要求する場合に、パスが `contoso/x-servicebus-transfer/7` のバックログ キューが存在する場合、その余分なバックログ キューは引き続き存在しますが、使用はされません。 システムでは、使用されない余分なバックログ キューの存在を明示的に許可します。 名前空間の所有者は、不要な未使用のバックログ キューをクリーンアップする必要があります。 これは、Service Bus が名前空間内のすべてのキューの存在目的を把握していないためです。 さらに、キューが指定した名前で存在するが、想定されている [QueueDescription][QueueDescription]と一致しない場合、既定の動作を自由に変更できます。 コードによって、バックログ キューへの変更が加えられる保証はありません。 変更は徹底的にテストしてください。
+キューが作成される際、コードはそのようなキューが存在するかどうかをまず確認します。 キューが存在しない場合、キューは作成されます。 コードは "余分な" バックログ キューをクリーンアップしません。 具体的には、プライマリ名前空間 **contoso** のアプリケーションがバックログ キューを 5 つ要求する場合に、パスが `contoso/x-servicebus-transfer/7` のバックログ キューが存在する場合、その余分なバックログ キューは引き続き存在しますが、使用はされません。 システムでは、使用されない余分なバックログ キューの存在を明示的に許可します。 名前空間の所有者は、不要な未使用のバックログ キューをクリーンアップする必要があります。 これは、Service Bus が名前空間内のすべてのキューの存在目的を把握していないためです。 さらに、キューが指定した名前で存在するが、想定されている [QueueDescription][QueueDescription] と一致しない場合、既定の動作を自由に変更できます。 コードによって、バックログ キューへの変更が加えられる保証はありません。 変更は徹底的にテストしてください。
 
 ## <a name="custom-messagesender"></a>カスタム MessageSender
 送信されるすべてのメッセージは、すべてのものが機能している場合は通常どおりに動作し、何かが "中断" している場合はバックログ キューにリダイレクトされる、内部 [MessageSender][MessageSender] オブジェクトを経由します。 一時的でないエラーを受け取ると、タイマーが開始されます。 フェールオーバーは、成功メッセージが送信されない [FailoverInterval][FailoverInterval] プロパティの値が構成されている、[TimeSpan][TimeSpan] 期間後に実行されます。 この時点で、エンティティごとに次が行われます。
 
 * [PingPrimaryInterval][PingPrimaryInterval] ごとに ping タスクが実行され、エンティティが使用可能であるかが確認されます。 このタスクが成功すると、このエンティティを使用するすべてのクライアント コードが、プライマリ名前空間に新しいメッセージの送信を直ちに開始します。
-* その他のすべての送信者から同じエンティティに送信されるそれ以降の要求は、[BrokeredMessage][BrokeredMessage] がバックログ キューにとどまるように変更されて送信されます。 この変更により、[BrokeredMessage][BrokeredMessage]オブジェクトから一部のプロパティが削除され、別の場所に保存されます。 次のプロパティがクリアされ、新しいエイリアスで追加されるため、Service Bus と SDK がメッセージを一貫して処理できるようになります。
+* その他のすべての送信者から同じエンティティに送信されるそれ以降の要求は、[BrokeredMessage][BrokeredMessage] がバックログ キューにとどまるように変更されて送信されます。 この変更により、[BrokeredMessage][BrokeredMessage] オブジェクトから一部のプロパティが削除され、別の場所に保存されます。 次のプロパティがクリアされ、新しいエイリアスで追加されるため、Service Bus と SDK がメッセージを一貫して処理できるようになります。
 
 | 古いプロパティ名 | 新しいプロパティ名 |
 | --- | --- |
@@ -90,11 +94,11 @@ ping メッセージは、その [ContentType][ContentType] プロパティが a
 3. プライマリに送信します。
 4. プライマリから受信します。
 
-## <a name="close/fault-behavior"></a>終了およびエラー動作
+## <a name="closefault-behavior"></a>終了およびエラー動作
 サイホンをホストするアプリケーション内のプライマリまたはセカンダリ [MessagingFactory][MessagingFactory] で、(そのパートナーにエラーが発生したり、終了したりすることなく) エラーが発生するか、終了し、サイホンがこの状態を検出すると、サイホンが動作します。 その他の [MessagingFactory][MessagingFactory] が 5 秒以内に閉じない場合、サイホンはまだ開いている [MessagingFactory][MessagingFactory] をエラーとします。
 
 ## <a name="next-steps"></a>次のステップ
-Service Bus の非同期メッセージングの詳細については、「[非同期メッセージング パターンと高可用性][非同期メッセージング パターンと高可用性]」を参照してください。 
+Service Bus の非同期メッセージングの詳細については、[「非同期メッセージング パターンと高可用性」][非同期メッセージング パターンと高可用性]を参照してください。 
 
 [PairNamespaceAsync]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.pairnamespaceasync.aspx
 [SendAvailabilityPairedNamespaceOptions]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.aspx
@@ -118,6 +122,6 @@ Service Bus の非同期メッセージングの詳細については、「[非�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -124,6 +124,6 @@ Adventure Works Cycles は、各 Azure VM に対して次の名前を決定し�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

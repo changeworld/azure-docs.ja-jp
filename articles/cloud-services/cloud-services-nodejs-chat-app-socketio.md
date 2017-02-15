@@ -1,42 +1,46 @@
 ---
-title: Socket.io を使用する Node.js アプリケーション | Microsoft Docs
-description: Azure でホストされる Node.js アプリケーションで Socket.IO を使用する方法を説明します。
+title: "Socket.io を使用する Node.js アプリケーション | Microsoft Docs"
+description: "Azure でホストされる Node.js アプリケーションで Socket.IO を使用する方法を説明します。"
 services: cloud-services
 documentationcenter: nodejs
 author: rmcmurray
-manager: wpickett
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: 7f9435e0-7732-4aa1-a4df-ea0e894b847f
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 11/01/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 226134e11a87f6bd847192661d3120b78ea6cf7c
+
 
 ---
-# Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
-Socket.IO は、node.js サーバーとクライアントの間のリアルタイム通信を提供します。このチュートリアルでは、Azure で socket.IO ベースのチャット アプリケーションをホストする手順を説明します。Socket.IO の詳細については、<http://socket.io/> をご覧ください。
+# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
+Socket.IO は、node.js サーバーとクライアントの間のリアルタイム通信を提供します。 このチュートリアルでは、Azure で socket.IO ベースのチャット アプリケーションをホストする手順を説明します。 Socket.IO の詳細については、<http://socket.io/> を参照してください。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![Azure でホストされるサービスを表示しているブラウザー ウィンドウ][completed-app]
+![Azure でホストされるサービスを表示しているブラウザー ウィンドウ][completed-app]  
 
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 この記事の例を正常に完了するには、次の製品とバージョンがインストールされている必要があります。
 
-* [Visual Studio 2013](https://www.visualstudio.com/ja-JP/downloads/download-visual-studio-vs.aspx) のインストール
-* [Node.js](https://nodejs.org/download/) のインストール
-* [Python version 2.7.10](https://www.python.org/) のインストール
+* [Visual Studio 2013](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) のインストール
+*  [Node.js](https://nodejs.org/download/)
+*  [Python version 2.7.10](https://www.python.org/)
 
-## クラウド サービス プロジェクトの作成
+## <a name="create-a-cloud-service-project"></a>クラウド サービス プロジェクトの作成
 次の手順では、Socket.IO アプリケーションをストリーミングするクラウド サービス プロジェクトを作成します。
 
-1. **[スタート] メニュー**または**スタート画面**で、**Windows PowerShell** を検索します。最後に、**[Windows PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
+1. **[スタート]** メニューまたは**スタート画面**で、**Windows PowerShell** を検索します。 最後に、**[Windows PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
    
     ![Azure PowerShell アイコン][powershell-menu]
-2. **c:\\node** というディレクトリを作成します。
+2. **c:\\node** というディレクトリを作成します。 
    
         PS C:\> md node
 3. ディレクトリを **c:\\node** ディレクトリに変更します。
@@ -51,21 +55,21 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
    
     ![new-azureservice および add-azurenodeworkerrole コマンドレットの出力](./media/cloud-services-nodejs-chat-app-socketio/socketio-1.png)
 
-## チャットのサンプルのダウンロード
-このプロジェクトでは、[Socket.IO GitHub リポジトリ]にあるチャットのサンプルを使用します。次の手順を実行して、サンプルをダウンロードし、先ほど作成したプロジェクトに追加します。
+## <a name="download-the-chat-example"></a>チャットのサンプルのダウンロード
+このプロジェクトでは、 [Socket.IO GitHub リポジトリ]にあるチャットのサンプルを使用します。 次の手順を実行して、サンプルをダウンロードし、先ほど作成したプロジェクトに追加します。
 
-1. **[複製]** ボタンを使用して、リポジトリのローカル コピーを作成します。**[ZIP]** ボタンを使用してプロジェクトをダウンロードすることもできます。
+1. **[複製]** ボタンを使用して、リポジトリのローカル コピーを作成します。 **[ZIP]** ボタンを使用してプロジェクトをダウンロードすることもできます。
    
    ![https://github.com/LearnBoost/socket.io/tree/master/examples/chat が表示され、ZIP のダウンロード アイコンが強調表示されているブラウザー ウィンドウ][chat-example-view]
-2. ローカル リポジトリのディレクトリ構造を、**examples\\chat** ディレクトリまで移動します。このディレクトリの内容を、先ほど作成した **C:\\node\\chatapp\\WorkerRole1** ディレクトリにコピーします。
+2. ローカル リポジトリのディレクトリ構造を、**examples\\chat** ディレクトリまで移動します。 このディレクトリの内容を、先ほど作成した **C:\\node\\chatapp\\WorkerRole1** ディレクトリにコピーします。
    
    ![アーカイブから展開された examples\\chat ディレクトリの内容を表示しているエクスプローラー][chat-contents]
    
    上記のスクリーンショットの強調表示されている項目は、**examples\\chat** ディレクトリからコピーされたファイルです。
-3. **C:\\node\\chatapp\\WorkerRole1** ディレクトリで、**server.js** ファイルを削除し、**app.js** ファイルの名前を **server.js** に変更します。これにより、前に **Add-AzureNodeWorkerRole** コマンドレットで作成された既定の **server.js** ファイルが削除され、チャットのサンプルのアプリケーション ファイルに置き換えられます。
+3. **C:\\node\\chatapp\\WorkerRole1** ディレクトリで、**server.js** ファイルを削除し、**app.js** ファイルの名前を **server.js** に変更します。 これにより、前に **Add-AzureNodeWorkerRole** コマンドレットで作成された既定の **server.js** ファイルが削除され、チャットのサンプルのアプリケーション ファイルに置き換えられます。
 
-### Server.js の変更とモジュールのインストール
-Azure エミュレーターでアプリケーションをテストする前に、いくつかの点を変更する必要があります。次の手順で server.js ファイルを変更します。
+### <a name="modify-serverjs-and-install-modules"></a>Server.js の変更とモジュールのインストール
+Azure エミュレーターでアプリケーションをテストする前に、いくつかの点を変更する必要があります。 次の手順で server.js ファイルを変更します。
 
 1. Visual Studio または任意のテキスト エディターで **server.js** ファイルを開きます。
 2. server.js の先頭にある **Module dependencies** セクションを探して、次のように **sio = require('..//..//lib//socket.io')** を含む行を **sio = require('socket.io')** に変更します。
@@ -83,81 +87,86 @@ Azure エミュレーターでアプリケーションをテストする前に�
          console.log('   app listening on http://' + addr.address + ':' + addr.port);
        });
 
-**server.js** の変更内容を保存した後、次の手順に従って必要なモジュールをインストールし、Azure エミュレーターでアプリケーションをテストします。
+**server.js**の変更内容を保存した後、次の手順に従って必要なモジュールをインストールし、Azure エミュレーターでアプリケーションをテストします。
 
 1. **Azure PowerShell** を使用して、**C:\\node\\chatapp\\WorkerRole1** ディレクトリに移動し、次のコマンドを使用して、このアプリケーションで必要なモジュールをインストールします。
    
        PS C:\node\chatapp\WorkerRole1> npm install
    
-   これによって、package.json ファイルにリストされているモジュールがインストールされます。コマンドが完了すると、次のような出力が表示されます。
+   これによって、package.json ファイルにリストされているモジュールがインストールされます。 コマンドが完了すると、次のような出力が表示されます。
    
    ![npm install コマンドの出力][The-output-of-the-npm-install-command]
 2. このサンプルはもともと Socket.IO GitHub リポジトリの一部であり、相対 パスによって Socket.IO ライブラリを直接参照していたため、package.json ファイルでは Socket.IO は参照されていませんでした。そのため、次のコマンド を発行してインストールする必要があります。
    
        PS C:\node\chatapp\WorkerRole1> npm install socket.io --save
 
-### テストとデプロイ
+### <a name="test-and-deploy"></a>テストとデプロイ
 1. 次のコマンドを発行してエミュレーターを起動します。
    
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
-2. ブラウザーを開き、http://127.0.0.1** に移動します。
-3. ブラウザー ウィンドウが開いたら、ニックネームを入力して Enter キーを押します。これにより、特定のニックネームでメッセージが投稿されます。マルチユーザー機能をテストするには、同じ URL を使用して新しいブラウザー ウィンドウを開き、別のニックネームを入力します。
+2. ブラウザーを開き、**http://127.0.0.1** に移動します。
+3. ブラウザー ウィンドウが開いたら、ニックネームを入力して Enter キーを押します。
+   これにより、特定のニックネームでメッセージが投稿されます。 マルチユーザー機能をテストするには、同じ URL を使用して新しいブラウザー ウィンドウを開き、別のニックネームを入力します。
    
    ![User1 と User2 からのチャット メッセージを表示している 2 つのブラウザー ウィンドウ](./media/cloud-services-nodejs-chat-app-socketio/socketio-8.png)
 4. アプリケーションのテストが終了したら、次のコマンドを発行してエミュレーターを停止します。
    
        PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
-5. Azure にアプリケーションをデプロイするには、**Publish-AzureServiceProject** コマンドレットを使用します。次に例を示します。
+5. Azure にアプリケーションをデプロイするには、 **Publish-AzureServiceProject** コマンドレットを使用します。 次に例を示します。
    
        PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
    
    > [!IMPORTANT]
-   > 必ず一意の名前を使用してください。一意でない場合は発行処理が失敗します。デプロイが完了すると、ブラウザーが開き、デプロイされたサービスに移動します。
+   > 必ず一意の名前を使用してください。一意でない場合は発行処理が失敗します。 デプロイが完了すると、ブラウザーが開き、デプロイされたサービスに移動します。
    > 
-   > 指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「**Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ**」の「[Azure へのアプリケーションのデプロイ](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)」を参照してください。
+   > 指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。 「 **Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ** 」の「 [Azure へのアプリケーションのデプロイ](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)
    > 
    > 
    
    ![Azure でホストされるサービスを表示しているブラウザー ウィンドウ][completed-app]
    
    > [!NOTE]
-   > 指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「**Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ**」の「[Azure へのアプリケーションのデプロイ](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)」を参照してください。
+   > 指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。 「 **Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ** 」の「 [Azure へのアプリケーションのデプロイ](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)
    > 
    > 
 
 これで、アプリケーションは Azure で実行されるようになり、Socket.IO を使用する複数のクライアント間でチャット メッセージを中継できます。
 
 > [!NOTE]
-> わかりやすくするために、このサンプルは同じインスタンスに接続したユーザー間でのチャットに制限されています。つまり、クラウド サービスによって 2 つの worker ロール インスタンスが作成された場合、ユーザーは同じ worker ロール インスタンスに接続された他のユーザーとのみチャットすることができます。複数のロール インスタンスで機能するようにこのアプリケーションを拡張するには、Service Bus などのテクノロジを使用して、インスタンス間で Socket.IO ストアの状態を共有します。たとえば、[Azure SDK for Node.js GitHub リポジトリ](https://github.com/WindowsAzure/azure-sdk-for-node)にある Service Bus キューおよびトピックの使用例を参照してください。
+> わかりやすくするために、このサンプルは同じインスタンスに接続したユーザー間でのチャットに制限されています。 つまり、クラウド サービスによって 2 つの worker ロール インスタンスが作成された場合、ユーザーは同じ worker ロール インスタンスに接続された他のユーザーとのみチャットすることができます。 複数のロール インスタンスで機能するようにこのアプリケーションを拡張するには、Service Bus などのテクノロジを使用して、インスタンス間で Socket.IO ストアの状態を共有します。 たとえば、 [Azure SDK for Node.js GitHub リポジトリ](https://github.com/WindowsAzure/azure-sdk-for-node)にある Service Bus キューおよびトピックの使用例を参照してください。
 > 
 > 
 
-## 次のステップ
-このチュートリアルでは、Azure Cloud Services でホストされる基本的なチャット アプリケーションを作成する方法を説明しました。Azure Websites でこのアプリケーションをホストする方法については、「[Azure Websites で Socket.IO を使用する Node.js チャット アプリケーションを構築する][chatwebsite]」を参照してください。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、Azure Cloud Services でホストされる基本的なチャット アプリケーションを作成する方法を説明しました。 Azure Websites でこのアプリケーションをホストする方法については、[Azure Websites での Socket.IO を使用する Node.js チャット アプリケーションの構築][chatwebsite]に関するページを参照してください。
 
-詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+詳細については、 [Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
 [chatwebsite]: /develop/nodejs/tutorials/website-using-socketio/
 
-[Azure SLA]: http://www.windowsazure.com/support/sla/
-[Azure SDK for Node.js GitHub repository]: https://github.com/WindowsAzure/azure-sdk-for-node
+[Azure の SLA]: http://www.windowsazure.com/support/sla/
+[Azure SDK for Node.js GitHub リポジトリ]: https://github.com/WindowsAzure/azure-sdk-for-node
 [completed-app]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-10.png
 [Azure SDK for Node.js]: https://www.windowsazure.com/develop/nodejs/
-[Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
+[Node.js Web アプリケーション]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Socket.IO GitHub リポジトリ]: https://github.com/LearnBoost/socket.io/tree/0.9.14
-[Azure Considerations]: #windowsazureconsiderations
-[Hosting the Chat Example in a Worker Role]: #hostingthechatexampleinawebrole
-[Summary and Next Steps]: #summary
+[Azure に関する考慮事項]: #windowsazureconsiderations
+[worker ロールでのチャット サンプルのホスト]: #hostingthechatexampleinawebrole
+[概要と次のステップ]: #summary
 [powershell-menu]: ./media/cloud-services-nodejs-chat-app-socketio/azure-powershell-start.png
 
-[chat example]: https://github.com/LearnBoost/socket.io/tree/master/examples/chat
+[チャット サンプル]: https://github.com/LearnBoost/socket.io/tree/master/examples/chat
 [chat-example-view]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png
 
 
 [chat-contents]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
 [The-output-of-the-npm-install-command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-7.png
-[The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
+[Publish-AzureService コマンドの出力]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
 
 
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

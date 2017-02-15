@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "簡単なサインイン プロセスを提供するさまざまな検証方法で多要素認証をデプロイする方法について説明します。 チュートリアルや SDK などを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: defa12cb202ce4861a479ac40782248cd50039d3
-ms.openlocfilehash: 2db76cf5af88cc103b0109eb8ead4d63cbae0a0e
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 6ff0e1c42ad151c56500596d99f63bae200368ed
 
 ---
 # <a name="multi-factor-authentication-documentation"></a>Multi-Factor Authentication のドキュメント
 
-Azure Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 Azure MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。 電話、テキスト メッセージ、モバイル アプリによる確認など、一連の照合方法を通じて確実な認証を行うことができます。
+2 段階の ID 検証システムである Azure Multi-Factor Authentication をデプロイおよび管理する方法について説明します。 チュートリアルや SDK などのドキュメントでは、簡単なサインイン プロセスを提供すると同時にさまざまな検証方法による強力な認証を実現する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -104,15 +105,10 @@ Azure Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリ
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/multi-factor-authentication.pdf">
-        <div class="img"></div>
-        <div class="text">
-Multi-Factor Authentication のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
-<!--HONumber=Nov16_HO4-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

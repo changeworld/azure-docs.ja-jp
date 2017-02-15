@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -35,11 +35,11 @@ ms.openlocfilehash: fece49df6a35f09ee73bb4b9ec4c33a0529a9f59
 
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
-   
+
    ![ユーザー管理を開く](./media/active-directory-branding-localize-azure-portal/user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[会社のブランド]** を選択します。
 4. **[ユーザーとグループ - 会社のブランド]** ブレードで、**[言語の追加]** をクリックします。
-   
+
     ![言語固有のブランド要素を追加する](./media/active-directory-branding-localize-azure-portal/add-language.png)
 5. カスタマイズする要素に変更を加えます。 すべての要素は省略できます。
 6. [ **Save**] をクリックします。
@@ -48,7 +48,6 @@ ms.openlocfilehash: fece49df6a35f09ee73bb4b9ec4c33a0529a9f59
 
 ## <a name="next-steps"></a>次のステップ
 [サインイン ページに会社のブランドを追加する](active-directory-branding-custom-signon-azure-portal.md)
-
 
 
 

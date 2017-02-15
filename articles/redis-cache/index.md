@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "アプリケーションでのデータへの高速アクセスを可能にする、セキュリティで保護されたデータ キャッシュおよびメッセージング ブローカーである Azure Redis Cache の使用方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 4cd50960b30990f3220788e6613a2815d8e28612
-ms.openlocfilehash: 026c452cd784da14a901cab8e5aecaafda448418
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 328084918199e162ad0cfa9ac67737a66fa4d021
 
 ---
 #<a name="redis-cache-documentation"></a>Redis Cache のドキュメント
 
-Azure Redis Cache は広く普及しているオープンソース Redis Cache を基盤にしています。 これを使用すると、Microsoft によって管理されている、セキュリティで保護された専用 Redis Cache に Azure 内の任意のアプリケーションからアクセスできます。 Azure Redis Cache によって、スループット向上と、一貫して短いデータ アクセスの待機時間による高速でスケーラブルな Azure アプリケーションが強化されます。
+アプリケーションに対してスループットが高く待機時間の短いデータ アクセスを提供する、セキュリティで保護されたデータ キャッシュおよびメッセージング ブローカー、Azure Redis Cache の使用方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Azure 上の任意のアプリケーションから Redis Cache を使用する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -183,16 +184,10 @@ Azure Redis Cache は広く普及しているオープンソース Redis Cache �
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/redis-cache.pdf">
-        <div class="img"></div>
-        <div class="text">
-Redis Cache のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

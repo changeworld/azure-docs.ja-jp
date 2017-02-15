@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics とは  | Microsoft Docs"
+title: "Log Analytics とは | Microsoft Docs"
 description: "Log Analytics は、Operations Management Suite (OMS) のサービスであり、 クラウドおよびオンプレミスの環境内にあるリソースで生成された運用データを収集して分析するのに役立ちます。  この記事では、Log Analytics のさまざまなコンポーネントと詳細なコンテンツへのリンクの概要について説明します。"
 services: log-analytics
 documentationcenter: 

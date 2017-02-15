@@ -245,6 +245,6 @@ Azure AD への &frankly の統合を構成するには、ギャラリーから�
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

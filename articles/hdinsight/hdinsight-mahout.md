@@ -1,13 +1,13 @@
 ---
-title: Mahout と Windows ベースの HDInsight を使用したリコメンデーションの生成 | Microsoft Docs
-description: Apache Mahout 機械学習ライブラリを使用して Windows ベースの HDInsight (Hadoop) で映画のリコメンデーションを生成する方法について説明します。
+title: "Mahout と Windows ベースの HDInsight を使用したリコメンデーションの生成 | Microsoft Docs"
+description: "Apache Mahout 機械学習ライブラリを使用して Windows ベースの HDInsight (Hadoop) で映画のリコメンデーションを生成する方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 07b57208-32aa-4e59-900a-6c934fa1b7a7
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
+ms.openlocfilehash: 3653ce2f2a251d3163fa843ef7126aab295c2a14
+
 
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight"></a>HDInsight で Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する
@@ -24,36 +28,36 @@ ms.author: larryfr
 
 > [!NOTE]
 > このドキュメントの手順では、Windows クライアントと Windows ベースの HDInsight クラスターが必要です。 Linux、OS X、または Unix クライアントから Linux ベースの HDInsight クラスターと Mahout を使用する方法の詳細については、 [HDInsight で Apache Mahout と Linux ベースの Hadoop を使用した映画のリコメンデーションの生成](hdinsight-hadoop-mahout-linux-mac.md)
-> 
-> 
+>
+>
 
-## <a name="<a-name="learn"></a>what-you-will-learn"></a><a name="learn"></a>学習内容
+## <a name="a-namelearnawhat-you-will-learn"></a><a name="learn"></a>学習内容
 Mahout は、Apache Hadoop の[Machine Learning][ml]ライブラリの 1 つです。 Mahout には、フィルター処理、分類、クラスタリングなどデータを処理するためのアルゴリズムが含まれています。 この記事では、リコメンデーション エンジンを使用し、友人たちが鑑賞した映画に基づいて映画のリコメンデーションを生成します。 また、デシジョン フォレストで分類を実行する方法についても説明します。 学習内容は以下のとおりです。
 
 * Windows PowerShell を使用して Mahout ジョブを実行する方法
 * Mahout ジョブを Hadoop コマンド ラインから実行する方法
 * Mahout を HDInsight 3.0 と HDInsight 2.0 クラスターにインストールする方法
-  
+
   > [!NOTE]
   > Mahout は、HDInsight 3.1 バージョンのクラスターで提供されます。 以前のバージョンの HDInsight を使用している場合は、次に進む前に「 [Mahout のインストール](#install) 」を参照してください。
-  > 
-  > 
+  >
+  >
 
 ## <a name="prerequisites"></a>前提条件
 * **HDInsight での Windows ベースの Hadoop クラスター**。 作成の詳細については、[HDInsight での Hadoop の使用に関するページ][getstarted]をご覧ください。
 * **Azure PowerShell を実行できるワークステーション**。
-  
+
     [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-## <a name="<a-name="recommendations"></a>generate-recommendations-by-using-windows-powershell"></a><a name="recommendations"></a>Windows PowerShell を使用してリコメンデーションを生成する
+## <a name="a-namerecommendationsagenerate-recommendations-by-using-windows-powershell"></a><a name="recommendations"></a>Windows PowerShell を使用してリコメンデーションを生成する
 > [!NOTE]
 > このセクションで使用されるジョブは Windows PowerShell で動作しますが、Mahout で提供されるクラスの多くは現在 Windows PowerShell で動作しないため、Hadoop コマンド ラインを使用して実行する必要があります。 Windows PowerShell で動作しないクラスの一覧については、「 [トラブルシューティング](#troubleshooting) 」セクションを参照してください。
-> 
+>
 > Hadoop コマンド ラインを使用して Mahout ジョブを実行する例については、 [Hadoop コマンド ラインを使用してデータを分類する](#classify)を参照してください。
-> 
-> 
+>
+>
 
-Mahout で提供される機能の 1 つが、リコメンデーション エンジンです。 データは、`userID`、`itemId`、`prefValue` (項目に対するユーザーの嗜好) の形式で受け付けられます。 Mahout では、共起分析を実行して、_ある項目を嗜好するユーザーが他の項目も嗜好する_ということを判断できます。 次に Mahout は、項目の嗜好が似ているユーザーを特定します。これはリコメンデーションの作成に使用できます。
+Mahout で提供される機能の 1 つが、リコメンデーション エンジンです。 データは、`userID`、`itemId`、`prefValue` (項目に対するユーザーの嗜好) の形式で受け付けられます。 Mahout では、共起分析を実行して、*ある項目を嗜好するユーザーが他の項目も嗜好する*ということを判断できます。 次に Mahout は、項目の嗜好が似ているユーザーを特定します。これはリコメンデーションの作成に使用できます。
 
 映画を使用した非常にシンプルな例を次に示します。
 
@@ -68,11 +72,11 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 user-ratings.txt に含まれているデータの構造は `userID`、`movieID`、`userRating`、および `timestamp` です。これは、各ユーザーによって映画に対してどれだけ高い評価が付けられているか示しています。 次にデータの例を示します。
 
-    196 242 3   881250949
-    186 302 3   891717742
-    22  377 1   878887116
-    244 51  2   880606923
-    166 346 1   886397596
+    196    242    3    881250949
+    186    302    3    891717742
+    22    377    1    878887116
+    244    51    2    880606923
+    166    346    1    886397596
 
 ### <a name="run-the-job"></a>ジョブを実行する
 次の Windows PowerShell スクリプトを使用して、映画データで Mahout リコメンデーション エンジンを使用するジョブを実行します。
@@ -154,17 +158,17 @@ user-ratings.txt に含まれているデータの構造は `userID`、`movieID`
 
 > [!NOTE]
 > Mahout ジョブは、ジョブの処理中に作成された一時データを削除しません。 このサンプル ジョブでは `--tempDir` パラメーターを指定し、一時ファイルを特定のディレクトリに分離します。
-> 
-> 
+>
+>
 
-Mahout ジョブは出力を STDOUT に返しません。 代わりに、指定された出力ディレクトリに **part-r-00000__として格納します。 このファイルは、ワークステーションの現在のディレクトリ内の __output.txt** にダウンロードされます。
+Mahout ジョブは出力を STDOUT に返しません。 代わりに、指定された出力ディレクトリに **part-r-00000**として格納します。 このファイルは、ワークステーションの現在のディレクトリ内の **output.txt** にダウンロードされます。
 
 ファイルの内容の例を次に示します。
 
-    1   [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
-    2   [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
-    3   [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
-    4   [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
+    1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
+    2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
+    3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
+    4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
 最初の列は `userID`です。 "[" と "]" に含まれる値は `movieId`:`recommendationScore` です。
 
@@ -315,17 +319,17 @@ Mahout ジョブは出力を STDOUT に返しません。 代わりに、指定�
     Donnie Brasco (1997)                     4.6792455
     Lone Star (1996)                         4.7099237  
 
-## <a name="<a-name="classify"></a>classify-data-by-using-the-hadoop-command-line"></a><a name="classify"></a>Hadoop コマンド ラインを使用してデータを分類する
+## <a name="a-nameclassifyaclassify-data-by-using-the-hadoop-command-line"></a><a name="classify"></a>Hadoop コマンド ラインを使用してデータを分類する
 Mahout で利用可能は分類方法の 1 つは、[ランダム フォレスト][forest]をビルドすることです。 これは複数の手順から成るプロセスです。 Mahout により提供される **org.apache.mahout.classifier.df.tools.Describe** クラスが使用され、 現在は Hadoop コマンド ラインを使用して実行する必要があります。
 
 ### <a name="load-the-data"></a>データを読み込む
 1. ファイルを [The NSL-KDD Data Set](http://nsl.cs.unb.ca/NSL-KDD/)からダウンロードします。
-   
+
    * [KDDTrain+.ARFF](http://nsl.cs.unb.ca/NSL-KDD/KDDTrain+.arff): トレーニング ファイル
    * [KDDTest+.ARFF](http://nsl.cs.unb.ca/NSL-KDD/KDDTest+.arff): テスト データ
 2. 各ファイルを開き、'@', で始まる先頭の数行を削除して、ファイルを保存します。 これらが削除されていない場合、このデータを Mahout で使用するとエラー メッセージが返されます。
-3. **example/data__にファイルをアップロードします。 この処理には、次のスクリプトを使用できます。 __CLUSTERNAME** を HDInsight クラスターの名前に置き換えます。 FILENAME をアップロードするファイルの名前に置き換えます。
-   
+3. **example/data**にファイルをアップロードします。 この処理には、次のスクリプトを使用できます。 **CLUSTERNAME** を HDInsight クラスターの名前に置き換えます。 FILENAME をアップロードするファイルの名前に置き換えます。
+
         #Get the cluster info so we can get the resource group, storage, etc.
         $clusterName="CLUSTERNAME"
         $fileToUpload="FILENAME"
@@ -337,12 +341,12 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
         $storageAccountKey=(Get-AzureRmStorageAccountKey `
             -Name $storageAccountName `
         -ResourceGroupName $resourceGroup)[0].Value
-   
+
         #Create a storage content and upload the file
         $context = New-AzureStorageContext `
             -StorageAccountName $storageAccountName `
             -StorageAccountKey $storageAccountKey
-   
+
         Set-AzureStorageBlobContent `
             -File $fileToUpload `
             -Blob $blobPath `
@@ -350,42 +354,42 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
             -Context $context
 
 ### <a name="run-the-job"></a>ジョブを実行する
-1. このジョブでは、Hadoop コマンドラインが必要です。 「 [RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
+1. このジョブでは、Hadoop コマンドラインが必要です。 「 [RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 2. 接続した後で、 **[Hadoop コマンド ライン]** アイコンを使用して Hadoop コマンド ラインを開きます。
-   
+
     ![hadoop cli][hadoopcli]
 3. 次のコマンドを使用し、Mahout を使用するファイル記述子 (**KDDTrain+.info**) を生成します。
-   
+
         hadoop jar "c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar" org.apache.mahout.classifier.df.tools.Describe -p "wasbs:///example/data/KDDTrain+.arff" -f "wasbs:///example/data/KDDTrain+.info" -d N 3 C 2 N C 4 N C 8 N 2 C 19 N L
-   
+
     `N 3 C 2 N C 4 N C 8 N 2 C 19 N L` は、ファイル内のデータの属性を示します。 たとえば、L はラベルを示します。
 4. 次のコマンドを使用してデシジョン ツリーのフォレストをビルドします。
-   
+
         hadoop jar c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar org.apache.mahout.classifier.df.mapreduce.BuildForest -Dmapred.max.split.size=1874231 -d wasbs:///example/data/KDDTrain+.arff -ds wasbs:///example/data/KDDTrain+.info -sl 5 -p -t 100 -o nsl-forest
-   
+
     この操作の出力は、HDInsight クラスターのストレージにある **nsl-forest** ディレクトリに格納されます (__wasbs://user/&lt;username>/nsl-forest/nsl-forest.seq)。 &lt;username> は、リモート デスクトップ セッションに使用されるユーザー名です。 これは、人間が判読できないファイルです。
 5. **KDDTest+.arff** データセットを分類してフォレストをテストします。 次のコマンドを使用します。
-   
+
         hadoop jar c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar org.apache.mahout.classifier.df.mapreduce.TestForest -i wasbs:///example/data/KDDTest+.arff -ds wasbs:///example/data/KDDTrain+.info -m nsl-forest -a -mr -o wasbs:///example/data/predictions
-   
+
     このコマンドは、次のような分類プロセスの概要情報を返します。
-   
+
         14/07/02 14:29:28 INFO mapreduce.TestForest:
-   
+
         =======================================================
         Summary
         -------------------------------------------------------
         Correctly Classified Instances          :      17560       77.8921%
         Incorrectly Classified Instances        :       4984       22.1079%
         Total Classified Instances              :      22544
-   
+
         =======================================================
         Confusion Matrix
         -------------------------------------------------------
         a       b       <--Classified as
         9437    274      |  9711        a     = normal
         4710    8123     |  12833       b     = anomaly
-   
+
         =======================================================
         Statistics
         -------------------------------------------------------
@@ -393,33 +397,33 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
         Accuracy                                   77.8921%
         Reliability                                53.4921%
         Reliability (standard deviation)            0.4933
-   
+
    このジョブでは、**wasbs:///example/data/predictions/KDDTest+.arff.out** にファイルが生成されます。 これは、人間が判読できないファイルです。
 
 > [!NOTE]
 > Mahout ジョブはファイルを上書きしません。 これらのジョブをもう一度実行する場合は、前のジョブで作成したファイルを削除する必要があります。
-> 
-> 
+>
+>
 
-## <a name="<a-name="troubleshooting"></a>troubleshooting"></a><a name="troubleshooting"></a>トラブルシューティング
-### <a name="<a-name="install"></a>install-mahout"></a><a name="install"></a>Mahout のインストール
+## <a name="a-nametroubleshootingatroubleshooting"></a><a name="troubleshooting"></a>トラブルシューティング
+### <a name="a-nameinstallainstall-mahout"></a><a name="install"></a>Mahout のインストール
 Mahout は HDInsight 3.1 クラスターにインストールされますが、次の手順を使用して手動で HDInsight 3.0 または HDInsight 2.1 クラスターにインストールできます。
 
 1. 使用する Mahout のバージョンは、使用するクラスターの HDInsight バージョンによって異なります。 Azure ポータルでクラスターのプロパティを表示することで、クラスターのバージョンを見つけることができます。
-   
-   * __HDInsight 2.1__の場合は、 [Mahout 0.9](http://repo2.maven.org/maven2/org/apache/mahout/mahout-core/0.9/mahout-core-0.9-job.jar)を含む Java アーカイブ (JAR) ファイルをダウンロードできます。
+
+   * **HDInsight 2.1**の場合は、 [Mahout 0.9](http://repo2.maven.org/maven2/org/apache/mahout/mahout-core/0.9/mahout-core-0.9-job.jar)を含む Java アーカイブ (JAR) ファイルをダウンロードできます。
    * **HDInsight 3.0 の場合は**、[Mahout をソースからビルド][build]して HDInsight により提供される Hadoop バージョンを指定する必要があります。 ビルド ページに示された前提条件をインストールし、ソースをダウンロードして、次のコマンドを使用して Mahout jar ファイルを作成します。
-     
+
             mvn -Dhadoop2.version=2.2.0 -DskipTests clean package
-     
-        After the build completes, you can find the JAR file at **mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar**.
-     
+
+        ビルドが完了した後、**mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar** で JAR ファイルを入手できます。
+
      > [!NOTE]
      > Mahout 1.0 がリリースされると、HDInsight 3.0 で既成のパッケージを使用できるようになります。
-     > 
-     > 
+     >
+     >
 2. この jar ファイルを、使用しているクラスターの既定のストレージ内の **example/jars** にアップロードします。 次のスクリプトの CLUSTERNAME を HDInsight クラスターの名前に置き換えます。また、FILENAME を **mahout-coure-0.9-job.jar** ファイルのパスに置き換えます。
-   
+
         #Get the cluster info so we can get the resource group, storage, etc.
         $clusterName = "CLUSTERNAME"
         $fileToUpload = "FILENAME"
@@ -430,12 +434,12 @@ Mahout は HDInsight 3.1 クラスターにインストールされますが、�
         $storageAccountKey=(Get-AzureRmStorageAccountKey `
             -Name $storageAccountName `
         -ResourceGroupName $resourceGroup)[0].Value
-   
+
         #Create a storage content and upload the file
         $context = New-AzureStorageContext `
             -StorageAccountName $storageAccountName `
             -StorageAccountKey $storageAccountKey
-   
+
         Set-AzureStorageBlobContent `
             -File $fileToUpload `
             -Blob "example/jars/mahout-core-0.9-job.jar" `
@@ -466,7 +470,7 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、 パス
             -DefaultStorageAccountKey $storageAccountKey `
             -Query '!${env:COMSPEC} /c dir /b /s ${env:MAHOUT_HOME}\examples\target\*-job.jar'
 
-### <a name="<a-name="nopowershell"></a>classes-that-do-not-work-with-windows-powershell"></a><a name="nopowershell"></a>Windows PowerShell で動作しないクラス
+### <a name="a-namenopowershellaclasses-that-do-not-work-with-windows-powershell"></a><a name="nopowershell"></a>Windows PowerShell で動作しないクラス
 次のクラスを使用する Mahout ジョブを Windows PowerShell から使用すると、さまざまなエラー メッセージが返されます。
 
 * org.apache.mahout.utils.clustering.ClusterDumper
@@ -511,7 +515,6 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、 パス
 
 
 
-
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

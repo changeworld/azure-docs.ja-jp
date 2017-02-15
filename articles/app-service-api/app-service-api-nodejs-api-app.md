@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 05/26/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e8a1ac3df5225fdcfe2717c2cf50bfc5b7cfda36
+ms.sourcegitcommit: c700bfbd4f50a892e182124eb596159d2eb63feb
+ms.openlocfilehash: b6f97d299b1c100e4bae111d7f95c9619c6c9399
 
 
 ---
@@ -41,7 +41,7 @@ App Service では、コードを API アプリにデプロイする方法を数
    
     サンプル API には 2 つのエンドポイントがあります。`/contacts` に対して Get 要求を発行すると、名前と電子メール アドレスの一覧が JSON 形式で返されます。`/contacts/{id}` では、選択した連絡先のみが返されます。
 
-## <a name="scaffold-autogenerate-nodejs-code-based-on-swagger-metadata"></a>Swagger メタデータに基づく Node.js コードのスキャフォールディング (自動生成)
+## <a name="scaffold-auto-generate-nodejs-code-based-on-swagger-metadata"></a>Swagger メタデータに基づく Node.js コードのスキャフォールディング (自動生成)
 [Swagger](http://swagger.io/) は、RESTful API を記述するメタデータ用のファイル形式です。 Azure App Service は、[Swagger メタデータのビルトイン サポート](app-service-api-metadata.md)を備えています。 チュートリアルのこのセクションは、API 開発ワークフローをモデルにしています。ここでは最初に Swagger メタデータを作成し、それを使用して API のサーバー コードをスキャフォールディング (自動生成) します。 
 
 > [!NOTE]
@@ -131,7 +131,7 @@ App Service では、コードを API アプリにデプロイする方法を数
         app.use(bodyParser.json());
    
         app.use(swaggerize({
-            api: path.resolve('./config/api.json'), // third change
+            api: path.resolve('./config/swagger.json'), // third change
             handlers: path.resolve('./handlers'),
             docspath: '/swagger' // fourth change
         }));
@@ -275,6 +275,6 @@ Azure App Service で Git リポジトリにコミットをプッシュするこ
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

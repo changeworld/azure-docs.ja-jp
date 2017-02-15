@@ -1,20 +1,24 @@
 ---
-title: DocumentDB での自動オンライン バックアップと復元 | Microsoft Docs
-description: NoSQL データベースの自動バックアップと復元を Azure DocumentDB で実行する方法について説明します。
-keywords: バックアップと復元、オンライン バックアップ
+title: "DocumentDB での自動オンライン バックアップと復元 |Microsoft Docs"
+description: "NoSQL データベースの自動バックアップと復元を Azure DocumentDB で実行する方法について説明します。"
+keywords: "バックアップと復元、オンライン バックアップ"
 services: documentdb
-documentationcenter: ''
+documentationcenter: 
 author: RahulPrasad16
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 98eade4a-7ef4-4667-b167-6603ecd80b79
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/23/2016
+ms.date: 01/04/2017
 ms.author: raprasa
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 23f6049bc0df133966911b2352b044cdbc777b36
+
 
 ---
 # <a name="automatic-online-backup-and-restore-with-documentdb"></a>DocumentDB での自動オンライン バックアップと復元
@@ -33,7 +37,7 @@ DocumentDB は、[グローバルに分散される](documentdb-distribute-data-
 
 ![DocumentDB の高度な冗長性](./media/documentdb-online-backup-and-restore/azure-documentdb-nosql-database-global-distribution.png)
 
-## <a name="full,-automatic,-online-backups"></a>自動化されたオンラインの完全バックアップ
+## <a name="full-automatic-online-backups"></a>自動化されたオンラインの完全バックアップ
 コレクションまたはデータベースを削除してしまいました。 DocumentDB では、データだけでなく、データのバックアップも、冗長性と局地的な障害からの回復力が高められています。 これらの自動化されたバックアップは、現時点では 4 時間ごとに取得されます。 
 
 バックアップは、データベース操作のパフォーマンスにも可用性にも影響を与えずに取得されます。 DocumentDB は、バックアップをバックグラウンドで取得し、プロビジョニング済みの RU を消費したり、パフォーマンスに影響を与えたり、NoSQL データベースの可用性に影響を与えたりすることはありません。 
@@ -55,6 +59,9 @@ DocumentDB の中に保存されるデータとは異なり、自動バックア
 
 Azure サポートに問い合わせる場合は、 [Azure ポータルからチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

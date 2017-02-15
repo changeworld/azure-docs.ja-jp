@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2016
+ms.date: 02/14/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 91aa9a15797620e985f44d2aad4ef207d3884672
-ms.openlocfilehash: f76b573737c6b38ffe61c344ac6eb70f71d6ca44
+ms.sourcegitcommit: d4eb942db51af9c8136e9e0f5f8683cc15679d08
+ms.openlocfilehash: 5bfbe4cfac202592ddd745c5f959cb791fe17ba8
 
 
 ---
@@ -42,11 +42,11 @@ ms.openlocfilehash: f76b573737c6b38ffe61c344ac6eb70f71d6ca44
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-最後に、**主キー**の値をメモして、**[メッセージング]** をクリックします。 **[メッセージング]** ブレードで、**イベント ハブ互換名**と**イベント ハブ互換エンドポイント**をメモします。 これら 3 つの値は、**read-d2c-messages** アプリを作成するときに必要になります。
+最後に、**主キー**の値をメモします。 次に、**[エンドポイント]** をクリックし、組み込みの **[イベント]** エンドポイントをクリックします。 **[プロパティ]** ブレードで、**イベント ハブ互換名**と**イベント ハブ互換エンドポイント** アドレスをメモします。 これら 3 つの値は、**read-d2c-messages** アプリを作成するときに必要になります。
 
 ![Azure portal IoT Hub Messaging blade][6]
 
-これで IoT ハブが作成され、このチュートリアルを完了するために必要な IoT Hub ホスト名、IoT Hub 接続文字列、IoT Hub 主キー、Event Hub 対応の名前、Event Hub 対応エンドポイントが入手できました。
+IoT Hub の作成は以上です。 このチュートリアルを完了するために必要な IoT Hub ホスト名、IoT Hub 接続文字列、IoT Hub 主キー、Event Hub 対応の名前、Event Hub 対応エンドポイントが入手できました。
 
 ## <a name="create-a-device-identity"></a>デバイス ID の作成
 このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成する Java コンソール アプリケーションを作成します。 IoT hub に接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の **ID レジストリ**に関するセクションをご覧ください。 このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
@@ -63,7 +63,7 @@ ms.openlocfilehash: f76b573737c6b38ffe61c344ac6eb70f71d6ca44
     <dependency>
       <groupId>com.microsoft.azure.iothub-java-client</groupId>
       <artifactId>iothub-java-service-client</artifactId>
-      <version>1.0.10</version>
+      <version>1.0.11</version>
     </dependency>
     ```
 4. pom.xml ファイルを保存して閉じます。
@@ -146,7 +146,7 @@ ms.openlocfilehash: f76b573737c6b38ffe61c344ac6eb70f71d6ca44
     <dependency> 
         <groupId>com.microsoft.azure</groupId> 
         <artifactId>azure-eventhubs</artifactId> 
-        <version>0.7.8</version> 
+        <version>0.10.0</version> 
     </dependency>
     ```
 4. pom.xml ファイルを保存して閉じます。
@@ -283,7 +283,7 @@ ms.openlocfilehash: f76b573737c6b38ffe61c344ac6eb70f71d6ca44
     <dependency>
       <groupId>com.microsoft.azure.iothub-java-client</groupId>
       <artifactId>iothub-java-device-client</artifactId>
-      <version>1.0.15</version>
+      <version>1.0.16</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>
@@ -440,7 +440,7 @@ ms.openlocfilehash: f76b573737c6b38ffe61c344ac6eb70f71d6ca44
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 シミュレーション対象デバイス アプリでデバイスからクラウドへのメッセージを IoT Hub に送信できるようにするために、このデバイス ID を使用しました。 また、IoT Hub で受け取ったメッセージを表示するアプリを作成しました。 
 
-引き続き IoT Hub の使用法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
+引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 
 * [デバイスを接続する][lnk-connect-device]
 * [デバイス管理の概要][lnk-device-management]
@@ -461,7 +461,7 @@ ms.openlocfilehash: f76b573737c6b38ffe61c344ac6eb70f71d6ca44
 [lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
 [lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/java-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
@@ -474,6 +474,6 @@ ms.openlocfilehash: f76b573737c6b38ffe61c344ac6eb70f71d6ca44
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

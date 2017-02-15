@@ -4,7 +4,7 @@ description: "Resource Manager で Azure CLI を使用してアプリケーシ�
 services: application-gateway
 documentationcenter: na
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: c2f6516e-3805-49ac-826e-776b909a9104
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/12/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3a8e5583f213c6d35f8e41dd31fe2ccad7389977
-ms.openlocfilehash: 3e3e563f941ad4ad58f96b03e98f49a7d99844d9
+ms.sourcegitcommit: e20f7349f30c309059c2867d7473fa6fdefa9b61
+ms.openlocfilehash: 165289acd1d2a5bc098e9a83f43613d16a023045
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: 3e3e563f941ad4ad58f96b03e98f49a7d99844d9
 > 
 > 
 
-Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどのアプリケーション配信機能を備えています。
+Azure Application Gateway はレイヤー&7; のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどのアプリケーション配信機能を備えています。
 
 ## <a name="prerequisite-install-the-azure-cli"></a>前提条件: Azure CLI のインストール
 
@@ -40,8 +40,6 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 > [!NOTE]
 > Azure アカウントをお持ちでない場合は、取得する必要があります。 [ここで無料試用版](../active-directory/sign-up-organization.md)にサインアップしてください。
-> 
-> 
 
 ## <a name="scenario"></a>シナリオ
 
@@ -58,8 +56,6 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 > [!NOTE]
 > カスタムの正常性プローブ、バックエンド プール アドレス、追加規則など、アプリケーション ゲートウェイの追加の構成は、初めてデプロイしている間ではなく、アプリケーション ゲートウェイが構成された後で構成されます。
-> 
-> 
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -125,17 +121,15 @@ azure network application-gateway create -n AdatumAppGateway -l eastus -g Adatum
 
 > [!NOTE]
 > 作成時に指定できるパラメーターのリストを表示するには、**azure network application-gateway create --help** コマンドを実行します。
-> 
-> 
 
 この例では、リスナー、バックエンド プール、バックエンド http 設定、規則の既定の設定を持つ基本的なアプリケーション ゲートウェイを作成しています。 さらに、SSL オフロードの構成も行われます。 プロビジョニングが成功したら、独自のデプロイに合わせて、これらの設定を変更することができます。
 前の手順でバックエンド プールに対して既に Web アプリケーションを定義している場合、アプリケーション ゲートウェイを作成すると負荷分散が開始されます。
 
 ## <a name="next-steps"></a>次のステップ
 
- [カスタムの正常性プローブの作成](application-gateway-create-probe-portal.md)
+[カスタムの正常性プローブの作成](application-gateway-create-probe-portal.md)
 
- [SSL オフロードの構成](application-gateway-ssl-arm.md)
+[SSL オフロードの構成](application-gateway-ssl-arm.md)
 
 <!--Image references-->
 
@@ -146,6 +140,6 @@ azure network application-gateway create -n AdatumAppGateway -l eastus -g Adatum
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -39,16 +39,32 @@
 ### [ユーザー アカウントを管理する](api-management-howto-create-or-invite-developers.md)
 ### [Automation を使用して管理する](automation-manage-api-management.md)
 ### [Git を使用して構成する](api-management-configuration-repository-git.md)
-
 # リファレンス
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [REST ()](/rest/api/apimanagement/)
-## [REST (オリジナル)](/rest/api/apimanagement/ApiManagementREST/API-Management-REST)
-
-
+## [REST (オリジナル)](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
+## [ポリシー](api-management-policies.md)
+### Policy reference (ポリシー リファレンス)
+#### [アクセス制限ポリシー](api-management-access-restriction-policies.md)
+#### [高度なポリシー](api-management-advanced-policies.md)
+#### [認証ポリシー](api-management-authentication-policies.md)
+#### [キャッシュ ポリシー](api-management-caching-policies.md)
+#### [クロス ドメイン ポリシー](api-management-cross-domain-policies.md)
+#### [変換ポリシー](api-management-transformation-policies.md)
+### [エラー処理](api-management-error-handling-policies.md)
+### [ポリシー式](api-management-policy-expressions.md)
+## [テンプレート](api-management-developer-portal-templates-reference.md)
+### テンプレート リファレンス
+#### [API](api-management-api-templates.md)
+#### [成果物](api-management-product-templates.md)
+#### [アプリケーション](api-management-application-templates.md)
+#### [問題](api-management-issue-templates.md)
+#### [ユーザー プロファイル](api-management-user-profile-templates.md)
+#### [ページ](api-management-page-templates.md)
+### [データ モデル リファレンス](api-management-template-data-model-reference.md)
+### [ページ コントロール](api-management-page-controls.md)
+### [テンプレート リソース](api-management-template-resources.md)
 # リソース
-## [ポリシー](https://msdn.microsoft.com/library/azure/dn894081)
-## [テンプレート](https://msdn.microsoft.com/library/azure/mt697540)
 ## [料金](https://azure.microsoft.com/pricing/details/api-management/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-management)

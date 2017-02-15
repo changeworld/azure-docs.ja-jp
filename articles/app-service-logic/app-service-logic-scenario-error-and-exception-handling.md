@@ -1,13 +1,13 @@
 ---
-title: Logging and error handling in Logic Apps | Microsoft Docs
-description: View a real-life use case of advanced error handling and logging with Logic Apps
-keywords: ''
+title: "Logic Apps のログ記録とエラー処理 | Microsoft Docs"
+description: "Logic Apps を使用した高度なエラー処理とログ記録について実際の使用例を紹介しています。"
+keywords: 
 services: logic-apps
 author: hedidin
 manager: anneta
-editor: ''
-documentationcenter: ''
-
+editor: 
+documentationcenter: 
+ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.service: logic-apps
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,48 +15,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: b-hoedid
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4d211ab7f34017f7fcfd6150b916a038e7391c51
+
 
 ---
-# <a name="logging-and-error-handling-in-logic-apps"></a>Logging and error handling in Logic Apps
-This article describes how you can extend a logic app to better support exception handling. It is a real-life use case and our answer to the question of, "Does Logic Apps support exception and error handling?"
+# <a name="logging-and-error-handling-in-logic-apps"></a>Logic Apps のログ記録とエラー処理
+この記事では、ロジック アプリを拡張して例外処理への対応を強化する方法について説明します。 Logic Apps における例外処理とエラー処理への対応状況を実際的な見地から明らかにしていきます。
 
 > [!NOTE]
-> The current version of the Logic Apps feature of Microsoft Azure App Service provides a standard template for action responses.
-> This includes both internal validation and error responses returned from an API app.
+> Microsoft Azure App Service の現行バージョンの Logic Apps 機能には、アクションに対する応答の標準テンプレートが用意されています。
+> これには、内部的な検証と、API アプリから返されるエラー応答の両方が含まれます。
 > 
 > 
 
-## <a name="overview-of-the-use-case-and-scenario"></a>Overview of the use case and scenario
-The following story is the use case for this article.
-A well-known healthcare organization engaged us to develop an Azure solution that would create a patient portal by using Microsoft Dynamics CRM Online. They needed to send appointment records between the Dynamics CRM Online patient portal and Salesforce.  We were asked to use the [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) standard for all patient records.
+## <a name="overview-of-the-use-case-and-scenario"></a>ユース ケースとシナリオの概要
+この記事で扱うユース ケースは次のとおりです。
+以前ある有名な医療機関から、Azure ソリューションの開発を依頼されたことがあります。Microsoft Dynamics CRM Online を使って患者ポータルを作成することが目的です。 Dynamics CRM Online の患者ポータルと Salesforce の間で予約レコードを送信する必要がありました。  すべての患者レコードに [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) 標準を使うように依頼されました。
 
-The project had two major requirements:  
+このプロジェクトには、主に 2 つの要件がありました。  
 
-* A method to log records sent from the Dynamics CRM Online portal
-* A way to view any errors that occurred within the workflow
+* Dynamics CRM Online ポータルから送信されたレコードを記録するメソッド
+* ワークフロー内で発生したエラーを確認する手段
 
-## <a name="how-we-solved-the-problem"></a>How we solved the problem
+## <a name="how-we-solved-the-problem"></a>問題の解決方法
 > [!TIP]
-> You can view a high-level video of the project at the [Integration User Group](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/ "Integration User Group").
+> [Integration User Group のサイト](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/ "Integration User Group")でプロジェクトの概要ビデオ (英語) をご覧いただけます。
 > 
 > 
 
-We chose [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/ "Azure DocumentDB") as a repository for the log and error records (DocumentDB refers to records as documents). Because Logic Apps has a standard template for all responses, we would not have to create a custom schema. We could create an API app to **Insert** and **Query** for both error and log records. We could also define a schema for each within the API app.  
+ここでは、[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/ "Azure DocumentDB") をログとエラーのレコードを格納するリポジトリとして選びました (DocumentDB では、レコードはドキュメントと呼ばれます)。 Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
 
-Another requirement was to purge records after a certain date. DocumentDB has a property called  [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL), which allowed us to set a **Time to Live** value for each record or collection. This eliminated the need to manually delete records in DocumentDB.
+もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 DocumentDB には [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) というプロパティがあり、レコードごと、またはコレクションに対して **Time to Live** 値を設定することができます。 これにより、DocumentDB から手動でレコードを削除する手間が省かれました。
 
-### <a name="creation-of-the-logic-app"></a>Creation of the logic app
-The first step is to create the logic app and load it in the designer. In this example, we are using parent-child logic apps. Let's assume that we have already created the parent and are going to create one child logic app.
+### <a name="creation-of-the-logic-app"></a>ロジック アプリの作成
+最初に行うことは、ロジック アプリを作成してデザイナーに読み込むことです。 この例では、親子のロジック アプリを使用しています。 親の方は、既に作成済みであると仮定して、子のロジック アプリを 1 つ作成します。
 
-Because we are going to be logging the record coming out of Dynamics CRM Online, let's start at the top. We need to use a Request trigger because the parent logic app triggers this child.
+Dynamics CRM Online から送信されたレコードのログを記録することになります。最初から順に見ていきましょう。 子のロジック アプリは親のロジック アプリによってトリガーされるので、要求トリガーを使用する必要があります。
 
 > [!IMPORTANT]
-> To complete this tutorial, you will need to create a DocumentDB database and two collections (Logging and Errors).
+> このチュートリアルの作業を行うためには、DocumentDB データベースと 2 つのコレクション (ログとエラー) を作成する必要があります。
 > 
 > 
 
-### <a name="logic-app-trigger"></a>Logic app trigger
-We are using a Request trigger as shown in the following example.
+### <a name="logic-app-trigger"></a>ロジック アプリのトリガー
+要求トリガーを次の例のように使用します。
 
 ```` json
 "triggers": {
@@ -94,34 +98,34 @@ We are using a Request trigger as shown in the following example.
 ````
 
 
-### <a name="steps"></a>Steps
-We need to log the source (request) of the patient record from the Dynamics CRM Online portal.
+### <a name="steps"></a>手順
+Dynamics CRM Online ポータルから送信された患者レコードのソース (要求) を記録する必要があります。
 
-1. We need to get a new appointment record from Dynamics CRM Online.
-    The trigger coming from CRM provides us with the **CRM PatentId**, **record type**, **New or Updated Record** (new or update Boolean value), and **SalesforceId**. The **SalesforceId** can be null because it's only used for an update.
-    We will get the CRM record by using the CRM **PatientID** and the **Record Type**.
-2. Next, we need to add our DocumentDB API app **InsertLogEntry** operation as shown in the following figures.
+1. まず Dynamics CRM Online から新しい予約レコードを取得する必要があります。
+    CRM から取得したトリガーによって、**CRM 患者 ID**、**レコード タイプ**、**更新/新規レコード** (新しいレコードか更新されたレコードかを表すブール値)、**Salesforce ID** が得られます。 **Salesforce ID** は更新時にのみ使用されるので、null の場合もあります。
+    CRM レコードは、CRM **患者 ID** と**レコードの種類**を使用して取得します。
+2. 次に、DocumentDB API アプリの **InsertLogEntry** 操作を追加する必要があります (下図)。
 
-#### <a name="insert-log-entry-designer-view"></a>Insert log entry designer view
+#### <a name="insert-log-entry-designer-view"></a>ログ エントリ挿入のデザイナー ビュー
 ![Insert Log Entry](./media/app-service-logic-scenario-error-and-exception-handling/lognewpatient.png)
 
-#### <a name="insert-error-entry-designer-view"></a>Insert error entry designer view
+#### <a name="insert-error-entry-designer-view"></a>エラー エントリ挿入のデザイナー ビュー
 ![Insert Log Entry](./media/app-service-logic-scenario-error-and-exception-handling/insertlogentry.png)
 
-#### <a name="check-for-create-record-failure"></a>Check for create record failure
-![Condition](./media/app-service-logic-scenario-error-and-exception-handling/condition.png)
+#### <a name="check-for-create-record-failure"></a>レコード作成エラーのチェック
+![条件](./media/app-service-logic-scenario-error-and-exception-handling/condition.png)
 
-## <a name="logic-app-source-code"></a>Logic app source code
+## <a name="logic-app-source-code"></a>ロジック アプリのソース コード
 > [!NOTE]
-> The following are samples only. Because this tutorial is based on an implementation currently in production, the value of a **Source Node** might not display properties that are related to scheduling an appointment.
+> 以降に示したコードは、あくまでサンプルです。 このチュートリアルは、現在運用段階の実装がベースになっているため、 **Source Node** の値に、予約のスケジューリングに関連するプロパティが表示されない場合があります。
 > 
 > 
 
-### <a name="logging"></a>Logging
-The following logic app code sample shows how to handle logging.
+### <a name="logging"></a>ログの記録
+以下に示したのは、ログ処理の方法を示すロジック アプリのコード サンプルです。
 
-#### <a name="log-entry"></a>Log entry
-This is the logic app source code for inserting a log entry.
+#### <a name="log-entry"></a>ログ エントリ
+これはログ エントリを挿入するための、ロジック アプリのソース コードです。
 
 ``` json
 "InsertLogEntry": {
@@ -147,8 +151,8 @@ This is the logic app source code for inserting a log entry.
 }
 ```
 
-#### <a name="log-request"></a>Log request
-This is the log request message posted to the API app.
+#### <a name="log-request"></a>ログ要求
+これは、API アプリにポストされるログ要求メッセージです。
 
 ``` json
     {
@@ -166,8 +170,8 @@ This is the log request message posted to the API app.
 ```
 
 
-#### <a name="log-response"></a>Log response
-This is the log response message from the API app.
+#### <a name="log-response"></a>ログ応答
+これは、API アプリからのログ応答メッセージです。
 
 ``` json
 {
@@ -201,13 +205,13 @@ This is the log response message from the API app.
 
 ```
 
-Now let's look at the error handling steps.
+それでは、エラー処理の手順を見ていきましょう。
 
-### <a name="error-handling"></a>Error handling
-The following Logic Apps code sample shows how you can implement error handling.
+### <a name="error-handling"></a>エラー処理
+以下の Logic Apps のコード サンプルは、エラー処理を実装する方法を示しています。
 
-#### <a name="create-error-record"></a>Create error record
-This is the Logic Apps source code for creating an error record.
+#### <a name="create-error-record"></a>エラー レコードの作成
+これはエラー レコードを作成するための、Logic Apps のソース コードです。
 
 ``` json
 "actions": {
@@ -239,10 +243,10 @@ This is the Logic Apps source code for creating an error record.
             "Create_NewPatientRecord": ["Failed" ]
         }
     }
-}          
+}             
 ```
 
-#### <a name="insert-error-into-documentdb--request"></a>Insert error into DocumentDB--request
+#### <a name="insert-error-into-documentdb--request"></a>DocumentDB へのエラーの挿入 (要求)
 ``` json
 
 {
@@ -264,7 +268,7 @@ This is the Logic Apps source code for creating an error record.
 }
 ```
 
-#### <a name="insert-error-into-documentdb--response"></a>Insert error into DocumentDB--response
+#### <a name="insert-error-into-documentdb--response"></a>DocumentDB へのエラーの挿入 (応答)
 ``` json
 {
     "statusCode": 200,
@@ -302,7 +306,7 @@ This is the Logic Apps source code for creating an error record.
 }
 ```
 
-#### <a name="salesforce-error-response"></a>Salesforce error response
+#### <a name="salesforce-error-response"></a>Salesforce のエラー応答
 ``` json
 {
     "statusCode": 400,
@@ -330,10 +334,10 @@ This is the Logic Apps source code for creating an error record.
 
 ```
 
-### <a name="returning-the-response-back-to-the-parent-logic-app"></a>Returning the response back to the parent logic app
-After you have the response, you can pass it back to the parent logic app.
+### <a name="returning-the-response-back-to-the-parent-logic-app"></a>親ロジック アプリに応答を返す
+応答を受け取ったら、それを親ロジック アプリに渡します。
 
-#### <a name="return-success-response-to-the-parent-logic-app"></a>Return success response to the parent logic app
+#### <a name="return-success-response-to-the-parent-logic-app"></a>親ロジック アプリに成功応答を返す
 ``` json
 "SuccessResponse": {
     "runAfter":
@@ -345,7 +349,7 @@ After you have the response, you can pass it back to the parent logic app.
             "status": "Success"
     },
     "headers": {
-    "   Content-type": "application/json",
+    "    Content-type": "application/json",
         "x-ms-date": "@utcnow()"
     },
     "statusCode": 200
@@ -354,7 +358,7 @@ After you have the response, you can pass it back to the parent logic app.
 }
 ```
 
-#### <a name="return-error-response-to-the-parent-logic-app"></a>Return error response to the parent logic app
+#### <a name="return-error-response-to-the-parent-logic-app"></a>親ロジック アプリにエラー応答を返す
 ``` json
 "ErrorResponse": {
     "runAfter":
@@ -377,51 +381,51 @@ After you have the response, you can pass it back to the parent logic app.
 ```
 
 
-## <a name="documentdb-repository-and-portal"></a>DocumentDB repository and portal
-Our solution added additional capabilities with [DocumentDB](https://azure.microsoft.com/services/documentdb).
+## <a name="documentdb-repository-and-portal"></a>DocumentDB リポジトリとポータル
+ソリューションの機能は、 [DocumentDB](https://azure.microsoft.com/services/documentdb)を使って拡張されています。
 
-### <a name="error-management-portal"></a>Error management portal
-To view the errors, you can create an MVC web app to display the error records from DocumentDB. **List**, **Details**, **Edit**, and **Delete** operations are included in the current version.
+### <a name="error-management-portal"></a>エラー管理ポータル
+エラーを表示するには、DocumentDB からエラー レコードを取得して表示する MVC Web アプリを作成します。 現在のバージョンでは、**一覧表示**、**詳細表示**、**編集**、**削除**の各操作が含まれます。
 
 > [!NOTE]
-> Edit operation: DocumentDB does a replace of the entire document.
-> The records shown in the **List** and **Detail** views are samples only. They are not actual patient appointment records.
+> 編集操作について: DocumentDB では、ドキュメント全体の置き換えが実行されます。
+> **一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
 > 
 > 
 
-Following are examples of our MVC app details created with the previously described approach.
+これまでに説明した方法で作成した MVC アプリのサンプルの詳細を以下に示します。
 
-#### <a name="error-management-list"></a>Error management list
-![Error List](./media/app-service-logic-scenario-error-and-exception-handling/errorlist.png)
+#### <a name="error-management-list"></a>エラー管理一覧
+![エラー一覧](./media/app-service-logic-scenario-error-and-exception-handling/errorlist.png)
 
-#### <a name="error-management-detail-view"></a>Error management detail view
+#### <a name="error-management-detail-view"></a>エラー管理の詳細表示
 ![Error Details](./media/app-service-logic-scenario-error-and-exception-handling/errordetails.png)
 
-### <a name="log-management-portal"></a>Log management portal
-To view the logs, we also created an MVC web app.  Following are examples of our MVC app details created with the previously described approach.
+### <a name="log-management-portal"></a>ログの管理ポータル
+ログを表示するために、MVC Web アプリも作成しました。  これまでに説明した方法で作成した MVC アプリのサンプルの詳細を以下に示します。
 
-#### <a name="sample-log-detail-view"></a>Sample log detail view
+#### <a name="sample-log-detail-view"></a>ログ詳細表示サンプル
 ![Log Detail View](./media/app-service-logic-scenario-error-and-exception-handling/samplelogdetail.png)
 
-### <a name="api-app-details"></a>API app details
-#### <a name="logic-apps-exception-management-api"></a>Logic Apps exception management API
-Our open-source Logic Apps exception management API app provides the following functionality.
+### <a name="api-app-details"></a>API アプリの詳細
+#### <a name="logic-apps-exception-management-api"></a>Logic Apps 例外管理 API
+Microsoft がソース コードを公開している、Logic Apps 例外管理 API アプリには、次の機能が備わっています。
 
-There are two controllers:
+コントローラーは 2 つ存在します。
 
-* **ErrorController** inserts an error record (document) in a DocumentDB collection.
-* **LogController** Inserts a log record (document) in a DocumentDB collection.
+* **ErrorController** は、DocumentDB コレクションにエラー レコード (ドキュメント) を挿入します。
+* **LogController** は、DocumentDB コレクションにログ レコード (ドキュメント) を挿入します。
 
 > [!TIP]
-> Both controllers use `async Task<dynamic>` operations. This allows operations to be resolved at runtime, so we can create the DocumentDB schema in the body of the operation.
+> どちらのコントローラーも `async Task<dynamic>` 操作を使用しています。 操作を実行時に解決できるので、DocumentDB スキーマを操作の本体に作成することができます。
 > 
 > 
 
-Every document in DocumentDB must have a unique ID. We are using `PatientId` and adding a timestamp that is converted to a Unix timestamp value (double). We truncate it to remove the fractional value.
+DocumentDB 内の各ドキュメントには、一意の ID が割り当てられている必要があります。 ここでは `PatientId` を使用し、Unix のタイムスタンプ値 (double) に変換したタイムスタンプを追加しています。 小数桁を除外するために切り詰め処理を行っています。
 
-You can view the source code of our error controller API [from GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
+エラー コント ローラー API のソース コードは、[GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs) で参照することができます。
 
-We call the API from a logic app by using the following syntax.
+この API は、ロジック アプリから次の構文を使用して呼び出します。
 
 ``` json
  "actions": {
@@ -454,21 +458,24 @@ We call the API from a logic app by using the following syntax.
  }
 ```
 
-The expression in the preceding code sample is checking for the *Create_NewPatientRecord* status of **Failed**.
+前のコード サンプルの式は、*Create_NewPatientRecord* ステータスが **Failed** であるかどうかをチェックしています。
 
-## <a name="summary"></a>Summary
-* You can easily implement logging and error handling in a logic app.
-* You can use DocumentDB as the repository for log and error records (documents).
-* You can use MVC to create a portal to display log and error records.
+## <a name="summary"></a>概要
+* ログ処理とエラー処理は、ロジック アプリで簡単に実装できます。
+* ログ レコードとエラー レコード (ドキュメント) のリポジトリとしては、DocumentDB を使用できます。
+* ログ レコードとエラー レコードを表示するためのポータルは MVC を使用して作成できます。
 
-### <a name="source-code"></a>Source code
-The source code for the Logic Apps exception management API application is available in this [GitHub repository](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic App Exception Management API").
+### <a name="source-code"></a>ソース コード
+lLogic Apps 例外管理 API アプリケーションのソース コードは、こちらの [GitHub リポジトリ](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic Apps 例外管理 API")のサイトでプロジェクトの概要ビデオをご覧いただけます。
 
-## <a name="next-steps"></a>Next steps
-* [View more Logic Apps examples and scenarios](app-service-logic-examples-and-scenarios.md)
-* [Learn about Logic Apps monitoring tools](app-service-logic-monitor-your-logic-apps.md)
-* [Create a Logic App automated deployment template](app-service-logic-create-deploy-template.md)
+## <a name="next-steps"></a>次のステップ
+* [さらに他の Logic Apps の例とシナリオを見る](app-service-logic-examples-and-scenarios.md)
+* [Logic Apps の監視ツールについて学習する](app-service-logic-monitor-your-logic-apps.md)
+* [ロジック アプリの自動デプロイ テンプレートを作成する](app-service-logic-create-deploy-template.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
