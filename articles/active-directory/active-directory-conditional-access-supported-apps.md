@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/26/2016
+ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fbc03ebf0c66950ae92ca75cf34da86dfb15a349
+ms.sourcegitcommit: b9605eb10f87f107dffd9f631d043bf550cf030b
+ms.openlocfilehash: 5e293d7d3fa6b0a763663a5428878944660fc03e
 
 
 ---
@@ -41,8 +41,8 @@ Office 365 をはじめとする Azure AD 接続サービス アプリケーシ�
 | Office 365 Exchange Online |Windows 8.1、Windows 7 |Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用) |
 | Office 365 Exchange Online |iOS、Android |Outlook Mobile アプリ |
 | Office 365 Exchange Online |Mac OS X |Outlook 2016 (多要素認証と場所のみ対応。デバイス ベースのポリシーは将来サポート予定)、Skype for Business は将来サポート予定 |
-| Office 365 SharePoint Online |Windows 10 |Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (先進認証を使用)。OneDrive for Business アプリ (NGSC: Next Generation Sync Client)、Office Groups、SharePoint アプリについては将来サポート予定。 |
-| Office 365 SharePoint Online |Windows 8.1、Windows 7 |Office 2016 アプリ、Office 2013 (先進認証を使用)、OneDrive for Business アプリ (Groove 同期クライアント) |
+| Office 365 SharePoint Online |Windows 10 |Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定。 |
+| Office 365 SharePoint Online |Windows 8.1、Windows 7 |Office 2016 アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照) |
 | Office 365 SharePoint Online |iOS、Android |Office モバイル アプリ |
 | Office 365 SharePoint Online |Mac OS X |Office 2016 アプリ (多要素認証と場所のみ対応。デバイス ベースのポリシーは将来サポート予定) |
 | Office 365 Yammer |Windows 10、iOS、Android |Office Yammer アプリ |
@@ -60,13 +60,13 @@ SharePoint アクセスについては、Set-SPOTenant コマンドレットを�
 **コマンドの例**:     `Set-SPOTenant -LegacyAuthProtocolsEnabled $false`
 
 ### <a name="control-access-in-office-365-exchange-online"></a>Office 365 Exchange Online のアクセス制御
-Exchange で用意されているプロトコルは大きく 2 つのカテゴリに分けられます。 以下の選択肢を確認し、自分の組織にとって最適なポリシーを選択してください。
+Exchange で用意されているプロトコルは大きく&2; つのカテゴリに分けられます。 以下の選択肢を確認し、自分の組織にとって最適なポリシーを選択してください。
 
 * **Exchange ActiveSync**。 既定では、多要素認証と場所に関する条件付きアクセスのポリシーが Exchange ActiveSync には適用されません。 これらのサービスに対するアクセスを保護するには、Exchange ActiveSync のポリシーを直接構成するか、Active Directory フェデレーション サービス (AD FS) の規則を使用して Exchange ActiveSync をブロックする必要があります。
 * **従来のプロトコル**。 従来のプロトコルは、AD FS を使用してブロックすることができます。 最新でない Office クライアント (先進認証に対応していない Office 2013 や、それより前のバージョンの Office など) へのアクセスは、この方法でブロックすることができます。
 
 ### <a name="use-ad-fs-to-block-legacy-protocol"></a>AD FS を使用して従来のプロトコルをブロックする
-従来のプロトコルを使用したアクセスは、以下の例に示した規則を使用して AD FS レベルでブロックすることができます。 一般に、次の 2 つの構成からいずれかを選ぶことになります。
+従来のプロトコルを使用したアクセスは、以下の例に示した規則を使用して AD FS レベルでブロックすることができます。 一般に、次の&2; つの構成からいずれかを選ぶことになります。
 
 #### <a name="option-1-allow-exchange-activesync-and-allow-legacy-apps-but-only-on-the-intranet"></a>オプション 1: Exchange ActiveSync を許可し、レガシ アプリケーションについては、イントラネット上でのみ許可する
 Microsoft Office 365 ID プラットフォームの AD FS 証明書利用者信頼に次の 3 つの規則を適用すると、Exchange ActiveSync トラフィック、ブラウザー トラフィック、先進認証トラフィックにアクセス権が与えられます。 エクストラネットからのレガシ アプリケーションはブロックされます。
@@ -111,6 +111,6 @@ Microsoft Office 365 ID プラットフォームの AD FS 証明書利用者信�
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

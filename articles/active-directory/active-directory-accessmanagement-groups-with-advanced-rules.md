@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: c404c8708ec6d33f272733e438b8c3559fa40ce9
-ms.openlocfilehash: 07cf3e27f34c705367aa62650d2b17ed1ea3ec82
+ms.sourcegitcommit: d83372fbce5f49d7cd038a15bd271e9d8a463b7b
+ms.openlocfilehash: f1cff67f31da87d6361603f0216a68c55686db0e
 
 
 ---
@@ -24,6 +24,15 @@ ms.openlocfilehash: 07cf3e27f34c705367aa62650d2b17ed1ea3ec82
 Azure クラシック ポータルを使用すると、高度なルールを作成し、Azure Active Directory (Azure AD) グループに複雑で動的な属性ベースのメンバーシップを適用できます。  
 
 ユーザーが任意の属性を変更すると、システムではディレクトリ内のすべての動的なグループ ルールを評価して、このユーザーの属性の変更によって、グループの追加または削除がトリガーされるかどうかを確認します。 ユーザーがグループのルールを満たしている場合は、そのグループにメンバーとして追加されます。 メンバーになっているグループのルールを満たさなくなった場合は、そのグループのメンバーから削除されます。
+
+> [!NOTE]
+> セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。 現在、アプリケーションに対するグループ ベースの割り当てでは入れ子になったグループ メンバーシップはサポートされていません。
+> 
+> グループの動的メンバーシップを実行するには、次のユーザーに Azure AD Premium ライセンスが割り当てられている必要があります。
+> 
+> * グループに対するルールを管理する管理者
+> * グループのすべてのメンバー
+> 
 
 ## <a name="to-create-the-advanced-rule"></a>高度なルールを作成するには
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]**を選択し、該当する組織のディレクトリを開きます。
@@ -245,6 +254,6 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

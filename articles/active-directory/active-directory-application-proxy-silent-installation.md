@@ -15,13 +15,19 @@ ms.topic: article
 ms.date: 06/22/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fe96fb2159a7d0dba0ad391d25f38f79cf8aeeb3
+ms.sourcegitcommit: 3273ec453a78c74d9e492e869eea4186a764e2f2
+ms.openlocfilehash: 30a49b2a546d766a8a826a45b7bbf27059a2cc9d
 
 
 ---
 # <a name="how-to-silently-install-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法
 複数の Windows サーバーまたはユーザー インターフェイスが有効になっていない Windows サーバーにインストール スクリプトを送信できます。 このトピックでは、無人インストールを有効にし、Azure AD アプリケーション プロキシ コネクタをインストールして登録する Windows PowerShell スクリプトを作成する方法について説明します。
+
+次のような場合、UI を使用せずにコネクタをインストールするには、コマンド ラインを使用します。 
+* UI レイヤーがないコンピューターや、RDP 経由で接続できないコンピューターにコネクタをインストールする。 
+* 一度に多数のコネクタをインストールし、登録する。 
+* コネクタのインストールと登録を別の手順の一部として統合する。 
+* コネクタのビットを含むが未登録の標準的なサーバー イメージを作成する。 
 
 ## <a name="enabling-access"></a>アクセスの実現
 アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。 アプリケーション プロキシ コネクタを機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、これは、コネクタのインストール時にポップアップ ダイアログ ボックスに入力します。 または、Windows PowerShell を使用して資格情報オブジェクトを作成することで登録情報を入力することも、独自のトークンを作成して、登録情報の入力に使用することもできます。
@@ -127,6 +133,6 @@ ms.openlocfilehash: fe96fb2159a7d0dba0ad391d25f38f79cf8aeeb3
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 
