@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 10/22/2016
 ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 160d6a41fc1ea3eecd39e8ad199bc5e69f236061
+ms.sourcegitcommit: ef4d5bb9b8b25d940aca26117d759a4152639730
+ms.openlocfilehash: bc8009e0ba0b604c995ce24f883eb03d586d667b
 
 
 ---
@@ -51,6 +51,7 @@ Azure Cloud Service worker ロールでのアプリケーションの構築は�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次のステップ
 * Service Fabric の [Reliable Services](service-fabric-reliable-services-quick-start.md) プログラミング モデルと [Reliable Actors](service-fabric-reliable-actors-get-started.md) プログラミング モデルで、ステートレス サービスとステートフル サービスの構築を始めます。
+* パターンとシナリオの詳細については、[こちら](service-fabric-patterns-and-scenarios.md)をご覧ください。
 * 次のトピックもご覧ください。
   * [マイクロサービスについて](service-fabric-overview-microservices.md)
   * [サービスの状態を定義し、管理する](service-fabric-concepts-state.md)
@@ -63,6 +64,6 @@ Azure Cloud Service worker ロールでのアプリケーションの構築は�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

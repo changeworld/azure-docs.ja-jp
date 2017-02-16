@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/01/2016
+ms.date: 11/28/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 9333062851e070a93afc6935e58594711b741f48
+ms.sourcegitcommit: 2df9b83132711e199b58fa92841a3dca74c7282a
+ms.openlocfilehash: 0164ad801b11a6c6124df8106bd7b71b737f81f1
 
 
 ---
@@ -36,13 +36,14 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 [Azure ポータル](https://portal.azure.com)で次の操作を行います。
 
-1. クラシック デプロイメント モデルを使用して作成された VM の場合は、**[参照]** > **[仮想マシン (クラシック)]** > *VM 名*を選択します。
+1. Resource Manager モデルを使用して作成された VM の場合は、**[仮想マシン]** > *[VM 名]* の順に選択します。
    
     - または -
    
-    Resource Manager モデルを使用して作成された VM の場合は、**[参照]** > **[仮想マシン]** > *VM 名*を選択します。
+    クラシック デプロイ モデルを使用して作成された VM の場合は、**[仮想マシン (クラシック)]** > *[VM 名]* の順に選択します。
    
     VM の状態ウィンドウには、" **実行中**" と表示されます。 コンピューティング、ストレージ、およびネットワーク リソースの最近のアクティビティを確認するには、下にスクロールします。
+
 2. エンドポイント、IP アドレスなどの設定を確認するには、 **[設定]** を選択します。
    
     Resource Manager を使用して作成された VM のエンドポイントを識別するには、 [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md) が定義されていることを確認します。 ネットワーク セキュリティ グループにルールが適用され、サブネットで参照されていることも確認します。
@@ -59,7 +60,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 以上の手順を完了したら、SSH 接続を再試行してください。
 
 ## <a name="find-the-source-of-the-issue"></a>問題のソースを見つける
-お使いのコンピューター上の SSH クライアントは、以下に問題または誤構成があるために Azure VM の SSH サービスに到達できないことがあります。
+お使いのコンピューター上の SSH クライアントは、以下の領域に問題または誤構成があるために Azure VM の SSH サービスに到達できないことがあります。
 
 * [SSH クライアント コンピューター](#source-1-ssh-client-computer)
 * [組織の境界デバイス](#source-2-organization-edge-device)
@@ -72,7 +73,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 ![SSH クライアント コンピューターのコンポーネントを示す図](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot2.png)
 
-接続できない場合は、そのコンピューターで以下を確認してください。
+接続できない場合は、そのコンピューターで以下の問題を確認してください。
 
 * 受信または送信の SSH トラフィック (TCP 22) をブロックしているローカル ファイアウォールの設定
 * SSH 接続を妨げている、ローカルでインストールされたクライアント プロキシのソフトウェア
@@ -106,21 +107,19 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 ## <a name="source-3-cloud-service-endpoint-and-acl"></a>ソース 3: クラウド サービス エンドポイントと ACL
 > [!NOTE]
 > このソースは、クラシック デプロイ モデルを使用して作成された VM にのみ適用されます。 Resource Manager を使用して作成された VM については、「 [ソース 4: ネットワーク セキュリティ グループ](#nsg)」に進みます。
-> 
-> 
 
 エラーのソースであるクラウド サービス エンドポイントと ACL を排除するには、同じ仮想ネットワーク内の別の Azure VM からご使用の VM に SSH 接続できることを確認します。
 
 ![クラウド サービス エンドポイントと ACL を示す図](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
 
-同じ仮想ネットワーク内に別の VM がない場合、新しい VM を簡単に作成することができます。 詳細については、「[CLI を使用した Azure での Linux VM の作成](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 テストの完了後に、追加した VM を削除してください。
+同じ仮想ネットワーク内に別の VM がない場合、VM を簡単に作成することができます。 詳細については、「[CLI を使用した Azure での Linux VM の作成](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 テストの完了後に、追加した VM を削除してください。
 
 同じ仮想ネットワーク内にある VM に対して SSH 接続を作成できる場合は、次の点を確認します。
 
-* **ターゲットの VM での SSH トラフィック向けエンドポイントの構成。** エンドポイントのプライベート TCP ポートは、VM 上の SSH サービスがリッスンする TCP ポートと一致する必要があります  (既定のポートは 22 です)。 Resource Manager デプロイ モデルを使用して作成された VM では、Azure Portal で **[参照]** > **[仮想マシン (v2)]** > *VM 名* > **[設定]** > **[エンドポイント]** を選択して、SSH TCP ポート番号を確認します。
-* **ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの ACL。**  ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。 ACL が正しく構成されていないと、そのエンドポイントへの SSH 受信トラフィックを受け取れない場合があります。 プロキシまたは他のエッジ サーバーのパブリック IP アドレスからの受信トラフィックが ACL で許可されていることを確認します。 詳細については、 [ネットワーク アクセス制御リスト (ACL) の概要](../virtual-network/virtual-networks-acl.md)に関するページを参照してください。
+* **ターゲットの VM での SSH トラフィック向けエンドポイントの構成。** エンドポイントのプライベート TCP ポートは、VM 上の SSH サービスがリッスンする TCP ポートと一致する必要があります  (既定のポートは 22 です)。 Resource Manager デプロイ モデルを使用して作成された VM では、Azure Portal で **[仮想マシン]** > *[VM 名]* > **[設定]** > **[エンドポイント]** を選択して、SSH TCP ポート番号を確認します。
+* **ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの ACL。** ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。 ACL が正しく構成されていないと、そのエンドポイントへの SSH 受信トラフィックを受け取れない場合があります。 プロキシまたは他のエッジ サーバーのパブリック IP アドレスからの受信トラフィックが ACL で許可されていることを確認します。 詳細については、 [ネットワーク アクセス制御リスト (ACL) の概要](../virtual-network/virtual-networks-acl.md)に関するページを参照してください。
 
-問題のソースであるエンドポイントを排除するには、現在のエンドポイントを削除し、新しいエンドポイントを作成して、SSH 名を指定します (パブリックとプライベートのポート番号には TCP ポート 22)。 詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
+問題のソースであるエンドポイントを排除するには、現在のエンドポイントを削除し、別のエンドポイントを作成して、SSH 名を指定します (パブリックとプライベートのポート番号には TCP ポート 22)。 詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
 
 <a id="nsg"></a>
 
@@ -138,7 +137,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 もう一度、コンピューターから接続を試みてください。 引き続き接続できない場合は、以下の問題が考えられます。
 
 * SSH サービスがターゲット仮想マシンで実行されていない。
-* SSH サービスが TCP ポート 22 をリッスンしていない。 これをテストするには、ローカル コンピューターに telnet クライアントをインストールし、"telnet *cloudServiceName*.cloudapp.net 22" を実行します。 これで、SSH エンドポイントに対する受信方向と送信方向の通信が仮想マシンで許可されているかどうかを確認できます。
+* SSH サービスが TCP ポート 22 をリッスンしていない。 テストするには、ローカル コンピューターに telnet クライアントをインストールし、"telnet *cloudServiceName*.cloudapp.net 22" を実行します。 この手順で、SSH エンドポイントに対する受信方向と送信方向の通信が仮想マシンで許可されているかどうかを確認できます。
 * ターゲット仮想マシンのローカル ファイアウォールに、受信または送信の SSH トラフィックを妨げているルールがある。
 * Azure 仮想マシンで実行されている侵入検出ソフトウェアまたはネットワーク監視ソフトウェアが、SSH 接続を妨げている。
 
@@ -148,6 +147,6 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: luisca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 18accd5252e0ecf19fed23f3c2e4628e60fe370f
+ms.sourcegitcommit: 9ac2a1bf5987fc6fc30e20a1b4a10340eeed3825
+ms.openlocfilehash: 15cf891b9c31e1f2e2b108e631f32883ce2f36a7
 
 
 ---
@@ -45,7 +45,7 @@ Recommendations には次の使用制限があります。
 * カタログが保持できる項目の最大数: 100,000
 * 保持される使用状況ポイントの最大数は ~5,000,000 です。 新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
 * 電子メールで送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
-* アクティブではない Recommendations モデルのビルドの 1 秒あたりのトランザクション数 (TPS) は ~2 TPS です。 アクティブな推奨モデルのビルドは、最大 20 TPS を保持できます。
+* アクティブではない Recommendations モデルのビルドの&1; 秒あたりのトランザクション数 (TPS) は ~2 TPS です。 アクティブな推奨モデルのビルドは、最大 20 TPS を保持できます。
 
 ## <a name="purchase-and-billing"></a>購入と請求
 **開始期間中の Recommendations の料金はいくらですか。**
@@ -109,19 +109,19 @@ Recommendations は簡単に利用できるように設計されています。 
 
 Recommendations には、お客様のカタログに関するユーザーの選択内容のログが必要です。 このようなログがなくても、顧客対応の Web サイトを運営している場合は、Recommendations がユーザー アクティビティを収集できます。 
 
-Recommendations には、お客様の製品やサービスのカタログも必要です。 カタログがない場合は、Recommendations が実際の顧客の使用状況データを使用して、カタログを抽出することができます。 "暗黙" のカタログには、ユーザー トランザクションの一部として "報告" されていない項目は含まれません。
+Recommendations には、お客様の製品やサービスのカタログも必要です。 カタログがない場合は、Recommendations が実際の顧客の使用状況データを使用して、カタログを抽出することができます。 暗黙のカタログには、ユーザー トランザクションの一部として報告されていない項目は含まれません。
 
 **Recommendations の最初の設定方法を教えてください。**
 
-Recommendations を[サブスクライブ](https://datamarket.azure.com/dataset/amla/recommendations)したら、「[Azure Machine Learning Recommendations - クイック スタート ガイド](machine-learning-recommendation-api-quick-start-guide.md)」にある API ドキュメントを使用してサービスを設定する必要があります。
+Recommendations を[サブスクライブ](https://datamarket.azure.com/dataset/amla/recommendations)したら、「[Azure Machine Learning Recommendations – クイック スタート ガイド](machine-learning-recommendation-api-quick-start-guide.md)」にある API ドキュメントを使用してサービスを設定する必要があります。
 
 **API ドキュメントはどこで入手できますか。** 
 
-API ドキュメントは、「[Azure Machine Learning Recommendations - クイック スタート ガイド](machine-learning-recommendation-api-quick-start-guide.md)」から入手できます。
+API ドキュメントは、「[Azure Machine Learning Recommendations - クイック スタート ガイド](machine-learning-recommendation-api-quick-start-guide.md)」から入手できます。。
 
 **Recommendations にカタログや使用状況データをアップロードする場合にはどのようなオプションがありますか。**
 
-カタログや使用状況データのアップロードには 2 つのオプションがあります。CRM システムまたはその他のログからこれらのデータをエクスポートして Recommendations にアップロードするか、ユーザー アクティビティを追跡するタグを Web サイトに追加することができます。 後者を使用する場合、データは Azure に格納されます。
+カタログや使用状況データのアップロードには&2; つのオプションがあります。CRM システムまたはその他のログからこれらのデータをエクスポートして Recommendations にアップロードするか、ユーザー アクティビティを追跡するタグを Web サイトに追加することができます。 後者を使用する場合、データは Azure に格納されます。
 
 ## <a name="maintenance-and-support"></a>メンテナンスとサポート
 **データ セットの大きさはどの程度まで許容されますか。**
@@ -140,6 +140,6 @@ API ドキュメントは、「[Azure Machine Learning Recommendations - クイ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

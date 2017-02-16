@@ -3,7 +3,7 @@ title: "Azure SQL Database のテンポラル テーブルの概要 | Microsoft 
 description: "Azure SQL Database のテンポラル テーブルの使い方について基本的な事柄を説明します。"
 services: sql-database
 documentationcenter: 
-author: CarlRabeler
+author: bonova
 manager: jhubbard
 editor: 
 ms.assetid: c8c0f232-0751-4a7f-a36e-67a0b29fa1b8
@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sql-database
-ms.date: 08/29/2016
-ms.author: carlrab
+ms.date: 01/10/2017
+ms.author: bonova
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2b83d2561d37cb2dcb799d14774b6350e0681c42
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: e00345ddd9e52e2613789ba78c48e8f993d2415c
 
 
 ---
@@ -69,7 +69,9 @@ CREATE TABLE WebsiteUserInfo
 
 しかしここで扱うのは特殊なケースであり、もっと長期的なデータ履歴と大きなデータ セットで、時間に基づいた傾向分析を行うのが目的です。履歴テーブルのストレージには、クラスター化 columnstore インデックスを選択します。 クラスター化 columnstore が持つきわめて優れた圧縮とパフォーマンスを分析クエリで活かすことができます。 テンポラル テーブルに対するインデックスは、現在のテーブルに対するインデックスと完全に分けて構成できるようになっています。 
 
-**注**: Columnstore インデックスは、Premium サービス プランでのみ利用できます。
+> [!NOTE]
+> Columnstore インデックスは、Premium サービス プランでのみ利用できます。
+>
 
 次のスクリプトは、履歴テーブルの既定のインデックスをクラスター化 columnstore に変更する方法を示したものです。
 
@@ -129,7 +131,7 @@ SELECT TOP 10 * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME AS OF @hourAgo
 ORDER BY PagesVisited DESC
 ````
 
-このクエリにほんの少し変更を加えれば、1 日前や 1 か月前など過去の任意の時点におけるサイトのアクセス数を分析することができます。
+このクエリにほんの少し変更を加えれば、1 日前や&1; か月前など過去の任意の時点におけるサイトのアクセス数を分析することができます。
 
 前日の基本的な統計分析を実行するには、次の例を使用します。
 
@@ -199,6 +201,6 @@ Channel 9 にアクセスして、[テンポラル テーブル導入による�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

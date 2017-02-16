@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: java
 ms.topic: article
-ms.date: 08/16/2016
+ms.date: 11/30/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 1b4573db5c4e03aba8b98408765e7c2debfb9a30
+ms.sourcegitcommit: 33a960ae39ab8fa89126201fd67f13e5536413ef
+ms.openlocfilehash: 7bad4df26d10ba8edae311b41d0c07be2db374f4
 
 
 ---
@@ -52,30 +52,28 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 > [!NOTE]
 > このチュートリアルでは、Storm をローカル モードで開発目的にのみ使用します。 Storm のデプロイとパターンの詳細については、「[HDInsight Storm の概要]」と [Apache Storm] の公式ドキュメントを参照してください。
-> 
-> 
 
 ## <a name="next-steps"></a>次のステップ
 Event Hubs と Storm を統合するアプリケーションの開発には、次のリソースを使用できます。
 
-* [HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析][HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]に関するページは、Event Hubs、Storm、HBase を使用して Hadoop クラスター内のセンサー データを取り込むための完全なシナリオのチュートリアルです。
-* [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発][HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]に関するページは、C# を使用した Storm のパイプラインの作成に関するチュートリアルです。
+* [Storm と HDInsight でのセンサー データの分析][Analyzing sensor data with Storm and HDInsight]: Hadoop クラスターのセンサー データを取り込むための Event Hubs、Storm、および HBase を使用した完全なシナリオ チュートリアルです。
+* [Storm と HDInsight での SCP.NET および C# を使用したストリーミング データ処理アプリケーションの開発][Develop streaming data processing applications with SCP.NET and C# on Storm and HDInsight]: C# を使用して Storm のパイプラインを作成する方法に関するチュートリアルです。
 
 <!-- Images. -->
 [23]: ./media/event-hubs-c-storm-getstarted/receive-storm3.png
 
 <!-- Links -->
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
-[イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
+[Azure classic portal]: https://manage.windowsazure.com/
+[Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: event-hubs-overview.md
 
 [Apache Storm]: https://storm.incubator.apache.org
 [HDInsight Storm の概要]: ../hdinsight/hdinsight-storm-overview.md
-[HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
-[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
+[Analyzing sensor data with Storm and HDInsight]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
+[Develop streaming data processing applications with SCP.NET and C# on Storm and HDInsight]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/31/2016
 ms.author: araguila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ba48381f2c16a56e2e3f187017fbdbae09544e77
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6d80f266730701dc4e678f4365a2166be72c9143
 
 
 ---
@@ -36,7 +36,7 @@ IoT Suite の予測的なメンテナンスの構成済みソリューション�
 
 緑色の項目は、シミュレートされている航空機エンジン デバイスです。 これらのシミュレートされているデバイスの詳細については、次のセクションを参照してください。
 
-灰色の項目は、 *デバイスの管理* 機能を実装しているコンポーネントを示します。 予測的なメンテナンスの構成済みソリューションの現在のリリースでは、これらのリソースはプロビジョニングできません。 デバイス管理の詳細については、[リモート監視の事前構成済みソリューション][lnk-remote-monitoring]に関するページを参照してください。
+灰色の項目は、 *デバイスの管理* 機能を実装しているコンポーネントを示します。 予測的なメンテナンスの構成済みソリューションの現在のリリースでは、これらのリソースはプロビジョニングできません。 デバイスの管理の詳細については、[リモート監視の事前構成済みソリューション][lnk-remote-monitoring]に関するページを参照してください。
 
 ## <a name="simulated-devices"></a>シミュレートされたデバイス
 構成済みのソリューションでは、航空機エンジン デバイスをシミュレーションしています。 このソリューションでは、1 台の航空機にマッピングされる 2 つのエンジンをプロビジョニングしています。 各エンジンは、4 種類のテレメトリを出力します。センサー 9、センサー 11、センサー 14、センサー 15 は、Machine Learning モデルがそのエンジンの残存耐用年数 (RUL) を計算するために必要なデータを提供します。 シミュレートされたデバイスはそれぞれ、次のテレメトリ メッセージを IoT Hub に送信します。
@@ -67,7 +67,7 @@ IoT Hub は、デバイスのコマンドの受信確認を渡します。
 このセクションでは、ソリューションのコンポーネントと想定されるユース ケースについて説明し、例を示します。
 
 ### <a name="predictive-maintenance-dashboard"></a>予測的なメンテナンスのダッシュボード
-Web アプリケーションのこのページでは、PowerBI JavaScript コントロールを使用して、以下の情報を視覚化しています ([PowerBI-visuals リポジトリ][lnk-powerbi]を参照)。
+Web アプリケーションのこのページでは、PowerBI JavaScript コントロールを使用して ([PowerBI-visuals リポジトリ][lnk-powerbi]を参照)、以下を視覚化しています。
 
 * Blob Storage 内の Stream Analytics ジョブから出力されたデータ。
 * 各航空機エンジンの RUL とサイクル数。
@@ -77,7 +77,7 @@ Azure ポータルで、指定したソリューション名の付いたリソ�
 
 ![][img-resource-group]
 
-構成済みのソリューションをプロビジョニングすると、Machine Learning ワークスペースへのリンクを含む電子メールを受信します。 この Machine Learning ワークスペースには、プロビジョニングしたソリューションが **[準備完了]** 状態の場合、その [azureiotsuite.com][lnk-azureiotsuite] ページからアクセスすることもできます。
+構成済みのソリューションをプロビジョニングすると、Machine Learning ワークスペースへのリンクを含む電子メールを受信します。 この Machine Learning ワークスペースには、**準備完了**の状態の場合、プロビジョニングしたソリューションの [azureiotsuite.com][lnk-azureiotsuite] ページから移動することも可能です。
 
 ![][img-machine-learning]
 
@@ -100,7 +100,7 @@ RUL が (デモンストレーション用に選択した任意のしきい値�
 シミュレーションは任意のポイントで停止できますが、**[Start Simulation (シミュレーションの開始)]** をクリックすると、データセットの先頭からシミュレーションが再実行されます。
 
 ## <a name="next-steps"></a>次のステップ
-これで予測的なメンテナンスの構成済みソリューションの実行は完了しましたが、これを修正する場合は、[構成済みソリューションのカスタマイズに関するガイダンス][lnk-customize]のページを参照してください。
+これで予測的なメンテナンスの構成済みソリューションを実行しましたが、これを修正する場合は、[事前構成済みソリューションのカスタマイズに関するガイダンス][lnk-customize]を参照してください。
 
 TechNet のブログ投稿「 [IoT Suite - Under The Hood - Predictive Maintenance (IoT スイート - 内部のしくみ - 予測的なメンテナンス)](http://social.technet.microsoft.com/wiki/contents/articles/33527.iot-suite-under-the-hood-predictive-maintenance.aspx) 」では、予測的なメンテナンスの構成済みソリューションについて詳しく説明されています。
 
@@ -127,6 +127,6 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

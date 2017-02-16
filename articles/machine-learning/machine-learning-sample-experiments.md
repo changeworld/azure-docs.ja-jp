@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 11/11/2016
 ms.author: cgronlun;olgali
 translationtype: Human Translation
-ms.sourcegitcommit: 35579eda8b92a481525ad987e99e7d9c9ed6b942
-ms.openlocfilehash: 7c712cb20d9e008c74436fc602326afa00250c63
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9c710e6f959afd8a4f4b965931ed4868d94c6d25
 
 
 ---
@@ -42,8 +42,8 @@ ms.openlocfilehash: 7c712cb20d9e008c74436fc602326afa00250c63
 2. **[Refine by (絞り込み条件)]** で **[Experiment (実験)]** を選択すると、ギャラリー内のすべての実験が表示されます。
 3. 自分の要件を満たす実験は、いくつかの方法で探すことができます。
    * **左側のフィルターを選択する。** たとえば、PCA ベースの異常検出アルゴリズムを使用する実験を参照するには、**[Categories (カテゴリ)]** で **[Experiment (実験)]** を選択し、**[Algorithms Used (使用されたアルゴリズム)]** で **[PCA-Based Anomaly Detection (PCA ベースの異常検出)]** を選択します  (このアルゴリズムが表示されない場合は、一覧の末尾にある **[Show all (すべて表示)]** をクリックしてください)。<br></br>
-     ![](./media/machine-learning-sample-experiments/refine-the-view.png)
-   * **検索ボックスを使う。** たとえば、Microsoft によって投稿された、2 クラス サポート ベクター マシン アルゴリズムを使用する数字認識に関連する実験を検索するには、検索ボックスで「digit recognition」と入力します。 次に、**[Experiment (実験)]**、**[Microsoft content only (Microsoft のコンテンツのみ)]**、および **[Two-Class Support Vector Machine (2 クラス サポート ベクター マシン)]** フィルターを選択します。 ![](./media/machine-learning-sample-experiments/search-for-experiments.png)
+     ![Select filters](./media/machine-learning-sample-experiments/refine-the-view.png)
+   * **検索ボックスを使う。** たとえば、Microsoft によって投稿された、2 クラス サポート ベクター マシン アルゴリズムを使用する数字認識に関連する実験を検索するには、検索ボックスで「digit recognition」と入力します。 次に、**[Experiment (実験)]**、**[Microsoft content only (Microsoft のコンテンツのみ)]**、**[Two-Class Support Vector Machine (2 クラス サポート ベクター マシン)]** の各フィルターを選択します。![Use the search box](./media/machine-learning-sample-experiments/search-for-experiments.png)
 4. 実験をクリックして詳細を表示します。
 5. 実験を実行したり変更したりするには、実験のページで **[Open in Studio (Studio で開く)]** をクリックします。
 
@@ -52,7 +52,7 @@ ms.openlocfilehash: 7c712cb20d9e008c74436fc602326afa00250c63
    >
    >
 
-    ![](./media/machine-learning-sample-experiments/example-experiment.png)
+    ![実験例](./media/machine-learning-sample-experiments/example-experiment.png)
 
 ## <a name="use-a-template-in-machine-learning-studio"></a>Machine Learning Studio でのテンプレートの使用
 ギャラリーのサンプルをテンプレートとして、Machine Learning Studio で新しい実験を作成することもできます。
@@ -70,6 +70,6 @@ ms.openlocfilehash: 7c712cb20d9e008c74436fc602326afa00250c63
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

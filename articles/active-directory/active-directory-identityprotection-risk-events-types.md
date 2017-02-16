@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory Identity Protection で検出されるリスク イベントの種類 | Microsoft Docs"
-description: "このトピックでは、Azure Active Directory Identity Protection で利用可能な各種リスク イベントの詳細な概要を示します。"
+title: "Azure Active Directory で検出されるリスク イベントの種類 | Microsoft Docs"
+description: "このトピックでは、Azure Active Directory で利用可能な各種リスク イベントの詳細な概要を示します。"
 services: active-directory
 keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
 documentationcenter: 
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2016
+ms.date: 11/30/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fd1fb445a78d12046d52cb27798eaa9d058629c3
+ms.sourcegitcommit: ffc64fc0469cd3588d6d13524411575b423ab4e5
+ms.openlocfilehash: dc04ebb3c205c01ed42c9d8bc3e0eb009881074a
 
 
 ---
-# <a name="types-of-risk-events-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection で検出されるリスク イベントの種類
-Azure Active Directory Identity Protection のリスク イベントとは、次のようなイベントのことです。
+# <a name="types-of-risk-events-detected-by-azure-active-directory"></a>Azure Active Directory で検出されるリスク イベントの種類 
+Azure Active Directory のリスク イベントとは、次のようなイベントのことです。
 
 * 疑いありのフラグが設定されたイベント
 * ID が侵害された可能性を示すイベント 
@@ -30,7 +30,7 @@ Azure Active Directory Identity Protection のリスク イベントとは、次
 このトピックでは、利用可能な各種リスク イベントの詳細な概要を示します。
 
 ## <a name="leaked-credentials"></a>漏洩した資格情報
-漏洩した資格情報が悪質な Web で公開されていることを、Microsoft のセキュリティ調査員が発見します。 通常、このような資格情報はプレーン テキストで発見されます。 発見された資格情報は、Azure AD の資格情報と照合されて、一致した場合は、Identity Protection で "漏洩した資格情報" として報告されます。
+漏洩した資格情報が悪質な Web で公開されていることを、Microsoft のセキュリティ調査員が発見します。 通常、このような資格情報はプレーン テキストで発見されます。 発見された資格情報は、Azure AD の資格情報と照合されて、一致した場合は、"漏洩した資格情報" として報告されます。
 
 漏洩した資格情報のリスク イベントは、攻撃者がユーザー名とパスワードを利用できる明らかな兆候となるので、"高" 重大度のリスク イベントに分類されます。
 
@@ -67,7 +67,7 @@ Azure Active Directory Identity Protection のリスク イベントとは、次
 ## <a name="azure-ad-anomalous-activity-reports"></a>Azure AD 異常アクティビティ レポート
 これらのリスク イベントの一部は、Azure Portal の Azure AD 異常アクティビティ レポートで利用できたものです。 次の表では、さまざまなリスク イベントの種類と、対応する **Azure AD 異常なアクティビティ** レポートの一覧を示します。 Microsoft はこの分野への投資を続けることにより、既存のリスク イベントの検出精度を継続的に向上させ、必要に応じて新しいリスク イベントの種類を追加する予定です。 
 
-| Identity Protection のリスク イベントの種類 | 対応する Azure AD 異常アクティビティ レポート |
+| リスク イベントの種類 | 対応する Azure AD 異常アクティビティ レポート |
 |:--- |:--- |
 | 漏洩した資格情報 |資格情報が漏洩したユーザー |
 | 特殊な場所へのあり得ない移動 |不規則なサインイン アクティビティ |
@@ -77,7 +77,7 @@ Azure Active Directory Identity Protection のリスク イベントとは、次
 | 未知の場所からのサインイン |- |
 | ロックアウト イベント |- |
 
-以下の Azure AD 異常アクティビティ レポートは Azure AD Identity Protection のリスク イベントには含まれず、したがって Identity Protection では利用できません。 これらのレポートは Azure Portal でまだ使用できますが、Identity Protection のリスク イベントによって置き換えられるため、将来的には廃止されます。
+以下の Azure AD 異常アクティビティ レポートは Azure AD のリスク イベントには含まれず、したがって Azure AD では利用できません。 これらのレポートは Azure Portal でまだ使用できますが、Azure AD のリスク イベントによって置き換えられるため、将来的には廃止されます。
 
 * 複数のエラー後のサインイン
 * 複数の地域からのサインイン
@@ -88,6 +88,6 @@ Azure Active Directory Identity Protection のリスク イベントとは、次
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -1,6 +1,7 @@
 ---
-title: "SQL Database へ移行する前に SQL Server データベースの互換性に関する問題を修正する | Microsoft Docs"
-description: "Microsoft Azure SQL Database、データベースの移行、互換性、SQL Azure の移行ウィザード"
+title: "SAMW: Azure SQL Database の互換性に関する移行問題を修正する | Microsoft Docs"
+description: "この記事では、Azure SQL Database へ移行する前に SQL Azure 移行ウィザードを使用して SQL Server データベースの互換性に関する問題を検出し修正するためのオプションについて説明します。"
+keywords: "Microsoft Azure SQL Database、データベースの移行、互換性、SQL Azure の移行ウィザード"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,18 +17,17 @@ ms.workload: sqldb-migrate
 ms.date: 08/24/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 78b9a2cd0691be6f02649a421d4bf94219ea8481
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: 006d2d5cd24bc42655bf0b3c0325531144743524
 
 
 ---
 # <a name="use-sql-azure-migration-wizard-to-fix-sql-server-database-compatibility-issues-before-migration-to-azure-sql-database"></a>Azure SQL Database へ移行する前に SQL Azure 移行ウィザードを使用して SQL Server データベースの互換性に関する問題を修正する
 > [!div class="op_single_selector"]
-> *  [SQL Azure 移行ウィザード](sql-database-cloud-migrate-fix-compatibility-issues.md)
-> *  [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
-> *  [SSMS](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md)
-> 
-> 
+> * [SAMW](sql-database-cloud-migrate-fix-compatibility-issues.md)
+> * [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
+> * [SSMS](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md)
+>  
 
 この記事では、Azure SQL Database へ移行する前に SQL Azure 移行ウィザードを使用して SQL Server データベースの互換性に関する問題を検出し修正する方法について説明します。
 
@@ -54,6 +54,6 @@ ms.openlocfilehash: 78b9a2cd0691be6f02649a421d4bf94219ea8481
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

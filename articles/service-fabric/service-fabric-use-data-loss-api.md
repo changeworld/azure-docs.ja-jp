@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 09/19/2016
 ms.author: lemai
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3cef3af0662ae12c301c6bca76bae05a61ce67e1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8771556954be77543b0eaa21b7201f93ffa0ed70
 
 
 ---
@@ -44,7 +44,7 @@ StartPartitionDataLossAsync() を呼び出すことで、Service Fabric サー�
 
 1. 正常に完了する。  ここで "GetProgress" を呼び出すと、進行状況オブジェクトの State は "Completed" になります。
 2. 致命的なエラーが発生する。  ここで "GetProgress" を呼び出すと、進行状況オブジェクトの State は "Faulted" になります。
-3. [CancelTestCommandAsync][cancel] API または [Stop-ServiceFabricTestCommand][cancelps] PowerShell コマンドレットによってキャンセルします。  こで "GetProgress" を呼び出すと、進行状況オブジェクトの State は API の引数に応じて "Cancelled" または "ForceCancelled" になります。  詳細については、[CancelTestCommandAsync][cancel] に関するドキュメントを参照してください。
+3. [CancelTestCommandAsync][cancel] API または [Stop-ServiceFabricTestCommand][cancelps] PowerShell コマンドレットを使用してキャンセルします。  こで "GetProgress" を呼び出すと、進行状況オブジェクトの State は API の引数に応じて "Cancelled" または "ForceCancelled" になります。  詳細については、[CancelTestCommandAsync][cancel] に関するドキュメントをご覧ください。
 
 ## <a name="details-of-running-a-command"></a>コマンドの実行の詳細
 コマンドを開始するために、想定される引数を使用して Start API を呼び出します。  すべての Start API に、operationId という名前の Guid 引数が含まれます。  operationId 引数はこのコマンドの進行状況を追跡するために使用されているため、追跡を続ける必要があります。  これは、コマンドの進行状況を追跡するために、"GetProgress" API に渡す必要があります。  operationId は一意である必要があります。
@@ -237,6 +237,6 @@ Start API を正常に呼び出した後で、返される進行状況オブジ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

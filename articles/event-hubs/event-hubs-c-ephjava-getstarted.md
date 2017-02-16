@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/04/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: e8e3708989f85a7a0d895140baad5d6370ba3146
+ms.sourcegitcommit: 964adaa1b4d1247cf26bd1b8a345d785a114e3ab
+ms.openlocfilehash: ec1ed9ccf9510587a76a4860f910ac2772b35f9a
 
 
 ---
@@ -26,9 +26,9 @@ ms.openlocfilehash: e8e3708989f85a7a0d895140baad5d6370ba3146
 ## <a name="introduction"></a>はじめに
 Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。 Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して転送と格納できます。
 
-詳細については、[Event Hubs の概要][Event Hubs の概要]に関するページを参照してください。
+詳細については、「[Event Hubs の概要][Event Hubs overview]」を参照してください。
 
-このチュートリアルでは、C のコンソール アプリケーションを使用して Event Hub にメッセージを取り込み、C# [イベント プロセッサ ホスト][イベント プロセッサ ホスト] ライブラリを使用して並列で取得する方法を学習します。
+このチュートリアルでは、C のコンソール アプリケーションを使用してイベント ハブにメッセージを取り込み、C# [イベント プロセッサ ホスト][Event Processor Host] ライブラリを使用して並列で取得する方法を学習します。
 
 このチュートリアルを完了するには、以下が必要になります。
 
@@ -55,23 +55,22 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 ## <a name="next-steps"></a>次のステップ
 Event Hub を作成し、データを送受信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
-* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]。
-* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張]のサンプル。
-* [Event Hubs の概要][Event Hubs の概要]
+* [Event Hubs を使用する完全なサンプル アプリケーション][sample application that uses Event Hubs]
+* [Event Hubs でのイベント処理のスケールアウト][Scale out Event Processing with Event Hubs] サンプル
+* [Event Hubs の概要][Event Hubs overview]
 
 <!-- Images. -->
 [21]: ./media/event-hubs-c-ephjava-getstarted/ephjava.png
 [24]: ./media/event-hubs-c-ephjava-getstarted/receive-eph-c.png
 
 <!-- Links -->
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
-[イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[Event Hubs の概要]: event-hubs-overview.md
-[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

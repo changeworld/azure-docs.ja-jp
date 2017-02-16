@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 158a0a74c7997b28d652c3eed049daa8faf39d94
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: a00a75c6f4f45827a6e2ad22b96febc807590e57
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 158a0a74c7997b28d652c3eed049daa8faf39d94
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [REST ()](https://msdn.microsoft.com/library/azure/dn783458.aspx)
+> * [REST ()](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 

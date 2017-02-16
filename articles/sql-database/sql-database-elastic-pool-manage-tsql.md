@@ -1,6 +1,6 @@
 ---
-title: "T-SQL を使用した エラスティック プール内への Azure SQL Database の作成または移動 | Microsoft Docs"
-description: "T-SQL を使用してエラスティック プール内に Azure SQL データベースを作成します。 または、T-SQL を使用してエラスティック プールにデータベースを移動したり、エラスティック プールからデータベースを移動したりします。"
+title: "T-SQL: Azure SQL Database のエラスティック プールを管理する | Microsoft Docs"
+description: "T-SQL を使って Azure SQL Database のエラスティック プールを管理します。"
 services: sql-database
 documentationcenter: 
 author: srinia
@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
-ms.openlocfilehash: 9688c3b402b7961675e06e804a68ff454126d5f3
+ms.sourcegitcommit: 918e331e135003870cf22080609cb276ef3f72af
+ms.openlocfilehash: 91928c9d859ceb69e6242e6563be2db8d3da104e
 
 
 ---
@@ -84,6 +84,6 @@ Elastic Database のツールを使用してスケールアウト、データの
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

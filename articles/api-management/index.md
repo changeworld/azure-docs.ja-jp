@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "API Management を使用して、API を安全かつ大規模に発行する方法について説明します。 ドキュメントでは、既存のバックエンド サービスの最新型 API ゲートウェイを作成する方法を紹介します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 79b75ae11af07735449714d3a3034c867224ebf4
+ms.sourcegitcommit: bc1895fc3b10c9fab96a120359e25324a1132a51
+ms.openlocfilehash: cd5342474c551bfb9eb1496ffd67f3b36933f1d8
 
 ---
 # <a name="api-management-documentation"></a>API Management のドキュメント
 
-API Management が組織にもたらす利点は、外部のパートナーや社内の開発者に API を公開することによって、社内に眠っているデータやサービスの可能性を発掘できることです。  API Management は、開発者の取り組み、ビジネス インサイト、分析、セキュリティ、保護を通じて API プログラムの価値を高め、企業にコア コンピテンシーをもたらします。
+API Management を使用して、API を社外、パートナー、社内の開発者に対して安全かつ大規模に発行する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、任意の場所にホストされた既存のバックエンド サービスの最新型 API ゲートウェイを作成して管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -141,6 +142,6 @@ API Management のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

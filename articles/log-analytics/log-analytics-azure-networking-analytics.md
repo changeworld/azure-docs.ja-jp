@@ -12,61 +12,100 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2016
+ms.date: 1/31/2017
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eed3bd763edb94d7bea28b4039c03afa7359fee1
+ms.sourcegitcommit: a5d0587a9b7c6ea228caa8ab23307f5f46d122ef
+ms.openlocfilehash: 840239d3bc7fd8c2ce68d0cce15f844c1f2693e7
 
 
 ---
-# <a name="azure-networking-analytics-preview-solution-in-log-analytics"></a>Log Analytics の Azure Networking Analytics (プレビュー) ソリューション
+# <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Log Analytics の Azure Networking 監視ソリューション
+
+Log Analytics の Azure Application Gateway 分析ソリューションを使用して次の内容を確認できます。
+
+* Azure Application Gateway のログ
+* Azure Application Gateway のメトリック
+
+Log Analytics の Azure ネットワーク セキュリティ グループ分析ソリューションを使用して次の内容を確認できます。
+
+* Azure ネットワーク セキュリティ グループのログ
+
 > [!NOTE]
-> これは[プレビュー ソリューション](log-analytics-add-solutions.md#log-analytics-preview-solutions-and-features)です。
+> Azure Application Gateway 分析と Azure ネットワーク セキュリティ グループ分析は[プレビュー ソリューション](log-analytics-add-solutions.md#preview-management-solutions-and-features)です。
 > 
 > 
 
-Log Analytics の Azure Networking Analytics ソリューションを使用すると、Azure Application Gateway のログと Azure ネットワーク セキュリティ グループのログを調査することができます。
+このソリューションを使用するには、Azure Application Gateway のログおよび Azure ネットワーク セキュリティ グループの診断を有効にし、診断を Log Analytics ワークスペースに送信する必要があります。 Azure Blob Storage にログを書き込む必要はありません。
 
-Azure Application Gateway と Azure ネットワーク セキュリティ グループのログを記録することができます。 これらのログは Blob Storage に書き込まれ、そこで Log Analytics によってインデックスが作成されて検索や分析が可能となります。
+診断を有効にし、Application Gateway とネットワーク セキュリティ グループのいずれかまたは両方に対応するソリューションを有効にすることができます。
+
+ソリューションをインストールしたものの特定のリソース タイプの診断ログを有効にしなかった場合、そのリソースに対応するダッシュボードのブレードは空白になり、エラー メッセージが表示されます。
+
+> [!NOTE]
+> 2017 年 1 月に、Application Gateways およびネットワーク セキュリティ グループから Log Analytics へのログ送信において、サポートされる方法が変更になりました。 **Azure Networking Analytics (非推奨)** ソリューションが表示される場合は、「[旧バージョンの Networking Analytics ソリューションからの移行](#migrating-from-the-old-networking-analytics-solution)」を参照して手順に従ってください。
+>
+>
+
+## <a name="review-azure-networking-data-collection-details"></a>Azure Networking データ収集の詳細の確認
+Azure Application Gateway とネットワーク セキュリティ グループの診断ログは、Azure Application Gateway 分析とネットワーク セキュリティ グループ分析の管理ソリューションによって直接収集されます。 Azure Blob Storage にログを記述する必要はありません。データ収集のエージェントも不要です。
+
+次の表は、Azure Application Gateway 分析とネットワーク セキュリティ グループ分析におけるデータの収集に関して、その手段と各種情報をまとめたものです。
+
+| プラットフォーム | 直接エージェント | Systems Center Operations Manager エージェント | Azure | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Azure |![いいえ](./media/log-analytics-azure-networking/oms-bullet-red.png) |![いいえ](./media/log-analytics-azure-networking/oms-bullet-red.png) |![あり](./media/log-analytics-azure-networking/oms-bullet-green.png) |![なし](./media/log-analytics-azure-networking/oms-bullet-red.png) |![いいえ](./media/log-analytics-azure-networking/oms-bullet-red.png) |ログの際 |
+
+
+## <a name="azure-application-gateway-analytics-solution-in-log-analytics"></a>Log Analytics の Azure Application Gateway 分析ソリューション
 
 Application Gateway に関しては、次のログがサポートされます。
 
 * ApplicationGatewayAccessLog
 * ApplicationGatewayPerformanceLog
+* ApplicationGatewayFirewallLog
 
-ネットワーク セキュリティ グループに関しては、次のログがサポートされます。
+Application Gateway に関しては、次のメトリックがサポートされます。
 
-* NetworkSecurityGroupEvent
-* NetworkSecurityGroupRuleCounter
+* 5 分間のスループット
 
-## <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
-Azure Networking Analytics ソリューションのインストールと構成は、次の手順で行います。
+### <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
+Azure Application Gateway 分析ソリューションのインストールと構成は、次の手順で行います。
 
-1. 監視するリソースの診断ログを有効にします。
-   * [Application Gateway](../application-gateway/application-gateway-diagnostics.md)
-   * [ネットワーク セキュリティ グループ](../virtual-network/virtual-network-nsg-manage-log.md)
-2. Blob Storage からログを読み取るための設定を Log Analytics に対して行います。[Blob Storage 内の JSON ファイル](log-analytics-azure-storage-json.md)に関するページで説明されている手順に従ってください。
-3. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」に説明されている手順に従って Azure Networking Analytics ソリューションを有効にします。  
+1. 監視する [Application Gateway](../application-gateway/application-gateway-diagnostics.md) の診断ログを有効にします。
+2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」に説明されている手順に従って Azure Application Gateway 分析ソリューションを有効にします。 
 
-特定のリソース タイプの診断ログを有効にしなかった場合、そのリソースに対応するダッシュボードのブレードは空白になります。
+#### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Azure Application Gateway の診断を Azure Portal で有効にする
 
-## <a name="review-azure-networking-analytics-data-collection-details"></a>Azure Networking Analytics データ収集の詳細の確認
-Azure Application Gateway とネットワーク セキュリティ グループの診断ログは、Azure Networking Analytics ソリューションによって Azure Blob Storage から収集されます。
-データ収集のためのエージェントは不要です。
+1. Azure Portal で、監視する Application Gateway リソースに移動します。
+2. *[診断ログ]* を選択して、次のページを開きます。
 
-次の表は、Azure Networking Analytics におけるデータの収集に関して、その手段と各種情報をまとめたものです。
+   ![Azure Application Gateway リソースの画像](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics01.png)
+3. *[診断を有効にする]* をクリックして、次のページを開きます。
 
-| Platform | 直接エージェント | Systems Center Operations Manager (SCOM) エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Azure |![いいえ](./media/log-analytics-azure-networking/oms-bullet-red.png) |![いいえ](./media/log-analytics-azure-networking/oms-bullet-red.png) |![あり](./media/log-analytics-azure-networking/oms-bullet-green.png) |![なし](./media/log-analytics-azure-networking/oms-bullet-red.png) |![なし](./media/log-analytics-azure-networking/oms-bullet-red.png) |10 分 |
+   ![Azure Application Gateway リソースの画像](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics02.png)
+4. 診断を有効にするには、*[状態]* の下の *[オン]* をクリックします。
+5. *[Send to Log Analytics]* (Log Analytics に送信) のチェックボックスをクリックします。
+6. 既存の Log Analytics ワークスペースを選択するか、ワークスペースを作成します。
+7. 収集するログの種類ごとに **[ログ]** の下のチェックボックスをクリックします。
+8. *[保存]* をクリックして Log Analytics の診断ログを有効にします。
 
-## <a name="use-azure-networking-analytics"></a>Azure Networking Analytics の使用
-ソリューションのインストール後は、監視対象となる Application Gateway のクライアント エラーとサーバー エラーを、Log Analytics の **[概要]** ページの **[Azure Networking Analytics]** タイルに集約して表示できます。
+#### <a name="enable-azure-network-diagnostics-using-powershell"></a>PowerShell を使用した Azure ネットワーク診断を有効にする
 
-![[Azure Networking Analytics] タイルの画像](./media/log-analytics-azure-networking/log-analytics-azurenetworking-tile.png)
+次の PowerShell スクリプトは、Application Gateway の診断ログを有効にする方法の例を示しています。
 
-**[概要]** タイルをクリックした後、収集されたログの概要を表示し、次のカテゴリについて詳細表示することができます。
+```powershell
+$workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
+
+$gateway = Get-AzureRmApplicationGateway -Name 'ContosoGateway'
+
+Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspaceId -Enabled $true
+```
+
+### <a name="use-azure-application-gateway-analytics"></a>Azure Application Gateway 分析の使用
+![Azure Application Gateway 分析タイルの画像](./media/log-analytics-azure-networking/log-analytics-appgateway-tile.png)
+
+[概要] で **[Azure Application Gateway 分析]** タイルをクリックした後、収集されたログの概要を表示し、次のカテゴリについて詳細表示できます。
 
 * Application Gateway のアクセス ログ
   * Application Gateway のアクセス ログにおけるクライアント エラーとサーバー エラー
@@ -76,6 +115,59 @@ Azure Application Gateway とネットワーク セキュリティ グループ�
 * Application Gateway のパフォーマンス
   * Application Gateway のホストの正常性
   * Application Gateway の失敗した要求数の最大と 95 パーセンタイル
+
+![Azure Application Gateway 分析ダッシュボードの画像](./media/log-analytics-azure-networking/log-analytics-appgateway01.png)
+
+![Azure Application Gateway 分析ダッシュボードの画像](./media/log-analytics-azure-networking/log-analytics-appgateway02.png)
+
+**[Azure Application Gateway 分析]** ダッシュボードにあるいずれかのブレードで概要情報を確認し、ログの検索ページで、詳細情報の表示対象をクリックします。
+   
+どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。 結果を絞り込むファセットを使用してフィルター処理することもできます。
+
+
+## <a name="azure-network-security-group-analytics-solution-in-log-analytics"></a>Log Analytics の Azure ネットワーク セキュリティ グループ分析ソリューション
+
+ネットワーク セキュリティ グループに関しては、次のログがサポートされます。
+
+* NetworkSecurityGroupEvent
+* NetworkSecurityGroupRuleCounter
+* NetworkSecurityGroupFlowEvent
+
+### <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
+Azure Networking Analytics ソリューションのインストールと構成は、次の手順で行います。
+
+1. 監視する[ネットワーク セキュリティ グループ](../virtual-network/virtual-network-nsg-manage-log.md)のリソースの診断ログを有効にします。
+2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」に説明されている手順に従って Azure ネットワーク セキュリティ グループ分析ソリューションを有効にします。 
+
+### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Azure Portal で Azure ネットワーク セキュリティ グループの診断を有効にする
+
+1. Azure Portal で、監視するネットワーク セキュリティ グループのリソースに移動します。
+2. *[診断ログ]* を選択して、次のページを開きます。
+
+   ![Azure ネットワーク セキュリティ グループのリソースの画像](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics01.png)
+3. *[診断を有効にする]* をクリックして、次のページを開きます。
+
+   ![Azure ネットワーク セキュリティ グループのリソースの画像](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics02.png)
+4. 診断を有効にするには、*[状態]* の下の *[オン]* をクリックします。
+5. *[Send to Log Analytics]* (Log Analytics に送信) のチェックボックスをクリックします。
+6. 既存の Log Analytics ワークスペースを選択するか、ワークスペースを作成します。
+7. 収集するログの種類ごとに **[ログ]** の下のチェックボックスをクリックします。
+8. *[保存]* をクリックして Log Analytics の診断ログを有効にします。
+
+### <a name="enable-azure-network-diagnostics-using-powershell"></a>PowerShell を使用した Azure ネットワーク診断を有効にする
+
+次の PowerShell スクリプトは、ネットワーク セキュリティ グループの診断ログを有効にする方法の例を示しています。 
+```powershell
+$workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
+
+$nsg = Get-AzureRmNetworkSecurityGroup -Name 'ContosoNSG'
+
+Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -Enabled $true
+```
+
+### <a name="use-azure-network-security-group-analytics"></a>Azure ネットワーク セキュリティ グループ分析を使用する
+[概要] で **[Azure ネットワーク セキュリティ グループ分析]** タイルをクリックした後、収集されたログの概要を表示し、次のカテゴリについて詳細表示することができます。
+
 * ネットワーク セキュリティ グループのブロック済みフロー数
   * ネットワーク セキュリティ グループの規則とブロック済みフロー数
   * MAC アドレスとブロック済みフロー数
@@ -83,26 +175,48 @@ Azure Application Gateway とネットワーク セキュリティ グループ�
   * ネットワーク セキュリティ グループの規則と許可済みフロー数
   * MAC アドレスと許可済みフロー数
 
-![Azure Networking Analytics ダッシュボードの画像](./media/log-analytics-azure-networking/log-analytics-azurenetworking01.png)
+![Azure ネットワーク セキュリティ グループ分析ダッシュボードの画像](./media/log-analytics-azure-networking/log-analytics-nsg01.png)
 
-![Azure Networking Analytics ダッシュボードの画像](./media/log-analytics-azure-networking/log-analytics-azurenetworking02.png)
+![Azure ネットワーク セキュリティ グループ分析ダッシュボードの画像](./media/log-analytics-azure-networking/log-analytics-nsg02.png)
 
-![Azure Networking Analytics ダッシュボードの画像](./media/log-analytics-azure-networking/log-analytics-azurenetworking03.png)
-
-![Azure Networking Analytics ダッシュボードの画像](./media/log-analytics-azure-networking/log-analytics-azurenetworking04.png)
-
-### <a name="to-view-details-for-any-log-summary"></a>ログ集計の詳細を表示するには
-1. **[概要]** ページの **[Azure Networking Analytics]** タイルをクリックします。
-2. **[Azure Networking Analytics]** ダッシュボードにあるいずれかのブレードで概要情報を確認し、ログの検索ページで、詳細情報の表示対象をクリックします。
+**[Azure ネットワーク セキュリティ グループ分析]** ダッシュボードにあるいずれかのブレードで概要情報を確認し、ログの検索ページで、詳細情報の表示対象をクリックします。
    
-    どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。 結果を絞り込むファセットを使用してフィルター処理することもできます。
+どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。 結果を絞り込むファセットを使用してフィルター処理することもできます。
+
+## <a name="migrating-from-the-old-networking-analytics-solution"></a>旧バージョンの Networking Analytics ソリューションからの移行
+2017 年 1 月に、Azure Application Gateways および Azure ネットワーク セキュリティ グループから Log Analytics へのログ送信において、サポートされる方法が変更になりました。 この変更により、次の利点が提供されます。
++ ストレージ アカウントを使用する必要がなく、ログは Log Analytics に直接書き込まれます。
++ ログが生成されてから Log Analytics で使用できるまでの待機時間が短縮されます。
++ 構成手順が簡素化されます。
++ すべての種類の Azure 診断の共通形式です。
+
+最新のソリューションを使用するには、次の操作を行います。
+
+1. [Azure Application Gateway から Log Analytics に診断が直接送信されるように構成します。](#enable-azure-application-gateway-diagnostics-in-the-portal)
+2. [Azure ネットワーク セキュリティ グループから Log Analytics に診断が直接送信されるように構成します。](#enable-azure-network-security-group-diagnostics-in-the-portal)
+2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」に説明されている手順に従って *Azure Application Gateway 分析*ソリューションと *Azure ネット ワーク セキュリティ グループ分析*ソリューションを有効にします。
+3. 新しいデータ型を使用するように、保存されたクエリ、ダッシュボード、またはアラートを更新します。
+  + 型を AzureDiagnostics にします。 ResourceType を使用して、Azure ネットワーク ログをフィルター処理できます。
+  
+    | 代替のデータ型は次のとおりです。 | 次のコマンドを使用します。 |
+    | --- | --- |
+    |`Type=NetworkApplicationgateways OperationName=ApplicationGatewayAccess`| `Type=AzureDiagnostics ResourceType=APPLICATIONGATEWAYS OperationName=ApplicationGatewayAccess` |
+    |`Type=NetworkApplicationgateways OperationName=ApplicationGatewayPerformance` | `Type=AzureDiagnostics ResourceType=APPLICATIONGATEWAYS OperationName=ApplicationGatewayPerformance` |
+    | `Type=NetworkSecuritygroups` | `Type=AzureDiagnostics ResourceType=NETWORKSECURITYGROUPS` |
+    
+   + 名前に \_s、\_d、または \_g のサフィックスがあるフィールドについては、最初の文字を小文字に変更します。
+   + 名前に \_o のサフィックスがあるフィールドについては、入れ子になったフィールド名に基づき、データは個別のフィールドに分割されます。
+4. *Azure Networking Analytics (非推奨)* ソリューションを削除します。 
+  + PowerShell を使用している場合は、次のコードを使用します。`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false` 
+
+変更前に収集されたデータは、新しいソリューションでは表示されませんが 、以前の型とフィールド名を使用して、引き続きデータを照会できます。
 
 ## <a name="next-steps"></a>次のステップ
-* [Log Analytics のログ検索機能](log-analytics-log-searches.md)を使用して、詳細な Azure Networking Analytics データを確認してください。
+* [Log Analytics のログ検索機能](log-analytics-log-searches.md)を使用して、詳細な Azure 診断データを確認してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

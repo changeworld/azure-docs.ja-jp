@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/12/2017
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: 8222574f5cb4c79390fa68f61bcda9f943384c49
-ms.openlocfilehash: 1f18b90df96d91f8897c6b5570341a3c3459594a
+ms.sourcegitcommit: 855fd05d9addc2e57568067e4d434836ceeed570
+ms.openlocfilehash: 21a5f321bd1a3b45cd87c2c9274139c47562cee7
 
 
 ---
@@ -51,6 +51,15 @@ ms.openlocfilehash: 1f18b90df96d91f8897c6b5570341a3c3459594a
 
 ## <a name="release-notes"></a>リリース ノート
 
+DocumentDB .NET Core SDK には最新バージョンの [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) と同等の機能が備わっています。
+
+> [!NOTE] 
+> DocumentDB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートするプレビュー バージョンの .NET Core SDK については、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) に電子メールでお問い合わせください。
+
+### <a name="a-name100100httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore100"></a><a name="1.0.0"/>[1.0.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.0.0)
+
+DocumentDB .NET Core SDK を使用すると、Windows、Mac、Linux で実行できるクロスプラットフォーム対応の高速な [ASP.NET Core](https://www.asp.net/core) アプリと [.NET Core](https://www.microsoft.com/net/core#windows) アプリを構築できるようになります。 DocumentDB .NET Core SDK の最新リリースは、[Xamarin](https://www.xamarin.com) との完全な互換性を持ち、iOS、Android、Mono (Linux) を対象とするアプリケーションの構築に使用されます。  
+
 ### <a name="a-name010-preview010-previewhttpswwwnugetorgpackagesmicrosoftazuredocumentdbcore010-preview"></a><a name="0.1.0-preview"/>[0.1.0-preview](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/0.1.0-preview)
 
 DocumentDB .NET Core Preview SDK を使用すると、Windows、Mac、Linux で実行できるクロスプラットフォーム対応の高速な [ASP.NET Core](https://www.asp.net/core) アプリと [.NET Core](https://www.microsoft.com/net/core#windows) アプリを構築できるようになります。
@@ -61,13 +70,14 @@ DocumentDB .NET Core Preview SDK には最新バージョンの [DocumentDB .NET
 * [パーティション分割コレクション](documentdb-partition-data.md)。 
 * [複数リージョンのデータベース アカウントと geo レプリケーション](documentdb-distribute-data-globally.md)。
 
-この SDK に関する質問がある場合は、[StackOverflow](http://stackoverflow.com/questions/tagged/azure-documentdb) か [MSDN フォーラム](http://go.microsoft.com/fwlink/?LinkId=631655)に投稿してください。または、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) に電子メールでお問い合わせください。 [GitHub リポジトリ](https://github.com/Azure/azure-documentdb-dotnet/issues)で問題を報告することもできます。 
+この SDK に関する質問がある場合は、[StackOverflow](http://stackoverflow.com/questions/tagged/azure-documentdb) に投稿するか、[github リポジトリ](https://github.com/Azure/azure-documentdb-dotnet/issues) に問題を報告してください。 
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
-| [0.1.0-preview](#0.1.0-preview) |2016 年 11 月 15 日 |--- |
+| [1.0.0](#1.0.0) |2016 年 12 月 21 日 |--- |
+| [0.1.0-preview](#0.1.0-preview) |2016 年 11 月 15 日 |2016 年 12 月 31 日 |
 
 ## <a name="see-also"></a>関連項目
 DocumentDB に関する詳細は、 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。 
@@ -75,6 +85,6 @@ DocumentDB に関する詳細は、 [Microsoft Azure DocumentDB](https://azure.m
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

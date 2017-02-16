@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/07/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f14f89b10145787bb2729f741ce8620238a7f246
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 270d1a62d3522e154ba63192f11dc4394532c529
 
 
 ---
@@ -117,7 +117,7 @@ Novatus で Azure AD のシングル サインオンを構成してテストす�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-novatus-tutorial/tutorial_novatus_05.png) 
    
-    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]** をクリックします。
 2. お使いのアプリケーション用に構成された SSO を取得するために、Novatus のサポート チーム ( jvinci@novatusinc.com. Novatus チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (エンティティ ID、SSO サインイン URL、およびサインアウト URL) をチームと共有してください。
@@ -238,6 +238,6 @@ Novatus で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

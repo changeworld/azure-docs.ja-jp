@@ -1,6 +1,6 @@
 ---
 title: "Java を使用したオンデマンド コンテンツ配信の概要 | Microsoft Docs"
-description: "Azure Media Services を使用して、リソースのエンコード、暗号化、ストリーミングなど、基本的なタスクを実行する方法について説明します。"
+description: "このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Java を使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。"
 services: media-services
 documentationcenter: java
 author: juliako
@@ -12,25 +12,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 01/05/2017
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: b36dc7bc2d4d1a8565bc6eb823e830a62d36bf34
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 55ecdb72c85276cbc8bb5c9ce67978e648ebddb1
 
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-java"></a>Java を使用したオンデマンド コンテンツ配信の概要
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-## <a name="setting-up-an-azure-account-for-media-services"></a>Media Services 用の Azure アカウントの設定
+このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Java を使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。
 
-Media Services アカウントを設定するには、Azure Portal を使用します。 「[メディア サービス アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。 Azure Portal でアカウントを作成すると、Media Services 開発用にコンピューターをセットアップできるようになります。
- 
-このセクションでは、Media Services SDK for Java を使用したメディア サービス開発の大まかな前提条件について説明します。
+## <a name="prerequisites"></a>前提条件
 
-### <a name="prerequisites"></a>前提条件
-* 新規または既存の Azure サブスクリプションで作成した Media Services アカウント。 「[メディア サービス アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
+チュートリアルを完了するには次のものが必要です。
+
+* Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
+* Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
 * Azure Libraries for Java。[Azure Java デベロッパー センター][Azure Java Developer Center]からインストールできます。
 
 ## <a name="how-to-use-media-services-with-java"></a>方法: Java で Media Services を使用する

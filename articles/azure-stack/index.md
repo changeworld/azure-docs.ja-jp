@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Azure Stack プレビューを使用してデータセンターから Azure サービスを提供する方法について説明します。 概念実証環境の機能を学習して試します。"
 translationtype: Human Translation
-ms.sourcegitcommit: cc7cf80b26a0bdc79448fc87d2d8b6fff1931d49
-ms.openlocfilehash: eb675cc7a401583cf0f2dc0605a16d5dda8b306f
+ms.sourcegitcommit: c93027a575b2f9d6507448f9f68011723b165bf3
+ms.openlocfilehash: c964ed3b3fe8b3af31c50f0aacb2ef1c0a8aad74
 
 ---
 #<a name="azure-stack-documentation"></a>Azure Stack のドキュメント
 
-Microsoft Azure Stack は新しいハイブリッド クラウド プラットフォーム製品で、所属している組織のデータセンターから Azure サービスを提供できます。 Microsoft Azure Stack Technical Preview 2 は、概念実証 (POC) を通じて利用できます。 POC は、Azure Stack の機能を学習および実行するための環境です。 この環境により、1 つの物理マシン上にすべての必須コンポーネントをデプロイして、主要な概念と機能を評価し、API の拡張モデルを検証するための環境を手に入れることができます。
+Azure Stack テクニカル プレビューを使用して、所属する組織のデータセンターから Azure サービスを提供する方法について説明しています。 チュートリアルなどのドキュメントでは、概念実証環境を使用して、Azure Stack の機能を学習して試してみる方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -96,6 +97,6 @@ Azure Stack のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

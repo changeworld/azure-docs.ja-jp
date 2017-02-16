@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1ba2e051f4f14db10a83d6aaf90fc6355cef586a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c8ca9d1ac59b0470a87e22731494adbc359b3420
 
 
 ---
@@ -96,7 +96,7 @@ People で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure クラシック ポータルの **People** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    [シングル サインオンの構成][6] 
+    [[シングル サインオンの構成]][6] 
 2. **[ユーザーの People へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-people-tutorial/tutorial_people_03.png) 
@@ -112,14 +112,14 @@ People で Azure AD のシングル サインオンを構成してテストす�
    
     d. **[応答 URL]** ボックスに、"**https://itgs.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx**" の形式で URL を入力します。
    
-    e.  **[次へ]**
+    e. **[次へ]**
 4. **[People シングル サインオン パラメーターの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-people-tutorial/tutorial_people_05.png) 
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある [次へ]」を参照してください。
+    b. **[次へ]**をクリックします。
 5. アプリケーションに合わせて SSO を構成するには、管理者として People テナントにサインオンする必要があります。
    
     a. 左側にあるメニューで、**[設定]** をクリックします。
@@ -243,6 +243,6 @@ People で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 09/12/2016
 ms.author: asmalser
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9cecfdee4af934e68412699ce3166514c5521bb0
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 103eade46452d979705e06dd77441f42d7a514b8
 
 
 ---
@@ -85,6 +85,6 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

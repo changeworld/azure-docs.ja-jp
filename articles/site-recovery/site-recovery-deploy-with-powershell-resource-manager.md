@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell と Azure Resource Manager を使用して Azure にサーバーを保護する | Microsoft Docs"
-description: "PowerShell と Azure Resource Manager を使用して Azure に対するサーバーの保護を Azure Site Recovery で自動化します。"
+title: "PowerShell と Azure Resource Manager を使用して Hyper-V VM をレプリケートする | Microsoft Docs"
+description: "PowerShell とAzure Resource Manager を使用して、Azure に対する Hyper-V VM レプリケーションを Azure Site Recovery で自動化します。"
 services: site-recovery
 documentationcenter: 
 author: bsiva
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 09/27/2016
+ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 555f61f76a8d6f1564e7ca736bcdd0dec7d594df
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: ec08ab30003994f3e60c3f37d39bb5b4ef498173
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: 555f61f76a8d6f1564e7ca736bcdd0dec7d594df
 ## <a name="overview"></a>Overview
 Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想マシンのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧戦略に貢献します。 デプロイ シナリオのすべての一覧については、「 [Azure Site Recovery の概要](site-recovery-overview.md)」を参照してください。
 
-Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。 これを 2 種類のモジュール (Azure Profile モジュールまたは Azure Resource Manager モジュール) と共に使用できます。
+Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。 これを&2; 種類のモジュール (Azure Profile モジュールまたは Azure Resource Manager モジュール) と共に使用できます。
 
 Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Azure Resource Manager に用意されている Site Recovery の PowerShell コマンドレットを使って行うことができます。
 
@@ -247,6 +247,6 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Az
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

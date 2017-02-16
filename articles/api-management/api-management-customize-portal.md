@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 398b845a6549341d6afba101acec9eefd146d810
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
 
 
 ---
@@ -55,7 +55,7 @@ ms.openlocfilehash: 398b845a6549341d6afba101acec9eefd146d810
 
 それぞれのルールは、選択された要素のスタイルに関するプロパティを表します。 たとえば、上で選択したヘッダー テキストの場合、テキストのサイズは @font-size-h1 で定義され、フォント (代替候補を含む) の名前は @headings-font-family. で定義されています。
 
-> [Bootstrap][Bootstrap] をご存知の方のためにいうと、実際には、開発者ポータルで使用されている Bootstrap テーマの [LESS 変数][LESS 変数]にこれらのルールが含まれています。
+> [Bootstrap][bootstrap] をご存じの方のためにいうと、実際には、開発者ポータルに使用されている Bootstrap テーマの [LESS 変数][LESS variables]にこれらのルールが含まれています。
 > 
 > 
 
@@ -87,12 +87,12 @@ ms.openlocfilehash: 398b845a6549341d6afba101acec9eefd146d810
 ## <a name="next-steps"> </a>次のステップ
 * [開発者ポータル テンプレート](api-management-developer-portal-templates.md)を使用して開発者ポータル ページの内容をカスタマイズする方法について説明します。
 
-[ページ ヘッダーのテキスト/ロゴを変更する]: #change-page-headers
-[ヘッダーのスタイルを変更する]: #change-headers-styling
-[ページの内容を編集する]: #edit-page-contents
-[次のステップ]: #next-steps
+[Change the text/logo in the page headers]: #change-page-headers
+[Change the styling of the headers]: #change-headers-styling
+[Edit the contents of a page]: #edit-page-contents
+[Next steps]: #next-steps
 
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Azure Classic Portal]: https://manage.windowsazure.com/
 
 [api-management-management-console]: ./media/api-management-customize-portal/api-management-management-console.png
 [api-management-widgets-header]: ./media/api-management-customize-portal/api-management-widgets-header.png
@@ -103,10 +103,10 @@ ms.openlocfilehash: 398b845a6549341d6afba101acec9eefd146d810
 
 
 [bootstrap]: http://getbootstrap.com/
-[LESS 変数]: http://getbootstrap.com/css/
+[LESS variables]: http://getbootstrap.com/css/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

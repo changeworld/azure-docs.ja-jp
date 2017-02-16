@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Hadoop Sqoop の使用 | Microsoft Docs"
+title: "Azure HDInsight (Hadoop) での Apache Sqoop ジョブの実行 | Microsoft Docs"
 description: "コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。"
 editor: cgronlun
 manager: jhubbard
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 8056e7ece1942c9090a7c36447a96829febaf1a4
-ms.openlocfilehash: a45e069f18a07bca314210f074455fda68e552c4
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 3f053d4c94d48630252f7c80fa8077c8ae5feb2d
 
 
 ---
@@ -33,7 +33,7 @@ Hadoop はログやファイルなどの非構造化データおよび半構造�
 HDInsight クラスターでサポートされている Sqoop のバージョンについては、「[HDInsight で提供されるクラスター バージョンの新機能][hdinsight-versions]」を参照してください。
 
 ## <a name="understand-the-scenario"></a>シナリオの理解
-HDInsight クラスターにはサンプル データがいくつか付属しています。 そのうちの以下の 2 つを使用します。
+HDInsight クラスターにはサンプル データがいくつか付属しています。 そのうちの以下の&2; つを使用します。
 
 * log4j ログ ファイル ( */example/data/sample.log*)。 次のようなログがファイルから抽出されます。
   
@@ -154,7 +154,7 @@ HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での Oozie の使用][hdinsight-use-oozie]: Oozie ワークフローで Sqoop アクションを使用します。
-* [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-data]: Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
+* [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-data]: Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートします。
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]: HDInsight/Azure Blob torage にデータをアップロードするその他の方法を説明します。
 
 ## <a name="appendix-a---a-powershell-sample"></a>付録 A - PowerShell サンプル
@@ -162,7 +162,7 @@ PowerShell のサンプルでは、次の手順を実行します。
 
 1. Azure に接続します。
 2. Azure リソース グループを作成します。 詳細については、 [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
-3. Azure SQL Database サーバー、Azure SQL Database、および 2 つのテーブルを作成します。 
+3. Azure SQL Database サーバー、Azure SQL Database、および&2; つのテーブルを作成します。 
    
     SQL Server を使用する場合は、次のステートメントを使用してテーブルを作成します。
    
@@ -634,6 +634,6 @@ PowerShell のサンプルでは、次の手順を実行します。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

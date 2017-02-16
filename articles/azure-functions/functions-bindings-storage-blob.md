@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/02/2016
+ms.date: 01/11/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 880ea646b1e976975f610ce81d0b372e81d2e34a
+ms.sourcegitcommit: 7b691e92cfcc8c6c62f854b3f1b6cf13d317df7b
+ms.openlocfilehash: 961aa46e3f3654c250aa10e61149fac2fc251935
 
 
 ---
@@ -37,7 +37,7 @@ ms.openlocfilehash: 880ea646b1e976975f610ce81d0b372e81d2e34a
 <a name="trigger"></a>
 
 ## <a name="storage-blob-trigger"></a>Storage BLOB トリガー
-Azure Storage BLOB トリガーを使用すると、ストレージ コンテナーで新規および更新された BLOB を監視し、それに対応できます。 
+Azure Storage BLOB トリガーを使用して、新しい BLOB または更新された BLOB 用のストレージ コンテナーを監視し、変更が検出されたときに関数を実行できます。 
 
 関数への Storage BLOB トリガーでは、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
 
@@ -100,7 +100,7 @@ BLOB のファイルの種類を制限するには、ファイル拡張子に固
 <a name"receipts"></a>
 
 ### <a name="blob-receipts"></a>BLOB の配信確認メッセージ
-Azure Functions ランタイムでは、BLOB トリガー関数は、同一の新規または更新された BLOB について 2 回以上呼び出されることはありません。 これは "*BLOB の配信確認メッセージ*" を維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。
+Azure Functions ランタイムでは、BLOB トリガー関数は、同一の新規または更新された BLOB について&2; 回以上呼び出されることはありません。 これは "*BLOB の配信確認メッセージ*" を維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。
 
 BLOB の配信確認メッセージは、(`AzureWebJobsStorage` アプリ設定で指定した) Function App の Azure ストレージ アカウントの *azure-webjobs-hosts* というコンテナーに格納されています。 BLOB の配信確認メッセージには次の情報が含まれています。
 
@@ -149,7 +149,7 @@ C# 関数では、次の型のどれにでもバインドすることができ�
 * `CloudBlobDirectory`
 * `IEnumerable<CloudBlockBlob>`
 * `IEnumerable<CloudPageBlob>`
-*  [ICloudBlobStreamBinder](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md#icbsb) 
+* [ICloudBlobStreamBinder](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md#icbsb) 
 
 ## <a name="trigger-sample"></a>トリガー サンプル
 Storage BLOB トリガーを定義する、次の function.json があるとします。
@@ -328,9 +328,9 @@ Azure Storage BLOB の出力バインドにより、関数で Storage コンテ�
 {
   "name": "<Name of output parameter in function signature>",
   "type": "blob",
-  "direction": "out"
+  "direction": "out",
   "path": "<Path of input blob - see below>",
-  "connection":"<Name of app setting - see below>"
+  "connection": "<Name of app setting - see below>"
 }
 ```
 
@@ -358,6 +358,8 @@ C# 関数の場合は、次の型のいずれかに出力することもでき�
 * `ICloudBlob`
 * `CloudBlockBlob` 
 * `CloudPageBlob` 
+* `ICollector<T>` (複数の BLOB を出力する場合)
+* `IAsyncCollector<T>` (`ICollector<T>` の非同期バージョン)
 
 <a name="outputsample"></a>
 
@@ -370,6 +372,6 @@ C# 関数の場合は、次の型のいずれかに出力することもでき�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

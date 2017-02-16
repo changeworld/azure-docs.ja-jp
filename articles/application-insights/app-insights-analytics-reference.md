@@ -11,17 +11,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/20/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 8c5324742e42a1f82bb3031af4380fc5f0241d7f
-ms.openlocfilehash: 1b153af33ef2f7c112336a2de2a3710613ad3887
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 71cf6cd6e7a33b3aeb3e0e20b9b047377412786d
 
 
 ---
 # <a name="reference-for-analytics"></a>Analytics のリファレンス
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Analytics のクエリ言語について説明します。
 
+追加の情報源:
+
+* 参考資料の多くを、Analytics で入力しながら使用できます。 クエリを入力し始めると、そのクエリの入力候補が表示されます。
+* [チュートリアル ページ](app-insights-analytics-tour.md)では、言語機能の概要が順を追って説明されています。
 * [SQL ユーザーのチート シート](https://aka.ms/sql-analytics)では、最も一般的な言語の対応付けを確認できます。
 * [シミュレーション データで Analytics を試す](https://analytics.applicationinsights.io/demo) (ご使用のアプリからまだ Application Insights にデータが送信されていない場合)。
  
@@ -29,7 +33,7 @@ ms.openlocfilehash: 1b153af33ef2f7c112336a2de2a3710613ad3887
 ## <a name="index"></a>Index
 **Let** [let](#let-clause)
 
-**クエリと演算子** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict 句](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
+**クエリと演算子** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict 句](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
 
 **集計** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -113,11 +117,11 @@ requests // The request table starts this pipeline.
 | count 
 ```
 
-パイプ文字`|`が先頭に配置された各フィルターは、いくつかのパラメーターが設定される*演算子*のインスタンスです。 この演算子への入力は、前のパイプラインの結果であるテーブルです。 ほとんどの場合、パラメーターは入力の列に対する[スカラー式](#scalars)ですが、 まれに、入力列の名前である場合や、2 つ目のテーブルである場合もあります。 列と行が 1 つずつしかなくても、クエリの結果は常にテーブルです。
+パイプ文字`|`が先頭に配置された各フィルターは、いくつかのパラメーターが設定される*演算子*のインスタンスです。 この演算子への入力は、前のパイプラインの結果であるテーブルです。 ほとんどの場合、パラメーターは入力の列に対する[スカラー式](#scalars)ですが、 まれに、入力列の名前である場合や、2 つ目のテーブルである場合もあります。 列と行が&1; つずつしかなくても、クエリの結果は常にテーブルです。
 
 クエリは、単一の改行を含めることができますが、空白行で終了します。 クエリでは、 `//` と行末の間に注釈を含めることができます。
 
-クエリの前には、クエリ内で使用できるスカラー、テーブル、関数を定義する [let 句](#let-clause)を 1 つまたは複数配置することができます。
+クエリの前には、クエリ内で使用できるスカラー、テーブル、関数を定義する [let 句](#let-clause)を&1; つまたは複数配置することができます。
 
 ```AIQL
 
@@ -174,7 +178,7 @@ AutoCluster は、データの個別の属性 (ディメンション) の一般�
 
 AutoCluster は、通常はパターンの小さなセットを返します。これらのパターンは、複数の個別の属性にわたって共通する値を持つデータの一部をキャプチャします。 各パターンは、結果内の行によって表されます。 
 
-最初の 2 つの列は、元のクエリからパターンによってキャプチャされた行の数と割合です。 残りの列は、元のクエリにあったもので、それらの値は列の具体的な値か、変数値を意味する "*" です。 
+最初の&2; つの列は、元のクエリからパターンによってキャプチャされた行の数と割合です。 残りの列は、元のクエリにあったもので、それらの値は列の具体的な値か、変数値を意味する "*" です。 
 
 パターンは互いに素になっていないことに注意してください。重複する可能性があり、通常は元のすべての行が含まれてはいません。 一部の行は、どのパターンにも当てはまらない場合があります。
 
@@ -247,7 +251,7 @@ basket は、データの個々の属性 (ディメンション) のすべての
 #### <a name="evaluate-diffpatterns"></a>evaluate diffpatterns
      requests | evaluate diffpatterns("split=success")
 
-diffpatterns は、同じ構造の 2 つのデータ セットを比較し、2 つのデータ セット間の違いを特徴付ける個々の属性 (ディメンション) のパターンを発見します。 diffpatterns は、エラーの分析を支援する (たとえば、所定の期間内のエラーと非エラーを比較する) ために開発されましたが、同じ構造の 2 つの任意のデータ セット間の差異も見つけることができます。 
+diffpatterns は、同じ構造の&2; つのデータ セットを比較し、2 つのデータ セット間の違いを特徴付ける個々の属性 (ディメンション) のパターンを発見します。 diffpatterns は、エラーの分析を支援する (たとえば、所定の期間内のエラーと非エラーを比較する) ために開発されましたが、同じ構造の&2; つの任意のデータ セット間の差異も見つけることができます。 
 
 **構文**
 
@@ -255,9 +259,9 @@ diffpatterns は、同じ構造の 2 つのデータ セットを比較し、2 �
 
 **戻り値**
 
-diffpatterns は、2 つのセット内の異なる部分のデータをキャプチャするパターン (つまり、1 つ目のデータ セットの大きな割合の行と 2 つ目のデータ セットの小さな割合の行をキャプチャするパターン) の、通常は小さいセットを返します。 各パターンは、結果内の行によって表されます。
+diffpatterns は、2 つのセット内の異なる部分のデータをキャプチャするパターン (つまり、1 つ目のデータ セットの大きな割合の行と&2; つ目のデータ セットの小さな割合の行をキャプチャするパターン) の、通常は小さいセットを返します。 各パターンは、結果内の行によって表されます。
 
-最初の 4 つの列は、各セットのパターンによってキャプチャされた、元のクエリからの行の数と割合であり、5 番目の列は 2 つのセット間の差異 (絶対パーセント ポイント) です。 残りの列は、元のクエリにあったもので、それらの値は列の具体的な値か、変数値を意味する * です。 
+最初の&4; つの列は、各セットのパターンによってキャプチャされた、元のクエリからの行の数と割合であり、5 番目の列は&2; つのセット間の差異 (絶対パーセント ポイント) です。 残りの列は、元のクエリにあったもので、それらの値は列の具体的な値か、変数値を意味する * です。 
 
 パターンは個別ではないことに注意してください。重複する可能性があり、通常は元のすべての行が含まれてはいません。 一部の行は、どのパターンにも当てはまらない場合があります。
 
@@ -270,13 +274,13 @@ diffpatterns は、2 つのセット内の異なる部分のデータをキャ�
 
 * `split=` *column name* (必須)
   
-    この列は、正確に 2 つの値を持つ必要があります。 必要に応じて、そのような列を作成します。
+    この列は、正確に&2; つの値を持つ必要があります。 必要に応じて、そのような列を作成します。
   
     `requests | extend fault = toint(resultCode) >= 500` <br/>
     `| evaluate diffpatterns("split=fault")`
 * `target=` *string*
   
-    対象データ セットで、より割合が高いパターンだけを探すようにアルゴリズムに指示します。対象は、split 列の 2 つの値のうちのいずれかである必要があります。
+    対象データ セットで、より割合が高いパターンだけを探すようにアルゴリズムに指示します。対象は、split 列の&2; つの値のうちのいずれかである必要があります。
   
     `requests | evaluate diffpatterns("split=success", "target=false")`
 * `threshold=` *0.015<double<1* (既定値: 0.05) 
@@ -308,7 +312,7 @@ extractcolumns は、テーブルに複数の単純な列を追加するため�
     `T | evaluate extractcolumns("json_column_name=json", "max_columns=30")`
 * `min_percent=` *double* (既定値: 10.0) 
   
-    新しい列を制限するもう 1 つの方法です。頻度が min_percent より低い列を無視します。
+    新しい列を制限するもう&1; つの方法です。頻度が min_percent より低い列を無視します。
   
     `T | evaluate extractcolumns("json_column_name=json", "min_percent=60")`
 * `add_prefix=` *bool* (既定値: true) 
@@ -333,7 +337,7 @@ extractcolumns は、テーブルに複数の単純な列を追加するため�
 ### <a name="extend-operator"></a>extend 演算子
      T | extend duration = stopTime - startTime
 
-テーブルに 1 つ以上の計算列を追加します。 
+テーブルに&1; つ以上の計算列を追加します。 
 
 **構文**
 
@@ -364,11 +368,75 @@ traces
     Age = now() - timestamp
 ```
 
+### <a name="find-operator"></a>find 演算子
+
+    find in (Table1, Table2, Table3) where id=='42'
+
+テーブルのセットで述語が一致する行を検索します。
+
+**構文**
+
+    find in (Table1, ...) 
+    where Predicate 
+    [project Column1, ...]
+
+**引数**
+
+* *Table1* テーブル名またはクエリ。 let-defined テーブルを指定できますが、関数は指定できません。 テーブル名は、クエリよりもパフォーマンスに優れています。
+* *Predicate* 指定したテーブルのすべての行について評価されるブール式。
+* *Column1* `project` オプションを使用すると、出力に常に表示する列を指定できます。 
+
+**結果**
+
+出力テーブルに既定で含まれるものを次に示します。
+
+* `source_` - 各行のソース テーブルのインジケーター。
+* 述語で明示的に示されている列
+* すべての入力テーブルに共通の空ではない列。
+* `pack_` - 他の列からのデータを含むプロパティ バッグ。
+
+この形式は、入力データまたは述語の変更によって変わることがあります。 固定された列セットを指定するには、`project` を使用します。
+
+**例**
+
+すべての要求と例外を取得します。ただし、可用性テストとロボットからの要求と例外は除きます。
+
+```AIQL
+
+    find in (requests, exceptions) where isempty(operation_SyntheticSource)
+```
+
+UK からのすべての要求と例外を見つけます。ただし、可用性テストとロボットからの要求と例外は除きます。
+
+```AIQL
+
+    let requk = requests
+    | where client_CountryOrRegion == "United Kingdom";
+    let exuk = exceptions
+    | where client_CountryOrRegion == "United Kingdom";
+    find in (requk, exuk) where isempty(operation_SyntheticSource)
+```
+
+"test" という用語を含むフィールドがある最新の製品利用統計情報を見つけます。
+
+```AIQL
+
+    find in (traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions) 
+    where * has 'test' 
+    | top 100 by timestamp desc
+```
+
+**パフォーマンスに関するヒント**
+
+* 時間ベースの用語を `where` 述語に追加します。
+* クエリをインラインに記述するのではなく、`let` 句を使用します。
+
+
 
 ### <a name="join-operator"></a>join 演算子
     Table1 | join (Table2) on CommonColumn
 
-指定された列の値を照合して 2 つのテーブルの行をマージします。
+指定された列の値を照合して&2; つのテーブルの行をマージします。
 
 **構文**
 
@@ -378,19 +446,19 @@ traces
 
 * *Table1* - 結合の "左側"。
 * *Table2* - 結合の "右側"。 テーブルを出力する入れ子のクエリ式にすることができます。
-* *CommonColumn* - 2 つのテーブルで同じ名前を持つ列。
-* *Kind* - 2 つのテーブルの行を照合する方法を指定します。
+* *CommonColumn* -&2; つのテーブルで同じ名前を持つ列。
+* *Kind* -&2; つのテーブルの行を照合する方法を指定します。
 
 **戻り値**
 
 次の要素が含まれるテーブル:
 
 * 照合キーを含め、2 つのテーブルそれぞれのすべての列に対応する列。 名前が競合している場合は、右側の列の名前が自動的に変更されます。
-* 入力テーブル間でのすべての一致に対応する行。 片方のテーブルから選択された、もう一方のテーブルに含まれる 1 つの行とすべての `on` フィールドの値が同じである行です。 
-* `Kind` が未指定の場合
+* 入力テーブル間でのすべての一致に対応する行。 片方のテーブルから選択された、もう一方のテーブルに含まれる&1; つの行とすべての `on` フィールドの値が同じである行です。 
+* `Kind` が未指定または `= innerunique`
   
-    左側の 1 つの行のみが `on` キーの各値に対して照合されます。 出力には、この行の一致それぞれに対応する行と、右側の行が含まれます。
-* `Kind=inner`
+    左側の&1; つの行のみが `on` キーの各値に対して照合されます。 出力には、この行の一致それぞれに対応する行と、右側の行が含まれます。
+* `kind=inner`
   
      出力には、左右の一致行のすべての組み合わせに対応する行が含まれます。
 * `kind=leftouter` (あるいは `kind=rightouter` または `kind=fullouter`)
@@ -399,8 +467,10 @@ traces
 * `kind=leftanti`
   
      右側との一致が存在しない、左側のすべてのレコードを返します。 結果のテーブルには、左側の列のみが含まれます。 
+* `kind=leftsemi` (または `leftantisemi`)
 
-それらのフィールドの値が同じである行が複数存在する場合は、そのすべての組み合わせの行が返されます。
+    右側のテーブルに一致がある (または、ない) 場合に、左側のテーブルから行を返します。 結果には、右側からのデータは含まれません。
+
 
 **ヒント**
 
@@ -501,7 +571,7 @@ traces
 2 つのモードのプロパティ バッグの展開がサポートされています。
 
 * `bagexpansion=bag`: プロパティ バッグは、単一エントリのプロパティ バッグに展開されます。 これが既定の展開です。
-* `bagexpansion=array`: プロパティ バッグは 2 要素 (`[`*key*`,`*value*`]`) の配列構造に展開されるため、キーと値への一貫したアクセスが可能です (プロパティ名での個別のカウントの集計など)。 
+* `bagexpansion=array`: プロパティ バッグは&2; 要素 (`[`*key*`,`*value*`]`) の配列構造に展開されるため、キーと値への一貫したアクセスが可能です (プロパティ名での個別のカウントの集計など)。 
 
 **例**
 
@@ -583,7 +653,7 @@ traces
 
 *Relaxed の場合:*
 
-型指定されたすべての列について正確な一致を含む入力の場合、制限の緩い解析では、単純な解析と同じ結果が生成されます。 ただし、型指定された列の 1 つが正しく解析されない場合、制限の緩い解析では、残りのパターンの処理が続行されます。その一方で、単純な解析は停止し、結果の生成に失敗します。
+型指定されたすべての列について正確な一致を含む入力の場合、制限の緩い解析では、単純な解析と同じ結果が生成されます。 ただし、型指定された列の&1; つが正しく解析されない場合、制限の緩い解析では、残りのパターンの処理が続行されます。その一方で、単純な解析は停止し、結果の生成に失敗します。
 
 ```AIQL
 
@@ -655,7 +725,7 @@ range x from 1 to 1 step 1
 
 **例**
 
-次の例は、 `project` 演算子を使って実行できる何種類かの操作を示しています。 入力テーブル `T` には、`int` 型の列が 3 つあります (`A`、`B`、`C`)。 
+次の例は、 `project` 演算子を使って実行できる何種類かの操作を示しています。 入力テーブル `T` には、`int` 型の列が&3; つあります (`A`、`B`、`C`)。 
 
 ```AIQL
 T
@@ -675,7 +745,7 @@ T
 ### <a name="range-operator"></a>range 演算子
     range LastWeek from ago(7d) to now() step 1d
 
-値が含まれる 1 列のテーブルを生成します。 パイプラインの入力はないことに注目してください。 
+値が含まれる&1; 列のテーブルを生成します。 パイプラインの入力はないことに注目してください。 
 
 | LastWeek |
 | --- |
@@ -690,16 +760,16 @@ T
 
 **引数**
 
-* *ColumnName:* 出力テーブル内の 1 つの列の名前。
+* *ColumnName:* 出力テーブル内の&1; つの列の名前。
 * *Start:* 出力の最小値。
 * *Stop:* 出力で生成される最高値 (*step* でこの値をステップオーバーする場合は、限度内の最高値)。
-* *Step:* 2 つの連続する値の差異。 
+* *Step:*&2; つの連続する値の差異。 
 
 この引数は、数値、日付、または期間の値である必要があります。 テーブルの列を参照することはできません (入力テーブルに基づいて範囲を計算する場合は、[range *関数*](#range)を使います。場合によっては、[mvexpand 演算子](#mvexpand-operator)も組み合わせて使います)。 
 
 **戻り値**
 
-*ColumnName* という 1 つの列を持つテーブル。その列の値は、*Start*、*Start* + *Step* というように続き、*Stop* までとなります。
+*ColumnName* という&1; つの列を持つテーブル。その列の値は、*Start*、*Start* + *Step* というように続き、*Stop* までとなります。
 
 **例**  
 
@@ -707,13 +777,13 @@ T
 range Steps from 1 to 8 step 3
 ```
 
-`Steps` という 1 つの列を持つテーブルです。その列の型は `long`、値は `1`、`4`、`7` です。
+`Steps` という&1; つの列を持つテーブルです。その列の型は `long`、値は `1`、`4`、`7` です。
 
 **例**
 
     range LastWeek from bin(ago(7d),1d) to now() step 1d
 
-過去 7 日間の深夜のテーブルです。 bin (floor) 関数により、各時刻が 1 日の開始時刻になっています。
+過去&7; 日間の深夜のテーブルです。 bin (floor) 関数により、各時刻が&1; 日の開始時刻になっています。
 
 **例**  
 
@@ -748,7 +818,7 @@ range timestamp from ago(4h) to now() step 1m
 
 **戻り値**
 
-`Pattern` と `Count` の 2 つの列。 多くの場合、Pattern は列の完全な値になります。 一部のケースでは、共通するタームを識別し、変数の部分を '*' に置き換えることもできます。
+`Pattern` と `Count` の&2; つの列。 多くの場合、Pattern は列の完全な値になります。 一部のケースでは、共通するタームを識別し、変数の部分を '*' に置き換えることもできます。
 
 たとえば、 `reduce by city` の結果には次のものが含まれます。 
 
@@ -777,7 +847,7 @@ render では、テーブルの表示方法をプレゼンテーション層に�
 ### <a name="sort-operator"></a>sort 演算子
     T | sort by country asc, price desc
 
-入力テーブルの行を 1 つ以上の列の順序で並べ替えます。
+入力テーブルの行を&1; つ以上の列の順序で並べ替えます。
 
 **エイリアス** `order`
 
@@ -832,16 +902,15 @@ Traces
 
 **戻り値**
 
-入力列は、`by` 式の同じ値を持つグループにまとめられます。 次に、指定された集計関数によってグループごとに計算が行われ、各グループに対応する行が生成されます。 結果には、`by` 列のほか、計算された各集計に対応する 1 つ以上の列も含まれます (一部の集計関数は複数の列を返します)。
+入力列は、`by` 式の同じ値を持つグループにまとめられます。 次に、指定された集計関数によってグループごとに計算が行われ、各グループに対応する行が生成されます。 結果には、`by` 列のほか、計算された各集計に対応する&1; つ以上の列も含まれます (一部の集計関数は複数の列を返します)。
 
 結果には、 `by` 値の個別の組み合わせと同数の行が含まれます。 数値の範囲をまとめる場合は、 `bin()` を使って範囲を不連続値に減らしてください。
 
-**注**
-
-集計式とグループ化式の両方に任意の式を指定できますが、単純な列名を使用するか、 `bin()` を数値列に適用する方がより効率的です。
+> [!NOTE]
+> 集計式とグループ化式の両方に任意の式を指定できますが、単純な列名を使用するか、 `bin()` を数値列に適用する方がより効率的です。
 
 ### <a name="take-operator"></a>take 演算子
- [limit](#limit-operator)
+[limit](#limit-operator)
 
 ### <a name="top-operator"></a>top 演算子
     T | top 5 by Name desc nulls first
@@ -923,7 +992,7 @@ Traces
 
 **例**
 
-過去 1 日で `exceptions` イベントまたは `traces` イベントを発生させた個別のユーザーの数。 結果の "SourceTable" 列は "Query" または "Command" を指します。
+過去&1; 日で `exceptions` イベントまたは `traces` イベントを発生させた個別のユーザーの数。 結果の "SourceTable" 列は "Query" または "Command" を指します。
 
 ```AIQL
 
@@ -937,13 +1006,13 @@ Traces
 ```AIQL
 
     exceptions
-    | where Timestamp > ago(1d)
+    | where Timestamp > ago(12h)
     | union withsource=SourceTable kind=outer 
-       (Command | where Timestamp > ago(1d))
+       (Command | where Timestamp > ago(12h))
     | summarize dcount(UserId)
 ```
 
-### <a name="forcing-an-order-of-results"></a>結果の順序を強制する
+#### <a name="forcing-an-order-of-results"></a>結果の順序を強制する
 
 和集合では、結果の行で特定の順序が保証されるものではありません。
 クエリを実行するたびに同じ順序にするには、各入力テーブルにタグ列を付加します。
@@ -953,6 +1022,9 @@ Traces
     let r3 = (pageViews | count | extend tag = 'r3');
     r1 | union r2,r3 | sort by tag
 
+#### <a name="see-also"></a>関連項目
+
+代わりに [join 演算子](#join-operator)を検討してください。
 
 ### <a name="where-operator"></a>where 演算子
      requests | where resultCode==200
@@ -964,11 +1036,13 @@ Traces
 **構文**
 
     T | where Predicate
+    T | where * has Term
 
 **引数**
 
 * *T* : フィルター処理するレコードが含まれる表形式の入力。
 * *Predicate:* *T* の列に対する `boolean` [式](#boolean)。*T* 内の各行について評価されます。
+* *Term* - 列内の単語全体と一致する必要がある文字列。
 
 **戻り値**
 
@@ -981,7 +1055,7 @@ Traces
 * **シンプルな比較を使う** ("定数" とは、テーブルに対する定数です。 ("定数" とは、テーブルに対する定数です。`now()` と `ago()` は適切で、[`let` 句](#let-clause)を使って割り当てられるスカラー値も同様です)。
   
     たとえば、`where floor(Timestamp, 1d) == ago(1d)` よりも `where Timestamp >= ago(1d)` の方が適切です。
-* **最もシンプルな語句を先頭に配置する**: `and` で連結された複数の句がある場合は、関係する列が 1 つしかない句を先頭に配置します。 そのため、 `Timestamp > ago(1d) and OpId == EventId` の方が、逆の順序にするよりも適切です。
+* **最もシンプルな語句を先頭に配置する**: `and` で連結された複数の句がある場合は、関係する列が&1; つしかない句を先頭に配置します。 そのため、 `Timestamp > ago(1d) and OpId == EventId` の方が、逆の順序にするよりも適切です。
 
 **例**
 
@@ -1023,9 +1097,9 @@ traces
 ### <a name="any"></a>任意
     any(Expression)
 
-ランダムにグループの 1 つの行を選択し、指定された式の値を返します。
+ランダムにグループの&1; つの行を選択し、指定された式の値を返します。
 
-これは、いくつかの列 ("エラー テキスト" 列など) に同じような値が多数含まれており、複合グループ キーの一意の値ごとに 1 回、その列をサンプリングする場合などに便利です。 
+これは、いくつかの列 ("エラー テキスト" 列など) に同じような値が多数含まれており、複合グループ キーの一意の値ごとに&1; 回、その列をサンプリングする場合などに便利です。 
 
 **例**  
 
@@ -1111,7 +1185,7 @@ traces
 
 **例**
 
-入力列に次の 3 つの動的値があるとします。
+入力列に次の&3; つの動的値があるとします。
 
 |  |
 | --- |
@@ -1309,7 +1383,7 @@ traces
 #### <a name="weighted-percentiles"></a>重み付きパーセンタイル
 重み付きパーセンタイルの関数は、データが事前に集計されている場合に使用します。 
 
-たとえば、アプリケーションで 1 秒間に数千回の操作が行われており、それらの待機時間を知りたいとします。 単純な方法としては、各操作に対して Application Insights の要求またはカスタム イベントを生成することが考えられます。 この方法では、アダプティブ サンプリングにより緩和されるものの、大量のトラフィックが生成されます。 そこで、より良い解決策として、データを Application Insights に送信する前にアプリケーション内で集計するコードを作成してみましょう。 概要が定期的に集計されて送信されるため、データ レートが 1 秒あたり数ポイント程度に抑えられます。
+たとえば、アプリケーションで&1; 秒間に数千回の操作が行われており、それらの待機時間を知りたいとします。 単純な方法としては、各操作に対して Application Insights の要求またはカスタム イベントを生成することが考えられます。 この方法では、アダプティブ サンプリングにより緩和されるものの、大量のトラフィックが生成されます。 そこで、より良い解決策として、データを Application Insights に送信する前にアプリケーション内で集計するコードを作成してみましょう。 概要が定期的に集計されて送信されるため、データ レートが&1; 秒あたり数ポイント程度に抑えられます。
 
 このコードでは、待機時間の測定値 (ミリ秒単位) のストリームを受け入れます。 次に例を示します。
 
@@ -1461,7 +1535,7 @@ hash("World", 100)              // 51 (1846988464401551951 % 100)
 hash(datetime("2015-01-01"))    // 1380966698541616202
 ```
 ### <a name="iff"></a>iff
-`iff()` 関数は、最初の引数 (述語) を評価し、述語が `true` であるか `false` であるかに応じて、2 番目または 3 番目の引数の値を返します。 2 番目と 3 番目の引数は、同じ型である必要があります。
+`iff()` 関数は、最初の引数 (述語) を評価し、述語が `true` であるか `false` であるかに応じて、2 番目または&3; 番目の引数の値を返します。 2 番目と&3; 番目の引数は、同じ型である必要があります。
 
 **構文**
 
@@ -1533,7 +1607,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 **戻り値**
 
-評価された引数。 引数がテーブルの場合は、最初の行の最初の列を返します (引数に列と行がそれぞれ 1 つだけ含まれるように調整することをお勧めします)。
+評価された引数。 引数がテーブルの場合は、最初の行の最初の列を返します (引数に列と行がそれぞれ&1; つだけ含まれるように調整することをお勧めします)。
 
 **例**
 
@@ -1621,7 +1695,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 *value* 未満で、*roundTo* の最も近い倍数。  
 
-    (toint((value/roundTo)-0.5)) * roundTo
+    (toint(value/roundTo)) * roundTo
 
 **例**
 
@@ -1700,19 +1774,19 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 **戻り値**
 
-*  `sqrt(x) * sqrt(x) == x`
+* `sqrt(x) * sqrt(x) == x`
 * 引数が負であるか、`real` 値に変換できない場合は `null`。 
 
 ### <a name="toint"></a>toint
     toint(100)        // cast from long
-    toint(20.7) == 21 // nearest int from double
-    toint(20.4) == 20 // nearest int from double
+    toint(20.7) == 20 // nearest int below double
+    toint(20.4) == 20 // nearest int below double
     toint("  123  ")  // parse string
     toint(a[0])       // cast from dynamic
     toint(b.c)        // cast from dynamic
 
 ### <a name="tolong"></a>tolong
-    tolong(20.7) == 21 // conversion from double
+    tolong(20.7) == 20 // conversion from double
     tolong(20.4) == 20 // conversion from double
     tolong("  123  ")  // parse string
     tolong(a[0])       // cast from dynamic
@@ -1786,7 +1860,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 **例**
 
-過去 1 時間以内のタイムスタンプを持つすべての行は、次のようになります。
+過去&1; 時間以内のタイムスタンプを持つすべての行は、次のようになります。
 
 ```AIQL
 
@@ -1839,7 +1913,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 **戻り値**
 
-前の日曜日の午前 0 時からの `timespan`。日数を示す整数に切り捨てられます。
+前の日曜日の午前&0; 時からの `timespan`。日数を示す整数に切り捨てられます。
 
 **例**
 
@@ -1874,7 +1948,7 @@ dayofweek(1970-05-11)           // time(1.00:00:00), indicating Monday
 
 
 ### <a name="getmonth"></a>getmonth
-datetime から月 (1 ～ 12) を取得します。
+datetime から月 (1 ～&12;) を取得します。
 
 **例**
 
@@ -1988,13 +2062,13 @@ h"hello"
 ```
 
 ### <a name="string-comparisons"></a>文字列の比較
-|  演算子 | Description | 大文字と小文字の区別 | 実際の例 |
+| 演算子 | Description | 大文字と小文字の区別 | 実際の例 |
 | --- | --- | --- | --- |
 | `==` |等しい |はい |`"aBc" == "aBc"` |
 | `<>` `!=` |等しくない |はい |`"abc" <> "ABC"` |
 | `=~` |等しい |いいえ |`"abc" =~ "ABC"` |
 | `!~` |等しくない |いいえ |`"aBc" !~ "xyz"` |
-| `has` |右辺 (RHS) が左辺 (LHS) に 1 つの単語として含まれる |いいえ |`"North America" has "america"` |
+| `has` |右辺 (RHS) が左辺 (LHS) に&1; つの単語として含まれる |いいえ |`"North America" has "america"` |
 | `!has` |RHS が LHS に完全な単語として含まれない |いいえ |`"North America" !has "amer"` |
 | `hasprefix` |RHS が LHS に単語のプレフィックスとして含まれる |いいえ |`"North America" hasprefix "ame"` |
 | `!hasprefix` |RHS が LHS にどの単語のプレフィックスとしても含まれない |いいえ |`"North America" !hasprefix "mer"` |
@@ -2207,7 +2281,7 @@ range x from 1 to 5 step 1
 
 * *source*: 指定された区切り記号に従って分割されるソース文字列。
 * *delimiter*: ソース文字列を分割するために使用される区切り記号。
-* *requestedIndex*: 0 から始まるインデックス `int` (省略可能)。 指定した場合、返される文字列配列には、要求した部分文字列が含まれます (存在する場合)。 
+* *requestedIndex*:&0; から始まるインデックス `int` (省略可能)。 指定した場合、返される文字列配列には、要求した部分文字列が含まれます (存在する場合)。 
 
 **戻り値**
 
@@ -2393,7 +2467,7 @@ T
 | [`summarize makeset(`column`)`](#makeset) |行のグループをフラット化し、列の値を重複しないように配列に格納します。 |
 
 ### <a name="dynamic-objects-in-let-clauses"></a>let 句の動的オブジェクト
-[let 句](#let-clause)には動的な値が文字列として格納されるため、以下の 2 つの句は同等で、どちらも使用前に `parsejson` (または`todynamic` ) が必要です。
+[let 句](#let-clause)には動的な値が文字列として格納されるため、以下の&2; つの句は同等で、どちらも使用前に `parsejson` (または`todynamic` ) が必要です。
 
     let list1 = '{"a" : "somevalue"}';
     let list2 = parsejson('{"a" : "somevalue"}');
@@ -2447,7 +2521,7 @@ arraylength(parsejson('21')) == null
 
 **戻り値**
 
-この関数は、有効な JSON 文字列が含まれている dataSource への JsonPath クエリを実行します。オプションで、その値を 3 番目の引数に基づいて他の型に変換することもできます。
+この関数は、有効な JSON 文字列が含まれている dataSource への JsonPath クエリを実行します。オプションで、その値を&3; 番目の引数に基づいて他の型に変換することもできます。
 
 **例**
 
@@ -2461,7 +2535,7 @@ arraylength(parsejson('21')) == null
 
 **パフォーマンスに関するヒント**
 
-*  `extractjson()`
+* `extractjson()`
 * 代わりに、 [extract](#extract) による正規表現の一致を使用することを検討してください。 こちらの方が実行速度が非常に速く、JSON がテンプレートから生成される場合に効率的です。
 * JSON から複数の値を抽出する必要がある場合は、 `parsejson()` を使用してください。
 * 列の型が動的になるように宣言することによって、取り込み時に JSON が解析されるようにすることを検討してください。
@@ -2499,7 +2573,7 @@ arraylength(parsejson('21')) == null
 {"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}
 ```
 
-その後、次のフラグメントがオブジェクトの `duration` スロットの値を取得し、そこから 2 つのスロット `duration.value` および  `duration.min` (それぞれ `118.0` と `110.0`) を取得します。
+その後、次のフラグメントがオブジェクトの `duration` スロットの値を取得し、そこから&2; つのスロット `duration.value` および  `duration.min` (それぞれ `118.0` と `110.0`) を取得します。
 
 ```AIQL
 T
@@ -2521,7 +2595,7 @@ T
 
 * *start:* 結果として生成される配列内の最初の要素の値。 
 * *stop:* 結果として生成される配列内の最後の要素の値。または、生成される配列内の最後の要素より大きく、*start* からの *step* の倍数である整数に含まれる最小値。
-* *step:* 配列の連続する 2 つの要素の差異。
+* *step:* 配列の連続する&2; つの要素の差異。
 
 **例**
 
@@ -2566,7 +2640,7 @@ range(1, 8, 3)
 ### <a name="zip"></a>zip
     zip(list1, list2, ...)
 
-リストのセットをタプルの 1 つのリストに結合します。
+リストのセットをタプルの&1; つのリストに結合します。
 
 * `list1...`: 値のリスト
 
@@ -2607,6 +2681,6 @@ range(1, 8, 3)
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

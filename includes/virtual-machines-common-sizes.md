@@ -10,14 +10,14 @@ Azure では複数の標準的なサイズを選択できます。 これらの�
     また F シリーズは、Azure の VM サイズの名前の付け方に新しい基準をもたらします。 F シリーズおよび今後リリースされる VM のサイズでは、ファミリ名の文字に続く数値が、CPU コア数と一致することになります。 Premium Storage 向けの最適化などの追加機能は、CPU コア数に続く文字で表示されます。 この名前付けの形式は、今後リリースされる VM のサイズで使用されるものです。既にリリース済みの既存の VM のサイズ名については、一切変更はありません。
 * G シリーズ VM は、最も多くのメモリを提供し、Intel Xeon E5 V3 ファミリのプロセッサが搭載されたホスト上で実行されます。
 * DS シリーズ、DSv2 シリーズ、Fs シリーズ、および GS シリーズの VM では、Premium Storage を使用できます。これは、高負荷の I/O ワークロードのための、高パフォーマンスで待機時間の少ない記憶域を提供します。 これらの VM では、仮想マシンのディスクをホストするためのソリッド ステート ドライブ (SSD) が使用されており、ローカル SSD ディスク キャッシュも提供されます。 Premium Storage は特定のリージョンで使用できます。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
-* A シリーズ VM は多様なハードウェアの種類とプロセッサにデプロイできます。 デプロイされるハードウェアに関係なく、実行中のインスタンスに対して一貫したプロセッサ パフォーマンスを提供するため、ハードウェアに基づいてサイズが調整されます。 このサイズがデプロイされる物理ハードウェアを判断するには、仮想マシン内から仮想ハードウェアをクエリします。
+*   A シリーズ VM と Av2 シリーズ VM は多様なハードウェアの種類とプロセッサにデプロイできます。 デプロイされるハードウェアに関係なく、実行中のインスタンスに対して一貫したプロセッサ パフォーマンスを提供するため、ハードウェアに基づいてサイズが調整されます。 このサイズがデプロイされる物理ハードウェアを判断するには、仮想マシン内から仮想ハードウェアをクエリします。
 * A0 サイズは、物理ハードウェアでオーバーサブスクライブされます。 この特定のサイズの場合のみ、他の顧客デプロイメントは、実行中のワークロードのパフォーマンスに影響することがあります。 下に、予想される基準として相対パフォーマンスを示していますが、約 15% の変動の可能性があります。
 
 仮想マシンのサイズは価格に影響します。 また、サイズは仮想マシンの処理、メモリ、記憶容量にも影響します。 Storage のコストは、ストレージ アカウントで使用されるページに基づいて個別に計算されます。 詳細については、[Virtual Machines 料金の詳細](https://azure.microsoft.com/pricing/details/virtual-machines/)に関するページと「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。 
 
 サイズを決定する際に役立つ考慮事項は次のとおりです。
 
-* A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス*とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。 これらのサイズの使用に関する詳細な情報と考慮事項については、「 [H シリーズとコンピューティング集中型 A シリーズの VM について](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)」をご覧ください。 
+* A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス*とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。 これらのサイズの使用に関する詳細な情報と考慮事項については、「 [H シリーズとコンピューティング集中型 A シリーズの VM について](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 
 * Dv2 シリーズ、D シリーズ、G シリーズ、および対応する DS/GS は、より高速の CPU やより高いローカル ディスク パフォーマンスが必要なアプリケーション、またはメモリー要求がより高いアプリケーションに最適です。  多数のエンタープライズ レベルのアプリケーションに、強力な組み合わせで対処します。
 * F シリーズ VM は、より高速の CPU を必要としつつも、CPU コアあたりのメモリや ローカル SSD についてはそれほど多くを要求しないワークロードに最適です。  F シリーズのもたらす価値は、分析、ゲーム サーバー、Web サーバー、およびバッチ処理などのワークロードに恩恵を与えます。
 * Azure データ センターの物理ホストの一部では、A5 ～ A11 などの大きな仮想マシンのサイズをサポートしていない場合があります。 その結果、既存の仮想マシンのサイズを新しいサイズに変更した場合、2013 年 4 月 16 日よりも前に作成された仮想ネットワーク内に新しい仮想マシンを作成した場合、または既存のクラウド サービスに新しい仮想マシンを追加した場合に、"**仮想マシン <machine name> を構成できませんでした**" または "**仮想マシン <machine name> を作成できませんでした**" というエラー メッセージが表示されることがあります。 各デプロイ シナリオの回避策については、サポート フォーラムで、[エラー: "仮想マシンを構成できませんでした"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) というトピックを参照してください。  
@@ -38,6 +38,8 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | [Standard_A0](#a-series) |50 |
 | [Standard_A1 ～ 4](#a-series) |100 |
 | [Standard_A5 ～ 7](#a-series) |100 |
+| [Standard_A1 ～ 8v2](#av2-series) |100 |
+| [Standard_A2m ～ 8mv2](#av2-series) |100 |
 | [A8 ～ A11](#a-series) |225* |
 | [D1 ～ 14](#d-series) |160 |
 | [D1 ～ 15v2](#dv2-series) |210 ～ 250* |
@@ -64,7 +66,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A0 |1 |0.768 |20 |1 |1 x 500 |1/低 |
 | Standard_A1 |1 |1.75 |70 |2 |2 x 500 |1/中 |
-| Standard_A2 |2 |3.5 GB |135 |4 |4 x 500 |1/中 |
+| Standard_A2 |2 |3.5 |135 |4 |4 x 500 |1/中 |
 | Standard_A3 |4 |7 |285 |8 |8 x 500 |2/高 |
 | Standard_A4 |8 |14 |605 |16 |16 x 500 |4/高 |
 | Standard_A5 |2 |14 |135 |4 |4 x 500 |1/中 |
@@ -74,7 +76,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 <br>
 
 ## <a name="a-series---compute-intensive-instances"></a>A シリーズ - コンピューティング集中型インスタンス
-これらのサイズの使用に関する情報と考慮事項については、「 [H シリーズとコンピューティング集中型 A シリーズの VM について](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)」をご覧ください。
+これらのサイズの使用に関する情報と考慮事項については、「 [H シリーズとコンピューティング集中型 A シリーズの VM について](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 | サイズ | CPU コア数 | メモリ: GiB | ローカル HDD: GiB | 最大データ ディスク数 | 最大データ ディスク スループット: IOPS | 最大 NIC/ネットワーク帯域幅 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -86,6 +88,19 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 * RDMA 対応
 
 <br>
+
+## <a name="av2-series"></a>Av2 シリーズ
+
+| サイズ        | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | 最大データ ディスク数 | 最大データ ディスク スループット: IOPS | 最大 NIC/ネットワーク帯域幅 |
+|-------------|-----------|--------------|-----------------------|----------------|--------------------|-----------------------|
+| Standard_A1_v2 | 1         | 2            | 10                   | 2              | 2 x 500              | 1/中              |
+| Standard_A2_v2 | 2         | 4            | 20                   | 4              | 4 x 500              | 2/中              |
+| Standard_A4_v2 | 4         | 8            | 40                   | 8              | 8 x 500              | 4/高                  |
+| Standard_A8_v2 | 8         | 16           | 80                   | 16             | 16 x 500             | 8/高                  |
+| Standard_A2m_v2 | 2        | 16           | 20                   | 4              | 4 x 500              | 2/中              |
+| Standard_A4m_v2 | 4        | 32           | 40                   | 8              | 8 x 500              | 4/高                  |
+| Standard_A8m_v2 | 8        | 64           | 80                   | 16             | 16 x 500             | 8/高                  |
+
 
 ## <a name="d-series"></a>D シリーズ
 | サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | 最大データ ディスク数 | 最大データ ディスク スループット: IOPS | 最大 NIC/ネットワーク帯域幅 |
@@ -113,11 +128,13 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | Standard_D12_v2 |4 |28 |200 |8 |8 x 500 |4/高 |
 | Standard_D13_v2 |8 |56 |400 |16 |16 x 500 |8/高 |
 | Standard_D14_v2 |16 |112 |800 |32 |32 x 500 |8/極めて高 |
-| Standard_D15_v2 |20 |140 |1,000 |40 |40 x 500 |8/極めて高 |
+| Standard_D15_v2 |20 |140 |1,000 |40 |40 x 500 |8/極めて高* |
+
+* 一部のリージョンでは、Standard_D15_v2 サイズで高速ネットワークを使用できます。 利用状況と可用性の詳細については、「[Accelerated Networking is in Preview (Accelerated Networking はプレビュー段階)](https://azure.microsoft.com/updates/accelerated-networking-in-preview/)」および「[仮想マシンの Accelerated Networking](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md)」を参照してください。
 
 <br>
 
-## <a name="ds-series*"></a>DS シリーズ*
+## <a name="ds-series"></a>DS シリーズ*
 | サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | 最大データ ディスク数 | キャッシュが有効な場合の最大ディスク スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC/ネットワーク帯域幅 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1 |1 |3.5 |7 |2 |4,000/32 (43) |3,200/32 |1/中 |
@@ -135,7 +152,7 @@ MBps = 10^6 バイト/秒、GiB = 1024^3 バイト。
 
 <br>
 
-## <a name="dsv2-series*"></a>DSv2 シリーズ*
+## <a name="dsv2-series"></a>DSv2 シリーズ*
 | サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | 最大データ ディスク数 | キャッシュが有効な場合の最大ディスク スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC/ネットワーク帯域幅 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1_v2 |1 |3.5 |7 |2 |4,000/32 (43) |3,200/48 |1/中 |
@@ -147,11 +164,13 @@ MBps = 10^6 バイト/秒、GiB = 1024^3 バイト。
 | Standard_DS12_v2 |4 |28 |56 |8 |16,000/128 (144) |12,800/192 |4/高 |
 | Standard_DS13_v2 |8 |56 |112 |16 |32,000/256 (288) |25,600/384 |8/高 |
 | Standard_DS14_v2 |16 |112 |224 |32 |64,000/512 (576) |51,200/768 |8/極めて高 |
-| Standard_DS15_v2 |20 |140 GB |280 |40 |80,000/640 (720) |64,000/960 |8/極めて高 |
+| Standard_DS15_v2 |20 |140 |280 |40 |80,000/640 (720) |64,000/960 |8 極めて高** |
 
 MBps = 10^6 バイト/秒、GiB = 1024^3 バイト。
 
 * DSv2 シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
+
+** 一部のリージョンでは、Standard_DS15_v2 サイズで高速ネットワークを使用できます。 利用状況と可用性の詳細については、「[Accelerated Networking is in Preview (Accelerated Networking はプレビュー段階)](https://azure.microsoft.com/updates/accelerated-networking-in-preview/)」および「[仮想マシンの Accelerated Networking](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md)」を参照してください。
 
 <br>
 
@@ -166,7 +185,7 @@ MBps = 10^6 バイト/秒、GiB = 1024^3 バイト。
 
 <br>
 
-## <a name="fs-series*"></a>Fs シリーズ*
+## <a name="fs-series"></a>Fs シリーズ*
 | サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | 最大データ ディスク数 | キャッシュが有効な場合の最大ディスク スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC/ネットワーク帯域幅 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |2 |4,000/32 (12) |3,200/48 |1/中 |
@@ -192,14 +211,14 @@ MBps = 10^6 バイト/秒、GiB = 1024^3 バイト。
 
 <br>
 
-## <a name="gs-series*"></a>GS シリーズ*
+## <a name="gs-series"></a>GS シリーズ*
 | サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | 最大データ ディスク数 | キャッシュが有効な場合の最大ディスク スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC/ネットワーク帯域幅 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_GS1 |2 |28 |56 |4 |10,000/100 (264) |5,000/125 |1/高 |
-| Standard_GS2 |4 |56 |528 |8 |20,000/200 (528) |10,000/250 |2/高 |
-| Standard_GS3 |8 |112 |1,056 |16 |40,000/400 (1,056) |20,000/500 |4/非常に高 |
-| Standard_GS4 |16 |224 |2,112 |32 |80,000/800 (2,112) |40,000/1,000 |8/極めて高 |
-| Standard_GS5 |32 |448 |4,224 |64 |160,000/1,600 (4,224) |80,000/2,000 |8/極めて高 |
+| Standard_GS2 |4 |56 |112 |8 |20,000/200 (528) |10,000/250 |2/高 |
+| Standard_GS3 |8 |112 |224 |16 |40,000/400 (1,056) |20,000/500 |4/非常に高 |
+| Standard_GS4 |16 |224 |448 |32 |80,000/800 (2,112) |40,000/1,000 |8/極めて高 |
+| Standard_GS5 |32 |448 |896 |64 |160,000/1,600 (4,224) |80,000/2,000 |8/極めて高 |
 
 MBps = 10^6 バイト/秒、GiB = 1024^3 バイト。
 
@@ -212,43 +231,62 @@ Azure H シリーズの仮想マシンは、分子モデリングや流体力学
 
 H シリーズのラインナップは強力な CPU パワーに加えて、FDR InfiniBand を使用した低待機時間 RDMA ネットワークのためのさまざまなオプションと、複数のメモリ構成を備えており、メモリ集中型のコンピューティング要件にも対応しています。
 
+これらのサイズの使用に関する情報と考慮事項については、「 [H シリーズとコンピューティング集中型 A シリーズの VM について](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+
 | サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | 最大データ ディスク数 | 最大ディスク スループット: IOPS | 最大 NIC/ネットワーク帯域幅 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_H8 |8 |56 |1,000 |16 |16 x 500 |8/高 |
-| Standard_H16 |16 |112 |2000 |32 |32 x 500 |8/非常に高 |
-| Standard_H8m |8 |112 |1,000 |16 |16 x 500 |8/高 |
-| Standard_H16m |16 |224 |2000 |32 |32 x 500 |8/非常に高 |
-| Standard_H16r* |16 |112 |2000 |32 |32 x 500 |8/非常に高 |
-| Standard_H16mr* |16 |224 |2000 |32 |32 x 500 |8/非常に高 |
+| Standard_H8 |8 |56 |1,000 |16 |16 x 500 |2/高 |
+| Standard_H16 |16 |112 |2000 |32 |32 x 500 |4/非常に高 |
+| Standard_H8m |8 |112 |1,000 |16 |16 x 500 |2/高 |
+| Standard_H16m |16 |224 |2000 |32 |32 x 500 |4/非常に高 |
+| Standard_H16r* |16 |112 |2000 |32 |32 x 500 |4/非常に高 |
+| Standard_H16mr* |16 |224 |2000 |32 |32 x 500 |4/非常に高 |
 
 * RDMA 対応
 
 <br>
 
-## <a name="n-series-(preview)"></a>N シリーズ (プレビュー)
+## <a name="n-series"></a>N シリーズ
 NC と NV サイズは、GPU 対応インスタンスとも呼ばれます。 これらは、NVIDIA の GPU カードを含む特殊な仮想マシンで、さまざまなシナリオとユース ケース用に最適化されています。 NV サイズは、リモートの視覚化、ストリーミング、ゲーム、エンコーディング、および OpenGL や DirectX などのフレームワークを使用する VDI シナリオ用に最適化されています。 NC サイズは、CUDA や OpenCL ベースのアプリケーションやシミュレーションなどの、コンピューティング集中型およびネットワーク集中型のアプリケーション、アルゴリズム用にさらに最適化されています。 
 
 ### <a name="nv-instances"></a>NV インスタンス
-NV インスタンスは、NVIDIA の Tesla M60 GPU およびデスクトップ アクセラレータ アプリケーションや仮想デスクトップ向けの NVIDIA GRID を備えていて、お客様は、データやシミュレーションを視覚化することができます。 NV インスタンスでは、グラフィックス処理を要するワークフローを視覚化して優れたグラフィックス機能を活用し、さらにエンコードやレンダリングなどの単精度のワークロードを実行することもできます。 Tesla M60 は、1080p H.264 のストリームを最大 36 備えたデュアル GPU 設計の 4096 CUDA コアを提供します。
+NV インスタンスは、NVIDIA の Tesla M60 GPU カードおよびデスクトップ アクセラレータ アプリケーションや仮想デスクトップ向けの NVIDIA GRID を備えていて、お客様は、データやシミュレーションを視覚化することができます。 NV インスタンスでは、グラフィックス処理を要するワークフローを視覚化して優れたグラフィックス機能を活用し、さらにエンコードやレンダリングなどの単精度のワークロードを実行することもできます。 Tesla M60 は、1080p H.264 のストリームを最大 36 備えたデュアル GPU 設計の 4096 CUDA コアを提供します。 
+
 
 | サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | GPU |
 | --- | --- | --- | --- | --- |
-| Standard_NV6 |6 |56 |380 |NVIDIA M60 x 1 |
-| Standard_NV12 |12 |112 |680 |NVIDIA M60 x 2 |
-| Standard_NV24 |24 |224 |1440 |NVIDIA M60 x 4 |
+| Standard_NV6 |6 |56 |380 | 1 |
+| Standard_NV12 |12 |112 |680 | 2 |
+| Standard_NV24 |24 |224 |1440 | 4 |
+
+1 GPU = M60 カードの 2 分の 1 相当。
+
+**サポートされているオペレーティング システム**
+
+* Windows Server 2016、Windows Server 2012 R2。詳細については、[Windows 向けの N シリーズ ドライバーのセットアップ](../articles/virtual-machines/virtual-machines-windows-n-series-driver-setup.md)に関するページをご覧ください。
 
 ### <a name="nc-instances"></a>NV インスタンス
-NC インスタンスは NVIDIA の Tesla K80 を備えています。 エネルギー調査アプリケーション向け CUDAやクラッシュ シミュレーション、レイ トレーシング レンダリング、深層学習などを活用することで、データをさらに高速に処理できるようになりました。 Tesla K80 は、倍精度で最大 2.91 テラフロップ、単精度で最大 8.93 テラフロップのパフォーマンスを実現する、デュアル GPU 設計の 4992 CUDA コアを提供します。 
+NC インスタンスは NVIDIA の Tesla K80 カードを備えています。 エネルギー調査アプリケーション向け CUDAやクラッシュ シミュレーション、レイ トレーシング レンダリング、深層学習などを活用することで、データをさらに高速に処理できるようになりました。 Tesla K80 は、倍精度で最大 2.91 テラフロップ、単精度で最大 8.93 テラフロップのパフォーマンスを実現する、デュアル GPU 設計の 4992 CUDA コアを提供します。
 
 | サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | GPU |
 | --- | --- | --- | --- | --- |
-| Standard_NC6 |6 |56 |380 |NVIDIA K80 x 1 |
-| Standard_NC12 |12 |112 |680 |NVIDIA K80 x 2 |
-| Standard_NC24 |24 |224 |1440 |NVIDIA K80 x 4 |
+| Standard_NC6 |6 |56 | 380 | 1 |
+| Standard_NC12 |12 |112 | 680 | 2 |
+| Standard_NC24 |24 |224 | 1440 | 4 |
+| Standard_NC24r* |24 |224 | 1440 | 4 |
+
+1 GPU = K80 カードの 2 分の 1 相当。
+
+* RDMA 対応
+
+**サポートされているオペレーティング システム**
+
+* Windows Server 2016、Windows Server 2012 R2。詳細については、[Windows 向けの N シリーズ ドライバーのセットアップ](../articles/virtual-machines/virtual-machines-windows-n-series-driver-setup.md)に関するページをご覧ください。
+* Ubuntu 16.04 LTS。詳細については、[Linux 向けの N シリーズ ドライバーのセットアップ](../articles/virtual-machines/virtual-machines-linux-n-series-driver-setup.md)に関するページをご覧ください。
 
 <br>
 
-## <a name="notes:-standard-a0---a4-using-cli-and-powershell"></a>注意: Standard A0 ～ A4 は CLI および PowerShell を使用します
+## <a name="notes-standard-a0---a4-using-cli-and-powershell"></a>注意: Standard A0 ～ A4 は CLI および PowerShell を使用します
 クラシック デプロイ モデルでは、一部の VM サイズが CLI と PowerShell で若干異なります。
 
 * Standard_A0: ExtraSmall 
@@ -259,8 +297,10 @@ NC インスタンスは NVIDIA の Tesla K80 を備えています。 エネル
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md)について学習してください。
-* 高性能コンピューティング (HPC) などのワークロードに対する [H シリーズとコンピューティング集中型 A シリーズ VM](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) について学習してください。
+* 高性能コンピューティング (HPC) などのワークロードに対する [H シリーズとコンピューティング集中型 A シリーズ VM](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) について学習してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Dec16_HO1-->
 
 

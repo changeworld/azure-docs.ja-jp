@@ -15,15 +15,15 @@ ms.workload: big-data
 ms.date: 11/28/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 697580da9d7c836655ec64745cfb211beabb84f2
-ms.openlocfilehash: 941d5a8dba421dd5f59bb61af35ac654e42d5910
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: 18545981a21736d9673ce19ae2325ba5e4a67ff6
 
 
 ---
 
 # <a name="add-additional-azure-storage-accounts-to-hdinsight"></a>HDInsight に Azure ストレージ アカウントを追加する
 
-既存の HDInsight クラスターに Azure ストレージ アカウントを追加するためにスクリプト アクションを使用する方法について説明します。
+Linux をオペレーティング システムとして使用する既存の HDInsight クラスターに Azure ストレージ アカウントを追加するためにスクリプト アクションを使用する方法について説明します。
 
 > [!IMPORTANT]
 > このドキュメントでは、クラスターの作成後に、そのクラスターにストレージを追加する方法を取り上げています。 クラスター作成時にストレージ アカウントを追加する方法については、[Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md#use-additional-storage)に関するドキュメントの「__追加のストレージの使用__」セクションを参照してください。
@@ -110,7 +110,7 @@ Azure Portal で HDInsight クラスターを表示しているときに、__[�
 
 2. ページの左側のサービスの一覧で、__[HDFS]__ を選択します。 ページの中央の __[Configs (構成)]__ タブを選択します。
 
-3. __[Filter... (フィルター...)]__ フィールドに __fs.azure.account__ の値を入力します。 これで、クラスターに追加されたすべてのストレージ アカウントのエントリが返されます。 エントリには、__keyprovider__ と __key__ という 2 つの種類があります。 両方に、キー名の一部としてストレージ アカウントの名前が含まれています。 
+3. __[Filter... (フィルター...)]__ フィールドに __fs.azure.account__ の値を入力します。 これで、クラスターに追加されたすべてのストレージ アカウントのエントリが返されます。 エントリには、__keyprovider__ と __key__ という&2; つの種類があります。 両方に、キー名の一部としてストレージ アカウントの名前が含まれています。 
 
     以下に示すのは、__mystorage__ という名前のストレージ アカウントのエントリの例です。
 
@@ -134,6 +134,6 @@ Azure Portal で HDInsight クラスターを表示しているときに、__[�
 このドキュメントでは、既存の HDInsight クラスターにストレージ アカウントを追加する方法について説明しました。 スクリプト アクションの詳細については、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

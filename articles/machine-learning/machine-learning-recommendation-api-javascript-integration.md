@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/08/2016
 ms.author: luisca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 53a57ed45276e793dab16a3b62dd1477339e5331
+ms.sourcegitcommit: dc07007eec860e0ad7342a4926c6797341719c5b
+ms.openlocfilehash: 20791d5729a65497b5f76f929bf331906ac65818
 
 
 ---
@@ -76,10 +76,10 @@ Azure ML Recommendation を使用したサイトの統合は、次の 2 つの�
          if (typeof AzureMLRecommendationsEvent=="undefined") {         
                      AzureMLRecommendationsEvent = []; } AzureMLRecommendationsEvent.push({ event: "click", item: "18321116" });   </script>
 
-### <a name="31-limitations-and-browser-support"></a>3.1.    制限事項とブラウザー サポート
+### <a name="31----limitations-and-browser-support"></a>3.1.    制限事項とブラウザー サポート
 これはリファレンスの実装であり、そのままで提供されます。 主なブラウザーすべてをサポートしています。
 
-### <a name="32-type-of-events"></a>3.2.    イベントの種類
+### <a name="32----type-of-events"></a>3.2.    イベントの種類
 ライブラリでサポートされるイベントには、クリック、推奨クリック、ショッピング カートに追加、シッピング カートから削除、購入の 5 種類があります。 ログインというユーザー コンテキストの設定に使用されるイベントもあります。
 
 #### <a name="321-click-event"></a>3.2.1. クリック イベント
@@ -235,6 +235,6 @@ Azure ML Recommendations のイベント ライブラリでは、同じブラウ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

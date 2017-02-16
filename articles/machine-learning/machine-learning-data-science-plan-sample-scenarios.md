@@ -1,5 +1,5 @@
 ---
-title: "Azure Machine Learning の Advanced Analytics Process and Technology 用のシナリオ | Microsoft Docs"
+title: "Azure Machine Learning の高度な分析シナリオの特定 | Microsoft Docs"
 description: "Team Data Science Process での高度な予測分析の実行に適したシナリオを選択します。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 97cadfc4e94e425abf2b6b2268fe3478e92ef47f
+ms.sourcegitcommit: 69bb7e5fb0dafa3a9d0f6ad4eb271ab1af2edc50
+ms.openlocfilehash: cfb4b3e629a2c02c360cbba3c151ee1553dc2e7e
 
 
 ---
@@ -188,7 +188,7 @@ ms.openlocfilehash: 97cadfc4e94e425abf2b6b2268fe3478e92ef47f
 ![ローカル DB をデタッチし、Azure の SQL DB にアタッチする][7]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
-SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを 1 つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。 これは、SQL Server Management Studio のオブジェクト エクスプローラーか、同等の Transact-SQL コマンドを使用して行います。
+SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを&1; つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。 これは、SQL Server Management Studio のオブジェクト エクスプローラーか、同等の Transact-SQL コマンドを使用して行います。
 
 1. ソースの場所にあるデータベースをデタッチします。 詳細については、「[データベースのデタッチ](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx)」をご覧ください。
 2. Windows エクスプローラーや Windows コマンド プロンプト ウィンドウで、デタッチされたデータベース ファイルとログ ファイルを Azure の SQL Server VM 上のターゲットの場所にコピーします。
@@ -268,6 +268,6 @@ Advanced Analytics Process and Technology とパブリック データセット�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

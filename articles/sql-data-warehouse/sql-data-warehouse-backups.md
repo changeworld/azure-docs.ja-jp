@@ -1,5 +1,5 @@
 ---
-title: "SQL Data Warehouse のバックアップ | Microsoft Docs"
+title: "Azure SQL Data Warehouse のバックアップ - スナップショット、地理冗長 | Microsoft Docs"
 description: "Azure SQL Data Warehouse を復元ポイントまたは別の地理的な領域に復元できる、SQL Data Warehouse の組み込みデータベースのバックアップについて説明します。"
 services: sql-data-warehouse
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 71f2798871c946b1edce467e1f491e0d62b342c6
-ms.openlocfilehash: fb61dd8b33581740557be6e5902bbe573f11999c
+ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
+ms.openlocfilehash: 94b92f05af30734de727a12fd99271aa9769723a
 
 
 ---
@@ -37,7 +37,7 @@ SQL Data Warehouse では、ローカル冗長 (LRS) の Azure Premium Storage �
 * ローカルの冗長ストレージの詳細については、[Azure Storage のレプリケーション](../storage/storage-redundancy.md#locally-redundant-storage)に関するページをご覧ください。
 
 ## <a name="azure-storage-blob-snapshots"></a>Azure Storage BLOB のスナップショット
-Azure Premium Storage を使用する利点として、SQL Data Warehouse は Azure Storage BLOB のスナップショットを使用して、ローカルでデータ ウェアハウスをバックアップします。 データ ウェアハウスをスナップショットの復元ポイントに復元できます。 スナップショットは最小 8 時間ごとに開始され、7 日間使用できます。  
+Azure Premium Storage を使用する利点として、SQL Data Warehouse は Azure Storage BLOB のスナップショットを使用して、ローカルでデータ ウェアハウスをバックアップします。 データ ウェアハウスをスナップショットの復元ポイントに復元できます。 スナップショットは最小&8; 時間ごとに開始され、7 日間使用できます。  
 
 関連情報:
 
@@ -59,7 +59,7 @@ Azure Premium Storage を使用する利点として、SQL Data Warehouse は Az
 * RA-GRS ストレージの詳細については、「 [読み取りアクセス geo 冗長ストレージ](../storage/storage-redundancy.md#read-access-geo-redundant-storage)」を参照してください。
 
 ## <a name="data-warehouse-backup-schedule-and-retention-period"></a>データ ウェアハウスのバックアップのスケジュールとリテンション期間
-SQL Data Warehouse では、4 ～ 8 時間ごとにオンラインのデータ ウェアハウスにスナップショットを作成し、各スナップショットを 7 日間保持します。 過去 7 日間の復元ポイントのいずれかに、オンラインのデータベースを復元できます。 
+SQL Data Warehouse では、4 ～&8; 時間ごとにオンラインのデータ ウェアハウスにスナップショットを作成し、各スナップショットを&7; 日間保持します。 過去&7; 日間の復元ポイントのいずれかに、オンラインのデータベースを復元できます。 
 
 最新のスナップショットが開始された時間を表示するには、オンラインの SQL Data Warehouse で次のクエリを実行します。 
 
@@ -74,12 +74,12 @@ order by run_id desc;
 ### <a name="what-happens-to-my-backup-retention-while-my-data-warehouse-is-paused"></a>データ ウェアハウスの一時停止中、バックアップの保有期間に影響はありますか?
 データ ウェアハウスの一時停止中、SQL Data Warehouse ではスナップショットが作成されないため、スナップショットの有効期限は切れません。 データ ウェアハウスが一時停止されている間、スナップショットの有効期間は変更されません。 スナップショットの保持は、データ ウェアハウスがオンラインになっている日数に基づきます。カレンダーの日数ではありません。
 
-たとえば、スナップショットが 10 月 1 日午後 4 時に開始され、データ ウェアハウスが 10 月 3 日午後 4 時に一時停止された場合、スナップショットは 2 日間保持された状態です。 データ ウェアハウスがいつオンラインに戻っても、スナップショットは 2 日の状態です。 データ ウェアハウスが 10 月 5 日午後 4 時にオンラインになった場合、スナップショットは 2 日の状態であるため、あと 5 日間保持されます。
+たとえば、スナップショットが 10 月 1 日午後 4 時に開始され、データ ウェアハウスが 10 月 3 日午後 4 時に一時停止された場合、スナップショットは 2 日間保持された状態です。 データ ウェアハウスがいつオンラインに戻っても、スナップショットは&2; 日の状態です。 データ ウェアハウスが 10 月 5 日午後 4 時にオンラインになった場合、スナップショットは 2 日の状態であるため、あと 5 日間保持されます。
 
-データ ウェアハウスがオンラインに戻ると、SQL Data Warehouse は新しいスナップショットを再開し、データが 7 日以上経過すると、スナップショットの有効期限が切れます。
+データ ウェアハウスがオンラインに戻ると、SQL Data Warehouse は新しいスナップショットを再開し、データが&7; 日以上経過すると、スナップショットの有効期限が切れます。
 
 ### <a name="how-long-is-the-retention-period-for-a-dropped-data-warehouse"></a>ドロップしたデータ ウェアハウスのリテンション期間
-データ ウェアハウスをドロップすると、データ ウェアハウスとスナップショットは 7 日間保存され、その後削除されます。 データ ウェアハウスを保存された任意の復元ポイントに復元できます。
+データ ウェアハウスをドロップすると、データ ウェアハウスとスナップショットは&7; 日間保存され、その後削除されます。 データ ウェアハウスを保存された任意の復元ポイントに復元できます。
 
 > [!IMPORTANT]
 > 論理的な SQL Server インスタンスを削除すると、そのインスタンスに属するデータベースもすべて削除されます。これを回復することはできません。 削除されたサーバーを復元することはできません。
@@ -87,7 +87,7 @@ order by run_id desc;
 > 
 
 ## <a name="data-warehouse-backup-costs"></a>データ ウェアハウスのバックアップのコスト
-プライマリ データ ウェアハウスと 7 日間の Azure BLOB のスナップショットの総コストは、TB 単位で四捨五入されます。 たとえば、データ ウェアハウスが 1.5 TB で、スナップショットが 100 GB を使用する場合、Azure Premium Storage の料金で 2 TB のデータが課金されます。 
+プライマリ データ ウェアハウスと&7; 日間の Azure BLOB のスナップショットの総コストは、TB 単位で四捨五入されます。 たとえば、データ ウェアハウスが 1.5 TB で、スナップショットが 100 GB を使用する場合、Azure Premium Storage の料金で 2 TB のデータが課金されます。 
 
 > [!NOTE]
 > 各スナップショットは最初は空で、プライマリ データ ウェアハウスに変更を加えるたびに増加します。 データ ウェアハウスが変更されると、すべてのスナップショットのサイズが増加します。 そのため、スナップショットのストレージ コストは、変化率に合わせて増加します。
@@ -116,6 +116,6 @@ SQL データ ウェアハウスのバックアップの主な用途は、リテ
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

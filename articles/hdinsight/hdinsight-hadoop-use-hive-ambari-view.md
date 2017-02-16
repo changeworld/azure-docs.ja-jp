@@ -16,15 +16,15 @@ ms.workload: big-data
 ms.date: 10/28/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4cdc1f0a8958edd23f8df02c4d16d3f60fe648bd
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: 688decb3e01b8de1f5c1047b4b9cdeff38b05552
 
 
 ---
 # <a name="use-the-hive-view-with-hadoop-in-hdinsight"></a>HDInsight での Hive View と Hadoop の使用
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。 Ambari が提供する機能の 1 つに、Hive クエリを実行するときに使用される Web UI があります。 これを **Hive ビュー**と呼びます。これは、HDInsight クラスターに付属する Ambari のビューの一部です。
+Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。 Ambari が提供する機能の&1; つに、Hive クエリを実行するときに使用される Web UI があります。 これを **Hive ビュー**と呼びます。これは、HDInsight クラスターに付属する Ambari のビューの一部です。
 
 > [!NOTE]
 > Ambari には数多くの機能がありますが、このドキュメントではそれらについて説明しません。 詳細については、「 [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
@@ -33,6 +33,9 @@ Ambari は、Linux ベースの HDInsight クラスターに付属する管理�
 
 ## <a name="prerequisites"></a>前提条件
 * Linux ベースの HDInsight クラスター。 クラスターの作成方法については、 [Linux ベースの HDInsight の使用](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+
+> [!IMPORTANT]
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="open-the-hive-view"></a>Hive ビューを開く
 Azure Portal から Ambari ビューを表示するには、HDInsight クラスターを選択し、**[クイック リンク]** セクションの **[Ambari ビュー]** を選択します。
@@ -99,7 +102,7 @@ Azure Portal から Ambari ビューを表示するには、HDInsight クラス�
    > **[Query Process Results]** セクションの左上には **[Save results]** ボックスがあります。これを使用して、結果をダウンロードしたり、CSV ファイルとして HDInsight のストレージに保存したりできます。
    > 
    > 
-4. このクエリの最初の 4 行を選択し、**[Execute]** を選択します。 ジョブが完了したときに結果は生成されません。 これは、クエリの一部が選択されているときに **[Execute]** ボタンを使用すると、選択したステートメントのみが実行されるためです。 この場合は、テーブルの行を取得する最後のステートメントが選択範囲に含まれていませんでした。 その行のみを選択して **[Execute]** を使用すると、予想どおりの結果が表示されます。
+4. このクエリの最初の&4; 行を選択し、**[Execute]** を選択します。 ジョブが完了したときに結果は生成されません。 これは、クエリの一部が選択されているときに **[Execute]** ボタンを使用すると、選択したステートメントのみが実行されるためです。 この場合は、テーブルの行を取得する最後のステートメントが選択範囲に含まれていませんでした。 その行のみを選択して **[Execute]** を使用すると、予想どおりの結果が表示されます。
 5. **クエリ エディター**の下部にある **[New Worksheet]** ボタンを使用して新しいワークシートを作成します。 新しいワークシートに、次の HiveQL ステートメントを入力します。
    
         CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -200,6 +203,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

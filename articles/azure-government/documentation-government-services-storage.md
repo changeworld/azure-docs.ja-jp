@@ -1,23 +1,22 @@
 ---
 title: Azure Government Storage | Microsoft Docs
 description: "Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: 
 ms.assetid: 83df022b-d791-4efb-9fdf-8afe47a885d5
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/13/2016
+ms.date: 12/22/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: e9287ab74e9bed8681b66fa9a168c8d7c403c63b
-ms.openlocfilehash: 8c9488e302540ca0c67926f6aa6fad591c6ce037
+ms.sourcegitcommit: a7e53dcdbf3cecd8a00ad3424ffa0d62cc8fde43
+ms.openlocfilehash: 73d34bc7f34b9b9730e826e17537f82d0f689c03
 
 
 ---
@@ -37,6 +36,7 @@ ms.openlocfilehash: 8c9488e302540ca0c67926f6aa6fad591c6ce037
 | [ストレージ サービスの暗号化] (../storage/storage-service-encryption.md) |一般公開 |一般公開 |
 | [Premium Storage] (../storage/storage-premium-storage.md) |一般公開 |該当なし | DS シリーズの Virtual Machines を含みます。 |
 | [BLOB のインポート/エクスポート] (../storage/storage-import-export-service.md) |一般公開 |一般公開 | 現時点ではクラシック ストレージ アカウントのみサポートされています。 |
+| [StorSimple] (../storsimple/storsimple-ova-overview.md) |一般公開 |一般公開 |
 
 ### <a name="variations"></a>バリエーション
 Azure Government では、ストレージ アカウントの URL が異なります。
@@ -68,6 +68,11 @@ API の詳細については、<a href="https://msdn.microsoft.com/en-us/library
 >
 >
 
+> [!NOTE]
+> StorSimple Manager Service をデプロイするときは、https://portal.azure.us/ と https://manage.windowsazure.us/ を使用してください。前者は Azure Portal の、後者はクラシック ポータルの URL です。 StorSimple Virtual Array のデプロイについては、[StorSimple Virtual Array のシステム要件] (../storsimple/storsimple-ova-system-requirements.md) を、StorSimple 8000 シリーズについては、[StorSimple ソフトウェアの高可用性とネットワーク要件] (../storsimple/storsimple-system-requirements.md) を参照し、左側のナビゲーションから「デプロイ」セクションに移動してください。 StorSimple の全般的なドキュメントについては、[StorSimple とは何か?] (../storsimple/index.md) を参照してください。
+>
+>
+
 ### <a name="considerations"></a>考慮事項
 以下の情報は、Azure Storage に関する Azure Government の機能領域について記述したものです。
 
@@ -80,6 +85,6 @@ API の詳細については、<a href="https://msdn.microsoft.com/en-us/library
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1d22ea894852608bbe3e698b3e365df257dcc0b0
+ms.sourcegitcommit: 385eb87ec32f5f605b28cc8c76b1c89c7e90bfec
+ms.openlocfilehash: 09ec6d1aae5dc893e92b7c4ca1c30a251d02443d
 
 
 ---
@@ -39,7 +39,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 * ストレージ共有の変更によるアプリの再起動回数が少なくなります。
 
 ## <a name="how-local-cache-changes-the-behavior-of-app-service"></a>ローカル キャッシュによる App Service の動作の変化
-* ローカル キャッシュは、Web アプリの /site フォルダーと /siteextensions フォルダーのコピーです。 Web アプリの起動時にローカル VM インスタンス上に作成されます。 Web アプリごとのローカル キャッシュのサイズは既定で上限が 300 MB ですが、最大 1 GB まで増やすことができます。
+* ローカル キャッシュは、Web アプリの /site フォルダーと /siteextensions フォルダーのコピーです。 Web アプリの起動時にローカル VM インスタンス上に作成されます。 Web アプリごとのローカル キャッシュのサイズは既定で上限が 300 MB ですが、最大 2 GB まで増やすことができます。
 * ローカル キャッシュは読み取り/書き込み対応です。 ただし、Web アプリが仮想マシンを移動した場合や再起動された場合、変更は破棄されます。 コンテンツ ストアにミッション クリティカルなデータを保存するアプリには、ローカル キャッシュを使用しないでください。
 * Web アプリは、ローカル キャッシュを使用しない場合と同様に、ログ ファイルと診断データの書き込みを継続できます。 ただし、ログ ファイルとデータはローカルの VM に保存されます。 その後、共有コンテンツ ストアに定期的にコピーされます。 共有コンテンツ ストアへのコピーはベスト ケース エフォートで行われ、VM インスタンスが突然クラッシュした場合は書き戻しできない可能性があります。
 * ローカル キャッシュを使用する Web アプリの LogFiles フォルダーと Data フォルダーの構造は変わります。 ストレージの LogFiles フォルダーと Data フォルダー以下に、"一意の識別子" + タイムスタンプという命名パターンに従ってサブフォルダーが作成されます。 各サブフォルダーは、実行中か、実行されていた Web アプリの VM インスタンスに対応します。  
@@ -83,7 +83,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>ローカル キャッシュのサイズ設定を変更する
-ローカル キャッシュの既定のサイズは **300 MB**です。 これには、コンテンツ ストアからコピーされる /site フォルダーと /siteextensions フォルダーだけでなく、ローカルで作成されたログとデータのフォルダーが含まれます。 この上限を上げるには、アプリケーション設定 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用します。 サイズは、Web アプリごとに最大 **1 GB** (1000 MB) まで増やすことができます。
+ローカル キャッシュの既定のサイズは **300 MB**です。 これには、コンテンツ ストアからコピーされる /site フォルダーと /siteextensions フォルダーだけでなく、ローカルで作成されたログとデータのフォルダーが含まれます。 この上限を上げるには、アプリケーション設定 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用します。 サイズは、Web アプリごとに最大 **2 GB** (2000 MB) まで増やすことができます。
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>App Service のローカル キャッシュを使用する場合のベスト プラクティス
 ローカル キャッシュは、 [ステージング環境](../app-service-web/web-sites-staged-publishing.md) 機能と併用することをお勧めします。
@@ -91,12 +91,12 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 * 値が `Always` の "*固定の*" アプリケーション設定 `WEBSITE_LOCAL_CACHE_OPTION` を**運用**スロットに追加します。 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用する場合は、運用スロットにそれも固定の設定として追加します。
 * **ステージング** スロットを作成し、ステージング スロットに発行します。 通常は、ステージングのシームレスなビルド、デプロイ、テストのライフサイクルを有効にするためにローカル キャッシュを使用するようにステージング スロットを設定しませんが、運用スロットの場合はローカル キャッシュの利点があります。
 * ステージング スロットに対してサイトをテストします。  
-* 準備ができたら、ステージング スロットと運用スロット間の [スワップ操作](../app-service-web/web-sites-staged-publishing.md#to-swap-deployment-slots) を実行します。  
+* 準備ができたら、ステージング スロットと運用スロット間の [スワップ操作](../app-service-web/web-sites-staged-publishing.md#Swap) を実行します。  
 * 固定の設定には名前が含まれ、スロットに固定されます。 そのため、ステージング スロットが運用スロットにスワップされると、ローカル キャッシュのアプリケーション設定が継承されます。 新しくスワップされた運用スロットは、数分後にローカル キャッシュに対して実行され、スワップ後のスロット ウォームアップ時にウォームアップされます。 したがって、スロットのスワップが完了すると、運用スロットはローカル キャッシュに対して実行されるようになります。
 
 ## <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-web-app"></a>Web アプリにローカル キャッシュを適用できるかどうかは、どうやって判断できますか?
-Web アプリが高パフォーマンスで信頼性の高いコンテンツ ストアが必要で、実行時に重要なデータ書き込むためにコンテンツ ストアを使用せず、合計サイズが 1 GB 未満であれば、ローカル キャッシュを適用できます。 /site フォルダーと /siteextensions フォルダーの合計サイズを確認するには、サイト拡張機能の "Azure Web Apps Disk Usage" を使用します。  
+Web アプリが高パフォーマンスで信頼性の高いコンテンツ ストアが必要で、実行時に重要なデータ書き込むためにコンテンツ ストアを使用せず、合計サイズが 2 GB 未満であれば、ローカル キャッシュを適用できます。 /site フォルダーと /siteextensions フォルダーの合計サイズを確認するには、サイト拡張機能の "Azure Web Apps Disk Usage" を使用します。  
 
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>サイトがローカル キャッシュの使用に切り替わったかどうかを確認するにはどうすればよいですか?
 ステージング環境でローカル キャッシュ機能を使用している場合、ローカル キャッシュのウォームアップが完了するまでスワップ操作は完了しません。 サイトがローカル キャッシュに対して実行されているかどうかは、worker プロセス環境変数の `WEBSITE_LOCALCACHE_READY`で確認できます。 「 [worker プロセス環境変数](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) 」ページの手順を使用して、複数インスタンスで worker プロセス環境変数にアクセスしてください。  
@@ -112,7 +112,6 @@ Web アプリがローカル キャッシュを使用している場合、最新
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

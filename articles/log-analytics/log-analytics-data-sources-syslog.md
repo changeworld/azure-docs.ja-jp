@@ -1,10 +1,10 @@
 ---
-title: "Log Analytics の Syslog メッセージ | Microsoft Docs"
+title: "OMS Log Analytics の Syslog メッセージの収集と分析 | Microsoft Docs"
 description: "Syslog は、Linux に共通のイベント ログ プロトコルです。   この記事では、Log Analytics の Syslog メッセージの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/09/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 724567b853bec19cb41ef6a78b7d25a665830897
+ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
+ms.openlocfilehash: 6e92a79c0b7ea35f110c779922255d6ddc93ed7c
 
 
 ---
@@ -77,7 +77,7 @@ rsyslog の構成ファイルは、 **/etc/rsyslog.d/95-omsagent.conf**にあり
 
 
 #### <a name="syslog-ng"></a>syslog-ng
-rsyslog の構成ファイルは、 **/etc/syslog-ng/syslog-ng.conf**にあります。  既定の内容を以下に示します。  これは、ローカル エージェントから送信された、すべてのファシリティのすべての重大度の syslog メッセージを収集します。   
+syslog-ng の構成ファイルは、**/etc/syslog-ng/syslog-ng.conf** にあります。  既定の内容を以下に示します。  これは、ローカル エージェントから送信された、すべてのファシリティのすべての重大度の syslog メッセージを収集します。   
 
     #
     # Warnings (except iptables) in one file:
@@ -182,6 +182,6 @@ Syslog レコードの型は **Syslog** になり、次の表に示すプロパ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

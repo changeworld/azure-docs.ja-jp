@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL Data Warehouse のコンピューティング能力の管理 (REST) | Microsoft Docs"
+title: "T-SQL を使って Azure SQL Data Warehouse の一時停止、再開、スケーリングを行う | Microsoft Docs"
 description: "DWU を調整することでパフォーマンスをスケールアウトする Transact-SQL (T-SQL) タスク。 ピーク時以外にリソースをスケール バックして、コストを削減します。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 41ab1c4b2709c2ea6890ca526db1dea177b7da1b
+ms.sourcegitcommit: f589111d3a4da061e1cc3313632dd0b5403dc278
+ms.openlocfilehash: f93e5802141b16862f5e37126196069bd32c1f19
 
 
 ---
@@ -29,17 +29,6 @@ ms.openlocfilehash: 41ab1c4b2709c2ea6890ca526db1dea177b7da1b
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
 > 
 > 
-
-ワークロードの変化する需要に合わせてコンピューティング リソースとメモリをスケールアウトすることで、パフォーマンスをスケーリングします。 ピーク時以外にリソースをスケール バックするか、すべてのコンピューティング処理を一時停止して、コストを削減します。 
-
-このタスクのコレクションでは、T-SQL を使用して次の操作を実行します。
-
-* 現在の DWU 設定の表示
-* DWU を調整することによるコンピューティング リソースの変更
-
-データベースを一時停止または再開する方法については、この記事の上部にある他のプラットフォーム オプションのいずれかを選択してください。
-
-これについては、[コンピューティング能力の管理の概要][コンピューティング能力の管理の概要] に関するページをご覧ください。
 
 <a name="current-dwu-bk"></a>
 
@@ -69,7 +58,7 @@ FROM
 DWU を変更するには、次の手順に従います。
 
 1. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
-2. [ALTER DATABASE][ALTER DATABASE] TSQL ステートメントを使用します。 次の例では、MySQLDW データベースのサービス レベル目標を DW1000 に設定します。 
+2. [ALTER DATABASE][ALTER DATABASE] TSQL ステートメントを使います。 次の例では、MySQLDW データベースのサービス レベル目標を DW1000 に設定します。 
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -80,14 +69,14 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 <a name="next-steps-bk"></a>
 
 ## <a name="next-steps"></a>次のステップ
-他の管理タスクについては、[管理の概要][管理の概要] に関する記事をご覧ください。
+他の管理タスクについては、[管理の概要][Management overview]に関する記事をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[サービス容量制限]: ./sql-data-warehouse-service-capacity-limits.md
-[管理の概要]: ./sql-data-warehouse-overview-manage.md
-[コンピューティング能力の管理の概要]: ./sql-data-warehouse-manage-compute-overview.md
+[Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
+[Management overview]: ./sql-data-warehouse-overview-manage.md
+[Manage compute power overview]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 
@@ -96,10 +85,10 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 <!--Other Web references-->
 
-[Azure ポータル]: http://portal.azure.com/
+[Azure portal]: http://portal.azure.com/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

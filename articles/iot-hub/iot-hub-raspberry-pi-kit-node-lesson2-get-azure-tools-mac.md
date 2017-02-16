@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: d93b7b67ee0727f45c3f4b93459b013b16805bf6
-ms.openlocfilehash: 8b079aeb33ec0c4e899727d2e1d3f9f330257b8c
+ms.sourcegitcommit: 7fbf21434952ece22468df6873e10e6f3eae1724
+ms.openlocfilehash: 3bf03cbd56ac72a0be62c1adc769dcbbd9295029
 
 
 ---
@@ -78,6 +78,6 @@ Azure CLI をインストールしました。 次のタスクでは、Azure CLI
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

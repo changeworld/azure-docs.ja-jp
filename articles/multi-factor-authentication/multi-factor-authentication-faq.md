@@ -1,5 +1,5 @@
 ---
-title: "Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)"
+title: "Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ) | Microsoft Docs"
 description: "Azure Multi-Factor Authentication に関してよく寄せられる質問の一覧を提供します。 Azure Multi-Factor Authentication は、本人確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。 ユーザーのサインインとトランザクションに多層構造のセキュリティを確保することができます。"
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 01/06/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0c83a7216d9763994fd5006dd9cd40883337ba4a
+ms.sourcegitcommit: 9617cd00ed4a5f8f867542238e5008a9a17663c9
+ms.openlocfilehash: 1e01bdc099af865e01eb2784cf367e482300ade8
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 0c83a7216d9763994fd5006dd9cd40883337ba4a
 ## <a name="general"></a>全般
 **Q: Azure Multi-Factor Authentication Server ではどのようにユーザー データが処理されますか。**
 
-Multi-Factor Authentication Server では、ユーザーのデータはオンプレミス サーバーのみに格納されます。 永続的なユーザー データはクラウドに格納されません。 ユーザーが 2 段階認証を実行すると、Multi-Factor Authentication Server から Azure Multi-Factor Authentication クラウド サービスにデータが送信され、認証が要求されます。 Multi-Factor Authentication Server と Multi-Factor Authentication クラウド サービス間の通信には、送信方向のポート 443 経由で Secure Sockets Layer (SSL) またはトランスポート層セキュリティ (TLS) が使用されます。
+Multi-Factor Authentication Server では、ユーザーのデータはオンプレミス サーバーのみに格納されます。 永続的なユーザー データはクラウドに格納されません。 ユーザーが&2; 段階認証を実行すると、Multi-Factor Authentication Server から Azure Multi-Factor Authentication クラウド サービスにデータが送信され、認証が要求されます。 Multi-Factor Authentication Server と Multi-Factor Authentication クラウド サービス間の通信には、送信方向のポート 443 経由で Secure Sockets Layer (SSL) またはトランスポート層セキュリティ (TLS) が使用されます。
 
 認証要求がクラウド サービスに送信されると、認証レポートと使用状況レポート用のデータが収集されます。 2 段階認証のログに含まれるデータ フィールドは次のとおりです。
 
@@ -61,6 +61,8 @@ Azure Multi-Factor Authentication 経由でユーザーに対して行われる�
 "ユーザーごと" または"認証ごと" のモデルを使用している場合、Azure MFA は使用量ベースのリソースです。 課金は、仮想マシンや Web サイトなどと同じように、組織の Azure サブスクリプションに対して行われます。
 
 ライセンス モデルを使用する場合は、Azure Multi-Factor Authentication ライセンスを購入してユーザーに割り当てます。これは、Office 365 や他のサブスクリプション製品と同様です。
+
+オプションについて詳しくは、「[Azure Multi-Factor Authentication のしくみ](multi-factor-authentication-how-it-works.md#how-to-get-azure-multi-factor-authentication)」をご覧ください
 
 **Q: 管理者用の Azure Multi-Factor Authentication の無料版はありますか。**
 
@@ -122,7 +124,7 @@ Multi-Factor Authentication を使用できるように構成されているユ�
 
 **Azure Multi-Factor Authentication Server でハードウェア トークンを使用できますか。**
 
-Azure Multi-Factor Authentication Server を使用している場合、サード パーティにによるオープン認証 (OATH) の時間ベースのワンタイム パスワード (TOTP) トークンをインポートして 2 段階認証で使用できます。
+Azure Multi-Factor Authentication Server を使用している場合、サード パーティにによるオープン認証 (OATH) の時間ベースのワンタイム パスワード (TOTP) トークンをインポートして&2; 段階認証で使用できます。
 
 CSV ファイルにシークレット キー ファイルを配置して Azure Multi-Factor Authentication Server にインポートしている場合は、OATH TOTP トークンである ActiveIdentity トークンを使用できます。 OATH トークンと Active Directory フェデレーション サービス (ADFS)、リモート認証ダイヤルイン ユーザー サービス (RADIUS) (クライアント システムがアクセス チャレンジ応答を処理できる場合)、インターネット インフォメーション サーバー (IIS) のフォーム ベース認証を使用できます。
 
@@ -160,8 +162,6 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 ## <a name="next-steps"></a>次のステップ
 このページで質問の答えが見つからない場合は、ページ下部の該当欄にコメントをご記入ください。 または、次の操作でヘルプを取得できます。
 
-**Q: Azure Multi-factor Authentication に関するヘルプはどのようにして得られますか。**
-
 * [Microsoft サポート技術情報](https://www.microsoft.com/en-us/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport)を検索して、一般的な技術上の問題の解決方法を探します。
 * このコミュニティで技術的な質問と回答を検索して参照したり、 [Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)で独自の質問を投稿したりできます。
 * 従来の PhoneFactor をご利用中で、パスワードのリセットについてご質問がある場合やサポートを必要とされている場合は、 [パスワード リセット](mailto:phonefactorsupport@microsoft.com) のリンクを使用してサポート ケースを開いてください。
@@ -170,6 +170,6 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

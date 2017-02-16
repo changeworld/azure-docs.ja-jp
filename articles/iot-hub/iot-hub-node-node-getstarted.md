@@ -1,6 +1,6 @@
 ---
 title: "Node.js で Azure IoT Hub を使用する方法 | Microsoft Docs"
-description: "Node.js で Azure IoT Hub を使用する方法についてわかりやすく説明します。 Azure IoT Hub と Node.js、Microsoft Azure IoT SDK を使用して IoT ソリューションを実装します。"
+description: "Node.js で Azure IoT Hub を使用する方法についてわかりやすく説明します。 Azure IoT Hub と Node.js、Azure IoT SDK を使用して IoT ソリューションを実装します。"
 services: iot-hub
 documentationcenter: nodejs
 author: dominicbetts
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/12/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7ddd9c1ed88e30eaaa200dc6b83d34746da14aa8
+ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
+ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
 
 
 ---
@@ -25,26 +25,26 @@ ms.openlocfilehash: 7ddd9c1ed88e30eaaa200dc6b83d34746da14aa8
 
 このチュートリアルの最後には、次の 3 つの Node.js コンソール アプリケーションが完成します。
 
-* **CreateDeviceIdentity.js**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイスを接続します。
-* **ReadDeviceToCloudMessages.js**。シミュレーション対象デバイスから送信されたテレメトリを表示します。
+* **CreateDeviceIdentity.js**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイス アプリを接続します。
+* **ReadDeviceToCloudMessages.js**。シミュレーション対象デバイス アプリから送信されたテレメトリを表示します。
 * **SimulatedDevice.js**。以前に作成したデバイス ID で IoT ハブに接続し、AMQP プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
 
 > [!NOTE]
-> デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの作成に利用できる各種 SDK に関する情報は、「[IoT Hub SDK][lnk-hub-sdks]」の記事で取り上げています。
+> デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 Azure IoT SDK については、[Azure IoT SDK][lnk-hub-sdks] に関する記事を参照してください。
 > 
 > 
 
 このチュートリアルを完了するには、以下が必要です。
 
 * Node.js バージョン 0.10.x 以降。
-* アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
+* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホスト名と IoT Hub 接続文字列が得られました。
 
 ## <a name="create-a-device-identity"></a>デバイス ID の作成
-このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成する Node.js コンソール アプリケーションを作成します。 IoT Hub に接続するデバイスは、あらかじめデバイス ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の**デバイス ID レジストリ**に関するセクションを参照してください。 このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
+このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成する Node.js コンソール アプリケーションを作成します。 IoT hub に接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の **ID レジストリ**に関するセクションを参照してください。 このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
 
 1. **createdeviceidentity**という名前の新しい空のフォルダーを作成します。 コマンド プロンプトで次のコマンドを使用して、 **createdeviceidentity** フォルダー内に package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
    
@@ -71,7 +71,7 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
    
     var registry = iothub.Registry.fromConnectionString(connectionString);
     ```
-6. 次のコードを追加して、IoT ハブでデバイス ID のレジストリにデバイスの定義を作成します。 このコードは、デバイス ID がレジストリに存在しない場合にはデバイスを作成し、存在している場合には既存のデバイスのキーを返します。
+6. 次のコードを追加して、IoT Hub で ID レジストリにデバイスの定義を作成します。 このコードは、デバイス ID がレジストリに存在しない場合にはデバイスを作成し、存在している場合には既存のデバイスのキーを返します。
    
     ```
     var device = new iothub.Device(null);
@@ -88,7 +88,7 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
     function printDeviceInfo(err, deviceInfo, res) {
       if (deviceInfo) {
         console.log('Device id: ' + deviceInfo.deviceId);
-        console.log('Device key: ' + deviceInfo.authentication.SymmetricKey.primaryKey);
+        console.log('Device key: ' + deviceInfo.authentication.symmetricKey.primaryKey);
       }
     }
     ```
@@ -101,15 +101,15 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
 9. **デバイス ID** と**デバイス キー**をメモします。 これらの値は、後でデバイスとして IoT Hub に接続するアプリケーションを作成するときに必要になります。
 
 > [!NOTE]
-> IoT Hub の ID レジストリには、ハブに対するアクセスの安全性を確保するためのデバイス ID だけが格納されます。 セキュリティ資格情報として使用するキーとデバイス ID、そして個々のデバイスについてアクセスを無効にすることのできる有効/無効フラグが格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]を参照してください。
+> IoT Hub の ID レジストリには、IoT ハブに対するセキュリティで保護されたアクセスを有効にするためのデバイス ID のみが格納されます。 セキュリティ資格情報として使用するキーとデバイス ID、そして個々のデバイスについてアクセスを無効にすることのできる有効/無効フラグが格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]を参照してください。
 > 
 > 
 
-## <a name="receive-devicetocloud-messages"></a>デバイスからクラウドへのメッセージの受信
-このセクションでは、デバイスからクラウドへのメッセージを IoT Hub から読み込む Node.js コンソール アプリケーションを作成します。 IoT ハブは、デバイスからクラウドへのメッセージを読み取るための、[Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。 わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。 [デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを大規模に処理する方法を紹介しています。 チュートリアル「[Event Hubs の使用][lnk-eventhubs-tutorial]」では、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub の Event Hub 対応エンドポイントに適用されます。
+## <a name="receive-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの受信
+このセクションでは、デバイスからクラウドへのメッセージを IoT Hub から読み込む Node.js コンソール アプリケーションを作成します。 IoT Hub は、デバイスからクラウドへのメッセージを読み取るための、[Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。 わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。 [デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを大規模に処理する方法を紹介しています。 「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub のイベント ハブと互換性のあるエンドポイントに当てはまります。
 
 > [!NOTE]
-> Event Hubs と互換性のあるエンドポイントは常に、デバイスからクラウドへのメッセージを読み取るために AMQP プロトコルを使用します。
+> Event Hub 対応エンドポイントは、常に、デバイスからクラウドへのメッセージを読み取るために AMQP プロトコルを使用します。
 > 
 > 
 
@@ -235,12 +235,12 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
 9. **SimulatedDevice.js** ファイルを保存して閉じます。
 
 > [!NOTE]
-> わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、MSDN の記事「[Transient Fault Handling (一時的な障害処理)][lnk-transient-faults]」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
+> わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、[一時的な障害処理][lnk-transient-faults]に関する MSDN の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 > 
 > 
 
-## <a name="run-the-applications"></a>アプリケーションの実行
-これで、アプリケーションを実行する準備が整いました。
+## <a name="run-the-apps"></a>アプリの実行
+これで、アプリを実行する準備が整いました。
 
 1. コマンド プロンプトで、 **readdevicetocloudmessages** フォルダーに移動し、次のコマンドを実行して IoT Hub の監視を開始します。
    
@@ -256,16 +256,16 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
     ```
    
     ![Node.js IoT Hub device client application to send device-to-cloud messages][8]
-3. [Azure Portal][lnk-portal] の **[使用状況]** タイルには、ハブに送信されたメッセージ数が表示されます。
+3. [Azure Portal][lnk-portal] の **[使用状況]** タイルには、IoT Hub に送信されたメッセージ数が表示されます。
    
     ![Azure portal Usage tile showing number of messages sent to IoT Hub][43]
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、ハブの ID レジストリにデバイス ID を作成しました。 シミュレーション対象デバイス アプリでデバイスからクラウドへのメッセージをハブに送信できるようにするために、このデバイス ID を使用しました。 また、ハブで受け取ったメッセージを表示するアプリを作成しました。 
+このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 シミュレーション対象デバイス アプリでデバイスからクラウドへのメッセージを IoT Hub に送信できるようにするために、このデバイス ID を使用しました。 また、IoT Hub で受け取ったメッセージを表示するアプリを作成しました。 
 
 引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 
-* [デバイスの接続][lnk-connect-device]
+* [デバイスを接続する][lnk-connect-device]
 * [デバイス管理の概要][lnk-device-management]
 * [IoT Gateway SDK の概要][lnk-gateway-SDK]
 
@@ -290,12 +290,12 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
-[lnk-device-management]: iot-hub-device-management-get-started.md
+[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

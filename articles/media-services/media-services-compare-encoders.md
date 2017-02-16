@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 0124c884d3d805a407041e8ecbc5961209a9653d
-ms.openlocfilehash: c405f1bc405990ef4959e90d9e98e1629fe7f6b7
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: dca8087230b261f14e876e49b9b0fb12579b96d0
 
 
 ---
@@ -28,8 +28,8 @@ ms.openlocfilehash: c405f1bc405990ef4959e90d9e98e1629fe7f6b7
 ### <a name="a-idbillingabilling-meter-used-by-each-encoder"></a><a id="billing"></a>各エンコーダーで使用される課金メーター
 | メディア プロセッサ名 | 適用される価格 | メモ |
 | --- | --- | --- |
-| **メディア エンコーダー スタンダード** |エンコーダー |Encoding タスクは、[こちら][1]の [エンコーダー] 列に指定されている料金で、出力資産のサイズ (GB) に従って課金されます。 |
-| **メディア エンコーダー Premium ワークフロー** |プレミアム エンコーダー |Encoding タスクは、[こちら][1]の [PREMIUM エンコーダー] 列に指定されている料金で、出力資産のサイズ (GB) に従って課金されます。 |
+| **メディア エンコーダー スタンダード** |エンコーダー |エンコード タスクは、出力として生成されたすべてのメディア ファイルの合計再生時間 (分単位) に基づいて課金されます。料金は[こちら][1] (「ENCODER」列) に記載されています。 |
+| **メディア エンコーダー Premium ワークフロー** |プレミアム エンコーダー |エンコード タスクは、出力として生成されたすべてのメディア ファイルの合計再生時間 (分単位) に基づいて課金されます。料金は[こちら][1] (「PREMIUM ENCODER」列) に記載されています。 |
 
 ### <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
 | 入力コンテナー/ファイル形式 | メディア エンコーダー スタンダード | メディア エンコーダー Premium ワークフロー |
@@ -134,6 +134,6 @@ ms.openlocfilehash: c405f1bc405990ef4959e90d9e98e1629fe7f6b7
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: b52cf6f7c472d169608bc3e40096e1891f9a687b
+ms.sourcegitcommit: 59288709e706ba7f0162f5f857019ce2972e2743
+ms.openlocfilehash: 55193e8570f480b9c6b2ef9a0785ddb538749cb5
 
 
 ---
@@ -96,16 +96,16 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
    * **[Ambari Views]**: Ambari Web へのリンク。
 
      > [!IMPORTANT]
-     > HDInsight クラスターによって提供されるサービスを管理するには、Ambari Web または Ambari REST API を使用する必要があります。 Ambari の使用の詳細については、「[Ambari を使用した HDInsight クラスターの管理 (プレビュー)](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
+     > HDInsight クラスターによって提供されるサービスを管理するには、Ambari Web または Ambari REST API を使用する必要があります。 Ambari の使用の詳細については、「 [Ambari を使用した HDInsight クラスターの管理 (プレビュー)](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
      >
      >
 
      **[使用状況]**:
 
-     ![Azure ポータル HDInsight クラスター 使用状況](./media/hdinsight-administer-use-management-portal/hdinsight-portal-cluster-usage.png)
+     ![Azure Portal HDInsight クラスター使用状況](./media/hdinsight-administer-use-management-portal/hdinsight-portal-cluster-usage.png)
 5. **[設定]**をクリックします。
 
-    ![Azure ポータル HDInsight クラスター 使用状況](./media/hdinsight-administer-use-management-portal/hdinsight.portal.cluster.settings.png)
+    ![Azure Portal HDInsight クラスター使用状況](./media/hdinsight-administer-use-management-portal/hdinsight.portal.cluster.settings.png)
 
    * **[プロパティ]**: クラスターのプロパティを表示します。
    * **[クラスター AAD ID]**:
@@ -127,11 +127,11 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
    * **[ホスト名]**: クラスター名。
    * **[クラスター URL]**。
    * **[状態]**: Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization が表示されます。
-   * **[リージョン]**: Azure の場所。 サポートされている Azure の場所の一覧については、「**HDInsight の価格**」の [[リージョン]](https://azure.microsoft.com/pricing/details/hdinsight/)ボックスの一覧をご覧ください。
+   * **[リージョン]**: Azure の場所。 サポートされている Azure の場所の一覧については、「 **HDInsight の価格** 」の [[リージョン]](https://azure.microsoft.com/pricing/details/hdinsight/)ボックスの一覧をご覧ください。
    * **[データの作成日]**。
    * **[オペレーティング システム]**: **Windows** または **Linux**。
    * **[タイプ]**: Hadoop、HBase、Storm、Spark。
-   * **[バージョン]**。  [HDInsight のバージョン](hdinsight-component-versioning.md)
+   * **[バージョン]**。 [HDInsight のバージョン](hdinsight-component-versioning.md)
    * **[サブスクリプション]**: サブスクリプション名。
    * **[サブスクリプション ID]**。
    * **[プライマリ データ ソース]**。 既定の Hadoop ファイル システムとして使用される Azure BLOB ストレージ アカウント。
@@ -145,7 +145,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
 2. 左メニューから **[すべて参照]** をクリックし、**[HDInsight クラスター]** をクリックし、クラスター名をクリックします。
 3. 上部のメニューの **[削除]** をクリックし、指示に従います。
 
-「[クラスターの一時停止またはシャットダウン](#pauseshut-down-clusters)」もご覧ください。
+「 [クラスターの一時停止またはシャットダウン](#pauseshut-down-clusters)」もご覧ください。
 
 ## <a name="scale-clusters"></a>クラスターのスケール
 クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用される worker ノードの数を、クラスターを再作成することなく、変更できます。
@@ -188,10 +188,10 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
 
     CLI コマンドを使用して Storm トポロジのバランスを再調整する方法を次の例で示します。
 
-    ## <a name="reconfigure-the-topology-mytopology-to-use-5-worker-processes"></a>Reconfigure the topology "mytopology" to use 5 worker processes,
-    ## <a name="the-spout-blue-spout-to-use-3-executors-and"></a>the spout "blue-spout" to use 3 executors, and
-    ## <a name="the-bolt-yellow-bolt-to-use-10-executors"></a>the bolt "yellow-bolt" to use 10 executors
-      $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+        ## Reconfigure the topology "mytopology" to use 5 worker processes,
+        ## the spout "blue-spout" to use 3 executors, and
+        ## the bolt "yellow-bolt" to use 10 executors
+        $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
 **クラスターの規模を設定するには**
 
@@ -209,11 +209,11 @@ Hadoop ジョブの大半は、たまにしか実行されないバッチ ジョ
 このプロセスをプログラムで実行する方法は数多くあります。
 
 * Azure Data Factory を使用する。 オンデマンドおよび自己定義型の HDInsight のリンクされたサービスについては、「[Azure HDInsight のリンクされたサービス](../data-factory/data-factory-compute-linked-services.md)」および「[Azure Data Factory を使用した変換と分析](../data-factory/data-factory-data-transformation-activities.md)」をご覧ください。
-* Azure PowerShell を使用する。  「[HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)」をご覧ください。
-* Azure CLI を使用する。 「[Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)」をご覧ください。
-* HDInsight .NET SDK を使用する。 「[HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)」をご覧ください。
+* Azure PowerShell を使用する。  「 [HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)」をご覧ください。
+* Azure CLI を使用する。 「 [Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)」をご覧ください。
+* HDInsight .NET SDK を使用する。 「 [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)」をご覧ください。
 
-価格情報については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。 ポータルからクラスターを削除する方法については、「[クラスターの削除](#delete-clusters)
+価格情報については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。 ポータルからクラスターを削除する方法については、「[クラスターの削除](#delete-clusters)
 
 ## <a name="change-cluster-username"></a>クラスターのユーザー名の変更
 HDInsight クラスターは、2 つのユーザー アカウントを持つことができます。 HDInsight クラスターのユーザー アカウントは、作成プロセスで作成されます。 RDP を使用してクラスターにアクセスするために、RDP ユーザー アカウントを作成することもできます。 「[リモート デスクトップを有効にする](#connect-to-hdinsight-clusters-by-using-rdp)」を参照してください。
@@ -304,7 +304,7 @@ HDInsight クエリ コンソールには、次の機能が用意されていま
 また、HDInsight コンソールの **[Hadoop UI]** から **[ファイル システムの参照]** ユーティリティを使用することもできます。  「[HDInsight クエリ コンソールを開く](#open-hdinsight-query-console)」をご覧ください。
 
 ## <a name="monitor-cluster-usage"></a>クラスターの使用状況の監視
-HDInsight クラスター ブレードの **[使用状況]** セクションには、サブスクリプションで HDInsight 用に使用できるコアの数、このクラスターに割り当てられているコアの数、およびこのクラスター内のノードへのコアの割り当て方法に関する情報が表示されます。 「[クラスターの一覧と表示](#list-and-show-clusters)」をご覧ください。
+HDInsight クラスター ブレードの **[使用状況]** セクションには、サブスクリプションで HDInsight 用に使用できるコアの数、このクラスターに割り当てられているコアの数、およびこのクラスター内のノードへのコアの割り当て方法に関する情報が表示されます。 「 [クラスターの一覧と表示](#list-and-show-clusters)」をご覧ください。
 
 > [!IMPORTANT]
 > HDInsight クラスターによって提供されるサービスを監視するには、Ambari Web または Ambari REST API を使用する必要があります。 Ambari の使用の詳細については、「[Ambari を使用した HDInsight クラスターの管理 (プレビュー)](hdinsight-hadoop-manage-ambari.md)

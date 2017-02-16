@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b3cec0fd2547b68ff3795fd7a4c22fe927eb2a4f
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 96d100d69a7f4989153b293d1fa1ab249a82c1c2
 
 
 ---
@@ -109,42 +109,58 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 Git ツールを目的のフォルダーで開き、次のコマンドを実行して、Git リポジトリをローカル コンピューターに複製します (コマンドは発行者ポータルで入手できます)。
 
-    git clone https://bugbashdev4.scm.azure-api.net/ 
+```
+git clone https://bugbashdev4.scm.azure-api.net/
+```
 
 入力を求められたら、ユーザー名とパスワードを入力します。
 
 エラーが発生する場合は、次の例のように、 `git clone` コマンドを変更してユーザー名とパスワードを含めてみてください。
 
-    git clone https://username:password@bugbashdev4.scm.azure-api.net/
+```
+git clone https://username:password@bugbashdev4.scm.azure-api.net/
+```
 
 それでもエラーが発生する場合は、コマンドのパスワード部分をエンコードする URL を試してください。 これを簡単に行う 1 つの方法では、Visual Studio を開き、 **[イミディエイト ウィンドウ]**で次のコマンドを発行します。 **[イミディエイト ウィンドウ]** を開くには、Visual Studio で任意のソリューションまたはプロジェクトを開き (または新しく空のコンソール アプリケーションを作成し)、**[デバッグ]** メニューから **[ウィンドウ]**、**[イミディエイト]** の順に選択します。
 
-    ?System.NetWebUtility.UrlEncode("password from publisher portal")
+```
+?System.NetWebUtility.UrlEncode("password from publisher portal")
+```
 
 エンコードされたパスワードをユーザー名とリポジトリの場所と共に使用して Git コマンドを作成します。
 
-    git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
+```
+git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
+```
 
 リポジトリの複製が完了したら、ローカル ファイル システムのリポジトリを表示して操作できます。 詳細については、「 [ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス](#file-and-folder-structure-reference-of-local-git-repository)」を参照してください。
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>最新のサービス インスタンス構成を使用してローカル リポジトリを更新するには
 発行者ポータルまたは REST API で API Management サービス インスタンスに変更を加える場合、これらの変更をリポジトリに保存しておく必要があります。その後、最新の変更を使用してローカル リポジトリを更新できます。 これを行うには、発行者ポータルの **[構成リポジトリ]** タブで **[構成をリポジトリに保存する]** をクリックし、ローカル リポジトリで次のコマンドを発行します。
 
-    git pull
+```
+git pull
+```
 
 `git pull` を実行する前に、ローカル リポジトリのフォルダーに移動してください。 `git clone` コマンドを完了した直後に、次のようなコマンドを使用して、ディレクトリをリポジトリに変更する必要があります。
 
-    cd bugbashdev4.scm.azure-api.net/
+```
+cd bugbashdev4.scm.azure-api.net/
+```
 
 ## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>ローカル リポジトリからサーバー リポジトリに変更をプッシュするには
 ローカル リポジトリからサーバー リポジトリに変更をプッシュするには、変更をコミットした後、サーバー リポジトリにプッシュする必要があります。 変更をコミットするには、Git コマンド ツールを開き、ローカル リポジトリのディレクトリに切り替えて、次のコマンドを発行します。
 
-    git add --all
-    git commit -m "Description of your changes"
+```
+git add --all
+git commit -m "Description of your changes"
+```
 
 コミットをすべてサーバーにプッシュするには、次のコマンドを実行します。
 
-    git push
+```
+git push
+```
 
 ## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>API Management サービス インスタンスにサービス構成の変更をデプロイするには
 ローカルの変更をコミットし、サーバー リポジトリにプッシュしたら、これらの変更を API Management サービス インスタンスにデプロイできます。
@@ -190,19 +206,21 @@ REST API を使用してこの操作を実行する方法については、「 [
 ### <a name="root-api-management-folder"></a>api-management ルート フォルダー
 `api-management` ルート フォルダーには、`configuration.json` ファイルがあります。このファイルには、サービス インスタンスに関する最上位の情報が次の形式で含まれています。
 
-    {
-      "settings": {
-        "RegistrationEnabled": "True",
-        "UserRegistrationTerms": null,
-        "UserRegistrationTermsEnabled": "False",
-        "UserRegistrationTermsConsentRequired": "False",
-        "DelegationEnabled": "False",
-        "DelegationUrl": "",
-        "DelegatedSubscriptionEnabled": "False",
-        "DelegationValidationKey": ""
-      },
-      "$ref-policy": "api-management/policies/global.xml"
-    }
+```json
+{
+  "settings": {
+    "RegistrationEnabled": "True",
+    "UserRegistrationTerms": null,
+    "UserRegistrationTermsEnabled": "False",
+    "UserRegistrationTermsConsentRequired": "False",
+    "DelegationEnabled": "False",
+    "DelegationUrl": "",
+    "DelegatedSubscriptionEnabled": "False",
+    "DelegationValidationKey": ""
+  },
+  "$ref-policy": "api-management/policies/global.xml"
+}
+```
 
 最初の 4 つの設定 (`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled`、`UserRegistrationTermsConsentRequired`) は、**[セキュリティ]** セクションの **[ID]** タブにある次の設定に対応します。
 
@@ -303,6 +321,6 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

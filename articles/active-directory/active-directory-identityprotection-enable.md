@@ -6,18 +6,17 @@ keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, ア�
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: f7a7ffaf-76bf-4cc7-96a1-86c944275c82
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7321e73bf30e8cba5a7a61a6705d285617f70122
+ms.sourcegitcommit: f231252c222c5520d0a66f9b40749bd203545f16
+ms.openlocfilehash: 44ee1e58b65b23eeb3fa3710fcb29a1646d5f3ad
 
 
 ---
@@ -32,16 +31,16 @@ Azure Active Directory Identity Protection は、不審なサインイン アク
 1. Azure Portal に全体管理者として[サインオン](https://ms.portal.azure.com/)します。 
 2. Azure Portal で **[Marketplace]**をクリックします。
    
-    ![[作成]](./media/active-directory-identityprotection-enable/01.png "Create")
+    ![作成](./media/active-directory-identityprotection-enable/01.png "作成")
 3. アプリケーションの一覧で **[セキュリティ + ID]**をクリックします。
    
-    ![[作成]](./media/active-directory-identityprotection-enable/02.png "Create")
+    ![作成](./media/active-directory-identityprotection-enable/02.png "作成")
 4. **[Azure AD Identity Protection]**をクリックします。
    
-    ![作成](./media/active-directory-identityprotection-enable/03.png "Create")
+    ![作成](./media/active-directory-identityprotection-enable/03.png "作成")
 5. **[Azure AD Identity Protection]** ブレードで、**[作成]** をクリックします。
    
-    ![作成](./media/active-directory-identityprotection-enable/04.png "Create")
+    ![作成](./media/active-directory-identityprotection-enable/04.png "作成")
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
@@ -49,6 +48,6 @@ Azure Active Directory Identity Protection は、不審なサインイン アク
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

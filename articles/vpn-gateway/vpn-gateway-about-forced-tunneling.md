@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cc58780b3f278ef8a0ad46b507dec8f3e7bf364c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 33ca336c6ae3ffc68997d21c4d7da9275ff48a00
 
 
 ---
@@ -69,7 +69,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 * Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 * 構成済みの仮想ネットワーク。 
-* 最新バージョンの Azure PowerShell コマンドレット。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md) 」を参照してください。
+* 最新バージョンの Azure PowerShell コマンドレット。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
 
 ## <a name="configure-forced-tunneling"></a>強制トンネリングについて
 次の手順は、仮想ネットワークで強制トンネリングを指定するのに役立ちます。 構成手順は、VNet ネットワーク構成ファイルに対応します。
@@ -163,6 +163,6 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

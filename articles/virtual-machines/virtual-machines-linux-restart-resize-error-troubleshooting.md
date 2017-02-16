@@ -13,11 +13,11 @@ ms.topic: support-article
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.workload: required
-ms.date: 09/09/2016
+ms.date: 01/10/2017
 ms.author: delhan
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 9f85988268d4c832c46da1790c83d4a78141f489
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: f237c5ffe9e95d538959e2d622bb643c9986f0d2
 
 
 ---
@@ -26,12 +26,12 @@ ms.openlocfilehash: 9f85988268d4c832c46da1790c83d4a78141f489
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="collect-audit-logs"></a>監査ログの収集
-トラブルシューティングを開始するには、監査ログを収集して問題に関連するエラーを特定します。 このプロセスの詳細については、次のリンクをご覧ください。
+## <a name="collect-activity-logs"></a>アクティビティ ログを収集する
+トラブルシューティングを開始するには、アクティビティ ログを収集して問題に関連するエラーを特定します。 このプロセスの詳細については、次のリンクをご覧ください。
 
-[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)
+[デプロイ操作の表示](../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[リソース マネージャーの監査操作](../resource-group-audit.md)
+[アクティビティ ログを表示して Azure リソースを管理する](../azure-resource-manager/resource-group-audit.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>問題: 停止している VM の起動時のエラー
 停止している VM を起動しようとしたときに、割り当てエラーが発生します。
@@ -68,6 +68,6 @@ Azure で新しい Linux VM を作成するときに問題が発生する場合�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

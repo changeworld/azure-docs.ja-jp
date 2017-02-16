@@ -1,5 +1,5 @@
 ---
-title: "Eclipse で Java 用に Application Insights を使う"
+title: "Eclipse で Java 用に Azure Application Insights を使う | Microsoft docs"
 description: "Eclipse プラグインを使用して、Java Web サイトのパフォーマンスと利用状況を Application Insights で監視できるようにします"
 services: application-insights
 documentationcenter: java
@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2016
+ms.date: 12/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1f7f06647cc437ccbf70a8871e96ddbe98f83247
+ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
+ms.openlocfilehash: cfdb24ea2d461d85cfdf508a9bfabe288ef86e3c
 
 
 ---
@@ -28,7 +28,7 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
 必要なものは次のとおりです。
 
 * Oracle JRE 1.6 以降。
-* [Microsoft Azure](https://azure.microsoft.com/) サブスクリプション。 ([無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
+* [Microsoft Azure](https://azure.microsoft.com/) サブスクリプション。 
 * [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/)Indigo 以降。
 * Windows 7 以降または Windows Server 2008 以降。
 
@@ -39,7 +39,7 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
    
     ![[Help]、[Install New Software]](./media/app-insights-java-eclipse/0-plugin.png)
 2. SDK は、http://dl.windowsazure.com/eclipse の [Azure Toolkit] の下にあります。 
-3.  **[Contact all update sites]**
+3. **[Contact all update sites]**
    
     ![Application Insights SDK の場合、[Contact all update sites] チェック ボックスをオフにします](./media/app-insights-java-eclipse/1-plugin.png)
 
@@ -80,7 +80,7 @@ HTTP 要求データが概要ブレードに表示されます  (表示されな
 
 ![名前別の要求数](./media/app-insights-java-eclipse/6-barchart.png)
 
-[メトリックの詳細については、こちらをご覧ください。][メトリック]
+[メトリックの詳細についてはこちらをご覧ください。][metrics]
 
 要求のプロパティを表示すると、その要求に関連付けられているテレメトリ イベント (要求や例外など) が表示されます。
 
@@ -100,7 +100,7 @@ HTML ファイルの先頭にコード スニペットを挿入します。
 
 ![セッション、ユーザー、ページ ビュー](./media/app-insights-java-eclipse/appinsights-47usage-2.png)
 
-[クライアント側のテレメトリの設定方法の詳細についてはこちら。][使用状況]
+[クライアント側のテレメトリの設定方法の詳細についてはこちら。][usage]
 
 ## <a name="publish-your-application"></a>アプリケーションの発行
 次に、サーバーにアプリを発行してユーザーがアプリを使用できるようにし、ポータルに表示されるテレメトリを監視します。
@@ -176,7 +176,7 @@ HTML ファイルの先頭にコード スニペットを挿入します。
 * counterName - パフォーマンス カウンターの名前。
 * instanceName - パフォーマンス カウンター カテゴリ インスタンスの名前、または空の文字列 ("") (カテゴリにインスタンスが 1 つ含まれている場合)。 categoryName が Process であり、アプリが実行されている現在の JVM プロセスからパフォーマンス カウンターを収集する場合は、 `"__SELF__"`を指定します。
 
-パフォーマンス カウンターは、[メトリックス エクスプローラー][メトリック]でカスタム メトリックとして表示されます。
+パフォーマンス カウンターは、[メトリックス エクスプローラー][metrics]でカスタム メトリックとして表示されます。
 
 ![](./media/app-insights-java-eclipse/12-custom-perfs.png)
 
@@ -184,7 +184,7 @@ HTML ファイルの先頭にコード スニペットを挿入します。
 * [Application Insights プラグインを使用して collectd をインストール](app-insights-java-collectd.md) し、さまざまな種類のシステムとネットワークに関するデータを取得します。
 
 ## <a name="availability-web-tests"></a>可用性 Web テスト
-Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。 [設定するには][可用性]、下へスクロールして [可用性] をクリックします。
+Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。 [設定するには][availability]、下へスクロールして [可用性] をクリックします。
 
 ![下にスクロール、[可用性] をクリック、[Web テストを追加]](./media/app-insights-java-eclipse/31-config-web-test.png)
 
@@ -192,7 +192,7 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 
 ![Web テストの例](./media/app-insights-java-eclipse/appinsights-10webtestresult.png)
 
-[可用性 Web テストの詳細については、こちらをご覧ください。][可用性] 
+可用性 Web テストの詳細については、[こちら][availability]をご覧ください。 
 
 ## <a name="diagnostic-logs"></a>診断ログ
 トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
@@ -204,32 +204,32 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 
 コードは、Web ページの JavaScript とサーバー側 Java のどちらにも挿入できます。
 
-[カスタムのテレメトリの詳細についてはこちら][track]
+[カスタム テレメトリの詳細についてはこちら][track]
 
 ## <a name="next-steps"></a>次のステップ
 #### <a name="detect-and-diagnose-issues"></a>問題の検出と診断
-* Web クライアントからパフォーマンス テレメトリを取得するには、[Web クライアントのテレメトリを追加][使用状況]します。
-* [Web テストを設定][可用性]して、アプリケーションが動作していて応答することを確認します。
-* 問題の診断に役立つ情報を得るには、[イベントおよびログを検索][診断]します。
-* [Log4J または Logback トレースをキャプチャします。][javalogs]
+* [Web クライアントのテレメトリを追加][usage]して、Web クライアントからパフォーマンス テレメトリを取得します。
+* [Web テストを設定][availability]して、アプリケーションが動作していて応答できることを確認します。
+* 問題の診断に役立つ情報を得るには、[イベントおよびログを検索][diagnostic]します。
+* [Log4J または Logback トレースをキャプチャします][javalogs]
 
 #### <a name="track-usage"></a>利用状況を追跡する
-* ビューや基本的なユーザー メトリックを監視するには、[Web クライアント テレメトリを追加][使用状況]します。
-* クライアント側とサーバー側でアプリケーションの利用状況を確認するには、[カスタム イベントおよびメトリックを追跡][track]します。
+* [Web クライアント テレメトリを追加][usage]して、ビューや基本的なユーザー メトリックを監視します。
+* [カスタム イベントおよびメトリックを追跡][track]して、クライアント側とサーバー側でアプリケーションの利用状況を確認します。
 
 <!--Link references-->
 
-[可用性]: app-insights-monitor-web-app-availability.md
-[診断]: app-insights-diagnostic-search.md
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
 [java]: app-insights-java-get-started.md
 [javalogs]: app-insights-java-trace-logs.md
-[メトリック]: app-insights-metrics-explorer.md
+[metrics]: app-insights-metrics-explorer.md
 [track]: app-insights-api-custom-events-metrics.md
-[使用状況]: app-insights-web-track-usage.md
+[usage]: app-insights-web-track-usage.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

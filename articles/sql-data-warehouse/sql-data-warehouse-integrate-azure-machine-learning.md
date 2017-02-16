@@ -15,15 +15,15 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f30cfab50407e31ccad61888d7de40e4f0fcba24
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 30dcbe33b359afc3f118effce07f6574bb35d5d5
 
 
 ---
 # <a name="use-azure-machine-learning-with-sql-data-warehouse"></a>SQL Data Warehouse での Azure Machine Learning の使用
-Azure Machine Learning は、完全に管理された予測分析サービスです。このサービスを使用して、SQL Data Warehouse のデータに対して予測モデルを作成し、いつでも利用できる Web サービスとして発行することができます。 予測分析と機械学習の基礎については、[「Azure の Machine Learning の概要」][Introduction to Machine Learning on Azure] をご覧ください。  機械学習モデルの作成、トレーニング、スコア付け、およびテストの方法については、[実験作成チュートリアル][実験作成チュートリアル] のページをご覧ください。
+Azure Machine Learning は、完全に管理された予測分析サービスです。このサービスを使用して、SQL Data Warehouse のデータに対して予測モデルを作成し、いつでも利用できる Web サービスとして発行することができます。 予測分析と機械学習の基礎については、[Azure の Machine Learning の概要][Introduction to Machine Learning on Azure]に関する記事をご覧ください。  機械学習モデルの作成、トレーニング、スコア付け、およびテストの方法については、[実験作成チュートリアル][Create experiment tutorial]のページをご覧ください。
 
-この記事では、[Azure Machine Learning Studio][Azure Machine Learning Studio] を利用して次を実行する方法について説明します。
+この記事では、[Azure Machine Learning Studio][Azure Machine Learning Studio] を使用して次のことを行う方法を説明します。
 
 * データベースからデータを読み取って予測モデルを作成、トレーニング、スコア計算する
 * データベースにデータを書き込む
@@ -42,7 +42,7 @@ Machine Learning Studio ウィンドウの下部にある [+新規] をクリッ
 リーダー モジュールを選択し、プロパティ ウィンドウに情報を入力します。
 
 1. [データ ソース] として [Azure SQL Database] を選択します。
-2. [データベース サーバー名]: サーバー名を入力します。 これは、[Azure ポータル][Azure ポータル] を使用して見つけることができます。
+2. [データベース サーバー名]: サーバー名を入力します。 これは、[Azure Portal][Azure portal] を使用して見つけることができます。
 
 ![][server_name]
 
@@ -78,7 +78,7 @@ FROM dbo.DimProduct;
 
 ![][model]
 
-機械学習モデルの作成、トレーニング、スコア付け、およびテストの方法の詳細については、[実験作成チュートリアル][実験作成チュートリアル] のページをご覧ください。
+機械学習モデルの作成、トレーニング、スコア付け、およびテストの方法については、[実験作成チュートリアル][Create experiment tutorial]のページをご覧ください。
 
 ## <a name="write-data-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse へのデータの書き込み
 AdventureWorksDW データベースの ProductPriceForecast テーブルに結果セットを書き込みます。
@@ -92,7 +92,7 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 ライター モジュールを選択し、プロパティ ウィンドウに情報を入力します。
 
 1. [データ ソース] として [Azure SQL Database] を選択します。
-2. [データベース サーバー名]: サーバー名を入力します。 これは、[Azure ポータル][Azure ポータル] を使用して見つけることができます。
+2. [データベース サーバー名]: サーバー名を入力します。 これは、[Azure Portal][Azure portal] を使用して見つけることができます。
 3. [データベース名]: 指定したサーバー上のデータベースの名前を入力します。
 4. [サーバー ユーザー アカウント名]: データベースに対する書き込みアクセス許可を持つアカウントのユーザー名を入力します。
 5. [サーバー ユーザー アカウントのパスワード]: 指定したユーザー アカウントのパスワードを入力します。
@@ -109,7 +109,7 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 2. 実験が終了すると、すべてのモジュールに緑色のチェック マークが付けられ、正常に完了したことが示されます。
 
 ## <a name="next-steps"></a>次のステップ
-開発に関するその他のヒントについては、[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要) (SQL Data Warehouse の開発の概要)][SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要) (SQL Data Warehouse の開発の概要)]に関するページを参照してください。
+開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse development overview]に関する記事をご覧ください。
 
 <!--Image references-->
 
@@ -123,20 +123,20 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 
 <!--Article references-->
 
-[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要) (SQL Data Warehouse の開発の概要)]: ./sql-data-warehouse-overview-develop.md
-[実験作成チュートリアル]: https://azure.microsoft.com/documentation/articles/machine-learning-create-experiment/
-[Azure での機械学習の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
+[Create experiment tutorial]: https://azure.microsoft.com/documentation/articles/machine-learning-create-experiment/
+[Introduction to machine learning on Azure]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
 [Azure Machine Learning Studio]: https://studio.azureml.net/Home
-[Azure ポータル]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-[Azure Machine Learning のドキュメント]: http://azure.microsoft.com/documentation/services/machine-learning/
+[Azure Machine Learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/25/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 61ab873e77e3f7a691c815ba48c7f29b45269db9
+ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
+ms.openlocfilehash: dfe1cddd8a0d2558eecff8123cc5ce6ebaad97e8
 
 
 ---
@@ -27,7 +27,7 @@ Azure リソース マネージャー テンプレートを使用して、ワー
 
 定義自体の例については、「 [ロジック アプリの定義の作成](app-service-logic-author-definitions.md)」を参照してください。 
 
-テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
+テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
 完全なテンプレートについては、 [ロジック アプリのテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)に関するページを参照してください。
 
@@ -113,6 +113,6 @@ Azure リソース マネージャー テンプレートを使用して、ワー
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

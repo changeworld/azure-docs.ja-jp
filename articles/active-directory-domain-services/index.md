@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Active Directory Domain Services を使用して、ドメイン コントローラーをデプロイせずに Azure 仮想マシンをドメインに参加させ、グループ ポリシーで管理する方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 55dedcab5b8e62b3666cffcfc7d9a0a31c624784
-ms.openlocfilehash: d3a6b967921edad13479c615ebec8edc9e568458
+ms.sourcegitcommit: 5c25e7f81a4f2219c244044ea70416d1e0c63b4e
+ms.openlocfilehash: b05e7bfbc89de74937daa7daf578aa8a9bb39d64
 
 ---
 # <a name="active-directory-domain-services-documentation"></a>Active Directory Domain Services のドキュメント
 
-Azure AD Domain Services (DS) では、Windows Server Active Directory と完全に互換性のある管理対象ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証など) を提供します。  このサービスにより、さまざまなコンピューティング ソリューションを機敏にデプロイすることができます。
+Active Directory Domain Services を使用して、ドメイン コントローラーをデプロイせずに、Azure 仮想マシンをドメインに参加させる方法について説明します。 チュートリアルなどのドキュメントでは、グループ ポリシーを使用して仮想マシンを管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -168,6 +169,6 @@ Active Directory Domain Services のドキュメントのダウンロード </di
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

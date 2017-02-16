@@ -43,14 +43,14 @@ ms.openlocfilehash: f95aecd18d5231413678669d01d16387737e9db2
 ### <a name="to-enable-the-application-integration-for-aha-perform-the-following-steps"></a>Aha! のアプリケーション統合を有効にするには、次の手順に従います。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-   ![[Active Directory]](./media/active-directory-saas-aha-tutorial/IC700993.png "Active Directory")
+   ![Active Directory](./media/active-directory-saas-aha-tutorial/IC700993.png "Active Directory")
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-   ![[アプリケーション]](./media/active-directory-saas-aha-tutorial/IC700994.png "Applications")
+   ![アプリケーション](./media/active-directory-saas-aha-tutorial/IC700994.png "Applications")
 4. ページの下部にある **[追加]** をクリックします。
    
-   ![[アプリケーションの追加]](./media/active-directory-saas-aha-tutorial/IC749321.png "Add application")
+   ![アプリケーションの追加](./media/active-directory-saas-aha-tutorial/IC749321.png "Add application")
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-aha-tutorial/IC749322.png "Add an application from gallerry")
@@ -68,18 +68,18 @@ ms.openlocfilehash: f95aecd18d5231413678669d01d16387737e9db2
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順に従います。
 1. Azure クラシック ポータルの **Aha!**  アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
-   ![Configure Single Sign-On](./media/active-directory-saas-aha-tutorial/IC798946.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-aha-tutorial/IC798946.png "Configure Single Sign-On")
 2. **[ユーザーの Aha! へのアクセスを設定してください]**  ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-aha-tutorial/IC798947.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-aha-tutorial/IC798947.png "Configure Single Sign-On")
 3. **[アプリケーション URL の構成]** ページの **[Aha! サインオン URL**] テキスト ボックスに、Aha! アプリケーションへのサインオンにユーザーが使用する URL  (例: "*https://company.aha.io/session/new*") を入力し、**[次へ]** をクリックします。
    
-   ![Configure App URL](./media/active-directory-saas-aha-tutorial/IC798948.png "Configure App URL")
+   ![アプリケーション URL の構成](./media/active-directory-saas-aha-tutorial/IC798948.png "Configure App URL")
 4. **[Aha! でのシングル サインオンの構成]**  ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターでメタデータ ファイルをローカルに保存します。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-aha-tutorial/IC798949.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-aha-tutorial/IC798949.png "Configure Single Sign-On")
 5. 別の Web ブラウザーのウィンドウで、管理者として Aha! 企業サイトにログインします。
-6. 上部のメニューで [ **設定**] をクリックします。
+6. 上部のメニューで **[Settings]**をクリックします。
    
    ![設定](./media/active-directory-saas-aha-tutorial/IC798950.png "Settings")
 7. [ **アカウント**] クリックします。
@@ -101,7 +101,7 @@ ms.openlocfilehash: f95aecd18d5231413678669d01d16387737e9db2
     4. **[Update]**をクリックします。
 11. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-aha-tutorial/IC798955.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-aha-tutorial/IC798955.png "Configure Single Sign-On")
     
     ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 
@@ -123,7 +123,7 @@ Aha! の場合、プロビジョニングは自動化されています。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **Aha!** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-   ![[ユーザーの割り当て]](./media/active-directory-saas-aha-tutorial/IC798956.png "Assign Users")
+   ![ユーザーの割り当て](./media/active-directory-saas-aha-tutorial/IC798956.png "Assign Users")
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
    ![はい](./media/active-directory-saas-aha-tutorial/IC767830.png "Yes")
@@ -133,6 +133,6 @@ Aha! の場合、プロビジョニングは自動化されています。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

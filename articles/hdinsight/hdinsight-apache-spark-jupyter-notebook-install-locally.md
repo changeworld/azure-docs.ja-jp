@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a5008302306f6024d69ea82c537990ef4360495d
+ms.sourcegitcommit: 57df4ab0b2a1df6631eb6e67a90f69cebb1dfe75
+ms.openlocfilehash: e6aeacd091e58a010348c031294f7b7c98df57fb
 
 
 ---
@@ -43,30 +43,35 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
 1. ご使用のプラットフォーム用の [Anaconda インストーラー](https://www.continuum.io/downloads) をダウンロードし、セットアップ プログラムを実行します。 セットアップ ウィザードを実行する過程で、Anaconda を PATH 変数に追加するためのオプションを忘れずに選択してください。
 2. 次のコマンドを実行して Jupyter をインストールします。
-   
+
         conda install jupyter
-   
+
     Jupyter のインストールの詳細については、 [Anaconda を使用した Jupyter のインストール](http://jupyter.readthedocs.io/en/latest/install.html)に関するページを参照してください。
 
 ## <a name="install-the-kernels-and-spark-magic"></a>カーネルと Spark マジックをインストールする
 Spark マジック、PySpark カーネル、および Spark カーネルのインストール手順については、GitHub の [sparkmagic ドキュメント](https://github.com/jupyter-incubator/sparkmagic#installation) を参照してください。
 
+クラスター v3.4 の場合は、`pip install sparkmagic==0.2.3` を実行して sparkmagic 0.5.0 をインストールします。
+
+クラスター v3.5 の場合は、`pip install sparkmagic==0.8.4` を実行して sparkmagic 0.8.4 をインストールします。
+
 ## <a name="configure-spark-magic-to-access-the-hdinsight-spark-cluster"></a>HDInsight の Spark クラスターにアクセスするように Spark マジックを構成する
 このセクションでは、先ほどインストールした Spark マジックに対し、Apache Spark クラスターに接続するための構成を行います。Apache Spark クラスターは、あらかじめ Azure HDInsight に作成しておく必要があります。
 
 1. Jupyter の構成情報は通常、ユーザーの home ディレクトリに格納されます。 home ディレクトリは、任意の OS プラットフォームで以降に示したコマンドを入力して検索できます。
-   
+
     Python シェルを起動します。 コマンド ウィンドウで次のように入力します。
-   
+
         python
-   
+
     Python シェルで、次のコマンドを入力して home ディレクトリを特定します。
-   
+
         import os
         print(os.path.expanduser('~'))
+
 2. home ディレクトリに移動して **.sparkmagic** というフォルダーを作成します (まだ存在しない場合)。
 3. このフォルダーに **config.json** というファイルを作成し、次の JSON スニペットを追加します。
-   
+
         {
           "kernel_python_credentials" : {
             "username": "{USERNAME}",
@@ -79,16 +84,36 @@ Spark マジック、PySpark カーネル、および Spark カーネルのイ�
             "url": "https://{CLUSTERDNSNAME}.azurehdinsight.net/livy"
           }
         }
+
 4. **{USERNAME}****{CLUSTERDNSNAME}****{BASE64ENCODEDPASSWORD}**は、それぞれ適切な値に置き換えてください。 base64 エンコード パスワードは、ご利用のプログラミング言語のユーティリティまたはオンライン ユーティリティを使用して、実際のパスワードから生成してください。 コマンド プロンプトから実行する単純な Python スニペットの例を以下に示します。
-   
+
         python -c "import base64; print(base64.b64encode('{YOURPASSWORD}'))"
-5. Jupyter を起動します。 コマンド プロンプトから次のコマンドを使用します。
-   
+
+5. `config.json` で右側のハートビート設定を構成します。
+
+    * `sparkmagic 0.5.0` (クラスター V3.4) の場合は、次が含まれます。
+
+            "should_heartbeat": true,
+            "heartbeat_refresh_seconds": 5,
+            "heartbeat_retry_seconds": 1
+
+    * `sparkmagic 0.8.4` (クラスター V3.5) の場合は、次が含まれます。
+
+            "heartbeat_refresh_seconds": 5,
+            "livy_server_heartbeat_timeout_seconds": 60,
+            "heartbeat_retry_seconds": 1
+
+    >[!TIP]
+    >ハートビートが送信され、セッションがリークしないことが確認されます。 コンピューターがスリープ状態になるかシャットダウンすると、ハートビートは送信されず、セッションがクリーンアップされることに注意してください。 クラスター v3.4 の場合、この動作を無効にするには、Ambari UI から Livy config `livy.server.interactive.heartbeat.timeout` を `0` に設定します。 クラスター v3.5 の場合、上記の 3.5 構成を設定しないと、セッションは削除されません。
+
+6. Jupyter を起動します。 コマンド プロンプトから次のコマンドを使用します。
+
         jupyter notebook
-6. Jupyter Notebook を使用してクラスターに接続できること、カーネルに備わっている Spark マジックを使用できることを確認します。 次の手順に従います。
-   
+
+7. Jupyter Notebook を使用してクラスターに接続できること、カーネルに備わっている Spark マジックを使用できることを確認します。 次の手順に従います。
+
    1. 新しい Notebook を作成します。 右隅にある **[新規]**をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。
-      
+
        ![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Create a new Jupyter notebook")
 
         **[PySpark]**をクリックします。
@@ -101,7 +126,8 @@ Spark マジック、PySpark カーネル、および Spark カーネルのイ�
 
         出力結果が正しく得られた場合、HDInsight クラスターへの接続テストは完了です。
 
-    >[AZURE.TIP] 別のクラスターに接続するようにノートブックの構成を更新する必要がある場合は、前の手順 3. を参照して、config.json の一連の値を更新してください。 
+    >[!TIP]
+    >別のクラスターに接続するようにノートブックの構成を更新する必要がある場合は、前の手順 3. を参照して、config.json の一連の値を更新してください。
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Jupyter をローカル コンピューターにインストールする理由
 Jupyter をローカル コンピューターにインストールし、HDInsight 上の Spark クラスターに接続するケースとしては、さまざまな理由が考えられます。
@@ -114,8 +140,8 @@ Jupyter をローカル コンピューターにインストールし、HDInsigh
 
 > [!WARNING]
 > Jupyter がローカル コンピューターにインストールされている場合、同じ Spark クラスター上で複数のユーザーが同時に同じノートブックを実行できます。 そのような状況では、複数の Livy セッションが作成されます。 問題が発生してデバッグが必要となった場合、それは Livy セッションとユーザーの対応関係を追跡する複雑な作業となります。
-> 
-> 
+>
+>
 
 ## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
@@ -144,7 +170,6 @@ Jupyter をローカル コンピューターにインストールし、HDInsigh
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

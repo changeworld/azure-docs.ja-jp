@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2016
+ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: aa20b20c86763791eb579883b5273ea79cc714b5
-ms.openlocfilehash: 9eae913bfe26a2e395658462352a92bd16eebb65
+ms.sourcegitcommit: ce4d51c4ed38645ee81325404ff7214f845d5bf0
+ms.openlocfilehash: 317f3be6cb39da7c7c57f7f368c750672609726e
 
 
 ---
@@ -26,21 +26,20 @@ Azure AD Connect は、世界中の Azure AD と Office 365 のインスタン�
 ## <a name="microsoft-cloud-germany"></a>Microsoft Cloud Germany
 [Microsoft Cloud Germany](http://www.microsoft.de/cloud-deutschland) は、ドイツのデータ トラスティによって運営されている主権のあるクラウドです。
 
-このクラウドは現在プレビューの段階です。 通常はユーザーが自ら行うことができるドメインの確認などのシナリオの多くは、事業者によって行われる必要があります。 プレビューに参加する方法の詳細については、最寄りの Microsoft の担当者にお問い合わせください。
-
 | プロキシ サーバーで開く URL |
 | --- |
 | \*.microsoftonline.de |
 | \*.windows.net |
 | +証明書の失効リスト |
 
-Azure AD ディレクトリにサインインするときは、onmicrosoft.de ドメインのアカウントを使用する必要があります。
+Azure AD テナントにサインインするときは、onmicrosoft.de ドメインのアカウントを使用する必要があります。
 
 Microsoft Cloud Germany に現在ない機能:
 
-* Azure AD Connect Health は使用できません。
-* 自動更新は使用できません。
-* パスワード ライトバックは使用できません。
+* **Azure AD Connect Health** は使用できません。
+* **自動更新**は使用できません。
+* **パスワード ライトバック**は使用できません。
+* その他の Azure AD Premium サービスは使用できません。
 
 ## <a name="microsoft-azure-government-cloud"></a>Microsoft Azure Government クラウド
 [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/) は、米国政府向けクラウドです。
@@ -53,7 +52,7 @@ Microsoft Cloud Germany に現在ない機能:
 | \*.gov.us.microsoftonline.com |
 | +証明書の失効リスト |
 
-Azure AD Connect は、Azure AD ディレクトリが Government クラウドにあることを自動的に検出できません。 そのため、Azure AD Connect のインストール時に次の操作を実行する必要があります。
+Azure AD Connect は、Azure AD テナントが Government クラウドにあることを自動的に検出できません。 そのため、Azure AD Connect のインストール時に次の操作を実行する必要があります。
 
 1. Azure AD Connect のインストールを開始します。
 2. 使用許諾契約書への同意が求められる最初のページが表示されたら、先に進まずに、インストール ウィザードを実行中のままにしておきます。
@@ -62,16 +61,16 @@ Azure AD Connect は、Azure AD ディレクトリが Government クラウドに
 
 Microsoft Azure Government クラウドに現在ない機能:
 
-* Azure AD Connect Health は使用できません。
-* 自動更新は使用できません。
-* パスワード ライトバックは使用できません。
+* **Azure AD Connect Health** は使用できません。
+* **自動更新**は使用できません。
+* **パスワード ライトバック**は使用できません。
+* その他の Azure AD Premium サービスは使用できません。
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

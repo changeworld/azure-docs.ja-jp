@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: cf9a9631-56aa-4985-a565-1cacc297871d
 ms.service: sql-database
+ms.custom: migrate and move; how to
 ms.devlang: NA
 ms.date: 08/31/2016
 ms.author: sstein
@@ -15,8 +16,8 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 26364edba47c4ac77b2125e067b99f87eefb434c
+ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
+ms.openlocfilehash: 7ffa568e18224ffcf4286636069c1d6ee11d9c1f
 
 
 ---
@@ -98,6 +99,6 @@ BACPAC は、データベース スキーマとデータを含む .bacpac ファ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

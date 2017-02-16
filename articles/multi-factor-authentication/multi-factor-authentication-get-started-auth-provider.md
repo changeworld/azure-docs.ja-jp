@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/14/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5fa7882653d6a41376cffb0eaca78c8d05044dc2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b3dadee1ea8d1ff4a0164a90eb617f9d276b6670
 
 
 ---
-# <a name="getting-started-with-an-azure-multifactor-auth-provider"></a>Azure Multi-Factor Auth プロバイダーの概要
+# <a name="getting-started-with-an-azure-multi-factor-auth-provider"></a>Azure Multi-Factor Auth プロバイダーの概要
 Azure Active Directory を持つグローバル管理者と Office 365 ユーザーは、既定で 2 段階認証を使用できます。 ただし、[高度な機能](multi-factor-authentication-whats-next.md)が必要な場合は、通常版の Multi-Factor Authentication (MFA) をご購入ください。
 
 > [!NOTE]
@@ -35,7 +35,7 @@ SDK をダウンロードする場合は、Azure 多要素認証プロバイダ�
 > 
 > 
 
-## <a name="to-create-a-multifactor-auth-provider"></a>Multi-Factor Auth プロバイダーを作成するには
+## <a name="to-create-a-multi-factor-auth-provider"></a>Multi-Factor Auth プロバイダーを作成するには
 Azure Multi-Factor Auth プロバイダーを作成するには、次の手順に従います。
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)に管理者としてサインインします。
@@ -64,6 +64,6 @@ Azure Multi-Factor Auth プロバイダーを作成するには、次の手順�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

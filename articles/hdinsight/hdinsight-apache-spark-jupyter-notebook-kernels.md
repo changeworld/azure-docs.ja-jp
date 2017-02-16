@@ -1,6 +1,6 @@
 ---
-title: "Linux 上の HDInsight Spark クラスターの Jupyter Notebook で使用可能なカーネル | Microsoft Docs"
-description: "HDInsight Linux 上の Spark クラスターで使用できる追加の Jupyter Notebook カーネルについて説明します。"
+title: "Azure Spark クラスターでの Jupyter Notebook とさまざまなカーネルの使用 | Microsoft Docs"
+description: "HDInsight Linux の Spark クラスターで使用可能な Jupyter Notebook と共に使用できる PySpark と Spark のカーネルについて説明します。"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,13 +16,14 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b322e44f53567e2618df086500ca42e81e4e233e
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: bb47fa4e876322a0e3e36d4da657fba4be84d6f2
 
 
 ---
-# <a name="kernels-available-for-jupyter-notebooks-with-apache-spark-clusters-on-hdinsight-linux"></a>HDInsight Linux の Apache Spark クラスターと Jupyter Notebook で使用可能なカーネル
-HDInsight (Linux) の Apache Spark クラスターには、アプリケーションのテストに使用できる Jupyter Notebook が含まれています。 カーネルは、コードを実行し、解釈するプログラムです。 HDInsight の Spark クラスターには、Jupyter Notebook で使用できる 2 つのカーネルが用意されています。 次のとおりです。
+# <a name="kernels-available-for-jupyter-notebooks-with-apache-spark-clusters-on-hdinsight"></a>HDInsight の Apache Spark クラスターと Jupyter Notebook で使用可能なカーネル
+
+HDInsight (Linux) の Apache Spark クラスターには、アプリケーションのテストに使用できる Jupyter Notebook が含まれています。 カーネルは、コードを実行し、解釈するプログラムです。 HDInsight の Spark クラスターには、Jupyter Notebook で使用できる&2; つのカーネルが用意されています。 次のとおりです。
 
 1. **PySpark** (Python で記述されたアプリケーション用)
 2. **Spark** (Scala で記述されたアプリケーション用)
@@ -34,28 +35,28 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 次のものが必要です。
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* HDInsight Linux での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+* HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
 ## <a name="how-do-i-use-the-kernels"></a>カーネルの使い方
 1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 2. Spark クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
-   
+
    > [!NOTE]
    > ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
-   > 
+   >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   > 
-   > 
+   >
+   >
 3. 新しいカーネルで、新しい Notebook を作成します。 **[新規]** をクリックし、**[Pyspark]** または **[Spark]** をクリックします。 Scala アプリケーションには Spark カーネルを使用し、Python アプリケーションには PySpark カーネルを使用する必要があります。
-   
-    ![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "Create a new Jupyter notebook") 
+
+    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "新しい Jupyter Notebook の作成")
 4. 選択したカーネルで、新しい Notebook が開かれます。
 
 ## <a name="why-should-i-use-the-pyspark-or-spark-kernels"></a>PySpark または Spark カーネルを使用する理由
 新しいカーネルを使用すると、いくつかの利点があります。
 
 1. **コンテキストのプリセット**。 Jupyter Notebook で提供される **PySpark** または **Spark** カーネルでは、開発しているアプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。これらのカーネルは、既定で利用できます。 各コンテキストは次のとおりです。
-   
+
    * **sc** : Spark コンテキスト用
    * **sqlContext** : Hive コンテキスト用
 
@@ -69,9 +70,9 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
     代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
 
 1. **セル マジック**。 PySpark カーネルには、"マジック"、つまり、`%%` で呼び出すことができる特別なコマンドがいくつか事前定義されています (`%%MAGIC` <args> など)。 このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。 魔法の単語はセルの最初の単語にする必要があります。 その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。     マジックの詳細については、[こちら](http://ipython.readthedocs.org/en/stable/interactive/magics.html)をご覧ください。
-   
+
     次の表は、カーネルで使用できるさまざまなマジックを一覧にしたものです。
-   
+
    | マジック | 例 | Description |
    | --- | --- | --- |
    | help |`%%help` |利用できるすべてのマジック、その例と説明から構成されるテーブルを生成します。 |
@@ -82,11 +83,11 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
    | ログ |`%%logs` |現在の Livy セッションのログを出力します。 |
    | 削除 |`%%delete -f -s <session number>` |現在 Livy エンドポイントの特定のセッションを削除します。 カーネル自体が開始したセッションを削除することはできないことに注意してください。 |
    | cleanup |`%%cleanup -f` |このノートブックのセッションを含む、現在 Livy エンドポイントのすべてのセッションを削除します。 強制フラグ -f は必須です。 |
-   
+
    > [!NOTE]
-   > PySpark カーネルによって追加されるマジックに加えて、`%%sh` などの[組み込み IPython](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics) マジックも使用することができます。 `%%sh` マジックは、クラスター ヘッド ノードでスクリプトやコード ブロックを実行する際に使用することができます。 
-   > 
-   > 
+   > PySpark カーネルによって追加されるマジックに加えて、`%%sh` などの[組み込み IPython](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics) マジックも使用することができます。 `%%sh` マジックは、クラスター ヘッド ノードでスクリプトやコード ブロックを実行する際に使用することができます。
+   >
+   >
 2. **自動視覚化**。 **Pyspark** カーネルは、Hive と SQL のクエリの出力を自動的に視覚化します。 表、円グラフ、面積グラフ、棒グラフなど、さまざまな種類の視覚化から選択できます。
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>%%sql マジックでサポートされるパラメーター
@@ -102,7 +103,7 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 
 **例:**
 
-    %%sql -q -m sample -r 0.1 -n 500 -o query2 
+    %%sql -q -m sample -r 0.1 -n 500 -o query2
     SELECT * FROM hivesampletable
 
 上記のステートメントによって、次のことが行われます。
@@ -116,12 +117,12 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 使用するカーネルが PySpark と Spark のどちらであっても、Notebook を実行したままにしておくと、クラスターのリソースが消費されます。  これらのカーネルでは、コンテキストがプリセットされているため、Notebook を終了するだけではコンテキストは強制終了されません。そのため、クラスターのリソースは消費され続けます。 PySpark および Spark カーネルでは、Notebook の **[ファイル]** メニューで **[閉じて停止]** オプションを使用することをお勧めします。 これにより、コンテキストが強制終了され、Notebook が終了されます。     
 
 ## <a name="show-me-some-examples"></a>いくつかの例
-Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つのフォルダーが表示されます。
+Jupyter Notebook を開くと、ルート レベルで利用可能な&2; つのフォルダーが表示されます。
 
 * **PySpark** フォルダーには、新しい **Python** カーネルを使用するサンプル Notebook があります。
 * **Scala** フォルダーには、新しい **Spark** カーネルを使用するサンプル Notebook があります。
 
-**PySpark** または **Spark** フォルダーから **00 - [READ ME FIRST] Spark Magic Kernel Features** Notebook を開くと、利用できるさまざまなマジックを確認できます。 この 2 つのフォルダーにはサンプル ノードブックが他にもあります。Jupyter ノードブックと HDInsight Spark クラスターを利用したさまざまなシナリオの実現方法について学習できます。
+**PySpark** または **Spark** フォルダーから **00 - [READ ME FIRST] Spark Magic Kernel Features** Notebook を開くと、利用できるさまざまなマジックを確認できます。 この&2; つのフォルダーにはサンプル ノードブックが他にもあります。Jupyter ノードブックと HDInsight Spark クラスターを利用したさまざまなシナリオの実現方法について学習できます。
 
 ## <a name="where-are-the-notebooks-stored"></a>Notebook の格納場所
 Jupyter Notebook は、**/HdiNotebooks** フォルダー下にあるクラスターに関連付けられたストレージ アカウントに保存されます。  Notebook、テキスト ファイル、および Jupyter 内から作成したフォルダーには、WASB からアクセスできます。  たとえば、Jupyter を使用してフォルダー **myfolder** と Notebook **myfolder/mynotebook.ipynb** を作成した場合、`wasbs:///HdiNotebooks/myfolder/mynotebook.ipynb` でその Notebook にアクセスできます。  逆の場合も同様です。つまり、Notebook を `/HdiNotebooks/mynotebook1.ipynb` にある自分のストレージ アカウントに直接アップロードする場合、Jupyter からも Notebook を表示することができます。  Notebook は、クラスターが削除された後でも、ストレージ アカウントに保持されます。
@@ -168,7 +169,6 @@ HDInsight の Spark クラスターに対して実行される Jupyter Notebook 
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -8,7 +8,7 @@ Azure Key Vault 統合を使用し、SQL Server VM を構成するには、い�
 次のセクションでは、これらの前提条件と、後に PowerShell コマンドレットを実行するために必要な情報について説明します。
 
 ### <a name="install-azure-powershell"></a>Azure PowerShell をインストールする
-最新の Azure PowerShell SDK がインストールされていることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](../articles/powershell-install-configure.md)」を参照してください。
+最新の Azure PowerShell SDK がインストールされていることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 
 ### <a name="create-an-azure-active-directory"></a>Azure Active Directory を作成する
 最初に、サブスクリプションに [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) を追加する必要があります。 特定のユーザーやアプリケーションが Key Vault にアクセスするための許可が与えられるなど、さまざまな利点があります。
@@ -34,6 +34,6 @@ Key Vault ID は後に PowerShell スクリプトの **$akvURL** パラメータ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

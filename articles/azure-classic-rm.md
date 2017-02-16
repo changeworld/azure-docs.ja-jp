@@ -7,6 +7,7 @@ author: telmosampaio
 manager: carmonm
 editor: 
 tags: azure-resource-manager,azure-service-management
+redirect_url: ./azure-resource-manager/resource-manager-deployment-model
 ms.assetid: 18a235d8-38ac-4886-9e56-b3855c73ffff
 ms.service: virtual-network
 ms.devlang: na
@@ -16,8 +17,8 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: telmos
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: b08630777e9cb66e3baae24ad9befc93a47e65db
+ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
+ms.openlocfilehash: 0843651c8fcddbc171bb485ce9c96b53b170881d
 
 
 ---
@@ -54,7 +55,7 @@ Azure には、次の 2 つのポータルがあります。
 リソースや機能によっては、一方のポータルでしか作成および構成できない場合があります。 また、どちらのポータルでも作成および構成できないリソースや機能もあります。このようなリソースや機能の構成には、PowerShell、CLI、またはその両方を使用できます。 各 Azure リソースのドキュメントでは、リソースの作成に使用できる方法について詳しく説明します。 
 
 ## <a name="powershell"></a>PowerShell
-[PowerShell](powershell-install-configure.md) がある場合は、コマンド ラインを使用するかスクリプトを作成して、Windows コンピューターから Azure リソースを作成および構成できます。  個々の Azure リソースには、[Resource Manager コマンドレット](https://msdn.microsoft.com/library/azure/mt125356.aspx)、[サービス管理コマンドレット](https://msdn.microsoft.com/library/azure/dn708504.aspx)、またはその両方があります。  一部のリソースと機能は、作成や構成に PowerShell または CLI のみを使用できます。 リソースによっては、リソース マネージャーの PowerShell コマンドレットを使用するときに、Azure リソースを作成および構成するためのオプションが 2 つあります。
+[PowerShell](/powershell/azureps-cmdlets-docs) がある場合は、コマンド ラインを使用するかスクリプトを作成して、Windows コンピューターから Azure リソースを作成および構成できます。  個々の Azure リソースには、[Resource Manager コマンドレット](https://msdn.microsoft.com/library/azure/mt125356.aspx)、[サービス管理コマンドレット](https://msdn.microsoft.com/library/azure/dn708504.aspx)、またはその両方があります。  一部のリソースと機能は、作成や構成に PowerShell または CLI のみを使用できます。 リソースによっては、リソース マネージャーの PowerShell コマンドレットを使用するときに、Azure リソースを作成および構成するためのオプションが 2 つあります。
 
 * **PowerShell コマンドレットのみ:** 各リソースにコマンドレットを使用して、各 Azure リソースを個別に作成および構成できます。 これはコマンドラインから実行するか、保存とバージョン管理が可能な PowerShell スクリプトに複数のコマンドを含めることによって実行できます。
 * **Azure Resource Manager のテンプレートを使用した PowerShell コマンドレット:** PowerShell を使用すると、Azure Resource Manager のテンプレートを使用して Azure リソースを作成できます。 これらのテンプレートは、保存とバージョン管理が可能です。 詳細については、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関する記事を参照してください。 一般的なソリューション向けの [Azure のクイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)が複数あります。これらは、ダウンロードして変更することも可能です。
@@ -69,6 +70,6 @@ CLI を使用して、Windows、OS X、または Linux コンピューターか�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

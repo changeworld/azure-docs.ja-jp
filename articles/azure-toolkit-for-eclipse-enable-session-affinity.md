@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a7320a7e5052ffb4171307bc8636182447ddfc50
+ms.sourcegitcommit: 3fb7a0361717d4616ec21e55c0a202ed8bf8991d
+ms.openlocfilehash: a537a71a43b49d510a12d1293d8ee898d66efe63
 
 
 ---
@@ -28,8 +28,8 @@ Azure toolkit for Eclipse の中で、ロールに対する HTTP セッション
 ## <a name="to-enable-session-affinity-for-your-role"></a>ロールに対するセッション アフィニティを有効にするには
 1. Eclipse の [Project Explorer (プロジェクト エクスプローラー)] でロールを右クリックし、**[Azure]**、**[Load Balancing (負荷分散)]** の順にクリックします。
 2. **[Properties for WorkerRole1 Load Balancing]** ダイアログで次のように操作します。
-   1.  **[Enable HTTP session affinity (sticky sessions) for this role]**
-   2. **[Input endpoint to use (使用する入力エンドポイント)]** で、使用する入力エンドポイント (例: **http (パブリック: 80、プライベート: 8080)**) を選択します。 アプリケーションは、HTTP エンドポイントとしてこのエンドポイントを使用する必要があります。 ロールに対して複数のエンドポイントを有効にすることができますが、スティッキー セッションをサポートするにはその中の 1 つだけを選択できます。
+   1. **[Enable HTTP session affinity (sticky sessions) for this role]**
+   2. **[Input endpoint to use (使用する入力エンドポイント)]** で、使用する入力エンドポイント (例: **http (パブリック:&80;、プライベート:&8080;)**) を選択します。 アプリケーションは、HTTP エンドポイントとしてこのエンドポイントを使用する必要があります。 ロールに対して複数のエンドポイントを有効にすることができますが、スティッキー セッションをサポートするにはその中の&1; つだけを選択できます。
    3. アプリケーションをリビルドします。
 
 有効にすると、1 つ以上のロール インスタンスがある場合、特定のクライアントからの HTTP 要求は、同じロール インスタンスによって処理され続けます。
@@ -42,26 +42,23 @@ Eclipse Toolkit では、各ロール インスタンスに Application Request 
 * 各ロールの初期化時間が長くなります。
 * 上記のようにトラフィック リルーターとして機能する内部エンドポイントが追加されます。
 
-セッション アフィニティが有効であるときにセッション データを維持する方法の例については、[セッション アフィニティを使用してセッション データを維持する方法][セッション アフィニティを使用してセッション データを維持する方法]に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]
 
-[Azure の Hello World アプリケーションを Eclipse で作成する][Azure の Hello World アプリケーションを Eclipse で作成する]
+[Azure 向け Hello World アプリケーションを Eclipse で作成する][Creating a Hello World Application for Azure in Eclipse]
 
-[Azure Toolkit for Eclipse のインストール][Azure Toolkit for Eclipse のインストール] 
+[Azure Toolkit for Eclipse のインストール][Installing the Azure Toolkit for Eclipse] 
 
-[セッション アフィニティを使用してセッション データを維持する方法][セッション アフィニティを使用してセッション データを維持する方法]
-
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java デベロッパー センター]を参照してください。
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java Developer Center]を参照してください。
 
 <!-- URL List -->
 
-[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure の Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
-[セッション アフィニティを使用してセッション データを維持する方法]: http://go.microsoft.com/fwlink/?LinkID=699539
-[Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[How to Maintain Session Data with Session Affinity]: http://go.microsoft.com/fwlink/?LinkID=699539
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 
@@ -71,6 +68,6 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

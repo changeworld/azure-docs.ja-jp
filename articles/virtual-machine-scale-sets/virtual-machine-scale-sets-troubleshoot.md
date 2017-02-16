@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 7d122d04dfd9cb1f565e86b60f2180f9534588c9
+ms.sourcegitcommit: 4818c0c036c7e462af5b8d99f1085f8d9025156c
+ms.openlocfilehash: 7b4db2f215b8f7369694a45533d0c862b8f8d08e
 
 
 ---
@@ -51,7 +51,7 @@ ms.openlocfilehash: 7d122d04dfd9cb1f565e86b60f2180f9534588c9
     このツールは Azure Resource Manager リソースの状態を表示できるため、トラブルシューティングには欠かせません。 サブスクリプションをクリックし、トラブルシューティングを行うリソース グループを表示します。 Compute リソースプロバイダーの下で、作成した VM スケール セットを探し、インスタンス ビューでデプロイの状態を確認します。 また、VM スケール セット内の VM のインスタンス ビューも確認します。 次に Microsoft.Insights リソースプロバイダーに移動し、自動スケール規則が適切かどうかを確認します。
 * 診断拡張機能が動作し、パフォーマンス データを出力していますか。
   
-    **更新:** Azure 自動スケールはベースのメトリックのパイプラインを使用するように強化されており、診断拡張機能のインストールは必須ではなくなりました。 つまり、新しいパイプラインを使用する自動スケール アプリケーションを作成する場合、この後のいくつかの段落の説明はもう適用されません。 ホスト パイプラインを使用するように変換されている Azure テンプレートには次のものがあります。https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale、https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale。 
+    **更新:** Azure 自動スケールはベースのメトリックのパイプラインを使用するように強化されており、診断拡張機能のインストールは必須ではなくなりました。 つまり、新しいパイプラインを使用する自動スケール アプリケーションを作成する場合、この後のいくつかの段落の説明はもう適用されません。 ホスト パイプラインを使用するように変換された Azure テンプレートの例は、https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale にあります。 
   
     自動スケールでのホスト ベースのメトリックの使用には、次のメリットがあります。
   
@@ -85,6 +85,6 @@ ms.openlocfilehash: 7d122d04dfd9cb1f565e86b60f2180f9534588c9
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/04/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 95068f046c57bd65b5258771a272e70124f3dd12
+ms.sourcegitcommit: a957a70be915459baa8c687c92e251c6011b6172
+ms.openlocfilehash: 41bef0e62c86e5cc3c27d02702a1b330fc76c915
 
 
 ---
@@ -26,8 +26,8 @@ Microsoft Azure PowerShell は、Azure サービスのデプロイメントと�
 ## <a name="prerequisites"></a>前提条件
 開始する前に、次の条件が必要です。
 
-* Azure サブスクリプション。 Azure はサブスクリプション方式のプラットフォームです。 サブスクリプションの入手方法の詳細については、[購入オプション][購入オプション]、[メンバー プラン][メンバー プラン]、または[無料アカウント][無料アカウント] に関するページを参照してください。
-* Azure PowerShell を搭載するコンピューター 手順については、[「Azure PowerShell のインストールおよび構成方法」][Azure PowerShell のインストールと構成]を参照してください。
+* Azure サブスクリプション。 Azure はサブスクリプション方式のプラットフォームです。 サブスクリプションの入手方法の詳細については、[購入オプション][purchase options]、[メンバー プラン][member offers]、または[無料アカウント][free account]に関するページをご覧ください。
+* Azure PowerShell を搭載するコンピューター 手順については、[Azure PowerShell のインストールと構成][Install and configure Azure PowerShell]に関するページをご覧ください。
 * PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
 
 ## <a name="include-a-reference-to-the-net-assembly-for-service-bus"></a>Service Bus 用の .NET アセンブリへの参照を含む
@@ -64,7 +64,7 @@ catch [System.Exception]
 ```
 
 ## <a name="provision-a-service-bus-namespace"></a>Service Bus 名前空間のプロビジョニング
-Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-AzureSBNamespace][Get-AzureSBNamespace] と [New-AzureSBNamespace][New-AzureSBNamespace] の 2 つのコマンドレットが使用できます。
+Service Bus の名前空間を操作する場合、.NET SDK の代わりに [Get-AzureSBNamespace][Get-AzureSBNamespace] と [New-AzureSBNamespace][New-AzureSBNamespace] の 2 つのコマンドレットを使用できます。
 
 この例では、スクリプトでローカル変数 `$Namespace` と `$Location` を作成します。
 
@@ -102,7 +102,7 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
         Write-Host "The [$Namespace] namespace in the [$Location] region has been successfully created."
     }
     ```
-   その他の Service Bus エンティティをプロビジョニングするには、SDK から `NamespaceManager` オブジェクトのインスタンスを作成します。 [Get-AzureSBAuthorizationRule][Get-AzureSBAuthorizationRule] コマンドレットを使用して接続文字列を指定するために使用する承認規則を取得できます。 この例では、`NamespaceManager` インスタンスへの参照は `$NamespaceManager` 変数に保存されます。 スクリプトでは、後ほど `$NamespaceManager` を使用して別のエンティティをプロビジョニングします。
+   その他の Service Bus エンティティをプロビジョニングするには、SDK から `NamespaceManager` オブジェクトのインスタンスを作成します。 [Get-AzureSBAuthorizationRule][Get-AzureSBAuthorizationRule] コマンドレットを使用して、接続文字列を指定するために使用する承認規則を取得できます。 この例では、`NamespaceManager` インスタンスへの参照は `$NamespaceManager` 変数に保存されます。 スクリプトでは、後ほど `$NamespaceManager` を使用して別のエンティティをプロビジョニングします。
    
     ``` powershell
     $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -113,7 +113,7 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
     ```
 
 ## <a name="provisioning-other-service-bus-entities"></a>その他の Service Bus エンティティのプロビジョニング
-キュー、トピック、Event Hubs などのエンティティをプロビジョニングするには、[.NET API for Service Bus][.NET API for Service Bus] を使用できます。 その他のエンティティを含むより詳細な例は、この記事の最後をご覧ください。
+キュー、トピック、Event Hubs などの他のエンティティをプロビジョニングするには、[.NET API for Service Bus][.NET API for Service Bus] を使用します。 その他のエンティティを含むより詳細な例は、この記事の最後をご覧ください。
 
 ### <a name="create-an-event-hub"></a>Event Hub を作成する
 スクリプトのこの部分ではさらに 4 つのローカル変数を作成します。 こうした変数は、 `EventHubDescription` オブジェクトのインスタンス化に使用されます。 スクリプトでは次を実行します。
@@ -259,18 +259,18 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 
 <!--Anchors-->
 
-[購入オプション]: http://azure.microsoft.com/pricing/purchase-options/
-[メンバー プラン]: http://azure.microsoft.com/pricing/member-offers/
-[無料アカウント]: http://azure.microsoft.com/pricing/free-trial/
+[purchase options]: http://azure.microsoft.com/pricing/purchase-options/
+[member offers]: http://azure.microsoft.com/pricing/member-offers/
+[free account]: http://azure.microsoft.com/pricing/free-trial/
 [Service Bus NuGet パッケージ]: http://www.nuget.org/packages/WindowsAzure.ServiceBus/
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
 [.NET API for Service Bus]: https://msdn.microsoft.com/en-us/library/azure/mt419900.aspx
-[Azure PowerShell のインストールと構成]: ../powershell-install-configure.md
+[Install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

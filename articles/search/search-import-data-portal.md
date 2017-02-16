@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2a0f4c9c5942ee75b9ca4f3924198e8a8ad8ccc7
+ms.sourcegitcommit: 702ea254c19d1f9782f83d8445b7f440f11963b9
+ms.openlocfilehash: 2d4898694c69b5eb0194747982fa8bfbfea1f6f8
 
 
 ---
@@ -77,7 +77,7 @@ DocumentDB のサンプル データを使用して、このワークフロー�
 4. フィールド レベルで言語アナライザーを指定する場合は、 **[アナライザー]** タブをクリックします。 現時点では、言語アナライザーのみを指定できます。 カスタム アナライザーや、キーワード、パターンなどの非言語アナライザーを使用する場合は、コードが必要になります。
    
    * **[検索可能]** をクリックしてフィールドにフルテキスト検索を指定し、アナライザーのドロップダウン リストを有効にします。
-   * 使用するアナライザーを選択します。 詳細については、 [複数の言語によるドキュメントのインデックスの作成](search-language-support.md) に関するページを参照してください。
+   * 使用するアナライザーを選択します。 詳細については、[複数の言語によるドキュメントのインデックスの作成](search-language-support.md)に関するページを参照してください。
 5. **[提案者]** をクリックして、選択したフィールドに先行入力クエリによる検索候補を有効にします。
 
 ## <a name="import-your-data"></a>[データのインポート]
@@ -93,7 +93,13 @@ Azure Search では、インデックスの構造を更新するには、その�
 
 再構築する必要のない編集には、新しいフィールドの追加、スコアリング プロファイルの変更、サジェスターの変更、言語アナライザーの変更があります。 詳細については、 [インデックスの更新](https://msdn.microsoft.com/library/azure/dn800964.aspx) に関するページを参照してください。
 
-## <a name="next-step"></a>次のステップ
+## <a name="query-an-index-using-search-explorer"></a>Search エクスプローラーを使用したインデックスの照会
+
+ポータルに用意されている **Search エクスプローラー**を使用すると、コードを記述することなくインデックスを照会できます。 Search エクスプローラーは、任意のインデックスに対して使用できます。
+
+検索エクスペリエンスは、既定の設定 ([単純構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)、既定の [searchMode クエリ パラメーター](https://docs.microsoft.com/rest/api/searchservice/search-documents) など) に基づきます。 結果は JSON で返されるため、ドキュメント全体を確認できます。
+
+## <a name="next-steps"></a>次のステップ
 インデクサーの詳細については、次のリンク先を参照してください。
 
 * [Azure SQL Database のインデックス作成](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
@@ -107,6 +113,6 @@ Azure Search では、インデックスの構造を更新するには、その�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

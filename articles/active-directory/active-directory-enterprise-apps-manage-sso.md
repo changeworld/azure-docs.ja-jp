@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 09/30/2016
 ms.author: asmalser
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0d523630e39d2dbeba2b3c11e19fc775032b23e7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2f03079498568f52802b34ce57242a414e648fe3
 
 
 ---
@@ -104,6 +104,6 @@ ms.openlocfilehash: 0d523630e39d2dbeba2b3c11e19fc775032b23e7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

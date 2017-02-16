@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 2d8caf829d59262ab4802745e61fe6745376001a
+ms.sourcegitcommit: e64f972759173965d389b694ada23720d1182bb8
+ms.openlocfilehash: 92a6c849f5b28581fcac3713e9756dc06d7a251b
 
 
 ---
@@ -210,8 +210,37 @@ zypper install mdadm
     カーネル パラメーターの適切な編集方法については、使用しているディストリビューションのドキュメントを参照してください。 たとえば、多くディストリビューション (CentOS、Oracle Linux、SLES 11) では、これらのパラメーターを "`/boot/grub/menu.lst`" ファイルに手動で追加することもできます。  Ubuntu では、このパラメーターを "/etc/default/ grub" の `GRUB_CMDLINE_LINUX_DEFAULT` 変数に追加できます。
 
 
+## <a name="trimunmap-support"></a>TRIM/UNMAP のサポート
+一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作がサポートされます。 これらの操作は主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。 ページを破棄すると、サイズの大きいファイルを作成して削除する場合のコストを節約できます。
+
+> [!NOTE]
+> 配列のチャンク サイズが既定値 (512 KB) よりも小さく設定されている場合、RAID が破棄コマンドを発行しない可能性があります。 これは、ホストでの UNMAP の粒度も 512 KB であるためです。 mdadm の `--chunk=` パラメーターを使用して配列のチャンク サイズを変更した場合、TRIM/UNMAP 要求がカーネルによって無視される可能性があります。
+
+Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。 通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
+
+- 次のように、`/etc/fstab` で `discard` マウント オプションを使用します。
+
+    ```bash
+    UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2
+    ```
+
+- 場合によっては、`discard` オプションがパフォーマンスに影響する可能性があります。 または、 `fstrim` コマンドを手動でコマンド ラインから実行するか、crontab に追加して定期的に実行することができます。
+
+    **Ubuntu**
+
+    ```bash
+    # sudo apt-get install util-linux
+    # sudo fstrim /data
+    ```
+
+    **RHEL/CentOS**
+    ```bash
+    # sudo yum install util-linux
+    # sudo fstrim /data
+    ```
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO1-->
 
 

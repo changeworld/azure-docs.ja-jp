@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: genemi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7725c2d0e35ad5bc1d1872acc55ccfcac2d7a931
+ms.sourcegitcommit: 7c99e8b87c845ca6d05afff5a239b568cfda13f7
+ms.openlocfilehash: efbd872f63b6679973d7116405b32039964dcc9e
 
 
 ---
@@ -32,6 +32,7 @@ ms.openlocfilehash: 7725c2d0e35ad5bc1d1872acc55ccfcac2d7a931
 | Node.js |Windows、Linux、Mac |[SQL Server 用 Node.js ドライバー](http://msdn.microsoft.com/library/mt652093.aspx) |[インストール](https://msdn.microsoft.com/library/mt652094.aspx) |
 | Python |Windows、Linux、Mac |[Python SQL ドライバー](http://msdn.microsoft.com/library/mt652092.aspx) |インストール オプション:  <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](http://msdn.microsoft.com/library/mt763257.aspx) |
 | Ruby |Windows、Linux、Mac |[SQL Server 用 Ruby ドライバー](http://msdn.microsoft.com/library/mt691981.aspx) |[インストール](https://msdn.microsoft.com/library/mt711041.aspx) |
+| C/C++ |Windows、Linux |[Microsoft ODBC Driver for SQL Server](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) |インストール オプション:  <br/> \* [Windows](https://www.microsoft.com/en-us/download/details.aspx?id=53339) <br/> \* [Linux](https://blogs.msdn.microsoft.com/sqlnativeclient/2016/10/20/odbc-driver-13-0-for-linux-released/) |
 
 ## <a name="related-links"></a>関連リンク
 * [SQL Server ドライバー](http://msdn.microsoft.com/library/mt654049.aspx)クライアントからの接続用
@@ -43,6 +44,6 @@ ms.openlocfilehash: 7725c2d0e35ad5bc1d1872acc55ccfcac2d7a931
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/05/2017
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 946f6e480083a0007a88c85b744ddeafa0385990
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: f22b87fc5bdfe2db5de39adaafe9c71d8c32b26a
 
 
 ---
@@ -32,7 +32,7 @@ Media Services を使いこなして、エンド ツー エンドのワークフ
 
 Media Services ソリューションを構築するために、以下を使用できます。
 
-* [Media Services REST API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
+* [Media Services REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * 使用可能な次のいずれかの SDK:
     * [Azure Media Services SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)
     * [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)
@@ -46,7 +46,7 @@ Media Services ソリューションを構築するために、以下を使用�
 
 画像をクリックすると、フル サイズで表示されます。  
 
-<a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a>  
+<a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
 
 モデル全体は、[こちら](https://media.windows.net/API/$metadata?api-version=2.15)で確認できます。  
 
@@ -79,8 +79,8 @@ Azure Media Services のすべての主要コンポーネントを紹介する�
 ![VoD ワークフロー](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
 >[!NOTE]
->AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
-    
+>AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。
+
 ### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>ストレージのコンテンツを保護し、ストリーミング メディアを平文 (暗号化されていない) で配信する
 1. 高品質な中間ファイルを資産にアップロードします。
 
@@ -184,7 +184,8 @@ Media Services では、Azure CDN との統合をサポートしています。 
 **Media Services** は、アカウントのプロビジョニングに使用する **[ストリーミング予約ユニット]** と **[エンコード予約ユニット]** の数を指定することで規模を設定できます。
 
 ストレージ アカウントを追加して、Media Services アカウントの規模を設定することもできます。 各ストレージ アカウントの上限は 500 TB (テラバイト) です。 既定の上限を超えるストレージ容量を設定するために、複数のストレージ アカウントを単一の Media Services アカウントにアタッチすることを選択できます。
-Media Services のお客様は、必要に応じて、**Standard** ストリーミング エンドポイントか、1 つ以上の **Premium** ストリーミング エンドポイントを選択できます。 Standard ストリーミング エンドポイントはほとんどのストリーミング ワークロードに適しています。 これには Premium ストリーミング ユニットと同じ機能が含まれています。 Standard ストリーミング エンドポイントはほとんどのストリーミング ワークロードに適しています。 高度なワークロードがある場合、ストリーミング容量の要件が Standard ストリーミング エンドポイントのスループット目標に合わない場合、スケール ユニット (Premium ストリーミング ユニットとも呼ばれる) を調整して StreamingEndpoint サービスの容量を制御し、増大する帯域幅のニーズに対応する必要がある場合は、スケール ユニットを割り当てることをお勧めします。
+Media Services のお客様は、必要に応じて、**Standard** ストリーミング エンドポイントか、1 つ以上の **Premium** ストリーミング エンドポイントを選択できます。 Standard ストリーミング エンドポイントはほとんどのストリーミング ワークロードに適しています。 これには Premium ストリーミング ユニットと同じ機能が含まれています。
+Standard ストリーミング エンドポイントはほとんどのストリーミング ワークロードに適しています。 高度なワークロードがある場合、ストリーミング容量の要件が Standard ストリーミング エンドポイントのスループット目標に合わない場合、スケール ユニット (Premium ストリーミング ユニットとも呼ばれる) を調整して StreamingEndpoint サービスの容量を制御し、増大する帯域幅のニーズに対応する必要がある場合は、スケール ユニットを割り当てることをお勧めします。
 
 [この](media-services-portal-scale-streaming-endpoints.md) トピックは、関連するトピックにリンクしています。
 

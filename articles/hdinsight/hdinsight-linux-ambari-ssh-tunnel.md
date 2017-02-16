@@ -1,5 +1,5 @@
 ---
-title: "SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする"
+title: "SSH トンネリングを使用して Azure HDInsight サービスにアクセスする | Microsoft Docs"
 description: "SSH トンネルを使用して、Linux ベースの HDInsight ノードでホストされている Web リソースを安全に閲覧する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 10/17/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 446212192829cc55fefe4b1a1954e64e123c2c44
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: d9e6fe3bd2ddd511791b7b34ff8d7875a13417c0
 
 
 ---
@@ -118,7 +118,7 @@ SSH キーを使用してクラスターを構成した場合は、SSH 秘密キ
     ![QuickLinks メニューが展開された画像](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
    
    > [!NOTE]
-   > インターネット接続が低速な場合、またはヘッド ノードの負荷が高い場合は、 **[Quick Links]**を選択したときにメニューではなく待機インジケーターが表示されることがあります。 その場合は、サーバーからデータが取得されるまで 1 ～ 2 分待ってから、改めて一覧を表示してみてください。
+   > インターネット接続が低速な場合、またはヘッド ノードの負荷が高い場合は、 **[Quick Links]**を選択したときにメニューではなく待機インジケーターが表示されることがあります。 その場合は、サーバーからデータが取得されるまで&1; ～&2; 分待ってから、改めて一覧を表示してみてください。
    > 
    > モニターの解像度が低い場合、またはブラウザー ウィンドウが最大化されていない場合は、 **[Quick Links]** メニューの一部のエントリが画面の右側で切れて表示されることがあります。 その場合は、マウスを使用してメニューを拡大するか、右矢印キーを使用して画面を右にスクロールして、メニューの残りを表示します。
    > 
@@ -145,6 +145,6 @@ HDInsight での SSH の使用方法の詳細については、以下の記事�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

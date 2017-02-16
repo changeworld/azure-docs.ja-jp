@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 12/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
-ms.openlocfilehash: 62f29382a2b29c7e5b06126b0ab60c7136186103
+ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
+ms.openlocfilehash: e3a9ba798639a9939d8c3d5330b21715ac4be53d
 
 
 ---
@@ -566,7 +566,7 @@ Remove-AzureRmResourceGroup -Name {resource-group-name}
 ## <a name="next-steps"></a>次のステップ
 これで、この最初の入門用チュートリアルは完了です。サンプル データを含むデータベースを作成しました。このチュートリアルで学習した内容に基づいたチュートリアルが多数あるため、探してみてください。 
 
-* Azure SQL Database のセキュリティについて調べる場合は、[セキュリティの概要](sql-database-get-started-security.md)に関する記事を参照してください。
+* Azure SQL Database のセキュリティについて調べる場合は、[セキュリティの概要](sql-database-control-access-sql-authentication-get-started.md)に関する記事を参照してください。
 * Excel に詳しい場合は、 [Excel を使用した Azure SQL データベースへの接続](sql-database-connect-excel.md)方法を参照してください。
 * コーディングを開始する準備ができている場合、「 [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」でプログラミング言語を選択します。
 * オンプレミスの SQL Server データベースを Azure に移行する場合は、[SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関する記事を参照してください。
@@ -577,6 +577,7 @@ Remove-AzureRmResourceGroup -Name {resource-group-name}
 [SQL Database とは](sql-database-technical-overview.md)
 
 
-<!--HONumber=Jan17_HO1-->
+
+<!--HONumber=Jan17_HO3-->
 
 

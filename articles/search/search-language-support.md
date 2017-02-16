@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: jlembicz
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: e05fb86a6911768440512dab725a950d2890eb87
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1cbb5209b85d14a313da764394069f835ef29176
 
 ---
 
@@ -94,6 +94,6 @@ ms.openlocfilehash: e05fb86a6911768440512dab725a950d2890eb87
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

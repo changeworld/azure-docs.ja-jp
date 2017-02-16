@@ -1,6 +1,6 @@
 ---
-title: "X12 追跡スキーマ | Microsoft Docs"
-description: "X12 追跡スキーマについての詳細情報"
+title: "B2B 監視の X12 追跡スキーマ - Azure Logic Apps | Microsoft Docs"
+description: "X12 追跡スキーマを使用して、Azure 統合アカウントのトランザクションからの B2B メッセージを監視します。"
 author: padmavc
 manager: anneta
 editor: 
@@ -12,11 +12,11 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 4e361282d0311feb12dd13cd9e23a1ca9dff1789
+ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
+ms.openlocfilehash: 2470a8e7d82c6c01e9f32b062bc09f5a2f6ed1cd
 
 
 ---
@@ -358,6 +358,6 @@ Azure 統合アカウントでは、次の X12 追跡スキーマを使用して
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

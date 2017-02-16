@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "チュートリアルや API リファレンスなどのドキュメントでは、Cloud Services を使用して、可用性と拡張性に優れたクラウド アプリケーションや API をホストして実行する方法を紹介します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 4985185ad8cb4a21e05d4668458e82411cd88ee0
+ms.sourcegitcommit: 2b32d1a06f7db06ad3f443548b33d3c8e2032a9e
+ms.openlocfilehash: 69bcbae09192ecbb6b375bac522b433f8cd5391f
 
 ---
 # <a name="cloud-services-documentation"></a>Cloud Services のドキュメント
 
-Cloud Services は、サービスとしてのプラットフォーム (PaaS) 型のサービスです。 拡張性と信頼性に優れ、運用コストの効率が高いアプリケーションをサポートするように設計されています。 Cloud Services では、仮想化のメリットを利用しつつ、ソフトウェアの構成、修正、インストールの際には仮想マシンを思いどおりに制御できます。  
+Cloud Services を使用して、可用性と拡張性に優れたクラウド アプリケーションや API をホストして実行する方法について説明します。  チュートリアルや API リファレンスなどのドキュメントでは、仮想マシン ホストの管理方法やソフトウェアの構成、修正、インストールの方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -125,6 +126,6 @@ Cloud Services のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

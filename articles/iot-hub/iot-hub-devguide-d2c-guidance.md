@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Hub での device-to-cloud 通信に関するガイダンス | Microsoft Docs"
-description: "Azure IoT Hub 開発者ガイド - device-to-cloud メッセージ、報告されるプロパティ、またはファイルのアップロードを使用するタイミングに関するガイダンスです。"
+title: "Azure IoT Hub device-to-cloud オプション | Microsoft Docs"
+description: "開発者ガイド - device-to-cloud メッセージ、報告されるプロパティ、または cloud-to-device 通信のファイルのアップロードを使用するタイミングに関するガイダンスです。"
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 53f14e6fe115ed5f96d25b9ec5ab04abe23712d5
-ms.openlocfilehash: 6d5608cd86e3f042a7d63bd4e43e75a06141dfab
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 8c3479e29b55eacc30842ffdfee23b4a00a13126
 
 
 ---
 # <a name="device-to-cloud-communications-guidance"></a>device-to-cloud 通信に関するガイダンス
-デバイス アプリからバック エンドに情報を送信する場合、IoT Hub では、次の 3 つのオプションを公開します。
+デバイス アプリからソリューション バック エンドに情報を送信する場合、IoT Hub では、次の 3 つのオプションを公開します。
 
 * [device-to-cloud (D2C) メッセージ][lnk-d2c]: 時系列のテレメトリとアラート用。
 * [報告されるプロパティ][lnk-twins]: 使用できる機能、状態、実行時間の長いワークフローの状態などのデバイスの状態情報のレポート用 (例: 構成とソフトウェアの更新)。
@@ -38,7 +38,7 @@ ms.openlocfilehash: 6d5608cd86e3f042a7d63bd4e43e75a06141dfab
 | プロトコル | すべてのプロトコルで使用できます。 | 現時点では、MQTT を使用する場合のみ使用できます。 | どのプロトコルでも使用できますが、デバイス上に HTTP が必要です。 |
 
 > [!NOTE]
-> アプリケーションは、情報を時系列のテレメトリまたはアラートとして送信することと、デバイス ツインで使用できるようにすることの両方を要求できます。 このような場合は、デバイス アプリが D2C メッセージの送信とプロパティ変更の報告の両方を実行するか、バックエンドがメッセージの受信時に情報をデバイス ツインのタグに格納できます。 D2C メッセージのほうがデバイス ツインの更新よりもはるかにスループットが高いため、すべての D2C メッセージに対してデバイス ツインを更新することは避けることをお勧めします。
+> アプリケーションは、情報を時系列のテレメトリまたはアラートとして送信することと、デバイス ツインで使用できるようにすることの両方を要求できます。 このような場合は、デバイス アプリが D2C メッセージの送信とプロパティ変更の報告の両方を実行するか、ソリューション バックエンドがメッセージの受信時に情報をデバイス ツインのタグに格納できます。 D2C メッセージのほうがデバイス ツインの更新よりもはるかにスループットが高いため、すべての D2C メッセージに対してデバイス ツインを更新することは避けることをお勧めします。
 > 
 > 
 
@@ -50,6 +50,6 @@ ms.openlocfilehash: 6d5608cd86e3f042a7d63bd4e43e75a06141dfab
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

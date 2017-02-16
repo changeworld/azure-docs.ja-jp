@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 03/31/2016
 ms.author: mattrow
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 45cfb660db9ea1d93d136d223d65602f3a373574
+ms.sourcegitcommit: c9730b553e59d12b8720bbf3a06cc956912e27de
+ms.openlocfilehash: c920a206d6f3288f6cba0d2658d556749fc4d574
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 45cfb660db9ea1d93d136d223d65602f3a373574
 開発者のコンピューターでサービスを実行している場合、 [Visual Studio のデバッグ ツール](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)は簡単に使用できます。 リモート クラスターの場合は、 [正常性レポート](service-fabric-view-entities-aggregated-health.md) から開始することをお勧めします。 これらのレポートには、PowerShell や [SFX](service-fabric-visualizing-your-cluster.md)を介してアクセスするのが最も簡単な方法です。 この記事では、ユーザーがリモート クラスターのデバッグを実行しており、これらのツールのいずれかの使用方法について基本的な知識があることを前提としています。
 
 ## <a name="application-crash"></a>アプリケーションのクラッシュ
-「パーティションはターゲット レプリカまたはインスタンス カウントより下です」は、サービスがクラッシュしていることを示します。 サービスのクラッシュが発生している場所を特定するには、もう少し調査する必要があります。 大きな規模で実行している場合、一番の味方はよく練られたトレースのセットです。  これらのトレースを収集し、トレースの表示と検索に [Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などのソリューションを使用する場合は、[Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md) を使ってみることをお勧めします。
+「パーティションはターゲット レプリカまたはインスタンス カウントより下です」は、サービスがクラッシュしていることを示します。 サービスのクラッシュが発生している場所を特定するには、もう少し調査する必要があります。 大きな規模で実行している場合、一番の味方はよく練られたトレースのセットです。  これらのトレースを収集し、トレースの表示と検索に [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) などのソリューションを使用する場合は、[Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md) を使ってみることをお勧めします。
 
 ![SFX パーティションの正常性](./media/service-fabric-diagnostics-troubleshoot-common-scenarios/crashNewApp.png)
 
@@ -55,6 +55,6 @@ Service Fabric によって提供される次の既存の診断について説�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

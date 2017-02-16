@@ -1,6 +1,7 @@
 ---
-title: "SQL Server Management Studio を使用して SQL Server データベースを BACPAC ファイルにエクスポートする | Microsoft Docs"
-description: "Microsoft Azure SQL Database、データベースの移行、データベースのエクスポート、BACPAC ファイルのエクスポート、データ層アプリケーションのエクスポート ウィザード"
+title: "SSMS: SQL Server データベースを BACPAC ファイルにエクスポートする (Azure) | Microsoft Docs"
+description: "この記事では、SQL Server Management Studio のデータ層アプリケーションのエクスポート ウィザードを使用して SQL Server データベースを BACPAC ファイルにエクスポートする方法について説明します。"
+keywords: "Microsoft Azure SQL Database、データベースの移行、データベースのエクスポート、BACPAC ファイルのエクスポート、データ層アプリケーションのエクスポート ウィザード"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,8 +17,8 @@ ms.workload: data-management
 ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: f6f64479f6ddfda4badb8e826e03369c476d6d1d
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: f0238ac34a4a047bd0286a1a87d2427caf0e06fd
 
 
 ---
@@ -67,6 +68,6 @@ ms.openlocfilehash: f6f64479f6ddfda4badb8e826e03369c476d6d1d
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

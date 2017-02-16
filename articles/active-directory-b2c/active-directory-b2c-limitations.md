@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2016
+ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b12985be3822bb605004fc70490f6cf9cb803ec7
+ms.sourcegitcommit: 3ff8fba42e6455b33103c931da731b0affa8a0fb
+ms.openlocfilehash: b5fbd15729da2674b34a227861e65b89548dad39
 
 
 ---
@@ -34,11 +34,11 @@ B2C テナントのユーザー数は、既定で 50,000 ユーザーに制限�
 ## <a name="branding-issues-on-verification-email"></a>確認メールのブランドの問題
 既定の確認メールには、Microsoft ブランドが含まれています。 これは将来削除される予定です。 現時点では、 [会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)を使用して削除できます。
 
+## <a name="branding-issues-on-local-account-sign-in-page-in-a-sign-in-policy"></a>サインイン ポリシーでのローカル アカウント サインイン ページのブランド表示の問題
+サインイン ポリシーのローカル アカウント サインイン ページは、[会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)のみを使用してカスタマイズできます。[ここ](active-directory-b2c-reference-ui-customization.md)に記載されたページ UI カスタマイズ機能を使用してカスタマイズすることはできません。 さらに、ユーザー名およびパスワード フィールドで利用できるラベルまたはプレースホルダーはありません。 この問題を回避するには、代替策として完全にカスタマイズ可能な "サインアップまたはサインイン ポリシー" を使用することをお勧めします。 サインイン ポリシーでのローカル アカウント サインイン ページ全体のカスタマイズに興味がある場合は、[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/13062033-b2c-fully-customizable-sign-in-page) でその機能に投票してください。
+
 ## <a name="restrictions-on-applications"></a>アプリケーションに関する制限事項
 Azure AD B2C では現在、次のタイプのアプリケーションはサポートされていません。 サポートされているアプリケーションのタイプについては、「 [Azure Active Directory B2C: アプリケーションの種類](active-directory-b2c-apps.md)」を参照してください。
-
-### <a name="single-page-applications-javascript"></a>シングル ページ アプリケーション (JavaScript)
-最近多く見かけるようになったシングル ページ アプリケーション (SPA) のフロントエンドは、主に JavaScript で作成されています。AngularJS、Ember.js、Durandal などの SPA フレームワークが使われることも少なくありません。このフローは、Azure AD B2C ではまだ使用できません。
 
 ### <a name="daemons--server-side-applications"></a>デーモン/サーバー側のアプリケーション
 長時間実行されるプロセスを含んだアプリケーションや、ユーザーの介入なしで動作するアプリケーションも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリケーションは、 [OAuth 2.0 クライアント資格情報フロー](active-directory-b2c-reference-protocols.md)を使用することで、(お客様の委任 ID ではなく) アプリケーションの ID を使って認証を行い、トークンを取得することができます。 このフローは Azure AD B2C ではまだ使用できないので、現時点では、アプリケーションは対話的なコンシューマー サインイン フローが発生した後にのみ、トークンを取得できます。
@@ -96,6 +96,6 @@ Safari ブラウザーで、サインイン ポリシーに対する (MFA をオ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 03/07/2016
 ms.author: dhanyahk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 15d76ecde076f006463173dae1ddd1b9737d5cc7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 90ba006f25c27e1dc24c85fdc4ef1d5e2a8d0e3d
 
 
 ---
@@ -50,6 +50,6 @@ ms.openlocfilehash: 15d76ecde076f006463173dae1ddd1b9737d5cc7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

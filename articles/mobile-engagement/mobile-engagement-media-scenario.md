@@ -15,13 +15,13 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1e828e4a24a1a320deaf7c0ef3a0f53ba722565b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6f08f986e66e40211f60beef6ebd00bb041a8ada
 
 
 ---
 # <a name="implement-mobile-engagement-with-media-app"></a>メディア アプリで Mobile Engagement を実装する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 John は、大きなメディア会社のモバイル プロジェクト マネージャーです。 最近、ダウンロード数が非常に高い、新しいアプリを公開しました。 ダウンロードの目標は達成しましたが、ユーザーあたりの投資利益率 (ROI) は、まだ要件を満たしていません。 
 
 ROI が低すぎる理由は、既に特定しています。 ユーザーが 2 週間後にはアプリケーションを使わなくなってしまうことが多く、使用が再開されることはほとんどありません。 アプリのリテンション期間を長くする必要があります。
@@ -97,10 +97,10 @@ KPI の定義が完了したので、エンゲージメント戦略のフェー�
 [2]: ./media/mobile-engagement-media-scenario/push-scenarios.png
 
 <!--Link references-->
-[Media Playbook リンク]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
+[Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

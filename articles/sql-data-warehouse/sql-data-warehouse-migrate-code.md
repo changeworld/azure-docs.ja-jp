@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
+ms.date: 01/30/2017
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0ff5ad648d429da433170301205eafb850be5d81
+ms.sourcegitcommit: d9436796373af55a18c0b6fbfc036bd6616bbe4f
+ms.openlocfilehash: 0c9a7792331b4662a93a78fe5dd08ab037b466db
 
 
 ---
@@ -26,12 +26,11 @@ ms.openlocfilehash: 0ff5ad648d429da433170301205eafb850be5d81
 ## <a name="common-t-sql-limitations"></a>一般的な T-SQL の制限事項
 Azure SQL Data Warehouse でサポートされていない一般的な機能を次に示します。 リンクをクリックすると、サポートされていない機能に対する解決策が表示されます。
 
-* [更新での ANSI の JOIN][更新での ANSI の JOIN]
-* [削除での ANSI の JOIN][削除での ANSI の JOIN]
-* [MERGE ステートメント][MERGE ステートメント]
+* [ANSI JOIN を使用した更新][ANSI joins on updates]
+* [ANSI JOIN を使用した削除][ANSI joins on deletes]
+* [MERGE ステートメント][merge statement]
 * 複数データベースの JOIN
-* [カーソル][カーソル]
-* [SELECT..INTO][SELECT..INTO]
+* [カーソル][cursors]
 * [INSERT..EXEC][INSERT..EXEC]
 * OUTPUT 句
 * インライン ユーザー定義関数
@@ -46,11 +45,11 @@ Azure SQL Data Warehouse でサポートされていない一般的な機能を�
 * コミット/ロールバック処理
 * トランザクションの保存
 * 実行コンテキスト (EXECUTE AS)
-* [GROUP BY 句と rollup / cube / grouping sets オプション][rollup / cube / grouping セット オプションによる句ごとのグループ化]
-* [8 を超えるの入れ子のレベル][8 を超えるの入れ子のレベル]
-* [ビューを使用した更新][ビューを使用した更新]
-* [変数代入のための SELECT の使用][変数代入のための SELECT の使用]
-* [動的 SQL 文字列の MAX 以外のデータ型][動的 SQL 文字列の MAX 以外のデータ型]
+* [rollup/cube/grouping セット オプションによる句ごとのグループ化][group by clause with rollup / cube / grouping sets options]
+* [8 を超える入れ子のレベル][nesting levels beyond 8]
+* [ビューを使用した更新][updating through views]
+* [変数代入のための SELECT の使用][use of select for variable assignment]
+* [動的 SQL 文字列の MAX 以外のデータ型][no MAX data type for dynamic SQL strings]
 
 こうした制限の大部分は回避できます。 上記の関連する開発記事に説明が記載されています。
 
@@ -77,7 +76,7 @@ SQL Data Warehouse での共通テーブル式の制限事項を次に示しま�
 * Sp_prepare によって作成されるステートメントで使用される場合、CTE は PDW の他の SELECT ステートメントと同様に動作します。 ただし、CTE が sp_prepare で準備される CETAS の一部として使用される場合、バインドを sp_prepare に対して実装する方法によって、動作が SQL Server および他の PDW ステートメントとは異なる場合があります。 CTE を参照する SELECT が CTE に存在しない間違った列を使用している場合、sp_prepare はエラーを検出せずに渡されますが、代わりに sp_execute でエラーがスローされます。
 
 ## <a name="recursive-ctes"></a>再帰 CTE
-再帰 CTE は、SQL Data Warehouse ではサポートされていません。  再帰 CTE の移行は複雑であるため、複数の手順に分けて実行することをお勧めします。 通常、再帰的な中間クエリの反復処理時に、ループを使用したり、一時テーブルに値を取り込んだりできます。 一時テーブルに値が取り込まれたら、単一の結果セットとしてデータを戻すことができます。 [GROUP BY 句と rollup / cube / grouping sets オプション][rollup / cube / grouping セット オプションによる句ごとのグループ化] に関する記事でも `GROUP BY WITH CUBE` の解決に同様のアプローチを採用しています。
+再帰 CTE は、SQL Data Warehouse ではサポートされていません。  再帰 CTE の移行は複雑であるため、複数の手順に分けて実行することをお勧めします。 通常、再帰的な中間クエリの反復処理時に、ループを使用したり、一時テーブルに値を取り込んだりできます。 一時テーブルに値が取り込まれたら、単一の結果セットとしてデータを戻すことができます。 [rollup/cube/grouping セット オプションによる句ごとのグループ化][group by clause with rollup / cube / grouping sets options]に関する記事でも、`GROUP BY WITH CUBE` の解決に同様のアプローチを採用しています。
 
 ## <a name="unsupported-system-functions"></a>サポートされていないシステム関数
 また、サポートされていないシステム関数もいくつかあります。 データ ウェアハウジングで一般的に使用されている主なものを次に示します。
@@ -115,24 +114,23 @@ SELECT TOP 1 row_count FROM LastRequestRowCounts ORDER BY step_index DESC
 ```
 
 ## <a name="next-steps"></a>次のステップ
-サポートされているすべての T-SQL ステートメントの一覧については、[「Transact-SQL トピック」][Transact-SQL トピック] をご覧ください。
+サポートされているすべての T-SQL ステートメントの一覧については、「[Transact-SQL トピック][Transact-SQL topics]」をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[更新での ANSI の JOIN]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
-[削除での ANSI の JOIN]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
-[MERGE ステートメント]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
+[ANSI joins on updates]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
+[ANSI joins on deletes]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
+[merge statement]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
 [INSERT..EXEC]: ./sql-data-warehouse-tables-temporary.md#modularizing-code
-[Transact-SQL トピック]: ./sql-data-warehouse-reference-tsql-statements.md
+[Transact-SQL topics]: ./sql-data-warehouse-reference-tsql-statements.md
 
-[カーソル]: ./sql-data-warehouse-develop-loops.md
-[SELECT..INTO]: ./sql-data-warehouse-develop-ctas.md#selectinto
-[rollup / cube / grouping セット オプションによる句ごとのグループ化]: ./sql-data-warehouse-develop-group-by-options.md
-[8 を超えるの入れ子のレベル]: ./sql-data-warehouse-develop-transactions.md
-[ビューを使用した更新]: ./sql-data-warehouse-develop-views.md
-[変数代入のための SELECT の使用]: ./sql-data-warehouse-develop-variable-assignment.md
-[動的 SQL 文字列の MAX 以外のデータ型]: ./sql-data-warehouse-develop-dynamic-sql.md
+[cursors]: ./sql-data-warehouse-develop-loops.md
+[group by clause with rollup / cube / grouping sets options]: ./sql-data-warehouse-develop-group-by-options.md
+[nesting levels beyond 8]: ./sql-data-warehouse-develop-transactions.md
+[updating through views]: ./sql-data-warehouse-develop-views.md
+[use of select for variable assignment]: ./sql-data-warehouse-develop-variable-assignment.md
+[no MAX data type for dynamic SQL strings]: ./sql-data-warehouse-develop-dynamic-sql.md
 
 <!--MSDN references-->
 
@@ -140,6 +138,6 @@ SELECT TOP 1 row_count FROM LastRequestRowCounts ORDER BY step_index DESC
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

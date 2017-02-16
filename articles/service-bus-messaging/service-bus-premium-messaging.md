@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 1/06/2016
-ms.author: darosa,sethm,jotaub
+ms.date: 01/18/2017
+ms.author: darosa;sethm;jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: ed1469b7d12af84970d0675ac2af29580e319042
-ms.openlocfilehash: 11bac0e1877fa2c1cacc9a0a6e6d7870a17a44a2
+ms.sourcegitcommit: dfd1ae52cc56a4d4b4c7ee3f69f0c454be607401
+ms.openlocfilehash: 9dd2696ebf4e2c4749471e5adcbc446c3945babf
 
 
 ---
@@ -50,7 +50,7 @@ Premium および Standard メッセージング レベルの間でのいくつ�
 
 ## <a name="get-started-with-premium-messaging"></a>Premium メッセージングを使ってみる
 
-Premium メッセージングの使用は簡単に始めることができ、そのプロセスは Standard メッセージングと似ています。 まず、[名前空間を作成します](service-bus-create-namespace-portal.md)。 [価格レベル] で *[Premium]* を選択します。
+Premium メッセージングは簡単に使い始めることができ、そのプロセスは Standard メッセージングと似ています。 まず、[名前空間を作成します](service-bus-create-namespace-portal.md)。 **[価格レベル]** で **[Premium]** を選択します。
 
 ![create-premium-namespace][create-premium-namespace]
 
@@ -71,6 +71,6 @@ Service Bus メッセージングの詳細については、次のトピック�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

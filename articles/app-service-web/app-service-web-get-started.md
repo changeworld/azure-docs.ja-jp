@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/13/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: f33928b445ab93c48e9967cd6a2f64c6686e1a58
+ms.sourcegitcommit: 4e86c1c1460f7b6eb312f10a0666f92b33697763
+ms.openlocfilehash: f6356a5a647940796c337e345a8b901dae9eb9b4
 
 
 ---
@@ -31,13 +31,18 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
 * 運用環境でライブ実行されているコードを確認する。
 * [Git コミットをプッシュする](https://git-scm.com/docs/git-push)ときと同じ方法で Web アプリを更新する。
 
-> [!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
-> 
-> 
+[!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
+
+## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
+
+次のいずれかの CLI バージョンを使用してタスクを完了できます。
+
+- [Azure CLI 1.0](app-service-web-get-started-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
+- [Azure CLI 2.0 (プレビュー)](app-service-web-get-started.md) - Resource Manager デプロイメント モデル用の次世代 CLI
 
 ## <a name="prerequisites"></a>前提条件
 * [Git](http://www.git-scm.com/downloads)。
-* [Azure CLI](../xplat-cli-install.md)。
+* [Azure CLI 2.0 プレビュー](/cli/azure/install-az-cli2)。
 * Microsoft Azure アカウント。 アカウントを持っていない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)するか [Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
 
 > [!NOTE]
@@ -50,25 +55,40 @@ Azure App Service に Web アプリをデプロイしましょう。
 
 1. 新しい Windows コマンド プロンプト、PowerShell ウィンドウ、Linux のシェル、または OS X ターミナルを開きます。 `git --version` と `azure --version` を実行し、Git と Azure CLI がコンピューターにインストールされていることを確認します。
    
-    ![Test installation of CLI tools for your first web app in Azure](./media/app-service-web-get-started/1-test-tools.png)
+    ![Test installation of CLI tools for your first web app in Azure](./media/app-service-web-get-started/1-test-tools-2.0.png)
    
     ツールをインストールしていない場合は、「 [前提条件](#Prerequisites) 」のダウンロード リンクを参照してください。
+
 2. 次のようにして、Azure にログインします。
    
-        azure login
+        az login
    
     ヘルプ メッセージに従って、ログイン プロセスを続行します。
    
-    ![Log in to Azure to create your first web app](./media/app-service-web-get-started/3-azure-login.png)
-3. Azure CLI を ASM モードに変更し、App Service のデプロイ ユーザーを設定します。 後で、資格情報を使用してコードをデプロイします。
+    ![Log in to Azure to create your first web app](./media/app-service-web-get-started/3-azure-login-2.0.png)
+
+3. App Service のデプロイ ユーザーを設定します。 後で、これらの資格情報を使用してコードをデプロイします。
    
-        azure config mode asm
-        azure site deployment user set --username <username> --pass <password>
-4. 作業ディレクトリに移動 (`CD`) し、次のようにサンプル アプリを複製します。
+        az appservice web deployment user set --user-name <username> --password <password>
+
+3. 新しい[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 この最初の App Service のチュートリアルでは、実際にその内容を把握している必要はありません。
+
+        az group create --location "<location>" --name my-first-app-group
+
+    `<location>` に使用できる値を確認するには、CLI コマンド `az appservice list-locations` を使用してください。
+
+3. 新しい "Free" [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)を作成します。 この最初の App Service のチュートリアルでは、このプランの Web アプリに対しては課金されないことを把握しておくだけでかまいません。
+
+        az appservice plan create --name my-free-appservice-plan --resource-group my-first-app-group --sku FREE
+
+4. `<app_name>` に一意の名前を指定して新しい Web アプリを作成します。
+
+        az appservice web create --name <app_name> --resource-group my-first-app-group --plan my-free-appservice-plan
+
+4. 次に、デプロイするサンプル コードを取得します。 作業ディレクトリに移動 (`CD`) し、次のようにサンプル アプリを複製します。
    
+        cd <working_directory>
         git clone <github_sample_url>
-   
-    ![Clone the app sample code for your first web app in Azure](./media/app-service-web-get-started/2-clone-sample.png)
    
     *&lt;github_sample_url>* には、好みのフレームワークに応じて次の URL のいずれかを使用します。
    
@@ -78,18 +98,28 @@ Azure App Service に Web アプリをデプロイしましょう。
    * Node.js (Express): [https://github.com/Azure-Samples/app-service-web-nodejs-get-started.git](https://github.com/Azure-Samples/app-service-web-nodejs-get-started.git)
    * Java: [https://github.com/Azure-Samples/app-service-web-java-get-started.git](https://github.com/Azure-Samples/app-service-web-java-get-started.git)
    * Python (Django): [https://github.com/Azure-Samples/app-service-web-python-get-started.git](https://github.com/Azure-Samples/app-service-web-python-get-started.git)
+
+    ![Clone the app sample code for your first web app in Azure](./media/app-service-web-get-started/2-clone-sample.png)
+   
 5. サンプル アプリのリポジトリに移動します。 For example:
    
         cd app-service-web-html-get-started
-6. 一意のアプリ名と、前に構成したデプロイ ユーザーを使用して、Azure で App Service のアプリ リソースを作成します。 メッセージが表示されたら、必要なリージョンの番号を指定します。
+
+5. 次のコマンドを使用して、App Service Web アプリのローカル Git デプロイを構成します。
+
+        az appservice web source-control config-local-git --name <app_name> --resource-group my-first-app-group
+
+    次のような JSON 出力が表示されます。これは、リモート Git リポジトリが構成されていることを意味します。
+
+        {
+        "url": "https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git"
+        }
+
+6. この URL を、ローカル リポジトリの Git リモートとして JSON に追加します (Git リモートは、わかりやすくするために `azure` という名前にしています)。
+
+        git remote add azure https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git
    
-        azure site create <app_name> --git --gitusername <username>
-   
-    ![Create the Azure resource for your first web app in Azure](./media/app-service-web-get-started/4-create-site.png)
-   
-    これでアプリが Azure で作成されました。 また、現在のディレクトリが Git として初期化され、この新しい App Service アプリに Git リモートとして接続されています。
-    アプリの URL (http://&lt;アプリの名前>.azurewebsites.net) を参照すると、既定の美しい HTML ページが表示されますが、ここでは用意したコードを実際に使用しましょう。
-7. Git でコードをプッシュする場合と同様に、サンプル コードを Azure アプリにデプロイします。 メッセージが表示されたら、前に構成したパスワードを入力します。
+7. サンプル コードを `azure` Git リモートにデプロイします。 入力を求められたら、前に構成したデプロイ資格情報を使用します。
    
         git push azure master
    
@@ -100,11 +130,13 @@ Azure App Service に Web アプリをデプロイしましょう。
 これで、Azure App Service にアプリがデプロイされました。
 
 ## <a name="see-your-app-running-live"></a>アプリがライブ実行されるのを確認する
-Azure で実稼働しているアプリを確認するには、リポジトリ内の任意のディレクトリから次のコマンドを実行します。
 
-    azure site browse
+Azure でアプリがライブ実行されるのを確認するには、次のコマンドを実行します。
+
+    az appservice web browse --name <app_name> --resource-group my-first-app-group
 
 ## <a name="make-updates-to-your-app"></a>アプリを更新する
+
 Git を使用してプロジェクト (リポジトリ) のルートからプッシュして、いつでもライブ サイトを更新することができるようになりました。 これは、初めてコードをデプロイしたときと同様に行います。 たとえば、ローカルでテストした新しい変更をプッシュする場合は、プロジェクト (リポジトリ) のルートから次のコマンドを実行するだけで済みます。
 
     git add .
@@ -112,16 +144,14 @@ Git を使用してプロジェクト (リポジトリ) のルートからプッ
     git push azure master
 
 ## <a name="next-steps"></a>次のステップ
+
 ご使用の言語フレームワークの推奨される開発とデプロイの手順を確認します。
 
-> [!div class="op_single_selector"]
-> * [.NET](web-sites-dotnet-get-started.md)
-> * [PHP](app-service-web-php-get-started.md)
-> * [Node.JS](app-service-web-nodejs-get-started.md)
-> * [Python](web-sites-python-ptvs-django-mysql.md)
-> * [Java](web-sites-java-get-started.md)
-> 
-> 
+* [.NET](web-sites-dotnet-get-started.md)
+* [PHP](app-service-web-php-get-started.md)
+* [Node.JS](app-service-web-nodejs-get-started.md)
+* [Python](web-sites-python-ptvs-django-mysql.md)
+* [Java](web-sites-java-get-started.md)
 
 または、最初の Web アプリを活用します。 次に例を示します。
 
@@ -131,6 +161,6 @@ Git を使用してプロジェクト (リポジトリ) のルートからプッ
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

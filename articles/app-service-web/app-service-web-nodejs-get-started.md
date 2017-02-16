@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: 9667d805fee3277275a71e6907d0abffb35a3c48
+ms.sourcegitcommit: 88405a9e67eb748acc9564022283004b5ebfcf48
+ms.openlocfilehash: 63210a5539d1e5e5b7d1f5a60048d507e53038a5
 
 
 ---
@@ -114,13 +114,13 @@ ms.openlocfilehash: 9667d805fee3277275a71e6907d0abffb35a3c48
    
         az appservice web deployment user set --user-name <username> --password <password>
 
-3. 新しい[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 この PHP チュートリアルでは、実際にその内容を把握している必要はありません。
+3. 新しい[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 この node.js チュートリアルでは、実際にその内容を把握している必要はありません。
 
         az group create --location "<location>" --name my-nodejs-app-group
 
     `<location>` に使用できる値を確認するには、CLI コマンド `az appservice list-locations` を使用してください。
 
-3. 新しい "Free" [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)を作成します。 この PHP チュートリアルでは、このプランの Web アプリに対しては課金されないことを把握しておくだけでかまいません。
+3. 新しい "Free" [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)を作成します。 この node.js チュートリアルでは、このプランの Web アプリに対しては課金されないことを把握しておくだけでかまいません。
 
         az appservice plan create --name my-nodejs-appservice-plan --resource-group my-nodejs-app-group --sku FREE
 
@@ -303,6 +303,6 @@ Node-Inspector を有効にするには、次の手順を実行します。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

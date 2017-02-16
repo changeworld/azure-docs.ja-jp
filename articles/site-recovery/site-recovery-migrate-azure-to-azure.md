@@ -1,5 +1,5 @@
 ---
-title: "Site Recovery を使用した異なる Azure リージョン間での Azure IaaS 仮想マシンの移行 | Microsoft Docs"
+title: "Azure リージョン間での Azure IaaS VM の移行 | Microsoft Docs"
 description: "Azure Site Recovery を使用して、異なる Azure リージョン間で Azure IaaS 仮想マシンを移行します。"
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2016
+ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 921da3b0fe82248ab32d0b8e23f234f942f5eb05
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: 3db1ec50b357c5bf6da51aaaf0f04ccb65d1bb05
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 921da3b0fe82248ab32d0b8e23f234f942f5eb05
 ## <a name="overview"></a>Overview
 Azure Site Recovery へようこそ。 この記事は、Azure VM を Azure リージョン間で移行する場合に役立ちます。 開始する前に、次のことに注意してください。
 
-* Azure には、リソースの作成と操作に関して、Azure Resource Manager とクラシックの 2 種類のデプロイメント モデルがあります。 また、Azure にも 2 つのポータルがあります。クラシック デプロイメント モデルをサポートする Azure クラシック ポータルと、両方のデプロイメント モデルをサポートする Azure ポータルです。 Site Recovery を Resource Manager とクラシックのどちらで構成するかに関係なく、移行の基本的な手順は同じです。 ただし、この記事の UI の説明とスクリーンショットは、Azure ポータルに適用されます。
+* Azure には、リソースの作成と操作に関して、Azure Resource Manager とクラシックの&2; 種類のデプロイメント モデルがあります。 また、Azure にも&2; つのポータルがあります。クラシック デプロイメント モデルをサポートする Azure クラシック ポータルと、両方のデプロイメント モデルをサポートする Azure ポータルです。 Site Recovery を Resource Manager とクラシックのどちらで構成するかに関係なく、移行の基本的な手順は同じです。 ただし、この記事の UI の説明とスクリーンショットは、Azure ポータルに適用されます。
 * **現時点では、リージョン間の一方向の移行だけが可能です。VM を Azure リージョン間でフェールオーバーできますが、フェールバックすることはできません。**
 * この記事で説明する移行の手順は、物理マシンを Azure にレプリケートする手順に基づいています。 各手順には、Azure ポータルで物理サーバーをレプリケートする方法を説明する、 [VMware VM または物理サーバーの Azure へのレプリケート](site-recovery-vmware-to-azure.md)に関する記事の手順へのリンクが含まれています。
 * Site Recovery をクラシック ポータルでセットアップする場合は、 [こちらの記事](site-recovery-vmware-to-azure-classic.md)に記載された詳細な手順に従ってください。 **古い記事** の [手順を参照する必要はありません](site-recovery-vmware-to-azure-classic-legacy.md)に記載された詳細な手順に従ってください。
@@ -53,6 +53,6 @@ Azure Site Recovery へようこそ。 この記事は、Azure VM を Azure リ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -3,7 +3,7 @@ title: Azure AD Privileged Identity Management |Microsoft Docs
 description: "Azure AD Privileged Identity Management (PIM) の機能と、PIM を使用してクラウド セキュリティを向上させる方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: c548ed2e-06e3-4eaf-a63d-0f02ee72da25
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
-ms.author: kgremban
+ms.date: 02/14/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0a642046ee26c242900b480a5144f53f2ac23769
+ms.sourcegitcommit: 71eb6a2fecbd76c9715b9a556a7ffd31b5b4950e
+ms.openlocfilehash: 6b788b3120565895e908bdfc4c9267e715bc5bec
 
 
 ---
@@ -25,8 +25,6 @@ ms.openlocfilehash: 0a642046ee26c242900b480a5144f53f2ac23769
 
 > [!NOTE]
 > Privileged Identity Management は、Azure Active Directory の Premium P2 エディションでのみ使用できます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
-> 
-> 
 
 組織では、セキュリティで保護された情報やリソースへのアクセス権を持つユーザーの数を最小限に抑える必要があります。こうすることで、悪意のあるユーザーがこのようなアクセス権を手にする可能性が抑えられるためです。 しかし一方で、ユーザーは、Azure、Office 365、または SaaS アプリケーションで特権操作を実行する必要があります。 組織は、ユーザーが管理者特権で行う操作を監視することなく、Azure AD でユーザーに特権アクセスを与えます。 Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。  
 
@@ -53,8 +51,6 @@ Azure AD Privileged Identity Management の使用は、 [Azure Portal](https://p
 
 > [!NOTE]
 > ディレクトリで Azure AD Privileged Identity Management を有効にする操作は、Microsoft アカウント (例: @yourdomain.com),) ではなく組織アカウント (例: @outlook.com),) を持つグローバル管理者が行う必要があります。
-> 
-> 
 
 1. ディレクトリのグローバル管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 組織に複数のディレクトリがある場合は、Azure Portal の右上隅に表示されているユーザー名を選択し、 Azure AD Privileged Identity Management を使用するディレクトリを選択します。
@@ -107,6 +103,9 @@ Azure AD Privileged Identity Management では、各ロールに永続的管理�
 
 2 番目の方法は、標準的な [アクセス レビュー](active-directory-privileged-identity-management-how-to-start-security-review.md)を設定する方法です。 これらのアクセス レビューは、割り当てられたレビュー担当者 (たとえば、チーム マネージャー) によって実行することも、従業員が自分自身の確認を行うこともできます。 これは、アクセスを必要としているユーザーとアクセスを必要としなくなったユーザーを監視するための最善の方法です。
 
+## <a name="azure-ad-pim-at-subscription-expiration"></a>Azure AD PIM のサブスクリプションの有効期限
+Azure AD PIM は一般公開前のプレビュー段階にあり、テナントで Azure AD PIM をプレビューするためのライセンスのチェックがありませんでした。  Azure AD PIM が一般公開で利用できるようになったため、2016 年 12 月以降、PIM の使用を継続するには、試用版または有料サブスクリプションがテナントに存在する必要があります。  組織が Azure AD Premium P2 を購入していなかったり、サブスクリプションの有効期限が切れている場合は、テナントで Azure AD PIM を利用できなくなります。  詳しくは、「[Azure AD PIM subscription requirements](./privileged-identity-management/subscription-requirements.md)」(Azure AD PIM サブスクリプションの要件) をご覧ください。
+
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
@@ -121,6 +120,6 @@ Azure AD Privileged Identity Management では、各ロールに永続的管理�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

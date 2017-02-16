@@ -1,10 +1,10 @@
 ---
-title: "Office 365 と Azure サブスクリプション全体で 1 つの Azure AD テナントを共有する | Microsoft Docs"
+title: "Office 365 アカウントを使用して Azure にサインアップする | Microsoft Docs"
 description: "Office 365 Azure AD テナントとそのユーザーを Azure サブスクリプションと共有する方法、またはその逆の方法について説明します。"
 services: 
 documentationcenter: 
 author: JiangChen79
-manager: mbaldwin
+manager: vikdesai
 editor: 
 tags: billing,top-support-issue
 ms.assetid: 129cdf7a-2165-483d-83e4-8f11f0fa7f8b
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cjiang
 translationtype: Human Translation
-ms.sourcegitcommit: bf9cf92a53bd2db9970c03463cb417310e78224e
-ms.openlocfilehash: edf236a3c9a28552b8c6831a8c7f57bab73c41ed
+ms.sourcegitcommit: 71240b7bb978ca0831a4e23cafa64a96d64dc3cd
+ms.openlocfilehash: 85db551a80ce6995965aec642f08b3b87248d21b
 
 
 ---
@@ -44,22 +44,19 @@ ms.openlocfilehash: edf236a3c9a28552b8c6831a8c7f57bab73c41ed
 <a id="s1"></a>
 
 ### <a name="scenario-1-office-365-users-who-plan-to-buy-azure"></a>シナリオ 1: Azure を購入する Office 365 ユーザー
-このシナリオでは、Office 365 サブスクリプションがある Kelley Wall というユーザーが、Azure にサブスクライブしようとしています。 その他に、Jane と Tricia という 2 人のアクティブ ユーザーがいます。 Kelley のアカウントは admin@contoso.onmicrosoft.com です。
+このシナリオでは、Office 365 サブスクリプションがある Kelley Wall というユーザーが、Azure にサブスクライブしようとしています。 その他に、Jane と Tricia という&2; 人のアクティブ ユーザーがいます。 Kelley のアカウントは admin@contoso.onmicrosoft.com です。
 
 ![Office 365 ユーザー管理センター](./media/billing-use-existing-office-365-account-azure-subscription/1-office365-users-admin-center.png)
 
 Azure にサインアップするには、次の手順を実行します。
 
-1. [Azure.com](https://azure.microsoft.com/)で Azure にサインアップします。 **[無料で試す]** をクリックします。 次のページで、 **[今すぐ開始]**をクリックします。
+1. [Azure.com](https://azure.microsoft.com/)で Azure にサインアップします。 **[無料アカウント]** をクリックします。 次のページで、**[無料で始める]** をクリックします。
 
     ![Azure を無料で試す](./media/billing-use-existing-office-365-account-azure-subscription/2-azure-signup-try-free.png)
-2. **[組織のアカウントを使用してサインインする]**をクリックします。
-
-    ![Azure にサインインします。](./media/billing-use-existing-office-365-account-azure-subscription/3-sign-in-to-azure.png)
-3. Office 365 アカウントでサインインします。 この例では Kelly の Office 365 アカウントです。
+2. Office 365 アカウントでサインインします。 この例では Kelly の Office 365 アカウントです。
 
     ![Office 365 アカウントでサインインします。](./media/billing-use-existing-office-365-account-azure-subscription/4-sign-in-with-org-account.png)
-4. 情報を入力し、サインアップ プロセスを完了します。
+3. 情報を入力し、サインアップ プロセスを完了します。
 
     ![情報を入力し、サインアップを完了します。](./media/billing-use-existing-office-365-account-azure-subscription/5-azure-sign-up-fill-information.png)
 
@@ -81,7 +78,7 @@ Azure にサインアップするには、次の手順を実行します。
 <a id="s2"></a>
 
 ### <a name="scenario-2-azure-users-who-plan-to-buy-office-365"></a>シナリオ 2: Office 365 を購入する Azure ユーザー
-このシナリオの Kelley Wall は、アカウント admin@contoso.onmicrosoft.com. Kelley は Office 365 にサブスクライブし、Azure と同じ既存のディレクトリを使用したいと考えています。
+このシナリオの Kelley Wall は、アカウント admin@contoso.onmicrosoft.com の Azure サブスクリプションがあるユーザーです。 Kelley は Office 365 にサブスクライブし、Azure と同じ既存のディレクトリを使用したいと考えています。
 
 > [!NOTE]
 > Office 365 サブスクリプションを取得するには、サインインに使用するアカウントが、Azure Active Directory テナントでグローバル管理者または課金管理者ディレクトリ ロールのメンバーである必要があります。 「[Azure Active Directory のロールを確認する方法](#how-to-know-your-role-in-your-azure-active-directory)」を参照してください。
@@ -158,6 +155,6 @@ Office 365 と Azure では、ユーザーとサブスクリプションの管�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

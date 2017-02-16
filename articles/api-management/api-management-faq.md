@@ -12,19 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: mijiang
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 21c05684055a98fecd214fb8291147d3cfefe13a
-
+ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
+ms.openlocfilehash: f4f3ee081d7c89fb5bc01552cb2e3ce01dd5381a
 
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
 
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
+## <a name="contact-us"></a>お問い合わせ
 * [Microsoft Azure API Management チームに質問するにはどうすればよいですか。](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
+
+
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
 * [機能がプレビュー段階とはどういう意味ですか。](#what-does-it-mean-when-a-feature-is-in-preview)
 * [API Management ゲートウェイとバックエンド サービス間の接続をセキュリティで保護するにはどうすればよいですか。](#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)
 * [新しいインスタンスに API Management サービス インスタンスをコピーするにはどうすればよいですか。](#how-do-i-copy-my-api-management-service-instance-to-a-new-instance)
@@ -95,12 +97,12 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 ### <a name="how-do-i-use-api-versioning-in-api-management"></a>API Management で API のバージョン管理を使用するにはどうすればよいですか。
 API Management では API のバージョン管理を複数の方法で使用できます。
 
-* API Management では、バージョンが異なる複数の API を構成できます。 たとえば、MyAPIv1 と MyAPIv2 という 2 つの API を構成できます。 こうすれば、開発者は自分でバージョンを選ぶことができます。
-* バージョン セグメントを含まないサービス URL で API を構成することもできます (例: https://my.api)。 その後で、各操作の[書き換え URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) テンプレートでバージョン セグメントを構成できます。 たとえば、/resource という [URL](api-management-howto-add-operations.md#url-template) テンプレートと /v1/Resource という[書き換え URL](api-management-howto-add-operations.md#rewrite-url-template) テンプレートで操作を作成することができます。 バージョン セグメントの値は各操作で個別に変更できます。
+* API Management では、バージョンが異なる複数の API を構成できます。 たとえば、MyAPIv1 と MyAPIv2 という&2; つの API を構成できます。 こうすれば、開発者は自分でバージョンを選ぶことができます。
+* バージョン セグメントを含まないサービス URL で API を構成することもできます (例: https://my.api )。 その後で、各操作の[書き換え URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) テンプレートでバージョン セグメントを構成できます。 たとえば、/resource という [URL](api-management-howto-add-operations.md#url-template) テンプレートと /v1/Resource という[書き換え URL](api-management-howto-add-operations.md#rewrite-url-template) テンプレートで操作を作成することができます。 バージョン セグメントの値は各操作で個別に変更できます。
 * API のサービス URL 内に "既定" のバージョン セグメントを保持する場合は、選択した操作に対して、[バックエンド サービスの設定](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService) ポリシーを使用してバックエンド要求パスを変更するポリシーを設定できます。
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>1 つの API で複数の環境をセットアップするにはどうすればよいですか。
-テスト環境と運用環境など、複数の環境を 1 つの API でセットアップする方法は 2 つあります。 そのための方法は次のとおりです。
+テスト環境と運用環境など、複数の環境を&1; つの API でセットアップする方法は&2; つあります。 そのための方法は次のとおりです。
 
 * 同じテナントで複数の API をホストする。
 * 異なるテナントで同じ API をホストする。
@@ -117,7 +119,7 @@ Standard レベルと Premium レベルでは、API Management テナントの�
 
 複数のリージョンにデプロイしている場合、リージョンが廃止された後で再開されると、リージョンのアドレスが変わります (複数リージョンのデプロイは Premium レベルでのみ使用できます)。
 
-複数リージョンのデプロイ用に構成された Premium レベルのテナントには、リージョンごとに 1 つのパブリック IP アドレスが割り当てられます。
+複数リージョンのデプロイ用に構成された Premium レベルのテナントには、リージョンごとに&1; つのパブリック IP アドレスが割り当てられます。
 
 IP アドレス (複数リージョンのデプロイの場合は複数個) は Azure Portal のテナント ページで取得できます。
 
@@ -144,11 +146,11 @@ Git Credential Manager を使用しているか、Visual Studio を使用して 
 はい。 API Management は Azure ExpressRoute と共に使用できます。
 
 ### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>あるサブスクリプションから別のサブスクリプションに API Management サービスを移動できますか。
-はい。 方法の詳細については、「[Move resources to a new resource group or subscription (新しいリソース グループまたはサブスクリプションへのリソースの移動)](../resource-group-move-resources.md)」を参照してください。
+はい。 方法の詳細については、「[Move resources to a new resource group or subscription (新しいリソース グループまたはサブスクリプションへのリソースの移動)](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

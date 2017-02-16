@@ -15,18 +15,18 @@ ms.topic: get-started-article
 ms.date: 10/14/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 20aefd2c94bca03653f11a91c5ade173cb6da9bf
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0a9ab0aca1a77245f360d0d8976aa9b8f59f15a0
 
 
 ---
-# <a name="securing-cloud-resources-with-azure-multifactor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
+# <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
 組織が Azure Active Directory を使用している場合には、Azure Multi-Factor Authentication または Active Directory フェデレーション サービス (AD FS) を使って、Azure AD がアクセスするリソースをセキュリティで保護できます。 以下では、Azure Multi-factor Authentication または Active Directory フェデレーション サービス (AD FS) を使って Azure Active Directory リソースのセキュリティを確保する方法を紹介します。
 
 ## <a name="secure-azure-ad-resources-using-ad-fs"></a>AD FS を使って Azure AD リソースのセキュリティを確保する
 クラウド リソースにセキュリティ保護を実現するには、ユーザーのアカウントを有効にしたうえで、要求規則を設定します。 以下では、その手順を説明します。
 
-1. [ユーザーに対して多要素認証をオンにする](multi-factor-authentication-get-started-cloud.md#turn-on-multi-factor-authentication-for-users)方法に関するページに記載の手順に従って、アカウントを有効にします。
+1. [ユーザーに対して多要素認証をオンにする](multi-factor-authentication-get-started-cloud.md#turn-on-two-step-verification-for-users)方法に関するページに記載の手順に従って、アカウントを有効にします。
 2. AD FS 管理コンソールを起動します。
    ![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/adfs1.png)
 3. **[証明書利用者信頼]** に移動し、証明書利用者信頼を右クリックします。 **[要求規則の編集...]** を選択します。
@@ -34,13 +34,13 @@ ms.openlocfilehash: 20aefd2c94bca03653f11a91c5ade173cb6da9bf
 5. ドロップダウンから、**[カスタム規則を使用して要求を送信]** を選択し、**[次へ]** をクリックします。
 6. 要求ルールの名前を入力します。
 7. [カスタム規則:] の下に、以下のテキストを追加します。
-   
+
     ```
     => issue(Type = "http://schemas.microsoft.com/claims/authnmethodsreferences", Value = "http://schemas.microsoft.com/claims/multipleauthn");
     ```
-   
+
     対応する要求:
-   
+
     ```
     <saml:Attribute AttributeName="authnmethodsreferences" AttributeNamespace="http://schemas.microsoft.com/claims">
     <saml:AttributeValue>http://schemas.microsoft.com/claims/multipleauthn</saml:AttributeValue>
@@ -74,7 +74,7 @@ ms.openlocfilehash: 20aefd2c94bca03653f11a91c5ade173cb6da9bf
 10. 変換要求規則の追加ウィザードで、ドロップダウンから **[カスタム規則を使用して要求を送信]** を選択し、**[次へ]** をクリックします。
 11. [要求規則名] の下のボックスに 「*Keep Users Signed In*」(ユーザーをサインインしたままにする) と入力します。
 12. [カスタム規則:] ボックスに次のように入力します。
-    
+
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
     ![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip5.png)
@@ -83,7 +83,7 @@ ms.openlocfilehash: 20aefd2c94bca03653f11a91c5ade173cb6da9bf
 15. **[OK]**をクリックします。
 16. AD FS 管理を閉じます。
 
-### <a name="configure-azure-multifactor-authentication-trusted-ips-with-federated-users"></a>Azure Multi-Factor Authentication の信頼できる IP とフェデレーション ユーザーを構成する
+### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>Azure Multi-Factor Authentication の信頼できる IP とフェデレーション ユーザーを構成する
 これで要求が準備できたので、信頼できる IP を構成できます。
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
@@ -100,7 +100,6 @@ ms.openlocfilehash: 20aefd2c94bca03653f11a91c5ade173cb6da9bf
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

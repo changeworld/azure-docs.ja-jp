@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL Database のサービス階層とパフォーマンス レベルを変更する | Microsoft Docs"
-description: "「Azure SQL Database のサービス階層とパフォーマンス レベルを変更する」では、SQL Databaseのスケール アップとスケール ダウンの方法について説明しています。 Azure SQL Database の価格レベルを変更します。"
+title: "Azure Portal: Azure SQL Database の価格レベルを変更する | Microsoft Docs"
+description: "Azure ポータルを使用して Azure SQL Database のサービス階層とパフォーマンス レベルを変更し、SQL Database のスケールアップやスケールダウンを行う方法について説明しています。"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: cbd67e88-08d5-40e2-a223-0fb0c718a782
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.devlang: NA
 ms.date: 10/12/2016
 ms.author: sstein
@@ -15,16 +16,15 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 1e297de81be07a107691c54875ca638ae73d43df
-ms.openlocfilehash: 3f283166f09437611aa04d7cadf5b161d0e52f8a
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: 88104e0684281f77da497ef4dd608c6a0c64b274
 
 
 ---
 # <a name="change-the-service-tier-and-performance-level-pricing-tier-of-a-sql-database-using-the-azure-portal"></a>Azure Portal を使用して SQL Database のサービス階層とパフォーマンス レベル (価格レベル) を変更する
 > [!div class="op_single_selector"]
 > * [**Azure Portal**](sql-database-scale-up.md)
-> * [PowerShell](sql-database-scale-up-powershell.md)
-> 
+> * [PowerShell](sql-database-scale-up-powershell.md)> 
 > 
 
 サービス レベルとパフォーマンス レベルは、SQL Database で利用できる機能とリソースを表しており、アプリケーションのニーズの変化に応じて更新できます。 詳細については、「 [サービス レベル](sql-database-service-tiers.md)」をご覧ください。
@@ -44,7 +44,7 @@ ms.openlocfilehash: 3f283166f09437611aa04d7cadf5b161d0e52f8a
 
 **この記事を完了するには、以下が必要です。**
 
-* Azure SQL Database。 SQL Database がない場合は、「 [最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
+* Azure SQL Database。 SQL Database がない場合は、「 [最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って&1; つ作成してください。
 
 ## <a name="change-the-service-tier-and-performance-level-of-your-database"></a>データベースのサービス階層とパフォーマンス レベルを変更する
 スケールアップまたはスケールダウンするデータベースの [SQL Database] ブレードを開きます。
@@ -88,6 +88,6 @@ ms.openlocfilehash: 3f283166f09437611aa04d7cadf5b161d0e52f8a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

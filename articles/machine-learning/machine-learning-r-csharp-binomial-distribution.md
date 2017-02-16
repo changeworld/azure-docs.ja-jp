@@ -1,6 +1,6 @@
 ---
-title: "二項分布スイート | Microsoft Docs"
-description: "二項分布スイート"
+title: "(非推奨) 二項分布スイート - Azure | Microsoft Docs"
+description: "(非推奨) 二項分布スイート"
 services: machine-learning
 documentationcenter: 
 author: ireiter
@@ -11,21 +11,28 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/04/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: ireiter
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3f274408b370466af4eb9bd6e2ecbce32ce03857
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 4d4a343be86909acf054eaaf9cc4a1b0df5a4209
 
 
 ---
-# <a name="binomial-distribution-suite"></a>二項分布スイート
+# <a name="deprecated-binomial-distribution-suite"></a>(非推奨) 二項分布スイート
+
+> [!NOTE]
+> Microsoft DataMarket は間もなく提供終了となる予定です。この API は推奨されていません。 
+> 
+> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
+
 二項分布スイートは、一連のサンプル Web サービス ([二項ジェネレーター](https://datamarket.azure.com/dataset/aml_labs/bdg5)、[確率計算](https://datamarket.azure.com/dataset/aml_labs/bdp4)、[変位値計算](https://datamarket.azure.com/dataset/aml_labs/bdq5)) で、具体的には二項分布を生成し処理します。 これらのサービスにより、任意の長さの二項分布シーケンスの生成、与えられた確率からの変位値の計算、および与えられた変位値からの確率の計算ができます。 それぞれのサービスは、選択したサービスに基づいて異なる結果を出力します (以下の説明を参照してください)。 二項分布スイートは、R の統計パッケージに含まれている R 関数 qbinom、rbinom、pbinom に基づいています。 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-> この Web サービスは、 モバイル アプリ、Web サイト、ローカル コンピューターなどから、Marketplace 上で直接ユーザーが使用できます。 この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
+> この Web サービスは、 モバイル アプリ、Web サイト、ローカル コンピューターなどから、Marketplace 上で直接ユーザーが使用できます。 この Web サービスのもう&1; つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
 > 
 > 
 
@@ -36,7 +43,7 @@ ms.openlocfilehash: 3f274408b370466af4eb9bd6e2ecbce32ce03857
 このサービスでは、正規分布の 4 つの引数を使用し、関連付けられている変位値を計算します。
 入力引数は、次のとおりです。
 
-* p – 複数の試行回数の 1 つの集計された確率  
+* p – 複数の試行回数の&1; つの集計された確率  
 * size – 試行の回数
 * prob – 試行で成功する確率
 * Side - L は分布の下部、U は分布の上部 
@@ -47,10 +54,10 @@ ms.openlocfilehash: 3f274408b370466af4eb9bd6e2ecbce32ce03857
 このサービスでは、二項分布の 4 つの引数を使用し、関連する変位値を計算します。
 入力引数は、次のとおりです。
 
-* q – 二項分布でのイベントの 1 つの変位値 
+* q – 二項分布でのイベントの&1; つの変位値 
 * size – 試行の回数
 * prob – 試行で成功する確率
-* side– L は分布の下部、U は分布の上部、E は 1 つの成功数に相当します。
+* side– L は分布の下部、U は分布の上部、E は&1; つの成功数に相当します。
 
 サービスの出力は計算された確率で、指定された変位値に関連付けられています。
 
@@ -289,6 +296,6 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

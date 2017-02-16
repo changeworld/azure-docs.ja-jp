@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Azure ドメイン ネーム システムを使用して、DNS レコードを管理する方法について説明します。 ドキュメントでは、ドメイン名の DNS ゾーンとレコードをセットアップして管理する方法を紹介します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: e32393348fc26fa4cb0a5221695a9bf8bb4d36e1
+ms.sourcegitcommit: 1e30c21b967e9862ae24907ac5db56a341c11cf5
+ms.openlocfilehash: a0110b01879360e4558dffed6343da1ef72cfe86
 
 ---
 # <a name="dns-documentation"></a>DNS のドキュメント
 
-Azure DNS (Domain Name System) は、DNS ドメインのためのサービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。  Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
+ホスティング サービスである Azure ドメイン ネーム システムを使用して、DNS レコードを管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ドメイン名の DNS ゾーンとレコードをセットアップして管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -141,6 +142,6 @@ DNS のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

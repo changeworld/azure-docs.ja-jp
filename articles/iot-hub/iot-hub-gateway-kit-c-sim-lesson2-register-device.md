@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT ハブを作成してデバイスを登録する | Microsoft Docs"
+title: "シミュレートされたデバイスと Azure IoT Gateway - レッスン 2: デバイスの登録 | Microsoft Docs"
 description: 
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 7765f122476c51011ab12613e615e5fea0bc58f4
-ms.openlocfilehash: d3726201754b90a60e9bde2651c023adf9f9033b
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 759085dcb4993d38f79cb19efe58e1a968ddb682
 
 
 ---
@@ -89,7 +89,7 @@ IoT ハブを作成するには、次の手順を実行します。
 既定では、IoT ハブは Free 価格レベルで作成されます。 詳細については、「[Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
 > [!NOTE]
-> IoT ハブの名前は、グローバルに一意である必要があります。 Azure サブスクリプションで作成できる F1 エディションの Azure IoT Hub は 1 つのみです。
+> IoT ハブの名前は、グローバルに一意である必要があります。 Azure サブスクリプションで作成できる F1 エディションの Azure IoT Hub は&1; つのみです。
 
 ## <a name="register-your-device-in-your-iot-hub"></a>IoT ハブへのデバイスの登録
 
@@ -108,6 +108,6 @@ IoT ハブを作成し、デバイス ID を使用して IoT ハブに論理デ�
 [シミュレート デバイスからクラウドへのアップロードを実行するサンプル アプリケーションの構成と実行](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
-ms.openlocfilehash: f6208195fb998d5cb3ca00fa684f814971083cad
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: f6208195fb998d5cb3ca00fa684f814971083cad
 * Web のアナウンス:  ユーザーに Web ビューを閲覧するよう促す通知です。
 
 ### <a name="see-also"></a>関連項目
-* [リーチ - 方法 - アナウンス][リンク 3] 
+* [リーチ - 方法 - アナウンス][Link 3] 
 
 ### <a name="about-web-view-announcements"></a>Web ビューのアナウンスについて:
 ここで指定する HTML コードや JavaScript コードの発生パターン "{deviceid}" は、アナウンスを表示するデバイスの識別子に自動的に置き換えられます。 この方法では、Azure Mobile Engagement デバイスの識別子を、バック オフィスでホストする 外部 Web サービスで簡単に取得できます。
@@ -110,7 +110,7 @@ ms.openlocfilehash: f6208195fb998d5cb3ca00fa684f814971083cad
 アナウンスの件名、コンテンツ、ボタンのテキストを入力します。 このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。 対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかといったフィードバックに基づいて行うことができます。
 
 ### <a name="see-also"></a>関連項目
-* [UI ドキュメント - Reach - 新しいプッシュの条件][リンク 28]
+* [UI ドキュメント - リーチ - 新しいプッシュの条件][Link 28]
 
 ## <a name="content-of-polls"></a>アンケートのコンテンツ
 ![リーチ - コンテンツ 2][31] 
@@ -119,7 +119,7 @@ ms.openlocfilehash: f6208195fb998d5cb3ca00fa684f814971083cad
 このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。 対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかに基づいて行うことができます。 また、質問への回答の選択内容を条件として使用して、アンケートの回答フィードバックに基づいて対象ユーザーを設定することも可能です。
 
 ### <a name="see-also"></a>関連項目
-* [UI ドキュメント - Reach - 新しいプッシュの条件][リンク 28]
+* [UI ドキュメント - リーチ - 新しいプッシュの条件][Link 28]
 
 ## <a name="content-of-data-pushes"></a>データ プッシュのコンテンツ
 ![リーチ - コンテンツ 3][32] 
@@ -135,7 +135,7 @@ ms.openlocfilehash: f6208195fb998d5cb3ca00fa684f814971083cad
 * このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。 対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかに基づいて行うことができます。
 
 ### <a name="see-also"></a>関連項目
-* [UI ドキュメント - Reach - 新しいプッシュの条件][リンク 28]
+* [UI ドキュメント - リーチ - 新しいプッシュの条件][Link 28]
 
 ## <a name="content-of-tiles-windows-phone-only"></a>タイルのコンテンツ (Windows Phone のみ)
 ![リーチ - コンテンツ 4][33]
@@ -145,7 +145,7 @@ ms.openlocfilehash: f6208195fb998d5cb3ca00fa684f814971083cad
 タイルのプッシュは、Windows Phone のネイティブ プッシュの Microsoft Push Notification Service (MPNS) バージョンです。 タイル プッシュの種類は唯一、応答のない種類であるため、タイル プッシュ キャンペーンの結果に基づいて今後のキャンペーンの対象ユーザーは設定できません。 
 
 ### <a name="see-also"></a>関連項目
-* [API ドキュメント - Reach API - ネイティブ プッシュ][リンク 4]
+* [API ドキュメント - リーチ API - ネイティブ プッシュ][Link 4]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -208,39 +208,39 @@ ms.openlocfilehash: f6208195fb998d5cb3ca00fa684f814971083cad
 [58]: ./media/mobile-engagement-user-interface-settings/settings13.png
 
 <!--Link references-->
-[リンク 1]: mobile-engagement-user-interface.md
-[リンク 2]: mobile-engagement-troubleshooting-guide.md
-[リンク 3]: mobile-engagement-how-tos.md
-[リンク 4]: http://go.microsoft.com/fwlink/?LinkID=525553
-[リンク 5]: http://go.microsoft.com/fwlink/?LinkID=525554
-[リンク 6]: http://go.microsoft.com/fwlink/?LinkId=525555
-[リンク 7]: https://account.windowsazure.com/PreviewFeatures
-[リンク 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
-[リンク 9]: http://azure.microsoft.com/services/mobile-engagement/
-[リンク 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
-[リンク 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
-[リンク 12]: mobile-engagement-user-interface-navigation.md
-[リンク 13]: mobile-engagement-user-interface-home.md
-[リンク 14]: mobile-engagement-user-interface-my-account.md
-[リンク 15]: mobile-engagement-user-interface-analytics.md
-[リンク 16]: mobile-engagement-user-interface-monitor.md
-[リンク 17]: mobile-engagement-user-interface-reach.md
-[リンク 18]: mobile-engagement-user-interface-segments.md
-[リンク 19]: mobile-engagement-user-interface-dashboard.md
-[リンク 20]: mobile-engagement-user-interface-settings.md
-[リンク 21]: mobile-engagement-troubleshooting-guide-analytics.md
-[リンク 22]: mobile-engagement-troubleshooting-guide-apis.md
-[リンク 23]: mobile-engagement-troubleshooting-guide-push-reach.md
-[リンク 24]: mobile-engagement-troubleshooting-guide-service.md
-[リンク 25]: mobile-engagement-troubleshooting-guide-sdk.md
-[リンク 26]: mobile-engagement-troubleshooting-guide-sr-info.md
-[リンク 27]: mobile-engagement-user-interface-reach-campaign.md
-[リンク 28]: mobile-engagement-user-interface-reach-criterion.md
-[リンク 29]: mobile-engagement-user-interface-reach-content.md
+[Link 1]: mobile-engagement-user-interface.md
+[Link 2]: mobile-engagement-troubleshooting-guide.md
+[Link 3]: mobile-engagement-how-tos.md
+[Link 4]: http://go.microsoft.com/fwlink/?LinkID=525553
+[Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
+[Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
+[Link 7]: https://account.windowsazure.com/PreviewFeatures
+[Link 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
+[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
+[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
+[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
+[Link 12]: mobile-engagement-user-interface-navigation.md
+[Link 13]: mobile-engagement-user-interface-home.md
+[Link 14]: mobile-engagement-user-interface-my-account.md
+[Link 15]: mobile-engagement-user-interface-analytics.md
+[Link 16]: mobile-engagement-user-interface-monitor.md
+[Link 17]: mobile-engagement-user-interface-reach.md
+[Link 18]: mobile-engagement-user-interface-segments.md
+[Link 19]: mobile-engagement-user-interface-dashboard.md
+[Link 20]: mobile-engagement-user-interface-settings.md
+[Link 21]: mobile-engagement-troubleshooting-guide-analytics.md
+[Link 22]: mobile-engagement-troubleshooting-guide-apis.md
+[Link 23]: mobile-engagement-troubleshooting-guide-push-reach.md
+[Link 24]: mobile-engagement-troubleshooting-guide-service.md
+[Link 25]: mobile-engagement-troubleshooting-guide-sdk.md
+[Link 26]: mobile-engagement-troubleshooting-guide-sr-info.md
+[Link 27]: mobile-engagement-user-interface-reach-campaign.md
+[Link 28]: mobile-engagement-user-interface-reach-criterion.md
+[Link 29]: mobile-engagement-user-interface-reach-content.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

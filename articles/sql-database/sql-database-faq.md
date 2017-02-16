@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database FAQ
+title: "Azure SQL Database に関する FAQ | Microsoft Docs"
 description: "クラウド データベースと Azure SQL Database、Microsoft のリレーショナル データベース管理システム (RDBMS)、およびクラウド内のサービスとしてのデータベースのよくある質問に対する回答です。"
 services: sql-database
 documentationcenter: 
@@ -16,38 +16,38 @@ ms.workload: data-management
 ms.date: 12/19/2016
 ms.author: sashan;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: ad6fb631f05b1e88e8cbaaca83f9863cfb643269
-ms.openlocfilehash: aba60bf5108a4e5ad95e3c634b9fcbca7393c700
+ms.sourcegitcommit: 74de313cf9ea98d80fcc60a4fe5573c6a32801da
+ms.openlocfilehash: b1e2199ff80954486fedaa1307753b35d60f0af7
 
 
 ---
 # <a name="sql-database-faq"></a>SQL Database に関する FAQ
 ## <a name="how-does-the-usage-of-sql-database-show-up-on-my-bill"></a>SQL Database の使用量は請求書にどのように表示されますか。
-SQL Database では、予測可能な 1 時間単位のレートで、サービス階層と、Single Database の場合はパフォーマンス レベル、エラスティック プールの場合は eDTU の両方に基づいて請求が行われます。 実際の使用量は時間単位でコンピューティングされるため、表示される請求額は 1 時間分に満たない場合があります。 たとえば、1 か月間にデータベースが存在したのが 12 時間だった場合、請求書には半日分の使用が示されます。 また、請求書にはサービス階層とパフォーマンス レベルおよびプールあたりの eDTU の内訳が記載されるため、それぞれが 1 か月間に発生したデータベース日数を簡単に把握できます。
+SQL Database では、予測可能な&1; 時間単位のレートで、サービス階層と、Single Database の場合はパフォーマンス レベル、エラスティック プールの場合は eDTU の両方に基づいて請求が行われます。 実際の使用量は時間単位でコンピューティングされるため、表示される請求額は&1; 時間分に満たない場合があります。 たとえば、1 か月間にデータベースが存在したのが 12 時間だった場合、請求書には半日分の使用が示されます。 また、請求書にはサービス階層とパフォーマンス レベルおよびプールあたりの eDTU の内訳が記載されるため、それぞれが&1; か月間に発生したデータベース日数を簡単に把握できます。
 
-## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour"></a>Single Database がアクティブであったのが 1 時間に満たない場合や上位のサービス階層の使用が 1 時間に満たない場合はどうなりますか。
-使用状況やデータベースがアクティブであったのが 1 時間未満であったことに関係なく、データベースが存在していた 1 時間単位で、その時間に使用された最上位のサービス階層とパフォーマンス レベルで課金は行われます。 たとえば、Single Database を作成し、それを 5 分後に削除した場合、請求書にはデータベース時間として 1 時間の請求が表示されます。 
+## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour"></a>Single Database がアクティブであったのが&1; 時間に満たない場合や上位のサービス階層の使用が&1; 時間に満たない場合はどうなりますか。
+使用状況やデータベースがアクティブであったのが&1; 時間未満であったことに関係なく、データベースが存在していた&1; 時間単位で、その時間に使用された最上位のサービス階層とパフォーマンス レベルで課金は行われます。 たとえば、Single Database を作成し、それを&5; 分後に削除した場合、請求書にはデータベース時間として&1; 時間の請求が表示されます。 
 
 例
 
-* Basic データベースを作成し、それをすぐに Standard S1 にアップグレードした場合、最初の 1 時間分として Standard S1 のレートが課金されます。
+* Basic データベースを作成し、それをすぐに Standard S1 にアップグレードした場合、最初の&1; 時間分として Standard S1 のレートが課金されます。
 * データベースを午後 10 時 00 分に Basic から Premium にアップグレードし始めて、 午前 1 時 35 分にアップグレードが完了した場合、 翌日の午前 1 時 00 分から Premium 料金での課金が始まります。 
 * 午前 11 時 00 分に、データベースを Premium から Basic にダウングレードし始めて、 午後 2 時 15 分に完了した場合、Premium の料金が課金されるのは午後 3 時 00 分までで、それ以降は Basic の料金が課金されます。
 
 ## <a name="how-does-elastic-pool-usage-show-up-on-my-bill-and-what-happens-when-i-change-edtus-per-pool"></a>エラスティック プールの使用量は請求書にどのように表示されますか。プールあたりの eDTU を変更した場合どうなりますか。
-エラスティック プールの料金は、[価格ページ](https://azure.microsoft.com/pricing/details/sql-database/)のプールあたりの eDTU 下の単位に従い請求書に Elastic DTU (eDTU) として表示されます。 エラスティック プールでは、データベース単位の請求はありません。 課金は、使用量やプールがアクティブであったのが 1 時間に満たないということに関係なく、プールが存在していた時間の最上位の eDTU を使用して 1 時間単位で行われます。 
+エラスティック プールの料金は、[価格ページ](https://azure.microsoft.com/pricing/details/sql-database/)のプールあたりの eDTU 下の単位に従い請求書に Elastic DTU (eDTU) として表示されます。 エラスティック プールでは、データベース単位の請求はありません。 課金は、使用量やプールがアクティブであったのが&1; 時間に満たないということに関係なく、プールが存在していた時間の最上位の eDTU を使用して&1; 時間単位で行われます。 
 
 例
 
 * 午前 11 時 18 分に 200 eDTU の Standard エラスティック プールを作成し、プールに 5 つのデータベースを追加した場合、午前 11 時から始まって、その日中は 1 時間 200 eDTU が 課金されます。
-* 2 日目には、データベース 1 が午前 5 時 5 分から 50 eDTU の消費を開始し、その日はそれが維持されます。 データベース 2 ～ 5 は、0 ～ 80 eDTU の間で変動します。 その日、その 1 日間異なる eDTU を消費するデータベースが他に 5 つ追加されました。 2 日目は、丸 1 日 200 eDTU が課金されます。 
+* 2 日目には、データベース 1 が午前 5 時 5 分から 50 eDTU の消費を開始し、その日はそれが維持されます。 データベース 2 ～ 5 は、0 ～ 80 eDTU の間で変動します。 その日、その&1; 日間異なる eDTU を消費するデータベースが他に&5; つ追加されました。 2 日目は、丸 1 日 200 eDTU が課金されます。 
 * 3 日目の午前 5 時に、 さらにデータベースが 15 追加されました。 1 日中データベースの使用量は増え、午後 8 時 5 分にプールの eDTU を 200 から 400 に増やすことに決めました。 午後 8 時まで 200 eDTU レベルで課金され、残りの 4 時間は 400 eDTU に増やされました。 
 
 ## <a name="elastic-pool-billing-and-pricing-information"></a>エラスティック プールの課金と価格情報
 エラスティック プールは、次の特性ごとに課金されます。
 
 * エラスティック プールは、プールにデータベースがない場合でも、その作成時に課金されます。
-* エラスティック プールは 1 時間ごとに課金されます。 これは、シングル データベースのパフォーマンス レベルと同じ使用状況測定の頻度です。
+* エラスティック プールは&1; 時間ごとに課金されます。 これは、シングル データベースのパフォーマンス レベルと同じ使用状況測定の頻度です。
 * エラスティック プールが新しい eDTU 量にサイズ変更されると、サイズ変更操作が完了するまでは新しい eDTU 量に応じた課金はされません。 これは、Single Database のパフォーマンス レベルを変更する場合と同様のパターンに従っています。
 * エラスティック プールの価格は、プールの eDTU 数に基づきます。 エラスティック プールの価格は、内部のエラスティック データベースの数および使用率とは関係ありません。
 * 価格は、(プールの eDTU 数) x (eDTU あたりの単価) で計算されます。
@@ -78,7 +78,7 @@ V12 データベースでは、サービス階層 (Basic、Standard、および 
 データベースのサービス階層の変更やそれのプールからの出し入れでは、バック グラウンド操作でプラットフォームにデータベースをコピーする必要があります。 サービス階層の変更は、データベースのサイズに応じて数分から数時間かかることがあります。 いずれの場合も、データベースはオンラインを維持し、移動中も使用できます。 Single Database の変更の詳細については、「 [データベースのサービス階層の変更](sql-database-scale-up.md)」を参照してください。 
 
 ## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Single Database と Elastic Database はどのように使い分けできますか。
-一般に、エラスティック プールは、典型的な[サービスとしてのソフトウェア (SaaS) アプリケーションのパターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)用に設計されており、データベースは顧客またはテナントごとに 1 つです。 個々のデータベースを購入し、さまざまな、またはピーク時の需要に合わせてオーバープロビジョニングすることはコスト効率がよくありません。 プールを使用すると、プールでパフォーマンスは全体的に管理され、データベースは自動的にスケールアップおよびダウンされます。 
+一般に、エラスティック プールは、典型的な[サービスとしてのソフトウェア (SaaS) アプリケーションのパターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)用に設計されており、データベースは顧客またはテナントごとに&1; つです。 個々のデータベースを購入し、さまざまな、またはピーク時の需要に合わせてオーバープロビジョニングすることはコスト効率がよくありません。 プールを使用すると、プールでパフォーマンスは全体的に管理され、データベースは自動的にスケールアップおよびダウンされます。 
 
 使用パターンから利益があると判断される場合、Azure インテリジェント エンジンはデータベースにプールを推奨します。 詳細については、「 [SQL Database の価格レベルの提案](sql-database-service-tier-advisor.md)」を参照してください。 Single Database と Elastic Database を選択する際の詳細なガイダンスについては、[エラスティック プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)を参照してください。
 
@@ -88,7 +88,7 @@ V12 データベースでは、サービス階層 (Basic、Standard、および 
 ## <a name="im-moving-from-webbusiness-to-the-new-service-tiers-what-do-i-need-to-know"></a>Web または Business を新しいサービス階層に移行する際に何を理解しておけばよいでしょうか。
 Azure SQL Web データベースおよび Business データベースは提供終了になりました。 Basic、Standard、Premium、および Elastic 階層は、提供終了になった Web データベースおよび Business データベースの代わりです。 別途、この移行期間に役立つ FAQ を用意しています。 [Web および Business Edition の終了に関する FAQ](sql-database-web-business-sunset-faq.md)
 
-## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography"></a>同じ Azure 地理的条件内で 2 つのリージョン間のデータベースを geo レプリケートする場合に予想されるレプリケーションの遅延はどのくらいですか。
+## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography"></a>同じ Azure 地理的条件内で&2; つのリージョン間のデータベースを geo レプリケートする場合に予想されるレプリケーションの遅延はどのくらいですか。
 現在、5 秒間の RPO をサポートしているため、geo セカンダリが Azure 推奨のペアになっているリージョンでホストされ、同じサービス レベルである限り、レプリケーションの遅延はそれより短くなっています。
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-secondary-is-created-in-the-same-region-as-the-primary-database"></a>geo セカンダリをプライマリ データベースと同じリージョンに作成する場合に予想されるレプリケーションの遅延はどのくらいですか。
@@ -106,6 +106,6 @@ DMV を使ってプライマリ データベースと geo セカンダリの間�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

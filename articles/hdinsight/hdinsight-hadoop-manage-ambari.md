@@ -1,5 +1,5 @@
 ---
-title: "Apache Ambari Web UI を使用して HDInsight クラスターを監視および管理する | Microsoft Docs"
+title: "Ambari Web UI を使用して Azure HDInsight を監視および管理する | Microsoft Docs"
 description: "Ambari を使用して Linux ベースの HDInsight クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b3c84bdd32d9daec2d50d8126c26e8d7ecc894b1
+ms.sourcegitcommit: b829f21dbc212cd951f5e417ad56f7eb724a9d56
+ms.openlocfilehash: 443e9e9d45417fb428ef4b81e9a66e04a1e4809e
 
 
 ---
@@ -29,9 +29,12 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
 
 ## <a name="a-idwhatisawhat-is-ambari"></a><a id="whatis"></a>Ambari とは
-<a href="http://ambari.apache.org" target="_blank">Apache Ambari</a> は、Hadoop クラスターのプロビジョニング、管理、監視に使用する Web UI を簡単に使用できる方法を提供することで Hadoop の管理を簡略化します。 開発者は、<a href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md" target="_blank">Ambari REST API</a> を使用して、これらの機能をアプリケーションに統合することができます。
+<a href="http://ambari.apache.org" target="_blank">Apache Ambari</a> は、Hadoop クラスターのプロビジョニング、管理、監視に使用する Web UI を簡単に使用できる方法を提供することで Hadoop の管理を簡略化します。 開発者は、 <a href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md" target="_blank">Ambari REST API</a>を使用して、これらの機能をアプリケーションに統合することができます。
 
-Ambari Web UI は既定で Linux ベースの HDInsight クラスターに付属しています。 
+Ambari Web UI は、Linux オペレーティング システムを使用する HDInsight クラスターに既定で付属しています。
+
+> [!IMPORTANT]
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 
 
 ## <a name="connectivity"></a>接続
 Ambari Web UI はお使いの HDInsight クラスター (HTTPS://CLUSTERNAME.azurehdidnsight.net) にあります。**CLUSTERNAME** はお使いのクラスターの名前になります。 
@@ -217,6 +220,6 @@ Ambari ビューを使うと、開発者は [Ambari ビュー フレームワー
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

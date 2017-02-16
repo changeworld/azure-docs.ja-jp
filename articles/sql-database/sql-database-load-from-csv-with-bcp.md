@@ -8,15 +8,16 @@ manager: jhubbard
 editor: 
 ms.assetid: 875f9b8d-f1a1-4895-b717-f45570fb7f80
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 09/13/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8d6e201ba5fb8283d883272e0cb2b8e7c11f43e5
+ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
+ms.openlocfilehash: 389c7c75bcc0c1a5a66f66a9692ebe2e4095db5e
 
 
 ---
@@ -31,9 +32,9 @@ bcp コマンドライン ユーティリティを使用して、CSV ファイ�
 * インストールされた bcp コマンド ライン ユーティリティ
 * インストールされた sqlcmd コマンド ライン ユーティリティ
 
-bcp および sqlcmd ユーティリティは [Microsoft ダウンロード センター][Microsoft ダウンロード センター]からダウンロードできます。
+bcp ユーティリティと sqlcmd ユーティリティは [Microsoft ダウンロード センター][Microsoft Download Center]からダウンロードできます。
 
-### <a name="data-in-ascii-or-utf16-format"></a>ASCII または UTF-16 形式のデータ
+### <a name="data-in-ascii-or-utf-16-format"></a>ASCII または UTF-16 形式のデータ
 自身のデータを使ってこのチュートリアルを試す場合、bcp では UTF-8 がサポートされないため、データには ASCII または UTF-16 エンコードを使用する必要があります。 
 
 ## <a name="1-create-a-destination-table"></a>1.ターゲット テーブルを作成する
@@ -113,13 +114,13 @@ SQL Server データベースを移行するには、 [SQL Server データベ�
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE 構文]: https://msdn.microsoft.com/library/mt203953.aspx
+[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft ダウンロード センター]: https://www.microsoft.com/download/details.aspx?id=36433
+[Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

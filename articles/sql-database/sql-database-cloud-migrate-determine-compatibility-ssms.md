@@ -1,6 +1,7 @@
 ---
-title: "Azure SQL Database へ移行する前にSQL Server Management Studio を使用して SQL Database の互換性を判定する | Microsoft Docs"
-description: "Microsoft Azure SQL Database、データベースの移行、SQL Database の互換性、[データ層アプリケーションのエクスポート] ウィザード"
+title: "SSMS: Azure SQL Server データベースの互換性 | Microsoft Docs"
+description: "この記事では、SQL Server Management Studio の [データ層アプリケーションのエクスポート] ウィザードを使用して、SQL Server データベースを SQL Database に移行するための互換性のあるかどうかを判定します。"
+keywords: "Microsoft Azure SQL Database、データベースの移行、SQL Database の互換性、[データ層アプリケーションのエクスポート] ウィザード"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -13,11 +14,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-migrate
-ms.date: 08/29/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 15d0bf86d6094b6a8c0d6aaf1e1bb59382a81ffb
+ms.sourcegitcommit: 82b76602133fa42db14e2095f29535b6002e9b2f
+ms.openlocfilehash: efcf1179f744e1b3d1645321af62d2533677afd2
 
 
 ---
@@ -70,6 +71,6 @@ ms.openlocfilehash: 15d0bf86d6094b6a8c0d6aaf1e1bb59382a81ffb
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

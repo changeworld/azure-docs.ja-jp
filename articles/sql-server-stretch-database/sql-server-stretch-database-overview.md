@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 06/27/2016
 ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2fcea994b3de924f1170dae2d7a0a3b6d4786538
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f63900b0a4f32e1bc5a88c068091916bd96aafb8
 
 
 ---
@@ -28,13 +28,13 @@ Stretch Database は、透過的かつ安全にコールド データを Microso
 ## <a name="what-are-the-benefits-of-stretch-database"></a>Stretch Database の利点
 Stretch Database には次の利点があります。
 
-### <a name="provides-costeffective-availability-for-cold-data"></a>コールド データ用に、コスト効果の高い可用性を提供
+### <a name="provides-cost-effective-availability-for-cold-data"></a>コールド データ用に、コスト効果の高い可用性を提供
 SQL Server Stretch Database を使用して、ウォーム トランザクション データとコールド トランザクション データを SQL Server から Microsoft Azure に動的に拡張します。 通常のコールド データ ストレージとは異なり、データは常にオンラインであり、クエリに使用できます。 顧客の注文履歴のように大きなテーブルでも、高いコストをかけずに、データ リテンション期間のタイムラインを長くすることができます。 スケーリングのコストが高いオンプレミス ストレージよりも、低コストの Azure をお勧めします。 価格レベルを選択し、Azure ポータルで設定を構成することで、コストを管理します。 必要に応じてスケールアップまたはスケールダウンします。 詳細については、 [SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/) に関するページを参照してください。
 
 ### <a name="doesnt-require-changes-to-queries-or-applications"></a>クエリまたはアプリケーションの変更を必要としない
 オンプレミスであるか、クラウドに拡張されているかにかかわらず、SQL Server データにシームレスにアクセスできます。  管理者がデータを格納する場所を決定するポリシーを設定すると、SQL Server はバックグラウンドでデータ移行を処理します。 テーブル全体が常にオンラインであり、クエリ可能です。 また、Stretch Database は既存のクエリやアプリケーションを変更する必要がありません。データの場所は、アプリケーションに対して完全に透過的です。
 
-### <a name="streamlines-onpremises-data-maintenance"></a>オンプレミス データのメンテナンスを合理化
+### <a name="streamlines-on-premises-data-maintenance"></a>オンプレミス データのメンテナンスを合理化
 オンプレミス データのメンテナンスと、データ用のストレージを削減します。 オンプレミス データのバックアップはより高速に実行され、メンテナンス時間内に完了します。 データのクラウド部分のバックアップは自動的に実行されます。 オンプレミスのストレージの必要性は大幅に減少します。 Azure Storage は、オンプレミスの SSD に追加するよりも、コストが 80% 低くなる可能性があります。
 
 ### <a name="keeps-your-data-secure-even-during-migration"></a>移行中もデータの保護を維持
@@ -84,6 +84,6 @@ SQL Server 2016 Upgrade Advisor の 1 機能である Stretch Database Advisor �
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

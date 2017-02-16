@@ -1,10 +1,10 @@
 ---
-title: "VPN ゲートウェイの計画と設計 | Microsoft Docs"
+title: "クロスプレミス接続の計画と設計: Azure VPN Gateway| Microsoft Docs"
 description: "クロスプレミス、ハイブリッド、および VNet 間接続のための VPN ゲートウェイの計画と設計について説明します。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management,azure-resource-manager
 ms.assetid: d5aaab83-4e74-4484-8bf0-cc465811e757
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 01/25/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 03f9294b558a075705fca4bd647a2154e155a1ea
+ms.sourcegitcommit: d2087d4a1844379ae642c9ce5b08d62edef2fccf
+ms.openlocfilehash: 21723b3c8ab636f6c4a497abece59ce83a46d65f
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 03f9294b558a075705fca4bd647a2154e155a1ea
 
 ## <a name="planning"></a>計画
 ### <a name="a-namecompareacross-premises-connectivity-options"></a><a name="compare"></a>クロスプレミス接続オプション
-オンプレミスのサイトを仮想ネットワークに安全に接続するには、サイト間、ポイント対サイト、および ExpressRoute の 3 つのオプションがあります。 利用可能なさまざまなクロスプレミス接続を比較します。 選択するオプションは、次のようなさまざまな考慮事項によって異なります。
+オンプレミスのサイトを仮想ネットワークに安全に接続するには、サイト間、ポイント対サイト、および ExpressRoute の&3; つのオプションがあります。 利用可能なさまざまなクロスプレミス接続を比較します。 選択するオプションは、次のようなさまざまな考慮事項によって異なります。
 
 * ソリューションにどのようなスループットが必要か。
 * セキュリティで保護された VPN 経由のパブリックなインターネットで通信するか、またはプライベートな接続で通信するか。
@@ -117,7 +117,7 @@ VPN デバイスの構成経験が必要です。構成経験がない場合は�
 
 **強制トンネリングの図**
 
-![Forced Tunneling connection](./media/vpn-gateway-plan-design/forced-tunnel.png "forced tunneling")
+![Azure VPN Gateway の強制トンネリングの図](./media/vpn-gateway-plan-design/forced-tunneling-diagram.png)
 
 両方のデプロイ モデルで、さまざまなツールを使用して強制トンネリング接続を構成できます。 詳細については後の表を参照してください。 この表は、この構成について新しい記事、新しいデプロイメント モデル、追加のツールが利用できるようになったら更新されるものです。 記事が利用できるようになったら、表から直接リンクできるようにします。
 
@@ -131,6 +131,6 @@ VPN デバイスの構成経験が必要です。構成経験がない場合は�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

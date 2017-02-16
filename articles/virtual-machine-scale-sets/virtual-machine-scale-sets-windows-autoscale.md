@@ -3,7 +3,7 @@ title: "Windows 仮想マシン スケール セットの自動スケール | Mi
 description: "Azure PowerShell を利用し、Windows 仮想マシン スケール セットの自動スケールを設定する"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: davidmu1
+author: Thraka
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
-ms.author: davidmu
+ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: da6a16f3c76f1029332c764227795852e6902941
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 0e57cba090fa51c2d0d77fd363d560ee0419f92c
 
 
 ---
 # <a name="automatically-scale-machines-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットでのマシンの自動スケール
 仮想マシン スケール セットを使用すると、まったく同じ仮想マシンを簡単にまとめてデプロイし、管理することができます。 スケール セットは、最高水準のスケーラビリティが要求されるアプリケーションのための、拡張性が高くカスタマイズしやすいコンピューティング レイヤーです。Windows プラットフォーム イメージのほか、Linux プラットフォーム イメージ、カスタム イメージ、拡張機能をサポートしています。 スケール セットの詳細については、「[仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」を参照してください。
 
-このチュートリアルでは、Windows 仮想マシンのスケール セットを作成し、複数のマシンをまとめて自動的にスケールする方法を紹介しています。 スケール セットを作成し、スケール処理を設定するには、Azure Resource Manager テンプレートを作成し、Azure PowerShell を使ってそれをデプロイする必要があります。 テンプレートの詳細については、「 [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」をご覧ください。 スケール セットの自動スケールに関する詳細については、「 [Automatic scaling and Virtual Machine Scale Sets (自動スケールと仮想マシン スケール セット)](virtual-machine-scale-sets-autoscale-overview.md)」を参照してください。
+このチュートリアルでは、Windows 仮想マシンのスケール セットを作成し、複数のマシンをまとめて自動的にスケールする方法を紹介しています。 スケール セットを作成し、スケール処理を設定するには、Azure Resource Manager テンプレートを作成し、Azure PowerShell を使ってそれをデプロイする必要があります。 テンプレートの詳細については、「 [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」をご覧ください。 スケール セットの自動スケールに関する詳細については、「 [Automatic scaling and Virtual Machine Scale Sets (自動スケールと仮想マシン スケール セット)](virtual-machine-scale-sets-autoscale-overview.md)」を参照してください。
 
 この記事では、次のリソースと拡張機能をデプロイします。
 
@@ -38,10 +38,10 @@ ms.openlocfilehash: da6a16f3c76f1029332c764227795852e6902941
 * Microsoft.Insights.VMDiagnosticsSettings
 * Microsoft.Insights/autoscaleSettings
 
-Resource Manager のリソースの詳細については、「[Azure Resource Manager vs. classic deployment (Azure Resource Manager 対クラシック デプロイ)](../resource-manager-deployment-model.md)」を参照してください。
+Resource Manager のリソースの詳細については、「[Azure Resource Manager vs. classic deployment (Azure Resource Manager 対クラシック デプロイ)](../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
 
 ## <a name="step-1-install-azure-powershell"></a>手順 1: Azure PowerShell をインストールする
-最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、Azure にサインインする方法については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」を参照してください。
+最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、Azure にサインインする方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
 
 ## <a name="step-2-create-a-resource-group-and-a-storage-account"></a>手順 2: リソース グループとストレージ アカウントを作成する
 1. **リソース グループを作成します**。リソースはすべてリソース グループにデプロイする必要があります。 **vmsstestrg1** という名前のリソース グループを作成するには、[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx) を使用します。
@@ -517,6 +517,6 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

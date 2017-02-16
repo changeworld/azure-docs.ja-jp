@@ -1,6 +1,6 @@
 ---
-title: "Linux ベースの HDInsight での Hadoop MapReduce サンプルの実行 | Microsoft Docs"
-description: "Linux ベースの HDInsight で MapReduce サンプルの使用を開始します。 SSH を使用してクラスターに接続し、Hadoop コマンドを使用してサンプル ジョブを実行します。"
+title: "HDInsight での Hadoop MapReduce サンプルの実行 | Microsoft Docs"
+description: "HDInsight で MapReduce サンプルの使用を開始します。 SSH を使用してクラスターに接続し、Hadoop コマンドを使用してサンプル ジョブを実行します。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,22 +13,27 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d4b6db263becb722cabfab2160c0a460034eae72
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: b3c56871ec23c7595d18006943be19c38d2fb5c9
 
 
 ---
 # <a name="run-the-hadoop-samples-in-hdinsight"></a>HDInsight での Hadoop のサンプルの実行
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブの実行について理解するのに使用できる MapReduce のサンプル セットが用意されています。 このドキュメントでは、使用可能なサンプルと一部のサンプルの実行手順について説明します。
+HDInsight クラスターには、Hadoop MapReduce ジョブの実行について理解するのに使用できる MapReduce のサンプル セットが用意されています。 このドキュメントでは、使用可能なサンプルと一部のサンプルの実行手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure サブスクリプション**: [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)
+
+
 * **Linux ベースの HDInsight クラスター**: [Linux 上の HDInsight で Hive と Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)
+
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * **SSH クライアント**: HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
   
   * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
@@ -51,7 +56,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 * **pi**: 準モンテカルロ法を使用して Pi を推定する Map / Reduce プログラム
 * **randomtextwriter**: ノードあたり 10 GB のランダムなテキスト データを書き込む Map / Reduce プログラム
 * **randomwriter**: ノードあたり 10 GB のランダムなデータを書き込む Map / Reduce プログラム
-* **secondarysort**:  Reduce プログラムに 2 番目の並べ替えを定義する例
+* **secondarysort**:  Reduce プログラムに&2; 番目の並べ替えを定義する例
 * **sort**: ランダム ライターによって書き込まれたデータを並べ替える Map / Reduce プログラム
 * **sudoku**: 数独問題を解くプログラム
 * **teragen**: terasort のデータを生成する
@@ -65,7 +70,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 **ソース コード**: これらのサンプルのソース コードは、HDInsight クラスター上の **/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples** にあります。
 
 > [!NOTE]
->  `2.2.4.9-1` は、HDInsight クラスターの Hortonworks Data Platform のバージョンであり、HDInsight が更新されると変更される場合があります。
+> `2.2.4.9-1` は、HDInsight クラスターの Hortonworks Data Platform のバージョンであり、HDInsight が更新されると変更される場合があります。
 > 
 > 
 
@@ -120,11 +125,11 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
 [数独](https://en.wikipedia.org/wiki/Sudoku) は、9 つの 3 x 3 グリッドで構成される論理パズルです。 いくつかのグリッドのセルには数字がありますが、他のセルは空白になっています。空白のセルを解決するとゴールです。 パズルの詳細については、上記のリンクにありますが、このサンプルの目的は空白のセルを解決することです。 そのため、入力は次の形式のファイルである必要があります。
 
-* 9 つの行と 9 つの列
+* 9 つの行と&9; つの列
 * 各列には、数字または `?` (空白のセルを示す) を含めることができる
 * セルはスペースで区切られる
 
-1 つの数字を 1 つの列または行で繰り返すことができないという、数独パズルを作成する特定の方法があります。 HDInsight クラスターに正しく作成された例があります。 これは、 **/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta** にあり、次の内容が含まれています。
+1 つの数字を&1; つの列または行で繰り返すことができないという、数独パズルを作成する特定の方法があります。 HDInsight クラスターに正しく作成された例があります。 これは、 **/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta** にあり、次の内容が含まれています。
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -137,7 +142,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
     ? ? ? ? 4 5 ? 7 8
 
 > [!NOTE]
->  `2.2.4.9-1` の部分は、HDInsight クラスターが更新されると変更される場合があります。
+> `2.2.4.9-1` の部分は、HDInsight クラスターが更新されると変更される場合があります。
 > 
 > 
 
@@ -175,7 +180,7 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 
 このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。 使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。 これも含めたソート ベンチマークの詳細については、 [Sortbenchmark](http://sortbenchmark.org/) サイトを参照してください。
 
-このサンプルでは 3 組の MapReduce プログラムを使用します。
+このサンプルでは&3; 組の MapReduce プログラムを使用します。
 
 * **TeraGen**: データ行を生成してソートする MapReduce プログラム
 * **TeraSort**: 入力データをサンプリングし、MapReduce を使用してデータを合計順にソートする
@@ -183,7 +188,7 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
     TeraSort は MapReduce 関数の標準ソートです。 特に、sample[i-1] <= key < sample[i] となるキーはすべて reduce i に送られます。 このため、reduce i の出力がすべて reduce i+1 の出力より小さくなることが保証されます。
 * **TeraValidate**: 出力がグローバルにソートされていることを検証する MapReduce プログラム
   
-    出力ディレクトリ内のファイルごとにマップを 1 つ作成します。各マップは各キーが前のキー以下であることを保証します。 map 関数は、各ファイルの最初のキーと最後のキーの記録も生成し、reduce 関数は、ファイル i の最初のキーがファイル i-1 の最後のキーよりも大きいことを確認します。 問題が見つかった場合は、reduce の出力として範囲外のキーがレポートされます。
+    出力ディレクトリ内のファイルごとにマップを&1; つ作成します。各マップは各キーが前のキー以下であることを保証します。 map 関数は、各ファイルの最初のキーと最後のキーの記録も生成し、reduce 関数は、ファイル i の最初のキーがファイル i-1 の最後のキーよりも大きいことを確認します。 問題が見つかった場合は、reduce の出力として範囲外のキーがレポートされます。
 
 次の手順を使用してデータを生成、ソートし、出力を検証します。
 
@@ -196,7 +201,7 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
    
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-input /example/data/10GB-sort-output
    
-    `-Dmapred.reduce.tasks` は、このジョブに使用する reduce タスクの数を Hadoop に伝えます。 最後の 2 つのパラメーターは、単なるデータの入力と出力の場所です。
+    `-Dmapred.reduce.tasks` は、このジョブに使用する reduce タスクの数を Hadoop に伝えます。 最後の&2; つのパラメーターは、単なるデータの入力と出力の場所です。
 3. 次のコマンドを使用して、ソートによって生成されたデータを検証します。
    
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
@@ -224,6 +229,6 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

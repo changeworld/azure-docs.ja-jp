@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: 80b391e43417ce09bd8aaaa04e48fcd85baf9323
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: b94b2f867d30fe2c121904821404b8228ee1e899
 
 
 ---
@@ -37,25 +37,26 @@ ms.openlocfilehash: 80b391e43417ce09bd8aaaa04e48fcd85baf9323
 
 ## <a name="prerequisites"></a>前提条件
 * [Azure Media Services アカウントを作成します](media-services-portal-create-account.md)
-* 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行中であることを確認します。 詳細については、「 [Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-portal-manage-streaming-endpoints.md)
+* ストリーミング エンドポイントが実行されていることを確認します。 詳細については、「 [Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-portal-manage-streaming-endpoints.md)
 * 最新バージョンの [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) ツールをインストールします。
 * ツールを起動し、AMS アカウントに接続します。
 
 ## <a name="tips"></a>ヒント
 * 可能な限り、有線のインターネット接続を使用します。
-* 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。 これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
+* 帯域幅要件の目安は、ストリーミングのビットレートの&2; 倍です。 これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
 * ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## <a name="create-a-channel"></a>チャネルの作成
-1. AMSE ツールで、 **[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]**  を選択します。
+1. AMSE ツールで、 **[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
 
-![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle1.png)
+    ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle1.png)
 
-1. チャネルの名前を指定します。説明フィールドは省略可能です。 [チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTMP]** に設定して、**[Standard]** を選択します。 それ以外の設定はすべてそのままにしておくことができます。
+2. チャネルの名前を指定します。説明フィールドは省略可能です。 [チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTMP]** に設定して、**[Standard]** を選択します。 それ以外の設定はすべてそのままにしておくことができます。
 
-**[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
+    **[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
 
-1. **[チャネルの作成]**をクリックします。
+3. **[チャネルの作成]**をクリックします。
+
    ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle2.png)
 
 > [!NOTE]
@@ -90,7 +91,7 @@ ms.openlocfilehash: 80b391e43417ce09bd8aaaa04e48fcd85baf9323
 ### <a name="configuration-steps"></a>構成の手順
 1. 使用中のコンピューターで、Flash Media Live Encoder (FMLE) のインターフェイスに移動します。
 
-    インターフェイスは、設定のメイン ページの 1 つです。 FMLE を使用するストリーミングを開始するには、次の推奨設定に注意してください。
+    インターフェイスは、設定のメイン ページの&1; つです。 FMLE を使用するストリーミングを開始するには、次の推奨設定に注意してください。
 
    * 形式: H.264 フレーム レート: 30.00
    * 入力サイズ: 1280 x 720
@@ -134,7 +135,8 @@ ms.openlocfilehash: 80b391e43417ce09bd8aaaa04e48fcd85baf9323
 >
 
 ## <a name="test-playback"></a>再生をテストする
-1. AMSE ツールに移動し、テストするチャネルを右クリックします。 メニューが表示されたら、**[プレビューの再生]** にマウスを合わせ、**[Azure Media Player を使用]** を選択します。  
+
+AMSE ツールに移動し、テストするチャネルを右クリックします。 メニューが表示されたら、**[プレビューの再生]** にマウスを合わせ、**[Azure Media Player を使用]** を選択します。  
 
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle8.png)
 
@@ -150,7 +152,9 @@ ms.openlocfilehash: 80b391e43417ce09bd8aaaa04e48fcd85baf9323
 3. **[プログラムを今すぐ開始]** ボックスを選択します。
 4. **[プログラムの作成]**をクリックします。  
 
-    注: プログラムの作成は、チャネルの作成ほど時間はかかりません。    
+    >[!NOTE]
+    >プログラムの作成は、チャネルの作成ほど時間はかかりません。
+        
 5. プログラムが実行されたら、再生を確認するために、プログラムを右クリックして **[プログラムの再生]** に移動し、**[Azure Media Player を使用]** を選択します。  
 6. 確認したら、プログラムをもう一度クリックし、**[出力 URL をクリップボードにコピー]** を選択します (または、メニューの **[プログラムの情報と設定]** オプションから、この情報を取得します)。
 
@@ -167,6 +171,6 @@ ms.openlocfilehash: 80b391e43417ce09bd8aaaa04e48fcd85baf9323
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/08/2016
+ms.date: 02/14/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 47af3ae7fe78fdd794330bb5069bb734b2754eaf
+ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
+ms.openlocfilehash: 47fb1724ac72df8b83012bcacdc435ea847547da
 
 
 ---
@@ -42,7 +42,7 @@ ms.openlocfilehash: 47af3ae7fe78fdd794330bb5069bb734b2754eaf
 * **フェデレーション**: これらの ID は、オンプレミスとクラウドの両方に存在します。  Azure AD Connect を使用すると、これらのユーザーは作成されるか、既存の Azure AD アカウントと結合されます。  
 
 > [!NOTE]
-> 同期オプションの詳細については、「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をお読みください。
+> 同期オプションの詳細については、「 [オンプレミス ID と Azure Active Directory の統合](connect/active-directory-aadconnect.md)」をお読みください。
 > 
 > 
 
@@ -110,7 +110,7 @@ ms.openlocfilehash: 47af3ae7fe78fdd794330bb5069bb734b2754eaf
 ![](./media/hybrid-id-design-considerations/single-forest.png) 単一フォレストのシナリオ: 図 5 に示すように、大規模な組織でも小規模な組織でも、複数のフォレストを持つのがごく一般的です。
 
 > [!NOTE]
-> Azure AD Connect の同期を使用したオンプレミス AD や Azure AD のさまざまなトポロジの詳細については、記事「 [Azure AD Connect のトポロジ](active-directory-aadconnect-topologies.md)」をお読みください。
+> Azure AD Connect の同期を使用したオンプレミス AD や Azure AD のさまざまなトポロジの詳細については、記事「 [Azure AD Connect のトポロジ](connect/active-directory-aadconnect-topologies.md)」をお読みください。
 > 
 > 
 
@@ -130,7 +130,7 @@ ms.openlocfilehash: 47af3ae7fe78fdd794330bb5069bb734b2754eaf
 * リンクされたメールボックスがある場合、サインインに使用される別のアカウントが異なるフォレストにある。
 
 > [!NOTE]
-> クラウドとオンプレミスの両方に存在するオブジェクトは、一意の識別子を使用して "接続" されます。 ディレクトリ同期の場合は、この一意の識別子を SourceAnchor といいます。 シングル サインオンの場合は、これを ImmutableId といいます。 [Azure AD Connect の設計概念](active-directory-aadconnect-design-concepts.md#sourceanchor) 」を参照してください。
+> クラウドとオンプレミスの両方に存在するオブジェクトは、一意の識別子を使用して "接続" されます。 ディレクトリ同期の場合は、この一意の識別子を SourceAnchor といいます。 シングル サインオンの場合は、これを ImmutableId といいます。 [Azure AD Connect の設計概念](connect/active-directory-aadconnect-design-concepts.md#sourceanchor) 」を参照してください。
 > 
 > 
 
@@ -216,6 +216,6 @@ Azure Active Directory テナントを持つグローバル管理者は、既定
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

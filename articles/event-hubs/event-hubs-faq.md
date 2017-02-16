@@ -1,6 +1,6 @@
 ---
 title: "Event Hubs のよく寄せられる質問 (FAQ) | Microsoft Docs"
-description: "Event Hubs の FAQ。"
+description: "Event Hubs の FAQ"
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/01/2016
+ms.date: 12/07/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eb8a1f5b46ed5bfbdc61789ffc48a79927d9c19d
+ms.sourcegitcommit: a584086e459c5446a814bbca3e50ac343fa9201e
+ms.openlocfilehash: f7b3974bf789df8c87254cc4186d8c7c85282aaa
 
 
 ---
@@ -71,16 +71,8 @@ Event Hubs Standard レベルでは、現在最大 7 日間のリテンション
 Event Hubs の Standard レベルは、Basic レベルはもちろん、いくつかの競合システムよりも多くの機能を提供します。 これらの機能には、24 時間を超えるリテンション期間と単一の AMQP 接続を使用する機能が含まれ、AMQP 接続では、1 秒未満の遅延時間で多数のデバイスにコマンドを送信でき、デバイスから Event Hubs にテレメトリを送信できます。 機能の一覧については、 [Event Hubs の価格の詳細](https://azure.microsoft.com/pricing/details/event-hubs/)を参照してください。
 
 ## <a name="geographic-availability"></a>ご利用可能な地域
-Event Hubs は、次のリージョンで利用できます。
 
-| ジオ (主要地域)  | 地域 |
-| --- | --- |
-| 米国 |米国中部、米国東部、米国東部 2、米国中南部、米国西部 |
-| ヨーロッパ |北ヨーロッパ、西ヨーロッパ |
-| アジア太平洋 |東アジア、東南アジア |
-| 日本 |東日本、西日本 |
-| ブラジル |ブラジル南部 |
-| オーストラリア |オーストラリア東部、オーストラリア南東部 |
+Azure Event Hubs は、サポートされているすべての Azure リージョンで利用できます。 一覧については、「[Azure リージョン][]」ページを参照してください。  
 
 ## <a name="support-and-sla"></a>サポートと SLA
 Event Hubs のテクニカル サポートは、 [コミュニティ フォーラム](https://social.msdn.microsoft.com/forums/azure/home)を通して利用できます。 課金とサブスクリプション管理のサポートは無料で提供されます。
@@ -90,14 +82,15 @@ SLA の詳細については、「 [サービス レベル アグリーメント
 ## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次の記事を参照してください。
 
-* [Event Hubs の概要][Event Hubs の概要]
-* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]。
+* [Event Hubs の概要][Event Hubs overview]
+* [Event Hubs を使用する完全なサンプル アプリケーション][sample application that uses Event Hubs]
 
-[Event Hubs の概要]: event-hubs-overview.md
-[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Azure リージョン]: https://azure.microsoft.com/regions/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

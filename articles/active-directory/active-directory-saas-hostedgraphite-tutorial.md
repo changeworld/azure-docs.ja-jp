@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: dc96c4350af865014d06ae8d8a6e7d2db47d60d0
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f7286285828414000f90cf9d71facb9a9a51afd8
 
 
 ---
@@ -131,9 +131,9 @@ Hosted Graphite で Azure AD のシングル サインオンを構成してテ�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある [次へ]」を参照してください。
+    b. **[次へ]**をクリックします。
 6. Hosted Graphite テナントに管理者としてサインオンします。
 7. サイド バーの **SAML のセットアップ ページ**に移動します (**[Access (アクセス)]、[SAML Setup (SAML のセットアップ)]** の順に移動)。
    
@@ -208,7 +208,7 @@ Hosted Graphite で Azure AD のシングル サインオンを構成してテ�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-a-hosted-graphite-test-user"></a>Hosted Graphite テスト ユーザーの作成
 このセクションの目的は、Hosted Graphite で Britta Simon というユーザーを作成することです。 Hosted Graphite では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
@@ -270,6 +270,6 @@ Hosted Graphite で Azure AD のシングル サインオンを構成してテ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

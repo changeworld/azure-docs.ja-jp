@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/23/2016
+ms.date: 12/05/2016
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: e5703e7aa26af81a0bf76ec393f124ddc80bf43c
-ms.openlocfilehash: 76adad7bc7f195b04601368fb715e34f5d3d7782
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3a42093a67fe1ded29e97343affa5df89ea5fd1a
 
 
 ---
@@ -212,6 +212,37 @@ Power BI 出力およびダッシュボードの構成のチュートリアル�
 > 
 > 
 
+### <a name="schema-creation"></a>スキーマの作成
+Power BI データセットとテーブルがまだ存在しない場合は、ユーザーに代わって Azure Stream Analytics がこれを作成します。 それ以外の場合は、テーブルが新しい値で更新されます。現時点では、データセット内に存在できるテーブルの数は 1 つのみという制限があります。
+
+### <a name="data-type-conversion-from-asa-to-power-bi"></a>ASA から Power BI へのデータ型の変換
+Azure Stream Analytics では、出力スキーマが変更されると、データ モデルが実行時に動的に更新されます。 列名の変更、列の型の変更、列の追加または削除は、すべて追跡されます。
+
+次の表は、Power BI データセットとテーブルが存在しない場合の [Stream Analytics データ型](https://msdn.microsoft.com/library/azure/dn835065.aspx)から Power BI の [Entity Data Model (EDM) 型](https://powerbi.microsoft.com/documentation/powerbi-developer-walkthrough-push-data/)へのデータ型の変換を示します。
+
+
+Stream Analytics から | Power BI へ
+-----|-----|------------
+bigint | Int64
+nvarchar(max) | String
+datetime | DateTime
+float | Double
+レコードの配列 | 文字列型、定数値 "IRecord" または "IArray"
+
+### <a name="schema-update"></a>スキーマの更新
+Stream Analytics では、出力内の最初のイベント セットに基づいてデータ モデルのスキーマを推論します。 その後、データ モデルのスキーマは、必要に応じて、元のスキーマに適合しない可能性のある受信イベントに対応できるように更新されます。
+
+複数行にわたってスキーマが動的に更新されるのを防ぐために、`SELECT *` クエリの使用を避ける必要があります。 パフォーマンスが低下する可能性があるだけでなく、結果を得るまでの所要時間が不確実になる恐れがあります。 Power BI ダッシュボードに表示する必要があるフィールドを厳密に選択してください。 また、データ値が、選択したデータ型に準拠している必要があります。
+
+
+以前/現在 | Int64 | String | DateTime | Double
+-----------------|-------|--------|----------|-------
+Int64 | Int64 | String | String | Double
+Double | Double | String | String | Double
+String | 文字列 | 文字列 | 文字列 |  | String | 
+DateTime | String | String |  DateTime | String
+
+
 ### <a name="renew-power-bi-authorization"></a>Power BI の承認を更新する
 ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要があります。 Azure Active Directory (AAD) テナント上で Multi-Factor Authentication (MFA) が構成されている場合は、Power BI の承認を 2 週間ごとに更新することも必要になります。 この問題の症状として、ジョブ出力が返されないことや、操作ログで "ユーザーの認証エラー" が発生することが挙げられます。
 
@@ -329,6 +360,6 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

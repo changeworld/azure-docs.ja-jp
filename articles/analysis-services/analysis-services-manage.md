@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/31/2016
+ms.date: 01/20/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 193c939065979dc48243d31e7f97cd87d96bf9a8
-ms.openlocfilehash: 55a016a0943885a3aaa636316808939777afb0f8
+ms.sourcegitcommit: 17df0dfc32078fc08d2e744d4e83f1a1d77a9da1
+ms.openlocfilehash: d6fbb7febc05548e1e89e12394bbb7064e5da1c9
 
 
 ---
@@ -34,7 +34,7 @@ Azure のサーバーへの接続は、組織内のサーバー インスタン�
 
 ![SQL Server Management Studio](./media/analysis-services-manage/aas-manage-ssms.png)
 
- 大きな違いの 1 つは、サーバーへの接続に使う認証です。 Azure Analysis Services サーバーに接続するには、**[Active Directory パスワード認証]** を選ぶ必要があります。
+ 大きな違いの&1; つは、サーバーへの接続に使う認証です。 Azure Analysis Services サーバーに接続するには、**[Active Directory パスワード認証]** を選ぶ必要があります。
 
  SSMS を使用する場合は、最初にサーバーに接続する前に、Analysis Services の管理者グループにユーザー名が含まれていることを確認してください。 詳細については、この記事で後述する「[サーバー管理者](#server-administrators)」を参照してください。
 
@@ -55,51 +55,8 @@ Azure のサーバーへの接続は、組織内のサーバー インスタン�
 
 SSMS を使う Azure でのサーバーの管理はオンプレミスのサーバーの管理とよく似ているので、ここでは詳しく説明しません。 必要なヘルプはすべて、MSDN の「[Analysis Services インスタンス管理](https://msdn.microsoft.com/library/hh230806.aspx)」で見つかります。
 
-## <a name="server-administrators"></a>サーバー管理者
-Azure Portal または SSMS のサーバーのコントロール ブレードの **[Analysis Services 管理者]** を使って、サーバー管理者を管理できます。 Analysis Services 管理者は、データベースの追加と削除やユーザーの管理などの一般的なデータベース管理タスクに対する権限を持つデータベース サーバー管理者です。 既定では、Azure Portal でサーバーを作成したユーザーは、自動的に Analysis Services 管理者として追加されます。
-
-また、次のことを知っておく必要があります。
-
-* Windows Live ID は、Azure の Analysis Services に対してサポートされる ID の種類ではありません。  
-* Analysis Services 管理者は、有効な Azure Active Directory ユーザーである必要があります。
-* Azure Resource Manager テンプレートを使って Azure Analysis Services サーバーを作る場合、Analysis Services 管理者は管理者として追加する必要のあるユーザーの JSON 配列を取得します。
-
-Analysis Services 管理者は、Azure サブスクリプションのリソースを管理できる Azure リソース管理者とは別のユーザーでもかまいません。 これにより、Analysis Services での既存の XMLA および TSML 管理動作との互換性が維持され、Azure リソース管理と Analysis Services データベース管理の責任を分離できます。
-
-Azure Analysis Services リソースのすべてのロールとアクセスの種類を表示するには、コントロール ブレードの [アクセス制御 (IAM)] を使います。
-
-## <a name="database-users"></a>データベース ユーザー
-Azure Analysis Services のモデル データベースのユーザーは、Azure Active Directory に属している必要があります。 モデル データベースに対して指定するユーザー名は、組織のメール アドレスまたは UPN で指定する必要があります。 これは、Windows ドメイン ユーザー名でユーザーをサポートするオンプレミスのモデル データベースとは異なります。
-
-[Azure Active Directory でロールの割り当て](../active-directory/role-based-access-control-configure.md)を使って、または SQL Server Management Studio で [Tabular Model Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) を使って、ユーザーを追加できます。
-
-**TMSL のサンプル スクリプト**
-
-```
-{
-  "createOrReplace": {
-    "object": {
-      "database": "SalesBI",
-      "role": "Users"
-    },
-    "role": {
-      "name": "Users",
-      "description": "All allowed users to query the model",
-      "modelPermission": "read",
-      "members": [
-        {
-          "memberName": "user1@contoso.com",
-          "identityProvider": "AzureAD"
-        },
-        {
-          "memberName": "group1@contoso.com",
-          "identityProvider": "AzureAD"
-        }
-      ]
-    }
-  }
-}
-```
+## <a name="server-administrators-and-database-users"></a>サーバー管理者とデータベース ユーザー
+Azure Analysis Services のユーザーには、サーバー管理者とデータベース ユーザーの&2; 種類があります。 両方のユーザーが Azure Active Directory に必要で、組織の電子メール アドレスまたは UPN で指定されている必要があります。 これは、Windows ドメイン ユーザー名でサーバー管理者とデータベース ユーザーをサポートする、オンプレミスの表形式モデル データベースとは異なります。 詳細については、「[Azure Analysis Services でのユーザーの管理](analysis-services-manage-users.md)」を参照してください。
 
 ## <a name="enable-azure-active-directory-authentication"></a>Azure Active Directory 認証を有効にする
 レジストリで SSMS の Azure Active Directory 認証機能を有効にするには、EnableAAD.reg という名前のテキスト ファイルを作り、次のスクリプトをコピーして貼り付けます。
@@ -128,6 +85,6 @@ SSMS を使用してサーバーに接続するときに、(手順 3. で) 非�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

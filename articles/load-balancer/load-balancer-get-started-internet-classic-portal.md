@@ -3,8 +3,8 @@ title: "Azure クラシック ポータルを使用したインターネット�
 description: "Azure クラシック ポータルを使用し、インターネットに接続するクラシック デプロイ モデルのロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: fa3e93c0-968a-472d-a17c-65665c050db2
@@ -14,10 +14,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2016
-ms.author: sewhee
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 7d8eb43fea032eb5aa72f448a7c1022be62a7b81
-ms.openlocfilehash: bf71746d3c23fd69902f1a7af6cbab2ad1a65df4
+ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
+ms.openlocfilehash: 7153d0321a95a19cf7de17aa1c77d1369330a79b
 
 ---
 
@@ -70,6 +70,6 @@ ms.openlocfilehash: bf71746d3c23fd69902f1a7af6cbab2ad1a65df4
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

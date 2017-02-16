@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 10/19/2016
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6b6910b4f1b408c4574b1632375764d51c4fab8a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b4a725d55594885a5d9d4a62b4bf5fe6fd402849
 
 
 ---
@@ -122,6 +122,6 @@ Contoso は工業オートメーションの領域で活動する会社で、自
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,14 +15,14 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 560bcd1acb0fa06d7800da9670686a43fbb7111b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 61adb7ae8fddc3cf423ee4558308eb9ded11fea3
 
 
 ---
 # <a name="data-warehouse-migration-utility-preview"></a>Data Warehouse 移行ユーティリティ (プレビュー)
 > [!div class="op_single_selector"]
-> * [移行ユーティリティのダウンロード][移行ユーティリティのダウンロード]
+> * [移行ユーティリティのダウンロード][Download Migration Utility]
 > 
 > 
 
@@ -41,7 +41,7 @@ Data Warehouse 移行ユーティリティは、SQL Server と Azure SQL Databas
 認証後、接続先サーバーに存在するデータベースの一覧が表示されます。 移行を開始するには、移行するデータベースを選択し、[Migrate selected] (選択した項目を移行) をクリックします。
 
 ## <a name="migration-report"></a>移行レポート
-ツールで [Check Database Compatibility] (データベースの互換性をチェック) を選択すると、移行するように要求されたデータベースに含まれる、すべてのオブジェクトの非互換性をまとめたレポートが生成されます。 SQL Data Warehouse に存在しない SQL Server 機能の一部をまとめた、より広範な一覧については、[移行に関するドキュメント][移行に関するドキュメント]を参照してください。 生成されたレポートは保存して、Excel で開くことができます。
+ツールで [Check Database Compatibility] (データベースの互換性をチェック) を選択すると、移行するように要求されたデータベースに含まれる、すべてのオブジェクトの非互換性をまとめたレポートが生成されます。 SQL Data Warehouse に存在しない SQL Server 機能をまとめたより広範な一覧については、[移行に関するドキュメント][migration documentation]をご覧ください。 生成されたレポートは保存して、Excel で開くことができます。
 
 移行スキーマを生成すると、"Object" として識別されるほとんどの結果がそのデータを即座に移行できるように調整されます。 スキーマを適用する前に、追加の調整が必要ないかどうかを確認するために、変更を確認してください。
 
@@ -56,19 +56,19 @@ Data Warehouse 移行ユーティリティは、SQL Server と Azure SQL Databas
 上記のパラメーターを入力したら、[run migration] をクリックするだけです。2 つのパッケージのセットが指定した場所に生成されます。 移行元からフラット ファイルにデータをエクスポートするためにエクスポート ファイルを実行し、SQL Data Warehouse にデータをインポートするためにインポート ファイルを実行します。
 
 ## <a name="next-steps"></a>次のステップ
-これで、一部のデータが移行されました。次に、[開発][開発] 方法を確認します。
+これで、一部のデータが移行されました。次に、[開発][develop]方法を確認します。
 
 <!--Image references-->
 
 <!--Article references-->
-[移行に関するドキュメント]: sql-data-warehouse-overview-migrate.md
-[開発]: sql-data-warehouse-overview-develop.md
+[migration documentation]: sql-data-warehouse-overview-migrate.md
+[develop]: sql-data-warehouse-overview-develop.md
 
 <!--Other Web references--> 
-[移行ユーティリティのダウンロード]: https://migrhoststorage.blob.core.windows.net/sqldwsample/DataWarehouseMigrationUtility.zip
+[Download Migration Utility]: https://migrhoststorage.blob.core.windows.net/sqldwsample/DataWarehouseMigrationUtility.zip
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

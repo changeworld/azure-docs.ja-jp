@@ -1,5 +1,5 @@
 ---
-title: "Azure PowerShell を使用した HDInsight 用の Linux ベースの Hadoop、HBase、Storm、または Spark クラスターの作成 | Microsoft Docs"
+title: "PowerShell を使用して Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
 description: "Azure PowerShell を使用して、HDInsight 用の Linux ベースの Hadoop、HBase、Storm、または Spark クラスターを作成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,13 +16,13 @@ ms.workload: big-data
 ms.date: 10/05/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 71f1ca77180c7b06f8c883c8c227bda63f28ed1c
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: b3589dd3424d7723351165c103a2b1b122ff44cc
 
 
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-by-using-azure-powershell"></a>Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+# <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 Azure PowerShell は、Microsoft Azure のワークロードのデプロイと管理を制御し、自動化するために使用できる強力なスクリプト作成環境です。 このドキュメントでは、Azure PowerShell を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。 また、スクリプトの例も含まれています。
 
@@ -53,13 +53,13 @@ Azure PowerShell を使用して HDInsight クラスターを作成するには�
 * Azure BLOB コンテナーの作成
 * HDInsight クラスターの作成
 
-Linux クラスターを作成するために設定する必要がある最も重要な 2 つのパラメーターは、OS の種類と SSH ユーザーの詳細を指定するパラメーターです。
+Linux クラスターを作成するために設定する必要がある最も重要な&2; つのパラメーターは、OS の種類と SSH ユーザーの詳細を指定するパラメーターです。
 
 * **-OSType** パラメーターを **Linux** として指定していることを確認します。
 * クラスターのリモート セッションで SSH を使用するには、SSH ユーザー パスワードまたは SSH 公開キーを指定します。 SSH ユーザー パスワードと SSH 公開キーを両方とも指定すると、キーが無視されます。 リモート セッションで SSH キーを使用する場合は、入力を求められたら、空の SSH パスワードを指定する必要があります。 HDInsight での SSH の使用方法の詳細については、次の記事のいずれかをご覧ください。
   
-  * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-  * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+  * [Linux、Unix、OS X から HDInsight 上の Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+  * [HDInsight の Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 次のスクリプトでは、新しいクラスターを作成する方法を示します。
 
@@ -154,7 +154,7 @@ Linux クラスターを作成するために設定する必要がある最も�
 
 ## <a name="customize-clusters"></a>クラスターのカスタマイズ
 * 「 [ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell)」を参照してください。
-* 「 [スクリプト アクションを使用して Windows ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)」をご覧ください。
+* 「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -186,6 +186,6 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

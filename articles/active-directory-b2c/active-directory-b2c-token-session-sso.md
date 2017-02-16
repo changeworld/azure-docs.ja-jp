@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2016
+ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b37d419f799e5a56c67344ca634bdecec2f3c1f2
+ms.sourcegitcommit: 9cc0081588f54f77a69ded336d063651b12c8dd8
+ms.openlocfilehash: a185e802a2713c6b6d4101477f0fc61bca0bf29c
 
 
 ---
@@ -25,7 +25,8 @@ ms.openlocfilehash: b37d419f799e5a56c67344ca634bdecec2f3c1f2
 
 1. Azure Active Directory (Azure AD) B2C が出力するセキュリティ トークンの有効期間。
 2. Azure AD B2C によって管理される Web アプリケーションのセッションの有効期間。
-3. B2C テナントに含まれる複数のアプリケーションとポリシーの間でのシングル サインオン (SSO) の動作。
+3. Azure AD B2C が出力するセキュリティ トークンの重要な要求の形式。
+4. B2C テナントに含まれる複数のアプリケーションとポリシーの間でのシングル サインオン (SSO) の動作。
 
 B2C テナントでこの機能を使用する手順は、以下のとおりです。
 
@@ -37,8 +38,6 @@ B2C テナントでこの機能を使用する手順は、以下のとおりで�
 6. 必要な変更を施します。 後のセクションに、利用できるプロパティの説明があります。
 7. **[OK]**をクリックします。
 8. ブレードの上部で **[保存]** をクリックします。
-
-![Screenshot of token, session and single sign-on config](./media/active-directory-b2c-token-session-sso/token-session-sso.png)
 
 ## <a name="token-lifetimes-configuration"></a>トークンの有効期間の構成
 Azure AD B2C は保護されたリソースへの安全なアクセスを実現する [OAuth 2.0 認証プロトコル](active-directory-b2c-reference-protocols.md) をサポートしています。 このサポートを実施するために、Azure AD B2C は各種の [セキュリティ トークン](active-directory-b2c-reference-tokens.md)を発行します。 Azure AD B2C は以下のプロパティを使用して、セキュリティ トークンの有効期間を管理することができます。
@@ -61,7 +60,20 @@ Azure AD B2C は保護されたリソースへの安全なアクセスを実現�
 * ユーザーがモバイル アプリケーションでアクティブな状態を継続している限り、そのアプリケーションへのサインインを無制限に持続することができます。 そのためには、サインイン ポリシーで **[Refresh token sliding window lifetime (days) (更新トークン スライディング ウィンドウの有効期間 (日))]** スイッチを **[Unbounded (制限なし)]** に設定します。
 * 適切なアクセス トークン有効期間を設定して、業界のセキュリティ要件やコンプライアンス要件を満たすことができます。
 
-## <a name="session-configuration"></a>セッションの構成
+## <a name="token-compatibility-settings"></a>トークンの互換性の設定
+Azure AD B2C が出力するセキュリティ トークンの重要な要求のフォーマットに変更を加えました。 この変更は、当社の標準プロトコル サポートの向上、またサードパーティの ID ライブラリとの相互運用性の向上を目的としています。 ただし、既存のアプリの中断を回避するために、お客様が必要に応じてオプトインできるようにする次のプロパティを作成しました。
+
+* **発行者 (iss) 要求**: トークンを発行した Azure AD B2C テナントを特定します。
+  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`: これが既定値です。
+  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: この値には、B2C テナントと、トークン要求で使用されるポリシーの両方の ID が含まれています。 アプリまたはライブラリで Azure AD B2C を [OpenID Connect Discovery 1.0 仕様](http://openid.net/specs/openid-connect-discovery-1_0.html)に準拠させる必要がある場合は、この値を使用します。
+* **サブジェクト (sub) 要求**: エンティティ、つまり、トークンが情報をアサートするユーザーを特定します。
+  * **ObjectID**: これが既定値です。 ディレクトリ内のユーザーのオブジェクト ID を、トークンの `sub` 要求に設定します。
+  * **サポートされていません**: これは、下位互換の場合にのみ用意されており、可能であればすぐに **ObjectID** に切り替えることをお勧めします。
+* **ポリシー ID を表す要求**: トークン要求で使用されるポリシー ID を設定する要求の種類を特定します。
+  * **tfp**: これが既定値です。
+  * **acr**: これは、下位互換の場合にのみ用意されており、可能であればすぐに `tfp` に切り替えることをお勧めします。
+
+## <a name="session-behavior"></a>セッションの動作
 Azure AD B2C がサポートしている [OpenID Connect 認証プロトコル](active-directory-b2c-reference-oidc.md) を使用して、Web アプリケーションへの安全なサインインを実現できます。 次のプロパティを使用して、Web アプリケーション セッションを管理できます。
 
 * **[Web app session lifetime (minutes) (Web アプリ セッション有効期間 (分))]**: ユーザーのブラウザーに保存した Azure AD B2C のセッション Cookie が正常に認証される有効期間。
@@ -86,6 +98,6 @@ B2C テナントで複数のアプリケーションやポリシーを運用し�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

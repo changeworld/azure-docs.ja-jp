@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 37d0a4b953c51ce244a21d9a67d97df960d4edaf
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 7d547ee39c4fe2bd52dd1fedce9c61d63b4e3011
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: 37d0a4b953c51ce244a21d9a67d97df960d4edaf
 
 ![][ic719494]
 
-**[リモート アクセス]** プロパティ ダイアログは 2 つの方法で表示できます。
+**[リモート アクセス]** プロパティ ダイアログは&2; つの方法で表示できます。
 
 * **[Publish to Azure (Azure に発行)]** の **[Remote Access (リモート アクセス)]** セクションにある **[Advanced (詳細)]** リンクをクリックします。
 * Azure プロジェクトの **[プロパティ]** ダイアログを開きます。
@@ -55,7 +55,7 @@ Azure にデプロイした後にリモート アクセスを有効にするに�
    * クリックして **[リモート デスクトップを有効にする]** チェックボックスを選択します。
    * リモート アクセスに使用するユーザー名とパスワードを指定します。
    * 使用する証明書を選択します。
-6.  **[OK]** 
+6. **[OK]** 
 
 構成変更が進行中であり、完了に数分かかることを示すメッセージが表示されます。 構成変更が完了したら、この記事の後半にある「 **リモートでログインするには** 」セクションの手順に従います。
 
@@ -86,7 +86,7 @@ Azure にデプロイした後にリモート アクセスを有効にするに�
 ロール インスタンスの準備ができたら、アプリケーションをホストしている仮想マシンにリモートでログインできます。
 
 * Windows で Eclipse を使用しているとき、Azure にデプロイメントする際、**[Start remote desktop on deploy (デプロイ時にリモート デスクトップを開始する)]** オプションを選択した場合、デプロイが開始されたときにリモート デスクトップ接続のログオン画面が表示されます。 ユーザー名とパスワードの入力が求められたら、リモート ユーザーに指定した値を入力します。それでログインできます。
-* リモートでログインするもう 1 つの方法は <a href="http://go.microsoft.com/fwlink/?LinkID=512959">Microsoft Azure 管理ポータル</a>を利用することです。
+* リモートでログインするもう&1; つの方法は <a href="http://go.microsoft.com/fwlink/?LinkID=512959">Microsoft Azure 管理ポータル</a>を利用することです。
   
   * Azure 管理ポータルの **[Cloud Services]** ビュー内で、クラウド サービスをクリックし、**[インスタンス]** をクリックし、特定のインスタンスをクリックし、**[接続]** ボタンをクリックします。 **[接続]** ボタンはコマンド バーに次のように表示されます。
     
@@ -102,19 +102,19 @@ Azure にデプロイした後にリモート アクセスを有効にするに�
 ## <a name="see-also"></a>関連項目
 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]
 
-[Azure 向け Hello World アプリケーションを Eclipse で作成する][Azure 向け Hello World アプリケーションを Eclipse で作成する]
+[Azure 向け Hello World アプリケーションを Eclipse で作成する][Creating a Hello World Application for Azure in Eclipse]
 
-[Azure Toolkit for Eclipse のインストール][Azure Toolkit for Eclipse のインストール] 
+[Azure Toolkit for Eclipse のインストール][Installing the Azure Toolkit for Eclipse] 
 
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java デベロッパー センター]を参照してください。
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java Developer Center]を参照してください。
 
 <!-- URL List -->
 
-[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
-[Azure 管理ポータル]: http://go.microsoft.com/fwlink/?LinkID=512959
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure 向け Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 
@@ -127,6 +127,6 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

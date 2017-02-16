@@ -1,5 +1,5 @@
 ---
-title: "Application Insights を利用し、ASP.NET アプリの障害と例外を診断する | Microsoft Docs"
+title: "Azure Application Insights を利用し、Web アプリの障害と例外を診断する | Microsoft Docs"
 description: "要求テレメトリと共に ASP.NET アプリから例外を取り込みます。"
 services: application-insights
 documentationcenter: .net
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 41843c3b847fedb0531fa6b193b56cbd3d74466d
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 2dbbe59f71500c31de8568de4e92cc41131d0970
 
 
 ---
@@ -59,7 +59,7 @@ Visual Studio で Application Insights の [検索] ウィンドウを開き、�
 
 ![[設定]、[障害] を選択する](./media/app-insights-asp-net-exceptions/012-start.png)
 
-一覧にある失敗した要求の種類を 1 つクリックし、障害の個別発生を表示します。 そこからさらにクリックし、例外またはそれに関連付けられているトレース データを表示します。
+一覧にある失敗した要求の種類を&1; つクリックし、障害の個別発生を表示します。 そこからさらにクリックし、例外またはそれに関連付けられているトレース データを表示します。
 
 ![失敗した要求のインスタンスを選択し、例外の詳細で、例外のインスタンスを表示します。](./media/app-insights-asp-net-exceptions/030-req-drill.png)
 
@@ -445,6 +445,6 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

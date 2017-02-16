@@ -9,6 +9,7 @@ editor:
 tags: 
 ms.assetid: 7e2508a1-347e-4f15-b060-d46602c5ce7e
 ms.service: sql-database
+ms.custom: authentication and authorization
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +17,8 @@ ms.workload: data-management
 ms.date: 11/22/2016
 ms.author: rick.byham@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 5fc68a32ab11e80b547fd517524a7f87a31ebfba
-ms.openlocfilehash: 911cf0c3204545091829adcb7dcbf6cbddc5ee9e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cf8cc9443d078168826b93eda6f0620681d9f47f
 
 
 ---
@@ -164,7 +165,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 後で管理者を削除するには、**[Active Directory 管理者]** ブレードの上部にある **[管理者の削除]** をクリックし、**[保存]** をクリックします。
 
 ### <a name="provision-an-azure-ad-administrator-for-azure-sql-server-by-using-powershell"></a>PowerShell を使用して Azure SQL Server の Azure AD 管理者をプロビジョニングする
-PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
 
 Azure AD 管理者をプロビジョニングするには、次のような Azure PowerShell コマンドを実行する必要があります。
 
@@ -394,6 +395,6 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

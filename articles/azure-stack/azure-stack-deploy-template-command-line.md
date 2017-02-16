@@ -12,20 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 1/12/2016
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b9af860ad2a6b97d4ae38037c088a6f77a4d4c2e
+ms.sourcegitcommit: 82a2475fd4f57a8a2f37dd45ad3870598465f789
+ms.openlocfilehash: 030e5ec3dea1ae498daf1936a9d92e9d11001704
 
 
 ---
 # <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>Deploy templates in Azure Stack using the command line
 Use the command line to deploy Azure Resource Manager templates to the Azure Stack POC. Azure Resource Manager templates deploy and provision all the resources for your application in a single, coordinated operation.
 
-## <a name="download-template"></a>Download template
-To test a deployment with the CLI, download the files azuredeploy.json and azuredeploy.parameters.json from the [create storage account example template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account).
-
+## <a name="before-you-begin"></a>Before you begin
+ - [Install and connect](azure-stack-connect-cli.md) to Azure Stack with Azure CLI
+ - Download the files *azuredeploy.json* and *azuredeploy.parameters.json* from the [create storage account example template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account).
+ 
 ## <a name="deploy-template"></a>Deploy template
 Navigate to the folder where these files were downloaded and run the following command to deploy the template:
 
@@ -46,6 +47,6 @@ To see this resource group and storage account, use the following commands:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

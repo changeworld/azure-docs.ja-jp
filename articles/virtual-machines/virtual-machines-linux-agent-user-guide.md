@@ -1,5 +1,5 @@
 ---
-title: "Linux エージェント ユーザー ガイド | Microsoft Docs"
+title: "Azure Linux VM エージェントの概要 | Microsoft Docs"
 description: "Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 43d3ad9e2b50a84cb9fd70582eb03b9d7d45d788
+ms.sourcegitcommit: 02579f138f957e5d245290e2cb8fc448120a4701
+ms.openlocfilehash: e77fee96710e99dab664f61d4c64aea0b12944ad
 
 
 ---
@@ -61,10 +61,10 @@ Microsoft Azure Linux エージェント (waagent) は、Linux と FreeBSD の�
 * **VM 拡張機能**
   
   * Microsoft やパートナーによって作成されたコンポーネントを Linux VM (IaaS) に挿入し、ソフトウェアおよび構成を自動化
-  *  [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>通信
-プラットフォームからエージェントへの情報の流れは 2 つのチャンネルを経由します。
+プラットフォームからエージェントへの情報の流れは&2; つのチャンネルを経由します。
 
 * 起動時に接続される IaaS デプロイ用 DVD。 この DVD に、OVF に準拠した構成ファイルが収録されており、このファイルに、実際の SSH キー ペア以外のすべてのプロビジョニング情報が保存されています。
 * デプロイとトポロジの構成を取得するために使用する REST API を公開する TCP エンドポイント。
@@ -157,7 +157,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
     HttpProxy.Host=None
     HttpProxy.Port=None
 
-さまざまな構成オプションについて次に詳述します。 構成オプションには、ブール、文字列、整数の 3 つの型があります。 ブール型の構成オプションは "y" または "n" として指定できます。 特別なキーワード "None" は、次に詳述しているように、一部の文字列型の構成オプションに使用できます。
+さまざまな構成オプションについて次に詳述します。 構成オプションには、ブール、文字列、整数の&3; つの型があります。 ブール型の構成オプションは "y" または "n" として指定できます。 特別なキーワード "None" は、次に詳述しているように、一部の文字列型の構成オプションに使用できます。
 
 **Provisioning.Enabled:**  
 型: ブール  
@@ -210,7 +210,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 
 **Provisioning.PasswordCryptId**  
 型: 文字列  
-既定: 6
+既定:&6;
 
 パスワード ハッシュの生成時に、crypt によって使用されるアルゴリズム。  
  1 - MD5  
@@ -220,7 +220,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 
 **Provisioning.PasswordCryptSaltLength**  
 型: 文字列  
-既定: 10
+既定:&10;
 
 パスワード ハッシュの生成時に使用されるランダム salt の長さ。
 
@@ -228,7 +228,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 型: ブール  
 既定: y
 
-設定した場合、"ResourceDisk.Filesystem" でユーザーによって要求されたファイル システムの種類が "ntfs" 以外であると、プラットフォームに用意されたリソース ディスクが waagent によってフォーマットされてマウントされます。 ファイルシステムの種類が Linux (83) の 1 つのパーティションがディスク上で使用可能になります。 このパーティションは、正常にマウント可能な場合、フォーマットされないことに注意してください。
+設定した場合、"ResourceDisk.Filesystem" でユーザーによって要求されたファイル システムの種類が "ntfs" 以外であると、プラットフォームに用意されたリソース ディスクが waagent によってフォーマットされてマウントされます。 ファイルシステムの種類が Linux (83) の&1; つのパーティションがディスク上で使用可能になります。 このパーティションは、正常にマウント可能な場合、フォーマットされないことに注意してください。
 
 **ResourceDisk.Filesystem:**  
 型: 文字列  
@@ -309,6 +309,6 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

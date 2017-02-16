@@ -1,5 +1,5 @@
 ---
-title: "Stretch Database Advisor を実行して Stretch Database のデータベースとテーブルを特定する | Microsoft Docs"
+title: "Stretch Database のデータベースとテーブルを特定する - Azure | Microsoft Docs"
 description: "Stretch Database の候補となるデータベースとテーブルを特定する方法について説明します。"
 services: sql-server-stretch-database
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: 47b666a7f2178daebc1b2b442fd1bb8cf31e40bb
-ms.openlocfilehash: 3aef66c7b80ee356faedcaaadacd15aea3438714
+ms.sourcegitcommit: bcb0a66425439522e0c9a353798ac70505b91e39
+ms.openlocfilehash: 0f1a7feea79c73d7b80343fcc9898509268d111c
 
 
 ---
@@ -36,10 +36,10 @@ Upgrade Advisor を [ここ](http://go.microsoft.com/fwlink/?LinkID=613421)か�
 
 ## <a name="review-the-results"></a>結果の確認
 1. 分析が完了したら、**[分析済みデータベース]** ブレードで、分析したデータベースのいずれかを選択し、**[分析結果]** ブレードを表示します。
-   
+
    **[分析結果]** ブレードには、既定の推奨基準に適合する、選択されたデータベースの推奨テーブルが一覧表示されます。
 2. **[分析結果]** ブレード上のテーブルの一覧で、推奨テーブルのいずれかを選択し、**[テーブル結果]** ブレードを表示します。
-   
+
    ブロック問題が存在する場合は、選択されたテーブルのブロック問題が **[テーブル結果]** ブレードに一覧表示されます。 Stretch Database Advisor によって検出されるブロック問題については、「 [Stretch Database の制限事項](sql-server-stretch-database-limitations.md)」をご覧ください。
 3. **[テーブル結果]** ブレード上のブロックの問題の一覧でいずれかの問題を選択すると、その詳細な情報が表示されて、軽減手順が提案されます。 選択したテーブルを Stretch Database 用に構成する場合は、推奨される軽減手順を実行します。
 
@@ -58,7 +58,6 @@ Stretch Database を有効にします。
 
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

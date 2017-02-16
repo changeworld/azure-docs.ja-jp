@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 4e6d276eb7f7ec1cd4c2c67912d522b383ac3ae2
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 64c7486ae24c31ef2a1116fdfd3cab9b813a09af
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: 4e6d276eb7f7ec1cd4c2c67912d522b383ac3ae2
 ### <a name="2-create-a-new-solution-template"></a>2.新しいソリューション テンプレートを作成する
   ![図][img-pubportal-sol-templ-new]
 
-### <a name="3-start-with-topologies"></a>手順 3.最初にトポロジを作成する
+### <a name="3-start-with-topologies"></a>手順&3;.最初にトポロジを作成する
 ソリューション テンプレートは、作成したすべてのトポロジの 「親」 となります。 1 つのプランまたはソリューション テンプレートでは、複数のトポロジを定義できます。 プランをステージングにプッシュすると、すべてのトポロジも一緒にプッシュされます。 次の手順に従ってプランを定義します。     
 
 * トポロジの作成: 通常、"トポロジ識別子" はソリューション テンプレートのトポロジ名です。 トポロジ識別子は、次に示すように URL で使用されます。
@@ -60,7 +60,7 @@ ms.openlocfilehash: 4e6d276eb7f7ec1cd4c2c67912d522b383ac3ae2
 
 * VM イメージ: [Azure の仮想マシン イメージについて](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 * VM 拡張機能: [VM エージェントと VM 拡張機能の概要](https://msdn.microsoft.com/library/azure/dn832621.aspx)および[Azure VM 拡張機能とその機能](https://msdn.microsoft.com/library/azure/dn606311.aspx)
-* Azure Resource Manager: [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)および[単純な ARM テンプレートの例](https://github.com/rjmax/ArmExamples)
+* Azure Resource Manager: [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)および[単純なテンプレートの例](https://github.com/rjmax/ArmExamples)
 * ストレージ アカウントのスロットル: [ストレージ アカウントのスロットルの監視方法](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx)および[Premium Storage](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)
 
 [img-pubportal-menu-sol-templ]:media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
@@ -70,6 +70,6 @@ ms.openlocfilehash: 4e6d276eb7f7ec1cd4c2c67912d522b383ac3ae2
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

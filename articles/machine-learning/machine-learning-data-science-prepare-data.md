@@ -1,5 +1,5 @@
 ---
-title: "機械学習を強化するためのデータを準備するタスク | Microsoft Docs"
+title: "Azure Machine Learning 用のデータの整理と準備 | Microsoft Docs"
 description: "データの前処理とクリーンアップを行って機械学習の準備を整えます。"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0ffbee64cd43e0b5da09595638df771629daca38
+ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
+ms.openlocfilehash: cfaccad0a7d81950d80486dcb0d9e6520deab9b3
 
 
 ---
@@ -106,6 +106,6 @@ Azure Machine Learning Studio 内で実行されるデータ探索と前処理�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/11/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: d71bbf32196bd249bdefb94e0e760847cc6ec5e0
-ms.openlocfilehash: 85a1ca7542220b8b3e84e7bad811f7f961b26ba0
+ms.sourcegitcommit: c10a35e4828e8da427f324ef3c3892e7e24cc72d
+ms.openlocfilehash: 489037b0ff43c7041f3e12a49525184e7eda0290
 
 
 ---
@@ -35,7 +35,7 @@ Machine Learning Studio と Microsoft Azure Machine Learning Web サービス �
 * Web サービスのデプロイのチュートリアルについては、「 [Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
 * Web サービスを作成してデプロイする方法の詳細なチュートリアルについては、「 [チュートリアル手順 1: Machine Learning ワークスペースの作成](machine-learning-walkthrough-1-create-ml-workspace.md)」をご覧ください。
 * Web サービス デプロイの具体的な例については、次をご覧ください。
-  
+
   * [チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)
   * [複数のリージョンに Web サービスをデプロイする方法](machine-learning-how-to-deploy-to-multiple-regions.md)
 
@@ -48,7 +48,7 @@ Web サービス用の Azure Machine Learning リソースプロバイダーで�
 ### <a name="with-powershell-cmdlets"></a>PowerShell コマンドレットを使う
 Web サービス用の Azure Machine Learning リソースプロバイダーでは、PowerShell コマンドレットを使用して Web サービスをデプロイし、管理することができます。
 
-コマンドレットを使用するには、最初に [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを使用して、PowerShell 環境から Azure アカウントにサインインする必要があります。 Resource Manager に基づいた PowerShell コマンドの呼び出しについて詳しくない場合は、「 [Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md#login-to-your-azure-account)」をご覧ください。
+コマンドレットを使用するには、最初に [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを使用して、PowerShell 環境から Azure アカウントにサインインする必要があります。 Resource Manager に基づいた PowerShell コマンドの呼び出しについて詳しくない場合は、「 [Azure Resource Manager での Azure PowerShell の使用](../azure-resource-manager/powershell-azure-resource-manager.md#log-in-to-your-azure-account)」をご覧ください。
 
 予測実験をエクスポートするには、こちらの [サンプル コード](https://github.com/ritwik20/AzureML-WebServices)を使用します。 コードから実行可能ファイルを作成したら、次のように入力します。
 
@@ -57,10 +57,10 @@ Web サービス用の Azure Machine Learning リソースプロバイダーで�
 アプリケーションを実行すると、Web サービスの JSON テンプレートが作成されます。 テンプレートを使用して Web サービスをデプロイするには、次の情報を追加する必要があります。
 
 * ストレージ アカウントの名前とキー
-  
+
     ストレージ アカウントの名前とキーは、[Azure Portal](https://portal.azure.com/) または [Azure クラシック ポータル](http://manage.windowsazure.com/)から取得できます。
 * コミットメント プラン ID
-  
+
     プラン ID を取得するには、 [Azure Machine Learning Web サービス](https://services.azureml.net) ポータルにサインインし、プラン名をクリックします。
 
 この情報を、*MachineLearningWorkspace* ノードと同じレベルで、*Properties* ノードの子として JSON テンプレートに追加します。
@@ -99,7 +99,6 @@ Azure Machine Learning Web サービスは、RESTful API です。 この API �
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

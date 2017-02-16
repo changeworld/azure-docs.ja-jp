@@ -112,7 +112,7 @@ Asana で Azure AD のシングル サインオンを構成してテストする
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [サインオン URL] ボックスに、`https://app.asana.com` という形式で URL を入力します。
 
-    c. ページの下部にある **[次へ]**」を参照してください。
+    c. **[次へ]**をクリックします。
 
 1. **[Asana でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。 また、SAML SSO URL の値をコピーします。
    
@@ -219,7 +219,7 @@ Asana で Azure AD のシングル サインオンを構成してテストする
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 このセクションの目的は、Azure AD のシングル サインオンをテストすることです。
 
-Asana のログイン ページに移動します。 電子メール アドレスのボックスに、電子メール アドレスとして「 britta.simon@contoso.com. パスワード ボックスは空白のままにして **[Log In (ログイン)]**」を参照してください。 Azure AD ログイン ページにリダイレクトされます。 Azure AD 資格情報をすべて入力します。 これで、Asana へのログインが完了しました。
+Asana のログイン ページに移動します。 電子メール アドレスのボックスに、電子メール アドレスとして「britta.simon@contoso.com」と入力します。 パスワード ボックスは空白のままにして **[Log In (ログイン)]** をクリックします。 Azure AD ログイン ページにリダイレクトされます。 Azure AD 資格情報をすべて入力します。 これで、Asana へのログインが完了しました。
 
 ## <a name="additional-resources"></a>その他のリソース
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
@@ -248,6 +248,6 @@ Asana のログイン ページに移動します。 電子メール アドレ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

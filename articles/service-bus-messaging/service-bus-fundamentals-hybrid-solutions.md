@@ -1,22 +1,22 @@
 ---
 title: Azure Service Bus | Microsoft Docs
 description: "Service Bus を使用して Azure アプリケーションを別のソフトウェアに接続する方法を紹介します。"
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 12654cdd-82ab-4b95-b56f-08a5a8bbc6f9
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/31/2016
+ms.date: 01/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c8d8549db680b0189fa94064b930d4f91ff2472b
+ms.sourcegitcommit: 8f82ce3494822b13943ad000c24582668bb55fe8
+ms.openlocfilehash: 74d032b37a856b141350fb6a1f73b7067624f926
 
 
 ---
@@ -53,17 +53,17 @@ Service Bus キューを使用して 2 つのアプリケーションを接続�
 
 この場合のプロセスは単純です。送信者がメッセージを Service Bus キューに送信すると、受信者が後でそのメッセージを取得します。 図 2 に示すように、キューの受信者は 1 つのみです。 また、複数のアプリケーションが同じキューから読み取ることもできます。 後者の場合、各メッセージは 1 つの受信者によって読み取られます。 マルチキャスト サービスの場合は、代わりにトピックを使用する必要があります。
 
-それぞれのメッセージは、2 つの部分から構成されます。つまり、それぞれがキーと値のペアであるプロパティのセットと、バイナリ メッセージ本文です。 これらの使用方法は、アプリケーションの目的によって決まります。 たとえば、最近の売り上げに関するメッセージを送信するアプリケーションでは、*Seller="Ava"*、*Amount=10000* といったプロパティが含まれます。 メッセージ本文には、たとえば営業部の署名済みの契約書のスキャン画像を含めることが考えられます。画像がない場合はメッセージ本文が空になります。
+それぞれのメッセージは、2 つの部分から構成されます。具体的には、それぞれがキーと値のペアであるプロパティのセットと、メッセージ ペイロードです。 ペイロードには、バイナリ、テキストのほか、XML も使用できます。 これらの使用方法は、アプリケーションの目的によって決まります。 たとえば、最近の売り上げに関するメッセージを送信するアプリケーションでは、*Seller="Ava"*、*Amount=10000* といったプロパティが含まれます。 メッセージ本文には、たとえば営業部の署名済みの契約書のスキャン画像を含めることが考えられます。画像がない場合はメッセージ本文が空になります。
 
-受信者は、2 つの異なる方法で Service Bus キューからメッセージを読み取ることができます。 1 つのオプションは *ReceiveAndDelete* です。このオプションでは、メッセージをキューから取り出した直後に削除します。 この方法は単純ですが、メッセージを処理する前に受信者がクラッシュした場合はメッセージが失われます。 メッセージはキューから削除されているため、他の受信者がメッセージにアクセスすることもできません。 
+受信者は、2 つの異なる方法で Service Bus キューからメッセージを読み取ることができます。 1 つのオプションは *[ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)* です。このオプションでは、メッセージをキューから取り出した直後に削除します。 この方法は単純ですが、メッセージを処理する前に受信者がクラッシュした場合はメッセージが失われます。 メッセージはキューから削除されているため、他の受信者がメッセージにアクセスすることもできません。 
 
-もう 1 つのオプションである *PeekLock* は、この問題に対処できます。 **ReceiveAndDelete** と同様、**PeekLock** 読み取りを実行すると、メッセージがキューから削除されます。 ただし、実際に削除する前に、 メッセージをロックして他の受信者が認識できないようにして、次の 3 つのイベントのいずれかの発生を待ちます。
+もう 1 つのオプションである *[PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)* は、この問題に対処できます。 **ReceiveAndDelete** と同様、**PeekLock** 読み取りを実行すると、メッセージがキューから削除されます。 ただし、実際に削除する前に、 メッセージをロックして他の受信者が認識できないようにして、次の 3 つのイベントのいずれかの発生を待ちます。
 
-* 受信者がメッセージを正常に処理し、 **Complete**を呼び出すと、キューのメッセージが削除されます。 
-* 受信者がメッセージを正常に処理できないと判断すると、 **Abandon**を呼び出します。 すると、キューのメッセージのロックが解除され、他の受信者がメッセージを取得できるようになります。
+* 受信者がメッセージを正常に処理し、**[Complete()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)** を呼び出すと、キューのメッセージが削除されます。 
+* 受信者がメッセージを正常に処理できないと判断すると、**[Abandon()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon)** を呼び出します。 すると、キューのメッセージのロックが解除され、他の受信者がメッセージを取得できるようになります。
 * 受信者が一定の時間内 (構成可能、既定では 60 秒) にどちらも呼び出さなかった場合、その受信者は失敗したと見なされます。 この場合、その受信者が **Abandon**を呼び出した場合と同様に処理され、他の受信者がメッセージを取得できるようになります。
 
-ここで考えられるのは、同じメッセージが 2 回、2 つの異なる受信者に配信される可能性があることです。 そのため、Service Bus キューを使用するアプリケーションでは、この問題に対処する必要があります。 重複の検出を容易にするために、各メッセージには一意の **MessageID** プロパティがあります。このプロパティは、メッセージがキューから何回読み取られても、既定で同じ値に保持されます。 
+ここで考えられるのは、同じメッセージが 2 回、2 つの異なる受信者に配信される可能性があることです。 そのため、Service Bus キューを使用するアプリケーションでは、この問題に対処する必要があります。 重複の検出を容易にするために、各メッセージには一意の **[MessageID](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)** プロパティがあります。このプロパティは、メッセージがキューから何回読み取られても、既定で同じ値に保持されます。 
 
 キューは、さまざまな状況で利用できます。 同時に実行されていないアプリケーション間でも相互に通信することが可能になります。これは、バッチおよびモバイル アプリケーションで特に便利な機能です。 受信者が複数のキューでは、送信されたメッセージが受信者に分散されるため、自動負荷分散も実現されます。
 
@@ -80,7 +80,7 @@ Service Bus キューを使用して 2 つのアプリケーションを接続�
 * サブスクライバー 2 は、*Seller="Ruby"* というプロパティを含むか、*Amount* プロパティの値が 100,000 を超えるメッセージを受信します。 Ruby はセールス マネージャーであるため、自分の売り上げを確認することと、担当者を問わずにすべての大きな売り上げを確認することの両方を目的としています。
 * サブスクライバー 3 ではそのフィルターが *True* に設定されています。これは、すべてのメッセージを受信することを表します。 このアプリケーションは、たとえば監査証跡を維持する目的で使用されることが考えられるため、すべてのメッセージを認識する必要があります。
 
-キューの場合と同様、トピックのサブスクライバーは、**ReceiveAndDelete** または **PeekLock** を使用してメッセージを読み取ることができます。 ただし、キューとは異なり、1 つのトピックに送信された 1 つのメッセージを複数のサブスクリプションで受信できます。 この手法は一般的に "*発行とサブスクライブ*" (または "*発行/サブスクライブ*") と呼ばれ、同じメッセージを複数のアプリケーションで利用する可能性がある場合に便利です。 適切なフィルターを定義することで、各サブスクライバーは、メッセージ ストリームの中で認識する必要がある部分のみを利用できます。
+キューの場合と同様、トピックのサブスクライバーは、[**ReceiveAndDelete** または **PeekLock**](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) を使用してメッセージを読み取ることができます。 ただし、キューとは異なり、1 つのトピックに送信された 1 つのメッセージを複数のサブスクリプションで受信できます。 この手法は一般的に "*発行とサブスクライブ*" (または "*発行/サブスクライブ*") と呼ばれ、同じメッセージを複数のアプリケーションで利用する可能性がある場合に便利です。 適切なフィルターを定義することで、各サブスクライバーは、メッセージ ストリームの中で認識する必要がある部分のみを利用できます。
 
 ## <a name="relays"></a>リレー
 キューとトピックは、どちらもブローカーを介して一方向の非同期通信を提供します。 トラフィックは一方向に流れ、送信者と受信者の間に直接的な接続はありません。 しかし、それが適切でない状況もあります。 アプリケーションがメッセージの送受信を行う必要がある場合や、アプリケーション間の直接リンクが必要な場合、メッセージを格納する場所はブローカーに必要ありません。 このようなシナリオに対応するために、図 4 に示すように、Service Bus には " *リレー*" が用意されています。
@@ -109,7 +109,7 @@ Service Bus Relay を使用する場合、アプリケーションは Windows Co
 
 * [Service Bus キュー](service-bus-dotnet-get-started-with-queues.md)の使用方法
 * [Service Bus トピック](service-bus-dotnet-how-to-use-topics-subscriptions.md)の使用方法
-*  [Service Bus Relay](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md)
+* [Service Bus Relay](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md)
 * [Service Bus サンプル](service-bus-samples.md)
 
 [1]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_01_architecture.png
@@ -119,6 +119,6 @@ Service Bus Relay を使用する場合、アプリケーションは Windows Co
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

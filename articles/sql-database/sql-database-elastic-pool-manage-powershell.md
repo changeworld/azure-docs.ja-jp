@@ -1,6 +1,6 @@
 ---
-title: "Elastic Database プールの管理 (PowerShell) | Microsoft Docs"
-description: "PowerShell を使用してエラスティック データベース プールを管理する方法について説明します。"
+title: "PowerShell: Azure SQL Database のエラスティック プールを管理する | Microsoft Docs"
+description: "PowerShell を使ってエラスティック プールを管理する方法について説明します。"
 services: sql-database
 documentationcenter: 
 author: srinia
@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 61289770-69b9-4ae3-9252-d0e94d709331
 ms.service: sql-database
+ms.custom: multiple databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
@@ -15,12 +16,12 @@ ms.workload: data-management
 ms.date: 06/22/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: 8b0893b159b6ed086cd3fcb41f7671c7c41cd176
+ms.sourcegitcommit: 9c6800c54f545d5ae70e9e8c2a3234cb3acecb83
+ms.openlocfilehash: 355baefc2ef50000ddb5a1241d9d28c201deffa1
 
 
 ---
-# <a name="monitor-and-manage-an-elastic-database-pool-with-powershell"></a>PowerShell でのエラスティック データベース プールの監視と管理
+# <a name="monitor-and-manage-an-elastic-pool-with-powershell"></a>PowerShell でエラスティック プールを監視および管理する
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-database-elastic-pool-manage-portal.md)
 > * [PowerShell](sql-database-elastic-pool-manage-powershell.md)
@@ -29,15 +30,14 @@ ms.openlocfilehash: 8b0893b159b6ed086cd3fcb41f7671c7c41cd176
 >
 >
 
-PowerShell コマンドレットを使用して、 [エラスティック データベース プール](sql-database-elastic-pool.md) を管理します。
+PowerShell コマンドレットを使って、[エラスティック プール](sql-database-elastic-pool.md)を管理します。
 
 一般的なエラー コードについては、「 [SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」をご覧ください。
 
-プールに関する値については、[eDTU とストレージの制限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)に関するトピックをご覧ください。
+プールに関する値については、[eDTU とストレージの制限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)に関するトピックをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
-* Azure PowerShell 1.0 以降。 詳細については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
-* エラスティック データベース プールは、SQL Database V12 サーバーでのみ使用できます。 SQL Database V11 サーバーがある場合は、 [PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md) を 1 回の手順で実行できます。
+* Azure PowerShell 1.0 以降。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
 
 ## <a name="move-a-database-into-an-elastic-pool"></a>エラスティック プールへのデータベースの移動
 プールへの、またはプールからのデータベースの移動は、[Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433\(v=azure.300\).aspx) で行うことができます。
@@ -45,15 +45,15 @@ PowerShell コマンドレットを使用して、 [エラスティック デー
     Set-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
 ## <a name="change-performance-settings-of-a-pool"></a>プールのパフォーマンス設定を変更する
-パフォーマンスが低下したときは、成長に合わせてプールの設定を変更できます。 [Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511\(v=azure.300\).aspx) コマンドレットを使用します。 -Dtu パラメーターにプールあたりの eDTU 数を設定します。 使用可能な値については、[eDTU とストレージの制限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)に関するセクションをご覧ください。  
+パフォーマンスが低下したときは、成長に合わせてプールの設定を変更できます。 [Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511\(v=azure.300\).aspx) コマンドレットを使用します。 -Dtu パラメーターにプールあたりの eDTU 数を設定します。 使用可能な値については、[eDTU とストレージの制限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)に関するセクションをご覧ください。  
 
-    Set-AzureRmSqlElasticPool –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” –Dtu 1200 –DatabaseDtuMax 100 –DatabaseDtuMin 50
+    Set-AzureRmSqlElasticPool -ResourceGroupName “resourcegroup1” -ServerName “server1” -ElasticPoolName “elasticpool1” -Dtu 1200 -DatabaseDtuMax 100 -DatabaseDtuMin 50
 
 
 ## <a name="get-the-status-of-pool-operations"></a>プール操作の状態を取得する
 プールの作成には時間がかかることがあります。 作成や更新など、プール操作の状態を追跡するには、[Get-AzureRmSqlElasticPoolActivity](https://msdn.microsoft.com/library/azure/mt603812\(v=azure.300\).aspx) コマンドレットを使用します。
 
-    Get-AzureRmSqlElasticPoolActivity –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1”
+    Get-AzureRmSqlElasticPoolActivity -ResourceGroupName “resourcegroup1” -ServerName “server1” -ElasticPoolName “elasticpool1”
 
 
 ## <a name="get-the-status-of-moving-an-elastic-database-into-and-out-of-a-pool"></a>エラスティック データベースをプールに出し入れする際の状態を取得する
@@ -91,7 +91,7 @@ PowerShell コマンドレットを使用して、 [エラスティック デー
 
 
 ## <a name="get-resource-usage-data-for-an-elastic-database"></a>エラスティック データベースのリソース使用状況データを取得する
-これらの API は、次のセマンティックな相違点を除き、スタンドアロン データベースのリソース使用率の監視に使用する現在の (V12) API と同じです。
+これらの API は、次のセマンティックな相違点を除き、単独のデータベースのリソース使用率の監視に使う現在の (V12) API と同じです。
 
 この API では、取得されたメトリックが、プールに設定されている最大 eDTU 数 (または CPU、IO など、基盤となるメトリックに関してこれと同等の役割を果たす上限) に対するパーセンテージで表示されます。 たとえば、これらのメトリックのうちのいずれかの使用率が 50% であることは、特定のリソースの消費量が、親となるプールでそのリソースに対して設けられているデータベースの上限の 50% であることを示しています。
 
@@ -174,7 +174,7 @@ PowerShell コマンドレットを使用して、 [エラスティック デー
 このサンプル実装を使用するには次のようにします。
 
 1. [スクリプトとドキュメント](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools)をダウンロードします。
-2. 環境に合わせてスクリプトを変更します。 エラスティック プールがホストされている 1 つまたは複数のサーバーを指定します。
+2. 環境に合わせてスクリプトを変更します。 エラスティック プールがホストされている&1; つまたは複数のサーバーを指定します。
 3. 収集されたメトリックを格納するテレメトリ データベースを指定します。
 4. スクリプトをカスタマイズして、スクリプトの実行期間を指定します。
 
@@ -251,11 +251,6 @@ PowerShell コマンドレットを使用して、 [エラスティック デー
 * 通常、データベースあたりの最小 eDTU またはデータベースあたりの最大 eDTU の変更は、5 分以内で完了します。
 * プールあたりの eDTU の変更は、プール内のすべてのデータベースで使用される領域の合計に依存します。 変更の平均時間は、100 GB あたり 90 分以下です。 たとえば、プール内のすべてのデータベースで使用される領域の合計が 200 GB の場合、プールあたりの eDTU の変更にかかる想定待機時間は、3 時間以下になります。
 
-## <a name="migrate-from-v11-to-v12-servers"></a>V11 から V12 サーバーに移行する
-PowerShell コマンドレットを使用して、V11 を含め、V12 より前のバージョンから V12 への Azure SQL Database のアップグレードを開始、停止、監視できます。
-
-* [PowerShell を使用し、SQL Database V12 にアップグレードします](sql-database-upgrade-server-powershell.md)
-
 これらの PowerShell コマンドレットについては、次のリファレンス ドキュメントを参照してください。
 
 * [Get-AzureRMSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603582\(v=azure.300\).aspx)
@@ -270,6 +265,6 @@ Stop- コマンドレットは、一時停止ではなく取り消しを意味�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

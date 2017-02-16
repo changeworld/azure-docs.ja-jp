@@ -1,9 +1,9 @@
 ---
-title: "監査ログを使用する方法 | Microsoft Docs"
+title: "Azure AD Privileged Identity Management で監査ログを使用する方法 | Microsoft Docs"
 description: "Azure Privileged Identity Management 拡張機能で監査ログを使用する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 5d13a6dd-1fcb-4e76-82fb-cb2f4f0e4357
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/22/2016
-ms.author: kgremban
+ms.date: 02/14/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5ac402f1a5f76c02f22a189eec8cada0cc9b4a0f
+ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
+ms.openlocfilehash: a36231d9326158068e9460ed4594a79c744d3087
 
 
 ---
-# <a name="how-to-use-the-audit-log-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management で監査ログを使用する方法
+# <a name="using-the-audit-log-in-pim"></a>PIM での監査ログの使用
 Privileged Identity Management (PIM) の監査ログを使用すると、特定の期間におけるすべてのユーザー割り当てとアクティブ化を確認できます。 管理者、エンド ユーザー、同期アクティビティを含むテナントのアクティビティの完全な監査履歴を確認するには、 [Azure Active Directory のアクセスおよび使用状況レポート](active-directory-view-access-usage-reports.md)
 
 ## <a name="navigate-to-the-audit-log"></a>監査ログへの移動
@@ -48,7 +48,7 @@ Privileged Identity Management (PIM) の監査ログを使用すると、特定�
 フィルターを設定した後、 **[更新]** をクリックすると、ログのデータがフィルター処理されます。  データがすぐに表示されない場合は、ページを更新してください。
 
 ### <a name="change-the-date-range"></a>日付範囲を変更する
-**[今日]**、**[過去 1 週間]**、**[過去 1 か月]**、**[カスタム]** のいずれかのボタンを使用して、監査ログの時間範囲を変更することができます。
+**[今日]**、**[過去&1; 週間]**、**[過去&1; か月]**、**[カスタム]** のいずれかのボタンを使用して、監査ログの時間範囲を変更することができます。
 
 **[カスタム]** をクリックすると、**[開始]** および **[終了]** 日付フィールドが表示され、ログの日付範囲を指定できます。  MM/DD/YYYY の形式で日付を入力するか、 **カレンダー** アイコンをクリックしてカレンダーから日付を選択できます。
 
@@ -62,6 +62,6 @@ Privileged Identity Management (PIM) の監査ログを使用すると、特定�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

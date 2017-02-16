@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c9f062f1cc855a47bb75668e99330e98bb2395b2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b7a74df9bfcf75b00af5aaf21e9f74610712ab47
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: c9f062f1cc855a47bb75668e99330e98bb2395b2
 * Eclipse IDE for Java EE Developers Indigo 以降。 <http://www.eclipse.org/downloads/> からダウンロードできます。
 * Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、GlassFish、JBoss Application Server、Jetty、IBM® WebSphere® Application Server Liberty Core など)。
 * Azure サブスクリプション。<http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
-* Azure Toolkit for Eclipse。 詳細については、「[Azure Toolkit for Eclipse のインストール][Azure Toolkit for Eclipse のインストール]」を参照してください。
+* Azure Toolkit for Eclipse。 詳細については、「[Azure Toolkit for Eclipse のインストール][Installing the Azure Toolkit for Eclipse]」を参照してください。
 
 ## <a name="to-create-a-hello-world-application"></a>Hello World アプリケーションを作成するには
 最初に、Java プロジェクトを作成します。
@@ -74,13 +74,13 @@ Java Web アプリケーションをテストする準備が整ったらすぐ�
    5. デプロイで使用するオペレーティング システムのバージョンを **[Target OS]**で選択します。
    6. このチュートリアルの目的上、**[Target environment (ターゲット環境)]** では **[Staging (ステージング)]** を選択してください (運用環境のサイトにデプロイする準備が整った段階で **[Production (運用)]** に変更します)。
    7. (省略可) 以前のデプロイを新しいデプロイで自動的に上書きする場合は、**[Overwrite previous deployment (以前のデプロイを上書きする)]** チェック ボックスをオンにしてください。 このオプションを有効にしておくと、同じ場所に発行したときに "409 競合" の問題が発生しなくなります。
-       **[Publish to Azure (Azure に発行)]** ダイアログに **[Remote Access (リモート アクセス)]** のセクションが存在することに注目してください。 既定ではリモート アクセスが無効になっており、この例では有効にしません。 リモート アクセスを有効にする場合は、リモートからログインする際に使用するユーザー名とパスワードを入力します。 リモート アクセスの詳細については、「[Azure デプロイ用にリモート アクセスを Eclipse で有効にする方法][Azure デプロイ用にリモート アクセスを Eclipse で有効にする方法]」を参照してください。
+       **[Publish to Azure (Azure に発行)]** ダイアログに **[Remote Access (リモート アクセス)]** のセクションが存在することに注目してください。 既定ではリモート アクセスが無効になっており、この例では有効にしません。 リモート アクセスを有効にする場合は、リモートからログインする際に使用するユーザー名とパスワードを入力します。 リモート アクセスの詳細については、[Eclipse で Azure デプロイのリモート アクセスを有効にする方法][Enabling Remote Access for Azure Deployments in Eclipse]に関するページを参照してください。
        実際の **[Publish to Azure (Azure に発行)]** ダイアログの例を次に示します。 ![][ic719488]
 5. **[Publish]** をクリックしてステージング環境に発行します。
     フル ビルドの実行を求められたら、 **[Yes]**をクリックします。 初回ビルドには数分かかる場合があります。
     Eclipse のタブ表示セクションに **[Azure Activity Log]** が表示されます。
     ![][ic719489]
-   このログと **[Console (コンソール)]** ビューを使用して、デプロイの進行状況を確認できます。 また、[Azure 管理ポータル][Azure 管理ポータル]にログインし、**[Cloud Services]** セクションを使用して状況を監視することもできます。
+   このログと **[Console (コンソール)]** ビューを使用して、デプロイの進行状況を確認できます。 また、[Microsoft Azure 管理ポータル][Azure Management Portal]にログインし、**[クラウド サービス]** セクションを使用して状況を監視することもできます。
 6. デプロイが正常に完了すると、**[Azure Activity Log (Azure のアクティビティ ログ)]** のステータスに **[Published (発行済み)]** と表示されます。 次の図に示すように、 **[Published]**をクリックすると、デプロイのインスタンスがブラウザーに表示されます。
     ![][ic719490]
 
@@ -111,11 +111,11 @@ Azure デプロイ プロジェクトには、アプリケーションの情報�
 既存の Azure デプロイ プロジェクトで、JDK、アプリケーション サーバー、またはアプリケーションの一覧を変更するには、次の操作を実行します。
 
 1. [Project Explorer (プロジェクト エクスプローラー)] でプロジェクト ノード (例: **MyHelloWorld_onAzure**) を展開します。
-2.  **[WorkerRole1]**
+2. **[WorkerRole1]**
 3. コンテキスト メニューの **[Azure]** サブメニューを展開します。
-4.  **[Server Configuration]**
+4. **[Server Configuration]**
 
-ここで紹介した手順に従って既存の Azure デプロイ プロジェクトを編集することによってサーバーを構成した場合も、新しいプロジェクトをゼロから作成してサーバーを構成した場合も、同じ種類のダイアログが表示され、そのダイアログで JDK、サーバー、アプリケーション コンポーネントを構成することができます。 JDK やアプリケーション サーバーの変更、デプロイにおけるアプリケーションの追加と削除など、これらのダイアログの設定を変更する方法の詳細については、「[サーバー構成のプロパティ][サーバー構成のプロパティ]サーバー構成のプロパティ」を参照してください。
+ここで紹介した手順に従って既存の Azure デプロイ プロジェクトを編集することによってサーバーを構成した場合も、新しいプロジェクトをゼロから作成してサーバーを構成した場合も、同じ種類のダイアログが表示され、そのダイアログで JDK、サーバー、アプリケーション コンポーネントを構成することができます。 JDK やアプリケーション サーバーの変更、デプロイにおけるアプリケーションの追加と削除など、これらのダイアログの設定を変更する方法の詳細については、「[サーバー構成のプロパティ][Server configuration properties]」を参照してください。
 
 ## <a name="windows-only-to-deploy-your-application-to-the-compute-emulator"></a>Windows のみ: アプリケーションをコンピューティング エミュレーターにデプロイするには
 > [!NOTE]
@@ -157,22 +157,22 @@ Azure Toolkit for Eclipse 内でデプロイを削除するには、Eclipse の 
 ## <a name="see-also"></a>関連項目
 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]
 
-[Azure Toolkit for Eclipse のインストール][Azure Toolkit for Eclipse のインストール] 
+[Azure Toolkit for Eclipse のインストール][Installing the Azure Toolkit for Eclipse] 
 
-[Azure Toolkit for Eclipse の新機能][Azure Toolkit for Eclipse の新機能]
+[Azure Toolkit for Eclipse の新機能][What's New in the Azure Toolkit for Eclipse]
 
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java デベロッパー センター]を参照してください。
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java Developer Center]を参照してください。
 
 <!-- URL List -->
 
-[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
-[Azure 管理ポータル]: http://go.microsoft.com/fwlink/?LinkID=512959
-[Azure ロールのプロパティ]: http://go.microsoft.com/fwlink/?LinkID=699525
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
+[Azure Role Properties]: http://go.microsoft.com/fwlink/?LinkID=699525
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure デプロイ用にリモート アクセスを Eclipse で有効にする方法]: http://go.microsoft.com/fwlink/?LinkID=699538
-[Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
-[サーバー構成のプロパティ]: http://go.microsoft.com/fwlink/?LinkID=699525#server_configuration_properties
-[Azure Toolkit for Eclipse の新機能]: http://go.microsoft.com/fwlink/?LinkID=699552
+[Enabling Remote Access for Azure Deployments in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699538
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Server configuration properties]: http://go.microsoft.com/fwlink/?LinkID=699525#server_configuration_properties
+[What's New in the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699552
 
 <!-- IMG List -->
 
@@ -197,6 +197,6 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

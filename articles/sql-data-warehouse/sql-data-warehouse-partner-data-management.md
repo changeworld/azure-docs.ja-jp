@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
+ms.date: 12/27/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2b29a041a005a6d6aa60c45dc39f151647e35646
+ms.sourcegitcommit: 70bc2363172199455785e90753560cc2281432b1
+ms.openlocfilehash: eeb858514af80d1e6074b7c86ead5955f0d22ad2
 
 
 ---
@@ -30,11 +30,11 @@ ms.openlocfilehash: 2b29a041a005a6d6aa60c45dc39f151647e35646
 | ![Inbrein][2] |**MicroERD**<br>Inbrein MicroERD は、精密なデータ モデルの作成、データの冗長性の削減、生産性向上、および標準の遵守に必要なツールを提供します。 広範なユーザー エクスペリエンスに基づいて開発されたこのツールの UI を使用することで、モデル作成者は容易かつ使い勝手よく DB モデルに取り組むことができます。 プロンプト機能の向上と更新により、MicroERD の強化された新機能を途切れることなく利用できます。 |[Web サイト][inbrein_website]<br>[データシート][inbrein_datasheet]<br>[Twitter][inbrein_twitter]<br>[YouTube][inbrein_youtube] |[![inbrein ビデオ](./media/sql-data-warehouse-partner-data-management/inbrein_video.jpg)](https://www.youtube.com/watch?v=IGHSAk4bxdE) |
 | ![Infolibrarian][3] |**Infolibrarian**<br>InfoLibrarian は、メタデータをカタログ化、格納、および管理することにより、データ管理に関する重要課題の解決を支援します。 また、メタデータ管理、データ ガバナンス、および資産管理のソフトウェア ソリューションを提供することで、多種多様なツールとテクノロジの組み合わせにおいてメタデータを管理したり公開したりできるようにします。 |[Marketplace][infolibrarian_marketplace]<br>[Web サイト][infolibrarian_website]<br>[Twitter][infolibrarian_twitter] |[![infolibrarian ビデオ](./media/sql-data-warehouse-partner-data-management/infolibrarian_video.png)](http://www.infolibcorp.com/metadata-management-videos/vdbplayer.swf?volume=100&url=video/infolibrarian-azure-provisioning.mp4) |
 | ![Redpoint Global][4] |**RedPoint Interaction**<br>RedPoint Interaction は、すべての通信チャネルと接点にわたって、継続的な対話を通じた顧客エンゲージメントをサポートします。 単一型の運用管理ポイントから、オムニチャネル マーケティングのライフサイクル全体を容易に管理します。 |[Marketplace][redpoint_it_marketplace]<br>[Web サイト][redpoint_it_website]<br>[プレス リリース][redpoint_press]<br>[データシート][redpoint_it_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![redpoint dm ビデオ](./media/sql-data-warehouse-partner-data-management/redpoint_it_video.jpg)](https://vimeo.com/103715582) |
-| ![Redpoint Global][4] |**RedPoint Data Management**<br>RedPoint Data Management を使用することで、マーケティング担当者はすべてのデータを適用してクロス チャネルでの顧客とのつながりを促進しながら、構造化および非構造化データの管理を実行できます。 Azure SQL Data Warehouse と RedPoint を活用して構造化データと非構造化データの価値を最大化することで、今日のオムニ チャネルの顧客を引き込むために必要な高度にパーソナライズされ、状況に応じたやりとりを実現できます。 ドラッグ アンド ドロップ インターフェイスにより、データ管理プロセスを容易に設計および実行できます。 |[Marketplace][redpoint_dm_marketplace]<br>[Web サイト][redpoint_dm_website]<br>[プレス リリース][redpoint_press]<br>[データシート][redpoint_dm_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![redpoint dm ビデオ](./media/sql-data-warehouse-partner-data-management/redpoint_dm_video.jpg)](https://vimeo.com/103715581) |
-| ![SQL Sentry][5] |**SQL Sentry**<br>SQL Sentry Performance Advisor では、Azure SQL Data Warehouse の最も適切なパフォーマンス メトリックがリアルタイムに、また通時的に表示されるため、パフォーマンスの傾向を把握し、詳細な情報に容易にアクセスできることで、より突っ込んだ分析とトラブルシューティングが可能になります。 Performance Advisor は、任意の時点または日付の範囲について、パフォーマンス データを表示できます。 |[Marketplace][sql_sentry_marketplace]<br>[Web サイト][sql_sentry_website]<br>[プレス リリース][sql_sentry_press]<br>[Twitter][sql_sentry_twitter]<br>[YouTube][sql_sentry_youtube] | |
+| ![Redpoint Global][4] |**RedPoint Data Management**<br>RedPoint Data Management を使用することで、マーケティング担当者はすべてのデータを適用してクロス チャネルでの顧客とのつながりを促進しながら、構造化および非構造化データの管理を実行できます。 Azure SQL Data Warehouse と RedPoint を活用して構造化データと非構造化データの価値を最大化することで、今日のオムニ チャネルの顧客を引き込むために必要な高度にパーソナライズされ、状況に応じたやりとりを実現できます。 ドラッグ アンド ドロップ インターフェイスにより、データ管理プロセスを容易に設計および実行できます。 |[Marketplace][redpoint_dm_marketplace]<br>[Web サイト][redpoint_dm_website]<br>[プレス リリース][redpoint_press]<br>[データシート][redpoint_dm_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![redpoint dm ビデオ](./media/sql-data-warehouse-partner-data-management/redpoint_dm_video.jpg)](https://www.youtube.com/watch?v=o3DtXRpiEg0) |
+| ![Sentry One][5] |**DW Sentry**<br>インテリジェントなデータ移動ダッシュボードやイベント カレンダーを使用して、ワークロードに影響を与えている原因を常時正確に把握できます。 データの読み込み、バックアップ、復元のために実行されているクエリやジョブを可視化できるように設計されているので、Azure リソースが最大限に活用されているかどうかについて心配する必要がなくなります。 |[Marketplace][sql_sentry_marketplace]<br>[Web サイト][sql_sentry_website]<br>[プレス リリース][sql_sentry_press]<br>[Twitter][sql_sentry_twitter]<br>[YouTube][sql_sentry_youtube] | |
 
 ## <a name="next-steps"></a>次のステップ
-その他のパートナーの詳細については、[ビジネス インテリジェンス パートナー][bi_partners] に関するページと [データ統合パートナー][di_partners] に関するページを参照してください。
+その他のパートナーの詳細については、[ビジネス インテリジェンス パートナー][bi_partners]に関するページと[データ統合パートナー][di_partners]に関するページをご覧ください。
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-partner-data-management/coffing_data_warehousing_logo.png
@@ -54,7 +54,7 @@ ms.openlocfilehash: 2b29a041a005a6d6aa60c45dc39f151647e35646
 [infolibrarian_website]:http://www.infolibcorp.com/metadata-management/software-tools
 [redpoint_it_website]:http://www.redpoint.net/products/customer-interaction-management/
 [redpoint_dm_website]:http://www.redpoint.net/products/data-management-solutions/
-[sql_sentry_website]:http://www.sqlsentry.com/solutions/business-analytics/
+[sql_sentry_website]:https://sentryone.com/platform/azure-sql-dw-performance-monitoring/
 
 <!--ebook Links-->
 
@@ -79,7 +79,7 @@ ms.openlocfilehash: 2b29a041a005a6d6aa60c45dc39f151647e35646
 <!--[inbrein_press]:-->
 <!--[infolibrarian_press]:-->
 [redpoint_press]:http://www.redpoint.net/press/redpoint-global-announces-support-for-microsoft-azure-sql-data-warehouse-microsoft-azure-data-lake-service/
-[sql_sentry_press]:http://blogs.sqlsentry.com/davidbenoit/sql-sentry-v9-aps-sql-dw/
+[sql_sentry_press]:https://www.sentryone.com/Company/News-Article/20160713-sql-sentry-performance-advisor-for-azure-sql-dw/
 
 
 <!--YouTube links-->
@@ -100,6 +100,6 @@ ms.openlocfilehash: 2b29a041a005a6d6aa60c45dc39f151647e35646
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

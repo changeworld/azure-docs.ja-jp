@@ -10,11 +10,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 02/07/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 98ace6ab2bc2a55bc0101284f5c7675fb1bbed68
-ms.openlocfilehash: 510a25415fd264eee994e16cac9ae55de8e740f6
+ms.sourcegitcommit: 47c3491b067d5e112db589672b68e7cfc7cbe921
+ms.openlocfilehash: eb89c6f485f2321f729dcfe650af4355de84a9ac
 
 
 ---
@@ -26,9 +26,9 @@ Analytics には、独自のスキーマを使用してデータをインポー�
 
 現時点では、CSV (コンマ区切り) ファイルのほか、タブまたはセミコロンを区切り文字に使用した類似の形式をインポートできます。
 
-Analytics へのインポートは、次の 3 つの状況で役に立ちます。
+Analytics へのインポートは、次の&3; つの状況で役に立ちます。
 
-* **アプリのテレメトリと結合する。** たとえば、Web サイトの URL を読みやすいページ タイトルにマップするテーブルをインポートすることもできます。 Analytics では、Web サイト内で特に人気のある上位 10 件のページを表示する、ダッシュボード チャート レポートを作成することができます。 これからは、URL の代わりにページ タイトルを 表示できるようになりました。
+* **アプリのテレメトリと結合する。** たとえば、Web サイトの URL を読みやすいページ タイトルにマップするテーブルをインポートすることもできます。 Analytics では、Web サイト内で特に人気のある上位&10; 件のページを表示する、ダッシュボード チャート レポートを作成することができます。 これからは、URL の代わりにページ タイトルを 表示できるようになりました。
 * **アプリケーションのテレメトリを、他のソース (ネットワーク トラフィック、サーバー データ、または CDN ログ ファイルなど) に関連付ける。**
 * **Analytics を個別のデータ ストリームに適用する。** Application Insights の Analytics は、タイムスタンプ付きのスパース ストリームと効果的に連携できる強力なツールです。これは多くの場合、SQL よりもはるかに効果的です。 他のソースからこの種のストリームが送られる場合は、それらを Analytics で分析できます。
 
@@ -99,10 +99,10 @@ Analytics へのインポートは、次の 3 つの状況で役に立ちます�
  * BLOB のサイズは、非圧縮で 1 GB が上限となります。 パフォーマンスの観点から言うと、数百 MB の BLOB が最適なサイズです。
  * Gzip で圧縮すれば、アップロード時間が短縮されるだけでなく、データがクエリで使用できるようになるまでの時間も短縮されます。 ファイル名拡張子は `.gz` を使用してください。
  
-2. [BLOB の Shared Access Signature キーを作成します](../storage/storage-dotnet-shared-access-signature-part-2.md)。 このキーでは、有効期限を 1 日とし、読み取りアクセスを提供する必要があります。
+2. [BLOB の Shared Access Signature キーを作成します](../storage/storage-dotnet-shared-access-signature-part-2.md)。 このキーでは、有効期限を&1; 日とし、読み取りアクセスを提供する必要があります。
 3. データが待機していることを Application Insights に通知するための REST 呼び出しを実行します。
 
- * エンドポイント: `https://eus-breeziest-in.cloudapp.net/v2/track`
+ * エンドポイント: `https://dc.services.visualstudio.com/v2/track`
  * HTTP メソッド: POST
  * ペイロード:
 
@@ -114,7 +114,7 @@ Analytics へのインポートは、次の 3 つの状況で役に立ちます�
             "baseData":{
                "ver":"2",
                "blobSasUri":"<Blob URI with Shared Access Key>",
-               "sourceName":"<Data source name>",
+               "sourceName":"<Schema ID>",
                "sourceVersion":"1.0"
              }
        },
@@ -128,7 +128,7 @@ Analytics へのインポートは、次の 3 つの状況で役に立ちます�
 プレース ホルダーは次のとおりです。
 
 * `Blob URI with Shared Access Key`: これは、キーを作成するためのプロシージャから取得します。 これは BLOB に固有のものです。
-* `Data source name`: データ ソースに付けた名前です。 この BLOB 内のデータは、このソースに対して定義したスキーマに準拠している必要があります。
+* `Schema ID`: 定義済みのスキーマに対して生成されたスキーマ ID。 この BLOB 内のデータは、スキーマに準拠している必要があります。
 * `DateTime`: 要求が送信された時刻 (UTC) です。 受け付けられる形式は次のとおりです: ISO8601 ("2016-01-01 13:45:01" など)、RFC822 ("Wed, 14 Dec 16 14:57:01 +0000")、RFC850 ("Wednesday, 14-Dec-16 14:57:00 UTC")、RFC1123 ("Wed, 14 Dec 2016 14:57:00 +0000")。
 * Application Insights リソースの `Instrumentation key`。
 
@@ -249,7 +249,7 @@ namespace IngestionClient
     public class AnalyticsDataSourceClient 
     { 
         #region Members 
-        private readonly Uri breezeEndpoint = new Uri("https://eus-breeziest-in.cloudapp.net/v2/track"); 
+        private readonly Uri endpoint = new Uri("https://dc.services.visualstudio.com/v2/track"); 
         private const string RequestContentType = "application/json; charset=UTF-8"; 
         private const string RequestAccess = "application/json"; 
         #endregion Members 
@@ -258,7 +258,7 @@ namespace IngestionClient
 
         public async Task<bool> RequestBlobIngestion(AnalyticsDataSourceIngestionRequest ingestionRequest) 
         { 
-            HttpWebRequest request = WebRequest.CreateHttp(breezeEndpoint); 
+            HttpWebRequest request = WebRequest.CreateHttp(endpoint); 
             request.Method = WebRequestMethods.Http.Post; 
             request.ContentType = RequestContentType; 
             request.Accept = RequestAccess; 
@@ -274,7 +274,10 @@ namespace IngestionClient
             HttpWebResponse response; 
             try 
             { 
-                response = (HttpWebResponse)await request.GetResponseAsync(); 
+                using (var response = (HttpWebResponse)await request.GetResponseAsync())
+                {
+                    return response.StatusCode == HttpStatusCode.OK;
+                }
             } 
             catch (WebException e) 
             { 
@@ -285,11 +288,10 @@ namespace IngestionClient
                         "Ingestion request failed with status code: {0}. Error: {1}", 
                         httpResponse.StatusCode, 
                         httpResponse.StatusDescription); 
-                } 
-                return false; 
+                    return false; 
+                }
+                throw; 
             } 
-
-            return response.StatusCode == HttpStatusCode.OK; 
         } 
         #endregion Public 
 
@@ -332,6 +334,6 @@ namespace IngestionClient
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -13,19 +13,25 @@ ms.workload: multiple
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
+ms.date: 01/03/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: cff4e05de2a9e2f0603fd4beebe26e44b4652dc8
-ms.openlocfilehash: d168c6e477eff07b8f499c1be869f85506c2fabc
+ms.sourcegitcommit: 9a2ab28a2dc456d5f21242ded1d348f411d3d994
+ms.openlocfilehash: c8cc44cf132bb82c217a81ab94f27ed391a4248d
 
 
 ---
 # <a name="azure-cli-commands-in-azure-service-management-asm-mode"></a>Azure サービス管理 (asm) モードでの Azure CLI コマンド
-> [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../articles/azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルのすべてのコマンドに関する記事](virtual-machines/azure-cli-arm-commands.md)を確認し、CLI を使用して、クラシックから Resource Manager モデルへの[リソースの移行](virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)を行うこともできます。
+
 
 この記事では、クラシック デプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure CLI コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、Azure サービス管理 (asm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 
+
+> [!IMPORTANT]
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../articles/azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルの CLI コマンドに関する記事](virtual-machines/azure-cli-arm-commands.md)を確認し、CLI を使用して、クラシックから Resource Manager モデルへの[リソースの移行](virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)を行うこともできます。
+>
+>Resource Manager モードでの操作は、次世代のマルチプラットフォーム CLI である [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) で試すこともできます。
+>
+
 
 最初に、[Azure CLI をインストール](xplat-cli-install.md)し、[Azure サブスクリプションに接続](xplat-cli-connect.md)します。
 
@@ -33,7 +39,7 @@ ms.openlocfilehash: d168c6e477eff07b8f499c1be869f85506c2fabc
 
 オプション パラメーターは、ブラケットで囲んで表記しています (例 `[parameter]`)。 その他のパラメーターはすべて指定する必要があります。
 
-ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。 `-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。 `--json` オプションを使用すると、結果が未整形の json 形式で出力されます。
+ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが&3; つあります。 `-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。 `--json` オプションを使用すると、結果が未整形の json 形式で出力されます。
 
 ## <a name="setting-asm-mode"></a>ASM モードの設定
 次のコマンドを使用して Azure CLI サービス管理モード コマンドを有効にします。
@@ -46,7 +52,7 @@ ms.openlocfilehash: d168c6e477eff07b8f499c1be869f85506c2fabc
 > 
 
 ## <a name="manage-your-account-information-and-publish-settings"></a>アカウント情報と発行設定の管理
-CLI でアカウントに接続する方法の 1 つは、Azure サブスクリプションの情報を使用するものです  (他の方法については、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](xplat-cli-connect.md)」を参照してください)。この情報は、以下に説明するとおり、Azure クラシック ポータルから発行設定ファイルとして入手できます。 発行設定ファイルは、CLI の以降の操作で永続的なローカル構成設定としてインポートすることができます。インポートすると、以降の操作ではこの発行設定ファイルが使用されます。 発行設定のインポートは 1 回だけ行う必要があります。
+CLI でアカウントに接続する方法の&1; つは、Azure サブスクリプションの情報を使用するものです  (他の方法については、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](xplat-cli-connect.md)」を参照してください)。この情報は、以下に説明するとおり、Azure クラシック ポータルから発行設定ファイルとして入手できます。 発行設定ファイルは、CLI の以降の操作で永続的なローカル構成設定としてインポートすることができます。インポートすると、以降の操作ではこの発行設定ファイルが使用されます。 発行設定のインポートは&1; 回だけ行う必要があります。
 
 **account download [options]**
 
@@ -205,7 +211,7 @@ CLI でアカウントに接続する方法の 1 つは、Azure サブスクリ�
 
 vm create コマンドは、Azure クラシック ポータルと同様、特定の運用デプロイ環境上にのみ仮想マシンを作成します。 クラウド サービスのステージング デプロイ環境に仮想マシンを作成するオプションはありません。 サブスクリプションに既存の Azure ストレージ アカウントが含まれていない場合、このコマンドは Azure ストレージ アカウントを作成します。
 
---location パラメーターで場所を指定するか、--affinity-group パラメーターでアフィニティ グループを指定します。 どちらも指定しない場合は、有効な場所の一覧から 1 つを選択するように求められます。
+--location パラメーターで場所を指定するか、--affinity-group パラメーターでアフィニティ グループを指定します。 どちらも指定しない場合は、有効な場所の一覧から&1; つを選択するように求められます。
 
 パスワードは、8 文字以上 123 以下で指定し、仮想マシンで使用しているオペレーティング システムに適用されているパスワードの複雑さの要件を満たす必要があります。
 
@@ -436,7 +442,7 @@ info:   vm shutdown command OK
 
 **vm image list [options]**
 
-このコマンドは、仮想マシン イメージの一覧を表示します。 イメージには、Microsoft が作成したイメージ (プレフィックスは "MSFT")、サード パーティが作成したイメージ (プレフィックスはベンダーの名前)、およびユーザーが作成したイメージの 3 種類があります。 イメージを作成するには、既存の仮想マシンをキャプチャするか、BLOB ストレージにアップロードされているカスタム .vhd からイメージを作成します。 カスタム .vhd の詳細については、「vm image create」を参照してください。
+このコマンドは、仮想マシン イメージの一覧を表示します。 イメージには、Microsoft が作成したイメージ (プレフィックスは "MSFT")、サード パーティが作成したイメージ (プレフィックスはベンダーの名前)、およびユーザーが作成したイメージの&3; 種類があります。 イメージを作成するには、既存の仮想マシンをキャプチャするか、BLOB ストレージにアップロードされているカスタム .vhd からイメージを作成します。 カスタム .vhd の詳細については、「vm image create」を参照してください。
 -json オプションは、結果が raw JSON 形式で返されるように指定します。
 
     ~$ azure vm image list
@@ -510,7 +516,7 @@ info:   vm shutdown command OK
 azure vm disk detach コマンドでデータ ディスクを切断する場合、&lt;lun&gt; パラメーターを使用して、切断するディスクを指定します。
 
 > [!NOTE]
-> データ ディスクの切断は、必ず逆の順序で行ってください。割り当てられている LUN の番号が 1 番大きいものから切断していきます。 Linux SCSI レイヤーでは、番号が大きい LUN が接続されている場合、それより小さい番号の LUN を切断することはできません。 たとえば、LUN 1 が接続されていると、LUN 0 は切断できません。
+> データ ディスクの切断は、必ず逆の順序で行ってください。割り当てられている LUN の番号が&1; 番大きいものから切断していきます。 Linux SCSI レイヤーでは、番号が大きい LUN が接続されている場合、それより小さい番号の LUN を切断することはできません。 たとえば、LUN 1 が接続されていると、LUN 0 は切断できません。
 > 
 > 
 
@@ -2353,6 +2359,6 @@ Virtual Network の詳細を表示します。
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

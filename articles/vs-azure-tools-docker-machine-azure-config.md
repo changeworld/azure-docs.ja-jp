@@ -15,8 +15,8 @@ ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e34cb21da7d08db0cd65db211102788232ac422f
+ms.sourcegitcommit: c327fc0f8175f3fe62f9a0975b7fbad1437bbbe0
+ms.openlocfilehash: 4309d2dffacb9baf2563c8a4fcd1984beabdeef0
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: e34cb21da7d08db0cd65db211102788232ac422f
 
 **注:** 
 
-* *この記事は docker-machine バージョン 0.7.0 以上に依存します*
+* *この記事は docker-machine バージョン 0.9.0-rc2 以上に依存します*
 * *Windows コンテナーは今後の docker-machine でサポートされる予定です*
 
 ## <a name="create-vms-with-docker-machine"></a>Docker マシンで VM を作成する
@@ -45,10 +45,15 @@ Azure ドライバーにはサブスクリプション ID が必要になりま�
 「 `docker-machine create --driver azure` 」と入力し、オプションとその既定値を表示します。
 [Docker の Azure ドライバー ドキュメント](https://docs.docker.com/machine/drivers/azure/) で詳細を確認することもできます。 
 
-次の例では既定値を使用していますが、インターネット アクセス用に必要に応じて VM のポート 80 を開くことができます。 
+次の例では[既定値](https://github.com/docker/machine/blob/master/drivers/azure/azure.go#L22)を使用していますが、必要に応じて以下の値を設定します。 
+
+* パブリック IP に関連付けられている名前の azure-dns と生成される証明書。  これにより、VM は動的 IP を安全に停止およびリリースすることができ、新しい IP で VM が再起動された後に再接続することが可能になります。  名前のプレフィックスは、そのリージョン UNIQUE_DNSNAME_PREFIX.westus.cloudapp.azure.com に対して一意である必要があります。
+* 発信インターネット アクセス用に VM 上で開かれているポート 80
+* より高速な Premium Storage を利用するための VM のサイズ
+* VM ディスクに使用する Premium Storage
 
 ```
-docker-machine create -d azure --azure-subscription-id <Your AZURE_SUBSCRIPTION_ID> --azure-open-port 80 mydockerhost
+docker-machine create -d azure --azure-subscription-id <Your AZURE_SUBSCRIPTION_ID> --azure-dns <Your UNIQUE_DNSNAME_PREFIX> --azure-open-port 80 --azure-size Standard_DS1_v2 --azure-storage-type "Premium_LRS" mydockerhost 
 ```
 
 ## <a name="choose-a-docker-host-with-docker-machine"></a>docker-machine で Docker ホストを選択する
@@ -119,6 +124,6 @@ Visual Studio を使用した .NET Core アプリケーションの開発につ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

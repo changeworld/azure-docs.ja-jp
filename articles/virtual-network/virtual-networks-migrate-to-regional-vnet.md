@@ -1,6 +1,6 @@
 ---
-title: "アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法"
-description: "アフィニティ グループから、リージョン VNet に移行する方法を学習します。"
+title: "Azure 仮想ネットワークのアフィニティ グループからリージョンへの移行 | クラシック | Microsoft Docs"
+description: "仮想ネットワークをアフィニティ グループからリージョンに移行する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 198a726229f4950906e79272da6913f1a1afd15d
+ms.sourcegitcommit: f74379c3e310a7bbcf659ef610727bff19639022
+ms.openlocfilehash: c495af3e818758cc5fe99af9b5f07506a16b59ef
 
 
 ---
-# <a name="how-to-migrate-from-affinity-groups-to-a-regional-virtual-network-vnet"></a>アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法
+# <a name="how-to-migrate-a-virtual-network-from-an-affinity-group-to-a-region"></a>仮想ネットワークをアフィニティ グループからリージョンに移行する方法
 アフィニティ グループを使用すると、同じアフィニティ グループ内で作成したリソースが、近距離にある複数サーバーによって物理的にホストされるため、これらのリソースはより迅速に通信できるようになります。 これまでアフィニティ グループは、Virtual Network (VNet) を作成するための要件でした。 当時は、VNet を管理するネットワーク マネージャー サービスが機能できたのは、一連の物理サーバーまたはスケール ユニット内のみでした。 アーキテクチャの改善により、ネットワーク管理のスコープがリージョンに拡大しました。
 
 このようなアーキテクチャの機能強化により、アフィニティ グループは仮想ネットワークの推奨要件や必須要件ではなくなりました。 VNet で使用されていたアフィニティ グループは、リージョンに置き換わりつつあります。 リージョンに関連付けられている VNets は、リージョン VNet と呼ばれます。
@@ -61,7 +61,7 @@ ms.openlocfilehash: 198a726229f4950906e79272da6913f1a1afd15d
 ## <a name="affinity-groups-and-vms"></a>アフィニティ グループと VM
 前述のように、一般的に VM ではアフィニティ グループは推奨されなくなりました。 一連の VM 間のネットワーク レイテンシ待ち時間を最小に抑える必要がある場合にのみ、アフィニティ グループを使用してください。 アフィニティ グループに VM を配置すると、すべての VM が同じコンピューティング クラスターまたはスケール ユニットに配置されることになります。
 
-アフィニティ グループを使用する場合は、次の 2 つの (おそらくはマイナスの) 結果が生じる可能性があります。
+アフィニティ グループを使用する場合は、次の&2; つの (おそらくはマイナスの) 結果が生じる可能性があります。
 
 * 一連の VM サイズは、コンピューティング スケール ユニットによって提供される一連の VM サイズに制限されます。
 * 新しい VM を割り当てられない可能性が高くなります。 これは、アフィニティ グループの特定のスケール ユニットが容量を使い切った場合に発生します。
@@ -74,6 +74,6 @@ VM をデプロイすると、単一のスケール ユニットにデプロイ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

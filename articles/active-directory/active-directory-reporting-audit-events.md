@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/19/2016
+ms.date: 12/14/2016
 ms.author: dhanyahk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 23da68e26865a8c3525cce3cb2b3a4db447fcc4c
+ms.sourcegitcommit: 6950072b8970dfc1b80674efe0be6cb7496fd5ce
+ms.openlocfilehash: 2dda60160bbcaa729bc8e5cec4f47efc10d120cf
 
 
 ---
@@ -44,8 +44,6 @@ Azure Active Directory 監査レポートを利用すると、Azure Active Direc
 | グループの追加 |ディレクトリ内にグループが作成されました。 |
 | グループの更新 |ディレクトリ内のグループが更新されました。 更新されたグループ プロパティを確認するには、後の [監査対象のグループ プロパティ](#update-group-attributes) に関する説明を参照してください。 |
 | グループの削除 |ディレクトリからグループが削除されました。 |
-| グループへのメンバーの追加 |ディレクトリ内のグループにメンバーが追加されました。 |
-| グループからのメンバーの削除 |ディレクトリ内のグループからメンバーが削除されました。 |
 | CreateGroupSettings |グループ設定が作成されました。 |
 | UpdateGroupSettings |グループ設定が更新されました。 更新されたグループ設定を確認するには、後述のセクションにある [監査対象のグループ プロパティ](#update-group-attributes) に関する説明を参照してください。 |
 | DeleteGroupSettings |グループ設定が削除されました。 |
@@ -63,21 +61,6 @@ Azure Active Directory 監査レポートを利用すると、Azure Active Direc
 | 委任エントリの追加 |ディレクトリに [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) が作成されました。 |
 | 委任エントリの設定 |ディレクトリの [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) が更新されました。 |
 | 委任エントリの削除 |ディレクトリの [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) が削除されました。 |
-| **ロール イベント** | |
-| ロールへのロール メンバーの追加 |ディレクトリのロールにユーザーが追加されました。 |
-| ロールからのロール メンバーの削除 |ディレクトリのロールからユーザーが削除されました。 |
-| 会社の連絡先情報の設定 |会社レベルで優先連絡先が設定されました。 これには、マーケティングに対する電子メール アドレスおよび Microsoft オンライン サービスに関する技術的通知が含まれます。 |
-| 委任エントリの追加 |ディレクトリに [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionGrantEntity) が作成されました。 |
-| 委任エントリの設定 |ディレクトリの [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionGrantEntity) が更新されました。 |
-| 委任エントリの削除 |ディレクトリの [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionGrantEntity) が削除されました。 |
-| AddSevicePrincipalOwner |サービス プリンシパルに所有者が追加されました。 |
-| RemoveSevicePrincipalOwner |サービス プリンシパルから所有者が削除されました。 |
-| AddApplication |アプリケーションを追加します。 |
-| UpdateApplication |アプリケーションを更新します。 更新されたアプリケーション設定を確認するには、後述のセクションにある [監査対象のアプリケーション プロパティ](#update-application-attributes) に関する説明を参照してください。 |
-| DeleteApplication |アプリケーションを削除します。 |
-| RestoreApplication |アプリケーションを復元します。 |
-| AddApplicationOwner |アプリケーションに所有者を追加します。 |
-| RemoveApplicationOwner |アプリケーションから所有者を削除します。 |
 | **ロール イベント** | |
 | ロールへのロール メンバーの追加 |ディレクトリのロールにユーザーが追加されました。 |
 | ロールからのロール メンバーの削除 |ディレクトリのロールからユーザーが削除されました。 |
@@ -346,6 +329,6 @@ Azure AD の監査レポートのイベントは、180 日間保持されます�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

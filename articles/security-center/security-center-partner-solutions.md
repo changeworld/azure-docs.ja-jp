@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/26/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f469d0e17f874244539b05579598d35aa7dd01d5
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a3d7254fded543fa12b6e82cd50ece8260858955
 
 
 ---
@@ -73,6 +73,6 @@ ms.openlocfilehash: f469d0e17f874244539b05579598d35aa7dd01d5
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,27 +12,36 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 12/15/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1a7f34989dce97f32bfbbbede9acd96a1dd58e14
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: aabca8fd228b1fc7c60d295a9502dece29db1b68
 
 
 ---
 # <a name="monitor-documentdb-requests-usage-and-storage"></a>DocumentDB の要求、使用状況、およびストレージの監視
 Azure DocumentDB アカウントは、 [Azure ポータル](https://portal.azure.com/)で監視できます。 各 DocumentDB アカウントに対して、パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) が利用可能です。
 
-メトリックは、[アカウント] ブレードまたは新しい [メトリック] ブレードで確認できます。
+メトリックは、[アカウント] ブレード、新しい [メトリック] ブレード、または Azure Monitor で確認できます。
 
 ## <a name="view-performance-metrics-on-the-metrics-blade"></a>[メトリック] ブレードでパフォーマンス メトリックを表示する
-1. 新しいウィンドウで [Azure Portal](https://portal.azure.com/) を開き、**[その他のサービス]**、**[DocumentDB (NoSQL)]** の順にクリックし、パフォーマンス メトリックを表示する DocumentDB アカウントの名前をクリックします。
-2. リソース メニューの **[メトリック]**をクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、**[その他のサービス]** をクリックします。**[データベース]** までスクロールし、**[NoSQL (DocumentDB)]** をクリックします。次に、パフォーマンス メトリックを表示する DocumentDB アカウントの名前をクリックします。
+2. リソース メニューで、**[監視]** の下の **[メトリック]** をクリックします。
 
 [メトリック] ブレードが開き、確認するコレクションを選択できます。 [利用可能]、[要求]、[スループット]、[ストレージ] メトリックを確認し、DocumentDB の SLA と比較することができます。
 
+## <a name="view-performance-metrics-by-using-azure-monitoring"></a>Azure Monitoring を使用してパフォーマンス メトリックを表示する
+1. [Azure Portal](https://portal.azure.com/) で、ジャンプバーの **[モニター]** をクリックします。
+2. リソース メニューの **[メトリック]**をクリックします。
+3. **[モニター - メトリック]** ウィンドウで、監視する DocumentDB アカウントに関連付けられたリソース グループを **[リソース グループ]** ドロップダウン メニューで選択します。 
+4. **[リソース]**ドロップ ダウン メニューで、監視するデータベース アカウントを選択します。
+5. **[利用可能なメトリック]** の一覧で、表示するメトリックを選択します。 複数選択するには、Cｔｒｌ キーを使用します。 
+
+    メトリックは **[プロット]** ウィンドウに表示されます。 
+
 ## <a name="view-performance-metrics-on-the-account-blade"></a>アカウントのブレードでパフォーマンス メトリックを表示する
-1. 新しいウィンドウで [Azure Portal](https://portal.azure.com/) を開き、**[その他のサービス]**、**[DocumentDB (NoSQL)]** の順にクリックし、パフォーマンス メトリックを表示する DocumentDB アカウントの名前をクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、**[その他のサービス]** をクリックします。**[データベース]** までスクロールし、**[NoSQL (DocumentDB)]** をクリックします。次に、パフォーマンス メトリックを表示する DocumentDB アカウントの名前をクリックします。
 2. **[監視]** レンズには、既定では以下のタイルが表示されます。
    
    * 当日の要求数合計
@@ -41,7 +50,7 @@ Azure DocumentDB アカウントは、 [Azure ポータル](https://portal.azure
    データベースにデータがあるはずなのにテーブルに **[使用可能なデータがありません]** と表示される場合は、「 [トラブルシューティング](#troubleshooting) 」のセクションをご覧ください。
    
    ![要求とストレージ使用状況を示す [監視] レンズのスクリーン ショット](./media/documentdb-monitor-accounts/documentdb-total-requests-and-usage.png)
-3. **[要求]** または **[ストレージ]** タイルをクリックすると、詳細な **[メトリック]** ブレードが表示されます。
+3. **[要求]** または **[使用量クォータ]** タイルをクリックすると、詳細な **[メトリック]** ブレードが表示されます。
 4. **[メトリック]** ブレードには、選択したメトリックの詳細が表示されます。  ブレードの上部には時間別の要求数のグラフが表示され、その下には調整済み要求数と合計要求数の集計値を示す表が表示されます。  [メトリック] ブレードには、現在のメトリック ブレードに表示されるメトリックに対してフィルター処理された定義済みアラートの一覧も表示されます (これにより、さまざまなアラートがある場合、ここで示された関連するアラートのみが表示されます)。   
    
    ![Screenshot of the Metric blade which includes throttled requests](./media/documentdb-monitor-accounts/documentdb-metric-blade.png)
@@ -107,17 +116,17 @@ Azure ポータルでは、サイド バイ サイドのメトリック チャ�
 ### <a name="edit-a-tile-to-refresh-current-data"></a>タイルに最新のデータを反映させる
 1. 特定の部分に表示されるメトリックをカスタマイズするには、そのグラフをクリックして **[メトリック]** ブレードを開いた後、**[グラフの​​編集]** をクリックします。  
    ![Screen shot of the Metric blade controls, with Edit chart highlighted](./media/documentdb-monitor-accounts/madocdb3.png)
-2. **[グラフの編集]** ブレードの **[時間範囲]** セクションで、**[過去 1 時間]**、**[OK]** の順にクリックします。  
-   ![過去 1 時間を選択した [グラフの編集] ブレードのスクリーン ショット](./media/documentdb-monitor-accounts/documentdb-no-available-data-past-hour.png)
+2. **[グラフの編集]** ブレードの **[時間範囲]** セクションで、**[過去&1; 時間]**、**[OK]** の順にクリックします。  
+   ![過去&1; 時間を選択した [グラフの編集] ブレードのスクリーン ショット](./media/documentdb-monitor-accounts/documentdb-no-available-data-past-hour.png)
 3. タイルが更新され、最新のデータと使用状況が表示されます。  
    ![更新後の過去の要求数合計タイルのスクリーン ショット](./media/documentdb-monitor-accounts/documentdb-no-available-data-fixed.png)
 
 ## <a name="next-steps"></a>次のステップ
-DocumentDB の容量の詳細については、 [DocumentDB の容量の管理](documentdb-manage.md)に関するページを参照してください。
+DocumentDB の容量計画の詳細については、「[DocumentDB capacity planner calculator](https://www.documentdb.com/capacityplanner)」(DocumentDB Capacity Planner の計算機能) を参照してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

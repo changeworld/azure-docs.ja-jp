@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2016
+ms.date: 11/30/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2d31f2643ac39fb6227b57d2b064058af1dbe20d
+ms.sourcegitcommit: 1a2ff324cfa65977685f6a0eee9cd398b0717519
+ms.openlocfilehash: 20f3a8b006e45e3a94e95b516bca292a82c5fd03
 
 
 ---
@@ -119,7 +119,7 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
 5. アプリケーションの Munchkin ID を取得するには、管理者の資格情報を使用して Marketo にログインし、次の操作を実行します。
@@ -139,46 +139,47 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
     ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_12.png)
 6. アプリケーションで SSO を構成するには、以下の手順に従ってください。
    
-   a. 管理者の資格情報を使用して Marketo アプリにログインします。
+    a. 管理者の資格情報を使用して Marketo アプリにログインします。
    
-   b. 上部のナビゲーション ウィンドウで [管理者] ボタンをクリックします。
+    b. 上部のナビゲーション ウィンドウで [管理者] ボタンをクリックします。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
    
-   c. 統合メニューに移動し、[シングルサインオン] をクリックします。
+    c. 統合メニューに移動し、[シングルサインオン] をクリックします。
    
-   ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_07.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_07.png) 
    
-   d. SAML 設定を有効にするには、[編集] ボタンをクリックします。
+    d. SAML 設定を有効にするには、[編集] ボタンをクリックします。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_08.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_08.png) 
    
-   e. シングル サインオン設定を**有効**にします。
+    e. シングル サインオン設定を**有効**にします。
    
-   f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 Azure AD の構成ウィザードからコピーした発行者 ID を入力します。
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 Azure AD の構成ウィザードからコピーした発行者 ID を入力します。
    
-   g. [エンティティ ID] ボックスに、「**http://saml.marketo.com/sp**」と入力します。
+    g. [エンティティ ID] ボックスに、「**http://saml.marketo.com/sp**」と入力します。
    
-   h. **名前識別子要素**としてユーザー ID の場所を選択します。
+    h. **名前識別子要素**としてユーザー ID の場所を選択します。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_09.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_09.png)
    
-   > [!NOTE]
-   > ユーザー識別子が UPN 値ではない場合、[属性] タブで値を変更します。
-   > 
-   > 
+    > [!NOTE]
+    > ユーザー識別子が UPN 値ではない場合、[属性] タブで値を変更します。
+    > 
+    > 
    
-   i. Azure AD の構成ウィザードからダウンロードした証明書をアップロードします。 設定を保存します。
+    i. Azure AD の構成ウィザードからダウンロードした証明書をアップロードします。 設定を保存します。
    
-   j. ページのリダイレクト設定を編集します。
+    j. ページのリダイレクト設定を編集します。
    
-   k. Azure AD 構成ウィザードのログイン URL をコピーして **[ログイン URL]** ボックスに貼り付けます。
+    k. Azure AD 構成ウィザードのログイン URL をコピーして **[ログイン URL]** ボックスに貼り付けます。
    
-   l. Azure AD 構成ウィザードのログアウト URL をコピーして **[ログアウト URL]** ボックスに貼り付けます。
+    l. Azure AD 構成ウィザードのログアウト URL をコピーして **[ログアウト URL]** ボックスに貼り付けます。
    
-   m. [エラー URL] に Marketo インスタンス URL をコピーし、[保存] ボタンをクリックして設定を保存します。
+    m. [エラー URL] に Marketo インスタンス URL をコピーし、[保存] ボタンをクリックして設定を保存します。
    
-   ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_10.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_10.png)
+
 7. ユーザーの SSO を有効にするには、次の操作を行います。
    
     a. 管理者の資格情報を使用して Marketo アプリにログインします。
@@ -194,7 +195,7 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
     d. **[SSO 必須]** オプションをオンにして、設定を保存します。
    
     ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_14.png)
-8. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
+8. クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
 9. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
@@ -220,22 +221,23 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-marketo-tutorial/create_aaduser_04.png) 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-marketo-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. ページの下部にある **[次へ]**」を参照してください。
-6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-marketo-tutorial/create_aaduser_06.png) 
+6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-marketo-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a. **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]**をクリックします。
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-marketo-tutorial/create_aaduser_07.png) 
@@ -329,6 +331,6 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

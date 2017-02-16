@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f03d933f2f02c6c5309b32f41f3d318a3cfb22fd
+ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
+ms.openlocfilehash: e14ee89eec9cbc7db7b1253ed46acf1ae93e620d
 
 
 ---
@@ -173,6 +173,6 @@ Cloud App Discovery サービスの分析パイプラインは、分析パイプ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

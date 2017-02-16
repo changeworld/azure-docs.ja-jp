@@ -1,6 +1,6 @@
 ---
-title: "Logic App のループとスコープ | Microsoft Docs"
-description: "ロジック アプリでループとスコープを処理するさまざまな方法を説明します"
+title: "ワークフローでのループとスコープの作成またはデータの分割処理 - Azure Logic Apps | Microsoft Docs"
+description: "Azure Logic Apps で、ループを作成してデータを反復処理したり、アクションをスコープにグループ化したり、データを分割処理して複数のワークフローを開始したりします。"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/29/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 2556e43bba8f2080e292be4c5a7f2145f5718e57
+ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
+ms.openlocfilehash: 63ac171494e13f4451d585c3b704727eeed94fab
 
 
 ---
@@ -159,6 +159,6 @@ SplitOn は、次の例に示すように、コード ビューで指定でき�
 ```
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

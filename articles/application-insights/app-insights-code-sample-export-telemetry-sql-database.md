@@ -1,5 +1,5 @@
 ---
-title: "コード サンプル: Application Insights からエクスポートされたデータの解析 | Microsoft Docs"
+title: "サンプル: Azure Application Insights からエクスポートされたデータの解析 | Microsoft Docs"
 description: "連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。 データを SQL に保存します。"
 services: application-insights
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: b0782ed5675e5256694f7b9f4e98750e57d23e0a
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: fedd078402bbd220bce9b71cd035508d46f92f82
 
 
 ---
 # <a name="code-sample-parse-data-exported-from-application-insights"></a>コード サンプル: Application Insights からエクスポートされたデータの解析
-この記事では、[連続エクスポート][export]を使用して [Azure Application Insights][start]からエクスポートされたデータを処理するコードを記述する方法を示します。 連続エクスポートは JSON 形式でテレメトリを Azure Storage に移動するため、コードを記述し、JSON オブジェクトを解析してデータベース テーブルに行を作成します。
+この記事では、[連続エクスポート][export]を使用して [Azure Application Insights][start] からエクスポートされたデータを処理するコードを記述する方法を示します。 連続エクスポートは JSON 形式でテレメトリを Azure Storage に移動するため、コードを記述し、JSON オブジェクトを解析してデータベース テーブルに行を作成します。
 
 例として、テレメトリ データを Application Insights から SQL データベースに移動するコードを記述します。
 
@@ -69,7 +69,7 @@ Application Insights のデータは、常に JSON 形式で Azure ストレー�
    
     パス名の共通部分を書き留めます。共通部分はアプリケーションの名前とインストルメンテーション キーから派生します。 
 
-イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに 1 つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して行えることはありますが、今日の計画は、データを SQL データベースに移動するコードを記述することです。 それにより、興味深い多くのクエリを実行しやすくなります。
+イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに&1; つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して行えることはありますが、今日の計画は、データを SQL データベースに移動するコードを記述することです。 それにより、興味深い多くのクエリを実行しやすくなります。
 
 ## <a name="create-an-azure-sql-database"></a>Azure SQL Database の作成
 この例では、データベースにデータをプッシュするコードを記述します。
@@ -129,7 +129,7 @@ Visual Studio で、ストレージ アカウントの接続文字列で worker 
     }
 
 #### <a name="run-the-worker-at-regular-intervals"></a>一定の間隔で worker を実行する
-既存の実行メソッドを置換し、必要に応じて間隔を選択します。 これは少なくとも 1 時間とします。エクスポート機能は 1 つの JSON オブジェクトを 1 時間以内で完了するからです。
+既存の実行メソッドを置換し、必要に応じて間隔を選択します。 これは少なくとも&1; 時間とします。エクスポート機能は&1; つの JSON オブジェクトを&1; 時間以内で完了するからです。
 
     public override void Run()
     {
@@ -491,9 +491,9 @@ Visual Studio で、ストレージ アカウントの接続文字列で worker 
 
 <!--Link references-->
 
-[診断]: app-insights-diagnostic-search.md
+[diagnostic]: app-insights-diagnostic-search.md
 [export]: app-insights-export-telemetry.md
-[メトリック]: app-insights-metrics-explorer.md
+[metrics]: app-insights-metrics-explorer.md
 [portal]: http://portal.azure.com/
 [start]: app-insights-overview.md
 
@@ -501,6 +501,6 @@ Visual Studio で、ストレージ アカウントの接続文字列で worker 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

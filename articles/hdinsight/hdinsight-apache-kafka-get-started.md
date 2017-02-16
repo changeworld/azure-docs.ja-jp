@@ -4,7 +4,7 @@ description: "HDInsight での Kafka の作成と操作の基本について説�
 services: hdinsight
 documentationcenter: 
 author: Blackmist
-manager: paulettm
+manager: jhubbard
 editor: cgronlun
 ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/09/2016
+ms.date: 01/09/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2d744e753224e4ce98680d3228914fd89e87eba4
-ms.openlocfilehash: 70d910f61fa414a0c58a22057133ef3b899dac05
+ms.sourcegitcommit: 34c1138a9c3b9313a12ffbf4bc4c3141db0a016e
+ms.openlocfilehash: 98b11144c049f9db780c7665610c83a753f23b21
 
 ---
 # <a name="get-started-with-apache-kafka-preview-on-hdinsight"></a>HDInsight での Apache Kafka (プレビュー) の概要
@@ -71,6 +71,11 @@ HDInsight で Kafka クラスターを作成するには、次の手順に従い
     最後に、**[選択]** ボタンをクリックして設定を保存します。
      
     ![クラスターの種類の選択](./media/hdinsight-apache-kafka-get-started/cluster-type.png)
+
+    > [!NOTE]
+    > Azure サブスクリプションで Kafka プレビューにアクセスできない場合は、このプレビューへのアクセス権を取得する方法に関する指示が表示されます。 次のイメージのような指示が表示されます。
+    >
+    > ![プレビューに関するメッセージ: 管理される Apache Kafka クラスターを HDInsight にデプロイすることをご希望の場合は、プレビューへのアクセス権を求める電子メールをお送りください](./media/hdinsight-apache-kafka-get-started/no-kafka-preview.png)
 
 4. **[資格情報]** をクリックして、クラスターのログイン資格情報と SSH ユーザー資格情報を構成します。  **[選択]** ボタンをクリックして設定を保存します。
    
@@ -127,7 +132,7 @@ HDInsight での SSH の使用方法の詳細については、次のドキュ�
 
 ##<a name="a-idgetkafkainfoaget-the-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>Zookeeper およびブローカーのホスト情報を取得する
 
-Kafka を使用する場合、*Zookeeper* ホストと*ブローカー* ホストという 2 つのホストの値を知る必要があります。 これらのホストは、Kafka の API や、Kafka に付属するユーティリティの多くで使用されます。
+Kafka を使用する場合、*Zookeeper* ホストと*ブローカー* ホストという&2; つのホストの値を知る必要があります。 これらのホストは、Kafka の API や、Kafka に付属するユーティリティの多くで使用されます。
 
 次の手順に従って、ホスト情報が含まれる環境変数を作成します。 このドキュメントの各手順では、これらの環境変数を使用します。
 
@@ -241,14 +246,14 @@ Kafka の重要なコンセプトとして、コンシューマーはレコー�
     > [!NOTE]
     > この SSH セッションは新規であるため、「[Zookeeper およびブローカーのホスト情報を取得する](#getkafkainfo)」セクションのコマンドを使用して `$KAFKABROKERS`を設定する必要があります。
 
-2. 各セッションでトピックから取得されたレコード数がカウントされる様子を確認します。 両方のセッションの合計は、先ほど 1 つのコンシューマーから取得したレコード数と同じになるはずです。
+2. 各セッションでトピックから取得されたレコード数がカウントされる様子を確認します。 両方のセッションの合計は、先ほど&1; つのコンシューマーから取得したレコード数と同じになるはずです。
 
 同じグループ内のクライアントによる消費は、トピックのパーティションを介して処理されます。 先ほど作成した `test` トピックには、8 つのパーティションがあります。 8 個の SSH セッションを開き、すべてのセッションで 1 つのコンシューマーを起動した場合、各コンシューマーはトピックの 1 つのパーティションからレコードを読み取ります。
 
 > [!IMPORTANT]
 > コンシューマー グループに、パーティションの数よりも多いコンシューマー インスタンスを含めることはできません。 この例では、トピック内のパーティション数が 8 であるため、1 つのコンシューマー グループに最大 8 個のコンシューマーを含めることができます。 または、それぞれコンシューマーが 8 個以下の複数のコンシューマー グループを存在させることができます。
 
-Kafka に格納されたレコードは、受信した順番でパーティション内に格納されます。 *パーティション内*のレコードの順次配信順を実現するには、コンシューマー インスタンスの数がパーティションの数と同じコンシューマー グループを作成します。 *トピック内*のレコードの順次配信を実現するには、コンシューマー インスタンスが 1 つのみのコンシューマー グループを作成します。
+Kafka に格納されたレコードは、受信した順番でパーティション内に格納されます。 *パーティション内*のレコードの順次配信順を実現するには、コンシューマー インスタンスの数がパーティションの数と同じコンシューマー グループを作成します。 *トピック内*のレコードの順次配信を実現するには、コンシューマー インスタンスが&1; つのみのコンシューマー グループを作成します。
 
 ## <a name="streaming-api"></a>ストリーミング API
 
@@ -320,6 +325,6 @@ Kafka に格納されたレコードは、受信した順番でパーティシ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

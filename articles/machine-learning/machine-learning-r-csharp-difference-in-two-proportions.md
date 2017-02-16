@@ -1,6 +1,6 @@
 ---
-title: "比率検定での相違 | Microsoft Docs"
-description: "比率検定での相違"
+title: "(非推奨) 比率検定での相違 - Azure | Microsoft Docs"
+description: "(非推奨) 比率検定での相違"
 services: machine-learning
 documentationcenter: 
 author: aniedea
@@ -11,23 +11,30 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/12/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: aniedea
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 27e1626e72f9740e73a19e078868a7c4392baf1e
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 18023b5057d1eeca88a341d62cbeb543102b3abf
 
 
 ---
-# <a name="difference-in-proportions-test"></a>比率検定での相違
-2 つの比率は統計的に異なりますか。 ユーザーが 2 つのムービーを比較して、一方のムービーが他方のムービーと比べて "いいね" の比率が大幅に高いかどうかを判断したいとします。 大規模なサンプルでは、0.50 と 0.51 の比率の間に統計上重大は相違が発生する可能性があります。 小規模なサンプルでは、これらの比率が実際に相違を生じているかを判別するにはデータ量が十分ではない可能性があります。 
+# <a name="deprecated-difference-in-proportions-test"></a>(非推奨) 比率検定での相違
+
+> [!NOTE]
+> Microsoft DataMarket は間もなく提供終了となる予定です。この API は推奨されていません。 
+> 
+> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
+
+2 つの比率は統計的に異なりますか。 ユーザーが&2; つのムービーを比較して、一方のムービーが他方のムービーと比べて "いいね" の比率が大幅に高いかどうかを判断したいとします。 大規模なサンプルでは、0.50 と 0.51 の比率の間に統計上重大は相違が発生する可能性があります。 小規模なサンプルでは、これらの比率が実際に相違を生じているかを判別するにはデータ量が十分ではない可能性があります。 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 この [Web サービス](https://datamarket.azure.com/dataset/aml_labs/prop_test) は、ユーザーが入力した 2 つの比較グループに対する成功の数と試行回数の合計に基づいて、2 つの比率の仮説検定を実行します。 この Web サービスはムービー比較アプリから呼び出すことができ、ムービー評価に基づいて、あるムービーが他のムービーと比較して実際に「いいね」と評価されている場合が多いかどうかをユーザーに示すというシナリオが考えられます。
 
-> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
+> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう&1; つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
 > 
 > 
 
@@ -85,7 +92,7 @@ ms.openlocfilehash: 27e1626e72f9740e73a19e078868a7c4392baf1e
 > 
 > 
 
-Azure Machine Learning 内で、新しい空白の実験が作成され、2 つの [R スクリプトの実行][execute-r-script]モジュールが取得されました。 1 番目のモジュールではデータ スキーマを定義し、2 番目のモジュールでは R 内で prop.test コマンドを使用して、2 つの比率に対して仮説検定を実行します。 
+Azure Machine Learning 内で、新しい空白の実験が作成され、2 つの [R スクリプトの実行][execute-r-script]が取得されました。 1 番目のモジュールではデータ スキーマを定義し、2 番目のモジュールでは R 内で prop.test コマンドを使用して、2 つの比率に対して仮説検定を実行します。 
 
 ### <a name="experiment-flow"></a>実験フロー:
 ![実験フロー][2]
@@ -129,6 +136,6 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

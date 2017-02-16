@@ -1,6 +1,7 @@
 ---
-title: "SQL Server データベースの Azure SQL Database への移行 | Microsoft Docs"
-description: "Microsoft Azure SQL Database、データベースのデプロイ、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード"
+title: "SSMS: BACPAC ファイルから Azure SQL Database にインポートする | Microsoft Docs"
+description: "この記事では、SQL Server Management Studio のデータ層アプリケーションのエクスポート ウィザードを使用して BACPAC ファイルから SQL Database にインポートする方法について説明します。"
+keywords: "Microsoft Azure SQL Database、データベースのデプロイ、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,8 +17,8 @@ ms.workload: sqldb-migrate
 ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 7e8f6ba6204d20c31d3e2878bd7519ae5f954ddf
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: b5a6d90069e87d6115a3b80711f06ccf286b3e88
 
 
 ---
@@ -73,6 +74,6 @@ ms.openlocfilehash: 7e8f6ba6204d20c31d3e2878bd7519ae5f954ddf
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

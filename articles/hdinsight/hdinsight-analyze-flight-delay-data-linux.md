@@ -16,28 +16,23 @@ ms.topic: article
 ms.date: 10/11/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 266891083fa0d2a33ef8fd7e533b036e99b00208
+ms.sourcegitcommit: 1ddfbd3b8d9ca695b08739c7f0716a8e8de82725
+ms.openlocfilehash: 23bf15555569c2c2f5ce9db1bead5da539df571d
 
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>HDInsight での Hive を使用したフライト遅延データの分析
 Linux ベースの HDInsight で Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートする方法について説明します。
 
-> [!NOTE]
-> このドキュメントの各部分は Windows ベースの HDInsight クラスター (Python と Hive など) で使用できますが、多くの手順は Linux ベースのクラスターに固有のものです。 Windows ベースのクラスターでの手順については、「 [HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)
-> 
-> 
+> [!IMPORTANT]
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ### <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * **HDInsight クラスター**。 新しい Linux ベースの HDInsight クラスターを作成する手順については、「 [Linux 上の HDInsight で Hive と Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md) 」をご覧ください。
 * **Azure SQL Database**。 保存先データ ストアとして Azure SQL Database を使用します。 SQL Database がない場合は、 [SQL Database チュートリアル: サンプル データと Azure ポータルを使用して分単位で SQL Database を作成する](../sql-database/sql-database-get-started.md)」を参照してください。
 * **Azure CLI**。 Azure CLI をインストールしていない場合、詳しい手順については、「 [Azure CLI のインストール](../xplat-cli-install.md) 」をご覧ください。
-  
-    [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 ## <a name="download-the-flight-data"></a>フライト データのダウンロード
 1. [米国運輸省研究・革新技術庁/運輸統計局][rita-website]のページに移動します。
@@ -215,7 +210,7 @@ SQL Database がまだない場合は、「 [SQL Database チュートリアル:
    
         TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
         databaseName       dbo     delays      BASE TABLE
-5.  `exit` at the `1>` 」と入力して、tsql ユーティリティを終了します。
+5. `exit` at the `1>` 」と入力して、tsql ユーティリティを終了します。
 
 ## <a name="export-data-with-sqoop"></a>Sqoop を使用したデータのエクスポート
 1. 次のコマンドを使用して、Sqoop が SQL Database を認識できることを確認します。
@@ -242,7 +237,7 @@ SQL Database がまだない場合は、「 [SQL Database チュートリアル:
 ## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> 次のステップ
 ここでは、ファイルを Azure BLOB ストレージにアップロードする方法、Azure BLOB ストレージのデータを Hive テーブルに取り込む方法、Hive クエリの実行方法、Sqoop を使用して HDFS から Azure SQL Database にデータをエクスポートする方法を学習しました。 詳細については、次の記事を参照してください。
 
-* [HDInsight の概要][hdinsight-get-started]
+* [Azure HDInsight の概要][hdinsight-get-started]
 * [HDInsight での Hive の使用][hdinsight-use-hive]
 * [HDInsight での Oozie の使用][hdinsight-use-oozie]
 * [HDInsight での Sqoop の使用][hdinsight-use-sqoop]
@@ -278,6 +273,6 @@ SQL Database がまだない場合は、「 [SQL Database チュートリアル:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

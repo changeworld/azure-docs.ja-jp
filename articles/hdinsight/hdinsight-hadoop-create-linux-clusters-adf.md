@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 10/06/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 060bcf7cfac365e93b988cda0f402df6ba605dfc
-ms.openlocfilehash: 4dcc519e74cf1a5fbc7be3ddbd506fcbc25ed882
+ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
+ms.openlocfilehash: 0a70398010bb06590e981430edabffa889c213ae
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 4dcc519e74cf1a5fbc7be3ddbd506fcbc25ed882
     2014-02-01,02:01:10,SAMPLEWEBSITE,GET,/blogposts/mvc4/step7.png,X-ARR-LOG-ID=d7472a26-431a-4a4d-99eb-c7b4fda2cf4c,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,30184,871
     2014-03-01,02:01:10,SAMPLEWEBSITE,GET,/blogposts/mvc4/step7.png,X-ARR-LOG-ID=d7472a26-431a-4a4d-99eb-c7b4fda2cf4c,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,30184,871
 
-このスクリプトは、前の入力に基づいて 3 つの出力フォルダーを作成します。 各フォルダーには、各月のエントリを含むファイルが格納されます。
+このスクリプトは、前の入力に基づいて&3; つの出力フォルダーを作成します。 各フォルダーには、各月のエントリを含むファイルが格納されます。
 
     adfgetstarted/partitioneddata/year=2014/month=1/000000_0
     adfgetstarted/partitioneddata/year=2014/month=2/000000_0
@@ -67,19 +67,19 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ## <a name="prepare-storage-account"></a>ストレージ アカウントの準備
-このシナリオでは、最大 3 つのストレージ アカウントを使用できます。
+このシナリオでは、最大&3; つのストレージ アカウントを使用できます。
 
 * HDInsight クラスターの既定のストレージ アカウント
 * 入力データ用のストレージ アカウント
 * 出力データ用のストレージ アカウント
 
-ここでは、このチュートリアルを簡単にするために、この 3 つの目的に 1 つのストレージ アカウントを使用します。 このセクションで紹介する Azure CLI と Azure PowerShell のサンプル スクリプトでは、次のタスクを実行します。
+ここでは、このチュートリアルを簡単にするために、この&3; つの目的に&1; つのストレージ アカウントを使用します。 このセクションで紹介する Azure CLI と Azure PowerShell のサンプル スクリプトでは、次のタスクを実行します。
 
 1. Azure にログインします。
 2. Azure リソース グループを作成します。
 3. Azure ストレージ アカウントを作成します。
 4. ストレージ アカウントに BLOB コンテナーを作成します。
-5. BLOB コンテナーに次の 2 つのファイルをコピーします。
+5. BLOB コンテナーに次の&2; つのファイルをコピーします。
 
    * 入力データ ファイル: [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/inputdata/input.log](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/inputdata/input.log)
    * HiveQL スクリプト: [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql)
@@ -192,13 +192,13 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
 1. [Azure ポータル](https://portal.azure.com)にサインオンします。
 2. 左側のウィンドウの **[リソース グループ]** をクリックします。
 3. CLI または PowerShell スクリプトで作成したリソース グループの名前をダブルクリックします。 一覧表示されるリソース グループが多すぎる場合は、フィルターを使用します。
-4. **[リソース]** タイルには、リソース グループを他のプロジェクトと共有する場合を除き、リソースが 1 つだけ表示されています。 このリソースが、前の手順で指定した名前のストレージ アカウントです。 このストレージ アカウント名をクリックします。
+4. **[リソース]** タイルには、リソース グループを他のプロジェクトと共有する場合を除き、リソースが&1; つだけ表示されています。 このリソースが、前の手順で指定した名前のストレージ アカウントです。 このストレージ アカウント名をクリックします。
 5. **[BLOB]** タイルをクリックします。
-6. **adfgetstarted** コンテナーをクリックします。 "**入力データ**" と "**スクリプト**" の 2 つのフォルダーが表示されます。
+6. **adfgetstarted** コンテナーをクリックします。 "**入力データ**" と "**スクリプト**" の&2; つのフォルダーが表示されます。
 7. フォルダーを開き、フォルダー内のファイルを確認します。
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
-ストレージ アカウント、入力データ、および HiveQL スクリプトの準備ができたら、いつでも Azure データ ファクトリを作成できます。 データ ファクトリを作成する方法はいくつかあります。 このチュートリアルでは、Azure Portal を使用してカスタム Resource Manager テンプレートを呼び出します。 Resource Manager テンプレートは、[Azure CLI](../resource-group-template-deploy-cli.md) や [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy) から呼び出すこともできます。 他のデータ ファクトリの作成方法については、「[Azure Data Factory を使ってみる](../data-factory/data-factory-build-your-first-pipeline.md)」を参照してください。
+ストレージ アカウント、入力データ、および HiveQL スクリプトの準備ができたら、いつでも Azure データ ファクトリを作成できます。 データ ファクトリを作成する方法はいくつかあります。 このチュートリアルでは、Azure Portal を使用してカスタム Resource Manager テンプレートを呼び出します。 Resource Manager テンプレートは、[Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) や [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy) から呼び出すこともできます。 他のデータ ファクトリの作成方法については、「[Azure Data Factory を使ってみる](../data-factory/data-factory-build-your-first-pipeline.md)」を参照してください。
 
 最上位の Resource Manager テンプレートには次のものが含まれます。
 
@@ -225,9 +225,9 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
         ]
     }
 
-ここには、*hdinsight-hive-on-demand* という名前のデータ ファクトリ リソースが 1 つ含まれています (この名前はスクリーンショットに表示されていません)。 データ ファクトリは、現在、米国西部リージョンと北ヨーロッパ リージョンでのみサポートされています。
+ここには、*hdinsight-hive-on-demand* という名前のデータ ファクトリ リソースが&1; つ含まれています (この名前はスクリーンショットに表示されていません)。 データ ファクトリは、現在、米国西部リージョンと北ヨーロッパ リージョンでのみサポートされています。
 
-*hdinsight-hive-on-demand* リソースには、次の 4 つのリソースが含まれています。
+*hdinsight-hive-on-demand* リソースには、次の&4; つのリソースが含まれています。
 
 * 既定の HDInsight ストレージ アカウント、入力データ ストレージ、出力データ ストレージとして使用されるストレージ アカウントに対する linkedservice。
 * 作成する HDInsight クラスターに対する linkedservice。
@@ -290,7 +290,7 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
             }
         }
 
-    これには 1 つのアクティビティが含まれています。 アクティビティの *start* と *end* の両方に過去の日付が設定されています。これは、スライスが 1 つにしかならないことを意味します。 end に将来の日付が設定されている場合は、その日付にデータ ファクトリが新たなスライスを作成します。 詳細については、「[Data Factory を使用したスケジュール設定と実行](../data-factory/data-factory-scheduling-and-execution.md)」を参照してください。
+    これには&1; つのアクティビティが含まれています。 アクティビティの *start* と *end* の両方に過去の日付が設定されています。これは、スライスが&1; つにしかならないことを意味します。 end に将来の日付が設定されている場合は、その日付にデータ ファクトリが新たなスライスを作成します。 詳細については、「[Data Factory を使用したスケジュール設定と実行](../data-factory/data-factory-scheduling-and-execution.md)」を参照してください。
 
     次の Json スクリプトがアクティビティの定義になります。
 
@@ -335,9 +335,9 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
 3. **[リソース グループ]**で、前のセクションで使用したのと同じリソース グループを選択します。
 4. **[法律条項]** をクリックし、**[作成]** をクリックします。
 5. **[作成]**をクリックします。 ダッシュボードに "**テンプレートのデプロイのデプロイ中**" というタイルが表示されます。 タイルのテキストがリソース グループの名前に変わるまで待ちます。 通常、HDInsight クラスターの作成には約 20 分かかります。
-6. そのタイルをクリックしてリソース グループを開きます。 これで、ストレージ アカウント リソースのほかに、もう 1 つデータ ファクトリ リソースが表示されます。
+6. そのタイルをクリックしてリソース グループを開きます。 これで、ストレージ アカウント リソースのほかに、もう&1; つデータ ファクトリ リソースが表示されます。
 7. **[hdinsight-hive-on-demand]**をクリックします。
-8. **[ダイアグラム]** タイルをクリックします。 このダイアグラムには、1 つの入力データセットと 1 つの出力データセットを持つ 1 つのアクティビティが示されます。
+8. **[ダイアグラム]** タイルをクリックします。 このダイアグラムには、1 つの入力データセットと&1; つの出力データセットを持つ&1; つのアクティビティが示されます。
 
     ![Azure Data Factory HDInsight on-demand Hive activity pipeline diagram](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-pipeline-diagram.png)
 
@@ -347,7 +347,7 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
 
 **データ ファクトリの出力を確認するには**
 
-1. 前のセクションと同じ手順を使用して、adfgetstarted コンテナーのコンテナーを確認します。 **adfgetsarted**に加えて、次の 2 つの新しいコンテナーがあります。
+1. 前のセクションと同じ手順を使用して、adfgetstarted コンテナーのコンテナーを確認します。 **adfgetsarted**に加えて、次の&2; つの新しいコンテナーがあります。
 
    * adfhdinsight-hive-on-demand-hdinsightondemandlinked-xxxxxxxxxxxxx: これは、HDInsight クラスターの既定のコンテナーです。 既定のコンテナー名は、"adf<yourdatafactoryname>-<リンクされたサービス名>-<日時スタンプ>" というパターンになります。
    * adfjobs: これは、ADF ジョブ ログのコンテナーです。
@@ -358,7 +358,7 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
 
     ![Azure Data Factory HDInsight on-demand Hive activity pipeline output](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-year.png)
 
-    一覧を展開すると、1 月、2 月、3 月に対応する 3 つのフォルダーが表示されます。 さらに、月ごとのログがあります。
+    一覧を展開すると、1 月、2 月、3 月に対応する&3; つのフォルダーが表示されます。 さらに、月ごとのログがあります。
 
     ![Azure Data Factory HDInsight on-demand Hive activity pipeline output](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-month.png)
 
@@ -444,6 +444,6 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

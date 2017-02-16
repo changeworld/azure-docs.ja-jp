@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/20/2016
 ms.author: denlee
 translationtype: Human Translation
-ms.sourcegitcommit: 4acb64838288d36f0dc1b1eb9736b00faef21a0c
-ms.openlocfilehash: 2409bd1bedf0da2aabbd847312322e6360aa2265
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: 35eb6b7c8a2aa3ddfb1723eebdb92dc47a49f65a
 
 
 ---
@@ -37,7 +37,7 @@ ms.openlocfilehash: 2409bd1bedf0da2aabbd847312322e6360aa2265
 その後で、この記事に戻ってください。この記事では、DocumentDB データに対して分析ジョブを実行する方法について詳しく説明します。
 
 > [!TIP]
-> このチュートリアルは、これまでに Apache Hadoop、Hive、Pig の少なくとも 1 つを使用した経験があることを前提としています。 Apache Hadoop、Hive、Pig の使用経験がない場合は、[Apache Hadoop のドキュメント][apache-hadoop-doc]を参照することをお勧めします。 さらに、このチュートリアルでは、DocumentDB の使用経験があり、DocumentDB アカウントを持っていることを想定しています。 DocumentDB を初めて扱う方や DocumentDB アカウントを持っていない方は、[使用の開始][getting-started]に関するページをご覧ください。
+> このチュートリアルは、これまでに Apache Hadoop、Hive、Pig の少なくとも&1; つを使用した経験があることを前提としています。 Apache Hadoop、Hive、Pig の使用経験がない場合は、[Apache Hadoop のドキュメント][apache-hadoop-doc]を参照することをお勧めします。 さらに、このチュートリアルでは、DocumentDB の使用経験があり、DocumentDB アカウントを持っていることを想定しています。 DocumentDB を初めて扱う方や DocumentDB アカウントを持っていない方は、[使用の開始][getting-started]に関するページをご覧ください。
 >
 >
 
@@ -63,10 +63,10 @@ ms.openlocfilehash: 2409bd1bedf0da2aabbd847312322e6360aa2265
 このチュートリアルの手順を実行する前に、次のものを備えておく必要があります。
 
 * DocumentDB アカウント、データベース、およびドキュメントが含まれているコレクション 詳細については、[DocumentDB の使用][getting-started]に関するページをご覧ください。 [DocumentDB インポート ツール][documentdb-import-data]を使用して、DocumentDB アカウントにサンプル データをインポートします。
-* スループット。 HDInsight の読み取りと書き込みは、コレクションに割り当てられた要求単位に達するまでカウントされます。 詳細については、[プロビジョニング済みスループット、要求単位、およびデータベース操作][documentdb-manage-throughput]に関するページをご覧ください。
-* 各出力コレクションに含まれる追加のストアド プロシージャ用の容量。 ストアド プロシージャは、生成されたドキュメントを転送するために使用されます。 詳細については、[コレクションとプロビジョニング済みスループット][documentdb-manage-document-storage]に関するページをご覧ください。
-* Hive、Pig、または MapReduce のジョブから生成されたドキュメント用の容量。 詳細については、[DocumentDB の容量とパフォーマンスの管理][documentdb-manage-collections]に関するページをご覧ください。
-* *オプション*: 追加のコレクション用の容量。 詳細については、[プロビジョニング済みドキュメント ストレージとインデックス オーバーヘッド][documentdb-manage-document-storage]に関するページをご覧ください。
+* スループット。 HDInsight の読み取りと書き込みは、コレクションに割り当てられた要求単位に達するまでカウントされます。
+* 各出力コレクションに含まれる追加のストアド プロシージャ用の容量。 ストアド プロシージャは、生成されたドキュメントを転送するために使用されます。
+* Hive、Pig、または MapReduce のジョブから生成されたドキュメント用の容量。
+* *オプション*: 追加のコレクション用の容量。
 
 > [!WARNING]
 > 何かのジョブの実行中に新しいコレクションが作成されることを避けるために、stdout に結果を書き出して出力を WASB コンテナーに格納するか、既存のコレクションを指定することができます。 既存のコレクションを指定した場合、新しいドキュメントはコレクション内に作成され、 *ID*に競合がない限り既存のドキュメントに影響は及びません。 **ID の競合がある場合は、既存のドキュメントがコネクタによって自動的に上書きされます**。 この機能を無効にするには、upsert オプションを false に設定します。 upsert が false に設定された状態で競合が発生すると、Hadoop ジョブは失敗し、ID 競合エラーが報告されます。
@@ -180,7 +180,7 @@ ms.openlocfilehash: 2409bd1bedf0da2aabbd847312322e6360aa2265
     <p>まず、DocumentDB コレクションから Hive テーブルを作成します。 次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。 _ts および _rid だけにドキュメントをトリミングするためのオプションである DocumentDB.query パラメーターが含まれていることを確認してください。</p>
 
    > [!NOTE]
-   > **DocumentDB.inputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。 </br>
+   > **DocumentDB.inputCollections という名前は誤りではありません。** 次のように、複数のコレクションを&1; つの入力として追加することができます。 </br>
    >
    >
 
@@ -200,9 +200,9 @@ ms.openlocfilehash: 2409bd1bedf0da2aabbd847312322e6360aa2265
 1. 次に、出力コレクション用に Hive テーブルを作成します。 出力ドキュメントのプロパティは、月、日、時間、分、および発生した合計回数です。
 
    > [!NOTE]
-   > **ここでも、DocumentDB.outputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの出力として追加することができます。 </br>
+   > **ここでも、DocumentDB.outputCollections という名前は誤りではありません。** 次のように、複数のコレクションを&1; つの出力として追加することができます。 </br>
    > '*DocumentDB.outputCollections*' = '*\<DocumentDB Output Collection Name 1\>*,*\<DocumentDB Output Collection Name 2\>*' </br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。 </br></br>
-   > ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+   > ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの&1; つ目のバッチが&1; つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
    >
    >
 
@@ -278,12 +278,12 @@ ms.openlocfilehash: 2409bd1bedf0da2aabbd847312322e6360aa2265
     <p>まず、DocumentDB から HDInsight にドキュメントを読み込みます。 次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。 _ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが DocumentDB クエリに追加されていることを確認してください。</p>
 
    > [!NOTE]
-   > 次のように、複数のコレクションを 1 つの入力として追加することができます。 </br>
+   > 次のように、複数のコレクションを&1; つの入力として追加することができます。 </br>
    > '*\<DocumentDB Input Collection Name 1\>*,*\<DocumentDB Input Collection Name 2\>*'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。 </b>
    >
    >
 
-    ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+    ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの&1; つ目のバッチが&1; つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
         # Load data from DocumentDB. Pass DocumentDB query to filter transferred data to _rid and _ts.
         $queryStringPart1 = "DocumentDB_timestamps = LOAD '<DocumentDB Endpoint>' USING com.microsoft.azure.documentdb.pig.DocumentDBLoader( " +
@@ -300,9 +300,9 @@ ms.openlocfilehash: 2409bd1bedf0da2aabbd847312322e6360aa2265
 4. 最後に、その結果を新しい出力コレクションに格納します。
 
    > [!NOTE]
-   > 次のように、複数のコレクションを 1 つの出力として追加することができます。 </br>
+   > 次のように、複数のコレクションを&1; つの出力として追加することができます。 </br>
    > '\<DocumentDB Output Collection Name 1\>,\<DocumentDB Output Collection Name 2\>'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br>
-   > ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+   > ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの&1; つ目のバッチが&1; つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
    >
    >
 
@@ -416,9 +416,6 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [documentdb-hdinsight-samples]: http://portalcontent.blob.core.windows.net/samples/documentdb-hdinsight-samples.zip
 [documentdb-github]: https://github.com/Azure/azure-documentdb-hadoop
 [documentdb-java-application]: documentdb-java-application.md
-[documentdb-manage-collections]: documentdb-manage.md#database-collections
-[documentdb-manage-document-storage]: documentdb-manage.md#provisioned-document-storage-and-index-overhead
-[documentdb-manage-throughput]: documentdb-manage.md#request-units-and-database-operations
 [documentdb-import-data]: documentdb-import-data.md
 
 [hdinsight-custom-provision]: ../hdinsight/hdinsight-provision-clusters.md
@@ -439,6 +436,6 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

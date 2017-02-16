@@ -1,6 +1,6 @@
 ---
-title: "IoT Hub Gateway SDK の使用 | Microsoft Docs"
-description: "Azure IoT Gateway SDK を使用する場合に理解する必要のある主な概念を説明するための、Windows を使用した Azure IoT Gateway SDK のチュートリアルです。"
+title: "Azure IoT Gateway SDK の使用 (Windows) | Microsoft Docs"
+description: "Windows コンピューターにゲートウェイを作成する方法と、モジュールや JSON 構成ファイルなどの Azure IoT Gateway SDK の主要な概念について説明します。"
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: 2d8b98fbd5345edd5dc6891df12f05eccd8e7ca8
-ms.openlocfilehash: 6f2fe4fd3442d97955519348416b35fe6f9075d1
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 3493afbebf2a75a190d344ac1e66b00b9ddfd582
 
 
 ---
-# <a name="azure-iot-gateway-sdk---get-started-using-windows"></a>Azure IoT Gateway SDK - Windows の使用
+# <a name="get-started-with-the-azure-iot-gateway-sdk-windows"></a>Azure IoT Gateway SDK の使用 (Windows)
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-selector](../../includes/iot-hub-gateway-sdk-getstarted-selector.md)]
 
 ## <a name="how-to-build-the-sample"></a>サンプルをビルドする方法
@@ -86,6 +86,6 @@ ms.openlocfilehash: 6f2fe4fd3442d97955519348416b35fe6f9075d1
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

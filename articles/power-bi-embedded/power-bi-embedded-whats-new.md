@@ -13,16 +13,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 86c4f2b6ab4ff9dfba429acfcfbd0cd2bac7b42c
+ms.sourcegitcommit: 2f0f36e7ffeec52bacc35ac5039cd183976dc3aa
+ms.openlocfilehash: fd2649f9936da9f86d4fe24b4fa87ca1733d1f3c
 
 
 ---
 # <a name="whats-new-in-power-bi-embedded"></a>Power BI Embedded の新機能
 **Power BI Embedded** の更新は定期的にリリースされます。 ただし、すべてのリリースにユーザー向けの新機能が含まれているわけではありません。一部のリリースでは、バックエンド サービス機能に重点を置いています。 ここでは、ユーザー向けの新機能について説明します。 必ず頻繁に確認してください。
+
+## <a name="december-2016"></a>2016 年 12 月
+
+* [新しい JavaScript 埋め込みサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)
+
+## <a name="october-2016"></a>2016 年 10 月
+
+* [Power BI Embedded と R を使用した高度な分析](https://powerbi.microsoft.com/blog/r-in-pbie/)
 
 ## <a name="august-31st-2016"></a>2016 年 8 月 31 日
 このリリースの新機能は次のとおりです。
@@ -33,7 +41,7 @@ ms.openlocfilehash: 86c4f2b6ab4ff9dfba429acfcfbd0cd2bac7b42c
 ## <a name="july-11th-2016"></a>2016 年 7 月 11 日
 このリリースの新機能は次のとおりです。
 
-* **お知らせ:**  Power BI Embedded サービスがプレビューではなくなり、一般公開 (GA) されました。  
+* **お知らせ:** Power BI Embedded サービスがプレビューではなくなり、一般公開 (GA) されました。  
 * すべての REST API が **/beta** から **/v1.0** に移行されました。
 * .NET および JavaScript SDK が **v1.0**用に更新されました。
 * API キーを使用して、Power BI API 呼び出しを直接認証できるようになりました。 埋め込みに必要なのはアプリ トークンだけです。 この一環として、プロビジョニング用トークンと開発用トークンは、v1.0 API では使用されなくなりましたが、2016 年 12 月 30 日までベータ版で引き続き機能します。 詳細については、「 [Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)」をご覧ください。
@@ -46,6 +54,6 @@ ms.openlocfilehash: 86c4f2b6ab4ff9dfba429acfcfbd0cd2bac7b42c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

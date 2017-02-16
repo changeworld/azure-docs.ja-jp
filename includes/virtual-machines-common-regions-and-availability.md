@@ -1,7 +1,7 @@
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Azure の仮想マシンのリージョンと可用性について
 Azure で仮想マシン (VM) がどこで、どのように運用されているかを理解するのは重要なことです。また、パフォーマンス、可用性、冗長性を最大化するためのオプションとしてどのようなものがあるかを知っておくことにも、大きな意義があります。 Azure は、世界中の複数のデータセンターで動作しています。 これらのデータセンターは、地理的なリージョンにグループ化されていて、アプリケーションの作成場所を選択するときの柔軟性を与えています。 この記事では、可用性と冗長性に関する Azure の各種機能の概要を紹介します。
 
-## <a name="what-are-azure-regions?"></a>Azure リージョンとは?
+## <a name="what-are-azure-regions"></a>Azure リージョンとは?
 Azure では、'米国西部'、'北ヨーロッパ'、'東南アジア' のように定義された地理的リージョンで、VM などのリソースを作成することができます。 現在、世界中で 30 の Azure リージョンがあります。 [リージョンとその場所の一覧](https://azure.microsoft.com/regions/)をご確認ください。 各リージョンには、冗長性と可用性を確保するために複数のデータ センターが存在します。 こうすることで、アプリケーションを構築する際の柔軟性が実現し、ユーザーに最も近い場所に VM を作成したり、法律、コンプライアンス、税金などの各種の目的に合致させたりすることができるようになっています。
 
 ## <a name="special-azure-regions"></a>特殊な Azure リージョン
@@ -10,7 +10,7 @@ Azure では、'米国西部'、'北ヨーロッパ'、'東南アジア' のよ�
 * **米国政府バージニア**および**米国政府アイオワ**
   * 物理的および論理的にネットワークが分離された Azure インスタンス。米国の政府機関やパートナー (選別された米国の担当者が運営する) 向け。 [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP)、[DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA) などのその他のコンプライアンス証明書が含まれます。 詳細については [Azure Government](https://azure.microsoft.com/features/gov/) に関するページをご覧ください。
 * **インド中部**、**インド南部**、および**インド西部**
-  * この 3 つのリージョンは、現在のところ、インドの現地で事業登録されているボリューム ライセンスのお客様とパートナーの皆様にご利用いただけます。 2016 年には、ダイレクト オンライン サブスクリプションをお持ちの方を対象にアクセスを提供しています。
+  * この 3 つのリージョンは、現在のところ、インドの現地で事業登録されているボリューム ライセンスのお客様とパートナーの皆様にご利用いただけます。 2016 年現在、ユーザーが直接オンライン サブスクリプションを購入した場合にアクセスできます。
 * **中国東部**および**中国北部**
   * これらのリージョンは、Microsoft と 21Vianet 間の特異なパートナーシップを通じてご利用いただけます。この契約により、Microsoft はデータ センターを直接管理しません。 詳細については、[Microsoft Azure の中国語ページ](http://www.windowsazure.cn/)をご覧ください。
 * **ドイツ中部**および**ドイツ北東部**
@@ -52,7 +52,7 @@ Azure のリージョンと Geo を理解することは、使用可能な Azure
 
 | レプリケーションの方法 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| 複数施設にわたってのデータのレプリケート |いいえ |はい |はい |はい |
+| 複数施設にわたってのデータのレプリケート |いいえ |はい |あり |はい |
 | 1 次拠点と 2 次拠点からデータの読み取りが可能 |いいえ |いいえ |いいえ |はい |
 | 個別のノードで保持されるデータ コピーの数 |3 |3 |6 |6 |
 
@@ -70,16 +70,16 @@ Azure のリージョンと Geo を理解することは、使用可能な Azure
 ## <a name="azure-images"></a>Azure のイメージ
 Azure では、イメージから VM を作成します。 イメージは通常、[Azure Marketplace](https://azure.microsoft.com/marketplace/) から入手します。Azure Marketplace は、パートナーが構成済みの完全な OS またはアプリケーションのイメージを提供できる場所です。
 
-Azure Marketplace のイメージから VM を作成するときは、実際にはテンプレートを使用します。 Azure Resource Manager のテンプレートは、宣言型の JavaScript Object Notation (JSON) ファイルで、VM、ストレージ、仮想ネットワークなどで構成される複雑なアプリケーション環境を作成するために使用できます。[独自のテンプレートを作成する](../articles/resource-group-authoring-templates.md)方法など、[Azure Resource Manager のテンプレート](../articles/resource-group-overview.md)を使用する方法については、詳細をお読みください。
+Azure Marketplace のイメージから VM を作成するときは、実際にはテンプレートを使用します。 Azure Resource Manager のテンプレートは、宣言型の JavaScript Object Notation (JSON) ファイルで、VM、ストレージ、仮想ネットワークなどで構成される複雑なアプリケーション環境を作成するために使用できます。[独自のテンプレートを作成する](../articles/resource-group-authoring-templates.md)方法など、[Azure Resource Manager のテンプレート](../articles/azure-resource-manager/resource-group-overview.md)を使用する方法については、詳細をお読みください。
 
-独自のカスタム イメージを作成し、[Azure CLI](../articles/virtual-machines/virtual-machines-linux-upload-vhd.md) または [Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-upload-image.md) を使用してアップロードし、特定のビルド要件を満たすカスタム VM をすばやく作成することもできます。
+独自のカスタム イメージを作成し、[Azure CLI](../articles/virtual-machines/virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用してアップロードし、特定のビルド要件を満たすカスタム VM をすばやく作成することもできます。
 
 ## <a name="availability-sets"></a>可用性セット
 可用性セットは VM の論理グループで、これによって Azure は、冗長性と可用性を提供するためにアプリケーションが構築された方法を理解することができます。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つの可用性セット内に 2 つ以上の VM を作成することをお勧めします。 可用性セットは、ハードウェアの障害から保護する障害ドメイン (FD) と、更新の安全な適用を可能にする更新ドメイン (UD) という 2 つの追加グループによって機能します。
 
 ![更新ドメインと障害ドメインの構成の概念図](./media/virtual-machines-common-regions-and-availability/ud-fd-configuration.png)
 
-[Linux VM](../articles/virtual-machines/virtual-machines-linux-manage-availability.md) または [Windows VM](../articles/virtual-machines/virtual-machines-linux-manage-availability.md) の可用性を管理する方法については、詳細をお読みください。
+[Linux VM](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [Windows VM](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) の可用性を管理する方法については、詳細をお読みください。
 
 ### <a name="fault-domains"></a>障害ドメイン
 障害ドメインは、オンプレミスのデータ センター内のラックのように、共通の電源やネットワーク スイッチを共有する基盤となるハードウェアの論理グループです。 可用性セット内に作成した VM は、Azure プラットフォームにより自動で複数の障害ドメインに分散して配布されます。 これにより、物理ハードウェアの障害、ネットワークの停止、または停電が発生した場合の影響を抑えることが可能になります。
@@ -90,6 +90,8 @@ Azure Marketplace のイメージから VM を作成するときは、実際に�
 ## <a name="next-steps"></a>次のステップ
 可用性と冗長性の機能を使って、Azure 環境を構築できるようになりました。 ベスト プラクティスに関する情報については、[Azure の可用性のベスト プラクティス](../articles/best-practices-availability-checklist.md)に関するページをご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO4-->
 
 

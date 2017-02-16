@@ -12,19 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/24/2016
-ms.author: mfussell
+ms.date: 1/4/2017
+ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c03033fcadf0f92b77820fba1dd588f460287b86
+ms.sourcegitcommit: 9349c6c60801c87726eb9f848706b39b08eb2b5d
+ms.openlocfilehash: 7c6d232bce7ac9d364ad9d7b26c3164e00fc18ac
 
 
 ---
 # <a name="preview-service-fabric-and-containers"></a>プレビュー: Service Fabric とコンテナー
 > [!NOTE]
-> この機能は Linux 向けのプレビューの段階にあり、現時点で Windows Server 2016 では使用できません。 Windows Server 向けのプレビューは、Windows Server 2016 GA の後に行われる Azure Service Fabric の次回のリリースで提供され、それ以降のリリースでサポートされます。
-> 
-> 
+> この機能は、Linux と Windows Server 2016 についてはプレビュー段階です。 
+>   
 
 ## <a name="introduction"></a>はじめに
 Azure Service Fabric は、マシンのクラスター全体のサービスの[オーケストレーター](service-fabric-cluster-resource-manager-introduction.md)です。 [Service Fabric プログラミング モデル](service-fabric-choose-framework.md)の使用や[ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)のデプロイなどの多くの方法で、サービスを開発することができます。 既定では、Service Fabric はこれらのサービスをプロセスとしてデプロイし、アクティブ化します。 プロセスとしてこれらを実施することで、これまでになくアクティブ化が高速になり、クラスターにおけるリソースの使用に無駄もなくなります。 さらに、Service Fabric では、コンテナー イメージ内のサービスもデプロイできます。 重要なこととして、プロセスとしてのサービスとコンテナー内のサービスを同じアプリケーション内で混在させることができます。 シナリオに応じて、両方のやり方の長所を活用できます。
@@ -34,7 +33,7 @@ Azure Service Fabric は、マシンのクラスター全体のサービスの[�
 
 コンテナーは、システムの基礎となるオペレーティング システムをアプリケーションで仮想化する、仮想化テクノロジです。 コンテナーは、さまざまなレベルで分離されたアプリケーションを実行するための変更不可能な環境を提供します。 コンテナーはカーネル上で直接動作し、ファイルシステムなどのリソースの分離されたビューを備えています。 仮想マシンと比較して、コンテナーには次の利点があります。
 
-* **サイズが小さい**: コンテナーは、各レイヤーに 1 つの記憶域スペースと小規模な差分を使用するだけなので、効率性が上がります。
+* **サイズが小さい**: コンテナーは、各レイヤーに&1; つの記憶域スペースと小規模な差分を使用するだけなので、効率性が上がります。
 * **起動が高速**: コンテナーではオペレーティング システムを起動する必要がないため、仮想マシンよりかなり早く起動が完了します。通常は数秒で使用できるようになります。
 * **移植性**: コンテナー化されたアプリケーションのイメージを、クラウドまたはオンプレミスで実行されるように移植することができます。仮想マシンへの移植または物理マシン上への直接の移植が可能です。
 * **リソース ガバナンスを実現し** 、コンテナーがホスト上で利用する物理リソースを制限できるようにします。
@@ -93,6 +92,6 @@ Service Fabric には、コンテナー化されたマイクロサービスで�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

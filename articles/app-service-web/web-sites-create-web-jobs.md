@@ -12,23 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2016
+ms.date: 11/27/2016
 ms.author: tdykstra
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9dd4539122de38221e229ad5799961b62a4f648a
+ms.sourcegitcommit: 10320f338d902ffefd8a98fd59f3e8fb22682b00
+ms.openlocfilehash: 578575877fc706076ac2fdf034cb1ac0e92b16ef
 
 
 ---
 # <a name="run-background-tasks-with-webjobs"></a>Web ジョブでバックグラウンド タスクを実行する
 ## <a name="overview"></a>概要
-[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリの Web ジョブでプログラムまたはスクリプトを実行するときには、オンデマンドで実行、連続的に実行、スケジュールに従って実行の 3 とおりの方法があります。 Web ジョブの使用に追加コストはかかりません。
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリの Web ジョブでプログラムまたはスクリプトを実行するときには、オンデマンドで実行、連続的に実行、スケジュールに従って実行の 3 とおりの方法があります。 Web ジョブの使用に追加コストはかかりません。
 
 この記事では、 [Azure ポータル](https://portal.azure.com)を使用して Web ジョブをデプロイする方法について説明します。 Visual Studio または継続的な配信プロセスを使用したデプロイ方法については、 [Azure WebJobs の Web Apps へのデプロイ方法](websites-dotnet-deploy-webjobs.md)に関するページをご覧ください。
 
 Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング タスクを簡略化しています。 詳細については、「 [Azure Web ジョブ SDK とは](websites-dotnet-webjobs-sdk.md)」をご覧ください。
 
- Azure Functions (現在プレビュー段階) は、Azure App Service でプログラムとスクリプトを実行する別の方法です。 詳細については、「 [Azure Functions の概要](../azure-functions/functions-overview.md)」をご覧ください。
+ Azure Functions では、サーバーなしの環境や App Service アプリからプログラムやスクリプトを実行するための別の方法が提供されています。 詳細については、「 [Azure Functions の概要](../azure-functions/functions-overview.md)」をご覧ください。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -207,6 +207,6 @@ Azure Portal には、スケジュールされた Web ジョブを作成する�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

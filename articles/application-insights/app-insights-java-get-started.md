@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 12/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc4561516490b9b285220e7ae688bf97384fe6e
-ms.openlocfilehash: c900840e419c06b70e3a2f53a6aa8314145324fe
+ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
+ms.openlocfilehash: f7dc72299665a5324de7b9320eb9876c61ced123
 
 
 ---
@@ -55,8 +55,6 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 
 次に、バイナリがダウンロードされるように、プロジェクトの依存関係を更新します。
 
-```XML
-
     <repositories>
        <repository>
           <id>central</id>
@@ -73,7 +71,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
         <version>[1.0,)</version>
       </dependency>
     </dependencies>
-```
+
 
 * *ビルド エラーやチェックサム検証エラーが発生した場合は、* 特定のバージョンを試してください (例: `<version>1.0.n</version>`)。 最新バージョンは、[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)で確認できます。
 * *新しい SDK に更新する必要がありますか?*  プロジェクトの依存関係を更新します。
@@ -83,8 +81,6 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 
 次に、バイナリがダウンロードされるように、プロジェクトの依存関係を更新します。
 
-```JSON
-
     repositories {
       mavenCentral()
     }
@@ -93,7 +89,6 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
       compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '1.+'
       // or applicationinsights-core for bare API
     }
-```
 
 * *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、特定のバージョンを試してください:* `version:'1.0.n'`。 *[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)にサインインします。*
 * *新しい SDK に更新するには*
@@ -119,8 +114,6 @@ SDK を手動で追加する:
 ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。 次の XML をファイルにコピーします。
 
 インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。
-
-```XML
 
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
@@ -151,7 +144,6 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
 
       </TelemetryInitializers>
     </ApplicationInsights>
-```
 
 
 * インストルメンテーション キーは、テレメトリのすべての項目と共に送信されます。インストルメンテーション キーを受け取った Application Insights は、リソース内にこのキーを表示します。
@@ -168,10 +160,8 @@ Application Insights SDK は、次の順序でキーを探します。
 
 これは [コードで設定する](app-insights-api-custom-events-metrics.md#ikey)こともできます。
 
-```Java
-
     telemetryClient.InstrumentationKey = "...";
-```
+
 
 ## <a name="4-add-an-http-filter"></a>4.HTTP フィルターを追加する
 最後の構成手順では、HTTP 要求コンポーネントが各 Web 要求をログに記録できるようにします  (単に最小限の API が必要な場合はこの手順を行う必要はありません)。
@@ -179,8 +169,6 @@ Application Insights SDK は、次の順序でキーを探します。
 プロジェクトの web.xml ファイルを見つけて開きます。アプリケーション フィルターが構成されている web-app ノードの下に次のコードをマージします。
 
 最も正確な結果を得るためには、他のすべてのフィルターの前にこのフィルターをマップする必要があります。
-
-```XML
 
     <filter>
       <filter-name>ApplicationInsightsWebFilter</filter-name>
@@ -192,12 +180,9 @@ Application Insights SDK は、次の順序でキーを探します。
        <filter-name>ApplicationInsightsWebFilter</filter-name>
        <url-pattern>/*</url-pattern>
     </filter-mapping>
-```
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Spring Web MVC 3.1 以降を使用している場合
 Application Insights パッケージを含めるように、*-servlet.xml で次の要素を編集します。
-
-```XML
 
     <context:component-scan base-package=" com.springapp.mvc, com.microsoft.applicationinsights.web.spring"/>
 
@@ -207,18 +192,14 @@ Application Insights パッケージを含めるように、*-servlet.xml で次
             <bean class="com.microsoft.applicationinsights.web.spring.RequestNameHandlerInterceptorAdapter" />
         </mvc:interceptor>
     </mvc:interceptors>
-```
 
 #### <a name="if-youre-using-struts-2"></a>Struts 2 を使用している場合
 次の項目を Struts 構成ファイルに追加します (通常は、struts.xml または struts-default.xml)。
-
-```XML
 
      <interceptors>
        <interceptor name="ApplicationInsightsRequestNameInterceptor" class="com.microsoft.applicationinsights.web.struts.RequestNameInterceptor" />
      </interceptors>
      <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
-```
 
 (既定のスタックにインターセプターが定義されている場合は、単にインターセプターをそのスタックに追加できます)。
 
@@ -252,7 +233,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 ![](./media/app-insights-java-get-started/7-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analytics: 強力なクエリ言語
-より多くのデータが蓄積されると、データを集計するためのクエリと、個々のインスタンスを検索するためのクエリの両方を実行できます。  [Analytics](app-insights-analytics.md) は、パフォーマンスと使用状況を把握したり、診断を行ったりするための強力なツールです。
+より多くのデータが蓄積されると、データを集計するためのクエリと、個々のインスタンスを検索するためのクエリの両方を実行できます。 [Analytics]() は、パフォーマンスと使用状況を把握したり、診断を行ったりするための強力なツールです。
 
 ![Example of Analytics](./media/app-insights-java-get-started/025.png)
 
@@ -294,25 +275,20 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 ### <a name="customize-performance-counter-collection"></a>パフォーマンス カウンター コレクションをカスタマイズする
 パフォーマンス カウンターの標準セットのコレクションを無効にするには、ApplicationInsights.xml ファイルのルート ノードの下に次のコードを追加します。
 
-```XML
     <PerformanceCounters>
        <UseBuiltIn>False</UseBuiltIn>
     </PerformanceCounters>
-```
 
 ### <a name="collect-additional-performance-counters"></a>追加のパフォーマンス カウンターを収集する
 収集する追加のパフォーマンス カウンターを指定できます。
 
 #### <a name="jmx-counters-exposed-by-the-java-virtual-machine"></a>JMX カウンター (Java 仮想マシンによって公開されます)
-
-```XML
     <PerformanceCounters>
       <Jmx>
         <Add objectName="java.lang:type=ClassLoading" attribute="TotalLoadedClassCount" displayName="Loaded Class Count"/>
         <Add objectName="java.lang:type=Memory" attribute="HeapMemoryUsage.used" displayName="Heap Memory Usage-used" type="composite"/>
       </Jmx>
     </PerformanceCounters>
-```
 
 * `displayName` - Application Insights ポータルに表示される名前。
 * `objectName` - JMX オブジェクトの名前。
@@ -325,14 +301,12 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 #### <a name="windows-performance-counters"></a>Windows パフォーマンス カウンター
 それぞれの [Windows パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) は、(フィールドがクラスのメンバーであるのと同様に) カテゴリのメンバーです。 カテゴリについては、グローバルに設定することも、数字または名前付きインスタンスを設定することもできます。
 
-```XML
     <PerformanceCounters>
       <Windows>
         <Add displayName="Process User Time" categoryName="Process" counterName="%User Time" instanceName="__SELF__" />
         <Add displayName="Bytes Printed per Second" categoryName="Print Queue" counterName="Bytes Printed/sec" instanceName="Fax" />
       </Windows>
     </PerformanceCounters>
-```
 
 * displayName - Application Insights ポータルに表示される名前。
 * categoryName - このパフォーマンス カウンターが関連付けられているパフォーマンス カウンターのカテゴリ (パフォーマンス オブジェクト)。
@@ -381,7 +355,7 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 * [Web ページに監視機能](app-insights-javascript.md)を追加して、ページの読み込み時間、AJAX 呼び出し、ブラウザーの例外を監視する
 * [カスタム テレメトリ](app-insights-api-custom-events-metrics.md)を書き込んで、ブラウザーまたはサーバーでの使用状況を追跡する
 * システムを監視するために、[ダッシュボード](app-insights-dashboards.md)を作成して重要なグラフをまとめる
-* [Analytics](app-insights-analytics.md) を使用して、アプリからのテレメトリに対して強力なクエリを実行する
+* [Analytics](app-insights-analytics.md) を使用して、アプリからテレメトリに対して強力なクエリを実行する
 * 詳細については、 [Java デベロッパー センター](/develop/java/)を参照してください。
 
 <!--Link references-->
@@ -397,6 +371,6 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

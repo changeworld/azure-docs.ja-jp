@@ -16,13 +16,13 @@ ms.workload: azure-government
 ms.date: 10/14/2016
 ms.author: zakramer
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 256dd290abcf0326330c9a6079437d8701d290e8
+ms.sourcegitcommit: 083ffff3a99c82a518bcc370e6d40c7500ba6907
+ms.openlocfilehash: f48fd6856346e1fd0be12fec2391d0c16287f106
 
 
 ---
 # <a name="azure-government-services"></a>Azure Government の各種サービス
-Azure Government では、利用可能なサービスを継続的に拡大しています。  提供するサービスは、Azure Public と同じコードを使ってデプロイされます。  このセクションでは、主に以下の 2 種類の情報を記載しています。
+Azure Government では、利用可能なサービスを継続的に拡大しています。  提供するサービスは、Azure Public と同じコードを使ってデプロイされます。  このセクションでは、主に以下の&2; 種類の情報を記載しています。
 
 * **バリエーション:** 現時点ではまだデプロイされていない機能、または政府機関向けの環境に固有のプロパティ (URL など) によるバリエーションです。  
 * **考慮事項:** データをコンプライアンスの管理境界内にとどめるために必要な政府機関特有の実装の詳細です。
@@ -46,13 +46,21 @@ Azure Government では、利用可能なサービスを継続的に拡大して
 
 ## <a name="storagedocumentation-government-services-storagemd"></a>[Storage](documentation-government-services-storage.md)
 * [Azure Storage](documentation-government-services-storage.md#azure-storage)
+* [Blob Storage](documentation-government-services-storage.md#azure-storage)
+* [テーブル ストレージ](documentation-government-services-storage.md#azure-storage)
+* [Queue Storage](documentation-government-services-storage.md#azure-storage)
+* [File Storage](documentation-government-services-storage.md#azure-storage)
+* [ホット/クール ストレージ](documentation-government-services-storage.md#azure-storage)
+* [ストレージ サービスの暗号化](documentation-government-services-storage.md#azure-storage)
+* [Premium Storage](documentation-government-services-storage.md#azure-storage)
+* [BLOB のインポート /エクスポート](documentation-government-services-storage.md#azure-storage)
+* [StorSimple](documentation-government-services-storage.md)
+* [Backup](documentation-government-services-backup.md)
+* [Site Recovery](documentation-government-services-monitoringandmanagement.md#site-recovery)
 * Import/Export
-* StorSimple
-* バックアップ
-* Site Recovery
 
-## <a name="web--mobile"></a>Web + Mobile
-* Web Apps
+## <a name="web--mobiledocumentation-government-services-webandmobilemd"></a>[Web + モバイル](documentation-government-services-webandmobile.md)
+* [App Services](documentation-government-services-webandmobile.md#app-services)
 * Media Services
 
 ## <a name="databasesdocumentation-government-services-databasemd"></a>[データベース](documentation-government-services-database.md)
@@ -66,7 +74,7 @@ Azure Government では、利用可能なサービスを継続的に拡大して
 
 ## <a name="enterprise-integration"></a>エンタープライズ統合
 * Service Bus
-* StorSimple
+* [StorSimple](documentation-government-services-storage.md)
 * SQL Server Stretch Database
 
 ## <a name="security--identitydocumentation-government-services-securityandidentitymd"></a>[セキュリティ + ID](documentation-government-services-securityandidentity.md)
@@ -76,9 +84,9 @@ Azure Government では、利用可能なサービスを継続的に拡大して
 
 ## <a name="monitoring--managementdocumentation-government-services-monitoringandmanagementmd"></a>[監視 + 管理](documentation-government-services-monitoringandmanagement.md)
 * [Automation](documentation-government-services-monitoringandmanagement.md#automation)
-* バックアップ
+* [Backup](documentation-government-services-backup.md) 
 * [Log Analytics](documentation-government-services-monitoringandmanagement.md#log-analytics)
-* Site Recovery
+* [Site Recovery](documentation-government-services-monitoringandmanagement.md#site-recovery)
 * Scheduler
 * Traffic Manager
 * Monitoring and Diagnostics
@@ -89,6 +97,6 @@ Azure Government では、利用可能なサービスを継続的に拡大して
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

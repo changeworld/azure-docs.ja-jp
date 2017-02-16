@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory ドメイン サービス: 管理対象ドメインでの同期 | Microsoft Docs"
-description: "Azure Active Directory ドメイン サービスの管理対象ドメインでの同期について"
+description: "Azure Active Directory Domain Services の管理対象ドメインでの同期を理解します"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2016
+ms.date: 01/13/2016
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6b89917f71701cccd6e78c036b78b136c19e9c2c
+ms.sourcegitcommit: f5143bc817215d075129170adcabf3dd53b5e15a
+ms.openlocfilehash: 1f6abf9bf123534f29b7976ecadbcf8cb49ce040
 
 
 ---
@@ -26,22 +26,24 @@ ms.openlocfilehash: 6b89917f71701cccd6e78c036b78b136c19e9c2c
 ![Azure AD ドメイン サービスの同期トポロジ](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
 ## <a name="synchronization-from-your-on-premises-directory-to-your-azure-ad-tenant"></a>オンプレミスのディレクトリから Azure AD テナントへの同期
-Azure AD Connect Sync は、ユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュの Azure AD テナントへの同期に使用され、 UPN やオンプレミス セキュリティ識別子 (SID) などのユーザー アカウントの属性が同期されます。 Azure AD Domain Services を使用すると、NTLM および Kerberos 認証に必要な従来の資格情報ハッシュも、Azure AD テナントに同期されます。
+Azure AD Connect Sync は、ユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュの Azure AD テナントへの同期に使用されます。 UPN やオンプレミスの SID (セキュリティ識別子) などのユーザー アカウントの属性が同期されます。 Azure AD Domain Services を使用すると、NTLM および Kerberos 認証に必要な従来の資格情報ハッシュも、Azure AD テナントに同期されます。
 
 書き戻しを構成すると、Azure AD ディレクトリで行われた変更が、オンプレミスの Active Directory に同期されます。 たとえば、Azure AD のセルフサービス パスワード変更機能を使用してパスワードを変更すると、変更されたパスワードがオンプレミスの AD ドメインに更新されます。
 
 > [!NOTE]
 > 既知のバグ/問題がすべて修正されているよう、常に最新バージョンの Azure AD Connect を使用してください。
-> 
-> 
+>
+>
 
 ## <a name="synchronization-from-your-azure-ad-tenant-to-your-managed-domain"></a>Azure AD テナントから管理対象ドメインへの同期
-ユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュは、Azure AD テナントから Azure AD Domain Services の管理対象ドメインに同期されます。 この同期プロセスは自動的に行われ 、プロセスを構成、監視、または管理する必要はありません。 また同期プロセスは、一方向性のプロセスです。 管理対象ドメインは、カスタムの組織単位 (OU) を作成した場合を除くと主に読み取り専用であるため 、管理対象ドメイン内でユーザー属性、ユーザー パスワード、またはグループ メンバーシップを変更することはできません。 したがって、管理対象ドメインから Azure AD テナントに、逆方向に変更内容が同期されることはありません。
+ユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュは、Azure AD テナントから Azure AD Domain Services の管理対象ドメインに同期されます。 この同期プロセスは自動的に行われます。 この同期プロセスを構成、監視、または管理する必要はありません。 1 回のみ実行されるディレクトリの初期同期が完了した後は、Azure AD で行われた変更が管理対象ドメインに反映されるまで、通常は約 20 分かかります。 この同期間隔は、Azure AD で実行されたパスワードの変更や属性の変更に適用されます。
+
+また同期プロセスは、一方向性のプロセスです。 管理対象ドメインは、カスタムの組織単位 (OU) を作成した場合を除き、主に読み取り専用です。 そのため、管理対象ドメイン内でユーザー属性、ユーザー パスワード、またはグループ メンバーシップを変更することはできません。 したがって、管理対象ドメインから Azure AD テナントに、逆方向に変更内容が同期されることはありません。
 
 ## <a name="synchronization-from-a-multi-forest-on-premises-environment"></a>複数フォレストのオンプレミス環境からの同期
 多くの組織が、複数のアカウント フォレストで構成された複雑なオンプレミスの ID インフラストラクチャを持っています。 Azure AD Connect では、複数フォレストの環境から Azure AD テナントへのユーザー、グループ、および資格情報ハッシュの同期をサポートしています。
 
-これに対し、Azure AD テナントは非常にシンプルでフラットな名前空間です。 Azure AD によって保護されたアプリケーションにユーザーが確実にアクセスできるようにするには、異なるフォレストのユーザー アカウント間における UPN の競合を解決する必要があります。 Azure AD Domain Services の管理対象ドメインは Azure AD テナントとよく似ているため 、管理対象ドメイン内の OU はフラットな構造になっています。 ユーザーとグループは、オンプレミス ドメインとフォレストのいずれで同期されたかに関係なく、すべて "AADDC Users" コンテナー内に格納されます。 オンプレミスで 階層構造の OU を構成した場合も 、管理対象ドメインの OU 構造はシンプルでフラットなままです。
+これに対し、Azure AD テナントは非常にシンプルでフラットな名前空間です。 Azure AD によって保護されたアプリケーションにユーザーが確実にアクセスできるようにするには、異なるフォレストのユーザー アカウント間における UPN の競合を解決する必要があります。 Azure AD Domain Services の管理対象ドメインは Azure AD テナントとよく似ています。 したがって、管理対象ドメイン内の OU はフラットな構造になっています。 ユーザーとグループは、オンプレミス ドメインとフォレストのいずれで同期されたかに関係なく、すべて "AADDC Users" コンテナー内に格納されます。 オンプレミスで階層状の OU 構造を構成している場合があります。 それでも、管理対象ドメインは、単純でフラットな OU 構造のままです。
 
 ## <a name="exclusions---what-isnt-synchronized-to-your-managed-domain"></a>除外項目 - 管理対象ドメインに同期されないもの
 次のオブジェクトや属性は、Azure AD テナントまたは管理対象ドメインに同期されません。
@@ -51,7 +53,7 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 * **SYSVOL 共有:** 同様に、オンプレミス ドメインの SYSVOL 共有の内容も、管理対象ドメインに同期されません。
 * **コンピューター オブジェクト:** オンプレミス ドメインに参加したコンピューターのコンピューター オブジェクトは、管理対象ドメインに同期されません。 これらのコンピューターは管理対象ドメインと信頼関係がなく、オンプレミス ドメインにのみ属します。 管理対象ドメイン内にあるコンピューター オブジェクトは、管理対象ドメインに明示的にドメイン参加させたコンピューターのものだけです。
 * **ユーザーとグループの SidHistory 属性:** オンプレミス ドメインのプライマリ ユーザーおよびプライマリ グループの SID は、管理対象ドメインに同期されます。 ただし、ユーザーとグループの既存の SidHistory 属性については、オンプレミス ドメインから管理対象ドメインに同期されません。
-* **組織単位 (OU) の構造:** オンプレミス ドメインで定義された組織単位は、管理対象ドメインに同期されません。 管理対象ドメインには 2 つの OU が組み込まれており 、これらの OU は既定ではフラットな構造をしています。 ただし、[管理対象ドメイン内にカスタムの OU を作成](active-directory-ds-admin-guide-create-ou.md)することができます。
+* **組織単位 (OU) の構造:** オンプレミス ドメインで定義された組織単位は、管理対象ドメインに同期されません。 管理対象ドメインには、2 つの組み込み OU があります。 既定では、管理対象ドメインはフラットな OU 構造をしています。 ただし、[管理対象ドメイン内にカスタム OU を作成](active-directory-ds-admin-guide-create-ou.md)することができます。
 
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>特定の属性が管理対象ドメインに同期される方法
 次の表では、一般的な属性の一部を示し、これらが管理対象ドメインに同期される方法を説明します。
@@ -66,8 +68,8 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 
 > [!NOTE]
 > **UPN 形式を使用した管理対象ドメインへのサインイン:** 管理対象ドメインの一部ユーザー アカウントの SAMAccountName 属性が自動生成される場合があります。 複数のユーザーで mailNickname 属性が同じだったり、ユーザーの UPN プレフィックスが最大文字数を超えている場合は、これらのユーザーのSAMAccountName が自動生成されることがあります。 そのため SAMAccountName 形式 (例: "CONTOSO100\joeuser") は、ドメインにサインインするうえで常に確実な方法というわけではありません。 ユーザーの自動生成された SAMAccountName が、UPN プレフィックスとは異なる場合があります。 管理対象ドメインに確実にサインインするには、UPN 形式 (例: 'joeuser@contoso100.com') を使用するようにします。
-> 
-> 
+>
+>
 
 ### <a name="attribute-mapping-for-user-accounts"></a>ユーザー アカウントの属性のマッピング
 次の表は、Azure AD テナントのユーザー オブジェクトの特定の属性が、管理対象ドメインの対応する属性にどのように同期されるかを示しています。
@@ -112,7 +114,7 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 | securityEnabled |groupType |
 
 ## <a name="objects-that-are-not-synchronized-to-your-azure-ad-tenant-from-your-managed-domain"></a>管理対象ドメインから Azure AD テナントに同期されないオブジェクト
-この記事の前のセクションで説明したとおり、管理対象ドメインから Azure AD テナントへの同期はありません。 ただし、管理対象ドメイン内に[カスタムの組織単位 (OU) を作成](active-directory-ds-admin-guide-create-ou.md)することができます。 これらのカスタム OU 内に、ほかの OU、ユーザー、グループ、またはサービス アカウントを作成することもできます。 カスタム OU 内で作成されたオブジェクトは、いずれも Azure AD テナントには同期されず 、管理対象ドメイン内でのみ使用することができます。 そのため、Azure AD PowerShell コマンドレット、Azure AD Graph API、または Azure AD の管理 UI を使用しても、これらのオブジェクトは表示されません。
+この記事の前のセクションで説明したとおり、管理対象ドメインから Azure AD テナントへの同期はありません。 ただし、管理対象ドメイン内に[カスタムの組織単位 (OU) を作成](active-directory-ds-admin-guide-create-ou.md)することができます。 これらのカスタム OU 内には、ほかの OU、ユーザー、グループ、またはサービス アカウントを作成することもできます。 カスタム OU 内に作成されたオブジェクトは、いずれも Azure AD テナントに同期されません。 これらのオブジェクトは管理対象ドメイン内でのみ使用することができます。 そのため、Azure AD PowerShell コマンドレット、Azure AD Graph API、または Azure AD の管理 UI を使用しても、これらのオブジェクトは表示されません。
 
 ## <a name="related-content"></a>関連コンテンツ
 * [機能 - Azure AD Domain Services](active-directory-ds-features.md)
@@ -122,7 +124,6 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

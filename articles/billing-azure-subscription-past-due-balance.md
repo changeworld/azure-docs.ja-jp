@@ -1,5 +1,5 @@
 ---
-title: "Azure サブスクリプションに支払期限を過ぎた未払い額があるという通知を受信する理由 | Microsoft Docs"
+title: "Azure からの支払期限を過ぎた未払い額に関する電子メール | Microsoft Docs"
 description: "Azure サブスクリプションに支払期限を過ぎた未払い額がある場合の支払い方法について説明します"
 services: 
 documentationcenter: 
@@ -13,21 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 01/24/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7eabdc787322b64dca77022d1f36cc403e3f0a29
+ms.sourcegitcommit: c5a8d378802dfdc0e0a764399f5bb6655e174619
+ms.openlocfilehash: b9f0bdac445c37090bc82218950624b4336c88f0
 
 
 ---
 # <a name="why-have-you-received-a-notification-that-your-azure-subscription-has-a-past-due-balance"></a>Azure サブスクリプションに支払期限を過ぎた未払い額があるという通知を受信する理由
-Azure サブスクリプションのアカウント管理者で、期限までに料金を支払っていない場合、支払期限を過ぎた未払い額についての電子メール通知が届いたり、[https://account.windowsazure.com](https://account.windowsazure.com) または [https://portal.azure.com](https://portal.azure.com) にアラートが表示されたりします。
-
-> [!NOTE]
-> この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
-> 
-> 
+Azure サブスクリプションのアカウント管理者であり、期限までに料金を支払っていない場合、支払期限を過ぎた未払い額についての電子メール通知が届いたり、[Azure アカウント センター](https://account.windowsazure.com)または [Azure Portal](https://portal.azure.com) にアラートが表示されたりします。
 
 何らかの理由でお客様の支払いを処理できない場合、次のような電子メールが送信されることがあります。
 
@@ -51,15 +46,13 @@ Azure の支払い方法を変更する手順については、 [Azure サブス
 
 > [!NOTE]
 > Azure サブスクリプションが無効になった場合、「 [Azure サブスクリプションが無効になった場合にどうすればよいか](billing-subscription-become-disable.md)
-> 
-> [!NOTE]
-> まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
-> 
-> 
+>
+
+## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
+お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

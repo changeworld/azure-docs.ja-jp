@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Kafka に Apache Spark を使用する | Microsoft Docs"
+title: "Azure HDInsight での Kafka に Apache Spark を使用する | Microsoft Docs"
 description: "HDInsight で Spark を使用して、HDInsight クラスター上の Kafka に対するデータの読み取りと書き込みを行う方法について説明します。 この例では、Jupyter Notebook で Scala を使用し、HDInsight の Kafka にランダムなデータを書き込んだ後に、Spark ストリーミングを使用してそのデータを読み取ります。"
 services: hdinsight
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/14/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2d744e753224e4ce98680d3228914fd89e87eba4
-ms.openlocfilehash: 535e8fc7503e21eea470a1fdb0a10fbc8a18349c
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 52692a21671b48581bba348455f6902935a08fa8
 
 ---
 # <a name="use-apache-spark-with-kafka-preview-on-hdinsight"></a>HDInsight での Kafka (プレビュー) に Apache Spark を使用する
@@ -44,7 +44,7 @@ Apache Spark は、Apache Kafka 内外へのデータのストリームに使用
 
 ## <a name="create-the-clusters"></a>クラスターの作成
 
-HDInsight の Apache Kafka では、パブリック インターネットを介した Kafka ブローカーへのアクセスを提供されていません。 Kafka と通信するすべてのものは、Kafka クラスター内のノードと同じ Azure 仮想ネットワークに存在している必要があります。 この例では、Kafka クラスターと Spark クラスターの両方を Azure 仮想ネットワーク内に配置します。 次の図に、クラスター間の通信フローを示します。
+HDInsight の Apache Kafka では、パブリック インターネットを介した Kafka ブローカーへのアクセスは提供されていません。 Kafka と通信するすべてのものは、Kafka クラスター内のノードと同じ Azure 仮想ネットワークに存在している必要があります。 この例では、Kafka クラスターと Spark クラスターの両方を Azure 仮想ネットワーク内に配置します。 次の図に、クラスター間の通信フローを示します。
 
 ![Azure 仮想ネットワークにおける Spark クラスターと Kafka クラスターの図](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
@@ -187,6 +187,6 @@ HDInsight 上の Kafka で動作するアプリケーションを作成する場
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

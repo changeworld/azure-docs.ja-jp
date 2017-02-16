@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 12/19/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3e24077da1ffef084fc028164a8526d29472b176
+ms.sourcegitcommit: 349b73e7f80c1762408ebd38d0ba27a395328ddb
+ms.openlocfilehash: 01028e0a6820ef6b78fb57ab853b78eb4ecefb7e
 
 
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。 このドキュメントでは、.NET SDK を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。
+HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。 この記事では、.NET SDK を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。
 
 > [!IMPORTANT]
 > このドキュメントの手順では、worker ノードが 1 つあるクラスターを作成します。 クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
 > 
-> ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+> ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 > 
 > 
 
@@ -37,7 +37,8 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **Visual Studio 2013 または 2015**
+* **Azure ストレージ アカウント**。 「[ストレージ アカウントを作成する](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+* **Visual Studio 2013 または 2015**。
 
 ### <a name="access-control-requirements"></a>アクセス制御の要件
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
@@ -61,8 +62,6 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 5. ソリューション エクスプローラーで、 **Program.cs** をダブルクリックして開き、次のコードを貼り付け、変数の値を指定します。
    
         using System;
-        using System.Threading;
-        using System.Threading.Tasks;
         using Microsoft.Rest;
         using Microsoft.Rest.Azure.Authentication;
         using Microsoft.Azure;
@@ -70,9 +69,6 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
         using Microsoft.Azure.Management.HDInsight.Models;
         using Microsoft.Azure.Management.ResourceManager;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
-        using System.Net.Http;
-        using Newtonsoft.Json;
-        using System.Collections.Generic;
    
         namespace CreateHDInsightCluster
         {
@@ -80,26 +76,29 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
             {
                 private static HDInsightManagementClient _hdiManagementClient;
    
+                private const string SubscriptionId = "<Your Azure Subscription ID>";
                 // Replace with your AAD tenant ID if necessary
                 private const string TenantId = UserTokenProvider.CommonTenantId; 
-                private const string SubscriptionId = "<Your Azure Subscription ID>";
                 // This is the GUID for the PowerShell client. Used for interactive logins in this example.
                 private const string ClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
    
-                private static string SubscriptionId = "<Enter Your Subscription ID>";
                 private const string ExistingResourceGroupName = "<Enter Resource Group Name>";
                 private const string ExistingStorageName = "<Enter Default Storage Account Name>.blob.core.windows.net";
                 private const string ExistingStorageKey = "<Enter Default Storage Account Key>";
                 private const string ExistingBlobContainer = "<Enter Default Bob Container Name>";
+
                 private const string NewClusterName = "<Enter HDInsight Cluster Name>";
                 private const int NewClusterNumNodes = 2;
                 private const string NewClusterLocation = "EAST US 2";     // Must be the same as the default Storage account
                 private const OSType NewClusterOSType = OSType.Linux;
                 private const string NewClusterType = "Hadoop";
-                private const string NewClusterVersion = "3.2";
+                private const string NewClusterVersion = "3.4";
                 private const string NewClusterUsername = "admin";
                 private const string NewClusterPassword = "<Enter HTTP User Password>";
                 private const string NewClusterSshUserName = "sshuser";
+
+                // You can use eitehr password or public key.  See https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-windows or https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix
+                private const string NewClusterSshPassword = "<Enter SSH User Password>";
                 private const string NewClusterSshPublicKey = @"---- BEGIN SSH2 PUBLIC KEY ----
                     Comment: ""rsa-key-20150731""
                     AAAAB3NzaC1yc2EAAAABJQAAAQEA4QiCRLqT7fnmUA5OhYWZNlZo6lLaY1c+IRsp
@@ -115,7 +114,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
                     System.Console.WriteLine("Creating a cluster.  The process takes 10 to 20 minutes ...");
    
                     // Authenticate and get a token
-                    var authToken = Authenticate(TenantId, ClientId, SubscriptionId);
+                    var authToken = GetTokenCloudCredentials(TenantId, ClientId, SubscriptionId);
                     // Flag subscription for HDInsight, if it isn't already.
                     EnableHDInsight(authToken);
                     // Get an HDInsight management client
@@ -130,15 +129,15 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
                         OSType = NewClusterOSType,
                         Version = NewClusterVersion,
    
-                        DefaultStorageAccountName = ExistingStorageName,
-                        DefaultStorageAccountKey = ExistingStorageKey,
-                        DefaultStorageContainer = ExistingBlobContainer,
-   
+                        // Use an Azure storage account as the default storage
+                        DefaultStorageInfo = new AzureStorageInfo(ExistingStorageName, ExistingStorageKey, ExistingBlobContainer),
+
                         Password = NewClusterPassword,
                         Location = NewClusterLocation,
    
                         SshUserName = NewClusterSshUserName,
-                        SshPublicKey = NewClusterSshPublicKey
+                        SshPassword = NewClusterSshPassword,
+                        //SshPublicKey = NewClusterSshPublicKey
                     };
                     // Create the cluster
                     _hdiManagementClient.Clusters.Create(ExistingResourceGroupName, NewClusterName, parameters);
@@ -150,11 +149,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
                 /// <summary>
                 /// Authenticate to an Azure subscription and retrieve an authentication token
                 /// </summary>
-                /// <param name="TenantId">The AAD tenant ID</param>
-                /// <param name="ClientId">The AAD client ID</param>
-                /// <param name="SubscriptionId">The Azure subscription ID</param>
-                /// <returns></returns>
-                static TokenCloudCredentials Authenticate(string TenantId, string ClientId, string SubscriptionId)
+                static TokenCloudCredentials GetTokenCloudCredentials(string TenantId, string ClientId, string SubscriptionId)
                 {
                     var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + TenantId);
                     var tokenAuthResult = authContext.AcquireToken("https://management.core.windows.net/", 
@@ -184,7 +179,8 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 7. **F5** キーを押してアプリケーションを実行します。 コンソール ウィンドウが開き、アプリケーションの状態が表示されます。 Azure アカウントの資格情報の入力も求められます。 HDInsight クラスターの作成は数分かかる場合があります。通常は 15 分程度です。
 
 ## <a name="use-bootstrap"></a>ブートストラップの使用
-詳細については、「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)」を参照してください。
+
+ブートストラップを使用して、クラスターの作成中に追加の設定を構成できます。  詳細については、「 [ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)」をご覧ください。
 
 [クラスターの作成](#create-clusters) のサンプルを変更し、Hive の設定を構成します。
 
@@ -193,7 +189,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
         System.Console.WriteLine("Creating a cluster.  The process takes 10 to 20 minutes ...");
 
         // Authenticate and get a token
-        var authToken = Authenticate(TenantId, ClientId, SubscriptionId);
+        var authToken = GetTokenCloudCredentials(TenantId, ClientId, SubscriptionId);
         // Flag subscription for HDInsight, if it isn't already.
         EnableHDInsight(authToken);
         // Get an HDInsight management client
@@ -311,7 +307,8 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 
 ## <a name="use-script-action"></a>Script Action の使用
-詳細については、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+
+Script Action を使用して、クラスターの作成中に追加の設定を構成できます。  詳細については、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 [クラスターの作成](#create-clusters) のサンプルを変更し、Script Action を呼び出して、R をインストールします。
 
@@ -320,7 +317,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
         System.Console.WriteLine("Creating a cluster.  The process takes 10 to 20 minutes ...");
 
         // Authenticate and get a token
-        var authToken = Authenticate(TenantId, ClientId, SubscriptionId);
+        var authToken = GetTokenCloudCredentials(TenantId, ClientId, SubscriptionId);
         // Flag subscription for HDInsight, if it isn't already.
         EnableHDInsight(authToken);
         // Get an HDInsight management client
@@ -335,9 +332,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
             OSType = NewClusterOSType,
             Version = NewClusterVersion,
 
-            DefaultStorageAccountName = ExistingStorageName,
-            DefaultStorageAccountKey = ExistingStorageKey,
-            DefaultStorageContainer = ExistingBlobContainer,
+            DefaultStorageInfo = new AzureStorageInfo(ExistingStorageName, ExistingStorageKey, ExistingBlobContainer),
 
             UserName = NewClusterUsername,
             Password = NewClusterPassword,
@@ -390,6 +385,6 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

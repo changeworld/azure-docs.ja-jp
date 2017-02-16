@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "あらゆるサイズ、種類、および取り込み速度のデータの分析を目的として、Hadoop と互換性のある超大規模な Data Lake リポジトリを設定、管理、アクセスする方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: d26d0f965ad1195ab41e04e870ead1b335ff513e
+ms.sourcegitcommit: a33b0509d1280a33a1e5134217b56071256fec24
+ms.openlocfilehash: d5ff73f8c9303bff281b2a2bbf314c76072f7569
 
 ---
 # <a name="data-lake-store-documentation"></a>Data Lake Store のドキュメント
 
-Azure Data Lake Store は、ビッグ データの分析ワークロード用のハイパースケール リポジトリです。 Azure Data Lake を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、および取り込み速度のデータを 1 か所でキャプチャすることができます。  Azure Data Lake Store には、Hadoop (HDInsight クラスターで使用可能) から、WebHDFS 互換のシナリオを使用してアクセスできます。 Azure Data Lake Store には、エンタープライズ レベルのすべての機能 (セキュリティ、管理の容易性、スケーラビリティ、信頼性、および可用性) が組み込まれています。
+あらゆるサイズ、種類、取り込み速度のデータの分析を目的として、Data Lake Store を使用して、Hadoop と互換性のある超大規模リポジトリを作成する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、運用分析や調査分析を目的として Data Lake リポジトリを設定、管理、アクセスする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -211,6 +212,6 @@ Azure Data Lake Store のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

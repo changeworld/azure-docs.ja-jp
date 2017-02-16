@@ -17,8 +17,8 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
-ms.openlocfilehash: 8eb4b280104cc4f05b9ed25985d0c336f15b6d0f
+ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
+ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
 
 
 ---
@@ -44,17 +44,22 @@ ms.openlocfilehash: 8eb4b280104cc4f05b9ed25985d0c336f15b6d0f
 
 **推定所要時間**: このチュートリアルには約 30 分かかります (既に前提条件を満たしていることが前提です)。
 
+> [!TIP]
+> これらのタスクは、概要チュートリアルで [C#](sql-database-get-started-csharp.md) または [PowerShell](sql-database-get-started-powershell.md) を使用して実行することができます。
+>
+
 ## <a name="prerequisites"></a>前提条件
 
 * Azure アカウントが必要です。 [無料の Azure アカウントを作成する](/pricing/free-trial/?WT.mc_id=A261C142F)か、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)ことができます。 
 
 * サブスクリプションの所有者または共同作成者ロールのメンバーであるアカウントを使用して Azure Portal に接続できることが必要です。 ロールベースのアクセス制御 (RBAC) の詳細については、「[Azure Portal でのアクセス管理の概要](../active-directory/role-based-access-control-what-is.md)」を参照してください。
 
-> [!TIP]
-> これらのタスクは、概要チュートリアルで [C#](sql-database-get-started-csharp.md) または [PowerShell](sql-database-get-started-powershell.md) を使用して実行することができます。
->
+> [!NOTE]
+> このチュートリアルでは、[SQL Database サーバーの概要](sql-database-server-overview.md)、[SQL データベースの概要](sql-database-overview.md)、および [Azure SQL Database のファイアウォール規則の概要](sql-database-firewall-configure.md)という学習トピックの内容を理解する際に役立ちます。
+>  
 
-### <a name="sign-in-by-using-your-existing-account"></a>既存のアカウントを使用してサインインする
+
+### <a name="sign-in-to-the-azure-portal-using-your-azure-account"></a>Azure アカウントを使用して Azure Portal にサインインする
 [既存のサブスクリプション](https://account.windowsazure.com/Home/Index)を使用して、次の手順に従って Azure Portal に接続します。
 
 1. 任意のブラウザーを開き、 [Azure ポータル](https://portal.azure.com/)に接続します。
@@ -103,7 +108,7 @@ ms.openlocfilehash: 8eb4b280104cc4f05b9ed25985d0c336f15b6d0f
     ![サーバーの場所](./media/sql-database-get-started/server-location.png)
     
     > [!TIP]
-    > このブレードの **[Azure サービスにサーバーへのアクセスを許可する]** チェック ボックスは変更できません。 この設定は、サーバー ファイアウォールのブレードで変更できます。 詳細については、[セキュリティの概要](sql-database-get-started-security.md)に関する記事を参照してください。
+    > このブレードの **[Azure サービスにサーバーへのアクセスを許可する]** チェック ボックスは変更できません。 この設定は、サーバー ファイアウォールのブレードで変更できます。 詳細については、[セキュリティの概要](sql-database-control-access-sql-authentication-get-started.md)に関する記事を参照してください。
     >
     
 9. **[作成]**をクリックします。
@@ -183,7 +188,7 @@ ms.openlocfilehash: 8eb4b280104cc4f05b9ed25985d0c336f15b6d0f
     ![master データベースのシステム オブジェクトに対するクエリ実行](./media/sql-database-get-started/query-master-database-system-objects.png)
 
     > [!NOTE]
-    > SQL セキュリティについて調べるには、[SQL セキュリティの概要](sql-database-get-started-security.md)に関するページを参照してください。
+    > SQL セキュリティについて調べるには、[SQL セキュリティの概要](sql-database-control-access-sql-authentication-get-started.md)に関するページを参照してください。
     >
 
 ## <a name="create-new-database-in-the-azure-portal-using-adventure-works-lt-sample"></a>Adventure Works LT サンプルを使用して Azure Portal で新しいデータベースを作成する
@@ -291,7 +296,7 @@ ms.openlocfilehash: 8eb4b280104cc4f05b9ed25985d0c336f15b6d0f
 ## <a name="next-steps"></a>次のステップ
 これで、このチュートリアルは完了です。このチュートリアルで学習した内容に基づいたチュートリアルが多数あるため、探してみてください。 
 
-* Azure SQL Database のセキュリティについて調べる場合は、[セキュリティの概要](sql-database-get-started-security.md)に関する記事を参照してください。
+* Azure SQL Database のセキュリティについて調べる場合は、[セキュリティの概要](sql-database-control-access-sql-authentication-get-started.md)に関する記事を参照してください。
 * Excel に詳しい場合は、 [Excel を使用した Azure SQL データベースへの接続](sql-database-connect-excel.md)方法を参照してください。
 * コーディングを開始する準備ができている場合、「 [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」でプログラミング言語を選択します。
 * オンプレミスの SQL Server データベースを Azure に移行する場合は、[SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関する記事を参照してください。
@@ -306,6 +311,6 @@ ms.openlocfilehash: 8eb4b280104cc4f05b9ed25985d0c336f15b6d0f
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

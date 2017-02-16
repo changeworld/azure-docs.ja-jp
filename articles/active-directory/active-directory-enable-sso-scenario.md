@@ -14,8 +14,8 @@ ms.workload: identity
 ms.date: 01/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0e5d50d111a63e7af8df6ded3492fe16e575ff51
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f6bceb2fd03230e4a39c22605ad1fea8dd422be1
 
 
 ---
@@ -115,6 +115,6 @@ Azure AD では、事前に統合された MFA ときめ細かいアクセス �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

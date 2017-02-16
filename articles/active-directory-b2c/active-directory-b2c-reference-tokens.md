@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/22/2016
+ms.date: 12/06/2016
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 52360ffc7224ad6ec2009e239ee1aa0b35c7f1cc
+ms.sourcegitcommit: 0ae9ad40f2e32d56fd50c90b86339cbb458d7291
+ms.openlocfilehash: a3276c764ebb6382594cf7002e7c7e8e328862ef
 
 
 ---
@@ -64,7 +64,7 @@ CQhoFA
 
 API がアクセス トークンを受け取ったら、トークンが認証済みであることを証明するために、 [署名を検証](#token-validation) する必要があります。 API は、トークンが有効であることを証明するために、いくつかの要求も検証する必要があります。 シナリオの要件に応じて、アプリによって検証される要求は異なりますが、いずれのシナリオでも、アプリはいくつかの [共通の要求検証](#token-validation) を行う必要があります。
 
-### <a name="claims-in-id-access-tokens"></a>ID トークンとアクセス トークン内の要求
+### <a name="claims-in-id--access-tokens"></a>ID トークンとアクセス トークン内の要求
 Azure AD B2C では、トークンの内容を細かく制御できます。 アプリの操作に必要な特定のユーザー データのセットを要求に入れて送信するように、 [ポリシー](active-directory-b2c-reference-policies.md) を構成できます。 これらの要求には、ユーザーの `displayName` や `emailAddress` などの標準的なプロパティを含めることができます。 また、B2C ディレクトリで定義できる [カスタム ユーザー属性](active-directory-b2c-reference-custom-attr.md) を含めることもできます。 受信した各 ID トークンとアクセス トークンには、特定のセットのセキュリティ関連要求が格納されます。 アプリケーションはこれらの要求を使用して、ユーザーと要求を安全に認証できます。
 
 ID トークン内の要求は特定の順序では返されないことに注意してください。 また、新しい要求が ID トークンに導入される可能性が常にあります。 新しい要求が導入されたときに、アプリで問題が起きないようにする必要があります。 ここに示す要求は、Azure AD B2C によって発行される ID トークンおよびアクセス トークンに存在すると想定されるものです。 どの要求が追加されるかは、ポリシーによって決まります。 試しに、サンプル ID トークンを [calebb.net](http://calebb.net)に貼り付けて、その中の要求を調べてみてください。 さらに詳細な情報は、 [OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)で参照できます。
@@ -80,8 +80,9 @@ ID トークン内の要求は特定の順序では返されないことに注�
 | コード ハッシュ |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |コード ハッシュは、トークンが OAuth 2.0 認証コードと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、認証コードの信頼性を検証できます。 この検証の実行方法の詳細については、 [OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html) を参照してください。 |
 | アクセス トークン ハッシュ |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |アクセス トークン ハッシュは、トークンが OAuth 2.0 アクセス トークンと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、アクセス トークンの信頼性を検証できます。 この検証の実行方法の詳細については、 [OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html) を参照してください。 |
 | nonce |`nonce` |`12345` |nonce は、トークンのリプレイ攻撃を緩和するために使用される戦略です。 アプリでは、`nonce` クエリ パラメーターを使用して、承認要求で nonce を指定できます。 要求で指定した値は、ID トークンの `nonce` 要求のみに、変更されずに出力されます。 これにより、アプリではこの値を要求で指定した値と比較して検証できます。この値は、アプリのセッションと特定の ID トークンを関連付けます。 アプリでは、ID トークンの検証プロセス中に、この検証を実行する必要があります。 |
-| [件名] |`sub` |`Not supported currently. Use oid claim.` |これは、トークンが情報をアサートするプリンシパルです (アプリのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。 ただし、サブジェクト要求はまだ Azure AD B2C に実装されていません。 承認のサブジェクト要求を使用するのではなく、オブジェクト ID の `oid` 要求を含むようにポリシーを構成し、ユーザーの識別にはその値を使用する必要があります。 |
-| 認証コンテキスト クラスの参照 |`acr` |`b2c_1_sign_in` |これは、ID トークンの取得に使用されたポリシーの名前です。 |
+| [件名] |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |これは、トークンが情報をアサートするプリンシパルです (アプリのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。 既定では、サブジェクト要求には、ディレクトリ内のユーザーのオブジェクト ID が設定されます。 詳しくは、[こちらの記事](active-directory-b2c-token-session-sso.md)をご覧ください。 |
+| 認証コンテキスト クラスの参照 |`acr` |適用不可 |現在使用されていません (古いポリシーの場合を除く)。 詳しくは、[こちらの記事](active-directory-b2c-token-session-sso.md)をご覧ください。 |
+| Trustframework ポリシー |`tfp` |`b2c_1_sign_in` |これは、ID トークンの取得に使用されたポリシーの名前です。 |
 | 認証時刻 |`auth_time` |`1438535543` |この要求は、ユーザーが資格情報を最後に入力した時刻です。エポック時間で表されます。 |
 
 ### <a name="refresh-tokens"></a>更新トークン
@@ -155,6 +156,6 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/key
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

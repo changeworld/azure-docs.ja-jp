@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/19/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c12201094bfdc648f1e5c32575d0d506cc92aedc
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: 18131c083a0dc24eaa6f58445aa61d5872210417
 
 
 ---
@@ -52,7 +52,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 * **CREATE EXTERNAL TABLE** コマンドはデータ ファイルを移動しません。
 * **CREATE EXTERNAL TABLE** コマンドでは、LOCATION 内のフォルダーは許容されません。 チュートリアルで sample.log ファイルのコピーを作成しているのは、これが理由です。
 
-詳細については、「[HDInsight: Hive Internal and External Tables Intro (HDInsight: Hive の内部テーブルと外部テーブルの概要)] [cindygross-hive-tables]」を参照してください。
+詳細については、「[HDInsight: Hive Internal and External Tables Intro (HDInsight: Hive の内部テーブルと外部テーブルの概要)][cindygross-hive-tables]」を参照してください。
 
 ## <a name="a-iddataaabout-the-sample-data-an-apache-log4j-file"></a><a id="data"></a>サンプル データ Apache log4j ファイルについて
 この例では、*log4j* サンプル ファイル (Blob Storage コンテナーの **/example/data/sample.log** に格納) を使用します。 ファイル内の各ログは、タイプと重要度を表す `[LOG LEVEL]` フィールドを含むフィールド行で構成されています。以下に例を示します。
@@ -98,8 +98,8 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 * **DROP TABLE**: テーブルが既存の場合にテーブルとデータ ファイルを削除します。
 * **CREATE EXTERNAL TABLE**: Hive に新しく **外部** テーブルを作成します。 外部テーブルは、Hive にテーブル定義のみを格納し、データは元の場所に元の形式で残します。
 * **ROW FORMAT**: Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
-* **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを示します。 データは 1 つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。
-* **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が 3 行あるため、 **3** という値が返されています。
+* **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを示します。 データは&1; つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。
+* **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が&3; 行あるため、 **3** という値が返されています。
 * **INPUT__FILE__NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。 これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
 
 > [!NOTE]
@@ -161,13 +161,16 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 | [Windows PowerShell](hdinsight-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows |Windows |
 | [リモート デスクトップ](hdinsight-hadoop-use-hive-remote-desktop.md) |✔ |✔ |Windows |Windows |
 
+> [!IMPORTANT]
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 ## <a name="running-hive-jobs-on-azure-hdinsight-using-on-premises-sql-server-integration-services"></a>オンプレミスの SQL Server Integration Services を利用した Azure HDInsight での Hive ジョブの実行
 SQL Server Integration Services (SSIS) を利用して Hive ジョブを実行することもできます。 Azure Feature Pack for SSIS には、HDInsight の Hive ジョブと連動する次のコンポーネントがあります。
 
 * [Azure HDInsight Hive タスク][hivetask]
 * [Azure サブスクリプション接続マネージャー][connectionmanager]
 
-Azure Feature Pack for SSIS の詳細については、[こちら][ssispack] を参照してください。
+Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を参照してください。
 
 ## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
 これで、Hive と、HDInsight での Hadoop との使用方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
@@ -177,8 +180,6 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack] を
 * [HDInsight での Sqoop の使用](hdinsight-use-sqoop.md)
 * [HDInsight での Oozie の使用](hdinsight-use-oozie.md)
 * [HDInsight での MapReduce ジョブの使用][hdinsight-use-mapreduce]
-
-[check]: ./media/hdinsight-use-hive/hdi.checkmark.png
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
@@ -206,20 +207,15 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack] を
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]: hdinsight-get-started.md
 
-[Powershell-install-configure]: ../powershell-install-configure.md
+[Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
-
-[image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
-[img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-[image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

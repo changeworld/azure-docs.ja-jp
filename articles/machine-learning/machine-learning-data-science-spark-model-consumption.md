@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/07/2016
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2387baad5737998d2ba7f289e0a4fcdd6dd04245
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4aa61eb5fb6c441bdfebd8bcc46ad62fbaf78548
 
 
 ---
@@ -575,7 +575,7 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 * ロジック アプリと App Service プランの名前を入力して、**Logic Apps デザイナー**を起動します。
 * HTTP 操作を選択して、次の図に示すようにパラメーターを入力します。
 
-![](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
+![Logic Apps デザイナー](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>次の手順
 **クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「 [Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) 」をご覧ください。
@@ -583,6 +583,6 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c213f8f4f8de6f16efe70ac3332ccbc8c428b85b
+ms.sourcegitcommit: f9f5fd28db7babfe400aeb55ba1df9ac5d8d535b
+ms.openlocfilehash: 7aee0f60d331f40514f41c20e09fa2c9d9a21233
 
 
 ---
 # <a name="enable-offline-sync-for-your-ios-mobile-app"></a>iOS モバイル アプリのオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このチュートリアルでは、Azure Mobile Apps for iOS 向けのモバイル アプリのオフライン同期機能について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。 変更はローカル データベースに格納され、デバイスが再びオンラインになると、これらの変更がリモート バックエンドと同期されます。
 
 Azure Mobile Apps を初めて使用する場合は、最初に [iOS アプリの作成]に関するチュートリアルを完了してください。 ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。 サーバーの拡張機能パッケージの詳細については、「 [Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
@@ -38,98 +38,92 @@ Azure Mobile Apps のオフライン データ同期機能を使用すると、�
 1. **QSTodoService.m** (Objective-C) または **ToDoTableViewController.swift** (Swift) では、メンバー `syncTable` の種類は `MSSyncTable` です。 オフライン同期では、 `MSTable`の代わりにこの同期テーブル インターフェイスを使用します。 同期テーブルが使用されると、すべての操作はローカル ストアを参照し、明示的なプッシュ操作とプル操作を使用するリモート バックエンドのみが同期されます。
    
     同期テーブルへの参照を取得するには、`MSClient` でメソッド `syncTableWithName` を使用します。 オフライン同期機能を解除するには、 `tableWithName` を使用します。
+    
 2. テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。 関連するコードを次に示します。 
    
-    **Objective-C**:
+   **Objective-C**:
+
+   `QSTodoService.init` メソッドで:
+   ```objc
+   MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
+   self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
+   ```    
+   **Swift**:
+
+   `ToDoTableViewController.viewDidLoad` メソッドで:
+   ```swift
+   let client = MSClient(applicationURLString: "http:// ...") // URI of the Mobile App
+   let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
+   self.store = MSCoreDataStore(managedObjectContext: managedObjectContext)
+   client.syncContext = MSSyncContext(delegate: nil, dataSource: self.store, callback: nil)
+   ```
+   このコードでは、Mobile Apps SDK で提供されるインターフェイス `MSCoreDataStore`を使用して、ローカル ストアを作成します。 代わりに `MSSyncContextDataSource` プロトコルを実装することで、別のローカル ストアを指定することもできます。 また、`MSSyncContext` の最初のパラメーターは、競合ハンドラーを指定するために使用します。 `nil` を渡したため、既定の競合ハンドラーが取得されます。この競合ハンドラーは、競合が発生すると失敗します。
+
+3. では、実際の同期操作を実行して、リモート バックエンドからデータを取得してみましょう。
    
-    `QSTodoService.init` メソッドで:
+   **Objective-C**:
 
-            MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
-            self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
+   `syncData` で新しい変更をプッシュしてから `pullData` を呼び出すことで、リモート バックエンドからデータを取得します。 そして、メソッド `pullData` がクエリに一致する新しいデータを取得します。
+   ```objc
+   -(void)syncData:(QSCompletionBlock)completion
+   {
+       // push all changes in the sync context, then pull new data
+       [self.client.syncContext pushWithCompletion:^(NSError *error) {
+           [self logErrorIfNotNil:error];
+           [self pullData:completion];
+       }];
+   }
 
+   -(void)pullData:(QSCompletionBlock)completion
+   {
+       MSQuery *query = [self.syncTable query];
 
-    **Swift**:
+       // Pulls data from the remote server into the local table.
+       // We're pulling all items and filtering in the view
+       // query ID is used for incremental sync
+       [self.syncTable pullWithQuery:query queryId:@"allTodoItems" completion:^(NSError *error) {
+           [self logErrorIfNotNil:error];
 
-    `ToDoTableViewController.viewDidLoad` メソッドで:
+           // Let the caller know that we have finished
+           if (completion != nil) {
+               dispatch_async(dispatch_get_main_queue(), completion);
+           }
+       }];
+   }
+   ```
+   **Swift**:
+   ```swift
+   func onRefresh(sender: UIRefreshControl!) {
+      UIApplication.sharedApplication().networkActivityIndicatorVisible = true
 
+      self.table!.pullWithQuery(self.table?.query(), queryId: "AllRecords") {
+          (error) -> Void in
 
-            let client = MSClient(applicationURLString: "http:// ...") // URI of the Mobile App
-            let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
-            self.store = MSCoreDataStore(managedObjectContext: managedObjectContext)
-            client.syncContext = MSSyncContext(delegate: nil, dataSource: self.store, callback: nil)
+          UIApplication.sharedApplication().networkActivityIndicatorVisible = false
 
+          if error != nil {
+              // A real application would handle various errors like network conditions,
+              // server conflicts, etc via the MSSyncContextDelegate
+              print("Error: \(error!.description)")
 
-    このコードでは、Mobile Apps SDK で提供されるインターフェイス `MSCoreDataStore`を使用して、ローカル ストアを作成します。 代わりに `MSSyncContextDataSource` プロトコルを実装することで、別のローカル ストアを指定することもできます。 
-
-    また、`MSSyncContext` の最初のパラメーターは、競合ハンドラーを指定するために使用します。 `nil` を渡したため、既定の競合ハンドラーが取得されます。この競合ハンドラーは、競合が発生すると失敗します。
-
-1. では、実際の同期操作を実行して、リモート バックエンドからデータを取得してみましょう。
-   
-    **Objective-C**:
-   
-    `syncData` で新しい変更をプッシュしてから `pullData` を呼び出すことで、リモート バックエンドからデータを取得します。 そして、メソッド `pullData` がクエリに一致する新しいデータを取得します。
-
-            -(void)syncData:(QSCompletionBlock)completion
-            {
-                // push all changes in the sync context, then pull new data
-                [self.client.syncContext pushWithCompletion:^(NSError *error) {
-                    [self logErrorIfNotNil:error];
-                    [self pullData:completion];
-                }];
-            }
-
-            -(void)pullData:(QSCompletionBlock)completion
-            {
-                MSQuery *query = [self.syncTable query];
-
-                // Pulls data from the remote server into the local table.
-                // We're pulling all items and filtering in the view
-                // query ID is used for incremental sync
-                [self.syncTable pullWithQuery:query queryId:@"allTodoItems" completion:^(NSError *error) {
-                    [self logErrorIfNotNil:error];
-
-                    // Let the caller know that we have finished
-                    if (completion != nil) {
-                        dispatch_async(dispatch_get_main_queue(), completion);
-                    }
-                }];
-            }
-
-
-      **Swift**:
-
-
-        func onRefresh(sender: UIRefreshControl!) {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-
-            self.table!.pullWithQuery(self.table?.query(), queryId: "AllRecords") {
-                (error) -> Void in
-
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-
-                if error != nil {
-                    // A real application would handle various errors like network conditions,
-                    // server conflicts, etc via the MSSyncContextDelegate
-                    print("Error: \(error!.description)")
-
-                    // We will just discard our changes and keep the servers copy for simplicity
-                    if let opErrors = error!.userInfo[MSErrorPushResultKey] as? Array<MSTableOperationError> {
-                        for opError in opErrors {
-                            print("Attempted operation to item \(opError.itemId)")
-                            if (opError.operation == .Insert || opError.operation == .Delete) {
-                                print("Insert/Delete, failed discarding changes")
-                                opError.cancelOperationAndDiscardItemWithCompletion(nil)
-                            } else {
-                                print("Update failed, reverting to server's copy")
-                                opError.cancelOperationAndUpdateItem(opError.serverItem!, completion: nil)
-                            }
-                        }
-                    }
-                }
-                self.refreshControl?.endRefreshing()
-            }
-        } 
-
+              // We will just discard our changes and keep the servers copy for simplicity
+              if let opErrors = error!.userInfo[MSErrorPushResultKey] as? Array<MSTableOperationError> {
+                  for opError in opErrors {
+                      print("Attempted operation to item \(opError.itemId)")
+                      if (opError.operation == .Insert || opError.operation == .Delete) {
+                          print("Insert/Delete, failed discarding changes")
+                          opError.cancelOperationAndDiscardItemWithCompletion(nil)
+                      } else {
+                          print("Update failed, reverting to server's copy")
+                          opError.cancelOperationAndUpdateItem(opError.serverItem!, completion: nil)
+                      }
+                  }
+              }
+          }
+          self.refreshControl?.endRefreshing()
+      }
+   } 
+   ```
 
     Objective C のバージョンでは、`syncData` で同期コンテキストの最初に `pushWithCompletion` を呼び出します。 このメソッドは、すべてのテーブルに対して変更をプッシュするため、同期テーブル自体ではなく `MSSyncContext` のメンバーです。 何らかの方法で (CUD 操作により) ローカルで変更されたレコードだけが、サーバー宛てに送信されます。 次に、ヘルパー `pullData` が呼び出されます。これは、`MSSyncTable.pullWithQuery` を呼び出してリモート データを取得し、ローカル データベースに格納します。
 
@@ -137,7 +131,7 @@ Azure Mobile Apps のオフライン データ同期機能を使用すると、�
 
     Objective-C と Swift の両方のバージョンで、メソッド `pullWithQuery` を使用すると、取得するレコードをフィルター処理するクエリを指定できます。 この例でのクエリは、単にリモートの `TodoItem` テーブルのレコードをすべて取得します。
 
-    `pullWithQuery` に対する 2 番目のパラメーターは、 *増分同期*に使用するクエリ ID です。 増分同期では、前回の同期以降に変更されたレコードのみを、レコードの `UpdatedAt` タイムスタンプ (ローカル ストアでは `updatedAt` と呼ばれます) を使用して取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。 増分同期を解除するには、 `nil` をクエリ ID として渡します。 これは、プル操作のたびにすべてのレコードを取得するため、非効率になる場合があります。
+    `pullWithQuery` に対する&2; 番目のパラメーターは、 *増分同期*に使用するクエリ ID です。 増分同期では、前回の同期以降に変更されたレコードのみを、レコードの `UpdatedAt` タイムスタンプ (ローカル ストアでは `updatedAt` と呼ばれます) を使用して取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。 増分同期を解除するには、 `nil` をクエリ ID として渡します。 これは、プル操作のたびにすべてのレコードを取得するため、非効率になる場合があります。
 
 1. Objective-C のアプリは、データを修正または追加するとき、ユーザーが更新ジェスチャを実行するとき、および起動するときに同期されます。 Swift のアプリは、ユーザーが更新ジェスチャを実行するとき、および起動するときに同期されます。 
 
@@ -164,45 +158,45 @@ Core Data オフライン ストアを使用するときは、データ モデ�
   
     ![][defining-core-data-tableoperations-entity]
   
-  | Attribute | 型 |
+  | 属性 | 型 |
   | --- | --- |
   | id |Integer 64 |
   | itemId |String |
-  | プロパティ |Binary Data |
-  | テーブル |String |
+  | properties |Binary Data |
+  | table |String |
   | tableKind |Integer 16 |
   
     <br>**MS_TableOperationErrors**
   
     ![][defining-core-data-tableoperationerrors-entity]
   
-  | Attribute | 型 |
+  | 属性 | 型 |
   | --- | --- |
-  | id |文字列 |
+  | id |String |
   | operationId |Integer 64 |
-  | プロパティ |Binary Data |
+  | properties |Binary Data |
   | tableKind |Integer 16 |
   
     <br>**MS_TableConfig**
   
     ![][defining-core-data-tableconfig-entity]
   
-  | Attribute | 型 |
+  | 属性 | 型 |
   | --- | --- |
-  | id |文字列 |
+  | id |String |
   | key |String |
   | keyType |Integer 64 |
-  | テーブル |String |
-  | 値 |文字列 |
+  | table |String |
+  | value |String |
   
   ### <a name="data-table"></a>データ テーブル
     **TodoItem**
   
-  | Attribute | 種類 | 注 |
+  | 属性 | 種類 | 注 |
   | --- | --- | --- |
-  | id |文字列、必須のマーク |リモート ストア内のプライマリ キー |
-  | 完了 |Boolean |Todo 項目フィールド |
-  | テキスト |String |Todo 項目フィールド |
+  | id |String、必須のマーク |リモート ストア内のプライマリ キー |
+  | complete |Boolean |Todo 項目フィールド |
+  | text |String |Todo 項目フィールド |
   | createdAt |日付 |(省略可能) createdAt システム プロパティにマップします。 |
   | updatedAt |日付 |(省略可能) updatedAt システム プロパティにマップします。 |
   | version |String |(省略可能) 競合の検出に使用され、バージョンにマップします |
@@ -214,43 +208,44 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 1. **QSTodoListViewController.m** で **viewDidLoad** メソッドを変更して、メソッドの最後にある `[self refresh]` への呼び出しを削除します。 これで、アプリケーションの起動時にデータはサーバーと同期されなくなりますが、代わりにデータはローカル ストアのコンテンツになります。
 2. **QSTodoService.m** で `addItem` の定義を変更して、項目の挿入後に同期しないようにします。 `self syncData` ブロックを削除して、次のように置き換えます。
-   
-            if (completion != nil) {
-                dispatch_async(dispatch_get_main_queue(), completion);
-            }
-3. 同様に、`completeItem` の定義を変更します。`self syncData` のブロックを削除して、次のように置き換えます。
-   
-            if (completion != nil) {
-                dispatch_async(dispatch_get_main_queue(), completion);
-            }
 
+   ```objc
+   if (completion != nil) {
+       dispatch_async(dispatch_get_main_queue(), completion);
+   }
+   ```
+3. 同様に、`completeItem` の定義を変更します。`self syncData` のブロックを削除して、次のように置き換えます。
+   ```objc
+   if (completion != nil) {
+       dispatch_async(dispatch_get_main_queue(), completion);
+   }
+   ```
 **Swift**:
 
-1. `viewDidLoad` の **ToDoTableViewController.swift**で、これら 2 行をコメントアウトしてアプリの起動時に同期しないようにします。 この記事の執筆時には、Swift Todo アプリはユーザーが項目を追加または完了したときにはサービスが更新されず、アプリの起動時のみに更新されていました。
-   
-        self.refreshControl?.beginRefreshing()
-        self.onRefresh(self.refreshControl)
+1. `viewDidLoad` の **ToDoTableViewController.swift**で、これら&2; 行をコメントアウトしてアプリの起動時に同期しないようにします。 この記事の執筆時には、Swift Todo アプリはユーザーが項目を追加または完了したときにはサービスが更新されず、アプリの起動時のみに更新されていました。
 
+   ```swift
+  self.refreshControl?.beginRefreshing()
+  self.onRefresh(self.refreshControl)
+```
 ## <a name="a-nametest-appatest-the-app"></a><a name="test-app"></a>アプリケーションをテストする
 ここでは、無効な URL に接続してオフライン シナリオをシミュレートします。 データ項目を追加すると、ローカル Core Data ストアに保持されますが、モバイル バックエンドとは同期されません。
 
 1. **QSTodoService.m** のモバイル アプリ URL を無効な URL に変更し、アプリを再実行します。
    
-    **Objective-C** :
-   
-            self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
-   
-    **Swift** :
-   
-        let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
+   **Objective-C** :
+   ```objc
+   self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
+   ```
+   **Swift** :
+   ```swift
+   let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
+   ```
 2. todo 項目をいくつか追加します。 シミュレーターを終了し (またはアプリケーションを強制的に閉じて)、再起動します。 変更内容が保存されていることを確認します。
-3. リモートの TodoItem テーブルの内容を表示します。
-   
-   * Node.js バックエンドの場合は、[Azure Portal](https://portal.azure.com/)に移動し、Mobile App バックエンドで **[簡易テーブル]** > **、[TodoItem]** をクリックして、`TodoItem` テーブルの内容を表示します。
-     
-     * .NET バックエンドの場合は、SQL Server Management Studio などの SQL ツール、または Fiddler や Postman などの REST クライアントを使用して、テーブルの内容を表示します。
-     
-     新しい項目が、サーバーと同期 *されなかった* ことを確認します。
+3. リモートの TodoItem テーブルの内容を表示します。 
+   * Node.js バックエンドの場合は、[Azure Portal](https://portal.azure.com/)に移動し、Mobile App バックエンドで **[簡易テーブル]** > **、[TodoItem]** をクリックして、`TodoItem` テーブルの内容を表示します。  
+   * .NET バックエンドの場合は、SQL Server Management Studio などの SQL ツール、または Fiddler や Postman などの REST クライアントを使用して、テーブルの内容を表示します。
+新しい項目が、サーバーと同期 *されなかった* ことを確認します。
 4. **QSTodoService.m** の URL を正しい URL に変更し、アプリを再実行します。 項目の一覧をプルダウンして更新操作を実行します。 進行状況を示すスピナーが表示されます。
 5. TodoItem データをもう一度表示します。 新しく変更した TodoItems が表示されます。
 
@@ -279,10 +274,10 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
-[Azure Friday: Azure Mobile Services のオフライン対応アプリケーション]: http://azure.microsoft.com/en-us/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+[Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/en-us/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

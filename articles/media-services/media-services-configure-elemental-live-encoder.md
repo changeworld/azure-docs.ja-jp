@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/05/2017
 ms.author: cenkd;anilmur;juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: 5aeaee615b45be3b943f4b39c8b65b2efc323aa3
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: bb4966cbd2af7a14caeac108a001b0820a67d2a1
 
 
 ---
@@ -36,28 +36,30 @@ ms.openlocfilehash: 5aeaee615b45be3b943f4b39c8b65b2efc323aa3
 ## <a name="prerequisites"></a>前提条件
 * ライブ イベントを作成するには、Elemental Live Web インターフェイスの使用に関する知識が必要です。
 * [Azure Media Services アカウントを作成します](media-services-portal-create-account.md)
-* 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行中であることを確認します。 詳細については、 [Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-portal-manage-streaming-endpoints.md)に関する記事をご覧ください。
+* ストリーミング エンドポイントが実行されていることを確認します。 詳細については、 [Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-portal-manage-streaming-endpoints.md)に関する記事をご覧ください。
 * 最新バージョンの [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) ツールをインストールします。
 * ツールを起動し、AMS アカウントに接続します。
 
 ## <a name="tips"></a>ヒント
 * 可能な限り、有線のインターネット接続を使用します。
-* 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。 これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
+* 帯域幅要件の目安は、ストリーミングのビットレートの&2; 倍です。 これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
 * ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## <a name="elemental-live-with-rtp-ingest"></a>RTP インジェストを使用する Elemental Live
 このセクションでは、RTP 経由で単一ビットレートのライブ ストリームを送信する Elemental Live エンコーダーを構成する方法を示します。  詳細については、「 [RTP 経由の MPEG-TS ストリーム](media-services-manage-live-encoder-enabled-channels.md#channel)」を参照してください。
 
 ### <a name="create-a-channel"></a>チャネルの作成
-1. AMSE ツールで、 **[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]**  を選択します。
 
-![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental1.png)
+1. AMSE ツールで、 **[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
 
-1. チャネルの名前を指定します。説明フィールドは省略可能です。 [チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTP (MPEG TS)]** に設定して、**[Standard]** を選択します。 それ以外の設定はすべてそのままにしておくことができます。
+    ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental1.png)
 
-**[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
+2. チャネルの名前を指定します。説明フィールドは省略可能です。 [チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTP (MPEG TS)]** に設定して、**[Standard]** を選択します。 それ以外の設定はすべてそのままにしておくことができます。
 
-1. **[チャネルの作成]**をクリックします。
+    **[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
+
+3. **[チャネルの作成]**をクリックします。
+
    ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental12.png)
 
 > [!NOTE]
@@ -138,7 +140,8 @@ ms.openlocfilehash: 5aeaee615b45be3b943f4b39c8b65b2efc323aa3
 ストリームが 30 秒間実行されたら、AMSE ツールに戻り、再生をテストします。  
 
 ### <a name="test-playback"></a>再生をテストする
-1. AMSE ツールに移動し、テストするチャネルを右クリックします。 メニューが表示されたら、**[プレビューの再生]** にマウスを合わせ、**[Azure Media Player を使用]** を選択します。  
+
+AMSE ツールに移動し、テストするチャネルを右クリックします。 メニューが表示されたら、**[プレビューの再生]** にマウスを合わせ、**[Azure Media Player を使用]** を選択します。  
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental8.png)
 
@@ -154,8 +157,10 @@ ms.openlocfilehash: 5aeaee615b45be3b943f4b39c8b65b2efc323aa3
 3. **[プログラムを今すぐ開始]** ボックスを選択します。
 4. **[プログラムの作成]**をクリックします。  
 
-    注: プログラムの作成は、チャネルの作成ほど時間はかかりません。    
-5. プログラムが実行されたら、再生を確認するために、プログラムを右クリックして **[Playback the program(s) (プログラムの再生)]** に移動し、**[Azure Media Player を使用]** を選択します。  
+    >[!NOTE]
+    > プログラムの作成は、チャネルの作成ほど時間はかかりません。   
+      
+5. プログラムが実行されたら、再生を確認するために、プログラムを右クリックして **[プログラムの再生]** に移動し、**[Azure Media Player を使用]** を選択します。  
 6. 確認したら、プログラムをもう一度クリックし、**[出力 URL をクリップボードにコピー]** を選択します (または、メニューの **[プログラムの情報と設定]** オプションから、この情報を取得します)。
 
 これで、ストリームをプレーヤーに埋め込んだり、ライブ表示のために対象ユーザーに配信したりできるようになりました。  
@@ -171,6 +176,6 @@ ms.openlocfilehash: 5aeaee615b45be3b943f4b39c8b65b2efc323aa3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

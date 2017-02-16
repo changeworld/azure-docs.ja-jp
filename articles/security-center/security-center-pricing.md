@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/12/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a39a8aaeb2bc3603e5fd2404f061697c98c0ff2f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 533fd337ba16a61579b6f322771913cda36d8272
 
 
 ---
@@ -86,6 +86,6 @@ Standard レベルには次のセキュリティ分析が付属しています�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

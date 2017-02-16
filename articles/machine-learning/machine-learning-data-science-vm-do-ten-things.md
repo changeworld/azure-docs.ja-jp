@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2016
+ms.date: 12/09/2016
 ms.author: gokuma;weig;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 211012d7c1a4ec3ad8f281bc758d2f91f452dc67
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1072ab3d7c8cc472258925baaa2ef82cdfb17eed
 
 
 ---
@@ -90,7 +90,7 @@ Notebook から、任意のライブラリを使って、データの探索、�
 Azure Machine Learning でモデルを運用可能な状態にすると、REST 形式の Web サービスが公開されます。クライアントは、この Web サービスに入力パラメーターを渡し、モデルに基づく予測を出力として受け取ることが可能です。   
 
 > [!NOTE]
-> AzureML にまだサインアップしていない場合、 [AzureML Studio](https://studio.azureml.net/) のホーム ページにアクセスして [Get Started] をクリックすると、Free ワークスペースまたは Standard ワークスペースを利用できます。   
+> Azure Machine Learning にまだサインアップしていない場合、[Azure Machine Learning Studio](https://studio.azureml.net/) のホーム ページにアクセスして [Get Started] をクリックすると、Free ワークスペースまたは Standard ワークスペースを利用できます。   
 > 
 > 
 
@@ -142,10 +142,10 @@ Python のモデルを Azure Machine Learning にデプロイするには、モ�
 
 Azure Machine Learning でモデルを Web サービスとして設定、ビルド、発行、利用するために使用できる手順とコード スニペットを次に示します。
 
-#### <a name="setup"></a>セットアップ
-1. Revolution R Enterprise 8.0 IDE またはお使いの R IDE で「 ```install.packages("AzureML")``` 」と入力し、AzureML R パッケージをインストールします。
-2. RTools を [こちら](https://cran.r-project.org/bin/windows/Rtools/)からダウンロードします。 R パッケージを AzureML で運用可能な状態にするには、パスに zip ユーティリティ (と名前付きの zip.exe) が必要です。
-3. ホーム ディレクトリの ```.azureml``` というディレクトリの下に settings.json ファイルを作成し、Azure ML ワークスペースのパラメーターを入力します。
+#### <a name="setup"></a>[Setup]
+1. Revolution R Enterprise 8.0 IDE またはお使いの R IDE で「```install.packages("AzureML")```」と入力し、Machine Learning R パッケージをインストールします。
+2. RTools を [こちら](https://cran.r-project.org/bin/windows/Rtools/)からダウンロードします。 R パッケージを Machine Learning で運用可能な状態にするには、パスに zip ユーティリティ (と名前付きの zip.exe) が必要です。
+3. ホーム ディレクトリの ```.azureml``` というディレクトリの下に settings.json ファイルを作成し、Azure Machine Learning ワークスペースのパラメーターを入力します。
 
 settings.json ファイルの構造は次のとおりです。
 
@@ -155,7 +155,7 @@ settings.json ファイルの構造は次のとおりです。
     }}
 
 
-#### <a name="build-a-model-in-r-and-publish-it-in-azure-ml"></a>R でモデルを構築して Azure ML で発行する
+#### <a name="build-a-model-in-r-and-publish-it-in-azure-machine-learning"></a>R でモデルを構築して Azure Machine Learning で発行する
     library(AzureML)
     ws <- workspace(config="~/.azureml/settings.json")
 
@@ -172,7 +172,7 @@ settings.json ファイルの構造は次のとおりです。
 
     ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema = sleepstudy, data.frame=TRUE)
 
-#### <a name="consume-the-model-deployed-in-azure-ml"></a>Azure ML にデプロイされたモデルを利用する
+#### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Azure Machine Learning にデプロイされたモデルを利用する
 クライアント アプリケーションからモデルを利用するには、発行した Web サービスを Azure Machine Learning ライブラリを使って検索します。具体的には、`services` API 呼び出しを使って名前で検索することによって、Web サービスのエンドポイントを特定します。 後は、`consume` 関数を呼び出して、予測の対象となるデータ フレームを渡すだけです。
 Azure Machine Learning Web サービスとして発行されたモデルを利用するには、次のコードを使用します。
 
@@ -295,10 +295,10 @@ AzCopy コマンドを実行して Azure BLOB にコピーするとすぐに、�
 
 Azure ストレージ エクスプローラーを使用して、VM 内のローカル ファイルからデータをアップロードすることもできます。
 
-* コンテナーにデータをアップロードするには、対象のコンテナーを選択し、**[アップロード]** ボタンをクリックします。![](./media/machine-learning-data-science-vm-do-ten-things/storage-accounts.png)
-* **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする 1 つまたは複数のファイルをファイル システムから選択します。**[アップロード]** をクリックして、ファイルのアップロードを開始します。![](./media/machine-learning-data-science-vm-do-ten-things/upload-files-to-blob.png)
+* コンテナーにデータをアップロードするには、対象のコンテナーを選択し、**[アップロード]** ボタンをクリックします。![ストレージ エクスプローラーでのアップロード](./media/machine-learning-data-science-vm-do-ten-things/storage-accounts.png)
+* **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする 1 つまたは複数のファイルをファイル システムから選択します。**[アップロード]** をクリックして、ファイルのアップロードを開始します。![ファイルを BLOB にアップロード](./media/machine-learning-data-science-vm-do-ten-things/upload-files-to-blob.png)
 
-**Azure BLOB からのデータの読み取り (AML のリーダー モジュール)**
+**Azure BLOB からのデータの読み取り (Machine Learning のリーダー モジュール)**
 
 Azure Machine Learning Studio では、 **データのインポート モジュール** を使用して BLOB からデータを読み取ることができます。
 
@@ -377,11 +377,11 @@ Azure Data Lake Storage は、ビッグ データ分析ワークロード用の�
 
 データが Azure Blob Storage に存在する場合、U-SQL クエリで Azure Storage BLOB から直接データを読み取ることができます。 U-SQL クエリを作成する前に、ご利用の BLOB ストレージ アカウントが Azure Data Lake にリンクされていることを確認します。 **Azure Portal** に移動して [Azure Data Lake Analytics] ダッシュボードを探し、**[データ ソースの追加]** をクリックします。ストレージの種類に **[Azure Storage]** を選択し、Azure ストレージ アカウントの名前とキーを追加します。 これで、ストレージ アカウントに保存されているデータを参照できるようになります。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
+![ストレージ アカウントとキーの入力](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 Visual Studio では、Blob Storage からのデータ読み取り、各種データ操作、特徴エンジニアリングを実行するほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。 BLOB ストレージ内のデータを参照するときは **wasb://** を使用し、Azure Data Lake 内のデータを参照するときは **swbhdfs://** を使用します。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
+![データ フレーム](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 Visual Studio で次の U-SQL クエリを使用することができます。
 
@@ -427,7 +427,7 @@ Visual Studio で次の U-SQL クエリを使用することができます。
 
 クエリがサーバーに送信されると、ジョブのステータスを示すダイアグラムが表示されます。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Job_Status.PNG)
+![ジョブの状態の図](./media/machine-learning-data-science-vm-do-ten-things/USQL_Job_Status.PNG)
 
 **Data Lake 内のデータを照会する (U-SQL)**
 
@@ -435,11 +435,11 @@ Azure Data Lake にデータセットを取り込んだ後、[U-SQL 言語](../d
 
 サーバーにクエリを送信するとすぐに、**Azure Data Lake エクスプローラー**に tripdata_summary.CSV が表示されるので、そのファイルを右クリックしてデータをプレビューすることができます。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/USQL_create_summary.png)
+![Azure Data Lake エクスプ ローラー内のファイル](./media/machine-learning-data-science-vm-do-ten-things/USQL_create_summary.png)
 
 ファイルの情報が次のように表示されます。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/USQL_tripdata_summary.png)
+![ファイルの概要](./media/machine-learning-data-science-vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスター
 Azure HDInsight は、クラウド上で管理されている Apache Hadoop、Spark、HBase、および Storm サービスです。 Azure HDInsight クラスターは、データ サイエンス仮想マシンから簡単に操作できます。
@@ -448,25 +448,25 @@ Azure HDInsight は、クラウド上で管理されている Apache Hadoop、Sp
 
 * [Azure ポータル](https://portal.azure.com)から Azure BLOB ストレージ アカウントを作成します。 HDInsight クラスターのデータは、このストレージ アカウントを使用して格納されます。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
+![Azure Blob ストレージ アカウントを作成する](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
-*  [Azure ポータル](machine-learning-data-science-customize-hadoop-cluster.md)
+* [Azure ポータル](machine-learning-data-science-customize-hadoop-cluster.md)
   
   * 作成したストレージ アカウントは、この HDInsight クラスターに対して作成時にリンクする必要があります。 このストレージ アカウントは、クラスター内で処理可能なデータにアクセスするために使用されます。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_v4.PNG)
+![作成したストレージ アカウントを HDInsight クラスターにリンクする](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_v4.PNG)
 
 * 作成したら、クラスターのヘッド ノードへの**リモート アクセス**を有効にする必要があります。 ここで指定するリモート アクセス資格情報を覚えておいてください (作成時にクラスターに指定したものとは異なります)。以下で必要になります。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
+![リモート アクセスの有効化](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* Azure ML ワークスペースを作成します。 Machine Learning の実験は、この ML ワークスペースに保存されます。 下のスクリーンショットに示されるように、ポータルで強調表示されているオプションを選択します。
+* Azure Machine Learning ワークスペースを作成します。 Machine Learning の実験は、この Machine Learning ワークスペースに保存されます。 下のスクリーンショットに示されるように、ポータルで強調表示されているオプションを選択します。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space.PNG)
+![Azure Machine Learning ワークスペースの作成](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space.PNG)
 
-* 次に、Azure ML ワークスペースのパラメーターを入力します。
+* 次に、ワークスペースのパラメーターを入力します。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
+![Machine Learning ワークスペース パラメーターの入力](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
 
 * IPython Notebook を使用してデータをアップロードします。 まず、お使いのストレージ アカウントで、必要なパッケージをインポートし、資格情報を追加して、データベースを作成した後、データを HDI クラスターに読み込みます。
 
@@ -577,7 +577,7 @@ Hadoop クラスターにデータが存在するため、pyodbc パッケージ
     pd.read_sql(queryString,connection)
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
+![既存のテーブルを表示する](./media/machine-learning-data-science-vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
 
 毎月のレコード件数とチップの頻度を trip テーブルで調べてみましょう。
 
@@ -594,7 +594,7 @@ Hadoop クラスターにデータが存在するため、pyodbc パッケージ
     df['trip_count'].plot(kind='bar')
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
+![毎月のレコード数をプロットする](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
 
     queryString = """
         SELECT tipped, COUNT(*) AS tip_freq
@@ -613,7 +613,7 @@ Hadoop クラスターにデータが存在するため、pyodbc パッケージ
     df['trip_count'].plot(kind='bar')
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
+![チップの頻度をプロットする](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
 
 乗車位置と降車位置との距離を計算し、トリップ距離と比較することもできます。
 
@@ -636,7 +636,7 @@ Hadoop クラスターにデータが存在するため、pyodbc パッケージ
     results.head(5)
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
+![乗車と降車のテーブル](./media/machine-learning-data-science-vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
 
     results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
                        'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
@@ -645,9 +645,9 @@ Hadoop クラスターにデータが存在するため、pyodbc パッケージ
     plt.scatter(df['direct_distance'], df['trip_distance'])
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
+![乗車と降車の距離からトリップ距離をプロットする](./media/machine-learning-data-science-vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
 
-次に、モデリング用にダウンサンプル (1%) したデータ セットを用意します。 このデータを AML リーダー モジュールで使用できます。
+次に、モデリング用にダウンサンプル (1%) したデータ セットを用意します。 このデータを Machine Learning リーダー モジュールで使用できます。
 
         queryString = """
         create  table if not exists nyctaxi_downsampled_dataset_testNEW (
@@ -780,19 +780,19 @@ Hadoop クラスターにデータが存在するため、pyodbc パッケージ
     pd.read_sql(queryString,connection)
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
+![データのテーブル](./media/machine-learning-data-science-vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
-**HDI からのデータの読み取り (AML のリーダー モジュール)**
+**Machine Learning のリーダー モジュール を使用して HDI からのデータを読み取る**
 
-AML Studio で **リーダー** モジュールを使用して、Hadoop クラスター内のデータベースにアクセスすることもできます。 HDI クラスターと Azure ストレージ アカウントの資格情報を追加すると、HDI クラスター内のデータベースを使用して機械学習モデルを構築できるようになります。
+Machine Learning Studio で **リーダー** モジュールを使用して、Hadoop クラスター内のデータベースにアクセスすることもできます。 HDI クラスターと Azure ストレージ アカウントの資格情報を追加すると、HDI クラスター内のデータベースを使用して機械学習モデルを構築できるようになります。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/AML_Reader_Hive.PNG)
+![リーダー モジュールのプロパティ](./media/machine-learning-data-science-vm-do-ten-things/AML_Reader_Hive.PNG)
 
 さらに、スコア付けされたデータセットを表示できます。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/AML_Model_Results.PNG)
+![スコア付けされたデータセットを表示する](./media/machine-learning-data-science-vm-do-ten-things/AML_Model_Results.PNG)
 
-### <a name="azure-sql-data-warehouse-databases"></a>Azure SQL Data Warehouse と Azure SQL データベース
+### <a name="azure-sql-data-warehouse--databases"></a>Azure SQL Data Warehouse と Azure SQL データベース
 Azure SQL Data Warehouse は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。
 
 Azure SQL Data Warehouse は、こちらの [記事](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)で説明されている手順に従ってプロビジョニングできます。 Azure SQL Data Warehouse をプロビジョニングしたら、こちらの [チュートリアル](machine-learning-data-science-process-sqldw-walkthrough.md) を使って、SQL Data Warehouse 内のデータを使用したデータのアップロード、探索、モデリングを実行できます。
@@ -803,7 +803,7 @@ Azure DocumentDB は、クラウドにおける NoSQL データベースです�
 DSVM から DocumentDB にアクセスするには、以下の前提条件を満たす必要があります。
 
 1. DocumentDB Python SDK をインストールします (コマンド プロンプトから ```pip install pydocumentdb``` を実行)。
-2.  [Azure ポータル](https://portal.azure.com)
+2. [Azure ポータル](https://portal.azure.com)
 3. [こちら](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) から "DocumentDB Migration tool" をダウンロードし、任意のディレクトリに展開します。
 4. 移行ツール (DocumentDB 移行ツールをインストールしたディレクトリの dtui.exe) に次のコマンド パラメーターを指定して、 [パブリック BLOB](https://cahandson.blob.core.windows.net/samples/volcano.json) に格納されている JSON データ (volcano データ) を DocumentDB にインポートします。 インポート元とインポート先の場所を示すパラメーター (以下) を入力します。
    
@@ -816,13 +816,13 @@ DSVM から DocumentDB にアクセスするには、以下の前提条件を満
 
 1. Power BI Desktop を開いて "データを取得" します。 URL として https://cahandson.blob.core.windows.net/samples/volcano.json と指定します。
 2. リストとしてインポートされた JSON レコードが表示されます。
-3. そのリストを PowerBI が処理できるようテーブルに変換します。
+3. そのリストを Power BI が処理できるようテーブルに変換します。
 4. 展開アイコン (列の右側にある "左矢印と右矢印" のアイコン) をクリックして列を展開します。
 5. その位置が "Record" フィールドであることに注目します。 そのレコードを展開し、coordinates のみを選択してください。 coordinate はリスト列です。
 6. 新しい列を追加し、 ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```という式を使って、リストの coordinate 列を、coordinate リスト フィールドの 2 つの要素を連結したコンマ区切りの LatLong 列に変換します。
 7. 最後に、```Elevation``` 列を Decimal に変換し、**[閉じる]** と **[適用]** を選択します。
 
-以下のコードは、データ変換をクエリ言語で記述できる PowerBI の詳細エディターで上記の手順をスクリプト化したものです。上記の手順を実行する代わりに、このコードをコピーして貼り付けてもかまいません。
+以下のコードは、データ変換をクエリ言語で記述できる Power BI の詳細エディターで上記の手順をスクリプト化したものです。上記の手順を実行する代わりに、このコードをコピーして貼り付けてもかまいません。
 
     let
         Source = Json.Document(Web.Contents("https://cahandson.blob.core.windows.net/samples/volcano.json")),
@@ -838,7 +838,7 @@ DSVM から DocumentDB にアクセスするには、以下の前提条件を満
 
 これで Power BI データ モデルのデータができました。 Power BI Desktop は次のように表示されます。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/PowerBIVolcanoData.png)
+![Power BI Desktop](./media/machine-learning-data-science-vm-do-ten-things/PowerBIVolcanoData.png)
 
 このデータ モデルを使ってレポートの作成と視覚化の作業を開始できます。 レポートを作成するには、こちらの [Power BI の記事](../documentdb/documentdb-powerbi-visualize.md#build-the-reports) にある手順に従います。 最終的に次のようなレポートが得られます。
 
@@ -856,7 +856,7 @@ DSVM から DocumentDB にアクセスするには、以下の前提条件を満
 
 同様に、さほど大きな処理能力が VM に必要なくなった場合 (主なワークロードを Hadoop または Spark クラスターに移動したなど)、 [Azure ポータル](https://portal.azure.com) から、対象となる VM インスタンスの設定にアクセスして、クラスターをスケールダウンすることができます。 スクリーンショットを次に示します。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/VMScaling.PNG)
+![VM インスタンスの設定](./media/machine-learning-data-science-vm-do-ten-things/VMScaling.PNG)
 
 ## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10.仮想マシンに追加のツールをインストールする
 データ分析のさまざまなニーズを満たすうえで必要と考えられるいくつかのツールをパッケージングしました。これにより、環境を個別にインストールして構成する必要がなくなり、使用したリソースの料金のみを支払います。
@@ -869,6 +869,6 @@ DSVM から DocumentDB にアクセスするには、以下の前提条件を満
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

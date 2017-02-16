@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 09/26/2016
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6703485aff4a826394238b35720c2e528feae115
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e6090b9d4f39da58b394d1e7a33ff462536f2395
 
 
 ---
@@ -114,6 +114,6 @@ ms.openlocfilehash: 6703485aff4a826394238b35720c2e528feae115
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

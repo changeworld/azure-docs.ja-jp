@@ -1,5 +1,5 @@
 ---
-title: "CLI を使用して既存の Azure Virtual Network に Linux VM をデプロイする | Microsoft Docs"
+title: "既存のネットワークに Linux VM をデプロイする - Azure CLI | Microsoft Docs"
 description: "CLI を使用して、既存の Virtual Network に Linux VM をデプロイします。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,86 +13,27 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 12/05/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2fad20978f40150ef9f1cb44054da2ba66848bda
-ms.openlocfilehash: 613ce9b27bc26643b2f46c490d7f550b370df998
+ms.sourcegitcommit: e64449991bc28427d8f559ed13c3bdf9160488db
+ms.openlocfilehash: 93fa2521b81b423d663df6e04ef201839bca2814
 
 
 ---
 
-# <a name="deploy-a-linux-vm-into-an-existing-vnet--nsg-using-the-cli"></a>CLI を使用して既存の VNet および NSG に Linux VM をデプロイする
+# <a name="deploy-a-linux-vm-into-an-existing-azure-virtual-network-using-the-cli"></a>CLI を使用して、既存の Azure Virtual Network に Linux VM をデプロイします。
 
-この記事では、CLI フラグを使用して既存の Virtual Network (VNet) に VM をデプロイする方法について説明します。VNet は、既存のネットワーク セキュリティ グループ (NSG) を使用してセキュリティ保護されています。  要件は次のとおりです。
+この記事では、CLI フラグを使用して既存の仮想ネットワーク (VNet) に VM をデプロイする方法について説明します。  要件は次のとおりです。
 
 - [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
-
 - [SSH パブリック キー ファイルおよびプライベート キー ファイル](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quick-commands"></a>クイック コマンド
 
-各例を独自の設定に置き換えてください。
+タスクをすばやく実行する必要がある場合のために、次のセクションでは、必要なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#detailed-walkthrough)。
 
-### <a name="create-the-resource-group"></a>リソース グループの作成
-
-```azurecli
-azure group create myResourceGroup \
--l westus
-```
-
-### <a name="create-the-vnet"></a>VNet の作成
-
-```azurecli
-azure network vnet create myVNet \
--g myResourceGroup \
--a 10.10.0.0/24 \
--l westus
-```
-
-### <a name="create-the-nsg"></a>NSG の作成
-
-```azurecli
-azure network nsg create myNSG \
--g myResourceGroup \
--l westus
-```
-
-### <a name="add-an-inbound-ssh-allow-rule"></a>受信 SSH 許可ルールの追加
-
-```azurecli
-azure network nsg rule create inboundSSH \
--g myResourceGroup \
--a myNSG \
--c Allow \
--p Tcp \
--r Inbound \
--y 100 \
--f Internet \
--o 22 \
--e 10.10.0.0/24 \
--u 22
-```
-
-### <a name="add-a-subnet-to-the-vnet"></a>VNet へのサブネットの追加
-
-```azurecli
-azure network vnet subnet create mySubNet \
--g myResourceGroup \
--e myVNet \
--a 10.10.0.0/26 \
--o myNSG
-```
-
-### <a name="add-a-vnic-to-the-subnet"></a>サブネットへの VNic の追加
-
-```azurecli
-azure network nic create myVNic \
--g myResourceGroup \
--l westus \
--m myVNet \
--k mySubNet
-```
+前提条件: リソース グループ、VNet、SSH 受信を使用した NSG、サブネット。 各例を独自の設定に置き換えてください。
 
 ### <a name="deploy-the-vm-into-the-vnet-nsg-and-connect-the-vnic"></a>VM を VNet と NSG にデプロイし、VNic を接続する
 
@@ -126,7 +67,7 @@ azure group create myResourceGroup \
 
 ## <a name="create-the-vnet"></a>VNet の作成
 
-まず、VM を起動する VNet を作成します。  このチュートリアルでは、VNet にサブネットが 1 つ含まれます。  Azure VNet の詳細については、「[Azure CLI を使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+まず、VM を起動する VNet を作成します。  このチュートリアルでは、VNet にサブネットが&1; つ含まれます。  Azure VNet の詳細については、「[Azure CLI を使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
 ```azurecli
 azure network vnet create myVNet \
@@ -220,6 +161,6 @@ CLI フラグを使用して既存のリソースを呼び出すことで、既�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

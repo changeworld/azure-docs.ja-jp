@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 91490e33ab2d524da90ae75bd71abe8005e45c54
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 9ef430dfaa43f9bc4294593c8abbdaf457ef07c8
 
 
 ---
@@ -53,9 +53,9 @@ Azure ストレージ アカウントは、JDK、アプリケーション サー
 ストレージ アカウントの作成には数分かかる場合があります。 作成後、**[OK]** をクリックして、**[Add Storage Account (ストレージ アカウントの追加)]** ダイアログ ボックスを閉じると、使用可能なストレージ アカウントの一覧に新しいストレージ アカウントが追加されます。
 
 ## <a name="to-add-an-existing-storage-account-to-the-list"></a>既存のストレージ アカウントを一覧に追加するには
-1. Azure ストレージ アカウントをまだ保有していない場合は、前の「**新しいストレージ アカウントを作成するには**」セクションの手順に従って、ストレージ アカウントを作成します  (または、[Azure 管理ポータル][Azure 管理ポータル]で新しいストレージ アカウントを作成できます)。
+1. Azure ストレージ アカウントをまだ保有していない場合は、前の「**新しいストレージ アカウントを作成するには**」セクションの手順に従って、ストレージ アカウントを作成します  (または、[Microsoft Azure 管理ポータル][Azure Management Portal]で新しいストレージ アカウントを作成できます。)
 2. **[Storage Accounts (ストレージ アカウント)]** ダイアログ ボックスで、**[Add (追加)]** をクリックします。
-3. **[Add Storage Account (ストレージ アカウントの追加)]** ダイアログ ボックスで、**[Name (名前)]** と **[Access Key (アクセス キー)]** の値を入力します。 アカウント名とアクセス キーは、既存の Azure ストレージ アカウントのものである必要があります。 [Azure 管理ポータル][Azure 管理ポータル]の **[ストレージ]** セクションで、ストレージ アカウントの名称とキーを確認します。 **[ストレージ アカウントの追加]** ダイアログ ボックスは、次のようになります。
+3. **[Add Storage Account (ストレージ アカウントの追加)]** ダイアログ ボックスで、**[Name (名前)]** と **[Access Key (アクセス キー)]** の値を入力します。 アカウント名とアクセス キーは、既存の Azure ストレージ アカウントのものである必要があります。 [Microsoft Azure 管理ポータル][Azure Management Portal]の **[ストレージ]** セクションで、ストレージ アカウントの名前とキーを確認します。 **[ストレージ アカウントの追加]** ダイアログ ボックスは、次のようになります。
    
     ![][ic719497]
 4. **[OK]** をクリックして、**[Add Storage Account (ストレージ アカウントの追加)]** ダイアログ ボックスを閉じます。
@@ -77,20 +77,20 @@ Azure ストレージ アカウントは、JDK、アプリケーション サー
 ## <a name="see-also"></a>関連項目
 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]
 
-[Azure Toolkit for Eclipse のインストール][Azure Toolkit for Eclipse のインストール] 
+[Azure Toolkit for Eclipse のインストール][Installing the Azure Toolkit for Eclipse] 
 
-[Azure 向け Hello World アプリケーションを Eclipse で作成する][Azure 向け Hello World アプリケーションを Eclipse で作成する]
+[Azure 向け Hello World アプリケーションを Eclipse で作成する][Creating a Hello World Application for Azure in Eclipse]
 
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java デベロッパー センター]を参照してください。
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java Developer Center]を参照してください。
 
 <!-- URL List -->
 
-[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure 管理ポータル]: http://go.microsoft.com/fwlink/?LinkID=512959
-[Azure 向け Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
-[Azure Toolkit for Eclipse の新機能]: http://go.microsoft.com/fwlink/?LinkID=699552
+[Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[What's New in the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699552
 
 <!-- IMG List -->
 
@@ -101,6 +101,6 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

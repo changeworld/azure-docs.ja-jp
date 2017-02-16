@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/25/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5402481a0adc27474f7ddd9b5be1d71dc2c91d44
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a696120a5891f53ee8ff7db80fb53acba213978f
 
 
 ---
@@ -37,7 +37,7 @@ Service Bus を利用することで、クライアントは次の 3 つのプ�
 AMQP と SBMP の両者は、メッセージング ファクトリが存在する限り Service Bus への接続を維持するため、より効率的です。 また、バッチとプリフェッチも実装されます。 明記されていない限り、このトピックのすべてのコンテンツで AMQP または SBMP を使用するものとします。
 
 ## <a name="reusing-factories-and-clients"></a>ファクトリとクライアントの再利用
-[QueueClient][QueueClient] や [MessageSender][MessageSender] などの Service Bus クライアント オブジェクトは、接続の内部管理も提供する [MessagingFactory][MessagingFactory] オブジェクトにより作成されます。 メッセージを送信した後にメッセージ ファクトリ、またはキュー、トピック、サブスクリプションのクライアントを閉じ、次のメッセージを送信するときにこれらを再作成することはしないでください。 メッセージング ファクトリを閉じると Service Bus サービスの接続が削除され、ファクトリを再作成すると新しい接続が確立されます。 接続の確立は費用のかかる操作です。この操作は、同じファクトリとクライアント オブジェクトを複数の操作に再利用することで回避できます。 同時の非同期操作と複数のスレッドからメッセージを送信するための [QueueClient][QueueClient] オブジェクトを安全に使用できます。 
+[QueueClient][QueueClient] や [MessageSender][MessageSender] などの Service Bus クライアント オブジェクトは、接続の内部管理も提供する [MessagingFactory][MessagingFactory] オブジェクトによって作成されます。 メッセージを送信した後にメッセージ ファクトリ、またはキュー、トピック、サブスクリプションのクライアントを閉じ、次のメッセージを送信するときにこれらを再作成することはしないでください。 メッセージング ファクトリを閉じると Service Bus サービスの接続が削除され、ファクトリを再作成すると新しい接続が確立されます。 接続の確立は費用のかかる操作です。この操作は、同じファクトリとクライアント オブジェクトを複数の操作に再利用することで回避できます。 同時実行の非同期操作と複数のスレッドからメッセージを送信するための [QueueClient][QueueClient] オブジェクトを安全に使用できます。 
 
 ## <a name="concurrent-operations"></a>同時実行の操作
 操作 (送信、受信、削除など) には時間がかかります。 この時間には、要求と応答の待機時間だけでなく、Service Bus サービスによる操作の処理時間も含まれます。 時間あたりの操作数を増やすには、操作を同時に実行する必要があります。 これはさまざまな方法で実行できます。
@@ -89,7 +89,7 @@ Service Bus は "受信して削除" 操作のトランザクションをサポ�
 ## <a name="client-side-batching"></a>クライアント側のバッチ処理
 クライアント側のバッチ処理により、キューまたはトピックのクライアントはメッセージの送信を一定期間遅らせることができます。 クライアントがこの期間内に追加のメッセージを送信すると、1 つのバッチで複数のメッセージが送信されます。 クライアント側のバッチ処理ではまた、キューまたはサブスクリプションのクライアントが、複数の**完了**要求を 1 つの要求でバッチ処理します。 バッチ処理を使用できるのは、非同期の**送信**と**完了**操作のみです。 同期操作はすぐに Service Bus サービスに送信されます。 バッチ処理はピーク操作や受信操作では行われません。また、クライアント間でも行われません。
 
-バッチがメッセージの最大サイズを超えた場合、最後のメッセージがバッチから削除され、クライアントは直ちにバッチを送信します。 最後のメッセージは、次のバッチの最初のメッセージになります。 既定では、クライアントは 20 ミリ秒のバッチ間隔を使用します。 バッチ間隔を変更するには、メッセージング ファクトリを作成する前に [BatchFlushInterval][BatchFlushInterval] プロパティを設定します。 この設定は、このファクトリによって作成されるすべてのクライアントに影響します。
+既定では、クライアントは 20 ミリ秒のバッチ間隔を使用します。 バッチ間隔を変更するには、メッセージング ファクトリを作成する前に、[BatchFlushInterval][BatchFlushInterval] プロパティを設定します。 この設定は、このファクトリによって作成されるすべてのクライアントに影響します。
 
 バッチ処理を無効にするには、[BatchFlushInterval][BatchFlushInterval] プロパティを **TimeSpan.Zero** に設定します。 次に例を示します。
 
@@ -105,7 +105,7 @@ MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ## <a name="batching-store-access"></a>ストア アクセスのバッチ処理
 キュー、トピック、サブスクリプションのスループットを増やすために、Service Bus はその内部ストアに書き込む際に複数のメッセージをバッチ処理します。 キューまたはトピックで有効になっている場合、ストアへのメッセージ書き込みがバッチ処理されます。 キューまたはサブスクリプションで有効になっている場合、ストアからのメッセージ削除がバッチ処理されます。 エンティティのバッチ処理ストア アクセスが有効になっている場合、Service Bus はそのエンティティに関するストア書き込み操作を最大 20 ミリ秒遅らせます。 この間隔中に発生した追加のストアの操作はバッチに追加されます。 バッチ処理ストア アクセスは**送信**操作と**完了**操作にのみ影響を与えます。受信操作には影響を与えません。 バッチ処理ストア アクセスはエンティティのプロパティです。 バッチ処理は、バッチ処理ストア アクセスが有効になっているすべてのエンティティで発生します。
 
-新しいキュー、トピック、サブスクリプションを作成すると、バッチ処理ストア アクセスは既定で有効になります。 バッチ処理ストア アクセスを無効にするには、エンティティを作成する前に [EnableBatchedOperations][EnableBatchedOperations] プロパティを **false** に設定します。 次に例を示します。
+新しいキュー、トピック、サブスクリプションを作成すると、バッチ処理ストア アクセスは既定で有効になります。 バッチ処理ストア アクセスを無効にするには、エンティティを作成する前に、[EnableBatchedOperations][EnableBatchedOperations] プロパティを **false** に設定します。 次に例を示します。
 
 ```
 QueueDescription qd = new QueueDescription();
@@ -116,11 +116,11 @@ Queue q = namespaceManager.CreateQueue(qd);
 バッチ処理ストア アクセスは課金対象のメッセージ操作の数には影響を与えない、キュー、トピック、サブスクリプションのプロパティです。 受信モードから独立しており、クライアントと Service Bus サービスの間で使用されるプロトコルです。
 
 ## <a name="prefetching"></a>プリフェッチ
-プリフェッチにより、キューまたはサブスクリプションのクライアントは受信操作の実行時にサービスから追加のメッセージを読み込むことができます。 クライアントはこれらのメッセージをローカル キャッシュに格納します。 キャッシュのサイズは [QueueClient.PrefetchCount][QueueClient.PrefetchCount] プロパティまたは [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] プロパティによって決まります。 プリフェッチが有効になっているクライアントはそれぞれ独自のキャッシュを保持します。 キャッシュはクライアント間で共有されません。 クライアントが受信操作を開始するときに、そのクライアントのキャッシュが空の場合、サービスはメッセージのバッチを送信します。 バッチのサイズは、キャッシュのサイズと 256 KB のうちの少ない方と等しくなります。 クライアントが受信操作を開始するときに、そのクライアントのキャッシュにメッセージが含まれている場合、キャッシュからメッセージが取得されます。
+プリフェッチにより、キューまたはサブスクリプションのクライアントは受信操作の実行時にサービスから追加のメッセージを読み込むことができます。 クライアントはこれらのメッセージをローカル キャッシュに格納します。 キャッシュのサイズは、[QueueClient.PrefetchCount][QueueClient.PrefetchCount] プロパティまたは [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] プロパティによって決まります。 プリフェッチが有効になっているクライアントはそれぞれ独自のキャッシュを保持します。 キャッシュはクライアント間で共有されません。 クライアントが受信操作を開始するときに、そのクライアントのキャッシュが空の場合、サービスはメッセージのバッチを送信します。 バッチのサイズは、キャッシュのサイズと 256 KB のうちの少ない方と等しくなります。 クライアントが受信操作を開始するときに、そのクライアントのキャッシュにメッセージが含まれている場合、キャッシュからメッセージが取得されます。
 
 メッセージがプリフェッチされると、サービスはプリフェッチされたメッセージをロックします。 このロックにより、別の受信側はプリフェッチされたメッセージを受信できなくなります。 受信側がメッセージを完了できない状態でロックの有効期限が切れた場合、他の受信側がメッセージを受信できるようになります。 プリフェッチされたメッセージのコピーはキャッシュに残ります。 受信側が有効期限の切れたキャッシュのコピーを使用している場合、そのメッセージを完了しようとしたときに例外を受け取ります。 既定では、メッセージのロックは 60 秒後に期限切れになります。 この値は 5 分まで拡張できます。 期限切れのメッセージの使用を防ぐには、キャッシュ サイズを常に、ロックのタイムアウト間隔内にクライアントが使用できるメッセージの数より小さくする必要があります。
 
-60 秒間の既定のロック有効期限を使用するとき、[SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] の適切な値はファクトリの全受信側の最大処理レートの 20 倍になります。 たとえば、ファクトリが 3 つの受信側を作成すると、各受信側は 1 秒あたり最大 10 個のメッセージを処理できます。 プリフェッチ数が 20\* 3 \*10 = 600 を超えないようにしてください。 既定では、[QueueClient.PrefetchCount][QueueClient.PrefetchCount] は 0 に設定されます。これはサービスから追加のメッセージがフェッチされないことを意味します。
+60 秒間の既定のロック有効期限を使用する場合、[SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] の適切な値はファクトリの全受信側の最大処理レートの 20 倍になります。 たとえば、ファクトリが 3 つの受信側を作成すると、各受信側は 1 秒あたり最大 10 個のメッセージを処理できます。 プリフェッチ数が 20\* 3 \*10 = 600 を超えないようにしてください。 既定では、[QueueClient.PrefetchCount][QueueClient.PrefetchCount] は 0 に設定されます。これはサービスから追加のメッセージがフェッチされないことを意味します。
 
 メッセージをプリフェッチすると、メッセージ操作全体の数、つまりラウンド トリップが減るため、キューまたはサブスクリプションの全体でのスループットが増えます。 ただし、最初のメッセージのフェッチには (メッセージ サイズの増加に起因して) 時間がかかります。 プリフェッチ済みのメッセージは、クライアントが既にダウンロードしているため、速く受信できます。
 
@@ -140,7 +140,7 @@ namespaceManager.CreateTopic(td);
 消失してはならない重要な情報が含まれているメッセージがエクスプレス エンティティに送信される場合、[ForcePersistence][ForcePersistence] プロパティを **true** に設定することで、送信側は Service Bus で強制的にメッセージを安定したストレージに直ちに保存できます。
 
 ## <a name="use-of-partitioned-queues-or-topics"></a>パーティション分割されたキューまたはトピックの使用
-内部的には、Service Bus は同じノードとメッセージング ストアを使用して、メッセージング エンティティ (キューまたはトピック) のすべてのメッセージを処理し、格納します。 一方、パーティション分割されたキューまたはトピックは複数のノードとメッセージング ストアの間で分散されます。 パーティション分割されたキューとトピックは通常のキューとトピックより高いスループットを生むだけでなく、可用性にも優れています。 パーティション分割されたエンティティを作成するには、次の例のように、[EnablePartitioning][EnablePartitioning] プロパティを **true** に設定します。 パーティション分割されたエンティティの詳細については、[「パーティション分割されたメッセージング エンティティ」][パーティション分割されたメッセージング エンティティ]を参照してください。
+内部的には、Service Bus は同じノードとメッセージング ストアを使用して、メッセージング エンティティ (キューまたはトピック) のすべてのメッセージを処理し、格納します。 一方、パーティション分割されたキューまたはトピックは複数のノードとメッセージング ストアの間で分散されます。 パーティション分割されたキューとトピックは通常のキューとトピックより高いスループットを生むだけでなく、可用性にも優れています。 パーティション分割されたエンティティを作成するには、次の例のように、[EnablePartitioning][EnablePartitioning] プロパティを **true** に設定します。 パーティション分割されたエンティティの詳細については、[パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]に関する記事をご覧ください。
 
 ```
 // Create partitioned queue.
@@ -152,7 +152,7 @@ namespaceManager.CreateQueue(qd);
 ## <a name="use-of-multiple-queues"></a>複数のキューの使用
 パーティション分割されたキューまたはトピックを使用できない場合、または予想される負荷をパーティション分割された 1 つのキューまたはトピックで処理できない場合、複数のメッセージング エンティティを使用する必要があります。 複数のエンティティを使用するときは、すべてのエンティティに同じクライアントを使用するのではなく、エンティティごとに専用のクライアントを作成します。
 
-## <a name="development-testing-features"></a>開発およびテストの機能
+## <a name="development--testing-features"></a>開発およびテストの機能
 Service Bus は、開発専用に使用される機能の 1 つです。**運用環境の構成では絶対に使用しないでください**。
 
 [TopicDescription.EnableFilteringMessagesBeforePublishing](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing.aspx)
@@ -241,7 +241,7 @@ Service Bus によって、エンティティに最大 1000 件同時接続で�
 * プリフェッチ数を予想される受信レート (秒単位) の 20 倍に設定します。 これにより、Service Bus クライアント プロトコル伝送の数が減ります。
 
 ## <a name="next-steps"></a>次のステップ
-Service Bus のパフォーマンスの最適化の詳細については、[「パーティション分割されたメッセージング エンティティ」][パーティション分割されたメッセージング エンティティ]を参照してください。
+Service Bus のパフォーマンスの最適化の詳細については、[パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]に関する記事をご覧ください。
 
 [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
 [MessageSender]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx
@@ -254,10 +254,10 @@ Service Bus のパフォーマンスの最適化の詳細については、[「�
 [SubscriptionClient.PrefetchCount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.prefetchcount.aspx
 [ForcePersistence]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.forcepersistence.aspx
 [EnablePartitioning]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.enablepartitioning.aspx
-[パーティション分割されたメッセージング エンティティ]: service-bus-partitioning.md
+[Partitioned messaging entities]: service-bus-partitioning.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

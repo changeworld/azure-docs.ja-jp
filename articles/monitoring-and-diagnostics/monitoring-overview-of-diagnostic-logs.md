@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 12/20/2016
 ms.author: johnkem; magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 61a54b3cb170b7961a4900d2c353bea48ae83d64
+ms.sourcegitcommit: 142aa206431d05505c7990c5e5b07b3766fb0a37
+ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
 
 
 ---
@@ -28,16 +28,18 @@ ms.openlocfilehash: 61a54b3cb170b7961a4900d2c353bea48ae83d64
 ## <a name="what-you-can-do-with-diagnostic-logs"></a>診断ログで実行できること
 診断ログでは次のことを実行できます。
 
-* 監査や手動での検査に使用するために診断ログを **ストレージ アカウント** に保存する。 **診断設定**を使用して、リテンション期間 (日数) を指定できます。
+* 監査や手動での検査に使用するために診断ログを[**ストレージ アカウント**](monitoring-archive-diagnostic-logs.md)に保存する。 **診断設定**を使用して、リテンション期間 (日数) を指定できます。
 * サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを **Event Hubs** にストリーミング](monitoring-stream-diagnostic-logs-to-event-hubs.md)する。
 * 診断ログを [OMS Log Analytics](../log-analytics/log-analytics-azure-storage-json.md)
+
+設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントまたはイベント ハブ名前空間は、ログを出力するリソースと同じサブスクリプションに属している必要はありません。
 
 ## <a name="diagnostic-settings"></a>診断設定
 非コンピューティング リソースの診断ログは、診断設定を使用して構成します。 **診断設定** では、以下を制御します。
 
 * 診断ログの送信先 (ストレージ アカウント、Event Hubs、OMS Log Analytics)。
 * 送信するログ カテゴリ。
-* 各ログ カテゴリをストレージ アカウントに保持する期間。リテンション期間 0 日の場合、ログは永続的に保持されます。 それ以外の場合、この値は 1 ～ 2,147,483,647 の範囲の数にすることができます。 保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
+* 各ログ カテゴリをストレージ アカウントに保持する期間。リテンション期間 0 日の場合、ログは永続的に保持されます。 それ以外の場合、この値は 1 ～ 2,147,483,647 の範囲の数にすることができます。 保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。
 
 これらの設定は、Azure Portal 内のリソースの [診断] ブレード、Azure PowerShell および CLI のコマンド、または [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) を使用して簡単に構成できます。
 
@@ -91,14 +93,13 @@ Service Bus 規則 ID は、 `{service bus resource ID}/authorizationrules/{key 
 
 Log Analytics ワークスペースへの診断ログの送信を有効にするには、次のコマンドを使用します。
 
-    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [log analytics workspace id] -Enabled $true
+    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
 
-> [!NOTE]
-> WorkspaceId パラメーターは、10 月のリリースでは使用できません。 11 月のリリースで使用できるようになる予定です。
-> 
-> 
+次のコマンドを使用して、Log Analytics ワークスペースのリソース IDを取得できます。
 
-Azure ポータルで、Log Analytics ワークスペース ID を取得できます。
+```powershell
+(Get-AzureRmOperationalInsightsWorkspace).ResourceId
+```
 
 このパラメーターを組み合わせて、複数の出力オプションを有効にできます。
 
@@ -119,14 +120,7 @@ Service Bus 規則 ID は、 `{service bus resource ID}/authorizationrules/{key 
 
 Log Analytics ワークスペースへの診断ログの送信を有効にするには、次のコマンドを使用します。
 
-    azure insights diagnostic set --resourceId <resourceId> --workspaceId <workspaceId> --enabled true
-
-> [!NOTE]
-> workspaceId パラメーターは、10 月のリリースでは使用できません。 11 月のリリースで使用できるようになる予定です。
-> 
-> 
-
-Azure ポータルで、Log Analytics ワークスペース ID を取得できます。
+    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
 
 このパラメーターを組み合わせて、複数の出力オプションを有効にできます。
 
@@ -160,7 +154,7 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 
 | サービス | スキーマとドキュメント |
 | --- | --- |
-| ソフトウェア ロード バランサー |[Azure Load Balancer のログ分析 (プレビュー)](../load-balancer/load-balancer-monitor-log.md) |
+| Load Balancer |[Azure Load Balancer のログ分析 (プレビュー)](../load-balancer/load-balancer-monitor-log.md) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md) |
 | Application Gateway |[Application Gateway の診断ログ](../application-gateway/application-gateway-diagnostics.md) |
 | Key Vault |[Azure Key Vault のログ記録](../key-vault/key-vault-logging.md) |
@@ -175,41 +169,42 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 | Stream Analytics |使用可能なスキーマはありません。 |
 
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
-| リソースの種類 | カテゴリ | カテゴリの表示名 |
-| --- | --- | --- |
-| Microsoft.Automation/automationAccounts |JobLogs |ジョブ ログ |
-| Microsoft.Automation/automationAccounts |JobStreams |ジョブ ストリーム |
-| Microsoft.Batch/batchAccounts |ServiceLog |サービス ログ |
-| Microsoft.DataLakeAnalytics/accounts |Audit |Audit Logs |
-| Microsoft.DataLakeAnalytics/accounts |要求数 |要求ログ |
-| Microsoft.DataLakeStore/accounts |Audit |Audit Logs |
-| Microsoft.DataLakeStore/accounts |要求数 |要求ログ |
-| Microsoft.EventHub/namespaces |ArchiveLogs |アーカイブ ログ |
-| Microsoft.EventHub/namespaces |OperationalLogs |操作ログ |
-| Microsoft.KeyVault/vaults |AuditEvent |Audit Logs |
-| Microsoft.Logic/workflows |WorkflowRuntime |ワークフロー ランタイムの診断イベント |
-| Microsoft.Network/networksecuritygroups |NetworkSecurityGroupEvent |ネットワーク セキュリティ グループ イベント |
-| Microsoft.Network/networksecuritygroups |NetworkSecurityGroupRuleCounter |ネットワーク セキュリティ グループの規則数 |
-| Microsoft.Network/networksecuritygroups |NetworkSecurityGroupFlowEvent |ネットワーク セキュリティ グループの規則フロー イベント |
-| Microsoft.Network/loadBalancers |LoadBalancerAlertEvent |ロード バランサーのアラート イベント |
-| Microsoft.Network/loadBalancers |LoadBalancerProbeHealthStatus |ロード バランサーのプローブ正常性状態 |
-| Microsoft.Network/applicationGateways |ApplicationGatewayAccessLog |アプリケーション ゲートウェイのアクセス ログ |
-| Microsoft.Network/applicationGateways |ApplicationGatewayPerformanceLog |アプリケーション ゲートウェイのパフォーマンス ログ |
-| Microsoft.Network/applicationGateways |ApplicationGatewayFirewallLog |アプリケーション ゲートウェイのファイアウォール ログ |
-| Microsoft.Search/searchServices |OperationLogs |操作ログ |
-| Microsoft.ServerManagement/nodes |RequestLogs |要求ログ |
-| Microsoft.ServiceBus/namespaces |OperationalLogs |操作ログ |
-| Microsoft.StreamAnalytics/streamingjobs |実行 |実行 |
-| Microsoft.StreamAnalytics/streamingjobs |作成 |作成 |
+|リソースの種類|カテゴリ|カテゴリの表示名|
+|---|---|---|
+|Microsoft.Automation/automationAccounts|JobLogs|ジョブ ログ|
+|Microsoft.Automation/automationAccounts|JobStreams|ジョブ ストリーム|
+|Microsoft.Batch/batchAccounts|ServiceLog|サービス ログ|
+|Microsoft.DataLakeAnalytics/accounts|Audit|Audit Logs|
+|Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
+|Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
+|Microsoft.DataLakeStore/accounts|要求数|要求ログ|
+|Microsoft.EventHub/namespaces|ArchiveLogs|アーカイブ ログ|
+|Microsoft.EventHub/namespaces|OperationalLogs|操作ログ|
+|Microsoft.KeyVault/vaults|AuditEvent|Audit Logs|
+|Microsoft.Logic/workflows|WorkflowRuntime|ワークフロー ランタイムの診断イベント|
+|Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|統合アカウント追跡イベント|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|ネットワーク セキュリティ グループ イベント|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|ネットワーク セキュリティ グループの規則数|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|ネットワーク セキュリティ グループの規則フロー イベント|
+|Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|
+|Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|
+|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|アプリケーション ゲートウェイのアクセス ログ|
+|Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|アプリケーション ゲートウェイのパフォーマンス ログ|
+|Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|アプリケーション ゲートウェイのファイアウォール ログ|
+|Microsoft.Search/searchServices|OperationLogs|操作ログ|
+|Microsoft.ServerManagement/nodes|RequestLogs|要求ログ|
+|Microsoft.ServiceBus/namespaces|OperationalLogs|操作ログ|
+|Microsoft.StreamAnalytics/streamingjobs|実行|実行|
+|Microsoft.StreamAnalytics/streamingjobs|作成|作成|
 
 ## <a name="next-steps"></a>次のステップ
 * [診断ログを **Event Hubs** にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Azure Monitor REST API を使用して診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
-* [ログを OMS Log Analytics で分析する](../log-analytics/log-analytics-azure-storage-json.md)
+* [ログを OMS Log Analytics で分析する](../log-analytics/log-analytics-azure-storage.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

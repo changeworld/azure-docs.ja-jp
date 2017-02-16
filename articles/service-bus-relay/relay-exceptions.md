@@ -1,5 +1,5 @@
 ---
-title: "Relay の例外 | Microsoft Docs"
+title: "Azure Relay 例外と解決方法 | Microsoft Docs"
 description: "Relay の例外と推奨アクションの一覧。"
 services: service-bus-relay
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3feece5fc2497aec59bd065c345b21e800c87fd2
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: f5323820b49f2dcbf8a2d1b669e2faea91c2f724
 
 
 ---
@@ -40,7 +40,7 @@ Relay API で生成される例外をカテゴリ別に分類し、修復のた�
 | [無効な操作](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |要求されたユーザー操作はサーバーまたはサービス内で許可されていません。 詳細については、例外メッセージを参照してください。 たとえば、 [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) は、 **ReceiveAndDelete** モードでメッセージを受信した場合に、この例外を生成します。 |コードとドキュメントを確認します。 要求した操作が有効なことを確かめてください。 |再試行によって解決することはありません。 |
 | [操作は取り消されました](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |既に終了、中止、または破棄されたオブジェクトに対して操作を呼び出そうとしました。 まれに、アンビエント トランザクションが既に破棄されている場合があります。 |コードを確認し、破棄されたオブジェクトに対して操作を呼び出していないことを確かめます。 |再試行によって解決することはありません。 |
 | [未承認のアクセス](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |[TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) オブジェクトはトークンを取得できませんでした。トークンが無効です。または、操作の実行に必要な要求がトークンに含まれていません。 |トークン プロバイダーが正しい値を使用して作成されていることを確認します。 Access Control Service の構成を確認します。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
-| [引数の例外](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [引数が null です](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[範囲外の引数](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |メソッドに指定された 1 つまたは複数の引数が無効です。<br /> [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) または [Create](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.create.aspx) に指定された URI にパス セグメントが含まれています。<br /> [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) または [Create](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.create.aspx) に指定された URI スキームが無効です。 <br />プロパティ値が 32 KB を超えています。 |呼び出し元のコードを確認し、引数が正しいことを確かめます。 |再試行によって解決することはありません。 |
+| [引数の例外](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [引数が null です](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[範囲外の引数](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |メソッドに指定された&1; つまたは複数の引数が無効です。<br /> [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) または [Create](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.create.aspx) に指定された URI にパス セグメントが含まれています。<br /> [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) または [Create](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.create.aspx) に指定された URI スキームが無効です。 <br />プロパティ値が 32 KB を超えています。 |呼び出し元のコードを確認し、引数が正しいことを確かめます。 |再試行によって解決することはありません。 |
 | [サーバー ビジー](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx) |この時点では、このサービスで要求を処理できません。 |クライアントは、しばらく待機してから操作をやり直すことができます。 |クライアントは、一定の間隔をおいてから再試行することができます。 再試行の結果として別の例外が発生した場合は、その例外の再試行動作を確認します。 |
 | [クォータを超過した](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.quotaexceededexception.aspx) |メッセージング エンティティが最大許容サイズに達しています。 |エンティティまたはそのサブキューからメッセージを受信して、エンティティ内に領域を作成します。 「 [QuotaExceededException](#quotaexceededexception)」を参照してください。 |メッセージがそれまでに削除されている場合は、再試行によって解決することがあります。 |
 | [メッセージ サイズの超過](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesizeexceededexception.aspx) |メッセージ ペイロードが 256K の制限を超えています。 ただし 256k の制限はメッセージの合計サイズであり、システム プロパティや .NET のオーバーヘッドも含めたサイズです。 |メッセージ ペイロードのサイズを小さくし、操作を再試行します。 |再試行によって解決することはありません。 |
@@ -55,7 +55,7 @@ Relay の場合、この例外は [System.ServiceModel.QuotaExceededException](h
 
 [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) プロパティの値を確認する必要があります。この制限に達した場合も、[TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) が発生する可能性があります。
 
-Relay では、リレー送信者接続を最初に開いたときにタイムアウトの例外を受け取る可能性があります。 この例外の一般的な原因には、次の 2 つがあります。
+Relay では、リレー送信者接続を最初に開いたときにタイムアウトの例外を受け取る可能性があります。 この例外の一般的な原因には、次の&2; つがあります。
 
 1. [OpenTimeout](https://msdn.microsoft.com/library/wcf.opentimeout.aspx) 値が小さすぎる可能性があります (1 秒に満たないなど)。
 2. オンプレミスのリレー リスナーが反応していない (または、リスナーに新しいクライアント接続を受け入れられないようにするファイアウォール ルールの問題が発生している) 可能性があり、 [OpenTimeout](https://msdn.microsoft.com/library/wcf.opentimeout.aspx) 値が約 20 秒未満になっています。
@@ -67,7 +67,7 @@ Relay では、リレー送信者接続を最初に開いたときにタイム�
 ```
 
 ### <a name="common-causes"></a>一般的な原因
-この例外の一般的な原因には、次の 2 つがあります。正しくない構成と、一時的なサービス エラーです。
+この例外の一般的な原因には、次の&2; つがあります。正しくない構成と、一時的なサービス エラーです。
 
 1. **構成が正しくない**
     操作状態に対して、操作タイムアウトが小さすぎる可能性があります。 クライアント SDK の操作タイムアウトの既定値は 60 秒です。 コードに小さすぎる値を設定していないかどうかを確認します。 ネットワークの状態と CPU 使用率は、特定の操作が完了する時間に影響します。このため、操作タイムアウトに小さい値を設定することは推奨されません。
@@ -83,6 +83,6 @@ Relay では、リレー送信者接続を最初に開いたときにタイム�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

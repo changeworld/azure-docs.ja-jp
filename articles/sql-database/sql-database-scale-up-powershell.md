@@ -1,6 +1,6 @@
 ---
-title: "PowerShell を使用して Azure SQL Database のサービス階層とパフォーマンス レベルを変更する | Microsoft Docs"
-description: "「Azure SQL Database のサービス階層とパフォーマンス レベルを変更する」では、PowerShell を使用した SQL Database のスケール アップとスケール ダウンの方法について説明しています。 PowerShell を使用して Azure SQL Database の価格レベルを変更します。"
+title: "PowerShell: Azure SQL Database の価格レベルを変更する | Microsoft Docs"
+description: "PowerShell を使用して Azure SQL Database のサービス階層とパフォーマンス レベルを変更し、SQL Database のリソースと価格のスケールアップやスケールダウンを行う方法について説明しています。"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,16 +16,15 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aea3bcbd6ac73a05b00b7b79b2dc47bf06d67f6f
+ms.sourcegitcommit: 5b1a96149924c6170ea4561b9639f6b85b15ddd3
+ms.openlocfilehash: c45d9200dd25d18d45602c377c682875d04c64cb
 
 
 ---
 # <a name="change-the-service-tier-and-performance-level-pricing-tier-of-a-sql-database-with-powershell"></a>PowerShell で SQL Database のサービス階層とパフォーマンス レベル (価格レベル) を変更する
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-database-scale-up.md)
-> * [**PowerShell**](sql-database-scale-up-powershell.md)
-> 
+> * [**PowerShell**](sql-database-scale-up-powershell.md)> 
 > 
 
 サービス レベルとパフォーマンス レベルは、SQL Database で利用できる機能とリソースを表しており、アプリケーションのニーズの変化に応じて更新できます。 詳細については、「 [サービス レベル](sql-database-service-tiers.md)」をご覧ください。
@@ -43,7 +42,7 @@ ms.openlocfilehash: aea3bcbd6ac73a05b00b7b79b2dc47bf06d67f6f
 **この記事を完了するには、以下が必要です。**
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、このページの上部にある " **無料アカウント** " をクリックしてサブスクリプションを作成してから、この記事に戻って最後まで完了してください。
-* Azure SQL Database。 SQL Database がない場合は、「 [最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
+* Azure SQL Database。 SQL Database がない場合は、「 [最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って&1; つ作成してください。
 * Azure PowerShell。
 
 [!INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
@@ -104,6 +103,6 @@ Set-AzureRmSqlDatabase -DatabaseName $DatabaseName -ServerName $ServerName -Reso
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

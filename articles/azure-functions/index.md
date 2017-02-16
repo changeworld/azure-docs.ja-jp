@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "タスクをバックグラウンドで、またはスケジュールに従って実行するための関数を、特別なインフラストラクチャを使用せずに、選択した言語で開発してデプロイする方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 87316969b7849396c6542decde3257774c35c454
-ms.openlocfilehash: dc15cd4e497135ea9ce07d671020af6df49ad3f6
+ms.sourcegitcommit: 76fed1f753b910007be4d9bb16630483aa225760
+ms.openlocfilehash: 91deffe385997c3e658a7fbfe194c9c2b762df58
 
 ---
 #<a name="azure-functions-documentation"></a>Azure Functions のドキュメント
 
-Azure Functions は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 目の前の問題に必要なコードを記述すればよく、そのコードを実行するインフラストラクチャのアプリケーション全体のことを考える必要がありません。 C#、f#、Node.js、Python、PHP など、好きな言語で開発することもできます。
+Functions を使用して、インフラストラクチャをセットアップせずに、選択した言語を用いてクラウド上で小規模なコードを開発してデプロイする方法について説明します。 チュートリアルやテンプレートなどのドキュメントでは、バックグラウンド スレッドで、またはスケジュールに従って実行したいタスクの関数を作成する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -115,6 +116,6 @@ Azure Functions のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

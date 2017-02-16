@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 09/28/2016
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 3416511777ff006d0aa933cd45e50f1d200bcad4
+ms.sourcegitcommit: c9730b553e59d12b8720bbf3a06cc956912e27de
+ms.openlocfilehash: 37063d35e76d03a84f6e4451c2f6c363704607f2
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 3416511777ff006d0aa933cd45e50f1d200bcad4
 > 
 > 
 
-Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。 1 か所にログを収集すると、サービス、アプリケーション、またはクラスター自体のどこに問題があるかに関係なく、問題の分析と解決が簡単になります。 ログのアップロードと収集には、ログを Azure Storage にアップロードする Azure 診断拡張機能を使用する方法があります。 ストレージからイベントを読み取って、 [Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品または他のログ解析ソリューションに配置できます。
+Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。 1 か所にログを収集すると、サービス、アプリケーション、またはクラスター自体のどこに問題があるかに関係なく、問題の分析と解決が簡単になります。 ログを収集してアップロードするための方法としては、Azure 診断拡張機能を使用する方法があります。この拡張機能では、Azure Storage、Azure Application Insights、または Azure Event Hubs にログをアップロードできます。 また、ストレージや Event Hubs からイベントを読み取って、 [Log Analytics](../log-analytics/log-analytics-service-fabric.md) などの製品や、その他のログ解析ソリューションにログを送信することもできます。 [Azure  Application Insights](https://azure.microsoft.com/services/application-insights/) には、包括的なログ検索と分析サービスが組み込みで付属しています。
 
 ## <a name="log-sources-that-you-might-want-to-collect"></a>収集することができるログ ソース
 * **Service Fabric のログ**: [LTTng](http://lttng.org) を使用してプラットフォームによって出力され、ストレージ アカウントにアップロードされます。 ログには、プラットフォームから出力される操作イベントまたは実行時イベントが含まれます。 これらのログは、クラスター マニフェストで指定された場所に保存されます。 (ストレージ アカウントの詳細を取得するには、タグ **AzureTableWinFabETWQueryable** を検索し、**StoreConnectionString** を探してください。)
@@ -52,6 +52,6 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

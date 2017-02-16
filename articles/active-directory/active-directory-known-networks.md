@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9911945ae36fc00c9be5092dd040b67adf537ec3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e6c6ce37be42bafe091bad30424c3055b91f6105
 
 
 ---
@@ -49,6 +49,6 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cfe729f56ce0d1e4bc7f1fe7eedefd736c8ca0d0
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: befad7c8b40792d93ddef44a8ce0c8deb4dfe8e4
 
 
 ---
@@ -74,6 +74,6 @@ Microsoft Passport を有効にすると、次の操作によって会社のリ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "カスタム追跡スキーマ | Microsoft Docs"
-description: "カスタム追跡スキーマについての詳細情報"
+title: "B2B 監視のカスタム追跡スキーマ - Azure Logic Apps | Microsoft Docs"
+description: "カスタム追跡スキーマを作成して、Azure 統合アカウントのトランザクションからの B2B メッセージを監視します。"
 author: padmavc
 manager: anneta
 editor: 
@@ -12,11 +12,11 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: ef7681f1411e1ea5b3411b714d5fb9f5a8be4f17
+ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
+ms.openlocfilehash: a3bb9851d0f7e6f40f456f7989ae949fb38549e0
 
 
 ---
@@ -87,6 +87,6 @@ B2B プロトコル追跡スキーマ について詳しくは、次のページ
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

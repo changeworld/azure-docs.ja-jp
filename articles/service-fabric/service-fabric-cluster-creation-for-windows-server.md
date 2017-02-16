@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2016
+ms.date: 12/06/2016
 ms.author: dkshir;chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 913726bb57f727bd62cdee0aee16bc886b38884f
+ms.sourcegitcommit: 6db229794c90e985de834bd3bfb6e0b030de2df5
+ms.openlocfilehash: 0cb59a2e94a9c985cb56d9dd20c05e2e22a45151
 
 
 ---
@@ -26,7 +26,7 @@ Azure Service Fabric を使用すると、Windows Server を実行するあら�
 この記事では、Service Fabric のスタンドアロン パッケージを使用して、オンプレミスにクラスターを作成する手順について説明していますが、他の環境 (他のクラウドなど) にも簡単に応用することができます。
 
 > [!NOTE]
-> このスタンドアロン Windows Server パッケージには、商用では使用できない、プレビュー段階の機能が含まれている可能性があります。 プレビューに含まれている機能の一覧を確認するには、「このパッケージに含まれる機能の確認」を参照してください。 [使用許諾契約書のコピーのダウンロード](http://go.microsoft.com/fwlink/?LinkID=733084) もできるようになりました。
+> このスタンドアロン Windows Server パッケージは市販されており、運用環境デプロイに使用できます。 このパッケージには、Service Fabric の "プレビュー" 段階の新機能が含まれている場合があります。 プレビュー機能の一覧については、「このパッケージに含まれるプレビュー機能」を ご覧ください。 [使用許諾契約書のコピーのダウンロード](http://go.microsoft.com/fwlink/?LinkID=733084) ができるようになりました。
 > 
 > 
 
@@ -35,6 +35,7 @@ Azure Service Fabric を使用すると、Windows Server を実行するあら�
 ## <a name="get-support-for-the-service-fabric-standalone-package"></a>Service Fabric スタンドアロン パッケージに関連したサポートの利用
 * Windows Server 用 Service Fabric スタンドアロン パッケージに関するコミュニティへの質問を [Azure Service Fabric フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?) で投稿します。
 * [Service Fabric の専門家によるサポート](http://support.microsoft.com/oas/default.aspx?prid=16146)については、チケットを申請してください。  Microsoft によるプロフェッショナル サポートの詳細については、[こちら](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0) をご覧ください。
+* [Microsoft Premier サポート](https://support.microsoft.com/en-us/premier)の一環として、このパッケージのサポートを受けることもできます。 
 
 <a id="downloadpackage"></a>
 
@@ -238,26 +239,28 @@ Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 
 <a id="previewfeatures"></a>
 
-## <a name="preview-features-included-in-this-package"></a>このパッケージに含まれる機能の確認
+## <a name="preview-features-included-in-this-package"></a>このパッケージに含まれるプレビュー機能
 なし。
 
+
 > [!NOTE]
-> [Windows Server (バージョン 5.3.204.x) 用のスタンドアロン クラスターの新しい GA バージョン](https://azure.microsoft.com/blog/azure-service-fabric-for-windows-server-now-ga/)では、手動でも自動でも、クラスターを今後のリリースにアップグレードすることができます。 この機能はプレビュー バージョンでは提供されていないため、GA バージョンを使用してクラスターを作成し、プレビュー クラスターからデータとアプリケーションを移行する必要があります。 この機能の詳細については、しばらく待ちください。
+> [Windows Server (バージョン 5.3.204.x) 用のスタンドアロン クラスターの新しい GA バージョン](https://azure.microsoft.com/blog/azure-service-fabric-for-windows-server-now-ga/)以降では、クラスターを今後のリリースに手動でアップグレードすることも、自動的にアップグレードすることもできます。 詳細については、[スタンドアロン Service Fabric クラスターのバージョンのアップグレード](service-fabric-cluster-upgrade-windows-server.md)に関するドキュメントをご覧ください。
 > 
 > 
 
 ## <a name="next-steps"></a>次のステップ
 * [スタンドアロン Windows クラスターの構成設定](service-fabric-cluster-manifest.md)
 * [スタンドアロン Service Fabric クラスターでノードを追加または削除する](service-fabric-cluster-windows-server-add-remove-nodes.md)
+* [スタンドアロン Service Fabric クラスターのバージョンをアップグレードする](service-fabric-cluster-upgrade-windows-server.md)
 * [Windows を実行する Azure VM を使用してスタンドアロン Service Fabric クラスターを作成する](service-fabric-cluster-creation-with-windows-azure-vms.md)
 * [Windows 上のスタンドアロン クラスターを Windows セキュリティで保護する](service-fabric-windows-cluster-windows-security.md)
 * [X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)
 
 <!--Image references-->
-[信頼できるゾーン]: ./media/service-fabric-cluster-creation-for-windows-server/TrustedZone.png
+[Trusted Zone]: ./media/service-fabric-cluster-creation-for-windows-server/TrustedZone.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

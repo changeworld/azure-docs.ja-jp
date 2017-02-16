@@ -12,16 +12,16 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/24/2016
+ms.date: 11/30/2016
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 2b62ddb83b35194b9fcd23c60773085a9551b172
-ms.openlocfilehash: 041b47ed2aba11d45ed6ae02dadb73916046dd78
+ms.sourcegitcommit: 976470e7b28a355cbfa4c5c8d380744eb1366787
+ms.openlocfilehash: f8711ba45339be7ffbeac1ab28823df43db23046
 
 ---
 
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
-この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 Azure Search の新しい BLOB インデクサーを使用すると、迅速かつシームレスに作成できます。
+この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 まず、BLOB インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。 
 
 ## <a name="supported-document-formats"></a>サポートされるドキュメントの形式
 BLOB インデクサーは、次の形式のドキュメントからテキストを抽出できます。
@@ -45,17 +45,15 @@ BLOB インデクサーは、次の形式のドキュメントからテキスト
 Azure Blob Storage インデクサーを設定するには、以下を使用します。
 
 * [Azure ポータル](https://ms.portal.azure.com)
-* Azure Search [REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx)
-* Azure Search .NET SDK [バージョン 2.0 (プレビュー)](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx)
+* Azure Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Azure Search [.NET SDK](https://aka.ms/search-sdk)
 
 > [!NOTE]
 > フィールド マッピングなど、機能によってはまだポータルで使用できないものがあります。こうした機能についてはプログラムで使用する必要があります。
 >
 >
 
-この記事では、REST API を使用してインデクサーを設定します。 最初に、データ ソースを作成し、次にインデックスを作成して、最後にインデクサーを構成します。
-
-その後、BLOB インデクサーが BLOB を解析する方法、インデックスを作成する BLOB を選択する方法、サポートされていないコンテンツの種類の BLOB を処理する方法、利用可能な構成設定の詳細について取り上げます。 
+ここでは、REST API を使用したフローについて説明します。 
 
 ### <a name="step-1-create-a-data-source"></a>手順 1: データ ソースを作成する
 データ ソースでは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、およびデータの変更 (新しい行、変更された行、削除された行) を効率よく識別するためのポリシーを指定します。 データ ソースは、同じ Search サービス内の複数のインデクサーで使用できます。
@@ -67,7 +65,7 @@ BLOB インデックス作成の場合は、次の必須プロパティがデー
 * **credentials** は、ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして提供します。 接続文字列は、Azure Portal から取得できます。これを行うには、目的のストレージ アカウント ブレードの **[設定]**  >  **[キー]** に移動して、"プライマリ接続文字列" または "セカンダリ接続文字列" の値を使用します。
 * **container** は、ストレージ アカウントにあるコンテナーを指定します。 既定では、コンテナー内のすべての BLOB を取得できます。 特定の仮想ディレクトリにある BLOB についてのみインデックスを作成する場合は、オプションの **query** パラメーターを使用してそのディレクトリを指定できます。
 
-以下にデータ ソース定義の例を示します。
+データ ソースを作成する方法を次に示します。
 
     POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
@@ -80,12 +78,12 @@ BLOB インデックス作成の場合は、次の必須プロパティがデー
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
     }   
 
-データ ソース作成 API の詳細については、「 [データ ソースの作成](https://msdn.microsoft.com/library/azure/dn946876.aspx)」をご覧ください。
+データ ソース作成 API の詳細については、「 [データ ソースの作成](https://docs.microsoft.com/rest/api/searchservice/create-data-source)」をご覧ください。
 
 ### <a name="step-2-create-an-index"></a>手順 2: インデックスを作成する
-インデックスでは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。  
+インデックスでは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。
 
-BLOB のインデックス作成の場合は、BLOB を格納するための検索可能な `content` フィールドを持つインデックスであることを確認してください。
+ここでは、BLOB から抽出されたテキストを格納するために、検索可能な `content` フィールドを含むインデックスを作成する方法を示します。   
 
     POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
     Content-Type: application/json
@@ -99,10 +97,12 @@ BLOB のインデックス作成の場合は、BLOB を格納するための検�
           ]
     }
 
-インデックス作成 API の詳細については、「 [Create Index](https://msdn.microsoft.com/library/dn798941.aspx)
+インデックスの作成の詳細については、[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)に関する記事をご覧ください。
 
 ### <a name="step-3-create-an-indexer"></a>手順 3: インデクサーを作成する
-インデクサーは、データ ソースをターゲットの検索インデックスに接続し、データ更新を自動化できるようにスケジュール情報を提供します。 インデックスとデータ ソースを作成すると、データ ソースとターゲットのインデックスを参照するインデクサーを作成することは比較的簡単です。 次に例を示します。
+インデクサーはデータ ソースをターゲットの検索インデックスに接続し、データ更新を自動化するスケジュールを提供します。 
+
+インデックスとデータ ソースを作成したら、インデクサーを作成できます。
 
     POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
@@ -117,7 +117,7 @@ BLOB のインデックス作成の場合は、BLOB を格納するための検�
 
 このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
 
-インデクサー作成 API の詳細については、「 [インデクサーの作成](https://msdn.microsoft.com/library/azure/dn946899.aspx)」をご覧ください。
+インデクサー作成 API の詳細については、「 [インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)」をご覧ください。
 
 ## <a name="how-azure-search-indexes-blobs"></a>Azure Search で BLOB のインデックスを作成する方法
 
@@ -147,13 +147,14 @@ BLOB のインデックス作成の場合は、BLOB を格納するための検�
 >
 >
 
-### <a name="picking-the-document-key-field-and-dealing-with-different-field-names"></a>ドキュメントのキー フィールドの選択と各種フィールド名の処理
+<a name="DocumentKeys"></a>
+### <a name="defining-document-keys-and-field-mappings"></a>ドキュメント キーとフィールド マッピングの定義
 Azure Search では、ドキュメントがそのキーによって一意に識別されます。 それぞれの検索インデックスに、Edm.String 型のキー フィールドが 1 つだけ存在している必要があります。 キー フィールドは、インデックスに追加するドキュメントごとに必要となります (唯一の必須フィールド)。  
 
 抽出されたフィールドとインデックスのキー フィールドとのマッピングは、慎重に検討する必要があります。 その例を次に示します。
 
 * **metadata\_storage\_name** - 名前をキーにできればそれに越したことはありませんが、1) 同じ名前の BLOB が別のフォルダーに存在し、名前が重複する可能性があること、2) ドキュメント キーに無効な文字 (ダッシュなど) が名前に含まれている可能性があることに注意する必要があります。 無効な文字は、`base64Encode` [フィールド マッピング関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用して処理できます。その場合、API 呼び出し (Lookup など) にドキュメント キーを渡すとき、必ずエンコードしてください  (たとえば、.NET であれば [UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) メソッドを利用できます)。
-* **metadata\_storage\_path** - 完全パスであれば一意性は保証されます。ただし、パスに使われる `/` 文字は、[ドキュメント キーでは無効](https://msdn.microsoft.com/library/azure/dn857353.aspx)です。  この場合も、`base64Encode` [関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用してキーをエンコーディングすることができます。
+* **metadata\_storage\_path** - 完全パスであれば一意性は保証されます。ただし、パスに使われる `/` 文字は、[ドキュメント キーでは無効](https://docs.microsoft.com/rest/api/searchservice/naming-rules)です。  この場合も、`base64Encode` [関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用してキーをエンコーディングすることができます。
 * いずれの選択肢も利用できない場合は、独自のメタデータ プロパティを BLOB に追加できます。 ただし、この方法を選んだ場合、BLOB のアップロード プロセスで、該当するメタデータのプロパティをすべての BLOB に追加する必要があります。 キーは必須のプロパティであるため、そのプロパティを持たない BLOB については、インデックスが一切作成されません。
 
 > [!IMPORTANT]
@@ -344,6 +345,6 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

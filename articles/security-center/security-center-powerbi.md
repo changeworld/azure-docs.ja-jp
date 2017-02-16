@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/22/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f085631264439062f6fccff4cdae535d7f80bbe3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 397f20446e113dd89b5ffa3d5680e7a3a9885476
 
 
 ---
@@ -123,6 +123,6 @@ Power BI で [Power BI のコンテンツ パック サービス](https://msit.p
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

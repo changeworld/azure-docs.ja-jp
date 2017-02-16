@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 01/24/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 0f0eaaa927ea73cec845dbb369dc2c4a7a8466ba
+ms.sourcegitcommit: d49d7e6b4a9485c2371eb02ac8068adfde9bad6b
+ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
 
 
 ---
@@ -46,164 +46,167 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [FileSystemSource](#hdfs-copy-activity-type-properties) および [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルはオンプレミスの HDFS のデータを Azure BLOB に 1 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルはオンプレミスの HDFS のデータを Azure BLOB に&1; 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 最初の手順として、データ管理ゲートウェイを設定します。 設定手順は、 [オンプレミスの場所とクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md) に関する記事に記載されています。
 
 **HDFS のリンクされたサービス** : この例では Windows 認証を使用しています。 使用できるさまざまな種類の認証については、 [HDFS のリンクされたサービス](#hdfs-linked-service-properties) に関するセクションをご覧ください。
 
+```JSON
+{
+    "name": "HDFSLinkedService",
+    "properties":
     {
-        "name": "HDFSLinkedService",
-        "properties":
+        "type": "Hdfs",
+        "typeProperties":
         {
-            "type": "Hdfs",
-            "typeProperties":
-            {
-                "authenticationType": "Windows",
-                "userName": "Administrator",
-                "password": "password",
-                "url" : "http://<machine>:50070/webhdfs/v1/",
-                "gatewayName": "mygateway"
-            }
+            "authenticationType": "Windows",
+            "userName": "Administrator",
+            "password": "password",
+            "url" : "http://<machine>:50070/webhdfs/v1/",
+            "gatewayName": "mygateway"
         }
     }
+}
+```
 
 **Azure Storage のリンクされたサービス**
 
-    {
-      "name": "AzureStorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "AzureStorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
+  }
+}
+```
 
 **HDFS 入力データセット** : このデータセットは HDFS フォルダー DataTransfer/UnitTest/ を参照します。 パイプラインは、このフォルダー内のすべてのファイルをコピー先にコピーします。
 
 ”external” を ”true” に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
-    {
-        "name": "InputDataset",
-        "properties": {
-            "type": "FileShare",
-            "linkedServiceName": "HDFSLinkedService",
-            "typeProperties": {
-                "folderPath": "DataTransfer/UnitTest/"
-            },
-            "external": true,
-            "availability": {
-                "frequency": "Hour",
-                "interval":  1
-            }
+```JSON
+{
+    "name": "InputDataset",
+    "properties": {
+        "type": "FileShare",
+        "linkedServiceName": "HDFSLinkedService",
+        "typeProperties": {
+            "folderPath": "DataTransfer/UnitTest/"
+        },
+        "external": true,
+        "availability": {
+            "frequency": "Hour",
+            "interval":  1
         }
     }
-
-
-
+}
+```
 
 **Azure BLOB の出力データセット**
 
 データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
-    {
-        "name": "OutputDataset",
-        "properties": {
-            "type": "AzureBlob",
-            "linkedServiceName": "AzureStorageLinkedService",
-            "typeProperties": {
-                "folderPath": "mycontainer/hdfs/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
-                "format": {
-                    "type": "TextFormat",
-                    "rowDelimiter": "\n",
-                    "columnDelimiter": "\t"
-                },
-                "partitionedBy": [
-                    {
-                        "name": "Year",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "yyyy"
-                        }
-                    },
-                    {
-                        "name": "Month",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "MM"
-                        }
-                    },
-                    {
-                        "name": "Day",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "dd"
-                        }
-                    },
-                    {
-                        "name": "Hour",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "HH"
-                        }
-                    }
-                ]
+```JSON
+{
+    "name": "OutputDataset",
+    "properties": {
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties": {
+            "folderPath": "mycontainer/hdfs/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
+            "format": {
+                "type": "TextFormat",
+                "rowDelimiter": "\n",
+                "columnDelimiter": "\t"
             },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            }
+            "partitionedBy": [
+                {
+                    "name": "Year",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "yyyy"
+                    }
+                },
+                {
+                    "name": "Month",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "MM"
+                    }
+                },
+                {
+                    "name": "Day",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "dd"
+                    }
+                },
+                {
+                    "name": "Hour",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "HH"
+                    }
+                }
+            ]
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
         }
     }
-
-
+}
+```
 
 **コピー アクティビティのあるパイプライン**
 
 パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **FileSystemSource** に設定され、**sink** 型が **BlobSink** に設定されています。 **query** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
+```JSON
+{
+    "name": "pipeline",
+    "properties":
     {
-        "name": "pipeline",
-        "properties":
-        {
-            "activities":
-            [
+        "activities":
+        [
+            {
+                "name": "HdfsToBlobCopy",
+                "inputs": [ {"name": "InputDataset"} ],
+                "outputs": [ {"name": "OutputDataset"} ],
+                "type": "Copy",
+                "typeProperties":
                 {
-                    "name": "HdfsToBlobCopy",
-                    "inputs": [ {"name": "InputDataset"} ],
-                    "outputs": [ {"name": "OutputDataset"} ],
-                    "type": "Copy",
-                    "typeProperties":
+                    "source":
                     {
-                        "source":
-                        {
-                            "type": "FileSystemSource"
-                        },
-                        "sink":
-                        {
-                            "type": "BlobSink"
-                        }
+                        "type": "FileSystemSource"
                     },
-                    "policy":
+                    "sink":
                     {
-                        "concurrency": 1,
-                        "executionPriorityOrder": "NewestFirst",
-                        "retry": 1,
-                        "timeout": "00:05:00"
+                        "type": "BlobSink"
                     }
+                },
+                "policy":
+                {
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "retry": 1,
+                    "timeout": "00:05:00"
                 }
-            ],
-            "start": "2014-06-01T18:00:00Z",
-            "end": "2014-06-01T19:00:00Z"
-        }
+            }
+        ],
+        "start": "2014-06-01T18:00:00Z",
+        "end": "2014-06-01T19:00:00Z"
     }
-
-
+}
+```
 
 ## <a name="hdfs-linked-service-properties"></a>HDFS のリンクされたサービスのプロパティ
 次の表は、HDFS のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
@@ -212,48 +215,192 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 | --- | --- | --- |
 | type |type プロパティを **Hdfs** |はい |
 | Url |HDFS への URL |はい |
-| encryptedCredential |[New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) 出力。 |なし |
+| authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |はい |
 | userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
-| パスワード |Windows 認証のパスワード。 |あり (Windows 認証用) |
-| authenticationType |Windows、または匿名。 |はい |
+| password |Windows 認証のパスワード。 |あり (Windows 認証用) |
 | gatewayName |Data Factory サービスが、HDFS への接続に使用するゲートウェイの名前。 |はい |
+| encryptedCredential |[New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) 出力。 |いいえ |
 
 オンプレミスの HDFS の資格情報の設定について詳しくは、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
 
 ### <a name="using-anonymous-authentication"></a>匿名認証を使用する
+
+```JSON
+{
+    "name": "hdfs",
+    "properties":
     {
-        "name": "hdfs",
-        "properties":
+        "type": "Hdfs",
+        "typeProperties":
         {
-            "type": "Hdfs",
-            "typeProperties":
-            {
-                "authenticationType": "Anonymous",
-                "userName": "hadoop",
-                "url" : "http://<machine>:50070/webhdfs/v1/",
-                "gatewayName": "mygateway"
-            }
+            "authenticationType": "Anonymous",
+            "userName": "hadoop",
+            "url" : "http://<machine>:50070/webhdfs/v1/",
+            "gatewayName": "mygateway"
         }
     }
-
+}
+```
 
 ### <a name="using-windows-authentication"></a>Windows 認証を使用する
+
+```JSON
+{
+    "name": "hdfs",
+    "properties":
     {
-        "name": "hdfs",
-        "properties":
+        "type": "Hdfs",
+        "typeProperties":
         {
-            "type": "Hdfs",
-            "typeProperties":
-            {
-                "authenticationType": "Windows",
-                "userName": "Administrator",
-                "password": "password",
-                "url" : "http://<machine>:50070/webhdfs/v1/",
-                "gatewayName": "mygateway"
-            }
+            "authenticationType": "Windows",
+            "userName": "Administrator",
+            "password": "password",
+            "url" : "http://<machine>:50070/webhdfs/v1/",
+            "gatewayName": "mygateway"
         }
     }
+}
+```
 
+## <a name="use-kerberos-authentication-for-hdfs-connector"></a>HDFS コネクタでの Kerberos 認証の使用
+HDFS コネクタで Kerberos 認証を使用するようにオンプレミス環境を設定するためのオプションは&2; つあります。 ニーズに適した方法を選択できます。
+* オプション 1: [ゲートウェイ マシンを Kerberos 領域に参加させる](#kerberos-join-realm)
+* オプション 2: [Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする](#kerberos-mutual-trust)
+
+### <a name="a-namekerberos-join-realmaoption-1-make-gateway-machine-join-kerberos-realm"></a><a name="kerberos-join-realm"></a>オプション 1: ゲートウェイ マシンを Kerberos 領域に参加させる
+
+#### <a name="requirement"></a>要件:
+
+* ゲートウェイ コンピューターは Kerberos 領域に参加している必要があります。Windows ドメインに参加することはできません。
+
+#### <a name="how-to-configure"></a>構成方法:
+
+**ゲートウェイ コンピューターで以下を実行します。**
+
+1.  **Ksetup** ユーティリティを実行して、Kerberos の KDC サーバーと領域を構成します。
+
+    Kerberos 領域は Windows ドメインとは異なるため、コンピューターをワークグループのメンバーとして構成する必要があります。 これは、次のように Kerberos 領域を設定し、KDC サーバーを追加することで実現できます。 必要に応じて、*REALM.COM* を独自の領域に置き換えます。
+
+            C:> Ksetup /setdomain REALM.COM
+            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+
+    これら 2 つのコマンドを実行した後、コンピューターを**再起動**します。
+
+2.  **Ksetup** コマンドを使用して、構成を確認します。 出力は次のようになります。
+
+            C:> Ksetup
+            default realm = REALM.COM (external)
+            REALM.com:
+                kdc = <your_kdc_server_address>
+
+**Azure Data Factory で以下を実行します。**
+
+* Kerberos プリンシパル名とパスワードによる **Windows 認証** を行って HDFS データ ソースに接続するように HDFS コネクタを構成します。 構成の詳細については、「[HDFS のリンクされたサービスのプロパティ](#hdfs-linked-service-properties)」セクションを参照してください。
+
+### <a name="a-namekerberos-mutual-trustaoption-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>オプション 2: Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする
+
+#### <a name="requirement"></a>要件:
+*   ゲートウェイ コンピューターは、Windows ドメインに参加している必要があります。
+*   ドメイン コントローラーの設定を更新できるアクセス許可が必要です。
+
+#### <a name="how-to-configure"></a>構成方法:
+
+> [!NOTE]
+> 必要に応じて、以下のチュートリアルの REALM.COM と AD.COM を独自の領域とドメイン コントローラーに置き換えてください。
+
+**KDC サーバーで以下を実行します。**
+
+1.  **krb5.conf** ファイルの KDC 構成を編集して、KDC が次の構成テンプレートを参照している Windows ドメインを信頼するようにします。 既定では、この構成は **/etc/krb5.conf** に置かれています。
+
+            [logging]
+             default = FILE:/var/log/krb5libs.log
+             kdc = FILE:/var/log/krb5kdc.log
+             admin_server = FILE:/var/log/kadmind.log
+
+            [libdefaults]
+             default_realm = REALM.COM
+             dns_lookup_realm = false
+             dns_lookup_kdc = false
+             ticket_lifetime = 24h
+             renew_lifetime = 7d
+             forwardable = true
+
+            [realms]
+             REALM.COM = {
+              kdc = node.REALM.COM
+              admin_server = node.REALM.COM
+             }
+            AD.COM = {
+             kdc = windc.ad.com
+             admin_server = windc.ad.com
+            }
+
+            [domain_realm]
+             .REALM.COM = REALM.COM
+             REALM.COM = REALM.COM
+             .ad.com = AD.COM
+             ad.com = AD.COM
+
+            [capaths]
+             AD.COM = {
+              REALM.COM = .
+             }
+
+        **Restart** the KDC service after configuration.
+
+2.  次のコマンドを使用して、**krbtgt/REALM.COM@AD.COM** という名前のプリンシパルを KDC サーバー内に準備します。
+
+            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+
+3.  **hadoop.security.auth_to_local** HDFS サービス構成ファイルに、`RULE:[1:$1@$0](.*@AD.COM)s/@.*//` を追加します。
+
+**ドメイン コントローラーで、以下を実行します。**
+
+1.  次の **Ksetup** コマンドを実行して、領域エントリを追加します。
+
+            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+            C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+
+2.  Windows ドメインから Kerberos 領域への信頼関係を確立します。 [password] は、** krbtgt/REALM.COM@AD.COM** プリンシパルのパスワードです。
+
+            C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
+
+3.  Kerberos で使用される暗号化アルゴリズムを選択します。
+
+    1. サーバー マネージャーに移動し、[グループ ポリシー管理]、[ドメイン]、[グループ ポリシー オブジェクト]、[既定のポリシー] または [Active Domain ポリシー] の順に選択します。
+
+    2. **グループ ポリシー管理エディター** ポップアップ ウィンドウで、[コンピューターの構成]、[ポリシー]、[Windows 設定]、[セキュリティ設定]、[ローカル ポリシー]、[セキュリティ オプション] の順に選択し、**[ネットワーク セキュリティ: Kerberos で許可する暗号化の種類を構成する]** を設定します。
+
+    3. KDC に接続するときに使用する暗号化アルゴリズムを選択します。 通常は、単純にすべてのオプションを選択できます。
+
+        ![Kerberos での暗号化の種類の構成](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
+
+    4. **Ksetup** コマンドを使用して、特定の領域で使用される暗号化アルゴリズムを指定します。
+
+                C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+
+4.  Windows ドメインで Kerberos プリンシパルを使用するために、ドメイン アカウントと Kerberos プリンシパル間のマッピングを作成します。
+
+    1. 管理ツールを起動し、**[Active Directory ユーザーとコンピュータ]** を選択します。
+
+    2. **[ビュー]**  >  **[高度な機能]** をクリックして、高度な機能を構成します。
+
+    3. マッピングを作成するアカウントを見つけます。そのアカウントをクリックして **[名前のマッピング]**を表示し、**[Kerberos 名]** タブをクリックします。
+
+    4. 領域からプリンシパルを追加します。
+
+        ![マップ セキュリティ ID](media/data-factory-hdfs-connector/map-security-identity.png)
+
+**ゲートウェイ コンピューターで以下を実行します。**
+
+* 次の **Ksetup** コマンドを実行して、領域エントリを追加します。
+
+            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+            C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+
+**Azure Data Factory で以下を実行します。**
+
+* ドメイン アカウントまたは Kerberos プリンシパルのいずれかを使用して **Windows 認証** を行って HDFS データ ソースに接続するように HDFS コネクタを構成します。 構成の詳細については、「[HDFS のリンクされたサービスのプロパティ](#hdfs-linked-service-properties)」セクションを参照してください。
 
 
 ## <a name="hdfs-dataset-type-properties"></a>HDFS データセットの type プロパティ
@@ -265,10 +412,9 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 | --- | --- | --- |
 | folderPath |フォルダーへのパス。 例: `myfolder`<br/><br/>文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例: folder\subfolder には、folder\\\\subfolder を指定し、d:\samplefolder には、d:\\\\samplefolder を指定します。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ |
-| partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 例: 1 時間ごとのデータに対して folderPath がパラメーター化されます。 |なし |
-| fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。 <br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2014-1-?.txt"`<br/><br/>**注**: fileFilter は FileShare 入力データセットに適用されます。 |いいえ |
-| BlobSink の format |次の種類の形式がサポートされます: **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat**、および **ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」、および「[ParquetFormat の指定](#specifying-parquetformat)」を参照してください。 ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。 |なし |
-| compression |データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。 現時点では、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていません。 詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 |いいえ |
+| partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 例:&1; 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
+| BlobSink の format | 次の形式の種類がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](#specifying-textformat)、[Json Format](#specifying-jsonformat)、[Avro Format](#specifying-avroformat)、[Orc Format](#specifying-orcformat)、[Parquet Format](#specifying-parquetformat) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は **GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[圧縮の指定](#specifying-compression)」セクションを参照してください。 |いいえ |
 
 > [!NOTE]
 > fileName と fileFilter は、同時に使用することができません。
@@ -281,25 +427,29 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 時系列データセット、スケジュール作成、スライスの詳細については、「[データセットの作成](data-factory-create-datasets.md)」、「[スケジュールと実行](data-factory-scheduling-and-execution.md)」、および「[パイプラインの作成](data-factory-create-pipelines.md)」に関する記事を参照してください。
 
 #### <a name="sample-1"></a>サンプル 1:
-    "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
-    "partitionedBy":
-    [
-        { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
-    ],
 
+```JSON
+"folderPath": "wikidatagateway/wikisampledataout/{Slice}",
+"partitionedBy":
+[
+    { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
+],
+```
 この例では、{Slice} は、指定された形式 (YYYYMMDDHH) で、Data Factory システム変数の SliceStart の値に置き換えられます。 SliceStart はスライスの開始時刻です。 folderPath はスライスごとに異なります。 例: wikidatagateway/wikisampledataout/2014100103 または wikidatagateway/wikisampledataout/2014100104
 
 #### <a name="sample-2"></a>サンプル 2:
-    "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
-    "fileName": "{Hour}.csv",
-    "partitionedBy":
-     [
-        { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
-        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
-        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
-        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
-    ],
 
+```JSON
+"folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+"fileName": "{Hour}.csv",
+"partitionedBy":
+ [
+    { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+    { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+    { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
+    { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
+],
+```
 この例では、SliceStart の年、月、日、時刻が folderPath プロパティと fileName プロパティで使用される個別の変数に抽出されます。
 
 [!INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]
@@ -328,6 +478,6 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

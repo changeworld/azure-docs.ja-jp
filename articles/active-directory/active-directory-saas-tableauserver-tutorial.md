@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3f4f0794f5dff8b341b324a508ea2616ea952108
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 344309eb9fc1ee7619df4cb6f692dd1697c4fb56
 
 
 ---
@@ -289,6 +289,6 @@ Tableau Server アプリケーションは、特定の形式で構成された S
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

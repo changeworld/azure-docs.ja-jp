@@ -1,5 +1,5 @@
 ---
-title: "Azure と Linux の VM ストレージ |Microsoft Docs"
+title: "Azure Linux VM と Azure Storage | Microsoft Docs"
 description: "Linux 仮想マシンでの Azure Standard Storage および Premium Storage について説明します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -15,8 +15,8 @@ ms.workload: infrastructure
 ms.date: 10/04/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bc18d25044fb790ef85ce950a785259cc1204fe4
+ms.sourcegitcommit: a3dc017811cb891bc82b072e13e58b3af047a490
+ms.openlocfilehash: e74ede9b3132ff4b4c3e67e614b9996f56856ebc
 
 
 ---
@@ -68,7 +68,7 @@ Premium Storage の機能
 
 * Premium Storage ディスク: Azure Premium Storage は、DS、DSv2 または GS シリーズ Azure VM に接続できる VM ディスクをサポートしています。
 * Premium ページ BLOB: Premium Storage は Azure ページ BLOB をサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使われます。
-* Premium ローカル冗長ストレージ: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートし、1 つのリージョン内にデータのコピーを 3 つ保持します。
+* Premium ローカル冗長ストレージ: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートし、1 つのリージョン内にデータのコピーを&3; つ保持します。
 * [Premium Storage](../storage/storage-premium-storage.md)
 
 ## <a name="premium-storage-supported-vms"></a>Premium Storage でサポートされる VM
@@ -119,16 +119,16 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 * 読み取りアクセス geo 冗長ストレージ (RA-GRS)
 
 ### <a name="locally-redundant-storage"></a>ローカル冗長ストレージ
-ローカル冗長ストレージ (LRS) では、ストレージ アカウントが作成されたリージョン内のデータがレプリケートされます。 持続性を最大限まで高めるため、ストレージ アカウント内のデータに対して行われたすべての要求が 3 回レプリケートされます。 これらの 3 つのレプリカはそれぞれ別個の障害ドメインとアップグレード ドメインに存在します。  3 つのレプリカのすべてに書き込まれた場合にのみ、要求は正常に返されます。
+ローカル冗長ストレージ (LRS) では、ストレージ アカウントが作成されたリージョン内のデータがレプリケートされます。 持続性を最大限まで高めるため、ストレージ アカウント内のデータに対して行われたすべての要求が&3; 回レプリケートされます。 これらの&3; つのレプリカはそれぞれ別個の障害ドメインとアップグレード ドメインに存在します。  3 つのレプリカのすべてに書き込まれた場合にのみ、要求は正常に返されます。
 
 ### <a name="zone-redundant-storage"></a>ゾーン冗長ストレージ
-ゾーン冗長ストレージ (ZRS) では、1 つまたは 2 つのリージョン内の 2 つから 3 つの施設でデータがレプリケートされるため、LRS よりも高い持続性を実現します。 ご使用のストレージ アカウントで ZRS が有効になっている場合、1 つの施設で障害が発生した場合でもデータは保持されます。
+ゾーン冗長ストレージ (ZRS) では、1 つまたは&2; つのリージョン内の&2; つから&3; つの施設でデータがレプリケートされるため、LRS よりも高い持続性を実現します。 ご使用のストレージ アカウントで ZRS が有効になっている場合、1 つの施設で障害が発生した場合でもデータは保持されます。
 
 ### <a name="geo-redundant-storage"></a>geo 冗長ストレージ
 geo 冗長ストレージ (GRS) では、プライマリ リージョンから数百マイル離れたセカンダリ リージョンにデータがレプリケートされます。 ご使用のストレージ アカウントで GRS が有効になっている場合は、地域的な停電やプライマリ リージョンが復旧できない災害が発生しても、データは保持されます。
 
 ### <a name="read-access-geo-redundant-storage"></a>読み取りアクセス geo 冗長ストレージ
-読み取りアクセス geo 冗長ストレージ (RA-GRS) では、GRS が提供する 2 つのリージョンにまたがるレプリケーションに加えて、2 次拠点のデータにも読み取り専用アクセスを提供することで、ストレージ アカウントの可用性が最大限に発揮されます。 プライマリ リージョンでデータが使用不可能になった場合、アプリケーションはセカンダリ リージョンからデータを読み取ることができます。
+読み取りアクセス geo 冗長ストレージ (RA-GRS) では、GRS が提供する&2; つのリージョンにまたがるレプリケーションに加えて、2 次拠点のデータにも読み取り専用アクセスを提供することで、ストレージ アカウントの可用性が最大限に発揮されます。 プライマリ リージョンでデータが使用不可能になった場合、アプリケーションはセカンダリ リージョンからデータを読み取ることができます。
 
 Azure ストレージの冗長性の詳細については、以下をご覧ください。
 
@@ -186,6 +186,6 @@ Storage Service Encryption (SSE) と、ストレージ アカウントで Storag
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

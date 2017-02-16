@@ -14,8 +14,8 @@ ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: e94b11ab62afbea9381772a2bdb668fdc514d609
-ms.openlocfilehash: 2da23d881a23cc0fc23b63a7b9e06d9af9a755eb
+ms.sourcegitcommit: 5618650671badfc54860c3ad8af5d1e727d3d8c9
+ms.openlocfilehash: 40ccfc59cccd86a7634ec89656571b3cd23566b4
 
 
 ---
@@ -41,11 +41,12 @@ Python を使用して、Azure Data Lake Analytics アカウントを作成し�
 
 Python を使用して Data Lake Store を操作するには、3 つのモジュールをインストールする必要があります。
 
-Azure モジュールには、Azure Data Lake Store アカウント管理操作に加え、Active Directory 用の他の Azure モジュールなどが含まれています。azure-datalake-store モジュールには、Azure Data Lake Store ファイル システム操作が含まれています。 azure-datalake-analytics モジュールには、Azure Data Lake Analytics 操作が含まれています。 モジュールをインストールするには、次のコマンドを使用します。
+azure-mgmt-datalake-store モジュールには、Azure Data Lake Store アカウント管理操作が含まれています。 azure-mgmt-resource モジュールには、Active Directory 用のその他の Azure モジュールなどが含まれています。azure-datalake-store モジュールには、Azure Data Lake Store ファイル システム操作が含まれています。 azure-datalake-analytics モジュールには、Azure Data Lake Analytics 操作が含まれています。 モジュールをインストールするには、次のコマンドを使用します。
 
-    pip install azure
+    pip install azure-mgmt-resource
+    pip install azure-mgmt-datalake-store
+    pip install azure-mgmt-datalake-analytics
     pip install azure-datalake-store
-    pip install azure-datalake-analytics
 
 ## <a name="create-a-python-application"></a>Python アプリケーションを作成する
 
@@ -208,6 +209,6 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

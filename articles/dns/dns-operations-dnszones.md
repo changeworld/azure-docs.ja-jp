@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 02d720a04fdc0fa302c2cb29b0af35ee92c14b3b
-ms.openlocfilehash: f6403718f106b5021ea5b41e0e91a11bd92d4830
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1136b0e378cec14a9c899b61ec1dd21ff6720ba5
 
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>PowerShell を使用して DNS ゾーンを管理する方法
@@ -24,7 +24,7 @@ ms.openlocfilehash: f6403718f106b5021ea5b41e0e91a11bd92d4830
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 > * [PowerShell](dns-operations-dnszones.md)
 
-この記事では、PowerShell を使用して DNS ゾーンを管理する方法について説明します。 その手順を使用するには、Azure Resource Manager PowerShell コマンドレット (1.0 以降) の最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md) 」を参照してください。
+この記事では、PowerShell を使用して DNS ゾーンを管理する方法について説明します。 その手順を使用するには、Azure Resource Manager PowerShell コマンドレット (1.0 以降) の最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
 
 ## <a name="create-a-new-dns-zone"></a>新しい DNS ゾーンの作成
 
@@ -108,6 +108,6 @@ DNS ゾーンを作成したら、 [レコード セットとレコード](dns-g
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,6 +1,7 @@
 ---
-title: "SQL Database へ移行する前に SQL Server データベースの互換性に関する問題を修正する | Microsoft Docs"
-description: "Microsoft Azure SQL Database、データベースの移行、互換性、SQL Azure の移行ウィザード、SSDT"
+title: "SSDT: Azure SQL Database の互換性に関する移行問題を修正する | Microsoft Docs"
+description: "この記事では、Azure SQL Database に移行する前に Visual Studio 用の SQL Server Data Tools を使用して SQL Server データベースの互換性問題を検出し修正する方法について説明します。"
+keywords: "Microsoft Azure SQL Database、データベースの移行、互換性、SQL Azure の移行ウィザード、SSDT"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,8 +17,8 @@ ms.workload: sqldb-migrate
 ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: e09c60111286681928ee1dd0b08fade7a102d6f2
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: ea4248a5ff16e6dd8e754aa0f1be480d08aa47f3
 
 
 ---
@@ -83,7 +84,7 @@ Visual Studio 用の SQL Server Data Tools ("SSDT") を使用すると、デー�
 5. 検出された相違点を確認し、 **[Update Target]** をクリックしてデータをソース データベースから Azure SQL V12 データベースに移行します。     
    
    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/14MigrateSSDT.png)    
-6. デプロイメント方法を選択します。  [互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md)  
+6. デプロイメント方法を選択します。 [互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md)  
 
 ## <a name="next-steps"></a>次のステップ
 * [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
@@ -97,6 +98,6 @@ Visual Studio 用の SQL Server Data Tools ("SSDT") を使用すると、デー�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

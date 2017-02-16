@@ -12,16 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/1/2016
+ms.date: 1/10/2017
 ms.author: raiye
 translationtype: Human Translation
-ms.sourcegitcommit: f21cf5318cc3fe0a0fc18dec4d85e8bc020a2c8a
-ms.openlocfilehash: 4beac394fbb975b8956ff62a54cc605bacd2a505
+ms.sourcegitcommit: e579c7fd4547a88c6356c77a220b5f9e1a07e542
+ms.openlocfilehash: deafae1c6f77a655d80ee7bafd220c5b624018bd
 
 
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="january-guest-os"></a>1 月のゲスト OS
+| セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| MS17-004 | [3216771] |ローカル セキュリティ機関サブシステム サービス用のセキュリティ更新プログラム |2.59 |2017 年 1 月 10 日 |
+
+## <a name="december-guest-os"></a>12 月のゲスト OS
+| セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| MS16-144 |[3204059] |Internet Explorer 用の累積的なセキュリティ更新プログラム |2.58, 3.46, 4.39 |2016 年 12 月 13 日 |
+| MS16-145 |[3204062] |Microsoft Edge 用の累積的なセキュリティ更新プログラム |5.4 |2016 年 12 月 13 日 |
+| MS16-146 |[3204066]   |Microsoft グラフィックス コンポーネント用のセキュリティ更新プログラム|2.58, 3.46, 4.39, 5.4 |2016 年 12 月 13 日 |
+| MS16-147 |[3204063]   |Microsoft Uniscribe 用のセキュリティ更新プログラム|2.58, 3.46, 4.39, 5.4 |2016 年 12 月 13 日 |
+| MS16-149 |[3205655]   |Microsoft Windows 用のセキュリティ更新プログラム|2.58, 3.46, 4.39, 5.4 |2016 年 12 月 13 日 |
+| MS16-150 |[3205642]   |保護カーネル モード用のセキュリティ更新プログラム |5.4 |2016 年 12 月 13 日 |
+| MS16-151 |[3205651]   |カーネル モード ドライバー用のセキュリティ更新プログラム|2.58, 3.46, 4.39, 5.4 |2016 年 12 月 13 日 |
+| MS16-152 |[3199709]   |Windows カーネル用のセキュリティ更新プログラム |5.4 |2016 年 12 月 13 日 |
+| MS16-153 |[3207328] |共通ログ ファイル システム ドライバー用のセキュリティ更新プログラム|2.58, 3.46, 4.39, 5.4 |2016 年 12 月 13 日 |
+| MS16-155 |[3205640]   |.NET Framework 用のセキュリティ更新プログラム |5.4 |2016 年 12 月 13 日 |
+| 該当なし |[3197868] |Windows 7 SP1 および Windows Server 2008 R2 SP1 用の 2016 年 11月付セキュリティ月例品質ロールアップ |2.58 |2016 年 12 月 13 日 |
+| 該当なし |[3197877] |Windows Server 2012 用の 2016 年 11 月付セキュリティ月例品質ロールアップ |3.46 |2016 年 12 月 13 日 |
+| 該当なし |[3197874] |Windows 8.1 および Windows Server 2012 R2 用の 2016 年 11 月付セキュリティ月例品質ロールアップ |4.39 |2016 年 12 月 13 日 |
 
 ## <a name="november-guest-os"></a>11 月のゲスト OS
 | セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
@@ -123,7 +145,7 @@ ms.openlocfilehash: 4beac394fbb975b8956ff62a54cc605bacd2a505
 | MS16-074 |[3164036] |Microsoft グラフィックス コンポーネント用のセキュリティ更新プログラム |4.33、3.40、2.52 |2016 年 6 月 14 日 |
 | MS16-075 |[3164038] |Windows SMB サーバー用のセキュリティ更新プログラム |4.33、3.40、2.52 |2016 年 6 月 14 日 |
 | MS16-076 |[3167691] |Netlogon 用のセキュリティ更新プログラム |4.33 |2016 年 6 月 14 日 |
-| MS16 077 |[3165191] |WPAD 用のセキュリティ更新プログラム |4.33、3.40、2.52 |2016 年 6 月 14 日 |
+| MS16&077; |[3165191] |WPAD 用のセキュリティ更新プログラム |4.33、3.40、2.52 |2016 年 6 月 14 日 |
 | MS16-080 |[3164302] |Microsoft Windows PDF 用のセキュリティ更新プログラム |4.33、3.40 |2016 年 6 月 14 日 |
 | MS16-081 |[3160352] |Active Directory 用のセキュリティ更新プログラム |4.33、3.40、2.52 |2016 年 6 月 14 日 |
 | 該当なし |[2922223] |Windows で RealTimeIsUniversal レジストリ エントリが有効になっているときに、システム時刻を変更できない |2.52 |2016 年 6 月 14 日 |
@@ -245,7 +267,7 @@ ms.openlocfilehash: 4beac394fbb975b8956ff62a54cc605bacd2a505
 ## <a name="september-guest-os"></a>9 月のゲスト OS
 | セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
 | --- | --- | --- | --- | --- |
-| MS15 093 |[3088903] |Internet Explorer 用の累積的なセキュリティ更新プログラム |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
+| MS15&093; |[3088903] |Internet Explorer 用の累積的なセキュリティ更新プログラム |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
 | MS15-094 |[3089548] |Internet Explorer 用の累積的なセキュリティ更新プログラム |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
 | MS15-096 |[3072595] |Active Directory サービスの脆弱性により、サービスの拒否が起こる |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
 | MS15-097 |[3089656] |Microsoft グラフィックス コンポーネントの脆弱性により、特権が昇格される |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
@@ -381,6 +403,22 @@ ms.openlocfilehash: 4beac394fbb975b8956ff62a54cc605bacd2a505
 | 該当なし |[3007054] |Windows で Windows ストア アプリケーション内のドキュメントを印刷するときに、PIN で保護された印刷オプションが常に表示される |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 該当なし |[2999802] |点線ではなく実線が Windows で印刷される |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 該当なし |[2896881] |Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い |4.15、3.22、2.34 |2015 年 1 月 13 日 |
+
+[3216771]: https://technet.microsoft.com/library/security/MS17-004
+
+[3204059]: http://support.microsoft.com/kb/3204059 
+[3204062]: http://support.microsoft.com/kb/3204062 
+[3204066]: http://support.microsoft.com/kb/3204066 
+[3204063]: http://support.microsoft.com/kb/3204063 
+[3205655]: http://support.microsoft.com/kb/3205655 
+[3205642]: http://support.microsoft.com/kb/3205642 
+[3205651]: http://support.microsoft.com/kb/3205651 
+[3199709]: http://support.microsoft.com/kb/3199709 
+[3207328]: http://support.microsoft.com/kb/3207328 
+[3205640]: http://support.microsoft.com/kb/3205640 
+[3197868]: http://support.microsoft.com/kb/3197868 
+[3197877]: http://support.microsoft.com/kb/3197877 
+[3197874]: http://support.microsoft.com/kb/3197874 
 
 [3199057]: http://support.microsoft.com/kb/3199057 
 [3199172]: http://support.microsoft.com/kb/3199172 
@@ -683,6 +721,6 @@ ms.openlocfilehash: 4beac394fbb975b8956ff62a54cc605bacd2a505
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

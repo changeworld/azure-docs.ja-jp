@@ -13,11 +13,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 01/09/2017
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: c5448ef5ad9def86b2deb1736160aa5b7ee6fd15
-ms.openlocfilehash: 4a2f50caa06d383bd41a6e94a2f73f130d7a13e3
+ms.sourcegitcommit: 58a583a761a400d8fa0488fbc4fbfec35ec62c41
+ms.openlocfilehash: ebdf73ad8a7a2f2690a404676e0c81ee01e77357
 
 
 ---
@@ -37,8 +37,8 @@ ms.openlocfilehash: 4a2f50caa06d383bd41a6e94a2f73f130d7a13e3
 ## <a name="information-to-include-when-you-need-help"></a>ヘルプが必要な場合に含める情報
 以下のガイダンスを使用しても問題を解決できない場合は、サポート エンジニアにお問い合わせください。 お問い合わせの際は、次の情報を含めることをお勧めします。
 
-- **エラーの一般的な説明** – エラー メッセージが表示されましたか。 エラー メッセージが表示されなかった場合は、気が付いた予期しない動作について詳しく説明してください。 どの機能で同期が有効になっていますか。また、同期することが求められるのはどのような機能ですか。 同期しないのは複数の機能ですか。または 1 つの機能ですか。
--** 影響を受けるユーザー** – 同期が機能、または機能しないのは、1 人のユーザーですか。それとも複数のユーザーですか。 ユーザー 1 人当たりに関係するデバイスは何台ですか。 すべてのデバイスが同期しませんか。それとも同期するデバイスもあれば、同期しないデバイスもありますか。
+- **エラーの一般的な説明** – エラー メッセージが表示されましたか。 エラー メッセージが表示されなかった場合は、気が付いた予期しない動作について詳しく説明してください。 どの機能で同期が有効になっていますか。また、同期することが求められるのはどのような機能ですか。 同期しないのは複数の機能ですか。または&1; つの機能ですか。
+- **影響を受けるユーザー** – 同期が機能、または機能しないのは、1 人のユーザーですか。それとも複数のユーザーですか。 ユーザー&1; 人当たりに関係するデバイスは何台ですか。 すべてのデバイスが同期しませんか。それとも同期するデバイスもあれば、同期しないデバイスもありますか。
 - **ユーザーに関する情報** – ユーザーはどの ID を使用してデバイスにログインしていますか。 どのような方法でデバイスにログインしていますか。 ユーザーは、同期が許可されている選択されたセキュリティ グループの一部ですか。 
 - **デバイスに関する情報** – デバイスは Azure AD に参加していますか。またはドメインに参加していますか。 どのビルドがデバイスにインストールされていますか。 最新の更新プログラムは何ですか。
 - **日付 / 時刻 / タイム ゾーン** – エラーが表示された正確な日時を教えてください (タイム ゾーンを含む)。
@@ -52,9 +52,7 @@ ms.openlocfilehash: 4a2f50caa06d383bd41a6e94a2f73f130d7a13e3
 1. Enterprise State Roaming を許可するよう構成されたドメインに Windows 10 PC を参加させたら、職場アカウントを使ってログオンします。 **[設定]** > **[アカウント]** > **[設定の同期]** に移動して、同期と個々の設定がオンになっており、設定ページの最上部に、職場アカウントを使って同期していることが示されていることを確認します。 **[設定]** > **[アカウント]** > **[Your Info (ユーザー情報)]** で、同じアカウントがログイン アカウントとしても使われていることを確認します。 
 2. 同期元のコンピューターで変更 (タスクバーを画面の右端や上部に移動するなど) を行い、複数のコンピューター間で同期が機能することを確認します。 5 分以内に、2 つ目のコンピューターに変更が反映されることを確認します。 
  - 画面をロックまたはロック解除 (Win + L) すると、同期をトリガーできる場合があります。
- - Enterprise State Roaming はコンピューター アカウントではなくユーザー アカウントに関連付けられているため
-
-## <a name="roaming-is-tied-to-the-user-account-and-not-the-machine-account"></a>、同期が機能するには、両方の PC で同じログオン アカウントを使用する必要があります。
+ - Enterprise State Roaming はコンピューター アカウントではなくユーザー アカウントに関連付けられているため、同期が機能するには、両方の PC で同じログオン アカウントを使用する必要があります。
 
 **潜在的な問題**: 設定ページで切り替えがグレーになっており、アカウントが表示されるかわりに "Windows の一部の機能は、Microsoft アカウントまたは職場アカウントを使用している場合にのみ利用できます" のメッセージが表示される場合があります。 この問題は、デバイスをドメインに参加するよう設定して Azure AD に登録したものの、Azure AD に正常に認証されない場合に発生することがあります。 考えられる原因としては、デバイス ポリシーを適用する必要があるものの、アプリケーションが非同期的に動作して、数時間の遅延が発生した可能性があります。 この問題を確認するには、デバイスの登録状態を確認する次の手順を実行して、これが原因かを調べます。
 
@@ -63,7 +61,7 @@ Enterprise State Roaming では、デバイスを Azure AD に登録する必要
 
 1.  管理者特権を使用せずにコマンド プロンプトを開きます。 これを Windows で行う場合は、[ファイル名を指定して実行] (Win + R) を開き、「cmd」と入力して開きます。
 2.  コマンド プロンプトが開いたら、「*dsregcmd.exe /status*」を入力します。
-3.  期待する出力を得るには、AzureAdJoined フィールド値を "YES"、WamDefaultSet フィールド値を "YES"、**WamDefaultGUID** フィールド値を末尾が "(AzureAd)" である GUID にする必要があります。
+3.  期待する出力を得るには、**AzureAdJoined** フィールド値を "YES"、**WamDefaultSet** フィールド値を "YES"、**WamDefaultGUID** フィールド値を末尾が "(AzureAd)" である GUID にする必要があります。
 
 **潜在的な問題**: **WamDefaultSet** と **AzureAdJoined** の両方のフィールド値が "NO" になっており、デバイスはドメインに参加して Azure AD に登録されていますが、同期しません。 このような場合は、デバイスにポリシーが適用されるまで待機する必要があるか、Azure AD に接続するときにデバイスの認証に失敗したと考えられます。 ポリシーが適用されるまでには数時間かかる場合があります。 その他のトラブルシューティング手順としては、サインアウトしてからサインインし直してもう一度自動登録をしてみるか、タスク スケジューラでタスクを起動することなどが挙げられます。 場合によっては、管理者特権で開いたコマンド プロンプト画面で "*dsregcmd.exe /leave*" を実行して再起動し、登録し直すことが問題の解決に役立つことがあります。
 
@@ -71,7 +69,7 @@ Enterprise State Roaming では、デバイスを Azure AD に登録する必要
 **潜在的な問題**: **AzureAdSettingsUrl** のフィールドが空で、デバイスが同期しません。 最後にデバイスにログインしたのが、Azure Active Directory ポータルで Enterprise State Roaming が有効になる前だった可能性があります。 ポータルで IT 管理者を無効にし、[設定とエンタープライズ アプリ データの同期が許可されるユーザー] を有効にし直します。 その後、デバイスを再起動してログインします。 
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming と Multi-Factor Authentication 
-Azure Multi-Factor Authentication が構成されている場合、特定の条件下で Enterprise State Roaming がデータの同期に失敗する可能性があります。 このような場合の詳細については、サポート ドキュメント KB3193683 を参照してください。 
+Azure Multi-Factor Authentication が構成されている場合、特定の条件下で Enterprise State Roaming がデータの同期に失敗する可能性があります。 このような場合の詳細については、サポート ドキュメント [KB3193683](https://support.microsoft.com/kb/3193683) を参照してください。 
 
 **潜在的な問題**: お使いのデバイスが Azure Active Directory ポータルで Multi-Factor Authentication を要求するように構成されている場合、パスワードを使用して Windows 10 デバイスにサインインしている状態で設定の同期が失敗することがあります。 このタイプの Multi-Factor Authentication 構成は、Azure 管理者アカウントの保護を意図したものです。 管理者ユーザーは、Microsoft Passport for Work の PIN を使用するか、他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行い、Windows 10 デバイスにサインインすることで同期を実行できる場合があります。
 
@@ -104,6 +102,8 @@ Windows 10 バージョン 1511 のクライアントに、2016 年 7 月にリ�
 ### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>テーマのほかに、Windows Information Protection で保護されたデータも同期されません 
 
 データの漏えいを防ぐため、[Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) で保護されたデータは、Enterprise State Roaming を通じて Windows 10 Anniversary Update を使用するデバイスに同期されることはありません。
+
+
 
 **推奨される操作**  
 なし。 この問題は今後、Windows の更新プログラムで解決される可能性があります。
@@ -160,13 +160,21 @@ AAD/操作ログのイベント ビューアーに、イベント 1104 ととも
 
 
 
-##<a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 - [フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/158658-enterprise-state-roaming)では、Enterprise State Roaming の改善方法について、フィードバックの提供や提案を行うことができます。
 
 - 詳細については、「[Enterprise State Roaming の概要](active-directory-windows-enterprise-state-roaming-overview.md)」を参照してください。 
 
+## <a name="related-topics"></a>関連トピック
+* [Enterprise State Roaming の概要](active-directory-windows-enterprise-state-roaming-overview.md)
+* [Azure Active Directory の Enterprise State Roaming を有効にする](active-directory-windows-enterprise-state-roaming-enable.md)
+* [設定とデータのローミングに関する FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
+* [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
+* [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 
-<!--HONumber=Dec16_HO1-->
+
+
+<!--HONumber=Jan17_HO2-->
 
 

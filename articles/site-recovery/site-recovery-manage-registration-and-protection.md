@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/19/2016
+ms.date: 12/28/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 3710f5966889b805b3ea8d2a3fe33fa9ab86c2ec
-ms.openlocfilehash: 5dff369ca32f9f4487684b27c57d2722ab9ad954
+ms.sourcegitcommit: f57c88cbace41af233f542880c6199b3e278700e
+ms.openlocfilehash: c8d893dbac1a4f6cb3f05f857e186bca155e5865
 
 
 ---
@@ -29,22 +29,32 @@ Azure Site Recovery は、ビジネス継続性と障害復旧 (BCDR) の戦略�
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
-## <a name="unregister-a-configuration-server"></a>構成サーバーの登録解除
+## <a name="unregister-a-connected-configuration-server"></a>接続されている構成サーバーの登録解除
 
-VMware VM または Windows/Linux 物理サーバーを Azure にレプリケートする場合、次の方法でコンテナーから構成サーバーを登録解除できます。
+VMware VM または Windows/Linux 物理サーバーを Azure にレプリケートする場合、接続されている構成サーバーを次の方法でコンテナーから登録解除できます。
 
 1. マシンの保護を無効にします。 **[保護されているアイテム]**  >  **[レプリケートされたアイテム]** で、マシンを右クリックして **[削除]** をクリックします。
 2. ポリシーの関連付けをすべて解除します。 **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For VMWare & Physical Machines (VMWare と物理マシン)]**  >  **[レプリケーション ポリシー]** で、関連付けられているポリシーをダブルクリックします。 構成サーバーを右クリックして、**[関連付け解除]** をクリックします。
 3. 他にオンプレミスのプロセスやマスター ターゲット サーバーがあれば、それも削除します。 **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For VMWare & Physical Machines (VMWare と物理マシン)]**  >  **[構成サーバー]** で、サーバーを右クリックして **[削除]** をクリックします。
 4. 構成サーバーを削除します。
 5. マスター ターゲット サーバー (個別のサーバー、または構成サーバーで実行されているサーバー) で実行されているモビリティ サービスを手動でアンインストールします。
-6. 構成サーバーをアンインストールします。
-7. 他にプロセス サーバーがあれば、それもアンインストールします。
+6. 他にプロセス サーバーがあれば、それもアンインストールします。
+7. 構成サーバーをアンインストールします。
 8. 構成サーバーで、Site Recovery によってインストールされた MySQL インスタンスをアンインストールします。
 9. 構成サーバーのレジストリで、キー ``HKEY_LOCAL_MACHINE\Software\Microsoft\Azure Site Recovery`` を削除します。
 
-この手順は、構成サーバーが Azure に接続されているかどうかにかかわらず同じです。
+## <a name="unregister-a-unconnected-configuration-server"></a>接続されていない構成サーバーの登録解除
 
+VMware VM または Windows/Linux 物理サーバーを Azure にレプリケートする場合、接続されていない構成サーバーを次の方法でコンテナーから登録解除できます。
+
+1. マシンの保護を無効にします。 **[保護されているアイテム]**  >  **[レプリケートされたアイテム]** で、マシンを右クリックして **[削除]** をクリックします。 **[コンピューターの管理を停止する]** を選択します。
+2. 他にオンプレミスのプロセスやマスター ターゲット サーバーがあれば、それも削除します。 **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For VMWare & Physical Machines (VMWare と物理マシン)]**  >  **[構成サーバー]** で、サーバーを右クリックして **[削除]** をクリックします。
+3. 構成サーバーを削除します。
+4. マスター ターゲット サーバー (個別のサーバー、または構成サーバーで実行されているサーバー) で実行されているモビリティ サービスを手動でアンインストールします。
+5. 他にプロセス サーバーがあれば、それもアンインストールします。
+6. 構成サーバーをアンインストールします。
+7. 構成サーバーで、Site Recovery によってインストールされた MySQL インスタンスをアンインストールします。
+8. 構成サーバーのレジストリで、キー ``HKEY_LOCAL_MACHINE\Software\Microsoft\Azure Site Recovery`` を削除します。
 
 ## <a name="unregister-a-connected-vmm-server"></a>接続されている VMM サーバーの登録解除
 
@@ -229,6 +239,6 @@ VMM サーバーを使用せずに Hyper-V VM を Azure にレプリケートし
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ## <a name="additional-resources"></a>その他のリソース
-* [Azure AD 開発者ガイド](../articles/active-directory/active-directory-developers-guide.md)
+* [Azure AD 開発者ガイド](../articles/active-directory/develop/active-directory-developers-guide.md)
 * [GitHub の Azure AD のサンプル](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=active-directory)
 * [CloudIdentity.com](http://cloudidentity.com)
 
@@ -8,6 +8,6 @@
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8136df6507f1d79872a286abb5810e595c9425ff
+ms.sourcegitcommit: af79132b5830b1782850c8738f1d8bd5ca0b38d9
+ms.openlocfilehash: b60009a93bd2c857acfc4d1856d8f1afb7fff595
 
 
 ---
@@ -103,6 +103,6 @@ REST API を使用して、App Service アプリのバックアップと復元�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

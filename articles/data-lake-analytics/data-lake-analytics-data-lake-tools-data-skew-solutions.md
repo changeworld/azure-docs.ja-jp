@@ -1,6 +1,6 @@
 ---
-title: "Azure Data Lake の考えられるデータ スキュー ソリューション |Microsoft Docs"
-description: "Azure Data Lake でデータ スキュー問題のトラブルシューティング向けに考えられるデータ スキュー ソリューション。"
+title: "Azure Data Lake Tools for Visual Studio を使用してデータ スキュー問題を解決する | Microsoft Docs"
+description: "Azure Data Lake Tools for Visual Studio を使用して、データ スキュー問題の解決策をトラブルシューティングします。"
 services: data-lake-analytics
 documentationcenter: 
 author: yanancai
@@ -15,163 +15,160 @@ ms.workload: big-data
 ms.date: 12/16/2016
 ms.author: yanacai
 translationtype: Human Translation
-ms.sourcegitcommit: f2b2a2230900ad5007500f9efb4c8e7ee0aca165
-ms.openlocfilehash: 1ddad5c3dc7006895ee38e06b1134857f95c3e7a
+ms.sourcegitcommit: 4ed240c0e636bb0b482c103bbe8462d86769ecc3
+ms.openlocfilehash: 13fa1bc8278460c1195ec553c32ff79d11240be3
 
 
 ---
 
-# <a name="possible-data-skew-solutions-for-azure-data-lake"></a>Azure Data Lake の考えられるデータ スキュー ソリューション
+# <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Azure Data Lake Tools for Visual Studio を使用してデータ スキュー問題を解決する
 
-## <a name="what-is-data-skew-problem"></a>データ スキュー問題とは何ですか。
+## <a name="what-is-data-skew"></a>データ スキュー問題とは何ですか。
 
-一言で言えば、データ スキューとは過度に表現された値のことです。 これを考慮する点として、50 人の税務調査官を納税申告の監査で各州に 1 人割り当てたとします。 ワイオミング州では人口が少ないため、ワイオミングの監査官は早くに終わります。しかし、カリフォルニアでは人口が多いため、そこの監査官はなかなか仕事が終わらないでしょう。 
-    ![データ スキュー問題の例](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/data-skew-problem.png) 
+簡単に言うと、データ スキューとは過度に表現された値のことです。 たとえば、納税申告の監査で、50 人の税務調査官を米国の各州に 1 人ずつ割り当てたとします。 ワイオミング州は人口が少ないので、調査官の仕事はあまり多くありません。 しかしカリフォルニア州では人口が多いため、調査官は常にとても忙しい状態です。
+    ![データ スキュー問題の例](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/data-skew-problem.png)
 
-上記のケースでは、データが作業者に均等に配分されていないために、作業者の稼働量にばらつきが発生します。 ジョブの実行時に、上記の例と同じようなケースが生じます。1 つの頂点に与えられるデータが他の頂点よりはるかに多いため、その頂点が他より長く実行され、最終的にジョブ全体が遅くなります。 また、頂点の実行限度が 5 時間で、メモリ制限が 6 GB であるため、ジョブの実行に失敗する場合があります。
+このケースでは、データが調査官に均等に分散されていないので、調査官の作業量にばらつきが生じます。 ジョブの実行でも、こうした状況が頻繁に起きているでしょう。 技術的に言うと、1 つの頂点に与えられるデータが他の頂点よりはるかに多いので、その頂点は他よりも長く実行することになり、結果的にジョブ全体の進行が遅くなります。 そのうえ、いくつかの頂点に実行限度 5 時間やメモリ制限 6 GBといった制限があれば、ジョブが失敗する可能性があります。
 
-## <a name="how-to-troubleshoot"></a>トラブルシューティングの方法
+## <a name="resolving-data-skew-problems"></a>データ スキュー問題を解決する
 
-このツールでジョブに傾斜問題があるかどうかを検知できます。問題を解決するには、以下の解決策を試すことができます。
+Azure Data Lake Tools for Visual Studio は、ジョブにおいてデータ スキューの問題があるかどうかを検出することができます。 問題がある場合は、ここに示した解決策を試みることで解決できます。
 
-### <a name="solution-1-improve-table-partition"></a>解決策 1: テーブルのパーティションを改善する
+### <a name="solution-1-improve-table-partitioning"></a>解決策 1: テーブルのパーティションを改善する
 
 #### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>オプション 1: 傾斜したキーの値を事前にフィルター処理する
 
-ビジネス ロジックに影響を与えない場合、事前に頻度の高い値をフィルター処理できます。 たとえば、GUID 列に 000 000-000 が多数ありますが、実際にその値を使って集計しない場合があります。 このケースでは、「WHERE GUID != “000-000-000”」と入力して、集計前に頻度の高い値をフィルター処理できます。
+ビジネス ロジックに影響を与えないなら、事前に頻度の高い値をフィルター処理できます。 たとえば、GUID 列に多数の 000 000-000 がある場合は、その値の集計は避けたいかもしれません。 集計前に「WHERE GUID != “000-000-000”」と入力して、頻度の高い値をフィルター処理することができます。
 
-#### <a name="option-2-pick-a-different-partitiondistribution-key"></a>オプション 2: 別のパーティション/ディストリビューション キーを選択する
+#### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>オプション 2: 別のパーティションまたはディストリビューション キーを選択する
 
-上記の例では、国全体の税務状況のみを確認する場合、 ID 番号を選択してデータの分散を改善することができます。 異なるパーティションやディストリビューション キーを選択することでデータをより均等に分散できることもありますが、その場合、ビジネス ロジックに影響を与えないことを確認する必要があります。 たとえば、各州の納税額の合計を計算する場合、パーティション キーとして州を選択できます。 これに問題がある場合は、オプション 3 を確認できます。
+前述の例では、国全体の税務監査状況だけを確認するのであれば、ID 番号をキーとして選択してデータ分散を改善することができます。 異なるパーティションやディストリビューション キーを選択することでデータをより均等に分散できる場合もありますが、それがビジネス ロジックに影響を与えないように注意する必要があります。 たとえば、各州の納税額の合計を計算するには、_州_をパーティション キーとして指定します。 問題が改善されない場合は、オプション 3 を試してみます。
 
-#### <a name="option-3-add-more-partitiondistribution-key"></a>オプション 3: パーティション キーおよびディストリビューション キーを追加する
+#### <a name="option-3-add-more-partition-or-distribution-keys"></a>オプション 3: パーティション キーまたはディストリビューション キーを追加する
 
-州をパーティション キーとして使用するほかに、2 つ以上のキーをパーティション用に使用することができます。たとえば、郵便番号を追加パーティション キーとして追加し、データ分散のサイズを縮小することで、データ分散をより均等にできます。
+_州_ のみをパーティション キーとして使用する代わりに、パーティションに&2; つ以上のキーを使用することができます。 たとえば、_郵便番号_ を追加のパーティション キーとして加えて、データ パーティションのサイズを削減し、データをより均等に分散することを検討してもよいでしょう。
 
-#### <a name="option-4-round-robin-distribution"></a>オプション 4: ラウンド ロビン分散
+#### <a name="option-4-use-round-robin-distribution"></a>オプション 4: ラウンドロビン分散を使用する
 
-パーティションとディストリビューション向けに適切なキーが見つからない場合は、ラウンド ロビン分散を使用することができます。 ラウンド ロビン分散は、すべての行を均等に処理し、対応するバケットにランダムに配置します。 このケースでは、データは均等に分散されますが、地域情報を失ったり、その結果、一部の操作においてジョブのパフォーマンスが削減されたりします。 さらに、傾斜したキーの集計を行う場合、傾斜問題はなくなりません。 ラウンド ロビンの使用方法については、[こちら](https://msdn.microsoft.com/en-us/library/mt706196.aspx#dis_sch)から確認できます。
+パーティションとディストリビューションに適切なキーが見つからない場合は、ラウンドロビン分散を使用することができます。 ラウンドロビン分散はすべての行を均等に処理し、対応するバケットにランダムに配置します。 データは均等に分散されますが、地域情報を失い、一部の操作においてジョブのパフォーマンスが削減されるという欠点もあります。 さらに、いずれにしても傾斜キーの集計を行うという場合は、データ スキュー問題はなくなりません。 ラウンドロビン分散の詳細については、「[CREATE TABLE (U-SQL): Creating a Table with Schema](https://msdn.microsoft.com/en-us/library/mt706196.aspx#dis_sch)」 (CREATE TABLE (U-SQL): スキーマを使用してテーブルを作成する) の U-SQL Table Distributions セクションを参照してください。
 
-### <a name="case-2-improve-query-plan"></a>ケース 2: クエリ プランを向上する
+### <a name="solution-2-improve-the-query-plan"></a>解決策 2: クエリ プランを改善する
 
-#### <a name="option-1-create-statistics-for-column"></a>オプション 1: 列の CREATE STATISTICS
+#### <a name="option-1-use-the-create-statistics-statement"></a>オプション 1: CREATE STATISTICS ステートメントを使用する
 
-U-SQL では、テーブル上の CREATE STATISTICS ステートメントが提供されます。これにより、値の分散など、テーブル内に保存されるデータの特性についての詳しい情報がクエリ オプティマイザーに提供されます。ほとんどのクエリの場合、クエリ オプティマイザーは高品質のクエリ プラン向けに必要な統計情報をすでに生成しています。一部のケースでは、CREATE STATISTICS で追加の統計を作成するかクエリのデザインを修正することで、クエリのパフォーマンスが向上します。 詳細については、[こちら](https://msdn.microsoft.com/en-us/library/azure/mt771898.aspx)をご覧ください。
+U-SQL では、CREATE STATISTICS ステートメントをテーブルで提供します。 このステートメントは、テーブルに格納された値分布などのデータの特性に関する詳細情報を、クエリ オプティマイザーに提供します。 ほとんどのクエリでは、クエリ オプティマイザーは高品質のクエリ プランに必要な統計情報を既に生成しています。 場合によっては、CREATE STATISTICS で追加の統計情報を作成したり、またはクエリ デザインを変更したりすることで、クエリのパフォーマンスを向上させる必要があるでしょう。 詳細については、「[CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/en-us/library/azure/mt771898.aspx)」ページを参照してください。
 
-**コード例:**
+コード例:
 
     CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTable(date) WITH FULLSCAN;
 
 >[!NOTE]
->統計情報は自動的に更新されないことにご注意ください。つまり、テーブル内のデータを更新しても統計を再作成することを忘れた場合は、クエリ パフォーマンスが以前より悪くなることがあります。
->
->
+>統計情報は自動的には更新されません。 テーブル内のデータを更新しても、統計を再作成しなければ、クエリ パフォーマンスが低下することがあります。
 
 #### <a name="option-2-use-skewfactor"></a>オプション 2: SKEWFACTOR を使用する
 
-上記の納税確認の例では、各州の納税額を合計する場合、州ごとにグループ化する以外の選択肢はありません。これは、データ スキュー問題の影響を受けます。 ただし、クエリにデータ ヒントを指定してキーの傾斜を識別することで、オプティマイザーは実行プランを最適化できます。
+上記の例で各州の税を合計する場合、州ごとにグループ化する以外の選択肢はありません。これはデータ スキュー問題の影響を受けます。 ただし、クエリにデータ ヒントを指定してキーのデータ スキューを識別することにより、オプティマイザー実行プランを準備できます。
 
-通常、パラメーターを 0.5 や 1 に設定できます。0.5 は微量の傾斜、1 は激しい傾斜を意味します。 ヒントは、現在のステートメント、およびすべてのダウンストリーム ステートメントの実行プランの最適化に影響を与えるため、傾斜したキーの集計前にヒントを追加することを確認してください。
+通常、パラメーターを 0.5 および 1 に設定できます。0.5 は微量の傾斜、1 は激しい傾斜を意味します。 ヒントは、現在のステートメント、およびすべてのダウンストリーム ステートメントの実行プランの最適化に影響を与えるため、傾斜キーの集計があり得る場合は、必ず事前にヒントを追加しておいてください。
 
     SKEWFACTOR (columns) = x
 
-    Provides hint that given columns have a skew factor x between 0 (no skew) and 1 (very heavy skew).
+    Provides a hint that the given columns have a skew factor x from 0 (no skew) through 1 (very heavy skew).
 
-**コード例:**
+コード例:
 
-    //Adding SKEWFACTOR hint
-    @Impressions = 
-        SELECT * FROM 
+    //Add a SKEWFACTOR hint.
+    @Impressions =
+        SELECT * FROM
         searchDM.SML.PageView(@start, @end) AS PageView
         OPTION(SKEWFACTOR(Query)=0.5)
         ;
 
     //Query 1 for key: Query, ClientId
-    @Sessions = 
-        SELECT 
-            ClientId, 
-            Query, 
+    @Sessions =
+        SELECT
+            ClientId,
+            Query,
             SUM(PageClicks) AS Clicks
-        FROM 
+        FROM
             @Impressions
         GROUP BY
             Query, ClientId
         ;
 
-    // Query 2 for Key: Query
-    @Display = 
-        SELECT * FROM @Sessions 
-            INNER JOIN @Campaigns 
+    //Query 2 for Key: Query
+    @Display =
+        SELECT * FROM @Sessions
+            INNER JOIN @Campaigns
                 ON @Sessions.Query == @Campaigns.Query
         ;   
 
-SKEWFACTOR に加え、特定の傾斜キー結合のケースで、他の結合行セットが小さいことがわかっている場合は、JOIN の前に ROWCOUNT ヒントを U-SQL ステートメントに追加できます。これにより、行セットの 1 つが小さいことをオプティマイザーに知らせることで、オプティマイズは結合戦略をブロードキャストしてパフォーマンスを向上できます。 ただし、ROWCOUNT は傾斜問題の対処に多少役立つ程度で、問題は解決されないことにご注意ください。
+SKEWFACTOR に加えて、特定の傾斜キー結合については、結合された一方の行セットが小さいことがわかっている場合、JOIN の前に U-SQL ステートメントに ROWCOUNT のヒントを追加してオプティマイザーに認識させることができます。 これによりオプティマイザーは、ブロードキャストの結合方法を選択してパフォーマンスを改善することができます。 ただし、ROWCOUNT はデータ スキュー問題の対処にある程度役立ちますが、問題を解決するわけではありません。
 
     OPTION(ROWCOUNT = n)
 
-    Identify small row set before join by giving an estimated integer row count.
+    Identify a small row set before JOIN by providing an estimated integer row count.
 
-**コード例:**
+コード例:
 
-    // Unstructured (24 hours daily log impressions)
-    @Huge   = EXTRACT ClientId int, ... 
+    //Unstructured (24-hour daily log impressions)
+    @Huge   = EXTRACT ClientId int, ...
                 FROM @"wasb://ads@wcentralus/2015/10/30/{*}.nif"
                 ;
 
-    // Small subset (ie: ForgetMe opt out)
-    @Small  = SELECT * FROM @Huge 
+    //Small subset (that is, ForgetMe opt out)
+    @Small  = SELECT * FROM @Huge
                 WHERE Bing.ForgetMe(x,y,z)
                 OPTION(ROWCOUNT=500)
                 ;
 
-    // Result (not enough info to determine simple Broadcast join)
+    //Result (not enough information to determine simple broadcast JOIN)
     @Remove = SELECT * FROM Bing.Sessions
                 INNER JOIN @Small ON Sessions.Client == @Small.Client
                 ;
 
-### <a name="case-3-improve-user-defined-reducer-and-combiner"></a>ケース 3: ユーザー定義レジューサーおよびコンバイナーを向上する
+### <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>解決策 3: ユーザー定義レジューサーおよびコンバイナーを改善する
 
-複雑な処理ロジックに対応するユーザー定義演算子を構築することがあります。適切に構築されたレジューサーおよびコンバイナーは、一部のケースにおいてデータ スキュー問題を軽減する場合があります。
+複雑な処理ロジックに対応するユーザー定義演算子を構築することもあるでしょう。適切に構築されたレジューサーおよびコンバイナーは、一部のケースにおいてデータ スキュー問題を軽減する場合があります。
 
-#### <a name="option-1-use-recursive-reducer-if-possible"></a>オプション 1: 可能な限り再帰的なレジューサーを使用する
+#### <a name="option-1-use-a-recursive-reducer-if-possible"></a>オプション 1: 可能な限り再帰的なレジューサーを使用する
 
-既定では、ユーザー定義レジューサーは非再帰モードで実行されます。これは、キーの作業負荷が軽減された場合、その負荷が 1 つの頂点に配布されることを意味します。 しかし、問題点の 1 つとして、データがスキューされている場合、膨大なデータ セットが 1 つの頂点で処理され、かなり長い時間実行されることがあります。 
+既定では、ユーザー定義レジューサーは非再帰モードで実行されます。これは、キーの作業負荷が軽減された場合、その負荷が&1; つの頂点に配布されることを意味します。 しかし、データがスキューされている場合、膨大なデータ セットが&1; つの頂点で処理され、長いあいだ実行されることがあります。
 
-パフォーマンスを向上するには、コードに属性を追加して、レジューサーを再帰モードとして定義することができます。その後、膨大なデータ セットを複数の頂点で配布し、並列処理を実行することで、ジョブを高速化できます。 
+パフォーマンスを向上させるためには、属性をコードに追加して、再帰的なモードで実行するレジューサを定義することができます。 そして、膨大なデータ セットを複数の頂点に分散して並行処理し、ジョブを高速化することができます。
 
-注意点の 1 つとして、非再帰的なレジューサーを再帰的に変更する場合に、アルゴリズムが結合法則であることを確認する必要があります。 たとえば、合計は結合法則ですが、中央値は違います。 また、レジューサーの入力および出力が同じスキーマを保持することを確認する必要があります。
+レジューサーを非再帰的から再帰的に変更する場合、アルゴリズムが結合法則であることを確認する必要があります。 たとえば、合計は結合法則ですが、中央値は違います。 また、レジューサーの入力および出力が同じスキーマを保持することを確認する必要があります。
 
-**再帰的なレジューサーの属性:**
+再帰的なレジューサーの属性:
 
     [SqlUserDefinedReducer(IsRecursive = true)]
 
-**コード例:**
+コード例:
 
     [SqlUserDefinedReducer(IsRecursive = true)]
     public class TopNReducer : IReducer
     {
-        public override IEnumerable<IRow> 
+        public override IEnumerable<IRow>
             Reduce(IRowset input, IUpdatableRow output)
         {
-            // your reducer code here
+            //Your reducer code goes here.
         }
     }
 
 #### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>オプション 2: 可能な限り行レベルのコンバイナー モードを使用する
 
-特定の傾斜したキーの結合ケース用の ROWCOUNT ヒントと同様に、コンバイナー モードでは、膨大な量の傾斜キー値のセットを複数の頂点に分散しようとします。これにより、作業を同時に実行できるようにします。 データ スキュー問題は解決できませんが、膨大な量の傾斜キー値のセットに対処するときに多少役立ちます。
+特定の傾斜キーを結合する場合の ROWCOUNT ヒントと同様に、コンバイナー モードでは、膨大な量の傾斜キー値のセットを複数の頂点に分散するよう試み、作業を同時に実行できるようにします。 コンバイナー モードではデータ スキュー問題は解決できませんが、膨大な量の傾斜キー値のセットを扱うときに役立つことがあります。
 
-既定では、コンバイナー モードは完全であり、左および右の行セットを分割できないことを意味します。 モードを左/右/内部に設定することで、行レベルの結合を使用できます。また、システムは対応する行セットを分割し、複数の頂点に分散して、並列処理で実行します。 ただし、コンバイナー モードを構成する前に、対応する行セットを分割できるかどうかを確認する必要があります。
+既定ではコンバイナー モードは完全であり、左行セットと右行セットは分割できません。 モードを左/右/内部として設定すると、行レベルの結合が有効になります。 システムは対応する行セットを分離し、それらを並列で実行している複数の頂点に分散します。 ただし、コンバイナー モードを構成する前に、対応する行セットを分割できるかどうかを必ず確認してください。
 
-分割された左の行セットの例を以下に示します。 このケースでは、出力行がいずれも、左側の単一の入力行に依存します。また、キー値が同じ右側の行すべてにも依存する可能性があります。 この場合、コンバイナー モードを左として設定した場合、システムは巨大な左側の行セットをより小さな行セットに分割し、それらを複数の頂点に割り当てます。
-![コンバイナー モードの図](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/combiner-mode-illustration.png) 
-   
+次の例では、分割さた左の行セットを示します。 出力行はいずれも、左側の単一の入力行に依存し、また、キー値の同じ右側の行すべてにも依存する可能性があります。 コンバイナー モードを左として設定した場合、システムは巨大な左側の行セットをより小さな行セットに分割し、それらを複数の頂点に割り当てます。
+
+![コンバイナー モードの図](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/combiner-mode-illustration.png)
+
 >[!NOTE]
->間違ったコンバイナー モードを設定した場合、結合の効率が低下し、さらには間違った結果を引き起こす場合があります。
->
->
+>間違ったコンバイナー モードを設定すると、組み合わせは効率が低下し、正しくない結果となる可能性があります。
 
-**コンバイナーの属性: **
+コンバイナー モードの属性:
 
 - [SqlUserDefinedCombiner(Mode=CombinerMode.Full)]: Every output row potentially depends on all the input rows from left and right with the same key value.
 
@@ -181,19 +178,20 @@ SKEWFACTOR に加え、特定の傾斜キー結合のケースで、他の結合
 
 - SqlUserDefinedCombiner(Mode=CombinerMode.Inner): 出力行がいずれも、値が同じである左側および右側の単一の入力行に依存します。
 
-**コード例:**
+コード例:
 
     [SqlUserDefinedCombiner(Mode = CombinerMode.Right)]
     public class WatsonDedupCombiner : ICombiner
     {
-        public override IEnumerable<IRow> 
+        public override IEnumerable<IRow>
             Combine(IRowset left, IRowset right, IUpdatableRow output)
         {
-        // your combiner code here
+        //Your combiner code goes here.
         }
     }
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Jan17_HO1-->
 
 

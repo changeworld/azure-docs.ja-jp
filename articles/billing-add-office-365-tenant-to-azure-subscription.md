@@ -4,7 +4,7 @@ description: "Office 365 ディレクトリ (テナント) を Azure サブス�
 services: 
 documentationcenter: 
 author: JiangChen79
-manager: mbaldwin
+manager: vikdesai
 editor: 
 tags: billing,top-support-issue
 ms.assetid: cc9c57c6-7bfd-4dea-9027-c75ef3737589
@@ -16,24 +16,19 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cjiang
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 36cd9eac7be2d99971d8d2e227cd4b761df82d08
+ms.sourcegitcommit: 700724a0905c899039eb05c4fe864e9b304b7192
+ms.openlocfilehash: 7c8ae4895c5ae985851e797ebfb5eed415e3b4d4
 
 
 ---
 # <a name="associate-an-office-365-tenant-with-an-azure-subscription"></a>Office 365 テナントの Azure サブスクリプションへの関連付け
 過去に Azure サブスクリプションと Office 365 サブスクリプションを別々に購入したが、今後は Azure サブスクリプションから Office 365 テナントにアクセスするとします。これは簡単に実行できます。 この記事では、その方法について説明します。
 
-> [!NOTE]
-> この記事は、Enterprise Agreement (EA) のお客様には適用されません。
-> 
-> 
-
 ## <a name="quick-guidance"></a>クイック ガイド
 Office 365 テナントを Azure サブスクリプションに関連付けるには、まず Azure アカウントを使用して Office 365 テナントを追加した後、その Office 365 テナントに Azure サブスクリプションを関連付けます。
 
 ## <a name="detailed-steps"></a>詳細な手順
-このシナリオでは、ユーザー Kelley Wall が Azure アカウント kelley.wall@outlook.com. で Azure サブスクリプションを持っています。さらに、Kelley は、アカウント kelley.wall@contoso.onmicrosoft.com. で Office 365 サブスクリプションを持っています。現在、Kelley は、Azure サブスクリプションを使用して Office 365 テナントにアクセスすることを望んでいます。
+このシナリオの Kelley Wall は、アカウント kelley.wall@outlook.com の Azure サブスクリプションがあるユーザーです。 Kelley は、kelley.wall@contoso.onmicrosoft.com というアカウントで Office 365 サブスクリプションも所有していて、 Office 365 テナントに Azure サブスクリプションでアクセスしたいと考えています。
 
 ![Azure Active Directory の状態のスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/s31_msa-aad-status.png)
 
@@ -42,27 +37,19 @@ Office 365 テナントを Azure サブスクリプションに関連付ける�
 ### <a name="prerequisites"></a>前提条件
 関連付けを正常に動作させるには、次の前提条件を満たす必要があります。
 
-* Azure サブスクリプションのサービス管理者の資格情報が必要です。 共同管理者では一部の手順を実行できません。
+* Azure サブスクリプションのサービス管理者の資格情報が必要です。 共同管理者では一部の手順を実行できません。 サービス管理者を変更する場合は、「[Azure 管理者ロールを追加または変更する方法](./billing-add-change-azure-subscription-administrator.md#how-to-change-service-administrator-for-a-subscription)」をご覧ください。
 * Office 365 テナントの全体管理者の資格情報が必要です。
 * サービス管理者の電子メール アドレスが Office 365 テナントに含まれていないことが必要です。
 * サービス管理者の電子メール アドレスが、Office 365 テナントのどの全体管理者の電子メール アドレスとも異なっていることが必要です。
 * 現在、Microsoft アカウントと組織アカウントの両方に該当する電子メール アドレスを使用している場合は、別の Microsoft アカウントを使用するように、Azure サブスクリプションのサービス管理者を一時的に変更してください。 新しい Microsoft アカウントは、 [Microsoft アカウントのサインアップ ページ](https://signup.live.com/)で作成できます。
 
-サービス管理者を変更するには、次の手順を実行します。
-
-1. [アカウント管理ポータル](https://account.windowsazure.com/subscriptions)にサインインします。
-2. 変更するサブスクリプションを選択します。
-3. **[サブスクリプション詳細の編集]** をクリックします。
-   
-    ![[サブスクリプション詳細の編集] が強調表示されている Azure サブスクリプション情報のスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/s33_azure-edit-subscription-details.png)
-4. **[サービス管理者]** ボックスに、新しいサービス管理者の電子メール アドレスを入力します。
-   
-    ![[サブスクリプションの編集] ダイアログ ボックスのスクリーン ショット](./media/billing-add-office-365-tenant-to-azure-subscription/s34_change-subscription-service-admin.png)
-
 ### <a name="associate-the-office-365-tenant-with-the-azure-subscription"></a>Office 365 テナントを Azure サブスクリプションに関連付ける
 Office 365 テナントを Azure サブスクリプションに関連付けるには、次の手順を実行します。
 
-1. サービス管理者の資格情報で[アカウント管理ポータル](https://account.windowsazure.com/subscriptions)にサインインします。
+1. サービス管理者の資格情報で [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
+
+    ![Azure サインイン ページのスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/s313_azure-sign-in-service-admin.png)
+
 2. 左ウィンドウで、**[Active Directory]** を選択します。
    
    ![Azure Active Directory のエントリのスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/s35-classic-portal-active-directory-entry.png)
@@ -95,7 +82,7 @@ Office 365 テナントを Azure サブスクリプションに関連付ける�
    
     ![[保存] アイコンのスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/s312_use-contoso-directory-azure-confirm-and-sign-out.png)
    
-    f. サービス管理者の資格情報で[アカウント管理ポータル](https://account.windowsazure.com/subscriptions)にサインインします。
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 サービス管理者の資格情報で [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
    
     ![Azure サインイン ページのスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/s313_azure-sign-in-service-admin.png)
    
@@ -145,15 +132,11 @@ Office 365 テナントを Azure サブスクリプションに関連付ける�
     ![[管理者] タブのスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/s321_azure-co-administrator-added.png)
 6. 次に、共同管理者でのアクセスをテストします。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 アカウント管理ポータルをサインアウトします。
+    a. Azure クラシック ポータルからサインアウトします。
    
-    b. [アカウント管理ポータル](https://account.windowsazure.com/subscriptions)または [Azure ポータル](https://portal.azure.com/)を開きます。
+    b. [Azure ポータル](https://portal.azure.com/)を開きます。
    
-    c. Azure サインイン ページに **[組織のアカウントを使ってサインインしてください]**というリンクが表示されている場合は、そのリンクを選択します。 それ以外の場合、この手順はスキップしてください。
-   
-    ![Azure サインイン ページのスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/3-sign-in-to-azure.png)
-   
-    d. 共同管理者の資格情報を入力し、**[サインイン]** を選択します。
+    c. 共同管理者の資格情報を入力し、**[サインイン]** を選択します。
    
     ![Azure サインイン ページのスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/s324_azure-sign-in-with-co-admin.png)
 
@@ -168,6 +151,6 @@ Office 365 テナントを Azure サブスクリプションに関連付ける�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

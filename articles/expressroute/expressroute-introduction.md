@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3b3e0fd5342c4729d6ffee4858089099b31404a8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 57b95d5018fa197096992f7cd255a54501875dea
 
 
 ---
@@ -40,13 +40,13 @@ Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提
 ## <a name="a-namehowtoconnectahow-can-i-connect-my-network-to-microsoft-using-expressroute"></a><a name="howtoconnect"></a>ExpressRoute でネットワークを Microsoft に接続するにはどうすればよいですか。
 次の 3 つの方法でオンプレミス ネットワークと Microsoft クラウドの間に接続を構築できます。
 
-### <a name="colocated-at-a-cloud-exchange"></a>クラウド エクスチェンジで共用施設に配置
+### <a name="co-located-at-a-cloud-exchange"></a>クラウド エクスチェンジで共用施設に配置
 クラウドの Exchange がある施設に同一場所配置している場合、併置プロバイダーのイーサネット交換経由で Microsoft クラウドに仮想交差接続を要請できます。 併置プロバイダーは、共有施設のインフラストラクチャと Microsoft クラウドの間に、レイヤー 2 交差接続と管理レイヤー 3 交差接続のいずれかを提供します。
 
-### <a name="pointtopoint-ethernet-connections"></a>ポイント ツー ポイントのイーサネット接続
+### <a name="point-to-point-ethernet-connections"></a>ポイント ツー ポイントのイーサネット接続
 オンプレミス データセンター/オフィスと Microsoft クラウドをポイント ツー ポイントのイーサネット リンクで接続できます。 ポイント ツー ポイントのイーサネットのプロバイダーは、サイトと Microsoft クラウドの間にレイヤー 2 接続と管理レイヤー 3 接続のいずれかを提供できます。
 
-### <a name="anytoany-ipvpn-networks"></a>任意の環境間 (IPVPN) ネットワーク
+### <a name="any-to-any-ipvpn-networks"></a>任意の環境間 (IPVPN) ネットワーク
 WAN と Microsoft クラウドを統合できます。 IPVPN プロバイダー (通常、MPLS VPN) は、ブランチ オフィスとデータセンターの間に任意の環境間の接続を提供できます。 Microsoft クラウドを WAN に相互接続し、ブランチ オフィスのように見せることができます。 通常、WAN プロバイダーは管理レイヤー 3 接続を提供します。 ExpressRoute の機能は上記の接続モデルのすべてに共通しています。 
 
 接続プロバイダーでは、1 つ以上の接続モデルを提供できます。 最適なモデルは接続プロバイダーに相談の上でお選びください。
@@ -78,7 +78,7 @@ ExpressRoute 接続によって、次のようなサービスにアクセスで�
 
 たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、北ヨーロッパと西ヨーロッパでホストされているすべての Microsoft クラウド サービスにアクセスできます。 地政学的領域、関連付けられている Microsoft 領域、対応する ExpressRoute のピアリングの場所の概要については、「 [ExpressRoute パートナーとピアリングの場所](expressroute-locations.md) 」という記事を参照してください。
 
-### <a name="global-connectivity-with-expressroute-premium-addon"></a>ExpressRoute プレミアム アドオンによるグローバル接続
+### <a name="global-connectivity-with-expressroute-premium-add-on"></a>ExpressRoute プレミアム アドオンによるグローバル接続
 ExpressRoute プレミアム アドオン機能を有効にすると、地政学的境界を越えて接続を拡張できます。 たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、世界中のあらゆる領域でホストされているすべての Microsoft クラウド サービスにアクセスできます (国内のクラウドは除外します)。 北ヨーロッパ地域と西ヨーロッパ地域にアクセスする場合と同じ方法で南アメリカやオーストラリアにデプロイされているサービスにアクセスできます。
 
 ### <a name="rich-connectivity-partner-ecosystem"></a>大勢の接続パートナーが属するエコシステム
@@ -125,6 +125,6 @@ Microsoft は特殊な地政学的領域と顧客区分のために隔離され�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

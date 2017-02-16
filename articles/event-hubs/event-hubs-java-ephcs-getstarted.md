@@ -1,5 +1,5 @@
 ---
-title: "Java での Event Hubs の使用 | Microsoft Docs"
+title: "Azure Event Hubs を使用した Java でのイベントの送と C# での受信 | Microsoft Docs"
 description: "このチュートリアルでは、Java でイベントを送信し、EventProcessorHost を使用して C# でイベントを受信するための Azure Event Hubs の使用方法について説明します。"
 services: event-hubs
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: core
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/04/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bcc75a6cdba08c7c94a556826e98ef24c199c37f
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: 2e16874e20b233b93370ec81f8e534475c7c562a
 
 
 ---
@@ -26,9 +26,9 @@ ms.openlocfilehash: bcc75a6cdba08c7c94a556826e98ef24c199c37f
 ## <a name="introduction"></a>はじめに
 Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。 Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して転送と格納できます。
 
-詳細については、[Event Hubs の概要][Event Hubs の概要]に関するページを参照してください。
+詳細については、「[Event Hubs の概要][Event Hubs overview]」をご覧ください。
 
-このチュートリアルでは、Java のコンソール アプリケーションを使用して Event Hub にメッセージを取り込み、C# の[イベント プロセッサ ホスト][イベント プロセッサ ホスト] ライブラリを使用して並列で取得する方法を学習します。
+このチュートリアルでは、Java のコンソール アプリケーションを使用して Event Hubs にメッセージを取り込み、C# の[イベント プロセッサ ホスト][Event Processor Host] ライブラリを使用してメッセージを並列で取得する方法について説明します。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -55,8 +55,8 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 ## <a name="next-steps"></a>次のステップ
 Event Hub を作成し、データを送受信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
-* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]。
-* [Event Hubs でイベント処理の拡張][Event Hubs でイベント処理の拡張]のサンプル。
+* [Event Hubs を使用する完全なサンプル アプリケーション][sample application that uses Event Hubs]
+* [Event Hubs でのイベント処理のスケールアウト][Scale out Event Processing with Event Hubs] サンプル
 
 詳細については、 [Java デベロッパー センター](/develop/java/)を参照してください。
 
@@ -65,14 +65,13 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [22]: ./media/event-hubs-java-ephcs-getstarted/java-send.png
 
 <!-- Links -->
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
-[イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[Event Hubs の概要]: event-hubs-overview.md
-[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

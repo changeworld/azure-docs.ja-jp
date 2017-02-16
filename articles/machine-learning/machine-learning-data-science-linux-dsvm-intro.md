@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3d5c5d6ae177b6f662df261f3254816b20bac764
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: f355ea88f4d14e48d9523a0ac7aff965171bed4b
 
 
 ---
@@ -117,7 +117,7 @@ SSH クライアントを使用するか、X2Go クライアントから XFCE �
 
 ## <a name="tools-installed-on-the-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンにインストールされているツール
 ### <a name="microsoft-r-open"></a>Microsoft R Open
-R は、データ分析と機械学習に最もよく使われる言語の 1 つです。 分析に R を使用する場合は、VM に Microsoft R Open (MRO) と Math Kernel Library (MKL) が用意されています。 MKL は、分析アルゴリズムの一般的な算術演算を最適化します。 MRO は CRAN-R と完全に互換性があり、CRAN で公開されているすべての R ライブラリを MRO にインストールできます。 R プログラムは、vi、Emacs、gedit など、既定のいずれかのエディターで編集することができます。 [RStudio](http://www.rstudio.com)などの他の IDE をダウンロードして使用することもできます。 利便性を考えて、 **/dsvm/tools** ディレクトリには、RStudio をインストールする簡単なスクリプト (installRStudio.sh) が用意されています。 Emacs エディターを使用している場合、Emacs エディター内での R ファイルの操作を簡素化する Emacs パッケージの ESS (Emacs Speaks Statistics) がプレインストールされています。
+R は、データ分析と機械学習に最もよく使われる言語の&1; つです。 分析に R を使用する場合は、VM に Microsoft R Open (MRO) と Math Kernel Library (MKL) が用意されています。 MKL は、分析アルゴリズムの一般的な算術演算を最適化します。 MRO は CRAN-R と完全に互換性があり、CRAN で公開されているすべての R ライブラリを MRO にインストールできます。 R プログラムは、vi、Emacs、gedit など、既定のいずれかのエディターで編集することができます。 [RStudio](http://www.rstudio.com)などの他の IDE をダウンロードして使用することもできます。 利便性を考えて、 **/dsvm/tools** ディレクトリには、RStudio をインストールする簡単なスクリプト (installRStudio.sh) が用意されています。 Emacs エディターを使用している場合、Emacs エディター内での R ファイルの操作を簡素化する Emacs パッケージの ESS (Emacs Speaks Statistics) がプレインストールされています。
 
 R を起動するには、シェルで「**R**」と入力します。 入力すると、対話型環境に移動します。 R プログラムを開発するには、通常、Emacs、vi、gedit などのエディターを使用し、R 内でスクリプトを実行します。RStudio をインストールすると、完全なグラフィカル IDE 環境で R プログラムを開発できます。
 
@@ -160,7 +160,7 @@ Jupyter Notebook サーバーは、どのホストからでもアクセスでき
 > 
 > 
 
-サンプルの Notebook がパッケージ化されています (Python と R にそれぞれ 1 つずつ)。ローカルの Linux ユーザー名とパスワードを使用して Jupyter Notebook の認証を受けると、Notebook のホーム ページにサンプルへのリンクを表示できます。 **[新規]** を選択し、適切な言語カーネルを選択して、新しい Notebook を作成できます。 **[新規]** ボタンが表示されない場合は、左上にある **Jupyter** アイコンをクリックして、Notebook サーバーのホーム ページに移動します。
+サンプルの Notebook がパッケージ化されています (Python と R にそれぞれ&1; つずつ)。ローカルの Linux ユーザー名とパスワードを使用して Jupyter Notebook の認証を受けると、Notebook のホーム ページにサンプルへのリンクを表示できます。 **[新規]** を選択し、適切な言語カーネルを選択して、新しい Notebook を作成できます。 **[新規]** ボタンが表示されない場合は、左上にある **Jupyter** アイコンをクリックして、Notebook サーバーのホーム ページに移動します。
 
 ### <a name="ides-and-editors"></a>IDE とエディター
 コード エディターには、いくつかの選択肢があります。 選択肢として、vi/VIM、Emacs、gEdit、Eclipse があります。 gEdit と Eclipse はグラフィカル エディターであり、使用するにはグラフィカル デスクトップにサインインする必要があります。 これらのエディターには、起動するためのデスクトップとアプリケーションのメニューのショートカットが用意されています。
@@ -187,7 +187,7 @@ Jupyter Notebook サーバーは、どのホストからでもアクセスでき
 詳細については、「 [SQuirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots)」をご覧ください。
 
 #### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Microsoft SQL Server にアクセスするためのコマンド ライン ツール
-SQL Server の ODBC ドライバー パッケージには、次の 2 つのコマンド ライン ツールも付属しています。
+SQL Server の ODBC ドライバー パッケージには、次の&2; つのコマンド ライン ツールも付属しています。
 
 **bcp**- bcp ユーティリティでは、Microsoft SQL Server のインスタンスと、ユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。 bcp ユーティリティを使用して、SQL Server テーブルに多数の新しい行をインポートしたり、テーブルからデータ ファイルにデータをエクスポートしたりできます。 テーブルにデータをインポートするには、そのテーブル用に作成されたフォーマット ファイルを使用するか、テーブルの構造と列の有効なデータの種類を把握する必要があります。
 
@@ -216,11 +216,11 @@ R と Python には、データベースにアクセスするためのライブ�
 ### <a name="azure-tools"></a>Azure ツール
 VM には、次の Azure ツールがインストールされています。
 
-* **Azure コマンド ライン インターフェイス**: Azure CLI では、シェル コマンドを使用して Azure リソースを作成および管理できます。 Azure ツールを起動するには、「 **azure help**」と入力します。 詳細については、 [Azure CLI ドキュメント ページ](../virtual-machines-command-line-tools.md)をご覧ください。
+* **Azure コマンド ライン インターフェイス**: Azure CLI では、シェル コマンドを使用して Azure リソースを作成および管理できます。 Azure ツールを起動するには、「 **azure help**」と入力します。 詳細については、 [Azure CLI ドキュメント ページ](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)をご覧ください。
 * **Microsoft Azure ストレージ エクスプローラー**: Microsoft Azure ストレージ エクスプローラーは、Azure ストレージ アカウントに保存されているオブジェクトを参照したり、Azure BLOB との間でデータをアップロード/ダウンロードしたりする際に使用するグラフィカル ツールです。 ストレージ エクスプローラーには、デスクトップのショートカット アイコンからアクセスできます。 シェル プロンプトから「 **StorageExplorer**」と入力して起動することもできます。 X2Go クライアントからサインインしているか、X11 転送を設定済みである必要があります。
 * **Azure Libraries**: 次のライブラリがプレインストールされています。
   
-  * **Python**: Python のインストール済みの Azure 関連ライブラリには、**azure**、**azureml**、**pydocumentdb**、**pyodbc** があります。 最初の 3 つのライブラリを使用すると、Azure ストレージ サービス、Azure Machine Learning、Azure DocumentDB (Azure の NoSQL データベース) にアクセスできます。 4 番目のライブラリの pyodbc を (Microsoft ODBC Driver for SQL Server と共に) 使用すると、Python から ODBC インターフェイスを使用して SQL Server、Azure SQL Database、Azure SQL Data Warehouse にアクセスできます。 すべてのライブラリを一覧表示するには、「 **pip list** 」と入力します。 このコマンドは、必ず Python 2.7 と 3.5 の両方の環境で実行してください。
+  * **Python**: Python のインストール済みの Azure 関連ライブラリには、**azure**、**azureml**、**pydocumentdb**、**pyodbc** があります。 最初の&3; つのライブラリを使用すると、Azure ストレージ サービス、Azure Machine Learning、Azure DocumentDB (Azure の NoSQL データベース) にアクセスできます。 4 番目のライブラリの pyodbc を (Microsoft ODBC Driver for SQL Server と共に) 使用すると、Python から ODBC インターフェイスを使用して SQL Server、Azure SQL Database、Azure SQL Data Warehouse にアクセスできます。 すべてのライブラリを一覧表示するには、「 **pip list** 」と入力します。 このコマンドは、必ず Python 2.7 と 3.5 の両方の環境で実行してください。
   * **R**: R のインストール済みの Azure 関連ライブラリは、**AzureML** と **RODBC** です。
   * **Java**: Azure Java ライブラリのリストは、VM の **/dsvm/sdk/AzureSDKJava** ディレクトリにあります。 主要なライブラリは、Azure Storage と管理 API、DocumentDB、SQL Server の JDBC ドライバーです。  
 
@@ -233,7 +233,7 @@ Azure Machine Learning Studio にサインインすると、実験キャンバ�
 
 VM で R または Python を使ってモデルを作成し、Azure Machine Learning の運用環境にデプロイすることもできます。 この機能を有効にするために、R (**AzureML**) と Python (**azureml**) にライブラリがインストールされています。
 
-R と Python のモデルを Azure Machine Learning にデプロイする方法については、「 [データ サイエンス仮想マシンでできる 10 のこと](machine-learning-data-science-vm-do-ten-things.md) 」の「R または Python を使ってモデルを構築し、Azure Machine Learning を使って運用可能な状態にする」をご覧ください。
+R と Python のモデルを Azure Machine Learning にデプロイする方法については、「 [データ サイエンス仮想マシンでできる&10; のこと](machine-learning-data-science-vm-do-ten-things.md) 」の「R または Python を使ってモデルを構築し、Azure Machine Learning を使って運用可能な状態にする」をご覧ください。
 
 > [!NOTE]
 > これらの手順は、Windows バージョンのデータ サイエンス VM 向けに書かれたものです。 ただし、これらに記載されている Azure Machine Learning へのモデルのデプロイに関する情報は Linux VM にも適用されます。
@@ -251,7 +251,7 @@ VM には、いくつかの機械学習ツールとアルゴリズムがプリ�
   
         install.packages(<lib name>)
 
-上記の最初の 3 つの機械学習ツールに関する追加情報を次に示します。
+上記の最初の&3; つの機械学習ツールに関する追加情報を次に示します。
 
 #### <a name="cntk"></a>CNTK
 これは、オープン ソースのディープ ラーニング ツールキットです。 コマンド ライン ツール (cntk) で、既に PATH 内にあります。
@@ -348,6 +348,6 @@ Rattle と R を終了できます。これで、生成された R スクリプ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

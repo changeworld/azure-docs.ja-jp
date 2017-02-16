@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manager テンプレートでのアクセスとセキュリティ | Microsoft Docs"
+title: "Linux VM の Azure テンプレートでのアクセスとセキュリティ | Microsoft Docs"
 description: "Azure Virtual Machines DotNet Core チュートリアル"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,8 +16,8 @@ ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 25af19c208fb69d06ca74dec41f42a075eb22304
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 59e3402fbeb6356c164a9a7a80728ec06ca7e141
 
 
 ---
@@ -141,6 +141,6 @@ Azure Portal では、ネットワーク セキュリティ グループは次�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

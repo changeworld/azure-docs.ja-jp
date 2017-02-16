@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d0433f7f2e88dcbf5e0969f0a6c8d2689816b2d1
+ms.sourcegitcommit: a2b4c14fa7f167e9a7e0cddeedbf18579117c478
+ms.openlocfilehash: 7d8ce3c869c7e3734fa1d4bc27e52325dafc651a
 
 
 ---
 # <a name="azure-ad-connect-faq"></a>Azure AD Connect の FAQ
 ## <a name="general-installation"></a>一般的なインストール
 **Q: Azure AD のグローバル管理者が 2FA を有効化している場合、インストールを実行できますか。**  
- 2016 年 2 月以降のビルドでは、これがサポートされています。
+2016 年 2 月以降のビルドでは、これがサポートされています。
 
 **Q: Azure AD Connect を無人インストールする方法はありますか。**  
- インストール ウィザードを使用して Azure AD Connect をインストールする場合にのみサポートされます。 サイレント モードでの無人インストールはサポートされていません。
+インストール ウィザードを使用して Azure AD Connect をインストールする場合にのみサポートされます。 サイレント モードでの無人インストールはサポートされていません。
 
 **Q: ドメインに接続できないフォレストがあります。Azure AD Connect をインストールにはどうすればよいですか。**  
- 2016 年 2 月以降のビルドでは、これがサポートされています。
+2016 年 2 月以降のビルドでは、これがサポートされています。
 
 **Q: AD DS の正常性エージェントはサーバー コアで稼働しますか。**  
- はい。 エージェントをインストールした後、次の PowerShell コマンドレットを使用して登録プロセスを実行できます。 
+はい。 エージェントをインストールした後、次の PowerShell コマンドレットを使用して登録プロセスを実行できます。 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
@@ -41,34 +41,40 @@ ms.openlocfilehash: d0433f7f2e88dcbf5e0969f0a6c8d2689816b2d1
 すべてのネットワーク ソフトウェアや物理デバイスなど、接続を開ける最大時間を制限するものは、Azure AD Connect クライアントがインストールされているサーバーと Azure Active Directory 間の接続に対して少なくとも 5 分 (300 秒) のしきい値を使用する必要があります。 これは、以前リリースされたすべての Microsoft Identity 同期ツールにも適用されます。
 
 **Q: SLD (シングル ラベル ドメイン) はサポートされていますか。**  
- いいえ、Azure AD Connect は、SLD を使用するオンプレミスのフォレスト/ドメインはサポートしていません。
+いいえ、Azure AD Connect は、SLD を使用するオンプレミスのフォレスト/ドメインはサポートしていません。
 
 **Q: 「ドット形式」の NetBios 名はサポートされていますか。**  
- いいえ、Azure AD Connect では、NetBios 名にピリオド (.) が含まれているオンプレミスのフォレスト/ドメインはサポートしていません。
+いいえ、Azure AD Connect では、NetBios 名にピリオド (.) が含まれているオンプレミスのフォレスト/ドメインはサポートしていません。
 
 ## <a name="federation"></a>フェデレーション
 **Q: Office 365 の証明書を更新するように求める電子メールを受け取った場合はどうすればいいですか。**  
- [証明書の更新](active-directory-aadconnect-o365-certs.md) に関する記事に記載されているガイダンスに従って、証明書を更新してください。
+[証明書の更新](active-directory-aadconnect-o365-certs.md) に関する記事に記載されているガイダンスに従って、証明書を更新してください。
 
 **Q: O365 証明書利用者の "証明書利用者の自動更新" を設定しました。トークン署名証明書が自動的にロールオーバーされるときに、何か必要な操作はありますか。**  
 [証明書の更新](active-directory-aadconnect-o365-certs.md)に関する記事に記載されているガイダンスに従ってください。
 
 ## <a name="environment"></a>環境
 **Q: Azure AD Connect のインストール後のサーバー名の変更はサポートされていますか。**  
- いいえ。 サーバー名を変更すると、同期エンジンが SQL データベースに接続できなくなり、サービスを開始できなくなります。
+いいえ。 サーバー名を変更すると、同期エンジンが SQL データベースに接続できなくなり、サービスを開始できなくなります。
 
 ## <a name="identity-data"></a>ID データ
 **Q: Azure AD の UPN (userPrincipalName) 属性がオンプレミスの UPN と一致しません。なぜでしょうか。**  
- 次の記事を参照してください。
+次の記事を参照してください。
 
 * [Office 365、Azure、Intune におけるユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://support.microsoft.com/en-us/kb/2523192)
 * [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://support.microsoft.com/en-us/kb/2669550)
 
 また、「 [Azure AD Connect 同期サービスの機能](active-directory-aadconnectsyncservice-features.md)」に記載された手順に従って、同期エンジンによる userPrincipalName の更新が許可されるように Azure AD を構成することもできます。
 
+**Q: オンプレミスの AD グループ/連絡先オブジェクトと既存の Azure AD グループ/連絡先オブジェクトとのあいまい一致はサポートされていますか。**  
+いいえ。現在これはサポートされていません。
+
+**Q: 既存の Azure AD グループ/連絡先オブジェクトに対して手動で設定された ImmutableId 属性とオンプレミスの AD グループ/連絡先オブジェクトとの完全一致はサポートされていますか。**  
+いいえ。現在これはサポートされていません。
+
 ## <a name="custom-configuration"></a>カスタム構成
 **Q: Azure AD Connect 用の PowerShell コマンドレットのドキュメントはどこにありますか。**  
- このサイトに記載されているコマンドレットを除き、Azure AD Connect で使用されている PowerShell コマンドレットは、ユーザーによる使用をサポートしていません。
+このサイトに記載されているコマンドレットを除き、Azure AD Connect で使用されている PowerShell コマンドレットは、ユーザーによる使用をサポートしていません。
 
 **Q: *Synchronization Service Manager* の [サーバーのエクスポート/インポート] を使用して、サーバー間で構成を移動できますか。**  
 いいえ。 このオプションはすべての構成設定を取得しないため、使用すべきではありません。 代わりに、2 台目のサーバーでウィザードを使用して基本構成を作成し、同期ルール エディターを使用して PowerShell スクリプトを生成し、サーバー間でカスタム ルールを移動してください。 詳細については、「 [カスタム構成をアクティブ サーバーからステージング サーバーに移動する](active-directory-aadconnect-upgrade-previous-version.md#move-custom-configuration-from-active-to-staging-server)」をご覧ください。
@@ -91,6 +97,6 @@ ms.openlocfilehash: d0433f7f2e88dcbf5e0969f0a6c8d2689816b2d1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

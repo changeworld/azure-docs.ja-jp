@@ -1,9 +1,9 @@
 ---
-title: "Azure Search インデクサーから Azure の仮想マシンの SQL Server への接続の構成 | Microsoft Docs"
+title: "Azure Search への SQL VM 接続 | Microsoft Docs"
 description: "暗号化された接続を有効にして、Azure Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。"
 services: search
 documentationcenter: 
-author: jack4it
+author: HeidiSteen
 manager: pablocas
 editor: 
 ms.assetid: 46e42e0e-c8de-4fec-b11a-ed132db7e7bc
@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 09/26/2016
-ms.author: jackma
+ms.date: 01/23/2017
+ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 2150735fbf1e1438feeef70f0ea92ed041d0cd24
+ms.sourcegitcommit: 814292d76601452493c1d708c39d42da909036d9
+ms.openlocfilehash: 1e436978da0f2fc8c122a1a99bd891fe82929f50
 
 
 ---
@@ -74,9 +74,9 @@ IP アドレスの指定ではいくつかの課題が生じる可能性があ�
 SQL Azure VM をすべての接続要求に広く開放するのではなく、ACL で Search サービスの IP アドレスへのアクセスを制限することを強くお勧めします。 IP アドレスは、Search サービスの FQDN ( `<your-search-service-name>.search.windows.net`など) に ping を実行することで、簡単に確認できます。
 
 #### <a name="managing-ip-address-fluctuations"></a>IP アドレスの変動の管理
-Search サービスに検索ユニットが 1 つ (1 つのレプリカと 1 つのパーティション) しかない場合は、日常的なサービスの再起動で IP アドレスが変更され、Search サービスの IP アドレスを含む既存の ACL が無効になることがあります。
+Search サービスに検索ユニットが&1; つ (1 つのレプリカと&1; つのパーティション) しかない場合は、日常的なサービスの再起動で IP アドレスが変更され、Search サービスの IP アドレスを含む既存の ACL が無効になることがあります。
 
-その後で生じる接続エラーを回避する方法の 1 つは、Azure Search で複数のレプリカと 1 つのパーティションを使用することです。 それによってコストは増加しますが、IP アドレスの問題も解決します。 Azure Search では、複数の検索ユニットがあるときには IP アドレスが変更されません。
+その後で生じる接続エラーを回避する方法の&1; つは、Azure Search で複数のレプリカと&1; つのパーティションを使用することです。 それによってコストは増加しますが、IP アドレスの問題も解決します。 Azure Search では、複数の検索ユニットがあるときには IP アドレスが変更されません。
 
 2 つめの方法は、接続を失敗させた後で NSG 内の ACL を再構成することです。 平均すると、IP アドレスは数週間おきに変更されると想定されます。 管理されたインデックス作成をめったに行わないお客様の場合は、この方法を実行できる可能性があります。
 
@@ -91,6 +91,6 @@ Azure Portal を使用してインデクサーを作成する場合は、作成�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

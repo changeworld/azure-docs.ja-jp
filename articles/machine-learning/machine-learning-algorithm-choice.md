@@ -3,7 +3,7 @@ title: "Machine Learning アルゴリズムの選択方法 | Microsoft Docs"
 description: "クラスタリング、分類、または回帰の実験で教師あり学習と教師なし学習用の Azure Machine Learning のアルゴリズムを選択する方法"
 services: machine-learning
 documentationcenter: 
-author: brohrer
+author: garyericson
 manager: jhubbard
 editor: cgronlun
 tags: 
@@ -14,10 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/09/2016
-ms.author: brohrer;garye
+ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 216152123e4a5c17ec93775adff9fd4c1eb18654
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f2593e5ddebdc3a44559f16739dc9a13881afcb2
 
 
 ---
@@ -56,7 +56,7 @@ ms.openlocfilehash: 216152123e4a5c17ec93775adff9fd4c1eb18654
 これは、人気のある便利な機械学習の種類です。 1 つの例外を除き、Azure Machine Learning のモジュールはすべて教師あり学習アルゴリズムです。 教師あり学習には複数の種類があり、Azure Machine Learning では分類、回帰、異常検出と表されています。
 
 * **分類**。 カテゴリを予測するためにデータが使用されている場合、教師あり学習は分類とも呼ばれます。 これは、写真を「猫」または「犬」に割り当てるような場合です。 選択肢が 2 つだけの場合、これは **2 クラス分類**または**二項分類**と呼ばれます。 全国高校野球選手権大会の優勝校を予測する場合のように、多くのカテゴリがある場合は、**多クラス分類**と呼ばれます。
-* Regression」にアクセスしてください。 株価のような値を予測するときの教師あり学習は回帰と呼ばれます。
+* **Regression**」にアクセスしてください。 株価のような値を予測するときの教師あり学習は回帰と呼ばれます。
 * **異常の検出**。 目的が単に異常なデータ ポイントを識別することである場合があります。 たとえば、不正行為の検出では、極めて異常なクレジット カード使用パターンは疑いがあります。 可能性のあるバリエーションは非常に多く、トレーニングの例は少ないので、不正行為がどのようなものになるかを学習するのは不可能です。 異常検出が使用するアプローチは、単に正常な行為がどのようなものかを (非不正取引履歴を使用して) 学習し、それと大きく異なるものを識別するというものです。
 
 ### <a name="unsupervised"></a>教師なし
@@ -234,6 +234,6 @@ Microsoft Research の John Langford による VW は、市販車のようなア
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

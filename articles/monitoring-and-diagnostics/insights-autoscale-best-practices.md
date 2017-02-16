@@ -1,8 +1,8 @@
 ---
-title: "Azure Monitor の自動スケールのベスト プラクティス | Microsoft Docs"
-description: "Azure Monitor の自動スケールを効果的に使用するための原則について説明します。"
+title: "自動スケールのベスト プラクティス | Microsoft Docs"
+description: "Virtual Machines、Virtual Machine Scale Sets、および Cloud Services の自動スケールを効率的に行うための原則について説明します。"
 author: kamathashwin
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 01/23/2016
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f49d9121f34cc58d1486220a93bcb102f8eba90b
+ms.sourcegitcommit: cc557c7139561345a201fa0cd45c803af3751acd
+ms.openlocfilehash: 25fa8749d4b23d3619829fa179a7c91da311bbd0
 
 
 ---
-# <a name="best-practices-for-azure-monitor-autoscaling"></a>Azure Monitor の自動スケールのベスト プラクティス
-このドキュメントの以下のセクションは、Azure の自動スケールのベスト プラクティスを理解するうえで役立ちます。 この情報を確認すると、Azure インフラストラクチャで自動スケールをより効果的に使用できるようになります。
+# <a name="best-practices-autoscaling-virtual"></a>仮想環境の自動スケールに関するベスト プラクティス
+この記事では、Azure での自動スケールのベスト プラクティスについて説明します。 対象は、Virtual Machines、Virtual Machine Scale Sets、および Cloud Services です。  他の Azure サービスでは、異なるスケーリング方法が使用されています。
 
 ## <a name="autoscale-concepts"></a>自動スケールの概念
 * 1 つのリソースで使用できる自動スケール設定は *1 つ* に限られます。
-* 自動スケール設定では、1 つ以上のプロファイルを使用できます。また、プロファイルごとに 1 つ以上の自動スケール ルールを設定できます。
+* 自動スケール設定では、1 つ以上のプロファイルを使用できます。また、プロファイルごとに&1; つ以上の自動スケール ルールを設定できます。
 * 自動スケール設定では、インスタンスが水平方向にスケールされます。つまり、インスタンス数を増やしてスケール "*アウト*" し、インスタンス数を減らしてスケール "*イン*" します。
   自動スケール設定には、インタンスの最大値、最小値、既定値があります。
 * 自動スケール ジョブでは、スケールに使用する関連付けられたメトリックを常に読み取り、スケールアウトまたはスケールインの構成済みのしきい値を超えているかどうかをチェックします。 自動スケールで使用できるメトリックの一覧については、「[Azure Monitor の自動スケールの一般的なメトリック](insights-autoscale-common-metrics.md)」をご覧ください。
@@ -46,7 +46,7 @@ ms.openlocfilehash: f49d9121f34cc58d1486220a93bcb102f8eba90b
 組み合わせの一方だけを使用すると、最大値または最小値に達するまで、スケールアウトのみまたはスケールインのみが実行されます。
 
 ### <a name="do-not-switch-between-the-azure-portal-and-the-azure-classic-portal-when-managing-autoscale"></a>自動スケールを管理するときに、Azure ポータルと Azure クラシック ポータルを切り替えない
-Cloud Services と App Services (Web Apps) の場合、Azure Portal (portal.azure.com) を使用して自動スケール設定を作成し、管理します。 Virtual Machine Scale Sets の場合、PoSH、CLI、または REST API を使用して自動スケール設定を作成し、管理します。 自動スケールの構成を管理するときに、Azure クラシック ポータル (manage.windowsazure.com) と Azure ポータル (portal.azure.com) を切り替えないでください。 Azure クラシック ポータルとその基になるバックエンドには制限事項があります。 グラフィカル ユーザー インターフェイスを使用して自動スケールを管理するには、Azure ポータルに移動します。 自動スケールで、PowerShell、CLI、または REST API (Azure リソース エクスプローラーを使用) を使用することもできます。
+Cloud Services と App Services (Web Apps) の場合、Azure Portal (portal.azure.com) を使用して自動スケール設定を作成し、管理します。 Virtual Machine Scale Sets の場合、PowerShell、CLI、または REST API を使用して自動スケール設定を作成し、管理します。 自動スケールの構成を管理するときに、Azure クラシック ポータル (manage.windowsazure.com) と Azure ポータル (portal.azure.com) を切り替えないでください。 Azure クラシック ポータルとその基になるバックエンドには制限事項があります。 グラフィカル ユーザー インターフェイスを使用して自動スケールを管理するには、Azure ポータルに移動します。 自動スケールで、PowerShell、CLI、または REST API (Azure リソース エクスプローラーを使用) を使用することもできます。
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>診断メトリックに適切な統計を選択する
 診断メトリックの場合、スケールに使用するメトリックとして、"*平均*"、"*最小*"、"*最大*"、"*合計*" の中から選択できます。 最も一般的な統計は *平均*です。
@@ -59,7 +59,7 @@ Cloud Services と App Services (Web Apps) の場合、Azure Portal (portal.azur
 * スレッド数が 600 以下のときにインスタンスを 1 つ増やす
 * スレッド数が 600 以上のときにインスタンスを 1 つ減らす
 
-混乱を招くと思われる動作につながる可能性のある例を見てみましょう。 次の例について考えてみます。
+混乱を招くと思われる動作につながる可能性のある例を見てみましょう。 次の例を考えます。
 
 1. 最初に 2 つのインスタンスがあり、インスタンスあたりの平均スレッド数が 625 に増加したとします。
 2. 自動スケールによって 3 つ目のインスタンスが追加され、スケールアウトされます。
@@ -67,7 +67,7 @@ Cloud Services と App Services (Web Apps) の場合、Azure Portal (portal.azur
 4. 自動スケールでは、スケールダウンを実行する前に、スケールインした場合の最終状態の推定を試みます。 たとえば、575 x 3 (現在のインスタンス数) = 1,725 / 2 (スケールダウンしたときの最終的なインスタンス数) = 862.5 スレッドになります。 つまり、スケールインした後も、平均スレッド数に変化がない場合や少し減少しただけである場合、すぐにスケールアウトを再度実行する必要があります。 しかし、再度スケールアップすると、このプロセス全体が繰り返されることになり、無限ループが発生します。
 5. この状態 ("締まりのない" といいます) を回避するために、スケールダウンはまったく実行されません。 代わりに、スケールダウンをスキップし、サービスのジョブが次回実行されたときに、条件が再評価されます。 平均スレッド数が 575 のときに自動スケールが機能していないように見えるため、これは多くのユーザーを混乱させるおそれがあります。
 
-スケールイン時の推定動作は、"締まりのない" 状態を回避することを目的としています。 スケールアウトとスケールインに同じしきい値を使用する場合は、この動作に留意する必要があります。
+スケールイン時の推定動作は、スケールインとスケールアウトが連続して交互に行われる "締まりのない" 状態を回避するためのものです。 スケールアウトとスケールインに同じしきい値を使用する場合は、この動作に留意してください。
 
 スケールアウトとスケールインのしきい値に十分な差を付けておくことをお勧めします。 たとえば、次の有効なルールの組み合わせについて考えてみます。
 
@@ -107,7 +107,7 @@ Cloud Services と App Services (Web Apps) の場合、Azure Portal (portal.azur
 2. 定期的プロファイル
 3. 既定の ("常時") プロファイル
 
-自動スケールでは、プロファイルの条件が満たされると、それより下位のプロファイルの条件はチェックされません。 自動スケールで処理されるプロファイルは一度に 1 つに限られます。 つまり、下位層のプロファイルの処理条件も含める場合は、現在のプロファイルにそれらのルールも含める必要があります。
+自動スケールでは、プロファイルの条件が満たされると、それより下位のプロファイルの条件はチェックされません。 自動スケールで処理されるプロファイルは一度に&1; つに限られます。 つまり、下位層のプロファイルの処理条件も含める場合は、現在のプロファイルにそれらのルールも含める必要があります。
 
 例を使用してこれを確認しましょう。
 
@@ -152,7 +152,6 @@ Cloud Services と App Services (Web Apps) の場合、Azure Portal (portal.azur
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

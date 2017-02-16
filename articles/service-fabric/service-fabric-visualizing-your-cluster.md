@@ -12,28 +12,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2016
+ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 1825e1400b95eb2a810082b6a3f15324261084b0
-ms.openlocfilehash: b9e10181e123b91f5593ea135220f97b780186c9
+ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
+ms.openlocfilehash: bebfd5e0cc209d8c1fc28d2300c57e3519410954
 
 
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 Service Fabric Explorer は、Azure Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 Service Fabric クラスター内で直接ホストされているので、ローカル クラスターが実行されている場所に関係なく、いつでも使用できます。
 
-Service Fabric Explorer の使用方法については、次の Microsoft Virtual Academy のビデオをご覧ください。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965">
-<img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244">
-</a></center>
+## <a name="video-tutorial"></a>ビデオ チュートリアル
+
+Service Fabric Explorer の使用方法については、次の Microsoft Virtual Academy のビデオをご覧ください。
+
+[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
 
 ## <a name="connect-to-service-fabric-explorer"></a>Service Fabric Explorer への接続
 [開発環境を準備する](service-fabric-get-started.md)手順に従った場合は、http://localhost:19080/Explorer に移動することで、ローカル クラスター上で Service Fabric Explorer を起動できます。
 
 > [!NOTE]
 > Internet Explorer と Service Fabric Explorer を併用してリモート クラスターを管理する場合は、Internet Explorer の一部の設定を構成する必要があります。 すべての情報が正しく読み込まれるように、**[ツール]** > **[互換表示設定]** に移動し、**[イントラネット サイトを互換表示で表示する]** チェック ボックスをオフにします。
-> 
-> 
+>
+>
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>Service Fabric Explorer のレイアウトについて
 左側のツリーを使用して、Service Fabric Explorer 内を移動できます。 ツリーのルートでは、クラスター ダッシュボードにクラスターの概要 (アプリケーションとノードの正常性の概要など) が表示されます。
@@ -41,16 +43,16 @@ Service Fabric Explorer の使用方法については、次の Microsoft Virtua
 ![Service Fabric Explorer のクラスター ダッシュボード][sfx-cluster-dashboard]
 
 ### <a name="view-the-clusters-layout"></a>クラスターのレイアウトを表示する
-Service Fabric クラスターのノードは、障害ドメインとアップグレード ドメインの 2 次元グリッドにわたって配置されます。 このように配置することで、ハードウェアの障害やアプリケーションのアップグレード時にもアプリケーションを継続して利用できます。 現在のクラスターの配置を表示するには、クラスター マップを使用します。
+Service Fabric クラスターのノードは、障害ドメインとアップグレード ドメインの&2; 次元グリッドにわたって配置されます。 このように配置することで、ハードウェアの障害やアプリケーションのアップグレード時にもアプリケーションを継続して利用できます。 現在のクラスターの配置を表示するには、クラスター マップを使用します。
 
 ![Service Fabric Explorer のクラスター マップ][sfx-cluster-map]
 
 ### <a name="view-applications-and-services"></a>アプリケーションとサービスを表示する
-クラスターには、2 つのサブツリーが含まれています。1 つはアプリケーション、もう 1 つはノードのサブツリーです。
+クラスターには、2 つのサブツリーが含まれています。1 つはアプリケーション、もう&1; つはノードのサブツリーです。
 
 アプリケーション ビューでは、Service Fabric の論理階層 (アプリケーション、サービス、パーティション、レプリカ) 内を移動できます。
 
-次の例では、**MyApp** アプリケーションは、**MyStatefulService** と **WebService** の 2 つのサービスで構成されています。 **MyStatefulService** はステートフルであるため、1 つのプライマリ レプリカと 2 つのセカンダリ レプリカがあるパーティションが 1 つ含まれています。 これに対して、WebSvcService はステートレスであり、インスタンスが 1 つだけ含まれています。
+次の例では、**MyApp** アプリケーションは、**MyStatefulService** と **WebService** の&2; つのサービスで構成されています。 **MyStatefulService** はステートフルであるため、1 つのプライマリ レプリカと&2; つのセカンダリ レプリカがあるパーティションが&1; つ含まれています。 これに対して、WebSvcService はステートレスであり、インスタンスが&1; つだけ含まれています。
 
 ![Service Fabric Explorer のアプリケーション ビュー][sfx-application-tree]
 
@@ -64,14 +66,14 @@ Service Fabric クラスターのノードは、障害ドメインとアップ�
 ## <a name="actions"></a>アクション
 Service Fabric Explorer では、クラスター内のノード、アプリケーション、サービスに対する操作を簡単に呼び出すことができます。
 
-たとえば、アプリケーション インスタンスを削除するには、左側のツリーでアプリケーションを選択し、 **アクション** > **[アプリケーションの削除]**に移動することで、ローカル クラスター上で Service Fabric Explorer を起動できます。
+たとえば、アプリケーション インスタンスを削除するには、左側のツリーでアプリケーションを選択し、**[アクション]** > **[アプリケーションの削除]** の順に選択します。
 
 ![Service Fabric Explorer でのアプリケーションの削除][sfx-delete-application]
 
 > [!TIP]
 > 同じ操作を実行するには、各要素の横にある省略記号をクリックします。
-> 
-> 
+>
+>
 
 次の表に、各エンティティに対して実行できるアクションを示します。
 
@@ -85,32 +87,33 @@ Service Fabric Explorer では、クラスター内のノード、アプリケ�
 | 非アクティブ化 (再開) |ノードからメモリ内のすべてのサービスを安全に移動し、永続的なサービスを終了します。 通常は、ホスト プロセスまたはコンピューターの再起動が必要な場合に使用されます。 | |
 | 非アクティブ化 (データを削除) |十分なレプリカを作成した後、ノードで実行されているすべてのサービスを安全に閉じます。 通常は、ノード (または少なくともそのストレージ) が完全にコミットの対象から除外された場合に使用されます。 | |
 | ノードの状態の削除 |ノードのレプリカの知識をクラスターから削除します。 通常は、既に障害が発生したノードを回復不能と判断したときに使用されます。 | |
+| ノード | 再起動 | ノードを再起動することによって、ノード障害をシミュレートします。 詳細情報は[こちら](https://docs.microsoft.com/en-us/powershell/servicefabric/vlatest/Restart-ServiceFabricNode)です ||
 
 多くの操作は破壊的であるため、アクションを実行する前に確認を求められることがあります。
 
 > [!TIP]
 > Service Fabric Explorer を使用して実行できる操作はすべて、PowerShell または REST API を使用して実行し、自動化することもできます。
-> 
-> 
+>
+>
 
-Service Fabric Explorer を使用して、特定のアプリケーションの種類とバージョンの新しいアプリケーション インスタンスを生成することもできます。 ツリー ビューでアプリケーションの種類を選択し、右側のウィンドウでバージョンの横にある **[Create app instance (アプリ インスタンスの作成)]** リンクをクリックします。
+Service Fabric Explorer を使用して、特定のアプリケーションの種類とバージョンのアプリケーション インスタンスを生成することもできます。 ツリー ビューでアプリケーションの種類を選択し、右側のウィンドウでバージョンの横にある **[Create app instance (アプリ インスタンスの作成)]** リンクをクリックします。
 
 ![Service Fabric Explorer でのアプリケーション インスタンスの作成][sfx-create-app-instance]
 
 > [!NOTE]
 > Service Fabric Explorer を使って作成されたアプリケーション インスタンスは現在パラメーター化できません。 これらは、既定のパラメーター値を使用して作成されます。
-> 
-> 
+>
+>
 
 ## <a name="connect-to-a-remote-service-fabric-cluster"></a>リモート Service Fabric クラスターへの接続
-Service Fabric Explorer は Web ベースであり、クラスター内で実行されるので、クラスターのエンドポイントがわかっており、エンドポイントにアクセスするための十分なアクセス許可があれば、どのブラウザーからでもアクセスできます。
+クラスターのエンドポイントがわかっていて、かつ十分なアクセス許可があれば、任意のブラウザーから Service Fabric Explorer にアクセスできます。 これは、Service Fabric Explorer がクラスター内で実行されている別のサービスであるからです。
 
 ### <a name="discover-the-service-fabric-explorer-endpoint-for-a-remote-cluster"></a>リモート クラスターの Service Fabric Explorer エンドポイントを検出する
-特定のクラスターの Service Fabric Explorer に到達するために、ブラウザーを次の場所にポイントします。
+特定のクラスターの Service Fabric Explorer にアクセスするには、ブラウザーで次の場所にアクセスします。
 
 http://&lt;your-cluster-endpoint&gt;:19080/Explorer
 
-完全な URL は Azure ポータルの [Cluster Essentials] ウィンドウにもあります。
+Azure クラスターの場合、完全な URL は Azure Portal の [Cluster Essentials] ウィンドウにもあります。
 
 ### <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
 証明書または Azure Active Directory (AAD) を使用して、クライアントによる Service Fabric クラスターへのアクセスを制御できます。
@@ -132,6 +135,6 @@ http://&lt;your-cluster-endpoint&gt;:19080/Explorer
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "App Service on Linux で Web アプリを作成する方法 | Microsoft Docs"
+title: "Linux で実行されている Azure Web アプリの作成 | Microsoft Docs"
 description: "App Service on Linux の Web アプリ作成ワークフローについて説明します。"
 keywords: "Azure App Service, Web アプリ, Linux, OSS"
 services: app-service
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: naziml
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8d87315ec97631c7ad3f0163aeaa0abde11b7416
+ms.sourcegitcommit: e062cb169782319bda14acfa4f2b7c8198f320f6
+ms.openlocfilehash: e5c0547a4fb109560dbafbf84d17e0c3d28a7188
 
 
 ---
-# <a name="create-a-web-app-with-app-service-on-linux"></a>App Service on Linux を使用した Web アプリの作成
+# <a name="create-an-azure-web-app-running-on-linux"></a>Linux で実行されている Azure Web アプリの作成
 ## <a name="use-the-azure-portal-to-create-your-web-app"></a>Azure Portal を使用した Web アプリの作成
 Linux での Web アプリの作成は、次の図のとおり [Azure Portal](https://portal.azure.com) から開始することができます。
 
@@ -59,6 +59,6 @@ Linux での Web アプリの作成は、次の図のとおり [Azure Portal](ht
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -11,11 +11,11 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 01/12/2017
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 29385af9183ef2f8431581aaa5fe38e89404d068
+ms.sourcegitcommit: 292c9150822363aba3336b1efce579dc5362cb14
+ms.openlocfilehash: 99b3babee9b252b2d741515391295d8b1dc5c747
 
 
 ---
@@ -40,7 +40,7 @@ Azure Search は、サーバーとインフラストラクチャの管理を Mic
 ## <a name="empower-your-developers-with-an-easy-to-use-service"></a>使いやすいサービスにより開発者の生産性を高める
 **高可用性** により、極めて信頼性の高い検索サービス エクスペリエンスを確保します。 適切に拡張された場合に、 [Azure Search は 99.9% の SLA を実現](https://azure.microsoft.com/support/legal/sla/search/v1_0/)します。
 
-**完全に管理** された Azure Search ではインフラストラクチャ管理をまったく必要としません。 サービスは 2 次元での拡張によって、ニーズに合わせて簡単にカスタマイズでき、より大きなドキュメント ストレージ、より高いクエリ負荷、またはその両方を処理できます。
+**完全に管理** された Azure Search ではインフラストラクチャ管理をまったく必要としません。 サービスは&2; 次元での拡張によって、ニーズに合わせて簡単にカスタマイズでき、より大きなドキュメント ストレージ、より高いクエリ負荷、またはその両方を処理できます。
 
 Azure Search では、[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を使用した**データ統合**により、Azure SQL Database、Azure DocumentDB、または [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) を自動的にクロールし、検索インデックスの内容とプライマリ データ ストアを同期できます。
 
@@ -50,7 +50,7 @@ Azure Search では、[インデクサー](https://msdn.microsoft.com/library/az
 
 **簡単なスコアリング** は Azure Search の主な利点です。 [スコアリング プロファイル](https://msdn.microsoft.com/library/azure/dn798928.aspx) を使用して、組織はドキュメント自体の値の関数として、関連性をモデル化できます。 たとえば、新しい製品や割り引き製品を検索結果の上位に表示することが望ましい場合があります。 あるいは、追跡記録し、個別に保存しておいた顧客の検索傾向に基づいてパーソナライズされたスコアリングのタグを利用し、スコアリング プロファイルを作成できます。
 
-**並べ替え** は、インデックス スキーマを介して、複数のフィールドで利用でき、クエリ時に 1 つの検索パラメーターで切り替えることができます。
+**並べ替え** は、インデックス スキーマを介して、複数のフィールドで利用でき、クエリ時に&1; つの検索パラメーターで切り替えることができます。
 
 **ページング** とスロットルは、Azure Search が検索結果に適用する [微調整された制御によって簡単に行うことができます](search-pagination-page-layout.md) 。  
 
@@ -64,7 +64,7 @@ Azure Search では、[インデクサー](https://msdn.microsoft.com/library/az
 
 選択したサービスのレベルに応じて、2 つの次元でサービスを拡張できます。1) クエリの大きな負荷を処理するために、レプリカを追加して容量を増やし、2) ドキュメントの増加に備えて、パーティションを追加して記憶域を追加します。 ドキュメントの記憶域とクエリのスループットを別々に処理することによって、特定のニーズに応じて検索サービスをカスタマイズできます。
 
-### <a name="2-create-index"></a>手順 2.インデックスの作成
+### <a name="2-create-index"></a>手順&2;.インデックスの作成
 コンテンツを Azure Search サービスにアップロードする前に、まず Azure Search インデックスを定義する必要があります。 インデックスは、データを保持し、検索クエリを受け付けることができるデータベース テーブルに似ています。 データベースのフィールドに似た、検索するドキュメントの構造にマップするインデックス スキーマを定義します。
 
 このようなインデックスのスキーマは Azure Portal で作成するか、[.NET SDK](search-howto-dotnet-sdk.md) または [REST API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して、プログラムによって作成できます。 インデックスが定義されたら、データを Azure Search サービスにアップロードできます。データには順番にインデックスが付けられます。
@@ -80,13 +80,16 @@ Azure Search では、[インデクサー](https://msdn.microsoft.com/library/az
 Azure Search インデックスを入力したら、REST API または .NET SDK によって簡単な HTTP 要求を使用して、サービス エンドポイントに [検索クエリを発行](https://msdn.microsoft.com/library/azure/dn798927.aspx) できます。
 
 ## <a name="try-it-now-for-free"></a>今すぐお試しください (無料)
-今すぐ、Azure Search をお試しいただけます。 既に Azure アカウントをお持ちの場合は、 [Free レベルでサービスをプロビジョニング](search-create-service-portal.md)できます。
+Azure サブスクライバーは [Free レベルでサービスをプロビジョニング](search-create-service-portal.md)できます。
 
-Azure アカウントがない場合は、サインアップ不要で 60 分の無料のセッションをお試しいただけます。 「 [Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/p/?LinkId=618214) 」に移動し、[Web App] を選択します。 次に、[ASP.NET + Azure Search] テンプレートを選択して開始します。
+サブスクライバーでない場合は、無料で [Azure アカウントを開く](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。 明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。
+
+または、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Jan17_HO2-->
 
 

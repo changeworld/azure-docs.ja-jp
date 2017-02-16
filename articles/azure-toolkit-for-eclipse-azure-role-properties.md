@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6b65a0c306ec9316fd8a86f8ebb2808cce65200a
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: eb1f4c815618e866e683b3fe2e3adf93a151ff5a
 
 
 ---
@@ -70,7 +70,7 @@ Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウ
 * アプリケーションをクラウド サービスとして実行するときにキャッシュの状態を保存するためのストレージ アカウント名 (キャッシュの状態を保存しない場合は [none])。 コンピューティング エミュレーターでアプリケーションを実行するときは、ストレージ アカウント名は使用されません。ストレージ アカウント名を **[(auto) (自動)]** (既定値) に設定した場合、**[Publish to Azure (Azure に発行)]** ダイアログ ボックスで選択したものと同じストレージ アカウントが自動的に使用されます。
 
 > [!NOTE]
-> **[(auto)]** 設定の場合、Eclipse ツールキットの発行ウィザードを使用してデプロイを発行した場合にのみ目的の効果が得られます。 [Azure 管理ポータル][Azure 管理ポータル]など外部のメカニズムを使用して手動で .cspkg ファイルを発行した場合、デプロイは正しく機能しません。
+> **[(auto)]** 設定の場合、Eclipse ツールキットの発行ウィザードを使用してデプロイを発行した場合にのみ目的の効果が得られます。 [Azure 管理ポータル][Azure Management Portal]など外部のメカニズムを使用して手動で .cspkg ファイルを発行した場合、デプロイは正しく機能しません。
 > 
 > 
 
@@ -85,7 +85,7 @@ Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウ
   * **[NeverExpires]:** キーには有効期限がありません。
   * **[SlidingWindow (スライド式)]**: **[Minutes to live (有効期間 (分))]** に指定された時間にわたってアクセスされない時間があると、キーが期限切れになります。有効期限の時間は、アクセスされるたびにリセットされます。
 * **[Minutes to live]:** 有効期限ポリシーが適用される memcached キーの有効期限 (分単位)。
-* **[High availability with replicated backups on different role instances]:** 有効にした場合、別のロール インスタンスにレプリケートされたバックアップを使用して高可用性が確保されます。 この機能を使用するには、デプロイに対して少なくとも 2 つのロール インスタンスが有効になっている必要があります。
+* **[High availability with replicated backups on different role instances]:** 有効にした場合、別のロール インスタンスにレプリケートされたバックアップを使用して高可用性が確保されます。 この機能を使用するには、デプロイに対して少なくとも&2; つのロール インスタンスが有効になっている必要があります。
 
 新しいキャッシュを追加するには、**[Caching (キャッシュ)]** プロパティ ページで **[Add (追加)]** ボタンをクリックして **[Configure Named Cache (名前付きキャッシュの構成)]** ダイアログ ボックスを開きます。 前述のプロパティの値を指定してください。
 
@@ -93,7 +93,7 @@ Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウ
 
 キャッシュを削除するには、目的のキャッシュを選択し、**[Caching (キャッシュ)]** プロパティ ページで **[Remove (削除)]** ボタンをクリックします。確認のメッセージが表示されるので、削除してかまわなければ **[Yes (はい)]** をクリックしてください。
 
-キャッシュの使用方法の詳細については、[併置型キャッシュの使用方法][併置型キャッシュの使用方法]に関するページを参照してください。
+キャッシュの使用方法の詳細については、[併置型キャッシュの使用方法][How to Use Co-located Caching]に関するページを参照してください。
 
 <a name="certificates_properties"></a> 
 
@@ -102,7 +102,7 @@ Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウ
 
 ![][ic710964]
 
-このダイアログ ボックスでは、Eclipse プロジェクトで参照する証明書を追加または削除できます。 ここに表示された証明書は Java キーストア内に自動的には格納されないため、自動的に Java アプリケーション内で使用できるようにはなりません。 デプロイしたアプリケーションの実行環境となる仮想マシン上の Windows 証明書ストアにプリロードしておき、後で他の Windows ソフトウェアから使用することができるよう、これらの証明書は Azure に登録されるのみです。 現在、**[Certificates (証明書)]** ダイアログ ボックスからこのようにして参照された証明書を使用するツールキットの機能は [SSL オフロード][SSL オフロード]のみです。SSL オフロードで使用されるインターネット インフォメーション サービス (IIS) と Application Request Routing (ARR) では、適切な証明書が、この方法で利用できることが要求されるためです。
+このダイアログ ボックスでは、Eclipse プロジェクトで参照する証明書を追加または削除できます。 ここに表示された証明書は Java キーストア内に自動的には格納されないため、自動的に Java アプリケーション内で使用できるようにはなりません。 デプロイしたアプリケーションの実行環境となる仮想マシン上の Windows 証明書ストアにプリロードしておき、後で他の Windows ソフトウェアから使用することができるよう、これらの証明書は Azure に登録されるのみです。 現在、**[Certificates (証明書)]** ダイアログ ボックスからこのようにして参照された証明書を使用するツールキットの機能は [SSL オフロード][SSL Offloading]のみです。SSL オフロードで使用されるインターネット インフォメーション サービス (IIS) と Application Request Routing (ARR) では、適切な証明書が、この方法で利用できることが要求されるためです。
 
 発行ウィザードを使用して Azure にプロジェクトをデプロイするとき、これらの証明書に対応する Personal Information Exchange (PFX) ファイルをパスワードと共に指定するように求められます。これにより、これらのファイルが以前に Azure サービスにアップロードされていない場合にのみ自動的に Azure サービスにアップロードされるようになります。
 
@@ -181,7 +181,7 @@ Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウ
 
 ![][ic719504]
 
-デバッグの詳細については、「[Eclipse での Azure アプリケーションのデバッグ][Eclipse での Azure アプリケーションのデバッグ]」を参照してください。
+デバッグの詳細については、「[Eclipse での Azure アプリケーションのデバッグ][Debugging Azure Applications in Eclipse]」を参照してください。
 
 <a name="endpoints_properties"></a> 
 
@@ -198,15 +198,15 @@ Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウ
 
 エンドポイントの種類によっては、次のようにポート範囲を使用できます。
 
-* 入力インスタンス エンドポイントの場合、パブリック ポートにポート範囲を指定できます (たとえば、**2000 ～ 2010**)。プライベート ポートには固定値を使用します。
+* 入力インスタンス エンドポイントの場合、パブリック ポートにポート範囲を指定できます (たとえば、**2000 ～&2010;**)。プライベート ポートには固定値を使用します。
 * 内部エンドポイントの場合、パブリック ポートは使用されません。プライベート ポートに範囲を指定してください。空欄またはアスタリスクを指定して Azure で自動的にポートを設定することもできます。
 * 入力エンドポイントの場合、パブリック ポートに指定できるのは固定値のみです。プライベート ポートには固定値を指定できるほか、空欄またはアスタリスクを指定して Azure で自動的にポートを設定することもできます。
 
 範囲ではなく単一のポート番号を使用する場合は、範囲の終わりを示すテキスト ボックスは空欄にしてください。
 
-ポートの設定を自動で行う場合に実行時に実際に使用されるポートを調べるには、Azure サービス ランタイム API ([com.microsoft.windowsazure.serviceruntime パッケージの概要][com.microsoft.windowsazure.serviceruntime パッケージの概要]を参照) をアプリケーションで使用してください。
+ポートの設定を自動で行う場合に実行時に実際に使用されるポートを調べるには、Azure サービス ランタイム API ([com.microsoft.windowsazure.serviceruntime パッケージの概要][com.microsoft.windowsazure.serviceruntime package summary]を参照) をアプリケーションで使用してください。
 
-複数インスタンス デプロイのデバッグにインスタンス入力エンドポイントを利用する方法については、「[複数インスタンス デプロイでの特定のロール インスタンスのデバッグ][複数インスタンス デプロイでの特定のロール インスタンスのデバッグ]」を参照してください。
+複数インスタンス デプロイのデバッグにインスタンス入力エンドポイントを利用する方法については、[複数インスタンス デプロイでの特定のロール インスタンスのデバッグ][Debugging a specific role instance in a multi-instance deployment]に関するページを参照してください。
 
 エンドポイントに変更を加えるには、対象のエンドポイントを選択し、**[Endpoints (エンドポイント)]** プロパティ ページの **[Edit (編集)]** ボタンをクリックします。 エンドポイントの名前、種類、パブリック ポート、プライベート ポートを変更するためのダイアログ ボックスが開きます。 **[OK]** を押して、変更したエンドポイントの値を保存します。
 
@@ -256,7 +256,7 @@ Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウ
 
 ![][ic719492]
 
-関連情報については、[セッション アフィニティ][セッション アフィニティ]に関するページを参照してください。 また、[SSL オフロード][SSL オフロード]に関するページで説明されているように、SSL オフロードのコンテキストでのこの機能の動作に注意してください。
+関連情報については、[セッション アフィニティ][Session Affinity]に関するページを参照してください。 また、[SSL オフロード][SSL Offloading]に関するページで説明されているように、SSL オフロードのコンテキストでのこの機能の動作に注意してください。
 
 <a name="local_storage_properties"></a> 
 
@@ -267,7 +267,7 @@ Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウ
 
 また、必要に応じて、ローカル ストレージに対応する環境変数を指定することもできます。
 
-既定では、Azure にデプロイするすべてのものが、ロール インスタンスの **approot** フォルダーに配置 (および解凍) されます。 ほとんどの単純なデプロイは解凍した後もこのフォルダーに収まりますが、 **approot** ディレクトリに割り当てられる領域は限られ、適切に定義されません (妥当な経験則では 1 GB 未満)。 そのため、**approot** フォルダーに収まらない可能性がある大規模なデプロイに対して十分なディスク領域が Azure によって割り当てられるようにするには、**[Local Storage (ローカル ストレージ)]** ダイアログを使用してローカル ストレージ リソースを設定する必要があります。 これを簡単に行う方法については、「[大規模なデプロイ][大規模なデプロイ]」を参照してください。
+既定では、Azure にデプロイするすべてのものが、ロール インスタンスの **approot** フォルダーに配置 (および解凍) されます。 ほとんどの単純なデプロイは解凍した後もこのフォルダーに収まりますが、 **approot** ディレクトリに割り当てられる領域は限られ、適切に定義されません (妥当な経験則では 1 GB 未満)。 そのため、**approot** フォルダーに収まらない可能性がある大規模なデプロイに対して十分なディスク領域が Azure によって割り当てられるようにするには、**[Local Storage (ローカル ストレージ)]** ダイアログを使用してローカル ストレージ リソースを設定する必要があります。 これを簡単に行う方法については、「[大規模なデプロイ][Deploying Large Deployments]」を参照してください。
 
 ストレージ リソースは、Eclipse ツールキットによってリソースに自動的に関連付けられた環境変数を使用して、スタートアップ スクリプト (たとえば、**startup.cmd**) から簡単に参照することができます (環境変数は、**[Local Storage (ローカル ストレージ)]** ダイアログ ボックスに示されます)。 環境変数には、構成したローカル リソースの完全なパスが、スタートアップ スクリプトの実行時に格納されます。 
 
@@ -293,7 +293,7 @@ Windows 上で Eclipse を使用している場合は、コンピューティン
 
 ![][ic789643]
 
-**[Cloud deployment]** セクションには、JDK パッケージのソースと種類に関して、使用しているオペレーティング システムに関係なく、次の 2 つのオプションがあります。
+**[Cloud deployment]** セクションには、JDK パッケージのソースと種類に関して、使用しているオペレーティング システムに関係なく、次の&2; つのオプションがあります。
 
 * **[Deploy a 3rd party JDK package available on Azure]** 
 * **[Deploy from a custom download]** 
@@ -312,7 +312,7 @@ Windows 上で Eclipse を使用している場合は、コンピューティン
 
 1. JDK インストール ディレクトリの ZIP を作成します。このとき、ディレクトリの内容ではなくノード自体が ZIP 構造の子になるようにします。 後で必要になるのでこのディレクトリの名前を控えておきます。この JDK インストールは Windows 仮想マシンにデプロイされることに注意してください。
 2. Azure ストレージ アカウントに ZIP を BLOB としてアップロードします。 Azure Storage への BLOB のアップロードには、外部のツールを使用できます。 プライベート BLOB を使用することをお勧めします。 ZIP コンテンツの BLOB の URL を書き留めます。
-3.  **[Deploy a JDK from a custom download]**の順にクリックします。
+3. **[Deploy a JDK from a custom download]**の順にクリックします。
     Azure ストレージ アカウントからダウンロードする場合は、**[Storage account (ストレージ アカウント)]** ボックスの一覧から目的のストレージ アカウントを選択します (**[Accounts (アカウント)]** リンクをクリックすると一覧内の項目を変更できます)。この操作によって **[URL]** ボックスに値の一部が入力されたら、URL の残りの部分を手動で入力します。 Azure Storage を使用しない場合は、**[Storage account (ストレージ アカウント)]** ボックスの一覧の **[(none) (なし)]** を選択し、**[URL]** ボックスに JDK ダウンロードの URL を入力します。 Azure Storage を使用する場合、URL 内の BLOB 名は小文字で指定してください。
 4. **[JAVA_HOME]** ボックスに適切なディレクトリ名が指定されていることを確認します。 既定では、ローカルでの使用のために選択した値と同じ JDK ディレクトリ名が参照されます。 ただし、(たとえば、別のバージョンを使用した結果) ZIP に含まれているディレクトリの名前が異なる場合は、それに応じて **[JAVA_HOME]** ボックスのディレクトリ名を更新します。それは、この設定が (コンピューティング エミュレーターではなく) クラウドで使用されるためです。
 5. **[OK]** をクリックして変更を保存します。
@@ -398,38 +398,38 @@ Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウ
 
 ![][ic719481]
 
-このダイアログ ボックスで SSL オフロードを有効にすると、Azure に対する Java のデプロイにおいてハイパー テキスト転送プロトコル セキュア (HTTPS) のサポートを簡単に有効にすることができます。Java アプリケーション サーバーで SSL を構成する必要はありません。 詳細については、[SSL オフロード][SSL オフロード]と [SSL オフロードの使用方法][SSL オフロードの使用方法]に関するページを参照してください。
+このダイアログ ボックスで SSL オフロードを有効にすると、Azure に対する Java のデプロイにおいてハイパー テキスト転送プロトコル セキュア (HTTPS) のサポートを簡単に有効にすることができます。Java アプリケーション サーバーで SSL を構成する必要はありません。 詳細については、[SSL オフロード][SSL Offloading]と [SSL オフロードの使用方法][How to Use SSL Offloading]に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]
 
-[Azure Toolkit for Eclipse のインストール][Azure Toolkit for Eclipse のインストール]
+[Azure Toolkit for Eclipse のインストール][Installing the Azure Toolkit for Eclipse]
 
-[Azure の Hello World アプリケーションを Eclipse で作成する][Azure の Hello World アプリケーションを Eclipse で作成する]
+[Azure 向け Hello World アプリケーションを Eclipse で作成する][Creating a Hello World Application for Azure in Eclipse]
 
-[Azure プロジェクトのプロパティ][Azure プロジェクトのプロパティ]
+[Azure プロジェクトのプロパティ][Azure Project Properties]
 
-[Azure ストレージ アカウントの一覧][Azure ストレージ アカウントの一覧]
+[Azure ストレージ アカウントの一覧][Azure Storage Account List]
 
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java デベロッパー センター]を参照してください。
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java Developer Center]を参照してください。
 
 <!-- URL List -->
 
-[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
-[Azure 管理ポータル]: http://go.microsoft.com/fwlink/?LinkID=512959
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure プロジェクトのプロパティ]: http://go.microsoft.com/fwlink/?LinkID=699524
-[Azure ストレージ アカウントの一覧]: http://go.microsoft.com/fwlink/?LinkID=699528
-[com.microsoft.windowsazure.serviceruntime パッケージの概要]: http://azure.github.io/azure-sdk-for-java/com/microsoft/windowsazure/serviceruntime/package-summary.html
-[Azure の Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
-[複数インスタンス デプロイでの特定のロール インスタンスのデバッグ]: http://go.microsoft.com/fwlink/?LinkID=699535#debugging_specific_role_instance
-[Eclipse での Azure アプリケーションのデバッグ]: http://go.microsoft.com/fwlink/?LinkID=699535
-[大規模なデプロイ]: http://go.microsoft.com/fwlink/?LinkID=699536
-[併置型キャッシュの使用方法]: http://go.microsoft.com/fwlink/?LinkID=699542
-[SSL オフロードの使用方法]: http://go.microsoft.com/fwlink/?LinkID=699545
-[Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
-[セッション アフィニティ]: http://go.microsoft.com/fwlink/?LinkID=699548
-[SSL オフロード]: http://go.microsoft.com/fwlink/?LinkID=699549
+[Azure Project Properties]: http://go.microsoft.com/fwlink/?LinkID=699524
+[Azure Storage Account List]: http://go.microsoft.com/fwlink/?LinkID=699528
+[com.microsoft.windowsazure.serviceruntime package summary]: http://azure.github.io/azure-sdk-for-java/com/microsoft/windowsazure/serviceruntime/package-summary.html
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Debugging a specific role instance in a multi-instance deployment]: http://go.microsoft.com/fwlink/?LinkID=699535#debugging_specific_role_instance
+[Debugging Azure Applications in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699535
+[Deploying Large Deployments]: http://go.microsoft.com/fwlink/?LinkID=699536
+[How to Use Co-located Caching]: http://go.microsoft.com/fwlink/?LinkID=699542
+[How to Use SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699545
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Session Affinity]: http://go.microsoft.com/fwlink/?LinkID=699548
+[SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699549
 
 <!-- IMG List -->
 
@@ -460,6 +460,6 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

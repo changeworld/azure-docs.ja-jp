@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/09/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
-ms.openlocfilehash: 0006818063724e50e2febb02e5ebaa0e2f688ea1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 794b1e5deca6c3bda078e3ea9006d334bc3a8052
 
 
 ---
@@ -54,6 +54,6 @@ ms.openlocfilehash: 0006818063724e50e2febb02e5ebaa0e2f688ea1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

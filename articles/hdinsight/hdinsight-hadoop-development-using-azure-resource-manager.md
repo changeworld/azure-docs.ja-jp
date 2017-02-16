@@ -1,5 +1,5 @@
 ---
-title: "HDInsight クラスター用の Azure Resource Manager 開発ツールに移行する | Microsoft Docs"
+title: "HDInsight 用の Azure Resource Manager ツールに移行する | Microsoft Docs"
 description: "HDInsight クラスター用の Azure Resource Manager 開発ツールに移行する方法"
 services: hdinsight
 editor: cgronlun
@@ -12,15 +12,16 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ed11d7883de119f18491faa4080c0758bf8d6d02
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 3606df64b619b62f8b9e5aec2abc4efc994c37e3
 
 
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する
+
 HDInsight は、HDInsight 用の Azure Service Manager (ASM) ベースのツールを推奨していません。 HDInsight クラスターの操作に Azure PowerShell、Azure CLI、HDInsight .NET SDK を使用している場合、今後、Azure Resource Manager (ARM) ベース バージョンの PowerShell、CLI、.NET SDK を使用することをお勧めします。 この記事では、新しい ARM ベースのアプローチに移行する方法についての参照先を紹介します。 また、HDInsight に対する ASM と ARM のアプローチの違いについても適宜説明します。
 
 > [!IMPORTANT]
@@ -48,8 +49,6 @@ Azure Resource Manager では、次の新しいコマンドを使用できます
 * `azure hdinsight cluster resize` - クラスター内のワーカー ノード数を動的に変更します
 * `azure hdinsight cluster enable-http-access` - クラスターに対する HTTP アクセスを有効にします (既定は有効)
 * `azure hdinsight cluster disable-http-access` - クラスターに対する HTTP アクセスを無効にします
-* `azure hdinsight-enable-rdp-access` - Windows ベースの HDInsight クラスターでリモート デスクトップ プロトコルを有効にします
-* `azure hdinsight-disable-rdp-access` - Windows ベースの HDInsight クラスターでリモート デスクトップ プロトコルを無効にします
 * `azure hdinsight script-action` - クラスターに対するスクリプト アクションを作成または管理するコマンドを表示します
 * `azure hdinsight config` - `hdinsight cluster create` コマンドに使用して構成情報を提供することができる構成ファイルを作成するためのコマンドを表示します
 
@@ -91,11 +90,11 @@ MapReduce、Hive、Pig を対話的に実行する他の方法については、
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Azure PowerShell から Azure Resource Manager に移行する
 Azure Resource Manager (ARM) モードの Azure PowerShell の全般情報については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
-Azure PowerShell ARM コマンドレットは、ASM コマンドと同時にインストールできます。 2 つのモードのコマンドレットは、名前で区別できます。  ARM モードのコマンドレット名は *AzureRmHDInsight* であり、ASM モードのコマンドレット名は *AzureHDInsight* です。  たとえば、*New-AzureRmHDInsightCluster* と *New-AzureHDInsightCluster* などです。 ARM では、一部のパラメーター名やスイッチ名が新しくなり、多数のパラメーターが追加されました。  たとえば、一部のコマンドレットでは、 *-ResourceGroupName*という新しいスイッチが必須になりました。 
+Azure PowerShell ARM コマンドレットは、ASM コマンドと同時にインストールできます。 2 つのモードのコマンドレットは、名前で区別できます。  ARM モードのコマンドレット名は *AzureRmHDInsight* であり、ASM モードのコマンドレット名は *AzureHDInsight* です。  たとえば、*New-AzureRmHDInsightCluster* と*New-AzureHDInsightCluster* などです。 ARM では、一部のパラメーター名やスイッチ名が新しくなり、多数のパラメーターが追加されました。  たとえば、一部のコマンドレットでは、 *-ResourceGroupName*という新しいスイッチが必須になりました。 
 
 HDInsight コマンドレットを使用する前に、Azure アカウントに接続し、新しいリソース グループを作成する必要があります。
 
-* Login-AzureRmAccount または [Select-AzureRmProfile](https://msdn.microsoft.com/library/mt619310.aspx)。 「[Azure リソース マネージャーでのサービス プリンシパルの認証](../resource-group-authenticate-service-principal.md)
+* Login-AzureRmAccount または [Select-AzureRmProfile](https://msdn.microsoft.com/library/mt619310.aspx)。 「[Azure リソース マネージャーでのサービス プリンシパルの認証](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
 
 ### <a name="renamed-cmdlets"></a>名前が変更されたコマンドレット
@@ -324,7 +323,7 @@ ASM ベースの SDK を使用して操作を実行する方法と、ARM ベー�
                 Location = "West US",
                 ClusterType = "Hadoop",
                 Version = "3.1",
-                OSType = OSType.Windows,
+                OSType = OSType.Linux,
                 DefaultStorageAccountName = "mystorage.blob.core.windows.net",
                 DefaultStorageAccountKey =
                     "O9EQvp3A3AjXq/W27rst1GQfLllhp0gUeiUUn2D8zX2lU3taiXSSfqkZlcPv+nQcYUxYw==",
@@ -366,6 +365,6 @@ ASM ベースの SDK を使用して操作を実行する方法と、ARM ベー�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

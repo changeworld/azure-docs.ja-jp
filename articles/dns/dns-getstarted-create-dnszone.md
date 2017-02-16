@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 02d720a04fdc0fa302c2cb29b0af35ee92c14b3b
-ms.openlocfilehash: 9f162115f2f080bd498085d5cb92b34452132ad8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 23b7eef53e6fb7bc17c33e54f20d7369cfce52e8
 
 ---
 
@@ -60,7 +60,7 @@ Azure DNS PowerShell では、ゾーンとレコード セットの両方でタ�
 構成を開始する前に、以下がそろっていることを確認します。
 
 * Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
-* Azure Resource Manager PowerShell コマンドレット (1.0 以降) の最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」を参照してください。
+* Azure Resource Manager PowerShell コマンドレット (1.0 以降) の最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
 
 ## <a name="step-1---sign-in"></a>手順 1 - サインインする
 
@@ -102,7 +102,7 @@ Azure DNS サービスは Microsoft.Network リソース プロバイダーに�
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-## <a name="step-4---create-a-dns-zone"></a>手順 4 - DNS ゾーンを作成する
+## <a name="step-4----create-a-dns-zone"></a>手順 4 - DNS ゾーンを作成する
 
 DNS ゾーンは、 `New-AzureRmDnsZone` コマンドレットを使用して作成します。 タグありまたはタグなしで DNS ゾーンを作成するための例が下にあります。 タグの詳細については、この記事の [タグ](#tags) に関するセクションを参照してください。
 
@@ -187,6 +187,6 @@ DNS ゾーンを作成したら、 [レコード セットとレコード](dns-g
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

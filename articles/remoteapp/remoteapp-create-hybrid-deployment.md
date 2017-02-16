@@ -3,7 +3,7 @@ title: "Azure RemoteApp のハイブリッド コレクションの作成方法 
 description: "内部ネットワークに接続する RemoteApp のデプロイを作成する方法について説明します。"
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: mbaldwin
 editor: 
 ms.assetid: 08ea0ce3-3a2c-4ddf-9394-6d75c8030cb1
@@ -12,11 +12,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 79434166999d4f847f28cf6a05a21f1cd002d75f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 15430904979108cbebe4a64a8ae07f2f01b82690
 
 
 ---
@@ -51,7 +51,7 @@ Azure RemoteApp のコレクションには、次の 2 種類があります。
 * [サインアップ](https://azure.microsoft.com/services/remoteapp/) します。
 * Azure RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。 ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。
 * オンプレミスのネットワークに関する情報、つまり IP アドレス情報と VPN デバイスの詳細情報を収集します。
-* [Azure PowerShell](../powershell-install-configure.md) モジュールをインストールします。
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs) モジュールをインストールします。
 * アクセス権を付与するユーザーに関する情報を集めます。 ユーザーごとに Azure Active Directory のユーザー プリンシパル名 (たとえば、name@contoso.com) が必要です。 Azure AD と Active Directory 間で UPN が一致していることを確認します。
 * テンプレート イメージを選択します。 Azure RemoteApp テンプレート イメージには、ユーザーに発行するアプリケーションとプログラムが含まれます。 詳細については、 [Azure RemoteApp イメージのオプション](remoteapp-imageoptions.md) に関するページを参照してください。
 * Office 365 ProPlus イメージを使用する必要がありますか。 [こちら](remoteapp-officesubscription.md)で詳細を確認できます。
@@ -126,7 +126,7 @@ Azure RemoteApp アプリケーションは、ユーザーに提供するアプ�
    
    **注:**
    
-   必ず “user@domain.com” 形式を使用してください。
+   必ず *user@domain.com* 形式を使用してください。
    
    コレクションで Office 365 ProPlus を使用している場合は、ユーザーの Active Directory ID を使用する必要があります。 これにより,ライセンスを検証できます。
 3. ユーザーが検証されたら、 **[保存]**をクリックします。
@@ -140,6 +140,6 @@ Azure RemoteApp アプリケーションは、ユーザーに提供するアプ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning Studio におけるサンプル データセットの使用 | Microsoft Docs"
-description: "ML Studio に含まれるサンプル モデルで使用されるデータセットの説明です。 実験には、これらのサンプル データセットを使用できます。"
+description: "Machine Learning Studio に含まれるサンプル モデルで使用されるデータセットの説明です。 実験には、これらのサンプル データセットを使用できます。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -12,29 +12,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 12/14/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0a19e10d9bc4c2d0f6579518583f100b5ca76c23
+ms.sourcegitcommit: 4ebd5dc2da50db93061e92660c97dcca3866c713
+ms.openlocfilehash: c4adae8125a6780ddb4c7c64baf4df6aae139104
 
 
 ---
-# <a name="use-the-sample-data-sets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
+# <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets
 
-Azure Machine Learning で新しいワークスペースを作成する場合、既定でさまざまなサンプルのデータセットと実験が含まれています。 こうしたサンプル データセットの多くは、[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)のサンプル モデルで使用されています。その他にも Machine Learning で使用するさまざまな種類のデータの例が含まれています。
+Azure Machine Learning で新しいワークスペースを作成する場合、既定でさまざまなサンプルのデータセットと実験が含まれています。 これらのサンプル データセットの多くは、[Azure Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)のサンプル モデルで使用されます。 その他のデータセットは、機械学習で通常使用されるさまざまなデータのサンプルとして含まれています。
 
-データセットの一部は、Azure BLOB ストレージで使用できます。 次の表ではこれらのデータセットへの直接のリンクを提供します。 これらのデータ セットは、[データのインポート][import-data] モジュールを使用して実験で使用できます。
+データセットの一部は、Azure Blob Storage で使用できます。 これらのデータセットでは、次の表に直接リンクが提供されています。 これらのデータセットは、[データのインポート][import-data] モジュールを使用して実験で使用できます。
 
-ML Studio で新しい実験を開くか作成する場合、サンプル データセットの残りは、実験キャンバスの左側にあるモジュール パレットの **[保存されたデータセット]** に一覧表示されます。
+それ以外のサンプル データセットは、Machine Learning Studio で実験を開くか新しく作成するときに、実験キャンバスの左側にあるモジュール パレットの **[保存されたデータセット]** から使用できます。
 実験キャンバスにこれらのデータセットのいずれかをドラッグすると、独自の実験で使用できます。
 
-<!--
-For a list of sample experiments available in ML Studio, see [Machine Learning Sample Experiments][sample-experiments].
-
-[sample-experiments]: machine-learning-sample-experiments.md
--->
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -61,7 +56,7 @@ For a list of sample experiments available in ML Studio, see [Machine Learning S
 <tr>
   <td valign=top>自動車価格データ (生データ)</td>
   <td valign=top>
-メーカー/モデル別にまとめた自動車の情報です。価格、シリンダー数、燃費、保険リスク スコアなどの情報が含まれます。<p> </p>リスク スコアはまず車体価格に関連付けられた後、アクチュアリー (保険数理士) の間でシンボリングと呼ばれるプロセスによって、実際のリスクに対して調整されます。 +3 は自動車のリスクが高く、-3 は非常に高い安全性が見込まれることを示しています。<p> </p><b>使用法:</b> 回帰または多変量分類を使用して、機能別のリスク スコアを予測します。 <p> </p><b>関連の研究:</b> Schlimmer, J.C. (1987 年)。 UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
+メーカー/モデル別にまとめた自動車の情報です。価格、シリンダー数、燃費、保険リスク スコアなどの情報が含まれます。<p> </p>リスク スコアはまず車体価格に関連付けられた後、アクチュアリー (保険数理士) の間でシンボリングと呼ばれるプロセスによって、実際のリスクに対して調整されます。 +3 は自動車のリスクが高く、-3 は高い安全性が見込まれることを示しています。<p> </p><b>使用法:</b> 回帰または多変量分類を使用して、機能別のリスク スコアを予測します。 <p> </p><b>関連の研究:</b> Schlimmer, J.C. (1987 年)。 UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
 </tr>
 
 <tr ID=bike-rental-uci-dataset>
@@ -143,13 +138,13 @@ KDD Cup 2009 顧客間関係の予測に関する課題のラベル (<a href="ht
 <tr>
   <td valign=top>エネルギー効率回帰データ</td>
   <td valign=top>
-12 種類の建物形状に基づいてシミュレーションされたエネルギー プロファイルのコレクションです。 それぞれの建物は、ガラス部分、ガラス部分の配置、方向など、8 種類の特徴によって区別されています。<p> </p><b>使用法:</b> 回帰または分類を使用して、2 つの実数値のうち 1 つを応答としてエネルギー効率を評価します。 マルチクラス分類の場合、応答変数が最も近い整数に丸められます。 <p> </p><b>関連の研究:</b> Xifara, A.、Tsanas, A.(2012 年)。 UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
+12 種類の建物形状に基づいてシミュレーションされたエネルギー プロファイルのコレクションです。 それぞれの建物は、ガラス部分、ガラス部分の配置、方向などの 8 種類の特徴によって区別されています。<p> </p><b>使用法:</b> 回帰または分類を使用して、2 つの実数値のうち 1 つを応答としてエネルギー効率を評価します。 マルチクラス分類の場合、応答変数が最も近い整数に丸められます。 <p> </p><b>関連の研究:</b> Xifara, A.、Tsanas, A.(2012 年)。 UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
 </tr>
 
 <tr ID=flight-delays-data>
   <td valign=top>フライト遅延データ</td>
   <td valign=top>
-米国運輸省の TranStats データ コレクションから取得した旅客機の定時運航データ (<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">定時</a>)。<p> </p>データセットには、2013 年 4 月から 10 月までの期間のデータが含まれます。 Azure Machine Learning Studio へのアップロードの前に、データセットを次のように処理します。<ul><li>米国本土の混雑度が上位 70 位までの空港を含めるように、データセットをフィルター処理します。</li><li>キャンセルされたフライトは 15 分超の遅延として分類します。</li><li>迂回したフライトをフィルターで外します。</li><li>Year、Month、DayofMonth、DayOfWeek、Carrier、OriginAirportID、DestAirportID、CRSDepTime、DepDelay、DepDel15、CRSArrTime、ArrDelay、ArrDel15、Cancelled の各列が選択されています。</li></ul>
+米国運輸省の TranStats データ コレクションから取得した旅客機の定時運航データ (<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">定時</a>)。<p> </p>データセットには、2013 年 4 月から 10 月までの期間のデータが含まれます。 Azure Machine Learning Studio にアップロードする前に、データセットは次のように処理されています。<ul><li>米国本土の混雑度が上位 70 位までの空港を含めるように、データセットをフィルター処理します。</li><li>キャンセルされたフライトは 15 分超の遅延として分類します。</li><li>迂回したフライトをフィルターで外します。</li><li>Year、Month、DayofMonth、DayOfWeek、Carrier、OriginAirportID、DestAirportID、CRSDepTime、DepDelay、DepDel15、CRSArrTime、ArrDelay、ArrDel15、Cancelled の各列が選択されています。</li></ul>
 </td>
 </tr>
 
@@ -177,7 +172,7 @@ german.data ファイルを使用した、UCI Statlog (ドイツのクレジッ�
 <tr ID=imdb-movie-titles>
   <td valign=top>IMDB 映画のタイトル</td>
   <td valign=top>
-Twitter のツイートで評価された映画に関する情報として、IMDB 登録 ID、映画の名称とジャンル、制作年が含まれます。 約 17,000 件の映画の情報があります。 データセットは、S.  Dooms、T. De Pessemier、L. Martens による論文 「MovieTweetings: a Movie Rating Dataset Collected From Twitter。 Workshop on Crowdsourcing and Human Computation for Recommender Systems, CrowdRec at RecSys 2013」で紹介されました。
+Twitter のツイートで評価された映画に関する情報として、IMDB 登録 ID、映画の名称、ジャンル、および制作年が含まれます。 約 17,000 件の映画の情報があります。 データセットは、S.  Dooms、T. De Pessemier、L. Martens による論文 「MovieTweetings: a Movie Rating Dataset Collected From Twitter。 Workshop on Crowdsourcing and Human Computation for Recommender Systems, CrowdRec at RecSys 2013」で紹介されました。
   </td>
 </tr>
 
@@ -230,7 +225,7 @@ Twitter のツイートで評価された映画に関する情報として、IMD
 <tr>
   <td valign=top>鉄鋼のアニール処理に関するマルチクラス データセット</td>
   <td valign=top>
-このデータセットには、鉄鋼のアニール処理試験に関する一連の記録が含まれています。幅、厚み、種類 (コイル、シートなど) など、処理後のさまざまな物理的属性も含まれます。<p> </p><b>使用法:</b> 2 つの数値クラス属性 (硬度と強度) のいずれかを予測します。 属性間の相関関係を分析することも可能です。<p> </p>鉄鋼のグレードは、SAE その他の機関が定義した標準に準拠します。 特定の "グレード"(クラス変数) を検索して、必要な値を把握する必要があります。 <p> </p><b>関連の研究:</b> Sterling, D.、Buntine, W. (年度なし). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 <p> </p>鉄鋼グレードの有用なガイドがこちらにあります。<a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
+このデータセットには、鉄鋼のアニール処理試験に関する一連の記録が含まれています。幅、厚み、種類 (コイル、シートなど) など、処理後のさまざまな物理的属性も含まれます。<p> </p><b>使用法:</b> 2 つの数値クラス属性 (硬度と強度) のいずれかを予測します。 属性間の相関関係を分析することも可能です。<p> </p>鉄鋼のグレードは、SAE その他の機関が定義した標準に準拠します。 特定の "グレード"(クラス変数) を検索して、必要な値を把握する必要があります。 <p> </p><b>関連の研究:</b> Sterling, D.、Buntine, W. (年度不明)。 UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 <p> </p>鉄鋼グレードの有用なガイドがこちらにあります。<a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
@@ -243,14 +238,14 @@ Twitter のツイートで評価された映画に関する情報として、IMD
 <tr ID=weather-dataset>
   <td valign=top>天候データセット</td>
   <td valign=top>
-NOAA の 1 時間ごとの陸上の気象観測 (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">2013 年 4 月から 2013 年 10 月までのデータをマージ</a>)。<p> </p>気象データには、2013 年 4 月から 10 月までの期間の航空気象観測所での観測が含まれます。 Azure Machine Learning Studio へのアップロードの前に、データセットを次のように処理します。<ul><li>気象観測所 ID を対応する空港 ID にマッピングします。</li><li>混雑度が上位 70 位の空港に関連付けられていない気象観測所をフィルターで外します。</li><li>Date 列を Year、Month、Day の列に分割します。</li><li>AirportID、Year、Month、Day、Time、TimeZone、SkyCondition、Visibility、WeatherType、DryBulbFarenheit、DryBulbCelsius、WetBulbFarenheit、WetBulbCelsius、DewPointFarenheit、DewPointCelsius、RelativeHumidity、WindSpeed、WindDirection、ValueForWindCharacter、StationPressure、PressureTendency、PressureChange、SeaLevelPressure、RecordType、HourlyPrecip、Altimeter の各列が選択されています。</li></ul>
+NOAA の 1 時間ごとの陸上の気象観測 (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">2013 年 4 月から 2013 年 10 月までのデータをマージ</a>)。<p> </p>気象データには、2013 年 4 月から 10 月までの期間の航空気象観測所での観測が含まれます。 Azure Machine Learning Studio にアップロードする前に、データセットは次のように処理されています。<ul><li>気象観測所 ID を対応する空港 ID にマッピングします。</li><li>混雑度が上位 70 位の空港に関連付けられていない気象観測所をフィルターで外します。</li><li>Date 列を Year、Month、Day の列に分割します。</li><li>AirportID、Year、Month、Day、Time、TimeZone、SkyCondition、Visibility、WeatherType、DryBulbFarenheit、DryBulbCelsius、WetBulbFarenheit、WetBulbCelsius、DewPointFarenheit、DewPointCelsius、RelativeHumidity、WindSpeed、WindDirection、ValueForWindCharacter、StationPressure、PressureTendency、PressureChange、SeaLevelPressure、RecordType、HourlyPrecip、Altimeter の各列が選択されています。</li></ul>
   </td>
 </tr>
 
 <tr ID=wikipedia-sp-500-dataset>
   <td valign=top>Wikipedia SP 500 データセット</td>
   <td valign=top>
-データは、S&P 500 企業それぞれの記事に基づいて Wikipedia (<a href="http://www.wikipedia.org/">http://www.wikipedia.org/</a>) から取得され、XML データとして格納されています。<p> </p>Azure Machine Learning Studio へのアップロードの前に、データセットを次のように処理します。<ul><li>特定の企業のテキスト コンテンツを抽出します。</li><li>Wiki の書式設定を削除します。</li><li>英数字以外の文字を削除します。</li><li>すべてのテキストを小文字に変換します。</li><li>既知の会社のカテゴリを追加します。</li></ul><p> </p>いくつかの企業の記事が見つからないため、レコード数は 500 未満であることに注意してください。
+データは、S&P 500 企業それぞれの記事に基づいて Wikipedia (<a href="http://www.wikipedia.org/">http://www.wikipedia.org/</a>) から取得され、XML データとして格納されています。<p> </p>Azure Machine Learning Studio にアップロードする前に、データセットは次のように処理されています。<ul><li>特定の企業のテキスト コンテンツを抽出します。</li><li>Wiki の書式設定を削除します。</li><li>英数字以外の文字を削除します。</li><li>すべてのテキストを小文字に変換します。</li><li>既知の会社のカテゴリを追加します。</li></ul><p> </p>いくつかの企業の記事が見つからないため、レコード数は 500 未満であることに注意してください。
   </td>
 </tr>
 
@@ -282,7 +277,7 @@ RCV1-V2 Reuters ニュースのデータセットにあるトレーニング例�
 <tr ID=intrusion-detection>
   <td valign=top><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td valign=top>
-KDD Cup 1999 ナレッジ検出とデータ マイニング ツールのコンペティションのデータセット (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>)。<p> </p>データセットは、Azure Blob Storage にダウンロードされ、格納されています (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>)。データセットには、トレーニングとテストの両方のデータセットが含まれます。 トレーニングのデータセットには、ラベルを含む、約 126,000 行と 43 列が含まれます。ラベル情報の一部である 3 列と、数値、文字列、カテゴリによる特徴で構成される 40 列がモデルのトレーニングに使用できます。 テスト データには約 22,500 個のテスト例があります (トレーニング データと同じ 43 列が含まれます)。
+KDD Cup 1999 ナレッジ検出とデータ マイニング ツールのコンペティションのデータセット (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>)。<p> </p>データセットは、Azure Blob Storage にダウンロードされ、格納されています (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>)。データセットには、トレーニングとテストの両方のデータセットが含まれます。 トレーニング データセットには、ラベルも含めておよそ 126,000 個の行と 43 個の列があります。 ラベル情報の一部である 3 列と、数値、文字列、カテゴリによる特徴で構成される 40 列がモデルのトレーニングに使用できます。 テスト データには約 22,500 個のテスト例があります (トレーニング データと同じ 43 列が含まれます)。
 
   </td>
 </tr>
@@ -290,7 +285,7 @@ KDD Cup 1999 ナレッジ検出とデータ マイニング ツールのコン�
 <tr ID=rcv1-v2-topics-qrels>
   <td valign=top><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td valign=top>
-RCV1-V2 Reuters ニュース データセット内のニュース記事のトピック割り当てです。 1 つのニュース記事を複数のトピックに割り当てることができます。 各行の形式は "<topic name> <document id> 1" です。 データセットには、260 万件のトピック割り当てが含まれます。 データセットは David D. Lewis によって提供されています。
+RCV1-V2 Reuters ニュース データセット内のニュース記事のトピック割り当てです。 1 つのニュース記事を複数のトピックに割り当てることができます。 各行の形式は "&lt;トピック名&gt; &lt;ドキュメント ID&gt; 1" です。 データセットには、260 万件のトピック割り当てが含まれます。 データセットは David D. Lewis によって提供されています。
   </td>
 </tr>
 
@@ -313,6 +308,6 @@ RCV1-V2 Reuters ニュース データセット内のニュース記事のトピ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

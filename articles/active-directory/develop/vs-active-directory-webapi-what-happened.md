@@ -1,6 +1,6 @@
 ---
-title: "WebApi プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点 | Microsoft Docs"
-description: "Visual Studio を使用して Azure AD に接続するときに WebApi プロジェクトで何が起こるかについて説明します。"
+title: "Azure AD への接続時に WebApi プロジェクトに行われる変更 | Microsoft Docs"
+description: "Visual Studio を使用して Azure AD に接続した場合の WebApi プロジェクトの変更内容の説明"
 services: active-directory
 documentationcenter: 
 author: TomArcher
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: a60bdc8d6977943e156fdcf0f29228af3c394a99
-ms.openlocfilehash: e35b18344acf7afedc422760c8a59e6fba17728f
+ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
+ms.openlocfilehash: aa055ead3dc039745f48f268fe456ae5dab5bf36
 
 
 ---
@@ -112,6 +112,6 @@ Azure Active Directory アプリが更新され、*[ディレクトリ データ
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

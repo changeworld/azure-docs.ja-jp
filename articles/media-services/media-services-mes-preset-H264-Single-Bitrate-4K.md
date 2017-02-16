@@ -1,6 +1,6 @@
 ---
-title: H264 Single Bitrate 4K | Microsoft Docs
-description: "このトピックでは、**H264 Single Bitrate 4K** タスク プリセットの概要を説明します。"
+title: "H264 Single Bitrate 4K Media Encoder Standard プリセット - Azure | Microsoft Docs"
+description: "このトピックでは、**H264 Single Bitrate 4K** タスク プリセットの概要について説明します。"
 author: Juliako
 manager: erikre
 editor: 
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 55bfd5b283e6159e0a06b3107de31d1722796bf1
-ms.openlocfilehash: f47a3baf4504307fce0baf726980d58ec10ba629
+ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
+ms.openlocfilehash: 3efb26c819739cd980b278438f407bf1ec10dbc4
 
 
 ---
 
 # <a name="h264-single-bitrate-4k"></a>H264 Single Bitrate 4K
-`Media Encoder Standard` は、エンコード ジョブの作成時に使用できる一連のエンコード プリセットを定義します。 `preset name` を使用して、メディア ファイルをエンコードする形式を指定することも、 (UTF-8 または UTF-16 エンコードを使用して) 独自の JSON または XML ベースのプリセットを作成することもできます。 その後、カスタム プリセットをエンコーダーに渡します。 この `Media Encoder Standard` エンコーダーでサポートされているすべてのプリセット名の一覧については、[Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関する記事を参照してください。  
+`Media Encoder Standard` は、エンコード ジョブの作成時に使用できる一連のエンコード プリセットを定義します。 `preset name`を使用して、メディア ファイルをエンコードする形式を指定することも、 (UTF-8 または UTF-16 エンコードを使用して) 独自の JSON または XML ベースのプリセットを作成することもできます。 その後、カスタム プリセットをエンコーダーに渡します。 この `Media Encoder Standard` エンコーダーでサポートされているすべてのプリセット名の一覧については、[Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関する記事を参照してください。  
   
- このトピックでは、`H264 Single Bitrate 4K` を XML 形式と JSON 形式で示します。  
+ このトピックでは、XML 形式と JSON 形式の `H264 Single Bitrate 4K` を示します。  
   
- このプリセットにより、ビットレートが 18,000 kbps の単一の MP4 ファイルと、ステレオ AAC オーディオが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 これらのプリセット内の各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
+ このプリセットにより、ビットレートが 18,000 kbps、音声が AAC ステレオである単一の MP4 ファイルが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 これらのプリセット内の各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
   
 > [!NOTE]
 >  4K エンコードでは Premium という予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units)」を参照してください。  
@@ -121,6 +121,6 @@ ms.openlocfilehash: f47a3baf4504307fce0baf726980d58ec10ba629
 ```
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

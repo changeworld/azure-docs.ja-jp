@@ -1,5 +1,5 @@
 ---
-title: "Azure Service Fabric の Reliable Actors ReliableDictionaryActorStateProvider の構成の概要 | Microsoft Docs"
+title: "Azure マイクロサービスで ReliableDictionaryActorStateProvider の設定を変更する | Microsoft Docs"
 description: "Azure Service Fabric の ReliableDictionaryActorStateProvider という型のステートフル アクターの構成について説明します。"
 services: Service-Fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/18/2016
+ms.date: 02/8/2017
 ms.author: sumukhs
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 59c8a1a09580161593639d01cc8a3d8d8ef0f6f4
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: e787f48f14539dff3035c51e14243c7bd9dcbb73
 
 
 ---
@@ -128,6 +128,6 @@ SharedLogId と SharedLogPath の設定は常に一緒に使用して、サー�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

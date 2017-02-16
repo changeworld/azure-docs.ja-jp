@@ -1,6 +1,6 @@
 ---
-title: "Azure ポータルを使用して BACPAC ファイルに Azure SQL Database をアーカイブする"
-description: "Azure Portal を使用して BACPAC ファイルに Azure SQL Database をアーカイブする"
+title: "Azure Portal: Azure SQL Database を BACPAC ファイルにエクスポートする | Microsoft Docs"
+description: "Azure Portal を使って BACPAC ファイルに Azure SQL Database をエクスポートする"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,12 +16,12 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: df14225e6c2a1b9bf83623df172b9be9b5777add
-ms.openlocfilehash: 33699b00d50c623661292e5a9b21a97726c47611
+ms.sourcegitcommit: c9aea5089d535b63983b93076edd74f15055fa5d
+ms.openlocfilehash: 4eb89c2e6db82ba887a094abf53da835060368b9
 
 
 ---
-# <a name="archive-an-azure-sql-database-to-a-bacpac-file-using-the-azure-portal"></a>Azure ポータルを使用して BACPAC ファイルに Azure SQL Database をアーカイブする
+# <a name="export-an-azure-sql-database-to-a-bacpac-file-using-the-azure-portal"></a>Azure Portal を使って BACPAC ファイルに Azure SQL Database をエクスポートする
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-database-export.md)
 > * [SSMS](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
@@ -29,7 +29,7 @@ ms.openlocfilehash: 33699b00d50c623661292e5a9b21a97726c47611
 > * [PowerShell](sql-database-export-powershell.md)
 > 
 
-この記事では、 [Azure ポータル](https://portal.azure.com)を使用して、(Azure BLOB ストレージに格納されている) BACPAC ファイルに Azure SQL Database をアーカイブする方法について説明します。
+この記事では、[Azure Portal](https://portal.azure.com) を使って、Azure SQL Database を (Azure Blob Storage に格納されている) BACPAC ファイルにエクスポートする方法について説明します。
 
 Azure SQL Database のアーカイブを作成する必要がある場合は、BACPAC ファイルにデータベース スキーマとデータをエクスポートできます。 BACPAC ファイルは、単に BACPAC の拡張子を持つ ZIP ファイルです。 BACPAC ファイルは、後で Azure Blob Storage またはオンプレミスの場所にあるローカル ストレージに格納することや、後で Azure SQL Database またはオンプレミス SQL Server インストールに戻ってインポートすることができます。 
 
@@ -109,6 +109,6 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Media Analytics で顔編集する | Microsoft Docs"
+title: "Azure Media Analytics で顔を編集する | Microsoft Docs"
 description: "このトピックでは、Azure Media Analytics で顔を編集する方法を示します。"
 services: media-services
 documentationcenter: 
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 11/30/2016
 ms.author: juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a272384d76baf2d8c22b612d6a736fa1fae377e5
+ms.sourcegitcommit: 3feaac838fe89e54a3b561b7572a9eb3393edc4c
+ms.openlocfilehash: 3b0f6127e2b64989d83efce8c5a930ffee481a01
 
 
 ---
-# <a name="face-redaction-with-azure-media-analytics"></a>Azure Media Analytics での顔編集
-## <a name="overview"></a>Overview
+# <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する
+## <a name="overview"></a>概要
 **Azure Media Redactor** は、クラウドでスケーラブルな顔編集を提供する [Azure Media Analytics](media-services-analytics-overview.md) メディア プロセッサ (MP) です。 顔編集では、ビデオを編集して選択した個人の顔をぼかすことができます。 顔編集サービスは、公共の安全やニュース媒体などに使用していただけます。 複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。 詳細については、[こちらの投稿](https://azure.microsoft.com/blog/azure-media-redactor/)を参照してください。
 
 ここでは、 **Azure Media Redactor** の詳細と、Media Services SDK for .NET での使用方法について説明します。
 
-**Azure Media Redactor** MP は現在プレビュー段階です。
+**Azure Media Redactor** MP は現在プレビュー段階です。 すべてのパブリックな Azure リージョン、米国政府、および中国国内のデータセンターで使用できます。 このプレビューは、現在無料で提供されています。 現在のリリースでは、処理後のビデオの長さは 10 分に制限されています。
 
 ## <a name="face-redaction-modes"></a>顔編集モード
 顔編集は、ビデオのフレームごとに顔を検出し、その顔オブジェクトを時間軸の前後にわたって追跡することで、同一の人間を他の角度からも処理します。 自動修正のプロセスは非常に複雑で、常に 100% 満足のいく結果になるとは限りません。そのため、Media Analytics には最終的なアウトプットを変更する方法がいくつか用意されています。
@@ -308,6 +308,6 @@ Media Services のラーニング パスを確認します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

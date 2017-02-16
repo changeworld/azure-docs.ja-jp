@@ -15,15 +15,22 @@ ms.workload: NA
 ms.date: 10/22/2016
 ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5bd613b7c6e44ad1aa232adc6649d237999fd53c
+ms.sourcegitcommit: 6b3c49f6721ffc149bbb7f0433ff67f529abf938
+ms.openlocfilehash: c61541d65fe2f84bdd629d8b8d8c7ce00a049133
 
 
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における重要な課題にも対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 Service Fabric は、これらのエンタープライズ クラスの Tier-1 クラウド スケール アプリケーションを構築して管理するための次世代のミドルウェア プラットフォームの代表例です。
 
-こちらの[短いビデオ](https://aka.ms/servicefabricvideo)では、Service Fabric とマイクロサービスを紹介しています。
+次の Channel9 の短いビデオでは、Service Fabric とマイクロサービスを紹介しています。<center><a target="_blank" href="https://aka.ms/servicefabricvideo">  
+<img src="./media/service-fabric-overview/OverviewVid.png" WIDTH="360" HEIGHT="244">  
+</a></center>
+
+次の Microsoft Virtual Academy のビデオでは、Service Fabric の主要概念について説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">  
+<img src="./media/service-fabric-overview/CoreConceptsVid.png" WIDTH="360" HEIGHT="244">  
+</a></center>
+
 
 ## <a name="applications-composed-of-microservices"></a>マイクロサービスで構成されたアプリケーション
 Service Fabric を使用すると、マシンの共有プール (クラスターと呼ばれる) 上で超高密度で実行されるマイクロサービスで構成された、スケーラブルで信頼性の高いアプリケーションを構築して管理することができます。 分散型のスケーラブルなステートレスおよびステートフル マイクロサービスを構築するための高度なランタイムを提供します。 また、デプロイ済みのアプリケーションをプロビジョニング、デプロイ、監視、アップグレード/修正、削除するための包括的なアプリケーション管理機能も提供します。
@@ -63,6 +70,10 @@ Service Fabric では、マイクロサービスで構成されるアプリケ�
 
 Service Fabric を使用したアプリケーション パターンの詳細については、[アプリケーションのシナリオ](service-fabric-application-scenarios.md)に関する記事と、サービスの[プログラミング モデル フレームワークの選択](service-fabric-choose-framework.md)に関する記事を参照してください。
 
+ステートレス サービスとステートフル サービスの概要については、次の Microsoft Virtual Academy のビデオもご覧ください。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=HhD9566yC_4106218965">  
+<img src="./media/service-fabric-overview/ReliableServicesVid.png" WIDTH="360" HEIGHT="244">  
+</a></center>
+
 ## <a name="application-lifecycle-management"></a>アプリケーション ライフサイクル管理
 Service Fabric では、クラウド アプリケーションの完全なアプリケーション ライフ サイクル管理をサポートします。 このライフ サイクルには、開発、展開、日常的な管理、保守、最終的な廃棄が含まれています。
 
@@ -71,6 +82,10 @@ Service Fabric ライフサイクル管理機能を使用すると、アプリ�
 ほとんどのアプリケーションは、ステートレス マイクロサービスとステートフル マイクロサービスの組み合わせ、および一緒にデプロイされた他の実行可能ファイル/ランタイムで構成されています。 Service Fabric は、アプリケーションの厳密な型およびパッケージ化されたマイクロサービスを備えており、複数のアプリケーション インスタンスのデプロイが可能です。 インスタンスは個別に管理およびアップグレードできます。 重要なのは、Service Fabric は *任意* の実行可能ファイルまたはランタイムをデプロイし、それらを信頼性の高いものにすることができる点です。 たとえば、Service Fabric を使用すると、ASP.NET Core 1、Node.js、Java 仮想マシン、スクリプト、またはアプリケーションを構成するその他の要素をデプロイすることができます。
 
 アプリケーション ライフサイクル管理の詳細については、[アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)に関するページを参照してください。 任意のコードを展開する方法の詳細については、[ゲスト実行可能ファイルの展開に関するページ](service-fabric-deploy-existing-app.md)を参照してください。
+
+アプリケーション ライフサイクル管理の概要については、次の Microsoft Virtual Academy のビデオもご覧ください。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">  
+<img src="./media/service-fabric-overview/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">  
+</a></center>
 
 ## <a name="key-capabilities"></a>主な機能
 Service Fabric を使用すると、次の操作を実行できます。
@@ -100,10 +115,10 @@ Service Fabric を使用すると、次の操作を実行できます。
 * Service Fabric [開発環境](service-fabric-get-started.md)  
 * [プログラミング モデル フレームワークの選択](service-fabric-choose-framework.md) に関する記事を参照してください。
 
-[image1]: media/service-fabric-overview/Service-Fabric-Overview.png
+[Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

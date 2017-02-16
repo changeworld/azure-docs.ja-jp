@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 255670335151443445e5ea4a87614b904915e76f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1fda0b3c6c3f262c0f4b2f3ad5f37c4ce44cc0e3
 
 
 ---
-# <a name="setting-up-azure-active-directory-for-selfservice-group-management"></a>グループ管理のセルフサービス化に必要な Azure Active Directory の設定
+# <a name="setting-up-azure-active-directory-for-self-service-group-management"></a>グループ管理のセルフサービス化に必要な Azure Active Directory の設定
 セルフサービスによるグループ管理では、ユーザーが Azure Active Directory (Azure AD) にセキュリティ グループまたは Office 365 グループを作成して管理できます。 ユーザーはセキュリティ グループまたは Office 365 グループのメンバーシップを要求することもできます。要求されたメンバーシップは、グループの所有者が承認または拒否できます。 この方法により、グループの業務上の趣旨を理解している人物に日常的なメンバーシップ管理を委任することができます。 セルフサービスによるグループ管理機能を使用できるのはセキュリティ グループと Office 365 グループだけであり、メールを有効にしたセキュリティ グループまたは配布リストでは使用できません。
 
 セルフサービス型のグループ管理には現在、グループ管理の委任とセルフサービス化という基本的に 2 つの使い方が考えられます。
@@ -30,7 +30,7 @@ ms.openlocfilehash: 255670335151443445e5ea4a87614b904915e76f
 * **グループ管理のセルフサービス化**
    たとえば、2 人のユーザーが別々に SharePoint Online サイトを設定しているとします。 この 2 人のユーザーは、自分のサイトへのアクセス権を互いのチームに付与しようとしています。 これを実現するには、Azure AD に 1 つのグループを作成し、SharePoint Online で両者がそのグループを選択して、それぞれのサイトへのアクセス権を付与します。 アクセス権を必要とする人がいれば、その人物がアクセス パネルからアクセス権を要求します。承認が下りればその人物は自動的に、両方の SharePoint Online サイトにアクセスできるようになります。 後日、2 人のうち一方が、サイトにアクセスしているすべてのユーザーに、特定の SaaS アプリケーションへのアクセス権も付与することに決めたとします。 SaaS アプリケーションの管理者は、アプリケーションによる SharePoint Online サイトへのアクセス権を追加することができます。 それ以後は、要求が承認されると、2 つの SharePoint Online サイトへのアクセス権に加え、この SaaS アプリケーションへのアクセス権も付与されるようになります。
 
-## <a name="making-a-group-available-for-end-user-selfservice"></a>エンド ユーザーのセルフ サービスによるグループ管理を有効にする
+## <a name="making-a-group-available-for-end-user-self-service"></a>エンド ユーザーのセルフ サービスによるグループ管理を有効にする
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)で Azure AD ディレクトリを開きます。
 2. **[構成]** タブで、**[委任されたグループ管理]** を [有効] に設定します。
 3. **[ユーザーはセキュリティ グループを作成できます]** または **[ユーザーは Office 365 グループを作成できます]** を [有効] に設定します。
@@ -53,6 +53,6 @@ ms.openlocfilehash: 255670335151443445e5ea4a87614b904915e76f
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

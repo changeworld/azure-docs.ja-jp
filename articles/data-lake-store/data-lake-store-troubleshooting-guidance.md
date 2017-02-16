@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 84d644e07036f511e685b0fd020cdf8c310fd969
+ms.sourcegitcommit: f426cf4b91941f19714c33abc21ef0c777f5b233
+ms.openlocfilehash: 38f3ca24b7fa136bdb4b64b6cae77078b7ea3c97
 
 
 ---
 # <a name="frequently-asked-questions-for-azure-data-lake-store"></a>Azure Data Lake Store に関してよく寄せられる質問
 この記事では、Azure Data Lake Store に関する FAQ について説明します。
 
-## <a name="how-do-i-handle-disaster-recovery-and-data-corruption-for-my-azure-data-lake-store-account"></a>Azure Data Lake Store アカウントの障害復旧とデータの破損に対処するにはどうすればよいですか?
+## <a name="how-can-i-further-protect-my-data-from-region-wide-disasters-or-accidental-deletions"></a>リージョン全体の障害または誤削除からデータをさらに保護するにはどうすればよいですか
 Azure Data Lake Store アカウントのデータは、リージョン内で発生する一時的なハードウェア障害に対して、自動レプリカによる回復性を備えています。 これにより、持続性と高可用性を確保し、Azure Data Lake Store の SLA を達成しています。 まれに発生するリージョン全体の障害や誤削除からデータをさらに保護する方法に関するガイダンスを以下に示します。
 
 ### <a name="disaster-recovery-guidance"></a>障害復旧ガイダンス
@@ -52,6 +52,6 @@ Azure Data Lake Store は自動レプリカによるデータの回復性を備�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

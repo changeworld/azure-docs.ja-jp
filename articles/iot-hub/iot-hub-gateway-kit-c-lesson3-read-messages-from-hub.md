@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT ハブからのメッセージの読み取り |Microsoft Docs"
+title: "SensorTag デバイスと Azure IoT Gateway - レッスン 3: メッセージの読み取り | Microsoft Docs"
 description: "IoT ハブからメッセージを読み取るには、ホスト コンピューターでサンプル コードを実行します。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: 09b0e0321b08a11622633e727cf8be54c1707436
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 0a5dd7e010ba46b724bb6a2526dc2a2730acc10f
 
 
 ---
@@ -101,6 +101,6 @@ IoT hub からメッセージを読み取るサンプル コードを実行し�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

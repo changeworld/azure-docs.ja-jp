@@ -1,5 +1,5 @@
 ---
-title: "Azure Machine Learning でアルゴリズムを最適化するためにパラメーターを選ぶ | Microsoft Docs"
+title: "Azure Machine Learning でアルゴリズムを最適化する | Microsoft Docs"
 description: "Azure Machine Learning でアルゴリズムに最適なパラメーター セットを選択する方法について説明します。"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e1075e73a67130453701842f3b328484a327f5ec
+ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
+ms.openlocfilehash: b3be7f31ac31c656744fb809e3972af0ac4ad4f1
 
 
 ---
@@ -25,9 +25,9 @@ ms.openlocfilehash: e1075e73a67130453701842f3b328484a327f5ec
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-モデルの選択を行うにはさまざまな方法があります。 Machine Learning で最も広く使われているモデルの選択方法の 1 つはクロス検証です。これは、Azure Machine Learning の既定のモデル選択メカニズムになっています。 Azure Machine Learning は R と Python の両方をサポートしているため、R または Python を使って独自のモデル選択メカニズムをいつでも実装できます。
+モデルの選択を行うにはさまざまな方法があります。 Machine Learning で最も広く使われているモデルの選択方法の&1; つはクロス検証です。これは、Azure Machine Learning の既定のモデル選択メカニズムになっています。 Azure Machine Learning は R と Python の両方をサポートしているため、R または Python を使って独自のモデル選択メカニズムをいつでも実装できます。
 
-最適なパラメーター セットを見つけるプロセスには、次の 4 つの手順があります。
+最適なパラメーター セットを見つけるプロセスには、次の&4; つの手順があります。
 
 1. **パラメーター空間を定義する**: アルゴリズムについて、検討の対象にする正確なパラメーター値をまず決めます。
 2. **クロス検証の設定を定義する**: データセットのクロス検証のフォールドを選ぶ方法を決定します。
@@ -39,7 +39,7 @@ ms.openlocfilehash: e1075e73a67130453701842f3b328484a327f5ec
 ![最適なパラメーター セットを検索します](./media/machine-learning-algorithm-parameters-optimize/fig1.png)
 
 ## <a name="define-the-parameter-space"></a>パラメーター空間を定義する
-パラメーターのセットは、モデルの初期化ステップで定義できます。 すべての Machine Learning アルゴリズムのパラメーター ウィンドウには 2 つのトレーナー モードがあります。"*1 つのパラメーター*" と "*パラメーター範囲*" です。 パラメーター範囲モードを選びます。 パラメーター範囲モードでは、各パラメーターに複数の値を入力できます。 テキスト ボックスには、コンマ区切りの値を入力できます。
+パラメーターのセットは、モデルの初期化ステップで定義できます。 すべての Machine Learning アルゴリズムのパラメーター ウィンドウには&2; つのトレーナー モードがあります。"*1 つのパラメーター*" と "*パラメーター範囲*" です。 パラメーター範囲モードを選びます。 パラメーター範囲モードでは、各パラメーターに複数の値を入力できます。 テキスト ボックスには、コンマ区切りの値を入力できます。
 
 ![2 クラスのブースト デシジョン ツリー、1 つのパラメーター](./media/machine-learning-algorithm-parameters-optimize/fig2.png)
 
@@ -48,17 +48,17 @@ ms.openlocfilehash: e1075e73a67130453701842f3b328484a327f5ec
 ![2 クラスのブースト デシジョン ツリー、パラメーター範囲](./media/machine-learning-algorithm-parameters-optimize/fig3.png)
 
 ## <a name="define-cross-validation-folds"></a>クロス検証のフォールドを定義する
-[パーティションとサンプル][partition-and-sample] モジュールを使うと、データにフォールドをランダムに割り当てることができます。 次のモジュールのサンプル構成では、5 つのフォールドを定義し、サンプル インスタンスにフォールド番号をランダムに割り当てています。
+[パーティションとサンプル][partition-and-sample] モジュールを使用すると、データにフォールドをランダムに割り当てることができます。 次のモジュールのサンプル構成では、5 つのフォールドを定義し、サンプル インスタンスにフォールド番号をランダムに割り当てています。
 
 ![パーティションとサンプル](./media/machine-learning-algorithm-parameters-optimize/fig4.png)
 
 ## <a name="define-the-metric"></a>メトリックを定義する
-[調整モデル ハイパーパラメーター][tune-model-hyperparameters] モジュールは、特定のアルゴリズムおよびデータセットに対してパラメーターの最適なセットを経験的に選ぶためのサポートを提供します。 モデルのトレーニングに関する他の情報に加えて、このモジュールの **[プロパティ]** ウィンドウには、最適なパラメーター セットを決定するためのメトリックが含まれています。 また、分類アルゴリズムと回帰アルゴリズムに関する 2 つの異なるドロップダウン リスト ボックスがあります。 検討しているアルゴリズムが分類アルゴリズムの場合は回帰のメトリックが無視され、その逆も同じです。 この例では、メトリックは **[確度]** です。   
+[調整モデル ハイパーパラメーター][tune-model-hyperparameters] モジュールは、特定のアルゴリズムおよびデータセットに対してパラメーターの最適なセットを経験的に選択するためのサポートを提供します。 モデルのトレーニングに関する他の情報に加えて、このモジュールの **[プロパティ]** ウィンドウには、最適なパラメーター セットを決定するためのメトリックが含まれています。 また、分類アルゴリズムと回帰アルゴリズムに関する&2; つの異なるドロップダウン リスト ボックスがあります。 検討しているアルゴリズムが分類アルゴリズムの場合は回帰のメトリックが無視され、その逆も同じです。 この例では、メトリックは **[確度]** です。   
 
 ![パラメーターをスイープする](./media/machine-learning-algorithm-parameters-optimize/fig5.png)
 
 ## <a name="train-evaluate-and-compare"></a>トレーニング、評価、および比較を行う
-同じ[調整モデル ハイパーパラメーター][tune-model-hyperparameters] モジュールで、パラメーターのセットに対応するすべてのモデルをトレーニングし、さまざまなメトリックを評価した後、選ばれたメトリックに基づいて最適なトレーニング済みのモデルを作成します。 このモジュールには、次の 2 つの必須の入力があります。
+同じ[調整モデル ハイパーパラメーター][tune-model-hyperparameters] モジュールで、パラメーターのセットに対応するすべてのモデルをトレーニングし、さまざまなメトリックを評価した後、選ばれたメトリックに基づいて最適なトレーニング済みのモデルを作成します。 このモジュールには、次の&2; つの必須の入力があります。
 
 * トレーニングを受けていない学習モデル
 * データセット
@@ -79,6 +79,6 @@ ms.openlocfilehash: e1075e73a67130453701842f3b328484a327f5ec
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

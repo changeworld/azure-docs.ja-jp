@@ -11,23 +11,23 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 11/29/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5975bd5b2a2e7fe8799155ab47d96c3ecd0093ee
+ms.sourcegitcommit: 702ea254c19d1f9782f83d8445b7f440f11963b9
+ms.openlocfilehash: 5046b3fc1444e37388505f2662a28486342c8822
 
 
 ---
 # <a name="create-an-azure-search-service-using-the-azure-portal"></a>Azure ポータルを使用した Azure Search サービスの作成
-このガイドでは、 [Azure ポータル](https://portal.azure.com/)を使用して Azure Search サービスを作成する (またはプロビジョニングする) プロセスについて説明します。
+この記事では、[Azure Portal](https://portal.azure.com/) を使用して Azure Search サービスを作成する (またはプロビジョニングする) プロセスについて説明します。
 
-このガイドでは、既に Azure サブスクリプションを持っており、Azure ポータルにログインできることを前提としています。
+この記事では、既に Azure サブスクリプションを持っており、Azure Portal にログインできることを前提としています。
 
 ## <a name="find-azure-search-in-the-azure-portal"></a>Azure ポータルで Azure Search を見つける
-1. [Azure ポータル](https://portal.azure.com/) にアクセスし、ログインします。
+1. [Azure ポータル](https://portal.azure.com/) にアクセスしてログインします。
 2. 左上隅のプラス記号 ("+") をクリックします
-3. **[データ + ストレージ]**を選択します。
+3. **[Web + Mobile]**を選択します。
 4. **[Azure Search]**を選択します。
 
 ![](./media/search-create-service-portal/find-search.png)
@@ -58,7 +58,7 @@ Azure サービスとして Azure Search は、世界中のデータ センタ�
 ![](./media/search-create-service-portal/create-service.png)
 
 ## <a name="scale-your-service"></a>サービスを拡張する
-サービスのプロビジョニングが完了したら、ニーズに合わせてサービスを拡張できます。 Azure Search サービスに、Standard レベルを選択した場合、レプリカとパーティションの 2 つのディメンションでサービスを拡張できます。 Basic レベルを選択した場合は、レプリカのみ追加できます。
+サービスのプロビジョニングが完了したら、ニーズに合わせてサービスを拡張できます。 Azure Search サービスの Standard レベルを選択しているため、レプリカとパーティションの&2; つのディメンションでサービスを拡張できます。 Basic レベルを選択した場合は、レプリカのみ追加できます。 無料サービスをプロビジョニングした場合、拡張は利用できません。
 
 ***パーティション***を使用すると、サービスでより多くのドキュメントを格納し、検索できます。
 
@@ -67,12 +67,11 @@ Azure サービスとして Azure Search は、世界中のデータ センタ�
 1. Azure ポータルで Azure Search サービスの管理ブレードに移動します。
 2. **[設定]** ブレードで、**[スケール]** を選択します。
 3. レプリカまたはパーティションを追加して、サービスを拡張できます。
-   * 36 検索単位を超えてサービスを拡張することはできません。 検索単位の総数は、レプリカとパーティションの積になります (レプリカ * パーティション = 合計検索単位)。
-   * Basic レベルを選択した場合、3 つのレプリカにのみ拡張できます。 Basic サービスは、1 つのパーティションにバインドされます。
+   * 1 つのサービスで許可される検索ユニットの総数の[制限](search-limits-quotas-capacity.md)は、サービスの階層ごとに異なります (レプリカ * パーティション数 = 検索ユニット合計)。
 
 ![](./media/search-create-service-portal/scale-service.png)
 
-## <a name="next"></a>次へ
+## <a name="next-steps"></a>次のステップ
 Azure Search サービスをプロビジョニングしたら、データをアップロードし、検索できるように、 [Azure Search インデックスを定義する](search-what-is-an-index.md) ことができます。
 
 クイック チュートリアルについては、「 [ポータルから Azure Search を使用する](search-get-started-portal.md) 」をご覧ください。
@@ -80,6 +79,6 @@ Azure Search サービスをプロビジョニングしたら、データをア�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

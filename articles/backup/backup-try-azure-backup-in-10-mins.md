@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 09/27/2016
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 900967975694a688b6d5054cb351746819b65f16
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8ac37244d1e691a2f075116f3d78b89923cfb845
 
 
 ---
@@ -51,7 +51,7 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
    
     ![Create Recovery Services Vault step 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
    
-    Recovery Services コンテナー ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定するよう求められます。
+    [Recovery Services コンテナー] ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定するよう求められます。
    
     ![Create Recovery Services vault step 5](./media/backup-try-azure-backup-in-10-mins/rs-vault-attributes.png)
 4. **[名前]**ボックスに、コンテナーを識別する表示名を入力します。
@@ -78,7 +78,7 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 
 これで、コンテナーが作成されました。次は、Microsoft Azure Recovery Services エージェントとコンテナーの資格情報をダウンロードして、ファイルとフォルダーをバックアップするインフラストラクチャを準備します。
 
-## <a name="step-3-download-files"></a>手順 3: ファイルをダウンロードする
+## <a name="step-3---download-files"></a>手順 3: ファイルをダウンロードする
 1. Recovery Services コンテナーのダッシュボードで、 **[設定]** をクリックします。
    
     ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/settings-button.png)
@@ -88,7 +88,7 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 3. [Backup] ブレードで、 **[Backup goal]** をクリックします。
    
     ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/backup-goal.png)
-4. [ワークロードはどこで実行されていますか] メニューの **[オンプレミス]** を選択します。
+4. [Where is your workload running (ワークロードの実行場所)] メニューの **[オンプレミス]** を選択します。
 5. [What do you want to backup (バックアップ対象)] メニューの **[ファイルまたはフォルダー]** を選択し、**[OK]** をクリックします。
 
 ### <a name="download-the-recovery-services-agent"></a>Recovery Services エージェントのダウンロード
@@ -98,11 +98,11 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 2. ダウンロードのポップアップ ウィンドウで、 **[保存]** をクリックします。 既定では、 **MARSagentinstaller.exe** ファイルがダウンロード フォルダーに保存されます。
 
 ### <a name="download-vault-credentials"></a>コンテナー資格情報のダウンロード
-1. [インフラストラクチャの準備] ブレードで、**[ダウンロード] > [保存]** の順にクリックします。
+1. [インフラストラクチャの準備] ブレードで、**[ダウンロード]、[保存]** の順にクリックします。
    
     ![[Download Agent for Windows Server or Windows Client]](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-download.png)
 
-## <a name="step-4-install-and-register-the-agent"></a>手順 4: エージェントをインストールして登録する
+## <a name="step-4--install-and-register-the-agent"></a>手順 4: エージェントをインストールして登録する
 > [!NOTE]
 > 間もなく、Azure ポータルからバックアップを有効にできるようになります。 現時点では、オンプレミスの Microsoft Azure Recovery Services エージェントを使用して、ファイルやフォルダーをバックアップします。
 > 
@@ -142,7 +142,7 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 3. バックアップのスケジュール ウィザードの [作業の開始] ページで、 **[次へ]**をクリックします。
 4. [バックアップする項目の選択] 画面で、 **[項目の追加]**をクリックします。
 5. バックアップするファイルとフォルダーを選択し、 **[OK]**をクリックします。
-6. ページの下部にある **[次へ]**」を参照してください。
+6. ページの下部にある [次へ]」を参照してください。
 7. **[バックアップ スケジュールの選択]** ページで**バックアップ スケジュール**を指定し、**[次へ]** をクリックします。
    
     毎日 (1 日に最大 3 回) または毎週のバックアップをスケジュールすることができます。
@@ -153,7 +153,7 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
    > バックアップ スケジュールを指定する方法の詳細については、「 [Azure Backup を使用してテープのインフラストラクチャを置換する](backup-azure-backup-cloud-as-tape.md)」を参照してください。
    > 
    > 
-8. **[保持ポリシーの選択]** ページで、バックアップ コピーの**保持ポリシー**を選択します。
+8. **[保持ポリシーの選択]** ページで、バックアップ コピーの**リテンション期間ポリシー**を選択します。
    
     保有ポリシーは、バックアップを格納する必要がある期間を指定します。 すべてのバックアップ ポイントに "同じポリシー" を指定するのでなく、バックアップが実行されるタイミングに基づいて異なる保持ポリシーを指定できます。 必要に応じて、日、週、月、および年単位で保有ポリシーを変更できます。
 9. [初期バックアップの種類の選択] ページで、初期バックアップの種類を選択します。 **[自動でネットワーク経由]** オプションが選択された状態のままにし、**[次へ]** をクリックします。
@@ -184,6 +184,6 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/01/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0084e4e3ffd7284e237a9ed8544b191e1fb55a53
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c662a69f2fdbe3bd7848bdcd1eb0f9742f56c8c8
 
 
 ---
@@ -63,6 +63,6 @@ Azure Security Center では、監査をまだ有効にしていない場合に�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

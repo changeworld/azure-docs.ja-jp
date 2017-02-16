@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 7a99b931a30c04e13d535caa2abd46980c4a3fb3
 
 
 ---
 # <a name="implementing-failover-streaming-scenario"></a>フェールオーバー ストリーミング シナリオを実装する
-このチュートリアルでは、1 つの資産から別の資産にコンテンツ (BLOB) をコピーする、オンデマンド ストリーミングの冗長性対応の方法を示します。 このシナリオは、いずれかのデータ センターが停止した場合に 2 つのデータ センター間でフェールオーバーするように CDN を設定する必要のある顧客に役立ちます。
+
+このチュートリアルでは、1 つの資産から別の資産にコンテンツ (BLOB) をコピーする、オンデマンド ストリーミングの冗長性対応の方法を示します。 このシナリオは、いずれかのデータ センターが停止した場合に&2; つのデータ センター間でフェールオーバーするように CDN を設定する必要のある顧客に役立ちます。
 このチュートリアルでは、次のタスクを、Microsoft Azure Media Services SDK、Microsoft Azure Media Services REST API、Azure Storage SDK を使用して示します。
 
 1. ”データ センター A” に Media Services アカウントを設定します。
@@ -36,7 +37,7 @@ ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
 1. ”データ センター B” に Media Services アカウントを設定します。
 2. ターゲットの Media Services アカウントに、空のターゲット資産を作成します。
 3. ターゲット資産に関連付けられているターゲットのストレージ アカウントのコンテナーに書き込みアクセスできるように、空のターゲット資産に書き込み SAS ロケーターを作成します。
-4. Azure Storage SDK を使用し、”データ センター A” のコピー元のストレージ アカウントと ”データ センター B” のターゲット ストレージ アカウント間で BLOB (資産ファイル) をコピーします (これらのストレージ アカウントには対象の資産が関連付けられています)。
+4. Azure Storage SDK を使用し、"データ センター A" のコピー元のストレージ アカウントと "データ センター B" のターゲット ストレージ アカウント間で BLOB (資産ファイル) をコピーします (これらのストレージ アカウントには対象の資産が関連付けられています)。
 5. ターゲットの BLOB コンテナーにコピーされた BLOB (資産ファイル) をターゲット資産に関連付けます。 
 6. ”データ センター B” の資産の配信元ロケーターを作成し、”データ センター A” の資産用に生成されたロケーター ID を指定します。 
 7. これによりストリーミング URL が提供されます (URL の相対パスは同じです。ベース URL のみが異なります)。 
@@ -48,7 +49,7 @@ ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
 * Media Services SDK の現在のバージョンでは、指定したロケーター ID を使用してロケーターを作成することはできません。 このタスクを実現するには、Media Services REST API を使用します。
 * Media Services SDK の現在のバージョンでは、資産ファイルを資産に関連付ける IAssetFile 情報をプログラムで生成することはできません。 このタスクを実現するには、CreateFileInfos Media Services REST API を使用します。 
 * (双方の Media Services アカウントの暗号化キーは別のものになるため) ストレージ暗号化資産 (AssetCreationOptions.StorageEncrypted) のレプリケーションはサポートされていません。 
-* 動的パッケージングを利用する場合は、最低 1 つ以上のオンデマンド ストリーミング占有ユニットを最初に取得する必要があります。 詳細については、「 [資産の動的パッケージ](media-services-dynamic-packaging-overview.md)」を参照してください。
+* ダイナミック パッケージを利用する場合は、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。
 
 > [!NOTE]
 > フェールオーバー ストリーミング シナリオを手動で実装する代わりに、Media Services の [レプリケーター ツール](http://replicator.codeplex.com/) を使用することを検討してください。 このツールを使用すると、2 つの Media Services アカウント間で資産をレプリケートできます。
@@ -56,7 +57,7 @@ ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
 > 
 
 ## <a name="prerequisites"></a>前提条件
-* 新規または既存の Azure サブスクリプションで作成した 2 つの Media Services アカウント。 「[Media Services アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
+* 新規または既存の Azure サブスクリプションで作成した&2; つの Media Services アカウント。 「[Media Services アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
 * オペレーティング システム: Windows 7、Windows Server 2008 R2、Windows 8。
 * .NET Framework 4.5 または .NET Framework 4。
 * Visual Studio 2010 SP1 以降のバージョン (Professional、Premium、Ultimate、または Express)。
@@ -100,131 +101,118 @@ ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
           <add key="MediaServicesStorageAccountKeyTarget" value=" Media-Services-Storage-Account-Key-Target" />
         </appSettings>
 
-## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>オンデマンド ストリーミングの冗長性を処理するコードを追加します。
+## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>オンデマンド ストリーミングの冗長性を処理するコードを追加する
 1. 次のクラスレベル フィールドを Program クラスに追加します。
-   
+       
         // Read values from the App.config file.
         private static readonly string MediaServicesAccountNameSource = ConfigurationManager.AppSettings["MediaServicesAccountNameSource"];
         private static readonly string MediaServicesAccountKeySource = ConfigurationManager.AppSettings["MediaServicesAccountKeySource"];
         private static readonly string StorageNameSource = ConfigurationManager.AppSettings["MediaServicesStorageAccountNameSource"];
         private static readonly string StorageKeySource = ConfigurationManager.AppSettings["MediaServicesStorageAccountKeySource"];
-   
+        
         private static readonly string MediaServicesAccountNameTarget = ConfigurationManager.AppSettings["MediaServicesAccountNameTarget"];
         private static readonly string MediaServicesAccountKeyTarget = ConfigurationManager.AppSettings["MediaServicesAccountKeyTarget"];
         private static readonly string StorageNameTarget = ConfigurationManager.AppSettings["MediaServicesStorageAccountNameTarget"];
         private static readonly string StorageKeyTarget = ConfigurationManager.AppSettings["MediaServicesStorageAccountKeyTarget"];
-   
+        
         // Base support files path.  Update this field to point to the base path  
         // for the local support files folder that you create. 
         private static readonly string SupportFiles = Path.GetFullPath(@"../..\SupportFiles");
-   
+        
         // Paths to support files (within the above base path). 
         private static readonly string SingleInputMp4Path = Path.GetFullPath(SupportFiles + @"\MP4Files\BigBuckBunny.mp4");
         private static readonly string OutputFilesFolder = Path.GetFullPath(SupportFiles + @"\OutputFiles");
-   
+        
         // Class-level field used to keep a reference to the service context.
         static private CloudMediaContext _contextSource = null;
         static private CloudMediaContext _contextTarget = null;
         static private MediaServicesCredentials _cachedCredentialsSource = null;
         static private MediaServicesCredentials _cachedCredentialsTarget = null;
-2. 既定の Main メソッド定義を次に置き換えます。
-   
+
+2. 既定の Main メソッド定義を次に置き換えます。 Main から呼び出されるメソッド定義は次のとおりです。
+        
         static void Main(string[] args)
         {
             _cachedCredentialsSource = new MediaServicesCredentials(
                             MediaServicesAccountNameSource,
                             MediaServicesAccountKeySource);
-   
+        
             _cachedCredentialsTarget = new MediaServicesCredentials(
                             MediaServicesAccountNameTarget,
                             MediaServicesAccountKeyTarget);
-   
+        
             // Get server context.    
             _contextSource = new CloudMediaContext(_cachedCredentialsSource);
             _contextTarget = new CloudMediaContext(_cachedCredentialsTarget);
-
+        
             IAsset assetSingleFile = CreateAssetAndUploadSingleFile(_contextSource,
                                         AssetCreationOptions.None,
                                         SingleInputMp4Path);
-
+        
             IJob job = CreateEncodingJob(_contextSource, assetSingleFile);
-
+        
             if (job.State != JobState.Error)
             {
                 IAsset sourceOutputAsset = job.OutputMediaAssets[0];
                 // Get the locator for Smooth Streaming
                 var sourceOriginLocator = GetStreamingOriginLocator(_contextSource, sourceOutputAsset);
-
+        
                 Console.WriteLine("Locator Id: {0}", sourceOriginLocator.Id);
-
-
+                
                 // 1.Create a read-only SAS locator for the source asset to have read access to the container in the source Storage account (associated with the source Media Services account)
                 var readSasLocator = GetSasReadLocator(_contextSource, sourceOutputAsset);
-
-
+        
                 // 2.Get the container name of the source asset from the read-only SAS locator created in the previous step
                 string containerName = (new Uri(readSasLocator.Path)).Segments[1];
-
-
+        
                 // 3.Create a target empty asset in the target Media Services account
                 var targetAsset = CreateTargetEmptyAsset(_contextTarget, containerName);
-
+        
                 // 4.Create a write SAS locator for the target empty asset to have write access to the container in the target Storage account (associated with the target Media Services account)
                 ILocator writeSasLocator = CreateSasWriteLocator(_contextTarget, targetAsset);
-
+        
                 // Get asset container name.
                 string targetContainerName = (new Uri(writeSasLocator.Path)).Segments[1];
-
-
+        
                 // 5.Copy the blobs in the source container (source asset) to the target container (target empty asset)
                 CopyBlobsFromDifferentStorage(containerName, targetContainerName, StorageNameSource, StorageKeySource, StorageNameTarget, StorageKeyTarget);
-
-
+        
                 // 6.Use the CreateFileInfos Media Services REST API to automatically generate all the IAssetFile’s for the target asset. 
                 //      This API call is not supported in the current Media Services SDK for .NET. 
                 CreateFileInfosForAssetWithRest(_contextTarget, targetAsset, MediaServicesAccountNameTarget, MediaServicesAccountKeyTarget);
-
+        
                 // Check if the AssetFiles are now  associated with the asset.
                 Console.WriteLine("Asset files assocated with the {0} asset:", targetAsset.Name);
                 foreach (var af in targetAsset.AssetFiles)
                 {
                     Console.WriteLine(af.Name);
                 }
-
+        
                 // 7.Copy the Origin locator of the source asset to the target asset by using the same Id
                 var replicatedLocatorPath = CreateOriginLocatorWithRest(_contextTarget,
                             MediaServicesAccountNameTarget, MediaServicesAccountKeyTarget,
                             sourceOriginLocator.Id, targetAsset.Id);
-
+        
                 // Create a full URL to the manifest file. Use this for playback
                 // in streaming media clients. 
                 string originalUrlForClientStreaming = sourceOriginLocator.Path + GetPrimaryFile(sourceOutputAsset).Name + "/manifest";
-
+        
                 Console.WriteLine("Original Locator Path: {0}\n", originalUrlForClientStreaming);
-
+        
                 string replicatedUrlForClientStreaming = replicatedLocatorPath + GetPrimaryFile(sourceOutputAsset).Name + "/manifest";
-
+        
                 Console.WriteLine("Replicated Locator Path: {0}", replicatedUrlForClientStreaming);
-
+        
                 readSasLocator.Delete();
                 writeSasLocator.Delete();
         }
 
-1. Main から呼び出されるメソッド定義は次のとおりです。
+3. Main から呼び出されるメソッド定義です。
    
         public static IAsset CreateAssetAndUploadSingleFile(CloudMediaContext context,
                                                         AssetCreationOptions assetCreationOptions,
                                                         string singleFilePath)
         {
-            // For the AssetCreationOptions you can specify 
-            // encryption options.
-            //      None:  no encryption. By default, storage encryption is used. If you want to 
-            //        create an unencrypted asset, you must set this option.
-            //      StorageEncrypted:  storage encryption. Encrypts a clear input file 
-            //        before it is uploaded to Azure storage. This is the default if not specified
-            //      CommonEncryptionProtected:  for Common Encryption Protected (CENC) files. An 
-            //        example is a set of files that are already PlayReady encrypted. 
-   
             var assetName = "UploadSingleFile_" + DateTime.UtcNow.ToString();
    
             var asset = context.Assets.Create(assetName, assetCreationOptions);
@@ -299,8 +287,6 @@ ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
             return job;
         }
    
-        // Create a locator URL to a streaming media asset 
-        // on an origin server.
         public static ILocator GetStreamingOriginLocator(CloudMediaContext context, IAsset assetToStream)
         {
             // Get a reference to the streaming manifest file from the  
@@ -420,7 +406,6 @@ ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
             return locatorNewPath;
         }
 
-
         public static void SetPrimaryFile(IAsset asset)
         {
 
@@ -454,7 +439,6 @@ ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
             return asset;
         }
 
-
         public static void CopyBlobsFromDifferentStorage(string sourceContainerName, string targetContainerName,
                                             string srcAccountName, string srcAccountKey,
                                             string destAccountName, string destAccountKey)
@@ -487,6 +471,8 @@ ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
 
                 if (sourceCloudBlob.Properties.Length > 0)
                 {
+                    // In AMS, the files are stored as block blobs. 
+                    // Page blobs are not supported by AMS.  
                     var destinationBlob = targetContainer.GetBlockBlobReference(fileName);
                     destinationBlob.StartCopyFromBlob(new Uri(sourceBlob.Uri.AbsoluteUri + blobToken));
 
@@ -510,6 +496,7 @@ ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
 
             Console.WriteLine("Done copying.");
         }
+
         private static IMediaProcessor GetLatestMediaProcessorByName(CloudMediaContext context, string mediaProcessorName)
         {
 
@@ -906,7 +893,6 @@ ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
             }
         }
 
-
         private static HttpWebRequest GenerateRequest(string verb,
                                                         string mediaServicesApiServerUri,
                                                         string resourcePath, string query,
@@ -953,7 +939,7 @@ ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
 
 
 ## <a name="next-steps"></a>次のステップ
-これで、トラフィック マネージャーを使用して 2 つのデータ センター間で要求をルーティングできるので、障害時のフェールオーバーが可能になりました。
+これで、トラフィック マネージャーを使用して&2; つのデータ センター間で要求をルーティングできるので、障害時のフェールオーバーが可能になりました。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -964,6 +950,6 @@ ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

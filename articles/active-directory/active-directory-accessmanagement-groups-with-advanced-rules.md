@@ -1,20 +1,23 @@
-
 ---
-title: 属性を使用した高度なルールの作成| Microsoft Docs
-description: サポートされる式のルールの演算子とパラメーターを含むグループの高度な規則を作成する方法。
+title: "属性を使用した高度なルールの作成 | Microsoft Docs"
+description: "サポートされる式のルールの演算子とパラメーターを含むグループの高度な規則を作成する方法。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 04813a42-d40a-48d6-ae96-15b7e5025884
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 11/01/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: c404c8708ec6d33f272733e438b8c3559fa40ce9
+ms.openlocfilehash: 07cf3e27f34c705367aa62650d2b17ed1ea3ec82
+
 
 ---
 # <a name="using-attributes-to-create-advanced-rules"></a>属性を使用した高度なルールの作成
@@ -42,11 +45,18 @@ Azure クラシック ポータルを使用すると、高度なルールを作�
 
 サポートされているパラメーターと式のルール演算子の全一覧については、以降のセクションを参照してください。
 
+プロパティの先頭には、適切なオブジェクトの種類 (ユーザーまたはデバイス) が付加されている必要があります。
+次のルールは検証に失敗します: mail –ne null
+
+適切なルールは、次のようになります。 
+
+user.mail –ne null
+
 高度なルール本体の合計文字数が 2048 文字を超えないようにしてください。
 
 > [!NOTE]
-> 文字列演算と正規表現演算は、大文字と小文字が区別されません。 定数に $null を使用することで Null チェックを実行することもできます (例: user.department -eq $null)。
-> 二重引用符 (") を含んだ文字列は、バック クォート文字 (`) でエスケープする必要があります (例: user.department -eq \`"Sales")。
+> 文字列演算と正規表現演算は、大文字と小文字が区別されません。 二重引用符 (") を含んだ文字列は、バック クォート文字 (`) でエスケープする必要があります (例: user.department -eq \`"Sales")。
+> 引用符は文字列型の値にのみ使用し、また、英語の引用符のみを使用してください。
 > 
 > 
 
@@ -63,6 +73,20 @@ Azure クラシック ポータルを使用すると、高度なルールを作�
 | 指定値を含む |-contains |
 | 一致しない |-notMatch |
 | 一致する |-match |
+
+## <a name="operator-precedence"></a>演算子の優先順位
+
+すべての演算子を優先順位の低い順から以下に示します。同じ行にある演算子の優先順位は同じです。-any -all -or -and -not -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch
+ 
+すべての演算子は、ハイフンのプレフィックスあり、またはなしで使用できます。
+
+かっこは必ずしも必要ではなく、優先順位が要件を満たさない場合にのみかっこを追加する必要があることに注意してください。例:
+
+   user.department –eq "Marketing" –and user.country –eq "US" 
+   
+は以下に匹敵します。 
+
+   (user.department –eq "Marketing") –and (user.country –eq "US")
 
 ## <a name="query-error-remediation"></a>クエリ エラーの修復
 次の表では、発生する可能性のあるエラーとその解決方法を示します。
@@ -138,6 +162,12 @@ Azure クラシック ポータルを使用すると、高度なルールを作�
 | otherMails |任意の文字列値 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
+## <a name="use-of-null-values"></a>Null 値の使用
+
+ルールで null 値を指定するには、null または $null を使用します。 例: 
+
+   user.mail –ne null is equivalent to user.mail –ne $null
+
 ## <a name="extension-attributes-and-custom-attributes"></a>拡張属性とカスタム属性
 拡張属性とカスタム属性は、動的なメンバーシップ ルールでサポートされます。
 
@@ -153,8 +183,14 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 カスタム属性名は、Graph Explorer を使用してユーザーの属性をクエリして属性名を検索することにより、ディレクトリで見つけることができます。
 
+## <a name="support-for-multi-value-properties"></a>複数値プロパティのサポート
+
+ルールに複数値プロパティを含めるには、次のように、-any 演算子を使用します。
+
+  user.assignedPlans -any assignedPlan.service -startsWith "SCO"
+  
 ## <a name="direct-reports-rule"></a>直接の部下のルール
-ユーザーのマネージャー属性に基づいてグループにメンバーを設定できるようになりました。
+ユーザーのマネージャー属性に基づいてグループにメンバーを設定できます。
 
 **"Manager" グループとしてグループを構成するには**
 
@@ -178,16 +214,16 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 | displayName |任意の文字列値 |(device.displayName -eq "Rob Iphone”) |
 | deviceOSType |任意の文字列値 |(device.deviceOSType -eq "IOS") |
 | deviceOSVersion |任意の文字列値 |(device.OSVersion -eq "9.1") |
-| isDirSynced |true false null |(device.isDirSynced -eq "true") |
-| isManaged |true false null |(device.isManaged -eq "false") |
-| isCompliant |true false null |(device.isCompliant -eq "true") |
+| isDirSynced |true false null |(device.isDirSynced -eq true) |
+| isManaged |true false null |(device.isManaged -eq false) |
+| isCompliant |true false null |(device.isCompliant -eq true) |
 | deviceCategory |任意の文字列値 |(device.deviceCategory -eq "") |
 | deviceManufacturer |任意の文字列値 |(device.deviceManufacturer -eq "Microsoft") |
 | deviceModel |任意の文字列値 |(device.deviceModel -eq "IPhone 7+") |
 | deviceOwnership |任意の文字列値 |(device.deviceOwnership -eq "") |
 | domainName |任意の文字列値 |(device.domainName -eq "contoso.com") |
 | enrollmentProfileName |任意の文字列値 |(device.enrollmentProfileName -eq "") |
-| isRooted |true false null |(device.deviceOSType -eq "true") |
+| isRooted |true false null |(device.isRooted -eq true) |
 | managementType |任意の文字列値 |(device.managementType -eq "") |
 | organizationalUnit |任意の文字列値 |(device.organizationalUnit -eq "") |
 | deviceId |有効なデバイス ID |(device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d" |
@@ -206,6 +242,9 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

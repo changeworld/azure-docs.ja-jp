@@ -1,5 +1,5 @@
 ---
-title: "ロールベースの Access Control | Microsoft Docs"
+title: "ロールを使用したアクセスとアクセス許可の管理 - Azure RBAC | Microsoft Docs"
 description: "Azure ポータルで Azure のロールベースのアクセス制御を使用したアクセス管理を開始します。 ロールの割り当てを使用して、ディレクトリ内でアクセス許可を割り当てます。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/03/2016
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0e724ac386e9b92904b6218e4fcc0ac1766378ce
+ms.sourcegitcommit: d00ba4e6d1abd62e5a0d5a9d5bb229d3fa64b473
+ms.openlocfilehash: fb12fb78d4257fc8264bd476de70671eb8264323
 
 
 ---
@@ -35,7 +35,7 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 割り当てる RBAC ロールにより、そのスコープ内でユーザー、グループ、またはアプリケーションが管理できるリソースが決まります。
 
 ## <a name="built-in-roles"></a>組み込みのロール
-Azure RBAC には、すべてのリソースの種類に適用される 3 つの基本的なロールがあります。
+Azure RBAC には、すべてのリソースの種類に適用される&3; つの基本的なロールがあります。
 
 * **所有者** は、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。
 * **作成協力者** は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。
@@ -65,12 +65,11 @@ Azure RBAC は、Azure ポータルと Azure Resource Manager API での Azure �
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure ポータルでのロールベースの Access Control](role-based-access-control-configure.md)の基礎を確認する
-*  [RBAC: 組み込みのロール](role-based-access-built-in-roles.md)
+* [RBAC: 組み込みのロール](role-based-access-built-in-roles.md)
 * 独自の [Azure RBAC でカスタム ロール](role-based-access-control-custom-roles.md)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

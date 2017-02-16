@@ -1,5 +1,5 @@
 ---
-title: "ポータルを使用してアプリケーション ゲートウェイ用カスタム プローブを作成する | Microsoft Docs"
+title: "カスタム プローブを作成する - Azure Application Gateway - Azure Portal | Microsoft Docs"
 description: "ポータルを使用してアプリケーション ゲートウェイ用カスタム プローブを作成する方法について説明します。"
 services: application-gateway
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: aaf13418331f29287399621cb911e4b9f5b33dc0
-ms.openlocfilehash: 0fafaff220dfb5d224bc5b57b630f8b2912155f7
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 14b715013b4154a1fa079c0dc470e675d7cf4c1f
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: 0fafaff220dfb5d224bc5b57b630f8b2912155f7
 
 ## <a name="a-namecreateprobeacreate-the-probe"></a><a name="createprobe"></a>プローブの作成
 
-プローブは、ポータルを通じて 2 段階の手順で構成されます。 最初の手順で、プローブを作成します。 次に、アプリケーション ゲートウェイのバックエンド http 設定にプローブを追加します。
+プローブは、ポータルを通じて&2; 段階の手順で構成されます。 最初の手順で、プローブを作成します。 次に、アプリケーション ゲートウェイのバックエンド http 設定にプローブを追加します。
 
 ### <a name="step-1"></a>手順 1
 
@@ -97,6 +97,6 @@ Azure Application Gateway で SSL オフロードを構成する方法を学習�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 42a2b241ed6ac2b13d1fb65f42242b194ef2858b
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 5724a9c66bef01972f41e66a84844aae9b300296
 
 
 ---
@@ -37,10 +37,10 @@ Media Services アカウントに複数のストレージ アカウントをア�
 
 その他の考慮事項
 
-Media Services は、ストリーミング コンテンツ (たとえば、http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、**IAssetFile.Name** プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 Name プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#[]". は使用できません。また、‘.’ は単体で使用できません。 また、ファイル名拡張子で使用できる "." は 1 つのみです。
+Media Services は、ストリーミング コンテンツ (たとえば、http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、**IAssetFile.Name** プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 Name プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 Also, there can only be one ‘.’ また、ファイル名拡張子で使用できる "." は&1; つのみです。
 
 ## <a name="to-attach-a-storage-account-with-azure-service-management-rest-api"></a>Azure サービス管理 REST API でストレージ アカウントをアタッチするには
-現時点で、複数のストレージ アカウントをアタッチする唯一の方法は、 [Azure サービス管理 REST API](http://msdn.microsoft.com/library/azure/dn167014.aspx)を使用することです。 「 [方法: Media Services Management REST API の使用](https://msdn.microsoft.com/library/azure/dn167656.aspx) 」トピックのコード サンプルは、 **AttachStorageAccountToMediaServiceAccount** メソッドを定義して、指定された Media Services アカウントにストレージ アカウントをアタッチします。 同じトピックのコードは、 **ListStorageAccountDetails** メソッドを定義し、指定された Media Services アカウントにアタッチされたすべてのストレージ アカウントを表示します。
+現時点で、複数のストレージ アカウントをアタッチする唯一の方法は、 [Azure サービス管理 REST API](https://docs.microsoft.com/rest/api/media/management/media-services-management-rest)を使用することです。 「 [方法: Media Services Management REST API の使用](https://msdn.microsoft.com/library/azure/dn167656.aspx) 」トピックのコード サンプルは、 **AttachStorageAccountToMediaServiceAccount** メソッドを定義して、指定された Media Services アカウントにストレージ アカウントをアタッチします。 同じトピックのコードは、 **ListStorageAccountDetails** メソッドを定義し、指定された Media Services アカウントにアタッチされたすべてのストレージ アカウントを表示します。
 
 ## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>複数のストレージ アカウントで Media Services 資産を管理するには
 次のコードは、最新の Media Services SDK を使用して次のタスクを実行します。
@@ -257,6 +257,6 @@ Media Services は、ストリーミング コンテンツ (たとえば、http:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

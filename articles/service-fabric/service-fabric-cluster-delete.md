@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2016
+ms.date: 12/09/2016
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: badaba3fa8bfe458ff5efc6b618781e9fa2183d5
+ms.sourcegitcommit: a957a70be915459baa8c687c92e251c6011b6172
+ms.openlocfilehash: e73334373e9909069641cd4ad2c3280e51b5e2db
 
 
 ---
@@ -33,7 +33,7 @@ Service Fabric クラスターは、クラスター リソース自体に加え�
 これは、リソース グループを含む、クラスターに関連付けられているすべてのリソースを確実に削除する最も簡単な方法です。 PowerShell または Azure ポータルを使用して、リソース グループを削除できます。 Service fabric クラスターに関連していないリソースがリソース グループにある場合は、特定のリソースを削除できます。
 
 ### <a name="delete-the-resource-group-using-azure-powershell"></a>Azure PowerShell を使用したリソース グループの削除
-次の Azure PowerShell コマンドレットを実行して、リソース グループを削除することもできます。 Azure PowerShell 1.0 以降がコンピューターにインストールされていることを確認します。 まだインストールされていない場合は、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
+次の Azure PowerShell コマンドレットを実行して、リソース グループを削除することもできます。 Azure PowerShell 1.0 以降がコンピューターにインストールされていることを確認します。 まだインストールされていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)
 
 PowerShell ウィンドウを開き、次の PS コマンドレットを実行します。
 
@@ -77,7 +77,7 @@ Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
     ![タグ付けされたリソース][TaggedResources]
 
 ### <a name="delete-the-resources-using-azure-powershell"></a>Azure PowerShell を使用したリソースの削除
-次の Azure PowerShell コマンドレットを実行して、リソースを 1 つずつ削除できます。 Azure PowerShell 1.0 以降がコンピューターにインストールされていることを確認します。 まだインストールされていない場合は、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
+次の Azure PowerShell コマンドレットを実行して、リソースを 1 つずつ削除できます。 Azure PowerShell 1.0 以降がコンピューターにインストールされていることを確認します。 まだインストールされていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)
 
 PowerShell ウィンドウを開き、次の PS コマンドレットを実行します。
 
@@ -111,6 +111,6 @@ Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "Mic
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

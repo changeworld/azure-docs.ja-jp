@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/10/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 115fbee1990b20f6a7186e5f36d0b618cf2e3b7b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6f08fcdb4ec6dd124760cff54c522d998d5a0327
 
 
 ---
@@ -116,6 +116,6 @@ System Center Configuration Manager を使って証明書もデプロイする�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/28/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f0db022251b16c2c3fe1ca93c25d8550a2b899d8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 33508e0b5a74cb37201ee926e297897ac0a73fcf
 
 
 ---
@@ -131,7 +131,7 @@ Deputy で Azure AD のシングル サインオンを構成してテストす�
    
     ![Configure Single Sign-On](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_06.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 6. https://(your-subdomain).deputy.com/exec/config/system_config に移動します。 **[Security Settings (セキュリティの設定)]** に移動し、**[編集]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_004.png)
@@ -286,6 +286,6 @@ Azure AD ユーザーが Deputy にログインできるようにするには、
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

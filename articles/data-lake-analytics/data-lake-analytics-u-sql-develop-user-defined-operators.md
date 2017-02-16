@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 88a00c2b0a5aac85bbcaef5b21b10f44121c7d38
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ef0fa131cc665df68e13ee7be58330f571f3ac90
 
 
 ---
 # <a name="develop-u-sql-user-defined-operators-for-azure-data-lake-analytics-jobs"></a>Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発
 Data Lake Analytics ジョブで使用および再使用されるユーザー定義演算子の開発方法について説明します。 国名を変換するカスタム演算子を開発します。
 
+U-SQL の汎用アセンブリを開発する手順については、「[Develop U-SQL assemblies for Azure Data Lake Analytics jobs (Azure Data Lake Analytics ジョブの U-SQL アセンブリの開発)](data-lake-analytics-u-sql-develop-assemblies.md)」を参照してください
+
 ## <a name="prerequisites"></a>前提条件
 * Visual Studio 2015、Visual Studio 2013 update 4、または Visual Studio 2012 (Visual C++ インストール済み)。
 * Microsoft Azure SDK for .NET バージョン 2.5 以上。  Web Platform Installer を使用してインストールします。
-* Data Lake Analytics アカウント。  「 [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
+* Data Lake Analytics アカウント。  「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
 * 「 [Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-get-started.md) 」チュートリアルを読み進める。
 * Azure に接続します。
 * ソース データのアップロード。[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。 
@@ -126,8 +128,8 @@ Data Lake Analytics ジョブで使用および再使用されるユーザー定
         OUTPUT @drivers_CountryName
             TO "/Samples/Outputs/Drivers.csv"
             USING Outputters.Csv(Encoding.Unicode);
-7. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[Build Script (スクリプトのビルド)]** をクリックします。
-8. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[Submit Script (スクリプトの送信)]** をクリックします。
+7. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトのビルド]** をクリックします。
+8. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトの送信]** をクリックします。
 9. Azure サブスクリプションに接続していない場合は、Azure アカウント資格情報の入力を求められます。
 10. **[Submit]**をクリックします。 送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
 11. 最新のジョブの状態を表示して、画面を更新するには、[更新] をクリックする必要があります。
@@ -144,6 +146,6 @@ Data Lake Analytics ジョブで使用および再使用されるユーザー定
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

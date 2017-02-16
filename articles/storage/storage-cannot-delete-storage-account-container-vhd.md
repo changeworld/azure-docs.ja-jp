@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 11/21/2016
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a50ac3b7fe76dd44887fb197f685c1311d9dc04c
+ms.sourcegitcommit: 822bace005a6244a47c9484487dab85b1aec9d9a
+ms.openlocfilehash: e20b1ca582c56da7b4fb1e2df3be90bd1c29a8b6
 
 
 ---
@@ -28,6 +28,7 @@ ms.openlocfilehash: a50ac3b7fe76dd44887fb197f685c1311d9dc04c
 
 * バーチャル マシンを削除すると、ディスクと VHD は自動的に削除されません。 これがストレージ アカウントの削除に失敗する理由である場合があります。 ディスクを別の VM にマウントできるように、マイクロソフトはディスクを削除しません。
 * ディスクまたはディスクに関連付けられている BLOB のリースがまだ存在します。
+* BLOB、コンテナー、またはストレージ アカウントを使用している VM イメージがまだ存在します。
 
 この記事で Azure の問題に対処できない場合は、 [MSDN と Stack Overflow の Azure フォーラム](https://azure.microsoft.com/support/forums/)を参照してください。 問題をこれらのフォーラムまたは Twitter の @AzureSupport に投稿できます。 また、 **Azure サポート** サイトの [[サポートの要求]](https://azure.microsoft.com/support/options/) を選択して、Azure サポート要求を提出することもできます。
 
@@ -64,39 +65,69 @@ Azure ストレージ アカウント、コンテナー、または VHD を削�
 
 *ストレージ コンテナー <container name> を削除できませんでした。エラー: 現在、コンテナーにリースがありますが、リクエストでリース ID が指定されていませんでした*。
 
+または
+
+"*次の仮想マシンのディスクでこのコンテナーの BLOB を使用するため、このコンテナーは削除できません: VirtualMachineDiskName1, VirtualMachineDiskName2, ...*"
+
 ### <a name="scenario-3-unable-to-delete-a-vhd"></a>シナリオ 3: VHD を削除できない
 VM を削除してから、関連する VHD の BLOB を削除しようと、次のメッセージが表示される場合があります。
 
 *BLOB 'path/XXXXXX-XXXXXX-os-1447379084699.vhd' を削除できませんでした。エラー: 現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。*
 
+または
+
+"*BLOB ‘BlobName.vhd’ は仮想マシンのディスク ‘VirtualMachineDiskName’ として使用中のため、削除できません。*"
+
 ## <a name="solution"></a>解決策
 最も一般的な問題を解決するには、次の方法をお試しください。
 
-### <a name="step-1-delete-any-os-disks-that-are-preventing-deletion-of-the-storage-account-container-or-vhd"></a>手順 1: ストレージ アカウント、コンテナー、または VHD の削除を妨げている OS ディスクを削除します。
+### <a name="step-1-delete-any-disks-that-are-preventing-deletion-of-the-storage-account-container-or-vhd"></a>手順 1: ストレージ アカウント、コンテナー、または VHD の削除を妨げているディスクを削除します。
 1. [Azure クラシック ポータル](https://manage.windowsazure.com/)に切り替えます。
 2. **[仮想マシン]** > **[ディスク]** を選択します。
-   
+
     ![Azure クラシック ポータルでのバーチャル マシン上のディスクのイメージ。](./media/storage-cannot-delete-storage-account-container-vhd/VMUI.png)
 3. 削除するストレージ アカウント、コンテナー、または VHD に関連付けられているディスクを検索します。 ディスクの場所をチェックすると、関連付けられたストレージ アカウント、コンテナー、または VHD が表示されます。
-   
+
     ![Azure クラシック ポータルでディスクの場所情報を示すイメージ](./media/storage-cannot-delete-storage-account-container-vhd/DiskLocation.png)
-4. ディスクの **[接続先]** フィールドに VM が表示されていないことを確認してから、ディスクを削除します。
-   
+4. 次のいずれかの方法を使用してディスクを削除してください。
+
+  - ディスクの **[接続先]** フィールドに VM がない場合は、ディスクを直接削除できます。
+
+  - ディスクがデータ ディスクの場合は、次の手順に従います。
+
+    1. ディスクが接続されている VM の名前を確認します。
+    2. **[仮想マシン]** > **[インスタンス]** の順に移動して VM を見つけます。
+    3. ディスクが現在使用されていないことを確認します。
+    4. ポータルの下部にある **[ディスクの切断]** を選択してディスクを切断します。
+    5. **[仮想マシン]** > **[ディスク]** の順に移動して、**[接続先]** フィールドが空白になるまで待ちます。 これは、ディスクが VM から正常に切断されたことを示します。
+    6. **[仮想マシン]** > **[ディスク]** の順に移動し、下部にある **[削除]** を選択してディスクを削除します。
+
+  - ディスクが OS ディスクであり (**[OS を含む]** フィールドの表示が Windows などになっている)、VM に接続されている場合は、次の手順に従って VM を削除します。 OS ディスクを切断できないため、VM を削除してリースを解放する必要があります。
+
+    1. データ ディスクの接続先の仮想マシンの名前を確認します。  
+    2. **[仮想マシン]** > **[インスタンス]** の順に移動して、ディスクの接続先の VM を選択します。
+    3. 該当する仮想マシンを実際に使用していないこと、今後も必要としないことを確認してください。
+    4. ディスクの接続先の VM を選択してから、**[削除]** > **[接続されたディスクの削除]** の順に選択します。
+    5. **[仮想マシン]** > **[ディスク]** の順に移動して、ディスクが表示されなくなるまで待ちます。  表示されなくなるまでに少し時間がかかり、ページを更新することが必要になる場合があります。
+    6. ディスクが非表示にならない場合は、**[接続先]** フィールドが空白になるまで待ちます。 これは、ディスクが VM から完全に切断されたことを示します。  その後、ディスクを選択し、ページの下部にある **[削除]** を選択してディスクを削除します。
+
+
    > [!NOTE]
    > ディスクが VM に接続されている場合は、ディスクを削除できません。 削除された VM からディスクが非同期で切断されます。 このフィールドの VM が削除された後に、クリアするまで数分間かかる場合があります。
-   > 
-   > 
+   >
+   >
+
 
 ### <a name="step-2-delete-any-vm-images-that-are-preventing-deletion-of-the-storage-account-or-container"></a>手順 2: ストレージ アカウントまたはコンテナーの削除を妨げている VM イメージを削除します。
 1. [Azure クラシック ポータル](https://manage.windowsazure.com/)に切り替えます。
 2. **[仮想マシン]** > **[イメージ]** を選択して、ストレージ アカウント、コンテナー、または VHD に関連付けられているイメージを削除します。
-   
+
     その後、そのストレージ アカウント、コンテナー、または VHD をもう一度削除します。
 
 > [!WARNING]
 > アカウントを削除する前に、保存する必要のあるデータを必ずバックアップしてください。 削除したストレージ アカウントを復元することも、削除前にアカウントに含まれていたコンテンツを取得することもできません。 これはアカウントのリソースにも当てはまります。 VHD、BLOB、テーブル、キュー、またはファイルを削除すると、それは完全に削除されます。 リソースが使用されていないことを確認します。
-> 
-> 
+>
+>
 
 ## <a name="about-the-stopped-deallocated-status"></a>停止済み (割り当て解除済み) について
 従来のデプロイ モデルで作成されて保持されている VM は、[Azure Portal](https://portal.azure.com/) または [Azure クラシック ポータル](https://manage.windowsazure.com/)で **[停止済み (割り当て解除)]** 状態になります。
@@ -117,7 +148,6 @@ VM を削除してから、関連する VHD の BLOB を削除しようと、次
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

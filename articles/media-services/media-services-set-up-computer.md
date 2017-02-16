@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/12/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 88e04780a5255e136de3d18ab946ef2981ecece5
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 5d49c309a8bfef8f6b4a2825c2bd12a590f19fd9
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 88e04780a5255e136de3d18ab946ef2981ecece5
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-create-account.md)
 > * [PowerShell](media-services-manage-with-powershell.md)
-> * [REST](https://msdn.microsoft.com/library/azure/dn167014.aspx)
+> * [REST](https://docs.microsoft.com/rest/api/media/management/media-services-management-rest)
 >   <a id="create_account"></a>
 > 
 > 
@@ -57,6 +57,6 @@ Azure Media Services アカウントを作成するには、Azure ポータル�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

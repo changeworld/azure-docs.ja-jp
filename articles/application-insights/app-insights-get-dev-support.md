@@ -1,5 +1,5 @@
 ---
-title: "Application Insights 開発チームによるテクニカル サポートを利用する方法 | Microsoft Docs"
+title: "Azure Application Insights のテクニカル サポート | Microsoft Docs"
 description: "Application Insights で発生した問題に関するサポートを利用できます。"
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: albulank
 translationtype: Human Translation
-ms.sourcegitcommit: 7dbcc3b11b744361113d4dba100407ee85c40cac
-ms.openlocfilehash: 330fab68efedee0e6e56459289f94beb88a5fdd5
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: b3306ebddae08f07650d91feba25e90de55656b4
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: 330fab68efedee0e6e56459289f94beb88a5fdd5
 * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 
-## <a name="3-azure-support-plan"></a>手順 3.Azure サポート プランを確認する
+## <a name="3-azure-support-plan"></a>手順&3;.Azure サポート プランを確認する
 開発者に自身の具体的な事例を調査してほしい場合もあります。 
 
 [Microsoft Azure でサポート プラン](https://azure.microsoft.com/support/plans/)に加入している場合は、[サポート チケットを開く](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ことができます。
@@ -62,6 +62,6 @@ Microsoft の開発チームは、発生した問題についてぜひ知りた�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

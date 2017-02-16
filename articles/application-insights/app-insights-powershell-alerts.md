@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: ff5e7721e2cdf2f8b034f714b6b58642efcb6368
+ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
+ms.openlocfilehash: 710663e122bdebff575c762a501a0d261056e1bc
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: ff5e7721e2cdf2f8b034f714b6b58642efcb6368
 * このインストーラーを使用して Microsoft Azure PowerShell をインストールする。
 
 ## <a name="connect-to-azure"></a>Connect to Azure
-Azure PowerShell を起動して、 [サブスクリプションに接続](../powershell-install-configure.md)します。
+Azure PowerShell を起動して、 [サブスクリプションに接続](/powershell/azureps-cmdlets-docs)します。
 
 ```PowerShell
 
@@ -142,6 +142,6 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

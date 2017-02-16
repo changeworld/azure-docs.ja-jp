@@ -1,5 +1,5 @@
 # <a name="azure-technical-documentation-contributor-guide"></a>Azure 技術ドキュメント作成協力者ガイド
-この GitHub リポジトリには、[http://docs.microsoft.com/azure](http://docs.microsoft.com/azure) で公開されている Azure 技術ドキュメントのソースが格納されています。
+この GitHub リポジトリには、[https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) で公開されている Azure 技術ドキュメントのソースが格納されています。
 
 また、技術ドキュメントの作成にご協力いただく際に役立つガイダンスも納められています。 共同作成者ガイドに掲載されている記事の一覧については、[インデックス](contributor-guide/contributor-guide-index.md)をご覧ください。
 
@@ -17,9 +17,9 @@ Azure ドキュメントにご興味をお持ちくださり、ありがとう�
 * [共同作成者ガイドに掲載されている全記事のインデックス](contributor-guide/contributor-guide-index.md) (新しいページが開きます)
 
 ## <a name="ways-to-contribute"></a>作成協力の方法
-次のように、[Azure のドキュメント](http://docs.microsoft.com/azure)に対する更新を提案できます。
+次のように、[Azure のドキュメント](https://docs.microsoft.com/azure)に対する更新を提案できます。
 
-* GitHub ユーザー インターフェイスからも技術記事の作成に簡単にご協力いただけます。 目的の記事をこのリポジトリで見つけるか、[http://docs.microsoft.com/azure](http://docs.microsoft.com/azure) で記事にアクセスして GitHub 内のソースにアクセスするためのリンクをクリックしてください。
+* GitHub ユーザー インターフェイスからも技術記事の作成に簡単にご協力いただけます。 目的の記事をこのリポジトリで見つけるか、[https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) で記事にアクセスして GitHub 内のソースにアクセスするためのリンクをクリックしてください。
 * 既存の記事に大幅な変更を加える場合、画像を追加または変更する場合、新しい記事を投稿する場合は、このリポジトリのフォーク、Git Bash と Markdown Pad のインストール、いくつかの Git コマンドの習得が必要になります。
 
 ## <a name="code-of-conduct"></a>倫理規定
@@ -27,16 +27,16 @@ Azure ドキュメントにご興味をお持ちくださり、ありがとう�
 
 ## <a name="about-your-contributions-to-azure-content"></a>Azure コンテンツの作成協力について
 ### <a name="minor-corrections"></a>軽微な修正
-このリポジトリに含まれているドキュメントとコード例に関して提案された軽微な修正や明確化は、[docs.microsoft.com の使用条件](/enterprise-mobility-security/termsofuse)の対象になります。
+このリポジトリに含まれているドキュメントとコード例に関して提案された軽微な修正や明確化は、[docs.microsoft.com の使用条件](https://docs.microsoft.com/legal/termsofuse)の対象になります。
 
 ### <a name="larger-submissions"></a>より大規模な提案
 ドキュメントとコード例に関する新しい記事または大幅な変更についてプル リクエストが送信された場合、Microsoft の従業員以外の共同作成者の方には、オンラインの Contribution License Agreement (CLA) の提出をお願いする GitHub のコメントが送信されます。 プル リクエストが正しく受理されるように、オンライン フォームへのご記入をお願いいたします。
 
 ## <a name="repository-organization"></a>リポジトリの構造
-azure-docs リポジトリ内のコンテンツは、http://docs.microsoft.com/azure のドキュメント構造に準拠しています。 このリポジトリには、2 つのルート フォルダーがあります。
+azure-docs リポジトリ内のコンテンツは、https://docs.microsoft.com/azure のドキュメント構造に準拠しています。 このリポジトリには、2 つのルート フォルダーがあります。
 
 ### <a name="articles"></a>\articles
-*\articles* フォルダーには、拡張子が *.md* のマークダウン ファイルとして書式設定されたドキュメント記事が格納されています。 記事は、通常、Azure サービス別に分類されています。 
+*\articles* フォルダーには、拡張子が *.md* のマークダウン ファイルとして書式設定されたドキュメント記事が格納されています。 記事は、通常、Azure サービス別に分類されています。
 
 記事は、厳密なファイルの名前付け規則に従う必要があります。詳細については、[ファイルの名前付け規則に関するガイダンス](contributor-guide/file-names-and-locations.md)をご覧ください。
 
@@ -49,7 +49,7 @@ azure-docs リポジトリ内のコンテンツは、http://docs.microsoft.com/a
 このフォルダーには、記事に必要な基本のマークダウン書式が設定された標準のマークダウン テンプレートが格納されています。
 
 ### <a name="contributor-guide"></a>\contributor-guide
-このフォルダーには、作成協力者ガイドを構成している記事が格納されています。  
+このフォルダーには、作成協力者ガイドを構成している記事が格納されています。
 
 ## <a name="use-github-git-and-this-repository"></a>GitHub、Git、およびこのリポジトリの使い方
 共同作成する方法、GitHub の UI を使用して軽微な変更を投稿する方法、より大規模な投稿のためにリポジトリのフォークとクローンを行う方法については、[GitHub の記事作成用ツールのインストールとセットアップ](contributor-guide/tools-and-setup.md)に関するトピックをご覧ください。
@@ -87,6 +87,6 @@ GitBash をインストールしてローカルで作業する場合は、[記�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

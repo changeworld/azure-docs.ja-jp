@@ -24,7 +24,7 @@ var table = client.getTable(tableName);
 
 ### <a name="a-namequeryingahow-to-query-a-table-reference"></a><a name="querying"></a>方法: テーブル参照をクエリする
 テーブル参照を作成したら、それを使用してサーバー上のデータのクエリを実行できます。  クエリは "LINQ のような" 言語で作成します。
-テーブルからすべてのデータを返すには、次の手順に従います。
+テーブルからすべてのデータを返すには、次のコードを使用します。
 
 ```
 /**
@@ -52,9 +52,9 @@ table
     .then(success, failure);
 ```
 
-success 関数は results を指定して呼び出します。   success 関数で `for (var i in results)` は使用しないでください。これを指定すると、他のクエリ関数 (`.includeTotalCount()` など) を使用した場合に、その結果に含まれる情報が反復処理されるためです。
+success 関数は results を指定して呼び出します。  success 関数で `for (var i in results)` は使用しないでください。これを指定すると、他のクエリ関数 (`.includeTotalCount()` など) を使用した場合に、その結果に含まれる情報が反復処理されるためです。
 
-クエリ構文の詳細については、「query オブジェクト」を参照してください。
+クエリ構文の詳細については、[クエリ オブジェクトのドキュメント]を参照してください。
 
 #### <a name="a-nametable-filterafiltering-data-on-the-server"></a><a name="table-filter"></a>サーバー上のデータのフィルター処理
 テーブル参照に対して `where` 句を使用できます。
@@ -66,7 +66,7 @@ table
     .then(success, failure);
 ```
 
-オブジェクトをフィルター処理する関数を使用することもできます。  この場合は、フィルター処理対象の現在のオブジェクトに `this` 変数を割り当てます。  以下は、機能的に前の例と等価です。
+オブジェクトをフィルター処理する関数を使用することもできます。  この場合は、フィルター処理対象の現在のオブジェクトに `this` 変数を割り当てます。  次のコードは、機能的には前の例と同じです。
 
 ```
 function filterByUserId(currentUserId) {
@@ -80,7 +80,7 @@ table
 ```
 
 #### <a name="a-nametable-pagingapaging-through-data"></a><a name="table-paging"></a>データのページング
-take() メソッドと skip() メソッドを利用します。  たとえば、テーブルを 100 行のレコードに分割する場合:
+`take()` メソッドと `skip()` メソッドを使用します。  たとえば、テーブルを 100 行のレコードに分割する場合:
 
 ```
 var totalCount = 0, pages = 0;
@@ -105,10 +105,10 @@ function loadPage(pageNum) {
 
 `.includeTotalCount()` メソッドを使用して、results オブジェクトに totalCount フィールドを追加します。  totalCount フィールドには、ページングを使用しない場合に返されるレコード数の合計が入力されます。
 
-pages 変数と一部の UI ボタンを使用すると、ページ リストを指定できます。loadPage() を使用すると、ページごとに新しいレコードを読み込むことができます。  既に読み込まれているレコードへのアクセス時間を短縮するには、何種類かのキャッシュを実装する必要があります。
+pages 変数といくつかの UI ボタンを使用して、ページ リストを指定できます。`loadPage()` を使用すると、ページごとに新しいレコードを読み込むことができます。  既に読み込まれているレコードへのアクセス時間を短縮するには、キャッシュを実装します。
 
 #### <a name="a-namesorting-dataahow-to-return-data-sorted"></a><a name="sorting-data"></a>方法: 並べ替えられたデータを返す
-.orderBy() または .orderByDescending() クエリ メソッドを次のように使用します。
+`.orderBy()` クエリ メソッドまたは `.orderByDescending()` クエリ メソッドを使用します。
 
 ```
 table
@@ -117,12 +117,12 @@ table
     .then(success, failure);
 ```
 
-query オブジェクトの詳細については、「query オブジェクト」を参照してください。
+クエリ オブジェクトの詳細については、[クエリ オブジェクトのドキュメント]を参照してください。
 
 ### <a name="a-nameinsertingahow-to-insert-data"></a><a name="inserting"></a>方法: データを挿入する
-適切な日付を指定して JavaScript オブジェクトを作成し、table.insert() を非同期に呼び出します。
+適切な日付を指定して JavaScript オブジェクトを作成し、`table.insert()` を非同期に呼び出します。
 
-```
+```javascript
 var newItem = {
     name: 'My Name',
     signupDate: new Date()
@@ -135,15 +135,14 @@ table
     }, failure);
 ```
 
-挿入に成功すると、挿入された項目が、同期操作で必要な追加のフィールドで返されます。  以降の更新に対しては、この情報を保持する独自のキャッシュを更新する必要があります。
+挿入に成功すると、挿入された項目が、同期操作で必要な追加のフィールドで返されます。  以降の更新に対しては、この情報を保持する独自のキャッシュを更新します。
 
-Azure Mobile Apps Node.js サーバー SDK では、開発用に動的なスキーマをサポートしています。
-動的スキーマの場合、テーブルのスキーマは即座に更新されます。このため、挿入操作または更新操作で列を指定するだけで、テーブルに列を追加できます。  実稼働環境にアプリケーションを移行する前に、動的スキーマを無効にしておくことをお勧めします。
+Azure Mobile Apps Node.js サーバー SDK では、開発用に動的なスキーマをサポートしています。  動的スキーマでは、挿入操作または更新操作で列を指定するだけで、テーブルに列を追加できます。  実稼働環境にアプリケーションを移行する前に、動的スキーマを無効にしておくことをお勧めします。
 
 ### <a name="a-namemodifyingahow-to-modify-data"></a><a name="modifying"></a>方法: データを変更する
-.insert() メソッドの場合と同様に、update オブジェクトを作成して .update() を呼び出す必要があります。  update オブジェクトには更新するレコードの ID を含める必要があります。この ID は、レコードの読み取り時または .insert() の呼び出し時に取得されます。
+`.insert()` メソッドの場合と同様に、update オブジェクトを作成して `.update()` を呼び出す必要があります。  update オブジェクトには更新するレコードの ID を含める必要があります。この ID は、レコードの読み取り時または `.insert()` の呼び出し時に取得されます。
 
-```
+```javascript
 var updateItem = {
     id: '7163bc7a-70b2-4dde-98e9-8818969611bd',
     name: 'My New Name'
@@ -157,7 +156,7 @@ table
 ```
 
 ### <a name="a-namedeletingahow-to-delete-data"></a><a name="deleting"></a>方法: データを削除する
-レコードを削除するには .del() メソッドを呼び出します。  オブジェクト参照に ID を渡します。
+レコードを削除するには、`.del()` メソッドを呼び出します。  オブジェクト参照に ID を渡します。
 
 ```
 table
@@ -168,6 +167,6 @@ table
 ```
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

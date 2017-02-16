@@ -1,6 +1,6 @@
 ---
-title: "AS2 追跡スキーマ | Microsoft Docs"
-description: "AS2 追跡スキーマについての詳細情報"
+title: "B2B 監視の AS2 追跡スキーマ - Azure Logic Apps | Microsoft Docs"
+description: "AS2 追跡スキーマを使用して、Azure 統合アカウントのトランザクションからの B2B メッセージを監視します。"
 author: padmavc
 manager: anneta
 editor: 
@@ -12,11 +12,11 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 5c9fdb5e913199b9a52a8839cbe9a1da7d1acc84
+ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
+ms.openlocfilehash: b78c42b14005b9bcedbc29216541495fd19c64a5
 
 
 ---
@@ -139,6 +139,6 @@ Azure 統合アカウントでは、次の AS2 追跡スキーマを使用して
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

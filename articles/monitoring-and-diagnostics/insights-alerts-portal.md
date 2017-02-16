@@ -1,8 +1,8 @@
 ---
-title: "Azure Portal での Azure サービス アラートの作成 | Microsoft Docs"
-description: "Azure ポータルを使用して Azure アラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。"
+title: "Azure サービス アラートの作成 - Azure Portal | Microsoft Docs"
+description: "指定した条件が満たされたときに電子メール、通知、Websites URL (webhook) の呼び出し、またはオートメーションをトリガーします。"
 author: rboucher
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e8c04dd76c01cc5eaa4cbbcd82a263090894aecf
+ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
+ms.openlocfilehash: 530cbb7b53316324f5bc5bcbe9b1b73b9f0b0f9b
 
 
 ---
-# <a name="use-azure-portal-to-create-alerts-for-azure-services"></a>Azure ポータルでの Azure サービス アラートの作成
+# <a name="create-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Azure Monitorでの Azure サービス アラートの作成 - Azure Portal
 > [!div class="op_single_selector"]
 > * [ポータル](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
 > * [CLI](insights-alerts-command-line-interface.md)
-> 
-> 
+>
+>
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 この記事では、Azure ポータルを使用して Azure アラートを設定する方法について説明します。   
 
 監視メトリック、イベント、Azure サービスに基づいて通知を受け取ることができます。
@@ -53,10 +53,10 @@ ms.openlocfilehash: e8c04dd76c01cc5eaa4cbbcd82a263090894aecf
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure ポータルでメトリックにアラート ルールを作成する
 1. [ポータル](https://portal.azure.com/)で、監視するリソースを見つけて選択します。
 2. [監視] セクションで、**[アラート]** または **[アラート ルール]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
-   
+
     ![監視](./media/insights-alerts-portal/AlertRulesButton.png)
 3. **[アラートの追加]** コマンドを選択し、フィールドに入力します。
-   
+
     ![[アラートの追加]](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 4. アラート ルールに**名前**を付けて、**説明**を選択します。この説明は通知電子メールにも表示されます。
 5. 監視する**メトリック**を選択し、メトリックの**条件**と**しきい値**を選択します。 また、 **[期間]** では、どのくらいの期間メトリック ルールが満たされた後、アラートがトリガーされるかを選択します。 たとえば、期間として [PT5M] を使用すると、アラートは 80% を超える CPU を見つけて、その CPU が 5 分間継続して 80% を超えた時点でトリガーされます。 最初のトリガーが発生したら、次のアラートは、CPU が 5 分間継続して 80% を下回ったときにトリガーされます。 CPU 測定は 1 分ごとに発生します。   
@@ -84,7 +84,6 @@ ms.openlocfilehash: e8c04dd76c01cc5eaa4cbbcd82a263090894aecf
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

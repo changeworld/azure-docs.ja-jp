@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/27/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 98c7e7e4d14a52787ef76d17c38a08d8f11a21e2
+ms.sourcegitcommit: 9dedba5f1126d7d23fab3ebeb98559316a6a5a10
+ms.openlocfilehash: be2e295dfeb979737013ebe23d48b4476ef3d6e2
 
 
 ---
@@ -30,14 +30,15 @@ ms.openlocfilehash: 98c7e7e4d14a52787ef76d17c38a08d8f11a21e2
 
 Media Services で、デジタル ファイルを資産にアップロードし (取り込み) ます。 **Asset** エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
-資産内のこれらのファイルを **資産ファイル**といいます。 **AssetFile** インスタンスと実際のメディア ファイルは、別々の 2 つのオブジェクトです。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
+資産内のこれらのファイルを **資産ファイル**といいます。 **AssetFile** インスタンスと実際のメディア ファイルは、別々の&2; つのオブジェクトです。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
 > [!NOTE]
-> 資産ファイル名を選択するときは、次の考慮事項が適用されます。
+> 次の考慮事項が適用されます。
 > 
-> * Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#[]". は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
+> * Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は&1; つのみです。
 > * 名前は 260 文字以内で指定する必要があります。
-> 
+> * Media Services での処理についてサポートされている最大ファイル サイズには制限があります。 ファイル サイズの制限の詳細については、[こちら](media-services-quotas-and-limitations.md)のトピックを参照してください。
+>
 > 
 
 資産を作成する際には、次の暗号化オプションを指定できます。 
@@ -58,7 +59,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 
 このトピックでは、Media Services .NET SDK と Media Services .NET SDK Extensions を使用してファイルを Media Services 資産にアップロードする方法を説明します。
 
-## <a name="upload-a-single-file-with-media-services-net-sdk"></a>Media Services .NET SDK を使用して 1 つのファイルをアップロードする
+## <a name="upload-a-single-file-with-media-services-net-sdk"></a>Media Services .NET SDK を使用して&1; つのファイルをアップロードする
 以下のサンプル コードでは、.NET SDK を使用して、次のタスクを実行します。 
 
 * 空の資産を作成します。
@@ -196,7 +197,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 
 IngestManifestAsset は、資産を、一括取り込みのための一括 IngestManifest に関連付けます。 また、各資産を構成する AssetFiles を関連付けます。 IngestManifestAsset を作成するには、サーバー コンテキストの Create メソッドを使用します。
 
-以下の例では、先に作成した 2 つの資産を一括取り込みマニフェストに関連付ける 2 つの新しい IngestManifestAssets を追加しています。 また、各 IngestManifestAsset は一括取り込み中に、各資産に対してアップロードされる一連のファイルを関連付けます。  
+以下の例では、先に作成した&2; つの資産を一括取り込みマニフェストに関連付ける&2; つの新しい IngestManifestAssets を追加しています。 また、各 IngestManifestAsset は一括取り込み中に、各資産に対してアップロードされる一連のファイルを関連付けます。  
 
     string filename1 = _singleInputMp4Path;
     string filename2 = _primaryFilePath;
@@ -305,13 +306,13 @@ IngestManifestAsset は、資産を、一括取り込みのための一括 Inges
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>次のステップ
-これで、資産を Media Services にアップロードできました。次は、[メディア プロセッサを取得する方法][メディア プロセッサを取得する方法]に関するトピックに進んでください。
+これで、資産を Media Services にアップロードできました。次は、[メディア プロセッサを取得する方法][How to Get a Media Processor]に関するトピックに進んでください。
 
-[メディア プロセッサを取得する方法]: media-services-get-media-processor.md
-
-
+[How to Get a Media Processor]: media-services-get-media-processor.md
 
 
-<!--HONumber=Nov16_HO3-->
+
+
+<!--HONumber=Jan17_HO4-->
 
 

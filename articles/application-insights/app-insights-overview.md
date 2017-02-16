@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 8c5324742e42a1f82bb3031af4380fc5f0241d7f
-ms.openlocfilehash: c719a82e6c2ae46080811190f9ca7783414f38f4
+ms.sourcegitcommit: 3e9476f8edc4186af026495bc575b8203c35c619
+ms.openlocfilehash: b01de7724ec116e5e27369f7c0f852f82ab0348b
 
 
 ---
@@ -82,15 +82,15 @@ Application Insights を Web アプリにインストールし、可用性 Web �
 * テレメトリによる確かな証拠に基づいて各開発サイクルを決定します。
 
 ## <a name="get-started"></a>作業開始
-Application Insights は、Microsoft Azure でホストされる多数のサービスの 1 つであり、テレメトリは分析と表示のために Microsoft Azure に送信されます。 このため、他の操作を行う前に、 [Microsoft Azure](http://azure.com)のサブスクリプションが必要になります。 サインアップは無料で、Application Insights の基本的な[価格プラン](https://azure.microsoft.com/pricing/details/application-insights/)を選択できます。大幅に増えた使用量に対応するようアプリケーションを拡大しない限り、料金は発生しません。 組織に既にサブスクリプションがある場合は、それにユーザーの Microsoft アカウントを追加することができます。
+Application Insights は、Microsoft Azure でホストされる多数のサービスの&1; つであり、テレメトリは分析と表示のために Microsoft Azure に送信されます。 このため、他の操作を行う前に、 [Microsoft Azure](http://azure.com)のサブスクリプションが必要になります。 サインアップは無料で、Application Insights の基本的な[価格プラン](https://azure.microsoft.com/pricing/details/application-insights/)を選択できます。大幅に増えた使用量に対応するようアプリケーションを拡大しない限り、料金は発生しません。 組織に既にサブスクリプションがある場合は、それにユーザーの Microsoft アカウントを追加することができます。
 
 作業の開始方法はいくつかあります。 目的に適した方法から始めてください。 後で、他のものを追加することもできます。
 
-* **実行時: サーバー上の Web アプリをインストルメント化します。**  コードを更新しなくて済みます。 サーバーへの管理者アクセスが必要になります。
+* **実行時: サーバー上の Web アプリをインストルメント化します。** コードを更新しなくて済みます。 サーバーへの管理者アクセスが必要になります。
   * [**オンプレミスまたは VM 上の IIS**](app-insights-monitor-performance-live-website-now.md)
   * [**Azure Web アプリまたは VM**](app-insights-monitor-performance-live-website-now.md)
   * [**J2EE**](app-insights-java-live.md)
-* **開発時: コードに Application Insights を追加します。**  カスタム テレメトリを記述したり、バックエンド アプリおよびデスクトップ アプリをインストルメント化したりすることができます。
+* **開発時: コードに Application Insights を追加します。** カスタム テレメトリを記述したり、バックエンド アプリおよびデスクトップ アプリをインストルメント化したりすることができます。
   * [Visual Studio](app-insights-asp-net.md) 2013 Update 2 以降。
   * [Eclipse](app-insights-java-eclipse.md) または[その他のツール](app-insights-java-get-started.md)の Java
   * [Node.JS](app-insights-nodejs.md)
@@ -192,7 +192,7 @@ Application Insights をインストールするだけで取得される組み�
 時間がどこに使われているのか見当がつかないでしょうか。 Application Insights プロファイラーは、ライブ サイトへの HTTP 呼び出しをトレースし、コード内の関数のうち最も時間がかかったものを示します。 現在、このプロファイラーは限定プレビュー中です。[サインアップして試す](https://aka.ms/AIProfilerPreview)ことができます。
 
 ## <a name="dashboards"></a>ダッシュボード
-多くのアプリケーションは、Web サービスや 1 つ以上のバックエンド プロセッサなどのさまざまなコンポーネントで構成されています。 各コンポーネントは、個別の Application Insights リソースによって監視されます。 システムが Azure で実行されている場合は、イベント ハブや機械学習などのサービスも使用され、監視されている可能性があります。
+多くのアプリケーションは、Web サービスや&1; つ以上のバックエンド プロセッサなどのさまざまなコンポーネントで構成されています。 各コンポーネントは、個別の Application Insights リソースによって監視されます。 システムが Azure で実行されている場合は、イベント ハブや機械学習などのサービスも使用され、監視されている可能性があります。
 
 システム全体を監視するために、さまざまなアプリの最も関心のあるグラフを選択し、Azure [ダッシュボード](app-insights-dashboards.md)にピン留めできます。これにより、システム全体を継続的に監視できます。
 
@@ -249,7 +249,7 @@ Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレ�
 ### <a name="trends"></a>Trends
 Trends とは、時間経過に伴うアプリの動作を視覚化するための Visual Studio ツールです。
 
-Application Insights のツール バー ボタンか [Application Insights の検索] ウィンドウから、 **[テレメトリの傾向を調べる]** を選択します。 5 つの一般的なクエリから 1 つ選択して開始します。 テレメトリの種類、時間範囲、およびその他のプロパティに基づき、さまざまなデータセットを分析できます。
+Application Insights のツール バー ボタンか [Application Insights の検索] ウィンドウから、 **[テレメトリの傾向を調べる]** を選択します。 5 つの一般的なクエリから&1; つ選択して開始します。 テレメトリの種類、時間範囲、およびその他のプロパティに基づき、さまざまなデータセットを分析できます。
 
 データ内の異常を見つけるには、[ビューの種類] ボックスでいずれかの異常オプションを選択します。 ウィンドウの下部にあるフィルター オプションを使用すると、テレメトリの特定の部分に対象を絞り込みやすくなります。
 
@@ -264,7 +264,7 @@ Application Insights のツール バー ボタンか [Application Insights の�
 メトリックス エクスプローラーとは異なり、ライブ メトリックス ストリームにはメトリックの固定セットが表示されます。 データは、グラフが表示されている場合にのみ保持され、その後破棄されます。
 
 ### <a name="annotations"></a>注釈
-メトリック グラフに関する[リリース注釈](app-insights-annotations.md)に、新しいビルドのデプロイ先が示されます。 これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 リリース注釈は、[Visual Studio Team Services ビルド システム](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs)によって自動的に作成できます。また、[PowerShell から作成](#create-annotations-from-powershell)することもできます。
+メトリック グラフに関する[リリース注釈](app-insights-annotations.md)に、新しいビルドのデプロイ先が示されます。 これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 リリース注釈は、[Visual Studio Team Services ビルド システム](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs)、および Visual Studio からの Web デプロイによって自動的に作成できます。 また、[PowerShell から作成](#create-annotations-from-powershell)することもできます。
 
 ![サーバー応答時間と明確な相関関係のある注釈の例](./media/app-insights-overview/00.png)
 
@@ -275,7 +275,7 @@ Application Insights のツール バー ボタンか [Application Insights の�
 ## <a name="alerts"></a>Alerts
 アプリで問題が発生した場合、問題に関する情報をすぐに得ることができます。
 
-Application Insights には、電子メールで配信される 3 種類のアラートが用意されています。
+Application Insights には、電子メールで配信される&3; 種類のアラートが用意されています。
 
 ### <a name="proactive-diagnostics"></a>プロアクティブ診断
 [プロアクティブ診断](app-insights-proactive-failure-diagnostics.md)は自動的に設定されます。構成は不要です。 サイトに十分なトラフィックがあることを条件として、日中の特定の時間や要求レートを考慮すると異常である失敗した要求の増加が発生すると、電子メールが送信されます。 アラートには、診断情報が含まれています。
@@ -284,7 +284,7 @@ Application Insights には、電子メールで配信される 3 種類のア�
 
 ![Sample Intelligent Alert showing cluster analysis around failure](./media/app-insights-overview/proactive-alert.png)
 
-第 2 の種類のプロアクティブ検出では、エラーと要因 (場所、クライアントの OS、ブラウザーの種類など) 間の相関関係が検出されます。
+第&2; の種類のプロアクティブ検出では、エラーと要因 (場所、クライアントの OS、ブラウザーの種類など) 間の相関関係が検出されます。
 
 ### <a name="metric-alerts"></a>メトリック アラート
 [メトリック アラート](app-insights-alerts.md) を構成して、メトリックが、一定の期間に、エラー数、メモリ、ページ ビューなどのしきい値を超えた場合に通知されるように設定できます。
@@ -329,7 +329,7 @@ Application Insights の利用には制限がありますが、その程度は�
 
 ## <a name="support-and-feedback"></a>サポートとフィードバック
 * 質問および問題点:
-  * [トラブルシューティング][qna]
+  * [Troubleshooting][qna]
   * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
   * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
   * [開発者のサポートを得る](app-insights-get-dev-support.md)
@@ -369,6 +369,6 @@ Application Insights の利用には制限がありますが、その程度は�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

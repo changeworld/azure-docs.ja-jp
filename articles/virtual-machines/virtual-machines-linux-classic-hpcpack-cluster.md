@@ -16,8 +16,8 @@ ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 38c1494a3089bac46e565a373a83a939791beef7
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 6bd6b9ea57cf0e54e55ddde82efe7b4b99885e1f
 
 
 ---
@@ -58,7 +58,7 @@ Azure の HPC Pack クラスター デプロイ オプションの詳細につ�
 HPC Pack IaaS デプロイ スクリプトを使用してクラスターをデプロイするためのその他の前提条件は次のとおりです。
 
 * **クライアント コンピューター** - クラスター デプロイ スクリプトを実行するには、Windows ベースのクライアント コンピューターが必要です。
-* **Azure PowerShell** - [Azure PowerShell をインストールして構成します](../powershell-install-configure.md) (バージョン 0.8.10 以降)。
+* **Azure PowerShell** - [Azure PowerShell をインストールして構成します](/powershell/azureps-cmdlets-docs) (バージョン 0.8.10 以降)。
 * **HPC Pack IaaS デプロイ スクリプト** - [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949)から最新版のスクリプトをダウンロードし、解凍します。 `.\New-HPCIaaSCluster.ps1 –Version`を実行すると、スクリプトのバージョンを確認できます。 この記事はバージョン 4.4.1 以降のスクリプトに基づきます。
 
 ### <a name="deployment-option-1-use-a-resource-manager-template"></a>デプロイ オプション 1:  Resource Manager テンプレートを使用する
@@ -86,7 +86,7 @@ HPC Pack IaaS デプロイ スクリプトを使用してクラスターをデ�
 HPC Pack IaaS デプロイ スクリプトを使用してクラスターをデプロイするためのその他の前提条件は次のとおりです。
 
 * **クライアント コンピューター** - クラスター デプロイ スクリプトを実行するには、Windows ベースのクライアント コンピューターが必要です。
-* **Azure PowerShell** - [Azure PowerShell をインストールして構成します](../powershell-install-configure.md) (バージョン 0.8.10 以降)。
+* **Azure PowerShell** - [Azure PowerShell をインストールして構成します](/powershell/azureps-cmdlets-docs) (バージョン 0.8.10 以降)。
 * **HPC Pack IaaS デプロイ スクリプト** - [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949)から最新版のスクリプトをダウンロードし、解凍します。 `.\New-HPCIaaSCluster.ps1 –Version`を実行すると、スクリプトのバージョンを確認できます。 この記事はバージョン 4.4.1 以降のスクリプトに基づきます。
 
 **XML 構成ファイル**
@@ -318,6 +318,6 @@ HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) ツー�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

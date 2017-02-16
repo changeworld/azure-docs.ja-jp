@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: baadc7d9adfdb110c5814e51747c64f8086234e5
+ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
+ms.openlocfilehash: 668f6ab0d5c09d53edd85b568cc8c9941b2f9135
 
 
 ---
@@ -68,14 +68,14 @@ while(true)
 
 このメソッドでは、制御対象の BLOB コンテナーにデバイス情報のバックアップを確実に作成することができます。
 
-**ExportDevicesAsync** メソッドには、次の 2 つのパラメーターが必要です。
+**ExportDevicesAsync** メソッドには、次の&2; つのパラメーターが必要です。
 
 * BLOB コンテナーの URI が格納される*文字列*。 この URI には、コンテナーに対する書き込みアクセスを付与する SAS トークンを含める必要があります。 ジョブでは、デバイスのシリアル化されたエクスポート データを格納するために、このコンテナー内にブロック BLOB を作成します。 SAS トークンには、次のアクセス許可を含める必要があります。
   
    ```
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
-* エクスポート データから認証キーを除外するかどうかを示す*ブール値*。 **false** の場合は、認証キーがエクスポート出力に含められます。true の場合、キーは **null** としてエクスポートされます。
+* エクスポート データから認証キーを除外するかどうかを示す*ブール値*。 **false** の場合、認証キーはエクスポート出力に含められます。 それ以外の場合、キーは **null** としてエクスポートされます。
 
 次の C# コード スニペットは、エクスポート データにデバイスの認証キーを含むエクスポート ジョブを開始し、ポーリングを実行して完了する方法を示します。
 
@@ -99,7 +99,7 @@ while(true)
 }
 ```
 
-ジョブは、その出力を、指定された BLOB コンテナー内に **devices.txt**という名前のブロック BLOB として格納します。 出力データは、JSON のシリアル化されたデバイス データで構成され、1 行につき 1 つのデバイスが配置されます。
+ジョブは、その出力を、指定された BLOB コンテナー内に **devices.txt**という名前のブロック BLOB として格納します。 出力データは、JSON のシリアル化されたデバイス データで構成され、1 行につき&1; つのデバイスが配置されます。
 
 次の例は、出力データを示します。
 
@@ -142,7 +142,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 > 
 > 
 
-**ImportDevicesAsync** メソッドには、次の 2 つのパラメーターが必要です。
+**ImportDevicesAsync** メソッドには、次の&2; つのパラメーターが必要です。
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB コンテナーの URI を、ジョブへの*入力*として使用するために格納する*文字列*。 この URI には、コンテナーに対する読み取りアクセスを付与する SAS トークンを含める必要があります。 このコンテナーには、ID レジストリにインポートするシリアル化されたデバイス データが入っている **devices.txt** という名前の BLOB を含める必要があります。 インポート データには、**ExportImportDevice** ジョブが **devices.txt** BLOB を作成する際に使用するのと同じ JSON 形式でデバイス情報を含める必要があります。 SAS トークンには、次のアクセス許可を含める必要があります。
   
@@ -156,7 +156,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
    ```
 
 > [!NOTE]
-> この 2 つのパラメーターは、同じ BLOB コンテナーを指すことができます。 出力コンテナーで追加のアクセス許可が必要な場合は、個々のパラメーターでデータのより細かな制御を簡単に実現できます。
+> この&2; つのパラメーターは、同じ BLOB コンテナーを指すことができます。 出力コンテナーで追加のアクセス許可が必要な場合は、個々のパラメーターでデータのより細かな制御を簡単に実現できます。
 > 
 > 
 
@@ -175,7 +175,7 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 * 新しいデバイス認証キーの一括割り当て
 * デバイス認証キーの一括自動再生成
 
-上記の操作の任意の組み合わせを 1 回の **ImportDevicesAsync** 呼び出しで実行できます。 たとえば、新しいデバイスの登録と、既存のデバイスの削除または更新とを同時に行うことができます。 **ExportDevicesAsync** メソッドと一緒に使用すると、すべてのデバイスを一つの IoT Hub から別の IoT Hub へ完全に移行できます。
+上記の操作の任意の組み合わせを&1; 回の **ImportDevicesAsync** 呼び出しで実行できます。 たとえば、新しいデバイスの登録と、既存のデバイスの削除または更新とを同時に行うことができます。 **ExportDevicesAsync** メソッドと一緒に使用すると、すべてのデバイスを一つの IoT Hub から別の IoT Hub へ完全に移行できます。
 
 デバイスごとにインポート プロセスを制御するには、デバイスごとのインポート シリアル化データにオプションの **importMode** プロパティを使用します。 **importMode** プロパティには、次のオプションが用意されています。
 
@@ -358,6 +358,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

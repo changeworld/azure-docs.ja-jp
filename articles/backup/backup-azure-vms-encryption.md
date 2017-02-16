@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/25/2016
+ms.date: 01/18/2017
 ms.author: markgal; jimpark; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fd65e7acc10b3e750025279820bddbdef5de5498
+ms.sourcegitcommit: 152285bee4631acca7610eb5bd9167ec37296a26
+ms.openlocfilehash: d1ec8112b9fc347d9de5901c4b39a3291701da45
 
 
 ---
@@ -26,7 +26,8 @@ ms.openlocfilehash: fd65e7acc10b3e750025279820bddbdef5de5498
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 > [!NOTE]
 > 1. 暗号化された VM のバックアップと復元は、Resource Manager がデプロイされている仮想マシンについてのみサポートしています。 クラシック仮想マシンではサポートしていません。 <br>
-> 2. この機能は、BitLocker 暗号化キーとキー暗号化キーの両方を使って仮想マシンを暗号化した場合にのみサポートされます。 BitLocker 暗号化キーのみで暗号化した仮想マシンについてはサポートしていません。 <br>
+> 2. Azure Disk Encryption が採用されている Windows と Linux の両方の仮想マシンでサポートされます。この Azure Disk Encryption では、業界標準である Windows の BitLocker 機能と、Linux の DM-Crypt 機能を利用して、ディスクの暗号化を提供します。 <br>
+> 3. この機能は、BitLocker 暗号化キーとキー暗号化キーの両方を使って仮想マシンを暗号化した場合にのみサポートされます。 BitLocker 暗号化キーのみで暗号化した仮想マシンについてはサポートしていません。 <br>
 > 
 > 
 
@@ -35,7 +36,7 @@ ms.openlocfilehash: fd65e7acc10b3e750025279820bddbdef5de5498
 2. [バックアップのための環境の準備](backup-azure-arm-vms-prepare.md)に関する記事に記載の手順に従い、Recovery Services コンテナーの作成と、ストレージのレプリケーションの設定が済んでいること。
 
 ## <a name="backup-encrypted-vm"></a>暗号化された VM のバックアップ
-以下では、バックアップの目標の設定、ポリシーの定義、項目の構成、バックアップのトリガーの 4 点について、手順を説明します。
+以下では、バックアップの目標の設定、ポリシーの定義、項目の構成、バックアップのトリガーの&4; 点について、手順を説明します。
 
 ### <a name="configure-backup"></a>バックアップの構成
 1. 既に Recovery Services コンテナーが開かれている場合は、次の手順に進みます。 Recovery Services コンテナーが開かれていない場合は、Azure Portal でハブ メニューの **[参照]** をクリックします。
@@ -56,7 +57,7 @@ ms.openlocfilehash: fd65e7acc10b3e750025279820bddbdef5de5498
       ![Open Scenario blade](./media/backup-azure-vms-encryption/select-backup-goal-one.png) 
 4. [バックアップの目標] ブレードで、**[Where is your workload running (ワークロードの実行場所)]** を [Azure] に、**[What do you want to backup (バックアップ対象)]** を [仮想マシン] に設定し、**[OK]** をクリックします。
    
-   [Backup Goal] (バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
+   [Backup Goal] \(バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
    
    ![Open Scenario blade](./media/backup-azure-vms-encryption/select-backup-goal-two.png) 
 5. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選択し、 **[OK]**をクリックします。
@@ -80,7 +81,7 @@ ms.openlocfilehash: fd65e7acc10b3e750025279820bddbdef5de5498
 バックアップ ジョブをトリガーする手順については、「[Recovery Services コンテナーへの Azure VM のバックアップ](backup-azure-arm-vms.md)」を参照してください。
 
 ## <a name="restore-encrypted-vm"></a>暗号化された VM の復元
-仮想マシンの復元に関する操作は、マシンの暗号化の有無を問わず同じです。 暗号化された VM を復元する手順については、[Azure Portal を使った仮想マシンの復元](backup-azure-arm-restore-vms.md)に関する記事を参照してください。 キーとシークレットを復元する必要がある場合には、その復元先となるキー コンテナーが存在していることを確認してください。
+暗号化された VM を復元するには、「[VM の復元構成の選択](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)」の**バックアップされたディスクの復元**に関するセクションで説明されている手順に従って、最初にディスクを復元します。 その後、「[復元されたディスクからの VM の作成](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)」で説明されている PowerShell の手順を使用して、復元されたディスクから完全な VM を作成します。
 
 ## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
 | 操作 | エラーの詳細 | 解決策 |
@@ -88,10 +89,11 @@ ms.openlocfilehash: fd65e7acc10b3e750025279820bddbdef5de5498
 | バックアップ |仮想マシンが BEK だけで暗号化されているため、検証に失敗しました。 バックアップは、BEK と KEK の両方を使って暗号化した仮想マシンに限り、有効にすることができます。 |BEK と KEK を使用して仮想マシンを暗号化します。 それが済んだら、バックアップを有効にしてください。 |
 | 復元 |この暗号化済み VM は関連付けられているキー コンテナーが存在しないため、復元できません。 |「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」に記載の手順に従って、キー コンテナーを作成してください。 キーとシークレットがない場合に復元する方法については、[Azure Backup を使ってキー コンテナーのキーとシークレットを復元する](backup-azure-restore-key-secret.md)方法に関する記事を参照してください。 |
 | 復元 |この暗号化済み VM は関連付けられているキーとシークレットが存在しないため、復元できません。 |キーとシークレットがない場合に復元する方法については、[Azure Backup を使ってキー コンテナーのキーとシークレットを復元する](backup-azure-restore-key-secret.md)方法に関する記事を参照してください。 |
+| 復元 |Backup サービスは、サブスクリプション内のリソースへのアクセスが承認されていません。 |前述のように、「[VM の復元構成の選択](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)」の**バックアップされたディスクの復元**に関するセクションで説明されている手順に従って、最初にディスクを復元します。 その後、PowerShell を使用して、[復元されたディスクから VM を作成](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)します。 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

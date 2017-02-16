@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/17/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a80938106a54d9567bd15a8067c4b989b2eeedcc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d59a749a19bc5b3a57cc7e62c056d454c51c4204
 
 
 ---
@@ -79,6 +79,6 @@ Security Center には、攻撃の種類に応じて 3 種類の脅威レポー�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

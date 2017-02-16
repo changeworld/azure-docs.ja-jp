@@ -13,20 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2016
+ms.date: 11/16/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: b820e3011a1cd5472604e8cfa98fc22f9a4ebf77
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: 68786e2c2f92f8d716c7aa2b3584342ea96c073d
 
 
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>VMAccess 拡張機能を使用して、Linux VM のパスワードまたは SSH キーをリセットし、SSH 構成を修正し、ディスクの整合性チェックを実行する方法について説明します。
 パスワードを忘れたため、Secure Shell (SSH) キーが正しくないため、または SSH 構成に問題があるために、Azure の Linux 仮想マシンに接続できない場合は、Azure CLI で VMAccessForLinux 拡張機能を使用して、パスワードまたは SSH キーのリセット、SSH 構成の修正、ディスクの整合性のチェックを行います。 
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-[Resource Manager モデルを使用してこれらの手順を実行する](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)方法について説明します。
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)方法について説明します。
 
 Azure CLI を使用すると、コマンド ライン インターフェイス (Bash、ターミナル、コマンド プロンプト) から **azure vm extension set** コマンドを使用してコマンドにアクセスできます。 拡張機能の詳しい使用方法については、 **azure help vm extension set** を実行します。
 
@@ -47,46 +46,60 @@ Azure CLI を使用すると、次のタスクを実行できます。
 
 * [Azure CLI をインストール](../xplat-cli-install.md)して、ログオンし、アカウントに関連付けられている Azure のリソースを使用する[サブスクリプションに接続](../xplat-cli-connect.md)する必要があります。
 * コマンド プロンプトで以下の内容を入力して、クラシック デプロイメント モデルの正しいモードを設定します。
-  
+    ``` 
         azure config mode asm
+    ```
 * 新しいパスワードまたは一連の SSH キー (いずれかをリセットする場合)。 SSH の構成をリセットする場合、これらは必要ありません。
 
 ## <a name="a-namepwresetcliareset-the-password"></a><a name="pwresetcli"></a>パスワードのリセット
-1. 次の内容を含む PrivateConf.json という名前のファイルを作成します。 ブラケットおよび &#60;placeholder&#62の値を手元の情報に置き換えます。
-   
+1. ローカル コンピューターで、次の内容を含む PrivateConf.json という名前のファイルを作成します。 **myUserName** と **myP@ssW0rd** を実際のユーザー名とパスワードに置き換え、独自の有効期限の日付を設定します。
+
+    ```   
         {
-        "username":"<currentusername>",
-        "password":"<newpassword>",
-        "expiration":"<2016-01-01>"
+        "username":"myUserName",
+        "password":"myP@ssW0rd",
+        "expiration":"2020-01-01"
         }
-2. &#60;vmname&#62; を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
-   
-        azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* –-private-config-path PrivateConf.json
+    ```
+        
+2. **myVM** を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
+
+    ```   
+        azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* –-private-config-path PrivateConf.json
+    ```
 
 ## <a name="a-namesshkeyresetcliareset-the-ssh-key"></a><a name="sshkeyresetcli"></a>SSH キーのリセット
-1. 次の内容を含む PrivateConf.json という名前のファイルを作成します。 ブラケットおよび &#60;placeholder&#62の値を手元の情報に置き換えます。
-   
+1. 次の内容を含む PrivateConf.json という名前のファイルを作成します。 **myUserName** と **mySSHKey** の値を実際の情報に置き換えます。
+
+    ```   
         {
-        "username":"<currentusername>",
-        "ssh_key":"<contentofsshkey>"
+        "username":"myUserName",
+        "ssh_key":"mySSHKey"
         }
-2. &#60;vmname&#62; を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
+    ```
+2. **myVM** を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
    
-        azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
+        azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
 
 ## <a name="a-nameresetbothcliareset-both-the-password-and-the-ssh-key"></a><a name="resetbothcli"></a>パスワードと SSH キーのリセット
-1. 次の内容を含む PrivateConf.json という名前のファイルを作成します。 ブラケットおよび &#60;placeholder&#62の値を手元の情報に置き換えます。
-   
+1. 次の内容を含む PrivateConf.json という名前のファイルを作成します。 **myUserName**、**mySSHKey**、**myP@ssW0rd** の値を実際の情報に置き換えます。
+
+    ``` 
         {
-        "username":"<currentusername>",
-        "ssh_key":"<contentofsshkey>",
-        "password":"<newpassword>"
+        "username":"myUserName",
+        "ssh_key":"mySSHKey",
+        "password":"myP@ssW0rd"
         }
-2. &#60;vmname&#62; を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
-   
-        azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
+    ```
+
+2. **myVM** を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
+
+    ```   
+        azure vm extension set MyVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
+    ```
 
 ## <a name="a-namecreatenewsudocliacreate-a-new-sudo-user-account"></a><a name="createnewsudocli"></a>新しい sudo ユーザー アカウントの作成
+
 自身のユーザー名を忘れた場合は、VMAccess を使用して、sudo 権限を持つ新しいユーザーを作成できます。 この場合、既存のユーザー名とパスワードは変更されません。
 
 パスワードを使用したアクセス権を持つ新しい sudo ユーザーを作成するには、「 [パスワードのリセット](#pwresetcli) 」のスクリプトを使用して、新しいユーザー名を指定します。
@@ -104,55 +117,77 @@ SSH の構成が望ましい状態でない場合は、VM にアクセスでき�
 > 
 
 1. 次の内容を含む PrivateConf.json という名前のファイルを作成します。
-   
+
+    ```   
         {
         "reset_ssh":"True"
         }
-2. &#60;vmname&#62; を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。 
-   
-        azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
+    ```
+
+2. **myVM** を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。 
+
+    ```   
+        azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
+    ```
 
 ## <a name="a-namedeletecliadelete-a-user"></a><a name="deletecli"></a>ユーザーの削除
 VM にログインせずに直接ユーザー アカウントを削除するには、このスクリプトを使用できます。
 
-1. ユーザー名を置き換えて、#60; usernametoremove &#62; を削除して、次の内容を含む PrivateConf.json という名前のファイルを作成します。 
-   
+1. **removeUserName** を削除するユーザー名に置き換えて、次の内容を含む PrivateConf.json という名前のファイルを作成します。 
+
+    ```   
         {
-        "remove_user":"<usernametoremove>"
+        "remove_user":"removeUserName"
         }
-2. &#60;vmname&#62; を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。 
-   
-        azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
+    ```
+
+2. **myVM** を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。 
+
+    ```   
+        azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
+    ```
 
 ## <a name="a-namestatuscliadisplay-the-status-of-the-vmaccess-extension"></a><a name="statuscli"></a>VMAccess 拡張機能の状態の表示
 VMAccess 拡張機能の状態を表示するには、次のコマンドを実行します。
 
+```
         azure vm extension get
+```
 
-## <a name="a-namecheckdiskacheck-consistency-of-added-disks"></a><a name='checkdisk'<</a>追加されたディスクの整合性のチェック
+## <a name="a-namecheckdiskacheck-consistency-of-added-disks"></a><a name='checkdisk'></a>追加されたディスクの整合性のチェック
 Linux 仮想マシンのすべてのディスクに対して fsck を実行するには、次の手順を実行する必要があります。
 
 1. 次の内容を含む PublicConf.json という名前のファイルを作成します。 チェック ディスクは、仮想マシンに接続されているディスクをチェックするかどうかを表すブール値を受け取ります。 
-   
+
+    ```   
         {   
         "check_disk": "true"
         }
-2. &#60;vmname&#62; を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
-   
-        azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --public-config-path PublicConf.json 
+    ```
+
+2. **myVM** を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
+
+    ```   
+        azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --public-config-path PublicConf.json 
+    ```
 
 ## <a name="a-namerepairdiskarepair-disks"></a><a name='repairdisk'></a>ディスクの修復
-マウントされていないディスクまたはマウント構成エラーが発生したディスクを修復するには、VMAccess 拡張機能を使用して Linux 仮想マシンでマウント構成をリセットします。 ディスクの名前を &#60;yourdisk&#62; に置き換えます。
+マウントされていないディスクまたはマウント構成エラーが発生したディスクを修復するには、VMAccess 拡張機能を使用して Linux 仮想マシンでマウント構成をリセットします。 **myDisk** を実際のディスクの名前に置き換えます。
 
 1. 次の内容を含む PublicConf.json という名前のファイルを作成します。 
-   
+
+    ```   
         {
         "repair_disk":"true",
-        "disk_name":"<yourdisk>"
+        "disk_name":"myDisk"
         }
-2. &#60;vmname&#62; を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
-   
-        azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --public-config-path PublicConf.json
+    ```
+
+2. **myVM** を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
+
+    ```   
+        azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --public-config-path PublicConf.json
+    ```
 
 ## <a name="next-steps"></a>次のステップ
 * Azure PowerShell コマンドレットまたは Azure Resource Manager テンプレートを使用して、パスワードまたは SSH キーをリセットし、SSH 構成を修正してディスクの整合性のチェックを行う場合、GitHub の [VMAccess 拡張機能に関するドキュメント](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)を参照してください。 
@@ -162,6 +197,6 @@ Linux 仮想マシンのすべてのディスクに対して fsck を実行す�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2.0 .NET Web アプリ | Microsoft Docs"
+title: "Azure AD v2.0 を使用して Web API を呼び出す .NET MVC Web アプリをセキュリティで保護する | Microsoft Docs"
 description: "サインインに Microsoft の個人および職場/学校アカウントを使用する Web サービスを呼び出す .NET MVC Web アプリを構築する方法。"
 services: active-directory
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 587a5136004525f5badc5e72d006fc6dd07d42d8
+ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
+ms.openlocfilehash: 8c35bfbc75f99fc8558f83667b12a6df1cd3eefd
 
 
 ---
@@ -112,7 +112,7 @@ public void ConfigureAuth(IAppBuilder app)
 
 ```PM> Install-Package Microsoft.Identity.Client -ProjectName TodoList-WebApp -IncludePrerelease```
 
-* MSAL 用の `App_Start\Startup.Auth.cs` ファイルにもう 1 つの `using` ステートメントを追加します。
+* MSAL 用の `App_Start\Startup.Auth.cs` ファイルにもう&1; つの `using` ステートメントを追加します。
 * 新しいメソッドとして `OnAuthorizationCodeReceived` イベント ハンドラーを追加します。  このハンドラーは、MSAL を使用して To-Do List API へのアクセス トークンを取得し、後で使用できるように MSAL のトークン キャッシュに格納します。
 
 ```C#
@@ -202,6 +202,6 @@ catch (MsalException ee)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

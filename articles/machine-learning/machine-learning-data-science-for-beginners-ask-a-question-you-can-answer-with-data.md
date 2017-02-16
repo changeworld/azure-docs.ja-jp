@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/20/2016
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f6cb2a15ab8ef87672c0abbc93ee68478d0efb48
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 4e6a7a47f83b0db4380fe3bbf26efd292e4c8054
 
 
 ---
@@ -27,12 +27,12 @@ ms.openlocfilehash: f6cb2a15ab8ef87672c0abbc93ee68478d0efb48
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
 > 
 > 
 
 ## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
-*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
+*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した&5; 本の短いビデオです。
 
 * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
@@ -41,7 +41,7 @@ ms.openlocfilehash: f6cb2a15ab8ef87672c0abbc93ee68478d0efb48
 * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>トランスクリプト: データで回答できる質問をする
-"初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。  
+"初心者向けデータ サイエンス" シリーズの&3; 番目のビデオへようこそ。  
 
 このビデオでは、データで回答できる質問を考えるためのヒントが得られます。
 
@@ -78,7 +78,7 @@ ms.openlocfilehash: f6cb2a15ab8ef87672c0abbc93ee68478d0efb48
 
 "どのくらいの量か"  または "どのくらいの数か" という質問では、 数量を予測します。 この質問に回答するには、"*回帰アルゴリズム*" を使用します。
 
-これらの質問をどのように変換できるかを確認するには、"新聞のどの記事がこの読者にとって最も興味深いか" という質問に注目します。 これは、さまざまな可能性から 1 つの選択肢の予測を求める質問です。 つまり "A、B、C、D のどれか" は、分類アルゴリズムを使用します。
+これらの質問をどのように変換できるかを確認するには、"新聞のどの記事がこの読者にとって最も興味深いか" という質問に注目します。 これは、さまざまな可能性から&1; つの選択肢の予測を求める質問です。 つまり "A、B、C、D のどれか" は、分類アルゴリズムを使用します。
 
 ただし、この質問は、"このリストの各記事はこの読者にとってどのくらい興味深いか" と言い換えると回答が簡単になります。 これで各記事に数値のスコアを付けることができるようになります。スコアの点数が最も高い記事を特定するのは簡単です。 これは、分類に関する質問を回帰的な質問つまり "どの程度か" に言い換えたことになります。
 
@@ -101,6 +101,6 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

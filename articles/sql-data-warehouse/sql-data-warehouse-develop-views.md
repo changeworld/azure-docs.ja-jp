@@ -1,5 +1,5 @@
 ---
-title: "SQL Data Warehouse のビュー | Microsoft Docs"
+title: "Azure SQL Data Warehouse で T-SQL ビューを使う | Microsoft Docs"
 description: "ソリューション開発のための、Azure SQL Data Warehouse での Transact-SQL ビューの使用に関するヒント。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eada95920b3f539c70776964eb62ff9e4d219ddd
+ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
+ms.openlocfilehash: 902929fba9e2486d97323ab52505ba6db3fe0aab
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: eada95920b3f539c70776964eb62ff9e4d219ddd
 SQL Data Warehouse では、ビューが特に役立ちます。 ビューをさまざまな方法で使用して、ソリューションの品質を向上させることができます。  この記事では、ビューによってソリューションを強化する方法の例をいくつか取り上げます。また、考慮する必要がある制限事項についても説明します。
 
 > [!NOTE]
-> この記事では `CREATE VIEW` の構文は説明していません。 参考情報については、MSDN の[「CREATE VIEW」][CREATE VIEW]をご覧ください。
+> この記事では `CREATE VIEW` の構文は説明していません。 参考情報については、MSDN の [CREATE VIEW に関する記事][CREATE VIEW]をご覧ください。
 > 
 > 
 
@@ -66,13 +66,13 @@ SQL Data Warehouse のビューはメタデータ専用です。  そのため�
 * SQL Data Warehouse のインデックス付きビューはありません
 
 ## <a name="next-steps"></a>次のステップ
-開発に関するその他のヒントについては、[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要) (SQL Data Warehouse の開発の概要)][SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要) (SQL Data Warehouse の開発の概要)]に関するページを参照してください。
-`CREATE VIEW` 構文については、[「CREATE VIEW」][CREATE VIEW]をご覧ください。
+開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse development overview]に関する記事をご覧ください。
+`CREATE VIEW` の構文については、[CREATE VIEW に関する記事][CREATE VIEW]をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要) (SQL Data Warehouse の開発の概要)]: ./sql-data-warehouse-overview-develop.md
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 [CREATE VIEW]: https://msdn.microsoft.com/en-us/library/ms187956.aspx
@@ -81,6 +81,6 @@ SQL Data Warehouse のビューはメタデータ専用です。  そのため�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

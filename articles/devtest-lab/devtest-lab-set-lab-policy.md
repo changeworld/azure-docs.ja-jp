@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 01/11/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4222de44e426c449a42822994b1c15b44c3fec54
+ms.sourcegitcommit: f7656382500682898cd3ed6372630afa3c3f6350
+ms.openlocfilehash: 2b16840e5e9fc6e0268d83f9177a6fc6ad02841c
 
 
 ---
 # <a name="define-lab-policies-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボのポリシーの定義
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/How-to-set-VM-policies-in-a-DevTest-Lab/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-VM-policies-in-a-DevTest-Lab/player]
 > 
 > 
 
@@ -55,7 +55,7 @@ Azure DevTest Labs では、コストを制御し、ラボでの無駄を最小�
    
     ![[許可される仮想マシンのサイズ]](./media/devtest-lab-set-lab-policy/allowed-vm-sizes.png)
 2. このポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
-3. このポリシーを有効にする場合は、ラボで作成できる 1 つ以上の VM サイズを選択します。
+3. このポリシーを有効にする場合は、ラボで作成できる&1; つ以上の VM サイズを選択します。
 4. [ **保存**] を選択します。
 
 ## <a name="set-virtual-machines-per-user"></a>ユーザーごとの仮想マシンの設定
@@ -116,6 +116,6 @@ Azure DevTest Labs では、コストを制御し、ラボでの無駄を最小�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

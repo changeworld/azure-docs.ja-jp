@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 55bfd5b283e6159e0a06b3107de31d1722796bf1
-ms.openlocfilehash: b28b80e8ddff9e5ce3ebd5b21dc2045dce42fad0
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: b3a3dc08f410b54626ab44a18e0556f69099b165
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: b28b80e8ddff9e5ce3ebd5b21dc2045dce42fad0
   
  このトピックでは、XML 形式と JSON 形式の `H264 Single Bitrate 4x3 SD` を示します。  
   
- このプリセットにより、ビットレートが 18,000 kbps、音声が AAC ステレオである単一の MP4 ファイルが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 これらのプリセット内の各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
+ このプリセットにより、ビットレートが 1,800 kbps、音声が AAC ステレオである単一の MP4 ファイルが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 これらのプリセット内の各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
   
  XML  
   
@@ -118,6 +118,7 @@ ms.openlocfilehash: b28b80e8ddff9e5ce3ebd5b21dc2045dce42fad0
 ```
 
 
-<!--HONumber=Nov16_HO5-->
+
+<!--HONumber=Jan17_HO2-->
 
 

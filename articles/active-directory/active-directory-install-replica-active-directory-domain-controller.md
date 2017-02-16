@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 21adeddc5896a4c9123bf3525e9b9ab4abbf6fa5
+ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
+ms.openlocfilehash: 56dd9b73a31d27c2c953bf4350e55e851f634b79
 
 
 ---
@@ -45,7 +45,7 @@ DC は、Active Directory レプリケーションを使用して、DC 同士で
 
 ## <a name="create-an-azure-virtual-network"></a>Azure の仮想ネットワークを作成する
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)で、**[新規]** > **[Network Services]** > **[Virtual Network]** > **[カスタム作成]** の順にクリックし、次の値を使用して、ウィザードを完了します。
-   
+
    | ウィザードのページ | 指定する値 |
    | --- | --- |
    |  **Virtual Network の詳細** |<p>名前: 「WestUSVNet」などの仮想ネットワークの名前を入力します。</p><p>リージョン: 最寄りのリージョンを選択します。</p> |
@@ -60,7 +60,7 @@ DC は、Active Directory レプリケーションを使用して、DC 同士で
 UI ではなく Windows PowerShell を使用して VM を作成する方法については、「 [UAzure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](../virtual-machines/virtual-machines-windows-classic-create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)で、**[新規]** > **[Compute]** > **[仮想マシン]** > **[ギャラリーから]** の順にクリックします。 次の値を使用して、ウィザードを完了します。 別の値が推奨されたり、要求される場合を除いては、既定の設定値を受け入れます。
-   
+
    | ウィザードのページ | 指定する値 |
    | --- | --- |
    |  **イメージの選択** |Windows Server 2012 R2 Datacenter |
@@ -69,8 +69,8 @@ UI ではなく Windows PowerShell を使用して VM を作成する方法に�
    |  **仮想マシンの構成** |<p><b>[VM エージェントのインストール]</b> と、必要な他の拡張機能を選択します。</p> |
 2. DC サーバーのロールを実行する各 VM にディスクを接続します。 AD データベース、ログ、SYSVOL を格納するには、追加のディスクが必要です。 ディスクのサイズを指定して (10 GB など)、**[ホスト キャッシュ設定]** は **[None]** のままにします。 手順については、「 [データ ディスクを Windows 仮想マシンに追加する方法](../virtual-machines/virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 3. 初めて VM にサインインした後、**[サーバー マネージャー]** > **[ファイル サービスとストレージ サービス]** の順に開いて、NTFS を使用してこのディスクにボリュームを作成します。
-4. DC ロールを実行する VM の静的 IP アドレスを予約します。 静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、 [Azure PowerShell をインストール](../powershell-install-configure.md) し、Set-AzureStaticVNetIP コマンドレットを実行します。 次に例を示します。
-   
+4. DC ロールを実行する VM の静的 IP アドレスを予約します。 静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、 [Azure PowerShell をインストール](/powershell/azureps-cmdlets-docs) し、Set-AzureStaticVNetIP コマンドレットを実行します。 次に例を示します。
+
     'Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM
 
 静的 IP アドレスを設定する方法の詳細については、「 [VM 用の静的内部 IP アドレスを構成する](../virtual-network/virtual-networks-reserved-private-ip.md)」をご覧ください。
@@ -84,7 +84,7 @@ VM にサインインし、サイト間 VPN 接続または ExpressRoute 接続�
 
 ## <a name="create-vms-for-application-servers"></a>アプリケーション サーバー用の VM を作成する
 1. 次の手順を繰り返して、アプリケーション サーバーとして実行するように VM を設定します。 別の値が推奨されたり、要求される場合を除いては、既定の設定値を受け入れます。
-   
+
    | ウィザードのページ | 指定する値 |
    | --- | --- |
    |  **イメージの選択** |Windows Server 2012 R2 Datacenter |
@@ -112,6 +112,6 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

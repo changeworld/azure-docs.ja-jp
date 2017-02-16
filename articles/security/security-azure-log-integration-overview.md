@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2016
+ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 8bded635f95e640f6a0edba05e5190341ce362c5
-ms.openlocfilehash: d3a8df0bcfbab0afc8eaa5dd13a22fd6b346c443
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 68c0e3c73b3192aedc18ec3588f1201b3aa36f35
 
 
 ---
@@ -55,6 +55,6 @@ Azure ログ統合に関する質問がある場合は、 [AzSIEMteam@microsoft.
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

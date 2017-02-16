@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/08/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 53b827f15fcba26630dd470c2c9e5bbc87919c84
-ms.openlocfilehash: 79270aa5650f4ac149b582204b3c0e41d099765b
+ms.sourcegitcommit: 4faf01ca10f263a5ecc18f51659b5004bf4f7c36
+ms.openlocfilehash: 3ca870da1a01bc216604cdd1142ba68dfd5e96e2
 
 
 ---
@@ -68,12 +68,13 @@ Logic Apps の B2B 機能を使用する、完全に動作する AS2 送信お�
 * [XML メッセージの検証](app-service-logic-enterprise-integration-xml.md "ロジック アプリを使用した XML メッセージの検証方法についての詳細情報")
 * [XML 変換](app-service-logic-enterprise-integration-transform.md "Enterprise Integration のマップについての詳細情報")
 * [エンタープライズ統合コネクタ](../connectors/apis-list.md "Enterprise Integration Pack コネクタについての詳細情報")
+* [統合アカウント メタデータ](app-service-logic-enterprise-integration-metadata.md "統合アカウントのメタデータについての詳細情報")
 * [B2B メッセージを監視する](app-service-logic-monitor-b2b-message.md "B2B メッセージの監視方法についての詳細情報")
 * [OMS ポータルでの B2B メッセージの追跡](app-service-logic-track-b2b-messages-omsportal.md "OMS ポータルでの B2B メッセージの追跡についての詳細情報")
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -4,7 +4,7 @@ description: "この記事では、Microsoft Monitoring Agent (MMA) のカスタ
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 932f7b8c-485c-40c1-98e3-7d4c560876d2
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 6836cd4c1f9fe53691ae8330b25e497da4c2e0d5
-ms.openlocfilehash: 161bb18579db7a4615cbc62c539e8b6286a424ac
+ms.sourcegitcommit: ca573f743325b29d43c4b1a0c3bc7001a54fcfae
+ms.openlocfilehash: f7d740c164df5fe2341a3a0dc3ca0149aed68386
 
 
 ---
@@ -97,6 +97,12 @@ $mma.ReloadConfiguration()
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Azure Automation の DSC を使用してエージェントをインストールする
 
+次のサンプル スクリプトを使用して、Azure Automation で DSC を使用するエージェントをインストールできます。 サンプルは、`URI` 値によって識別される 64 ビット エージェントをインストールします。 URI 値を置き換えることで、32 ビット バージョンを使用することもできます。 両方のバージョンの URI は次のとおりです。
+
+- Windows 64 ビット エージェント - https://go.microsoft.com/fwlink/?LinkId=828603
+- Windows 32 ビット エージェント - https://go.microsoft.com/fwlink/?LinkId=828604
+
+
 >[!NOTE]
 この手順とサンプル スクリプトでは、既存のエージェントはアップグレードされません。
 
@@ -125,7 +131,7 @@ Configuration MMAgent
         }
 
         xRemoteFile OIPackage {
-            Uri = "http://download.microsoft.com/download/0/C/0/0C072D6E-F418-4AD4-BCB2-A362624F400A/MMASetup-AMD64.exe"
+            Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
             DestinationPath = $OIPackageLocalPath
         }
 
@@ -138,11 +144,37 @@ Configuration MMAgent
             DependsOn = "[xRemoteFile]OIPackage"
         }
     }
-}  
+}
 
 
 ```
 
+### <a name="get-the-latest-productid-value"></a>最新の ProductId 値の取得
+
+MMAgent.ps1 スクリプトの `ProductId value` は、各エージェントのバージョンに固有です。 各エージェントの更新バージョンが発行されると、ProductId 値が変更されます。 そのため、ProductId が今後変更された場合でも、単純なスクリプトを使用してエージェントのバージョンを確認できます。 テスト サーバーに最新バージョンをインストールした後、次のスクリプトを使用してインストールされた ProductId 値を取得できます。 最新の ProductId 値を使用して、MMAgent.ps1 スクリプトの値を更新できます。
+
+```
+$InstalledApplications  = Get-ChildItem hklm:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+
+
+foreach ($Application in $InstalledApplications)
+
+{
+
+     $Key = Get-ItemProperty $Application.PSPath
+
+     if ($Key.DisplayName -eq "Microsoft Monitoring Agent")
+
+     {
+
+        $Key.DisplayName
+
+        Write-Output ("Product ID is: " + $Key.PSChildName.Substring(1,$Key.PSChildName.Length -2))
+
+     }
+
+}  
+```
 
 ## <a name="configure-an-agent-manually-or-add-additional-workspaces"></a>エージェントの手動構成とワークスペースの追加
 エージェントはインストール済みであるものの、その構成が済んでいない場合や、エージェントのレポート先となるワークスペースを複数設定する必要がある場合は、以下の情報に従ってエージェントを有効にしたり再構成したりすることができます。 エージェントを構成すると、エージェントはエージェント サービスに登録され、必要な構成情報と、ソリューションの情報が含まれている管理パックを取得します。
@@ -197,6 +229,6 @@ IT インフラストラクチャ内で Operations Manager を使用する場合
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: f06747c35f12802f54b44774dff7f92280ba0dc9
-ms.openlocfilehash: b1c66c14fbf5b0361831bb987df3dc01131abc88
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 71036b1aa9915750992d9d671af6b1023def41c3
 
 
 ---
@@ -82,7 +82,7 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 ```
 
 #### <a name="virtual-machine-property-fields"></a>仮想マシンのプロパティ フィールド
-次の表は、ポリシー定義内のフィールドとして使用できる仮想マシン プロパティを示しています。 ポリシーについては、「[ポリシーを使用したリソース管理とアクセス制御](../resource-manager-policy.md#fields)」をご覧ください。
+次の表は、ポリシー定義内のフィールドとして使用できる仮想マシン プロパティを示しています。 ポリシーについては、「[ポリシーを使用したリソース管理とアクセス制御](../azure-resource-manager/resource-manager-policy.md#conditions)」をご覧ください。
 
 | フィールド名 | Description |
 | --- | --- |
@@ -92,13 +92,13 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 | imageVersion |選択した SKU のイメージのバージョンを指定します |
 
 ## <a name="create-the-policy"></a>ポリシーの作成
-ポリシーは、REST API を直接使用するか、PowerShell コマンドレットを使用して、簡単に作成できます。 [ポリシーの作成と割り当て](../resource-manager-policy.md#create-and-assign-a-policy)の詳細を参照できます。
+ポリシーは、REST API を直接使用するか、PowerShell コマンドレットを使用して、簡単に作成できます。 [ポリシーの作成と割り当て](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)の詳細を参照できます。
 
 ## <a name="apply-the-policy"></a>ポリシーの適用
-ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 [ポリシーの作成と割り当て](../resource-manager-policy.md#create-and-assign-a-policy)の詳細を参照できます。
+ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 [ポリシーの作成と割り当て](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)の詳細を参照できます。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

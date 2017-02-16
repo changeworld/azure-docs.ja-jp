@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f68e0578afe31cdd5b1c27222d31b646f201fc32
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 35f7bdbeb480122513ae2a0b04a6d8cfd426802a
 
 
 ---
@@ -267,6 +267,6 @@ iOS のブリッジ サンプルでは、次の手順に従います。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

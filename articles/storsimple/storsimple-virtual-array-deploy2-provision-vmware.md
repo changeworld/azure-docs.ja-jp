@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする | Microsoft Docs"
-description: "StorSimple Virtual Array のデプロイ シリーズの 2 番目のチュートリアルには、VMware での仮想デバイスのプロビジョニングが含まれます。"
+title: "VMware で StorSimple Virtual Array をプロビジョニングする | Microsoft Docs"
+description: "StorSimple Virtual Array のデプロイ シリーズの&2; 番目のチュートリアルには、VMware での仮想デバイスのプロビジョニングが含まれます。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 01/12/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
-ms.openlocfilehash: 5438412356559c6b8864733be656fa013c9388d1
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 2c9411312f561d03ab6bd29e8e007db309cb5f00
 
 ---
 # <a name="deploy-storsimple-virtual-array---provision-a-virtual-array-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware で Virtual Array をプロビジョニングする
@@ -44,7 +44,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 
   * 最小で 4 コア。
   * 少なくとも 8 GB の RAM。
-  * ネットワーク インターフェイス 1 つ。
+  * ネットワーク インターフェイス&1; つ。
   * システム データ用の 500 GB の仮想ディスク。
 
 ### <a name="for-the-network-in-datacenter"></a>データセンターのネットワークの場合
@@ -67,7 +67,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 
   * 最小で 4 コア。
   * 少なくとも 8 GB の RAM。
-  * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。 インターネットの最小帯域幅は、デバイスが最適に動作するように 5 Mbps にする必要があります。
+  * トラフィックをインターネットにルーティングできるネットワークに接続している&1; つのネットワーク インターフェイス。 インターネットの最小帯域幅は、デバイスが最適に動作するように 5 Mbps にする必要があります。
   * データ用の 500 GB の仮想ディスク。
 
 ## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>手順 2: ハイパーバイザーで仮想デバイスをプロビジョニングする
@@ -75,7 +75,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 
 1. システム上にある仮想デバイスのイメージをコピーします。 この仮想イメージは、Azure Portal からダウンロードしました。
 
-   1. 最新のイメージ ファイルがダウンロードされていることを確認します。 以前にイメージをダウンロードした場合は、必ず最新のイメージを保つため、再度ダウンロードします。 最新のイメージには 2 つのファイルがあります (1 つではありません)。
+   1. 最新のイメージ ファイルがダウンロードされていることを確認します。 以前にイメージをダウンロードした場合は、必ず最新のイメージを保つため、再度ダウンロードします。 最新のイメージには&2; つのファイルがあります (1 つではありません)。
    2. このイメージは後で使用するため、コピー先はメモしておいてください。
 2. vSphere client を使用して、ESXi サーバーにログインします。 仮想マシンを作成するには、管理者特権が必要です。
 
@@ -136,7 +136,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 21. **[Memory]** ページで RAM を 8 GB (またはそれ以上) に指定します。 **[次へ]**をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image22.png)
-22. **[Network]** ページでネットワーク インターフェイスの数を指定します。 ネットワーク インターフェイスの最小要件は 1 つです。
+22. **[Network]** ページでネットワーク インターフェイスの数を指定します。 ネットワーク インターフェイスの最小要件は&1; つです。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image23.png)
 23. **[SCSI Controller]** ページで、規定値の **[LSI Logic SAS]** をそのまま使用します。
@@ -145,7 +145,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 24. **[Select a Disk]** ページで **[Use an existing virtual disk]** を選択します。 **[次へ]**をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
-25. **[Select Existing Disk]** ページの **[Disk File Path]** で **[Browse]** をクリックします。 **[Browse Datastores]** ダイアログ ボックスが開きます。 VMDK をアップロードした場所に移動します。 最初にアップロードした 2 つのファイルがマージされたため、データストアには 1 つのファイルのみが表示されます。 ファイルを選択し、 **[OK]**をクリックします。 **[次へ]**をクリックします。
+25. **[Select Existing Disk]** ページの **[Disk File Path]** で **[Browse]** をクリックします。 **[Browse Datastores]** ダイアログ ボックスが開きます。 VMDK をアップロードした場所に移動します。 最初にアップロードした&2; つのファイルがマージされたため、データストアには&1; つのファイルのみが表示されます。 ファイルを選択し、 **[OK]**をクリックします。 **[次へ]**をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
 26. **[Advanced Options]** ページで既定値をそのまま使用して、**[Next]** をクリックします。
@@ -243,6 +243,6 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

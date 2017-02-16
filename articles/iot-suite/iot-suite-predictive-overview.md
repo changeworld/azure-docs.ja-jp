@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 10/31/2016
 ms.author: araguila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2d44af03b8e16a2bd936fc805ed4f0c4e6c5fbfc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 32da7abc3263e1d76f3f08ccae7ce159ead58bee
 
 
 ---
 # <a name="predictive-maintenance-preconfigured-solution-overview"></a>予測的なメンテナンスの構成済みソリューションの概要
-"*予測的なメンテナンス*" の構成済みソリューションは、[Microsoft Azure IoT Suite][lnk_iot_suite] の一部としてリリースされた[事前構成済みソリューション][lnk_preconfigured_solutions]の一つです。 このソリューションは、リアルタイムでのデバイスのテレメトリの収集と [Azure Machine Learning][lnk_machine_learning] を使用して作成された予測モデルを統合したものです。
+*予測的なメンテナンス*の[構成済みのソリューション][lnk_preconfigured_solutions]は、[Microsoft Azure IoT Suite][lnk_iot_suite] の一部としてリリースされた事前構成済みのソリューションの一つです。 このソリューションは、リアルタイムでのデバイスのテレメトリの収集と [Azure Machine Learning][lnk_machine_learning] を使用して作成された予測モデルを統合します。
 
 Azure IoT Suite を使用することで、企業は資産にすばやく簡単に接続して資産を監視したり、リアルタイムでデータを分析したりできるようになります。 予測的なメンテナンスの構成済みのソリューションは、そのデータを取り込んで、豊富なダッシュ ボードと視覚エフェクトを使用して、効率化を推進し、収益ストリームを強化する新しいインテリジェンスをビジネスに提供します。
 
@@ -38,17 +38,17 @@ Fabrikam の航空機のエンジンは、飛行中のエンジンの状態を�
 
 メンテナンスが必要な時期を予測することで、Fabrikam は、運用状況を最適化し、コストを削減することができます。 メンテナンス コーディネーターは、スケジュール管理者と連携し、特定の場所での航空機の休止に合うようにメンテナンスを計画し、スケジュールの中断を発生させることなく、航空機の運転休止のための十分な時間を確保します。 Fabrikam は上述の計画に応じて技術者のスケジュールを決定し、待機時間なしで効率的に航空機の点検が実行されるようにできます。 在庫管理マネージャーは、メンテナンスの計画を受け取ることで、注文処理と予備部品の在庫を最適化できます。 これにより、Fabrikam は航空機の飛行禁止時間を最小限に抑え、乗客と乗組員の安全を確保しながら、運用コストを削減することができます。
 
-予測的なメンテナンスの持つ可能性を実現するためにお客様が必要とする機能を [Azure IoT Suite][lnk_iot_suite] でどのように提供しているか把握するには、こちらの[インフォグラフィック][lnk_infographic]を参照してください。
+予測的なメンテナンスの潜在力を実現するためにお客様が必要とする機能を [Azure IoT Suite][lnk_iot_suite] がどのように提供しているかについては、この[インフォグラフィック][lnk_infographic]を参照してください。
 
 ## <a name="how-the-predictive-maintenance-solution-is-built"></a>予測的なメンテナンス ソリューションの構築方法
-IoT Suite サービスを通じて収集されたデバイスのテレメトリを使用するこれらの機能を示すために、ソリューションでは、テンプレートとして利用可能な既存の Azure Machine Learning モデルを使用しています。 Microsoft は、航空機エンジンの[回帰モデル][lnk_regression_model]を作成し、テンプレートの一式、データ<sup>\[1\]</sup>、およびモデルの使用方法に関するステップ バイ ステップ ガイダンスを公開しています。
+IoT Suite サービスを通じて収集されたデバイスのテレメトリを使用するこれらの機能を示すために、ソリューションでは、テンプレートとして利用可能な既存の Azure Machine Learning モデルを使用しています。 マイクロソフトは、航空機エンジンの[回帰モデル][lnk_regression_model]を作成し、テンプレートの一式、データ<sup>\[1\]</sup>、およびモデルの使用方法に関するステップ バイ ステップ ガイダンスを公開しています。
 
 Azure IoT の予測的なメンテナンスの構成済みのソリューションでは、このテンプレートから作成された回帰モデルを使用しています。このモデルは Azure サブスクリプションにデプロイされ、自動生成された API を介して公開されます。 ソリューションには、トレーニング済みのモデルから正確な結果を提供する、4 つのエンジン (合計 100) および 4 つのセンサー (合計 21) のデータ ストリームを示すテスト データのサブセットが含まれます。
 
 *\[1\] A. Saxena と K. Goebel (2008 年)。「Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)」、NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)、NASA Ames Research Center、カリフォルニア州モフェット フィールド*
 
 ## <a name="next-steps"></a>次のステップ
-Azure IoT によって予測的なメンテナンスのシナリオを実現する方法の詳細については、「[Capture value from the Internet of Things (モ ノのインターネットから価値を得る)][lnk_capture_value]」を参照してください。
+Azure IoT が予測的なメンテナンスのシナリオを実現する方法の詳細については、「[Capture value from the Internet of Things (モノのインターネットから価値を得る)][lnk_capture_value]」を参照してください。
 
 予測的なメンテナンスの構成済みソリューションの[チュートリアル][lnk-predictive-walkthrough]をご利用ください。
 
@@ -70,6 +70,6 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

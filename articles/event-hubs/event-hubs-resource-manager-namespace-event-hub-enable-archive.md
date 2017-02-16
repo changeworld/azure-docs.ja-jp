@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manager テンプレートでイベント ハブを含んだ Event Hubs 名前空間を作成してアーカイブを有効にする | Microsoft Docs"
+title: "テンプレートを使用した Azure Event Hubs 名前空間と Event Hubs Archive の作成 | Microsoft Docs"
 description: "Azure Resource Manager テンプレートでイベント ハブを含んだ Event Hubs 名前空間を作成してアーカイブを有効にします。"
 services: event-hubs
 documentationcenter: .net
@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: shvija;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 188e3638393262a8406f322a5720e7e3eadf3e49
-ms.openlocfilehash: 6fb396063f4944a3043314cfbc58121f45a5c0c6
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: 10accc20d2093d95be3940e5704e352f55e9c4d2
 
 
 ---
 # <a name="create-an-event-hubs-namespace-with-event-hub-and-enable-archive-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートでイベント ハブを含んだ Event Hubs 名前空間を作成してアーカイブを有効にする
 この記事では、Azure Resource Manager テンプレートを使用し、イベント ハブを含んだ Event Hubs 名前空間を作成して、イベント ハブのアーカイブを有効にする方法について説明します。 デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Azure Resource Manager のテンプレートの作成]」を参照してください。
+テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。
 
-Azure リソースの名前付け規則の慣習とパターンの詳細については、[Azure リソースの名前付け規則][Azure リソースの名前付け規則]に関するページを参照してください。
+Azure リソースの名前付け規則のプラクティスとパターンの詳細については、[Azure リソースの名前付け規則][Azure Resources Naming Conventions]に関する記事をご覧ください。
 
-完全なテンプレートについては、GitHub で[イベント ハブと、アーカイブ テンプレートの有効化][イベント ハブと、アーカイブ テンプレートの有効化]に関する記事を参照してください。
+完全なテンプレートについては、GitHub の [Event Hubs Archive を有効にするためのテンプレート][Event Hub and enable Archive template]を参照してください。
 
 > [!NOTE]
-> 最新のテンプレートを確認する場合は、「[Azure クイック スタート テンプレート][Azure クイックスタート テンプレート]」ギャラリーで Event Hubs を検索してください。
+> 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "Event Hubs" を検索してください。
 > 
 > 
 
@@ -263,16 +263,16 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-archive/azuredeploy.json][]
 ```
 
-[Azure Resource Manager のテンプレートの作成]: ../resource-group-authoring-templates.md
-[Azure クイックスタート テンプレート]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
-[Azure リソース マネージャーでの Azure PowerShell の使用]: ../powershell-azure-resource-manager.md
-[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用]: ../xplat-cli-azure-resource-manager.md
-[イベント ハブとコンシューマー グループを作成するためのテンプレート]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
-[Azure リソースの名前付け規則]: https://azure.microsoft.com/en-us/documentation/articles/guidance-naming-conventions/
-[イベント ハブと、アーカイブ テンプレートの有効化]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
+[Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
+[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
+[Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
+[Azure Resources Naming Conventions]: https://azure.microsoft.com/en-us/documentation/articles/guidance-naming-conventions/
+[Event Hub and enable Archive template]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

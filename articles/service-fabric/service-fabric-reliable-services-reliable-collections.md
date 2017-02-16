@@ -1,5 +1,5 @@
 ---
-title: Reliable Collections | Microsoft Docs
+title: "Azure マイクロサービスでアプリケーションの状態を保存する | Microsoft Docs"
 description: "Service Fabric ステートフル サービスは、可用性と拡張性が高く、待機時間が短いクラウド アプリケーションの作成を可能にする Reliable Collection を提供します。"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: required
 ms.date: 10/18/2016
 ms.author: mcoskun
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9d8be5bed137ae00dec4f66fc821a6415f269ea1
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: 287707d528d2327637ad3d17633ef830657c04f8
 
 
 ---
@@ -47,14 +47,14 @@ Reliable Collection API は同時実行コレクション API ( **System.Collect
 * out パラメーターを使用しない: `ConditionalValue<T>` を使用して out パラメーターではなく、ブール値および値を返します。 `ConditionalValue<T>` は `Nullable<T>` に似ていますが、構造体にするには「T」は必要ありません。
 * トランザクション: トランザクション オブジェクトを使用することで、トランザクション内で複数の Reliable Collection に対してユーザーがグループ操作を実行できます。
 
-現在、 **Microsoft.ServiceFabric.Data.Collections** には次の 2 つのコレクションが含まれています。
+現在、 **Microsoft.ServiceFabric.Data.Collections** には次の&2; つのコレクションが含まれています。
 
 * [Reliable Dictionary](https://msdn.microsoft.com/library/azure/dn971511.aspx): レプリケートされた、トランザクションに使用する非同期のキーと値のペアのコレクションです。 **ConcurrentDictionary**と同様に、キーと値のいずれにも任意の型を使用できます。
 * [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx): レプリケートされた、トランザクションに使用する非同期の厳密な先入れ先出し型 (FIFO) のキューです。 **ConcurrentQueue**と同様に、値には任意の型を使用できます。
 
 ## <a name="isolation-levels"></a>分離レベル
 分離レベルは、トランザクションを他のトランザクションによって行われた変更から分離する必要がある度合を定義します。
-Reliable Collection では、次の 2 つの分離レベルがサポートされています。
+Reliable Collection では、次の&2; つの分離レベルがサポートされています。
 
 * **反復可能読み取り**: 他のトランザクションによって変更されたがまだコミットされていないデータをステートメントから読み取ることができないように指定するほか、現在のトランザクションが完了するまで、現在のトランザクションで読み取られたデータをその他のトランザクションが変更できないように指定します。 詳細については、 [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)をご覧ください。
 * **スナップショット**: トランザクションの任意のステートメントによって読み取られたデータが、トランザクションの開始時に存在していたデータとトランザクション上の整合性を持つように指定します。
@@ -77,15 +77,15 @@ Reliable Collection では、トランザクション作成時の操作とレプ
 > 
 > 
 
- Reliable Dictionary と Reliable Queue では、Read Your Writes がサポートされます。
+Reliable Dictionary と Reliable Queue では、Read Your Writes がサポートされます。
 つまり、トランザクション内でのすべての書き込みは、同じトランザクションで行われる次の読み取りによって認識されるということです。
 
 ## <a name="locking"></a>ロック
-Reliable Collection では、すべてのトランザクションは 2 段階で実行されます。つまり、トランザクションが中止またはコミットのいずれかで終了するまで、取得したロックを解放しないということです。
+Reliable Collection では、すべてのトランザクションは&2; 段階で実行されます。つまり、トランザクションが中止またはコミットのいずれかで終了するまで、取得したロックを解放しないということです。
 
 Reliable Dictionary では、1 つのエンティティ操作のすべてに対して、行レベルのロックを使用します。
 Reliable Queue では、同時実行よりもトランザクション FIFO プロパティの厳密さが優先されます。
-Reliable Queue は操作レベルのロックを使用しており、一度に `TryPeekAsync` および/または `TryDequeueAsync` による 1 つのトランザクションと `EnqueueAsync` による 1 つのトランザクションが許可されます。
+Reliable Queue は操作レベルのロックを使用しており、一度に `TryPeekAsync` および/または `TryDequeueAsync` による&1; つのトランザクションと `EnqueueAsync` による&1; つのトランザクションが許可されます。
 FIFO の保持のため、`TryPeekAsync` または `TryDequeueAsync` により Reliable Queue が空であると認識されたことがある場合、`EnqueueAsync` のロックも行われることに注意してください。
 
 書き込み操作は、常に排他的ロックを取得します。
@@ -171,6 +171,6 @@ Reliable Collection がチェックポイントを完了すると、Reliable Sta
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

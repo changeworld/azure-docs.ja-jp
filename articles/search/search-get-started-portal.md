@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/03/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dddbcbcd82900d7537c2d60631cc1753554d9486
+ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
+ms.openlocfilehash: 02623fc3d663a674e2184380915d651dff5760bc
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: dddbcbcd82900d7537c2d60631cc1753554d9486
 このチュートリアルは、[サンプルの Azure DocumentDB データベース](#apdx-sampledata)を前提に説明しています。このデータベースは、こちらで用意したデータと手順を使って簡単に作成できますが、既に DocumentDB または SQL Database 内にお持ちのデータに同じ手順を応用してもかまいません。
 
 > [!NOTE]
-> この入門チュートリアルには [Azure サブスクリプション](/pricing/free-trial/?WT.mc_id=A261C142F)と [Azure Search サービス](search-create-service-portal.md)が必要です。 
+> この入門チュートリアルには [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)と [Azure Search サービス](search-create-service-portal.md)が必要です。 
 > 
 > 
 
@@ -181,6 +181,6 @@ Azure 仮想マシン上の Azure SQL Database または SQL Server などその
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5c6129050dacf098fa60439175b91b3a2d219182
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 7aa746b8c6f4b747a7dca0e9bf75e61b2707b7e1
 
 
 ---
@@ -169,7 +169,7 @@ Proofpoint on Demand で Azure AD のシングル サインオンを構成して
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** ボックスの値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="create-a-proofpoint-on-demand-test-user"></a>Proofpoint on Demand のテスト ユーザーの作成
 このセクションでは、Proofpoint on Demand で Britta Simon というユーザーを作成します。 Proofpoint on Demand サポート チームと連携し、Proofpoint on Demand プラットフォームにユーザーを追加してください。
@@ -222,6 +222,6 @@ Proofpoint on Demand で Azure AD のシングル サインオンを構成して
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

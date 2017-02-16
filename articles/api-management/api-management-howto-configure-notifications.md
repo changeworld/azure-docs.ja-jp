@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: d99e2d885d56e3752a3b1caf51e52c801acaab52
-ms.openlocfilehash: 8e3c98108672dcd2ae48da7b2a9eeb174cee76e1
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 5d52b7609eb5ade1850e78868cbe0929c40c3c4f
 
 
 ---
@@ -29,7 +29,7 @@ API Management には、特定のイベントの通知を構成する機能と�
 ![パブリッシャー ポータル][api-management-management-console]
 
 > [!NOTE] 
-> API Management サービス インスタンスをまだ作成していない場合は、[API Management インスタンスの作成][API Management インスタンスの作成]に関するチュートリアルの [API Management サービス インスタンスの作成][API Management サービス インスタンスの作成]に関するセクションをご覧ください。
+> まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の概要][Get started with Azure API Management]に関するチュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」を参照してください。
 
 左側の **[API Management]** メニューの **[通知]** をクリックして、使用可能な通知を表示します。
 
@@ -111,17 +111,17 @@ API Management インスタンスの電子メール テンプレートを表示�
 [api-management-email-template]: ./media/api-management-howto-configure-notifications/api-management-email-template.png
 
 
-[発行者通知の構成]: #publisher-notifications
-[電子メール テンプレートの構成]: #email-templates
+[Configure publisher notifications]: #publisher-notifications
+[Configure email templates]: #email-templates
 
-[How to create and use groups (グループを作成して使用する方法) (グループを作成して使用する方法)]: api-management-howto-create-groups.md
-[グループと開発者の関連付け]: api-management-howto-create-groups.md#associate-group-developer
+[How to create and use groups]: api-management-howto-create-groups.md
+[How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
 
-[API Management インスタンスの作成]: api-management-get-started.md
-[API Management サービス インスタンスの作成]: api-management-get-started.md#create-service-instance
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "リージョンと Linux VM の可用性 | Microsoft Docs"
+title: "Azure のリージョンと Linux VM の可用性 | Microsoft Docs"
 description: "リージョンと Azure で Linux 仮想マシンを実行するための可用性機能について"
 services: virtual-machines-linux
 documentationcenter: 
@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 01/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ad5ad6c7c72dde0b213420579172e9bca94a7c10
+ms.sourcegitcommit: 015b152b2e807de6ad92d141d3c8bad6bb8d8eba
+ms.openlocfilehash: d46634e12ca241e756d9aa2a7fedd476e095762a
 
 
 ---
+
 [!INCLUDE [virtual-machines-common-regions-and-availability](../../includes/virtual-machines-common-regions-and-availability.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

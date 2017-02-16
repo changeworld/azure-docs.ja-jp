@@ -142,7 +142,7 @@ Slack アプリケーションは、特定の形式で構成された SAML ア�
 
     ![Configure Single Sign-On](./media/active-directory-saas-slack-tutorial/tutorial_slack_05.png) 
 
-4. **[ユーザーの Slack へのアクセスを設定してください]** ページで、**[Azure AD Single Sign-On] (Azure AD のシングル サインオン)** を選択し、**[次へ]** をクリックします。
+4. **[ユーザーの Slack へのアクセスを設定してください]** ページで、**[Azure AD Single Sign-On] \(Azure AD のシングル サインオン)** を選択し、**[次へ]** をクリックします。
     
     ![[シングル サインオンの構成]](./media/active-directory-saas-slack-tutorial/tutorial_slack_06.png)
 

@@ -16,8 +16,8 @@ ms.workload: powerbi
 ms.date: 01/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7aadb6ceba1a8c672ed9eeea8651c965e5b665fd
+ms.sourcegitcommit: b3037f1b96c8bfbaad5f92b726b63854469a8d06
+ms.openlocfilehash: b9a5435330e56ba8f25100437e201cccd7aeb568
 
 
 ---
@@ -39,7 +39,7 @@ ISV のアプリケーションで、フォーム認証や基本認証などの�
 .NET \(C#) または Node.js SDK を使用すると、Power BI Embedded を使用してアプリケーションを簡単に作成できます。 ただし、この記事では、SDK なしの Power BI の HTTP フロー \(AuthN を含む) の概要について説明します。 このフローを理解すると、**任意のプログラミング言語で**アプリケーションを構築することができ、Power BI Embedded の本質を深く理解できるようになります。
 
 ## <a name="create-power-bi-workspace-collection-and-get-access-key-provisioning"></a>Power BI ワークスペース コレクションを作成してアクセス キーを取得する \(プロビジョニング)
-Power BI Embedded は Azure のサービスの 1 つです。 Azure Portal を使用している ISV のみに \(1 時間のユーザー セッションごとに) 使用料が課金され、レポートを表示しているユーザーは課金されないだけでなく、Azure サブスクリプションさえ必要ありません。
+Power BI Embedded は Azure のサービスの&1; つです。 Azure Portal を使用している ISV のみに \(1 時間のユーザー セッションごとに) 使用料が課金され、レポートを表示しているユーザーは課金されないだけでなく、Azure サブスクリプションさえ必要ありません。
 アプリケーションの開発を開始する前に、Azure ポータルを使用して **Power BI のワークスペース コレクション** を作成する必要があります。
 
 Power BI Embedded の各ワークスペースは、各顧客 (テナント) のワークスペースであり、各ワークスペース コレクションに多数のワークスペースを追加できます。 各ワークスペース コレクションで同じアクセス キーを使用します。 実質的に、ワークスペース コレクションは、Power BI Embedded のセキュリティ境界です。
@@ -91,7 +91,7 @@ RequestId: 4220d385-2fb3-406b-8901-4ebe11a5f6da
 返された **workspaceId** は、次に示す後続の API 呼び出しに使用します。 アプリケーションでこの値を保持する必要があります。
 
 ## <a name="import-pbix-file-into-the-workspace"></a>.pbix ファイルをワークスペースにインポートする
-各ワークスペースでは、\(データ ソースの設定も含む) データセットとレポートを含む 1 つの Power BI Desktop ファイルをホストできます。 次のコードに示すように、.pbix ファイルをワークスペースにインポートできます。 ご覧のように、http で MIME マルチパートを使用して、.pbix ファイルのバイナリをアップロードできます。
+ワークスペースの各レポートは、データセットを含む&1; つの Power BI Desktop ファイル \(データソースの設定も含まれます) に対応しています。 次のコードに示すように、.pbix ファイルをワークスペースにインポートできます。 ご覧のように、http で MIME マルチパートを使用して、.pbix ファイルのバイナリをアップロードできます。
 
 URI フラグメント **32960a09-6366-4208-a8bb-9e0678cdbb9d** が workspaceId であり、クエリ パラメーター **datasetDisplayName** は作成するデータセットの名前です。 作成したデータセットには、インポートされたデータ、データ ソースを指すポインターなどの .pbix ファイルのすべてのデータ関連アーティファクトが保持されます。
 
@@ -471,6 +471,6 @@ RequestId: d4099022-405b-49d3-b3b7-3c60cf675958
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

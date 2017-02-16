@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2016
+ms.date: 01/04/2017
 ms.author: araguila
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5cbbebfcc41ef8c45366c04ddd9a5697f7b91b61
+ms.sourcegitcommit: 69d4439a20fec8caaabdb43444cabd81f7d1b7c8
+ms.openlocfilehash: 6245c2a0f73ff63e3bfb5fe16112f89ed0efdf30
 
 
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>IoT スイートに関してよく寄せられる質問
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-preconfigured-solution-in-azureiotsuitecom"></a>Azure ポータルでのリソース グループの削除と、azureiotsuite.com の構成済みソリューションで削除をクリックすることの違いは何ですか?
-* [azureiotsuite.com][lnk-azureiotsuite] で構成済みのソリューションを削除すると、構成済みソリューションの作成時にプロビジョニングしたすべてのリソースが削除されます。リソース グループにリソースを追加してある場合、それらも削除されます。 
-* [Azure ポータル][lnk-azure-portal]でリソース グループを削除すると、そのリソース グループのリソースだけが削除されます。構成済みソリューションと関連付けられている Azure Active Directory アプリケーションも [Azure クラシック ポータル][lnk-classic-portal]で削除する必要があります。
+* [azureiotsuite.com][lnk-azureiotsuite] で構成済みのソリューションを削除すると、構成済みソリューションの作成時にプロビジョニングしたすべてのリソースが削除されます。 リソース グループにリソースを追加してある場合、それらも削除されます。 
+* [Azure ポータル][lnk-azure-portal] でリソース グループを削除した場合は、そのリソース グループ内のリソースのみが削除されます。 さらに、[Azure クラシック ポータル][lnk-classic-portal]で構成済みソリューションに関連付けられている Azure Active Directory アプリケーションを削除する必要があります。
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>サブスクリプションでプロビジョニングできる IoT Hub インスタンスはいくつですか?
 10 個です。 この上限は、[Azure サポート チケット][link-azuresupportticket]を作成して引き上げることができます。ただし、[Azure サブスクリプションの制限][link-azuresublimits]に関するページで説明されているように、既定ではサブスクリプションごとにプロビジョニングできる IoT Hub は 10 個のみです。 よって、構成済みソリューションごとに新しい IoT Hub をプロビジョニングするため、特定のサブスクリプションでプロビジョニングできる構成済みソリューションの数は最大 10 個になります。 
@@ -33,23 +33,23 @@ ms.openlocfilehash: 5cbbebfcc41ef8c45366c04ddd9a5697f7b91b61
 50 個です。 [Azure サポート チケット][link-azuresupportticket]を作成してこの上限を引き上げることができますが、既定では、サブスクリプションごとにプロビジョニングできる DocumentDB インスタンスは 50 個のみです。 
 
 ### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>サブスクリプションでプロビジョニングできる無料の Bing マップ API の数はいくつですか?
-2 個です。 1 つの Azure サブスクリプションでは、内部トランザクション レベル 1 のエンタープライズ向け Bing 地図プランを最大で 2 個作成できます。 リモート監視ソリューションは、既定では内部トランザクション レベル 1 のプランでプロビジョニングされます。 その結果、変更なしでサブスクリプションにプロビジョニングできるリモート監視ソリューションは最大 2 個です。
+2 個です。 1 つの Azure サブスクリプションでは、内部トランザクション レベル 1 のエンタープライズ向け Bing 地図プランを最大で 2 個作成できます。 リモート監視ソリューションは、既定では内部トランザクション レベル 1 のプランでプロビジョニングされます。 その結果、変更なしでサブスクリプションにプロビジョニングできるリモート監視ソリューションは最大&2; 個です。
 
 ### <a name="i-have-a-remote-monitoring-solution-deployment-with-a-static-map-how-do-i-add-an-interactive-bing-map"></a>静止マップを含むリモート監視ソリューションのデプロイがあります。これに対話型の Bing マップを追加するにはどうすればよいですか。
-1. [Azure ポータル][lnk-azure-portal]から Bing Maps API for Enterprise の QueryKey を取得してください。 
+1. [Azure Portal][lnk-azure-portal] から Bing Maps API for Enterprise の QueryKey を取得してください。 
    
-   1. [Azure ポータル][lnk-azure-portal]で、Bing Maps API for Enterprise が含まれるリソース グループに移動します。
-   2. [All Settings] \(すべての設定)、[Key Management] \(キーの管理) の順にクリックします。 
-   3. MasterKey と QueryKey という 2 つのキーが表示されます。 QueryKey の値をコピーします。
+   1. [Azure Portal][lnk-azure-portal] で、Bing Maps API for Enterprise が含まれるリソース グループに移動します。
+   2. **[すべての設定]**、**[キーの管理]** の順にクリックします。 
+   3. **MasterKey** と **QueryKey** という&2; つのキーが表示されます。 **QueryKey** の値をコピーします。
       
       > [!NOTE]
-      > Bing Maps API for Enterprise アカウントがない場合は、 [Azure ポータル][lnk-azure-portal]で [+ 新規] をクリックし、Bing Maps API for Enterprise を検索して、画面の指示に従ってアカウントを作成してください。
+      > Bing Maps API for Enterprise アカウントがない場合は、 [Azure Portal][lnk-azure-portal] で [+ 新規] をクリックし、Bing Maps API for Enterprise を検索して、画面の指示に従ってアカウントを作成してください。
       > 
       > 
 2. [Azure-IoT-Remote-Monitoring][lnk-remote-monitoring-github] から最新のコードをダウンロードします。
 3. リポジトリの /docs/ フォルダーにあるコマンドライン デプロイ ガイダンスに従って、ローカルまたはクラウドのデプロイを実行します。 
 4. ローカルまたはクラウドのデプロイを実行したら、ルート フォルダーでデプロイ時に作成された *.user.config ファイルを探します。 このファイルをテキスト エディターで開きます。 
-5. 以下の行に QueryKey からコピーした値を含めます。 
+5. 次の行に、**QueryKey** からコピーした値を含めます。 
    
    `<setting name="MapApiQueryKey" value="" />`
 
@@ -59,7 +59,7 @@ ms.openlocfilehash: 5cbbebfcc41ef8c45366c04ddd9a5697f7b91b61
 ### <a name="how-do-i-delete-an-aad-tenant"></a>AAD テナントはどうすれば削除できますか?
 [Azure AD テナントの削除方法][lnk-delete-aad-tennant]に関する Eric Golpe のブログ投稿を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次のステップ
 IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
 
 * [予測的なメンテナンスの構成済みソリューションの概要][lnk-predictive-overview]
@@ -80,6 +80,6 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

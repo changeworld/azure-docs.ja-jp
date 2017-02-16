@@ -12,41 +12,42 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 08/15/2016
+ms.date: 01/11/2017
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a4263557029b080e01c5bddf4fd3ba4b21e8fac1
+ms.sourcegitcommit: 3e2ad6b466ba4885ae14576b83d4c0f3010bab67
+ms.openlocfilehash: 9782454e3bfc697b63cde8aa28a14be0c393c36b
 
 
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-20-preview"></a>Azure Search .NET SDK バージョン 2.0-preview へのアップグレード
-バージョン 1.1 以前の [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)を使用している場合は、この記事を参考にして、次のメジャー バージョンである 2.0-preview を使用するようにアプリケーションをアップグレードできます。
+# <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK バージョン 3 へのアップグレード
+バージョン 2.0-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 3 を使用するようにアプリケーションをアップグレードできます。
 
 例を含む SDK の一般的なチュートリアルについては、「 [.NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。
 
-Azure Search .NET SDK のバージョン 2.0-preview には、以前のバージョンからの変更がいくつか含まれています。 ほとんどは小さなものなので、コードの変更に必要な作業は最小限で済みます。 新しいバージョンの SDK を使用するようにコードを変更する方法については、「 [アップグレードの手順](#UpgradeSteps) 」を参照してください。
+Azure Search .NET SDK のバージョン 3 には、以前のバージョンからの変更がいくつか含まれています。 ほとんどは小さなものなので、コードの変更に必要な作業は最小限で済みます。 新しいバージョンの SDK を使用するようにコードを変更する方法については、「 [アップグレードの手順](#UpgradeSteps) 」を参照してください。
 
 > [!NOTE]
-> 0.13-preview 以前のバージョンを使用している場合は、バージョン 1.1 にアップグレードした後、2.0-preview にアップグレードする必要があります。 手順については、「 [付録: バージョン 1.1 にアップグレードするための手順](#UpgradeStepsV1) 」を参照してください。
-> 
-> 
+> 1.0.2-preview 以前のバージョンを使用している場合は、まずバージョン 1.1 にアップグレードしてから、バージョン 3 にアップグレードする必要があります。 手順については、「 [付録: バージョン 1.1 にアップグレードするための手順](#UpgradeStepsV1) 」を参照してください。
+>
+> Azure Search サービスのインスタンスは、最新のバージョンを含む複数の REST API バージョンをサポートします。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するようにコードを移行することをお勧めします。 REST API を使用している場合は、api-version パラメーターを使用して、すべての要求に API バージョンを指定する必要があります。 .NET SDK を使用している場合は、使用している SDK のバージョンによって REST API の対応するバージョンが決まります。 サービスが新しいバージョンの API をサポートするようにアップグレードされた場合でも、使用中の古い SDK のコードを変更なしで引き続き実行できます。
 
 <a name="WhatsNew"></a>
 
-## <a name="whats-new-in-version-20-preview"></a>バージョン 2.0-preview の新機能
-バージョン 2.0-preview は、Azure Search REST API のプレビュー バージョン (具体的には 2015-02-28-Preview) をターゲットとする Azure Search .NET SDK の最初のバージョンです。 これにより、以下のような Azure Search の多数のプレビュー機能を .NET アプリケーションから使用することが可能になります。
+## <a name="whats-new-in-version-3"></a>バージョン 3 の新機能
+Azure Search .NET SDK のバージョン 3 は、Azure Search REST API の最新の一般公開バージョン (2016-09-01) を対象としています。 これにより、次のような Azure Search の多数の新機能を .NET アプリケーションから使用することが可能になります。
 
 * [カスタム アナライザー](https://aka.ms/customanalyzers)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) と [Azure Table Storage](search-howto-indexing-azure-tables.md) のインデクサーのサポート
-*  [フィールド マッピング](search-indexer-field-mappings.md)
+* [フィールド マッピング](search-indexer-field-mappings.md)
 * インデックスの定義、インデクサー、およびデータ ソースの安全な同時更新を有効にする Etag のサポート
+* モデル クラスを装飾し、新しい `FieldBuilder` クラスを使用することによる、インデックス フィールド定義の宣言による作成のサポート
 * .NET Core と .NET Portable Profile 111 のサポート
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>アップグレードの手順
-最初に、NuGet パッケージ マネージャー コンソールを使用して、または Visual Studio でプロジェクト参照を右クリックして [NuGet パッケージの管理...] を選択することで、 `Microsoft.Azure.Search` の NuGet 参照を更新します。 Visual Studio で NuGet の [パッケージの管理] ウィンドウで [プレリリースを含める] を選択するか、NuGet パッケージ マネージャー コンソールを使用している場合は `-IncludePrerelease` スイッチを使用して、プレリリース パッケージを有効にします。
+最初に、NuGet パッケージ マネージャー コンソールを使用して、または Visual Studio でプロジェクト参照を右クリックして [NuGet パッケージの管理...] を選択することで、 `Microsoft.Azure.Search` の NuGet 参照を更新します。
 
 NuGet が新しいパッケージとその依存関係をダウンロードした後、プロジェクトをリビルドします。 コードの構成方法に応じて、正常にリビルドされます。 リビルドされれば、準備は完了です。
 
@@ -54,19 +55,19 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
     Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
 
-次の手順として、このビルド エラーを修正します。 エラーの原因と修正方法については、「 [バージョン 2.0-preview における重大な変更](#ListOfChanges) 」を参照してください。
+次の手順として、このビルド エラーを修正します。 エラーの原因と修正方法については、「[バージョン 3 における重大な変更](#ListOfChanges)」をご覧ください。
 
-古いメソッドまたはプロパティに関連するビルド警告が表示される場合があります。 それらの警告には、非推奨の機能の代わりに何を使用するかについての指示が含まれます。 たとえば、アプリケーションで `SearchRequestOptions.RequestId` プロパティ使用している場合は、「`"This property is deprecated. Please use ClientRequestId instead."`」という警告が表示されます。
+古いメソッドまたはプロパティに関連するビルド警告が表示される場合があります。 それらの警告には、非推奨の機能の代わりに何を使用するかについての指示が含まれます。 たとえば、アプリケーションで `IndexingParameters.Base64EncodeKeys` プロパティ使用している場合は、「`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`」という警告が表示されます。
 
-すべてのビルド エラーを修正した後、必要に応じて新しい機能を利用するようにアプリケーションを変更できます。 SDK の新機能の詳細については、「 [バージョン 2.0-preview の新機能](#WhatsNew)」を参照してください。
+すべてのビルド エラーを修正した後、必要に応じて新しい機能を利用するようにアプリケーションを変更できます。 SDK の新機能の詳細については、「[バージョン 3 の新機能](#WhatsNew)」をご覧ください。
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-20-preview"></a>バージョン 2.0-preview における重大な変更
-アプリケーションのリビルドの他に、コードを変更する必要があるバージョン 2.0-preview の大幅な変更は 1 つしかありません。
+## <a name="breaking-changes-in-version-3"></a>バージョン 3 における重大な変更
+バージョン 3 には、アプリケーションのリビルドだけでなく、コードの変更が必要な場合がある重大な変更が少し含まれています。
 
 ### <a name="indexesgetclient-return-type"></a>Indexes.GetClient の戻り型
-`Indexes.GetClient` メソッドには新しい戻り型があります。 前に返されていたのは `SearchIndexClient` ですが、バージョン 2.0-preview では、これが `ISearchIndexClient` に変更されています。 これは、単体テストで `ISearchIndexClient` の模擬実装を返すことによって `GetClient` メソッドの模擬テストを実行したいユーザーをサポートするための変更です。
+`Indexes.GetClient` メソッドには新しい戻り型があります。 以前は `SearchIndexClient` が返されていましたが、これはバージョン 2.0-preview で `ISearchIndexClient` に変更され、この変更がバージョン 3 にも引き継がれています。 これは、単体テストで `ISearchIndexClient` の模擬実装を返すことによって `GetClient` メソッドの模擬テストを実行したいユーザーをサポートするための変更です。
 
 #### <a name="example"></a>例
 次のようなコードがあるものとします。
@@ -81,10 +82,68 @@ SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
+### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>文字列に暗黙的に変換できなくなった AnalyzerName、DataType など
+Azure Search .NET SDK には、`ExtensibleEnum` から派生する型が多数あります。 これまで、これらの型はすべて `string` 型に暗黙的に変換できました。 しかし、これらのクラスの `Object.Equals` 実装でバグが見つかり、バグを修正するためにこの暗黙的な変換を無効にする必要がありました。 `string` への明示的な変換は引き続き可能です。
+
+#### <a name="example"></a>例
+次のようなコードがあるものとします。
+
+```csharp
+var customTokenizerName = TokenizerName.Create("my_tokenizer"); 
+var customTokenFilterName = TokenFilterName.Create("my_tokenfilter"); 
+var customCharFilterName = CharFilterName.Create("my_charfilter"); 
+ 
+var index = new Index();
+index.Analyzers = new Analyzer[] 
+{ 
+    new CustomAnalyzer( 
+        "my_analyzer",  
+        customTokenizerName,  
+        new[] { customTokenFilterName },  
+        new[] { customCharFilterName }), 
+}; 
+```
+
+この場合、次のように変更することでビルド エラーを解決できます。
+
+```csharp
+const string CustomTokenizerName = "my_tokenizer"; 
+const string CustomTokenFilterName = "my_tokenfilter"; 
+const string CustomCharFilterName = "my_charfilter"; 
+ 
+var index = new Index();
+index.Analyzers = new Analyzer[] 
+{ 
+    new CustomAnalyzer( 
+        "my_analyzer",  
+        CustomTokenizerName,  
+        new TokenFilterName[] { CustomTokenFilterName },  
+        new CharFilterName[] { CustomCharFilterName })
+}; 
+```
+
+### <a name="removed-obsolete-members"></a>古い形式のメンバーの削除
+
+バージョン 2.0-preview で古い形式としてマークされており、その後バージョン 3 で削除されたメソッドまたはプロパティに関連するビルド エラーが発生する場合があります。 このようなエラーが発生した場合、その解決方法を次に示します。
+
+- コンストラクター `ScoringParameter(string name, string value)` を使用していた場合は、代わりに `ScoringParameter(string name, IEnumerable<string> values)` を使用します。
+- `ScoringParameter.Value` プロパティを使用していた場合は、代わりに `ScoringParameter.Values` プロパティまたは `ToString` メソッドを使用します。
+- `SearchRequestOptions.RequestId` プロパティを使用していた場合は、代わりに `ClientRequestId` プロパティを使用します。
+
+### <a name="removed-preview-features"></a>削除されたプレビュー機能
+
+バージョン 2.0-preview からバージョン 3 にアップグレードする場合、BLOB インデクサーでの JSON および CSV 解析のサポートが削除されたことに注意してください。これらの機能はプレビュー段階であるためです。 具体的には、`IndexingParametersExtensions` クラスの次のメソッドが削除されました。
+
+- `ParseJson`
+- `ParseJsonArrays`
+- `ParseDelimitedTextFiles`
+
+アプリケーションにこれらの機能に対するハードの依存関係が存在する場合、Azure Search .NET SDK のバージョン 3 にアップグレードすることはできません。 バージョン 2.0-preview を引き続き使用できますが、 **実稼働アプリケーションでのプレビュー版 SDK の使用は推奨されない**ことに注意してください。 プレビュー機能は評価のみを目的としており、変更される場合があります。
+
 ## <a name="conclusion"></a>まとめ
 Azure Search .NET SDK の使用方法の詳細については、最近更新された [方法](search-howto-dotnet-sdk.md)に関する記事を参照してください。
 
-SDK についてのご意見をお待ちしております。 問題が発生した場合は、 [Azure Search の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azuresearch)でご質問ください。 バグを発見した場合は、 [Azure .NET SDK の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/issues)で問題を報告できます。 問題のタイトルの前に、必ず "Search SDK: " を付けてください。
+SDK についてのご意見をお待ちしております。 問題が発生した場合は、 [Azure Search の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)でご質問ください。 バグを発見した場合は、 [Azure .NET SDK の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/issues)で問題を報告できます。 問題のタイトルの前に、必ず "Search SDK: " を付けてください。
 
 Azure Search をお使いいただきありがとうございます。
 
@@ -92,7 +151,7 @@ Azure Search をお使いいただきありがとうございます。
 
 ## <a name="appendix-steps-to-upgrade-to-version-11"></a>付録: バージョン 1.1 にアップグレードするための手順
 > [!NOTE]
-> このセクションは、Azure Search .NET SDK バージョン 0.13-preview 以前を使用しているユーザーにのみ適用されます。
+> このセクションは、Azure Search .NET SDK バージョン 1.0.2-preview 以前を使用しているユーザーにのみ適用されます。
 > 
 > 
 
@@ -109,7 +168,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
     Program.cs(146,41,146,54): error CS1061: 'Microsoft.Azure.Search.IndexBatchException' does not contain a definition for 'IndexResponse' and no extension method 'IndexResponse' accepting a first argument of type 'Microsoft.Azure.Search.IndexBatchException' could be found (are you missing a using directive or an assembly reference?)
     Program.cs(163,13,163,42): error CS0246: The type or namespace name 'DocumentSearchResponse' could not be found (are you missing a using directive or an assembly reference?)
 
-次のステップとして、ビルド エラーを 1 つずつ修正します。 ほとんどの修正では、SDK で名前が変更されたクラスとメソッドの名前を変更する必要があります。 [バージョン 1.1 における重大な変更の一覧](#ListOfChangesV1) 」を参照してください。
+次のステップとして、ビルド エラーを&1; つずつ修正します。 ほとんどの修正では、SDK で名前が変更されたクラスとメソッドの名前を変更する必要があります。 [バージョン 1.1 における重大な変更の一覧](#ListOfChangesV1) 」を参照してください。
 
 カスタム クラスを使用してドキュメントをモデル化していて、それらのクラスに null 非許容プリミティブ型のプロパティ (たとえば、C# での `int` や `bool`) がある場合、1.1 バージョンの SDK で行われたバグ修正について認識しておく必要があります。 詳細については、「 [バージョン 1.1 でのバグ修正](#BugFixesV1) 」を参照してください。
 
@@ -304,7 +363,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
         Console.WriteLine(result.Document);
     }
 
-##### <a name="important-note-for-web-applications"></a>Web アプリケーションに関する重要な注意事項
+##### <a name="special-case-for-web-applications"></a>Web アプリケーションの特殊な例
 `DocumentSearchResponse` を直接シリアル化して検索結果をブラウザーに送信する Web アプリケーションがある場合、コードを変更する必要があります。変更しないと、結果が正しくシリアル化されません。 たとえば、次のようなコードがあるものとします。
 
     public ActionResult Search(string q = "")
@@ -414,7 +473,7 @@ null 非許容値型のプロパティを使用してカスタム モデル ク�
 
 さらに `IntValue` を 0 に設定します。現在では、この値はネットワーク上で正しく 0 としてシリアル化され、インデックスに 0 と格納されるようになっています。 ラウンドトリップも予期したとおりに動作します。
 
-この方法で注意すべき潜在的な問題が 1 つあります。null 非許容プロパティを使用する種類のモデルを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。 SDK も Azure Search REST API も、このことを強制する役には立ちません。
+この方法で注意すべき潜在的な問題が&1; つあります。null 非許容プロパティを使用する種類のモデルを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。 SDK も Azure Search REST API も、このことを強制する役には立ちません。
 
 これは単なる仮定上の問題ではありません。`Edm.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。 インデックスの定義を更新した後、(Azure Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。 その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
 
@@ -427,6 +486,6 @@ null 非許容値型のプロパティを使用してカスタム モデル ク�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

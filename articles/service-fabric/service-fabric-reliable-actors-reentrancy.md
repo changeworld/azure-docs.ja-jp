@@ -1,5 +1,5 @@
 ---
-title: "Reliable Actors の再入 | Microsoft Docs"
+title: "アクター ベースの Azure マイクロサービスでの再入 | Microsoft Docs"
 description: "Service Fabric Reliable Actors の再入の概要"
 services: service-fabric
 documentationcenter: .net
@@ -12,18 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/19/2016
+ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1d71949426637b520b8fed0b0fe64e4afcbfd077
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: 7f6ac80472d3e4fab390b9aa69105e19dca7b947
 
 
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors の再入
 Reliable Actors ランタイムは、論理呼び出しコンテキスト ベースの再入を既定で許可します。 これにより、アクターは、同じ呼び出しコンテキストのチェーンにある場合は再入可能になります。 たとえば、アクター A がアクター C にメッセージを送信するアクター B にメッセージを送信するとします。メッセージ処理の一環として、アクター C がアクター A を呼び出した場合、メッセージは再入可能であるため、再入が許可されます。 処理が完了するまで、アクター A では別の呼び出しコンテキストの一部である他のメッセージがブロックされます。
 
-`ActorReentrancyMode` 列挙型で定義されているアクターの再入に使用できるオプションには、次の 2 つがあります。
+`ActorReentrancyMode` 列挙型で定義されているアクターの再入に使用できるオプションには、次の&2; つがあります。
 
 * `LogicalCallContext` (既定の動作)
 * `Disallowed` - 再入を無効にします
@@ -79,6 +79,6 @@ static class Program
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

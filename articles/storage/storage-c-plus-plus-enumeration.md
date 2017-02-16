@@ -1,5 +1,5 @@
 ---
-title: "C++ 用 Microsoft Azure Storage クライアント ライブラリを使用した Azure Storage のリソース一覧の取得 | Microsoft Docs"
+title: "C++ 用ストレージ クライアント ライブラリを使用した Azure Storage のリソース一覧の取得 | Microsoft Docs"
 description: "C++ 用 Microsoft Azure Storage クライアント ライブラリの一覧取得 API を使用して、コンテナー、BLOB、キュー、テーブル、エンティティを列挙する方法について説明します。"
 documentationcenter: .net
 services: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 01/23/2017
 ms.author: dineshm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 085796493df86a2e86a88266d9b3aacf12cb6541
+ms.sourcegitcommit: c5fedb8c4a6e3722e2f37dd432cec60513c73e0d
+ms.openlocfilehash: f14ed08473ba9c424acf39d3fe98d4a11adf9948
 
 
 ---
@@ -57,13 +57,13 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 マルチ スレッドのアプリケーションまたはサービスを使用している場合、同期 API を呼び出すスレッドを作成するとパフォーマンスに大きな影響を与えるため、非同期 API を直接使用することをお勧めします。
 
 ## <a name="segmented-listing"></a>セグメント化された一覧取得
-クラウド ストレージのスケールでは、一覧取得をセグメント化する必要があります。 たとえば、Azure BLOB コンテナー内には 100 万以上の BLOB を、Azure テーブル内には 10 億以上のエンティティを保持することができます。 こうした数値は仮定上のものではなく、実際の顧客の使用例に基づいています。
+クラウド ストレージのスケールでは、一覧取得をセグメント化する必要があります。 たとえば、Azure BLOB コンテナー内には&100; 万以上の BLOB を、Azure テーブル内には&10; 億以上のエンティティを保持することができます。 こうした数値は仮定上のものではなく、実際の顧客の使用例に基づいています。
 
 したがって、1 回の応答ですべてのオブジェクトの一覧を取得するのは非現実的です。 代わりに、ページングを使用してオブジェクトの一覧を取得することができます。 各一覧取得 API には、 *セグメント化された* オーバーロードがあります。
 
 セグメント化された一覧取得操作に対する応答は次のとおりです。
 
-* <i>_segment</i>: 一覧取得 API に対する 1 回の呼び出しで返された結果のセットが含まれます。
+* <i>_segment</i>: 一覧取得 API に対する&1; 回の呼び出しで返された結果のセットが含まれます。
 * *continuation_token*: 結果の次のページを取得するために、次の呼び出しに渡されます。 返される結果がそれ以上無い場合、継続トークンは null になります。
 
 たとえば、コンテナー内のすべての BLOB を一覧表示する一般的な呼び出しは、次のコード スニペットのようになります。 コードは、「 [サンプル](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)」にあります。
@@ -101,7 +101,7 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
 
 *max_results* パラメーターを指定しない場合、1 ページでは、既定の上限値である 5000 個までの結果が返されます。
 
-また、Azure テーブル ストレージに対するクエリでは、継続トークンが空でないとしても、レコードが返されないか、指定した *max_results* パラメーターの値より少ないレコードが返される場合があることにも注意してください。 考えられる理由の 1 つは、クエリが 5 秒以内に完了しなかったためです。 継続トークンが空でない限りクエリは継続されるため、コードでセグメント結果のサイズが推測されることはありません。
+また、Azure テーブル ストレージに対するクエリでは、継続トークンが空でないとしても、レコードが返されないか、指定した *max_results* パラメーターの値より少ないレコードが返される場合があることにも注意してください。 考えられる理由の&1; つは、クエリが&5; 秒以内に完了しなかったためです。 継続トークンが空でない限りクエリは継続されるため、コードでセグメント結果のサイズが推測されることはありません。
 
 ほとんどのシナリオで推奨されるコーディング パターンは、一覧取得のセグメント化です。これにより、一覧取得またはクエリ実行の進行状況が明示され、各要求に対するサービスの応答が指定されます。 特に C++ のアプリケーションやサービスでは、一覧取得の進行状況を下位レベルで制御することで、メモリおよびパフォーマンスをコントロールしやすくなります。
 
@@ -206,6 +206,6 @@ Azure Storage および C++ 用クライアント ライブラリの詳細につ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

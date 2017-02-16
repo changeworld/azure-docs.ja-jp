@@ -1,6 +1,6 @@
 ---
-title: "Start Node API と Stop Node API を Azure Service Fabric Node Transition API に置き換える | Microsoft Docs"
-description: "Start Node API と Stop Node API を Azure Service Fabric Node Transition API に置き換える"
+title: "Azure マイクロサービスをテストするためにクラスター ノードを起動および停止する | Microsoft Docs"
+description: "フォールト挿入を使い、クラスター ノードを起動および停止することによって、Service Fabric アプリケーションをテストする方法について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: LMWF
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 12/19/2016
 ms.author: lemai
 translationtype: Human Translation
-ms.sourcegitcommit: 4ca07de3604c3f543354d97db100b1f578cb0a5a
-ms.openlocfilehash: 5096ad4bdb75766850e557ed09f39b15c95126da
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: 5f76100007466f2baf4e067de963486f47fbf857
 
 
 ---
@@ -50,7 +50,7 @@ Node Transition API を呼び出したときに例外がスローされなけれ
 "*停止*" されているノードを Node Transition API を使って開始すると、そのノードはクラスターの通常のメンバーとして再び機能するようになります。  ノード クエリ API の出力では、*IsStopped* は false に、*NodeStatus* は Down 以外のいずれか (Up など) になります。
 
 
-**期間の制限** Node Transition API を使用してノードを停止する場合、必須パラメーターの 1 つである *stopNodeDurationInSeconds* は、ノードを "*停止*" する時間を秒単位で表します。  この値は 600 ～ 14400 の範囲内でなければなりません。  この時間を過ぎると、ノードは自動的に再起動して稼働状態に戻ります。  使用例については、下のサンプル 1 をご覧ください。
+**期間の制限** Node Transition API を使用してノードを停止する場合、必須パラメーターの&1; つである *stopNodeDurationInSeconds* は、ノードを "*停止*" する時間を秒単位で表します。  この値は 600 ～ 14400 の範囲内でなければなりません。  この時間を過ぎると、ノードは自動的に再起動して稼働状態に戻ります。  使用例については、下のサンプル 1 をご覧ください。
 
 > [!WARNING]
 > Node Transition API と Stop Node API/Start Node API を混在させないようにしてください。  Node Transition API のみを使用することをお勧めします。  Stop Node API で停止されているノードがある場合は、Start Node API でノードを開始してから、Node Transition API の使用を開始してください。
@@ -291,6 +291,6 @@ Node Transition API を呼び出したときに例外がスローされなけれ
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

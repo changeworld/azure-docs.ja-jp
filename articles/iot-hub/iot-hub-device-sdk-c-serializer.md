@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2e38c7dba04c1402a227fe0a65d637667fd73aa2
+ms.sourcegitcommit: 5d7eed340d2021c58f68c69100be5a9e13655146
+ms.openlocfilehash: 7d4b322cd6528fa4798362d2ee620dae4291b956
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 2e38c7dba04c1402a227fe0a65d637667fd73aa2
 
 この記事で説明する内容は、すべて **シリアライザー** SDK サンプルに基づいています。 C 用 Azure IoT device SDK に含まれている **simplesample\_amqp** アプリケーションと **simplesample\_http** アプリケーションを確認すると、理解に役立ちます。
 
-**C 用 Azure IoT device SDK** は [Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks) GitHub リポジトリから入手でき、API の詳細は [C API リファレンス](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html)に関するページで確認できます。
+[**C 用 Azure IoT device SDK**](https://github.com/Azure/azure-iot-sdk-c) は GitHub リポジトリから入手でき、API の詳細は [C API リファレンス](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html)に関するページで確認できます。
 
 ## <a name="the-modeling-language"></a>モデリング言語
 このシリーズの[入門記事](iot-hub-device-sdk-c-intro.md)では、**simplesample\_amqp** アプリケーションで提供された例を使用して、**C 用 Azure IoT device SDK** のモデリング言語を紹介しました。
@@ -50,7 +50,7 @@ END_NAMESPACE(WeatherStation);
 
 見るとわかるように、モデリング言語は、C マクロに基づいています。 常に、定義は **BEGIN\_NAMESPACE** で始まり、**END\_NAMESPACE** で終了します。 通常は、名前空間には、会社か、またはこの例のように作業しているプロジェクトに関連した名前を付けます。
 
-名前空間の内部で行われるのは、モデル定義です。 この例では、風速計の 1 つのモデルを使用します。 この場合もモデルに任意の名前を付けることができますが、通常は、デバイスまたは IoT Hub と交換するデータの種類に関連した名前を付けます。  
+名前空間の内部で行われるのは、モデル定義です。 この例では、風速計の&1; つのモデルを使用します。 この場合もモデルに任意の名前を付けることができますが、通常は、デバイスまたは IoT Hub と交換するデータの種類に関連した名前を付けます。  
 
 モデルには、IoT Hub に入力できるイベントの定義 (*データ*) と IoT Hub から受信できるメッセージ (*アクション*) の定義が含まれます。 例からわかるように、イベントには、型と名前があります。アクションには、名前と省略可能なパラメーター (それぞれ型を持つ) があります。
 
@@ -106,7 +106,7 @@ WITH_DATA(TestType, Test)
 );
 ```
 
-このモデルには、**TestType** 型のデータ イベントが 1 つだけ含まれています。 **TestType** は、複数のメンバーを含む複合型です。これらのメンバー全体が、**シリアライザー** モデリング言語によってサポートされているプリミティブ型を示します。
+このモデルには、**TestType** 型のデータ イベントが&1; つだけ含まれています。 **TestType** は、複数のメンバーを含む複合型です。これらのメンバー全体が、**シリアライザー** モデリング言語によってサポートされているプリミティブ型を示します。
 
 このようなモデルを使用して、IoT Hub にデータを送信するためのコードを記述できます。以下に例を示します。
 
@@ -139,7 +139,7 @@ testModel->Test.aBinary = binaryData;
 SendAsync(iotHubClientHandle, (const void*)&(testModel->Test));
 ```
 
-基本的に、**Test** 構造体の各メンバーに値を割り当ててから、**SendAsync** を呼び出して **Test** データ イベントをクラウドに送信します。 **SendAsync** は、IoT Hub に 1 つのデータ イベントを送信するヘルパー関数です。
+基本的に、**Test** 構造体の各メンバーに値を割り当ててから、**SendAsync** を呼び出して **Test** データ イベントをクラウドに送信します。 **SendAsync** は、IoT Hub に&1; つのデータ イベントを送信するヘルパー関数です。
 
 ```
 void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent)
@@ -170,7 +170,7 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
 
 この関数は、指定されたデータ イベントをシリアル化し、**IoTHubClient\_SendEventAsync** を使用して、そのデータ イベントを IoT Hub に送信します。 これは、以前の記事で説明したコードと同じコードです (**SendAsync** は、ロジックを便利な関数にカプセル化します)。
 
-前のコードで使用されているもう 1 つのヘルパー関数は **GetDateTimeOffset**です。 次のように、この関数は指定された時刻を型 **EDM\_DATE\_TIME\_OFFSET** の値に変換します。
+前のコードで使用されているもう&1; つのヘルパー関数は **GetDateTimeOffset**です。 次のように、この関数は指定された時刻を型 **EDM\_DATE\_TIME\_OFFSET** の値に変換します。
 
 ```
 EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
@@ -231,7 +231,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-モデルには、**Temperature** と **Humidity** という 2 つのデータ イベントが含まれることに注意してください。 これまでの例とは異なり、各イベントの型は、**DECLARE\_STRUCT** を使用して定義された構造体です。 **TemperatureEvent** には温度の測定値とタイムスタンプが含まれており、**HumidityEvent** には湿度の測定値とタイムスタンプが含まれています。 このモデルにより、自然な方法で上のシナリオのデータをモデル化できます。 イベントをクラウドに送信するとき、温度/タイムスタンプのペア、または湿度/タイムスタンプのペアを送信します。
+モデルには、**Temperature** と **Humidity** という&2; つのデータ イベントが含まれることに注意してください。 これまでの例とは異なり、各イベントの型は、**DECLARE\_STRUCT** を使用して定義された構造体です。 **TemperatureEvent** には温度の測定値とタイムスタンプが含まれており、**HumidityEvent** には湿度の測定値とタイムスタンプが含まれています。 このモデルにより、自然な方法で上のシナリオのデータをモデル化できます。 イベントをクラウドに送信するとき、温度/タイムスタンプのペア、または湿度/タイムスタンプのペアを送信します。
 
 次のようなコードを使用して、クラウドに温度のイベントを送信できます。
 
@@ -372,11 +372,11 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 
 ]
 
-つまり、このコードは **Temperature** と **Humidity** を別々に送信することと同じで、 便宜上、同じ呼び出しで両方のイベントを **SERIALIZE** に渡しているにすぎないという考え方です。 しかし、そうではありません。 上のコードは、次の 1 つのデータ イベントを IoT Hub に送信します。
+つまり、このコードは **Temperature** と **Humidity** を別々に送信することと同じで、 便宜上、同じ呼び出しで両方のイベントを **SERIALIZE** に渡しているにすぎないという考え方です。 しかし、そうではありません。 上のコードは、次の&1; つのデータ イベントを IoT Hub に送信します。
 
 {"Temperature":75, "Humidity":45}
 
-このことは奇妙に思えるかもしれません。その理由は、モデルでは次のように **Temperature** と **Humidity** が 2 つの*別々の*イベントとして定義されているためです。
+このことは奇妙に思えるかもしれません。その理由は、モデルでは次のように **Temperature** と **Humidity** が&2; つの*別々の*イベントとして定義されているためです。
 
 ```
 DECLARE_MODEL(Thermostat,
@@ -438,7 +438,7 @@ Temperature、Humidity、Time の値が設定されていると仮定すると�
 
 重要な点は、複数のデータ イベントを **SERIALIZE** に渡す場合、各イベントは、1 つの JSON オブジェクトのプロパティと見なされるということです。
 
-最適なアプローチは、モデルについての考え方によって異なります。 "イベント" をクラウドに送信し、定義された一連のプロパティを各イベントに含める場合は、最初のアプローチが非常に役立ちます。 その場合は、**DECLARE\_STRUCT** を使用して各イベントの構造体を定義し、**WITH\_DATA** マクロを使用してモデルに構造体を含めます。 その後、上の最初の例で行ったように各イベントを送信します。 このアプローチでは、 **SERIALIZER**に 1 つのデータ イベントだけを渡します。
+最適なアプローチは、モデルについての考え方によって異なります。 "イベント" をクラウドに送信し、定義された一連のプロパティを各イベントに含める場合は、最初のアプローチが非常に役立ちます。 その場合は、**DECLARE\_STRUCT** を使用して各イベントの構造体を定義し、**WITH\_DATA** マクロを使用してモデルに構造体を含めます。 その後、上の最初の例で行ったように各イベントを送信します。 このアプローチでは、 **SERIALIZER**に&1; つのデータ イベントだけを渡します。
 
 オブジェクト指向でモデルを考える場合は、2 番目のアプローチが適切である可能性があります。 この場合、**WITH\_DATA** を使用して定義した要素は、オブジェクトの "プロパティ" です。 クラウドに送信する "オブジェクトの" 状態の量に応じて、希望するイベントのサブセットはすべて **SERIALIZE** に渡すことができます。
 
@@ -530,10 +530,10 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 ## <a name="macro-configuration"></a>マクロの構成
 **シリアライザー** ライブラリを使用する場合に、注意が必要な SDK の重要部分は azure-c-shared-utility ライブラリで参照できます。
-再帰オプションを使用して GitHub から Azure-iot-sdk リポジトリを複製している場合、この共有ユーティリティ ライブラリがここに表示されます:
+再帰オプションを使用して GitHub から Azure-iot-sdk-c リポジトリを複製している場合、この共有ユーティリティ ライブラリがここに表示されます:
 
 ```
-.\\c\\azure-c-shared-utility
+.\\c-utility
 ```
 
 ライブラリを複製していない場合は、 [こちら](https://github.com/Azure/azure-c-shared-utility)に見つかります。
@@ -550,7 +550,7 @@ azure-c-shared-utility\\macro\_utils\_h\_generator.
 
 このソリューションのプログラムは、**macro\_utils.h** ファイルを生成します。 SDK には、既定の macro\_utils.h ファイルが含まれています。 このソリューションでは、いくつかのパラメーターを変更し、これらのパラメーターに基づいて、ヘッダー ファイルを再作成することができます。
 
-考慮が必要な 2 つの重要なパラメーターは、**nArithmetic** と **nMacroParameters** で、これらは macro\_utils.tt 内の次の 2 行で定義されています。
+考慮が必要な&2; つの重要なパラメーターは、**nArithmetic** と **nMacroParameters** で、これらは macro\_utils.tt 内の次の&2; 行で定義されています。
 
 ```
 <#int nArithmetic=1024;#>
@@ -560,7 +560,7 @@ azure-c-shared-utility\\macro\_utils\_h\_generator.
 
 これらの値は、SDK に含まれている既定のパラメーターです。 各パラメーターには、次のような意味があります。
 
-* nMacroParameters – 1 つの DECLARE\_MODEL マクロ定義に使用できるパラメーターの数を制御します。
+* nMacroParameters –&1; つの DECLARE\_MODEL マクロ定義に使用できるパラメーターの数を制御します。
 * nArithmetic – モデルで使用できるメンバーの合計数を制御します。
 
 これらのパラメーターは、モデルの規模を制御するため重要です。 たとえば、次のモデルの定義について考えてみます。
@@ -639,7 +639,7 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 最後に、**シリアライザー** ライブラリを使用する場合、**IoTHubClient** ライブラリを使用した場合と同様に、**IoTHubClient\_LL\_SetOption** を使用して構成オプションを設定できます。
 
-**シリアライザー** ライブラリに固有の機能の 1 つに、初期化 API があります。 ライブラリの使用を開始できるようにするには、**serializer\_init** を呼び出す必要があります。
+**シリアライザー** ライブラリに固有の機能の&1; つに、初期化 API があります。 ライブラリの使用を開始できるようにするには、**serializer\_init** を呼び出す必要があります。
 
 ```
 serializer_init(NULL);
@@ -658,7 +658,7 @@ serializer_deinit();
 ## <a name="next-steps"></a>次のステップ
 この記事では、**C 用 Azure IoT device SDK** に含まれている**シリアライザー** ライブラリの独自の側面について詳しく説明しました。説明した情報により、モデルを使用してイベントを送信したり、IoT Hub からメッセージを受信したりする方法についての理解が深まります。
 
-また、この記事は、**C 用 Azure IoT device SDK** を使用したアプリケーションの開発方法に関する 3 部構成のシリーズの最終回でもあります。この記事を読むことで、API の概要だけでなく、API のしくみについて理解するための十分な情報を得ることができます。 追加情報として、ここで取り上げなかった SDK のサンプルがいくつかあります。 さらに、詳細を知るために役立つリソースとして、 [SDK ドキュメント](https://github.com/Azure/azure-iot-sdks) も参照してください。
+また、この記事は、**C 用 Azure IoT device SDK** を使用したアプリケーションの開発方法に関する&3; 部構成のシリーズの最終回でもあります。この記事を読むことで、API の概要だけでなく、API のしくみについて理解するための十分な情報を得ることができます。 追加情報として、ここで取り上げなかった SDK のサンプルがいくつかあります。 さらに、詳細を知るために役立つリソースとして、 [SDK ドキュメント](https://github.com/Azure/azure-iot-sdk-c) も参照してください。
 
 IoT Hub の開発に関する詳細については、「[Azure IoT SDKs (Azure IoT SDK)][lnk-sdks]」を参照してください。
 
@@ -672,6 +672,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

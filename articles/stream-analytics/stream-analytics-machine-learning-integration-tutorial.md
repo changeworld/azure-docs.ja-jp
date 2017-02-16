@@ -1,5 +1,5 @@
 ---
-title: "Azure Stream Analytics と Azure Machine Learning を使用した感情分析 | Microsoft Docs"
+title: "Azure Stream Analytics と Machine Learning の統合 | Microsoft Docs"
 description: "Stream Analytics ジョブで、ユーザー定義関数および Machine Learning を使用する方法"
 keywords: 
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 10/04/2016
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fd5d7e2bf8d9cf68f1c3e9fe98656a8cfe0d1f15
+ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
+ms.openlocfilehash: e7c9e684a9e879b4795312c59b90176846cad82d
 
 
 ---
@@ -121,9 +121,9 @@ ms.openlocfilehash: fd5d7e2bf8d9cf68f1c3e9fe98656a8cfe0d1f15
    ![Stream Analytics Machine Learning, CSV ビュー](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 ## <a name="conclusion"></a>まとめ
-この記事では、ストリーミングのテキスト データを読み取り、そのデータにセンチメント分析をリアルタイム適用する Stream Analytics ジョブを作成する方法を示します。 このすべての処理は、センチメント分析モデルを構築する場合の複雑な作業を心配することなく実行できます。 これが Cortana Intelligence Suite の利点の 1 つです。
+この記事では、ストリーミングのテキスト データを読み取り、そのデータにセンチメント分析をリアルタイム適用する Stream Analytics ジョブを作成する方法を示します。 このすべての処理は、センチメント分析モデルを構築する場合の複雑な作業を心配することなく実行できます。 これが Cortana Intelligence Suite の利点の&1; つです。
 
-Azure Machine Learning 関数に関連するメトリックも表示できます。 そのためには、 **[監視]** タブをクリックします。 関数に関連する 3 つのメトリックが表示されます。  
+Azure Machine Learning 関数に関連するメトリックも表示できます。 そのためには、 **[監視]** タブをクリックします。 関数に関連する&3; つのメトリックが表示されます。  
 
 * **[関数要求]** は、Machine Learning Web サービスに対して送信された要求数を示します。  
 * **[関数イベント]** は、要求内のイベントの数を示します。 既定では、Machine Learning Web サービスへの各要求には、最大 1,000 件のイベントが含まれています。  
@@ -134,6 +134,6 @@ Azure Machine Learning 関数に関連するメトリックも表示できます
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

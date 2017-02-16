@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "スキーマレスな NoSQL ドキュメント データベース、DocumentDB の使用方法について説明します。 チュートリアルでは、アプリと統合し、JSON ドキュメントに対して SQL クエリを使用する方法を紹介します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: c0911518e954131f1c8de783d71fb17a9eea1945
+ms.sourcegitcommit: 14e5e2f2bdf3708ab339eff7eb58bbf87cb1a10c
+ms.openlocfilehash: 261d2d5410603fe3352c0bcfabcc15058f3f7c94
 
 ---
 #<a name="documentdb-documentation"></a>DocumentDB のドキュメント
 
-Azure DocumentDB は、完全管理された NoSQL データベース サービスです。高速で予測可能なパフォーマンス、高可用性、エラスティック スケーリング、グローバル分散、開発の容易さを視野に入れて構築されています。 DocumentDB は、スキーマフリーの NoSQL データベースとして、豊富で使い慣れた SQL クエリ機能を提供し、JSON データに対する待機時間を一環して低くします。
+Web、モバイル、ゲーム、IoT 向けのパフォーマンスに優れたアプリケーションで DocumentDB を使用する方法について説明します。 チュートリアルなどのドキュメントでは、この NoSQL データベース サービスの柔軟なスキーマを利用して JSON データを保存し、SQL クエリを実行する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -221,6 +222,6 @@ DocumentDB のドキュメントのダウンロード </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

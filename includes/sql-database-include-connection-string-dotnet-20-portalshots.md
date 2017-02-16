@@ -15,7 +15,7 @@ Latest Freshness check:  2015-09-02 , GeneMi.
     ![Select SQL][1-select-sql]
 2. **[SQL データベース]** ブレードの左上近辺にあるフィルター テキスト ボックスにデータベースの名前を入力します。
    
-    ![データベースを選択する][2-select-database]]
+    ![データベースを選択する][2-select-database]
 3. データベースの行をクリックします。
 4. データベース用のブレードが表示されたら、画面を見やすくするために、標準的な最小化コントロールをクリックして、参照とデータベースのフィルター処理を行うために使用したブレードを折りたたむことができます。
 5. データベース用のブレードで、 **[データベース接続文字列の表示]**をクリックします。
@@ -45,6 +45,6 @@ includes/sql-database-include-connection-string-40-config.md
 -->
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

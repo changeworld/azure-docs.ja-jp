@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "Container Service を使用して、DC/OS、Docker Swarm、または Kubernetes でアプリケーション コンテナーをデプロイして管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 445c13f0ff0106aa1d919be81ca373377464b32a
-ms.openlocfilehash: 5e027ac1a0a9ec4d11c76bbce1e0c944742ffaf9
+ms.sourcegitcommit: aaed834dd697bece735fa9297f0228b75346ffc7
+ms.openlocfilehash: 219dfe4950339d7a68d0a5f06135acb4b247b1fd
 
 ---
 
 # <a name="azure-container-service-documentation"></a>Azure Container Service のドキュメント
 
-Azure Container Service を使用すると、コンテナー化されたアプリケーションを実行するように事前構成されている仮想マシンのクラスターを簡単に作成、構成および管理できます。 Azure Container Service では、一般的なオープンソースのスケジューリングおよびオーケストレーション ツールの最適化された構成を使用します。 これにより、既存のスキルを使用して、または増え続けている大規模な専門家コミュニティの知恵に頼って、Microsoft Azure でコンテナーベースのアプリケーションをデプロイおよび管理できます。
+Container Service を使用して、完全に移植可能なアプリケーション コンテナーをデプロイして管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、DC/OS、Docker Swarm、または Kubernetes を使用してコンテナーの拡張とオーケストレーションを行う方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -100,6 +101,7 @@ Azure Container Service のドキュメントのダウンロード </div>
 </div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Dec16_HO3-->
 
 

@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/30/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 98c8352152b6cd1817d32c6418597c566d94d44f
 
 
 ---
-# <a name="add-company-branding-to-your-signin-and-access-panel-pages"></a>サインイン ページとアクセス パネル ページに対する会社のブランドの追加
+# <a name="add-company-branding-to-your-sign-in-and-access-panel-pages"></a>サインイン ページとアクセス パネル ページに対する会社のブランドの追加
 多くの企業は、管理下にある Web サイトとサービスに関して利用者が戸惑わないよう、そのすべての外観に統一感を持たせたいと考えています。 Azure Active Directory では、以下に示す Web ページの外観をカスタマイズして、会社のロゴや独自のカラー スキームを含めることで、一貫したルック アンド フィールを適用できます。
 
 * **サインイン ページ** - Office 365 など、Azure AD を ID プロバイダーとして使用する Web ベースのアプリケーションにサインインするときに表示されるページです。 ホーム領域の検出時や資格情報の入力時にこのページが表示されます。 フェデレーション ユーザーをそのオンプレミス STS (AD FS など) にリダイレクトできるのは、ホーム領域検出の働きによるものです。
@@ -34,7 +34,7 @@ ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
 > 
 > 
 
-## <a name="customizing-the-signin-page"></a>サインイン ページのカスタマイズ
+## <a name="customizing-the-sign-in-page"></a>サインイン ページのカスタマイズ
 クラウド アプリやクラウド サービスを勤務先の会社がサブスクライブしているとき、それらがブラウザーでアクセスする仕様になっている場合、通常、サインイン ページが使用されます。
 
 サインイン ページに変更を適用した場合、変更が反映されるまでに最大 1 時間かかる場合があります。
@@ -170,7 +170,7 @@ Azure クラシック ポータルでは、ディレクトリごとに、カス�
    
     c. すべてのテキスト ボックスからテキストを削除します。
    
-    d. ページの下部にある **[次へ]**」を参照してください。
+    d. ページの下部にある [次へ]」を参照してください。
    
     e. すべてのテキスト ボックスからテキストを削除します。
 7. **[保存]** クリックして要素を削除します。
@@ -224,6 +224,6 @@ Azure AD でカスタマイズ可能な要素には、複数のユース ケー�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

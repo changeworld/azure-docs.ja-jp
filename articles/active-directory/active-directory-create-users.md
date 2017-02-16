@@ -20,7 +20,7 @@ ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
 
 
 ---
-# <a name="add-new-users-or-users-with-microsoft-accounts-to-azure-active-directory"></a>新しいユーザーまたは Microsoft アカウントを持つユーザーを Azure Active Directory に追加する
+# <a name="add-new-users--or-users-with-microsoft-accounts-to-azure-active-directory"></a>新しいユーザーまたは Microsoft アカウントを持つユーザーを Azure Active Directory に追加する
 ディレクトリに格納するユーザーを追加します。 この記事では、組織内の新しいユーザーを追加する方法と、Microsoft アカウントを持つユーザーを追加する方法について説明します。 Azure Active Directory の他のディレクトリからユーザーを追加する方法、またはパートナー会社からユーザーを追加する方法の詳細については、「 [Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する](active-directory-create-users-external.md)」を参照してください。 既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
 
 ## <a name="add-a-user"></a>ユーザーの追加

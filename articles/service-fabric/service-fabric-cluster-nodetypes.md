@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/09/2016
+ms.date: 01/05/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 04acc5a82e658c216e25b96ecbfa42c88177506f
+ms.sourcegitcommit: a957a70be915459baa8c687c92e251c6011b6172
+ms.openlocfilehash: 6670076d14f1f3f3991dd004d488f69fb1c44cb6
 
 
 ---
@@ -83,7 +83,7 @@ Resource Manager テンプレートを使用してクラスターを設定して
 ![inboundNatPools][InboundNatPools]
 
 ### <a name="after-cluster-deployment"></a>クラスター デプロイの後
-これは少し複雑で、VM がリサイクルされる可能性があります。 Azure PowerShell を使用して、新しい値を設定する必要があります。 Azure PowerShell 1.0 以降がコンピューターにインストールされていることを確認します。 まだインストールされていない場合は、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
+これは少し複雑で、VM がリサイクルされる可能性があります。 Azure PowerShell を使用して、新しい値を設定する必要があります。 Azure PowerShell 1.0 以降がコンピューターにインストールされていることを確認します。 まだインストールされていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)
 
 Azure アカウントにサインインします。 この PowerShell コマンドが何らかの理由で失敗する場合、Azure PowerShell が正しくインストールされているかどうかを確認することをお勧めします。
 
@@ -114,7 +114,7 @@ Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG nam
 
 <!--Image references-->
 [NodeTypes]: ./media/service-fabric-cluster-nodetypes/NodeTypes.png
-[リソース]: ./media/service-fabric-cluster-nodetypes/Resources.png
+[Resources]: ./media/service-fabric-cluster-nodetypes/Resources.png
 [InboundNatPools]: ./media/service-fabric-cluster-nodetypes/InboundNatPools.png
 [LBBlade]: ./media/service-fabric-cluster-nodetypes/LBBlade.png
 [NATRules]: ./media/service-fabric-cluster-nodetypes/NATRules.png
@@ -122,6 +122,6 @@ Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG nam
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

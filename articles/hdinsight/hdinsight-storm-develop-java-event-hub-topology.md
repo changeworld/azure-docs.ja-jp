@@ -15,12 +15,13 @@ ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eaa86b706a538543816b59d8cd09ee54df43b26d
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: abeafaaabb7449916313ee3805b18e9ec0da765e
 
 
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-java"></a>HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java)
+
 Azure Event Hubs では、Web サイト、アプリ、デバイスで発生する大量のデータを処理できます。 Event Hubs スパウトでは、HDInsight で Apache Storm を使用してこのデータをリアルタイムで簡単に分析できます。 また、Event Hubs のボルトを使用して Storm から Event Hub にデータを書き込むこともできます。
 
 このチュートリアルでは、Event Hubs スパウトとボルトを使用して、Java ベースの Storm トポロジでデータの読み取りと書き込みを行う方法について説明します。
@@ -28,15 +29,11 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 ## <a name="prerequisites"></a>前提条件
 * HDInsight クラスター上の Apache Storm。 基本について説明した次のいずれかの記事を参照してクラスターを作成します。
   
-  * [HDInsight クラスター上の Linux ベースの Storm](hdinsight-apache-storm-tutorial-get-started-linux.md): SSH を使用して、Linux、Unix、OS X、または Windows クライアントからクラスターを操作する場合に選択します
-  * [HDInsight クラスター上の Windows ベースの Storm](hdinsight-apache-storm-tutorial-get-started.md): PowerShell を使用して、Windows クライアントからクラスターを操作する場合に選択します
+  * HDInsight クラスター。 新しいクラスターの作成方法については、[HDInsight クラスターでの Storm の使用](hdinsight-apache-storm-tutorial-get-started-linux.md)に関するページを参照してください。
     
-    > [!NOTE]
-    > このドキュメントの手順は、HDInsight クラスター (3.3 または 3.4) 上の Storm を前提としています。 これらのクラスターには Storm 0.10.0 と Hadoop 2.7 が用意されており、ここで取り上げている例を正しく動作させるために必要な手順数が少なくて済みます。
-    > 
-    > HDInsight 3.2 上で Storm 0.9.3 を使用した場合の例については、この例のリポジトリの [Storm v0.9.3](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub/tree/Storm_v0.9.3) ブランチを参照してください。
-    > 
-    > 
+    > [!IMPORTANT]
+    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * [Azure Event Hub](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 * [Oracle Java Developer Kit (JDK) バージョン 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) または同等のバージョン ([OpenJDK](http://openjdk.java.net/) など)
 * [Maven](https://maven.apache.org/download.cgi): Maven は Java プロジェクトのプロジェクト ビルド システムです
@@ -44,8 +41,6 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
   
   > [!NOTE]
   > お使いのエディターまたは IDE には、Maven との操作用の特定の機能が搭載されている場合があります (本ドキュメントではカバーしていません)。 お使いの編集環境の機能に関する詳細は、製品のマニュアルをご覧ください。
-  > 
-  > 
   
   * SSH クライアント。 HDInsight で SSH を使用する方法の詳細については、次の記事をご覧ください。
     
@@ -185,7 +180,7 @@ storm-eventhubs パッケージの依存関係が加わります。このパッ�
 
 プロジェクト コードと必要な依存関係の両方を含む uber jar にソリューションをパッケージ化するために使用されます。 また、次の用途にも使用されます。
 
-* 依存関係のライセンス ファイル名を変更する: この処理を実行しないと、Windows ベースの HDInsight クラスターで実行時にエラーが発生する可能性があります。
+* 依存関係のライセンス ファイル名を変更する: この処理を実行しないと、実行時にエラーが発生する可能性があります。
 * セキュリティ/署名を除外する: この処理を実行しないと、HDInsight クラスターで実行時にエラーが発生する可能性があります。
 * 同じインターフェイスの複数の実装は、1 つのエントリにマージする必要があります。 そのようになっていないと、WASB ファイル システムとの通信方法を Storm-HDFS ボルトが認識できないというエラーが発生します。
 
@@ -261,7 +256,7 @@ Event Hubs は、この例のデータ ソースです。 新しい Event Hub �
    
     ![ウィザード ページ 2](./media/hdinsight-storm-develop-csharp-event-hub-topology/wiz2.png)
 4. Event Hub が作成されたら、名前空間を選択し、 **[Event Hubs]**を選択して、先ほど作成した Event Hub を選択します。
-5. **[構成]**を選択し、次の情報を使用して新しいアクセス ポリシーを 2 つ作成します。
+5. **[構成]**を選択し、次の情報を使用して新しいアクセス ポリシーを&2; つ作成します。
    
     <table>
     <tr><th>名前</th><th>アクセス許可</th></tr>
@@ -283,7 +278,7 @@ Event Hubs は、この例のデータ ソースです。 新しい Event Hub �
     必要な依存関係がダウンロードされ、ビルドされ、プロジェクトがパッケージ化されます。 出力は **EventHubExample-1.0-SNAPSHOT.jar** というファイル名で **/target** ディレクトリに格納されます。
 
 ## <a name="deploy-the-topologies"></a>トポロジのデプロイ
-このプロジェクトで作成される jar には、**com.microsoft.example.EventHubWriter** と **com.microsoft.example.EventHubReader** という 2 つのトポロジが含まれます。 EventHubWriter トポロジを最初に開始する必要があります。これは、Event Hub にイベントが出力され、その出力が EventHubReader から読み取られるためです。
+このプロジェクトで作成される jar には、**com.microsoft.example.EventHubWriter** と **com.microsoft.example.EventHubReader** という&2; つのトポロジが含まれます。 EventHubWriter トポロジを最初に開始する必要があります。これは、Event Hub にイベントが出力され、その出力が EventHubReader から読み取られるためです。
 
 ### <a name="if-using-a-linux-based-cluster"></a>Linux ベースのクラスターを使用する場合
 1. SCP を使用して、HDInsight クラスターに jar パッケージをコピーします。 USERNAME には、使用するクラスターの SSH ユーザーを指定します。 CLUSTERNAME には、使用する HDInsight クラスター名を指定します。
@@ -325,7 +320,7 @@ Event Hubs は、この例のデータ ソースです。 新しい Event Hub �
         storm jar EventHubExample-1.0-SNAPSHOT.jar com.microsoft.example.EventHubReader reader
    
     トポロジが開始され、"reader" と "writer" というフレンドリ名が付けられます。
-4. 1 ～ 2 分待つと、トポロジで Event Hub のイベントの書き込みと読み取りを実行できるようになります。次に、以下のコマンドを使用して、EventHubReader がデータを HDInsight ストレージに格納していることを確認します。
+4. 1 ～&2; 分待つと、トポロジで Event Hub のイベントの書き込みと読み取りを実行できるようになります。次に、以下のコマンドを使用して、EventHubReader がデータを HDInsight ストレージに格納していることを確認します。
    
         hadoop fs -ls /devicedata
    
@@ -362,7 +357,11 @@ Event Hubs は、この例のデータ ソースです。 新しい Event Hub �
         storm kill reader
         storm kill writer
 
-### <a name="if-using-a-windows-based-cluster"></a>Windows ベースのクラスターを使用している場合
+### <a name="if-using-a-windows-based-hdinsight-cluster"></a>Windows ベースの HDInsight クラスターを使用する場合
+
+> [!IMPORTANT]
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 1. ブラウザーで、https://CLUSTERNAME.azurehdinsight.net に移動します。 メッセージが表示されたら、HDInsight クラスター管理者の資格情報を入力します。 Storm ダッシュボードが表示されます。
 2. **[Jar ファイル]** ドロップダウンを使用して、ビルド環境にある EventHubExample-1.0-SNAPSHOT.jar を参照して選択します。
 3. **[クラス名]** に「`com.mirosoft.example.EventHubWriter`」と入力します。
@@ -374,7 +373,7 @@ Event Hubs は、この例のデータ ソースです。 新しい Event Hub �
    * **追加パラメーター**: 「`reader`」と入力します
      
      [送信] をクリックして EventHubReader トポロジを開始します。
-6. 数分待つと、トポロジでイベントを生成し、Azure Storage に格納できるようになります。次に、**[Storm ダッシュボード]** ページの上部にある **[Hadoop Query Console] (Hadoop クエリ コンソール)** タブを選択します。
+6. 数分待つと、トポロジでイベントを生成し、Azure Storage に格納できるようになります。次に、**[Storm ダッシュボード]** ページの上部にある **[Hadoop Query Console] \(Hadoop クエリ コンソール)** タブを選択します。
 7. **[クエリ コンソール]** の **[Hive エディター]** を選択し、既定の `select * from hivesampletable` を次の値で置き換えます。
    
         create external table devicedata (deviceid string, devicevalue int) row format delimited fields terminated by ',' stored as textfile location 'wasbs:///devicedata/';
@@ -436,6 +435,6 @@ Storm UI の詳細な使用方法については、次のトピックを参照�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

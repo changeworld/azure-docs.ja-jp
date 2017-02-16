@@ -3,7 +3,7 @@ title: "Azure Batch PowerShell の使用 | Microsoft Docs"
 description: "Azure Batch サービスの管理に使用できる Azure PowerShell のコマンドレットについて簡単に説明します。"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: f9ad62c5-27bf-4e6b-a5bf-c5f5914e6199
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
-ms.date: 10/20/2016
-ms.author: marsma
+ms.date: 01/20/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9aa49ecfa151b8ab56c0560db47c3b0eb80647a2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1ea51f4053ba0d4e08628d29eca7cb7c82a26d61
 
 
 ---
@@ -30,7 +30,7 @@ Batch API、Azure ポータル、Azure コマンド ライン インターフェ
 ## <a name="prerequisites"></a>前提条件
 Azure PowerShell を使用して Batch リソースを管理するために、次の操作を実行します。
 
-* [Azure PowerShell のインストールと構成](../powershell-install-configure.md)
+* [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)
 * **Login-AzureRmAccount** コマンドレットを実行してサブスクリプションに接続します (Azure Batch コマンドレットは、Azure Resource Manager モジュールに付属しています)。
   
     `Login-AzureRmAccount`
@@ -240,6 +240,6 @@ Batch コマンドレットは、コマンドレット間でデータを送信�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

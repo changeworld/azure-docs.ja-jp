@@ -4,7 +4,7 @@ description: "Microsoft Azure 課金パートナーの Cloud Cruiser が Azure B
 services: 
 documentationcenter: 
 author: BryanLa
-manager: mbaldwin
+manager: ruchic
 editor: 
 tags: billing
 ms.assetid: b65128cf-5d4d-4cbd-b81e-d3dceab44271
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 09/08/2016
+ms.date: 01/07/2017
 ms.author: mobandyo;sirishap;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b1783823218a883fc9fdec05e835fb7249eed97d
+ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
+ms.openlocfilehash: fc40c33c7ae28adcd2975e89c395db4cfde90a49
 
 
 ---
@@ -47,15 +47,15 @@ RateCard API は、Azure の料金情報を提供します。 適切な資格情
 ### <a name="cloud-cruisers-interface-to-azure-ratecard-api"></a>Azure RateCard API に対する Cloud Cruiser のインターフェイス
 Cloud Cruiser は、RateCard API をさまざまな方法で利用できます。 この記事では、IaaS ワークロード コストのシミュレーションと分析に使用する方法を説明します。
 
-この使用事例を読むにあたって、Microsoft Azure Pack (WAP) でいくつかのインスタンスが実行されているワークロードを想定してください。 目標は、この同じワークロードを Azure でシミュレートし、移行した場合のコストを見積もることです。 このシミュレーションを作成するために、主に次の 2 つの作業を実行します。
+この使用事例を読むにあたって、Microsoft Azure Pack (WAP) でいくつかのインスタンスが実行されているワークロードを想定してください。 目標は、この同じワークロードを Azure でシミュレートし、移行した場合のコストを見積もることです。 このシミュレーションを作成するために、主に次の&2; つの作業を実行します。
 
 1. **RateCard API から収集したサービス情報のインポートと処理。** この作業はブックでも実行されます。この場合、RateCard API からの抽出を変換し、新しい料金プランに発行します。 この新しい料金プランは、Azure の料金を見積もるシミュレーションに使用されます。
-2. **IaaS の WAP サービスと Azure サービスの正規化。** 既定では、WAP サービスは個々のリソース (CPU、メモリ サイズ、ディスク サイズなど) に基づいていますが、Azure サービスはインスタンス サイズ (A0、A1、A2 など) に基づいています。 この 1 つ目の作業は、Cloud Cruiser の ETL エンジン (ブックと呼ばれます) で実行できます。これらのリソースは、Azure インスタンス サービスと同様に、インスタンス サイズに基づいてまとめることができます。
+2. **IaaS の WAP サービスと Azure サービスの正規化。** 既定では、WAP サービスは個々のリソース (CPU、メモリ サイズ、ディスク サイズなど) に基づいていますが、Azure サービスはインスタンス サイズ (A0、A1、A2 など) に基づいています。 この&1; つ目の作業は、Cloud Cruiser の ETL エンジン (ブックと呼ばれます) で実行できます。これらのリソースは、Azure インスタンス サービスと同様に、インスタンス サイズに基づいてまとめることができます。
 
 ### <a name="import-data-from-the-ratecard-api"></a>RateCard API からのデータのインポート
 Cloud Cruiser のブックには、RateCard API の情報の収集と処理を自動化する機能があります。  ETL (抽出-変換-読み込み) ブックを使用して、データのコレクション、変換、および Cloud Cruiser データベースへの発行を構成できます。
 
-各ブックには、1 つ以上のコレクションを含めることができます。そのため、複数のソースの情報を関連付けて、使用状況データの補完と拡大を行うことができます。 次の 2 つのスクリーンショットは、既存のブックに新しい "*コレクション*" を作成する方法と、RateCard API から情報を "*コレクション*" にインポートする方法を示しています。
+各ブックには、1 つ以上のコレクションを含めることができます。そのため、複数のソースの情報を関連付けて、使用状況データの補完と拡大を行うことができます。 次の&2; つのスクリーンショットは、既存のブックに新しい "*コレクション*" を作成する方法と、RateCard API から情報を "*コレクション*" にインポートする方法を示しています。
 
 ![図 1 - 新しいコレクションの作成][1]
 
@@ -68,7 +68,7 @@ Cloud Cruiser のブックには、RateCard API の情報の収集と処理を�
 ![図 3 - RateCard API から収集したデータを処理する変換ステップ][3]
 
 ### <a name="defining-new-services-and-rate-plans"></a>新しいサービスと料金プランの定義
-Cloud Cruiser には、サービスを定義する方法が複数あります。 選択肢の 1 つは、使用状況データからサービスをインポートすることです。 一般的に、この方法は、プロバイダーがサービスを定義済みであるパブリック クラウドを使用する場合にのみ使用されます。
+Cloud Cruiser には、サービスを定義する方法が複数あります。 選択肢の&1; つは、使用状況データからサービスをインポートすることです。 一般的に、この方法は、プロバイダーがサービスを定義済みであるパブリック クラウドを使用する場合にのみ使用されます。
 
 料金プランは、有効期間、ユーザー グループなどのオプションに基づいて、さまざまなサービスに適用できる料金または価格のセットです。 Cloud Cruiser の料金プランを使用して、シミュレーションまたは "what-if" シナリオを作成し、サービスの変更がワークロードの総コストに与える影響を理解できます。
 
@@ -76,7 +76,7 @@ Cloud Cruiser には、サービスを定義する方法が複数あります。
 
 変換プロセスが終わった後は、新しいステップを作成し、新しいサービスと料金として RateCard API からデータを発行することができます。
 
-![図 4 - 新しい料金として RateCard API のデータを発行する][4]
+![図 4 - 新しい料金としての RateCard APIのデータの発行][4]
 
 ### <a name="verify-azure-services-and-rates"></a>Azure サービスと料金
 サービスと料金を発行したら、Cloud Cruiser の *[Services]* タブでインポートされたサービスの一覧を確認できます。
@@ -109,7 +109,7 @@ WAP の既定では、コンピューティング、メモリ、およびネッ�
 
 上のグラフは、サービスを別のコスト比較を示し、WAP (濃い青色) と Azure (明るい青色) の間の特定のサービスごとのワークロードの実行料金を比較します。
 
-下のグラフは同じデータですが、部門別に分けられます。 これは、WAP と Azure でワークロードを実行している各部門の料金を示しています。また、節約バー (緑色) は 2 つの差です。
+下のグラフは同じデータですが、部門別に分けられます。 これは、WAP と Azure でワークロードを実行している各部門の料金を示しています。また、節約バー (緑色) は&2; つの差です。
 
 ## <a name="azure-usage-api"></a>Azure Usage API
 ### <a name="introduction"></a>はじめに
@@ -117,7 +117,7 @@ WAP の既定では、コンピューティング、メモリ、およびネッ�
 
 Cloud Cruiser では、いくつかの方法での Usage API との統合を利用できます。 API によって使用可能な粒度 (1 時間ごとの利用状況情報) とリソースのメタデータ情報は、柔軟なショーバック モデルまたはチャージバック モデルをサポートするために必要なデータセットを提供します。 
 
-このチュートリアルでは、Cloud Cruiser が Usage API の情報から得ることができる利点の 1 つの例をご紹介します。 具体的には、Azure でリソース グループを作成し、アカウント構造のタグを関連付けます。その後、タグ情報の取得と Cloud Cruiser に対するタグ情報の処理についてプロセスを記述します。
+このチュートリアルでは、Cloud Cruiser が Usage API の情報から得ることができる利点の&1; つの例をご紹介します。 具体的には、Azure でリソース グループを作成し、アカウント構造のタグを関連付けます。その後、タグ情報の取得と Cloud Cruiser に対するタグ情報の処理についてプロセスを記述します。
 
 最終的な目標は、次のようなレポートを作成し、タグによって設定されたアカウント構造に基づいて、コストと消費量を分析できるようになることです。
 
@@ -140,7 +140,7 @@ Azure Usage API を介して使用できるデータには、消費量の情報�
 
 以下のスクリーン ショットに、関連付けたタグを使用するサンプル リソース グループを示します。
 
-![Figure 11 - Resource Group with associated tags on Azure portal][11]
+![図 11 - Azure Portal でタグが関連付けられたリソース グループ][11]
 
 次の手順では、Usage API から Cloud Cruiser に情報を取得します。 現在、Usage API は、JSON 形式で応答を提供します。 取得されるデータのサンプルを次に示します。
 
@@ -179,7 +179,7 @@ Cloud Cruiser のブックには、Usage API の情報の収集と処理を自�
 次に、*Usage API* を使用して UsageAPI シートを設定し、*PublishData* シートでその情報を Billing API の消費データと関連付けます。
 
 ### <a name="processing-the-tag-information-from-the-usage-api"></a>Usage API からのタグ情報の処理
-ブックにデータをインポートした後は、API からの情報を処理するために、 *UsageAPI* シートで変換の手順を作成します。 最初の手順では、"JSON split" プロセッサを使用して 1 つのフィールドからタグを抽出し、それぞれ (Department、Project、Owner、Environment) に対してフィールドを 1 つ作成します。
+ブックにデータをインポートした後は、API からの情報を処理するために、 *UsageAPI* シートで変換の手順を作成します。 最初の手順では、"JSON split" プロセッサを使用して&1; つのフィールドからタグを抽出し、それぞれ (Department、Project、Owner、Environment) に対してフィールドを&1; つ作成します。
 
 ![図 4 - タグ情報に対する新しいフィールドの作成][13]
 
@@ -194,9 +194,9 @@ Cloud Cruiser のブックには、Usage API の情報の収集と処理を自�
 
 "Networking" サービスの適切なアカウント構造のフィールドが適用されて、不足タグの問題が解決されたことに注意してください。 さらに、ターゲット リソース グループ以外のリソースのアカウント構造フィールドに "Other" を設定して、レポートでこれらを区別するようにもしました。
 
-ここで、利用状況データを公開するために、手順がもう 1 つ必要です。 この手順では、料金プランで定義されている各サービスの適切な料金が、利用状況情報に適用され、計算された料金がデータベースに読み込まれます。
+ここで、利用状況データを公開するために、手順がもう&1; つ必要です。 この手順では、料金プランで定義されている各サービスの適切な料金が、利用状況情報に適用され、計算された料金がデータベースに読み込まれます。
 
-この手順の最も大きなメリットは、このプロセスを 1 回だけ行えばよいという点です。 ブックが完成したら、必要なのはスケジューラに追加することだけです。ブックは 1 時間ごとに、または毎日スケジュールされた時刻に実行されます。 新しいレポートを作成するか、既存のレポートをカスタマイズするだけで、データの分析を行って、クラウドの利用状況から意味のある情報を取得できます。
+この手順の最も大きなメリットは、このプロセスを&1; 回だけ行えばよいという点です。 ブックが完成したら、必要なのはスケジューラに追加することだけです。ブックは&1; 時間ごとに、または毎日スケジュールされた時刻に実行されます。 新しいレポートを作成するか、既存のレポートをカスタマイズするだけで、データの分析を行って、クラウドの利用状況から意味のある情報を取得できます。
 
 ### <a name="next-steps"></a>次のステップ
 * Cloud Cruiser のブックとレポートの作成手順については、Cloud Cruiser のオンライン [ドキュメント](http://docs.cloudcruiser.com/) を参照してください (有効なログインが必要です)。  Cloud Cruiser の詳細については、 [info@cloudcruiser.com](mailto:info@cloudcruiser.com)に関連付けるルックアップ テーブルを作成します。
@@ -219,13 +219,13 @@ Cloud Cruiser のブックには、Usage API の情報の収集と処理を自�
 [8]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workbook-Scheduling.png "図 8 - ブックのスケジュール設定"
 [9]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workload-Cost-Simulation-Report.png "図 9 - ワークロードのコスト比較シナリオのサンプル レポート"
 [10]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/1_ReportWithTags.png "図 10 - タグを使用した分析結果のレポート"
-[11]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/2_ResourceGroupsWithTags.png "図 11 - Azure ポータルのタグが関連付けられたリソース グループ"
-[12]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/3_ImportIntoUsageAPISheet.png "図12 - UsageAPI シートにインポートする Usage API データ"
+[11]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/2_ResourceGroupsWithTags.png "図 11 - Azure Portal でタグが関連付けられたリソース グループ"
+[12]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/3_ImportIntoUsageAPISheet.png "図 12 - UsageAPI シートにインポートする Usage API データ"
 [13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "図 13 - タグ情報に対する新しいフィールドの作成"
 [14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "図 14 - 参照からの情報を使用したアカウント構造の設定"
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

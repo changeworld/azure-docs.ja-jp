@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/18/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 85752f9286fc7fe8d9cc3acf6be66cca623934f5
-ms.openlocfilehash: b65ad7ed4e975bafb9a578d89fa5eb32c3066ee8
+ms.sourcegitcommit: a5e2bc4e29ac91ec17a7778e33509ec54f167ca2
+ms.openlocfilehash: 3e8c6d358602b6061447feb216d1e0e07fd950ee
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: b65ad7ed4e975bafb9a578d89fa5eb32c3066ee8
 
 ## <a name="prepare-the-data"></a>データを準備する
 
-Data Lake Store を既定のストレージとして使用する HDInsight クラスターを作成した場合は、この手順を行う必要があります。クラスター作成処理で、クラスター作成中に指定する Data Lake Store アカウントにいくつかのサンプル データが追加されるためです。
+Data Lake Store を既定のストレージとして使用する HDInsight クラスターを作成した場合は、この手順を行う必要うはありません。クラスター作成処理で、クラスター作成中に指定する Data Lake Store アカウントにいくつかのサンプル データが追加されるためです。
 
 Data Lake Store を追加ストレージとして使用し、Azure Storage Blob を既定のストレージとして使用する HDInsight クラスターを作成した場合は、まず、いくつかのサンプル データを Data Lake Store アカウントにコピーする必要があります。 HDInsight クラスターに関連付けられている Azure Storage Blob のサンプル データを使用することができます。 この操作には、 [ADLCopy ツール](http://aka.ms/downloadadlcopy) を使用できます。 リンク先からツールをダウンロードしてインストールします。
 
@@ -137,6 +137,7 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
 * [Azure Toolkit for Eclipse の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Nov16_HO5-->
 
 
