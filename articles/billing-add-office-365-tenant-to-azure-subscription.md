@@ -62,7 +62,7 @@ Office 365 テナントを Azure サブスクリプションに関連付ける�
 ### <a name="associate-the-office-365-tenant-with-the-azure-subscription"></a>Office 365 テナントを Azure サブスクリプションに関連付ける
 Office 365 テナントを Azure サブスクリプションに関連付けるには、次の手順を実行します。
 
-1. サービス管理者の資格情報で[クラシック管理ポータル](https://manage.windowsazure.com)にサインインします。
+1. サービス管理者の資格情報で[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. 左ウィンドウで、**[Active Directory]** を選択します。
    
    ![Azure Active Directory のエントリのスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/s35-classic-portal-active-directory-entry.png)
@@ -95,7 +95,7 @@ Office 365 テナントを Azure サブスクリプションに関連付ける�
    
     ![[保存] アイコンのスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/s312_use-contoso-directory-azure-confirm-and-sign-out.png)
    
-    f. サービス管理者の資格情報で[クラシック管理ポータル](https://manage.windowsazure.com)にサインインします。
+    f. サービス管理者の資格情報で[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
    
     ![Azure サインイン ページのスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/s313_azure-sign-in-service-admin.png)
    
@@ -147,7 +147,7 @@ Office 365 テナントを Azure サブスクリプションに関連付ける�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 アカウント管理ポータルをサインアウトします。
    
-    b. [Azure 新管理ポータル](https://portal.azure.com/)を開きます。
+    b. [Azure Portal](https://portal.azure.com/) を開きます。
    
     c. Azure サインイン ページに **[組織のアカウントを使ってサインインしてください]**というリンクが表示されている場合は、そのリンクを選択します。 それ以外の場合、この手順はスキップしてください。
    
