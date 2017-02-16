@@ -113,6 +113,6 @@ Event Hubs の詳細については、次のトピックを参照してくださ
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

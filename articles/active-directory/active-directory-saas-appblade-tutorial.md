@@ -240,6 +240,6 @@ AppBlade で Azure AD のシングル サインオンを構成してテストす
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO3-->
 
 
