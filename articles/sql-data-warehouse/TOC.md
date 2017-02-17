@@ -1,4 +1,4 @@
-# Overview
+# 概要
 
 ## [SQL Data Warehouse の概要](sql-data-warehouse-overview-what-is.md)
 ## [データ ウェアハウスのワークロード](sql-data-warehouse-overview-workload.md)
@@ -6,17 +6,14 @@
 
 # 作業の開始
 
-## SQL Data Warehouse の作成
-### [Azure Portal](sql-data-warehouse-get-started-provision.md)
-### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
-### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
+## [初心者向けチュートリアル](sql-data-warehouse-get-started-tutorial.md)
 ## [ベスト プラクティス](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
 ## [サポートを受ける](sql-data-warehouse-get-started-create-support-ticket.md)
 
 # 方法
 
-## バックアップおよび復元
+## バックアップと復元
 
 ### [Backup の概要](sql-data-warehouse-backups.md)
 ### [復元の概要](sql-data-warehouse-restore-database-overview.md)
@@ -32,6 +29,11 @@
 ### [SSMS](sql-data-warehouse-query-ssms.md)
 ### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 ### [Visual Studio のインストール](sql-data-warehouse-install-visual-studio.md)
+
+## 作成
+### [Azure ポータル](sql-data-warehouse-get-started-provision.md)
+### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
+### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
 
 ## 開発
 
@@ -78,6 +80,7 @@
 
 ### [概要](sql-data-warehouse-overview-load.md)
 ### [サンプル データ](sql-data-warehouse-load-sample-databases.md)
+### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [AZCopy](sql-data-warehouse-load-from-sql-server-with-azcopy.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
 ### [SQL Server からの BCP](sql-data-warehouse-load-from-sql-server-with-bcp.md)
@@ -145,6 +148,6 @@
 ### [データ管理](sql-data-warehouse-partner-data-management.md)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

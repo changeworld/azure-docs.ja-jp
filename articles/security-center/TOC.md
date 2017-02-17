@@ -4,11 +4,13 @@
 ## [データのセキュリティ](security-center-data-security.md)
 ## シナリオ
 ### [インシデント対応](security-center-incident-response.md)
+### [推奨事項を使用してセキュリティを強化する](security-center-using-recommendations.md)
 
 # 作業開始
 ## [クイック スタート](security-center-get-started.md)
 ## [計画と運用](security-center-planning-and-operations-guide.md)
-## [権限](security-center-permissions.md)
+## [アクセス許可](security-center-permissions.md)
+## [パートナー統合](security-center-partner-integration.md)
 ## [FAQ](security-center-faq.md)
 
 # 方法
@@ -19,11 +21,13 @@
 
 ### [アプリケーションの推奨事項](security-center-application-recommendations.md)
 #### [Web アプリケーション ファイアウォールの追加](security-center-add-web-application-firewall.md)
+#### [アプリケーション保護を完了する](security-center-add-web-application-firewall.md#finalize-application-protection)
 
 ### [ネットワークの推奨事項](security-center-network-recommendations.md)
 #### [次世代ファイアウォールを追加する](security-center-add-next-generation-firewall.md)
 #### [ネットワーク セキュリティ グループを有効にする](security-center-enable-network-security-groups.md)
 #### [インターネット接続エンドポイント経由のアクセスを制限する](security-center-restrict-access-through-internet-facing-endpoints.md)
+#### [NGFW 経由に限定したトラフィックのルーティング](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)
 
 ### [SQL サービスの推奨事項](security-center-sql-service-recommendations.md)
 #### [Enable auditing on SQL databases](security-center-enable-auditing-on-sql-databases.md)
@@ -34,9 +38,11 @@
 #### [ディスク暗号化の適用](security-center-apply-disk-encryption.md)
 #### [システムの更新の適用](security-center-apply-system-updates.md)
 #### [データ収集を有効にする](security-center-enable-data-collection.md)
+#### [Enable encryption for storage account](security-center-enable-encryption-for-storage-account.md)
 #### [VM エージェントの有効化](security-center-enable-vm-agent.md)
 #### [Endpoint Protection をインストールします](security-center-install-endpoint-protection.md)
 #### [セキュリティの連絡先詳細の提供](security-center-provide-security-contact-details.md)
+#### [システムの更新後に再起動する](security-center-apply-system-updates.md#reboot-after-system-updates)
 #### [OS の脆弱性の修復](security-center-remediate-os-vulnerabilities.md)
 #### [Endpoint Protection の正常性アラートの解決](security-center-resolve-endpoint-protection-health-alerts.md)
 #### [OS バージョンの更新](security-center-update-os-version.md)
@@ -70,6 +76,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=security-center)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

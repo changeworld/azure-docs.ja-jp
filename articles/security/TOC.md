@@ -23,8 +23,11 @@
 ## [ID 管理](security-identity-management-overview.md)
 ### [ID 管理セキュリティのベスト プラクティス](azure-security-identity-management-best-practices.md)
 ## PaaS サービス
-### [IoT セキュリティのベスト プラクティス](azure-security-iot-best-practices.md)
+### [PaaS デプロイをセキュリティで保護する](security-paas-deployments.md)
+#### [SQL を使用して PaaS アプリケーションをセキュリティで保護する](security-paas-applications-using-sql.md)
+#### [App Services を使用して PaaS アプリケーションをセキュリティで保護する](security-paas-applications-using-app-services.md)
 ### [IoT セキュリティの概要](security-internet-of-things-overview.md)
+### [IoT セキュリティのベスト プラクティス](azure-security-iot-best-practices.md)
 ## 各種業界
 ### [セキュリティ保護されたヘルス ソリューションの設計](security-health-care-solution.md)
 ## [セキュリティのアーキテクチャ](azure-security-architecture-overview.md)
@@ -51,6 +54,6 @@
 ## [Channel 9 で配信中のセキュリティに関するビデオ](security-channel-nine.md)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 
