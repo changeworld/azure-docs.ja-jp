@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9616197bd2b1587290b3beb14cb883e2dba8fb4e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 69a976f1f019cb89780d00c6bc730fae30e92378
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 9616197bd2b1587290b3beb14cb883e2dba8fb4e
 基本的な Stream Analytics タスクを実行する Azure PowerShell コマンドレットと PowerShell スクリプトを使用して、Stream Analytics リソースを監視および管理する方法について説明します。
 
 ## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>Stream Analytics 用に Azure PowerShell コマンドレットを実行するための前提条件
-* サブスクリプションに Azure リソース グループを作成する。 次に、サンプルの Azure PowerShell スクリプトを示します。 Azure PowerShell については、「 [Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。  
+* サブスクリプションに Azure リソース グループを作成する。 次に、サンプルの Azure PowerShell スクリプトを示します。 Azure PowerShell については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」を参照してください。  
 
 Azure PowerShell 0.9.8:  
 
@@ -64,7 +64,7 @@ Azure PowerShell 1.0:
 
 ## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>Stream Analytics 用の Azure PowerShell コマンドレット
 次の Azure PowerShell コマンドレットは、Azure Stream Analytics ジョブの監視と管理に使用できます。 Azure PowerShell にはさまざまなバージョンがあります。 
-**ここに示す各例では、最初が Azure PowerShell 0.9.8 のコマンド、2 番目が Azure PowerShell 1.0 のコマンドです。**  Azure PowerShell 1.0 のコマンドには、常に "AzureRM" が含まれます。
+**ここに示す各例では、最初が Azure PowerShell 0.9.8 のコマンド、2 番目が Azure PowerShell 1.0 のコマンドです。** Azure PowerShell 1.0 のコマンドには、常に "AzureRM" が含まれます。
 
 ### <a name="get-azurestreamanalyticsjob--get-azurermstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzureRMStreamAnalyticsJob
 Azure サブスクリプションまたは指定したリソースグループに定義されているすべての Stream Analytics ジョブを一覧表示したり、リソース グループ内の特定のジョブに関するジョブ情報を取得したりします。
@@ -198,7 +198,7 @@ Stream Analytics ジョブ内に新しい入力を作成したり、指定した
 
 –Force パラメーターを指定し、既存の入力名を指定すると、確認を求められることなく、入力が置き換えられます。
 
-JSON ファイルの構造と内容に関する詳細については、[Stream Analytics 管理 REST API リファレンス ライブラリ][stream.analytics.rest.api.reference]の「[Create Input (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input]」(入力の作成 (Azure Stream Analytics)) セクションを参照してください。
+JSON ファイルの構造と内容に関する詳細については、「[Stream Analytics 管理 REST API 参照][stream.analytics.rest.api.reference]」ライブラリの「[入力の作成 (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input]」のセクションを参照してください。
 
 **例 1**
 
@@ -245,7 +245,7 @@ Microsoft Azure に新しい Stream Analytics ジョブを作成したり、指�
 
 –Force パラメーターを指定し、既存のジョブ名を指定すると、確認を求められることなく、ジョブ定義が置き換えられます。
 
-JSON ファイルの構造と内容に関する詳細については、[Stream Analytics 管理 REST API リファレンス ライブラリ][stream.analytics.rest.api.reference]の「[Create Stream Analytics Job][msdn-rest-api-create-stream-analytics-job]」(Stream Analytics ジョブの作成) セクションを参照してください。
+JSON ファイルの構造と内容に関する詳細については、「[Stream Analytics 管理 REST API 参照][stream.analytics.rest.api.reference]」ライブラリの「[Stream Analytics ジョブの作成][msdn-rest-api-create-stream-analytics-job]」のセクションを参照してください。
 
 **例 1**
 
@@ -280,7 +280,7 @@ Stream Analytics ジョブ内に新しい出力を作成したり、既存の出
 
 –Force パラメーターを指定し、既存の出力名を指定すると、確認を求められることなく、出力が置き換えられます。
 
-JSON ファイルの構造と内容に関する詳細については、[Stream Analytics 管理 REST API リファレンス ライブラリ][stream.analytics.rest.api.reference]の「[Create Output (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output]」(出力の作成 (Azure Stream Analytics)) セクションを参照してください。
+JSON ファイルの構造と内容に関する詳細については、「[Stream Analytics 管理 REST API 参照][stream.analytics.rest.api.reference]」ライブラリの「[出力の作成 (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output]」のセクションを参照してください。
 
 **例 1**
 
@@ -315,7 +315,7 @@ Stream Analytics ジョブ内に新しい変換を作成したり、既存の変
 
 –Force パラメーターを指定し、既存の変換名を指定すると、確認を求められることなく、変換が置き換えられます
 
-JSON ファイルの構造と内容に関する詳細については、「[Stream Analytics 管理 REST API 参照][stream.analytics.rest.api.reference]」ライブラリの『[Stream Analytics ジョブの作成][msdn-rest-api-create-stream-analytics-transformation]』のセクションを参照してください。
+JSON ファイルの構造と内容に関する詳細については、「[Stream Analytics 管理 REST API 参照][stream.analytics.rest.api.reference]」ライブラリの「[変換の作成 (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation]」のセクションを参照してください。
 
 **例 1**
 
@@ -476,6 +476,6 @@ Azure PowerShell 1.0:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

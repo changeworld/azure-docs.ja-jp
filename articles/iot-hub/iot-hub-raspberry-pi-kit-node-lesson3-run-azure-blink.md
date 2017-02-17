@@ -1,5 +1,5 @@
 ---
-title: "デバイスからクラウドへのメッセージを送信するサンプル アプリケーションの実行 | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (Node) の接続 - レッスン 3: サンプルの実行 | Microsoft Docs"
 description: "IoT ハブにメッセージを送信して LED を点滅させるサンプル アプリケーションを Raspberry Pi 3 にデプロイして実行します。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: 0c60200f87bf2c1df0a32b1887b1f9412ba69b39
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: d33229fea3ed8af636f744992cb8ed321418da85
 
 
 ---
@@ -29,45 +29,53 @@ ms.openlocfilehash: 0c60200f87bf2c1df0a32b1887b1f9412ba69b39
 gulp ツールを使用し、サンプル Node.js アプリケーションを Pi にデプロイして実行する方法について説明します。
 
 ## <a name="what-you-need"></a>必要なもの
-このタスクを開始する前に、[IoT ハブのメッセージを処理して格納するための Azure Function App とストレージ アカウントの作成](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)を、正常に完了している必要があります。
+* このタスクを開始する前に、[IoT ハブのメッセージを処理して格納するための Azure Function App とストレージ アカウントの作成](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)を、正常に完了している必要があります。
 
 ## <a name="get-your-iot-hub-and-device-connection-strings"></a>IoT ハブとデバイスの接続文字列の取得
-デバイスの接続文字列は、Pi を IoT ハブに接続するために使用されます。 IoT ハブの接続文字列は、IoT ハブの Pi を表すデバイス ID に IoT ハブを接続するために使用されます。
+デバイス接続文字列は、IoT Hub に接続するために Pi で使用されます。 IoT Hub 接続文字列は、IoT Hub 内の ID レジストリに接続して、IoT Hub への接続を許可されるデバイスを管理するために使用されます。 
+
+* 次の Azure CLI コマンドを実行して、リソース グループ内のすべての IoT Hub を一覧表示します。
+
+```bash
+az iot hub list -g iot-sample --query [].name
+```
+
+値を変更していない場合、`{resource group name}` の値として `iot-sample` を使用します。
 
 * 次の Azure CLI コマンドを実行して、IoT ハブの接続文字列を取得します。
 
 ```bash
-az iot hub show-connection-string --name {my hub name} --resource-group iot-sample
+az iot hub show-connection-string --name {my hub name} -g iot-sample
 ```
 
-`{my hub name}` は、IoT ハブを作成し、Pi を登録するときに指定した名前です。 値を変更していない場合、`{resource group name}` の値として `iot-sample` を使用します。
+`{my hub name}` は、IoT ハブを作成し、Pi を登録するときに指定した名前です。
 
 * 次のコマンドを実行して、デバイスの接続文字列を取得します。
 
 ```bash
-az iot device show-connection-string --hub {my hub name} --device-id myraspberrypi --resource-group iot-sample
+az iot device show-connection-string --hub-name {my hub name} --device-id myraspberrypi -g iot-sample
 ```
 
-`{my hub name}` は、前のコマンドで使用したのと同じ値にします。 値を変更していない場合、`{resource group name}` の値として `iot-sample` を、`{device id}` の値として `myraspberrypi` を使用します。
+値を変更していない場合、`{device id}` の値として `myraspberrypi` を使用します。
 
 ## <a name="configure-the-device-connection"></a>デバイス接続の構成
 1. 次のコマンドを実行して、構成ファイルを初期化します。
    
-    ```bash
-    npm install
-    gulp init
-    ```
+   ```bash
+   npm install
+   gulp init
+   ```
 2. 次のコマンドを実行して、Visual Studio Code でデバイス構成ファイル `config-raspberrypi.json` を開きます。
    
-    ```bash
-    # For Windows command prompt
-    code %USERPROFILE%\.iot-hub-getting-started\config-raspberrypi.json
-   
-    # For macOS or Ubuntu
-    code ~/.iot-hub-getting-started/config-raspberrypi.json
-    ```
-   
-    ![config.json](media/iot-hub-raspberry-pi-lessons/lesson3/config.png)
+   ```bash
+   # For Windows command prompt
+   code %USERPROFILE%\.iot-hub-getting-started\config-raspberrypi.json
+  
+   # For macOS or Ubuntu
+   code ~/.iot-hub-getting-started/config-raspberrypi.json
+   ```
+  
+   ![config.json](media/iot-hub-raspberry-pi-lessons/lesson3/config.png)
 3. `config-raspberrypi.json` ファイルの値を次のように置き換えます。
    
    * **[device hostname or IP address]** を、`device-discovery-cli` から取得したデバイス IP アドレスまたはホスト名で置き換えるか、またはデバイスを構成したときに継承された値で置き換えます。
@@ -84,7 +92,7 @@ gulp deploy && gulp run
 ```
 
 ## <a name="verify-that-the-sample-application-works"></a>サンプル アプリケーションの動作確認
-Pi に接続された LED が 2 秒間隔で点滅していることを確認します。 LED が点滅するたびに、サンプル アプリケーションは IoT ハブにメッセージを送信し、メッセージが IoT ハブに正常に送信されていることを検証します。 さらにコンソール ウィンドウには、IoT ハブが受信した各メッセージが出力されます。 サンプル アプリケーションは、メッセージを 20 回送信した後に自動的に終了します。
+Pi に接続された LED が&2; 秒間隔で点滅していることを確認します。 LED が点滅するたびに、サンプル アプリケーションは IoT ハブにメッセージを送信し、メッセージが IoT ハブに正常に送信されていることを検証します。 さらにコンソール ウィンドウには、IoT ハブが受信した各メッセージが出力されます。 サンプル アプリケーションは、メッセージを 20 回送信した後に自動的に終了します。
 
 ![サンプル アプリケーションの実行とメッセージの送受信の出力](media/iot-hub-raspberry-pi-lessons/lesson3/gulp_run.png)
 
@@ -97,6 +105,6 @@ Pi に接続された LED が 2 秒間隔で点滅していることを確認し
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure クラウドへのメッセージの保存とクラウドからのメッセージの読み取り | Microsoft Docs"
+title: "SensorTag デバイスと Azure IoT Gateway - レッスン 4: Function App の作成 | Microsoft Docs"
 description: "Intel NUC のメッセージを IoT ハブに保存し、Azure Table Storage に書き込んだ後、クラウドから読みます。"
 services: iot-hub
 documentationcenter: 
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: 73c5268ece75776a3c5007b612f84bd29cc7784d
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 3672804218dbbe3a545536b8c4baccb2b9171cdc
 
 
 ---
-# <a name="create-an-azure-function-app-and-storage-account"></a>Azure Function App とストレージ アカウントの作成
+# <a name="create-an-azure-function-app-and-storage-account"></a>Azure Function App とストレージ アカウントを作成する
 
 Azure Functions は、"_関数_" (小規模なコード) をクラウドで手軽に実行するためのソリューションです。 Azure Function App は、Azure での関数の実行をホストします。 
 
@@ -89,6 +89,6 @@ IoT ハブのメッセージを処理する Azure Function App と、それら�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

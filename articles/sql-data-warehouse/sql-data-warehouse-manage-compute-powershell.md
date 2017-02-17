@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5749b37408be8eeab6a3fba40d6768ca1d035096
+ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
+ms.openlocfilehash: a4cde433850ab3627f870b51f5a897c6f846c2f0
 
 
 ---
@@ -29,16 +29,6 @@ ms.openlocfilehash: 5749b37408be8eeab6a3fba40d6768ca1d035096
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
 > 
 > 
-
-ワークロードの変化する需要に合わせてコンピューティング リソースとメモリをスケールアウトすることで、パフォーマンスをスケーリングします。 ピーク時以外にリソースをスケール バックするか、すべてのコンピューティング処理を一時停止して、コストを削減します。
-
-このタスクのコレクションでは、Azure ポータルを使用して次の操作を実行します。
-
-* コンピューティングのスケーリング
-* コンピューティングの一時停止
-* コンピューティングの再開
-
-これについては、[コンピューティングの管理の概要][Manage compute overview]に関する記事をご覧ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 ### <a name="install-the-latest-version-of-azure-powershell"></a>Azure PowerShell の最新バージョンのインストール
@@ -87,7 +77,7 @@ Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -Requested
 Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
 –ServerName "Server01" –DatabaseName "Database02"
 ```
-バリエーションの 1 つとして、次の例では $database オブジェクトにデータベースを取り込みます。 オブジェクトは [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase] にパイプ処理されます。 結果は、オブジェクト resultDatabase に格納されます。 最後のコマンドは結果を表示します。
+バリエーションの&1; つとして、次の例では $database オブジェクトにデータベースを取り込みます。 オブジェクトは [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase] にパイプ処理されます。 結果は、オブジェクト resultDatabase に格納されます。 最後のコマンドは結果を表示します。
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
@@ -108,7 +98,7 @@ Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
 –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-バリエーションの 1 つとして、次の例では $database オブジェクトにデータベースを取り込みます。 オブジェクトは [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase] にパイプ処理され、結果が $resultDatabase に格納されます。 最後のコマンドは結果を表示します。
+バリエーションの&1; つとして、次の例では $database オブジェクトにデータベースを取り込みます。 オブジェクトは [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase] にパイプ処理され、結果が $resultDatabase に格納されます。 最後のコマンドは結果を表示します。
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
@@ -141,6 +131,6 @@ $resultDatabase
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

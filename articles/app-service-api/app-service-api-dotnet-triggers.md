@@ -15,37 +15,37 @@ ms.topic: article
 ms.date: 08/25/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f3970e39dab23f65c623e134d9e38df9831b37f8
+ms.sourcegitcommit: 015ca80c952110d3289888ed82d7a543be29950c
+ms.openlocfilehash: cf020b0f5f14d73635cf44e0157b53b35eb00d60
 
 
 ---
 # <a name="azure-app-service-api-app-triggers"></a>Azure App Service API アプリ トリガー
 > [!NOTE]
 > 本記事は、API アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>Overview
 この記事では、API アプリ トリガーを実装して、ロジック アプリからそれらを使用する方法について説明します。
 
-このトピック内のすべてのコード スニペットは、 [FileWatcher API アプリのサンプル コード](http://go.microsoft.com/fwlink/?LinkId=534802)からコピーしたものです。 
+このトピック内のすべてのコード スニペットは、 [FileWatcher API アプリのサンプル コード](http://go.microsoft.com/fwlink/?LinkId=534802)からコピーしたものです。
 
 この記事のコードをビルドして実行するには、次の nuget パッケージをダウンロードする必要がある点に注意してください: [http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/)。
 
 ## <a name="what-are-api-app-triggers"></a>API アプリ トリガーとは
-API アプリでイベントを発生させることは一般的なシナリオなので、API アプリのクライアントはイベントに応答して適切な処理を行うことができます。 このシナリオをサポートする REST API ベースのメカニズムは API アプリ トリガーと呼ばれます。 
+API アプリでイベントを発生させることは一般的なシナリオなので、API アプリのクライアントはイベントに応答して適切な処理を行うことができます。 このシナリオをサポートする REST API ベースのメカニズムは API アプリ トリガーと呼ばれます。
 
-たとえば、クライアント コードで [Twitter Connector API アプリ](../app-service-logic/app-service-logic-connector-twitter.md) が使用されていて、コードが特定の単語を含む新しいツイートに基づいて処理を実行する必要があるとします。 この場合、このニーズを満たすために、ポーリング トリガーかプッシュ トリガーを設定する場合があります。
+たとえば、クライアント コードで [Twitter Connector API アプリ](../connectors/connectors-create-api-twitter.md) が使用されていて、コードが特定の単語を含む新しいツイートに基づいて処理を実行する必要があるとします。 この場合、このニーズを満たすために、ポーリング トリガーかプッシュ トリガーを設定する場合があります。
 
 ## <a name="poll-trigger-versus-push-trigger"></a>ポーリング トリガーとプッシュ トリガー
 現在、2 種類のトリガーがサポートされています。
 
-* ポーリング トリガー - 発生したイベントの通知に対して、クライアントが API アプリをポーリングします。 
-* プッシュ トリガー - イベントの発生時に、クライアントは API アプリから通知を受け取ります。 
+* ポーリング トリガー - 発生したイベントの通知に対して、クライアントが API アプリをポーリングします。
+* プッシュ トリガー - イベントの発生時に、クライアントは API アプリから通知を受け取ります。
 
 ### <a name="poll-trigger"></a>ポーリング トリガー
-ポーリング トリガーは、標準の REST API として実装され、そのクライアント (ロジック アプリなど) が通知を取得するために API をポーリングすることを想定しています。 クライアントは状態を保持できますが、ポーリング トリガー自体はステートレスです。 
+ポーリング トリガーは、標準の REST API として実装され、そのクライアント (ロジック アプリなど) が通知を取得するために API をポーリングすることを想定しています。 クライアントは状態を保持できますが、ポーリング トリガー自体はステートレスです。
 
 要求パケットと応答パケットに関する次の情報は、ポーリング トリガー コントラクトのいくつかの重要な側面を示しています。
 
@@ -302,7 +302,7 @@ API の定義で **x-ms-scheduler-recommendation** および **x-ms-visibility**
 
 動的メタデータを使用する API アプリの場合は、SwaggerConfig.cs ファイルを編集して、これらの式を追加できる操作フィルターを追加できます。
 
-    GlobalConfiguration.Configuration 
+    GlobalConfiguration.Configuration
         .EnableSwagger(c =>
             {
                 ...
@@ -343,7 +343,6 @@ API の定義で **x-ms-scheduler-recommendation** および **x-ms-visibility**
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

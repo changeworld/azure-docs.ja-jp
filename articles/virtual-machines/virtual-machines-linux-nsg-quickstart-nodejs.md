@@ -1,5 +1,5 @@
 ---
-title: "Azure の Linux VM へのポートとエンドポイントの開放 | Microsoft Docs"
+title: "Azure CLI 1.0 を使用した Linux VM へのポートの開放 | Microsoft Docs"
 description: "Azure Resource Manager デプロイメント モデルと Azure CLI 1.0 を使用して、Linux VM へのポートを開き、エンドポイントを作成する方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 2ca514ec1bbfb5404070de904effd1522fcac892
-ms.openlocfilehash: fd43b3a16607ccd383fbf185176d94af5aa97d89
-
+ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
+ms.openlocfilehash: b29b7fc56e1797d9daa33ff18df0fe5590b12612
 
 ---
-# <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure"></a>Azure での Linux VM へのポートとエンドポイントの開放
+
+# <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用した Azure の Linux VM へのポートとエンドポイントの開放
 サブネットまたは仮想マシン (VM) ネットワーク インターフェイスでネットワーク フィルターを作成して、Azure で VM へのポートを開くか、エンドポイントを作成します。 着信および発信の両方のトラフィックを制御するこれらのフィルターを、トラフィックを受信するリソースに接続されているネットワーク セキュリティ グループに配置します。 ポート 80 での Web トラフィックの一般的な例を使用して説明します。 この記事では、Azure CLI 1.0 を使用して VM へのポートを開く方法を説明します。
 
 
@@ -87,6 +87,6 @@ azure network vnet subnet set --resource-group myResourceGroup \
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Service Fabric クラスターでサポートされているセキュリティ保護された接続を構成する |Microsoft Docs"
+title: "セキュリティ保護された Azure Service Fabric クラスター接続を構成する | Microsoft Docs"
 description: "Visual Studio を使用して、Azure Service Fabric クラスターでサポートされているセキュリティで保護された接続を構成する方法について説明します。"
 services: service-fabric
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: multiple
 ms.date: 10/08/2015
 ms.author: cawa
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a02d3840555df0d9c16d179023b3bc763274701a
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: b6705e14e52e98759027389758d7fa57c4e11462
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: a02d3840555df0d9c16d179023b3bc763274701a
 アクセス制御ポリシーが構成されている Azure Service Fabric クラスターに Visual Studio を使用して安全にアクセスする方法について説明します。
 
 ## <a name="cluster-connection-types"></a>クラスターの接続の種類
-Azure Service Fabric クラスターでサポートされている接続には、**セキュリティ保護されていない**接続と **x509 証明書に基づいて**セキュリティ保護された接続の 2 つの種類があります  (Service Fabric クラスターがオンプレミスでホストされている場合は、**Windows** 認証と **dSTS** 認証もサポートされます)。クラスターの作成中に、クラスターの接続の種類を構成する必要があります。 作成した接続の種類を後で変更することはできません。
+Azure Service Fabric クラスターでサポートされている接続には、**セキュリティ保護されていない**接続と **x509 証明書に基づいて**セキュリティ保護された接続の&2; つの種類があります  (Service Fabric クラスターがオンプレミスでホストされている場合は、**Windows** 認証と **dSTS** 認証もサポートされます)。クラスターの作成中に、クラスターの接続の種類を構成する必要があります。 作成した接続の種類を後で変更することはできません。
 
 Visual Studio Service Fabric Tools は、クラスターに接続して発行するために必要なすべての種類の認証をサポートしています。 セキュリティ保護された Service Fabric クラスターをセットアップする方法については、「 [Azure ポータルからの Service Fabric クラスターのセットアップ](service-fabric-cluster-creation-via-portal.md) 」を参照してください。
 
@@ -74,6 +74,6 @@ Service Fabric クラスターにアクセスする方法の詳細について�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

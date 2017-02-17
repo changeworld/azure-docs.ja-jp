@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 12/14/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2501b6480e81b236995c37db7171a4ed1429dcbf
-ms.openlocfilehash: 1a59bcfbb3c140e03c5a09bdfd48a4b312eb07b3
+ms.sourcegitcommit: 40add25104b2d86a5d68d297ad7a52cc111002f4
+ms.openlocfilehash: e0c03a4aff4f84d0f4f2d79220e34e8c86791bff
 
 
 ---
@@ -30,10 +30,10 @@ Azure でクラウド サービスが実行されている場合は、 **Service
 * それについては知っているので、構成可能な [例をいくつか](#next-steps) 紹介してください。
 * [ServicePackage.cspkg](#cspkg)を作成する必要があります。
 * Visual Studio を使用しているのですが...
-  * [新しいクラウド サービスの作成][vs_create]
-  * [既存のクラウド サービスの再構成][vs_reconfigure]
-  * [クラウド サービス プロジェクトのデプロイ][vs_deploy]
-  * [クラウド サービス インスタンスへのリモート デスクトップ接続][remotedesktop]
+  * [クラウド サービスを作成する][vs_create]
+  * [既存のクラウド サービスを再構成する][vs_reconfigure]
+  * [クラウド サービス プロジェクトをデプロイする][vs_deploy]
+  * [クラウド サービス インスタンスにリモート デスクトップ接続する][remotedesktop]
 
 <a name="csdef"></a>
 
@@ -89,28 +89,28 @@ Azure でクラウド サービスが実行されている場合は、 **Service
 </ServiceDefinition>
 ```
 
-ここで使用する XML スキーマの詳細については、[サービスの定義スキーマ][] をご覧ください。ここでは、いくつかの要素を簡単に説明します。
+ここで使用する XML スキーマの詳細については、[サービスの定義スキーマ](https://msdn.microsoft.com/library/azure/ee758711.aspx)に関するページをご覧ください。ここでは、いくつかの要素を簡単に説明します。
 
 **サイト**  
 には、IIS7 でホストされている Web サイトか Web アプリケーションの定義が含まれています。
 
 **InputEndpoints**  
- には、クラウド サービスにアクセスするために使用されるエンドポイントの定義が含まれています。
+には、クラウド サービスにアクセスするために使用されるエンドポイントの定義が含まれています。
 
 **InternalEndpoints**  
- には、互いに通信するために、ロール インスタンスが使用されるエンドポイントの定義が含まれています。
+には、互いに通信するために、ロール インスタンスが使用されるエンドポイントの定義が含まれています。
 
 **ConfigurationSettings**  
- には、特定のロールの機能に対する設定の定義が含まれています。
+には、特定のロールの機能に対する設定の定義が含まれています。
 
 **証明書**  
 には、ロールに必要な証明書の定義が含まれています。 上記のコード例は、Azure Connect の構成に使用される証明書を示します。
 
 **LocalResources**  
- には、ローカル ストレージ リソースの定義が含まれています。 ローカル ストレージ リソースは、ロールのインスタンスが実行されている仮想マシンのファイル システム内の予約されたディレクトリです。
+には、ローカル ストレージ リソースの定義が含まれています。 ローカル ストレージ リソースは、ロールのインスタンスが実行されている仮想マシンのファイル システム内の予約されたディレクトリです。
 
 **Imports**  
- には、インポートされたモジュールの定義が含まれています。 上記のコード例は、リモート デスクトップ接続と Azure Connect のモジュールを示します。
+には、インポートされたモジュールの定義が含まれています。 上記のコード例は、リモート デスクトップ接続と Azure Connect のモジュールを示します。
 
 **スタートアップ**  
 には、ロールの開始時に実行されるタスクが含まれています。 タスクは、.cmd ファイルか実行可能ファイルで定義されます。
@@ -143,10 +143,10 @@ Azure でクラウド サービスが実行されている場合は、 **Service
 ここで使用する XML スキーマの詳細については、[サービスの構成スキーマ](https://msdn.microsoft.com/library/azure/ee758710.aspx)に関するページをご覧ください。ここでは、各要素について簡単に説明します。
 
 **インスタンス**  
-は、ロールの実行するインスタンスの数を設定します。 アップグレード中にクラウド サービスが利用できなくなるのを避けるために、Web に接続されたロールの 2 つ以上のインスタンスをデプロイすることを推奨します。 これにより、サービスに 2 つ以上のロール インスタンスがデプロイされている場合、インターネットに接続されたロールの 99.95% の外部接続を保証する [Azure Compute サービス レベル アグリーメント (SLA)](http://azure.microsoft.com/support/legal/sla/)ガイドラインに従っていることになります。
+は、ロールの実行するインスタンスの数を設定します。 アップグレード中にクラウド サービスが利用できなくなるのを避けるために、Web に接続されたロールのインスタンスは複数デプロイすることをお勧めします。 複数のインスタンスをデプロイすることにより、サービスに 2 つ以上のロール インスタンスがデプロイされている場合、インターネットに接続されたロールの 99.95% の外部接続を保証する [Azure Compute サービス レベル アグリーメント (SLA)](http://azure.microsoft.com/support/legal/sla/) ガイドラインに従っていることになります。
 
 **ConfigurationSettings**  
- は、ロールの実行中のインスタンスの設定を構成します。 `<Setting>` 要素の名前は、サービス定義ファイルの設定の定義と一致する必要があります。
+は、ロールの実行中のインスタンスの設定を構成します。 `<Setting>` 要素の名前は、サービス定義ファイルの設定の定義と一致する必要があります。
 
 **証明書**  
 は、サービスによって使用される証明書を構成します。 上記のコード例は、RemoteAccess モジュールの証明書を定義する方法を示します。 *サムプリント* 属性の値は、使用する証明書のサムプリントに設定する必要があります。
@@ -154,7 +154,7 @@ Azure でクラウド サービスが実行されている場合は、 **Service
 <p/>
 
 > [!NOTE]
-> テキスト エディターを使用して、証明書のサムプリントを構成ファイルに追加するか、Visual Studio で、ロールの **[プロパティ]** ページの **[証明書]** タブに値を追加することができます。
+> 証明書のサムプリントを構成ファイルに追加するには、テキスト エディターを使用します。 また、Visual Studio でロールの **[プロパティ]** ページにある **[証明書]** タブで、値を追加することもできます。
 > 
 > 
 
@@ -169,7 +169,7 @@ Azure では、Web ロールに 1 つのエントリ ポイントのみを使用
     <Setting name="DiagnosticsConnectionString" />
   </ConfigurationSettings>
   <Endpoints>
-    <InputEndpoint name="HttpIn" protocol="http" <mark>port="80"</mark> />
+    <InputEndpoint name="HttpIn" protocol="http" port="80" />
     <InputEndpoint name="Https" protocol="https" port="443" certificate="SSL"/>
     <InputEndpoint name="NetTcp" protocol="tcp" port="808" certificate="SSL"/>
   </Endpoints>
@@ -185,7 +185,7 @@ Azure では、Web ロールに 1 つのエントリ ポイントのみを使用
   </Site>
   <Site name="MailSite" packageDir="MailSite">
     <Bindings>
-      <Binding name="mail" endpointName="HttpIn" <mark>hostheader="mail.mysite.cloudapp.net"</mark> />
+      <Binding name="mail" endpointName="HttpIn" hostheader="mail.mysite.cloudapp.net" />
     </Bindings>
     <VirtualDirectory name="artifacts" />
     <VirtualApplication name="storageproxy">
@@ -200,19 +200,19 @@ Azure では、Web ロールに 1 つのエントリ ポイントのみを使用
 クラウド サービスは、Azure で実行中に、サービスをオフラインにせずに更新できます。 構成情報を変更するには、新しい構成ファイルをアップロードするか、構成ファイルを編集して、実行中のサービスに適用します。 次の変更がサービスの構成に適用されます。
 
 * **構成設定の値を変更する**  
-   構成設定を変更すると、ロール インスタンスはインスタンスのオンライン中に変更を適用するか、インスタンスを適切に再利用し、インスタンスのオフライン中に変更を適用するかを選択できます。
+  構成設定を変更すると、ロール インスタンスはインスタンスのオンライン中に変更を適用するか、インスタンスを適切に再利用し、インスタンスのオフライン中に変更を適用するかを選択できます。
 * **ロール インスタンスのサービス トポロジを変更する**  
   トポロジの変更は、インスタンスが削除される場合を除いて、実行中のインスタンスには影響ありません。 残りのすべてのインスタンスは、通常はリサイクルの必要はありません。ただし、トポロジの変更に応じてロール インスタンスをリサイクルできます。
 * **証明書の拇印を変更する**  
-   ロール インスタンスがオフラインのときのみ、証明書を更新できます。 ロール インスタンスがオンラインの間に、証明書が追加、削除、変更されると、Azure はインスタンスを正常にオフラインにし、証明書を更新し、変更の完了後にオンラインに戻します。
+  ロール インスタンスがオフラインのときのみ、証明書を更新できます。 ロール インスタンスがオンラインの間に、証明書が追加、削除、変更されると、Azure はインスタンスを正常にオフラインにし、証明書を更新し、変更の完了後にオンラインに戻します。
 
 ### <a name="handling-configuration-changes-with-service-runtime-events"></a>サービス ランタイム イベントを使用して構成変更を処理する
-[Azure ランタイム ライブラリ](https://msdn.microsoft.com/library/azure/mt419365.aspx)には、ロールのインスタンスで実行されているコードから Azure 環境と対話するクラスを提供する [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.aspx) 名前空間が含まれています。 [RoleEnvironment](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) クラスは、構成の変更の前後に発生する次のイベントを定義します。
+[Azure ランタイム ライブラリ](https://msdn.microsoft.com/library/azure/mt419365.aspx)には、ロールから Azure 環境と対話するクラスを提供する [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.aspx) 名前空間が含まれています。 [RoleEnvironment](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) クラスは、構成の変更の前後に発生する次のイベントを定義します。
 
 * **[Changing](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx) イベント**  
-   これは、指定したロール インスタンスに構成の変更が適用される前に、必要な場合にロール インスタンスを停止する機会を提供します。
+  これは、指定したロール インスタンスに構成の変更が適用される前に、必要な場合にロール インスタンスを停止する機会を提供します。
 * **[Changed](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changed.aspx) イベント**  
-   指定したロール インスタンスに構成の変更が適用された後に発生します。
+  指定したロール インスタンスに構成の変更が適用された後に発生します。
 
 > [!NOTE]
 > 証明書の変更は、常にロール インスタンスをオフラインにするため、RoleEnvironment.Changing や RoleEnvironment.Changed イベントは発生しません。
@@ -226,7 +226,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 **CSPack** はサービス定義ファイルとサービス構成ファイルの内容を使用して、パッケージの内容を定義します。 **CSPack** は、 [Azure ポータル](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)を使用して Azure にアップロードできるアプリケーション パッケージ ファイル (.cspkg) を生成します。 既定では、パッケージの名前は `[ServiceDefinitionFileName].cspkg` ですが、**CSPack** の `/out` オプションを使用して別の名前を指定することもできます。
 
-**CSPack** は、通常は次の場所に置かれます。  
+**CSPack** は次の場所にあります  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
 
 > [!NOTE]
@@ -239,7 +239,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 <p />
 
 > [!TIP]
-> **Microsoft Azure コンピューティング エミュレーター**でクラウド サービスをローカルで実行し、**/copyonly** オプションを使用します。このオプションは、アプリケーションのバイナリ ファイルをコンピューティング エミュレーターで実行できるディレクトリ レイアウトにコピーします。
+> **Microsoft Azure コンピューティング エミュレーター**でクラウド サービスをローカルで実行し、**/copyonly** オプションを使用します。 このオプションは、アプリケーションのバイナリ ファイルをディレクトリ レイアウトにコピーします。コンピューティング エミュレーターでは、そのディレクトリ レイアウトからファイルを実行できます。
 > 
 > 
 
@@ -279,15 +279,15 @@ cspack [DirectoryName]\[ServiceDefinition]
 ## <a name="next-steps"></a>次のステップ
 クラウド サービス パッケージを作成しているのですが...
 
-* [クラウド サービス インスタンス用のリモート デスクトップのセットアップ][remotedesktop]
-* [クラウド サービス プロジェクトのデプロイ][deploy]
+* [クラウド サービスのインスタンスのリモート デスクトップをセットアップする][remotedesktop]
+* [クラウド サービス プロジェクトをデプロイする][deploy]
 
 Visual Studio を使用しているのですが...
 
-* [新しいクラウド サービスの作成][vs_create]
-* [既存のクラウド サービスの再構成][vs_reconfigure]
-* [クラウド サービス プロジェクトのデプロイ][vs_deploy]
-* [クラウド サービス インスタンス用のリモート デスクトップのセットアップ][vs_remote]
+* [新しいクラウド サービスを作成する][vs_create]
+* [既存のクラウド サービスを再構成する][vs_reconfigure]
+* [クラウド サービス プロジェクトをデプロイする][vs_deploy]
+* [クラウド サービスのインスタンスのリモート デスクトップをセットアップする][vs_remote]
 
 [deploy]: cloud-services-how-to-create-deploy-portal.md
 [remotedesktop]: cloud-services-role-enable-remote-desktop.md
@@ -298,6 +298,6 @@ Visual Studio を使用しているのですが...
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

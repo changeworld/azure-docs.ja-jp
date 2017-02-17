@@ -1,10 +1,10 @@
 ---
-title: "クラシック デプロイ モデルを使用したサイト間接続の強制トンネリングの構成 | Microsoft Docs"
+title: "Azure のサイト間接続用に強制トンネリングを構成する: クラシック | Microsoft Docs"
 description: "すべてのインターネットへのトラフィックをオンプレミスの場所に &quot;強制的に&quot; リダイレクトする方法。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 5c0177f1-540c-4474-9b80-f541fa44240b
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 33ca336c6ae3ffc68997d21c4d7da9275ff48a00
+ms.sourcegitcommit: 5183fc3b4e7ec3fe6060a6a9551656332300995f
+ms.openlocfilehash: 75cd2b7073d5cda6fc90aa963a9ad321e6992743
 
 
 ---
@@ -47,18 +47,18 @@ ms.openlocfilehash: 33ca336c6ae3ffc68997d21c4d7da9275ff48a00
 ## <a name="requirements-and-considerations"></a>要件と考慮事項
 Azure では、強制トンネリングは仮想ネットワークのユーザー定義ルート (UDR) を使用して構成されます。 オンプレミス サイトへのトラフィックのリダイレクトは、Azure VPN Gateway への既定のルートとして表されます。 以下のセクションでは、Azure Virtual Network のルーティング テーブルおよびルートの現在の制限を一覧表示します。
 
-* 各仮想ネットワーク サブネットには、システム ルーティング テーブルが組み込まれています。 システム ルーティング テーブルには、次の 3 つのグループがあります。
+* 各仮想ネットワーク サブネットには、システム ルーティング テーブルが組み込まれています。 システム ルーティング テーブルには、次の&3; つのグループがあります。
   
   * **ローカル VNet ルーティング:** 直接、同じ仮想ネットワーク内の宛先 VM へ
   * **オンプレミス ルート:** Azure VPN ゲートウェイへ
-  * **既定のルート:** 直接、インターネットへ。 前の 2 つのルートが網羅していないプライベート IP アドレスへ送信されるパケットは削除されます。
+  * **既定のルート:** 直接、インターネットへ。 前の&2; つのルートが網羅していないプライベート IP アドレスへ送信されるパケットは削除されます。
 * ユーザー定義ルートをリリースすることにより、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを、ご使用の VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にします。
 * 仮想ネットワークに接続されたクロスプレミス ローカル サイト間で「既定のサイト」を設定する必要があります。
 * 強制トンネリングは、動的ルーティング VPN ゲートウェイ (静的ゲートウェイではない) を持つ VNet に関連付ける必要があります。
 * ExpressRoute の強制トンネリングは、このメカニズムを使用して構成されていませんが、代わりに ExpressRoute BGP ピアリング セッションを介して既定のルートを通知することで有効化されます。 詳細については、 [ExpressRoute Documentation](https://azure.microsoft.com/documentation/services/expressroute/) を参照してください。
 
 ## <a name="configuration-overview"></a>構成の概要
-次の例では、フロントエンドのサブネットは、トンネリングを強制されません。 フロントエンドのサブネット内のワークロードは、直接、インターネットから顧客の要求を承認し応答し続けることができます。 Mid-tier およびMid-tier のサブネットは、トンネリングを強制されます。 これら 2 つのサブネットからのインターネットへのオウトバウンド接続は、S2S VPN トンネルの 1 つを介して、オンプレミス サイトに ”強制” リダイレクトされます。
+次の例では、フロントエンドのサブネットは、トンネリングを強制されません。 フロントエンドのサブネット内のワークロードは、直接、インターネットから顧客の要求を承認し応答し続けることができます。 Mid-tier およびMid-tier のサブネットは、トンネリングを強制されます。 これら&2; つのサブネットからのインターネットへのオウトバウンド接続は、S2S VPN トンネルの&1; つを介して、オンプレミス サイトに ”強制” リダイレクトされます。
 
 これにより、必要な多層サービス アーキテクチャが継続的に使用可能になっている間は、Azure 内の仮想マシンやクラウド サービスからのインターネット アクセスを制限および検査することができます。 また、仮想ネットワーク内に、インターネットに接続されたワークロードがない場合、仮想ネットワーク全体に強制トンネリングを適用することもできます。
 
@@ -110,7 +110,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
       </VirtualNetworkSite>
     </VirtualNetworkSite>
 
-この例では、仮想ネットワークである "MultiTier-VNet" には、*Frontend*、*Midtier*、*Backend* の 3 つのサブネットがあり、*DefaultSiteHQ* と 3 つの *Branches* の計 4 つのクロス プレミス接続があります。 
+この例では、仮想ネットワークである "MultiTier-VNet" には、*Frontend*、*Midtier*、*Backend* の&3; つのサブネットがあり、*DefaultSiteHQ* と&3; つの *Branches* の計&4; つのクロス プレミス接続があります。 
 
 以下の手順で *DefaultSiteHQ* を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように Midtier と Backend を構成します。
 
@@ -131,7 +131,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
         Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
 4. 強制トンネリングに既定のサイトを割り当てます。 
    
-    前の手順で、サンプルのコマンドレット スクリプトが、ルーティング テーブルを作成して、ルート テーブルを 2 つの VNet のサブネットに関連付けました。 残りの手順は、仮想ネットワークの複数サイト間接続でローカルのサイトを規定のサイトまたはトンネルとして選択します。
+    前の手順で、サンプルのコマンドレット スクリプトが、ルーティング テーブルを作成して、ルート テーブルを&2; つの VNet のサブネットに関連付けました。 残りの手順は、仮想ネットワークの複数サイト間接続でローカルのサイトを規定のサイトまたはトンネルとして選択します。
    
         $DefaultSite = @("DefaultSiteHQ")
         Set-AzureVNetGatewayDefaultSite –VNetName "MultiTier-VNet" –DefaultSite "DefaultSiteHQ"
@@ -163,6 +163,6 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

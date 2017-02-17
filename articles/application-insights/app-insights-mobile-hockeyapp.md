@@ -1,6 +1,6 @@
 ---
-title: "開発者分析によるモバイル Web アプリ用のパフォーマンス監視 |Microsoft Docs"
-description: "HockeyApp と Application Insights による、モバイル アプリ開発者、 デスクトップ、Web サービス、およびバックエンド アプリ用のアプリケーションのパフォーマンスと使用状況の監視。"
+title: "モバイル アプリのパフォーマンス監視 - Azure Application Insights | Microsoft Docs"
+description: "モバイル アプリ開発者向けアプリケーションのパフォーマンスと使用状況の監視。 HockeyApp と Application Insights による DevOps。"
 author: alancameronwills
 services: application-insights
 documentationcenter: 
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: 4d394ff22e57d162c5adf39c492ca76f3d1f9d3a
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: c4077aa88a401a1c75c0d3fbcd58186f7cb137c2
 
 
 ---
 # <a name="mobile-analytics-with-hockeyapp-and-application-insights"></a>HockeyApp と Application Insights によるモバイル分析
 [HockeyApp](https://hockeyapp.net/) により、ベータテストおよびデプロイ済みのモバイルおよびデスクトップ アプリのパフォーマンスと使用状況を監視できます。 [Azure Application Insights](app-insights-overview.md) により、サポートする Web サービスとバックエンド アプリを監視できます。 Analytics でクライアントとサーバーの両方のアプリからのデータを分析し、Azure ダッシュボードでグラフを並べて表示できます。
 
-Microsoft 開発者分析では、アプリケーション パフォーマンス監視用に次の 2 つのソリューションを提供しています。
+Microsoft 開発者分析では、アプリケーション パフォーマンス監視用に次の&2; つのソリューションを提供しています。
 
 * モバイルおよびデスクトップ アプリ用の **HockeyApp**。
   * 選択したユーザーへのテスト バージョンの配布。
@@ -64,6 +64,6 @@ Windows デスクトップ アプリ用には HockeyApp をお勧めしていま
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Service Fabric アプリケーションとサービス セキュリティ ポリシーの概要 | Microsoft Docs"
+title: "Azure のマイクロサービスのセキュリティ ポリシーについて | Microsoft Docs"
 description: "アプリケーションが開始前に特権アクションを実行する必要がある SetupEntry ポイントを含む Service Fabric アプリケーションをシステムおよびローカル セキュリティ アカウントで実行する方法の概要"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/22/2016
+ms.date: 01/05/2017
 ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9484de017b9903cc22b27b26bba753b09b311749
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: 469f37362fa0ebe39367a66df8a27e71e762a9d5
 
 
 ---
@@ -34,7 +34,7 @@ Azure Service Fabric を使用すると、別のユーザー アカウントを�
 
 サービスの SetupEntryPoint とメイン EntryPoint を示す簡単なサービス マニフェストの例を次に示します。
 
-~~~
+```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <ServiceManifest Name="MyServiceManifest" Version="SvcManifestVersion1" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Description>An example service manifest</Description>
@@ -56,12 +56,12 @@ Azure Service Fabric を使用すると、別のユーザー アカウントを�
   </CodePackage>
   <ConfigPackage Name="Config" Version="1.0.0" />
 </ServiceManifest>
-~~~
+```
 
 ### <a name="configure-the-policy-by-using-a-local-account"></a>ローカル アカウントを使用してポリシーを構成する
 サービスにセットアップ エントリ ポイントを構成した後は、サービスの実行に使用するセキュリティ アクセス許可をアプリケーション マニフェストで変更できます。 次の例では、管理者ユーザー アカウントの特権で実行するようにサービスを構成する方法を示します。
 
-~~~
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceManifestImport>
@@ -81,7 +81,7 @@ Azure Service Fabric を使用すると、別のユーザー アカウントを�
       </Users>
    </Principals>
 </ApplicationManifest>
-~~~
+```
 
 最初に、SetupAdminUser などのユーザー名で **Principals** セクションを作成します。 これは、ユーザーが Administrators システム グループのメンバーであることを示します。
 
@@ -95,7 +95,7 @@ Azure Service Fabric を使用すると、別のユーザー アカウントを�
 
 次に、MySetup.bat ファイルを開き、次のコマンドを追加します。
 
-~~~
+```
 REM Set a system environment variable. This requires administrator privilege
 setx -m TestVariable "MyValue"
 echo System TestVariable set to > out.txt
@@ -103,25 +103,25 @@ echo %TestVariable% >> out.txt
 
 REM To delete this system variable us
 REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
-~~~
+```
 
-次に、ソリューションをビルドして、開発用のローカル クラスターにデプロイします。 サービスが開始した後、Service Fabric Explorer で示されるように、MySetup.bat ファイルが成功したことを 2 つの方法で確認できます。 PowerShell コマンド プロンプトを起動し、次を入力します。
+次に、ソリューションをビルドして、開発用のローカル クラスターにデプロイします。 サービスが開始した後、Service Fabric Explorer で示されるように、MySetup.bat ファイルが成功したことを&2; つの方法で確認できます。 PowerShell コマンド プロンプトを起動し、次を入力します。
 
-~~~
+```
 PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
-~~~
+```
 
 サービスがデプロイされ、Service Fabric Explorer で開始したノードの名前をメモします (たとえば、Node 2)。 次に、アプリケーション インスタンスの作業フォルダーに移動し、 **TestVariable**の値を示す out.txt ファイルを探します。 たとえば、このサービスが Node 2 にデプロイされた場合は、**MyApplicationType** の次のパスに移動します。
 
-~~~
+```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
-~~~
+```
 
 ### <a name="configure-the-policy-by-using-local-system-accounts"></a>ローカル システム アカウントを使用してポリシーを構成する
 多くの場合、管理者アカウントではなく、ローカル システム アカウントを使用して起動スクリプトを実行することが推奨されます。 管理者グループのメンバーとして RunAs ポリシーを実行すると、マシンでユーザー アクセス制御 (UAC) が既定で有効になっているため、通常はうまく動作しません。 このような場合、**ローカル ユーザーを管理者グループに追加するのではなく、SetupEntryPoint を LocalSystem として実行することが推奨されます**。 次の例では、LocalSystem として実行するように SetupEntryPoint を設定します。
 
-~~~
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceManifestImport>
@@ -137,37 +137,37 @@ C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
       </Users>
    </Principals>
 </ApplicationManifest>
-~~~
+```
 
 ## <a name="start-powershell-commands-from-a-setup-entry-point"></a>エントリ ポイント セットアップから PowerShell コマンドを起動する
 **SetupEntryPoint** ポイントから PowerShell を実行するには、PowerShell ファイルを指し示すバッチ ファイルで **PowerShell.exe** を実行します。 最初に、PowerShell ファイルをサービス プロジェクトに追加します (**MySetup.ps1** など)。 このファイルがサービス パッケージにも含まれるように、 *[新しい場合はコピーする]* プロパティを忘れずに設定します。 次の例では、システム環境変数 **TestVariable** を設定する PowerShell ファイル MySetup.ps1 を開始するバッチ ファイルを示します。
 
 PowerShell ファイルを開始するための MySetup.bat。
 
-~~~
+```
 powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
-~~~
+```
 
 PowerShell ファイルで、システム環境変数を設定するために次を追加します。
 
-~~~
+```
 [Environment]::SetEnvironmentVariable("TestVariable", "MyValue", "Machine")
 [Environment]::GetEnvironmentVariable("TestVariable","Machine") > out.txt
-~~~
+```
 
 > [!NOTE]
 > 既定では、バッチ ファイルが実行されると、**work** と呼ばれるアプリケーション フォルダーでファイルを検索します。 この場合、MySetup.bat を実行するときに、アプリケーションの **コード パッケージ** フォルダーである同じフォルダー内に MySetup.ps1 ファイルを見つける必要があります。 このフォルダーを変更するには、次の作業フォルダーを設定します。
 > 
 > 
 
-~~~
+```xml
 <SetupEntryPoint>
     <ExeHost>
     <Program>MySetup.bat</Program>
     <WorkingFolder>CodePackage</WorkingFolder>
     </ExeHost>
 </SetupEntryPoint>
-~~~
+```
 
 ## <a name="use-console-redirection-for-local-debugging"></a>ローカル デバッグにコンソールのリダイレクトを使用する
 場合によっては、デバッグ目的でスクリプトを実行してコンソールの出力を確認することが役立ちます。 この操作を行うために、出力をファイルに書き込むコンソール リダイレクト ポリシーを設定できます。 ファイル出力はアプリケーションがデプロイおよび実行されるノード上の **log** と呼ばれるアプリケーション フォルダーに書き込まれます  (前の例の検索場所を参照)。
@@ -179,7 +179,7 @@ PowerShell ファイルで、システム環境変数を設定するために次
 
 次の例では、FileRetentionCount 値を使用したコンソール リダイレクトの設定を示しています。
 
-~~~
+```xml
 <SetupEntryPoint>
     <ExeHost>
     <Program>MySetup.bat</Program>
@@ -187,13 +187,13 @@ PowerShell ファイルで、システム環境変数を設定するために次
     <ConsoleRedirection FileRetentionCount="10"/>
     </ExeHost>
 </SetupEntryPoint>
-~~~
+```
 
 ここで **Echo** コマンドを書き込むように、MySetup.ps1 ファイルを変更すると、これはデバッグのために出力ファイルに書き込みます。
 
-~~~
+```
 Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to"
-~~~
+```
 
 **自分のスクリプトをデバッグした後、すぐにこのコンソール リダイレクト ポリシーを削除してください**。
 
@@ -203,7 +203,7 @@ Echo "Test console redirection which writes to the application log folder on the
 ### <a name="create-local-user-groups"></a>ローカル ユーザー グループの作成
 ユーザー グループを定義して作成し、1 人以上のユーザーをグループに追加できます。 これは、異なるサービス エントリ ポイントに対して複数のユーザーが存在し、グループ レベルで使用できる特定の共通の特権が必要な場合に、特に便利です。 次の例では、管理者特権を持つローカル グループ **LocalAdminGroup** を示します。 2 人のユーザー、Customer1 と Customer2 がこのローカル グループのメンバーになっています。
 
-~~~
+```xml
 <Principals>
  <Groups>
    <Group Name="LocalAdminGroup">
@@ -225,48 +225,49 @@ Echo "Test console redirection which writes to the application log folder on the
     </User>
   </Users>
 </Principals>
-~~~
+```
 
 ### <a name="create-local-users"></a>ローカル ユーザーの作成
 アプリケーション内のサービスをセキュリティで保護するために使用できるローカル ユーザーを作成できます。 アプリケーション マニフェストの Principals セクションでアカウントの種類として **LocalUser** が指定されている場合、Service Fabric はアプリケーションがデプロイされているコンピューターにローカル ユーザー アカウントを作成します。 既定では、これらのアカウントには、アプリケーション マニフェストで指定されているものと同じ名前は付きません (例: 次の例の Customer3)。 代わりに、動的に生成され、ランダムなパスワードが与えられます。
 
-~~~
+```xml
 <Principals>
   <Users>
      <User Name="Customer3" AccountType="LocalUser" />
   </Users>
 </Principals>
-~~~
+```
 
-<!-- If an application requires that the user account and password be same on all machines (for example, to enable NTLM authentication), the cluster manifest must set NTLMAuthenticationEnabled to true. The cluster manifest must also specify an NTLMAuthenticationPasswordSecret that will be used to generate the same password across all machines.
+アプリケーションですべてのマシンにおいてユーザー アカウントとパスワードが同じであることが要求される場合 (NTLM 認証を有効にするためなど) は、クラスター マニフェストで NTLMAuthenticationEnabled を true に設定する必要があります。 また、クラスター マニフェストでは、すべてのマシン間で同じパスワードを生成するために使用される NTLMAuthenticationPasswordSecret も指定する必要があります。
 
+```xml
 <Section Name="Hosting">
       <Parameter Name="EndpointProviderEnabled" Value="true"/>
       <Parameter Name="NTLMAuthenticationEnabled" Value="true"/>
       <Parameter Name="NTLMAuthenticationPassworkSecret" Value="******" IsEncrypted="true"/>
  </Section>
--->
+```
 
 ### <a name="assign-policies-to-the-service-code-packages"></a>サービス コード パッケージにポリシーを割り当てる
 **ServiceManifestImport** の **RunAsPolicy** セクションでは、コード パッケージの実行に使用されるアカウントが Principals セクションから指定されます。 また、Principals セクションのユーザー アカウントとサービス マニフェストのパッケージが関連付けられます。 これは、Setup または Main エントリ ポイントに対して指定することも、 `All` を指定して両方に適用することもできます。 次の例では、異なるポリシーの適用を示します。
 
-~~~
+```xml
 <Policies>
 <RunAsPolicy CodePackageRef="Code" UserRef="LocalAdmin" EntryPointType="Setup"/>
 <RunAsPolicy CodePackageRef="Code" UserRef="Customer3" EntryPointType="Main"/>
 </Policies>
-~~~
+```
 
 **EntryPointType** が指定されていない場合は、既定で EntryPointType=”Main” に設定されます。 **SetupEntryPoint** の指定は、高い特権を必要とする特定のセットアップ操作をシステム アカウントで実行するときに特に便利です。 実際のサービス コードは低い特権のアカウントで実行できます。
 
 ### <a name="apply-a-default-policy-to-all-service-code-packages"></a>すべてのサービス コード パッケージに既定のポリシーを適用する
 **DefaultRunAsPolicy** セクションを使用して、特定の **RunAsPolicy** が定義されていないすべてのコード パッケージに既定のユーザー アカウントを指定します。 アプリケーションによって使用されるサービス マニフェストで指定されているほとんどのコード パッケージが同じユーザーで実行される必要がある場合、そのユーザー アカウントで既定の RunAs ポリシーのみを定義することができます。 次の例では、コード パッケージで **RunAsPolicy** が指定されていない場合、コード パッケージは Principals セクションで指定されている **MyDefaultAccount** を使用して実行するように指定しています。
 
-~~~
+```xml
 <Policies>
   <DefaultRunAsPolicy UserRef="MyDefaultAccount"/>
 </Policies>
-~~~
+```
 ### <a name="use-an-active-directory-domain-group-or-user"></a>Active Directory ドメイン グループまたはユーザーを使用する
 スタンドアロン インストーラーを使用して Windows Server にインストールされた Service Fabric のインスタンスでは、Active Directory ユーザーまたはグループ アカウントの資格情報でサービスを実行することができます。 これは、ドメイン内のオンプレミスの Active Directory であり、Azure Active Directory (Azure AD) ではないことに注意してください。 ドメイン ユーザーまたはグループを使用すると、アクセス許可が付与されている、ドメイン内の他のリソース (ファイル共有など) にアクセスできます。
 
@@ -274,7 +275,7 @@ Echo "Test console redirection which writes to the application log folder on the
 
 ローカル コンピューターにアウトオブバンド方式でパスワードの暗号化を解除するには、証明書の秘密キーをデプロイする必要があります (Azure では Azure Resource Manager を使用します)。 これで、Service Fabric は、サービス パッケージをマシンにデプロイするときに、シークレットの暗号化を解除し、ユーザー名とこれらの資格情報で実行するように Active Directory による認証を実行できるようになります。
 
-~~~
+```xml
 <Principals>
   <Users>
     <User Name="TestUser" AccountType="DomainUser" AccountName="Domain\User" Password="[Put encrypted password here using MyCert certificate]" PasswordEncrypted="true" />
@@ -287,23 +288,23 @@ Echo "Test console redirection which writes to the application log folder on the
   </SecurityAccessPolicies>
 </Policies>
 <Certificates>
-~~~
+```
 
 
 ## <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>HTTP と HTTPS エンドポイントのセキュリティ アクセス ポリシーを割り当てる
 サービスに RunAs ポリシーを適用し、サービス マニフェストで HTTP プロトコルを使用するエンドポイント リソースが宣言されている場合は、これらのエンドポイントに割り当てられているポートに、サービスが実行する RunAs ユーザー アカウントのアクセス制御リストが正しく適用されるように、**SecurityAccessPolicy** を指定する必要があります。 それ以外の場合は、 **http.sys** はサービスにアクセスできず、クライアントからの呼び出しで失敗します。 次の例では、Customer3 アカウントを **ServiceEndpointName** エンドポイントに適用し、フル アクセス権限を付与しています。
 
-~~~
+```xml
 <Policies>
    <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" />
    <!--SecurityAccessPolicy is needed if RunAsPolicy is defined and the Endpoint is http -->
    <SecurityAccessPolicy ResourceRef="EndpointName" PrincipalRef="Customer1" />
 </Policies>
-~~~
+```
 
 HTTPS エンドポイントの場合、クライアントに返す証明書の名前も指示する必要があります。 そのために **EndpointBindingPolicy** を利用できます。アプリケーション マニフェストの certificates セクションで証明書が定義されています。
 
-~~~
+```xml
 <Policies>
    <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" />
   <!--SecurityAccessPolicy is needed if RunAsPolicy is defined and the Endpoint is http -->
@@ -311,13 +312,13 @@ HTTPS エンドポイントの場合、クライアントに返す証明書の�
   <!--EndpointBindingPolicy is needed if the EndpointName is secured with https -->
   <EndpointBindingPolicy EndpointRef="EndpointName" CertificateRef="Cert1" />
 </Policies
-~~~
+```
 
 
 ## <a name="a-complete-application-manifest-example"></a>完全なアプリケーション マニフェストの例
 次のアプリケーション マニフェストでは、さまざまな設定を示しています。
 
-~~~
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application3Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Parameters>
@@ -368,7 +369,7 @@ HTTPS エンドポイントの場合、クライアントに返す証明書の�
      <EndpointCertificate Name="Cert1" X509FindValue="FF EE E0 TT JJ DD JJ EE EE XX 23 4T 66 "/>
   </Certificates>
 </ApplicationManifest>
-~~~
+```
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
@@ -381,6 +382,6 @@ HTTPS エンドポイントの場合、クライアントに返す証明書の�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

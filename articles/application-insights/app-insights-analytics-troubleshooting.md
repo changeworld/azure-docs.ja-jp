@@ -1,5 +1,5 @@
 ---
-title: "Analytics のトラブルシューティング - Application Insights の強力な検索ツール | Microsoft Docs"
+title: "Azure Application Insights の Analytics のトラブルシューティング | Microsoft Docs"
 description: "Application Insights Analyticsで問題が発生しましたか? ここから開始します。 "
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 07/11/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: 263e8955608d87869937ea6584f88233fd690f72
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 6533b1e6a40b7cbf7d3d6961523144b3d0e5263b
 
 
 ---
@@ -23,7 +23,7 @@ ms.openlocfilehash: 263e8955608d87869937ea6584f88233fd690f72
 [Application Insights Analytics](app-insights-analytics.md)で問題が発生しましたか? ここから開始します。 Analytics は、Azure Application Insights の強力な検索ツールです。
 
 ## <a name="limits"></a>制限
-* 現時点では、クエリの結果は過去 1 週間のデータだけに制限されます。
+* 現時点では、クエリの結果は過去&1; 週間のデータだけに制限されます。
 * テストを実施したブラウザーは、Chrome、Microsoft Edge、および Internet Explorer の最新のエディションです。
 
 ## <a name="known-incompatible-browser-extensions"></a>既知の互換性のないブラウザーの拡張機能
@@ -114,6 +114,6 @@ URL が無効です。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

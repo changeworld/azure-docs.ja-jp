@@ -1,4 +1,4 @@
-# <a name="securing-your-iot-deployment"></a>IoT デプロイのセキュリティ保護
+# <a name="secure-your-iot-deployment"></a>IoT デプロイのセキュリティ保護
 この記事では、Azure の IoT インフラストラクチャを保護する詳細事項の次のレベルを説明します。 各コンポーネントを設定し、デプロイする実装レベルの詳細へリンクします。 また、さまざまな方法の比較や選択肢についても説明しています。
 
 Azure IoT デプロイの保護は、次の 3 つのセキュリティ領域に分類できます。
@@ -72,7 +72,7 @@ Azure IoT Hub はセキュリティ キーごとに[アクセス制御ポリシ�
 * **RegistryRead**。 ID レジストリへの読み取りアクセスを許可します。 詳細については、[ID レジストリ][lnk-identity-registry]に関する記事を参照してください。
 * **RegistryReadWrite**。 ID レジストリへの読み取りと書き込みアクセスを許可します。 詳細については、[ID レジストリ][lnk-identity-registry]に関する記事を参照してください。
 * **ServiceConnect**。 クラウド サービス向けの通信エンドポイントと監視エンドポイントへのアクセスを許可します。 たとえば、D2C メッセージの受信、C2D メッセージの送信、対応する配信確認メッセージの取得のアクセス許可をバックエンド クラウド サービスに付与します。
-* **DeviceConnect**。 デバイス向けの通信エンドポイントへのアクセスを許可します。 たとえば、D2C メッセージの送信と、C2D メッセージの受信のアクセス許可を付与します。 このアクセス許可はデバイスによって使用されます。
+* **DeviceConnect**。 デバイス向けのエンドポイントへのアクセスを許可します。 たとえば、D2C メッセージの送信と、C2D メッセージの受信のアクセス許可を付与します。 このアクセス許可はデバイスによって使用されます。
 
 [セキュリティ トークン][lnk-sas-tokens]を使用して IoT Hub で **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス キーを使用する方法の 2 通りがあります。 さらに、デバイスからアクセスできるすべての機能は、仕様により、 `/devices/{deviceId}`というプレフィックスを持つエンドポイントで公開されることに注意することが重要です。
 
@@ -84,7 +84,7 @@ Azure IoT Hub によって取り込まれたデータは、Azure Stream Analytic
 
 * [Azure DocumentDB][lnk-docdb]: 属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 DocumentDB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付け、および豊富な SQL クエリ インターフェイスが提供されます。
 * [Azure Stream Analytics][lnk-asa]: クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからのリアルタイムの洞察を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。 この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
-* [Azure App Services][lnk-appservices]: データがクラウドとオンプレミスのどちらにあっても接続できる強力な Web アプリとモバイル アプリをビルドするためのクラウド プラットフォーム。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、NodeJS、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
+* [Azure App Services][lnk-appservices]: データがクラウドとオンプレミスのどちらにあっても接続できる強力な Web アプリとモバイル アプリをビルドするためのクラウド プラットフォーム。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、Node.js、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
 * [Logic Apps][lnk-logicapps]: Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。 開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。 Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。
 * [Azure Blob Storage][lnk-blob]: デバイスからクラウドに送信されるデータに対応する信頼性と経済性に優れたクラウド ストレージ。
 
@@ -94,7 +94,7 @@ Azure IoT Hub によって取り込まれたデータは、Azure Stream Analytic
 [img-overview]: media/iot-secure-your-deployment/overview.png
 
 [lnk-security-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure
-[lnk-sas-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-client
+[lnk-sas-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app
 [lnk-identity-registry]: ../articles/iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-protocols]: ../articles/iot-hub/iot-hub-devguide-security.md
 [lnk-custom-auth]: ../articles/iot-hub/iot-hub-devguide-security.md#custom-device-authentication
@@ -109,6 +109,6 @@ Azure IoT Hub によって取り込まれたデータは、Azure Stream Analytic
 [lnk-blob]: https://azure.microsoft.com/services/storage/
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

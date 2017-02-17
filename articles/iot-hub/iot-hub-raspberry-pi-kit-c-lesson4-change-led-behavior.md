@@ -1,5 +1,5 @@
 ---
-title: "省略可能: LED のオンとオフの動作の変更 | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - レッスン 4: アプリの変更 | Microsoft Docs"
 description: "LED のオンとオフの動作を変更するメッセージをカスタマイズします。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 7f836a47c7b4d9cc27009f9e96dbefdcc5ad9219
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: c1c999e40ecc92a1018067822be66f14b61a8c36
 
 
 ---
@@ -38,7 +38,7 @@ Node.js 関数を追加して、LED のオンとオフの動作を変更しま�
    cd Lesson4
    code .
    ```
-2. `main.c` ファイルを開いて、blinkLED() 関数の後に以下の関数を追加します。
+2. `main.c` ファイルを開き、blinkLED() 関数の後に次の関数を追加します。
 
    ```c
    static void turnOnLED()
@@ -96,7 +96,7 @@ Node.js 関数を追加して、LED のオンとオフの動作を変更しま�
 gulp deploy && gulp run
 ```
 
-LED が 2 秒間点灯した後、2 秒間消灯します。 最後の "stop" メッセージは、サンプル アプリケーションの実行を停止するためのものです。
+LED が&2; 秒間点灯した後、2 秒間消灯します。 最後の "stop" メッセージは、サンプル アプリケーションの実行を停止するためのものです。
 
 ![サンプル アプリケーションの "オン/オフ" メッセージ](media/iot-hub-raspberry-pi-lessons/lesson4/gulp_on_and_off_c.png)
 
@@ -107,6 +107,6 @@ LED が 2 秒間点灯した後、2 秒間消灯します。 最後の "stop" �
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

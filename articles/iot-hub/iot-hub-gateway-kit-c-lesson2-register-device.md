@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT ハブを作成してデバイスを登録する | Microsoft Docs"
+title: "SensorTag デバイスと Azure IoT Gateway - レッスン 2: デバイスの登録 | Microsoft Docs"
 description: 
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 7765f122476c51011ab12613e615e5fea0bc58f4
-ms.openlocfilehash: 4b878ebe3222c4ab1c41051c659ba8333bf94c32
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: a895f18b4cefc01f12613e701c71bd471bb369c3
 
 
 ---
@@ -43,7 +43,7 @@ ms.openlocfilehash: 4b878ebe3222c4ab1c41051c659ba8333bf94c32
 
 ## <a name="what-you-need"></a>必要なもの
 
-- 有効な Azure サブスクリプション。 Azure アカウントがない場合は、[無料試用版の Azure アカウント](http://azure.microsoft.com/pricing/free-trial/)を数分で作成できます。
+- 有効な Azure サブスクリプション Azure アカウントがない場合は、[無料試用版の Azure アカウント](http://azure.microsoft.com/pricing/free-trial/)を数分で作成できます。
 - Azure CLI のインストール。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
@@ -89,7 +89,7 @@ IoT ハブを作成するには、次の手順を実行します。
 既定では、IoT ハブは Free 価格レベルで作成されます。 詳細については、「[Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
 > [!NOTE]
-> IoT ハブの名前は、グローバルに一意である必要があります。 Azure サブスクリプションで作成できる F1 エディションの Azure IoT Hub は 1 つのみです。
+> IoT ハブの名前は、グローバルに一意である必要があります。 Azure サブスクリプションで作成できる F1 エディションの Azure IoT Hub は&1; つのみです。
 
 ## <a name="register-your-device-in-your-iot-hub"></a>IoT ハブへのデバイスの登録
 
@@ -108,6 +108,6 @@ IoT ハブを作成し、デバイス ID を使用して IoT ハブに論理デ�
 [BLE サンプル アプリケーションの構成と実行](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

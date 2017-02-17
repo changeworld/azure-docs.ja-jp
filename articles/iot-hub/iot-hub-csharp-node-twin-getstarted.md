@@ -1,6 +1,6 @@
 ---
-title: "デバイス ツインの概要 | Microsoft Docs"
-description: "このチュートリアルでは、デバイス ツインの使用方法について説明します"
+title: "Azure IoT Hub デバイス ツインの使用 (.NET/Node) | Microsoft Docs"
+description: "Azure IoT Hub デバイス ツインを使用してタグを追加し、IoT Hub クエリを使用する方法。 Azure IoT device SDK for Node.js を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、タグを追加し、IoT Hub クエリを実行するサービス アプリを実装します。"
 services: iot-hub
 documentationcenter: node
 author: fsautomata
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 4b90b2529fa6d763ed3ce9c3b4da07afeb860f0e
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: f233f75d464ec2796d02f6760ef07512abfe3b2a
 
 
 ---
-# <a name="tutorial-get-started-with-device-twins"></a>チュートリアル: デバイス ツインの概要
+# <a name="get-started-with-device-twins-netnode"></a>デバイス ツインの概要 (.NET/Node)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-このチュートリアルの最後には、.NET および Node.js コンソール アプリケーションが完成します。
+このチュートリアルの最後には、.NET および Node.js コンソール アプリが完成します。
 
-* **AddTagsAndQuery.sln**: バックエンドから実行される .NET アプリで、タグを追加してデバイス ツインのクエリを実行します。
+* **AddTagsAndQuery.sln**: .NET バックエンド アプリで、タグを追加してデバイス ツインのクエリを実行します。
 * **TwinSimulatedDevice.js**: 以前作成したデバイス ID を使用して IoT Hub に接続するデバイスをシミュレートする Node.js アプリで、接続の状態を報告します。
 
 > [!NOTE]
-> デバイス アプリケーションとバックエンド アプリケーション両方の作成に利用できる Azure IoT SDK に関する情報は、「[Azure IoT SDK][lnk-hub-sdks]」の記事で取り上げています。
+> デバイス アプリとバックエンド アプリ両方の作成に利用できる Azure IoT SDK に関する情報は、「[Azure IoT SDK][lnk-hub-sdks]」の記事で取り上げています。
 > 
 > 
 
@@ -50,13 +50,13 @@ ms.openlocfilehash: 4b90b2529fa6d763ed3ce9c3b4da07afeb860f0e
    
     ![New Visual C# Windows Classic Desktop project][img-createapp]
 2. ソリューション エクスプローラーで **AddTagsAndQuery** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
+3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
    
-    ![Nuget Package Manager window][img-servicenuget]
+    ![NuGet Package Manager window][img-servicenuget]
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.Devices;
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで作成した IoT Hub の接続文字列に置き換えてください。
+5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで作成したハブの IoT Hub 接続文字列に置き換えてください。
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
@@ -116,7 +116,7 @@ ms.openlocfilehash: 4b90b2529fa6d763ed3ce9c3b4da07afeb860f0e
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 3. テキスト エディターを使用して、**reportconnectivity** フォルダーに新しい**ReportConnectivity.js** ファイルを作成します。
-4. **ReportConnectivity.js** ファイルに次のコードを追加し、**{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーした接続文字列で置き換えます。
+4. **ReportConnectivity.js** ファイルに次のコードを追加し、**{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーしたデバイス接続文字列で置き換えます。
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -165,7 +165,7 @@ ms.openlocfilehash: 4b90b2529fa6d763ed3ce9c3b4da07afeb860f0e
     ![][img-addtagapp2]
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 バックエンド アプリケーションからデバイスのメタデータをタグとして追加し、シミュレート対象デバイス アプリでデバイス ツインのデバイスの接続情報を報告するよう記述しました。 さらに、SQL に似た IoT Hub クエリ言語を使用してこの情報を照会する方法も学習しました。
+このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 バックエンド アプリからデバイスのメタデータをタグとして追加し、シミュレート対象デバイス アプリでデバイス ツインのデバイスの接続情報を報告するよう記述しました。 さらに、SQL に似た IoT Hub クエリ言語を使用してこの情報を照会する方法も学習しました。
 
 詳細については、次のリソースをご覧ください。
 
@@ -194,11 +194,11 @@ ms.openlocfilehash: 4b90b2529fa6d763ed3ce9c3b4da07afeb860f0e
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-twin-how-to-configure]: iot-hub-csharp-node-twin-how-to-configure.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "トラブルシューティング | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - トラブルシューティング | Microsoft Docs"
 description: "Raspberry Pi の Node.js エクスペリエンスに関するトラブルシューティング ページ"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: e3e4ad430d8941a09543ce2dc97f8e449a39bced
-ms.openlocfilehash: cd29c24c7c1a1bf3bc03543ffd7f0e9e33537edf
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 2c5e2955584b165ca0ca95ce424a2050fb3f6ccd
 
 
 ---
@@ -123,6 +123,7 @@ Azure CLI で Azure IoT ハブを正常にプロビジョニングでき、IoT �
 ### <a name="device-explorer"></a>デバイス エクスプローラー
 [デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) ツールは、Windows ローカル コンピューターで実行され、Azure の IoT Hub に接続するツールです。 このツールでは、以下の [IoT Hub エンドポイント](iot-hub-devguide.md) と通信します。
 
+
 * "*デバイス ID 管理*": IoT Hub に登録されているデバイスのプロビジョニングと管理ができます。
 * "*デバイスからクラウドへのメッセージ受信*": デバイスから IoT ハブに送信されるメッセージを監視できます。
 * "*クラウドからデバイスへのメッセージ送信*" IoT ハブからデバイスにメッセージを送信できます。
@@ -153,6 +154,6 @@ iothub-explorer help
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

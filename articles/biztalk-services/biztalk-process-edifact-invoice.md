@@ -15,8 +15,8 @@ ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9fe3430f7a36babc3b951fcb69d9a8ee9742b7ea
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b7ad7b91c6b836f26b45959ef65a99666a4bf69a
 
 
 ---
@@ -281,6 +281,6 @@ BizTalk Services EDI ブリッジでは、メッセージを一括送信する�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

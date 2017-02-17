@@ -1,5 +1,5 @@
 ---
-title: "Raspberry Pi 3 の使用 | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - 作業開始 | Microsoft Docs"
 description: "Raspberry Pi 3 の使用、Azure IoT ハブの作成、IoT ハブへの Pi の接続。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9f7647d89a6cf3c962bd4a6986e521cade3fd838
-ms.openlocfilehash: da2f32eb91dc8a2e10a3d76741d892b3c355ea1e
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 58398a8963ca834ed04d50a4715b29cbd3200b53
 
 
 ---
@@ -48,7 +48,7 @@ Raspberry Pi 3 の最初のアプリケーションをビルドしてデプロ�
 「[ツールの入手](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)」に移動してください。
 
 ### <a name="create-and-deploy-the-blink-application"></a>点滅アプリケーションを作成してデプロイする
-GitHub のサンプル C 点滅アプリケーションを複製し、gulp を使ってこのアプリケーションを Raspberry Pi 3 ボードにデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を 2 秒間隔で点滅させます。
+GitHub のサンプル C 点滅アプリケーションを複製し、gulp を使ってこのアプリケーションを Raspberry Pi 3 ボードにデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を&2; 秒間隔で点滅させます。
 
 *推定所要時間: 5 分*
 
@@ -57,7 +57,7 @@ GitHub のサンプル C 点滅アプリケーションを複製し、gulp を�
 ## <a name="lesson-2-create-your-iot-hub"></a>レッスン 2: IoT ハブの作成
 ![レッスン 2 のエンド ツー エンドのダイアグラム](media/iot-hub-raspberry-pi-lessons/e2e-lesson2.png)
 
-このレッスンでは、無料の Azure アカウントを作成し、Azure IoT Hub をプロビジョニングして、IoT Hub に最初のデバイスを作成します。
+このレッスンでは、無料の Azure アカウントを作成し、Azure IoT ハブをプロビジョニングして、その IoT ハブに最初のデバイスを作成します。
 
 このレッスンを開始する前に、レッスン 1 を完了してください。
 
@@ -108,7 +108,7 @@ Azure Storage に書き込まれた、デバイスからクラウドへのメッ
 
 このレッスンでは、Azure IoT ハブから Raspberry Pi 3 にメッセージを送信する方法を紹介します。 メッセージにより、Pi に接続されている LED のオンとオフの動作を制御します。 サンプル アプリケーションは、このタスクを実行するための準備が整っています。
 
-このレッスンを開始する前に、レッスン 1、2、および 3 を完了してください。
+このレッスンを開始する前に、レッスン 1、2、3 を完了してください。
 
 ### <a name="run-the-sample-application-to-receive-cloud-to-device-messages"></a>クラウドからデバイスへのメッセージを受信するサンプル アプリケーションの実行
 レッスン 4 のサンプル アプリケーションは Pi 上で動作し、IoT ハブからの受信メッセージを監視します。 新しい gulp タスクを使って IoT ハブから Pi にメッセージを送信して、LED を点滅させます。
@@ -129,6 +129,6 @@ LED のオンとオフの動作を変更するメッセージをカスタマイ�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

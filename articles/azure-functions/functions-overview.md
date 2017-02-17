@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/20/2016
+ms.date: 01/17/2017
 ms.author: cfowler;mahender;glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 31d7a8d1abb59e096a657c4a74743adfc0d137b6
-ms.openlocfilehash: 01c1e7b58a7dce3c640ac151b3ac708ce2b7d913
+ms.sourcegitcommit: 30cc3b8749d5b36b89b242e2691003cc6f67f7d2
+ms.openlocfilehash: 00359057d702c556cd8beb91cf17ccf41c96f601
 
 
 ---
@@ -70,10 +70,10 @@ Azure Functions は、さまざまな Azure サービスや サード パーテ�
 ## <a name="a-namepricingahow-much-does-functions-cost"></a><a name="pricing"></a>Azure Functions の価格
 Azure Functions には 2 種類の料金プランがあり、ニーズに合わせて選択できます。 
 
-* **従量課金プラン** - 関数が実行されるときに、必要なすべてのコンピューティング リソースが Azure から適用されます。 リソースの管理について考慮する必要がなく、コードを実行した時間に応じた料金のみを支払います。 価格の詳細については、 [Functions の価格のページ](/pricing/details/functions)をご覧ください。 
-* **App Service プラン** - 関数を Web アプリ、モバイル アプリ、API アプリと同様に実行できます。 既に App Service を他のアプリケーションに使用している場合、追加コストなしで、同じプランで関数を実行できます。 詳細については、 [App Service の価格のページ](/pricing/details/app-service/)をご覧ください。
+* **従量課金プラン** - 関数が実行されるときに、必要なすべてのコンピューティング リソースが Azure から適用されます。 リソースの管理について考慮する必要がなく、コードを実行した時間に応じた料金のみを支払います。 
+* **App Service プラン** - 関数を Web アプリ、モバイル アプリ、API アプリと同様に実行できます。 既に App Service を他のアプリケーションに使用している場合、追加コストなしで、同じプランで関数を実行できます。 
 
-関数のスケーリングの詳細については、「 [Azure Functions のスケーリング方法](functions-scale.md)」をご覧ください。
+価格の詳細については、 [Functions の価格のページ](https://azure.microsoft.com/pricing/details/functions/)をご覧ください。 関数のスケーリングの詳細については、「 [Azure Functions のスケーリング方法](functions-scale.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [初めての Azure 関数の作成](functions-create-first-azure-function.md)  
@@ -90,6 +90,6 @@ Azure Functions には 2 種類の料金プランがあり、ニーズに合わ�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

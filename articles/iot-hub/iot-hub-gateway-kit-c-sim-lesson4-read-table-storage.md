@@ -1,5 +1,5 @@
 ---
-title: "Azure Table Storage に保持されたメッセージの読み取り | Microsoft Docs"
+title: "シミュレートされたデバイスと Azure IoT Gateway - レッスン 4: Table Storage | Microsoft Docs"
 description: "Intel NUC のメッセージを IoT ハブに保存し、Azure Table Storage に書き込んだ後、クラウドから読みます。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: e229c919db797133d3dc30fc65b482e5135f7cc5
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: b12e16a5a532448cf2e939cfcad322225b9ee811
 
 
 ---
@@ -78,7 +78,7 @@ az storage account show-connection-string -g iot-gateway -n {storage name}
 
 2. `[Azure storage connection string]` を、取得済みの Azure ストレージ接続文字列に置き換えます。
 
-   `[IoT hub connection string]` は、レッスン 3 の「[Azure IoT Hub からのメッセージの読み取り](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)」セクションで既に置き換えています。
+   `[IoT hub connection string]` は、レッスン&3; の「[Azure IoT Hub からのメッセージの読み取り](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)」セクションで既に置き換えています。
 
 ## <a name="read-messages-in-your-azure-table-storage"></a>Azure Table Storage 内のメッセージの読み取り
 
@@ -102,6 +102,6 @@ Azure Function App によって保存された Azure Table Storage 内のメッ�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

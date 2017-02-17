@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manager テンプレートを使ったコンピューティング リソースのデプロイ | Microsoft Docs"
+title: "Azure Resource Manager テンプレートを使った Windows コンピューティング リソースのデプロイ | Microsoft Docs"
 description: "Azure Virtual Machines DotNet Core チュートリアル"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: b746e4218ea505ea5e0a1579608e0ecfa10e87e7
+ms.sourcegitcommit: bd214be3aec3fbfa70fe579447f1e00f17a354c7
+ms.openlocfilehash: 4489cf32a5aa5cfaf29e6e8aa6cf71bf6076ee84
 
 
 ---
@@ -65,7 +65,7 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 ![仮想マシン](./media/virtual-machines-windows-dotnet-core/vm-win.png)
 
 ## <a name="storage-account"></a>ストレージ アカウント
-ストレージ アカウントには、さまざまなストレージ オプションと機能があります。 Azure Virtual Machines に関しては、ストレージ アカウントは仮想マシンの仮想ハード ドライブと追加のデータ ディスクを保持します。 ミュージック ストア サンプルには、デプロイ内の各仮想マシンの仮想ハード ドライブを保持するストレージ アカウントが 1 つ含まれています。 
+ストレージ アカウントには、さまざまなストレージ オプションと機能があります。 Azure Virtual Machines に関しては、ストレージ アカウントは仮想マシンの仮想ハード ドライブと追加のデータ ディスクを保持します。 ミュージック ストア サンプルには、デプロイ内の各仮想マシンの仮想ハード ドライブを保持するストレージ アカウントが&1; つ含まれています。 
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [ストレージ アカウント](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L98)) をご覧ください。
 
@@ -222,7 +222,7 @@ Azure Portal では、ネットワーク インターフェイスは次の図の
 Azure Virtual Network について詳しくは、 [Azure Virtual Network のドキュメント](https://azure.microsoft.com/documentation/services/virtual-network/)に関するページをご覧ください。
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
-ミュージック ストア Web サイトをホストする仮想マシンのほかに、Azure SQL データベースもミュージック ストア データベースをホストするためにデプロイされます。 ここで Azure SQL Database を使う利点は、仮想マシンの 2 番目のセットが不要で、サービスにスケールと可用性が組み込まれていることです。
+ミュージック ストア Web サイトをホストする仮想マシンのほかに、Azure SQL データベースもミュージック ストア データベースをホストするためにデプロイされます。 ここで Azure SQL Database を使う利点は、仮想マシンの&2; 番目のセットが不要で、サービスにスケールと可用性が組み込まれていることです。
 
 Azure SQL データベースを追加するには、Visual Studio の新しいリソースの追加ウィザードを使うか、有効な JSON をテンプレートに挿入します。 SQL Server リソースには、SQL インスタンスの管理者権限が付与されているユーザーの名前とパスワードが含まれています。 また、SQL ファイアウォール リソースが追加されています。 既定では、Azure でホストされるアプリケーションは SQL インスタンスに接続できます。 SQL Server Management Studio などの外部アプリケーションが SQL インスタンスに接続できるようにするには、ファイアウォールを構成する必要があります。 ミュージック ストア デモでは、既定の構成で問題ありません。 
 
@@ -274,6 +274,6 @@ Azure SQL Database のデプロイについて詳しくは、 [Azure SQL Databas
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT ゲートウェイ スタート キットの使用 | Microsoft Docs"
+title: "シミュレートされたデバイスと Azure IoT Gateway - 作業開始 | Microsoft Docs"
 description: "IoT ゲートウェイ スタート キットを使用して Azure IoT ハブを作成し、ゲートウェイを IoT ハブに接続します"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/21/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: c62e0cc560af18945c371af000ec08c0ddc7cd5a
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 06161c2950fbe99d2e4f9c1b416695a5f9f18ca4
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: c62e0cc560af18945c371af000ec08c0ddc7cd5a
 ***
 
 ## <a name="lesson-1-configure-your-nuc"></a>レッスン 1: NUC を構成する
-![レッスン 1 のエンド ツー エンド ダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson1.png)
+![レッスン&1; のエンド ツー エンド ダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson1.png)
 
 このレッスンでは、キットの Intel NUC (Next Unit of Computing) を Azure IoT ゲートウェイとして設定し、Azure IoT Gateway SDK パッケージを NUC にインストールし、サンプル アプリを実行してゲートウェイの機能を検証します。
 
@@ -44,7 +44,7 @@ ms.openlocfilehash: c62e0cc560af18945c371af000ec08c0ddc7cd5a
 「[IoT ゲートウェイとしての Intel NUC のセットアップ](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md)」に移動する
 
 ## <a name="lesson-2-create-your-iot-hub"></a>レッスン 2: IoT Hub を作成する
-![レッスン 2 のエンド ツー エンド ダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson2.png)
+![レッスン&2; のエンド ツー エンド ダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson2.png)
 
 このレッスンでは、ツールとソフトウェアをホスト コンピューターにインストールします。 その後、無料の Azure アカウントを作成し、Azure IoT ハブをプロビジョニングし、IoT ハブに最初のデバイスを作成します。
 
@@ -109,6 +109,6 @@ Azure Table Storage に書き込まれるゲートウェイからクラウドへ
 詳細については、[Intel IoT Gateway Kit developer zone](https://software.intel.com/en-us/iot/hardware/gateways/dev-kit) (Intel IoT Gateway Kit デベロッパー ゾーン) を参照してください。
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

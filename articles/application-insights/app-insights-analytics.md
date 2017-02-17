@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f760494cbe7341391f0ce51bb1161cb1395cbe5c
-ms.openlocfilehash: b56ac6e0b75492e8d784c5fc67e555f8f450b65f
+ms.sourcegitcommit: 70f77fd155627ef1d06cf466d19768a0eaad6856
+ms.openlocfilehash: 4d3393b935d2ebd24bccd0fe040f1948402f6e5b
 
 
 ---
@@ -25,6 +25,7 @@ ms.openlocfilehash: b56ac6e0b75492e8d784c5fc67e555f8f450b65f
 * **[紹介ビデオを見る](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
 * **[シミュレーション データで Analytics を試す](https://analytics.applicationinsights.io/demo)** (ご使用のアプリからまだ Application Insights にデータが送信されていない場合)。
 * **[SQL ユーザーのチート シート](https://aka.ms/sql-analytics)**では、最も一般的な言語の対応付けを確認できます。
+* **[言語リファレンス](app-insights-analytics-reference.md)** Analytics クエリ言語の強力な機能すべての使用方法について説明します。
 
 ## <a name="queries-in-analytics"></a>Analytics でのクエリ
 一般的なクエリでは、"*ソース*" テーブルの後に、一連の "*演算子*" を `|` で区切って記載します。 
@@ -46,7 +47,7 @@ ms.openlocfilehash: b56ac6e0b75492e8d784c5fc67e555f8f450b65f
 
 ![棒グラフ、X 軸および Y 軸を選択してからセグメント化します](./media/app-insights-analytics/020.png)
 
-ハイデラバードでは、アプリは昼食時と就寝時に最も使用されているようです  (これら 500 のコードを調べる必要があります)。
+ハイデラバードでは、アプリは昼食時と就寝時に最も使用されているようです (これら 500 のコードを調べる必要があります)。
 
 次のような、強力な統計演算もあります。
 
@@ -80,6 +81,6 @@ ms.openlocfilehash: b56ac6e0b75492e8d784c5fc67e555f8f450b65f
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

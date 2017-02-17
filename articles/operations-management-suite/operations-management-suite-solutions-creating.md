@@ -4,7 +4,7 @@ description: "管理ソリューションは、お客様の OMS ワークスペ�
 services: operations-management-suite
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: operations-management-suite
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
-ms.openlocfilehash: ab33a7610b8e7bbf64e9f1bfde3753f95956a82f
+ms.sourcegitcommit: fc8b76bf996060e226ac3f508a1ecffca6fc3c98
+ms.openlocfilehash: caa2f96d452174ebb13c5cbf67737f20e2a2134d
 
 
 ---
@@ -91,7 +91,7 @@ OMS の管理ソリューションには、特定の管理シナリオをサポ�
 | workspaceRegionId |string |Log Analytics ワークスペースのリージョン。 |
 
 ### <a name="sample"></a>サンプル
-以下に、ソリューションのパラメーター エンティティのサンプルを示します。  これは、すべての標準パラメーターと、同じカテゴリ内の 2 つの追加のパラメーターを含みます。
+以下に、ソリューションのパラメーター エンティティのサンプルを示します。  これは、すべての標準パラメーターと、同じカテゴリ内の&2; つの追加のパラメーターを含みます。
 
     "parameters": {
         "workspaceName": {
@@ -145,7 +145,7 @@ OMS の管理ソリューションには、特定の管理シナリオをサポ�
 ソリューション内のその他の要素のパラメーター値は、 **parameters('parameter name')**の構文を使用して参照します。  たとえば、ワークスペース名にアクセスするには、**parameters('workspaceName')** を使用します。
 
 ## <a name="variables"></a>変数
-**Variables** 要素には、その他の管理ソリューションで使用する値が含まれています。  これらの値は、ソリューションをインストールするユーザーには公開されません。  これは、作成者に 1 つの場所を提供することを意図しており、それによって、ソリューション全体にわたって何度も使用する値を管理できるようにします。 **resources** 要素でハードコーディングするのとは異なり、ソリューション固有の値を変数で記述する必要があります。  これによってコードが読みやすくなるとともに、後のバージョンでこれらの値を簡単に変更することができます。
+**Variables** 要素には、その他の管理ソリューションで使用する値が含まれています。  これらの値は、ソリューションをインストールするユーザーには公開されません。  これは、作成者に&1; つの場所を提供することを意図しており、それによって、ソリューション全体にわたって何度も使用する値を管理できるようにします。 **resources** 要素でハードコーディングするのとは異なり、ソリューション固有の値を変数で記述する必要があります。  これによってコードが読みやすくなるとともに、後のバージョンでこれらの値を簡単に変更することができます。
 
 次の例は、ソリューションで使用される一般的なパラメーターを持つ**variables**要素です。
 
@@ -187,7 +187,7 @@ OMS の管理ソリューションには、特定の管理シナリオをサポ�
 管理ソリューションでは、ビューを格納するために [OMS ワークスペース](../log-analytics/log-analytics-manage-access.md)が、Runbook と関連リソースを格納するために [Automation アカウント](../automation/automation-security-overview.md#automation-account-overview)が必要です。  これらはソリューションのリソースが作成される前に使用できるようにする必要があり、ソリューションそのもので定義すべきではありません。  ユーザーはソリューションのデプロイ時に[ワークスペースとアカウントを指定](operations-management-suite-solutions.md#oms-workspace-and-automation-account)しますが、作成者としては、次の点を考慮する必要があります。
 
 ## <a name="solution-resource"></a>ソリューションのリソース
-各ソリューションは、ソリューション自体を定義する**resources**要素の中にリソース エントリが必要です。  これは**Microsoft.OperationsManagement/solutions** の 1 つを有します。  以下に、ソリューション リソースの例を示します。  異なる要素については、以降のセクションで説明します。
+各ソリューションは、ソリューション自体を定義する**resources**要素の中にリソース エントリが必要です。  これは**Microsoft.OperationsManagement/solutions** の&1; つを有します。  以下に、ソリューション リソースの例を示します。  異なる要素については、以降のセクションで説明します。
 
     "name": "[concat(variables('SolutionName'), '[ ' ,parameters('workspacename'), ' ]')]",
     "location": "[parameters('workspaceRegionId')]",
@@ -261,13 +261,14 @@ OMS の管理ソリューションには、特定の管理シナリオをサポ�
 管理ソリューションをデプロイする前に、[Test-AzureRmResourceGroupDeployment](../azure-resource-manager/resource-group-template-deploy.md#deploy) を使ってテストすることをお勧めします。  これにより、ソリューション ファイルを検証し、デプロイする前に問題を検出することができます。
 
 ## <a name="next-steps"></a>次のステップ
+* 管理ソリューションに、[保存した検索とアラートを追加する](operations-management-suite-solutions-resources-searches-alerts.md)。
+* 管理ソリューションに[ビューを追加する](operations-management-suite-solutions-resources-views.md)。
+* 管理ソリューションに [Automation Runbook とその他のリソースを追加する](operations-management-suite-solutions-resources-automation.md)。
 * [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)の詳細について
 * Resource Manager テンプレートの様々なサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates) で検索できます。
-* [管理ソリューションにビューを追加する方法](operations-management-suite-solutions-resources-views.md)の詳細を参照する。
-* [管理ソリューションに Automation リソースを追加する方法](operations-management-suite-solutions-resources-automation.md)の詳細を参照する。
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

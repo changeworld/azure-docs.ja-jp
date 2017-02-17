@@ -1,5 +1,5 @@
 ---
-title: "Jupyter Notebook をコンピューターにインストールして HDInsight Spark クラスターに接続する | Microsoft Docs"
+title: "Jupyter Notebook のローカルでのインストールと Azure Spark クラスターへの接続 | Microsoft Docs"
 description: "Jupyter Notebook をローカル コンピューターにインストールして Azure HDInsight 上の Apache Spark クラスターに接続する方法を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -13,18 +13,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/17/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 57df4ab0b2a1df6631eb6e67a90f69cebb1dfe75
-ms.openlocfilehash: e6aeacd091e58a010348c031294f7b7c98df57fb
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 26cdaf4dc68876fa2bed4ca15d8bfb7fd3ac4b6d
 
 
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-cluster-on-hdinsight-linux"></a>Jupyter Notebook をコンピューターにインストールして HDInsight Linux の Apache Spark クラスターに接続する
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-cluster-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark クラスターに接続する
+
 この記事では、カスタム PySpark (Python の場合) カーネルと Spark (Scala の場合) カーネル、Spark マジックと共に Jupyter Notebook をインストールし、HDInsight クラスターにノートブックを接続する方法について説明します。 さまざまな理由から、Jupyter をローカル コンピューターにインストールすることが必要になるケースがあります。またローカル コンピューターへのインストールには、いくつかの課題もあります。 これらの理由と課題については、この記事の最後のセクション「[Jupyter をローカル コンピューターにインストールする理由](#why-should-i-install-jupyter-on-my-computer)」をご覧ください。
 
-Jupyter と Spark マジックは大きく 3 つの手順でコンピューターにインストールします。
+Jupyter と Spark マジックは大きく&3; つの手順でコンピューターにインストールします。
 
 * Jupyter Notebook をインストールする
 * PySpark カーネルと Spark カーネルおよび Spark マジックをインストールする
@@ -36,7 +37,7 @@ HDInsight クラスターの Jupyter Notebook で使用できるカスタム カ
 ここに記載したのは、Jupyter のインストールに関する前提条件ではありません。 Jupyter Notebook のインストール後にノートブックを HDInsight クラスターに接続するための前提条件です。
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* HDInsight Linux での Apache Spark クラスター。 手順については、「[HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
+* HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter Notebook をコンピューターにインストールする
 Jupyter Notebook をインストールする前に Python をインストールする必要があります。 Python と Jupyter はどちらも、 [Ananconda ディストリビューション](https://www.continuum.io/downloads)に同梱されています。 Anaconda をインストールすると、実質的に Python のディストリビューションがインストールされます。 Jupyter 環境は、Anaconda のインストール後にコマンドを実行して追加することになります。 そのために必要な手順をこのセクションで紹介しています。
@@ -89,7 +90,7 @@ Spark マジック、PySpark カーネル、および Spark カーネルのイ�
 
         python -c "import base64; print(base64.b64encode('{YOURPASSWORD}'))"
 
-5. `config.json` で右側のハートビート設定を構成します。
+5. `config.json` で右側のハートビート設定を構成します。 この設定は、前に追加した `kernel_python_credentials` と`kernel_scala_credentials` のスニペットと同じレベルに追加する必要があります。 ハートビート設定を追加する方法と場所の例については、こちらの [ config.json のサンプル](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)を参照してください。
 
     * `sparkmagic 0.5.0` (クラスター V3.4) の場合は、次が含まれます。
 
@@ -112,9 +113,9 @@ Spark マジック、PySpark カーネル、および Spark カーネルのイ�
 
 7. Jupyter Notebook を使用してクラスターに接続できること、カーネルに備わっている Spark マジックを使用できることを確認します。 次の手順に従います。
 
-   1. 新しい Notebook を作成します。 右隅にある **[新規]**をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。
+   1. 新しい Notebook を作成します。 右隅にある **[新規]**をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする&2; つの新しいカーネル (**PySpark** と **Spark**) が確認できます。
 
-       ![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Create a new Jupyter notebook")
+       ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "新しい Jupyter Notebook の作成")
 
         **[PySpark]**をクリックします。
 
@@ -170,6 +171,6 @@ Jupyter をローカル コンピューターにインストールし、HDInsigh
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

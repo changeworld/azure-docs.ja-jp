@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 11/01/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: d8818035349c8e78c1f2bb39a05e1afb2c854cc9
+ms.sourcegitcommit: 1f7ec5d53512dcfbff17269802c8889eae0ad744
+ms.openlocfilehash: 5dd69a0b9357a601070765817a814dae3e7e5c05
 
 
 ---
@@ -30,10 +30,15 @@ Azure AD Connect のアップグレードには複数の方法があります。
 | メソッド | Description |
 | --- | --- |
 | [自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md) |高速インストールのユーザーの場合、これは最も簡単な方法です。 |
-| [インプレース アップグレード](#in-place-upgrade) |サーバーが 1 台だけの場合は、同じサーバーでインストールをインプレース アップグレードします。 |
+| [インプレース アップグレード](#in-place-upgrade) |サーバーが&1; 台だけの場合は、同じサーバーでインストールをインプレース アップグレードします。 |
 | [スウィング移行](#swing-migration) |2 台のサーバーを用意し、一方に新しいリリースまたは構成を準備して、アクティブなサーバーを変更します。 |
 
 必要なアクセス許可については、[アップグレードに必要なアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)を参照してください。
+
+> [!NOTE]
+> Azure AD に対する変更の同期を新しい Azure AD Connect サーバーが開始できるようにした後は、DirSync または Azure AD Sync を使用してロールバックしないでください。 Azure AD Connect から DirSync、Azure AD Sync などの従来のクライアントへのダウングレードはサポートされておらず、Azure AD のデータ損失などの問題につながる場合があります。 
+> 
+> 
 
 ## <a name="in-place-upgrade"></a>インプレース アップグレード
 インプレース アップグレードは、Azure AD Sync または Azure AD Connect からの移動に使用できます。 DirSync または FIM + Azure AD コネクタのソリューションには使用できません。
@@ -46,12 +51,12 @@ Azure AD Connect のアップグレードには複数の方法があります。
 ## <a name="swing-migration"></a>スウィング移行
 複雑なデプロイまたは非常に多くのオブジェクトがある場合、ライブ システムでのインプレース アップグレードは困難である場合があります。 ユーザーによっては数日かかることがあり、この間差分変更は処理されません。 この方法は、構成を大幅に変更し、クラウドにプッシュする前にテストしたい場合にも使用されます。
 
-このようなシナリオでは、スウィング移行を使用することをお勧めします。 アクティブ サーバーが 1 台とステージング サーバーが 1 台、(少なくとも) 2 台のサーバーが必要です。 アクティブ サーバー (次の図の青い実線) は、アクティブな運用負荷を処理します。 ステージング サーバー (次の図の紫の破線) は新しいリリースまたは構成の準備用であり、このサーバーの準備が完全にできたらアクティブにします。 古いバージョンまたは構成がインストールされている前のアクティブ サーバーは、ステージング サーバーにしてアップグレードします。
+このようなシナリオでは、スウィング移行を使用することをお勧めします。 アクティブ サーバーが&1; 台とステージング サーバーが&1; 台、(少なくとも)&2; 台のサーバーが必要です。 アクティブ サーバー (次の図の青い実線) は、アクティブな運用負荷を処理します。 ステージング サーバー (次の図の紫の破線) は新しいリリースまたは構成の準備用であり、このサーバーの準備が完全にできたらアクティブにします。 古いバージョンまたは構成がインストールされている前のアクティブ サーバーは、ステージング サーバーにしてアップグレードします。
 
 2 つのサーバーには、それぞれ異なるバージョンを使用できます。 たとえば、使用を停止する予定のアクティブ サーバーでは Azure AD Sync を使用し、新しいステージング サーバーでは Azure AD Connect を使用することができます。 スウィング移行を使用して新しい構成を開発する場合は、2 つのサーバーで同じバージョンを使用することをお勧めします。  
 ![ステージング サーバー](./media/active-directory-aadconnect-upgrade-previous-version/stagingserver1.png)
 
-注: このシナリオでは、3 台または 4 台のサーバーを使用することが好まれる場合があります。 ステージング サーバーがアップグレードされているときに、[障害復旧](active-directory-aadconnectsync-operations.md#disaster-recovery)用のバックアップ サーバーがないためです。 3 台か 4 台のサーバーを使用すると、新しいバージョンにアップグレードされたプライマリ/スタンバイ サーバーのセットを準備でき、引き継ぎ用のステージング サーバーを常に確保できます。
+注: このシナリオでは、3 台または&4; 台のサーバーを使用することが好まれる場合があります。 ステージング サーバーがアップグレードされているときに、[障害復旧](active-directory-aadconnectsync-operations.md#disaster-recovery)用のバックアップ サーバーがないためです。 3 台か&4; 台のサーバーを使用すると、新しいバージョンにアップグレードされたプライマリ/スタンバイ サーバーのセットを準備でき、引き継ぎ用のステージング サーバーを常に確保できます。
 
 以下の手順は、Azure AD Sync または FIM + Azure AD Connector のソリューションからの移行にも使用できます。 この手順は DirSync には使用できませんが、DirSync 用の手順が組み込まれた同じスウィング移行 (並列デプロイとも呼ばれます) 方法が、[Azure Active Directory 同期 (DirSync) のアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)に関するページで説明されています。
 
@@ -91,6 +96,6 @@ Azure AD Connect のアップグレードには複数の方法があります。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: d9f6c8c73cb7803547053ec495812f993eb44c43
-ms.openlocfilehash: b2f8683be1dea938cba84766efe32287eeebb712
+ms.sourcegitcommit: c98251147bca323d31213a102f607e995b37e0ec
+ms.openlocfilehash: 19e8c9de137e10abb563fcd60cf89502dbf94cfd
 
 
 ---
@@ -64,7 +64,7 @@ ms.openlocfilehash: b2f8683be1dea938cba84766efe32287eeebb712
 
 また、投稿を&1; つのクエリで結合なしに取得できます。 これははるかにシンプルでわかりやすい方法です。予算的にも、必要なリソースを減らして大きな成果を上げることができます。
 
-Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)も可能な[自動インデックス作成機能](documentdb-indexing.md)によって、すべてのプロパティのインデックスが作成されます。 このスキーマフリーのアプローチにより、さまざまな動的構造でドキュメントを保存できます。将来的には、カテゴリのリストや投稿に関連付けられたハッシュタグを投稿に含めたいと考えています。DocumentDB では、余分な作業を必要とせずに、追加された属性を使用して新しいドキュメントを処理します。
+Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)も可能な自動インデックス作成機能によって、すべてのプロパティのインデックスが作成されます。 このスキーマフリーのアプローチにより、さまざまな動的構造でドキュメントを保存できます。将来的には、カテゴリのリストや投稿に関連付けられたハッシュタグを投稿に含めたいと考えています。DocumentDB では、余分な作業を必要とせずに、追加された属性を使用して新しいドキュメントを処理します。
 
 投稿へのコメントは、親プロパティを持つ他の投稿と同様に処理できます (これにより、オブジェクト マッピングが簡素化されます)。 
 
@@ -168,7 +168,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
 
 最大の段が "拡張ユーザー" です。 拡張ユーザーには、すべての重要なユーザー情報と、実際には迅速に読み取る必要のないデータや (ログイン プロセスのように) 最終的に使用するデータが含まれます。 このデータは、DocumentDB の外部、Azure SQL Database、または Azure Storage Tables に保存できます。
 
-ユーザーを分割し、この情報をさまざまな場所に保存するのはなぜでしょうか。 それは、DocumentDB の記憶域は[無限ではない](documentdb-limits.md)からであり、パフォーマンスの観点から言えば、ドキュメントのサイズが大きくなるほど、クエリのコストが高くなるためです。 ソーシャル ネットワークでパフォーマンスに依存するすべてのクエリを実行するための適切な情報を含めてドキュメントをスリムに保ち、その他の情報は、完全なプロファイル編集、ログイン、利用状況分析のためのデータ マイニング、ビッグ データへの取り組みなどの最終的なシナリオ用に保存します。 データ マイニングのためのデータ収集は、Azure SQL Database で実行されるので、実際には収集に時間がかかってもかまいません。私たちが気に掛けているのは、ユーザーに高速で軽快なエクスペリエンスを提供することです。 DocumentDB に保存されたユーザーは次のようになります。
+ユーザーを分割し、この情報をさまざまな場所に保存するのはなぜでしょうか。 それは、DocumentDB の記憶域は無限ではないからであり、パフォーマンスの観点から言えば、ドキュメントのサイズが大きくなるほど、クエリのコストが高くなるからです。 ソーシャル ネットワークでパフォーマンスに依存するすべてのクエリを実行するための適切な情報を含めてドキュメントをスリムに保ち、その他の情報は、完全なプロファイル編集、ログイン、利用状況分析のためのデータ マイニング、ビッグ データへの取り組みなどの最終的なシナリオ用に保存します。 データ マイニングのためのデータ収集は、Azure SQL Database で実行されるので、実際には収集に時間がかかってもかまいません。私たちが気に掛けているのは、ユーザーに高速で軽快なエクスペリエンスを提供することです。 DocumentDB に保存されたユーザーは次のようになります。
 
     {
         "id":"dse4-qwe2-ert4-aad2",
@@ -200,7 +200,7 @@ Azure DocumentDB を使用しているので、 [Azure Search](https://azure.mic
 
 これが非常に簡単なのはなぜでしょうか。
 
-Azure Search は、いわゆる[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を実装しています。インデクサーは、データ リポジトリにフックを設定し、インデックス内のオブジェクトを自動的に追加、更新、または削除するバックグラウンド プロセスです。 [Azure SQL Database インデクサー](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure BLOB インデクサー](../search/search-howto-indexing-azure-blob-storage.md)、[Azure DocumentDB インデクサー](documentdb-search-indexer.md)がサポートされています。 DocumentDB と Azure Search は、どちらも JSON 形式で情報を保存するので、DocumentDB から Azure Search への情報の移行は簡単です。[インデックスを作成](../search/search-create-index-portal.md)し、ドキュメントからインデックス付けする属性をマップするだけで済むため、わずか数分で終わります (データのサイズによって異なります)。クラウド インフラストラクチャの優れたサービスとしての検索ソリューションにより、すべてのコンテンツを検索対象にすることができます。 
+Azure Search は、いわゆる[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を実装しています。インデクサーは、データ リポジトリにフックを設定し、インデックス内のオブジェクトを自動的に追加、更新、または削除するバックグラウンド プロセスです。 [Azure SQL Database インデクサー](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure BLOB インデクサー](../search/search-howto-indexing-azure-blob-storage.md)、[Azure DocumentDB インデクサー](../search/search-howto-index-documentdb.md)がサポートされています。 DocumentDB と Azure Search は、どちらも JSON 形式で情報を保存するので、DocumentDB から Azure Search への情報の移行は簡単です。[インデックスを作成](../search/search-create-index-portal.md)し、ドキュメントからインデックス付けする属性をマップするだけで済むため、わずか数分で終わります (データのサイズによって異なります)。クラウド インフラストラクチャの優れたサービスとしての検索ソリューションにより、すべてのコンテンツを検索対象にすることができます。 
 
 Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検索のためのヒッチハイカー ガイド)](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)」をご覧ください。
 
@@ -234,6 +234,6 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

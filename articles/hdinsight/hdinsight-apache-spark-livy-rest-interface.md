@@ -1,5 +1,5 @@
 ---
-title: "Livy を使用して Spark ジョブをリモートで送信する | Microsoft Docs"
+title: "Livy を使用した Azure HDInsight での Spark へのジョブのリモート送信 | Microsoft Docs"
 description: "Livy と HDInsight クラスターを使用して Spark ジョブをリモートで送信する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 0866581d6feebc71ed82aa48f6e41a58068af900
-ms.openlocfilehash: 0b8c9f9395f034355c8f10574e750fcf40e870de
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 3c349aecc87e28275045828a84e0ea3f89400b9e
 
 
 ---
-# <a name="submit-spark-jobs-remotely-to-an-apache-spark-cluster-on-hdinsight-linux-using-livy"></a>HDInsight Linux で Livy を使用して Spark ジョブを Apache Spark クラスターにリモートで送信する
+# <a name="submit-spark-jobs-remotely-to-an-apache-spark-cluster-on-hdinsight-using-livy"></a>Livy を使用して HDInsight で Spark ジョブを Apache Spark クラスターにリモートで送信する
+
 Azure HDInsight の Apache Spark クラスターには、Livy が含まれています。これは、Spark クラスターにリモートでジョブを送信するための REST インターフェイスです。 詳細なドキュメントについては、[Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server) に関するページを参照してください。
 
 Livy を使用すると、対話型の Spark シェルを実行したり、Spark で実行されるバッチ ジョブを送信したりすることができます。 この記事では、Livy を使用してバッチ ジョブを送信する方法について説明します。 以下の構文では、Curl を使用して、Livy エンドポイントへの REST 呼び出しを行います。
@@ -31,7 +32,7 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 次のものが必要です。
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* HDInsight Linux での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+* HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
 ## <a name="submit-a-batch-job"></a>バッチ ジョブの送信
 バッチ ジョブを送信する前に、クラスターに関連付けられているクラスター ストレージにアプリケーション jar をアップロードする必要があります。 コピーには、[**AzCopy**](../storage/storage-use-azcopy.md) コマンド ライン ユーティリティを使用できます。 データのアップロードに使用できるクライアントは、他にも多数あります。 詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
@@ -193,6 +194,6 @@ HDInsight 3.5 クラスターでは、サンプル データ ファイルまた�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Storage に保持されたメッセージの読み取り | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - レッスン 3: Table Storage | Microsoft Docs"
 description: "Azure Table Storage に書き込まれた、デバイスからクラウドへのメッセージを監視します。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 4e1107400ef08cc3fd955d693c77f332446ecc37
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 41e89f524bf9ae67489ab3a0eb09ceda6b211f15
 
 
 ---
@@ -43,7 +43,7 @@ Azure Table Storage に格納されたメッセージを読み取るには、次
    az storage account show-connection-string -g iot-sample -n {storage name}
    ```
 
-   最初のコマンドで `storage name` を取得し、それを 2 番目のコマンドで使用して接続文字列を取得します。 値を変更していない場合、`{resource group name}` の値として `iot-sample` を使用します。
+   最初のコマンドで `storage name` を取得し、それを&2; 番目のコマンドで使用して接続文字列を取得します。 値を変更していない場合、`{resource group name}` の値として `iot-sample` を使用します。
 2. 次のコマンドを実行して、Visual Studio Code で構成ファイル `config-raspberrypi.json` を開きます。
 
    ```bash
@@ -74,6 +74,6 @@ Azure Table Storage に格納されたメッセージを読み取るには、次
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

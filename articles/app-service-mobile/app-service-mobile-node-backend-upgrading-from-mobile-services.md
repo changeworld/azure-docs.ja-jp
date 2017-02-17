@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e3173c64af4c2b09ee825cc4fdaaa6da448be60e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 879854c4afc6fa5ac31f8e18dad0164e77f190cd
 
 
 ---
@@ -129,7 +129,7 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 バージョン間での主な変更の 1 つは、コンストラクターでアプリケーション キーが不要になったことです。 現在は、モバイル アプリの URL を渡すだけです。 たとえば、.NET クライアントの場合、現在の `MobileServiceClient` コンストラクターは以下のようになります。
 
         public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://contoso.azurewebsites.net", // URL of the Mobile App
+            "https://contoso.azurewebsites.net" // URL of the Mobile App
         );
 
 新しい SDK のインストールおよび新しい構造の使用については、以下のリンクを介して参照できます。
@@ -145,40 +145,40 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 
 <!-- URLs. -->
 
-[Azure ポータル]: https://portal.azure.com/
-[[構成]]: https://manage.windowsazure.com/
+[Azure portal]: https://portal.azure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 [Mobile Apps とは]: app-service-mobile-value-prop.md
-[Web サイトと Mobile Services を使用している場合に App Service を使用する利点]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
-[Mobile App サーバー SDK]: https://www.npmjs.com/package/azure-mobile-apps
-[モバイル アプリの作成]: app-service-mobile-xamarin-ios-get-started.md
-[モバイル アプリへのプッシュ通知の追加]: app-service-mobile-xamarin-ios-get-started-push.md
-[モバイル アプリへの認証の追加]: app-service-mobile-xamarin-ios-get-started-users.md
+[I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
+[Mobile App Server SDK]: https://www.npmjs.com/package/azure-mobile-apps
+[Create a Mobile App]: app-service-mobile-xamarin-ios-get-started.md
+[Add push notifications to your mobile app]: app-service-mobile-xamarin-ios-get-started-push.md
+[Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
 [Azure Scheduler]: /en-us/documentation/services/scheduler/
-[Web ジョブ]: ../app-service-web/websites-webjobs-resources.md
-[.NET サーバー SDK の使用方法]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Mobile Services から App Service モバイル アプリへの移行]: app-service-mobile-migrating-from-mobile-services.md
-[既存のモバイル サービスから App Service への移行]: app-service-mobile-migrating-from-mobile-services.md
+[Web Job]: ../app-service-web/websites-webjobs-resources.md
+[How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
+[Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [App Service の価格]: https://azure.microsoft.com/en-us/pricing/details/app-service/
-[.NET サーバー SDK の概要]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [認証の概念]: ../app-service/app-service-authentication-overview.md
 [認証のクイック スタート]: app-service-mobile-auth.md
 
 [Azure ポータル]: https://portal.azure.com/
 [OData]: http://www.odata.org
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-[GitHub の basicapp サンプル]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
-[GitHub の todo サンプル]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
-[GitHub の samples ディレクトリ]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
-[GitHub の静的なスキーマのサンプル]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/static-schema
+[basicapp sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
+[todo sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
+[samples directory on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
+[static-schema sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/static-schema
 [QueryJS]: https://github.com/Azure/queryjs
 [Node.js Tools 1.1 for Visual Studio]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
-[mssql Node.js パッケージ]: https://www.npmjs.com/package/mssql
+[mssql Node.js package]: https://www.npmjs.com/package/mssql
 [Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
-[ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
+[ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

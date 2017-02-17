@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: 3493afbebf2a75a190d344ac1e66b00b9ddfd582
+ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
+ms.openlocfilehash: 3d9997655e19ba800bf3462d5ebd3f7c7210271f
 
 
 ---
@@ -28,10 +28,10 @@ ms.openlocfilehash: 3493afbebf2a75a190d344ac1e66b00b9ddfd582
 
 1. **開発者コマンド プロンプト for VS2015** コマンド プロンプトを開きます。
 2. **azure-iot-gateway-sdk** リポジトリのローカル コピーのルート フォルダーに移動します。
-3. **tools\\build.cmd** スクリプトを実行します。 このスクリプトでは、Visual Studio ソリューション ファイルを作成し、ソリューションをビルドして、テストを実行します。 Visual Studio ソリューションは、**azure-iot-gateway-sdk** リポジトリのローカル コピーの **build** フォルダーにあります。
+3. **tools\\build.cmd** スクリプトを実行します。 このスクリプトでは、Visual Studio ソリューション ファイルを作成し、ソリューションをビルドします。 Visual Studio ソリューションは、**azure-iot-gateway-sdk** リポジトリのローカル コピーの **build** フォルダーにあります。 スクリプトで追加のパラメーターを指定すると、ユニット テストとエンド ツー エンド テストをビルドして実行できます。 パラメーターはそれぞれ、**--run-unittests** と **--run-e2e-tests** です。 
 
 ## <a name="how-to-run-the-sample"></a>サンプルを実行する方法
-1. **build.cmd** スクリプトにより、リポジトリのローカル コピーに**ビルド**という名前のフォルダーが作成されます。 このフォルダーには、このサンプルで使用する 2 つのモジュールが含まれています。
+1. **build.cmd** スクリプトにより、リポジトリのローカル コピーに**ビルド**という名前のフォルダーが作成されます。 このフォルダーには、このサンプルで使用する&2; つのモジュールが含まれています。
    
     このスクリプトにより、**logger.dll** が **build\\modules\\logger\\Debug** フォルダーに配置され、**hello_world.dll** が **build\\modules\\hello_world\\Debug** フォルダーに配置されます。 次の JSON 設定ファイルに示すように、**モジュール パス**の値にはこれらのパスを使用します。
 2. hello_world_sample プロセスは、コマンド ラインの引数として JSON 構成ファイルのパスを取得します。 次のサンプル JSON ファイルは、**azure-iot-gateway-sdk\samples\hello_world\src\hello_world_win.json** でリポジトリの一部として提供されています。 既定以外の場所にモジュールまたはサンプルの実行可能ファイルを配置するようにビルド スクリプトを変更していない限り、そのままで動作します。 
@@ -86,6 +86,6 @@ ms.openlocfilehash: 3493afbebf2a75a190d344ac1e66b00b9ddfd582
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

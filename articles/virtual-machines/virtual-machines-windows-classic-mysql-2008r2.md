@@ -1,5 +1,5 @@
 ---
-title: "MySQL を実行する VM の作成 | Microsoft Docs"
+title: "MySQL を実行するクラシック Azure VM を作成する | Microsoft Docs"
 description: "クラシック デプロイ モデルを使用して、Windows Server 2012 R2 および MySQL データベースを実行する Azure 仮想マシンを作成します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 01/23/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 5d08c629fc6e94b43b73c74d8485f6aee695cf4a
+ms.sourcegitcommit: 0937d80011d0ae7015c08d99b06934fda85930b0
+ms.openlocfilehash: d17c92bd239360e0bfddd61a57a9f481f64ff05d
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 5d08c629fc6e94b43b73c74d8485f6aee695cf4a
 [MySQL](http://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。 このチュートリアルでは、Windows Server 2012 R2 を実行している仮想マシン上の MySQL Server として MySQL 5.6.23 の Community バージョンをインストールして実行する方法について説明します。 Linux 上で MySQL をインストールする方法について詳しくは、「[MySQL を Azure でインストールする方法](virtual-machines-linux-mysql-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
 ## <a name="create-a-virtual-machine-running-windows-server-2012-r2"></a>Windows Server 2012 R2 を実行する仮想マシンの作成
 Windows Server 2012 R2 を実行している VM がまだない場合は、この[チュートリアル](virtual-machines-windows-classic-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)を使用して、仮想マシンを作成できます。 
@@ -120,6 +120,6 @@ MySQL の実行の詳細については、 [MySQL のドキュメント](http://
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

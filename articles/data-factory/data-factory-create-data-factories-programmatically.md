@@ -1,5 +1,5 @@
 ---
-title: "Data Factory SDK を使用して Azure Data Factory を作成、監視、管理する | Microsoft Docs"
+title: "Azure .NET SDK を使用したデータ パイプラインの作成 | Microsoft Docs"
 description: "Data Factory SDK を使用して Azure Data Factory をプログラムによって作成、監視、管理する方法について説明します。"
 services: data-factory
 documentationcenter: 
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
-ms.openlocfilehash: d51c900f7cf69d3852a1699284a459b930eb735e
+ms.sourcegitcommit: 7c9f14503a7cf5c0808e26884a73cd2918ff1c74
+ms.openlocfilehash: 4973a2218ec480fb239e3b32e8f34e3fb14454d0
 
 
 ---
-# <a name="create-monitor-and-manage-azure-data-factories-using-data-factory-net-sdk"></a>Data Factory .NET SDK を使用して Azure Data Factory を作成、監視、管理する
-## <a name="overview"></a>Overview
+# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK を使用した Azure Data Factory の作成、監視、および管理
+## <a name="overview"></a>概要
 Data Factory .NET SDK を使用して Azure Data Factory をプログラムによって作成、監視、管理できます。 この記事には、Data Factory の作成と監視を行うサンプルの .NET コンソール アプリケーションを作成できるチュートリアルが含まれています。 Data Factory .NET SDK の詳細については、 [Data Factory クラス ライブラリ リファレンス](https://msdn.microsoft.com/library/mt415893.aspx) に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
    6. **[場所]** は **[C:\ADFGetStarted]** を選択します。
    7. **[OK]** をクリックしてプロジェクトを作成します。
 2. **[ツール]** をクリックし、**[NuGet パッケージ マネージャー]** をポイントして、**[パッケージ マネージャー コンソール]** をクリックします。
-3. **[パッケージ マネージャー コンソール]**で、次のコマンドを 1 つずつ実行します。
+3. **[パッケージ マネージャー コンソール]**で、次のコマンドを&1; つずつ実行します。
 
     ```
     Install-Package Microsoft.Azure.Management.DataFactories
@@ -383,7 +383,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
     ```
 14. ソリューション エクスプローラーで、プロジェクト (**DataFactoryAPITestApp**) を展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。 `System.Configuration` アセンブリのチェック ボックスをオンにし、 **[OK]**をクリックします。
 15. コンソール アプリケーションをビルドします。 メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
-16. Azure BLOB ストレージ内の adftutorial コンテナーに少なくとも 1 つのファイルが存在することを確認します。 存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
+16. Azure BLOB ストレージ内の adftutorial コンテナーに少なくとも&1; つのファイルが存在することを確認します。 存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
 
     ```
     John, Doe
@@ -465,7 +465,7 @@ TokenCloudCredentials aadTokenCredentials =
     Login-AzureRmAccount
     ```
 
-    このアカウントに関連付けられている Azure サブスクリプションを 1 つのみをお持ちの場合は、次の 2 つの手順を実行する必要はありません。
+    このアカウントに関連付けられている Azure サブスクリプションを&1; つのみをお持ちの場合は、次の&2; つの手順を実行する必要はありません。
 3. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
     ```PowerShell
@@ -481,6 +481,6 @@ Note down the **SubscriptionId** and **TenantId** values.
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

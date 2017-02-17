@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT ハブの作成と Adafruit Feather M0 WiFi の登録 | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - レッスン 2: デバイスの登録 | Microsoft Docs"
 description: "Azure CLI を使用して、リソース グループと Azure IoT ハブを作成し、その Azure IoT ハブに Adafruit Feather M0 WiFi を登録します。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/13/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9e8084fe26229ef9ed1676c0a3c34e0ee7be88b1
-ms.openlocfilehash: 232c391e61e7e7ec053d2e7170f9abe4c79d9528
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: e81ff09443b8d4930f20d0bbeb100c4a90f92a7f
 
 
 ---
@@ -105,6 +105,6 @@ IoT ハブを作成し、デバイス ID を使用して IoT ハブに Arduino �
 [process-and-store-iot-hub-messages]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

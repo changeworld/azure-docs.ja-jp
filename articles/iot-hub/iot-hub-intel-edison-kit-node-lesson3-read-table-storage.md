@@ -1,5 +1,5 @@
 ---
-title: "Azure Storage に保持されたメッセージの読み取り | Microsoft Docs"
+title: "Azure IoT への Intel Edison (Node) の接続 - レッスン 3: メッセージの監視 | Microsoft Docs"
 description: "Azure Table Storage に書き込まれた、デバイスからクラウドへのメッセージを監視します。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: fc9090bd9d2dd621767c23f3cfb76dcc88b66a71
-ms.openlocfilehash: d33fa57da8a914cdcad0ee269b8dc105d1a5e7f2
+ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
+ms.openlocfilehash: 5100e6dbd74095f419c1017a3784fac547bf200b
 
 
 ---
@@ -78,6 +78,6 @@ Azure Table Storage に格納されたメッセージを読み取るには、次
 [receive-cloud-to-device-messages]: iot-hub-intel-edison-kit-node-lesson4-send-cloud-to-device-messages.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

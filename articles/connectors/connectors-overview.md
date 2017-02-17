@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3fc0c959f4e0af62a0bcde1b38caa37d8246b9ac
+ms.sourcegitcommit: 44a756ba437b2ce9f625017998d9ae7d09acae1f
+ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: 3fc0c959f4e0af62a0bcde1b38caa37d8246b9ac
 
 コネクタ アクションやトリガーには、それぞれ構成する一連のプロパティがあります。  [情報]ボタンをクリックしてアクションの詳細を確認したり、ドキュメントを参照して [詳細を確認](apis-list.md)します。
 
-まだコネクタになっていないサービスや API と統合する場合は、 [カスタム コネクタ](../app-service-logic/app-service-logic-create-api-app.md) を通じてロジック アプリを拡張するか、または HTTP などのプロトコル経由で直接サービスに連絡します。
+まだコネクタになっていないサービスや API と統合する場合は、 [カスタム コネクタ](../logic-apps/logic-apps-create-api-app.md) を通じてロジック アプリを拡張するか、または HTTP などのプロトコル経由で直接サービスに連絡します。
 
 ## <a name="triggers"></a>トリガー
 一部のコネクタはトリガーを備えており、コネクタからのイベントによってロジック アプリが起動し、データがトリガーの一部として渡されます。  トリガーは常に、ロジック アプリの最初の手順です。  一般的なトリガーには次のような操作が含まれます。
@@ -56,9 +56,9 @@ ms.openlocfilehash: 3fc0c959f4e0af62a0bcde1b38caa37d8246b9ac
 Azure で接続の表示と管理を行うには、**[参照]** をクリックして **[API 接続]** を選択します。  API 接続リソースから、作成した接続の表示、編集、更新、および再承認を行います。
 
 ## <a name="next-steps"></a>次のステップ
-* [初めてのロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)
-* [ロジック アプリの一般的な使用方法と例](../app-service-logic/app-service-logic-examples-and-scenarios.md)
-* [Enterprise Integration のトリガーとアクションの使用を開始する](../app-service-logic/app-service-logic-enterprise-integration-overview.md)
+* [初めてのロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)
+* [ロジック アプリの一般的な使用方法と例](../logic-apps/logic-apps-examples-and-scenarios.md)
+* [Enterprise Integration のトリガーとアクションの使用を開始する](../logic-apps/logic-apps-enterprise-integration-overview.md)
 
 <!--Image References -->
 [1]: ./media/connectors-overview/addAction.png
@@ -66,6 +66,6 @@ Azure で接続の表示と管理を行うには、**[参照]** をクリック�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

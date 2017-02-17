@@ -1,5 +1,5 @@
 ---
-title: "HDInsight .NET SDK を使用した HDInsight 用の Linux ベースの Hadoop、HBase、Storm、または Spark クラスターの作成 | Microsoft Docs"
+title: ".NET を使用して Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
 description: "HDInsight .NET SDK を使用して、HDInsight 用の Linux ベースの Hadoop、HBase、Storm、または Spark クラスターを作成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 349b73e7f80c1762408ebd38d0ba27a395328ddb
-ms.openlocfilehash: 01028e0a6820ef6b78fb57ab853b78eb4ecefb7e
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: cd5ab90167501d5876381e0575042e19a23e702c
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 01028e0a6820ef6b78fb57ab853b78eb4ecefb7e
 HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。 この記事では、.NET SDK を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、worker ノードが 1 つあるクラスターを作成します。 クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+> このドキュメントの手順では、worker ノードが&1; つあるクラスターを作成します。 クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
 > 
 > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 > 
@@ -385,6 +385,6 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

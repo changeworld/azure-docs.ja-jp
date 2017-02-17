@@ -1,5 +1,5 @@
 ---
-title: "ツールの入手 (Windows 7 以降) | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - レッスン 1: ツールの入手 (Windows) | Microsoft Docs"
 description: "Windows 7 以降で、Pi の最初のサンプル アプリケーションに必要なツールとソフトウェアをダウンロードしてインストールします。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 7dad64ae5044838646915a0ec933e29c90edd1b9
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: d53efc7d25714427e25d4f88279f3b0d4f61c150
 
 
 ---
@@ -42,7 +42,7 @@ Raspberry Pi 3 の最初のサンプル アプリケーション用の開発ツ�
   * [Node.js](https://nodejs.org/en/) は、豊富なパッケージ エコシステムが存在する JavaScript ランタイムです。
 * NPM を使って、追加の Node.js 開発ツールをインストールする方法。
   * Node.js の最低限必要なバージョンは 4.5 LTS です。
-  * [NPM](https://www.npmjs.com) は、Node.js のパッケージ マネージャーの 1 つです。
+  * [NPM](https://www.npmjs.com) は、Node.js のパッケージ マネージャーの&1; つです。
 
 ## <a name="what-you-need"></a>必要なもの
 
@@ -84,6 +84,6 @@ Visual Studio Code を[ダウンロード](https://code.visualstudio.com/docs/se
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

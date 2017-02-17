@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell を使用した HDInsight での Windows ベースの Hadoop クラスターの作成| Microsoft Docs"
-description: "Azure PowerShell を使用して Azure HDInsight のクラスターを作成する方法について説明します。"
+title: "PowerShell を使用して Windows ベースの Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
+description: "Azure PowerShell を使用した HDInsight での Windows ベースの Hadoop クラスターの作成方法を説明します。"
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -13,18 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/15/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: a71718eabc3863e4e78619a2f1ceb174c7c0f058
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 9870b61eb00cee169973ae7c09b0c4886cd2db53
 
 
 ---
 # <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-azure-powershell"></a>Azure PowerShell を使用した HDInsight での Windows ベースの Hadoop クラスターの作成
+
 [!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-Azure PowerShell を使用して HDInsight クラスターを作成する方法について説明します。 Azure PowerShell は、Windows PowerShell を使用して Azure を管理するためのコマンドレットを提供するモジュールです。 その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「 [クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
+Azure PowerShell を使用した HDInsight での Windows ベースの Hadoop クラスターの作成方法を説明します。 
+
+この記事の情報は、Windows ベースの HDInsight クラスターにのみ適用されます。 Linux ベースのクラスターの作成方法の詳細については、[Azure PowerShell を使用した HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)に関するページを参照してください。
+
+> [!IMPORTANT]
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -131,8 +137,8 @@ Azure PowerShell を使用して HDInsight クラスターを作成するには�
     ####################################
     Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
 
-## <a name="create-clusters-using-resource-management-template"></a>リソース管理テンプレートを使用してクラスターを作成する
-Azure PowerShell を使用して、HDInsight クラスターを作成する Azure リソース管理テンプレートをデプロイすることができます。  「[Azure PowerShell を使用してテンプレートを呼び出す](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-powershell)」を参照してください。
+## <a name="create-clusters-using-resource-manager-template"></a>Resource Manager テンプレートを使用してクラスターを作成する
+Azure PowerShell を使用して、HDInsight クラスターを作成する Azure Resource Manager テンプレートをデプロイすることができます。  「[Azure PowerShell を使用してテンプレートを呼び出す](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-powershell)」を参照してください。
 
 ## <a name="customize-clusters"></a>クラスターのカスタマイズ
 * 「 [ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell)」を参照してください。
@@ -155,6 +161,6 @@ Azure PowerShell を使用して、HDInsight クラスターを作成する Azur
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

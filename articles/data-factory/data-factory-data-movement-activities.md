@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/22/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: ef5c1f296a0a4ee6476db663e85c49c351f826b9
-ms.openlocfilehash: 53a2012a1d928c961cbfbdcea485ae18d776360f
+ms.sourcegitcommit: da98bc3e4dda1a05cba38701c0042f1c023c419a
+ms.openlocfilehash: 40b172356b3171557d6309a6bb2984fba34f485d
 
 
 ---
@@ -66,11 +66,12 @@ Data Management Gateway を使用すると、Azure IaaS 仮想マシン (VM) で
 ### <a name="supported-file-formats"></a>サポートされるファイル形式
 コピー アクティビティを使用すると、Azure BLOB、Azure Data Lake Store、Amazon S3、FTP、ファイル システム、HDFS などを含む&2; つのファイル ベース データ ストアの間で**ファイルをそのままコピー**できます。 これを行うには、入力と出力の両方のデータセット定義で [format セクション](data-factory-create-datasets.md) をスキップします。 これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。
 
-また、コピー アクティビティは、指定された形式 (**テキスト、Avro、ORC、Parquet、JSON**) でのファイルの読み取りと書き込みも行います。 コピー アクティビティの例をいくつか示します。
+また、コピー アクティビティは、指定された形式 (**テキスト、Avro、ORC、Parquet、JSON**) でのファイルの読み取りと書き込みも行います。圧縮コーデック **GZip、Deflate、BZip2、および ZipDeflate** がサポートされています。 コピー アクティビティの例をいくつか示します。
 
-* Azure BLOB からテキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
+* Azure BLOB から GZip 圧縮テキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
 * オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB に Avro 形式で書き込む。
-* Azure SQL Database のデータをコピーし、オンプレミスの HDFS に ORC 形式で書き込む。
+* オンプレミスの SQL Server のデータをコピーし、Azure Data Lake Store に ORC 形式で書き込む。
+* オンプレミスのファイルシステムから zip ファイルをコピーし、圧縮を解除したうえで Azure Data Lake Store 書き込む。
 
 ## <a name="a-nameglobalaglobally-available-data-movement"></a><a name="global"></a>グローバルに使用できるデータの移動
 Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リージョンでのみ使用できます。 ただし、コピー アクティビティを実行するサービスは、以下のリージョンと場所でグローバルに使用できます。 グローバルに使用できるトポロジでは効率的なデータ移動が保証されます。このデータ移動では、通常、リージョンをまたがるホップが回避されます。 特定のリージョンにおける Data Factory とデータ移動の提供状況については、[リージョン別のサービス](https://azure.microsoft.com/regions/#services)に関するページをご覧ください。
@@ -103,10 +104,10 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 | に関するページを参照してください。 | インド西部 | インド中部 |
 | に関するページを参照してください。 | インド南部 | インド中部 |
 
+また、コピー アクティビティ `typeProperties` で `executionLocation` プロパティを使用して、コピーで使用する Data Factory サービスのリージョンを明示的に指定することもできます。 上記の「**データ移動に使用するリージョン**」列には、このプロパティでサポートされる値が示されています。 コピー中のデータは、ネットワーク経由でこのリージョンを通過します。 たとえば、英国の Azure Store 間でコピーするには、`executionLocation` を "北ヨーロッパ" として指定し、北ヨーロッパ経由でルーティングします。
 
 > [!NOTE]
-> コピー先データ ストアのリージョンが前のリストにない場合、代わりのリージョンには移動せず、コピー アクティビティは失敗します。
->
+> コピー先データ ストアのリージョンが前のリストにない場合、または検出できない場合は、`executionLocation` が指定されていないと、既定では代わりのリージョンには移動せず、コピー アクティビティは失敗します。 今後さらに多くのリージョンがサポートされる予定です。
 >
 
 ### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>オンプレミス データ ストアとクラウド データ ストア間でのデータのコピー
@@ -193,6 +194,6 @@ Data Factory でのスケジュール設定と実行のしくみに関する詳�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

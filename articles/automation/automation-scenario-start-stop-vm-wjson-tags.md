@@ -1,5 +1,5 @@
 ---
-title: "JSON 形式のタグを使用して Azure VM の起動とシャットダウンのスケジュールを作成する | Microsoft Docs"
+title: "JSON 形式のタグを使用した Azure VM の状態のスケジュール設定 | Microsoft Docs"
 description: "この記事では、タグに関する JSON 文字列を使って VM の起動とシャットダウンのスケジュールを自動化する方法を示します。"
 services: automation
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/18/2016
+ms.date: 01/23/2017
 ms.author: magoedte;paulomarquesc
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0d4098199cec948541eddba8fa88242606e2ec5c
+ms.sourcegitcommit: 00d348306f76194bb44e5252be5c956a48192768
+ms.openlocfilehash: 69f05a8c0fc88201fc365546870585de5a419f1d
 
 
 ---
@@ -43,7 +43,7 @@ Schedule タグをリソース グループに適用すると、タグはその�
 こうした Runbook は、[Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)を使用して認証します。
 
 ## <a name="download-the-runbooks-for-the-scenario"></a>このシナリオで使用する Runbook のダウンロード
-このシナリオは 4 つの PowerShell ワークフロー Runbook で構成されています。このシナリオの Runbook は、[TechNet ギャラリー](https://gallery.technet.microsoft.com/Azure-Automation-Runbooks-84f0efc7)またはこのプロジェクトの [GitHub](https://github.com/paulomarquesdacosta/azure-automation-scheduled-shutdown-and-startup) リポジトリからダウンロードできます。
+このシナリオは&4; つの PowerShell ワークフロー Runbook で構成されています。このシナリオの Runbook は、[TechNet ギャラリー](https://gallery.technet.microsoft.com/Azure-Automation-Runbooks-84f0efc7)またはこのプロジェクトの [GitHub](https://github.com/paulomarquesdacosta/azure-automation-scheduled-shutdown-and-startup) リポジトリからダウンロードできます。
 
 | Runbook | 説明 |
 | --- | --- |
@@ -64,7 +64,7 @@ Runbook をダウンロードしたら、「[Azure Automation での Runbook の
 3. **[スケジュール]** ブレードで、**[スケジュールの追加]** をクリックします。
 4. **[スケジュール]** ブレードで、**[スケジュールを Runbook にリンクします]** を選択します。 その後、 **[新しいスケジュールを作成します]**を選択します。
 5. **[新しいスケジュール]** ブレードで、このスケジュールの名前を入力します (たとえば、 *HourlyExecution*)。
-6. スケジュールの **[開始]**で、スケジュールの開始時刻を 1 時間単位の値で設定します。
+6. スケジュールの **[開始]**で、スケジュールの開始時刻を&1; 時間単位の値で設定します。
 7. **[繰り返し]** を選択し、**[繰り返しの間隔]** で間隔として **[1 時間]** を選択します。
 8. **[有効期限の設定]** が **[いいえ]** に設定されていることを確認し、**[作成]** をクリックして新しいスケジュールを保存します。
 9. **[Runbook のスケジュール設定]** オプション ブレードで、**[パラメーターと実行設定]** を選択します。 Test-ResourceSchedule の **[パラメーター]** ブレードで、**[サブスクリプション名]** フィールドにサブスクリプションの名前を入力します。  これは Runbook に必要な唯一のパラメーターです。  操作が終了したら、 **[OK]**をクリックします。
@@ -103,7 +103,7 @@ Runbook をダウンロードしたら、「[Azure Automation での Runbook の
 
    ![PowerShell での GetSystemTimeZones](./media/automation-scenario-start-stop-vm-wjson-tags/automation-get-timzone-powershell.png)
 
-   * 曜日は 0 から 6 までの数値で表します。 値 0 は日曜日を表します。
+   * 曜日は&0; から&6; までの数値で表します。 値&0; は日曜日を表します。
    * 開始時刻は、 **S** 属性で表し、その値は 24 時間形式です。
    * 終了時刻またはシャットダウン時刻は **E** 属性で表し、その値は 24 時間形式です。
 
@@ -123,7 +123,7 @@ Runbook をダウンロードしたら、「[Azure Automation での Runbook の
 ## <a name="tag-resource-groups-or-vms"></a>リソース グループまたは仮想マシンへのタグ付け
 VM をシャットダウンするには、VM または VM が存在するリソース グループにタグを付ける必要があります。 Schedule タグが付けられていない仮想マシンは評価されません。 そのため、起動も、シャットダウンもされません。
 
-このソリューションを使用してリソース グループまたは VM にタグを付ける方法は 2 つあります。 タグ付けはポータルから直接実行できます。 そのほか、Add-ResourceSchedule Runbook、Update-ResourceSchedule Runbook、Remove-ResourceSchedule Runbook を使用する方法もあります。
+このソリューションを使用してリソース グループまたは VM にタグを付ける方法は&2; つあります。 タグ付けはポータルから直接実行できます。 そのほか、Add-ResourceSchedule Runbook、Update-ResourceSchedule Runbook、Remove-ResourceSchedule Runbook を使用する方法もあります。
 
 ### <a name="tag-through-the-portal"></a>ポータル経由でタグ付けする
 ポータルで仮想マシンまたはリソース グループにタグを付けるには、次の手順に従います。
@@ -244,6 +244,6 @@ Azure Portal で Test-ResourceSchedule Runbook ジョブの詳細を表示する
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

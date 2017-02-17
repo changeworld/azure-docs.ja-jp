@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manager で Azure CLI を使用して、IPv6 でインターネットに接続するロード バランサーを作成する | Microsoft Doc"
+title: "IPv6 でインターネットに接続するロード バランサーの作成 - Azure CLI | Microsoft Docs"
 description: "Azure Resource Manager で Azure CLI を使用して、IPv6 でインターネットに接続するロード バランサーを作成する方法について説明します。"
 services: load-balancer
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 1a1c3c15c51b1e441f21158510e92cc8de057352
-ms.openlocfilehash: e516ebea287948c52afca6ab3d3e4e61b3c3c080
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 6edfe8ee8011200e208117f5e03eac8fa741a548
 
 ---
 
@@ -28,7 +28,7 @@ ms.openlocfilehash: e516ebea287948c52afca6ab3d3e4e61b3c3c080
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [テンプレート](load-balancer-ipv6-internet-template.md)
 
-Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
+Azure Load Balancer は、第&4; 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
 ## <a name="example-deployment-scenario"></a>デプロイ シナリオの例
 
@@ -42,7 +42,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 * IPv4 と IPv6 の両方のアドレスが割り当てられている各 VM の仮想ネットワーク インターフェイス
 * IPv4 と IPv6 のパブリック IP アドレスでインターネットに接続するロード バランサー
 * 2 つの VM が含まれる可用性セット
-* パブリック VIP をプライベート エンドポイントにマップする 2 つの負荷分散規則
+* パブリック VIP をプライベート エンドポイントにマップする&2; つの負荷分散規則
 
 ## <a name="deploying-the-solution-using-the-azure-cli"></a>Azure CLI を使用したソリューションのデプロイ
 
@@ -123,7 +123,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
     $vnet = azure network vnet create  --resource-group $rgname --name $vnetName --location $location --address-prefixes $vnetPrefix
     ```
 
-    この VNet に 2 つのサブネットを作成します。
+    この VNet に&2; つのサブネットを作成します。
 
     ```azurecli
     $subnet1 = azure network vnet subnet create --resource-group $rgname --name $subnet1Name --address-prefix $subnet1Prefix --vnet-name $vnetName
@@ -345,6 +345,6 @@ VM を作成するには、ストレージ アカウントが必要です。 負
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

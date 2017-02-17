@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 08/15/2016
+ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fbe6b9d58ed675b5056ac716648f654a95232c04
+ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
+ms.openlocfilehash: 03875b4215943a8bbabeb15610776a221cbf7b71
 
 
 ---
@@ -32,8 +32,8 @@ Azure に対する認証には、次の項目が必要です。
 
 > [!NOTE]
 > X.509 v3 証明書のキーの長さは 2,048 ビット以上にする必要があります。 この要件を満たさない証明書や無効な証明書は、Azure によってすべて拒否されます。
-> 
-> 
+>
+>
 
 Visual Studio では、サブスクリプション ID が証明書データと共に資格情報として使用されます。 該当する資格情報はサブスクリプション ファイル (.publishsettings ファイル) 内で参照され、このファイルに証明書の公開キーが格納されます。 サブスクリプション ファイルには、複数のサブスクリプションの資格情報を含めることができます。
 
@@ -43,8 +43,8 @@ Visual Studio では、サブスクリプション ID が証明書データと�
 
 > [!NOTE]
 > これらは、ユーザーのクラウド サービスを管理するために Visual Studio が必要とする資格情報であり、Azure ストレージ サービスに対する要求を認証するために必要な資格情報とは異なります。
-> 
-> 
+>
+>
 
 ## <a name="modify-or-export-authentication-credentials-in-visual-studio"></a>Visual Studio の認証資格情報の変更またはエクスポート
 認証資格情報の設定、変更、エクスポートは、**[新しいサブスクリプション]** ダイアログ ボックスで行うこともできます。次のいずれかの操作を行った場合にこのダイアログ ボックスが表示されます。
@@ -56,27 +56,26 @@ Visual Studio では、サブスクリプション ID が証明書データと�
 
 ### <a name="to-set-up-authentication-credentials-in-visual-studio"></a>Visual Studio で認証資格情報を設定するには
 1. **[認証用の既存の証明書を選択します]** の一覧で証明書を選択します。
-2. **[完全パスのコピー]** をクリックします。証明書 (.cer ファイル) のパスがクリップボードにコピーされます。
-   
+2. **[完全なパスのコピー]** をクリックします。 証明書 (.cer ファイル) のパスがクリップボードにコピーされます。
+
    > [!IMPORTANT]
    > Visual Studio から Azure アプリケーションを発行するには、この証明書を [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)にアップロードする必要があります。
-   > 
-   > 
+   >
+   >
 3. 証明書を [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)にアップロードするには、次の手順に従います。
-   
+
    1. [Azure ポータル] リンクを選択します。
-      
+
         [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885) が開きます。
    2. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)にサインインし、 **[Cloud Services]** ボタンをクリックします。
    3. 必要なクラウド サービスを選択します。
-      
+
        そのサービスのページが表示されます。
    4. **[証明書]** タブで **[アップロード]** をクリックします。
    5. 作成した .cer ファイルのフル パスを貼り付け、指定したパスワードを入力します。
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

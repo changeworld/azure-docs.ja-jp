@@ -1,5 +1,5 @@
 ---
-title: "クラウドからデバイスへのメッセージを Azure IoT Hub から受信するサンプル アプリケーションの実行 | Microsoft Docs"
+title: "Azure IoT への Intel Edison (C) の接続 - レッスン 4: メッセージの受信 | Microsoft Docs"
 description: "サンプル アプリケーションは、Edison 上で動作し、IoT ハブからの受信メッセージを監視します。 新しい gulp タスクを使って IoT ハブから Edison にメッセージを送信して、LED を点滅させます。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: d492fa295237f6ff333aefb2181975e8af948723
-ms.openlocfilehash: 48e5c46d53ce412384e8667904e84b9ebd454cff
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: b4d76eeb1bc0b406800c89c4952900350d8eafa8
 
 
 ---
@@ -99,6 +99,6 @@ IoT ハブから Edison にメッセージを送信し、LED を点滅させる�
 [change-the-on-and-off-behavior-of-the-led]: iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

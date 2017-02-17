@@ -1,5 +1,5 @@
 ---
-title: App Service on Azure Stack Overview | Microsoft Docs
+title: App Service Overview - Azure Stack | Microsoft Docs
 description: Overview of App Service on Azure Stack
 services: azure-stack
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/10/2016
+ms.date: 1/23/2017
 ms.author: anwestg
 translationtype: Human Translation
-ms.sourcegitcommit: 68a2f9e231e5ae369b6983cb8185de0bebebac75
-ms.openlocfilehash: ceb583c2568e864d26ee4df20d0c8911245aa702
+ms.sourcegitcommit: 6a06d35eeda2662de89a94c274848c827dc24bfa
+ms.openlocfilehash: ef7b884d4ddabb82c8727e46848d61ee35bdc0ab
 
 
 ---
@@ -62,6 +62,6 @@ You can also try out other [platform as a service (PaaS) services](azure-stack-t
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 08/15/2016
+ms.date: 11/11/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a5306fc491e7b832c116e7bb8cc73a11ed77eed7
+ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
+ms.openlocfilehash: a07496a2d5eb52dd3c4092105e45b70b6e9f69cd
 
 
 ---
@@ -48,7 +48,7 @@ ASP.NET セッション状態では、セッション状態データのさまざ
 AP1000
 
 ### <a name="description"></a>説明
-非同期メソッド ([await](https://msdn.microsoft.com/library/hh156528.aspx) など) を [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) メソッドの外に作成し、[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) から非同期メソッドを呼び出します。  [[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) メソッドを非同期として宣言すると、worker ロールが再起動ループに入ります。
+非同期メソッド ([await](https://msdn.microsoft.com/library/hh156528.aspx) など) を [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) メソッドの外に作成し、[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) から非同期メソッドを呼び出します。 [[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) メソッドを非同期として宣言すると、worker ロールが再起動ループに入ります。
 
 [Azure コード分析のフィードバック](http://go.microsoft.com/fwlink/?LinkId=403771)のページでアイデアやフィードバックを共有してください。
 
@@ -420,9 +420,9 @@ WAD 1.3 (Azure SDK 2.5 に付属) 以降では、コードを使用して診断�
 1. 構成するロールのショートカット メニューで [プロパティ] をクリックし、[構成] タブをクリックします。
 2. **[診断]** セクションで、**[診断の有効化]** チェック ボックスがオンになっていることを確認します。
 3. **[構成]** をクリックします。
-   
+
    ![[診断の有効化] オプションへのアクセス](./media/vs-azure-tools-optimizing-azure-code-in-visual-studio/IC796660.png)
-   
+
    詳細については、「 [Azure Cloud Services および Virtual Machines 用の診断の構成](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) 」をご覧ください。
 
 ## <a name="avoid-declaring-dbcontext-objects-as-static"></a>DbContext オブジェクトを静的として宣言しない
@@ -469,7 +469,6 @@ Azure アプリケーションの最適化とトラブルシューティング�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
