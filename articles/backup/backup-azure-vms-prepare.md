@@ -4,7 +4,7 @@ description: "Azure で仮想マシンをバックアップするための環境
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonn
 editor: 
 keywords: "バックアップ, バックアップする,"
 ms.assetid: 238ab93b-8acc-4262-81b7-ce930f76a662
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2016
-ms.author: trinadhk; jimpark; markgal;
+ms.author: markgal;trinadhk;
 translationtype: Human Translation
 ms.sourcegitcommit: cbd7e36c5ef5c78b38a2cc7791b442cac1711b95
 ms.openlocfilehash: 92e8e25abc047811fc0ff45f424bd1b97a045e1f

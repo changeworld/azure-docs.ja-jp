@@ -84,7 +84,7 @@ ms.openlocfilehash: 911ad28e0e93b9b46b368de2cfbbbbc9f1183b7b
         </a>
     </li>
     <li>
-        <a href="/azure/service-bus-relay/service-bus-sas">
+        <a href="/azure/service-bus-messaging/service-bus-sas">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
