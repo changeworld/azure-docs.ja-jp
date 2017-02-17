@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect: ポート | Microsoft Docs"
+title: "ハイブリッド ID で必要なポートとプロトコル - Azure | Microsoft Docs"
 description: "このページは Azure AD Connect のために開く必要があるポートのテクニカル リファレンス ページです"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: 954c3d138b0fde54c1866135a20f0fc5ff05b85d
+ms.sourcegitcommit: 9364a1449ba17568c82832bc1e97d40febbb30ab
+ms.openlocfilehash: c727e19c1fd8decadfd27c97d25834a9c17c1f73
 
 
 ---
@@ -77,9 +77,9 @@ ms.openlocfilehash: 954c3d138b0fde54c1866135a20f0fc5ff05b85d
 |プロトコル|ポート番号|Description
 | --- | --- | ---
 |HTTP|80|SSL などのセキュリティ検証用の送信 HTTP トラフィックに使用されます。
-|HTTPS|443| Azure AD に対するユーザー認証に使用されます。
-|HTTPS|10100–10120| コネクタから Azure AD への応答に使用されます。 
-|Azure Service Bus|9352、5671|  コネクタと Azure サービスの間で受信要求の通信に使用されます。
+|HTTPS|443|    Azure AD に対するユーザー認証に使用されます。
+|HTTPS|10100–10120|    コネクタから Azure AD への応答に使用されます。 
+|Azure Service Bus|9352、5671|    コネクタと Azure サービスの間で受信要求の通信に使用されます。
 |HTTPS|9350|    省略可能。受信要求のパフォーマンス向上に使用されます。
 |HTTPS|8080/443|    コネクタのブートストラップ シーケンスのほか、コネクタの自動更新に使用されます。
 |HTTPS|9090|    コネクタの登録に使用されます (コネクタ登録プロセスでのみ必要)。
@@ -102,6 +102,6 @@ ms.openlocfilehash: 954c3d138b0fde54c1866135a20f0fc5ff05b85d
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

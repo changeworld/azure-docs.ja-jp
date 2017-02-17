@@ -1,5 +1,5 @@
 ---
-title: "Linux VM の移動 | Microsoft Docs"
+title: "Azure で Linux VM を移動する | Microsoft Docs"
 description: "Resource Manager デプロイメント モデルで Linux VM を他の Azure サブスクリプションまたはリソース グループに移動します。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 0dee2c3b92adc4098a51014dd7379aa3d53c1627
-ms.openlocfilehash: 2978fee770b70378dfbffcbd97e57a6b82d2e2fa
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 0a4ac164a3896d47613e4491a5e4c81c1b660dea
 
 
 ---
@@ -60,6 +60,6 @@ Windows コンピューターでコマンド プロンプトから操作する�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure リソース グループで仮想マシンの OS ドライブを展開する方法 | Microsoft Docs"
+title: "Azure で Windows VM のオペレーティング システム ドライブを展開する | Microsoft Docs"
 description: "この記事では、Azure Resource Manager の Powershell を使用して、仮想マシンの OS ドライブのサイズを拡張する方法を示します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: kirpas
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5c2b8d9c9dfc60b71afc5b2a1db212a64649ea5b
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: a56ca6ee60ce13a1791f09da45dc8fcdc909f203
 
 
 ---
@@ -27,6 +27,6 @@ ms.openlocfilehash: 5c2b8d9c9dfc60b71afc5b2a1db212a64649ea5b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

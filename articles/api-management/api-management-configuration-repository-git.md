@@ -1,28 +1,25 @@
 ---
-title: "Git を使用して API Management サービス構成を保存および構成する方法"
+title: "Git を使用した API Management サービスの構成 - Azure | Microsoft Docs"
 description: "Git を使用して API Management サービス構成を保存、構成する方法について説明します。"
 services: api-management
 documentationcenter: 
 author: steved0x
 manager: erikre
-editor: 
+editor: mattfarm
 ms.assetid: 364cd53e-88fb-4301-a093-f132fa1f88f5
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: apipm
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 96d100d69a7f4989153b293d1fa1ab249a82c1c2
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: 801fe10ad20c48fb965d3f80956d7979c9c2314e
 
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
-> [!IMPORTANT]
-> API Management の Git の構成は現在プレビューの段階です。 機能的には完了していますが、この機能に関するフィードバックを積極的に求めているため、プレビュー段階です。 お客様からのフィードバックに応じて重大な変更を加える可能性があるため、機能によっては実稼動環境での使用はお勧めしません。 フィードバックや質問がある場合は、`apimgmt@microsoft.com` にご連絡ください。
 > 
 > 
 
@@ -40,7 +37,7 @@ ms.openlocfilehash: 96d100d69a7f4989153b293d1fa1ab249a82c1c2
 
 Git を使用して API Management サービス インスタンスを管理する手順の概要は次のとおりです。
 
-1. サービスの Git アクセスを有効にする
+1. サービスの Git 構成にアクセスする
 2. サービス構成データベースを Git リポジトリに保存する
 3. Git リポジトリをローカル コンピューターに複製する
 4. 最新のリポジトリをローカル コンピューターにプルし、変更をコミットしてリポジトリにプッシュする
@@ -48,20 +45,14 @@ Git を使用して API Management サービス インスタンスを管理す�
 
 この記事では、Git を有効にして使用し、サービス構成を管理する方法について説明します。また、Git リポジトリ内のファイルとフォルダーに関するリファレンス情報も提供します。
 
-## <a name="to-enable-git-access"></a>Git アクセスを有効にするには
-発行者ポータルの右上隅にある Git アイコンを表示して、Git 構成の状態をすばやく表示することができます。 この例では、Git アクセスがまだ有効になっていません。
+## <a name="access-git-configuration-in-your-service"></a>サービスの Git 構成にアクセスする
+発行者ポータルの右上隅にある Git アイコンを表示して、Git 構成の状態をすばやく表示することができます。 この例のステータス メッセージは、リポジトリへの未保存の変更があることを示しています。 これは、API Management サービス構成データベースがまだリポジトリに保存されていないためです。
 
 ![Git の状態][api-management-git-icon-enable]
 
 Git 構成設定を表示して構成する場合は、Git アイコンをクリックするか、**[セキュリティ]** メニューをクリックして **[構成リポジトリ]** タブに移動することができます。
 
 ![Enable GIT][api-management-enable-git]
-
-Git アクセスを有効にするには、 **[Git アクセスを有効にする]** チェック ボックスをオンにします。
-
-しばらくすると変更が保存され、確認メッセージが表示されます。 Git アイコンの色が変わり、Git アクセスが有効になったことが示され、ステータス メッセージはリポジトリに保存されていない変更があることを示していることに注意してください。 これは、API Management サービス構成データベースがまだリポジトリに保存されていないためです。
-
-![Git enabled][api-management-git-enabled]
 
 > [!IMPORTANT]
 > プロパティとして定義されていないシークレットはすべて、リポジトリに格納され、Git アクセスを無効にしてから再度有効にするまで履歴に残ります。 プロパティは、すべての API 構成とポリシーの定数文字列値 (シークレットなど) を管理するための安全な場所を提供します。そのため、定数文字列値をポリシー ステートメントに直接格納する必要はありません。 詳細については、「[Azure API Management ポリシーのプロパティの利用方法](api-management-howto-properties.md)」を参照してください。
@@ -121,7 +112,7 @@ git clone https://bugbashdev4.scm.azure-api.net/
 git clone https://username:password@bugbashdev4.scm.azure-api.net/
 ```
 
-それでもエラーが発生する場合は、コマンドのパスワード部分をエンコードする URL を試してください。 これを簡単に行う 1 つの方法では、Visual Studio を開き、 **[イミディエイト ウィンドウ]**で次のコマンドを発行します。 **[イミディエイト ウィンドウ]** を開くには、Visual Studio で任意のソリューションまたはプロジェクトを開き (または新しく空のコンソール アプリケーションを作成し)、**[デバッグ]** メニューから **[ウィンドウ]**、**[イミディエイト]** の順に選択します。
+それでもエラーが発生する場合は、コマンドのパスワード部分をエンコードする URL を試してください。 これを簡単に行う&1; つの方法では、Visual Studio を開き、 **[イミディエイト ウィンドウ]**で次のコマンドを発行します。 **[イミディエイト ウィンドウ]** を開くには、Visual Studio で任意のソリューションまたはプロジェクトを開き (または新しく空のコンソール アプリケーションを作成し)、**[デバッグ]** メニューから **[ウィンドウ]**、**[イミディエイト]** の順に選択します。
 
 ```
 ?System.NetWebUtility.UrlEncode("password from publisher portal")
@@ -182,7 +173,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 | products フォルダー |サービス インスタンス内の製品の構成が含まれています |
 | templates フォルダー |サービス インスタンス内の電子メール テンプレートの構成が含まれています |
 
-各フォルダーには 1 つ以上のファイルを含めることができ、場合によっては 1 つ以上のフォルダーも含めることができます。たとえば、各 API、製品、またはグループに 1 つのフォルダーを含めることができます。 各フォルダー内のファイルは、フォルダー名で示されるエンティティの種類に固有です。
+各フォルダーには&1; つ以上のファイルを含めることができ、場合によっては&1; つ以上のフォルダーも含めることができます。たとえば、各 API、製品、またはグループに&1; つのフォルダーを含めることができます。 各フォルダー内のファイルは、フォルダー名で示されるエンティティの種類に固有です。
 
 | ファイルの種類 | 目的 |
 | --- | --- |
@@ -222,7 +213,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 }
 ```
 
-最初の 4 つの設定 (`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled`、`UserRegistrationTermsConsentRequired`) は、**[セキュリティ]** セクションの **[ID]** タブにある次の設定に対応します。
+最初の&4; つの設定 (`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled`、`UserRegistrationTermsConsentRequired`) は、**[セキュリティ]** セクションの **[ID]** タブにある次の設定に対応します。
 
 | ID の設定 | 対応する設定 |
 | --- | --- |
@@ -233,7 +224,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 ![Identity settings][api-management-identity-settings]
 
-その次の 4 つの設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled`、`DelegationValidationKey`) は、**[セキュリティ]** セクションの **[委任]** タブにある次の設定に対応します。
+その次の&4; つの設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled`、`DelegationValidationKey`) は、**[セキュリティ]** セクションの **[委任]** タブにある次の設定に対応します。
 
 | 委任の設定 | 対応する設定 |
 | --- | --- |
@@ -251,7 +242,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 * `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI)を `application/json` 形式で `export=true` を指定して呼び出した場合に返される情報と同じです。
 * `apis\<api name>\api.description.html` - これは API の説明で、[API エンティティ](https://msdn.microsoft.com/library/azure/dn781423.aspx#EntityProperties)の `description` プロパティに対応します。
-* `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での 1 つの操作の説明が含まれています。この操作は、REST API の[操作エンティティ](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties)の `description` プロパティに対応します。
+* `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での&1; つの操作の説明が含まれています。この操作は、REST API の[操作エンティティ](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties)の `description` プロパティに対応します。
 
 ### <a name="groups-folder"></a>groups フォルダー
 `groups` フォルダーには、サービス インスタンスで定義された各グループのフォルダーが含まれています。
@@ -321,6 +312,6 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

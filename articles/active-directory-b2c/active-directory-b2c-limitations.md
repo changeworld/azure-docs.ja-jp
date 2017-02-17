@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 3ff8fba42e6455b33103c931da731b0affa8a0fb
-ms.openlocfilehash: b5fbd15729da2674b34a227861e65b89548dad39
+ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
+ms.openlocfilehash: 0f0805c8363226b6fab6463c668d750e8e7c9265
 
 
 ---
@@ -51,6 +51,39 @@ Azure AD B2C によって保護された Web API から、同様に保護され�
 
 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 Jwt Bearer Credential Grant (On-Behalf-Of フロー) を使用してサポートできます。 ただし、現時点では、Azure AD B2C に On-Behalf-Of フローは実装されていません。
 
+## <a name="restrictions-on-reply-urls"></a>応答 URL に関する制限事項
+現時点では、Azure AD B2C に登録されるアプリは、限られた応答 URL 値に制限されています。 Web アプリと Web サービスの応答 URL は `https` スキームで始まる必要があり、すべての応答 URL 値で&1; つの DNS ドメインを共有する必要があります。 たとえば、次の直接 URL のいずれかを使用する Web アプリを登録することはできません。
+
+`https://login-east.contoso.com`  
+`https://login-west.contoso.com`
+
+登録システムによって、既存の応答 URL の DNS 名全体と、追加しようとしている応答 URL の DNS 名が比較されます。 次のいずれかの条件に当てはまる場合、DNS 名を追加する要求は失敗します。
+
+* 新しい応答 URL の DNS 名全体が、既存の応答 URL の DNS 名と一致しない場合。
+* 新しい応答 URL の DNS 名全体が、既存の応答 URL のサブドメインではない場合。
+
+たとえば、アプリで次の応答 URL を使用しているとします。
+
+`https://login.contoso.com`
+
+次のように、これに追加できます。
+
+`https://login.contoso.com/new`
+
+この場合、DNS は完全に一致します。 または、次を行うことができます。
+
+`https://new.login.contoso.com`
+
+この場合、login.contoso.com の DNS サブドメインを参照しています。 応答 URL として login-east.contoso.com と login-west.contoso.com を使用するアプリが必要な場合は、これらの応答 URL を次の順番で追加する必要があります。
+
+`https://contoso.com`  
+`https://login-east.contoso.com`  
+`https://login-west.contoso.com`  
+
+後の&2; つの応答 URL を追加できるのは、これらが&1; つ目の contoso.com という応答 URL のサブドメインであるためです。 この制限は、今後のリリースで解消される予定です。
+
+Azure AD B2C にアプリを登録する方法については、[Azure Active Directory B2C にアプリケーションを登録する方法](active-directory-b2c-app-registration.md)に関する記事をご覧ください。
+
 ## <a name="restriction-on-libraries-and-sdks"></a>ライブラリと SDK に関する制限事項
 Azure AD B2C への対応を Microsoft が表明しているライブラリは、現時点ではごく一部に限られています。 .NET ベースの Web アプリと Web サービス、NodeJS の Web アプリと Web サービスはサポートされています。  また Windows や .NET アプリから、プレビュー版の .NET クライアント ライブラリ (MSAL) を介して Azure AD B2C を使用することもできます。
 
@@ -62,7 +95,7 @@ iOS と Android に関するクイック スタート チュートリアルで�
 Azure AD B2C では、OpenID Connect と OAuth 2.0 がサポートされています。 ただし、各プロトコルの一部の機能はまだ実装されていません。 Azure AD B2C でサポートされているプロトコル機能の範囲について理解を深めるには、 [OpenID Connect と OAuth 2.0 のプロトコル リファレンス](active-directory-b2c-reference-protocols.md)をご覧ください。 SAML および WS-Fed プロトコルのサポートは提供されていません。
 
 ## <a name="restriction-on-tokens"></a>トークンに関する制限事項
-Azure AD B2C によって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。 ただし、JWT に含まれているすべての情報 ("要求" と呼ばれる) で十分というわけではなく、欠落しているものもあります。 たとえば、"sub" 要求や "preferred_username" 要求などです。  要求の値や形式、意味は時間の経過に伴って変化するものであるため、既にあるポリシーのトークンは影響を受けません。運用環境のアプリから、それらの値に依存することができます。  値が変化したときは、ポリシーごとにそれらの変更を構成する機会を設ける予定です。  Azure AD B2C サービスによって現在発行されているトークンについて理解を深めるには、[トークン リファレンス](active-directory-b2c-reference-tokens.md)をご覧ください。
+Azure AD B2C によって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。 ただし、JWT に含まれているすべての情報 ("要求" と呼ばれる) で十分というわけではなく、欠落しているものもあります。 例として "preferred_username" 要求があります。  要求の値や形式、意味は時間の経過に伴って変化するものであるため、既にあるポリシーのトークンは影響を受けません。運用環境のアプリから、それらの値に依存することができます。  値が変化したときは、ポリシーごとにそれらの変更を構成する機会を設ける予定です。  Azure AD B2C サービスによって現在発行されているトークンについて理解を深めるには、[トークン リファレンス](active-directory-b2c-reference-tokens.md)をご覧ください。
 
 ## <a name="restriction-on-nested-groups"></a>グループの入れ子に関する制限
 Azure AD B2C テナントでは、グループのメンバーシップを入れ子にすることはできません。 この機能を追加する予定はありません。
@@ -82,7 +115,7 @@ B2C 機能には、Azure Portal からアクセスできます。 ただし、Az
 管理者が Azure クラシック ポータルでローカル アカウント ベースのコンシューマーのパスワードをリセットすると (**[ユーザー]** タブの **[パスワードのリセット]** コマンド)、サインアップ ポリシーまたはサインイン ポリシーを使用している場合に、そのコンシューマーは次回サインイン時に自分のパスワードを変更できなくなり、アプリケーションからロックアウトされます。 この問題を回避するには、 [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用してコンシューマーのパスワードを (パスワードの有効期限なしで) リセットするか、"サインアップまたはサインイン" ポリシーではなく "サインイン" ポリシーを使用します。
 
 ## <a name="issues-with-creating-a-custom-attribute"></a>カスタム属性の作成に関する問題
-[Azure Portal に追加されたカスタム属性](active-directory-b2c-reference-custom-attr.md) は、すぐには B2C テナントに作成されません。 カスタム属性を B2C テナントに作成して Graph API から利用できる状態にするためには、あらかじめ少なくとも 1 つのポリシーの中でそのカスタム属性を使用する必要があります。
+[Azure Portal に追加されたカスタム属性](active-directory-b2c-reference-custom-attr.md) は、すぐには B2C テナントに作成されません。 カスタム属性を B2C テナントに作成して Graph API から利用できる状態にするためには、あらかじめ少なくとも&1; つのポリシーの中でそのカスタム属性を使用する必要があります。
 
 ## <a name="issues-with-verifying-a-domain-on-the-azure-classic-portal"></a>Azure クラシック ポータルでのドメインの確認に関する問題
 現在、 [Azure クラシック ポータル](https://manage.windowsazure.com/)でドメインを正常に確認することはできません。
@@ -93,9 +126,13 @@ Safari ブラウザーで、サインイン ポリシーに対する (MFA をオ
 * "サインイン ポリシー" ではなく "サインアップまたはサインイン ポリシー" を使用します。
 * ポリシーで要求されている **アプリケーション要求** の数を減らします。
 
+## <a name="issues-with-windows-desktop-wpf-apps-using-azure-ad-b2c"></a>Azure AD B2C を使用する Windows デスクトップ WPF アプリに関する問題
+Windows デスクトップ WPF アプリから Azure AD B2C への要求が、"The browser based authentication dialog failed to complete. Reason: The protocol is not known and no pluggable protocols have been entered that match. (ブラウザー ベースの認証ダイアログを完了できませんでした。理由: プロトコルが不明であり、適合するプラグ可能プロトコルが入力されていません。)" というエラー メッセージで失敗する場合があります。
+
+これは、Azure AD B2C で提供される認証コードのサイズに起因します。サイズは、トークンで要求される要求の数と関連しています。 この問題の回避策として、トークンで要求される要求の数を減らし、他の要求では Graph API を個別に照会します。
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

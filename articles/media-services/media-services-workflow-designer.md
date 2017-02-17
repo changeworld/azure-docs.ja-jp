@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 09/15/2016
 ms.author: juliako;johndeu;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: caf697786ce2a95dd0d4168d6ffa26bf4bee525a
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: bf208f65ef5509e56373a84bb096da39d6bafc1f
 
 
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 **ワークフロー デザイナー**は、**メディア エンコーダー プレミアム ワークフロー**でエンコードするカスタム ワークフローの設計と構築に使用する Windows デスクトップ ツールです。
 ワークフロー デザイナー ツールの機能を利用することで、 **メディア エンコーダー プレミアム**で実行する複雑なワークフローを設計し、作成できます。  
 
@@ -53,7 +53,7 @@ Day 1 のビデオの内容は次のとおりです。
 * 基本的なワークフロー - "Hello World"
 * Azure Media Services のストリーミングで使用する複数の出力 MP4 ファイルの作成
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-1/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-1/player]
 > 
 > 
 
@@ -64,7 +64,7 @@ Day 2 のビデオの内容は次のとおりです。
 * 高度なロジックを含むワークフロー
 * グラフ ステージ
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-2/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-2/player]
 > 
 > 
 
@@ -75,7 +75,7 @@ Day 3 のビデオの内容は次のとおりです。
 * 現在のエンコーダの制限事項
 * Q & A
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
 > 
 > 
 
@@ -95,6 +95,6 @@ Media Services のラーニング パスを確認します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

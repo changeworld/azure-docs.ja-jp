@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect Sync: Azure Active Directory に同期される属性 | Microsoft Docs"
+title: "Azure AD Connect によって同期される属性 | Microsoft Docs"
 description: "Azure Active Directory に同期される属性の一覧を示します。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 01/23/2017
 ms.author: markvi;andkjell
 translationtype: Human Translation
-ms.sourcegitcommit: 2a361774095b20aacff91e9926ead2c1a53b8835
-ms.openlocfilehash: b8ed85dc70d0270884d57db61d81e89cfd2bf582
+ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
+ms.openlocfilehash: ff5a7091e985629763dde416b17e060236f8f7ad
 
 
 ---
@@ -462,6 +462,6 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

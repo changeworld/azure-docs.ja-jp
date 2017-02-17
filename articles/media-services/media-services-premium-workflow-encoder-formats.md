@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/27/2017
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d7e3bc0ac0c1f0c6bbce0cc25fe7a8df2cc53836
+ms.sourcegitcommit: ef5db062ac320995ff8bfa64f38c89d860957868
+ms.openlocfilehash: 8179e955ef0c126acb9dab31226bd1e12278f9b6
 
 
 ---
@@ -100,12 +100,15 @@ ms.openlocfilehash: d7e3bc0ac0c1f0c6bbce0cc25fe7a8df2cc53836
 * MP3 (MPEG-1 Audio Layer 3)
 * Windows Media オーディオ
 
+>[!NOTE]
+>Dolby® Digital (AC3) にエンコードする場合、出力は、ISO MP4 ファイルにのみ書き込むことができます。
+
 ## <a name="a-idclosedcaptioningasupport-for-closed-captioning"></a><a id="closed_captioning"></a>クローズド キャプションのサポート
 取り込み側時は、 **メディア エンコーダー プレミアム ワークフロー** で次がサポートされます。
 
 1. SCC ファイル
 2. SMPTE-TT ファイル
-3. CEA 608/CEA 708 – ユーザー データ (H.264 基本ストリームの SEI メッセージ、ATSC/53、SCTE20) として送信、または MXF/GXF ファイルでの補助データとして送信
+3. CEA&608;/CEA&708; – ユーザー データ (H.264 基本ストリームの SEI メッセージ、ATSC/53、SCTE20) として送信、または MXF/GXF ファイルでの補助データとして送信
 4. STL サブタイトル ファイル
 
 出力時は、次のオプションを使用できます。
@@ -131,6 +134,6 @@ ms.openlocfilehash: d7e3bc0ac0c1f0c6bbce0cc25fe7a8df2cc53836
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

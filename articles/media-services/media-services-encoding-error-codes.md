@@ -1,5 +1,5 @@
 ---
-title: "エラー コードのエンコード |Microsoft Docs"
+title: "Azure Media Services のエンコード エラー コード | Microsoft Docs"
 description: "このトピックでは、エンコード タスクの実行中にエラーが発生した場合に返される可能性があるエラー コードの一覧を示しています。"
 services: media-services
 documentationcenter: 
@@ -12,23 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 0124c884d3d805a407041e8ecbc5961209a9653d
-ms.openlocfilehash: 7c5281bd3e846a78ef7e602219df6566fb032f72
+ms.sourcegitcommit: b341416f837d03e0532b4f8c0a3f3f85641a8995
+ms.openlocfilehash: d1e6421404d9c8845eb3ccd30d84c0c8cf5930b8
 
 
 ---
 
-## <a name="encoding-error-codes"></a>エラー コードのエンコード
+# <a name="encoding-error-codes"></a>エラー コードのエンコード
 
 次の表は、エンコード タスクの実行中にエラーが発生した場合に返される可能性があるエラー コードの一覧です。  .NET コードのエラーの詳細を取得するには、 [ErrorDetails](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) クラスを使用します。 REST コードのエラーの詳細を取得するには、 [ErrorDetails](https://msdn.microsoft.com/library/jj853026.aspx) REST API を使用します。
 
 | ErrorDetail.Code | 考えられる原因 |
 | --- | --- |
 | Unknown |タスクの実行中に発生する不明なエラー |
-| ErrorDownloadingInputAssetMalformedContent |無効なファイル名、サイズ 0 のファイル、不正なファイル形式など、入力資産のダウンロード中に発生するエラーのカテゴリ |
+| ErrorDownloadingInputAssetMalformedContent |無効なファイル名、サイズ&0; のファイル、不正なファイル形式など、入力資産のダウンロード中に発生するエラーのカテゴリ |
 | ErrorDownloadingInputAssetServiceFailure |ダウンロード中のネットワーク エラーやストレージ エラーなど、サービス側での問題に関するエラーのカテゴリ |
 | ErrorParsingConfiguration |構成が有効なシステム プリセットではない、構成に無効な XML が含まれているなど、タスク <see cref="MediaTask.PrivateData"/> (構成) が有効でない場合に発生するエラーのカテゴリ。 |
 | ErrorExecutingTaskMalformedContent |入力メディア ファイル内の問題が障害の原因となり、タスクの実行中に発生するエラーのカテゴリ |
@@ -55,6 +55,6 @@ ms.openlocfilehash: 7c5281bd3e846a78ef7e602219df6566fb032f72
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

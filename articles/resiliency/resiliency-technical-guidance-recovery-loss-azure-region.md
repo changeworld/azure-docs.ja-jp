@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 0062dc90d8e1a823e17183e96a91a9f224e8cf48
+ms.sourcegitcommit: 559b38da4ed787f6f7a4462f6add92384bed54f7
+ms.openlocfilehash: 0acdbefcae875c206667260b6df5dfd8882dcc42
 
 
 ---
 # <a name="azure-resiliency-technical-guidance-recovery-from-a-region-wide-service-disruption"></a>Azure の回復性に関する技術ガイダンス: リージョン全体のサービス中断からの復旧
-Azure はリージョンと呼ばれる物理的および論理的な単位に分割されます。 リージョンは、ごく近くにある 1 つ以上のデータセンターで構成されます。 この記事の執筆時に、Azure には世界中に 24 のリージョンがありました。
+Azure はリージョンと呼ばれる物理的および論理的な単位に分割されます。 リージョンは、ごく近くにある&1; つ以上のデータセンターで構成されます。 最新のリージョン一覧については、[Azure のリージョン ページ](https://azure.microsoft.com/regions/)を参照してください。
 
 まれに、1 つのリージョン全体の施設がネットワーク障害などでアクセスできなくなることがあります。 また、自然災害などにより、施設が完全に失われることもあります。 ここでは、複数のリージョンに分散するアプリケーションを作成するための Azure の機能について説明します。 そのように分散することで、1 つのリージョンの障害が他のリージョンに影響を与える可能性を最小限に抑えることができます。
 
@@ -43,7 +43,7 @@ Azure はリージョンと呼ばれる物理的および論理的な単位に�
 リージョン間での分散コンピューティングを実装するには、多くの代替方法を利用できます。 これらは、特定のビジネス要件とアプリケーション環境に合わせる必要があります。 大まかに言えば、方法は以下のカテゴリに分類できます。
 
 * **災害発生時の再デプロイ**: この方法では、アプリケーションは災害時に一から再デプロイされます。 これは、復旧時間が保証されている必要のない、重要性の低いアプリケーションに適しています。
-* **ウォーム スペア (アクティブ/パッシブ)**: 2 番目のホストされるサービスは別のリージョンに作成され、ロールは最小容量を保証するようにデプロイされます。ただし、このロールは運用環境のトラフィックを受信しません。 この方法は、リージョン間にトラフィックを分散するように設計されていないアプリケーションに有用です。
+* **ウォーム スペア (アクティブ/パッシブ)**:&2; 番目のホストされるサービスは別のリージョンに作成され、ロールは最小容量を保証するようにデプロイされます。ただし、このロールは運用環境のトラフィックを受信しません。 この方法は、リージョン間にトラフィックを分散するように設計されていないアプリケーションに有用です。
 * **ホット スペア (アクティブ/アクティブ)**: アプリケーションは複数のリージョンで運用負荷を受信するように設計されています。 各リージョンのクラウド サービスは、障害復旧のために必要な容量よりも大きい容量で構成されている場合があります。 また、クラウド サービスは災害およびフェールオーバー時に必要に応じてスケールアウトする可能性があります。 この方法は、アプリケーション設計にかなりの投資を必要としますが、大きな利点があります。 たとえば、復旧時間が短いことが保証されていること、すべての復旧場所で連続してテストを実行できること、容量を有効に使用できることなどです。
 
 分散設計の詳細については、このドキュメントでは説明しません。 詳細については、 [Azure アプリケーションの障害復旧と高可用性](https://aka.ms/drtechguide)に関するページを参照してください。
@@ -88,13 +88,13 @@ VM ディスクのセクションで説明したように、フェールオー�
 
 ## <a name="database"></a>データベース
 ### <a name="sql-database"></a>SQL Database
-Azure SQL Database には、geo リストアとアクティブ geo レプリケーションという 2 種類の復旧が用意されています。
+Azure SQL Database には、geo リストアとアクティブ geo レプリケーションという&2; 種類の復旧が用意されています。
 
 #### <a name="geo-restore"></a>地理リストア
 [geo リストア](../sql-database/sql-database-recovery-using-backups.md#geo-restore) も、Basic、Standard、および Premium のデータベースで利用できます。 データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合は、既定の復旧オプションを提供します。 ポイントインタイム リストアと同様に、geo リストアも geo 冗長 Azure Storage のデータベースのバックアップに依存します。 geo レプリケーション バックアップ コピーから復元するため、プライマリ リージョンにおけるストレージの障害に対する回復力があります。 詳細については、「 [Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](../sql-database/sql-database-disaster-recovery.md)」を参照してください。
 
 #### <a name="active-geo-replication"></a>アクティブ geo レプリケーションを選択するとき
-[アクティブ geo レプリケーション](../sql-database/sql-database-geo-replication-overview.md) は、すべてのデータベース レベルで使用できます。 アクティブ geo レプリケーションは、geo リストアよりもアグレッシブな復旧要件があるアプリケーション用に設計されています。 アクティブ geo レプリケーションを使用して、別のリージョン内のサーバーで最大 4 つの読み取り可能なセカンダリを作成できます。 いずれかのセカンダリへのフェールオーバーを開始できます。 さらに、アクティブ geo レプリケーションを使用すると、アプリケーションのアップグレードや再配置のシナリオをサポートするだけでなく読み取り専用ワークロードの負荷を分散することができます。 詳細については、[geo レプリケーションの構成](../sql-database/sql-database-geo-replication-portal.md)に関するページと、[セカンダリ データベースへのフェールオーバー](../sql-database/sql-database-geo-replication-failover-portal.md)に関するページをご覧ください。 アプリケーションを設計して実装する方法と、ダウンタイムなしのアプリケーション アップグレードの詳細については、「[SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)」と「[SQL Database アクティブ geo レプリケーションを使用したクラウド アプリケーションのローリング アップグレードの管理](../sql-database/sql-database-manage-application-rolling-upgrade.md)」をご覧ください。
+[アクティブ geo レプリケーション](../sql-database/sql-database-geo-replication-overview.md) は、すべてのデータベース レベルで使用できます。 アクティブ geo レプリケーションは、geo リストアよりもアグレッシブな復旧要件があるアプリケーション用に設計されています。 アクティブ geo レプリケーションを使用して、別のリージョン内のサーバーで最大&4; つの読み取り可能なセカンダリを作成できます。 いずれかのセカンダリへのフェールオーバーを開始できます。 さらに、アクティブ geo レプリケーションを使用すると、アプリケーションのアップグレードや再配置のシナリオをサポートするだけでなく読み取り専用ワークロードの負荷を分散することができます。 詳細については、[geo レプリケーションの構成](../sql-database/sql-database-geo-replication-portal.md)に関するページと、[セカンダリ データベースへのフェールオーバー](../sql-database/sql-database-geo-replication-failover-portal.md)に関するページをご覧ください。 アプリケーションを設計して実装する方法と、ダウンタイムなしのアプリケーション アップグレードの詳細については、「[SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)」と「[SQL Database アクティブ geo レプリケーションを使用したクラウド アプリケーションのローリング アップグレードの管理](../sql-database/sql-database-manage-application-rolling-upgrade.md)」をご覧ください。
 
 ### <a name="sql-server-on-virtual-machines"></a>Virtual Machines 上の SQL Server
 SQL Server 2012 (以降) を Azure Virtual Machines で実行した場合、復旧および高可用性のためのさまざまなオプションを利用できます。 詳細については、「 [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
@@ -188,6 +188,6 @@ Azure Media Services には、エンコードとストリーミングのため�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 
