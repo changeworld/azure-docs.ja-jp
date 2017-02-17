@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure Resource Manager のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "Resource Manager を使用して、ソリューション リソース (グループなど) をデプロイおよび管理したり、一貫性のある繰り返し可能なリソースのデプロイ用にテンプレートを作成したりする方法について説明します。"
+services: azure-resource-manager
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: azure-resource-manager
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 0c80499b4b27b7c21473e0ed6468441fa26e965d
-ms.openlocfilehash: f687fd5682a912cf02efec097c6df4a0c1604938
+ms.sourcegitcommit: d3505091d3239bd68b2c4d0bb045d83a53cb6700
+ms.openlocfilehash: 0bb9b8a84d94603f14eef9a93eb0d662cf791a1c
 
 ---
 #<a name="azure-resource-manager-documentation"></a>Azure Resource Manager のドキュメント
@@ -149,17 +160,10 @@ Resource Manager を使用して、グループなどのソリューション �
     </li>
 </ul>
 
----
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/azure-resource-manager.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure Resource Manager のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Feb17_HO2-->
 
 

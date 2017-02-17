@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure Search のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "カスタムの Web アプリケーションやモバイル アプリケーションに、アクティビティ監視などの強力な検索機能を追加する方法について説明します。 API リファレンスなどのドキュメントを提供します。"
+services: search
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: search
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: c99d4b8d8db7739f615d566afa4617221b1c34a0
+ms.sourcegitcommit: d8bf549455e427549a81ff5476a00cdfb836b5ff
+ms.openlocfilehash: aa0c12a669b6b2a1602b9d2f6698f65535b4f7d4
 
 ---
 # <a name="azure-search-documentation"></a>Azure Search のドキュメント
@@ -158,6 +169,6 @@ ms.openlocfilehash: c99d4b8d8db7739f615d566afa4617221b1c34a0
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

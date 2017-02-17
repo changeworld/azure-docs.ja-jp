@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure Active Directory Domain Services のドキュメント - チュートリアル | Microsoft Docs"
 description: "Active Directory Domain Services を使用して、ドメイン コントローラーをデプロイせずに Azure 仮想マシンをドメインに参加させ、グループ ポリシーで管理する方法について説明します。"
+services: active-directory-ds
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: active-directory-ds
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 5c25e7f81a4f2219c244044ea70416d1e0c63b4e
-ms.openlocfilehash: b05e7bfbc89de74937daa7daf578aa8a9bb39d64
+ms.sourcegitcommit: ca9fd58260f97836c08e71a50d8411d1862fd650
+ms.openlocfilehash: 9654ec8791de56c33e4973e8ba20ef6e52780955
 
 ---
 # <a name="active-directory-domain-services-documentation"></a>Active Directory Domain Services のドキュメント
@@ -157,18 +168,9 @@ Active Directory Domain Services を使用して、ドメイン コントロー�
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/active-directory-domain-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-Active Directory Domain Services のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

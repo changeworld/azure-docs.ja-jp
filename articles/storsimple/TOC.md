@@ -26,7 +26,8 @@
 
 ## 方法
 ### [Azure Portal で管理する](storsimple-virtual-array-manager-service-administration.md)
-#### [最新の更新プログラムをインストールする](storsimple-virtual-array-install-update.md)
+#### [最新の更新プログラムをインストールする](storsimple-virtual-array-install-update-04.md)
+##### [Update 0.3 のインストール](storsimple-virtual-array-install-update.md)
 #### [バックアップを作成および管理する](storsimple-virtual-array-backup.md)
 #### [バックアップから複製する](storsimple-virtual-array-clone.md)
 #### [フェールオーバーと DR](storsimple-virtual-array-failover-dr.md)
@@ -40,6 +41,8 @@
 #### [ジョブを管理する](storsimple-virtual-array-manage-jobs.md)
 #### [デバイスのパスワードを変更する](storsimple-virtual-array-change-device-admin-password.md)
 #### [Windows Server ホストで MPIO を構成する](storsimple-virtual-array-configure-mpio-windows-server.md)
+#### [診断とトラブルシューティング](storsimple-virtual-array-diagnose-problems.md)
+#### [サポート要求を記録する](storsimple-virtual-array-log-support-ticket.md)
 
 ### [Azure クラシック ポータルで管理する](storsimple-ova-manager-service-administration.md)
 #### [最新の更新プログラムをインストールする](storsimple-ova-install-update-01.md)
@@ -56,7 +59,8 @@
 ### [ローカル Web UI で構成する](storsimple-ova-web-ui-admin.md)
 
 ## リリース ノート
-### [Update 0.3 - 最新](storsimple-ova-update-03-release-notes.md)
+### [Update 0.4 - 最新](storsimple-virtual-array-update-04-release-notes.md)
+### [Update 0.3](storsimple-ova-update-03-release-notes.md)
 ### [Update 0.2 および 0.1](storsimple-ova-update-01-release-notes.md)
 
 # StorSimple 8000 シリーズ
@@ -150,6 +154,7 @@
 ### 監視
 #### [サービス ダッシュボードの使用](storsimple-service-dashboard.md)
 #### [デバイス ダッシュボードの使用](storsimple-device-dashboard.md)
+#### [監視グラフの使用](storsimple-monitor-device.md)
 #### [サービス アラートの使用](storsimple-manage-alerts.md)
 #### [ハードウェアの状態の使用](storsimple-monitor-hardware-status.md)
 #### [監視 LED の使用](storsimple-monitoring-indicators.md)
@@ -172,6 +177,7 @@
 #### [他のストレージ デバイスから](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### 更新
+#### [Update 4 をインストールする](storsimple-install-update-4.md)
 #### [Update 3 をインストールする](storsimple-install-update-3.md)
 #### [Update 2.2 をインストールする](storsimple-install-update-21.md)
 #### [Update 2 をインストールする](storsimple-install-update-2.md)
@@ -179,6 +185,7 @@
 #### [デバイスを更新する](storsimple-update-device.md)
 
 ## リリース ノート
+### [Update 4 - 最新](storsimple-update4-release-notes.md)
 ### [Update 3 - 最新](storsimple-update3-release-notes.md)
 ### [Update 2.2](storsimple-update21-release-notes.md)
 ### [Update 2](storsimple-update2-release-notes.md)
@@ -203,6 +210,18 @@
 ## 方法
 ### [.NET を使用したデータの変換](storsimple-data-manager-dotnet-jobs.md)
 
+# パートナー向け StorSimple
+## 概要
+### [ソリューションとは](storsimple-partner-csp-overview.md)
+
+## 作業開始
+### [CSP の仮想アレイをデプロイする](storsimple-partner-csp-deploy.md)
+
+## リリース ノート
+### [StorSimple のリリース ノート](https://aka.ms/storsimple-virtual-array-latest-relnote)
+### [CSP のリリース ノート](https://partner.microsoft.com/Support/whats-new)
+### [CSP 向け StorSimple: FAQ](storsimple-partner-csp-faq.md)
+
 # 関連項目
 ## [StorSimple 5000 - 7000 シリーズ](http://onlinehelp.storsimple.com)
 
@@ -220,6 +239,6 @@
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

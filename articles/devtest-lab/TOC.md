@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [DevTest ラボとは](devtest-lab-overview.md)
 ## [DevTest ラボを使用する理由](devtest-lab-why.md)
 ## [DevTest ラボの概念](devtest-lab-concepts.md)
@@ -21,11 +21,19 @@
 ### [アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)
 ### [カスタム アーティファクトの作成](devtest-lab-artifact-author.md)
 
-## VM ベースの管理
-### [カスタム イメージの作成](devtest-lab-create-template.md)
+## VM のベースとテンプレートの管理
+### [Azure Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)
 ### [Marketplace のイメージの構成](devtest-lab-configure-marketplace-images.md)
-### [数式の管理](devtest-lab-manage-formulas.md)
 ### [数式とイメージを比較する](devtest-lab-comparing-vm-base-image-types.md)
+### [数式の管理](devtest-lab-manage-formulas.md)
+### [VM からカスタム イメージを作成する](devtest-lab-create-custom-image-from-vm-using-portal.md)
+### [Azure Portal を使用して VHD からカスタム イメージを作成する](devtest-lab-create-template.md)
+### [PowerShell を使用して VHD からカスタム イメージを作成する](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+### [AzCopy を使用して VHD ファイルをアップロードする](devtest-lab-upload-vhd-using-azcopy.md)
+### [PowerShell を使用して VHD ファイルをアップロードする](devtest-lab-upload-vhd-using-powershell.md)
+### [ストレージ エクスプローラーを使用して VHD ファイルをアップロードする](devtest-lab-upload-vhd-using-storage-explorer.md)
+
+
 
 # リソース
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=devtest-lab)
@@ -35,6 +43,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

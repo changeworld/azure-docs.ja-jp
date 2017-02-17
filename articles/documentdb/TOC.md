@@ -1,3 +1,4 @@
+
 # 概要
 ## [DocumentDB とは](documentdb-introduction.md)
 ## [主要な概念](documentdb-resources.md)
@@ -29,8 +30,9 @@
 ### [パーティション分割とスケーリング](documentdb-partition-data.md)
 ### [整合性](documentdb-consistency-levels.md)
 ### [NoSQL 対 SQL](documentdb-nosql-vs-sql.md)
+### [コスト効率の優れた読み取りと書き込み](documentdb-key-value-store-cost.md)
 
-## 管理
+## [管理]
 ### [データのインポート](documentdb-import-data.md)
 ### [データのモデル化](documentdb-modeling-data.md)
 ### [地理空間のデータを使用する](documentdb-geospatial.md)
@@ -40,14 +42,13 @@
 ### [インデックスのカスタマイズ](documentdb-indexing-policies.md)
 ### [データへのアクセスをセキュリティで保護する](documentdb-secure-access-to-data.md)
 ### [バックアップおよび復元](documentdb-online-backup-and-restore.md)
-### [パフォーマンス レベル](documentdb-performance-levels.md)
+### [S1、S2、S3 の廃止](documentdb-performance-levels.md)
 ### [要求ユニット](documentdb-request-units.md)
 ### Azure CLI
 #### [アカウントの作成](documentdb-automation-resource-manager-cli.md)
 #### [リージョンの追加または削除](documentdb-automation-region-management.md)
 ### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 ### [ファイアウォールのサポート](documentdb-firewall-support.md)
-### [アカウントのパワーアップ](documentdb-supercharge-your-account.md)
 
 ## 開発
 ### [SQL query](documentdb-sql-query.md)
@@ -71,6 +72,7 @@
 ## ポータルの使用
 ### [データベース アカウントの作成](documentdb-create-account.md)
 ### [コレクションの作成](documentdb-create-collection.md)
+### [スループットの設定](documentdb-set-throughput.md)
 ### [グローバル レプリケーションの追加](documentdb-portal-global-replication.md)
 ### [ドキュメントの追加と編集](documentdb-view-json-document-explorer.md)
 ### [ドキュメントのクエリ](documentdb-query-collections-query-explorer.md)
@@ -88,9 +90,10 @@
 ### [Azure Search との統合](../search/search-howto-index-documentdb.md)
 ### [Azure Data Factory を使用したデータ移動](../data-factory/data-factory-azure-documentdb-connector.md)
 ### [Azure Stream Analytics でリアルタイム データを分析する](../stream-analytics/stream-analytics-define-outputs.md#documentdb)
-### [Logic Apps を使用した通知の取得](documentdb-change-notification.md)
+### [Logic Apps を使用して変更された HL7 FHIR レコードを取得する](documentdb-change-feed-hl7-fhir-logic-apps.md)
 ### [センサー データをリアルタイムで処理する](../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md)
 ### [Power BI でデータを視覚化する](documentdb-powerbi-visualize.md)
+### [ODBC ドライバーを利用したデータ視覚化](documentdb-nosql-odbc-driver.md)
 
 
 # リファレンス
@@ -123,6 +126,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

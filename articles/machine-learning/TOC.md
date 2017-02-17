@@ -1,17 +1,24 @@
 # 概要
+
 ## [Machine Learning とは](machine-learning-what-is-machine-learning.md)
-## Machine Learning Studio
-### [Studio とは](machine-learning-what-is-ml-studio.md)
-### [Studio の機能](machine-learning-studio-overview-diagram.md)
-### [インフォグラフィック: ML の基本](machine-learning-basics-infographic-with-algorithm-examples.md)
+
 ## Team Data Science Process
 ### [概要](http://aka.ms/datascienceprocess)
 ### [ライフサイクル](data-science-process-overview.md)
 ### [チュートリアル](data-science-process-walkthroughs.md)
+
+## Machine Learning Studio
+### [Studio とは](machine-learning-what-is-ml-studio.md)
+### [Studio の機能](machine-learning-studio-overview-diagram.md)
+### [インフォグラフィック: ML の基本](machine-learning-basics-infographic-with-algorithm-examples.md)
+
 ## [よく寄せられる質問](machine-learning-faq.md)
 ## [新機能](machine-learning-whats-new.md)
+
 # 作業の開始
+
 ## [初めての実験を作成する](machine-learning-create-experiment.md)
+
 ## 例のチュートリアル
 ### [予測ソリューションを作成する](machine-learning-walkthrough-develop-predictive-solution.md)
 ### [1: ワークスペースを作成する](machine-learning-walkthrough-1-create-ml-workspace.md)
@@ -20,6 +27,7 @@
 ### [4: トレーニングと評価](machine-learning-walkthrough-4-train-and-evaluate-models.md)
 ### [5: Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)
 ### [6: Web サービスにアクセスする](machine-learning-walkthrough-6-access-web-service.md)
+
 ## 初心者向けデータ サイエンス解説
 ### [1:&5; つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
 ### [2: データは準備できていますか](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
@@ -29,8 +37,8 @@
 
 ## [R のクイック スタート](machine-learning-r-quickstart.md)
 
-
 # 方法
+
 ## ツールとユーティリティの設定
 ### [環境を設定する](machine-learning-data-science-environment-setup.md)
 ### [仮想マシンを設定する](machine-learning-data-science-virtual-machines.md)
@@ -49,9 +57,11 @@
 #### [トラブルシューティング](machine-learning-troubleshooting-creating-ml-workspace.md)
 #### [ARM を使用してデプロイする](machine-learning-deploy-with-resource-manager-template.md)
 #### [別のリージョンで作成する](machine-learning-multi-geo.md)
+
 ## ビジネス ニーズの分析
 ### [技術的ニーズ](machine-learning-data-science-plan-your-environment.md)
 ### [シナリオの特定](machine-learning-data-science-plan-sample-scenarios.md)
+
 ## データの取得と理解
 ### ストレージにデータを読み込む
 #### [概要](machine-learning-data-science-ingest-data.md)
@@ -95,6 +105,7 @@
 ##### [モデルにスコアを付ける](machine-learning-data-science-spark-model-consumption.md)
 ##### [高度なデータの探索](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)
 ##### [Scala や Spark を使用する](machine-learning-data-science-process-scala-walkthrough.md)
+
 ## モデルの開発
 ### 特徴のエンジニアリングと選択
 #### [概要](machine-learning-data-science-create-features.md)
@@ -104,6 +115,7 @@
 #### [TDSP の特徴選択](machine-learning-data-science-select-features.md)
 ### モデルの作成とトレーニング
 #### [スコア付けに変換する](machine-learning-convert-training-experiment-to-scoring-experiment.md)
+#### [実験のライフサイクル管理](machine-learning-version-control.md)
 #### [反復回数を管理する](machine-learning-manage-experiment-iterations.md)
 #### [PowerShell でモデルを作成する](machine-learning-create-models-and-endpoints-with-powershell.md)
 #### アルゴリズムを選択する
@@ -120,11 +132,11 @@
 ##### [R スクリプトを実行する](machine-learning-extend-your-experiment-with-r.md)
 ##### [カスタム R モジュールを作成する](machine-learning-custom-r-modules.md)
 ##### [Python スクリプトを実行する](machine-learning-execute-python-scripts.md)
+
 ## モデルのデプロイと使用
 ### [概要](machine-learning-deploy-consume-web-service-guide.md)
 ### モデルをデプロイする
 #### [動作のしくみ](machine-learning-model-progression-experiment-to-web-service.md)
-#### [新しい Web サービスのデプロイ](machine-learning-webservice-deploy-a-web-service.md)
 #### [Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
 #### [外部データを取得する](machine-learning-web-services-that-use-import-export-modules.md)
 #### [複数の地域にデプロイする](machine-learning-how-to-deploy-to-multiple-regions.md)
@@ -147,6 +159,7 @@
 #### [Excel を使用する](machine-learning-consuming-from-excel.md)
 #### [Excel アドインを使用する](machine-learning-excel-add-in-for-web-services.md)
 #### [Web アプリ テンプレートを使用する](machine-learning-consume-web-service-with-web-app-template.md)
+
 ## 例
 ### [サンプル実験](machine-learning-sample-experiments.md)
 ### [サンプル データセット](machine-learning-use-sample-datasets.md)
@@ -158,10 +171,12 @@
 #### [SQL Data Warehouse を使用する](machine-learning-data-science-process-sqldw-walkthrough.md)
 
 # リファレンス
+
 ## [PowerShell モジュール (新規)](/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning)
 ## [PowerShell モジュール (クラシック)](machine-learning-powershell-module.md)
 ## [アルゴリズムとモジュールのリファレンス](https://msdn.microsoft.com/library/azure/dn905974.aspx)
-## [REST ()](/rest/api/machinelearning)
+## [REST API リファレンス](/rest/api/machinelearning)
+## [Web サービスのエラー コード](machine-learning-web-service-error-codes.md)
 
 # 関連項目
 
@@ -176,6 +191,7 @@
 ### [チュートリアル](machine-learning-gallery-tutorials.md)
 ### [コレクション](machine-learning-gallery-collections.md)
 ### [カスタム モジュール](machine-learning-gallery-custom-modules.md)
+
 ## Cortana Analytics
 ### API
 #### [異常の検出](machine-learning-apps-anomaly-detection-api.md)
@@ -197,7 +213,7 @@
 ##### [セットアップ](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
 
 # リソース
-## [Machine Learning REST のエラー コード](/machine-learning/machine-learning-web-service-error-codes)
+
 ## [Net# ニューラル ネットワーク仕様言語](machine-learning-azure-ml-netsharp-reference-guide.md)
 ## [料金](https://azure.microsoft.com/pricing/details/machine-learning/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=machine-learning)
@@ -208,6 +224,6 @@
 ## [ライブ チャットからヘルプを表示する](machine-learning-live-chat.md)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

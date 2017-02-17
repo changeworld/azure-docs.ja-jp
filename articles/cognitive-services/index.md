@@ -1,13 +1,25 @@
 ---
+title: "Azure Cognitive Services のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "視覚、音声、言語の分析などのインテリジェントな機能をアプリケーションに追加する方法について説明します。 クイック スタート ガイドと API リファレンスを提供します。"
+services: cognitive-services
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: cognitive-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: e4e35a7c13db98770295cbaa19cf33b18c1fb5e7
+ms.sourcegitcommit: 0c5f1ba593952cb6dc6a8200a5666ecb7a32fce7
+ms.openlocfilehash: 3895b02f25b0e27b46a5e5493fe2b7f8f83201c1
 
 ---
 #<a name="cognitive-services-documentation"></a>Cognitive Services のドキュメント
 
-Cognitive Services (プレビュー) は、アプリケーション内でコンテキストに応じた自然な操作を実現できる、一連の API です。  Cognitive Services は、言語、音声、視覚、検索、知識の API を提供します。
+Cognitive Services を使用して、アプリケーション内でコンテキストに応じた自然な操作を実現する方法について説明します。 クイック スタート チュートリアルと API リファレンスでは、テキスト、音声、視覚、検索の人工知能機能を組み込む方法を紹介します。 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -96,16 +108,10 @@ Cognitive Services (プレビュー) は、アプリケーション内でコン�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cognitive-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-Cognitive Services のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

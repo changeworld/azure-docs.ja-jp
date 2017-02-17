@@ -1,10 +1,23 @@
 ---
+title: "Azure IoT Suite のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: 
+services: iot-suite
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: iot-suite
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: ceade1ccba2d1328faf548f43f51b4fa3a5343b0
+ms.sourcegitcommit: 29fb247771d662d3abcbf35e95ff0f7a8cf95af1
+ms.openlocfilehash: 461542095d9ef357460e93d65bb9f4dd8fe17c86
 
 ---
+
 # <a name="iot-suite-documentation"></a>IoT Suite のドキュメント
 
 Microsoft Azure IoT Suite はすぐに使い始められます。 事前に構成されたソリューションを利用して、モノのインターネット (IoT) ソリューションの開発を加速させることができます。 複数のプラットフォーム (Linux、Windows、リアルタイム オペレーティング システムなど) 向けのデバイス SDK を使用して、新しいデバイスを追加し、既存のデバイスを接続できます。 ほんの数台のセンサーから、何百万台ものデバイスの同時接続まで簡単にスケール調整が可能なので、プロジェクトの規模に関係なく、Azure のグローバルな可用性を頼りにできます。
@@ -91,6 +104,6 @@ Microsoft Azure IoT Suite はすぐに使い始められます。 事前に構�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,13 +1,25 @@
 ---
+title: "Azure Application Gateway のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "クラウド アプリケーション配信コントローラーをデプロイする方法について説明します。 ドキュメントでは、Web フロントエンド用にアプリケーション レベルのルーティングと負荷分散を設定する方法を紹介します。"
+services: application-gateway
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: application-gateway
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: e81571dc2d0d52f8b04c7ff99a76d92c784c259e
+ms.sourcegitcommit: 50b30a64fab9a7c996040c5a0380975b11b5966f
+ms.openlocfilehash: 9d62ea6d75b48bbc84194635da792764871617e7
 
 ---
 #<a name="application-gateway-documentation"></a>Application Gateway のドキュメント
 
-Azure Application Gateway は、Application Deliver Controller (ADC) をサービスとして提供します。  これにより、CPU を集中的に使用する SSL ターミネーションをお客様が Application Gateway にオフロードし、Web ファームの生産性を最適化できます。  スケーラビリティと高可用性だけでなく、管理性を高める豊富な診断機能とログ機能をアプリケーションに追加するための、専用の仮想アプライアンスです。
+サービスとしてのアプリケーション配信コントローラー (ADC) である Application Gateway をデプロイする方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、スケーラブルな高可用性 Web フロントエンドを構築できるようにする、アプリケーション レベルのルーティングおよび負荷分散サービスを設定する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -127,7 +139,7 @@ Azure Application Gateway は、Application Deliver Controller (ADC) をサー�
                         <h3>言語</h3>
                         <p><a href="/dotnet/api">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
-                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways">Node.js</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways">Node.JS</a></p>
                         <p><a href="http://www.rubydoc.info/gems/azure_mgmt_network/0.8.0/Azure/ARM/Network/ApplicationGateways">Ruby</a></p>
                         <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations#azure.mgmt.network.operations.ApplicationGatewaysOperations">Python</a></p>
                     </div>
@@ -142,24 +154,18 @@ Azure Application Gateway は、Application Deliver Controller (ADC) をサー�
                     <div class="cardText">
                         <h3>REST ()</h3>
                         <p><a href="https://msdn.microsoft.com/library/mt684941">REST API リファレンスに関するページ</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/azure/mt299393">クラシック REST API リファレンス</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt299393">Classic REST API リファレンス</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
-</ul>   
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/application-gateway.pdf">
-        <div class="img"></div>
-        <div class="text">
-Application Gateway のドキュメントのダウンロード </div>
-    </a>
-</div>
+</ul>    
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 
