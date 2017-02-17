@@ -54,6 +54,6 @@
 ## [サポートされるメトリックスの一覧](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

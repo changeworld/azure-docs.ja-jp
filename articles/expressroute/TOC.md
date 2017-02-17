@@ -81,6 +81,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=expressroute)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

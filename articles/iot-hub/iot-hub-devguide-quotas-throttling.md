@@ -90,6 +90,6 @@ IoT Hub は、さまざまな機能にその他の制限を適用します。
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -126,6 +126,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

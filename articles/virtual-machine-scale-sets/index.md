@@ -129,6 +129,6 @@ Virtual Machine Scale Sets を使用して、同一の自動スケールの Wind
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 
