@@ -13,8 +13,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9ade7b48b16d79c23355a8dbd46e9367abe4abd6
-ms.openlocfilehash: f2ddd6b02ac0dcf35c2519589f2f439c02c886c9
+ms.sourcegitcommit: b18b1d4c2a3b9e1bba36bce2f38917501e641c4f
+ms.openlocfilehash: 29dab5bc8eb76200f03a32b9299b4d89b247ab36
 
 
 ---
@@ -194,14 +194,11 @@ SyntheticSource プロパティに値を持つすべてのテレメトリを除�
  *  CRITICAL - CRITICAL 以外のすべてを除外
 
 
-```
+## <a name="custom-filters"></a>カスタム フィルター
 
+### <a name="1-code-your-filter"></a>1.フィルターをコーディングする
 
-## Custom filters
-
-### 1. Code your filter
-
-In your code, create a class that implements `TelemetryProcessor`:
+コード内に、`TelemetryProcessor` を実装するクラスを作成します。
 
 ```Java
 
@@ -270,6 +267,6 @@ ApplicationInsights.xml で、以下を使用します。
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

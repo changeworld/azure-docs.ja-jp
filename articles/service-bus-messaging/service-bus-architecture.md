@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/11/2016
+ms.date: 11/30/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
-ms.openlocfilehash: 09ad9bb1fee50d6063b9a179377cbe4f1c3c7ab2
+ms.sourcegitcommit: 0b1f6f7ec47e47f39407cdbfd5efef2a18944ecc
+ms.openlocfilehash: 6a2e59f9366e411d322b8560f03b115638619966
 
 
 ---
 # <a name="service-bus-architecture"></a>Service Bus のアーキテクチャ
-この記事では、Azure Service Bus のメッセージとリレーの処理アーキテクチャについて説明します。
+この記事では、Azure Service Bus のメッセージ処理アーキテクチャについて説明します。
 
 ## <a name="service-bus-scale-units"></a>Service Bus スケール ユニット
 Service Bus は、 *スケール ユニット*別に編成されます。 スケール ユニットはデプロイの単位であり、サービスの実行に必要なコンポーネントをすべては含みます。 各リージョンでは、1 つまたは複数の Service Bus スケール ユニットをデプロイします。
@@ -49,7 +49,7 @@ Service Bus の名前空間は、スケール ユニットにマップされま�
 ![受信 WCF Relay 要求の処理](./media/service-bus-architecture/IC690645.png)
 
 ## <a name="next-steps"></a>次のステップ
-ここまで、Service Bus のアーキテクチャの概要を説明しました。使用を開始するには、次のリンクを参照してください。
+Service Bus アーキテクチャの概要を確認しました。詳細については、次のリンクを参照してしてください。
 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 * [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
@@ -58,6 +58,6 @@ Service Bus の名前空間は、スケール ユニットにマップされま�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

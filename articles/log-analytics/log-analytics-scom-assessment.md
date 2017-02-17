@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/18/2016
+ms.date: 12/06/2016
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 04eebbe19354ab1e927ee2bb41f25dc6676a7c93
-ms.openlocfilehash: c28e73f0a6833793561d8702eb6c6480b9fbc0a4
+ms.sourcegitcommit: 45ba55083ecca1995e343dc1da1497df43f70e10
+ms.openlocfilehash: 90fb374e8c1712b5fc1e94979999da6a8c400f68
 
 
 ---
 
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution-in-log-analytics"></a>Log Analytics の System Center Operations Manager Assessment (プレビュー) ソリューションを使用して環境を最適化する
 
-System Center Operations Manager Assessment ソリューションを使用すると、System Center Operations Manager サーバー環境のリスクと正常性を定期的に評価できます。 この記事は、潜在的な問題の修正措置を実行できるように、ソリューションをインストール、構成、および使用するために役立ちます。
+System Center Operations Manager Assessment ソリューションを使用すると、System Center Operations Manager サーバー環境のリスクと正常性を定期的に評価できます。 この記事は、潜在的な問題の修正措置を実行できるように、ソリューションをインストール、構成、および使用するために役立ちます。 
 
 このソリューションでは、デプロイされているサーバー インフラストラクチャに固有の優先順位付けされた推奨事項の一覧を提供します。 推奨事項は 4 つの対象領域に分類されているので、すばやくリスクを把握し、修正措置を実行できます。
 
@@ -243,6 +243,12 @@ OMS の評価ソリューションを使用するには、ソリューション�
 
 ## <a name="system-center-operations-manager-assessment-solution-faq"></a>System Center Operations Manager Assessment ソリューションに関する FAQ
 
+"*評価ソリューションを OMS ワークスペースに追加したのですが、推奨事項が表示されません。なぜ表示されないのですか?*" ソリューションを追加したら、次の手順に従って OMS のダッシュ ボードに推奨事項を表示します。  
+
+- [System Center Operations Manager Assessment で使用する実行アカウントを設定します。](#operations-manager-run-as-accounts-for-oms)  
+- [System Center Operations Manager 評価ルールを構成します。](#configure-the-assessment-rule)
+
+
 *評価の実行頻度を構成する方法がありますか?* はい。 「[実行頻度を構成する](#configure-the-run-frequency)」を参照してください。
 
 "*System Center Operations Manager Assessment ソリューションを追加した後に別のサーバーが検出された場合、それは評価されますか。*" はい。検出された時点から評価されます (既定では 7 日ごと)。
@@ -274,6 +280,6 @@ OMS の評価ソリューションを使用するには、ソリューション�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

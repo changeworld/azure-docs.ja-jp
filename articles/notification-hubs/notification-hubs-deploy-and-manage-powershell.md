@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aa0b90781d10be6a87fdad6f04c8630317efd4e4
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 4db058e4bd91dc287b14e887abc6c378c65c4a2b
 
 
 ---
@@ -157,7 +157,7 @@ else
 [購入オプション]: http://azure.microsoft.com/pricing/purchase-options/
 [メンバー プラン]: http://azure.microsoft.com/pricing/member-offers/
 [無料試用版]: http://azure.microsoft.com/pricing/free-trial/
-[Azure PowerShell のインストールと構成に関するページ]: ../powershell-install-configure.md
+[Azure PowerShell のインストールと構成に関するページ]: /powershell/azureps-cmdlets-docs
 [.NET API for Notification Hubs]: https://msdn.microsoft.com/library/azure/mt414893.aspx
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
@@ -166,6 +166,6 @@ else
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

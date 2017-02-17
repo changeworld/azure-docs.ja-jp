@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7183f3c93b991d3ed350be7c32564d9acaa7da51
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 292820076830bc0c81a2f5311a8079f0ab1500b4
 
 
 ---
@@ -240,6 +240,6 @@ Fuse で Azure AD のシングル サインオンを構成してテストする�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

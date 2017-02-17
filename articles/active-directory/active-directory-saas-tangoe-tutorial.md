@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 560feea958c6cb3021395ca88dfe07fd1ead2842
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ac82535515f346d43bbceeb274ce61d81ade60b1
 
 
 ---
@@ -253,6 +253,6 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

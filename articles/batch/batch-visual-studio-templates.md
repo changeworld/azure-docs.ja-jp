@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 09/07/2016
-ms.author: marsma
+ms.date: 01/05/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3907de9630fec99b1d28c750bfbfdf6f646bf194
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 84e7e6ddf03172e646c55e7e3bf45a32feb15b06
 
 
 ---
@@ -59,7 +59,7 @@ Batch 用の Visual Studio テンプレート (**ジョブ マネージャー**�
     
     * Azure Batch Job Manager with Job Splitter (Azure Batch ジョブ マネージャーとジョブ スプリッター)
     * Azure Batch Task Processor (Azure Batch タスク プロセッサ)
-  * Visual Studio のオンライン ギャラリーから [Microsoft Azure Batch プロジェクト テンプレート][vs_gallery_templates]をダウンロードする。
+  * Visual Studio のオンライン ギャラリーから [Microsoft Azure Batch][vs_gallery_templates] プロジェクト テンプレートをダウンロードする。
 * [アプリケーション パッケージ](batch-application-packages.md) 機能を使用してジョブ マネージャーとタスク プロセッサを Batch コンピューティング ノードにデプロイする予定がある場合は、ご利用の Batch アカウントにストレージ アカウントを関連付ける必要があります。
 
 ## <a name="preparation"></a>準備
@@ -366,7 +366,7 @@ Run() の実装コードからは次のデータにアクセスできます。
 
 タスク プロセッサ テンプレートによって実装されたタスク プロセッサ タスクから返される可能性がある終了コードは次の 3 つです。
 
-| コード | 説明 |
+| コード | Description |
 | --- | --- |
 | [Process.ExitCode][process_exitcode] |タスク プロセッサは最後まで実行されました。 これは呼び出したプログラムの成功を必ずしも意味しないので注意してください。単に、そのプログラムがタスク プロセッサによって正常に呼び出され、例外が発生することなく後処理が実行されたことを意味するものです。 終了コードの意味は、呼び出したプログラムによって異なります。通常、終了コード 0 は、プログラムが正常に実行されたことを意味し、それ以外の終了コードはプログラムの実行に失敗したことを意味します。 |
 | 1 |"予期" されていた箇所のプログラム コードで例外が発生してタスク プロセッサが失敗しました。 この例外は `TaskProcessorException` に変換されます。その際、診断情報のほか、可能であればエラーを解決するための推奨情報が出力されます。 |
@@ -454,6 +454,6 @@ MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッシ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

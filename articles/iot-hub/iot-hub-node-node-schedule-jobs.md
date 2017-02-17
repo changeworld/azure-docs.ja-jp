@@ -1,6 +1,6 @@
 ---
-title: "ジョブをスケジュールする方法 | Microsoft Docs"
-description: "このチュートリアルでは、ジョブのスケジュールを設定する方法について説明します"
+title: "Azure IoT Hub を使用してジョブのスケジュールを設定する (Node) | Microsoft Docs"
+description: "複数のデバイスでダイレクト メソッドを呼び出す Azure IoT Hub ジョブをスケジュールする方法。 Azure IoT SDK for Node.js を使用して、シミュレートされたデバイス アプリと、ジョブを実行するサービス アプリを実装します。"
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,33 +15,33 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 197414101ea86a68db901744c11a3de110a1eba3
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 4700bdd14f6b826116b919c12c63c8405eff6053
 
 
 ---
-# <a name="tutorial-schedule-and-broadcast-jobs"></a>チュートリアル: ジョブのスケジュールとブロードキャスト
+# <a name="schedule-and-broadcast-jobs-node"></a>ジョブのスケジュールとブロードキャスト (Node)
 
 ## <a name="introduction"></a>はじめに
-Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更新するジョブのアプリケーション バックエンドによる作成や追跡を可能にする完全に管理されたサービスです。  ジョブは次のアクションに使用できます。
+Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更新するジョブをバックエンド アプリで作成したり追跡したりできるようにする完全に管理されたサービスです。  ジョブは次のアクションに使用できます。
 
 * 必要なプロパティを更新する
 * タグを更新する
 * ダイレクト メソッドを呼び出す
 
-概念的には、ジョブはこれらのアクションのいずれかをラップし、デバイス ツイン クエリで定義される一連のデバイスに対して実行の進行状況を追跡します。  たとえば、ジョブを使用すると、アプリケーション バックエンドは 10,000 台のデバイスに対して reboot メソッドを呼び出すことができます。これは、デバイス ツイン クエリで指定され、将来の時刻にスケジュールされます。  次に、このアプリケーションを使用して、これらの各デバイスが reboot メソッドを受信し実行する進行状況を追跡できます。
+概念的には、ジョブはこれらのアクションのいずれかをラップし、デバイス ツイン クエリで定義される一連のデバイスに対して実行の進行状況を追跡します。  たとえば、バックエンド アプリでは、ジョブを使用して、10,000 台のデバイスに対して reboot メソッドを呼び出すことができます。これは、デバイス ツイン クエリで指定され、将来の時刻にスケジュールされます。  次に、このアプリケーションを使用して、これらの各デバイスが reboot メソッドを受信し実行する進行状況を追跡できます。
 
 これらの各機能について詳しくは、次の記事をご覧ください。
 
 * デバイス ツインとプロパティ: [デバイス ツインの概要][lnk-get-started-twin]に関する記事と[デバイス ツインのプロパティの使用方法に関するチュートリアル][lnk-twin-props]
-* ダイレクト メソッド: [ダイレクト メソッドに関する開発者ガイド][lnk-dev-methods]と[ダイレクト メソッドに関するチュートリアル][lnk-c2d-methods]
+* ダイレクト メソッド: [ダイレクト メソッドに関する IoT Hub 開発者ガイド][lnk-dev-methods]と[ダイレクト メソッドに関するチュートリアル][lnk-c2d-methods]
 
 このチュートリアルでは、次の操作方法について説明します。
 
-* アプリケーション バックエンドから呼び出すことができ、**lockDoor** を可能にするダイレクト メソッドを持つ、シミュレートされたデバイス アプリを作成します。
-* ジョブを使用してシミュレートされたデバイス アプリで **lockDoor** ダイレクト メソッドを呼び出し、デバイス ジョブを使用して必要なプロパティを更新するコンソール アプリケーションを作成します。
+* ソリューション バックエンドから呼び出すことができ、**lockDoor** を可能にするダイレクト メソッドを持つ、シミュレート対象デバイス アプリを作成します。
+* ジョブを使用してシミュレート対象デバイス アプリで **lockDoor** ダイレクト メソッドを呼び出し、デバイス ジョブを使用して必要なプロパティを更新する Node.js コンソール アプリを作成します。
 
-このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリケーションが完成します。
+このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
 
 **simDevice.js**。デバイス ID で IoT ハブに接続し、**lockDoor** ダイレクト メソッドを受信します。
 
@@ -78,7 +78,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. **connectionString** 変数を追加し、それを使用してデバイス クライアントを作成します。  
+5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
@@ -101,7 +101,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
         console.log('Locking Door!');
     };
     ```
-7. 次のコードを追加して、**lockDoor** メソッドのハンドラーを登録します。
+7. **lockDoor** メソッドのハンドラーを登録する次のコードを追加します。
    
     ```
     client.open(function(err) {
@@ -176,7 +176,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     var methodParams = {
         methodName: 'lockDoor',
         payload: null,
-        timeoutInSeconds: 45
+        responseTimeoutInSeconds: 15 // Timeout after 15 seconds if device is unable to process method
     };
    
     var methodJobId = uuid.v4();
@@ -243,7 +243,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     ```
     node simDevice.js
     ```
-2. コマンド プロンプトで、**scheduleJobService** フォルダーに移動し、次のコマンドを実行して、リモート再起動のトリガーと、最後の再起動時刻を検出するデバイス ツインのクエリを実行します。
+2. コマンド プロンプトで、**scheduleJobService** フォルダーに移動し、次のコマンドを実行してデバイス ツインのリモート再起動とクエリをトリガーして最後の再起動時刻を検索します。
    
     ```
     node scheduleJobService.js
@@ -271,6 +271,6 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

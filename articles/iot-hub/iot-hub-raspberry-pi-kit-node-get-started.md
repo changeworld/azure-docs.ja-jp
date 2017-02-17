@@ -1,12 +1,14 @@
 ---
-title: "Raspberry Pi 3 の使用 | Microsoft Docs"
-description: "Raspberry Pi 3 の使用、Azure IoT ハブの作成、IoT ハブへの Pi の接続。"
+title: "Azure IoT Hub に Raspberry Pi 3 を接続する | Microsoft Docs"
+description: "Raspberry Pi 3 デバイスの使用、Azure IoT Hub の作成、IoT Hub への Pi の接続を行います。"
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timlt
 tags: 
 keywords: "Azure IoT Hub, モノのインターネットの概要, IoT ツールキット"
+experimental: true
+experiment_id: xshi-happypathemu-20161202
 ms.assetid: b0e14bfa-8e64-440a-a6ec-e507ca0f76ba
 ms.service: iot-hub
 ms.devlang: node
@@ -16,12 +18,15 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: e453ad240c7f537ef2d150564996827ebcb9474d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d04f9d219451d683b572df43f73944011d686797
 
 
 ---
-# <a name="get-started-with-raspberry-pi-3-nodejs"></a>Raspberry Pi 3 の使用 (Node.JS)
+# <a name="get-started-with-raspberry-pi-3-nodejs"></a>Raspberry Pi 3 の使用 (Node.js)
+> [!div class="op_single_selector"]
+> * [Node.JS](iot-hub-raspberry-pi-kit-node-get-started.md)
+> * [C](iot-hub-raspberry-pi-kit-c-get-started.md)
 
 このチュートリアルでは、まず Raspbian を実行する Raspberry Pi 3 の操作の基礎について説明します。 次に、[Azure IoT Hub](iot-hub-what-is-iot-hub.md) を使って、デバイスをクラウドにシームレスに接続する方法について説明します。 Windows 10 IoT Core サンプルについては、[Windows デベロッパー センター](http://www.windowsondevices.com/)を参照してください。
 
@@ -129,6 +134,6 @@ LED のオンとオフの動作を変更するメッセージをカスタマイ�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 
