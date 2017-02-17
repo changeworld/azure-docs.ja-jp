@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
-ms.openlocfilehash: 8294842893742dcbc7a987421b454ceb7691450c
+ms.sourcegitcommit: 74b077f6f09d53c9232e5b209a5dd811364ee3f5
+ms.openlocfilehash: c995e0de46c67c5c5d243739b2d36266267bdade
 
 
 ---
@@ -340,7 +340,7 @@ ms.openlocfilehash: 8294842893742dcbc7a987421b454ceb7691450c
 
 * Azure AD B2C の既定のコンテンツをコピーしたり、変更したりしないでください。 HTML5 コンテンツは最初から構築し、既定のコンテンツはあくまで参考としての利用にとどめることをお勧めします。
 * サインイン、サインアップ、およびプロファイルの編集ポリシーによって処理されるすべてのページ (エラー ページを除く) では、指定したスタイル シートが、これらのページの <head> フラグメントに追加される既定のスタイル シートより優先される必要があります。 サインアップまたはサインイン ポリシーとパスワードのリセット ポリシーによって処理されるすべてのページと、すべてのポリシーのエラー ページでは、すべてのスタイルを自分で指定する必要があります。
-* セキュリティ上の理由から、コンテンツに JavaScript を含めることはできません。 必要なものの多くは既に用意されているはずです。 必要なものがない場合は、 [ユーザーの声](http://feedback.azure.com/forums/169401-azure-active-directory) を使用して新しい機能を要望してください。
+* セキュリティ上の理由から、コンテンツに JavaScript を含めることはできません。 必要なものの多くは既に用意されているはずです。 必要なものがない場合は、 [ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) を使用して新しい機能を要望してください。
 * サポートされているブラウザーのバージョン:
   * Internet Explorer 11、10、Edge
   * Internet Explorer 9、8 の制限付きサポート
@@ -349,6 +349,6 @@ ms.openlocfilehash: 8294842893742dcbc7a987421b454ceb7691450c
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

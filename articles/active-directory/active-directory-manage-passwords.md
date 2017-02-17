@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 794b1e5deca6c3bda078e3ea9006d334bc3a8052
+ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
+ms.openlocfilehash: fee05b9cfb176714e3313ea2e969958bb4cb19f8
 
 
 ---
@@ -47,13 +47,13 @@ ms.openlocfilehash: 794b1e5deca6c3bda078e3ea9006d334bc3a8052
 * [Azure AD のパスワード管理に関するトラブルシューティング](active-directory-passwords-troubleshoot.md)
 * [Azure AD のパスワード管理に関する FAQ](active-directory-passwords-faq.md)
 
-## <a name="whats-next"></a>参照トピック
-* [Administer your Azure AD directory (Azure AD ディレクトリの管理)](active-directory-administer.md)
+## <a name="next-steps"></a>次のステップ
+* [Administer your Azure AD directory](active-directory-administer.md)
 * [Azure AD でのユーザーの作成または編集](active-directory-create-users.md)
 * [Azure AD でのグループの管理](active-directory-manage-groups.md)
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

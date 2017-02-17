@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: aungoo
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 3aa4f497a928fe4bb894f01202b116429e6f5649
+ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
+ms.openlocfilehash: d72a191cceaa90f9dae69b5c2698fae1a9fb95a7
 
 
 ---
@@ -352,7 +352,7 @@ Azure Premium Storage では、選択された VM サイズとディスク サ�
 
 一般的なベンチマーク ツールである Iometer (Windows) と FIO (Linux) を使用しました。 これらのツールは、ワークロードのような実稼働をシミュレートする複数のスレッドを起動し、システム パフォーマンスを測定します。 これらのツールを使用して、通常はアプリケーションに合わせて変更できないブロック サイズやキューの深さなどのパラメーターを構成することもできます。 これにより、さまざま種類のアプリケーション ワークロードに対応するために、Premium ディスクと共にプロビジョニングされた高スケール VM でパフォーマンスを最大限に引き上げる柔軟性が得られます。 各ベンチマーク ツールの詳細については、「[Iometer](http://www.iometer.org/)」と「[fio](http://freecode.com/projects/fio)」をご覧ください。
 
-以下の例に従うために、Standard DS14 VM を作成し、11 個の Premium Storage ディスクを VM に接続します。 11 個のディスクのうち、10 個のディスクのホスト キャッシュを "None" に構成し、これらのディスクを NoCacheWrites というボリュームにストライピングします。 残りのディスクでは、ホストキャッシュを "ReadOnly" に構成し、このディスクを使用して CacheReads というボリュームを作成します。 この設定を使用して、Standard DS14 VM から最大の読み取り/書き込みパフォーマンスが得られます。 Premium ディスクを使用する DS14 VM の詳しい作成手順については、「[仮想マシンのデータ ディスク用に Premium Storage アカウントを作成する](storage-premium-storage.md#quick-start-create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)」をご覧ください。
+以下の例に従うために、Standard DS14 VM を作成し、11 個の Premium Storage ディスクを VM に接続します。 11 個のディスクのうち、10 個のディスクのホスト キャッシュを "None" に構成し、これらのディスクを NoCacheWrites というボリュームにストライピングします。 残りのディスクでは、ホストキャッシュを "ReadOnly" に構成し、このディスクを使用して CacheReads というボリュームを作成します。 この設定を使用して、Standard DS14 VM から最大の読み取り/書き込みパフォーマンスが得られます。 Premium ディスクを使用する DS14 VM の詳しい作成手順については、「[仮想マシンのデータ ディスク用に Premium Storage アカウントを作成する](storage-premium-storage.md)」をご覧ください。
 
 *キャッシュのウォームアップ*  
 ReadOnly ホスト キャッシュを使用するディスクでは、ディスクの制限を超えた高 IOPS を実現できます。 ホスト キャッシュからこの最大の読み取りパフォーマンスを得るには、まず、このディスクのキャッシュをウォームアップする必要があります。 これにより、ベンチマーク ツールが CacheReads ボリュームで促進する読み取り IO が、直接ディスクにヒットするのではなく、実際にキャッシュにヒットするようになります。 キャッシュ ヒットにより、キャッシュが有効化された&1; つのディスクから追加の IOPS が得られます。
@@ -596,6 +596,6 @@ SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プ
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

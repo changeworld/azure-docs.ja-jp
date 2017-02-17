@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 2/13/2017
 ms.author: tedway
 translationtype: Human Translation
-ms.sourcegitcommit: 2725357b2effe7c75d7a9e1462568706497757df
-ms.openlocfilehash: b1bc047d5361a4e2c6e9c946f470037fa3c45b3c
+ms.sourcegitcommit: 156e2f01e6a010ddab06dbb8e4746dceb54a413a
+ms.openlocfilehash: 9f1aac04d54221888ee9374317be339400dcf085
 
 
 ---
@@ -28,13 +28,13 @@ Excel 2013 (またはそれ以降) または Excel Online を使用している�
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="steps"></a>手順
-Web サービスを発行します。 [このページ](machine-learning-walkthrough-5-publish-web-service.md) では、その方法を説明しています。 現在、Excel ブック機能は、1 つの出力を持つ要求/応答サービス (つまり 1 つのスコア付けラベル) のみサポートしています。 
+Web サービスを発行します。 [このページ](machine-learning-walkthrough-5-publish-web-service.md) では、その方法を説明しています。 現在、Excel ブック機能は、1 つの出力を持つ要求/応答サービス (つまり&1; つのスコア付けラベル) のみサポートしています。 
 
 Web サービスを作成したら、Studio の左側の **[WEB サービス]** セクションをクリックして、Excel から使用する Web サービスを選択します。
 
 **従来の Web サービス**
 
-1. Web サービスの **[ダッシュボード]** タブに、**要求/応答**サービスの行があります。 このサービスに 1 つの出力がある場合は、その行の **[Excel ブックのダウンロード]** のリンクを確認してください。
+1. Web サービスの **[ダッシュボード]** タブに、**要求/応答**サービスの行があります。 このサービスに&1; つの出力がある場合は、その行の **[Excel ブックのダウンロード]** のリンクを確認してください。
    
     ![][1]
 2. **[Excel ブックのダウンロード]**をクリックします。
@@ -64,7 +64,7 @@ Web サービスを作成したら、Studio の左側の **[WEB サービス]** 
 マクロが機能するには、API キーがスプレッドシートの一部である必要があります。 つまり、信頼するエンティティ/個人とだけ、ブックを共有する必要があります。
 
 ## <a name="automatic-updates"></a>自動更新
-RRS 呼び出しは、次の 2 つの状況で発生します。
+RRS 呼び出しは、次の&2; つの状況で発生します。
 
 1. 初めて行のすべての **PARAMETERS**
 2. すべての **PARAMETERS** に入力されている行の任意の **PARAMETERS** が変更されたとき。
@@ -76,6 +76,6 @@ RRS 呼び出しは、次の 2 つの状況で発生します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

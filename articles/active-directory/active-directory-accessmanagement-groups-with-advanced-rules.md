@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: d83372fbce5f49d7cd038a15bd271e9d8a463b7b
-ms.openlocfilehash: f1cff67f31da87d6361603f0216a68c55686db0e
+ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
+ms.openlocfilehash: 00424292fbc5321a77a4e924530ade97739208d4
 
 
 ---
@@ -27,12 +27,12 @@ Azure クラシック ポータルを使用すると、高度なルールを作�
 
 > [!NOTE]
 > セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。 現在、アプリケーションに対するグループ ベースの割り当てでは入れ子になったグループ メンバーシップはサポートされていません。
-> 
+>
 > グループの動的メンバーシップを実行するには、次のユーザーに Azure AD Premium ライセンスが割り当てられている必要があります。
-> 
+>
 > * グループに対するルールを管理する管理者
 > * グループのすべてのメンバー
-> 
+>
 
 ## <a name="to-create-the-advanced-rule"></a>高度なルールを作成するには
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]**を選択し、該当する組織のディレクトリを開きます。
@@ -40,13 +40,13 @@ Azure クラシック ポータルを使用すると、高度なルールを作�
 3. **[構成]** タブを選択し、**[高度なルール]** オプションを選択して、テキスト ボックスに高度なルールを入力します。
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>高度なルール本体の作成
-グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す 2 項演算式です。 その 3 つの構成要素を次に示します。
+グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す&2; 項演算式です。 その&3; つの構成要素を次に示します。
 
 * 左辺のパラメーター
 * 2 項演算子
 * 右辺の定数
 
-たとえば全体で見ると、(leftParameter binaryOperator "RightConstant") のようになります。2 項演算式全体を開きかっこと閉じかっこで囲んだ上で、右辺の定数は二重引用符で囲む必要があります。左辺のパラメーターの構文は user.property という形式で入力します。 高度なルールは、複数の 2 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。
+たとえば全体で見ると、(leftParameter binaryOperator "RightConstant") のようになります。2 項演算式全体を開きかっこと閉じかっこで囲んだ上で、右辺の定数は二重引用符で囲む必要があります。左辺のパラメーターの構文は user.property という形式で入力します。 高度なルールは、複数の&2; 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。
 以下に示したのは、正しい構文に沿って作成された高度なルールの例です。
 
 * (user.department -eq "Sales") -or (user.department -eq "Marketing")
@@ -57,17 +57,18 @@ Azure クラシック ポータルを使用すると、高度なルールを作�
 プロパティの先頭には、適切なオブジェクトの種類 (ユーザーまたはデバイス) が付加されている必要があります。
 次のルールは検証に失敗します: mail –ne null
 
-適切なルールは、次のようになります。 
+適切なルールは、次のようになります。
 
 user.mail –ne null
 
 高度なルール本体の合計文字数が 2048 文字を超えないようにしてください。
 
 > [!NOTE]
-> 文字列演算と正規表現演算は、大文字と小文字が区別されません。 二重引用符 (") を含んだ文字列は、バック クォート文字 (`) でエスケープする必要があります (例: user.department -eq \`"Sales")。
+> 文字列演算と正規表現演算は、大文字と小文字が区別されません。
+> 二重引用符 (") を含んだ文字列は、バック クォート文字 (`) でエスケープする必要があります (例: user.department -eq \`"Sales")。
 > 引用符は文字列型の値にのみ使用し、また、英語の引用符のみを使用してください。
-> 
-> 
+>
+>
 
 ## <a name="supported-expression-rule-operators"></a>サポートされている式のルール演算子
 次の表に、高度なルール本体で使用できる、サポートされているすべての式のルール演算子とその構文を示します。
@@ -86,14 +87,14 @@ user.mail –ne null
 ## <a name="operator-precedence"></a>演算子の優先順位
 
 すべての演算子を優先順位の低い順から以下に示します。同じ行にある演算子の優先順位は同じです。-any -all -or -and -not -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch
- 
+
 すべての演算子は、ハイフンのプレフィックスあり、またはなしで使用できます。
 
 かっこは必ずしも必要ではなく、優先順位が要件を満たさない場合にのみかっこを追加する必要があることに注意してください。例:
 
-   user.department –eq "Marketing" –and user.country –eq "US" 
-   
-は以下に匹敵します。 
+   user.department –eq "Marketing" –and user.country –eq "US"
+
+は以下に匹敵します。
 
    (user.department –eq "Marketing") –and (user.country –eq "US")
 
@@ -173,7 +174,7 @@ user.mail –ne null
 
 ## <a name="use-of-null-values"></a>Null 値の使用
 
-ルールで null 値を指定するには、null または $null を使用します。 例: 
+ルールで null 値を指定するには、null または $null を使用します。 例:
 
    user.mail –ne null is equivalent to user.mail –ne $null
 
@@ -197,7 +198,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 ルールに複数値プロパティを含めるには、次のように、-any 演算子を使用します。
 
   user.assignedPlans -any assignedPlan.service -startsWith "SCO"
-  
+
 ## <a name="direct-reports-rule"></a>直接の部下のルール
 ユーザーのマネージャー属性に基づいてグループにメンバーを設定できます。
 
@@ -207,11 +208,11 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 2. **[グループ]** タブを選択し、編集するグループを開きます。
 3. **[構成]** タブを選択し、**[高度なルール]** を選択します。
 4. 次の構文を使用してルールを入力します。
-   
+
     直属の部下用の場合は、*Direct Reports for {obectID_of_manager}* です。 直属の部下の有効なルールの例を示します。
-   
+
                     Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
-   
+
     ここで、"62e19b97-8b3d-4d4a-a106-4ce66896a863" はマネージャーのオブジェクト ID を示しています。 オブジェクト ID は、Azure AD にある、マネージャーであるユーザーのユーザー ページの **[プロファイル] タブ** で確認できます。
 5. このルールを保存すると、ルールに該当するすべてのユーザーがグループのメンバーとして結合されます。 最初は、グループを設定するのに数分かかることがあります。
 
@@ -239,10 +240,10 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 > [!NOTE]
 > Azure クラシック ポータルの "単純なルール" のドロップダウンを使用してこれらのデバイス ルールを作成することはできません。
-> 
-> 
+>
+>
 
-## <a name="additional-information"></a>追加情報
+## <a name="next-steps"></a>次のステップ
 次の記事は、Azure Active Directory に関する追加情報を示します。
 
 * [グループの動的メンバーシップのトラブルシューティング](active-directory-accessmanagement-troubleshooting.md)
@@ -253,7 +254,6 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 
 
-
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

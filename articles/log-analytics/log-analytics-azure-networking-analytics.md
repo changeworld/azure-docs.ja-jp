@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/31/2017
+ms.date: 02/09/2017
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: a5d0587a9b7c6ea228caa8ab23307f5f46d122ef
-ms.openlocfilehash: 840239d3bc7fd8c2ce68d0cce15f844c1f2693e7
+ms.sourcegitcommit: d3f61bd28880a8e008872857d3fdc4b3bd23c2a2
+ms.openlocfilehash: 1597492506bfef44128d0483fa38dca3ff5c0980
 
 
 ---
@@ -30,11 +30,6 @@ Log Analytics の Azure Application Gateway 分析ソリューションを使用
 Log Analytics の Azure ネットワーク セキュリティ グループ分析ソリューションを使用して次の内容を確認できます。
 
 * Azure ネットワーク セキュリティ グループのログ
-
-> [!NOTE]
-> Azure Application Gateway 分析と Azure ネットワーク セキュリティ グループ分析は[プレビュー ソリューション](log-analytics-add-solutions.md#preview-management-solutions-and-features)です。
-> 
-> 
 
 このソリューションを使用するには、Azure Application Gateway のログおよび Azure ネットワーク セキュリティ グループの診断を有効にし、診断を Log Analytics ワークスペースに送信する必要があります。 Azure Blob Storage にログを書き込む必要はありません。
 
@@ -209,7 +204,10 @@ Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspac
 4. *Azure Networking Analytics (非推奨)* ソリューションを削除します。 
   + PowerShell を使用している場合は、次のコードを使用します。`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false` 
 
-変更前に収集されたデータは、新しいソリューションでは表示されませんが 、以前の型とフィールド名を使用して、引き続きデータを照会できます。
+変更前に収集されたデータは、新しいソリューションには表示されません。 元の型とフィールド名を使用して、このデータのクエリを続行できます。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+[!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md)を使用して、詳細な Azure 診断データを確認してください。
@@ -217,6 +215,6 @@ Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspac
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

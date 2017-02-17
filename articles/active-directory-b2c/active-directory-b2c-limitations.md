@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
-ms.openlocfilehash: 0f0805c8363226b6fab6463c668d750e8e7c9265
+ms.sourcegitcommit: bfffb074a905184269992a19993aabc22bb1256f
+ms.openlocfilehash: b65c54819374e90a8318a3f3eecce5b71b01b17f
 
 
 ---
@@ -27,9 +27,6 @@ Azure Active Directory (Azure AD) B2C には、まだサポートされていな
 [Azure AD B2C テナントの作成](active-directory-b2c-get-started.md)中に問題が発生した場合は、「[Azure AD テナントまたは Azure AD B2C テナントの作成 - 問題と解決策](active-directory-b2c-support-create-directory.md)」を参照してください。
 
 既存の B2C テナントを削除し、同じドメイン名でそれを再作成する場合に、既知の問題があることに注意してください。 B2C テナントは異なるドメイン名で作成する必要があります。
-
-## <a name="note-about-b2c-tenant-quotas"></a>B2C テナントのクォータに関する注意事項
-B2C テナントのユーザー数は、既定で 50,000 ユーザーに制限されています。 B2C テナントのクォータを引き上げる必要がある場合は、サポートにお問い合わせください。
 
 ## <a name="branding-issues-on-verification-email"></a>確認メールのブランドの問題
 既定の確認メールには、Microsoft ブランドが含まれています。 これは将来削除される予定です。 現時点では、 [会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)を使用して削除できます。
@@ -133,6 +130,6 @@ Windows デスクトップ WPF アプリから Azure AD B2C への要求が、"T
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

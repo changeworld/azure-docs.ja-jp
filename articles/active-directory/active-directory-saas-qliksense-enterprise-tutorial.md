@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 91f8a95bdab98f079b748b5391e9b611378c6e79
-ms.openlocfilehash: ce18993832ce4953a1c3b21707206cdd06580edd
+ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
+ms.openlocfilehash: 00dcedb09ea63b4337b2b730746fb2f5a1f27e64
 
 
 ---
@@ -45,12 +45,12 @@ Qlik Sense Enterprise と Azure AD の統合を構成するには、次のもの
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Qlik Sense Enterprise の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -145,7 +145,7 @@ Qlik Sense Enterprise で Azure AD のシングル サインオンを構成し�
    
     a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 Azure からダウンロードした FederationMetaData.xml ファイルを、テキスト エディターで開きます。
    
-    b. **RoleDescriptor** を検索します。  エントリは 4 つあります (開始要素タグと終了要素タグのペアが 2 つあります)。
+    b. **RoleDescriptor** を検索します。  エントリは&4; つあります (開始要素タグと終了要素タグのペアが&2; つあります)。
    
     c. RoleDescriptor タグと、タグ間のすべての情報をファイルから削除します。
    
@@ -183,7 +183,7 @@ Qlik Sense Enterprise で Azure AD のシングル サインオンを構成し�
     
     d. **[SAML entity ID]** に、[SAML host URI] フィールドに入力したのと同じ値を入力します。
     
-    e. **[SAML IdP metadata]** に、以前に **Azure AD 構成からのフェデレーション メタデータの編集**に関するセクションで編集したファイルを指定します。  **IdP メタデータをアップロードする前に、このファイルを編集する必要があります**。Azure AD と Qlik Sense サーバーの間で処理が正しく行われるように、ファイルの情報を削除してください。  **まだファイルを編集していない場合は、上記の手順に従ってください。**   ファイルを編集済みの場合は、[Browse (参照)] ボタンをクリックし、編集したメタデータ ファイルを選択して、仮想プロキシ構成にアップロードします。
+    e. **[SAML IdP metadata]** に、以前に **Azure AD 構成からのフェデレーション メタデータの編集**に関するセクションで編集したファイルを指定します。  **IdP メタデータをアップロードする前に、このファイルを編集する必要があります**。Azure AD と Qlik Sense サーバーの間で処理が正しく行われるように、ファイルの情報を削除してください。  **まだファイルを編集していない場合は、上記の手順に従ってください。**  ファイルを編集済みの場合は、[Browse (参照)] ボタンをクリックし、編集したメタデータ ファイルを選択して、仮想プロキシ構成にアップロードします。
     
     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 これらは Azure AD が Qlik Sense サーバーに送信する **ID** を表します。  スキーマ リファレンス情報は、構成が終了した後に Azure アプリの画面から取得できます。  名前属性を使用する場合は**「enter http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name」と入力します**。
     
@@ -219,7 +219,7 @@ Qlik Sense Enterprise で Azure AD のシングル サインオンを構成し�
     
     ![QlikSense][qs18]
     ![QlikSense][qs19]
-20. 約 5 ～ 10 秒後に、QMC の更新メッセージが表示されます。  [Refresh QMC (QMC の更新)] ボタンをクリックします。
+20. 約&5; ～&10; 秒後に、QMC の更新メッセージが表示されます。  [Refresh QMC (QMC の更新)] ボタンをクリックします。
     
     ![QlikSense][qs20]
 21. QMC が更新されたら、[Virtual Proxies (仮想プロキシ)] メニュー項目をクリックします。 新しい SAML 仮想プロキシのエントリが画面の表に表示されます。  仮想プロキシのエントリをクリックします。
@@ -261,7 +261,7 @@ Qlik Sense Enterprise で Azure AD のシングル サインオンを構成し�
 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-qliksense-enterprise-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
@@ -375,6 +375,6 @@ Qlik Sense Enterprise で Azure AD のシングル サインオンを構成し�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

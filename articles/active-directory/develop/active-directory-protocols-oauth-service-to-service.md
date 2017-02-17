@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 02/08/2017
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: bcd4b21f8732cfaccf8da7d412cb2024c3bed0e4
-ms.openlocfilehash: a7cfe9627c7605e0a5bd4bb86d240f3abe2e1743
+ms.sourcegitcommit: 9904ec79782b1790ecb21f31b078fea9936c8380
+ms.openlocfilehash: c5164ad1f0fef17a86295db5e4caee21a9a19d33
 
 
 ---
-# <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>クライアント資格情報を使用したサービス間の呼び出し (共有シークレットまたは証明書)
-OAuth 2.0 クライアント資格情報付与フローでは、Web サービス ("*Confidential クライアント*") が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。 高いレベルの保証では、Azure AD により、呼び出し元サービスが、資格情報として (共有シークレットではなく) 証明書を使用することもできます。
+# <a name="service-to-service-calls-using-client-credentials"></a>クライアント資格情報を使用したサービス間の呼び出し
+OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (" **機密性の高いクライアント**") が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することが許可されます。 このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。
 
 ## <a name="client-credentials-grant-flow-diagram"></a>クライアント資格情報付与フローの図
 次の図に、Azure Active Directory (Azure AD) でのクライアント資格情報付与フローのしくみを示します。
@@ -44,143 +44,38 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ```
 
 ## <a name="service-to-service-access-token-request"></a>サービス間のアクセス トークン要求
-クライアント アプリケーションのセキュリティ保護に共有シークレットまたは証明書のどちらを使うかに応じて、2 つのケースがあります。
+サービス間のアクセス トークン要求には、次のパラメーターが含まれています。
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース: 共有シークレットを使ったアクセス トークン要求
-共有シークレットを使用する場合、サービス間のアクセス トークン要求には、次のパラメーターが含まれてます。
-
-| パラメーター |  | Description |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
-| grant_type |必須 |要求された応答のタイプを指定します。 クライアント資格情報付与フローでは、値は **client_credentials** である必要があります。 |
-| client_id |必須 |呼び出し元の Web サービスの Azure AD クライアント ID を指定します。 呼び出し元アプリケーションのクライアント ID を調べるには、[Azure Portal](https://portal.azure.com) で **[Active Directory]** をクリックし、ディレクトリを切り替えて、アプリケーションをクリックします。 client_id は "*アプリケーション ID*" です |
-| client_secret |必須 |呼び出し元の Web サービスまたは デーモン アプリケーションに対して Azure AD に登録されているキーを入力します。 キーを作成するには、Azure Portal で **[Active Directory]** をクリックし、ディレクトリを切り替えます。次に、アプリケーションをクリックし、**[設定]**、**[キー]** の順にクリックして、キーを追加します。|
-| resource |必須 |受信側の Web サービスのアプリケーション ID URI を入力します。 アプリケーション ID URI を調べるには、Azure Portal で **[Active Directory]** をクリックし、ディレクトリを切り替えます。次に、サービス アプリケーションをクリックし、**[設定]**、**[プロパティ]** の順にクリックします |
+| response_type |必須 |要求された応答のタイプを指定します。 クライアント資格情報付与フローでは、値は **client_credentials** である必要があります。 |
+| client_id |必須 |呼び出し元の Web サービスの Azure AD クライアント ID を指定します。 呼び出し元アプリケーションのクライアント ID を調べるには、Azure 管理ポータルで、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。 |
+| client_secret |必須 |呼び出し元の Web サービスに対して Azure AD に登録されているキーを入力します。 キーを作成するには、Azure 管理ポータルで、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。 |
+| resource |必須 |受信側の Web サービスのアプリケーション ID URI を入力します。 アプリケーション ID URI を調べるには、Azure 管理ポータルで、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。 |
 
-#### <a name="example"></a>例
+## <a name="example"></a>例
 次の HTTP POST は、https://service.contoso.com/ Web サービスのアクセス トークンを要求します。 `client_id` は、アクセス トークンを要求する Web サービスを識別します。
 
 ```
-POST /contoso.com/oauth2/token HTTP/1.1
+POST contoso.com/oauth2/token HTTP/1.1
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&client_secret=qkDwDJlDfig2IpeuUZYKH1Wb8q1V0ju6sILxQQqhJ+s=&resource=https%3A%2F%2Fservice.contoso.com%2F
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース: 証明書を使ったアクセス トークン要求
-証明書を含むサービス間のアクセス トークン要求には、次のパラメーターが含まれています。
-
-| パラメーター |  | Description |
-| --- | --- | --- |
-| grant_type |必須 |要求された応答のタイプを指定します。 クライアント資格情報付与フローでは、値は **client_credentials** である必要があります。 |
-| client_id |必須 |呼び出し元の Web サービスの Azure AD クライアント ID を指定します。 呼び出し元アプリケーションのクライアント ID を調べるには、[Azure Portal](https://portal.azure.com) で **[Active Directory]** をクリックし、ディレクトリを切り替えて、アプリケーションをクリックします。 client_id は "*アプリケーション ID*" です |
-| client_assertion_type |必須 |値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` である必要があります |
-| client_assertion |必須 | 作成する必要があるアサーション (Jason Web Token) です。このアサーションは、アプリケーションの資格情報として登録した証明書で署名する必要があります。 証明書の登録方法とアサーションの形式の詳細については、以下を参照してください。|
-| resource | 必須 |受信側の Web サービスのアプリケーション ID URI を入力します。 アプリケーション ID URI を調べるには、Azure Portal で **[Active Directory]** をクリックし、ディレクトリ、アプリケーション、**[構成]** の順にクリックします。 |
-
-お気付きのように、パラメーターは、共有シークレットによる要求のパラメーターとほぼ同じです。唯一異なるのは、client_secret パラメーターが、client_assertion_type と client_assertion の&2; つのパラメーターに置き換えられている点です。
-
-#### <a name="format-of-the-assertion"></a>アサーションの形式
-アサーションを計算するには、通常、多数ある [Jason Web Token](https://jwt.io/) ライブラリから好きな言語を選択して使用します。 トークンで伝達する情報は次のとおりです。
-
-##### <a name="header"></a>ヘッダー
-
-| パラメーター |  注記 |
-| --- | --- | --- |
-| `alg` | **RS256** です |
-| `typ` | **JWT** です |
-| `x5t` | X.509 証明書 SHA-1 サムプリントです |
-
-##### <a name="claims-payload"></a>要求 (ペイロード)
-
-| パラメーター |  注記 |
-| --- | --- | --- |
-| `aud` | オーディエンス: **https://login.microsoftonline/*tenant_Id*/oauth2/token** です |
-| `exp` | 有効期限 |
-| `iss` | 発行者: client_id (クライアント サービスのアプリケーション ID) です |
-| `jti` | GUID: JWT ID |
-| `nbf` | 期間の開始時刻: トークンの使用開始日 |
-| `sub` | 件名: `iss` については、client_id (クライアント サービスのアプリケーション ID) です |
-
-##### <a name="signature"></a>署名
-署名は、[JSON Web トークン RFC7519 仕様](https://tools.ietf.org/html/rfc7519)の説明に従って、証明書を適用することで計算されます
-
-##### <a name="example-of-a-decoded-jwt-assertion"></a>デコードされた JWT アサーションの例
-```
-{
-  "alg": "RS256",
-  "typ": "JWT",
-  "x5t": "gx8tGysyjcRqKjFPnd7RFwvwZI0"
-} 
-. 
-{
-  "aud": "https: //login.microsoftonline.com/contoso.onmicrosoft.com/oauth2/token",
-  "exp": 1484593341,
-  "iss": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05",
-  "jti": "22b3bb26-e046-42df-9c96-65dbd72c1c81",
-  "nbf": 1484592741,  
-  "sub": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05"
-}
-.
-"Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
-
-```
-
-##### <a name="example-of-encoded-jwt-assertion"></a>エンコードされた JWT アサーションの例
-次の文字列は、エンコードされたアサーションの例です。 よく見ると、ピリオド (.) で区切られた&3; つのセクションがあることがわかります。 最初のセクションはヘッダーを、2 番目のセクションはペイロードをエンコードします。最後のセクションは、最初の&2; つのセクションのコンテンツの証明書によって計算された署名です。
-```
-"eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ubWljcm9zb2Z0b25saW5lLmNvbVwvam1wcmlldXJob3RtYWlsLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQ4NDU5MzM0MSwiaXNzIjoiOTdlMGE1YjctZDc0NS00MGI2LTk0ZmUtNWY3N2QzNWM2ZTA1IiwianRpIjoiMjJiM2JiMjYtZTA0Ni00MmRmLTljOTYtNjVkYmQ3MmMxYzgxIiwibmJmIjoxNDg0NTkyNzQxLCJzdWIiOiI5N2UwYTViNy1kNzQ1LTQwYjYtOTRmZS01Zjc3ZDM1YzZlMDUifQ.
-Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
-```
-
-#### <a name="how-to-register-your-certificate-with-azure-ad"></a>Azure AD で証明書を登録する方法
-Azure AD で証明書資格情報をクライアント アプリケーションに関連付けるには、アプリケーション マニフェストを編集する必要があります。 証明書を入手したら、次を計算する必要があります。
-- `$base64Thumbprint`。証明書ハッシュの base64 エンコード
-- `$base64Value`。証明書生データの base64 エンコード
-
-また、GUID を指定して、アプリケーション マニフェストでキーを特定する必要もあります (`$keyId`)。
-
-Azure Portal でのクライアント アプリケーション用アプリ登録の場合は、**[マニフェスト]**、**[ダウンロード]** の順にクリックします。
-使い慣れたテキスト エディターでマニフェストを開き、次のスキーマを使用して、*keyCredentials* プロパティを新しい証明書情報に置き換えます。
-```
-"keyCredentials": [
-    {
-        "customKeyIdentifier": "$base64Thumbprint",
-        "keyId": "$keyid",
-        "type": "AsymmetricX509Cert",
-        "usage": "Verify",
-        "value":  "$base64Value"
-    }
-],
-```
-アプリケーション マニフェストへの編集を保存し、**[マニフェスト]**、**[アップロード]** の順にクリックして、編集したマニフェストを Azure AD にアップロードします。 keyCredentials プロパティは複数値であるため、複数の証明書をアップロードして、高度なキー管理を行うこともできます。
-
-
-#### <a name="example-of-request"></a>要求の例
-次の HTTP POST は、証明書を使用して https://service.contoso.com/ Web サービスのアクセス トークンを要求します。 `client_id` は、アクセス トークンを要求する Web サービスを識別します。
-
-```
-POST /<tenant_id>/oauth2/token HTTP/1.1
-Host: login.microsoftonline.com
-Content-Type: application/x-www-form-urlencoded
-
-resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b3bf&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg&grant_type=client_credentials
-```
-
-### <a name="service-to-service-access-token-response"></a>サービス間のアクセス トークン応答
-
+## <a name="service-to-service-access-token-response"></a>サービス間のアクセス トークン応答
 成功応答には、JSON OAuth 2.0 応答と共に次のパラメーターが含まれています。
 
 | パラメーター | Description |
 | --- | --- |
 | access_token |要求されたアクセス トークン。 呼び出し元の Web サービスは、このトークンを使用して受信側の Web サービスに対する認証処理を行うことができます。 |
-| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「 [OAuth2.0 Authorization Framework: Bearer Token Usage (OAuth2.0 承認フレームワーク: ベアラー トークンの使用について)](http://www.rfc-editor.org/rfc/rfc6750.txt)」(RFC 6750) を参照してください。 |
+| access_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「 [OAuth2.0 Authorization Framework: Bearer Token Usage (OAuth2.0 承認フレームワーク: ベアラー トークンの使用について)](http://www.rfc-editor.org/rfc/rfc6750.txt)」(RFC 6750) を参照してください。 |
 | expires_in |アクセス トークンの有効期間 (秒)。 |
 | expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
-| not_before |アクセス トークンが使用可能になる日時。 日時は 1970-01-01T0:0:0Z UTC から、トークンの有効期間が切れるまでの秒数として表されます。|
 | resource |受信側の Web サービスのアプリケーション ID URI。 |
 
-#### <a name="example-of-response"></a>応答の例
+## <a name="example"></a>例
 次の例に、Web サービスへのアクセス トークン要求に対する成功応答を示します。
 
 ```
@@ -195,10 +90,8 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 
 ## <a name="see-also"></a>関連項目
 * [Azure AD での OAuth 2.0](active-directory-protocols-oauth-code.md)
-* [共有シークレットによるサービス間呼び出しの C# のサンプル](https://github.com/Azure-Samples/active-directory-dotnet-daemon)と[証明書によるサービス間呼び出しの C# のサンプル](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 
 
-
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

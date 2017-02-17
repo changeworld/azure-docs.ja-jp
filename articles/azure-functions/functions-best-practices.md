@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/09/2016
 ms.author: wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 4544629c47326d448cd99b5d96d79666a56f0274
-ms.openlocfilehash: 04a5e190a69b1a1a4d0fe6c49c16ddb15593ba38
+ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
+ms.openlocfilehash: c638bf42b9adf906f195d77268637d056f7b00a9
 
 ---
 
@@ -26,7 +26,7 @@ ms.openlocfilehash: 04a5e190a69b1a1a4d0fe6c49c16ddb15593ba38
 
 ##<a name="overview"></a>Overview
 
-この記事では、Function App を実装する際に考慮する必要がある一連のベスト プラクティスについて説明します。 Azure Function App は Azure App Service の 1 つであることに注意してください。 そのため、これらのベスト プラクティスが当てはまります。
+この記事では、Function App を実装する際に考慮する必要がある一連のベスト プラクティスについて説明します。 Azure Function App は Azure App Service の&1; つであることに注意してください。 そのため、これらのベスト プラクティスが当てはまります。
 
 
 ## <a name="avoid-large-long-running-functions"></a>サイズが大きく実行時間の長い関数を使用しない
@@ -52,7 +52,7 @@ ms.openlocfilehash: 04a5e190a69b1a1a4d0fe6c49c16ddb15593ba38
 
 可能であれば、関数はステートレスかつべき等である必要があります。 すべての必要な状態情報をデータに関連付けます。 たとえば、処理する注文には、`state` メンバーが関連付けられている可能性があります。 関数は、それ自体がステートレスなまま、その状態に基づいて注文を処理できます。 
 
-べき等性を持つ関数は、特にタイマー トリガーと共に使用することをお勧めします。 たとえば、1 日に 1 回必ず実行する必要のある操作がある場合は、1 日の中の任意の時間にその操作を実行して同じ結果が得られるように記述します。 特定の日に操作を実行しない場合、この関数は終了することができます。 また、前回の実行が完了しなかった場合は、次の実行では中断した場所から操作を実行する必要があります。
+べき等性を持つ関数は、特にタイマー トリガーと共に使用することをお勧めします。 たとえば、1 日に&1; 回必ず実行する必要のある操作がある場合は、1 日の中の任意の時間にその操作を実行して同じ結果が得られるように記述します。 特定の日に操作を実行しない場合、この関数は終了することができます。 また、前回の実行が完了しなかった場合は、次の実行では中断した場所から操作を実行する必要があります。
 
 
 ## <a name="write-defensive-functions"></a>防御的な関数を記述する
@@ -68,7 +68,7 @@ ms.openlocfilehash: 04a5e190a69b1a1a4d0fe6c49c16ddb15593ba38
 
 キュー アイテムが既に処理されている場合は、関数による操作をなしにします。
 
-Azure Functions プラットフォームで使用するコンポーネントに対して既に提供されている防御策を活用してください。 一例として、「[Azure Storage キュー トリガー](functions-bindings-storage.md#storagequeuetrigger)」の「**有害キュー メッセージの処理**」を参照してください。
+Azure Functions プラットフォームで使用するコンポーネントに対して既に提供されている防御策を活用してください。 一例として、「[Azure Storage キュー トリガー](functions-bindings-storage-queue.md#trigger)」の「**有害キュー メッセージの処理**」を参照してください。
  
 
 
@@ -107,6 +107,6 @@ Function App 内の関数はリソースを共有します。 たとえば、メ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

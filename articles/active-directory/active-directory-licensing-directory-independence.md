@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/09/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
-ms.openlocfilehash: fff714765508285f4c074b3a7287701a538fbf95
+ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
+ms.openlocfilehash: 23aad0421088b620f32bbf3f6b3f0b11e001e3ae
 
 
 ---
@@ -34,10 +34,10 @@ Azure Active Directory (Azure AD) の各ディレクトリは、完全に独立�
 * あるディレクトリでユーザーの管理者ロールを変更 (追加または削除) した場合、変更は、別のディレクトリでそのユーザーに割り当てられている可能性のある管理者ロールには影響しません。
 
 ## <a name="synchronization-independence"></a>同期の独立
-次のどちらかの 1 つのインスタンスからデータが同期されるように各 Azure AD ディレクトリを独立して構成することができます。
+次のどちらかの&1; つのインスタンスからデータが同期されるように各 Azure AD ディレクトリを独立して構成することができます。
 
 * 1 つは、単一の AD フォレストとデータを同期するディレクトリ同期 (DirSync) ツールです。
-* もう 1 つは、1 つ以上のオンプレミスのフォレストと Azure AD 以外のデータ ソースのいずれか、または両方とデータを同期する Forefront Identity Manager 用 Azure Active Directory コネクタです。
+* もう&1; つは、1 つ以上のオンプレミスのフォレストと Azure AD 以外のデータ ソースのいずれか、または両方とデータを同期する Forefront Identity Manager 用 Azure Active Directory コネクタです。
 
 ## <a name="add-an-azure-ad-directory"></a>Azure AD ディレクトリを追加する
 Azure クラシック ポータルで Azure AD ディレクトリを追加するには、左側で Azure Active Directory 拡張機能を選択し、 **[追加]**をタップします。
@@ -47,10 +47,11 @@ Azure クラシック ポータルで Azure AD ディレクトリを追加する
 >
 >
 
+## <a name="next-steps"></a>次のステップ
 Azure AD のライセンスに関する問題とベスト プラクティスの概要については、 [Azure Active Directory ライセンス](active-directory-licensing-what-is.md)に関するページを参照してください。
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

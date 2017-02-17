@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: bc4a892ce1745d54ee4424e04a79a52942650b49
-ms.openlocfilehash: f25942f24c1a2f24050c15908b86489d39ee9a13
+ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
+ms.openlocfilehash: 40375aa411920f966aa6923f0899ca2f88a9ed39
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: f25942f24c1a2f24050c15908b86489d39ee9a13
 * 新しいディスクの場合、接続時に Azure で自動的に作成されるので、最初に作成する必要はありません。
 * 既存のディスクの場合、Azure ストレージ アカウントで .vhd ファイルを使用できる必要があります。 別の仮想マシンに接続されていない場合は既存の .vhd を使用できます。そうでなければ、独自の .vhd ファイルをストレージ アカウントにアップロードできます。
 
-[Powershell を使用してデータ ディスクを接続する](virtual-machines-windows-ps-manage.md#add-a-data-disk-to-a-virtual-machine)こともできます。
+[Powershell を使用してデータ ディスクを接続する](virtual-machines-windows-attach-disk-ps.md)こともできます。
 
 
 ## <a name="find-the-virtual-machine"></a>仮想マシンの検索
@@ -98,6 +98,6 @@ fsutil behavior set DisableDeleteNotify 0
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

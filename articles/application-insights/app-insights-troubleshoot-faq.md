@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
-ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
+ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
+ms.openlocfilehash: e066a7fc671399ba44bec35a2ea860fccddb4cc5
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
 *次のセットアップで問題が発生しています。*
 
 * [.NET アプリ](app-insights-asp-net-troubleshoot-no-data.md)
-* [既に実行中のアプリの監視](app-insights-monitor-performance-live-website-now.md#troubleshooting)
+* [既に実行中のアプリの監視](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
 * [Azure 診断](app-insights-azure-diagnostics.md)
 * [Java Web アプリ](app-insights-java-troubleshoot.md)
 * [その他のプラットフォーム](app-insights-platforms.md)
@@ -40,7 +40,7 @@ ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
 
 ## <a name="is-it-free"></a>これは無料ですか。
 
-はい、試験段階用です。 既定の価格プランでは、アプリケーションは毎月無料で一定のデータ許容量を送信できます。 無料許容量は、開発や、少数のユーザー向けにアプリを発行するのに十分な大きさです。 指定した以上のデータ量が処理されることを防ぐために上限を設定できます。
+はい、試験段階用です。 Basic 価格プランでは、アプリケーションは毎月無料で一定のデータ許容量を送信できます。 無料許容量は、開発や、少数のユーザー向けにアプリを発行するのに十分な大きさです。 指定した以上のデータ量が処理されることを防ぐために上限を設定できます。
 
 連続エクスポートなどの特定の機能を取得するには、エンタープライズ プランを使用する必要があります。 エンタープライズ プランを使用すると、1 日あたりの料金が発生します。
 
@@ -51,20 +51,20 @@ ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
 詳細は、プロジェクトの種類によって異なります。 Web アプリケーションの場合:
 
 * 次のファイルがプロジェクトに追加されます。
-  
+
   * ApplicationInsights.config
   * ai.js
 * Installs these NuGet packages:
-  
+
   * *Application Insights API* - コア API
   * *Application Insights API for Web Applications* - サーバーからテレメトリを送信するために使用されます
   * *Application Insights API for JavaScript Applications* - クライアントからテレメトリを送信するために使用されます
-    
+
     The packages include these assemblies:
   * Microsoft.ApplicationInsights
   * Microsoft.ApplicationInsights.Platform
 * 次の項目を挿入します。
-  
+
   * web.config
   * packages.config
 * (新しいプロジェクトのみ。[Application Insights を既存のプロジェクトに追加している場合][start]は、手動でこの操作を行う必要があります)。これらを Application Insights リソース ID で初期化するためのスニペットを、クライアントとサーバーのコードに挿入します。 たとえば、MVC アプリでは、Views/Shared/_Layout.cshtml マスター ページにコードが挿入されます。
@@ -90,7 +90,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 | 表示内容 | 表示方法 | 用途 |
 | --- | --- | --- |
 | 可用性グラフ |[Web テスト](app-insights-monitor-web-app-availability.md) |Web アプリが稼働しているか確認する |
-| サーバー アプリ パフォーマンス: 応答時間、... |[Application Insights をプロジェクトに追加する](app-insights-asp-net.md)か、[AI Status Monitor をサーバーにインストールする](app-insights-monitor-performance-live-website-now.md) (または独自のコードを記述して[依存関係を追跡する](app-insights-api-custom-events-metrics.md#track-dependency)) |パフォーマンスの問題を検出する |
+| サーバー アプリ パフォーマンス: 応答時間、... |[Application Insights をプロジェクトに追加する](app-insights-asp-net.md)か、[AI Status Monitor をサーバーにインストールする](app-insights-monitor-performance-live-website-now.md) (または独自のコードを記述して[依存関係を追跡する](app-insights-api-custom-events-metrics.md#trackdependency)) |パフォーマンスの問題を検出する |
 | 依存関係テレメトリ |[AI Status Monitor をサーバーにインストールする](app-insights-monitor-performance-live-website-now.md) |データベースや、その他の外部コンポーネントの問題を診断する |
 | 例外からスタック トレースを取得する |[コード内に TrackException 呼び出しを挿入する](app-insights-search-diagnostic-logs.md#exceptions) (自動で報告されるものもある) |例外を検出して診断する |
 | ログ トレースの検索 |[ログ アダプターを追加する](app-insights-search-diagnostic-logs.md) |例外、パフォーマンスの問題を診断する |
@@ -113,6 +113,6 @@ Application Insights リソースを作成および更新するための [PowerS
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
