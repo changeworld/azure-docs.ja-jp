@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT Hub と Azure Event Hubs の比較 | Microsoft Docs"
-description: "機能の相違点とユース ケースを中心とした、Azure IoT Hub サービスと Azure Event Hubs サービスの比較です。"
+description: "機能の相違点とユース ケースを中心とした、Azure の IoT Hub サービスと Event Hubs サービスの比較です。 比較には、サポートされているプロトコル、デバイス管理、監視、およびファイルのアップロードが含まれます。"
 services: iot-hub
 documentationcenter: 
 author: fsautomata
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 01/31/2017
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: ce514e19370d2b42fb16b4e96b66f212d5fa999c
-ms.openlocfilehash: 9c7e33ceebb28f6a263d2c92e0c0208434e64ffc
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: 2075c7a1b8f3393e100ab92ae7d497c56965f887
 
 
 ---
 # <a name="comparison-of-azure-iot-hub-and-azure-event-hubs"></a>Azure IoT Hub と Azure Event Hubs の比較
-デバイスからのテレメトリ データの収集は、IoT Hub の主なユース ケースの 1 つです。 このため、IoT Hub はしばしば [Azure Event Hubs][Azure Event Hubs] と比較されます。 IoT Hub のように、Event Hubs は、低遅延の動作と高い信頼性を確保しながら、クラウドに対する膨大なイベントとテレメトリ データの入口として利用できるイベント処理サービスです。
+デバイスからのテレメトリ データの収集は、IoT Hub の主なユース ケースの&1; つです。 このため、IoT Hub はしばしば [Azure Event Hubs][Azure Event Hubs] と比較されます。 IoT Hub のように、Event Hubs は、低遅延の動作と高い信頼性を確保しながら、クラウドに対する膨大なイベントとテレメトリ データの入口として利用できるイベント処理サービスです。
 
 ただし、サービスには異なる点も多数あります。以下の表で、この違いについて詳しく説明します。
 
@@ -35,6 +35,7 @@ ms.openlocfilehash: 9c7e33ceebb28f6a263d2c92e0c0208434e64ffc
 | スケール |同時接続された数百万のデバイスをサポートするように最適化されています。 |制限された数の同時接続をサポートできます。[Azure Service Bus のクォータ][Azure Service Bus quotas]に基づいて最大 5,000 の AMQP 接続をサポートします。 一方、Event Hubs を使用すると、送信される各メッセージのパーティションを指定できます。 |
 | デバイスの SDK |MQTT、AMQP、および HTTP API のほかに、さまざまなプラットフォームおよび言語用の[デバイス SDK][Azure IoT SDKs] が用意されています。 |AMQP と HTTP の送信インターフェイスのほかに、.NET、Java、および C でサポートされます。 |
 | ファイルのアップロード |IoT ソリューションでデバイスからクラウドにファイルをアップロードできるようにします。 ワークフロー統合用のファイル通知エンドポイントと、デバッグ サポート用の操作監視カテゴリが含まれます。 | サポートされていません。 |
+| 複数エンドポイントへのメッセージのルーティング | 最大 10 個のカスタム エンドポイントがサポートされます。 カスタム エンドポイントへのメッセージのルーティングの方法はルールにより決定されます。 詳細については、「[IoT Hub でのメッセージの送受信][lnk-devguide-messaging]」を参照してください。 | メッセージ ディスパッチ用のコードを別途作成してホストする必要があります。 |
 
 まとめると、唯一のユース ケースがデバイスからクラウドへのテレメトリ イングレスである場合でも、IoT Hub は IoT デバイス接続用に設計されたサービスを提供します。 IoT 固有の機能を使用するこれらのシナリオのための価値提案は、引き続き拡張されます。 Event Hubs は、大規模なイベント イングレス向けに設計されており、データ センター内およびデータ センター間の両方のシナリオに対応できます。
 
@@ -45,7 +46,7 @@ IoT Hub のデプロイの計画に関する詳細については、[HA と DR �
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [開発者ガイド][lnk-devguide]
+* [IoT Hub 開発者ガイド][lnk-devguide]
 * [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 
 [lnk-twins]: iot-hub-devguide-device-twins.md
@@ -55,17 +56,18 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [Azure Event Hubs]: ../event-hubs/event-hubs-what-is-event-hubs.md
 [セキュリティ]: iot-hub-devguide-security.md
 [Event Hubs - security]: ../event-hubs/event-hubs-authentication-and-security-model-overview.md
-[Event Hubs publisher policies]: ../event-hubs/event-hubs-overview.md#common-publisher-tasks
+[Event Hubs publisher policies]: ../event-hubs/event-hubs-what-is-event-hubs.md#event-publishers
 [Azure Service Bus quotas]: ../service-bus-messaging/service-bus-quotas.md
-[Azure IoT SDKs]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
+[Azure IoT SDKs]: https://github.com/Azure/azure-iot-sdks
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-devguide-messaging]: iot-hub-devguide-messaging.md
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO5-->
 
 

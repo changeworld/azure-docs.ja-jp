@@ -14,11 +14,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/14/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0ca7a73d0d7db3651bec26deb4557fae5fc3451f
+ms.sourcegitcommit: ec9e3c6c6919bb5ce50553a29536f821fe79f577
+ms.openlocfilehash: 3d8ee1d23fab0b410bce711afc27f8bbbad4c7e4
 
 
 ---
@@ -30,7 +30,7 @@ Apache HBase は、オープン ソースの NoSQL データベースで、Hadoo
 ## <a name="how-is-hbase-implemented-in-azure-hdinsight"></a>Azure HDInsight での HBase の実装方法
 HDInsight HBase は、管理されるクラスターとして、Azure 環境に統合されて提供されます。 クラスターは、Azure BLOB ストレージにデータを直接格納するよう構成されるため、遅延時間が短くなり、パフォーマンスとコストを考慮した選択肢に大きな弾力性が生まれます。 そのため、顧客は大規模なデータセットを処理する対話的な Web サイトを構築できます。これにより、何百万ものエンドポイントからセンサーのデータおよびテレメトリ データを格納するサービスを構築したり、Hadoop ジョブによりこれらのデータを分析したりすることができます。 HBase と Hadoop によって、Azure のビッグ データ プロジェクトは大きな一歩を踏み出しました。特に注目したいのは、リアルタイム アプリケーションが大規模なデータセットを処理できるようになったことです。
 
-HDInsight の実装と HBase のスケールアウト アーキテクチャにより、テーブルの自動シャーディング、読み取りと書き込みの強力な一貫性、自動フェールオーバーなどが実現します。 また、メモリ内キャッシュを利用した読み取りと高スループットのストリーミングによる書き込みによって、パフォーマンスも拡張されています。 HDInsight HBase では、仮想ネットワーク プロビジョニングも利用できます。 詳細については、[Azure Virtual Network での HDInsight クラスターのプロビジョニング][hbase-provision-vnet]に関する記事を参照してください。
+HDInsight の実装と HBase のスケールアウト アーキテクチャにより、テーブルの自動シャーディング、読み取りと書き込みの強力な一貫性、自動フェールオーバーなどが実現します。 また、メモリ内キャッシュを利用した読み取りと高スループットのストリーミングによる書き込みによって、パフォーマンスも拡張されています。 仮想ネットワーク内に HBase クラスターを作成することができます。 詳細については、[Azure Virtual Network での HDInsight クラスターの作成][hbase-provision-vnet]に関する記事を参照してください。
 
 ## <a name="how-is-data-managed-in-hdinsight-hbase"></a>HDInsight HBase 内のデータの管理方法
 HBase 内のデータは、HBase シェルから `create`、`get`、`put`、`scan` というコマンドを使用して管理できます。 データの書き込みは `put`、読み取りは `get` を使用します。 `scan` コマンドは、テーブルの複数の行からデータを取得するために使用します。 HBase の C# API を使用してデータを管理することもできます。これにより、HBase REST API 最上層のクライアント ライブラリを利用できます。 HBase データベースは、Hive を使用して照会することもできます。 これらのプログラミング モデルの概要については、[HDInsight の Hadoop 環境での HBase の使用][hbase-get-started]に関する記事を参照してください。 コプロセッサも利用でき、データベースをホストするノードでデータが処理できます。
@@ -53,8 +53,8 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
 
 ## <a name="a-namenext-stepsanext-steps"></a><a name="next-steps"></a>次のステップ
 * [HDInsight の Hadoop 環境での HBase の使用][hbase-get-started]
-* [Azure Virtual Network での HDInsight クラスターのプロビジョニング][hbase-provision-vnet]
-* [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md)
+* [Azure Virtual Network での HDInsight クラスターの作成][hbase-provision-vnet]
+* [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-replication.md)
 * [HDInsight 環境の HBase での Twitter のセンチメントのリアルタイム分析][hbase-twitter-sentiment]
 * [HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションの Maven での構築][hbase-build-java-maven]
 
@@ -84,6 +84,6 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

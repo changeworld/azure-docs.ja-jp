@@ -1,6 +1,6 @@
 ---
-title: "Azure Data Lake Store に格納されているデータに対して Spark ジョブを実行する | Microsoft Docs"
-description: "Azure Data Lake Store に格納されているデータに対して Spark ジョブを実行する"
+title: "Azure Data Lake Store での Apache Spark を使用したデータ分析 | Microsoft Docs"
+description: "Spark ジョブを実行して Azure Data Lake Store に格納されているデータを分析する"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/18/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a5e2bc4e29ac91ec17a7778e33509ec54f167ca2
-ms.openlocfilehash: 3e8c6d358602b6061447feb216d1e0e07fd950ee
+ms.sourcegitcommit: a3bdeb6fea306babc9358134c37044843b9bdd1c
+ms.openlocfilehash: e9780d487043a86df5a627b92579b67154c59279
 
 
 ---
@@ -77,7 +77,7 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
 
 3. 新しい Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
 
-    ![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-use-with-data-lake-store/hdispark.note.jupyter.createnotebook.png "Create a new Jupyter notebook")
+    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-use-with-data-lake-store/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook の作成")
 
 4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。 このシナリオに必要な種類をインポートすることから始めることができます。 このためには、次のコード スニペットをセルに貼り付けて、 **Shift + Enter**キーを押します。
 
@@ -85,7 +85,7 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
 
     Jupyter でジョブを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。 また、右上隅にある **PySpark** というテキストの横に塗りつぶされた円も表示されます。 ジョブが完了すると、白抜きの円に変化します。
 
-     ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-use-with-data-lake-store/hdispark.jupyter.job.status.png "Status of a Jupyter notebook job")
+     ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-use-with-data-lake-store/hdispark.jupyter.job.status.png "Jupyter Notebook ジョブのステータス")
 
 5. Data Lake Store アカウントにコピーした **HVAC.csv** ファイルを使用して、サンプル データを一時テーブルに読み込みます。 Data Lake Store アカウントのデータにアクセスするには、次の URL パターンを使用します。
 
@@ -114,18 +114,18 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
          # Register the data fram as a table to run queries against
          hvacdf.registerTempTable("hvac")
 
-6. PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-pyspark-or-spark-kernels)に関する記事を参照してください。
+6. PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)に関する記事を参照してください。
 
          %%sql
          SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
 
 7. ジョブが正常に完了すると、既定で次の出力が表示されます。
 
-      ![クエリ結果のテーブル出力](./media/hdinsight-apache-spark-use-with-data-lake-store/tabular.output.png "Table output of query result")
+      ![クエリ結果のテーブル出力](./media/hdinsight-apache-spark-use-with-data-lake-store/tabular.output.png "クエリ結果のテーブル出力")
 
      他の視覚化でも結果を表示できます。 たとえば、ある出力の領域グラフは次のようになります。
 
-     ![クエリ結果の領域グラフ](./media/hdinsight-apache-spark-use-with-data-lake-store/area.output.png "Area graph of query result")
+     ![クエリ結果の領域グラフ](./media/hdinsight-apache-spark-use-with-data-lake-store/area.output.png "クエリ結果の領域グラフ")
 
 8. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
 
@@ -138,6 +138,6 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

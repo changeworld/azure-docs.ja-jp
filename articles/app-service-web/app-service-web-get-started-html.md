@@ -1,5 +1,5 @@
 ---
-title: "初めての Web アプリを Azure に 5 分でデプロイする (CLI 2.0 プレビュー) | Microsoft Docs"
+title: "初めての HTML Web アプリを Azure に 5 分でデプロイする (CLI 2.0 プレビュー) | Microsoft Docs"
 description: "サンプル アプリをデプロイして、App Service での Web アプリの実行がいかに簡単であるかを説明します。 実際の開発を速やかに開始し、すぐに成果を確認できます。"
 services: app-service\web
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 05e61d2fc751c4239aef4b10ad897765c59fe928
-ms.openlocfilehash: 42f3f17366a37e10d746fe177a93a2432dbdcca2
+ms.sourcegitcommit: fccbab2baafed3b0347f2c35b7926200ec69a450
+ms.openlocfilehash: 640f04ca9a8351543d44899946464ed7cd4db437
 
 
 ---
-# <a name="deploy-your-first-web-app-to-azure-in-five-minutes-cli-20-preview"></a>初めての Web アプリを Azure に 5 分でデプロイする (CLI 2.0 プレビュー)
+# <a name="deploy-your-first-html-web-app-to-azure-in-five-minutes-cli-20-preview"></a>初めての HTML Web アプリを Azure に 5 分でデプロイする (CLI 2.0 プレビュー)
 
 > [!div class="op_single_selector"]
 > * [初めての HTML サイト](app-service-web-get-started-html.md)
@@ -57,7 +57,7 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
 * Microsoft Azure アカウント。 アカウントを持っていない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)するか [Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
 
 > [!NOTE]
-> Azure アカウントがなくても、[App Service を試用](http://go.microsoft.com/fwlink/?LinkId=523751)できます。 スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
+> Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大&1; 時間使用できます。クレジット カードも契約も不要です。
 > 
 > 
 
@@ -154,6 +154,6 @@ Git を使用してプロジェクト (リポジトリ) のルートからプッ
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

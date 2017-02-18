@@ -1,5 +1,5 @@
 ---
-title: "Resource Manager で PowerShell を使用して内部ロード バランサーを作成する | Microsoft Docs"
+title: "Azure の内部ロード バランサーの作成 - PowerShell | Microsoft Docs"
 description: "リソース マネージャーで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 07ea7f3529d5d2e6fde07805663da7c0f3e65d86
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 7bd31ab8f52ec5e81f6966000554be46eaa59396
 
 ---
 
@@ -31,7 +31,7 @@ ms.openlocfilehash: 07ea7f3529d5d2e6fde07805663da7c0f3e65d86
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](load-balancer-get-started-ilb-classic-ps.md)ではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](load-balancer-get-started-ilb-classic-ps.md)ではなくこのモデルをお勧めします。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -180,9 +180,9 @@ $backendnic1= New-AzureRmNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-n
 
 ### <a name="step-2"></a>手順 2.
 
-LB-Nic2-BE という名前の 2 番目のネットワーク インターフェイスを作成します。
+LB-Nic2-BE という名前の&2; 番目のネットワーク インターフェイスを作成します。
 
-このステップでは、同じロード バランサーのバックエンド プールに割り当て、RDP 用に作成された 2 番目の NAT 規則を関連付けて、2 番目のネットワーク インターフェイスを作成します。
+このステップでは、同じロード バランサーのバックエンド プールに割り当て、RDP 用に作成された&2; 番目の NAT 規則を関連付けて、2 番目のネットワーク インターフェイスを作成します。
 
 ```powershell
 $backendnic2= New-AzureRmNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-be -Location "West US" -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
@@ -334,6 +334,6 @@ Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

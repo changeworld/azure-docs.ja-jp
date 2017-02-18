@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: ccf25aab4d6454e27a57f9a18305ef752421896f
-ms.openlocfilehash: 6e4af8f21a3ec9613d9dc36ebceb710c0d8c9906
+ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
+ms.openlocfilehash: c081f31acb7d8767343f41be59d75616fa14b2da
 
 
 ---
@@ -33,7 +33,7 @@ StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 80
 | **Azure VM** |Standard_A3 (4 コア、7 GB メモリ) |Standard_DS3 (4 コア、14 GB メモリ) |
 | **バージョン互換性** |Update 2 より前または Update 2 以降を実行しているバージョン |Update 2 以降を実行しているバージョン |
 | **利用可能なリージョン** |すべての Azure リージョン |Premium Storage をサポートする Azure リージョン<br></br>リージョンの一覧については、「 [8020 のサポートされるリージョン](#supported-regions-for-8020) |
-| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../storage/storage-premium-storage.md#quick-start-create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を参照 |
+| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../storage/storage-premium-storage.md)方法を参照 |
 | **ワークロードのガイダンス** |バックアップからファイルを項目レベルで取得 |クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード  <br></br>障害復旧のためのセカンダリ デバイス |
 
 <sup>1</sup> *以前は 1100 と呼ばれていました*。
@@ -103,7 +103,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 仮想デバイスを作成する前に、Azure StorSimple サービスに対して次の更新作業を行います。
 
 * 仮想デバイスのホスト サーバーとなる VM の [アクセス制御レコード](storsimple-manage-acrs.md) を追加します。
-* 仮想デバイスと同じリージョンにある [ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account) を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら](../storage/storage-create-storage-account.md)、Premium Storage アカウントの場合は[こちら](../storage/storage-premium-storage.md#quick-start-create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)を参照してください。
+* 仮想デバイスと同じリージョンにある [ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account) を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら](../storage/storage-create-storage-account.md)、Premium Storage アカウントの場合は[こちら](../storage/storage-premium-storage.md)を参照してください。
 * 仮想デバイスの作成には、データに使用するストレージ アカウントとは異なるストレージ アカウントを使用します。 同じストレージ アカウントを使用すると、十分なパフォーマンスが得られない可能性があります。
 
 作業を開始する前に、次の情報を確認してください。
@@ -155,7 +155,7 @@ Windows PowerShell インターフェイスを使用して仮想デバイスに�
 ## <a name="connect-remotely-to-the-virtual-device"></a>仮想デバイスへのリモート接続
 Windows PowerShell インターフェイス経由での仮想デバイスへのリモート アクセスは既定では有効になっていません。 リモート管理は、まず仮想デバイスで有効にして、次に、仮想デバイスへのアクセスに使用するクライアントで有効にする必要があります。
 
-リモートで接続するための 2 段階のプロセスについては、以下で詳しく説明します。
+リモートで接続するための&2; 段階のプロセスについては、以下で詳しく説明します。
 
 ### <a name="step-1-configure-remote-management"></a>手順 1. リモート管理の構成
 StorSimple 仮想デバイスのリモート管理を構成するには、次の手順を実行します。
@@ -222,7 +222,7 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
 仮想デバイスを始めからやり直したい場合は、非アクティブにしてから削除し、新しく作成し直します。 物理デバイスをリセットするときと同様に、新しい仮想デバイスには更新プログラムがインストールされていないため、使用する前に更新プログラムを必ず確認してください。
 
 ## <a name="fail-over-to-the-virtual-device"></a>仮想デバイスへのフェールオーバー
-障害復旧 (DR) は、StorSimple 仮想デバイスの設計目的であった主要シナリオの 1 つです。 このシナリオでは、物理 StorSimple デバイスまたはデータセンター全体が使用できなくなる可能性があります。 さいわいなことに、仮想デバイスを使って、別の場所に運用を復元することができます。 DR 中に、ソース デバイスのボリューム コンテナーの所有権が変更され、それらのコンテナーは仮想デバイスに転送されます。 DR の前提条件として、仮想デバイスが作成され、構成されていることと、ボリューム コンテナー内のすべてのボリュームがオフラインになっていること、さらに、ボリューム コンテナーにクラウド スナップショットが関連付けられていることが挙げられます。
+障害復旧 (DR) は、StorSimple 仮想デバイスの設計目的であった主要シナリオの&1; つです。 このシナリオでは、物理 StorSimple デバイスまたはデータセンター全体が使用できなくなる可能性があります。 さいわいなことに、仮想デバイスを使って、別の場所に運用を復元することができます。 DR 中に、ソース デバイスのボリューム コンテナーの所有権が変更され、それらのコンテナーは仮想デバイスに転送されます。 DR の前提条件として、仮想デバイスが作成され、構成されていることと、ボリューム コンテナー内のすべてのボリュームがオフラインになっていること、さらに、ボリューム コンテナーにクラウド スナップショットが関連付けられていることが挙げられます。
 
 > [!NOTE]
 > * 仮想デバイスを DR のセカンダリ デバイスとして使用する場合は、8010 には 30 TB の Standard Storage があり、8020 には 64 TB の Premium Storage があることに注意してください。 より容量が多い 8020 仮想デバイスは、DR シナリオにより適しています。
@@ -259,6 +259,6 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

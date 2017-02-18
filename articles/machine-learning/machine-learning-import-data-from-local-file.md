@@ -1,6 +1,6 @@
 ---
-title: "ローカル ファイルのデータを Machine Learning Studio にインポートする | Microsoft Docs"
-description: "ローカル ファイルのトレーニング データを Azure Machine Learning Studio にインポートする方法。"
+title: "ファイルのデータを Machine Learning Studio にインポートする | Microsoft Docs"
+description: "ハード ドライブのトレーニング データ ファイルを Azure Machine Learning Studio にアップロードする方法について説明します。 これにより、ワークスペースにデータセット モジュールが作成されます。"
 keywords: "データのインポート、データ形式、データ型、データ ソース、トレーニング データ"
 services: machine-learning
 documentationcenter: 
@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 12/14/2016
 ms.author: garye;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 844dafe79c71594212d966286c74aa7f916ba60e
-ms.openlocfilehash: e17a3dd8b70f22ab0c68eecde50a7506167188b9
+ms.sourcegitcommit: fa3de6226b59c4f80e71c55a0aad20c19693642d
+ms.openlocfilehash: ffb12a5a999372951827d31e7e24c6b38473cb35
 
 
 ---
-# <a name="import-your-training-data-into-azure-machine-learning-studio-from-a-local-file"></a>ローカル ファイルのトレーニング データを Azure Machine Learning Studio にインポートする
+# <a name="import-training-data-from-a-file-on-your-hard-drive-into-machine-learning-studio"></a>ハード ドライブ上のファイルのトレーニング データを Machine Learning Studio にインポートする
 [!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
 
-独自のデータを Machine Learning Studio で使用するために、事前にローカル ハード ドライブからデータ ファイルをアップロードして、データセット モジュールをワークスペースで作成できます。 
+ハード ドライブからデータ ファイルをアップロードして、Azure Machine Learning Studio でトレーニング データとして使用する方法について説明します。 データ ファイルをインポートすると、ワークスペースでデータセット モジュールが用意されます。
 
-## <a name="import-data-from-a-local-file"></a>ローカル ファイルからデータをインポートする
-次の手順に従って、ローカルのハード ドライブからデータをインポートできます。
+## <a name="steps-to-import-data-from-a-local-file"></a>ローカル ファイルからのデータのインポート手順
+ローカル ハード ドライブからデータをインポートするには、次の手順を実行します。
 
 1. Machine Learning Studio ウィンドウの下部で、 **[+新規]** をクリックします。
 2. **[データセット]** と **[FROM LOCAL FILE]** を選択します。
@@ -35,15 +35,15 @@ ms.openlocfilehash: e17a3dd8b70f22ab0c68eecde50a7506167188b9
 4. 名前を入力し、データ型を指定したら、必要に応じて説明を入力します。 データの特徴を記録しておくと、後でデータを使用する際に参照できるため、説明を入力しておくことをお勧めします。
 5. チェックボックス **[This is the new version of an existing dataset]** をオンにしておくことにより、新しいデータで既存のデータセットを更新できます。 このチェックボックスをクリックし、既存のデータセット名を入力します。
 
-アップロードする際に、ファイルがアップロードされていることを示すメッセージが表示されます。 アップロード時間は、データのサイズと、サービスへの接続速度に依存します。
-ファイルのアップロードに時間がかかる場合、待機している間に Machine Learning Studio で他の作業も実行できます。 ただし、ブラウザーを閉じるとデータのアップロードに失敗します。
+アップロードする際に、ファイルがアップロードされていることを示すメッセージが表示されます。 アップロード時間は、データのサイズと、サービスへの接続速度に依存します。 ファイルのアップロードに時間がかかる場合、待機している間に Machine Learning Studio で他の作業も実行できます。 ただし、ブラウザーを閉じるとデータのアップロードに失敗します。
 
+## <a name="dataset-module-is-ready-for-use"></a>データセット モジュールの使用準備完了
 データがアップロードされると、データセット モジュールに格納され、ワークスペース内のすべての実験で使用できるようになります。
+
 実験を編集するときは、モジュール パレットの **[保存されたデータセット]** 一覧の **[マイ データセット]** 一覧に、作成済みのデータセットが表示されます。 データセットを別の分析と機械学習に使用する場合は、データセットを実験キャンバスにドラッグ アンド ドロップします。
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

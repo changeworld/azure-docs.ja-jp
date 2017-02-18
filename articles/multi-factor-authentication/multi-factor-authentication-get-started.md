@@ -1,5 +1,5 @@
 ---
-title: "Azure MFA のクラウドとサーバーの比較 | Microsoft Docs"
+title: "Azure MFA クラウドかサーバーかの選択 | Microsoft Docs"
 description: "保護しようとしている対象とユーザーが位置する場所をたずねることで、ユーザーに最適な多要素認証セキュリティ ソリューションを選択します。  次に、クラウド、MFA Server、または AD FS を選択します。"
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/06/2017
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 07e2a62ee63a8f9ef3d660fff8c6269654e2b448
-ms.openlocfilehash: 3e10becd802dfe8934063727f2f7fb0e9e8b420b
+ms.sourcegitcommit: 92c552f42f2645281f5039242825cfdaf6b683c9
+ms.openlocfilehash: 1a42c137204c2d2f6fff9a005b2b0e885c2002b2
 
 
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>ニーズに応じた Azure Multi-Factor Authentication ソリューションを選択する
-Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるため、使用に適したバージョンを特定するには、いくつかの項目を検討する必要があります。  その項目とは、以下の 3 つです。
+Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるため、使用に適したバージョンを特定するには、いくつかの項目を検討する必要があります。  その項目とは、以下の&3; つです。
 
 * [セキュリティで保護しようとしている対象](#what-am-i-trying-to-secure)
 * [ユーザーが位置する場所](#where-are-the-users-located)
@@ -30,13 +30,13 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 以下のセクションでは、ここに挙げた項目の判断に役立つガイダンスを提供します。
 
 ## <a name="what-am-i-trying-to-secure"></a>セキュリティで保護しようとしている対象
-適切な 2 段階認証ソリューションを選ぶにあたっては、まず 2 番目の認証方法で保護しようとしている対象は何かという点を考える必要があります。  Azure のアプリケーションですか。  それとも、リモート アクセス システムでしょうか。  何をセキュリティで保護しようとしているかがわかれば、Multi-Factor Authentication をどこで有効にする必要があるかがわかります。  
+適切な&2; 段階認証ソリューションを選ぶにあたっては、まず&2; 番目の認証方法で保護しようとしている対象は何かという点を考える必要があります。  Azure のアプリケーションですか。  それとも、リモート アクセス システムでしょうか。  何をセキュリティで保護しようとしているかがわかれば、Multi-Factor Authentication をどこで有効にする必要があるかがわかります。  
 
 | セキュリティで保護しようとしている対象 | クラウドでの MFA | MFA サーバー |
 | --- |:---:|:---:|
 | ファーストパーティの Microsoft アプリ |● |● |
 | アプリ ギャラリー内の SaaS アプリ |● |● |
-| Azure AD アプリケーション プロキシ経由で公開される IIS アプリケーション  |● |● |
+| Azure AD アプリケーション プロキシ経由で公開される Web アプリケーション |● |● |
 | Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション  | |● |
 | VPN、RDG などのリモート アクセス | |● |
 
@@ -58,12 +58,12 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 | --- |:---:|:---:|
 | 2 番目の要素としてのモバイル アプリ通知 | ● | ● |
 | 2 番目の要素としてのモバイル アプリ確認コード | ● | ● |
-| 第 2 要素としての音声通話 | ● | ● |
-| 第 2 要素としての単方向 SMS | ● | ● |
-| 第 2 要素としての双方向 SMS | | ● |
-| 第 2 要素としてのハードウェア トークン | | ● |
-| MFA をサポートしていないクライアントのアプリ パスワード | ● | |
-| 認証方法の管理制御 | | ● |
+| 第&2; 要素としての音声通話 | ● | ● |
+| 第&2; 要素としての単方向 SMS | ● | ● |
+| 第&2; 要素としての双方向 SMS | | ● |
+| 第&2; 要素としてのハードウェア トークン | | ● |
+| MFA をサポートしていない Office 365 クライアントのアプリ パスワード | ● | |
+| 認証方法の管理制御 | ● | ● |
 | PIN モード | | ● |
 | 不正アクセスのアラート |● | ● |
 | MFA レポート |● | ● |
@@ -73,7 +73,7 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 | 信頼できる IP | ● | ● |
 | 信頼済みデバイスの MFA の記憶 | ● | |
 | 条件付きアクセス | ● | ● |
-| キャッシュ | ● | ● |
+| キャッシュ |  | ● |
 
 クラウドの多要素認証を使用するか、オンプレミスの MFA Server を使用するかを決定しました。これで、Azure Multi-Factor Authentication の設定と使用を開始できます。 **シナリオに応じてアイコンをクリックしてください。**
 
@@ -87,6 +87,6 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

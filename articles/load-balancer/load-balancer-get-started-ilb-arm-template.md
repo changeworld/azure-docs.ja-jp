@@ -1,5 +1,5 @@
 ---
-title: "Resource Manager でテンプレートを使用して内部ロード バランサーを作成する | Microsoft Docs"
+title: "内部ロード バランサーの作成 - Azure テンプレート | Microsoft Docs"
 description: "リソース マネージャーでテンプレートを使用して、内部ロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 64d728540f3682bfeaf87364b80b972108071735
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: da1a0bb7982b02daa89144c3f5c3f257f14c06c9
 
 ---
 
@@ -31,7 +31,7 @@ ms.openlocfilehash: 64d728540f3682bfeaf87364b80b972108071735
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](load-balancer-get-started-ilb-classic-ps.md)ではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](load-balancer-get-started-ilb-classic-ps.md)ではなくこのモデルをお勧めします。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -43,7 +43,7 @@ ms.openlocfilehash: 64d728540f3682bfeaf87364b80b972108071735
 
 PowerShell を使用してダウンロードしたテンプレートをデプロイするには、次の手順に従います。
 
-1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 2. パラメーター ファイルをローカル ディスクにダウンロードします。
 3. ファイルを編集し、保存します。
 4. テンプレートを使用してリソース グループを作成するには、 **New-AzureRmResourceGroupDeployment** コマンドレットを実行します。
@@ -85,6 +85,6 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

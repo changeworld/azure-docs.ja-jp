@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/21/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: ede2e4ec5f3414d1c8a17f4c120011eba0d9a6ca
-ms.openlocfilehash: 14dcb8fe12bb516bc27b27f94992801d935811c8
+ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
+ms.openlocfilehash: f014b92516879a0255dda3736bf5af6142555d92
 
 
 ---
@@ -27,10 +27,8 @@ ms.openlocfilehash: 14dcb8fe12bb516bc27b27f94992801d935811c8
 
 Hadoop クラスターは、クラスターでのタスクの分散処理に使用される複数の仮想マシン (ノード) で構成されます。 Azure では個々のノードのインストールと構成の実装の詳細を抽象化しているため、一般的な構成情報を提供する必要があります。 この記事では、これらの構成設定について説明します。
 
-このドキュメントの情報は、Windows ベースの Azure HDInsight クラスターに固有のものです。 Linux ベースのクラスターについては、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
-
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 このドキュメントの情報は、Windows ベースの Azure HDInsight クラスターに固有のものです。 Linux ベースのクラスターについては、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 
 
@@ -300,6 +298,6 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "HDInsight への Hadoop アプリケーションのインストール | Microsoft Docs"
+title: "Azure HDInsight へのカスタム Hadoop アプリケーションのインストール | Microsoft Docs"
 description: "HDInsight アプリケーションに HDInsight アプリケーションをインストールする方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,13 +16,16 @@ ms.workload: big-data
 ms.date: 09/14/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 02fbf7609ca2f2fac5105e347fcfc9aa5b794eb2
+ms.sourcegitcommit: eec0106ac43796b2a8a05e89d36cbb51fc222f5d
+ms.openlocfilehash: 9c90d46afd5aa8c1daa12c72e59e518bc42f3d0b
 
 
 ---
-# <a name="install-custom-hdinsight-applications"></a>カスタム HDInsight アプリケーションのインストール
-HDInsight アプリケーションは、ユーザーが Linux ベースの HDInsight クラスターにインストールすることのできるアプリケーションです。  マイクロソフトや独立系ソフトウェア ベンダー (ISV) によって作成されるほか、ユーザーが独自に作成することもできます。 この記事では、まだ Azure ポータルに発行されていない HDInsight アプリケーションを HDInsight にインストールする方法について説明します。 ここでインストールするアプリケーションは [Hue](http://gethue.com/)です。 
+# <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight へのカスタム Hadoop アプリケーションのインストール
+
+この記事では、まだ Azure Portal に発行されていない Hadoop アプリケーションを Azure HDInsight にインストールする方法について説明します。 この記事でインストールするアプリケーションは [Hue](http://gethue.com/) です。
+
+HDInsight アプリケーションは、ユーザーが Linux ベースの HDInsight クラスターにインストールすることのできるアプリケーションです。  マイクロソフトや独立系ソフトウェア ベンダー (ISV) によって作成されるほか、ユーザーが独自に作成することもできます。  
 
 その他の関連記事:
 
@@ -48,7 +51,7 @@ HDInsight アプリケーションは、クラスターを作成するときに�
 
 1. 次の画像をクリックして Azure にサインインし、Azure ポータルで Resource Manager テンプレートを開きます。 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
     このボタンをクリックすると、Azure ポータルの Resource Manager テンプレートが開きます。  この Resource Manager テンプレートは、 [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue)にあります。  この Resource Manager テンプレートの作成方法については、MSDN の「 [Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx)」を参照してください。
 2. **[パラメーター]** ブレードで、次の各項目を入力します。
@@ -63,7 +66,7 @@ HDInsight アプリケーションは、クラスターを作成するときに�
 
 1. 次の画像をクリックして Azure にサインインし、Azure ポータルで Resource Manager テンプレートを開きます。 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
     このボタンをクリックすると、Azure ポータルの Resource Manager テンプレートが開きます。  この Resource Manager テンプレートは [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json)にあります。  この Resource Manager テンプレートの作成方法については、MSDN の「 [Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx)」を参照してください。
 2. 手順に従ってクラスターを作成し、Hue をインストールします。 HDInsight クラスターの作成の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
@@ -133,6 +136,6 @@ Azure CLI を使用して、クラスターを削除したり、リソース グ
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

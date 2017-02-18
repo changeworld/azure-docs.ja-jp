@@ -13,15 +13,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/07/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 91897cb8ee5bc69bacc354a62bebafd8beb47c0c
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: d39f9b4f55f93745afea48a4b581d76e57a824c3
 
 
 ---
-# <a name="machine-learning-predictive-analysis-on-food-inspection-data-using-mllib-with-apache-spark-cluster-on-hdinsight"></a>Machine Learning: HDInsight での MLlib と Apache Spark クラスターを使用した食品検査データの予測分析 
+# <a name="machine-learning-predictive-analysis-on-food-inspection-data-using-mllib-with-apache-spark-cluster-on-hdinsight"></a>Machine Learning: HDInsight での MLlib と Apache Spark クラスターを使用した食品検査データの予測分析
 
 > [!TIP]
 > このチュートリアルは、HDInsight で作成する Spark (Linux) クラスター上の Jupyter Notebook としても利用できます。 Notebook エクスペリエンスにより、Notebook 自体から Python のスニペットを実行することができます。 Notebook からチュートリアルを実行するには、Spark クラスターを作成し、Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`) を起動し、**Python** フォルダーにある **Spark Machine Learning - Predictive analysis on food inspection data using MLLib.ipynb (Machine learning: MLLib.ipynb を使用した食品検査データの予測分析)** の Notebook を実行します。
@@ -181,7 +181,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
     ![SQL クエリ出力](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/query.output.png "SQL クエリ出力")
 
-    `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-pyspark-or-spark-kernels)に関する記事を参照してください。
+    `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)に関する記事を参照してください。
 1. データの視覚効果の構築に使用するライブラリ、Matplotlib を使用して、プロットを作成することもできます。 プロットはローカルに保存された **countResultsdf** データフレームから作成する必要があるため、コード スニペットは `%%local` マジックで始める必要があります。 これにより、コードは Jupyter サーバーでローカルに実行されます。
 
         %%local
@@ -362,6 +362,6 @@ MLLib では、この操作を実行する簡単な方法を提供します。 �
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

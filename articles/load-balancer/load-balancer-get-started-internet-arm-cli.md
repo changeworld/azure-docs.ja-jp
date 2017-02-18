@@ -1,5 +1,5 @@
 ---
-title: "Azure CLI を使用した Resource Manager でのインターネットに接続するロード バランサーの作成 | Microsoft Docs"
+title: "インターネットに接続するロード バランサーの作成 - Azure CLI | Microsoft Docs"
 description: "Azure CLI を使用して、リソース マネージャーでインターネットに接続するロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: c8f29176c8566c94efeecadbc804f459d8f2a6c3
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 002fa917e0cc17c34e0e617a28f2e21ba9b7e35f
 
 ---
-# <a name="creating-an-internal-load-balancer-using-the-azure-cli"></a>Azure CLI を使用した内部ロード バランサーの作成
+# <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>Azure CLI を使用したインターネット ロード バランサーの作成
 
 > [!div class="op_single_selector"]
 > * [ポータル](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -32,7 +32,7 @@ ms.openlocfilehash: c8f29176c8566c94efeecadbc804f459d8f2a6c3
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-この記事では、リソース マネージャーのデプロイ モデルについて説明します。  [従来のデプロイを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-classic-portal.md)
+この記事では、リソース マネージャーのデプロイ モデルについて説明します。 [従来のデプロイを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -311,6 +311,6 @@ azure network lb delete --resource-group nrprg --name nrplb
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

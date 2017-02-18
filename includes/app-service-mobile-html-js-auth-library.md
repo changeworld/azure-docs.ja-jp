@@ -80,6 +80,6 @@ fetch(url, { headers: headers })
 フェッチは [npm パッケージ](https://www.npmjs.com/package/whatwg-fetch)として、または [CDNJS](https://cdnjs.com/libraries/fetch) からのブラウザーのダウンロードに使用できます。 jQuery または別の AJAX API を使用して情報を取得することも可能です。  データは JSON オブジェクトとして取得されます。
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
 translationtype: Human Translation
-ms.sourcegitcommit: 91090ad383d6a03e6d978376d8dd45dc05eac7e8
-ms.openlocfilehash: 504e810146d6787eac9be661a93c7a0ec2ff183f
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: 72aed50d3dd86c5875d3b741a6fff16cb8f17a2d
 
 
 ---
@@ -44,7 +44,7 @@ ms.openlocfilehash: 504e810146d6787eac9be661a93c7a0ec2ff183f
 ![システム アーキテクチャ](media/virtual-machines-linux-classic-mariadb-mysql-cluster/Setup.png)
 
 > [!NOTE]
-> このトピックでは [Azure CLI](../xplat-cli-install.md) ツールを使用するため、Azure CLI ツールをダウンロードし、指示に従って Azure サブスクリプションに接続してください。 Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI コマンド リファレンス](../virtual-machines-command-line-tools.md)」をご覧ください。 また、[認証用に SSH キーを作成]し、.pem ファイルの場所をメモしておく必要があります。
+> このトピックでは [Azure CLI](../xplat-cli-install.md) ツールを使用するため、Azure CLI ツールをダウンロードし、指示に従って Azure サブスクリプションに接続してください。 Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI コマンド リファレンス](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」をご覧ください。 また、[認証用に SSH キーを作成]し、.pem ファイルの場所をメモしておく必要があります。
 >
 >
 
@@ -367,6 +367,6 @@ Azure CLI を使用して、マシン上で次のコマンドを実行します�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

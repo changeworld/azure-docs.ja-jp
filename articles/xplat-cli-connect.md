@@ -17,8 +17,8 @@ ms.date: 10/04/2016
 ms.author: rasquill
 "\"/": 
 translationtype: Human Translation
-ms.sourcegitcommit: 03d93ac0416a947d43dca66297588c4c5b656a1d
-ms.openlocfilehash: 18ea4ab3ab6b82fd43ee290ece790d61cabf16a4
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: 88414392c4ee03e0b140bba0f73e44b6886c4038
 
 
 ---
@@ -111,7 +111,7 @@ Azure Service Management モードの CLI コマンドを使用するだけで�
 >
 
 ## <a name="cli-command-modes"></a>CLI コマンド モード
-Azure CLI には、異なるコマンド セットを使用して、Azure リソースを操作するための次の 2 つのコマンド モードが用意されています。
+Azure CLI には、異なるコマンド セットを使用して、Azure リソースを操作するための次の&2; つのコマンド モードが用意されています。
 
 * **Resource Manager モード** - Resource Manager デプロイ モデルでの Azure リソースの操作用です。 このモードを設定するには、 `azure config mode arm`を実行します。
 * **サービス管理モード** - クラシック デプロイ モデルでの Azure リソースの操作用です。 このモードを設定するには、 `azure config mode asm`を実行します。
@@ -162,12 +162,12 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 アカウントに関連付けられたサブスクリプションが Active Directory のみを使用して認証された場合は、ログアウトするとローカル プロファイルからサブスクリプション情報が削除されます。 ただし、サブスクリプション用に発行設定ファイルがインポートされている場合は、ログアウトするとローカル プロファイルから Active Directory 関連の情報のみが削除されます。
 
 ## <a name="next-steps"></a>次のステップ
-* Azure CLI コマンドを使用するには、「[Resource Manager モードでの Azure CLI コマンド](virtual-machines/azure-cli-arm-commands.md)」および「[Azure サービス管理 (asm) モードでの Azure CLI コマンド](virtual-machines-command-line-tools.md)」をご覧ください。
+* Azure CLI コマンドを使用するには、「[Resource Manager モードでの Azure CLI コマンド](virtual-machines/azure-cli-arm-commands.md)」および「[Azure サービス管理 (asm) モードでの Azure CLI コマンド](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」をご覧ください。
 * Azure CLI の詳細、ソース コードのダウンロード、問題のレポート、プロジェクトへの協力については、 [GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli)のページを参照してください。
 * Azure CLI、または Azure を利用していて問題が発生した場合は、 [Azure のフォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting)をご覧ください。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

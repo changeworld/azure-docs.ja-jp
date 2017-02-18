@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 1e2569a6db330c908fe4087c1bc5a475d3e8a575
-ms.openlocfilehash: 0e1f7719c993dda419e3ebae7d50b91bd5effbc2
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: 9a9ae2758aba17f35b7262560f8d980404ecd394
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 0e1f7719c993dda419e3ebae7d50b91bd5effbc2
 
 オープン ソースでクロスプラットフォームの Azure CLI 2.0 (プレビュー) では、Azure Platform で使用できるコマンド群が提供されます。 豊富なデータ アクセスを含む、 [Azure Portal](https://portal.azure.com) にあるものと同じ機能の多くを使用できます。
 
-このガイドでは、[Azure CLI 2.0 (プレビュー)](/cli/azure/get-started-with-az-cli2) を使用して Azure Storage アカウント内のリソースを扱うタスクを実行する方法をいくつかご紹介します。 このガイドを使用する前に、最新バージョンの CLI 2.0 をダウンロードしてインストールするか、最新バージョンの CLI 2.0 にアップグレードすることをお勧めします。
+このガイドでは、[Azure CLI 2.0 (プレビュー)](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) を使用して Azure Storage アカウント内のリソースを扱うタスクを実行する方法をいくつかご紹介します。 このガイドを使用する前に、最新バージョンの CLI 2.0 をダウンロードしてインストールするか、最新バージョンの CLI 2.0 にアップグレードすることをお勧めします。
 
 ガイド内の例では、Ubuntu 上での Bash シェルの使用を想定していますが、その他のプラットフォームでも同様に動作します。 
 
@@ -364,12 +364,12 @@ az storage file copy start \
 ## <a name="next-steps"></a>次のステップ
 下記の資料で、Azure CLI 2.0 (プレビュー) の使用に関する詳細をさらにご覧いただけます。
 
-* [Azure CLI 2.0 (Preview) の概要](/cli/azure/get-started-with-az-cli2)
+* [Azure CLI 2.0 (Preview) の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Azure CLI 2.0 (Preview) コマンド リファレンス](/cli/azure)
 * [GitHub の Azure CLI 2.0 (Preview)](https://github.com/Azure/azure-cli)
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

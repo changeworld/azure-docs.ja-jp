@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a95b496d16459e415e4ece50b230615bd1bd2169
+ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
+ms.openlocfilehash: b3ad1ead522908d4b41b7cca98d20ac91664998e
 
 
 ---
@@ -35,7 +35,7 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
    
     ![コスト グラフ](./media/devtest-lab-configure-cost-management/graph.png)
 
-**[推定コスト]** 値は現在のカレンダー月のこれまでの推定コストです。 **[予測コスト]** は現在のカレンダー月全体の推定コストで、過去 5 日間のラボのコストを使用して計算されます。
+**[推定コスト]** 値は現在のカレンダー月のこれまでの推定コストです。 **[予測コスト]** は現在のカレンダー月全体の推定コストで、過去&5; 日間のラボのコストを使用して計算されます。
 
 コストの金額の端数は切り上げられます。 次に例を示します。 
 
@@ -46,7 +46,7 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
 グラフの上に示されているとおり、グラフに表示されるコストは、 *従量課金* プラン料金を使用した [推定](https://azure.microsoft.com/offers/ms-azr-0003p/) コストです。
 また、コスト計算には次のものは含まれて *いません* 。
 
-* CSP サブスクリプションと Dreamspark サブスクリプションは現在サポートされません。Azure DevTest Labs は、[Azure 課金 API](../billing-usage-rate-card-overview.md) を使用してラボ コストを計算しますが、CSP サブスクリプションも Dreamspark サブスクリプションもサポートしていないためです。
+* CSP サブスクリプションと Dreamspark サブスクリプションは現在サポートされません。Azure DevTest Labs は、[Azure 課金 API](../billing/billing-usage-rate-card-overview.md) を使用してラボ コストを計算しますが、CSP サブスクリプションも Dreamspark サブスクリプションもサポートしていないためです。
 * プラン料金。 現時点では、Microsoft または Microsoft パートナーとネゴシエートしたプラン料金 (サブスクリプションの下に表示される) は使用できません。 従量課金料金を使用します。
 * 税金
 * 割引
@@ -55,7 +55,7 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>関連するブログ記事
-* [Two more things to keep your cost on track in DevTest Labs (DevTest Labs でコストを正常に保つためのさらに 2 つのこと)](https://blogs.msdn.microsoft.com/devtestlab/2016/06/21/keep-your-cost-on-track/)
+* [Two more things to keep your cost on track in DevTest Labs (DevTest Labs でコストを正常に保つためのさらに&2; つのこと)](https://blogs.msdn.microsoft.com/devtestlab/2016/06/21/keep-your-cost-on-track/)
 * [Why Cost Thresholds? (なぜコストのしきい値か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/11/why-cost-thresholds/)
 
 ## <a name="next-steps"></a>次のステップ
@@ -69,6 +69,6 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

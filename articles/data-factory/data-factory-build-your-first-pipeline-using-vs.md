@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 12/15/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 52cf33c5b9f3c3818ef66b97f22d148f0bf7c859
-ms.openlocfilehash: 8efed4445977f1d75ede02ccc761138ba3a33928
+ms.sourcegitcommit: 0a4eb02e50c90f41bdc4f2db2af87e2b194da25a
+ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
 
 
 ---
@@ -31,7 +31,12 @@ ms.openlocfilehash: 8efed4445977f1d75ede02ccc761138ba3a33928
 >
 >
 
-この記事では、Microsoft Visual Studio を使用して最初の Azure データ ファクトリを作成します。
+この記事では、Microsoft Visual Studio を使用して最初の Azure データ ファクトリを作成します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。
+
+> [!NOTE]
+> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 データをソース データ ストアからターゲット データ ストアにコピーするのではありません。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database へのデータのコピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
+> 
+> 2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) には、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 詳細については、[Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 1. 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
@@ -165,7 +170,7 @@ ms.openlocfilehash: 8efed4445977f1d75ede02ccc761138ba3a33928
 2. 一覧から **[Azure BLOB]** を選択し、ファイルの名前を **OutputDataset.json** に変更して、**[追加]** をクリックします。
 3. エディターで **JSON** を次のコードに置き換えます。
 
-    この JSON スニペットでは、 **AzureBlobOutput**というデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
+    この JSON スニペットでは、 **AzureBlobOutput**というデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが&1; か月ごとに生成されることを指定します。
 
     ```JSON
     {
@@ -247,9 +252,7 @@ ms.openlocfilehash: 8efed4445977f1d75ede02ccc761138ba3a33928
         }
     }
     ```
-     この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
-
-    この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
+     この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する&1; つのアクティビティで構成されるパイプラインを作成します。
 
     Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (**AzureStorageLinkedService1** という名前で、scriptLinkedService で指定) および **adfgetstarted** コンテナーの **script** フォルダーに格納されます。
 
@@ -266,7 +269,7 @@ ms.openlocfilehash: 8efed4445977f1d75ede02ccc761138ba3a33928
 
 ### <a name="add-partitionweblogshql-and-inputlog-as-a-dependency"></a>依存関係として partitionweblogs.hql と input.log を追加する
 1. **[ソリューション エクスプローラー]** ウィンドウの **[依存関係]** を右クリックし、**[追加]** をポイントして、**[既存の項目]** をクリックします。  
-2. **C:\ADFGettingStarted** に移動し、**partitionweblogs.hql** ファイルと **input.log** ファイルを選択して、**[追加]** をクリックします。 これら 2 つのファイルは、「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md)」の前提条件の一環として作成しています。
+2. **C:\ADFGettingStarted** に移動し、**partitionweblogs.hql** ファイルと **input.log** ファイルを選択して、**[追加]** をクリックします。 これら&2; つのファイルは、「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md)」の前提条件の一環として作成しています。
 
 次の手順でソリューションを発行すると、**adfgetstarted** BLOB コンテナーの scripts フォルダーに **partitionweblogs.hql** ファイルがアップロードされます。   
 
@@ -295,7 +298,7 @@ ms.openlocfilehash: 8efed4445977f1d75ede02ccc761138ba3a33928
 
 - "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。
     - Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
-        ```PowerShell   
+        ```PowerShell    
         Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
         ```
         Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
@@ -505,26 +508,26 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 このチュートリアルでは、HDInsight Hadoop クラスター上で Hive スクリプトを実行してデータを処理するために、Azure データ ファクトリを作成しました。 以下の手順を実行するために、Azure ポータルで Data Factory エディターを使用しました。  
 
 1. Azure **データ ファクトリ**を作成しました。
-2. 次の 2 つの **リンクされたサービス**を作成しました。
+2. 次の&2; つの **リンクされたサービス**を作成しました。
    1. **Azure Storage** のリンクされたサービス。
    2. **Azure HDInsight** オンデマンドのリンクされたサービス。 Azure Data Factory は、入力データを処理し、出力データを生成するために、HDInsight Hadoop クラスターをジャストインタイムで作成します。
-3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの **データセット**を作成しました。
+3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する&2; つの **データセット**を作成しました。
 4. **HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。  
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「 [チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
-| トピック | 説明 |
+| トピック | Description |
 |:--- |:--- |
-| [データ変換のアクティビティ](data-factory-data-transformation-activities.md) |この記事には、Azure Data Factory でサポートされているデータ変換のアクティビティ (このチュートリアルで使用した HDInsight Hive 変換など) の一覧を示します。 |
-| [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
+| [データ変換のアクティビティ](data-factory-data-transformation-activities.md) |この記事には、Azure Data Factory でサポートされているデータ変換のアクティビティ (このチュートリアルで使用した HDInsight Hive 変換など) の一覧を示します。 |
+| [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) |この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

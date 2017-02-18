@@ -1,5 +1,5 @@
 ---
-title: "コンテンツ保護の概要 | Microsoft Docs"
+title: "Azure Media Services を使用してコンテンツを保護する | Microsoft Docs"
 description: "この記事では、Media Services でのコンテンツ保護の概要について説明します。"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 9d3718cf80e023f4c5b9c523375b77083a9d7be7
+ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
+ms.openlocfilehash: bf2bd9bca8817f64790ac62d2981a51aa36566a3
 
 
 ---
@@ -27,10 +27,8 @@ Microsoft Azure Media Services を使用すると、メディアがコンピュ�
 
 ![PlayReady による保護](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
-> [!NOTE]
-> 動的暗号化を使用するには、暗号化されたコンテンツのストリーミング元となるストリーミング エンドポイントに、少なくとも 1 つのストリーミング予約ユニットが必要です。
-> 
-> 
+>[!NOTE]
+>AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
 
 このトピックでは、AMS でのコンテンツ保護の理解に関する [概念と用語](media-services-content-protection-overview.md) を説明します。 また、ここに記載されたトピックへの [リンク](media-services-content-protection-overview.md#common-scenarios) から、コンテンツ保護タスクを実行する方法を確認することもできます。 
 
@@ -45,10 +43,6 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 
 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES クリア キーまたは DRM 暗号化によってコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
-> [!NOTE]
-> 動的暗号化を活用するには、暗号化されたコンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。 詳細については、「 [Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」を参照してください。
-> 
-> 
 
 ## <a name="storage-encryption"></a>ストレージ暗号化
 ストレージ暗号化で AES 256 ビット暗号化を使用してクリア コンテンツをローカルに暗号化し、それを Azure Storage にアップロードすると、コンテンツが保存時に暗号化された状態で格納されます。 ストレージの暗号化で保護された資産は、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに置かれます。その後、新しい出力資産として再度アップロードする前に必要に応じて再度暗号化されます。 ストレージの暗号化の主な使用事例としては、高品質の入力メディア ファイルをディスクに保存するときに強力な暗号化を使用してセキュリティを保護する場合が挙げられます。
@@ -77,7 +71,7 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 
 次の考慮事項が適用されます。
 
-* 指定できるのは、ゼロまたは 1 つの暗号化タイプのみです。
+* 指定できるのは、ゼロまたは&1; つの暗号化タイプのみです。
 * 1 つの暗号化のみが資産に適用された場合は、暗号化タイプを URL で指定する必要はありません。
 * 暗号化タイプでは大文字と小文字が区別されます。
 * 指定できる暗号化タイプは次のとおりです。  
@@ -95,6 +89,10 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 ### <a name="additional-scenarios"></a>その他のシナリオ
 * [Azure PlayReady ライセンス サービスと個人の暗号化/ストリーミング サーバーを統合する方法](http://mingfeiy.com/integrate-azure-playready-license-service-encryptorstreaming-server)
 * [castLabs を使用して Azure Media Services に DRM ライセンスを配信する](media-services-castlabs-integration.md)
+
+>[!NOTE]
+>外部の DRM サーバー (テクノロジー) を使用し、AMS からストリーミングするシナリオは、現在サポートされていません。
+
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -119,6 +117,6 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

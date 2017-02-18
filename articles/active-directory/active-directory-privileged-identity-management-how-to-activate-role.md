@@ -3,7 +3,7 @@ title: "ロールをアクティブ化または非アクティブ化する方法
 description: "Azure Privileged Identity Management アプリケーションで特権 ID のロールをアクティブ化する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 1ce9e2e7-452b-4f66-9588-0d9cd2539e45
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2016
-ms.author: kgremban
+ms.date: 02/14/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 67695e5715e83e2214b27a2abd76a3f68fb4a75a
+ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
+ms.openlocfilehash: f70fec829b273de97fc49e61ba42d511b6b141b3
 
 
 ---
@@ -42,7 +42,7 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 2. **[ロールをアクティブ化する]**をクリックします。 割り当てられているロールの一覧が表示されます。
 3. アクティブ化するロールを選択します。
 4. **[アクティブ化]**を選択します。 **[ロール アクティブ化要求]** ブレードが表示されます。
-5. 一部のロールをアクティブ化するには、多要素認証 (MFA) が必要になります。 認証は、セッションごとに 1 回だけ行う必要があります。
+5. 一部のロールをアクティブ化するには、多要素認証 (MFA) が必要になります。 認証は、セッションごとに&1; 回だけ行う必要があります。
    
     ![ロール アクティブ化前の MFA の確認 - スクリーンショット][2]
 6. テキスト フィールドにアクティブ化要求の理由を入力します。  一部のロールでは、トラブル チケット番号を入力するように求められます。
@@ -53,7 +53,6 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 
 早期に終了した場合は、Azure AD Privileged Identity Management アプリケーションでロールを手動で非アクティブにすることもできます。  **[ロールをアクティブ化する]** をクリックし、使用しなくなったロールを選択して **[非アクティブ化]** をクリックします。  
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次のステップ
 Azure AD Privileged Identity Management の詳細を、次のリンクで確認できます。
 
@@ -66,6 +65,6 @@ Azure AD Privileged Identity Management の詳細を、次のリンクで確認�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

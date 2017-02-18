@@ -1,5 +1,5 @@
 ---
-title: "SQL Server 障害復旧および Azure Site Recovery を使用した SQL Server の保護 | Microsoft Docs"
+title: "SQL Server および Azure Site Recovery を使用したアプリのレプリケート | Microsoft Docs"
 description: "この記事では、SQL Server の災害機能の Azure Site Recovery を使用して、SQL Server をレプリケートする方法について説明します。"
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2016
+ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: ea2078722beb7c76c59f1f6cfe3bf82aac5e4a77
-ms.openlocfilehash: 20e64a0f9319596167c1f8d1a0b22c0fa8c514c7
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: 2d55db297bcef2c5789cb33a8791cf2c787a0789
 
 
 ---
@@ -93,7 +93,7 @@ SQL Server を正常に実行するには、セカンダリ復旧サイトに Ac
 Site Recovery は SQL AlwaysOn をネイティブでサポートします。 Azure の仮想マシンを "セカンダリ" として設定した状態で SQL 可用性グループを作成した場合、Site Recovery を使用して可用性グループのフェールオーバーを管理できます。
 
 > [!NOTE]
-> この機能は現在プレビュー段階です。プライマリ データセンターの VMM クラウドで Hyper-V ホスト サーバーが管理され、VMware の設定が[構成サーバー](site-recovery-vmware-to-azure.md#configuration-server-or-additional-process-server-prerequisites)によって管理されるようになると使用できます。 現時点では、この機能は新しい Azure ポータルで使用できません。 新しい Azure ポータルを使用している場合は、[こちらのセクション](site-recovery-sql.md#protect-machines-in-new-azure-portal-or-without-a-vmm-server-or-a-configuration-server-in-classic-azure-portal)の手順に従ってください。 
+> この機能は現在プレビュー段階です。プライマリ データセンターの VMM クラウドで Hyper-V ホスト サーバーが管理され、VMware の設定が[構成サーバー](site-recovery-vmware-to-azure.md#configuration-server-or-additional-process-server-prerequisites)によって管理されるようになると使用できます。 現時点では、この機能は新しい Azure ポータルで使用できません。 新しい Azure ポータルを使用している場合は、[こちらのセクション](site-recovery-sql.md#protect-machines-in-new-azure-portal-or-without-a-vmm-server-or-a-configuration-server-in-classic-azure-portal)の手順に従ってください。
 >
 >
 
@@ -205,15 +205,15 @@ VMM Server または構成サーバーで管理されない環境については
 
 
 1. **テスト フェールオーバー**: SQL AlwaysOn は、テスト フェールオーバーをネイティブでサポートしていません。 そのため、次の方法が推奨されます。
-    1. Azure で可用性グループ レプリカをホストする仮想マシンに [Azure Backup](../backup/backup-azure-vms.md) をセットアップします。 
+    1. Azure で可用性グループ レプリカをホストする仮想マシンに [Azure Backup](../backup/backup-azure-vms.md) をセットアップします。
     1. 復旧計画のテスト フェールオーバーをトリガーする前に、手順&1; で作成したバックアップから仮想マシンを復元します。
     1. 復旧計画のテスト フェールオーバーを行います。
 
 
 > [!NOTE]
 > 下のスクリプトは、SQL 可用性グループが従来の Azure 仮想マシンでホストされていること、および手順&2; で復元した仮想マシンの名前が SQLAzureVM-Test であることを前提としています。 復元した仮想マシンの名前に応じてスクリプトを変更してください。
-> 
-> 
+>
+>
 
 
      workflow SQLAvailabilityGroupFailover
@@ -241,7 +241,7 @@ VMM Server または構成サーバーで管理されない環境については
           if ($Using:RecoveryPlanContext.FailoverType -eq "Test")
                 {
                     Write-output "tfo"
-                    
+
                     Write-Output "Creating ILB"
                     Add-AzureInternalLoadBalancer -InternalLoadBalancerName SQLAGILB -SubnetName Subnet-1 -ServiceName SQLAzureVM-Test -StaticVNetIPAddress #IP
                     Write-Output "ILB Created"
@@ -251,14 +251,14 @@ VMM Server または構成サーバーで管理されない環境については
                     Get-AzureVM -ServiceName "SQLAzureVM-Test" -Name "SQLAzureVM-Test"| Add-AzureEndpoint -Name sqlag -LBSetName sqlagset -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName SQLAGILB | Update-AzureVM
 
                     Write-Output "Added Endpoint"
-        
-                    $VM = Get-AzureVM -Name "SQLAzureVM-Test" -ServiceName "SQLAzureVM-Test" 
-                       
+
+                    $VM = Get-AzureVM -Name "SQLAzureVM-Test" -ServiceName "SQLAzureVM-Test"
+
                     Write-Output "UnInstalling custom script extension"
-                    Set-AzureVMCustomScriptExtension -Uninstall -ReferenceName CustomScriptExtension -VM $VM |Update-AzureVM 
+                    Set-AzureVMCustomScriptExtension -Uninstall -ReferenceName CustomScriptExtension -VM $VM |Update-AzureVM
                     Write-Output "Installing custom script extension"
                     Set-AzureVMExtension -ExtensionName CustomScriptExtension -VM $vm -Publisher Microsoft.Compute -Version 1.*| Update-AzureVM   
-                    
+
                     Write-output "Starting AG Failover"
                     Set-AzureVMCustomScriptExtension -VM $VM -FileUri $sasuri -Run "AGFailover.ps1" -Argument "-Path sqlserver:\sql\sqlazureVM\default\availabilitygroups\testag"  | Update-AzureVM
                     Write-output "Completed AG Failover"
@@ -342,6 +342,6 @@ SQL Standard のクラスターの場合、計画外のフェールオーバー�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

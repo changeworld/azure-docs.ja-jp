@@ -1,5 +1,5 @@
 ---
-title: "Azure Container Registry の概要 | Microsoft Docs"
+title: "Azure におけるプライベート Docker コンテナー レジストリ | Microsoft Docs"
 description: "クラウド ベースの管理されたプライベート Docker レジストリを提供する Azure Container Registry サービスの紹介です。"
 services: container-registry
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
 translationtype: Human Translation
-ms.sourcegitcommit: 806ffa8ce0c434d2a6cc1c7ec3a6e89be9145679
-ms.openlocfilehash: 6661766d71d56e49b8840aeb250c105e132b9b04
+ms.sourcegitcommit: f299cff22d00a1c765a32838647818d18f3df85d
+ms.openlocfilehash: 44bfd57feecc45e037717a35b64dd8e4bfb6a1b3
 
 ---
 # <a name="what-is-azure-container-registry"></a>Azure Container Registry とは
@@ -34,7 +34,7 @@ Docker とコンテナーに関する背景情報については、次を参照�
 * [Azure Container Registry プレビューに関する発表](https://azure.microsoft.com/blog/azure-container-registry-preview/) 
 
 ## <a name="key-concepts"></a>主要な概念
-* **レジストリ** - Azure サブスクリプションに 1 つ以上のコンテナー レジストリを作成できます。 各レジストリは、同じ場所の Standard Azure [ストレージ アカウント](../storage/storage-introduction.md)でサポートされます。 ネットワーク上の近い場所にローカルで保存されたコンテナー イメージを活用するために、デプロイと同じ Azure の場所にレジストリを作成します。 
+* **レジストリ** - Azure サブスクリプションに&1; つ以上のコンテナー レジストリを作成できます。 各レジストリは、同じ場所の Standard Azure [ストレージ アカウント](../storage/storage-introduction.md)でサポートされます。 ネットワーク上の近い場所にローカルで保存されたコンテナー イメージを活用するために、デプロイと同じ Azure の場所にレジストリを作成します。 
 
   レジストリは、サブスクリプションの [Azure Active Directory テナント](../active-directory/active-directory-howto-tenant.md)に基づくルート ドメインで命名されます。 たとえば、組織アカウントが Contoso ドメインにある場合、レジストリの完全修飾名は `myregistry-contoso.azurecr.io` という形式になります。 
   
@@ -71,6 +71,6 @@ Azure コンテナー レジストリからさまざまなデプロイ ターゲ
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

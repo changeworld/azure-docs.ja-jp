@@ -1,5 +1,5 @@
 ---
-title: "PowerShell を使用してアクセス制御リスト (ACL) のエンドポイントを管理する方法"
+title: "Azure エンドポイントのアクセス制御リストの管理 | PowerShell | クラシック | Microsoft Docs"
 description: "PowerShell を使用して ACL を管理する方法を説明します。"
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 6d0e461daa9a06f490c2fe1a85d160d013f26829
+ms.sourcegitcommit: 18d33244603cff921f1282ba41f3aeb6e42ae542
+ms.openlocfilehash: 60ed242b78576d4673e41801a8687a354d09bf9c
 
 
 ---
-# <a name="how-to-manage-access-control-lists-acls-for-endpoints-by-using-powershell"></a>PowerShell を使用してアクセス制御リスト (ACL) のエンドポイントを管理する方法
+# <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>クラシック デプロイメント モデルで PowerShell を使用してエンドポイントのアクセス制御リストを管理する
 Azure PowerShell を使用して、または管理ポータルで、エンドポイントのネットワーク アクセス制御リスト (ACL) を作成し、管理できます。 このトピックでは PowerShell を使用して完了できる ACL の一般的なタスクの手順を説明します。 Azure PowerShell コマンドレットの一覧については、 [Azure の管理コマンドレット](http://go.microsoft.com/fwlink/?LinkId=317721)に関するページを参照してください。 ACL の詳細については、「 [ネットワーク アクセス制御リスト (ACL) とは](virtual-networks-acl.md)」を参照してください。 管理ポータルを使用して ACL を管理する場合は、 [仮想マシンにエンドポイントを設定する方法](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページをご覧ください。
 
 ## <a name="manage-network-acls-by-using-azure-powershell"></a>Azure PowerShell を使用してネットワーク ACL を管理する
@@ -92,6 +92,6 @@ ACL PowerShell コマンドレットの完全な一覧を取得するには、�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

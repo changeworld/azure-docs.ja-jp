@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory と API Management で Web API バックエンドを保護する方法"
+title: "Azure Active Directory と API Management で Web API バックエンドを保護する | Microsoft Docs"
 description: "Azure Active Directory と API Management で Web API バックエンドを保護する方法について説明します。"
 services: api-management
 documentationcenter: 
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
-ms.author: sdanie
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: c412bea7a030c2563c413584ad3f58c5d4379e47
-ms.openlocfilehash: f781d0d614625cba1d1e8ee378ddd4caf3e8bcab
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: af21253dadd5cd2f64149aa2738e459da9f8325a
 
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で Web API バックエンドを保護する方法
@@ -82,18 +81,22 @@ Azure へのサインインを求めるメッセージが表示され、Web ア�
 
 `CalcInput.cs` ファイルの先頭に次の `using` ステートメントを追加します。
 
-    using Newtonsoft.Json;
+```c#
+using Newtonsoft.Json;
+```
 
- 生成されたクラスを次のコードで置き換えます。
+生成されたクラスを次のコードで置き換えます。
 
-    public class CalcInput
-    {
-        [JsonProperty(PropertyName = "a")]
-        public int a;
+```c#
+public class CalcInput
+{
+    [JsonProperty(PropertyName = "a")]
+    public int a;
 
-        [JsonProperty(PropertyName = "b")]
-        public int b;
-    }
+    [JsonProperty(PropertyName = "b")]
+    public int b;
+}
+```
 
 **ソリューション エクスプローラー**で **[コントローラー]** を右クリックし、**[追加]**、->**[コントローラー]** の順に選択します。 **[Web API 2 コントローラー - 空]** をクリックしてから **[追加]** をクリックします。 コントローラーの名前として「**CalcController**」と入力し、**[追加]** をクリックします。
 
@@ -101,55 +104,59 @@ Azure へのサインインを求めるメッセージが表示され、Web ア�
 
 `CalcController.cs` ファイルの先頭に次の `using` ステートメントを追加します。
 
-    using System.IO;
-    using System.Web;
-    using APIMAADDemo.Models;
+```c#
+using System.IO;
+using System.Web;
+using APIMAADDemo.Models;
+```
 
 生成されたコントローラー クラスを次のコードで置き換えます。 このコードは、Basic Calculator API の操作である `Add`、`Subtract`、`Multiply`、`Divide` を実装します。
 
-    [Authorize]
-    public class CalcController : ApiController
+```c#
+[Authorize]
+public class CalcController : ApiController
+{
+    [Route("api/add")]
+    [HttpGet]
+    public HttpResponseMessage GetSum([FromUri]int a, [FromUri]int b)
     {
-        [Route("api/add")]
-        [HttpGet]
-        public HttpResponseMessage GetSum([FromUri]int a, [FromUri]int b)
-        {
-            string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a + b);
-            HttpResponseMessage response = Request.CreateResponse();
-            response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
-            return response;
-        }
-
-        [Route("api/sub")]
-        [HttpGet]
-        public HttpResponseMessage GetDiff([FromUri]int a, [FromUri]int b)
-        {
-            string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a - b);
-            HttpResponseMessage response = Request.CreateResponse();
-            response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
-            return response;
-        }
-
-        [Route("api/mul")]
-        [HttpGet]
-        public HttpResponseMessage GetProduct([FromUri]int a, [FromUri]int b)
-        {
-            string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a * b);
-            HttpResponseMessage response = Request.CreateResponse();
-            response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
-            return response;
-        }
-
-        [Route("api/div")]
-        [HttpGet]
-        public HttpResponseMessage GetDiv([FromUri]int a, [FromUri]int b)
-        {
-            string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a / b);
-            HttpResponseMessage response = Request.CreateResponse();
-            response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
-            return response;
-        }
+        string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a + b);
+        HttpResponseMessage response = Request.CreateResponse();
+        response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
+        return response;
     }
+
+    [Route("api/sub")]
+    [HttpGet]
+    public HttpResponseMessage GetDiff([FromUri]int a, [FromUri]int b)
+    {
+        string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a - b);
+        HttpResponseMessage response = Request.CreateResponse();
+        response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
+        return response;
+    }
+
+    [Route("api/mul")]
+    [HttpGet]
+    public HttpResponseMessage GetProduct([FromUri]int a, [FromUri]int b)
+    {
+        string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a * b);
+        HttpResponseMessage response = Request.CreateResponse();
+        response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
+        return response;
+    }
+
+    [Route("api/div")]
+    [HttpGet]
+    public HttpResponseMessage GetDiv([FromUri]int a, [FromUri]int b)
+    {
+        string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a / b);
+        HttpResponseMessage response = Request.CreateResponse();
+        response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
+        return response;
+    }
+}
+```
 
 **F6** キーを押して、ソリューションをビルドし、検証します。
 
@@ -179,7 +186,7 @@ Azure AD アプリケーションが API Management 開発者ポータルに構�
 ![App Id URI][api-management-aad-sso-uri]
 
 ## <a name="import-the-web-api-into-api-management"></a>API Management に Web API をインポートする
-API は、API パブリッシャー ポータルから構成されます。このポータルには、Azure Portal からアクセスします。 パブリッシャー ポータルにアクセスするには、API Management サービスのツール バーの **[パブリッシャー ポータル]** をクリックします。 API Management サービス インスタンスをまだ作成していない場合は、「[Azure API Management での最初の API の管理][API Management インスタンスの作成]」の [API Management サービス インスタンスの作成][API Management サービス インスタンスの作成]に関するセクションをご覧ください。
+API は、API パブリッシャー ポータルから構成されます。このポータルには、Azure Portal からアクセスします。 パブリッシャー ポータルにアクセスするには、API Management サービスのツール バーの **[パブリッシャー ポータル]** をクリックします。 API Management サービス インスタンスをまだ作成していない場合は、「[Azure API Management での最初の API の管理][Manage your first API]」チュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」をご覧ください。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
@@ -187,147 +194,147 @@ API は、API パブリッシャー ポータルから構成されます。こ�
 
 次の内容のファイルを `calcapi.json` という名前で作成し、コンピューターに保存します。 `host` 属性がお使いの Web API バックエンドを指定していることを確認します。 この例では、 `"host": "apimaaddemo.azurewebsites.net"` が使用されます。
 
-
-    {
-      "swagger": "2.0",
-      "info": {
-        "title": "Calculator",
-        "description": "Arithmetics over HTTP!",
-        "version": "1.0"
-      },
-      "host": "apimaaddemo.azurewebsites.net",
-      "basePath": "/api",
-      "schemes": [
-        "http"
-      ],
-      "paths": {
-        "/add?a={a}&b={b}": {
-          "get": {
-            "description": "Responds with a sum of two numbers.",
-            "operationId": "Add two integers",
-            "parameters": [
-              {
-                "name": "a",
-                "in": "query",
-                "description": "First operand. Default value is <code>51</code>.",
-                "required": true,
-                "type": "string",
-                "default": "51",
-                "enum": [
-                  "51"
-                ]
-              },
-              {
-                "name": "b",
-                "in": "query",
-                "description": "Second operand. Default value is <code>49</code>.",
-                "required": true,
-                "type": "string",
-                "default": "49",
-                "enum": [
-                  "49"
-                ]
-              }
-            ],
-            "responses": { }
+```json
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Calculator",
+    "description": "Arithmetics over HTTP!",
+    "version": "1.0"
+  },
+  "host": "apimaaddemo.azurewebsites.net",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/add?a={a}&b={b}": {
+      "get": {
+        "description": "Responds with a sum of two numbers.",
+        "operationId": "Add two integers",
+        "parameters": [
+          {
+            "name": "a",
+            "in": "query",
+            "description": "First operand. Default value is <code>51</code>.",
+            "required": true,
+            "type": "string",
+            "default": "51",
+            "enum": [
+              "51"
+            ]
+          },
+          {
+            "name": "b",
+            "in": "query",
+            "description": "Second operand. Default value is <code>49</code>.",
+            "required": true,
+            "type": "string",
+            "default": "49",
+            "enum": [
+              "49"
+            ]
           }
-        },
-        "/sub?a={a}&b={b}": {
-          "get": {
-            "description": "Responds with a difference between two numbers.",
-            "operationId": "Subtract two integers",
-            "parameters": [
-              {
-                "name": "a",
-                "in": "query",
-                "description": "First operand. Default value is <code>100</code>.",
-                "required": true,
-                "type": "string",
-                "default": "100",
-                "enum": [
-                  "100"
-                ]
-              },
-              {
-                "name": "b",
-                "in": "query",
-                "description": "Second operand. Default value is <code>50</code>.",
-                "required": true,
-                "type": "string",
-                "default": "50",
-                "enum": [
-                  "50"
-                ]
-              }
-            ],
-            "responses": { }
+        ],
+        "responses": { }
+      }
+    },
+    "/sub?a={a}&b={b}": {
+      "get": {
+        "description": "Responds with a difference between two numbers.",
+        "operationId": "Subtract two integers",
+        "parameters": [
+          {
+            "name": "a",
+            "in": "query",
+            "description": "First operand. Default value is <code>100</code>.",
+            "required": true,
+            "type": "string",
+            "default": "100",
+            "enum": [
+              "100"
+            ]
+          },
+          {
+            "name": "b",
+            "in": "query",
+            "description": "Second operand. Default value is <code>50</code>.",
+            "required": true,
+            "type": "string",
+            "default": "50",
+            "enum": [
+              "50"
+            ]
           }
-        },
-        "/div?a={a}&b={b}": {
-          "get": {
-            "description": "Responds with a quotient of two numbers.",
-            "operationId": "Divide two integers",
-            "parameters": [
-              {
-                "name": "a",
-                "in": "query",
-                "description": "First operand. Default value is <code>100</code>.",
-                "required": true,
-                "type": "string",
-                "default": "100",
-                "enum": [
-                  "100"
-                ]
-              },
-              {
-                "name": "b",
-                "in": "query",
-                "description": "Second operand. Default value is <code>20</code>.",
-                "required": true,
-                "type": "string",
-                "default": "20",
-                "enum": [
-                  "20"
-                ]
-              }
-            ],
-            "responses": { }
+        ],
+        "responses": { }
+      }
+    },
+    "/div?a={a}&b={b}": {
+      "get": {
+        "description": "Responds with a quotient of two numbers.",
+        "operationId": "Divide two integers",
+        "parameters": [
+          {
+            "name": "a",
+            "in": "query",
+            "description": "First operand. Default value is <code>100</code>.",
+            "required": true,
+            "type": "string",
+            "default": "100",
+            "enum": [
+              "100"
+            ]
+          },
+          {
+            "name": "b",
+            "in": "query",
+            "description": "Second operand. Default value is <code>20</code>.",
+            "required": true,
+            "type": "string",
+            "default": "20",
+            "enum": [
+              "20"
+            ]
           }
-        },
-        "/mul?a={a}&b={b}": {
-          "get": {
-            "description": "Responds with a product of two numbers.",
-            "operationId": "Multiply two integers",
-            "parameters": [
-              {
-                "name": "a",
-                "in": "query",
-                "description": "First operand. Default value is <code>20</code>.",
-                "required": true,
-                "type": "string",
-                "default": "20",
-                "enum": [
-                  "20"
-                ]
-              },
-              {
-                "name": "b",
-                "in": "query",
-                "description": "Second operand. Default value is <code>5</code>.",
-                "required": true,
-                "type": "string",
-                "default": "5",
-                "enum": [
-                  "5"
-                ]
-              }
-            ],
-            "responses": { }
+        ],
+        "responses": { }
+      }
+    },
+    "/mul?a={a}&b={b}": {
+      "get": {
+        "description": "Responds with a product of two numbers.",
+        "operationId": "Multiply two integers",
+        "parameters": [
+          {
+            "name": "a",
+            "in": "query",
+            "description": "First operand. Default value is <code>20</code>.",
+            "required": true,
+            "type": "string",
+            "default": "20",
+            "enum": [
+              "20"
+            ]
+          },
+          {
+            "name": "b",
+            "in": "query",
+            "description": "Second operand. Default value is <code>5</code>.",
+            "required": true,
+            "type": "string",
+            "default": "5",
+            "enum": [
+              "5"
+            ]
           }
-        }
+        ],
+        "responses": { }
       }
     }
-
+  }
+}
+```
 
 電卓 API をインポートするには、左側の **[API Management]** メニューの **[API]** をクリックし、**[API のインポート]** をクリックします。
 
@@ -380,9 +387,9 @@ OAuth 2.0 を使用して開発者を承認するように開発者ポータル�
 
 ![新規アプリケーション][api-management-aad-new-application-devportal-1]
 
-**[サインオン URL]** に API Management サービスの URL を入力し、`/signin` を追加します。 この例では **https://contoso5.portal.azure-api.net/signin** を使用します。
+**[サインオン URL]** に API Management サービスの URL を入力し、`/signin` を追加します。 この例では、 `https://contoso5.portal.azure-api.net/signin` が使用されます。
 
-**[アプリ URL]** に API Management サービスの URL を入力し、一意の文字をいくつか追加します。 この例では **https://contoso5.portal.azure-api.net/dp** を使用しますが、ここには任意の文字を入力できます。 必要な **[アプリケーションのプロパティ]** が構成されたら、チェック マークをクリックして、アプリケーションを作成します。
+**[アプリ URL]** に API Management サービスの URL を入力し、一意の文字をいくつか追加します。 この例では `https://contoso5.portal.azure-api.net/dp` を使用しますが、ここには任意の文字を入力できます。 必要な **[アプリケーションのプロパティ]** が構成されたら、チェック マークをクリックして、アプリケーションを作成します。
 
 ![新規アプリケーション][api-management-aad-new-application-devportal-2]
 
@@ -490,14 +497,16 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>要求を事前承認する JWT 検証ポリシーを構成する
 ビデオの 20:48 から始まる最後の手順では、 [JWT を検証する](https://msdn.microsoft.com/library/azure/034febe3-465f-4840-9fc6-c448ef520b0f#ValidateJWT) ポリシーを使用して、各受信要求のアクセス トークンを検証することで要求を事前承認する方法について説明します。 JWT の検証ポリシーで要求が検証されない場合、要求は API Management によってブロックされ、バックエンドへは渡されません。
 
-    <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-        <openid-config url="https://login.windows.net/DemoAPIM.onmicrosoft.com/.well-known/openid-configuration" />
-        <required-claims>
-            <claim name="aud">
-                <value>https://DemoAPIM.NOTonmicrosoft.com/APIMAADDemo</value>
-            </claim>
-        </required-claims>
-    </validate-jwt>
+```xml
+<validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
+    <openid-config url="https://login.windows.net/DemoAPIM.onmicrosoft.com/.well-known/openid-configuration" />
+    <required-claims>
+        <claim name="aud">
+            <value>https://DemoAPIM.NOTonmicrosoft.com/APIMAADDemo</value>
+        </claim>
+    </required-claims>
+</validate-jwt>
+```
 
 このポリシーの構成と使用についての別のデモは、「 [「Cloud Cover Episode 177: More API Management Features (クラウド カバー エピソード 177: その他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 」を 13:50 まで早送りしてご覧ください。 15:00 まで早送りし、ポリシー エディターで構成されるポリシーをご覧いただいた後、開発者ポータルから操作を呼び出す方法について、必要な認証トークンを使用した場合と使用しない場合の両方のデモを 18:50 からご覧ください。
 
@@ -551,11 +560,11 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 [api-management-client-credentials]: ./media/api-management-howto-protect-backend-with-aad/api-management-client-credentials.png
 [api-management-new-aad-application-menu]: ./media/api-management-howto-protect-backend-with-aad/api-management-new-aad-application-menu.png
 
-[API Management サービス インスタンスの作成]: api-management-get-started.md#create-service-instance
-[API Management インスタンスの作成]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Manage your first API]: api-management-get-started.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 259ad6e8481545c48865fbb108956b70251ade7c
-ms.openlocfilehash: 16d5b3347e01718a9976b6fa5e6d0b92c073da21
+ms.sourcegitcommit: 1493bf0a545cd605b80404413894bd56e1ced735
+ms.openlocfilehash: ebd8734ad2de6f5e528e941f90098de079966f48
 
 
 ---
@@ -47,7 +47,7 @@ VM 拡張機能がエンドツーエンドのアプリケーションのデプ�
 ### <a name="azure-vm-agent"></a>Azure VM エージェント
 Azure VM エージェントは、Azure 仮想マシンと Azure ファブリック コントローラーとの相互動作を管理します。 VM エージェントは、Azure Virtual Machines のデプロイと管理の多くの機能面を担当します (VM 拡張機能の実行など)。 Azure VM エージェントは、Azure Marketplace イメージにプレインストールされており、サポートされているオペレーティング システムにインストールすることができます。
 
-サポートされているオペレーティング システムとインストール手順については、[Azure 仮想マシンのエージェント](virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関する記事をご覧ください。
+サポートされているオペレーティング システムとインストール手順については、[Azure 仮想マシンのエージェント](virtual-machines-windows-agent-user-guide.md)に関する記事をご覧ください。
 
 ## <a name="discover-vm-extensions"></a>VM 拡張機能の検出
 Azure Virtual Machines と共に、さまざまな VM 拡張機能を使用できます。 完全な一覧を表示するには、Azure Resource Manager の PowerShell モジュールを使って、次のコマンドを実行します。 このコマンドの実行時に、目的の場所を指定してください。
@@ -279,7 +279,7 @@ Azure Portalを使って拡張機能を削除することもできます。 そ�
 4. **[アンインストール]** を選択します。
 
 ## <a name="common-vm-extensions-reference"></a>一般的な VM 拡張機能のリファレンス
-| 拡張機能の名前 | Description | 詳細情報 |
+| 拡張機能の名前 | 説明 | 詳細情報 |
 | --- | --- | --- |
 | Windows でのカスタムのスクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します |[Windows でのカスタムのスクリプト拡張機能](virtual-machines-windows-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | Windows での DSC 拡張機能 |PowerShell DSC (必要な状態の構成) 拡張機能 |[Windows での DSC 拡張機能](virtual-machines-windows-extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
@@ -288,6 +288,6 @@ Azure Portalを使って拡張機能を削除することもできます。 そ�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

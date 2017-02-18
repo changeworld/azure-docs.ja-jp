@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL Database の概要 | Microsoft Docs"
-description: "このページは、Azure SQL Database の概要を示します。"
+title: "Azure SQL データベースとは | Microsoft Docs"
+description: "この記事は、Azure SQL Database の概要を示します。"
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -10,14 +10,14 @@ ms.assetid:
 ms.service: sql-database
 ms.custom: single databases
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 315fb49ba25c46afaa6571d9249ecd1c8da13e91
+ms.sourcegitcommit: 06639080dec485395d6821c371a4f792c7c02845
+ms.openlocfilehash: 5e3ac3a08ea3e5c72082dcc7faa209d848acf2fe
 
 
 ---
@@ -71,6 +71,6 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

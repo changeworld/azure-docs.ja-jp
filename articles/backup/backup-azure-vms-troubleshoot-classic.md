@@ -1,6 +1,6 @@
 ---
-title: "Azure 仮想マシンのバックアップのトラブルシューティング | Microsoft Docs"
-description: "Azure 仮想マシンのバックアップと復元のトラブルシューティング"
+title: "クラシック ポータルでの Azure Backup のエラーのトラブルシューティング | Microsoft Docs"
+description: "クラシック ポータルで Azure Backup と Azure 仮想マシンの復元に関するトラブルシューティングを行います。"
 services: backup
 documentationcenter: 
 author: trinadhk
@@ -12,11 +12,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
-ms.author: trinadhk;jimpark;
+ms.date: 1/23/2017
+ms.author: trinadhk;markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: e2c22d2833a7905ba6001178be8709ec81c26000
+ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
+ms.openlocfilehash: 2149407ff4e04f6a52a45c419382617810a63633
 
 
 ---
@@ -39,7 +39,7 @@ ms.openlocfilehash: e2c22d2833a7905ba6001178be8709ec81c26000
 | バックアップ操作 | エラーの詳細 | 対処法 |
 | --- | --- | --- |
 | 登録 |仮想マシンに接続されたデータ ディスクの数がサポートされている上限を超えています - この仮想マシンのデータ ディスクをいくつか切断してから、操作をやり直してください。 Azure Backup では、バックアップ用に Azure の仮想マシンに接続できるデータ ディスクは 16 個までです。 |なし |
-| 登録 |Microsoft Azure Backup で内部エラーが発生しました。しばらくしてから操作をやり直してください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 |このエラーは、Premium LRS の VM の次のいずれかの構成がサポートされていないことが原因で発生する場合があります。 <br>  Premium Storage の VM は、Recovery Services コンテナーを使用してバックアップできます。 [詳細情報](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup) |
+| 登録 |Microsoft Azure Backup で内部エラーが発生しました。しばらくしてから操作をやり直してください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 |このエラーは、Premium LRS の VM の次のいずれかの構成がサポートされていないことが原因で発生する場合があります。 <br> Premium Storage の VM は、Recovery Services コンテナーを使用してバックアップできます。 [詳細情報](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup) |
 | 登録 |エージェントのインストール処理がタイムアウトしたため、登録できませんでした |仮想マシンの OS のバージョンがサポート対象かどうかを確認します。 |
 | 登録 |コマンド実行に失敗しました - この項目で別の操作が実行中です。 前の操作が完了するまでお待ちください。 |なし |
 | 登録 |仮想ハード ディスクが Premium Storage に格納されている仮想マシンは、バックアップでサポートされていません。 |なし |
@@ -71,11 +71,11 @@ ms.openlocfilehash: e2c22d2833a7905ba6001178be8709ec81c26000
 | 操作 | エラーの詳細 | 対処法 |
 | --- | --- | --- |
 | 復元 |クラウドの内部エラーの復元に失敗しました |<ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。 次の内容をチェックすることができます。 <br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings<br>構成済みのアドレスがある場合は、DNS 設定が構成済みです。<br> <li>復元を試みているクラウド サービスが ReservedIP で構成されていて、クラウド サービスの既存の VM が停止状態になっています。<br>次の PowerShell コマンドレットを使用して、クラウド サービスに予約済み IP があることを確認できます。<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>次の特殊なネットワーク構成の仮想マシンを同じクラウド サービスに復元しようとしています。 <br>- ロード バランサー構成 (内部および外部の) での仮想マシン<br>- 複数の予約済み IP を持つ仮想マシン<br>- 複数の NIC を持つ仮想マシン<br>UI で新しいクラウド サービスを選択するか、特殊なネットワーク構成の VM の[復元に関する考慮事項](backup-azure-restore-vms.md#restoring-vms-with-special-network-configurations)を参照してください。</ol> |
-| 復元 |選択した DNS 名は既に使用されています - 別の DNS 名を指定してからやり直してください。 |この場合、DNS 名はクラウド サービス名 (通常、末尾に cloudapp.net が付いています) を表します。 これは一意である必要があります。 このエラーが発生した場合は、復元中に別の VM の名前を選択する必要があります。 <br><br>  このエラーは Azure Portal のユーザーのみに表示されます。 PowerShell による復元操作は、ディスクを復元するだけで VM を作成しないため、成功します。 ディスクの復元操作後に VM を明示的に作成すると、このエラーが発生します。 |
+| 復元 |選択した DNS 名は既に使用されています - 別の DNS 名を指定してからやり直してください。 |この場合、DNS 名はクラウド サービス名 (通常、末尾に cloudapp.net が付いています) を表します。 これは一意である必要があります。 このエラーが発生した場合は、復元中に別の VM の名前を選択する必要があります。 <br><br> このエラーは Azure Portal のユーザーのみに表示されます。 PowerShell による復元操作は、ディスクを復元するだけで VM を作成しないため、成功します。 ディスクの復元操作後に VM を明示的に作成すると、このエラーが発生します。 |
 | 復元 |指定された仮想ネットワークの構成が正しくありません - 別の仮想ネットワークの構成を指定してからやり直してください。 |なし |
 | 復元 |指定したクラウド サービスでは、復元対象の仮想マシンの構成と一致しない予約済み IP が使用されています - 予約済み IP を使用していない別のクラウド サービスを指定するか、復元元に別の回復ポイントを選択してください。 |なし |
 | 復元 |クラウド サービスが入力エンドポイントの数に制限に達しました - 別のクラウド サービスを指定するか既存のエンドポイントを使用して、操作をやり直してください。 |なし |
-| 復元 |バックアップ資格情報コンテナーと対象のストレージ アカウントが 2 つの異なるリージョンに存在します - 復元操作で指定したストレージ アカウントが、バックアップ資格情報コンテナーと同じ Azure リージョンに存在するようにしてください。 |なし |
+| 復元 |バックアップ資格情報コンテナーと対象のストレージ アカウントが&2; つの異なるリージョンに存在します - 復元操作で指定したストレージ アカウントが、バックアップ資格情報コンテナーと同じ Azure リージョンに存在するようにしてください。 |なし |
 | 復元 |復元操作に指定されたストレージ アカウントがサポートされていません - サポートされているのは、ローカル冗長レプリケーションまたは geo 冗長レプリケーションの設定が指定された Basic または Standard ストレージ アカウントのみです。 サポートされているストレージ アカウントを選択してください。 |なし |
 | 復元 |復元操作に指定されたストレージ アカウントの種類がオンラインではありません - 復元操作で指定したストレージ アカウントがオンラインであることを確認してください。 |これは、Azure Storage の一時的なエラーや障害が原因で発生する可能性があります。 別のストレージ アカウントを選択してください。 |
 | 復元 |リソース グループのクォータに達しました - Azure ポータルの一部のリソース グループを削除するか、Azure サポートに問い合わせて上限を引き上げてください。 |なし |
@@ -117,6 +117,6 @@ Windows VM 上で VM エージェントのバージョンを確認する方法:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

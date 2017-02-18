@@ -1,6 +1,6 @@
 ---
-title: "Azure サービスにバインドする Azure 関数を作成する | Microsoft Docs"
-description: "他の Azure サービスと対話するサーバーレス アプリケーションである Azure Function を作成します。"
+title: "Azure サービスに接続する関数の作成 | Microsoft Docs"
+description: "Azure Functions を使用して、他の Azure サービスに接続する、サーバー不要のアプリケーションを作成します。"
 services: functions
 documentationcenter: dev-center-name
 author: yochay
@@ -14,24 +14,21 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/06/2016
+ms.date: 01/23/2017
 ms.author: rachelap@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: f46a67f2591ef98eeda03f5c3bc556d5b8bcc096
-ms.openlocfilehash: 4e0dd8b922107b232a120c25d1f656c5d667748b
+ms.sourcegitcommit: a8f6d111a010666bf4aaaf05e061381cc8fffed0
+ms.openlocfilehash: 634781189459f26e2ffa42b25a2ffb229d3371d4
 
 
 ---
-# <a name="create-an-azure-function-connected-to-an-azure-service"></a>Azure サービスに接続される Azure 関数を作成する
+# <a name="use-azure-functions-to-create-a-function-that-connects-to-other-azure-services"></a>他の Azure サービスに接続する関数を Azure Functions を使用して作成する
 
-このトピックでは、Azure Storage キューでメッセージをリッスンし、そのメッセージを Azure Storage テーブル内の行にコピーする Azure 関数を作成する方法を説明します。 タイマーでトリガーされる関数は、キューにメッセージを読み込むのに使用されます。 2 つ目の関数は、キューからメッセージを読み取り、テーブルに書き込みます。 バインドの定義に基づき、Azure Functions によってキューとテーブルの両方が作成されます。 
+このトピックでは、Azure Storage キューでメッセージをリッスンし、そのメッセージを Azure Storage テーブル内の行にコピーする関数を Azure Functions を作成する方法を説明します。 タイマーでトリガーされる関数は、キューにメッセージを読み込むのに使用されます。 2 つ目の関数は、キューからメッセージを読み取り、テーブルに書き込みます。 バインドの定義に基づき、Azure Functions によってキューとテーブルの両方が作成されます。 
 
-おもしろいことに、一方の関数は JavaScript で記述されており、もう一方は C# スクリプトで記述されています。 このことから、Function App ではさまざまな言語の関数を扱えることがわかります。
+おもしろいことに、一方の関数は JavaScript で記述されており、もう一方は C# スクリプトで記述されています。 このことから、Function App ではさまざまな言語の関数を扱えることがわかります。 
 
-## <a name="watch-the-video"></a>ビデオを見る
->[!VIDEO https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player]
->
->
+このシナリオのデモを、[Channel 9 のビデオ](https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player)で見ることができます。
 
 ## <a name="create-a-function-that-writes-to-the-queue"></a>キューに書き込む関数を作成する
 
@@ -186,9 +183,9 @@ ms.openlocfilehash: 4e0dd8b922107b232a120c25d1f656c5d667748b
 Azure Functions の詳細については、次のトピックを参照してください。
 
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)  
-   関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
+  関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
 * [Azure Functions のテスト](functions-test-a-function.md)  
-   関数をテストするための各種ツールと手法について説明します。
+  関数をテストするための各種ツールと手法について説明します。
 * [Azure Functions のスケーリング方法](functions-scale.md)  
   Azure Functions で利用できるサービス プラン (従量課金ホスティング プランを含む) と、適切なプランを選択する方法について説明します。 
 
@@ -197,6 +194,6 @@ Azure Functions の詳細については、次のトピックを参照してく�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure ExpressRoute トラブルシューティング ガイド - 接続の確認 | Microsoft Docs"
-description: "このページでは、ExpressRoute 回線のエンド ツー エンド接続のトラブルシューティングと検証を行う手順について説明します。"
+title: "接続の検証: Azure ExpressRoute トラブルシューティング ガイド | Microsoft Docs"
+description: "このページでは、ExpressRoute 回線のエンド ツー エンド接続のトラブルシューティングと検証の手順について説明します。"
 documentationcenter: na
 services: expressroute
 author: rambk
@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 1/5/2017
 ms.author: rambala
 translationtype: Human Translation
-ms.sourcegitcommit: 3c25cd8dae3a1c830cefbced5d2cd9ec04f4dda8
-ms.openlocfilehash: 9d97dcc9b59a40a714b8f1d71137baf51136d134
+ms.sourcegitcommit: 1a4206c80bc3581034b140de0003c64556b90303
+ms.openlocfilehash: 49ed6dd2184e69487cedae81a89665f5ccc3843d
 
 
 ---
@@ -417,6 +417,6 @@ Microsoft ピアリング構成の詳細を取得するには、次のコマン�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

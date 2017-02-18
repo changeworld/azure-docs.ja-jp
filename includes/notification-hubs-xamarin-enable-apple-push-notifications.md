@@ -24,7 +24,7 @@ Apple でアプリケーション用の新しいの明示的なアプリケー�
 1. Apple Developer センターで [iOS Provisioning Portal](http://go.microsoft.com/fwlink/p/?LinkId=272456) に移動し、Apple ID でログインして、**[Identifiers (識別子)]** をクリックし、**[App IDs (アプリ ID)]** をクリックします。最後に、**[+]** 記号をクリックして新しいアプリを登録します。
    
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-ios-appids.png)
-2. 新しいアプリの次の 3 つのフィールドを更新し、 **[Continue]**をクリックします。
+2. 新しいアプリの次の&3; つのフィールドを更新し、 **[Continue]**をクリックします。
    
    * **Name**: **[App ID Description]** セクションの **[Name]** フィールドに、アプリのわかりやすい名前を入力します。
    * **Bundle Identifier**: **[Explicit App ID]** セクションに、[アプリ ディストリビューション ガイド](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)で説明したように `<Organization Identifier>.<Product Name>` の形式で**バンドル ID** を入力します。 これは、アプリの XCode、Xamarin、または Cordova プロジェクトで使用されているものとも一致する必要があります。
@@ -67,7 +67,7 @@ Apple でアプリケーション用の新しいの明示的なアプリケー�
    > 証明書の名前は異なることがありますが、名前の前に **Apple Development iOS Push Services:**が付けられます。
    > 
    > 
-10. キーチェーン アクセスの **[Certificates (証明書)]** カテゴリで、作成したばかりの新しいプッシュ証明書を右クリックします。 **[Export]** をクリックし、ファイルに名前を付けて、**.p12** 形式を選択します。次に、**[Save]** をクリックします。
+10. キーチェーン アクセスの **[Certificates (証明書)]** カテゴリで、作成したばかりの新しいプッシュ証明書を Ctrl キーを押しながらクリックします。 **[Export]** をクリックし、ファイルに名前を付けて、**.p12** 形式を選択します。次に、**[Save]** をクリックします。
     
     エクスポートした .p12 証明書のファイル名と場所を記録します。 これは、Azure クラシック ポータルにアップロードして APNS との認証を有効にするために使用されます。
 
@@ -91,6 +91,6 @@ Apple でアプリケーション用の新しいの明示的なアプリケー�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

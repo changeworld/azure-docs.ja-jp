@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 7b7bcc8d73796908f02c77f2df2f2a7c96e1ba47
-ms.openlocfilehash: 38388ead8e80217b44ec5d103c35d6eb5c13d0d3
+ms.sourcegitcommit: ce40a93372205a4b7c6b0c753ebf30c2b3d51d7a
+ms.openlocfilehash: 86cd149d351cc957577d213d77db732bd5e16658
 
 
 ---
+
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング
 
 ## <a name="overview"></a>Overview
@@ -116,11 +117,11 @@ BackendAddressPool のインスタンスがすべて異常である場合、Appl
 | プローブのプロパティ | Description |
 | --- | --- |
 | Name |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
-| プロトコル |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します。 |
+| プロトコル |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
 | Host |プローブを送信するホスト名。 Application Gateway でマルチサイトを構成する場合にのみ適用可能です。 これは VM ホスト名とは異なります。 |
 | パス |プローブの相対パス。 パスは、先頭が '/' である必要があります。 プローブは、\<protocol\>://\<host\>:\<port\>\<path\> に送信されます。 |
 | 間隔 |プローブの間隔 (秒)。 2 つの連続するプローブの時間間隔。 |
-| タイムアウト |プローブのタイムアウト (秒)。 プローブは、このタイムアウト期間内に正常な応答を受信しない場合に「失敗」とマークされます。 |
+| タイムアウト |プローブのタイムアウト (秒)。 このタイムアウト期間内に正常な応答が受信されなかった場合は、プローブが「失敗」とマークされます。 |
 | 異常のしきい値 |プローブの再試行回数。 プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
 
 ### <a name="solution"></a>解決策
@@ -142,7 +143,9 @@ BackendAddressPool のインスタンスがすべて異常である場合、Appl
 
 Application Gateway では、ユーザーは BackendHttpSetting でこの設定を構成し、別のプールに適用できます。 バックエンド プールごとに異なる BackendHttpSetting を構成できるため、異なる要求のタイムアウトを構成できます。
 
+```powershell
     New-AzureRmApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
+```
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -151,6 +154,6 @@ Application Gateway では、ユーザーは BackendHttpSetting でこの設定�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

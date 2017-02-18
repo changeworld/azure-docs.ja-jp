@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2016
+ms.date: 01/27/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 2f3ea8b6be032b732b5ab1c587843f10387a4efb
-ms.openlocfilehash: 56397e33fb86cd839899a4009f2be95402a09b14
+ms.sourcegitcommit: 76987a6e91ae688b3856567073a7d27472e5ba09
+ms.openlocfilehash: 9245eb870f592ee0a1f1d6956ce3d573f4902485
 
 
 ---
@@ -83,15 +83,40 @@ Azure AD ディレクトリの管理者には、管理対象ドメイン上の�
 2. **[グループ ポリシー管理]** をクリックして、グループ ポリシー管理コンソールを起動します。
 
     ![グループ ポリシー コンソール](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
-3. **[フォレスト: contoso100.com]** ノードと **[ドメイン]** ノードをクリックして展開し、管理対象ドメインのグループ ポリシーを表示します。 管理対象ドメインには、"AADDC Computers" コンテナーと "AADDC Users" コンテナーという&2; つの組み込みのグループ ポリシー オブジェクト (GPO) があります。
+
+## <a name="task-4---customize-built-in-group-policy-objects"></a>タスク 4 - 組み込みのグループ ポリシー オブジェクトをカスタマイズする
+管理対象ドメインには、"AADDC Computers" コンテナーと "AADDC Users" コンテナーという&2; つの組み込みのグループ ポリシー オブジェクト (GPO) があります。 これらの GPO をカスタマイズして、管理対象ドメインのグループ ポリシーを構成できます。
+
+1. **グループ ポリシー管理**コンソールで、**[フォレスト: contoso100.com]** ノードと **[ドメイン]** ノードをクリックして展開し、管理対象ドメインのグループ ポリシーを表示します。
 
     ![組み込みの GPO](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
-4. これらの組み込みの GPO を、管理対象ドメインのグループ ポリシーを構成するようにカスタマイズできます。 組み込みの GPO をカスタマイズするには、GPO を右クリックし、**[編集...]** をクリックします。 グループ ポリシー構成エディター ツールで GPO をカスタマイズできます。
+2. これらの組み込みの GPO を、管理対象ドメインのグループ ポリシーを構成するようにカスタマイズできます。 組み込みの GPO をカスタマイズするには、GPO を右クリックし、**[編集...]** をクリックします。 グループ ポリシー構成エディター ツールで GPO をカスタマイズできます。
 
     ![組み込みの GPO の編集](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
-5. これで、**グループ ポリシー管理エディター** コンソールを使用して、組み込みの GPO を編集できます。 たとえば、次のスクリーン ショットは、組み込みの "AADDC Computers" GPO をカスタマイズする方法を示しています。
+3. これで、**グループ ポリシー管理エディター** コンソールを使用して、組み込みの GPO を編集できます。 たとえば、次のスクリーン ショットは、組み込みの "AADDC Computers" GPO をカスタマイズする方法を示しています。
 
     ![GPO のカスタマイズ](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+
+## <a name="task-5---create-a-custom-group-policy-object-gpo"></a>タスク 5 - カスタム グループ ポリシー オブジェクト (GPO) を作成する
+独自のカスタム グループ ポリシー オブジェクトを作成またはインポートできます。 また、管理対象ドメインで作成したカスタム OU にカスタム GPO をリンクすることもできます。 カスタム組織単位の作成方法の詳細については、[管理対象ドメインでのカスタム OU の作成](active-directory-ds-admin-guide-create-ou.md)に関する記事をご覧ください。
+
+> [!NOTE]
+> 管理対象ドメインのグループ ポリシーを管理するには、"AAD DC Administrators" グループのメンバーである必要があります。
+>
+>
+
+1. **グループ ポリシー管理**コンソールで、カスタム組織単位 (OU) をクリックして選択します。 OU を右クリックし、**[このドメインに GPO を作成し、このコンテナーにリンクする...]** をクリックします。
+
+    ![カスタム GPO の作成](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
+2. 新しい GPO の名前を指定し、**[OK]** をクリックします。
+
+    ![GPO の名前の指定](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
+3. 新しい GPO が作成され、カスタム OU にリンクされます。 GPO を右クリックし、メニューの **[編集...]** をクリックします。
+
+    ![新しく作成された GPO](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
+4. **グループ ポリシー管理エディター**を使用して、新しく作成された GPO をカスタマイズできます。
+
+    ![新しい GPO のカスタマイズ](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
 
 
 [グループ ポリシー管理コンソール](https://technet.microsoft.com/library/cc753298.aspx)の使用方法の詳細については、Technet を参照してください。
@@ -104,6 +129,6 @@ Azure AD ディレクトリの管理者には、管理対象ドメイン上の�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

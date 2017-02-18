@@ -1,5 +1,5 @@
 ---
-title: "SQL Database の認証と承認 | Microsoft Docs"
+title: "Azure SQL のログインとユーザー | Microsoft Docs"
 description: "SQL Database のセキュリティ管理 (具体的にはサーバーレベル プリンシパル アカウントを使用してデータベースのアクセスとログインのセキュリティを管理する方法) について説明します。"
 keywords: "SQL Database のセキュリティ,データベース セキュリティ管理,ログイン セキュリティ,データベース セキュリティ,データベース アクセス"
 services: sql-database
@@ -12,14 +12,14 @@ ms.assetid: 0a65a93f-d5dc-424b-a774-7ed62d996f8c
 ms.service: sql-database
 ms.custom: authentication and authorization
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/17/2017
+ms.date: 01/23/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 8ff9c07fbc6e3d2a44414b485bd0f32b68b5d494
-ms.openlocfilehash: 127303bce70801ab93992273fd8f86d6f3c41605
+ms.sourcegitcommit: 5eccb4705cd6c8f6170a48f3b3591518688651f1
+ms.openlocfilehash: c3a45973a04d5082bee777a98f8204ceedc888a5
 
 
 ---
@@ -29,14 +29,20 @@ ms.openlocfilehash: 127303bce70801ab93992273fd8f86d6f3c41605
 
 >  [!NOTE]  
 >  このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 
+>
+
+> [!TIP]
+> SQL Server 認証を使用する手引きについては、[SQL Server 認証に関するチュートリアル](sql-database-control-access-sql-authentication-get-started.md)を参照してください。 Azure Active Directory 認証を使用する手引きについては、[AAD 認証に関するチュートリアル](sql-database-control-access-aad-authentication-get-started.md)を参照してください。
+>
+
 
 ## <a name="unrestricted-administrative-accounts"></a>制限なしの管理者アカウント
-管理者の機能を果たす 2 つの管理者アカウント (**サーバー管理者**と **Active Directory 管理者**) があります。 SQL サーバー用にこれらの管理者アカウントを特定するには、Azure Portal を開き、SQL サーバーのプロパティに移動します。
+管理者の機能を果たす&2; つの管理者アカウント (**サーバー管理者**と **Active Directory 管理者**) があります。 SQL サーバー用にこれらの管理者アカウントを特定するには、Azure Portal を開き、SQL サーバーのプロパティに移動します。
 
 ![SQL サーバーの管理者](./media/sql-database-manage-logins/sql-admins.png)
 
 - **サーバー管理者**   
-Azure SQL サーバーを作成する際に、**サーバー管理者ログイン**を指定する必要があります。 このアカウントは SQL サーバーによって master データベースへのログインとして作成されます。 このアカウントは、SQL Server 認証 (ユーザー名とパスワード) を使用して接続します。 これらのアカウントのうち、存在できるのは 1 つだけです。   
+Azure SQL サーバーを作成する際に、**サーバー管理者ログイン**を指定する必要があります。 このアカウントは SQL サーバーによって master データベースへのログインとして作成されます。 このアカウントは、SQL Server 認証 (ユーザー名とパスワード) を使用して接続します。 これらのアカウントのうち、存在できるのは&1; つだけです。   
 - **Azure Active Directory の管理者**   
 1 つの Azure Active Directory アカウント (個人またはセキュリティ グループ アカウント) も、管理者として構成できます。 Azure AD 管理者の構成は任意ですが、SQL Database への接続に Azure AD アカウントを使用する場合は、Azure AD 管理者を構成する必要があります。 Azure Active Directory アクセスの構成の詳細については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」と「[SSMS support for Azure AD MFA with SQL Database and SQL Data Warehouse](sql-database-ssms-mfa-authentication.md)」 (SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート) をご覧ください。
  
@@ -70,10 +76,10 @@ Azure SQL サーバーを作成する際に、**サーバー管理者ログイ�
 
 
 ## <a name="additional-server-level-administrative-roles"></a>追加のサーバー レベルの管理者ロール
-前に説明したサーバーレベルの管理者ロールのほかに、SQL Database には master データベースに 2 つの制限付き管理者ロールが用意されています。それにユーザー アカウントを追加して、データベースの作成またはログインの管理のためのアクセス許可を付与することができます。
+前に説明したサーバーレベルの管理者ロールのほかに、SQL Database には master データベースに&2; つの制限付き管理者ロールが用意されています。それにユーザー アカウントを追加して、データベースの作成またはログインの管理のためのアクセス許可を付与することができます。
 
 ### <a name="database-creators"></a>データベース作成者
-これらの管理者ロールの 1 つは、**dbmanager** ロールです。 このロールのメンバーは、新しいデータベースを作成できます。 このロールを使用するには、`master` データベースにユーザーを作成し、そのユーザーを **dbmanager** データベース ロールに追加します。 そのユーザーは、包含データベース ユーザーにすることも、master データベースの SQL Server ログインに基づくユーザーにすることもできます。
+これらの管理者ロールの&1; つは、**dbmanager** ロールです。 このロールのメンバーは、新しいデータベースを作成できます。 このロールを使用するには、`master` データベースにユーザーを作成し、そのユーザーを **dbmanager** データベース ロールに追加します。 データベースを作成するユーザーは、master データベースの SQL Server ログインに基づくユーザーであるか、Azure Active Directory ユーザーに基づく包含データベース ユーザーである必要があります。
 
 1. 管理者アカウントを使用して、master データベースに接続します。
 2. 省略可能な手順: [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) ステートメントを使用して、SQL Server 認証ログインを作成します。 サンプル ステートメントは、次のとおりです。
@@ -110,7 +116,7 @@ Azure SQL サーバーを作成する際に、**サーバー管理者ログイ�
 これで、ユーザーは master データベースに接続し、新しいデータベースを作成できるようになりました。 データベースを作成したアカウントは、そのデータベースの所有者になります。
 
 ### <a name="login-managers"></a>ログイン マネージャー
-もう 1 つの管理者ロールは、ログイン マネージャー ロールです。 このロールのメンバーは、master データベースに新しいログインを作成することができます。 必要であれば、同じ手順を実行して (ログインとユーザーを作成し、ユーザーを **loginmanager** ロールに追加して)、ユーザーが master に新しいログインを作成できるようにすることができます。 通常、ログインは必要ありません。Microsoft は、ログインに基づくユーザーを使用する代わりに、データベース レベルで認証される包含データベース ユーザーを使用することを推奨しているからです。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
+もう&1; つの管理者ロールは、ログイン マネージャー ロールです。 このロールのメンバーは、master データベースに新しいログインを作成することができます。 必要であれば、同じ手順を実行して (ログインとユーザーを作成し、ユーザーを **loginmanager** ロールに追加して)、ユーザーが master に新しいログインを作成できるようにすることができます。 通常、ログインは必要ありません。Microsoft は、ログインに基づくユーザーを使用する代わりに、データベース レベルで認証される包含データベース ユーザーを使用することを推奨しているからです。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 
 ## <a name="non-administrator-users"></a>管理者以外のユーザー
 一般に、管理者以外のアカウントは、master データベースへのアクセスを必要としません。 [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx) ステートメントを使用して、データベース レベルの包含データベース ユーザーを作成してください。 このユーザーは、Azure Active Directory 認証の包含データベース ユーザー (Azure AD 認証用の環境を構成した場合)、SQL Server 認証の包含データベース ユーザー、または SQL Server 認証ログインに基づく SQL Server 認証ユーザー (前の手順で作成したもの) にすることができます。詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。 
@@ -122,7 +128,7 @@ CREATE USER Mary FROM LOGIN Mary;
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
-最初、ユーザーを作成できるのは、データベースの管理者の 1 人か所有者だけです。 新しいユーザーの作成を他のユーザーに許可するには、次のようなステートメントを使用して、選択したユーザーに `ALTER ANY USER` アクセス許可を付与します。
+最初、ユーザーを作成できるのは、データベースの管理者の&1; 人か所有者だけです。 新しいユーザーの作成を他のユーザーに許可するには、次のようなステートメントを使用して、選択したユーザーに `ALTER ANY USER` アクセス許可を付与します。
 
 ```
 GRANT ALTER ANY USER TO Mary;
@@ -131,7 +137,7 @@ GRANT ALTER ANY USER TO Mary;
 データベースのフル コントロールを他のユーザーに与えるには、`ALTER ROLE` ステートメントを使用して、そのユーザーを **db_owner** 固定データベース ロールのメンバーにします。
 
 > [!NOTE]
-> ログインに基づくデータベース ユーザーを作成するのは、一般に、複数のデータベースへのアクセスを必要とする SQL Server 認証ユーザーがいる場合があるためです。 ログインに基づくユーザーは、ログインと、そのログインのために保持されている 1 つのパスワードのみに関連付けられています。 個々のデータベース内の包含データベース ユーザーは、それぞれが個別のエンティティであり、それぞれが独自のパスワードを保持します。 このため、包含データベース ユーザーは、同じパスワードを保持しない場合に混乱することがあります。
+> ログインに基づくデータベース ユーザーを作成するのは、一般に、複数のデータベースへのアクセスを必要とする SQL Server 認証ユーザーがいる場合があるためです。 ログインに基づくユーザーは、ログインと、そのログインのために保持されている&1; つのパスワードのみに関連付けられています。 個々のデータベース内の包含データベース ユーザーは、それぞれが個別のエンティティであり、それぞれが独自のパスワードを保持します。 このため、包含データベース ユーザーは、同じパスワードを保持しない場合に混乱することがあります。
 
 ### <a name="configuring-the-database-level-firewall"></a>データベース レベルのファイアウォールの構成
 ベスト プラクティスとして、管理者以外のユーザーは、使用するデータベースにファイアウォール経由でのみアクセスできるようにすることをお勧めします。 サーバー レベルのファイアウォール経由で IP アドレスを承認し、すべてのデータベースへのアクセスを許可するのではなく、[sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) ステートメントを使用して、データベース レベルのファイアウォールを構成してください。 データベース レベルのファイアウォールは、ポータルを使用して構成することはできません。
@@ -188,11 +194,11 @@ SQL Database のログインとユーザーの管理では、以下の点を考�
 - チュートリアルについては、[SQL セキュリティの使用](sql-database-control-access-sql-authentication-get-started.md)に関するページを参照してください。
 - ビューとストアド プロシージャについては、「[ビューとストアド プロシージャの作成](https://msdn.microsoft.com/library/ms365311.aspx)」を参照してください。
 - データベース オブジェクトへのアクセス権の付与については、「[データベース オブジェクトへのアクセス権の付与](https://msdn.microsoft.com/library/ms365327.aspx)」を参照してください。
-- SQL Server 認証を使用するチュートリアルについては、「[SQL Database チュートリアル: SQL Server 認証、ログインとユーザー アカウント、データベース ロール、アクセス許可、サーバーレベルのファイアウォール規則、データベースレベルのファイアウォール規則](sql-database-control-access-sql-authentication-get-started.md)」を参照してください。
-- Azure Active Directory 認証を使用するチュートリアルについては、「[SQL Database チュートリアル: AAD 認証、ログインとユーザー アカウント、データベース ロール、アクセス許可、サーバーレベルのファイアウォール規則、データベースレベルのファイアウォール規則](sql-database-control-access-aad-authentication-get-started.md)」を参照してください。
+- SQL Server 認証を使用する手引きについては、[SQL Server 認証に関するチュートリアル](sql-database-control-access-sql-authentication-get-started.md)を参照してください。
+- Azure Active Directory 認証を使用する手引きについては、[AAD 認証に関するチュートリアル](sql-database-control-access-aad-authentication-get-started.md)を参照してください。
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

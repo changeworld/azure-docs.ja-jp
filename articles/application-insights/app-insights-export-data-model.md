@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 03/21/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: e4576409641db73ad8920a1eec2eea1e3580109f
-ms.openlocfilehash: fc8a3efd079d84aea4cac63de401d46347f9e3d7
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: feaa76e81f64b224f62e583541bf2ef376793a38
 
 
 ---
@@ -155,7 +155,7 @@ ms.openlocfilehash: fc8a3efd079d84aea4cac63de401d46347f9e3d7
 | internal.data.id |string | |
 
 ## <a name="events"></a>イベント
-[TrackEvent()](app-insights-api-custom-events-metrics.md#track-event)によって生成されたカスタム イベント。
+[TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)によって生成されたカスタム イベント。
 
 | パス | 型 | メモ |
 | --- | --- | --- |
@@ -195,7 +195,7 @@ ms.openlocfilehash: fc8a3efd079d84aea4cac63de401d46347f9e3d7
 | basicException [0] typeName |string | |
 
 ## <a name="trace-messages"></a>トレース メッセージ
-[TrackTrace](app-insights-api-custom-events-metrics.md#track-trace) および[ログ アダプター](app-insights-asp-net-trace-logs.md)によって送信されます。
+[TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace) および[ログ アダプター](app-insights-asp-net-trace-logs.md)によって送信されます。
 
 | path | 型 | メモ |
 | --- | --- | --- |
@@ -226,7 +226,7 @@ TrackDependency によって送信されます。 サーバーでの [依存関�
 | remoteDependency [0] urlData.host |string |最大長 200 |
 
 ## <a name="requests"></a>要求数
-[TrackRequest](app-insights-api-custom-events-metrics.md#track-request)によって送信されます。 標準モジュールはこれを使用して、サーバーで測定されたサーバー応答時間をレポートします。
+[TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest)によって送信されます。 標準モジュールはこれを使用して、サーバーで測定されたサーバー応答時間をレポートします。
 
 | パス | 型 | メモ |
 | --- | --- | --- |
@@ -354,6 +354,6 @@ TrackMetric() によって生成されます。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

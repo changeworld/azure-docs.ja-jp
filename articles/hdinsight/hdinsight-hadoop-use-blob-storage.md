@@ -14,11 +14,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/06/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: 74416d2740c4eaa49d508468df68fdb786ea2902
+ms.sourcegitcommit: e2d78b7e71cd17c88ce4e283cc0b0ddc9bf7b479
+ms.openlocfilehash: 41b19d0ed2d77fc94ec7b3a7905b51e8e25e0585
 
 
 ---
@@ -305,6 +305,6 @@ $clusterName = "<HDInsightClusterName>"
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

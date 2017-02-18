@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
+ms.sourcegitcommit: 13431648e87d085161ad278dc991d49f7872be34
+ms.openlocfilehash: 60213f885020a5ba36d6ada0812f755e06b3c48b
 
 
 ---
@@ -43,27 +43,27 @@ ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
 > 
 
 ## <a name="change-headers-styling"> </a>ヘッダーのスタイルを変更する
-色、フォント、サイズ、文字間隔など、ポータル ページのスタイルに関連したあらゆる要素は、スタイルのルールによって定義されます。 スタイルを編集するには、パブリッシャー ポータルで **[開発者ポータル]** メニューの **[外観]** をクリックし、**[カスタマイズの開始]** をクリックしてスタイル エディターを有効にします。
+色、フォント、サイズ、文字間隔など、ポータル ページのスタイルに関連したあらゆる要素は、スタイルのルールによって定義されます。 スタイルを編集するには、**開発者ポータル**でカスタマイズ アイコンをポイントして、左側のカスタマイズ ツール バーを開き、ツール バーで [スタイル] を選択します。
 
-ブラウザーが開発者ポータル内に置かれている非表示のページに切り替わり、サンプル コンテンツや、サイト上のいたるところに使用されている、スタイル上のさまざまなルールが例示されます。 スタイル エディターを開くには、ページの左端に設けられた縦長の薄い灰色の領域上にカーソルを移動します。 エディター ツール バーが表示されます。
+![カスタマイズ ツール バー ボタン][api-management-customization-toolbar-button]
+
+スタイルのルールを編集する方法は、主に&2; つあります。1 つ目は、既定で表示される、いずれかの場所で使用されているすべてのスタイル ルールの一覧でスタイルを探し、必要に応じて変更する方法です。もう&1; つは、**[Select an element on the page (ページの要素を選択)]** を選択し、ページの任意の場所をクリックして、その要素のスタイルだけを表示する方法です。
+
+このセクションでは、ヘッダーのスタイルのみを変更することにします。 スタイル エディター ツール バーの **[Select an element on the page (ページの要素を選択)]** オプションをクリックします。 
 
 ![Customization toolbar][api-management-customization-toolbar]
 
-スタイル上のルールは、主に 2 つの方法で編集できます。**[すべてのルールを編集]** を選択すると、あらゆる場所で使用されているすべてのスタイル ルールが一覧表示されます。これに対し、**[要素を選択]** を選択した場合は、表示されているページから特定の要素を選択することができます。その場合、表示されるのは、選択した要素に関するスタイルだけです。
-
-このセクションでは、ヘッダーのスタイルのみを変更することにします。 スタイル エディターのツール バーで **[要素を選択]** オプションをクリックし、続けて、**[カスタマイズする要素の選択]** をクリックします。 要素にマウスを重ねると、その要素が強調表示されるようになり、クリックした場合にどの要素のスタイルが編集対象となるかを把握できます。 ヘッダー内の会社名を表すテキスト (前セクションの手順でいうと "Fabrikam Developer Portal") 上にマウス カーソルを移動してクリックします。 名前とカテゴリを持つ一連のスタイル ルールがスタイル エディター内に表示されます。
-
-それぞれのルールは、選択された要素のスタイルに関するプロパティを表します。 たとえば、上で選択したヘッダー テキストの場合、テキストのサイズは @font-size-h1 で定義され、フォント (代替候補を含む) の名前は @headings-font-family. で定義されています。
+要素にマウスを重ねると、その要素が強調表示されるようになり、クリックした場合にどの要素のスタイルが編集対象となるかを把握できます。 ヘッダー内の会社名を表すテキスト (前セクションの手順でいうと "Fabrikam Developer Portal") 上にマウス カーソルを移動してクリックします。 名前とカテゴリを持つ一連のスタイル ルールがスタイル エディター内に表示されます。 それぞれのルールは、選択された要素のスタイルに関するプロパティを表します。 たとえば、上で選択したヘッダー テキストの場合、テキストのサイズは @font-size-h1 で定義され、フォント (代替候補を含む) の名前は @headings-font-family で定義されています。
 
 > [Bootstrap][bootstrap] をご存じの方のためにいうと、実際には、開発者ポータルに使用されている Bootstrap テーマの [LESS 変数][LESS variables]にこれらのルールが含まれています。
 > 
 > 
 
-見出しテキストの色を変更してみましょう。 **@headings-color** ボックスの入力内容を選択し、「**#000000**」と入力します。 これは、黒色を表す 16 進コードです。 すると、テキスト ボックスの端に正方形のカラー インジケーターが表示されます。 このインジケーターをクリックするとカラー ピッカーが表示され、色を選択することができます。
+見出しテキストの色を変更してみましょう。 **@headings-color** ボックスの入力内容を選択し、「**#000000**」と入力します。 これは、黒色を表す&16; 進コードです。 すると、テキスト ボックスの端に正方形のカラー インジケーターが表示されます。 このインジケーターをクリックするとカラー ピッカーが表示され、色を選択することができます。
 
 ![Color picker][api-management-customization-toolbar-color-picker]
 
-選択した要素のスタイルに変更を加えたら、 **[変更のプレビュー]** をクリックして画面上で結果を確認します。 この時点では、管理者にしか表示されません。 変更を全員が閲覧できるようにするには、スタイル エディターで **[発行]** をクリックして変更を確定してください。
+変更は操作時にリアルタイムでプレビューされますが、管理者だけに表示されます。 変更を全員が閲覧できるようにするには、スタイル エディターで **[発行]** をクリックして変更を確定してください。
 
 ![[発行] メニュー][api-management-customization-toolbar-publish-form]
 
@@ -96,6 +96,7 @@ ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
 
 [api-management-management-console]: ./media/api-management-customize-portal/api-management-management-console.png
 [api-management-widgets-header]: ./media/api-management-customize-portal/api-management-widgets-header.png
+[api-management-customization-toolbar-button]: ./media/api-management-customize-portal/api-management-customization-toolbar-button.png
 [api-management-customization-toolbar]: ./media/api-management-customize-portal/api-management-customization-toolbar.png
 [api-management-customization-toolbar-color-picker]: ./media/api-management-customize-portal/api-management-customization-toolbar-color-picker.png
 [api-management-customization-toolbar-publish-form]: ./media/api-management-customize-portal/api-management-customization-toolbar-publish-form.png
@@ -107,6 +108,6 @@ ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

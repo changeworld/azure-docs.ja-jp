@@ -12,21 +12,21 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: fc79b8017f2184091f2473a0ff9cdfbd0a4cbdf8
-ms.openlocfilehash: 8b5a608775582753b0bcc2fe0117edf51a37c238
+ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
+ms.openlocfilehash: d8ea4fb54db5c114aa886a6267b18eba6563d231
 
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>HDInsight での Hive を使用したフライト遅延データの分析
 Hive では、*[HiveQL][hadoop-hiveql]* と呼ばれる SQL に似たスクリプト言語を使用して Hadoop MapReduce ジョブを実行します。大規模なデータの集約、照会、分析に Hive を利用できます。
 
-> [!NOTE]
-> このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。 Linux ベースのクラスターでの手順については、「 [HDInsight での Hive を使用したフライト遅延データの分析 (Linux)](hdinsight-analyze-flight-delay-data-linux.md)」を参照してください。
+> [!IMPORTANT]
+> このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースのクラスターでの手順については、「 [HDInsight での Hive を使用したフライト遅延データの分析 (Linux)](hdinsight-analyze-flight-delay-data-linux.md)」を参照してください。
 
-Azure HDInsight の大きな利点の 1 つに、データ ストレージとコンピューティングの分離があります。 HDInsight は、データ ストレージとして Azure BLOB ストレージを使用します。 標準的なジョブは 3 つの部分で構成されます。
+Azure HDInsight の大きな利点の&1; つに、データ ストレージとコンピューティングの分離があります。 HDInsight は、データ ストレージとして Azure BLOB ストレージを使用します。 標準的なジョブは&3; つの部分で構成されます。
 
 1. **Azure BLOB ストレージにデータを保存する。**  たとえば、気象データ、センサー データ、Web ログを Azure BLOB ストレージに保存できます。ここではフライトの遅延データが保存対象となります。
 2. **ジョブを実行する。** データを処理する段階になったら、Windows PowerShell スクリプト (またはクライアント アプリケーション) を実行して HDInsight クラスターを作成し、ジョブを実行して、クラスターを削除します。 このジョブによって、出力データが Azure BLOB ストレージに保存されます。 出力データは、クラスターの削除後も維持されます。 こうして、実際に消費した分だけが課金されることとなります。
@@ -38,7 +38,7 @@ Azure HDInsight の大きな利点の 1 つに、データ ストレージとコ
 
 図中の番号は、セクション タイトルに対応します。 **M** はメイン (main) プロセスを表します。 **A** は付録 (appendix) の内容を表します。
 
-このチュートリアルでは、主に 1 つの Windows PowerShell スクリプトを使用して次のタスクを実行する方法を示します。
+このチュートリアルでは、主に&1; つの Windows PowerShell スクリプトを使用して次のタスクを実行する方法を示します。
 
 * HDInsight クラスターを作成します。
 * クラスターで Hive ジョブを実行し、空港での平均遅延時間を計算する。 フライトの遅延データは Azure BLOB ストレージ アカウントに保存されます。
@@ -263,7 +263,7 @@ HDInsight クラスターの作成と Hive ジョブの実行の詳細につい�
 3. **[Download]**をクリックします。
 4. ファイルを **C:\Tutorials\FlightDelay\2013Data** フォルダーに解凍します。 ファイルはそれぞれ CSV ファイルで、サイズは約 60 GB です。
 5. ファイルの名前を、データを含む月の名前に変更します。 たとえば、1 月のデータを含むファイルの場合、 *January.csv*という名前にします。
-6. 手順 2. ～ 5. を繰り返して、2013 年の 12 か月分のファイルをダウンロードします。 チュートリアルを実行するには、月別のファイルが少なくとも 1 つ必要です。
+6. 手順 2. ～ 5. を繰り返して、2013 年の 12 か月分のファイルをダウンロードします。 チュートリアルを実行するには、月別のファイルが少なくとも&1; つ必要です。
 
 **フライト遅延データを Azure BLOB ストレージにアップロードするには**
 
@@ -747,6 +747,6 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

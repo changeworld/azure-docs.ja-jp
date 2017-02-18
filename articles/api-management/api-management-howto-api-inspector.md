@@ -1,5 +1,5 @@
 ---
-title: "Azure API Management で API Inspector を使用して呼び出しをトレースする方法"
+title: "API Inspector を使用した呼び出しのトレース - Azure API Management | Microsoft Docs"
 description: "Azure API Management で API Inspector を使用して呼び出しをトレースする方法について説明します。"
 services: api-management
 documentationcenter: 
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: apipm
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 28e9cbf05e75055a10c78fd42b5cb27e359b1d65
-ms.openlocfilehash: aad0e6de85a40df8a873aa11e5a33e7064090dce
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: a9d4d3be7f046af975f6dc25670070204848588c
 
 ---
 # <a name="how-to-use-the-api-inspector-to-trace-calls-in-azure-api-management"></a>Azure API Management で API Inspector を使用して呼び出しをトレースする方法
@@ -269,6 +268,6 @@ ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

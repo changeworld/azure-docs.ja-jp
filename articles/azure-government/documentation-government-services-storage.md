@@ -15,8 +15,8 @@ ms.workload: azure-government
 ms.date: 12/22/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: a7e53dcdbf3cecd8a00ad3424ffa0d62cc8fde43
-ms.openlocfilehash: 73d34bc7f34b9b9730e826e17537f82d0f689c03
+ms.sourcegitcommit: 831334f2b835d00aa3fd22292764b69e85d735a6
+ms.openlocfilehash: a6b61df5884031eb5b53f983b834357bd23a622e
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: 73d34bc7f34b9b9730e826e17537f82d0f689c03
 | [Hot/Cool Blob Storage] (../storage/storage-blob-storage-tiers.md) |該当なし |該当なし |
 | [ストレージ サービスの暗号化] (../storage/storage-service-encryption.md) |一般公開 |一般公開 |
 | [Premium Storage] (../storage/storage-premium-storage.md) |一般公開 |該当なし | DS シリーズの Virtual Machines を含みます。 |
-| [BLOB のインポート/エクスポート] (../storage/storage-import-export-service.md) |一般公開 |一般公開 | 現時点ではクラシック ストレージ アカウントのみサポートされています。 |
+| [BLOB のインポート/エクスポート] (../storage/storage-import-export-service.md) |一般公開 |一般公開 |
 | [StorSimple] (../storsimple/storsimple-ova-overview.md) |一般公開 |一般公開 |
 
 ### <a name="variations"></a>バリエーション
@@ -85,6 +85,6 @@ API の詳細については、<a href="https://msdn.microsoft.com/en-us/library
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Query Performance Insight
+title: "Azure SQL Database の Query Performance Insight | Microsoft Docs"
 description: "クエリのパフォーマンスを監視して、Azure SQL Database の CPU 消費量の多いクエリを明らかにします。"
 services: sql-database
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: ddb43393695ae74711bea0ff66b644ddd7787571
+ms.sourcegitcommit: ddf93a0db278fffa2aa45fdc73a1c7f57a84fb39
+ms.openlocfilehash: 14140a6aa8c8cccf658f8e98305659e8ae76dcad
 
 
 ---
@@ -32,7 +32,6 @@ ms.openlocfilehash: ddb43393695ae74711bea0ff66b644ddd7787571
 
 
 ## <a name="prerequisites"></a>前提条件
-* Query Performance Insight は、Azure SQL Database V12 でのみ使用できます。
 * Query Performance Insight では、 [クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx) がデータベース上で実行されている必要があります。 クエリ ストアが実行されていない場合、ポータルで、クエリ ストアを有効にするよう求められます。
 
 ## <a name="permissions"></a>アクセス許可
@@ -229,6 +228,6 @@ Query Performance Insight を使うと、クエリ ワークロードの影響�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

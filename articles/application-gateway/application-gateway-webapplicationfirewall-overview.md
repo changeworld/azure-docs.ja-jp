@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 928a93793b0b5e346fc02427c670a4c5c6ad80cc
-ms.openlocfilehash: 5d0609b826d489eb789cc86612b495bbd05afbe0
+ms.sourcegitcommit: ce40a93372205a4b7c6b0c753ebf30c2b3d51d7a
+ms.openlocfilehash: 2d8e851810b4ec5b7ae3f3b17c4aee11d7e51de4
 
 
 ---
+
 # <a name="application-gateway-web-application-firewall-preview"></a>Application Gateway の Web アプリケーション ファイアウォール (プレビュー)
 
 Web アプリケーション ファイアウォール (WAF) は Azure Application Gateway の機能で、標準のアプリケーション配信コントロール (ADC) 機能に対してアプリケーション ゲートウェイを使用して、Web アプリケーションを保護します。 Web アプリケーション ファイアウォールは、OWASP の上位 10 件の一般的 Web 脆弱性の大部分に対する保護を提供することで、これを実現します。 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の的になるケースが増えています。 よくある攻撃の例として、SQL インジェクション攻撃やクロス サイト スクリプティング攻撃が挙げられます。 アプリケーション コードでこのような攻撃を防ぐことは困難な場合があり、厳格な保守、パッチの適用、アプリケーション トポロジの複数のレイヤーの監視が必要になることもあります。 Web 攻撃に対する保護を提供する Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、侵入の脅威からアプリケーションがより確実に保護されます。 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールを備えたアプリケーション ゲートウェイに簡単に変換できます。
@@ -82,15 +83,15 @@ Application Gateway の WAF では、検出された脅威ごとに詳細なレ�
 
 ## <a name="application-gateway-waf-sku-pricing"></a>Application Gateway の WAF SKU の価格
 
-プレビュー期間中は、Application Gateway の WAF を使用しても追加料金は発生しません。 引き続き、現行の Basic SKU の料金が請求されます。 一般公開の際に、WAF SKU の料金をご案内します。 WAF SKU での Application Gateway のデプロイを決定されたお客様は、一般公開のお知らせの後から WAF SKU の料金が発生します。
+プレビュー期間中は、Application Gateway の WAF を使用しても追加料金は発生しません。 引き続き、現行の Basic SKU の料金が請求されます。 WAF SKU の料金は、一般公開の際にご案内します。 WAF SKU での Application Gateway のデプロイを決定されたお客様は、一般公開のお知らせの後から WAF SKU の料金が発生します。
 
 ## <a name="next-steps"></a>次のステップ
 
-WAF の機能の詳細について学習した後は、 [Application Gateway で Web アプリケーション ファイアウォールを構成する方法](application-gateway-web-application-firewall-portal.md)を参照してください。
+WAF の機能の詳細について学習した後は、[Application Gateway で Web アプリケーション ファイアウォールを構成する方法](application-gateway-web-application-firewall-portal.md)に関するページを参照してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

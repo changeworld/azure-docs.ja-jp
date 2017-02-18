@@ -1,5 +1,5 @@
 ---
-title: "よく寄せられる質問 | Microsoft Docs"
+title: "Azure Media Services のよく寄せられる質問 | Microsoft Docs"
 description: "よく寄せられる質問 (FAQ)"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: c3f383a792994aaf1ff266338ca5b64c7e4362ec
+ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
+ms.openlocfilehash: 9a6d772bddc4417004c99f319ec7592d026efdb1
 
 
 ---
@@ -51,7 +51,7 @@ A: .NET を使用してある Media Services アカウントから別のアカ�
 
 Q: AMS を使用する場合、ファイルの名前にはどのような文字を使用できますか。
 
-A: Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 Also, there can only be one ‘.’ また、ファイル名拡張子で使用できる "." は&1; つのみです。
+A: Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 "." は&amp;1; つのみです。 また、ファイル名拡張子で使用できる
 
 Q: REST を使用して接続する方法を教えてください。
 
@@ -85,6 +85,6 @@ A: [メディア エンコーダー スタンダード](media-services-dotnet-en
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

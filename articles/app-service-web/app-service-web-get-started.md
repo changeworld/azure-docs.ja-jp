@@ -1,5 +1,5 @@
 ---
-title: "初めての Web アプリを Azure に 5 分でデプロイする | Microsoft Docs"
+title: "初めての Web アプリを Azure に&5; 分でデプロイする | Microsoft Docs"
 description: "サンプル アプリをデプロイして、App Service での Web アプリの実行がいかに簡単であるかを説明します。 実際の開発を速やかに開始し、すぐに成果を確認できます。"
 services: app-service\web
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4e86c1c1460f7b6eb312f10a0666f92b33697763
-ms.openlocfilehash: f6356a5a647940796c337e345a8b901dae9eb9b4
+ms.sourcegitcommit: 9ea90a7e2f69344fa86e20bc869f5b8af629a226
+ms.openlocfilehash: 77de5a58dc792ff2d65855e726dd35d9824276cb
 
 
 ---
-# <a name="deploy-your-first-web-app-to-azure-in-five-minutes"></a>初めての Web アプリを Azure に 5 分でデプロイする
+# <a name="deploy-your-first-web-app-to-azure-in-five-minutes"></a>初めての Web アプリを Azure に&5; 分でデプロイする
 このチュートリアルでは、初めての Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md)にデプロイします。
 App Service を使用すると、Web アプリ、[モバイル アプリ バックエンド](/documentation/learning-paths/appservice-mobileapps/)、および [API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)を作成できます。
 
@@ -46,14 +46,14 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
 * Microsoft Azure アカウント。 アカウントを持っていない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)するか [Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
 
 > [!NOTE]
-> Azure アカウントがなくても、[App Service を試用](http://go.microsoft.com/fwlink/?LinkId=523751)できます。 スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
+> Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大&1; 時間使用できます。クレジット カードも契約も不要です。
 > 
 > 
 
 ## <a name="deploy-a-web-app"></a>Web アプリをデプロイする
 Azure App Service に Web アプリをデプロイしましょう。
 
-1. 新しい Windows コマンド プロンプト、PowerShell ウィンドウ、Linux のシェル、または OS X ターミナルを開きます。 `git --version` と `azure --version` を実行し、Git と Azure CLI がコンピューターにインストールされていることを確認します。
+1. 新しい Windows コマンド プロンプト、PowerShell ウィンドウ、Linux のシェル、または OS X ターミナルを開きます。 `git --version` と `az --version` を実行し、Git と Azure CLI がコンピューターにインストールされていることを確認します。
    
     ![Test installation of CLI tools for your first web app in Azure](./media/app-service-web-get-started/1-test-tools-2.0.png)
    
@@ -161,6 +161,6 @@ Git を使用してプロジェクト (リポジトリ) のルートからプッ
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Resource Manager での Azure Portal を使用した内部ロード バランサーの作成の概要 | Microsoft Docs"
+title: "内部ロード バランサーの作成 - Azure Portal | Microsoft Docs"
 description: "Azure ポータルを使用して Resource Manager で内部ロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 6961255e4b1a269b3ac9bafb5f1b3ced7a2a8943
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 8fbe9d5d04d745de51e0e41516d6c12683c98637
 
 ---
 
@@ -32,7 +32,7 @@ ms.openlocfilehash: 6961255e4b1a269b3ac9bafb5f1b3ced7a2a8943
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](load-balancer-get-started-ilb-classic-ps.md)ではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](load-balancer-get-started-ilb-classic-ps.md)ではなくこのモデルをお勧めします。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -107,6 +107,6 @@ Azure Portal で内部ロード バランサーを作成するには、次の手
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

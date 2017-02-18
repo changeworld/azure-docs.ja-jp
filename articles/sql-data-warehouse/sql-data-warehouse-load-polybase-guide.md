@@ -15,31 +15,31 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 472f86ecd821dfad74c25fe7cd36d07114489a71
+ms.sourcegitcommit: 1a82f9f1de27c9197bf61d63dd27c5191fec1544
+ms.openlocfilehash: 3e1bf2372762de474310c78d512a6a073c7a01b6
 
 
 ---
 # <a name="guide-for-using-polybase-in-sql-data-warehouse"></a>SQL Data Warehouse で PolyBase を使用するためのガイド
 このガイドでは、SQL Data Warehouse で PolyBase を使用するための実用的な情報を提供します。
 
-開始するには、[「PolyBase を使用したデータのロード」][PolyBase を使用したデータのロード] チュートリアルを参照してください。
+開始するには、「[PolyBase を使用したデータのロード][Load data with PolyBase]」チュートリアルを参照してください。
 
 ## <a name="rotating-storage-keys"></a>ストレージ キーの交換
 セキュリティ上の理由で、BLOB ストレージへのアクセス キーの交換を検討する必要がある場合があります。
 
-このタスクを実行する最もスマートな方法として、"キーの交換" と呼ばれるプロセスがあります。 BLOB ストレージ アカウントには 2 つのストレージ キーがあります。 これらを切り替えることができます。
+このタスクを実行する最もスマートな方法として、"キーの交換" と呼ばれるプロセスがあります。 BLOB ストレージ アカウントには&2; つのストレージ キーがあります。 これらを切り替えることができます。
 
-Azure ストレージ アカウント キーの交換は、次のシンプルな 3 つの手順から成るプロセスです
+Azure ストレージ アカウント キーの交換は、次のシンプルな&3; つの手順から成るプロセスです
 
 1. セカンダリ ストレージ アクセス キーに基づいたセカンダリ データベース スコープの資格情報を作成します
-2. この新しい資格情報に基づいて 2 つ目の外部データ ソースを作成します
+2. この新しい資格情報に基づいて&2; つ目の外部データ ソースを作成します
 3. 外部データ ソースを参照する外部テーブルを削除して、新しい外部テーブルを作成します
 
 すべての外部テーブルを新しい外部データ ソースに移行したら、クリーンアップ作業を実行できます。
 
 1. 1 つ目の外部データ ソースを削除する
-2. プライマリ ストレージ アクセス キーに基づいた 1 つ目のデータベース スコープ資格情報を削除します
+2. プライマリ ストレージ アクセス キーに基づいた&1; つ目のデータベース スコープ資格情報を削除します
 3. Azure にログインし、次回に備えてプライマリ アクセス キーを再生成します
 
 ## <a name="query-azure-blob-storage-data"></a>Azure BLOB ストレージ データのクエリ
@@ -80,10 +80,10 @@ FROM   [ext].[CarSensor_Data]
 ;
 ```
 
-[「CREATE TABLE AS SELECT (Transact-SQL)」][CREATE TABLE AS SELECT (Transact-SQL)]を参照してください。
+[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] に関するページを参照してください。
 
 ## <a name="create-statistics-on-newly-loaded-data"></a>新しくロードしたデータの統計を作成する
-Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。  クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。  統計の詳細については、開発トピック グループの[統計][統計]に関するトピックを参照してください。  この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します。
+Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。  クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。  統計の詳細については、開発トピック グループの[統計][Statistics]に関するトピックを参照してください。  この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します。
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -123,10 +123,10 @@ WHERE
 
 この要件に対処するための最善の方法は、UTF-8 エンコードを書き換えることです。
 
-これを行うには、いくつかの方法があります。 Powershell を使用した 2 つの方法を以下に紹介します。
+これを行うには、いくつかの方法があります。 Powershell を使用した&2; つの方法を以下に紹介します。
 
 ### <a name="simple-example-for-small-files"></a>小さいファイル向けの単純な例
-以下は、ファイルを作成する単純な 1 行の Powershell スクリプトです。
+以下は、ファイルを作成する単純な&1; 行の Powershell スクリプトです。
 
 ```PowerShell
 Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name> -Encoding utf8
@@ -172,24 +172,25 @@ $write.Dispose()
 ```
 
 ## <a name="next-steps"></a>次のステップ
-SQL Data Warehouse にデータを移行する方法の詳細については、[「データ移行の概要」][データ移行の概要]を参照してください。
+SQL Data Warehouse にデータを移行する方法の詳細については、[データ移行の概要][data migration overview]に関する記事を参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[bcp を使用したデータの読み込み]: ./sql-data-warehouse-load-with-bcp.md
-[PolyBase を使用したデータのロード]: ./sql-data-warehouse-get-started-load-with-polybase.md
-[統計]: ./sql-data-warehouse-tables-statistics.md
-[データ移行の概要]: ./sql-data-warehouse-overview-migrate.md
+[Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
+[Load data with PolyBase]: ./sql-data-warehouse-get-started-load-with-polybase.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[data migration overview]: ./sql-data-warehouse-overview-migrate.md
 
 <!--MSDN references-->
-[サポートされているソース/シンク]: https://msdn.microsoft.com/library/dn894007.aspx
-[コピー アクティビティ]: https://msdn.microsoft.com/library/dn835035.aspx
-[SQL Server 変換先アダプター]: https://msdn.microsoft.com/library/ms141095.aspx
+[supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx
+[copy activity]: https://msdn.microsoft.com/library/dn835035.aspx
+[SQL Server destination adapter]: https://msdn.microsoft.com/library/ms141095.aspx
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
 [CREATE EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935022.aspx
-[CREATE EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/dn935026).aspx [CREATE EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935021.aspxx
+[CREATE EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/dn935026.aspx
+[CREATE EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935021.aspx
 
 [DROP EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/library/mt146367.aspx
 [DROP EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/mt146379.aspx
@@ -206,6 +207,6 @@ SQL Data Warehouse にデータを移行する方法の詳細については、[
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure App Service での Node.js Web アプリの使用 | Microsoft Docs"
+title: "Azure App Service 用の Node.js Web アプリの開発 | Microsoft Docs"
 description: "Node.js アプリケーションを Azure App Service の Web アプリにデプロイする方法を説明します。"
 services: app-service\web
 documentationcenter: nodejs
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 88405a9e67eb748acc9564022283004b5ebfcf48
-ms.openlocfilehash: 63210a5539d1e5e5b7d1f5a60048d507e53038a5
+ms.sourcegitcommit: 763e956004f460f2f6d0fa7325a6f6b5fca3fd5a
+ms.openlocfilehash: ab16eb45f86f81af719fcd0a4b65f19576f01f01
 
 
 ---
-# <a name="get-started-with-nodejs-web-apps-in-azure-app-service"></a>Azure App Service での Node.js Web アプリの使用
+# <a name="develop-nodejs-web-apps-for-azure-app-service"></a>Azure App Service 用の Node.js Web アプリの開発
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 このチュートリアルでは、簡単な [Node.js] アプリケーションを作成し、cmd.exe や bash などのコマンド ライン環境を使用して [Azure App Service] にデプロイする方法について説明します。 このチュートリアルの手順は、Node.js を実行できる任意のオペレーティング システムで使用できます。
@@ -45,7 +45,7 @@ ms.openlocfilehash: 63210a5539d1e5e5b7d1f5a60048d507e53038a5
 * Microsoft Azure アカウント。 アカウントを持っていない場合は、[無料試用版にサインアップ]するか [Visual Studio サブスクライバー特典を有効]にしてください。
 
 > [!NOTE]
-> Azure アカウントがなくても、[App Service を試用](http://go.microsoft.com/fwlink/?LinkId=523751)できます。 スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
+> Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大&1; 時間使用できます。クレジット カードも契約も不要です。
 > 
 > 
 
@@ -214,12 +214,12 @@ iisnode ログを読み取るには、次の手順を実行します。
 > 
 
 1. Azure CLI 2.0 プレビューに用意されている iisnode.yml ファイルを開きます。
-2. 次の 2 つのパラメーターを設定します。 
+2. 次の&2; つのパラメーターを設定します。 
    
         loggingEnabled: true
         logDirectory: iisnode
    
-    この 2 つのパラメーターを組み合わせることで、stdout と stderror の出力先が D:\home\site\wwwroot\**iisnode** ディレクトリとなるよう、App Service 内の iisnode に伝えられます。
+    この&2; つのパラメーターを組み合わせることで、stdout と stderror の出力先が D:\home\site\wwwroot\**iisnode** ディレクトリとなるよう、App Service 内の iisnode に伝えられます。
 3. 次の Git コマンドで変更内容を保存し、Azure にプッシュします。
    
         git add .
@@ -303,6 +303,6 @@ Node-Inspector を有効にするには、次の手順を実行します。
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a7d0b98e1c582230c756d1c893d9cc549a5a2893
-ms.openlocfilehash: ec38012c15d1970a56881fa64d8655b09487eae5
+ms.sourcegitcommit: 2969e6063d7bc59a6c8ca733912904abeeb7e7e8
+ms.openlocfilehash: c79826afe9af20dd46db46ab6c73f3196a71fc46
 
 
 ---
@@ -50,7 +50,7 @@ ms.openlocfilehash: ec38012c15d1970a56881fa64d8655b09487eae5
 
 * [Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md)。イベント ハブに取り込まれたイベントは、Azure Data Lake Store 出力を使用して Azure Data Lake に書き込むことができます。
 * [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md)。Storm クラスターから Data Lake Store に直接データを書き込むことができます。
-* [EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost)。イベント ハブからイベントを受け取り、[Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) を使用して Data Lake Store に書き込むことができます。
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。イベント ハブからイベントを受け取り、[Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) を使用して Data Lake Store に書き込むことができます。
 
 ### <a name="relational-data"></a>リレーショナル データ
 リレーショナル データベースのデータもソースとして扱うことができます。 一定の期間を経て、リレーショナル データベースには大量のデータが収集されます。ビッグ データのパイプラインを介して処理すると、これらのデータから重要な知見が得られます。 このようなデータを Data Lake Store に移動するには、次のツールを使用できます。
@@ -135,6 +135,6 @@ Data Lake Store でデータが利用できるようになったら、サポー�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

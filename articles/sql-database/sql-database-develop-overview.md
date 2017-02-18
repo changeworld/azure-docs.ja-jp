@@ -12,12 +12,12 @@ ms.custom: development
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 18dc3cce7451d90b6b65b990b80c05e7f6decb56
+ms.sourcegitcommit: cf627b92399856af2b9a58ab155fac6730128f85
+ms.openlocfilehash: 59b8e7b6b2e2442c0a961d105ccdbc9336445aa6
 
 
 ---
@@ -33,8 +33,11 @@ ms.openlocfilehash: 18dc3cce7451d90b6b65b990b80c05e7f6decb56
 
 * 詳細: [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
+## <a name="tools"></a>ツール 
+[cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS コード](https://code.visualstudio.com/)などのオープン ソース ツールを活用できます。 さらに、Azure SQL Database は、[Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)、[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) などの Microsoft ツールと連携しています。  また、Microsoft Azure 管理ポータル、PowerShell、および REST API も使用でき、生産性向上に役立ちます。
+
 ## <a name="resource-limitations"></a>リソースの制限事項
-Azure SQL Database では、リソース ガバナンスと制限の適用という 2 つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。
+Azure SQL Database では、リソース ガバナンスと制限の適用という&2; つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。
 
 * 詳細: [Azure SQL Database のリソース制限](sql-database-resource-limits.md)
 
@@ -72,11 +75,10 @@ Elastic Scale は、スケール アウト (およびスケール イン) のプ
 * [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 
 ## <a name="next-steps"></a>次のステップ
-[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
+[SQL Database の機能](sql-database-technical-overview.md)
 
 
 
-
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

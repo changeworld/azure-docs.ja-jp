@@ -1,5 +1,5 @@
 ---
-title: "Azure Batch サービスの基本 |Microsoft Docs"
+title: "Azure Batch サービスの概要 | Microsoft Docs"
 description: "大規模な並列ワークロードと HPC ワークロードに関する Azure Batch サービスの使用方法について説明します。"
 services: batch
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/19/2016
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 6f05aa3f06c8ec86d58cafd406c2752ddb2eecc1
-ms.openlocfilehash: f3429fff9362451e687435e0c5e779feda564e46
+ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
+ms.openlocfilehash: 3a01764b6a0e777e947cf8648606cdd568d118ff
 
 
 ---
@@ -66,7 +66,7 @@ Batch ソリューションを開発するとき、Microsoft Azure で次のア�
 * **ストレージ アカウント** - Batch には、[Azure Storage][azure_storage] のファイルを操作するためのサポートが組み込まれています。 ほぼすべての Batch シナリオで、Azure Blob Storage が使用されます。タスクで実行されるプログラムや、プログラムで処理されるデータのステージングに使用されたり、プログラムで生成される出力データの格納に使用されたりします。 ストレージ アカウントの作成方法については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
 ### <a name="batch-development-apis"></a>Batch 開発 API
-アプリケーションとサービスは、直接 REST APIを呼び出したり、以下の 1 つ以上のクライアント ライブラリを使用したりして、Azure Batch ワークロードを実行および管理することができます。
+アプリケーションとサービスは、直接 REST APIを呼び出したり、以下の&1; つ以上のクライアント ライブラリを使用したりして、Azure Batch ワークロードを実行および管理することができます。
 
 | API | API リファレンス | ダウンロード | チュートリアル | コード サンプル |
 | --- | --- | --- | --- | --- |
@@ -119,13 +119,13 @@ Batch API を利用し、Batch サービスとやりとりする一般的なソ�
 6. タスクが完了すると、結果データを Azure Storage にアップロードできます。 コンピューティング ノードのファイル システムからファイルを直接取得することもできます。
 7. ジョブのタスクが完了したことが監視により検出された場合、クライアント アプリケーションまたはサービスで出力データをダウンロードし、さらに処理したり、評価したりできます。
 
-これは Batch の利用方法の 1 つにすぎません。このシナリオでは、利用できる機能のほんの一部のみを紹介しています。 たとえば、各コンピューティング ノードで[複数のタスクを並列に](batch-parallel-node-tasks.md)実行できます。また、[ジョブの準備と完了のタスク](batch-job-prep-release.md)を利用してジョブのノードを準備し、後で消去できます。
+これは Batch の利用方法の&1; つにすぎません。このシナリオでは、利用できる機能のほんの一部のみを紹介しています。 たとえば、各コンピューティング ノードで[複数のタスクを並列に](batch-parallel-node-tasks.md)実行できます。また、[ジョブの準備と完了のタスク](batch-job-prep-release.md)を利用してジョブのノードを準備し、後で消去できます。
 
 ## <a name="next-steps"></a>次のステップ
 これで Batch サービスの概要を確認できました。次は、深く掘り下げ、コンピューティング リソースが大量に使われる並列ワークロードをサービスで処理する方法を学習してください。
 
 * Batch を使用するための準備を担当する方は、「 [開発者向け Batch 機能の概要](batch-api-basics.md)」で重要な情報をご確認ください。 この記事には、Batch アプリケーションを構築するときに使用できる多数の API 機能、プール、ノード、ジョブ、タスクなど、Batch サービスのリソースに関する詳しい情報が記載されています。
-* [.NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md) 」では、C# と Batch .NET ライブラリを利用し、一般的な Batch ワークフローを使用して簡単なワークロードを実行する方法を学習できます。 この記事は、Batch サービスの使用方法を学習するときに最初に参考していただきたい記事の 1 つです。 また、 [Python 向け](batch-python-tutorial.md) のチュートリアルも用意されています。
+* [.NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md) 」では、C# と Batch .NET ライブラリを利用し、一般的な Batch ワークフローを使用して簡単なワークロードを実行する方法を学習できます。 この記事は、Batch サービスの使用方法を学習するときに最初に参考していただきたい記事の&1; つです。 また、 [Python 向け](batch-python-tutorial.md) のチュートリアルも用意されています。
 * [GitHub のサンプル コード][github_samples]をダウンロードし、C# と Python の両方について、Batch とやり取りしてサンプル ワークロードのスケジュール設定と処理を実行する方法を確認してください。
 * [Batch ラーニング パス][learning_path]で、Batch の使用方法を学習する際に利用できるリソースを確認してください。
 
@@ -159,6 +159,6 @@ Batch API を利用し、Batch サービスとやりとりする一般的なソ�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

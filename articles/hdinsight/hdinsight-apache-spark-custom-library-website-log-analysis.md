@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 07cb021c99362d7195d2a8a6c1c802d952cf1331
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: 382b4929f0587906bd7256380cae4eb641f108bb
 
 
 ---
@@ -187,7 +187,7 @@ ms.openlocfilehash: 07cb021c99362d7195d2a8a6c1c802d952cf1331
 
    ![SQL クエリ出力](./media/hdinsight-apache-spark-custom-library-website-log-analysis/sql.output.png "SQL クエリ出力")
 
-   `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-pyspark-or-spark-kernels)に関する記事を参照してください。
+   `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)に関する記事を参照してください。
 7. データの視覚効果の構築に使用するライブラリ、Matplotlib を使用して、プロットを作成できます。 プロットはローカルに保持された **averagetime** データフレームから作成する必要があるため、コード スニペットは `%%local` マジックで始める必要があります。 これにより、コードは Jupyter サーバーでローカルに実行されます。
 
        %%local
@@ -230,6 +230,6 @@ ms.openlocfilehash: 07cb021c99362d7195d2a8a6c1c802d952cf1331
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure の ID 管理と Access Control セキュリティのベスト プラクティス | Microsoft Docs"
+title: "Azure の ID とアクセスのセキュリティ保護に関するベスト プラクティス | Microsoft Docs"
 description: "この記事では、Azure の組み込み機能を利用した ID 管理とアクセス制御に関する一連のベスト プラクティスについて説明します。"
 services: security
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2017
+ms.date: 01/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 3451bdde3be60df0f1e1ed977f23db65d39f535f
-ms.openlocfilehash: eb4f55ab1f463d3351c74d9996eb8611281abe41
+ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
+ms.openlocfilehash: 50f9073d3c35bd9dcfd826ff44e767fb69558757
 
 
 ---
@@ -47,7 +47,7 @@ ID はセキュリティの新しい境界レイヤーであり、従来のネ�
 * 疑わしいアクティビティを能動的に監視する
 
 ## <a name="centralize-your-identity-management"></a>ID 管理を一元化する
-ID のセキュリティ保護に向けた重要なステップの 1 つは、アカウントが作成された場所に関係なく、1 つの場所からアカウントを管理できるようにすることです。 大半の企業の IT 組織では主要なアカウント ディレクトリがオンプレミスにありますが、ハイブリッド クラウドのデプロイが増えており、オンプレミスのディレクトリとクラウドのディレクトリを統合して、シームレスなエクスペリエンスをエンド ユーザーに提供する方法を理解しておくことが重要です。
+ID のセキュリティ保護に向けた重要なステップの&1; つは、アカウントが作成された場所に関係なく、1 つの場所からアカウントを管理できるようにすることです。 大半の企業の IT 組織では主要なアカウント ディレクトリがオンプレミスにありますが、ハイブリッド クラウドのデプロイが増えており、オンプレミスのディレクトリとクラウドのディレクトリを統合して、シームレスなエクスペリエンスをエンド ユーザーに提供する方法を理解しておくことが重要です。
 
 この[ハイブリッド ID](../active-directory/active-directory-hybrid-identity-design-considerations-overview.md) シナリオを実現するには、2 つのオプションをお勧めします。
 
@@ -127,7 +127,7 @@ Azure AD に認証を委託するすべてのアプリケーションを登録�
 SaaS アプリの認証シナリオの詳細については、「[Azure AD の認証シナリオ](../active-directory/active-directory-authentication-scenarios.md)」をご覧ください。
 
 ## <a name="actively-monitor-for-suspicious-activities"></a>疑わしいアクティビティを能動的に監視する
-[Verizon の 2016 データ侵害レポート](http://www.verizonenterprise.com/verizon-insights-lab/dbir/2016/)によると、資格情報の侵害はまだ増加しており、サイバー犯罪者が最も利益を得やすいビジネスの 1 つになっています。 そのため、疑わしい活動をすばやく検出して詳しい調査のためのアラートをトリガーできる能動的な ID 監視システムを設けることが重要です。 Azure AD には ID の監視に役立つ 2 つの主要な機能があります。Azure AD Premium の[異常レポート](../active-directory/active-directory-view-access-usage-reports.md)と、Azure AD [Identity Protection](../active-directory/active-directory-identityprotection.md) 機能です。
+[Verizon の 2016 データ侵害レポート](http://www.verizonenterprise.com/verizon-insights-lab/dbir/2016/)によると、資格情報の侵害はまだ増加しており、サイバー犯罪者が最も利益を得やすいビジネスの 1 つになっています。 そのため、疑わしい活動をすばやく検出して詳しい調査のためのアラートをトリガーできる能動的な ID 監視システムを設けることが重要です。 Azure AD には ID の監視に役立つ&2; つの主要な機能があります。Azure AD Premium の[異常レポート](../active-directory/active-directory-view-access-usage-reports.md)と、Azure AD [Identity Protection](../active-directory/active-directory-identityprotection.md) 機能です。
 
 異常レポートを使用して、[追跡されない](../active-directory/active-directory-reporting-sign-ins-from-unknown-sources.md)サインインの試行、特定のアカウントに対する[ブルート フォース](../active-directory/active-directory-reporting-sign-ins-after-multiple-failures.md)攻撃、複数の場所からのサインインの試行、[感染したデバイス](../active-directory/active-directory-reporting-sign-ins-from-possibly-infected-devices.md)からのサインイン、疑わしい IP アドレスを検出する必要があります。 これらはレポートであることに注意してください。 つまり、IT 管理者がこれらのレポートを毎日または必要に応じて (通常はインシデント対応シナリオ) 実行するためのプロセスと手順を設ける必要があります。
 
@@ -138,6 +138,6 @@ Azure Identity Protection の詳細については、「[Azure Active Directory 
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

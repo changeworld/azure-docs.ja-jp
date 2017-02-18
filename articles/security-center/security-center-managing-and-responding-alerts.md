@@ -1,10 +1,10 @@
 ---
-title: "Azure Security Center でのセキュリティの警告の管理と対応 | Microsoft Docs"
+title: "Azure Security Center でのセキュリティの警告の管理 | Microsoft Docs"
 description: "このドキュメントは、Azure セキュリティ センターの機能を使用してセキュリティの警告の管理と対応することに役立ちます。"
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: b88a8df7-6979-479b-8039-04da1b8737a7
 ms.service: security-center
@@ -12,11 +12,11 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 02/06/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
-ms.openlocfilehash: 7a4413c6d2ecf497e72e2909e627761f0a9ff23a
+ms.sourcegitcommit: 9852981e530cd147c2d34ac2ede251b58a167a0a
+ms.openlocfilehash: 0093beda6af6d3b2400185fcd63bc73b2c8c9ba9
 
 
 ---
@@ -25,26 +25,27 @@ ms.openlocfilehash: 7a4413c6d2ecf497e72e2909e627761f0a9ff23a
 
 > [!NOTE]
 > 高度な検出を有効にするには、Azure Security Center Standard にアップグレードしてください。 90 日間の無料試用版が提供されています。 アップグレードするには、 [[セキュリティ ポリシー]](security-center-policies.md)の [価格レベル] を選択してください。 詳細については、「[Azure Security Center pricing (Azure Security Center の料金)](security-center-pricing.md)」を参照してください。
-> 
-> 
+>
+>
 
 ## <a name="what-are-security-alerts"></a>セキュリティの警告とは何か
-Security Center は、真の脅威を検出し、偽陽性を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。 また、Azure Security Center は、キル チェーンのパターンに一致するアラートを[インシデント](security-center-incident.md)として集約します。 
+Security Center は、真の脅威を検出し、偽陽性を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。
+
 
 > [!NOTE]
 > Security Center の検出機能に関する詳細については、「 [Azure Security Center の検出機能](security-center-detection-capabilities.md)」を参照してください。
-> 
-> 
+>
+>
 
 ## <a name="managing-security-alerts"></a>セキュリティの警告の管理
 現在の警告は、 **[セキュリティ アラート]** タイルで確認できます。 各警告の詳細については、Azure ポータルを開いて以下の手順に従います。
 
 1. [セキュリティ センター] ダッシュボードに **[セキュリティ アラート]** タイルが表示されます。
-   
+
     ![Security alerts tile in Security Center](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig1-ga.png)
 
 2. タイルをクリックすると、次のように、警告についての詳細が示される **[セキュリティ アラート]** ブレードが開きます。
-   
+
    ![The Security alerts blade in Security Center](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig2-ga.png)
 
 このブレードの下部に、各警告の詳細が表示されます。 警告を並べ替えるには、並べ替えに使用する列をクリックします。 各列の定義を以下に示します。
@@ -53,7 +54,7 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 * **カウント**: 特定の日に検出された、特定の種類の全警告の一覧。
 * **検出元**: 警告をトリガーしたサービス。
 * **日付**: イベントが発生した日付。
-* **状態**: その警告の現在の状態。 ここに表示される状態は 2 種類です。
+* **状態**: その警告の現在の状態。 ここに表示される状態は&2; 種類です。
   * **アクティブ**: セキュリティの警告が検出されました。
 * **重大度**: 重大度。高、中、低で示します。
 
@@ -61,7 +62,7 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 日付、状態と重要度に基づいて警告をフィルター処理することができます。 警告のフィルター処理は、セキュリティの警告の表示範囲を限定する必要がある場合に便利です。 たとえば、システム内の潜在的な違反を調査するために、過去 24 時間以内に発生したセキュリティの警告を確認することができます。
 
 1. **[セキュリティ アラート]** ブレードの **[フィルター]** をクリックします。 **[フィルター]** ブレードが開いたら、確認する日付、状態、重要度の値を選択します。
-   
+
     ![Filtering alerts in Security Center](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig3-2017.png)
 
 ### <a name="respond-to-security-alerts"></a>セキュリティの警告への対応
@@ -79,8 +80,8 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 
 > [!NOTE]
 > さまざまな警告の種類については、「 [Azure Security Center の種類別のセキュリティの警告](security-center-alerts-type.md)」を参照してください。
-> 
-> 
+>
+>
 
 ## <a name="see-also"></a>関連項目
 このドキュメントでは、セキュリティ センターでのセキュリティ ポリシーの構成方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
@@ -93,7 +94,6 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

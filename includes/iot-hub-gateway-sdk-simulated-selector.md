@@ -32,7 +32,7 @@ Simulated Device Cloud Upload サンプルでは、SDK を使用して、シミ�
 > 
 
 ### <a name="protocol-ingestion-module"></a>プロトコル インジェスト モジュール
-このモジュールは、データをデバイスから取得し、ゲートウェイを経由してクラウドに送信する流れの出発点となります。 このサンプルでは、プロトコル インジェスト モジュールは次の 4 つのタスクを実行します。
+このモジュールは、データをデバイスから取得し、ゲートウェイを経由してクラウドに送信する流れの出発点となります。 このサンプルでは、プロトコル インジェスト モジュールは次の&4; つのタスクを実行します。
 
 1. シミュレートされた温度データを作成する。 実際のデバイスを使用する場合は、それらの物理デバイスからデータが読み取られることに注意してください。
 2. シミュレートされた温度データをメッセージに追加する。
@@ -53,7 +53,7 @@ Simulated Device Cloud Upload サンプルでは、SDK を使用して、シミ�
 > 
 
 ### <a name="iot-hub-communication-module"></a>IoT Hub 通信モジュール
-このモジュールは、前のモジュールによって割り当てられた IoT Hub デバイス ID を持つメッセージを受け取り、HTTP を使用してそのメッセージの内容を IoT Hub に送信します。 HTTP は、IoT Hub で認識される 3 つのプロトコルのうちの 1 つです。
+このモジュールは、前のモジュールによって割り当てられた IoT Hub デバイス ID を持つメッセージを受け取り、HTTP を使用してそのメッセージの内容を IoT Hub に送信します。 HTTP は、IoT Hub で認識される&3; つのプロトコルのうちの&1; つです。
 
 このモジュールは、シミュレーション対象デバイス アプリごとに IoT Hub への接続を開く代わりに、ゲートウェイから IoT Hub への単一の HTTP 接続を開き、その接続を介するすべてのシミュレートされたデバイスからの接続を多重化します。 これにより、デバイスごとに一意の接続が開かれている場合に比べ、1 つのゲートウェイでより多くの (シミュレートされた) デバイスに接続することができます。
 
@@ -64,10 +64,10 @@ Simulated Device Cloud Upload サンプルでは、SDK を使用して、シミ�
 [2]: media/iot-hub-gateway-sdk-simulated-selector/image2.png
 
 <!-- Links -->
-[Simulated Device Cloud Upload サンプル]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/sample_simulated_device_cloud_upload.md
+[Simulated Device Cloud Upload サンプル]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/simulated_device_cloud_upload/README.md
 [lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 [lnk-gw-getstarted]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

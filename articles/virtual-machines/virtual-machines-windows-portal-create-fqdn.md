@@ -1,5 +1,5 @@
 ---
-title: "Azure Portal での VM の FQDN の作成 | Microsoft Docs"
+title: "Azure Portal で Windows VM の FQDN を作成する | Microsoft Docs"
 description: "Azure Portal で仮想マシンに基づいて、Resource Manager の完全修飾ドメイン名 (FQDN) を作成する方法を説明します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/14/2016
+ms.date: 102/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: f556fd0318accc19f0fa56fa7f2a8716ee6f1c02
-ms.openlocfilehash: 72d176803151af5b3c5da50f1f2d72c0dd27f44a
+ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
+ms.openlocfilehash: e89e5769701f00c6f403bd54cb2b29bcce53bf15
 
 
 ---
@@ -36,6 +36,6 @@ Azure デプロイの構築に関するヒントについては、[Resource Mana
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

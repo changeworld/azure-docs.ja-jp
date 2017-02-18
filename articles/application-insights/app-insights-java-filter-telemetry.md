@@ -13,8 +13,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: b18b1d4c2a3b9e1bba36bce2f38917501e641c4f
-ms.openlocfilehash: 29dab5bc8eb76200f03a32b9299b4d89b247ab36
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: cd09b7c5d45d07a3fbcc5d6f0c02400dcd36d61b
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 29dab5bc8eb76200f03a32b9299b4d89b247ab36
 * 迅速な応答 - つまり、アプリが迅速に応答した要求
 * 特定のイベント名
 
-> [!NOTE] 
+> [!NOTE]
 > フィルターでは、アプリのメトリックにゆがみが生じます。 たとえば、遅い応答を診断するために、高速な応答時間を破棄するフィルターを設定するとします。 ただし、Application Insights によって報告される平均応答時間は実際の速度より低くなること、また、要求数は実際の数より少なくなることに注意する必要があります。
 > これが問題になる場合は、代わりに[サンプリング](app-insights-sampling.md)を使用します。
 
@@ -66,7 +66,7 @@ ApplicationInsights.xml で、次の例のように `TelemetryProcessors` セク
 
            <!-- Exclude telemetry from availability tests and bots -->
            <Processor type="SyntheticSourceFilter">
-                <!-- Optional: specify which synthetic sources, 
+                <!-- Optional: specify which synthetic sources,
                      comma-separated
                      - default is all synthetics -->
                 <Add name="NotNeededSources" value="Application Insights Availability Monitoring,BingPreview"
@@ -115,7 +115,7 @@ ApplicationInsights.xml で、次の例のように `TelemetryProcessors` セク
            </Processor>
 ```
 
-* `DurationThresholdInMS` - ここで、期間はページの読み込みにかかる時間です。 これを設定した場合、この時間よりも高速に読み込まれたページは報告されません。 
+* `DurationThresholdInMS` - ここで、期間はページの読み込みにかかる時間です。 これを設定した場合、この時間よりも高速に読み込まれたページは報告されません。
 * `NotNeededNames` - ページ名のコンマ区切りリスト。
 * `NotNeededUrls` - URL フラグメントのコンマ区切りリスト。 たとえば、`"home"` は URL に "home" のあるすべてのページを除外します。
 
@@ -160,7 +160,7 @@ SyntheticSource プロパティに値を持つすべてのテレメトリを除�
 
 ### <a name="telemetry-event-filter"></a>テレメトリ イベント フィルター
 
-([TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) を使って記録された) カスタム イベントをフィルターします。
+([TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) を使って記録された) カスタム イベントをフィルターします。
 
 
 ```XML
@@ -176,7 +176,7 @@ SyntheticSource プロパティに値を持つすべてのテレメトリを除�
 
 ### <a name="trace-telemetry-filter"></a>トレース テレメトリ フィルター
 
-([TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace) または [ログ記録フレームワーク コレクター](app-insights-java-trace-logs.md)を使用して記録された) ログ トレースをフィルターします。
+([TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) または [ログ記録フレームワーク コレクター](app-insights-java-trace-logs.md)を使用して記録された) ログ トレースをフィルターします。
 
 ```XML
 
@@ -212,7 +212,7 @@ SyntheticSource プロパティに値を持つすべてのテレメトリを除�
        private final String successful;
 
        /* Initializers for the parameters, named "setParameterName" */
-       public void setNotNeeded(String successful) 
+       public void setNotNeeded(String successful)
        {
           this.successful = successful;
        }
@@ -266,7 +266,6 @@ ApplicationInsights.xml で、以下を使用します。
 
 
 
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

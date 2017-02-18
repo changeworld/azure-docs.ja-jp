@@ -1,5 +1,5 @@
 ---
-title: "クラシック デプロイ モデルでのクラウド サービスの内部ロード バランサーの作成 | Microsoft Docs"
+title: "Azure Cloud Services 用の内部ロード バランサーの作成 | Microsoft Docs"
 description: "クラシック デプロイ モデルで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します。"
 services: load-balancer
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 7b2a5ea00a78f5643919f7095478801b13593ea6
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: e32ffa81f7465682579eec92087b98aebbe3c4a8
 
 ---
 
@@ -28,7 +28,7 @@ ms.openlocfilehash: 7b2a5ea00a78f5643919f7095478801b13593ea6
 > * [クラウド サービス](../load-balancer/load-balancer-get-started-ilb-classic-cloud.md)
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
 
 ## <a name="configure-internal-load-balancer-for-cloud-services"></a>クラウド サービスの内部ロード バランサーを構成する
 
@@ -100,6 +100,6 @@ Visual Studio でクラウド デプロイのサービス構成ファイル (.cs
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

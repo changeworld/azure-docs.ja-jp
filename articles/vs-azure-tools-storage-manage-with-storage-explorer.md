@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: a538ceef7d9aeaca0e6f54443f3a5dabd06c22a1
-ms.openlocfilehash: 9914051f5f509a657e91aa66c1efb99ceb9f4817
+ms.sourcegitcommit: 0550f5fecd83ae9dc0acb2770006156425baddf3
+ms.openlocfilehash: 0617d2e668fe719d6002254b6d13ca729887c0e3
 
 
 ---
 # <a name="getting-started-with-storage-explorer-preview"></a>ストレージ エクスプローラー (プレビュー) の概要
-## <a name="overview"></a>Overview
-Microsoft Azure ストレージ エクスプローラー (プレビュー) は、Windows、OS X、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。 この記事では、Azure ストレージ アカウントへの接続と管理に関するさまざまな方法を紹介します。
+## <a name="overview"></a>概要
+Microsoft Azure ストレージ エクスプローラー (プレビュー) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。 この記事では、Azure ストレージ アカウントへの接続と管理に関するさまざまな方法を紹介します。
 
 ![Microsoft Azure ストレージ エクスプローラー (プレビュー)][15]
 
@@ -49,7 +49,7 @@ Microsoft Azure ストレージ エクスプローラー (プレビュー) は�
     ![[Azure アカウントの設定]][0]
 2. 左側のウィンドウに、ログインしている Microsoft アカウントがすべて表示されます。 別のアカウントに接続するには、 **[アカウントの追加]**を選択し、ダイアログに従って、少なくとも&1; つのアクティブな Azure サブスクリプションと関連付けられている Microsoft アカウントでサインインします。
 > [!NOTE]
->サインインを利用した国内の Azure (Black Forest Azure、Fairfax Azure、Mooncake Azure など) への接続は現在サポートされていません。 国内の Azure ストレージ アカウントに接続する方法については、「**外部ストレージ アカウントをアタッチまたはデタッチする**」を参照してください。
+>サインインを利用した国内の Azure (Black Forest Azure、Fairfax Azure、Mooncake Azure など) への接続は、現在サポートされていません。 国内の Azure ストレージ アカウントに接続する方法については、「**外部ストレージ アカウントをアタッチまたはデタッチする**」を参照してください。
 
 3. Microsoft アカウントでのサインインに成功すると、左側のウィンドウに、そのアカウントに関連付けられた Azure サブスクリプションが表示されます。 操作する Azure サブスクリプションを選択してから、**[適用]** を選択します  (**[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure サブスクリプションがすべて選択された状態と、1 つも選択されていない状態を切り替えることができます)。
 
@@ -72,7 +72,7 @@ Microsoft Azure ストレージ エクスプローラー (プレビュー) は�
 2. Azure ストレージ エミュレーターをインストールしていない場合は、情報バーを使用してインストールするよう求められます。 情報バーが表示されている場合は、 **[最新バージョンのダウンロード]**を選択し、エミュレーターをインストールします。
 
     ![Download Azure Storage Emulator prompt][22]
-3. エミュレーターがインストールされたら、ローカルの BLOB、キュー、テーブルを作成および操作できるようになります。 それぞれの種類のストレージ アカウントを操作する方法については、以下の該当するリンクを選択して確認してください。
+3. エミュレーターがインストールされたら、ローカルの BLOB、キュー、テーブルを作成および操作できるようになります。 それぞれの種類のストレージ アカウントを操作する方法については、以下のいずれかのリンクを選択してください。
 
    * [Azure Blob Storage リソースの管理](vs-azure-tools-storage-explorer-blobs.md)
    * Azure ファイル共有ストレージ リソースの管理 - " *近日公開予定*
@@ -111,8 +111,8 @@ Microsoft Azure ストレージ エクスプローラー (プレビュー) は�
 3. **[外部ストレージのアタッチ]** ダイアログで、**[アカウント名]** ボックスにストレージ アカウント名を入力し、必要な他の設定を指定してから、**[次へ]** を選択します。
 
    ![Attach external storage dialog][8]
-4. **[Connection Summary (接続の概要)]** ダイアログで、情報を確認します。 設定を変更する場合は、 **[戻る]** を選択し、必要な設定をもう一度入力します。 完了したら、 **[接続]**を選択します。
-5. 接続されると、ストレージ アカウント名に " **(外部)** " というテキストが追加された状態で外部ストレージ アカウントが表示されます。
+4. **[Connection Summary (接続の概要)]** ダイアログで、情報を確認します。 設定を変更する場合は、**[戻る]** を選択し、必要な設定をもう一度入力します。 完了したら、 **[接続]**を選択します。
+5. 接続されると、ストレージ アカウント名に "**(外部)**" というテキストが追加された状態で外部ストレージ アカウントが表示されます。
 
    ![Result of connecting to an external storage account][9]
 
@@ -138,7 +138,7 @@ Azure サブスクリプションの管理者は、 [SAS (Shared Access Signatur
 2. **[Shared Access Signature]** ダイアログで、アカウントに対して期間とアクセス許可を指定し、**[作成]** を選択します。
 
     ![Get SAS dialog][14]
-3. 2 つ目の **[Shared Access Signature]** ダイアログが表示され、SAS が示されます。 **[接続文字列]** の横にある **[コピー]** を選択してクリップボードにコピーします。 **[閉じる]** を選択してダイアログを閉じます。
+3. 2 つ目の **[Shared Access Signature]** ダイアログに SAS が示されます。 **[接続文字列]** の横にある **[コピー]** を選択してクリップボードにコピーします。 **[閉じる]** を選択してダイアログを閉じます。
 
 ### <a name="attach-to-the-shared-account-using-the-sas"></a>SAS を使って共有アカウントにアタッチする
 1. ストレージ エクスプローラー (プレビュー) で、 **[Connect to Azure storage (Azure ストレージに接続)]**を選択します。
@@ -147,7 +147,7 @@ Azure サブスクリプションの管理者は、 [SAS (Shared Access Signatur
 2. **[Azure Storage へ接続]** ダイアログで、接続文字列を指定し、**[次へ]** を選択します。
 
    ![Connect to Azure storage dialog][24]
-3. **[Connection Summary (接続の概要)]** ダイアログで、情報を確認します。 設定を変更する場合は、 **[戻る]** を選択し、必要な設定をもう一度入力します。 完了したら、 **[接続]**を選択します。
+3. **[Connection Summary (接続の概要)]** ダイアログで、情報を確認します。 設定を変更する場合は、**[戻る]** を選択し、必要な設定をもう一度入力します。 完了したら、 **[接続]**を選択します。
 4. アタッチされると、指定したアカウント名に "(SAS)" というテキストが追加された状態でストレージ アカウントが表示されます。
 
    ![Result of attached to an account using SAS][17]
@@ -170,7 +170,7 @@ Azure サブスクリプションの管理者は、 [SAS (Shared Access Signatur
 2. **[Azure Storage へ接続]** ダイアログで SAS URI を指定し、**[次へ]** を選択します。
 
    ![Connect to Azure storage dialog][24]
-3. **[Connection Summary (接続の概要)]** ダイアログで、情報を確認します。 設定を変更する場合は、 **[戻る]** を選択し、必要な設定をもう一度入力します。 完了したら、 **[接続]**を選択します。
+3. **[Connection Summary (接続の概要)]** ダイアログで、情報を確認します。 設定を変更する場合は、**[戻る]** を選択し、必要な設定をもう一度入力します。 完了したら、 **[接続]**を選択します。
 4. アタッチされると、新たにアタッチされたサービスが **[(Service SAS) ((サービス SAS))]** ノードに表示されます。
 
    ![Result of attaching to a shared service using SAS][20]
@@ -210,6 +210,6 @@ Azure サブスクリプションの管理者は、 [SAS (Shared Access Signatur
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/22/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
+ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
+ms.openlocfilehash: 6c366a2b7e5017bbe67cf1dbefc0baec6cf1aed3
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
 2. **[Active Directory]**を選択し、組織のディレクトリの名前を選択します。
 3. **[ユーザー]** タブを選択し、コマンド バーの **[ユーザーの追加]** をクリックします。
 4. **[このユーザーに関する情報の入力]** ページの **[ユーザーの種類]** で次のいずれかを選択します。
-   
+
    * **[組織内の新しいユーザー]** - ディレクトリに新しいユーザー アカウントを追加します。
    * **[既存の Microsoft アカウントを持つユーザー]** - ディレクトリに既存の Microsoft コンシューマー アカウント (Outlook アカウントなど) を追加します。
 5. **[ユーザーの種類]**に応じて、ユーザー名 (新しいユーザーの場合) または電子メール アドレス (Microsoft アカウントを持つユーザーの場合) を入力します。
@@ -37,11 +37,11 @@ ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
 
 > [!IMPORTANT]
 > 組織が複数のドメインを使用している場合は、ユーザー アカウントを追加するときに起きる、次の問題について理解しておく必要があります。
-> 
-> * 複数のドメインで同じユーザー プリンシパル名 (UPN) を持つユーザー アカウントを追加するには、たとえば、**最初に** geoffgrisso@contoso.onmicrosoft.com, を追加し、**その後に** geoffgrisso@contoso.com. を追加します。
-> * geoffgrisso@contoso.onmicrosoft.com. を追加する前に geoffgrisso@contoso.com を追加**しないでください**。この順序が重要であり、元に戻すのが難しい場合があります。
-> 
-> 
+>
+> * 複数のドメインで同じユーザー プリンシパル名 (UPN) を持つユーザー アカウントを追加するには、たとえば、**最初に** geoffgrisso@contoso.onmicrosoft.com, を追加し、**その後に** geoffgrisso@contoso.com を追加します。
+> * geoffgrisso@contoso.onmicrosoft.com を追加する前に geoffgrisso@contoso.com を追加**しないでください**。 この順序は重要であり、なかなか元に戻すことができない場合があります。
+>
+>
 
 ## <a name="change-user-information"></a>ユーザー情報を変更する
 ユーザーの属性は、オブジェクト ID を除いてすべて変更できます。
@@ -87,6 +87,6 @@ Azure クラシック ポータルで **[構成]** タブを開くには、**[Ac
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

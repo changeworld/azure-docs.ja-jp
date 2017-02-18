@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/03/2017
+ms.date: 01/31/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 87755571f560f0b41baabac0dc2c437b2738e75f
-ms.openlocfilehash: e5f0bdeaf1c29e9f8fc844d4c3d85b1f2595d03b
+ms.sourcegitcommit: 8d370f98a4ef2501afc692af8a19a0625f54b678
+ms.openlocfilehash: a087b74470a8aa0f70b56d74cd97fe0935d35bcd
 
 
 ---
@@ -52,7 +52,7 @@ PowerShell を使用してログを有効にするには、[PowerShell での診
 
 CLI を使用してログを有効にするには、[CLI での診断ログの有効化](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-via-cli)に関する記事の手順に従います。 この記事のコマンドを入力する前に、次の情報を評価してください。
 
-- `-ResourceId` パラメーターに使用する値は、次の [テキスト] を適切な値に置き換えてからコマンド `azure network nsg show [resource-group-name] [nsg-name]` を入力することで調べることができます。 このコマンドからの ID の出力は、*/subscriptions/[Subscription Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG name]* のようになります。
+- `-ResourceId` パラメーターに使用する値は、次の [テキスト] を適切な値に置き換えてからコマンド `azure network nsg show [resource-group-name] [nsg-name]` を入力して調べることができます。 このコマンドからの ID の出力は、*/subscriptions/[Subscription Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG name]* のようになります。
 - ログ カテゴリのデータのみを収集する場合は、記事のコマンドの末尾に `-Categories [category]` を追加し、カテゴリには *NetworkSecurityGroupEvent* または *NetworkSecurityGroupRuleCounter* のいずれかを指定します。 `-Categories` パラメーターを使用しない場合、データ収集は両方のログ カテゴリに対して有効になります。
 
 ## <a name="logged-data"></a>ログ記録されるデータ
@@ -115,10 +115,10 @@ CLI を使用してログを有効にするには、[CLI での診断ログの�
 
 ## <a name="view-and-analyze-logs"></a>ログの表示と分析
 
-アクティビティ ログ データの表示方法については、「[Azure アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をご覧ください。 診断ログ データの表示方法については、「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をご覧ください。 診断ログを Log Analytics に送信する場合は、詳細な分析のために [Azure Networking Analytics](../log-analytics/log-analytics-azure-networking-analytics.md#use-azure-networking-analytics) (プレビュー) ソリューションを使用することができます。 
+アクティビティ ログ データの表示方法については、「[Azure アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をご覧ください。 診断ログ データの表示方法については、「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をご覧ください。 診断データを Log Analytics に送信すると、[Azure ネットワーク セキュリティ グループ分析](../log-analytics/log-analytics-azure-networking-analytics.md) (プレビュー) 管理ソリューションを使用してより深い洞察を得ることができます。 
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

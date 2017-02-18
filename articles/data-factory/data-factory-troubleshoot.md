@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 02/06/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 6b50b65fa1ad86c8e80fff0fb92352b1be52632e
-ms.openlocfilehash: d4589b5e9ca7f08b2152605dc26a96d4b5d656c8
+ms.sourcegitcommit: f78081d173bfe255a3ed8016d10a2deec87ac758
+ms.openlocfilehash: 684515213fc2533e56600cacf3bc0a3a33f337c2
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: d4589b5e9ca7f08b2152605dc26a96d4b5d656c8
     Login-AzureRmAccount
     ```
 3. 次のコマンドを実行して、Azure Data Factory プロバイダーを登録します。
-    
+
     ```powershell        
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
@@ -53,14 +53,14 @@ Data Management Gateway の高速セットアップを起動するには、Inter
 
     Chrome を使用する場合は、 [Chrome Web ストア](https://chrome.google.com/webstore/)に移動し、"ClickOnce" キーワードで検索して、ClickOnce 拡張機能のいずれかを選択してインストールします。
 
-    Firefox についても、同じ操作を実行します (アドインをインストール)。 ツール バーの [メニューを開く] ボタン (右上隅にある 3 本の横線) をクリックして、[アドオン] をクリックし、"ClickOnce" キーワードを使用して検索し、ClickOnce の拡張機能のいずれかを選択してインストールします。
+    Firefox についても、同じ操作を実行します (アドインをインストール)。 ツール バーの [メニューを開く] ボタン (右上隅にある&3; 本の横線) をクリックして、[アドオン] をクリックし、"ClickOnce" キーワードを使用して検索し、ClickOnce の拡張機能のいずれかを選択してインストールします。
 * ポータルの同じブレードに表示される **[手動セットアップ]** リンクを使用します。 この方法を使用して、インストール ファイルをダウンロードし、手動で実行します。 インストールが成功すると、[Data Management Gateway Configuration (Data Management Gateway の構成)] ダイアログ ボックスが表示されます。 ポータル画面の **キー** をコピーし、構成マネージャーでそれを使用して、手動でゲートウェイをサービスに登録します。  
 
 ### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>問題: オンプレミス SQL Server に接続できない
 ゲートウェイ コンピューターで **Data Management Gateway 構成マネージャー**を起動し、**[トラブルシューティング]** タブを使用して、ゲートウェイ コンピューターから SQL Server への接続をテストします。 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。   
 
 ### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>問題: 入力スライスの状態が Waiting のままになっている
-このスライスの状態は、さまざまな理由から **Waiting** になっている可能性があります。 一般的な理由の 1 つとして、**external** プロパティが **true** に設定されていないことが挙げられます。 Azure Data Factory の範囲外で生成されるデータセットの場合、 **external** プロパティによるマーキングが必要です。 このプロパティは、データが外部データであり、データ ファクトリ内のパイプラインでサポートされていないことを示します。 それぞれのストアでデータが使用可能になると、データ スライスは **Ready** とマーキングされます。
+このスライスの状態は、さまざまな理由から **Waiting** になっている可能性があります。 一般的な理由の&1; つとして、**external** プロパティが **true** に設定されていないことが挙げられます。 Azure Data Factory の範囲外で生成されるデータセットの場合、 **external** プロパティによるマーキングが必要です。 このプロパティは、データが外部データであり、データ ファクトリ内のパイプラインでサポートされていないことを示します。 それぞれのストアでデータが使用可能になると、データ スライスは **Ready** とマーキングされます。
 
 **external** プロパティの使用方法については、次の例を参照してください。 external を true に設定するときに、必要に応じて **externalData*** を指定できます。
 
@@ -109,7 +109,7 @@ Failed to create cluster. Exception: Unable to complete the cluster create opera
 さらに、2 つ目の JSON プロパティ additionalLinkedServiceNames では、オンデマンド HDInsight に追加のストレージ アカウントを指定できます。 これらの追加のリンクされたストレージ アカウントは HDInsight クラスターと同じ場所に存在する必要があります。そうでないと、同じエラーで失敗します。
 
 ### <a name="problem-custom-net-activity-fails"></a>問題: カスタム .NET アクティビティが失敗する
-詳細な手順については、 [カスタム アクティビティのパイプラインのデバッグ](data-factory-use-custom-activities.md#debug-the-pipeline) に関するセクションを参照してください。
+詳細な手順については、 [カスタム アクティビティのパイプラインのデバッグ](data-factory-use-custom-activities.md#troubleshoot-failures) に関するセクションを参照してください。
 
 ## <a name="use-azure-portal-to-troubleshoot"></a>Azure ポータルを使用したトラブルシューティング
 ### <a name="using-portal-blades"></a>ポータルのブレードの使用
@@ -153,6 +153,6 @@ Failed to create cluster. Exception: Unable to complete the cluster create opera
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

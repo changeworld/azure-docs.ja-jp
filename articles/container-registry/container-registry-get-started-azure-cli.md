@@ -1,5 +1,5 @@
 ---
-title: "Azure CLI を使用したコンテナー レジストリの作成 | Microsoft Docs"
+title: "Azure コンテナー レジストリの作成 - CLI | Microsoft Docs"
 description: "Azure CLI 2.0 プレビューを使用した Azure コンテナー レジストリの作成と管理の概要"
 services: container-registry
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
 translationtype: Human Translation
-ms.sourcegitcommit: aa4b960ed75b5a4702317bf557b4588e7a54fa0e
-ms.openlocfilehash: d806564056390ea2db74eebbbe89e1b20a350f33
+ms.sourcegitcommit: f299cff22d00a1c765a32838647818d18f3df85d
+ms.openlocfilehash: bd2f3f5331eb83f09f5d187699a39c74be6282d5
 
 ---
 # <a name="create-a-container-registry-using-the-azure-cli"></a>Azure CLI を使用したコンテナー レジストリの作成
@@ -131,6 +131,6 @@ az acr repository show-tags -n myRegistry --repository samples/nginx -o json
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

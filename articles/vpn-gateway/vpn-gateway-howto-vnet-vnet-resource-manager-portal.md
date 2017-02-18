@@ -1,10 +1,10 @@
 ---
-title: "Resource Manager デプロイメント モデルと Azure Portal を使用して VNet を接続する | Microsoft Docs"
+title: "Azure 仮想ネットワークを別の VNet に接続する: ポータル | Microsoft Docs"
 description: "Resource Manager と Azure Portal を使用して VNet 間の VPN ゲートウェイ接続を作成します。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: a7015cfc-764b-46a1-bfac-043d30a275df
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2016
+ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 28d81fe312195b9a9094e1ed066f5cba57c76933
-ms.openlocfilehash: b85017913316a450fe19f1760abff6a86f933e2e
+ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
+ms.openlocfilehash: 7796ec3a7c65e320ca142de4d03f6de5d0698e21
 
 
 ---
@@ -51,7 +51,7 @@ Azure Portal を使用して仮想ネットワーク間を接続する場合、�
 
 マルチサイト構成と VNet 間通信を組み合わせることもできます。 そのため、クロスプレミス接続と仮想ネットワーク間接続を組み合わせたネットワーク トポロジを確立することができます (下図参照)。
 
-![接続について](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "About connections")
+![接続について](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "接続について")
 
 ### <a name="why-connect-virtual-networks"></a>仮想ネットワークを接続する理由
 仮想ネットワークを接続するのは次のような場合です。
@@ -64,7 +64,7 @@ Azure Portal を使用して仮想ネットワーク間を接続する場合、�
   
   * 同じリージョン内で、分離または管理要件に基づいて相互に接続された複数の仮想ネットワークを利用し、多層アプリケーションをセットアップすることができます。
 
-VNet 間接続の詳細については、この記事の最後にある「[VNet 間接続に関してよく寄せられる質問](#faq)」を参照してください。
+VNet 間接続の詳細については、この記事の最後にある「[VNet 間の考慮事項](#faq)」を参照してください。
 
 ### <a name="a-namevaluesaexample-settings"></a><a name="values"></a>設定例
 以下の手順を練習として使用する場合は、次のサンプル構成値を使用してください。 ここでは、例として示すために VNet ごとに複数のアドレス空間を使用しますが、 VNet 間構成に複数のアドレス空間は必要ありません。
@@ -155,21 +155,21 @@ TestVNet1 と TestVNet4 の仮想ネットワーク ゲートウェイの作成�
 
 1. **[すべてのリソース]** から VNet の仮想ネットワーク ゲートウェイに移動します。 たとえば、**[TestVNet1GW]** に移動します。 **[TestVNet1GW]** をクリックして仮想ネットワーク ゲートウェイのブレードを開きます。
    
-    ![[接続] ブレード](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/settings_connection.png "Connections blade")
+    ![接続ブレード](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/settings_connection.png "接続ブレード")
 2. **[+追加]** をクリックして **[接続の追加]** ブレードを開きます。
 3. **[接続の追加]** ブレードで、名前フィールドに接続の名前を入力します。 たとえば、「**TestVNet1toTestVNet4**」と入力します。
    
-    ![接続名](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v1tov4.png "Connection name")
+    ![接続名](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v1tov4.png "接続名")
 4. **[接続の種類]** では、 ドロップダウン リストから **[VNet 対 VNet]** を選択します。
 5. この接続は指定した仮想ネットワーク ゲートウェイから作成しているため、**[最初の仮想ネットワーク ゲートウェイ]** フィールドの値は自動的に入力されます。
 6. **[2 番目の仮想ネットワーク ゲートウェイ]** フィールドでは、接続先として作成する VNet の仮想ネットワーク ゲートウェイを設定します。 **[別の仮想ネットワーク ゲートウェイを選択する]** をクリックして、**[仮想ネットワーク ゲートウェイの選択]** ブレードを開きます。
    
-    ![接続の追加](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add_connection.png "Add a connection")
+    ![接続の追加](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add_connection.png "接続の追加")
 7. このブレードに一覧表示されている仮想ネットワーク ゲートウェイを確認します。 自分のサブスクリプションに属している仮想ネットワーク ゲートウェイのみが表示されていることがわかります。 自分のサブスクリプションに属していない仮想ネットワーク ゲートウェイに接続する場合は、[PowerShell に関する記事](vpn-gateway-vnet-vnet-rm-ps.md)を参照してください。 
 8. 接続先とする仮想ネットワーク ゲートウェイをクリックします。
 9. **[共有キー]** フィールドには、接続に使用する共有キーを入力します。 このキーは、自分で生成または作成できます。 サイト間接続では、オンプレミス デバイスと仮想ネットワーク ゲートウェイの接続にまったく同じキーを使用します。 Vnet 間接続の場合も、VPN デバイスではなく、別の仮想ネットワーク ゲートウェイに接続するという点を除けば、概念は同じです。
    
-    ![共有キー](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/sharedkey.png "Shared key")
+    ![共有キー](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/sharedkey.png "共有キー")
 10. ブレード下部の **[OK]** をクリックして、変更を保存します。
 
 ## <a name="a-nametestvnet4connectiona8-configure-the-testvnet4-connection"></a><a name="TestVNet4Connection"></a>8.TestVNet4 の接続の構成
@@ -183,13 +183,13 @@ TestVNet1 と TestVNet4 の仮想ネットワーク ゲートウェイの作成�
 
 接続の状態を確認します。 接続が作成されると、[状態] を示す値として **[成功]** と **[接続済み]** が表示されます。
 
-![Succeeded](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connected.png "Succeeded")
+![成功](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connected.png "成功")
 
 各接続をダブルクリックすると、その接続についての詳細情報を個別に表示できます。
 
-![[要点]](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Essentials")
+![要点](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "要点")
 
-## <a name="a-namefaqavnet-to-vnet-faq"></a><a name="faq"></a>VNet 間接続に関してよく寄せられる質問
+## <a name="a-namefaqavnet-to-vnet-considerations"></a><a name="faq"></a>VNet 間の考慮事項
 VNet 間接続に関するその他の情報についてよく寄せられる質問の詳細を示します。
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
@@ -199,6 +199,6 @@ VNet 間接続に関するその他の情報についてよく寄せられる質
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

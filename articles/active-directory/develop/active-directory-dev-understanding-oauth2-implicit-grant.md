@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて | Microsoft Docs"
+title: "Azure AD での OAuth2 の暗黙的な許可フローについて | Microsoft Docs"
 description: "OAuth2 の暗黙的な許可フローの Azure Active Directory の実装の詳細と、これが適切なアプリケーションについて説明します。"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 11/15/2016
 ms.author: vittorib;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 0b035ad1505e45c8c0820c825ff609df6e6100f0
-ms.openlocfilehash: 2b7b40aacaf701be22ba6109e1a6370131f2e737
+ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
+ms.openlocfilehash: 980cac016b37e3744441508b93e5cd504045d638
 
 
 ---
@@ -72,6 +72,6 @@ JavaScript ベースのアプローチを全面的に採用したアプリケー
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

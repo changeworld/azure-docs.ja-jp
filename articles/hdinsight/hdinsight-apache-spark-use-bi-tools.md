@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 8122ed46a81f84f5b897986b9e69ab112e2079da
+ms.sourcegitcommit: a3bdeb6fea306babc9358134c37044843b9bdd1c
+ms.openlocfilehash: e31c947ee275d34b1f59909fb009ce5a73b42785
 
 
 ---
@@ -82,7 +82,7 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
         dfw = DataFrameWriter(hvacTable)
         dfw.saveAsTable('hvac')
 
-1. テーブルが正常に作成されたことを確認します。 `%%sql` マジックを使用して、Hive クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-pyspark-or-spark-kernels)に関する記事を参照してください。
+1. テーブルが正常に作成されたことを確認します。 `%%sql` マジックを使用して、Hive クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)に関する記事を参照してください。
 
         %%sql
         SHOW TABLES
@@ -209,6 +209,6 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

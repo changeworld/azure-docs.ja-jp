@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 57daba3f23b2a35afc2d704e4913584f21259ec7
+ms.sourcegitcommit: 601045a6048266cbd317f3a8ff328caa7edf877f
+ms.openlocfilehash: a7b17961ea23c109dc840192fa3f7cea1d88326e
 
 
 ---
@@ -44,7 +44,7 @@ Application Insights リソースは、ページのパフォーマンスと使�
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](./media/app-insights-javascript/01-create.png)
 
-*質問がございますか?* [リソースの作成に関する詳細はここにあります](app-insights-create-new-resourceのサブスクリプションが必要です。md)のサブスクリプションが必要です。
+*質問がございますか?* [リソースの作成に関する詳細はここにあります](app-insights-create-new-resource.md)のサブスクリプションが必要です。
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>アプリや Web ページに SDK スクリプトを追加する
 クイック スタートで、Web ページのスクリプトを取得します。
@@ -121,7 +121,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 多くの場合、"*ネットワーク接続*" 時間は予想よりも短くなることに注意してください。これは、ブラウザーからサーバーに送信されるすべての要求の平均であるためです。 個別の要求の多くは接続時間が 0 です。サーバーへの接続が既にアクティブになっているためです。
 
 ### <a name="slow-loading"></a>読み込みに時間がかかる
-ページの読み込みに時間がかかる問題は、エンド ユーザーの満足度を下げる大きな要因の 1 つです。 グラフからページの読み込みに時間がかかっていることがわかれば、診断調査を簡単に行うことができます。
+ページの読み込みに時間がかかる問題は、エンド ユーザーの満足度を下げる大きな要因の&1; つです。 グラフからページの読み込みに時間がかかっていることがわかれば、診断調査を簡単に行うことができます。
 
 このグラフは、対象アプリにおける全ページ読み込みの平均時間を示しています。 問題が特定のページに限定されているかどうかは、ブレードの下の方にある、ページの URL ごとにセグメント化されたグリッドで確認できます。
 
@@ -135,11 +135,11 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 [`...`] をクリックすると、該当するイベントの一連のプロパティがすべて表示されます。また、AJAX 呼び出しや関連するイベントを詳しく調査することもできます。 AJAX 呼び出しが同期処理で実行されている場合、呼び出しに時間がかかると、ページ読み込み時間全体に影響します。 関連するイベントとしては、同じ URL に対するサーバー要求があります (Web サーバーに対して Application Insights を設定した場合)。
 
-**時間経過に伴うページ パフォーマンス。**  特定の時間帯にピークを迎えているかどうかを確認するには、[ブラウザー] ブレードに戻って、[ページ ビューの読み込み時間] グリッドを折れ線グラフに変更します。
+**時間経過に伴うページ パフォーマンス。** 特定の時間帯にピークを迎えているかどうかを確認するには、[ブラウザー] ブレードに戻って、[ページ ビューの読み込み時間] グリッドを折れ線グラフに変更します。
 
 ![Click the head of the grid and select a new chart type](./media/app-insights-javascript/10-page-perf-area.png)
 
-**セグメント化の基準となるディメンションの変更。**  ページ読み込み速度の低下が、特定のブラウザーやクライアント OS、特定地域のユーザーに集中している可能性があります。 新しいグラフを追加し、 **[グループ化]** で適宜ディメンションを変えながら試してください。
+**セグメント化の基準となるディメンションの変更。** ページ読み込み速度の低下が、特定のブラウザーやクライアント OS、特定地域のユーザーに集中している可能性があります。 新しいグラフを追加し、 **[グループ化]** で適宜ディメンションを変えながら試してください。
 
 ![](./media/app-insights-javascript/21.png)
 
@@ -170,7 +170,7 @@ Web ページからの AJAX 呼び出しは、[ブラウザー] ブレードに�
 [ `...` ] をクリックすると、AJAX 呼び出しの全テレメトリが表示されます。
 
 ### <a name="no-ajax-calls-reported"></a>AJAX 呼び出しが報告されない場合
-AJAX 呼び出しには、Web ページのスクリプトから実行されるすべての HTTP 呼び出しが含まれます。 これらが表示されない場合は、コード スニペットで `disableAjaxTracking` または `maxAjaxCallsPerView` [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)が設定されていないことを確認してください。
+AJAX 呼び出しには、Web ページのスクリプトから実行されるすべての HTTP/HTTPS 呼び出しが含まれます。 これらが表示されない場合は、コード スニペットで `disableAjaxTracking` または `maxAjaxCallsPerView` [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)が設定されていないことを確認してください。
 
 ## <a name="browser-exceptions"></a>ブラウザーの例外
 [ブラウザー] ブレードには、例外の集計グラフが表示されるほか、例外の種類を示すグリッドがブレードの下の方に表示されます。
@@ -193,7 +193,7 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 > 
 > 
 
-強力な [Analytics クエリ言語](app-insights-analytics-tour.md) を使って、ページ ビューを検索することもできます。
+強力な [Analytics クエリ言語](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table) を使って、ページ ビューを検索することもできます。
 
 ### <a name="page-view-properties"></a>ページ ビュー プロパティ
 * **ページ ビュー時間** 
@@ -230,6 +230,6 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

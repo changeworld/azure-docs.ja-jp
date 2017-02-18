@@ -1,5 +1,5 @@
 ---
-title: "クラシック デプロイメント モデルで Azure CLI を使用して内部ロード バランサーを作成する | Microsoft Docs"
+title: "内部ロード バランサーの作成 - Azure CLI クラシック | Microsoft Docs"
 description: "クラシック デプロイ モデルで Azure CLI を使用して、内部ロード バランサーを作成する方法について説明します。"
 services: load-balancer
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: b65d386af78847b7994f7df0b379e30d3e35618c
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: dc1ca3ce8befb0c5b707d6db2fb16178afe3de1e
 
 ---
 
@@ -31,7 +31,7 @@ ms.openlocfilehash: b65d386af78847b7994f7df0b379e30d3e35618c
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-cli.md)方法について説明します。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-cli.md)方法について説明します。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -99,7 +99,7 @@ azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 
 
 ### <a name="step-3"></a>手順 3.
 
- `azure vm show` *仮想マシン名*
+`azure vm show` *仮想マシン名*
 
 ```azurecli
 azure vm show DB1
@@ -182,6 +182,6 @@ azure vm endpoint delete DB1 tcp-1433-1433
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

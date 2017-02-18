@@ -1,5 +1,5 @@
 ---
-title: "SAP ソリューションの概要 | Microsoft Docs"
+title: "Azure の Linux VM における SAP の概要| Microsoft Docs"
 description: "Microsoft Azure 上の仮想マシン (VM) で実行される SAP ソリューションについて説明します"
 services: virtual-machines-linux
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: 93e460026969ef75edd68116479eb4ff1c53bdf3
-ms.openlocfilehash: 04944e7311b325f0ea320d6206af634bbae5c679
+ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
+ms.openlocfilehash: 21b7bf78e70b7d4534220913987cdac5f04cb462
 
 
 ---
@@ -359,6 +359,6 @@ Microsoft Azure 仮想マシン サービスと SAP HANA on Azure L インスタ
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Container Service の概要 | Microsoft Docs"
+title: "Azure クラウド内の Docker コンテナー クラスター | Microsoft Docs"
 description: "Azure Container Service を使用すると、コンテナー化されたアプリケーションを実行するように事前構成されている仮想マシンのクラスターを簡単に作成、構成および管理できます。"
 services: container-service
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2016
+ms.date: 01/21/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: f8a2b63c381ceafb23b31697916796066ea549f9
-ms.openlocfilehash: d5652134cc2c660395cfb83a1a2727acf306f5e9
+ms.sourcegitcommit: cc3cc2dce324942f184b6a520dc4db28518a3091
+ms.openlocfilehash: 0521fbd689233c0f2359a10006e24c75c8997732
 
 
 ---
@@ -39,7 +39,7 @@ Azure Container Service を使用することで、オーケストレーショ�
 Azure Container Service は、今日お客様に人気のあるオープンソースのツールとテクノロジを使用することで、コンテナー ホスト環境を提供することを目的としています。 これに対応するために、選択したオーケストレーター (DC/OS、Docker Swarm、または Kubernetes) 用の標準 API エンドポイントを公開しています。 これらのエンドポイントを使用することにより、それらのエンドポイントと通信できる任意のソフトウェアを活用できます。 たとえば、Docker Swarm エンドポイントの場合、Docker コマンド ライン インターフェイス (CLI) を使用することができます。 DC/OS の場合、DCOS CLI を使用することもできます。 Kubernetes の場合、kubectl を使用することができます。
 
 ## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>Azure Container Service を使用した Docker クラスターの作成
-Azure Container Service を使用するには、ポータル経由か ("Azure Container Service" を検索)、Azure Resource Manager テンプレート ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)、[DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)、または [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) を使用するか、[CLI](/documentation/articles/xplat-cli-install/) を使用して、Azure Container Service クラスターをデプロイします。 提供されたクイック スタート テンプレートを変更して、Azure の追加または高度な構成を含めることができます。 Azure Container Service クラスターのデプロイの詳細については、「 [Azure コンテナー サービス クラスターのデプロイ](container-service-deployment.md)」をご覧ください。
+Azure Container Service を使用するには、ポータル経由か ("Azure Container Service" を検索)、Azure Resource Manager テンプレート ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)、[DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)、または [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) を使用するか、[CLI](/articles/xplat-cli-install.md) を使用して、Azure Container Service クラスターをデプロイします。 提供されたクイック スタート テンプレートを変更して、Azure の追加または高度な構成を含めることができます。 Azure Container Service クラスターのデプロイの詳細については、「 [Azure コンテナー サービス クラスターのデプロイ](container-service-deployment.md)」をご覧ください。
 
 ## <a name="deploying-an-application"></a>アプリケーションのデプロイ
 Azure Container Service では、オーケストレーション用に Docker Swarm、DC/OS、または Kubernetes を選択できます。 アプリケーションをデプロイする方法は、選択したオーケストレーターによって異なります。
@@ -92,7 +92,7 @@ Kubernetes には、次に示す豊富な機能セットが用意されていま
 * サービス検出と負荷分散
 * シークレットと構成管理
 * API ベースの自動化されたロールアウトとロールバック
-* 自己復旧 
+* 自己復旧
 * その他
 
 
@@ -101,18 +101,17 @@ Kubernetes には、次に示す豊富な機能セットが用意されていま
 Azure Container Service の概要 (101):  
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Container-Service-101/player]
-> 
-> 
+>
+>
 
 Azure Container Service を使用したアプリケーションの構築 (Build 2016)
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2016/B822/player]
-> 
-> 
+>
+>
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

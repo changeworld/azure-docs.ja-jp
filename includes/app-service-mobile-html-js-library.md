@@ -22,7 +22,7 @@ var table = client.getTable(tableName);
 * [データの変更](#modifying)
 * [データの削除](#deleting)
 
-### <a name="a-namequeryingahow-to-query-a-table-reference"></a><a name="querying"></a>方法: テーブル参照をクエリする
+### <a name="a-namequeryingahow-to-query-a-table-reference"></a><a name="querying"></a>方法: テーブル参照でクエリを実行する
 テーブル参照を作成したら、それを使用してサーバー上のデータのクエリを実行できます。  クエリは "LINQ のような" 言語で作成します。
 テーブルからすべてのデータを返すには、次のコードを使用します。
 
@@ -107,7 +107,7 @@ function loadPage(pageNum) {
 
 pages 変数といくつかの UI ボタンを使用して、ページ リストを指定できます。`loadPage()` を使用すると、ページごとに新しいレコードを読み込むことができます。  既に読み込まれているレコードへのアクセス時間を短縮するには、キャッシュを実装します。
 
-#### <a name="a-namesorting-dataahow-to-return-data-sorted"></a><a name="sorting-data"></a>方法: 並べ替えられたデータを返す
+#### <a name="a-namesorting-dataahow-to-return-sorted-data"></a><a name="sorting-data"></a>方法: 並べ替えられたデータを返す
 `.orderBy()` クエリ メソッドまたは `.orderByDescending()` クエリ メソッドを使用します。
 
 ```
@@ -167,6 +167,6 @@ table
 ```
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

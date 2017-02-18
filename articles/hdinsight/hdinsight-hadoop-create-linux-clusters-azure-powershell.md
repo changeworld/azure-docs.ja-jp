@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: b3589dd3424d7723351165c103a2b1b122ff44cc
+ms.sourcegitcommit: 2dd64398fce3a85f92492b01951008eab31a2c3f
+ms.openlocfilehash: a566fe935da98d303f1260cbc2a2009e5702530a
 
 
 ---
@@ -38,7 +38,12 @@ Azure PowerShell は、Microsoft Azure のワークロードのデプロイと�
 * Azure PowerShell。
     HDInsight での Azure PowerShell の使用方法の詳細については、 [PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)に関する記事をご覧ください。 HDInsight Windows PowerShell コマンドレットの一覧については、 [HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn858087.aspx)をご覧ください。
   
-    [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+    > [!IMPORTANT]
+    > Azure Service Manager を使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは**廃止**され、2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
+    > 
+    > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
+    > 
+    > 
 
 ### <a name="access-control-requirements"></a>アクセス制御の要件
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
@@ -64,6 +69,7 @@ Linux クラスターを作成するために設定する必要がある最も�
 次のスクリプトでは、新しいクラスターを作成する方法を示します。
 
     $token ="<SpecifyAnUniqueString>"
+    $subscriptionID = "<SubscriptionName>"        # Provide your Subscription Name
 
     $resourceGroupName = $token + "rg"      # Provide a Resource Group name
     $clusterName = $token
@@ -76,8 +82,7 @@ Linux クラスターを作成するために設定する必要がある最も�
     Login-AzureRmAccount
 
     # Select the subscription to use if you have multiple subscriptions
-    #$subscriptionID = "<SubscriptionName>"        # Provide your Subscription Name
-    #Select-AzureRmSubscription -SubscriptionId $subscriptionID
+    Select-AzureRmSubscription -SubscriptionId $subscriptionID
 
     # Create an Azure Resource Group
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -88,7 +93,7 @@ Linux クラスターを作成するために設定する必要がある最も�
         -StorageAccountName $defaultStorageAccountName `
         -Location $location `
         -Type Standard_LRS
-    $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -Name $defaultStorageAccountName -ResourceGroupName $resourceGroupName)[0].Key1
+    $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -Name $defaultStorageAccountName -ResourceGroupName $resourceGroupName)[0].Value
     $destContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
     New-AzureStorageContainer -Name $defaultStorageContainerName -Context $destContext
 
@@ -186,6 +191,6 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Portal を使用した HDInsight での Hadoop クラスターの管理 | Microsoft Docs"
+title: "Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理 | Microsoft Docs"
 description: "HDInsight サービスを管理する方法を学習します。 HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。"
 services: hdinsight
 documentationcenter: 
@@ -13,24 +13,25 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 59288709e706ba7f0162f5f857019ce2972e2743
-ms.openlocfilehash: 55193e8570f480b9c6b2ef9a0785ddb538749cb5
+ms.sourcegitcommit: 58011fe25a96edfe2744990180b2f2866537bd37
+ms.openlocfilehash: ec35e177d1bb94671b1703020c9aa863a3805af1
 
 
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
-[!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
+# <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理
 
-[Azure Portal][azure-portal] を使用して、Azure HDInsight で Hadoop クラスターを作成し、Hadoop ユーザーのパスワードを変更して、クラスターで Hadoop コマンド コンソールにアクセスできるようにリモート デスクトップ プロトコル (RDP) を有効にすることができます。
+[Azure Portal][azure-portal] を使用して、Azure HDInsight で Windows ベースの Hadoop クラスターを作成し、Hadoop ユーザーのパスワードを変更して、クラスターで Hadoop コマンド コンソールにアクセスできるようにリモート デスクトップ プロトコル (RDP) を有効にすることができます。
 
-この記事の情報は、Windows ベースの HDInsight クラスターにのみ適用されます。 Linux ベースのクラスターの管理については、上部のタブ セレクターをクリックしてください。
+この記事の情報は、Windows ベースの HDInsight クラスターにのみ適用されます。 Linux ベースのクラスターの管理については、「[Azure Portal を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-portal-linux.md)」を参照してください。
 
-他のツールを使用して HDInsight で Hadoop クラスターを作成する方法については、タブ セレクターをクリックしてください。
+> [!IMPORTANT]
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
-**前提条件**
+
+## <a name="prerequisites"></a>前提条件
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
@@ -64,7 +65,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
   > [!NOTE]
   > HDInsight クラスターへの JAR ファイルのデプロイ、または HDInsight クラスターでの JAR ファイルの呼び出しに関する問題がある場合は、 [Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
   >
-  > Cascading は HDInsight ではサポートされておらず、Microsoft サポートの対象でもありません。 サポートされているコンポーネントの一覧については、「[HDInsight によって提供されるクラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。
+  > Cascading は HDInsight ではサポートされておらず、Microsoft サポートの対象でもありません。 サポートされているコンポーネントの一覧については、[HDInsight で提供されるクラスター バージョンの新機能](hdinsight-component-versioning.md)に関する記事をご覧ください。
   >
   >
 
@@ -122,7 +123,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
      >
 6. **[プロパティ]**をクリックします。
 
-    次のプロパティが表示されます。
+    次のプロパティ セクションが表示されます。
 
    * **[ホスト名]**: クラスター名。
    * **[クラスター URL]**。
@@ -175,7 +176,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
 
     実行中の Storm クラスターに対して、データ ノードの追加または削除をシームレスに実行できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
 
-    バランス再調整は、次の 2 つの方法で実行できます。
+    バランス再調整は、次の&2; つの方法で実行できます。
 
   * Storm Web UI
   * コマンド ライン インターフェイス (CLI) ツール
@@ -193,7 +194,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
         ## the bolt "yellow-bolt" to use 10 executors
         $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
-**クラスターの規模を設定するには**
+**クラスターのスケールを設定するには**
 
 1. [Portal][azure-portal] にサインインします。
 2. 左メニューから **[すべて参照]** をクリックし、**[HDInsight クラスター]** をクリックし、クラスター名をクリックします。
@@ -269,7 +270,6 @@ Azure Resource Manager モードでは、各 HDInsight クラスターは Azure 
 ## <a name="open-hdinsight-query-console"></a>HDInsight クエリ コンソールを開く
 HDInsight クエリ コンソールには、次の機能が用意されています。
 
-* **[作業の開始に役立つギャラリー]**: ギャラリーの使用方法については、「[HDInsight 作業の開始に役立つギャラリーを使用して Hadoop について説明する](hdinsight-learn-hadoop-use-sample-gallery.md)」をご覧ください。
 * **[Hive エディター]**: Hive ジョブを送信するための GUI Web インターフェイス。  「[クエリ コンソールを使用して Hive クエリを実行](hdinsight-hadoop-use-hive-query-console.md)」を参照してください。
 
     ![HDInsight ポータル Hive エディター](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
@@ -329,7 +329,7 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 
     ![HDInsight によるリモート デスクトップ構成の有効化と無効化](./media/hdinsight-administer-use-management-portal/hdinsight.portal.remote.desktop.png)
 
-    [有効期限] の既定値は 1 週間です。
+    [有効期限] の既定値は&1; 週間です。
 
    > [!NOTE]
    > HDInsight .NET SDK を使用して、クラスターに対するリモート デスクトップを有効にすることもできます。 HDInsight クライアント オブジェクトで、**EnableRdp** メソッドを次の形式で使用します: **client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**。 同様に、クラスターに対するリモート デスクトップを無効にするには、 **client.DisableRdp(clustername, location)**を使用します。 これらのメソッドの詳細については、 [HDInsight .NET SDK のリファレンス](http://go.microsoft.com/fwlink/?LinkId=529017)を参照してください。 この方法は、Windows で実行されている HDInsight クラスターにのみ適用できます。
@@ -375,10 +375,10 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 * [Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)
 
 [azure-portal]: https://portal.azure.com
-[image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Hadoop command line"
+[image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

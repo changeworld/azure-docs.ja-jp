@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/27/2016
+ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: d2d3f414d0e9fcc392d21327ef630f96c832c99c
-ms.openlocfilehash: 19d1cc75d61a3897c916180afa395bade43d47ec
+ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
+ms.openlocfilehash: 733c151012e3d896f720fbc64120432aca594bda
 
 
 ---
@@ -37,11 +37,14 @@ ms.openlocfilehash: 19d1cc75d61a3897c916180afa395bade43d47ec
 
 > [!NOTE]
 > この記事では、すべての Data Factory .NET API を取り上げているわけではありません。 Data Factory .NET SDK の詳細については、 [Data Factory .NET API リファレンス](https://msdn.microsoft.com/library/mt415893.aspx) のページを参照してください。
+> 
+> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する方法に関するチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
+
 
 ## <a name="prerequisites"></a>前提条件
 * [チュートリアルの概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) のページに目を通して、チュートリアルの概要を理解し、 **前提条件** の手順を完了します。
 * Visual Studio 2012 または 2013 または 2015
-*  [Azure .NET SDK](http://azure.microsoft.com/downloads/)
+* [Azure .NET SDK](http://azure.microsoft.com/downloads/)
 * Azure PowerShell。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs) 」に記載されている手順に従って、コンピューターに Azure PowerShell をインストールします。 Azure PowerShell を使用して、Azure Active Directory アプリケーションを作成します。
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
@@ -50,44 +53,61 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 1. **PowerShell**を起動します。
 2. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
 
-        Login-AzureRmAccount
+    ```PowerShell
+    Login-AzureRmAccount
+    ```
 3. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
-        Get-AzureRmSubscription
+    ```PowerShell
+    Get-AzureRmSubscription
+    ```
 4. 次のコマンドを実行して、使用するサブスクリプションを選択します。 **&lt;NameOfAzureSubscription**&gt; を自分の Azure サブスクリプションの名前で置き換えます。
 
-        Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    ```PowerShell
+    Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    ```
 
    > [!IMPORTANT]
    > このコマンドの出力から、**SubscriptionId** と **TenantId** をメモしておきます。
 
 5. PowerShell で次のコマンドを実行して、 **ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
 
-        New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    ```PowerShell
+    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    ```
 
     リソース グループが既に存在する場合は、それを更新するか (Y) そのまま保持するか (N) を指定します。
 
     異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループの名前を使用する必要があります。
 6. Azure Active Directory アプリケーションを作成します。
 
-        $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFCopyTutotiralApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfcopytutorialapp.org/example" -Password "Pass@word1"
+    ```PowerShell
+    $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFCopyTutotiralApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfcopytutorialapp.org/example" -Password "Pass@word1"
+    ```
 
     次のエラーが表示された場合は、別の URL を指定して、コマンドをもう一度実行します。
-
-        Another object with the same value for property identifierUris already exists.
+    
+    ```PowerShell
+    Another object with the same value for property identifierUris already exists.
+    ```
 7. AD サービス プリンシパルを作成します。
 
-        New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+    ```PowerShell
+    New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+    ```
 8. **Data Factory 共同作成者** ロールにサービス プリンシパルを追加します。
 
-        New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+    ```PowerShell
+    New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+    ```
 9. アプリケーション ID を取得します。
 
-        $azureAdApplication
-
+    ```PowerShell
+    $azureAdApplication 
+    ```
     アプリケーション ID (出力の**applicationID** ) をメモします。
 
-これらの手順で、次の 4 つの値がわかりました。
+これらの手順で、次の&4; つの値がわかりました。
 
 * テナント ID
 * サブスクリプション ID
@@ -472,23 +492,32 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 
 15. ソリューション エクスプローラーで、プロジェクト (**DataFactoryAPITestApp**) を展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。 "**System.Configuration**" アセンブリのチェック ボックスをオンにして、**[OK]** をクリックします。
 16. コンソール アプリケーションをビルドします。 メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
-17. Azure BLOB ストレージ内の **adftutorial** コンテナーに少なくとも 1 つのファイルが存在することを確認します。 存在しない場合は、以下の内容を記述した **Emp.txt** ファイルをメモ帳で作成し、adftutorial コンテナーにアップロードします。
+17. Azure BLOB ストレージ内の **adftutorial** コンテナーに少なくとも&1; つのファイルが存在することを確認します。 存在しない場合は、以下の内容を記述した **Emp.txt** ファイルをメモ帳で作成し、adftutorial コンテナーにアップロードします。
 
-       John, Doe    Jane, Doe
+    ```
+    John, Doe
+    Jane, Doe
+    ```
 18. メニューの **[デバッグ]** -> **[デバッグの開始]** の順にクリックして、サンプルを実行します。 **[Getting run details of a data slice (データ スライスの実行の詳細を取得中)]** が表示されている場合は、数分待機して、**Enter** を押します。
 19. Azure ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。
    * リンクされたサービス: **LinkedService_AzureStorage**
    * データセット: **DatasetBlobSource** と **DatasetBlobDestination**
    * パイプライン: **PipelineBlobSample**
-20. 指定した Azure SQL データベースの "**emp**" テーブルに 2 つの従業員レコードが作成されることを確認します。
+20. 指定した Azure SQL データベースの "**emp**" テーブルに&2; つの従業員レコードが作成されることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
-* [データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に目を通してください。この記事には、このチュートリアルで使用したコピー アクティビティの詳細が記載されています。
-* Data Factory .NET SDK の詳細については、 [Data Factory .NET API リファレンス](https://msdn.microsoft.com/library/mt415893.aspx) のページを参照してください。 この記事では、すべての Data Factory .NET API を取り上げているわけではありません。
+| トピック | 説明 |
+|:--- |:--- |
+| [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティについて説明します。 |
+| [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
+| [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
+[Data Factory .NET API リファレンス](/dotnet/api/) | Data Factory .NET SDK についての詳細を説明します (ツリー ビューで Microsoft.Azure.Management.DataFactories.Models を探してください)。 
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO1-->
 
 

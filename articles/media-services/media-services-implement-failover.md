@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 7a99b931a30c04e13d535caa2abd46980c4a3fb3
+ms.sourcegitcommit: 84d42efc54f7dcbde8330360941969a5b0884a1a
+ms.openlocfilehash: ed249f63098a82b935016ccac3e0416951cb1b0a
 
 
 ---
@@ -46,7 +46,6 @@ ms.openlocfilehash: 7a99b931a30c04e13d535caa2abd46980c4a3fb3
 
 次の考慮事項が適用されます。
 
-* Media Services SDK の現在のバージョンでは、指定したロケーター ID を使用してロケーターを作成することはできません。 このタスクを実現するには、Media Services REST API を使用します。
 * Media Services SDK の現在のバージョンでは、資産ファイルを資産に関連付ける IAssetFile 情報をプログラムで生成することはできません。 このタスクを実現するには、CreateFileInfos Media Services REST API を使用します。 
 * (双方の Media Services アカウントの暗号化キーは別のものになるため) ストレージ暗号化資産 (AssetCreationOptions.StorageEncrypted) のレプリケーションはサポートされていません。 
 * ダイナミック パッケージを利用する場合は、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。
@@ -950,6 +949,6 @@ ms.openlocfilehash: 7a99b931a30c04e13d535caa2abd46980c4a3fb3
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

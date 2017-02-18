@@ -15,15 +15,15 @@ ms.topic: get-started-article
 ms.date: 01/18/2017
 ms.author: darosa;sethm;jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: dfd1ae52cc56a4d4b4c7ee3f69f0c454be607401
-ms.openlocfilehash: 9dd2696ebf4e2c4749471e5adcbc446c3945babf
+ms.sourcegitcommit: f223ea7ac168d3c800b6ba664b31ab66b382d6cc
+ms.openlocfilehash: 2657965ff3ee028263f9ef0c48024fe1839eee6e
 
 
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
-Service Bus メッセージングには、キューやトピックなどのメッセージング エンティティが含まれており、エンタープライズ メッセージング機能と、クラウド スケールの豊富な発行/サブスクライブ セマンティクスが結合されます。 Service Bus メッセージングは、多くの高度なクラウド ソリューションで、通信のバックボーンとして使用されます。
+Service Bus メッセージングには、キューやトピックなどのエンティティが含まれており、エンタープライズ メッセージング機能と、クラウド スケールの豊富な発行/サブスクライブ セマンティクスが結合されます。 Service Bus メッセージングは、多くの高度なクラウド ソリューションで、通信のバックボーンとして使用されます。
 
-Service Bus メッセージングに *Premium* レベルを導入して、ミッション クリティカルなアプリケーションのスケール、パフォーマンス、および可用性に関する顧客の一般的な要求に対処しています。 機能セットとほぼ同じですが、Service Bus メッセージングのこれら 2 つのレベルは、さまざまなユース ケースに応えるように設計されています。
+Service Bus メッセージングに *Premium* レベルを導入して、ミッション クリティカルなアプリケーションのスケール、パフォーマンス、および可用性に関する顧客の一般的な要求に対処しています。 機能セットとほぼ同じですが、Service Bus メッセージングのこれら&2; つのレベルは、さまざまなユース ケースに応えるように設計されています。
 
 次の表に、大まかな違いをいくつか示します。
 

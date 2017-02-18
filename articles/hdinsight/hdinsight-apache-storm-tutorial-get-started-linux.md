@@ -1,5 +1,5 @@
 ---
-title: "Apache Storm チュートリアル: HDInsight での Linux ベースの Storm の使用 | Microsoft Docs"
+title: "Azure HDInsight で Apache Storm を使ってみる | Microsoft Docs"
 description: "Linux ベースの HDInsight での Apache Storm および Storm Starter サンプルを使用したビッグ データ分析の概要 Storm を使用してデータをリアルタイムに処理する方法について説明します。"
 keywords: "Apache Storm, Apache Storm チュートリアル, ビッグ データの分析, Storm Starter"
 services: hdinsight
@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 856043148b3fc28594850ae27bedd57d48292582
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 9b38cd0aa542c0fd73b73edefce230e5a463e608
 
 
 ---
@@ -216,6 +216,6 @@ HDInsight 上の Storm で使用できるトポロジの例については、以
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

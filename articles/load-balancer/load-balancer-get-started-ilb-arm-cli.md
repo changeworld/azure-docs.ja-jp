@@ -1,5 +1,5 @@
 ---
-title: "Resource Manager での Azure CLI を使用した内部ロード バランサーの作成 | Microsoft Docs"
+title: "内部ロード バランサーの作成 - Azure CLI | Microsoft Docs"
 description: "リソース マネージャーで Azure CLI を使用して、内部ロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 9b0fe81a4e8557976c124bffb79a6902949c46ab
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: bd1f5e497bcf39a0d8848cc63c718e693f775d63
 
 ---
 
@@ -31,7 +31,7 @@ ms.openlocfilehash: 9b0fe81a4e8557976c124bffb79a6902949c46ab
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](load-balancer-get-started-ilb-classic-cli.md)ではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](load-balancer-get-started-ilb-classic-cli.md)ではなくこのモデルをお勧めします。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -125,7 +125,7 @@ azure group create <resource group name> <location>
 
 5. 受信 NAT 規則を作成します。
 
-    受信 NAT 規則は、ロード バランサー内で特定の仮想マシン インスタンスに移動するエンドポイントの作成に使用されます。 前の手順では、リモート デスクトップ用の 2 つの NAT 規則を作成しました。
+    受信 NAT 規則は、ロード バランサー内で特定の仮想マシン インスタンスに移動するエンドポイントの作成に使用されます。 前の手順では、リモート デスクトップ用の&2; つの NAT 規則を作成しました。
 
     ```azurecli
     azure network lb inbound-nat-rule create --resource-group nrprg --lb-name ilbset --name NATrule1 --protocol TCP --frontend-port 5432 --backend-port 3389
@@ -218,6 +218,6 @@ azure network lb delete --resource-group nrprg --name ilbset
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

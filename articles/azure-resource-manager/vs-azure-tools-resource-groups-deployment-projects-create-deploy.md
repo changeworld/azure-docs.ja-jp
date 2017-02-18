@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2016
+ms.date: 12/19/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: dd1161f2b5cf717246391900a616e51c457f5280
+ms.sourcegitcommit: e3df10acf4a6c123186c72687a56ccb4856c46fe
+ms.openlocfilehash: 07499f9b1c9668d8cb4037405478210e0738e03d
 
 
 ---
@@ -136,7 +136,7 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
    
     **administratorLogin** には、SQL Server 管理者のユーザー名を指定します。 **sa** や **admin** などの一般的な管理者名は使用しないようにしてください。 
    
-    **administratorLoginPassword** には、SQL Server 管理者のパスワードを指定します。 **[パスワードをプレーンテキストとしてパラメーター ファイルに保存する]** オプションは安全ではないため、選択しないでください。 パスワードはプレーン テキストで保存されないため、デプロイ中にもう一度このパスワードを入力する必要があります。 
+    **administratorLoginPassword** には、SQL Server 管理者のパスワードを指定します。 **[パスワードをプレーンテキストとしてパラメーター ファイルに保存する]** オプションは安全ではないため、選択しないでください。 パスワードはプレーンテキストで保存されないため、デプロイ中にもう一度このパスワードを入力する必要があります。 
    
     **databaseName** には、作成するデータベースの名前を指定します。 
    
@@ -189,7 +189,7 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
    
     プロパティは次のとおりです。
    
-   * **[追加のプロパティ]** には Azure Storage にプッシュされる Web デプロイ パッケージのステージングの場所が含まれます。 フォルダー (ExampleApp) とファイル (package.zip) をメモします。 これらの値は、アプリをデプロイする際にパラメーターとして指定します。 
+   * **[追加のプロパティ]** には Azure Storage にプッシュされる Web デプロイ パッケージのステージングの場所が含まれます。 フォルダー (ExampleApp) とファイル (package.zip) をメモします。 これらの値は、アプリケーションをデプロイする際にパラメーターとして指定するため、知っておく必要があります。 
    * **[Include File Path (ファイル パスを含める)]** にはパッケージを作成するパスが含まれます。 **[Include Targets (ターゲットを含める)]** にはデプロイで実行するコマンドが含まれます。 
    * **Build;Package** の既定値を使用すると、デプロイでは、Web デプロイ パッケージ (package.zip) がビルドおよび作成されます。  
      
@@ -219,6 +219,6 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

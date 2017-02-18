@@ -1,5 +1,5 @@
 ---
-title: "Azure DPM バックアップの概要 | Microsoft Docs"
+title: "DPM を使用してワークロードを Azure Portal にバックアップする | Microsoft Docs"
 description: "Azure Backup サービスを使用した DPM サーバーのバックアップの概要"
 services: backup
 documentationcenter: 
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
-ms.author: trinadhk;giridham;jimpark;markgal;adigan
+ms.author: adigan;giridham;jimpark;markgal;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
-ms.openlocfilehash: b1d4cd29198eeda0cb3cd5bd193836352dda20d6
+ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
+ms.openlocfilehash: 973730bfdd4d13714ce7d0256a32af9eb8183e7a
 
 
 ---
@@ -27,8 +27,8 @@ ms.openlocfilehash: b1d4cd29198eeda0cb3cd5bd193836352dda20d6
 > * [SCDPM](backup-azure-dpm-introduction.md)
 > * [Azure Backup Server (クラシック)](backup-azure-microsoft-azure-backup-classic.md)
 > * [SCDPM (クラシック)](backup-azure-dpm-introduction-classic.md)
-> 
-> 
+>
+>
 
 この記事では、Microsoft Azure Backup を使用して System Center Data Protection Manager (DPM) サーバーとワークロードを保護する方法について概説します。 この記事を読むと次のことが理解できます。
 
@@ -38,9 +38,9 @@ ms.openlocfilehash: b1d4cd29198eeda0cb3cd5bd193836352dda20d6
 * サポートされるシナリオ
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
-> 
-> 
+> Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
+>
+>
 
 System Center DPM は、ファイルとアプリケーション データをバックアップします。 DPM にバックアップされるデータは、テープやディスクに保存することも、Microsoft Azure Backup を使って Azure にバックアップすることもできます。 DPM は、Azure Backup と次のように対話します。
 
@@ -66,16 +66,16 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]**をクリックします。
-   
+
     ![Create Recovery Services Vault step 1](./media/backup-azure-dpm-introduction/open-recovery-services-vault.png)
-   
+
     Recovery Services コンテナーの一覧が表示されます。
 3. **[Recovery Services コンテナー]** メニューの **[追加]** をクリックします。
-   
+
     ![Create Recovery Services Vault step 2](./media/backup-azure-dpm-introduction/rs-vault-menu.png)
-   
+
     [Recovery Services コンテナー] ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定するよう求められます。
-   
+
     ![Create Recovery Services vault step 5](./media/backup-azure-dpm-introduction/rs-vault-attributes.png)
 4. **[名前]**ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
 5. **[サブスクリプション]** をクリックして、使用可能なサブスクリプションの一覧を表示します。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。 組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
@@ -91,9 +91,9 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 1. コンテナーを選択して、コンテナーのダッシュボードと [設定] ブレードを開きます。 **[設定]** ブレードが開かない場合は、コンテナーのダッシュボードで **[すべての設定]** をクリックします。
 2. **[設定]** ブレードで、**[バックアップ インフラストラクチャ]** > **[バックアップ構成]** をクリックして、**[バックアップ構成]** ブレードを開きます。 **[バックアップ構成]** ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。
-   
+
     ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
-   
+
     コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。 関連付けを開始するには、Azure 仮想マシンを検出して登録する必要があります。
 
 ### <a name="2-download-vault-credentials"></a>2.コンテナー資格情報のダウンロード
@@ -106,13 +106,13 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. DPM を登録する Recovery Services コンテナーを開きます。
 3. 既定では、設定ブレードが開きます。 設定ブレードが閉じている場合は、コンテナー ダッシュ ボードの **[設定]** をクリックして設定ブレードを開きます。 設定ブレードの **[プロパティ]**をクリックします。
-   
+
     ![Open vault blade](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 4. [プロパティ] ページで、**[バックアップ資格情報]** の **[ダウンロード]** をクリックします。 ポータルは、ダウンロードで使用可能な資格情報コンテナーの資格情報ファイルを生成します。
-   
+
     ![ダウンロード](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
-ポータルは、資格情報コンテナーの名前と現在の日付の組み合わせを使用して、資格情報コンテナーの資格情報を生成します。 **[保存]** をクリックして、資格情報コンテナーの資格情報をローカル アカウントのダウンロード フォルダーにダウンロードするか、[保存] メニューから [名前を付けて保存] を選択して、保存場所を指定します。 ファイルの生成には最大で 1 分かかります。
+ポータルは、資格情報コンテナーの名前と現在の日付の組み合わせを使用して、資格情報コンテナーの資格情報を生成します。 **[保存]** をクリックして、資格情報コンテナーの資格情報をローカル アカウントのダウンロード フォルダーにダウンロードするか、[保存] メニューから [名前を付けて保存] を選択して、保存場所を指定します。 ファイルの生成には最大で&1; 分かかります。
 
 ### <a name="note"></a>注
 * 資格情報コンテナーの資格情報ファイルは、使用するコンピューターからアクセスできる場所に保存してください。 ファイル共有 / SMB に格納されている場合は、アクセス許可を確認します。
@@ -124,45 +124,45 @@ Azure Backup コンテナーを作成したら、エージェントを各 Window
 
 1. DPM を登録する Recovery Services コンテナーを開きます。
 2. 既定では、設定ブレードが開きます。 設定ブレードが閉じている場合は、 **[設定]** をクリックして設定ブレードを開きます。 設定ブレードの **[プロパティ]**をクリックします。
-   
+
     ![Open vault blade](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. [設定] ページで、**[Azure Backup エージェント]** の下の **[ダウンロード]** をクリックします。
-   
+
     ![ダウンロード](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
-   
+
    エージェントがダウンロードされたら、MARSAgentInstaller.exe をダブルクリックして Azure Backup エージェントのインストールを開始します。 エージェントに必要なインストール フォルダーとスクラッチ フォルダーを選択します。 指定されたキャッシュの場所には、バックアップ データの 5% 以上の空き領域が必要です。
 4. プロキシ サーバーを使用してインターネットに接続する場合、 **[プロキシ構成]** 画面で、プロキシ サーバーの詳細を入力します。 認証済みのプロキシを使用する場合は、この画面でユーザー名とパスワードの詳細を入力します。
 5. Azure Backup エージェントは、.NET Framework 4.5 と Windows PowerShell を (まだ使用可能でない場合は) インストールして、インストールを完了します。
 6. エージェントがインストールされたら、ウィンドウを **閉じます** 。
-   
+
    ![閉じます](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
 7. 資格情報コンテナーに **DPM サーバーを登録する**には、**[管理]** タブで **[オンライン]** をクリックします。 次に、 **[登録]**を選択します。 これにより、Register Setup (セットアップの登録) ウィザードが開きます。
 8. プロキシ サーバーを使用してインターネットに接続する場合、 **[プロキシ構成]** 画面で、プロキシ サーバーの詳細を入力します。 認証済みのプロキシを使用する場合は、この画面でユーザー名とパスワードの詳細を入力します。
-   
+
     ![[プロキシ構成]](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
 9. [資格情報コンテナーの資格情報] 画面で、以前にダウンロードされた資格情報コンテナーの資格情報ファイルを参照して選択します。
-   
+
     ![コンテナー資格情報 ](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Credentials.jpg)
-   
+
     資格情報コンテナーの資格情報ファイルは (ポータルからダウンロード後) 48 時間のみ有効です。 この画面でなんらかのエラー (例: "指定されたコンテナーの資格情報ファイルは期限切れです。") が発生した場合は、Azure ポータルにログインし、コンテナーの資格情報ファイルを再度ダウンロードします。
-   
+
     セットアップ アプリケーションがアクセスできる場所に、資格情報コンテナーの資格情報ファイルがあることを確認します。 アクセス関連のエラーが発生した場合は、資格情報コンテナーの資格情報ファイルをこのコンピューターの一時的な場所にコピーし、操作をやり直してください。
-   
+
     コンテナーの資格情報が無効であるというエラー (例: "無効なコンテナーの資格情報が指定されました。ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。") が発生した場合、ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。 ポータルから新しい資格情報コンテナーの資格情報ファイルをダウンロードしてから操作をやり直してください。 このエラーは通常、ユーザーが Azure ポータルで **[資格情報コンテナー資格情報のダウンロード]** オプションを連続でクリックした場合に発生します。 この場合、2 番目の資格情報コンテナーの資格情報ファイルだけが有効です。
 10. 営業時間内外のネットワーク帯域幅の使用を制御するには、 **[使用帯域幅の調整]** 画面で、帯域幅の使用の制限を設定し、営業時間と非営業時間を定義できます。
-    
+
     ![[使用帯域幅の調整]](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Throttling.png)
 11. **[回復先フォルダーの設定]** 画面で、Azure からダウンロードされたファイルを一時的にステージングするフォルダーを参照します。
-    
+
     ![[回復先フォルダーの設定]](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 12. **[暗号化の設定]** 画面で、パスフレーズを生成するか、パスフレーズ (最小 16 文字) を指定することができます。 必ず安全な場所にパスフレーズを保存してください。
-    
+
     ![暗号化](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Encryption.png)
-    
+
     > [!WARNING]
     > パスフレーズを紛失または忘れてしまった場合、Microsoft はバックアップ データの回復を支援することはできません。 エンド ユーザーは暗号化パスフレーズを所有していますが、Microsoft はエンド ユーザーが使用するパスフレーズを確認できません。 回復操作中に必要になる場合もあるため、ファイルは安全な場所に保存してください。
-    > 
-    > 
+    >
+    >
 13. **[登録]** ボタンをクリックすると、コンピューターはコンテナーに正常に登録され、Microsoft Azure へのバックアップを開始できるようになります。
 14. Data Protection Manager を使用する場合は、**[管理]** タブで **[オンライン]** を選択して **[構成]** オプションをクリックすることによって、登録ワークフロー時に指定した設定を変更できます。
 
@@ -195,12 +195,11 @@ Azure へのバックアップがサポートされているファイルの種�
 
 > [!NOTE]
 > System Center 2012 DPM SP1 以降では、Microsoft Azure Backup を使用して、DPM で保護されているワークロードを Azure にバックアップすることができます。
-> 
-> 
+>
+>
 
 
 
-
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

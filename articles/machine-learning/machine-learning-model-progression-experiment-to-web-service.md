@@ -1,5 +1,5 @@
 ---
-title: "Machine Learning モデルが実験から運用可能な Web サービスになるまでの過程 | Microsoft Docs"
+title: "Azure Machine Learning モデルが Web サービスになるまでの過程 | Microsoft Docs"
 description: "Azure Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程の概要を説明します。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: b47aa6730aff534b796cfc5427e613defdf69926
-ms.openlocfilehash: 0f0b2a10ae0f16411d9043351064eafe3a26c5aa
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: 8c5a3ca30ae0539cded6cf9cd93ba1a42e19ba58
 
 
 ---
@@ -122,6 +122,6 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

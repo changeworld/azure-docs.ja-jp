@@ -1,9 +1,9 @@
 ---
-title: "PIM におけるロール |Microsoft Docs"
+title: "Azure AD Privileged Identity Management におけるロール | Microsoft Docs"
 description: "Azure Privileged Identity Management 拡張機能で特権 ID に使用されるロールについて説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: ac812ccc-cf4e-4ac2-b981-69598056c9ed
@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/01/2016
-ms.author: kgremban
+ms.date: 02/14/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0831755c619fb33c49a6df87141ca3a0a4714f71
+ms.sourcegitcommit: ec80273fd388a435bc0aee9cb2dd49df12535923
+ms.openlocfilehash: d21bf547c80c533481254a8a9640b5dcef6a66c2
 
 
 ---
-# <a name="roles-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management におけるロール
+# <a name="roles-in-azure-ad-pim"></a>Azure AD PIM におけるロール
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
 Azure AD の別の管理者ロールに組織内のユーザーを割り当てることができます。 これらのロール割り当てによって、ユーザーの追加や削除、サービス設定の変更などのタスクが制御され、ユーザーは Azure AD、Office 365、およびその他の Microsoft オンライン サービスと接続型アプリケーションを実行できます。  
 
 グローバル管理者は、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用して、または [Azure Active Directory の管理者ロールの割り当て](active-directory-assign-admin-roles.md)で説明されているとおりにクラシックポータルから、どのユーザーが**永続的に** Azure AD のロールに割り当てられているかを更新できます。
 
-Azure AD Privileged Identity Management (PIM) は、Azure AD でのユーザーの特権アクセス用のポリシーを管理します。 PIM は、Azure AD で 1 つ以上のロールにユーザーを割り当てます。あるユーザーをロールに永続的に割り当てることも、ロールの候補にすることもできます。 ユーザーが永続的にロールに割り当てられるか、ロールの候補としての割り当てを有効にすると、ユーザーは Azure Active Directory、Office 365、およびユーザーのロールにアクセス許可が割り当てられているその他のアプリケーションを管理できます。
+Azure AD Privileged Identity Management (PIM) は、Azure AD でのユーザーの特権アクセス用のポリシーを管理します。 PIM は、Azure AD で&1; つ以上のロールにユーザーを割り当てます。あるユーザーをロールに永続的に割り当てることも、ロールの候補にすることもできます。 ユーザーが永続的にロールに割り当てられるか、ロールの候補としての割り当てを有効にすると、ユーザーは Azure Active Directory、Office 365、およびユーザーのロールにアクセス許可が割り当てられているその他のアプリケーションを管理できます。
 
 ロールへの永続的な割り当てと、ロールの候補としての割り当てに、アクセスの違いはありません。 常時のアクセスを必要としないユーザーがいる、というのが唯一の違いです。 その場合はロールの候補として、必要な場合にアクセスをオンにしたりオフにしたりできます。
 
@@ -63,7 +63,7 @@ PIM 自体で管理するためのアクセス権を別のユーザーに付与�
 ## <a name="roles-not-managed-in-pim"></a>PIM で管理されないロール
 Exchange Online または SharePoint Online 内のロールについて、上述以外のロールは Azure AD で表示されないため、PIM でも表示されません。 これらの Office 365 サービスでのきめ細かなロールの割り当てを変更する方法の詳細については、「 [Office 365 の権限](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d)」を参照してください。
 
-Azure サブスクリプションとリソース グループも、Azure AD では表示されません。 Azure サブスクリプションを管理するには「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を、Azure RBAC の詳細については、[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)に関する記事を参照してください。
+Azure サブスクリプションとリソース グループも、Azure AD では表示されません。 Azure サブスクリプションを管理するには「[Azure 管理者ロールを追加または変更する方法](../billing/billing-add-change-azure-subscription-administrator.md)」を、Azure RBAC の詳細については、[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)に関する記事を参照してください。
 
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 
@@ -71,7 +71,7 @@ Azure サブスクリプションとリソース グループも、Azure AD で�
 ## <a name="user-roles-and-signing-in"></a>ユーザーのロールとサインイン
 一部の Microsoft サービスとアプリケーションでは、ロールにユーザーを割り当てるだけでは、そのユーザーを管理者にするには十分でない場合があります。
 
-Azure クラシック ポータルにアクセスするには、ユーザーは Azure サブスクリプションを管理する必要がない場合でも、Azure サブスクリプションのサービス管理者または共同管理者である必要があります。  たとえば、クラシック ポータルで Azure AD の構成設定を管理するには、ユーザーは Azure AD のグローバル管理者と Azure サブスクリプションのサブスクリプション共同管理者の両方である必要があります。  Azure サブスクリプションにユーザーを追加する方法については、「 [Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を参照してください。
+Azure クラシック ポータルにアクセスするには、ユーザーは Azure サブスクリプションを管理する必要がない場合でも、Azure サブスクリプションのサービス管理者または共同管理者である必要があります。  たとえば、クラシック ポータルで Azure AD の構成設定を管理するには、ユーザーは Azure AD のグローバル管理者と Azure サブスクリプションのサブスクリプション共同管理者の両方である必要があります。  Azure サブスクリプションにユーザーを追加する方法については、「 [Azure 管理者ロールを追加または変更する方法](../billing/billing-add-change-azure-subscription-administrator.md)」を参照してください。
 
 Microsoft Online Services へのアクセスでは、ユーザーがサービスのポータルを開いたり、管理タスクを実行したりできるようになるには、ユーザーにライセンスを割り当てる必要もある場合があります。
 
@@ -92,6 +92,6 @@ Microsoft Online Services へのアクセスでは、ユーザーがサービス
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 
