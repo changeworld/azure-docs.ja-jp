@@ -1,6 +1,6 @@
 ---
-title: "cURL と Azure REST API を使用した HDInsight 用の Linux ベースの Hadoop、HBase、または Storm クラスターの作成 | Microsoft Docs"
-description: "cURL、Azure リソース マネージャー テンプレート、および Azure REST API を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。 クラスターの種類 (Hadoop、HBase、または Storm) を指定するか、スクリプトを使用してカスタム コンポーネントをインストールすることができます。"
+title: "cURL と REST を使用して Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
+description: "cURL、Azure Resource Manager テンプレート、および Azure REST API を使用して HDInsight クラスターを作成する方法について説明します。 クラスターの種類 (Hadoop、HBase、または Storm) を指定するか、スクリプトを使用してカスタム コンポーネントをインストールすることができます。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,22 +16,19 @@ ms.workload: big-data
 ms.date: 11/28/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 8056e7ece1942c9090a7c36447a96829febaf1a4
-ms.openlocfilehash: 491f8540e8e53f366327ed80caff2e1e360132fc
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: a4dc3d4599cfe2c6dd7580c423987f6173a9c5ba
 
 
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-using-curl-and-the-azure-rest-api"></a>cURL と Azure REST API を使用して HDInsight に Linux ベースのクラスターを作成する
+# <a name="create-hdinsight-clusters-using-curl-and-the-azure-rest-api"></a>cURL と Azure REST API を使用して HDInsight クラスターを作成する
 
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Azure REST API を使用すると、Azure プラットフォームでホストされたサービスで、Linux ベースの HDInsight クラスターなど新しいリソースの作成を含む管理操作を実行できます。 このドキュメントでは、Azure リソース マネージャー テンプレートを作成し、HDInsight クラスターと関連するストレージを構成してから、cURL を使用してテンプレートを Azure REST API にデプロイして新しい HDInsight クラスターを作成する方法を学びます。
+Azure REST API を使用すると、Azure プラットフォームでホストされたサービスで、HDInsight クラスターなど新しいリソースの作成を含む管理操作を実行できます。 このドキュメントでは、Azure リソース マネージャー テンプレートを作成し、HDInsight クラスターと関連するストレージを構成してから、cURL を使用してテンプレートを Azure REST API にデプロイして新しい HDInsight クラスターを作成する方法を学びます。
 
 > [!IMPORTANT]
-> この文書の手順では、HDInsight クラスターにワーカー ノードの既定数 (4) を使用します。 クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
->
-> ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
-
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +56,7 @@ Azure REST API を使用すると、Azure プラットフォームでホスト�
 
 Azure Resource Manager テンプレートは、**リソース グループ**とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。このテンプレート基準の手法では、1 つのテンプレートで HDInsight に必要なすべてのリソースを定義でき、グループに変更を適用する**デプロイメント**を介して、グループに対する変更をまとめて管理できます。
 
-通常、テンプレートは 2 つの部分 (テンプレート自体と、自身の構成に固有の値を読み込んだパラメーター ファイル) から成ります。 たとえば、クラスター名、管理者名、パスワードなどです。 直接 REST API を使用する場合、これらを 1 つのファイルにまとめる必要があります。 この JSON ドキュメントの形式は次のようになります。
+通常、テンプレートは&2; つの部分 (テンプレート自体と、自身の構成に固有の値を読み込んだパラメーター ファイル) から成ります。 たとえば、クラスター名、管理者名、パスワードなどです。 直接 REST API を使用する場合、これらを&1; つのファイルにまとめる必要があります。 この JSON ドキュメントの形式は次のようになります。
 
     {
         "properties": {
@@ -267,6 +264,11 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 このサンプルをこのドキュメントの手順で使用します。 ドキュメント末尾の *Parameters* セクションのプレースホルダーの **値** を、クラスターに使用する値に置き換える必要があります。
 
+> [!IMPORTANT]
+> テンプレートでは、HDInsight クラスターに既定数 (4) の worker ノードを使用します。 クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+>
+> ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+
 ## <a name="login-to-your-azure-subscription"></a>Azure サブスクリプションへのログイン
 
 「[Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」 (Azure CLI 2.0 の使用を開始する) に記載されている手順に従って、自分のサブスクリプションに `az login` コマンドを使用して接続します。
@@ -412,6 +414,6 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行 | Microsoft Docs"
+title: "クラシックのリソースを Azure Resource Manager に移行する - 概要 | Microsoft Docs"
 description: "この記事では、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について説明します"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2016
+ms.date: 01/23/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 66b1bcdf0f79ff4743f466c3737696f53ef6a44c
-ms.openlocfilehash: 8eb70339785ca15131b5ce8debd6a232a8a693b9
+ms.sourcegitcommit: 2c96a3ca5fd72a4a3c992206aeb93f201342dd6a
+ms.openlocfilehash: aafaacea59c2c7fc463fb84207417d2c4e1d81ff
 
 
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行
-この記事では、クラシックから Resoure Manager デプロイメント モデル への、サービスとしてのインフラストラクチャ (IaaS) リソースの移行を有効にする方法について説明します。 [Azure Resource Manager の機能と利点](../azure-resource-manager/resource-group-overview.md)の詳細を参照してください。 仮想ネットワーク サイト間ゲートウェイを使用して、サブスクリプション内で共存する 2 つのデプロイメント モデルのリソースを接続する方法について詳しく説明します。
+この記事では、クラシックから Resoure Manager デプロイメント モデル への、サービスとしてのインフラストラクチャ (IaaS) リソースの移行を有効にする方法について説明します。 [Azure Resource Manager の機能と利点](../azure-resource-manager/resource-group-overview.md)の詳細を参照してください。 仮想ネットワーク サイト間ゲートウェイを使用して、サブスクリプション内で共存する&2; つのデプロイメント モデルのリソースを接続する方法について詳しく説明します。
 
 ## <a name="goal-for-migration"></a>移行の目的
 Resource Manager では、テンプレートを使用して複雑なアプリケーションをデプロイできます。また、VM の拡張機能を使用して仮想マシンを構成し、アクセス管理とタグ付けを統合します。 Azure Resource Manager には、仮想マシンの可用性セットへのスケーラブルな並列デプロイも含まれます。 さらに、新しいモデルでは、計算、ネットワーク、ストレージの個別のライフサイクル管理が提供されます。 最後に、仮想ネットワークでの仮想マシンの実行によって、セキュリティが既定で有効になることが重要視されています。
@@ -44,7 +44,7 @@ Resource Manager では、テンプレートを使用して複雑なアプリケ
 >
 
 ## <a name="supported-scopes-of-migration"></a>移行のサポート対象範囲
-主に計算、ネットワーク、およびストレージの 3 つの移行範囲を対象としています。
+主に計算、ネットワーク、およびストレージの&3; つの移行範囲を対象としています。
 
 ### <a name="migration-of-virtual-machines-not-in-a-virtual-network"></a>仮想マシンの移行 (仮想ネットワーク外)
 Resource Manager デプロイメント モデルでは、既定でアプリケーションのセキュリティが適用されます。 すべての VM が Resource Manager モデルの仮想ネットワーク内にある必要があります。 Azure Platform は移行の一環として、仮想マシンを再起動 (`Stop`、`Deallocate`、および `Start`) します。 仮想ネットワークについては、2 つのオプションがあります。
@@ -63,10 +63,10 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 次の構成は現在サポートされていません。 今後、これらのサポートが追加されたときに、この構成の一部の VM でダウンタイムが発生する場合があります (VM の動作の停止、割り当て解除、再起動が行われます)。
 
 * 単一のクラウド サービスに複数の可用性セットがある。
-* 単一のクラウド サービスに 1 つ以上の可用性セットと、可用性セットに存在しない VM がある。
+* 単一のクラウド サービスに&1; つ以上の可用性セットと、可用性セットに存在しない VM がある。
 
 > [!NOTE]
-> 単一のクラウド サービスに 1 つ以上の可用性セットと、可用性セットに属さない VM がある 上記の特定の構成の場合は、データ プレーン ダウンタイムが発生します。
+> 単一のクラウド サービスに&1; つ以上の可用性セットと、可用性セットに属さない VM がある 上記の特定の構成の場合は、データ プレーン ダウンタイムが発生します。
 >
 >
 
@@ -138,8 +138,10 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 
 * リソースを移行できない場合は、移行がサポートされていない理由がすべて Azure Platform でリストされます。
 
+ストレージ サービスを検証するときは、ストレージ アカウントの名前に "-Migrated" が付加された名前のリソース グループで、移行されたアカウントを探します。  たとえば、ストレージ アカウントの名前が "mystorage" である場合は、"mystorage-Migrated" という名前のリソース グループで ARM が有効なリソースを探します。それには、"mystorage" という名前のストレージ アカウントが含まれています。
+
 ### <a name="prepare"></a>準備
-準備操作は、移行プロセスの 2 番目の手順です。 この手順の目的は、クラシックから Resource Manager リソースへの IaaS リソースの変換をシミュレートし、これを並行して示し、視覚化することです。
+準備操作は、移行プロセスの&2; 番目の手順です。 この手順の目的は、クラシックから Resource Manager リソースへの IaaS リソースの変換をシミュレートし、これを並行して示し、視覚化することです。
 
 移行を準備する仮想ネットワークまたはホストされるサービス (仮想ネットワークでない場合) を選択します。
 
@@ -193,11 +195,11 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 
 **既存のツールにとって、この移行計画はどのような意味がありますか?**
 
-Resource Manager デプロイメント モデルへのツールの更新は、移行計画で考慮する必要がある最も重要な変更の 1 つです。
+Resource Manager デプロイメント モデルへのツールの更新は、移行計画で考慮する必要がある最も重要な変更の&1; つです。
 
 **管理プレーンのダウンタイムはどれくらいですか?**
 
-移行対象のリソースの数によって異なります。 小規模なデプロイ (VM が数十台) の場合、移行に要する時間は 1 時間未満です。 大規模なデプロイ (VM が数百台) の場合は、移行に数時間かかることがあります。
+移行対象のリソースの数によって異なります。 小規模なデプロイ (VM が数十台) の場合、移行に要する時間は&1; 時間未満です。 大規模なデプロイ (VM が数百台) の場合は、移行に数時間かかることがあります。
 
 **Resource Manager で移行対象のリソースがコミットされた後で、ロールバックすることはできますか?**
 
@@ -250,6 +252,6 @@ Resource Manager デプロイメント モデルへのツールの更新は、�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

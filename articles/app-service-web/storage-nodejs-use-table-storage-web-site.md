@@ -13,11 +13,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 01867f283678171eda8fb9798ea996cae605665a
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 5304ddd84bebb19f5f082acb6442faa34b8d84bb
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 01867f283678171eda8fb9798ea996cae605665a
 ![空のタスク一覧が表示されている Web ページ][node-table-finished]
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -119,7 +119,7 @@ Azure ストレージ アカウントを作成します。 アプリでは、こ
     **tasklist** ディレクトリに、複数の新しいディレクトリとファイルが作成されています。
 
 ### <a name="install-additional-modules"></a>追加モジュールをインストールする
-**express** によって作成されるファイルの 1 つに **package.json** があります。 このファイルには、モジュールの依存関係のリストが含まれます。 後でアプリケーションを App Service Web Apps にデプロイするときに、このファイルによって Azure にインストールする必要があるモジュールが特定されます。
+**express** によって作成されるファイルの&1; つに **package.json** があります。 このファイルには、モジュールの依存関係のリストが含まれます。 後でアプリケーションを App Service Web Apps にデプロイするときに、このファイルによって Azure にインストールする必要があるモジュールが特定されます。
 
 コマンド ラインで次のコマンドを入力して、 **package.json** ファイルに記述されたモジュールをインストールします。 場合によっては、"sudo" を使用する必要があります。
 
@@ -462,7 +462,7 @@ Azure ストレージ アカウントを作成します。 アプリでは、こ
 
 1. 次のコマンドを入力します。
    
-        azure account download
+        azure login
    
     このコマンドにより、ブラウザーが起動し、ダウンロード ページに移動します。 ログインを求められた場合は、Azure サブスクリプションに関連付けられたアカウントを使用してログインします。
    
@@ -594,6 +594,6 @@ Azure ストレージ アカウントを作成します。 アプリでは、こ
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

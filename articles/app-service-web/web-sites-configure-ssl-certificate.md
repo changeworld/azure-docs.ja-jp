@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 48696644e3a6c5fc2d84538c9c247d080cd7c6f4
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 46ffa25ff6f90c898b958ee6c5b2c47219c468ab
 
 
 ---
@@ -74,7 +74,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
 * [OpenSSL を使用した手順](#bkmk_openssl) - [オープン ソースのクロスプラットフォーム ツール](https://www.openssl.org)です。 このツールを使用すると、任意のプラットフォームから SSL 証明書を取得できます。
 * [OpenSSL を使用した subjectAltName 取得の手順](#bkmk_subjectaltname) - `subjectAltName` 証明書を取得するための手順です。
 
-証明書を購入する前に App Service で設定をテストする場合は、 [自己署名証明書](https://en.wikipedia.org/wiki/Self-signed_certificate)を生成することができます。 このチュートリアルでは、それを生成する 2 つの方法を示します。
+証明書を購入する前に App Service で設定をテストする場合は、 [自己署名証明書](https://en.wikipedia.org/wiki/Self-signed_certificate)を生成することができます。 このチュートリアルでは、それを生成する&2; つの方法を示します。
 
 * [Certreq.exe を使用した自己署名証明書の手順](#bkmk_sscertreq)
 * [OpenSSL を使用した自己署名証明書の手順](#bkmk_ssopenssl)
@@ -91,7 +91,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
         KeyLength = 2048              ; Required minimum is 2048
         KeySpec = 1
         KeyUsage = 0xA0
-        MachineKeySet = True
+        MachineKeySet = FALSE
         ProviderName = "Microsoft RSA SChannel Cryptographic Provider"
         ProviderType = 12
         HashAlgorithm = SHA256
@@ -107,7 +107,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
     **myrequest.csr** が現在の作業ディレクトリに作成されます。
 3. **myrequest.csr** を CA に送信して SSL 証明書を取得します。 ファイルをアップロードするか、テキスト エディターから Web フォームにファイルの内容をコピーします。
    
-    Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants][cas]」(Microsoft が信頼するルート証明書プログラム: 参加者) を参照してください。
+    Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants (Microsoft が信頼するルート証明書プログラム: 参加者)][cas]」を参照してください。
 4. CA から証明書 (.CER) ファイルを受け取ったら、作業ディレクトリに保存します。 それから次のコマンドを実行して保留中の CSR を完了します。
    
         certreq -accept -user <certificate-name>.cer
@@ -115,7 +115,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
     このコマンドで、完成した証明書を Windows 証明書ストアに格納します。
 5. CA が中間証明書を使用している場合は、中間証明書をインストールしてから続行します。 通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じて複数の形式で提供されています。 Microsoft IIS 用のバージョンを選択します。
    
-    証明書をダウンロードした後、エクスプローラーで各証明書を右クリックし、 **[証明書のインストール]** を選択します。 **証明書のインポート ウィザード**で既定値を使用し、インポートが完了するまで、**[次へ]** のクリックを続けます。
+    証明書をダウンロードした後、エクスプローラーで各証明書を右クリックし、  **[証明書のインストール]**を選択します。 **証明書のインポート ウィザード**で既定値を使用し、インポートが完了するまで、**[次へ]** のクリックを続けます。
 6. 証明書ストアから SSL 証明書をエクスポートするには、`Win`+`R` キーを押して、**certmgr.msc** を実行し証明書マネージャーを起動します。 
    **[Personal (個人設定)]**  >  **[証明書]** を選択します。 **[発行先]** 列に、カスタム ドメイン名に対応するエントリが表示されます。**[発行元]** 列には、証明書を生成するために使用した証明機関が表示されます。
    
@@ -138,14 +138,14 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
 <a name="bkmk_iismgr"></a>
 
 ### <a name="get-a-certificate-using-the-iis-manager"></a>IIS マネージャーを使用した証明書の取得
-1. IIS マネージャーを使用して、証明機関に送信する CSR を生成します。 CSR 生成の詳細については、「[インターネット サーバー証明書を要求する (IIS 7)][iiscsr]」を参照してください。
-2. SSL 証明書を取得するために、CSR を CA に送信します。 Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants][cas]」(Microsoft が信頼するルート証明書プログラム: 参加者) を参照してください。
-3. CA から届いた証明書を使用して CSR を完了します。 CSR の完了手順の詳細については、「[インターネット サーバー証明書をインストールする (IIS 7)][installcertiis]」を参照してください。
+1. IIS マネージャーを使用して、証明機関に送信する CSR を生成します。 CSR 生成の詳細については、「[Request an Internet Server Certificate (IIS 7) (インターネット サーバー証明書を要求する (IIS 7))][iiscsr]」を参照してください。
+2. SSL 証明書を取得するために、CSR を CA に送信します。 Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants (Microsoft が信頼するルート証明書プログラム: 参加者)][cas]」を参照してください。
+3. CA から届いた証明書を使用して CSR を完了します。 CSR の完了手順については、「[Install an Internet Server Certificate (IIS 7) (インターネット サーバー証明書をインストールする (IIS 7))][installcertiis]」を参照してください。
 4. CA が中間証明書を使用している場合は、中間証明書をインストールしてから続行します。 通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じて複数の形式で提供されています。 Microsoft IIS 用のバージョンを選択します。
    
     証明書をダウンロードした後、エクスプローラーで各証明書を右クリックし、 **[証明書のインストール]**を選択します。 
     **証明書のインポート ウィザード**で既定値を使用し、インポートが完了するまで、**[次へ]** のクリックを続けます。
-5. IIS マネージャーから SSL 証明書をエクスポートします。 証明書のエクスポートの詳細については、「[サーバー証明書をエクスポートする (IIS 7)][exportcertiis]」を参照してください。 
+5. IIS マネージャーから SSL 証明書をエクスポートします。 証明書のエクスポートの詳細については、「[Export a Server Certificate (IIS 7) (サーバー証明書をエクスポートする (IIS 7))][exportcertiis]」を参照してください。 
    
    > [!IMPORTANT]
    > **証明書のエクスポート ウィザード**で、**[はい、秘密キーをエクスポートします]** を選択していることを確認します。  
@@ -180,9 +180,9 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
    
            A challenge password []:
    
-    この処理が完了すると、**myserver.key** と **server.csr** という 2 つのファイルが作業ディレクトリに生成されます。 
+    この処理が完了すると、**myserver.key** と **server.csr** という&2; つのファイルが作業ディレクトリに生成されます。 
     **server.csr** には CSR が含まれます。**myserver.key** は後で必要になります。
-3. SSL 証明書を取得するために、CSR を CA に送信します。 Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants][cas]」(Microsoft が信頼するルート証明書プログラム: 参加者) を参照してください。
+3. SSL 証明書を取得するために、CSR を CA に送信します。 Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants (Microsoft が信頼するルート証明書プログラム: 参加者)][cas]」を参照してください。
 4. 要求した証明書が CA から届いたら、作業ディレクトリの **myserver.crt** という名前のファイルに保存します。 CA からテキスト形式で証明書が提供された場合は、テキスト エディターでその内容を **myserver.crt** にコピーするだけです。 ファイルは次のようになります。
    
         -----BEGIN CERTIFICATE-----
@@ -268,9 +268,9 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
         Organizational Unit Name (eg, section) []: Azure
         Your common name (eg, domain name) []: www.microsoft.com
    
-    この処理が完了すると、**myserver.key** と **server.csr** という 2 つのファイルが作業ディレクトリに生成されます。 
+    この処理が完了すると、**myserver.key** と **server.csr** という&2; つのファイルが作業ディレクトリに生成されます。 
     **server.csr** には CSR が含まれます。**myserver.key** は後で必要になります。
-4. SSL 証明書を取得するために、CSR を CA に送信します。 Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants][cas]」(Microsoft が信頼するルート証明書プログラム: 参加者) を参照してください。
+4. SSL 証明書を取得するために、CSR を CA に送信します。 Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants (Microsoft が信頼するルート証明書プログラム: 参加者)][cas]」を参照してください。
 5. 要求した証明書が CA から届いたら、 **myserver.crt**という名前のファイルに保存します。 CA からテキスト形式で証明書が提供された場合は、テキスト エディターでその内容を **myserver.crt** にコピーするだけです。 ファイルは次のようになります。
    
         -----BEGIN CERTIFICATE-----
@@ -408,7 +408,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
    
         openssl req -sha256 -x509 -nodes -days 365 -newkey rsa:2048 -keyout myserver.key -out myserver.crt -config serverauth.cnf
    
-    このコマンドを実行すると、**myserver.crt** (自己署名証明書) および **myserver.key** (秘密キー) という 2 つのファイルが、**serverauth.cnf** の設定に基づいて作成されます。
+    このコマンドを実行すると、**myserver.crt** (自己署名証明書) および **myserver.key** (秘密キー) という&2; つのファイルが、**serverauth.cnf** の設定に基づいて作成されます。
 3. 次のコマンドを実行して証明書を .pfx ファイルにエクスポートします。
    
         openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
@@ -430,11 +430,11 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
 2. ページの左側にある **[App Service]** オプションをクリックします。
 3. この証明書を割り当てるアプリの名前をクリックします。 
 4. **[設定]**で、**[SSL 証明書]** をクリックします。
-5.  **[証明書のアップロード]**
+5. **[証明書のアップロード]**
 6. [手順 1](#bkmk_getcert) でエクスポートした .pfx ファイルを選択し、以前に作成したパスワードを指定します。 
    次に、 **[アップロード]** をクリックして、証明書をアップロードします。 アップロードした証明書が **[SSL certificate (SSL 証明書)]** ブレードに表示されます。
 7. **[SSL バインド]** セクションで、**[Add bindings (バインドの追加)]** をクリックします。
-8. **[Add SSL Binding (SSL バインドの追加)]** ブレードで、ドロップダウン リストから SSL でセキュリティ保護するドメイン名、および使用する証明書を選択します。 また、**[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** (SNI) または IP ベースの SSL のどちらを使用するかを選択できます。
+8. **[Add SSL Binding (SSL バインドの追加)]** ブレードで、ドロップダウン リストから SSL でセキュリティ保護するドメイン名、および使用する証明書を選択します。 また、**[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)**または IP ベースの SSL のどちらを使用するかを選択できます。
    
     ![SSL バインドのイメージを挿入](./media/web-sites-configure-ssl-certificate/sslbindings.png)
    
@@ -443,17 +443,17 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
 9. 変更を保存して SSL を有効にするには、 **[Add Binding (バインドの追加)]** をクリックします。
 
 ## <a name="step-3-change-your-domain-name-mapping-ip-based-ssl-only"></a>手順 3. ドメイン名マッピングの変更 (IP ベースの SSL のみ)
-**SNI SSL** バインドを使用する場合にのみ、このセクションをスキップしてください。 アプリに割り当てられている既存の共有 IP アドレスで複数の **SNI SSL** バインドを使用できます。 ただし、**IP ベースの SSL** バインドを作成した場合、App Service はバインドのための専用 IP アドレスを作成します (**IP ベースの SSL** で必要なため)。 専用 IP アドレスは 1 つだけ作成できるので、 **IP ベースの SSL** バインドも 1 つだけ追加できます。
+**SNI SSL** バインドを使用する場合にのみ、このセクションをスキップしてください。 アプリに割り当てられている既存の共有 IP アドレスで複数の **SNI SSL** バインドを使用できます。 ただし、**IP ベースの SSL** バインドを作成した場合、App Service はバインドのための専用 IP アドレスを作成します (**IP ベースの SSL** で必要なため)。 専用 IP アドレスは&1; つだけ作成できるので、 **IP ベースの SSL** バインドも&1; つだけ追加できます。
 
 この専用 IP アドレスのために、次の場合はアプリの追加構成が必要です。
 
 * [A レコードを使用してカスタム ドメインを Azure アプリにマッピング](web-sites-custom-domain-name.md#a) 済みで、 **IP ベースの SSL** バインドを追加した場合。 このシナリオでは、次の手順を実行して、専用 IP アドレスを参照するように既存の A レコードをマッピングし直す必要があります。
   
-  1. IP ベースの SSL バインドを構成すると、専用の IP アドレスがアプリに割り当てられます。 この IP アドレスは、アプリの設定の **[カスタム ドメイン]** ページで確認できます。これは、**[Hostnames (ホスト名)]** セクションの上にあります。 このアドレスは、**[外部 IP アドレス]** として示されます。
+  1. IP ベースの SSL バインドを構成すると、専用の IP アドレスがアプリに割り当てられます。 この IP アドレスは、アプリの設定の **[カスタム ドメイン]** ページで確認できます。これは、**[ホスト名]** セクションの上にあります。 このアドレスは、**[外部 IP アドレス]** として示されます。
      
       ![Virtual IP address](./media/web-sites-configure-ssl-certificate/virtual-ip-address.png)
   2. [カスタム ドメイン名の A レコードをこの新しい IP アドレスにマッピングし直します](web-sites-custom-domain-name.md#a)。
-* 既に 1 つ以上の **SNI SSL** バインドがアプリに存在し、**IP ベースの SSL** バインドを追加した場合。 
+* 既に&1; つ以上の **SNI SSL** バインドがアプリに存在し、**IP ベースの SSL** バインドを追加した場合。 
   バインドが完了すると、*&lt;アプリ名>*.azurewebsites.net ドメイン名は新しい IP アドレスを参照するようになります。 
   そのため、既存の [CNAME マッピング](web-sites-custom-domain-name.md#cname) (カスタム ドメインから *&lt;アプリ名>*.azurewebsites.net へのマッピング) は、**SNI SSL** で保護されているものも含めて、**IP ベースの SSL** 専用に作成された新しいアドレスでトラフィックを受信します。 このシナリオでは、次の手順に従って、 **SNI SSL** トラフィックを元の共有 IP アドレスに送り返す必要があります。
   
@@ -519,13 +519,13 @@ IIS URL 書き換えモジュールの詳細については、 [URL 書き換え
 
 ## <a name="more-resources"></a>その他のリソース
 * [Microsoft Azure のトラスト センター](/support/trust-center/security/)
-* [Azure Web Sites でロックを解除された構成オプション](/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
+* [Azure Web Sites でロックを解除された構成オプション](https://azure.microsoft.com/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
 * [診断ログの有効化](web-sites-enable-diagnostic-log.md)
 * [Azure App Service での Web アプリの構成](web-sites-configure.md)
 * [Azure 管理ポータル](https://manage.windowsazure.com)
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -557,6 +557,6 @@ IIS URL 書き換えモジュールの詳細については、 [URL 書き換え
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

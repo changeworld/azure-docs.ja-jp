@@ -1,5 +1,5 @@
 ---
-title: "並列タスクで Batch ノードの使用率を最大にする | Microsoft Docs"
+title: "並列タスクを実行してノードの使用率を最大化 - Azure Batch | Microsoft Docs"
 description: "Azure Batch プール内の各ノードで同時実行タスクを実行し、使用するコンピューティング ノードの数を減らすことで、効率を高めて、コストを削減します。"
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/20/2017
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 7fec2e08209365e306d423ab35e67532ee0876c0
+ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
+ms.openlocfilehash: 8080c8c43d1e88381cd49bdac6a5f36b6cd82709
 
 
 ---
@@ -146,6 +146,6 @@ Azure Batch の[サンプル アプリケーション][github_samples]の&1; つ
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,3 +1,4 @@
+
 ---
 title: "Mobile Engagement Export API の概要"
 description: "お使いのユーザー デバイスによって生成された生データをエクスポートして、自社のツールで活用する方法の基本について説明します。"
@@ -15,8 +16,8 @@ ms.workload: mobile
 ms.date: 04/26/2016
 ms.author: kapiteir
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9c17a1cb33616ad297d0fad9b8ea674de75bd8fb
+ms.sourcegitcommit: b1e2ddb613e713972820621d0fa836c41eb61f91
+ms.openlocfilehash: 346e0e480ff84ee849f135a7605d27df9e32f966
 
 
 ---
@@ -63,6 +64,9 @@ Mobile Engagement からデータをエクスポートするには、API を介�
 * エクスポートの種類 (スナップショットまたは履歴)
 * データ型
 * (書き込みアクセス権を持つ有効な SAS を含む) **Azure Storage コンテナー**。ここにエクスポートの結果が書き込まれます。
+* たとえば、コンテナーの URL パラメーターの例は次のようになります。https://[StorageAccountName].blob.core.windows.net/[ContainerName]?[SASWritePermissionsToken]  
+
+実際の例を次に示します。 https://testazmeexport.blob.core.windows.net/test1234azme?sv=2015-12-11&ss=b&srt=sco&sp=rwdlac&se=2016-12-17T04:59:26Z&st=2016-12-16T20:59:26Z&spr=https&sig=KRF3aVWjp2NEJDzjlmoplmu0M9HHlLdkBWRPAFmw90Q%3D
 
 ジョブが開始するまでにしばらく時間がかかる場合があるほか、実行時間も小さなアプリでは数秒、ユーザーやアクティビティの数が多いアプリでは数時間かかることがあるためご注意ください。
 
@@ -73,6 +77,6 @@ Mobile Engagement からデータをエクスポートするには、API を介�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5d8ce7baafbc722af58e9f3dae49777170de0ba6
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 992b4b7bab8878355cbe936b75768e67b086286e
 
 
 ---
@@ -29,7 +29,7 @@ OneDrive for Business に接続してファイルを管理します。 ファイ
 > 
 > 
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事を参照してください。
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事を参照してください。
 
 ## <a name="triggers-and-actions"></a>トリガーとアクション
 OneDrive for Business コネクタは、アクションとして使用できます。OneDrive for Business コネクタにはトリガーがあります。 すべてのコネクタは、JSON および XML 形式のデータに対応します。
@@ -319,11 +319,11 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 
 ### <a name="object"></a>オブジェクト
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

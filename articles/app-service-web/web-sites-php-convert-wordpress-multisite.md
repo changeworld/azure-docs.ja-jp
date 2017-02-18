@@ -12,31 +12,31 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5a0d7d5143879eaf0ee42a70a04d865a33879733
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 45a5c8f16dd70f65967907c18752f4f98ffa75ea
 
 
 ---
 # <a name="convert-wordpress-to-multisite-in-azure-app-service"></a>Azure App Service での WordPress から Multisite への変換
 ## <a name="overview"></a>概要
-*執筆者: [Ben Lobaugh][ben-lobaugh][Microsoft Open Technologies Inc.][ms-open-tech]*
+*執筆者: [Ben Lobaugh][ben-lobaugh] ([Microsoft Open Technologies Inc.][ms-open-tech])*
 
 このチュートリアルでは、Azure のギャラリーを使って作成された既存の WordPress Web アプリを取得し WordPress Multisite インストールに変換する方法を説明します。 また、インストール内の各サブサイトにカスタム ドメインを割り当てる方法も説明します。
 
-ここでは、WordPress のインストールが既にあるものとします。 ない場合は、「[Azure でギャラリーから WordPress Web サイトを作成するwebsite-from-gallery][website-from-gallery]」の説明に従ってください。
+ここでは、WordPress のインストールが既にあるものとします。 ない場合は、「[Azure でギャラリーから WordPress Web サイトを作成する][website-from-gallery]」の説明に従ってください。
 
-既存の WordPress シングル サイト インストールから Multisite への変換は、通常はごく簡単で、ここでの初期手順の多くは [WordPress Codex](http://codex.wordpress.org) の「[Create A Network (ネットワークの作成)wordpress-codex-create-a-network][wordpress-codex-create-a-network]」から引用したものです。
+既存の WordPress シングル サイト インストールから Multisite への変換は、通常はごく簡単で、ここでの初期手順の多くは [WordPress Codex](http://codex.wordpress.org) の「[Create A Network][wordpress-codex-create-a-network]」(ネットワークの作成) ページから引用したものです。
 
 それでは始めましょう。
 
 ## <a name="allow-multisite"></a>Multisite の許可
 まず、`wp-config.php` ファイルの **WP\_ALLOW\_MULTISITE** 定数を使用して、Multisite を有効にする必要があります。 Web アプリ ファイルを編集するには、2 つの方法があります。FTP を使用する方法と、Git を使用する方法です。 どちらのセットアップ方法にも慣れていない場合は、以下のチュートリアルを参照してください。
 
-* [MySQL と FTP を使用する PHP Web サイト][website-w-mysql-and-ftp-ftp-setup]
-* [MySQL と Git を使用する PHP Web サイト][website-w-mysql-and-git-git-setup]
+* [MySQL および FTP による PHP Web サイト][website-w-mysql-and-ftp-ftp-setup]
+* [MySQL および Git による PHP Web サイト][website-w-mysql-and-git-git-setup]
 
 任意のエディターで `wp-config.php` ファイルを開き、以下の行を `/* That's all, stop editing! Happy blogging. */` 行の上に追加します。
 
@@ -53,10 +53,10 @@ Web アプリの *wp-admin* 領域にログインし、**[ツール]** メニュ
 
 このチュートリアルでは、*Sub-directories* サイト スキーマを使用します。このスキーマは常に機能する必要があるためです。このチュートリアルの後の方では、各サブサイトのカスタム ドメインをセットアップします。 ただし、[Azure Portal](https://portal.azure.com) を通じてドメインをマップし、ワイルドカード DNS を適切にセットアップすると、サブドメイン インストールをセットアップすることができます。
 
-サブドメインのセットアップとサブディレクトリのセットアップの詳細については、WordPress Codex の「[Types of multisite network (マルチサイト ネットワークの種類)][wordpress-codex-types-of-networks]」を参照してください。
+サブドメインのセットアップとサブディレクトリのセットアップの詳細については、WordPress Codex の「[Types of multisite network][wordpress-codex-types-of-networks]」(マルチサイト ネットワークの種類) をご覧ください。
 
 ## <a name="enable-the-network"></a>ネットワークの有効化
-これで、ネットワークがデータベースで構成されましたが、ネットワーク機能を有効にするにはもう 1 つ手順が残っています。 `wp-config.php` 設定の最終処理を行い、`web.config` が各サイトを適切にルーティングしていることを確認します。
+これで、ネットワークがデータベースで構成されましたが、ネットワーク機能を有効にするにはもう&1; つ手順が残っています。 `wp-config.php` 設定の最終処理を行い、`web.config` が各サイトを適切にルーティングしていることを確認します。
 
 *[ネットワーク設定]* ページで **[インストール]** ボタンをクリックすると、`wp-config.php` ファイルと `web.config` ファイルが自動的に更新されます。 ただし、これらのファイルを必ずチェックし、正常に更新されていることを確認してください。 正常に更新されていない場合は、この画面に必要な更新が表示されます。 ファイルを編集して保存します。
 
@@ -73,7 +73,7 @@ Web アプリの *wp-admin* 領域にログインし、**[ツール]** メニュ
 * Azure ポータルにログインして、自分の Web アプリに移動します。 
 * **[設定]** で **[スケールアップ]** タブをクリックします。
 * **[全般]** で、*[Shared]* または *[Standard]* を選択します。
-*  **[保存]**
+* **[保存]**
 
 設定してある使用方法やその他の構成によっては、変更の確認と、Web アプリへの今後の課金の承認を求めるメッセージが表示される場合があります。
 
@@ -107,20 +107,20 @@ Azure Portal を通じて Web アプリに戻り、**[設定]** をクリック�
 DNS マネージャーに戻り、前の手順でメモした IP アドレスを指すように A レコードをセットアップします。
 
 ## <a name="install-and-setup-the-plugin"></a>プラグインのインストールとセットアップ
-現在、WordPress Multisite には、カスタム ドメインをマップするための方法が組み込まれていません。 ただし、[WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] というプラグインを使用すると、この機能を追加することができます。 自分のサイトの Network Admin 部分にログインして、 **WordPress MU Domain Mapping** プラグインをインストールします。
+現在、WordPress Multisite には、カスタム ドメインをマップするための方法が組み込まれていません。 ただし、[WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] というプラグインを使うと、この機能を追加することができます。 自分のサイトの Network Admin 部分にログインして、 **WordPress MU Domain Mapping** プラグインをインストールします。
 
 プラグインをインストールおよびアクティブ化した後で、 **[スケールアップ]** > **[Domain Mapping]** にアクセスし、プラグインを構成します。 1 つ目のテキスト ボックス *[Server IP Address]*で、ドメインの A レコードのセットアップに使用した IP アドレスを入力します。 必要に応じて *[Domain Options]* を設定し (通常は既定のままでよい)、 **[Save]**をクリックします。
 
 ## <a name="map-the-domain"></a>ドメインのマップ
 ドメインのマップ対象のサイトの **ダッシュボード** にアクセスします。 **[ツール]** > **[ドメイン マッピング]** をクリックし、テキスト ボックスに新しいドメインを入力して、**[追加]** をクリックします。
 
-既定では、新しいドメインは自動生成されたサイト ドメインに書き換えられます。 すべてのトラフィックが新しいドメインに送信されるようにするには、保存する前に *[Primary domain for this blog]* チェック ボックスをオンにします。 サイトに追加するドメインの数に制限はありませんが、プライマリにできるのは 1 つだけです。
+既定では、新しいドメインは自動生成されたサイト ドメインに書き換えられます。 すべてのトラフィックが新しいドメインに送信されるようにするには、保存する前に *[Primary domain for this blog]* チェック ボックスをオンにします。 サイトに追加するドメインの数に制限はありませんが、プライマリにできるのは&1; つだけです。
 
 ## <a name="do-it-again"></a>繰り返し
 Azure Web Apps では、Web アプリに追加できるドメインの数に制限はありません。 他のドメインを追加するには、各ドメインに対して「**ドメインの確認**」および「**ドメイン A レコードのセットアップ**」セクションの手順を繰り返します。    
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -143,6 +143,6 @@ Azure Web Apps では、Web アプリに追加できるドメインの数に制�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

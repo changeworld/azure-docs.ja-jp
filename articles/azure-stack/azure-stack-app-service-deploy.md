@@ -1,5 +1,5 @@
 ---
-title: Add an App Service Resource Provider to Azure Stack | Microsoft Docs
+title: Deploy App Services - Azure Stack | Microsoft Docs
 description: Detailed guidance for deploying App Service in Azure Stack
 services: azure-stack
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/10/2016
+ms.date: 1/23/2017
 ms.author: anwestg
 translationtype: Human Translation
-ms.sourcegitcommit: 1231fbcbfcfa14c983b22815c8220a2bdba9131d
-ms.openlocfilehash: 7e32d737929fe544bc1a286908876947f214ae8b
+ms.sourcegitcommit: 6a06d35eeda2662de89a94c274848c827dc24bfa
+ms.openlocfilehash: b6a501cbb51468cd2c7fc1c8873831a38a73016b
 
 
 ---
@@ -173,6 +173,6 @@ You can also try out other [platform as a service (PaaS) services](azure-stack-t
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

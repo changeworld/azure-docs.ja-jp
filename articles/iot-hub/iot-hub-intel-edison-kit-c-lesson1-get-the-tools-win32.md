@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT スタート キット用のツールの入手 (Windows 7 以降) | Microsoft Docs"
+title: "Azure IoT への Intel Edison (C) の接続 - レッスン 1: ツールの入手 (Windows) | Microsoft Docs"
 description: "Windows 7 以降で、Edison の最初のサンプル アプリケーションに必要なツールとソフトウェアをダウンロードしてインストールします。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: 111018da51823f928e7f2b815db8621ecda65025
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: 79dcbe8cbefe4f607991359fbfc6948b5e90ace9
 
 
 ---
@@ -91,6 +91,6 @@ Visual Studio Code を[ダウンロード](https://code.visualstudio.com/docs/se
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

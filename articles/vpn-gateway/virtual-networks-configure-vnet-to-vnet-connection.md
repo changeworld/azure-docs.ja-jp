@@ -1,10 +1,10 @@
 ---
-title: "クラシック デプロイ モデルの VNet 間接続を構成する | Microsoft Docs"
+title: "Azure 仮想ネットワークを別の VNet に接続する: クラシック | Microsoft Docs"
 description: "PowerShell と Azure クラシック ポータルを使用して複数の Azure 仮想ネットワークを接続する方法。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 7413827f-233d-4c7c-a133-9c99cf031833
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/31/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: c1fd18ad8889033cba8a92f6ae255ba6478e6595
+ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
+ms.openlocfilehash: 863b308125a7a9ae2b9d9104d150bd2474c064b3
 
 
 ---
@@ -60,7 +60,7 @@ ms.openlocfilehash: c1fd18ad8889033cba8a92f6ae255ba6478e6595
   * Azure サブスクリプションを複数所有している場合、異なるサブスクリプションからのワークロードを仮想ネットワークを介して安全に接続することができます。
   * 企業やサービス プロバイダーが、安全な VPN テクノロジを使用した組織間の通信を Azure 内で実現できます。
 
-### <a name="vnet-to-vnet-faq-for-classic-vnets"></a>クラシック VNet の VNet 対 VNet 通信に関する FAQ
+### <a name="vnet-to-vnet-considerations-for-classic-vnets"></a>クラシック VNet での VNet 間の考慮事項
 * 仮想ネットワークが属しているサブスクリプションは異なっていてもかまいません。
 * 仮想ネットワークが属している Azure リージョン (場所) は異なっていてもかまいません。
 * クラウド サービスや負荷分散エンドポイントは、仮にそれらが相互に接続されていたとしても、仮想ネットワークの境界を越えることはできません。
@@ -120,7 +120,7 @@ VNet の定義の例を下表に示します。 範囲はあくまでも参考�
 **チェックマークをクリック** すると、仮想ネットワークの作成が開始されます。 完了すると、[ネットワーク] ページにある [状態] に [作成済み] と表示されます。
 
 ## <a name="step-3---create-vnet2"></a>手順 3 - VNet2 を作成する
-次に、上記の手順を繰り返して VNet をもう 1 つ作成します。 後でこれら 2 つの VNet を接続します。 手順 1 の [設定例](#step1) を参照できます。 VNet が既に存在する場合は、この手順を実行する必要はありません。 ただし、接続先とするオンプレミス ネットワークや他のすべての VNet と IP アドレスの範囲が重複していないことを確認する必要があります。
+次に、上記の手順を繰り返して VNet をもう&1; つ作成します。 後でこれら&2; つの VNet を接続します。 手順 1 の [設定例](#step1) を参照できます。 VNet が既に存在する場合は、この手順を実行する必要はありません。 ただし、接続先とするオンプレミス ネットワークや他のすべての VNet と IP アドレスの範囲が重複していないことを確認する必要があります。
 
 ## <a name="step-4---add-the-local-network-sites"></a>手順 4 - ローカル ネットワーク サイトを追加する
 VNet 間構成を作成するときは、ローカル ネットワーク サイトを構成する必要があります。構成したサイトは、ポータルの **[ローカル ネットワーク]** ページに表示されます。 Azure では、各ローカル ネットワーク サイトで指定されている設定を使用して、VNet 間でトラフィックをルーティングする方法を決定します。 各ローカル ネットワーク サイトの参照に使用する名前を指定します。 この値は後でドロップダウン リストから選択するので、わかりやすい名前を使用することをお勧めします。
@@ -200,6 +200,6 @@ VNet 間構成を作成するときは、ローカル ネットワーク サイ�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

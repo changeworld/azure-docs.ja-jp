@@ -1,5 +1,5 @@
 ---
-title: "Reliable Services の概要 | Microsoft Docs"
+title: "C# で信頼性の高い Azure マイクロサービスを初めて作成する | Microsoft Docs"
 description: "ステートレス サービスとステートフル サービスを使用して Microsoft Azure Service Fabric アプリケーションを作成する方法。"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2016
+ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 4b12d221b057161013aa3401e343ec41e4637f7c
-ms.openlocfilehash: ae77871a30e0768f6848056223cacf55b064bf1a
+ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
+ms.openlocfilehash: 41823b962caf25e1826fc06bc49887fd99876fc4
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: ae77871a30e0768f6848056223cacf55b064bf1a
 > 
 > 
 
-Azure Service Fabric アプリケーションには、コードを実行する 1 つ以上のサービスが含まれています。 ここでは、 [Reliable Services](service-fabric-reliable-services-introduction.md)を使用して、ステートレスとステートフルの両方の Service Fabric アプリケーションを作成する方法を説明します。  また、次の Microsoft Virtual Academy のビデオでは、ステートレスな Reliable Services を作成する方法を紹介しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=s39AO76yC_7206218965">  
+Azure Service Fabric アプリケーションには、コードを実行する&1; つ以上のサービスが含まれています。 ここでは、 [Reliable Services](service-fabric-reliable-services-introduction.md)を使用して、ステートレスとステートフルの両方の Service Fabric アプリケーションを作成する方法を説明します。  また、次の Microsoft Virtual Academy のビデオでは、ステートレスな Reliable Services を作成する方法を紹介しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=s39AO76yC_7206218965">  
 <img src="./media/service-fabric-reliable-services-quick-start/ReliableServicesVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
@@ -36,8 +36,8 @@ Reliable Services の使用を開始するには、いくつかの基本的な�
 
 * **サービスの種類**: 使用するサービス実装です。 `StatelessService` を拡張する記述したクラスと、そこで使用する他のコードまたは依存関係のほか、名前やバージョン番号によって定義されます。
 * **名前付きサービス インスタンス**: サービスを実行するには、サービスの種類の名前付きインスタンスを作成します。これは、クラスの種類のオブジェクト インスタンスを作成するのに似ています。 サービス インスタンスは、実際には、記述するサービス クラスのオブジェクト インスタンスです。 
-* **サービス ホスト**: 作成した名前付きサービス インスタンスは、ホスト内で実行する必要があります。 サービス ホストは単なる 1 プロセスで、ここでサービスのインスタンスを実行できます。
-* **サービス登録**: 登録はすべてを 1 つにまとめます。 サービス ホストでサービスの種類を Service Fabric ランタイムに登録して、Service Fabric がそのインスタンスを作成して実行できるようにする必要があります。  
+* **サービス ホスト**: 作成した名前付きサービス インスタンスは、ホスト内で実行する必要があります。 サービス ホストは単なる&1; プロセスで、ここでサービスのインスタンスを実行できます。
+* **サービス登録**: 登録はすべてを&1; つにまとめます。 サービス ホストでサービスの種類を Service Fabric ランタイムに登録して、Service Fabric がそのインスタンスを作成して実行できるようにする必要があります。  
 
 ## <a name="create-a-stateless-service"></a>ステートレス サービスの作成
 ステートレス サービスは、クラウド アプリケーションで現在基準となっている種類のサービスです。 ステートレスと見なされるのは、確実に格納する必要があるデータや高可用性を実現する必要があるデータが、サービス自体には含まれていないためです。 ステートレス サービスのインスタンスが終了すると、すべての内部状態が失われます。 この種類のサービスで、状態の高可用性と高い信頼性を実現するには、Azure テーブルや SQL データベースなどの外部ストアに状態を格納する必要があります。
@@ -50,13 +50,13 @@ Visual Studio 2015 を管理者として起動し、 *HelloWorld*という名前
 
 ![2 番目のダイアログ ボックスでステートレス サービス プロジェクトを作成する](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
-これで、ソリューションには、次の 2 つのプロジェクトが含まれています。
+これで、ソリューションには、次の&2; つのプロジェクトが含まれています。
 
 * *HelloWorld*。 これは*サービス*を含む*アプリケーション* プロジェクトです。 また、アプリケーションを説明するアプリケーション マニフェストと、アプリケーションをデプロイするのに役立つ多くの PowerShell スクリプトも含まれます。
 * *HelloWorldStateless*。 これはサービス プロジェクトです。 ステートレス サービスの実装が含まれています。
 
 ## <a name="implement-the-service"></a>サービスの実装
-サービス プロジェクト内にある **HelloWorldStateless.cs** ファイルを開きます。 Service Fabric では、どのようなビジネス ロジックもサービスで実行できます。 サービス API には、コードのエントリ ポイントが 2 つあります。
+サービス プロジェクト内にある **HelloWorldStateless.cs** ファイルを開きます。 Service Fabric では、どのようなビジネス ロジックもサービスで実行できます。 サービス API には、コードのエントリ ポイントが&2; つあります。
 
 * *RunAsync*という変更可能なエントリ ポイント メソッドでは、実行時間の長いコンピューティング ワークロードなどの任意のワークロードの実行を開始できます。
 
@@ -132,7 +132,7 @@ Service Fabric には、新しい種類のステートフルなサービスが�
 
 ![[新しいプロジェクト] ダイアログを使用して新しい Service Fabric のステートフル サービスを作成する](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
-これで、アプリケーションには、ステートレス サービス *HelloWorldStateless* とステートフル サービス *HelloWorldStateful* の 2 つのサービスが含まれるようになります。
+これで、アプリケーションには、ステートレス サービス *HelloWorldStateless* とステートフル サービス *HelloWorldStateful* の&2; つのサービスが含まれるようになります。
 
 ステートフル サービスのエントリ ポイントは、ステートレス サービスと同じです。 主な違いは、*状態プロバイダー*を使用して状態を確実に保存できることです。 Service Fabric には、[Reliable Collection](service-fabric-reliable-services-reliable-collections.md) という状態プロバイダー実装が用意されています。Reliable Collection では、Reliable State Manager を使用してレプリケートされたデータ構造を作成できます。 ステートフル Reliable Service では、この状態プロバイダーを既定で使用します。
 
@@ -231,6 +231,6 @@ Reliable Collection の操作は *トランザクション*であるため、複
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

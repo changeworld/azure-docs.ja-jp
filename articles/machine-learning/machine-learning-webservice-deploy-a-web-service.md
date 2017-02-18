@@ -1,5 +1,5 @@
 ---
-title: "新しい Web サービスのデプロイ"
+title: "Azure Machine Learning での新しい Web サービスのデプロイ | Microsoft Docs"
 description: "ARM ベースの Web サービスをデプロイするワークフロー"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 02/13/2017
 ms.author: v-donglo
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: machine-learning-publish-a-machine-learning-web-service
 translationtype: Human Translation
-ms.sourcegitcommit: 201b07536bcee58e2b7102379dff1c1c93c4b675
-ms.openlocfilehash: 70db87762757c42790047362ded24263157e6ae7
+ms.sourcegitcommit: 0813611f581a68efb8f09a1e041cfbe429bf0c5c
+ms.openlocfilehash: 902be47eb59444a1214b096be10525743f406d1c
 
 
 ---
@@ -49,7 +51,7 @@ Microsoft Azure Machine Learning Web サービスを使用して Web サービ�
 
 1. **[Price Plan (料金プラン)]** ドロップダウンで、既存のプランを選択するか、**[Select new plan (新しいプランを選択する)]** オプションを選択します。
 2. **[プラン名]**に、請求書でプランを識別する名前を入力します。
-3. **[Monthly Plan Tiers (月額プラン レベル)]**のいずれか 1 つを選択します。 プラン レベルは既定では既定のリージョンのプランになり、Web サービスはそのリージョンにデプロイされることにご注意ください。
+3. **[Monthly Plan Tiers (月額プラン レベル)]**のいずれか&1; つを選択します。 プラン レベルは既定では既定のリージョンのプランになり、Web サービスはそのリージョンにデプロイされることにご注意ください。
 
 **[デプロイ]** をクリックすると、Web サービスの [クイック スタート] ページが開きます。
 
@@ -103,6 +105,6 @@ Web サービスの使用方法の詳細については、以下を参照して�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

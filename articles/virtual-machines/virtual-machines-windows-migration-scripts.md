@@ -1,6 +1,6 @@
 ---
-title: "Azure サービス管理の Azure Resource Manager への移行用のコミュニティ ツール"
-description: "この記事には、Azure サービス管理から Azure Resource Manager スタックへの IaaS リソースの移行を支援するコミュニティで提供されているツールが掲載されています。"
+title: "コミュニティ ツール - クラシックのリソースを Azure Resource Manager に移動する | Microsoft Docs"
+description: "この記事には、クラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに IaaS リソースの移行するのに役立つコミュニティ提供のツールが掲載されています。"
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2016
+ms.date: 1/23/2017
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 032a7068cce78036caec587bfc53abddf5a36659
+ms.sourcegitcommit: 2deaf44de51a989463826d6e4815f9ce9f0bbee5
+ms.openlocfilehash: 4b1fd3527140bc40299c008071753a91d264d567
 
 
 ---
-# <a name="community-tools-for-azure-service-management-to-azure-resource-manager-migration"></a>Azure サービス管理の Azure Resource Manager への移行用のコミュニティ ツール
-この記事には、Azure サービス管理から Azure Resource Manager スタックへの IaaS リソースの移行を支援するコミュニティで提供されているツールが掲載されています。
+# <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager に IaaS リソースを移行するためのコミュニティ ツール
+この記事には、クラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに IaaS リソースの移行するのを支援するコミュニティ提供ツールが掲載されています。
 
 > [!NOTE]
 > Microsoft サポートは これらのツールを正式にサポートしていません。 そのため、PowerShell スクリプトは Github でオープンソースになっており、修正プログラムや追加シナリオの PR を歓迎しています。 問題をレポートするには、Github の問題の機能を使用します。
@@ -36,18 +36,18 @@ ms.openlocfilehash: 032a7068cce78036caec587bfc53abddf5a36659
 > 
 
 ## <a name="asm2arm"></a>ASM2ARM
-これは、 **1 つ** の仮想マシン (VM) を Azure サービス管理スタックから Azure Resource Manager スタックに移行するための PowerShell スクリプトのモジュールです。 
+これは、**1 つ**の仮想マシン (VM) をクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行するための PowerShell スクリプト モジュールです。 
 
 [ツールのドキュメントへのリンク](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/asm2arm)
 
 ## <a name="migaz"></a>migAz
-migAz は、一連の Azure サービス管理の IaaS リソースを Azure Resource Manager の IaaS リソースに移行する追加のオプションです。 移行は、同じサブスクリプション内、または別のサブスクリプションとサブスクリプションの種類 (例: CSP サブスクリプション) の間で発生する可能性があります。
+migAz は、クラシック IaaS リソースの完全なセットを Azure Resource Manager の IaaS リソースに移行するための追加オプションです。 移行は、同じサブスクリプション内、または別のサブスクリプションとサブスクリプションの種類 (例: CSP サブスクリプション) の間で発生する可能性があります。
 
 [ツールのドキュメントへのリンク](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/migaz)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

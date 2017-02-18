@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manager Virtual Machines にポリシーを適用する | Microsoft Docs"
+title: "Azure の Linux VM にセキュリティとポリシーを適用する | Microsoft Docs"
 description: "Azure Resource Manager Linux 仮想マシンにポリシーを適用する方法"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 71036b1aa9915750992d9d671af6b1023def41c3
+ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
+ms.openlocfilehash: 3e2db0a87433bd4bb83b8f39cd4d2d61bbcb474f
 
 
 ---
-# <a name="apply-policies-to-azure-resource-manager-virtual-machines"></a>Azure Resource Manager 仮想マシンにポリシーを適用する
+# <a name="apply-security-and-policies-to-linux-vms-with-azure-resource-manager"></a>Azure Resource Manager を使用して Linux VM にセキュリティとポリシーを適用する
 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。 望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。 この記事では、Azure Resource Manager ポリシーを使用して、組織の仮想マシンの望ましい行動を定義する方法について説明します。
 
 これを実現するための手順の概要を、以下に示します
@@ -99,6 +99,6 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

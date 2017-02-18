@@ -1,5 +1,5 @@
 ---
-title: "IoT ゲートウェイとしての Intel NUC のセットアップ | Microsoft Docs"
+title: "シミュレートされたデバイスと Azure IoT Gateway - レッスン 1: NUC の設定 | Microsoft Docs"
 description: "センサー情報を収集して IoT Hub に送信するために、Intel NUC をセンサーと Azure IoT Hub 間の IoT ゲートウェイとして機能するようにセットアップします。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: 7725f49d71cb77dd6ff7ae075cc7449e568c21d7
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 399ac2d571b65503da7d9cc47d2dec9aa5e4c3d7
 
 
 ---
@@ -138,6 +138,6 @@ cd /usr/share/azureiotgatewaysdk/samples/hello_world/
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

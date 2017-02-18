@@ -1,5 +1,5 @@
 ---
-title: "collectd: Azure Application Insights での Linux 上の Java のパフォーマンス統計 | Microsoft Docs"
+title: "Linux での Java Web アプリ パフォーマンスの監視 | Microsoft Docs"
 description: "Application Insights の CollectD プラグインを使用した Java Web サイトのアプリケーション パフォーマンスの拡張"
 services: application-insights
 documentationcenter: java
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 8c5324742e42a1f82bb3031af4380fc5f0241d7f
-ms.openlocfilehash: 6a9edd88dd49dd8d8edd687f8808f7d49b774139
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: e085f90d3f34d32d2e065ede6674842000e29fb8
 
 
 ---
@@ -47,7 +47,7 @@ Linux サーバー コンピューターで、次の操作を行います。
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
    * リソースからのインストルメンテーション キーを使用して、次のスニペットを追加します。
 
-```
+```XML
 
      LoadPlugin "com.microsoft.applicationinsights.collectd.ApplicationInsightsWriter"
      <Plugin ApplicationInsightsWriter>
@@ -56,6 +56,8 @@ Linux サーバー コンピューターで、次の操作を行います。
 ```
 
 サンプル構成ファイルの一部を次に示します。
+
+```XML
 
     ...
     # collectd plugins
@@ -83,14 +85,15 @@ Linux サーバー コンピューターで、次の操作を行います。
       # Other plugin configurations ...
       ...
     </Plugin>
-してある場合は、通常、collectd を使用します。   ...
+    ...
+```
 
 その他の [collectd プラグイン](https://collectd.org/wiki/index.php/Table_of_Plugins)を構成します。これにより、異なるソースからさまざまなデータを収集できます。
 
 [マニュアル](https://collectd.org/wiki/index.php/First_steps)に従って collectd を起動します。
 
 ## <a name="view-the-data-in-application-insights"></a>Application Insights でデータを表示する
-Application Insights のリソースで、[メトリックス エクスプローラーの [グラフの追加]][メトリック] を開き、[カスタム] カテゴリから表示するメトリックを選択します。
+Application Insights のリソースで、[メトリックス エクスプローラーの [グラフの追加]][metrics] を開き、[カスタム] カテゴリから表示するメトリックを選択します。
 
 ![](./media/app-insights-java-collectd/result.png)
 
@@ -114,7 +117,7 @@ Application Insights のリソースで、[メトリックス エクスプロー
 ## <a name="problems"></a>問題が発生した場合
 *ポータルにデータが表示されません。*
 
-* [[検索]][診断] を開き、未加工のイベントが到着しているかどうかを確認します。 メトリックス エクスプローラーに表示されるまでに時間がかかる場合があります。
+* [[検索]][diagnostic] を開き、未加工のイベントが到着しているかどうかを確認します。 メトリックス エクスプローラーに表示されるまでに時間がかかる場合があります。
 * 必要に応じて [データ送信についてファイアウォール例外を設定](app-insights-ip-addresses.md)
 * Application Insights プラグインでトレースを有効にします。 `<Plugin ApplicationInsightsWriter>`に次の行を追加します。
   * `SDKLogger true`
@@ -125,18 +128,18 @@ Application Insights のリソースで、[メトリックス エクスプロー
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
-[可用性]: app-insights-monitor-web-app-availability.md
-[診断]: app-insights-diagnostic-search.md
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: app-insights-java-get-started.md
 [javalogs]: app-insights-java-trace-logs.md
-[メトリック]: app-insights-metrics-explorer.md
-[使用状況]: app-insights-web-track-usage.md
+[metrics]: app-insights-metrics-explorer.md
+[usage]: app-insights-web-track-usage.md
 
 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "クラウド障害復旧ソリューション - SQL Database の アクティブ geo レプリケーション | Microsoft Docs"
+title: "アプリケーションのローリング アップグレード - Azure SQL Database | Microsoft Docs"
 description: "Azure SQL Database で geo レプリケーションを使用してクラウド アプリケーションのオンライン アップグレードをサポートする方法について説明します。"
 services: sql-database
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 07/16/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: d7f3d972755ec326c28fcdb95fd0600dd8ca1a91
+ms.sourcegitcommit: 66c37501b053cd9a8b4487c34e8914b75f3058ee
+ms.openlocfilehash: a99d3f9b8df5cfff98e76fe3931304221b2ca6f4
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: d7f3d972755ec326c28fcdb95fd0600dd8ca1a91
 > 
 > 
 
-SQL Database で [geo レプリケーション](sql-database-geo-replication-overview.md) を使用してクラウド アプリケーションのローリング アップグレードを有効にする方法について説明します。 アップグレードは中断を伴う作業であるため、ビジネス継続性の計画と設計の一部として組み込む必要があります。 この記事では、アップグレード処理を編成する&2; 種類の方法を確認し、方法ごとにメリットとトレードオフを説明します。 この記事では、データ層としてスタンドアロン データベースに接続されている Web サイトで構成される単純なアプリケーションを使用します。 ここでの目的は、エンド ユーザー エクスペリエンスに大幅な影響を及ぼさずにアプリケーションをバージョン 1 からバージョン 2 にアップグレードすることです。 
+SQL Database で [geo レプリケーション](sql-database-geo-replication-overview.md) を使用してクラウド アプリケーションのローリング アップグレードを有効にする方法について説明します。 アップグレードは中断を伴う作業であるため、ビジネス継続性の計画と設計の一部として組み込む必要があります。 この記事では、アップグレード処理を編成する&2; 種類の方法を確認し、方法ごとにメリットとトレードオフを説明します。 この記事では、データ層として単一のデータベースに接続されている Web サイトで構成される単純なアプリケーションを使用します。 ここでの目的は、エンド ユーザー エクスペリエンスに大幅な影響を及ぼさずにアプリケーションをバージョン 1 からバージョン 2 にアップグレードすることです。 
 
 アップグレード方法を評価する際に、次の要因を検討する必要があります。
 
@@ -155,6 +155,6 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

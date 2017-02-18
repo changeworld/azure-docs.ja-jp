@@ -1,5 +1,5 @@
 ---
-title: "Azure Automation のトラブルシューティング | Microsoft Docs"
+title: "Azure Automation の一般的な問題のトラブルシューティング | Microsoft Docs"
 description: "この記事には、Azure Automation の一般的なエラーのトラブルシューティングを行って修正する際に役立つ情報が記載されています。"
 services: automation
 documentationcenter: 
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2016
+ms.date: 01/24/2017
 ms.author: sngun; v-reagie
 translationtype: Human Translation
-ms.sourcegitcommit: 15a8ff89ae7a7d335c9d8584aaef0b21f092566f
-ms.openlocfilehash: f86942e399385efbb8c9cb6f250a8668fe260602
+ms.sourcegitcommit: a8ecffbc5f9c7e2408708d59459a0d39e59d6e1e
+ms.openlocfilehash: 3e4a4b431e26e58a0af1eee182fded51b6618fac
 
 
 ---
-# <a name="troubleshoot-azure-automation"></a>Azure Automation のトラブルシューティング 
+# <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure Automation の一般的な問題のトラブルシューティング 
 この記事では、Azure Automation で発生することがある一般的なエラーのトラブルシューティングのヘルプを提供し、それらのエラーの考えられる解決策を提案します。
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Azure Automation Runbook の使用時に発生する認証エラー
@@ -61,7 +61,7 @@ ms.openlocfilehash: f86942e399385efbb8c9cb6f250a8668fe260602
 
 **エラーの理由:** Azure アカウントに多要素認証を設定している場合、Azure に対する認証に Azure Active Directory ユーザーを使うことはできません。  代わりに、証明書またはサービス プリンシパルを利用して Azure に対して認証する必要があります。
 
-**トラブルシューティングのヒント:** Azure Service Management コマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
+**トラブルシューティングのヒント:** Azure Service Management コマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../azure-resource-manager/resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Runbook の使用時に発生する一般的なエラー
 ### <a name="scenario-runbook-fails-because-of-deserialized-object"></a>シナリオ: 逆シリアル化されたオブジェクトであるため、Runbook が失敗する
@@ -175,6 +175,6 @@ ms.openlocfilehash: f86942e399385efbb8c9cb6f250a8668fe260602
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

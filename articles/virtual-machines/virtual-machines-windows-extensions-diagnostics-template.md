@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manager テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する | Microsoft Docs"
+title: "Azure 仮想マシンに監視と診断を追加する | Microsoft Docs"
 description: "Azure リソース マネージャー テンプレートを使用して Azure 診断の拡張機能を含む新しい Windows 仮想マシンを作成する"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2015
+ms.date: 1/23/2017
 ms.author: saurabh
 translationtype: Human Translation
-ms.sourcegitcommit: 7167048a287bee7c26cfc08775dcb84f9e7c2eed
-ms.openlocfilehash: b84b4c0bd31d2e0bebafa2053a725e5e78bc3c9f
+ms.sourcegitcommit: e9258143cae9d9f8ba1f357617e2c45cf8487ab9
+ms.openlocfilehash: 2bd7efaaf45267ccdad390354ea98fafff1a6cb5
 
 
 ---
@@ -60,7 +60,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
             ]
 
 
-もう 1 つの一般的な方法では、拡張機能の構成を仮想マシンのリソース ノードの下に定義するのではなく、テンプレートのルート リソース ノードに追加します。 この方法では、拡張機能と仮想マシンの間で *name* と *type* の値を使用して階層関係を明示的に指定する必要があります。 次に例を示します。 
+もう&1; つの一般的な方法では、拡張機能の構成を仮想マシンのリソース ノードの下に定義するのではなく、テンプレートのルート リソース ノードに追加します。 この方法では、拡張機能と仮想マシンの間で *name* と *type* の値を使用して階層関係を明示的に指定する必要があります。 次に例を示します。 
 
     "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
     "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -80,7 +80,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 *protectedSettings* (プライベート構成とも呼ばれる) のプロパティは設定できますが、設定後に読み取ることができません。 *protectedSettings* が書き込み専用であるという性質は、診断データが書き込まれるストレージ アカウント キーのような機密情報を格納する場合に役立ちます。    
 
 ## <a name="specifying-diagnostics-storage-account-as-parameters"></a>診断ストレージ アカウントをパラメーターとして指定する
-上記の診断の拡張機能の JSON スニペットは、*existingdiagnosticsStorageAccountName* と *existingdiagnosticsStorageResourceGroup* という 2 つのパラメーターによって、診断データが格納される診断ストレージ アカウントが指定されることを想定しています。 診断ストレージ アカウントをパラメーターとして指定すると、たとえばテスト用と運用環境のデプロイメント用で異なる診断ストレージ アカウントを使用する場合などに、異なる環境間で診断ストレージ アカウントを変更することが簡単になります。  
+上記の診断の拡張機能の JSON スニペットは、*existingdiagnosticsStorageAccountName* と *existingdiagnosticsStorageResourceGroup* という&2; つのパラメーターによって、診断データが格納される診断ストレージ アカウントが指定されることを想定しています。 診断ストレージ アカウントをパラメーターとして指定すると、たとえばテスト用と運用環境のデプロイメント用で異なる診断ストレージ アカウントを使用する場合などに、異なる環境間で診断ストレージ アカウントを変更することが簡単になります。  
 
         "existingdiagnosticsStorageAccountName": {
             "type": "string",
@@ -139,7 +139,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 
     "xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), concat(parameters('vmNamePrefix'), copyindex()), variables('wadcfgxend')))]", 
 
-*PT1H* と *PT1M* の MetricAggregation 値は、1 分間以上の集計と 1 時間以上の集計を表します。
+*PT1H* と *PT1M* の MetricAggregation 値は、1 分間以上の集計と&1; 時間以上の集計を表します。
 
 ## <a name="wadmetrics-tables-in-storage"></a>ストレージの WADMetrics テーブル
 上記のメトリックの構成によって、次の名前付け規則による診断ストレージ アカウントのテーブルが生成されます。
@@ -171,6 +171,6 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

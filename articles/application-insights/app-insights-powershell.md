@@ -1,6 +1,6 @@
 ---
-title: "PowerShell での Azure Application Insights リソース、アラート、および可用性テストの作成 | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使用して Application Insights リソースの管理を自動化します。"
+title: "PowerShell での Azure Application Insights の自動化 | Microsoft Docs"
+description: "Azure Resource Manager テンプレートを使用して、PowerShell でのリソース、アラート、および可用性テストの作成を自動化します。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 86118ebfcb0c7c55ff414d381645025f41c74eb7
-ms.openlocfilehash: ba52b3dc55d80cc5944f16c238a2ea0d66c94990
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 9fc886d9ce69c1ca3d7a981d5eeb276c09cc245e
 
 
 ---
@@ -111,7 +111,7 @@ ms.openlocfilehash: ba52b3dc55d80cc5944f16c238a2ea0d66c94990
                 "ApplicationId": "[parameters('appName')]",
                 "Name": "[parameters('appName')]",
                 "Flow_Type": "Redfield",
-                "Request_Source": "IbizaAIExtension"
+                "Request_Source": "ARMAIExtension"
               }
             },
             {
@@ -414,7 +414,7 @@ ms.openlocfilehash: ba52b3dc55d80cc5944f16c238a2ea0d66c94990
 | `"<WebTest Name=\"myWebTest\" ...`<br/>` Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Guid と Id を削除します。 |
 
 ### <a name="set-dependencies-between-the-resources"></a>リソース間の依存関係の設定
-Azure では、厳密な順序でリソースを設定する必要があります。 次の設定を開始する前に、確実に 1 つの設定を完了するために、依存関係の行を追加します。
+Azure では、厳密な順序でリソースを設定する必要があります。 次の設定を開始する前に、確実に&1; つの設定を完了するために、依存関係の行を追加します。
 
 * 可用性テスト リソース
   
@@ -438,6 +438,6 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "ホスト コンピューターと Azure IoT ハブの準備 | Microsoft Docs"
+title: "SensorTag デバイスと Azure IoT Gateway - レッスン 2: ツールの取得 (Windows) | Microsoft Docs"
 description: "Windows を実行中のホスト コンピューターにツールとソフトウェアをインストールし、IoT ハブを作成し、IoT ハブにデバイスを登録します。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: c2e24522d1485cb8418b5f66ba16ce8c0b9bbca0
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 4a854222be9aaf6733f1c256dd75195927299099
 
 
 ---
@@ -43,7 +43,7 @@ ms.openlocfilehash: c2e24522d1485cb8418b5f66ba16ce8c0b9bbca0
   - Node.js は、豊富なパッケージ エコシステムが存在する JavaScript ランタイムです。
 - [NPM](https://www.npmjs.com/) を使用して Node.js 開発ツールをインストールする方法。
   - Node.js の最低限必要なバージョンは 4.5 LTS です。
-  - NPM は、Node.js 向けのパッケージ マネージャーの 1 つです。
+  - NPM は、Node.js 向けのパッケージ マネージャーの&1; つです。
 - Visual Studio Code をインストールする方法。
   - Visual Studio Code は、Windows、Linux、および macOS 向けのクロスプラットフォームの軽量で強力なソース コード エディターです。 デバッグ、Git コントロールの埋め込み、構文の強調表示、インテリジェントなコードの完了、スニペット、およびコードのリファクタリングを広くサポートしています。
 - Python のインストール方法。
@@ -127,6 +127,6 @@ Visual Studio Code を[ダウンロード](https://code.visualstudio.com/docs/se
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

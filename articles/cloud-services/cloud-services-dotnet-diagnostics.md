@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/25/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9c8e448aaffbecb4d3ac83729710f352675913bb
+ms.sourcegitcommit: c3540d86a12935cea100248f7f6669df34ae2209
+ms.openlocfilehash: cedc52b514eacb6cf7bc32634819573f5ee154c3
 
 
 ---
@@ -26,7 +26,7 @@ Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics]
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Worker ロールの診断を有効にする方法
 このチュートリアルでは、.NET EventSource クラスを使用してテレメトリ データを生成する Azure Worker ロールの実装方法について説明します。 Azure 診断を使用してテレメトリ データを収集し、これを Azure ストレージ アカウントに格納します。 Worker ロールを作成すると、Visual Studio は Azure SDK for .NET 2.4 以降でソリューションの一部として自動的に診断 1.0 を有効にします。 次の手順では、Worker ロールの作成、ソリューションからの診断、1.0 の無効化、Worker ロールへの診断、1.2 または 1.3 のデプロイに関するプロセスについて説明します。
 
-### <a name="pre-requisites"></a>前提条件
+### <a name="prerequisites"></a>前提条件
 この記事では、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。 Azure サブスクリプションがない場合でも、[無料試用版][Free Trial]にサインアップできます。 [Azure PowerShell Version 0.8.7 以降をインストールして構成している][Install and configure Azure PowerShell version 0.8.7 or later]ことを確認してください。
 
 ### <a name="step-1-create-a-worker-role"></a>手順 1. worker ロールを作成する
@@ -122,6 +122,9 @@ namespace WorkerRole1
 
 
 ### <a name="step-3-deploy-your-worker-role"></a>手順 3. worker ロールをデプロイする
+
+[!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
+
 1. ソリューション エクスプローラーで **[WadExample]** プロジェクトを選択し、**[ビルド]** メニューから **[発行]** を選択して、worker ロールを Visual Studio から Azure にデプロイします。
 2. サブスクリプションを選択します。
 3. **[Microsoft Azure 発行設定]** ダイアログで、**[新規作成]** を選択します。
@@ -132,13 +135,16 @@ namespace WorkerRole1
 
 ### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>手順 4. 診断構成ファイルを作成して拡張機能をインストールする
 1. 次の PowerShell コマンドを実行して、パブリック構成ファイルのスキーマ定義をダウンロードします。
-   2.
-     2.(Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
+
+    ```powershell
+    (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
+    ```
 2. **WorkerRole1** プロジェクトを右クリックし、**[追加]** -> **[新しいアイテム]** -> **[Visual C# アイテム]** -> **[データ]** -> **[XML ファイル]** の順に選択して、XML ファイルを **WorkerRole1** プロジェクトに追加します。 ファイルに「WadExample.xml」という名前を付けます。
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. 構成ファイルに WadConfig.xsd を関連付けます。 WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。 **F4** キーを押し、**[プロパティ]** ウィンドウを開きます。 **[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。 **[スキーマ]** プロパティで  in the **[…]** をクリックします。 **[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。 **[OK]**をクリックします。
-4. WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。 この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。 次に、SampleEventSourceWriter クラスのメソッドに対応する 4 つのイベントを定義します。
+
+4. WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。 この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。 次に、SampleEventSourceWriter クラスのメソッドに対応する&4; つのイベントを定義します。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -180,7 +186,8 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 
 ### <a name="step-6-look-at-your-telemetry-data"></a>手順 6. テレメトリ データを確認する
 Visual Studio の **[サーバー エクスプローラー]** で wadexample ストレージ アカウントに移動します。 クラウド サービスを 5 分程実行すると、**WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable**、**WADSetOtherTable** の各テーブルが表示されます。 いずれかのテーブルをダブルクリックして、収集した利用統計情報を表示します。
-    ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
+
+![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>構成ファイル スキーマ
 診断構成ファイルでは、診断エージェントの起動時に診断構成設定の初期化に使用される値を定義します。 有効な値と例については、「 [Azure 診断構成スキーマ](https://msdn.microsoft.com/library/azure/mt634524.aspx) 」をご覧ください。
@@ -200,6 +207,6 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

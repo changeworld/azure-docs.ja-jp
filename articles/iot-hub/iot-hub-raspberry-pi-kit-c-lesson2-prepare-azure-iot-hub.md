@@ -1,5 +1,5 @@
 ---
-title: "IoT Hub の作成と Raspberry Pi 3 の登録 | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - レッスン 2: デバイスの登録 | Microsoft Docs"
 description: "Azure CLI を使用してリソース グループと Azure IoT Hub を作成し、Pi を Azure IoT Hub に登録します。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 4fb7280cbf9221d1fe8b9fae24356e367969d32a
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: d7bc143b509e84d50f3ce0164d31ae51a26f75d4
 
 
 ---
@@ -79,7 +79,7 @@ Azure IoT Hub は、何百万台もの IoT 資産を接続、監視、管理す�
    既定では、IoT ハブは Free 価格レベルで作成されます。 詳細については、「[Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
 > [!NOTE]
-> IoT ハブの名前は、グローバルに一意である必要があります。 Azure サブスクリプションで作成できる F1 エディションの Azure IoT Hub は 1 つのみです。
+> IoT ハブの名前は、グローバルに一意である必要があります。 Azure サブスクリプションで作成できる F1 エディションの Azure IoT Hub は&1; つのみです。
 
 ## <a name="register-pi-in-your-iot-hub"></a>IoT ハブへの Pi の登録
 IoT ハブとの間でメッセージの交換を行う各デバイスは、一意の ID を使用して登録する必要があります。
@@ -99,6 +99,6 @@ IoT ハブを作成し、デバイス ID を使用して IoT ハブに Pi を登
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

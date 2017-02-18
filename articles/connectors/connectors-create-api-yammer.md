@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 104edc61f964f5e0b6c2144a39201283b71145a2
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: c69f7af9f9427eb295481657eaefcdad76b48ccb
 
 
 ---
@@ -35,7 +35,7 @@ Yammer で次のことができます。
 * グループまたはフォローしているフィードで新しいメッセージが発生したときにトリガーを使用します。
 * アクションを使用し、メッセージを投稿したり、すべてのメッセージを取得したりします。 また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。 たとえば、新しいメッセージが表示されたら、Office 365 を使用して電子メールを送信できます。
 
-ロジック アプリに操作を追加する方法については、「 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)」を参照してください。
 
 ## <a name="triggers-and-actions"></a>トリガーとアクション
 Yammer には、次のトリガーとアクションが含まれています。 
@@ -180,7 +180,7 @@ Yammer Web インターフェイスの "すべて" の会話に対応します�
 | full_name |string |× |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。
 
 [1]: ./media/connectors-create-api-yammer/connectionconfig1.png
 [2]: ./media/connectors-create-api-yammer/connectionconfig2.png 
@@ -190,6 +190,6 @@ Yammer Web インターフェイスの "すべて" の会話に対応します�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

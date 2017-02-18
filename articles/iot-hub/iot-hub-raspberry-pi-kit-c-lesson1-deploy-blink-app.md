@@ -1,6 +1,6 @@
 ---
-title: "点滅アプリケーションを作成してデプロイする | Microsoft Docs"
-description: "GitHub のサンプル C アプリケーションを複製し、gulp を使ってこのアプリケーションを Raspberry Pi 3 ボードにデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を 2 秒間隔で点滅させます。"
+title: "Azure IoT への Raspberry Pi (C) の接続 - レッスン 1: アプリのデプロイ | Microsoft Docs"
+description: "GitHub のサンプル C アプリケーションを複製し、gulp を使ってこのアプリケーションを Raspberry Pi 3 ボードにデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を&2; 秒間隔で点滅させます。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 61a0ef0a262d4a81fd6c1012fcc2c96569a9dda4
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 5b16230178fa82c7f227e3e3f8742fa16b00c719
 
 
 ---
 # <a name="create-and-deploy-the-blink-application"></a>点滅アプリケーションを作成してデプロイする
 ## <a name="what-you-will-do"></a>学習内容
-GitHub のサンプル C アプリケーションを複製し、gulp ツールを使ってサンプル アプリケーションを Raspberry Pi 3 にデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を 2 秒間隔で点滅させます。 問題が発生した場合は、[トラブルシューティングのページ](iot-hub-raspberry-pi-kit-c-troubleshooting.md)で解決策を探してください。
+GitHub のサンプル C アプリケーションを複製し、gulp ツールを使ってサンプル アプリケーションを Raspberry Pi 3 にデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を&2; 秒間隔で点滅させます。 問題が発生した場合は、[トラブルシューティングのページ](iot-hub-raspberry-pi-kit-c-troubleshooting.md)で解決策を探してください。
 
 ## <a name="what-you-will-learn"></a>学習内容
 この記事では、次のことについて説明します。
@@ -153,6 +153,6 @@ Pi を操作するために必要なツールをインストールし、Pi に�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

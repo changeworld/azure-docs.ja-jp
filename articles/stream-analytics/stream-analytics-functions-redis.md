@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions を使用して Azure Stream Analytics から Azure Redis Cache に出力する | Microsoft Docs"
+title: "Stream Analytics による Azure Functions のリアルタイム処理 | Microsoft Docs"
 description: "Service Bus キューに接続した Azure 関数を使用して、Stream Analytics ジョブの出力から Azure Redis Cache にデータを格納する方法を説明します。"
 keywords: "データ ストリーム, Redis Cache, Service Bus キュー"
 services: stream-analytics
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: ryancraw
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e792f8c8b1ffddbd534b1660421e4cc89a63d35a
+ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
+ms.openlocfilehash: 3753846e955308a7607d92ed25648d75b9cc3a35
 
 
 ---
@@ -207,6 +207,6 @@ Microsoft Azure を初めてお使いになる場合は、 [Azure 無料試用�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

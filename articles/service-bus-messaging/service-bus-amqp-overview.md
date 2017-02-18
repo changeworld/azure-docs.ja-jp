@@ -1,5 +1,5 @@
 ---
-title: "Service Bus AMQP の概要 | Microsoft Docs"
+title: "Azure Service Bus の AMQP 1.0 の概要 | Microsoft Docs"
 description: "Azure での Advanced Message Queuing Protocol (AMQP) 1.0 の使用について説明します。"
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 61f31c8ad0463776937f366d145595f04cc42d2e
-ms.openlocfilehash: 539ff0d47279b1c551c3ff0a21dff4633a3c0ac8
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: 91b138ee9590a66c63e2055eaeace82b4e719ae5
 
 
 ---
@@ -104,6 +104,6 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

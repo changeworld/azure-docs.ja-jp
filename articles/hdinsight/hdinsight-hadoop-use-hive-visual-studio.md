@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 11/28/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 86a0f6f2bc27f1411652b273325e73144582eee0
-ms.openlocfilehash: ec71a4674e9281927cd20897476e0180256936da
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: 067725ee5f303fc21baa3204509e8facd6f216fc
 
 
 ---
@@ -34,7 +34,11 @@ ms.openlocfilehash: ec71a4674e9281927cd20897476e0180256936da
 
 この記事の手順を完了するには、次のものが必要です。
 
-* Azure HDInsight (HDInsight での Hadoop) クラスター (Linux または Windows ベース)
+* Azure HDInsight (HDInsight で Hadoop を使用) クラスター
+
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * 下記のいずれかのバージョンの Visual Studio
   
     Visual Studio 2013 Community/Professional/Premium/Ultimate の [アップデート 4](https://www.microsoft.com/download/details.aspx?id=44921)
@@ -45,7 +49,7 @@ ms.openlocfilehash: ec71a4674e9281927cd20897476e0180256936da
 
 ## <a name="a-idruna-run-hive-queries-using-the-visual-studio"></a><a id="run"></a>Visual Studio を使用して Hive クエリを実行
 
-1. **Visual Studio** を開き、**[新規]**、**[プロジェクト]**、**[Azure Data Lake]**、**[Hive]**、**[Hive アプリケーション]** の順に選択します。 プロジェクトの名前を指定します。
+1. **Visual Studio** を開き、**[新規]** > 、**[プロジェクト]** > 、**[Azure Data Lake]** > 、**[Hive]** > 、**[Hive アプリケーション]** の順に選択します。 プロジェクトの名前を指定します。
 
 2. このプロジェクトで作成した **Script.hql** ファイルを開き、次の HiveQL ステートメントを貼り付けます。
    
@@ -155,6 +159,6 @@ Visual Studio の HDInsight ツールに関する詳細情報:
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure ツールの入手 (macOS 10.10) | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - レッスン 2: Azure ツール (macOS) | Microsoft Docs"
 description: "Python と Azure コマンド ライン インターフェイス (Azure CLI) を macOS にインストールします。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: e8da9d89e2af04a3c3ad3272d2af5060b23f9249
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: f0615f10adaf3bd03bc9a3b446830f2906875a89
 
 
 ---
@@ -53,7 +53,7 @@ Azure 用のマルチプラットフォーム コマンド ライン機能を提
 
 最新の Azure CLI をインストールするには、次の手順を実行します。
 
-1. ターミナル ウィンドウで次のコマンドを実行します。 Azure CLI のインストールには 5 分ほどかかる場合があります。
+1. ターミナル ウィンドウで次のコマンドを実行します。 Azure CLI のインストールには&5; 分ほどかかる場合があります。
 
    ```bash
    pip install --upgrade azure-cli
@@ -78,6 +78,6 @@ Azure CLI をインストールしました。 次のタスクでは、Azure CLI
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

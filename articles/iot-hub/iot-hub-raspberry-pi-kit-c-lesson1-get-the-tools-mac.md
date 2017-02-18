@@ -1,5 +1,5 @@
 ---
-title: "ツールの入手 (macOS 10.10) | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - レッスン 1: ツールの入手 (macOS) | Microsoft Docs"
 description: "macOS で、Pi の最初のサンプル アプリケーションに必要なツールとソフトウェアをダウンロードしてインストールします。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: bcb0b09468364cf13aff3987aeb7dd74e551cf9d
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 20cf1fd57f37c84342ba08954a913c0eceba415f
 
 
 ---
@@ -41,7 +41,7 @@ Raspberry Pi 3 の最初のサンプル アプリケーション用の開発ツ�
   * [Node.js](https://nodejs.org/en/) は、豊富なパッケージ エコシステムが存在する JavaScript ランタイムです。
 * NPM を使って、追加の Node.js 開発ツールをインストールする方法。
   * Node.js の最低限必要なバージョンは 4.5 LTS です。
-  * [NPM](https://www.npmjs.com) は、Node.js のパッケージ マネージャーの 1 つです。
+  * [NPM](https://www.npmjs.com) は、Node.js のパッケージ マネージャーの&1; つです。
 
 ## <a name="what-you-need"></a>必要なもの
 この操作を完了するには、以下が必要です。
@@ -89,6 +89,6 @@ Visual Studio Code を[ダウンロード](https://code.visualstudio.com/docs/se
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

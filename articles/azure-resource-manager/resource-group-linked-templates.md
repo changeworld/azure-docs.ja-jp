@@ -1,5 +1,5 @@
 ---
-title: "Resource Manager でのリンクされたテンプレート | Microsoft Docs"
+title: "Azure デプロイでの関連テンプレートの接続 | Microsoft Docs"
 description: "Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。"
 services: azure-resource-manager
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 922b08ab343d6aa0fd4b67d720e2f195e9dfac0f
-ms.openlocfilehash: 8f316ef559b9d1287ece7475192ec0b7a80af4e7
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 7bc5e1102b60db0bdf7a8310d0816f65bcfec3a1
 
 
 ---
-# <a name="using-linked-templates-with-azure-resource-manager"></a>Azure リソース マネージャーでのリンクされたテンプレートの使用
+# <a name="using-linked-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートの使用
 1 つの Azure Resource Manager テンプレート内から別のテンプレートにリンクして、対象となる、目的に特化した一連のテンプレートにデプロイを分解することができます。 アプリケーションを複数のコード クラスに分解する場合と同様に、分解すると、テスト、再利用、読みやすさの面でメリットがあります。  
 
 メイン テンプレートからリンクされたテンプレートにパラメーターを渡すことができます。それらのパラメーターは、呼び出し元のテンプレートによって公開されているパラメーターまたは変数に直接マップできます。 リンクされたテンプレートからソース テンプレートに出力変数を渡すこともできます。そのため、テンプレート間で双方向のデータ交換を行うことができます。
@@ -54,7 +54,7 @@ ms.openlocfilehash: 8f316ef559b9d1287ece7475192ec0b7a80af4e7
 "[reference('linkedTemplate').outputs.exampleProperty]"
 ```
 
-Resource Manager サービスは、リンクされたテンプレートにアクセスできる必要があります。 ローカル ファイルや、リンクされたテンプレートのローカル ネットワークだけで使用可能なファイルを指定することはできません。 **http** または **https** のいずれかを含む URI 値のみを指定できます。 オプションの 1 つとして、ストレージ アカウントにリンク先のテンプレートを配置し、次の例に示すように、その項目の URI を使用します。
+Resource Manager サービスは、リンクされたテンプレートにアクセスできる必要があります。 ローカル ファイルや、リンクされたテンプレートのローカル ネットワークだけで使用可能なファイルを指定することはできません。 **http** または **https** のいずれかを含む URI 値のみを指定できます。 オプションの&1; つとして、ストレージ アカウントにリンク先のテンプレートを配置し、次の例に示すように、その項目の URI を使用します。
 
 ```json
 "templateLink": {
@@ -122,7 +122,7 @@ Resource Manager では、各リンクされたテンプレートは個別のデ
 ## <a name="using-variables-to-link-templates"></a>変数を使用したテンプレートのリンク
 前の例では、URL の値をハード コーディングしてテンプレートをリンクする方法について説明しました。 この方法は簡単なテンプレートには適していますが、モジュール構造の大規模な一連のテンプレートを使用する場合にはあまり適していません。 その場合は、メイン テンプレートのベース URL を格納する静的変数を作成し、リンクされたテンプレートの URL をそのベース URL から動的に作成することができます。 この方法の利点としては、テンプレートを簡単に移動したり、フォークしたりできることが挙げられます。 メイン テンプレート内の静的変数を変更するだけで、正しい URI が、メイン テンプレートから、分解されたテンプレート全体に渡されます。
 
-次の例では、ベース URL を使用して、リンクされたテンプレート (**sharedTemplateUrl** と **vmTemplate**) の 2 つの URL を作成する方法を示しています。 
+次の例では、ベース URL を使用して、リンクされたテンプレート (**sharedTemplateUrl** と **vmTemplate**) の&2; つの URL を作成する方法を示しています。 
 
 ```json
 "variables": {
@@ -141,7 +141,7 @@ Resource Manager では、各リンクされたテンプレートは個別のデ
 ```
 
 ## <a name="conditionally-linking-to-templates"></a>テンプレートへの条件付きリンク
-リンクされたテンプレートの URI の構築に使用されるパラメーター値を渡すことによって、別のテンプレートにリンクすることができます。 この方法は、どのリンクされたテンプレートを使用するかをデプロイ中に指定する必要がある場合に適しています。 たとえば、既存のストレージ アカウント用に 1 つのテンプレートと、新しいストレージ アカウント用にもう 1 つのテンプレートを指定できます。
+リンクされたテンプレートの URI の構築に使用されるパラメーター値を渡すことによって、別のテンプレートにリンクすることができます。 この方法は、どのリンクされたテンプレートを使用するかをデプロイ中に指定する必要がある場合に適しています。 たとえば、既存のストレージ アカウント用に&1; つのテンプレートと、新しいストレージ アカウント用にもう&1; つのテンプレートを指定できます。
 
 次の例では、ストレージ アカウント名のパラメーターと、ストレージ アカウントが新規か既存かを指定するためのパラメーターを示しています。
 
@@ -323,11 +323,11 @@ azure group deployment create -g ExampleGroup --template-uri "https://storagecon
 
 ## <a name="next-steps"></a>次のステップ
 * リソースのデプロイの順序の定義については、「 [Azure Resource Manager テンプレートでの依存関係の定義](resource-group-define-dependencies.md)
-* リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)
+* リソースを&1; つ定義し、そのリソースの複数のインスタンスを作成する方法については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)
 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

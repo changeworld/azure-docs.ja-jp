@@ -1,5 +1,5 @@
 ---
-title: "MongoDB のプロトコル対応の Azure DocumentDB アカウントで MongoChef を使用する | Microsoft Docs"
+title: "Azure DocumentDB で MongoDB に MongoChef を使用する | Microsoft Docs"
 description: "現在プレビューとして提供されている MongoDB のプロトコル対応の DocumentDB アカウントで MongoChef を使用する方法について説明します。"
 keywords: MongoChef
 services: documentdb
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/29/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: b1e73ced8f11c06adc509af355ccf47b616a211b
-ms.openlocfilehash: 41b94580277bc07aad2f122b5db9060e2d7938d8
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: 26035ac7827eba384268dde266db2ac13cc30f40
 
 
 ---
@@ -82,7 +82,7 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
         "address": { "state": "WA", "county": "King", "city": "seattle" },
         "isRegistered": true
         }
-6. もう 1 つドキュメントを追加します。今度は次の内容を使用します。
+6. もう&1; つドキュメントを追加します。今度は次の内容を使用します。
 
         {
         "_id": "WakefieldFamily",
@@ -118,6 +118,6 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

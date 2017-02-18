@@ -1,5 +1,5 @@
 ---
-title: "ポータルを使用した SSL オフロード用のアプリケーション ゲートウェイの構成 | Microsoft Docs"
+title: "SSL オフロードの構成 - Azure Application Gateway - Azure Portal | Microsoft Docs"
 description: "このページでは、ポータルを使用して、SSL オフロード用のアプリケーション ゲートウェイを作成する方法について説明します。"
 documentationcenter: na
 services: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/16/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1506729fb346a8a67930a5a2cd4c15f375c52e3f
-ms.openlocfilehash: d5c3d2ef6fe8fe22552fe1b23f3a4690b166be8b
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: b1852b82875c63fa0e252c14b69b281bd501095f
 
 
 ---
@@ -96,6 +96,6 @@ Azure Application Gateway でカスタムの正常性プローブを構成する
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

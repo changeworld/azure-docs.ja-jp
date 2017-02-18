@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化 | Microsoft Docs"
-description: "このチュートリアルでは、Azure Key Vault で Microsoft Azure Storage のクライアント側暗号化を使用して BLOB を暗号化および復号化する方法を説明します。"
+title: "チュートリアル: Azure Key Vault を使用した Azure Storage 内の BLOB の暗号化と復号化 | Microsoft Docs"
+description: "Azure Key Vault で Microsoft Azure Storage のクライアント側暗号化を使用して BLOB を暗号化および復号化する方法を説明します。"
 services: storage
 documentationcenter: 
 author: adhurwit
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 10/18/2016
+ms.date: 01/23/2017
 ms.author: adhurwit
 translationtype: Human Translation
-ms.sourcegitcommit: 2d6ebe1a0afb09f0d05e720a0e7afcf135011de7
-ms.openlocfilehash: 401f4a5c8f397b056f814aefe4212e487dfee412
+ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
+ms.openlocfilehash: 0c33742a0212e670072a947a2d2ab8304c77b973
 
 
 ---
@@ -139,11 +139,11 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 > [!NOTE]
 > Key Vault のオブジェクト モデル
 > 
-> 実際には 2 種類の Key Vault オブジェクト モデルがあることを理解しておくことが重要です。1 つは REST API (KeyVault 名前空間) に基づくもので、もう 1 つはクライアント側暗号化の拡張機能です。
+> 実際には&2; 種類の Key Vault オブジェクト モデルがあることを理解しておくことが重要です。1 つは REST API (KeyVault 名前空間) に基づくもので、もう&1; つはクライアント側暗号化の拡張機能です。
 > 
-> Key Vault クライアントは REST API とやり取りして、Key Vault に含まれる 2 種類のものの JSON Web キーとシークレットを認識します。
+> Key Vault クライアントは REST API とやり取りして、Key Vault に含まれる&2; 種類のものの JSON Web キーとシークレットを認識します。
 > 
-> Key Vault 拡張機能は、Azure Storage のクライアント側暗号化用に特に作成されたクラスです。 Key Resolver の概念に基づくキー用のインターフェイス (IKey) とクラスを含みます。 IKey には 2 種類の実装 RSAKey と SymmetricKey があり、これらを知っておく必要があります。 現在はたまたま Key Vault に含まれるものと一緒に存在していますが、これらは独立したクラスです (したがって、Key Vault クライアントによって取得されたキーとシークレットは IKey を実装していません)。
+> Key Vault 拡張機能は、Azure Storage のクライアント側暗号化用に特に作成されたクラスです。 Key Resolver の概念に基づくキー用のインターフェイス (IKey) とクラスを含みます。 IKey には&2; 種類の実装 RSAKey と SymmetricKey があり、これらを知っておく必要があります。 現在はたまたま Key Vault に含まれるものと一緒に存在していますが、これらは独立したクラスです (したがって、Key Vault クライアントによって取得されたキーとシークレットは IKey を実装していません)。
 > 
 > 
 
@@ -195,7 +195,7 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 ```
 
 > [!NOTE]
-> キー管理を容易にするリゾルバーとして、他に AggregateKeyResolver および CachingKeyResolver の 2 つがあります。
+> キー管理を容易にするリゾルバーとして、他に AggregateKeyResolver および CachingKeyResolver の&2; つがあります。
 > 
 > 
 
@@ -240,6 +240,6 @@ Microsoft Azure Storage の最新情報については、[Microsoft Azure Storag
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

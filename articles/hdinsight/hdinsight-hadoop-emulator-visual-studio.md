@@ -1,5 +1,5 @@
 ---
-title: "Hortonworks サンドボックスで Microsoft Azure Data Lake Tools for Visual Studio を使用する | Microsoft Docs"
+title: "Hortonworks サンドボックスでの Azure Data Lake Tools for Visual Studio | Microsoft Docs"
 description: "(ローカル VM で実行される) Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する方法について説明します。このツールを使用すると、サンドボックスで Hive ジョブと Pig ジョブを作成して実行し、ジョブの出力と履歴を表示できます。"
 services: hdinsight
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/15/2016
+ms.date: 02/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4b0572d8fb3b81fd4bd2a34794141f137b50eed0
-ms.openlocfilehash: 42f53e0c725ed7744c2e3d919c960c42e4cebc0c
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: a1e6216647b7401183ab2f47f72aaee1f80ccee0
 
 
 ---
@@ -43,6 +43,7 @@ Hortonworks サンドボックスが実行されていることを確認した�
 ## <a name="connect-the-tools-to-the-sandbox"></a>サンドボックスにツールを接続する
 
 1. Visual Studio を開き、**[表示]**、**[サーバー エクスプローラー]** の順に選択します。
+
 2. **[サーバー エクスプローラー]** の **[HDInsight]** エントリをクリックし、**[Connect to HDInsight Emulator (HDInsight Emulator に接続)]** を選択します。
 
     ![[Connect to HDInsight Emulator (HDInsight Emulator に接続)]](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
@@ -121,7 +122,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
 ## <a name="create-a-hive-project"></a>Hive プロジェクトを作成する
 
-複数の Hive スクリプトを含むプロジェクトを作成することもできます。 これは、複数の関連スクリプトを 1 つにまとめておきたい場合や、バージョン管理システムを使用して管理する必要がある場合に便利です。
+複数の Hive スクリプトを含むプロジェクトを作成することもできます。 これは、複数の関連スクリプトを&1; つにまとめておきたい場合や、バージョン管理システムを使用して管理する必要がある場合に便利です。
 
 1. Visual Studio で、**[ファイル]**、**[新規]**、__[プロジェクト]__ の順に選択します。
 
@@ -129,7 +130,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
     ![HIVE (HDInsight) template](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
 
-**[Hive Sample (Hive サンプル)]** プロジェクトには、**WebLogAnalysis.hql** と **SensorDataAnalysis.hql** という 2 つのスクリプトが含まれています。 これらのスクリプトを送信する際も、ウィンドウの上部にある **[送信]** ボタンをクリックします。
+**[Hive Sample (Hive サンプル)]** プロジェクトには、**WebLogAnalysis.hql** と **SensorDataAnalysis.hql** という&2; つのスクリプトが含まれています。 これらのスクリプトを送信する際も、ウィンドウの上部にある **[送信]** ボタンをクリックします。
 
 ## <a name="create-a-pig-project"></a>Pig プロジェクトを作成する
 
@@ -209,6 +210,6 @@ Azure Data Lake Tools では、Hadoop で実行されたジョブに関する情
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

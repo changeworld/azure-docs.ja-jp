@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: c1c23ab46d9b4e43154a62080cb8865b246489f9
-ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
+ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
+ms.openlocfilehash: a86b041424ce1757fd45c7a39350f4c4e66ee265
 
 
 ---
@@ -30,22 +30,13 @@ ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
 >
 >
 
-ワークロードの変化する需要に合わせてコンピューティング リソースとメモリをスケールアウトすることで、パフォーマンスをスケーリングします。 ピーク時以外にリソースをスケール バックするか、すべてのコンピューティング処理を一時停止して、コストを削減します。
-
-このタスクのコレクションでは、Azure ポータルを使用して次の操作を実行します。
-
-* コンピューティングのスケーリング
-* コンピューティングの一時停止
-* コンピューティングの再開
-
-詳細については、[コンピューティングの管理の概要][コンピューティングの管理の概要] に関するページをご覧ください。
 
 ## <a name="scale-compute-power"></a>コンピューティング能力のスケーリング
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
 コンピューティング リソースを変更するには、次の手順に従います。
 
-1. [Azure ポータル][Azure ポータル]を開き、データベースを開いて、**[スケール]** をクリックします。
+1. [Azure Portal][Azure portal] を開き、データベースを開いて、**[スケール]** をクリックします。
 
     ![[スケール] をクリックします。][1]
 2. [スケール] ブレードで、スライダーを左または右に移動して DWU 設定を変更します。
@@ -62,7 +53,7 @@ ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
 
 データベースを一時停止するには、次の手順に従います。
 
-1. [Azure ポータル][Azure ポータル] を開き、データベースを開きます。 [状態] が **[オンライン]**になっていることがわかります。
+1. [Azure Portal][Azure portal] を開き、データベースを開きます。 [状態] が **[オンライン]**になっていることがわかります。
 
     ![オンライン状態][6]
 2. コンピューティング リソースとメモリ リソースを一時停止するには、**[一時停止]** をクリックします。確認メッセージが表示されます。 **[はい]** をクリックして確定します。キャンセルするには、**[いいえ]** をクリックします。
@@ -80,7 +71,7 @@ ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
 
 データベースを再開するには、次の手順に従います。
 
-1. [Azure ポータル][Azure ポータル] を開き、データベースを開きます。 状態が **[一時停止]**になっていることがわかります。
+1. [Azure Portal][Azure portal] を開き、データベースを開きます。 状態が **[一時停止]**になっていることがわかります。
 
     ![データベースの一時停止][4]
 2. データベースを再開するには、**[開始]** をクリックします。確認メッセージが表示されます。 **[はい]** をクリックして確定します。キャンセルするには、**[いいえ]** をクリックします。
@@ -94,7 +85,7 @@ ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
 <a name="next-steps-bk"></a>
 
 ## <a name="next-steps"></a>次のステップ
-詳細については、[管理の概要][管理の概要] に関する記事をご覧ください。
+詳しくは、「[管理の概要][Management overview]」をご覧ください。
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-manage-compute-portal/click-scale.png
@@ -106,18 +97,18 @@ ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
 [7]: ./media/sql-data-warehouse-manage-compute-portal/pause-confirm.png
 
 <!--Article references-->
-[管理の概要]: ./sql-data-warehouse-overview-manage.md
-[コンピューティングの管理の概要]: ./sql-data-warehouse-manage-compute-overview.md
+[Management overview]: ./sql-data-warehouse-overview-manage.md
+[Manage compute overview]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-[Azure ポータル]: http://portal.azure.com/
+[Azure portal]: http://portal.azure.com/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

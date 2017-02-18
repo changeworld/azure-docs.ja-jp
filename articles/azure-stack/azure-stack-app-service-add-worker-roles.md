@@ -1,5 +1,5 @@
 ---
-title: App Service on Azure Stack - Adding More Worker Roles | Microsoft Docs
+title: Scale out worker roles in App Services - Azure Stack  | Microsoft Docs
 description: Detailed guidance for scaling Azure Stack App Services
 services: azure-stack
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2016
+ms.date: 1/23/2017
 ms.author: kathm
 translationtype: Human Translation
-ms.sourcegitcommit: 15e4d8e8b92a1a1205eb705e7e392502aee417b4
-ms.openlocfilehash: f343e57fc0d94a7bfa26f0d6c6fc138e02e12589
+ms.sourcegitcommit: 6a06d35eeda2662de89a94c274848c827dc24bfa
+ms.openlocfilehash: 2abcb15789c52b64534b4ff69392ccd49f20142f
 
 
 ---
@@ -132,6 +132,6 @@ The following shows an example of the multiple pricing tiers available by defaul
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 
