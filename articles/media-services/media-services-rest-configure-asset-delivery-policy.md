@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: edb4ba7a855583cd00051cb4f4edae3a13cdd496
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 255cc9f08862ff7babf8d8847c88a72a4c88582c
 
 
 ---
@@ -27,12 +27,10 @@ ms.openlocfilehash: edb4ba7a855583cd00051cb4f4edae3a13cdd496
 
 このトピックでは、アセットの配信ポリシーを作成して構成する理由と方法をご説明します。
 
-> [!NOTE]
-> 動的パッケージ化と動的暗号化を使用するには、少なくとも&1; つのスケール ユニット (ストリーミング ユニットとも呼ばれる) が存在している必要があります。 詳細については、「 [Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
-> 
-> また、資産には、一連のアダプティブ ビットレート MP4、またはアダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。
-> 
-> 
+>[!NOTE]
+>AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
+>
+>また、ダイナミック パッケージと動的暗号化を使用するには、資産に一連のアダプティブ ビットレート MP4、またはアダプティブ ビットレート Smooth Streaming ファイルが含まれている必要があります。
 
 1 つの資産にはさまざまなポリシーを適用できます。 たとえば、スムーズ ストリーミングに PlayReady 暗号化を適用し、MPEG DASH と HLS に AES エンベロープ暗号化を適用できます。 配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する&1; つのポリシーを追加した場合) は、ストリーミングからブロックされます。 ただし、資産配信ポリシーをまったく定義していない場合は例外となります。 この場合、すべてのプロトコルが平文で許可されます。
 
@@ -433,6 +431,6 @@ Widevine DRM を使用してコンテンツを保護する場合は、WidevineLi
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

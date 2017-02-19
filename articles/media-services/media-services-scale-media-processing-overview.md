@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2016
+ms.date: 01/06/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 852d8ee2686e5653f9fe8bb5ec41b22cb1b19048
-ms.openlocfilehash: a9cf9a7e91c21d675f7ae22072fd10794a1295e7
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 1cde923ad0aef1ce1c91d1240f7b3e3d3c26e105
 
 
 ---
@@ -44,8 +44,8 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 * 予約ユニットは、Azure Media Indexer を使用するインデックス作成ジョブを含む、すべてのメディア処理を並列化するために動作します。  ただし、エンコードとは異なり、インデックス作成ジョブでは高速予約ユニットを使用した高速処理は行われません。
 * 共有プールを使用する (すなわち、予約ユニットを使用しない) 場合のエンコード タスクのパフォーマンスは S1 予約ユニットを使用したときと同等になります。 ただし、タスクがキューに登録された状態である時間の上限はなく、同時に実行されるタスクの数は最大で&1; つのみです。
-* ブラジル南部、インド西部、インド中部、およびインド南部のデータ センターでは、占有ユニットの種類 **S2** は提供されません。
-* ブラジル南部、インド西部、およびインド中部のデータ センターでは、占有ユニットの種類 **S3** は提供されません。
+* ブラジル南部とインド西部のデータ センターでは、予約ユニットの種類 **S2** は提供されません。
+* インド西部のデータ センターでは、予約ユニットの種類 **S3** は提供されません。
 * コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。
 
 ## <a name="quotas-and-limitations"></a>クォータと制限
@@ -57,7 +57,7 @@ Media Services アカウントは、メディア処理タスクを処理する�
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [ポータル](media-services-portal-scale-media-processing.md)
-> * [REST ()](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+> * [REST ()](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
@@ -72,6 +72,6 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

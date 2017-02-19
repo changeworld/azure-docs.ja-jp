@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 01/05/2017
 ms.author: juliako;mingfeiy
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 39f4f0b7e9bbe28a36471558c8535ee9f3cd17ff
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 3dcd45307716b7343fbac00e083e8f26c9eb967f
 
 
 ---
@@ -45,7 +45,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 [Azure ACS を使用してトークンを発行する](http://mingfeiy.com/acs-with-key-services)。
 
 ### <a name="some-considerations-apply"></a>いくつかの考慮事項が適用されます。
-* 動的パッケージングや動的暗号化を使用するには、少なくとも&1; つのストリーミング予約ユニットが必要です。 詳細については、「 [Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
+* AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、ストリーミング エンドポイントが**実行中**状態である必要があります。 
 * 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート Smooth Streaming ファイルが含まれている必要があります。 詳細については、「 [資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
 * **AssetCreationOptions.StorageEncrypted** オプションを使用して、資産をアップロードしてエンコードします。
 * 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
@@ -59,11 +59,16 @@ Media Services では、Secure Token Services は提供されません。 トー
 
 次の例では、オープン承認ポリシーを作成し、それをコンテンツ キーに追加します。
 
-static public void AddOpenAuthorizationPolicy(IContentKey contentKey) { // Create ContentKeyAuthorizationPolicy with Open restrictions // and create authorization policy IContentKeyAuthorizationPolicy policy = _context.
-ContentKeyAuthorizationPolicies.
-CreateAsync("Open Authorization Policy").Result;
-
-List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>();
+    static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
+    {
+        // Create ContentKeyAuthorizationPolicy with Open restrictions
+        // and create authorization policy
+        IContentKeyAuthorizationPolicy policy = _context.
+        ContentKeyAuthorizationPolicies.
+        CreateAsync("Open Authorization Policy").Result;
+        
+        List<ContentKeyAuthorizationPolicyRestriction> restrictions =
+            new List<ContentKeyAuthorizationPolicyRestriction>();
 
         ContentKeyAuthorizationPolicyRestriction restriction =
             new ContentKeyAuthorizationPolicyRestriction
@@ -424,6 +429,6 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: bbfe4dc74b9743b89ea6a7a99f5fa17672f3c706
-ms.openlocfilehash: 94db8988acacd93518e96a81e177882852379fb0
+ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
+ms.openlocfilehash: 99e1c8956968264fbea696b85ac084281d75f02a
 
 
 ---
@@ -32,7 +32,7 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
 * IntelliJ または別の適切な Java 開発環境。 この手順は省略可能ですが、実施することをお勧めします。 以下の手順では、IntelliJ を使用します。
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure サブスクリプションを有効にします** 。 [手順](data-lake-analytics-get-started-portal.md)を参照してください。
-* Azure Active Directory (AAD) アプリケーションを作成し、**そのクライアント ID**、**テナント ID**、および**キー**を取得します。 AAD アプリケーションと、クライアント ID の取得方法の詳細については、 [ポータルを使用した Active Directory のアプリケーションとサービス プリンシパルの作成](../resource-group-create-service-principal-portal.md)に関するページを参照してください。 アプリケーションを作成しキーを生成したら、応答 URI とキーをポータルから使用することもできます。
+* Azure Active Directory (AAD) アプリケーションを作成し、**そのクライアント ID**、**テナント ID**、および**キー**を取得します。 AAD アプリケーションと、クライアント ID の取得方法の詳細については、 [ポータルを使用した Active Directory のアプリケーションとサービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。 アプリケーションを作成しキーを生成したら、応答 URI とキーをポータルから使用することもできます。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する方法
 次のコード スニペットは、アプリケーションが独自の資格情報を提供する、 **非対話型** 認証用のコードを提供します。
@@ -353,6 +353,6 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

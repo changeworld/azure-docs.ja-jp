@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: ea3d67f7e73f9e1fb716e9c5cdd4873b0b7dddd4
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 6aecea32361166d363a412b4e8f2b01d421da5cf
 
 
 ---
@@ -29,10 +29,10 @@ Media Services を使い始める場合、コーデックとファイル形式�
 
 Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 またはスムーズ ストリーミングでエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、スムーズ ストリーミング) でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。
 
-[動的パッケージ化](media-services-dynamic-packaging-overview.md)機能を利用するには、次の作業が必要となります。
-
-* メザニン (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードします (エンコードの手順は、このチュートリアルの後半で説明しています)。
-* コンテンツに配信するストリーミング エンドポイントの&1; つ以上のオンデマンド ストリーミング ユニットを取得します。 詳細については、「 [How to Scale On-Demand Streaming Reserved Unit (オンデマンド ストリーミング占有ユニットの規模変更方法)](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
+>[!NOTE]
+>AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 [動的パッケージ化](media-services-dynamic-packaging-overview.md)機能を利用するには、次の作業が必要となります。
+>
+>また、ソース ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート Smooth Streaming ファイルにエンコードします (エンコードの手順は、このチュートリアルの後半で説明しています)。
 
 Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
 
@@ -54,9 +54,9 @@ Media Services は次のオンデマンド エンコーダーをサポートし�
 Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
 ### <a name="input-and-output-metadata"></a>入力メタデータと出力メタデータ
-エンコーダーの入力メタデータの説明は [ここ](http://msdn.microsoft.com/library/azure/dn783120.aspx)にあります。
+エンコーダーの入力メタデータの説明は [ここ](media-services-input-metadata-schema.md)にあります。
 
-エンコーダーの出力メタデータの説明は [ここ](http://msdn.microsoft.com/library/azure/dn783217.aspx)にあります。
+エンコーダーの出力メタデータの説明は [ここ](media-services-output-metadata-schema.md)にあります。
 
 ### <a name="generate-thumbnails"></a>サムネイルを生成する
 詳細については、「 [サムネイルを生成する](media-services-advanced-encoding-with-mes.md#thumbnails)」をご覧ください。
@@ -98,6 +98,6 @@ Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=61
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

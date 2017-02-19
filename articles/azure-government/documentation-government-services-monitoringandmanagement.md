@@ -1,23 +1,22 @@
 ---
 title: "Azure Government の監視と管理 | Microsoft Docs"
 description: "Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: 
 ms.assetid: 4b7720c1-699e-432b-9246-6e49fb77f497
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/31/2016
+ms.date: 1/13/2017
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: 3e460dd2aaf51ef2ba9840513d236ce313320c80
-ms.openlocfilehash: 39a87bdbef7c532f9e50f1e71e9c12797bc9a33c
+ms.sourcegitcommit: ec62cc79aeffa21e5d9d772dcd2da6f973c18d81
+ms.openlocfilehash: 3d9f2308d20e723da324be7e3aec3106ff5ff846
 
 
 ---
@@ -30,7 +29,7 @@ Automation は、Azure Government で一般提供されています。
 ### <a name="variations"></a>バリエーション
 Automation の機能のうち以下のものは、Azure Government では現在使用できません。
 
-* 認証のためのサービス プリンシパル資格情報の作成
+* 認証するためのサービス プリンシパル資格情報の作成
 
 詳細については、[Automation のパブリック ドキュメント](../automation/automation-intro.md)をご覧ください。
 
@@ -38,14 +37,6 @@ Automation の機能のうち以下のものは、Azure Government では現在�
 バックアップは、Azure Government で一般提供されています。
 
 詳細については、「[Azure Government Backup (Azure Government のバックアップ)](documentation-government-services-backup.md)」を参照してください。
-
-### <a name="variations"></a>バリエーション
-バックアップ機能のうち以下のものは、Azure Government では現在使用できません。
-
-* Azure Resource Manager のコンテナー
-* Azure Portal を使用した管理 (Azure クラシック ポータルはサポートされています)
-
-Azure Government では、Backup の URL が異なります。
 
 ## <a name="site-recovery"></a>Site Recovery
 Site Recovery (ASR) は、Azure Government で一般提供されています。
@@ -56,14 +47,16 @@ Site Recovery (ASR) は、Azure Government で一般提供されています。
 Site Recovery の機能のうち以下のものは、Azure Government では現在使用できません。
 
 * Azure Resource Manager の Site Recovery コンテナー
+* 電子メール通知
 
-| Site Recovery | クラシック | リソース マネージャー | 
+| Site Recovery | クラシック | リソース マネージャー |
 | --- | --- | --- |
-| VMware/物理  | 一般公開 | 対応予定 |
-| Hyper-V | 一般公開 | 対応予定 |
-| サイト間 | 一般公開 | 対応予定 |
+| VMware/物理  | 一般公開 | 一般公開 |
+| Hyper-V | 一般公開 | 一般公開 |
+| サイト間 | 一般公開 | 一般公開 |
 
-注意: この表はバージニア州とアイオワ州に適用されます。 
+>[!NOTE]
+>この表は、米国政府バージニアおよび米国政府アイオワに適用されます。
 
 Azure Government では、ASR の次の URL が異なります。
 
@@ -74,8 +67,6 @@ Azure Government では、ASR の次の URL が異なります。
 | *.blob.core.windows.net | *.blob.core.usgovcloudapi.net | VM スナップショットの格納用 |
 | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | MySQL のダウンロード用 |
 
-
-
 ## <a name="log-analytics"></a>Log Analytics
 Log Analytics は、Azure Government で一般提供されています。
 
@@ -84,7 +75,7 @@ Log Analytics は、Azure Government で一般提供されています。
 
 * Microsoft Azure のプレビュー段階のソリューション。これには以下が含まれます。
   * ネットワーク監視ソリューション
-  * アプリケーション間の依存関係の監視ソリューション
+  * サービス マップ
   * Office 365 ソリューション
   * Windows 10 アップグレード分析ソリューション
   * Application Insights ソリューション
@@ -127,21 +118,11 @@ Azure Government では、Log Analytics の URL が異なります。
 
 詳細については、 [Log Analytics のパブリック ドキュメント](../log-analytics/log-analytics-overview.md)をご覧ください。
 
-## <a name="site-recovery"></a>Site Recovery
-Site Recovery は、Azure Government で一般提供されています。
-
-詳細については、[Site Recovery のパブリック ドキュメント](../site-recovery/site-recovery-overview.md)をご覧ください。
-
-### <a name="variations"></a>バリエーション
-Site Recovery の機能のうち以下のものは、Azure Government では現在使用できません。
-
-* Azure Resource Manager の Site Recovery コンテナー
-
 ## <a name="next-steps"></a>次のステップ
 補足情報と最新情報については、<a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government ブログ</a>を講読してください。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

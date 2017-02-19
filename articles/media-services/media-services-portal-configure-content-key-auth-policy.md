@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 445074060f1cae200405b17d04be41075f7306d7
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 096d67dc4880f4c0a50e3981485dbe2d8f4c22a7
 
 
 ---
@@ -39,7 +39,7 @@ Media Services では、クライアントが暗号化されたコンテンツ�
 [Media Services REST API を使用したコンテンツ キー承認ポリシーの構成](media-services-rest-configure-content-key-auth-policy.md)
 
 ### <a name="some-considerations-apply"></a>いくつかの考慮事項が適用されます。
-* 動的パッケージングや動的暗号化を使用するには、少なくとも&1; つのストリーミング予約ユニットが必要です。 詳細については、「 [Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
+* AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、ストリーミング エンドポイントが**実行中**状態である必要があります。 
 * 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。 詳細については、「 [資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
 * キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。  ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
 
@@ -77,7 +77,7 @@ Media Services では、 **Secure Token Service**は提供されません。 ト
       </LicenseTemplates>
     </PlayReadyLicenseResponseTemplate>
 
-**[ポリシー xml のインポート]** ボタンをクリックして、[ここ](https://msdn.microsoft.com/library/azure/dn783459.aspx)で定義された XML スキーマに準拠した別の XML を指定します。
+**[ポリシー xml のインポート]** ボタンをクリックして、[ここ](media-services-playready-license-template-overview.md)で定義された XML スキーマに準拠した別の XML を指定します。
 
 ## <a name="next-step"></a>次のステップ
 Media Services のラーニング パスを確認します。
@@ -93,6 +93,6 @@ Media Services のラーニング パスを確認します。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 
