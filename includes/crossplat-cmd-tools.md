@@ -161,7 +161,7 @@ Azure の仮想マシンを作成するには、自分で用意した仮想マ�
 
     azure vm image list
 
-使用可能なイメージの 1 つから仮想マシンをプロビジョニングおよび起動するには、`vm create` コマンドを使用します。 次の例に、イメージ ギャラリー内のイメージ (CentOS 6.2) から Linux 仮想マシン (`myVM`) を作成する方法を示します。 仮想マシンのルート ユーザー名とパスワードは、それぞれ `myusername` と `Mypassw0rd` です (`--location` パラメーターは、仮想マシンが作成されるデータ センターを指定します。 `--location` パラメーターを省略した場合、場所の選択を求められます)。
+使用可能なイメージの&1; つから仮想マシンをプロビジョニングおよび起動するには、`vm create` コマンドを使用します。 次の例に、イメージ ギャラリー内のイメージ (CentOS 6.2) から Linux 仮想マシン (`myVM`) を作成する方法を示します。 仮想マシンのルート ユーザー名とパスワードは、それぞれ `myusername` と `Mypassw0rd` です (`--location` パラメーターは、仮想マシンが作成されるデータ センターを指定します。 `--location` パラメーターを省略した場合、場所の選択を求められます)。
 
     azure vm create myVM OpenLogic__OpenLogic-CentOS-62-20120509-en-us-30GB.vhd myusername --location "West US"
 
@@ -214,6 +214,6 @@ Azure の仮想マシンを作成するには、自分で用意した仮想マ�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

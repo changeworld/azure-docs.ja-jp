@@ -1,5 +1,5 @@
 ---
-title: "IP アドレス | Microsoft Docs"
+title: "Azure における IP アドレスの種類 | Microsoft Docs"
 description: "Azure でのパブリックおよびプライベート IP アドレスについて説明します。"
 services: virtual-network
 documentationcenter: na
@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 6e96471c4f61e1ebe15c23f87ac646001d8e30ee
-ms.openlocfilehash: 38dc72d7248584006a478413b5da9a6b230e6b89
+ms.sourcegitcommit: 3de0b167d0ad32de17093caf7e66a6d08f5c1c61
+ms.openlocfilehash: 762b048056752abd24328433ceb57de492dbf884
 
 
 ---
-# <a name="ip-addresses-in-azure"></a>Azure 内の IP アドレス
-Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、次の 2 種類があります。
+# <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
+Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、次の&2; 種類があります。
 
 * **パブリック IP アドレス**: Azure の公開されたサービスを含め、インターネットとの通信に使用します。
 * **プライベート IP アドレス**: VPN ゲートウェイまたは ExpressRoute 回線を使用してネットワークを Azure に拡張するときに、Azure 仮想ネットワーク (VNet)、およびオンプレミスのネットワーク内での通信に使用します。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-ip-addresses-overview-classic.md)ではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-ip-addresses-overview-classic.md)ではなくこのモデルをお勧めします。
 > 
 
 クラシック デプロイメント モデルの知識がある場合は、[クラシック デプロイメントと Resource Manager での IP アドレス指定の相違点](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments)に関するページを確認してください。
@@ -44,7 +44,7 @@ Azure リソース マネージャーで、 [パブリック IP](resource-groups
 * アプリケーション ゲートウェイ
 
 ### <a name="allocation-method"></a>割り当て方法
-IP アドレスを*パブリック* IP リソースに割り当てる方法には、*動的*と*静的*の 2 種類があります。 既定の割り当て方法は *動的*で、IP アドレスの作成時に割り当ては **行われません** 。 代わりに、関連付けられたリソース (VM やロード バランサーなど) を開始 (または作成) するときに、パブリック IP アドレスが割り当てられます。 IP アドレスは、リソースを停止 (または削除) すると解放されます。 これにより、リソースの停止および開始の際に IP アドレスが変更されます。
+IP アドレスを*パブリック* IP リソースに割り当てる方法には、*動的*と*静的*の&2; 種類があります。 既定の割り当て方法は *動的*で、IP アドレスの作成時に割り当ては **行われません** 。 代わりに、関連付けられたリソース (VM やロード バランサーなど) を開始 (または作成) するときに、パブリック IP アドレスが割り当てられます。 IP アドレスは、リソースを停止 (または削除) すると解放されます。 これにより、リソースの停止および開始の際に IP アドレスが変更されます。
 
 関連付けられたリソースの IP アドレスが変わらないようにするため、割り当て方法を明示的に *静的*に設定できます。 この場合、IP アドレスが即座に割り当てられます。 IP アドレスはリソースを削除するか、その割り当て方法を *動的*に変更した場合にのみ解放されます。
 
@@ -104,7 +104,7 @@ Azure Resource Manager デプロイメント モデルでは、プライベー�
 ### <a name="allocation-method"></a>割り当て方法
 プライベート IP アドレスは、リソースが関連付けられているサブネットのアドレス範囲から割り当てられます。 サブネット自体のアドレス範囲は、VNet のアドレス範囲に含まれます。
 
-プライベート IP アドレスを割り当てる方法には、*動的*と*静的*の 2 種類があります。 既定の割り当て方法は*動的*です。IP アドレスは (DHCP を使用して) リソースのサブネットから自動的に割り当てられます。 リソースを停止して起動すると、この IP アドレスが変更される場合があります。
+プライベート IP アドレスを割り当てる方法には、*動的*と*静的*の&2; 種類があります。 既定の割り当て方法は*動的*です。IP アドレスは (DHCP を使用して) リソースのサブネットから自動的に割り当てられます。 リソースを停止して起動すると、この IP アドレスが変更される場合があります。
 
 IP アドレスが変わらないようにするため、割り当て方法を *静的* に設定することができます。 この場合、リソースのサブネットの一部として有効な IP アドレスも指定する必要があります。
 
@@ -124,7 +124,7 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 
 Azure で管理される DNS サーバーで構成されている VM は、その VNet 内のすべての VM のホスト名をプライベート IP アドレスに解決することができます。
 
-### <a name="internal-load-balancers-ilb-application-gateways"></a>内部ロード バランサー (ILB) と Application Gateway
+### <a name="internal-load-balancers-ilb--application-gateways"></a>内部ロード バランサー (ILB) と Application Gateway
 [Azure 内部ロード バランサー](../load-balancer/load-balancer-internal-overview.md) (ILB) または [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) の**フロント エンド**構成にプライベート IP アドレスを割り当てることができます。 このプライベート IP アドレスは内部エンドポイントとして機能し、その仮想ネットワーク (VNet) 内のリソースおよび VNet に接続されたリモート ネットワークからのみアクセスできます。 フロント エンド構成には、動的または静的のどちらかのプライベート IP アドレスを割り当てることができます。
 
 ### <a name="at-a-glance"></a>早見表
@@ -149,6 +149,6 @@ IP アドレス指定に対する制限は、Azure の[ネットワークの制�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

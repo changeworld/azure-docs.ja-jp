@@ -10,18 +10,18 @@ ms.assetid: 875f9b8d-f1a1-4895-b717-f45570fb7f80
 ms.service: sql-database
 ms.custom: migrate and move
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
-ms.openlocfilehash: 389c7c75bcc0c1a5a66f66a9692ebe2e4095db5e
+ms.sourcegitcommit: 36748312506a08ed7932a6bb355a5dc7393bb002
+ms.openlocfilehash: 5e15f8a0ebb8cab5dce5b3c1cf6b62dee362a8d0
 
 
 ---
-# <a name="load-data-from-csv-into-azure-sql-data-warehouse-flat-files"></a>CSV から Azure SQL Data Warehouse へのデータの読み込み (フラット ファイル)
+# <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>CSV から Azure SQL Database へのデータの読み込み (フラット ファイル)
 bcp コマンドライン ユーティリティを使用して、CSV ファイルから Azure SQL Database にデータをインポートできます。
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -55,7 +55,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## <a name="2-create-a-source-data-file"></a>手順 2.ソース データ ファイルを作成する
+## <a name="2-create-a-source-data-file"></a>手順&2;.ソース データ ファイルを作成する
 メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\Temp\DimDate2.txt)。 このデータは ASCII 形式です。
 
 ```
@@ -121,6 +121,6 @@ SQL Server データベースを移行するには、 [SQL Server データベ�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

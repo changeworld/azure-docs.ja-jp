@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3c1fda0661d577e3042f1ad7103017eed74704ad
-ms.openlocfilehash: bb979cde449a7e6d8038f6ea392c3529ced29853
+ms.sourcegitcommit: ca87ad0165c7333fd43a828f7d92d46a432d8f78
+ms.openlocfilehash: 6956353771e6b4bcb814eb7cc9dfde01c452b8bd
 
 
 ---
@@ -39,7 +39,7 @@ Application Gateway は現在、次の機能でレイヤー 7 アプリケーシ
 * **[エンド ツー エンド SSL](application-gateway-backend-ssl.md)** - Application Gateway は、トラフィックのエンド ツー エンド暗号化をサポートしています。 これは、Application Gateway で SSL 接続を終了することによってサポートされます。 ゲートウェイでは、その後、トラフィックへのルーティング規則の適用、パケットの再暗号化、定義済みのルーティング規則に基づいた適切なバックエンドへのパケットの転送が実行されます。 Web サーバーからの応答は、同じ手順でエンドユーザーに移動します。
 * **[URL ベースのコンテンツ ルーティング](application-gateway-url-route-overview.md)** - この機能は、トラフィックごとに異なるバックエンド サーバーを使用する機能を提供します。 Web サーバー上のフォルダーまたは CDN に対するトラフィックを異なるバックエンドにルーティングして、特定のコンテンツを提供しないバックエンドに対する不要な負荷を減らすことができます。
 * **[マルチサイト ルーティング](application-gateway-multi-site-overview.md)** - Application Gateway では、単一のアプリケーション ゲートウェイに最大 20 個の Web サイトを統合できます。
-* **[WebSocket のサポート](application-gateway-websocket.md)** - Application Gateway のもう 1 つの優れた機能として、WebSocket がネイティブでサポートされます。
+* **[WebSocket のサポート](application-gateway-websocket.md)** - Application Gateway のもう&1; つの優れた機能として、WebSocket がネイティブでサポートされます。
 * **[正常性の監視](application-gateway-probe-overview.md)** - Application Gateway は、バックエンド リソースの既定の正常性の監視と、より具体的なシナリオを監視するカスタム プローブを提供します。
 * **[高度な診断](application-gateway-diagnostics.md)** - Application Gateway は、完全な診断とアクセス ログを提供します。 WAF が有効になっているアプリケーション ゲートウェイに対してファイアウォールのログを使用できます。
 
@@ -61,13 +61,13 @@ Azure で管理されるサービスとしての Application Gateway の負荷�
 
 ## <a name="gateway-sizes-and-instances"></a>ゲートウェイのサイズとインスタンス
 
-現在、Application Gateway は **Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
+現在、Application Gateway は **Small**、**Medium**、**Large** の&3; つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
 
-Application Gateway には現在、**WAF** と **Standard** の 2 つの SKU があります。
+Application Gateway には現在、**WAF** と **Standard** の&2; つの SKU があります。
 
 サブスクリプションごとに最大 50 個のアプリケーション ゲートウェイを作成でき、アプリケーション ゲートウェイごとに最大 10 個のインスタンスを使用できます。 各アプリケーション ゲートウェイは、20 個の HTTP リスナーで構成できます。 アプリケーション ゲートウェイの制限の詳細な一覧については、[Application Gateway サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)に関するページをご覧ください。
 
-次の表では、アプリケーション ゲートウェイ インスタンスごとにパフォーマンス スループットの平均値を示します。
+次の表では、SSL オフロードが有効になっているアプリケーション ゲートウェイ インスタンスごとにパフォーマンス スループットの平均値を示します。
 
 | バックエンド ページの応答 | Small | 中 | Large |
 | --- | --- | --- | --- |
@@ -95,6 +95,6 @@ URL ベースのコンテンツ ルーティングを使用してアプリケー
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

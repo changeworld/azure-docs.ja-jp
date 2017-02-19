@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 07/05/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 84d3aa963f8538c0721f6c0a02cee5b8e7269770
-ms.openlocfilehash: 33433fb4e71ea6a88522c0bd50695d271fee1884
+ms.sourcegitcommit: 5ef9e96ae78b02da9dff1456608d73b9e78516a1
+ms.openlocfilehash: 808fc10ef1ebb3288facbdf2e9e817b27d4fc6bc
 
 
 ---
@@ -63,10 +63,10 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 ### <a name="create-a-new-android-project"></a>新しい Android プロジェクトを作成する
 1. Android Studio で新しい Android Studio プロジェクトを開始する
    
-     ![Android Studio - new project][13]
+   ![Android Studio - new project][13]
 2. **[Phone and Tablet (電話とタブレット)]** フォーム ファクターを選択し、サポートする **[Minimum SDK (最低限の SDK)]** を選択します。 その後、 **[次へ]**をクリックします。
    
-     ![Android Studio - project creation workflow][14]
+   ![Android Studio - project creation workflow][14]
 3. メイン アクティビティに **[Empty Activity (空のアクティビティ)]** を選択し、**[Next (次へ)]** をクリックして、**[Finish (完了)]** をクリックします。
 
 ### <a name="add-google-play-services-to-the-project"></a>プロジェクトへの Google Play Services の追加
@@ -129,7 +129,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
    
     ![Android Studio - new Java class][6]
    
-    以下の `NotificationSettings` クラスのコード内にある次の 3 つのプレースホルダーを忘れずに更新してください。
+    以下の `NotificationSettings` クラスのコード内にある次の&3; つのプレースホルダーを忘れずに更新してください。
    
    * **SenderId**: [Google Cloud Console](http://cloud.google.com/console)で取得しておいたプロジェクト番号。
    * **HubListenConnectionString**: ハブの **DefaultListenAccessSignature** 接続文字列。 接続文字列をコピーするには、[Azure Portal] で、ハブの **[設定]** ブレードにある **[アクセス ポリシー]** をクリックします。
@@ -619,13 +619,14 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 #### <a name="running-the-application"></a>アプリケーションの実行
 1. アプリケーションを実行し、登録 ID の登録完了が報告されていることを確認します。
    
-       ![Testing on Android - Channel registration][18]
+      ![Testing on Android - Channel registration][18]
 2. ハブに登録されているすべての Android デバイスに送信される通知メッセージを入力します。
    
-       ![Testing on Android - sending a message][19]
+      ![Testing on Android - sending a message][19]
+
 3. **[Send Notification (通知の送信)]**を押します。 アプリケーションが実行されているすべてのデバイスで、プッシュ通知メッセージを示す `AlertDialog` インスタンスが表示されます。 実行中のアプリケーションがなくても事前にプッシュ通知に登録されているデバイスでは、Android 通知マネージャーで通知が受信されます。 左上隅から下へスワイプすると、通知を表示できます。
    
-       ![Testing on Android - notifications][21]
+      ![Testing on Android - notifications][21]
 
 ## <a name="next-steps"></a>次のステップ
 次のステップとして「 [Notification Hubs を使用したユーザーへのプッシュ通知] 」チュートリアルをお勧めします。 このチュートリアルでは、特定のユーザーに対してタグを使用して ASP.NET バックエンドから通知を送信する方法について説明しています。
@@ -671,6 +672,6 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

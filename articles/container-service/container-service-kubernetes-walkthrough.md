@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Container Service cluster with Kubernetes | Microsoft Docs
-description: Deploy an Azure Container Service cluster with Kubernetes
+title: "Azure の Kubernetes クラスターのクイック スタート | Microsoft Docs"
+description: "Azure Container Service で Kubernetes クラスターをデプロイして使ってみます"
 services: container-service
 documentationcenter: 
 author: anhowe
@@ -17,42 +17,42 @@ ms.workload: na
 ms.date: 11/15/2016
 ms.author: anhowe
 translationtype: Human Translation
-ms.sourcegitcommit: e25d1eed2983eb831d1c9976c71912db56bb4cf9
-ms.openlocfilehash: ea9832bf69904cfd9d9952afafbf837a919e3453
+ms.sourcegitcommit: 7ed8fb75f057d5a7cfde5436e72e8fec52d07156
+ms.openlocfilehash: f3b2fc301bf7083f192c0ec872c4e032472eef97
 
 
 ---
 
-# <a name="microsoft-azure-container-service-engine---kubernetes-walkthrough"></a>Microsoft Azure Container Service Engine - Kubernetes Walkthrough
+# <a name="microsoft-azure-container-service-engine---kubernetes-walkthrough"></a>Microsoft Azure Container Service エンジン - Kubernetes チュートリアル
 
-## <a name="prerequisites"></a>Prerequisites
-This walkthrough assumes that you have the ['azure-cli' command line tool](https://github.com/azure/azure-cli#installation) installed and have created [SSH public key](https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys) at `~/.ssh/id_rsa.pub`.
+## <a name="prerequisites"></a>前提条件
+このチュートリアルでは、['azure-cli' コマンド ライン ツール](https://github.com/azure/azure-cli#installation)をインストール済みで、`~/.ssh/id_rsa.pub` に [SSH 公開キー](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)を作成済みであることを前提としています。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
-The instructions below will create a Kubernetes cluster with one master and two worker nodes.
-The master serves the Kubernetes REST API.  The worker nodes are grouped in an Azure availability set and run your containers. All VMs are in the same private VNET and are fully accessible to each other.
+以下の手順では、1 つのマスターと&2; つのワーカー ノードを含む Kubernetes クラスターを作成します。
+マスターは Kubernetes REST API を提供します。  ワーカー ノードは、Azure 可用性セットにグループ化され、コンテナーを実行します。 すべての VM は同一のプライベート VNET 内にあり、完全な相互アクセスが可能です。
 
 > [!NOTE]
-> Kubernetes support in Azure Container Service is currently in preview.
+> Azure Container Service での Kubernetes のサポートは、現在はプレビューの段階です。
 >
 
-The following image shows the architecture of a container service cluster with one master, and two agents:
+次の図は、1 つのマスターと&2; つのエージェントを含むコンテナー サービス クラスターのアーキテクチャを示します。
 
-![Image of Kubernetes cluster on azure](media/container-service-kubernetes-walkthrough/kubernetes.png)
+![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-walkthrough/kubernetes.png)
 
-## <a name="creating-your-kubernetes-cluster"></a>Creating your Kubernetes cluster
+## <a name="creating-your-kubernetes-cluster"></a>Kubernetes クラスターの作成
 
-### <a name="create-a-resource-group"></a>Create a resource group
-To create your cluster, you first need to create a resource group in a specific location, you can do this with:
+### <a name="create-a-resource-group"></a>リソース グループの作成
+クラスターを作成するには、まず特定の場所にリソース グループを作成する必要があるため、次のコマンドを実行します。
 ```console
 RESOURCE_GROUP=my-resource-group
 LOCATION=westus
 az group create --name=$RESOURCE_GROUP --location=$LOCATION
 ```
 
-### <a name="create-a-cluster"></a>Create a cluster
-Once you have a resource group, you can create a cluster in that group with:
+### <a name="create-a-cluster"></a>クラスターの作成
+リソース グループが用意できたら、次のコマンドを実行して、そのグループ内にクラスターを作成できます。
 ```console
 DNS_PREFIX=some-unique-value
 SERVICE_NAME=any-acs-service-name
@@ -60,114 +60,114 @@ az acs create --orchestrator-type=kubernetes --resource-group $RESOURCE_GROUP --
 ```
 
 > [!NOTE]
-> azure-cli will upload `~/.ssh/id_rsa.pub` to the Linux VMs.
+> azure-cli は `~/.ssh/id_rsa.pub` を Linux VM にアップロードします。
 >
 
-Once that command is complete, you should have a working Kubernetes cluster.
+このコマンドが完了すると、動作している Kubernetes クラスターが作成されます。
 
-### <a name="configure-kubectl"></a>Configure kubectl
-`kubectl` is the Kubernetes command line client.  If you don't already have it installed, you can install it with:
+### <a name="configure-kubectl"></a>kubectl を構成する
+`kubectl` は、Kubernetes のコマンド ライン クライアントです。  まだインストールしていない場合は、次のコマンドでインストールできます。
 
 ```console
 az acs kubernetes install-cli
 ```
 
-Once `kubectl` is installed, running the below command will download the master kubernetes cluster configuration to the ~/.kube/config file
+`kubectl` がインストールされたら、次のコマンドを実行して、マスターの Kubernetes クラスター構成を ~/.kube/config ファイルにダウンロードします。
 ```console
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$SERVICE_NAME
 ```
 
-At this point you should be ready to access your cluster from your machine, try running:
+この時点で、自分のコンピューターからクラスターにアクセスできるようになっているので、次のコマンドを実行してみてください。
 ```console
 kubectl get nodes
 ```
 
-And validate that you can see the machines in your cluster.
+クラスター内にマシンが表示されることを確認します。
 
-## <a name="create-your-first-kubernetes-service"></a>Create your First Kubernetes Service
+## <a name="create-your-first-kubernetes-service"></a>初めての Kubernetes サービスの作成
 
-After completing this walkthrough, you will know how to:
- * deploy a Docker application and expose to the world,
- * use `kubectl exec` to run commands in a container, 
- * and access the Kubernetes dashboard.
+このチュートリアルを完了すると、次の方法がわかります。
+ * Docker アプリケーションをデプロイして公開する。
+ * `kubectl exec` を使用してコンテナーでコマンドを実行する。 
+ * Kubernetes ダッシュボードにアクセスする。
 
-### <a name="start-a-simple-container"></a>Start a simple container
-You can run a simple container (in this case the `nginx` web server) by running:
+### <a name="start-a-simple-container"></a>単純なコンテナーを起動する
+次のコマンドを使用して、単純なコンテナー (この場合、`nginx` Web サーバー) を実行できます。
 
 ```console
 kubectl run nginx --image nginx
 ```
 
-This command starts the nginx Docker container in a pod on one of the nodes.
+このコマンドにより、いずれかのノードにあるポッドで nginx Docker コンテナーが開始されます。
 
-You can run
+次のコマンドを実行すると、
 ```console
 kubectl get pods
 ```
 
-to see the running container.
+実行中のコンテナーを参照できます。
 
-### <a name="expose-the-service-to-the-world"></a>Expose the service to the world
-To expose the service to the world.  You create a Kubernetes `Service` of type `LoadBalancer`:
+### <a name="expose-the-service-to-the-world"></a>サービスを公開する
+サービスを公開するには、  タイプが `LoadBalancer` の Kubernetes `Service` を作成します。
 
 ```console
 kubectl expose deployments nginx --port=80 --type=LoadBalancer
 ```
 
-This will now cause Kubernetes to create an Azure Load Balancer with a public IP. The change takes about 2-3 minutes to propagate to the load balancer.
+これにより、Kubernetes がパブリック IP を持つ Azure ロード バランサーを作成します。 変更がロード バランサーに反映されるまでに 2 ～ 3 分かかります。
 
-To watch the service change from "pending" to an external ip type:
+サービスが "保留中" から外部 IP に変更されたことを確認するには、次のように入力します。
 ```console
 watch 'kubectl get svc'
 ```
 
-  ![Image of watching the transition from pending to external ip](media/container-service-kubernetes-walkthrough/kubernetes-nginx3.png)
+  ![保留中から外部 IP への切り替え確認の画像](media/container-service-kubernetes-walkthrough/kubernetes-nginx3.png)
 
-Once you see the external IP, you can browse to it in your browser:
+外部 IP を確認したら、ブラウザーでそれを参照できます。
 
-  ![Image of browsing to nginx](media/container-service-kubernetes-walkthrough/kubernetes-nginx4.png)  
+  ![nginx の参照の画像](media/container-service-kubernetes-walkthrough/kubernetes-nginx4.png)  
 
 
-### <a name="browse-the-kubernetes-ui"></a>Browse the Kubernetes UI
-To see the Kubernetes web interface, you can use:
+### <a name="browse-the-kubernetes-ui"></a>Kubernetes UI を参照する
+Kubernetes Web インターフェイスを表示するには、次のコマンドを使用できます。
 
 ```console
 kubectl proxy
 ```
-This runs a simple authenticated proxy on localhost, which you can use to view the [kubernetes ui](http://localhost:8001/ui)
+このコマンドは、ローカルホスト上で簡単な認証済みのプロキシを実行します。これを使用して、[kubernetes ui](http://localhost:8001/ui) を表示することができます。
 
-![Image of Kubernetes dashboard](media/container-service-kubernetes-walkthrough/kubernetes-dashboard.png)
+![Kubernetes ダッシュボードの画像](media/container-service-kubernetes-walkthrough/kubernetes-dashboard.png)
 
-### <a name="remote-sessions-inside-your-containers"></a>Remote sessions inside your containers
-Kubernetes allows you to run commands in a remote Docker container running in your cluster.
+### <a name="remote-sessions-inside-your-containers"></a>コンテナー内のリモート セッション
+Kubernetes では、クラスターで実行されているリモートの Docker コンテナー内でコマンドを実行することができます。
 
 ```console
 # Get the name of your nginx pod
 kubectl get pods
 ```
 
-Using your pod name, you can run a remote command on your pod.  For example:
+ポッドの名前を使用すると、ポッドに対してリモート コマンドを実行できます。  次に例を示します。
 ```console
 kubectl exec nginx-701339712-retbj date
 ```
 
-You can also get a fully interactive session using the `-it` flags:
+`-it` フラグを使用して、完全な対話型セッションを取得することもできます。
 
 ```console
 kubectl exec nginx-701339712-retbj -it bash
 ```
 
-![Image of curl to podIP](media/container-service-kubernetes-walkthrough/kubernetes-remote.png)
+![ポッド IP に対する curl の実行の画像](media/container-service-kubernetes-walkthrough/kubernetes-remote.png)
 
 
-## <a name="details"></a>Details
-### <a name="installing-the-kubectl-configuration-file"></a>Installing the kubectl configuration file
-When you ran `az acs kubernetes get-credentials`, the kube config file for remote access was stored under the home directory ~/.kube/config.
+## <a name="details"></a>詳細
+### <a name="installing-the-kubectl-configuration-file"></a>kubectl 構成ファイルのインストール
+`az acs kubernetes get-credentials` を実行したとき、ホーム ディレクトリ ~/.kube/config にリモート アクセス用の kube 構成ファイルが保存されました。
 
-If you ever need to download it directly, you can use `ssh` on Linux or OS X, or `Putty` on windows:
+直接ダウンロードする必要が生じた場合は、Linux または OS X では `ssh` を、Windows では `Putty` を使用することができます。
 
 #### <a name="windows"></a>Windows
-To use pscp from [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).  Ensure you have your certificate exposed through [pageant](https://github.com/Azure/acs-engine/blob/master/docs/ssh.md#key-management-and-agent-forwarding-with-windows-pageant):
+[putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) の pscp を使用するには、  証明書を [pageant](https://github.com/Azure/acs-engine/blob/master/docs/ssh.md#key-management-and-agent-forwarding-with-windows-pageant) を通じて公開していることを確認します。
   ```
   # MASTERFQDN is obtained in step1
   pscp azureuser@MASTERFQDN:.kube/config .
@@ -175,28 +175,28 @@ To use pscp from [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/downl
   kubectl get nodes
   ```
 
-#### <a name="os-x-or-linux"></a>OS X or Linux:
+#### <a name="os-x-or-linux"></a>OS X または Linux の場合。
   ```
   # MASTERFQDN is obtained in step1
   scp azureuser@MASTERFQDN:.kube/config .
   export KUBECONFIG=`pwd`/config
   kubectl get nodes
   ```
-## <a name="learning-more"></a>Learning More
+## <a name="learning-more"></a>詳細情報
 
 ### <a name="azure-container-service"></a>Azure Container Service
 
-1. [Azure Container Service documentation](https://azure.microsoft.com/en-us/documentation/services/container-service/)
-2. [Azure Container Service Open Source Engine](https://github.com/azure/acs-engine)
+1. [Azure Container Service のドキュメント](https://azure.microsoft.com/en-us/documentation/services/container-service/)
+2. [Azure Container Service のオープン ソース エンジン](https://github.com/azure/acs-engine)
 
-### <a name="kubernetes-community-documentation"></a>Kubernetes Community Documentation
+### <a name="kubernetes-community-documentation"></a>Kubernetes コミュニティのドキュメント
 
-1. [Kubernetes Bootcamp](https://katacoda.com/embed/kubernetes-bootcamp/1/) - shows you how to deploy, scale, update, and debug containerized applications.
-2. [Kubernetes User Guide](http://kubernetes.io/docs/user-guide/) - provides information on running programs in an existing Kubernetes cluster.
-3. [Kubernetes Examples](https://github.com/kubernetes/kubernetes/tree/master/examples) - provides a number of examples on how to run real applications with Kubernetes.
+1. [Kubernetes ブートキャンプ](https://katacoda.com/embed/kubernetes-bootcamp/1/) - コンテナー化されたアプリケーションをデプロイ、スケール、更新、デバッグする方法について説明されています。
+2. [Kubernetes ユーザー ガイド](http://kubernetes.io/docs/user-guide/) - 既存の Kubernetes クラスターでのプログラム実行に関する情報が記載されています。
+3. [Kubernetes の例](https://github.com/kubernetes/kubernetes/tree/master/examples) - Kubernetes を使って実際のアプリケーションを実行する方法の例が多数記載されています。
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

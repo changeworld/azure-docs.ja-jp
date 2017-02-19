@@ -1,10 +1,10 @@
 ---
-title: "Azure クラシック ポータルでサイト間 VPN Gateway 接続を使用して仮想ネットワークを作成する | Microsoft Docs"
-description: "クラシック デプロイ モデルを使用して、S2S VPN Gateway 接続を使用したクロスプレミス構成およびハイブリッド構成の VNet を作成します。"
+title: "オンプレミスのネットワークを Azure 仮想ネットワークに接続する: サイト間 VPN: クラシック ポータル | Microsoft Docs"
+description: "パブリック インターネットを経由したオンプレミスのネットワークから Azure 仮想ネットワークへの IPsec 接続を作成する手順。 これらの手順は、クラシック ポータルとクラシック デプロイメント モデルを使用してクロスプレミスのサイト間 VPN Gateway 接続を作成する際に役立ちます。"
 services: vpn-gateway
 documentationcenter: 
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 024ecb29-64de-4ff1-84f1-1a45a8595f0b
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/14/2016
+ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: d269d9a76ff4ccd973eee70d2d5b54a7262383ef
-ms.openlocfilehash: b45801d4e6deb25ca8c6af5c3b46de741d4993e0
+ms.sourcegitcommit: eea00841708212789e14fa8717d83dd81d472bac
+ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
 
 
 ---
-# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-azure-classic-portal"></a>Azure クラシック ポータルを使用してサイト間接続を持つ VNet を作成する
+# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-classic-portal"></a>クラシック ポータルを使用してサイト間接続を備えた VNet を作成する
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
@@ -31,7 +31,7 @@ ms.openlocfilehash: b45801d4e6deb25ca8c6af5c3b46de741d4993e0
 
 この記事では、クラシック デプロイメント モデルとクラシック ポータルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN ゲートウェイ接続を作成する手順について説明します。 サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
 
-![Site-to-Site diagram](./media/vpn-gateway-site-to-site-create/site2site.png "site-to-site")
+![クロスプレミスのサイト間 VPN Gateway 接続の図](./media/vpn-gateway-site-to-site-create/site-to-site-connection-diagram.png)
 
 ### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>サイト間接続のデプロイメント モデルとデプロイ方法
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
@@ -102,6 +102,6 @@ VNet どうしを接続する場合は、「 [クラシック デプロイメン
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

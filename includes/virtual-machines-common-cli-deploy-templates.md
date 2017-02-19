@@ -42,12 +42,18 @@ Azure サブスクリプションをまだ持っていない場合でも、MSDN 
 
 アカウントには、複数のサブスクリプションが含まれる場合があります。 `azure account list`と入力することで、次のようにサブスクリプションの一覧を表示できます。
 
-```azure cli azure account list info:    Executing command account list data:    Name                              Id                                    Tenant Id                            Current data:    --------------------------------  ------------------------------------  ------------------------------------  ------- data:    Contoso Admin                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  true data:    Fabrikam dev                      xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
+```azurecli
+azure account list
+info:    Executing command account list
+data:    Name                              Id                                    Tenant Id                            Current
+data:    --------------------------------  ------------------------------------  ------------------------------------  -------
+data:    Contoso Admin                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  true
+data:    Fabrikam dev                      xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
 data:    Fabrikam test                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
 data:    Contoso production                xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
 ```
 
-You can set the current Azure subscription by typing the following. Use the subscription name or the ID that has the resources you want to manage.
+以下を入力すると、現在の Azure サブスクリプションを設定できます。 管理するリソースを含むサブスクリプション名または ID を使用します。
 
 ```azurecli
 azure account set <subscription name or ID> true
@@ -61,9 +67,9 @@ azure config mode arm
 ```
 
 ## <a name="understanding-azure-resource-templates-and-resource-groups"></a>Azure リソース テンプレートおよびリソース グループについて
-大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL データベース、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。 既定の Azure サービス管理 API と Azure クラシック ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。 この方法では、個々のサービスを 1 つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
+大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL データベース、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。 既定の Azure サービス管理 API と Azure クラシック ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。 この方法では、個々のサービスを&1; つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
 
-ただし、*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。 何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイ全体、つまりすべてのリソースと、関連する構成およびデプロイ パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
+ただし、*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを&1; つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。 何をデプロイするのかを Azure に&1; コマンドずつ命令するのではなく、JSON ファイル内にデプロイ全体、つまりすべてのリソースと、関連する構成およびデプロイ パラメーターを記述し、Azure にそれらのリソースを&1; つのグループとしてデプロイするよう指示します。
 
 その後は、Azure CLI リソース管理コマンドを使用して以下を実行することで、そのグループのリソースのライフ サイクル全体を管理できます。
 
@@ -224,7 +230,7 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
 * VM の管理者ユーザー名。
 * パスワード。
 * 外部で使用されるドメイン名。
-* Ubuntu Server のバージョン番号。ただし、リストのうち 1 つだけを許可します。
+* Ubuntu Server のバージョン番号。ただし、リストのうち&1; つだけを許可します。
 
 [ユーザー名とパスワードの要件](../articles/virtual-machines/virtual-machines-linux-faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページで詳細を確認してください。
 
@@ -1176,7 +1182,7 @@ info:    group delete command OK
 ```azurecli
 azure group log show lbgroup -l --json | jq '.[] | select(.status.value == "Failed") | .properties'
 ```
-発生している問題をすばやく見つけて、修正し、やり直すことができます。 次のケースでは、テンプレートによって 2 つの VM が同時に作成されたため、.vhd にロックがかけられています。 (テンプレートの修正後、デプロイは速やかに正常終了しました)。
+発生している問題をすばやく見つけて、修正し、やり直すことができます。 次のケースでは、テンプレートによって&2; つの VM が同時に作成されたため、.vhd にロックがかけられています。 (テンプレートの修正後、デプロイは速やかに正常終了しました)。
 
 ```json
 {
@@ -1302,6 +1308,6 @@ azure vm disk attach <resource-group> <vm-name> [vhd-url]
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 
