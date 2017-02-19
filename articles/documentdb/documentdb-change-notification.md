@@ -1,23 +1,9 @@
 ---
-title: "Logic Apps を使用した DocumentDB の変更通知 |Microsoft Docs"
-description: "をクリックします。"
-keywords: "変更通知"
-services: documentdb
-author: hedidin
-manager: jhubbard
-editor: mimig
-documentationcenter: 
-ms.assetid: 58925d95-dde8-441b-8142-482b487e4bdd
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: rest-api
-ms.topic: article
-ms.date: 09/23/2016
-ms.author: b-hoedid
+redirect_url: https://docs.microsoft.com/azure/documentdb/documentdb-change-feed-hl7-fhir-logic-apps
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
-ms.openlocfilehash: 5f3e1f264d126ab5b1fdda312f8e4f47d0b114e7
+ms.sourcegitcommit: 0b93e0cd71add8bad86c2b3c0023b524bc4f621a
+ms.openlocfilehash: 1e44ae2341257df6ac367db83947178918016430
 
 
 ---
@@ -1132,6 +1118,6 @@ DocumentDB をさらに詳しく知りたい場合は、こちらの [ラーニ�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

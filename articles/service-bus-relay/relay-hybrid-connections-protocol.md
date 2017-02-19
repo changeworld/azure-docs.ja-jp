@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
-ms.author: sethm
+ms.date: 02/14/2017
+ms.author: sethm;clemensv
 translationtype: Human Translation
-ms.sourcegitcommit: 9919cd4735f1f915ba77d41d8b9e92b3411fef3f
-ms.openlocfilehash: 38d9eca04780493d03bb5ceb79e5b59fab0a93d2
+ms.sourcegitcommit: 579942cfe0dc7d6a5e3f205308642d36bf6be880
+ms.openlocfilehash: d3a191797e75c424af07910e4a6a87e1183f6676
 
 
 ---
@@ -118,7 +118,7 @@ Web ソケット接続が最初にセットアップされた後、サービス�
 * **connectHeaders** - センダーから Relay エンドポイントに提供されたすべての HTTP ヘッダー。Sec-WebSocket-Protocol ヘッダーと Sec-WebSocket-Extensions ヘッダーも含まれています。
 
 #### <a name="accept-message"></a>受け入れメッセージ
-``` JSON
+```json
 {                                                           
     "accept" : {
         "address" : "wss://168.61.148.205:443/$hc/{path}?..."    
@@ -201,7 +201,7 @@ Web ソケット接続が最初にセットアップされた後、サービス�
 * **token** – 名前空間またはハイブリッド接続の**リッスン**権限を付与する有効な Service Bus 共有アクセス トークンを URL エンコードして指定する必要があります。
 
 #### <a name="renewtoken-message"></a>renewToken メッセージ
-``` JSON
+```json
 {                                                                                                                                                                        
     "renewToken" : {                                                                                                                                                      
         "token" : "SharedAccessSignature sr=http%3a%2f%2fcontoso.servicebus.windows.net%2fhyco%2f&amp;sig=XXXXXXXXXX%3d&amp;se=1471633754&amp;skn=SasKeyName"  
@@ -271,6 +271,6 @@ Web ソケット接続が最初にセットアップされた後、サービス�
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 
