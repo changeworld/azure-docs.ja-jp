@@ -4,7 +4,7 @@ description: "StorSimple Virtual Array のデプロイ シリーズの&2; 番目
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/12/2017
+ms.date: 02/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: 2c9411312f561d03ab6bd29e8e007db309cb5f00
+ms.sourcegitcommit: 37f2816cb1fa9c7db43359f16669e6521b0fe46a
+ms.openlocfilehash: 655c00e3042cca78872df052cb89bab43fbc35a4
 
 ---
 # <a name="deploy-storsimple-virtual-array---provision-a-virtual-array-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware で Virtual Array をプロビジョニングする
@@ -43,7 +43,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 * ホスト システムで、次のリソースを仮想デバイスのプロビジョニング専用に使用できること。
 
   * 最小で 4 コア。
-  * 少なくとも 8 GB の RAM。
+  * 少なくとも 8 GB の RAM。 ファイル サーバーとして仮想アレイを構成する予定がある場合、8 GB でサポートできるのは 2 百万個未満のファイルです。 2 百万から 4 百万個のファイルをサポートするには 16 GB の RAM が必要です。
   * ネットワーク インターフェイス&1; つ。
   * システム データ用の 500 GB の仮想ディスク。
 
@@ -66,7 +66,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 * システムに、ESXi ホストを管理するための VMware vSphere client があること。
 
   * 最小で 4 コア。
-  * 少なくとも 8 GB の RAM。
+  * 少なくとも 8 GB の RAM。 ファイル サーバーとして仮想アレイを構成する予定がある場合、8 GB でサポートできるのは 2 百万個未満のファイルです。 2 百万から 4 百万個のファイルをサポートするには 16 GB の RAM が必要です。
   * トラフィックをインターネットにルーティングできるネットワークに接続している&1; つのネットワーク インターフェイス。 インターネットの最小帯域幅は、デバイスが最適に動作するように 5 Mbps にする必要があります。
   * データ用の 500 GB の仮想ディスク。
 
@@ -77,6 +77,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 
    1. 最新のイメージ ファイルがダウンロードされていることを確認します。 以前にイメージをダウンロードした場合は、必ず最新のイメージを保つため、再度ダウンロードします。 最新のイメージには&2; つのファイルがあります (1 つではありません)。
    2. このイメージは後で使用するため、コピー先はメモしておいてください。
+
 2. vSphere client を使用して、ESXi サーバーにログインします。 仮想マシンを作成するには、管理者特権が必要です。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image1.png)
@@ -243,6 +244,6 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

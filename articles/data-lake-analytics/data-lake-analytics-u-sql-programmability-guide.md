@@ -14,8 +14,8 @@ ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: mrys
 translationtype: Human Translation
-ms.sourcegitcommit: 6d05de6ac944b69402583e939d6b498515945461
-ms.openlocfilehash: f8b13b2b39cf0c860ad59f43eb341c5924804dd9
+ms.sourcegitcommit: 847081123123c849033c9de2b3c4359042d41359
+ms.openlocfilehash: da29f6015502e4ce5a63ca1c47106dc346026803
 
 
 ---
@@ -289,7 +289,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ### <a name="using-code-behind"></a>コード ビハインドを使用する
 ここでは、U-SQL プログラムのコード ビハインドのセクションでも同じ機能を使用するため、C# 関数 ToDateTime を定義します。
 
-以下は、上に示した U-SQL ベース スクリプトの一部のセクションに対して必要な変更を済ませたコードです。
+基本の U-SQL スクリプトのセクションを次に示します。これは必要な変更を加えたものです。
 
 ```sql
      @rs1 =
@@ -392,7 +392,8 @@ U-SQL の拡張モデルは、カスタム コードをどの程度追加でき�
 生成されたプロローグとエピローグは、スクリプトを開いたときに表示されます。
 
 ![generated-prologue](./media/data-lake-analytics-u-sql-programmability-guide/generated-prologue.png)
-**図 2**: コードスクリプトに自動で追加されたプロローグとエピローグ
+
+**図 2**: コードビハインドに自動で追加されたプロローグとエピローグ
 <br />
 
 コードビハインドの欠点としては、以下が挙げられます。
@@ -422,7 +423,7 @@ U-SQL の拡張モデルは、カスタム コードをどの程度追加でき�
 
 以下の例では、ここに挙げたオプションを両方とも使用しています。 [画像の処理に関する最近のブログ記事](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/18/introducing-image-processing-in-u-sql/)では、事前に定義されているアセンブリに対して登録時にこの&2; つのオプションを使った例をもう&1; つ紹介しています。
 
-これで、登録が終わったアセンブリのデータベースに対するアクセス許可を備えた U-SQL スクリプトであれば、そのアセンブリを参照できるようになりました (図 4 の U-SQL スクリプトのコードを参照してください)。 別個に登録されたアセンブリのそれぞれについて、参照を追加する必要があります。 追加したリソース ファイルは、自動的にデプロイされます。 スクリプトには今後、そのスクリプトが参照しているアセンブリのコードを内容とするコードビハインド ファイルは必要ありませんが、コード ビハインドに別のコードを指定することはできます。
+これで、登録が終わったアセンブリのデータベースに対するアクセス許可を備えた U-SQL スクリプトであれば、そのアセンブリを参照できるようになりました (図 4 の U-SQL スクリプトのコードを参照してください)。 別個に登録されたアセンブリのそれぞれについて、参照を追加する必要があります。 追加したリソース ファイルは、自動的にデプロイされます。 スクリプトには今後、そのスクリプトが参照しているアセンブリのコードを内容とするコードビハインド ファイルは必要ありませんが、コードビハインド ファイルに別のコードを指定することはできます。
 
 ### <a name="registering-assemblies-via-adl-tools-in-visual-studio-and-in-u-sql-scripts"></a>Visual Studio の ADL ツールと U-SQL スクリプトを使ってアセンブリを登録する
 Visual Studio の ADL ツールを使えばアセンブリを簡単に登録できるものの、別のプラットフォームを使って開発している場合や、アップロードおよび登録するアセンブリのコンパイルが既に終わっている場合には、スクリプトを使ってアセンブリを登録することもできます (流れとしては、ADL ツールが自動で実行する処理と同じです)。 基本的な手順は、以下のとおりです。
@@ -439,6 +440,7 @@ Visual Studio の ADL ツールを使えばアセンブリを簡単に登録で�
 まず、(Windows 用 GitHub ツールを使ってローカル コピーを作成するなどして) ローカル環境に [Visual Studio プロジェクト](https://github.com/Azure/usql/tree/master/Examples/DataFormats) をダウンロードします。 ダウンロードしたソリューションを Visual Studio で開いたら、プロジェクトを右クリックし、上で説明した手順に従ってアセンブリを登録します。 このアセンブリには依存関係が&2; つ存在しますが、System.Xml は (明示的に参照する必要こそあるものの) Azure Data Lake で既に利用できる状態になっているため、Newtonsoft の方だけを登録します。 図 6 は、アセンブリ名に名前を付けたうえで (ドットを使わずに別の名前を付けることもできます)、Newtonsoft dll を追加したところを示しています。 これで、指定したデータベース (ここでは JSONBlog) に&2; つのアセンブリが個別に登録されます。
 
 ![register-assembly](./media/data-lake-analytics-u-sql-programmability-guide/register-assembly.png)
+
 **図 6**: Visual Studio から Microsoft.Analytics.Samples.Formats アセンブリを登録する方法
 <br />
 

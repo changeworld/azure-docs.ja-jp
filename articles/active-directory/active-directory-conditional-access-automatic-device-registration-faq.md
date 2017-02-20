@@ -11,11 +11,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 02/04/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 918c2b096b9b6d935c8d5bc2588a978cdf8878cf
-ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
+ms.sourcegitcommit: 3e87a3b4086d3a2b0dec5ec7d954864922f51279
+ms.openlocfilehash: c262134df624b548b99c22bd749bb56fcda6fb1b
 
 
 ---
@@ -53,21 +53,21 @@ ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
 
 **Q: Azure Portal または Windows PowerShell を使用して削除したデバイスが引き続き登録済みとして表示されるのはなぜですか?**
 
-**A:**これは仕様です。 デバイスは、クラウドのリソースにアクセスできなくなります。 デバイスを再登録する場合は、デバイスで手動操作を実行する必要があります。 
+**A:**これは仕様です。 デバイスは、クラウドのリソースにアクセスできなくなります。 デバイスを削除してから再登録する場合は、デバイスで手動操作を実行する必要があります。 
 
 オンプレミスの AD ドメインに参加している Windows 10 および Windows Server 2016 の場合、次の手順を実行します。
 
-1.  管理者としてコマンド プロンプトを開きます。
+1.    管理者としてコマンド プロンプトを開きます。
 
-2.  「**dsregcmd.exe /leave**」と入力します。
+2.    「**dsregcmd.exe /debug /leave**」と入力します。
 
-3.  「**dsregcmd.exe**」と入力します。
+3.    **サインアウトしてからサインインして、デバイスを再登録するスケジュール済みタスクをトリガーします。** 
 
 オンプレミスの AD ドメインに参加しているその他の Windows プラットフォームの場合、次の手順を実行します。
 
-1.  管理者としてコマンド プロンプトを開きます。
-2.  「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`」と入力します。
-3.  「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`」と入力します。
+1.    管理者としてコマンド プロンプトを開きます。
+2.    「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`」と入力します。
+3.    「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`」と入力します。
 
 ---
 
@@ -75,13 +75,13 @@ ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
 
 **A:**
 
--   Windows 10 および Windows Server 2016 の場合、同じデバイスの参加を解除し、再度参加させる操作を繰り返した場合に、エントリの重複が発生することがあります。 
+-    Windows 10 および Windows Server 2016 の場合、同じデバイスの参加を解除し、再度参加させる操作を繰り返した場合に、エントリの重複が発生することがあります。 
 
--   [職場または学校アカウントを追加] を使用した場合、[職場または学校アカウントを追加] を使用する各 Windows ユーザーは、同じデバイス名で新しいデバイス レコードを作成します。
+-    [職場または学校アカウントを追加] を使用した場合、[職場または学校アカウントを追加] を使用する各 Windows ユーザーは、同じデバイス名で新しいデバイス レコードを作成します。
 
--   自動登録を使用してオンプレミスの AD ドメインに参加している他の Windows プラットフォームでは、デバイスにログインするドメイン ユーザーごとに、同じデバイス名で新しいデバイス レコードが作成されます。 
+-    自動登録を使用してオンプレミスの AD ドメインに参加している他の Windows プラットフォームでは、デバイスにログインするドメイン ユーザーごとに、同じデバイス名で新しいデバイス レコードが作成されます。 
 
--   AADJ マシンをワイプして再インストールし、同じ名前で再度参加させると、同じデバイス名で別のレコードとして表示されます。
+-    AADJ マシンをワイプして再インストールし、同じ名前で再度参加させると、同じデバイス名で別のレコードとして表示されます。
 
 ---
 
@@ -112,13 +112,13 @@ ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
 
 **A:** このシナリオの一般的な理由は次のとおりです。
 
-1.  ユーザーの資格情報が有効ではなくなっています。
+1.    ユーザーの資格情報が有効ではなくなっています。
 
-2.  コンピューターが Azure Active Directory と通信できません。 ネットワーク接続の問題を確認してください。
+2.    コンピューターが Azure Active Directory と通信できません。 ネットワーク接続の問題を確認してください。
 
-3.  Azure AD Join の前提条件が満たされていません。 「[Azure Active Directory Join を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md)」の手順に従っていることを確認してください。  
+3.    Azure AD Join の前提条件が満たされていません。 「[Azure Active Directory Join を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md)」の手順に従っていることを確認してください。  
 
-4.  フェデレーション ログインでは、フェデレーション サーバーが WS-Trust のアクティブ エンドポイントをサポートしている必要があります。 
+4.    フェデレーション ログインでは、フェデレーション サーバーが WS-Trust のアクティブ エンドポイントをサポートしている必要があります。 
 
 ---
 
@@ -131,6 +131,12 @@ ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
 **Q: エラー情報が表示されなかったにも関わらず、PC を参加させることができなかったのはなぜですか?**
 
 **A:** ユーザーが組み込みの管理者アカウントを使用してデバイスにログインしていることが原因と考えられます。 Azure Active Directory Join を使用してセットアップを完了する前に、別のローカル アカウントを作成してください。 
+
+---
+
+**Q: 自動デバイス登録の設定方法はどこで確認できますか。**
+
+**A:** 詳しい手順については、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法](active-directory-conditional-access-automatic-device-registration-setup.md)」をご覧ください。
 
 ---
 
@@ -147,6 +153,6 @@ ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

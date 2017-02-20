@@ -12,11 +12,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/30/2017
-ms.author: trinadhk;jimpark;markgal;
+ms.date: 2/1/2017
+ms.author: saurse;trinadhk;markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: bb07ff13e3e4023e334c706d5f9bd95196ee6051
-ms.openlocfilehash: 47c5789fc3379b702d8f6ceafd630bece669b11e
+ms.sourcegitcommit: d8a85da4c929180c7ca52a19724d2be702fe3e9c
+ms.openlocfilehash: db71f7ea9561542fe9b579bf471cf2b81f5997cd
 
 
 ---
@@ -27,16 +27,55 @@ ms.openlocfilehash: 47c5789fc3379b702d8f6ceafd630bece669b11e
 >
 >
 
-この記事では、復元操作に必要な&2; 種類の手順を説明します。
+この記事では、バックアップ資格情報コンテナーからデータを復元する方法について説明します。 データを復元するには、Microsoft Azure Recovery Services (MARS) エージェントのデータの回復ウィザードを使用します。 データを復元するときには以下を行うことができます。
 
 * バックアップが実行されたのと同じマシンにデータを復元する
-* その他の任意のマシンにデータを復元する
+* 別のコンピューターにデータを復元する
 
-いずれの場合も、データは Azure Recovery Services コンテナーから取得されます。
+2017 年 1 月、マイクロソフトは MARS エージェントのプレビュー更新プログラムをリリースしました。 この更新プログラムではバグ修正の他に、インスタント リストアが実現し、書き込み可能な回復ポイントのスナップショットを回復ボリュームとしてマウントできるようになりました。 回復ボリュームを調べてから、ファイルをローカル コンピューターにコピーし、そこでファイルを選択して復元できます。
+
+> [!NOTE]
+> インスタント リストアを使用してデータを復元する場合は、[2017 年 1 月の Azure Backup 更新プログラム](https://support.microsoft.com/en-us/help/3216528?preview)が必要です。 また、バックアップ データは、サポート記事に掲載されているロケールの資格情報コンテナーで保護されている必要があります。 インスタント リストアをサポートするロケールの最新リストについては、[2017 年 1 月の Azure Backup 更新プログラム](https://support.microsoft.com/en-us/help/3216528?preview)をご覧ください。 現時点では、インスタント リストアを使用**できない**ロケールがあります。
+>
+
+インスタント リストアは、Azure Portal のRecovery Services コンテナーとクラシック ポータルのバックアップ コンテナーで使用できます。 インスタント リストアを使用する場合は、MARS 更新プログラムをダウンロードして、インスタント リストアを説明する手順に従います。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="use-instant-restore-to-restore-data-to-the-same-machine"></a>インスタント リストアを使用して同じコンピューターにデータを復元する
+## <a name="recover-data-to-the-same-machine"></a>同じコンピューターへのデータの回復
+ファイルを誤って削除してしまったため、バックアップを実行したのと同じコンピューターにそのファイルを復元するには、次の手順でデータを回復できます。
+
+1. **Microsoft Azure Backup** スナップインを開きます。
+2. [ **データの回復** ] をクリックして、ワークフローを開始します。
+
+    ![データの回復](./media/backup-azure-restore-windows-server/recover.png)
+3. バックアップ ファイルを同じコンピューターに復元する場合は、**[このサーバー (コンピューター名)]**** オプションを選択します。
+
+    ![Same machine](./media/backup-azure-restore-windows-server/samemachine.png)
+4. **[ファイルの参照]** または **[ファイルの検索]** を選択します。
+
+    パスがわかっている&1; つまたは複数のファイルを復元する場合は、既定のオプションをそのまま使用します。 フォルダー構造がわからず、ファイルを検索する場合は、 **[ファイルの検索]** オプションを選択します。 ここでは、既定のオプションを使用します。
+
+    ![Browse files](./media/backup-azure-restore-windows-server/browseandsearch.png)
+5. ファイルの復元元となるボリュームを選択します。
+
+    任意の時点から復元できます。 カレンダー コントロールに **太字** で表示される日付は、復元ポイントが存在していることを示しています。 日付を選択すると、バックアップ スケジュールに基づいて (バックアップ操作が成功していれば)、 **[時間]** ドロップダウンから特定の時点を選択できます。
+
+    ![Volume and Date](./media/backup-azure-restore-windows-server/volanddate.png)
+6. 回復する項目を選択します。 復元するフォルダーまたはファイルを複数選択することができます。
+
+    ![Select files](./media/backup-azure-restore-windows-server/selectfiles.png)
+7. 回復パラメーターを指定します。
+
+    ![Recovery options](./media/backup-azure-restore-windows-server/recoveroptions.png)
+
+   * 元の場所に復元することも (ファイルまたはフォルダーが上書きされます)、同じコンピューターの別の場所に復元することもできます。
+   * 復元するファイルまたはフォルダーが復元先の場所に存在する場合、コピーを作成するか (同じファイルの&2; つのバージョンが作成されます)、復元先の場所にあるファイルを上書きするか、復元先に存在するファイルの回復をスキップすることができます。
+   * 復元されるファイルの ACL を復元するという既定のオプションは、そのままにしておくことを強くお勧めします。
+8. これらのうちいずれか&1; つを指定して、[ **次へ**] をクリックします。 このコンピューターにファイルを復元する回復ワークフローが開始します。
+
+## <a name="use-instant-restore-to-recover-data-to-the-same-machine"></a>インスタント リストアを使用して同じコンピューターにデータを回復する
+
 ファイルを誤って削除してしまったため、バックアップを実行したのと同じコンピューターにそのファイルを復元するには、次の手順でデータを回復できます。
 
 1. **Microsoft Azure Backup** スナップインを開きます。 スナップインがインストールされた場所がわからない場合は、コンピューターまたはサーバーで **Microsoft Azure Backup** を検索します。
@@ -51,11 +90,7 @@ ms.openlocfilehash: 47c5789fc3379b702d8f6ceafd630bece669b11e
 
     ![[このサーバー] オプションを選択すると、データが同じマシンに復元されます](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. **[回復モードの選択]** ウィンドウで、何を復元するかを選択します。
-    - **[個々のファイルおよびフォルダー]** - 特定のファイルとフォルダーを復元する場合は、このオプションを使用します。
-    - **[ボリューム]** - 選択したボリュームにあるすべてのファイルとフォルダーを復元する場合は、このオプションを使用します。
-
-    次に、**[次へ]** をクリックします。
+4. **[回復モードの選択]** ウィンドウで、**[個々のファイルおよびフォルダー]** を選択して、**[次へ]** をクリックします。
 
     ![Browse files](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
 
@@ -73,9 +108,7 @@ ms.openlocfilehash: 47c5789fc3379b702d8f6ceafd630bece669b11e
 
     ![Recovery options](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
-   * 元の場所に復元することも (ファイルまたはフォルダーが上書きされます)、同じコンピューターの別の場所に復元することもできます。
-   * 復元するファイルまたはフォルダーが復元先の場所に存在する場合、コピーを作成するか (同じファイルの&2; つのバージョンが作成されます)、復元先の場所にあるファイルを上書きするか、復元先に存在するファイルの回復をスキップすることができます。
-   * 復元されるファイルの ACL を復元するという既定のオプションは、そのままにしておくことを強くお勧めします。
+
 8. Windows エクスプローラーで、復元するファイルやフォルダーをコピーして、サーバーまたはコンピューターの任意のローカルの場所に貼り付けます。 または回復ボリュームから直接ファイルを開くかストリーミングし、正しいバージョンが回復されていることを確認します。
 
     ![マウントされたボリュームからファイルとフォルダーをコピーしてローカルの保存先に貼り付ける](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
@@ -88,13 +121,51 @@ ms.openlocfilehash: 47c5789fc3379b702d8f6ceafd630bece669b11e
     > [マウント解除] をクリックしない場合は、回復ボリュームはマウントされた時刻から&6; 時間、マウントされたままになります。 ボリュームのマウント中は、バックアップ操作が実行されません。 ボリュームのマウント中に実行されるようにスケジュール設定されているバックアップ操作は、回復ボリュームのマウント解除後に実行されます。
     >
 
+## <a name="recover-to-an-alternate-machine"></a>別のコンピューターへの回復
+
+サーバー全体が失われた場合でも、 Azure Backup から別のコンピューターにデータを回復できます。 次の手順はそのワークフローを示しています。  
+
+この手順で使用される用語は次のとおりです。
+
+- *ソース コンピューター* – バックアップが実行され、現在は使用できなくなっている元のコンピューター。
+- *ターゲット コンピューター* – データの回復先となるコンピューター。
+- "*サンプルの資格情報コンテナー*" – "*ソース コンピューター*" と "*ターゲット コンピューター*" が登録されているバックアップ資格情報コンテナー。 <br/>
+
+> [!NOTE]
+> コンピューターのバックアップは、以前のバージョンのオペレーティング システムが実行されているコンピューターには復元できません。 たとえば、バックアップが Windows 7 コンピューターで行われた場合、Windows 8 以上のコンピューターにそのバックアップを復元できます。 ただし、その逆は当てはまりません。
+>
+>
+
+1. **ターゲット コンピューター** の *Microsoft Azure Backup*スナップインを開きます。
+2. "*ターゲット コンピューター*" および "*ソース コンピューター*" が同じバックアップ資格情報コンテナーに登録されていることを確認します。
+3. [ **データの回復** ] をクリックして、ワークフローを開始します。
+
+    ![データの回復](./media/backup-azure-restore-windows-server-classic/recover.png)
+4. **[別のサーバー]**
+
+    ![[別のサーバー]](./media/backup-azure-restore-windows-server-classic/anotherserver.png)
+5. *サンプルの資格情報コンテナー*に対応するコンテナー資格情報ファイルを指定します。 コンテナー資格情報ファイルが無効である (または有効期限が切れている) 場合は、Azure クラシック ポータルの *サンプルの資格情報コンテナー* から、新しいコンテナー資格情報ファイルをダウンロードします。 資格情報コンテナーの資格情報ファイルを指定すると、その資格情報コンテナーの資格情報ファイルに対するバックアップ資格情報コンテナーが表示されます。
+6. 表示されているコンピューターの一覧から *ソース コンピューター* を選択します。
+
+    ![List of machines](./media/backup-azure-restore-windows-server-classic/machinelist.png)
+7. **[ファイルの検索]** または **[ファイルの参照]** オプションのいずれかを選択します。 ここでは、 **[ファイルを検索]** オプションを使用します。
+
+    ![Search](./media/backup-azure-restore-windows-server-classic/search.png)
+8. 次の画面で、ボリュームと日付を選択します。 復元するフォルダー名とファイル名を検索します。
+
+    ![Search items](./media/backup-azure-restore-windows-server-classic/searchitems.png)
+9. ファイルの復元先にする場所を選択します。
+
+    ![Restore location](./media/backup-azure-restore-windows-server-classic/restorelocation.png)
+10. "*ソース コンピューター*" を "*サンプルの資格情報コンテナー*" に登録する際に指定した暗号化パスフレーズを入力します。
+
+    ![暗号化](./media/backup-azure-restore-windows-server-classic/encryption.png)
+11. 入力して [ **回復**] ボタンをクリックすると、指定した復元先でバックアップ ファイルの復元が開始します。
+
 
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>インスタント リストアを使用してデータを別のコンピューターに復元する
 サーバー全体が失われた場合でも、Azure Backup から別のコンピューターにデータを回復できます。 次の手順はそのワークフローを示しています。
 
-> [!NOTE]
-> インスタント リストアを使用して別のコンピューターにデータを復元する場合は、[2017 年 1 月の Azure Backup 更新プログラム](https://support.microsoft.com/en-us/help/3216528?preview)が必要です。 また、バックアップ データは、サポート記事に掲載されているロケールの資格情報コンテナーで保護されている必要があります。 現時点では、インスタント リストアを使用できないロケールがあります。
->
 
 この手順で使用される用語は次のとおりです。
 
@@ -160,6 +231,6 @@ ms.openlocfilehash: 47c5789fc3379b702d8f6ceafd630bece669b11e
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

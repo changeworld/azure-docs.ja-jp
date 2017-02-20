@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/01/2017
+ms.date: 02/02/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 2d6295d643207f9aef31a88515668b99b51c49de
-ms.openlocfilehash: 28abb802f0581e504e8d3eb729f0ea5fffac3d20
+ms.sourcegitcommit: 887505f7b7309a3925505484c167448b9d4868e6
+ms.openlocfilehash: 144e196492bc4bdfbbdda34ca88531295cc8716a
 
 
 ---
@@ -50,7 +50,14 @@ B2B コラボレーション機能によって B2B ユーザーにも適用さ�
 Azure AD B2B コラボレーションに関する他の記事を参照してください。
 
 * [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
+* [Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-admin-add-users.md)
+* [インフォメーション ワーカーが B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-how-it-works.md)
 * [B2B コラボレーションの招待メールの要素](active-directory-b2b-invitation-email.md)
+* [B2B コラボレーションの招待の利用](active-directory-b2b-redemption-experience.md)
+* [Azure Active Directory B2B コラボレーションのトラブルシューティング](active-directory-b2b-troubleshooting.md)
+* [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](active-directory-b2b-faq.md)
+* [Azure Active Directory B2B コラボレーションの API とカスタマイズ](active-directory-b2b-api.md)
+* [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: markvi;andkjell
+ms.date: 02/08/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: 14b6b817c071ba833d2f49ca289151520e1e32f0
+ms.sourcegitcommit: 08ec09275bbcaffaf25cf45a0f2f466fdeb60dc5
+ms.openlocfilehash: 954923e699ef2160b0a16cb369f8a86b3beacd39
 
 
 ---
@@ -44,8 +44,6 @@ Azure AD Connect Sync は、インストール ウィザードによって作成
 
 > [!WARNING]
 > 標準の同期規則には拇印があります。 これらの規則に変更を加えた場合、拇印が一致しなくなります。 その後、Azure AD Connect の新しいリリースを適用しようとすると、問題が発生する可能性があります。 変更する場合は、この記事の方法に従ってください。
-> 
-> 
 
 ### <a name="disable-an-unwanted-sync-rule"></a>不要な同期規則は削除するのではなく無効
 標準の同期規則を削除しないでください。 これは、次回アップグレード時に再作成されます。
@@ -57,6 +55,8 @@ Azure AD Connect Sync は、インストール ウィザードによって作成
 上の図では、インストール ウィザードによって、アカウント フォレスト内にある古い Exchange 2003 スキーマが検出されています。 このスキーマ拡張が追加されてから、リソース フォレストが Fabrikam の環境に導入されました。 古い Exchange 実装の属性が同期されないようにするには、図のように同期規則を無効にする必要があります。
 
 ### <a name="change-an-out-of-box-rule"></a>標準の規則の変更
+標準の規則を変更する必要があるのは、結合規則を変更しなければならない場合のみです。 属性フローを変更する必要がある場合は、標準の規則よりも優先順位が高い同期規則を作成してください。 実際に複製する必要がある規則は **In from AD - User Join** のみです。 他のすべての規則は、優先順位が高い規則で上書きできます。
+
 標準の規則を変更する必要がある場合は、標準の規則のコピーを作成し、元の規則を無効にする必要があります。 そして、コピーした規則を変更します。 同期規則エディターは、この手順で役立ちます。 標準の規則を開くと、次のダイアログ ボックスが表示されます。  
 ![標準の規則の警告](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
@@ -73,7 +73,6 @@ Azure AD Connect Sync は、インストール ウィザードによって作成
 
 
 
-
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

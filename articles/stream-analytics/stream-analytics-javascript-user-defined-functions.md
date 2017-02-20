@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 02/01/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 822f0870396e1fa5fe2dfee3bae410aad3da1122
-ms.openlocfilehash: 959fd48cb7d7f21385f6eea21f79ad26e8164bc0
+ms.sourcegitcommit: 83b267a610a1d910fab09f8e42f079d269e3f0bb
+ms.openlocfilehash: e11e6070002275544fa5a82923cdcad4412e40b7
 
 ---
 
@@ -79,13 +79,13 @@ Stream Analytics の JavaScript UDF では実行できないことを次に示�
         InputStream
     ```
 
-3.  ジョブ入力を右クリックして、サンプル データ ファイルをアップロードする 
+3.  ジョブ入力を右クリックして、サンプル データ ファイルをアップロードします。
  
 4.  **[テスト]** をクリックして、クエリをテストします。
 
 
 ## <a name="supported-javascript-objects"></a>サポートされている JavaScript オブジェクト
-Azure Stream Analytics の JavaScript UDF は、JavaScript 言語のビルトイン オブジェクトをサポートしています。 オブジェクトの一覧については、[グローバル オブジェクト](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)に関するページを参照してください。
+Azure Stream Analytics の JavaScript UDF は、JavaScript 言語の標準のビルトイン オブジェクトをサポートしています。 オブジェクトの一覧については、[グローバル オブジェクト](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)に関するページを参照してください。
 
 ### <a name="stream-analytics-and-javascript-type-conversion"></a>Stream Analytics と JavaScript の型変換
 
@@ -156,6 +156,7 @@ FROM
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+
 
 
 <!--HONumber=Feb17_HO1-->

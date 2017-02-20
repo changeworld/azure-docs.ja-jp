@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect 同期: 既定の構成を変更する方法 | Microsoft Docs"
+title: "Azure AD Connect Sync: Azure AD Connect Sync で構成を変更する |Microsoft Docs"
 description: "Azure AD Connect Sync の構成に変更する方法について説明します。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: 1e5356dca98e8da035c1ffb1eca16e8b16dbfe77
+ms.sourcegitcommit: 7c237bfb42fdd2ffdfface1a12ab21c51d2504bb
+ms.openlocfilehash: b327671b12bf6e2ce040ef6e6b0a58a0fead22b4
 
 
 ---
@@ -61,17 +61,17 @@ ms.openlocfilehash: 1e5356dca98e8da035c1ffb1eca16e8b16dbfe77
    * タグ: 空のままにします。 Microsoft が提供する標準の規則の場合のみ、このボックスには値が設定されています。
 3. **[Scoping filter (スコープ フィルター)]** ページで、「**givenName ISNOTNULL**」と入力します。  
    ![Inbound rule scoping filter](./media/active-directory-aadconnectsync-change-the-configuration/scopingfilter.png)  
-    このセクションを使用して、規則を適用するオブジェクトを定義します。 空のままにした場合は、すべてのユーザー オブジェクトに規則が適用されます。 ただし、それには、会議室、サービス アカウントなど、人以外のユーザー オブジェクトも含まれます。
+   このセクションを使用して、規則を適用するオブジェクトを定義します。 空のままにした場合は、すべてのユーザー オブジェクトに規則が適用されます。 ただし、それには、会議室、サービス アカウントなど、人以外のユーザー オブジェクトも含まれます。
 4. **[Join rules (結合規則)]**では、空白のままにします。
 5. **[Transformations (変換)]** ページで、[FlowType] を **[式]** に変更します。 [Target Attribute (ターゲット属性)] で **[givenName]** を選択し、[Source (ソース)] に「`PCase([givenName])`」と入力します。
    ![Inbound rule transformations](./media/active-directory-aadconnectsync-change-the-configuration/transformations.png)  
-    同期エンジンでは、関数名と属性名の両方で大文字小文字が区別されます。 入力した内容が間違っている場合は、規則を追加するときに警告が表示されます。 このエディターでは、保存して続行することが可能なため、規則を再度開き、修正する必要があります。
+   同期エンジンでは、関数名と属性名の両方で大文字小文字が区別されます。 入力した内容が間違っている場合は、規則を追加するときに警告が表示されます。 このエディターでは、保存して続行することが可能なため、規則を再度開き、修正する必要があります。
 6. **[追加]** をクリックして規則を保存します。
 
 新しいカスタム規則は、システム内の他の同期規則と共に表示されます。
 
 ### <a name="verify-the-change"></a>変更を確認する
-この新しい変更により、その変更が正常に動作していて、エラーがスローされていないことを確認します。 所有するオブジェクトの数に応じて、この手順を行う方法は 2 とおりあります。
+この新しい変更により、その変更が正常に動作していて、エラーがスローされていないことを確認します。 所有するオブジェクトの数に応じて、この手順を行う方法は&2; とおりあります。
 
 1. すべてのオブジェクトに対して完全同期を実行する
 2. 1 つのオブジェクトに対してプレビューと完全同期を実行する
@@ -83,12 +83,12 @@ ms.openlocfilehash: 1e5356dca98e8da035c1ffb1eca16e8b16dbfe77
    ![Full sync](./media/active-directory-aadconnectsync-change-the-configuration/fullsync.png)  
    これで、オブジェクトはメタバースで更新されます。 次に、メタバースのオブジェクトを確認します。
 2. **1 つのオブジェクトに対するプレビューと完全同期**  
-   [Actions (操作)] の **[コネクタ]** を選択します。 前の手順で変更を加えたコネクタ (この場合は Active Directory ドメイン サービス) を特定して選択します。 **[Search Connector Space (コネクタ スペースの検索)]**を選択します。 スコープを使用して、変更のテストに使用するオブジェクトを検索します。 オブジェクトを選択し、 **[プレビュー]**をクリックします。 新しい画面で、 **[Commit Preview (プレビューのコミット)]**を選択します。
+   [Actions (操作)] の **[コネクタ]** を選択します。 前の手順で変更を加えたコネクタ (この場合は Active Directory ドメイン サービス) を特定して選択します。 **[Search Connector Space (コネクタ スペースの検索)]**を選択します。 スコープを使用して、変更のテストに使用するオブジェクトを検索します。 オブジェクトを選択し、 **[プレビュー]**をクリックします。 新しい画面で、 **[Commit Preview (プレビューのコミット)]**を選択します。  
    ![Commit preview](./media/active-directory-aadconnectsync-change-the-configuration/commitpreview.png)  
-    これで、変更はメタバースにコミットされました。
+   これで、変更はメタバースにコミットされました。
 
 **メタバースのオブジェクトを確認する**  
- ここでは、値が要求されていることと規則が適用されたことを確認するために、いくつかのサンプル オブジェクトを選択します。 上部の **[Metaverse Search (メタバース検索)]** を選択します。 関連するオブジェクトを検索するために必要なフィルターを追加します。 検索結果からオブジェクトを開きます。 属性値を確認し、 **[同期規則]** 列で、規則が適切に適用されていることを確認します。  
+ここでは、値が要求されていることと規則が適用されたことを確認するために、いくつかのサンプル オブジェクトを選択します。 上部の **[Metaverse Search (メタバース検索)]** を選択します。 関連するオブジェクトを検索するために必要なフィルターを追加します。 検索結果からオブジェクトを開きます。 属性値を確認し、 **[同期規則]** 列で、規則が適切に適用されていることを確認します。  
 ![Metaverse search](./media/active-directory-aadconnectsync-change-the-configuration/mvsearch.png)  
 
 ### <a name="enable-the-scheduler"></a>スケジューラを有効にする
@@ -107,7 +107,7 @@ Fabrikam には、地域ごとの特殊文字を名 (given name)、姓 (surname)
 
 * [スタート] メニューから、 **同期規則エディター** を起動します。
 * 左側で **[受信]** を選択状態にしたまま、**[Add new rule (新しい規則の追加)]** ボタンをクリックします。
-* 規則の名前と説明を入力します。 オンプレミスの Active Directory と該当するオブジェクトの種類を選択します。  **[リンクの種類]** で **[結合]** を選択します。 優先順位には、他の規則で使われていない数値を選びます。 標準の規則は 100 から始まるので、この例では 50 を使用できます。
+* 規則の名前と説明を入力します。 オンプレミスの Active Directory と該当するオブジェクトの種類を選択します。 **[リンクの種類]** で **[結合]** を選択します。 優先順位には、他の規則で使われていない数値を選びます。 標準の規則は 100 から始まるので、この例では 50 を使用できます。
   ![Attribute flow 2](./media/active-directory-aadconnectsync-change-the-configuration/attributeflowjp2.png)
 * スコープは空に (つまり、フォレスト内のすべてのユーザー オブジェクトに適用) します。
 * 結合規則は空のままに (つまり、標準の規則で結合を処理) します。
@@ -124,7 +124,7 @@ Fabrikam には、地域ごとの特殊文字を名 (given name)、姓 (surname)
 `attributeName` <- `Left([attributeName],448)`
 
 ### <a name="changing-the-userprincipalsuffix"></a>userPrincipalSuffix の変更
-Active Directory の userPrincipalName 属性は、常にユーザーに認識されるわけではなく、サインイン ID として適切でない場合があります。 Azure AD Connect Sync のインストール ウィザードを使用すると、mail など別の属性を選択できます。 ただし、場合によっては、属性を計算する必要があります。 たとえば、Contoso 社に 2 つの Azure AD ディレクトリがあり、一方は運用環境用、もう一方はテスト用であるとします。 テスト テナント内のユーザーについて、サインイン ID に含まれる別のサフィックスを使用することを検討しています。  
+Active Directory の userPrincipalName 属性は、常にユーザーに認識されるわけではなく、サインイン ID として適切でない場合があります。 Azure AD Connect Sync のインストール ウィザードを使用すると、mail など別の属性を選択できます。 ただし、場合によっては、属性を計算する必要があります。 たとえば、Contoso 社に&2; つの Azure AD ディレクトリがあり、一方は運用環境用、もう一方はテスト用であるとします。 テスト テナント内のユーザーについて、サインイン ID に含まれる別のサフィックスを使用することを検討しています。  
 `userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`
 
 この式では、最初の @-sign の左側のすべて (Word) を使用し、固定文字列をそこに連結します。
@@ -138,7 +138,7 @@ Active Directory の一部の属性は、Active Directory ユーザーとコン�
 ### <a name="do-not-flow-an-attribute"></a>属性をフローしない
 このセクションのシナリオの背景情報については、「 [属性フローの処理の制御](active-directory-aadconnectsync-understanding-declarative-provisioning.md#control-the-attribute-flow-process)」を参照してください。
 
-属性をフローしない方法は 2 つあります。 1 つ目の方法は、インストール ウィザードで使用できます。[選択した属性を削除](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering)できます。 このオプションは、以前に属性を同期したことがない場合に使用できます。 ただし、この属性を同期した後に、この機能で属性を削除した場合、同期エンジンによるその属性の管理は停止され、既存の値は Azure AD に残ります。
+属性をフローしない方法は&2; つあります。 1 つ目の方法は、インストール ウィザードで使用できます。[選択した属性を削除](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering)できます。 このオプションは、以前に属性を同期したことがない場合に使用できます。 ただし、この属性を同期した後に、この機能で属性を削除した場合、同期エンジンによるその属性の管理は停止され、既存の値は Azure AD に残ります。
 
 属性の値を削除し、今後はフローが実行されないようにするには、代わりにカスタム規則を作成する必要があります。
 
@@ -152,6 +152,25 @@ Fabrikam では、クラウドと同期する属性の一部が不要である�
 * コネクタ スペースを検索して、目的の変更がエクスポート対象になっていることを確認します。
   ![段階的な削除](./media/active-directory-aadconnectsync-change-the-configuration/deletetobeexported.png)
 
+## <a name="create-rules-with-powershell"></a>PowerShell を使用して規則を作成する
+変更箇所がわずかしかない場合は、同期規則エディターで間に合います。 多くの変更を加える必要がある場合は、PowerShell を使用する方法が向いています。 一部の高度な機能は PowerShell のみで利用できます。
+
+### <a name="get-the-powershell-script-for-an-out-of-box-rule"></a>既定の規則に対応する PowerShell スクリプトを取得する
+既定の規則を作成した PowerShell スクリプトを確認するには、同期規則エディターで規則を選択し、**[エクスポート]** をクリックします。 これで、規則を作成した PowerShell スクリプトを入手できます。
+
+### <a name="advanced-precedence"></a>高度な優先順位
+既定の同期規則の優先順位の値は 100 から始まります。 多くのフォレストがあり、多くのカスタム変更を加える必要がある場合、99 個の同期規則では十分でないことがあります。
+
+既定の規則よりも前に他の規則を挿入するように、同期エンジンに指示できます。 この動作を設定するには、次の手順を実行します。
+
+1. 同期規則エディターで最初の既定同期規則 (**In from AD-User Join **) をマークし、**[エクスポート]** を選択します。 Copy the SR Identifier value.  
+![PowerShell before change](./media/active-directory-aadconnectsync-change-the-configuration/powershell1.png)  
+2. 新しい同期規則を作成します。 同期規則エディターを使用して作成できます。 この規則を PowerShell スクリプトにエクスポートします。
+3. プロパティ **PrecedenceBefore**に、既定規則の識別子の値を挿入します。 **[優先順位]** を **0** に設定します。 識別子の属性が一意であり、別の規則の GUID を再利用していないことを確認します。 また、**ImmutableTag** プロパティが設定されていないことも確認します。このプロパティを設定できるのは既定の規則のみです。 PowerShell スクリプトを保存して実行します。 これにより、カスタム規則に優先順位の値 100 が割り当てられ、他のすべての既定規則の値が 1 つずつ増えます。  
+![PowerShell after change](./media/active-directory-aadconnectsync-change-the-configuration/powershell2.png)  
+
+必要なときには、同じ **PrecedenceBefore** 値を使用する多くのカスタム同期規則を設定できます。
+
 ## <a name="next-steps"></a>次のステップ
 * この構成モデルについて詳しくは、「 [Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
 * 式言語について詳しくは、「 [宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
@@ -163,7 +182,6 @@ Fabrikam では、クラウドと同期する属性の一部が不要である�
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

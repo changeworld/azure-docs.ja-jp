@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2016
+ms.date: 02/07/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 66128b255dac89569ff776cca9ab678c3105f171
-ms.openlocfilehash: 1fddb126c7dbedc11b04dd66d563026f0b3d4f01
+ms.sourcegitcommit: 09f0aa4ea770d23d1b581c54b636c10e59ce1d3c
+ms.openlocfilehash: d5768c44022fc251aa0741d91b575ff604032e18
 
 
 ---
@@ -44,6 +44,10 @@ ms.openlocfilehash: 1fddb126c7dbedc11b04dd66d563026f0b3d4f01
 * [マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています" というエラーが発生するか、シェルが応答を停止する](#errorhold)
 * [Linux VM で Azure Files をマウントしようとしたときに、マウント エラー 115 が発生する](#error15)
 * ["ls" などのコマンドで Linux VM にランダムな遅延が発生する](#delayproblem)
+* [エラー 112 - タイムアウト エラー](#error112)
+
+**他のアプリケーションからのアクセス**
+* [Webjob を介してアプリケーションの Azure ファイル共有を参照できますか?](#webjobs)
 
 <a id="quotaerror"></a>
 
@@ -238,12 +242,30 @@ Linux ディストリビューションは、SMB 3.0 の暗号化機能を現時
 
 **serverino** オプションが見当たらない場合は、**serverino** オプションを選択し、Azure Files のマウントを解除したうえでもう一度マウントします。
 
+<a id="error112"></a>
+## <a name="error-112---timeout-error"></a>エラー 112 - タイムアウト エラー
+
+このエラーは、既定である「ソフト」マウント オプションが使用されたときに、サーバーへの TCP 接続が再確立できなくなる通信エラーです。
+
+### <a name="cause"></a>原因
+
+このエラーは、Linux の再接続の問題または、ネットワーク エラーなど再接続を妨げる他の問題によって引き起こされることがあります。 ハード マウントを指定すると、接続が確立されるまで、または明示的に中断されるまで、クライアントが強制的に待機させられます。これはネットワーク タイムアウトによるエラーを防ぐために使用できます。 ただし、ユーザーは、この方法では待機が無期限に続く可能性があることや、必要に応じて接続を一時停止すべきことを認識しなければなりません。
+
+### <a name="workaround"></a>対処法
+
+Linux の問題が解決されましたが、Linux ディストリビューションにはまだ移植されていません。 問題が Linux の再接続の問題によって引き起こされている場合は、アイドル状態を回避することで対処できます。 これを実現するには、Azure ファイル共有にファイルを保持して 30 秒ごとに書き込みます。 これは、ファイルに作成日/変更日を再書き込みするなどの書き込み操作である必要があります。 そうでないと、キャッシュされた結果が得られ、操作によって接続がトリガーされない可能性があります。
+
+<a id="webjobs"></a>
+
+## <a name="accessing-from-other-applications"></a>他のアプリケーションからのアクセス
+### <a name="can-i-reference-the-azure-file-share-for-my-application-through-a-webjob"></a>Webjob を介してアプリケーションの Azure ファイル共有を参照できますか?
+AppService サンドボックスで SMB 共有をマウントすることはできません。 この問題を回避するには、マップされたドライブとして Azure ファイル共有をマップし、アプリケーションがドライブ名を使用して Azure ファイル共有にアクセスできるようにします。
 ## <a name="learn-more"></a>詳細情報
 * [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 * [Linux で Azure File Storage を使用する](storage-how-to-use-files-linux.md)
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

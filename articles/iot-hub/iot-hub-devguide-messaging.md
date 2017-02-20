@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
-ms.openlocfilehash: 768e21205e341f4915f8be50129fd246285a2efc
+ms.sourcegitcommit: b6c79691c75cb01eb4eea4d0e66b01d1792cfb11
+ms.openlocfilehash: 0e3f0166517d3fd0ddd5f04a12afa393d0ac2a92
 
 
 ---
@@ -97,7 +97,7 @@ IoT Hub では、組み込みの D2C 受信エンドポイントでコンシュ�
 
 既定では、メッセージのルーティング ルールと明示的に一致しないメッセージはすべて、組み込みエンドポイントに書き込まれます。 このフォールバック ルートを無効にした場合は、どのメッセージのルーティング ルールにも明示的に一致しないメッセージは破棄されます。
 
-これらのプロパティはすべて、[IoT Hub のリソース プロバイダー REST API][lnk-resource-provider-apis] を使用してプログラムにより変更するか、[Azure Portal][lnk-management-portal] を使用して変更できます。
+リテンション期間は、[IoT Hub のリソース プロバイダー REST API][lnk-resource-provider-apis] を使用してプログラムにより変更するか、[Azure Portal][lnk-management-portal] を使用して変更できます。
 
 ### <a name="anti-spoofing-properties"></a>なりすまし対策のプロパティ
 D2C メッセージでのデバイスのなりすましを回避するために、IoT Hub では、すべてのメッセージに次のプロパティを持つスタンプが使用されます。
@@ -437,6 +437,6 @@ IoT Hub でメッセージを送受信する方法を理解できたら、次の
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -4,7 +4,7 @@ description: "StorSimple Virtual Array のデプロイのこの&2; 番目のチ�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 4354963c-e09d-41ac-9c8b-f21abeae9913
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/12/2017
+ms.date: 02/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: eaeb7bf48239fea0c86d8234fe25e3f23cf76653
+ms.sourcegitcommit: 37f2816cb1fa9c7db43359f16669e6521b0fe46a
+ms.openlocfilehash: d623c4172a654b90d68c6e6e488a2c791abe8647
 
 ---
 # <a name="deploy-storsimple-virtual-array---provision-a-virtual-array-in-hyper-v"></a>StorSimple Virtual Array をデプロイする - Hyper-V で Virtual Array をプロビジョニングする
@@ -48,7 +48,7 @@ ms.openlocfilehash: eaeb7bf48239fea0c86d8234fe25e3f23cf76653
 * ホスト システムで、次のリソースを仮想アレイのプロビジョニング専用に使用できること。
 
   * 最小で 4 コア。
-  * 少なくとも 8 GB の RAM。
+  * 少なくとも 8 GB の RAM。 ファイル サーバーとして仮想アレイを構成する予定がある場合、8 GB でサポートできるのは 2 百万個未満のファイルです。 2 百万から 4 百万個のファイルをサポートするには 16 GB の RAM が必要です。
   * ネットワーク インターフェイス&1; つ。
   * データ用の 500 GB の仮想ディスク。
 
@@ -73,7 +73,7 @@ ms.openlocfilehash: eaeb7bf48239fea0c86d8234fe25e3f23cf76653
 仮想アレイを作成している基盤となるハードウェア (ホスト システム) で、次のリソースを仮想アレイ専用に使用できることを確認してください。
 
 * 最小で 4 コア。
-* 少なくとも 8 GB の RAM。
+* 少なくとも 8 GB の RAM。 ファイル サーバーとして仮想アレイを構成する予定がある場合、8 GB でサポートできるのは 2 百万個未満のファイルです。 2 百万から 4 百万個のファイルをサポートするには 16 GB の RAM が必要です。
 * ネットワーク インターフェイス&1; つ。
 * システム データ用の 500 GB の仮想ディスク。
 
@@ -217,6 +217,6 @@ ms.openlocfilehash: eaeb7bf48239fea0c86d8234fe25e3f23cf76653
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 
