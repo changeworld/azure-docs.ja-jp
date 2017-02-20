@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL Database のパフォーマンスに関する推奨事項 | Microsoft Docs"
+title: "クエリのパフォーマンスに関する推奨事項 - Azure SQL Database | Microsoft Docs"
 description: "Azure SQL Database Advisor は、現在のクエリのパフォーマンスを向上できる、既存の SQL Database 向けの推奨事項を提供します。"
 services: sql-database
 documentationcenter: 
@@ -16,21 +16,16 @@ ms.workload: data-management
 ms.date: 09/30/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 5df30f24a8e7370ac33c72641f05138776e24bb0
-ms.openlocfilehash: 55502f346eaf5ccf76d6f1c03487e95f0b93e3f5
+ms.sourcegitcommit: cf627b92399856af2b9a58ab155fac6730128f85
+ms.openlocfilehash: a8d0b08abc7e3c688f9ab79499b3459b33f06848
 
 
 ---
 # <a name="sql-database-advisor"></a>SQL Database Advisor
-> [!div class="op_single_selector"]
-> * [SQL Database Advisor の概要](sql-database-advisor.md)
-> * [ポータル](sql-database-advisor-portal.md)
-> 
-> 
 
 Azure SQL Database は学習してアプリケーションに適応し、カスタマイズされた推奨事項を提供します。それによって、SQL Database のパフォーマンスを最大化できます。 SQL Database Advisor は、インデックスの作成と削除、クエリのパラメーター化、およびスキーマの問題の修正に関する推奨事項を提供します。 SQL Database Advisor は、SQL Database の使用履歴を分析することで、パフォーマンスを評価します。 これにより、データベースの一般的なワークロードを実行する上で最適な推奨事項が提供されます。 
 
-次の推奨事項は V12 サーバーで利用できます (V11 サーバーでは利用できないのでご注意ください) 。 現時点では、インデックスの作成や削除に関する推奨事項が自動的に適用されるよう設定できます。詳細については、[インデックスの自動管理](sql-database-advisor-portal.md#enable-automatic-index-management)に関するセクションをご覧ください。
+次の推奨事項は Azure SQL Database サーバーを対象としています。 現時点では、インデックスの作成や削除に関する推奨事項が自動的に適用されるよう設定できます。詳細については、[インデックスの自動管理](sql-database-advisor-portal.md#enable-automatic-index-management)に関するセクションをご覧ください。
 
 ## <a name="create-index-recommendations"></a>インデックスの作成に関する推奨事項
 **インデックスの作成** に関する推奨事項が表示されます。
@@ -79,6 +74,6 @@ Azure SQL Database サービスが、Azure SQL Database で発生したスキー
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 47c3491b067d5e112db589672b68e7cfc7cbe921
-ms.openlocfilehash: b1691d78e4914bd5cf9c75e32f36afceb997a622
+ms.sourcegitcommit: 9b26cfed4102bc09512f5ef1270aa0275a7f8f69
+ms.openlocfilehash: 58e1f5862cd147d7664248cf393f77a5e9af10d3
 
 
 ---
@@ -40,7 +40,7 @@ Basic プランは新しい Application Insights リソースを作成する場�
 
 * Basic プランでは、データ量、つまり Application Insights で受信したテレメトリのバイト数に応じて課金されます。 データ量は、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。
 * いずれのアプリについても、最初の 1 GB 無料です。そのため、試験や開発の段階で換金されることはあまりありません。
-* Basic プランでは、[連続エクスポート](app-insights-export-telemetry.md)と [Log Analytics コネクタ](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409)を 1 GB ごとの追加料金で利用できます (2017 年 3 月上旬まで無料)。
+* Basic プランでは、[連続エクスポート](app-insights-export-telemetry.md)を 1 GB ごとの追加料金で利用できます (2017 年 3 月上旬まで無料)。
 
 ### <a name="enterprise-plan"></a>Enterprise プラン
 
@@ -66,7 +66,7 @@ Basic プランは新しい Application Insights リソースを作成する場�
 
 * 正確なノード カウントの動作は、アプリケーションで使用している Application Insights SDK によって異なります。 
   * SDK バージョン 2.2 以降では、Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) と [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) の両方で各アプリケーション ホストがノードとして報告されます (例: 物理サーバーと VM ホストのコンピューター名、または Cloud Services の場合はインスタンス名)。  唯一の例外は [.NET Core](https://dotnet.github.io/) と Application Insights Core SDK のみを使用するアプリケーションです。この場合はホスト名が使用できないため、すべてのホストについて報告されるのは&1; つのノードのみです。 
-  * 以前のバージョンの SDK である [Web SDK}(https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) は、新しいバージョンの SDK と同じように動作しますが、[Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) は実際のアプリケーション ホストの数に関係なく&1; つのノードのみ報告します。 
+  * 以前のバージョンの SDK である [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) は、新しいバージョンの SDK と同じように動作しますが、[Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) は実際のアプリケーション ホストの数に関係なく&1; つのノードのみ報告します。 
   * アプリケーションで SDK を使用してロール インスタンスをカスタム値に設定すると、既定でノード数の決定に同じ値が使用されることに注意してください。 
   * クライアント コンピューターやモバイル デバイスから実行されているアプリで新しいバージョンの SDK を使用している場合は、ノードのカウントが (多数のクライアント コンピューターやモバイル デバイスから) 非常に大きい数値を返す可能性があります。 
 
@@ -174,6 +174,6 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: e6d559a78fbd73be1dd5e745496515ce71404cad
-ms.openlocfilehash: ea7000d3e56c5132dba3f144c7bad671d0e3054a
+ms.sourcegitcommit: 64f44c176633db4179f954d2f70cdf26d08b60b4
+ms.openlocfilehash: 28ea238484d86b044899aa9f95861bbdbbf3a06c
 
 
 ---
 # <a name="reference---iot-hub-query-language-for-device-twins-and-jobs"></a>リファレンス - デバイス ツインとジョブの IoT HUb クエリ言語
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 IoT Hub には SQL に似た強力な言語が備わっており、[デバイス ツイン][lnk-twins]や[ジョブ][lnk-jobs]に関する情報を取得できます。 この記事で取り扱う内容は次のとおりです。
 
 * IoT Hub のクエリ言語の主な機能の説明
@@ -246,15 +246,31 @@ IoT Hub は、任意の条件でフィルター処理してデバイス ツイ�
 ルートの[条件][lnk-query-expressions]では、ツインおよびジョブ クエリの条件と同じ IoT Hub クエリ言語を使用します。 ルートの条件は、次の JSON の表現を仮定して、メッセージのプロパティで評価されます。
 
         {
+            "$messageId": "",
+            "$enqueuedTime": "",
+            "$to": "",
+            "$expiryTimeUtc": "",
+            "$correlationId": "",
+            "$userId": "",
+            "$ack": "",
+            "$connectionDeviceId": "",
+            "$connectionDeviceGenerationId": "",
+            "$connectionAuthMethod": "",
+            "$content-type": "",
+            "$content-encoding": ""
+
             "userProperty1": "",
             "userProperty2": ""
         }
+
+メッセージのシステム プロパティには、`'$'` シンボルが付きます。
+ユーザー プロパティは、常にその名前でアクセスされます。 ユーザー プロパティの名前が、システム プロパティと一致する場合 (`$to` など)、とユーザー プロパティは、`$to` 式で取得されます。
+システム プロパティは、常にかっこ `{}` を使用してアクセスできます。たとえば、`{$to}` 式を使用してシステム プロパティ `to` にアクセスできます。 かっこで囲まれたプロパティ名は、常に対応するシステム プロパティを取得します。
 
 プロパティ名では大文字と小文字は区別されません。
 
 > [!NOTE]
 > メッセージのプロパティはすべて文字列です。 [開発者ガイド][lnk-devguide-messaging-format]に記載されているように、システムのプロパティは現在クエリで使用できません。
->
 >
 
 たとえば、`messageType` プロパティを使用する場合、すべてのテレメトリを&1; つのエンドポイントにルーティングし、すべての警告を別のエンドポイントにルーティングすることを望むかもしれません。 次の式を記述してテレメトリをルーティングします。
@@ -458,6 +474,6 @@ GROUP BY の正式な構文は次のとおりです。
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

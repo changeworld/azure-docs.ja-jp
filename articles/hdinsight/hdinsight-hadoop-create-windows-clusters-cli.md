@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 84d52dccef4e2d9a1ae253831b5d8f86b6fb50a6
-ms.openlocfilehash: 489067e44525532f2913f44156a5eeb19214d250
+ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
+ms.openlocfilehash: 393b7e44b21fe510e07b4048ddd3bdbcc31d90a9
 
 
 ---
@@ -27,10 +27,8 @@ ms.openlocfilehash: 489067e44525532f2913f44156a5eeb19214d250
 
 Azure CLI を使用して HDInsight で Windows ベースの Hadoop クラスターを作成する方法を説明します。 
 
-この記事の情報は、Windows ベースの HDInsight クラスターにのみ適用されます。 Linux ベースのクラスターの作成方法の詳細については、[Azure CLI を使用した HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)に関するページを参照してください。
-
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 この記事の情報は、Windows ベースの HDInsight クラスターにのみ適用されます。 Linux ベースのクラスターの作成方法の詳細については、[Azure CLI を使用した HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -134,7 +132,7 @@ HDInsight クラスターを作成するには、Resource Management グルー�
 スクリプト アクションの一般情報については、「 [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。
 
 ## <a name="create-clusters-using-resource-manager-templates"></a>Resource Manager テンプレートを使用してクラスターを作成する
-CLI を使用して、ARM テンプレートを呼び出すことによってクラスターを作成することができます。 「 [Azure CLI でのデプロイ](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-azure-cli)」を参照してください。
+CLI を使用して、Azure Resource Manager テンプレートを呼び出すことによってクラスターを作成することができます。 「 [Azure CLI でのデプロイ](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-azure-cli)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
 * [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md) - HDInsight クラスターの使用方法について説明しています。
@@ -145,6 +143,6 @@ CLI を使用して、ARM テンプレートを呼び出すことによってク
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

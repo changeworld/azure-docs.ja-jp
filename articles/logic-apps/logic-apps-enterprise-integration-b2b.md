@@ -1,6 +1,6 @@
 ---
-title: "Enterprise Integration Pack での B2B ソリューションの作成 |Microsoft Docs"
-description: "Enterprise Integration Pack の B2B 機能を使用したデータの受信についての詳細情報"
+title: "B2B ソリューションを作成する - Azure Logic Apps | Microsoft Docs"
+description: "ロジック アプリで Enterprise Integration Pack の B2B 機能を使用してデータを受信します"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -13,79 +13,107 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: deonhe
+ms.author: estfan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: cb8cac0c63930139760617d721faffeef70cfbec
+ms.sourcegitcommit: 03cd3f4edd7bb7895efa02475411d813ef44b8b3
+ms.openlocfilehash: 6006df4b4ecd6dede94c1013881ddf699e741e51
 
 
 ---
-# <a name="learn-about-receiving-data-using-the-b2b-features-of-the-enterprise-integration-pack"></a>Enterprise Integration Pack の B2B 機能を使用したデータの受信についての詳細情報
-## <a name="overview"></a>Overview
-このドキュメントは、Logic Apps Enterprise Integration Pack の一部です。 [Enterprise Integration Pack の機能](logic-apps-enterprise-integration-overview.md)の詳細については、概要のページを参照してください。
+# <a name="receive-data-in-logic-apps-with-the-b2b-features-in-the-enterprise-integration-pack"></a>ロジック アプリで Enterprise Integration Pack の B2B 機能を使用してデータを受信する
+
+パートナーと契約を含む統合アカウントを作成した後、[Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)を使用してロジック アプリの企業間 (B2B) ワークフローを作成できます。
 
 ## <a name="prerequisites"></a>前提条件
-AS2 および X12 アクションを使用するには、エンタープライズ統合アカウントが必要です。
 
-[エンタープライズ統合アカウントの作成方法](../logic-apps/logic-apps-enterprise-integration-accounts.md)
+AS2 と X12 のアクションを使用するには、エンタープライズ統合アカウントが必要です。 「[統合アカウントの概要](../logic-apps/logic-apps-enterprise-integration-accounts.md)」を参照してください。
 
-## <a name="how-to-use-the-logic-apps-b2b-connectors"></a>Logic Apps B2B コネクタの使用方法
-統合アカウントを作成し、パートナーと契約を追加したら、企業間 (B2B) ワークフローを実装するロジック アプリを作成する準備が整います。
+## <a name="create-a-logic-app-with-b2b-connectors"></a>B2B コネクタを使用するロジック アプリを作成する
 
-このウォークスルーで、AS2 および X12 アクションの使用方法を確認し、取引先からデータを受信する企業間ロジック アプリを作成します。
+次の手順に従って、AS2 と X12 のアクションを使用して取引先からデータを受信する B2B ロジック アプリを作成します。
 
-1. 新しいロジック アプリを作成し、[統合アカウントにリンク](../logic-apps/logic-apps-enterprise-integration-accounts.md)します。  
-2. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求の受信時)]** トリガーを追加します。  
-   ![](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)  
-3. **[アクションの追加]** を選択し、**[Decode AS2 (AS2 デコード)]** アクションを追加します。  
-   ![](./media/logic-apps-enterprise-integration-b2b/transform-2.png)  
-4. 検索ボックスに「**as2**」と入力し、すべてのアクションから使用するアクションだけをフィルタリングします。  
-   ![](./media/logic-apps-enterprise-integration-b2b/b2b-5.png)  
-5. **[AS2 - Decode AS2 message (AS2 - AS2 メッセージのデコード)]** アクションを選択します。  
-   ![](./media/logic-apps-enterprise-integration-b2b/b2b-6.png)  
-6. ここで示すように、入力として受け取る **本文** を追加します。 この例では、ロジック アプリをトリガーした HTTP 要求の本文を選択します。 代わりに、**[ヘッダー]** フィールドに式を入力し、ヘッダーを入力することができます。
-   
+1. ロジック アプリを作成した後、[アプリを統合アカウントにリンク](../logic-apps/logic-apps-enterprise-integration-accounts.md)します。
+
+2. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求を受信したとき)]** トリガーを追加します。
+
+    ![](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)
+
+3. **AS2 のデコード** アクションを追加するには、**[アクションの追加]** を選択します。
+
+    ![](./media/logic-apps-enterprise-integration-b2b/transform-2.png)
+
+4. すべてのアクションから目的のアクションを抽出するには、検索ボックスに「**as2**」と入力します。
+
+    ![](./media/logic-apps-enterprise-integration-b2b/b2b-5.png)
+
+5. **[AS2 - Decode AS2 message (AS2 - AS2 メッセージのデコード)]** アクションを選択します。
+
+    ![](./media/logic-apps-enterprise-integration-b2b/b2b-6.png)
+
+6. 入力として使用する **[本文]** を追加します。 この例では、ロジック アプリをトリガーする HTTP 要求の本文を選択します。 または、ヘッダーを入力する式を **[ヘッダー]** フィールドに入力します。
+
     @triggerOutputs()['headers']
-7. AS2 に必要な **ヘッダー** を追加します。 これらは HTTP 要求ヘッダーになります。 この例では、ロジック アプリをトリガーした HTTP 要求のヘッダーを選択します。
-8. ここで、**[アクションの追加]** をもう一度選択して、X12 メッセージのデコード アクションを追加します。  
-   ![](./media/logic-apps-enterprise-integration-b2b/b2b-9.png)   
-9. 検索ボックスに「**x12**」と入力し、すべてのアクションから使用するアクションだけをフィルタリングします。  
-   ![](./media/logic-apps-enterprise-integration-b2b/b2b-10.png)  
-10. **[X12 - Decode X12 message (X12 - X12 メッセージのデコード)]** アクションを選択し、ロジック アプリに追加します。  
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-as2message.png)  
-11. ここで、上記の AS2 アクションの出力となるこのアクションへの入力を指定する必要があります。 実際のメッセージの内容は JSON オブジェクトにあり、base64 でエンコードされています。 そのため、入力として式を指定する必要があります。**[X12 FLAT FILE MESSAGE TO DECODE (デコードする X12 フラット ファイル メッセージ)]** 入力フィールドに次の式を入力します。  
+
+7. AS2 で必要な **[ヘッダー]** を追加します。これは HTTP 要求ヘッダーで見つけることができます。 この例では、ロジック アプリをトリガーする HTTP 要求のヘッダーを選択します。
+
+8. 次に、X12 メッセージのデコード アクションを追加します。 **[アクションの追加]**を選択します。
+
+    ![](./media/logic-apps-enterprise-integration-b2b/b2b-9.png)
+
+9. すべてのアクションから目的のアクションを抽出するには、検索ボックスに「**x12**」と入力します。
+
+    ![](./media/logic-apps-enterprise-integration-b2b/b2b-10.png)
+
+10. **[X12 - Decode X12 message (X12 - X12 メッセージのデコード)]** アクションを選択します。
+
+    ![](./media/logic-apps-enterprise-integration-b2b/b2b-as2message.png)
+
+11. 次に、この操作に対する入力を指定する必要があります。 この入力は、前の AS2 アクションからの出力です。
+
+    実際のメッセージの内容は JSON オブジェクトであり、base64 でエンコードされているため、入力として式を指定する必要があります。 
+    次の式を **[X12 FLAT FILE MESSAGE TO DECODE (デコードする X12 フラット ファイル メッセージ)]** 入力フィールドに入力します。
     
-    @base64ToString(body('Decode_AS2_message')?['AS2Message']?['Content'])  
-12. この手順では、取引先から受信した X12 データをデコードし、JSON オブジェクト内の項目の数の出力します。 データの受信をパートナーに知らせるために、HTTP 応答アクションでの AS2 Message Disposition Notification (MDN) を含む応答を返信することができます。  
-13. **[応答]** アクションを追加するには、**[アクションの追加]** を選択します。   
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)  
-14. 検索ボックスに「**response**」と入力し、すべてのアクションから使用するアクションだけをフィルタリングします。  
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-15.png)  
-15. **[応答]** アクションを選択し、追加します。  
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-16.png)  
-16. 応答の **[本文]** フィールドを設定するには、次の式を使用して、**[Decode X12 message (X12 メッセージのデコード)]** アクションの出力から MDN にアクセスします。  
-    
-    @base64ToString(body('Decode_AS2_message')?['OutgoingMdn']?['Content'])  
+    @base64ToString(body('Decode_AS2_message')?['AS2Message']?['Content'])
 
-![](./media/logic-apps-enterprise-integration-b2b/b2b-17.png)  
+    次に、取引先から受信した X12 データをデコードし、項目を JSON オブジェクトに出力する手順を追加します。 
+    データを受信したことをパートナーに知らせるために、HTTP 応答アクションで AS2 Message Disposition Notification (MDN) を含む応答を返すことができます。
 
-1. 作業内容を保存します。  
-   ![](./media/logic-apps-enterprise-integration-b2b/transform-5.png)  
+12. **[応答] **アクションを追加するには、**[アクションの追加]** を選択します。
 
-この時点で、B2B ロジック アプリの設定が終了します。 実際のアプリケーションでは、デコードされた X12 データを LOB アプリケーションまたはデータ ストア内に格納する必要がある場合があります。 アクションをさらに追加してこれを行ったり、カスタム API を記述して独自のLOB アプリケーションに接続し、ロジック アプリでこれらの API を使用したりすることが簡単にできます。
+    ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
+
+13. すべてのアクションから目的のアクションを抽出するには、検索ボックスに「**応答**」と入力します。
+
+    ![](./media/logic-apps-enterprise-integration-b2b/b2b-15.png)
+
+14. **[応答]** アクションを選択します。
+
+    ![](./media/logic-apps-enterprise-integration-b2b/b2b-16.png)
+
+15. **[Decode X12 message (X12 メッセージのデコード)]** アクションの出力から MDN にアクセスするには、次の式を使用して、応答の **[本文]** フィールドを設定します。
+
+    @base64ToString(body('Decode_AS2_message')?['OutgoingMdn']?['Content'])
+
+    ![](./media/logic-apps-enterprise-integration-b2b/b2b-17.png)  
+
+16. 作業内容を保存します。
+
+    ![](./media/logic-apps-enterprise-integration-b2b/transform-5.png)  
+
+これで、B2B ロジック アプリの設定が完了しましました。 実際のアプリケーションでは、デコードした X12 データを基幹業務 (LOB) アプリやデータストアに保存できます。 独自の LOB アプリに接続してロジック アプリでこれらの API を使用するために、さらにアクションを追加したり、カスタム API を記述したりできます。
 
 ## <a name="features-and-use-cases"></a>機能とユース ケース
-* AS2 と X12 のデコードおよびエンコード アクションにより、ロジック アプリを使用した業界標準プロトコルによる取引先とのデータの送受信が可能になります。  
-* 相互に AS2 および X12 を使用しているかどうかにかかわらず、必要に応じて、取引先とデータを交換できます。
-* B2B アクションにより、統合アカウントでパートナーと契約を簡単に作成し、ロジック アプリでこれらを使用できます。  
-* 他のアクションでロジック アプリを拡張することにより、SalesForce などの他のアプリケーションや サービスと、データを送受信できます。  
+
+* AS2 と X12 のデコード アクションとエンコード アクションにより、ロジック アプリで業界標準のプロトコルを使用して取引先とデータ交換できます。
+* 取引先とのデータ交換は、互いに AS2 と X12 を使用して行うことも、使用しないで行うこともできます
+* B2B アクションにより、統合アカウントにパートナーと契約を簡単に作成して、ロジック アプリでこれらを使用できます。
+* 他のアクションでロジック アプリを拡張することにより、SalesForce などの他のアプリや サービス間でデータを送受信できます。
 
 ## <a name="learn-more"></a>詳細情報
-[Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md)  
+[Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md)
 
 
 
-
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

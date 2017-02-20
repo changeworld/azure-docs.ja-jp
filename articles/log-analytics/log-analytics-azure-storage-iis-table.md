@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/01/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 950b6de5b579cac1a2b10db299e6f7bcfd8c7b04
+ms.sourcegitcommit: 79f5bad314b230df27c73fb7e60e173778c96865
+ms.openlocfilehash: da31e1ceebfecf766828fa761b01f4e346cd13aa
 
 
 ---
@@ -69,8 +69,6 @@ Log Analytics でこれらの Azure 診断ログを収集するためには、�
    4. **[状態]** を **[オン]** に設定します。
    5. 収集する各診断ログを選択します。
    6. **[OK]**をクリックします。
-
-Azure PowerShell を使用すると、Azure Storage に書き込むイベントをより細かく指定できます。 [テーブル ストレージに書き込まれた Azure 診断または BLOB に書き込まれた IIS ログを使用してデータを収集する](log-analytics-azure-storage-json.md)方法についてのページを参照してください。
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>IIS ログとイベントの収集のために Web ロールで Azure 診断を有効にする
 Azure 診断を有効にする一般的な手順については、[クラウド サービスで診断を有効にする方法](../cloud-services/cloud-services-dotnet-diagnostics.md)に関する記事をご覧ください。 以下の手順ではこの情報を使用し、Log Analytics で使用するためにカスタマイズします。
@@ -192,12 +190,12 @@ Azure PowerShell を使用すると、Azure Storage に書き込むイベント�
 
 
 ## <a name="next-steps"></a>次のステップ
-* JSON 形式の診断情報を Blob Storage に出力する Azure サービスからのログを [Blob Storage 内の JSON ファイルを使用](log-analytics-azure-storage-json.md)して読み取ります。
+* サポートされている Azure サービスの[ログとメトリックを収集](log-analytics-azure-storage.md)します。
 * [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。
 * [検索クエリを使用](log-analytics-log-searches.md) して、データを分析します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
 translationtype: Human Translation
-ms.sourcegitcommit: 5d7eed340d2021c58f68c69100be5a9e13655146
-ms.openlocfilehash: 7d4b322cd6528fa4798362d2ee620dae4291b956
+ms.sourcegitcommit: ef066a50b71389cb1cdd3bb0f8d342a34a4cc722
+ms.openlocfilehash: 587412f02c6bb6bd2c5b1896a890607fa1c058f8
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 7d4b322cd6528fa4798362d2ee620dae4291b956
 
 この記事で説明する内容は、すべて **シリアライザー** SDK サンプルに基づいています。 C 用 Azure IoT device SDK に含まれている **simplesample\_amqp** アプリケーションと **simplesample\_http** アプリケーションを確認すると、理解に役立ちます。
 
-[**C 用 Azure IoT device SDK**](https://github.com/Azure/azure-iot-sdk-c) は GitHub リポジトリから入手でき、API の詳細は [C API リファレンス](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html)に関するページで確認できます。
+[**C 用 Azure IoT device SDK**](https://github.com/Azure/azure-iot-sdk-c) は GitHub リポジトリから入手でき、API の詳細は [C API リファレンス](https://azure.github.io/azure-iot-sdk-c/index.html)に関するページで確認できます。
 
 ## <a name="the-modeling-language"></a>モデリング言語
 このシリーズの[入門記事](iot-hub-device-sdk-c-intro.md)では、**simplesample\_amqp** アプリケーションで提供された例を使用して、**C 用 Azure IoT device SDK** のモデリング言語を紹介しました。
@@ -526,6 +526,13 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 アクション名は、モデルで定義されているアクションと正確に一致する必要があります。 パラメーター名も一致する必要があります。 大文字と小文字の区別にも注意してください。 **Name** と **Parameters** は常に大文字です。 モデル内のアクションの名前とパラメーターの大文字と小文字が一致するようにしてください。 この例では、アクションの名前は "SetAirResistance" で、"setairresistance" ではありません。
 
+その他の&2; つのアクション (**TurnFanOn** と **TurnFanOff**) は、デバイスに次のメッセージを送信することによって呼び出すことができます。
+
+```
+{"Name" : "TurnFanOn", "Parameters" : {}}
+{"Name" : "TurnFanOff", "Parameters" : {}}
+```
+
 このセクションでは、 **シリアライザー** ライブラリを使用してイベントを送信し、メッセージを受信する場合に把握する必要がある内容をすべて説明しました。 次に進む前に、モデルの大きさを制御する、構成可能ないくつかのパラメーターについて説明します。
 
 ## <a name="macro-configuration"></a>マクロの構成
@@ -672,6 +679,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

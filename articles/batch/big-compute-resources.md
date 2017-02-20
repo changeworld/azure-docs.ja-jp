@@ -15,8 +15,8 @@ ms.workload: big-compute
 ms.date: 01/23/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 0bdc5a415b6f7bb40652893d35f7a844e19812a2
-ms.openlocfilehash: 3d8a347fac8b9b13d4fcef3f81ba9e89d8ca1d66
+ms.sourcegitcommit: a0e80acad4e8db2177e699f90f7296c64b38e718
+ms.openlocfilehash: edcf34610e7517f9ca16f8c239e4080c475933f4
 
 
 ---
@@ -45,9 +45,10 @@ Azure の大規模な計算オプションについて説明し、ワークロ�
 ### <a name="microsoft-hpc-pack"></a>Microsoft HPC Pack
 HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて構築された、Microsoft の無料 HPC ソリューションであり、Windows と Linux HPC の両方のワークロードを実行できます。  
 
+* [HPC Pack 2016 をダウンロードする](https://www.microsoft.com/download/details.aspx?id=54507)
 * [HPC Pack 2012 R2 Update 3 をダウンロードする](https://www.microsoft.com/download/details.aspx?id=49922)
 * [ドキュメント](https://technet.microsoft.com/library/jj899572.aspx)
-* Azure における [Linux](../virtual-machines/virtual-machines-linux-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) および [Windows](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の HPC Pack クラスター オプション
+* Azure の HPC Pack クラスター オプション: [Linux](../virtual-machines/virtual-machines-linux-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) および [Windows](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 
 * [HPC Pack を使用した Azure ワーカー インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)
 * [HPC Pack を使用した Azure Batch へのバースト](https://technet.microsoft.com/library/mt612877.aspx)
 * [Windows HPC フォーラム](https://social.microsoft.com/Forums/home?category=windowshpc)
@@ -60,7 +61,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 * [Intel Cloud Edition for Lustre Software - Eval](https://azure.microsoft.com/marketplace/partners/intel/lustre-cloud-edition-evaleval-lustre-2-7/)
 
 ## <a name="microsoft-mpi"></a>Microsoft MPI
-[Microsoft MPI](https://msdn.microsoft.com/library/bb524831.aspx) (MS-MPI) は、Windows プラットフォームで並列アプリケーションを開発して実行するための、Microsoft が実装する標準 Message Passing Interface です。 最新バージョンは MS-MPI v7 です。
+[Microsoft MPI](https://msdn.microsoft.com/library/bb524831.aspx) (MS-MPI) は、Windows プラットフォームで並列アプリケーションを開発して実行するための、Microsoft が実装する標準 Message Passing Interface です。
 
 * [MS-MPI のダウンロード](http://go.microsoft.com/FWLink/p/?LinkID=389556)
 * [MS-MPI リファレンス](https://msdn.microsoft.com/library/dn473458.aspx)
@@ -113,6 +114,6 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 
