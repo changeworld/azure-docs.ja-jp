@@ -1,6 +1,6 @@
 ---
-title: "Event Hubs とコンシューマー グループを含んだイベント ハブ名前空間を Azure Resource Manager テンプレートで作成する | Microsoft Docs"
-description: "Event Hubs とコンシューマー グループを含んだイベント ハブ名前空間を Azure Resource Manager テンプレートで作成する"
+title: "テンプレートを使用した Azure Event Hubs 名前空間とコンシューマー グループの作成 | Microsoft Docs"
+description: "Event Hubs とコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する"
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -15,20 +15,20 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: sethm;shvija
 translationtype: Human Translation
-ms.sourcegitcommit: a9e31954983fa673258917785a5bd828f1970fa1
-ms.openlocfilehash: 92ec109c6cf9e3a2792ed68dfd96f86f5f9ae339
+ms.sourcegitcommit: fe331199333d492dbc42c9125c9da96a44066ee1
+ms.openlocfilehash: 0085e71eb44b95f6eb5308f1974379ad3a74984b
 
 
 ---
 # <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する
 この記事では、Azure Resource Manager テンプレートを使用し、イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を作成する方法について説明します。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Azure Resource Manager のテンプレートの作成]」を参照してください。
+テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。
 
-完全なテンプレートについては、GitHub で[イベント ハブとコンシューマー グループを作成するためのテンプレート][イベント ハブとコンシューマー グループを作成するためのテンプレート]を参照してください。
+完全なテンプレートについては、GitHub の[イベント ハブとコンシューマー グループを作成するためのテンプレート][Event Hub and consumer group template]を参照してください。
 
 > [!NOTE]
-> 最新のテンプレートを確認する場合は、「[Azure クイック スタート テンプレート][Azure クイックスタート テンプレート]」ギャラリーで Event Hubs を検索してください。
+> 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "Event Hubs" を検索してください。
 > 
 > 
 
@@ -141,14 +141,21 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-event-hubs-create-event-hub-and-consumer-group/azuredeploy.json][]
 ```
 
-[Azure Resource Manager のテンプレートの作成]: ../resource-group-authoring-templates.md
-[Azure クイックスタート テンプレート]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
-[Azure リソース マネージャーでの Azure PowerShell の使用]: ../powershell-azure-resource-manager.md
-[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用]: ../xplat-cli-azure-resource-manager.md
-[イベント ハブとコンシューマー グループを作成するためのテンプレート]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/
+## <a name="next-steps"></a>次のステップ
+Event Hubs の詳細については、次のリンク先を参照してください:
+
+* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
+* [Event Hub を作成する](event-hubs-create.md)
+* [Event Hubs の FAQ](event-hubs-faq.md)
+
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
+[Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
+[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
+[Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

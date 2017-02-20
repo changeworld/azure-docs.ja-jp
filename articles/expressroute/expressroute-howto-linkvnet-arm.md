@@ -1,5 +1,5 @@
 ---
-title: "PowerShell を使用した ExpressRoute 回線への仮想ネットワークのリンク | Microsoft Docs"
+title: "ExpressRoute 回線への仮想ネットワークのリンク: PowerShell: Azure | Microsoft Docs"
 description: "このドキュメントでは、Resource Manager デプロイメント モデルと PowerShell を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。"
 services: expressroute
 documentationcenter: na
@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/13/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 4acb64838288d36f0dc1b1eb9736b00faef21a0c
-ms.openlocfilehash: ba71cabd6b9ed88813c65c4ce82e5809606699b9
+ms.sourcegitcommit: 75b7cee2485d1d68fee8dcd65ade84995dcdb9be
+ms.openlocfilehash: fc5bc67fd38fe8a8c4499257a29bc0f0ec71468c
 
 
 ---
-# <a name="link-a-virtual-network-to-an-expressroute-circuit"></a>ExpressRoute 回線への仮想ネットワークのリンク
+# <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続する
 > [!div class="op_single_selector"]
-> * [Azure ポータル - Resource Manager](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [PowerShell - Resource Manager](expressroute-howto-linkvnet-arm.md)
-> * [PowerShell - クラシック](expressroute-howto-linkvnet-classic.md)
+> * [Resource Manager - Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-linkvnet-arm.md)
+> * [クラシック - PowerShell](expressroute-howto-linkvnet-classic.md)
+> * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > 
 > 
 
@@ -68,7 +69,7 @@ ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回�
 ![サブスクリプション間接続](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
 ### <a name="administration"></a>管理
-*回線所有者* は、ExpressRoute 回線リソースの権限のあるパワー ユーザーです。 回線所有者は、 *回線ユーザー*が利用できる承認を作成できます。 *回線ユーザー* は、(ExpressRoute 回線とは別のサブスクリプション内にある) 仮想ネットワーク ゲートウェイの所有者です。 *回線ユーザー* は、承認を利用できます (仮想ネットワークごとに 1 つの承認)。
+*回線所有者* は、ExpressRoute 回線リソースの権限のあるパワー ユーザーです。 回線所有者は、 *回線ユーザー*が利用できる承認を作成できます。 *回線ユーザー* は、(ExpressRoute 回線とは別のサブスクリプション内にある) 仮想ネットワーク ゲートウェイの所有者です。 *回線ユーザー* は、承認を利用できます (仮想ネットワークごとに&1; つの承認)。
 
 *回線所有者* は、承認をいつでも変更し、取り消す権限を持っています。 承認を取り消すと、アクセスが取り消されたサブスクリプションからすべてのリンク接続が削除されます。
 
@@ -152,6 +153,6 @@ ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-f
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

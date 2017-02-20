@@ -1,5 +1,5 @@
 ---
-title: "新しいリソース グループへのリソースの移動 | Microsoft Docs"
+title: "Azure リソースを新しいサブスクリプションまたはリソース グループに移動する | Microsoft Docs"
 description: "Azure Resource Manager を使用して、リソースを新しいリソース グループまたはサブスクリプションに移動します。"
 services: azure-resource-manager
 documentationcenter: 
@@ -12,40 +12,51 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2017
+ms.date: 01/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 5718ca956680ac3c92f4eb479a5948d0296b8b21
-ms.openlocfilehash: a9271062bc9de41a180c8e78fe911afed9e1fc7a
+ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
+ms.openlocfilehash: 81ac6de576614050d972d6fae384f91cc8bf6841
 
 
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 このトピックでは、リソースを新しいサブスクリプションまたは同じサブスクリプション内の新しいリソース グループに移動する方法について説明します。 リソースの移動には、ポータル、PowerShell、Azure CLI、または REST API を使用できます。 このトピックの移動操作は、Azure サポートの支援を受けなくても利用できます。
 
-通常は、次のような場合にリソースを移動します。
-
-* 課金の目的のために、リソースを異なるサブスクリプションで有効にする必要がある。
-* リソースが以前一緒にグループ化されていた他のリソースと、現在は同じライフサイクルを共有していない。 そのリソースを他のリソースと別に管理できるように、新しいリソース グループに移動する必要があります。
-
 リソースを移動する場合は、その操作の間、ソース グループとターゲット グループの両方がロックされます。 これらのリソース グループに対する書き込み操作および削除操作は、移動が完了するまでブロックされます。 このロックはリソース グループでリソースを追加、更新、削除できなくなることを意味しますが、リソースが停止されるわけではありません。 たとえば、SQL Server とそのデータベースを新しいリソース グループに移動する場合、そのデータベースを使用するアプリケーションにダウンタイムは発生しません。 これまでどおり、データベースの読み取りと書き込みを行うことができます。 
 
 リソースの場所を変更することはできません。 リソースを移動しても、新しいリソース グループに移動されるだけです。 新しいリソース グループは別の場所に存在する場合もありますが、リソース自体の場所は変更されません。
 
 > [!NOTE]
-> この記事では、既存の Azure アカウント プラン内のリソースを移動する方法について説明します。 実際に Azure アカウント プランを変更 (従量課金制から前払いにアップグレードするなど) しながら既存のリソースの処理を継続する場合は、 [別の Azure サブスクリプション プランへの切り替え](../billing-how-to-switch-azure-offer.md)に関するページをご覧ください。 
+> この記事では、既存の Azure アカウント プラン内のリソースを移動する方法について説明します。 実際に Azure アカウント プランを変更 (従量課金制から前払いにアップグレードするなど) しながら既存のリソースの処理を継続する場合は、 [別の Azure サブスクリプション プランへの切り替え](../billing/billing-how-to-switch-azure-offer.md)に関するページをご覧ください。 
 > 
 > 
 
 ## <a name="checklist-before-moving-resources"></a>リソースの移動前のチェック リスト
 リソースを移動する前に実行すべき重要な手順がいくつかあります。 これらの条件を確認することにより、エラーの発生を回避できます。
 
-1. サービスでリソースの移動機能を有効にする必要があります。 このトピックで、リソースの移動を有効にするサービスと、リソースの移動を有効にしないサービスを示します。
-2. 移動元と移動先のサブスクリプションが同じ [Active Directory テナント](../active-directory/active-directory-howto-tenant.md)に存在している必要があります。 新しいテナントに移動するには、サポートにお問い合わせください。
+1. 移動元と移動先のサブスクリプションが同じ [Active Directory テナント](../active-directory/active-directory-howto-tenant.md)に存在している必要があります。 両方のサブスクリプションに同じテナント ID があることを確認するには、Azure PowerShell または Azure CLI を使用します。
+
+  Azure PowerShell では、次を使用します。
+
+  ```powershell
+  (Get-AzureRmSubscription -SubscriptionName "Example Subscription").TenantId
+  ```
+
+  Azure CLI 2.0 では、次を使用します。
+
+  ```azurecli
+  az account show --subscription "Example Subscription" --query tenantId
+  ```
+
+  移動元と移動先のサブスクリプションのテナント ID が同じでない場合は、サブスクリプションのディレクトリの変更を試みることができます。 ただし、このオプションは、(組織アカウントではなく) Microsoft アカウントでログインしているサービス管理者のみが使用できます。 ディレクトリの変更を試みるには、[クラシック ポータル](https://manage.windowsazure.com/)にログインし、**[設定]** を選択して、サブスクリプションを選択します。 **[ディレクトリの編集]** アイコンを使用できる場合は、そのアイコンを選択して、関連付けられている Active Directory を変更します。 
+
+  ![ディレクトリを編集する](./media/resource-group-move-resources/edit-directory.png) 
+
+  このアイコンが使用できない場合は、サポートに連絡して、リソースを新しいテナントに移動する必要があります。
+
+2. サービスでリソースの移動機能を有効にする必要があります。 このトピックで、リソースの移動を有効にするサービスと、リソースの移動を有効にしないサービスを示します。
 3. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。 登録しないと、 **リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。 この問題は、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。 登録ステータスを確認し、リソース プロバイダーを登録する方法については、「 [リソース プロバイダーと種類](resource-manager-supported-services.md#resource-providers-and-types)」を参照してください。
-4. App Service アプリを移動する場合は、「 [App Service の制限事項](#app-service-limitations)」を確認しておく必要があります。
-5. Recovery Services に関連付けられているリソースを移動する場合は、「[Recovery Services の制限事項](#recovery-services-limitations)」を確認しておく必要があります。
-6. クラシック モデルを使用してデプロイされたリソースを移動する場合は、「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)」を確認しておく必要があります。
 
 ## <a name="when-to-call-support"></a>サポートに問い合わせる場合
 このトピックで説明するセルフサービス操作を使用すれば、ほとんどのリソースを移動できます。 次の場合にセルフサービス操作を使用します。
@@ -76,7 +87,6 @@ ms.openlocfilehash: a9271062bc9de41a180c8e78fe911afed9e1fc7a
 * Data Factory
 * Data Lake Analytics
 * Data Lake Store
-* Devtest ラボ
 * DNS
 * DocumentDB
 * Event Hubs
@@ -103,7 +113,7 @@ ms.openlocfilehash: a9271062bc9de41a180c8e78fe911afed9e1fc7a
 * Stream Analytics
 * SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。
 * Traffic Manager
-* Virtual Machines - ただし、証明書が Key Vault に格納されている場合、新しいサブスクリプションへの移動はサポートされません。
+* Virtual Machines - 証明書が Key Vault に格納されている場合、新しいサブスクリプションへの移動はサポートされません
 * Virtual Machines (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Virtual Networks
 
@@ -119,6 +129,7 @@ ms.openlocfilehash: a9271062bc9de41a180c8e78fe911afed9e1fc7a
 * Application Insights
 * BizTalk Services
 * ExpressRoute
+* DevTest ラボ - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
 * Dynamics LCS
 * Recovery Services コンテナー - Recovery Services コンテナーに関連付けられているコンピューティング リソース、ネットワーク リソース、ストレージ リソースも移動できません。「[Recovery Services の制限事項](#recovery-services-limitations)」をご覧ください。
 * セキュリティ
@@ -203,13 +214,13 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
 
 1. 移動元のサブスクリプションがサブスクリプション間の移動に参加できることを確認します。 次の操作を行います。
 
-  ```   
+  ```HTTP   
   POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
   ```
    
      要求本文は次のようになります。
 
-  ``` 
+  ```json 
   {
     "role": "source"
   }
@@ -217,7 +228,7 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
   
      検証操作の応答は次のような形式になります。
 
-  ``` 
+  ```json 
   {
     "status": "{status}",
     "reasons": [
@@ -229,13 +240,13 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
 
 2. 移動先のサブスクリプションがサブスクリプション間の移動に参加できることを確認します。 次の操作を行います。
 
-  ``` 
+  ```HTTP 
   POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
   ```
 
      要求本文は次のようになります。
 
-  ``` 
+  ```json 
   {
     "role": "target"
   }
@@ -244,13 +255,13 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
      応答は移動元のサブスクリプションの検証と同じ形式になります。
 3. 両方のサブスクリプションが検証に合格し、すべてのクラシック リソースをあるサブスクリプションから別のサブスクリプションに移動する場合は、次の操作を行います。
 
-  ``` 
+  ```HTTP 
   POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
   ```
 
     要求本文は次のようになります。
 
-  ``` 
+  ```json 
   {
     "target": "/subscriptions/{target-subscription-id}"
   }
@@ -259,13 +270,11 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
 この操作には数分かかる場合があります。 
 
 ## <a name="use-portal"></a>ポータルの使用
-**同じサブスクリプション**内の新しいリソース グループにリソースを移動するには、そのリソースが含まれるリソース グループを選択し、**[移動]** を選択します。
+リソースを移動するには、そのリソースが含まれるリソース グループを選択し、**[移動]** を選択します。
 
-![リソースの移動](./media/resource-group-move-resources/edit-rg-icon.png)
+![リソースの移動](./media/resource-group-move-resources/select-move.png)
 
-または、**新しいサブスクリプション**にリソースを移動するには、そのリソースが含まれるリソース グループを選択し、サブスクリプションの編集アイコンを選択します。
-
-![リソースの移動](./media/resource-group-move-resources/change-subscription.png)
+リソースを新しいリソース グループに移動するか新しいサブスクリプションに移動するかを選択します。
 
 移動するリソースを、移動先のリソース グループを選択します。 そのリソースのスクリプトを更新する必要があること確認し、 **[OK]**を選択します。 前の手順でサブスクリプションの編集アイコンを選択した場合は、移動先のサブスクリプションも選択する必要があります。
 
@@ -280,7 +289,7 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
 ![移動の結果の表示](./media/resource-group-move-resources/show-result.png)
 
 ## <a name="use-powershell"></a>PowerShell の使用
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、 **Move-AzureRmResource** コマンドを使用します。
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、`Move-AzureRmResource` コマンドを実行します。
 
 最初の例では、1 つのリソースを新しいリソース グループに移動する方法を示します。
 
@@ -297,7 +306,7 @@ $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
-新しいサブスクリプションに移動する場合は、 **DestinationSubscriptionId** パラメーターの値を含めます。
+新しいサブスクリプションに移動する場合は、`DestinationSubscriptionId` パラメーターの値を含めます。
 
 指定したリソースの移動を確認するように求められます。
 
@@ -311,8 +320,23 @@ Are you sure you want to move these resources to the resource group
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 ```
 
-## <a name="use-azure-cli"></a>Azure CLI の使用
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、 **azure resource move** コマンドを使用します。 移動するリソースのリソース ID を指定します。 リソース ID は次のコマンドを使用して取得できます。
+## <a name="use-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) の使用
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、`az resource move` コマンドを使用します。 移動するリソースのリソース ID を指定します。 リソース ID は次のコマンドを使用して取得できます。
+
+```azurecli
+az resource show -g sourceGroup -n storagedemo --resource-type "Microsoft.Storage/storageAccounts" --query id
+```
+
+次の例は、ストレージ アカウントを新しいリソース グループに移動する方法を示しています。 `--ids` パラメーターには、移動するリソース ID のスペース区切りリストを指定します。
+
+```azurecli
+az resource move --destination-group newgroup --ids "/subscriptions/{guid}/resourceGroups/sourceGroup/providers/Microsoft.Storage/storageAccounts/storagedemo"
+```
+
+新しいサブスクリプションに移動するには、`--destination-subscription-id` パラメーターを指定します。
+
+## <a name="use-azure-cli-10"></a>Azure CLI 1.0 の使用
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、`azure resource move` コマンドを使用します。 移動するリソースのリソース ID を指定します。 リソース ID は次のコマンドを使用して取得できます。
 
 ```azurecli
 azure resource list -g sourceGroup --json
@@ -337,7 +361,7 @@ azure resource list -g sourceGroup --json
 ]
 ```
 
-次の例は、ストレージ アカウントを新しいリソース グループに移動する方法を示しています。 **-i** パラメーターには、移動するリソース ID のコンマ区切りリストを指定します。
+次の例は、ストレージ アカウントを新しいリソース グループに移動する方法を示しています。 `-i` パラメーターには、移動するリソース ID のコンマ区切りリストを指定します。
 
 ```azurecli
 azure resource move -i "/subscriptions/{guid}/resourceGroups/sourceGroup/providers/Microsoft.Storage/storageAccounts/storagedemo" -d "destinationGroup"
@@ -348,7 +372,7 @@ azure resource move -i "/subscriptions/{guid}/resourceGroups/sourceGroup/provide
 ## <a name="use-rest-api"></a>REST API を使用する
 既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、次のコマンドを実行します。
 
-```
+```HTTP
 POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version} 
 ```
 
@@ -363,6 +387,6 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -13,64 +13,64 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: bb47fa4e876322a0e3e36d4da657fba4be84d6f2
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: fc39933ac8d9f3c46023a5852df036b87e559647
 
 
 ---
-# <a name="kernels-available-for-jupyter-notebooks-with-apache-spark-clusters-on-hdinsight"></a>HDInsight の Apache Spark クラスターと Jupyter Notebook で使用可能なカーネル
+# <a name="jupyter-notebooks-kernels-with-apache-spark-clusters-in-hdinsight"></a>HDInsight の Apache Spark クラスターと Jupyter Notebook カーネル 
 
-HDInsight (Linux) の Apache Spark クラスターには、アプリケーションのテストに使用できる Jupyter Notebook が含まれています。 カーネルは、コードを実行し、解釈するプログラムです。 HDInsight の Spark クラスターには、Jupyter Notebook で使用できる&2; つのカーネルが用意されています。 次のとおりです。
+HDInsight の Spark クラスターには、Spark アプリケーションをテストするために、Jupyter Notebook で使用できるカーネルが&2; つ用意されています。 カーネルは、コードを実行し、解釈するプログラムです。 2 つのカーネルを次に示します。
 
-1. **PySpark** (Python で記述されたアプリケーション用)
-2. **Spark** (Scala で記述されたアプリケーション用)
+- **PySpark** (Python で記述されたアプリケーション用)
+- **Spark** (Scala で記述されたアプリケーション用)
 
-この記事では、これらのカーネルの使い方と、これらを使用する利点について説明します。
+この記事では、このカーネルの使用方法と、カーネルを使用するメリットについて説明します。
 
 **前提条件:**
 
 次のものが必要です。
 
-* Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
-## <a name="how-do-i-use-the-kernels"></a>カーネルの使い方
-1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
-2. Spark クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
+## <a name="create-a-jupyter-notebook"></a>Jupyter Notebook の作成
+1. [Azure Portal](https://portal.azure.com/) でクラスターを開きます。  手順については、「[クラスターの一覧と表示](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)」を参照してください。 クラスターは新しいポータル ブレードで開きます。
+2. **[クイック リンク]** セクションで **[クラスター ダッシュボード]** をクリックして、**[クラスター ダッシュボード]** ブレードを開きます。  **[クイック リンク]** が表示されない場合は、ブレードの左側のメニューで **[概要]** をクリックします。
 
+    ![クラスター ダッシュボード](./media/hdinsight-apache-spark-jupyter-notebook-kernels/hdinsight-azure-portal-cluster-dashboards.png "クラスター ダッシュボード") 
+3. **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
+   
    > [!NOTE]
    > ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   >
-   >
-3. 新しいカーネルで、新しい Notebook を作成します。 **[新規]** をクリックし、**[Pyspark]** または **[Spark]** をクリックします。 Scala アプリケーションには Spark カーネルを使用し、Python アプリケーションには PySpark カーネルを使用する必要があります。
+   > 
+   > 
+3. **[新規]** をクリックし、**[Pyspark]** または **[Spark]** をクリックして、新しい Notebook を作成します。 Scala アプリケーションには Spark カーネルを使用し、Python アプリケーションには PySpark カーネルを使用する必要があります。
+   
+    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "新しい Jupyter Notebook の作成") 
 
-    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "新しい Jupyter Notebook の作成")
 4. 選択したカーネルで、新しい Notebook が開かれます。
 
-## <a name="why-should-i-use-the-pyspark-or-spark-kernels"></a>PySpark または Spark カーネルを使用する理由
+## <a name="choose-between-the-kernels"></a>カーネルの選択
 新しいカーネルを使用すると、いくつかの利点があります。
 
-1. **コンテキストのプリセット**。 Jupyter Notebook で提供される **PySpark** または **Spark** カーネルでは、開発しているアプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。これらのカーネルは、既定で利用できます。 各コンテキストは次のとおりです。
-
+- **コンテキストのプリセット**。 **PySpark** カーネルまたは **Spark** カーネルのいずれかを使用すると、アプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。これらのカーネルは、既定で利用できます。 各コンテキストは次のとおりです。
+   
    * **sc** : Spark コンテキスト用
    * **sqlContext** : Hive コンテキスト用
 
     そのため、コンテキストを設定するための次のようなステートメントを実行する必要はありません。
 
-        ###################################################
-        # <a name="you-do-not-need-to-run-this-with-the-new-kernels"></a>新しいカーネルでは、これを実行する必要はありません。
-        ###################################################
-        sc = SparkContext('yarn-client')    sqlContext = HiveContext(sc)
+      sc = SparkContext('yarn-client')  sqlContext = HiveContext(sc)
 
     代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
 
-1. **セル マジック**。 PySpark カーネルには、"マジック"、つまり、`%%` で呼び出すことができる特別なコマンドがいくつか事前定義されています (`%%MAGIC` <args> など)。 このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。 魔法の単語はセルの最初の単語にする必要があります。 その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。     マジックの詳細については、[こちら](http://ipython.readthedocs.org/en/stable/interactive/magics.html)をご覧ください。
-
+- **セル マジック**。 PySpark カーネルには、"マジック"、つまり、`%%` で呼び出すことができる特別なコマンドがいくつか事前定義されています (`%%MAGIC` <args> など)。 このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。 魔法の単語はセルの最初の単語にする必要があります。 その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。     マジックの詳細については、[こちら](http://ipython.readthedocs.org/en/stable/interactive/magics.html)をご覧ください。
+   
     次の表は、カーネルで使用できるさまざまなマジックを一覧にしたものです。
 
    | マジック | 例 | Description |
@@ -157,7 +157,7 @@ HDInsight の Spark クラスターに対して実行される Jupyter Notebook 
 * [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 * [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
@@ -169,6 +169,6 @@ HDInsight の Spark クラスターに対して実行される Jupyter Notebook 
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

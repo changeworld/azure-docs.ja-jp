@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2016
+ms.date: 01/30/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 6c5bf8907a5f69e45e7b62fb466bdc53460e9029
-ms.openlocfilehash: 86a5911e99e7631b09604afcb0f53ed2887b576b
+ms.sourcegitcommit: 5f9783232e9b03ca3777a000ffc189863d0956ab
+ms.openlocfilehash: ffc481943a9dc55593fa8b46dffef0098f288eaf
 
 
 ---
@@ -83,9 +83,9 @@ Azure DocumentDB Emulator を起動するには、[スタート] ボタンをク
 
 DocumentDB Emulator は既定では `C:\Program Files\DocumentDB Emulator` ディレクトリにインストールされます。 コマンドラインを使ってエミュレーターを起動したり停止したりすることもできます。 詳細については、[コマンドライン ツールのリファレンス](#command-line)に関するセクションを参照してください。
 
-## <a name="start-the-local-emulator-data-explorer"></a>ローカル エミュレーターのデータ エクスプローラーの開始
+## <a name="start-the-documentdb-emulator-data-explorer"></a>DocumentDB Emulator のデータ エクスプローラーの起動
 
-ローカル エミュレーターを起動すると、自動的にブラウザーで DocumentDB データ エクスプローラーが開きます。 アドレスは、[https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html) になります。 エクスプローラーを閉じた後にもう一度開きたくなった場合は、ブラウザーで URL を開くか、次に示すように Windows トレイ アイコンの DocumentDB Emulator から起動することができます。
+DocumentDB Emulator が起動すると、ブラウザーで DocumentDB データ エクスプローラーが自動的に開きます。 アドレスは、[https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html) になります。 エクスプローラーを閉じた後にもう一度開きたくなった場合は、ブラウザーで URL を開くか、次に示すように Windows トレイ アイコンの DocumentDB Emulator から起動することができます。
 
 ![DocumentDB ローカル エミュレーターのデータ エクスプローラー起動ツール](./media/documentdb-nosql-local-emulator/azure-documentdb-database-local-emulator-data-explorer-launcher.png)
 
@@ -95,11 +95,7 @@ DocumentDB Emulator は既定では `C:\Program Files\DocumentDB Emulator` デ�
     // Connect to the DocumentDB Emulator running locally
     DocumentClient client = new DocumentClient(
         new Uri("https://localhost:8081"), 
-        "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==",
-        new ConnectionPolicy { EnableEndpointDiscovery = false });
-
-> [!NOTE]
-> エミュレーターに接続する場合、接続の構成で EnableEndpointDiscovery = false を設定する必要があります。
+        "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
 
 [MongoDB 向けの DocumentDB プロトコル サポート](documentdb-protocol-mongodb.md)を使用している場合、次の接続文字列を使用してください。
 
@@ -107,91 +103,113 @@ DocumentDB Emulator は既定では `C:\Program Files\DocumentDB Emulator` デ�
 
 DocumentDB Emulator に接続するには、[DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio) などの既存のツールを使用できます。 [DocumentDB データ移行ツール](https://github.com/azure/azure-documentdb-datamigrationtool)を使用して、DocumentDB Emulator と Azure DocumentDB サービスの間でデータを移行することもできます。
 
+DocumentDB Emulator を使用して、既定で最大 25 個の単一パーティション コレクションまたは 1 つのパーティション分割コレクションを作成できます。 この値を変更する方法の詳細については、[PartitionCount 値の設定](#set-partitioncount)に関するトピックを参照してください。
+
 ## <a name="export-the-documentdb-emulator-ssl-certificate"></a>DocumentDB Emulator SSL 証明書のエクスポート
 
 .NET 言語とランタイムでは、DocumentDB ローカル エミュレーターに安全に接続するために Windows 証明書ストアが使用されます。 その他の言語では、証明書の管理と使用について独自の方法があります。 Java の場合は独自の[証明書ストア](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)が使用され、Python の場合は[ソケット ラッパー](https://docs.python.org/2/library/ssl.html)が使用されます。
 
-Windows 証明書ストアと統合されていない言語およびランタイムで使用する証明書を取得するためには、Windows 証明書マネージャーを使用して証明書をエクスポートする必要があります。 これは certlm.msc を実行することで開始できます。または、「[DocumentDB Emulator 証明書のエクスポート](./documentdb-nosql-local-emulator-export-ssl-certificates.md)」の詳しい手順に従ってください。 証明書マネージャーの実行中、次に示すように Personal フォルダーの Certificates を開き、"DocumentDBEmulatorCertificate" というフレンドリ名の証明書を BASE-64 encoded X.509 (.cer) ファイルとしてエクスポートします。
+Windows 証明書ストアと統合されていない言語およびランタイムで使用する証明書を取得するためには、Windows 証明書マネージャーを使用して証明書をエクスポートする必要があります。 これは certlm.msc を実行することで開始できます。または、「[DocumentDB Emulator 証明書のエクスポート](./documentdb-nosql-local-emulator-export-ssl-certificates.md)」の手順に従ってください。 証明書マネージャーの実行中、次に示すように Personal フォルダーの Certificates を開き、"DocumentDBEmulatorCertificate" というフレンドリ名の証明書を BASE-64 encoded X.509 (.cer) ファイルとしてエクスポートします。
 
 ![DocumentDB ローカル エミュレーターの SSL 証明書](./media/documentdb-nosql-local-emulator/azure-documentdb-database-local-emulator-ssl_certificate.png)
 
-X.509 証明書を Java 証明書ストアにインポートする場合は、「[証明書を Java CA 証明書ストアに追加する方法](https://docs.microsoft.com/en-us/azure/java-add-certificate-ca-store)」の手順に従ってください。  証明書を cacerts ストアにインポートしたら、Java アプリケーションと MongoDB アプリケーションは DocumentDB ローカル エミュレーターに接続できるようになります。
+X.509 証明書を Java 証明書ストアにインポートするには、「[証明書を Java CA 証明書ストアに追加する方法](https://docs.microsoft.com/en-us/azure/java-add-certificate-ca-store)」の手順に従います。 証明書を cacerts ストアにインポートしたら、Java アプリケーションと MongoDB アプリケーションは DocumentDB Emulator に接続できるようになります。
+
+Python SDK および Node.js SDK からエミュレーターに接続すると、SSL 検証が無効になります。
 
 ## <a name="a-idcommand-lineadocumentdb-emulator-command-line-tool-reference"></a><a id="command-line"></a>DocumentDB Emulator コマンドライン ツールのリファレンス
 インストール先では、コマンドラインを使用することで、エミュレーターの開始と停止やオプションの構成などの操作を実行できます。
 
 ### <a name="command-line-syntax"></a>コマンドライン構文
 
-    DocumentDB.Emulator.exe [/shutdown] [/datapath] [/port] [/mongoport] [/directports] [/key] [/?]
+    DocumentDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/?]
 
 オプションの一覧を表示するには、コマンド プロンプトで「 `DocumentDB.Emulator.exe /?` 」と入力します。
 
 <table>
 <tr>
   <td><strong>オプション</strong></td>
-  <td><strong>Description</strong></td>
+  <td><strong>説明</strong></td>
   <td><strong>コマンド</strong></td>
   <td><strong>引数</strong></td>
 </tr>
 <tr>
   <td>[引数なし]</td>
-  <td>既定の設定で DocumentDB Emulator を起動します</td>
+  <td>既定の設定で DocumentDB Emulator を起動します。</td>
   <td>DocumentDB.Emulator.exe</td>
   <td></td>
 </tr>
 <tr>
-  <td>Shutdown</td>
-  <td>DocumentDB Emulator をシャットダウンします</td>
-  <td>DocumentDB.Emulator.exe /Shutdown</td>
-  <td></td>
-</tr>
-<tr>
-  <td>[ヘルプ]</td>
-  <td>コマンドライン引数の一覧を表示します</td>
+  <td>[Help]</td>
+  <td>サポートされるコマンド ライン引数の一覧を表示します。</td>
   <td>DocumentDB.Emulator.exe /?</td>
   <td></td>
 </tr>
 <tr>
-  <td>Datapath</td>
-  <td>データ ファイルを格納するパスを指定します</td>
-  <td>DocumentDB.Emulator.exe /datapath=&lt;datapath&gt;</td>
+  <td>Shutdown</td>
+  <td>DocumentDB Emulator をシャットダウンします。</td>
+  <td>DocumentDB.Emulator.exe /Shutdown</td>
+  <td></td>
+</tr>
+<tr>
+  <td>DataPath</td>
+  <td>データ ファイルを格納するパスを指定します。 既定値は %LocalAppdata%\DocumentDBEmulator です。</td>
+  <td>DocumentDB.Emulator.exe /DataPath=&lt;datapath&gt;</td>
   <td>&lt;datapath&gt;: アクセスできるパス</td>
 </tr>
 <tr>
   <td>ポート</td>
-  <td>エミュレーターで使用するポート番号を指定します。  既定値は 8081 です</td>
-  <td>DocumentDB.Emulator.exe /port=&lt;port&gt;</td>
+  <td>エミュレーターで使用するポート番号を指定します。  既定値は 8081 です。</td>
+  <td>DocumentDB.Emulator.exe /Port=&lt;port&gt;</td>
   <td>&lt;port&gt;: 単一のポート番号</td>
 </tr>
 <tr>
   <td>MongoPort</td>
-  <td>MongoDB 互換性 API に使用するポート番号を指定します。 既定値は 10250 です</td>
-  <td>DocumentDB.Emulator.exe /mongoport=&lt;mongoport&gt;</td>
+  <td>MongoDB 互換性 API に使用するポート番号を指定します。 既定値は 10250 です。</td>
+  <td>DocumentDB.Emulator.exe /MongoPort=&lt;mongoport&gt;</td>
   <td>&lt;mongoport&gt;: 単一のポート番号</td>
 </tr>
 <tr>
   <td>DirectPorts</td>
   <td>直接接続に使用するポートを指定します。 既定値は、10251、10252、10253、10254 です。</td>
-  <td>DocumentDB.Emulator.exe /directports:&lt;directports&gt;</td>
+  <td>DocumentDB.Emulator.exe /DirectPorts:&lt;directports&gt;</td>
   <td>&lt;directports&gt;: 4 つのポートのコンマ区切りリスト</td>
 </tr>
 <tr>
   <td>キー</td>
-  <td>エミュレーターの承認キーです。 キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります</td>
-  <td>DocumentDB.Emulator.exe /key:&lt;key&gt;</td>
+  <td>エミュレーターの承認キーです。 キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります。</td>
+  <td>DocumentDB.Emulator.exe /Key:&lt;key&gt;</td>
   <td>&lt;key&gt;: キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります。</td>
 </tr>
 <tr>
-  <td>EnableThrottling</td>
-  <td>要求スロットル動作の有効化を指定します</td>
-  <td>DocumentDB.Emulator.exe /enablethrottling</td>
+  <td>EnableRateLimiting</td>
+  <td>要求レート制限の動作の有効化を指定します。</td>
+  <td>DocumentDB.Emulator.exe /EnableRateLimiting</td>
   <td></td>
 </tr>
 <tr>
-  <td>DisableThrottling</td>
-  <td>要求スロットル動作の無効化を指定します</td>
-  <td>DocumentDB.Emulator.exe /disablethrottling</td>
+  <td>DisableRateLimiting</td>
+  <td>要求レート制限の動作の無効化を指定します。</td>
+  <td>DocumentDB.Emulator.exe /DisableRateLimiting</td>
   <td></td>
+</tr>
+<tr>
+  <td>NoUI</td>
+  <td>エミュレーターのユーザー インターフェイスを表示しません。</td>
+  <td>DocumentDB.Emulator.exe /NoUI</td>
+  <td></td>
+</tr>
+<tr>
+  <td>NoExplorer</td>
+  <td>起動時にドキュメント エクスプローラーを表示しません。</td>
+  <td>DocumentDB.Emulator.exe /NoExplorer</td>
+  <td></td>
+</tr>
+<tr>
+  <td>PartitionCount</td>
+  <td>パーティション分割コレクションの最大数を指定します。 詳細については、「[コレクションの数を変更する](#set-partitioncount)」を参照してください。</td>
+  <td>DocumentDB.Emulator.exe /PartitionCount=&lt;partitioncount&gt;</td>
+  <td>&lt;partitioncount&gt;: 単一パーティション コレクションで許容される最大の数です。 既定値は 25 です。 許容される最大値は 250 です。</td>
 </tr>
 </table>
 
@@ -205,12 +223,54 @@ DocumentDB Emulator は開発者のローカル ワークステーションで�
 * DocumentDB Emulator では、Azure DocumentDB サービスで利用できるサービス クォータの上書き (ドキュメント サイズの制限、パーティション分割コレクション ストレージの増加など) はサポートされません。
 * DocumentDB Emulator のコピーが Azure DocumentDB サービスの最新の変更に対応していない可能性があるため、[DocumentDB キャパシティ プランナー](https://www.documentdb.com/capacityplanner)を使用して、アプリケーションの運用スループット (RU) のニーズを正確に見積もってください。
 
+## <a name="a-idset-partitioncountachange-the-number-of-collections"></a><a id="set-partitioncount"></a>コレクションの数を変更する
+
+既定では、DocumentDB Emulator を使用して最大 25 個の単一パーティション コレクションまたは 1 つのパーティション分割コレクションを作成できます。 **PartitionCount** の値を変更することにより、最大 250 個の単一パーティション コレクション、10 個のパーティション分割コレクション、または単一パーティションの数が 250 個を超えない範囲でこの 2 つの任意の組み合わせを作成できます (1 個のパーティション分割コレクション = 25 個の単一パーティション コレクション)。
+
+現在のパーティション数を超えた後にコレクションを作成しようとすると、次のメッセージと共に ServiceUnavailable 例外がスローされます。
+
+    Sorry, we are currently experiencing high demand in this region, 
+    and cannot fulfill your request at this time. We work continuously 
+    to bring more and more capacity online, and encourage you to try again. 
+    Please do not hesitate to email docdbswat@microsoft.com at any time or 
+    for any reason. ActivityId: 29da65cc-fba1-45f9-b82c-bf01d78a1f91
+
+DocumentDB Emulator で使用可能なコレクションの数を変更するには、次の操作を行います。
+
+1. システム トレイの **DocumentDB Emulator** アイコンを右クリックしてすべてのローカルの DocumentDB Emulator データを削除し、**[Reset Data… (データのリセット…)]** をクリックします。
+2. このフォルダー (C:\Users\user_name\AppData\Local\DocumentDBEmulator) 内のすべてのエミュレーター データを削除します。
+3. システム トレイの **DocumentDB Emulator** アイコンを右クリックし、開いているすべてのインスタンスを終了して、**[終了]** をクリックします。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
+4. 最新バージョンの [DocumentDB Emulator](https://aka.ms/documentdb-emulator) をインストールします。
+5. PartitionCount フラグの値を 250 以下に設定して、エミュレーターを起動します。 (例: `C:\Program Files\DocumentDB Emulator>DocumentDB.Emulator.exe /PartitionCount=100`)。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+次のヒントは、DocumentDB Emulator で発生する問題のトラブルシューティングに役立ちます。
+
+- DocumentDB Emulator がクラッシュした場合は、c:\Users\user_name\AppData\Local\CrashDumps フォルダーからダンプ ファイルを収集し、それらを圧縮して、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) への電子メールに添付します。
+
+- 接続の問題が発生した場合は、[トレース ファイルを収集](#trace-files)し、それらを圧縮して、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) への電子メールに添付します。
+
+### <a name="a-idtrace-filesacollect-trace-files"></a><a id="trace-files"></a>トレース ファイルの収集
+
+デバッグ トレースを収集するには、管理コマンド プロンプトから次のコマンドを実行します。
+
+1. `cd /d "%ProgramFiles%\DocumentDB Emulator"`
+2. `DocumentDB.Emulator.exe /shutdown`」を参照してください。 プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに&1; 分かかる場合があります。 DocumentDB Emulator のユーザー インターフェイスで **[終了]** をクリックすることもできます。
+3. `DocumentDB.Emulator.exe /starttraces`
+4. `DocumentDB.Emulator.exe`
+5. 問題を再現します。 データ エクスプローラーが動作していない場合は、エラーを捕捉するために、ブラウザーが開くまで数秒間待つだけです。
+5. `DocumentDB.Emulator.exe /stoptraces`
+6. `%ProgramFiles%\DocumentDB Emulator` に移動し、docdbemulator_000001.etl ファイルを見つけます。
+7. デバッグのために、再現手順と共に .etl ファイルを [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) に送付します。
+
+
 ## <a name="next-steps"></a>次のステップ
 * DocumentDB の詳細については、[Azure DocumentDB の概要](documentdb-introduction.md)に関する記事を参照してください。
 * DocumentDB Emulator に対する開発を開始するには、[サポートされている DocumentDB SDK](documentdb-sdk-dotnet.md) のいずれかをダウンロードしてください。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

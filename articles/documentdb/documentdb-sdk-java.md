@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB Java API と SDK | Microsoft Docs"
+title: "Java API と SDK のリソース - Azure DocumentDB | Microsoft Docs"
 description: "リリース日、提供終了日、DocumentDB Java SDK の各バージョン間の変更など、Java API と SDK に関するあらゆる詳細を提供します。"
 services: documentdb
 documentationcenter: java
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 10/28/2016
-ms.author: rnagpal
+ms.date: 01/31/2017
+ms.author: khdang
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 35a773e5f91490c3d4eb053d71ce1d189ba96872
+ms.sourcegitcommit: 47a54e51fa7378336aabe3fa6f93794852152cfe
+ms.openlocfilehash: d61ed82cc7841e427d422d4e48f2b1a42cf97521
 
 
 ---
@@ -42,12 +42,41 @@ ms.openlocfilehash: 35a773e5f91490c3d4eb053d71ce1d189ba96872
 
 <tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
 
-<tr><td>**作業開始**</td><td>[Java SDK の開始](documentdb-java-application.md)</td></tr>
+<tr><td>**作業開始**</td><td>[Java SDK の開始](documentdb-java-get-started.md)</td></tr>
+
+<tr><td>**Web アプリ チュートリアル**</td><td>[DocumentDB による Web アプリケーション開発](documentdb-java-application.md)</td></tr>
 
 <tr><td>**現在サポートされているランタイム**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+### <a name="a-name195195httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb195"></a><a name="1.9.5"/>[1.9.5](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.5)
+* 集計クエリ (AVG、COUNT、MIN、MAX、および SUM) のサポートを追加しました。
+* Change Feed のサポートを追加しました。
+* RequestOptions.setPopulateQuotaInfo を介したコレクション クォータ情報のサポートを追加しました。
+* RequestOptions.setScriptLoggingEnabled を介したストアド プロシージャ スクリプトのログ記録のサポートを追加しました。
+* スロットル エラーが発生した場合に DirectHttps モードのクエリがハングすることがあるバグを修正しました。
+* セッションの整合性モードのバグを修正しました。
+* 要求レートが高いときに HttpContext の NullReferenceException を引き起こす可能性のあるバグを修正しました。
+* DirectHttps モードのパフォーマンスを改善しました。
+
+### <a name="a-name194194httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb194"></a><a name="1.9.4"/>[1.9.4](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.4)
+* ConnectionPolicy.setProxy() API による簡易クライアント インスタンス ベースのプロキシのサポートを追加しました。
+* DocumentClient インスタンスを適切にシャットダウンするために、DocumentClient.close() API を追加しました。
+* ゲートウェイではなく、ネイティブ アセンブリからクエリ プランを派生することで、直接接続モードでのクエリのパフォーマンスを改善しました。
+* ユーザーが POJO で JsonIgnoreProperties を定義しなくて済むように、FAIL_ON_UNKNOWN_PROPERTIES = false を設定しました。
+* SLF4J を使用するためにログ記録をリファクタリングしました。
+* 整合性リーダーの他のいくつかのバグを修正しました。
+
+### <a name="a-name193193httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb193"></a><a name="1.9.3"/>[1.9.3](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.3)
+* 直接接続モードでの接続リークを防ぐために、接続管理のバグを修正しました。
+* NullReferenece 例外がスローされる場合がある TOP クエリのバグを修正しました。
+* 内部キャッシュのネットワーク呼び出しの数を減らすことでパフォーマンスを改善しました。
+* トラブルシューティングを適切に行うために、状態コード、ActivityID、要求 URI を DocumentClientException に追加しました。
+
+### <a name="a-name192192httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb192"></a><a name="1.9.2"/>[1.9.2](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.2)
+* 安定性を確保するために接続管理の問題を修正しました。
+
 ### <a name="a-name191191httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb191"></a><a name="1.9.1"/>[1.9.1](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.1)
 * BoundedStaleness 一貫性レベルのサポートを追加しました。
 * パーティション分割コレクションの CRUD 操作のための直接接続のサポートを追加しました。
@@ -122,7 +151,11 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
-| [1.9.1](#1.9.1) |2016 年 10 月 28 日 |--- |
+| [1.9.5](#1.9.5) |2017 年 1 月 31 日 |--- |
+| [1.9.4](#1.9.4) |2016 年 11 月 24 日 |--- |
+| [1.9.3](#1.9.3) |2016 年 10 月 30 日 |--- |
+| [1.9.2](#1.9.2) |2016 年 10 月 28 日 |--- |
+| [1.9.1](#1.9.1) |2016 年 10 月 26 日 |--- |
 | [1.9.0](#1.9.0) |2016 年 10 月 3 日 |--- |
 | [1.8.1](#1.8.1) |2016 年 6 月 30 日 |--- |
 | [1.8.0](#1.8.0) |2016 年 6 月 14 日 |--- |
@@ -153,6 +186,6 @@ DocumentDB に関する詳細は、 [Microsoft Azure DocumentDB](https://azure.m
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

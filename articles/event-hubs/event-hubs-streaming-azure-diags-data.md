@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 07/14/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1827b093b0c61dfbf6a6c87fe826299262491d40
+ms.sourcegitcommit: fe331199333d492dbc42c9125c9da96a44066ee1
+ms.openlocfilehash: 6623bb9a4f3845676574f6335dd662dd5bcf7be9
 
 
 ---
@@ -51,7 +51,7 @@ Azure 診断の Event Hubs シンクは、Azure SDK 2.9 以降の Cloud Services
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Azure 診断を Event Hubs シンクに接続する
 Azure 診断では常に、ログとメトリックが既定で Azure Storage アカウントにシンクされます。 *.wadcfgx* ファイルの **PublicConfig** セクションの **WadCfg** 要素に新しい **Sinks** セクションを追加することで、アプリケーションを追加で Event Hubs にシンクできます。 Visual Studio の場合、*.wadcfgx* ファイルは **[Cloud Service Project (クラウド サービス プロジェクト)]** > **[ロール]** >  **[(ロール名)]** > **diagnostics.wadcfgx** ファイルに保存されています。
 
-```
+```xml
 <SinksConfig>
   <Sink name="HotPath">
     <EventHub Url="https://diags-mycompany-ns.servicebus.windows.net/diageventhub" SharedAccessKeyName="SendRule" />
@@ -93,7 +93,7 @@ Event Hubs シンクは、 **.wadcfgx** 構成ファイルの *PrivateConfig* �
 
 次に構成例をいくつか示します。
 
-```
+```xml
 <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="HotPath">
   <PerformanceCounterConfiguration counterSpecifier="\Memory\Available MBytes" sampleRate="PT3M" />
   <PerformanceCounterConfiguration counterSpecifier="\Web Service(_Total)\ISAPI Extension Requests/sec" sampleRate="PT3M" />
@@ -108,7 +108,7 @@ Event Hubs シンクは、 **.wadcfgx** 構成ファイルの *PrivateConfig* �
 
 次の例では、階層の親ノード **PerformanceCounters** にシンクが適用されます。つまり、すべての子 **PerformanceCounters** が Event Hubs に送信されます。  
 
-```
+```xml
 <PerformanceCounters scheduledTransferPeriod="PT1M">
   <PerformanceCounterConfiguration counterSpecifier="\Memory\Available MBytes" sampleRate="PT3M" />
   <PerformanceCounterConfiguration counterSpecifier="\Web Service(_Total)\ISAPI Extension Requests/sec" sampleRate="PT3M" />
@@ -121,7 +121,7 @@ Event Hubs シンクは、 **.wadcfgx** 構成ファイルの *PrivateConfig* �
 </PerformanceCounters>
 ```
 
-前の例では、**Requests Queued**、**Requests Rejected**、**% Processor time** という 3 つのカウンターにのみシンクが適用されています。  
+前の例では、**Requests Queued**、**Requests Rejected**、**% Processor time** という&3; つのカウンターにのみシンクが適用されています。  
 
 次の例は、このサービスの正常性のために使用される重要なメトリックになる送信データの量を開発者が制限する方法を示しています。  
 
@@ -156,7 +156,7 @@ Visual Studio には、アプリケーションと Event Hubs シンク構成を
 
 **Main** 関数内の山かっこで囲まれた値を、リソースの値で必ず置換してください。   
 
-```
+```csharp
 //Console application code for EventHub test client
 using System;
 using System.Collections.Generic;
@@ -252,7 +252,7 @@ namespace EventHubListener
 •    [Event Hubs の詳細を確認します。](https://azure.microsoft.com/services/event-hubs/)
 
 ## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>付録: 完全な Azure 診断構成ファイル (.wadcfgx) の例
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <DiagnosticsConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
   <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -307,7 +307,7 @@ namespace EventHubListener
 
 この例の完全な *ServiceConfiguration.Cloud.cscfg* は次のようになります。
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="MyFixItCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2015-04.2.6">
   <Role name="MyFixIt.WorkerRole">
@@ -318,12 +318,18 @@ namespace EventHubListener
   </Role>
 </ServiceConfiguration>
 ```
+## <a name="next-steps"></a>次のステップ
+Event Hubs の詳細については、次のリンク先を参照してください:
+
+* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
+* [Event Hub を作成する](event-hubs-create.md)
+* [Event Hubs の FAQ](event-hubs-faq.md)
 
 <!-- Images. -->
 [0]: ./media/event-hubs-streaming-azure-diags-data/dashboard.png
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions NodeJS 開発者向けリファレンス | Microsoft Docs"
-description: "NodeJS を使用して Azure Functions を開発する方法について説明します。"
+title: "Azure Functions 用 JavaScript 開発者向けリファレンス | Microsoft Docs"
+description: "JavaScript を使用して Azure Functions を開発する方法について説明します。"
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -15,27 +15,27 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/13/2016
-ms.author: chrande
+ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 6f558761f85bd0f9f4e8be38192df1c1ccf16c4e
-ms.openlocfilehash: d4d43e646734d3496cd9d35d1d7aa6a39852533a
+ms.sourcegitcommit: e660f3313ba6805356eef30b3a17ac609fc9043e
+ms.openlocfilehash: 880fdbd6fc51f16add2f2497402d8b01047d0847
 
 
 ---
-# <a name="azure-functions-nodejs-developer-reference"></a>Azure Functions NodeJS 開発者向けリファレンス
+# <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 > [!div class="op_single_selector"]
 > * [C# スクリプト](functions-reference-csharp.md)
 > * [F# スクリプト](functions-reference-fsharp.md)
-> * [Node.JS](functions-reference-node.md)
+> * [JavaScript](functions-reference-node.md)
 > 
 > 
 
-Azure Functions の Node/JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインドを介してデータの送受信を行ったりする場合に `context` オブジェクトが渡される関数を簡単にエクスポートできます。
+Azure Functions の JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインドを介してデータの送受信を行ったりする場合に `context` オブジェクトが渡される関数を簡単にエクスポートできます。
 
 この記事では、「 [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
 
 ## <a name="exporting-a-function"></a>関数のエクスポート
-すべての JavaScript 関数では、ランタイムが関数を見つけて実行するために、`module.exports` を使用して `function` を 1 つエクスポートする必要があります。 この関数には、常に `context` オブジェクトを含める必要があります。
+すべての JavaScript 関数では、ランタイムが関数を見つけて実行するために、`module.exports` を使用して `function` を&1; つエクスポートする必要があります。 この関数には、常に `context` オブジェクトを含める必要があります。
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -198,6 +198,6 @@ function GetEnvironmentVariable(name)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

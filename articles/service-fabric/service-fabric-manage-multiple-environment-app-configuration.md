@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/01/2016
+ms.date: 2/06/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: cd256c403cc8094a135157cdc69dbdd3971978ca
-ms.openlocfilehash: 9f8a898f265bc27fc47ea2e3d00d123f3f47dad6
+ms.sourcegitcommit: b57655c8041fa366d0aeb13e744e30e834ec85fa
+ms.openlocfilehash: 7432e45ef33bd4d51fca8e8db8ec880e8beaf3ab
 
 
 ---
@@ -96,6 +96,94 @@ DefaultValue 属性では、特定の環境に対して具体的なパラメー�
 > 
 > 
 
+### <a name="setting-and-using-environment-variables"></a>環境変数の設定と使用 
+ServiceManifest.xml ファイルで環境変数を指定して設定した後、ApplicationManifest.xml ファイルで、それらをインスタンスごとにオーバーライドできます。
+次の例では、2 つの環境変数を扱っています。一方には値を設定し、もう一方についてはオーバーライドしています。 アプリケーション パラメーターを使用する場合も、構成のオーバーライドに使用したのと同じ方法で環境変数の値を設定できます。
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ServiceManifest Name="MyServiceManifest" Version="SvcManifestVersion1" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Description>An example service manifest</Description>
+  <ServiceTypes>
+    <StatelessServiceType ServiceTypeName="MyServiceType" />
+  </ServiceTypes>
+  <CodePackage Name="MyCode" Version="CodeVersion1">
+    <SetupEntryPoint>
+      <ExeHost>
+        <Program>MySetup.bat</Program>
+      </ExeHost>
+    </SetupEntryPoint>
+    <EntryPoint>
+      <ExeHost>
+        <Program>MyServiceHost.exe</Program>
+      </ExeHost>
+    </EntryPoint>
+    <EnvironmentVariables>
+      <EnvironmentVariable Name="MyEnvVariable" Value=""/>
+      <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
+    </EnvironmentVariables>
+  </CodePackage>
+  <ConfigPackage Name="MyConfig" Version="ConfigVersion1" />
+  <DataPackage Name="MyData" Version="DataVersion1" />
+</ServiceManifest>
+```
+ApplicationManifest.xml 内の環境変数をオーバーライドするには、ServiceManifest 内で、`EnvironmentOverrides` 要素を使用してコード パッケージを参照します。
+
+```xml
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="FrontEndServicePkg" ServiceManifestVersion="1.0.0" />
+    <EnvironmentOverrides CodePackageRef="MyCode">
+      <EnvironmentVariable Name="MyEnvVariable" Value="mydata"/>
+    </EnvironmentOverrides>
+  </ServiceManifestImport>
+ ``` 
+ 指定したサービス インスタンスが作成されたら、環境変数にコードからアクセスできます。 たとえば、C# では次のような操作が可能です
+
+```csharp
+    string EnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
+```
+
+### <a name="service-fabric-environment-variables"></a>Service Fabric の環境変数
+Service Fabric には、サービス インスタンスごとに設定された環境変数が組み込まれています。 これらの環境変数を以下に示します。太字で示されている環境変数はサービスで使用するものであり、それ以外は Service Fabric ランタイムで使用されるものです。 
+
+* Fabric_ApplicationHostId
+* Fabric_ApplicationHostType
+* Fabric_ApplicationId
+* **Fabric_ApplicationName**
+* Fabric_CodePackageInstanceId
+* **Fabric_CodePackageName**
+* **Fabric_Endpoint_[YourServiceName]TypeEndpoint**
+* **Fabric_Folder_App_Log**
+* **Fabric_Folder_App_Temp**
+* **Fabric_Folder_App_Work**
+* **Fabric_Folder_Application**
+* Fabric_NodeId
+* **Fabric_NodeIPOrFQDN**
+* **Fabric_NodeName**
+* Fabric_RuntimeConnectionAddress
+* Fabric_ServicePackageInstanceId
+* Fabric_ServicePackageName
+* Fabric_ServicePackageVersionInstance
+* FabricPackageFileName
+
+次のコードは、Service Fabric の環境変数のリストを表示する方法を示しています。
+ ```csharp
+    foreach (DictionaryEntry de in Environment.GetEnvironmentVariables())
+    {
+        if (de.Key.ToString().StartsWith("Fabric"))
+        {
+            Console.WriteLine(" Environment variable {0} = {1}", de.Key, de.Value);
+        }
+    }
+```
+ローカルの開発用コンピューターで実行する際の、`GuestExe.Application` というアプリケーションの種類と `FrontEndService` というサービスの種類の環境変数の例を次に示します。
+
+* **Fabric_ApplicationName = fabric:/GuestExe.Application**
+* **Fabric_CodePackageName = Code**
+* **Fabric_Endpoint_FrontEndServiceTypeEndpoint = 80**
+* **Fabric_NodeIPOrFQDN = localhost**
+* **Fabric_NodeName = _Node_2**
+
 ### <a name="application-parameter-files"></a>アプリケーション パラメーター ファイル
 Service Fabric アプリケーション プロジェクトには、1 つまたは複数のアプリケーション パラメーター ファイルを含めることができます。 各ファイルでは、アプリケーション マニフェストで定義されているパラメーターに対して特定の値を定義します。
 
@@ -141,6 +229,6 @@ Visual Studio でアプリケーションを発行する場合は、使用可能
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

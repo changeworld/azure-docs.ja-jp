@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center での SQL Database の監査の有効化 | Microsoft Docs"
-description: "このドキュメントでは、&quot;SQL Database の監査の有効化&quot; という Azure Security Center の推奨事項を実装する方法について説明します。"
+description: "このドキュメントでは、&quot;**SQL Database の監査を有効にする**&quot; という Azure Security Center の推奨事項を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c662a69f2fdbe3bd7848bdcd1eb0f9742f56c8c8
+ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
+ms.openlocfilehash: 3d35c26ab0e1013ae10508cfbcf7ed644ab6d1f0
 
 
 ---
@@ -29,15 +29,18 @@ Azure Security Center では、監査をまだ有効にしていない場合に�
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  ステップ バイ ステップ ガイドではありません。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
 1. **[推奨事項]** ブレードで、**[SQL Database の監査を有効にする]** を選択します。  **[SQL データベースの監査を有効にする]** ブレードが開きます。
-   ![Enable auditing on SQL databases][1]
+
+   ![SQL データベースの監査の有効化][1]
 2. 監査を有効にする SQL Database を選択します。 **[監査と脅威検出]** ブレードが開きます。
+
    ![監査と脅威の検出][2]
 3. **[監査と脅威検出]** ブレードで、**[監査]** の **[オン]** を選択します。
+
    ![監査と脅威の検出の有効化][3]
 4. 「 [SQL Database 脅威の検出の概要](../sql-database/sql-database-threat-detection-get-started.md) 」の手順に従って、脅威の検出を有効にして構成し、異常なアクティビティの検出時にセキュリティの警告を受信する電子メールの一覧を構成します。
 
@@ -63,6 +66,6 @@ Azure Security Center では、監査をまだ有効にしていない場合に�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

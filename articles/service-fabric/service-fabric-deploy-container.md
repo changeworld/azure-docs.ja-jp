@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/4/2017
+ms.date: 2/6/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: d7aa8568dd6fdd806d8ad70e408f108c722ec1ce
-ms.openlocfilehash: c444ed85e2108a1b54d468f410c446aa6032e2a2
+ms.sourcegitcommit: 93e0493e6a62a70a10b8315142765a3c3892acd1
+ms.openlocfilehash: a29dd68c5daeaa290b351e6e04417f604bc30ddb
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: c444ed85e2108a1b54d468f410c446aa6032e2a2
 この記事では、コンテナー化されたサービスを Windows コンテナーに構築する手順を紹介します。
 
 > [!NOTE]
-> この機能は、Linux と Windows Server 2016 についてはプレビュー段階です。
+> Windows Server 2016 では、この機能はプレビュー段階です。
 >  
 
 Service Fabric には、コンテナー化されたマイクロサービスで構成されたアプリケーションの構築に役立つ、いくつかのコンテナー機能が用意されています。 
@@ -57,18 +57,32 @@ Visual Studio には、コンテナーを Service Fabric クラスターにデ�
 
 1. **[ファイル]**、 > **[新しいプロジェクト]** の順に選択し、Service Fabric アプリケーションを作成します。
 2. サービス テンプレートとして**ゲスト コンテナー**を選択します。
-3. **[イメージ名]** を選択し、コンテナー リポジトリ内のイメージへのパスを指定します (たとえば、https://hub.docker.com/ の  myrepo/myimage:v1 など)。 
+3. **[イメージ名]** を選択し、コンテナー リポジトリ内のイメージのパスを指定します (https://hub.docker.com/ の myrepo/myimage:v1 など)。 
 4. サービスに名前を付けて、**[OK]** をクリックします。
 5. コンテナー化されたサービスに通信用のエンドポイントが必要な場合は、ServiceManifest.xml ファイルに Protocol、Port、Type を追加できます。 For example: 
      
     `<Endpoint Name="MyContainerServiceEndpoint" Protocol="http" Port="80" UriScheme="http" PathSuffix="myapp/" Type="Input" />`
     
-    `UriScheme` を指定すると、Service Fabric ネーム サービスを使用したコンテナー エンドポイントが自動的に登録され、検出可能性が確保されます。 他のサービスと同様、ポートは (上記の例のように) 固定にすることもできますし、動的に割り当てることもできます (空白のままにすると、指定されたアプリケーション ポート範囲からポートが割り当てられます)。
+    `UriScheme` を指定すると、Service Fabric ネーム サービスを使用したコンテナー エンドポイントが自動的に登録され、検出可能性が確保されます。 他のサービスと同様に、ポートは (上記の例のように) 固定にすることも、動的に割り当てることもできます (空白のままにすると、指定されたアプリケーション ポート範囲からポートが割り当てられます)。
     また下記のように、アプリケーション マニフェストで `PortBinding` ポリシー指定して、コンテナーのポートからホストへのポート マッピングを構成する必要があります、。
-6. コンテナーでリソース ガバナンスが必要な場合は、`ResourceGovernancePolicy` を追加する必要があります。 下記の例をご覧ください。
-8. コンテナーでプライベート リポジトリを使用した認証が必要な場合は、`RepositoryCredentials` を追加します。 下記の例をご覧ください。
+6. コンテナーでリソース ガバナンスが必要な場合は、`ResourceGovernancePolicy` を追加する必要があります。
+8. コンテナーでプライベート リポジトリを使用した認証が必要な場合は、`RepositoryCredentials` を追加します。
 7. これで、パッケージを使用し、ローカル クラスターに対してアクションを公開できるようになりました。ただし、コンテナー サポートがアクティブ化された Windows Server 2016 を使用している必要があります。 
 8. 準備ができたら、アプリケーションをリモート クラスターに発行するか、ソリューションをソース管理にチェックインすることができます。 
+
+アプリケーションの例については、[GitHub にある Service Fabric コンテナーのコード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)を参照してください。
+
+## <a name="creating-a-windows-server-2016-cluster"></a>Windows Server 2016 クラスターの作成
+コンテナー化されたアプリケーションをデプロイするには、コンテナーのサポートが有効になっている Windows Server 2016 を実行するクラスターを作成する必要があります。 このクラスターは、ローカルの開発用コンピューター上に配置することも、Azure で Azure Resource Manager (ARM) を使用してデプロイすることもできます。 
+
+ARM を使用してクラスターをデプロイするには、Azure で **Windows Server 2016 with Containers** イメージ オプションを選択します。 「[Azure Resource Manager を使用して Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-arm.md)」をご覧ください。 次の ARM 設定を必ず使用します。
+
+```xml
+"vmImageOffer": { "type": "string","defaultValue": "WindowsServer"     },
+"vmImageSku": { "defaultValue": "2016-Datacenter-with-Containers","type": "string"     },
+"vmImageVersion": { "defaultValue": "latest","type": "string"     },  
+```
+[こちらの&5; ノード ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)を使用してクラスターを作成することもできます。 または、Service Fabric と Windows コンテナーの使用方法に関する[こちらの Leok のブログ記事](https://loekd.blogspot.com/2017/01/running-windows-containers-on-azure.html)をご覧ください。
 
 <a id="manually"></a>
 
@@ -286,9 +300,11 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 ## <a name="next-steps"></a>次のステップ
 コンテナー化サービスをデプロイしたので、ライフ サイクルを管理する方法について、「[Service Fabric アプリケーションのライフ サイクル](service-fabric-application-lifecycle.md)」を参照してください。
 
+* [Service Fabric とコンテナーの概要](service-fabric-containers-overview.md)
 
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

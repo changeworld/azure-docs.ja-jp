@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/23/2017
+ms.date: 01/31/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: d00ba4e6d1abd62e5a0d5a9d5bb229d3fa64b473
-ms.openlocfilehash: 8df9faed82a6cf11001e083b7849dd7654bf3c24
+ms.sourcegitcommit: becd7fbcfa094257408ed96eda0c62deefceb44d
+ms.openlocfilehash: 59067ef58d276265e0431119986774ff14212067
 
 
 ---
@@ -36,6 +36,9 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [API 管理サービスの共同作業者](#api-management-service-contributor) |API Management サービスを管理できます |
 | [Application Insights コンポーネントの共同作業者](#application-insights-component-contributor) |Application Insights コンポーネントを管理できます |
 | [オートメーション オペレーター](#automation-operator) |ジョブを開始、停止、中断、および再開できます |
+| [バックアップの共同作業者](#backup-contributor) | Recovery Services コンテナーのバックアップを管理できます |
+| [バックアップ オペレーター](#backup-operator) | バックアップの削除を除き、Recovery Services コンテナーのバックアップを管理できます |
+| [バックアップ リーダー](#backup-reader) | すべてのバックアップ管理サービスを表示できます  |
 | [BizTalk の共同作業者](#biztalk-contributor) |BizTalk Services を管理できます |
 | [ClearDB MySQL DB の共同作業者](#cleardb-mysql-db-contributor) |ClearDB MySQL データベースを管理できます |
 | [共同作成者](#contributor) |アクセス権以外のすべてを管理できます。 |
@@ -117,6 +120,98 @@ Application Insights コンポーネントを管理できます
 | Microsoft.Resources/deployments/* |リソース グループ デプロイの作成と管理 |
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
+
+### <a name="backup-contributor"></a>バックアップの共同作業者
+Recovery Services コンテナーの作成と他のユーザーへのアクセス権の付与を除き、すべてのバックアップ管理アクションを管理できます
+
+| **アクション** | |
+| --- | --- |
+| Microsoft.Network/virtualNetworks/read | 仮想ネットワークの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/* | バックアップ管理操作の結果の管理 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | Recovery Services コンテナーのバックアップ ファブリック内でのバックアップ コンテナーの作成および管理 |
+| Microsoft.RecoveryServices/Vaults/backupJobs/* | バックアップ ジョブの作成および管理 |
+| Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Excel へのバックアップ ジョブのエクスポート |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | バックアップの管理に関連するメタ データの作成および管理 |
+| Microsoft.RecoveryServices/Vaults/backupOperationResults/* | バックアップ管理操作の結果の作成および管理 |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/* | バックアップ ポリシーの作成および管理 |
+| Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | バックアップできるアイテムの作成および管理 |
+| Microsoft.RecoveryServices/Vaults/backupProtectedItems/* | バックアップ アイテムの作成および管理 |
+| Microsoft.RecoveryServices/Vaults/backupProtectionContainers/* | バックアップ アイテムを保持するコンテナーの作成および管理 |
+| Microsoft.RecoveryServices/Vaults/certificates/* | Recovery Services コンテナー内のバックアップに関連する証明書の作成および管理 |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | コンテナーに関連する拡張情報の作成および管理 | 
+| Microsoft.RecoveryServices/Vaults/read | Recovery Services コンテナーの読み取り |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/* | 新しく作成されたコンテナーを取得するための検出操作の管理 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 登録済み ID の管理 |
+| Microsoft.RecoveryServices/Vaults/usages/* | Recovery Services コンテナーの使用状況の作成および管理 |
+| Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |
+| Microsoft.Storage/storageAccounts/read | ストレージ アカウントの読み取り |
+| Microsoft.Support/* |サポート チケットの作成と管理 |
+
+### <a name="backup-operator"></a>バックアップ オペレーター
+コンテナーの作成、バックアップの削除、および他のユーザーへのアクセス権の付与を除き、すべてのバックアップ管理アクションを管理できます
+
+| **アクション** | |
+| --- | --- |
+| Microsoft.Network/virtualNetworks/read | 仮想ネットワークの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | バックアップ管理操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | 保護コンテナーに対する操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | バックアップされたアイテムに対するオンデマンドのバックアップ操作の実行 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | バックアップされたアイテムに対して実行された操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationStatus/read | バックアップされたアイテムに対して実行された操作の状態の読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | バックアップされたアイテムの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | バックアップされたアイテムの復旧ポイントの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | バックアップされた項目の復旧ポイントを使用した復元操作の実行 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | バックアップ アイテムの作成 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | バックアップ アイテムを保持するコンテナーの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupJobs/* | バックアップ ジョブの作成および管理 |
+| Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Excel へのバックアップ ジョブのエクスポート |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | バックアップの管理に関連するメタ データの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupOperationResults/* | バックアップ管理操作の結果の作成および管理 |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | バックアップ ポリシーに対して実行された操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/read | バックアップ ポリシーの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | バックアップできるアイテムの作成および管理 |
+| Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | バックアップされたアイテムの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | バックアップ アイテムを保持するバックアップされたコンテナーの読み取り |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | コンテナーに関連する拡張情報の読み取り | 
+| Microsoft.RecoveryServices/Vaults/extendedInformation/write | コンテナーに関連する拡張情報の書き込み | 
+| Microsoft.RecoveryServices/Vaults/read | Recovery Services コンテナーの読み取り |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/* | 新しく作成されたコンテナーを取得するための検出操作の管理 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | コンテナーの登録済みアイテムに対して実行された操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read | コンテナーの登録済みアイテムの読み取り |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/write | コンテナーの登録済みアイテムの書き込み |
+| Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の読み取り |
+| Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |
+| Microsoft.Storage/storageAccounts/read | ストレージ アカウントの読み取り |
+| Microsoft.Support/* | サポート チケットの作成と管理 |
+
+### <a name="backup-reader"></a>バックアップ リーダー
+Recovery Services コンテナーでのバックアップ管理を監視できます
+
+| **アクション** | |
+| --- | --- |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read  | バックアップ管理操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read  | 保護コンテナーに対する操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read  | バックアップされたアイテムに対して実行された操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationStatus/read  | バックアップされたアイテムに対して実行された操作の状態の読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read  | バックアップされたアイテムの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read  | バックアップ アイテムを保持するコンテナーの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read  | バックアップ ジョブの結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/backupJobs/read  | バックアップ ジョブの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Excel へのバックアップ ジョブのエクスポート |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read  | バックアップの管理に関連するメタ データの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupOperationResults/read  | バックアップの管理操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read  | バックアップ ポリシーに対して実行された操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/read  | バックアップ ポリシーの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupProtectedItems/read  |  バックアップされたアイテムの読み取り |
+| Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read  | バックアップ アイテムを保持するバックアップされたコンテナーの読み取り |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | コンテナーに関連する拡張情報の読み取り |
+| Microsoft.RecoveryServices/Vaults/read  | Recovery Services コンテナーの読み取り |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/read  | 新しく作成されたコンテナーを取得するための検出操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | コンテナーの登録済みアイテムに対して実行された操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | コンテナーの登録済みアイテムの読み取り |
+| Microsoft.RecoveryServices/Vaults/usages/read  |  Recovery Services コンテナーの使用状況の読み取り |
 
 ### <a name="biztalk-contributor"></a>BizTalk の共同作業者
 BizTalk Services を管理できます
@@ -555,6 +650,6 @@ Web サイトを管理できますが、接続されている Web プランは�
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB のパフォーマンスに関するヒント | Microsoft Docs"
+title: "パフォーマンスに関するヒント - Azure DocumentDB NoSQL | Microsoft Docs"
 description: "Azure DocumentDB データベースのパフォーマンスを向上させるクライアント構成オプションについて説明します。"
 keywords: "データベースのパフォーマンスを向上させる方法"
 services: documentdb
@@ -13,16 +13,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 01/19/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: 5b4efb2d6dedb43436745f5e8055cae44e4a58ac
+ms.sourcegitcommit: 532cfeb5115feb7558018af73968576dac17ff88
+ms.openlocfilehash: 28ca2d86f5008ee26376d76f3411cac05ffdfde4
 
 
 ---
 # <a name="performance-tips-for-documentdb"></a>DocumentDB のパフォーマンスに関するヒント
-Azure DocumentDB は、高速で柔軟性に優れた分散データベースです。待機時間とスループットが保証されており、シームレスにスケーリングできます。 DocumentDB でデータベースをスケーリングするために、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。 スケールアップとスケールダウンは、API 呼び出しか [SDK メソッド呼び出し](documentdb-performance-levels.md#changing-performance-levels-using-the-net-sdk)を 1 回行うだけで簡単に実行できます。 ただし、DocumentDB にはネットワーク呼び出しによってアクセスするため、最高のパフォーマンスを実現するためにクライアント側の最適化を行うことができます。
+Azure DocumentDB は、高速で柔軟性に優れた分散データベースです。待機時間とスループットが保証されており、シームレスにスケーリングできます。 DocumentDB でデータベースをスケーリングするために、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。 スケールアップとスケールダウンは、API 呼び出しか [SDK メソッド呼び出し](documentdb-performance-levels.md#changing-performance-levels-using-the-net-sdk)を&1; 回行うだけで簡単に実行できます。 ただし、DocumentDB にはネットワーク呼び出しによってアクセスするため、最高のパフォーマンスを実現するためにクライアント側の最適化を行うことができます。
 
 データベースのパフォーマンスを向上させる場合は、 以下のオプションを検討してください。
 
@@ -31,15 +31,16 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
 
 1. **接続ポリシー: 直接接続モードを使用する**
 
-    クライアントが Azure DocumentDB に接続する方法は、特に監視対象となるクライアント側の待機時間の観点から、パフォーマンスに重要な影響を及ぼします。 クライアントの接続ポリシーを構成する際に使用できる 2 つの主要な構成設定として、接続 "*モード*" と[接続 "*プロトコル*"](#connection-protocol) があります。  次の 2 つのモードが用意されています。
+    クライアントが Azure DocumentDB に接続する方法は、特に監視対象となるクライアント側の待機時間の観点から、パフォーマンスに重要な影響を及ぼします。 クライアントの接続ポリシーを構成する際に使用できる&2; つの主要な構成設定として、接続 "*モード*" と[接続 "*プロトコル*"](#connection-protocol) があります。  次の&2; つのモードが用意されています。
 
    1. ゲートウェイ モード (既定値)
    2. 直接モード
 
       ゲートウェイ モードは構成済みの既定のモードであり、すべての SDK プラットフォームでサポートされています。  ゲートウェイ モードでは標準の HTTPS ポートと単一のエンドポイントを使用するため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢です。 ただし、パフォーマンスのトレードオフとして、ゲートウェイ モードでは、DocumentDB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップが必要になります。   そのため、ネットワーク ホップ数が少ない直接モードの方がパフォーマンスが向上します。
+<a id="use-tcp"></a>
 2. **接続ポリシー: TCP プロトコルを使用する**
 
-    直接モードを利用するときは、次の 2 つのプロトコル オプションがあります。
+    直接モードを利用するときは、次の&2; つのプロトコル オプションがあります。
 
    * TCP
    * HTTPS
@@ -65,7 +66,7 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
      ![DocumentDB 接続ポリシーの図](./media/documentdb-performance-tips/azure-documentdb-connection-policy.png)
 3. **OpenAsync を呼び出して最初の要求での開始時の待機時間を回避する**
 
-    既定では、最初の要求でアドレス ルーティング テーブルを取得する必要があるため、最初の要求の待機時間が長くなります。 最初の要求でこの開始時の待機時間を回避するには、次のように初期化中に OpenAsync() を 1 回呼び出します。
+    既定では、最初の要求でアドレス ルーティング テーブルを取得する必要があるため、最初の要求の待機時間が長くなります。 最初の要求でこの開始時の待機時間を回避するには、次のように初期化中に OpenAsync() を&1; 回呼び出します。
 
         await client.OpenAsync();
    <a id="same-region"></a>
@@ -89,15 +90,15 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
    <a id="max-connection"></a>
 3. **ホストあたりの System.Net MaxConnections を増やす**
 
-    DocumentDB の要求は既定で HTTPS/REST を介して行われ、ホスト名または IP アドレスごとの既定の接続数の制限の対象となります。 場合によっては、DocumentDB に対する複数の同時接続をクライアント ライブラリが活かすためには、MaxConnections を 100 ～ 1000 に増やす必要があります。 .NET SDK 1.8.0 以降では、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) の既定値は 50 です。この値を変更するには、[Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) をより大きな値に設定します。  
+    DocumentDB の要求は既定で HTTPS/REST を介して行われ、ホスト名または IP アドレスごとの既定の接続数の制限の対象となります。 場合によっては、DocumentDB に対する複数の同時接続をクライアント ライブラリが活かすためには、MaxConnections を&100; ～&1000; に増やす必要があります。 .NET SDK 1.8.0 以降では、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) の既定値は 50 です。この値を変更するには、[Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) をより大きな値に設定します。  
 4. **パーティション分割コレクションに対する並列クエリを調整する**
 
-     DocumentDB .NET SDK Version 1.9.0 以降では、並列クエリがサポートされています。この機能を使用すると、パーティション分割コレクションにクエリを並列的に実行できます (詳細については、 [SDK の操作](documentdb-partition-data.md#working-with-the-sdks)」と、関連する[コード例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)を参照してください)。 並列クエリは、シリアル クエリよりもクエリの待機時間とスループットを向上させるように設計されています。 並列クエリには、ユーザーが要件に合わせて調整できる 2 つのパラメーターが用意されています。(a) MaxDegreeOfParallelism は、並列でクエリを実行できるパーティションの最大数を制御します。(b) MaxBufferedItemCount は、プリフェッチされる結果の数を制御します。
+     DocumentDB .NET SDK Version 1.9.0 以降では、並列クエリがサポートされています。この機能を使用すると、パーティション分割コレクションにクエリを並列的に実行できます (詳細については、 [SDK の操作](documentdb-partition-data.md#working-with-the-sdks)」と、関連する[コード例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)を参照してください)。 並列クエリは、シリアル クエリよりもクエリの待機時間とスループットを向上させるように設計されています。 並列クエリには、ユーザーが要件に合わせて調整できる&2; つのパラメーターが用意されています。(a) MaxDegreeOfParallelism は、並列でクエリを実行できるパーティションの最大数を制御します。(b) MaxBufferedItemCount は、プリフェッチされる結果の数を制御します。
 
     (a) ***MaxDegreeOfParallelism の調整\:***
     並列クエリは、複数のパーティションに並列してクエリを実行することで機能します。 ただし、個々のパーティション分割されたコレクションからのデータは、クエリごとに順番に取得されます。 そのため、MaxDegreeOfParallelism をパーティションの数に設定すると、その他のすべてのシステムの条件が変わらなければ、クエリのパフォーマンスを最大にできる可能性が最大になります。 パーティションの数が不明な場合は、MaxDegreeOfParallelism に大きな数を設定できます。システムが最小値 (パーティションの数、ユーザー指定の入力) を MaxDegreeOfParallelism として選択します。
 
-    並列クエリが最も有効に機能するのは、クエリに対するデータがすべてのパーティションに均等に分散している場合であることに注意する必要があります。 パーティション分割されたコレクションが、クエリによって返されるすべてまたは大部分のデータがわずかな数のパーティション (最悪の場合は 1 つのパーティション) に集中するように分割されている場合、クエリのパフォーマンスに関してこれらのパーティションがボトルネックになるでしょう。
+    並列クエリが最も有効に機能するのは、クエリに対するデータがすべてのパーティションに均等に分散している場合であることに注意する必要があります。 パーティション分割されたコレクションが、クエリによって返されるすべてまたは大部分のデータがわずかな数のパーティション (最悪の場合は&1; つのパーティション) に集中するように分割されている場合、クエリのパフォーマンスに関してこれらのパーティションがボトルネックになるでしょう。
 
     (b) ***MaxBufferedItemCount の調整\:***
     並列クエリは、結果の現在のバッチがクライアントに処理されている間に結果をプリフェッチするように設計されています。 プリフェッチは、クエリの全体的な遅延の削減に役立ちます。 MaxBufferedItemCount は、プリフェッチされる結果の量を制限するパラメーターです。 MaxBufferedItemCount を、返される結果の予期される数 (またはそれ以上の数) に設定すると、クエリに対するプリフェッチの効果が最大になります。
@@ -111,7 +112,7 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
     パフォーマンス テストでは、調整される要求の割合がわずかになるまで負荷を上げる必要があります。 スロットル状態になった場合、クライアント アプリケーション側でバックオフ値を適用し、サーバー側によって指定された再試行間隔のスロットル時間を後退させるようにしてください。 バックオフにより、再試行までの待ち時間を最小限に抑えることができます。 再試行ポリシーは、DocumentDB [.NET](documentdb-sdk-dotnet.md) および [Java](documentdb-sdk-java.md) のバージョン 1.8.0 以降、[Node.js](documentdb-sdk-node.md) および [Python](documentdb-sdk-python.md) のバージョン 1.9.0 以降、および [.NET Core](documentdb-sdk-dotnet-core.md) SDK のサポートされているすべてのバージョンでサポートされています。 詳細については、「[予約されたスループット上限の超過](documentdb-request-units.md#RequestRateTooLarge)」および [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx) に関するページを参照してください。
 7. **クライアント ワークロードをスケールアウトする**
 
-    高スループット レベル (1 秒あたりの要求ユニット数が 50,000 超) でテストを行っている場合、コンピューターが CPU 使用率またはネットワーク使用率の上限に達したことでクライアント アプリケーションがボトルネックになることがあります。 この状態に達しても、クライアント アプリケーションを複数のサーバーにスケールアウトすることで引き続き同じ DocumentDB アカウントで対応できます。
+    高スループット レベル (1 秒あたりの要求ユニット数が&50;,000 超) でテストを行っている場合、コンピューターが CPU 使用率またはネットワーク使用率の上限に達したことでクライアント アプリケーションがボトルネックになることがあります。 この状態に達しても、クライアント アプリケーションを複数のサーバーにスケールアウトすることで引き続き同じ DocumentDB アカウントで対応できます。
 8. **ドキュメント URI をキャッシュして読み取り待機時間を減らす**
 
     最適な読み取りパフォーマンスを実現するために、できる限りドキュメント URI をキャッシュします。
@@ -128,6 +129,18 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
 10. **スレッド/タスクの数を増やす**
 
     「ネットワーク」の「[スレッド/タスクの数を増やす](#increase-threads)」を参照してください。
+    
+11. **64 ビット ホスト プロセスを使用する**
+
+    DocumentDB SDK は、32 ビット ホスト プロセスで動作します。ただし、クロス パーティション クエリを使用している場合は、パフォーマンス向上のために 64 ビット ホスト プロセスを使用することをお勧めします。 次の種類のアプリケーションでは 32 ビット ホスト プロセスが既定で使用されるため、64 ビットに変更するには、アプリケーションの種類に基づいて次の手順に従ってください。
+    
+    - 実行可能なアプリケーションの場合、これは **[ビルド]** タブの **[プロジェクトのプロパティ]** ウィンドウで **[32 ビットを優先]** オプションをオフにすることで実行できます。 
+    
+    - VSTest ベースのテスト プロジェクトの場合、**Visual Studio テスト** メニュー オプションから **[テスト]**->**[テストの設定]**->**[Default Processor Architecture as X64 (X64 としての既定のプロセッサ アーキテクチャ)]** の順に選択することで実行できます。
+    
+    - ローカルでデプロイされた ASP.NET Web アプリケーションの場合、**[ツール]**->**[オプション]**->**[プロジェクトおよびソリューション]**->**[Web プロジェクト]** の順に選択して、**[Web サイトおよびプロジェクト用 IIS Express の 64 ビット バージョンを使用する]** をチェックすることで実行できます。
+    
+    - Azure にデプロイされた ASP.NET Web アプリケーションの場合、Azure Portal の **[アプリケーションの設定]** で、**[Platform as 64-bit (64 ビットとしてのプラットフォーム)]** を選択することで実行できます。
 
 ## <a name="indexing-policy"></a>インデックス作成ポリシー
 1. **ピーク時の取り込み速度を高める**
@@ -151,7 +164,7 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
 ## <a name="throughput"></a>スループット
 <a id="measure-rus"></a>
 
-1. **測定と調整によって 1 秒あたりの要求ユニットの使用量を削減する**
+1. **測定と調整によって&1; 秒あたりの要求ユニットの使用量を削減する**
 
     DocumentDB には、UDF、ストアド プロシージャ、トリガーを使用したリレーショナル クエリや階層クエリなど、さまざまなデータベース操作が用意されています。これらの操作はすべて、データベース コレクション内のドキュメントに対して実行できます。 これらの操作のそれぞれに関連付けられたコストは、操作を完了するために必要な CPU、IO、およびメモリに基づいて異なります。 ハードウェア リソースの管理について考える代わりに、各種のデータベース操作を実行しアプリケーション要求を処理するのに必要なリソースに関する単一の測定単位として要求単位 (RU) を考えることができます。
 
@@ -172,7 +185,8 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
                   Console.WriteLine("Query batch consumed {0} request units", queryResponse.RequestCharge);
              }
 
-    このヘッダーで返される要求の使用量は、プロビジョニングしたスループット (2000 RU/秒) の一部です。 たとえば、上記のクエリが 1 KB のドキュメントを 1000 個返した場合、この操作のコストは 1000 になります。 そのため、後続の要求を調整する前に、サーバーは 1 秒以内にこのような要求を 2 つだけ受け付けます。 詳細については、[要求ユニット](documentdb-request-units.md)に関する記事および[要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)のページを参照してください。
+    このヘッダーで返される要求の使用量は、プロビジョニングしたスループット (2000 RU/秒) の一部です。 たとえば、上記のクエリが 1 KB のドキュメントを 1000 個返した場合、この操作のコストは 1000 になります。 そのため、後続の要求を調整する前に、サーバーは&1; 秒以内にこのような要求を&2; つだけ受け付けます。 詳細については、[要求ユニット](documentdb-request-units.md)に関する記事および[要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)のページを参照してください。
+<a id="429"></a>
 2. **レート制限と大きすぎる要求レートに対処する**
 
     クライアントがアカウントの予約済みスループットを超えようとしても、サーバーでパフォーマンスの低下が発生することはなく、予約済みのレベルを超えてスループット容量が使用されることもありません。 サーバーはいち早く RequestRateTooLarge (HTTP 状態コード 429) で要求を終了させ、要求を再試行するまでにユーザーが待機しなければならない時間 (ミリ秒) を示す x-ms-retry-after-ms ヘッダーを返します。
@@ -197,6 +211,6 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

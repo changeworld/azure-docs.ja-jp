@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: d12ccdc13d6964a6de8068a63f945c7eac40b682
+ms.sourcegitcommit: 7c75fd870efb93bcf6c69ccf8a8ea9b56288c749
+ms.openlocfilehash: 0744b317f595786b91afce3c9e9d59f64ceef25d
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: d12ccdc13d6964a6de8068a63f945c7eac40b682
 
 セルフ サービスの IaaS は、ユーザーが管理、操作、および所有し、仮想マシン (VM) または物理システムに直接デプロイする手動によるデプロイです。 一方、完全管理型の PaaS/SaaS サービスは、Azure RemoteApp とよく似ており、パートナーが操作とサービスを処理するリモート処理ソリューションの上にサービス層を提供し、ユーザーが顧客としてイメージとアプリを管理することができます。
 
-各種ホスティング環境の例などの詳細をお読みください。    
+[Azure RemoteApp ウェビナー移行時オプションを表示](https://social.msdn.microsoft.com/Forums/azure/40557aaa-3e9f-403c-b221-ad3eac10dc56/migration-option-webinar-recordings?forum=AzureRemoteApp)するか、詳細 (さまざまなホスト オプションの例を含む) を確認します。
 
 ## <a name="self-managed-iaas-solutions"></a>自己管理型 (IaaS) ソリューション
 ### <a name="rds-on-iaas"></a>**IaaS 上の RDS**
@@ -212,6 +212,6 @@ Microsoft クラウド サービス プロバイダー: はい
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

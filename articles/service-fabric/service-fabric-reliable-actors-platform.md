@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/19/2016
+ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 12565a57415642d68397982decb834a0c573ccbe
+ms.sourcegitcommit: c2e8f2d2f26bb93af5c2858242392b3dc207beb4
+ms.openlocfilehash: 2a3a5647f506d61e853f465f241d66fbe8c4ced0
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: 12565a57415642d68397982decb834a0c573ccbe
 これらのコンポーネントで Reliable Actors フレームワークが構成されます。 
 
 ## <a name="service-layering"></a>サービスのレイヤー
-アクター サービス自体は Reliable Service であるため、Reliable Services の[アプリケーション モデル](service-fabric-application-model.md)、ライフサイクル、[パッケージング](service-fabric-application-model.md#package-an-application)、[デプロイ](service-fabric-deploy-remove-applications.md#deploy-an-application)、アップグレード、スケールの概念は、いずれもアクター サービスに当てはまります。 
+アクター サービス自体は Reliable Service であるため、Reliable Services の[アプリケーション モデル](service-fabric-application-model.md)、ライフサイクル、[パッケージ化](service-fabric-application-model.md#package-an-application)、[デプロイメント](service-fabric-deploy-remove-applications.md)、アップグレード、スケーリングの各概念は、すべてアクター サービスにも同様に適用されます。 
 
 ![Actor Service layering][1]
 
@@ -89,7 +89,7 @@ static class Program
 アクター サービスは `IActorService` を実装し、それが `IService` を実装します。 これは、Reliable Services リモート処理によって使用されるインターフェイスであり、サービス メソッドでのリモート プロシージャ呼び出しを可能にします。 これには、サービスのリモート処理によってリモートで呼び出すことのできるサービスレベルのメソッドが含まれます。
 
 #### <a name="enumerating-actors"></a>アクターの列挙
-アクター サービスにより、クライアントは、サービスによってホストされるアクターのメタデータを列挙できます。 アクター サービスはパーティション分割されたステートフル サービスであるため、列挙はパーティションごとに実行されます。 各パーティションには多数のアクターが含まれる可能性があるため、列挙はページングされた結果のセットとして返されます。 ページはすべてのページが読み取られるまでループされます。 次の例は、アクター サービスの 1 つのパーティションに含まれるすべてのアクティブ アクターのリストを作成する方法を示しています。
+アクター サービスにより、クライアントは、サービスによってホストされるアクターのメタデータを列挙できます。 アクター サービスはパーティション分割されたステートフル サービスであるため、列挙はパーティションごとに実行されます。 各パーティションには多数のアクターが含まれる可能性があるため、列挙はページングされた結果のセットとして返されます。 ページはすべてのページが読み取られるまでループされます。 次の例は、アクター サービスの&1; つのパーティションに含まれるすべてのアクティブ アクターのリストを作成する方法を示しています。
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -251,6 +251,6 @@ GUID と文字列を使用した場合、値は Int64 にハッシュされま�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,26 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2016
-ms.author: jotaub,sethm
+ms.date: 02/02/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
-ms.openlocfilehash: 22781ec965decbfd33923478794a76692151c363
+ms.sourcegitcommit: 4b54ad027a7de02cba7821f2a9b7fd06ef3a825b
+ms.openlocfilehash: ca2767340cb232722def8f06277cc84d5c76c1bf
 
 
 ---
 # <a name="relay-faq"></a>Relay に関する FAQ
-この記事では、Microsoft Azure Relay についてよく寄せられる質問 (FAQ) とその回答を紹介します。 Azure の価格およびサポートに関する一般的な情報については、「 [Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) 」も参照してください。
+
+この記事では、[Microsoft Azure Relay](https://azure.microsoft.com/services/service-bus/) についてよく寄せられる質問 (FAQ) とその回答を紹介します。 Azure の価格およびサポートに関する一般的な情報については、「 [Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) 」も参照してください。
 
 ## <a name="general-questions"></a>一般的な質問
 ### <a name="what-is-azure-relay"></a>Azure Relay とは
-ハイブリッド アプリケーションに Azure [Relay サービス](relay-what-is-it.md)を使用すると、ファイアウォール接続を開放せず、または企業ネットワークのインフラストラクチャ内部を変更せずに、企業のエンタープライズ ネットワーク内部にあるサービスを安全にパブリック クラウドに公開することができます。
+ハイブリッド アプリケーションに [Azure Relay サービス](relay-what-is-it.md)を使用すると、ファイアウォール接続を開放せず、または企業ネットワークのインフラストラクチャ内部を変更せずに、企業のエンタープライズ ネットワーク内部にあるサービスを安全にパブリック クラウドに公開することができます。
 
 ### <a name="what-is-a-relay-namespace"></a>Relay 名前空間とは何ですか?
 [名前空間](relay-create-namespace-portal.md)は、アプリケーション内で Relay リソースをアドレス指定するためのスコープ コンテナーを提供します。 Relay を使用するには、名前空間を作成する必要があります。これは、最初に実行する手順の&1; つです。
 
 ### <a name="what-happened-to-the-previously-named-relay-service"></a>以前の名前付き Relay サービスはどうなったのですか?
-以前の名前付き **Relay** サービスは、*WCF リレー*と呼ばれるようになっています。 このサービスは、これまでと同じように引き続き使用できます。 ハイブリッド接続は、BizTalk から移植されたサービスの更新バージョンです。 WCF リレーとハイブリッド接続はどちらも、今後もサポートされます。
+以前の名前付き Service Bus **Relay** サービスは、"*WCF リレー*" と呼ばれるようになっています。 このサービスは、これまでと同じように引き続き使用できます。 ハイブリッド接続は、BizTalk から移植されたサービスの更新バージョンです。 WCF リレーとハイブリッド接続はどちらも、今後もサポートされます。
 
 ## <a name="pricing"></a>価格
 このセクションでは、Relay の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。 Microsoft Azure の全般的な価格情報については、 [Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) も参照してください。 Relay の価格の詳細については、 [Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。
@@ -86,7 +87,7 @@ Relay 名前空間の名前は 6 ～ 50 文字にする必要があります。
 
 ## <a name="subscription-and-namespace-management"></a>サブスクリプションと名前空間の管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>別の Azure サブスクリプションに名前空間を移行する方法を教えてください
-PowerShell コマンドを使用して、Azure サブスクリプションを別の名前空間に移行できます ([このページ](../service-bus-messaging/service-bus-powershell-how-to-provision.md#migrate-a-namespace-to-another-azure-subscription)を参照してください)。 操作を実行するには、名前空間が既にアクティブになっている必要があります。 また、コマンドを実行するユーザーは、ソースとターゲットの両方のサブスクリプションの管理者である必要があります。
+PowerShell コマンドを使用して、Azure サブスクリプションを別の名前空間に移行できます ([このページ](../service-bus-messaging/service-bus-powershell-how-to-provision.md)を参照してください)。 操作を実行するには、名前空間が既にアクティブになっている必要があります。 また、コマンドを実行するユーザーは、ソースとターゲットの両方のサブスクリプションの管理者である必要があります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-their-suggested-actions"></a>Azure Relay API によって生成される例外とその推奨されるアクションをいくつか教えてください。
@@ -109,6 +110,6 @@ Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

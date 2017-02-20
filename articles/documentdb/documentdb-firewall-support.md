@@ -17,8 +17,8 @@ ms.topic: article
 ms.date: 12/20/2016
 ms.author: ankshah; kraman
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: f96c0b7b7edcd19a041c803e268a2dc4bf25b137
+ms.sourcegitcommit: 08cac64a6b08266f78bca03f1139a13e9686ebc3
+ms.openlocfilehash: 819602cda932ea698287724e307ebbd73f1af988
 
 
 ---
@@ -31,14 +31,14 @@ Azure DocumentDB データベース アカウントに格納されているデ�
 ![IP ベースのアクセス制御における接続プロセスの図](./media/documentdb-firewall-support/documentdb-firewall-support-flow.png)
 
 ## <a name="connections-from-cloud-services"></a>クラウド サービスからの接続
-DocumentDB を使用した中間層のサービス ロジックをホスティングする手段として、Azure ではクラウド サービスがよく利用されます。 クラウド サービスから DocumentDB データベース アカウントにアクセスできるようにするには、[Azure サポート](#configure-ip-policy)に連絡して、ご使用の DocumentDB データベース アカウントに関連付けられている IP アドレスの許可リストにクラウド サービスのパブリック IP アドレスを追加する必要があります。  これにより、クラウド サービスのすべてのロール インスタンスからその DocumentDB データベース アカウントにアクセスできるようになります。 クラウド サービスの IP アドレスは Azure Portal で確認できます。次のスクリーンショットを参照してください。 
+DocumentDB を使用した中間層のサービス ロジックをホスティングする手段として、Azure ではクラウド サービスがよく利用されます。 クラウド サービスから DocumentDB データベース アカウントにアクセスできるようにするには、[IP アクセス制御ポリシーを構成する](#configure-ip-policy)ことによって、ご使用の DocumentDB データベース アカウントに関連付けられている IP アドレスの許可リストにクラウド サービスのパブリック IP アドレスを追加する必要があります。  これにより、クラウド サービスのすべてのロール インスタンスからその DocumentDB データベース アカウントにアクセスできるようになります。 クラウド サービスの IP アドレスは Azure Portal で確認できます。次のスクリーンショットを参照してください。
 
 ![Azure Portal に表示されるクラウド サービスのパブリック IP アドレスを示すスクリーンショット](./media/documentdb-firewall-support/documentdb-public-ip-addresses.png)
 
 新たにロール インスタンスを追加してクラウド サービスをスケールアウトした場合、それらのインスタンスは、同じクラウド サービスに属すことになるので、DocumentDB データベース アカウントへのアクセス権が自動的に割り当てられます。
 
 ## <a name="connections-from-virtual-machines"></a>仮想マシンからの接続
-DocumentDB を使用する中間層サービスのホスティングには、[仮想マシン](https://azure.microsoft.com/services/virtual-machines/)または[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用することもできます。  仮想マシンからのアクセスを許可するように DocumentDB データベース アカウントを構成するには、[Azure サポートに連絡](#configure-ip-policy)して、ご使用の DocumentDB データベース アカウントに関して許可された IP アドレスに該当するように、仮想マシンまたは仮想マシン スケール セットのパブリック IP アドレスを構成する必要があります。 仮想マシンの IP アドレスは Azure Portal で確認できます。次のスクリーンショットを参照してください。
+DocumentDB を使用する中間層サービスのホスティングには、[仮想マシン](https://azure.microsoft.com/services/virtual-machines/)または[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用することもできます。  仮想マシンからのアクセスを許可するように DocumentDB データベース アカウントを構成するには、[IP アクセス制御ポリシーを構成する](#configure-ip-policy)ことによって、ご使用の DocumentDB データベース アカウントに関して許可された IP アドレスに該当するように、仮想マシンまたは仮想マシン スケール セットのパブリック IP アドレスを構成する必要があります。 仮想マシンの IP アドレスは Azure Portal で確認できます。次のスクリーンショットを参照してください。
 
 ![Azure Portal に表示される仮想マシンのパブリック IP アドレスを示すスクリーンショット](./media/documentdb-firewall-support/documentdb-public-ip-addresses-dns.png)
 
@@ -66,6 +66,6 @@ DocumentDB データベース アカウントの IP アクセス制御ポリシ�
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

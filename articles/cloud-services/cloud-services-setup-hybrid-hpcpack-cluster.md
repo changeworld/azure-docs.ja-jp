@@ -13,11 +13,11 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2016
+ms.date: 02/06/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 0e74a1784f39fe934d36c0391de7d01bf7699868
-ms.openlocfilehash: b0c207190fcfb23cc75c4aaa661c76c561265ef8
+ms.sourcegitcommit: a0e80acad4e8db2177e699f90f7296c64b38e718
+ms.openlocfilehash: da7102882b9dcf7db1285c0ec004ce1ad3859853
 
 
 ---
@@ -28,7 +28,7 @@ Microsoft HPC Pack 2012 R2 と Azure を使用して、小規模なハイブリ�
 
 このチュートリアルでは、「クラウド バースト」とも呼ばれる方法を紹介します。Azure 上で多くのコンピューティング処理を要するアプリケーションを実行するためにコンピューティング リソースをオンデマンドで使用する、拡張性に優れた方法です。
 
-このチュートリアルは、コンピューティング クラスターまたは HPC Pack を使用した経験がない読者を対象に作成されています。 これは、ハイブリッド コンピューティング クラスターを迅速にデプロイする方法のデモンストレーションを目的としています。 大規模なハイブリッド HPC Pack クラスターを運用環境にデプロイするための考慮事項と手順については、 [詳細なガイダンス](http://go.microsoft.com/fwlink/p/?LinkID=200493)を参照してください。 Azure 仮想マシンでの自動クラスター デプロイなど、HPC Pack に関するその他のシナリオについては、[Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+このチュートリアルは、コンピューティング クラスターまたは HPC Pack 2012 R2 を使用した経験がない読者を対象に作成されています。 これは、ハイブリッド コンピューティング クラスターを迅速にデプロイする方法のデモンストレーションを目的としています。 大規模なハイブリッド HPC Pack クラスターを運用環境にデプロイするため、または HPC Pack 2016 を使用するための考慮事項と手順については、[詳細なガイダンス](http://go.microsoft.com/fwlink/p/?LinkID=200493)を参照してください。 Azure 仮想マシンでの自動クラスター デプロイなど、HPC Pack に関するその他のシナリオについては、[Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション** - Azure サブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成することができます。
@@ -38,6 +38,10 @@ Microsoft HPC Pack 2012 R2 と Azure を使用して、小規模なハイブリ�
   * HPC Pack をサポートするには、オペレーティング システムは、英語、日本語、中国語 (簡体字) のいずれかでインストールする必要があります。
   * 重要な更新プログラムがインストールされていることを確認します。
 * **HPC Pack 2012 R2** - [ダウンロード](http://go.microsoft.com/fwlink/p/?linkid=328024) して、ヘッド ノード コンピューターに、またはネットワーク上にコピーします。 Windows Server のインストールと同じ言語を選択してください。
+
+    >[!NOTE]
+    > HPC Pack 2012 R2 ではなく HPC Pack 2016 を使用する場合は、追加の構成が必要になります。 [詳細なガイダンス](http://go.microsoft.com/fwlink/p/?LinkID=200493)を参照してください。
+    > 
 * **ドメイン アカウント** - このアカウントは、HPC Pack をインストールするヘッド ノード上で、ローカル管理者権限を使用して構成する必要があります。
 * **TCP 接続 (ポート 443)** 。
 
@@ -263,7 +267,7 @@ Azure のクラスター リソースを使用する場合、HPC クラスター
     このチュートリアルはこれで終わりです。
 
 ## <a name="next-steps"></a>次のステップ
-* 「 [HPC Pack 2012 R2 and HPC Pack 2012 (HPC Pack 2012 R2 と HPC Pack 2012)](http://go.microsoft.com/fwlink/p/?LinkID=263697)」のドキュメントを確認してください。
+* [HPC Pack](https://technet.microsoft.com/library/cc514029) のドキュメントを確認してください。
 * ハイブリッド HPC Pack クラスターの大規模なデプロイを設定するには、 [Microsoft HPC Pack を使用した Azure worker ロール インスタンスへのバースト](http://go.microsoft.com/fwlink/p/?LinkID=200493)に関するページを参照してください。
 * Azure Resource Manager テンプレートの使用など、Azure で HPC Pack クラスターを作成するその他の方法については、[Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 * Azure での大規模なコンピューティングと HPC クラウド ソリューションの範囲の詳細については、「 [Azure における大規模なコンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース](../batch/big-compute-resources.md) 」を参照してください。
@@ -307,6 +311,6 @@ Azure のクラスター リソースを使用する場合、HPC クラスター
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

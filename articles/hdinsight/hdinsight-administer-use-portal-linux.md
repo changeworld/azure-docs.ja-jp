@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: e3b97726bf92cbb21c48cfb0fbe8d4f20db177d5
-ms.openlocfilehash: a0529aa584841c24afc5aa0d34a7ff1505a7732e
+ms.sourcegitcommit: 8c439591dae0bd561ba4f079aba9f2073d1e954b
+ms.openlocfilehash: dc94c3f428200f107f7e953a57cf4e0e83bc7de1
 
 
 ---
@@ -43,6 +43,8 @@ ms.openlocfilehash: a0529aa584841c24afc5aa0d34a7ff1505a7732e
      
        ![Azure ポータル [HDInsight クラスター] ボタン](./media/hdinsight-administer-use-portal-linux/azure-portal-hdinsight-button.png)
 
+       HDInsight クラスターが表示されない場合は、一覧の最後の **[その他のサービス]** をクリックし、**[インテリジェンス + 分析]**セクションで **[HDInsight クラスター]** をクリックします。
+
 ## <a name="create-clusters"></a>クラスターの作成
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -56,14 +58,14 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
    
     ![Azure Portal HDInsight クラスター 基本情報](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png)
    
-    **[概要] メニュー**:
+    **[概要] メニュー:**
 
-   * **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]: これらはすべてクラスター ダッシュボードにアクセスするために使用します。クラスター ダッシュボードは、Linux ベースのクラスター用の Ambari Web です。
+   * **ダッシュ ボード**: クラスターのダッシュボード (Linux ベースのクラスターの場合は Ambari Web) を開きます。
    * **[SSH (Secure Shell)]**: Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。
    * **[クラスターのスケーリング]**: このクラスターの worker ノードの数を変更できます。
    * **[削除]**: クラスターを削除します。
 
-    **左側のメニュー**
+    **左側のメニュー:**
    
    * **[アクティビティ ログ]**: アクティビティ ログを表示およびクエリします。
    * **[アクセス制御 (IAM)]**: ロールの割り当てを使用します。  「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
@@ -315,6 +317,6 @@ HDInsight クラスター ブレードの **[使用状況]** セクションに�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 
