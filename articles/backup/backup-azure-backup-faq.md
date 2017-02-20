@@ -5,7 +5,7 @@ description: "バックアップ サービス、バックアップ エージェ�
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: jwhit
+manager: carmonm
 editor: 
 keywords: "バックアップと障害復旧; バックアップ サービス"
 ms.assetid: 1011bdd6-7a64-434f-abd7-2783436668d7
@@ -14,16 +14,16 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/16/2016
-ms.author: trinadhk; giridham; arunak; markgal; jimpark;
+ms.date: 2/8/2017
+ms.author: markgal;giridham;arunak;markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: 1b2eeab756309148db5890ccc0d93853f3e69372
-ms.openlocfilehash: 4b7a8a88d21b11deb377c2fef4e2d8f9fbcf9036
+ms.sourcegitcommit: d842d0a7e6a99a0a0a67b7cf6c695aba16f83d8f
+ms.openlocfilehash: 72cd97798df4e63da1e3d1dc167714f6033d2c86
 
 
 ---
 # <a name="azure-backup-service--faq"></a>Azure Backup サービス - FAQ
-この記事は、Azure Backup サービスに関してよく寄せられる質問 (およびそれぞれに対する回答) を一覧にしたものです。 Azure コミュニティでは質問に対して短時間で回答が寄せられています。この記事には、コミュニティで頻繁に寄せられる質問を追加しています。 一般的に、質問への回答ではリファレンスやサポート情報が提供されています。 この記事や関連の記事の「DISQUS」セクションでも Azure Backup について質問できます。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
+この記事は、Azure Backup サービスに関してよく寄せられる質問 (およびそれぞれに対する回答) を一覧にしたものです。 Azure コミュニティでは質問に対して短時間で回答が寄せられています。この記事には、コミュニティで頻繁に寄せられる質問を追加しています。 一般的に、質問への回答ではリファレンスやサポート情報が提供されています。 Azure Backup について質問するには、**[コメント]** (右側) をクリックします。 コメントは、この記事の下部に表示されます。 コメントするには、Livefyre アカウントが必要です。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
 
 ## <a name="what-is-the-list-of-supported-operating-systems-from-which-i-can-back-up-to-azure-using-azure-backup-br"></a>どのようなオペレーティング システムが Azure Backup を使用した Azure へのバックアップでサポートされていますか。 <br/>
 Azure Backup では、ファイルとフォルダーのほか、Azure Backup Server と SCDPM を使用して保護されたワークロード アプリケーションのバックアップについて、次の一覧のオペレーティング システムがサポートされています。
@@ -58,7 +58,7 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 はい。コンテナー資格情報は 48 時間後に有効期限が切れます。 ファイルの有効期限が切れた場合は、Azure Portal にログインし、コンテナーからコンテナー資格情報ファイルをダウンロードしてください。
 
 ## <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription-br"></a>各 Azure サブスクリプションで作成できるコンテナーの数に制限はありますか。 <br/>
-はい。 2016 年 9 月の時点では、サブスクリプションあたり 25 個のバックアップ コンテナーを作成できます。 各サブスクリプションでサポートされている Azure Backup のリージョンごとに、最大 25 個の Recovery Services コンテナーを作成できます。 コンテナーがさらに必要な場合は、新しいサブスクリプションを作成してください。
+はい。 2016 年 9 月の時点では、サブスクリプションあたり 25 個のバックアップ コンテナーを作成できます。 各サブスクリプションでサポートされている Azure Backup のリージョンごとに、最大 25 個の Recovery Services コンテナーを作成できます。 コンテナーがさらに必要な場合は、追加のサブスクリプションを作成してください。
 
 ## <a name="are-there-any-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>各資格情報コンテナーに登録できるサーバーやマシンの数に制限はありますか。 <br/>
 はい。コンテナーにつき最大 50 のコンピューターを登録できます。 Azure IaaS 仮想マシンの場合、コンテナーあたりの VM の上限は 200 です。 さらにコンピューターを登録する必要がある場合は、別のコンテナーを作成してください。
@@ -68,17 +68,17 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 
 ## <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>Azure にデータをバックアップしている Windows サーバーの名前を変更するとどうなりますか。<br/>
 サーバーの名前を変更すると、現在構成されているすべてのバックアップが停止します。
-バックアップ コンテナーにサーバーの新しい名前を登録します。 コンテナーに新しい名前を登録すると、最初のバックアップ操作は "*完全*" バックアップになります。 以前のサーバー名でコンテナーにバックアップしたデータを回復する必要がある場合は、**データの回復**ウィザードで [**[別のサーバー]**](backup-azure-restore-windows-server.md#recover-to-an-alternate-machine) オプションを使用してそのデータを回復できます。
+バックアップ コンテナーにサーバーの新しい名前を登録します。 コンテナーに新しい名前を登録すると、最初のバックアップ操作は "*完全*" バックアップになります。 以前のサーバー名でコンテナーにバックアップしたデータを回復する必要がある場合は、**データの回復**ウィザードで [**[別のサーバー]**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) オプションを使用します。
 
-## <a name="what-types-of-drives-can-i-backup-files-and-folders-from-br"></a>ファイルとフォルダーのバックアップ元として、どのような種類のドライブを使用できますか。 <br/>
-次の一連のドライブやボリュームはバックアップできません。
+## <a name="what-types-of-drives-can-i-back-up-files-and-folders-from-br"></a>ファイルとフォルダーのバックアップ元として、どのような種類のドライブを使用できますか。 <br/>
+次のドライブやボリュームはバックアップできません。
 
-* リムーバブル メディア: バックアップ項目のソースを使用するには、固定のドライブとして認識される必要があります。
+* リムーバブル メディア: バックアップ項目のソースはすべて、固定として認識される必要があります。
 * 読み取り専用ボリューム: ボリューム シャドウ コピー サービス (VSS) が機能するには、ボリュームが書き込み可能である必要があります。
 * オフライン ボリューム: VSS が機能するには、ボリュームがオンラインである必要があります。
 * ネットワーク共有: オンライン バックアップを使用してバックアップするボリュームは、サーバーに対してローカルである必要があります。
 * Bitlocker で保護されているボリューム: バックアップを行う前に、ボリュームのロックを解除する必要があります。
-* ファイル システムの識別: このバージョンのオンライン バックアップ サービスでサポートされているファイル システムは NTFS だけです。
+* ファイル システムの識別: サポートされているファイル システムは NTFS だけです。
 
 ## <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>サーバーからバックアップできるのはどのような種類のファイルとフォルダーですか。<br/>
 次の種類がサポートされています。
@@ -89,7 +89,6 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 * 圧縮 + スパース
 * ハード リンク: サポートされていません。スキップされます。
 * 再解析ポイント: サポートされていません。スキップされます。
-* 暗号化 + 圧縮: サポートされていません。スキップされます。
 * 暗号化 + スパース: サポートされていません。スキップされます。
 * 圧縮されたストリーム: サポートされていません。スキップされます。
 * スパース ストリーム: サポートされていません。スキップされます。
@@ -97,8 +96,8 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 ## <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>キャッシュ フォルダーの最小サイズ要件を教えてください。 <br/>
 キャッシュ フォルダーのサイズによって、バックアップするデータ量が決まります。 キャッシュ フォルダーは、データの格納に必要なスペースの 5% に設定する必要があります。
 
-## <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>組織で所有しているコンテナーが 1 つの場合、データを復元する際に特定のサーバーのデータを別のサーバーから分離するには、どうすればよいですか。<br/>
-同じコンテナーに登録されたサーバーはどれもが、 *同じパスフレーズを使用する*他のサーバーによってバックアップされたデータを復元できます。 サーバーのバックアップ データを組織内の他のサーバーから分離する必要がある場合は、これらのサーバーごとに指定したパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで 2 番目、ストレージ サーバーで 3 番目の暗号化パスフレーズを使用することができます。
+## <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>組織で所有しているコンテナーが&1; つの場合、データを復元する際に特定のサーバーのデータを別のサーバーから分離するには、どうすればよいですか。<br/>
+同じコンテナーに登録されたサーバーはどれもが、 *同じパスフレーズを使用する*他のサーバーによってバックアップされたデータを復元できます。 サーバーのバックアップ データを組織内の他のサーバーから分離する必要がある場合は、これらのサーバーごとに指定したパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで&2; 番目、ストレージ サーバーで&3; 番目の暗号化パスフレーズを使用することができます。
 
 ## <a name="can-i-migrate-my-backup-data-or-vault-between-subscriptions-br"></a>サブスクリプション間でバックアップ データまたはコンテナーを "移行" することはできますか。 <br/>
 いいえ。 コンテナーはサブスクリプション レベルで作成されるため、作成後に別のサブスクリプションに再割り当てすることはできません。
@@ -107,7 +106,7 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 はい。 エージェント サービスは、バックアップ操作を準備するときに、重複除去されたデータを通常のデータに変換します。 そのデータをバックアップ用に最適化し、暗号化してから、オンライン バックアップ サービスに送信します。
 
 ## <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>バックアップを開始した後でバックアップ ジョブを取り消すと、転送されたバックアップ データは削除されますか。 <br/>
-いいえ。 取り消しを行う前にコンテナーに転送されたすべてのデータは、コンテナーに残ります。 Azure Backup では、チェックポイント メカニズムを使用して、バックアップ中に随時バックアップ データにチェックポイントを追加します。 バックアップ データにチェックポイントがあることで、次回のバックアップ処理でファイルの整合性を検証できます。 次のバックアップ ジョブは、これまでバックアップしたデータの増分になります。 増分バックアップでは、新しいデータまたは変更されたデータのみが転送され、帯域幅の使用状況が向上します。
+いいえ。 バックアップ ジョブを取り消す前にコンテナーに転送されたすべてのデータは、コンテナーに残ります。 Azure Backup では、チェックポイント メカニズムを使用して、バックアップ中に随時バックアップ データにチェックポイントを追加します。 バックアップ データにチェックポイントがあることで、次回のバックアップ処理でファイルの整合性を検証できます。 次のバックアップ ジョブは、これまでバックアップしたデータの増分になります。 増分バックアップでは、新しいデータまたは変更されたデータのみが転送され、帯域幅の使用状況が向上します。
 
 Azure VM のバックアップ ジョブを取り消した場合、転送済みのデータは無視されます。 次のバックアップ ジョブでは、最後に成功したバックアップ ジョブから増分データが転送されます。
 
@@ -124,7 +123,7 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 * \*.windows.net
 
 ## <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>VM 拡張機能を使用して Azure Backup サービスで既にバックアップされている Azure VM に Azure Backup エージェントをインストールすることはできますか。 <br/>
-そして、 Azure Backup では、VM 拡張機能を使用している Azure VM には VM レベルのバックアップを提供します。 ゲスト Windows OS に Azure Backup エージェントをインストールして、そのゲスト OS 上のファイルとフォルダーを保護してください。
+そして、 Azure Backup では、VM 拡張機能を使用している Azure VM には VM レベルのバックアップを提供します。 ゲスト Windows OS 上のファイルとフォルダーを保護するには、ゲスト Windows OS に Azure Backup エージェントをインストールします。
 
 ## <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>Azure VM に Azure Backup エージェントをインストールし、Azure VM で提供される一時ストレージ上のファイルとフォルダーをバックアップすることはできますか。 <br/>
 はい。 ゲスト Windows OS に Azure Backup エージェントをインストールして、ファイルやフォルダーを一時的なストレージにバックアップすることはできますが、 一時的なストレージのデータが消去されるとバックアップは失敗するので注意してください。 また、一時的なストレージのデータが削除された場合、復元先に指定できるのは非揮発性ストレージのみになります。
@@ -133,7 +132,7 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 System Center Data Protection Manager (DPM) と共に Azure Backup を使用するには、まず DPM をインストールしてから Azure Backup エージェントをインストールします。 この順序で Azure Backup のコンポーネントをインストールすることで、Azure Backup エージェントが DPM と連携します。 DPM をインストールする前に Azure Backup エージェントをインストールする方法は推奨されておらず、サポートもされていません。
 
 ## <a name="what-is-the-length-of-file-path-that-can-be-specified-as-part-of-azure-backup-policy-using-azure-backup-agent-br"></a>Azure Backup エージェントを使用する Azure Backup ポリシーの一部として指定できるファイル パスの長さはどれくらいですか。 <br/>
-Azure Backup エージェントでは NTFS が使用されています。 [ファイル パスの長さの指定は、Windows API による制限を受けます](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths)。 バックアップするファイルのファイル パスの長さが Windows API で許容される長さを超える場合は、バックアップ ファイルの親フォルダーまたはディスク ドライブをバックアップするよう選択できます。  
+Azure Backup エージェントでは NTFS が使用されています。 [ファイル パスの長さの指定は、Windows API による制限を受けます](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths)。 保護するファイルのファイル パスが、Windows API で許容されている長さを超える場合は、親フォルダーまたはディスク ドライブをバックアップしてください。  
 
 ## <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent-br"></a>Azure Backup エージェントを使用する Azure Backup ポリシーのファイル パスには、どのような文字を使用できますか。 <br>
  Azure Backup エージェントでは NTFS が使用されています。 そのため、ファイルの指定では [NTFS でサポートされている文字](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions) を使用できます。  
@@ -145,7 +144,7 @@ Azure Backup エージェントでは NTFS が使用されています。 [フ�
 はい、Backup サービスには、PowerShell スクリプトで使用できるイベント ベースのアラートがいくつかあります。 詳細については、[通知の構成](backup-azure-monitor-vms.md#configure-notifications)に関するページをご覧ください
 
 ## <a name="is-there-a-limit-on-the-size-of-each-data-source-being-backed-up-br"></a>バックアップされる各データ ソースのサイズに制限はありますか。 <br/>
-コンテナーにバックアップできるデータ量に制限はありません。 Azure Backup ではデータ ソースの最大サイズに制限がありますが、これらの上限は非常に大きくなっています。 2015 年 8 月時点における、サポートされているオペレーティング システム別のデータ ソースの最大サイズは次のとおりです。
+コンテナーにバックアップできるデータ量に制限はありません。 Azure Backup ではデータ ソースの最大サイズに制限がありますが、これらの上限は大きくなっています。 2015 年 8 月時点における、サポートされているオペレーティング システム別のデータ ソースの最大サイズは次のとおりです。
 
 | No. | オペレーティング システム | データ ソースの最大サイズ |
 |:---:|:--- |:--- |
@@ -158,15 +157,15 @@ Azure Backup エージェントでは NTFS が使用されています。 [フ�
 
 | データソース | 詳細 |
 |:---:|:--- |
-| ボリューム |サーバーまたはクライアント コンピューターの 1 つのボリュームからバックアップされるデータの量 |
+| ボリューム |サーバーまたはクライアント コンピューターの&1; つのボリュームからバックアップされるデータの量 |
 | Hyper-V 仮想マシン |バックアップ対象の仮想マシンのすべての VHD のデータの合計 |
-| Microsoft SQL Server データベース |バックアップ対象の 1 つの SQL データベースのサイズ |
+| Microsoft SQL Server データベース |バックアップ対象の&1; つの SQL データベースのサイズ |
 | Microsoft SharePoint |バックアップ対象の SharePoint ファーム内のコンテンツと構成データベースの合計 |
 | Microsoft Exchange |バックアップ対象の Exchange サーバー内のすべての Exchange データベースの合計 |
 | BMR/システム状態 |バックアップ対象のコンピューターの BMR またはシステム状態の個々のコピー |
 
 ## <a name="are-there-limits-on-the-number-of-times-a-backup-job-can-be-scheduled-per-daybr"></a>1 日にバックアップ ジョブをスケジュール設定できる回数に制限はありますか。<br/>
-はい。Windows Server または Windows クライアントでは、1 日に最大 3 回バックアップ ジョブを実行できます。 System Center DPM では、1 日に最大 2 回バックアップ ジョブを実行できます。 IaaS VM では、1 日に 1 回バックアップ ジョブを実行できます。
+はい。Windows Server または Windows クライアントでは、1 日に最大&3; 回バックアップ ジョブを実行できます。 System Center DPM では、1 日に最大&2; 回バックアップ ジョブを実行できます。 IaaS VM では、1 日に&1; 回バックアップ ジョブを実行できます。
 
 ## <a name="is-there-a-difference-between-the-scheduling-policy-for-dpm-and-windows-server-ie-on-windows-server-without-dpm-br"></a>DPM と Windows Server (DPM がインストールされていない Windows Server) のスケジュール設定ポリシーには違いがありますか。 <br/>
 はい。 DPM を使用した場合、スケジュールには毎日、毎週、毎月、毎年を指定できます。 (DPM のない) Windows Server では、スケジュールに毎日と毎週しか指定できません。
@@ -193,7 +192,7 @@ Azure Backup エージェントでは NTFS が使用されています。 [フ�
 一般的に、回復ポイントのリテンション期間が長い製品では、バックアップ データが完全なポイントとして格納されます。 完全なポイントは、ストレージ効率は *悪く* なりますが、簡単かつ迅速に復元できます。 一方で増分コピーは、ストレージ効率は *良く* なりますが、データのチェーンを復元する必要があり、復旧時間に影響します。 Azure Backup のストレージ アーキテクチャを使用すると、高速に復元するためにデータの格納を最適化し、ストレージ コストを低く抑えることで、両方の長所を生かすことができます。 このようなデータ ストレージ手法を通じて、送受信の帯域幅が効率的に使用されています。 データ ストレージの量とデータ回復にかかる時間がどちらも最小限に抑えられます。 増分バックアップによる効率的な保存のしくみの詳細については、 [こちら](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/) を参照してください。
 
 ## <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-createdbr"></a>作成できる回復ポイント数に制限はありますか。<br/>
-いいえ。 回復ポイントでの制限はなくなりました。 必要な数だけ回復ポイントを作成することができます。
+保護されているインスタンスごとに作成できる復旧ポイントは最大 9,999 個です。 保護されているインスタンスとは、データを Azure にバックアップするように構成されているコンピューター、サーバー (物理または仮想)、またはワークロードです。 バックアップ資格情報コンテナーごとの保護されているインスタンスの数に制限はありません。 詳細については、「[バックアップと保持](./backup-introduction-to-azure-backup.md#backup-and-retention)」および「[保護されているインスタンスとは](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)」をご覧ください。
 
 ## <a name="why-is-the-amount-of-data-transferred-in-backup-not-equal-to-the-amount-of-data-i-backed-upbr"></a>バックアップで転送されたデータの量が、バックアップしたデータの量と一致しないのはなぜですか。<br/>
  Azure Backup エージェント、SCDPM、または Azure Backup Server からバックアップしたすべてのデータは、圧縮および暗号化されてから転送されます。 圧縮と暗号化が適用されると、バックアップ コンテナー内のデータは 30 ～ 40% 小さくなります。
@@ -260,10 +259,10 @@ Azure Backup からの回復の数に制限はありません。
 キャッシュ フォルダーとメタデータ VHD のどちらにも Azure Backup エージェントに必要な属性はありません。
 
 ## <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-classic-mode-still-supported-br"></a>Recovery Services コンテナーは Resource Manager に基づいています。 Backup コンテナー (クラシック モード) はまだサポートされていますか。 <br/>
-はい。Backup コンテナーは引き続きサポートされます。 Backup コンテナーは[クラシック ポータル](https://manage.windowsazure.com)で作成しますが、 Recovery Services コンテナーは [Azure Portal](https://portal.azure.com) で作成します。 ただし、Recovery Services コンテナーを作成することを強くお勧めします。今後強化される機能は Recovery Services コンテナーでしか利用できないためです。
+はい。Backup コンテナーは引き続きサポートされます。 Backup コンテナーは[クラシック ポータル](https://manage.windowsazure.com)で作成しますが、 Recovery Services コンテナーは [Azure Portal](https://portal.azure.com) で作成します。 今後強化される機能は Recovery Services コンテナーでしか利用できないため、Recovery Services コンテナーを作成することを強くお勧めします。
 
 ## <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>Backup コンテナーを Recovery Services コンテナーに移行することはできますか。 <br/>
-残念ながら、現時点では、Backup コンテナーの内容を Recovery Services コンテナーに移行できません。 この機能の追加に取り組んでいますが、現在は使用できません。
+残念ながら、Backup コンテナーの内容を Recovery Services コンテナーに移行することはできません。 この機能の追加に取り組んでいますが、現在は使用できません。
 
 ## <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>Recovery Services コンテナーでサポートされるのはクラシック VM と Resource Manager ベースの VM のどちらですか。 <br/>
 Recovery Services コンテナーでは両方のモデルがサポートされています。  (クラシック ポータルで作成された) クラシック VM または (Azure Portal で作成された) Resource Manager VM を、Recovery Services コンテナーにバックアップできます。
@@ -271,12 +270,12 @@ Recovery Services コンテナーでは両方のモデルがサポートされ�
 ## <a name="i-have-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>クラシック VM をバックアップ コンテナーにバックアップしてあります。 クラシック モードから Resource Manager モードに VM を移行して、Recovery Services コンテナーで保護することはできますか。
 バックアップ コンテナーのクラシック VM の回復ポイントは、VM をクラシックから Resource Manager モードに移行しても、Recovery Services コンテナーに自動的に移行されません。 VM バックアップを移行するには、次の手順に従います。
 
-1. バックアップ コンテナーで、**[保護された項目]** タブに移動して VM を選択します。 [[保護の停止]](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines)をクリックします。 *[関連付けられたバックアップ データを削除します]* オプションは **オフ**のままにしておきます。
+1. バックアップ コンテナーで、**[保護された項目]** タブに移動して VM を選択します。 [[保護の停止]](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines) をクリックします。 *[関連付けられたバックアップ データを削除します]* オプションは **オフ**のままにしておきます。
 2. 仮想マシンをクラシック モードから Resource Manager モードに移行します。 仮想マシンに対応するストレージとネットワークも Resource Manager モードに移行されることを確認してください。
 3. コンテナー ダッシュボードの上部にある **[バックアップ]** アクションを使用して、移行先の仮想マシンに Recovery Services コンテナーを作成し、バックアップを構成します。 Recovery Services コンテナーへの VM のバックアップについて詳しくは、[Recovery Services コンテナーを使用した Azure VM の保護](backup-azure-vms-first-look-arm.md)に関する記事を参照してください。
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

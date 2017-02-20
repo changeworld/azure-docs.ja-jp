@@ -1,6 +1,6 @@
 ---
-title: "Azure Portal: Azure SQL Database の概要 | Microsoft Docs"
-description: "Azure Portal を使用して、SQL Database の論理サーバー、サーバーレベルのファイアウォール規則、およびデータベースを作成する方法について説明します。 また、SQL Server Management Studio を使用してデータベースに対してクエリを実行する方法についても説明します。"
+title: "クイック スタート: 初めての Azure SQL Database | Microsoft Docs"
+description: "Azure Portal を使用して、SQL Database の論理サーバー、サーバーレベルのファイアウォール規則、およびデータベースを作成する方法について説明します。 また、Azure SQL Database での SQL Server Management Studio の使用についても説明します。"
 keywords: "SQL データベース チュートリアル, SQL データベースの作成"
 services: sql-database
 documentationcenter: 
@@ -14,38 +14,37 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/23/2016
+ms.date: 02/04/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
-ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
+ms.sourcegitcommit: 6453cca9f876e6c363fbed463263c0f9684a3e70
+ms.openlocfilehash: b838974de06ecbc751254064e2310df51c450086
 
 
 ---
-# <a name="sql-database-tutorial-get-started-with-azure-sql-database-servers-databases-and-firewall-rules-using-the-azure-portal-and-sql-server-management-studio"></a>SQL Database チュートリアル: Azure Portal と SQL Server Management Studio を使用して Azure SQL Database のサーバー、データベース、ファイアウォール規則を使ってみる
+# <a name="quick-start-tutorial-your-first-azure-sql-database"></a>クイック スタート チュートリアル: 初めての Azure SQL Database
 
-この入門用チュートリアルでは、Azure Portal を使用して次のことを行う方法を学習します。
+このクイック スタート チュートリアルでは、次のことについて説明します。
 
-* 新しい Azure リソース グループを作成する
-* Azure SQL 論理サーバーを作成する
-* Azure SQL 論理サーバーのプロパティを表示する
-* サーバーレベルのファイアウォール規則を作成する
-* Adventure Works LT サンプル データベースを単一データベースとして作成する
-* Azure で Adventure Works LT サンプル データベースのプロパティを表示する
+* [新しい論理サーバーを作成する](sql-database-get-started.md#create-a-new-logical-sql-server) 
+* [論理サーバーのプロパティを表示する](sql-database-get-started.md#view-the-logical-server-properties) 
+* [サーバーレベルのファイアウォール規則を作成する](sql-database-get-started.md#create-a-server-level-firewall-rule) 
+* [SSMS を使用してサーバーに接続する](sql-database-get-started.md#connect-to-the-server-with-ssms) 
+* [サンプル データを使用してデータベースを作成する](sql-database-get-started.md#create-a-database-with-sample-data) 
+* [データベースのプロパティを表示する](sql-database-get-started.md#view-the-database-properties) 
+* [Azure Portal でデータベースに対してクエリを実行する](sql-database-get-started.md#query-the-database-in-the-azure-portal) 
+* [SSMS を使用してデータベースに接続し、クエリを実行する](sql-database-get-started.md#connect-and-query-the-database-with-ssms) 
+* [SSMS を使用して空のデータベースを作成する](sql-database-get-started.md#create-a-blank-database-with-ssms) 
+* [接続のトラブルシューティング](sql-database-get-started.md#troubleshoot-connectivity) 
+* [データベースの削除](sql-database-get-started.md#delete-a-single-database) 
 
-このチュートリアルでは、SQL Server Management Studio の最新のバージョンを使用して次のことも行います。
 
-* 論理サーバーとその master データベースに接続する
-* master データベースに対してクエリを実行する
-* サンプル データベースに接続する
-* サンプル データベースに対してクエリを実行する
-
-このチュートリアルを完了すると、サンプル データベースと空のデータベースが Azure リソース グループで実行され、論理サーバーに接続された状態になります。 また、サーバーレベルのプリンシパルが指定の IP アドレス (または IP アドレス範囲) からサーバーにログインできるようにサーバーレベルのファイアウォール規則が構成されます。 
+このクイック スタート チュートリアルでは、Azure リソース グループで実行され、論理サーバーに接続された状態のサンプル データベースと空のデータベースを作成します。 また、2 つのサーバーレベルのファイアウォール規則を作成して、サーバーレベルのプリンシパルが指定の&2; つの IP アドレスからサーバーにログインできるようにします。 最後に、Azure Portal でデータベースをクエリし、SQL Server Management Studio を使用して接続、クエリする方法を学習します。 
 
 **推定所要時間**: このチュートリアルには約 30 分かかります (既に前提条件を満たしていることが前提です)。
 
 > [!TIP]
-> これらのタスクは、概要チュートリアルで [C#](sql-database-get-started-csharp.md) または [PowerShell](sql-database-get-started-powershell.md) を使用して実行することができます。
+> これらのタスクは、[C#](sql-database-get-started-csharp.md) または [PowerShell](sql-database-get-started-powershell.md) を使用して実行することができます。
 >
 
 ## <a name="prerequisites"></a>前提条件
@@ -55,12 +54,12 @@ ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
 * サブスクリプションの所有者または共同作成者ロールのメンバーであるアカウントを使用して Azure Portal に接続できることが必要です。 ロールベースのアクセス制御 (RBAC) の詳細については、「[Azure Portal でのアクセス管理の概要](../active-directory/role-based-access-control-what-is.md)」を参照してください。
 
 > [!NOTE]
-> このチュートリアルでは、[SQL Database サーバーの概要](sql-database-server-overview.md)、[SQL データベースの概要](sql-database-overview.md)、および [Azure SQL Database のファイアウォール規則の概要](sql-database-firewall-configure.md)という学習トピックの内容を理解する際に役立ちます。
+> このクイック スタート チュートリアルは、[SQL Database サーバーの概要](sql-database-server-overview.md)、[SQL Database の概要](sql-database-overview.md)、[Azure SQL Database ファイアウォール規則の概要](sql-database-firewall-configure.md)に関する学習トピックの内容を理解する際に役立ちます。
 >  
 
 
-### <a name="sign-in-to-the-azure-portal-using-your-azure-account"></a>Azure アカウントを使用して Azure Portal にサインインする
-[既存のサブスクリプション](https://account.windowsazure.com/Home/Index)を使用して、次の手順に従って Azure Portal に接続します。
+### <a name="sign-in-to-the-azure-portal-with-your-azure-account"></a>Azure アカウントで Azure Portal にサインインする
+[Azure アカウント](https://account.windowsazure.com/Home/Index)を使用し、次の手順に従って Azure Portal に接続します。
 
 1. 任意のブラウザーを開き、 [Azure ポータル](https://portal.azure.com/)に接続します。
 2. [Azure ポータル](https://portal.azure.com/)にサインインします。
@@ -71,7 +70,9 @@ ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
 
 <a name="create-logical-server-bk"></a>
 
-## <a name="create-a-new-logical-sql-server-in-the-azure-portal"></a>Azure Portal で新しい論理 SQL サーバーを作成する
+## <a name="create-a-new-logical-sql-server"></a>新しい論理 SQL サーバーを作成する
+
+次の手順に従って、Azure Portal を使用して任意のリージョンに新しい論理サーバーを作成します。
 
 1. **[新規]** をクリックし、「**SQL サーバー**」と入力して、**Enter** キーを押します。
 
@@ -87,7 +88,7 @@ ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
     ![新しいサーバー名](./media/sql-database-get-started/new-server-name.png)
 
     > [!IMPORTANT]
-    > 新しいサーバーの完全修飾名は、<サーバー名>.database.windows.net になります。
+    > 新しいサーバーの完全修飾名は、<サーバー名>.database.windows.net の形式になります。
     >
     
 4. [サーバー管理者ログイン] ボックスに、このサーバーの SQL 認証ログイン用のユーザー名を指定します。 このログインは、サーバー プリンシパル ログインとも呼ばれます。 緑色のチェック マークは、入力した名前が有効であることを示しています。
@@ -115,7 +116,9 @@ ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
 
     ![[作成] ボタン](./media/sql-database-get-started/create.png)
 
-## <a name="view-the-logical-sql-server-properties-in-the-azure-portal"></a>Azure Portal で論理 SQL サーバーのプロパティを表示する
+## <a name="view-the-logical-server-properties"></a>論理サーバーのプロパティを表示する
+
+次の手順に従って、Azure Portal でサーバーのプロパティを表示します。 以降の手順でこのサーバーに接続するには、完全修飾サーバー名が必要です。 
 
 1. Azure Portal で **[その他のサービス]** をクリックします。
 
@@ -137,17 +140,15 @@ ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
 
     ![SQL Server の完全な名前](./media/sql-database-get-started/sql-server-full-name.png)
 
-## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure Portal でサーバーレベルのファイアウォール規則を作成する
+## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
+
+以下の手順に従って、Azure Portal で新しいサーバーレベルのファイアウォール規則を作成し、その次の手順で SQL Server Management Studio を使用してサーバーに接続できるようにします。
 
 1. [SQL Server] ブレードで、[設定] の下にある **[ファイアウォール]** をクリックして、SQL Server のファイアウォール ブレードを開きます。
 
     ![SQL Server のファイアウォール](./media/sql-database-get-started/sql-server-firewall.png)
 
-2. 表示されたクライアント IP アドレスを確認し、任意のブラウザーを使用してこれがインターネット上の自分の IP アドレスであることを確認します ("what is my IP address" を検索します)。 場合によっては、さまざまな理由により一致しないことがあります。
-
-    ![自分の IP アドレス](./media/sql-database-get-started/your-ip-address.png)
-
-3. ID アドレスが一致したと仮定し、ツール バーの **[クライアント IP の追加]** をクリックします。
+2. ツール バーの **[クライアント IP の追加]** をクリックします。
 
     ![クライアント IP の追加](./media/sql-database-get-started/add-client-ip.png)
 
@@ -159,7 +160,9 @@ ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
 
     ![クライアント IP の追加](./media/sql-database-get-started/save-firewall-rule.png)
 
-## <a name="connect-to-sql-server-using-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して SQL Server に接続する
+## <a name="connect-to-the-server-with-ssms"></a>SSMS を使用してサーバーに接続する
+
+次の手順に従って、SQL Server Management Studio を使用して SQL 論理サーバーに接続します。
 
 1. 最新バージョンの SSMS をまだインストールしていない場合は、[SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)に関するページで最新バージョンの SSMS をダウンロードしてインストールしてください。 SSMS は、最新の状態を保つために、新しいバージョンのダウンロードが可能になると、更新を求めるメッセージを表示します。
 
@@ -191,7 +194,9 @@ ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
     > SQL セキュリティについて調べるには、[SQL セキュリティの概要](sql-database-control-access-sql-authentication-get-started.md)に関するページを参照してください。
     >
 
-## <a name="create-new-database-in-the-azure-portal-using-adventure-works-lt-sample"></a>Adventure Works LT サンプルを使用して Azure Portal で新しいデータベースを作成する
+## <a name="create-a-database-with-sample-data"></a>サンプル データを使用してデータベースを作成する
+
+次の手順に従って、Azure Portal でサンプル データを使用してデータベースを作成します。 前の手順で作成した論理サーバーに接続してこのデータベースを作成します。 サーバーを作成したリージョンで Basic サービス レベルを使用できない場合は、サーバーを削除して、別のリージョンにサーバーを再作成します。 削除の手順については、このチュートリアルの最後の手順を参照してください。
 
 1. Azure Portal の既定のブレードで、**[SQL データベース]** をクリックします。
 
@@ -223,7 +228,9 @@ ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
 
     ![[作成] ボタン](./media/sql-database-get-started/create.png)
 
-## <a name="view-database-properties-in-the-azure-portal"></a>Azure Portal でデータベースのプロパティを表示する
+## <a name="view-the-database-properties"></a>データベースのプロパティを表示する
+
+次の手順に従って、Azure Portal でデータベースに対してクエリを実行します。
 
 1. [SQL データベース] ブレードで、新しいデータベースをクリックすると、そのプロパティが Azure Portal に表示されます。 以降のチュートリアルは、このブレードで使用できるオプションをよく知るのに役立ちます。 
 
@@ -242,7 +249,41 @@ ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
 
     ![サーバーの [要点] ウィンドウの新しいサンプル データベース](./media/sql-database-get-started/new-sample-db-server-essentials-pane.png)
 
-## <a name="connect-and-query-sample-database-using-sql-server-management-studio"></a>SQL Server Management Studio を使用してサンプル データベースに接続してクエリを実行する
+## <a name="query-the-database-in-the-azure-portal"></a>Azure Portal でデータベースに対してクエリを実行する
+
+次の手順に従って、Azure Portal でクエリ エディターを使用してデータベースに対してクエリを実行します。 このクエリにより、データベース内のオブジェクトが表示されます。
+
+1. [SQL データベース] ブレードで、ツール バーの **[ツール]** をクリックします。
+
+    ![ツール](./media/sql-database-get-started/tools.png)
+2. [ツール] ブレードで、**[クエリ エディター (プレビュー)]** をクリックします。
+
+    ![クエリ エディター](./media/sql-database-get-started/query-editor.png)
+3. クエリ エディターがプレビュー機能であることを示すチェック ボックスをクリックし、**[OK]** をクリックします。
+4. **クエリ エディター** ブレードで、**[ログイン]** をクリックします。
+
+    ![クエリ エディター ブレード](./media/sql-database-get-started/query-editor-blade.png)
+5. [承認の種類] と [ログイン] を確認し、このログインのパスワードを指定します。 
+
+    ![クエリ エディターの [ログイン]](./media/sql-database-get-started/query-editor-login.png)
+6. **[OK]** をクリックして、ログインを試みます。
+7. クライアントの IP アドレスに対するファイアウォール規則がないためログインが許可されないというログイン エラーが表示される場合は、クライアントの IP アドレスをエラー ウィンドウにコピーし、このデータベースの [SQL Server] ブレードでサーバーレベルのファイアウォール規則を作成します。
+
+    ![クエリ エディターのエラー](./media/sql-database-get-started/query-editor-error.png)
+8. 手順 1. ～ 6. を繰り返してデータベースにログインします。
+9. 認証されたら、クエリ ウィンドウで次のクエリを入力します。
+
+   ```select * from sys.objects```
+
+    ![クエリ エディターのクエリ](./media/sql-database-get-started/query-editor-query.png)
+10.  **[実行]**をクリックします。
+11. **[結果]** ウィンドウでクエリの結果を確認します。
+
+    ![クエリ エディターの結果](./media/sql-database-get-started/query-editor-results.png)
+
+## <a name="connect-and-query-the-database-with-ssms"></a>SSMS を使用してデータベースに接続し、クエリを実行する
+
+次の手順に従って、SQL Server Management Studio を使用してデータベースに接続し、サンプル データに対してクエリを実行してデータベース内のオブジェクトを表示します。
 
 1. SQL Server Management Studio に切り替え、オブジェクト エクスプローラーで、**[データベース]** をクリックし、ツール バーの **[更新]** をクリックしてサンプル データベースを表示します。
 
@@ -261,7 +302,9 @@ ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
 
     ![新しいサンプル データベースのシステム オブジェクトに対するクエリ実行 (SSMS)](./media/sql-database-get-started/new-sample-db-query-objects-ssms.png)
 
-## <a name="create-a-new-blank-database-using-sql-server-management-studio"></a>SQL Server Management Studio を使用して新しい空のデータベースを作成する
+## <a name="create-a-blank-database-with-ssms"></a>SSMS を使用して空のデータベースを作成する
+
+次の手順に従って、SQL Server Management Studio を使用して論理サーバーに新しいデータベースを作成します。
 
 1. オブジェクト エクスプローラーで、**[データベース]** を右クリックし、**[新しいデータベース]** をクリックします。
 
@@ -288,29 +331,48 @@ ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
 
     ![オブジェクト エクスプローラーの新しい空のデータベース](./media/sql-database-get-started/new-blank-database-object-explorer.png)
 
+## <a name="troubleshoot-connectivity"></a>接続のトラブルシューティング
+
+> [!IMPORTANT]
+> 接続に問題がある場合は、[接続に関する問題](sql-database-troubleshoot-common-connection-issues.md)のページを参照してください。
+> 
+
+## <a name="delete-a-single-database"></a>1 つのデータベースを削除する
+
+次の手順に従って、Azure Portal で&1; つのデータベースを削除します。
+
+1. Azure Portal の SQL Database のブレードで、**[削除]** をクリックします。
+
+    ![データベースの削除](./media/sql-database-get-started/delete-database.png)
+2. 確認画面で **[はい]** をクリックして、このデータベースを削除します。
+
+    ![データベースの削除 - [はい]](./media/sql-database-get-started/delete-database-yes.png)
+
 > [!TIP]
-> 使用していないデータベースを削除することで、学習中のコストを節約できます。 Basic エディションのデータベースの場合、7 日以内であればデータベースを復元できます。 ただし、サーバーを削除しないでください。 サーバーを削除した場合、サーバーも、そのサーバーの削除されたデータベースすべても復旧できません。
+> データベースのリテンション期間中は、サービス主導の自動バックアップからデータベースを復元することができます。 Basic エディションのデータベースの場合、7 日以内であればデータベースを復元できます。 ただし、サーバーを削除しないでください。 サーバーを削除した場合、サーバーも、そのサーバーの削除されたデータベースすべても復旧できません。 データベースのバックアップの詳細については、「[SQL Database バックアップについての詳細情報](sql-database-automated-backups.md)」を参照してください。バックアップからデータベースを復元する方法の詳細については、[データベースの復元](sql-database-recovery-using-backups.md)に関するページを参照してください。 削除されたデータベースを復元する方法については、[Azure Portal を使用した、削除済み Azure SQL Database の復元](sql-database-restore-deleted-database-portal.md)に関するページをご覧ください。
 >
 
 
 ## <a name="next-steps"></a>次のステップ
 これで、このチュートリアルは完了です。このチュートリアルで学習した内容に基づいたチュートリアルが多数あるため、探してみてください。 
 
-* Azure SQL Database のセキュリティについて調べる場合は、[セキュリティの概要](sql-database-control-access-sql-authentication-get-started.md)に関する記事を参照してください。
+- SQL Server 認証のチュートリアルを開始するには、[SQL の認証と承認](sql-database-control-access-sql-authentication-get-started.md)に関するページを参照してください。
+- Azure Active Directory 認証のチュートリアルを開始するには、[AAD の認証と承認](sql-database-control-access-aad-authentication-get-started.md)に関するページを参照してください。
+* Azure Portal でサンプル データベースに対してクエリを実行する場合は、「[Public preview: Interactive query experience for SQL databases (パブリック プレビュー: SQL データベース用の対話型クエリ機能)](https://azure.microsoft.com/en-us/updates/azure-sql-database-public-preview-t-sql-editor/)」を参照してください。
 * Excel に詳しい場合は、 [Excel を使用した Azure SQL データベースへの接続](sql-database-connect-excel.md)方法を参照してください。
 * コーディングを開始する準備ができている場合、「 [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」でプログラミング言語を選択します。
 * オンプレミスの SQL Server データベースを Azure に移行する場合は、[SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関する記事を参照してください。
-* BCP コマンド ライン ツールを使用して CSV ファイルから新しいテーブルにデータを読み込む場合は、 [BCP を使用した CSV ファイルから SQL Database へのデータの読み込み](sql-database-load-from-csv-with-bcp.md)に関するページを参照してください。
+* BCP コマンド ライン ツールを使用して CSV ファイルから新しいテーブルにデータを読み込む場合は、[BCP を使用した CSV ファイルから SQL Database へのデータの読み込み](sql-database-load-from-csv-with-bcp.md)に関するページを参照してください。
 * テーブルやその他のオブジェクトの作成を開始する場合は、「[テーブルの作成](https://msdn.microsoft.com/library/ms365315.aspx)」の「テーブルを作成するには」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- 技術の概要については、[SQL Database の概要](sql-database-technical-overview.md)に関するページを参照してください。
+- 技術の概要については、[SQL Database の概要](sql-database-technical-overview.md)に関するページをご覧ください。
 - 料金情報については、[Azure SQL Database の料金](https://azure.microsoft.com/pricing/details/sql-database/)に関するページを参照してください。
 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

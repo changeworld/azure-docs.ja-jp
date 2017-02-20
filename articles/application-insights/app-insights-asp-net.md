@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 10/13/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dc95c922b71d18cf791ea98f4ab1a02d2bac2c3b
-ms.openlocfilehash: 5103c28047e6d5e7be5f4f3b7933196de7045eeb
+ms.sourcegitcommit: 919f67a422faad2ba4c19e1f11f8e873098e8bd1
+ms.openlocfilehash: 9c27cfb674a7743c7cfe47b35b263da48c9c564e
 
 
 ---
@@ -55,7 +55,7 @@ Visual Studio で、ログに記録されたイベントの数が表示されま
 
 ## <a name="3-see-your-telemetry"></a>3.テレメトリの確認
 ### <a name="-in-visual-studio"></a>Visual Studio で確認する
-[Application Insights] ボタンをクリックするか、次のようにソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights] ウィンドウを開きます。
+Visual Studio で Application Insights ウィンドウを開きます。そのためには、[Application Insights] ボタンをクリックするか、ソリューション エクスプローラーでプロジェクトを右クリックし、`Application Insights` を選択してから `Search Live Telemetry` をクリックします。
 
 ![Visual Studio では、Application Insights ボタンはデバッグ時に表示されます。](./media/app-insights-asp-net/55.png)
 
@@ -84,13 +84,13 @@ Application Insights リソースを開きます。[Azure Portal](https://portal
 
 ### <a name="more-detail-in-the-portal"></a>ポータルでの詳細
 
-* [**ライブ メトリック ストリーム**](app-insights-metrics-explorer.md#live-metrics-stream)には、ほぼ瞬時にテレメトリが表示されます。
+* [**ライブ メトリック ストリーム**](app-insights-live-stream.md)には、ほぼ瞬時にテレメトリが表示されます。
 
     ![概要ブレードで [ライブ ストリーム] をクリックする](./media/app-insights-asp-net/livestream.png)
 
     アプリの実行と同時にライブ ストリームを開いて、接続を許可します。
 
-    ライブ ストリームでは、送信後 1 分間だけ、テレメトリが表示されます。 それより前の履歴を調査するには、検索、メトリックス エクスプローラー、Analytics を使用してください。 データがこれらの場所に表示されるまでに数分かかる場合があります。
+    ライブ ストリームでは、送信後&1; 分間だけ、テレメトリが表示されます。 それより前の履歴を調査するには、検索、メトリックス エクスプローラー、Analytics を使用してください。 データがこれらの場所に表示されるまでに数分かかる場合があります。
 
 * [**検索**](app-insights-diagnostic-search.md)では、要求、例外、ページ ビューなど、個々のイベントが表示されます。 イベントの種類、語句の一致、およびプロパティ値でフィルター処理することができます。 イベントをクリックすると、そのプロパティと関連イベントが表示されます。 
 
@@ -120,7 +120,7 @@ Application Insights によって、アプリのテレメトリが (Microsoft Az
 
 ![](./media/app-insights-asp-net/01-scheme.png)
 
-つまり、コマンドによって実行された操作は次の 3 つです。
+つまり、コマンドによって実行された操作は次の&3; つです。
 
 1. プロジェクトに Application Insights Web SDK NuGet パッケージを追加する。 Visual Studio で表示するには、プロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。
 2. [Azure ポータル](https://portal.azure.com/)で、Application Insights のリソースを作成する。 ここにデータが表示されます。 リソースを識別する *インストルメンテーション キー* を取得します。
@@ -134,17 +134,25 @@ Application Insights によって、アプリのテレメトリが (Microsoft Az
 ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておき、後から新しいバージョンに変更をマージします。
 
 ## <a name="add-more-telemetry"></a>テレメトリをさらに追加
-### <a name="web-pages-and-single-page-apps"></a>Web ページおよび単一ページ アプリ
-1. ページ ビュー、読み込み時間、ブラウザーの例外、AJAX 呼び出しのパフォーマンス、ユーザーとセッションの数に関するデータを [ブラウザー] ブレードと [使用状況] ブレードに表示するために、Web ページに [JavaScript スニペットを追加](app-insights-javascript.md)します。
-2. ユーザー アクションのカウント、時間の計測、または測定を行う[カスタム イベントのコードを記述](app-insights-api-custom-events-metrics.md)します。
-
 ### <a name="dependencies-exceptions-and-performance-counters"></a>依存関係、例外、パフォーマンス カウンター
-アプリに関する追加のテレメトリを取得するために、各サーバー コンピューターに [Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)します。 取得できるテレメトリは次のとおりです。
+
+Web アプリに関する追加のテレメトリを取得するために、各 IIS サーバー コンピューターに [Status Monitor をインストール](http://go.microsoft.com/fwlink/?LinkId=506648)します。
+
+既にインストールされている場合は、何もする必要はありません。 
+
+実行時にアプリの監視を開始するために、既に Status Monitor を使用している場合があります。 
+
+ビルド時の SDK に加えて Status Monitor を使用すると、より完全なテレメトリのセットを取得できます。これには以下が含まれます。
 
 * [パフォーマンス カウンター](app-insights-performance-counters.md) - 
   アプリに関連する CPU、メモリ、ディスクなどのパフォーマンス カウンターです。 
 * [例外](app-insights-asp-net-exceptions.md) - 一部の例外の詳細なテレメトリです。
-* [依存関係](app-insights-asp-net-dependencies.md) - REST API または SQL サービスへの呼び出しです。 外部コンポーネントの応答が遅いことが原因でアプリのパフォーマンスの問題が発生しているかどうかを確認できます (アプリが .NET 4.6 で実行される場合、Status Monitor がなくても、このテレメトリを取得できます)。
+* [依存関係](app-insights-asp-net-dependencies.md)- 戻り値を含みます。
+
+### <a name="web-pages-and-single-page-apps"></a>Web ページおよび単一ページ アプリ
+1. ページ ビュー、読み込み時間、ブラウザーの例外、AJAX 呼び出しのパフォーマンス、ユーザーとセッションの数に関するデータを [ブラウザー] ブレードと [使用状況] ブレードに表示するために、Web ページに [JavaScript スニペットを追加](app-insights-javascript.md)します。
+2. ユーザー アクションのカウント、時間の計測、または測定を行う[カスタム イベントのコードを記述](app-insights-api-custom-events-metrics.md)します。
+
 
 ### <a name="diagnostic-code"></a>診断コード
 問題が発生した場合に備えて 診断に役立つコードをアプリに挿入する場合は、いくつかのオプションがあります。
@@ -191,11 +199,10 @@ Visual Studio Team Services を使用する場合は、新しいバージョン�
 | --- | --- |
 | **[Visual Studio での Application Insights の操作](app-insights-visual-studio.md)**<br/>テレメトリを使用したデバッグ、診断検索、コードのドリル スルー。 |
 | **[Application Insights ポータルの操作](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |
-| **[データの追加](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。 ログ記録フレームワークからのトレースを統合します。 カスタム テレメトリを記述します。 |
 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

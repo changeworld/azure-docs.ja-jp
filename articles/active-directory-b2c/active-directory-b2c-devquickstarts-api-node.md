@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: cea04afd22270c77d91148d3c4a95e87f37406db
+ms.sourcegitcommit: 3b5d9162e2d39e2b0f011383a478545644c57861
+ms.openlocfilehash: c9742c7f505417577857889ef307083afb9bab18
 
 
 ---
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth 2.0 アクセス トーク�
 Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。  ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。  まだディレクトリを作成していない場合は、 [B2C ディレクトリを作成](active-directory-b2c-get-started.md) してから先に進んでください。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
-次に、B2C ディレクトリにアプリを作成する必要があります。このディレクトリによって、アプリと安全に通信するために必要ないくつかの情報を Azure AD に提供します。 ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つの論理アプリを構成するためです。 アプリを作成するには、 [こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
+次に、B2C ディレクトリにアプリを作成する必要があります。このディレクトリによって、アプリと安全に通信するために必要ないくつかの情報を Azure AD に提供します。 ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が&1; つの論理アプリを構成するためです。 アプリを作成するには、 [こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
 
 * アプリケーションに **Web アプリまたは Web API** を含めます。
 * **[応答 URL]** に「`http://localhost/TodoListService`」と入力します。 これはこのサンプル コードで使用する既定の URL です。
@@ -52,7 +52,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>ポリシーの作成
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインアップとサインインという 2 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。  3 つのポリシーを作成するときは、以下の点に注意してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインアップとサインインという&2; つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、種類ごとに&1; つのポリシーを作成する必要があります。  3 つのポリシーを作成するときは、以下の点に注意してください。
 
 * サインアップ ポリシーで、 **[表示名]** と他のサインアップ属性を選択します。
 * すべてのポリシーで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** を選択します。  その他のクレームも選択できます。
@@ -279,7 +279,7 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 `policyName`: サーバーが受け取ったトークンを検証するポリシーです。 クライアント アプリケーションでサインインに対して使用したのと同じポリシーを使用する必要があります。
 
 > [!NOTE]
-> この B2C プレビューでは、クライアントとサーバーの両方の設定に同じポリシーを使用します。 既にチュートリアルを完了していて、これらのポリシーを作成してある場合は、再度作成する必要はありません。 チュートリアルを完了していれば、サイトのクライアント チュートリアル用に新しいポリシーを設定する必要はないためです。
+> ここでは、クライアントとサーバーの両方の設定に同じポリシーを使用します。 既にチュートリアルを完了していて、これらのポリシーを作成してある場合は、再度作成する必要はありません。 チュートリアルを完了していれば、サイトのクライアント チュートリアル用に新しいポリシーを設定する必要はないためです。
 >
 >
 
@@ -331,7 +331,7 @@ var log = bunyan.createLogger({
 ```
 
 ## <a name="add-the-mongodb-model-and-schema-information-by-using-mongoose"></a>Mongoose を使用した、MongoDB モデルおよびスキーマ情報の追加
-以前に行った準備は、これらの 3 つのファイルを REST API サービスにまとめるときに役立ちます。
+以前に行った準備は、これらの&3; つのファイルを REST API サービスにまとめるときに役立ちます。
 
 このチュートリアルでは、既に説明したように、タスクを格納するために MongoDB を使用します。
 
@@ -763,6 +763,6 @@ Restify と OAuth を使用して REST API を実装しました。 既に十分
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

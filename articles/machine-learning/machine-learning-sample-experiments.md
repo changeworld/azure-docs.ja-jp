@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/11/2016
+ms.date: 02/13/2017
 ms.author: cgronlun;olgali
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9c710e6f959afd8a4f4b965931ed4868d94c6d25
+ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
+ms.openlocfilehash: 7b2bca108770a79a693a408a628ccc6370c36b7c
 
 
 ---
@@ -39,37 +39,37 @@ ms.openlocfilehash: 9c710e6f959afd8a4f4b965931ed4868d94c6d25
 すべての実験を参照するには、次の手順を実行します。
 
 1. ページの上部にある **[Browse all (すべて参照)]** をクリックします。
-2. **[Refine by (絞り込み条件)]** で **[Experiment (実験)]** を選択すると、ギャラリー内のすべての実験が表示されます。
+2. **[Categories (カテゴリ)]** セクションの **[Refine by (絞り込み条件)]** で **[Experiment (実験)]** を選ぶと、ギャラリー内のすべての実験が表示されます。
 3. 自分の要件を満たす実験は、いくつかの方法で探すことができます。
    * **左側のフィルターを選択する。** たとえば、PCA ベースの異常検出アルゴリズムを使用する実験を参照するには、**[Categories (カテゴリ)]** で **[Experiment (実験)]** を選択し、**[Algorithms Used (使用されたアルゴリズム)]** で **[PCA-Based Anomaly Detection (PCA ベースの異常検出)]** を選択します  (このアルゴリズムが表示されない場合は、一覧の末尾にある **[Show all (すべて表示)]** をクリックしてください)。<br></br>
      ![Select filters](./media/machine-learning-sample-experiments/refine-the-view.png)
-   * **検索ボックスを使う。** たとえば、Microsoft によって投稿された、2 クラス サポート ベクター マシン アルゴリズムを使用する数字認識に関連する実験を検索するには、検索ボックスで「digit recognition」と入力します。 次に、**[Experiment (実験)]**、**[Microsoft content only (Microsoft のコンテンツのみ)]**、**[Two-Class Support Vector Machine (2 クラス サポート ベクター マシン)]** の各フィルターを選択します。![Use the search box](./media/machine-learning-sample-experiments/search-for-experiments.png)
+   * **検索ボックスを使う。** たとえば、Microsoft によって投稿された、2 クラス サポート ベクター マシン アルゴリズムを使用する数字認識に関連する実験を検索するには、検索ボックスで「digit recognition」と入力します。 次に、**[Experiment (実験)]**、**[Microsoft content only (Microsoft のコンテンツのみ)]**、**[Two-Class Support Vector Machine (2 クラス サポート ベクター マシン)]** フィルターを選択します。<br></br>
+     ![検索ボックスを使う](./media/machine-learning-sample-experiments/search-for-experiments.png)
 4. 実験をクリックして詳細を表示します。
-5. 実験を実行したり変更したりするには、実験のページで **[Open in Studio (Studio で開く)]** をクリックします。
-
-   > [!NOTE]
-   > Machine Learning Studio で実験を開くには、Microsoft アカウントの資格情報でサインインする必要があります。 Machine Learning ワークスペースをまだ持っていない場合は、無料評価版のワークスペースが作成されます。 [Machine Learning 無料試用版に含まれる内容を確認してください。](https://azure.microsoft.com/pricing/details/machine-learning/)
-   >
-   >
+5. 実験を実行したり変更したりするには、実験のページで **[Open in Studio (Studio で開く)]** をクリックします。 <br></br>
 
     ![実験例](./media/machine-learning-sample-experiments/example-experiment.png)
+
+    > [!NOTE]
+    > Machine Learning Studio で初めて実験を開くときは、Azure サブスクリプションを無料で試すか購入できます。 [Machine Learning Studio の無料試用版と有料サービスの詳細](https://azure.microsoft.com/pricing/details/machine-learning/)
+    >
+    >
 
 ## <a name="use-a-template-in-machine-learning-studio"></a>Machine Learning Studio でのテンプレートの使用
 ギャラリーのサンプルをテンプレートとして、Machine Learning Studio で新しい実験を作成することもできます。
 
-1. Microsoft アカウントの資格情報で [Studio](https://studio.azureml.net)にサインインし、 **[新規]** をクリックして新しい実験を作成します。
+1. Microsoft アカウントの資格情報で [Studio](https://studio.azureml.net)にサインインし、**[新規]** をクリックして実験を作成します。
 2. サンプルのコンテンツを参照し、いずれかをクリックします。
 
 サンプル実験をテンプレートとして、ワークスペースに新しい実験が作成されます。
 
 ## <a name="next-steps"></a>次のステップ
-* [データを準備する](machine-learning-data-science-import-data.md)
-* [実験で R の使用を試す](machine-learning-r-quickstart.md)
-* [サンプルの R 実験を確認する](machine-learning-r-csharp-web-service-examples.md)
-* [Web サービス API を作成する](machine-learning-publish-a-machine-learning-web-service.md)
+* [さまざまなソースからデータをインポートする](machine-learning-data-science-import-data.md)
+* [Machine Learning 向け R 言語のクイックスタート チュートリアル](machine-learning-r-quickstart.md)
+* [Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

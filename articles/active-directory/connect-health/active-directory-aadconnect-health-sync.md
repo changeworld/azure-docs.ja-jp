@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/12/2017
+ms.date: 02/10/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 7c320a043322fefea1f58301492d4c5a0567320c
-ms.openlocfilehash: fcea61a09654f41af57969a79fab3aabdba4e19c
+ms.sourcegitcommit: 21e599fc2adf3d7dce84cc1c4130504b71928db7
+ms.openlocfilehash: 7a2f53de0067879a811c9954199026ecfe3ec906
 
 
 ---
@@ -35,7 +35,7 @@ Azure AD Connect Health for Sync アラート セクションには、アクテ�
 ### <a name="limited-evaluation-of-alerts"></a>アラートの評価が限定される状況
 Azure AD Connect で既定の構成が使用されていない場合 (たとえば、属性フィルターが既定の構成からカスタム構成に変更されている場合)、Azure AD Connect Health エージェントは Azure AD Connect に関連するエラー イベントをアップロードしません。
 
-その結果、サービスによるアラートの評価は限定的なものになります。 このような状況にある場合は、それを示すバナーが Azure Portal の該当するサービスの下に表示されます。
+その結果、サービスによるアラートの評価は限定的なものになります。 このような状況にある場合は、それを示すバナーが該当するサービスの Azure ポータルに表示されます。
 
 ![Azure AD Connect Health for Sync](./media/active-directory-aadconnect-health-sync/banner.png)
 

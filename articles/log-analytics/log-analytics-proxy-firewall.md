@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics のプロキシ設定とファイアウォール設定の構成 | Microsoft Docs"
+title: "Azure Log Analytics のプロキシ設定とファイアウォール設定の構成 | Microsoft Docs"
 description: "エージェントや OMS サービスで特定のポートを使用する必要がある場合は、プロキシとファイアウォールの設定を構成します。"
 services: log-analytics
 documentationcenter: 
@@ -12,18 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/06/2017
+ms.date: 02/10/2017
 ms.author: banders;magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: d5d86a0f7177b9a1e96e50a3e3e7d1f5800974bf
-ms.openlocfilehash: 427d5d7ed43f19611e99705dab33a0c80a8bf9f9
+ms.sourcegitcommit: 6a527fa303f1e2bd06ac662e545d6b6a1d299fb4
+ms.openlocfilehash: cd06dfd498540970dc8ed29650f4d9e3ca57939b
 
 
 ---
 # <a name="configure-proxy-and-firewall-settings-in-log-analytics"></a>Log Analytics のプロキシ設定とファイアウォール設定の構成
-Operations Manager やそのエージェントと使用する場合と、サーバーに直接接続する Microsoft Monitoring Agent を使用する場合では、OMS の Log Analytics のプロキシとファイアウォールの設定に必要な操作が異なります。 使用するエージェントの種類については、以下のセクションを確認してください。
+Log Analytics のプロキシとファイアウォール設定の構成に必要なアクションは、使用しているエージェントのタイプによって異なります。 使用するエージェントの種類については、以下のセクションを確認してください。
 
-## <a name="configure-proxy-and-firewall-settings-with-the-microsoft-monitoring-agent"></a>Microsoft Monitoring Agent でプロキシとファイアウォールの設定を構成する
+## <a name="settings-for-the-oms-gateway"></a>OMS ゲートウェイの設定
+
+エージェントがインターネットにアクセスできない場合は、代わりに独自のネットワーク リソースを使用して OMS ゲートウェイにデータを送信できます。 ゲートウェイがエージェントに代わってそれらのデータを収集し、OMS サービスに送信します。
+
+OMS ゲートウェイと通信するエージェントは、完全修飾ドメイン名とカスタム ポート番号を使用して構成します。
+
+OMS ゲートウェイはインターネットにアクセスできる必要があります。 使用しているエージェントのタイプと同じプロキシ サーバーまたはファイアウォールの設定を OMS ゲートウェイに使用します。 OMS ゲートウェイについて詳しくは、「[OMS ゲートウェイを使って OMS にコンピューターとデバイスを接続する](log-analytics-oms-gateway.md)」をご覧ください。
+
+## <a name="configure-settings-with-the-microsoft-monitoring-agent"></a>Microsoft Monitoring Agent で設定を構成する
 OMS サービスに Microsoft Monitoring Agent を接続して登録するには、ドメインのポート番号と URL へのアクセスが必要になります。 エージェントと OMS サービス間の通信にプロキシ サーバーを使用する場合、適切なリソースにアクセスできることを確認する必要があります。 インターネットへのアクセスを制限するためにファイアウォールを使用する場合は、OMS へのアクセスを許可するようにファイアウォールを構成する必要があります。 次の表には、OMS で必要なポートの一覧を示しています。
 
 | **エージェントのリソース** | **ポート** | **バイパス HTTPS 検査** |
@@ -71,7 +79,7 @@ OMS サービスに Microsoft Monitoring Agent を接続して登録するには
     $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetNetworkCredential().password)
 
 
-## <a name="configure-proxy-and-firewall-settings-with-operations-manager"></a>Operations Manager でプロキシとファイアウォールの設定を構成する
+## <a name="configure-settings-with-operations-manager"></a>Operations Manager で設定を構成する
 OMS サービスに Operations Manager 管理グループを接続し登録するには、ドメインのポート番号と URL へのアクセスが必要になります。 Operations Manager 管理サーバーと OMS サービス間の通信にプロキシ サーバーを使用する場合、適切なリソースにアクセスできることを確認する必要があります。 インターネットへのアクセスを制限するためにファイアウォールを使用する場合は、OMS へのアクセスを許可するようにファイアウォールを構成する必要があります。 Operations Manager 管理サーバーがプロキシ サーバーの背後にない場合でも、そのエージェントは存在する可能性があります。 この場合、セキュリティとログの管理ソリューションのデータを OMS Web サービスに送信することを許可するには、プロキシ サーバーをエージェントと同じように構成する必要があります。
 
 Operations Manager エージェントが OMS サービスと通信するには、Operations Manager インフラストラクチャ (エージェントを含む) に適切なプロキシ設定とバージョンが必要です。 エージェントのプロキシ設定は、Operations Manager コンソールで指定します。 バージョンは次のいずれかにする必要があります。
@@ -180,6 +188,6 @@ OMS にソリューションを追加した場合、ソリューションは Ope
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

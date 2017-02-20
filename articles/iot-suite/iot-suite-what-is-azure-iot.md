@@ -1,5 +1,5 @@
 ---
-title: "モノのインターネット用の Azure ソリューション | Microsoft Docs"
+title: "モノのインターネット (IoT Suite) 用の Azure ソリューション | Microsoft Docs"
 description: "サンプル ソリューション アーキテクチャや、それが Azure IoT Suite および構成済みソリューションとどのように関連するかなど、Azure での IoT の概要。"
 services: 
 suite: iot-suite
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/09/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
-ms.openlocfilehash: bd2b41944e3a37fde1cecd3d0ff299f949cd4eb4
+ms.sourcegitcommit: 37a1653ca058c60a39df95f646127bd9e7fdd556
+ms.openlocfilehash: 57c7b895579e1c1e86224a60d961721d2d4cf638
 
 
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## <a name="azure-iot-suite"></a>Azure IoT Suite
-Microsoft Azure IoT Suite は、拡張可能な一連の事前構成済みソリューションを介してすばやく使用を開始できるエンタープライズ グレードのソリューションです。 これらのソリューションは、[リモート モニタリング][lnk-preconfigured-solutions]や[予測メンテナンス][lnk-predictive-maintenance]など、一般的な IoT シナリオに対処します。 これらのソリューションは、この記事で概説しているように、IoT ソリューションのアーキテクチャの実装です。
+Microsoft Azure IoT Suite は、拡張可能な一連の事前構成済みソリューションを介してすばやく使用を開始できるエンタープライズ グレードのソリューションです。 これらのソリューションは、[リモート モニタリング][lnk-preconfigured-solutions]や[予測メンテナンス][lnk-predictive-maintenance]などの一般的な IoT シナリオに対処します。 これらのソリューションは、この記事で概説しているように、IoT ソリューションのアーキテクチャの実装です。
 
 構成済みソリューションは、完全かつ実用的なエンド ツー エンドのソリューションであり、以下のものが含まれます。
 
 - 使用を始めるためのシミュレートされたデバイス。
-- [Azure IoT Hub][Azure IoT Hub]、[Azure Event Hubs][Azure Event Hubs]、[Azure Stream Analytics][Azure Stream Analytics]、[Azure Machine Learning][Azure Machine Learning]、[Azure Storage][Azure Storage] など、構成済みの Azure サービス。
+- 構成済みの Azure サービス ([Azure IoT Hub][Azure IoT Hub]、[Azure Event Hubs][Azure Event Hubs]、[Azure Stream Analytics][Azure Stream Analytics]、[Azure Machine Learning][Azure Machine Learning]、[Azure Storage][Azure storage] など)。
 - ソリューション専用の管理コンソール。
 
 事前構成済みソリューションには、独自の IoT シナリオを実装するためにカスタマイズおよび拡張できる、実績のある、実稼働可能なコードが含まれています。
@@ -50,11 +50,11 @@ IoT Suite と構成済みのソリューションについて引き続き学習�
 [Azure Event Hubs]: https://azure.microsoft.com/documentation/services/event-hubs/
 [Azure Stream Analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [Azure Machine Learning]: https://azure.microsoft.com/documentation/services/machine-learning/
-[Azure Storage]: https://azure.microsoft.com/documentation/services/storage/
+[Azure storage]: https://azure.microsoft.com/documentation/services/storage/
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/14/2016
+ms.date: 02/14/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b3dadee1ea8d1ff4a0164a90eb617f9d276b6670
+ms.sourcegitcommit: 4572913c2bc732c31f38021f9d3ccc34417de875
+ms.openlocfilehash: be4361af8f3f3024ab7f12114760f6f58e77deaf
 
 
 ---
@@ -25,17 +25,13 @@ Azure Active Directory を持つグローバル管理者と Office 365 ユーザ
 
 > [!NOTE]
 > Azure Multi-Factor Auth プロバイダーは、通常版の Azure MFA に備わっている機能を活用するために使用されます。 その対象となるのは、 **Azure MFA、Azure AD Premium、EMS のいずれのライセンスも持たないユーザー**です。  Azure MFA、Azure AD Premium、EMS には、通常版の Azure MFA が既定で含まれています。  ライセンスを所有している場合、Azure 多要素認証プロバイダーは必要ありません。
-> 
-> 
 
 SDK をダウンロードする場合は、Azure 多要素認証プロバイダーが必要です。
 
 > [!IMPORTANT]
 > SDK をダウンロードするには、Azure MFA、AAD Premium、または EMS のライセンスを所有していても、Azure 多要素認証プロバイダーを作成する必要があります。  既にライセンスがある状態で、SDK のダウンロードのために Azure 多要素認証プロバイダーを作成する場合には、プロバイダーの作成に **[有効化されたユーザーごと]** モデルを使用してください。 プロバイダーを作成したら、Azure MFA、Azure AD Premium、または EMS のライセンスが保存されているディレクトリにリンクします。  これで、SDK を利用する一意のユーザー数が所有ライセンス数を上回った場合に限り、課金が発生するようになります。
-> 
-> 
 
-## <a name="to-create-a-multi-factor-auth-provider"></a>Multi-Factor Auth プロバイダーを作成するには
+## <a name="create-a-multi-factor-auth-provider"></a>Multi-Factor Auth プロバイダーを作成する
 Azure Multi-Factor Auth プロバイダーを作成するには、次の手順に従います。
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)に管理者としてサインインします。
@@ -64,6 +60,6 @@ Azure Multi-Factor Auth プロバイダーを作成するには、次の手順�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -3,7 +3,7 @@ title: "Windows で Azure File Storage を使用する | Microsoft Docs"
 description: "Azure File Storage を使用してクラウドにファイル データを格納し、Azure 仮想マシン (VM) から、または Windows を実行しているオンプレミスのアプリケーションからクラウド ファイル共有をマウントします。"
 services: storage
 documentationcenter: .net
-author: mine-msft
+author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
 ms.assetid: 6a889ee1-1e60-46ec-a592-ae854f9fb8b6
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/18/2016
-ms.author: minet
+/ms.date: 1/18/2017
+ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: bc97472a07ac4c27c60fbe2cb803f2360a3362c4
-ms.openlocfilehash: af8f20beb8899ff1df733d1a4c544c75c6889ea6
+ms.sourcegitcommit: 6c93e5363767cb6860d4a365eba178dd940bd41d
+ms.openlocfilehash: e0800b7c7aba64fa7429fc3ced8c194cd9fbf0d1
 
 
 ---
 # <a name="get-started-with-azure-file-storage-on-windows"></a>Windows で Azure File Storage を使用する
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
+[!INCLUDE [storage-check-out-samples-dotnet](../../includes/storage-check-out-samples-dotnet.md)]
 
 [!INCLUDE [storage-file-overview-include](../../includes/storage-file-overview-include.md)]
 
@@ -38,7 +38,7 @@ File Storage のスケーラビリティおよびパフォーマンスのター�
 ## <a name="video-using-azure-file-storage-with-windows"></a>ビデオ: Windows で Azure File Storage を使用する方法
 このビデオでは、Windows で Azure のファイル共有を作成して使用する方法について説明しています。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-File-Storage-with-Windows/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-File-Storage-with-Windows/player]
 > 
 > 
 
@@ -85,7 +85,7 @@ File Storage は、すべてのストレージ アカウントでサポートさ
     ![Screenshot that shows how to create file share in the portal](./media/storage-dotnet-how-to-use-files/files-create-share-4.png)
 
 ### <a name="upload-and-download-files"></a>ファイルのアップロードとダウンロード
-1. 既に作成した 1 つのファイル共有を選択します。
+1. 既に作成した&1; つのファイル共有を選択します。
    
     ![Screenshot that shows how to upload and download files from the portal](./media/storage-dotnet-how-to-use-files/files-upload-download-1.png)
 2. **[アップロード]** をクリックして、ファイルをアップロードするためのユーザー インターフェイスを開きます。
@@ -118,7 +118,7 @@ File Storage は、すべてのストレージ アカウントでサポートさ
 Azure PowerShell を使用して、ファイル共有を作成および管理することもできます。
 
 ### <a name="install-the-powershell-cmdlets-for-azure-storage"></a>Azure Storage 用の PowerShell コマンドレットのインストール
-PowerShell の使用を準備するために、Azure PowerShell コマンドレットをダウンロードしてインストールします。 インストール先とインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」を参照してください。
+PowerShell の使用を準備するために、Azure PowerShell コマンドレットをダウンロードしてインストールします。 インストール先とインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
 
 > [!NOTE]
 > 最新の Azure PowerShell モジュールをダウンロードしてインストールするか、アップグレードすることをお勧めします。
@@ -541,7 +541,7 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 ## <a name="troubleshooting-file-storage-using-metrics"></a>メトリックを使用した File Storage のトラブルシューティング
 Azure ストレージ分析で File Storage のメトリックがサポートされるようになりました。 メトリック データを使用すると、要求のトレースや問題の診断ができます。
 
-[Azure ポータル](https://portal.azure.com)から File Storage のメトリックを有効にすることができます。 REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
+[Azure ポータル](https://portal.azure.com)から File Storage のメトリックを有効にすることができます。 REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの&1; つを使用して、プログラムでメトリックを有効にすることも可能です。
 
 次のコード例では、.NET 用ストレージ クライアント ライブラリを使用して、File Storage のメトリックを有効にする方法を示します。
 
@@ -602,49 +602,61 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
    
     現在、AD ベースの認証や、ACL はサポートしていませんが、今後サポートする可能性はあります。 現時点では、ファイル共有の認証には、Azure Storage のアカウント キーを使用しています。 REST API またはクライアント ライブラリを使用した Shared Access Signature (SAS) での回避策を提供しています。 SAS を使用すると、指定した時間間隔の間に有効な特定のアクセス許可を持つトークンを生成できます。 たとえば、特定のファイルへの読み取り専用のアクセス許可を持つトークンを生成できます。 トークンを所有するすべてのユーザーは、そのファイルへの読み取り専用アクセスをその有効期間の間持ちます。
    
-    SAS は、REST API またはクライアント ライブラリを使用してのみサポートされます。 SMB プロトコルを使用してファイル共有をマウントした場合、SAS を使用してそのコンテンツへのアクセスを委任することはできません。
-2. **Azure のファイル共有はインターネット経由で確認できますか。または Azure からのみアクセスできるでのしょうか。**
-   
-    ポート 445 (TCP 送信) が開いており、(Windows 8 または Windows Server 2012*など*の) クライアントが SMB 3.0 プロトコルをサポートしている場合は、ファイル共有はインターネット経由で使用できます。  
-3. **Azure の仮想マシンとファイル共有間のネットワーク トラフィックは、サブスクリプションに課金される外部帯域幅としてカウントされますか。**
+    SAS は、REST API またはクライアント ライブラリを使用してのみサポートされます。 SMB プロトコルを使用してファイル共有をマウントした場合、SAS を使用してそのコンテンツへのアクセスを委任することはできません。 
+
+2. **Web ブラウザー経由で特定のファイルへのアクセス権を提供するにはどうすればよいですか。**
+   SAS を使用すると、指定した時間間隔の間に有効な特定のアクセス許可を持つトークンを生成できます。 たとえば、特定の期間に特定のファイルに対する読み取り専用アクセス権だけを持つトークンを生成できます。 この URL を持つユーザーは、それが有効な間、任意の Web ブラウザーから直接ダウンロードを実行できます。 SAS キーは、ストレージ エクスプローラーなどの UI から簡単に生成できます。
+
+3.   **Azure File Storage でファイルにアクセスするさまざまな方法を挙げてください。**
+    SMB 3.0 プロトコルを使用してローカル コンピューターにファイル共有をマウントするか、[ストレージ エクスプローラー](http://storageexplorer.com/)や Cloudberry などのツールを使用してファイル共有内のファイルにアクセスできます。 アプリケーションから、クライアント ライブラリ、REST API または Powershell を使用して、Azure File Share 内のファイルにアクセスできます。
+    
+4.   **ローカル コンピューターに Azure のファイル共有をマウントするにはどうすればよいですか。** ポート 445 (TCP 送信) が開いており、(Windows 8 や Windows Server 2012 "*など*" の) クライアントが SMB 3.0 プロトコルをサポートしている場合は、SMB プロトコル経由でファイル共有をマウントできます。 ポートのブロックを解除するには、ローカルの ISP プロバイダーを利用してください。 それまでの間は、ストレージ エクスプローラーやその他のサード パーティ製品 (Cloudberry など) を使用してファイルを表示できます。
+
+5. **Azure の仮想マシンとファイル共有間のネットワーク トラフィックは、サブスクリプションに課金される外部帯域幅としてカウントされますか。**
    
     ファイル共有と仮想マシンのリージョンが別の場合、これらの間のトラフィックは外部帯域幅として課金されます。
-4. **同じリージョン内の仮想マシンとファイル共有間で発生するネットワーク トラフィックは、無料ですか。**
+6. **同じリージョン内の仮想マシンとファイル共有間で発生するネットワーク トラフィックは、無料ですか。**
    
     はい。 同じリージョン内のトラフィックは無料です。
-5. **オンプレミスの仮想マシンから Azure File Storage への接続は、Azure ExpressRoute に依存していますか。**
+7. **オンプレミスの仮想マシンから Azure File Storage への接続は、Azure ExpressRoute に依存していますか。**
    
     いいえ。 ExpressRoute がない場合も、インターネット アクセス用にポート 445 (TCP 送信) が開いている場合は、オンプレミスからファイル共有にアクセスできます。 ただし、必要であれば File Storage で ExpressRoute を使用できます。
-6. **Azure File Storage の 1 つの用途は、フェールオーバー クラスターの "ファイル共有監視" ですか。**
+8. **Azure File Storage の&1; つの用途は、フェールオーバー クラスターの "ファイル共有監視" ですか。**
    
     現在これはサポートされていません。
-7. **現在 File ストレージのレプリケーションは、LRS または GRS を介してのみ実行できるのですか。**  
+9. **現在 File ストレージのレプリケーションは、LRS または GRS を介してのみ実行できるのですか。**  
    
     RA-GRS もサポート予定ですが、まだ予定は公表できません。
-8. **いつ Azure File Storage に既存のストレージ アカウントを使用できるようになりますか。**
+10. **いつ Azure File Storage に既存のストレージ アカウントを使用できるようになりますか。**
    
     現在 Azure File Storage ですべてのストレージ アカウントが有効です。
-9. **REST API に名前変更操作も追加されますか。**
+11. **REST API に名前変更操作も追加されますか。**
    
     名前変更は、まだ REST API ではサポートしていません。
-10. **共有は入れ子にできますか。つまり共有の下に共有を配置できますか。**
+12. **共有は入れ子にできますか。つまり共有の下に共有を配置できますか。**
     
     いいえ。 ファイル共有はマウント可能な仮想ドライバーであるため、共有の入れ子はサポートしていません。
-11. **共有内のフォルダーに読み取り専用または書き込み専用の権限を指定できますか。**
+13. **共有内のフォルダーに読み取り専用または書き込み専用の権限を指定できますか。**
     
     SMB を使用してファイル共有をマウントした場合、このレベルでアクセス許可を制御することはできません。 ただし、REST API またはクライアント ライブラリを使用して Shared Access Signature (SAS) を作成することでこれを実現することができます。  
-12. **File Storage にファイルを解凍する際にパフォーマンスが低かった場合は、どうすればよいですか。**
+14. **File Storage にファイルを解凍する際にパフォーマンスが低かった場合は、どうすればよいですか。**
     
     File Storage に大量のファイルを転送する場合、ネットワーク転送に最適化されている AzCopy、Azure Powershell (Windows)、または Azure CLI (Linux または Unix) を使用することをお勧めします。
-13. **Azure Files の低パフォーマンスの問題を解決するためにリリースされた修正プログラム**
+15. **Azure Files の低パフォーマンスの問題を解決するためにリリースされた修正プログラム**
     
     Windows チームは先日、ユーザーが Windows 8.1 または Windows Server 2012 R2 から Azure Files Storage にアクセスする際に生じる低パフォーマンスの問題を解決するための修正プログラムをリリースしました。 詳細については、関連するサポート技術情報の記事「[Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files Storage にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/en-us/kb/3114025)」を参照してください。
-14. **IBM MQ での Azure File Storage の使用**
+16. **IBM MQ での Azure File Storage の使用**
     
     IBM は、IBM MQ ユーザーが IBM のサービスで Azure File Storage を構成する際にガイドとなるドキュメントを公開しました。 詳細については、「 [How to setup IBM MQ Multi instance queue manager with Microsoft Azure File Service (IBM MQ マルチ インスタンス キュー マネージャーを Microsoft Azure File サービスでセットアップする方法)](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)」を参照してください。
-15. **Azure File Storage のエラーのトラブルシューティングを行うにはどうすればよいですか。**
+17. **Azure File Storage のエラーのトラブルシューティングを行うにはどうすればよいですか。**
     
     エンド ツー エンドのトラブルシューティング ガイダンスについては、[Azure File のトラブルシューティングに関する記事](storage-troubleshoot-file-connection-problems.md)を参照してください。               
+
+18. **Azure ファイルのサーバー側の暗号化を有効にするにはどうすればよいですか。**
+
+    [サーバー側の暗号化](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption)は、現在プレビューの段階です。 プレビュー期間中は、この機能は新しく作成した Azure Resource Manager (ARM) のストレージ アカウントに対してのみ有効にできます。
+    この機能を Azure Resource Manager のストレージ アカウントで有効にするには、Azure Portal を使用します。 2 月末までには、File Storage の暗号化に [Azure Powershell](https://msdn.microsoft.com/en-us/library/azure/mt607151.aspx)、[Azure CLI](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli-nodejs)、[Microsoft Azure Storage リソース プロバイダー API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts) が利用できるようになる予定です。 この機能の有効化については、追加料金は発生しません。 Azure File Storage のストレージ サービスの暗号化を有効にすると、データは自動的に暗号化されます。 
+    詳細については、ストレージ サービスの暗号化に関するページを参照してください。 プレビューについて他に質問がある場合は、ssediscussions@microsoft.com に問い合わせることもできます。
 
 ## <a name="next-steps"></a>次のステップ
 Azure File Storage の詳細については、次のリンクを参照してください。
@@ -657,6 +669,7 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 * [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)
 * [Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)
 * [Azure Storage での Azure CLI の使用](storage-azure-cli.md#create-and-manage-file-shares)
+* [Azure File Storage に関する問題のトラブルシューティング](https://docs.microsoft.com/en-us/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>リファレンス
 * [.NET 用ストレージ クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/dn261237.aspx)
@@ -669,6 +682,7 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 * [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Feb17_HO2-->
 
 
